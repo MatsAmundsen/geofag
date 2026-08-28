@@ -77,7 +77,9 @@ function Geofag2() {
                     <p className="text-xs uppercase tracking-wider text-muted-foreground">
                       {tema.kicker}
                     </p>
-                    <h3 className="font-display text-2xl font-medium tracking-tight">{tema.title}</h3>
+                    <h3 className="font-display text-2xl font-medium tracking-tight">
+                      {tema.title}
+                    </h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{tema.blurb}</p>
                     <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-primary">
                       {tema.status === "klar" ? "Åpne tema" : "Se forhåndsblikk"}
@@ -93,7 +95,9 @@ function Geofag2() {
         <section className="border-y border-border bg-card">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3">
             <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">Fordypning</p>
+              <p className="text-xs font-medium uppercase tracking-wider text-primary">
+                Fordypning
+              </p>
               <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
                 Fra trykk til katastrofe.
               </h2>
@@ -113,36 +117,42 @@ function Geofag2() {
               />
               <Fordypning
                 n="03"
+                to="/tema/jetstrommer"
+                title="Jetstrømmer"
+                text="To belter med sterk vestavind i øvre troposfære, ikke ett. Polarfrontjeten styrer de ekstratropiske lavtrykkene inn mot Norge."
+              />
+              <Fordypning
+                n="04"
                 to="/tema/coriolis"
                 title="Corioliseffekten"
                 text="Jordrotasjonen bøyer bevegelser. Uten den ville passatene og lavtrykkene sett helt annerledes ut."
               />
               <Fordypning
-                n="04"
+                n="05"
                 to="/tema/havstrommer"
                 title="Havstrømmer"
                 text="Vinden driver overflaten. Tetthet driver dypet. Sammen gir de Norge et kystklima som ikke matcher breddegraden."
               />
               <Fordypning
-                n="05"
+                n="06"
                 to="/tema/klima"
                 title="Klima"
                 text="Vær er dager. Klima er tiår. Pådriv dytter, tilbakekobling forsterker. ENSO, is og hav er samme system."
               />
               <Fordypning
-                n="06"
+                n="07"
                 to="/tema/numeriske-modeller"
                 title="Numeriske modeller"
                 text="En numerisk modell er fysikk regnet på et rutenett, til ulike formål på ulike tidsskalaer."
               />
               <Fordypning
-                n="07"
+                n="08"
                 to="/tema/paleoklima"
                 title="Paleoklima"
                 text="Termometer dekker et øyeblikk. Iskjerner og havbunn blir til kunnskap som modeller og risiko bruker."
               />
               <Fordypning
-                n="08"
+                n="09"
                 to="/tema/vaerkatastrofer"
                 title="Værkatastrofer"
                 text="Orkaner, polarfrontstormer, ekstremnedbør og stormflo. Samme fysikk. Høyere innsats når samfunn står i veien."

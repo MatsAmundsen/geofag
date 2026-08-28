@@ -28,7 +28,7 @@ function CoriolisPage() {
       banner="/images/banner-coriolis.jpg"
       bannerAlt="Jorda med spiralformede syklonskyer"
       videoTopic="Corioliseffekten"
-      prev={{ to: "/tema/vindsystemet", label: "Forrige: Vindsystemet" }}
+      prev={{ to: "/tema/jetstrommer", label: "Forrige: Jetstrømmer" }}
       next={{ to: "/tema/havstrommer", label: "Neste: Havstrømmer" }}
     >
       <p>

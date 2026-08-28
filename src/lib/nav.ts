@@ -18,6 +18,7 @@ export const NAV_GF1 = [
 export const NAV_GF2 = [
   { to: "/tema/hoytrykk-lavtrykk", label: "Trykk" },
   { to: "/tema/vindsystemet", label: "Vind" },
+  { to: "/tema/jetstrommer", label: "Jet" },
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
@@ -64,6 +65,16 @@ export const GF2_THEMES = [
     alt: "Skybånd og værsystemer over Nord-Atlanteren sett fra satellitt",
     blurb:
       "Hadley, Ferrel og polarcellen. Ørken der luft synker, regnskog der den stiger, vestavind over Norge.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/jetstrommer",
+    title: "Jetstrømmer",
+    kicker: "Atmosfæren",
+    image: "/images/fig-jet.jpg",
+    alt: "Smalt, langt skybelte høyt over havet, sett mot jordas krumning og verdensrommet",
+    blurb:
+      "Jetstrømmen er et smalt belte med sterk vestavind i øvre troposfære. Det er to slike belter, ikke ett. Polarfrontjeten, typisk 8–12 km, styrer lavtrykkene inn mot Norge.",
     status: "klar" as const,
   },
   {
@@ -202,4 +213,3 @@ export const GF1_THEMES = [
 export function gf1Theme(slug: string) {
   return GF1_THEMES.find((t) => t.slug === slug);
 }
-
