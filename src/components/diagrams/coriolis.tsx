@@ -267,6 +267,94 @@ export function CoriolisScaleDiagram() {
   );
 }
 
+export function ZonalMeridionalDiagram() {
+  return (
+    <div className="mx-auto w-full max-w-lg">
+      <Diagram
+        title="Zonal form: jetstrømmen går nesten rett vest–øst. Meridional form: den svinger i Rossby-bølger mot nord og sør, med rygg og tråg."
+        heading="To grunnformer"
+        caption="Zonal form: nesten rett vest–øst, parallelt med breddegradene. Meridional form, eller bølgeform: jetstrømmen svinger i store bølger mot nord og sør. Det er Rossby-bølger. En rygg peker mot polene. En tråg peker mot ekvator."
+        viewBox="0 0 440 560"
+      >
+        {(m) => (
+          <>
+            <L x="220" y="36" size={16} anchor="middle" weight={600}>
+              Zonal form
+            </L>
+            <line x1="48" y1="70" x2="392" y2="70" stroke={C.dim} />
+            <line x1="48" y1="132" x2="392" y2="132" stroke={C.dim} />
+            <line x1="48" y1="194" x2="392" y2="194" stroke={C.dim} />
+            <L x="36" y="74" fill={C.muted} size={12} anchor="end">
+              pol
+            </L>
+            <L x="36" y="198" fill={C.muted} size={12} anchor="end">
+              ekvator
+            </L>
+            <path
+              d="M 56 132 H 384"
+              fill="none"
+              stroke={C.teal}
+              strokeWidth="10"
+              opacity="0.28"
+            />
+            <Arrow d="M 64 132 L 368 132" marker={m.teal} color={C.teal} width={3.2} />
+            <circle cx="150" cy="132" r="14" fill="none" stroke={C.low} strokeWidth="2" />
+            <L x="150" y="137" fill={C.low} size={13} anchor="middle">
+              L
+            </L>
+            <circle cx="290" cy="132" r="14" fill="none" stroke={C.low} strokeWidth="2" />
+            <L x="290" y="137" fill={C.low} size={13} anchor="middle">
+              L
+            </L>
+            <L x="220" y="108" fill={C.teal} size={13} anchor="middle">
+              vest → øst
+            </L>
+            <L x="220" y="230" fill={C.muted} size={13} anchor="middle">
+              parallelt med breddegradene
+            </L>
+
+            <line x1="40" y1="258" x2="400" y2="258" stroke={C.dim} />
+
+            <L x="220" y="292" size={16} anchor="middle" weight={600}>
+              Meridional form
+            </L>
+            <L x="220" y="312" fill={C.muted} size={13} anchor="middle">
+              Rossby-bølger
+            </L>
+            <path
+              d="M 48 410 C 100 410, 118 328, 176 328 C 234 328, 252 410, 292 410 C 332 410, 350 492, 400 492"
+              fill="none"
+              stroke={C.teal}
+              strokeWidth="10"
+              opacity="0.28"
+            />
+            <Arrow
+              d="M 56 410 C 100 410, 118 328, 176 328 C 234 328, 252 410, 292 410 C 332 410, 350 492, 392 492"
+              marker={m.teal}
+              color={C.teal}
+              width={3.2}
+            />
+            <Arrow d="M 176 320 L 176 286" marker={m.warm} color={C.warm} width={2.2} />
+            <L x="186" y="282" fill={C.warm} size={13}>
+              rygg · mild luft
+            </L>
+            <L x="48" y="322" fill={C.muted} size={12}>
+              mot polene
+            </L>
+            <Arrow d="M 368 500 L 368 538" marker={m.cold} color={C.cold} width={2.2} />
+            <L x="48" y="538" fill={C.cold} size={13}>
+              tråg · kald luft
+            </L>
+            <L x="356" y="538" fill={C.muted} size={12} anchor="end">
+              mot ekvator
+            </L>
+          </>
+        )}
+      </Diagram>
+    </div>
+  );
+}
+
 export function TradeDeflectionDiagram() {
   return (
     <Diagram

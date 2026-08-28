@@ -16,6 +16,7 @@ export {
   PolewardParcelDiagram,
   RotationSpeedDiagram,
   TradeDeflectionDiagram,
+  ZonalMeridionalDiagram,
 } from "./coriolis";
 export {
   AmocDiagram,
