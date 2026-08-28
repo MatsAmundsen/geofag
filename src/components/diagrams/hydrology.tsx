@@ -141,7 +141,7 @@ export function MarineLimitDiagram() {
           <L x="454" y="262" fill={C.fg} size={13}>
             marin leire
           </L>
-          <L x="352" y="206" fill={C.low} size={13} weight={600}>
+          <L x="352" y="206" fill={C.fg} size={13} weight={600}>
             kvikkleire
           </L>
           <L x="708" y="252" fill={C.cold} size={14} anchor="end">
