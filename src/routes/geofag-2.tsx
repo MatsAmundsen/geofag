@@ -139,7 +139,7 @@ function Geofag2() {
                 n="07"
                 to="/tema/paleoklima"
                 title="Paleoklima"
-                text="Instrumentelle målinger dekker 150–170 år. Arkivene blir til kunnskap som modeller og risikovurdering bruker."
+                text="Termometer dekker et øyeblikk. Iskjerner og havbunn blir til kunnskap som modeller og risiko bruker."
               />
               <Fordypning
                 n="08"

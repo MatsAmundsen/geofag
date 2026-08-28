@@ -235,7 +235,7 @@ function KlimaPage() {
       </p>
       <OrdBoks
         ord="Paleoklima"
-        barn="Klimaet i fortiden, rekonstruert fra iskjern, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er."
+        barn="Klimaet i fortiden, rekonstruert fra iskjerner, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er."
       />
       <p>
         Hvordan arkivene blir til kunnskap — proxy, iskjerne, Milanković og terskler — står under{" "}

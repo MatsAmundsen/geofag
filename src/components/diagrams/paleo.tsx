@@ -20,7 +20,7 @@ export function PaleoDiagram() {
     <Diagram
       title="Tre orbitale sykluser — eksentrisitet, helning og presesjon — og en skjematisk iskjerne med årlige lag og luftbobler"
       heading="Orbitale sykluser og iskjerne"
-      caption="Fordeling av innstråling, ikke mengden. Luftboblene er ekte fortidsatmosfære."
+      caption="Tre perioder flytter innstrålingen, ikke mengden sol. Til høyre: iskjerne med årlige lag og luftbobler — ekte fortidsatmosfære."
       viewBox="0 0 920 420"
     >
       {(m) => (

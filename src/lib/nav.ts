@@ -113,7 +113,7 @@ export const GF2_THEMES = [
     image: "/images/fig-paleo.jpg",
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
-      "Instrumenter dekker et øyeblikk. Iskjerner og havbunn forteller istidene — og tester om modellene treffer.",
+      "Termometer dekker et øyeblikk. Iskjerner og havbunn forteller istidene — og tester om modellene treffer.",
     status: "klar" as const,
   },
   {
