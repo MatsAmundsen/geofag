@@ -57,7 +57,7 @@ function PaleoklimaPage() {
         δ¹⁸O er avviket i forholdet ¹⁸O/¹⁶O fra en standard. I is: lavere temperatur, lavere δ¹⁸O.
         Den tunge isotopen faller mer ut underveis mot polene. I marine karbonater blander δ¹⁸O
         vanntemperatur og globalt isvolum, fordi ¹⁶O låses i innlandsis under istid. Samme symbol,
-        ulik prosess. Si hvilket arkiv.
+        ulik prosess. Navngi arkivet.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Milanković</h2>
