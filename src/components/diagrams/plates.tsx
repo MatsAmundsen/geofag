@@ -81,18 +81,18 @@ export function SpreadingDiagram() {
           </L>
           <path d="M 40 168 H 330 L 410 128 L 490 168 H 780 V 248 H 40 Z" fill="#3a3428" />
           <path d="M 40 148 H 330 L 410 112 L 490 148 H 780 V 172 H 490 L 410 136 L 330 172 H 40 Z" fill={C.sand} />
-          <path d="M 40 70 H 780 V 148 H 40 Z" fill="#16303a" opacity="0.85" />
-          <path d="M 370 248 L 410 168 L 450 248 Z" fill={C.warm} opacity="0.9" />
-          <Arrow d="M 410 236 L 410 150" marker={m.warm} color={C.warm} width={3} />
+          <path d="M 40 70 H 780 V 148 H 490 L 410 112 L 330 148 H 40 Z" fill="#16303a" opacity="0.85" />
+          <path d="M 378 248 L 410 118 L 442 248 Z" fill={C.warm} opacity="0.92" />
+          <Arrow d="M 410 240 L 410 122" marker={m.warm} color={C.warm} width={3} />
           <Arrow d="M 300 158 L 160 158" marker={m.teal} color={C.teal} width={2.8} />
           <Arrow d="M 520 158 L 660 158" marker={m.teal} color={C.teal} width={2.8} />
-          <L x="410" y="88" fill={C.fg} size={15} anchor="middle" weight={600}>
+          <L x="455" y="200" fill={C.warm} size={15} weight={600}>
             magma
           </L>
-          <L x="150" y="138" fill={C.sand} size={14}>
+          <L x="150" y="142" fill={C.sand} size={14}>
             basaltisk havbunn
           </L>
-          <L x="670" y="138" fill={C.sand} size={14} anchor="end">
+          <L x="670" y="142" fill={C.sand} size={14} anchor="end">
             basaltisk havbunn
           </L>
           <L x="56" y="198" fill={C.muted} size={14}>
