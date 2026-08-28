@@ -25,10 +25,7 @@ function TrykkPage() {
         Luft har vekt. Trykket i et punkt er vekten av luftsøylen over. Derfor faller trykket med
         høyden.
       </p>
-      <OrdBoks
-        ord="Lufttrykk"
-        barn="Vekten av luftsøylen over. Faller med høyden."
-      />
+      <OrdBoks ord="Lufttrykk" barn="Vekten av luftsøylen over. Faller med høyden." />
       <p>
         Et lavtrykk er et område med lavere trykk enn omgivelsene. Et høytrykk er et område med
         høyere trykk enn omgivelsene. Tallene er alltid relative. Samme hPa-verdi kan være lavtrykk
@@ -74,16 +71,13 @@ function TrykkPage() {
         trykk. Den stiger.
       </p>
       <p>
-        Der luften stiger, blir det underskudd av luft nær bakken. Trykket faller. Det er et
-        termisk lavtrykk.
+        Der luften stiger, blir det underskudd av luft nær bakken. Trykket faller. Det er et termisk
+        lavtrykk.
       </p>
-      <OrdBoks
-        ord="Lavtrykk"
-        barn="Et område med lavere trykk enn omgivelsene."
-      />
+      <OrdBoks ord="Lavtrykk" barn="Et område med lavere trykk enn omgivelsene." />
       <p>
-        På vei opp avkjøles luften. Når den når kondensasjonsnivået, dannes skyer. Vanndamp blir
-        til vanndråper. Latent varme frigjøres. I tropene er denne kondensasjonen motoren i
+        På vei opp avkjøles luften. Når den når kondensasjonsnivået, dannes skyer. Vanndamp blir til
+        vanndråper. Latent varme frigjøres. I tropene er denne kondensasjonen motoren i
         Hadleycellen.
       </p>
       <p>
@@ -93,8 +87,7 @@ function TrykkPage() {
       <p>
         Over tropopausen ligger stratosfæren. Der øker temperaturen med høyden, fordi ozon
         absorberer ultrafiolett stråling. Luften er stabilt lagdelt. Den stigende luften har da
-        blitt kaldere enn luften over. Stigningen stopper. Vertikal blanding i stratosfæren er
-        treg.
+        blitt kaldere enn luften over. Stigningen stopper. Vertikal blanding i stratosfæren er treg.
       </p>
       <OrdBoks
         ord="Tropopause"
@@ -139,13 +132,10 @@ function TrykkPage() {
         Der luften synker, samles det et overskudd av luft nær bakken. Trykket stiger. Det er et
         høytrykk.
       </p>
-      <OrdBoks
-        ord="Høytrykk"
-        barn="Et område med høyere trykk enn omgivelsene."
-      />
+      <OrdBoks ord="Høytrykk" barn="Et område med høyere trykk enn omgivelsene." />
       <p>
-        På vei ned varmes luften tørradiabatisk, og relativ fukt faller. Skyer løses opp. Poenget
-        er nedsynkingen, ikke «godvær i seg selv». Sahara ligger under Hadleycellens nedsynking.
+        På vei ned varmes luften tørradiabatisk, og relativ fukt faller. Skyer løses opp. Poenget er
+        nedsynkingen, ikke «godvær i seg selv». Sahara ligger under Hadleycellens nedsynking.
         Vedvarende høytrykk over Sør-Norge om sommeren virker på samme måte: nedsynking, få skyer,
         mer innstråling ved bakken.
       </p>
@@ -179,8 +169,8 @@ function TrykkPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Vind som resultat</h2>
       <p>
-        Luft beveger seg fordi trykket ikke er det samme overalt. Trykkgradienten peker fra høyt
-        mot lavt trykk og setter luften i gang. Tette isobarer betyr sterk vind.
+        Luft beveger seg fordi trykket ikke er det samme overalt. Trykkgradienten peker fra høyt mot
+        lavt trykk og setter luften i gang. Tette isobarer betyr sterk vind.
       </p>
       <p>
         Nær bakken bremser friksjon. Da krysser vinden isobarene inn mot lavtrykk og ut fra
