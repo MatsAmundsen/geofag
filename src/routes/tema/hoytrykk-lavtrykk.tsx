@@ -246,10 +246,25 @@ function TrykkPage() {
         Vestlandet.
       </p>
 
-      <FigurePlaceholder
-        heading="Føn"
-        caption="Loside: orografisk nedbør. Leside: tørradiabatisk nedsynking. Vestavind mot Vestlandet, føn øst for Langfjella."
-        label="Plassholder for figur av føn med nedbør i lo og tørr nedsynking i le"
+      <PhotoFigure
+        src="/images/fig-fon.jpg"
+        alt="Vestavind mot Langfjella: regn og skyer i lo til venstre, sol og tørr dal i le til høyre"
+        heading="Føn: nedbør i lo, varm og tørr i le"
+        caption="Vestavind tvinger fuktig luft over Langfjella. På losiden stiger den, kondenserer og gir orografisk nedbør. Fuktigheten tapes. På lesiden synker luften og varmes tørradiabatisk. Resultatet er varm, tørr, kastevill føn i dalene øst for fjellet."
+        arrows={[
+          { d: "M 16 44 L 36 22", tone: "low", width: 1.3 },
+          { d: "M 58 18 L 78 38", tone: "warm", width: 1.35 },
+        ]}
+        marks={[
+          { x: 4, y: 12, n: "1", text: "Loside · opp og nedbør", tone: "low" },
+          { x: 38, y: 6, n: "2", text: "Fukt tapes", tone: "fg" },
+          { x: 62, y: 16, n: "3", text: "Leside · varm tørr føn", tone: "warm" },
+        ]}
+        points={[
+          { n: "1", label: "Loside: luft stiger, avkjøles, kondenserer. Vestlandet får orografisk nedbør." },
+          { n: "2", label: "Over fjellet er fuktigheten brukt opp. Skyene tynnes." },
+          { n: "3", label: "Leside: luft synker og varmes tørradiabatisk. Østerdalen og Gudbrandsdalen får føn." },
+        ]}
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Katabatisk vind</h2>
@@ -274,10 +289,25 @@ function TrykkPage() {
         Katabatisk bygger dem.
       </p>
 
-      <FigurePlaceholder
-        heading="Katabatisk vind"
-        caption="Kald luft renner ned is eller fjell. Norske platåbreer og dal."
-        label="Plassholder for figur av katabatisk vind ned is eller fjell"
+      <PhotoFigure
+        src="/images/fig-katabatisk.jpg"
+        alt="Platåbre med kald tåke som renner ned isen og samles som inversjon i dalbunnen"
+        heading="Katabatisk: kald luft renner av tyngdekraft"
+        caption="Luften avkjøles ved utstråling over snø og is. Den blir tett og renner ned. Den trenger ikke kondensasjon. På vei ned kan den varmes noen grader, men den starter så kald at den fortsatt er kald ved foten. Nedsynking senker relativ fukt — skyer løses opp, ikke dannes."
+        arrows={[
+          { d: "M 34 16 L 50 40", tone: "cold", width: 1.4 },
+          { d: "M 52 42 L 62 50", tone: "teal", width: 1.2 },
+        ]}
+        marks={[
+          { x: 6, y: 10, n: "1", text: "Avkjøling over is", tone: "cold" },
+          { x: 42, y: 20, n: "2", text: "Kald luft renner", tone: "teal" },
+          { x: 58, y: 48, n: "3", text: "Kald i dalbunnen", tone: "cold" },
+        ]}
+        points={[
+          { n: "1", label: "Utstråling over snø og is gjør luften kald og tett. Folgefonna og Svartisen." },
+          { n: "2", label: "Tyngdekraft: kald luft renner ned. Ingen orografisk nedbør trengs." },
+          { n: "3", label: "Luften er kald ved foten. Den samles i dalbunnen og kan bygge inversjon. Føn bryter inversjoner. Katabatisk bygger dem." },
+        ]}
       />
 
       <Callout title="Vanlige misforståelser">
