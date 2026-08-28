@@ -18,7 +18,7 @@ function NumeriskeModellerPage() {
       bannerAlt="Polar is og mørkt hav som står for jordsystemet modellene beskriver"
       videoTopic="numeriske modeller"
       prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
-      next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      next={{ to: "/tema/paleoklima", label: "Neste: Paleoklima" }}
     >
       <ModelGridDiagram />
 

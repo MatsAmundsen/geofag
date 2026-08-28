@@ -16,6 +16,7 @@ export const NAV_GF2 = [
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
+  { to: "/tema/paleoklima", label: "Paleo" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
 ] as const;
 
@@ -77,6 +78,16 @@ export const GF2_THEMES = [
     alt: "Polar is og hav som står for jordsystemet modellene beskriver",
     blurb:
       "En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/paleoklima",
+    title: "Paleoklima",
+    kicker: "Arkiv",
+    image: "/images/fig-paleo.jpg",
+    alt: "Lagdelt blå breis med bølgende bånd av gammel is",
+    blurb:
+      "Instrumentelle målinger dekker 150–170 år globalt. Mauna Loa har målt CO₂ siden 1958. Satellitt-havis siden 1979.",
     status: "klar" as const,
   },
   {
