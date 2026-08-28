@@ -102,7 +102,7 @@ export const GF1_THEMES = [
     alt: "Midthavsrygg og plategrense sett fra høyde",
     blurb:
       "Bevegelser i mantelen driver platene. Konsekvensene skriver seg i jordskorpa: spredning, kollisjon, forkastning.",
-    status: "utkast" as const,
+    status: "klar" as const,
     maal: "Bevegelser i jordas indre og konsekvenser for jordskorpe og overflate.",
   },
   {
