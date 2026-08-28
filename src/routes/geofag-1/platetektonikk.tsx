@@ -21,8 +21,7 @@ function PlatetektonikkPage() {
       bannerAlt={tema.alt}
       videoTopic="platetektonikk"
       prev={{
-        to: "/geofag-1/$slug",
-        params: { slug: "jordsystemene" },
+        to: "/geofag-1/jordsystemene",
         label: "Forrige: Jordsystemene",
       }}
       next={{
