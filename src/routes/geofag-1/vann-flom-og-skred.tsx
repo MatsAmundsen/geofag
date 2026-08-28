@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { HydrographDiagram, MarineLimitDiagram } from "@/components/diagrams/hydrology";
+import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { gf1Theme } from "@/lib/nav";
@@ -16,13 +17,12 @@ function VannFlomOgSkredPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Hydrologi er vannets kretsløp på landjorden. Tilførsel er nedbør. Lagre er snø, markvann, grunnvann, innsjø, myr og elveløp. Tap mot atmosfæren er evapotranspirasjon. Tap mot havet er avrenning. Havet er sluket. Du skal følge ferskvannssporet. Energi styrer fase: snø eller regn, smelting, fordamping. Tyngdekraft styrer strøm. Vegetasjon og jord styrer fordelingen mellom infiltrasjon og flomtopp. Geosfæren er røret og filteret. Snø er ofte den sterkeste tidsforsinkelsen i norske felt. Den lagrer vinterens nedbør og slipper den som vårflom."
+      lead="Hydrologi er vannets kretsløp på landjorden. Du skal følge ferskvannssporet: nedbør inn, snø og grunnvann som lager, elv ut. Energi styrer fase. Tyngdekraft styrer strøm. Snø lagrer vinterens nedbør og slipper den som vårflom."
       banner={tema.image}
       bannerAlt={tema.alt}
       videoTopic="vann-flom-og-skred"
       prev={{
-        to: "/geofag-1/$slug",
-        params: { slug: "bergarter-og-landformer" },
+        to: "/geofag-1/bergarter-og-landformer",
         label: "Forrige: Bergarter og landformer",
       }}
       next={{
@@ -32,15 +32,9 @@ function VannFlomOgSkredPage() {
       }}
     >
       <p>
-        Hydrologi er vannets kretsløp på landjorden. Tilførsel er nedbør. Lagre er snø, markvann,
-        grunnvann, innsjø, myr og elveløp. Tap mot atmosfæren er evapotranspirasjon. Tap mot havet
-        er avrenning. Havet er sluket. Du skal følge ferskvannssporet.
-      </p>
-      <p>
-        Energi styrer fase: snø eller regn, smelting, fordamping. Tyngdekraft styrer strøm.
-        Vegetasjon og jord styrer fordelingen mellom infiltrasjon og flomtopp. Geosfæren er røret og
-        filteret. Snø er ofte den sterkeste tidsforsinkelsen i norske felt. Den lagrer vinterens
-        nedbør og slipper den som vårflom.
+        Tilførsel er nedbør. Lagre er snø, markvann, grunnvann, innsjø, myr og elveløp. Tap mot
+        atmosfæren er evapotranspirasjon. Tap mot havet er avrenning. Vegetasjon og jord styrer
+        fordelingen mellom infiltrasjon og flomtopp. Geosfæren er røret og filteret.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hydrogram</h2>
@@ -83,7 +77,7 @@ function VannFlomOgSkredPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Gjerdrum 2020</h2>
       <p>
-        Gjerdrum 30. desember 2020, rett før kl. 04: 11 omkomne inkludert et ufødt barn, mer enn
+        Gjerdrum 30. desember 2020, rett før kl. 04: 10 omkomne, et ufødt barn, mer enn
         1600 evakuert, volum omtrent 1,35 mill. m³. Start i skråningen vest for Holmen mot
         Tistilbekken. Årsak: erosjon over år, forsterket av ødelagt bekkelukking, urbanisering og
         terrenginngrep. Utløser: den våte, milde høsten 2020, høyt poretrykk. Hovedårsaken er
@@ -130,6 +124,44 @@ function VannFlomOgSkredPage() {
         />
         <Term name="risiko" def="fare × eksponering × sårbarhet" />
       </TermGrid>
+
+      <Quiz
+        questions={[
+          {
+            prompt: "Hva viser et hydrogram?",
+            options: [
+              "Bare årsnedbør.",
+              "Vannføring mot tid. Formen er feltets respons.",
+              "Saltinnhold i leire.",
+              "Havnivå etter istiden.",
+            ],
+            answer: 1,
+            explain: "Bratt topp: lite magasin og intens regn. Bred topp: sjø og snøsmelting over uker.",
+          },
+          {
+            prompt: "Hvor kan kvikkleire ligge?",
+            options: [
+              "Overalt i Norge, også på Hardangervidda.",
+              "Bare under marin grense, og bare der saltet er vasket ut.",
+              "Bare i tegnede faresoner.",
+              "Bare i fjell.",
+            ],
+            answer: 1,
+            explain: "Kartene friskmelder ikke omlandet. Aktsomhet gjelder under hele marin grense.",
+          },
+          {
+            prompt: "Hva er forskjellen på fare og risiko i Gjerdrum?",
+            options: [
+              "De er samme ting.",
+              "Fare er kvikkleire og erosjon. Risiko ble katastrofal fordi boliger lå i utløpet.",
+              "Risiko er bare været.",
+              "Fare er bare klimaskred.",
+            ],
+            answer: 1,
+            explain: "Risiko er fare × eksponering × sårbarhet. Våt høst var utløser, ikke eneste årsak.",
+          },
+        ]}
+      />
     </TopicLayout>
   );
 }

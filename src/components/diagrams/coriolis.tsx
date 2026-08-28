@@ -386,3 +386,55 @@ export function TradeDeflectionDiagram() {
     </Diagram>
   );
 }
+
+export function NaoDiagram() {
+  return (
+    <Diagram
+      title="NAO er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket."
+      heading="NAO: Azorene mot Island"
+      caption="Positiv NAO: stor forskjell, jet og stormbane lenger nord. Negativ NAO: liten forskjell, mer blocking og kaldere Skandinavia."
+      viewBox="0 0 820 320"
+    >
+      {(m) => (
+        <>
+          <circle cx="230" cy="230" r="34" fill="none" stroke={C.teal} strokeWidth="2.4" />
+          <L x={230} y={236} fill={C.teal} size={18} anchor="middle">
+            H
+          </L>
+          <L x={230} y={278} fill={C.muted} size={13} anchor="middle">
+            Azorene
+          </L>
+          <circle cx="430" cy="88" r="34" fill="none" stroke={C.low} strokeWidth="2.4" />
+          <L x={430} y={94} fill={C.low} size={18} anchor="middle">
+            L
+          </L>
+          <L x={430} y={48} fill={C.muted} size={13} anchor="middle">
+            Island
+          </L>
+          <Arrow d="M 270 210 L 560 150" marker={m.teal} color={C.teal} width={3} />
+          <L x={400} y={198} fill={C.teal} size={14}>
+            vestavind mot Norge
+          </L>
+          <L x={620} y={80} fill={C.fg} size={15} weight={600}>
+            + NAO
+          </L>
+          <L x={620} y={104} fill={C.muted} size={13}>
+            stor gradient
+          </L>
+          <L x={620} y={128} fill={C.muted} size={13}>
+            jet lenger nord
+          </L>
+          <L x={620} y={200} fill={C.fg} size={15} weight={600}>
+            − NAO
+          </L>
+          <L x={620} y={224} fill={C.muted} size={13}>
+            liten gradient
+          </L>
+          <L x={620} y={248} fill={C.muted} size={13}>
+            mer blocking
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}

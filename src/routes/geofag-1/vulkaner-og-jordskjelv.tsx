@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { BoundaryQuakesDiagram } from "@/components/diagrams/quakes";
+import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { gf1Theme } from "@/lib/nav";
@@ -81,11 +82,13 @@ function VulkanerOgJordskjelvPage() {
       <p>
         Norsk fastland har ingen aktive vulkaner. Oslofeltets magmatisme er perm, ikke en
         varslingsrelevant vulkan. Jan Mayen og Island ligger på Den midtatlantiske ryggen.
-        Beerenberg er Norges eneste aktive vulkan over havet, 2272 m. Siste utbrudd i 1985. Island
+        Beerenberg er Norges eneste aktive vulkan over havet, 2277 m. Siste utbrudd i 1985. Island
         og Azorene ligger nær ryggen og har hotspot-preg.
       </p>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Åknes og varsling</h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Naturfarer i geosfæren: Åknes
+      </h2>
       <p>
         Åknes ligger på vestsiden av Sunnylvsfjorden i Stranda. Fjellet har vært kjent som ustabilt
         siden 1960-tallet. NVE definerer fire scenarioer: D ca. 2,4 mill. m³ (årlig sannsynlighet
@@ -151,6 +154,44 @@ function VulkanerOgJordskjelvPage() {
           def="i Norge nesten alltid fra skred i fjord, innsjø eller skråning, ikke fra subduksjon"
         />
       </TermGrid>
+
+      <Quiz
+        questions={[
+          {
+            prompt: "Hvorfor er Norges jordskjelv annerledes enn Japans?",
+            options: [
+              "Norge har ingen jordskjelv.",
+              "Norge er intraplate: gamle soner inne på platen. Japan sitter på subduksjon.",
+              "Norge ligger på Den midtatlantiske ryggen gjennom Oslo.",
+              "Japanske skjelv er alltid grunne, norske alltid dype.",
+            ],
+            answer: 1,
+            explain: "Norge er blant de mest skjelvaktive i Nord-Europa, men skred og flom dreper flere.",
+          },
+          {
+            prompt: "Hva er hotspot, kort?",
+            options: [
+              "En plategrense som alltid ligger fast.",
+              "En langvarig magmakilde under platen. Platen glir over og kan lage øykjede.",
+              "Et jordskjelv i Oslofeltet.",
+              "En tsunami fra Storegga.",
+            ],
+            answer: 1,
+            explain: "Hawaii er typeeksempelet. De fleste vulkaner sitter likevel på plategrenser.",
+          },
+          {
+            prompt: "Hvor kommer norske tsunamier vanligvis fra?",
+            options: [
+              "Subduksjon utenfor Møre.",
+              "Skred i fjord, innsjø eller kontinentalskråning — ikke plategrense som røk.",
+              "Orkaner i Nordsjøen.",
+              "Månen.",
+            ],
+            answer: 1,
+            explain: "Storegga er skråningssvikt i sediment. Tafjord og Åknes er fjordskred.",
+          },
+        ]}
+      />
     </TopicLayout>
   );
 }

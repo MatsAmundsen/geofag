@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "@/components/diagrams/plates";
+import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { gf1Theme } from "@/lib/nav";
@@ -34,9 +35,10 @@ function PlatetektonikkPage() {
 
       <p>
         Platene beveger seg fordi mantelen har langsomme strømmer. De kalles konveksjon og drives av
-        varme fra jordas indre. Farten er noen centimeter i året, langsommere enn neglene vokser. Den
-        midtatlantiske ryggen sprer i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15
-        cm per år. GPS viser at dagens retning og fart stemmer med mønsteret over millioner av år.
+        varme fra jordas indre. Den viktigste trekkraften ved konvergens er likevel at kald, tett
+        havbunn synker: slab pull. Farten er noen centimeter i året. Den midtatlantiske ryggen
+        sprer i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15 cm per år. GPS viser
+        at dagens retning og fart stemmer med mønsteret over millioner av år.
       </p>
       <OrdBoks ord="konveksjon" barn="langsomme mantelstrømmer drevet av indre varme" />
 
@@ -98,7 +100,8 @@ function PlatetektonikkPage() {
       </p>
       <p>
         Jan Mayen ligger på ryggsystemet i Norskehavet. Ny havbunn, jordskjelv langs ryggen,
-        vulkaner. Beerenberg er Norges eneste aktive vulkan over havet, 2272 meter. Siste utbrudd i
+        vulkaner. Beerenberg er Norges eneste aktive vulkan over havet, 2277 meter. Siste utbrudd i
+        1985.
         1985.
       </p>
       <p>
@@ -117,6 +120,44 @@ function PlatetektonikkPage() {
         <Term name="konveksjon" def="langsomme mantelstrømmer drevet av indre varme" />
         <Term name="subduksjon" def="tettere havbunn synker under en annen plate" />
       </TermGrid>
+
+      <Quiz
+        questions={[
+          {
+            prompt: "Hva er litosfæren?",
+            options: [
+              "Bare jordskorpa.",
+              "Skorpe pluss den øvre, stive delen av mantelen — det platene er laget av.",
+              "Den flytende ytre kjernen.",
+              "Bare havbunn.",
+            ],
+            answer: 1,
+            explain: "Platene glir på astenosfæren, en mykere sone under.",
+          },
+          {
+            prompt: "Hvorfor må det være subduksjon hvis det lages ny havbunn ved ryggene?",
+            options: [
+              "Fordi jorda vokser.",
+              "Fordi jorda ikke har endret størrelse vesentlig. Ny skorpe krever at skorpe ødelegges.",
+              "Fordi magma bare finnes ved ryggene.",
+              "Fordi kontinentene synker.",
+            ],
+            answer: 1,
+            explain: "Havbunn er tettere og synker. Kontinent mot kontinent gir fjell, ikke subduksjon.",
+          },
+          {
+            prompt: "Hvor ligger Norge i platetektonikken i dag?",
+            options: [
+              "På en aktiv subduksjonssone.",
+              "Inne på den eurasiske platen. Grensen er midthavsryggen vest for oss.",
+              "På Den midtatlantiske ryggen, som Oslo.",
+              "På Stillehavsplaten.",
+            ],
+            answer: 1,
+            explain: "Jan Mayen ligger på ryggsystemet. Fastlands-Norge er intraplate.",
+          },
+        ]}
+      />
     </TopicLayout>
   );
 }

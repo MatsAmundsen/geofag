@@ -14,7 +14,7 @@ function HavstrommerPage() {
     <TopicLayout
       kicker="Havet"
       title="Havstrømmer"
-      lead="Havet lagrer langt mer varme enn lufta og flytter den langsomt. Overflaten skyves av vind og bøyes av jordrotasjon. Dypet styres av hvor tungt vannet er. Sammen gjør de Norges kyst milt på en breddegrad som ellers er iskald."
+      lead="Havet lagrer langt mer varme enn lufta og flytter den langsomt. Overflaten skyves av vind og bøyes av jordrotasjon. Dypet styres av hvor tungt vannet er. Sammen gjør de Norges kyst mildt på en breddegrad som ellers er iskald."
       banner="/images/banner-hav.jpg"
       bannerAlt="Havoverflate i Nord-Atlanteren"
       videoTopic="havstrømmer"
@@ -76,7 +76,9 @@ function HavstrommerPage() {
       <p>
         I hvert store havbasseng danner vinden et kretsløp — en gyre. I nord går den med klokken.
         Den vestlige kanten er smal og rask (Golfstrømmen). Den østlige er bred og treig
-        (Kanaristrømmen). Midten, Sargassohavet, står litt høyere enn kanten.
+        (Kanaristrømmen). Midten, Sargassohavet, står litt høyere enn kanten. Vestkanten er sterk
+        fordi coriolis øker mot polene: vann som beveger seg nordover, dreies mer, og strømmen
+        presses mot kontinentet.
       </p>
       <OrdBoks
         ord="Gyre"
@@ -142,7 +144,7 @@ function HavstrommerPage() {
         heading="Samme breddegrad, to verdener"
         caption="Norskekysten og Labrador ligger omtrent like langt nord. Solhøyden er den samme. Utfallet er det ikke."
         marks={[
-          { x: 6, y: 12, n: "1", text: "Norge · milt og åpent", tone: "teal" },
+          { x: 6, y: 12, n: "1", text: "Norge · mildt og åpent", tone: "teal" },
           { x: 54, y: 12, n: "2", text: "Labrador · is og kulde", tone: "cold" },
         ]}
         points={[
@@ -224,7 +226,7 @@ function HavstrommerPage() {
 
       <Callout title="Vanlige misforståelser">
         <p>
-          Norge er ikke milt «bare på grunn av Golfstrømmen». Vestavind, havets varmelager og
+          Norge er ikke mildt «bare på grunn av Golfstrømmen». Vestavind, havets varmelager og
           fjellene spiller inn. Og vannet går ikke samme vei som vinden — det dreies.
         </p>
       </Callout>

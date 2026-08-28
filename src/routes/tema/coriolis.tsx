@@ -1,11 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import {
   CoriolisDiagram,
+  CoriolisScaleDiagram,
   CycloneSpinDiagram,
+  NaoDiagram,
+  PolewardParcelDiagram,
+  RotationSpeedDiagram,
+  TradeDeflectionDiagram,
   ZonalMeridionalDiagram,
 } from "@/components/diagrams/coriolis";
-import { EkmanDiagram } from "@/components/diagrams/ocean";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -43,6 +47,9 @@ function CoriolisPage() {
         barn="Det som skjer når luft eller vann allerede er i bevegelse på en roterende jord. Mot høyre på nordlig halvkule, mot venstre på sørlig. Ved ekvator er avbøyningen null."
       />
 
+      <RotationSpeedDiagram />
+      <PolewardParcelDiagram />
+
       <p>
         Tre ledd må sitte samtidig for at værsystemene skal få den formen vi ser på kartet.
       </p>
@@ -50,20 +57,20 @@ function CoriolisPage() {
         Først trykkgradienten. Luft går fra høyt mot lavt trykk. Jo tettere isobarene ligger, desto
         sterkere er denne driften.
       </p>
-      <p>
-        Så coriolis. Så fort luften får fart, dreies den. På nordlig halvkule: mot høyre.
-      </p>
+      <p>Så coriolis. Så fort luften får fart, dreies den. På nordlig halvkule: mot høyre.</p>
       <p>
         Når trykkgradient og coriolis veier hverandre opp, går vinden ikke lenger inn mot
-        lavtrykket. Den går langs isobarene, med lavtrykk til venstre. Det kalles geostrofisk vind.
-        Det er den vanlige balansen høyt oppe og til havs, borte fra bakken.
+        lavtrykket. Den går langs isobarene, med lavtrykk til venstre på nordlig halvkule. Det
+        kalles geostrofisk vind. Det er den vanlige balansen høyt oppe og til havs, borte fra
+        bakken. På sørlig halvkule er alt speilvendt: lavtrykk til høyre.
       </p>
       <OrdBoks
         ord="Geostrofisk vind"
-        barn="Når trykkgradient og coriolis veier hverandre opp. Vinden går langs isobarene, med lavtrykk til venstre. Vanlig balanse høyt oppe og til havs, borte fra bakken."
+        barn="Når trykkgradient og coriolis veier hverandre opp. På nordlig halvkule: vinden går langs isobarene, med lavtrykk til venstre. Vanlig balanse høyt oppe og til havs."
       />
 
       <CoriolisDiagram />
+      <TradeDeflectionDiagram />
 
       <p>
         Nær bakken kommer det tredje leddet: friksjon. Overflaten bremser luften. Lavere fart gir
@@ -78,6 +85,7 @@ function CoriolisPage() {
       </p>
 
       <CycloneSpinDiagram />
+      <CoriolisScaleDiagram />
 
       <PhotoFigure
         src="/images/fig-syklon.jpg"
@@ -100,215 +108,126 @@ function CoriolisPage() {
       />
 
       <p>
-        Samme logikk styrer havet. Vindstresset på overflaten gir et Ekman-lag. Nettotransporten går
-        90 grader til høyre for vinden på nordlig halvkule. Det er derfor kystvind kan gi
-        oppwelling. Det er også derfor El Niño henger sammen med svekket passat og svekket
-        oppwelling utenfor Peru.
+        Samme logikk styrer havet. Vind på overflaten gir et Ekman-lag: nettotransporten går 90
+        grader til høyre for vinden på nordlig halvkule. Det er derfor kystvind kan gi oppwelling.
+        Mer om det under{" "}
+        <Link to="/tema/havstrommer" className="text-primary underline-offset-2 hover:underline">
+          havstrømmer
+        </Link>
+        .
       </p>
       <OrdBoks
         ord="Ekman-lag"
         barn="Vindstresset på overflaten. Nettotransporten går 90 grader til høyre for vinden på nordlig halvkule. Derfor kan kystvind gi oppwelling."
       />
 
-      <EkmanDiagram />
-
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Form, og hva som skjer når formen endres
+        Jetstrømmen svinger
       </h2>
       <p>
         Coriolis er ikke like sterk overalt. Ved ekvator er den null. Ved polene er den sterkest. En
         luftpakke som flytter seg mot polene, merker derfor en sterkere dreining. En som flytter
-        seg mot ekvator, merker en svakere. Det er nøkkelen til jetstrømmens form.
+        seg mot ekvator, merker en svakere.
       </p>
       <p>
-        Jetstrømmen er et smalt belte med sterk vestavind i øvre troposfære, særlig langs
-        polarfronten. Den oppstår fordi tropene er varme og polene kalde. Varm luft gir tykkere
-        luftlag mellom to trykkflater. I høyden blir trykket derfor høyere over tropene enn over
-        polene. Trykkgradienten peker polover. Coriolis dreier den vestavinds. Polarfrontjeten
-        ligger der den horisontale temperaturkontrasten er sterkest.
+        Polarfrontjeten er et smalt belte med sterk vestavind i øvre troposfære, langs polarfronten.
+        Den subtropiske jetstrømmen ligger nærmere 30° og henger sammen med Hadley-cellens
+        nedsynking. Polarfrontjeten er den som styrer lavtrykkene mot Norge.
       </p>
       <OrdBoks
         ord="Jetstrøm"
-        barn="Et smalt belte med sterk vestavind i øvre troposfære, særlig langs polarfronten. Polarfrontjeten ligger der den horisontale temperaturkontrasten er sterkest."
+        barn="Et smalt belte med sterk vestavind høyt oppe. Polarfrontjeten ligger der temperaturkontrasten er sterkest. Den subtropiske jetstrømmen ligger nærmere 30°."
       />
 
-      <p>Jetstrømmen har to grunnformer.</p>
       <p>
-        Zonal form: den går nesten rett vest–øst, parallelt med breddegradene. Lavtrykkene på
-        polarfronten vandrer raskt østover. Været skifter ofte. Vestavindsbeltet er sterkt.
-      </p>
-      <p>
-        Meridional form, eller bølgeform: jetstrømmen svinger i store bølger mot nord og sør. Det
-        er Rossby-bølger. De oppstår fordi coriolis endrer seg med breddegraden. Når en luftkolonne
-        trekkes ut (strekkes) eller presses sammen, endres også rotasjonen i kolonnen. Luften husker
-        hvor den kom fra. Resultatet er at jetstrømmen meandrerer.
+        Coriolis er sterkere mot polene. Luft som går nordover, dreies mer og mer mot øst. Luft som
+        går sørover, dreies mindre. En vestavinds-jet går derfor ikke rett: den svinger i store
+        bølger — Rossby-bølger. En bølge som peker mot polen kalles rygg og fører mild luft
+        nordover. En bølge som peker mot ekvator kalles tråg og fører kald luft sørover.
       </p>
       <OrdBoks
         ord="Rossby-bølger"
-        barn="Meridional form, eller bølgeform. De oppstår fordi coriolis endrer seg med breddegraden. Resultatet er at jetstrømmen meandrerer."
+        barn="Store svinger i jetstrømmen nord–sør. De oppstår fordi coriolis endrer seg med breddegraden. Rygg: mild luft nordover. Tråg: kald luft sørover."
       />
 
       <ZonalMeridionalDiagram />
 
       <p>
-        Når formen går fra zonal til meridional, skjer tre ting som betyr noe for vær og klima.
-      </p>
-      <p>
-        For det første flyttes varm og kald luft langt i nord–sør-retning. En bølgetopp (rygg) peker
-        mot polene og fører mild luft nordover. En bølgedal (tråg) peker mot ekvator og fører kald
-        luft sørover. Kuldebølger i Europa og hetebølger lenger sør kan altså sitte i samme bølge.
-      </p>
-      <p>
-        For det andre kan en rygg bli stående. Det kalles blocking. Vestavindsbeltet stanser.
-        Høytrykket over Skandinavia kan ligge i dagevis. Om vinteren: kald inversjon i dalene. Om
-        sommeren: tørt og varmt. Lavtrykkene styres da sør eller nord for oss, ikke tvers over.
+        Når formen går fra zonal (nesten rett vest–øst) til meridional (store bølger), flyttes varm
+        og kald luft langt i nord–sør-retning. En rygg kan bli stående. Det kalles blocking.
+        Vestavindsbeltet stanser. Høytrykket over Skandinavia kan ligge i dagevis. Om vinteren: kald
+        inversjon i dalene. Om sommeren: tørt og varmt. Stormbanen går da sør eller nord for oss,
+        ikke tvers over.
       </p>
       <OrdBoks
         ord="Blocking"
-        barn="En rygg som blir stående. Vestavindsbeltet stanser. Høytrykket over Skandinavia kan ligge i dagevis. Lavtrykkene styres da sør eller nord for oss, ikke tvers over."
+        barn="En rygg som blir stående. Vestavindsbeltet stanser. Lavtrykkene styres sør eller nord for oss, ikke tvers over."
       />
-      <p>
-        For det tredje flyttes stormbanen. Der jetstrømmen ligger, styrkes de ekstratropiske
-        lavtrykkene. Når jetstrømmen ligger nord for Norge, treffer de fleste lavtrykkene Nord-Norge
-        og Barentshavet. Når den ligger sør, treffer de De britiske øyer, Nordsjøen og Sør-Norge
-        hardere, eller de går inn i Middelhavet.
-      </p>
-      <p>
-        Hvorfor endres formen? Temperaturkontrasten mellom tropene og polene setter styrken.
-        Polarfrontens beliggenhet setter den gjennomsnittlige breddegraden. Fjell, land–hav-kontrast
-        og tropisk konveksjon setter bølgene. De store svingningene ENSO, NAO og IOD endrer nettopp
-        konveksjon, trykkfelt og temperaturkontrast. Da flyttes jetstrømmen.
-      </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        ENSO, NAO og IOD: hvordan de flytter jetstrømmene
+        NAO flytter Norges jet
       </h2>
       <p>
-        Polarfrontjeten og den subtropiske jetstrømmen er to ulike belter. Polarfrontjeten ligger på
-        midlere til høye breddegrader og styrer lavtrykkene mot Norge. Den subtropiske jetstrømmen
-        ligger nærmere 30 grader og henger sammen med Hadleycellens nedsynking. Begge kan flyttes.
-        Effekten merkes der stormbanen, tørke og hete faktisk treffer bakken.
-      </p>
-      <p>
-        ENSO er en kobling mellom hav og atmosfære i det tropiske Stillehavet. Den svinger på to til
-        sju år.
-      </p>
-      <OrdBoks
-        ord="ENSO"
-        barn="En kobling mellom hav og atmosfære i det tropiske Stillehavet. Den svinger på to til sju år."
-      />
-
-      <PhotoFigure
-        src="/images/fig-enso.jpg"
-        alt="Ekvatorialt Stillehav fra bane med varmt vann og konvektive skyer"
-        heading="Scenen for ENSO"
-        caption="ENSO er en kobling mellom hav og atmosfære i det tropiske Stillehavet. Passatene stabler varmt vann i vest. Svekkes de, sprer det varme vannet seg østover, og oppwelling utenfor Peru avtar."
-        arrows={[{ d: "M 78 32 L 28 28", tone: "teal", width: 1.3 }]}
-        marks={[
-          { x: 58, y: 12, n: "1", text: "Passater mot vest", tone: "teal" },
-          { x: 8, y: 48, n: "2", text: "Varmt vann og konveksjon", tone: "warm" },
-        ]}
-        points={[
-          { n: "1", label: "I La Niña er passatene sterke. Varmt overflatevann stables i vest." },
-          { n: "2", label: "Der luften stiger, mates jetstrømmene. Flyttes oppstigningen, flyttes jetstrømmen." },
-        ]}
-      />
-
-      <p>
-        I en La Niña-fase er passatene sterke. Varmt overflatevann stables i vest. Kaldt vann veller
-        opp utenfor Peru. Walkersirkulasjonen er tydelig: oppstigning og byger over Indonesia og
-        vestlige Stillehav, nedsynking over det østlige. Den subtropiske jetstrømmen over Stillehavet
-        ligger da gjerne lenger vest og mer samlet. Polarfrontjeten over Nord-Amerika trekkes ofte
-        nordover.
-      </p>
-      <p>
-        Effekten: våtere i Indonesia og Australia. Tørrere langs kysten av Ecuador og Peru. I
-        Nord-Amerika oftere et nordligere stormspor. I Atlanteren kan La Niña lette tropiske
-        sykloner. Telekoblingen til norsk vinter er svakere og mer usikker enn NAO.
-      </p>
-      <p>
-        I en El Niño-fase svekkes passatene. Det varme vannet sprer seg østover. Oppwelling utenfor
-        Peru avtar. Konveksjonen flytter mot sentrale og østlige Stillehav. Walkersirkulasjonen
-        forskyves. Den subtropiske jetstrømmen over det nordlige Stillehavet forsterkes og strekker
-        seg østover mot sørvestlige USA. Polarfrontjeten over Nord-Amerika deles eller trekkes
-        sørover i vest.
-      </p>
-      <p>
-        Effekten: tørke og brannvær i Indonesia og østlige Australia. Mer nedbør langs kysten av
-        Ecuador, Peru og deler av sørvestlige USA. Et sørligere stormspor over USA. Europa merker El
-        Niño mer indirekte, via endret bølgeaktivitet over Atlanteren. Det er ikke en fast El
-        Niño-vinter i Norge.
-      </p>
-      <p>
-        Havtemperaturen endrer hvor tropisk luft stiger. Der luften stiger, mates jetstrømmene. Der
-        den synker, svekkes de. Flyttes oppstigningen, flyttes jetstrømmen.
-      </p>
-
-      <p>
-        NAO er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Den er den viktigste
+        NAO er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Det er den viktigste
         svingningen for jetstrømmen inn mot Norge.
       </p>
       <OrdBoks
         ord="NAO"
-        barn="Trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Den viktigste svingningen for jetstrømmen inn mot Norge."
+        barn="Trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Start her for norsk jet og kystvær."
       />
+
+      <PhotoFigure
+        src="/images/fig-nao.jpg"
+        alt="Nord-Atlanteren fra bane: klar luft i sørvest, syklon spiralskyer lenger nord, skystrøk mot Norge"
+        heading="Scenen for NAO"
+        caption="Sørvest: mer høytrykk og klarere luft (Azorene). Nord: mer lavtrykk og spiraler (Island). Skystrøkene imellom er vestavinden inn mot Norge."
+        arrows={[{ d: "M 28 62 L 72 38", tone: "teal", width: 1.3 }]}
+        marks={[
+          { x: 6, y: 58, n: "H", text: "Azorhøytrykk", tone: "warm" },
+          { x: 48, y: 12, n: "L", text: "Islandslavtrykk", tone: "low" },
+        ]}
+        points={[
+          { n: "H", label: "Høytrykk i sør: luft synker, ofte klarere." },
+          { n: "L", label: "Lavtrykk i nord: luft stiger, stormbane." },
+        ]}
+      />
+
+      <NaoDiagram />
+
       <p>
         Ved positiv NAO er gradienten stor. Vestavindsbeltet og polarfrontjeten ligger lenger nord
         og er sterkere. Stormbanen går mot Island, Norskehavet og Nord-Norge. Sør- og Midt-Norge får
-        milde, våte vintrer med mye vestavind. Middelhavet blir tørrere. Grønland og Labrador blir
-        kaldere. Jetstrømmen har mer zonal form.
+        milde, våte vintrer. Formen er mer zonal.
       </p>
       <p>
         Ved negativ NAO er gradienten liten. Jetstrømmen svekkes, ligger lenger sør, eller brytes i
-        blocking. Lavtrykkene tar sørligere baner mot De britiske øyer, Biscaya og Middelhavet.
-        Skandinavia får oftere kald, tørr eller mer kontinental vinter, med inversjon i dalene.
-        Sør-Europa får mer nedbør og storm. Formen er mer meridional.
-      </p>
-      <p>
-        NAO svinger fra uke til uke og vinter til vinter. Den er ikke et enkelt lavtrykk, men en
-        modus i hele Nord-Atlanteren. For norsk kystvær, breenes vinterbalanse og hvor ekstremværet
-        treffer, er NAO den svingningen du skal starte med.
+        blocking. Skandinavia får oftere kald, mer kontinental vinter. Formen er mer meridional.
       </p>
 
       <p>
-        IOD, den indiske dipolen, er en øst–vest-svingning i havtemperaturen i det tropiske
-        Indiahavet.
+        ENSO — El Niño og La Niña i tropisk Stillehav — flytter hvor tropisk luft stiger, og dermed
+        jetstrømmene over Stillehavet og Amerika. Koblingen til norsk vinter er svakere og mer
+        usikker enn NAO. Mekanismen (passater, varmt vann, konveksjon) står under{" "}
+        <Link to="/tema/klima" className="text-primary underline-offset-2 hover:underline">
+          klima
+        </Link>
+        .
+      </p>
+      <p>
+        IOD, den indiske dipolen, er en øst–vest-svingning i tropisk Indiahav. Den betyr mest for
+        Øst-Afrika, Indonesia og Australia. Koblingen til polarfrontjeten over Norge er indirekte.
       </p>
       <OrdBoks
         ord="IOD"
-        barn="Den indiske dipolen: en øst–vest-svingning i havtemperaturen i det tropiske Indiahavet. Koblingen til polarfrontjeten over Atlanteren og Norge er indirekte."
+        barn="Øst–vest-svingning i tropisk Indiahav. Koblingen til polarfrontjeten over Norge er indirekte."
       />
-      <p>
-        Ved positiv IOD er vestlige Indiahavet unormalt varmt og østlige unormalt kaldt.
-        Konveksjonen ligger over Øst-Afrika og det vestlige bassenget. Østlige Indiahavet og
-        Indonesia synker. Den subtropiske jetstrømmen over Indiahavet og Australia forskyves.
-        Effekten er tydeligst der: mer regn og flom i Øst-Afrika, tørke og brannvær i Indonesia og
-        sørvestlige Australia. Monsunen over India kan forsterkes.
-      </p>
-      <p>
-        Ved negativ IOD snur mønsteret. Øst blir varmere. Mer regn mot Indonesia og Australia.
-        Tørrere Øst-Afrika.
-      </p>
-      <p>
-        IOD flytter altså først jet og konveksjon over Indiahavet, Afrika og Australia. Koblingen til
-        polarfrontjeten over Atlanteren og Norge er indirekte. Den går ofte via ENSO, fordi IOD og
-        ENSO kan opptre sammen, og via den subtropiske jetstrømmen som binder Hadleycellene sammen.
-        IOD er viktig for Indiahavet og Australia. Effekten på norsk jetstrøm er ikke like direkte
-        som NAO.
-      </p>
-      <p>
-        Det som er felles for alle tre: de endrer hvor luft stiger og synker i tropene eller på
-        midlere breddegrader. Coriolis gjør den bevegelsen om til vestavind og jet. Når
-        oppstigningen flyttes, flyttes jetstrømmen. Når jetstrømmen flyttes, flyttes stormbanen,
-        tørken og kulden. Hvor det skjer, følger bølgen. Nord for jetstrømmen oftere kaldt og tørt
-        eller blocking. Sør for den oftere mild luft. Rett under den de sterkeste lavtrykkene.
-      </p>
 
       <Callout title="Vanlige misforståelser">
         <p>
           Corioliseffekten er ikke en kraft som starter vinden. Den virker bare når noe beveger
-          seg. Stille luft dreies ikke. Nær bakken vinner trykkgradienten litt, og vinden krysser
-          isobarene inn mot lavtrykk — derfor strømmer det inn mot L, ikke bare rundt.
+          seg. Vasken og toalettet lyver: der avgjør kummens form. Nær bakken vinner
+          trykkgradienten litt, og vinden krysser isobarene inn mot lavtrykk — derfor strømmer det
+          inn mot L, ikke bare rundt.
         </p>
       </Callout>
 
@@ -320,31 +239,23 @@ function CoriolisPage() {
         />
         <Term
           name="Geostrofisk vind"
-          def="Når trykkgradient og coriolis veier hverandre opp. Vind langs isobarene, lavtrykk til venstre."
+          def="Når trykkgradient og coriolis veier hverandre opp. På nordlig halvkule: vind langs isobarene, lavtrykk til venstre."
         />
         <Term
           name="Rossby-bølger"
-          def="Meridional form, eller bølgeform. De oppstår fordi coriolis endrer seg med breddegraden."
+          def="Store svinger i jetstrømmen. Rygg: mild luft nordover. Tråg: kald luft sørover."
         />
         <Term
           name="Blocking"
           def="En rygg som blir stående. Vestavindsbeltet stanser. Lavtrykkene går sør eller nord for oss."
         />
         <Term
-          name="ENSO"
-          def="Kobling mellom hav og atmosfære i det tropiske Stillehavet. Svinger på to til sju år."
-        />
-        <Term
           name="NAO"
           def="Trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Start her for norsk jet og kystvær."
         />
         <Term
-          name="IOD"
-          def="Øst–vest-svingning i tropisk Indiahav. Koblingen til polarfrontjeten over Norge er indirekte."
-        />
-        <Term
           name="Ekman-lag"
-          def="Nettotransport 90 grader til høyre for vinden på nordlig halvkule. Kystvind kan gi oppwelling."
+          def="Nettotransport 90 grader til høyre for vinden på nordlig halvkule."
         />
       </TermGrid>
 
@@ -360,7 +271,7 @@ function CoriolisPage() {
             ],
             answer: 1,
             explain:
-              "På nordlig halvkule bøyer den mot høyre. På sørlig mot venstre. Ved ekvator er avbøyningen null. Derfor kan tropiske sykloner ikke dannes på selve ekvator.",
+              "På nordlig halvkule bøyer den mot høyre. På sørlig mot venstre. Ved ekvator er avbøyningen null.",
           },
           {
             prompt: "Hvorfor spinner et lavtrykk mot klokka i Norge?",
@@ -371,12 +282,10 @@ function CoriolisPage() {
               "Det gjør det ikke.",
             ],
             answer: 1,
-            explain:
-              "Formen er coriolis pluss trykkgradient pluss friksjon. Mot klokka rundt lavtrykk i Norge. Med klokka rundt høytrykk.",
+            explain: "Formen er coriolis pluss trykkgradient pluss friksjon. Mot klokka rundt lavtrykk i Norge.",
           },
           {
-            prompt:
-              "Når trykkgradient og coriolis veier hverandre opp, hvor går vinden — og hva kalles det?",
+            prompt: "Når trykkgradient og coriolis veier hverandre opp på nordlig halvkule, hvor går vinden?",
             options: [
               "Rett inn mot lavtrykket. Det kalles passat.",
               "Langs isobarene, med lavtrykk til venstre. Det kalles geostrofisk vind.",
@@ -384,8 +293,29 @@ function CoriolisPage() {
               "90 grader til venstre for isobarene. Det kalles Ekman-lag.",
             ],
             answer: 1,
-            explain:
-              "Det kalles geostrofisk vind. Det er den vanlige balansen høyt oppe og til havs, borte fra bakken.",
+            explain: "Geostrofisk vind. På sørlig halvkule er det speilvendt.",
+          },
+          {
+            prompt: "Hvorfor styrer ikke coriolis vannet i en vask?",
+            options: [
+              "Fordi vann ikke kan dreies.",
+              "Fordi coriolis er for svak på så liten skala og så kort tid. Kummens form avgjør.",
+              "Fordi vasken står i tropene.",
+              "Fordi coriolis bare virker i luft.",
+            ],
+            answer: 1,
+            explain: "Coriolis vinner på hundrevis av kilometer og over timer og døgn. Ikke på en meter i et minutt.",
+          },
+          {
+            prompt: "Hva er NAO, og hvorfor betyr den mer for Norge enn ENSO?",
+            options: [
+              "En havstrøm utenfor Peru. Den driver Golfstrømmen.",
+              "Trykkforskjellen Azorene–Island. Den flytter vestavind og stormbane rett inn mot oss.",
+              "En Rossby-bølge som alltid peker mot Finnmark.",
+              "At vasken spinner mot klokka.",
+            ],
+            answer: 1,
+            explain: "ENSO sitter i tropisk Stillehav. NAO sitter i Nord-Atlanteren, der Norges vær lages.",
           },
         ]}
       />

@@ -75,21 +75,11 @@ function KatastroferPage() {
         }}
       />
 
-      <PhotoFigure
-        src="/images/fig-syklon.jpg"
-        alt="Orkan med øye og spiralbånd over havet"
-        heading="Hvorfor den spinner — og hvorfor ikke på ekvator"
-        caption="Luft strømmer inn mot lavtrykket. Coriolis bøyer den til høyre i nord. Resultatet er spiralen. Ved ekvator er bøyen for svak til å holde et slikt hjul i gang."
-        arrows={[{ d: "M 22 18 Q 18 40 38 52", tone: "teal", width: 1.3 }]}
-        marks={[
-          { x: 44, y: 36, n: "1", text: "Lavtrykk i øyet", tone: "low" },
-          { x: 6, y: 12, n: "2", text: "Inn + coriolis", tone: "teal" },
-        ]}
-        points={[
-          { n: "1", label: "Senteret: synkende luft, lite skyer, lavt trykk." },
-          { n: "2", label: "Innstrømning bøyes. I nord: mot klokken." },
-        ]}
-      />
+      <p>
+        Coriolis bøyer innstrømningen. I nord spinner systemet mot klokken. På ekvator er coriolis
+        for svak — derfor fødes ikke orkaner der, selv om havet er varmt. Øyet er det stille
+        senteret med synkende luft.
+      </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Norges stormer er noe annet

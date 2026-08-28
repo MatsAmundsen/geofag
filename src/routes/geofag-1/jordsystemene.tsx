@@ -1,6 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { SpheresDiagram } from "@/components/diagrams/spheres";
+import { PhotoFigure } from "@/components/photo-figure";
+import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { gf1Theme } from "@/lib/nav";
@@ -37,6 +39,10 @@ function JordsystemenePage() {
       </p>
       <OrdBoks ord="geosfære" barn="den faste jorda: berggrunn, løsmasser, jord" />
       <OrdBoks ord="hydrosfære" barn="her: elver, innsjøer, grunnvann og porevann" />
+      <p>
+        Havet hører også til hydrosfæren. I geofag 1 følger du ferskvannssporet. Havstrømmer og
+        AMOC ligger i geofag 2.
+      </p>
 
       <p>
         En vekselvirkning er en endring i ett delsystem som utløser respons i ett eller flere andre.
@@ -82,6 +88,15 @@ function JordsystemenePage() {
         eller tyngdekraft. Uten forvitring ingen sedimenter.
       </p>
 
+      <PhotoFigure
+        src="/images/fig-forvitring.jpg"
+        alt="Sprekk i stripet gneis fylt med is, stein som kiles fra hverandre"
+        heading="Mekanisk forvitring på stedet"
+        caption="Vann i sprekken fryser, utvider seg og kiler fjellet. Bergarten er den samme. Den er bare mer oppsprukket."
+        marks={[{ x: 6, y: 16, n: "1", text: "Is i sprekk", tone: "cold" }]}
+        points={[{ n: "1", label: "Fryse–tine. Hydrosfære som jobber i geosfæren." }]}
+      />
+
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Isbreen som agent</h2>
       <p>
         Kryosfæren hører hjemme her fordi is graver i geosfæren og mater hydrosfæren. Ikke som
@@ -95,8 +110,15 @@ function JordsystemenePage() {
       </p>
       <p>
         Da isen smeltet, reiste litosfæren seg. Det kalles isostasi. Marin leire ligger nå på land.
-        Marin grense er 0–220 m over havet. Elver graver raviner. Grunnvann vasker salt. Resultat:
-        kvikkleire, som er hydrosfære i geosfæren.
+        Elver graver raviner. Grunnvann vasker salt. Resultatet kan bli kvikkleire — det tar vi
+        under{" "}
+        <Link
+          to="/geofag-1/vann-flom-og-skred"
+          className="text-primary underline-offset-2 hover:underline"
+        >
+          vann, flom og skred
+        </Link>
+        .
       </p>
       <p>
         Jostedalsbreen, Folgefonna og småbotnbreer i Nord-Norge er levende agenter. De fleste norske
@@ -114,16 +136,13 @@ function JordsystemenePage() {
       <p>
         Aske faller ut av stratosfæren i løpet av dager til uker og har liten klimaeffekt. SO₂ som
         når stratosfæren, omdannes til sulfataerosoler som reflekterer sollys og kan kjøle
-        troposfæren. Pinatubo 15. juni 1991 injiserte 20 millioner tonn SO₂ over ca. 32 km høyde og
-        kjølte jordoverflaten i tre år, med inntil 0,7 °C på det meste.
+        troposfæren. Pinatubo 15. juni 1991 injiserte om lag 20 millioner tonn SO₂ og kjølte
+        jordoverflaten i et par år.
       </p>
       <p>
-        På Jan Mayen hevet magma bakken circa 14 m sørvest for Beerenberg i 1732. Utløpet fra
-        Nordlaguna ble stengt. Geosfære flyttet hydrosfære på menneskelig tidsskala.
-      </p>
-      <p>
-        Vulkaner slipper også CO₂, men dagens vulkanske utslipp er 0,13–0,44 Gt per år mot
-        antropogent 35 Gt i 2010. Kort sikt er SO₂ og aske, ikke at vulkanene varmer klimaet.
+        Vulkaner slipper også CO₂, men dagens vulkanske utslipp er noen tiendedels gigatonn per år
+        mot antropogene utslipp på over 35 Gt. Kort sikt er SO₂ og aske, ikke at vulkanene varmer
+        klimaet.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
@@ -174,6 +193,44 @@ function JordsystemenePage() {
           def="negativ: en endring utløser en respons som demper den; silikatforvitring trekker CO₂ ut når CO₂ stiger"
         />
       </TermGrid>
+
+      <Quiz
+        questions={[
+          {
+            prompt: "Hva er forskjellen på forvitring og erosjon?",
+            options: [
+              "Det er samme prosess.",
+              "Forvitring er nedbrytning på stedet. Erosjon er nedsliting pluss transport.",
+              "Forvitring skjer bare i tropene.",
+              "Erosjon skjer bare i geosfæren, aldri med vann.",
+            ],
+            answer: 1,
+            explain: "Uten forvitring ingen sedimenter. Erosjon flytter det som allerede er løst.",
+          },
+          {
+            prompt: "Hvilken sfære følger du primært i geofag 1 når vi sier hydrosfære?",
+            options: [
+              "Golfstrømmen og AMOC.",
+              "Ferskvann: elver, innsjøer, grunnvann og porevann. Havet er med, men sporet her er på land.",
+              "Bare skyer.",
+              "Bare isbreer.",
+            ],
+            answer: 1,
+            explain: "Havet hører til hydrosfæren, men kompetansemålet her peker mot ferskvannssporet.",
+          },
+          {
+            prompt: "Hvorfor varmer ikke dagens vulkaner klimaet mer enn mennesket?",
+            options: [
+              "Fordi vulkaner ikke slipper CO₂.",
+              "Fordi de vulkanske CO₂-utslippene er langt mindre enn de antropogene. Kort sikt er SO₂ som kjøler.",
+              "Fordi Pinatubo varmet i tre år.",
+              "Fordi aske holder på varmen.",
+            ],
+            answer: 1,
+            explain: "Pinatubo er et kjøleeksempel på årsskala. Silikatforvitring er millioner av år.",
+          },
+        ]}
+      />
     </TopicLayout>
   );
 }

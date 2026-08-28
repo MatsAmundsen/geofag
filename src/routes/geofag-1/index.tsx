@@ -27,25 +27,24 @@ function Geofag1() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
           <div className="relative mx-auto flex min-h-[64vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6">
             <p className="text-xs font-medium uppercase tracking-wider text-primary">
-              Geofag 1 · LK20 GFG01-03
+              Geofag 1
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-4xl font-medium tracking-tight sm:text-6xl">
               Jorda under oss.
             </h1>
             <p className="mt-5 max-w-2xl text-base text-foreground/90 sm:text-lg">
-              Kompetansemålene i Geofag 1 peker mot geosfæren og hydrosfæren: platene, bergartene,
-              vannet på land — og naturfarene som følger. Dette er et utkast til temasider. Innholdet
-              skriver vi etter hvert, slik vi har gjort i Geofag 2.
+              Geosfæren og hydrosfæren: platene, bergartene, vannet på land — og
+              naturfarene som følger. Start med sfærene, gå videre til platene.
             </p>
           </div>
         </section>
 
         <section id="temaer" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="max-w-2xl">
-            <h2 className="font-display text-3xl font-medium tracking-tight">Temautkast</h2>
+            <h2 className="font-display text-3xl font-medium tracking-tight">Temaer</h2>
             <p className="mt-3 text-muted-foreground">
-              Seks innganger, gruppert etter kompetansemålene etter Geofag 1. Naturfarer sitter i to
-              av dem: vulkaner og jordskjelv, og vann, flom og skred.
+              Seks innganger etter kompetansemålene. Naturfarer sitter i to av dem: vulkaner og
+              jordskjelv, og vann, flom og skred. Ressurser og felt er ennå utkast.
             </p>
           </div>
 

@@ -25,8 +25,8 @@ function KlimaPage() {
         Vær er dager. Klima er tiår.
       </h2>
       <p>
-        En mild januaruke er vær. At Vestlandet er vått og kysten av Finnmark kaldere enn Bergen på
-        samme bredde som Labrador — det er klima. Klima er statistikken: typisk temperatur, nedbør,
+        En mild januaruke er vær. At Vestlandet er vått, og at norskekysten på 60°N er mildere enn
+        Labrador på samme bredde — det er klima. Klima er statistikken: typisk temperatur, nedbør,
         vind og is over minst tretti år.
       </p>
       <p>
@@ -44,8 +44,9 @@ function KlimaPage() {
         varme, vann og karbon. Endrer du én del, svarer de andre.
       </p>
       <p>
-        Havet lagrer det meste av varmen. Isen styrer hvor mye sollys som kastes tilbake. Luften
-        flytter fukt på dager. Havet husker i tiår.
+        Kryosfæren er mer enn innlandsisen på figuren. Havis i Arktis styrer albedo fra uke til uke.
+        Permafrost lagrer karbon i bakken. Breer i Norge er små, men de er synlige agenter: de graver
+        om sommeren og mater elvene. Isen er treg, men ikke stille.
       </p>
       <OrdBoks
         ord="Kryosfæren"
@@ -112,12 +113,12 @@ function KlimaPage() {
         Pådriv dytter. Tilbakekobling forsterker eller demper.
       </h2>
       <p>
-        Et pådriv er det første dytter. En tilbakekobling er systemets svar. Noen svar forsterker
+        Et pådriv er det første dytet. En tilbakekobling er systemets svar. Noen svar forsterker
         dytten. Noen svekker den.
       </p>
       <p>
-        Vanndamp er det sterkeste drivhusgassen i lufta — men den er i hovedsak en forsterker, ikke
-        det første dytter. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer
+        Vanndamp er den sterkeste drivhusgassen i lufta — men den er i hovedsak en forsterker, ikke
+        det første dytet. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer
         varme. Det kalles en positiv tilbakekobling.
       </p>
       <OrdBoks
@@ -270,7 +271,7 @@ function KlimaPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Norge i dette bildet</h2>
       <p>
-        Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten milt for
+        Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mildt for
         breddegraden. I et varmere klima holder lufta mer fukt. Vestlandet, som allerede tvinges
         av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
       </p>
@@ -283,7 +284,7 @@ function KlimaPage() {
         src="/images/fig-norge-labrador.jpg"
         alt="Norsk kyst mot isete Labrador-landskap som kontrast"
         heading="Samme bredde, ulikt klima"
-        caption="Norge er ikke milt fordi vi ligger lenger sør. Vi er milt fordi luft og hav flytter varme hit. Endres det samspillet, endres det norske klimaet."
+        caption="Norge er ikke mildt fordi vi ligger lenger sør. Vi er milde fordi luft og hav flytter varme hit. Endres det samspillet, endres det norske klimaet."
         marks={[
           { x: 6, y: 16, n: "1", text: "Norsk kyst", tone: "teal" },
           { x: 58, y: 16, n: "2", text: "Labrador, samme bredde", tone: "cold" },

@@ -7,6 +7,11 @@ export const NAV_HUB = [
 export const NAV_GF1 = [
   { to: "/", label: "Geofag" },
   { to: "/geofag-1", label: "Oversikt" },
+  { to: "/geofag-1/jordsystemene", label: "Sfærer" },
+  { to: "/geofag-1/platetektonikk", label: "Plater" },
+  { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
+  { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
+  { to: "/geofag-1/vann-flom-og-skred", label: "Vann" },
 ] as const;
 
 export const NAV_GF2 = [
@@ -41,22 +46,42 @@ export function brandForPath(pathname: string) {
 export const GF2_THEMES = [
   {
     to: "/tema/hoytrykk-lavtrykk",
-    title: "Vind",
+    title: "Høytrykk og lavtrykk",
+    kicker: "Atmosfæren",
+    image: "/images/banner-trykk.jpg",
+    alt: "Kyst i to slags vær: storm til venstre, klar himmel til høyre",
+    blurb:
+      "Luft har vekt. Der den stiger, blir det lavtrykk og ofte skyer. Der den synker, blir det høytrykk og ofte klarvær. Start her.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/vindsystemet",
+    title: "Det globale vindsystemet",
     kicker: "Atmosfæren",
     image: "/images/tema-vind.jpg",
     alt: "Skybånd og værsystemer over Nord-Atlanteren sett fra satellitt",
     blurb:
-      "Start med høytrykk og lavtrykk. Deretter det globale vindsystemet — Hadley, Ferrel og polarcellen — motoren i været.",
+      "Hadley, Ferrel og polarcellen. Ørken der luft synker, regnskog der den stiger, vestavind over Norge.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/coriolis",
+    title: "Corioliseffekten",
+    kicker: "Jordrotasjon",
+    image: "/images/banner-coriolis.jpg",
+    alt: "Jorda med spiralformede syklonskyer",
+    blurb:
+      "Trykk setter lufta i gang. Rotasjonen dreier den. Derfor spinner lavtrykk, og vasken lyver.",
     status: "klar" as const,
   },
   {
     to: "/tema/havstrommer",
-    title: "Strømmer",
+    title: "Havstrømmer",
     kicker: "Havet",
     image: "/images/tema-strommer.jpg",
     alt: "Nord-Atlanteren med fargekontrast som minner om en vestlig randstrøm",
     blurb:
-      "Vind, tetthet og jordrotasjon flytter varme i havet. Golfstrømmen og AMOC er grunnen til at Norge er milt på 60°N.",
+      "Vind, tetthet og jordrotasjon flytter varme i havet. Golfstrømmen og AMOC er grunnen til at Norge er mildt på 60°N.",
     status: "klar" as const,
   },
   {
@@ -73,8 +98,8 @@ export const GF2_THEMES = [
     to: "/tema/numeriske-modeller",
     title: "Numeriske modeller",
     kicker: "Modeller",
-    image: "/images/tema-klima.jpg",
-    alt: "Polar is og hav som står for jordsystemet modellene beskriver",
+    image: "/images/fig-klimasystem.jpg",
+    alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver",
     blurb:
       "En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett.",
     status: "klar" as const,
@@ -165,3 +190,4 @@ export const GF1_THEMES = [
 export function gf1Theme(slug: string) {
   return GF1_THEMES.find((t) => t.slug === slug);
 }
+

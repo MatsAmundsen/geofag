@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { RockCycleDiagram, ValleyCrossSectionDiagram } from "@/components/diagrams/bergarter";
+import { PhotoFigure } from "@/components/photo-figure";
+import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { gf1Theme } from "@/lib/nav";
@@ -25,8 +27,7 @@ function BergarterOgLandformerPage() {
         label: "Forrige: Vulkaner og jordskjelv",
       }}
       next={{
-        to: "/geofag-1/$slug",
-        params: { slug: "vann-flom-og-skred" },
+        to: "/geofag-1/vann-flom-og-skred",
         label: "Neste: Vann, flom og skred",
       }}
     >
@@ -46,11 +47,28 @@ function BergarterOgLandformerPage() {
         hele steinen.
       </p>
 
+      <PhotoFigure
+        src="/images/fig-tre-bergarter.jpg"
+        alt="Tre håndstykker: grovkornet magmatisk bergart, lagdelt kalkstein, stripet gneis"
+        heading="Tre grupper, tre utseender"
+        caption="Venstre: størknet magma, synlige korn. Midten: lag og fossiler. Høyre: omdannet i fast tilstand, foliasjon."
+        marks={[
+          { x: 4, y: 14, n: "1", text: "Magmatisk", tone: "warm" },
+          { x: 36, y: 14, n: "2", text: "Sedimentær", tone: "teal" },
+          { x: 68, y: 14, n: "3", text: "Metamorf", tone: "fg" },
+        ]}
+        points={[
+          { n: "1", label: "Størknet magma eller lava. Dyp nede, dag oppe." },
+          { n: "2", label: "Fragmenter, utfelling eller organismer. Lagning." },
+          { n: "3", label: "Omdannet uten full smelting. Foliasjon er evidens." },
+        ]}
+      />
+
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Tre grupper</h2>
       <p>
         Magmatisk bergart er størknet magma eller lava. Sakte avkjøling nede gir store, synlige
         korn: dypbergart. Rask avkjøling oppe gir finkornet grunnmasse: dagbergart. Larvikitt er
-        dypbergart, dannet for circa 290 millioner år siden. Rombeporfyr er dagbergart, Oslofeltets
+        dypbergart, dannet for cirka 290 millioner år siden. Rombeporfyr er dagbergart, Oslofeltets
         signatur: store rombeformede feltspatkrystaller i finkornet grunnmasse. NGU kaller dem
         tvillingbergarter. Forskjellen er avkjølingssted, ikke to ulike magmaer.
       </p>
@@ -98,7 +116,7 @@ function BergarterOgLandformerPage() {
       <OrdBoks ord="diskordans" barn="tidshull: avsetning stoppet og/eller erosjon tok bort lag" />
       <p>
         C-14 daterer organisk materiale, ikke kambrosilur, gneis eller larvikitt. Halveringstid 5730
-        år. Rekkevidde circa 50 000 år. Etter mange halveringer er det for lite C-14 igjen. Gammel
+        år. Rekkevidde cirka 50 000 år. Etter mange halveringer er det for lite C-14 igjen. Gammel
         skorpe dateres med U–Pb i zirkon.
       </p>
 
@@ -133,6 +151,44 @@ function BergarterOgLandformerPage() {
         <Term name="metamorf" def="omdannet i fast tilstand, uten full smelting" />
         <Term name="diskordans" def="tidshull: avsetning stoppet og/eller erosjon tok bort lag" />
       </TermGrid>
+
+      <Quiz
+        questions={[
+          {
+            prompt: "Hva er forskjellen på et mineral og en bergart?",
+            options: [
+              "Granitt er et mineral.",
+              "Mineral har definert kjemi og krystallstruktur. Bergart er et aggregat av ett eller flere mineraler.",
+              "Bergart har alltid fossil.",
+              "Mineraler finnes bare i magma.",
+            ],
+            answer: 1,
+            explain: "Kvarts er SiO₂. Granitt er kvarts, feltspat og glimmer.",
+          },
+          {
+            prompt: "Hva er metamorfose — og hva er den ikke?",
+            options: [
+              "Full smelting til ny magma.",
+              "Omdanning i fast tilstand. Smelting gir magmatisk bergart, ikke metamorf.",
+              "At sediment løsner.",
+              "Bare foliasjon i Oslofeltet.",
+            ],
+            answer: 1,
+            explain: "Gneis er omdannet uten å smelte. Smelter den, får du magmatisk bergart.",
+          },
+          {
+            prompt: "Hvorfor kan C-14 ikke datere gneis eller larvikitt?",
+            options: [
+              "Fordi C-14 ikke finnes i Norge.",
+              "C-14 daterer organisk materiale og rekker ca. 50 000 år. Gammel skorpe dateres med U–Pb i zirkon.",
+              "Fordi gneis er for myk.",
+              "Fordi Mohs er 10.",
+            ],
+            answer: 1,
+            explain: "Halveringstid 5730 år. Etter mange halveringer er det for lite C-14 igjen.",
+          },
+        ]}
+      />
     </TopicLayout>
   );
 }

@@ -75,6 +75,12 @@ function VindsystemetPage() {
         ved polen. Jorda roterer. Lufta rekker ikke polen før den bøyes av og synker. Derfor får
         hver halvkule tre kretsløp i stedet for ett.
       </p>
+      <p>
+        Hadley og polarcellen er «motorer»: luft stiger der det er varmt (eller møtes langs
+        polarfronten) og synker der det er kaldere. Ferrel-cellen i midten er annerledes. Den er
+        termisk indirekte — den drives av de vandrende lavtrykkene, ikke av at bakken under er
+        varmest. Derfor ser du sjelden en jevn Ferrel-sløyfe på satellittbildet. Du ser stormene.
+      </p>
 
       <PhotoFigure
         src="/images/fig-celler.jpg"
@@ -101,7 +107,7 @@ function VindsystemetPage() {
         ]}
         points={[
           { n: "1", label: "Hadley (0–30°): opp ved ekvator, ned over ørkenen. Tropisk motor." },
-          { n: "2", label: "Ferrel (30–60°): vestavind og vandrende lavtrykk. Her ligger Norge." },
+          { n: "2", label: "Ferrel (30–60°): ikke en egen motor. Den drives av vandrende lavtrykk. Vestavind. Her ligger Norge." },
           { n: "3", label: "Polar (60–90°): kald luft synker over polen og møter mildluft ved polarfronten." },
         ]}
       />
@@ -257,7 +263,7 @@ function VindsystemetPage() {
         ]}
         marks={[
           { x: 4, y: 16, n: "1", text: "Fuktig vestavind", tone: "teal" },
-          { x: 38, y: 12, n: "2", text: "Løside · regn", tone: "cold" },
+          { x: 38, y: 12, n: "2", text: "Loside · regn", tone: "cold" },
           { x: 62, y: 18, n: "3", text: "Leside · tørrere", tone: "warm" },
         ]}
         points={[
@@ -273,6 +279,10 @@ function VindsystemetPage() {
         vestlig luftstrøm: polarfrontjeten. Den svinger. Ligger den sør for Norge, får vi kald
         polarluft. Ligger den nord for, kommer milde atlantiske luftmasser inn. Den styrer hvor
         lavtrykkene går denne uka.
+      </p>
+      <p>
+        Den subtropiske jetstrømmen ligger nærmere 30° og henger sammen med Hadley-cellens
+        nedsynking. To belter, ikke ett. Polarfrontjeten er den som betyr mest for Norge.
       </p>
       <OrdBoks
         ord="Jetstrøm"
