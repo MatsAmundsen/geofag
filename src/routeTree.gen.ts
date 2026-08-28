@@ -15,6 +15,7 @@ import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
 import { Route as Geofag1JordsystemeneRouteImport } from './routes/geofag-1/jordsystemene'
 import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
+import { Route as Geofag1VannFlomOgSkredRouteImport } from './routes/geofag-1/vann-flom-og-skred'
 import { Route as Geofag1VulkanerOgJordskjelvRouteImport } from './routes/geofag-1/vulkaner-og-jordskjelv'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
@@ -52,6 +53,11 @@ const Geofag1JordsystemeneRoute = Geofag1JordsystemeneRouteImport.update({
 const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
   id: '/geofag-1/platetektonikk',
   path: '/geofag-1/platetektonikk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1VannFlomOgSkredRoute = Geofag1VannFlomOgSkredRouteImport.update({
+  id: '/geofag-1/vann-flom-og-skred',
+  path: '/geofag-1/vann-flom-og-skred',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Geofag1VulkanerOgJordskjelvRoute =
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
+  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
+  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
+  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/geofag-1/$slug'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
+    | '/geofag-1/vann-flom-og-skred'
     | '/geofag-1/vulkaner-og-jordskjelv'
     | '/tema/coriolis'
     | '/tema/havstrommer'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/geofag-1/$slug'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
+    | '/geofag-1/vann-flom-og-skred'
     | '/geofag-1/vulkaner-og-jordskjelv'
     | '/tema/coriolis'
     | '/tema/havstrommer'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/geofag-1/$slug'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
+    | '/geofag-1/vann-flom-og-skred'
     | '/geofag-1/vulkaner-og-jordskjelv'
     | '/tema/coriolis'
     | '/tema/havstrommer'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   Geofag1SlugRoute: typeof Geofag1SlugRoute
   Geofag1JordsystemeneRoute: typeof Geofag1JordsystemeneRoute
   Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
+  Geofag1VannFlomOgSkredRoute: typeof Geofag1VannFlomOgSkredRoute
   Geofag1VulkanerOgJordskjelvRoute: typeof Geofag1VulkanerOgJordskjelvRoute
   TemaCoriolisRoute: typeof TemaCoriolisRoute
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
@@ -255,6 +268,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/platetektonikk'
       fullPath: '/geofag-1/platetektonikk'
       preLoaderRoute: typeof Geofag1PlatetektonikkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/vann-flom-og-skred': {
+      id: '/geofag-1/vann-flom-og-skred'
+      path: '/geofag-1/vann-flom-og-skred'
+      fullPath: '/geofag-1/vann-flom-og-skred'
+      preLoaderRoute: typeof Geofag1VannFlomOgSkredRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/vulkaner-og-jordskjelv': {
@@ -322,6 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag1SlugRoute: Geofag1SlugRoute,
   Geofag1JordsystemeneRoute: Geofag1JordsystemeneRoute,
   Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
+  Geofag1VannFlomOgSkredRoute: Geofag1VannFlomOgSkredRoute,
   Geofag1VulkanerOgJordskjelvRoute: Geofag1VulkanerOgJordskjelvRoute,
   TemaCoriolisRoute: TemaCoriolisRoute,
   TemaHavstrommerRoute: TemaHavstrommerRoute,
