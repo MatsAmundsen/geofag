@@ -1,0 +1,298 @@
+import { Arrow, C, Diagram, L } from "./svg-kit";
+
+export function OceanDriversDiagram() {
+  return (
+    <Diagram
+      title="Tre drivkrefter for havstrømmer"
+      heading="Vind, rotasjon og tetthet"
+      caption="Overflaten skyves av vinden og bøyes av coriolis. I dypet er det tetthet som gjelder: kaldt og salt vann synker, varmt og ferskere vann blir liggende oppå. Tidevann rører kysten, men driver ikke de store gyrene."
+      viewBox="0 0 820 240"
+    >
+      {() => (
+        <>
+          {[
+            { x: 40, t: "1  Vind", d1: "Passater og vestavind", d2: "gir pådrag i overflaten." },
+            { x: 300, t: "2  Coriolis", d1: "Bøyer strømmen. Ekman-", d2: "transport 90° på vinden." },
+            { x: 560, t: "3  Tetthet", d1: "Temperatur og salt", d2: "styrer hva som synker." },
+          ].map((b) => (
+            <g key={b.t}>
+              <rect x={b.x} y="40" width="220" height="160" rx="10" fill="#152028" stroke={C.dim} />
+              <L x={b.x + 110} y="92" fill={C.teal} size={16} anchor="middle" weight={600}>
+                {b.t}
+              </L>
+              <L x={b.x + 110} y="130" fill={C.muted} size={14} anchor="middle">
+                {b.d1}
+              </L>
+              <L x={b.x + 110} y="152" fill={C.muted} size={14} anchor="middle">
+                {b.d2}
+              </L>
+            </g>
+          ))}
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function EkmanDiagram() {
+  return (
+    <Diagram
+      title="Ekman-transport"
+      heading="Vinden peker én vei, vannet flytter seg 90° til høyre"
+      caption="Hver vannflak dreies av coriolis og bremses av laget under. Pilen roterer med dypet (Ekman-spiralen). Nettotransporten i laget er 90° til høyre for vinden på nordlig halvkule. Vestavind stabler derfor vann inn mot gyrenes midt."
+      viewBox="0 0 820 340"
+    >
+      {(m) => (
+        <>
+          <Arrow d="M 80 80 L 280 80" marker={m.warm} color={C.warm} width={3.4} />
+          <L x="80" y="64" fill={C.warm} size={14}>
+            vind (f.eks. vestavind →)
+          </L>
+          <Arrow d="M 160 110 L 300 110" marker={m.teal} color={C.teal} width={2.6} />
+          <L x="310" y="116" fill={C.muted} size={13}>
+            overflatestrøm, ~45° til høyre
+          </L>
+          <Arrow d="M 160 150 L 250 190" marker={m.teal} color={C.teal} width={2.2} />
+          <Arrow d="M 160 200 L 200 250" marker={m.cold} color={C.cold} width={2} />
+          <L x="80" y="310" fill={C.muted} size={13}>
+            dypere
+          </L>
+          <Arrow d="M 500 80 L 500 250" marker={m.teal} color={C.teal} width={3.4} />
+          <L x="518" y="160" fill={C.teal} size={15}>
+            netto Ekman-transport
+          </L>
+          <L x="518" y="182" fill={C.muted} size={13}>
+            90° til høyre for vinden (NH)
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function GyreDiagram() {
+  return (
+    <Diagram
+      title="Den nordatlantiske gyrene"
+      heading="Med klokken, sterk i vest, slapp i øst"
+      caption="Fire strømmer lukker kretsen. Golfstrømmen er den vestlige randstrømmen: smal og rask. Kanaristrømmen i øst er bred og treig. Midten — Sargassohavet — har litt høyere vannstand. Coriolis balanserer trykket utover, så strømmen følger «høyden» i havoverflaten."
+      viewBox="0 0 840 400"
+    >
+      {(m) => (
+        <>
+          <path
+            d="M 180 60 L 620 70 L 700 160 L 680 300 L 200 310 L 140 180 Z"
+            fill="#16303a"
+            stroke={C.dim}
+            strokeWidth="2"
+          />
+          <L x="160" y="50" fill={C.muted} size={13}>
+            Nord-Amerika
+          </L>
+          <L x="640" y="58" fill={C.muted} size={13}>
+            Europa
+          </L>
+          <L x="710" y="200" fill={C.muted} size={13}>
+            Afrika
+          </L>
+          <ellipse cx="400" cy="190" rx="28" ry="20" fill={C.teal} opacity="0.25" />
+          <L x="400" y="196" fill={C.teal} size={13} anchor="middle">
+            H
+          </L>
+          <L x="400" y="216" fill={C.muted} size={12} anchor="middle">
+            Sargasso
+          </L>
+          <Arrow d="M 230 250 C 250 140, 280 90, 430 88" marker={m.warm} color={C.warm} width={3.6} />
+          <L x="250" y="150" fill={C.warm} size={14}>
+            Golfstrømmen
+          </L>
+          <L x="250" y="168" fill={C.muted} size={12}>
+            smal · rask
+          </L>
+          <Arrow d="M 450 88 C 560 90, 620 120, 640 180" marker={m.teal} color={C.teal} width={2.8} />
+          <L x="500" y="78" fill={C.teal} size={14}>
+            Nordatlanterhavsstrømmen
+          </L>
+          <Arrow d="M 640 200 C 630 260, 560 290, 400 300" marker={m.cold} color={C.cold} width={2.4} />
+          <L x="560" y="270" fill={C.cold} size={14}>
+            Kanaristrømmen
+          </L>
+          <L x="560" y="288" fill={C.muted} size={12}>
+            bred · treig
+          </L>
+          <Arrow d="M 360 300 C 250 290, 200 240, 210 200" marker={m.muted} color={C.muted} width={2.4} />
+          <L x="300" y="328" fill={C.muted} size={13}>
+            nordlige ekvatorialstrøm
+          </L>
+          <L x="420" y="378" fill={C.fg} size={14} anchor="middle">
+            gyre med klokken på nordlig halvkule
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function GulfVsNacDiagram() {
+  return (
+    <Diagram
+      title="Golfstrømmen og Den nordatlantiske strømmen"
+      heading="To navn, to strekninger"
+      caption="Golfstrømmen er den sterke vestlige randstrømmen langs USA. Etter Kapp Hatteras løsner den og fortsetter som Den nordatlantiske strømmen mot de nordiske hav. Det er denne grenen som preger norsk kystklima — ikke selve Golfstrømmen utenfor Florida."
+      viewBox="0 0 840 320"
+    >
+      {(m) => (
+        <>
+          <path d="M 80 40 L 220 50 L 200 280 L 60 250 Z" fill="#1b2a24" />
+          <L x="90" y="70" fill={C.muted} size={13}>
+            Nord-Amerika
+          </L>
+          <path d="M 520 40 L 760 60 L 780 200 L 600 90 Z" fill="#1b2a24" />
+          <L x="640" y="70" fill={C.muted} size={13}>
+            Norge
+          </L>
+          <Arrow d="M 200 240 C 260 200, 300 160, 340 130" marker={m.warm} color={C.warm} width={3.6} />
+          <L x="250" y="228" fill={C.warm} size={14}>
+            Golfstrømmen
+          </L>
+          <circle cx="348" cy="128" r="5" fill={C.fg} />
+          <L x="360" y="122" size={13}>
+            Kapp Hatteras
+          </L>
+          <Arrow d="M 360 124 C 480 90, 580 80, 680 88" marker={m.teal} color={C.teal} width={3.2} />
+          <L x="500" y="74" fill={C.teal} size={14}>
+            Den nordatlantiske strømmen
+          </L>
+          <L x="420" y="300" fill={C.muted} size={13} anchor="middle">
+            varmt vann  →  de nordiske hav
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function DensityDiagram() {
+  return (
+    <Diagram
+      title="Hva som gjør vann tettere"
+      heading="Kaldt og salt synker, varmt og ferskt flyter"
+      caption="Tetthet øker når temperaturen synker og når saltholdigheten stiger. I de nordiske hav mister overflatevannet varme til lufta. Når det dannes havis, blir saltet igjen i vannet. Da blir vannet tungt nok til å synke og mate dyphavet."
+      viewBox="0 0 820 300"
+    >
+      {() => (
+        <>
+          <rect x="80" y="60" width="260" height="180" rx="8" fill="#3a2a20" />
+          <rect x="80" y="60" width="260" height="70" fill={C.warm} opacity="0.55" />
+          <L x="210" y="102" fill={C.bg} size={15} anchor="middle" weight={600}>
+            varmt · mindre salt
+          </L>
+          <L x="210" y="168" fill={C.sand} size={14} anchor="middle">
+            lav tetthet  ·  flyter
+          </L>
+          <rect x="480" y="60" width="260" height="180" rx="8" fill="#1a2c38" />
+          <rect x="480" y="150" width="260" height="90" fill={C.cold} opacity="0.45" />
+          <L x="610" y="120" fill={C.cold} size={15} anchor="middle" weight={600}>
+            kaldt · saltere
+          </L>
+          <L x="610" y="200" fill={C.fg} size={14} anchor="middle">
+            høy tetthet  ·  synker
+          </L>
+          <L x="210" y="270" fill={C.muted} size={13} anchor="middle">
+            tropisk overflate
+          </L>
+          <L x="610" y="270" fill={C.muted} size={13} anchor="middle">
+            nordiske hav om vinteren
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function AmocDiagram() {
+  return (
+    <Diagram
+      title="AMOC — havets belte i Atlanteren"
+      heading="Varmt nordover i toppen, kaldt sørover i dypet"
+      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Norskehavet, Grønlandshavet og Labradorhavet synker det som North Atlantic Deep Water og returnerer sørøver på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme."
+      viewBox="0 0 840 360"
+    >
+      {(m) => (
+        <>
+          <L x="60" y="40" fill={C.muted} size={13}>
+            sør
+          </L>
+          <L x="760" y="40" fill={C.muted} size={13} anchor="end">
+            nord
+          </L>
+          <line x1="50" y1="70" x2="790" y2="70" stroke={C.dim} />
+          <L x="60" y="64" fill={C.muted} size={12}>
+            overflate
+          </L>
+          <Arrow d="M 80 100 C 240 70, 480 70, 720 96" marker={m.warm} color={C.warm} width={3.4} />
+          <L x="360" y="64" fill={C.warm} size={14}>
+            varm overflatestrøm nordover
+          </L>
+          <circle cx="730" cy="110" r="10" fill={C.cold} />
+          <L x="748" y="100" fill={C.cold} size={14}>
+            synker
+          </L>
+          <L x="748" y="118" fill={C.muted} size={12}>
+            NADW
+          </L>
+          <line x1="50" y1="210" x2="790" y2="210" stroke={C.dim} strokeDasharray="4 4" />
+          <L x="60" y="204" fill={C.muted} size={12}>
+            dyphav
+          </L>
+          <Arrow d="M 720 230 C 500 270, 260 270, 90 240" marker={m.cold} color={C.cold} width={3.2} />
+          <L x="360" y="292" fill={C.cold} size={14}>
+            kaldt dyphavsvann sørover
+          </L>
+          <L x="420" y="340" fill={C.muted} size={13} anchor="middle">
+            Norskehavet · Grønlandshavet · Labradorhavet
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function ClimateContrastDiagram() {
+  return (
+    <Diagram
+      title="Samme breddegrad, ulikt klima"
+      heading="Hvorfor Norge ikke er Labrador"
+      caption="Bergen og kysten av Labrador ligger nær 60°N. Den nordatlantiske strømmen, AMOC og vestavindsbeltet gir Norge milde vintre og isfrie fjorder. På vestsiden av Atlanteren treffer samme bredde kald luft og kaldt kystvann. Havet er en del av forklaringen — ikke hele."
+      viewBox="0 0 820 280"
+    >
+      {() => (
+        <>
+          <rect x="50" y="50" width="330" height="170" rx="10" fill="#1c3330" stroke={C.teal} />
+          <L x="215" y="90" fill={C.teal} size={16} anchor="middle" weight={600}>
+            Norskekysten  ·  60°N
+          </L>
+          <L x="215" y="122" fill={C.fg} size={14} anchor="middle">
+            milde vintre, isfrie fjorder
+          </L>
+          <L x="215" y="150" fill={C.muted} size={13} anchor="middle">
+            varmt atlanterhavsvann + vestavind
+          </L>
+          <rect x="440" y="50" width="330" height="170" rx="10" fill="#1a2830" stroke={C.cold} />
+          <L x="605" y="90" fill={C.cold} size={16} anchor="middle" weight={600}>
+            Labrador  ·  60°N
+          </L>
+          <L x="605" y="122" fill={C.fg} size={14} anchor="middle">
+            lange, kalde vintre
+          </L>
+          <L x="605" y="150" fill={C.muted} size={13} anchor="middle">
+            kald strøm, kaldt kontinent
+          </L>
+          <L x="410" y="250" fill={C.muted} size={13} anchor="middle">
+            samme solhøyde  ·  helt ulikt klimautfall
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}

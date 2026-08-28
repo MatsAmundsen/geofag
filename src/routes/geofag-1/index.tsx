@@ -1,0 +1,89 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { GF1_THEMES } from "@/lib/nav";
+
+export const Route = createFileRoute("/geofag-1/")({ component: Geofag1 });
+
+function Geofag1() {
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <a
+        href="#temaer"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+      >
+        Hopp til temaer
+      </a>
+      <SiteHeader />
+      <main className="flex-1">
+        <section className="relative isolate min-h-[64vh] overflow-hidden">
+          <img
+            src="/images/portal-gf1.jpg"
+            alt="Stratovulkan i utbrudd"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+          <div className="relative mx-auto flex min-h-[64vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6">
+            <p className="text-xs font-medium uppercase tracking-wider text-primary">
+              Geofag 1 · LK20 GFG01-03
+            </p>
+            <h1 className="mt-3 max-w-3xl font-display text-4xl font-medium tracking-tight sm:text-6xl">
+              Jorda under oss.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base text-foreground/90 sm:text-lg">
+              Kompetansemålene i Geofag 1 peker mot geosfæren og hydrosfæren: platene, bergartene,
+              vannet på land — og naturfarene som følger. Dette er et utkast til temasider. Innholdet
+              skriver vi etter hvert, slik vi har gjort i Geofag 2.
+            </p>
+          </div>
+        </section>
+
+        <section id="temaer" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-3xl font-medium tracking-tight">Temautkast</h2>
+            <p className="mt-3 text-muted-foreground">
+              Seks innganger, gruppert etter kompetansemålene etter Geofag 1. Naturfarer sitter i to
+              av dem: vulkaner og jordskjelv, og vann, flom og skred.
+            </p>
+          </div>
+
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2">
+            {GF1_THEMES.map((tema) => (
+              <li key={tema.slug}>
+                <Link
+                  to="/geofag-1/$slug"
+                  params={{ slug: tema.slug }}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
+                >
+                  <div className="relative aspect-photo overflow-hidden">
+                    <img
+                      src={tema.image}
+                      alt={tema.alt}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                    <span className="absolute left-3 top-3 rounded-md bg-background/80 px-2 py-1 text-xs font-medium text-muted-foreground">
+                      Utkast
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-2 p-5">
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                      {tema.kicker}
+                    </p>
+                    <h3 className="font-display text-2xl font-medium tracking-tight">{tema.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{tema.blurb}</p>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-primary">
+                      Åpne utkast
+                      <ArrowRight className="size-4" />
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
