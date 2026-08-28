@@ -12,8 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Geofag2RouteImport } from './routes/geofag-2'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
-import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
+import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
@@ -36,14 +36,14 @@ const Geofag1IndexRoute = Geofag1IndexRouteImport.update({
   path: '/geofag-1/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
-  id: '/geofag-1/platetektonikk',
-  path: '/geofag-1/platetektonikk',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Geofag1SlugRoute = Geofag1SlugRouteImport.update({
   id: '/geofag-1/$slug',
   path: '/geofag-1/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
+  id: '/geofag-1/platetektonikk',
+  path: '/geofag-1/platetektonikk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemaCoriolisRoute = TemaCoriolisRouteImport.update({
