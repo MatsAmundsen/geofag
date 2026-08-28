@@ -25,8 +25,7 @@ function PlatetektonikkPage() {
         label: "Forrige: Jordsystemene",
       }}
       next={{
-        to: "/geofag-1/$slug",
-        params: { slug: "vulkaner-og-jordskjelv" },
+        to: "/geofag-1/vulkaner-og-jordskjelv",
         label: "Neste: Vulkaner og jordskjelv",
       }}
     >

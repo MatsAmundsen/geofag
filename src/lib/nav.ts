@@ -113,7 +113,7 @@ export const GF1_THEMES = [
     alt: "Snødekt stratovulkan med aske og oppsprukket dal",
     blurb:
       "Der platene møtes, bygges spenning og magma. Risiko, varsling og hvordan samfunn kan forebygge og tilpasse seg.",
-    status: "utkast" as const,
+    status: "klar" as const,
     maal: "Naturfarer knyttet til geosfæren. Risiko, forebygging og tilpasning.",
   },
   {
