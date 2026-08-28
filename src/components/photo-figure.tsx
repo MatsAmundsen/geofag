@@ -75,15 +75,23 @@ function Overlay({ arrows, marks }: { arrows?: FigArrow[]; marks?: FigMark[] }) 
       ) : null}
       {marks?.map((m, i) => {
         const tone = m.tone ?? "fg";
-        const x = m.align === "right" ? "-100%" : m.align === "center" ? "-50%" : "0%";
+        // Anchor from the side the label grows away from, so the containing block
+        // leaves room for the text instead of squeezing it against the edge.
+        const side =
+          m.align === "right"
+            ? { right: `${100 - m.x}%` }
+            : m.align === "center"
+              ? { left: `${m.x}%`, translateX: "-50%" }
+              : { left: `${m.x}%` };
         return (
           <span
             key={`${m.text}-${i}`}
             className="pointer-events-none absolute max-w-[46%] rounded-md bg-background/78 px-2 py-1 text-[11px] font-medium leading-tight text-foreground shadow-sm backdrop-blur-sm sm:text-xs"
             style={{
-              left: `${m.x}%`,
+              left: side.left,
+              right: side.right,
               top: `${m.y}%`,
-              transform: `translate(${x}, -50%)`,
+              transform: `translate(${side.translateX ?? "0%"}, -50%)`,
               color: TONE[tone],
             }}
           >
