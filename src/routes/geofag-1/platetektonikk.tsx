@@ -31,8 +31,8 @@ function PlatetektonikkPage() {
         label: "Neste: Vulkaner og jordskjelv",
       }}
     >
-      <OrdBoks ord="litosfære" barn="skorpe + øvre stive mantel, delt i plater" />
-      <OrdBoks ord="astenosfære" barn="mykere sone platene glir på" />
+      <OrdBoks ord="Litosfære" barn="Skorpe pluss øvre stive mantel, delt i plater." />
+      <OrdBoks ord="Astenosfære" barn="Mykere sone platene glir på." />
 
       <p>
         Platene beveger seg fordi mantelen har langsomme strømmer. De kalles konveksjon og drives av
@@ -41,14 +41,18 @@ function PlatetektonikkPage() {
         sprer i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15 cm per år. GPS viser
         at dagens retning og fart stemmer med mønsteret over millioner av år.
       </p>
-      <OrdBoks ord="konveksjon" barn="langsomme mantelstrømmer drevet av indre varme" />
+      <OrdBoks ord="Konveksjon" barn="Langsomme mantelstrømmer drevet av indre varme." />
+      <OrdBoks
+        ord="Slab pull"
+        barn="Kald, tett havbunn synker og trekker platen med seg. Ofte den viktigste trekkraften ved konvergens."
+      />
 
       <p>
         Kontinental skorpe er vanligvis 30–50 km tykk og har lav tetthet. Havbunnsskorpe er 5–7 km
         tykk, tettere, og ingen er eldre enn 175 millioner år. Jorda har ikke endret størrelse
         vesentlig. Ny skorpe ved ryggene krever at skorpe ødelegges ved subduksjon.
       </p>
-      <OrdBoks ord="subduksjon" barn="tettere havbunn synker under en annen plate" />
+      <OrdBoks ord="Subduksjon" barn="Tettere havbunn synker under en annen plate." />
 
       <PlatesMapDiagram />
 
@@ -60,6 +64,10 @@ function PlatetektonikkPage() {
         havbunn. Island ligger på Den midtatlantiske ryggen: sprekker, lava og rifting. Jan Mayen
         ligger i samme ryggsystem.
       </p>
+      <OrdBoks
+        ord="Divergerende grense"
+        barn="Platene glir fra hverandre. Magma stiger og blir ny havbunn. Island og Jan Mayen sitter her."
+      />
       <SpreadingDiagram />
       <PhotoFigure
         src="/images/fig-spredring.jpg"
@@ -99,6 +107,10 @@ function PlatetektonikkPage() {
         ikke skorpe. San Andreas beveger seg om lag 5 cm per år. På havbunn forskyver transformene
         ryggen i sikksakk. Jordskjelv, lite vulkanisme.
       </p>
+      <OrdBoks
+        ord="Transformgrense"
+        barn="Platene glir sidelengs. Ingen ny skorpe, ingen subduksjon. Jordskjelv, lite vulkanisme. San Andreas er typeeksempelet."
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Hva det har gjort med Norge
@@ -116,6 +128,10 @@ function PlatetektonikkPage() {
         dag ser vi graben, lava og dypbergart, og forkastningskanter mot grunnfjellet. Det er
         konsekvens av gammel indre bevegelse, ikke en aktiv plategrense.
       </p>
+      <OrdBoks
+        ord="Rift"
+        barn="Skorpa strekkes og sprekker. Oslofeltet er en død rift fra perm — ikke en aktiv plategrense i dag."
+      />
       <p>
         Kaledonidene ble til for 400–500 millioner år siden, da landområder i dagens Europa
         kolliderte med Amerika og Grønland. Store bergflak ble skjøvet som skyvedekker. Fjellene du
@@ -130,6 +146,10 @@ function PlatetektonikkPage() {
         Etter istiden reiste litosfæren seg. Det kalles isostasi. Marine avsetninger som ble lagt i
         fjord, ligger nå over havnivå. Marin grense er 0–220 m.
       </p>
+      <OrdBoks
+        ord="Isostasi"
+        barn="Litosfæren flyter på mantelen. Når innlandsisen forsvinner, reiser landet seg. Marin leire kan da ligge på tørt land."
+      />
 
       <Callout title="Kompetansemål">
         <p>{tema.maal}</p>

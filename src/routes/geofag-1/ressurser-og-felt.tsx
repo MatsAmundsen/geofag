@@ -64,16 +64,28 @@ function RessurserOgFeltPage() {
         usortert. Fast fjell knuses til pukk. Kvalitet er kornform, styrke og avstand til bygget.
         Kort transport slår ofte «bedre» stein langt unna.
       </p>
+      <OrdBoks
+        ord="Pukk"
+        barn="Knust fast fjell til vei, betong og fylling. Norges største geologiske uttak i volum. Avstand til bygget teller ofte mer enn «bedre» stein langt unna."
+      />
       <p>
         Metall sitter i malm: mineraler med høy nok konsentrasjon til at uttak lønner seg. Det er
         geologi pluss økonomi. En rik malm i feil landskap kan likevel ligge. En fattigere malm nær
         infrastruktur kan tas ut.
       </p>
+      <OrdBoks
+        ord="Malm"
+        barn="Berg med høy nok konsentrasjon av nyttige mineraler til at uttak kan lønne seg. Geologi pluss økonomi."
+      />
       <p>
         Petroleum sitter i porøs bergart under takbergart, i et felle-geometri. Nordsjøen er
         sedimentbasseng. Det er ikke «olje i fjorden». Det er porer i sandstein, fylt over
         millioner av år.
       </p>
+      <OrdBoks
+        ord="Petroleumfelle"
+        barn="Porøs bergart under takbergart, i en geometri som holder olje og gass. Ikke «olje i fjorden» — porer i sandstein."
+      />
       <p>
         Grunnvann sitter i porer og sprekker. Løsmasser langs elv kan gi store uttak. Fast fjell gir
         mindre, men kan forsyne en gård. Overuttak senker speilet og kan saltvannsinntrenging ved

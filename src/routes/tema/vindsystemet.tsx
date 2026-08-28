@@ -81,6 +81,10 @@ function VindsystemetPage() {
         termisk indirekte — den drives av de vandrende lavtrykkene, ikke av at bakken under er
         varmest. Derfor ser du sjelden en jevn Ferrel-sløyfe på satellittbildet. Du ser stormene.
       </p>
+      <OrdBoks
+        ord="Termisk indirekte"
+        barn="Et kretsløp som ikke drives av at bakken under er varmest. Ferrel-cellen drives av stormene, ikke av soloppvarming der Norge ligger."
+      />
 
       <PhotoFigure
         src="/images/fig-celler.jpg"
@@ -246,6 +250,10 @@ function VindsystemetPage() {
         tørker på vei ned. Forskjellen mellom Bergen og Hamar er vestavind, polarfront og fjell —
         ikke bare «nærhet til kysten».
       </p>
+      <OrdBoks
+        ord="Loside og leside"
+        barn="Loside: siden fjellet vender mot vinden, der lufta løftes og det regner. Leside: baksiden, der lufta synker og tørker."
+      />
       <OrdBoks
         ord="Orografisk nedbør"
         barn="Nedbør som kommer fordi luft tvinges opp av fjell. Vestlandet er læreboka. Leside er baksiden, der det ofte er tørrere."

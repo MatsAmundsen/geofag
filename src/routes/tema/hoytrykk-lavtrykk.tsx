@@ -59,6 +59,10 @@ function TrykkPage() {
         vanligvis det urolige været: byger, frontregn, storm.
       </p>
       <OrdBoks
+        ord="Kondensasjon"
+        barn="Når vanndamp blir til vanndråper. Luft som stiger, avkjøles. Da kan den ikke holde like mye damp, og det blir skyer."
+      />
+      <OrdBoks
         ord="Lavtrykk"
         barn="Et område der luft stiger og trykket ved bakken er lavere enn rundt. Ofte skyer og nedbør. På værkart merket L."
       />

@@ -57,6 +57,10 @@ function CoriolisPage() {
         Først trykkgradienten. Luft går fra høyt mot lavt trykk. Jo tettere isobarene ligger, desto
         sterkere er denne driften.
       </p>
+      <OrdBoks
+        ord="Isobar og trykkgradient"
+        barn="Isobar: linje med samme lufttrykk på værkartet. Trykkgradient: hvor fort trykket faller. Tette isobarer = sterk drift fra H mot L."
+      />
       <p>Så coriolis. Så fort luften får fart, dreies den. På nordlig halvkule: mot høyre.</p>
       <p>
         Når trykkgradient og coriolis veier hverandre opp, går vinden ikke lenger inn mot
@@ -159,6 +163,10 @@ function CoriolisPage() {
         inversjon i dalene. Om sommeren: tørt og varmt. Stormbanen går da sør eller nord for oss,
         ikke tvers over.
       </p>
+      <OrdBoks
+        ord="Zonal og meridional"
+        barn="Zonal: jet og vestavind går nesten rett vest–øst. Meridional: store bølger nord–sør. Meridional flytter varm og kald luft langt."
+      />
       <OrdBoks
         ord="Blocking"
         barn="En rygg som blir stående. Vestavindsbeltet stanser. Lavtrykkene styres sør eller nord for oss, ikke tvers over."

@@ -51,6 +51,10 @@ function KatastroferPage() {
         ekvator er coriolis for svak. Derfor fødes ikke orkaner der — selv om havet er varmt.
       </p>
       <OrdBoks
+        ord="Øyet"
+        barn="Det stille senteret i en tropisk syklon. Luft synker der. Rundt øyet sitter de sterkeste vindene."
+      />
+      <OrdBoks
         ord="Tropisk syklon"
         barn="Fellesnavn for orkan, tyfon og syklon: et varmkjerne-lavtrykk over tropisk hav, drevet av kondensasjonsvarme og formet av coriolis. Øyet er det stille senteret."
       />

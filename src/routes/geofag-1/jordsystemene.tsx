@@ -37,8 +37,8 @@ function JordsystemenePage() {
         Atmosfære, kryosfære og biosfære er med som drivere. De graver, løser og avsetter. Vær og
         havstrøm er ikke kjernen.
       </p>
-      <OrdBoks ord="geosfære" barn="den faste jorda: berggrunn, løsmasser, jord" />
-      <OrdBoks ord="hydrosfære" barn="her: elver, innsjøer, grunnvann og porevann" />
+      <OrdBoks ord="Geosfære" barn="Den faste jorda: berggrunn, løsmasser, jord." />
+      <OrdBoks ord="Hydrosfære" barn="Her: elver, innsjøer, grunnvann og porevann. Havet hører med, men sporet i geofag 1 er ferskvann." />
       <p>
         Havet hører også til hydrosfæren. I geofag 1 følger du ferskvannssporet. Havstrømmer og
         AMOC ligger i geofag 2.
@@ -50,8 +50,8 @@ function JordsystemenePage() {
         elv og grunnvann svarer.
       </p>
       <OrdBoks
-        ord="vekselvirkning"
-        barn="endring i ett delsystem som utløser respons i ett eller flere andre"
+        ord="Vekselvirkning"
+        barn="Endring i ett delsystem som utløser respons i ett eller flere andre."
       />
 
       <p>
@@ -72,6 +72,10 @@ function JordsystemenePage() {
         Forvitring er nedbrytning av berg på stedet. Det er den mest lokale vekselvirkningen du kan
         peke på i felt.
       </p>
+      <OrdBoks
+        ord="Forvitring"
+        barn="Nedbrytning av berg på stedet. Mekanisk (frost, røtter) eller kjemisk (syrer som løser mineraler). Bergarten flyttes ikke."
+      />
       <p>
         Mekanisk forvitring: vann i sprekker fryser, utvider seg og kiler fjellet. Det krever
         hydrosfære, fryse–tine og sprekker i geosfæren. Når isen forsvinner, kan trykkavlastning gi
@@ -87,6 +91,10 @@ function JordsystemenePage() {
         Forvitring er ikke det samme som erosjon. Erosjon er nedsliting pluss transport med vann, is
         eller tyngdekraft. Uten forvitring ingen sedimenter.
       </p>
+      <OrdBoks
+        ord="Erosjon"
+        barn="Nedsliting pluss transport. Vann, is eller tyngdekraft flytter det forvitringen har løsnet."
+      />
 
       <PhotoFigure
         src="/images/fig-forvitring.jpg"
@@ -120,6 +128,10 @@ function JordsystemenePage() {
         </Link>
         .
       </p>
+      <OrdBoks
+        ord="Isostasi"
+        barn="Litosfæren flyter på mantelen. Når isen forsvinner, reiser landet seg. Marin leire kan da ligge på tørt land."
+      />
       <p>
         Jostedalsbreen, Folgefonna og småbotnbreer i Nord-Norge er levende agenter. De fleste norske
         U-dalene er fossil form fra innlandsisen. Fjordene på Vestlandet er druknede U-daler: is
@@ -153,8 +165,8 @@ function JordsystemenePage() {
         tilbakekobling mellom atmosfære, hydrosfære og geosfære.
       </p>
       <OrdBoks
-        ord="tilbakekobling"
-        barn="negativ: en endring utløser en respons som demper den; silikatforvitring trekker CO₂ ut når CO₂ stiger"
+        ord="Tilbakekobling"
+        barn="Negativ: en endring utløser en respons som demper den. Silikatforvitring trekker CO₂ ut når CO₂ stiger."
       />
       <p>
         Regn med karbonsyre løser berg og frisetter ioner. Elvene fører dem til havet. Der felles

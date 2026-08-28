@@ -50,6 +50,10 @@ function HavstrommerPage() {
         ord="Ekman-transport"
         barn="At vannet i det øverste laget samlet sett flyttes 90° på vinden. Vestavind i Nord-Atlanteren skyver derfor vann mot sør. Passatene skyver vann mot nord. Da stables vannet midt i kretsløpet."
       />
+      <OrdBoks
+        ord="Oppwelling"
+        barn="Når overflatevann skyves bort fra kysten, stiger kaldt, næringsrikt dypvann opp. Det er Ekman-transport som avgjør, ikke at «vinden blåser opp vann»."
+      />
 
       <PhotoFigure
         src="/images/fig-ekman.jpg"
@@ -80,6 +84,10 @@ function HavstrommerPage() {
         fordi coriolis øker mot polene: vann som beveger seg nordover, dreies mer, og strømmen
         presses mot kontinentet.
       </p>
+      <OrdBoks
+        ord="Vestlig randstrøm"
+        barn="Den smale, raske kanten av en gyre mot vest: Golfstrømmen, Kuroshio. Coriolis øker mot polene, så strømmen presses mot kontinentet."
+      />
       <OrdBoks
         ord="Gyre"
         barn="Et stort, lukket kretsløp i havoverflaten, drevet av vind og formet av coriolis og kontinentene. Nord-Atlanteren har én. Stillehavet har sine."

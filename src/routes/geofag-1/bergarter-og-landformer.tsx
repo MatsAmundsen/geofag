@@ -32,8 +32,8 @@ function BergarterOgLandformerPage() {
       }}
     >
       <OrdBoks
-        ord="mineral"
-        barn="naturlig, uorganisk fast stoff med definert kjemi og krystallstruktur; byggestein i bergarter"
+        ord="Mineral"
+        barn="Naturlig, uorganisk fast stoff med definert kjemi og krystallstruktur. Byggestein i bergarter."
       />
 
       <p>
@@ -72,19 +72,26 @@ function BergarterOgLandformerPage() {
         signatur: store rombeformede feltspatkrystaller i finkornet grunnmasse. NGU kaller dem
         tvillingbergarter. Forskjellen er avkjølingssted, ikke to ulike magmaer.
       </p>
-      <OrdBoks ord="magmatisk" barn="størknet magma eller lava; dyp nede, dag oppe" />
+      <OrdBoks ord="Magmatisk" barn="Størknet magma eller lava. Dyp nede, dag oppe." />
       <p>
         Sedimentær bergart kommer av fragmenter, utfelling eller organismer. Kambrosilur i
         Oslofeltet veksler mellom leirskifer og kalkstein. Kalkstein bruser med fortynnet saltsyre.
         Fossiler og lagning peker sedimentært.
       </p>
+      <OrdBoks
+        ord="Sedimentær"
+        barn="Bergart av fragmenter, utfelling eller organismer. Lagning og fossiler peker hit. Kalkstein bruser med saltsyre."
+      />
       <p>
         Metamorf bergart er omdannet i fast tilstand, av trykk, temperatur eller fluider, uten full
         smelting. Gneis er en av Norges vanligste bergarter: stripet eller bølget, kornene synlige.
         I Sør-Norge er grunnfjellet eldre enn 900 millioner år. Foliasjon er evidens, ikke pynt.
         Metamorfose er ikke smelting. Smelting gir ny magmatisk bergart.
       </p>
-      <OrdBoks ord="metamorf" barn="omdannet i fast tilstand, uten full smelting" />
+      <OrdBoks
+        ord="Metamorf"
+        barn="Omdannet i fast tilstand, uten full smelting. Foliasjon — striper og bølger — er evidens."
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Bergartssyklusen</h2>
       <p>
@@ -93,6 +100,10 @@ function BergarterOgLandformerPage() {
         metamorfose. Forvitring, erosjon og avsetning driver overflateleddet. Diagenese lukker
         sediment til bergart.
       </p>
+      <OrdBoks
+        ord="Diagenese"
+        barn="Når løst sediment blir til fast bergart: kompaksjon og mineraler som binder kornene."
+      />
       <RockCycleDiagram />
       <p>
         Gneis i Østmarka har vært metamorf i mer enn 900 millioner år uten å bli magma. Larvikitt
@@ -107,18 +118,26 @@ function BergarterOgLandformerPage() {
         Oslofeltets permiske dypbergarter gjennomsetter kambrosilur. Riften er yngre enn
         havsedimentene.
       </p>
+      <OrdBoks
+        ord="Superposisjon"
+        barn="I uforstyrret lagrekke er det nederste eldst. Relativ alder: rekkefølge uten årstall."
+      />
       <p>
         Diskordans er et tidshull. Avsetning stoppet, erosjon tok bort, ny avsetning la seg oppå.
         Grunnfjell mot overliggende kambrosilur er en fundamental diskordans. Permisk lava over
         foldet kambrosilur i Oslofeltet er en annen. I skyvedekker kan eldre ligge over yngre. Da
         har tektonikk brutt premisset.
       </p>
-      <OrdBoks ord="diskordans" barn="tidshull: avsetning stoppet og/eller erosjon tok bort lag" />
+      <OrdBoks ord="Diskordans" barn="Tidshull: avsetning stoppet og/eller erosjon tok bort lag." />
       <p>
         C-14 daterer organisk materiale, ikke kambrosilur, gneis eller larvikitt. Halveringstid 5730
         år. Rekkevidde cirka 50 000 år. Etter mange halveringer er det for lite C-14 igjen. Gammel
         skorpe dateres med U–Pb i zirkon.
       </p>
+      <OrdBoks
+        ord="C-14"
+        barn="Daterer organisk materiale. Halveringstid 5730 år, rekkevidde ca. 50 000 år. Gneis og larvikitt dateres med U–Pb i zirkon."
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">U-dal og V-dal</h2>
       <p>

@@ -29,6 +29,10 @@ function NumeriskeModellerPage() {
         starttilstanden vokser raskt. Det kalles kaos. Derfor investerer varslingssentre mer i
         observasjoner og assimilering enn i å bare kjøre modellen lenger.
       </p>
+      <OrdBoks
+        ord="Kaos"
+        barn="Små feil i starttilstanden vokser fort. Derfor kan du ikke varsle været 12. juni 2087, selv om fysikken er den samme."
+      />
       <p>
         Havmodellering styres sterkt av randen fra atmosfæren, og av tetthet: temperatur og
         saltholdighet. Tidsskalaen er timer til uker, men også sesong og klima. Vann er tregere enn

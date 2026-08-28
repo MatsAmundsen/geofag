@@ -55,8 +55,8 @@ function VulkanerOgJordskjelvPage() {
         mest skjelvaktive områdene i Nord-Europa. Bare et fåtall skjelv har gitt bygningsskade.
       </p>
       <OrdBoks
-        ord="intraplate"
-        barn="skjelv inne på en plate, ikke ved aktiv grense; Norge er slikt"
+        ord="Intraplate"
+        barn="Skjelv inne på en plate, ikke ved aktiv grense. Norge er slikt."
       />
 
       <p>
@@ -67,8 +67,12 @@ function VulkanerOgJordskjelvPage() {
         jordskjelv.
       </p>
       <OrdBoks
-        ord="episenter"
-        barn="punktet på overflaten rett over bruddet; energien spres som seismiske bølger."
+        ord="Episenter"
+        barn="Punktet på overflaten rett over bruddet. Energien spres som seismiske bølger."
+      />
+      <OrdBoks
+        ord="Magnitude"
+        barn="Et mål på hvor mye energi skjelvet slapp. 5,4 i Oslofjorden 1904. Én enhet mer er omtrent tretti ganger mer energi."
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Vulkaner</h2>
@@ -78,6 +82,10 @@ function VulkanerOgJordskjelvPage() {
         Ved subduksjon: andesitt og ryolitt, ofte eksplosiv, med pyroklastisk strøm. Farer: lava,
         pyroklastisk strøm, aske, lahar og gass.
       </p>
+      <OrdBoks
+        ord="Pyroklastisk strøm"
+        barn="En rasende blanding av glohet gass, aske og stein som renner nedover vulkanen. Raskere og farligere enn lava."
+      />
       <p>
         De fleste vulkaner sitter på plategrenser. Unntaket er hotspot. En langvarig, varm sone
         under platen leverer magma mens platen glir over. Hawaii-kjeden blir eldre og mer erodert
@@ -86,8 +94,8 @@ function VulkanerOgJordskjelvPage() {
         faste.
       </p>
       <OrdBoks
-        ord="hotspot"
-        barn="langvarig magmakilde under platen; platen glir over og kan lage øykjede"
+        ord="Hotspot"
+        barn="Langvarig magmakilde under platen. Platen glir over og kan lage øykjede, som Hawaii."
       />
       <p>
         Norsk fastland har ingen aktive vulkaner. Oslofeltets magmatisme er perm, ikke en
@@ -125,8 +133,8 @@ function VulkanerOgJordskjelvPage() {
         havbunnsløft ved plategrense.
       </p>
       <OrdBoks
-        ord="tsunami"
-        barn="i Norge nesten alltid fra skred i fjord, innsjø eller skråning, ikke fra subduksjon"
+        ord="Tsunami"
+        barn="I Norge nesten alltid fra skred i fjord, innsjø eller skråning — ikke fra subduksjon."
       />
       <p>
         Storeggaskredet gikk for ca. 8150 år siden. Volum 2400–3200 km³, bakvegg 310 km, utløp 810

@@ -49,6 +49,10 @@ function KlimaPage() {
         om sommeren og mater elvene. Isen er treg, men ikke stille.
       </p>
       <OrdBoks
+        ord="Permafrost"
+        barn="Bakke som er frosset året rundt. Lagrer karbon. Tiner den, kan noe av karbonet slippe ut som CO₂ eller metan."
+      />
+      <OrdBoks
         ord="Kryosfæren"
         barn="All is og snø på jorda: innlandsis, isbreer, havis og permafrost. Den er hvit, kald og treg — og den henger tett sammen med havet."
       />
@@ -121,6 +125,10 @@ function KlimaPage() {
         det første dytet. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer
         varme. Det kalles en positiv tilbakekobling.
       </p>
+      <OrdBoks
+        ord="Vanndamp"
+        barn="Den sterkeste drivhusgassen i lufta, men mengden styres av temperaturen. Derfor er den en forsterker, ikke det første dytet."
+      />
       <OrdBoks
         ord="Tilbakekobling"
         barn="Når en endring utløser en ny endring som enten forsterker (positiv) eller demper (negativ) den første. Positiv betyr ikke «bra». Det betyr forsterkende."

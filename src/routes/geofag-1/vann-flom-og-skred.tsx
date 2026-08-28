@@ -36,6 +36,14 @@ function VannFlomOgSkredPage() {
         atmosfæren er evapotranspirasjon. Tap mot havet er avrenning. Vegetasjon og jord styrer
         fordelingen mellom infiltrasjon og flomtopp. Geosfæren er røret og filteret.
       </p>
+      <OrdBoks
+        ord="Evapotranspirasjon"
+        barn="Vann som går tilbake til lufta: fordamping fra bakke og vannflater, pluss det plantene puster ut."
+      />
+      <OrdBoks
+        ord="Infiltrasjon"
+        barn="Vann som siver ned i jorda i stedet for å renne av. Vegetasjon og jord styrer hvor mye som blir flomtopp."
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hydrogram</h2>
       <p>
@@ -43,7 +51,7 @@ function VannFlomOgSkredPage() {
         magasin, bratt felt, tette flater, intens regn. Bred, sen topp: stor sjøprosent, slakt felt,
         snøsmelting over uker.
       </p>
-      <OrdBoks ord="hydrogram" barn="vannføring mot tid; formen er feltets respons" />
+      <OrdBoks ord="Hydrogram" barn="Vannføring mot tid. Formen er feltets respons." />
       <HydrographDiagram />
       <p>
         Regnflom treffer Vestlandet, kyst og små bratte felt, særlig høst og vinter. Tidsskala:
@@ -61,7 +69,7 @@ function VannFlomOgSkredPage() {
         ikke avsatt i hav. Aktsomhet for kvikkleire gjelder overalt under marin grense, også utenfor
         tegnede faresoner. Kartene friskmelder ikke omlandet.
       </p>
-      <OrdBoks ord="marin grense" barn="høyeste havnivå etter siste istid; i Norge 0–220 m" />
+      <OrdBoks ord="Marin grense" barn="Høyeste havnivå etter siste istid. I Norge 0–220 m, stedavhengig." />
       <p>
         Vanlig sjøvann har ca. 35 g salt per liter. Saltet binder leirflakene. Når landet hevet seg,
         ble porevannet ferskere. Når saltet kommer under ca. 2 g/L, kan kvikkleire dannes.
@@ -70,8 +78,8 @@ function VannFlomOgSkredPage() {
         retrogressivt: kanten mister støtte og spiser seg bakover.
       </p>
       <OrdBoks
-        ord="kvikkleire"
-        barn="marin leire der saltet i porevannet er vasket ut, under ca. 2 g/L; kan flyte ved omrøring"
+        ord="Kvikkleire"
+        barn="Marin leire der saltet i porevannet er vasket ut. Uforstyrret er den fast. Omrøres den, kan den flyte."
       />
       <MarineLimitDiagram />
       <PhotoFigure
@@ -103,7 +111,10 @@ function VannFlomOgSkredPage() {
         utløpet. Et ustabilt fjell uten folk nedenfor er høy fare og lav risiko. Risiko er fare
         ganger eksponering ganger sårbarhet.
       </p>
-      <OrdBoks ord="risiko" barn="fare × eksponering × sårbarhet" />
+      <OrdBoks
+        ord="Risiko"
+        barn="Fare × eksponering × sårbarhet. Et ustabilt fjell uten folk nedenfor er høy fare og lav risiko."
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hans 2023</h2>
       <p>

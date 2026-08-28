@@ -139,6 +139,10 @@ function PaleoklimaPage() {
         lavere, CO₂ ca. 180–190 ppm.
       </p>
       <OrdBoks
+        ord="Kvartær"
+        barn="De siste ca. 2,6 millioner år: istider (glacialer) og mellomistider (interglacialer) i serie. Holocen er den mellomistiden vi er i nå."
+      />
+      <OrdBoks
         ord="Holocen"
         barn="Nåværende mellomistid, fra ca. 11 700 år før nå. Relativt stabil."
       />
@@ -158,6 +162,10 @@ function PaleoklimaPage() {
         havforsuring. Utslippsraten den gang er anslått 5–10 ganger lavere enn dagens. Analog for at
         karbon kan varme flere grader. Dårlig analog for hastighet.
       </p>
+      <OrdBoks
+        ord="PETM"
+        barn="Paleocen–eocen-temperaturmaksimum for ca. 56 millioner år siden. Raskt karbonpådriv og flere grader oppvarming. Analog for at karbon varmer. Dårlig analog for farten i dag."
+      />
       <p>
         For 8200 år siden (8,2 ka): kort avkjøling i tidlig holocen, knyttet til smeltevann i
         Nord-Atlanteren. Sammen med yngre dryas er det bevis for at AMOC-terskelen finnes. De er
