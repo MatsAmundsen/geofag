@@ -155,6 +155,27 @@ export function PhotoFigure({
   );
 }
 
+export function FigurePlaceholder({
+  heading,
+  caption,
+  label,
+}: {
+  heading: string;
+  caption: string;
+  label: string;
+}) {
+  return (
+    <figure className="my-8 overflow-hidden rounded-xl border border-border bg-card">
+      <p className="border-b border-border px-4 py-3 text-sm font-medium text-foreground sm:px-6">
+        {heading}
+      </p>
+      <div role="img" aria-label={label} className="min-h-48 bg-muted" />
+      <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
 
 export function PhotoPair({
   heading,
@@ -186,9 +207,16 @@ export function PhotoPair({
       </p>
       <div className="grid sm:grid-cols-2">
         {[left, right].map((side) => (
-          <div key={side.title} className="border-b border-border sm:border-b-0 sm:border-r sm:last:border-r-0">
+          <div
+            key={side.title}
+            className="border-b border-border sm:border-b-0 sm:border-r sm:last:border-r-0"
+          >
             <div className="relative aspect-video bg-muted">
-              <img src={side.src} alt={side.alt} className="absolute inset-0 h-full w-full object-cover" />
+              <img
+                src={side.src}
+                alt={side.alt}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
               <Overlay arrows={side.arrows} marks={side.marks} />
             </div>
             <p className="px-4 py-2 text-xs font-medium text-foreground">{side.title}</p>
