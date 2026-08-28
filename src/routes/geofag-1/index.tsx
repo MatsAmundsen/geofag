@@ -44,7 +44,7 @@ function Geofag1() {
             <h2 className="font-display text-3xl font-medium tracking-tight">Temaer</h2>
             <p className="mt-3 text-muted-foreground">
               Seks innganger etter kompetansemålene. Naturfarer sitter i to av dem: vulkaner og
-              jordskjelv, og vann, flom og skred. Ressurser og felt er ennå utkast.
+              jordskjelv, og vann, flom og skred. Ressurser og felt lukker løpet.
             </p>
           </div>
 

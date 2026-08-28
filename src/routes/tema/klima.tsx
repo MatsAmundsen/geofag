@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
@@ -237,6 +237,13 @@ function KlimaPage() {
         ord="Paleoklima"
         barn="Klimaet i fortiden, rekonstruert fra iskjern, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er."
       />
+      <p>
+        Hvordan arkivene blir til kunnskap — proxy, iskjerne, Milanković og terskler — står under{" "}
+        <Link to="/tema/paleoklima" className="text-primary underline-offset-2 hover:underline">
+          paleoklima
+        </Link>
+        .
+      </p>
 
       <PhotoFigure
         src="/images/fig-paleo.jpg"

@@ -1,6 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { PaleoDiagram } from "@/components/diagrams/paleo";
+import { PhotoFigure } from "@/components/photo-figure";
+import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 
@@ -13,7 +15,7 @@ function PaleoklimaPage() {
     <TopicLayout
       kicker="Geofag 2 · Arkiv"
       title="Paleoklima"
-      lead="Instrumentelle målinger dekker 150–170 år globalt. Mauna Loa har målt CO₂ siden 1958. Satellitt-havis siden 1979. Klimasystemet har tidsskalaer på tusener til millioner av år. Uten paleodata kan vi ikke teste om klimasensitivitet på 3 °C passer med istider og varmeperioder, se om dagens CO₂ og oppvarmingshastighet er enestående, eller studere terskler som ikke har slått ut i vår korte måleserie."
+      lead="Termometer og satellitt dekker et øyeblikk. Istider, varmeperioder og plutselige hopp sitter i is, havbunn og tre. Uten de arkivene kan vi ikke si om dagens CO₂ er utenfor det naturlige spennet — eller om klimamodellene treffer når jorda faktisk har vært kald og varm."
       banner="/images/fig-paleo.jpg"
       bannerAlt="Lagdelt blå breis med bølgende bånd av gammel is"
       videoTopic="paleoklima"
@@ -21,68 +23,98 @@ function PaleoklimaPage() {
       next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
     >
       <p>
-        Kompetansemålet er ikke å fortelle istidshistorie. Det er hvordan arkivene blir til kunnskap
-        som modeller og risikovurdering bruker. Kjeden: arkiv, datering, kalibrering mot moderne
-        observasjon, rekonstruksjon med usikkerhet, sammenligning med modeller, constraint på
-        framtiden. IPCC AR6 sier at paleoevidens bidro til å innsnevre ECS til beste anslag 3 °C,
-        likely 2,5–4 °C. AR7 er ikke publisert.
+        Kompetansemålet er ikke å fortelle istidshistorie. Det er kjeden fra arkiv til kunnskap:
+        noe i naturen tar vare på et spor, vi daterer det, vi kalibrerer mot det vi måler i dag, vi
+        rekonstruerer med usikkerhet, og vi sammenligner med{" "}
+        <Link
+          to="/tema/numeriske-modeller"
+          className="text-primary underline-offset-2 hover:underline"
+        >
+          modellene
+        </Link>
+        . Da får vi et constraint på framtiden — ikke et værvarsel for år 12000 f.Kr.
       </p>
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Proxy og iskjerne</h2>
       <p>
-        En proxy er aldri temperaturen i ett bestemt forhistorisk år. Den er en fysisk eller
-        biologisk størrelse som korrelerer med klima, med støy, sesongskjevhet og dateringsfeil.
-        Flere uavhengige proxyer som konvergerer, slår én spektakulær kjerne.
+        En proxy er aldri temperaturen i ett bestemt forhistorisk år. Den er et spor som henger
+        sammen med klima: isotoper i is, skall i havbunn, årringer, pollen. Hvert spor har støy,
+        sesongskjevhet og dateringsfeil. Flere uavhengige spor som peker samme vei, slår én
+        spektakulær kjerne.
       </p>
       <OrdBoks
-        ord="proxy"
-        barn="fysisk eller biologisk størrelse som korrelerer med klima, med støy; aldri temperaturen i ett bestemt forhistorisk år"
+        ord="Proxy"
+        barn="Et spor som henger sammen med klima. Aldri temperaturen i ett bestemt forhistorisk år. Alltid med støy."
       />
+
+      <PhotoFigure
+        src="/images/fig-iskjerne.jpg"
+        alt="Sylinder av blå is med tynne årlige lag og innestengte luftbobler"
+        heading="Luftboblene er ekte fortidsatmosfære"
+        caption="Iskjernen er is med årlige lag. Boblene i antarktisk is er luft fra den tiden isen ble til. CO₂-kurven over 800 000 år er derfor en måling, ikke en tolkning."
+        marks={[
+          { x: 6, y: 14, n: "1", text: "Årlige lag", tone: "cold" },
+          { x: 58, y: 48, n: "2", text: "Innestengt luft", tone: "teal" },
+        ]}
+        points={[
+          { n: "1", label: "Lagene daterer. Tynnere lag: tørrere eller kaldere år." },
+          { n: "2", label: "Boblene er luft. CO₂ der er målt, ikke gjettet." },
+        ]}
+      />
+
       <p>
-        Iskjernen er sylinder av is med årlige lag og innestengt luft. Luftboblene i antarktisk is
-        er ekte fortidsatmosfære. CO₂-kurven over 800 000 år er derfor en måling, ikke en tolkning.
-        EPICA Dome C dekker åtte sykluser. Laveste målte CO₂ i is: 172 ppm. Naturlig spenn i
-        senkvartær: 172–300 ppm. Dagens 425+ ppm ligger langt utenfor. Vostok dekker 420 000 år og
-        fire sykluser.
+        EPICA Dome C dekker åtte istidssykluser. Laveste målte CO₂ i is: 172 ppm. Naturlig spenn i
+        senkvartær: 172–300 ppm. Dagens verdi ligger langt over 400. Vostok dekker fire sykluser.
       </p>
       <OrdBoks
-        ord="iskjerne"
-        barn="sylinder av is med årlige lag og innestengt luft; boblene i antarktisk is er ekte fortidsatmosfære"
+        ord="Iskjerne"
+        barn="Sylinder av is med årlige lag og innestengt luft. Boblene i antarktisk is er ekte fortidsatmosfære."
       />
       <p>
         Gassalderen er yngre enn isen rundt, fordi boblene lukkes på dybde. Det er en kjent
-        usikkerhet når CO₂ og temperatur sammenlignes på hundreårsskala.
+        usikkerhet når CO₂ og temperatur sammenlignes på hundreårsskala — ikke en grunn til å kaste
+        hele kurven.
       </p>
       <p>
-        δ¹⁸O er avviket i forholdet ¹⁸O/¹⁶O fra en standard. I is: lavere temperatur, lavere δ¹⁸O.
-        Den tunge isotopen faller mer ut underveis mot polene. I marine karbonater blander δ¹⁸O
-        vanntemperatur og globalt isvolum, fordi ¹⁶O låses i innlandsis under istid. Samme symbol,
-        ulik prosess. Navngi arkivet.
+        δ¹⁸O er avviket i forholdet mellom den tunge og den lette oksygenisotopen. I is: kaldere
+        luft, lavere verdi. Den tunge isotopen faller mer ut underveis mot polene. I marine
+        karbonater blander samme symbol vanntemperatur og globalt isvolum, fordi den lette isotopen
+        låses i innlandsis under istid. Samme tegn, ulik prosess. Navngi arkivet.
       </p>
+      <OrdBoks
+        ord="δ¹⁸O"
+        barn="Avvik i ¹⁸O/¹⁶O. I is: kaldere gir lavere verdi. I havbunn: temperatur pluss isvolum. Navngi arkivet."
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Milanković</h2>
       <p>
-        Tre orbitale perioder endrer innstrålingens fordeling, og bare svakt mengden. Eksentrisitet,
-        ca. 100 000 år: banens ellipse. Helning, ca. 41 000 år: sterkere sesonger og mer sommersol
-        på høye bredder når helningen er høy. Presesjon, ca. 23 000 og 19 000 år: når på året jorda
-        er nærmest sola. Det styrer sommersmelting på 65 °N.
+        Tre langsomme svingninger i jordbanen endrer hvor innstrålingen treffer, ikke mengden sol i
+        alt vesentlig. Banens ellipse (eksentrisitet). Jordaksens helning (sterkere sesonger når
+        helningen er høy). Presesjon: når på året jorda er nærmest sola. Det som teller for
+        istidene, er sommersmelting på høye nordlige bredder.
       </p>
       <OrdBoks
         ord="Milanković"
-        barn="tre orbitale perioder som endrer innstrålingens fordeling (ikke mengden); styrer sommersmelting på 65 °N"
+        barn="Tre orbitale perioder som flytter innstrålingen. De styrer sommersmelting på 65 °N — og dermed om innlandsisen overlever sommeren."
       />
+
+      <PaleoDiagram />
+
       <p>
         Milanković starter deglasiasjoner ved å øke sommersol på nordlige høye bredder, slik at
         isdekker smelter. CO₂ og albedo forsterker og gjør endringen global. Det forklarer ikke
-        1850–2026. Orbitale endringer er for trege, og går nå svakt mot svakere sommersol på 65 °N,
-        altså mot langsom avkjøling over tusener av år. Det er det motsatte av observert oppvarming.
+        oppvarmingen siden 1850. Orbitale endringer er for trege, og går nå svakt mot svakere
+        sommersol på 65 °N — altså mot langsom avkjøling over tusener av år. Det er det motsatte av
+        observert oppvarming.
       </p>
       <p>
         Under deglasiasjon starter orbital innstråling, og CO₂ forsterker. I dag starter CO₂. Vi
-        måler utslippene. Årsaksretningen er ikke evig én vei.
+        måler utslippene. Årsaksretningen er ikke evig én vei. Mer om pådriv og tilbakekobling under{" "}
+        <Link to="/tema/klima" className="text-primary underline-offset-2 hover:underline">
+          klima
+        </Link>
+        .
       </p>
-
-      <PaleoDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Holocen</h2>
       <p>
@@ -91,28 +123,33 @@ function PaleoklimaPage() {
         glacialmaksimum ca. 21 000 år siden: Fennoskandisk isdekke over Norge, havnivå ca. 120 m
         lavere, CO₂ ca. 180–190 ppm.
       </p>
-      <OrdBoks ord="holocen" barn="nåværende mellomistid, fra ca. 11 700 år før nå" />
+      <OrdBoks ord="Holocen" barn="Nåværende mellomistid, fra ca. 11 700 år før nå. Relativt stabil." />
       <p>
-        AR6, medium confidence: den varmeste flerårhundresperioden for ca. 6500 år siden lå 0,2–1 °C
-        over 1850–1900 globalt. Tiåret 2011–2020 ligger over dette. Oppvarmingen siden 1970 er
-        raskere enn i noen annen 50-årsperiode på minst 2000 år, high confidence.
+        Den varmeste flerårhundresperioden for ca. 6500 år siden lå noen tidels grader over
+        1850–1900 globalt. Tiåret 2011–2020 ligger over dette. Oppvarmingen siden 1970 er raskere
+        enn i noen annen 50-årsperiode på minst 2000 år.
       </p>
       <p>
         En ny istid, orbitalt, ligger titusener av år fram. Høy CO₂ kan utsette den. Det er
-        irrelevant for 2100-risiko.
+        irrelevant for risikoen i 2100.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Terskler, kort</h2>
       <p>
         PETM, ca. 56 millioner år siden: raskt karbonpådriv, flere grader global oppvarming og
-        havforsuring. Utslippsraten den gang er anslått 5–10 ganger lavere enn dagens. Analog for at
-        karbon kan varme flere grader. Dårlig analog for hastighet.
+        havforsuring. Utslippsraten den gang var lavere enn dagens. Analog for at karbon kan varme
+        flere grader. Dårlig analog for hastighet.
       </p>
       <p>
-        8,2 ka: kort avkjøling i tidlig holocen, knyttet til smeltevann i Nord-Atlanteren. Sammen
-        med yngre dryas er det eksistensbevis for at AMOC-terskelen finnes. De er ikke 1:1-analoger.
-        Den gang fantes enorme issjøer og isdekker i Nord-Amerika. AR6: AMOC er very likely å svekke
-        i det 21. århundre. Medium confidence for at et brått sammenbrudd ikke skjer før 2100.
+        For 8200 år siden: kort avkjøling i tidlig holocen, knyttet til smeltevann i Nord-Atlanteren.
+        Sammen med yngre dryas er det eksistensbevis for at AMOC-terskelen finnes. De er ikke
+        1:1-analoger. Den gang fantes enorme issjøer og isdekker i Nord-Amerika. AMOC er svært
+        sannsynlig å svekke i dette århundret. Et brått sammenbrudd før 2100 er ikke det mest
+        sannsynlige, men det er heller ikke utelukket. Se{" "}
+        <Link to="/tema/havstrommer" className="text-primary underline-offset-2 hover:underline">
+          havstrømmer
+        </Link>
+        .
       </p>
       <p>
         Paleodata straffer både ufølsomme og overfølsomme modeller. De minner om at beste anslag
@@ -129,19 +166,57 @@ function PaleoklimaPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
       <TermGrid>
         <Term
-          name="proxy"
-          def="fysisk eller biologisk størrelse som korrelerer med klima, med støy; aldri temperaturen i ett bestemt forhistorisk år"
+          name="Proxy"
+          def="Et spor som henger sammen med klima, med støy. Aldri temperaturen i ett bestemt år."
         />
         <Term
-          name="iskjerne"
-          def="sylinder av is med årlige lag og innestengt luft; boblene i antarktisk is er ekte fortidsatmosfære"
+          name="Iskjerne"
+          def="Sylinder av is med årlige lag og innestengt luft. Boblene er ekte fortidsatmosfære."
         />
         <Term
           name="Milanković"
-          def="tre orbitale perioder som endrer innstrålingens fordeling (ikke mengden); styrer sommersmelting på 65 °N"
+          def="Tre orbitale perioder som flytter innstrålingen. Styrer sommersmelting på 65 °N."
         />
-        <Term name="holocen" def="nåværende mellomistid, fra ca. 11 700 år før nå" />
+        <Term name="Holocen" def="Nåværende mellomistid, fra ca. 11 700 år før nå." />
       </TermGrid>
+
+      <Quiz
+        questions={[
+          {
+            prompt: "Hva er en proxy i paleoklima?",
+            options: [
+              "Et termometer som har ligget i isen siden 1850.",
+              "Et spor som henger sammen med klima, med støy — aldri selve temperaturen i ett gitt år.",
+              "En modell som varsler 12. juni år 12000 f.Kr.",
+              "Bare CO₂ i dagens atmosfære.",
+            ],
+            answer: 1,
+            explain: "Flere uavhengige spor som konvergerer, slår én spektakulær kjerne.",
+          },
+          {
+            prompt: "Hvorfor forklarer ikke Milanković oppvarmingen siden 1850?",
+            options: [
+              "Fordi jordbanen ikke finnes.",
+              "Fordi de orbitale endringene er for trege, og går nå svakt mot avkjøling. I dag starter CO₂.",
+              "Fordi iskjerner ikke kan måle CO₂.",
+              "Fordi Holocen ikke er en mellomistid.",
+            ],
+            answer: 1,
+            explain: "Under deglasiasjon starter innstråling, og CO₂ forsterker. Nå er det motsatt.",
+          },
+          {
+            prompt: "Hva forteller luftboblene i antarktisk is?",
+            options: [
+              "Bare hvor kald isen er i dag.",
+              "Ekte fortidsatmosfære. CO₂ der er en måling, ikke en tolkning.",
+              "Bare δ¹⁸O, aldri gasser.",
+              "At dagens CO₂ ligger i det naturlige spennet 172–300 ppm.",
+            ],
+            answer: 1,
+            explain: "Naturlig senkvartært spenn er 172–300 ppm. Dagens verdi ligger langt over 400.",
+          },
+        ]}
+      />
     </TopicLayout>
   );
 }

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { HydrographDiagram, MarineLimitDiagram } from "@/components/diagrams/hydrology";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -26,8 +27,7 @@ function VannFlomOgSkredPage() {
         label: "Forrige: Bergarter og landformer",
       }}
       next={{
-        to: "/geofag-1/$slug",
-        params: { slug: "ressurser-og-felt" },
+        to: "/geofag-1/ressurser-og-felt",
         label: "Neste: Ressurser og felt",
       }}
     >
@@ -74,6 +74,20 @@ function VannFlomOgSkredPage() {
         barn="marin leire der saltet i porevannet er vasket ut, under ca. 2 g/L; kan flyte ved omrøring"
       />
       <MarineLimitDiagram />
+      <PhotoFigure
+        src="/images/fig-ravine.jpg"
+        alt="Leirravine med flomelv og gårder på platået over"
+        heading="Marin leire, gravd av elv"
+        caption="Under marin grense kan leira ligge. Elva graver ravine. Saltet vaskes. Da kan kvikkleire dannes — ikke overalt, og ikke uten omrøring."
+        marks={[
+          { x: 8, y: 18, n: "1", text: "Platå · bebyggelse", tone: "fg" },
+          { x: 38, y: 52, n: "2", text: "Ravine · erosjon", tone: "warm" },
+        ]}
+        points={[
+          { n: "1", label: "Eksponering sitter her: folk og hus over skråningen." },
+          { n: "2", label: "Erosjon i bunnen øker fare. Kartene friskmelder ikke omlandet." },
+        ]}
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Gjerdrum 2020</h2>
       <p>

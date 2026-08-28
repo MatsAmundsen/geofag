@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "@/components/diagrams/plates";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -60,12 +61,34 @@ function PlatetektonikkPage() {
         ligger i samme ryggsystem.
       </p>
       <SpreadingDiagram />
+      <PhotoFigure
+        src="/images/fig-spredring.jpg"
+        alt="Sprekk i basalt med lava og damp, platene glir fra hverandre"
+        heading="Divergerende grense, sett i landskapet"
+        caption="Platene glir fra hverandre. Magma stiger i sprekken og blir ny havbunn. Island og Jan Mayen sitter på samme type grense."
+        marks={[{ x: 28, y: 42, n: "1", text: "Ny skorpe i sprekken", tone: "warm" }]}
+        points={[{ n: "1", label: "Sprekking + magma. Skorpe lages, den ødelegges ikke her." }]}
+      />
       <p>
         Konvergerende grense, hav mot kontinent: havbunnen er tettere og synker inn under
         kontinentet. Det kalles subduksjon. Trykk og temperatur øker. Berg kan smelte, og magma
         stiger. Vulkaner og dype jordskjelv. Andes er typeeksempelet.
       </p>
       <SubductionDiagram />
+      <PhotoFigure
+        src="/images/fig-subduksjon-vulkan.jpg"
+        alt="Stratovulkan i utbrudd over kyst og dyp havrenne"
+        heading="Hav mot kontinent"
+        caption="Havbunnen er tettere og synker. Magma stiger. Vulkanbuen sitter over den synkende platen, ikke i selve rennen."
+        marks={[
+          { x: 8, y: 62, n: "1", text: "Renna · synk", tone: "cold" },
+          { x: 48, y: 10, n: "2", text: "Vulkanbue", tone: "warm" },
+        ]}
+        points={[
+          { n: "1", label: "Subduksjon: tettere havbunn under kontinentet." },
+          { n: "2", label: "Smelting og stigning. Dype skjelv i den synkende platen." },
+        ]}
+      />
       <p>
         Konvergerende grense, kontinent mot kontinent: ingen av platene vil synke. Skorpa tykkes til
         mer enn 70 km, som i Himalaya der India møter Asia. Fjell, foldning og skyvedekker.
@@ -101,7 +124,6 @@ function PlatetektonikkPage() {
       <p>
         Jan Mayen ligger på ryggsystemet i Norskehavet. Ny havbunn, jordskjelv langs ryggen,
         vulkaner. Beerenberg er Norges eneste aktive vulkan over havet, 2277 meter. Siste utbrudd i
-        1985.
         1985.
       </p>
       <p>

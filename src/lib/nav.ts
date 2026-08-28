@@ -12,6 +12,7 @@ export const NAV_GF1 = [
   { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
   { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
   { to: "/geofag-1/vann-flom-og-skred", label: "Vann" },
+  { to: "/geofag-1/ressurser-og-felt", label: "Felt" },
 ] as const;
 
 export const NAV_GF2 = [
@@ -112,7 +113,7 @@ export const GF2_THEMES = [
     image: "/images/fig-paleo.jpg",
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
-      "Instrumentelle målinger dekker 150–170 år globalt. Mauna Loa har målt CO₂ siden 1958. Satellitt-havis siden 1979.",
+      "Instrumenter dekker et øyeblikk. Iskjerner og havbunn forteller istidene — og tester om modellene treffer.",
     status: "klar" as const,
   },
   {
@@ -193,7 +194,7 @@ export const GF1_THEMES = [
     alt: "Dagbrudd i fjellandskap i kveldslys",
     blurb:
       "Geologiske ressurser og ferskvann i et bærekraftsperspektiv. Feltarbeid: samle data, tolke, presentere.",
-    status: "utkast" as const,
+    status: "klar" as const,
     maal: "Utvinning av ressurser, bærekraft, og geofaglig feltarbeid i geosfære eller hydrosfære.",
   },
 ] as const;

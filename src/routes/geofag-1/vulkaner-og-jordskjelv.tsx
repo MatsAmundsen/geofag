@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { BoundaryQuakesDiagram } from "@/components/diagrams/quakes";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -37,6 +38,15 @@ function VulkanerOgJordskjelvPage() {
       </p>
 
       <BoundaryQuakesDiagram />
+
+      <PhotoFigure
+        src="/images/fig-subduksjon-vulkan.jpg"
+        alt="Stratovulkan i utbrudd over kyst"
+        heading="Der platene synker, bygges vulkanen"
+        caption="Subduksjon gir både dype jordskjelv og magma. Indonesia og Japan har dette risikobildet. Norge har det ikke — unntatt Jan Mayen på ryggen."
+        marks={[{ x: 48, y: 10, n: "1", text: "Askesøyle", tone: "warm" }]}
+        points={[{ n: "1", label: "Eksplosiv vulkan over synkende havbunn. Annet risikobilde enn intraplate-Norge." }]}
+      />
 
       <p>
         Norge ligger inne på den eurasiske platen. Skjelvene våre er intraplate: gamle svakhetssoner
