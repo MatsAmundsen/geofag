@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { FigurePlaceholder, PhotoFigure } from "@/components/photo-figure";
+import { SeaBreezeDiagram } from "@/components/diagrams";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -37,10 +38,11 @@ function TrykkPage() {
         alt="Glødende luftsøyle over et landskap, tett nede og tynn mot verdensrommet"
         heading="Luftsøylen"
         caption="Trykket i et punkt er vekten av luftsøylen over. Derfor faller trykket med høyden."
-        arrows={[{ d: "M 50 12 L 50 46", tone: "warm", width: 1.4 }]}
+        arrows={[{ d: "M 50 8 L 50 40", tone: "fg", width: 1.3 }]}
         marks={[
-          { x: 54, y: 10, n: "1", text: "Tynn luft mot rommet", tone: "cold" },
-          { x: 54, y: 48, n: "2", text: "Tyngst ved bakken", tone: "warm" },
+          { x: 34, y: 14, n: "1", text: "Tynn luft mot rommet", tone: "cold", align: "right" },
+          { x: 34, y: 46, text: "Trykket øker nedover", tone: "fg", align: "right" },
+          { x: 68, y: 72, n: "2", text: "Tyngst ved bakken", tone: "warm" },
         ]}
         points={[
           { n: "1", label: "Jo høyere, desto mindre luft over deg — lavere trykk." },
@@ -55,7 +57,7 @@ function TrykkPage() {
         caption="Et lavtrykk er lavere trykk enn omgivelsene. Et høytrykk er høyere trykk enn omgivelsene. Samme hPa-verdi kan være lavtrykk i ett kart og høytrykk i et annet, avhengig av naboen."
         marks={[
           { x: 4, y: 14, n: "L", text: "Lavere enn naboen", tone: "low" },
-          { x: 58, y: 14, n: "H", text: "Høyere enn naboen", tone: "warm", align: "left" },
+          { x: 56, y: 14, n: "H", text: "Høyere enn naboen", tone: "warm" },
         ]}
         points={[
           { n: "L", label: "Lavtrykk: lavere trykk enn omgivelsene." },
@@ -87,7 +89,8 @@ function TrykkPage() {
       <p>
         Over tropopausen ligger stratosfæren. Der øker temperaturen med høyden, fordi ozon
         absorberer ultrafiolett stråling. Luften er stabilt lagdelt. Den stigende luften har da
-        blitt kaldere enn luften over. Stigningen stopper. Vertikal blanding i stratosfæren er treg.
+        blitt kaldere enn luften over. Stigningen stopper, og luften sprer seg ut i høyden. Vertikal
+        blanding i stratosfæren er treg.
       </p>
       <OrdBoks
         ord="Tropopause"
@@ -98,19 +101,23 @@ function TrykkPage() {
         src="/images/fig-lavtrykk-snitt.jpg"
         alt="Tverrsnitt av et lavtrykk: luft inn langs havet, tårnhøy byge, regn"
         heading="Lavtrykk sett fra sida"
-        caption="Der luften stiger, blir det underskudd av luft nær bakken. Trykket faller. På vei opp avkjøles luften, og det dannes skyer."
+        caption="Der luften stiger, blir det underskudd av luft nær bakken. Trykket faller. På vei opp avkjøles luften, og det dannes skyer. Øverst sprer luften seg ut i høyden."
         arrows={[
           { d: "M 12 46 L 38 42", tone: "low", width: 1.25 },
           { d: "M 88 46 L 62 42", tone: "low", width: 1.25 },
           { d: "M 50 40 L 50 14", tone: "low", width: 1.4 },
+          { d: "M 46 12 L 22 14", tone: "low", width: 1.1 },
+          { d: "M 54 12 L 78 14", tone: "low", width: 1.1 },
         ]}
         marks={[
-          { x: 6, y: 52, n: "1", text: "Inn nede", tone: "low" },
-          { x: 42, y: 12, n: "2", text: "Opp og til skyer", tone: "low" },
+          { x: 4, y: 84, n: "1", text: "Inn nede", tone: "low" },
+          { x: 64, y: 32, n: "2", text: "Opp og avkjøling", tone: "low" },
+          { x: 96, y: 19, n: "3", text: "Ut i høyden", tone: "low", align: "right" },
         ]}
         points={[
           { n: "1", label: "Underskudd nær bakken. Luft strømmer inn." },
           { n: "2", label: "Luften stiger, avkjøles og danner skyer." },
+          { n: "3", label: "Ved tropopausen stopper stigningen. Luften sprer seg ut i høyden." },
         ]}
       />
 
@@ -151,12 +158,14 @@ function TrykkPage() {
           { d: "M 52 36 L 82 44", tone: "warm", width: 1.2 },
         ]}
         marks={[
-          { x: 42, y: 12, n: "H", text: "Synker", tone: "warm" },
-          { x: 6, y: 48, n: "1", text: "Ut nede", tone: "warm" },
+          { x: 54, y: 24, n: "1", text: "Luften synker", tone: "warm" },
+          { x: 6, y: 58, n: "H", text: "Overskudd ved bakken", tone: "warm" },
+          { x: 96, y: 80, n: "2", text: "Ut langs bakken", tone: "warm", align: "right" },
         ]}
         points={[
-          { n: "H", label: "Synkende luft gir overskudd ved bakken. Skyer løses opp." },
-          { n: "1", label: "Luft strømmer ut fra høytrykket langs bakken." },
+          { n: "1", label: "Luften synker, varmes tørradiabatisk, og skyene løses opp." },
+          { n: "H", label: "Overskudd av luft nær bakken. Trykket stiger: høytrykk." },
+          { n: "2", label: "Luft strømmer ut fra høytrykket langs bakken." },
         ]}
       />
 
@@ -169,8 +178,8 @@ function TrykkPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Vind som resultat</h2>
       <p>
-        Luft beveger seg fordi trykket ikke er det samme overalt. Trykkgradienten peker fra høyt mot
-        lavt trykk og setter luften i gang. Tette isobarer betyr sterk vind.
+        Luft beveger seg fordi trykket ikke er det samme overalt. Trykkgradientkraften peker fra
+        høyt mot lavt trykk og setter luften i gang. Tette isobarer betyr sterk vind.
       </p>
       <p>
         Nær bakken bremser friksjon. Da krysser vinden isobarene inn mot lavtrykk og ut fra
@@ -186,16 +195,19 @@ function TrykkPage() {
         src="/images/fig-vind-mot-lavtrykk.jpg"
         alt="Solbelyst gress i forgrunnen, mørk storm over havet i det fjerne"
         heading="Fra høyt mot lavt trykk"
-        caption="Luft beveger seg fordi trykket ikke er det samme overalt. Trykkgradienten peker fra høyt mot lavt trykk og setter luften i gang."
+        caption="Luft beveger seg fordi trykket ikke er det samme overalt. Trykkgradientkraften peker fra høyt mot lavt trykk og setter luften i gang. Der luften strømmer ut, synker den. Der den strømmer inn, stiger den."
         arrows={[
-          { d: "M 18 42 L 48 32", tone: "teal", width: 1.35 },
-          { d: "M 38 48 L 62 36", tone: "teal", width: 1.2 },
+          { d: "M 18 28 L 52 28", tone: "teal", width: 1.4 },
+          { d: "M 14 8 L 14 22", tone: "warm", width: 1.2 },
+          { d: "M 56 24 L 56 8", tone: "low", width: 1.3 },
         ]}
         marks={[
-          { x: 4, y: 58, n: "H", text: "Høytrykk", tone: "warm" },
-          { x: 58, y: 18, n: "L", text: "Lavtrykk", tone: "low" },
+          { x: 18, y: 12, n: "H", text: "Høytrykk · synker", tone: "warm" },
+          { x: 96, y: 10, n: "L", text: "Lavtrykk · stiger", tone: "low", align: "right" },
+          { x: 4, y: 57, n: "1", text: "Vind: fra H mot L", tone: "teal" },
         ]}
         points={[
+          { n: "1", label: "Vinden går fra høyt mot lavt trykk. Tette isobarer betyr sterk vind." },
           { n: "H", label: "Utstrømming i høytrykk tvinger luft ned: oppløsning av skyer." },
           { n: "L", label: "Innstrømming i lavtrykk tvinger luft opp: skyer og nedbør." },
         ]}
@@ -211,23 +223,20 @@ function TrykkPage() {
       <p>
         Om dagen varmes land fortere enn hav. Luften over land blir lettere og stiger: termisk
         lavtrykk. Luft fra sjøen strømmer inn. Det er pålandsvind, eller sjøbris. Returstrømmen går
-        ovenfor. På Sørlandet en svak høytrykksdag i juni: sol, 25 °C innerst i skjærgården, 18 °C
-        og pålandsvind på odden.
+        motsatt vei i høyden, og kretsløpet lukkes med nedsynking over havet. På Sørlandet en svak
+        høytrykksdag i juni: sol, 25 °C innerst i skjærgården, 18 °C og pålandsvind på odden.
       </p>
       <p>
-        Om natten avkjøles land fortere. Da synker luften over land, og vinden går ut mot sjøen:
-        fralandsvind, eller landbris. Den er svakere.
+        Om natten avkjøles land fortere. Da synker luften over land, trykket ved bakken stiger, og
+        vinden går ut mot sjøen: fralandsvind, eller landbris. Kretsløpet er speilvendt, og det er
+        svakere, fordi temperaturforskjellen mellom land og hav er mindre om natten.
       </p>
       <p>
         Norskekysten om sommeren: sjøbris er vanlig når storskalavinden er svak. Den kan utløse
         byger et stykke inn i landet der brisen konvergerer, og holde kysten kjøligere.
       </p>
 
-      <FigurePlaceholder
-        heading="Pålandsvind og fralandsvind"
-        caption="Om dagen varmes land fortere enn hav: sjøbris inn mot land. Om natten avkjøles land fortere: landbris ut mot sjøen."
-        label="Plassholder for figur av pålandsvind om dagen og fralandsvind om natten"
-      />
+      <SeaBreezeDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Fønvind</h2>
       <p>
@@ -253,17 +262,25 @@ function TrykkPage() {
         caption="Vestavind tvinger fuktig luft over Langfjella. På losiden stiger den, kondenserer og gir orografisk nedbør. Fuktigheten tapes. På lesiden synker luften og varmes tørradiabatisk. Resultatet er varm, tørr, kastevill føn i dalene øst for fjellet."
         arrows={[
           { d: "M 16 44 L 36 22", tone: "low", width: 1.3 },
-          { d: "M 58 18 L 78 38", tone: "warm", width: 1.35 },
+          { d: "M 39 21 L 54 17", tone: "fg", width: 1.1, dash: true },
+          { d: "M 57 18 L 78 38", tone: "warm", width: 1.35 },
         ]}
         marks={[
-          { x: 4, y: 12, n: "1", text: "Loside · opp og nedbør", tone: "low" },
-          { x: 38, y: 6, n: "2", text: "Fukt tapes", tone: "fg" },
-          { x: 62, y: 16, n: "3", text: "Leside · varm tørr føn", tone: "warm" },
+          { x: 4, y: 20, n: "1", text: "Loside · opp og nedbør", tone: "low" },
+          { x: 47, y: 22, n: "2", text: "Fukt tapes", tone: "fg", align: "center" },
+          { x: 96, y: 54, n: "3", text: "Leside · varm tørr føn", tone: "warm", align: "right" },
         ]}
         points={[
-          { n: "1", label: "Loside: luft stiger, avkjøles, kondenserer. Vestlandet får orografisk nedbør." },
+          {
+            n: "1",
+            label: "Loside: luft stiger, avkjøles, kondenserer. Vestlandet får orografisk nedbør.",
+          },
           { n: "2", label: "Over fjellet er fuktigheten brukt opp. Skyene tynnes." },
-          { n: "3", label: "Leside: luft synker og varmes tørradiabatisk. Østerdalen og Gudbrandsdalen får føn." },
+          {
+            n: "3",
+            label:
+              "Leside: luft synker og varmes tørradiabatisk. Østerdalen og Gudbrandsdalen får føn.",
+          },
         ]}
       />
 
@@ -293,20 +310,27 @@ function TrykkPage() {
         src="/images/fig-katabatisk.jpg"
         alt="Platåbre med kald tåke som renner ned isen og samles som inversjon i dalbunnen"
         heading="Katabatisk: kald luft renner av tyngdekraft"
-        caption="Luften avkjøles ved utstråling over snø og is. Den blir tett og renner ned. Den trenger ikke kondensasjon. På vei ned kan den varmes noen grader, men den starter så kald at den fortsatt er kald ved foten. Nedsynking senker relativ fukt — skyer løses opp, ikke dannes."
+        caption="Luften avkjøles ved utstråling over snø og is. Den blir tett og renner ned av tyngdekraft. Den trenger ikke kondensasjon. På vei ned kan den varmes noen grader, men den starter så kald at den fortsatt er kald ved foten. Nedsynkingen i seg selv gir ikke skyer. Tåka i dalbunnen er kaldluft som samler seg og bygger inversjon — ikke luft som løftes."
         arrows={[
           { d: "M 34 16 L 50 40", tone: "cold", width: 1.4 },
-          { d: "M 52 42 L 62 50", tone: "teal", width: 1.2 },
+          { d: "M 52 42 L 62 50", tone: "cold", width: 1.2 },
         ]}
         marks={[
-          { x: 6, y: 10, n: "1", text: "Avkjøling over is", tone: "cold" },
-          { x: 42, y: 20, n: "2", text: "Kald luft renner", tone: "teal" },
-          { x: 58, y: 48, n: "3", text: "Kald i dalbunnen", tone: "cold" },
+          { x: 4, y: 16, n: "1", text: "Avkjøling over is", tone: "cold" },
+          { x: 54, y: 50, n: "2", text: "Kald luft renner", tone: "cold" },
+          { x: 96, y: 84, n: "3", text: "Kald i dalbunnen", tone: "cold", align: "right" },
         ]}
         points={[
-          { n: "1", label: "Utstråling over snø og is gjør luften kald og tett. Folgefonna og Svartisen." },
+          {
+            n: "1",
+            label: "Utstråling over snø og is gjør luften kald og tett. Folgefonna og Svartisen.",
+          },
           { n: "2", label: "Tyngdekraft: kald luft renner ned. Ingen orografisk nedbør trengs." },
-          { n: "3", label: "Luften er kald ved foten. Den samles i dalbunnen og kan bygge inversjon. Føn bryter inversjoner. Katabatisk bygger dem." },
+          {
+            n: "3",
+            label:
+              "Luften er kald ved foten. Den samles i dalbunnen og kan bygge inversjon. Føn bryter inversjoner. Katabatisk bygger dem.",
+          },
         ]}
       />
 
