@@ -25,8 +25,7 @@ function VulkanerOgJordskjelvPage() {
         label: "Forrige: Platetektonikk",
       }}
       next={{
-        to: "/geofag-1/$slug",
-        params: { slug: "bergarter-og-landformer" },
+        to: "/geofag-1/bergarter-og-landformer",
         label: "Neste: Bergarter og landformer",
       }}
     >

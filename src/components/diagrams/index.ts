@@ -30,4 +30,5 @@ export {
 export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
 export { ModelGridDiagram } from "./models";
 export { BoundaryQuakesDiagram } from "./quakes";
+export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { SpheresDiagram } from "./spheres";
