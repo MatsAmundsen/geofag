@@ -31,3 +31,4 @@ export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates"
 export { ModelGridDiagram } from "./models";
 export { BoundaryQuakesDiagram } from "./quakes";
 export { SpheresDiagram } from "./spheres";
+export { HydrographDiagram, MarineLimitDiagram } from "./hydrology";

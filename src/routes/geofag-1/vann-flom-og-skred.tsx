@@ -1,0 +1,135 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Callout } from "@/components/callout";
+import { HydrographDiagram, MarineLimitDiagram } from "@/components/diagrams/hydrology";
+import { OrdBoks, Term, TermGrid } from "@/components/term";
+import { TopicLayout } from "@/components/topic-layout";
+import { gf1Theme } from "@/lib/nav";
+
+const tema = gf1Theme("vann-flom-og-skred")!;
+
+export const Route = createFileRoute("/geofag-1/vann-flom-og-skred")({
+  component: VannFlomOgSkredPage,
+});
+
+function VannFlomOgSkredPage() {
+  return (
+    <TopicLayout
+      kicker={`Geofag 1 · ${tema.kicker}`}
+      title={tema.title}
+      lead="Hydrologi er vannets kretsløp på landjorden. Tilførsel er nedbør. Lagre er snø, markvann, grunnvann, innsjø, myr og elveløp. Tap mot atmosfæren er evapotranspirasjon. Tap mot havet er avrenning. Havet er sluket. Du skal følge ferskvannssporet. Energi styrer fase: snø eller regn, smelting, fordamping. Tyngdekraft styrer strøm. Vegetasjon og jord styrer fordelingen mellom infiltrasjon og flomtopp. Geosfæren er røret og filteret. Snø er ofte den sterkeste tidsforsinkelsen i norske felt. Den lagrer vinterens nedbør og slipper den som vårflom."
+      banner={tema.image}
+      bannerAlt={tema.alt}
+      videoTopic="vann-flom-og-skred"
+      prev={{
+        to: "/geofag-1/$slug",
+        params: { slug: "bergarter-og-landformer" },
+        label: "Forrige: Bergarter og landformer",
+      }}
+      next={{
+        to: "/geofag-1/$slug",
+        params: { slug: "ressurser-og-felt" },
+        label: "Neste: Ressurser og felt",
+      }}
+    >
+      <p>
+        Hydrologi er vannets kretsløp på landjorden. Tilførsel er nedbør. Lagre er snø, markvann,
+        grunnvann, innsjø, myr og elveløp. Tap mot atmosfæren er evapotranspirasjon. Tap mot havet
+        er avrenning. Havet er sluket. Du skal følge ferskvannssporet.
+      </p>
+      <p>
+        Energi styrer fase: snø eller regn, smelting, fordamping. Tyngdekraft styrer strøm.
+        Vegetasjon og jord styrer fordelingen mellom infiltrasjon og flomtopp. Geosfæren er røret og
+        filteret. Snø er ofte den sterkeste tidsforsinkelsen i norske felt. Den lagrer vinterens
+        nedbør og slipper den som vårflom.
+      </p>
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hydrogram</h2>
+      <p>
+        Et hydrogram er vannføring mot tid. Formen er feltets respons. Bratt, spiss topp: lite
+        magasin, bratt felt, tette flater, intens regn. Bred, sen topp: stor sjøprosent, slakt felt,
+        snøsmelting over uker.
+      </p>
+      <OrdBoks ord="hydrogram" barn="vannføring mot tid; formen er feltets respons" />
+      <HydrographDiagram />
+      <p>
+        Regnflom treffer Vestlandet, kyst og små bratte felt, særlig høst og vinter. Tidsskala:
+        timer. Snøsmelteflom treffer innland og fjell om våren. Tidsskala: dager til uker. NVE:
+        flere og større regnflommer framover der årets største flom allerede er en regnflom.
+        Snøsmelteflommene ventes mindre og tidligere. Flom i elv er ikke overvann, og ikke stormflo.
+      </p>
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Marin grense og kvikkleire
+      </h2>
+      <p>
+        Marin grense er høyeste havnivå etter siste istid. I Norge 0–220 m over havet, stedavhengig.
+        Under den linja kan det ligge marin leire, avsatt i salt fjord. Over den linja ble leira
+        ikke avsatt i hav. Aktsomhet for kvikkleire gjelder overalt under marin grense, også utenfor
+        tegnede faresoner. Kartene friskmelder ikke omlandet.
+      </p>
+      <OrdBoks ord="marin grense" barn="høyeste havnivå etter siste istid; i Norge 0–220 m" />
+      <p>
+        Vanlig sjøvann har ca. 35 g salt per liter. Saltet binder leirflakene. Når landet hevet seg,
+        ble porevannet ferskere. Når saltet kommer under ca. 2 g/L, kan kvikkleire dannes.
+        Utvaskingen tar hundreder til tusener av år. Ikke all marin leire er kvikk. Uforstyrret er
+        leira fast. Omrøres den, kollapser strukturen og massen flyter. Skredet blir ofte
+        retrogressivt: kanten mister støtte og spiser seg bakover.
+      </p>
+      <OrdBoks
+        ord="kvikkleire"
+        barn="marin leire der saltet i porevannet er vasket ut, under ca. 2 g/L; kan flyte ved omrøring"
+      />
+      <MarineLimitDiagram />
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Gjerdrum 2020</h2>
+      <p>
+        Gjerdrum 30. desember 2020, rett før kl. 04: 11 omkomne inkludert et ufødt barn, mer enn
+        1600 evakuert, volum omtrent 1,35 mill. m³. Start i skråningen vest for Holmen mot
+        Tistilbekken. Årsak: erosjon over år, forsterket av ødelagt bekkelukking, urbanisering og
+        terrenginngrep. Utløser: den våte, milde høsten 2020, høyt poretrykk. Hovedårsaken er
+        erosjon og kvikkleire. Våt høst var utløser. Ikke et klimaskred som eneste forklaring, og
+        ikke uforutsigbart. Kommunen hadde fått varsler om erosjon.
+      </p>
+      <p>
+        Rissa 1978 var større, 5–6 mill. m³. Risikoen i Gjerdrum ble katastrofal fordi boliger lå i
+        utløpet. Et ustabilt fjell uten folk nedenfor er høy fare og lav risiko. Risiko er fare
+        ganger eksponering ganger sårbarhet.
+      </p>
+      <OrdBoks ord="risiko" barn="fare × eksponering × sårbarhet" />
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hans 2023</h2>
+      <p>
+        Ekstremværet Hans 7.–9. august 2023: værsystem inn fra øst og sørøst. Ny nedbørrekord ved 12
+        stasjoner på Østlandet. Grunnvannet var allerede høyt etter våt juli. NVE dokumenterte over
+        700 skred. Over 50-årsflom på 52 målestasjoner, 45 av dem høyeste verdi siden målestart.
+        Drammensvassdraget og Glomma. Flommen kulminerte i Mjøsa og Øyeren 13. august, i Tyrifjorden
+        16. august.
+      </p>
+      <p>
+        Hans er compound: ekstremnedbør pluss mettet mark gir flom og løsmasseskred. Risikoen ble
+        stor fordi dalene er eksponert: E6, jernbane, Nesbyen, boliger. Varsel reduserer sårbarhet
+        hvis folk flytter biler og åpner kulverter. Det reduserer ikke faren i elva. Når 45
+        stasjoner setter rekord, er det eksponeringen i dalbunnen som bestemmer skaden.
+      </p>
+      <p>
+        Forebygging er kart, arealplan og erosjonssikring årene før. Tilpasning er varsling og
+        evakuering. Tiltaket skal matche faren.
+      </p>
+
+      <Callout title="Kompetansemål">
+        <p>{tema.maal}</p>
+      </Callout>
+
+      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <TermGrid>
+        <Term name="hydrogram" def="vannføring mot tid; formen er feltets respons" />
+        <Term name="marin grense" def="høyeste havnivå etter siste istid; i Norge 0–220 m" />
+        <Term
+          name="kvikkleire"
+          def="marin leire der saltet i porevannet er vasket ut, under ca. 2 g/L; kan flyte ved omrøring"
+        />
+        <Term name="risiko" def="fare × eksponering × sårbarhet" />
+      </TermGrid>
+    </TopicLayout>
+  );
+}
