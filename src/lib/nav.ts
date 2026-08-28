@@ -91,7 +91,7 @@ export const GF1_THEMES = [
     alt: "Jordskorpe og mantel mot et elvelandskap på overflaten",
     blurb:
       "Geosfære, hydrosfære, atmosfære, kryosfære og biosfære henger sammen. Her: vekselvirkningene som former land og ferskvann.",
-    status: "utkast" as const,
+    status: "klar" as const,
     maal: "Vekselvirkninger mellom jordsystemene og hvordan de påvirker geosfæren og hydrosfæren.",
   },
   {

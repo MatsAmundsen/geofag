@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as Geofag2RouteImport } from './routes/geofag-2'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
+import { Route as Geofag1JordsystemeneRouteImport } from './routes/geofag-1/jordsystemene'
 import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
@@ -39,6 +40,11 @@ const Geofag1IndexRoute = Geofag1IndexRouteImport.update({
 const Geofag1SlugRoute = Geofag1SlugRouteImport.update({
   id: '/geofag-1/$slug',
   path: '/geofag-1/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1JordsystemeneRoute = Geofag1JordsystemeneRouteImport.update({
+  id: '/geofag-1/jordsystemene',
+  path: '/geofag-1/jordsystemene',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/geofag-2'
     | '/geofag-1/$slug'
+    | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
     | '/tema/coriolis'
     | '/tema/havstrommer'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/geofag-2'
     | '/geofag-1/$slug'
+    | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
     | '/tema/coriolis'
     | '/tema/havstrommer'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/'
     | '/geofag-2'
     | '/geofag-1/$slug'
+    | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
     | '/tema/coriolis'
     | '/tema/havstrommer'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Geofag2Route: typeof Geofag2Route
   Geofag1SlugRoute: typeof Geofag1SlugRoute
+  Geofag1JordsystemeneRoute: typeof Geofag1JordsystemeneRoute
   Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
   TemaCoriolisRoute: typeof TemaCoriolisRoute
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/$slug'
       fullPath: '/geofag-1/$slug'
       preLoaderRoute: typeof Geofag1SlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/jordsystemene': {
+      id: '/geofag-1/jordsystemene'
+      path: '/geofag-1/jordsystemene'
+      fullPath: '/geofag-1/jordsystemene'
+      preLoaderRoute: typeof Geofag1JordsystemeneRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/platetektonikk': {
@@ -259,6 +279,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Geofag2Route: Geofag2Route,
   Geofag1SlugRoute: Geofag1SlugRoute,
+  Geofag1JordsystemeneRoute: Geofag1JordsystemeneRoute,
   Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
   TemaCoriolisRoute: TemaCoriolisRoute,
   TemaHavstrommerRoute: TemaHavstrommerRoute,

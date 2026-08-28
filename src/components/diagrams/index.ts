@@ -27,3 +27,4 @@ export {
   OceanDriversDiagram,
 } from "./ocean";
 export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
+export { SpheresDiagram } from "./spheres";
