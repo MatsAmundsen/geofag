@@ -124,7 +124,7 @@ export const GF1_THEMES = [
     alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
     blurb:
       "Mineraler, bergarter og sedimenter. Datering. Hvordan indre og ytre krefter — og mennesker — lager og endrer landformer.",
-    status: "utkast" as const,
+    status: "klar" as const,
     maal: "Mineral- og bergartsgrupper, datering, lokal geologi og landformer.",
   },
   {
