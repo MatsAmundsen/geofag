@@ -73,7 +73,7 @@ function VulkanerOgJordskjelvPage() {
         under platen leverer magma mens platen glir over. Hawaii-kjeden blir eldre og mer erodert
         mot nordvest: Kauai ca. 5,5 millioner år, Big Island yngre enn 0,7 millioner år og fortsatt
         aktiv. Øykjeden er platens kjølvann. Senere forskning diskuterer om hotspoter er dype og
-        faste. Si usikkerheten.
+        faste.
       </p>
       <OrdBoks
         ord="hotspot"
