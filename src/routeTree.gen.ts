@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as Geofag2RouteImport } from './routes/geofag-2'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
+import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
@@ -38,6 +39,11 @@ const Geofag1IndexRoute = Geofag1IndexRouteImport.update({
 const Geofag1SlugRoute = Geofag1SlugRouteImport.update({
   id: '/geofag-1/$slug',
   path: '/geofag-1/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
+  id: '/geofag-1/platetektonikk',
+  path: '/geofag-1/platetektonikk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemaCoriolisRoute = TemaCoriolisRouteImport.update({
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/'
     | '/geofag-2'
     | '/geofag-1/$slug'
+    | '/geofag-1/platetektonikk'
     | '/tema/coriolis'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/geofag-2'
     | '/geofag-1/$slug'
+    | '/geofag-1/platetektonikk'
     | '/tema/coriolis'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/'
     | '/geofag-2'
     | '/geofag-1/$slug'
+    | '/geofag-1/platetektonikk'
     | '/tema/coriolis'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
@@ -151,6 +163,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Geofag2Route: typeof Geofag2Route
   Geofag1SlugRoute: typeof Geofag1SlugRoute
+  Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
   TemaCoriolisRoute: typeof TemaCoriolisRoute
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/$slug'
       fullPath: '/geofag-1/$slug'
       preLoaderRoute: typeof Geofag1SlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/platetektonikk': {
+      id: '/geofag-1/platetektonikk'
+      path: '/geofag-1/platetektonikk'
+      fullPath: '/geofag-1/platetektonikk'
+      preLoaderRoute: typeof Geofag1PlatetektonikkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tema/coriolis': {
@@ -239,6 +259,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Geofag2Route: Geofag2Route,
   Geofag1SlugRoute: Geofag1SlugRoute,
+  Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
   TemaCoriolisRoute: TemaCoriolisRoute,
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,

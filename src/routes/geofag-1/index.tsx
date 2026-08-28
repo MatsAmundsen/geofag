@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GF1_THEMES } from "@/lib/nav";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/geofag-1/")({ component: Geofag1 });
 
@@ -62,8 +63,15 @@ function Geofag1() {
                       alt={tema.alt}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
-                    <span className="absolute left-3 top-3 rounded-md bg-background/80 px-2 py-1 text-xs font-medium text-muted-foreground">
-                      Utkast
+                    <span
+                      className={cn(
+                        "absolute left-3 top-3 rounded-md px-2 py-1 text-xs font-medium",
+                        tema.status === "klar"
+                          ? "bg-background/80 text-primary"
+                          : "bg-background/80 text-muted-foreground",
+                      )}
+                    >
+                      {tema.status === "klar" ? "Klar" : "Utkast"}
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col gap-2 p-5">
@@ -73,7 +81,7 @@ function Geofag1() {
                     <h3 className="font-display text-2xl font-medium tracking-tight">{tema.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{tema.blurb}</p>
                     <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-primary">
-                      Åpne utkast
+                      {tema.status === "klar" ? "Åpne tema" : "Åpne utkast"}
                       <ArrowRight className="size-4" />
                     </span>
                   </div>

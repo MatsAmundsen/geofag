@@ -23,8 +23,8 @@ export function TopicLayout({
   bannerAlt: string;
   videoTopic: string;
   children: ReactNode;
-  prev?: { to: string; label: string };
-  next?: { to: string; label: string };
+  prev?: { to: string; label: string; params?: Record<string, string> };
+  next?: { to: string; label: string; params?: Record<string, string> };
 }) {
   return (
     <div className="flex min-h-dvh flex-col">
@@ -60,6 +60,7 @@ export function TopicLayout({
             {prev ? (
               <Link
                 to={prev.to}
+                params={prev.params}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="size-4" />
@@ -71,6 +72,7 @@ export function TopicLayout({
             {next ? (
               <Link
                 to={next.to}
+                params={next.params}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground sm:ml-auto"
               >
                 {next.label}
