@@ -137,6 +137,12 @@ function Geofag2() {
               />
               <Fordypning
                 n="07"
+                to="/tema/paleoklima"
+                title="Paleoklima"
+                text="Instrumentelle målinger dekker 150–170 år. Arkivene blir til kunnskap som modeller og risikovurdering bruker."
+              />
+              <Fordypning
+                n="08"
                 to="/tema/vaerkatastrofer"
                 title="Værkatastrofer"
                 text="Orkaner, polarfrontstormer, ekstremnedbør og stormflo. Samme fysikk. Høyere innsats når samfunn står i veien."

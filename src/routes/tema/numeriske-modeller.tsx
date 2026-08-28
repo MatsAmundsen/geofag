@@ -19,7 +19,7 @@ function NumeriskeModellerPage() {
       bannerAlt="Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver"
       videoTopic="numeriske modeller"
       prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
-      next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      next={{ to: "/tema/paleoklima", label: "Neste: Paleoklima" }}
     >
       <ModelGridDiagram />
 
