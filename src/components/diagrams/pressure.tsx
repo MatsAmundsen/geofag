@@ -21,7 +21,7 @@ export function SeaBreezeDiagram() {
     <Diagram
       title="Sjøbris om dagen og landbris om natten"
       heading="Pålandsvind og fralandsvind"
-      caption="Samme kretsløp to ganger, med motsatt fortegn. Om dagen varmes land fortere enn hav: luften over land stiger, det blir termisk lavtrykk ved bakken, og sjøbrisen blåser inn fra havet. Om natten avkjøles land fortere: luften over land synker, trykket ved bakken stiger, og landbrisen blåser ut mot havet. Begge kretsløpene lukkes av en returstrøm i høyden."
+      caption="Samme kretsløp to ganger, med motsatt fortegn. Om dagen varmes land fortere enn hav: luften over land stiger, det blir termisk lavtrykk ved bakken, og sjøbrisen blåser inn fra havet. Om natten avkjøles land fortere: luften over land synker, trykket ved bakken stiger, og landbrisen blåser ut mot havet. Følg pilene rundt: returstrømmen oppe går motsatt vei av vinden nede. Den må være der — ellers ville luft hopet seg opp der vinden blåser inn, og brisen ville stanset seg selv."
       viewBox="0 0 820 380"
     >
       {(m) => (
@@ -42,8 +42,11 @@ export function SeaBreezeDiagram() {
           <L x="312" y="184" fill={C.warm} size={12}>
             stiger
           </L>
-          <L x="183" y="94" fill={C.muted} size={12} anchor="middle">
-            returstrøm
+          <L x="183" y="90" fill={C.muted} size={12} anchor="middle">
+            returstrøm: tilbake i høyden
+          </L>
+          <L x="180" y="140" fill={C.muted} size={11} anchor="middle">
+            det som går inn nede, må ut oppe
           </L>
           <L x="46" y="184" fill={C.cold} size={12} anchor="end">
             synker
@@ -84,8 +87,11 @@ export function SeaBreezeDiagram() {
           <L x="466" y="184" fill={C.warm} size={12} anchor="end">
             stiger
           </L>
-          <L x="595" y="94" fill={C.muted} size={12} anchor="middle">
-            returstrøm
+          <L x="595" y="90" fill={C.muted} size={12} anchor="middle">
+            returstrøm: motsatt vei
+          </L>
+          <L x="598" y="140" fill={C.muted} size={11} anchor="middle">
+            samme kretsløp, speilvendt
           </L>
           <L x="732" y="184" fill={C.cold} size={12}>
             synker
