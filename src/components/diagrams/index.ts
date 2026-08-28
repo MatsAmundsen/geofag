@@ -28,5 +28,6 @@ export {
   OceanDriversDiagram,
 } from "./ocean";
 export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
+export { ModelGridDiagram } from "./models";
 export { BoundaryQuakesDiagram } from "./quakes";
 export { SpheresDiagram } from "./spheres";

@@ -18,7 +18,7 @@ function KatastroferPage() {
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye"
       videoTopic="værkatastrofer og naturfarer"
-      prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
+      prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Samme fysikk. Høyere innsats.

@@ -131,6 +131,12 @@ function Geofag2() {
               />
               <Fordypning
                 n="06"
+                to="/tema/numeriske-modeller"
+                title="Numeriske modeller"
+                text="En numerisk modell er fysikk regnet på et rutenett, til ulike formål på ulike tidsskalaer."
+              />
+              <Fordypning
+                n="07"
                 to="/tema/vaerkatastrofer"
                 title="Værkatastrofer"
                 text="Orkaner, polarfrontstormer, ekstremnedbør og stormflo. Samme fysikk. Høyere innsats når samfunn står i veien."

@@ -15,6 +15,7 @@ export const NAV_GF2 = [
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
+  { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
 ] as const;
 
@@ -66,6 +67,16 @@ export const GF2_THEMES = [
     alt: "Grønlands innlandsis mot mørkt polarhav",
     blurb:
       "Luft, hav og is henger sammen over år og årtusener. Tilbakekoblinger, ENSO og menneskeskapt pådriv.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/numeriske-modeller",
+    title: "Numeriske modeller",
+    kicker: "Modeller",
+    image: "/images/tema-klima.jpg",
+    alt: "Polar is og hav som står for jordsystemet modellene beskriver",
+    blurb:
+      "En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett.",
     status: "klar" as const,
   },
   {

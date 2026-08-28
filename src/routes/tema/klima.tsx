@@ -19,7 +19,7 @@ function KlimaPage() {
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       videoTopic="klimasystemet"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
-      next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Vær er dager. Klima er tiår.

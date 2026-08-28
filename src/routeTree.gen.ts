@@ -20,6 +20,7 @@ import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaKlimaRouteImport } from './routes/tema/klima'
+import { Route as TemaNumeriskeModellerRouteImport } from './routes/tema/numeriske-modeller'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
 import { Route as TemaVindsystemetRouteImport } from './routes/tema/vindsystemet'
 
@@ -53,11 +54,12 @@ const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
   path: '/geofag-1/platetektonikk',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Geofag1VulkanerOgJordskjelvRoute = Geofag1VulkanerOgJordskjelvRouteImport.update({
-  id: '/geofag-1/vulkaner-og-jordskjelv',
-  path: '/geofag-1/vulkaner-og-jordskjelv',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const Geofag1VulkanerOgJordskjelvRoute =
+  Geofag1VulkanerOgJordskjelvRouteImport.update({
+    id: '/geofag-1/vulkaner-og-jordskjelv',
+    path: '/geofag-1/vulkaner-og-jordskjelv',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TemaCoriolisRoute = TemaCoriolisRouteImport.update({
   id: '/tema/coriolis',
   path: '/tema/coriolis',
@@ -76,6 +78,11 @@ const TemaHoytrykkLavtrykkRoute = TemaHoytrykkLavtrykkRouteImport.update({
 const TemaKlimaRoute = TemaKlimaRouteImport.update({
   id: '/tema/klima',
   path: '/tema/klima',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaNumeriskeModellerRoute = TemaNumeriskeModellerRouteImport.update({
+  id: '/tema/numeriske-modeller',
+  path: '/tema/numeriske-modeller',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemaVaerkatastroferRoute = TemaVaerkatastroferRouteImport.update({
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/klima': typeof TemaKlimaRoute
+  '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/geofag-1/': typeof Geofag1IndexRoute
@@ -115,6 +123,7 @@ export interface FileRoutesByTo {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/klima': typeof TemaKlimaRoute
+  '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/geofag-1': typeof Geofag1IndexRoute
@@ -131,6 +140,7 @@ export interface FileRoutesById {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/klima': typeof TemaKlimaRoute
+  '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/geofag-1/': typeof Geofag1IndexRoute
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/klima'
+    | '/tema/numeriske-modeller'
     | '/tema/vaerkatastrofer'
     | '/tema/vindsystemet'
     | '/geofag-1/'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/klima'
+    | '/tema/numeriske-modeller'
     | '/tema/vaerkatastrofer'
     | '/tema/vindsystemet'
     | '/geofag-1'
@@ -178,6 +190,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/klima'
+    | '/tema/numeriske-modeller'
     | '/tema/vaerkatastrofer'
     | '/tema/vindsystemet'
     | '/geofag-1/'
@@ -194,6 +207,7 @@ export interface RootRouteChildren {
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaKlimaRoute: typeof TemaKlimaRoute
+  TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
   TemaVaerkatastroferRoute: typeof TemaVaerkatastroferRoute
   TemaVindsystemetRoute: typeof TemaVindsystemetRoute
   Geofag1IndexRoute: typeof Geofag1IndexRoute
@@ -278,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaKlimaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/numeriske-modeller': {
+      id: '/tema/numeriske-modeller'
+      path: '/tema/numeriske-modeller'
+      fullPath: '/tema/numeriske-modeller'
+      preLoaderRoute: typeof TemaNumeriskeModellerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/vaerkatastrofer': {
       id: '/tema/vaerkatastrofer'
       path: '/tema/vaerkatastrofer'
@@ -306,6 +327,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaKlimaRoute: TemaKlimaRoute,
+  TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
   TemaVaerkatastroferRoute: TemaVaerkatastroferRoute,
   TemaVindsystemetRoute: TemaVindsystemetRoute,
   Geofag1IndexRoute: Geofag1IndexRoute,
