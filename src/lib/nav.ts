@@ -146,7 +146,7 @@ export const GF1_THEMES = [
     alt: "Flomelv ved et fjellskred i norsk landskap",
     blurb:
       "Det hydrologiske kretsløpet med vekt på ferskvann. Flom, skred og ustabile fjell — og hvordan aktivitet på land endrer risikoen.",
-    status: "utkast" as const,
+    status: "klar" as const,
     maal: "Hydrologisk kretsløp, ferskvann, og naturfarer i hydrosfæren. Modellering av risiko.",
   },
   {
