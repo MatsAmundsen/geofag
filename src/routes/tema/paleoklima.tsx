@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/paleoklima")({
   component: PaleoklimaPage,
@@ -21,10 +22,11 @@ function PaleoklimaPage() {
       videoTopic="paleoklima"
       prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
       next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      kilder={KILDER.paleoklima}
     >
       <p>
-        Kompetansemålet er ikke å fortelle istidshistorie. Det er kjeden fra spor til kunnskap:
-        noe i naturen tar vare på et spor, vi daterer det, vi kalibrerer mot det vi måler i dag, vi
+        Kompetansemålet er ikke å fortelle istidshistorie. Det er kjeden fra spor til kunnskap: noe
+        i naturen tar vare på et spor, vi daterer det, vi kalibrerer mot det vi måler i dag, vi
         rekonstruerer med usikkerhet, og vi sammenligner med{" "}
         <Link
           to="/tema/numeriske-modeller"
@@ -88,8 +90,8 @@ function PaleoklimaPage() {
       <p>
         δ¹⁸O er avviket i forholdet ¹⁸O/¹⁶O fra en standard. I is: kaldere luft, lavere verdi. Den
         tunge isotopen faller mer ut underveis mot polene. I marine karbonater blander samme symbol
-        vanntemperatur og globalt isvolum, fordi den lette isotopen låses i innlandsis under
-        istid. Samme tegn, ulik prosess. Navngi arkivet.
+        vanntemperatur og globalt isvolum, fordi den lette isotopen låses i innlandsis under istid.
+        Samme tegn, ulik prosess. Navngi arkivet.
       </p>
       <OrdBoks
         ord="δ¹⁸O"
@@ -100,8 +102,8 @@ function PaleoklimaPage() {
       <p>
         Tre langsomme svingninger i jordbanen endrer hvor innstrålingen treffer, og bare svakt
         mengden sol totalt. Eksentrisitet, ca. 100 000 år: banens ellipse. Helning, ca. 41 000 år:
-        sterkere sesonger og mer sommersol på høye bredder når helningen er høy. Presesjon, ca.
-        23 000 og 19 000 år: når på året jorda er nærmest sola. Det som teller for istidene, er
+        sterkere sesonger og mer sommersol på høye bredder når helningen er høy. Presesjon, ca. 23
+        000 og 19 000 år: når på året jorda er nærmest sola. Det som teller for istidene, er
         sommersmelting på 65 °N — om innlandsisen overlever sommeren.
       </p>
       <OrdBoks

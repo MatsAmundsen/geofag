@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/hoytrykk-lavtrykk")({
   component: TrykkPage,
@@ -20,6 +21,7 @@ function TrykkPage() {
       bannerAlt="Kyst i to slags vær: storm til venstre, klar himmel til høyre"
       videoTopic="høytrykk og lavtrykk"
       next={{ to: "/tema/vindsystemet", label: "Neste: Vindsystemet" }}
+      kilder={KILDER.trykk}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">Lufttrykk</h2>
       <p>

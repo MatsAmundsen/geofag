@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("jordsystemene")!;
@@ -30,6 +31,7 @@ function JordsystemenePage() {
         to: "/geofag-1/platetektonikk",
         label: "Neste: Platetektonikk",
       }}
+      kilder={KILDER.jordsystemene}
     >
       <p>
         I geofag 1 er mottakerne geosfæren og hydrosfæren. Geosfæren er den faste jorda: berggrunn,
@@ -38,10 +40,13 @@ function JordsystemenePage() {
         havstrøm er ikke kjernen.
       </p>
       <OrdBoks ord="Geosfære" barn="Den faste jorda: berggrunn, løsmasser, jord." />
-      <OrdBoks ord="Hydrosfære" barn="Her: elver, innsjøer, grunnvann og porevann. Havet hører med, men sporet i geofag 1 er ferskvann." />
+      <OrdBoks
+        ord="Hydrosfære"
+        barn="Her: elver, innsjøer, grunnvann og porevann. Havet hører med, men sporet i geofag 1 er ferskvann."
+      />
       <p>
-        Havet hører også til hydrosfæren. I geofag 1 følger du ferskvannssporet. Havstrømmer og
-        AMOC ligger i geofag 2.
+        Havet hører også til hydrosfæren. I geofag 1 følger du ferskvannssporet. Havstrømmer og AMOC
+        ligger i geofag 2.
       </p>
 
       <p>
@@ -228,7 +233,8 @@ function JordsystemenePage() {
               "Bare isbreer.",
             ],
             answer: 1,
-            explain: "Havet hører til hydrosfæren, men kompetansemålet her peker mot ferskvannssporet.",
+            explain:
+              "Havet hører til hydrosfæren, men kompetansemålet her peker mot ferskvannssporet.",
           },
           {
             prompt: "Hvorfor varmer ikke dagens vulkaner klimaet mer enn mennesket?",
@@ -239,7 +245,8 @@ function JordsystemenePage() {
               "Fordi aske holder på varmen.",
             ],
             answer: 1,
-            explain: "Pinatubo er et kjøleeksempel på årsskala. Silikatforvitring er millioner av år.",
+            explain:
+              "Pinatubo er et kjøleeksempel på årsskala. Silikatforvitring er millioner av år.",
           },
         ]}
       />

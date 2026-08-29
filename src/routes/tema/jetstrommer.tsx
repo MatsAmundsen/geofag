@@ -4,6 +4,7 @@ import { FigurePlaceholder, PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/jetstrommer")({
   component: JetstrommerPage,
@@ -20,6 +21,7 @@ function JetstrommerPage() {
       videoTopic="jetstrømmer"
       prev={{ to: "/tema/vindsystemet", label: "Forrige: Vindsystemet" }}
       next={{ to: "/tema/coriolis", label: "Neste: Corioliseffekten" }}
+      kilder={KILDER.jetstrommer}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Hva det er, typer og hvor

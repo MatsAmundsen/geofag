@@ -4,6 +4,7 @@ import { ModelGridDiagram } from "@/components/diagrams/models";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/numeriske-modeller")({
   component: NumeriskeModellerPage,
@@ -20,6 +21,7 @@ function NumeriskeModellerPage() {
       videoTopic="numeriske modeller"
       prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
       next={{ to: "/tema/paleoklima", label: "Neste: Paleoklima" }}
+      kilder={KILDER.modeller}
     >
       <ModelGridDiagram />
 
@@ -104,10 +106,7 @@ function NumeriskeModellerPage() {
         sørlig eller nordlig bane. «30 % sjanse for mer enn 20 mm» er andelen ensemblemedlemmer over
         en terskel, ofte kalibrert mot historikk. Ikke gjetting.
       </p>
-      <OrdBoks
-        ord="Ensemble"
-        barn="Mange nesten like kjøringer som kartlegger usikkerhet."
-      />
+      <OrdBoks ord="Ensemble" barn="Mange nesten like kjøringer som kartlegger usikkerhet." />
       <p>
         Den praktiske prediksjonsgrensen for synoptisk vær er typisk 7–10 døgn, i gode tilfeller mot
         15. Klima er ikke langtidsvær. Klima er fordelingen av vær over 30 år. Pådrivet forskyver
@@ -176,7 +175,8 @@ function NumeriskeModellerPage() {
               "Fordi skyer bare finnes over land.",
             ],
             answer: 1,
-            explain: "Finere grid kan løse mer konveksjon eksplisitt, som i MEPS — da endres fysikken.",
+            explain:
+              "Finere grid kan løse mer konveksjon eksplisitt, som i MEPS — da endres fysikken.",
           },
           {
             prompt: "Hva viser spredningen i et ensemble?",

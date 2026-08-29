@@ -4,6 +4,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/havstrommer")({
   component: HavstrommerPage,
@@ -20,18 +21,19 @@ function HavstrommerPage() {
       videoTopic="havstrømmer"
       prev={{ to: "/tema/coriolis", label: "Forrige: Coriolis" }}
       next={{ to: "/tema/klima", label: "Neste: Klima" }}
+      kilder={KILDER.havstrommer}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         To etasjer, tre drivkrefter
       </h2>
       <p>
         En havstrøm er vann som flytter seg fra ett sted til et annet. De samme tre tingene som
-        styrer lufta, styrer havet: trykk, tyngde og rotasjon. Men havet er tregere og lagrer
-        enormt med varme. Derfor demper det klimaet over måneder og tiår, ikke bare over timer.
+        styrer lufta, styrer havet: trykk, tyngde og rotasjon. Men havet er tregere og lagrer enormt
+        med varme. Derfor demper det klimaet over måneder og tiår, ikke bare over timer.
       </p>
       <p>
-        Tenk to etasjer. Overflaten skyves av vinden. Dypet styres av hvor kaldt og salt vannet
-        er. I Atlanteren henger etasjene sammen i et belte som kalles AMOC.
+        Tenk to etasjer. Overflaten skyves av vinden. Dypet styres av hvor kaldt og salt vannet er.
+        I Atlanteren henger etasjene sammen i et belte som kalles AMOC.
       </p>
       <OrdBoks
         ord="Overflatestrøm og dypstrøm"
@@ -132,9 +134,7 @@ function HavstrommerPage() {
         ]}
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Skill to navn
-      </h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Skill to navn</h2>
       <p>
         I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt.
         Golfstrømmen er den sterke strømmen langs USA. Etter kysten løsner den. En gren fortsetter
@@ -165,9 +165,9 @@ function HavstrommerPage() {
         Dypet: kaldt og salt synker
       </h2>
       <p>
-        Vann blir tyngre når det avkjøles, og når det blir saltere. I tropene er overflaten varm
-        og «lett». I de nordiske hav mister den varme til lufta om vinteren. Når det dannes is,
-        blir saltet igjen i vannet. Da kan overflaten bli tyngre enn vannet under og synke.
+        Vann blir tyngre når det avkjøles, og når det blir saltere. I tropene er overflaten varm og
+        «lett». I de nordiske hav mister den varme til lufta om vinteren. Når det dannes is, blir
+        saltet igjen i vannet. Da kan overflaten bli tyngre enn vannet under og synke.
       </p>
       <OrdBoks
         ord="Tetthet"
@@ -190,9 +190,7 @@ function HavstrommerPage() {
         ]}
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        AMOC — havets belte
-      </h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">AMOC — havets belte</h2>
       <p>
         I Atlanteren går varmt, saltere vann nordover i toppen. I Norskehavet, Grønlandshavet og
         Labradorhavet synker det og returnerer sørover i dypet. Hele sløyfa kalles AMOC. Den er
@@ -226,9 +224,9 @@ function HavstrommerPage() {
 
       <Callout title="Til eksamen og Norge">
         <p>
-          Skill tre ting: Golfstrømmen langs USA, Den nordatlantiske strømmen mot Norge, og AMOC
-          som hele beltet. Vestavinden driver både strøm og storm. Varmt hav gir fukt til regnet
-          på Vestlandet.
+          Skill tre ting: Golfstrømmen langs USA, Den nordatlantiske strømmen mot Norge, og AMOC som
+          hele beltet. Vestavinden driver både strøm og storm. Varmt hav gir fukt til regnet på
+          Vestlandet.
         </p>
       </Callout>
 
@@ -269,7 +267,8 @@ function HavstrommerPage() {
               "Tidevannsbølgen.",
             ],
             answer: 1,
-            explain: "Derfor stables vann midt i gyrene. Vestavind skyver vann mot sør i Nord-Atlanteren.",
+            explain:
+              "Derfor stables vann midt i gyrene. Vestavind skyver vann mot sør i Nord-Atlanteren.",
           },
           {
             prompt: "Hvilken setning er presis om Norges milde kyst?",
@@ -280,7 +279,8 @@ function HavstrommerPage() {
               "Fjordene lager sin egen Golfstrøm.",
             ],
             answer: 1,
-            explain: "Samspillet luft–hav, ikke ett navn på et kart, forklarer forskjellen til Labrador.",
+            explain:
+              "Samspillet luft–hav, ikke ett navn på et kart, forklarer forskjellen til Labrador.",
           },
         ]}
       />

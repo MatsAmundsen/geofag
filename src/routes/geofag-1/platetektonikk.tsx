@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "@/components/diagrams/plates";
+import {
+  PlatesMapDiagram,
+  SpreadingDiagram,
+  SubductionDiagram,
+} from "@/components/diagrams/plates";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("platetektonikk")!;
@@ -30,6 +35,7 @@ function PlatetektonikkPage() {
         to: "/geofag-1/vulkaner-og-jordskjelv",
         label: "Neste: Vulkaner og jordskjelv",
       }}
+      kilder={KILDER.platetektonikk}
     >
       <OrdBoks ord="Litosfære" barn="Skorpe pluss øvre stive mantel, delt i plater." />
       <OrdBoks ord="Astenosfære" barn="Mykere sone platene glir på." />
@@ -37,9 +43,9 @@ function PlatetektonikkPage() {
       <p>
         Platene beveger seg fordi mantelen har langsomme strømmer. De kalles konveksjon og drives av
         varme fra jordas indre. Den viktigste trekkraften ved konvergens er likevel at kald, tett
-        havbunn synker: slab pull. Farten er noen centimeter i året. Den midtatlantiske ryggen
-        sprer i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15 cm per år. GPS viser
-        at dagens retning og fart stemmer med mønsteret over millioner av år.
+        havbunn synker: slab pull. Farten er noen centimeter i året. Den midtatlantiske ryggen sprer
+        i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15 cm per år. GPS viser at
+        dagens retning og fart stemmer med mønsteret over millioner av år.
       </p>
       <OrdBoks ord="Konveksjon" barn="Langsomme mantelstrømmer drevet av indre varme." />
       <OrdBoks
@@ -185,7 +191,8 @@ function PlatetektonikkPage() {
               "Fordi kontinentene synker.",
             ],
             answer: 1,
-            explain: "Havbunn er tettere og synker. Kontinent mot kontinent gir fjell, ikke subduksjon.",
+            explain:
+              "Havbunn er tettere og synker. Kontinent mot kontinent gir fjell, ikke subduksjon.",
           },
           {
             prompt: "Hvor ligger Norge i platetektonikken i dag?",

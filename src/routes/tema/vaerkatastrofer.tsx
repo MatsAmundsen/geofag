@@ -4,6 +4,7 @@ import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/vaerkatastrofer")({
   component: KatastroferPage,
@@ -19,13 +20,14 @@ function KatastroferPage() {
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye"
       videoTopic="værkatastrofer og naturfarer"
       prev={{ to: "/tema/paleoklima", label: "Forrige: Paleoklima" }}
+      kilder={KILDER.vaerkatastrofer}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Samme fysikk. Høyere innsats.
       </h2>
       <p>
-        En værkatastrofe er et værsystem med nok energi, fukt eller vind til å ødelegge. Fysikken
-        er den du har: lavtrykk, stigende luft, coriolis, varmt hav, fjell som tvinger luft opp.
+        En værkatastrofe er et værsystem med nok energi, fukt eller vind til å ødelegge. Fysikken er
+        den du har: lavtrykk, stigende luft, coriolis, varmt hav, fjell som tvinger luft opp.
         Forskjellen er skalaen — og at mennesker bor i veien.
       </p>
       <p>
@@ -41,10 +43,9 @@ function KatastroferPage() {
         Tropisk syklon: varmt hav og en bøy
       </h2>
       <p>
-        En tropisk syklon er et lavtrykk som lever av varmt hav. Vannet må være varmt et godt
-        stykke ned, ikke bare i en tynn hinne. Når vannet fordamper og kondenserer i tårnskyene,
-        slippes varme løs i lufta. Luften stiger. Trykket i midten synker. Mer luft strømmer inn
-        nede.
+        En tropisk syklon er et lavtrykk som lever av varmt hav. Vannet må være varmt et godt stykke
+        ned, ikke bare i en tynn hinne. Når vannet fordamper og kondenserer i tårnskyene, slippes
+        varme løs i lufta. Luften stiger. Trykket i midten synker. Mer luft strømmer inn nede.
       </p>
       <p>
         Coriolis bøyer innstrømningen. I nord spinner systemet mot klokken. I sør med klokken. På
@@ -90,8 +91,8 @@ function KatastroferPage() {
       </h2>
       <p>
         Vi får sjelden tropiske orkaner. Det vi får, er ekstratropiske lavtrykk: polarfrontens
-        bølger. Her møtes varm luft sørfra og kald luft nordfra. Fronten kveiles. Et lavtrykk
-        dypes. Vinden kan bli orkan styrke langs kysten uten at det er en tropisk syklon.
+        bølger. Her møtes varm luft sørfra og kald luft nordfra. Fronten kveiles. Et lavtrykk dypes.
+        Vinden kan bli orkan styrke langs kysten uten at det er en tropisk syklon.
       </p>
       <p>
         Det er vestavindsbeltet du allerede kjenner, sett som vær, ikke som klimasone. Høst og
@@ -125,12 +126,12 @@ function KatastroferPage() {
       </h2>
       <p>
         Vestlandet er bygget for ekstremnedbør. Vestavinden kommer inn over varmt hav, lastet med
-        fukt. Fjellet tvinger lufta opp. Den avkjøles. Vanndampen blir til regn. Bak fjellet, i
-        øst, synker lufta og tørker. Samme celle, to utfall — du har sett det i vindkapitlet.
+        fukt. Fjellet tvinger lufta opp. Den avkjøles. Vanndampen blir til regn. Bak fjellet, i øst,
+        synker lufta og tørker. Samme celle, to utfall — du har sett det i vindkapitlet.
       </p>
       <p>
-        I et varmere klima holder lufta mer fukt. Samme fjell, mer vann i skyene, mer intens
-        nedbør. Det er derfor «ekstremnedbør» er en klimarisiko i Norge, ikke bare et vestlandsvær.
+        I et varmere klima holder lufta mer fukt. Samme fjell, mer vann i skyene, mer intens nedbør.
+        Det er derfor «ekstremnedbør» er en klimarisiko i Norge, ikke bare et vestlandsvær.
       </p>
       <OrdBoks
         ord="Orografisk nedbør"
@@ -163,8 +164,8 @@ function KatastroferPage() {
         vannstanden som kommer inn over kaia.
       </p>
       <p>
-        Havnivået stiger i et varmere klima. Da trenger stormen mindre hjelp for å nå samme
-        terskel. Risikoen kryper innover, selv om stormen er «den samme».
+        Havnivået stiger i et varmere klima. Da trenger stormen mindre hjelp for å nå samme terskel.
+        Risikoen kryper innover, selv om stormen er «den samme».
       </p>
       <OrdBoks
         ord="Stormflo"
@@ -216,19 +217,25 @@ function KatastroferPage() {
       <Callout title="Vanlige misforståelser">
         <p>
           Orkaner «suges ikke opp av coriolis som et vaskesluk i badekaret» — vasken er for liten.
-          De fødes ikke på ekvator. Og «vi har alltid hatt storm» er sant. Spørsmålet er om
-          rammene, og dermed halen av de verste hendelsene, er forskjøvet.
+          De fødes ikke på ekvator. Og «vi har alltid hatt storm» er sant. Spørsmålet er om rammene,
+          og dermed halen av de verste hendelsene, er forskjøvet.
         </p>
       </Callout>
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
       <TermGrid>
-        <Term name="Tropisk syklon" def="Varmkjerne-lavtrykk over tropisk hav. Orkan, tyfon, syklon." />
+        <Term
+          name="Tropisk syklon"
+          def="Varmkjerne-lavtrykk over tropisk hav. Orkan, tyfon, syklon."
+        />
         <Term name="Ekstratropisk lavtrykk" def="Polarfrontens storm. Norges typiske maskin." />
         <Term name="Orografisk nedbør" def="Fjell tvinger luft opp. Vestlandet." />
         <Term name="Stormflo" def="Storm + flo + lavtrykk. Vannstand, ikke bare bølger." />
         <Term name="Risiko" def="Fare ganger sårbarhet. Samme storm, ulikt utfall." />
-        <Term name="Tilskriving" def="Hvor mye klimaendring endret sannsynlighet eller intensitet." />
+        <Term
+          name="Tilskriving"
+          def="Hvor mye klimaendring endret sannsynlighet eller intensitet."
+        />
       </TermGrid>
 
       <Quiz
@@ -242,7 +249,8 @@ function KatastroferPage() {
               "Sola står for høyt.",
             ],
             answer: 1,
-            explain: "Varmt hav er nødvendig, men ikke nok. Uten coriolis blir det ikke et spinnende system.",
+            explain:
+              "Varmt hav er nødvendig, men ikke nok. Uten coriolis blir det ikke et spinnende system.",
           },
           {
             prompt: "Hva driver Norges typiske høst- og vinterstormer?",
@@ -256,7 +264,8 @@ function KatastroferPage() {
             explain: "Vestavindsbeltet og polarfronten. Det er ikke tropiske orkaner.",
           },
           {
-            prompt: "Hvorfor kan stormflo bli farligere i et varmere klima selv om stormen er «den samme»?",
+            prompt:
+              "Hvorfor kan stormflo bli farligere i et varmere klima selv om stormen er «den samme»?",
             options: [
               "Fordi vinden alltid blir dobbelt så sterk.",
               "Fordi høyere havnivå gjør at den samme stormen når lenger inn over land.",

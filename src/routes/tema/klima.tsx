@@ -4,6 +4,7 @@ import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/klima")({
   component: KlimaPage,
@@ -20,6 +21,7 @@ function KlimaPage() {
       videoTopic="klimasystemet"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
       next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
+      kilder={KILDER.klima}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Vær er dager. Klima er tiår.
@@ -38,15 +40,17 @@ function KlimaPage() {
         barn="Gjennomsnitt og variasjonsmønster i vær over lang tid, vanligvis tretti år eller mer. Klimaet beskriver hva som er typisk — og hva som er ekstremt — på et sted."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Fem deler, ett system</h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Fem deler, ett system
+      </h2>
       <p>
         Klimasystemet er ikke bare luft. Atmosfæren, havet, isen, landoverflaten og livet bytter
         varme, vann og karbon. Endrer du én del, svarer de andre.
       </p>
       <p>
         Kryosfæren er mer enn innlandsisen på figuren. Havis i Arktis styrer albedo fra uke til uke.
-        Permafrost lagrer karbon i bakken. Breer i Norge er små, men de er synlige agenter: de graver
-        om sommeren og mater elvene. Isen er treg, men ikke stille.
+        Permafrost lagrer karbon i bakken. Breer i Norge er små, men de er synlige agenter: de
+        graver om sommeren og mater elvene. Isen er treg, men ikke stille.
       </p>
       <OrdBoks
         ord="Permafrost"
@@ -78,9 +82,9 @@ function KlimaPage() {
         Inn og ut — og det som holder igjen
       </h2>
       <p>
-        Sola sender inn kortbølget lys. Jorda sender ut langbølget stråling. Er inn og ut i
-        balanse over tid, er den globale temperaturen stabil. Er de ikke det, varmes eller kjøles
-        planeten til balansen er gjenopprettet.
+        Sola sender inn kortbølget lys. Jorda sender ut langbølget stråling. Er inn og ut i balanse
+        over tid, er den globale temperaturen stabil. Er de ikke det, varmes eller kjøles planeten
+        til balansen er gjenopprettet.
       </p>
       <p>
         Enkelte gasser i lufta — vanndamp, karbondioksid, metan — slipper sollyset inn, men bremser
@@ -137,8 +141,8 @@ function KlimaPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Isen er et speil</h2>
       <p>
         Hvit is kaster mye sollys tilbake. Mørkt hav tar det opp. Smelter isen, blir flaten mørkere,
-        tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen — en
-        av de tydeligste forsterkerne i polarstrøk.
+        tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen — en av
+        de tydeligste forsterkerne i polarstrøk.
       </p>
       <OrdBoks
         ord="Albedo"
@@ -204,8 +208,8 @@ function KlimaPage() {
         kloden merker det — det kalles telekobling.
       </p>
       <p>
-        La Niña er den andre siden: sterkere passater, enda varmere i vest, kjøligere i øst. ENSO
-        er naturlig. Den er ikke det samme som global oppvarming. Men den rir oppå et varmere hav.
+        La Niña er den andre siden: sterkere passater, enda varmere i vest, kjøligere i øst. ENSO er
+        naturlig. Den er ikke det samme som global oppvarming. Men den rir oppå et varmere hav.
       </p>
       <OrdBoks
         ord="ENSO"
@@ -233,8 +237,8 @@ function KlimaPage() {
       </h2>
       <p>
         Istidene kom og gikk. Jordas bane og helning endrer hvor sola treffer gjennom årtusener.
-        Vulkaner kan kjøle i noen år. Solen svinger svakt. Det er ikke et argument mot at
-        mennesket endrer klimaet nå. Det er bakgrunnen.
+        Vulkaner kan kjøle i noen år. Solen svinger svakt. Det er ikke et argument mot at mennesket
+        endrer klimaet nå. Det er bakgrunnen.
       </p>
       <p>
         I iskjerner sitter gamle luftbobler. De viser at temperatur og karbondioksid har fulgt
@@ -284,15 +288,17 @@ function KlimaPage() {
         barn="Menneskeskapt. Antropogen klimapåvirkning er dytten fra våre utslipp og arealbruk, oppå den naturlige variasjonen."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Norge i dette bildet</h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Norge i dette bildet
+      </h2>
       <p>
         Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mildt for
-        breddegraden. I et varmere klima holder lufta mer fukt. Vestlandet, som allerede tvinges
-        av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
+        breddegraden. I et varmere klima holder lufta mer fukt. Vestlandet, som allerede tvinges av
+        fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
       </p>
       <p>
-        AMOC er usikkerhetsmomentet. En svekket nordovertransport av varme kan dempe oppvarmingen
-        i Nord-Atlanteren uten å «slå av Golfstrømmen». Klima i Norge er samspill, ikke én strøm.
+        AMOC er usikkerhetsmomentet. En svekket nordovertransport av varme kan dempe oppvarmingen i
+        Nord-Atlanteren uten å «slå av Golfstrømmen». Klima i Norge er samspill, ikke én strøm.
       </p>
 
       <PhotoFigure
@@ -306,7 +312,10 @@ function KlimaPage() {
         ]}
         points={[
           { n: "1", label: "Vestavind og atlantisk varme. Grønt og åpent hav." },
-          { n: "2", label: "Samme breddegrad, men kald luft og is. Klima er transport, ikke bare solhøyde." },
+          {
+            n: "2",
+            label: "Samme breddegrad, men kald luft og is. Klima er transport, ikke bare solhøyde.",
+          },
         ]}
       />
 
@@ -358,7 +367,8 @@ function KlimaPage() {
               "Fordi den ikke påvirker stråling.",
             ],
             answer: 1,
-            explain: "Varmere luft holder mer vanndamp. Mer vanndamp holder mer varme. Forsterker, ikke starter.",
+            explain:
+              "Varmere luft holder mer vanndamp. Mer vanndamp holder mer varme. Forsterker, ikke starter.",
           },
           {
             prompt: "Hva beskriver ENSO best?",
@@ -369,7 +379,8 @@ function KlimaPage() {
               "At alle orkaner kommer fra Stillehavet.",
             ],
             answer: 1,
-            explain: "El Niño og La Niña er ytterpunkter i samme svingning. De er ikke det samme som global oppvarming.",
+            explain:
+              "El Niño og La Niña er ytterpunkter i samme svingning. De er ikke det samme som global oppvarming.",
           },
         ]}
       />

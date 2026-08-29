@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("vann-flom-og-skred")!;
@@ -30,6 +31,7 @@ function VannFlomOgSkredPage() {
         to: "/geofag-1/ressurser-og-felt",
         label: "Neste: Ressurser og felt",
       }}
+      kilder={KILDER.vannFlom}
     >
       <p>
         Tilførsel er nedbør. Lagre er snø, markvann, grunnvann, innsjø, myr og elveløp. Tap mot
@@ -69,7 +71,10 @@ function VannFlomOgSkredPage() {
         ikke avsatt i hav. Aktsomhet for kvikkleire gjelder overalt under marin grense, også utenfor
         tegnede faresoner. Kartene friskmelder ikke omlandet.
       </p>
-      <OrdBoks ord="Marin grense" barn="Høyeste havnivå etter siste istid. I Norge 0–220 m, stedavhengig." />
+      <OrdBoks
+        ord="Marin grense"
+        barn="Høyeste havnivå etter siste istid. I Norge 0–220 m, stedavhengig."
+      />
       <p>
         Vanlig sjøvann har ca. 35 g salt per liter. Saltet binder leirflakene. Når landet hevet seg,
         ble porevannet ferskere. Når saltet kommer under ca. 2 g/L, kan kvikkleire dannes.
@@ -99,12 +104,12 @@ function VannFlomOgSkredPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Gjerdrum 2020</h2>
       <p>
-        Gjerdrum 30. desember 2020, rett før kl. 04: 10 omkomne, et ufødt barn, mer enn
-        1600 evakuert, volum omtrent 1,35 mill. m³. Start i skråningen vest for Holmen mot
-        Tistilbekken. Årsak: erosjon over år, forsterket av ødelagt bekkelukking, urbanisering og
-        terrenginngrep. Utløser: den våte, milde høsten 2020, høyt poretrykk. Hovedårsaken er
-        erosjon og kvikkleire. Våt høst var utløser. Ikke et klimaskred som eneste forklaring, og
-        ikke uforutsigbart. Kommunen hadde fått varsler om erosjon.
+        Gjerdrum 30. desember 2020, rett før kl. 04: 10 omkomne, et ufødt barn, mer enn 1600
+        evakuert, volum omtrent 1,35 mill. m³. Start i skråningen vest for Holmen mot Tistilbekken.
+        Årsak: erosjon over år, forsterket av ødelagt bekkelukking, urbanisering og terrenginngrep.
+        Utløser: den våte, milde høsten 2020, høyt poretrykk. Hovedårsaken er erosjon og kvikkleire.
+        Våt høst var utløser. Ikke et klimaskred som eneste forklaring, og ikke uforutsigbart.
+        Kommunen hadde fått varsler om erosjon.
       </p>
       <p>
         Rissa 1978 var større, 5–6 mill. m³. Risikoen i Gjerdrum ble katastrofal fordi boliger lå i
@@ -161,7 +166,8 @@ function VannFlomOgSkredPage() {
               "Havnivå etter istiden.",
             ],
             answer: 1,
-            explain: "Bratt topp: lite magasin og intens regn. Bred topp: sjø og snøsmelting over uker.",
+            explain:
+              "Bratt topp: lite magasin og intens regn. Bred topp: sjø og snøsmelting over uker.",
           },
           {
             prompt: "Hvor kan kvikkleire ligge?",
@@ -172,7 +178,8 @@ function VannFlomOgSkredPage() {
               "Bare i fjell.",
             ],
             answer: 1,
-            explain: "Kartene friskmelder ikke omlandet. Aktsomhet gjelder under hele marin grense.",
+            explain:
+              "Kartene friskmelder ikke omlandet. Aktsomhet gjelder under hele marin grense.",
           },
           {
             prompt: "Hva er forskjellen på fare og risiko i Gjerdrum?",
@@ -183,7 +190,8 @@ function VannFlomOgSkredPage() {
               "Fare er bare klimaskred.",
             ],
             answer: 1,
-            explain: "Risiko er fare × eksponering × sårbarhet. Våt høst var utløser, ikke eneste årsak.",
+            explain:
+              "Risiko er fare × eksponering × sårbarhet. Våt høst var utløser, ikke eneste årsak.",
           },
         ]}
       />

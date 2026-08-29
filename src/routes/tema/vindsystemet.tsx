@@ -4,6 +4,7 @@ import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/vindsystemet")({
   component: VindsystemetPage,
@@ -20,6 +21,7 @@ function VindsystemetPage() {
       videoTopic="det globale vindsystemet"
       prev={{ to: "/tema/hoytrykk-lavtrykk", label: "Forrige: Høytrykk og lavtrykk" }}
       next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
+      kilder={KILDER.vindsystemet}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Motoren: sola treffer skjevt
@@ -111,8 +113,16 @@ function VindsystemetPage() {
         ]}
         points={[
           { n: "1", label: "Hadley (0–30°): opp ved ekvator, ned over ørkenen. Tropisk motor." },
-          { n: "2", label: "Ferrel (30–60°): ikke en egen motor. Den drives av vandrende lavtrykk. Vestavind. Her ligger Norge." },
-          { n: "3", label: "Polar (60–90°): kald luft synker over polen og møter mildluft ved polarfronten." },
+          {
+            n: "2",
+            label:
+              "Ferrel (30–60°): ikke en egen motor. Den drives av vandrende lavtrykk. Vestavind. Her ligger Norge.",
+          },
+          {
+            n: "3",
+            label:
+              "Polar (60–90°): kald luft synker over polen og møter mildluft ved polarfronten.",
+          },
         ]}
       />
       <OrdBoks
@@ -124,10 +134,10 @@ function VindsystemetPage() {
         Hadley-cellen: regn og ørken i samme sløyfe
       </h2>
       <p>
-        Følg lufta. Ved ekvator er den varm og fuktig. Den stiger, blir til byger, og er tørrere
-        når den kommer opp. Så strømmer den mot 30° bredde og synker. Synkende luft varmes og
-        tørker. Under dette beltet ligger Sahara, Kalahari og de australske ørkenene. Ørkenene
-        ligger der fordi lufta synker — ikke fordi det «mangler vann i bakken» som første årsak.
+        Følg lufta. Ved ekvator er den varm og fuktig. Den stiger, blir til byger, og er tørrere når
+        den kommer opp. Så strømmer den mot 30° bredde og synker. Synkende luft varmes og tørker.
+        Under dette beltet ligger Sahara, Kalahari og de australske ørkenene. Ørkenene ligger der
+        fordi lufta synker — ikke fordi det «mangler vann i bakken» som første årsak.
       </p>
       <p>
         Nede ved bakken strømmer lufta tilbake mot ekvator. Rotasjonen dreier den, og vi får
@@ -176,9 +186,9 @@ function VindsystemetPage() {
       </p>
       <p>
         <strong>Ved ekvator</strong> stiger luft i Hadley-cellen. Vanndampen blir til byger nesten
-        daglig. Amazonas, Kongo og Indonesia ligger her. <strong>Rundt 30°</strong> synker den
-        samme lufta, tørr og varm. Sahara, Arabia og de australske ørkenene er synkende luft —
-        ikke «mangel på grunnvann» som første årsak. <strong>Rundt 40–60°</strong> ligger
+        daglig. Amazonas, Kongo og Indonesia ligger her. <strong>Rundt 30°</strong> synker den samme
+        lufta, tørr og varm. Sahara, Arabia og de australske ørkenene er synkende luft — ikke
+        «mangel på grunnvann» som første årsak. <strong>Rundt 40–60°</strong> ligger
         vestavindsbeltet, i Ferrel-sonen. Vandrende lavtrykk og polarfront gir milde, fuktige
         vestkyster: Norge, Chile, New Zealand. <strong>Mot polen</strong> synker kald luft. Lite
         vanndamp, tørt og iskaldt.
@@ -317,8 +327,8 @@ function VindsystemetPage() {
       <Callout title="Vanlige misforståelser">
         <p>
           Cellene er et middelbilde, ikke tre rør. Det tropiske regnbelte flytter seg med sola i
-          løpet av året. Været i Norge er lavtrykk og fronter, ikke en jevn vestavind fra morgen
-          til kveld.
+          løpet av året. Været i Norge er lavtrykk og fronter, ikke en jevn vestavind fra morgen til
+          kveld.
         </p>
       </Callout>
 
@@ -342,7 +352,8 @@ function VindsystemetPage() {
               "Fordi ozonlaget er tynnest der.",
             ],
             answer: 1,
-            explain: "Hadley-cellen lukkes med synkende luft i subtropene. Sahara er et typeeksempel.",
+            explain:
+              "Hadley-cellen lukkes med synkende luft i subtropene. Sahara er et typeeksempel.",
           },
           {
             prompt: "Hvilken sone styrer været i Sør-Norge?",

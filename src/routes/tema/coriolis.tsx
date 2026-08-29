@@ -14,6 +14,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 
 export const Route = createFileRoute("/tema/coriolis")({
   component: CoriolisPage,
@@ -30,10 +31,11 @@ function CoriolisPage() {
       videoTopic="Corioliseffekten"
       prev={{ to: "/tema/jetstrommer", label: "Forrige: Jetstrømmer" }}
       next={{ to: "/tema/havstrommer", label: "Neste: Havstrømmer" }}
+      kilder={KILDER.coriolis}
     >
       <p>
-        Jorda roterer mot øst. Vi står på den roterende flaten og måler alt derfra. En luftpakke
-        som går rett fram i verdensrommet, ser derfor ut til å bøye av sett fra bakken. På nordlig
+        Jorda roterer mot øst. Vi står på den roterende flaten og måler alt derfra. En luftpakke som
+        går rett fram i verdensrommet, ser derfor ut til å bøye av sett fra bakken. På nordlig
         halvkule bøyer den mot høyre. På sørlig halvkule mot venstre. Ved ekvator er avbøyningen
         null. Derfor kan tropiske sykloner ikke dannes på selve ekvator. De trenger coriolis for å
         få rotasjon.
@@ -50,9 +52,7 @@ function CoriolisPage() {
       <RotationSpeedDiagram />
       <PolewardParcelDiagram />
 
-      <p>
-        Tre ledd må sitte samtidig for at værsystemene skal få den formen vi ser på kartet.
-      </p>
+      <p>Tre ledd må sitte samtidig for at værsystemene skal få den formen vi ser på kartet.</p>
       <p>
         Først trykkgradienten. Luft går fra høyt mot lavt trykk. Jo tettere isobarene ligger, desto
         sterkere er denne driften.
@@ -125,13 +125,11 @@ function CoriolisPage() {
         barn="Vindstresset på overflaten. Nettotransporten går 90 grader til høyre for vinden på nordlig halvkule. Derfor kan kystvind gi oppwelling."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Jetstrømmen svinger
-      </h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Jetstrømmen svinger</h2>
       <p>
         Coriolis er ikke like sterk overalt. Ved ekvator er den null. Ved polene er den sterkest. En
-        luftpakke som flytter seg mot polene, merker derfor en sterkere dreining. En som flytter
-        seg mot ekvator, merker en svakere.
+        luftpakke som flytter seg mot polene, merker derfor en sterkere dreining. En som flytter seg
+        mot ekvator, merker en svakere.
       </p>
       <p>
         Polarfrontjeten er et smalt belte med sterk vestavind i øvre troposfære, langs polarfronten.
@@ -232,10 +230,10 @@ function CoriolisPage() {
 
       <Callout title="Vanlige misforståelser">
         <p>
-          Corioliseffekten er ikke en kraft som starter vinden. Den virker bare når noe beveger
-          seg. Vasken og toalettet lyver: der avgjør kummens form. Nær bakken vinner
-          trykkgradienten litt, og vinden krysser isobarene inn mot lavtrykk — derfor strømmer det
-          inn mot L, ikke bare rundt.
+          Corioliseffekten er ikke en kraft som starter vinden. Den virker bare når noe beveger seg.
+          Vasken og toalettet lyver: der avgjør kummens form. Nær bakken vinner trykkgradienten
+          litt, og vinden krysser isobarene inn mot lavtrykk — derfor strømmer det inn mot L, ikke
+          bare rundt.
         </p>
       </Callout>
 
@@ -290,10 +288,12 @@ function CoriolisPage() {
               "Det gjør det ikke.",
             ],
             answer: 1,
-            explain: "Formen er coriolis pluss trykkgradient pluss friksjon. Mot klokka rundt lavtrykk i Norge.",
+            explain:
+              "Formen er coriolis pluss trykkgradient pluss friksjon. Mot klokka rundt lavtrykk i Norge.",
           },
           {
-            prompt: "Når trykkgradient og coriolis veier hverandre opp på nordlig halvkule, hvor går vinden?",
+            prompt:
+              "Når trykkgradient og coriolis veier hverandre opp på nordlig halvkule, hvor går vinden?",
             options: [
               "Rett inn mot lavtrykket. Det kalles passat.",
               "Langs isobarene, med lavtrykk til venstre. Det kalles geostrofisk vind.",
@@ -312,7 +312,8 @@ function CoriolisPage() {
               "Fordi coriolis bare virker i luft.",
             ],
             answer: 1,
-            explain: "Coriolis vinner på hundrevis av kilometer og over timer og døgn. Ikke på en meter i et minutt.",
+            explain:
+              "Coriolis vinner på hundrevis av kilometer og over timer og døgn. Ikke på en meter i et minutt.",
           },
           {
             prompt: "Hva er NAO, og hvorfor betyr den mer for Norge enn ENSO?",
@@ -323,7 +324,8 @@ function CoriolisPage() {
               "At vasken spinner mot klokka.",
             ],
             answer: 1,
-            explain: "ENSO sitter i tropisk Stillehav. NAO sitter i Nord-Atlanteren, der Norges vær lages.",
+            explain:
+              "ENSO sitter i tropisk Stillehav. NAO sitter i Nord-Atlanteren, der Norges vær lages.",
           },
         ]}
       />

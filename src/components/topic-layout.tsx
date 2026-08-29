@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { VideoPlaceholder } from "@/components/video-placeholder";
+import type { Kilde } from "@/lib/kilder";
 
 export function TopicLayout({
   kicker,
@@ -13,6 +15,7 @@ export function TopicLayout({
   bannerAlt,
   videoTopic,
   children,
+  kilder,
   prev,
   next,
 }: {
@@ -23,6 +26,7 @@ export function TopicLayout({
   bannerAlt: string;
   videoTopic: string;
   children: ReactNode;
+  kilder?: readonly Kilde[];
   prev?: { to: string; label: string; params?: Record<string, string> };
   next?: { to: string; label: string; params?: Record<string, string> };
 }) {
@@ -55,6 +59,8 @@ export function TopicLayout({
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <VideoPlaceholder topic={videoTopic} />
           <div className="space-y-5 text-base leading-relaxed text-foreground/95">{children}</div>
+
+          {kilder ? <Kildeliste kilder={kilder} /> : null}
 
           <nav className="mt-14 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
             {prev ? (

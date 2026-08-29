@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("vulkaner-og-jordskjelv")!;
@@ -30,6 +31,7 @@ function VulkanerOgJordskjelvPage() {
         to: "/geofag-1/bergarter-og-landformer",
         label: "Neste: Bergarter og landformer",
       }}
+      kilder={KILDER.vulkaner}
     >
       <p>
         Ved midthavsrygg og transformgrense er skjelvene grunne. Ved subduksjon går havbunnen ned,
@@ -45,7 +47,13 @@ function VulkanerOgJordskjelvPage() {
         heading="Der platene synker, bygges vulkanen"
         caption="Subduksjon gir både dype jordskjelv og magma. Indonesia og Japan har dette risikobildet. Norge har det ikke — unntatt Jan Mayen på ryggen."
         marks={[{ x: 48, y: 10, n: "1", text: "Askesøyle", tone: "warm" }]}
-        points={[{ n: "1", label: "Eksplosiv vulkan over synkende havbunn. Annet risikobilde enn intraplate-Norge." }]}
+        points={[
+          {
+            n: "1",
+            label:
+              "Eksplosiv vulkan over synkende havbunn. Annet risikobilde enn intraplate-Norge.",
+          },
+        ]}
       />
 
       <p>
@@ -184,7 +192,8 @@ function VulkanerOgJordskjelvPage() {
               "Japanske skjelv er alltid grunne, norske alltid dype.",
             ],
             answer: 1,
-            explain: "Norge er blant de mest skjelvaktive i Nord-Europa, men skred og flom dreper flere.",
+            explain:
+              "Norge er blant de mest skjelvaktive i Nord-Europa, men skred og flom dreper flere.",
           },
           {
             prompt: "Hva er hotspot, kort?",

@@ -4,6 +4,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("ressurser-og-felt")!;
@@ -29,6 +30,7 @@ function RessurserOgFeltPage() {
         to: "/geofag-1",
         label: "Tilbake til Geofag 1",
       }}
+      kilder={KILDER.ressurser}
     >
       <p>
         En geologisk ressurs er noe i berg eller løsmasser som samfunnet kan bruke. I Norge er det
@@ -79,8 +81,8 @@ function RessurserOgFeltPage() {
       />
       <p>
         Petroleum sitter i porøs bergart under takbergart, i et felle-geometri. Nordsjøen er
-        sedimentbasseng. Det er ikke «olje i fjorden». Det er porer i sandstein, fylt over
-        millioner av år.
+        sedimentbasseng. Det er ikke «olje i fjorden». Det er porer i sandstein, fylt over millioner
+        av år.
       </p>
       <OrdBoks
         ord="Petroleumfelle"
@@ -108,8 +110,8 @@ function RessurserOgFeltPage() {
       </p>
       <p>
         Ferskvann er fornybart på års-skala, men magasinene er det ikke hvis du tømmer raskere enn
-        infiltrasjonen. Gruver kan syre og tungmetaller i avrenning i tiår etter stans. Bærekraft
-        er derfor tidsskala: hva skjer i drift, og hva skjer når driften er slutt.
+        infiltrasjonen. Gruver kan syre og tungmetaller i avrenning i tiår etter stans. Bærekraft er
+        derfor tidsskala: hva skjer i drift, og hva skjer når driften er slutt.
       </p>
       <OrdBoks
         ord="Bærekraftig uttak"
@@ -195,7 +197,8 @@ function RessurserOgFeltPage() {
               "Fordi det ikke kan forurenses.",
             ],
             answer: 1,
-            explain: "Overuttak og forurensning i infiltrasjonsområdet treffer kranen — med forsinkelse.",
+            explain:
+              "Overuttak og forurensning i infiltrasjonsområdet treffer kranen — med forsinkelse.",
           },
           {
             prompt: "Hva skiller feltnotat fra tolking?",

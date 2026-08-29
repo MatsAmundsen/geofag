@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("bergarter-og-landformer")!;
@@ -30,6 +31,7 @@ function BergarterOgLandformerPage() {
         to: "/geofag-1/vann-flom-og-skred",
         label: "Neste: Vann, flom og skred",
       }}
+      kilder={KILDER.bergarter}
     >
       <OrdBoks
         ord="Mineral"
