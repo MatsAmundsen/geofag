@@ -20,6 +20,13 @@ export {
   NaoDiagram,
 } from "./coriolis";
 export {
+  FjellskredBolgeDiagram,
+  KvikkleireDiagram,
+  SkredKrefterDiagram,
+  SkredSonerDiagram,
+  SkredTyperDiagram,
+} from "./skred";
+export {
   JetFormsDiagram,
   JetProfileDiagram,
   JetSeasonDiagram,
