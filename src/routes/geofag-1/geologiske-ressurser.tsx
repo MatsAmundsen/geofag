@@ -23,8 +23,8 @@ function GeologiskeRessurserPage() {
       bannerAlt={tema.alt}
       videoTopic="geologiske-ressurser"
       prev={{
-        to: "/geofag-1/vann-flom-og-skred",
-        label: "Forrige: Vann, flom og skred",
+        to: "/geofag-1/skred",
+        label: "Forrige: Skred",
       }}
       next={{
         to: "/geofag-1/feltarbeid",
