@@ -119,7 +119,7 @@ function Geofag2() {
                 n="03"
                 to="/tema/jetstrommer"
                 title="Jetstrømmer"
-                text="Jetstrømmen er et smalt belte med sterk vestavind i øvre troposfære. Det er to slike belter, ikke ett. Polarfrontjeten styrer de ekstratropiske lavtrykkene inn mot Norge."
+                text="Et smalt belte med sterk vestavind i øvre troposfære. To belter, ikke ett. Utløpet av en jetkjerne dypner lavtrykkene, og stormbanen følger jeten inn mot Norge."
               />
               <Fordypning
                 n="04"
