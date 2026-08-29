@@ -64,25 +64,6 @@ function GeologiskeRessurserPage() {
         barn="Knust fjell: gneis, granitt, kvartsitt, gabbro eller syenitt. Samfunnets største mineraluttak i volum. Ikke fornybart på menneskelig tidsskala."
       />
 
-      <PhotoFigure
-        src="/images/fig-dagbrudd.jpg"
-        alt="Åpent steinbrudd i gneis med knust stein og fjord i bakgrunnen"
-        heading="Pukk er volum"
-        caption="Pukk og grus er samfunnets største mineraluttak i volum. De kan ikke importeres billig over lange avstander. Derfor ligger uttak i de fleste kommuner."
-        marks={[
-          { x: 8, y: 16, n: "1", text: "Knust fjell", tone: "warm" },
-          { x: 62, y: 52, n: "2", text: "Lokalt uttak", tone: "teal" },
-        ]}
-        points={[
-          { n: "1", label: "Pukk er knust fjell. Samfunnets største mineraluttak i volum." },
-          {
-            n: "2",
-            label:
-              "De kan ikke importeres billig over lange avstander. Derfor ligger uttak i de fleste kommuner.",
-          },
-        ]}
-      />
-
       <p>
         Olje og gass er et petroleumssystem. Fem brikker må ligge: kildebergart, migrasjon,
         reservoar, felle og takbergart, pluss tid og temperatur. Kilden er organisk rik skifer. På
@@ -116,6 +97,21 @@ function GeologiskeRessurserPage() {
         Oppredning skiller verdifulle mineraler fra gangbergart. Resten er avgang. Den deponeres på
         land, i dam eller i sjø.
       </p>
+
+      <PhotoFigure
+        src="/images/fig-dagbrudd.jpg"
+        alt="Åpent steinbrudd i gneis med knust stein og fjord i bakgrunnen"
+        heading="Figur dagbrudd"
+        caption="Dagbrudd brukes til pukk, mange industrimineraler, noe malm og naturstein. Arealinngrepet er synlig."
+        marks={[
+          { x: 8, y: 16, n: "1", text: "Knust fjell", tone: "warm" },
+          { x: 62, y: 52, n: "2", text: "Lokalt uttak", tone: "teal" },
+        ]}
+        points={[
+          { n: "1", label: "Overdekning fjernes, stuff sprenges, massene knuses og sorteres." },
+          { n: "2", label: "Arealinngrepet er synlig. Støy, støv og avrenning er lokale konflikter." },
+        ]}
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Bærekraft og inngrep

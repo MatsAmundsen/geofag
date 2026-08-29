@@ -32,22 +32,26 @@ function FeltarbeidPage() {
     >
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Problemstilling</h2>
       <p>
-        Start med en problemstilling. «Hvordan varierer kornstørrelse fra raet til ravinen?» er en.
-        «Geologi» er det ikke. Velg geosfære eller hydrosfære. Tyngdepunktet skal ikke gli over i
-        vær, sjø eller brefront.
+        Start med et avgrenset spørsmål knyttet til geosfære eller hydrosfære. «Hvordan varierer
+        kornstørrelse fra raet til ravinen?» er en problemstilling. «Geologi» er det ikke.
+        Tyngdepunktet skal ikke gli over i vær, sjø eller brefront.
+      </p>
+      <p>
+        Kjeden er fast: planlegg, samle, bearbeid, tolk, presenter. Ta med kart, utstyr, tillatelser
+        og HMS før du går ut.
       </p>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Georeferering</h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Georefererte data</h2>
       <p>
         Georeferering knytter observasjonen til sted og tid. Feltboka er primærkilden: punkt-ID,
         tid, vær, måling, usikkerhet, skisse. Foto og GPS supplerer. De erstatter ikke boka.
         Mobil-GPS holder til skolefelt, typisk noen meter, ikke til centimeter på en skredkant.
       </p>
+      <FeltbokDiagram />
       <OrdBoks
         ord="georeferert"
         barn="Observasjon knyttet til sted og tid. Uten det er dataene ikke geofaglige. Feltboka er primærkilden. Foto og GPS supplerer."
       />
-      <FeltbokDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">HMS</h2>
       <p>
@@ -60,7 +64,7 @@ function FeltarbeidPage() {
         barn="Vurdering før utfallet: fare, sannsynlighet, konsekvens, tiltak. Ikke at det gikk galt. Sikkerhet går foran data."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Rapport</h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Feltrapport</h2>
       <p>
         Rapporten skal vise kjeden: problemstilling, plan og HMS, georefererte data, bearbeiding,
         tolkning og det du ikke kan konkludere. I Vestland skal privatister ha feltrapport på papir
@@ -91,13 +95,13 @@ function FeltarbeidPage() {
             prompt: "Hva er en problemstilling i felt?",
             options: [
               "«Geologi».",
-              "«Hvordan varierer kornstørrelse fra raet til ravinen?» er en. «Geologi» er det ikke.",
+              "«Hvordan varierer kornstørrelse fra raet til ravinen?» er en problemstilling. «Geologi» er det ikke.",
               "Et tyngdepunkt i vær, sjø eller brefront.",
               "En tur der klassen ser på fjellet.",
             ],
             answer: 1,
             explain:
-              "Velg geosfære eller hydrosfære. Tyngdepunktet skal ikke gli over i vær, sjø eller brefront.",
+              "Start med et avgrenset spørsmål knyttet til geosfære eller hydrosfære.",
           },
           {
             prompt: "Hva er primærkilden i felt?",
