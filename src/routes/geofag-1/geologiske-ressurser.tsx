@@ -101,7 +101,7 @@ function GeologiskeRessurserPage() {
       <PhotoFigure
         src="/images/fig-dagbrudd.jpg"
         alt="Åpent steinbrudd i gneis med knust stein og fjord i bakgrunnen"
-        heading="Figur dagbrudd"
+        heading="Dagbrudd"
         caption="Dagbrudd brukes til pukk, mange industrimineraler, noe malm og naturstein. Arealinngrepet er synlig."
         marks={[
           { x: 8, y: 16, n: "1", text: "Knust fjell", tone: "warm" },
