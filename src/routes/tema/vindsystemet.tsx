@@ -19,7 +19,7 @@ function VindsystemetPage() {
       bannerAlt="Jordas atmosfære sett fra bane"
       videoTopic="det globale vindsystemet"
       prev={{ to: "/tema/hoytrykk-lavtrykk", label: "Forrige: Høytrykk og lavtrykk" }}
-      next={{ to: "/tema/coriolis", label: "Neste: Corioliseffekten" }}
+      next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Motoren: sola treffer skjevt
