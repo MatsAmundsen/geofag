@@ -20,6 +20,13 @@ export {
   NaoDiagram,
 } from "./coriolis";
 export {
+  JetFormsDiagram,
+  JetProfileDiagram,
+  JetSeasonDiagram,
+  JetStreakDiagram,
+  ThermalWindDiagram,
+} from "./jet";
+export {
   AmocDiagram,
   ClimateContrastDiagram,
   DensityDiagram,
