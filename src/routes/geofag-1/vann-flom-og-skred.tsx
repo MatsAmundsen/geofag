@@ -27,8 +27,8 @@ function VannFlomOgSkredPage() {
         label: "Forrige: Bergarter og landformer",
       }}
       next={{
-        to: "/geofag-1/ressurser-og-felt",
-        label: "Neste: Ressurser og felt",
+        to: "/geofag-1/geologiske-ressurser",
+        label: "Neste: Geologiske ressurser",
       }}
     >
       <p>

@@ -14,6 +14,8 @@ import { Route as Geofag2RouteImport } from './routes/geofag-2'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
 import { Route as Geofag1BergarterOgLandformerRouteImport } from './routes/geofag-1/bergarter-og-landformer'
+import { Route as Geofag1FeltarbeidRouteImport } from './routes/geofag-1/feltarbeid'
+import { Route as Geofag1GeologiskeRessurserRouteImport } from './routes/geofag-1/geologiske-ressurser'
 import { Route as Geofag1JordsystemeneRouteImport } from './routes/geofag-1/jordsystemene'
 import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as Geofag1RessurserOgFeltRouteImport } from './routes/geofag-1/ressurser-og-felt'
@@ -53,6 +55,17 @@ const Geofag1BergarterOgLandformerRoute =
   Geofag1BergarterOgLandformerRouteImport.update({
     id: '/geofag-1/bergarter-og-landformer',
     path: '/geofag-1/bergarter-og-landformer',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Geofag1FeltarbeidRoute = Geofag1FeltarbeidRouteImport.update({
+  id: '/geofag-1/feltarbeid',
+  path: '/geofag-1/feltarbeid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1GeologiskeRessurserRoute =
+  Geofag1GeologiskeRessurserRouteImport.update({
+    id: '/geofag-1/geologiske-ressurser',
+    path: '/geofag-1/geologiske-ressurser',
     getParentRoute: () => rootRouteImport,
   } as any)
 const Geofag1JordsystemeneRoute = Geofag1JordsystemeneRouteImport.update({
@@ -132,6 +145,8 @@ export interface FileRoutesByFullPath {
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
+  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
+  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
@@ -153,6 +168,8 @@ export interface FileRoutesByTo {
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
+  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
+  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
@@ -175,6 +192,8 @@ export interface FileRoutesById {
   '/geofag-2': typeof Geofag2Route
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
+  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
+  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
@@ -198,6 +217,8 @@ export interface FileRouteTypes {
     | '/geofag-2'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter-og-landformer'
+    | '/geofag-1/feltarbeid'
+    | '/geofag-1/geologiske-ressurser'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
@@ -219,6 +240,8 @@ export interface FileRouteTypes {
     | '/geofag-2'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter-og-landformer'
+    | '/geofag-1/feltarbeid'
+    | '/geofag-1/geologiske-ressurser'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
@@ -240,6 +263,8 @@ export interface FileRouteTypes {
     | '/geofag-2'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter-og-landformer'
+    | '/geofag-1/feltarbeid'
+    | '/geofag-1/geologiske-ressurser'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
@@ -262,6 +287,8 @@ export interface RootRouteChildren {
   Geofag2Route: typeof Geofag2Route
   Geofag1SlugRoute: typeof Geofag1SlugRoute
   Geofag1BergarterOgLandformerRoute: typeof Geofag1BergarterOgLandformerRoute
+  Geofag1FeltarbeidRoute: typeof Geofag1FeltarbeidRoute
+  Geofag1GeologiskeRessurserRoute: typeof Geofag1GeologiskeRessurserRoute
   Geofag1JordsystemeneRoute: typeof Geofag1JordsystemeneRoute
   Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
   Geofag1RessurserOgFeltRoute: typeof Geofag1RessurserOgFeltRoute
@@ -314,6 +341,20 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/bergarter-og-landformer'
       fullPath: '/geofag-1/bergarter-og-landformer'
       preLoaderRoute: typeof Geofag1BergarterOgLandformerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/feltarbeid': {
+      id: '/geofag-1/feltarbeid'
+      path: '/geofag-1/feltarbeid'
+      fullPath: '/geofag-1/feltarbeid'
+      preLoaderRoute: typeof Geofag1FeltarbeidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/geologiske-ressurser': {
+      id: '/geofag-1/geologiske-ressurser'
+      path: '/geofag-1/geologiske-ressurser'
+      fullPath: '/geofag-1/geologiske-ressurser'
+      preLoaderRoute: typeof Geofag1GeologiskeRessurserRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/jordsystemene': {
@@ -422,6 +463,8 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag2Route: Geofag2Route,
   Geofag1SlugRoute: Geofag1SlugRoute,
   Geofag1BergarterOgLandformerRoute: Geofag1BergarterOgLandformerRoute,
+  Geofag1FeltarbeidRoute: Geofag1FeltarbeidRoute,
+  Geofag1GeologiskeRessurserRoute: Geofag1GeologiskeRessurserRoute,
   Geofag1JordsystemeneRoute: Geofag1JordsystemeneRoute,
   Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
   Geofag1RessurserOgFeltRoute: Geofag1RessurserOgFeltRoute,

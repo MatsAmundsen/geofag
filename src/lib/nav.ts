@@ -12,7 +12,8 @@ export const NAV_GF1 = [
   { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
   { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
   { to: "/geofag-1/vann-flom-og-skred", label: "Vann" },
-  { to: "/geofag-1/ressurser-og-felt", label: "Felt" },
+  { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
+  { to: "/geofag-1/feltarbeid", label: "Felt" },
 ] as const;
 
 export const NAV_GF2 = [
@@ -198,15 +199,26 @@ export const GF1_THEMES = [
     maal: "Hydrologisk kretsløp, ferskvann, og naturfarer i hydrosfæren. Modellering av risiko.",
   },
   {
-    slug: "ressurser-og-felt",
-    title: "Ressurser og felt",
+    slug: "geologiske-ressurser",
+    title: "Geologiske ressurser",
     kicker: "Mennesket i jordsystemene",
     image: "/images/gf1-ressurser.jpg",
     alt: "Dagbrudd i fjellandskap i kveldslys",
     blurb:
-      "Geologiske ressurser og ferskvann i et bærekraftsperspektiv. Feltarbeid: samle data, tolke, presentere.",
+      "Malm, pukk, naturstein, olje og gass. Danning, kartlegging, utvinning og bærekraft. Engebø er en drøfting, ikke et fasitsvar.",
     status: "klar" as const,
-    maal: "Utvinning av ressurser, bærekraft, og geofaglig feltarbeid i geosfære eller hydrosfære.",
+    maal: "Utvinning av geologiske ressurser i et bærekraftsperspektiv.",
+  },
+  {
+    slug: "feltarbeid",
+    title: "Feltarbeid",
+    kicker: "Data i felt",
+    image: "/images/gf1-bergarter.jpg",
+    alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
+    blurb:
+      "Planlegge, samle georefererte data, ivareta HMS, bearbeide, tolke og presentere. Feltboka er primærkilden.",
+    status: "klar" as const,
+    maal: "Geofaglig feltarbeid i geosfære eller hydrosfære.",
   },
 ] as const;
 
