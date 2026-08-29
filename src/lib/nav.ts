@@ -11,7 +11,8 @@ export const NAV_GF1 = [
   { to: "/geofag-1/platetektonikk", label: "Plater" },
   { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
   { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
-  { to: "/geofag-1/vann-flom-og-skred", label: "Vann" },
+  { to: "/geofag-1/vann-og-flom", label: "Vann" },
+  { to: "/geofag-1/skred", label: "Skred" },
   { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
   { to: "/geofag-1/feltarbeid", label: "Felt" },
 ] as const;
@@ -188,15 +189,26 @@ export const GF1_THEMES = [
     maal: "Mineral- og bergartsgrupper, datering, lokal geologi og landformer.",
   },
   {
-    slug: "vann-flom-og-skred",
-    title: "Vann, flom og skred",
-    kicker: "Naturfarer i hydrosfæren",
+    slug: "vann-og-flom",
+    title: "Vann og flom",
+    kicker: "Hydrosfæren på land",
     image: "/images/gf1-flom-skred.jpg",
     alt: "Flomelv ved et fjellskred i norsk landskap",
     blurb:
-      "Det hydrologiske kretsløpet med vekt på ferskvann. Flom, skred og ustabile fjell — og hvordan aktivitet på land endrer risikoen.",
+      "Kretsløp, lager, hydrogram. Regnflom, snøsmelteflom og kombinasjonsflom. Hans 2023. NVE-flomkart og Varsom.",
     status: "klar" as const,
-    maal: "Hydrologisk kretsløp, ferskvann, og naturfarer i hydrosfæren. Modellering av risiko.",
+    maal: "Hydrologisk kretsløp, ferskvann, flom og modellering av risiko i hydrosfæren.",
+  },
+  {
+    slug: "skred",
+    title: "Skred",
+    kicker: "Naturfarer i geosfæren",
+    image: "/images/fig-ravine.jpg",
+    alt: "Ravine og skredløp i løsmasse",
+    blurb:
+      "Steinskred, fjellskred, løsmasseskred og havbunnsskred. Åknes, Tafjord, Gjerdrum, Storegga. Snøskred hører i geofag 2.",
+    status: "klar" as const,
+    maal: "Naturfarer knyttet til geosfæren: skred, risiko, forebygging og tilpasning.",
   },
   {
     slug: "geologiske-ressurser",

@@ -121,10 +121,10 @@ function JordsystemenePage() {
         Elver graver raviner. Grunnvann vasker salt. Resultatet kan bli kvikkleire — det tar vi
         under{" "}
         <Link
-          to="/geofag-1/vann-flom-og-skred"
+          to="/geofag-1/skred"
           className="text-primary underline-offset-2 hover:underline"
         >
-          vann, flom og skred
+          skred
         </Link>
         .
       </p>

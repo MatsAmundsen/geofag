@@ -35,5 +35,5 @@ export { PaleoDiagram } from "./paleo";
 export { BoundaryQuakesDiagram } from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { SpheresDiagram } from "./spheres";
-export { HydrographDiagram, MarineLimitDiagram } from "./hydrology";
+export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
 export { FeltbokDiagram, FraBergartTilBruddDiagram } from "./ressurser";
