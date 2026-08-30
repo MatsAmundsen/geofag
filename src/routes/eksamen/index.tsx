@@ -11,7 +11,7 @@ export const Route = createFileRoute("/eksamen/")({
     topicHead({
       title: "Eksamensoppgaver · Geofag 2",
       description:
-        "Bibliotek av sentrale Geofag 2-eksamener (REA3043) med egne løsningsforslag. Figurene åpnes hos Udir.",
+        "Bibliotek av sentrale Geofag 2-eksamener (REA3043) med løsningsforslag sjekket mot Udirs fasit der den er publisert. Figurene åpnes hos Udir.",
       path: "/eksamen",
     }),
   component: EksamenIndex,
@@ -31,9 +31,9 @@ function EksamenIndex() {
               Eksamensoppgaver
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
-              Tidligere sentrale sett fra Udir, med egne løsningsforslag. Oppgaveteksten er Udirs.
-              Figurene — værkart, satellittbilder, kjerneprofiler — åpner du i det offisielle
-              settet. Vi lagrer dem ikke her.
+              Tidligere sentrale sett fra Udir. Interaktive nøkler for vår 2026, høst 2025, vår
+              2025 og vår 2024 er sjekket mot publisert forhåndssensur og sensorveiledning.
+              Oppgaveteksten er Udirs. Figurene åpner du i det offisielle settet.
             </p>
           </div>
         </header>
@@ -46,8 +46,9 @@ function EksamenIndex() {
               løsningsforslaget.
             </p>
             <p>
-              Løsningsforslagene er skrevet for dette nettstedet. De er ikke Udirs
-              sensorveiledning.
+              Løsningsforslagene er skrevet om med egne ord. Der Udir har lagt ut fasit, følger
+              vi den. De erstatter ikke den offisielle sensorveiledningen — den laster du ned fra
+              Udirs søk i eksamensoppgaver.
             </p>
           </Callout>
 
@@ -64,6 +65,7 @@ function EksamenIndex() {
                       {set.kind === "eksempel" ? "Eksempel" : "Eksamen"} · {set.tasks.length}{" "}
                       oppgaver
                       {set.complete ? "" : " · ufullstendig uttrekk"}
+                      {set.fasitSource === "udir" ? " · sjekket mot Udir-fasit" : " · eget forslag"}
                     </p>
                     <h2 className="mt-1 font-display text-2xl font-medium tracking-tight group-hover:text-primary">
                       {set.label}

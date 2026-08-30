@@ -8,6 +8,7 @@ export const h2023: ExamSet = {
   kind: "eksamen",
   complete: true,
   officialUrl: "https://kandidat.udir.no/epsmateriell/eksamen?fagkode=REA3043&malform=nb-NO&semester=H&ar=2023&eksamensdeltype=Eksamen",
+  fasitSource: "eget",
   themes: [
     "Kategori 1",
     "Kategori 2",

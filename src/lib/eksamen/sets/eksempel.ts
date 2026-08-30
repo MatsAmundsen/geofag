@@ -8,6 +8,7 @@ export const eksempel: ExamSet = {
   kind: "eksempel",
   complete: false,
   officialUrl: "https://kandidat.udir.no/epsmateriell/eksempeloppgave?fagkode=REA3043&malform=nb-NO",
+  fasitSource: "eget",
   themes: [
     "Sommerværet i Europa 2025",
     "Hav og klima i og rundt Nord-Atlanteren",

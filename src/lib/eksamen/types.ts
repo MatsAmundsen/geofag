@@ -17,6 +17,8 @@ export type ExamSet = {
   kind: ExamKind;
   complete: boolean;
   officialUrl: string;
+  /** Whether interactive keys were checked against published Udir forhåndssensur/sensorveiledning. */
+  fasitSource: "udir" | "eget";
   themes: string[];
   tasks: ExamTask[];
 };

@@ -711,6 +711,12 @@ export const KILDER = {
       href: "https://kandidat.udir.no/eksamensinfo/REA3043",
     },
     {
+      prefix: "Utdanningsdirektoratet. (u.å.). ",
+      italic: "Søk i eksamensoppgaver — sensorveiledninger og forhåndssensur (REA3043)",
+      suffix: ".",
+      href: "https://sokeresultat.udir.no/eksamensoppgaver.html?query=Geofag%202",
+    },
+    {
       prefix: "Utdanningsdirektoratet. (2020). ",
       italic: "Læreplan i geofag (GFG01-03)",
       suffix: ".",

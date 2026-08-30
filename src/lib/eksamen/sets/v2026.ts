@@ -8,6 +8,7 @@ export const v2026: ExamSet = {
   kind: "eksamen",
   complete: true,
   officialUrl: "https://kandidat.udir.no/epsmateriell/eksamen?fagkode=REA3043&malform=nb-NO&semester=V&ar=2026&eksamensdeltype=Eksamen",
+  fasitSource: "udir",
   themes: [
     "Ekstremvær i Europa",
     "Våre nære havområder og feltdata",

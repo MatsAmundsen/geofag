@@ -15,7 +15,7 @@ export const Route = createFileRoute("/eksamen/$slug")({
     return topicHead({
       title: set ? `${set.label} · Eksamen` : "Eksamen",
       description: set
-        ? `Geofag 2 ${set.label}: oppgaver og egne løsningsforslag. Figurer hos Udir.`
+        ? `Geofag 2 ${set.label}: oppgaver og løsningsforslag. Figurer hos Udir.`
         : "Eksamenssett for Geofag 2.",
       path: `/eksamen/${params.slug}`,
     });
@@ -62,11 +62,16 @@ function ExamSetPage() {
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-          <Callout title="Figurer">
+          <Callout title="Figurer og fasit">
             <p>
               Hver figur i settet er hos Udir, bak passord fra skolen. Vi kopierer dem ikke. Åpne
               oppgaven i det offisielle settet når løsningsforslaget viser til kart, graf eller
               satellittbilde.
+            </p>
+            <p>
+              {set.fasitSource === "udir"
+                ? "Interaktive nøkler og skrivepunkter er sjekket mot Udirs forhåndssensur og sensorveiledning. Teksten er omskrevet — last ned originalen hos Udir hvis du skal sensurere."
+                : "Udir har ikke lagt ut sensorveiledning for dette settet. Løsningsforslagene er våre egne."}
             </p>
           </Callout>
 
