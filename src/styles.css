@@ -88,3 +88,77 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+@layer components {
+  @keyframes exam-dash {
+    to {
+      stroke-dashoffset: -28;
+    }
+  }
+
+  @keyframes exam-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes exam-pulse {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes exam-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+
+  @keyframes exam-sink {
+    0%,
+    100% {
+      transform: translateY(-10px);
+      opacity: 0.35;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 1;
+    }
+  }
+
+  .exam-dash {
+    stroke-dasharray: 7 9;
+    animation: exam-dash 1.1s linear infinite;
+  }
+
+  .exam-dash-slow {
+    stroke-dasharray: 10 12;
+    animation: exam-dash 2.2s linear infinite;
+  }
+
+  .exam-spin {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: exam-spin 14s linear infinite;
+  }
+
+  .exam-pulse {
+    animation: exam-pulse 2.4s ease-in-out infinite;
+  }
+
+  .exam-bob {
+    animation: exam-bob 2.8s ease-in-out infinite;
+  }
+
+  .exam-sink {
+    animation: exam-sink 3.2s ease-in-out infinite;
+  }
+}

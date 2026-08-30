@@ -114,8 +114,8 @@ function Geofag2() {
                 Eksamensoppgaver
               </h2>
               <p className="mt-3 text-muted-foreground">
-                Tidligere sentrale sett med løsningsforslag sjekket mot Udirs fasit der den er publisert. Figurene åpner du hos Udir —
-                vi lagrer dem ikke her.
+                Tidligere sentrale sett med biblioteket Løsningsforslag: fasit, pedagogiske
+                forklaringer og egne figurer. Udirs kart åpner du hos Udir — vi lagrer dem ikke her.
               </p>
             </div>
             <Link

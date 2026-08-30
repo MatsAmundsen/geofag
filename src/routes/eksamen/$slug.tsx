@@ -2,12 +2,15 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Callout } from "@/components/callout";
+import { SolutionView } from "@/components/exam/solution-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { displayPrompt, examSet, solutionFor, taskHeading } from "@/lib/eksamen";
+import type { ExamTask, Solution } from "@/lib/eksamen";
 import { topicHead } from "@/lib/seo";
-import { cn } from "@/lib/utils";
+
+type View = "oppgaver" | "losningsforslag";
 
 export const Route = createFileRoute("/eksamen/$slug")({
   head: ({ params }) => {
@@ -15,7 +18,7 @@ export const Route = createFileRoute("/eksamen/$slug")({
     return topicHead({
       title: set ? `${set.label} · Eksamen` : "Eksamen",
       description: set
-        ? `Geofag 2 ${set.label}: oppgaver og løsningsforslag. Figurer hos Udir.`
+        ? `Geofag 2 ${set.label}: oppgaver og løsningsforslag med figurer. Udirs figurer åpnes hos Udir.`
         : "Eksamenssett for Geofag 2.",
       path: `/eksamen/${params.slug}`,
     });
@@ -27,6 +30,7 @@ function ExamSetPage() {
   const { slug } = Route.useParams();
   const set = examSet(slug);
   if (!set) throw notFound();
+  const [view, setView] = useState<View>("oppgaver");
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -58,15 +62,33 @@ function ExamSetPage() {
                 <Link to="/eksamen">Alle sett</Link>
               </Button>
             </div>
+            <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Visning">
+              <Button
+                type="button"
+                variant={view === "oppgaver" ? "default" : "secondary"}
+                onClick={() => setView("oppgaver")}
+                aria-pressed={view === "oppgaver"}
+              >
+                Oppgaver
+              </Button>
+              <Button
+                type="button"
+                variant={view === "losningsforslag" ? "default" : "secondary"}
+                onClick={() => setView("losningsforslag")}
+                aria-pressed={view === "losningsforslag"}
+              >
+                Løsningsforslag
+              </Button>
+            </div>
           </div>
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <Callout title="Figurer og fasit">
             <p>
-              Hver figur i settet er hos Udir, bak passord fra skolen. Vi kopierer dem ikke. Åpne
-              oppgaven i det offisielle settet når løsningsforslaget viser til kart, graf eller
-              satellittbilde.
+              Udirs kart, satellittbilder og grafer åpner du i det offisielle settet — bak passord
+              fra skolen. Vi kopierer dem ikke. Figurene under løsningsforslagene er våre egne
+              pedagogiske tegninger.
             </p>
             <p>
               {set.fasitSource === "udir"
@@ -84,11 +106,36 @@ function ExamSetPage() {
             </Callout>
           ) : null}
 
-          <ol className="mt-10 space-y-8">
-            {set.tasks.map((task) => (
-              <TaskCard key={task.number} slug={set.slug} officialUrl={set.officialUrl} task={task} />
-            ))}
-          </ol>
+          {view === "oppgaver" ? (
+            <ol className="mt-10 space-y-8">
+              {set.tasks.map((task) => (
+                <TaskCard
+                  key={task.number}
+                  slug={set.slug}
+                  officialUrl={set.officialUrl}
+                  task={task}
+                />
+              ))}
+            </ol>
+          ) : (
+            <section className="mt-10">
+              <h2 className="font-display text-3xl font-medium tracking-tight">Løsningsforslag</h2>
+              <p className="mt-3 max-w-2xl text-muted-foreground">
+                Fasit, hvorfor det er riktig, og figurer eller animasjoner der de hjelper. Åpne
+                Oppgaver hvis du vil lese hele oppgaveteksten først.
+              </p>
+              <ol className="mt-8 space-y-10">
+                {set.tasks.map((task) => (
+                  <SolutionCard
+                    key={task.number}
+                    slug={set.slug}
+                    officialUrl={set.officialUrl}
+                    task={task}
+                  />
+                ))}
+              </ol>
+            </section>
+          )}
         </article>
       </main>
       <SiteFooter />
@@ -103,7 +150,7 @@ function TaskCard({
 }: {
   slug: string;
   officialUrl: string;
-  task: { number: number; title: string; kind: string; needsFigure: boolean; prompt: string };
+  task: ExamTask;
 }) {
   const [open, setOpen] = useState(false);
   const heading = taskHeading(task.prompt, task.title);
@@ -111,43 +158,83 @@ function TaskCard({
 
   return (
     <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
+      <TaskMeta task={task} heading={heading} />
+      <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground/95">
+        {displayPrompt(task.prompt)}
+      </pre>
+      <FigureHint needsFigure={task.needsFigure} officialUrl={officialUrl} />
+      <div className="mt-5">
+        <Button type="button" variant="secondary" onClick={() => setOpen((v) => !v)}>
+          {open ? "Skjul løsningsforslag" : "Vis løsningsforslag"}
+        </Button>
+        {open ? <SolutionBlock solution={solution} /> : null}
+      </div>
+    </li>
+  );
+}
+
+function SolutionCard({
+  slug,
+  officialUrl,
+  task,
+}: {
+  slug: string;
+  officialUrl: string;
+  task: ExamTask;
+}) {
+  const heading = taskHeading(task.prompt, task.title);
+  const solution = solutionFor(slug, task.number);
+
+  return (
+    <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
+      <TaskMeta task={task} heading={heading} />
+      <FigureHint needsFigure={task.needsFigure} officialUrl={officialUrl} />
+      <SolutionBlock solution={solution} />
+    </li>
+  );
+}
+
+function TaskMeta({ task, heading }: { task: ExamTask; heading: string }) {
+  return (
+    <>
       <p className="text-xs uppercase tracking-wider text-muted-foreground">
         Oppgave {task.number}
         {task.kind === "skrive" ? " · skrive" : " · interaktiv"}
         {task.needsFigure ? " · figur hos Udir" : ""}
       </p>
       <h2 className="mt-1 font-display text-2xl font-medium tracking-tight">{heading}</h2>
-      <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground/95">
-        {displayPrompt(task.prompt)}
-      </pre>
-      {task.needsFigure ? (
-        <p className="mt-3 text-sm text-muted-foreground">
-          Figuren er ikke lagret her.{" "}
-          <a
-            href={officialUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-primary underline-offset-4 hover:underline"
-          >
-            Åpne settet hos Udir
-          </a>
-          .
+    </>
+  );
+}
+
+function FigureHint({ needsFigure, officialUrl }: { needsFigure: boolean; officialUrl: string }) {
+  if (!needsFigure) return null;
+  return (
+    <p className="mt-3 text-sm text-muted-foreground">
+      Udirs figur er ikke lagret her.{" "}
+      <a
+        href={officialUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="text-primary underline-offset-4 hover:underline"
+      >
+        Åpne settet hos Udir
+      </a>
+      .
+    </p>
+  );
+}
+
+function SolutionBlock({ solution }: { solution: Solution | undefined }) {
+  return (
+    <div className="mt-4">
+      {solution ? (
+        <SolutionView solution={solution} />
+      ) : (
+        <p className="rounded-xl border border-border bg-muted/60 px-4 py-3 text-sm">
+          Løsningsforslag er ikke skrevet ennå. Bruk temasidene og det offisielle settet.
         </p>
-      ) : null}
-      <div className="mt-5">
-        <Button type="button" variant="secondary" onClick={() => setOpen((v) => !v)}>
-          {open ? "Skjul løsningsforslag" : "Vis løsningsforslag"}
-        </Button>
-        <div
-          className={cn(
-            "mt-4 rounded-xl border border-border bg-muted/60 px-4 py-3 text-sm leading-relaxed",
-            !open && "hidden",
-          )}
-        >
-          {solution ??
-            "Løsningsforslag er ikke skrevet ennå. Bruk temasidene og det offisielle settet."}
-        </div>
-      </div>
-    </li>
+      )}
+    </div>
   );
 }

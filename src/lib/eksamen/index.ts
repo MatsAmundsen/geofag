@@ -6,7 +6,6 @@ import { h2024 } from "./sets/h2024";
 import { v2025 } from "./sets/v2025";
 import { h2025 } from "./sets/h2025";
 import { v2026 } from "./sets/v2026";
-import { solutionFor } from "./solutions";
 
 export const EXAM_SETS: ExamSet[] = [v2026, h2025, v2025, h2024, v2024, h2023, eksempel];
 
@@ -45,5 +44,6 @@ export function taskHeading(prompt: string, fallback: string): string {
   return fallback;
 }
 
-export { solutionFor };
+export { solutionFor, SOLUTIONS } from "./solutions";
 export type { ExamSet, ExamTask } from "./types";
+export type { FigureId, Solution, WhyNot } from "./solution-types";
