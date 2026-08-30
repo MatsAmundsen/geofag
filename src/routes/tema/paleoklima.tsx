@@ -30,7 +30,7 @@ function PaleoklimaPage() {
       banner="/images/fig-paleo.jpg"
       bannerAlt="Lagdelt blå breis med bølgende bånd av gammel is"
       prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
-      next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      next={{ to: "/tema/milankovitch", label: "Neste: Milankovitch og istider" }}
       kilder={KILDER.paleoklima}
     >
       <p>
@@ -113,7 +113,15 @@ function PaleoklimaPage() {
         mengden sol totalt. Eksentrisitet, ca. 100 000 år: banens ellipse. Helning, ca. 41 000 år:
         sterkere sesonger og mer sommersol på høye bredder når helningen er høy. Presesjon, ca. 23
         000 og 19 000 år: når på året jorda er nærmest sola. Det som teller for istidene, er
-        sommersmelting på 65 °N — om innlandsisen overlever sommeren.
+        sommersmelting på 65 °N — om innlandsisen overlever sommeren. Hele kjeden — de tre
+        prosessene, istidsfaktorene og sporene i Norge — ligger under{" "}
+        <Link
+          to="/tema/milankovitch"
+          className="text-primary underline-offset-2 hover:underline"
+        >
+          Milankovitch-syklusen og istider
+        </Link>
+        .
       </p>
       <OrdBoks
         ord="Milanković"

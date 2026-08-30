@@ -129,6 +129,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://geofag.com/tema/milankovitch</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://geofag.com/tema/vaerkatastrofer</loc>
     <priority>0.8</priority>
   </url>

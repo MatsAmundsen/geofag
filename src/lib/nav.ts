@@ -29,6 +29,7 @@ export const NAV_GF2 = [
   { to: "/tema/klima", label: "Klima" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
+  { to: "/tema/milankovitch", label: "Istider" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
 ] as const;
 
@@ -134,6 +135,16 @@ export const GF2_THEMES = [
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
       "Termometer dekker et øyeblikk. Iskjerner og havbunn forteller istidene — og tester om modellene treffer.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/milankovitch",
+    title: "Milankovitch-syklusen og istider",
+    kicker: "Istider",
+    image: "/images/tema-milankovitch.jpg",
+    alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
+    blurb:
+      "Jordbanen flytter sommersola på 65 °N. Albedo og CO₂ forsterker. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
     status: "klar" as const,
   },
   {

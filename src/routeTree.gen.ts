@@ -29,6 +29,7 @@ import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaJetstrommerRouteImport } from './routes/tema/jetstrommer'
+import { Route as TemaMilankovitchRouteImport } from './routes/tema/milankovitch'
 import { Route as TemaNumeriskeModellerRouteImport } from './routes/tema/numeriske-modeller'
 import { Route as TemaPaleoklimaRouteImport } from './routes/tema/paleoklima'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
@@ -143,6 +144,11 @@ const TemaJetstrommerRoute = TemaJetstrommerRouteImport.update({
   path: '/tema/jetstrommer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaMilankovitchRoute = TemaMilankovitchRouteImport.update({
+  id: '/tema/milankovitch',
+  path: '/tema/milankovitch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaNumeriskeModellerRoute = TemaNumeriskeModellerRouteImport.update({
   id: '/tema/numeriske-modeller',
   path: '/tema/numeriske-modeller',
@@ -213,6 +219,7 @@ export interface FileRoutesByFullPath {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/milankovitch': typeof TemaMilankovitchRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -245,6 +252,7 @@ export interface FileRoutesByTo {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/milankovitch': typeof TemaMilankovitchRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -278,6 +286,7 @@ export interface FileRoutesById {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/milankovitch': typeof TemaMilankovitchRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -312,6 +321,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/milankovitch'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/vaerkatastrofer'
@@ -344,6 +354,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/milankovitch'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/vaerkatastrofer'
@@ -376,6 +387,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/milankovitch'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/vaerkatastrofer'
@@ -409,6 +421,7 @@ export interface RootRouteChildren {
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaJetstrommerRoute: typeof TemaJetstrommerRoute
+  TemaMilankovitchRoute: typeof TemaMilankovitchRoute
   TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
   TemaPaleoklimaRoute: typeof TemaPaleoklimaRoute
   TemaVaerkatastroferRoute: typeof TemaVaerkatastroferRoute
@@ -565,6 +578,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaJetstrommerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/milankovitch': {
+      id: '/tema/milankovitch'
+      path: '/tema/milankovitch'
+      fullPath: '/tema/milankovitch'
+      preLoaderRoute: typeof TemaMilankovitchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/numeriske-modeller': {
       id: '/tema/numeriske-modeller'
       path: '/tema/numeriske-modeller'
@@ -657,6 +677,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaJetstrommerRoute: TemaJetstrommerRoute,
+  TemaMilankovitchRoute: TemaMilankovitchRoute,
   TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
   TemaPaleoklimaRoute: TemaPaleoklimaRoute,
   TemaVaerkatastroferRoute: TemaVaerkatastroferRoute,

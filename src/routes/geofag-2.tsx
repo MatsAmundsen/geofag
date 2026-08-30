@@ -12,7 +12,7 @@ export const Route = createFileRoute("/geofag-2")({
     topicHead({
       title: "Geofag 2",
       description:
-        "Geofag 2: vind, hav og klima som ett system. Trykk, vindsystemet, jetstrømmer, corioliseffekten, havstrømmer, klima og værkatastrofer.",
+        "Geofag 2: vind, hav og klima som ett system. Trykk, vindsystemet, jetstrømmer, corioliseffekten, havstrømmer, klima, istider og værkatastrofer.",
       path: "/geofag-2",
     }),
   component: Geofag2,
@@ -187,6 +187,12 @@ function Geofag2() {
               />
               <Fordypning
                 n="09"
+                to="/tema/milankovitch"
+                title="Milankovitch-syklusen og istider"
+                text="Jordbanen flytter sommersola på 65 °N. Albedo og CO₂ forsterker. Weichsel sluttet for 11 700 år siden."
+              />
+              <Fordypning
+                n="10"
                 to="/tema/vaerkatastrofer"
                 title="Værkatastrofer"
                 text="Orkaner, polarfrontstormer, ekstremnedbør og stormflo. Samme fysikk. Høyere innsats når samfunn står i veien."
