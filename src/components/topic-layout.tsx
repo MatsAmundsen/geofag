@@ -12,7 +12,7 @@ export function TopicLayout({
   lead,
   banner,
   bannerAlt,
-  videoTopic,
+  videoTopic: _videoTopic,
   children,
   kilder,
   prev,

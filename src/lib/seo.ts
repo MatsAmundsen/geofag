@@ -16,29 +16,35 @@ function absoluteUrl(path: string): string {
   return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }
 
+/** Strips the " · Geofag N" suffix so breadcrumbs show just the page's own name. */
+function shortLabel(title: string): string {
+  return title.split(" · ")[0] ?? title;
+}
+
 function breadcrumbsForPath(path: string, title: string): Breadcrumb[] {
   const crumbs: Breadcrumb[] = [{ name: "Forside", path: "/" }];
+  const label = shortLabel(title);
 
   if (path === "/") return crumbs;
 
   if (path === "/geofag-1" || path === "/geofag-2") {
-    crumbs.push({ name: title, path });
+    crumbs.push({ name: label, path });
     return crumbs;
   }
 
   if (path.startsWith("/geofag-1")) {
     crumbs.push({ name: "Geofag 1", path: "/geofag-1" });
-    crumbs.push({ name: title, path });
+    crumbs.push({ name: label, path });
     return crumbs;
   }
 
   if (path.startsWith("/tema") || path.startsWith("/geofag-2")) {
     crumbs.push({ name: "Geofag 2", path: "/geofag-2" });
-    crumbs.push({ name: title, path });
+    crumbs.push({ name: label, path });
     return crumbs;
   }
 
-  crumbs.push({ name: title, path });
+  crumbs.push({ name: label, path });
   return crumbs;
 }
 
