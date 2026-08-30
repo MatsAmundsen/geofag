@@ -23,7 +23,7 @@ export const v2025Solutions: Record<number, Solution> = {
   3: mc("c — Påstand 1 og 2", [
     "Sol og lite sky, pluss svak vind og sterk sjiktning, stenger varmen i toppen — klassisk marin hetebølge. La Niña gir ikke typisk slike hetebølger i østlige Stillehav. Hetebølger gir sterkere, ikke svakere, tropiske orkaner.",
   ], {
-    figures: ["hurricane-sst"],
+    figures: ["marine-heatwave"],
   }),
 
   4: mc("Oppgaven er trukket (bokmål: to like alternativ).", [
@@ -116,7 +116,7 @@ export const v2025Solutions: Record<number, Solution> = {
   18: mc("d — Stormflo", [
     "Vind, hagl og lyn tar færre liv enn vannet som presses på land. Stormflo er den dødelige kombinasjonen av lavt trykk og pålandsvind.",
   ], {
-    figures: ["wave-anatomy", "hurricane-eye"],
+    figures: ["hurricane-eye"],
   }),
 
   19: mc("d — Lite sol og tørr bakke om sommeren begrenser tining og holder permafrosten", [

@@ -24,7 +24,7 @@ export const v2026Solutions: Record<number, Solution> = {
       { option: "Påstand 3", text: "Vulkanisme på bunnen driver ikke denne hetebølgen." },
       { option: "Påstand 5", text: "Hele Middelhavet ble ikke like hardt rammet. Hetebølger er lokale." },
     ],
-    figures: ["hurricane-sst"],
+    figures: ["marine-heatwave"],
     tip: "Kryss av påstandene én for én mot figuren før du ser på bokstavkombinasjonene.",
   }),
 
@@ -137,7 +137,7 @@ export const v2026Solutions: Record<number, Solution> = {
     "Aphelium ved NH-sommer er samme geometri og gir store årstidsforskjeller i sør.",
     "Aphelium ved NH-vinter gir varme NH-somre og mindre sjanse for at snø overlever — altså mindre sjanse for istid. To av tre rette ga 0,5 poeng i sensuren.",
   ], {
-    figures: ["perihelion", "earth-tilt"],
+    figures: ["perihelion"],
   }),
 
   14: mc("b — Ved 65°N svinger sommersola mye og styrer om snøen overlever", [
@@ -204,7 +204,7 @@ export const v2026Solutions: Record<number, Solution> = {
   21: mc("Feil — riktig — feil", [
     "Første påstand beskriver fønvind (varm, tørr leside etter heving), ikke katabatisk. Katabatisk er kald, tett luft som renner ned av tyngdekraften, ofte på lesiden av isdekte fjell. Synkende katabatisk luft er tørr og lager sjelden skyer.",
   ], {
-    figures: ["katabatic", "foehn"],
+    figures: ["katabatic"],
     tip: "To fallvinder, to temperaturer. Lær deg forskjellen før du leser påstandene.",
   }),
 
@@ -226,6 +226,5 @@ export const v2026Solutions: Record<number, Solution> = {
       "Skill det som er fysikk (solvinkel, føn, bre) fra det som er samfunn (kraft, inngrep).",
       "Vis usikkerhet der den er ekte.",
     ],
-    figures: ["foehn"],
   }),
 };

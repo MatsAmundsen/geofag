@@ -35,7 +35,7 @@ export function SolutionView({
       {solution.whyNot && solution.whyNot.length > 0 ? (
         <section>
           <h3 className="text-xs font-medium uppercase tracking-wider text-primary">
-            Hvorfor de andre faller
+            Hvorfor de andre løsningene ikke er korrekt
           </h3>
           <ul className="mt-2 space-y-2">
             {solution.whyNot.map((item) => (

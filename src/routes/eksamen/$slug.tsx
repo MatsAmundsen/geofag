@@ -137,8 +137,7 @@ function ExamSetPage() {
             <section className="mt-10">
               <h2 className="font-display text-3xl font-medium tracking-tight">Løsningsforslag</h2>
               <p className="mt-3 max-w-2xl text-muted-foreground">
-                Fasit, hvorfor det er riktig, og figurer eller animasjoner der de hjelper. Åpne
-                Oppgaver hvis du vil lese hele oppgaveteksten først.
+                Hver oppgave vises med spørsmålet først, deretter fasit, forklaring og figurer.
               </p>
               <ol className="mt-8 space-y-10">
                 {set.tasks.map((task) => (
@@ -204,6 +203,9 @@ function SolutionCard({
   return (
     <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
       <TaskMeta task={task} heading={heading} />
+      <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground/95">
+        {displayPrompt(task.prompt)}
+      </pre>
       <FigureHint needsFigure={task.needsFigure} officialUrl={officialUrl} />
       <SolutionBlock solution={solution} />
     </li>

@@ -61,7 +61,9 @@ function EksamenIndex() {
               Du tar med egen maskin du kjenner, med oppdatert nettleser. Det er ikke mulig å levere
               på papir. Eksamen åpnes i Safe Exam Browser: et lukket vindu der du svarer i
               oppgavesettet — flervalg og klikk, og skriveoppgaver i tekstboks. Word, egne filer og
-              resten av internett er stengt (Utdanningsdirektoratet, u.å.-a, u.å.-c).
+              det åpne internettet er stengt. Inne i den samme sikre nettleseren ligger likevel
+              lenker til Store norske leksikon, Lovdata og ordbokene.no — de tre er hjelpemidler du
+              skal bruke underveis (Utdanningsdirektoratet, u.å.-a, u.å.-c).
             </p>
             <p className="mt-3 text-foreground/90">
               Last ned riktig versjon av Safe Exam Browser og test den på maskinen før dagen. Udir
@@ -98,7 +100,8 @@ function EksamenIndex() {
           <section className="mt-12">
             <h2 className="font-display text-3xl font-medium tracking-tight">Hjelpemidler</h2>
             <p className="mt-4 text-foreground/90">
-              To spor: papir du tar med, og noen få nettsteder lenket inne i oppgavesettet.
+              To spor: papir du tar med, og tre nettsteder du åpner inne i Safe Exam Browser. De er
+              ikke «åpent internett» — de er tillatte lenker i det låste eksamensvinduet.
             </p>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-border bg-card p-5">
@@ -110,16 +113,31 @@ function EksamenIndex() {
                 </p>
               </div>
               <div className="rounded-2xl border border-border bg-card p-5">
-                <h3 className="font-display text-xl font-medium tracking-tight">På nett</h3>
+                <h3 className="font-display text-xl font-medium tracking-tight">
+                  Inne i Safe Exam Browser
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Stavekontroll i hovedmålet ditt. I oppgavesettet ligger lenker til{" "}
+                  Stavekontroll i hovedmålet ditt, pluss lenker i oppgavesettet til{" "}
                   <span className="text-foreground">snl.no</span>,{" "}
                   <span className="text-foreground">Lovdata.no</span> og{" "}
                   <span className="text-foreground">ordbokene.no</span>. Ikke Word, ikke egne
-                  digitale notater, ikke åpent internett.
+                  digitale notater, ikke søkemotorer eller andre nettsteder.
                 </p>
               </div>
             </div>
+            <Callout title="Bruk SNL aktivt — det er derfor lenken ligger der">
+              <p>
+                Store norske leksikon er det viktigste digitale oppslagsverket du har på
+                eksamensdagen. Søket fungerer inne i Safe Exam Browser. Når en oppgave nevner et
+                geologisk eller meteorologisk fenomen du er usikker på — jetstrøm, fønvind, AMOC,
+                permafrost, albedo, tropisk syklon, Ekmantransport — slå det opp på snl.no, les
+                forklaringen, og skriv svaret med egne ord.
+              </p>
+              <p>
+                Lovdata er til lover og forskrifter. Ordbokene.no er språkhjelp. Alle tre åpnes fra
+                settet, i den sikre nettleseren. Før kilden hvis du henter innhold derfra.
+              </p>
+            </Callout>
             <p className="mt-4 text-sm text-muted-foreground">
               Sjekk alltid den gjeldende eksamensveiledningen. Udir kan justere de nettbaserte
               lenkene.

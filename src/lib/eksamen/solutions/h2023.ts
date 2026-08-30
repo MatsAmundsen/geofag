@@ -18,7 +18,7 @@ export const h2023Solutions: Record<number, Solution> = {
     "Positiv ozonutvikling der oppe er restitusjon av ozonlaget. Ikke forveksle med bakkenært ozon, som er forurensning. Velg påstanden som sier mer ozon i det høydeintervallet.",
   ], {
     official: false,
-    figures: ["convection"],
+    figures: ["ozone-profile"],
   }),
 
   4: mc("Klare netter taper mer IR til verdensrommet", [
@@ -32,7 +32,6 @@ export const h2023Solutions: Record<number, Solution> = {
     "Årlig solinnstråling i Norge er størst i sør og innland med lite sky, ikke nødvendigvis på kysten. Klikk der juli- og januar-kartet sammen gir mest energi.",
   ], {
     official: false,
-    figures: ["inland-climate"],
   }),
 
   6: mc("Familien klarer seg ikke på 25 m² alene — rundt 1 100–1 500 kWh/år", [
@@ -72,10 +71,12 @@ export const h2023Solutions: Record<number, Solution> = {
     figures: ["paleo-proxy"],
   }),
 
-  11: write("Følg instruksen. Koble prosess til figur, ikke til et ferdig memorert kart.", [
-    "Les hva du skal markere. Finn prosessen i figuren. Marker der den faktisk skjer.",
+  11: write("Match flyrutene mot polarjetens retning: vest → øst.", [
+    "Polarjeten over Nord-Atlanteren blåser vest mot øst i 10–12 km — samme høyde som transatlantiske fly. Østgående ruter (Nord-Amerika mot Europa) får medvind. Vestgående får motvind.",
+    "Påstandene handler om øst mot vest versus vest mot øst. Les hvilken vei A og B peker mot den røde jetkjernen, ikke fargene på flypunktene.",
   ], {
     official: false,
+    figures: ["jet-flight"],
   }),
 
   12: write("Les aksene først, så påstanden.", [
@@ -103,11 +104,17 @@ export const h2023Solutions: Record<number, Solution> = {
     official: false,
   }),
 
-  16: mc("Iskjerne og sediment for det lange. Termometer for det korte.", [
-    "Paleoklima mot instrumentell tid: arkivene dekker årtusener, termometeret dekker et øyeblikk. Bruk dem til det de kan.",
+  16: mc("d — Rimkrystaller, dannet under kalde og klare netter", [
+    "Bildet viser krystaller som vokser på snøoverflaten. Når bakken stråler mot klar himmel, blir toppen kaldere enn lufta, og vanndamp avsettes som rim / overflaterim.",
+    "Begerkrystaller (begerkorn) dannes nede i snødekket ved sterk temperaturgradient — ikke som pene enkeltkrystaller på et foto. Fokksnø er vindtransportert snø, ikke en krystalltype. «Varmt og fuktig vær» gir ikke rim.",
   ], {
     official: false,
-    figures: ["paleo-proxy"],
+    whyNot: [
+      { option: "Begerkrystaller på overflaten", text: "Begerkrystaller sitter nede i dekket, ikke som et enkeltbilde av stjernekrystaller." },
+      { option: "Overflaterim i varmt vær", text: "Rim krever at overflaten er kaldere enn lufta — typisk kalde, klare netter." },
+      { option: "Fokksnø", text: "Det er en snøtype etter vindtransport, ikke krystallene på bildet." },
+    ],
+    figures: ["snow-crystal"],
   }),
 
   17: mc("Katabatisk vind: kald, tett luft som renner ned av tyngdekraften", [

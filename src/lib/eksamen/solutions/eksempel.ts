@@ -22,7 +22,7 @@ export const eksempelSolutions: Record<number, Solution> = {
     "Koble lufttemperatur, havtemperatur og værtype. Lite vind og klarvær forsterker. Si hva «anomali» betyr: avvik fra en referanseperiode, ikke «varmt i seg selv».",
   ], {
     official: false,
-    figures: ["hurricane-sst"],
+    figures: ["marine-heatwave"],
   }),
 
   4: write("Varm juli-anomali i Alpene → negativ massebalanse.", [

@@ -19,14 +19,14 @@ export const h2024Solutions: Record<number, Solution> = {
     "Lavtrykkssenter: skyene spinner mot urviseren på NH, og det er ofte et roligere øye. Fronten er ikke senteret. Marker der rotasjonen lukker seg.",
   ], {
     official: false,
-    figures: ["wind-low-nh"],
+    figures: ["wind-low-center"],
   }),
 
   4: mc("De to dyp-forklaringene: kaldt, svak sjiktning, god blanding", [
     "Under ~500 m varierer tettheten lite fordi vannet er kaldt, sjiktningen er svak og blandingen er god. Overflaten sjiktes av varme og ferskvann. Marker dypet, ikke overflateforklaringene.",
   ], {
     official: false,
-    figures: ["ctd-seasons", "thermohaline"],
+    figures: ["thermohaline"],
   }),
 
   5: mc("Sann: mer nedbør langs ITCZ enn langs polarfronten", [
@@ -40,7 +40,7 @@ export const h2024Solutions: Record<number, Solution> = {
     "På sørlige halvkule spinner lavtrykk med urviseren. Videoen viser trykksenteret i midten. Luft inn + med urviseren = L på SH.",
   ], {
     official: false,
-    figures: ["wind-low-nh", "coriolis-deflect"],
+    figures: ["wind-low-sh", "coriolis-deflect"],
   }),
 
   7: mc("Boksen over det klareste, tynneste skydekket / den tropiske luftmassen", [
@@ -66,7 +66,6 @@ export const h2024Solutions: Record<number, Solution> = {
     "Havet tar mer enn 90 % av ekstraenergien, men havnivået reagerer tregt: termisk utvidelse og issmelting tar tiår–århundrer. Atmosfæren har lav varmekapasitet og varmes raskere.",
   ], {
     official: false,
-    figures: ["ice-albedo"],
   }),
 
   17: mc("Åttedobling — E ∝ v³", [
@@ -95,6 +94,6 @@ export const h2024Solutions: Record<number, Solution> = {
     "d) Fønvind + mildvær på lesiden av Jostedalsbreen øker skredfare der snøen blir våt og vinden laster lesider.",
   ], {
     official: false,
-    figures: ["katabatic", "foehn", "jet-blocking"],
+    figures: ["katabatic", "jet-blocking"],
   }),
 };

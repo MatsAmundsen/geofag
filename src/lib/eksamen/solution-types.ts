@@ -34,7 +34,17 @@ export type FigureId =
   | "westerlies"
   | "hadley"
   | "paleo-proxy"
-  | "density-mix";
+  | "density-mix"
+  | "marine-heatwave"
+  | "orographic-rain"
+  | "wind-low-sh"
+  | "wind-low-center"
+  | "eccentricity"
+  | "tree-ring"
+  | "front-rain"
+  | "snow-crystal"
+  | "ozone-profile"
+  | "jet-flight";
 
 export type WhyNot = {
   option: string;

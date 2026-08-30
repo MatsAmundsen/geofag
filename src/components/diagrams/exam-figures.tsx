@@ -88,6 +88,26 @@ export function ExamFigure({ id }: { id: FigureId }) {
       return <PaleoDiagram />;
     case "density-mix":
       return <DensityMix />;
+    case "marine-heatwave":
+      return <MarineHeatwave />;
+    case "orographic-rain":
+      return <OrographicRain />;
+    case "wind-low-sh":
+      return <WindLowSh />;
+    case "wind-low-center":
+      return <WindLowCenter />;
+    case "eccentricity":
+      return <Eccentricity />;
+    case "tree-ring":
+      return <TreeRing />;
+    case "front-rain":
+      return <FrontRain />;
+    case "snow-crystal":
+      return <SnowCrystal />;
+    case "ozone-profile":
+      return <OzoneProfile />;
+    case "jet-flight":
+      return <JetFlight />;
     default:
       return null;
   }
@@ -151,7 +171,7 @@ function PressureGradient() {
     <Diagram
       title="Tette isobarer gir sterk vind"
       heading="Trykkgradient = avstand mellom isobarene"
-      caption="Vindstyrken leses av hvor tett trykklinjene ligger, ikke av hvor lavt tallet i senteret er. Der avstanden er liten, er trykkforskjellen per kilometer stor, og vinden sterk. Trekanten i oppgaven står der linjene er tettest."
+      caption="Vindstyrken leses av hvor tett trykklinjene ligger, ikke av hvor lavt tallet i senteret er. Der avstanden er liten, er trykkforskjellen per kilometer stor, og vinden sterk."
       viewBox="0 0 820 280"
     >
       {(m) => (
@@ -570,7 +590,7 @@ function Katabatic() {
     <Diagram
       title="Katabatisk vind mot føhn"
       heading="Katabatisk er kald fallvind. Føhn er varm og tørr leside."
-      caption="Katabatisk luft kjøles over isen, blir tett og renner ned av tyngdekraften. Den er tørr og lager sjelden skyer. Føhn er en annen prosess: luft heves, mister fukt på losiden og varmes tørradiabatisk på vei ned. Første påstand i V2026-21 beskriver føhn, ikke katabatisk."
+      caption="Katabatisk luft kjøles over isen, blir tett og renner ned av tyngdekraften. Den er tørr og lager sjelden skyer. Føhn er en annen prosess: luft heves, mister fukt på losiden og varmes tørradiabatisk på vei ned. En påstand som beskriver varm, tørr leside etter heving, er føhn — ikke katabatisk."
       viewBox="0 0 840 300"
     >
       {(m) => (
@@ -1015,6 +1035,369 @@ function DensityMix() {
           <rect x="540" y="40" width="160" height="70" fill={C.cold} opacity="0.55" className="exam-bob" />
           <L x="620" y="260" fill={C.muted} size={13} anchor="middle">
             saltvann · flyter
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function MarineHeatwave() {
+  return (
+    <Diagram
+      title="Marin hetebølge: varme stenges i toppen"
+      heading="Lite vind og klarvær → varmen blir liggende i overflaten"
+      caption="En marin hetebølge er unormalt varmt overflatevann over dager til måneder. Solinnstråling varmer toppen. Svak vind og sterk sjiktning stenger blandingen, så varmen ikke trekkes ned. Vulkaner på bunnen er ikke forklaringen. Les fargeskalaen på Udir-figuren — anomalien er sjelden «nesten 10 °C»."
+      viewBox="0 0 840 300"
+    >
+      {(m) => (
+        <>
+          <rect x="40" y="40" width="760" height="70" fill="#3a2a18" />
+          <L x="420" y="70" fill={C.warm} size={14} anchor="middle">
+            klarvær · sterk innstråling
+          </L>
+          <Arrow d="M 180 40 L 180 108" marker={m.warm} color={C.warm} width={2} />
+          <Arrow d="M 420 40 L 420 108" marker={m.warm} color={C.warm} width={2} />
+          <Arrow d="M 660 40 L 660 108" marker={m.warm} color={C.warm} width={2} />
+          <rect x="40" y="110" width="760" height="70" fill={C.warm} opacity="0.45" />
+          <L x="420" y="152" fill={C.fg} size={15} anchor="middle" weight={600}>
+            varm hatt · marin hetebølge
+          </L>
+          <rect x="40" y="180" width="760" height="80" fill={C.cold} opacity="0.28" />
+          <L x="420" y="226" fill={C.cold} size={14} anchor="middle">
+            kaldere vann under · blandingen er stengt
+          </L>
+          <L x="80" y="280" fill={C.muted} size={13}>
+            lite vind
+          </L>
+          <L x="760" y="280" fill={C.muted} size={13} anchor="end">
+            ikke bunnvulkanisme
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function OrographicRain() {
+  return (
+    <Diagram
+      title="Orografisk nedbør og regnskygge"
+      heading="Fuktig loside heves. Lesiden er tørr."
+      caption="Passaten tvinger fuktig luft opp på losiden. Der kondenserer dampen, og det regner. Over kammen er vannet borte. Ned lesiden varmes luften tørt — regnskygge. På 20–25°S er sørøstpassaten den fuktige vinden, så sørøst er den våte siden."
+      viewBox="0 0 840 300"
+    >
+      {(m) => (
+        <>
+          <path d="M 80 240 L 360 70 L 640 240 L 800 240 L 800 280 L 80 280 Z" fill="#1a2620" />
+          <L x="360" y="58" fill={C.muted} size={13} anchor="middle">
+            fjell / øy
+          </L>
+          <Arrow d="M 60 200 L 250 130" marker={m.cold} color={C.rain} width={3} />
+          <L x="70" y="170" fill={C.rain} size={14}>
+            sørøstpassat · fukt
+          </L>
+          <L x="200" y="250" fill={C.rain} size={14}>
+            loside · regn
+          </L>
+          <Arrow d="M 470 120 L 720 200" marker={m.warm} color={C.warm} width={2.6} />
+          <L x="620" y="250" fill={C.warm} size={14}>
+            leside · regnskygge
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function WindLowSh() {
+  return (
+    <Diagram
+      title="Lavtrykk på sørlige halvkule"
+      heading="Med urviseren inn mot L — det er lavtrykk, ikke høytrykk"
+      caption="På sørlige halvkule bøyes innstrømmende luft til venstre. Rundt et lavtrykk blir rotasjonen med urviseren. Høytrykk spinner motsatt. Videoen i oppgaven viser trykksenteret i midten: luft inn + med urviseren = L."
+      viewBox="0 0 820 380"
+    >
+      {(m) => (
+        <>
+          <circle cx="410" cy="190" r="118" fill="none" stroke={C.dim} strokeWidth="1.2" />
+          <circle cx="410" cy="190" r="78" fill="none" stroke={C.dim} strokeWidth="1.2" />
+          <circle cx="410" cy="190" r="26" fill="#2a1818" stroke={C.low} strokeWidth="2.4" />
+          <L x="410" y="196" fill={C.low} size={20} anchor="middle" weight={700}>
+            L
+          </L>
+          <Arrow d="M 410 72 C 470 90, 510 130, 528 190" marker={m.low} color={C.low} width={2.4} />
+          <Arrow d="M 528 190 C 510 250, 470 300, 410 308" marker={m.low} color={C.low} width={2.4} />
+          <Arrow d="M 410 308 C 350 300, 292 250, 292 190" marker={m.low} color={C.low} width={2.4} />
+          <Arrow d="M 292 190 C 310 130, 350 80, 410 72" marker={m.low} color={C.low} width={2.4} />
+          <L x="410" y="44" fill={C.muted} size={13} anchor="middle">
+            med urviseren på sørlige halvkule
+          </L>
+          <L x="410" y="350" fill={C.muted} size={13} anchor="middle">
+            coriolis bøyer til venstre
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function WindLowCenter() {
+  return (
+    <Diagram
+      title="Finn lavtrykkssenteret i spiralen"
+      heading="Senteret er det rolige øyet der skyene lukker seg"
+      caption="På nordlig halvkule spinner lavtrykk mot urviseren. Marker der rotasjonen lukker seg — det rolige øyet — ikke en front lenger ute. Fronten er skillet mellom luftmasser, ikke trykksenteret."
+      viewBox="0 0 820 360"
+    >
+      {(m) => (
+        <>
+          <path
+            d="M 410 60 C 560 80, 680 180, 640 280 C 600 360, 420 340, 300 280 C 180 220, 200 100, 410 60"
+            fill="none"
+            stroke={C.low}
+            strokeWidth="2.2"
+            className="exam-dash"
+          />
+          <circle cx="410" cy="190" r="22" fill="#2a1818" stroke={C.low} strokeWidth="2.4" />
+          <L x="410" y="196" fill={C.low} size={18} anchor="middle" weight={700}>
+            L
+          </L>
+          <Arrow d="M 500 90 C 560 140, 560 200, 500 250" marker={m.low} color={C.low} width={2.2} />
+          <L x="410" y="40" fill={C.muted} size={13} anchor="middle">
+            mot klokken · nordlig halvkule
+          </L>
+          <L x="560" y="196" fill={C.warm} size={14}>
+            klikk her — øyet
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function Eccentricity() {
+  return (
+    <Diagram
+      title="Jordbanens eksentrisitet"
+      heading="Høy eksentrisitet = mer avlang bane = større årstidsforskjell"
+      caption="Eksentrisitet er hvor avlang ellipsen er, ikke perihelium-tidspunkt og ikke aksehelning. Høy eksentrisitet gir større forskjell mellom perihel og aphel. Da kan sommersola på 65°N bli for svak, og istid får bedre vilkår. Velg tidspunktet i figuren der ellipsen er mest avlang."
+      viewBox="0 0 840 300"
+    >
+      {() => (
+        <>
+          <ellipse cx="220" cy="150" rx="110" ry="108" fill="none" stroke={C.muted} strokeWidth="2" />
+          <circle cx="220" cy="150" r="10" fill={C.warm} />
+          <L x="220" y="44" fill={C.muted} size={13} anchor="middle">
+            lav eksentrisitet · nesten sirkel
+          </L>
+          <ellipse cx="620" cy="150" rx="160" ry="78" fill="none" stroke={C.teal} strokeWidth="2.4" />
+          <circle cx="700" cy="150" r="10" fill={C.warm} />
+          <L x="620" y="44" fill={C.teal} size={13} anchor="middle">
+            høy eksentrisitet · avlang ellipse
+          </L>
+          <L x="420" y="270" fill={C.muted} size={13} anchor="middle">
+            sola sitter i ett brennpunkt, ikke i sentrum
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function TreeRing() {
+  return (
+    <Diagram
+      title="Årringer som klimaarchiv"
+      heading="Tynn ring = dårlig vekstår. Tykk ring = godt vekstår."
+      caption="Les hva oppgaven sier styrer veksten. Styrer temperaturen: tynnest ring er kaldest sommer. Styrer nedbør: tykkest ring er våtest år. Ikke anta at tykk alltid betyr varm. Match linjalen mot merkene A–K."
+      viewBox="0 0 840 300"
+    >
+      {() => (
+        <>
+          {[40, 52, 70, 78, 98, 108, 128, 148, 156, 180].map((r, i) => (
+            <circle
+              key={r}
+              cx="250"
+              cy="150"
+              r={r}
+              fill="none"
+              stroke={i === 2 || i === 7 ? C.teal : C.sand}
+              strokeWidth={i === 2 || i === 7 ? 3 : 1.4}
+            />
+          ))}
+          <L x="250" y="28" fill={C.muted} size={13} anchor="middle">
+            snitt gjennom stammen
+          </L>
+          <L x="480" y="90" fill={C.teal} size={14}>
+            tykk ring · godt år
+          </L>
+          <L x="480" y="160" fill={C.sand} size={14}>
+            tynn ring · dårlig år
+          </L>
+          <L x="480" y="230" fill={C.muted} size={13}>
+            les oppgaven: temperatur eller nedbør?
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function FrontRain() {
+  return (
+    <Diagram
+      title="Kraftig nedbør ligger i fronten, ikke i høytrykket"
+      heading="Stigende luft ved fronten. Synkende luft i H."
+      caption="På et analysekart: høytrykk har synkende luft og lite nedbør. Kraftig nedbør hører frontsonen der fuktig luft heves. Åpne MET-kartet og sjekk hvilket tall som ligger i fronten — ikke det som ligger inne i H."
+      viewBox="0 0 840 280"
+    >
+      {(m) => (
+        <>
+          <circle cx="160" cy="140" r="50" fill="#1a2420" stroke={C.teal} strokeWidth="2" />
+          <L x="160" y="146" fill={C.teal} size={22} anchor="middle" weight={700}>
+            H
+          </L>
+          <L x="160" y="210" fill={C.muted} size={13} anchor="middle">
+            1 · tørt
+          </L>
+          <path d="M 320 40 L 380 140 L 320 240" fill="none" stroke={C.low} strokeWidth="3" />
+          <L x="430" y="146" fill={C.low} size={16} weight={600}>
+            2 · front · heving · regn
+          </L>
+          <circle cx="700" cy="140" r="44" fill="#2a1818" stroke={C.dim} strokeWidth="1.6" />
+          <L x="700" y="146" fill={C.muted} size={18} anchor="middle">
+            L
+          </L>
+          <L x="700" y="210" fill={C.muted} size={13} anchor="middle">
+            3 · ikke automatisk våtest
+          </L>
+          <Arrow d="M 300 140 L 360 140" marker={m.low} color={C.low} width={2} />
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function SnowCrystal() {
+  return (
+    <Diagram
+      title="Rim på snøoverflaten mot begerkorn nede i dekket"
+      heading="Kalde, klare netter: rimkrystaller på toppen. Begerkorn nede i snøen."
+      caption="Når bakken stråler mot klar himmel, blir snøoverflaten kaldere enn lufta. Vanndamp avsettes som rim / overflaterim. Begerkorn (begerkrystaller) vokser nede i snødekket ved sterk temperaturgradient — ikke som pene enkeltkrystaller på et foto. Fokksnø er vindtransportert snø, ikke en krystalltype."
+      viewBox="0 0 840 300"
+    >
+      {() => (
+        <>
+          <rect x="40" y="40" width="360" height="200" rx="10" fill="#152028" stroke={C.dim} />
+          <L x="220" y="70" fill={C.cold} size={14} anchor="middle">
+            klare netter
+          </L>
+          {[0, 1, 2].map((i) => (
+            <g key={i} transform={`translate(${120 + i * 70} 130)`}>
+              <line x1="0" y1="-28" x2="0" y2="28" stroke={C.white} strokeWidth="1.6" />
+              <line x1="-24" y1="0" x2="24" y2="0" stroke={C.white} strokeWidth="1.6" />
+              <line x1="-18" y1="-18" x2="18" y2="18" stroke={C.white} strokeWidth="1.4" />
+              <line x1="-18" y1="18" x2="18" y2="-18" stroke={C.white} strokeWidth="1.4" />
+            </g>
+          ))}
+          <L x="220" y="220" fill={C.muted} size={13} anchor="middle">
+            rimkrystaller på overflaten
+          </L>
+          <rect x="440" y="40" width="360" height="200" rx="10" fill="#152028" stroke={C.dim} />
+          <rect x="460" y="70" width="320" height="40" fill={C.white} opacity="0.15" />
+          <L x="620" y="96" fill={C.muted} size={13} anchor="middle">
+            snøoverflate
+          </L>
+          {[0, 1, 2].map((i) => (
+            <rect
+              key={i}
+              x={500 + i * 70}
+              y="130"
+              width="28"
+              height="70"
+              rx="4"
+              fill="none"
+              stroke={C.sand}
+              strokeWidth="1.8"
+            />
+          ))}
+          <L x="620" y="220" fill={C.muted} size={13} anchor="middle">
+            begerkorn nede i dekket
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function OzoneProfile() {
+  return (
+    <Diagram
+      title="Ozonlaget restitueres i stratosfæren"
+      heading="Mer ozon 30–45 km etter Montreal — det er positiv utvikling"
+      caption="Bakkenært ozon er forurensning. Ozonlaget ligger i stratosfæren. Etter Montreal-protokollen øker ozon rundt 30–45 km: restitusjon, ikke «mer ozon ved bakken». Les høydeaksen, ikke fargen du husker fra troposfæren."
+      viewBox="0 0 840 320"
+    >
+      {(m) => (
+        <>
+          <line x1="120" y1="40" x2="120" y2="280" stroke={C.dim} />
+          <line x1="120" y1="280" x2="720" y2="280" stroke={C.dim} />
+          <L x="70" y="50" fill={C.muted} size={13}>
+            45 km
+          </L>
+          <L x="70" y="120" fill={C.teal} size={13}>
+            30 km
+          </L>
+          <L x="70" y="270" fill={C.muted} size={13}>
+            bakken
+          </L>
+          <rect x="200" y="70" width="400" height="80" fill={C.teal} opacity="0.25" />
+          <L x="400" y="116" fill={C.teal} size={15} anchor="middle" weight={600}>
+            ozonlaget · restitusjon
+          </L>
+          <Arrow d="M 640 110 L 700 110" marker={m.teal} color={C.teal} width={2.4} />
+          <L x="710" y="116" fill={C.teal} size={13}>
+            mer O₃
+          </L>
+          <rect x="200" y="250" width="400" height="22" fill={C.low} opacity="0.25" />
+          <L x="400" y="242" fill={C.low} size={13} anchor="middle">
+            bakkenært ozon er noe annet
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+function JetFlight() {
+  return (
+    <Diagram
+      title="Polarjeten som medvind for transatlantiske fly"
+      heading="Østover med jetten. Vestover mot jetten."
+      caption="Polarjeten over Nord-Atlanteren blåser vest → øst i 10–12 km høyde, der flyene går. Ruter med jetten (Nord-Amerika mot Europa) får medvind. Ruter mot jetten (Europa mot Nord-Amerika) får motvind og tar lenger tid. Les hvilken vei A og B peker mot den røde jetkjernen."
+      viewBox="0 0 840 280"
+    >
+      {(m) => (
+        <>
+          <L x="80" y="50" fill={C.muted} size={13}>
+            Nord-Amerika
+          </L>
+          <L x="760" y="50" fill={C.muted} size={13} anchor="end">
+            Europa
+          </L>
+          <path d="M 80 130 C 240 90, 480 90, 760 130" fill="none" stroke={C.low} strokeWidth="10" opacity="0.35" />
+          <Arrow d="M 120 128 L 700 128" marker={m.low} color={C.low} width={3.2} />
+          <L x="420" y="108" fill={C.low} size={14} anchor="middle">
+            polarjet vest → øst
+          </L>
+          <Arrow d="M 160 190 L 680 190" marker={m.teal} color={C.teal} width={2.4} />
+          <L x="420" y="214" fill={C.teal} size={13} anchor="middle">
+            østgående · medvind
+          </L>
+          <Arrow d="M 680 240 L 160 240" marker={m.muted} color={C.muted} width={2} dash="6 5" />
+          <L x="420" y="268" fill={C.muted} size={13} anchor="middle">
+            vestgående · motvind
           </L>
         </>
       )}

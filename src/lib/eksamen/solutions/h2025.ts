@@ -21,7 +21,7 @@ export const h2025Solutions: Record<number, Solution> = {
   3: mc("b — Sted 2", [
     "Kraftig nedbør hører fronten / der fuktig luft heves, ikke høytrykket. Åpne MET-kartet og sjekk hvilket tall som ligger i frontsonen. Høytrykk = synkende luft = lite nedbør.",
   ], {
-    figures: ["atmo-river"],
+    figures: ["front-rain"],
   }),
 
   4: mc("Usann — sann — usann — sann", [
@@ -33,7 +33,7 @@ export const h2025Solutions: Record<number, Solution> = {
   5: mc("Kaldest = år K. Våtest = år B.", [
     "Tynnest ring hvis veksten styres av temperatur (kald sommer). Tykkest ring hvis den styres av nedbør (vått år). Les linjalen mot merkene A–K. Ikke anta at «tykk = varm» uten å lese hva oppgaven sier styrer veksten.",
   ], {
-    figures: ["paleo-proxy"],
+    figures: ["tree-ring"],
   }),
 
   6: mc("Sirkelen i Nordishavet", [
@@ -57,7 +57,7 @@ export const h2025Solutions: Record<number, Solution> = {
   10: mc("c — For 1,68 millioner år siden", [
     "Det er tidspunktet med høyest eksentrisitet i figuren. Høy eksentrisitet gir større årstidsforskjell og mer sjanse for at sommersnø overlever på 65°N — altså mer sjanse for istid.",
   ], {
-    figures: ["perihelion", "earth-tilt"],
+    figures: ["eccentricity"],
   }),
 
   13: mc("c — 1920–1940 var kaldere enn 2010–2024, derfor blir anomalien mot den tidlige perioden større", [
@@ -71,7 +71,7 @@ export const h2025Solutions: Record<number, Solution> = {
   20: mc("c — Svekket trykkgradient tropene–polene kan gi svakere vind og mindre nordlig varmetransport", [
     "Arktis varmes raskere enn tropene, gradienten slakker, vestavinden kan svekkes. Smeltevann øker stratifisering (motsatt av «mindre»). Polar salinitet synker, ikke øker. Varmere overflate blir lettere, ikke tettere.",
   ], {
-    figures: ["jet-blocking", "amoc-nadw"],
+    figures: ["amoc-nadw"],
   }),
 
   21: write("a) Minst fire prosesser i Bjerknes-figuren. b) Hurtige endringer med lang virkning.", [

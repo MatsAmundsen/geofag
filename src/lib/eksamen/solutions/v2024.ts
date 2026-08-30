@@ -85,7 +85,7 @@ export const v2024Solutions: Record<number, Solution> = {
   15: mc("På den sørøstlige siden", [
     "Øya ligger på 20–25°S i passaten. Fuktig sørøstpassat tvinges opp på losiden. Lesiden ligger i regnskygge. Derfor sørøst = våt.",
   ], {
-    figures: ["foehn", "hadley"],
+    figures: ["orographic-rain"],
   }),
 
   16: mc("Moderat nedbør, kraftig vind og stigende temperatur før skredet", [
