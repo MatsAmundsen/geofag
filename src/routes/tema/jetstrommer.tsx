@@ -13,8 +13,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/jetstrommer")!;
 
 export const Route = createFileRoute("/tema/jetstrommer")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/jetstrommer",
+    }),
   component: JetstrommerPage,
 });
 
@@ -26,7 +36,6 @@ function JetstrommerPage() {
       lead="Åtte til tolv kilometer over hodet ditt renner en elv av luft østover i godt over 200 kilometer i timen. Du kjenner den aldri på kinnet. Likevel avgjør den om uka blir mild og våt, eller kald og stillestående — fordi den bestemmer hvor lavtrykkene får lov til å gå."
       banner="/images/fig-jet.jpg"
       bannerAlt="Tynn, rask skyelv høyt over havet mot jordas krumning"
-      videoTopic="jetstrømmer"
       prev={{ to: "/tema/vindsystemet", label: "Forrige: Vindsystemet" }}
       next={{ to: "/tema/coriolis", label: "Neste: Corioliseffekten" }}
       kilder={KILDER.jetstrommer}

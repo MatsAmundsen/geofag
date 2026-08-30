@@ -6,8 +6,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/hoytrykk-lavtrykk")!;
 
 export const Route = createFileRoute("/tema/hoytrykk-lavtrykk")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/hoytrykk-lavtrykk",
+    }),
   component: TrykkPage,
 });
 
@@ -19,7 +29,6 @@ function TrykkPage() {
       lead="Luft har vekt, og den veier ikke like mye overalt. Der luften stiger, faller trykket, og skyene bygger seg. Der den synker, stiger trykket, og himmelen tømmes. Vind er luften som utligner forskjellen. Vindsystemet, havstrømmene og været henger alle på disse to bevegelsene."
       banner="/images/banner-trykk.jpg"
       bannerAlt="Kyst i to slags vær: storm til venstre, klar himmel til høyre"
-      videoTopic="høytrykk og lavtrykk"
       next={{ to: "/tema/vindsystemet", label: "Neste: Vindsystemet" }}
       kilder={KILDER.trykk}
     >

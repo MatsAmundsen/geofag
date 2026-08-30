@@ -5,8 +5,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/klima")!;
 
 export const Route = createFileRoute("/tema/klima")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/klima",
+    }),
   component: KlimaPage,
 });
 
@@ -18,7 +28,6 @@ function KlimaPage() {
       lead="Vær er det som skjer i dag. Klima er det som gjentar seg over tiår. Når du har trykk, vind, coriolis og hav, kan du se hvorfor klimaet henger sammen — og hvorfor det kan forskyves."
       banner="/images/banner-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
-      videoTopic="klimasystemet"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
       next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
       kilder={KILDER.klima}

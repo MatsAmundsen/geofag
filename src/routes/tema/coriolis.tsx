@@ -15,8 +15,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/coriolis")!;
 
 export const Route = createFileRoute("/tema/coriolis")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/coriolis",
+    }),
   component: CoriolisPage,
 });
 
@@ -28,7 +38,6 @@ function CoriolisPage() {
       lead="Corioliseffekten er ikke en kraft som starter vinden. Den er det som skjer når luft eller vann allerede er i bevegelse på en roterende jord. Trykkforskjeller setter luften i gang. Jordrotasjonen dreier den."
       banner="/images/banner-coriolis.jpg"
       bannerAlt="Jorda med spiralformede syklonskyer"
-      videoTopic="Corioliseffekten"
       prev={{ to: "/tema/jetstrommer", label: "Forrige: Jetstrømmer" }}
       next={{ to: "/tema/havstrommer", label: "Neste: Havstrømmer" }}
       kilder={KILDER.coriolis}

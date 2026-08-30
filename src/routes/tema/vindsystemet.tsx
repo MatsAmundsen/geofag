@@ -5,8 +5,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/vindsystemet")!;
 
 export const Route = createFileRoute("/tema/vindsystemet")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/vindsystemet",
+    }),
   component: VindsystemetPage,
 });
 
@@ -18,7 +28,6 @@ function VindsystemetPage() {
       lead="Sola varmer tropene mer enn polene. Lufta flytter overskuddsvarmen nord- og sørover. Jordrotasjonen tvinger flyttingen inn i tre store kretsløp — og det er disse som gir ørken, regnskog og vestavinden over Norge."
       banner="/images/banner-vind.jpg"
       bannerAlt="Jordas atmosfære sett fra bane"
-      videoTopic="det globale vindsystemet"
       prev={{ to: "/tema/hoytrykk-lavtrykk", label: "Forrige: Høytrykk og lavtrykk" }}
       next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
       kilder={KILDER.vindsystemet}
