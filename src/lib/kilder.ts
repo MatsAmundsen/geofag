@@ -504,7 +504,20 @@ export const KILDER = {
       prefix: "Australian Bureau of Meteorology. (u.å.). ",
       italic: "Indian Ocean Dipole (IOD)",
       suffix: ".",
-      href: "http://www.bom.gov.au/climate/iod/",
+      href: "https://www.bom.gov.au/climate/iod/",
+    },
+    {
+      prefix: "Barthel, K. (2021). ",
+      italic: "Ekmantransport",
+      suffix: ".",
+      href: "https://snl.no/ekmantransport",
+    },
+    {
+      prefix:
+        "Hu, S., & Fedorov, A. V. (2019). Indian Ocean warming can strengthen the Atlantic meridional overturning circulation. ",
+      italic: "Nature Climate Change, 9",
+      suffix: "(10), 747–751.",
+      href: "https://doi.org/10.1038/s41558-019-0566-4",
     },
   ],
   nao: [

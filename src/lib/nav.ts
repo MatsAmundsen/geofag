@@ -263,8 +263,8 @@ export const KLIMA_SUBTHEMES = [
     title: "IOD",
     subtitle: "Den indiske hav-dipolen",
     kicker: "Det indiske hav",
-    image: "/images/banner-hav.jpg",
-    alt: "Tropisk havoverflate med temperaturgradient og konveksjon",
+    image: "/images/fig-iod-positiv.png",
+    alt: "Positiv IOD: varmere hav utenfor Øst-Afrika, kaldere utenfor Indonesia",
     blurb:
       "Temperaturgradienten i Det indiske hav. Positiv og negativ fase, samspill med monsunen og ekstreme tørke- og flomperioder.",
     status: "klar" as const,
