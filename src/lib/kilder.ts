@@ -519,6 +519,32 @@ export const KILDER = {
       suffix: "(10), 747–751.",
       href: "https://doi.org/10.1038/s41558-019-0566-4",
     },
+    {
+      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
+      italic: "Dipole Mode Index (DMI) monthly time-series",
+      suffix: ".",
+      href: "https://psl.noaa.gov/data/timeseries/month/DMI/",
+    },
+    {
+      prefix:
+        "National Aeronautics and Space Administration. (2019a, 7. november). ",
+      italic: "Spate of cyclones in the North Indian Ocean",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/images/145841/spate-of-cyclones-in-the-north-indian-ocean",
+    },
+    {
+      prefix:
+        "National Aeronautics and Space Administration. (2019b, 13. desember). ",
+      italic: "Fires take a toll on Australian forests",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/images/145998/fires-take-a-toll-on-australian-forests",
+    },
+    {
+      prefix: "National Aeronautics and Space Administration. (2006). ",
+      italic: "El Niño and rainfall",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/images/7247/el-nino-and-rainfall",
+    },
   ],
   nao: [
     {

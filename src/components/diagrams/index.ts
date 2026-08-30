@@ -42,6 +42,15 @@ export {
   GyreDiagram,
   OceanDriversDiagram,
 } from "./ocean";
+export {
+  DmiTimeseriesDiagram,
+  IodEkmanDiagram,
+  IodPhaseShift,
+  IodTeleconnectionDiagram,
+  IodVsEnsoDiagram,
+  NegativeWalkerDiagram,
+  NeutralIodDiagram,
+} from "./iod";
 export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
 export { SeaBreezeDiagram } from "./pressure";
 export { ModelGridDiagram } from "./models";

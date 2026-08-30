@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import {
+  DmiTimeseriesDiagram,
+  IodEkmanDiagram,
+  IodPhaseShift,
+  IodTeleconnectionDiagram,
+  IodVsEnsoDiagram,
+  NegativeWalkerDiagram,
+  NeutralIodDiagram,
+} from "@/components/diagrams/iod";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -12,7 +21,7 @@ export const Route = createFileRoute("/tema/klima/iod")({
     topicHead({
       title: "IOD: Den indiske hav-dipolen · Geofag 2",
       description:
-        "Den indiske hav-dipolen (IOD): positiv og negativ fase, DMI, oppvelling og Ekman-transport, jetstrømmer, samspill med ENSO og monsunen.",
+        "Den indiske hav-dipolen (IOD): nøytral, positiv og negativ fase, DMI, SST-anomali, oppvelling og Ekman-transport, jetstrømmer, samspill med ENSO og monsunen.",
       path: "/tema/klima/iod",
     }),
   component: IodPage,
@@ -54,6 +63,14 @@ function IodPage() {
         Indonesia (Indonesian Throughflow), og vestavind blåser langs ekvator (Australian Bureau of
         Meteorology, u.å.).
       </p>
+      <NeutralIodDiagram />
+      <DmiTimeseriesDiagram />
+      <p>
+        IOD utvikler seg oftest gjennom andre halvår og topper gjerne i september–november
+        (Australian Bureau of Meteorology, u.å.). NOAA PSL-serien, bygd på HadISST, viser at 1997 og
+        2019 er de to sterkeste positive SON-toppene siden 1961 (National Oceanic and Atmospheric
+        Administration, u.å.).
+      </p>
       <OrdBoks
         ord="IOD"
         barn="En øst–vest-svingning i tropisk Indiahav. Temperaturforskjellen mellom polene styrer hvor lufta stiger, hvor den synker, og hvor regnet faller."
@@ -72,12 +89,23 @@ function IodPage() {
       <PhotoFigure
         src="/images/fig-iod-positiv.png"
         alt="Positiv IOD: varmere vann og regn i vest, kaldere vann, oppvelling og tørke i øst"
-        heading="Figur 1. Positiv IOD"
+        heading="Figur 3. Positiv IOD"
         caption="Varmt i vest, kaldt i øst. Overflatestrømmen går mot Afrika. Termoklinen synker i vest (nedvelling) og kommer opp i øst (oppvelling). Etter Weatherzone."
         fit="contain"
         points={[
           { n: "1", label: "Vest: varmt hav, lavtrykk, konveksjon og regn mot Øst-Afrika." },
           { n: "2", label: "Øst: kaldt hav, høytrykk, svekket konveksjon og tørke i Indonesia og Nord-Australia." },
+        ]}
+      />
+      <PhotoFigure
+        src="/images/fig-iod-sst-anom.jpg"
+        alt="SST-anomali i Indiahavet 28. juli 2019: varmt i vest, kaldt utenfor Sumatra"
+        heading="Figur 4. SST-anomali, ikke temperatur"
+        caption="Avvik fra normalen 28. juli 2019, midt i oppbyggingen av den ekstreme positive IOD-en. Rødt: varmere enn vanlig. Blått: kaldere. Dette er anomali — ikke det samme som figur 8, som viser hvor varmt havet er i grader. NASA Earth Observatory / MUR (National Aeronautics and Space Administration, 2019a)."
+        fit="contain"
+        points={[
+          { n: "1", label: "Vestlig pol: varmere enn normalt utenfor Øst-Afrika og Arabia." },
+          { n: "2", label: "Østlig pol: kaldere enn normalt utenfor Sumatra — oppvellingens fingeravtrykk." },
         ]}
       />
       <p>
@@ -90,7 +118,6 @@ function IodPage() {
         I øst kveler kaldt vann og høytrykk skyene. Indonesia og Nord-Australia får tørke, hete og
         høy skogbrannfare. Den australske «Black Summer»-sesongen 2019/20 falt sammen med en av de
         sterkeste positive IOD-hendelsene som er målt (Australian Bureau of Meteorology, u.å.).
-        IOD utvikler seg oftest gjennom andre halvår (Australian Bureau of Meteorology, u.å.).
       </p>
 
       <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
@@ -103,12 +130,14 @@ function IodPage() {
         derfor overflatevann sørover, bort fra Sumatra og Nordvest-Australia. Der vannet spriker,
         må kaldt dypvann opp (Barthel, 2021).
       </p>
+      <IodEkmanDiagram />
       <p>
         Samme logikk møtte du under{" "}
         <Link to="/tema/havstrommer" className="text-primary underline-offset-2 hover:underline">
           havstrømmer
         </Link>
-        . Her er den motoren bak den østlige polen.
+        . Der er pila 90° til <em>høyre</em> fordi eksempelet sitter på nordlig halvkule. Her er
+        pila til venstre, fordi den østlige polen sitter sør for ekvator.
       </p>
       <OrdBoks
         ord="Oppvelling"
@@ -125,7 +154,7 @@ function IodPage() {
       <PhotoFigure
         src="/images/fig-iod-negativ.jpg"
         alt="Negativ IOD: kaldere vann og tørke i vest, varmere vann og økt konveksjon i øst"
-        heading="Figur 2. Negativ IOD"
+        heading="Figur 6. Negativ IOD"
         caption="Kaldt i vest, varmt i øst. Konveksjonen sitter over Indonesia og Nord-Australia. Øst-Afrika får redusert sjanse for regn. Etter Study IQ IAS."
         fit="contain"
         points={[
@@ -133,6 +162,7 @@ function IodPage() {
           { n: "2", label: "Vest: kaldt hav, høytrykk og tørke i Øst-Afrika — og ofte i deler av India." },
         ]}
       />
+      <NegativeWalkerDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Havtemperaturen flytter jetstrømmene
@@ -145,14 +175,14 @@ function IodPage() {
       <PhotoFigure
         src="/images/fig-iod-sst.png"
         alt="Kart over havoverflatetemperatur i Indiahavet med tydelig sørlig temperaturgrense"
-        heading="Figur 3. Havtemperatur i Indiahavet"
-        caption="Det tropiske bassenget er varmt. Den skarpe grensen mot kaldere vann i sør er der den subtropiske jeten hører hjemme. Dette er et oversiktskart over temperatur, ikke et anomalikart for én IOD-hendelse."
+        heading="Figur 8. Havtemperatur i Indiahavet — ikke anomali"
+        caption="Det tropiske bassenget er varmt. Den skarpe grensen mot kaldere vann i sør er der den subtropiske jeten hører hjemme. Dette er grader, ikke avvik. Lilla vest betyr ikke positiv IOD. For dipolen, se figur 4."
         fit="contain"
       />
       <PhotoFigure
         src="/images/fig-iod-jet.png"
         alt="Subtropiske jetstrømmer over Indiahavet på nordlig og sørlig halvkule"
-        heading="Figur 4. Subtropiske jetstrømmer over Indiahavet"
+        heading="Figur 9. Subtropiske jetstrømmer over Indiahavet"
         caption="Jetene følger de store temperaturgrensene i hav og luft. IOD flytter grensene, og dermed banen og formen."
         fit="contain"
       />
@@ -202,6 +232,8 @@ function IodPage() {
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">IOD, ENSO og monsunen</h2>
+      <IodTeleconnectionDiagram />
+      <IodVsEnsoDiagram />
       <p>
         IOD er en egen modus i Indiahavet, men den snakker med Stillehavet: gjennom atmosfæriske
         bølger og gjennom Indonesian Throughflow. Når positiv IOD faller sammen med El Niño, som i
@@ -213,6 +245,20 @@ function IodPage() {
         Positiv IOD kan også pumpe fukt inn over India og styrke sommermonsunen. Negativ IOD kan
         svekke den.
       </p>
+      <PhotoFigure
+        src="/images/fig-iod-ea-regn.jpg"
+        alt="Nedbørsanomali november 2006: mer regn over Øst-Afrika, mindre over Indonesia og Australia"
+        heading="Figur 12a. Flom i vest, tørke i øst"
+        caption="Nedbørsanomali i november 2006, et positivt IOD-år som også hadde El Niño. Blått: mer regn enn normalt over Øst-Afrika. Brunt: tørke over Indonesia og Australia. Samme øst–vest-mønster som i 1997 og 2019 (National Aeronautics and Space Administration, 2006)."
+        fit="contain"
+      />
+      <PhotoFigure
+        src="/images/fig-iod-black-summer.jpg"
+        alt="Satellittbilde av røyk fra skogbranner langs kysten av New South Wales, 9. desember 2019"
+        heading="Figur 12b. Black Summer, 9. desember 2019"
+        caption="Røyk fra brannene i New South Wales under den ekstreme positive IOD-en. NASA Aqua/MODIS (National Aeronautics and Space Administration, 2019b)."
+        fit="contain"
+      />
       <p>
         Det tropiske Indiahavet har varmet mer enn andre tropiske hav siden midten av 1900-tallet —
         i størrelsesorden én grad, omtrent 50–60 % mer enn i andre tropiske basseng (Hu og Fedorov,
@@ -223,6 +269,8 @@ function IodPage() {
         </Link>
         . Det er en kobling, ikke at IOD «styrer Golfstrømmen».
       </p>
+
+      <IodPhaseShift />
 
       <Callout title="Til eksamen">
         <p>
@@ -235,6 +283,10 @@ function IodPage() {
         <p>
           Skill IOD fra ENSO. ENSO sitter i tropisk Stillehav. IOD sitter i tropisk Indiahav. De kan
           falle sammen og forsterke hverandre, men de er ikke det samme.
+        </p>
+        <p>
+          Skill temperaturkart og anomalikart. Lilla vest på et temperaturkart er tropisk varmt
+          vann, ikke automatisk positiv IOD.
         </p>
       </Callout>
       <Callout title="Vanlige misforståelser">
@@ -274,6 +326,10 @@ function IodPage() {
           name="Ekman-transport"
           def="Netto vanntransport 90° på vinden. Til venstre på sørlig halvkule. Forklarer oppvelling i øst under positiv IOD."
         />
+        <Term
+          name="anomali"
+          def="Avvik fra normalen. Et anomalikart viser om havet er varmere eller kaldere enn det pleier — ikke hvor mange grader det er."
+        />
       </TermGrid>
 
       <Quiz
@@ -291,16 +347,16 @@ function IodPage() {
               "Positiv IOD: vestlig pol varm, østlig pol kald. Negativ IOD er det omvendte.",
           },
           {
-            prompt: "Hvorfor gir positiv IOD ofte flom i Øst-Afrika?",
+            prompt: "Hva viser et SST-anomalikart som et vanlig temperaturkart ikke viser?",
             options: [
-              "Fordi polarjeten alltid ligger over Kenya.",
-              "Varmt hav gir lavtrykk og konveksjon. Vind fra øst tar fukt inn mot kysten, der lufta også løftes orografisk.",
-              "Fordi oppvelling utenfor Somalia gir mer regn.",
-              "Fordi El Niño alltid faller sammen med positiv IOD.",
+              "Hvor mange grader havet er.",
+              "Om vest og øst er varmere eller kaldere enn de pleier — altså dipolen.",
+              "Hvor jetstrømmen ligger akkurat nå.",
+              "Saltholdigheten i AMOC.",
             ],
             answer: 1,
             explain:
-              "To nedbørtyper samtidig: konveksjon over varmt hav og orografisk løft over land. Oppvelling i positiv IOD sitter i øst, ikke utenfor Øst-Afrika.",
+              "Anomali er avvik fra normalen. Et lilla vestfelt på et temperaturkart kan bare være tropisk varmt vann.",
           },
           {
             prompt: "Hvorfor veller kaldt vann opp i øst under positiv IOD?",
@@ -315,16 +371,11 @@ function IodPage() {
               "På sørlig halvkule går Ekman-transporten 90° til venstre for vinden. Østlige vinder fjerner overflatevann fra den østlige polen.",
           },
           {
-            prompt: "Hvordan kan positiv IOD påvirke den subtropiske jeten på sørlig halvkule?",
-            options: [
-              "Den forsvinner.",
-              "Mindre konveksjon over Australia kan trekke jeten sørover og holde lavtrykk unna kontinentet.",
-              "Den flytter alltid til Nord-Atlanteren.",
-              "Den blir til en tropisk syklon over Kenya.",
-            ],
+            prompt: "Hvilke to år er de sterkeste positive DMI-toppene i NOAA-serien siden 1961?",
+            options: ["2016 og 2022", "1997 og 2019", "1982 og 2009", "1998 og 2010"],
             answer: 1,
             explain:
-              "Jetene følger temperaturgrensene. Når konveksjonen flytter seg, flytter grensen — og jeten — med.",
+              "1997 og 2019 er de to høyeste september–november-midlene. Begge falt sammen med El Niño og ga ekstrem tørke i Australia og flom i Øst-Afrika.",
           },
         ]}
       />
