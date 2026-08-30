@@ -1,15 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { FeltbokDiagram } from "@/components/diagrams/ressurser";
+import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("feltarbeid")!;
 
 export const Route = createFileRoute("/geofag-1/feltarbeid")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/feltarbeid",
+    }),
   component: FeltarbeidPage,
 });
 
@@ -21,7 +29,6 @@ function FeltarbeidPage() {
       lead="Felt er ikke en tur der klassen ser på fjellet. Du skal planlegge, samle georefererte data, ivareta HMS, bearbeide, tolke og presentere. Uten sted og tid er dataene ikke geofaglige."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="feltarbeid"
       prev={{
         to: "/geofag-1/geologiske-ressurser",
         label: "Forrige: Geologiske ressurser",
@@ -53,6 +60,15 @@ function FeltarbeidPage() {
       <OrdBoks
         ord="georeferert"
         barn="Observasjon knyttet til sted og tid. Uten det er dataene ikke geofaglige. Feltboka er primærkilden. Foto og GPS supplerer."
+      />
+      <GeoMap
+        center={[61, 8.5]}
+        zoom={6}
+        markers={[
+          { lat: 61.0, lng: 8.5, label: "Eksempel: georeferert feltpunkt (61,000° N, 8,500° Ø)" },
+        ]}
+        heading="Eksempel: et georeferert feltpunkt"
+        caption="Et feltpunkt georefereres med koordinater, ikke bare et stedsnavn. Dette er ett eksempelpunkt — ikke sanntids-GPS eller din faktiske posisjon."
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">HMS</h2>

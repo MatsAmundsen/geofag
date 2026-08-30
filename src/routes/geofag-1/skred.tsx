@@ -8,16 +8,24 @@ import {
   SkredSonerDiagram,
   SkredTyperDiagram,
 } from "@/components/diagrams/skred";
+import { GeoMap } from "@/components/geo-map";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("skred")!;
 
 export const Route = createFileRoute("/geofag-1/skred")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/skred",
+    }),
   component: SkredPage,
 });
 
@@ -29,7 +37,6 @@ function SkredPage() {
       lead="Alt som ligger i en skråning, ligger der på lånt tid. Spørsmålet er bare om kreftene som holder massen på plass, er større enn de som trekker den nedover — og hva som skal til for å tippe regnestykket."
       banner="/images/fig-ravine.jpg"
       bannerAlt={tema.alt}
-      videoTopic="skred"
       prev={{
         to: "/geofag-1/vann-og-flom",
         label: "Forrige: Vann og flom",
@@ -394,6 +401,17 @@ function SkredPage() {
         detaljert utredning av et avgrenset område. Et aktsomhetskart er en grov, modellbasert
         oversikt over hvor det kan være grunn til å undersøke nærmere.
       </p>
+      <GeoMap
+        center={[61.2, 8.5]}
+        zoom={5}
+        markers={[
+          { lat: 62.283, lng: 6.983, label: "Åknes – overvåket ustabilt fjellparti" },
+          { lat: 62.233, lng: 7.233, label: "Tafjord – fjellskred 1934" },
+          { lat: 60.05, lng: 11.03, label: "Gjerdrum (Ask) – kvikkleireskred 2020" },
+        ]}
+        heading="Skredsteder nevnt på denne siden"
+        caption="Åknes, Tafjord og Gjerdrum ligger langt fra hverandre og skyldes ulike skredtyper — felles er at konsekvensen avhenger av hva som står i utløpet."
+      />
       <p>
         Og her er fellen: et blankt kart er ikke det samme som trygt. NVE har kartlagt de områdene
         der store kvikkleireskred kan gå — ikke all kvikkleire i landet. Aktsomhet gjelder overalt

@@ -1,15 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
+import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("vann-og-flom")!;
 
 export const Route = createFileRoute("/geofag-1/vann-og-flom")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/vann-og-flom",
+    }),
   component: VannOgFlomPage,
 });
 
@@ -21,7 +29,6 @@ function VannOgFlomPage() {
       lead="Hydrologi er vannet på landjorden. Kretsløpet har tilførsel, lager og tap. Du skal følge ferskvannssporet."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="vann-og-flom"
       prev={{
         to: "/geofag-1/bergarter-og-landformer",
         label: "Forrige: Bergarter og landformer",
@@ -115,6 +122,15 @@ function VannOgFlomPage() {
           eksponert.
         </p>
       </Callout>
+      <GeoMap
+        center={[60.7, 11.3]}
+        zoom={7}
+        markers={[
+          { lat: 60.8833, lng: 11.5667, label: "Elverum – hardt rammet av ekstremværet «Hans», august 2023" },
+        ]}
+        heading="Hans 2023 i Innlandet"
+        caption="Kartet viser ett av områdene som ble hardest rammet av ekstremværet «Hans» i august 2023. Det er et stedsreferansekart, ikke NVEs faresonekart eller en faregrad."
+      />
       <p>
         Mer intens nedbør øker utløsningsfaren for flom i mange felt. NVE legger klimapåslag inn i
         flomberegninger. Samfunnet planlegger allerede med et våtere kretsløp. Forebygging er kart,
