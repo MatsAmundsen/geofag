@@ -237,3 +237,11 @@ export const GF1_THEMES = [
 export function gf1Theme(slug: string) {
   return GF1_THEMES.find((t) => t.slug === slug);
 }
+
+/** All canonical theme paths (G1 + G2), for sitemap/SEO use. Excludes `$slug` and redirect routes. */
+export function allThemePaths(): string[] {
+  return [
+    ...GF1_THEMES.map((t) => `/geofag-1/${t.slug}`),
+    ...GF2_THEMES.map((t) => t.to),
+  ];
+}
