@@ -20,6 +20,20 @@ export {
   NaoDiagram,
 } from "./coriolis";
 export {
+  FjellskredBolgeDiagram,
+  KvikkleireDiagram,
+  SkredKrefterDiagram,
+  SkredSonerDiagram,
+  SkredTyperDiagram,
+} from "./skred";
+export {
+  JetFormsDiagram,
+  JetProfileDiagram,
+  JetSeasonDiagram,
+  JetStreakDiagram,
+  ThermalWindDiagram,
+} from "./jet";
+export {
   AmocDiagram,
   ClimateContrastDiagram,
   DensityDiagram,
@@ -35,4 +49,5 @@ export { PaleoDiagram } from "./paleo";
 export { BoundaryQuakesDiagram } from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { SpheresDiagram } from "./spheres";
-export { HydrographDiagram, MarineLimitDiagram } from "./hydrology";
+export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
+export { FeltbokDiagram, FraBergartTilBruddDiagram } from "./ressurser";

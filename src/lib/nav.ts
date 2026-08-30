@@ -11,8 +11,10 @@ export const NAV_GF1 = [
   { to: "/geofag-1/platetektonikk", label: "Plater" },
   { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
   { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
-  { to: "/geofag-1/vann-flom-og-skred", label: "Vann" },
-  { to: "/geofag-1/ressurser-og-felt", label: "Felt" },
+  { to: "/geofag-1/vann-og-flom", label: "Vann" },
+  { to: "/geofag-1/skred", label: "Skred" },
+  { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
+  { to: "/geofag-1/feltarbeid", label: "Felt" },
 ] as const;
 
 export const NAV_GF2 = [
@@ -74,7 +76,7 @@ export const GF2_THEMES = [
     image: "/images/fig-jet.jpg",
     alt: "Tynn, rask skyelv høyt over havet mot jordas krumning",
     blurb:
-      "Jetstrømmen er et smalt belte med sterk vestavind i øvre troposfære. Det er to slike belter, ikke ett.",
+      "En elv av luft i 8–12 km høyde, i godt over 200 km/t. Den avgjør hvor lavtrykkene får gå — og dermed været i Norge.",
     status: "klar" as const,
   },
   {
@@ -187,26 +189,48 @@ export const GF1_THEMES = [
     maal: "Mineral- og bergartsgrupper, datering, lokal geologi og landformer.",
   },
   {
-    slug: "vann-flom-og-skred",
-    title: "Vann, flom og skred",
-    kicker: "Naturfarer i hydrosfæren",
+    slug: "vann-og-flom",
+    title: "Vann og flom",
+    kicker: "Hydrosfæren på land",
     image: "/images/gf1-flom-skred.jpg",
     alt: "Flomelv ved et fjellskred i norsk landskap",
     blurb:
-      "Det hydrologiske kretsløpet med vekt på ferskvann. Flom, skred og ustabile fjell — og hvordan aktivitet på land endrer risikoen.",
+      "Kretsløp, lager, hydrogram. Regnflom, snøsmelteflom og kombinasjonsflom. Hans 2023. NVE-flomkart og Varsom.",
     status: "klar" as const,
-    maal: "Hydrologisk kretsløp, ferskvann, og naturfarer i hydrosfæren. Modellering av risiko.",
+    maal: "Hydrologisk kretsløp, ferskvann, flom og modellering av risiko i hydrosfæren.",
   },
   {
-    slug: "ressurser-og-felt",
-    title: "Ressurser og felt",
+    slug: "skred",
+    title: "Skred",
+    kicker: "Naturfarer i geosfæren",
+    image: "/images/fig-ravine.jpg",
+    alt: "Ravine og skredløp i løsmasse",
+    blurb:
+      "Steinskred, fjellskred, løsmasseskred og havbunnsskred. Åknes, Tafjord, Gjerdrum, Storegga. Snøskred hører i geofag 2.",
+    status: "klar" as const,
+    maal: "Naturfarer knyttet til geosfæren: skred, risiko, forebygging og tilpasning.",
+  },
+  {
+    slug: "geologiske-ressurser",
+    title: "Geologiske ressurser",
     kicker: "Mennesket i jordsystemene",
     image: "/images/gf1-ressurser.jpg",
     alt: "Dagbrudd i fjellandskap i kveldslys",
     blurb:
-      "Geologiske ressurser og ferskvann i et bærekraftsperspektiv. Feltarbeid: samle data, tolke, presentere.",
+      "Malm, pukk, naturstein, olje og gass. Danning, kartlegging, utvinning og bærekraft. Engebø er en drøfting, ikke et fasitsvar.",
     status: "klar" as const,
-    maal: "Utvinning av ressurser, bærekraft, og geofaglig feltarbeid i geosfære eller hydrosfære.",
+    maal: "Utvinning av geologiske ressurser i et bærekraftsperspektiv.",
+  },
+  {
+    slug: "feltarbeid",
+    title: "Feltarbeid",
+    kicker: "Data i felt",
+    image: "/images/gf1-bergarter.jpg",
+    alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
+    blurb:
+      "Planlegge, samle georefererte data, ivareta HMS, bearbeide, tolke og presentere. Feltboka er primærkilden.",
+    status: "klar" as const,
+    maal: "Geofaglig feltarbeid i geosfære eller hydrosfære.",
   },
 ] as const;
 

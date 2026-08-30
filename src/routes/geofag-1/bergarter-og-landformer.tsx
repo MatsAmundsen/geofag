@@ -28,8 +28,8 @@ function BergarterOgLandformerPage() {
         label: "Forrige: Vulkaner og jordskjelv",
       }}
       next={{
-        to: "/geofag-1/vann-flom-og-skred",
-        label: "Neste: Vann, flom og skred",
+        to: "/geofag-1/vann-og-flom",
+        label: "Neste: Vann og flom",
       }}
       kilder={KILDER.bergarter}
     >
