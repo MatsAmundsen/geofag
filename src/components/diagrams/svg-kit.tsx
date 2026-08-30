@@ -39,11 +39,13 @@ export function Diagram({
   caption,
   viewBox,
   children,
+  wide,
 }: {
   title: string;
   heading: string;
   caption: string;
   viewBox: string;
+  wide?: boolean;
   children: (m: {
     teal: string;
     warm: string;
@@ -66,7 +68,7 @@ export function Diagram({
     <FigureFrame heading={heading} caption={caption}>
       <svg
         viewBox={viewBox}
-        className="mx-auto h-auto w-full max-w-3xl"
+        className={wide ? "mx-auto h-auto w-full max-w-5xl" : "mx-auto h-auto w-full max-w-3xl"}
         role="img"
         aria-labelledby={`${uid}-title`}
       >
