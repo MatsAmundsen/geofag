@@ -4,6 +4,7 @@ import { FeltbokDiagram } from "@/components/diagrams/ressurser";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("feltarbeid")!;
@@ -29,6 +30,7 @@ function FeltarbeidPage() {
         to: "/geofag-1",
         label: "Tilbake til Geofag 1",
       }}
+      kilder={KILDER.feltarbeid}
     >
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Problemstilling</h2>
       <p>

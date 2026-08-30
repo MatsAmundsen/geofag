@@ -4,6 +4,7 @@ import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrol
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("vann-og-flom")!;
@@ -29,6 +30,7 @@ function VannOgFlomPage() {
         to: "/geofag-1/skred",
         label: "Neste: Skred",
       }}
+      kilder={KILDER.vannFlom}
     >
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hva det er</h2>
       <p>

@@ -5,6 +5,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("geologiske-ressurser")!;
@@ -30,6 +31,7 @@ function GeologiskeRessurserPage() {
         to: "/geofag-1/feltarbeid",
         label: "Neste: Feltarbeid",
       }}
+      kilder={KILDER.ressurser}
     >
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Danning</h2>
       <p>

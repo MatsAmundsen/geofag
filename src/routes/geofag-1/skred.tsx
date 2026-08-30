@@ -12,6 +12,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 
 const tema = gf1Theme("skred")!;
@@ -37,6 +38,7 @@ function SkredPage() {
         to: "/geofag-1/geologiske-ressurser",
         label: "Neste: Geologiske ressurser",
       }}
+      kilder={KILDER.skred}
     >
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         To krefter som konkurrerer

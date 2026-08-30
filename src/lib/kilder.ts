@@ -47,12 +47,6 @@ export const KILDER = {
       suffix: "(C10), 9776–9782.",
       href: "https://doi.org/10.1029/JC086iC10p09776",
     },
-    {
-      prefix: "Norges geologiske undersøkelse. (u.å.). ",
-      italic: "Marin grense",
-      suffix: ".",
-      href: "https://www.ngu.no/emne/marin-grense",
-    },
   ],
   platetektonikk: [
     {
@@ -71,31 +65,25 @@ export const KILDER = {
       prefix: "NORSAR. (u.å.). ",
       italic: "Jordskjelv i Norge",
       suffix: ".",
-      href: "https://www.norsar.no/seismologi/jordskjelv-i-norge/",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
       prefix: "Norges geologiske undersøkelse. (u.å.). ",
-      italic: "Oslofeltet",
+      italic: "Geologi på land",
       suffix: ".",
-      href: "https://www.ngu.no/emne/oslofeltet",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse. (u.å.). ",
-      italic: "Kaledonske fjellkjeden",
-      suffix: ".",
-      href: "https://www.ngu.no/emne/den-kaledonske-fjellkjeden",
-    },
-    {
-      prefix: "Norsk Polarinstitutt. (u.å.). ",
-      italic: "Jan Mayen",
-      suffix: ".",
-      href: "https://www.npolar.no/tema/jan-mayen/",
+      href: "https://www.ngu.no/om-geologi/geologi-pa-land",
     },
     {
       prefix: "Norges geologiske undersøkelse. (u.å.). ",
       italic: "Marin grense",
       suffix: ".",
       href: "https://www.ngu.no/emne/marin-grense",
+    },
+    {
+      prefix: "Norsk Polarinstitutt. (u.å.). ",
+      italic: "Jan Mayen",
+      suffix: ".",
+      href: "https://www.npolar.no/tema/jan-mayen/",
     },
   ],
   vulkaner: [
@@ -111,6 +99,12 @@ export const KILDER = {
       italic: "Jordskjelvet i Oslo i 1904",
       suffix: ".",
       href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/jordskjelvet-i-oslo-i-1904/",
+    },
+    {
+      prefix: "NORSAR. (u.å.). ",
+      italic: "Jordskjelv i Norge",
+      suffix: ".",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
       prefix: "U.S. Geological Survey. (u.å.). ",
@@ -147,15 +141,15 @@ export const KILDER = {
   bergarter: [
     {
       prefix: "Norges geologiske undersøkelse. (u.å.). ",
-      italic: "Bergarter",
+      italic: "Geologi på land",
       suffix: ".",
-      href: "https://www.ngu.no/emne/bergarter",
+      href: "https://www.ngu.no/om-geologi/geologi-pa-land",
     },
     {
       prefix: "Norges geologiske undersøkelse. (u.å.). ",
-      italic: "Larvikitt og rombeporfyr",
+      italic: "Larvikitt",
       suffix: ".",
-      href: "https://www.ngu.no/emne/oslofeltet",
+      href: "https://www.ngu.no/om-geologi/larvikitt",
     },
     {
       prefix: "U.S. Geological Survey. (u.å.). ",
@@ -182,7 +176,39 @@ export const KILDER = {
       prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
       italic: "Flom",
       suffix: ".",
-      href: "https://www.nve.no/naturfare/lar-om-naturfare/om-flom/",
+      href: "https://www.nve.no/naturfare/laer-om-naturfare/flom/",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2023). ",
+      italic: "Over 100 år siden det har regnet så mye på Østlandet",
+      suffix: ".",
+      href: "https://www.met.no/nyhetsarkiv/over-100-ar-siden-det-har-regnet-sa-mye-pa-ostlandet",
+    },
+    {
+      prefix: "Direktoratet for samfunnssikkerhet og beredskap. (2024). ",
+      italic: "Evalueringsrapport etter uværet Hans",
+      suffix: ".",
+      href: "https://www.dsb.no/siteassets/rapporter-og-publikasjoner/rapporter/evalueringsrapport_hans.pdf",
+    },
+  ],
+  skred: [
+    {
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      italic: "Åknes",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat. (2026). ",
+      italic: "Fjellskred fra Åknes. Reviderte scenarioer, sannsynligheter og konsekvenser",
+      suffix: " (Rapport 16/2026).",
+      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      italic: "Mannen",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/mannen/",
     },
     {
       prefix: "Norges geologiske undersøkelse. (u.å.). ",
@@ -191,14 +217,14 @@ export const KILDER = {
       href: "https://www.ngu.no/emne/marin-grense",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      prefix: "Norges geologiske undersøkelse. (u.å.). ",
       italic: "Kvikkleire",
       suffix: ".",
-      href: "https://www.nve.no/naturfare/lar-om-naturfare/om-skred/kvikkleire/",
+      href: "https://www.ngu.no/geologi-og-risiko/kvikkleire",
     },
     {
-      prefix: "Gjerdrumutvalget. (2021). ",
-      italic: "Årsakene til kvikkleireskredet i Gjerdrum 2020",
+      prefix: "Gjerdrumutvalget. (2022). ",
+      italic: "På trygg grunn: Bedre håndtering av kvikkleirerisiko (NOU 2022: 3)",
       suffix: ".",
       href: "https://www.regjeringen.no/no/dokumenter/nou-2022-3/id2905694/",
     },
@@ -215,10 +241,17 @@ export const KILDER = {
       suffix: " (Vol. 3, pp. 421–426).",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat. (2023). ",
-      italic: "Ekstremværet Hans",
+      prefix:
+        "Haflidason, H., Sejrup, H. P., Nygård, A., Mienert, J., Bryn, P., Lien, R., Forsberg, C. F., Berg, K., & Masson, D. (2004). The Storegga Slide: Architecture, geometry and slide development. ",
+      italic: "Marine Geology, 213",
+      suffix: "(1–4), 201–234.",
+      href: "https://doi.org/10.1016/j.margeo.2004.10.007",
+    },
+    {
+      prefix: "Direktoratet for samfunnssikkerhet og beredskap. (2024). ",
+      italic: "Evalueringsrapport etter uværet Hans",
       suffix: ".",
-      href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/",
+      href: "https://www.dsb.no/siteassets/rapporter-og-publikasjoner/rapporter/evalueringsrapport_hans.pdf",
     },
   ],
   ressurser: [
@@ -229,22 +262,42 @@ export const KILDER = {
       href: "https://www.ngu.no/emne/mineralressurser",
     },
     {
+      prefix: "Norges geologiske undersøkelse. (u.å.). ",
+      italic: "Larvikitt",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/larvikitt",
+    },
+    {
       prefix: "Direktoratet for mineralforvaltning. (u.å.). ",
       italic: "Mineralsstatistikk",
       suffix: ".",
       href: "https://dirmin.no/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
-      italic: "Grunnvann",
+      prefix: "Sokkeldirektoratet. (u.å.). ",
+      italic: "Felt: Ekofisk",
       suffix: ".",
-      href: "https://www.nve.no/vann-og-vassdrag/vannforsyning-og-grunnvann/",
+      href: "https://factpages.sodir.no/nb-no/field/PageView/Producing/43506",
     },
     {
-      prefix: "Sokkeldirektoratet. (u.å.). ",
-      italic: "Petroleum",
+      prefix: "Norges Høyesterett. (2026). ",
+      italic: "Tillatelser til gruvedrift i Engebøfjellet er ugyldige (HR-2026-1360-A)",
       suffix: ".",
-      href: "https://www.sodir.no/",
+      href: "https://www.domstol.no/no/hoyesterett/avgjorelser/avgjorelser-2026/hoyesterett---sivil/HR-2026-1360-A/",
+    },
+  ],
+  feltarbeid: [
+    {
+      prefix: "Vestland fylkeskommune. (u.å.). ",
+      italic: "Munnleg og munnleg-praktisk privatisteksamen",
+      suffix: ".",
+      href: "https://www.vestlandfylke.no/utdanning-og-karriere/privatist/munnleg-og-munnleg-praktisk-privatisteksamen/",
+    },
+    {
+      prefix: "Rogaland fylkeskommune. (u.å.). ",
+      italic: "Retningslinjer for muntlig og muntlig-praktisk privatisteksamen",
+      suffix: ".",
+      href: "https://www.rogfk.no/vare-tjenester/skole-og-utdanning/eksamen-for-elever-og-privatister/eksamen-for-privatister/retningslinjer-for-privatisteksamen/retningslinjer-for-muntlig-og-muntlig-praktisk-privatisteksamen/",
     },
   ],
   trykk: [
@@ -256,7 +309,7 @@ export const KILDER = {
     },
     {
       prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
-      italic: "The tropopause",
+      italic: "Layers of the atmosphere",
       suffix: ".",
       href: "https://www.noaa.gov/jetstream/atmosphere/layers-of-atmosphere",
     },
@@ -306,6 +359,12 @@ export const KILDER = {
       italic: "North Atlantic Oscillation",
       suffix: ".",
       href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
+      italic: "El Niño and La Niña",
+      suffix: ".",
+      href: "https://www.climate.gov/enso",
     },
   ],
   coriolis: [
@@ -412,6 +471,12 @@ export const KILDER = {
       italic: "Forklaring av varsler",
       suffix: ".",
       href: "https://www.met.no/vaer-og-klima/forklaring-av-varsler",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.). ",
+      italic: "Subseasonal data model",
+      suffix: " [MEPS og ECMWF].",
+      href: "https://docs.api.met.no/doc/subseasonal/datamodel.html",
     },
     {
       prefix: "Intergovernmental Panel on Climate Change. (2021). ",
