@@ -703,4 +703,18 @@ export const KILDER = {
       href: "https://www.kartverket.no/til-sjos/se-havniva",
     },
   ],
+  eksamen: [
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.). ",
+      italic: "Geofag 2 (REA3043) — tidligere eksamensoppgaver",
+      suffix: ".",
+      href: "https://kandidat.udir.no/eksamensinfo/REA3043",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (2020). ",
+      italic: "Læreplan i geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03",
+    },
+  ],
 } as const satisfies Record<string, readonly Kilde[]>;

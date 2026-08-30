@@ -20,6 +20,7 @@ export const NAV_GF1 = [
 export const NAV_GF2 = [
   { to: "/", label: "Forside" },
   { to: "/geofag-2", label: "Oversikt" },
+  { to: "/eksamen", label: "Eksamen" },
   { to: "/tema/hoytrykk-lavtrykk", label: "Trykk" },
   { to: "/tema/vindsystemet", label: "Vind" },
   { to: "/tema/jetstrommer", label: "Jet" },
@@ -44,7 +45,11 @@ export function brandForPath(pathname: string) {
   if (pathname.startsWith("/geofag-1")) {
     return { title: "Geofag 1", sub: "Jorda under oss" };
   }
-  if (pathname.startsWith("/geofag-2") || pathname.startsWith("/tema")) {
+  if (
+    pathname.startsWith("/geofag-2") ||
+    pathname.startsWith("/tema") ||
+    pathname.startsWith("/eksamen")
+  ) {
     return { title: "Geofag 2", sub: "Hav, luft og klima" };
   }
   return { title: "Geofag", sub: "Naturfarer, vær og klima" };

@@ -105,6 +105,30 @@ function Geofag2() {
         </section>
 
         <section className="border-y border-border bg-card">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-medium uppercase tracking-wider text-primary">
+                REA3043
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
+                Eksamensoppgaver
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Tidligere sentrale sett med egne løsningsforslag. Figurene åpner du hos Udir —
+                vi lagrer dem ikke her.
+              </p>
+            </div>
+            <Link
+              to="/eksamen"
+              className="inline-flex min-h-11 items-center gap-2 text-sm text-primary"
+            >
+              Åpne biblioteket
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </section>
+
+        <section className="border-b border-border bg-background">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider text-primary">

@@ -16,6 +16,13 @@ export function SiteFooter() {
           </a>
           .{" "}
           <Link
+            to="/eksamen"
+            className="text-foreground underline-offset-4 hover:underline"
+          >
+            Eksamen
+          </Link>
+          .{" "}
+          <Link
             to="/"
             aria-current={pathname === "/" ? "page" : undefined}
             className="text-foreground underline-offset-4 hover:underline"
