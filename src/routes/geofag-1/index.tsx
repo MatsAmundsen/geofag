@@ -3,9 +3,19 @@ import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GF1_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/geofag-1/")({ component: Geofag1 });
+export const Route = createFileRoute("/geofag-1/")({
+  head: () =>
+    topicHead({
+      title: "Geofag 1",
+      description:
+        "Geofag 1: jorda under oss. Platetektonikk, vulkaner og jordskjelv, bergarter, vann og flom, skred, geologiske ressurser og feltarbeid.",
+      path: "/geofag-1",
+    }),
+  component: Geofag1,
+});
 
 function Geofag1() {
   return (
@@ -22,6 +32,8 @@ function Geofag1() {
           <img
             src="/images/portal-gf1.jpg"
             alt="Stratovulkan i utbrudd"
+            loading="eager"
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />

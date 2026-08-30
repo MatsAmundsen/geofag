@@ -3,9 +3,19 @@ import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/geofag-2")({ component: Geofag2 });
+export const Route = createFileRoute("/geofag-2")({
+  head: () =>
+    topicHead({
+      title: "Geofag 2",
+      description:
+        "Geofag 2: vind, hav og klima som ett system. Trykk, vindsystemet, jetstrømmer, corioliseffekten, havstrømmer, klima og værkatastrofer.",
+      path: "/geofag-2",
+    }),
+  component: Geofag2,
+});
 
 function Geofag2() {
   return (
@@ -22,6 +32,8 @@ function Geofag2() {
           <img
             src="/images/hero-earth.jpg"
             alt="Jorda sett fra lav bane over Nord-Atlanteren, med tynn lysende atmosfære langs horisonten"
+            loading="eager"
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
