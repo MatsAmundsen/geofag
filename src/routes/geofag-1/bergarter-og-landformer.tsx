@@ -7,10 +7,17 @@ import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("bergarter-og-landformer")!;
 
 export const Route = createFileRoute("/geofag-1/bergarter-og-landformer")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/bergarter-og-landformer",
+    }),
   component: BergarterOgLandformerPage,
 });
 
@@ -22,7 +29,6 @@ function BergarterOgLandformerPage() {
       lead="Et mineral har krystallgitter og kjemisk formel. Kvarts er SiO₂, kalsitt er CaCO₃. En bergart er et aggregat av ett eller flere mineraler. Granitt er kvarts, feltspat og glimmer, ikke et mineral som heter granitt. Sediment er løst. Først når kornene kittes eller presses sammen, har du en sedimentær bergart."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="bergarter-og-landformer"
       prev={{
         to: "/geofag-1/vulkaner-og-jordskjelv",
         label: "Forrige: Vulkaner og jordskjelv",

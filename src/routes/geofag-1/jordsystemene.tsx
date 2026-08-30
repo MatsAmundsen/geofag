@@ -7,10 +7,17 @@ import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("jordsystemene")!;
 
 export const Route = createFileRoute("/geofag-1/jordsystemene")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/jordsystemene",
+    }),
   component: JordsystemenePage,
 });
 
@@ -22,7 +29,6 @@ function JordsystemenePage() {
       lead="Jorda er fem delsystemer som utveksler masse og energi: geosfæren, hydrosfæren, atmosfæren, kryosfæren og biosfæren. De er ikke vanntette rom. Vann finnes i elver, i is og som porevann i fjellet. Poenget er å følge hvor masse og energi flytter seg."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="jordsystemene"
       prev={{
         to: "/geofag-1",
         label: "Tilbake til Geofag 1",

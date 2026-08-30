@@ -7,10 +7,17 @@ import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("vulkaner-og-jordskjelv")!;
 
 export const Route = createFileRoute("/geofag-1/vulkaner-og-jordskjelv")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/vulkaner-og-jordskjelv",
+    }),
   component: VulkanerOgJordskjelvPage,
 });
 
@@ -22,7 +29,6 @@ function VulkanerOgJordskjelvPage() {
       lead="Jordskjelv oppstår der oppbygde spenninger utløses ved plutselig brudd. De fleste skjer langs plategrenser. Energien spres som seismiske bølger. Grunne skjelv kan lage synlig forkastning. Dype skjelv ryster likevel overflaten."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="vulkaner-og-jordskjelv"
       prev={{
         to: "/geofag-1/platetektonikk",
         label: "Forrige: Platetektonikk",
