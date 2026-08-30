@@ -341,7 +341,7 @@ function VindsystemetPage() {
         </p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Strålingsbalanse" def="Energi inn minus energi ut." />
         <Term name="Hadley-cellen" def="Tropisk kretsløp. Opp ved ekvator, ned ved ørkenen." />

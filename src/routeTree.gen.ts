@@ -27,7 +27,12 @@ import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaJetstrommerRouteImport } from './routes/tema/jetstrommer'
-import { Route as TemaKlimaRouteImport } from './routes/tema/klima'
+import { Route as TemaKlimaIndexRouteImport } from './routes/tema/klima/index'
+import { Route as TemaKlimaOversiktRouteImport } from './routes/tema/klima/oversikt'
+import { Route as TemaKlimaEnsoRouteImport } from './routes/tema/klima/enso'
+import { Route as TemaKlimaIodRouteImport } from './routes/tema/klima/iod'
+import { Route as TemaKlimaNaoRouteImport } from './routes/tema/klima/nao'
+import { Route as TemaKlimaAmocRouteImport } from './routes/tema/klima/amoc'
 import { Route as TemaNumeriskeModellerRouteImport } from './routes/tema/numeriske-modeller'
 import { Route as TemaPaleoklimaRouteImport } from './routes/tema/paleoklima'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
@@ -126,9 +131,34 @@ const TemaJetstrommerRoute = TemaJetstrommerRouteImport.update({
   path: '/tema/jetstrommer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TemaKlimaRoute = TemaKlimaRouteImport.update({
-  id: '/tema/klima',
-  path: '/tema/klima',
+const TemaKlimaIndexRoute = TemaKlimaIndexRouteImport.update({
+  id: '/tema/klima/',
+  path: '/tema/klima/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaOversiktRoute = TemaKlimaOversiktRouteImport.update({
+  id: '/tema/klima/oversikt',
+  path: '/tema/klima/oversikt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaEnsoRoute = TemaKlimaEnsoRouteImport.update({
+  id: '/tema/klima/enso',
+  path: '/tema/klima/enso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaIodRoute = TemaKlimaIodRouteImport.update({
+  id: '/tema/klima/iod',
+  path: '/tema/klima/iod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaNaoRoute = TemaKlimaNaoRouteImport.update({
+  id: '/tema/klima/nao',
+  path: '/tema/klima/nao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaAmocRoute = TemaKlimaAmocRouteImport.update({
+  id: '/tema/klima/amoc',
+  path: '/tema/klima/amoc',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemaNumeriskeModellerRoute = TemaNumeriskeModellerRouteImport.update({
@@ -170,7 +200,12 @@ export interface FileRoutesByFullPath {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
-  '/tema/klima': typeof TemaKlimaRoute
+  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
+  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
+  '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/nao': typeof TemaKlimaNaoRoute
+  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/tema/klima': typeof TemaKlimaIndexRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -195,7 +230,12 @@ export interface FileRoutesByTo {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
-  '/tema/klima': typeof TemaKlimaRoute
+  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
+  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
+  '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/nao': typeof TemaKlimaNaoRoute
+  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/tema/klima': typeof TemaKlimaIndexRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -221,7 +261,12 @@ export interface FileRoutesById {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
-  '/tema/klima': typeof TemaKlimaRoute
+  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
+  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
+  '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/nao': typeof TemaKlimaNaoRoute
+  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/tema/klima/': typeof TemaKlimaIndexRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -248,6 +293,11 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klima/amoc'
+    | '/tema/klima/enso'
+    | '/tema/klima/iod'
+    | '/tema/klima/nao'
+    | '/tema/klima/oversikt'
     | '/tema/klima'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
@@ -273,6 +323,11 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klima/amoc'
+    | '/tema/klima/enso'
+    | '/tema/klima/iod'
+    | '/tema/klima/nao'
+    | '/tema/klima/oversikt'
     | '/tema/klima'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
@@ -298,7 +353,12 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
-    | '/tema/klima'
+    | '/tema/klima/amoc'
+    | '/tema/klima/enso'
+    | '/tema/klima/iod'
+    | '/tema/klima/nao'
+    | '/tema/klima/oversikt'
+    | '/tema/klima/'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/vaerkatastrofer'
@@ -324,7 +384,12 @@ export interface RootRouteChildren {
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaJetstrommerRoute: typeof TemaJetstrommerRoute
-  TemaKlimaRoute: typeof TemaKlimaRoute
+  TemaKlimaAmocRoute: typeof TemaKlimaAmocRoute
+  TemaKlimaEnsoRoute: typeof TemaKlimaEnsoRoute
+  TemaKlimaIodRoute: typeof TemaKlimaIodRoute
+  TemaKlimaNaoRoute: typeof TemaKlimaNaoRoute
+  TemaKlimaOversiktRoute: typeof TemaKlimaOversiktRoute
+  TemaKlimaIndexRoute: typeof TemaKlimaIndexRoute
   TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
   TemaPaleoklimaRoute: typeof TemaPaleoklimaRoute
   TemaVaerkatastroferRoute: typeof TemaVaerkatastroferRoute
@@ -460,11 +525,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaJetstrommerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tema/klima': {
-      id: '/tema/klima'
+    '/tema/klima/': {
+      id: '/tema/klima/'
       path: '/tema/klima'
       fullPath: '/tema/klima'
-      preLoaderRoute: typeof TemaKlimaRouteImport
+      preLoaderRoute: typeof TemaKlimaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/oversikt': {
+      id: '/tema/klima/oversikt'
+      path: '/tema/klima/oversikt'
+      fullPath: '/tema/klima/oversikt'
+      preLoaderRoute: typeof TemaKlimaOversiktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/enso': {
+      id: '/tema/klima/enso'
+      path: '/tema/klima/enso'
+      fullPath: '/tema/klima/enso'
+      preLoaderRoute: typeof TemaKlimaEnsoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/iod': {
+      id: '/tema/klima/iod'
+      path: '/tema/klima/iod'
+      fullPath: '/tema/klima/iod'
+      preLoaderRoute: typeof TemaKlimaIodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/nao': {
+      id: '/tema/klima/nao'
+      path: '/tema/klima/nao'
+      fullPath: '/tema/klima/nao'
+      preLoaderRoute: typeof TemaKlimaNaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/amoc': {
+      id: '/tema/klima/amoc'
+      path: '/tema/klima/amoc'
+      fullPath: '/tema/klima/amoc'
+      preLoaderRoute: typeof TemaKlimaAmocRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tema/numeriske-modeller': {
@@ -516,7 +616,12 @@ const rootRouteChildren: RootRouteChildren = {
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaJetstrommerRoute: TemaJetstrommerRoute,
-  TemaKlimaRoute: TemaKlimaRoute,
+  TemaKlimaAmocRoute: TemaKlimaAmocRoute,
+  TemaKlimaEnsoRoute: TemaKlimaEnsoRoute,
+  TemaKlimaIodRoute: TemaKlimaIodRoute,
+  TemaKlimaNaoRoute: TemaKlimaNaoRoute,
+  TemaKlimaOversiktRoute: TemaKlimaOversiktRoute,
+  TemaKlimaIndexRoute: TemaKlimaIndexRoute,
   TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
   TemaPaleoklimaRoute: TemaPaleoklimaRoute,
   TemaVaerkatastroferRoute: TemaVaerkatastroferRoute,

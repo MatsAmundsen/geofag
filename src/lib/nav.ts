@@ -5,7 +5,7 @@ export const NAV_HUB = [
 ] as const;
 
 export const NAV_GF1 = [
-  { to: "/", label: "Geofag" },
+  { to: "/", label: "Forside" },
   { to: "/geofag-1", label: "Oversikt" },
   { to: "/geofag-1/jordsystemene", label: "Sfærer" },
   { to: "/geofag-1/platetektonikk", label: "Plater" },
@@ -18,6 +18,8 @@ export const NAV_GF1 = [
 ] as const;
 
 export const NAV_GF2 = [
+  { to: "/", label: "Forside" },
+  { to: "/geofag-2", label: "Oversikt" },
   { to: "/tema/hoytrykk-lavtrykk", label: "Trykk" },
   { to: "/tema/vindsystemet", label: "Vind" },
   { to: "/tema/jetstrommer", label: "Jet" },
@@ -234,6 +236,63 @@ export const GF1_THEMES = [
   },
 ] as const;
 
+export const KLIMA_SUBTHEMES = [
+  {
+    to: "/tema/klima/oversikt",
+    title: "Klimasystemet (oversikt)",
+    kicker: "Jordsystemet & Drivhuseffekt",
+    image: "/images/fig-klimasystem.jpg",
+    alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is",
+    blurb:
+      "Vær er dager, klima er tiår. De fem delene av klimasystemet, strålingsbalanse, drivhuseffekt, pådriv og tilbakekoblinger.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klima/enso",
+    title: "ENSO",
+    subtitle: "El Niño–Sørlige oscillasjon",
+    kicker: "Tropisk Stillehav",
+    image: "/images/fig-enso.jpg",
+    alt: "Det tropiske Stillehavet med passatvinder og varmt vann",
+    blurb:
+      "Walker-sirkulasjonen, El Niño og La Niña. Hvordan svekkede passatvinder forskyver regnmønstre og påvirker været globalt.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klima/iod",
+    title: "IOD",
+    subtitle: "Den indiske hav-dipolen",
+    kicker: "Det indiske hav",
+    image: "/images/banner-hav.jpg",
+    alt: "Tropisk havoverflate med temperaturgradient og konveksjon",
+    blurb:
+      "Temperaturgradienten i Det indiske hav. Positiv og negativ fase, samspill med monsunen og ekstreme tørke- og flomperioder.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klima/nao",
+    title: "NAO",
+    subtitle: "Den nordatlantiske oscillasjon",
+    kicker: "Nord-Atlanteren",
+    image: "/images/fig-nao.jpg",
+    alt: "Trykksystemer og stormbaner over Nord-Atlanteren inn mot Norge",
+    blurb:
+      "Trykkgradienten mellom Asorene og Island. Positiv fase gir milde og våte vintre i Norge, mens negativ fase gir kalde blokkeringer.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klima/amoc",
+    title: "AMOC",
+    subtitle: "Den atlantiske omveltningssirkulasjonen",
+    kicker: "Termohalin sirkulasjon",
+    image: "/images/fig-amoc.jpg",
+    alt: "Nord-Atlanteren med varm overflatestrøm nordover og kald dypstrøm sørover",
+    blurb:
+      "Havets store transportbånd. Dypvannsdannelse i Norskehavet og Labradorhavet, ferskvannspådrag, stabilitet og klimaeffekt for Norge.",
+    status: "klar" as const,
+  },
+] as const;
+
 export function gf1Theme(slug: string) {
   return GF1_THEMES.find((t) => t.slug === slug);
 }
@@ -243,5 +302,6 @@ export function allThemePaths(): string[] {
   return [
     ...GF1_THEMES.map((t) => `/geofag-1/${t.slug}`),
     ...GF2_THEMES.map((t) => t.to),
+    ...KLIMA_SUBTHEMES.map((t) => t.to),
   ];
 }

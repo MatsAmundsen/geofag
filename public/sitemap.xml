@@ -69,6 +69,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://geofag.com/tema/klima/oversikt</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://geofag.com/tema/klima/enso</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://geofag.com/tema/klima/iod</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://geofag.com/tema/klima/nao</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://geofag.com/tema/klima/amoc</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://geofag.com/tema/numeriske-modeller</loc>
     <priority>0.8</priority>
   </url>

@@ -459,6 +459,103 @@ export const KILDER = {
       href: "https://climate.nasa.gov/vital-signs/ocean-warming/",
     },
   ],
+  enso: [
+    {
+      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
+      italic: "El Niño & La Niña (El Niño-Southern Oscillation)",
+      suffix: ".",
+      href: "https://www.climate.gov/enso",
+    },
+    {
+      prefix: "Philander, S. G. (1983). El Niño Southern Oscillation phenomena. ",
+      italic: "Nature, 302",
+      suffix: "(5906), 295–301.",
+      href: "https://doi.org/10.1038/302295a0",
+    },
+    {
+      prefix: "Bjerknes, J. (1969). Atmospheric teleconnections from the equatorial Pacific. ",
+      italic: "Monthly Weather Review, 97",
+      suffix: "(3), 163–172.",
+      href: "https://doi.org/10.1175/1520-0493(1969)097<0163:ATFTEP>2.0.CO;2",
+    },
+    {
+      prefix: "Trenberth, K. E. (1997). The definition of El Niño. ",
+      italic: "Bulletin of the American Meteorological Society, 78",
+      suffix: "(12), 2771–2777.",
+      href: "https://doi.org/10.1175/1520-0477(1997)078<2771:TDOENO>2.0.CO;2",
+    },
+  ],
+  iod: [
+    {
+      prefix:
+        "Saji, N. H., Goswami, B. N., Vinayachandran, P. N., & Yamagata, T. (1999). A dipole mode in the tropical Indian Ocean. ",
+      italic: "Nature, 401",
+      suffix: "(6751), 360–363.",
+      href: "https://doi.org/10.1038/43854",
+    },
+    {
+      prefix:
+        "Webster, P. J., Moore, A. M., Loschnigg, J. P., & Leben, R. R. (1999). Coupled ocean–atmosphere dynamics in the Indian Ocean during 1997–98. ",
+      italic: "Nature, 401",
+      suffix: "(6751), 356–360.",
+      href: "https://doi.org/10.1038/43848",
+    },
+    {
+      prefix: "Australian Bureau of Meteorology. (u.å.). ",
+      italic: "Indian Ocean Dipole (IOD)",
+      suffix: ".",
+      href: "http://www.bom.gov.au/climate/iod/",
+    },
+  ],
+  nao: [
+    {
+      prefix:
+        "Hurrell, J. W., Kushnir, Y., Ottersen, G., & Visbeck, M. (2003). An overview of the North Atlantic Oscillation. ",
+      italic: "Geophysical Monograph-American Geophysical Union, 134",
+      suffix: ", 1–36.",
+      href: "https://doi.org/10.1029/134GM01",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.). ",
+      italic: "Den nordatlantiske oscillasjon (NAO)",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/klima-og-klimavariasjoner",
+    },
+    {
+      prefix: "Walker, G. T., & Bliss, E. W. (1932). World weather V. ",
+      italic: "Memoirs of the Royal Meteorological Society, 4",
+      suffix: "(36), 53–84.",
+    },
+  ],
+  amoc: [
+    {
+      prefix:
+        "Rahmstorf, S., Box, J. E., Feulner, G., Mann, M. E., Robinson, A., Rutherford, S., & Schaffernicht, E. J. (2015). Exceptional twentieth-century slowdown in Atlantic Ocean overturning circulation. ",
+      italic: "Nature Climate Change, 5",
+      suffix: "(5), 475–480.",
+      href: "https://doi.org/10.1038/nclimate2554",
+    },
+    {
+      prefix:
+        "Caesar, L., Rahmstorf, S., Robinson, A., Feulner, G., & Saba, V. (2018). Observed fingerprint of a weakening Atlantic Ocean overturning circulation. ",
+      italic: "Nature, 556",
+      suffix: "(7700), 191–196.",
+      href: "https://doi.org/10.1038/s41586-018-0006-5",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change. (2021). ",
+      italic:
+        "Chapter 9: Ocean, cryosphere and sea level change. In Climate Change 2021: The Physical Science Basis",
+      suffix: ".",
+      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
+    },
+    {
+      prefix: "Smeed, D. A., et al. (2018). The North Atlantic Ocean is in a state of reduced overturning. ",
+      italic: "Geophysical Research Letters, 45",
+      suffix: "(3), 1527–1533.",
+      href: "https://doi.org/10.1002/2017GL076350",
+    },
+  ],
   modeller: [
     {
       prefix: "European Centre for Medium-Range Weather Forecasts. (u.å.). ",

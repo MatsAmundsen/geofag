@@ -204,7 +204,7 @@ function JordsystemenePage() {
         <p>{tema.maal}</p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="geosfære" def="den faste jorda: berggrunn, løsmasser, jord" />
         <Term name="hydrosfære" def="her: elver, innsjøer, grunnvann og porevann" />

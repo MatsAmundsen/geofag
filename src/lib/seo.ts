@@ -38,6 +38,13 @@ function breadcrumbsForPath(path: string, title: string): Breadcrumb[] {
     return crumbs;
   }
 
+  if (path.startsWith("/tema/klima/")) {
+    crumbs.push({ name: "Geofag 2", path: "/geofag-2" });
+    crumbs.push({ name: "Klima", path: "/tema/klima" });
+    crumbs.push({ name: label, path });
+    return crumbs;
+  }
+
   if (path.startsWith("/tema") || path.startsWith("/geofag-2")) {
     crumbs.push({ name: "Geofag 2", path: "/geofag-2" });
     crumbs.push({ name: label, path });

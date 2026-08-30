@@ -476,7 +476,7 @@ function TrykkPage() {
         </p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Lufttrykk" def="Vekten av luftsøylen over. Faller med høyden." />
         <Term name="Lavtrykk" def="Et område med lavere trykk enn omgivelsene." />

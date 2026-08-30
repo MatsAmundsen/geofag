@@ -5,31 +5,29 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
-import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 
-const tema = GF2_THEMES.find((t) => t.to === "/tema/klima")!;
-
-export const Route = createFileRoute("/tema/klima")({
+export const Route = createFileRoute("/tema/klima/oversikt")({
   head: () =>
     topicHead({
-      title: `${tema.title} · Geofag 2`,
-      description: tema.blurb,
-      path: "/tema/klima",
+      title: "Klimasystemet (oversikt) · Geofag 2",
+      description:
+        "Luft, hav og is henger sammen over år og årtusener. Tilbakekoblinger, strålingsbalanse, drivhuseffekt og menneskeskapt pådriv.",
+      path: "/tema/klima/oversikt",
     }),
-  component: KlimaPage,
+  component: KlimaOversiktPage,
 });
 
-function KlimaPage() {
+function KlimaOversiktPage() {
   return (
     <TopicLayout
       kicker="Jordsystemet"
-      title="Klima"
+      title="Klimasystemet (oversikt)"
       lead="Vær er det som skjer i dag. Klima er det som gjentar seg over tiår. Når du har trykk, vind, coriolis og hav, kan du se hvorfor klimaet henger sammen — og hvorfor det kan forskyves."
       banner="/images/banner-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
-      prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
-      next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
+      prev={{ to: "/tema/klima", label: "Tilbake: Klima og klimasystemer" }}
+      next={{ to: "/tema/klima/enso", label: "Neste: ENSO" }}
       kilder={KILDER.klima}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
@@ -181,7 +179,11 @@ function KlimaPage() {
       <p>
         AMOC — beltet du møtte under havstrømmer — er en del av dette minnet. Smelter mer is og
         kommer mer ferskvann ut i de nordiske hav, blir overflaten lettere. Da kan synkingen
-        svekkes. Usikkerheten for Nord-Europa er reell, men beltet er ikke «slått av».
+        svekkes. Usikkerheten for Nord-Europa er reell, men beltet er ikke «slått av». Se også egen{" "}
+        <Link to="/tema/klima/amoc" className="text-primary underline-offset-2 hover:underline">
+          fordypningsside om AMOC
+        </Link>
+        .
       </p>
 
       <PhotoFigure
@@ -214,7 +216,11 @@ function KlimaPage() {
       <p>
         I et El Niño-år svekkes passatene. Det varme vannet sprer seg østover. Regnet flytter med.
         Peru kan få flom. Indonesia og Australia tørke. Vinden og jetstrømmene andre steder på
-        kloden merker det — det kalles telekobling.
+        kloden merker det — det kalles telekobling. Les mer på vår{" "}
+        <Link to="/tema/klima/enso" className="text-primary underline-offset-2 hover:underline">
+          fordypningsside om ENSO
+        </Link>
+        .
       </p>
       <p>
         La Niña er den andre siden: sterkere passater, enda varmere i vest, kjøligere i øst. ENSO er
@@ -224,22 +230,6 @@ function KlimaPage() {
       <OrdBoks
         ord="ENSO"
         barn="El Niño–Sørlige oscillasjon: et naturlig samspill mellom tropisk Stillehav og passatvindene, med El Niño og La Niña som to ytterpunkter. Det forskyver regn og tørke over store deler av kloden i noen år."
-      />
-
-      <PhotoFigure
-        src="/images/fig-enso.jpg"
-        alt="Ekvatorialt Stillehav fra bane med varmt vann og konvektive skyer"
-        heading="Scenen for ENSO"
-        caption="Det tropiske Stillehavet. Passatene peker vanligvis mot vest og stabler varmt vann der. Når de slakker, flytter varmen og regnet østover."
-        arrows={[{ d: "M 78 32 L 28 28", tone: "teal", width: 1.3 }]}
-        marks={[
-          { x: 58, y: 12, n: "1", text: "Passater mot vest", tone: "teal" },
-          { x: 8, y: 48, n: "2", text: "Varmt vann og konveksjon", tone: "warm" },
-        ]}
-        points={[
-          { n: "1", label: "Vanligvis: passater driver varmt vann mot Indonesia." },
-          { n: "2", label: "Der vannet er varmest, stiger lufta. Regnet følger varmen." },
-        ]}
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
@@ -267,21 +257,6 @@ function KlimaPage() {
         .
       </p>
 
-      <PhotoFigure
-        src="/images/fig-paleo.jpg"
-        alt="Lagdelt is i en bresprekk, blåhvite bånd av gammel is"
-        heading="År skrevet i is"
-        caption="Hvert bånd er gammel snø som ble til is. Luftbobler i lagene er prøver av atmosfæren den gangen. Fortiden sitter her, bokstavelig talt."
-        marks={[
-          { x: 6, y: 20, n: "1", text: "Yngre lag øverst", tone: "fg" },
-          { x: 6, y: 52, n: "2", text: "Eldre is lenger ned", tone: "cold" },
-        ]}
-        points={[
-          { n: "1", label: "Nyere snø og is nærmest overflaten." },
-          { n: "2", label: "Dypere lag er eldre luft og eldre klima." },
-        ]}
-      />
-
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Det mennesket gjør</h2>
       <p>
         Når vi brenner kull, olje og gass, slipper vi ut karbon som har ligget i berggrunnen.
@@ -302,13 +277,14 @@ function KlimaPage() {
         Norge i dette bildet
       </h2>
       <p>
-        Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mildt for
+        Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mild for
         breddegraden. I et varmere klima holder lufta mer fukt. Vestlandet, som allerede tvinges av
         fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
       </p>
       <p>
-        AMOC er usikkerhetsmomentet. En svekket nordovertransport av varme kan dempe oppvarmingen i
-        Nord-Atlanteren uten å «slå av Golfstrømmen». Klima i Norge er samspill, ikke én strøm.
+        AMOC og NAO er sentrale usikkerhets- og variasjonsmomenter. En svekket nordovertransport av varme
+        kan dempe oppvarmingen i Nord-Atlanteren uten å «slå av Golfstrømmen». Klima i Norge er et
+        samspill mellom atmosfære, hav og geografi.
       </p>
 
       <PhotoFigure
@@ -333,7 +309,7 @@ function KlimaPage() {
         <p>
           Skill vær og klima. Skill pådriv og tilbakekobling. Vanndamp forsterker, karbondioksid
           dytter. ENSO er naturlig årsvariasjon i Stillehavet, ikke synonymt med global oppvarming.
-          Norges milde kyst er vestavind plus hav — AMOC inkludert.
+          Norges milde kyst er vestavind pluss hav — AMOC inkludert.
         </p>
       </Callout>
 
@@ -345,7 +321,7 @@ function KlimaPage() {
         </p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Klima" def="Værmønster over tiår, ikke enkeltuker." />
         <Term name="Strålingspådriv" def="Dytt som forskyver inn og ut av energi." />

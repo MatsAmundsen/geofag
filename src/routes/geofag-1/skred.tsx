@@ -497,7 +497,7 @@ function SkredPage() {
         <p>{tema.maal}</p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term
           name="skjærstyrke"

@@ -248,7 +248,7 @@ function HavstrommerPage() {
         </p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Gyre" def="Stort kretsløp i havoverflaten." />
         <Term name="Ekman-transport" def="Vannet flyttes 90° på vinden (til høyre i nord)." />

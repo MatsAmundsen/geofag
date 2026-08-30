@@ -180,7 +180,7 @@ function PlatetektonikkPage() {
         <p>{tema.maal}</p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">Ord å eie</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="litosfære" def="skorpe + øvre stive mantel, delt i plater" />
         <Term name="astenosfære" def="mykere sone platene glir på" />

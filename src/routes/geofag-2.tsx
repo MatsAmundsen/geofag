@@ -148,8 +148,8 @@ function Geofag2() {
               <Fordypning
                 n="06"
                 to="/tema/klima"
-                title="Klima"
-                text="Vær er dager. Klima er tiår. Pådriv dytter, tilbakekobling forsterker. ENSO, is og hav er samme system."
+                title="Klima og klimasystemer"
+                text="Vær er dager. Klima er tiår. Drivhuseffekt og de store hav-atmosfære-svingningene: ENSO, IOD, NAO og AMOC."
               />
               <Fordypning
                 n="07"
