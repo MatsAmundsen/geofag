@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { VideoPlaceholder } from "@/components/video-placeholder";
 import type { Kilde } from "@/lib/kilder";
 
 export function TopicLayout({
@@ -24,7 +23,7 @@ export function TopicLayout({
   lead: string;
   banner: string;
   bannerAlt: string;
-  videoTopic: string;
+  videoTopic?: string;
   children: ReactNode;
   kilder?: readonly Kilde[];
   prev?: { to: string; label: string; params?: Record<string, string> };
@@ -44,6 +43,7 @@ export function TopicLayout({
           <img
             src={banner}
             alt={bannerAlt}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25" />
@@ -57,7 +57,6 @@ export function TopicLayout({
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-          <VideoPlaceholder topic={videoTopic} />
           <div className="space-y-5 text-base leading-relaxed text-foreground/95">{children}</div>
 
           {kilder ? <Kildeliste kilder={kilder} /> : null}

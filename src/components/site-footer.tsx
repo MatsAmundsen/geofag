@@ -1,6 +1,7 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 
 export function SiteFooter() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <footer className="mt-auto border-t border-border bg-card">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-muted-foreground sm:px-6 sm:flex-row sm:items-center sm:justify-between">
@@ -14,7 +15,11 @@ export function SiteFooter() {
             Udir GFG01-03
           </a>
           .{" "}
-          <Link to="/" className="text-foreground underline-offset-4 hover:underline">
+          <Link
+            to="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className="text-foreground underline-offset-4 hover:underline"
+          >
             Til forsiden
           </Link>
           .
