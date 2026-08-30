@@ -31,8 +31,9 @@ function EksamenIndex() {
               Eksamensoppgaver
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
-              Tidligere sentrale sett fra Udir. Hvert sett har oppgaver og et eget bibliotek kalt
-              Løsningsforslag: fasit, pedagogisk forklaring og originale figurer.
+              Tidligere sentrale sett fra Udir. Under hvert sett ligger biblioteket{" "}
+              <strong className="font-medium text-foreground">Løsningsforslag</strong>: fasit,
+              pedagogisk forklaring og originale figurer — ikke kopier av Udirs kart.
             </p>
           </div>
         </header>

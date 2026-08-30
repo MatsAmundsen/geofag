@@ -35,6 +35,8 @@ export function taskHeading(prompt: string, fallback: string): string {
     .map((l) => l.trim())
     .filter(Boolean);
   for (const line of lines) {
+    const titled = line.match(/^oppgave\s+\d+\s*[:.–-]+\s*(.+)$/i);
+    if (titled?.[1] && titled[1].length < 80) return titled[1].trim();
     if (/^oppgave/i.test(line)) continue;
     if (/av \d+ til tema/i.test(line)) continue;
     if (/du skal svare/i.test(line)) continue;
