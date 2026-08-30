@@ -14,8 +14,24 @@ export function examSet(slug: string): ExamSet | undefined {
   return EXAM_SETS.find((s) => s.slug === slug);
 }
 
+export function displayPrompt(prompt: string): string {
+  let body = prompt
+    .replace(/^REA ?3043[^\n]*\n/gim, "")
+    .replace(/^\/\n/gm, "")
+    .replace(/^\.\.\.\n/gm, "")
+    .replace(/^Eksamen (høsten|våren) \d+ fra Udir\n/gim, "")
+    .replace(/^Eksempeloppgaver[^\n]*\n/gim, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+  const lines = body.split("\n");
+  if (lines.length >= 2 && /^oppgave\s+\d+/i.test(lines[0]) && /^oppgave\s+\d+/i.test(lines[1])) {
+    body = lines.slice(1).join("\n").trim();
+  }
+  return body;
+}
+
 export function taskHeading(prompt: string, fallback: string): string {
-  const lines = prompt
+  const lines = displayPrompt(prompt)
     .split("\n")
     .map((l) => l.trim())
     .filter(Boolean);

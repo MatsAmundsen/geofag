@@ -5,7 +5,7 @@ import { Callout } from "@/components/callout";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { examSet, solutionFor, taskHeading } from "@/lib/eksamen";
+import { displayPrompt, examSet, solutionFor, taskHeading } from "@/lib/eksamen";
 import { topicHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -113,7 +113,7 @@ function TaskCard({
       </p>
       <h2 className="mt-1 font-display text-2xl font-medium tracking-tight">{heading}</h2>
       <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground/95">
-        {task.prompt}
+        {displayPrompt(task.prompt)}
       </pre>
       {task.needsFigure ? (
         <p className="mt-3 text-sm text-muted-foreground">
