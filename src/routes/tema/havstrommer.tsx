@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OceanCurrentModel } from "@/components/models/ocean-current-model";
 import { Callout } from "@/components/callout";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
@@ -212,7 +213,7 @@ function HavstrommerPage() {
         ord="AMOC"
         barn="Den atlantiske omveltningen: varmt nordover i overflaten, kaldt sørover i dypet. Inkluderer både Den nordatlantiske strømmen og det dype returløpet. Ikke en bryter som slår av Golfstrømmen på en dag."
       />
-
+      <OceanCurrentModel />
       <PhotoFigure
         src="/images/fig-amoc.jpg"
         alt="Varm gyllen overflatestrøm mot nord og kald dypblå strøm mot sør under is"
