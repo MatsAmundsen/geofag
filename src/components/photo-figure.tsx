@@ -136,6 +136,8 @@ export function PhotoFigure({
         <img
           src={src}
           alt={alt}
+          loading="lazy"
+          decoding="async"
           className={
             fit === "contain"
               ? "absolute inset-0 h-full w-full object-contain"
@@ -223,6 +225,8 @@ export function PhotoPair({
               <img
                 src={side.src}
                 alt={side.alt}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <Overlay arrows={side.arrows} marks={side.marks} />

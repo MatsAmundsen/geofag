@@ -49,6 +49,7 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "inline-flex h-11 items-center rounded-md px-2 text-sm transition-colors",
                   active
@@ -89,6 +90,7 @@ export function SiteHeader() {
                   <Link
                     to={item.to}
                     onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
                     className={cn(
                       "flex min-h-11 items-center rounded-md px-3 text-sm",
                       active ? "bg-muted text-foreground" : "text-muted-foreground",

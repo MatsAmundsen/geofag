@@ -7,10 +7,17 @@ import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("geologiske-ressurser")!;
 
 export const Route = createFileRoute("/geofag-1/geologiske-ressurser")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/geologiske-ressurser",
+    }),
   component: GeologiskeRessurserPage,
 });
 
@@ -22,7 +29,6 @@ function GeologiskeRessurserPage() {
       lead="En forekomst er geologien. Den blir en ressurs først når innhold, mengde, teknologi, pris, miljøkrav og samfunnsgodkjenning gjør utvinning mulig. Bergarten flytter seg ikke. Ressursbildet gjør det."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="geologiske-ressurser"
       prev={{
         to: "/geofag-1/skred",
         label: "Forrige: Skred",

@@ -5,8 +5,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/havstrommer")!;
 
 export const Route = createFileRoute("/tema/havstrommer")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/havstrommer",
+    }),
   component: HavstrommerPage,
 });
 
@@ -18,7 +28,6 @@ function HavstrommerPage() {
       lead="Havet lagrer langt mer varme enn lufta og flytter den langsomt. Overflaten skyves av vind og bøyes av jordrotasjon. Dypet styres av hvor tungt vannet er. Sammen gjør de Norges kyst mildt på en breddegrad som ellers er iskald."
       banner="/images/banner-hav.jpg"
       bannerAlt="Havoverflate i Nord-Atlanteren"
-      videoTopic="havstrømmer"
       prev={{ to: "/tema/coriolis", label: "Forrige: Coriolis" }}
       next={{ to: "/tema/klima", label: "Neste: Klima" }}
       kilder={KILDER.havstrommer}

@@ -5,8 +5,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/vaerkatastrofer")!;
 
 export const Route = createFileRoute("/tema/vaerkatastrofer")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/vaerkatastrofer",
+    }),
   component: KatastroferPage,
 });
 
@@ -18,7 +28,6 @@ function KatastroferPage() {
       lead="Orkaner, ekstremnedbør og stormflo er ikke egne fysikklover. De er værsystemer drevet av varme, fukt og rotasjon — de samme mekanismene du allerede kan. En katastrofe oppstår når systemet treffer samfunn som ikke tåler det."
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye"
-      videoTopic="værkatastrofer og naturfarer"
       prev={{ to: "/tema/paleoklima", label: "Forrige: Paleoklima" }}
       kilder={KILDER.vaerkatastrofer}
     >

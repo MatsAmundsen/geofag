@@ -5,8 +5,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/numeriske-modeller")!;
 
 export const Route = createFileRoute("/tema/numeriske-modeller")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/numeriske-modeller",
+    }),
   component: NumeriskeModellerPage,
 });
 
@@ -18,7 +28,6 @@ function NumeriskeModellerPage() {
       lead="En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett. Bevegelse, masse, energi og fuktighet løses i celler, steg for steg. Cellene har en størrelse. Prosessene inne i cellen må forenkles. Starttilstanden er aldri perfekt kjent. Likevel gir modellene nyttig informasjon — til ulike formål på ulike tidsskalaer."
       banner="/images/fig-klimasystem.jpg"
       bannerAlt="Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver"
-      videoTopic="numeriske modeller"
       prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
       next={{ to: "/tema/paleoklima", label: "Neste: Paleoklima" }}
       kilder={KILDER.modeller}

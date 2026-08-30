@@ -5,16 +5,24 @@ import {
   SpreadingDiagram,
   SubductionDiagram,
 } from "@/components/diagrams/plates";
+import { GeoMap } from "@/components/geo-map";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("platetektonikk")!;
 
 export const Route = createFileRoute("/geofag-1/platetektonikk")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 1`,
+      description: tema.blurb,
+      path: "/geofag-1/platetektonikk",
+    }),
   component: PlatetektonikkPage,
 });
 
@@ -26,7 +34,6 @@ function PlatetektonikkPage() {
       lead="Jordas ytre skall er delt i plater. Hver plate er litosfære: skorpe pluss den øvre, stive delen av mantelen. Platene glir på astenosfæren, en mykere sone i øvre mantel. Der platene går fra hverandre, møtes eller gnir sidelengs, endres både skorpa og overflaten. Ny havbunn, fjellkjeder, vulkaner og jordskjelv er konsekvenser av den bevegelsen."
       banner={tema.image}
       bannerAlt={tema.alt}
-      videoTopic="platetektonikk"
       prev={{
         to: "/geofag-1/jordsystemene",
         label: "Forrige: Jordsystemene",
@@ -149,6 +156,17 @@ function PlatetektonikkPage() {
         vulkaner. Beerenberg er Norges eneste aktive vulkan over havet, 2277 meter. Siste utbrudd i
         1985 (Norsk Polarinstitutt, u.å.).
       </p>
+      <GeoMap
+        center={[65, -3]}
+        zoom={4}
+        markers={[
+          { lat: 64.2558, lng: -21.131, label: "Þingvellir – synlig rift i Den midtatlantiske ryggen" },
+          { lat: 71.0, lng: -8.5, label: "Jan Mayen – vulkanøy på ryggsystemet (Beerenberg)" },
+          { lat: 60.39, lng: 5.32, label: "Bergen – Norge, på den eurasiske platen" },
+        ]}
+        heading="Ryggsystemet: Island, Jan Mayen og Norge"
+        caption="Den midtatlantiske ryggen strekker seg forbi Island og Jan Mayen. Norge ligger inne på den eurasiske platen, ikke på selve plategrensen."
+      />
       <p>
         Etter istiden reiste litosfæren seg. Det kalles isostasi. Marine avsetninger som ble lagt i
         fjord, ligger nå over havnivå. Marin grense er 0–220 m (NGU, u.å.).

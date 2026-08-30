@@ -6,8 +6,18 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { GF2_THEMES } from "@/lib/nav";
+import { topicHead } from "@/lib/seo";
+
+const tema = GF2_THEMES.find((t) => t.to === "/tema/paleoklima")!;
 
 export const Route = createFileRoute("/tema/paleoklima")({
+  head: () =>
+    topicHead({
+      title: `${tema.title} · Geofag 2`,
+      description: tema.blurb,
+      path: "/tema/paleoklima",
+    }),
   component: PaleoklimaPage,
 });
 
@@ -19,7 +29,6 @@ function PaleoklimaPage() {
       lead="Termometer og satellitt dekker et øyeblikk: globalt 150–170 år, CO₂ på Mauna Loa siden 1958 (NOAA, u.å.), havis fra satellitt siden 1979 (NSIDC, u.å.). Istider og plutselige hopp sitter i is, havbunn og tre. Uten arkivene kan vi ikke si om dagens CO₂ er utenfor det naturlige spennet — eller om modellene treffer når jorda faktisk har vært kald og varm."
       banner="/images/fig-paleo.jpg"
       bannerAlt="Lagdelt blå breis med bølgende bånd av gammel is"
-      videoTopic="paleoklima"
       prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
       next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
       kilder={KILDER.paleoklima}
