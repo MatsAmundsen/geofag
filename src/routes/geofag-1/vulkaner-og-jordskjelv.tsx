@@ -74,11 +74,11 @@ function VulkanerOgJordskjelvPage() {
       />
 
       <p>
-        Oslofjordskjelvet 23. oktober 1904 er det største kjente i Oslo-området, magnitude 5,4.
-        Episenteret er lagt til Kattegat, ca. 25 km sør for Hvaler. Ingen omkom i Oslo. Lurøy i
-        Nordland 1819, ca. magnitude 5,8, viser at Nordlandskysten også har potensial. I Norge
-        dreper skred og flom langt flere enn skjelv. Det er et risikoargument, ikke at vi er uten
-        jordskjelv.
+        Oslofjordskjelvet 23. oktober 1904 er det største kjente i Oslo-området, magnitude 5,4
+        (Bungum et al., 2009). Episenteret er lagt til Kattegat, ca. 25 km sør for Hvaler. Ingen
+        omkom i Oslo. Lurøy i Nordland 1819, ca. magnitude 5,8, viser at Nordlandskysten også har
+        potensial (NORSAR, u.å.). I Norge dreper skred og flom langt flere enn skjelv. Det er et
+        risikoargument, ikke at vi er uten jordskjelv.
       </p>
       <OrdBoks
         ord="Episenter"
@@ -104,8 +104,8 @@ function VulkanerOgJordskjelvPage() {
         De fleste vulkaner sitter på plategrenser. Unntaket er hotspot. En langvarig, varm sone
         under platen leverer magma mens platen glir over. Hawaii-kjeden blir eldre og mer erodert
         mot nordvest: Kauai ca. 5,5 millioner år, Big Island yngre enn 0,7 millioner år og fortsatt
-        aktiv. Øykjeden er platens kjølvann. Senere forskning diskuterer om hotspoter er dype og
-        faste.
+        aktiv (USGS, u.å.). Øykjeden er platens kjølvann. Senere forskning diskuterer om hotspoter
+        er dype og faste.
       </p>
       <OrdBoks
         ord="Hotspot"
@@ -114,8 +114,8 @@ function VulkanerOgJordskjelvPage() {
       <p>
         Norsk fastland har ingen aktive vulkaner. Oslofeltets magmatisme er perm, ikke en
         varslingsrelevant vulkan. Jan Mayen og Island ligger på Den midtatlantiske ryggen.
-        Beerenberg er Norges eneste aktive vulkan over havet, 2277 m. Siste utbrudd i 1985. Island
-        og Azorene ligger nær ryggen og har hotspot-preg.
+        Beerenberg er Norges eneste aktive vulkan over havet, 2277 m. Siste utbrudd i 1985 (Norsk
+        Polarinstitutt, u.å.). Island og Azorene ligger nær ryggen og har hotspot-preg.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
@@ -125,12 +125,13 @@ function VulkanerOgJordskjelvPage() {
         Åknes ligger på vestsiden av Sunnylvsfjorden i Stranda. Fjellet har vært kjent som ustabilt
         siden 1960-tallet. NVE definerer fire scenarioer: D ca. 2,4 mill. m³ (årlig sannsynlighet
         1/200), C ca. 7,4 mill. m³ (1/100), B ca. 9,7 mill. m³ (om lag 1/600), A totalt 31 mill. m³
-        (om lag 1/12 000, inngår ikke i beredskap). Samlet årlig sannsynlighet om lag 1/60.
+        (om lag 1/12 000, inngår ikke i beredskap). Samlet årlig sannsynlighet om lag 1/60 (NVE,
+        2026).
       </p>
       <p>
         Overvåking: GPS, totalstasjon, ekstensometer, laser, borehull, satellitt-radar og
-        meteorologi. Et skred kan gi flodbølge i Storfjord-systemet. Sikring av hele fjellet er
-        urealistisk. Tiltaket er overvåking, varsling og evakuering.
+        meteorologi (NVE, u.å.). Et skred kan gi flodbølge i Storfjord-systemet. Sikring av hele
+        fjellet er urealistisk. Tiltaket er overvåking, varsling og evakuering.
       </p>
       <p>
         Tafjord 7. april 1934 viser hvorfor. Ca. 3 mill. m³ fjell, 40 omkomne, bølger inntil 61
@@ -152,10 +153,10 @@ function VulkanerOgJordskjelvPage() {
       />
       <p>
         Storeggaskredet gikk for ca. 8150 år siden. Volum 2400–3200 km³, bakvegg 310 km, utløp 810
-        km. Massene er morene i veksling med myk leire på kontinentalskråningen. Skredet utviklet
-        seg retrogressivt på slak helling, ned mot 0,3°, som et kvikkleireskred under vann. Et
-        jordskjelv kan ha vært første impuls. Selve hendelsen er skråningssvikt i sediment, ikke en
-        plategrense som røk.
+        km (Haflidason et al., 2004). Massene er morene i veksling med myk leire på
+        kontinentalskråningen. Skredet utviklet seg retrogressivt på slak helling, ned mot 0,3°, som
+        et kvikkleireskred under vann. Et jordskjelv kan ha vært første impuls. Selve hendelsen er
+        skråningssvikt i sediment, ikke en plategrense som røk.
       </p>
       <p>
         Ormen Lange ligger i kanten av skredgropa. Undersøkelsene konkluderte med stabil skredkant.

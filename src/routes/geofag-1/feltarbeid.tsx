@@ -86,9 +86,10 @@ function FeltarbeidPage() {
       <p>
         Rapporten skal vise kjeden: problemstilling, plan og HMS, georefererte data, bearbeiding,
         tolkning og det du ikke kan konkludere. I Vestland skal privatister ha feltrapport på papir
-        ved oppmøte. Uten rapport: ingen eksamen. PDF på PC holder ikke der. Rogaland har skrevet
-        det motsatte: kandidater trenger ikke ta med felt. Kravet om papir er fylkespraksis, ikke
-        nasjonalt. Ha rapporten likevel. I Vestland er den obligatorisk.
+        ved oppmøte (Vestland fylkeskommune, u.å.). Uten rapport: ingen eksamen. PDF på PC holder
+        ikke der. Rogaland har skrevet det motsatte: kandidater trenger ikke ta med felt (Rogaland
+        fylkeskommune, u.å.). Kravet om papir er fylkespraksis, ikke nasjonalt. Ha rapporten likevel.
+        I Vestland er den obligatorisk.
       </p>
 
       <Callout title="Kompetansemål">

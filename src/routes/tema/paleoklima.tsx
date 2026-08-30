@@ -26,7 +26,7 @@ function PaleoklimaPage() {
     <TopicLayout
       kicker="Geofag 2 · Arkiv"
       title="Paleoklima"
-      lead="Termometer og satellitt dekker et øyeblikk: globalt 150–170 år, CO₂ på Mauna Loa siden 1958, havis fra satellitt siden 1979. Istider og plutselige hopp sitter i is, havbunn og tre. Uten arkivene kan vi ikke si om dagens CO₂ er utenfor det naturlige spennet — eller om modellene treffer når jorda faktisk har vært kald og varm."
+      lead="Termometer og satellitt dekker et øyeblikk: globalt 150–170 år, CO₂ på Mauna Loa siden 1958 (NOAA, u.å.), havis fra satellitt siden 1979 (NSIDC, u.å.). Istider og plutselige hopp sitter i is, havbunn og tre. Uten arkivene kan vi ikke si om dagens CO₂ er utenfor det naturlige spennet — eller om modellene treffer når jorda faktisk har vært kald og varm."
       banner="/images/fig-paleo.jpg"
       bannerAlt="Lagdelt blå breis med bølgende bånd av gammel is"
       prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
@@ -48,7 +48,7 @@ function PaleoklimaPage() {
       </p>
       <p>
         Paleodata hjalp IPCC å innsnevre hvor mye jorda varmes når CO₂ dobles. Beste anslag ligger
-        rundt tre grader. Syvende hovedrapport er ikke publisert.
+        rundt tre grader (IPCC, 2021). Syvende hovedrapport er ikke publisert.
       </p>
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Proxy og iskjerne</h2>
@@ -80,8 +80,8 @@ function PaleoklimaPage() {
 
       <p>
         EPICA Dome C dekker åtte istidssykluser. Laveste målte CO₂ i is: 172 ppm. Naturlig spenn i
-        senkvartær: 172–300 ppm. Dagens verdi ligger over 425 — langt utenfor det spennet. Vostok
-        dekker 420 000 år og fire sykluser.
+        senkvartær: 172–300 ppm (Lüthi et al., 2008). Dagens verdi ligger over 425 — langt utenfor
+        det spennet (NOAA, u.å.). Vostok dekker 420 000 år og fire sykluser (Petit et al., 1999).
       </p>
       <OrdBoks
         ord="Iskjerne"
@@ -145,9 +145,9 @@ function PaleoklimaPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Holocen</h2>
       <p>
         Kvartær er en serie glacialer og interglacialer. Holocen er nåværende mellomistid, fra ca.
-        11 700 år før nå. Relativt stabil. Jordbruk og sivilisasjon vokste her. Siste
-        glacialmaksimum ca. 21 000 år siden: Fennoskandisk isdekke over Norge, havnivå ca. 120 m
-        lavere, CO₂ ca. 180–190 ppm.
+        11 700 år før nå (Walker et al., 2009). Relativt stabil. Jordbruk og sivilisasjon vokste her.
+        Siste glacialmaksimum ca. 21 000 år siden: Fennoskandisk isdekke over Norge, havnivå ca. 120
+        m lavere, CO₂ ca. 180–190 ppm.
       </p>
       <OrdBoks
         ord="Kvartær"
@@ -160,7 +160,7 @@ function PaleoklimaPage() {
       <p>
         Den varmeste flerårhundresperioden for ca. 6500 år siden lå 0,2–1 °C over 1850–1900 globalt.
         Tiåret 2011–2020 ligger over dette. Oppvarmingen siden 1970 er raskere enn i noen annen
-        50-årsperiode på minst 2000 år.
+        50-årsperiode på minst 2000 år (IPCC, 2021).
       </p>
       <p>
         En ny istid, orbitalt, ligger titusener av år fram. Høy CO₂ kan utsette den. Det er

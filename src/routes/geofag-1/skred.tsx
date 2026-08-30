@@ -194,9 +194,9 @@ function SkredPage() {
         <p>
           Åknes ligger på vestsiden av Sunnylvsfjorden i Stranda. Fjellet har vært kjent som
           ustabilt siden 1960-tallet, og NVE overvåker det kontinuerlig med GPS, ekstensometer,
-          laser, borehull og satellittradar. Et skred kan gi flodbølge i hele Storfjord-systemet.
-          Sikring av et helt fjell er urealistisk, så tiltaket er instrumentering, varsling og
-          evakuering.
+          laser, borehull og satellittradar (NVE, u.å.; NVE, 2026). Et skred kan gi flodbølge i hele
+          Storfjord-systemet. Sikring av et helt fjell er urealistisk, så tiltaket er
+          instrumentering, varsling og evakuering.
         </p>
         <p>
           Tafjord 7. april 1934 viser hvorfor det tas alvorlig. Om lag 3 millioner m³ fjell falt fra
@@ -206,8 +206,8 @@ function SkredPage() {
         </p>
         <p>
           Veslemannen i Romsdalen er eksempelet på at beredskapen virker. Fjellpartiet ble varslet
-          og evakuert 16 ganger før det raste delvis ut 5. september 2019. Ingen ble skadet.
-          Overvåking stoppet ikke skredet — den ga tid.
+          og evakuert 16 ganger før det raste delvis ut 5. september 2019 (NVE, u.å.). Ingen ble
+          skadet. Overvåking stoppet ikke skredet — den ga tid.
         </p>
       </Callout>
 
@@ -220,9 +220,9 @@ function SkredPage() {
         borte eller vannet er samlet i en renne.
       </p>
       <p>
-        Ekstremværet Hans i august 2023 er typeeksempelet: over 700 jord- og flomskred på noen døgn.
-        Grunnvannet var alt høyt etter en våt juli, så da nedbøren kom, hadde marka ingen kapasitet
-        igjen. Sammenhengen med flom er tett, og den står under{" "}
+        Ekstremværet Hans i august 2023 er typeeksempelet: over 700 jord- og flomskred på noen døgn
+        (DSB, 2024). Grunnvannet var alt høyt etter en våt juli, så da nedbøren kom, hadde marka
+        ingen kapasitet igjen. Sammenhengen med flom er tett, og den står under{" "}
         <Link
           to="/geofag-1/vann-og-flom"
           className="text-primary underline-offset-2 hover:underline"
@@ -266,9 +266,9 @@ function SkredPage() {
       </p>
       <p>
         Marin grense er det høyeste nivået havet nådde etter istiden. I Norge ligger den mellom 0 og
-        220 meter over dagens havnivå, høyest rundt Oslo og i Trøndelag. Under marin grense kan det
-        ligge marin leire. Over den kan det ikke — og derfor finnes det ingen kvikkleire over marin
-        grense.
+        220 meter over dagens havnivå, høyest rundt Oslo og i Trøndelag (NGU, u.å.). Under marin
+        grense kan det ligge marin leire. Over den kan det ikke — og derfor finnes det ingen
+        kvikkleire over marin grense.
       </p>
       <OrdBoks
         ord="Marin grense"
@@ -282,7 +282,7 @@ function SkredPage() {
         struktur der saltionene virket som lim. Vanlig sjøvann har om lag 35 gram salt per liter.
         Etter at landet hevet seg, har ferskt grunnvann sivet gjennom leira i tusenvis av år og
         vasket saltet ut. Kommer porevannet under om lag 2 gram per liter, mister strukturen limet
-        sitt — men den står fortsatt.
+        sitt — men den står fortsatt (NGU, u.å.).
       </p>
       <p>
         Det er dette som gjør kvikkleire lumsk. Uforstyrret er leira fast; du kan bygge på den og gå
@@ -330,18 +330,19 @@ function SkredPage() {
 
       <Callout title="Rissa 1978 og Gjerdrum 2020">
         <p>
-          Rissa i Trøndelag 29. april 1978 er den klassiske norske hendelsen, filmet mens den gikk.
-          Skredet startet med at om lag 700 m³ utgravd masse ble lagt i strandkanten ved Botn. Den
-          lille tilleggslasten var nok. Skredet utviklet seg retrogressivt i omtrent 40 minutter,
-          tok med seg 5–6 millioner m³ og 33 hektar dyrket mark, og én person mistet livet. Det er
-          det største kvikkleireskredet i Norge i moderne tid.
+          Rissa i Trøndelag 29. april 1978 er den klassiske norske hendelsen, filmet mens den gikk
+          (Gregersen, 1981). Skredet startet med at om lag 700 m³ utgravd masse ble lagt i
+          strandkanten ved Botn. Den lille tilleggslasten var nok. Skredet utviklet seg
+          retrogressivt i omtrent 40 minutter, tok med seg 5–6 millioner m³ og 33 hektar dyrket
+          mark, og én person mistet livet. Det er det største kvikkleireskredet i Norge i moderne
+          tid.
         </p>
         <p>
           Gjerdrum 30. desember 2020 viser den samme mekanismen med en annen utløser. Her var det
           erosjon i Tistilbekken over mange år, forsterket av en ødelagt bekkelukking, utbygging og
           terrenginngrep, som gradvis gravde vekk foten av skråningen. Utløseren var en våt, mild
           høst. Skredet tok om lag 1,35 millioner m³, 11 mennesker mistet livet og mer enn 1600 ble
-          evakuert.
+          evakuert (Gjerdrumutvalget, 2022; NVE, u.å.).
         </p>
         <p>
           Merk sammenligningen: Gjerdrum var langt mindre enn Rissa i volum, men langt dødeligere.
@@ -356,7 +357,7 @@ function SkredPage() {
       <p>
         Skred går også under vann, på kontinentalskråningen utenfor kysten. Storeggaskredet gikk for
         om lag 8150 år siden og er et av de største kjente skredene på jorda: 2400–3200 km³ masse,
-        en bakvegg på 310 km og et utløp på 810 km.
+        en bakvegg på 310 km og et utløp på 810 km (Haflidason et al., 2004).
       </p>
       <p>
         Mekanismen er verdt å merke seg, for du har møtt den før. Massene var morene i veksling med
@@ -397,8 +398,8 @@ function SkredPage() {
         Kart, varsling og sikring
       </h2>
       <p>
-        NVE lager faresonekart og aktsomhetskart. Forskjellen er viktig. Et faresonekart er en
-        detaljert utredning av et avgrenset område. Et aktsomhetskart er en grov, modellbasert
+        NVE lager faresonekart og aktsomhetskart (NVE, u.å.). Forskjellen er viktig. Et faresonekart
+        er en detaljert utredning av et avgrenset område. Et aktsomhetskart er en grov, modellbasert
         oversikt over hvor det kan være grunn til å undersøke nærmere.
       </p>
       <GeoMap

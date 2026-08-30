@@ -37,8 +37,9 @@ function HavstrommerPage() {
       </h2>
       <p>
         En havstrøm er vann som flytter seg fra ett sted til et annet. De samme tre tingene som
-        styrer lufta, styrer havet: trykk, tyngde og rotasjon. Men havet er tregere og lagrer enormt
-        med varme. Derfor demper det klimaet over måneder og tiår, ikke bare over timer.
+        styrer lufta, styrer havet: trykk, tyngde og rotasjon (NOAA, u.å.). Men havet er tregere og
+        lagrer enormt med varme. Derfor demper det klimaet over måneder og tiår, ikke bare over
+        timer.
       </p>
       <p>
         Tenk to etasjer. Overflaten skyves av vinden. Dypet styres av hvor kaldt og salt vannet er.
@@ -55,7 +56,7 @@ function HavstrommerPage() {
       <p>
         Vinden tar i de øverste meterne. Coriolis dreier strømmen til høyre i nord. Laget under
         dreies enda mer. Summen — det som faktisk flytter vannmasser — går omtrent rett til høyre
-        for vinden på nordlig halvkule (til venstre i sør).
+        for vinden på nordlig halvkule (til venstre i sør) (NOAA, u.å.).
       </p>
       <OrdBoks
         ord="Ekman-transport"
@@ -148,7 +149,8 @@ function HavstrommerPage() {
         I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt.
         Golfstrømmen er den sterke strømmen langs USA. Etter kysten løsner den. En gren fortsetter
         nordøstover som Den nordatlantiske strømmen mot de nordiske hav. Det er denne grenen —
-        sammen med hele beltet i dypet og vestavinden — som preger norsk klima.
+        sammen med hele beltet i dypet og vestavinden — som preger norsk klima (Norsk
+        klimaservicesenter, u.å.).
       </p>
       <OrdBoks
         ord="Golfstrømmen og Den nordatlantiske strømmen"
@@ -202,9 +204,9 @@ function HavstrommerPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">AMOC — havets belte</h2>
       <p>
         I Atlanteren går varmt, saltere vann nordover i toppen. I Norskehavet, Grønlandshavet og
-        Labradorhavet synker det og returnerer sørover i dypet. Hele sløyfa kalles AMOC. Den er
-        treg. Den kan svekkes hvis overflaten blir for fersk eller for varm til å synke. Det skjer
-        ikke over natta — men over tiår kan det merkes i nordvest-Europa.
+        Labradorhavet synker det og returnerer sørover i dypet. Hele sløyfa kalles AMOC (NOAA, u.å.).
+        Den er treg. Den kan svekkes hvis overflaten blir for fersk eller for varm til å synke (IPCC,
+        2021). Det skjer ikke over natta — men over tiår kan det merkes i nordvest-Europa.
       </p>
       <OrdBoks
         ord="AMOC"

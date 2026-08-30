@@ -46,8 +46,8 @@ function CoriolisPage() {
         Jorda roterer mot øst. Vi står på den roterende flaten og måler alt derfra. En luftpakke som
         går rett fram i verdensrommet, ser derfor ut til å bøye av sett fra bakken. På nordlig
         halvkule bøyer den mot høyre. På sørlig halvkule mot venstre. Ved ekvator er avbøyningen
-        null. Derfor kan tropiske sykloner ikke dannes på selve ekvator. De trenger coriolis for å
-        få rotasjon.
+        null (NOAA, u.å.). Derfor kan tropiske sykloner ikke dannes på selve ekvator. De trenger
+        coriolis for å få rotasjon.
       </p>
       <p>
         Coriolis øker mot polene. Den øker også når farten øker. Den virker bare når noe beveger
@@ -74,8 +74,8 @@ function CoriolisPage() {
       <p>
         Når trykkgradient og coriolis veier hverandre opp, går vinden ikke lenger inn mot
         lavtrykket. Den går langs isobarene, med lavtrykk til venstre på nordlig halvkule. Det
-        kalles geostrofisk vind. Det er den vanlige balansen høyt oppe og til havs, borte fra
-        bakken. På sørlig halvkule er alt speilvendt: lavtrykk til høyre.
+        kalles geostrofisk vind (NOAA, u.å.). Det er den vanlige balansen høyt oppe og til havs,
+        borte fra bakken. På sørlig halvkule er alt speilvendt: lavtrykk til høyre.
       </p>
       <OrdBoks
         ord="Geostrofisk vind"
@@ -183,8 +183,8 @@ function CoriolisPage() {
         NAO flytter Norges jet
       </h2>
       <p>
-        NAO er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Det er den viktigste
-        svingningen for jetstrømmen inn mot Norge.
+        NAO er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket (NOAA, u.å.). Det er den
+        viktigste svingningen for jetstrømmen inn mot Norge.
       </p>
       <OrdBoks
         ord="NAO"
@@ -221,8 +221,8 @@ function CoriolisPage() {
 
       <p>
         ENSO — El Niño og La Niña i tropisk Stillehav — flytter hvor tropisk luft stiger, og dermed
-        jetstrømmene over Stillehavet og Amerika. Koblingen til norsk vinter er svakere og mer
-        usikker enn NAO. Mekanismen (passater, varmt vann, konveksjon) står under{" "}
+        jetstrømmene over Stillehavet og Amerika (NOAA, u.å.). Koblingen til norsk vinter er svakere
+        og mer usikker enn NAO. Mekanismen (passater, varmt vann, konveksjon) står under{" "}
         <Link to="/tema/klima" className="text-primary underline-offset-2 hover:underline">
           klima
         </Link>

@@ -71,7 +71,8 @@ function VannOgFlomPage() {
       />
       <p>
         Flom er unormalt høy vannføring i vassdrag. Det er ikke overvann i kjelleren, og det er ikke
-        stormflo. Regnflom treffer Vestlandet, kyst og små bratte felt, særlig høst og vinter.
+        stormflo (NVE, u.å.). Regnflom treffer Vestlandet, kyst og små bratte felt, særlig høst og
+        vinter.
         Snøsmelteflom treffer innland og fjell om våren. I 2018 kom stor vårflom i øvre Glomma,
         Gudbrandsdalslågen og Drammensvassdraget av smelting alene. Kombinasjonsflom er regn på
         snø, eller regn og smelting samtidig. Isgang er is som demmer, så brudd og flombølge.
@@ -108,18 +109,19 @@ function VannOgFlomPage() {
         ikke faren i elva.
       </p>
       <p>
-        NVE lager faresonekart for flom, vannstand ved gitt returperiode. Kommunen skal bruke dem i
-        arealplan. Varsom viser gult, oransje og rødt for flom. Kartene er oversikt, ikke fasit.
+        NVE lager faresonekart for flom, vannstand ved gitt returperiode (NVE, u.å.). Kommunen skal
+        bruke dem i arealplan. Varsom viser gult, oransje og rødt for flom. Kartene er oversikt, ikke
+        fasit.
       </p>
       <Callout title="Hans 2023">
         <p>
           Ekstremværet Hans 7.–9. august 2023 kom inn fra øst og sørøst. Grunnvannet var allerede
-          høyt etter våt juli. MET satte nedbørrekord ved 12 stasjoner på Østlandet. NVE
+          høyt etter våt juli. MET satte nedbørrekord ved 12 stasjoner på Østlandet (MET, 2023). NVE
           registrerte over 50-årsflom på 52 målestasjoner. 45 av dem fikk høyeste verdi siden
           målestart. Drammensvassdraget og Glomma. Innlandet og daværende Viken hardest. Flommen
           kulminerte i Mjøsa og Øyeren 13. august, i Tyrifjorden 16. august. NVE kalte 2023 den
-          dyreste naturkatastrofen som har rammet Norge. Risikoen ble stor fordi dalene er
-          eksponert.
+          dyreste naturkatastrofen som har rammet Norge (DSB, 2024). Risikoen ble stor fordi dalene
+          er eksponert.
         </p>
       </Callout>
       <GeoMap
