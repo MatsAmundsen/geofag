@@ -33,11 +33,11 @@ function JetstrommerPage() {
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva en jetstrøm er</h2>
       <p>
-        En jetstrøm er et smalt belte med sterk vestavind i øvre troposfære. Ordet «smalt» er
-        nøkkelen. Vestavindsbeltet ved bakken dekker tusenvis av kilometer i bredden. Jetstrømmen er
-        derimot bare noen hundre kilometer bred og et par kilometer dyp, men den kan være mange
-        tusen kilometer lang. Tenk deg en elv i lufta: strømmen er sterkest i en trang renne midt i,
-        og svakere ut mot sidene.
+        En jetstrøm er et smalt belte med sterk vestavind i øvre troposfære (NOAA, u.å.). Ordet
+        «smalt» er nøkkelen. Vestavindsbeltet ved bakken dekker tusenvis av kilometer i bredden.
+        Jetstrømmen er derimot bare noen hundre kilometer bred og et par kilometer dyp, men den kan
+        være mange tusen kilometer lang. Tenk deg en elv i lufta: strømmen er sterkest i en trang
+        renne midt i, og svakere ut mot sidene.
       </p>
       <p>
         Farten i kjernen ligger typisk mellom 100 og 250 km/t. De sterkeste vinterkjernene kan
@@ -372,11 +372,11 @@ function JetstrommerPage() {
         systematisk, og tre av dem bør du kunne.
       </p>
       <p>
-        <strong>NAO</strong> er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Dette
-        er den viktigste for Norge, rett og slett fordi den sitter i Nord-Atlanteren, der været vårt
-        lages. Er forskjellen stor, er gradienten stor, og polarfrontjeten blir sterk og ligger
-        langt nord. Er forskjellen liten, svekkes jeten, den trekker sørover eller brytes opp i
-        blocking.
+        <strong>NAO</strong> er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket (NOAA,
+        u.å.). Dette er den viktigste for Norge, rett og slett fordi den sitter i Nord-Atlanteren,
+        der været vårt lages. Er forskjellen stor, er gradienten stor, og polarfrontjeten blir sterk
+        og ligger langt nord. Er forskjellen liten, svekkes jeten, den trekker sørover eller brytes
+        opp i blocking.
       </p>
       <OrdBoks
         ord="NAO"
@@ -403,8 +403,8 @@ function JetstrommerPage() {
 
       <p>
         <strong>ENSO</strong> er koblingen mellom hav og atmosfære i det tropiske Stillehavet, med
-        en syklus på to til sju år. Den flytter hvor tropisk luft stiger, og der luften stiger,
-        mates jetstrømmene. I en El Niño-fase forsterkes den subtropiske jeten over Nord-Stillehavet
+        en syklus på to til sju år (NOAA, u.å.). Den flytter hvor tropisk luft stiger, og der luften
+        stiger, mates jetstrømmene. I en El Niño-fase forsterkes den subtropiske jeten over Nord-Stillehavet
         og strekker seg østover mot sørvestlige USA, stormsporet over USA legger seg sørligere, det
         blir tørke og brannvær i Indonesia og østlige Australia, og mer nedbør langs kysten av
         Ecuador og Peru. I en La Niña-fase ligger jeten lenger vest og nord, Indonesia og Australia
@@ -500,10 +500,10 @@ function JetstrommerPage() {
       <p>
         Det er en hypotese, ikke en konklusjon, og du bør presentere den som det. IPCC AR6 har lav
         konfidens for regionale endringer i nordlige jetstrømmer og stormbaner, særlig over
-        Nord-Atlanteren om vinteren. Én grunn er at gradientene konkurrerer: nede varmes Arktis og
-        kontrasten svekkes, men oppe i den tropiske øvre troposfæren varmes det også kraftig, og der
-        styrkes kontrasten. De to drar jetstrømmen hver sin vei. En annen grunn er at den naturlige
-        variasjonen fra år til år er stor.
+        Nord-Atlanteren om vinteren (IPCC, 2021). Én grunn er at gradientene konkurrerer: nede varmes
+        Arktis og kontrasten svekkes, men oppe i den tropiske øvre troposfæren varmes det også
+        kraftig, og der styrkes kontrasten. De to drar jetstrømmen hver sin vei. En annen grunn er at
+        den naturlige variasjonen fra år til år er stor.
       </p>
       <p>
         Legg også merke til at én mye brukt påstand peker motsatt vei av det man kanskje forventer:

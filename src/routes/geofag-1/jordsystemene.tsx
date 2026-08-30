@@ -19,7 +19,7 @@ function JordsystemenePage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Jorda er fem delsystemer som utveksler masse og energi: geosfæren, hydrosfæren, atmosfæren, kryosfæren og biosfæren. De er ikke vanntette rom. Vann finnes i elver, i is og som porevann i fjellet. Poenget er å følge hvor masse og energi flytter seg."
+      lead="Jorda er fem delsystemer som utveksler masse og energi: geosfæren, hydrosfæren, atmosfæren, kryosfæren og biosfæren (NASA, u.å.). De er ikke vanntette rom. Vann finnes i elver, i is og som porevann i fjellet. Poenget er å følge hvor masse og energi flytter seg."
       banner={tema.image}
       bannerAlt={tema.alt}
       videoTopic="jordsystemene"
@@ -94,7 +94,7 @@ function JordsystemenePage() {
       </p>
       <p>
         Forvitring er ikke det samme som erosjon. Erosjon er nedsliting pluss transport med vann, is
-        eller tyngdekraft. Uten forvitring ingen sedimenter.
+        eller tyngdekraft (USGS, u.å.). Uten forvitring ingen sedimenter.
       </p>
       <OrdBoks
         ord="Erosjon"
@@ -116,7 +116,8 @@ function JordsystemenePage() {
         klimasystem.
       </p>
       <p>
-        For om lag 2,6 millioner år siden ble det dannet isbreer som fortsatte erosjonen. Breisen
+        For om lag 2,6 millioner år siden ble det dannet isbreer som fortsatte erosjonen (ICS,
+        2024). Breisen
         grov ut botner, dype daler og fjorder. Stein i sålen sliper. Det gir skuringsstriper.
         Materialet avsettes som usortert morene, eller sorteres av breelver til sand og grus. Når
         isen sto ut i fjorden, ble leire og silt avsatt i saltvann.
@@ -154,12 +155,12 @@ function JordsystemenePage() {
         Aske faller ut av stratosfæren i løpet av dager til uker og har liten klimaeffekt. SO₂ som
         når stratosfæren, omdannes til sulfataerosoler som reflekterer sollys og kan kjøle
         troposfæren. Pinatubo 15. juni 1991 injiserte om lag 20 millioner tonn SO₂ og kjølte
-        jordoverflaten i et par år.
+        jordoverflaten i et par år (USGS, u.å.).
       </p>
       <p>
         Vulkaner slipper også CO₂, men dagens vulkanske utslipp er noen tiendedels gigatonn per år
-        mot antropogene utslipp på over 35 Gt. Kort sikt er SO₂ og aske, ikke at vulkanene varmer
-        klimaet.
+        mot antropogene utslipp på over 35 Gt (Gerlach, 2011). Kort sikt er SO₂ og aske, ikke at
+        vulkanene varmer klimaet.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
@@ -181,8 +182,8 @@ function JordsystemenePage() {
       </p>
       <p>
         Mer CO₂ gir varmere klima, mer nedbør og raskere silikatforvitring. Da bindes mer karbon i
-        karbonatbergarter, og CO₂ faller. Det er negativ tilbakekobling. Fjellkjededannelse leverer
-        ferskt silikatberg til overflaten og kan øke forvitringen.
+        karbonatbergarter, og CO₂ faller. Det er negativ tilbakekobling (Walker et al., 1981).
+        Fjellkjededannelse leverer ferskt silikatberg til overflaten og kan øke forvitringen.
       </p>
       <p>
         Kalksteinforvitring pumper også HCO₃⁻ til elvene, men netto trekker den ikke CO₂ ut av

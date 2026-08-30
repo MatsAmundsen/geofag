@@ -39,9 +39,9 @@ function BergarterOgLandformerPage() {
       />
 
       <p>
-        NGU skiller tre hovedtyper etter opprinnelse: magmatiske, sedimentære og metamorfe.
-        Magmatiske og metamorfe utgjør 90–95 prosent av jordskorpa. På overflaten er det likevel
-        sediment og sedimentære lag du oftest går på.
+        NGU skiller tre hovedtyper etter opprinnelse: magmatiske, sedimentære og metamorfe (NGU,
+        u.å.). Magmatiske og metamorfe utgjør 90–95 prosent av jordskorpa. På overflaten er det
+        likevel sediment og sedimentære lag du oftest går på.
       </p>
       <p>
         Mohs er relativ riperhardhet. Kvarts er 7, diamant er 10. Mohs gjelder mineraler, ikke
@@ -70,9 +70,9 @@ function BergarterOgLandformerPage() {
       <p>
         Magmatisk bergart er størknet magma eller lava. Sakte avkjøling nede gir store, synlige
         korn: dypbergart. Rask avkjøling oppe gir finkornet grunnmasse: dagbergart. Larvikitt er
-        dypbergart, dannet for cirka 290 millioner år siden. Rombeporfyr er dagbergart, Oslofeltets
-        signatur: store rombeformede feltspatkrystaller i finkornet grunnmasse. NGU kaller dem
-        tvillingbergarter. Forskjellen er avkjølingssted, ikke to ulike magmaer.
+        dypbergart, dannet for cirka 290 millioner år siden (NGU, u.å.). Rombeporfyr er dagbergart,
+        Oslofeltets signatur: store rombeformede feltspatkrystaller i finkornet grunnmasse. NGU
+        kaller dem tvillingbergarter. Forskjellen er avkjølingssted, ikke to ulike magmaer.
       </p>
       <OrdBoks ord="Magmatisk" barn="Størknet magma eller lava. Dyp nede, dag oppe." />
       <p>
@@ -98,9 +98,9 @@ function BergarterOgLandformerPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Bergartssyklusen</h2>
       <p>
         Syklusen er en modell. Piler i flere retninger, ingen fast start. Enhver bergart kan bli en
-        annen. Ingen bergart må besøke alle stasjoner. Indre varme driver smelting, magma og
-        metamorfose. Forvitring, erosjon og avsetning driver overflateleddet. Diagenese lukker
-        sediment til bergart.
+        annen. Ingen bergart må besøke alle stasjoner (USGS, u.å.). Indre varme driver smelting,
+        magma og metamorfose. Forvitring, erosjon og avsetning driver overflateleddet. Diagenese
+        lukker sediment til bergart.
       </p>
       <OrdBoks
         ord="Diagenese"
@@ -133,8 +133,8 @@ function BergarterOgLandformerPage() {
       <OrdBoks ord="Diskordans" barn="Tidshull: avsetning stoppet og/eller erosjon tok bort lag." />
       <p>
         C-14 daterer organisk materiale, ikke kambrosilur, gneis eller larvikitt. Halveringstid 5730
-        år. Rekkevidde cirka 50 000 år. Etter mange halveringer er det for lite C-14 igjen. Gammel
-        skorpe dateres med U–Pb i zirkon.
+        år (Godwin, 1962). Rekkevidde cirka 50 000 år (Reimer et al., 2020). Etter mange halveringer
+        er det for lite C-14 igjen. Gammel skorpe dateres med U–Pb i zirkon.
       </p>
       <OrdBoks
         ord="C-14"

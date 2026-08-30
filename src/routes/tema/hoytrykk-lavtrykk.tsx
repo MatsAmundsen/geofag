@@ -26,13 +26,13 @@ function TrykkPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">Lufttrykk</h2>
       <p>
         Luft har vekt. Trykket i et punkt er vekten av luftsøylen over. Derfor faller trykket med
-        høyden.
+        høyden (NOAA, u.å.).
       </p>
       <OrdBoks ord="Lufttrykk" barn="Vekten av luftsøylen over. Faller med høyden." />
       <p>
         Et lavtrykk er et område med lavere trykk enn omgivelsene. Et høytrykk er et område med
-        høyere trykk enn omgivelsene. Tallene er alltid relative. Samme hPa-verdi kan være lavtrykk
-        i ett kart og høytrykk i et annet, avhengig av naboen.
+        høyere trykk enn omgivelsene (MET, u.å.). Tallene er alltid relative. Samme hPa-verdi kan
+        være lavtrykk i ett kart og høytrykk i et annet, avhengig av naboen.
       </p>
 
       <PhotoFigure
@@ -97,7 +97,7 @@ function TrykkPage() {
       />
       <p>
         Nesten alt vær skjer i troposfæren. Der avtar temperaturen med høyden, typisk om lag 6,5 °C
-        per km. Tropopausen ligger om lag 8 km over polene og 16–18 km over tropene.
+        per km. Tropopausen ligger om lag 8 km over polene og 16–18 km over tropene (NOAA, u.å.).
       </p>
       <p>
         Over tropopausen ligger stratosfæren. Der øker temperaturen med høyden, fordi ozon

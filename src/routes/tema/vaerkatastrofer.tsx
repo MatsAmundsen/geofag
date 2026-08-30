@@ -43,13 +43,14 @@ function KatastroferPage() {
         Tropisk syklon: varmt hav og en bøy
       </h2>
       <p>
-        En tropisk syklon er et lavtrykk som lever av varmt hav. Vannet må være varmt et godt stykke
-        ned, ikke bare i en tynn hinne. Når vannet fordamper og kondenserer i tårnskyene, slippes
-        varme løs i lufta. Luften stiger. Trykket i midten synker. Mer luft strømmer inn nede.
+        En tropisk syklon er et lavtrykk som lever av varmt hav (NHC, u.å.). Vannet må være varmt et
+        godt stykke ned, ikke bare i en tynn hinne. Når vannet fordamper og kondenserer i tårnskyene,
+        slippes varme løs i lufta. Luften stiger. Trykket i midten synker. Mer luft strømmer inn nede.
       </p>
       <p>
         Coriolis bøyer innstrømningen. I nord spinner systemet mot klokken. I sør med klokken. På
-        ekvator er coriolis for svak. Derfor fødes ikke orkaner der — selv om havet er varmt.
+        ekvator er coriolis for svak (NOAA, u.å.). Derfor fødes ikke orkaner der — selv om havet er
+        varmt.
       </p>
       <OrdBoks
         ord="Øyet"
@@ -130,8 +131,9 @@ function KatastroferPage() {
         synker lufta og tørker. Samme celle, to utfall — du har sett det i vindkapitlet.
       </p>
       <p>
-        I et varmere klima holder lufta mer fukt. Samme fjell, mer vann i skyene, mer intens nedbør.
-        Det er derfor «ekstremnedbør» er en klimarisiko i Norge, ikke bare et vestlandsvær.
+        I et varmere klima holder lufta mer fukt. Samme fjell, mer vann i skyene, mer intens nedbør
+        (Norsk klimaservicesenter, u.å.). Det er derfor «ekstremnedbør» er en klimarisiko i Norge,
+        ikke bare et vestlandsvær.
       </p>
       <OrdBoks
         ord="Orografisk nedbør"
@@ -160,8 +162,8 @@ function KatastroferPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Stormflo</h2>
       <p>
         Vind kan stable vann mot kysten. Lavtrykk kan løfte havoverflaten fordi lufta over veier
-        mindre. Treffer det springflo, blir det stormflo. Da er det ikke bare bølger — det er selve
-        vannstanden som kommer inn over kaia.
+        mindre. Treffer det springflo, blir det stormflo (Kartverket, u.å.). Da er det ikke bare
+        bølger — det er selve vannstanden som kommer inn over kaia.
       </p>
       <p>
         Havnivået stiger i et varmere klima. Da trenger stormen mindre hjelp for å nå samme terskel.
@@ -194,7 +196,7 @@ function KatastroferPage() {
       <p>
         Klimaendring lager ikke en ny fysikk. Den endrer rammene. Varmere hav gir tropiske sykloner
         mer energi å tære på. Varmere luft bærer mer fukt, så ekstremnedbør kan bli mer intens.
-        Høyere hav gjør stormflo farligere.
+        Høyere hav gjør stormflo farligere (IPCC, 2021).
       </p>
       <p>
         Det betyr ikke at «hver storm er menneskeskapt». Det betyr at terningen er blitt tyngre på

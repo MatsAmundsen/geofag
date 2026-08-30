@@ -28,8 +28,8 @@ function NumeriskeModellerPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">Tre bruk</h2>
       <p>
         Værvarsling er et startverdiproblem. Tidsskalaen er timer til om lag to uker. Små feil i
-        starttilstanden vokser raskt. Det kalles kaos. Derfor investerer varslingssentre mer i
-        observasjoner og assimilering enn i å bare kjøre modellen lenger.
+        starttilstanden vokser raskt. Det kalles kaos (Lorenz, 1963). Derfor investerer
+        varslingssentre mer i observasjoner og assimilering enn i å bare kjøre modellen lenger.
       </p>
       <OrdBoks
         ord="Kaos"
@@ -70,10 +70,10 @@ function NumeriskeModellerPage() {
         barn="Forenklet beskrivelse av prosesser som er for små eller for komplekse til å løses eksplisitt."
       />
       <p>
-        Operasjonell oppløsning: ECMWF globalt på rundt 9 km. MEPS og AROME-Arctic 2,5 km. Norkyst
-        800 m. Finere rutenett løser ikke alt. Det gir bedre topografi, kystlinje og konveksjon, men
-        krever bedre initialdata, bedre fysikk og langt mer regnekraft. En halvering av gridavstand
-        gir omtrent åtte ganger mer regning i 3D, pluss kortere tidssteg.
+        Operasjonell oppløsning: ECMWF globalt på rundt 9 km (ECMWF, u.å.). MEPS og AROME-Arctic 2,5
+        km. Norkyst 800 m. Finere rutenett løser ikke alt. Det gir bedre topografi, kystlinje og
+        konveksjon, men krever bedre initialdata, bedre fysikk og langt mer regnekraft. En
+        halvering av gridavstand gir omtrent åtte ganger mer regning i 3D, pluss kortere tidssteg.
       </p>
       <p>
         Når oppløsningen blir fin nok til at dyp konveksjon løses eksplisitt, som i MEPS, skrus den
@@ -115,22 +115,22 @@ function NumeriskeModellerPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Norge</h2>
       <p>
-        MEPS er den regionale modellen for Norden, 2,5 km, 30 medlemmer, ut til ca. 66 timer.
-        AROME-Arctic er 2,5 km over Arktis, brukt for Svalbard og nordlige havområder. ECMWF er det
-        globale systemet, ca. 9 km, ut til 15 døgn. Norkyst er kysthavmodellen, 800 m, 40 lag,
+        MEPS er den regionale modellen for Norden, 2,5 km, 30 medlemmer, ut til ca. 66 timer (MET,
+        u.å.). AROME-Arctic er 2,5 km over Arktis, brukt for Svalbard og nordlige havområder. ECMWF
+        er det globale systemet, ca. 9 km, ut til 15 døgn. Norkyst er kysthavmodellen, 800 m, 40 lag,
         120-timers varsel.
       </p>
       <p>
         På yr.no dekkes de første ca. 60 timene over Norden av MEPS, Arktis av AROME-Arctic, og 2–10
-        døgn av ECMWF-ensemble. Når varslet svinger fra dag til dag på dag 7–9, er det ensemblets
-        spredning du ser.
+        døgn av ECMWF-ensemble (MET, u.å.). Når varslet svinger fra dag til dag på dag 7–9, er det
+        ensemblets spredning du ser.
       </p>
       <p>
         Norkyst drives av vind og trykk fra den regionale atmosfæremodellen. Bruk: oljevern,
         search-and-rescue, lakselus, skipstrafikk. Havet er både kilde til prediktabilitet på
         sesong, og kilde til usikkerhet i klima.
       </p>
-      <p>Tall og vurderinger bygger på IPCC AR6. Syvende hovedrapport er ikke publisert.</p>
+      <p>Tall og vurderinger bygger på IPCC AR6 (IPCC, 2021). Syvende hovedrapport er ikke publisert.</p>
 
       <Callout title="Kompetansemål">
         <p>

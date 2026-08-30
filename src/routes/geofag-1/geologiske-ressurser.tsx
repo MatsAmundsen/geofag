@@ -51,15 +51,16 @@ function GeologiskeRessurserPage() {
       />
       <p>
         Naturstein sages, spaltes eller hugges. Larvikitt er Norges nasjonalbergart og landets
-        viktigste naturstein. Den er en dypbergart med to feltspattyper som gir fargespill, dannet
-        for cirka 290 millioner år siden i Oslofeltet, og brytes i Vestfold og Telemark. Marmor og
-        skifer er andre natursteiner.
+        viktigste naturstein (NGU, u.å.). Den er en dypbergart med to feltspattyper som gir
+        fargespill, dannet for cirka 290 millioner år siden i Oslofeltet, og brytes i Vestfold og
+        Telemark. Marmor og skifer er andre natursteiner.
       </p>
       <p>
         Pukk er knust fjell: gneis, granitt, kvartsitt, gabbro eller syenitt. Sand og grus kommer
         fra løsmasser, særlig glasifluviale avsetninger. Det er ikke fornybart på menneskelig
-        tidsskala. Pukk og grus er samfunnets største mineraluttak i volum. De kan ikke importeres
-        billig over lange avstander. Derfor ligger uttak i de fleste kommuner.
+        tidsskala. Pukk og grus er samfunnets største mineraluttak i volum (NGU, u.å.; Direktoratet
+        for mineralforvaltning, u.å.). De kan ikke importeres billig over lange avstander. Derfor
+        ligger uttak i de fleste kommuner.
       </p>
       <OrdBoks
         ord="pukk"
@@ -75,8 +76,8 @@ function GeologiskeRessurserPage() {
         dekket av tett skifer, holder den. Uten felle lekker alt til overflaten.
       </p>
       <p>
-        Ekofisk ble påvist i 1969. Reservoaret er oppsprukket kritt på om lag 3000 m. Olje kommer
-        ikke av dinosaurer. Hovedkilden er marint plankton.
+        Ekofisk ble påvist i 1969. Reservoaret er oppsprukket kritt på om lag 3000 m
+        (Sokkeldirektoratet, u.å.). Olje kommer ikke av dinosaurer. Hovedkilden er marint plankton.
       </p>
       <FraBergartTilBruddDiagram />
 
@@ -93,7 +94,8 @@ function GeologiskeRessurserPage() {
         fjernes, stuff sprenges, massene knuses og sorteres. Arealinngrepet er synlig. Støy, støv
         og avrenning er lokale konflikter. Underjordsgruve har mindre overflate, annen HMS. På
         sokkelen går brønner inn i reservoaret. Ekofisk startet med forventet utvinningsgrad 17
-        prosent. Vanninjeksjon fra 1987 har løftet den til over 50 prosent.
+        prosent. Vanninjeksjon fra 1987 har løftet den til over 50 prosent (Sokkeldirektoratet,
+        u.å.).
       </p>
       <p>
         Oppredning skiller verdifulle mineraler fra gangbergart. Resten er avgang. Den deponeres på
@@ -137,11 +139,11 @@ function GeologiskeRessurserPage() {
         <p>
           Engebø i Førdefjorden er en drøfting, ikke et fasitsvar. Fakta: prosjektet tar ut rutil,
           et titanråstoff, og granat, med sjødeponi i nasjonal laksefjord. Høyesterett kjente
-          tillatelsene ugyldige 17. juni 2026 fordi begrunnelsen ikke oppfylte vanndirektivet.
-          Endelig vedtak om midlertidig tillatelse var ikke ferdig 28. august 2026. Verdier:
-          arbeidsplasser og europeisk råvare mot fjord, villaks og føre-var. Urfolk er ikke kjernen
-          i denne saken. Jussen kan stoppe et prosjekt selv når geologien og investeringene er på
-          plass.
+          tillatelsene ugyldige 17. juni 2026 fordi begrunnelsen ikke oppfylte vanndirektivet
+          (Høyesterett, 2026). Endelig vedtak om midlertidig tillatelse var ikke ferdig 28. august
+          2026. Verdier: arbeidsplasser og europeisk råvare mot fjord, villaks og føre-var. Urfolk
+          er ikke kjernen i denne saken. Jussen kan stoppe et prosjekt selv når geologien og
+          investeringene er på plass.
         </p>
       </Callout>
 

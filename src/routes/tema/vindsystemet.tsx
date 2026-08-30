@@ -33,8 +33,8 @@ function VindsystemetPage() {
       <p>
         Ved ekvator står sola høyt. Strålene treffer nesten rett på, på et lite areal. Mot polene
         treffer de skrått og smøres utover. Tropene får derfor mer energi enn de sender ut igjen.
-        Polene får mindre. Uten luft og hav ville tropene blitt stadig varmere og polene stadig
-        kaldere.
+        Polene får mindre (NASA, u.å.). Uten luft og hav ville tropene blitt stadig varmere og polene
+        stadig kaldere.
       </p>
       <OrdBoks
         ord="Strålingsbalanse"
@@ -75,7 +75,7 @@ function VindsystemetPage() {
       <p>
         På en jord som ikke roterte, kunne man tenke seg ett stort kretsløp: opp ved ekvator, ned
         ved polen. Jorda roterer. Lufta rekker ikke polen før den bøyes av og synker. Derfor får
-        hver halvkule tre kretsløp i stedet for ett.
+        hver halvkule tre kretsløp i stedet for ett (NOAA, u.å.).
       </p>
       <p>
         Hadley og polarcellen er «motorer»: luft stiger der det er varmt (eller møtes langs
@@ -238,9 +238,9 @@ function VindsystemetPage() {
 
       <p>
         Beltene er et middelbilde. Fjell, hav og årstid flytter grensene. Det tropiske regnbelte
-        vandrer med sola gjennom året og gir savanne regn om sommeren. Vestlandet er våtere enn
-        beltet alene skulle tilsi — fjellet løfter lufta. Labrador er kaldere enn Norge på samme
-        bredde — havstrømmen er en annen. Det tar vi i hav-kapittelet.
+        vandrer med sola gjennom året og gir savanne regn om sommeren (NOAA, u.å.). Vestlandet er
+        våtere enn beltet alene skulle tilsi — fjellet løfter lufta. Labrador er kaldere enn Norge
+        på samme bredde — havstrømmen er en annen. Det tar vi i hav-kapittelet.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">

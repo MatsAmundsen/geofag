@@ -29,7 +29,7 @@ function KlimaPage() {
       <p>
         En mild januaruke er vær. At Vestlandet er vått, og at norskekysten på 60°N er mildere enn
         Labrador på samme bredde — det er klima. Klima er statistikken: typisk temperatur, nedbør,
-        vind og is over minst tretti år.
+        vind og is over minst tretti år (WMO, u.å.).
       </p>
       <p>
         Derfor kan du ikke «motbevise» klimaendring med én kald vinter. Og du kan ikke «bevise» den
@@ -88,8 +88,8 @@ function KlimaPage() {
       </p>
       <p>
         Enkelte gasser i lufta — vanndamp, karbondioksid, metan — slipper sollyset inn, men bremser
-        varmen på vei ut. Uten dem ville jorda vært en frossen stein. Med for mye av dem stiger
-        temperaturen.
+        varmen på vei ut (NASA, u.å.). Uten dem ville jorda vært en frossen stein. Med for mye av
+        dem stiger temperaturen.
       </p>
       <OrdBoks
         ord="Drivhuseffekt"
@@ -166,8 +166,8 @@ function KlimaPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Havet husker</h2>
       <p>
-        Det meste av overskuddsvarmen de siste tiårene har gått i havet, ikke i lufta. Derfor kan
-        lufttemperaturen svinge fra år til år, mens havet jevnt tar opp mer energi.
+        Det meste av overskuddsvarmen de siste tiårene har gått i havet, ikke i lufta (NASA, u.å.).
+        Derfor kan lufttemperaturen svinge fra år til år, mens havet jevnt tar opp mer energi.
       </p>
       <p>
         AMOC — beltet du møtte under havstrømmer — er en del av dette minnet. Smelter mer is og
@@ -209,7 +209,8 @@ function KlimaPage() {
       </p>
       <p>
         La Niña er den andre siden: sterkere passater, enda varmere i vest, kjøligere i øst. ENSO er
-        naturlig. Den er ikke det samme som global oppvarming. Men den rir oppå et varmere hav.
+        naturlig (NOAA, u.å.). Den er ikke det samme som global oppvarming. Men den rir oppå et
+        varmere hav.
       </p>
       <OrdBoks
         ord="ENSO"
@@ -275,9 +276,9 @@ function KlimaPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Det mennesket gjør</h2>
       <p>
         Når vi brenner kull, olje og gass, slipper vi ut karbon som har ligget i berggrunnen.
-        Karbondioksid i lufta stiger. Det er et positivt strålingspådriv. Vanndamp og is-albedo
-        forsterker. Havet tar unna mye varme, men ikke alt — og det blir surere når det tar opp
-        karbondioksid.
+        Karbondioksid i lufta stiger. Det er et positivt strålingspådriv (IPCC, 2021). Vanndamp og
+        is-albedo forsterker. Havet tar unna mye varme, men ikke alt — og det blir surere når det
+        tar opp karbondioksid.
       </p>
       <p>
         Naturlig drivhuseffekt er ikke det samme som menneskeskapt forsterkning. Den første gjør

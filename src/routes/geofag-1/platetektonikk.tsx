@@ -44,8 +44,8 @@ function PlatetektonikkPage() {
         Platene beveger seg fordi mantelen har langsomme strømmer. De kalles konveksjon og drives av
         varme fra jordas indre. Den viktigste trekkraften ved konvergens er likevel at kald, tett
         havbunn synker: slab pull. Farten er noen centimeter i året. Den midtatlantiske ryggen sprer
-        i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15 cm per år. GPS viser at
-        dagens retning og fart stemmer med mønsteret over millioner av år.
+        i gjennomsnitt om lag 2,5 cm per år. Øst-Stillehavsryggen over 15 cm per år (NOAA, u.å.). GPS
+        viser at dagens retning og fart stemmer med mønsteret over millioner av år.
       </p>
       <OrdBoks ord="Konveksjon" barn="Langsomme mantelstrømmer drevet av indre varme." />
       <OrdBoks
@@ -110,8 +110,8 @@ function PlatetektonikkPage() {
       </p>
       <p>
         Transformgrense: platene glir sidelengs. Det lages ikke ny skorpe, og det ødelegges heller
-        ikke skorpe. San Andreas beveger seg om lag 5 cm per år. På havbunn forskyver transformene
-        ryggen i sikksakk. Jordskjelv, lite vulkanisme.
+        ikke skorpe. San Andreas beveger seg om lag 5 cm per år (USGS, u.å.). På havbunn forskyver
+        transformene ryggen i sikksakk. Jordskjelv, lite vulkanisme.
       </p>
       <OrdBoks
         ord="Transformgrense"
@@ -124,15 +124,15 @@ function PlatetektonikkPage() {
       <p>
         Norge ligger inne på den eurasiske platen, ikke på en aktiv plategrense. Grensen er
         midthavsryggen vest for oss. Norge er likevel blant de mest skjelvaktive områdene i
-        Nord-Europa. Bare et fåtall skjelv har gitt bygningsskade. Det er intraplate-skjelv: gamle
-        forkastninger som reaktiveres, landheving etter istiden, og spredning i Norskehavet som
-        setter platen under strekk.
+        Nord-Europa. Bare et fåtall skjelv har gitt bygningsskade (NORSAR, u.å.). Det er
+        intraplate-skjelv: gamle forkastninger som reaktiveres, landheving etter istiden, og
+        spredning i Norskehavet som setter platen under strekk.
       </p>
       <p>
         Oslofeltet er en død rift, en paleorift. For om lag 310 millioner år siden sprakk skorpa opp
-        fra Skagerrak til Østerdalen. I perm: riftdal, strekk, store forkastninger og vulkaner. I
-        dag ser vi graben, lava og dypbergart, og forkastningskanter mot grunnfjellet. Det er
-        konsekvens av gammel indre bevegelse, ikke en aktiv plategrense.
+        fra Skagerrak til Østerdalen (NGU, u.å.). I perm: riftdal, strekk, store forkastninger og
+        vulkaner. I dag ser vi graben, lava og dypbergart, og forkastningskanter mot grunnfjellet.
+        Det er konsekvens av gammel indre bevegelse, ikke en aktiv plategrense.
       </p>
       <OrdBoks
         ord="Rift"
@@ -140,17 +140,18 @@ function PlatetektonikkPage() {
       />
       <p>
         Kaledonidene ble til for 400–500 millioner år siden, da landområder i dagens Europa
-        kolliderte med Amerika og Grønland. Store bergflak ble skjøvet som skyvedekker. Fjellene du
-        går i, er erodert rot. Is og elv har skåret i kaledonsk struktur. De har ikke bygd den.
+        kolliderte med Amerika og Grønland (NGU, u.å.). Store bergflak ble skjøvet som skyvedekker.
+        Fjellene du går i, er erodert rot. Is og elv har skåret i kaledonsk struktur. De har ikke
+        bygd den.
       </p>
       <p>
         Jan Mayen ligger på ryggsystemet i Norskehavet. Ny havbunn, jordskjelv langs ryggen,
         vulkaner. Beerenberg er Norges eneste aktive vulkan over havet, 2277 meter. Siste utbrudd i
-        1985.
+        1985 (Norsk Polarinstitutt, u.å.).
       </p>
       <p>
         Etter istiden reiste litosfæren seg. Det kalles isostasi. Marine avsetninger som ble lagt i
-        fjord, ligger nå over havnivå. Marin grense er 0–220 m.
+        fjord, ligger nå over havnivå. Marin grense er 0–220 m (NGU, u.å.).
       </p>
       <OrdBoks
         ord="Isostasi"
