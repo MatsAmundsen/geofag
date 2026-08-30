@@ -12,7 +12,14 @@ import { topicHead } from "@/lib/seo";
 
 type View = "oppgaver" | "losningsforslag";
 
+type ExamSearch = {
+  vis?: View;
+};
+
 export const Route = createFileRoute("/eksamen/$slug")({
+  validateSearch: (search: Record<string, unknown>): ExamSearch => ({
+    vis: search.vis === "losningsforslag" ? "losningsforslag" : undefined,
+  }),
   head: ({ params }) => {
     const set = examSet(params.slug);
     return topicHead({
@@ -28,9 +35,18 @@ export const Route = createFileRoute("/eksamen/$slug")({
 
 function ExamSetPage() {
   const { slug } = Route.useParams();
+  const { vis } = Route.useSearch();
+  const navigate = Route.useNavigate();
   const set = examSet(slug);
   if (!set) throw notFound();
-  const [view, setView] = useState<View>("oppgaver");
+  const view: View = vis === "losningsforslag" ? "losningsforslag" : "oppgaver";
+
+  function setView(next: View) {
+    void navigate({
+      search: { vis: next === "losningsforslag" ? "losningsforslag" : undefined },
+      replace: true,
+    });
+  }
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -40,7 +56,7 @@ function ExamSetPage() {
           <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
             <p className="text-xs font-medium uppercase tracking-wider text-primary">
               <Link to="/eksamen" className="hover:underline">
-                Eksamensoppgaver
+                Eksamen
               </Link>
               {" · "}
               REA3043

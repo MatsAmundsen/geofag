@@ -705,10 +705,28 @@ export const KILDER = {
   ],
   eksamen: [
     {
-      prefix: "Utdanningsdirektoratet. (u.å.). ",
-      italic: "Geofag 2 (REA3043) — tidligere eksamensoppgaver",
+      prefix: "Utdanningsdirektoratet. (u.å.-a). ",
+      italic: "Geofag 2 (REA3043) — eksamensinformasjon",
       suffix: ".",
       href: "https://kandidat.udir.no/eksamensinfo/REA3043",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-b). ",
+      italic: "Eksamensplan — Geofag 2 (REA3043)",
+      suffix: ".",
+      href: "https://eksamensplan.udir.no/eksamen/REA3043",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-c). ",
+      italic: "Eksamen i sikker nettleser",
+      suffix: ".",
+      href: "https://www.udir.no/eksamen-og-prover/eksamen/slik-endrer-vi-eksamen/eksamensfag-med-sikker-nettleser/",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-d). ",
+      italic: "Forberede og ta eksamen",
+      suffix: ".",
+      href: "https://www.udir.no/eksamen-og-prover/eksamen/forberede-og-ta-eksamen/",
     },
     {
       prefix: "Utdanningsdirektoratet. (u.å.). ",
