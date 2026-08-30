@@ -230,7 +230,7 @@ function MilankovitchPage() {
         barn="Banen er pacemaker. Isalbedo og CO₂ er forsterkere. Uten forsterkerne ville istidene vært mindre. Uten banen ville de ikke gått i 41- og 100-tusenårsrytme."
       />
       <p>
-        På tiårsskalaen merker du ikke Milankovitch. På hundredetusenårsskalaen er det denne
+        På tiårsskalaen merker du ikke Milankovitch. På hundretusenårsskalaen er det denne
         rytmen som skiller glacial fra interglacial. Det er derfor iskjerner og havbunn viser åtte
         store sykluser de siste 800 000 årene, mens termometerrekka siden 1850 peker en annen vei.
       </p>
@@ -284,7 +284,7 @@ function MilankovitchPage() {
       <p>
         Isen er frosset nedbør. For tørt, og det faller for lite snø selv om sommeren er kald.
         Nord-Atlanteren og fukttransport inn mot Nord-Amerika og Fennoskandia gir den nedbøren
-        isdekkene trenger. Paradoxet er kjent: et isdekke kan kvele sitt eget fukttilfang når det
+        isdekkene trenger. Paradokset er kjent: et isdekke kan kvele sitt eget fukttilfang når det
         blir stort og høytrykk legger seg over det. Starten krever likevel fukt. Sibir har ofte
         vært kaldt og tørt — der ble isdekkene tynnere enn over Skandinavia.
       </p>
@@ -319,7 +319,7 @@ function MilankovitchPage() {
       </h3>
       <p>
         I iskjerner følger CO₂ temperaturen gjennom istidssyklusene, med et kjent etterslep på
-        hundredårsskala fordi boblene lukkes sent. Det betyr ikke at CO₂ er irrelevant. Kaldt hav
+        hundreårsskala fordi boblene lukkes sent. Det betyr ikke at CO₂ er irrelevant. Kaldt hav
         løser mer CO₂. Biologisk pumpe og omrøring i Sørishavet endres. Vegetasjon og jordsmonn
         flytter karbon. Resultatet: ca. 180–190 ppm ved siste glacialmaksimum mot ca. 280 ppm før
         industrialiseringen (Lüthi et al., 2008; IPCC, 2021). Lavere CO₂ gir svakere drivhuseffekt
