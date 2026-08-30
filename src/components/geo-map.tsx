@@ -1,29 +1,20 @@
 /**
  * Supplementary Leaflet map for place context. It does not replace the SVG
- * diagrams used elsewhere in the app. The map mounts only in the browser via
- * `ClientOnly` (Leaflet touches `window`/`document` and cannot run during SSR),
- * uses OpenStreetMap tiles, and never tracks live location — center, zoom and
- * markers come from props only.
+ * diagrams used elsewhere in the app. The Leaflet implementation
+ * (`geo-map-leaflet.tsx`) is loaded with `React.lazy` and only rendered
+ * inside `ClientOnly`, because Leaflet runs browser feature-detection at
+ * module-import time (`window`/`document`) and would crash SSR on the
+ * Cloudflare Worker otherwise — a plain runtime render-gate is not enough,
+ * the *import itself* has to be deferred to the client. Uses OpenStreetMap
+ * tiles and never tracks live location — center, zoom and markers come from
+ * props only.
  */
 import { ClientOnly } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import type { JSX } from "react";
-import L from "leaflet";
-import iconUrl from "leaflet/dist/images/marker-icon.png";
-import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
-import shadowUrl from "leaflet/dist/images/marker-shadow.png";
-import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { cn } from "@/lib/utils";
 
-const defaultMarkerIcon = L.icon({
-  iconUrl,
-  iconRetinaUrl,
-  shadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+const LeafletMap = lazy(() => import("./geo-map-leaflet"));
 
 const mapFrameClassName = "h-80 w-full sm:h-96";
 
@@ -33,34 +24,6 @@ export type GeoMapMarker = {
   /** Shown in the marker's popup, e.g. a place name. */
   label: string;
 };
-
-function LeafletMap({
-  center,
-  zoom,
-  markers = [],
-}: {
-  center: [number, number];
-  zoom: number;
-  markers?: GeoMapMarker[];
-}) {
-  return (
-    <MapContainer center={center} zoom={zoom} className={mapFrameClassName}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsytere'
-      />
-      {markers.map((m) => (
-        <Marker
-          key={`${m.lat},${m.lng},${m.label}`}
-          position={[m.lat, m.lng]}
-          icon={defaultMarkerIcon}
-        >
-          <Popup>{m.label}</Popup>
-        </Marker>
-      ))}
-    </MapContainer>
-  );
-}
 
 export function GeoMap({
   center,
@@ -79,20 +42,19 @@ export function GeoMap({
   heading?: string;
   className?: string;
 }): JSX.Element {
+  const placeholder = <div className={cn("bg-muted", mapFrameClassName)} />;
+
   return (
-    <figure
-      className={cn(
-        "my-8 overflow-hidden rounded-xl border border-border bg-card",
-        className,
-      )}
-    >
+    <figure className={cn("my-8 overflow-hidden rounded-xl border border-border bg-card", className)}>
       {heading ? (
         <p className="border-b border-border px-4 py-3 text-sm font-medium text-foreground sm:px-6">
           {heading}
         </p>
       ) : null}
-      <ClientOnly fallback={<div className={cn("bg-muted", mapFrameClassName)} />}>
-        <LeafletMap center={center} zoom={zoom} markers={markers} />
+      <ClientOnly fallback={placeholder}>
+        <Suspense fallback={placeholder}>
+          <LeafletMap center={center} zoom={zoom} markers={markers} className={mapFrameClassName} />
+        </Suspense>
       </ClientOnly>
       <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6">
         {caption}
