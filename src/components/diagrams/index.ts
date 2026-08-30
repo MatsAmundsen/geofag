@@ -41,6 +41,7 @@ export {
   GulfVsNacDiagram,
   GyreDiagram,
   OceanDriversDiagram,
+  UpwellingDiagram,
 } from "./ocean";
 export {
   DmiTimeseriesDiagram,

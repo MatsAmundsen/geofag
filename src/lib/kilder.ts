@@ -413,6 +413,12 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/climate-change-atlantic-meridional-overturning-circulation",
     },
     {
+      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
+      italic: "What is upwelling?",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/facts/upwelling.html",
+    },
+    {
       prefix: "Intergovernmental Panel on Climate Change. (2021). ",
       italic:
         "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
