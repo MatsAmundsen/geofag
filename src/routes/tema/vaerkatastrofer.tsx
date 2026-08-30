@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { HurricaneSpinModel } from "@/components/models/hurricane-spin-model";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -69,6 +70,8 @@ function KatastroferPage() {
         ord="Tropisk syklon"
         barn="Fellesnavn for orkan, tyfon og syklon: et varmkjerne-lavtrykk over tropisk hav, drevet av kondensasjonsvarme og formet av coriolis. Øyet er det stille senteret."
       />
+
+      <HurricaneSpinModel />
 
       <PhotoPair
         heading="Orkanen og brenselet"

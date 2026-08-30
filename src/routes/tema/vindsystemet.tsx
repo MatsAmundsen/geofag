@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -138,6 +139,8 @@ function VindsystemetPage() {
         ord="Hadley-, Ferrel- og polarcellen"
         barn="Tre store, gjennomsnittlige kretsløp i lufta på hver halvkule. De er et middelbilde over uker og måneder — ikke tre faste rør du ser på satellittbildet i dag."
       />
+
+      <WindSystemModel />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Hadley-cellen: regn og ørken i samme sløyfe

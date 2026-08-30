@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { OceanCurrentModel } from "@/components/models/ocean-current-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -212,6 +213,8 @@ function HavstrommerPage() {
         ord="AMOC"
         barn="Den atlantiske omveltningen: varmt nordover i overflaten, kaldt sørover i dypet. Inkluderer både Den nordatlantiske strømmen og det dype returløpet. Ikke en bryter som slår av Golfstrømmen på en dag."
       />
+
+      <OceanCurrentModel />
 
       <PhotoFigure
         src="/images/fig-amoc.jpg"
