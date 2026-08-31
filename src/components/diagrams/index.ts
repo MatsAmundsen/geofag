@@ -45,7 +45,16 @@ export {
 export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
 export { SeaBreezeDiagram } from "./pressure";
 export { ModelGridDiagram } from "./models";
-export { PaleoDiagram } from "./paleo";
+export {
+  AbruptClimateChangeDiagram,
+  DeglaciationFeedbackDiagram,
+  IceCoreAnatomyDiagram,
+  KvartarTimeSeriesDiagram,
+  MilankovitchCyclesDiagram,
+  OxygenIsotopeDiagram,
+  PaleoDiagram,
+  Sommersol65NDiagram,
+} from "./paleo";
 export { BoundaryQuakesDiagram } from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { SpheresDiagram } from "./spheres";
