@@ -43,7 +43,13 @@ function MilankovitchPage() {
       next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
       kilder={KILDER.milankovitch}
     >
-      <h2 className="font-display text-2xl font-medium tracking-tight">
+      <Callout title="Videooppsummering">
+        <p>
+          Lyst på en visuell gjennomgang? Nederst på denne siden finner du videoen <b>«Jordens kosmiske urverk»</b> som oppsummerer hele temaet.
+        </p>
+      </Callout>
+
+      <h2 className="font-display text-2xl font-medium tracking-tight mt-8">
         1. Hva er Milankovitch-syklusen?
       </h2>
       <p>
@@ -485,6 +491,21 @@ function MilankovitchPage() {
       </p>
 
       <GlacialLandformsDiagram />
+
+      <div className="my-12">
+        <h2 className="font-display text-2xl font-medium tracking-tight mb-4">
+          Oppsummering: Jordens kosmiske urverk
+        </h2>
+        <div className="rounded-xl overflow-hidden shadow-lg ring-1 ring-slate-200 dark:ring-slate-800">
+          <video 
+            controls 
+            className="w-full aspect-video bg-black"
+          >
+            <source src="/videos/jordens_kosmiske_urverk.mp4" type="video/mp4" />
+            Nettleseren din støtter ikke videospilleren.
+          </video>
+        </div>
+      </div>
 
       <Callout title="Kompetansemål">
         <p>
