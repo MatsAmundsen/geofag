@@ -96,6 +96,7 @@ export function L({
   size = 15,
   anchor = "start",
   weight = 500,
+  opacity,
 }: {
   x: number | string;
   y: number | string;
@@ -104,6 +105,7 @@ export function L({
   size?: number;
   anchor?: "start" | "middle" | "end";
   weight?: number;
+  opacity?: number | string;
 }) {
   return (
     <text
@@ -114,6 +116,7 @@ export function L({
       textAnchor={anchor}
       fontFamily={font}
       fontWeight={weight}
+      opacity={opacity}
     >
       {children}
     </text>

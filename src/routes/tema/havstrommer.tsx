@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { OceanCurrentModel } from "@/components/models/ocean-current-model";
 import { Callout } from "@/components/callout";
 import {
   AmocDiagram,
