@@ -73,7 +73,7 @@ export function EkmanDiagram() {
 export function GyreDiagram() {
   return (
     <Diagram
-      title="Den nordatlantiske gyrene"
+      title="Den nordatlantiske gyren"
       heading="Med klokken, sterk i vest, slapp i øst"
       caption="Fire strømmer lukker kretsen. Golfstrømmen er den vestlige randstrømmen: smal og rask. Kanaristrømmen i øst er bred og treig. Midten — Sargassohavet — har litt høyere vannstand. Coriolis balanserer trykket utover, så strømmen følger «høyden» i havoverflaten."
       viewBox="0 0 840 400"
@@ -215,7 +215,7 @@ export function AmocDiagram() {
     <Diagram
       title="AMOC — havets belte i Atlanteren"
       heading="Varmt nordover i toppen, kaldt sørover i dypet"
-      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Norskehavet, Grønlandshavet og Labradorhavet synker det som North Atlantic Deep Water og returnerer sørøver på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme."
+      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Norskehavet, Grønlandshavet og Labradorhavet synker det som North Atlantic Deep Water og returnerer sørover på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme."
       viewBox="0 0 840 360"
     >
       {(m) => (
