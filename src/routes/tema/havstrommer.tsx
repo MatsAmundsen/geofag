@@ -151,11 +151,10 @@ function HavstrommerPage() {
       />
 
       <p>
-        Gyren har et klimautfall eksamen ofte spør om. Vestkanten er varm og rask — Golfstrømmen,
-        Kuroshio, Agulhas. Østkanten er kald og treig — Kanaristrømmen, Benguela, Humboldt. Derfor
-        kan øst- og vestkysten av samme kontinent, på samme bredde, ha ti grader forskjell i
-        havoverflaten. Sør-Afrika er det klassiske eksempelet: varm Agulhas i øst, kald Benguela i
-        vest.
+        Gyren har et klimautfall. Vestkanten er varm og rask — Golfstrømmen, Kuroshio, Agulhas.
+        Østkanten er kald og treig — Kanaristrømmen, Benguela, Humboldt. Derfor kan øst- og
+        vestkysten av samme kontinent, på samme bredde, ha ti grader forskjell i havoverflaten.
+        Sør-Afrika er det klassiske eksempelet: varm Agulhas i øst, kald Benguela i vest.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
