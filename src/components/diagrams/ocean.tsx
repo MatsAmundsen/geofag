@@ -258,6 +258,73 @@ export function AmocDiagram() {
   );
 }
 
+export function UpwellingDiagram() {
+  return (
+    <Diagram
+      title="Kystnær oppwelling"
+      heading="Vind langs kysten trekker overflatevannet ut — dypvannet fyller igjen"
+      caption="Blåser vinden langs kysten slik at Ekman-transporten peker ut fra land, skyves det varme overflatevannet vekk. Kaldt, næringsrikt dypvann stiger opp for å fylle tomrommet. Det er oppwelling — mekanismen bak noen av verdens rikeste fiskefelt, blant annet utenfor Peru og Vest-Afrika."
+      viewBox="0 0 820 380"
+    >
+      {(m) => (
+        <>
+          <rect x="40" y="20" width="110" height="340" fill="#1b2a24" />
+          <L x="95" y="195" fill={C.muted} size={14} anchor="middle">
+            Land
+          </L>
+
+          <rect x="150" y="20" width="630" height="340" fill="#0f1f2a" />
+
+          <Arrow d="M 185 45 L 185 300" marker={m.warm} color={C.warm} width={3.2} />
+          <L x="205" y="55" fill={C.warm} size={13}>
+            vind langs kysten
+          </L>
+
+          <Arrow d="M 210 110 L 520 96" marker={m.teal} color={C.teal} width={3.2} />
+          <L x="215" y="135" fill={C.teal} size={14}>
+            Ekman-transport: overflatevann skyves ut
+          </L>
+
+          <path
+            d="M 200 300 Q 340 175 780 225 L 780 340 L 200 340 Z"
+            fill={C.cold}
+            opacity="0.16"
+          />
+          <path
+            d="M 200 300 Q 340 175 780 225"
+            fill="none"
+            stroke={C.cold}
+            strokeWidth="2"
+            strokeDasharray="5 4"
+          />
+          <L x="480" y="215" fill={C.cold} size={13} anchor="middle">
+            termoklinen presses opp mot kysten
+          </L>
+
+          <Arrow d="M 195 300 L 195 175" marker={m.cold} color={C.cold} width={3.4} />
+          <L x="222" y="235" fill={C.cold} size={14} weight={600}>
+            kaldt, næringsrikt
+          </L>
+          <L x="222" y="256" fill={C.cold} size={14} weight={600}>
+            dypvann stiger
+          </L>
+
+          <circle cx="330" cy="290" r="4" fill={C.sand} />
+          <circle cx="358" cy="305" r="3.5" fill={C.sand} />
+          <circle cx="305" cy="312" r="3" fill={C.sand} />
+          <L x="375" y="300" fill={C.sand} size={12}>
+            næring til plankton og fisk
+          </L>
+
+          <L x="500" y="355" fill={C.muted} size={12} anchor="middle">
+            varmt overflatevann skyves videre utover
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
 export function ClimateContrastDiagram() {
   return (
     <Diagram

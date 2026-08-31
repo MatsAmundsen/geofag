@@ -12,7 +12,10 @@ export function SiteHeader() {
   const brand = brandForPath(pathname);
 
   const isGf1 = pathname.startsWith("/geofag-1");
-  const isGf2 = pathname.startsWith("/geofag-2") || pathname.startsWith("/tema");
+  const isGf2 =
+    pathname.startsWith("/geofag-2") ||
+    pathname.startsWith("/tema") ||
+    pathname.startsWith("/eksamen");
   const isHome = pathname === "/";
 
   return (

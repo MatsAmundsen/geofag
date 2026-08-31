@@ -41,18 +41,35 @@ export {
   GulfVsNacDiagram,
   GyreDiagram,
   OceanDriversDiagram,
+  UpwellingDiagram,
 } from "./ocean";
+export {
+  DmiTimeseriesDiagram,
+  IodEkmanDiagram,
+  IodPhaseShift,
+  IodTeleconnectionDiagram,
+  IodVsEnsoDiagram,
+  NegativeWalkerDiagram,
+  NeutralIodDiagram,
+} from "./iod";
 export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
 export { SeaBreezeDiagram } from "./pressure";
 export { ModelGridDiagram } from "./models";
 export {
   AbruptClimateChangeDiagram,
   DeglaciationFeedbackDiagram,
+  EccentricityDetailDiagram,
+  FennoscandianIceSheetDiagram,
+  GlacialLandformsDiagram,
+  IceAgeFactorsDiagram,
   IceCoreAnatomyDiagram,
+  Insolation65NCurveDiagram,
   KvartarTimeSeriesDiagram,
   MilankovitchCyclesDiagram,
+  ObliquityDetailDiagram,
   OxygenIsotopeDiagram,
   PaleoDiagram,
+  PrecessionDetailDiagram,
   Sommersol65NDiagram,
 } from "./paleo";
 export { BoundaryQuakesDiagram } from "./quakes";

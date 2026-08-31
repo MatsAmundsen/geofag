@@ -38,7 +38,7 @@ function PaleoklimaPage() {
       banner="/images/fig-paleo.jpg"
       bannerAlt="Lagdelt blå breis med bølgende bånd av gammel is"
       prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
-      next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      next={{ to: "/tema/milankovitch", label: "Neste: Milankovitch og istider" }}
       kilder={KILDER.paleoklima}
     >
       <p>
@@ -149,7 +149,16 @@ function PaleoklimaPage() {
       <p>
         Istidene kommer og går i en regelmessig takt styrt av gravitasjonskrefter fra sola, månen og
         de andre planetene (særlig Jupiter og Saturn). Disse kreftene forårsaker tre langsomme,
-        periodiske endringer i jordas bane — kalt <strong>Milanković-syklusene</strong>:
+        periodiske endringer i jordas bane — kalt <strong>Milanković-syklusene</strong>. For en
+        grundig gjennomgang av hele mekanismen, istidsfaktorene og sporene i Norge, se også vår
+        fordypningsside om{" "}
+        <Link
+          to="/tema/milankovitch"
+          className="text-primary underline-offset-2 hover:underline"
+        >
+          Milankovitch-syklusen og istider
+        </Link>
+        :
       </p>
 
       <MilankovitchCyclesDiagram />

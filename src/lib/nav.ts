@@ -20,6 +20,7 @@ export const NAV_GF1 = [
 export const NAV_GF2 = [
   { to: "/", label: "Forside" },
   { to: "/geofag-2", label: "Oversikt" },
+  { to: "/eksamen", label: "Eksamen" },
   { to: "/tema/hoytrykk-lavtrykk", label: "Trykk" },
   { to: "/tema/vindsystemet", label: "Vind" },
   { to: "/tema/jetstrommer", label: "Jet" },
@@ -28,6 +29,7 @@ export const NAV_GF2 = [
   { to: "/tema/klima", label: "Klima" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
+  { to: "/tema/milankovitch", label: "Istider" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
 ] as const;
 
@@ -44,7 +46,11 @@ export function brandForPath(pathname: string) {
   if (pathname.startsWith("/geofag-1")) {
     return { title: "Geofag 1", sub: "Jorda under oss" };
   }
-  if (pathname.startsWith("/geofag-2") || pathname.startsWith("/tema")) {
+  if (
+    pathname.startsWith("/geofag-2") ||
+    pathname.startsWith("/tema") ||
+    pathname.startsWith("/eksamen")
+  ) {
     return { title: "Geofag 2", sub: "Hav, luft og klima" };
   }
   return { title: "Geofag", sub: "Naturfarer, vær og klima" };
@@ -129,6 +135,16 @@ export const GF2_THEMES = [
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
       "Termometer dekker et øyeblikk. Iskjerner og havbunn forteller istidene — og tester om modellene treffer.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/milankovitch",
+    title: "Milankovitch-syklusen og istider",
+    kicker: "Istider",
+    image: "/images/tema-milankovitch.jpg",
+    alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
+    blurb:
+      "Jordbanen flytter sommersola på 65 °N. Albedo og CO₂ forsterker. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
     status: "klar" as const,
   },
   {
@@ -263,8 +279,8 @@ export const KLIMA_SUBTHEMES = [
     title: "IOD",
     subtitle: "Den indiske hav-dipolen",
     kicker: "Det indiske hav",
-    image: "/images/banner-hav.jpg",
-    alt: "Tropisk havoverflate med temperaturgradient og konveksjon",
+    image: "/images/fig-iod-positiv.png",
+    alt: "Positiv IOD: varmere hav utenfor Øst-Afrika, kaldere utenfor Indonesia",
     blurb:
       "Temperaturgradienten i Det indiske hav. Positiv og negativ fase, samspill med monsunen og ekstreme tørke- og flomperioder.",
     status: "klar" as const,

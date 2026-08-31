@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/geofag-2")({
     topicHead({
       title: "Geofag 2",
       description:
-        "Geofag 2: vind, hav og klima som ett system. Trykk, vindsystemet, jetstrømmer, corioliseffekten, havstrømmer, klima og værkatastrofer.",
+        "Geofag 2: vind, hav og klima som ett system. Trykk, vindsystemet, jetstrømmer, corioliseffekten, havstrømmer, klima, istider og værkatastrofer.",
       path: "/geofag-2",
     }),
   component: Geofag2,
@@ -49,6 +50,27 @@ function Geofag2() {
               og sørover. Corioliseffekten bøyer banene. Resten av været — og mye av Norges milde
               kystklima — følger av det.
             </p>
+          </div>
+        </section>
+
+        <section className="border-b border-border bg-card">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="max-w-2xl">
+              <p className="text-xs font-medium uppercase tracking-wider text-primary">REA3043</p>
+              <h2 className="mt-1 font-display text-2xl font-medium tracking-tight sm:text-3xl">
+                Eksamen
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+                Skriftlig Geofag 2 per 2026: gjennomføring, regler, hjelpemidler, kildeføring og
+                løsningsforslag.
+              </p>
+            </div>
+            <Button asChild>
+              <Link to="/eksamen">
+                Eksamen
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
           </div>
         </section>
 
@@ -104,7 +126,7 @@ function Geofag2() {
           </ul>
         </section>
 
-        <section className="border-y border-border bg-card">
+        <section className="border-b border-border bg-background">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider text-primary">
@@ -165,6 +187,12 @@ function Geofag2() {
               />
               <Fordypning
                 n="09"
+                to="/tema/milankovitch"
+                title="Milankovitch-syklusen og istider"
+                text="Jordbanen flytter sommersola på 65 °N. Albedo og CO₂ forsterker. Weichsel sluttet for 11 700 år siden."
+              />
+              <Fordypning
+                n="10"
                 to="/tema/vaerkatastrofer"
                 title="Værkatastrofer"
                 text="Orkaner, polarfrontstormer, ekstremnedbør og stormflo. Samme fysikk. Høyere innsats når samfunn står i veien."

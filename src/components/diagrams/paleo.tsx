@@ -1301,9 +1301,1048 @@ export function AbruptClimateChangeDiagram() {
 }
 
 /**
- * Samlekomponent for bakoverkompatibilitet
+ * 8. EccentricityDetailDiagram (fig-eksentrisitet)
+ * To ellipsebaner rundt sola: nesten sirkulær vs tydelig ellipse.
+ * Viser perihel, aphel og avstandseffekt (1/r²).
  */
-export function PaleoDiagram() {
-  return <MilankovitchCyclesDiagram />;
+export function EccentricityDetailDiagram() {
+  return (
+    <Diagram
+      title="Eksentrisitet: banens form svinger mellom nesten sirkulær og svak ellipse"
+      heading="Eksentrisitet og avstandseffekten (100 000 og 400 000 år)"
+      caption="Jordbanens form (eksentrisitet, e) varierer fra nesten helt sirkulær (e ≈ 0,0005) til svak ellipse (e ≈ 0,06) med hovedperioder på ca. 100 000 og 413 000 år. Til venstre: Ved lav eksentrisitet er jorda nesten like langt fra sola hele året; årstidene styres nesten utelukkende av aksehelningen. Til høyre: Ved høy eksentrisitet er jorda markant nærmere sola i perihel enn i aphel. Siden strålingsintensiteten avtar med kvadratet av avstanden (1/r²), forsterker høy eksentrisitet effekten av presesjonssyklusen. Eksentrisiteten i seg selv endrer total global årsinnstråling med under 0,2 %, men fungerer som en kraftig 'forsterkerskrue' for presesjonen."
+      viewBox="0 0 880 440"
+    >
+      {(m) => (
+        <>
+          {/* Header titles */}
+          <L x="220" y="36" fill={C.teal} size={16} weight={600} anchor="middle">
+            Lav eksentrisitet (e ≈ 0,005)
+          </L>
+          <L x="220" y="56" fill={C.muted} size={12} anchor="middle">
+            Nesten sirkulær bane • Liten avstandsforskjell
+          </L>
+
+          <L x="660" y="36" fill={C.warm} size={16} weight={600} anchor="middle">
+            Høy eksentrisitet (e ≈ 0,06)
+          </L>
+          <L x="660" y="56" fill={C.muted} size={12} anchor="middle">
+            Markant ellipse • Stor forskjell mellom perihel og aphel
+          </L>
+
+          <line x1="440" y1="24" x2="440" y2="420" stroke={C.dim} strokeDasharray="4 4" />
+
+          {/* ================= LEFT PANEL: LAV EKSENTRISITET ================= */}
+          {/* Circular orbit */}
+          <ellipse
+            cx="220"
+            cy="180"
+            rx="140"
+            ry="125"
+            fill="none"
+            stroke={C.teal}
+            strokeWidth="2"
+          />
+          {/* Sun at center focus */}
+          <circle cx="215" cy="180" r="15" fill="#f59e0b" />
+          <circle cx="215" cy="180" r="24" fill="#f59e0b" opacity="0.2" />
+          <L x="215" y="214" fill={C.warm} size={12} weight={600} anchor="middle">
+            Sola
+          </L>
+
+          {/* Earth Perihelion left */}
+          <circle cx="75" cy="180" r="7" fill={C.teal} />
+          <L x="75" y="165" fill={C.fg} size={11} anchor="middle">
+            Perihel
+          </L>
+          <L x="75" y="202" fill={C.muted} size={10} anchor="middle">
+            149 mill. km
+          </L>
+
+          {/* Earth Aphelion right */}
+          <circle cx="360" cy="180" r="7" fill={C.teal} />
+          <L x="360" y="165" fill={C.fg} size={11} anchor="middle">
+            Aphel
+          </L>
+          <L x="360" y="202" fill={C.muted} size={10} anchor="middle">
+            151 mill. km
+          </L>
+
+          {/* Orbit direction arrow */}
+          <Arrow d="M 220 55 L 200 55" marker={m.teal} color={C.teal} width={2} />
+          <L x="220" y="75" fill={C.muted} size={11} anchor="middle">
+            Baneomløp
+          </L>
+
+          {/* Bottom box Left */}
+          <rect x="35" y="295" width="370" height="120" rx="6" fill="#13232c" stroke={C.dim} />
+          <L x="50" y="320" fill={C.teal} size={13} weight={600}>
+            Egenskaper ved lav eksentrisitet:
+          </L>
+          <L x="50" y="342" fill={C.muted} size={11}>
+            • Avstanden til sola er nesten konstant året rundt (±1 %).
+          </L>
+          <L x="50" y="362" fill={C.muted} size={11}>
+            • Presesjon har minimal innvirkning på årstidene.
+          </L>
+          <L x="50" y="386" fill={C.fg} size={11} weight={600}>
+            → Aksehelningen dominerer årstidsvariasjonen (41k-takt).
+          </L>
+
+          {/* ================= RIGHT PANEL: HØY EKSENTRISITET ================= */}
+          {/* Stretched Ellipse */}
+          <ellipse
+            cx="660"
+            cy="180"
+            rx="160"
+            ry="105"
+            fill="none"
+            stroke={C.warm}
+            strokeWidth="2.2"
+          />
+          {/* Sun shifted to left focus */}
+          <circle cx="585" cy="180" r="16" fill="#f59e0b" />
+          <circle cx="585" cy="180" r="28" fill="#f59e0b" opacity="0.25" />
+          <L x="585" y="218" fill={C.warm} size={12} weight={600} anchor="middle">
+            Sola (brennpunkt)
+          </L>
+
+          {/* Distance lines */}
+          <line x1="585" y1="180" x2="500" y2="180" stroke={C.cold} strokeDasharray="3 3" />
+          <line x1="585" y1="180" x2="820" y2="180" stroke={C.warm} strokeDasharray="3 3" />
+
+          {/* Earth Perihelion right next to sun */}
+          <circle cx="500" cy="180" r="7.5" fill={C.teal} />
+          <L x="500" y="165" fill={C.fg} size={11} anchor="middle">
+            Perihel
+          </L>
+          <L x="500" y="202" fill={C.cold} size={10} anchor="middle" weight={600}>
+            140 mill. km (nær)
+          </L>
+
+          {/* Earth Aphelion far away */}
+          <circle cx="820" cy="180" r="7.5" fill={C.teal} />
+          <L x="820" y="165" fill={C.fg} size={11} anchor="middle">
+            Aphel
+          </L>
+          <L x="820" y="202" fill={C.warm} size={10} anchor="middle" weight={600}>
+            160 mill. km (fjern)
+          </L>
+
+          {/* Insolation difference note */}
+          <rect x="580" y="80" width="220" height="32" rx="4" fill="#0f1f28" stroke={C.warm} />
+          <L x="690" y="101" fill={C.warm} size={11} weight={600} anchor="middle">
+            Opptil 25–30 % forskjell i solenergi!
+          </L>
+
+          {/* Bottom box Right */}
+          <rect x="475" y="295" width="370" height="120" rx="6" fill="#1e1814" stroke={C.dim} />
+          <L x="490" y="320" fill={C.warm} size={13} weight={600}>
+            Egenskaper ved høy eksentrisitet:
+          </L>
+          <L x="490" y="342" fill={C.muted} size={11}>
+            • Stor avstandsforskjell mellom sommer og vinter.
+          </L>
+          <L x="490" y="362" fill={C.muted} size={11}>
+            • Modulerer og forsterker presesjonens utslag kraftig.
+          </L>
+          <L x="490" y="386" fill={C.warm} size={11} weight={600}>
+            → Gir grobunn for 100 000-års sagtanntakt i senkvartær!
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
 }
+
+/**
+ * 9. ObliquityDetailDiagram (fig-helning)
+ * Jorda ved sommersolverv på 65 °N med 22,1° vs 24,5° aksehelning.
+ */
+export function ObliquityDetailDiagram() {
+  return (
+    <Diagram
+      title="Aksehelning (oblikvitet): styrer innstrålingsvinkelen og sommersolen på 65 °N"
+      heading="Aksehelning: 22,1° vs. 24,5° ved sommersolverv (41 000 år)"
+      caption="Jordaksens helning svinger mellom 22,1° og 24,5° med en periode på ca. 41 000 år (i dag 23,44°). Figuren viser jorda ved sommersolverv (juni) på nordlig halvkule. Til venstre: Ved lav helning (22,1°) står sommersolen lavere på himmelen over 65 °N (solhøyde 47,1°). Solstrålene spres over et større areal, somrene forblir kjølige, og vintersnøen overlever sommeren. Til høyre: Ved høy helning (24,5°) står sommersolen brattere (solhøyde 49,5°), noe som gir intens sommersmelting og trekker isdekkene raskt tilbake."
+      viewBox="0 0 880 440"
+    >
+      {(m) => (
+        <>
+          <L x="220" y="36" fill={C.cold} size={16} weight={600} anchor="middle">
+            Lav helning: 22,1° (kjølig sommer på 65 °N)
+          </L>
+          <L x="220" y="56" fill={C.muted} size={12} anchor="middle">
+            Svakere årstider • Snø overlever → Istidsvekst
+          </L>
+
+          <L x="660" y="36" fill={C.warm} size={16} weight={600} anchor="middle">
+            Høy helning: 24,5° (varm sommer på 65 °N)
+          </L>
+          <L x="660" y="56" fill={C.muted} size={12} anchor="middle">
+            Sterkere årstider • Kraftig bresmelting → Deglasiasjon
+          </L>
+
+          <line x1="440" y1="24" x2="440" y2="420" stroke={C.dim} strokeDasharray="4 4" />
+
+          {/* ================= LEFT PANEL: 22.1° ================= */}
+          {/* Earth Body Left */}
+          <circle cx="220" cy="180" r="70" fill="#132c38" stroke={C.cold} strokeWidth="2" />
+          {/* Orbital Plane */}
+          <line x1="90" y1="180" x2="350" y2="180" stroke={C.dim} strokeWidth="1.2" strokeDasharray="3 3" />
+          {/* Normal to orbit */}
+          <line x1="220" y1="80" x2="220" y2="280" stroke={C.dim} strokeWidth="1.2" strokeDasharray="3 3" />
+
+          {/* Tilted Axis 22.1 deg */}
+          <line x1="175" y1="85" x2="265" y2="275" stroke={C.cold} strokeWidth="2.4" />
+          <circle cx="175" cy="85" r="4.5" fill={C.cold} />
+          <L x="165" y="78" fill={C.cold} size={12} weight={600} anchor="end">
+            Nordpol (22,1°)
+          </L>
+
+          {/* 65°N Marker on Earth */}
+          <circle cx="202" cy="125" r="5" fill={C.warm} />
+          <L x="192" y="122" fill={C.warm} size={11} anchor="end" weight={600}>
+            65 °N
+          </L>
+
+          {/* Parallel Sun rays coming from right */}
+          <Arrow d="M 370 125 L 215 125" marker={m.muted} color={C.muted} width={1.8} />
+          <Arrow d="M 370 155 L 265 155" marker={m.muted} color={C.muted} width={1.8} />
+          <Arrow d="M 370 180 L 290 180" marker={m.muted} color={C.muted} width={1.8} />
+          <L x="365" y="110" fill={C.muted} size={11} anchor="end">
+            Solstråler (sommersolverv)
+          </L>
+
+          {/* Left summary */}
+          <rect x="35" y="295" width="370" height="120" rx="6" fill="#13232c" stroke={C.cold} />
+          <L x="50" y="320" fill={C.cold} size={13} weight={600}>
+            Klimaeffekt av lav helning:
+          </L>
+          <L x="50" y="342" fill={C.fg} size={11}>
+            • Solstrålene treffer 65 °N i en slakere vinkel (47,1°).
+          </L>
+          <L x="50" y="362" fill={C.muted} size={11}>
+            • Kjøligere somre hindrer snøen i å smelte bort i juli/august.
+          </L>
+          <L x="50" y="386" fill={C.cold} size={11} weight={600}>
+            → Isen akkumulerer år for år og sprer seg sørover!
+          </L>
+
+          {/* ================= RIGHT PANEL: 24.5° ================= */}
+          {/* Earth Body Right */}
+          <circle cx="660" cy="180" r="70" fill="#132c38" stroke={C.warm} strokeWidth="2" />
+          {/* Orbital Plane */}
+          <line x1="530" y1="180" x2="790" y2="180" stroke={C.dim} strokeWidth="1.2" strokeDasharray="3 3" />
+          {/* Normal to orbit */}
+          <line x1="660" y1="80" x2="660" y2="280" stroke={C.dim} strokeWidth="1.2" strokeDasharray="3 3" />
+
+          {/* Tilted Axis 24.5 deg (steeper tilt towards sun on right) */}
+          <line x1="605" y1="80" x2="715" y2="280" stroke={C.warm} strokeWidth="2.6" />
+          <circle cx="605" cy="80" r="5" fill={C.warm} />
+          <L x="595" y="75" fill={C.warm} size={12} weight={600} anchor="end">
+            Nordpol (24,5°)
+          </L>
+
+          {/* 65°N Marker on Earth (tilted closer facing sun) */}
+          <circle cx="635" cy="120" r="5" fill={C.warm} />
+          <L x="625" y="116" fill={C.warm} size={11} anchor="end" weight={600}>
+            65 °N
+          </L>
+
+          {/* Intense Sun rays from right */}
+          <Arrow d="M 810 120 L 648 120" marker={m.warm} color={C.warm} width={2.6} />
+          <Arrow d="M 810 155 L 705 155" marker={m.warm} color={C.warm} width={2.4} />
+          <Arrow d="M 810 180 L 730 180" marker={m.warm} color={C.warm} width={2.4} />
+          <L x="805" y="105" fill={C.warm} size={11} anchor="end" weight={600}>
+            Intens sommersol
+          </L>
+
+          {/* Right summary */}
+          <rect x="475" y="295" width="370" height="120" rx="6" fill="#201712" stroke={C.warm} />
+          <L x="490" y="320" fill={C.warm} size={13} weight={600}>
+            Klimaeffekt av høy helning:
+          </L>
+          <L x="490" y="342" fill={C.fg} size={11}>
+            • Solstrålene treffer 65 °N brattere (solhøyde 49,5°).
+          </L>
+          <L x="490" y="362" fill={C.muted} size={11}>
+            • Mye høyere daglig varmeinnstråling smelter breene.
+          </L>
+          <L x="490" y="386" fill={C.warm} size={11} weight={600}>
+            → Hurtig issmelting og overgang til mellomistid!
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+/**
+ * 10. PrecessionDetailDiagram (fig-presesjon)
+ * Nordlig sommer i perihel vs nordlig sommer i aphel + dagens situasjon.
+ */
+export function PrecessionDetailDiagram() {
+  return (
+    <Diagram
+      title="Klimatisk presesjon: hvilken årstid som sammenfaller med perihel og aphel (23 000 og 19 000 år)"
+      heading="Presesjon: Når på året er jorda nærmest sola?"
+      caption="Presesjon er samspillet mellom jordaksens vobling i rommet (som en snurrebass) og at selve ellipsebanen roterer langsomt. Dette gir en klimatisk syklus på ca. 23 000 og 19 000 år. Til venstre: For 11 000 år siden (starten på holocen) falt nordlig sommer sammen med perihel (jorda var nærmest sola i juli). Dette ga ekstra varme somre på 65 °N og smeltet weichsel-isen. Til høyre: Når nordlig sommer inntreffer i aphel (lengst fra sola), blir somrene kjølige, noe som fremmer istidsvekst. I dag er vi i en mellomtilstand: perihel inntreffer i januar (nordlig vinter)."
+      viewBox="0 0 900 450"
+    >
+      {(m) => (
+        <>
+          {/* Header 1 */}
+          <L x="220" y="36" fill={C.warm} size={15} weight={600} anchor="middle">
+            For 11 000 år siden (Holocen start)
+          </L>
+          <L x="220" y="56" fill={C.muted} size={12} anchor="middle">
+            Nordlig sommer i perihel (nær sola) → Rask smelting!
+          </L>
+
+          {/* Header 2 */}
+          <L x="680" y="36" fill={C.cold} size={15} weight={600} anchor="middle">
+            Istidsfremmende konfigurasjon
+          </L>
+          <L x="680" y="56" fill={C.muted} size={12} anchor="middle">
+            Nordlig sommer i aphel (langt fra sola) → Snø overlever
+          </L>
+
+          <line x1="450" y1="24" x2="450" y2="426" stroke={C.dim} strokeDasharray="4 4" />
+
+          {/* ================= LEFT: SOMMER I PERIHEL ================= */}
+          <ellipse cx="220" cy="180" rx="150" ry="85" fill="none" stroke={C.warm} strokeWidth="1.8" />
+          <circle cx="160" cy="180" r="15" fill="#f59e0b" />
+          <circle cx="160" cy="180" r="26" fill="#f59e0b" opacity="0.25" />
+          <L x="160" y="214" fill={C.warm} size={12} weight={600} anchor="middle">
+            Sola
+          </L>
+
+          {/* Earth at perihelion (tilted towards Sun) */}
+          <circle cx="70" cy="180" r="8" fill={C.teal} />
+          {/* Axis tilted right towards sun */}
+          <line x1="64" y1="166" x2="76" y2="194" stroke={C.warm} strokeWidth="2.4" />
+          <L x="70" y="152" fill={C.warm} size={11} weight={600} anchor="middle">
+            Juli (Perihel)
+          </L>
+          <L x="70" y="210" fill={C.muted} size={10} anchor="middle">
+            Nærmest sola!
+          </L>
+
+          {/* Earth at aphelion (January) */}
+          <circle cx="370" cy="180" r="7" fill={C.teal} />
+          <line x1="364" y1="166" x2="376" y2="194" stroke={C.dim} strokeWidth="1.8" />
+          <L x="370" y="156" fill={C.muted} size={11} anchor="middle">
+            Januar (Aphel)
+          </L>
+
+          {/* Outcome Box Left */}
+          <rect x="35" y="295" width="380" height="120" rx="6" fill="#1d1612" stroke={C.warm} />
+          <L x="50" y="320" fill={C.warm} size={13} weight={600}>
+            Resultat: Ekstra varm nordlig sommer
+          </L>
+          <L x="50" y="342" fill={C.fg} size={11}>
+            • Jorda mottok maksimal sommersol på 65 °N.
+          </L>
+          <L x="50" y="362" fill={C.muted} size={11}>
+            • Utløste kraftig deglasiasjon av weichsel-isen.
+          </L>
+          <L x="50" y="386" fill={C.warm} size={11} weight={600}>
+            → Innledet den varme holocen-mellomistiden.
+          </L>
+
+          {/* ================= RIGHT: SOMMER I APHEL ================= */}
+          <ellipse cx="680" cy="180" rx="150" ry="85" fill="none" stroke={C.cold} strokeWidth="1.8" />
+          <circle cx="620" cy="180" r="15" fill="#f59e0b" />
+          <circle cx="620" cy="180" r="26" fill="#f59e0b" opacity="0.25" />
+          <L x="620" y="214" fill={C.warm} size={12} weight={600} anchor="middle">
+            Sola
+          </L>
+
+          {/* Earth at Perihelion in January */}
+          <circle cx="530" cy="180" r="7" fill={C.teal} />
+          <line x1="524" y1="194" x2="536" y2="166" stroke={C.dim} strokeWidth="1.8" />
+          <L x="530" y="156" fill={C.muted} size={11} anchor="middle">
+            Januar (Perihel)
+          </L>
+
+          {/* Earth at Aphelion in July (tilted towards sun but far away) */}
+          <circle cx="830" cy="180" r="8" fill={C.teal} />
+          <line x1="824" y1="194" x2="836" y2="166" stroke={C.cold} strokeWidth="2.4" />
+          <L x="830" y="152" fill={C.cold} size={11} weight={600} anchor="middle">
+            Juli (Aphel)
+          </L>
+          <L x="830" y="210" fill={C.cold} size={10} anchor="middle">
+            Lengst fra sola!
+          </L>
+
+          {/* Outcome Box Right */}
+          <rect x="490" y="295" width="380" height="120" rx="6" fill="#10202a" stroke={C.cold} />
+          <L x="505" y="320" fill={C.cold} size={13} weight={600}>
+            Resultat: Kjølig nordlig sommer
+          </L>
+          <L x="505" y="342" fill={C.fg} size={11}>
+            • Svak sommersol på 65 °N hindrer smelting av snø.
+          </L>
+          <L x="505" y="362" fill={C.muted} size={11}>
+            • Vintersnøen akkumuleres over årtusener.
+          </L>
+          <L x="505" y="386" fill={C.cold} size={11} weight={600}>
+            → Ideell orbital utløser for ny istid (glasial).
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+/**
+ * 11. Insolation65NCurveDiagram (fig-innsolasjon-65n)
+ * Kurve over sommersol på 65 °N gjennom 400 000 år mot istidskurven.
+ */
+export function Insolation65NCurveDiagram() {
+  return (
+    <Diagram
+      title="Sommersol på 65 °N gjennom 400 000 år samholdt med istider og mellomistider"
+      heading="Sommersol på 65 °N: Den sanne istidskurven (400 ka til i dag)"
+      caption="Figuren sammenligner beregnet sommersol (innstråling i W/m² ved 65 °N i juni) med de faktiske istids- og mellomistidsfasene over de siste 400 000 år (MIS 11, MIS 9, MIS 7, MIS 5e Eem og MIS 1 Holocen). Hver gang sommersolen på 65 °N stiger over en kritisk terskel (~500 W/m²), utløses en rask deglasiasjon. Legg merke til at dagens sommersol på 65 °N er svakt avtagende. Oppvarmingen etter 1850 drives derfor ikke av solinnstråling, men av menneskeskapte klimagassutslipp."
+      viewBox="0 0 920 460"
+    >
+      {() => {
+        const x0 = 80;
+        const w = 760;
+        const toX = (ka: number) => x0 + ((400 - ka) / 400) * w;
+
+        // 65N Insolation curve synthetic points (W/m2 approx values)
+        const insPts = [
+          [400, 480],
+          [385, 450],
+          [375, 525], // MIS 11 deglaciation peak
+          [355, 460],
+          [335, 530], // MIS 9 peak
+          [310, 440],
+          [290, 490],
+          [270, 450],
+          [240, 520], // MIS 7 peak
+          [220, 465],
+          [190, 440],
+          [170, 480],
+          [145, 450],
+          [128, 545], // Eemian (MIS 5e) huge peak
+          [115, 440],
+          [90, 495],
+          [70, 460],
+          [50, 485],
+          [21, 450], // LGM low
+          [11, 520], // Early Holocene peak
+          [0, 480], // Today
+        ];
+
+        const pathIns = insPts
+          .map(([ka, val], i) => {
+            const x = toX(ka).toFixed(1);
+            // Map 430 - 550 W/m2 to y: 190 - 70
+            const y = (190 - ((val - 430) / 120) * 120).toFixed(1);
+            return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+          })
+          .join(" ");
+
+        return (
+          <>
+            {/* Legend / Titles */}
+            <L x="80" y="34" fill={C.warm} size={14} weight={600}>
+              — Sommersol på 65 °N i juni (W/m²)
+            </L>
+            <L x="540" y="34" fill={C.cold} size={14} weight={600}>
+              — Brevolum / Isdekke på land
+            </L>
+
+            {/* Background grid */}
+            <rect x={x0} y="55" width={w} height="345" fill="#0d1922" stroke={C.dim} />
+
+            {/* Time Grid (every 50 ka) */}
+            {[400, 350, 300, 250, 200, 150, 100, 50, 0].map((ka) => {
+              const x = toX(ka);
+              return (
+                <g key={ka}>
+                  <line x1={x} y1="55" x2={x} y2="400" stroke={C.dim} strokeDasharray="2 4" />
+                  <L x={x} y="420" fill={C.muted} size={11} anchor="middle">
+                    {ka === 0 ? "I dag" : `${ka}k`}
+                  </L>
+                </g>
+              );
+            })}
+            <L x="460" y="442" fill={C.muted} size={12} anchor="middle">
+              Tusen år før nåtid (ka)
+            </L>
+
+            {/* Insolation Y-axis */}
+            <line x1={x0} y1="70" x2={x0 + w} y2="70" stroke={C.dim} strokeDasharray="1 4" />
+            <L x={x0 - 8} y="74" fill={C.warm} size={10} anchor="end">
+              550 W/m²
+            </L>
+            <line x1={x0} y1="130" x2={x0 + w} y2="130" stroke={C.dim} strokeDasharray="1 4" />
+            <L x={x0 - 8} y="134" fill={C.warm} size={10} anchor="end">
+              490 W/m²
+            </L>
+            <line x1={x0} y1="190" x2={x0 + w} y2="190" stroke={C.dim} strokeDasharray="1 4" />
+            <L x={x0 - 8} y="194" fill={C.warm} size={10} anchor="end">
+              430 W/m²
+            </L>
+
+            {/* Insolation Curve */}
+            <path
+              d={pathIns}
+              fill="none"
+              stroke={C.warm}
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+
+            {/* Threshold Line */}
+            <line x1={x0} y1="120" x2={x0 + w} y2="120" stroke={C.low} strokeDasharray="4 4" strokeWidth="1.4" />
+            <L x={x0 + w - 10} y="114" fill={C.low} size={10} anchor="end" weight={600}>
+              Deglasiasjons-terskel (~500 W/m²)
+            </L>
+
+            {/* Lower panel: Climate Stages */}
+            <rect x={x0} y="220" width={w} height="170" fill="#09131a" />
+            <L x={x0 + 15} y="240" fill={C.fg} size={12} weight={600}>
+              Klimatiske faser (Marine isotopstadier - MIS):
+            </L>
+
+            {/* Interglacial zones */}
+            {[
+              { start: 385, end: 365, label: "MIS 11", sub: "Mellomistid" },
+              { start: 340, end: 325, label: "MIS 9", sub: "Mellomistid" },
+              { start: 245, end: 230, label: "MIS 7", sub: "Mellomistid" },
+              { start: 132, end: 116, label: "Eem (MIS 5e)", sub: "Mellomistid" },
+              { start: 11.7, end: 0, label: "Holocen (MIS 1)", sub: "Nåværende" },
+            ].map((mzone) => {
+              const x1 = toX(mzone.start);
+              const x2 = toX(mzone.end);
+              return (
+                <g key={mzone.label}>
+                  <rect
+                    x={x2}
+                    y="255"
+                    width={x1 - x2}
+                    height="90"
+                    fill={C.warm}
+                    opacity="0.2"
+                    stroke={C.warm}
+                    strokeWidth="1"
+                    rx="3"
+                  />
+                  <L x={(x1 + x2) / 2} y="285" fill={C.warm} size={10} weight={700} anchor="middle">
+                    {mzone.label}
+                  </L>
+                  <L x={(x1 + x2) / 2} y="302" fill={C.fg} size={9} anchor="middle">
+                    Varm fase
+                  </L>
+                </g>
+              );
+            })}
+
+            {/* LGM Marker */}
+            <rect
+              x={toX(28)}
+              y="255"
+              width={toX(15) - toX(28)}
+              height="90"
+              fill={C.cold}
+              opacity="0.3"
+              stroke={C.cold}
+              strokeWidth="1"
+              rx="3"
+            />
+            <L x={(toX(28) + toX(15)) / 2} y="285" fill={C.cold} size={10} weight={700} anchor="middle">
+              LGM (21k)
+            </L>
+            <L x={(toX(28) + toX(15)) / 2} y="302" fill={C.white} size={9} anchor="middle">
+              Maks is
+            </L>
+
+            <L x={x0 + 15} y="380" fill={C.muted} size={11}>
+              Nøkkelinnsikt: Hver topp i 65 °N-sommersol samsvarer med smelting og mellomistid.
+            </L>
+          </>
+        );
+      }}
+    </Diagram>
+  );
+}
+
+/**
+ * 12. IceAgeFactorsDiagram (fig-istid-faktorer)
+ * Flytskjema: Bakteppe -> Orbital utløser -> Fukt/snø -> Forsterkere (albedo + CO2) -> Innlandsis.
+ */
+export function IceAgeFactorsDiagram() {
+  return (
+    <Diagram
+      title="Istidsfaktorene: samspillet mellom geologisk bakteppe, orbital utløser og forsterkere"
+      heading="Hva kreves for å få en istid? Fra utløser til forsterker"
+      caption="En istid kan ikke skapes av én faktor alene. Prosessen følger en streng logisk rekkefølge: 1) Geologisk bakteppe: Kontinentaldrift plasserer landmasser rundt Nordpolen, og langvarig kenozoisk nedkjøling senker CO₂-nivået (kvartært ishus). 2) Orbital utløser: Milanković-syklusene skaper en kjølig sommer på 65 °N. 3) Fukttilførsel: Åpent Atlanterhav leverer vanndamp til kraftig snøfall. 4) Positive tilbakekoblinger: Is-albedo reflekterer sollys, og havet tar opp CO₂ (svakere drivhuseffekt), noe som bygger kilometerhøye kontinentale isdekker."
+      viewBox="0 0 920 460"
+    >
+      {(m) => (
+        <>
+          {/* Step 1: Bakteppe */}
+          <rect x="25" y="45" width="200" height="340" rx="8" fill="#10202c" stroke={C.dim} strokeWidth="1.6" />
+          <circle cx="50" cy="72" r="13" fill={C.dim} />
+          <L x="50" y="77" fill="#0f171c" size={13} weight={700} anchor="middle">
+            1
+          </L>
+          <L x="72" y="77" fill={C.fg} size={14} weight={600}>
+            Geologisk bakteppe
+          </L>
+
+          <rect x="38" y="100" width="174" height="65" rx="4" fill="#0b1720" />
+          <L x="48" y="120" fill={C.teal} size={12} weight={600}>
+            • Land på høye bredder
+          </L>
+          <L x="48" y="138" fill={C.muted} size={10}>
+            Kontinenter rundt Nordpolen gir fast grunn for isdekker.
+          </L>
+
+          <rect x="38" y="175" width="174" height="65" rx="4" fill="#0b1720" />
+          <L x="48" y="195" fill={C.teal} size={12} weight={600}>
+            • Kvartært ishus
+          </L>
+          <L x="48" y="213" fill={C.muted} size={10}>
+            Lav bakgrunns-CO₂ over millioner av år etter fjellkjedeforvitring.
+          </L>
+
+          <L x="48" y="270" fill={C.dim} size={11} weight={600}>
+            Grunnforutsetning:
+          </L>
+          <L x="48" y="290" fill={C.muted} size={10}>
+            Uten dette gir ikke banen istid, bare litt kjøligere somre.
+          </L>
+
+          {/* Arrow 1 -> 2 */}
+          <Arrow d="M 225 180 L 255 180" marker={m.teal} color={C.teal} width={2.4} />
+
+          {/* Step 2: Orbital Utløser */}
+          <rect x="255" y="45" width="200" height="340" rx="8" fill="#132734" stroke={C.warm} strokeWidth="1.8" />
+          <circle cx="280" cy="72" r="13" fill={C.warm} />
+          <L x="280" y="77" fill="#0f171c" size={13} weight={700} anchor="middle">
+            2
+          </L>
+          <L x="302" y="77" fill={C.warm} size={14} weight={600}>
+            Orbital utløser
+          </L>
+
+          <rect x="268" y="100" width="174" height="95" rx="4" fill="#0c1b24" />
+          <L x="278" y="120" fill={C.warm} size={12} weight={600}>
+            Svak sommersol på 65 °N:
+          </L>
+          <L x="278" y="138" fill={C.muted} size={10}>
+            • Liten helning (22,1°)
+          </L>
+          <L x="278" y="154" fill={C.muted} size={10}>
+            • Sommer i aphel (langt unna)
+          </L>
+          <L x="278" y="172" fill={C.muted} size={10}>
+            • Høy eksentrisitet forsterker
+          </L>
+
+          <rect x="268" y="205" width="174" height="75" rx="4" fill="#0c1b24" />
+          <L x="278" y="225" fill={C.rain} size={12} weight={600}>
+            + Fukttilførsel:
+          </L>
+          <L x="278" y="243" fill={C.muted} size={10}>
+            Nord-Atlanteren leverer nok snønedbør om vinteren.
+          </L>
+
+          <L x="278" y="310" fill={C.warm} size={11} weight={600}>
+            Utløseren starter:
+          </L>
+          <L x="278" y="330" fill={C.fg} size={10}>
+            Snøen overlever sommeren!
+          </L>
+
+          {/* Arrow 2 -> 3 */}
+          <Arrow d="M 455 180 L 485 180" marker={m.teal} color={C.teal} width={2.4} />
+
+          {/* Step 3: Forsterkere */}
+          <rect x="485" y="45" width="215" height="340" rx="8" fill="#122530" stroke={C.cold} strokeWidth="1.8" />
+          <circle cx="510" cy="72" r="13" fill={C.cold} />
+          <L x="510" y="77" fill="#0f171c" size={13} weight={700} anchor="middle">
+            3
+          </L>
+          <L x="532" y="77" fill={C.cold} size={14} weight={600}>
+            Forsterkere (feedbacks)
+          </L>
+
+          <rect x="498" y="100" width="189" height="95" rx="4" fill="#0c1a24" />
+          <L x="508" y="120" fill={C.cold} size={12} weight={600}>
+            A. Is-albedo-effekt:
+          </L>
+          <L x="508" y="138" fill={C.muted} size={10}>
+            Snødekke reflekterer 80–90 % av sollyset → lokal og regional kulde eksploderer.
+          </L>
+
+          <rect x="498" y="205" width="189" height="95" rx="4" fill="#0c1a24" />
+          <L x="508" y="225" fill={C.warm} size={12} weight={600}>
+            B. Havets CO₂-sluk:
+          </L>
+          <L x="508" y="243" fill={C.muted} size={10}>
+            Kaldere hav tar opp mer CO₂ (180 ppm). Svakere drivhuseffekt kjøler hele kloden!
+          </L>
+
+          <L x="508" y="325" fill={C.cold} size={11} weight={600}>
+            Gjør effekten global!
+          </L>
+
+          {/* Arrow 3 -> 4 */}
+          <Arrow d="M 700 180 L 730 180" marker={m.cold} color={C.cold} width={2.4} />
+
+          {/* Step 4: Resultat */}
+          <rect x="730" y="45" width="165" height="340" rx="8" fill="#1a2e3b" stroke={C.cold} strokeWidth="2" />
+          <circle cx="755" cy="72" r="13" fill={C.cold} />
+          <L x="755" y="77" fill="#0f171c" size={13} weight={700} anchor="middle">
+            4
+          </L>
+          <L x="777" y="77" fill={C.white} size={14} weight={600}>
+            Full istid
+          </L>
+
+          <L x="745" y="120" fill={C.cold} size={13} weight={600}>
+            Innlandsis
+          </L>
+          <L x="745" y="140" fill={C.fg} size={11}>
+            • 3 km tykk is over Skandinavia.
+          </L>
+          <L x="745" y="175" fill={C.fg} size={11}>
+            • Havnivå synker 120 meter.
+          </L>
+          <L x="745" y="210" fill={C.fg} size={11}>
+            • Landskapet skures og graves ut.
+          </L>
+
+          <rect x="740" y="270" width="145" height="95" rx="4" fill="#0e1f29" stroke={C.cold} />
+          <L x="812" y="295" fill={C.cold} size={11} weight={600} anchor="middle">
+            Varighet:
+          </L>
+          <L x="812" y="315" fill={C.muted} size={10} anchor="middle">
+            Isvekst tar ~80 000 år.
+          </L>
+          <L x="812" y="335" fill={C.warm} size={10} weight={600} anchor="middle">
+            Smelting tar &lt; 10 000 år.
+          </L>
+
+          {/* Bottom takeaway banner */}
+          <rect x="25" y="400" width="870" height="42" rx="4" fill="#0e171e" />
+          <L x="460" y="426" fill={C.teal} size={12} weight={600} anchor="middle">
+            Huskeregel for eksamen: Bakteppet muliggjør • Banen utløser • Albedo og CO₂ forsterker
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+/**
+ * 13. FennoscandianIceSheetDiagram (fig-weichsel-utbredelse)
+ * Kart over Fennoskandisk isdekke ved siste glasialmaksimum (LGM, 21 000 år siden).
+ */
+export function FennoscandianIceSheetDiagram() {
+  return (
+    <Diagram
+      title="Fennoskandisk isdekke ved siste glasialmaksimum (LGM, ca. 21 000 år før nåtid)"
+      heading="Weichsel-isen over Norden ved LGM (21 000 år siden)"
+      caption="Under siste istidsmaksimum (LGM for ca. 21 000 år siden) var hele Norge, Sverige, Finland, Baltikum og deler av Nord-Tyskland og Russland dekket av det Fennoskandiske isdekket. Isen var opptil 3000 meter tykk over Bottenviken/sentrale Skandinavia, der isskillet lå. Isstrømmer beveget seg radielt utover og gravde dype renner i kontinentalsokkelen (Norskerenna). Fordi så mye vann var bundet i isen, lå det globale havnivået 120 meter lavere, slik at Nordsjøen lå tørt som 'Doggerland'. Enkelte kystfjell og øyer (nunataker) på Vestlandet og i Nord-Norge stakk opp som isfrie lommer."
+      viewBox="0 0 900 480"
+    >
+      {(m) => (
+        <>
+          {/* Map background (Dry North Sea / Ocean) */}
+          <rect x="50" y="40" width="520" height="400" rx="8" fill="#0b1b26" stroke={C.dim} />
+
+          {/* Exposed Dry Shelf (Doggerland / Low Sea Level -120m) */}
+          <path
+            d="M 50 260 Q 140 250 180 320 Q 220 370 200 440 L 50 440 Z"
+            fill="#2c3a2f"
+            opacity="0.7"
+          />
+          <L x="120" y="360" fill="#a3b899" size={12} weight={600} anchor="middle">
+            Doggerland
+          </L>
+          <L x="120" y="378" fill={C.muted} size={10} anchor="middle">
+            Tørrlagt Nordsjø (-120 m)
+          </L>
+
+          {/* Fennoscandian Ice Sheet Dome Outline */}
+          <path
+            d="M 120 180 Q 170 60 360 60 Q 520 80 540 220 Q 550 360 380 410 Q 220 420 160 320 Q 100 240 120 180 Z"
+            fill="#1f4458"
+            stroke={C.cold}
+            strokeWidth="3"
+          />
+
+          {/* Inner High-Dome Contour (>2500m) */}
+          <ellipse
+            cx="350"
+            cy="210"
+            rx="110"
+            ry="90"
+            fill="#2d5e78"
+            stroke={C.white}
+            strokeWidth="1.6"
+            strokeDasharray="4 4"
+          />
+
+          {/* Ice Divide Ridge (Isskille) */}
+          <path
+            d="M 330 140 Q 360 200 370 270"
+            fill="none"
+            stroke="#fde047"
+            strokeWidth="3.5"
+          />
+          <L x="385" y="195" fill="#fde047" size={13} weight={700}>
+            Isskille (~3000 m tykk is)
+          </L>
+
+          {/* Radial Ice Flow Arrows */}
+          <Arrow d="M 320 170 L 220 140" marker={m.cold} color={C.cold} width={2.6} />
+          <Arrow d="M 310 220 L 190 220" marker={m.cold} color={C.cold} width={2.6} />
+          <Arrow d="M 320 260 L 210 300" marker={m.cold} color={C.cold} width={2.6} />
+          <Arrow d="M 390 160 L 480 130" marker={m.cold} color={C.cold} width={2.6} />
+          <Arrow d="M 400 220 L 500 230" marker={m.cold} color={C.cold} width={2.6} />
+          <Arrow d="M 380 270 L 440 360" marker={m.cold} color={C.cold} width={2.6} />
+
+          {/* Ice stream along Norwegian Trench (Norskerenna) */}
+          <path
+            d="M 210 320 Q 150 250 140 150"
+            fill="none"
+            stroke={C.rain}
+            strokeWidth="4"
+            markerEnd={`url(#${m.teal})`}
+          />
+          <L x="130" y="125" fill={C.rain} size={11} weight={600}>
+            Norskerenna isstrøm
+          </L>
+
+          {/* Ice-free refugia marker */}
+          <circle cx="160" cy="180" r="5" fill={C.warm} />
+          <L x="150" y="198" fill={C.warm} size={10} weight={600} anchor="end">
+            Nunatak / kystlommer
+          </L>
+
+          {/* Legend / Info Panel Right */}
+          <rect x="590" y="40" width="280" height="400" rx="8" fill="#101d26" stroke={C.dim} strokeWidth="1.6" />
+          <L x="610" y="70" fill={C.cold} size={16} weight={600}>
+            Fakta om Weichsel ved LGM:
+          </L>
+
+          <rect x="605" y="90" width="250" height="65" rx="4" fill="#0a151d" />
+          <L x="615" y="112" fill={C.fg} size={12} weight={600}>
+            1. Tykkelse og masse
+          </L>
+          <L x="615" y="130" fill={C.muted} size={11}>
+            • Opptil 3000 m over Bottenviken.
+          </L>
+          <L x="615" y="146" fill={C.muted} size={11}>
+            • Presset jordskorpa ned ~800 m.
+          </L>
+
+          <rect x="605" y="165" width="250" height="65" rx="4" fill="#0a151d" />
+          <L x="615" y="187" fill={C.warm} size={12} weight={600}>
+            2. Havnivå og kystlinje
+          </L>
+          <L x="615" y="205" fill={C.muted} size={11}>
+            • Globalt havnivå var 120 m lavere.
+          </L>
+          <L x="615" y="221" fill={C.muted} size={11}>
+            • Nordsjøen var tørt land (Doggerland).
+          </L>
+
+          <rect x="605" y="240" width="250" height="65" rx="4" fill="#0a151d" />
+          <L x="615" y="262" fill={C.teal} size={12} weight={600}>
+            3. Isskille og erosjon
+          </L>
+          <L x="615" y="280" fill={C.muted} size={11}>
+            • Isskillet lå øst for vannskillet.
+          </L>
+          <L x="615" y="296" fill={C.muted} size={11}>
+            • Isstrømmer gravde ut fjordene.
+          </L>
+
+          <rect x="605" y="315" width="250" height="110" rx="4" fill="#172b38" stroke={C.cold} />
+          <L x="615" y="338" fill={C.white} size={12} weight={600}>
+            Istidens slutt (Holocen):
+          </L>
+          <L x="615" y="358" fill={C.cold} size={11}>
+            • 21 000 år siden: Maksimum (LGM).
+          </L>
+          <L x="615" y="378" fill={C.warm} size={11}>
+            • 12 800–11 700 år siden: Yngre Dryas.
+          </L>
+          <L x="615" y="398" fill={C.teal} size={11} weight={600}>
+            • 11 700 år siden: Isen forsvinner!
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+/**
+ * 14. GlacialLandformsDiagram (fig-istidsspor)
+ * Integrert geofaglig plansje over landformer og spor etter weichsel-isen:
+ * - Erosjonsformer (skuringsstriper, rundsva, U-dal, hengende dal)
+ * - Avsetningsformer (morene/Raet, flyttblokk, drumlin, esker)
+ * - Marin grense & landheving (strandlinje og leire)
+ */
+export function GlacialLandformsDiagram() {
+  return (
+    <Diagram
+      title="Landformer og spor etter weichsel-isen: erosjon, avsetning og marin grense"
+      heading="Geologiske spor etter istiden: Erosjon, morener og marin grense"
+      caption="Landskapet i Norge er i stor grad formet av weichsel-isen. Plansjen oppsummerer de tre hovedkategoriene av istidsspor: 1) Erosjonsformer (øverst til venstre): Rundsva med slak skurt støtside og bratt plukket leside, skuringsstriper som viser isens bevegelsesretning, og U-daler med hengende sidedaler. 2) Avsetningsformer (øverst til høyre): Usortert bunnmorene, endemorener som Raet (avsatt under opphold i tilbaketrekningen), drumliner (strømlinjeformede morenehauger), esker (grusrygger fra smeltevannselver), og flyttblokker. 3) Marin grense og landheving (nederst): Fordi isen presset jordskorpen ned, sto havet opptil 220 meter høyere etter issmeltingen. Områder under marin grense (MG) er dekket av marin leire — arnestedet for kvikkleireskred."
+      viewBox="0 0 920 500"
+    >
+      {(m) => (
+        <>
+          {/* ================= PANEL 1: EROSJON (TOP-LEFT) ================= */}
+          <rect x="25" y="35" width="425" height="205" rx="8" fill="#11222c" stroke={C.cold} strokeWidth="1.6" />
+          <L x="45" y="60" fill={C.cold} size={15} weight={600}>
+            1. Erosjonsformer (Skuring og plukking)
+          </L>
+
+          {/* Rundsva diagram */}
+          <path
+            d="M 45 150 Q 100 100 130 110 L 135 150 Z"
+            fill="#223d4c"
+            stroke={C.fg}
+            strokeWidth="1.8"
+          />
+          {/* Striations on stoss side */}
+          <line x1="60" y1="140" x2="85" y2="125" stroke={C.cold} strokeWidth="1.4" />
+          <line x1="75" y1="145" x2="105" y2="120" stroke={C.cold} strokeWidth="1.4" />
+          {/* Arrow of ice movement over roche moutonnee */}
+          <Arrow d="M 50 100 L 125 90" marker={m.cold} color={C.cold} width={2.2} />
+
+          <L x="80" y="168" fill={C.teal} size={11} weight={600} anchor="middle">
+            Rundsva
+          </L>
+          <L x="55" y="184" fill={C.muted} size={10}>
+            • Støtside (slak, skurt)
+          </L>
+          <L x="55" y="198" fill={C.muted} size={10}>
+            • Leside (bratt, plukket)
+          </L>
+
+          {/* U-Valley cross section */}
+          <path
+            d="M 220 90 L 240 145 Q 285 155 330 145 L 350 90"
+            fill="none"
+            stroke={C.fg}
+            strokeWidth="2.4"
+          />
+          {/* Hanging valley tributary */}
+          <path d="M 330 120 L 375 110" stroke={C.teal} strokeWidth="2" strokeDasharray="3 3" />
+          <L x="375" y="105" fill={C.teal} size={10}>
+            Hengende dal
+          </L>
+
+          <L x="285" y="170" fill={C.fg} size={12} weight={600} anchor="middle">
+            U-dal (avrundet bunn)
+          </L>
+          <L x="285" y="186" fill={C.muted} size={10} anchor="middle">
+            Erodert i hele tverrsnittet
+          </L>
+          <L x="285" y="200" fill={C.dim} size={10} anchor="middle">
+            (Fjord = U-dal fylt med sjøvann)
+          </L>
+
+          {/* ================= PANEL 2: AVSETNING (TOP-RIGHT) ================= */}
+          <rect x="470" y="35" width="425" height="205" rx="8" fill="#16231c" stroke={C.warm} strokeWidth="1.6" />
+          <L x="490" y="60" fill={C.warm} size={15} weight={600}>
+            2. Avsetningsformer (Morener, esker og flyttblokk)
+          </L>
+
+          {/* End moraine / Raet ridge */}
+          <path d="M 490 145 Q 530 105 570 145 Z" fill="#44392a" stroke={C.warm} strokeWidth="1.6" />
+          <L x="530" y="165" fill={C.warm} size={11} weight={600} anchor="middle">
+            Endemorene (Raet)
+          </L>
+          <L x="530" y="180" fill={C.muted} size={10} anchor="middle">
+            Usortert stein/grus/leire
+          </L>
+
+          {/* Erratic block */}
+          <rect x="620" y="125" width="30" height="20" rx="3" fill="#605240" stroke="#fef08a" strokeWidth="1.4" />
+          <L x="635" y="165" fill="#fef08a" size={11} weight={600} anchor="middle">
+            Flyttblokk
+          </L>
+          <L x="635" y="180" fill={C.muted} size={10} anchor="middle">
+            Fremmed bergart
+          </L>
+
+          {/* Esker (winding ridge) & Drumlin */}
+          <path d="M 720 145 Q 750 115 780 145 Z" fill="#3a483e" stroke={C.teal} strokeWidth="1.6" />
+          <L x="750" y="165" fill={C.teal} size={11} weight={600} anchor="middle">
+            Drumlin / Esker
+          </L>
+          <L x="750" y="180" fill={C.muted} size={10} anchor="middle">
+            Strømlinjeform / smelteelv
+          </L>
+
+          <L x="490" y="215" fill={C.muted} size={11}>
+            • Bunnmorene (till): Usortert materiale avsatt direkte under isen.
+          </L>
+
+          {/* ================= PANEL 3: MARIN GRENSE & LANDHEVING (BOTTOM) ================= */}
+          <rect x="25" y="255" width="870" height="225" rx="8" fill="#0e1a24" stroke={C.dim} strokeWidth="1.6" />
+          <L x="45" y="280" fill={C.teal} size={15} weight={600}>
+            3. Marin grense (MG), landheving og marin leire
+          </L>
+
+          {/* Landscape cross section showing Sea Level change */}
+          {/* Bedrock slope */}
+          <path d="M 45 430 L 250 330 L 450 330 L 650 370 L 870 430" fill="none" stroke={C.dim} strokeWidth="2" />
+
+          {/* High postglacial sea level line (Marin grense ~220m) */}
+          <line x1="230" y1="330" x2="870" y2="330" stroke={C.cold} strokeWidth="2" strokeDasharray="4 4" />
+          <circle cx="250" cy="330" r="5" fill={C.cold} />
+          <rect x="260" y="305" width="210" height="24" rx="4" fill="#0c2330" stroke={C.cold} />
+          <L x="365" y="322" fill={C.cold} size={11} weight={700} anchor="middle">
+            Marin grense (MG): Opptil 220 m o.h.
+          </L>
+
+          {/* Today's Sea Level */}
+          <line x1="650" y1="370" x2="870" y2="370" stroke={C.rain} strokeWidth="2.4" />
+          <L x="760" y="362" fill={C.rain} size={11} weight={600} anchor="middle">
+            Dagens havnivå (0 m)
+          </L>
+
+          {/* Marine clay deposit area */}
+          <path d="M 260 340 L 640 370 L 640 400 L 260 370 Z" fill="#2d4036" opacity="0.8" />
+          <L x="450" y="375" fill="#86efac" size={12} weight={600} anchor="middle">
+            Avsatt marin leire (i dag tørt land)
+          </L>
+
+          {/* Land uplift arrow */}
+          <Arrow d="M 180 430 L 180 360" marker={m.warm} color={C.warm} width={2.8} />
+          <L x="195" y="400" fill={C.warm} size={12} weight={700}>
+            Isostatisk landheving
+          </L>
+
+          {/* Explanatory callouts bottom */}
+          <rect x="480" y="405" width="400" height="60" rx="4" fill="#13241d" stroke="#86efac" strokeWidth="1" />
+          <L x="495" y="426" fill="#86efac" size={11} weight={600}>
+            Kopling til Geofag 1 (Skred):
+          </L>
+          <L x="495" y="444" fill={C.fg} size={10}>
+            Saltet i leira vaskes ut av ferskt grunnvann over årtusener → danner ustabil kvikkleire!
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
 

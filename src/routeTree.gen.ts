@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Geofag2RouteImport } from './routes/geofag-2'
+import { Route as EksamenIndexRouteImport } from './routes/eksamen/index'
+import { Route as EksamenSlugRouteImport } from './routes/eksamen/$slug'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
 import { Route as Geofag1BergarterOgLandformerRouteImport } from './routes/geofag-1/bergarter-og-landformer'
@@ -27,16 +29,17 @@ import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaJetstrommerRouteImport } from './routes/tema/jetstrommer'
-import { Route as TemaKlimaIndexRouteImport } from './routes/tema/klima/index'
-import { Route as TemaKlimaOversiktRouteImport } from './routes/tema/klima/oversikt'
-import { Route as TemaKlimaEnsoRouteImport } from './routes/tema/klima/enso'
-import { Route as TemaKlimaIodRouteImport } from './routes/tema/klima/iod'
-import { Route as TemaKlimaNaoRouteImport } from './routes/tema/klima/nao'
-import { Route as TemaKlimaAmocRouteImport } from './routes/tema/klima/amoc'
+import { Route as TemaMilankovitchRouteImport } from './routes/tema/milankovitch'
 import { Route as TemaNumeriskeModellerRouteImport } from './routes/tema/numeriske-modeller'
 import { Route as TemaPaleoklimaRouteImport } from './routes/tema/paleoklima'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
 import { Route as TemaVindsystemetRouteImport } from './routes/tema/vindsystemet'
+import { Route as TemaKlimaIndexRouteImport } from './routes/tema/klima/index'
+import { Route as TemaKlimaAmocRouteImport } from './routes/tema/klima/amoc'
+import { Route as TemaKlimaEnsoRouteImport } from './routes/tema/klima/enso'
+import { Route as TemaKlimaIodRouteImport } from './routes/tema/klima/iod'
+import { Route as TemaKlimaNaoRouteImport } from './routes/tema/klima/nao'
+import { Route as TemaKlimaOversiktRouteImport } from './routes/tema/klima/oversikt'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +49,16 @@ const IndexRoute = IndexRouteImport.update({
 const Geofag2Route = Geofag2RouteImport.update({
   id: '/geofag-2',
   path: '/geofag-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EksamenIndexRoute = EksamenIndexRouteImport.update({
+  id: '/eksamen/',
+  path: '/eksamen/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EksamenSlugRoute = EksamenSlugRouteImport.update({
+  id: '/eksamen/$slug',
+  path: '/eksamen/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Geofag1IndexRoute = Geofag1IndexRouteImport.update({
@@ -131,34 +144,9 @@ const TemaJetstrommerRoute = TemaJetstrommerRouteImport.update({
   path: '/tema/jetstrommer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TemaKlimaIndexRoute = TemaKlimaIndexRouteImport.update({
-  id: '/tema/klima/',
-  path: '/tema/klima/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TemaKlimaOversiktRoute = TemaKlimaOversiktRouteImport.update({
-  id: '/tema/klima/oversikt',
-  path: '/tema/klima/oversikt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TemaKlimaEnsoRoute = TemaKlimaEnsoRouteImport.update({
-  id: '/tema/klima/enso',
-  path: '/tema/klima/enso',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TemaKlimaIodRoute = TemaKlimaIodRouteImport.update({
-  id: '/tema/klima/iod',
-  path: '/tema/klima/iod',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TemaKlimaNaoRoute = TemaKlimaNaoRouteImport.update({
-  id: '/tema/klima/nao',
-  path: '/tema/klima/nao',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TemaKlimaAmocRoute = TemaKlimaAmocRouteImport.update({
-  id: '/tema/klima/amoc',
-  path: '/tema/klima/amoc',
+const TemaMilankovitchRoute = TemaMilankovitchRouteImport.update({
+  id: '/tema/milankovitch',
+  path: '/tema/milankovitch',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemaNumeriskeModellerRoute = TemaNumeriskeModellerRouteImport.update({
@@ -181,10 +169,41 @@ const TemaVindsystemetRoute = TemaVindsystemetRouteImport.update({
   path: '/tema/vindsystemet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaKlimaIndexRoute = TemaKlimaIndexRouteImport.update({
+  id: '/tema/klima/',
+  path: '/tema/klima/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaAmocRoute = TemaKlimaAmocRouteImport.update({
+  id: '/tema/klima/amoc',
+  path: '/tema/klima/amoc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaEnsoRoute = TemaKlimaEnsoRouteImport.update({
+  id: '/tema/klima/enso',
+  path: '/tema/klima/enso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaIodRoute = TemaKlimaIodRouteImport.update({
+  id: '/tema/klima/iod',
+  path: '/tema/klima/iod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaNaoRoute = TemaKlimaNaoRouteImport.update({
+  id: '/tema/klima/nao',
+  path: '/tema/klima/nao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaOversiktRoute = TemaKlimaOversiktRouteImport.update({
+  id: '/tema/klima/oversikt',
+  path: '/tema/klima/oversikt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
+  '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
@@ -200,84 +219,93 @@ export interface FileRoutesByFullPath {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
-  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
-  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
-  '/tema/klima/iod': typeof TemaKlimaIodRoute
-  '/tema/klima/nao': typeof TemaKlimaNaoRoute
-  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
-  '/tema/klima': typeof TemaKlimaIndexRoute
+  '/tema/milankovitch': typeof TemaMilankovitchRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
+  '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
-}
-export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/geofag-2': typeof Geofag2Route
-  '/geofag-1/$slug': typeof Geofag1SlugRoute
-  '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
-  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
-  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
-  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
-  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
-  '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
-  '/geofag-1/skred': typeof Geofag1SkredRoute
-  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
-  '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
-  '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
-  '/tema/coriolis': typeof TemaCoriolisRoute
-  '/tema/havstrommer': typeof TemaHavstrommerRoute
-  '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
-  '/tema/jetstrommer': typeof TemaJetstrommerRoute
-  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
-  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
-  '/tema/klima/iod': typeof TemaKlimaIodRoute
-  '/tema/klima/nao': typeof TemaKlimaNaoRoute
-  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
-  '/tema/klima': typeof TemaKlimaIndexRoute
-  '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
-  '/tema/paleoklima': typeof TemaPaleoklimaRoute
-  '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
-  '/tema/vindsystemet': typeof TemaVindsystemetRoute
-  '/geofag-1': typeof Geofag1IndexRoute
-}
-export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/geofag-2': typeof Geofag2Route
-  '/geofag-1/$slug': typeof Geofag1SlugRoute
-  '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
-  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
-  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
-  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
-  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
-  '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
-  '/geofag-1/skred': typeof Geofag1SkredRoute
-  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
-  '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
-  '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
-  '/tema/coriolis': typeof TemaCoriolisRoute
-  '/tema/havstrommer': typeof TemaHavstrommerRoute
-  '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
-  '/tema/jetstrommer': typeof TemaJetstrommerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
   '/tema/klima/': typeof TemaKlimaIndexRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/geofag-2': typeof Geofag2Route
+  '/eksamen/$slug': typeof EksamenSlugRoute
+  '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
+  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
+  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
+  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
+  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
+  '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
+  '/geofag-1/skred': typeof Geofag1SkredRoute
+  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
+  '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
+  '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
+  '/tema/coriolis': typeof TemaCoriolisRoute
+  '/tema/havstrommer': typeof TemaHavstrommerRoute
+  '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
+  '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/milankovitch': typeof TemaMilankovitchRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
+  '/eksamen': typeof EksamenIndexRoute
+  '/geofag-1': typeof Geofag1IndexRoute
+  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
+  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
+  '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/nao': typeof TemaKlimaNaoRoute
+  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/tema/klima': typeof TemaKlimaIndexRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/geofag-2': typeof Geofag2Route
+  '/eksamen/$slug': typeof EksamenSlugRoute
+  '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
+  '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
+  '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
+  '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
+  '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
+  '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
+  '/geofag-1/skred': typeof Geofag1SkredRoute
+  '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
+  '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
+  '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
+  '/tema/coriolis': typeof TemaCoriolisRoute
+  '/tema/havstrommer': typeof TemaHavstrommerRoute
+  '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
+  '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
+  '/tema/paleoklima': typeof TemaPaleoklimaRoute
+  '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
+  '/tema/vindsystemet': typeof TemaVindsystemetRoute
+  '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
+  '/tema/klima/amoc': typeof TemaKlimaAmocRoute
+  '/tema/klima/enso': typeof TemaKlimaEnsoRoute
+  '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/nao': typeof TemaKlimaNaoRoute
+  '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/tema/klima/': typeof TemaKlimaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/geofag-2'
+    | '/eksamen/$slug'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
@@ -293,82 +321,91 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
-    | '/tema/klima/amoc'
-    | '/tema/klima/enso'
-    | '/tema/klima/iod'
-    | '/tema/klima/nao'
-    | '/tema/klima/oversikt'
-    | '/tema/klima'
+    | '/tema/milankovitch'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/vaerkatastrofer'
     | '/tema/vindsystemet'
+    | '/eksamen/'
     | '/geofag-1/'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/geofag-2'
-    | '/geofag-1/$slug'
-    | '/geofag-1/bergarter-og-landformer'
-    | '/geofag-1/feltarbeid'
-    | '/geofag-1/geologiske-ressurser'
-    | '/geofag-1/jordsystemene'
-    | '/geofag-1/platetektonikk'
-    | '/geofag-1/ressurser-og-felt'
-    | '/geofag-1/skred'
-    | '/geofag-1/vann-flom-og-skred'
-    | '/geofag-1/vann-og-flom'
-    | '/geofag-1/vulkaner-og-jordskjelv'
-    | '/tema/coriolis'
-    | '/tema/havstrommer'
-    | '/tema/hoytrykk-lavtrykk'
-    | '/tema/jetstrommer'
-    | '/tema/klima/amoc'
-    | '/tema/klima/enso'
-    | '/tema/klima/iod'
-    | '/tema/klima/nao'
-    | '/tema/klima/oversikt'
-    | '/tema/klima'
-    | '/tema/numeriske-modeller'
-    | '/tema/paleoklima'
-    | '/tema/vaerkatastrofer'
-    | '/tema/vindsystemet'
-    | '/geofag-1'
-  id:
-    | '__root__'
-    | '/'
-    | '/geofag-2'
-    | '/geofag-1/$slug'
-    | '/geofag-1/bergarter-og-landformer'
-    | '/geofag-1/feltarbeid'
-    | '/geofag-1/geologiske-ressurser'
-    | '/geofag-1/jordsystemene'
-    | '/geofag-1/platetektonikk'
-    | '/geofag-1/ressurser-og-felt'
-    | '/geofag-1/skred'
-    | '/geofag-1/vann-flom-og-skred'
-    | '/geofag-1/vann-og-flom'
-    | '/geofag-1/vulkaner-og-jordskjelv'
-    | '/tema/coriolis'
-    | '/tema/havstrommer'
-    | '/tema/hoytrykk-lavtrykk'
-    | '/tema/jetstrommer'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
     | '/tema/klima/'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/geofag-2'
+    | '/eksamen/$slug'
+    | '/geofag-1/$slug'
+    | '/geofag-1/bergarter-og-landformer'
+    | '/geofag-1/feltarbeid'
+    | '/geofag-1/geologiske-ressurser'
+    | '/geofag-1/jordsystemene'
+    | '/geofag-1/platetektonikk'
+    | '/geofag-1/ressurser-og-felt'
+    | '/geofag-1/skred'
+    | '/geofag-1/vann-flom-og-skred'
+    | '/geofag-1/vann-og-flom'
+    | '/geofag-1/vulkaner-og-jordskjelv'
+    | '/tema/coriolis'
+    | '/tema/havstrommer'
+    | '/tema/hoytrykk-lavtrykk'
+    | '/tema/jetstrommer'
+    | '/tema/milankovitch'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/vaerkatastrofer'
     | '/tema/vindsystemet'
+    | '/eksamen'
+    | '/geofag-1'
+    | '/tema/klima/amoc'
+    | '/tema/klima/enso'
+    | '/tema/klima/iod'
+    | '/tema/klima/nao'
+    | '/tema/klima/oversikt'
+    | '/tema/klima'
+  id:
+    | '__root__'
+    | '/'
+    | '/geofag-2'
+    | '/eksamen/$slug'
+    | '/geofag-1/$slug'
+    | '/geofag-1/bergarter-og-landformer'
+    | '/geofag-1/feltarbeid'
+    | '/geofag-1/geologiske-ressurser'
+    | '/geofag-1/jordsystemene'
+    | '/geofag-1/platetektonikk'
+    | '/geofag-1/ressurser-og-felt'
+    | '/geofag-1/skred'
+    | '/geofag-1/vann-flom-og-skred'
+    | '/geofag-1/vann-og-flom'
+    | '/geofag-1/vulkaner-og-jordskjelv'
+    | '/tema/coriolis'
+    | '/tema/havstrommer'
+    | '/tema/hoytrykk-lavtrykk'
+    | '/tema/jetstrommer'
+    | '/tema/milankovitch'
+    | '/tema/numeriske-modeller'
+    | '/tema/paleoklima'
+    | '/tema/vaerkatastrofer'
+    | '/tema/vindsystemet'
+    | '/eksamen/'
     | '/geofag-1/'
+    | '/tema/klima/amoc'
+    | '/tema/klima/enso'
+    | '/tema/klima/iod'
+    | '/tema/klima/nao'
+    | '/tema/klima/oversikt'
+    | '/tema/klima/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Geofag2Route: typeof Geofag2Route
+  EksamenSlugRoute: typeof EksamenSlugRoute
   Geofag1SlugRoute: typeof Geofag1SlugRoute
   Geofag1BergarterOgLandformerRoute: typeof Geofag1BergarterOgLandformerRoute
   Geofag1FeltarbeidRoute: typeof Geofag1FeltarbeidRoute
@@ -384,17 +421,19 @@ export interface RootRouteChildren {
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaJetstrommerRoute: typeof TemaJetstrommerRoute
+  TemaMilankovitchRoute: typeof TemaMilankovitchRoute
+  TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
+  TemaPaleoklimaRoute: typeof TemaPaleoklimaRoute
+  TemaVaerkatastroferRoute: typeof TemaVaerkatastroferRoute
+  TemaVindsystemetRoute: typeof TemaVindsystemetRoute
+  EksamenIndexRoute: typeof EksamenIndexRoute
+  Geofag1IndexRoute: typeof Geofag1IndexRoute
   TemaKlimaAmocRoute: typeof TemaKlimaAmocRoute
   TemaKlimaEnsoRoute: typeof TemaKlimaEnsoRoute
   TemaKlimaIodRoute: typeof TemaKlimaIodRoute
   TemaKlimaNaoRoute: typeof TemaKlimaNaoRoute
   TemaKlimaOversiktRoute: typeof TemaKlimaOversiktRoute
   TemaKlimaIndexRoute: typeof TemaKlimaIndexRoute
-  TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
-  TemaPaleoklimaRoute: typeof TemaPaleoklimaRoute
-  TemaVaerkatastroferRoute: typeof TemaVaerkatastroferRoute
-  TemaVindsystemetRoute: typeof TemaVindsystemetRoute
-  Geofag1IndexRoute: typeof Geofag1IndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -411,6 +450,20 @@ declare module '@tanstack/react-router' {
       path: '/geofag-2'
       fullPath: '/geofag-2'
       preLoaderRoute: typeof Geofag2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eksamen/': {
+      id: '/eksamen/'
+      path: '/eksamen'
+      fullPath: '/eksamen/'
+      preLoaderRoute: typeof EksamenIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eksamen/$slug': {
+      id: '/eksamen/$slug'
+      path: '/eksamen/$slug'
+      fullPath: '/eksamen/$slug'
+      preLoaderRoute: typeof EksamenSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/': {
@@ -525,46 +578,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaJetstrommerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tema/klima/': {
-      id: '/tema/klima/'
-      path: '/tema/klima'
-      fullPath: '/tema/klima'
-      preLoaderRoute: typeof TemaKlimaIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tema/klima/oversikt': {
-      id: '/tema/klima/oversikt'
-      path: '/tema/klima/oversikt'
-      fullPath: '/tema/klima/oversikt'
-      preLoaderRoute: typeof TemaKlimaOversiktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tema/klima/enso': {
-      id: '/tema/klima/enso'
-      path: '/tema/klima/enso'
-      fullPath: '/tema/klima/enso'
-      preLoaderRoute: typeof TemaKlimaEnsoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tema/klima/iod': {
-      id: '/tema/klima/iod'
-      path: '/tema/klima/iod'
-      fullPath: '/tema/klima/iod'
-      preLoaderRoute: typeof TemaKlimaIodRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tema/klima/nao': {
-      id: '/tema/klima/nao'
-      path: '/tema/klima/nao'
-      fullPath: '/tema/klima/nao'
-      preLoaderRoute: typeof TemaKlimaNaoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tema/klima/amoc': {
-      id: '/tema/klima/amoc'
-      path: '/tema/klima/amoc'
-      fullPath: '/tema/klima/amoc'
-      preLoaderRoute: typeof TemaKlimaAmocRouteImport
+    '/tema/milankovitch': {
+      id: '/tema/milankovitch'
+      path: '/tema/milankovitch'
+      fullPath: '/tema/milankovitch'
+      preLoaderRoute: typeof TemaMilankovitchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tema/numeriske-modeller': {
@@ -595,12 +613,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaVindsystemetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/klima/': {
+      id: '/tema/klima/'
+      path: '/tema/klima'
+      fullPath: '/tema/klima/'
+      preLoaderRoute: typeof TemaKlimaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/amoc': {
+      id: '/tema/klima/amoc'
+      path: '/tema/klima/amoc'
+      fullPath: '/tema/klima/amoc'
+      preLoaderRoute: typeof TemaKlimaAmocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/enso': {
+      id: '/tema/klima/enso'
+      path: '/tema/klima/enso'
+      fullPath: '/tema/klima/enso'
+      preLoaderRoute: typeof TemaKlimaEnsoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/iod': {
+      id: '/tema/klima/iod'
+      path: '/tema/klima/iod'
+      fullPath: '/tema/klima/iod'
+      preLoaderRoute: typeof TemaKlimaIodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/nao': {
+      id: '/tema/klima/nao'
+      path: '/tema/klima/nao'
+      fullPath: '/tema/klima/nao'
+      preLoaderRoute: typeof TemaKlimaNaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klima/oversikt': {
+      id: '/tema/klima/oversikt'
+      path: '/tema/klima/oversikt'
+      fullPath: '/tema/klima/oversikt'
+      preLoaderRoute: typeof TemaKlimaOversiktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Geofag2Route: Geofag2Route,
+  EksamenSlugRoute: EksamenSlugRoute,
   Geofag1SlugRoute: Geofag1SlugRoute,
   Geofag1BergarterOgLandformerRoute: Geofag1BergarterOgLandformerRoute,
   Geofag1FeltarbeidRoute: Geofag1FeltarbeidRoute,
@@ -616,17 +677,19 @@ const rootRouteChildren: RootRouteChildren = {
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaJetstrommerRoute: TemaJetstrommerRoute,
+  TemaMilankovitchRoute: TemaMilankovitchRoute,
+  TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
+  TemaPaleoklimaRoute: TemaPaleoklimaRoute,
+  TemaVaerkatastroferRoute: TemaVaerkatastroferRoute,
+  TemaVindsystemetRoute: TemaVindsystemetRoute,
+  EksamenIndexRoute: EksamenIndexRoute,
+  Geofag1IndexRoute: Geofag1IndexRoute,
   TemaKlimaAmocRoute: TemaKlimaAmocRoute,
   TemaKlimaEnsoRoute: TemaKlimaEnsoRoute,
   TemaKlimaIodRoute: TemaKlimaIodRoute,
   TemaKlimaNaoRoute: TemaKlimaNaoRoute,
   TemaKlimaOversiktRoute: TemaKlimaOversiktRoute,
   TemaKlimaIndexRoute: TemaKlimaIndexRoute,
-  TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
-  TemaPaleoklimaRoute: TemaPaleoklimaRoute,
-  TemaVaerkatastroferRoute: TemaVaerkatastroferRoute,
-  TemaVindsystemetRoute: TemaVindsystemetRoute,
-  Geofag1IndexRoute: Geofag1IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

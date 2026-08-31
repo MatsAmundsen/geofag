@@ -79,6 +79,18 @@ function Hub() {
                 alt="Tornado over åpent sletteland"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
+              <video
+                className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/images/hero-tornado.jpg"
+                aria-hidden="true"
+              >
+                <source src="/videos/hero-tornado.mp4" type="video/mp4" />
+              </video>
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">

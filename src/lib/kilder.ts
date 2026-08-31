@@ -413,6 +413,12 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/climate-change-atlantic-meridional-overturning-circulation",
     },
     {
+      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
+      italic: "What is upwelling?",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/facts/upwelling.html",
+    },
+    {
       prefix: "Intergovernmental Panel on Climate Change. (2021). ",
       italic:
         "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
@@ -504,7 +510,46 @@ export const KILDER = {
       prefix: "Australian Bureau of Meteorology. (u.å.). ",
       italic: "Indian Ocean Dipole (IOD)",
       suffix: ".",
-      href: "http://www.bom.gov.au/climate/iod/",
+      href: "https://www.bom.gov.au/climate/iod/",
+    },
+    {
+      prefix: "Barthel, K. (2021). ",
+      italic: "Ekmantransport",
+      suffix: ".",
+      href: "https://snl.no/ekmantransport",
+    },
+    {
+      prefix:
+        "Hu, S., & Fedorov, A. V. (2019). Indian Ocean warming can strengthen the Atlantic meridional overturning circulation. ",
+      italic: "Nature Climate Change, 9",
+      suffix: "(10), 747–751.",
+      href: "https://doi.org/10.1038/s41558-019-0566-4",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
+      italic: "Dipole Mode Index (DMI) monthly time-series",
+      suffix: ".",
+      href: "https://psl.noaa.gov/data/timeseries/month/DMI/",
+    },
+    {
+      prefix:
+        "National Aeronautics and Space Administration. (2019a, 7. november). ",
+      italic: "Spate of cyclones in the North Indian Ocean",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/images/145841/spate-of-cyclones-in-the-north-indian-ocean",
+    },
+    {
+      prefix:
+        "National Aeronautics and Space Administration. (2019b, 13. desember). ",
+      italic: "Fires take a toll on Australian forests",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/images/145998/fires-take-a-toll-on-australian-forests",
+    },
+    {
+      prefix: "National Aeronautics and Space Administration. (2006). ",
+      italic: "El Niño and rainfall",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/images/7247/el-nino-and-rainfall",
     },
   ],
   nao: [
@@ -631,6 +676,74 @@ export const KILDER = {
       href: "https://doi.org/10.1002/jqs.1227",
     },
   ],
+  milankovitch: [
+    {
+      prefix: "National Aeronautics and Space Administration. (u.å.). ",
+      italic: "Milankovitch (orbital) cycles and their role in Earth’s climate",
+      suffix: ".",
+      href: "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
+    },
+    {
+      prefix: "National Aeronautics and Space Administration. (2000). ",
+      italic: "Milankovitch cycles and glaciation",
+      suffix: ".",
+      href: "https://earthobservatory.nasa.gov/features/Milankovitch",
+    },
+    {
+      prefix:
+        "Hays, J. D., Imbrie, J., & Shackleton, N. J. (1976). Variations in the Earth’s orbit: Pacemaker of the ice ages. ",
+      italic: "Science, 194",
+      suffix: "(4270), 1121–1132.",
+      href: "https://doi.org/10.1126/science.194.4270.1121",
+    },
+    {
+      prefix:
+        "Lisiecki, L. E., & Raymo, M. E. (2005). A Pliocene-Pleistocene stack of 57 globally distributed benthic δ¹⁸O records. ",
+      italic: "Paleoceanography, 20",
+      suffix: "(1), PA1003.",
+      href: "https://doi.org/10.1029/2004PA001071",
+    },
+    {
+      prefix:
+        "Lüthi, D., Le Floch, M., Bereiter, B., Blunier, T., Barnola, J.-M., Siegenthaler, U., Raynaud, D., Jouzel, J., Fischer, H., Kawamura, K., & Stocker, T. F. (2008). High-resolution carbon dioxide concentration record 650,000–800,000 years before present. ",
+      italic: "Nature, 453",
+      suffix: "(7193), 379–382.",
+      href: "https://doi.org/10.1038/nature06949",
+    },
+    {
+      prefix:
+        "Walker, M., Johnsen, S., Rasmussen, S. O., Popp, T., Steffensen, J.-P., Gibbard, P., Hoek, W., Lowe, J., Andrews, J., Björck, S., Cwynar, L. C., Hughen, K., Kershaw, P., Kromer, B., Litt, T., Lowe, D. J., Nakagawa, T., Newnham, R., & Schwander, J. (2009). Formal definition and dating of the GSSP (Global Stratotype Section and Point) for the base of the Holocene using the Greenland NGRIP ice core, and selected auxiliary records. ",
+      italic: "Journal of Quaternary Science, 24",
+      suffix: "(1), 3–17.",
+      href: "https://doi.org/10.1002/jqs.1227",
+    },
+    {
+      prefix:
+        "Berger, A., & Loutre, M. F. (2002). An exceptionally long interglacial ahead? ",
+      italic: "Science, 297",
+      suffix: "(5585), 1287–1288.",
+      href: "https://doi.org/10.1126/science.1076120",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change. (2021). ",
+      italic:
+        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
+      suffix: ".",
+      href: "https://www.ipcc.ch/report/ar6/wg1/",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse. (u.å.). ",
+      italic: "Marin grense",
+      suffix: ".",
+      href: "https://www.ngu.no/emne/marin-grense",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse. (u.å.). ",
+      italic: "Om kart over marin grense",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
+    },
+  ],
   vaerkatastrofer: [
     {
       prefix: "National Hurricane Center. (u.å.). ",
@@ -662,6 +775,44 @@ export const KILDER = {
       italic: "Stormflo og havnivå",
       suffix: ".",
       href: "https://www.kartverket.no/til-sjos/se-havniva",
+    },
+  ],
+  eksamen: [
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-a). ",
+      italic: "Geofag 2 (REA3043) — eksamensinformasjon",
+      suffix: ".",
+      href: "https://kandidat.udir.no/eksamensinfo/REA3043",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-b). ",
+      italic: "Eksamensplan — Geofag 2 (REA3043)",
+      suffix: ".",
+      href: "https://eksamensplan.udir.no/eksamen/REA3043",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-c). ",
+      italic: "Eksamen i sikker nettleser",
+      suffix: ".",
+      href: "https://www.udir.no/eksamen-og-prover/eksamen/slik-endrer-vi-eksamen/eksamensfag-med-sikker-nettleser/",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-d). ",
+      italic: "Forberede og ta eksamen",
+      suffix: ".",
+      href: "https://www.udir.no/eksamen-og-prover/eksamen/forberede-og-ta-eksamen/",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.). ",
+      italic: "Søk i eksamensoppgaver — sensorveiledninger og forhåndssensur (REA3043)",
+      suffix: ".",
+      href: "https://sokeresultat.udir.no/eksamensoppgaver.html?query=Geofag%202",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (2020). ",
+      italic: "Læreplan i geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03",
     },
   ],
 } as const satisfies Record<string, readonly Kilde[]>;

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { HurricaneSpinModel } from "@/components/models/hurricane-spin-model";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -28,7 +29,7 @@ function KatastroferPage() {
       lead="Orkaner, ekstremnedbør og stormflo er ikke egne fysikklover. De er værsystemer drevet av varme, fukt og rotasjon — de samme mekanismene du allerede kan. En katastrofe oppstår når systemet treffer samfunn som ikke tåler det."
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye"
-      prev={{ to: "/tema/paleoklima", label: "Forrige: Paleoklima" }}
+      prev={{ to: "/tema/milankovitch", label: "Forrige: Milankovitch og istider" }}
       kilder={KILDER.vaerkatastrofer}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
@@ -69,6 +70,8 @@ function KatastroferPage() {
         ord="Tropisk syklon"
         barn="Fellesnavn for orkan, tyfon og syklon: et varmkjerne-lavtrykk over tropisk hav, drevet av kondensasjonsvarme og formet av coriolis. Øyet er det stille senteret."
       />
+
+      <HurricaneSpinModel />
 
       <PhotoPair
         heading="Orkanen og brenselet"

@@ -169,17 +169,31 @@ export function FigurePlaceholder({
   heading,
   caption,
   label,
+  id,
 }: {
   heading: string;
   caption: string;
   label: string;
+  id?: string;
 }) {
   return (
-    <figure className="my-8 overflow-hidden rounded-xl border border-border bg-card">
+    <figure
+      id={id}
+      className="my-8 overflow-hidden rounded-xl border border-dashed border-border bg-card"
+    >
       <p className="border-b border-border px-4 py-3 text-sm font-medium text-foreground sm:px-6">
         {heading}
       </p>
-      <div role="img" aria-label={label} className="min-h-48 bg-muted" />
+      <div
+        role="img"
+        aria-label={label}
+        className="flex min-h-48 flex-col items-center justify-center gap-2 bg-muted px-6 py-12"
+      >
+        <p className="text-center text-xs font-medium uppercase tracking-wider text-primary">
+          Figurplass
+        </p>
+        <p className="max-w-lg text-center text-sm text-muted-foreground">{label}</p>
+      </div>
       <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6">
         {caption}
       </figcaption>
