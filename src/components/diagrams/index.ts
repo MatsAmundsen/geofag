@@ -52,7 +52,20 @@ export {
   NegativeWalkerDiagram,
   NeutralIodDiagram,
 } from "./iod";
-export { PlatesMapDiagram, SpreadingDiagram, SubductionDiagram } from "./plates";
+export {
+  BoundaryOverviewDiagram,
+  CollisionDiagram,
+  ContinentalRiftDiagram,
+  ConvectionDiagram,
+  DecompressionMeltingDiagram,
+  EarthLayersDiagram,
+  OceanOceanSubductionDiagram,
+  PlatesMapDiagram,
+  SolidusDiagram,
+  SpreadingDiagram,
+  SubductionDiagram,
+  TransformDiagram,
+} from "./plates";
 export { SeaBreezeDiagram } from "./pressure";
 export { ModelGridDiagram } from "./models";
 export {
