@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { BoundaryQuakesDiagram } from "@/components/diagrams/quakes";
 import { PhotoFigure } from "@/components/photo-figure";
@@ -39,6 +39,9 @@ function VulkanerOgJordskjelvPage() {
       }}
       kilder={KILDER.vulkaner}
     >
+      <h2 className="font-display text-2xl font-medium tracking-tight">
+        Jordskjelv: brudd, bølger og plategrense
+      </h2>
       <p>
         Ved midthavsrygg og transformgrense er skjelvene grunne. Ved subduksjon går havbunnen ned,
         og skjelvene kan sitte dypt. Der kombineres ofte vulkan, store jordskjelv og tsunami fra
@@ -119,49 +122,25 @@ function VulkanerOgJordskjelvPage() {
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Naturfarer i geosfæren: Åknes
+        Tsunami i Norge er nesten aldri plategrense
       </h2>
       <p>
-        Åknes ligger på vestsiden av Sunnylvsfjorden i Stranda. Fjellet har vært kjent som ustabilt
-        siden 1960-tallet. NVE definerer fire scenarioer: D ca. 2,4 mill. m³ (årlig sannsynlighet
-        1/200), C ca. 7,4 mill. m³ (1/100), B ca. 9,7 mill. m³ (om lag 1/600), A totalt 31 mill. m³
-        (om lag 1/12 000, inngår ikke i beredskap). Samlet årlig sannsynlighet om lag 1/60 (NVE,
-        2026).
-      </p>
-      <p>
-        Overvåking: GPS, totalstasjon, ekstensometer, laser, borehull, satellitt-radar og
-        meteorologi (NVE, u.å.). Et skred kan gi flodbølge i Storfjord-systemet. Sikring av hele
-        fjellet er urealistisk. Tiltaket er overvåking, varsling og evakuering.
-      </p>
-      <p>
-        Tafjord 7. april 1934 viser hvorfor. Ca. 3 mill. m³ fjell, 40 omkomne, bølger inntil 61
-        høydemeter. Sprekken var kjent i tiår. Båter ble dratt opp, men ikke folkene. Overvåking
-        stopper ikke skredet. Den gir tid til å flytte folk.
-      </p>
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Storegga er skred, ikke plategrense
-      </h2>
-      <p>
-        Norske tsunamier er nesten alltid skred i fjord, innsjø eller kontinentalskråning, ikke
-        subduksjon. Globale katastrofetsunamier ved Chile, Japan og Indonesia kommer fra
-        havbunnsløft ved plategrense.
+        Globale katastrofetsunamier ved Chile, Japan og Indonesia kommer fra havbunnsløft ved
+        subduksjon. Norske tsunamier kommer nesten alltid fra skred i fjord, innsjø eller
+        kontinentalskråning. Tafjord 1934 og Åknes i Storfjorden er fjellskred. Storegga for ca.
+        8150 år siden er skråningssvikt i sediment på sokkelen — ikke en plategrense som røk.
       </p>
       <OrdBoks
         ord="Tsunami"
         barn="I Norge nesten alltid fra skred i fjord, innsjø eller skråning — ikke fra subduksjon."
       />
       <p>
-        Storeggaskredet gikk for ca. 8150 år siden. Volum 2400–3200 km³, bakvegg 310 km, utløp 810
-        km (Haflidason et al., 2004). Massene er morene i veksling med myk leire på
-        kontinentalskråningen. Skredet utviklet seg retrogressivt på slak helling, ned mot 0,3°, som
-        et kvikkleireskred under vann. Et jordskjelv kan ha vært første impuls. Selve hendelsen er
-        skråningssvikt i sediment, ikke en plategrense som røk.
-      </p>
-      <p>
-        Ormen Lange ligger i kanten av skredgropa. Undersøkelsene konkluderte med stabil skredkant.
-        Feltet har vært i produksjon fra 2007. Storegga forklarer tsunami og skred i hydrosfæren.
-        Den forklarer ikke hvor platene møtes.
+        Mekanismene, volumene og overvåkingen hører i{" "}
+        <Link to="/geofag-1/skred" className="text-primary underline-offset-2 hover:underline">
+          skred-kapittelet
+        </Link>
+        . Her er poenget bare skillet: jordskjelv og vulkan følger plategrensen. Norsk tsunami følger
+        skred.
       </p>
 
       <Callout title="Kompetansemål">
@@ -181,6 +160,10 @@ function VulkanerOgJordskjelvPage() {
         <Term
           name="intraplate"
           def="skjelv inne på en plate, ikke ved aktiv grense; Norge er slikt"
+        />
+        <Term
+          name="pyroklastisk strøm"
+          def="glohet blanding av gass, aske og stein som renner nedover vulkanen; raskere og farligere enn lava"
         />
         <Term
           name="tsunami"
