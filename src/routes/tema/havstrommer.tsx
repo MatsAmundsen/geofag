@@ -1,11 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import {
   AmocDiagram,
+  ClimateContrastDiagram,
   DensityDiagram,
   EkmanDiagram,
   GulfVsNacDiagram,
   GyreDiagram,
+  OceanDriversDiagram,
   UpwellingDiagram,
 } from "@/components/diagrams/ocean";
 import { OceanCurrentModel } from "@/components/models/ocean-current-model";
@@ -41,7 +43,7 @@ function HavstrommerPage() {
       next={{ to: "/tema/klima", label: "Neste: Klima" }}
       kilder={KILDER.havstrommer}
     >
-      <h2 className="font-display text-2xl font-medium tracking-tight">1. Hva er en havstrøm?</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Hva en havstrøm er</h2>
       <p>
         En havstrøm er vann som beveger seg samlet fra ett sted til et annet — ikke bare bølger som
         skvulper på stedet. De samme tre kreftene som styrer lufta, styrer havet: trykk (fra vind),
@@ -55,26 +57,22 @@ function HavstrommerPage() {
         i termoklinen, laget der temperaturen stuper og som skiller varmt overflatevann fra kaldt
         dyphav. I Atlanteren henger etasjene sammen i et belte som kalles AMOC.
       </p>
+
+      <OceanDriversDiagram />
+
       <OrdBoks
         ord="Overflatestrøm og dypstrøm"
         barn="Overflaten (noen titalls til noen hundre meter) drives av vind. Dypet drives av at kaldt, salt vann er tyngre og synker. Tidevann rører kysten, men driver ikke de store kretsløpene."
       />
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        2. Hvordan fungerer det?
-      </h2>
       <p>
-        Tre prosesser skaper de store havstrømmene: vind som setter overflaten i bevegelse, tetthet
-        som avgjør hva som synker i dypet, og termoklinen som holder de to lagene fra hverandre.
-        Modellen under samler alle tre — skyv glideren og se hva som skjer med dypvannsdannelsen når
-        polene går fra frysing til smelting.
+        Resten av kapittelet følger de tre kreftene i figuren. Først overflaten: Ekman, gyrer og
+        oppwelling. Så dypet: tetthet. Til slutt beltet som binder etasjene, og hva det betyr for
+        Norge.
       </p>
 
-      <OceanCurrentModel />
-
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
-        Overflatestrømmer: vinden peker ikke dit vannet går
-      </h3>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Overflaten: vinden peker ikke dit vannet går
+      </h2>
       <p>
         Vinden tar i de øverste meterne. Coriolis dreier strømmen til høyre i nord. Laget under
         dreies enda mer. Summen — det som faktisk flytter vannmasser — går omtrent rett til høyre
@@ -108,9 +106,9 @@ function HavstrommerPage() {
         ]}
       />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
-        Overflatestrømmene organiseres i gyrer
-      </h3>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Gyrene: slik organiseres overflaten
+      </h2>
       <p>
         I hvert store havbasseng samler Ekman-transporten seg til et lukket kretsløp — en gyre. I
         nord går den med klokken. Figuren under viser hvorfor: coriolis øker mot polene, så vann som
@@ -152,41 +150,15 @@ function HavstrommerPage() {
         ]}
       />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
-        Dypstrømmer: kaldt og salt synker
-      </h3>
       <p>
-        Vann blir tyngre når det avkjøles, og når det blir saltere. I tropene er overflaten varm og
-        «lett». I de nordiske hav mister den varme til lufta om vinteren. Når det dannes is, blir
-        saltet igjen i vannet. Figuren under viser de to ytterpunktene: varmt, ferskere vann som
-        flyter, og kaldt, salt vann tungt nok til å synke gjennom termoklinen.
+        Gyren har et klimautfall. Vestkanten er varm og rask — Golfstrømmen, Kuroshio, Agulhas.
+        Østkanten er kald og treig — Kanaristrømmen, Benguela, Humboldt. Derfor kan øst- og
+        vestkysten av samme kontinent, på samme bredde, ha ti grader forskjell i havoverflaten.
+        Sør-Afrika er det klassiske eksempelet: varm Agulhas i øst, kald Benguela i vest.
       </p>
 
-      <DensityDiagram />
-
-      <OrdBoks
-        ord="Tetthet"
-        barn="Hvor tungt et visst volum vann er. Kaldt vann er tyngre enn varmt. Salt vann er tyngre enn ferskere vann. Det tyngste synker."
-      />
-
-      <PhotoFigure
-        src="/images/fig-synker.jpg"
-        alt="Vinterhav med sjørokk og ny is, mørkt åpent vann som avgir varme"
-        heading="Her mister Atlanteren varmen"
-        caption="Åpent polarhav om vinteren røyker av varme til lufta. Overflaten blir kald, av og til saltere, og kan synke — akkurat det høyre feltet i figuren ovenfor beskriver."
-        arrows={[{ d: "M 50 22 L 50 42", tone: "cold", width: 1.35 }]}
-        marks={[
-          { x: 6, y: 14, n: "1", text: "Varme til lufta", tone: "warm" },
-          { x: 54, y: 46, n: "2", text: "Tungt vann synker", tone: "cold" },
-        ]}
-        points={[
-          { n: "1", label: "Avkjøling øker tyngden." },
-          { n: "2", label: "Is som dannes, etterlater salt i vannet." },
-        ]}
-      />
-
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        3. Oppwelling i detalj
+        Oppwelling: når Ekman tømmer kysten
       </h2>
       <p>
         Oppwelling er det tydeligste beviset på at Ekman-transport er reell: den flytter vann, og
@@ -208,9 +180,51 @@ function HavstrommerPage() {
         disse områdene, men samme mekanisme kan gi lokale kaldtvannsbelter der vind blåser langs
         kysten over tid.
       </p>
+      <p>
+        Når vinden slakner og strømmen svekkes, blir overflaten stille. Da varmes det øverste laget
+        opp uten å blandes. Det er et av vilkårene for marine hetebølger — perioder med unormalt
+        varm overflate, som eksamen har spurt om flere ganger.
+      </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        4. Effekter på klima rundt
+        Dypet: kaldt og salt synker
+      </h2>
+      <p>
+        Vann blir tyngre når det avkjøles, og når det blir saltere. I tropene er overflaten varm og
+        «lett». I de nordiske hav mister den varme til lufta om vinteren. Når det dannes is, blir
+        saltet igjen i vannet. Figuren under viser de to ytterpunktene: varmt, ferskere vann som
+        flyter, og kaldt, salt vann tungt nok til å synke gjennom termoklinen.
+      </p>
+
+      <DensityDiagram />
+
+      <OrdBoks
+        ord="Tetthet"
+        barn="Hvor tungt et visst volum vann er. Kaldt vann er tyngre enn varmt. Salt vann er tyngre enn ferskere vann. Det tyngste synker."
+      />
+      <OrdBoks
+        ord="Termohalin sirkulasjon"
+        barn="Dypstrøm drevet av tetthet: termo for temperatur, halin for salt. Ferskvannstilførsel gjør overflaten lettere og bremser synkingen — den øker den ikke."
+      />
+
+      <PhotoFigure
+        src="/images/fig-synker.jpg"
+        alt="Vinterhav med sjørokk og ny is, mørkt åpent vann som avgir varme"
+        heading="Her mister Atlanteren varmen"
+        caption="Åpent polarhav om vinteren røyker av varme til lufta. Overflaten blir kald, av og til saltere, og kan synke — akkurat det høyre feltet i figuren ovenfor beskriver."
+        arrows={[{ d: "M 50 22 L 50 42", tone: "cold", width: 1.35 }]}
+        marks={[
+          { x: 6, y: 14, n: "1", text: "Varme til lufta", tone: "warm" },
+          { x: 54, y: 46, n: "2", text: "Tungt vann synker", tone: "cold" },
+        ]}
+        points={[
+          { n: "1", label: "Avkjøling øker tyngden." },
+          { n: "2", label: "Is som dannes, etterlater salt i vannet." },
+        ]}
+      />
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        AMOC: etasjene møtes
       </h2>
       <p>
         I Atlanteren går varmt, saltere vann nordover i toppen. I Norskehavet, Grønlandshavet og
@@ -226,7 +240,15 @@ function HavstrommerPage() {
         ord="AMOC"
         barn="Den atlantiske omveltningen: varmt nordover i overflaten, kaldt sørover i dypet. Inkluderer både Den nordatlantiske strømmen og det dype returløpet. Ikke en bryter som slår av Golfstrømmen på en dag."
       />
+
+      <p>
+        Modellen under samler det du nå har: vind i toppen, tetthet i dypet, termoklinen imellom.
+        Skyv glideren og se hva som skjer med dypvannsdannelsen når polene går fra frysing til
+        smelting.
+      </p>
+
       <OceanCurrentModel />
+
       <PhotoFigure
         src="/images/fig-amoc.jpg"
         alt="Varm gyllen overflatestrøm mot nord og kald dypblå strøm mot sør under is"
@@ -247,13 +269,24 @@ function HavstrommerPage() {
         ]}
       />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight">Skill to navn</h3>
       <p>
-        I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt.
-        Golfstrømmen er den sterke strømmen langs USA. Etter kysten løsner den. En gren fortsetter
-        nordøstover som Den nordatlantiske strømmen mot de nordiske hav. Det er denne grenen —
-        sammen med hele beltet i dypet og vestavinden — som preger norsk klima (Norsk
-        klimaservicesenter, u.å.). Figuren under skiller de to strekningene.
+        Svekkelse, vippepunkt og «kaldlommen» sør for Grønland hører i klimasystemet, ikke her. Les
+        videre på{" "}
+        <Link
+          to="/tema/klima/amoc"
+          className="text-primary underline-offset-2 hover:underline"
+        >
+          AMOC-fordypningen
+        </Link>
+        .
+      </p>
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Tre navn, og hvorfor Norge er mildt
+      </h2>
+      <p>
+        I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt. Skill tre
+        ting, ikke to.
       </p>
 
       <GulfVsNacDiagram />
@@ -279,6 +312,15 @@ function HavstrommerPage() {
         ]}
       />
 
+      <p>
+        Golfstrømmen er den sterke strømmen langs USA. Etter kysten løsner den. En gren fortsetter
+        nordøstover som Den nordatlantiske strømmen mot de nordiske hav. Det er denne grenen —
+        sammen med hele beltet i dypet og vestavinden — som preger norsk klima (Norsk
+        klimaservicesenter, u.å.). AMOC er sløyfa som også inkluderer returen i dypet.
+      </p>
+
+      <ClimateContrastDiagram />
+
       <PhotoFigure
         src="/images/fig-norge-labrador.jpg"
         alt="Grønn norsk fjord med åpent vann til venstre, islagt Labrador-kyst til høyre"
@@ -298,23 +340,28 @@ function HavstrommerPage() {
         <p>
           Skill tre ting: Golfstrømmen langs USA, Den nordatlantiske strømmen mot Norge, og AMOC som
           hele beltet. Vestavinden driver både strøm og storm. Varmt hav gir fukt til regnet på
-          Vestlandet.
+          Vestlandet. En svekket nordatlantisk strøm gir lavere temperatur og mindre nedbør langs
+          vestkysten — ikke mer.
         </p>
       </Callout>
 
       <Callout title="Vanlige misforståelser">
         <p>
           Norge er ikke mildt «bare på grunn av Golfstrømmen». Vestavind, havets varmelager og
-          fjellene spiller inn. Og vannet går ikke samme vei som vinden — det dreies.
+          fjellene spiller inn. Vannet går ikke samme vei som vinden — det dreies. Og ferskvann fra
+          smelting bremser den termohaline sirkulasjonen. Det øker den ikke.
         </p>
       </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">5. Viktige begreper</h2>
+      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Gyre" def="Stort kretsløp i havoverflaten." />
         <Term name="Ekman-transport" def="Vannet flyttes 90° på vinden (til høyre i nord)." />
+        <Term name="Vestlig randstrøm" def="Smal, rask vestkant av en gyre. Golfstrømmen, Kuroshio." />
         <Term name="Oppwelling" def="Kaldt, næringsrikt dypvann stiger der overflaten skyves bort." />
+        <Term name="Termohalin sirkulasjon" def="Dypstrøm drevet av temperatur og salt." />
         <Term name="AMOC" def="Atlantisk belte: varmt nordover oppe, kaldt sørover nede." />
+        <Term name="Den nordatlantiske strømmen" def="Fortsettelsen av Golfstrømmen mot Norge." />
         <Term name="Tetthet" def="Kaldt og salt er tungt og kan synke." />
       </TermGrid>
 
@@ -353,6 +400,30 @@ function HavstrommerPage() {
             ],
             answer: 1,
             explain: "Overflatevannet flyttes 90° på vinden. Det som blir tomt, fylles fra dypet.",
+          },
+          {
+            prompt: "Når kan overflatevann synke og mate dypstrømmen?",
+            options: [
+              "Når det blir varmere og ferskere.",
+              "Når det avkjøles og/eller blir saltere, slik at tettheten øker.",
+              "Når tidevannet er sterkt.",
+              "Når mer ferskvann strømmer ut i de nordiske hav.",
+            ],
+            answer: 1,
+            explain:
+              "Tetthet styres av temperatur og salt. Ferskvann gjør overflaten lettere og kan svekke synkingen.",
+          },
+          {
+            prompt: "Hvorfor er havet utenfor vestkysten av Sør-Afrika kaldere enn utenfor østkysten?",
+            options: [
+              "Fordi vestkysten ligger lenger sør.",
+              "Fordi vestkysten får en kald strøm fra sør, mens østkysten får en varm strøm fra nord.",
+              "Fordi vinden bare blåser på vestsiden.",
+              "Fordi AMOC går rundt Kapp det gode håp.",
+            ],
+            answer: 1,
+            explain:
+              "Benguela i vest er kald og kommer sørfra. Agulhas i øst er varm og kommer nordfra. Samme gyremønster som Kanaristrømmen mot Golfstrømmen.",
           },
           {
             prompt: "Hvilken setning er presis om Norges milde kyst?",

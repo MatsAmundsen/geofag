@@ -1,36 +1,30 @@
+import { FigureFrame } from "@/components/figure-frame";
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
 export function OceanDriversDiagram() {
   return (
-    <Diagram
-      title="Tre drivkrefter for havstrømmer"
+    <FigureFrame
       heading="Vind, rotasjon og tetthet"
       caption="Overflaten skyves av vinden og bøyes av coriolis. I dypet er det tetthet som gjelder: kaldt og salt vann synker, varmt og ferskere vann blir liggende oppå. Tidevann rører kysten, men driver ikke de store gyrene."
-      viewBox="0 0 820 240"
     >
-      {() => (
-        <>
-          {[
-            { x: 40, t: "1  Vind", d1: "Passater og vestavind", d2: "gir pådrag i overflaten." },
-            { x: 300, t: "2  Coriolis", d1: "Bøyer strømmen. Ekman-", d2: "transport 90° på vinden." },
-            { x: 560, t: "3  Tetthet", d1: "Temperatur og salt", d2: "styrer hva som synker." },
-          ].map((b) => (
-            <g key={b.t}>
-              <rect x={b.x} y="40" width="220" height="160" rx="10" fill="#152028" stroke={C.dim} />
-              <L x={b.x + 110} y="92" fill={C.teal} size={16} anchor="middle" weight={600}>
-                {b.t}
-              </L>
-              <L x={b.x + 110} y="130" fill={C.muted} size={14} anchor="middle">
-                {b.d1}
-              </L>
-              <L x={b.x + 110} y="152" fill={C.muted} size={14} anchor="middle">
-                {b.d2}
-              </L>
-            </g>
-          ))}
-        </>
-      )}
-    </Diagram>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {[
+          { n: "1", t: "Vind", d: "Passater og vestavind gir pådrag i overflaten." },
+          { n: "2", t: "Coriolis", d: "Bøyer strømmen. Ekman-transport 90° på vinden." },
+          { n: "3", t: "Tetthet", d: "Temperatur og salt styrer hva som synker." },
+        ].map((b) => (
+          <div
+            key={b.n}
+            className="rounded-lg border border-border bg-background px-4 py-4 text-center"
+          >
+            <p className="text-sm font-medium text-primary">
+              {b.n} {b.t}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </FigureFrame>
   );
 }
 
@@ -73,7 +67,7 @@ export function EkmanDiagram() {
 export function GyreDiagram() {
   return (
     <Diagram
-      title="Den nordatlantiske gyrene"
+      title="Den nordatlantiske gyren"
       heading="Med klokken, sterk i vest, slapp i øst"
       caption="Fire strømmer lukker kretsen. Golfstrømmen er den vestlige randstrømmen: smal og rask. Kanaristrømmen i øst er bred og treig. Midten — Sargassohavet — har litt høyere vannstand. Coriolis balanserer trykket utover, så strømmen følger «høyden» i havoverflaten."
       viewBox="0 0 840 400"
@@ -215,7 +209,7 @@ export function AmocDiagram() {
     <Diagram
       title="AMOC — havets belte i Atlanteren"
       heading="Varmt nordover i toppen, kaldt sørover i dypet"
-      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Norskehavet, Grønlandshavet og Labradorhavet synker det som North Atlantic Deep Water og returnerer sørøver på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme."
+      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Norskehavet, Grønlandshavet og Labradorhavet synker det som North Atlantic Deep Water og returnerer sørover på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme."
       viewBox="0 0 840 360"
     >
       {(m) => (
@@ -327,39 +321,25 @@ export function UpwellingDiagram() {
 
 export function ClimateContrastDiagram() {
   return (
-    <Diagram
-      title="Samme breddegrad, ulikt klima"
+    <FigureFrame
       heading="Hvorfor Norge ikke er Labrador"
       caption="Bergen og kysten av Labrador ligger nær 60°N. Den nordatlantiske strømmen, AMOC og vestavindsbeltet gir Norge milde vintre og isfrie fjorder. På vestsiden av Atlanteren treffer samme bredde kald luft og kaldt kystvann. Havet er en del av forklaringen — ikke hele."
-      viewBox="0 0 820 280"
     >
-      {() => (
-        <>
-          <rect x="50" y="50" width="330" height="170" rx="10" fill="#1c3330" stroke={C.teal} />
-          <L x="215" y="90" fill={C.teal} size={16} anchor="middle" weight={600}>
-            Norskekysten  ·  60°N
-          </L>
-          <L x="215" y="122" fill={C.fg} size={14} anchor="middle">
-            milde vintre, isfrie fjorder
-          </L>
-          <L x="215" y="150" fill={C.muted} size={13} anchor="middle">
-            varmt atlanterhavsvann + vestavind
-          </L>
-          <rect x="440" y="50" width="330" height="170" rx="10" fill="#1a2830" stroke={C.cold} />
-          <L x="605" y="90" fill={C.cold} size={16} anchor="middle" weight={600}>
-            Labrador  ·  60°N
-          </L>
-          <L x="605" y="122" fill={C.fg} size={14} anchor="middle">
-            lange, kalde vintre
-          </L>
-          <L x="605" y="150" fill={C.muted} size={13} anchor="middle">
-            kald strøm, kaldt kontinent
-          </L>
-          <L x="410" y="250" fill={C.muted} size={13} anchor="middle">
-            samme solhøyde  ·  helt ulikt klimautfall
-          </L>
-        </>
-      )}
-    </Diagram>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="rounded-lg border border-primary/40 bg-background px-4 py-5 text-center">
+          <p className="text-sm font-medium text-primary">Norskekysten · 60°N</p>
+          <p className="mt-2 text-sm text-foreground">milde vintre, isfrie fjorder</p>
+          <p className="mt-1 text-sm text-muted-foreground">varmt atlanterhavsvann + vestavind</p>
+        </div>
+        <div className="rounded-lg border border-border bg-background px-4 py-5 text-center">
+          <p className="text-sm font-medium text-muted-foreground">Labrador · 60°N</p>
+          <p className="mt-2 text-sm text-foreground">lange, kalde vintre</p>
+          <p className="mt-1 text-sm text-muted-foreground">kald strøm, kaldt kontinent</p>
+        </div>
+      </div>
+      <p className="mt-3 text-center text-sm text-muted-foreground">
+        samme solhøyde · helt ulikt klimautfall
+      </p>
+    </FigureFrame>
   );
 }
