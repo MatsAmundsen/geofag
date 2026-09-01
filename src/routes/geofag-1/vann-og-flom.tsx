@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
 import { GeoMap } from "@/components/geo-map";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -39,7 +40,7 @@ function VannOgFlomPage() {
       }}
       kilder={KILDER.vannFlom}
     >
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hva det er</h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Kretsløp, magasin og hydrogram</h2>
       <p>
         Hydrologi er vannet på landjorden. Kretsløpet har tilførsel, lager og tap. Nedbør treffer
         feltet. Vannet lagres i snø, mark, grunnvann, innsjø, myr og elveløp. En del går tilbake til
@@ -83,9 +84,19 @@ function VannOgFlomPage() {
       />
       <KretslopDiagram />
       <HydrographDiagram />
+      <PhotoFigure
+        src="/images/fig-ekstremnedbor.jpg"
+        alt="Mørke bygeskyer og styrtregn over et norsk dalføre"
+        heading="Når feltet fylles fortere enn det kan lagre"
+        caption="Intens nedbør over bratt terreng gir spiss hydrogramtopp. Snø lagrer vinterens vann og slipper det som vårflom. Det er to ulike kurver, samme kretsløp."
+        marks={[{ x: 8, y: 14, n: "1", text: "Intens nedbør", tone: "cold" }]}
+        points={[
+          { n: "1", label: "Regnflom: rask topp. Snøsmelteflom: bredere, senere topp." },
+        ]}
+      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Utløsningsmekanismer
+        Hva som utløser flom
       </h2>
       <p>
         Intens nedbør fyller feltet fortere enn det kan lagre. Mettet mark etter våt periode gir
