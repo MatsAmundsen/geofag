@@ -44,6 +44,9 @@ function PlatetektonikkPage() {
       }}
       kilder={KILDER.platetektonikk}
     >
+      <h2 className="font-display text-2xl font-medium tracking-tight">
+        Plater, mantel og hva som driver dem
+      </h2>
       <OrdBoks ord="Litosfære" barn="Skorpe pluss øvre stive mantel, delt i plater." />
       <OrdBoks ord="Astenosfære" barn="Mykere sone platene glir på." />
 
