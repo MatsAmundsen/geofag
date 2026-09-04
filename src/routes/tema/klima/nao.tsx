@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import {
+  NaoRossbyDiagram,
+  NaoEnsoTeleconnectionDiagram,
+  NaoIndexStationsDiagram,
+} from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { topicHead } from "@/lib/seo";
 
@@ -207,7 +210,7 @@ function NaoPage() {
           stabil polarvirvel.
         </li>
       </ul>
-      <GeminiFigure {...GEMINI.naoEnsoTele} />
+      <NaoEnsoTeleconnectionDiagram />
 
       <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
         Rossby-bølger
@@ -238,7 +241,7 @@ function NaoPage() {
         og sterk. Når bølgene forsterkes, kan de sende energi oppover, deformere eller splitte
         virvelen.
       </p>
-      <GeminiFigure {...GEMINI.naoRossby} />
+      <NaoRossbyDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Positiv NAO: sterkere jet og nordlig bane
@@ -341,7 +344,7 @@ function NaoPage() {
         <strong>NAO-indeksen</strong>: normalisert lufttrykk i sør (Ponta Delgada eller Lisboa) minus
         lufttrykk i nord (Reykjavík eller Stykkishólmur) (Walker & Bliss, 1932).
       </p>
-      <GeminiFigure {...GEMINI.naoIndeks} />
+      <NaoIndexStationsDiagram />
 
       <Callout title="Til eksamen">
         <p>

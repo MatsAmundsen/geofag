@@ -20,6 +20,11 @@ export {
   NaoDiagram,
 } from "./coriolis";
 export {
+  NaoRossbyDiagram,
+  NaoEnsoTeleconnectionDiagram,
+  NaoIndexStationsDiagram,
+} from "./nao";
+export {
   FjellskredBolgeDiagram,
   KvikkleireDiagram,
   SkredKrefterDiagram,
@@ -51,6 +56,9 @@ export {
   IodVsEnsoDiagram,
   NegativeWalkerDiagram,
   NeutralIodDiagram,
+  IodSstAnomalyDiagram,
+  IodWalkerShiftDiagram,
+  IodJetMeetingDiagram,
 } from "./iod";
 export { EnsoComparisonDiagram } from "./enso";
 export {

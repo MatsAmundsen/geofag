@@ -1016,3 +1016,302 @@ export function IodPhaseShift() {
     </FigureFrame>
   );
 }
+
+export function IodSstAnomalyDiagram() {
+  const uid = useId().replace(/:/g, "");
+  return (
+    <Diagram
+      title="Faktisk havoverflatetemperatur (SST) mot temperaturavvik (SST-anomali)"
+      heading="Temperaturkart mot anomalikart: Hvorfor dipolen krever et avvikskart"
+      caption="Venstre: Faktisk havoverflatetemperatur i grader Celsius. Hele det ekvatoriale Indiahavet er tropisk varmt (27–30 °C), så dipolen er nesten umulig å se med det blotte øye. Høyre: SST-anomali under positiv IOD (avvik fra normalen). Nå trer dipolen tydelig frem: varmere enn normalt (+1,5 °C) utenfor Øst-Afrika, og markant kjøligere enn normalt (-1,5 °C) utenfor Sumatra/Indonesia."
+      viewBox="0 0 860 380"
+    >
+      {() => (
+        <>
+          <defs>
+            <linearGradient id={`${uid}-sst-grad`} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#e2583e" />
+              <stop offset="35%" stopColor="#f59e0b" />
+              <stop offset="70%" stopColor="#ea580c" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+            <linearGradient id={`${uid}-sst-anom`} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#ea580c" />
+              <stop offset="30%" stopColor="#f59e0b" />
+              <stop offset="55%" stopColor="#1e293b" />
+              <stop offset="85%" stopColor="#0284c7" />
+              <stop offset="100%" stopColor="#0369a1" />
+            </linearGradient>
+          </defs>
+
+          {/* Panel 1: Faktisk SST */}
+          <rect x="25" y="45" width="395" height="315" rx="8" fill="#121d24" stroke={C.dim} />
+          <rect x="25" y="45" width="395" height="34" rx="8" fill="#1c2c37" />
+          <L x={45} y={67} fill={C.fg} size={13} weight={700}>
+            Faktisk havtemperatur (SST i °C)
+          </L>
+
+          <rect x="45" y="95" width="355" height="175" rx="6" fill={`url(#${uid}-sst-grad)`} opacity={0.85} />
+
+          <line x1="45" y1="180" x2="400" y2="180" stroke={C.white} strokeDasharray="3 3" opacity={0.6} />
+          <L x={55} y={175} fill={C.white} size={10}>
+            ekvator
+          </L>
+
+          <path d="M 50 120 C 65 130, 80 150, 75 180 L 50 180 Z" fill={C.sand} stroke={C.dim} />
+          <L x={55} y={145} fill={C.bg} size={9} weight={700}>Afrika</L>
+          <path d="M 180 100 C 200 105, 210 120, 200 140 L 175 130 Z" fill={C.sand} stroke={C.dim} />
+          <L x={185} y={120} fill={C.bg} size={9} weight={700}>India</L>
+          <path d="M 320 160 C 350 165, 370 180, 360 200 L 320 180 Z" fill={C.sand} stroke={C.dim} />
+          <L x={325} y={175} fill={C.bg} size={9} weight={700}>Indonesia</L>
+          <path d="M 340 220 C 370 225, 390 235, 385 265 L 340 265 Z" fill={C.sand} stroke={C.dim} />
+          <L x={350} y={245} fill={C.bg} size={9} weight={700}>Australia</L>
+
+          <L x={120} y={140} fill={C.white} size={13} weight={700}>~ 28,5 °C</L>
+          <L x={270} y={140} fill={C.white} size={13} weight={700}>~ 29,5 °C</L>
+          <L x={45} y={292} fill={C.muted} size={11}>
+            Vannet er varmt overalt i tropene (&gt; 28 °C).
+          </L>
+          <L x={45} y={310} fill={C.muted} size={11}>
+            Forskjellen mellom vest og øst er bare 1 °C i rå tall.
+          </L>
+          <L x={45} y={335} fill={C.warm} size={12} weight={600}>
+            → Vanskelig å se dipolen uten avvikskart.
+          </L>
+
+          {/* Panel 2: SST-anomali */}
+          <rect x="440" y="45" width="395" height="315" rx="8" fill="#121d24" stroke={C.dim} />
+          <rect x="440" y="45" width="395" height="34" rx="8" fill="#1c2c37" />
+          <L x={460} y={67} fill={C.teal} size={13} weight={700}>
+            Temperaturavvik (SST-anomali i °C)
+          </L>
+
+          <rect x="460" y="95" width="355" height="175" rx="6" fill={`url(#${uid}-sst-anom)`} opacity={0.9} />
+
+          <line x1="460" y1="180" x2="815" y2="180" stroke={C.white} strokeDasharray="3 3" opacity={0.6} />
+          <L x={470} y={175} fill={C.white} size={10}>
+            ekvator
+          </L>
+
+          <path d="M 465 120 C 480 130, 495 150, 490 180 L 465 180 Z" fill={C.sand} stroke={C.dim} />
+          <L x={470} y={145} fill={C.bg} size={9} weight={700}>Afrika</L>
+          <path d="M 595 100 C 615 105, 625 120, 615 140 L 590 130 Z" fill={C.sand} stroke={C.dim} />
+          <L x={600} y={120} fill={C.bg} size={9} weight={700}>India</L>
+          <path d="M 735 160 C 765 165, 785 180, 775 200 L 735 180 Z" fill={C.sand} stroke={C.dim} />
+          <L x={740} y={175} fill={C.bg} size={9} weight={700}>Indonesia</L>
+          <path d="M 755 220 C 785 225, 805 235, 800 265 L 755 265 Z" fill={C.sand} stroke={C.dim} />
+          <L x={765} y={245} fill={C.bg} size={9} weight={700}>Australia</L>
+
+          <rect x="510" y="125" width="85" height="26" rx="4" fill="#0f171c" opacity={0.8} />
+          <L x={552} y={142} fill="#ea580c" size={13} weight={700} anchor="middle">
+            +1,5 °C varm
+          </L>
+
+          <rect x="705" y="125" width="85" height="26" rx="4" fill="#0f171c" opacity={0.8} />
+          <L x={747} y={142} fill="#38bdf8" size={13} weight={700} anchor="middle">
+            -1,5 °C kald
+          </L>
+
+          <L x={460} y={292} fill={C.fg} size={11}>
+            DMI = Vestlig pol (+1,5 °C) minus Østlig pol (-1,5 °C) = +3,0 °C!
+          </L>
+          <L x={460} y={310} fill={C.muted} size={11}>
+            Avvikskartet fjerner bakgrunnsvarmen og isolerer signalet.
+          </L>
+          <L x={460} y={335} fill={C.teal} size={12} weight={600}>
+            → Dipolen blir umiddelbart synlig og kvantifiserbar.
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function IodWalkerShiftDiagram() {
+  return (
+    <Diagram
+      title="Walker-sirkulasjonens forskyvning under positiv og negativ IOD"
+      heading="Walker-sirkulasjonen: Hvor lufta stiger og hvor den synker"
+      caption="Venstre: Positiv IOD forskyver den atmosfæriske Walker-cellen vestover. Varmt hav ved Øst-Afrika gir kraftig oppdrift og nedbør, mens synkende, tørr luft i øst gir tørke og høytrykk over Indonesia og Nordvest-Australia. Termoklinen vipper opp i øst (oppvelling). Høyre: Negativ IOD forsterker Walker-cellen østover, med kraftig nedbør over Indonesia og tørke i Øst-Afrika."
+      viewBox="0 0 860 380"
+    >
+      {(m) => (
+        <>
+          {/* Panel 1: Positiv IOD Walker-skift */}
+          <rect x="25" y="45" width="395" height="315" rx="8" fill="#121d24" stroke={C.dim} />
+          <rect x="25" y="45" width="395" height="34" rx="8" fill="#1c2c37" />
+          <L x={45} y={67} fill={C.warm} size={13} weight={700}>
+            Positiv IOD: Walker-sirkulasjon vestover
+          </L>
+
+          <rect x="45" y="240" width="355" height="65" fill="#143444" rx="4" />
+          <path d="M 45 285 Q 200 280 400 255" stroke="#38bdf8" strokeWidth="2.5" fill="none" strokeDasharray="4 3" />
+          <L x={60} y={298} fill="#38bdf8" size={10}>Dyp termoklin (nedvelling)</L>
+          <L x={385} y={250} fill="#38bdf8" size={10} anchor="end">Grunn termoklin (oppvelling)</L>
+
+          <rect x="45" y="240" width="160" height="15" fill="#ea580c" opacity={0.6} />
+          <rect x="240" y="240" width="160" height="15" fill="#0284c7" opacity={0.6} />
+          <L x={60} y={235} fill={C.warm} size={11} weight={600}>Vest: Varmt hav</L>
+          <L x={385} y={235} fill={C.cold} size={11} weight={600} anchor="end">Øst: Kaldt hav</L>
+
+          <Arrow d="M 120 220 L 120 130" marker={m.warm} color={C.warm} width={2.5} />
+          <Cloud x={120} y={115} rain />
+          <L x={120} y={90} fill={C.warm} size={11} weight={700} anchor="middle">Lavtrykk / Flom</L>
+
+          <Arrow d="M 160 110 L 310 110" marker={m.muted} color={C.muted} width={2} />
+          <L x={235} y={100} fill={C.muted} size={10} anchor="middle">Høytroposfærisk vind</L>
+
+          <Arrow d="M 330 130 L 330 220" marker={m.cold} color={C.cold} width={2.5} />
+          <L x={330} y={150} fill={C.low} size={11} weight={700} anchor="middle">Høytrykk / Tørke</L>
+
+          <Arrow d="M 300 215 L 160 215" marker={m.warm} color="#f59e0b" width={2.2} />
+          <L x={230} y={210} fill="#f59e0b" size={10} anchor="middle">Østlige vinder (anomali)</L>
+
+          <L x={45} y={335} fill={C.fg} size={11}>
+            Øst-Afrika: Flom og jordras  |  Indonesia/Australia: Tørke og skogbrann
+          </L>
+
+          {/* Panel 2: Negativ IOD Walker-skift */}
+          <rect x="440" y="45" width="395" height="315" rx="8" fill="#121d24" stroke={C.dim} />
+          <rect x="440" y="45" width="395" height="34" rx="8" fill="#1c2c37" />
+          <L x={460} y={67} fill={C.teal} size={13} weight={700}>
+            Negativ IOD: Walker-sirkulasjon østover
+          </L>
+
+          <rect x="460" y="240" width="355" height="65" fill="#143444" rx="4" />
+          <path d="M 460 255 Q 660 280 815 285" stroke="#38bdf8" strokeWidth="2.5" fill="none" strokeDasharray="4 3" />
+          <L x={475} y={250} fill="#38bdf8" size={10}>Grunn (oppvelling)</L>
+          <L x={800} y={298} fill="#38bdf8" size={10} anchor="end">Dyp termoklin</L>
+
+          <rect x="460" y="240" width="160" height="15" fill="#0284c7" opacity={0.6} />
+          <rect x="655" y="240" width="160" height="15" fill="#ea580c" opacity={0.6} />
+          <L x={475} y={235} fill={C.cold} size={11} weight={600}>Vest: Kjølig hav</L>
+          <L x={800} y={235} fill={C.warm} size={11} weight={600} anchor="end">Øst: Ekstra varmt</L>
+
+          <Arrow d="M 535 130 L 535 220" marker={m.cold} color={C.cold} width={2.5} />
+          <L x={535} y={150} fill={C.low} size={11} weight={700} anchor="middle">Høytrykk / Tørt</L>
+
+          <Arrow d="M 700 110 L 565 110" marker={m.muted} color={C.muted} width={2} />
+          <L x={635} y={100} fill={C.muted} size={10} anchor="middle">Høytroposfærisk vind</L>
+
+          <Arrow d="M 740 220 L 740 130" marker={m.warm} color={C.warm} width={2.5} />
+          <Cloud x={740} y={115} rain />
+          <L x={740} y={90} fill={C.warm} size={11} weight={700} anchor="middle">Lavtrykk / Regn</L>
+
+          <Arrow d="M 560 215 L 705 215" marker={m.warm} color="#f59e0b" width={2.2} />
+          <L x={635} y={210} fill="#f59e0b" size={10} anchor="middle">Forsterket vestavind</L>
+
+          <L x={460} y={335} fill={C.fg} size={11}>
+            Øst-Afrika: Tørt og kjølig  |  Indonesia/Australia: Ekstremnedbør og flom
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function IodJetMeetingDiagram() {
+  return (
+    <Diagram
+      title="Subtropisk jet møter polarjeten under positiv IOD"
+      heading="Når subtropisk jet møter polarjeten: Telekonneksjoner til Australia"
+      caption="Under en sterk positiv IOD endres oppvarmingsmønsteret og konveksjonen i tropene. Dette forstyrrer den sørlige subtropiske jetstrømmen og tvinger den inn i dypere Rossby-bølger. Sør for Australia kan en slik bølge dykke sørover og smelte sammen med den antarktiske polarjeten. I møtesonen oppstår intense regn- og stormsystemer, mens baksiden av trauet trekker knusktørr og iskald polar luft opp over det sørlige Australia."
+      viewBox="0 0 860 380"
+    >
+      {(m) => (
+        <>
+          <rect x="25" y="45" width="810" height="315" rx="8" fill="#121d24" stroke={C.dim} />
+
+          {/* Land: Australia */}
+          <path
+            d="M 500 130 C 580 120, 660 140, 710 180 C 720 220, 690 250, 650 250 C 600 260, 540 250, 500 210 C 480 180, 480 140, 500 130 Z"
+            fill="#2c221e"
+            stroke={C.dim}
+          />
+          <L x={585} y={185} fill={C.sand} size={16} weight={700} anchor="middle">
+            Australia
+          </L>
+          <L x={585} y={205} fill={C.muted} size={11} anchor="middle">
+            (Tørke og hete i nord)
+          </L>
+
+          {/* Det indiske hav og Sørishavet */}
+          <L x={180} y={160} fill={C.muted} size={14} weight={600}>
+            Det indiske hav
+          </L>
+          <L x={180} y={320} fill={C.muted} size={12}>
+            Sørishavet (Antarktis)
+          </L>
+
+          {/* Breddegrader */}
+          <line x1="25" y1="120" x2="835" y2="120" stroke={C.white} strokeDasharray="3 4" opacity="0.3" />
+          <L x={35} y={115} fill={C.muted} size={10}>20° S (subtropisk høytrykk)</L>
+
+          <line x1="25" y1="230" x2="835" y2="230" stroke={C.white} strokeDasharray="3 4" opacity="0.3" />
+          <L x={35} y={225} fill={C.muted} size={10}>40° S</L>
+
+          <line x1="25" y1="310" x2="835" y2="310" stroke={C.white} strokeDasharray="3 4" opacity="0.3" />
+          <L x={35} y={295} fill={C.muted} size={10}>60° S (polarfront)</L>
+
+          {/* Subtropisk jet som et meandrerende gult bånd */}
+          <path
+            d="M 50 140 C 180 140, 320 130, 440 180 C 500 210, 540 270, 600 280 C 660 290, 740 230, 810 210"
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="8"
+            strokeLinecap="round"
+            opacity={0.3}
+          />
+          <path
+            d="M 50 140 C 180 140, 320 130, 440 180 C 500 210, 540 270, 600 280 C 660 290, 740 230, 810 210"
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="3"
+          />
+          <L x={260} y={130} fill="#fbbf24" size={12} weight={700}>
+            Subtropisk jetstrøm (meandrerende bølge)
+          </L>
+          <Arrow d="M 330 140 L 390 160" marker={m.warm} color="#fbbf24" width={2.5} />
+
+          {/* Polarjet som et blått bånd */}
+          <path
+            d="M 50 310 C 220 310, 400 320, 520 300 C 560 290, 600 280, 660 280 C 720 280, 780 295, 810 300"
+            fill="none"
+            stroke="#38bdf8"
+            strokeWidth="8"
+            strokeLinecap="round"
+            opacity={0.3}
+          />
+          <path
+            d="M 50 310 C 220 310, 400 320, 520 300 C 560 290, 600 280, 660 280 C 720 280, 780 295, 810 300"
+            fill="none"
+            stroke="#38bdf8"
+            strokeWidth="3"
+          />
+          <L x={260} y={325} fill="#38bdf8" size={12} weight={700}>
+            Polarjet (subantarktisk)
+          </L>
+          <Arrow d="M 450 310 L 510 300" marker={m.cold} color="#38bdf8" width={2.5} />
+
+          {/* Konvergens / Møtesone sør for Australia */}
+          <circle cx="610" cy="280" r="28" fill="#f43f5e" opacity={0.25} />
+          <circle cx="610" cy="280" r="16" fill="#f43f5e" opacity={0.5} />
+          <Cloud x={610} y={260} rain />
+          <L x={610} y={325} fill="#f43f5e" size={11} weight={700} anchor="middle">
+            Møtesone: Ekstrem nedbør / storm
+          </L>
+
+          {/* Kaldluftsutbrudd på baksiden mot Australia */}
+          <Arrow d="M 490 280 Q 510 230 530 200" marker={m.cold} color={C.cold} width={2.5} />
+          <L x={450} y={235} fill={C.cold} size={11} weight={700}>
+            Kald, tørr polarluft trekkes nordover
+          </L>
+          <L x={440} y={250} fill={C.muted} size={10}>
+            (Frostnetter i Sør-Australia)
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+

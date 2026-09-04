@@ -1,11 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import {
+  NeutralIodDiagram,
+  IodSstAnomalyDiagram,
+  IodWalkerShiftDiagram,
+  IodJetMeetingDiagram,
+  IodPhaseShift,
+  DmiTimeseriesDiagram,
+} from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { topicHead } from "@/lib/seo";
 
@@ -47,7 +53,7 @@ function IodPage() {
         Indonesia/Australia i øst. Styrken måles med <strong>DMI</strong> (Dipole Mode Index):
         temperatur i vest minus temperatur i øst.
       </p>
-      <GeminiFigure {...GEMINI.iodNoytral} />
+      <NeutralIodDiagram />
       <OrdBoks
         ord="IOD"
         barn="Øst–vest-svingning i tropisk Indiahav. Temperaturforskjellen mellom polene styrer hvor lufta stiger, hvor den synker, og hvor regnet faller."
@@ -103,6 +109,8 @@ function IodPage() {
         ]}
       />
 
+      <IodPhaseShift />
+
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Påvirkning på jetstrømmene
       </h2>
@@ -125,7 +133,7 @@ function IodPage() {
         caption="Jetene følger temperaturgrensene i figur 3. Når IOD flytter konveksjonen, flytter grensen — og dermed banen og formen på jeten."
         fit="contain"
       />
-      <GeminiFigure {...GEMINI.iodAnomaliVsTemp} />
+      <IodSstAnomalyDiagram />
 
       <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
         Positiv fase og jetstrømmer
@@ -152,8 +160,8 @@ function IodPage() {
         møtes, kan den subtropiske jeten også ta med seg kald, tørr luft fra polarjeten inn over
         Australia og Sør-Afrika.
       </p>
-      <GeminiFigure {...GEMINI.iodWalkerSkift} />
-      <GeminiFigure {...GEMINI.iodJetMote} />
+      <IodWalkerShiftDiagram />
+      <IodJetMeetingDiagram />
 
       <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
         Negativ fase og jetstrømmer
@@ -193,6 +201,7 @@ function IodPage() {
         </Link>
         .
       </p>
+      <DmiTimeseriesDiagram />
 
       <Callout title="Til eksamen">
         <p>Varmt hav: luft stiger, lavtrykk, nedbør. Kaldt hav: luft synker, høytrykk, tørke.</p>
