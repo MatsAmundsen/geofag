@@ -164,6 +164,7 @@ export const THEMES = GF2_THEMES;
 export const GF1_THEMES = [
   {
     slug: "jordsystemene",
+    to: "/geofag-1/jordsystemene",
     title: "Jordsystemene",
     kicker: "Geosfære og hydrosfære",
     image: "/images/gf1-jordsystemene.jpg",
@@ -175,6 +176,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "platetektonikk",
+    to: "/geofag-1/platetektonikk",
     title: "Platetektonikk",
     kicker: "Jordas indre",
     image: "/images/gf1-platetektonikk.jpg",
@@ -186,6 +188,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "vulkaner-og-jordskjelv",
+    to: "/geofag-1/vulkaner-og-jordskjelv",
     title: "Vulkaner og jordskjelv",
     kicker: "Naturfarer i geosfæren",
     image: "/images/gf1-vulkan-jordskjelv.jpg",
@@ -197,6 +200,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "bergarter-og-landformer",
+    to: "/geofag-1/bergarter-og-landformer",
     title: "Bergarter og landformer",
     kicker: "Bergartssyklusen",
     image: "/images/gf1-bergarter.jpg",
@@ -208,6 +212,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "vann-og-flom",
+    to: "/geofag-1/vann-og-flom",
     title: "Vann og flom",
     kicker: "Hydrosfæren på land",
     image: "/images/gf1-flom-skred.jpg",
@@ -219,6 +224,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "skred",
+    to: "/geofag-1/skred",
     title: "Skred",
     kicker: "Naturfarer i geosfæren",
     image: "/images/fig-ravine.jpg",
@@ -230,6 +236,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "geologiske-ressurser",
+    to: "/geofag-1/geologiske-ressurser",
     title: "Geologiske ressurser",
     kicker: "Mennesket i jordsystemene",
     image: "/images/gf1-ressurser.jpg",
@@ -241,6 +248,7 @@ export const GF1_THEMES = [
   },
   {
     slug: "feltarbeid",
+    to: "/geofag-1/feltarbeid",
     title: "Feltarbeid",
     kicker: "Data i felt",
     image: "/images/gf1-bergarter.jpg",
@@ -316,7 +324,7 @@ export function gf1Theme(slug: string) {
 /** All canonical theme paths (G1 + G2), for sitemap/SEO use. Excludes `$slug` and redirect routes. */
 export function allThemePaths(): string[] {
   return [
-    ...GF1_THEMES.map((t) => `/geofag-1/${t.slug}`),
+    ...GF1_THEMES.map((t) => t.to),
     ...GF2_THEMES.map((t) => t.to),
     ...KLIMA_SUBTHEMES.map((t) => t.to),
   ];
