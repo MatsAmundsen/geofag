@@ -65,8 +65,6 @@ export {
   SpreadingDiagram,
   SubductionDiagram,
   TransformDiagram,
-  VelocityZonesDiagram,
-  DivergentDriveDiagram,
 } from "./plates";
 export { SeaBreezeDiagram } from "./pressure";
 export { ModelGridDiagram } from "./models";
