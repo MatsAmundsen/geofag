@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Callout } from "@/components/callout";
+import { GeminiFigure } from "@/components/gemini-figure";
 import { Quiz } from "@/components/quiz";
 import { Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -28,19 +30,27 @@ function KlimaHubPage() {
       banner="/images/banner-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
-      next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
+      next={{ to: "/tema/kryosfare", label: "Neste: Kryosfæren" }}
       kilder={KILDER.klima}
     >
+      <h2 className="font-display text-2xl font-medium tracking-tight">
+        Inn og ut — med tall
+      </h2>
+      <p>
+        Forståelsen av klimaet krever både den store helheten — hvordan energi flyter inn og ut av
+        planeten — og de koblete hav-atmosfære-svingningene. Globalt middel i toppen av atmosfæren er
+        omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går som
+        langbølge. Drivhusgasser bremser ut. Foto av jordkloden viser stemning. Tallene viser budsjettet.
+      </p>
+      <GeminiFigure {...GEMINI.klimaStraling} />
+
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Velg emne i klimasystemet
       </h2>
       <p>
-        Forståelsen av klimaet krever både den store helheten — hvordan energi flyter inn og ut av
-        planeten — og de koblete hav-atmosfære-svingningene som forskyver nedbør, temperatur og stormbaner
-        over år og tiår. Velg en underkategori under for å utforske mekanismene i dybden:
+        Velg en underkategori under for å utforske mekanismene i dybden.
       </p>
 
-      {/* Grid of subtopic cards / buttons */}
       <div className="my-8 grid gap-4 sm:grid-cols-2">
         {KLIMA_SUBTHEMES.map((sub) => (
           <Link
@@ -78,27 +88,21 @@ function KlimaHubPage() {
       </p>
       <p>
         Når dette samspillet svinger frem og tilbake, oppstår det <em>klimamoduser</em>. En svingning i
-        tropisk Stillehav (ENSO) kan utløse tørke i Australia og flom i Peru, og sende bølger gjennom
-        jetstrømmene til resten av verden. I Nord-Atlanteren avgjør NAO hvor fuktige og milde våre egne
-        norske vintre blir, mens AMOC frakter enorme mengder varme fra tropene til Norden.
+        tropisk Stillehav (ENSO) kan utløse tørke i Australia og flom i Peru. I Nord-Atlanteren avgjør
+        NAO norske vintre, mens AMOC frakter varme fra tropene til Norden.
       </p>
 
       <Callout title="Til eksamen">
         <p>
-          På eksamen i Geofag 2 testes du ofte i å koble atmosfærisk trykk og vind med havstrømmer og
-          klimavariasjon. Pass på å skille mellom <strong>naturlig variabilitet</strong> (som ENSO, IOD
-          og NAO, som svinger på skalaer fra måneder til tiår) og <strong>antropogent pådriv</strong>{" "}
-          (den langsiktige oppvarmingen fra økte klimagassutslipp). De naturlige svingningene rir oppå
-          den langsiktige trenden.
+          Skill mellom <strong>naturlig variabilitet</strong> (ENSO, IOD, NAO) og{" "}
+          <strong>antropogent pådriv</strong>. De naturlige svingningene rir oppå den langsiktige trenden.
         </p>
       </Callout>
 
       <Callout title="Vanlige misforståelser">
         <p>
-          Mange tror at El Niño eller en positiv NAO er et resultat av klimaendringer. Sannheten er at
-          både ENSO, IOD og NAO er eldgamle, naturlige svingninger i jordsystemet. Forskningen ser på
-          hvordan global oppvarming kan forsterke frekvensen, intensiteten eller konsekvensene av disse
-          svingningene.
+          El Niño eller en positiv NAO er ikke et resultat av klimaendringer. De er eldgamle, naturlige
+          svingninger. Forskningen ser på hvordan oppvarming kan endre frekvens, intensitet eller konsekvens.
         </p>
       </Callout>
 
@@ -124,10 +128,10 @@ function KlimaHubPage() {
             ],
             answer: 1,
             explain:
-              "ENSO og NAO svinger og flytter varme og nedbør fra et sted til et annet uten å endre jordas totale energibalanse vesentlig, mens økt drivhuseffekt holder igjen mer energi totalt.",
+              "ENSO og NAO flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig, mens økt drivhuseffekt holder igjen mer energi totalt.",
           },
           {
-            prompt: "Hvilken hav-atmosfære-svingning har størst direkte innflytelse på vinterværet og stormbanene inn mot Norge?",
+            prompt: "Hvilken hav-atmosfære-svingning har størst direkte innflytelse på vinterværet inn mot Norge?",
             options: [
               "Den indiske hav-dipolen (IOD)",
               "Den nordatlantiske oscillasjon (NAO)",
@@ -136,7 +140,7 @@ function KlimaHubPage() {
             ],
             answer: 1,
             explain:
-              "NAO styrer trykkgradienten i Nord-Atlanteren og bestemmer om vestavinden og lavtrykkene treffer Norge rett på (NAO+) eller styres sørover (NAO-).",
+              "NAO styrer trykkgradienten i Nord-Atlanteren og stormbanen inn mot Norge.",
           },
         ]}
       />
