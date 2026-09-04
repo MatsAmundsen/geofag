@@ -5,10 +5,10 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER_G2 } from "@/lib/kilder-g2";
-import { GF2_THEMES } from "@/lib/nav";
+import { GF2_GAP_THEMES } from "@/lib/nav-g2-gaps";
 import { topicHead } from "@/lib/seo";
 
-const tema = GF2_THEMES.find((t) => t.to === "/tema/vaerkart")!;
+const tema = GF2_GAP_THEMES.find((t) => t.to === "/tema/vaerkart")!;
 
 export const Route = createFileRoute("/tema/vaerkart")({
   head: () =>
@@ -38,7 +38,6 @@ function VaerkartPage() {
           lokal skala, og tolke ulike værkart og værutvikling.
         </p>
       </Callout>
-
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva et synoptisk kart viser</h2>
       <p>
         Et synoptisk kart er et øyeblikksbilde nær bakken: lufttrykk, vind, fronter og ofte sky og
@@ -54,14 +53,12 @@ function VaerkartPage() {
         Nær bakken krysser vinden isobarene litt inn mot L, fordi friksjon bremser coriolis. Den
         innstrømmingen tvinger luft opp i lavtrykket.
       </p>
-
       <GeminiFigure
         id="vaerkart-synoptisk"
         heading="Slik leser du et synoptisk kart"
         caption="Isobarer, L og H, kaldfront, varmfront og okklusjon. Leserekkefølge: finn L/H, tette isobarer, fronter, flytt 24 t."
         prompt="Pedagogisk synoptisk værkart over Nord-Atlanteren og Norge. Mørk geofag-stil. Isobarer rundt et L vest for Norge (976 hPa) og et H over Sentral-Europa (1032). Kaldfront sørøst for L, varmfront øst for L, okklusjon nordvest. Vindpiler mot klokka inn mot L. Ingen teksttett infografikk. Liggende format."
       />
-
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Fronter</h2>
       <p>
         En front er skillet mellom to luftmasser. Varmfront: varm luft klatrer over kald. Skydekket
@@ -69,16 +66,11 @@ function VaerkartPage() {
         luft graver under varm. Stigningen er brattere, bygene kortere og hardere. Okklusjon:
         kaldfronten har tatt igjen varmfronten. Den varme sektoren løftes av bakken.
       </p>
-      <OrdBoks
-        ord="Varm sektor"
-        barn="Den milde luften mellom varmfront og kaldfront i en ung polarfrontsyklon."
-      />
-
+      <OrdBoks ord="Varm sektor" barn="Den milde luften mellom varmfront og kaldfront i en ung polarfrontsyklon." />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">24 timer fram</h2>
       <p>
         Norske lavtrykk kommer som regel fra vest. Et lavtrykk vest for Stad i dag ligger ofte mot
-        Nordland eller inn i Bottenviken i morgen, avhengig av jetstrømmen. Frontene følger. «Regn i
-        Bergen i kveld, opphold i morgen» er kaldfronten som har passert.
+        Nordland eller inn i Bottenviken i morgen. Frontene følger.
       </p>
       <GeminiFigure
         id="vaerkart-24t"
@@ -87,11 +79,9 @@ function VaerkartPage() {
         prompt="To-panel pedagogisk figur, mørk geofag-stil. Venstre: L merket vest for Stad. Høyre: samme L forskjøvet mot Nordland. En vestavinds-pil mellom panelene merket omtrent 1000 km per døgn. Liggende format. Lite tekst."
       />
       <p>
-        Leserekkefølge: finn L og H. Finn tette isobarer. Finn frontene. Bestem luftmassen du står i
-        (foran varmfront, i varm sektor, bak kaldfront). Flytt hele systemet med vestavinden. Si
-        hvor nedbørsbeltet er om 24 timer. Øv på ekte kart hos MET og yr.no.
+        Leserekkefølge: finn L og H. Finn tette isobarer. Finn frontene. Bestem luftmassen. Flytt
+        systemet med vestavinden. Si hvor nedbørsbeltet er om 24 timer. Øv på ekte kart hos MET og yr.no.
       </p>
-
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Isobar" def="Linje med samme lufttrykk. Tette linjer = sterk vind." />
@@ -99,7 +89,6 @@ function VaerkartPage() {
         <Term name="Kaldfront" def="Kald luft graver under varm. Brattere, kortere byger." />
         <Term name="Okklusjon" def="Kaldfronten har tatt igjen varmfronten. Varm sektor løftes." />
       </TermGrid>
-
       <Quiz
         questions={[
           {
@@ -125,8 +114,7 @@ function VaerkartPage() {
             explain: "Varm luft klatrer slakt. Skysekvensen er cirrus → altostratus → jevn nedbør.",
           },
           {
-            prompt:
-              "Et lavtrykk ligger vest for Stad i dag. Vestavinden er 40 knop i 500 hPa. Rimelig +24 t?",
+            prompt: "Et lavtrykk ligger vest for Stad i dag. Rimelig +24 t?",
             options: [
               "Lavtrykket står stille over Stad.",
               "Lavtrykket har typisk flyttet seg mot nordøst, og frontene med det.",
@@ -138,10 +126,8 @@ function VaerkartPage() {
           },
         ]}
       />
-
       <p>
-        Neste steg er kretsløpene som ikke synes på et atlanterhavskart: sjøbris, dalvind og føn. De
-        sitter i{" "}
+        Neste steg er kretsløpene som ikke synes på et atlanterhavskart. De sitter i{" "}
         <Link to="/tema/lokale-vaersystemer" className="text-primary underline-offset-2 hover:underline">
           lokale værsystemer
         </Link>
