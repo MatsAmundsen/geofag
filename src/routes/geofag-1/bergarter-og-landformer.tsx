@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { RockCycleDiagram, ValleyCrossSectionDiagram } from "@/components/diagrams/bergarter";
-import { GeminiFigure } from "@/components/gemini-figure";
+import { GrainSizeDistributionDiagram, RelativeDatingDiagram } from "@/components/diagrams/geology-extra";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -110,7 +109,6 @@ function BergarterOgLandformerPage() {
         barn="Når løst sediment blir til fast bergart: kompaksjon og mineraler som binder kornene."
       />
       <RockCycleDiagram />
-      <GeminiFigure {...GEMINI.bergartssyklus} />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Relativ alder</h2>
       <p>
@@ -127,7 +125,7 @@ function BergarterOgLandformerPage() {
         ord="Inklusjon"
         barn="Fragmentet er eldre enn bergarten det er innleiret i. Motsatt av krysskjæring i retning, samme logikk: det som ble tatt inn, fantes først."
       />
-      <GeminiFigure {...GEMINI.relativDatering} />
+      <RelativeDatingDiagram />
       <p>
         Diskordans er et tidshull. Avsetning stoppet, erosjon tok bort, ny avsetning la seg oppå.
         I skyvedekker kan eldre ligge over yngre. Da har tektonikk brutt premisset.
@@ -149,7 +147,7 @@ function BergarterOgLandformerPage() {
         Leir under marin grense er en annen historie enn sand på et nes. Nøkkelen er leir — silt —
         sand — grus, ikke «jord» som sekk.
       </p>
-      <GeminiFigure {...GEMINI.kornfordeling} />
+      <GrainSizeDistributionDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">U-dal og V-dal</h2>
       <p>

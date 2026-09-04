@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import {
+  PolarFrontCycloneSteps,
+  ValleyWindDiagram,
+  SeaBreezeLandBreezeDiagram,
+} from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -46,12 +50,7 @@ function LokalePage() {
         En bølge på polarfronten blir til et lavtrykk. Mellom varmfront og kaldfront ligger varm sektor.
         Kaldfronten tar igjen varmfronten: okklusjon. Til slutt fylles lavtrykket.
       </p>
-      <GeminiFigure
-        id="lokalt-bjerknes"
-        heading="Polarfrontsyklon, fire steg"
-        caption="Bølge → varm sektor → okklusjon → utfylling. Frontene er systemet, ikke pynt på kartet."
-        prompt="Fire-panel pedagogisk figur i mørk geofag-stil. 1 Bølge på en rett polarfront med lite L. 2 Utviklet L med varmfront og kaldfront og varm sektor. 3 Okklusjon. 4 Svakt L som dør ut. Minimal tekst. Liggende format."
-      />
+      <PolarFrontCycloneSteps />
       <p>
         Lesingen sitter i{" "}
         <Link to="/tema/vaerkart" className="text-primary underline-offset-2 hover:underline">værkart</Link>. Fødselen sitter her.
@@ -61,20 +60,10 @@ function LokalePage() {
         Om dagen varmes land fortere enn hav. Luften over land stiger. Luft fra sjøen strømmer inn.
         Returstrømmen går tilbake i høyden. Om natten speilvendes kretsløpet. Landbrisen er svakere.
       </p>
-      <GeminiFigure
-        id="lokalt-sjobris"
-        heading="Sjøbris om dagen, landbris om natten"
-        caption="Samme kretsløp, motsatt fortegn. Returstrømmen oppe må være der."
-        prompt="To-panel tverrsnitt kyst, mørk geofag-stil. Venstre dag: pålandsvind. Høyre natt: speilvendt, svakere piler. Norsk skjærgård. Liggende format."
-      />
+      <SeaBreezeLandBreezeDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Dalvind og fjellvind</h2>
       <p>Om dagen varmes dalsidene: dalvind opp dalen. Om natten renner kald luft ned: fjellvind.</p>
-      <GeminiFigure
-        id="lokalt-dalvind"
-        heading="Dalvind og fjellvind"
-        caption="Dag: opp dalen. Natt: ned dalen. Termikk, ikke storskalavind."
-        prompt="To-panel fjord/dal i mørk geofag-stil. Venstre dag: varme piler opp dalen. Høyre natt: kalde piler ned dalen. Norske fjell. Liggende format."
-      />
+      <ValleyWindDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Føn</h2>
       <p>
         Føn er varm, tørr vind på lesiden. Luften mister vannet som regn på losiden, men beholder

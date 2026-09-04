@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import { FieldworkInquiryChainDiagram } from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -59,12 +59,7 @@ function FeltG2Page() {
         </Link>
         .
       </p>
-      <GeminiFigure
-        id="felt-g2-kjede"
-        heading="Fra spørsmål til presentasjon"
-        caption="Problemstilling → design → data med metadata → figur → usikkerhet. Sensor leter etter kjeden."
-        prompt="Pedagogisk fem-stegs kjede i mørk geofag-stil: spørsmål, feltbok, måling ved kyst eller snøprofil, graf, kort presentasjon. Norske elever i feltklær, ikke stock-smil. Liggende format. Minimal tekst."
-      />
+      <FieldworkInquiryChainDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Data som tåler eksamen</h2>
       <p>
         Skriv tid, sted (koordinat), instrument og usikkerhet i feltboka før du går. En temperatur

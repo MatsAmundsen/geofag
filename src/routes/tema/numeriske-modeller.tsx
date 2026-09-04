@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { ModelGridDiagram } from "@/components/diagrams/models";
-import { GeminiFigure } from "@/components/gemini-figure";
+import {
+  ModelGridDiagram,
+  ModelParametrizationDiagram,
+  EnsembleRibbonDiagram,
+} from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -35,7 +37,6 @@ function NumeriskeModellerPage() {
       kilder={KILDER.modeller}
     >
       <ModelGridDiagram />
-      <GeminiFigure {...GEMINI.modellerGrid} />
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Tre bruk</h2>
       <p>
@@ -68,7 +69,7 @@ function NumeriskeModellerPage() {
         oppløsningen. En prosess som er mindre enn et par gridceller, kan ikke løses eksplisitt. Den
         må parametriseres.
       </p>
-      <GeminiFigure {...GEMINI.modellerParam} />
+      <ModelParametrizationDiagram />
       <OrdBoks ord="Grid" barn="Avstand mellom beregningspunktene. Finere gir mer detalj, koster mer regnekraft." />
       <OrdBoks
         ord="Parametrisering"
@@ -91,7 +92,7 @@ function NumeriskeModellerPage() {
         Et ensemble er mange nesten like kjøringer. Spredningen kartlegger usikkerheten. «30 % sjanse
         for mer enn 20 mm» er andelen ensemblemedlemmer over en terskel.
       </p>
-      <GeminiFigure {...GEMINI.modellerEnsemble} />
+      <EnsembleRibbonDiagram />
       <OrdBoks ord="Ensemble" barn="Mange nesten like kjøringer som kartlegger usikkerhet." />
       <p>
         Den praktiske prediksjonsgrensen for synoptisk vær er typisk 7–10 døgn. Når yr hopper mellom

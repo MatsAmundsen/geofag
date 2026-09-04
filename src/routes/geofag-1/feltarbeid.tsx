@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { FieldworkIllustrationDiagram } from "@/components/diagrams/geology-extra";
 import { FeltbokDiagram } from "@/components/diagrams/ressurser";
-import { GeminiFigure } from "@/components/gemini-figure";
 import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -41,7 +40,7 @@ function FeltarbeidPage() {
       }}
       kilder={KILDER.feltarbeid}
     >
-      <GeminiFigure {...GEMINI.feltBanner} />
+      <FieldworkIllustrationDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Problemstilling</h2>
       <p>
@@ -61,7 +60,6 @@ function FeltarbeidPage() {
         Mobil-GPS holder til skolefelt, typisk noen meter, ikke til centimeter på en skredkant.
       </p>
       <FeltbokDiagram />
-      <GeminiFigure {...GEMINI.feltbokUtfylt} />
       <OrdBoks
         ord="georeferert"
         barn="Observasjon knyttet til sted og tid. Uten det er dataene ikke geofaglige. Feltboka er primærkilden. Foto og GPS supplerer."

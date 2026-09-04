@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import { EnergySourcesDiagram, WindPowerTradeoffDiagram } from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -43,12 +43,7 @@ function EnergiPage() {
         Nesten all fornybar energi i atmosfæren og i bølgene er omdannet solenergi. Trykkforskjeller
         blir vind. Vind over hav blir bølger. Tidevann er unntaket: gravitasjon fra måne og sol.
       </p>
-      <GeminiFigure
-        id="energi-kilder"
-        heading="Fire kilder, samme fysikk"
-        caption="Vind og havvind er trykkgradient. Bølger er vind flyttet over i vannflaten. Tidevann er gravitasjon."
-        prompt="Fire like store felt i mørk geofag-stil: landvindturbin på kysthei, flytende havvind, bølgebøye, tidevannsstrøm i et norsk sund. Ingen reklame-look. Liggende format. Minimal tekst."
-      />
+      <EnergySourcesDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Vind på land</h2>
       <p>
         Effekt i en turbin vokser med kubikken av vindhastigheten. Plassering teller mer enn antall master.
@@ -68,12 +63,7 @@ function EnergiPage() {
         og akseptabelt inngrep i fjære.
       </p>
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Drøftingen</h2>
-      <GeminiFigure
-        id="energi-avveining"
-        heading="Bærekraft er avveining"
-        caption="Kutt i utslipp, areal og arter, forsyning, konflikt. En tekst med bare CO₂ er et innlegg, ikke en drøfting."
-        prompt="Pedagogisk avveiningsfigur i mørk geofag-stil. Ett anlegg i midten. Fire piler ut: kutt i utslipp, areal og natur, forsyning, konflikt. Liggende format."
-      />
+      <WindPowerTradeoffDiagram />
       <p>
         Sammenlign med{" "}
         <Link to="/tema/tilpasning" className="text-primary underline-offset-2 hover:underline">tilpasning</Link>

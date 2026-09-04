@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
-import { GeminiFigure } from "@/components/gemini-figure";
 import { GeoMap } from "@/components/geo-map";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -77,7 +75,6 @@ function VannOgFlomPage() {
       />
       <KretslopDiagram />
       <HydrographDiagram />
-      <GeminiFigure {...GEMINI.hydrogramTo} />
       <PhotoFigure
         src="/images/fig-ekstremnedbor.jpg"
         alt="Mørke bygeskyer og styrtregn over et norsk dalføre"

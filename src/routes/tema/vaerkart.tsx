@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import { SynopticMapDiagram, TwentyFourHourDiagram } from "@/components/diagrams/weather";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -53,12 +53,7 @@ function VaerkartPage() {
         Nær bakken krysser vinden isobarene litt inn mot L, fordi friksjon bremser coriolis. Den
         innstrømmingen tvinger luft opp i lavtrykket.
       </p>
-      <GeminiFigure
-        id="vaerkart-synoptisk"
-        heading="Slik leser du et synoptisk kart"
-        caption="Isobarer, L og H, kaldfront, varmfront og okklusjon. Leserekkefølge: finn L/H, tette isobarer, fronter, flytt 24 t."
-        prompt="Pedagogisk synoptisk værkart over Nord-Atlanteren og Norge. Mørk geofag-stil. Isobarer rundt et L vest for Norge (976 hPa) og et H over Sentral-Europa (1032). Kaldfront sørøst for L, varmfront øst for L, okklusjon nordvest. Vindpiler mot klokka inn mot L. Ingen teksttett infografikk. Liggende format."
-      />
+      <SynopticMapDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Fronter</h2>
       <p>
         En front er skillet mellom to luftmasser. Varmfront: varm luft klatrer over kald. Skydekket
@@ -72,12 +67,7 @@ function VaerkartPage() {
         Norske lavtrykk kommer som regel fra vest. Et lavtrykk vest for Stad i dag ligger ofte mot
         Nordland eller inn i Bottenviken i morgen. Frontene følger.
       </p>
-      <GeminiFigure
-        id="vaerkart-24t"
-        heading="Hva skjer de neste 24 timene?"
-        caption="Utvikling er adveksjon av hele systemet, ikke at været står stille over bakken."
-        prompt="To-panel pedagogisk figur, mørk geofag-stil. Venstre: L merket vest for Stad. Høyre: samme L forskjøvet mot Nordland. En vestavinds-pil mellom panelene merket omtrent 1000 km per døgn. Liggende format. Lite tekst."
-      />
+      <TwentyFourHourDiagram />
       <p>
         Leserekkefølge: finn L og H. Finn tette isobarer. Finn frontene. Bestem luftmassen. Flytt
         systemet med vestavinden. Si hvor nedbørsbeltet er om 24 timer. Øv på ekte kart hos MET og yr.no.

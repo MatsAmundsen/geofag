@@ -90,3 +90,30 @@ export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { SpheresDiagram } from "./spheres";
 export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
 export { FeltbokDiagram, FraBergartTilBruddDiagram } from "./ressurser";
+export {
+  SynopticMapDiagram,
+  TwentyFourHourDiagram,
+  PolarFrontCycloneSteps,
+  ValleyWindDiagram,
+} from "./weather";
+export { EnergySourcesDiagram, WindPowerTradeoffDiagram } from "./energy";
+export { AssimilationDiagram, EnsembleRibbonDiagram } from "./models-extra";
+export {
+  RelativeDatingDiagram,
+  GrainSizeDistributionDiagram,
+  FieldworkIllustrationDiagram,
+} from "./geology-extra";
+export {
+  GlacierMassBalanceDiagram,
+  PermafrostDiagram,
+  SeaIceAlbedoFeedbackDiagram,
+  SlabAvalancheDiagram,
+} from "./cryosphere";
+export { EarthRadiationBudgetDiagram } from "./climate-radiation";
+export {
+  SeaBreezeLandBreezeDiagram,
+  ModelParametrizationDiagram,
+  ImpactLevelsDiagram,
+  AdaptationExamFrameworkDiagram,
+  FieldworkInquiryChainDiagram,
+} from "./inquiry-frameworks";

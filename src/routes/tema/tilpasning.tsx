@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import {
+  ImpactLevelsDiagram,
+  AdaptationExamFrameworkDiagram,
+} from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -44,12 +47,7 @@ function TilpasningPage() {
         Enkeltmenneske: helse i hetebølge, bolig i flomsonen. Samfunn: strømnett, vei, sykehus.
         Økosystem: korallbleking, torskens utbredelse. En tekst som bare tar ett nivå, treffer halve målet.
       </p>
-      <GeminiFigure
-        id="tilpasning-nivaer"
-        heading="Person, samfunn, økosystem"
-        caption="Samme fysikk, tre slags skade. Skriv alle tre, ellers er drøftingen for tynn."
-        prompt="Tre felt i mørk geofag-stil: person i hetebølge i en norsk by, oversvømt gate og beredskap, bleket kystøkosystem. Ingen katastrofe-klisjé. Liggende format. Minimal tekst."
-      />
+      <ImpactLevelsDiagram />
       <p>
         Fysikken bak ekstremene ligger i{" "}
         <Link to="/tema/vaerkatastrofer" className="text-primary underline-offset-2 hover:underline">værkatastrofer</Link>
@@ -64,12 +62,7 @@ function TilpasningPage() {
       <OrdBoks ord="Tilpasning" barn="Å redusere skade av det været og klimaet som faktisk kommer." />
       <OrdBoks ord="Utslippskutt" barn="Å redusere pådrivet. Uten kutt vokser tilpasningsbehovet uten tak." />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Mal for en drøfting</h2>
-      <GeminiFigure
-        id="tilpasning-mal"
-        heading="Fem steg som tåler eksamen"
-        caption="Fenomen → fysikk → tre nivåer → ett kutt og ett tilpasningstiltak → én begrensning."
-        prompt="Fem nummererte steg i mørk geofag-stil: 1 fenomen, 2 fysikk, 3 tre nivåer, 4 to tiltak, 5 maltilpasning. Lite tekst."
-      />
+      <AdaptationExamFrameworkDiagram />
       <ol className="list-decimal space-y-2 pl-5">
         <li>Velg ett fenomen (for eksempel styrtregn over en by).</li>
         <li>Si fysikken i én setning (varmere luft holder mer vanndamp).</li>

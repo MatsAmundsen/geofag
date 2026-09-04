@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Callout } from "@/components/callout";
-import { GeminiFigure } from "@/components/gemini-figure";
+import { EarthRadiationBudgetDiagram } from "@/components/diagrams/climate-radiation";
 import { Quiz } from "@/components/quiz";
 import { Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -42,7 +41,7 @@ function KlimaHubPage() {
         omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går som
         langbølge. Drivhusgasser bremser ut. Foto av jordkloden viser stemning. Tallene viser budsjettet.
       </p>
-      <GeminiFigure {...GEMINI.klimaStraling} />
+      <EarthRadiationBudgetDiagram />
 
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Velg emne i klimasystemet
