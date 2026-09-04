@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { ModelGridDiagram } from "@/components/diagrams/models";
+import { GeminiFigure } from "@/components/gemini-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -28,11 +30,12 @@ function NumeriskeModellerPage() {
       lead="En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett. Bevegelse, masse, energi og fuktighet løses i celler, steg for steg. Cellene har en størrelse. Prosessene inne i cellen må forenkles. Starttilstanden er aldri perfekt kjent. Likevel gir modellene nyttig informasjon — til ulike formål på ulike tidsskalaer."
       banner="/images/fig-klimasystem.jpg"
       bannerAlt="Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver"
-      prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
+      prev={{ to: "/tema/kryosfare", label: "Forrige: Kryosfæren" }}
       next={{ to: "/tema/paleoklima", label: "Neste: Paleoklima" }}
       kilder={KILDER.modeller}
     >
       <ModelGridDiagram />
+      <GeminiFigure {...GEMINI.modellerGrid} />
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Tre bruk</h2>
       <p>
@@ -52,92 +55,54 @@ function NumeriskeModellerPage() {
       <p>
         Klimaforskning er et randverdiproblem. Tidsskalaen er tiår til århundrer. Pådriv styrer:
         drivhusgasser, aerosoler, sol, vulkaner. Prediksjonen er statistikken: middel, varians,
-        ekstremfordelinger. Ikke været 12. juni 2087. Vi kan si noe robust om klimaet i 2080 uten å
-        varsle været den 3. mars 2080.
+        ekstremfordelinger. Ikke været 12. juni 2087.
       </p>
       <OrdBoks
         ord="Startverdi og randverdi"
         barn="Værvarsel: starttilstanden avgjør de neste dagene. Klima: pådrivet og randen avgjør statistikken over tiår."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Grid og parametrisering
-      </h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Grid og parametrisering</h2>
       <p>
         Atmosfæren og havet deles i et tredimensjonalt rutenett. Avstanden mellom punktene er
         oppløsningen. En prosess som er mindre enn et par gridceller, kan ikke løses eksplisitt. Den
-        må parametriseres: en forenklet beskrivelse av det som er for lite eller for komplekst, som
-        funksjon av det modellen faktisk løser. Skyer, konveksjon, turbulens og stråling i skyer er
-        slike ledd.
+        må parametriseres.
       </p>
-      <OrdBoks
-        ord="Grid"
-        barn="Avstand mellom beregningspunktene. Finere gir mer detalj, koster mer regnekraft."
-      />
+      <GeminiFigure {...GEMINI.modellerParam} />
+      <OrdBoks ord="Grid" barn="Avstand mellom beregningspunktene. Finere gir mer detalj, koster mer regnekraft." />
       <OrdBoks
         ord="Parametrisering"
         barn="Forenklet beskrivelse av prosesser som er for små eller for komplekse til å løses eksplisitt."
       />
       <p>
         Operasjonell oppløsning: ECMWF globalt på rundt 9 km (ECMWF, u.å.). MEPS og AROME-Arctic 2,5
-        km. Norkyst 800 m. Finere rutenett løser ikke alt. Det gir bedre topografi, kystlinje og
-        konveksjon, men krever bedre initialdata, bedre fysikk og langt mer regnekraft. En
-        halvering av gridavstand gir omtrent åtte ganger mer regning i 3D, pluss kortere tidssteg.
-      </p>
-      <p>
-        Når oppløsningen blir fin nok til at dyp konveksjon løses eksplisitt, som i MEPS, skrus den
-        konvektive parametriseringen av eller kraftig ned. Bedre grid gir annen fysikk, nye
-        feilkilder og ny validering.
+        km. Norkyst 800 m. En halvering av gridavstand gir omtrent åtte ganger mer regning i 3D,
+        pluss kortere tidssteg.
       </p>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Dataassimilering og ensemble
-      </h2>
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Dataassimilering og ensemble</h2>
       <p>
-        Observasjoner er ujevnt fordelt. De har ulike feil, og kommer fra satellitt, radar, fly,
-        skip, bøyer, radiosonder og bakkestasjoner. Dataassimilering blander observasjonene inn i
-        modellen, vektet etter hvor mye vi stoler på hver av dem. Uten assimilering ville et
-        værvarsel glemme virkeligheten i løpet av dager. Med assimilering blir hver ny syklus en
-        korreksjon. Derfor kan korttidsvarsler oppdateres hver time.
+        Observasjoner er ujevnt fordelt. Dataassimilering blander dem inn i modellen, vektet etter
+        hvor mye vi stoler på hver av dem. Uten assimilering ville et værvarsel glemme virkeligheten
+        i løpet av dager.
       </p>
-      <OrdBoks
-        ord="Dataassimilering"
-        barn="Observasjoner blandes inn for en bedre starttilstand."
-      />
+      <OrdBoks ord="Dataassimilering" barn="Observasjoner blandes inn for en bedre starttilstand." />
       <p>
-        Atmosfæren er deterministisk og kaotisk. To starttilstander som er umulig å skille med
-        dagens observasjoner, kan gi vesentlig ulikt vær etter en uke. Ett deterministisk varsel gir
-        falsk presisjon.
+        Et ensemble er mange nesten like kjøringer. Spredningen kartlegger usikkerheten. «30 % sjanse
+        for mer enn 20 mm» er andelen ensemblemedlemmer over en terskel.
       </p>
-      <p>
-        Et ensemble er mange nesten like kjøringer. Spredningen kartlegger usikkerheten. Ligger
-        medlemmene tett: høy tillit. Spriker de: lav tillit, for eksempel et lavtrykk som kan ta
-        sørlig eller nordlig bane. «30 % sjanse for mer enn 20 mm» er andelen ensemblemedlemmer over
-        en terskel, ofte kalibrert mot historikk. Ikke gjetting.
-      </p>
+      <GeminiFigure {...GEMINI.modellerEnsemble} />
       <OrdBoks ord="Ensemble" barn="Mange nesten like kjøringer som kartlegger usikkerhet." />
       <p>
-        Den praktiske prediksjonsgrensen for synoptisk vær er typisk 7–10 døgn, i gode tilfeller mot
-        15. Klima er ikke langtidsvær. Klima er fordelingen av vær over 30 år. Pådrivet forskyver
-        den fordelingen.
+        Den praktiske prediksjonsgrensen for synoptisk vær er typisk 7–10 døgn. Når yr hopper mellom
+        sol og 20 mm på dag 8, er det ensemblets spredning du ser — ikke at klimaet endret seg over natten.
       </p>
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Norge</h2>
       <p>
         MEPS er den regionale modellen for Norden, 2,5 km, 30 medlemmer, ut til ca. 66 timer (MET,
-        u.å.). AROME-Arctic er 2,5 km over Arktis, brukt for Svalbard og nordlige havområder. ECMWF
-        er det globale systemet, ca. 9 km, ut til 15 døgn. Norkyst er kysthavmodellen, 800 m, 40 lag,
-        120-timers varsel.
-      </p>
-      <p>
-        På yr.no dekkes de første ca. 60 timene over Norden av MEPS, Arktis av AROME-Arctic, og 2–10
-        døgn av ECMWF-ensemble (MET, u.å.). Når varslet svinger fra dag til dag på dag 7–9, er det
-        ensemblets spredning du ser.
-      </p>
-      <p>
-        Norkyst drives av vind og trykk fra den regionale atmosfæremodellen. Bruk: oljevern,
-        search-and-rescue, lakselus, skipstrafikk. Havet er både kilde til prediktabilitet på
-        sesong, og kilde til usikkerhet i klima.
+        u.å.). AROME-Arctic er 2,5 km over Arktis. ECMWF er det globale systemet, ca. 9 km, ut til 15
+        døgn. Norkyst er kysthavmodellen, 800 m.
       </p>
       <p>Tall og vurderinger bygger på IPCC AR6 (IPCC, 2021). Syvende hovedrapport er ikke publisert.</p>
 
@@ -150,14 +115,8 @@ function NumeriskeModellerPage() {
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
-        <Term
-          name="Grid"
-          def="Avstand mellom beregningspunktene. Finere gir mer detalj, koster mer regnekraft."
-        />
-        <Term
-          name="Parametrisering"
-          def="Forenklet beskrivelse av prosesser som er for små eller for komplekse til å løses eksplisitt."
-        />
+        <Term name="Grid" def="Avstand mellom beregningspunktene. Finere gir mer detalj, koster mer regnekraft." />
+        <Term name="Parametrisering" def="Forenklet beskrivelse av prosesser som er for små eller for komplekse til å løses eksplisitt." />
         <Term name="Dataassimilering" def="Observasjoner blandes inn for en bedre starttilstand." />
         <Term name="Ensemble" def="Mange nesten like kjøringer som kartlegger usikkerhet." />
       </TermGrid>
@@ -184,8 +143,7 @@ function NumeriskeModellerPage() {
               "Fordi skyer bare finnes over land.",
             ],
             answer: 1,
-            explain:
-              "Finere grid kan løse mer konveksjon eksplisitt, som i MEPS — da endres fysikken.",
+            explain: "Finere grid kan løse mer konveksjon eksplisitt, som i MEPS — da endres fysikken.",
           },
           {
             prompt: "Hva viser spredningen i et ensemble?",
@@ -197,6 +155,17 @@ function NumeriskeModellerPage() {
             ],
             answer: 1,
             explain: "«30 % sjanse for mer enn 20 mm» er andelen medlemmer over en terskel.",
+          },
+          {
+            prompt: "På yr ser du at varselet for dag 8 hopper mellom sol og 20 mm fra en dag til den neste. Hva leser du?",
+            options: [
+              "At MET har slått av modellen.",
+              "At ensemblet spriker: lav tillit. Bruk sannsynlighet, ikke ett tall.",
+              "At klimaet har endret seg over natten.",
+              "At isobarene er slettet.",
+            ],
+            answer: 1,
+            explain: "Det er prediksjonsgrensen du ser. Ensemblets spredning er varselet.",
           },
         ]}
       />
