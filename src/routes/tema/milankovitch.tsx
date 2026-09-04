@@ -15,6 +15,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { VideoPlaceholder } from "@/components/video-placeholder";
 import { KILDER } from "@/lib/kilder";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -492,20 +493,12 @@ function MilankovitchPage() {
 
       <GlacialLandformsDiagram />
 
-      <div className="my-12">
-        <h2 className="font-display text-2xl font-medium tracking-tight mb-4">
-          Oppsummering: Jordens kosmiske urverk
-        </h2>
-        <div className="rounded-xl overflow-hidden shadow-lg ring-1 ring-slate-200 dark:ring-slate-800">
-          <video 
-            controls 
-            className="w-full aspect-video bg-black"
-          >
-            <source src="/videos/jordens_kosmiske_urverk.mp4" type="video/mp4" />
-            Nettleseren din støtter ikke videospilleren.
-          </video>
-        </div>
-      </div>
+      <VideoPlaceholder
+        topic="Milanković og istider"
+        title="Oppsummering: Jordens kosmiske urverk"
+        description="En visuell oppsummering av orbital pacemaker, forsterkermekanismer og istidssyklusene."
+        src="/videos/jordens_kosmiske_urverk.mp4"
+      />
 
       <Callout title="Kompetansemål">
         <p>

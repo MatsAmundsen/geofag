@@ -4,3 +4,5 @@ dist
 .vercel
 *.local
 .output
+.wrangler
+venv
