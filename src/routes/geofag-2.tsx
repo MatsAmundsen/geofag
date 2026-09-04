@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { GF2_GAP_THEMES } from "@/lib/nav-g2-gaps";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -12,13 +13,14 @@ export const Route = createFileRoute("/geofag-2")({
     topicHead({
       title: "Geofag 2",
       description:
-        "Geofag 2: vind, hav og klima som ett system. Trykk, vindsystemet, jetstrømmer, corioliseffekten, havstrømmer, klima, istider og værkatastrofer.",
+        "Geofag 2: vind, hav og klima som ett system. Trykk, værkart, kryosfære, modeller, energi og felt.",
       path: "/geofag-2",
     }),
   component: Geofag2,
 });
 
 function Geofag2() {
+  const themes = [...GF2_THEMES, ...GF2_GAP_THEMES];
   return (
     <div className="flex min-h-dvh flex-col">
       <a
@@ -57,12 +59,9 @@ function Geofag2() {
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <div className="max-w-2xl">
               <p className="text-xs font-medium uppercase tracking-wider text-primary">REA3043</p>
-              <h2 className="mt-1 font-display text-2xl font-medium tracking-tight sm:text-3xl">
-                Eksamen
-              </h2>
+              <h2 className="mt-1 font-display text-2xl font-medium tracking-tight sm:text-3xl">Eksamen</h2>
               <p className="mt-2 text-sm text-muted-foreground sm:text-base">
-                Skriftlig Geofag 2 per 2026: gjennomføring, regler, hjelpemidler, kildeføring og
-                løsningsforslag.
+                Skriftlig Geofag 2 per 2026: gjennomføring, regler, hjelpemidler, kildeføring og løsningsforslag.
               </p>
             </div>
             <Button asChild>
@@ -78,45 +77,28 @@ function Geofag2() {
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl font-medium tracking-tight">Temaer</h2>
             <p className="mt-3 text-muted-foreground">
-              Start med trykk, så mekanismene. Klima og værkatastrofer bygger på det samme — ellers
-              blir det symptomer uten årsak.
+              Start med trykk, så mekanismene. Klima, is, energi og felt bygger på det samme.
             </p>
           </div>
-
           <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-            {GF2_THEMES.map((tema) => (
+            {themes.map((tema) => (
               <li key={tema.title}>
                 <Link
                   to={tema.to}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
                 >
                   <div className="relative aspect-photo overflow-hidden">
-                    <img
-                      src={tema.image}
-                      alt={tema.alt}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                    />
-                    <span
-                      className={cn(
-                        "absolute left-3 top-3 rounded-md px-2 py-1 text-xs font-medium",
-                        tema.status === "klar"
-                          ? "bg-background/80 text-primary"
-                          : "bg-background/80 text-muted-foreground",
-                      )}
-                    >
+                    <img src={tema.image} alt={tema.alt} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                    <span className={cn("absolute left-3 top-3 rounded-md px-2 py-1 text-xs font-medium", tema.status === "klar" ? "bg-background/80 text-primary" : "bg-background/80 text-muted-foreground")}>
                       {tema.status === "klar" ? "Klar" : "Kommer"}
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col gap-2 p-5">
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                      {tema.kicker}
-                    </p>
-                    <h3 className="font-display text-2xl font-medium tracking-tight">
-                      {tema.title}
-                    </h3>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground">{tema.kicker}</p>
+                    <h3 className="font-display text-2xl font-medium tracking-tight">{tema.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{tema.blurb}</p>
                     <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-primary">
-                      {tema.status === "klar" ? "Åpne tema" : "Se forhåndsblikk"}
+                      Åpne tema
                       <ArrowRight className="size-4" />
                     </span>
                   </div>
@@ -125,107 +107,8 @@ function Geofag2() {
             ))}
           </ul>
         </section>
-
-        <section className="border-b border-border bg-background">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">
-                Fordypning
-              </p>
-              <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
-                Fra trykk til katastrofe.
-              </h2>
-            </div>
-            <ol className="space-y-6 lg:col-span-2">
-              <Fordypning
-                n="01"
-                to="/tema/hoytrykk-lavtrykk"
-                title="Høytrykk og lavtrykk"
-                text="Luft har vekt. Der den stiger, blir det lavtrykk og ofte skyer. Der den synker, blir det høytrykk og ofte klarvær. Vind går fra H mot L."
-              />
-              <Fordypning
-                n="02"
-                to="/tema/vindsystemet"
-                title="Det globale vindsystemet"
-                text="Ujevn stråling skaper trykkforskjeller. Tre celler på hver halvkule transporterer varme og vanndamp."
-              />
-              <Fordypning
-                n="03"
-                to="/tema/jetstrommer"
-                title="Jetstrømmer"
-                text="Et smalt belte med sterk vestavind i øvre troposfære. To belter, ikke ett. Utløpet av en jetkjerne dypner lavtrykkene, og stormbanen følger jeten inn mot Norge."
-              />
-              <Fordypning
-                n="04"
-                to="/tema/coriolis"
-                title="Corioliseffekten"
-                text="Jordrotasjonen bøyer bevegelser. Uten den ville passatene og lavtrykkene sett helt annerledes ut."
-              />
-              <Fordypning
-                n="05"
-                to="/tema/havstrommer"
-                title="Havstrømmer"
-                text="Vinden driver overflaten. Tetthet driver dypet. Sammen gir de Norge et kystklima som ikke matcher breddegraden."
-              />
-              <Fordypning
-                n="06"
-                to="/tema/klima"
-                title="Klima og klimasystemer"
-                text="Vær er dager. Klima er tiår. Drivhuseffekt og de store hav-atmosfære-svingningene: ENSO, IOD, NAO og AMOC."
-              />
-              <Fordypning
-                n="07"
-                to="/tema/numeriske-modeller"
-                title="Numeriske modeller"
-                text="En numerisk modell er fysikk regnet på et rutenett, til ulike formål på ulike tidsskalaer."
-              />
-              <Fordypning
-                n="08"
-                to="/tema/paleoklima"
-                title="Paleoklima"
-                text="Termometer dekker et øyeblikk. Iskjerner og havbunn blir til kunnskap som modeller og risiko bruker."
-              />
-              <Fordypning
-                n="09"
-                to="/tema/milankovitch"
-                title="Milankovitch-syklusen og istider"
-                text="Jordbanen flytter sommersola på 65 °N. Albedo og CO₂ forsterker. Weichsel sluttet for 11 700 år siden."
-              />
-              <Fordypning
-                n="10"
-                to="/tema/vaerkatastrofer"
-                title="Værkatastrofer"
-                text="Orkaner, polarfrontstormer, ekstremnedbør og stormflo. Samme fysikk. Høyere innsats når samfunn står i veien."
-              />
-            </ol>
-          </div>
-        </section>
       </main>
       <SiteFooter />
     </div>
-  );
-}
-
-function Fordypning({
-  n,
-  to,
-  title,
-  text,
-}: {
-  n: string;
-  to: string;
-  title: string;
-  text: string;
-}) {
-  return (
-    <li>
-      <Link to={to} className="group block rounded-xl border border-border bg-background p-5">
-        <p className="text-xs tabular-nums text-primary">{n}</p>
-        <h3 className="mt-1 font-display text-xl font-medium tracking-tight group-hover:text-primary">
-          {title}
-        </h3>
-        <p className="mt-2 text-sm text-muted-foreground">{text}</p>
-      </Link>
-    </li>
   );
 }
