@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { RockCycleDiagram, ValleyCrossSectionDiagram } from "@/components/diagrams/bergarter";
+import { GeminiFigure } from "@/components/gemini-figure";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
+import { GEMINI } from "@/lib/gemini-slots";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -68,7 +70,7 @@ function BergarterOgLandformerPage() {
         points={[
           { n: "1", label: "Størknet magma eller lava. Dyp nede, dag oppe." },
           { n: "2", label: "Fragmenter, utfelling eller organismer. Lagning." },
-          { n: "3", label: "Omdannet uten full smelting. Foliasjon er evidens." },
+          { n: "3", label: "Omdannet i fast tilstand. Foliasjon er evidens." },
         ]}
       />
 
@@ -77,14 +79,12 @@ function BergarterOgLandformerPage() {
         Magmatisk bergart er størknet magma eller lava. Sakte avkjøling nede gir store, synlige
         korn: dypbergart. Rask avkjøling oppe gir finkornet grunnmasse: dagbergart. Larvikitt er
         dypbergart, dannet for cirka 290 millioner år siden (NGU, u.å.). Rombeporfyr er dagbergart,
-        Oslofeltets signatur: store rombeformede feltspatkrystaller i finkornet grunnmasse. NGU
-        kaller dem tvillingbergarter. Forskjellen er avkjølingssted, ikke to ulike magmaer.
+        Oslofeltets signatur.
       </p>
       <OrdBoks ord="Magmatisk" barn="Størknet magma eller lava. Dyp nede, dag oppe." />
       <p>
         Sedimentær bergart kommer av fragmenter, utfelling eller organismer. Kambrosilur i
         Oslofeltet veksler mellom leirskifer og kalkstein. Kalkstein bruser med fortynnet saltsyre.
-        Fossiler og lagning peker sedimentært.
       </p>
       <OrdBoks
         ord="Sedimentær"
@@ -92,8 +92,7 @@ function BergarterOgLandformerPage() {
       />
       <p>
         Metamorf bergart er omdannet i fast tilstand, av trykk, temperatur eller fluider, uten full
-        smelting. Gneis er en av Norges vanligste bergarter: stripet eller bølget, kornene synlige.
-        I Sør-Norge er grunnfjellet eldre enn 900 millioner år. Foliasjon er evidens, ikke pynt.
+        smelting. Gneis er en av Norges vanligste bergarter. Foliasjon er evidens, ikke pynt.
         Metamorfose er ikke smelting. Smelting gir ny magmatisk bergart.
       </p>
       <OrdBoks
@@ -104,64 +103,63 @@ function BergarterOgLandformerPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Bergartssyklusen</h2>
       <p>
         Syklusen er en modell. Piler i flere retninger, ingen fast start. Enhver bergart kan bli en
-        annen. Ingen bergart må besøke alle stasjoner (USGS, u.å.). Indre varme driver smelting,
-        magma og metamorfose. Forvitring, erosjon og avsetning driver overflateleddet. Diagenese
-        lukker sediment til bergart.
+        annen. Ingen bergart må besøke alle stasjoner (USGS, u.å.). Diagenese lukker sediment til bergart.
       </p>
       <OrdBoks
         ord="Diagenese"
         barn="Når løst sediment blir til fast bergart: kompaksjon og mineraler som binder kornene."
       />
       <RockCycleDiagram />
-      <p>
-        Gneis i Østmarka har vært metamorf i mer enn 900 millioner år uten å bli magma. Larvikitt
-        har vært dypbergart siden perm. Kambrosilur-kalk i Oslofeltet er svakt omdannet, ikke
-        marmor. Å tolke inn i syklusen er å peke på stasjon, og på hvilken pil som er aktiv.
-      </p>
+      <GeminiFigure {...GEMINI.bergartssyklus} />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Relativ alder</h2>
       <p>
         Relativ alder er rekkefølge uten tall. Superposisjon: i uforstyrret lagrekke er det nederste
-        eldst. Tverrsnitt: en gang, en pluton eller en forkastning er yngre enn det den skjærer.
-        Oslofeltets permiske dypbergarter gjennomsetter kambrosilur. Riften er yngre enn
-        havsedimentene.
+        eldst. Krysskjæring: en gang, en pluton eller en forkastning er yngre enn det den skjærer.
+        Inklusjon: et fragment i en bergart er eldre enn bergarten det sitter i — xenolitt i lava,
+        rullestein i konglomerat.
       </p>
       <OrdBoks
         ord="Superposisjon"
         barn="I uforstyrret lagrekke er det nederste eldst. Relativ alder: rekkefølge uten årstall."
       />
+      <OrdBoks
+        ord="Inklusjon"
+        barn="Fragmentet er eldre enn bergarten det er innleiret i. Motsatt av krysskjæring i retning, samme logikk: det som ble tatt inn, fantes først."
+      />
+      <GeminiFigure {...GEMINI.relativDatering} />
       <p>
         Diskordans er et tidshull. Avsetning stoppet, erosjon tok bort, ny avsetning la seg oppå.
-        Grunnfjell mot overliggende kambrosilur er en fundamental diskordans. Permisk lava over
-        foldet kambrosilur i Oslofeltet er en annen. I skyvedekker kan eldre ligge over yngre. Da
-        har tektonikk brutt premisset.
+        I skyvedekker kan eldre ligge over yngre. Da har tektonikk brutt premisset.
       </p>
       <OrdBoks ord="Diskordans" barn="Tidshull: avsetning stoppet og/eller erosjon tok bort lag." />
       <p>
         C-14 daterer organisk materiale, ikke kambrosilur, gneis eller larvikitt. Halveringstid 5730
-        år (Godwin, 1962). Rekkevidde cirka 50 000 år (Reimer et al., 2020). Etter mange halveringer
-        er det for lite C-14 igjen. Gammel skorpe dateres med U–Pb i zirkon.
+        år (Godwin, 1962). Rekkevidde cirka 50 000 år (Reimer et al., 2020). Gammel skorpe dateres
+        med U–Pb i zirkon.
       </p>
       <OrdBoks
         ord="C-14"
         barn="Daterer organisk materiale. Halveringstid 5730 år, rekkevidde ca. 50 000 år. Gneis og larvikitt dateres med U–Pb i zirkon."
       />
 
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Korn og jordart</h2>
+      <p>
+        Kornstørrelse og sortering peker på agenten. Morene er usortert. Elvegrus er sortert.
+        Leir under marin grense er en annen historie enn sand på et nes. Nøkkelen er leir — silt —
+        sand — grus, ikke «jord» som sekk.
+      </p>
+      <GeminiFigure {...GEMINI.kornfordeling} />
+
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">U-dal og V-dal</h2>
       <p>
-        V-dal er elveerosjon: spisst tverrsnitt, elva graver i bunnen. U-dal er breerosjon: bratte
-        sider og flat bunn. Isen plukker og skurer i hele tverrsnittet. Fjord er U-dal under
-        havnivå. Sognefjorden er dyp U under hav. Gudbrandsdalen er U over hav, med elv i bunnen.
+        V-dal er elveerosjon: spisst tverrsnitt. U-dal er breerosjon: bratte sider og flat bunn.
+        Fjord er U-dal under havnivå.
       </p>
       <ValleyCrossSectionDiagram />
       <p>
         Mange norske daler er U med en liten V i bunnen. To generasjoner: isen bygde den store
-        formen, elva graver nå. De fleste norske U-dalene er fossil form fra innlandsisen. Elva i
-        bunnen er aktiv.
-      </p>
-      <p>
-        Hard gneis gir dyp og trang U-dal. Svakere berg gir bredere dal. Samme agent, ulik bergart.
-        Samme bergart, ulik agent: elv gir V, is gir U.
+        formen, elva graver nå.
       </p>
 
       <Callout title="Kompetansemål">
@@ -170,13 +168,11 @@ function BergarterOgLandformerPage() {
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
-        <Term
-          name="mineral"
-          def="naturlig, uorganisk fast stoff med definert kjemi og krystallstruktur; byggestein i bergarter"
-        />
+        <Term name="mineral" def="naturlig, uorganisk fast stoff med definert kjemi og krystallstruktur; byggestein i bergarter" />
         <Term name="magmatisk" def="størknet magma eller lava; dyp nede, dag oppe" />
         <Term name="metamorf" def="omdannet i fast tilstand, uten full smelting" />
         <Term name="diskordans" def="tidshull: avsetning stoppet og/eller erosjon tok bort lag" />
+        <Term name="inklusjon" def="fragmentet er eldre enn bergarten det sitter i" />
       </TermGrid>
 
       <Quiz
