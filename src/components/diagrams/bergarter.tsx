@@ -44,58 +44,120 @@ function Station({
 export function RockCycleDiagram() {
   return (
     <Diagram
-      title="Bergartssyklusen er en modell med piler i flere retninger. Ingen fast rute eller start."
-      heading="Bergartssyklusen"
-      caption="Syklusen er en modell. Ingen fast rute."
-      viewBox="0 0 820 430"
+      title="Bergartssyklusen: samspillet mellom magmatiske, sedimentære og metamorfe bergarter"
+      heading="Bergartssyklusen — naturens store gjenbruk"
+      caption="Bergartssyklusen er en modell som viser hvordan jordas bergarter kontinuerlig nydannes, brytes ned og omdannes. Ingen bergart er evig. Magma størkner til magmatiske bergarter. På overflaten forvitrer bergarter til løsmasser som herdes til sedimentære bergarter. Under høyt trykk og temperatur omdannes bergarter i fast tilstand til metamorfe bergarter. Blir varmen høy nok, smelter de tilbake til magma."
+      viewBox="0 0 860 480"
     >
       {(m) => (
         <>
-          <Station x={70} y={48} stroke={C.teal} fill="#1a3038" title="gneis" sub="metamorf" />
+          {/* Hovedstasjoner (Trekant-oppsett) */}
+          {/* 1. Magmatiske bergarter (øverst) */}
           <Station
-            x={520}
-            y={48}
+            x={295}
+            y={35}
+            w={270}
+            h={85}
             stroke={C.warm}
-            fill="#3a3428"
-            title="larvikitt"
-            sub="magmatisk dyp"
+            fill="#302418"
+            title="Magmatiske bergarter"
+            sub="Dypbergart (granitt) · Dagbergart (basalt)"
           />
+
+          {/* 2. Sedimentære bergarter (nede til høyre) */}
           <Station
-            x={70}
-            y={294}
+            x={530}
+            y={240}
+            w={280}
+            h={85}
             stroke={C.sand}
-            fill="#2a3428"
-            title="kambrosilur"
-            sub="sedimentær"
+            fill="#29261a"
+            title="Sedimentære bergarter"
+            sub="Sandstein · Leirskifer · Kalkstein"
           />
+
+          {/* 3. Metamorfe bergarter (nede til venstre) */}
           <Station
-            x={520}
-            y={294}
-            stroke={C.warm}
-            fill="#3a3428"
-            title="rombeporfyr"
-            sub="magmatisk dag"
+            x={50}
+            y={240}
+            w={270}
+            h={85}
+            stroke={C.teal}
+            fill="#152b33"
+            title="Metamorfe bergarter"
+            sub="Gneis · Skifer · Marmor"
           />
 
-          <Arrow d="M 312 78 L 508 78" marker={m.warm} color={C.warm} width={2.2} />
-          <Arrow d="M 508 100 L 312 100" marker={m.teal} color={C.teal} width={2.2} />
-          <Arrow d="M 185 146 L 185 284" marker={m.muted} color={C.sand} width={2.2} />
-          <Arrow d="M 215 284 L 215 146" marker={m.teal} color={C.teal} width={2.2} />
-          <Arrow d="M 635 146 L 635 284" marker={m.warm} color={C.warm} width={2.2} />
-          <Arrow d="M 665 284 L 665 146" marker={m.muted} color={C.muted} width={2.2} />
-          <Arrow d="M 312 328 L 508 328" marker={m.muted} color={C.sand} width={2.2} />
-          <Arrow d="M 508 350 L 312 350" marker={m.warm} color={C.warm} width={2.2} />
-          <Arrow d="M 300 146 L 520 284" marker={m.muted} color={C.muted} width={1.8} dash="6 5" />
-          <Arrow d="M 520 146 L 300 284" marker={m.muted} color={C.muted} width={1.8} dash="6 5" />
+          {/* 4. Magmakammer / smelte (nederst i midten på dypet) */}
+          <rect
+            x={335}
+            y={390}
+            width={190}
+            height={55}
+            rx="12"
+            fill="#3a1c14"
+            stroke={C.low}
+            strokeWidth="1.8"
+          />
+          <L x={430} y={416} fill={C.low} size={15} weight={700} anchor="middle">
+            Magma (smelte)
+          </L>
+          <L x={430} y={434} fill={C.muted} size={11} anchor="middle">
+            Mantel og dyp skorpe
+          </L>
 
-          <L x={410} y={68} fill={C.muted} size={12} anchor="middle">
-            metamorfose
+          {/* --- PILER OG PROSESSER --- */}
+
+          {/* Magma -> Magmatisk bergart: Avkjøling og krystallisasjon */}
+          <Arrow d="M 430 390 L 430 130" marker={m.warm} color={C.warm} width={3.2} />
+          <L x="442" y="270" fill={C.warm} size={12} weight={600}>
+            Størkning · krystallisasjon
           </L>
-          <L x={130} y={224} fill={C.muted} size={12} anchor="middle">
-            smelting
+
+          {/* Magmatisk -> Sedimentær: Forvitring, erosjon, transport, avsetning og diagenese */}
+          <Arrow d="M 565 85 C 690 110, 720 180, 685 235" marker={m.sand} color={C.sand} width={2.6} />
+          <L x="720" y="150" fill={C.sand} size={12} weight={600}>
+            Forvitring, erosjon
           </L>
-          <L x={410} y={400} fill={C.muted} size={12} anchor="middle">
-            forvitring · diagenese
+          <L x="720" y="168" fill={C.muted} size={11}>
+            &amp; diagenese (litifisering)
+          </L>
+
+          {/* Sedimentær -> Metamorf: Økende trykk og temperatur (metamorfose) */}
+          <Arrow d="M 530 280 L 330 280" marker={m.teal} color={C.teal} width={3} />
+          <L x="430" y="268" fill={C.teal} size={13} weight={700} anchor="middle">
+            Metamorfose
+          </L>
+          <L x="430" y="298" fill={C.muted} size={11} anchor="middle">
+            Trykk og temperatur (fast tilstand)
+          </L>
+
+          {/* Metamorf -> Magma: Fullstendig oppsmelting på stort dyp */}
+          <Arrow d="M 210 330 C 240 385, 290 415, 330 415" marker={m.low} color={C.low} width={2.8} />
+          <L x="225" y="380" fill={C.low} size={12} weight={600}>
+            Smelting på dypet
+          </L>
+
+          {/* Snarveier / kryssende prosesser */}
+          {/* Metamorf -> Sedimentær: Også metamorfe bergarter forvitrer når de heves til overflaten */}
+          <Arrow d="M 180 235 C 190 160, 500 160, 530 235" marker={m.sand} color={C.sand} width={2} dash="5 4" />
+          <L x="360" y="165" fill={C.sand} size={11} anchor="middle">
+            Heving, forvitring &amp; erosjon
+          </L>
+
+          {/* Magmatisk -> Metamorf: Magmatiske bergarter kan omdannes direkte */}
+          <Arrow d="M 300 85 C 180 110, 150 180, 175 235" marker={m.teal} color={C.teal} width={2.4} />
+          <L x="155" y="145" fill={C.teal} size={12} weight={600}>
+            Regionalmetamorfose
+          </L>
+          <L x="155" y="162" fill={C.muted} size={11}>
+            (Fjellkjedefolding)
+          </L>
+
+          {/* Sedimentær -> Magma: Direkte smelting ved subduksjon */}
+          <Arrow d="M 660 330 C 620 385, 570 415, 530 415" marker={m.low} color={C.low} width={2.4} dash="5 4" />
+          <L x="640" y="380" fill={C.low} size={12}>
+            Subduksjon &amp; smelting
           </L>
         </>
       )}

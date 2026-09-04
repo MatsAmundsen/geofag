@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { SpheresDiagram } from "@/components/diagrams/spheres";
+import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -202,6 +202,8 @@ function JordsystemenePage() {
       <p>
         Pinatubo-kjøling er år. Silikatforvitring er geologisk tid. Det er ikke samme vulkan–klima.
       </p>
+
+      <CarbonCycleDiagram />
 
       <Callout title="Kompetansemål">
         <p>{tema.maal}</p>

@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { BoundaryQuakesDiagram } from "@/components/diagrams/quakes";
+import {
+  BoundaryQuakesDiagram,
+  SeismogramDiagram,
+  VolcanoTypesDiagram,
+} from "@/components/diagrams/quakes";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -92,6 +96,8 @@ function VulkanerOgJordskjelvPage() {
         barn="Et mål på hvor mye energi skjelvet slapp. 5,4 i Oslofjorden 1904. Én enhet mer er omtrent tretti ganger mer energi."
       />
 
+      <SeismogramDiagram />
+
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Vulkaner</h2>
       <p>
         Magma dannes der mantelberg delvis smelter: ved rygger (dekompresjon), ved subduksjon (vann
@@ -103,6 +109,8 @@ function VulkanerOgJordskjelvPage() {
         ord="Pyroklastisk strøm"
         barn="En rasende blanding av glohet gass, aske og stein som renner nedover vulkanen. Raskere og farligere enn lava."
       />
+
+      <VolcanoTypesDiagram />
       <p>
         De fleste vulkaner sitter på plategrenser. Unntaket er hotspot. En langvarig, varm sone
         under platen leverer magma mens platen glir over. Hawaii-kjeden blir eldre og mer erodert

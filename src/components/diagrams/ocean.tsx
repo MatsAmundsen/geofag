@@ -31,32 +31,92 @@ export function OceanDriversDiagram() {
 export function EkmanDiagram() {
   return (
     <Diagram
-      title="Ekman-transport"
+      title="Ekman-transport og Ekman-spiralen"
       heading="Vinden peker én vei, vannet flytter seg 90° til høyre"
-      caption="Hver vannflak dreies av coriolis og bremses av laget under. Pilen roterer med dypet (Ekman-spiralen). Nettotransporten i laget er 90° til høyre for vinden på nordlig halvkule. Vestavind stabler derfor vann inn mot gyrenes midt."
-      viewBox="0 0 820 340"
+      caption="Vinden driver det øverste vannlaget, som bøyes ca. 45° til høyre av corioliseffekten på nordlig halvkule. Hvert underliggende lag trekkes med av friksjon, men bremses og bøyes enda lenger til høyre (Ekman-spiralen). Summeres bevegelsen ned gjennom hele laget (ca. 50–100 m dyp), blir nettotransporten nøyaktig 90° til høyre for vindretningen."
+      viewBox="0 0 840 370"
     >
       {(m) => (
         <>
-          <Arrow d="M 80 80 L 280 80" marker={m.warm} color={C.warm} width={3.4} />
-          <L x="80" y="64" fill={C.warm} size={14}>
-            vind (f.eks. vestavind →)
+          {/* Venstre side: Ekman-spiralen i profil */}
+          <L x="210" y="38" fill={C.fg} size={16} weight={700} anchor="middle">
+            Ekman-spiralen (lag for lag)
           </L>
-          <Arrow d="M 160 110 L 300 110" marker={m.teal} color={C.teal} width={2.6} />
-          <L x="310" y="116" fill={C.muted} size={13}>
-            overflatestrøm, ~45° til høyre
+
+          {/* 1. Vinden i overflaten */}
+          <Arrow d="M 60 75 L 280 75" marker={m.warm} color={C.warm} width={3.6} />
+          <L x="60" y="60" fill={C.warm} size={14} weight={600}>
+            Vind (f.eks. vestavind mot øst →)
           </L>
-          <Arrow d="M 160 150 L 250 190" marker={m.teal} color={C.teal} width={2.2} />
-          <Arrow d="M 160 200 L 200 250" marker={m.cold} color={C.cold} width={2} />
-          <L x="80" y="310" fill={C.muted} size={13}>
-            dypere
+
+          {/* Felles origo for spiralpilene */}
+          <circle cx="120" cy="115" r="5" fill={C.fg} />
+          <L x="60" y="120" fill={C.muted} size={12}>
+            Overflate:
           </L>
-          <Arrow d="M 500 80 L 500 250" marker={m.teal} color={C.teal} width={3.4} />
-          <L x="518" y="160" fill={C.teal} size={15}>
-            netto Ekman-transport
+
+          {/* 2. Overflatestrøm: ca 45° til høyre for vinden */}
+          <Arrow d="M 120 115 L 250 200" marker={m.teal} color={C.teal} width={3.2} />
+          <L x="262" y="195" fill={C.teal} size={14} weight={700}>
+            Overflatestrøm (ca. 45° til høyre)
           </L>
-          <L x="518" y="182" fill={C.muted} size={13}>
-            90° til høyre for vinden (NH)
+
+          {/* 3. Dypere lag 1 (~25 m): rotert ca 70°, kortere */}
+          <Arrow d="M 120 115 L 205 245" marker={m.cold} color={C.cold} width={2.4} />
+          <L x="215" y="248" fill={C.cold} size={12}>
+            ~25 m dyp (dreier mer)
+          </L>
+
+          {/* 4. Dypere lag 2 (~50 m): rotert 90° */}
+          <Arrow d="M 120 115 L 145 265" marker={m.cold} color={C.cold} width={2} />
+          <L x="150" y="278" fill={C.muted} size={11}>
+            ~50 m dyp (svakere)
+          </L>
+
+          {/* 5. Dypere lag 3 (~75 m): nesten motsatt rettet */}
+          <Arrow d="M 120 115 L 90 240" marker={m.muted} color={C.muted} width={1.6} />
+          <L x="50" y="255" fill={C.muted} size={11}>
+            ~75 m dyp
+          </L>
+
+          {/* Stiplet spiralbane som binder sammen pilspissene */}
+          <path
+            d="M 280 75 C 270 140, 250 200, 205 245 C 175 270, 130 275, 90 240"
+            fill="none"
+            stroke={C.teal}
+            strokeWidth="1.4"
+            strokeDasharray="4 3"
+            opacity="0.6"
+          />
+
+          <line x1="410" y1="40" x2="410" y2="330" stroke={C.dim} strokeDasharray="4 4" />
+
+          {/* Høyre side: Netto integrert Ekman-transport */}
+          <L x="620" y="38" fill={C.fg} size={16} weight={700} anchor="middle">
+            Netto vanntransport
+          </L>
+          <Arrow d="M 480 75 L 700 75" marker={m.warm} color={C.warm} width={2.8} />
+          <L x="590" y="60" fill={C.warm} size={13} anchor="middle">
+            Vindretning →
+          </L>
+
+          {/* Vinkelbue 90 grader */}
+          <path d="M 605 130 L 605 150 L 585 150" fill="none" stroke={C.teal} strokeWidth="1.5" />
+          <circle cx="595" cy="140" r="2.5" fill={C.teal} />
+
+          {/* Netto transportpil rett nedover (90 grader til høyre) */}
+          <Arrow d="M 585 95 L 585 285" marker={m.teal} color={C.teal} width={4.2} />
+          <L x="605" y="200" fill={C.teal} size={16} weight={700}>
+            Netto Ekman-transport
+          </L>
+          <L x="605" y="222" fill={C.fg} size={13} weight={600}>
+            Nøyaktig 90° til høyre (NH)
+          </L>
+          <L x="605" y="242" fill={C.muted} size={12}>
+            (90° til venstre på sørlig halvkule)
+          </L>
+          <L x="605" y="262" fill={C.muted} size={11}>
+            Stabler opp vann inne i gyrene $\rightarrow$ forhøyet havflate
           </L>
         </>
       )}

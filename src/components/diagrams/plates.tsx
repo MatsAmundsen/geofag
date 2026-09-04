@@ -4,50 +4,94 @@ import { Arrow, C, Diagram, L } from "./svg-kit";
 export function EarthLayersDiagram() {
   return (
     <Diagram
-      title="Jordas skall: litosfære og astenosfære"
+      title="Jordas skall: kontinental og oseanisk litosfære side om side, over astenosfæren"
       heading="Platene er litosfære — ikke bare skorpe"
-      caption="Litosfæren er skorpe pluss den øvre, stive mantelen. Under ligger astenosfæren: fast berg, men mykere slik at platene kan gli. Astenosfæren er ikke et magmaha. Kjernen er metall, ikke silikatmantel."
-      viewBox="0 0 820 400"
+      caption="Litosfæren er skorpe pluss den øvre, stive delen av mantelen. Kontinentalskorpen (granittisk, 30–50 km) er tykk og lett. Havbunnsskorpen (basaltisk, 5–7 km) er tynn og tung. Under begge ligger astenosfæren: fast bergart, men varm og duktil slik at platene kan gli oppå den."
+      viewBox="0 0 840 430"
     >
-      {() => (
+      {(m) => (
         <>
-          <rect x="40" y="36" width="740" height="44" fill="#4d5c55" />
-          <L x="56" y="64" fill={C.fg} size={15} weight={600}>
-            kontinentalskorpe · 30–50 km · lav tetthet
+          {/* Venstre: Kontinentallitosfære (x=40 til x=420) */}
+          {/* Kontinentalskorpe */}
+          <rect x="40" y="40" width="370" height="75" fill="#4d5c55" stroke={C.dim} />
+          <L x="56" y="70" fill={C.fg} size={15} weight={700}>
+            Kontinentalskorpe (30–50 km)
           </L>
-          <rect x="40" y="80" width="740" height="28" fill={C.sand} />
-          <L x="56" y="100" fill={C.bg} size={14} weight={600}>
-            havbunnsskorpe · 5–7 km · tettere
+          <L x="56" y="92" fill={C.sand} size={12}>
+            Granittisk · lav tetthet (ca. 2,7 g/cm³)
           </L>
-          <rect x="40" y="108" width="740" height="70" fill="#2a3943" />
-          <L x="56" y="140" fill={C.cold} size={15} weight={600}>
-            stiv øvre mantel
+
+          {/* Høyre: Oseanisk litosfære (x=430 til x=780) */}
+          {/* Havvann */}
+          <rect x="430" y="40" width="350" height="35" fill="#173142" />
+          <L x="446" y="62" fill={C.rain} size={13} weight={600}>
+            Hav / vannsøyle (ca. 4 km)
           </L>
-          <L x="56" y="162" fill={C.muted} size={13}>
-            inngår i platen
+
+          {/* Havbunnsskorpe */}
+          <rect x="430" y="75" width="350" height="40" fill="#384941" stroke={C.dim} />
+          <L x="446" y="96" fill={C.teal} size={14} weight={700}>
+            Havbunnsskorpe (5–7 km)
           </L>
-          <rect x="40" y="178" width="740" height="88" fill="#1a3038" />
-          <L x="56" y="214" fill={C.teal} size={15} weight={600}>
-            astenosfære
+          <L x="446" y="110" fill={C.muted} size={11}>
+            Basalt/gabbro · høyere tetthet (ca. 3,0 g/cm³)
           </L>
-          <L x="56" y="236" fill={C.muted} size={13}>
-            fast, men duktilt · platene glir her
+
+          {/* Stiv øvre mantel (litosfærisk mantel) under begge skorper */}
+          <rect x="40" y="115" width="370" height="65" fill="#24333d" stroke={C.dim} />
+          <rect x="430" y="115" width="350" height="65" fill="#24333d" stroke={C.dim} />
+          <L x="56" y="145" fill={C.cold} size={14} weight={600}>
+            Stiv litosfærisk mantel
           </L>
-          <rect x="40" y="266" width="740" height="56" fill="#152028" />
-          <L x="56" y="300" fill={C.muted} size={14}>
-            dypere mantel
+          <L x="446" y="145" fill={C.cold} size={14} weight={600}>
+            Stiv litosfærisk mantel
           </L>
-          <rect x="40" y="322" width="370" height="48" fill="#3a2a20" />
-          <L x="56" y="352" fill={C.warm} size={14}>
-            ytre kjerne · flytende jern
+
+          {/* Klammer / markører for litosfæren */}
+          <line x1="30" y1="40" x2="30" y2="180" stroke={C.warm} strokeWidth="2.5" />
+          <line x1="25" y1="40" x2="35" y2="40" stroke={C.warm} strokeWidth="2.5" />
+          <line x1="25" y1="180" x2="35" y2="180" stroke={C.warm} strokeWidth="2.5" />
+          <L x="20" y="115" fill={C.warm} size={12} weight={700} anchor="end">
+            Kontinentallitosfære (~150 km)
           </L>
-          <rect x="410" y="322" width="370" height="48" fill="#2a2218" />
-          <L x="426" y="352" fill={C.sand} size={14}>
-            indre kjerne · fast jern
+
+          <line x1="790" y1="75" x2="790" y2="180" stroke={C.teal} strokeWidth="2.5" />
+          <line x1="785" y1="75" x2="795" y2="75" stroke={C.teal} strokeWidth="2.5" />
+          <line x1="785" y1="180" x2="795" y2="180" stroke={C.teal} strokeWidth="2.5" />
+          <L x="800" y="132" fill={C.teal} size={12} weight={700}>
+            Oseanisk litosfære (~70–100 km)
           </L>
-          <line x1="620" y1="36" x2="620" y2="178" stroke={C.warm} strokeWidth="2" />
-          <L x="632" y="108" fill={C.warm} size={14} weight={600}>
-            litosfære = platen
+
+          {/* Astenosfæren under hele bredden */}
+          <rect x="40" y="185" width="740" height="85" fill="#182c38" stroke={C.teal} strokeDasharray="5 4" strokeWidth="1.2" />
+          <L x="420" y="218" fill={C.teal} size={16} weight={700} anchor="middle">
+            Astenosfære (øvre mantel · ca. 100–350 km dyp)
+          </L>
+          <L x="420" y="242" fill={C.muted} size={13} anchor="middle">
+            Fast bergart (peridotitt), men plastisk og duktil — her kan litosfæreplatene gli
+          </L>
+
+          {/* Dypere lag under astenosfæren */}
+          <rect x="40" y="275" width="740" height="50" fill="#152028" />
+          <L x="420" y="306" fill={C.muted} size={14} anchor="middle">
+            Nedre mantel (mesosfære · fast silikatmantel ned til 2900 km)
+          </L>
+
+          {/* Kjernen i bunn */}
+          <rect x="40" y="330" width="365" height="55" fill="#3a251c" rx="4" />
+          <L x="220" y="355" fill={C.warm} size={14} weight={600} anchor="middle">
+            Ytre kjerne (2900–5150 km)
+          </L>
+          <L x="220" y="373" fill={C.muted} size={11} anchor="middle">
+            Flytende jern/nikkel · genererer jordas magnetfelt
+          </L>
+
+          <rect x="415" y="330" width="365" height="55" fill="#2c2016" rx="4" />
+          <L x="600" y="355" fill={C.sand} size={14} weight={600} anchor="middle">
+            Indre kjerne (5150–6371 km)
+          </L>
+          <L x="600" y="373" fill={C.muted} size={11} anchor="middle">
+            Fast jern/nikkel · enormt trykk holder det fast
           </L>
         </>
       )}
@@ -108,47 +152,84 @@ export function ConvectionDiagram() {
 export function SolidusDiagram() {
   return (
     <Diagram
-      title="Solidus og adiabat: hvorfor trykkfall gir smelte"
-      heading="Smeltepunktet synker raskere enn temperaturen når berg stiger"
-      caption="Solidus er temperaturen der berg begynner å smelte. Den stiger med trykk. En mantelpakke som stiger, følger nesten en adiabat: T faller lite. Ved grunt nok dyp krysser banen solidus — delvis smelte uten at noe er blitt varmere."
-      viewBox="0 0 820 400"
+      title="Solidus og adiabat: hvorfor trykkfall gir dekompresjonssmelting"
+      heading="Smeltepunktet faller raskere enn temperaturen når mantelen stiger"
+      caption="Solidus er temperaturen der en bergart begynner å smelte. Fordi trykket øker innover i jorda, stiger solidustemperaturen med dypet. På stort dyp er mantelen varm (ca. 1350 °C), men trykket holder den fast (under solidus). Når skorpen tynnes (rift/midthavsrygg), stiger mantelen adiabatisk (mister nesten ikke varme). Ved grunt dyp krysser banen solidus, og vi får delvis smelte (dekompresjonssmelting) uten ekstern oppvarming."
+      viewBox="0 0 840 430"
     >
-      {() => (
+      {(m) => (
         <>
-          <line x1="90" y1="340" x2="760" y2="340" stroke={C.dim} strokeWidth="2" />
-          <line x1="90" y1="340" x2="90" y2="40" stroke={C.dim} strokeWidth="2" />
-          <L x="400" y="372" fill={C.muted} size={14} anchor="middle">
-            temperatur →
+          {/* Akser */}
+          <line x1="90" y1="360" x2="760" y2="360" stroke={C.dim} strokeWidth="2" />
+          <line x1="90" y1="360" x2="90" y2="40" stroke={C.dim} strokeWidth="2" />
+          <L x="420" y="392" fill={C.fg} size={14} weight={600} anchor="middle">
+            Temperatur (°C) →
           </L>
-          <L x="36" y="200" fill={C.muted} size={14}>
-            dyp
+          <L x="40" y="60" fill={C.muted} size={13}>
+            0 km (overflate)
           </L>
-          <L x="36" y="218" fill={C.muted} size={13}>
-            trykk
+          <L x="40" y="195" fill={C.muted} size={13}>
+            50 km dyp
           </L>
-          <path d="M 210 320 L 620 70" fill="none" stroke={C.low} strokeWidth="3" />
-          <L x="630" y="78" fill={C.low} size={14} weight={600}>
-            tørr solidus
+          <L x="40" y="335" fill={C.muted} size={13}>
+            100 km (høyt trykk)
           </L>
-          <path d="M 280 320 L 340 70" fill="none" stroke={C.warm} strokeWidth="3" />
-          <L x="348" y="88" fill={C.warm} size={14} weight={600}>
-            adiabat
+
+          {/* Smeltesone (delvis smelte-felt til høyre for solidus) */}
+          <path
+            d="M 280 80 L 620 330 L 740 330 L 740 80 Z"
+            fill={C.low}
+            opacity="0.15"
+          />
+          <L x="640" y="140" fill={C.low} size={15} weight={700}>
+            Delvis smelte
           </L>
-          <circle cx="318" cy="168" r="7" fill={C.warm} />
-          <L x="332" y="158" fill={C.fg} size={14} weight={600}>
-            kryssing: smelte starter
+          <L x="640" y="160" fill={C.muted} size={12}>
+            (Magma dannes her: basalt)
           </L>
-          <L x="120" y="300" fill={C.muted} size={13}>
-            fast
+
+          {/* Fast felt til venstre for solidus */}
+          <L x="180" y="270" fill={C.cold} size={16} weight={700}>
+            Fast bergart
           </L>
-          <L x="520" y="280" fill={C.muted} size={13}>
-            delvis smelte
+          <L x="180" y="292" fill={C.muted} size={12}>
+            Peridotitt i øvre mantel
           </L>
-          <L x="120" y="54" fill={C.muted} size={13}>
-            grunt
+
+          {/* Tørr solidus kurve: ved grunt dyp (y=80, 20 km) er T_solidus lav (~1100 °C, x=280).
+              Ved dypt nivå (y=330, 100 km) er T_solidus høy (~1450 °C, x=620). */}
+          <path d="M 280 80 L 620 330" fill="none" stroke={C.low} strokeWidth="3.2" />
+          <L x="270" y="70" fill={C.low} size={15} weight={700} anchor="middle">
+            Tørr peridotitt-solidus
           </L>
-          <L x="120" y="328" fill={C.muted} size={13}>
-            dypt
+          <L x="280" y="98" fill={C.muted} size={11}>
+            ca. 1100 °C
+          </L>
+          <L x="620" y="348" fill={C.muted} size={11} anchor="middle">
+            ca. 1450 °C
+          </L>
+
+          {/* Oppstigende manteladiabat:
+              Starter på 100 km dyp (y=330) ved ca. 1350 °C (x=500).
+              Stiger mot overflaten (y=80) med nesten konstant temperatur (~1300 °C ved x=450). */}
+          <Arrow d="M 500 330 L 455 80" marker={m.warm} color={C.warm} width={3.6} />
+          <L x="515" y="315" fill={C.warm} size={14} weight={600}>
+            Manteladiabat (~1350 °C)
+          </L>
+          <L x="515" y="332" fill={C.muted} size={12}>
+            Fast peridotitt stiger ved rifting
+          </L>
+
+          {/* Kryssingspunkt (dekompresjonssmelting starter) */}
+          <circle cx="468" cy="216" r="8" fill={C.warm} stroke={C.fg} strokeWidth="2" />
+          <L x="485" y="210" fill={C.warm} size={15} weight={700}>
+            Kryssingspunkt (ca. 60 km dyp)
+          </L>
+          <L x="485" y="230" fill={C.fg} size={13} weight={600}>
+            Dekompresjonssmelting starter!
+          </L>
+          <L x="485" y="247" fill={C.muted} size={11}>
+            T &gt; T_solidus når trykket faller
           </L>
         </>
       )}

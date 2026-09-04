@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import {
+  ClimateBeltsDiagram,
+  HadleyCloseupDiagram,
+  InsolationDiagram,
+  JetStreamDiagram,
+  OneVsThreeCellsDiagram,
+  PolarFrontNorwayDiagram,
+  SurfaceWindsDiagram,
+  WindCellsDiagram,
+} from "@/components/diagrams";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
@@ -51,27 +61,7 @@ function VindsystemetPage() {
         barn="Forskjellen mellom energien jorda tar imot fra sola, og varmen den sender ut igjen. Globalt går det i null over tid. Lokalt gjør det ikke det — og da må energien flyttes."
       />
 
-      <PhotoFigure
-        src="/images/fig-innstraling.jpg"
-        alt="Jorda i sollys: ekvator lys og varm, polene i blå skygge"
-        heading="Ujevn oppvarming"
-        caption="Sola skinner på hele dagsiden, men treffer mest effektivt der strålene står brattest — rundt ekvator."
-        arrows={[
-          { d: "M 10 28 L 28 30", tone: "warm", width: 1.4 },
-          { d: "M 12 22 L 32 24", tone: "warm", width: 1.05 },
-          { d: "M 12 34 L 30 38", tone: "warm", width: 1.05 },
-        ]}
-        marks={[
-          { x: 4, y: 18, n: "1", text: "Sola", tone: "warm" },
-          { x: 48, y: 48, n: "2", text: "Ekvator: energioverskudd", tone: "warm" },
-          { x: 62, y: 16, n: "3", text: "Pol: underskudd", tone: "cold", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Sola treffer fra venstre — dagsida lyser." },
-          { n: "2", label: "Ekvator: høy sol, lite areal, energioverskudd." },
-          { n: "3", label: "Polene: skrå sol, stort areal, energiunderskudd." },
-        ]}
-      />
+      <InsolationDiagram />
 
       <p>
         Varm luft ved ekvator utvider seg, blir lettere og stiger. Det gir lavtrykk. Når lufta
@@ -98,43 +88,8 @@ function VindsystemetPage() {
         barn="Et kretsløp som ikke drives av at bakken under er varmest. Ferrel-cellen drives av stormene, ikke av soloppvarming der Norge ligger."
       />
 
-      <PhotoFigure
-        src="/images/fig-celler.jpg"
-        alt="Jordskive fra ekvator til nordpolen med tre luftceller og synlig bakke nederst"
-        heading="Slik er det med rotasjon: tre celler"
-        caption="Hele skiva skal synes: bakken nederst, cellene over. Følg lufta i sløyfer — opp, bort, ned, tilbake."
-        fit="contain"
-        arrows={[
-          { d: "M 18 38 L 18 20", tone: "warm", width: 1.3 },
-          { d: "M 18 20 L 32 22", tone: "warm", width: 1.1 },
-          { d: "M 34 20 L 34 38", tone: "warm", width: 1.2 },
-          { d: "M 34 40 L 20 40", tone: "warm", width: 1.05 },
-          { d: "M 52 38 L 52 22", tone: "teal", width: 1.15 },
-          { d: "M 78 18 L 78 32", tone: "cold", width: 1.15 },
-        ]}
-        marks={[
-          { x: 4, y: 12, text: "Ekvator", tone: "warm" },
-          { x: 30, y: 10, text: "30°", tone: "warm" },
-          { x: 52, y: 8, text: "60°", tone: "teal" },
-          { x: 78, y: 10, text: "90°", tone: "cold" },
-          { x: 8, y: 30, n: "1", text: "Hadley", tone: "warm" },
-          { x: 40, y: 28, n: "2", text: "Ferrel · Norge", tone: "teal" },
-          { x: 68, y: 22, n: "3", text: "Polar", tone: "cold" },
-        ]}
-        points={[
-          { n: "1", label: "Hadley (0–30°): opp ved ekvator, ned over ørkenen. Tropisk motor." },
-          {
-            n: "2",
-            label:
-              "Ferrel (30–60°): ikke en egen motor. Den drives av vandrende lavtrykk. Vestavind. Her ligger Norge.",
-          },
-          {
-            n: "3",
-            label:
-              "Polar (60–90°): kald luft synker over polen og møter mildluft ved polarfronten.",
-          },
-        ]}
-      />
+      <OneVsThreeCellsDiagram />
+      <WindCellsDiagram />
       <OrdBoks
         ord="Hadley-, Ferrel- og polarcellen"
         barn="Tre store, gjennomsnittlige kretsløp i lufta på hver halvkule. De er et middelbilde over uker og måneder — ikke tre faste rør du ser på satellittbildet i dag."
@@ -160,33 +115,8 @@ function VindsystemetPage() {
         barn="Stødig vind mot ekvator mellom ørkenbeltet og det tropiske regnbelte. I nord kommer den fra nordøst, i sør fra sørøst."
       />
 
-      <PhotoPair
-        heading="Hvor er vi? Hadley-cellen i det globale mønsteret"
-        caption="Venstre: den tropiske sløyfa lyser. Høyre: det du får ut av den — byger der luft stiger, ørken der den synker. To landskap, samme celle."
-        left={{
-          src: "/images/fig-hadley-kontekst.jpg",
-          alt: "Jordskive der Hadley-cellen lyser og de andre cellene er dempet",
-          title: "Hadley er den venstre, tropiske sløyfa",
-          arrows: [
-            { d: "M 18 38 L 18 20", tone: "warm", width: 1.25 },
-            { d: "M 34 20 L 34 38", tone: "warm", width: 1.2 },
-          ],
-          marks: [{ x: 6, y: 14, n: "1", text: "Her er vi", tone: "warm" }],
-        }}
-        right={{
-          src: "/images/fig-hadley.jpg",
-          alt: "Regnskog og tordenvær til venstre, Sahara-ørken til høyre",
-          title: "Samme sløyfe, to utfall på bakken",
-          arrows: [
-            { d: "M 22 46 L 22 18", tone: "low", width: 1.25 },
-            { d: "M 78 12 L 78 38", tone: "warm", width: 1.25 },
-          ],
-          marks: [
-            { x: 4, y: 14, n: "2", text: "Stiger → regn", tone: "low" },
-            { x: 58, y: 14, n: "3", text: "Synker → ørken", tone: "warm" },
-          ],
-        }}
-      />
+      <HadleyCloseupDiagram />
+      <SurfaceWindsDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Klimabeltene er cellene skrevet på bakken
@@ -210,24 +140,7 @@ function VindsystemetPage() {
         barn="Et belte av typisk klima rundt jorda, styrt av om lufta i gjennomsnitt stiger eller synker. Vær er det som skjer i dag. Klima er mønsteret over årtier."
       />
 
-      <PhotoFigure
-        src="/images/fig-belter.jpg"
-        alt="Landskap fra tropisk regnskog via ørken og norskekyst til polaris, venstre mot høyre"
-        heading="En vandring fra ekvator til polen"
-        caption="Venstre er tropene, høyre er isen. Mellom dem: ørkenen der Hadley synker, og det grønne stormbeltet der Norge ligger."
-        marks={[
-          { x: 2, y: 14, n: "1", text: "0° regnskog", tone: "teal" },
-          { x: 28, y: 14, n: "2", text: "30° ørken", tone: "warm" },
-          { x: 52, y: 12, n: "3", text: "60° Norge", tone: "cold" },
-          { x: 78, y: 14, n: "4", text: "90° is", tone: "fg" },
-        ]}
-        points={[
-          { n: "1", label: "Stigende luft i Hadley. Tropisk regnbelte." },
-          { n: "2", label: "Synkende luft i Hadley. Subtropisk ørken." },
-          { n: "3", label: "Vestavind og polarfront. Ferrel-sonen — Norge." },
-          { n: "4", label: "Polar høytrykk. Kald, tørr luft og is." },
-        ]}
-      />
+      <ClimateBeltsDiagram />
 
       <PhotoFigure
         src="/images/fig-belter-globus.jpg"
@@ -281,27 +194,7 @@ function VindsystemetPage() {
         barn="Nedbør som kommer fordi luft tvinges opp av fjell. Vestlandet er læreboka. Leside er baksiden, der det ofte er tørrere."
       />
 
-      <PhotoFigure
-        src="/images/fig-vestlandet.jpg"
-        alt="Regn og skyer mot norske vestfjell, klarere innland mot øst"
-        heading="Vestavind mot Langfjella"
-        caption="Havet til venstre, innlandet til høyre. Fjellet tvinger lufta opp. Vestlandet får regnet. Østlandet ligger oftere i leside."
-        arrows={[
-          { d: "M 8 32 L 36 28", tone: "teal", width: 1.3 },
-          { d: "M 40 36 L 40 16", tone: "cold", width: 1.2 },
-          { d: "M 58 22 L 78 28", tone: "warm", width: 1.1, dash: true },
-        ]}
-        marks={[
-          { x: 4, y: 16, n: "1", text: "Fuktig vestavind", tone: "teal" },
-          { x: 38, y: 12, n: "2", text: "Loside · regn", tone: "cold" },
-          { x: 62, y: 18, n: "3", text: "Leside · tørrere", tone: "warm" },
-        ]}
-        points={[
-          { n: "1", label: "Fuktig luft fra Atlanteren treffer kysten." },
-          { n: "2", label: "Fjellet løfter. Vestlandet vått." },
-          { n: "3", label: "Østlandet oftere i regnskygge." },
-        ]}
-      />
+      <PolarFrontNorwayDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Jetstrømmen</h2>
       <p>
@@ -319,15 +212,7 @@ function VindsystemetPage() {
         barn="En elv av sterk vestlig vind i 8–12 km høyde. Polarfrontjeten er den som betyr mest for været i Norge."
       />
 
-      <PhotoFigure
-        src="/images/fig-jet.jpg"
-        alt="Tynn, rask skyelv høyt over Atlanteren mot jordas krumning"
-        heading="En elv av luft"
-        caption="Jetstrømmen er smal, høy og rask. Den er ikke været du kjenner i ansiktet — men den styrer det."
-        arrows={[{ d: "M 12 34 L 62 28", tone: "fg", width: 1.35 }]}
-        marks={[{ x: 14, y: 22, n: "1", text: "Polarfrontjeten, vest → øst", tone: "fg" }]}
-        points={[{ n: "1", label: "Vestavind i tropopausen, over polarfronten." }]}
-      />
+      <JetStreamDiagram />
 
       <Callout title="Til eksamen og Norge">
         <p>

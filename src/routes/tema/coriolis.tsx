@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import {
   CoriolisDiagram,
+  CoriolisLatitudeDiagram,
   CoriolisScaleDiagram,
   CycloneSpinDiagram,
   NaoDiagram,
@@ -149,6 +150,8 @@ function CoriolisPage() {
         ord="Jetstrøm"
         barn="Et smalt belte med sterk vestavind høyt oppe. Polarfrontjeten ligger der temperaturkontrasten er sterkest. Den subtropiske jetstrømmen ligger nærmere 30°."
       />
+
+      <CoriolisLatitudeDiagram />
 
       <p>
         Coriolis er sterkere mot polene. Luft som går nordover, dreies mer og mer mot øst. Luft som

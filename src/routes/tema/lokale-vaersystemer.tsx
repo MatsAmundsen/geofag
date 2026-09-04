@@ -4,6 +4,7 @@ import {
   PolarFrontCycloneSteps,
   ValleyWindDiagram,
   SeaBreezeLandBreezeDiagram,
+  FoehnAdiabaticDiagram,
 } from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -70,6 +71,7 @@ function LokalePage() {
         varmen. Full gjennomgang ligger under{" "}
         <Link to="/tema/hoytrykk-lavtrykk" className="text-primary underline-offset-2 hover:underline">høytrykk og lavtrykk</Link>.
       </p>
+      <FoehnAdiabaticDiagram />
       <OrdBoks ord="Føn" barn="Varm, tørr lesidevind. Vannet forlot luften som regn. Varmen ble igjen." />
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>

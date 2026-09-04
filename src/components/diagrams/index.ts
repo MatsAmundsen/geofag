@@ -52,6 +52,7 @@ export {
   NegativeWalkerDiagram,
   NeutralIodDiagram,
 } from "./iod";
+export { EnsoComparisonDiagram } from "./enso";
 export {
   BoundaryOverviewDiagram,
   CollisionDiagram,
@@ -85,23 +86,37 @@ export {
   PrecessionDetailDiagram,
   Sommersol65NDiagram,
 } from "./paleo";
-export { BoundaryQuakesDiagram } from "./quakes";
+export {
+  BoundaryQuakesDiagram,
+  SeismogramDiagram,
+  VolcanoTypesDiagram,
+} from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
-export { SpheresDiagram } from "./spheres";
+export { CarbonCycleDiagram, SpheresDiagram } from "./spheres";
 export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
-export { FeltbokDiagram, FraBergartTilBruddDiagram } from "./ressurser";
+export {
+  FeltbokDiagram,
+  FraBergartTilBruddDiagram,
+  PetroleumSystemDiagram,
+} from "./ressurser";
 export {
   SynopticMapDiagram,
   TwentyFourHourDiagram,
   PolarFrontCycloneSteps,
   ValleyWindDiagram,
+  FoehnAdiabaticDiagram,
+  FrontCrossSectionDiagram,
+  HurricaneStructureDiagram,
+  PolarLowDiagram,
 } from "./weather";
 export { EnergySourcesDiagram, WindPowerTradeoffDiagram } from "./energy";
 export { AssimilationDiagram, EnsembleRibbonDiagram } from "./models-extra";
 export {
-  RelativeDatingDiagram,
-  GrainSizeDistributionDiagram,
+  BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,
+  GrainSizeDistributionDiagram,
+  HjulstromDiagram,
+  RelativeDatingDiagram,
 } from "./geology-extra";
 export {
   GlacierMassBalanceDiagram,

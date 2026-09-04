@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { EnsoComparisonDiagram } from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -81,23 +82,7 @@ function EnsoPage() {
         nedsynking i øst og passatvinder vestover ved overflaten — kalles <strong>Walker-sirkulasjonen</strong>.
       </p>
 
-      <PhotoFigure
-        src="/images/fig-enso.jpg"
-        alt="Satellittbilde av det tropiske Stillehavet med skydannelse over det varme bassenget"
-        heading="Walker-sirkulasjonen under normale forhold"
-        caption="Passatene dytter varmt vann mot vest. Varmt vann i vest gir oppstigning og regn. Kaldt oppvellingsvann i øst gir tørre forhold utenfor Sør-Amerika."
-        arrows={[{ d: "M 78 32 L 28 28", tone: "teal", width: 1.3 }]}
-        marks={[
-          { x: 58, y: 12, n: "1", text: "Passatvinder mot vest", tone: "teal" },
-          { x: 8, y: 48, n: "2", text: "Varmt basseng & konveksjon", tone: "warm" },
-          { x: 80, y: 55, n: "3", text: "Oppvelling av kaldt vann", tone: "cold" },
-        ]}
-        points={[
-          { n: "1", label: "Passatvinden stabler opp overflatevann i vest (sjønivået er opptil 0,5 m høyere der)." },
-          { n: "2", label: "Intens fordamping og dyp konveksjon over Indonesia." },
-          { n: "3", label: "Næringsrikt, kaldt dypvann gir verdens rikeste fiskerier utenfor Peru." },
-        ]}
-      />
+      <EnsoComparisonDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         El Niño: Når systemet snur

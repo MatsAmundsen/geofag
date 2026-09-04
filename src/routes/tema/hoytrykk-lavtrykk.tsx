@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { SeaBreezeDiagram } from "@/components/diagrams";
+import { FoehnAdiabaticDiagram, SeaBreezeDiagram } from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -368,39 +368,7 @@ function TrykkPage() {
         kartet: da er det Vestlandet som får føn.
       </p>
 
-      <PhotoFigure
-        src="/images/fig-fon.jpg"
-        alt="Vestavind mot Langfjella: regn og skyer i lo til venstre, sol og tørr dal i le til høyre"
-        heading="Føn: nedbør i lo, varm og tørr i le"
-        caption="Følg én luftpakke fra venstre mot høyre. Opp losiden: den avkjøles, dampen kondenserer, og kondensasjonen varmer luften mens regnet faller ut på Vestlandet. Over kammen er vannet borte, men varmen er igjen. Ned lesiden: ingen dråper å fordampe, så oppvarmingen blir stående. Den lander varmere og tørrere enn den startet."
-        arrows={[
-          { d: "M 16 44 L 36 22", tone: "low", width: 1.3 },
-          { d: "M 39 21 L 54 17", tone: "fg", width: 1.1, dash: true },
-          { d: "M 57 18 L 78 38", tone: "warm", width: 1.35 },
-        ]}
-        marks={[
-          { x: 4, y: 20, n: "1", text: "Loside · opp, regn faller", tone: "low" },
-          { x: 47, y: 22, n: "2", text: "Vannet borte, varmen igjen", tone: "fg", align: "center" },
-          { x: 96, y: 54, n: "3", text: "Leside · varm og tørr", tone: "warm", align: "right" },
-        ]}
-        points={[
-          {
-            n: "1",
-            label:
-              "Luften stiger og avkjøles. Dampen kondenserer, kondensasjonen varmer luften, og regnet faller på Vestlandet.",
-          },
-          {
-            n: "2",
-            label:
-              "Byttehandelen: vannet forlot luften som regn, men varmen den fikk, er fortsatt der.",
-          },
-          {
-            n: "3",
-            label:
-              "Ingen dråper å fordampe på vei ned, så oppvarmingen blir stående. Østerdalen og Gudbrandsdalen får føn.",
-          },
-        ]}
-      />
+      <FoehnAdiabaticDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Katabatisk vind</h2>
       <p>

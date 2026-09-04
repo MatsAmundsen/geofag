@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { SynopticMapDiagram, TwentyFourHourDiagram } from "@/components/diagrams/weather";
+import {
+  SynopticMapDiagram,
+  TwentyFourHourDiagram,
+  FrontCrossSectionDiagram,
+} from "@/components/diagrams/weather";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -61,6 +65,7 @@ function VaerkartPage() {
         luft graver under varm. Stigningen er brattere, bygene kortere og hardere. Okklusjon:
         kaldfronten har tatt igjen varmfronten. Den varme sektoren løftes av bakken.
       </p>
+      <FrontCrossSectionDiagram />
       <OrdBoks ord="Varm sektor" barn="Den milde luften mellom varmfront og kaldfront i en ung polarfrontsyklon." />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">24 timer fram</h2>
       <p>

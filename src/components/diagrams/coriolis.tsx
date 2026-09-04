@@ -89,6 +89,7 @@ export function CoriolisDiagram() {
             Sørlig halvkule
           </L>
           <line x1="420" y1="50" x2="420" y2="300" stroke={C.dim} />
+          {/* Nordlig halvkule: bevegelse mot høyre (+x) bøyes til HØYRE i fartsretningen (nedover, +y) */}
           <circle cx="90" cy="165" r="26" fill="none" stroke={C.teal} strokeWidth="2.2" />
           <L x="90" y="171" fill={C.teal} size={16} anchor="middle">
             H
@@ -98,14 +99,15 @@ export function CoriolisDiagram() {
             L
           </L>
           <Arrow d="M 118 165 L 312 165" marker={m.muted} color={C.muted} width={1.8} dash="6 5" />
-          <L x="215" y="154" fill={C.muted} size={12} anchor="middle">
-            trykkgradient
+          <L x="215" y="152" fill={C.muted} size={12} anchor="middle">
+            trykkgradientkraft (rett mot L)
           </L>
-          <Arrow d="M 118 165 C 190 165, 240 88, 318 112" marker={m.teal} color={C.teal} width={3} />
-          <L x="215" y="250" fill={C.teal} size={14} anchor="middle">
-            avbøyd til høyre
+          <Arrow d="M 118 165 C 190 165, 240 242, 318 218" marker={m.teal} color={C.teal} width={3.2} />
+          <L x="215" y="255" fill={C.teal} size={14} weight={600} anchor="middle">
+            avbøyd til høyre (NH)
           </L>
 
+          {/* Sørlig halvkule: bevegelse mot høyre (+x) bøyes til VENSTRE i fartsretningen (oppover, -y) */}
           <circle cx="510" cy="165" r="26" fill="none" stroke={C.teal} strokeWidth="2.2" />
           <L x="510" y="171" fill={C.teal} size={16} anchor="middle">
             H
@@ -115,9 +117,12 @@ export function CoriolisDiagram() {
             L
           </L>
           <Arrow d="M 538 165 L 732 165" marker={m.muted} color={C.muted} width={1.8} dash="6 5" />
-          <Arrow d="M 538 165 C 610 165, 660 242, 738 218" marker={m.teal} color={C.teal} width={3} />
-          <L x="630" y="250" fill={C.teal} size={14} anchor="middle">
-            avbøyd til venstre
+          <L x="635" y="152" fill={C.muted} size={12} anchor="middle">
+            trykkgradientkraft (rett mot L)
+          </L>
+          <Arrow d="M 538 165 C 610 165, 660 88, 738 112" marker={m.teal} color={C.teal} width={3.2} />
+          <L x="635" y="78" fill={C.teal} size={14} weight={600} anchor="middle">
+            avbøyd til venstre (SH)
           </L>
         </>
       )}

@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
+import {
+  FraBergartTilBruddDiagram,
+  PetroleumSystemDiagram,
+} from "@/components/diagrams/ressurser";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -73,6 +76,8 @@ function GeologiskeRessurserPage() {
         barn="Knust fjell: gneis, granitt, kvartsitt, gabbro eller syenitt. Samfunnets største mineraluttak i volum. Ikke fornybart på menneskelig tidsskala."
       />
 
+      <FraBergartTilBruddDiagram />
+
       <p>
         Olje og gass er et petroleumssystem. Fem brikker må ligge: kildebergart, migrasjon,
         reservoar, felle og takbergart, pluss tid og temperatur. Kilden er organisk rik skifer. På
@@ -85,7 +90,8 @@ function GeologiskeRessurserPage() {
         Ekofisk ble påvist i 1969. Reservoaret er oppsprukket kritt på om lag 3000 m
         (Sokkeldirektoratet, u.å.). Olje kommer ikke av dinosaurer. Hovedkilden er marint plankton.
       </p>
-      <FraBergartTilBruddDiagram />
+
+      <PetroleumSystemDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Kartlegging og utvinning

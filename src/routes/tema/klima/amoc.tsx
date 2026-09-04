@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { AmocDiagram, DensityDiagram } from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -79,26 +80,7 @@ function AmocPage() {
         </li>
       </ul>
 
-      <PhotoFigure
-        src="/images/fig-amoc.jpg"
-        alt="Skisse av AMOC-sirkulasjonen med overflatestrøm og dypvannsdannelse"
-        heading="AMOC: Havets vertikale transportbånd"
-        caption="Varmt overflatevann avgir varme til atmosfæren over Norskehavet. Det tunge, kalde vannet synker og returnerer i mørket mot Sørishavet."
-        arrows={[
-          { d: "M 22 22 L 58 16", tone: "warm", width: 1.3 },
-          { d: "M 70 42 L 28 48", tone: "cold", width: 1.3 },
-        ]}
-        marks={[
-          { x: 8, y: 12, n: "1", text: "Varmt salt overflatevann", tone: "warm" },
-          { x: 55, y: 15, n: "2", text: "Dypvannsdannelse", tone: "cold" },
-          { x: 8, y: 50, n: "3", text: "Kald dypstrøm (NADW)", tone: "cold" },
-        ]}
-        points={[
-          { n: "1", label: "Frakter ca. 1,3 petawatt (10¹⁵ W) varme nordover." },
-          { n: "2", label: "Konveksjon i Grønlandshavet, Norskehavet og Labradorhavet." },
-          { n: "3", label: "Tetthetsdrevet returstrøm som fyller de dype havbassengene." },
-        ]}
-      />
+      <AmocDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Mekanismen: Hvorfor synker vannet?
@@ -107,6 +89,7 @@ function AmocPage() {
         Havvannets tetthet styres av to faktorer: <strong>temperatur</strong> (kaldt vann er tyngre enn
         varmt vann) og <strong>saltholdighet</strong> (salt vann er tyngre enn ferskvann).
       </p>
+      <DensityDiagram />
       <p>
         Når overflatevannet strømmer nordover, fordamper mye fuktighet, noe som gjør vannet relativt salt.
         Når dette salte vannet når de subpolare områdene om vinteren, møter det iskald arktisk luft.

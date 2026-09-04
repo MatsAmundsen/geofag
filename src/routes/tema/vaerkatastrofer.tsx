@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { HurricaneSpinModel } from "@/components/models/hurricane-spin-model";
+import { HurricaneStructureDiagram, PolarLowDiagram } from "@/components/diagrams";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -99,6 +100,8 @@ function KatastroferPage() {
         senteret med synkende luft.
       </p>
 
+      <HurricaneStructureDiagram />
+
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Norges stormer er noe annet
       </h2>
@@ -133,6 +136,17 @@ function KatastroferPage() {
           { n: "3", label: "Frontbåndet og vinden treffer kysten." },
         ]}
       />
+
+      <h3 className="pt-2 font-display text-xl font-medium tracking-tight">
+        Polare lavtrykk – arktiske mini-orkaner
+      </h3>
+      <p>
+        I Norskehavet og Barentshavet om vinteren oppstår en særegen og fryktet stormtype: polare lavtrykk.
+        Når isnende kald arktisk luft blåser ut over det varme havet (kaldluftsutbrudd), oppstår
+        kraftig vertikal ustabilitet og konveksjon. Disse små, intense lavtrykkene har ofte spiralbånd og
+        et skyfritt øye, og gir plutselig storm og tette snøbyger.
+      </p>
+      <PolarLowDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Når fjellet tvinger luften opp

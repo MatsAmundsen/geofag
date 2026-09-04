@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { RockCycleDiagram, ValleyCrossSectionDiagram } from "@/components/diagrams/bergarter";
-import { GrainSizeDistributionDiagram, RelativeDatingDiagram } from "@/components/diagrams/geology-extra";
+import {
+  BowenReactionSeriesDiagram,
+  GrainSizeDistributionDiagram,
+  HjulstromDiagram,
+  RelativeDatingDiagram,
+} from "@/components/diagrams/geology-extra";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -81,6 +86,8 @@ function BergarterOgLandformerPage() {
         Oslofeltets signatur.
       </p>
       <OrdBoks ord="Magmatisk" barn="Størknet magma eller lava. Dyp nede, dag oppe." />
+
+      <BowenReactionSeriesDiagram />
       <p>
         Sedimentær bergart kommer av fragmenter, utfelling eller organismer. Kambrosilur i
         Oslofeltet veksler mellom leirskifer og kalkstein. Kalkstein bruser med fortynnet saltsyre.
@@ -148,6 +155,7 @@ function BergarterOgLandformerPage() {
         sand — grus, ikke «jord» som sekk.
       </p>
       <GrainSizeDistributionDiagram />
+      <HjulstromDiagram />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">U-dal og V-dal</h2>
       <p>

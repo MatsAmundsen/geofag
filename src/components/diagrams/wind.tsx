@@ -318,17 +318,17 @@ export function SurfaceWindsDiagram() {
     <Diagram
       title="Overflatevinder på nordlig halvkule"
       heading="Tre vindbelter, tre retninger"
-      caption="Passatene blåser mot ekvator, men coriolis dreier dem til nordøstpassat. Mellom 30° og 60° dominerer vestavind. Innenfor polarcellen blåser polare østavinder. Norge ligger i vestavindsbeltet."
+      caption="Passatene blåser mot ekvator, men coriolis dreier dem til nordøstpassat (fra nordøst mot sørvest). Mellom 30° og 60° dominerer vestavinden (fra vest mot øst) som treffer Norge. Innenfor polarcellen blåser polare østavinder (fra øst mot vest). Vinden har navn etter retningen den kommer fra."
       viewBox="0 0 820 360"
     >
       {(m) => (
         <>
           <rect x="90" y="40" width="640" height="260" fill="#122026" rx="8" />
-          {[40, 127, 213, 300].map((y, i) => (
+          {[40, 127, 213, 300].map((y) => (
             <line key={y} x1="90" y1={y} x2="730" y2={y} stroke={C.dim} />
           ))}
           <L x="78" y="46" fill={C.muted} size={13} anchor="end">
-            90°
+            90° (Nordpolen)
           </L>
           <L x="78" y="133" fill={C.muted} size={13} anchor="end">
             60°
@@ -337,26 +337,31 @@ export function SurfaceWindsDiagram() {
             30°
           </L>
           <L x="78" y="306" fill={C.muted} size={13} anchor="end">
-            0°
+            0° (Ekvator)
           </L>
-          <Arrow d="M 200 80 L 360 80" marker={m.cold} color={C.cold} width={3} />
-          <Arrow d="M 420 80 L 580 80" marker={m.cold} color={C.cold} width={3} />
-          <L x="410" y="68" fill={C.cold} size={14} anchor="middle">
-            polare østavinder
+
+          {/* Polare østavinder (60–90°N): blåser fra øst mot vest (mot venstre, -x) */}
+          <Arrow d="M 520 80 L 320 80" marker={m.cold} color={C.cold} width={3} />
+          <L x="420" y="68" fill={C.cold} size={14} weight={600} anchor="middle">
+            ← Polare østavinder (fra øst)
           </L>
-          <Arrow d="M 360 170 L 200 170" marker={m.teal} color={C.teal} width={3.2} />
-          <Arrow d="M 580 170 L 420 170" marker={m.teal} color={C.teal} width={3.2} />
-          <L x="410" y="158" fill={C.teal} size={14} anchor="middle">
-            vestavind (Norge)
+
+          {/* Vestavind (30–60°N): blåser fra vest mot øst (mot høyre, +x) */}
+          <Arrow d="M 260 170 L 560 170" marker={m.teal} color={C.teal} width={3.4} />
+          <L x="410" y="156" fill={C.teal} size={15} weight={700} anchor="middle">
+            Vestavindsbeltet (Norge · mot øst →)
           </L>
-          <Arrow d="M 240 255 L 160 285" marker={m.warm} color={C.warm} width={3} />
-          <Arrow d="M 400 255 L 320 285" marker={m.warm} color={C.warm} width={3} />
-          <Arrow d="M 560 255 L 480 285" marker={m.warm} color={C.warm} width={3} />
-          <L x="410" y="246" fill={C.warm} size={14} anchor="middle">
-            nordøstpassat
+
+          {/* Nordøstpassaten (0–30°N): blåser fra nordøst mot sørvest (mot venstre og ned) */}
+          <Arrow d="M 320 235 L 220 285" marker={m.warm} color={C.warm} width={3} />
+          <Arrow d="M 480 235 L 380 285" marker={m.warm} color={C.warm} width={3} />
+          <Arrow d="M 640 235 L 540 285" marker={m.warm} color={C.warm} width={3} />
+          <L x="430" y="238" fill={C.warm} size={14} weight={600} anchor="middle">
+            Nordøstpassaten (fra nordøst mot ekvator ↙)
           </L>
+
           <L x="410" y="340" fill={C.muted} size={13} anchor="middle">
-            kartskisse, nordlig halvkule  ·  piler viser typisk overflatevind
+            Oversikt overflatevinder · nordlig halvkule · vind navngis etter retningen den kommer fra
           </L>
         </>
       )}
@@ -368,46 +373,55 @@ export function PolarFrontNorwayDiagram() {
   return (
     <Diagram
       title="Polarfronten og været i Norge"
-      heading="Der kald og varm luft møtes"
-      caption="Ved ca. 60° møtes polarluft og mildere luft fra sør. Langs polarfronten dannes vandrende lavtrykk. Vestavinden fører dem inn mot Norge. Vestlandet får orografisk nedbør; Østlandet ligger oftere i regnskygge."
+      heading="Der kald polarluft møter mild atlanterhavsluft"
+      caption="Ved ca. 60°N møtes kald, tett arktisk luft fra nord og mild, fuktig luft fra sør. Temperaturkontrasten skaper polarfronten, der vandrende lavtrykk fødes og drives inn mot Norge av vestavinden. Vestlandet tvinger luften til værs og får orografisk nedbør, mens Østlandet ofte havner i regnskygge (leside)."
       viewBox="0 0 820 340"
     >
       {(m) => (
         <>
-          <path d="M 40 40 H 780 V 160 Q 500 200 40 160 Z" fill="#3a2318" opacity="0.35" />
-          <path d="M 40 160 Q 500 200 780 160 V 300 H 40 Z" fill="#1a3038" opacity="0.55" />
-          <L x="120" y="90" fill={C.warm} size={15}>
-            varm, fuktig luft
+          {/* Nord øverst: Kald polarluft */}
+          <path d="M 40 40 H 780 V 150 Q 500 110 40 150 Z" fill="#162c38" opacity="0.65" />
+          <L x="120" y="80" fill={C.cold} size={15} weight={700}>
+            Kald polarluft (nord)
           </L>
-          <L x="120" y="250" fill={C.cold} size={15}>
-            kald polarluft
+
+          {/* Sør nederst: Varm, fuktig luft */}
+          <path d="M 40 150 Q 500 110 780 150 V 300 H 40 Z" fill="#302016" opacity="0.55" />
+          <L x="120" y="250" fill={C.warm} size={15} weight={700}>
+            Mild, fuktig luft (sør)
           </L>
+
+          {/* Frontlinje med bølge */}
           <path
-            d="M 40 168 Q 180 200 320 150 Q 460 100 600 170 Q 700 210 780 150"
+            d="M 40 150 Q 180 120 320 160 Q 460 210 600 140 Q 700 100 780 150"
             fill="none"
             stroke={C.low}
-            strokeWidth="3"
+            strokeWidth="3.2"
           />
-          <L x="430" y="128" fill={C.low} size={15} anchor="middle">
-            polarfront
+          <L x="430" y="195" fill={C.low} size={15} weight={700} anchor="middle">
+            Polarfronten
           </L>
+
+          {/* Lavtrykk på frontbølgen */}
           <circle cx="520" cy="155" r="22" fill="none" stroke={C.low} strokeWidth="2.2" />
-          <L x="520" y="160" fill={C.low} size={14} anchor="middle">
+          <L x="520" y="161" fill={C.low} size={16} weight={700} anchor="middle">
             L
           </L>
-          <Arrow d="M 250 120 L 480 150" marker={m.low} color={C.low} width={2.4} />
-          <L x="360" y="118" fill={C.muted} size={13}>
-            lavtrykk vandrer østover
+          <Arrow d="M 250 165 L 480 155" marker={m.teal} color={C.teal} width={2.6} />
+          <L x="365" y="150" fill={C.teal} size={12} weight={600}>
+            Vestavinden styrer lavtrykket østover $\rightarrow$
           </L>
-          <path d="M 640 210 L 670 150 L 700 210 Z" fill="#4d5c55" />
-          <L x="670" y="236" size={13} anchor="middle">
+
+          {/* Norske fjell og orografisk nedbør */}
+          <path d="M 640 220 L 670 140 L 700 220 Z" fill="#3f5047" stroke={C.dim} />
+          <L x="670" y="240" fill={C.fg} size={13} weight={600} anchor="middle">
             Langfjella
           </L>
-          <L x="600" y="270" fill={C.rain} size={13} anchor="end">
-            Vestlandet: løside
+          <L x="620" y="180" fill={C.rain} size={13} weight={700} anchor="end">
+            Vestlandet: loside (regn)
           </L>
-          <L x="740" y="270" fill={C.muted} size={13}>
-            Østlandet: leside
+          <L x="710" y="180" fill={C.warm} size={13} weight={600}>
+            Østlandet: leside (tørrere)
           </L>
         </>
       )}

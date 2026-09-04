@@ -53,6 +53,8 @@ export function Diagram({
     muted: string;
     low: string;
     fg: string;
+    sand: string;
+    rain: string;
   }) => ReactNode;
 }) {
   const uid = useId().replace(/:/g, "");
@@ -63,6 +65,8 @@ export function Diagram({
     muted: `${uid}-muted`,
     low: `${uid}-low`,
     fg: `${uid}-fg`,
+    sand: `${uid}-sand`,
+    rain: `${uid}-rain`,
   };
   return (
     <FigureFrame heading={heading} caption={caption}>
@@ -80,6 +84,8 @@ export function Diagram({
           <Marker id={m.muted} color={C.muted} />
           <Marker id={m.low} color={C.low} />
           <Marker id={m.fg} color={C.fg} />
+          <Marker id={m.sand} color={C.sand} />
+          <Marker id={m.rain} color={C.rain} />
         </defs>
         <rect width="100%" height="100%" fill={C.bg} rx="10" />
         {children(m)}
