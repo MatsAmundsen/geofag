@@ -122,4 +122,60 @@ export const GEMINI = {
     prompt:
       "Foto-likt banner, mørk geofag-stil. Norsk felt: person i feltklær med notatbok og hånd-GPS ved en løsmasseskråning eller bergblotning. Overcast, ingen stock-pose. Liggende 16:9.",
   },
+  naoRossby: {
+    id: "nao-rossby",
+    heading: "Rossby-bølger over Nord-Atlanteren",
+    caption:
+      "Rygger = høytrykk. Daler = lavtrykk. Sterke bølger gir meandrerende jet og åpner for kuldeutbrudd. Svake bølger gir rettere vestavind.",
+    prompt:
+      "Pedagogisk kart over Nord-Atlanteren i mørk geofag-stil. Polarjet som en bølget elv vest–øst. Tydelig rygg (H) og dal (L). Piler: kald luft sør i dalen, varm luft nord i ryggen. Minimal tekst. Liggende format.",
+  },
+  naoEnsoTele: {
+    id: "nao-enso-tele",
+    heading: "Fra ENSO til NAO: Rossby-broen",
+    caption:
+      "El Niño kan forsterke Rossby-bølger og forstyrre polarvirvelen. La Niña gir oftere mer stabil virvel og større sjanse for positiv NAO.",
+    prompt:
+      "To-panel pedagogisk figur, mørk geofag-stil. Venstre: El Niño i tropisk Stillehav, bølgete piler mot Nord-Atlanteren, svekket Azor-H. Høyre: La Niña, rettere polarjet inn mot Europa. Lite tekst. Liggende format.",
+  },
+  naoIndeks: {
+    id: "nao-indeks",
+    heading: "NAO-indeksen: to stasjoner",
+    caption:
+      "Indeksen er normalisert lufttrykk i sør (Azorene/Lisboa) minus lufttrykk i nord (Island). Stor positiv differanse = NAO+.",
+    prompt:
+      "Pedagogisk kart Nord-Atlanteren i mørk geofag-stil. To stasjoner merket: Ponta Delgada/Lisboa i sør og Reykjavík i nord. En trykkakse mellom dem. Høyre: enkel stolpe NAO+ versus NAO−. Liggende format.",
+  },
+  iodNoytral: {
+    id: "iod-noytral",
+    heading: "Nøytral IOD",
+    caption:
+      "I nøytral tilstand er havet gjerne varmest i øst. Vestavind langs ekvator. Regnet over Indonesia, ikke over Øst-Afrika.",
+    prompt:
+      "Pedagogisk kart over tropisk Indiahav i mørk geofag-stil. Nøytral IOD: varmere øst ved Indonesia, vestavind langs ekvator, konveksjon over Indonesia, tørrere Øst-Afrika. Termoklin svakt hellende. Lite tekst. Liggende format.",
+  },
+  iodWalkerSkift: {
+    id: "iod-walker-skift",
+    heading: "Walker-sirkulasjonen flyttes av IOD",
+    caption:
+      "Positiv IOD skyver cellen vestover. Negativ IOD skyver den østover. Der luften stiger, kommer regnet.",
+    prompt:
+      "To-panel øst–vest-snitt av tropisk Indiahav i mørk geofag-stil. Venstre: positiv IOD, stigende luft i vest, synkende i øst. Høyre: negativ IOD, speilvendt. Termoklin med. Minimal tekst. Liggende format.",
+  },
+  iodJetMote: {
+    id: "iod-jet-mote",
+    heading: "Når subtropisk jet møter polarjeten",
+    caption:
+      "Under positiv IOD blir den sørlige subtropiske jeten mer bølget og kan møte polarjeten. Der blir det nedbør. På baksiden kan kald, tørr luft trekkes inn over Australia.",
+    prompt:
+      "Kart over Indiahavet og Australia i mørk geofag-stil. Subtropisk jet og polarjet som to bånd som møtes sør for Australia. Merke nedbør i møtet og kald/tørr luft på baksiden. Liggende format.",
+  },
+  iodAnomaliVsTemp: {
+    id: "iod-anomali-vs-temp",
+    heading: "Temperaturkart mot anomalikart",
+    caption:
+      "Venstre: grader. Tropisk vest er alltid varmt. Høyre: avvik fra normalen. Bare høyre viser dipolen.",
+    prompt:
+      "To-panel Indiahav i mørk geofag-stil. Venstre: SST i grader, jevnt varm tropisk. Høyre: SST-anomali, varm vest og kald øst (positiv IOD). Tydelig merkelapp på hvert panel. Liggende format.",
+  },
 } as const;
