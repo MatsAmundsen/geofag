@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { CollapsibleSection } from "@/components/collapsible-section";
 import {
   NaoRossbyDiagram,
   NaoEnsoTeleconnectionDiagram,
@@ -35,6 +36,7 @@ function NaoPage() {
       next={{ to: "/tema/klima/amoc", label: "Neste: AMOC" }}
       kilder={KILDER.nao}
     >
+      {/* ── 1. Introduksjon: Hva NAO er ─────────────────────────────── */}
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva NAO er</h2>
       <p>
         <strong>Den nordatlantiske oscillasjon (NAO)</strong> er et klima- og værfenomen på den
@@ -69,283 +71,346 @@ function NaoPage() {
         barn="Svingning i lufttrykksforskjellen mellom Azorhøytrykket og Islandslavtrykket. Stor forskjell: sterk jet og stormbane langt nord. Liten forskjell: svak, bølget jet og mer blocking."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Hvorfor trykket endrer seg mellom Azorene og Island
-      </h2>
-      <p>
-        Azorhøytrykket og Islandslavtrykket er semi-permanente. De kommer av den globale
-        sirkulasjonen og de lokale forholdene i Nord-Atlanteren. For å forstå dem må du kjenne{" "}
-        <Link to="/tema/vindsystemet" className="text-primary underline-offset-2 hover:underline">
-          det globale vindsystemet
-        </Link>
-        .
-      </p>
-      <PhotoFigure
-        src="/images/fig-nao-omrade.svg"
-        alt="Kart over Nord-Atlanteren med Island, Norge, Azorene-området sørvest for Portugal, og østkysten av Nord-Amerika"
-        heading="Figur 2. Geografisk område der NAO oppstår"
-        caption="NAO sitter mellom Island i nord og Azorene/subtropene i sør. Norge ligger i utløpet av vestavindsbeltet, derfor merkes fasene så tydelig her."
-        fit="contain"
-      />
+      {/* ── 2. Interaktive temaknapper ──────────────────────────────── */}
+      <div className="pt-2">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Utforsk fasene, drivkreftene og dynamikken
+        </h2>
+        <p className="text-sm text-muted-foreground">
+          Trykk på knappene under for å se detaljert fagstoff, figurer og konsekvenser for været i
+          Norge og Europa.
+        </p>
+      </div>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Azorhøytrykket
-      </h3>
-      <p>
-        Dette høytrykket er en del av det subtropiske høytrykksbeltet. Det dannes av synkende luft i
-        Hadley-cellen. Luften har mistet fukt etter å ha steget ved ekvator. Resultatet er høytrykk
-        og stabilt vær.
-      </p>
-      <p>
-        Styrken varierer med havtemperatur i subtropene og hvor mye varme som går fra hav til
-        atmosfære. Høytrykket er mest markant om sommeren, men det finnes hele året.
-      </p>
+      {/* ── Knapp 1: Positiv NAO ────────────────────────────────────── */}
+      <CollapsibleSection
+        title="Positiv NAO (NAO+ — Stor trykkforskjell)"
+        subtitle="Dyp Island-L + sterk Azor-H · Rett jet mot Norge · Milde og våte vintre i Nord-Europa"
+        badge="Positiv fase"
+        badgeVariant="amber"
+        defaultOpen={true}
+      >
+        <p>
+          I positiv fase er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket stor. Begge
+          systemene forsterkes.
+        </p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Islandslavtrykket
-      </h3>
-      <p>
-        Lavtrykket oppstår ved polarfronten, der kald polarluft møter varm tropeluft fra Atlanteren.
-        Temperaturkontrasten driver sterke vinder og sykloner.
-      </p>
-      <p>
-        Lavtrykket blir kraftigere om vinteren, når kontrasten mellom Arktis og subtropene er størst.
-        Derfor er NAO sterkest — og mest avgjørende for Norge — om vinteren.
-      </p>
+        <PhotoFigure
+          src="/images/fig-nao-positiv.svg"
+          alt="Kart over positiv NAO: dypt L ved Island, sterkt H ved Azorene, rett jet, mildt og vått i Nord-Europa, kaldt og tørt i Sør-Europa"
+          heading="Figur 4. Positiv NAO"
+          caption="Sterkt L, sterkt H, varmere hav midt i Nord-Atlanteren. Jetstrømmen går rett og langt nord. Nord-Europa: mildt og vått. Middelhavet: kaldt og tørt. Figuren merker også positiv AO — de to indeksene følger ofte hverandre."
+          fit="contain"
+          points={[
+            { n: "1", label: "Dypt Islandslavtrykk og sterkt Azorhøytrykk = stor gradient." },
+            { n: "2", label: "Rett, nordlig jet. Stormbanen peker mot Nordvest-Europa og Norge." },
+            { n: "3", label: "Mildt og vått i Nord-Europa. Kaldt og tørt i Sør-Europa." },
+          ]}
+        />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Hva som endrer trykkforskjellen
-      </h2>
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+            Værmønster under NAO+
+          </h4>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>Trykkforskjellen skaper kraftige vestavinder over Nord-Atlanteren.</li>
+            <li>Mildere og våtere vintre i Nord-Europa.</li>
+            <li>Tørrere og kaldere vintre i Sør-Europa og Middelhavet.</li>
+            <li>Stormbaner lenger nord. Nord-Atlanteren får mer vind og storm.</li>
+          </ul>
+        </div>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Temperaturgradienten pol–subtropene
-      </h3>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          Når temperaturforskjellen mellom Arktis og subtropene øker, blir polarfronten kraftigere,
-          og lavtrykket ved Island intensiveres.
-        </li>
-        <li>
-          Når forskjellen minker (for eksempel ved oppvarming i Arktis), svekkes polarfronten og
-          lavtrykket.
-        </li>
-      </ul>
+        <p>
+          Jetstrømmen tar med seg varm, fuktig atlanterluft mot Nord-Europa. Sør for jeten ligger
+          kjøligere hav og det sterke Azorhøytrykket, som blokkerer lavtrykk. Middelhavet kan i
+          tillegg få kald luft fra Øst-Europa eller Arktis.
+        </p>
+        <p>
+          Den sterke temperaturgradienten forsterker jeten. Den blir mer stabil og går rett vest–øst,
+          trukket nordover av det dype Islandslavtrykket. Lavtrykkene føres raskt mot Nord-Europa.
+        </p>
+        <p>
+          <strong>For Norge:</strong> milde, vindfulle og nedbørrike vintre. På kysten ofte regn, i
+          fjellet store snømengder. Under den sterke positive perioden på 1990-tallet vokste
+          vestlandsbreer som Nigardsbreen på grunn av ekstrem vinterakkumulasjon.
+        </p>
+      </CollapsibleSection>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Havoverflatetemperatur (SST)
-      </h3>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          SST i Nord-Atlanteren styrer hvor mye varme og fukt som tilføres atmosfæren. Varmt vann
-          kan forsterke Islandslavtrykket ved å gi systemet mer energi.
-        </li>
-        <li>
-          Endringer i{" "}
-          <Link to="/tema/havstrommer" className="text-primary underline-offset-2 hover:underline">
-            Golfstrømmen og Den nordatlantiske strømmen
-          </Link>{" "}
-          flytter varmen i havet og dermed trykksystemene.
-        </li>
-      </ul>
+      {/* ── Knapp 2: Negativ NAO ────────────────────────────────────── */}
+      <CollapsibleSection
+        title="Negativ NAO (NAO− — Liten trykkforskjell)"
+        subtitle="Svak Island-L + svak Azor-H · Meandrerende jet og blocking · Kalde og tørre vintre i Norge"
+        badge="Negativ fase"
+        badgeVariant="sky"
+      >
+        <p>I negativ fase svekkes både Azorhøytrykket og Islandslavtrykket.</p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Polarvirvelen
-      </h3>
-      <p>
-        Polarvirvelen er et sterkt lavtrykk — en syklon — som ligger over Arktis om vinteren (det
-        finnes en tilsvarende over Antarktis, men det er den arktiske som hører til NAO). Kald luft
-        holdes samlet av rask vestlig sirkulasjon.
-      </p>
-      <p>
-        Stor temperaturforskjell mellom Arktis og områdene sørfor gir en stabil, nesten sirkulær
-        virvel. Mindre forskjell — varmere Arktis — gir forstyrrelser. Den sirkulære formen brytes
-        opp og blir mer bølget.
-      </p>
-      <p>
-        Forstyrrelser i polarvirvelen i stratosfæren kan forplante seg nedover og enten styrke eller
-        svekke Islandslavtrykket. En svak polarvirvel (ofte negativ fase av den arktiske
-        oscillasjonen, AO) henger sammen med svakere lavtrykk ved Island.
-      </p>
-      <PhotoFigure
-        src="/images/fig-nao-polarvirvel.svg"
-        alt="To-panel: stabil polarvirvel med rett jet langt nord, og forstyrret polarvirvel med bølget jet og kald luft sørover"
-        heading="Figur 3. Polarvirvel og polar jet under stabile og ustabile forhold"
-        caption="Venstre: stabil virvel, kald luft holdt nord, sterk vest–øst-strøm. Høyre: forstyrret virvel, kald luft sørover, varm luft nordover, bølget jet lenger sør. NOAA Climate.gov (2021)."
-        fit="contain"
-        points={[
-          { n: "1", label: "Stabil virvel: rett jet, kulda blir i Arktis, oftere positiv NAO." },
-          { n: "2", label: "Ustabil virvel: bølget jet, kuldeutbrudd sør, oftere negativ NAO." },
-        ]}
-      />
-      <p>
-        Når polarvirvelen er sterk og intakt, er NAO nesten alltid positiv. Hvis virvelen sprekker
-        (en plutselig stratosfærisk oppvarming, SSW), kan NAO falle inn i en dyp negativ fase. Kulda
-        i Norge kommer gjerne 2–4 uker etterpå.
-      </p>
+        <PhotoFigure
+          src="/images/fig-nao-negativ.svg"
+          alt="Kart over negativ NAO: svakt L og H, bølget jet, kaldt og tørt i Nord-Europa, mildt og vått i Sør-Europa"
+          heading="Figur 5. Negativ NAO"
+          caption="Svakt L, svakt H. Varmere vann lenger nord. Jetstrømmen meandrerer. Nord-Europa: kaldt og tørt. Sør-Europa: mildt og vått. Speilbildet av figur 4."
+          fit="contain"
+          points={[
+            { n: "1", label: "Liten trykkgradient. Vestavinden slakker." },
+            { n: "2", label: "Bølget jet. Store Rossby-bølger. Stormbanen går sør." },
+            { n: "3", label: "Kald polarluft inn over Nord-Europa. Regn til Middelhavet." },
+          ]}
+        />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Eksterne klimapåvirkninger — ENSO
-      </h3>
-      <p>
-        Fenomener som{" "}
-        <Link to="/tema/klima/enso" className="text-primary underline-offset-2 hover:underline">
-          ENSO
-        </Link>{" "}
-        kan påvirke NAO via atmosfæriske bølger. El Niño kan svekke subtropiske høytrykk. La Niña
-        kjøler tropisk Stillehav, forskyver jetene der, og sender Rossby-bølger videre mot
-        Nord-Atlanteren.
-      </p>
-      <p>
-        Under La Niña-vintre er det oftere større sjanse for positiv NAO, med sterk og rett polar
-        jet. La Niña kan styrke temperaturgradienten mellom Arktis og subtropene og dermed
-        vestavinden.
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>El Niño:</strong> varmere tropisk Stillehav, mer energioverføring til atmosfæren.
-          Kan forstyrre polarvirvelen ved å forsterke Rossby-bølger.
-        </li>
-        <li>
-          <strong>La Niña:</strong> kaldere tropisk Stillehav, færre forstyrrelser, oftere mer
-          stabil polarvirvel.
-        </li>
-      </ul>
-      <NaoEnsoTeleconnectionDiagram />
+        <p>
+          Under negativ NAO er temperaturforskjellen mellom subtropene og Arktis mindre.
+          Jetstrømmen drives av den kontrasten. Når kontrasten svekkes, svekkes jeten.
+        </p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Rossby-bølger
-      </h3>
-      <p>
-        Rossby-bølger er planetære bølger som dannes fordi jordrotasjonen (Coriolis) påvirker luft-
-        og vannmasser. De er langsomme og særlig viktige på midlere breddegrader. Se også{" "}
-        <Link to="/tema/jetstrommer" className="text-primary underline-offset-2 hover:underline">
-          jetstrømmer
-        </Link>{" "}
-        og{" "}
-        <Link to="/tema/coriolis" className="text-primary underline-offset-2 hover:underline">
-          Coriolis
-        </Link>
-        .
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>De beveger seg i vest–øst-retning, men svinger også nord og sør.</li>
-        <li>Rygger og daler tilsvarer høytrykk og lavtrykk.</li>
-        <li>De er de langsomme meanderne i jetstrømmene.</li>
-        <li>
-          Sterke Rossby-bølger: jetene blir veldig bølgete. Svake Rossby-bølger: jetene ligger
-          rettere.
-        </li>
-      </ul>
-      <p>
-        Når Rossby-bølgene i troposfæren er svake, forstyrres ikke polarvirvelen. Den forblir stabil
-        og sterk. Når bølgene forsterkes, kan de sende energi oppover, deformere eller splitte
-        virvelen.
-      </p>
-      <NaoRossbyDiagram />
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+            Hvorfor meandrerer jetstrømmen under NAO−?
+          </h4>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>Lavere trykkgradient mellom Azorene og Island.</li>
+            <li>Svakere vestavinder og mer ustabil jet.</li>
+            <li>Store Rossby-bølger og kraftige svinger i jetstrømmen.</li>
+          </ul>
+        </div>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Positiv NAO: sterkere jet og nordlig bane
-      </h2>
-      <p>
-        I positiv fase er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket stor. Begge
-        systemene forsterkes.
-      </p>
-      <PhotoFigure
-        src="/images/fig-nao-positiv.svg"
-        alt="Kart over positiv NAO: dypt L ved Island, sterkt H ved Azorene, rett jet, mildt og vått i Nord-Europa, kaldt og tørt i Sør-Europa"
-        heading="Figur 4. Positiv NAO"
-        caption="Sterkt L, sterkt H, varmere hav midt i Nord-Atlanteren. Jetstrømmen går rett og langt nord. Nord-Europa: mildt og vått. Middelhavet: kaldt og tørt. Figuren merker også positiv AO — de to indeksene følger ofte hverandre."
-        fit="contain"
-        points={[
-          { n: "1", label: "Dypt Islandslavtrykk og sterkt Azorhøytrykk = stor gradient." },
-          { n: "2", label: "Rett, nordlig jet. Stormbanen peker mot Nordvest-Europa og Norge." },
-          { n: "3", label: "Mildt og vått i Nord-Europa. Kaldt og tørt i Sør-Europa." },
-        ]}
-      />
-      <ul className="list-disc space-y-2 pl-6">
-        <li>Trykkforskjellen skaper kraftige vinder over Nord-Atlanteren.</li>
-        <li>Mildere og våtere vintre i Nord-Europa.</li>
-        <li>Tørrere og kaldere vintre i Sør-Europa og Middelhavet.</li>
-        <li>Stormbaner lenger nord. Nord-Atlanteren får mer vind og storm.</li>
-      </ul>
-      <p>
-        Jetstrømmen tar med seg varm, fuktig atlanterluft mot Nord-Europa. Sør for jeten ligger
-        kjøligere hav og det sterke Azorhøytrykket, som blokkerer lavtrykk. Middelhavet kan i tillegg
-        få kald luft fra Øst-Europa eller Arktis.
-      </p>
-      <p>
-        Den sterke temperaturgradienten forsterker jeten. Den blir mer stabil og går rett vest–øst,
-        trukket nordover av det dype Islandslavtrykket. Lavtrykkene føres raskt mot Nord-Europa.
-      </p>
-      <p>
-        For Norge: milde, vindfulle og nedbørrike vintre. På kysten ofte regn, i fjellet store
-        snømengder. Under den sterke positive perioden på 1990-tallet vokste vestlandsbreer som
-        Nigardsbreen på grunn av ekstrem vinterakkumulasjon.
-      </p>
+        <p>
+          Årsaker til svak gradient: oppvarming i Arktis, svekket polarfront, mindre kontrast mellom
+          luftmassene. Når jeten svekkes, blir den mer utsatt for forstyrrelser. Luftmassene begynner
+          å bølge, som en langsom elv. Hindere som fjellkjeder og temperaturkontraster kan forsterke
+          bølgene.
+        </p>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Negativ NAO: svakere jet og sørlig bane
-      </h2>
-      <p>I negativ fase svekkes både Azorhøytrykket og Islandslavtrykket.</p>
-      <PhotoFigure
-        src="/images/fig-nao-negativ.svg"
-        alt="Kart over negativ NAO: svakt L og H, bølget jet, kaldt og tørt i Nord-Europa, mildt og vått i Sør-Europa"
-        heading="Figur 5. Negativ NAO"
-        caption="Svakt L, svakt H. Varmere vann lenger nord. Jetstrømmen meandrerer. Nord-Europa: kaldt og tørt. Sør-Europa: mildt og vått. Speilbildet av figur 4."
-        fit="contain"
-        points={[
-          { n: "1", label: "Liten trykkgradient. Vestavinden slakker." },
-          { n: "2", label: "Bølget jet. Store Rossby-bølger. Stormbanen går sør." },
-          { n: "3", label: "Kald polarluft inn over Nord-Europa. Regn til Middelhavet." },
-        ]}
-      />
-      <p>
-        Under negativ NAO er temperaturforskjellen mellom subtropene og Arktis mindre. Jetstrømmen
-        drives av den kontrasten. Når kontrasten svekkes, svekkes jeten.
-      </p>
-      <p>En svingete jet oppstår når gradienten er svak. Det gir:</p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>Lavere trykkgradient mellom Azorene og Island.</li>
-        <li>Svakere vestavinder og mer ustabil jet.</li>
-        <li>Store Rossby-bølger og svinger i jetstrømmen.</li>
-      </ul>
-      <p>
-        Årsaker til svak gradient: oppvarming i Arktis, svekket polarfront, mindre kontrast mellom
-        luftmassene. Når jeten svekkes, blir den mer utsatt for forstyrrelser. Luftmassene begynner
-        å bølge, som en langsom elv. Hindere som fjellkjeder og temperaturkontraster kan forsterke
-        bølgene.
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>Nord-Europa:</strong> Når jeten bøyer seg sørover, kan kald polarluft strømme inn.
-          Kaldere og tørrere vintre. Ofte blokkerende høytrykk over Skandinavia. Vintrene 2009/2010
-          og januar 2024 er typiske eksempler.
-        </li>
-        <li>
-          <strong>Sør-Europa:</strong> Jeten trekker sørover og tar lavtrykkene med seg. Våte og
-          milde vintre.
-        </li>
-      </ul>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-lg border border-border/70 bg-card/70 p-4">
+            <h5 className="font-semibold text-foreground">Nord-Europa</h5>
+            <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
+              Når jeten bøyer seg sørover, kan kald polarluft strømme inn. Kaldere og tørrere vintre.
+              Ofte blokkerende høytrykk over Skandinavia. Vintrene 2009/2010 og januar 2024 er
+              typiske eksempler.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border/70 bg-card/70 p-4">
+            <h5 className="font-semibold text-foreground">Sør-Europa</h5>
+            <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
+              Jeten trekker sørover og tar lavtrykkene med seg. Våte og milde vintre i Spania,
+              Italia og Hellas.
+            </p>
+          </div>
+        </div>
+      </CollapsibleSection>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Hvorfor NAO varierer</h2>
-      <p>
-        NAO drives i stor grad av intern variasjon. Den er kaotisk og vanskelig å predikere på kort
-        sikt. Små forstyrrelser i atmosfære eller hav kan forplante seg og gi store utslag.
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>NAO er sterkest om vinteren, når kontrasten tropeluft–polarluft er størst.</li>
-        <li>
-          Tilbakekoblinger kan forsterke eller svekke svingningen: havtemperatur endrer atmosfæren,
-          som igjen endrer havet. ENSO kan inngå i slike forsterkninger.
-        </li>
-      </ul>
-      <p>
-        Meteorologer følger{" "}
-        <strong>NAO-indeksen</strong>: normalisert lufttrykk i sør (Ponta Delgada eller Lisboa) minus
-        lufttrykk i nord (Reykjavík eller Stykkishólmur) (Walker & Bliss, 1932).
-      </p>
-      <NaoIndexStationsDiagram />
+      {/* ── Knapp 3: Drivkrefter ────────────────────────────────────── */}
+      <CollapsibleSection
+        title="Drivkrefter: Azorhøytrykket, Islandslavtrykket og temperaturgradienten"
+        subtitle="Hadley-cellen, polarfronten og havoverflatetemperatur (SST)"
+        badge="Mekanisme"
+        badgeVariant="teal"
+      >
+        <p>
+          Azorhøytrykket og Islandslavtrykket er semi-permanente. De kommer av den globale
+          sirkulasjonen og de lokale forholdene i Nord-Atlanteren. For å forstå dem må du kjenne{" "}
+          <Link to="/tema/vindsystemet" className="text-primary underline-offset-2 hover:underline">
+            det globale vindsystemet
+          </Link>
+          .
+        </p>
 
+        <PhotoFigure
+          src="/images/fig-nao-omrade.svg"
+          alt="Kart over Nord-Atlanteren med Island, Norge, Azorene-området sørvest for Portugal, og østkysten av Nord-Amerika"
+          heading="Figur 2. Geografisk område der NAO oppstår"
+          caption="NAO sitter mellom Island i nord og Azorene/subtropene i sør. Norge ligger i utløpet av vestavindsbeltet, derfor merkes fasene så tydelig her."
+          fit="contain"
+        />
+
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Azorhøytrykket
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Dette høytrykket er en del av det subtropiske høytrykksbeltet. Det dannes av synkende
+              luft i Hadley-cellen. Luften har mistet fukt etter å ha steget ved ekvator. Resultatet
+              er høytrykk og stabilt vær. Styrken varierer med havtemperatur i subtropene og hvor mye
+              varme som går fra hav til atmosfære.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Islandslavtrykket
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Lavtrykket oppstår ved polarfronten, der kald polarluft møter varm tropeluft fra
+              Atlanteren. Temperaturkontrasten driver sterke vinder og sykloner. Lavtrykket blir
+              kraftigere om vinteren, når kontrasten mellom Arktis og subtropene er størst. Derfor er
+              NAO mest avgjørende for Norge om vinteren.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Temperaturgradienten og SST
+            </h4>
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+              <li>
+                Når temperaturforskjellen mellom Arktis og subtropene øker, blir polarfronten
+                kraftigere, og lavtrykket ved Island intensiveres.
+              </li>
+              <li>
+                Når forskjellen minker (for eksempel ved arktisk forsterkning/oppvarming), svekkes
+                polarfronten og lavtrykket.
+              </li>
+              <li>
+                SST i Nord-Atlanteren styrer varme- og fukttilførsel. Endringer i{" "}
+                <Link
+                  to="/tema/havstrommer"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
+                  Golfstrømmen og Den nordatlantiske strømmen
+                </Link>{" "}
+                flytter varmen i havet og dermed trykksystemene.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* ── Knapp 4: Polarvirvelen, ENSO og Rossby-bølger ───────────── */}
+      <CollapsibleSection
+        title="Polarvirvelen, ENSO og Rossby-bølger"
+        subtitle="Stratosfærisk oppvarming (SSW), telekoblinger fra Stillehavet og meandrerende bølger"
+        badge="Atmosfærisk dynamikk"
+        badgeVariant="primary"
+      >
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Polarvirvelen over Arktis
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Polarvirvelen er et sterkt lavtrykk — en syklon — som ligger over Arktis om vinteren
+              (det finnes en tilsvarende over Antarktis, men det er den arktiske som hører til NAO).
+              Kald luft holdes samlet av rask vestlig sirkulasjon.
+            </p>
+            <p className="mt-2 text-sm sm:text-base">
+              Stor temperaturforskjell mellom Arktis og områdene sørfor gir en stabil, nesten
+              sirkulær virvel. Mindre forskjell — varmere Arktis — gir forstyrrelser. Den sirkulære
+              formen brytes opp og blir mer bølget.
+            </p>
+          </div>
+
+          <PhotoFigure
+            src="/images/fig-nao-polarvirvel.svg"
+            alt="To-panel: stabil polarvirvel med rett jet langt nord, og forstyrret polarvirvel med bølget jet og kald luft sørover"
+            heading="Figur 3. Polarvirvel og polar jet under stabile og ustabile forhold"
+            caption="Venstre: stabil virvel, kald luft holdt nord, sterk vest–øst-strøm. Høyre: forstyrret virvel, kald luft sørover, varm luft nordover, bølget jet lenger sør. NOAA Climate.gov (2021)."
+            fit="contain"
+            points={[
+              {
+                n: "1",
+                label: "Stabil virvel: rett jet, kulda blir i Arktis, oftere positiv NAO.",
+              },
+              {
+                n: "2",
+                label: "Ustabil virvel: bølget jet, kuldeutbrudd sør, oftere negativ NAO.",
+              },
+            ]}
+          />
+
+          <p className="text-sm sm:text-base">
+            Når polarvirvelen er sterk og intakt, er NAO nesten alltid positiv. Hvis virvelen
+            sprekker (en plutselig stratosfærisk oppvarming, SSW), kan NAO falle inn i en dyp
+            negativ fase. Kulda i Norge kommer gjerne 2–4 uker etterpå.
+          </p>
+
+          <div className="pt-2">
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Eksterne klimapåvirkninger — ENSO
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Fenomener som{" "}
+              <Link
+                to="/tema/klima/enso"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                ENSO
+              </Link>{" "}
+              kan påvirke NAO via atmosfæriske bølger. El Niño kan svekke subtropiske høytrykk. La
+              Niña kjøler tropisk Stillehav, forskyver jetene der, og sender Rossby-bølger videre mot
+              Nord-Atlanteren.
+            </p>
+            <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm sm:text-base">
+              <li>
+                <strong>El Niño:</strong> varmere tropisk Stillehav, mer energioverføring til
+                atmosfæren. Kan forstyrre polarvirvelen ved å forsterke Rossby-bølger.
+              </li>
+              <li>
+                <strong>La Niña:</strong> kaldere tropisk Stillehav, færre forstyrrelser, oftere mer
+                stabil polarvirvel og positiv NAO i Norge.
+              </li>
+            </ul>
+          </div>
+
+          <NaoEnsoTeleconnectionDiagram />
+
+          <div className="pt-2">
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Rossby-bølger (Planetære bølger)
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Rossby-bølger dannes fordi jordrotasjonen (Coriolis) påvirker luft- og vannmasser. De
+              beveger seg i vest–øst-retning, men svinger også nord og sør. Rygger og daler
+              tilsvarer høytrykk og lavtrykk. Se også{" "}
+              <Link
+                to="/tema/jetstrommer"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                jetstrømmer
+              </Link>{" "}
+              og{" "}
+              <Link
+                to="/tema/coriolis"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                Coriolis
+              </Link>
+              .
+            </p>
+          </div>
+
+          <NaoRossbyDiagram />
+        </div>
+      </CollapsibleSection>
+
+      {/* ── Knapp 5: NAO-indeksen og måling ─────────────────────────── */}
+      <CollapsibleSection
+        title="NAO-indeksen og målestasjoner"
+        subtitle="Normalisert trykkforskjell mellom Azorene (Lisboa/Ponta Delgada) og Island (Reykjavík)"
+        badge="Måling"
+        badgeVariant="neutral"
+      >
+        <p>
+          NAO drives i stor grad av intern variasjon. Den er kaotisk og vanskelig å predikere på kort
+          sikt. Små forstyrrelser i atmosfære eller hav kan forplante seg og gi store utslag.
+        </p>
+        <ul className="list-disc space-y-2 pl-6 text-sm sm:text-base">
+          <li>NAO er sterkest om vinteren, når kontrasten tropeluft–polarluft er størst.</li>
+          <li>
+            Tilbakekoblinger kan forsterke eller svekke svingningen: havtemperatur endrer
+            atmosfæren, som igjen endrer havet. ENSO kan inngå i slike forsterkninger.
+          </li>
+        </ul>
+        <p>
+          Meteorologer følger <strong>NAO-indeksen</strong>: normalisert lufttrykk i sør (Ponta
+          Delgada eller Lisboa) minus lufttrykk i nord (Reykjavík eller Stykkishólmur) (Walker &
+          Bliss, 1932).
+        </p>
+        <NaoIndexStationsDiagram />
+      </CollapsibleSection>
+
+      {/* ── 3. Oppsummering og eksamen ──────────────────────────────── */}
       <Callout title="Til eksamen">
         <p>
           <strong>NAO+ =</strong> dyp Island-L + sterk Azor-H → stor gradient → sterk, rett jet

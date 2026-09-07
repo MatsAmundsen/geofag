@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { CollapsibleSection } from "@/components/collapsible-section";
 import {
   NeutralIodDiagram,
   IodSstAnomalyDiagram,
@@ -38,6 +39,7 @@ function IodPage() {
       next={{ to: "/tema/klima/nao", label: "Neste: NAO" }}
       kilder={KILDER.iod}
     >
+      {/* ── 1. Introduksjon: Hva IOD er ─────────────────────────────── */}
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva IOD er</h2>
       <p>
         <strong>Indian Ocean Dipole (IOD)</strong> beskriver svingninger i havtemperatur og
@@ -59,150 +61,201 @@ function IodPage() {
         barn="Øst–vest-svingning i tropisk Indiahav. Temperaturforskjellen mellom polene styrer hvor lufta stiger, hvor den synker, og hvor regnet faller."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Positiv fase</h2>
-      <p>
-        Varmere vann enn normalt ved Øst-Afrika. Kjøligere vann ved Indonesia og Australia.
-        Oppvelling ved vestkysten av Australia.
-      </p>
-      <p>
-        Havoverflatetemperatur styrer høytrykk og lavtrykk, og dermed vinden. I positiv fase blåser
-        vinden fra Indonesia og Australia mot Øst-Afrika.
-      </p>
-      <PhotoFigure
-        src="/images/fig-iod-positiv.png"
-        alt="Positiv IOD: varmere vann og konveksjon i vest, kaldere vann, svekket konveksjon og oppvelling i øst"
-        heading="Figur 1. Positiv IOD"
-        caption="Vest: varmere enn normalt, stigende luft og regn mot Øst-Afrika. Øst: kjøligere enn normalt, synkende luft og tørke over Indonesia og Nord-Australia. Snittet under viser termoklinen — nede i vest (nedvelling), oppe i øst (oppvelling). Etter Weatherzone."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label: "Lavtrykk utenfor Øst-Afrika. Konvektiv nedbør over havet, orografisk nedbør inne på kysten.",
-          },
-          {
-            n: "2",
-            label: "Oppvelling og høytrykk i øst. Tørke og mindre regn i Indonesia og Nord-Australia.",
-          },
-        ]}
-      />
-      <p>
-        Landskapet i Øst-Afrika er ikke bygd for slike mengder. Resultatet kan bli flom. I øst gir
-        kaldt vann og høytrykk tørke, hete og høy skogbrannfare. «Black Summer» i Australia 2019/20
-        falt sammen med en av de sterkeste positive IOD-hendelsene som er målt.
-      </p>
+      {/* ── 2. Interaktive temaknapper for faser og mekanismer ──────── */}
+      <div className="pt-2">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Utforsk fasene og mekanismene
+        </h2>
+        <p className="text-sm text-muted-foreground">
+          Trykk på knappene under for å se detaljert tekst, figurer og jetstrømpåvirkning for hver
+          fase.
+        </p>
+      </div>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Negativ fase</h2>
-      <p>
-        Temperaturen snur: kjøligere vann i vest, varmere i øst. Oppvelling flytter til kysten av
-        Øst-Afrika. Ingen oppvelling ved Australia og Indonesia. Høytrykk i vest, lavtrykk i øst.
-        Vinden snur.
-      </p>
-      <PhotoFigure
-        src="/images/fig-iod-negativ.jpg"
-        alt="Negativ IOD: kaldere vann og tørke i vest, varmere vann og økt konveksjon over Indonesia og Australia"
-        heading="Figur 2. Negativ IOD"
-        caption="Speil av figur 1. Øst: varmt hav, lavtrykk og mer regn over Indonesia og Nordvest-Australia. Vest: kaldt hav, høytrykk og tørke i Øst-Afrika — og ofte i deler av India."
-        fit="contain"
-        points={[
-          { n: "1", label: "Lavtrykk ved Indonesia og Nordvest-Australia. Økt nedbør og flomfare." },
-          { n: "2", label: "Tørke i Øst-Afrika og noen deler av India." },
-        ]}
-      />
+      {/* ── Knapp 1: Positiv IOD ────────────────────────────────────── */}
+      <CollapsibleSection
+        title="Positiv IOD (Varm fase i vest)"
+        subtitle="Varmt hav og flom i Øst-Afrika · Kaldt hav, tørke og skogbranner i Australia"
+        badge="Positiv fase"
+        badgeVariant="amber"
+        defaultOpen={true}
+      >
+        <p>
+          Varmere vann enn normalt ved Øst-Afrika. Kjøligere vann ved Indonesia og Australia.
+          Oppvelling ved vestkysten av Australia.
+        </p>
+        <p>
+          Havoverflatetemperatur styrer høytrykk og lavtrykk, og dermed vinden. I positiv fase blåser
+          vinden fra Indonesia og Australia mot Øst-Afrika.
+        </p>
 
-      <IodPhaseShift />
+        <PhotoFigure
+          src="/images/fig-iod-positiv.png"
+          alt="Positiv IOD: varmere vann og konveksjon i vest, kaldere vann, svekket konveksjon og oppvelling i øst"
+          heading="Figur 1. Positiv IOD"
+          caption="Vest: varmere enn normalt, stigende luft og regn mot Øst-Afrika. Øst: kjøligere enn normalt, synkende luft og tørke over Indonesia og Nord-Australia. Snittet under viser termoklinen — nede i vest (nedvelling), oppe i øst (oppvelling). Etter Weatherzone."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Lavtrykk utenfor Øst-Afrika. Konvektiv nedbør over havet, orografisk nedbør inne på kysten.",
+            },
+            {
+              n: "2",
+              label:
+                "Oppvelling og høytrykk i øst. Tørke og mindre regn i Indonesia og Nord-Australia.",
+            },
+          ]}
+        />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Påvirkning på jetstrømmene
-      </h2>
-      <p>
-        Jetstrømmer dannes i grensesonene mellom globale høytrykk og lavtrykk. Havoverflaten styrer
-        lufttemperaturen, og dermed hvor de grensene ligger. Jetene følger de store
-        temperaturgrensene i hav og på land.
-      </p>
-      <PhotoFigure
-        src="/images/fig-iod-sst.png"
-        alt="Havoverflatetemperatur i Indiahavet med skarp fargegrense mot sør"
-        heading="Figur 3. Havtemperatur i Det indiske hav"
-        caption="Dette er grader, ikke avvik. Tropisk Indiahav er alltid varmt. Den svarte/skarpe grensen mot sør er der den subtropiske jeten hører hjemme (figur 4). For dipolen — vest varmere eller kaldere enn øst — trenger du et anomalikart, ikke dette."
-        fit="contain"
-      />
-      <PhotoFigure
-        src="/images/fig-iod-jet.png"
-        alt="Jordklode med subtropiske jetstrømmer som gule og røde bånd nord og sør for ekvator over Indiahavet"
-        heading="Figur 4. Subtropiske jetstrømmer over Indiahavet"
-        caption="Jetene følger temperaturgrensene i figur 3. Når IOD flytter konveksjonen, flytter grensen — og dermed banen og formen på jeten."
-        fit="contain"
-      />
-      <IodSstAnomalyDiagram />
+        <p>
+          Landskapet i Øst-Afrika er ikke bygd for slike mengder. Resultatet kan bli flom. I øst gir
+          kaldt vann og høytrykk tørke, hete og høy skogbrannfare. «Black Summer» i Australia 2019/20
+          falt sammen med en av de sterkeste positive IOD-hendelsene som er målt.
+        </p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
-        Positiv fase og jetstrømmer
-      </h3>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>Kjøligere hav rundt Australia og Indonesia: mindre konveksjon der.</li>
-        <li>Varmere hav ved Øst-Afrika: mer konveksjon der.</li>
-        <li>
-          Walker-sirkulasjonen skifter vestover. Mer synkende luft over østlige Indiahav og
-          kystene der.
-        </li>
-      </ul>
-      <p>
-        <strong>Sørlig subtropisk jet:</strong> kan trekkes sørover og gi redusert nedbør i
-        Australia.
-      </p>
-      <p>
-        <strong>Nordlig subtropisk jet:</strong> redusert konveksjon langs Indiahavets kyst svekker
-        kontrasten ved ca. 30°. Jeten blir oftere mer bølget.
-      </p>
-      <p>
-        <strong>Polarjet:</strong> En bølget subtropisk jet øker sjansen for at den møter polarjeten
-        på høyere breddegrader. Der kald luft møter varm og fuktig luft, blir det nedbør. Når de
-        møtes, kan den subtropiske jeten også ta med seg kald, tørr luft fra polarjeten inn over
-        Australia og Sør-Afrika.
-      </p>
-      <IodWalkerShiftDiagram />
-      <IodJetMeetingDiagram />
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h3 className="font-display text-lg font-medium tracking-tight text-primary">
+            Positiv fase og jetstrømmene
+          </h3>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>Kjøligere hav rundt Australia og Indonesia: mindre konveksjon der.</li>
+            <li>Varmere hav ved Øst-Afrika: mer konveksjon der.</li>
+            <li>
+              Walker-sirkulasjonen skifter vestover. Mer synkende luft over østlige Indiahav og
+              kystene der.
+            </li>
+          </ul>
+          <p className="mt-3 text-sm sm:text-base">
+            <strong>Sørlig subtropisk jet:</strong> kan trekkes sørover og gi redusert nedbør i
+            Australia.
+          </p>
+          <p className="mt-2 text-sm sm:text-base">
+            <strong>Nordlig subtropisk jet:</strong> redusert konveksjon langs Indiahavets kyst svekker
+            kontrasten ved ca. 30°. Jeten blir oftere mer bølget.
+          </p>
+          <p className="mt-2 text-sm sm:text-base">
+            <strong>Polarjet:</strong> En bølget subtropisk jet øker sjansen for at den møter polarjeten
+            på høyere breddegrader. Der kald luft møter varm og fuktig luft, blir det nedbør. Når de
+            møtes, kan den subtropiske jeten også ta med seg kald, tørr luft fra polarjeten inn over
+            Australia og Sør-Afrika.
+          </p>
+        </div>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight">
-        Negativ fase og jetstrømmer
-      </h3>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>Varmere hav i øst: mer konveksjon over Indonesia og Nordvest-Australia.</li>
-        <li>Kjøligere hav i vest: redusert konveksjon over Afrika.</li>
-        <li>Walker-sirkulasjonen endres østover.</li>
-      </ul>
-      <p>
-        <strong>Sørlig halvkule:</strong> svekket temperaturgradient gir svakere, mer bølget
-        subtropisk jet. Den kan flytte seg nordover (mot ekvator).
-      </p>
-      <p>
-        <strong>Nordlig halvkule:</strong> økt konveksjon kan gi en sterkere og rettere subtropisk
-        jet.
-      </p>
-      <p>
-        <strong>Polarjet:</strong> oftere svekket og mer bølget på sørlig halvkule. Færre møter med
-        den subtropiske jeten gir færre kuldeutbrudd i Sør-Australia.
-      </p>
+        <IodWalkerShiftDiagram />
+        <IodJetMeetingDiagram />
+      </CollapsibleSection>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">IOD og ENSO</h2>
-      <p>
-        IOD er en egen modus i Indiahavet, men den snakker med{" "}
-        <Link to="/tema/klima/enso" className="text-primary underline-offset-2 hover:underline">
-          ENSO
-        </Link>
-        . Når positiv IOD faller sammen med El Niño, som i 1997 og 2019, forsterker de tørken i
-        Australia. Begge vipper tørker Indonesia-siden samtidig. Negativ IOD kan forsterke nedbøren
-        under La Niña.
-      </p>
-      <p>
-        Mekanikken bak bølgene — Rossby og Coriolis — står under{" "}
-        <Link to="/tema/jetstrommer" className="text-primary underline-offset-2 hover:underline">
-          jetstrømmer
-        </Link>
-        .
-      </p>
-      <DmiTimeseriesDiagram />
+      {/* ── Knapp 2: Negativ IOD ────────────────────────────────────── */}
+      <CollapsibleSection
+        title="Negativ IOD (Kald fase i vest)"
+        subtitle="Kaldt hav og tørke i vest · Varmt hav, nedbør og flomfare i Indonesia og Australia"
+        badge="Negativ fase"
+        badgeVariant="sky"
+      >
+        <p>
+          Temperaturen snur: kjøligere vann i vest, varmere i øst. Oppvelling flytter til kysten av
+          Øst-Afrika. Ingen oppvelling ved Australia og Indonesia. Høytrykk i vest, lavtrykk i øst.
+          Vinden snur.
+        </p>
 
+        <PhotoFigure
+          src="/images/fig-iod-negativ.jpg"
+          alt="Negativ IOD: kaldere vann og tørke i vest, varmere vann og økt konveksjon over Indonesia og Australia"
+          heading="Figur 2. Negativ IOD"
+          caption="Speil av figur 1. Øst: varmt hav, lavtrykk og mer regn over Indonesia og Nordvest-Australia. Vest: kaldt hav, høytrykk og tørke i Øst-Afrika — og ofte i deler av India."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label: "Lavtrykk ved Indonesia og Nordvest-Australia. Økt nedbør og flomfare.",
+            },
+            { n: "2", label: "Tørke i Øst-Afrika og noen deler av India." },
+          ]}
+        />
+
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h3 className="font-display text-lg font-medium tracking-tight text-primary">
+            Negativ fase og jetstrømmer
+          </h3>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>Varmere hav i øst: mer konveksjon over Indonesia og Nordvest-Australia.</li>
+            <li>Kjøligere hav i vest: redusert konveksjon over Afrika.</li>
+            <li>Walker-sirkulasjonen endres østover.</li>
+          </ul>
+          <p className="mt-3 text-sm sm:text-base">
+            <strong>Sørlig halvkule:</strong> svekket temperaturgradient gir svakere, mer bølget
+            subtropisk jet. Den kan flytte seg nordover (mot ekvator).
+          </p>
+          <p className="mt-2 text-sm sm:text-base">
+            <strong>Nordlig halvkule:</strong> økt konveksjon kan gi en sterkere og rettere subtropisk
+            jet.
+          </p>
+          <p className="mt-2 text-sm sm:text-base">
+            <strong>Polarjet:</strong> oftere svekket og mer bølget på sørlig halvkule. Færre møter med
+            den subtropiske jeten gir færre kuldeutbrudd i Sør-Australia.
+          </p>
+        </div>
+      </CollapsibleSection>
+
+      {/* ── Knapp 3: Jetstrømmer og SST ────────────────────────────── */}
+      <CollapsibleSection
+        title="Påvirkning på jetstrømmene og havtemperatur (SST)"
+        subtitle="Hvordan temperaturgradienter og anomalier i Indiahavet forskyver jetstrømmene"
+        badge="Mekanisme"
+        badgeVariant="teal"
+      >
+        <p>
+          Jetstrømmer dannes i grensesonene mellom globale høytrykk og lavtrykk. Havoverflaten styrer
+          lufttemperaturen, og dermed hvor de grensene ligger. Jetene følger de store
+          temperaturgrensene i hav og på land.
+        </p>
+        <PhotoFigure
+          src="/images/fig-iod-sst.png"
+          alt="Havoverflatetemperatur i Indiahavet med skarp fargegrense mot sør"
+          heading="Figur 3. Havtemperatur i Det indiske hav"
+          caption="Dette er grader, ikke avvik. Tropisk Indiahav er alltid varmt. Den svarte/skarpe grensen mot sør er der den subtropiske jeten hører hjemme (figur 4). For dipolen — vest varmere eller kaldere enn øst — trenger du et anomalikart, ikke dette."
+          fit="contain"
+        />
+        <PhotoFigure
+          src="/images/fig-iod-jet.png"
+          alt="Jordklode med subtropiske jetstrømmer som gule og røde bånd nord og sør for ekvator over Indiahavet"
+          heading="Figur 4. Subtropiske jetstrømmer over Indiahavet"
+          caption="Jetene følger temperaturgrensene i figur 3. Når IOD flytter konveksjonen, flytter grensen — og dermed banen og formen på jeten."
+          fit="contain"
+        />
+        <IodSstAnomalyDiagram />
+        <IodPhaseShift />
+      </CollapsibleSection>
+
+      {/* ── Knapp 4: IOD og ENSO ────────────────────────────────────── */}
+      <CollapsibleSection
+        title="Samspill: IOD og ENSO"
+        subtitle="Hvordan IOD og El Niño / La Niña forsterker hverandre (1997, 2019)"
+        badge="Telekoblinger"
+        badgeVariant="primary"
+      >
+        <p>
+          IOD er en egen modus i Indiahavet, men den snakker med{" "}
+          <Link to="/tema/klima/enso" className="text-primary underline-offset-2 hover:underline">
+            ENSO
+          </Link>
+          . Når positiv IOD faller sammen med El Niño, som i 1997 og 2019, forsterker de tørken i
+          Australia. Begge vipper tørker Indonesia-siden samtidig. Negativ IOD kan forsterke nedbøren
+          under La Niña.
+        </p>
+        <p>
+          Mekanikken bak bølgene — Rossby og Coriolis — står under{" "}
+          <Link to="/tema/jetstrommer" className="text-primary underline-offset-2 hover:underline">
+            jetstrømmer
+          </Link>
+          .
+        </p>
+        <DmiTimeseriesDiagram />
+      </CollapsibleSection>
+
+      {/* ── 3. Oppsummering og eksamen ──────────────────────────────── */}
       <Callout title="Til eksamen">
         <p>Varmt hav: luft stiger, lavtrykk, nedbør. Kaldt hav: luft synker, høytrykk, tørke.</p>
         <p>

@@ -2,12 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Callout } from "@/components/callout";
+import { CollapsibleSection } from "@/components/collapsible-section";
 import { EnsoComparisonDiagram } from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { Button } from "@/components/ui/button";
 import { KILDER } from "@/lib/kilder";
 import { topicHead } from "@/lib/seo";
 
@@ -290,7 +290,7 @@ function EnsoPage() {
       next={{ to: "/tema/klima/iod", label: "Neste: IOD" }}
       kilder={KILDER.enso}
     >
-      {/* ── 1. Hva er ENSO? ─────────────────────────────────────────── */}
+      {/* ── 1. Introduksjon: Hva er ENSO? ───────────────────────────── */}
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Hva er ENSO?
       </h2>
@@ -329,642 +329,640 @@ function EnsoPage() {
         barn="En naturlig og syklisk variasjon i havtemperatur og lufttrykk i det ekvatoriale Stillehavet, bestående av El Niño (varm fase), La Niña (kald fase) og nøytrale faser. Perioden er typisk 2–7 år."
       />
 
-      {/* ── 2. Normaltilstanden og Walker-sirkulasjonen ──────────────── */}
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Normaltilstanden og Walker-sirkulasjonen
-      </h2>
-      <p>
-        For å forstå El Niño og La Niña må du kjenne normaltilstanden godt.
-        Det er avviket fra normalen som driver konsekvensene.
-      </p>
+      {/* ── 2. Interaktive temaknapper ──────────────────────────────── */}
+      <div className="pt-2">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Utforsk tilstandene, mekanismene og konsekvensene
+        </h2>
+        <p className="text-sm text-muted-foreground">
+          Trykk på knappene under for å folde ut detaljert fagstoff, observasjoner, figurer og
+          telekoblinger for hver del av ENSO-systemet.
+        </p>
+      </div>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Passatvindene
-      </h3>
-      <p>
-        Under normale forhold blåser de sørøstlige og nordøstlige{" "}
-        <strong>passatvindene</strong> jevnt mot vest langs ekvator (Bjerknes,
-        1969). Disse vindene er et direkte resultat av{" "}
-        <Link
-          to="/tema/vindsystemet"
-          className="text-primary underline-offset-2 hover:underline"
-        >
-          den globale atmosfæresirkulasjonen
-        </Link>
-        : kald luft synker ved subtropene (ca. 30°N og 30°S) og strømmer mot
-        ekvator langs overflaten, avbøyd av{" "}
-        <Link
-          to="/tema/coriolis"
-          className="text-primary underline-offset-2 hover:underline"
-        >
-          Coriolis-effekten
-        </Link>{" "}
-        til å bli østlige vinder.
-      </p>
-      <p>
-        Passatvindene skaper en stabil «pumpe»: de dytter kontinuerlig solvarmet
-        overflatevann fra det østlige Stillehavet (Peru) mot det vestlige
-        (Indonesia).
-      </p>
+      {/* ── Knapp 1: Normaltilstand og Walker-sirkulasjonen ─────────── */}
+      <CollapsibleSection
+        title="1. Normaltilstand og Walker-sirkulasjonen"
+        subtitle="Passatvinder, warm pool ved Indonesia, oppvelling ved Peru og den lukkede Walker-cellen"
+        badge="Nøytral tilstand"
+        badgeVariant="teal"
+        defaultOpen={true}
+      >
+        <p>
+          For å forstå El Niño og La Niña må du kjenne normaltilstanden godt.
+          Det er avviket fra normalen som driver konsekvensene.
+        </p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Det vestlige varmebassenget (warm pool)
-      </h3>
-      <p>
-        I det vestlige Stillehavet — rundt Indonesia, Filippinene og
-        Nord-Australia — hoper det oppvarmede overflatevannet seg opp og danner
-        et enormt basseng med temperaturer på 28–30 °C. Dette kalles{" "}
-        <strong>det vestlige varmebassenget</strong> (<em>warm pool</em>).
-      </p>
-      <p>
-        Det varme bassenget er selve motoren for nedbør og tropisk konveksjon i
-        regionen. Fuktig luft stiger kraftig, danner dype cumulonimbustårn og
-        gir store nedbørsmengder over Indonesia og Nord-Australia. Havnivået i
-        vest er faktisk ca. 0,5 meter høyere enn i øst fordi vinden stabler opp
-        vann der.
-      </p>
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Passatvindene
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Under normale forhold blåser de sørøstlige og nordøstlige{" "}
+              <strong>passatvindene</strong> jevnt mot vest langs ekvator
+              (Bjerknes, 1969). Disse vindene er et direkte resultat av{" "}
+              <Link
+                to="/tema/vindsystemet"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                den globale atmosfæresirkulasjonen
+              </Link>
+              : kald luft synker ved subtropene (ca. 30°N og 30°S) og strømmer
+              mot ekvator langs overflaten, avbøyd av{" "}
+              <Link
+                to="/tema/coriolis"
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                Coriolis-effekten
+              </Link>{" "}
+              til å bli østlige vinder. Passatvindene skaper en stabil «pumpe» som
+              kontinuerlig skyver varmt vann vestover.
+            </p>
+          </div>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Oppvelling utenfor Peru
-      </h3>
-      <p>
-        Når vinden skyver overflatevannet vestover, må det erstattes av noe.
-        Utenfor kysten av Peru og Ecuador trekkes kaldt, næringsrikt dypvann opp
-        til overflaten — en prosess som kalles{" "}
-        <strong>oppvelling</strong> (<em>upwelling</em>).
-      </p>
-      <p>
-        Det kalde vannet (ofte 18–20 °C) avkjøler luften over, slik at den
-        synker og gir et stabilt høytrykk langs kysten. Resultatet er lite
-        nedbør og klart vær i kystbeltene av Peru og Nord-Chile. Oppvellingen er
-        derimot livsgrunnlaget for et av verdens rikeste fiskerier: kaldt,
-        næringsrikt vann mater store bestander av ansjos og andre pelagiske
-        arter.
-      </p>
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Det vestlige varmebassenget (warm pool)
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              I det vestlige Stillehavet — rundt Indonesia, Filippinene og
+              Nord-Australia — hoper det oppvarmede overflatevannet seg opp og
+              danner et enormt basseng med temperaturer på 28–30 °C. Dette
+              kalles <strong>det vestlige varmebassenget</strong> (
+              <em>warm pool</em>). Fuktig luft stiger kraftig og gir store
+              nedbørsmengder over Indonesia. Havnivået i vest er faktisk ca. 0,5
+              meter høyere enn i øst fordi vinden stabler opp vann der.
+            </p>
+          </div>
 
-      <PhotoFigure
-        src="/images/fig-enso-normal.jpg"
-        alt="Tverrsnitt av tropisk Stillehav i normaltilstand: passatvinder mot vest, varmt basseng ved Indonesia, bratt termoklin og oppvelling ved Peru"
-        heading="Figur 1. Normaltilstanden og Walker-sirkulasjonen"
-        caption="Under normale forhold blåser passatvindene vestover og hoper opp varmt overflatevann ved Indonesia (venstre). Termoklinen heller bratt oppover mot øst. Utenfor Peru (høyre) trekkes kaldt dypvann opp (oppvelling). Walker-sirkulasjonen lukker kretsen: oppstigning i vest, østgående transport i høyden, nedsynking i øst og passatvinder tilbake ved overflaten."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Varmt vestlig basseng (>29 °C). Konveksjon og kraftig nedbør over Indonesia.",
-          },
-          {
-            n: "2",
-            label:
-              "Oppvelling ved Peru. Kaldt, næringsrikt bunnvann erstatter overflatevannet.",
-          },
-          {
-            n: "3",
-            label:
-              "Walker-sirkulasjonen: den lukkede øst–vest-cellen i atmosfæren langs ekvator.",
-          },
-        ]}
-      />
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Oppvelling utenfor Peru
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Når vinden skyver overflatevannet vestover, trekkes kaldt,
+              næringsrikt dypvann (18–20 °C) opp til overflaten utenfor Peru og
+              Ecuador — en prosess som kalles <strong>oppvelling</strong> (
+              <em>upwelling</em>). Det kalde vannet gir stabilt høytrykk og lite
+              nedbør langs kysten, men mater verdens rikeste fiskerier av ansjos.
+            </p>
+          </div>
+        </div>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Walker-sirkulasjonen
-      </h3>
-      <p>
-        Det lukkede luftsirkulasjonsmønsteret langs ekvator kalles{" "}
-        <strong>Walker-sirkulasjonen</strong>, oppkalt etter meteorologen
-        Gilbert Walker som beskrev sammenhengen mellom lufttrykk og vind i
-        Stillehavet på 1920-tallet. Kretsen består av:
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>Oppstigning i vest:</strong> Varm, fuktig luft stiger over det
-          vestlige varmebassenget og danner dype konveksjonsskyer.
-        </li>
-        <li>
-          <strong>Østgående transport i høyden:</strong> Luften transporteres
-          østover i øvre troposfære.
-        </li>
-        <li>
-          <strong>Nedsynking i øst:</strong> Luften synker over det østlige
-          Stillehavet og langs Sør-Amerikas kyst, gir høytrykk og stabilt vær.
-        </li>
-        <li>
-          <strong>Passatvinder tilbake ved overflaten:</strong> Luften strømmer
-          vestover igjen som passatvinder og lukker kretsen.
-        </li>
-      </ul>
-      <p>
-        Walker-sirkulasjonen og passatvindene forsterker hverandre gjensidig: jo
-        sterkere passatvindene er, jo mer varmt vann hoper seg opp i vest, jo
-        sterkere blir konveksjonen, og jo kraftigere drives sirkulasjonen. Det
-        er et stabilt og selvforsterkende system — men også et sårbart ett.
-      </p>
+        <PhotoFigure
+          src="/images/fig-enso-normal.jpg"
+          alt="Tverrsnitt av tropisk Stillehav i normaltilstand: passatvinder mot vest, varmt basseng ved Indonesia, bratt termoklin og oppvelling ved Peru"
+          heading="Figur 1. Normaltilstanden og Walker-sirkulasjonen"
+          caption="Under normale forhold blåser passatvindene vestover og hoper opp varmt overflatevann ved Indonesia (venstre). Termoklinen heller bratt oppover mot øst. Utenfor Peru (høyre) trekkes kaldt dypvann opp (oppvelling). Walker-sirkulasjonen lukker kretsen: oppstigning i vest, østgående transport i høyden, nedsynking i øst og passatvinder tilbake ved overflaten."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Varmt vestlig basseng (>29 °C). Konveksjon og kraftig nedbør over Indonesia.",
+            },
+            {
+              n: "2",
+              label:
+                "Oppvelling ved Peru. Kaldt, næringsrikt bunnvann erstatter overflatevannet.",
+            },
+            {
+              n: "3",
+              label:
+                "Walker-sirkulasjonen: den lukkede øst–vest-cellen i atmosfæren langs ekvator.",
+            },
+          ]}
+        />
 
-      <OrdBoks
-        ord="Walker-sirkulasjonen"
-        barn="Øst–vest-gående atmosfærisk sirkulasjonscelle over det ekvatoriale Stillehavet. Oppstigning i vest (Indonesia), østgående transport i høyden, nedsynking i øst (Peru), vestgående passatvinder ved overflaten. Beskrevet av Gilbert Walker på 1920-tallet."
-      />
+        <div className="pt-2">
+          <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+            Walker-sirkulasjonen
+          </h4>
+          <p className="mt-1 text-sm sm:text-base">
+            Det lukkede luftsirkulasjonsmønsteret langs ekvator kalles{" "}
+            <strong>Walker-sirkulasjonen</strong>, oppkalt etter Gilbert
+            Walker. Kretsen består av:
+          </p>
+          <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm sm:text-base">
+            <li>
+              <strong>Oppstigning i vest:</strong> Varm luft stiger over det
+              vestlige varmebassenget (konveksjon).
+            </li>
+            <li>
+              <strong>Østgående transport i høyden:</strong> Luften flyter
+              østover i øvre troposfære.
+            </li>
+            <li>
+              <strong>Nedsynking i øst:</strong> Luften synker over det østlige
+              Stillehavet og gir høytrykk.
+            </li>
+            <li>
+              <strong>Passatvinder ved overflaten:</strong> Luften strømmer
+              vestover og lukker kretsen.
+            </li>
+          </ul>
+        </div>
 
-      {/* ── 3. El Niño ────────────────────────────────────────────────── */}
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        El Niño: Når systemet snur
-      </h2>
-      <p>
-        Med ujevne mellomrom begynner passatvindene å svekkes (Trenberth, 1997).
-        Hva som utløser dette er fortsatt et aktivt forskningsspørsmål — det
-        handler trolig om indre tilfeldigheter i hav–atmosfæresystemet, ikke én
-        enkelt ytre årsak.
-      </p>
+        <OrdBoks
+          ord="Walker-sirkulasjonen"
+          barn="Øst–vest-gående atmosfærisk sirkulasjonscelle over det ekvatoriale Stillehavet. Oppstigning i vest (Indonesia), østgående transport i høyden, nedsynking i øst (Peru), vestgående passatvinder ved overflaten. Beskrevet av Gilbert Walker på 1920-tallet."
+        />
+      </CollapsibleSection>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Bjerknes-tilbakekoblingen
-      </h3>
-      <p>
-        Systemet inneholder en kraftig positiv tilbakekobling kalt{" "}
-        <strong>Bjerknes-tilbakekoblingen</strong>: svakere passater → varmt
-        vann flyter østover → det østlige Stillehavet varmes opp → enda svakere
-        passater. Når svingningen først begynner, forsterker den seg selv raskt.
-        Det er denne mekanismen som gjør El Niño til en rask og dramatisk
-        forandring — ikke en gradvis drifting.
-      </p>
+      {/* ── Knapp 2: El Niño ────────────────────────────────────────── */}
+      <CollapsibleSection
+        title="2. El Niño (Varm fase — Når systemet snur)"
+        subtitle="Svake passater · Bjerknes-tilbakekobling · Kelvin-bølger · Oppvelling kollapser · Flom i Peru, tørke i vest"
+        badge="Varm fase"
+        badgeVariant="amber"
+      >
+        <p>
+          Med ujevne mellomrom begynner passatvindene å svekkes (Trenberth,
+          1997). Dette utløser en kjede av forandringer over hele Stillehavet.
+        </p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Ekvatoriale Kelvin-bølger
-      </h3>
-      <p>
-        Når passatvindene slakker av, frigjøres det oppstablede varmtvannet
-        i vest og brer seg østover som en{" "}
-        <strong>ekvatorial Kelvin-bølge</strong> — en indre oseanisk bølge som
-        følger ekvator og bærer varmt vann tvers over Stillehavet med en
-        hastighet på 2–3 m/s. Bølgen er ikke synlig på overflaten som en
-        vanlig havbølge, men spores ved at termoklinen hever seg og senker seg
-        langs bølgens bane.
-      </p>
-      <p>
-        Kelvin-bølgen er selve «meldingen» som forteller det østlige
-        Stillehavet at noe er i ferd med å endre seg. Havovervåkingssatellitter
-        som Copernicus og TOPEX/Poseidon sporer disse bølgene i sanntid og gir
-        meteorologer et forvarsel på 3–6 måneder.
-      </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-lg border border-border/70 bg-card/70 p-4">
+            <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+              Bjerknes-tilbakekoblingen
+            </h4>
+            <p className="mt-1 text-xs text-foreground/85 sm:text-sm">
+              Svakere passater → varmt vann flyter østover → det østlige
+              Stillehavet varmes opp → enda svakere passater. Denne positive
+              tilbakekoblingen gjør El Niño til en rask og dramatisk omveltning.
+            </p>
+          </div>
+          <div className="rounded-lg border border-border/70 bg-card/70 p-4">
+            <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+              Ekvatoriale Kelvin-bølger
+            </h4>
+            <p className="mt-1 text-xs text-foreground/85 sm:text-sm">
+              Det oppdemmede varmtvannet frigjøres og brer seg østover som en
+              indre oseanisk bølge langs ekvator med 2–3 m/s. Satellitter sporer
+              dette 3–6 måneder før hendelsen når Sør-Amerikas kyst.
+            </p>
+          </div>
+        </div>
 
-      <PhotoFigure
-        src="/images/fig-enso-kelvin.jpg"
-        alt="Satellittaltimetri-kart over tropisk Stillehav som viser en ekvatorial Kelvin-bølge med forhøyet havnivå på vei østover"
-        heading="Figur 2. Satellittovervåking av ekvatorial Kelvin-bølge"
-        caption="Satellittaltimetri (SSHA) måler havoverflatens høydeanomali med centimeters presisjon. Figuren viser en kraftig ekvatorial Kelvin-bølge under oppbyggingen av en El Niño: en tunge av hevet havnivå (+15 til +25 cm, rød/hvit farge) beveger seg østover langs ekvator med 2–3 m/s mot Sør-Amerika. Data: Sentinel-6 / Jason-3."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Havoverflatehøyde (SSHA) hevet 15–25 cm langs ekvator pga. oppdemmet varmtvann.",
-          },
-          {
-            n: "2",
-            label:
-              "Kelvin-bølgen brer seg østover med ca. 2–3 m/s (tar ca. 2–3 måneder over Stillehavet).",
-          },
-          {
-            n: "3",
-            label:
-              "Satellitter gir 3–6 måneders forvarsel før El Niño når kysten av Sør-Amerika.",
-          },
-        ]}
-      />
+        <PhotoFigure
+          src="/images/fig-enso-kelvin.jpg"
+          alt="Satellittaltimetri-kart over tropisk Stillehav som viser en ekvatorial Kelvin-bølge med forhøyet havnivå på vei østover"
+          heading="Figur 2. Satellittovervåking av ekvatorial Kelvin-bølge"
+          caption="Satellittaltimetri (SSHA) måler havoverflatens høydeanomali med centimeters presisjon. Figuren viser en kraftig ekvatorial Kelvin-bølge under oppbyggingen av en El Niño: en tunge av hevet havnivå (+15 til +25 cm, rød/hvit farge) beveger seg østover langs ekvator med 2–3 m/s mot Sør-Amerika. Data: Sentinel-6 / Jason-3."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Havoverflatehøyde (SSHA) hevet 15–25 cm langs ekvator pga. oppdemmet varmtvann.",
+            },
+            {
+              n: "2",
+              label:
+                "Kelvin-bølgen brer seg østover med ca. 2–3 m/s (tar ca. 2–3 måneder over Stillehavet).",
+            },
+            {
+              n: "3",
+              label:
+                "Satellitter gir 3–6 måneders forvarsel før El Niño når kysten av Sør-Amerika.",
+            },
+          ]}
+        />
 
-      <PhotoFigure
-        src="/images/fig-enso-elnino.jpg"
-        alt="Tverrsnitt av El Niño: svekkede passatvinder, varmt vann østover, flat termoklin i øst, kollaps av oppvellingen ved Peru"
-        heading="Figur 3. El Niño-tilstanden"
-        caption="Passatvindene svekkes. Varmt overflatevann skvulper østover (Kelvin-bølge). Termoklinen flater ut i øst — kaldt næringsrikt dypvann når ikke lenger opp til overflaten. Konveksjon og regn forskyves fra Indonesia mot det sentrale og østlige Stillehavet."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Svekket passatvind. Bjerknes-tilbakekoblingen starter forsterkningen.",
-          },
-          {
-            n: "2",
-            label:
-              "Ekvatorial Kelvin-bølge bærer varmt vann østover langs ekvator.",
-          },
-          {
-            n: "3",
-            label:
-              "Termoklinen trykkes ned i øst. Oppvelling kollapser — fiskeriet svikter.",
-          },
-          {
-            n: "4",
-            label:
-              "Konveksjon og nedbørsområde forskyves til sentralt/østlig Stillehav.",
-          },
-        ]}
-      />
+        <PhotoFigure
+          src="/images/fig-enso-elnino.jpg"
+          alt="Tverrsnitt av El Niño: svekkede passatvinder, varmt vann østover, flat termoklin i øst, kollaps av oppvellingen ved Peru"
+          heading="Figur 3. El Niño-tilstanden"
+          caption="Passatvindene svekkes. Varmt overflatevann skvulper østover (Kelvin-bølge). Termoklinen flater ut i øst — kaldt næringsrikt dypvann når ikke lenger opp til overflaten. Konveksjon og regn forskyves fra Indonesia mot det sentrale og østlige Stillehavet."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Svekket passatvind. Bjerknes-tilbakekoblingen starter forsterkningen.",
+            },
+            {
+              n: "2",
+              label:
+                "Ekvatorial Kelvin-bølge bærer varmt vann østover langs ekvator.",
+            },
+            {
+              n: "3",
+              label:
+                "Termoklinen trykkes ned i øst. Oppvelling kollapser — fiskeriet svikter.",
+            },
+            {
+              n: "4",
+              label:
+                "Konveksjon og nedbørsområde forskyves til sentralt/østlig Stillehav.",
+            },
+          ]}
+        />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Termoklinen og oppvellingens kollaps
-      </h3>
-      <p>
-        Uten det kontinuerlige vindpresset vestover klarer ikke gravitasjonen å
-        holde det varme vannet samlet. Termoklinen — skillelaget mellom det
-        varme overflatevannet og det kalde dypvannet — flater ut og trykkes ned
-        i det østlige Stillehavet.
-      </p>
-      <p>
-        Oppvellingen utenfor Peru klarer nå ikke lenger å hente opp kaldt
-        næringsvann; den pumper bare rundt lunkent overflatevann. For peruanske
-        fiskere betyr dette katastrofe: ansjosbestandene kollapser fordi
-        næringstilførselen stanser. Det er nettopp denne virkningen kystfiskerne
-        oppdaget år etter år i juletiden — og ga «gutten» navnet{" "}
-        <em>El Niño</em>, «Jesusbarnet».
-      </p>
+        <div>
+          <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+            Termoklinen og oppvellingens kollaps
+          </h4>
+          <p className="mt-1 text-sm sm:text-base">
+            Termoklinen flater ut og trykkes ned i det østlige Stillehavet.
+            Oppvellingen klarer ikke lenger å hente opp kaldt næringsvann; den
+            resirkulerer bare lunkent overflatevann. Ansjosbestandene kollapser.
+            Peruanske kystfiskere ga fenomenet navnet <em>El Niño</em> (
+            «Jesusbarnet») fordi oppvarmingen ofte kulminerte rundt juletider.
+          </p>
+        </div>
 
-      <OrdBoks
-        ord="Termoklin"
-        barn="Det sjiktet i havet der temperaturen faller raskt med dybden. Under El Niño trykkes termoklinen ned i det østlige Stillehavet, noe som kveler tilførselen av kaldt, næringsrikt bunnvann og kollapser oppvellingen."
-      />
+        <OrdBoks
+          ord="Termoklin"
+          barn="Det sjiktet i havet der temperaturen faller raskt med dybden. Under El Niño trykkes termoklinen ned i det østlige Stillehavet, noe som kveler tilførselen av kaldt, næringsrikt bunnvann og kollapser oppvellingen."
+        />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Regionale konsekvenser av El Niño
-      </h3>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>Peru og Ecuador:</strong> Voldsom nedbør og leirskred rammer
-          ørkenområder. Elver flommer over. Infrastruktur og jordbruk ødelegges.
-        </li>
-        <li>
-          <strong>Indonesia og Øst-Australia:</strong> Alvorlig tørke og
-          skogbranner. Svekket monsun. Under El Niño 2015/16 brant skogene på
-          Borneo og Sumatra i måneder.
-        </li>
-        <li>
-          <strong>India:</strong> Monsunen kan svekkes og komme forsinket, noe
-          som gir tørke og avlingssvikt.
-        </li>
-        <li>
-          <strong>Sørøst-Afrika:</strong> Svekket regnperiode, risiko for
-          matmangel.
-        </li>
-        <li>
-          <strong>Karibia og Mellom-Amerika:</strong> Tørrere enn normalt i
-          mange år.
-        </li>
-      </ul>
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+            Regionale konsekvenser av El Niño
+          </h4>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>
+              <strong>Peru og Ecuador:</strong> Voldsom nedbør og leirskred
+              rammer ørkenområder. Elver flommer over, og fiskeriet kollapser.
+            </li>
+            <li>
+              <strong>Indonesia og Øst-Australia:</strong> Alvorlig tørke og
+              skogbranner. Svekket monsun.
+            </li>
+            <li>
+              <strong>India:</strong> Monsunen kan svekkes og gi avlingssvikt.
+            </li>
+            <li>
+              <strong>Sørøst-Afrika:</strong> Svekket regnperiode og risiko for
+              matmangel.
+            </li>
+            <li>
+              <strong>Karibia og Mellom-Amerika:</strong> Tørrere enn normalt i
+              mange år (f.eks. Panamakanalen).
+            </li>
+          </ul>
+        </div>
+      </CollapsibleSection>
 
-      {/* ── 4. La Niña ────────────────────────────────────────────────── */}
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        La Niña: Den forsterkede normalen
-      </h2>
-      <p>
-        La Niña er den motsatte ekstremfasen. Passatvindene blåser sterkere enn
-        normalt. Det varme overflatevannet skyves enda hardere mot vest, og
-        oppvellingen i øst blir ekstra kraftig. Havoverflaten i det sentrale og
-        østlige Stillehavet blir 1–3 °C kaldere enn gjennomsnittet (NOAA,
-        u.å.).
-      </p>
-      <p>
-        En El Niño-episode etterfølges ofte av en eller to La Niña-sesonger,
-        fordi systemet «overskyves» og svinger tilbake med ekstra styrke —
-        som en pendel som drar for langt den andre veien.
-      </p>
+      {/* ── Knapp 3: La Niña ────────────────────────────────────────── */}
+      <CollapsibleSection
+        title="3. La Niña (Kald fase — Den forsterkede normalen)"
+        subtitle="Super-passater · Ekspandert varmtvannsbasseng · Intens oppvelling ved Peru · Flom i Australia/Asia"
+        badge="Kald fase"
+        badgeVariant="sky"
+      >
+        <p>
+          La Niña er den motsatte ekstremfasen. Passatvindene blåser sterkere
+          enn normalt. Det varme overflatevannet skyves enda hardere mot vest, og
+          oppvellingen i øst blir ekstra kraftig. Havoverflaten i det sentrale og
+          østlige Stillehavet blir 1–3 °C kaldere enn gjennomsnittet (NOAA,
+          u.å.).
+        </p>
+        <p>
+          En El Niño-episode etterfølges ofte av en eller to La Niña-sesonger,
+          fordi systemet «overskyves» og svinger tilbake med ekstra styrke — som
+          en pendel.
+        </p>
 
-      <PhotoFigure
-        src="/images/fig-enso-lanina.jpg"
-        alt="Tverrsnitt av La Niña: ekstra sterke passatvinder, utvidet varmtvannsbaseng i vest, intens oppvelling ved Peru"
-        heading="Figur 4. La Niña-tilstanden"
-        caption="Passatvindene forsterkes. Det vestlige varmebassenget ekspanderer og presses lenger vest og nord. Oppvellingen ved Peru er usedvanlig kraftig. Havoverflaten i øst er 1–3 °C kaldere enn normalt. Tørke i Peru og Karibia. Kraftige monsunregn og sykloner i Australia og Sørøst-Asia."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Ekstra sterke passatvinder presser varmt vann lenger vest enn normalt.",
-          },
-          {
-            n: "2",
-            label:
-              "Intens oppvelling i øst. Havoverflaten ved Peru 1–3 °C kaldere enn normalt.",
-          },
-          {
-            n: "3",
-            label:
-              "Kraftige monsunregn, sykloner og flom i Australia, Sørøst-Asia og Øst-Afrika.",
-          },
-        ]}
-      />
+        <PhotoFigure
+          src="/images/fig-enso-lanina.jpg"
+          alt="Tverrsnitt av La Niña: ekstra sterke passatvinder, utvidet varmtvannsbaseng i vest, intens oppvelling ved Peru"
+          heading="Figur 4. La Niña-tilstanden"
+          caption="Passatvindene forsterkes. Det vestlige varmebassenget ekspanderer og presses lenger vest og nord. Oppvellingen ved Peru er usedvanlig kraftig. Havoverflaten i øst er 1–3 °C kaldere enn normalt. Tørke i Peru og Karibia. Kraftige monsunregn og sykloner i Australia og Sørøst-Asia."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Ekstra sterke passatvinder presser varmt vann lenger vest enn normalt.",
+            },
+            {
+              n: "2",
+              label:
+                "Intens oppvelling i øst. Havoverflaten ved Peru 1–3 °C kaldere enn normalt.",
+            },
+            {
+              n: "3",
+              label:
+                "Kraftige monsunregn, sykloner og flom i Australia, Sørøst-Asia og Øst-Afrika.",
+            },
+          ]}
+        />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Regionale konsekvenser av La Niña
-      </h3>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>Australia og Sørøst-Asia:</strong> Ekstreme monsunregn,
-          flom og kraftige tropiske sykloner. Flommene i Queensland 2010/11
-          falt under en sterk La Niña.
-        </li>
-        <li>
-          <strong>Øst-Afrika (Horn of Africa):</strong> Kraftig regnperiode
-          og flomfare.
-        </li>
-        <li>
-          <strong>Peru og Karibia:</strong> Forsterket tørke.
-        </li>
-        <li>
-          <strong>Sørvest-USA:</strong> Tørrere enn normalt, økt skogbrannfare.
-        </li>
-      </ul>
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+            Regionale konsekvenser av La Niña
+          </h4>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>
+              <strong>Australia og Sørøst-Asia:</strong> Ekstreme monsunregn,
+              flom og kraftige tropiske sykloner (f.eks. Queensland 2010/11).
+            </li>
+            <li>
+              <strong>Øst-Afrika (Horn of Africa):</strong> Kraftig regnperiode
+              og flomfare.
+            </li>
+            <li>
+              <strong>Peru og Karibia:</strong> Forsterket tørke.
+            </li>
+            <li>
+              <strong>Sørvest-USA:</strong> Tørrere enn normalt, økt
+              skogbrannfare.
+            </li>
+          </ul>
+        </div>
+      </CollapsibleSection>
 
-      {/* ── Interaktivt diagram ──────────────────────────────────────── */}
-      <EnsoComparisonDiagram />
+      {/* ── Knapp 4: Interaktiv sammenligning ────────────────────────── */}
+      <CollapsibleSection
+        title="4. Sammenlign fasene (Interaktiv modell)"
+        subtitle="Bytt direkte mellom Nøytral, El Niño og La Niña i det interaktive diagrammet"
+        badge="Interaktiv modell"
+        badgeVariant="primary"
+      >
+        <p className="text-sm sm:text-base text-foreground/90">
+          Bruk knappene inne i diagrammet for å sammenligne hvordan
+          passatvindene, det vestlige bassenget og termoklinen endrer seg
+          mellom de tre tilstandene.
+        </p>
+        <EnsoComparisonDiagram />
+      </CollapsibleSection>
 
-      {/* ── 5. ENSO-indekser ─────────────────────────────────────────── */}
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        ENSO-indekser: SOI og ONI
-      </h2>
-      <p>
-        For å kvantifisere ENSO-styrken og definere om vi er i en El Niño- eller
-        La Niña-episode, bruker meteorologer og klimaforskere standardiserte
-        indekser.
-      </p>
+      {/* ── Knapp 5: ENSO-indekser (SOI og ONI) ──────────────────────── */}
+      <CollapsibleSection
+        title="5. ENSO-indekser: SOI og ONI"
+        subtitle="SOI (atmosfæretrykk Tahiti vs. Darwin) og ONI (SST-anomali i Niño 3.4)"
+        badge="Måling & Indekser"
+        badgeVariant="neutral"
+      >
+        <p>
+          For å kvantifisere ENSO-styrken og definere om vi er i en El Niño-
+          eller La Niña-episode, bruker forskere standardiserte indekser:
+        </p>
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        SOI — Southern Oscillation Index
-      </h3>
-      <p>
-        <strong>SOI</strong> ble formulert av Gilbert Walker på 1920-tallet og
-        er den eldste ENSO-indeksen. Den beregnes som den normaliserte
-        trykkforskjellen mellom to stasjoner: Tahiti (øst i Stillehavet) og
-        Darwin (vest i Australia).
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>Negativ SOI</strong> (lavere trykk i øst enn normalt):
-          tegn på El Niño — svakere passatvinder.
-        </li>
-        <li>
-          <strong>Positiv SOI</strong> (høyere trykk i øst enn normalt):
-          tegn på La Niña — sterkere passatvinder.
-        </li>
-      </ul>
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              SOI — Southern Oscillation Index
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              <strong>SOI</strong> måler den normaliserte trykkforskjellen
+              mellom Tahiti (øst i Stillehavet) og Darwin (vest i Australia).
+            </p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm sm:text-base">
+              <li>
+                <strong>Negativ SOI:</strong> lavt trykk over Tahiti, høyt over
+                Darwin → El Niño (svake passater).
+              </li>
+              <li>
+                <strong>Positiv SOI:</strong> høyt trykk over Tahiti, lavt over
+                Darwin → La Niña (sterke passater).
+              </li>
+            </ul>
+          </div>
 
-      <PhotoFigure
-        src="/images/fig-enso-soi-seesaw.jpg"
-        alt="Infografikk som viser den atmosfæriske trykkvippen (SOI) mellom Darwin og Tahiti under El Niño og La Niña"
-        heading="Figur 5. Den atmosfæriske SOI-vippen (Tahiti vs. Darwin)"
-        caption="Southern Oscillation Index (SOI) fungerer som en barometrisk vippe over Stillehavet. Under El Niño (øverst) er det unormalt lavt trykk over Tahiti og høyt trykk over Darwin (negativ SOI), noe som svekker passatene. Under La Niña (nederst) er trykkgradienten bratt med høytrykk over Tahiti og lavtrykk over Darwin (positiv SOI), noe som superforsterker passatvindene."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "El Niño (negativ SOI): Høytrykk over Darwin, lavtrykk over Tahiti. Svake passater.",
-          },
-          {
-            n: "2",
-            label:
-              "La Niña (positiv SOI): Lavtrykk over Darwin, høytrykk over Tahiti. Ekstremt sterke passater.",
-          },
-          {
-            n: "3",
-            label:
-              "Trykkvippen måler den atmosfæriske delen av ENSO-sirkulasjonen direkte.",
-          },
-        ]}
-      />
+          <PhotoFigure
+            src="/images/fig-enso-soi-seesaw.jpg"
+            alt="Infografikk som viser den atmosfæriske trykkvippen (SOI) mellom Darwin og Tahiti under El Niño og La Niña"
+            heading="Figur 5. Den atmosfæriske SOI-vippen (Tahiti vs. Darwin)"
+            caption="Southern Oscillation Index (SOI) fungerer som en barometrisk vippe over Stillehavet. Under El Niño (øverst) er det unormalt lavt trykk over Tahiti og høyt trykk over Darwin (negativ SOI), noe som svekker passatene. Under La Niña (nederst) er trykkgradienten bratt med høytrykk over Tahiti og lavtrykk over Darwin (positiv SOI), noe som superforsterker passatvindene."
+            fit="contain"
+            points={[
+              {
+                n: "1",
+                label:
+                  "El Niño (negativ SOI): Høytrykk over Darwin, lavtrykk over Tahiti. Svake passater.",
+              },
+              {
+                n: "2",
+                label:
+                  "La Niña (positiv SOI): Lavtrykk over Darwin, høytrykk over Tahiti. Ekstremt sterke passater.",
+              },
+              {
+                n: "3",
+                label:
+                  "Trykkvippen måler den atmosfæriske delen av ENSO-sirkulasjonen direkte.",
+              },
+            ]}
+          />
 
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        ONI — Oceanic Niño Index
-      </h3>
-      <p>
-        <strong>ONI</strong> er i dag den vanligste operasjonelle definisjonen
-        og brukes av den amerikanske værmeldingstjenesten NOAA. Den beregnes som
-        det 3-månedlige glidende gjennomsnittet av havoverflatetemperaturavviket
-        (SST-anomalien) i Niño 3.4-regionen (5°N–5°S, 120°–170°V).
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>ONI ≥ +0,5 °C</strong> i fem påfølgende 3-måneders perioder:
-          definert som El Niño.
-        </li>
-        <li>
-          <strong>ONI ≤ −0,5 °C</strong> i fem påfølgende perioder: La Niña.
-        </li>
-      </ul>
+          <div className="pt-2">
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              ONI — Oceanic Niño Index
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              <strong>ONI</strong> er NOAAs offisielle operasjonelle definisjon.
+              Den beregnes som det 3-månedlige glidende gjennomsnittet av
+              havoverflatetemperaturavviket (SST-anomalien) i Niño 3.4-regionen
+              (5°N–5°S, 120°–170°V).
+            </p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm sm:text-base">
+              <li>
+                <strong>ONI ≥ +0,5 °C</strong> i fem påfølgende 3-måneders
+                perioder: El Niño.
+              </li>
+              <li>
+                <strong>ONI ≤ −0,5 °C</strong> i fem påfølgende perioder: La
+                Niña.
+              </li>
+            </ul>
+          </div>
 
-      <PhotoFigure
-        src="/images/fig-enso-oni-tidsserie.jpg"
-        alt="Graf som viser ONI-indeksen fra 1950 til i dag med El Niño-episoder i rødt og La Niña i blått"
-        heading="Figur 6. ONI-tidsserie 1950 – i dag"
-        caption="ONI-indeksen viser hvordan ENSO har svingt siden 1950. Kraftige El Niño-episoder (rødt, ONI over +1,5) inkluderer 1972/73, 1982/83, 1997/98, 2015/16 og 2023/24. Kraftige La Niña (blått) inkluderer 1973/74, 1988/89, 1999/2000 og 2010/11. Kilde: NOAA."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Rekord-El Niño 1997/98: ONI nådde +2,3 °C. Global lufttemperaturrekord.",
-          },
-          {
-            n: "2",
-            label:
-              "El Niño 2015/16: blant de sterkeste målt. Bidro til rekordvarm 2016.",
-          },
-          {
-            n: "3",
-            label:
-              "La Niña 2010/11: sterk negativ fase etter El Niño 2009/10.",
-          },
-        ]}
-      />
+          <PhotoFigure
+            src="/images/fig-enso-oni-tidsserie.jpg"
+            alt="Graf som viser ONI-indeksen fra 1950 til i dag med El Niño-episoder i rødt og La Niña i blått"
+            heading="Figur 6. ONI-tidsserie 1950 – i dag"
+            caption="ONI-indeksen viser hvordan ENSO har svingt siden 1950. Kraftige El Niño-episoder (rødt, ONI over +1,5) inkluderer 1972/73, 1982/83, 1997/98, 2015/16 og 2023/24. Kraftige La Niña (blått) inkluderer 1973/74, 1988/89, 1999/2000 og 2010/11. Kilde: NOAA."
+            fit="contain"
+            points={[
+              {
+                n: "1",
+                label:
+                  "Rekord-El Niño 1997/98: ONI nådde +2,3 °C. Global lufttemperaturrekord.",
+              },
+              {
+                n: "2",
+                label:
+                  "El Niño 2015/16: blant de sterkeste målt. Bidro til rekordvarm 2016.",
+              },
+              {
+                n: "3",
+                label:
+                  "La Niña 2010/11: sterk negativ fase etter El Niño 2009/10.",
+              },
+            ]}
+          />
+        </div>
+      </CollapsibleSection>
 
-      {/* ── 6. Telekoblinger ─────────────────────────────────────────── */}
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Telekoblinger: ENSO påvirker hele kloden
-      </h2>
-      <p>
-        Når et enormt nedbørs- og konveksjonsbelte forskyves tusenvis av
-        kilometer i tropene, sender det bølger av energi ut i hele atmosfæren.
-        Disse fjernkoblingene mellom klimafenomener i ulike deler av verden
-        kalles <strong>telekoblinger</strong> (Bjerknes, 1969).
-      </p>
-      <p>
-        Mekanismen er primært{" "}
-        <Link
-          to="/tema/jetstrommer"
-          className="text-primary underline-offset-2 hover:underline"
-        >
-          Rossby-bølger
-        </Link>
-        : store, langsomme planetære bølger som dannes når tropisk konveksjon
-        varmer opp luften i øvre troposfære. Bølgene brer seg mot midlere
-        breddegrader, forskyver jetstrømmene og endrer trykkmønstrene over
-        kontinenter som i utgangspunktet ligger fjernt fra Stillehavet.
-      </p>
-
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Effekt på global temperatur
-      </h3>
-      <p>
-        Under kraftige El Niño-år avgir det store varme Stillehavet enorme
-        mengder energi til luften. Dette setter ofte nye globale
-        temperaturrekorder:
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>1997/98:</strong> Rekord-El Niño. Den globale
-          gjennomsnittstemperaturen slo rekord.
-        </li>
-        <li>
-          <strong>2015/16:</strong> Den sterkeste El Niño som var målt bidro
-          til at 2016 ble det varmeste året i instrumentell historikk.
-        </li>
-        <li>
-          <strong>2023/24:</strong> El Niño oven på bakgrunnsoppvarmingen fra
-          klimaendringer bidro til rekordvarm 2023 og 2024.
-        </li>
-      </ul>
-      <p>
-        Under La Niña absorberer havet mer energi, og den globale
-        lufttemperaturen dempes midlertidig — men bare med noen tideler av en
-        grad, og den underliggende trenden er fortsatt oppover.
-      </p>
-
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Orkaner og tropiske sykloner
-      </h3>
-      <p>
-        El Niño skaper sterkere{" "}
-        <strong>vertikal vindskjær</strong> (endring i vindretning og -styrke
-        med høyden) over Det karibiske hav og Atlanterhavet. Sterk vindskjær
-        river i stykker tropiske orkaners vertikale struktur og hemmer
-        utviklingen av nye — El Niño-år er typisk rolige orkansesonger i
-        Atlanteren.
-      </p>
-      <p>
-        La Niña gjør det motsatte: redusert vindskjær gir frihet for orkanene
-        til å vokse seg sterke. La Niña-år er gjerne svært aktive orkansesonger
-        (for eksempel 2020 og 2010 i Atlanteren).
-      </p>
-
-      <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
-        Samspill med IOD og NAO
-      </h3>
-      <p>
-        ENSO samhandler med andre klimamoduser og kan forsterke dem dramatisk:
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>IOD:</strong> Positiv{" "}
+      {/* ── Knapp 6: Globale telekoblinger ──────────────────────────── */}
+      <CollapsibleSection
+        title="6. Globale telekoblinger og samspill"
+        subtitle="Rossby-bølger, globale temperaturrekorder, orkaner/vindskjær og samspill med IOD og NAO"
+        badge="Global påvirkning"
+        badgeVariant="warning"
+      >
+        <p>
+          Når et enormt nedbørs- og konveksjonsbelte forskyves tusenvis av
+          kilometer i tropene, sender det bølger av energi ut i hele
+          atmosfæren. Disse fjernkoblingene kalles <strong>telekoblinger</strong>{" "}
+          (Bjerknes, 1969), formidlet via atmosfæriske{" "}
           <Link
-            to="/tema/klima/iod"
+            to="/tema/jetstrommer"
             className="text-primary underline-offset-2 hover:underline"
           >
-            IOD
-          </Link>{" "}
-          og El Niño som inntreffer samtidig (slik som i 1997 og 2019) tørker
-          begge sidene av Indonesia og Australia på én gang — med dramatisk
-          økt brannfare og tørkerisiko som resultat.
-        </li>
-        <li>
-          <strong>NAO:</strong> El Niño kan forstyrre polarvirvelen og svekke{" "}
-          <Link
-            to="/tema/klima/nao"
-            className="text-primary underline-offset-2 hover:underline"
-          >
-            NAO
-          </Link>{" "}
-          via Rossby-bølger. La Niña bidrar oftere til en stabil polarvirvel og
-          positiv NAO, noe som gir milde og regnfulle vintre i Norge.
-        </li>
-      </ul>
+            Rossby-bølger
+          </Link>
+          .
+        </p>
 
-      <PhotoFigure
-        src="/images/fig-enso-telekoblinger.jpg"
-        alt="Verdenskart som viser typiske telekobling-effekter av El Niño: tørke i rødt og økt nedbør i blått"
-        heading="Figur 7. Globale telekoblinger under El Niño"
-        caption="Kart over typiske væravvik under en sterk El Niño. Rød = varmere / tørrere enn normalt. Blå = kaldere / våtere enn normalt. La Niña gir speilbildet for mange regioner. Kilde: NOAA CPC."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Voldsom nedbør og flom langs vest-kysten av Sør-Amerika (Peru, Ecuador).",
-          },
-          {
-            n: "2",
-            label:
-              "Alvorlig tørke og skogbrannfare i Indonesia, Australia og India.",
-          },
-          {
-            n: "3",
-            label:
-              "Rolig orkansesong i Atlanterhavet pga. sterk vertikal vindskjær.",
-          },
-        ]}
-      />
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Effekt på global temperatur
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              Under kraftige El Niño-år avgir det varme Stillehavet enorme
+              mengder overskuddsvarme til luften, noe som setter globale
+              temperaturrekorder (1997/98, 2015/16, 2023/24). La Niña absorberer
+              mer energi og demper den globale temperaturen midlertidig.
+            </p>
+          </div>
 
-      {/* ── 7. ENSO og klimaendringer ────────────────────────────────── */}
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        ENSO i en varmere verden
-      </h2>
-      <p>
-        ENSO er ikke forårsaket av menneskeskapt global oppvarming. Geologiske
-        arkiv — koraller, iskjerner og sedimenter — viser at El Niño har
-        eksistert i tusenvis av år (Cobb et al., 2003). Det er et naturlig
-        trekk ved Jordens klimasystem.
-      </p>
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Orkaner og tropiske sykloner
+            </h4>
+            <p className="mt-1 text-sm sm:text-base">
+              El Niño skaper sterkere <strong>vertikal vindskjær</strong> over
+              Atlanteren og Karibia, som river orkanstrukturer i stykker (rolige
+              orkansesonger). La Niña reduserer vindskjæret og gir svært aktive
+              orkansesonger.
+            </p>
+          </div>
 
-      <PhotoFigure
-        src="/images/fig-enso-korall-paleo.jpg"
-        alt="Vitenskapelig diagram av korallkjerne og kjemiske proksydata som viser historiske El Niño og La Niña-episoder"
-        heading="Figur 8. Paleoklima — Korallkjerner som klimatermometer for ENSO"
-        caption="Massive koraller (f.eks. Porites) bygger kalkskjelett med årlige vekstbånd, akkurat som årringer i et tre. Oksygenisotopforholdet (δ18O) og strontium/kalsium-forholdet (Sr/Ca) i kalken avhenger direkte av havtemperaturen. Slike borekjerner gjør det mulig å rekonstruere ENSO-svingninger flere hundre år tilbake i tid — lenge før termometere fantes."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label:
-              "Røntgenbilde (X-ray) av korallkjerne viser årlige vekstbånd med vekslende kalktetthet.",
-          },
-          {
-            n: "2",
-            label:
-              "Kjemiske analyser (δ18O og Sr/Ca) avslører historiske El Niño-topper (f.eks. 1877/78 og 1982/83).",
-          },
-          {
-            n: "3",
-            label:
-              "Dokumenterer at ENSO er en naturlig klimamodus med tusenårige røtter.",
-          },
-        ]}
-      />
+          <div>
+            <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+              Samspill med IOD og NAO
+            </h4>
+            <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm sm:text-base">
+              <li>
+                <strong>IOD:</strong> Positiv{" "}
+                <Link
+                  to="/tema/klima/iod"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
+                  IOD
+                </Link>{" "}
+                og El Niño samtidig (f.eks. 1997 og 2019) tørker begge sider av
+                Australia og Indonesia på én gang.
+              </li>
+              <li>
+                <strong>NAO:</strong> El Niño forstyrrer polarvirvelen og kan
+                svekke{" "}
+                <Link
+                  to="/tema/klima/nao"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
+                  NAO
+                </Link>
+                , mens La Niña oftere gir stabil polarvirvel og positiv NAO i
+                Norge.
+              </li>
+            </ul>
+          </div>
+        </div>
 
-      <p>
-        Det sentrale spørsmålet for dagens klimaforskning er om en varmere
-        atmosfære og et varmere hav gjør ENSO-hendelsene{" "}
-        <em>hyppigere</em>, <em>kraftigere</em> eller{" "}
-        <em>mer uforutsigbare</em>. Foreløpige funn fra klimamodeller og
-        paleoklimatiske data peker i noe ulike retninger, men det er bred enighet
-        om at:
-      </p>
-      <ul className="list-disc space-y-2 pl-6">
-        <li>
-          <strong>Bakgrunnstemperaturen stiger:</strong> Selv moderate El
-          Niño-episoder kan nå slå globale temperaturrekorder fordi de legger
-          seg oppå en allerede varmere grunnlinje.
-        </li>
-        <li>
-          <strong>Ekstremnedbør intensiveres:</strong> Varmere atmosfære holder
-          mer fuktighet. El Niño-relaterte regnepisoder i Peru og Ecuador kan
-          bli enda kraftigere per hendelse.
-        </li>
-        <li>
-          <strong>Mulig økning i «super» El Niño-er:</strong> Noen studier
-          antyder at de aller kraftigste El Niño-episodene kan bli hyppigere
-          (Cai et al., 2014), men usikkerheten er fortsatt stor.
-        </li>
-      </ul>
+        <PhotoFigure
+          src="/images/fig-enso-telekoblinger.jpg"
+          alt="Verdenskart som viser typiske telekobling-effekter av El Niño: tørke i rødt og økt nedbør i blått"
+          heading="Figur 7. Globale telekoblinger under El Niño"
+          caption="Kart over typiske væravvik under en sterk El Niño. Rød = varmere / tørrere enn normalt. Blå = kaldere / våtere enn normalt. La Niña gir speilbildet for mange regioner. Kilde: NOAA CPC."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Voldsom nedbør og flom langs vest-kysten av Sør-Amerika (Peru, Ecuador).",
+            },
+            {
+              n: "2",
+              label:
+                "Alvorlig tørke og skogbrannfare i Indonesia, Australia og India.",
+            },
+            {
+              n: "3",
+              label:
+                "Rolig orkansesong i Atlanterhavet pga. sterk vertikal vindskjær.",
+            },
+          ]}
+        />
+      </CollapsibleSection>
+
+      {/* ── Knapp 7: ENSO i en varmere verden ───────────────────────── */}
+      <CollapsibleSection
+        title="7. ENSO i en varmere verden & Paleoklima"
+        subtitle="Korallkjerner som klimatermometre og framtidige super-El Niño-episoder"
+        badge="Klimaendringer"
+        badgeVariant="teal"
+      >
+        <p>
+          ENSO er ikke forårsaket av menneskeskapt global oppvarming. Geologiske
+          arkiv — koraller, iskjerner og sedimenter — viser at El Niño har
+          eksistert i tusenvis av år (Cobb et al., 2003). Det er et naturlig
+          trekk ved Jordens klimasystem.
+        </p>
+
+        <PhotoFigure
+          src="/images/fig-enso-korall-paleo.jpg"
+          alt="Vitenskapelig diagram av korallkjerne og kjemiske proksydata som viser historiske El Niño og La Niña-episoder"
+          heading="Figur 8. Paleoklima — Korallkjerner som klimatermometer for ENSO"
+          caption="Massive koraller (f.eks. Porites) bygger kalkskjelett med årlige vekstbånd, akkurat som årringer i et tre. Oksygenisotopforholdet (δ18O) og strontium/kalsium-forholdet (Sr/Ca) i kalken avhenger direkte av havtemperaturen. Slike borekjerner gjør det mulig å rekonstruere ENSO-svingninger flere hundre år tilbake i tid — lenge før termometere fantes."
+          fit="contain"
+          points={[
+            {
+              n: "1",
+              label:
+                "Røntgenbilde (X-ray) av korallkjerne viser årlige vekstbånd med vekslende kalktetthet.",
+            },
+            {
+              n: "2",
+              label:
+                "Kjemiske analyser (δ18O og Sr/Ca) avslører historiske El Niño-topper (f.eks. 1877/78 og 1982/83).",
+            },
+            {
+              n: "3",
+              label:
+                "Dokumenterer at ENSO er en naturlig klimamodus med tusenårige røtter.",
+            },
+          ]}
+        />
+
+        <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
+          <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+            Hva betyr global oppvarming for ENSO?
+          </h4>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
+            <li>
+              <strong>Bakgrunnstemperaturen stiger:</strong> Selv moderate El
+              Niño-episoder kan nå slå globale temperaturrekorder fordi de
+              legger seg oppå en allerede varmere grunnlinje.
+            </li>
+            <li>
+              <strong>Ekstremnedbør intensiveres:</strong> Varmere atmosfære
+              holder mer fuktighet (Clausius-Clapeyron: ~7 % mer fukt per grad
+              oppvarming).
+            </li>
+            <li>
+              <strong>Mulig økning i «super» El Niño-er:</strong> Noen studier
+              antyder at de aller kraftigste El Niño-episodene kan bli
+              hyppigere (Cai et al., 2014).
+            </li>
+          </ul>
+        </div>
+      </CollapsibleSection>
 
       {/* ── Årets El Niño ─────────────────────────────────────────────── */}
       <AaretElNino />
