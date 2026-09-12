@@ -994,164 +994,245 @@ ightarrow$ nedsynking)
 /**
  * 6. KatabaticWindDiagram
  * Viser utstråling over isbre/høyfjell, gravitasjonsdrenasje av tung kaldluft,
- * dannelse av kaldluftssjø og temperaturinversjon med røyklokk i dalbunn.
+ * dannelse av kaldluftssjø i dalbunnen, temperaturinversjon med røyklokk og termisk belte i lia.
  */
 export function KatabaticWindDiagram() {
   return (
     <Diagram
       title="Katabatisk fallvind og dannelse av temperaturinversjon"
       heading="Katabatisk vind: Gravitasjonsdrevet kaldluft og dype inversjoner"
-      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge luften nedover fjellsider og brefall som en brusende 'elv av kulde'. Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 15 grader mildere litt lenger oppe i åssiden (-5 °C). Røyk og forurensning fanges under inversjonslokket."
-      viewBox="0 0 940 480"
+      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge luften nedover fjellsider og brefall som en fossende 'elv av kulde' (30–80 km/t). Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 16 grader mildere litt lenger oppe i åssiden (-4 °C). Røyk og forurensning stenges inne under inversjonslokket."
+      viewBox="0 0 940 520"
       wide
     >
       {(m) => (
         <>
           <defs>
+            {/* Vinternatt-himmel */}
             <linearGradient id="kata-night-sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#04080e" />
-              <stop offset="35%" stopColor="#0a131e" />
-              <stop offset="75%" stopColor="#101d2d" />
-              <stop offset="100%" stopColor="#15263a" />
+              <stop offset="0%" stopColor="#030710" />
+              <stop offset="35%" stopColor="#081220" />
+              <stop offset="75%" stopColor="#0e1d30" />
+              <stop offset="100%" stopColor="#14283e" />
             </linearGradient>
 
+            {/* Isbre og snøplatå */}
             <linearGradient id="kata-glacier-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#f8fafc" />
-              <stop offset="30%" stopColor="#c7d2fe" />
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="25%" stopColor="#e0f2fe" />
+              <stop offset="70%" stopColor="#93c5fd" />
               <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.4" />
             </linearGradient>
 
+            {/* Fjellflanke gradient */}
+            <linearGradient id="kata-rock-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1e293b" />
+              <stop offset="50%" stopColor="#141d28" />
+              <stop offset="100%" stopColor="#0b1118" />
+            </linearGradient>
+
+            {/* Kaldluftssjø i dalbunnen */}
             <linearGradient id="kata-coldpool-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.3" />
-              <stop offset="40%" stopColor="#0284c7" stopOpacity="0.65" />
-              <stop offset="100%" stopColor="#0369a1" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.25" />
+              <stop offset="35%" stopColor="#0284c7" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#0369a1" stopOpacity="0.85" />
             </linearGradient>
           </defs>
 
-          <rect x="30" y="30" width="880" height="420" rx="8" fill="url(#kata-night-sky)" />
+          {/* Bakgrunn: Krystallklar stjerneklar vinternatt */}
+          <rect x="30" y="30" width="880" height="460" rx="8" fill="url(#kata-night-sky)" />
 
-          <circle cx="120" cy="70" r="16" fill="#fef08a" opacity="0.9" />
-          <circle cx="115" cy="68" r="14" fill="#060b12" />
+          {/* Måneskinn og stjerner */}
+          <circle cx="100" cy="70" r="16" fill="#fef08a" opacity="0.95" />
+          <circle cx="95" cy="67" r="14" fill="#040913" />
           {[
-            [180, 55], [230, 75], [290, 50], [450, 65], [620, 55], [780, 70], [840, 50]
+            [160, 50], [210, 68], [270, 45], [430, 60], [590, 50], [740, 65], [830, 45]
           ].map(([sx, sy], i) => (
-            <circle key={i} cx={sx} cy={sy} r={1.2} fill="#ffffff" opacity={0.8} />
+            <circle key={i} cx={sx} cy={sy} r={1.3} fill="#ffffff" opacity={0.85} />
           ))}
 
+          {/* REALISTISK NORSK DALPROFIL (U-DAL / FJORDDAL) */}
+          {/* Fjellmasse: Platåbre venstre (1500 moh.), dalbunn midt (100 moh.), motgående åsside høyre */}
           <path
-            d="M 30 150 
-               L 310 150 
-               Q 430 165 520 330 
-               L 910 370 
-               L 910 450 
-               L 30 450 Z"
-            fill="#121e29"
-            stroke="#22384a"
+            d="M 30 135 
+               L 240 135 
+               Q 310 145 370 230 
+               L 460 380 
+               L 660 380 
+               L 810 210 
+               L 910 210 
+               L 910 490 
+               L 30 490 Z"
+            fill="url(#kata-rock-grad)"
+            stroke="#26384a"
             strokeWidth="2"
           />
 
+          {/* Platåbreen på toppen (Folgefonna / Hardangervidda, 1500 moh.) */}
           <path
-            d="M 30 150 
-               L 310 150 
-               Q 360 160 400 220 
-               L 375 235 
-               Q 330 170 290 165 
-               L 30 165 Z"
+            d="M 30 135 
+               L 240 135 
+               Q 275 142 305 190 
+               L 280 205 
+               Q 250 152 220 150 
+               L 30 150 Z"
             fill="url(#kata-glacier-grad)"
           />
-          <L x="160" y="140" fill="#e0f2fe" size={14} weight={800} anchor="middle">
-            Platåbre / Snøvidde (f.eks. Folgefonna eller Grønland)
+          <L x="135" y="125" fill="#e0f2fe" size={13} weight={800} anchor="middle">
+            Platåbre (1 500 moh. · f.eks. Folgefonna)
           </L>
 
-          <Arrow d="M 90 125 L 90 55" marker={m.sand} color={C.sand} width={2.2} />
-          <Arrow d="M 180 125 L 180 55" marker={m.sand} color={C.sand} width={2.2} />
-          <Arrow d="M 270 125 L 270 55" marker={m.sand} color={C.sand} width={2.2} />
-          <L x="180" y="45" fill={C.sand} size={11.5} weight={700} anchor="middle">
-            Maksimal infrarød varmestråling tapes til rommet
+          {/* Langbølget infrarød utstråling (I_ut) fra snøen ut i rommet */}
+          <Arrow d="M 70 115 L 70 50" marker={m.sand} color={C.sand} width={2.2} />
+          <Arrow d="M 140 115 L 140 50" marker={m.sand} color={C.sand} width={2.2} />
+          <Arrow d="M 210 115 L 210 50" marker={m.sand} color={C.sand} width={2.2} />
+          <L x="140" y="42" fill={C.sand} size={11} weight={700} anchor="middle">
+            Maksimal infrarød utstråling (I_ut) tapes til rommet
           </L>
 
-          <rect x="50" y="180" width="220" height="26" rx="4" fill="#0f2638" stroke={C.cold} strokeWidth="1.2" />
-          <L x="160" y="197" fill="#7dd3fc" size={11.5} weight={800} anchor="middle">
-            Iskald, ultrakomprimert luft dannes (-25 °C)
+          {/* Iskald luftpute på platået */}
+          <rect x="40" y="160" width="190" height="24" rx="4" fill="#0c2333" stroke={C.cold} strokeWidth="1.2" />
+          <L x="135" y="176" fill="#7dd3fc" size={11} weight={800} anchor="middle">
+            Iskald, ultrakomprimert luft (-25 °C)
           </L>
 
+          {/* Horisontal drenasjepil mot kanten */}
+          <Arrow d="M 160 142 L 235 142" marker={m.cold} color={C.cold} width={2.8} />
+
+          {/* KATABATISK FALLVIND NEDOVER LIEN */}
+          {/* Bred luftstrøm */}
           <path
-            d="M 310 165 Q 430 180 515 340"
+            d="M 240 145 Q 330 170 380 260 Q 420 320 470 375"
             fill="none"
             stroke="#38bdf8"
-            strokeWidth="10"
-            opacity="0.35"
+            strokeWidth="14"
+            opacity="0.3"
+            strokeLinecap="round"
           />
-          <Arrow d="M 310 165 Q 430 180 515 340" marker={m.cold} color={C.cold} width={4.2} />
-          <L x="425" y="235" fill={C.cold} size={14} weight={900}>
+          <Arrow d="M 240 145 Q 330 170 410 290" marker={m.cold} color={C.cold} width={4.2} />
+          <Arrow d="M 370 250 Q 420 330 475 375" marker={m.cold} color={C.cold} width={4.2} />
+
+          <L x="365" y="210" fill={C.cold} size={14} weight={900}>
             Katabatisk fallvind
           </L>
-          <L x="425" y="253" fill={C.fg} size={11}>
+          <L x="365" y="228" fill={C.fg} size={11}>
             Tyngdekraften trekker den tunge
           </L>
-          <L x="425" y="269" fill={C.fg} size={11}>
-            kaldluften nedover som en elv
+          <L x="365" y="244" fill={C.fg} size={11}>
+            kaldluften ned som en elv (30–80 km/t)
           </L>
 
-          {/* KALDLyFTSSJØ I DALBUNNEN (KORRIGERT FRA KALDL carssJØ) */}
-          <rect x="520" y="330" width="390" height="120" rx="4" fill="url(#kata-coldpool-grad)" />
-          <line x1="520" y1="330" x2="910" y2="330" stroke="#38bdf8" strokeWidth="2.2" strokeDasharray="5 3" />
-          <L x="715" y="355" fill="#f0f9ff" size={16} weight={900} anchor="middle">
-            KALDLyFTSSJØ I DALBUNNEN (-20 °C)
+          {/* KALDLUFTSSJØ I DALBUNNEN (MELLOM DE TO FJELLESIDENE) */}
+          {/* Fyller bassenget fra x=385 til x=740, dybde fra y=290 til y=380 */}
+          <polygon
+            points="385,290 740,290 660,380 460,380"
+            fill="url(#kata-coldpool-grad)"
+          />
+          {/* Inversjonsgrense (vannspeil-lignende lokk) */}
+          <line x1="385" y1="290" x2="740" y2="290" stroke="#38bdf8" strokeWidth="2.2" strokeDasharray="5 3" />
+          <L x="562" y="282" fill="#7dd3fc" size={11.5} weight={800} anchor="middle">
+            Inversjonsgrense / Inversjonslokk (~350 moh.)
           </L>
 
-          <g transform="translate(620, 395)">
-            <polygon points="15,-15 30,-30 45,-15" fill="#991b1b" />
-            <rect x="15" y="-15" width="30" height="20" fill="#78350f" />
-            <rect x="36" y="-30" width="4" height="10" fill="#475569" />
+          <L x="560" y="325" fill="#f0f9ff" size={15} weight={900} anchor="middle">
+            KALDLUFTSSJØ I DALBUNNEN (-20 °C)
+          </L>
+          <L x="560" y="342" fill="#bae6fd" size={10.5} anchor="middle">
+            Tung kaldluft samles som vann i et badekar
+          </L>
+
+          {/* HUS I DALBUNNEN MED RØYKLOKK */}
+          <g transform="translate(500, 380)">
+            {/* Hus i dalen */}
+            <polygon points="12,-15 24,-26 36,-15" fill="#991b1b" />
+            <rect x="12" y="-15" width="24" height="15" fill="#78350f" />
+            <rect x="28" y="-26" width="3" height="8" fill="#475569" />
+            {/* Røyk som stiger opp til inversjonsgrensen y=290 (dy = -90) og slår 100% flatt ut til begge sider */}
             <path
-              d="M 38 -30 Q 35 -50 38 -65 L 120 -65"
+              d="M 29 -26 Q 27 -55 29 -90 L -35 -90"
               fill="none"
               stroke="#94a3b8"
-              strokeWidth="3.5"
-              opacity="0.8"
+              strokeWidth="3.2"
+              opacity="0.85"
             />
-            <L x="55" y="-72" fill="#cbd5e1" size={10.5} weight={700}>
-              Røyk stanger i inversjonslokket!
+            <path
+              d="M 29 -90 L 85 -90"
+              fill="none"
+              stroke="#94a3b8"
+              strokeWidth="3.2"
+              opacity="0.85"
+            />
+            <L x="30" y="-98" fill="#fde047" size={10.5} weight={800} anchor="middle">
+              Røyklokk: Eksos og vedrøyk stenges inne!
             </L>
           </g>
 
-          <g transform="translate(680, 210)">
-            <rect x="0" y="0" width="220" height="95" rx="6" fill="#141d24" stroke="#eab308" strokeWidth="1.5" />
-            <L x="14" y="24" fill="#facc15" size={13} weight={800}>
-              🌡️ Temperaturinversjon:
+          {/* TERMISK BELTE OPPE I DEN MOTGÅENDE LIA (HØYRE SIDE) */}
+          <g transform="translate(745, 235)">
+            {/* Gård/hus i lia (over inversjonslokket!) */}
+            <polygon points="10,-12 20,-22 30,-12" fill="#15803d" />
+            <rect x="10" y="-12" width="20" height="12" fill="#854d0e" />
+            <rect x="22" y="-22" width="3" height="6" fill="#475569" />
+
+            {/* Informasjonsboks for det termiske beltet */}
+            <rect x="35" y="-30" width="125" height="75" rx="6" fill="#111c24" stroke="#eab308" strokeWidth="1.5" />
+            <L x="45" y="-12" fill="#facc15" size={11.5} weight={900}>
+              Termisk belte i lia
             </L>
-            <L x="14" y="44" fill={C.fg} size={11}>
-              Oppe i lia: <tspan fill="#facc15" fontWeight="bold">-5 °C</tspan> (Mye mildere!)
+            <L x="45" y="4" fill="#fde047" size={13} weight={800}>
+              -4 °C (Mildt!)
             </L>
-            <L x="14" y="62" fill={C.fg} size={11}>
-              I dalbunnen: <tspan fill={C.cold} fontWeight="bold">-20 °C</tspan> (Bikkjekaldt)
+            <L x="45" y="20" fill={C.fg} size={9.5}>
+              16 °C mildere enn i dalen!
             </L>
-            <L x="14" y="82" fill={C.sand} size={10.5}>
-              Temperaturen ØKER med høyden opp fra dalen!
+            <L x="45" y="34" fill={C.sand} size={9.5}>
+              Gårder legges her i lia.
             </L>
           </g>
 
-          <g transform="translate(45, 340)">
-            <rect x="0" y="0" width="420" height="95" rx="8" fill="#0f1722" stroke="#1e293b" strokeWidth="1.4" />
-            <L x="14" y="22" fill={C.warm} size={12.5} weight={800}>
-              Eksamensskille: Fønvind vs. Katabatisk fallvind
+          {/* TEMPERATURINVERsJONS-GRAF T(z) PÅ HØYRE KANT */}
+          <g transform="translate(775, 55)">
+            <rect x="0" y="0" width="125" height="135" rx="6" fill="#0f172a" stroke="#334155" strokeWidth="1.3" />
+            <L x="62" y="18" fill={C.cold} size={11} weight={800} anchor="middle">
+              Inversjon T(z)
             </L>
-            <L x="14" y="44" fill={C.fg} size={11}>
-              • <tspan fill={C.warm} fontWeight="bold">Fønvind:</tspan> Drevet av storskalavind over fjell. Mye regn på losiden
-            </L>
-            <L x="26" y="59" fill={C.fg} size={11}>
-              frigjør latent varme $
-ightarrow$ lander <tspan fill={C.warm} fontWeight="bold">varm og tørr</tspan> i le. <tspan fill={C.warm}>Bryter opp inversjoner.</tspan>
-            </L>
-            <L x="14" y="78" fill={C.fg} size={11}>
-              • <tspan fill={C.cold} fontWeight="bold">Katabatisk vind:</tspan> Drevet av tyngdekraft fra kald overflate. Ingen regn
-            </L>
-            <L x="26" y="93" fill={C.fg} size={11}>
-              $
-ightarrow$ lander <tspan fill={C.cold} fontWeight="bold">iskald og tung</tspan> i dalen. <tspan fill={C.cold}>Bygger opp dype inversjoner.</tspan>
-            </L>
+            {/* Akser */}
+            <line x1="25" y1="120" x2="25" y2="25" stroke="#64748b" strokeWidth="1" />
+            <line x1="25" y1="120" x2="115" y2="120" stroke="#64748b" strokeWidth="1" />
+            <L x="22" y="32" fill={C.muted} size={8.5} anchor="end">1500m</L>
+            <L x="22" y="75" fill={C.muted} size={8.5} anchor="end">350m</L>
+            <L x="22" y="118" fill={C.muted} size={8.5} anchor="end">100m</L>
+
+            {/* Temperatur-kurve: -20 C ved 100m, øker til -4 C ved 350m, synker til -25 C ved 1500m */}
+            <path
+              d="M 35 118 
+                 Q 85 95 85 75 
+                 Q 85 55 30 35"
+              fill="none"
+              stroke="#ef4444"
+              strokeWidth="2.2"
+            />
+            <circle cx="35" cy="118" r="3" fill="#38bdf8" />
+            <circle cx="85" cy="75" r="3" fill="#facc15" />
+            <circle cx="30" cy="35" r="3" fill="#38bdf8" />
+
+            <L x="42" y="116" fill="#38bdf8" size={8.5}>-20°</L>
+            <L x="90" y="77" fill="#facc15" size={9} weight={700}>-4°</L>
+            <L x="36" y="34" fill="#38bdf8" size={8.5}>-25°</L>
+            <L x="62" y="130" fill="#facc15" size={8.5} weight={700} anchor="middle">dT/dz &gt; 0 (Inversjon)</L>
           </g>
+
+          {/* SAMMENLIGNINGSBOKS NEDERST */}
+          <rect x="40" y="425" width="860" height="55" rx="6" fill="#0d1620" stroke="#1e293b" strokeWidth="1.3" />
+          <L x="55" y="445" fill={C.warm} size={12} weight={800}>
+            Eksamensskille: Fønvind vs. Katabatisk fallvind
+          </L>
+          <L x="55" y="465" fill={C.fg} size={11}>
+            • <tspan fill={C.warm} fontWeight="bold">Fønvind:</tspan> Drevet av storskalavind over fjell. Mister fuktighet ved regn på losiden → lander <tspan fill={C.warm} fontWeight="bold">varm og tørr</tspan> i le. <tspan fill={C.warm}>Bryter opp inversjoner.</tspan>
+          </L>
+          <L x="490" y="465" fill={C.fg} size={11}>
+            • <tspan fill={C.cold} fontWeight="bold">Katabatisk vind:</tspan> Drevet av tyngdekraft fra kald overflate. Ingen regn → lander <tspan fill={C.cold} fontWeight="bold">iskald og tung</tspan> i dalen. <tspan fill={C.cold}>Bygger opp dype inversjoner.</tspan>
+          </L>
         </>
       )}
     </Diagram>
@@ -1225,8 +1306,7 @@ export function SeaBreezeDiagram() {
               ☀️ DAG: Sjøbris (Pålandsvind)
             </L>
             <L x="242" y="73" size={11} fill="#e0f2fe" anchor="middle">
-              Land varmes raskt opp $
-ightarrow$ luften stiger
+              Land varmes raskt opp → luften stiger
             </L>
 
             <rect x="35" y="250" width="180" height="130" fill="url(#sb-sea-grad)" />
@@ -1309,8 +1389,7 @@ ightarrow$ luften stiger
               🌙 NATT: Landbris (Fralandsvind)
             </L>
             <L x="227" y="73" size={11} fill="#cbd5e1" anchor="middle">
-              Land avkjøles raskt $
-ightarrow$ kald luft synker
+              Land avkjøles raskt → kald luft synker
             </L>
 
             <rect x="20" y="250" width="180" height="130" fill="url(#sb-sea-grad)" />
