@@ -39,7 +39,7 @@ function TilpasningPage() {
         <p>
           Drøfte konsekvenser av klimaendringer for enkeltmennesker, samfunn og økosystem, og
           vurdere bærekraftige løsninger for hvordan enkeltmennesker og samfunn kan redusere og
-          tilpasse seg klimaendringer i nåtid og framtid.
+          tilpasse seg klimaendringer i nåtid og framtid (Utdanningsdirektoratet, 2020).
         </p>
       </Callout>
       <h2 className="font-display text-2xl font-medium tracking-tight">Tre nivåer</h2>
@@ -57,7 +57,8 @@ function TilpasningPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Norge som eksempel</h2>
       <p>
         Mildere vintre, mer ekstremnedbør, mer våte skred, høyere stormflo. Norsk klimaservicesenter.
-        Oslo må tenke overvann. Nordland må tenke skred og vei. Vestlandet må tenke flom i bratte felt.
+        Oslo må tenke overvann. Nordland må tenke skred og vei. Vestlandet må tenke flom i bratte
+        felt (Store norske leksikon, u.å.; IPCC, 2022).
       </p>
       <OrdBoks ord="Tilpasning" barn="Å redusere skade av det været og klimaet som faktisk kommer." />
       <OrdBoks ord="Utslippskutt" barn="Å redusere pådrivet. Uten kutt vokser tilpasningsbehovet uten tak." />

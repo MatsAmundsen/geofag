@@ -102,7 +102,7 @@ function NumeriskeModellerPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Norge</h2>
       <p>
         MEPS er den regionale modellen for Norden, 2,5 km, 30 medlemmer, ut til ca. 66 timer (MET,
-        u.å.). AROME-Arctic er 2,5 km over Arktis. ECMWF er det globale systemet, ca. 9 km, ut til 15
+        u.å.-b). AROME-Arctic er 2,5 km over Arktis. ECMWF er det globale systemet, ca. 9 km, ut til 15
         døgn. Norkyst er kysthavmodellen, 800 m.
       </p>
       <p>Tall og vurderinger bygger på IPCC AR6 (IPCC, 2021). Syvende hovedrapport er ikke publisert.</p>

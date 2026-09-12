@@ -95,7 +95,7 @@ function KlimaOversiktPage() {
       </p>
       <p>
         Enkelte gasser i lufta — vanndamp, karbondioksid, metan — slipper sollyset inn, men bremser
-        varmen på vei ut (NASA, u.å.). Uten dem ville jorda vært en frossen stein. Med for mye av
+        varmen på vei ut (NASA, u.å.-a). Uten dem ville jorda vært en frossen stein. Med for mye av
         dem stiger temperaturen.
       </p>
       <OrdBoks
@@ -173,7 +173,7 @@ function KlimaOversiktPage() {
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Havet husker</h2>
       <p>
-        Det meste av overskuddsvarmen de siste tiårene har gått i havet, ikke i lufta (NASA, u.å.).
+        Det meste av overskuddsvarmen de siste tiårene har gått i havet, ikke i lufta (NASA, u.å.-b).
         Derfor kan lufttemperaturen svinge fra år til år, mens havet jevnt tar opp mer energi.
       </p>
       <p>

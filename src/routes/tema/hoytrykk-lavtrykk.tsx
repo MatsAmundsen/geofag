@@ -50,11 +50,11 @@ function TrykkPage() {
         gassmolekyl har masse. Jordens gravitasjonsfelt trekker disse molekylene mot overflaten, og
         lufttrykket i et hvilket som helst punkt er nøyaktig lik{" "}
         <strong>vekten av den overliggende luftsøylen</strong> som strekker seg helt opp til
-        verdensrommet (NOAA, u.å.).
+        verdensrommet (NOAA, u.å.-a).
       </p>
       <p>
         Ved havnivå utøver atmosfæren et gjennomsnittlig trykk på{" "}
-        <strong>1013,25 hektopascal (hPa)</strong>, også kalt standardatmosfæren. Én hektopascal
+        <strong>1013,25 hektopascal (hPa)</strong>, også kalt standardatmosfæren (NOAA, u.å.-a). Én hektopascal
         tilsvarer 100 pascal (1 hPa = 100 N/m²), som betyr at vekten av luften over én enkelt
         kvadratmeter på bakken er om lag 100 000 newton. Dette tilsvarer en masse på hele{" "}
         <strong>10 000 kilo – altså 10 tonn luft over hodet på deg!</strong>
@@ -87,7 +87,7 @@ function TrykkPage() {
         </li>
         <li>
           Ved <strong>tropopausen (ca. 11 km)</strong> er trykket nede i om lag 250 hPa, og mer enn
-          75 % av atmosfæremassen befinner seg under flyenes marsjhøyde.
+          75 % av atmosfæremassen befinner seg under flyenes marsjhøyde (NOAA, u.å.-b).
         </li>
       </ul>
 
@@ -103,7 +103,8 @@ function TrykkPage() {
         høytrykk, og verdier under 1013 hPa alltid er lavtrykk. Slik fungerer ikke atmosfæren.
       </p>
       <p>
-        Høytrykk og lavtrykk er <strong>alltid relative begreper</strong> (MET, u.å.):
+        Høytrykk og lavtrykk er <strong>alltid relative begreper</strong> (Store norske leksikon,
+        u.å.-a; Store norske leksikon, u.å.-b):
       </p>
       <ul className="list-disc space-y-1 pl-6 text-foreground/90">
         <li>
@@ -419,7 +420,7 @@ function TrykkPage() {
             varmeutstråling. Havet holder nesten uforandret temperatur. Nå blir luften over land
             kaldere og tettere enn over havet. Det oppstår et lokalt høytrykk over land, og en svak{" "}
             <strong>landbris</strong> blåser fra land og ut mot havet. Landbrisen er svakere enn
-            sjøbrisen fordi temperaturforskjellen nattetid er mindre.
+            sjøbrisen fordi temperaturforskjellen nattetid er mindre (NOAA, u.å.-c).
           </p>
         </div>
       </div>
@@ -458,7 +459,7 @@ function TrykkPage() {
           luften som lander i dalen på lesiden er vesentlig varmere og tørrere enn den var da den
           startet på nøyaktig samme høyde på losiden
         </strong>
-        . Fjellet har tilsynelatende varmet opp luften.
+        . Fjellet har tilsynelatende varmet opp luften (Store norske leksikon, u.å.-c).
       </p>
       <p>
         Forklaringen skyldes regnet som falt på veien over kammen, og forskjellen på tørradiabatisk
@@ -515,7 +516,7 @@ function TrykkPage() {
           <strong>Vestavind mot Langfjella:</strong> Vestlandet er losiden og mottar Norges største
           nedbørmengder (Brekke i Gulen har over 3 500 mm i året). Østlandsdalene (Gudbrandsdalen,
           Østerdalen og Ottadalen) ligger i regnskyggen og opplever fønvind og tørke. Skjåk i
-          Ottadalen har en årsnedbør på under 300 mm – tørrere enn deler av Sahara!
+          Ottadalen har en årsnedbør på under 300 mm (Store norske leksikon, u.å.-d).
         </li>
         <li>
           <strong>Østavind (omvendt situasjon):</strong> Når et lavtrykk over Nordsjøen sender

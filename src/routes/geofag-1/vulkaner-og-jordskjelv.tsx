@@ -84,7 +84,8 @@ function VulkanerOgJordskjelvPage() {
         Oslofjordskjelvet 23. oktober 1904 er det største kjente i Oslo-området, magnitude 5,4
         (Bungum et al., 2009). Episenteret er lagt til Kattegat, ca. 25 km sør for Hvaler. Ingen
         omkom i Oslo. Lurøy i Nordland 1819, ca. magnitude 5,8, viser at Nordlandskysten også har
-        potensial (NORSAR, u.å.). I Norge dreper skred og flom langt flere enn skjelv. Det er et
+        potensial (NORSAR, u.å.-a; NORSAR, u.å.-b; Bungum et al., 2009). I Norge dreper skred og flom
+        langt flere enn skjelv. Det er et
         risikoargument, ikke at vi er uten jordskjelv.
       </p>
       <OrdBoks

@@ -60,14 +60,14 @@ function GeologiskeRessurserPage() {
       />
       <p>
         Naturstein sages, spaltes eller hugges. Larvikitt er Norges nasjonalbergart og landets
-        viktigste naturstein (NGU, u.å.). Den er en dypbergart med to feltspattyper som gir
+        viktigste naturstein (NGU, u.å.-b). Den er en dypbergart med to feltspattyper som gir
         fargespill, dannet for cirka 290 millioner år siden i Oslofeltet, og brytes i Vestfold og
         Telemark. Marmor og skifer er andre natursteiner.
       </p>
       <p>
         Pukk er knust fjell: gneis, granitt, kvartsitt, gabbro eller syenitt. Sand og grus kommer
         fra løsmasser, særlig glasifluviale avsetninger. Det er ikke fornybart på menneskelig
-        tidsskala. Pukk og grus er samfunnets største mineraluttak i volum (NGU, u.å.; Direktoratet
+        tidsskala. Pukk og grus er samfunnets største mineraluttak i volum (NGU, u.å.-a; Direktoratet
         for mineralforvaltning, u.å.). De kan ikke importeres billig over lange avstander. Derfor
         ligger uttak i de fleste kommuner.
       </p>

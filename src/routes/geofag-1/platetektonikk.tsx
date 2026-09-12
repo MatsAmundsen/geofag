@@ -217,7 +217,7 @@ function PlatetektonikkPage() {
       <ContinentalRiftDiagram />
       <p>
         Oslofeltet er en død rift — en paleorift. For om lag 310 millioner år siden sprakk skorpa
-        opp fra Skagerrak til Østerdalen (NGU, u.å.). I perm: riftdal, strekk, store
+        opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm: riftdal, strekk, store
         forkastninger og vulkaner. I dag ser vi graben, lava og dypbergart. Det er konsekvens av
         gammel indre bevegelse, ikke en aktiv plategrense.
       </p>
@@ -272,7 +272,7 @@ function PlatetektonikkPage() {
         enn 70 km, som i Himalaya der India møter Asia. Fjell, foldning og skyvedekker. Lite
         magma sammenlignet med subduksjon, fordi det ikke kommer en vannrik slab ned i mantelen
         under fjellkjeden. Kaledonidene er Norges fossile versjon: kollisjon for 400–500 millioner
-        år siden, da landområder i dagens Europa møtte Amerika og Grønland (NGU, u.å.).
+        år siden, da landområder i dagens Europa møtte Amerika og Grønland (NGU, u.å.-a).
       </p>
       <CollisionDiagram />
 
@@ -322,7 +322,7 @@ function PlatetektonikkPage() {
       />
       <p>
         Etter istiden reiste litosfæren seg. Det kalles isostasi. Marine avsetninger som ble lagt
-        i fjord, ligger nå over havnivå. Marin grense er 0–220 m (NGU, u.å.).
+        i fjord, ligger nå over havnivå. Marin grense er 0–220 m (NGU, u.å.-b).
       </p>
       <OrdBoks
         ord="Isostasi"

@@ -154,11 +154,13 @@ function KatastroferPage() {
       <p>
         Vestlandet er bygget for ekstremnedbør. Vestavinden kommer inn over varmt hav, lastet med
         fukt. Fjellet tvinger lufta opp. Den avkjøles. Vanndampen blir til regn. Bak fjellet, i øst,
-        synker lufta og tørker. Samme celle, to utfall — du har sett det i vindkapitlet.
+        synker lufta og tørker (Store norske leksikon, u.å.). Samme celle, to utfall — du har sett
+        det i vindkapitlet.
       </p>
       <p>
         I et varmere klima holder lufta mer fukt. Samme fjell, mer vann i skyene, mer intens nedbør
-        (Norsk klimaservicesenter, u.å.). Det er derfor «ekstremnedbør» er en klimarisiko i Norge,
+        (Store norske leksikon, u.å.; IPCC, 2021). Det er derfor «ekstremnedbør» er en klimarisiko i
+        Norge,
         ikke bare et vestlandsvær.
       </p>
       <OrdBoks

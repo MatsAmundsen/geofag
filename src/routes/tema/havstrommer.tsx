@@ -47,7 +47,7 @@ function HavstrommerPage() {
       <p>
         En havstrøm er vann som beveger seg samlet fra ett sted til et annet — ikke bare bølger som
         skvulper på stedet. De samme tre kreftene som styrer lufta, styrer havet: trykk (fra vind),
-        tyngde (tetthet) og rotasjon (coriolis) (NOAA, u.å.). Havet er bare langt tregere enn lufta
+        tyngde (tetthet) og rotasjon (coriolis) (NOAA, u.å.-a). Havet er bare langt tregere enn lufta
         og lagrer enormt med varme. Derfor demper det klimaet over måneder og tiår, ikke bare over
         timer.
       </p>
@@ -76,7 +76,7 @@ function HavstrommerPage() {
       <p>
         Vinden tar i de øverste meterne. Coriolis dreier strømmen til høyre i nord. Laget under
         dreies enda mer. Summen — det som faktisk flytter vannmasser — går omtrent rett til høyre
-        for vinden på nordlig halvkule, til venstre i sør (NOAA, u.å.). Figuren under viser hvordan
+        for vinden på nordlig halvkule, til venstre i sør (NOAA, u.å.-b). Figuren under viser hvordan
         vindretningen og nettotransporten skiller seg fra hverandre.
       </p>
 
@@ -176,7 +176,7 @@ function HavstrommerPage() {
       <p>
         Det oppstrømmede vannet er rikt på næringssalter fra dyphavet. Det gjør oppwellingssoner til
         noen av de mest produktive fiskeområdene i verden — utenfor Peru, Vest-Afrika og California
-        er alle klassiske eksempler (NOAA, u.å.). Norskekysten har ikke like kraftig oppwelling som
+        er alle klassiske eksempler (NOAA, u.å.-d). Norskekysten har ikke like kraftig oppwelling som
         disse områdene, men samme mekanisme kan gi lokale kaldtvannsbelter der vind blåser langs
         kysten over tid.
       </p>
@@ -228,7 +228,7 @@ function HavstrommerPage() {
       </h2>
       <p>
         I Atlanteren går varmt, saltere vann nordover i toppen. I Norskehavet, Grønlandshavet og
-        Labradorhavet synker det og returnerer sørover i dypet. Hele sløyfa kalles AMOC (NOAA, u.å.).
+        Labradorhavet synker det og returnerer sørover i dypet. Hele sløyfa kalles AMOC (NOAA, u.å.-c).
         Den er treg. Den kan svekkes hvis overflaten blir for fersk eller for varm til å synke (IPCC,
         2021). Det skjer ikke over natta — men over tiår kan det merkes i nordvest-Europa. Figuren
         under viser hele beltet i ett bilde.
@@ -285,7 +285,9 @@ function HavstrommerPage() {
         Tre navn, og hvorfor Norge er mildt
       </h2>
       <p>
-        I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt. Skill tre
+        I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt. Mild
+        kystklima på denne breddegraden henger sammen med vestavind og varmt atlanterhavsvann (Store
+        norske leksikon, u.å.). Skill tre
         ting, ikke to.
       </p>
 

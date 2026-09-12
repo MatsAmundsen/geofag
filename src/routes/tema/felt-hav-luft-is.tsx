@@ -34,7 +34,8 @@ function FeltG2Page() {
       <Callout title="Kompetansemål">
         <p>
           Gjennomføre geofaglig feltarbeid knyttet til havet, atmosfæren eller kryosfæren,
-          bearbeide og tolke de innsamlede dataene og presentere resultatene.
+          bearbeide og tolke de innsamlede dataene og presentere resultatene
+          (Utdanningsdirektoratet, 2020).
         </p>
       </Callout>
       <h2 className="font-display text-2xl font-medium tracking-tight">Velg sfære</h2>
@@ -72,7 +73,7 @@ function FeltG2Page() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">HMS i G2</h2>
       <p>
         Kyst: bølger, glatt svaberg, flod. Fjell vinter: skred. Faregrad 3 og opp er ikke skolefelt
-        uten profesjonell skredkompetanse. Bruk Varsom, og avlys.
+        uten profesjonell skredkompetanse. Bruk Varsom, og avlys (NVE, u.å.).
       </p>
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>

@@ -13,8 +13,11 @@ export function Kildeliste({ kilder }: { kilder: readonly Kilde[] }) {
         Kildeliste
       </h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        APA 7th. Henvisninger i teksten, for eksempel (Gerlach, 2011), peker hit. Offentlige etater
-        og fagfellevurderte artikler er brukt foran populariserte sammendrag.
+        APA 7th. Henvisningen i teksten bruker første ledd i kilden. Lange etatsnavn forkortes som i
+        klammen: (NOAA, u.å.), (NASA, u.å.), (IPCC, 2021), (NVE, u.å.). Flere kilder fra samme
+        forfatter og år skilles med a, b, c. Lenken skal åpne en side der du finner tilsvarende
+        fagstoff. Offentlige etater og fagfellevurderte artikler er brukt foran populariserte
+        sammendrag.
       </p>
       <ol className="mt-5 list-none space-y-3 text-sm leading-relaxed text-foreground/90">
         {sorted.map((kilde) => (

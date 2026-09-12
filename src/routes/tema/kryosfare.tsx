@@ -54,20 +54,26 @@ function KryosfarePage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Massebalanse</h2>
       <p>
         Inn: snø som overlever sommeren. Ut: smelting, sublimasjon, kalving. Likevektslinjen skiller
-        overskudd fra underskudd.
+        overskudd fra underskudd (NVE, u.å.-a).
       </p>
       <GlacierMassBalanceDiagram />
       <OrdBoks ord="Massebalanse" barn="Akkumulasjon minus ablasjon over et hydrologisk år." />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Permafrost</h2>
-      <p>Grunn under 0 °C i minst to år. Aktivt lag tiner om sommeren. Norge: høyfjellet og Svalbard.</p>
+        <p>
+          Grunn under 0 °C i minst to år. Aktivt lag tiner om sommeren. Norge: høyfjellet og Svalbard
+          (Store norske leksikon, u.å.).
+        </p>
       <PermafrostDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Havis</h2>
-      <p>Hvit is reflekterer. Åpent hav absorberer. Mindre sommeris gir mer smelting — positiv tilbakekobling.</p>
+      <p>
+        Hvit is reflekterer. Åpent hav absorberer. Mindre sommeris gir mer smelting — positiv
+        tilbakekobling (NSIDC, u.å.; IPCC, 2021).
+      </p>
       <SeaIceAlbedoFeedbackDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Snøskred</h2>
       <p>
         G1 tar steinskred og kvikkleire. Snøskred hører i G2. De fleste alvorlige ulykker i Norge er
-        flakskred. Varsom 1–5. Grad 3 tar flest folk fordi fjellet fortsatt brukes.
+        flakskred. Varsom 1–5. Grad 3 tar flest folk fordi fjellet fortsatt brukes (NVE, u.å.-b).
       </p>
       <SlabAvalancheDiagram />
       <OrdBoks ord="Faregrad" barn="Varsom 1–5. Hvor lett og hvor stort et skred kan bli." />

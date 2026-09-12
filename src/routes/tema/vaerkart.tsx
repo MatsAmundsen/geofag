@@ -39,14 +39,14 @@ function VaerkartPage() {
       <Callout title="Kompetansemål">
         <p>
           Gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og
-          lokal skala, og tolke ulike værkart og værutvikling.
+          lokal skala, og tolke ulike værkart og værutvikling (Utdanningsdirektoratet, 2020).
         </p>
       </Callout>
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva et synoptisk kart viser</h2>
       <p>
         Et synoptisk kart er et øyeblikksbilde nær bakken: lufttrykk, vind, fronter og ofte sky og
         nedbør. Tallene på isobarene er hPa. 1013 hPa er omtrent middel. Et lavtrykk er ikke «under
-        1013» — det er lavere enn naboen.
+        1013» — det er lavere enn naboen (Sivle, 2009).
       </p>
       <OrdBoks
         ord="Isobar"
@@ -63,7 +63,8 @@ function VaerkartPage() {
         En front er skillet mellom to luftmasser. Varmfront: varm luft klatrer over kald. Skydekket
         kommer først som cirrus, så fortetting og jevn nedbør over et bredt belte. Kaldfront: kald
         luft graver under varm. Stigningen er brattere, bygene kortere og hardere. Okklusjon:
-        kaldfronten har tatt igjen varmfronten. Den varme sektoren løftes av bakken.
+        kaldfronten har tatt igjen varmfronten. Den varme sektoren løftes av bakken (Sivle, 2009;
+        Store norske leksikon, u.å.-a; NOAA, u.å.).
       </p>
       <FrontCrossSectionDiagram />
       <OrdBoks ord="Varm sektor" barn="Den milde luften mellom varmfront og kaldfront i en ung polarfrontsyklon." />

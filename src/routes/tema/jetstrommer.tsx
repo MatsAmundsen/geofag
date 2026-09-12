@@ -42,7 +42,7 @@ function JetstrommerPage() {
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva en jetstrøm er</h2>
       <p>
-        En jetstrøm er et smalt belte med sterk vestavind i øvre troposfære (NOAA, u.å.). Ordet
+        En jetstrøm er et smalt belte med sterk vestavind i øvre troposfære (NOAA, u.å.-a). Ordet
         «smalt» er nøkkelen. Vestavindsbeltet ved bakken dekker tusenvis av kilometer i bredden.
         Jetstrømmen er derimot bare noen hundre kilometer bred og et par kilometer dyp, men den kan
         være mange tusen kilometer lang. Tenk deg en elv i lufta: strømmen er sterkest i en trang
@@ -382,7 +382,7 @@ function JetstrommerPage() {
       </p>
       <p>
         <strong>NAO</strong> er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket (NOAA,
-        u.å.). Dette er den viktigste for Norge, rett og slett fordi den sitter i Nord-Atlanteren,
+        u.å.-b). Dette er den viktigste for Norge, rett og slett fordi den sitter i Nord-Atlanteren,
         der været vårt lages. Er forskjellen stor, er gradienten stor, og polarfrontjeten blir sterk
         og ligger langt nord. Er forskjellen liten, svekkes jeten, den trekker sørover eller brytes
         opp i blocking.
@@ -412,7 +412,7 @@ function JetstrommerPage() {
 
       <p>
         <strong>ENSO</strong> er koblingen mellom hav og atmosfære i det tropiske Stillehavet, med
-        en syklus på to til sju år (NOAA, u.å.). Den flytter hvor tropisk luft stiger, og der luften
+        en syklus på to til sju år (NOAA, u.å.-c). Den flytter hvor tropisk luft stiger, og der luften
         stiger, mates jetstrømmene. I en El Niño-fase forsterkes den subtropiske jeten over Nord-Stillehavet
         og strekker seg østover mot sørvestlige USA, stormsporet over USA legger seg sørligere, det
         blir tørke og brannvær i Indonesia og østlige Australia, og mer nedbør langs kysten av

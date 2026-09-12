@@ -39,7 +39,8 @@ function KlimaHubPage() {
         Forståelsen av klimaet krever både den store helheten — hvordan energi flyter inn og ut av
         planeten — og de koblete hav-atmosfære-svingningene. Globalt middel i toppen av atmosfæren er
         omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går som
-        langbølge. Drivhusgasser bremser ut. Foto av jordkloden viser stemning. Tallene viser budsjettet.
+        langbølge. Drivhusgasser bremser ut. Foto av jordkloden viser stemning. Tallene viser
+        budsjettet (NASA, u.å.-c; WMO, u.å.).
       </p>
       <EarthRadiationBudgetDiagram />
 

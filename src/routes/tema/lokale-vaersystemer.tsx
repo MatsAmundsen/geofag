@@ -49,7 +49,8 @@ function LokalePage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Polarfrontsyklon, steg for steg</h2>
       <p>
         En bølge på polarfronten blir til et lavtrykk. Mellom varmfront og kaldfront ligger varm sektor.
-        Kaldfronten tar igjen varmfronten: okklusjon. Til slutt fylles lavtrykket.
+        Kaldfronten tar igjen varmfronten: okklusjon. Til slutt fylles lavtrykket (Store norske
+        leksikon, u.å.-a).
       </p>
       <PolarFrontCycloneSteps />
       <p>
@@ -59,7 +60,8 @@ function LokalePage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Sjøbris og landbris</h2>
       <p>
         Om dagen varmes land fortere enn hav. Luften over land stiger. Luft fra sjøen strømmer inn.
-        Returstrømmen går tilbake i høyden. Om natten speilvendes kretsløpet. Landbrisen er svakere.
+        Returstrømmen går tilbake i høyden. Om natten speilvendes kretsløpet. Landbrisen er svakere
+        (NOAA, u.å.; Store norske leksikon, u.å.-b).
       </p>
       <SeaBreezeLandBreezeDiagram />
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Dalvind og fjellvind</h2>
@@ -68,7 +70,8 @@ function LokalePage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Føn</h2>
       <p>
         Føn er varm, tørr vind på lesiden. Luften mister vannet som regn på losiden, men beholder
-        varmen. Full gjennomgang ligger under{" "}
+        varmen (Store norske leksikon, u.å.-c; Store norske leksikon, u.å.-d). Full gjennomgang
+        ligger under{" "}
         <Link to="/tema/hoytrykk-lavtrykk" className="text-primary underline-offset-2 hover:underline">høytrykk og lavtrykk</Link>.
       </p>
       <FoehnAdiabaticDiagram />

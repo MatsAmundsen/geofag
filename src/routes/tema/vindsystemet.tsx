@@ -80,7 +80,7 @@ function VindsystemetPage() {
         <li>
           <strong>Mellom ca. 38° og 90° breddegrad:</strong> Områdene taper mer energi til
           verdensrommet enn de mottar fra sola gjennom året. Dette gir et{" "}
-          <em>permanent energiunderskudd</em>.
+          <em>permanent energiunderskudd</em> (NASA, u.å.).
         </li>
       </ul>
       <p>
@@ -147,7 +147,8 @@ function VindsystemetPage() {
           Denne cellen er
           <em>termisk indirekte</em>. Det betyr at den ikke drives av oppvarming fra bakken under,
           men tvinges rundt mekanisk som et tannhjul drevet av friksjon og storskala virvler
-          (vandrende lavtrykk) mellom de to andre cellene. Lufta synker ved 30° og stiger ved 60°.
+          (vandrende lavtrykk) mellom de to andre cellene. Lufta synker ved 30° og stiger ved 60°
+          (NOAA, u.å.-a; Store norske leksikon, u.å.-a).
         </li>
       </ol>
 
@@ -189,7 +190,8 @@ function VindsystemetPage() {
         </li>
         <li>
           <strong>Sone:</strong> Det er ikke en enkelt rett linje, men et bredt, belteformet bånd
-          med intens sky- og nedbørsaktivitet som kveiler seg rundt hele kloden.
+          med intens sky- og nedbørsaktivitet som kveiler seg rundt hele kloden (NOAA, u.å.-b;
+          Store norske leksikon, u.å.-b).
         </li>
       </ul>
       <p>
@@ -281,7 +283,7 @@ function VindsystemetPage() {
         I moderne geofag og meteorologi bruker vi tallfestingen: <strong>30° breddegrad</strong>.
         Det er nemlig rundt 30° breddegrad at vi finner jordas store, sammenhengende ørkenbelter:
         Sahara, Den arabiske halvøy og Sonora i nord, og Kalahari, Atacama og de store australske
-        ørkenene i sør.
+        ørkenene i sør (NOAA, u.å.-a).
       </p>
       <p>
         Legg merke til den dype faglige sammenhengen:{" "}
@@ -315,7 +317,8 @@ function VindsystemetPage() {
         Når ITCZ trekker langt nordover kontinentet om sommeren, suges fuktig maritim luft fra Det
         indiske hav inn over India og Sørøst-Asia. Dette er <strong>sommermonsunen</strong>. Den
         fuktige sørvestlige vinden presses opp mot landmassene og fjellkjedene, og slipper fra seg
-        enorme mengder nedbør som er livsnerven for jordbruket og milliarder av mennesker.
+        enorme mengder nedbør som er livsnerven for jordbruket og milliarder av mennesker (NOAA,
+        u.å.-b; Store norske leksikon, u.å.-d).
       </p>
 
       {/* SEKSJON 4: OVERFLATEVINDENE */}
@@ -337,7 +340,7 @@ function VindsystemetPage() {
             Coriolis-effekten. Dermed blir vinden til en stødig <strong>nordøstpassat</strong>. På
             den sørlige halvkule avbøyes nordgående luft mot venstre, og blir til{" "}
             <strong>sørøstpassaten</strong>. Passatene er historiens mest pålitelige seilvind
-            («trade winds»).
+            («trade winds») (Store norske leksikon, u.å.-c; NOAA, u.å.-a).
           </p>
         </div>
         <div className="border-t border-border/60 pt-3">
@@ -448,7 +451,8 @@ function VindsystemetPage() {
       </p>
       <p>
         Fordi de to luftmassene har svært ulik tetthet, blander de seg ikke umiddelbart. I stedet
-        oppstår det en skarp grenseflate som kalles <strong>polarfronten</strong>.
+        oppstår det en skarp grenseflate som kalles <strong>polarfronten</strong> (Store norske
+        leksikon, u.å.-h).
       </p>
 
       <h3 className="pt-2 font-display text-xl font-medium tracking-tight text-teal-400">
@@ -465,7 +469,7 @@ function VindsystemetPage() {
         polarfronten. Når lufta akselererer mot nord og avbøyes av Coriolis-kraften, etableres en
         smal, rørformet elv av ekstremt sterk vind fra vest mot øst:{" "}
         <strong>polarfrontjetstrømmen</strong>. I kjernen av jetstrømmen kan vindhastigheten
-        overstige 300–400 km/t om vinteren.
+        overstige 300–400 km/t om vinteren (NOAA, u.å.-c).
       </p>
 
       <h3 className="pt-2 font-display text-xl font-medium tracking-tight text-teal-400">
@@ -555,7 +559,8 @@ function VindsystemetPage() {
         Dette skaper en av verdens mest dramatiske nedbørsgradienter: Mens Brekke på Vestlandet
         drukner i over 3500 mm nedbør, ligger <em>Skjåk i Ottadalen</em> like øst for Jotunheimen i
         dyp regnskygge og mottar i underkant av <strong>300 mm nedbør i året</strong>. Skjåk er
-        faktisk tørrere enn deler av Sahara-ørkenen!
+        faktisk tørrere enn deler av Sahara-ørkenen (Store norske leksikon, u.å.-e; Store norske
+        leksikon, u.å.-f; Store norske leksikon, u.å.-g).
       </p>
 
       <PolarFrontNorwayDiagram />

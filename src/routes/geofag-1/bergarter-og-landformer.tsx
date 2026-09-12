@@ -52,7 +52,7 @@ function BergarterOgLandformerPage() {
 
       <p>
         NGU skiller tre hovedtyper etter opprinnelse: magmatiske, sedimentære og metamorfe (NGU,
-        u.å.). Magmatiske og metamorfe utgjør 90–95 prosent av jordskorpa. På overflaten er det
+        u.å.-a). Magmatiske og metamorfe utgjør 90–95 prosent av jordskorpa. På overflaten er det
         likevel sediment og sedimentære lag du oftest går på.
       </p>
       <p>
@@ -82,7 +82,7 @@ function BergarterOgLandformerPage() {
       <p>
         Magmatisk bergart er størknet magma eller lava. Sakte avkjøling nede gir store, synlige
         korn: dypbergart. Rask avkjøling oppe gir finkornet grunnmasse: dagbergart. Larvikitt er
-        dypbergart, dannet for cirka 290 millioner år siden (NGU, u.å.). Rombeporfyr er dagbergart,
+        dypbergart, dannet for cirka 290 millioner år siden (NGU, u.å.-b). Rombeporfyr er dagbergart,
         Oslofeltets signatur.
       </p>
       <OrdBoks ord="Magmatisk" barn="Størknet magma eller lava. Dyp nede, dag oppe." />

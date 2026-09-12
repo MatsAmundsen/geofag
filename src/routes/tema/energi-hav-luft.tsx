@@ -35,7 +35,7 @@ function EnergiPage() {
       <Callout title="Kompetansemål">
         <p>
           Drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte,
-          både nasjonalt og globalt.
+          både nasjonalt og globalt (Utdanningsdirektoratet, 2020).
         </p>
       </Callout>
       <h2 className="font-display text-2xl font-medium tracking-tight">Hvor energien kommer fra</h2>
@@ -55,12 +55,12 @@ function EnergiPage() {
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Havvind</h2>
       <p>
         Over hav er vinden jevnere. Norge har dyp sokkel: flytende matcher kysten. Konfliktene er
-        fiskeri, skipstrafikk, sjøfugl, radar og kabler til land.
+        fiskeri, skipstrafikk, sjøfugl, radar og kabler til land (NVE, u.å.-a; NVE, u.å.-b).
       </p>
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Bølger og tidevann</h2>
       <p>
         Bølgeenergi må tåle 100-årshavet. Tidevann er predikerbart, men få steder har både amplitude
-        og akseptabelt inngrep i fjære.
+        og akseptabelt inngrep i fjære (Store norske leksikon, u.å.).
       </p>
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Drøftingen</h2>
       <WindPowerTradeoffDiagram />

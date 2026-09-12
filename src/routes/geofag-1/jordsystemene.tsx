@@ -103,7 +103,7 @@ function JordsystemenePage() {
       </p>
       <p>
         Forvitring er ikke det samme som erosjon. Erosjon er nedsliting pluss transport med vann, is
-        eller tyngdekraft (USGS, u.å.). Uten forvitring ingen sedimenter.
+        eller tyngdekraft (USGS, u.å.-a). Uten forvitring ingen sedimenter.
       </p>
       <OrdBoks
         ord="Erosjon"
@@ -164,7 +164,7 @@ function JordsystemenePage() {
         Aske faller ut av stratosfæren i løpet av dager til uker og har liten klimaeffekt. SO₂ som
         når stratosfæren, omdannes til sulfataerosoler som reflekterer sollys og kan kjøle
         troposfæren. Pinatubo 15. juni 1991 injiserte om lag 20 millioner tonn SO₂ og kjølte
-        jordoverflaten i et par år (USGS, u.å.).
+        jordoverflaten i et par år (USGS, u.å.-b).
       </p>
       <p>
         Vulkaner slipper også CO₂, men dagens vulkanske utslipp er noen tiendedels gigatonn per år

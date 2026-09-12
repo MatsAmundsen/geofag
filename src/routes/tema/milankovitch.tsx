@@ -473,8 +473,8 @@ function MilankovitchPage() {
         Samtidig presset isen skorpa ned. Da isen smeltet, steg havet raskt, men landet i
         Fennoskandia reiste seg enda mer. Resultatet: gammel sjøbunn ligger i dag tørt, og den
         høyeste stranden etter istiden kalles marin grense. NGU kartlegger den mellom 0 og omtrent
-        220 meter over dagens hav: høyest der isen var tykkest, lavere ytterst på kysten (NGU,
-        u.å.). Leire avsatt i havet, nå på land, er bakgrunnen for kvikkleire — mer under{" "}
+        220 meter over dagens hav: høyest der isen var tykkest, lavere ytterst på kysten (NGU, u.å.-a;
+        NGU, u.å.-b). Leire avsatt i havet, nå på land, er bakgrunnen for kvikkleire — mer under{" "}
         <Link to="/geofag-1/skred" className="text-primary underline-offset-2 hover:underline">
           skred
         </Link>

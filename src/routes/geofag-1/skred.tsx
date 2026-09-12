@@ -194,7 +194,7 @@ function SkredPage() {
         <p>
           Åknes ligger på vestsiden av Sunnylvsfjorden i Stranda. Fjellet har vært kjent som
           ustabilt siden 1960-tallet, og NVE overvåker det kontinuerlig med GPS, ekstensometer,
-          laser, borehull og satellittradar (NVE, u.å.; NVE, 2026). Et skred kan gi flodbølge i hele
+          laser, borehull og satellittradar (NVE, u.å.-a; NVE, 2026). Et skred kan gi flodbølge i hele
           Storfjord-systemet. Sikring av et helt fjell er urealistisk, så tiltaket er
           instrumentering, varsling og evakuering.
         </p>
@@ -206,7 +206,7 @@ function SkredPage() {
         </p>
         <p>
           Veslemannen i Romsdalen er eksempelet på at beredskapen virker. Fjellpartiet ble varslet
-          og evakuert 16 ganger før det raste delvis ut 5. september 2019 (NVE, u.å.). Ingen ble
+          og evakuert 16 ganger før det raste delvis ut 5. september 2019 (NVE, u.å.-b). Ingen ble
           skadet. Overvåking stoppet ikke skredet — den ga tid.
         </p>
       </Callout>
@@ -266,7 +266,7 @@ function SkredPage() {
       </p>
       <p>
         Marin grense er det høyeste nivået havet nådde etter istiden. I Norge ligger den mellom 0 og
-        220 meter over dagens havnivå, høyest rundt Oslo og i Trøndelag (NGU, u.å.). Under marin
+        220 meter over dagens havnivå, høyest rundt Oslo og i Trøndelag (NGU, u.å.-a). Under marin
         grense kan det ligge marin leire. Over den kan det ikke — og derfor finnes det ingen
         kvikkleire over marin grense.
       </p>
@@ -282,7 +282,7 @@ function SkredPage() {
         struktur der saltionene virket som lim. Vanlig sjøvann har om lag 35 gram salt per liter.
         Etter at landet hevet seg, har ferskt grunnvann sivet gjennom leira i tusenvis av år og
         vasket saltet ut. Kommer porevannet under om lag 2 gram per liter, mister strukturen limet
-        sitt — men den står fortsatt (NGU, u.å.).
+        sitt — men den står fortsatt (NGU, u.å.-b).
       </p>
       <p>
         Det er dette som gjør kvikkleire lumsk. Uforstyrret er leira fast; du kan bygge på den og gå
@@ -398,7 +398,7 @@ function SkredPage() {
         Kart, varsling og sikring
       </h2>
       <p>
-        NVE lager faresonekart og aktsomhetskart (NVE, u.å.). Forskjellen er viktig. Et faresonekart
+        NVE lager faresonekart og aktsomhetskart (NVE, u.å.-d). Forskjellen er viktig. Et faresonekart
         er en detaljert utredning av et avgrenset område. Et aktsomhetskart er en grov, modellbasert
         oversikt over hvor det kan være grunn til å undersøke nærmere.
       </p>
