@@ -30,7 +30,7 @@ function KryosfarePage() {
     <TopicLayout
       kicker="Geofag 2 · Kryosfæren"
       title="Kryosfæren"
-      lead="Is og snø er ikke bare istid. Kryosfæren er breer, permafrost, havis og snødekke — nå. Istidene ligger i paleoklima og Milankovitch. Denne siden er isen som jobber i år."
+      lead="Is og snø er ikke bare istid. Kryosfæren er breer, permafrost, havis og snødekke — nå. Istidene ligger i paleoklima og istider. Denne siden er isen som jobber i år."
       banner="/images/tema-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
@@ -46,10 +46,10 @@ function KryosfarePage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">Hva kryosfæren er</h2>
       <p>
         Kryosfæren er alt frosset vann på jordoverflaten. Den er den mest reflekterende av sfærene.
-        Istidssyklusene ligger i{" "}
-        <Link to="/tema/milankovitch" className="text-primary underline-offset-2 hover:underline">Milankovitch</Link>
-        {" "}og{" "}
-        <Link to="/tema/paleoklima" className="text-primary underline-offset-2 hover:underline">paleoklima</Link>.
+        Hvordan vi leser syklusene, ligger i{" "}
+        <Link to="/tema/paleoklima" className="text-primary underline-offset-2 hover:underline">paleoklima</Link>
+        . Hvorfor de kommer, ligger i{" "}
+        <Link to="/tema/milankovitch" className="text-primary underline-offset-2 hover:underline">istider</Link>.
       </p>
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">Massebalanse</h2>
       <p>

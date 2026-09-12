@@ -38,7 +38,7 @@ function KatastroferPage() {
       lead="Når atmosfærens krefter konsentreres i rom og tid, forvandles velkjente fysiske prinsipper til destruktive naturkatastrofer. Tropiske orkaner drives som gigantiske varmekraftmaskiner over lunkne hav, mens eksplosive lavtrykk og arktiske bomber herjer våre egne breddegrader. I fuktige luftstrømmer frakter atmosfæriske elver ufattelige vannmengder inn mot fjellene, mens superceller konsentrerer vindskjæring og rotasjon til dødelige tornadoer. En værkatastrofe oppstår i skjæringspunktet mellom ekstrem fysikk og samfunnets sårbarhet — og i et varmere klima lades terningen med høyere risiko."
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye og spiralformede regnbånd"
-      prev={{ to: "/tema/milankovitch", label: "Forrige: Milankovitch og istider" }}
+      prev={{ to: "/tema/milankovitch", label: "Forrige: Istider" }}
       next={{ to: "/eksamen", label: "Neste: Eksamen i Geofag 2" }}
       kilder={KILDER.vaerkatastrofer}
     >
