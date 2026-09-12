@@ -735,6 +735,18 @@ export const KILDER = {
       suffix: "(2), 130–141.",
       href: "https://doi.org/10.1175/1520-0469(1963)020<0130:DNF>2.0.CO;2",
     },
+    {
+      prefix: "Bjerknes, V. (1904). Das Problem der Wettervorhersage, betrachtet vom Standpunkte der Mechanik und der Physik. ",
+      italic: "Meteorologische Zeitschrift, 21",
+      suffix: ", 1–7.",
+      href: "https://explore.scopus.com/record?eid=2-s2.0-85010645063",
+    },
+    {
+      prefix: "Richardson, L. F. (1922). ",
+      italic: "Weather prediction by numerical process",
+      suffix: ". Cambridge University Press.",
+      href: "https://archive.org/details/weatherpredictio00richrich",
+    },
   ],
   paleoklima: [
     {

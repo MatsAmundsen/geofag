@@ -83,7 +83,15 @@ export {
   SeaBreezeDiagram,
   WindForcesBalanceDiagram,
 } from "./pressure";
-export { ModelGridDiagram } from "./models";
+export {
+  DataAssimilationCycleDiagram,
+  LorenzChaosEnsembleDiagram,
+  ModelGrid3DDiagram,
+  ModelGridDiagram,
+  ModelHierarchyNorwayDiagram,
+  PrimitiveEquationsDiagram,
+  SubgridParametrizationDiagram,
+} from "./models";
 export {
   AbruptClimateChangeDiagram,
   DeglaciationFeedbackDiagram,
