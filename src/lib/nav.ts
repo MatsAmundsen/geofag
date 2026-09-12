@@ -134,17 +134,17 @@ export const GF2_THEMES = [
     image: "/images/fig-paleo.jpg",
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
-      "Termometer dekker et øyeblikk. Iskjerner og havbunn forteller istidene — og tester om modellene treffer.",
+      "Slik leser vi fortiden: proxy, iskjerne, δ¹⁸O og brå hopp. Banen og sporene i Norge ligger i neste kapittel.",
     status: "klar" as const,
   },
   {
     to: "/tema/milankovitch",
-    title: "Milankovitch-syklusen og istider",
+    title: "Istider",
     kicker: "Istider",
     image: "/images/tema-milankovitch.jpg",
     alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
     blurb:
-      "Jordbanen flytter sommersola på 65 °N. Albedo og CO₂ forsterker. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
+      "Hvorfor isen kommer: Milankovitch, 65 °N, albedo og CO₂. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
     status: "klar" as const,
   },
   {

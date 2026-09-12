@@ -30,7 +30,7 @@ function KatastroferPage() {
       lead="Orkaner, ekstremnedbør og stormflo er ikke egne fysikklover. De er værsystemer drevet av varme, fukt og rotasjon — de samme mekanismene du allerede kan. En katastrofe oppstår når systemet treffer samfunn som ikke tåler det."
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye"
-      prev={{ to: "/tema/milankovitch", label: "Forrige: Milankovitch og istider" }}
+      prev={{ to: "/tema/milankovitch", label: "Forrige: Istider" }}
       kilder={KILDER.vaerkatastrofer}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">

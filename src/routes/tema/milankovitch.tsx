@@ -36,7 +36,7 @@ function MilankovitchPage() {
   return (
     <TopicLayout
       kicker="Geofag 2 · Istider"
-      title="Milankovitch-syklusen og istider"
+      title={tema.title}
       lead="Jordbanen vingler langsomt. Det flytter sommersola på 65 °N — og avgjør om snøen overlever august. Resten er forsterkning: albedo, CO₂ og land. Vi er i en mellomistid inne i et ishus. Siste innlandsis over Norge smeltet for omtrent 11 700 år siden."
       banner={tema.image}
       bannerAlt={tema.alt}
@@ -76,15 +76,15 @@ function MilankovitchPage() {
         Istidene styres av summen, ikke av én syklus alene.
       </p>
       <p>
-        Paleoklima-siden tar arkivene — iskjerne, proxy, δ¹⁸O. Denne siden tar mekanismen: banen,
-        istidsfaktorene og sporene isen etterlot i Norge. Start med{" "}
+        At CO₂ var rundt 180 ppm i istid, at periodene sitter i δ¹⁸O, og hvordan vi daterer
+        holocen, vet vi fra{" "}
         <Link
           to="/tema/paleoklima"
           className="text-primary underline-offset-2 hover:underline"
         >
           paleoklima
-        </Link>{" "}
-        hvis du trenger kjeden fra spor til kunnskap først.
+        </Link>
+        . Denne siden eier mekanismen: banen, istidsfaktorene og sporene isen etterlot i Norge.
       </p>
 
       <MilankovitchCyclesDiagram />
@@ -382,20 +382,6 @@ function MilankovitchPage() {
         rykk, med kaldere tilbakeslag. Holocen avløste weichsel for ca. 11 700 år siden. Det er
         «siste istid slutt» i skolebetydningen.
       </p>
-      <PhotoFigure
-        src="/images/fig-iskjerne.jpg"
-        alt="Sylinder av blå is med tynne årlige lag og innestengte luftbobler"
-        heading="Åtte sykluser i isen"
-        caption="EPICA Dome C dekker 800 000 år og åtte istidssykluser. Boblene er luft. CO₂ der er målt, ikke gjettet. Naturlig spenn 172–300 ppm. Dagens verdi ligger utenfor."
-        marks={[
-          { x: 6, y: 14, n: "1", text: "Årlige lag", tone: "cold" },
-          { x: 58, y: 48, n: "2", text: "Innestengt luft", tone: "teal" },
-        ]}
-        points={[
-          { n: "1", label: "Lagene daterer. Tynnere lag: tørrere eller kaldere år." },
-          { n: "2", label: "CO₂ i boblene er ekte fortidsatmosfære." },
-        ]}
-      />
       <p>
         En ny glacial, orbitalt, ligger titusener av år fram i tid. Høy CO₂ kan skyve den lenger
         (Berger &amp; Loutre, 2002; IPCC, 2021). Det er irrelevant for risikoen i 2100. Vi styrer
@@ -485,10 +471,16 @@ function MilankovitchPage() {
         barn="Høyeste nivå havet har stått etter siste istid på et gitt sted. Over den: isens løsmasser. Under: gammel sjøbunn, ofte leire."
       />
       <p>
-        Yngre dryas er også et klimaspor, ikke bare en morene. Iskjerner og sedimenter viser et
-        brått kaldt hopp like før holocen, knyttet til smeltevann og svekket AMOC. Det er bevis
-        for at istidens slutt ikke var en jevn oppvarming, og for at havsirkulasjonen kan knekke
-        regionalt klima på tiår til århundrer.
+        Yngre dryas er også et klimaspor, ikke bare en morene. At hoppet sitter i iskjerner og
+        henger sammen med smeltevann og svekket AMOC, eier{" "}
+        <Link to="/tema/paleoklima" className="text-primary underline-offset-2 hover:underline">
+          paleoklima
+        </Link>
+        . Fysikken i omveltningen ligger under{" "}
+        <Link to="/tema/havstrommer" className="text-primary underline-offset-2 hover:underline">
+          havstrømmer
+        </Link>
+        . Her er poenget at istidens slutt ikke var jevn — og at Raet er det norske avtrykket.
       </p>
 
       <GlacialLandformsDiagram />
@@ -503,8 +495,8 @@ function MilankovitchPage() {
       <Callout title="Kompetansemål">
         <p>
           Gjøre rede for forskning på forhistorisk klima, og hvordan det bidrar til å lage prognoser
-          for framtidens klima. Her: orbital pacemaker, forsterkere, og hvorfor banen ikke forklarer
-          oppvarmingen siden 1850.
+          for framtidens klima. Her: orbital pacemaker, istidsfaktorer, spor i Norge, og hvorfor
+          banen ikke forklarer oppvarmingen siden 1850. Arkivene ligger i forrige kapittel.
         </p>
       </Callout>
 
