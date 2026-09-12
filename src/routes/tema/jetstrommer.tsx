@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import {
+  JetBlockingDiagram,
   JetFormsDiagram,
   JetProfileDiagram,
   JetSeasonDiagram,
@@ -8,7 +9,6 @@ import {
   NaoDiagram,
   ThermalWindDiagram,
 } from "@/components/diagrams";
-import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -31,647 +31,721 @@ export const Route = createFileRoute("/tema/jetstrommer")({
 function JetstrommerPage() {
   return (
     <TopicLayout
-      kicker="Geofag 2 · Atmosfæren"
-      title="Jetstrømmer"
-      lead="Åtte til tolv kilometer over hodet ditt renner en elv av luft østover i godt over 200 kilometer i timen. Du kjenner den aldri på kinnet. Likevel avgjør den om uka blir mild og våt, eller kald og stillestående — fordi den bestemmer hvor lavtrykkene får lov til å gå."
+      kicker="Den globale atmosfæren"
+      title="Jetstrømmer og stormbaner"
+      lead="I grenselandet mellom troposfæren og stratosfæren, 8 til 12 kilometer over oss, raser mektige elver av vind i over 300 kilometer i timen. Jetstrømmene er atmosfærens motorveier. De oppstår i kollisjonssonene mellom klodens varme og kalde luftmasser, og de fungerer som et overordnet styringsorgan for alt vær på våre breddegrader: De suger luft opp fra bakken, puster liv i lavtrykkene, og styrer stormbanene rett inn mot norskekysten. Forstår du jetstrømmen, forstår du hvorfor været i Norge kan skifte fra mildt pøsregn til bitende arktisk kulde i løpet av få dager."
       banner="/images/fig-jet.jpg"
       bannerAlt="Tynn, rask skyelv høyt over havet mot jordas krumning"
       prev={{ to: "/tema/vindsystemet", label: "Forrige: Vindsystemet" }}
       next={{ to: "/tema/coriolis", label: "Neste: Corioliseffekten" }}
       kilder={KILDER.jetstrommer}
     >
-      <h2 className="font-display text-2xl font-medium tracking-tight">Hva en jetstrøm er</h2>
+      {/* 1. HVA EN JETSTRØM ER */}
+      <h2 className="font-display text-2xl font-medium tracking-tight">
+        Hva er en jetstrøm? Atmosfærens høyhastighetselver
+      </h2>
       <p>
-        En jetstrøm er et smalt belte med sterk vestavind i øvre troposfære (NOAA, u.å.-a). Ordet
-        «smalt» er nøkkelen. Vestavindsbeltet ved bakken dekker tusenvis av kilometer i bredden.
-        Jetstrømmen er derimot bare noen hundre kilometer bred og et par kilometer dyp, men den kan
-        være mange tusen kilometer lang. Tenk deg en elv i lufta: strømmen er sterkest i en trang
-        renne midt i, og svakere ut mot sidene.
+        Mens de store vindbeltene ved bakken (som passatene og vestavindsbeltet) strekker seg over
+        flere tusen kilometer i bredden, er en <strong>jetstrøm</strong> et konsentrert, relativt
+        smalt og flattrykt bånd av ekstrem vestavind like under tropopausen (NOAA, u.å.-a).
       </p>
       <p>
-        Farten i kjernen ligger typisk mellom 100 og 250 km/t. De sterkeste vinterkjernene kan
-        passere 400 km/t. Retningen er nesten alltid fra vest mot øst. Det er ikke tilfeldig, og vi
-        skal se hvorfor litt lenger ned.
+        Tenk deg en brusende elv i luften: Tverrsnittet er typisk 200 til 500 kilometer bredt og bare
+        2 til 4 kilometer tykt, men elven kan strekke seg sammenhengende over mange tusen kilometer
+        rundt hele kloden. Vindhastigheten er aller størst i en trang kjerne i midten, og avtar
+        raskt ut mot sidene og i vertikal retning:
       </p>
+      <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
+        <li>
+          <strong>Typisk marsjhastighet:</strong> Vinden i kjernen ligger vanligvis mellom{" "}
+          <strong>150 og 250 km/t</strong> (40–70 m/s).
+        </li>
+        <li>
+          <strong>Ekstreme vinterkjerner:</strong> Når temperaturkontrasten mellom polisen og
+          tropene er på sitt skarpeste midtvinters, kan vindfarten over Japan og Nord-Atlanteren
+          passere <strong>400–450 km/t</strong> (&gt;120 m/s) – raskere enn et japansk Shinkansen-lyntog!
+        </li>
+        <li>
+          <strong>Vestavindsretning:</strong> På begge halvkuler blåser jetstrømmene nesten alltid{" "}
+          <strong>fra vest mot øst</strong>. Dette skyldes at trykkgradienten i høyden peker mot
+          polene, mens Corioliskraften avbøyer luftstrømmen mot øst.
+        </li>
+      </ul>
+
       <OrdBoks
         ord="Jetstrøm"
-        barn="Et smalt, sterkt belte med vestavind i øvre troposfære. Noen hundre kilometer bredt, et par kilometer dypt, mange tusen kilometer langt."
+        barn="Et smalt, rørformet belte med ekstrem vestavind i øvre troposfære (typisk 8–16 km høyde). Dannes over kollisjonssoner mellom luftmasser med ulik temperatur."
       />
+
+      <h3 className="pt-2 font-display text-xl font-medium tracking-tight">
+        Oppdagelsen og moderne luftfart
+      </h3>
       <p>
-        Jetstrømmen ble oppdaget nettopp fordi den er så sterk. Under andre verdenskrig fløy
-        amerikanske bombefly vestover mot Japan i stor høyde og oppdaget at de nesten sto stille i
-        lufta. De hadde flydd rett inn i en motvind ingen visste om.
+        Jetstrømmene ble først systematisk kartlagt på 1920-tallet av den japanske meteorologen
+        Wasaburo Oishi, som slapp opp pilotballonger nær Fuji-fjellet. Men fenomenet ble verdenskjent
+        under andre verdenskrig: Da amerikanske B-29 bombefly skulle fly vestover mot Japan i 10
+        kilometers høyde, opplevde pilotene at flyene nærmest sto stille i forhold til bakken. De
+        hadde fløyet rett inn i en motvind på over 250 km/t som ingen inntil da visste eksisterte.
       </p>
-
-      <PhotoFigure
-        src="/images/fig-jet-cirrus.jpg"
-        alt="Lange, parallelle cirrusstriper strukket ut over en mørk vinterhorisont"
-        heading="Slik kan du se den fra bakken"
-        caption="Jetstrømmen i seg selv er usynlig. Men iskrystallene i cirrusskyene som ligger i den, blir dratt ut i lange, parallelle striper som alle peker samme vei. Ligger de slik over deg, ser du sporet etter sterk vind i 8–12 kilometers høyde."
-        arrows={[{ d: "M 14 30 L 74 24", tone: "fg", width: 1.3 }]}
-        marks={[
-          { x: 6, y: 16, n: "1", text: "Striper i samme retning", tone: "fg" },
-          { x: 96, y: 74, n: "2", text: "Bakken merker ingenting", tone: "cold", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Cirrus dras ut til parallelle bånd av vinden i høyden." },
-          { n: "2", label: "Vinden du kjenner ved bakken, kan være helt annerledes." },
-        ]}
-      />
-
       <p>
-        Flytrafikken lever av dette. En rute fra New York til Oslo går med jetstrømmen i ryggen og
-        er ofte omtrent en time kortere enn turen andre veien. Piloter søker aktivt opp kjernen
-        østover og styrer utenom den vestover. Rett utenfor kanten av jeten endrer vindfarten seg
-        brått over kort avstand, og der ligger mye av den klarværsturbulensen fly møter uten en sky
-        i sikte.
+        I dag er internasjonal luftfart helt avhengig av å navigere etter jetstrømmen:
       </p>
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Flytid og drivstoff:</strong> Et rutefly fra New York til Oslo flyr med
+          polarfrontjeten i ryggen. Medvinden kan kutte flytiden med over én time sammenlignet med
+          turen vestover mot New York, og flyselskapene sparer tusenvis av liter flybensin. Ruteplanleggere
+          oppdaterer flyrutene daglig for å legge kursen midt i jetkjernen østover, og svinge utenom
+          den vestover.
+        </li>
+        <li>
+          <strong>Klarværsturbulens (CAT):</strong> I randsonene til jetstrømmen endrer vindhastigheten
+          seg voldsomt over bare noen få meters avstand (kraftig <em>vindskjæring</em>). Dette skaper
+          kaotiske, usynlige virvler i luften. Siden luften her oppe er knusktørr, finnes det ingen
+          skyer som advarer pilotene. Dette kalles <strong>klarværsturbulens</strong> (Clear Air
+          Turbulence) og er den vanligste årsaken til uventede risting og skader på passasjerer i
+          marsjhøyde.
+        </li>
+        <li>
+          <strong>Cirrusstriper – jetens fingeravtrykk på himmelen:</strong> Selv om luften i
+          jetstrømmen er usynlig, kan du ofte observere den fra bakken. Når fuktighet kastes opp i
+          jeten, trekkes iskrystallene i fjærsyene (<em>Cirrus</em>) ut i lange, snorrette parallelle
+          striper over himmelen. Ser du slike striper fare over himmelen mens det er vindstille nede
+          på bakken, ser du jetstrømmen i aksjon 10 kilometer over deg.
+        </li>
+      </ul>
 
-      <PhotoFigure
-        src="/images/fig-jet-fly.jpg"
-        alt="Rutefly med kondensstripe i marsjhøyde over et hav av utstrakte cirrusskyer"
-        heading="Rutefly ligger midt i den"
-        caption="Marsjhøyde for et rutefly er 10–12 kilometer, altså nøyaktig der jetstrømmen er sterkest. Derfor er flytid østover og vestover ikke den samme, og derfor legges rutene om fra dag til dag etter hvor jeten ligger."
-        arrows={[{ d: "M 20 34 L 78 32", tone: "teal", width: 1.3 }]}
-        marks={[
-          { x: 4, y: 22, n: "1", text: "Vind fra vest", tone: "teal" },
-          { x: 96, y: 60, n: "2", text: "Marsjhøyde 10–12 km", tone: "fg", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Medvind østover, motvind vestover. Timer i forskjell." },
-          { n: "2", label: "Skarp vindendring ved kanten gir klarværsturbulens." },
-        ]}
+      <OrdBoks
+        ord="Klarværsturbulens (CAT)"
+        barn="Plutselig, kraftig turbulens i skyfri luft forårsaket av ekstrem horisontal eller vertikal vindskjæring i randsonen til en jetstrøm."
       />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        To jetbelter, ikke ett
+      {/* 2. TO JETBELTER */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Klodens to jetbelter: Polarfrontjeten og Den subtropiske jetstrømmen
       </h2>
       <p>
-        Det er lett å snakke om «jetstrømmen» i entall. På hver halvkule finnes det to, og de har
-        ulik jobb.
-      </p>
-      <p>
-        <strong>Polarfrontjeten</strong> ligger over polarfronten, der kald polarluft møter mildere
-        luft fra sør. I snitt ligger den rundt 50–60° nord, men den meandrerer, og kan i perioder
-        stå så langt sør som 40° eller så langt nord som 70°. Høyden er typisk 8–12 km. Det er denne
-        som styrer lavtrykkene inn mot Norge, og den er den mest variable av de to.
-      </p>
-      <OrdBoks
-        ord="Polarfrontjet"
-        barn="Sterk vestavind over polarfronten, typisk 8–12 km oppe og i snitt rundt 50–60° nord. Den styrer lavtrykkene inn mot Norge."
-      />
-      <p>
-        <strong>Den subtropiske jetstrømmen</strong> ligger nær 30° bredde, ved polveggen av
-        Hadleycellen, altså over det subtropiske høytrykket og nedsynkingen som lager ørkenene. Den
-        ligger høyere enn polarfrontjeten, typisk 10–16 km, fordi tropopausen er høyere der. Den er
-        jevnere og mer forutsigbar, og betyr mest for monsun og for været i subtropene.
-      </p>
-      <OrdBoks
-        ord="Subtropisk jet"
-        barn="Vestavind nær 30° bredde, ved Hadleycellens polvegg. Ligger høyere enn polarfrontjeten, typisk 10–16 km."
-      />
-      <p>
-        Begge er vestlige. Det henger sammen med at luften i høyden strømmer polover og blir dreid
-        mot øst av coriolis. Om vinteren kan de to beltene i perioder nærme seg hverandre eller slå
-        seg sammen over deler av kloden.
-      </p>
-      <p>
-        Du kan også møte begrepet <em>polar natt-jet</em>. Den er noe annet: en vestavind i
-        stratosfæren over vinterpolen, høyt over de to jetbeltene vi snakker om her. Den hører
-        hjemme i diskusjonen om ozon og plutselige stratosfæriske oppvarminger, ikke i den vanlige
-        forklaringen av norsk vær.
+        I dagligtale snakker vi ofte om «jetstrømmen» i entall, men på hver halvkule finnes det{" "}
+        <strong>to permanente jetbelter</strong> i troposfæren. De oppstår i helt ulike soner og
+        drives av forskjellige mekanismer:
       </p>
 
-      <PhotoFigure
-        src="/images/fig-polarfront.jpg"
-        alt="Skarp skygrense over Nord-Atlanteren der kald og mild luft møtes"
-        heading="Polarfronten er adressen til den viktigste jeten"
-        caption="Der kald polarluft ligger vegg i vegg med mildere luft fra sør, er den horisontale temperaturforskjellen størst. Polarfrontjeten ligger rett over denne grensen. Flytter fronten seg, flytter jeten seg med."
-        arrows={[{ d: "M 12 40 L 78 30", tone: "fg", width: 1.3 }]}
-        marks={[
-          { x: 4, y: 14, n: "1", text: "Kald polarluft", tone: "cold" },
-          { x: 6, y: 76, n: "2", text: "Mildere luft sørfra", tone: "warm" },
-          { x: 96, y: 40, n: "3", text: "Jeten ligger over grensen", tone: "teal", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Kald, tett luft nord for fronten." },
-          { n: "2", label: "Mildere, tykkere luftsøyle sør for fronten." },
-          { n: "3", label: "Størst kontrast gir sterkest jet, rett over fronten." },
-        ]}
-      />
+      <div className="my-4 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border border-sky-500/30 bg-sky-950/20 p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-sky-300">
+            <span>🌊</span> 1. Polarfrontjeten (PFJ)
+          </h3>
+          <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted-foreground">
+            <li>
+              <strong>Posisjon:</strong> Ca. 50°–65°N, rett over <em>polarfronten</em>.
+            </li>
+            <li>
+              <strong>Høyde:</strong> Typisk <strong>9–11 km</strong> (polar tropopause).
+            </li>
+            <li>
+              <strong>Drivkraft:</strong> Den voldsomme horisontale temperaturkontrasten mellom
+              iskald arktisk polarluft og mild subtropisk luft.
+            </li>
+            <li>
+              <strong>Karakter:</strong> Ekstremt meandrerende og dynamisk. Det er denne jetstrømmen
+              som <strong>styrer lavtrykkene, stormene og ruskeværet inn mot Norge</strong>!
+            </li>
+          </ul>
+        </div>
+        <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-amber-300">
+            <span>☀️</span> 2. Den subtropiske jetstrømmen (STJ)
+          </h3>
+          <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted-foreground">
+            <li>
+              <strong>Posisjon:</strong> Ca. 30°N/S, ved polgrensen til Hadleycellen.
+            </li>
+            <li>
+              <strong>Høyde:</strong> Typisk <strong>13–16 km</strong> (tropisk tropopause).
+            </li>
+            <li>
+              <strong>Drivkraft:</strong> Bevaring av vinkelmoment (spinn) fra luften som stiger ved
+              ekvator og strømmer mot polene i høyden.
+            </li>
+            <li>
+              <strong>Karakter:</strong> Betydelig mer stabil og rettlinjet. Ligger over jordens store
+              ørkenbelter og hestebreddegrader; styrer monsuner og subtropisk vær.
+            </li>
+          </ul>
+        </div>
+      </div>
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Hvorfor den finnes: varme, trykk og rotasjon
-      </h2>
       <p>
-        Alt starter med at sola varmer tropene mer enn polene. Det gir luftsøyler med ulik
-        temperatur, og det er forskjellen mellom søylene som til slutt blir en jetstrøm. Men bildet
-        ved bakken og bildet i høyden ser helt ulikt ut, og du må holde dem fra hverandre.
+        <strong>Hvorfor ligger de i forskjellig høyde? Tropopausens trappetrinn!</strong>
+        Dette er en klassisk geofaglig observasjon: Fordi luften i tropene er gjennomvarm, utvider
+        den seg og løfter den tropiske tropopausen helt opp til <strong>16–17 kilometers høyde</strong>.
+        I Arktis er luften derimot iskald og sammentrykt, slik at den polare tropopausen bare ligger{" "}
+        <strong>8–9 kilometer over bakken</strong>.
       </p>
       <p>
-        <strong>Ved bakken</strong> veksler det mellom fire belter. Varm luft stiger nær ekvator:
-        lavtrykk og byger i ITCZ. Luften synker i subtropene: høytrykk, ørken og passater. Ved
-        polarfronten møtes kald og mild luft: vandrende lavtrykk. Over polen synker kald, tett luft:
-        polarhøytrykk.
-      </p>
-      <p>
-        <strong>I høyden</strong> er mønsteret mye enklere. Varm luft utvider seg, så en varm
-        luftsøyle er tykkere enn en kald med samme trykk ved bakken. Går du opp til for eksempel 10
-        km, har du da mer luft over deg der søylen er varm enn der den er kald. Trykket i høyden
-        blir høyere over tropene og lavere over polarluften. Trykkgradienten i høyden peker altså
-        polover, hele veien.
-      </p>
-      <p>
-        Så snart luften får fart mot polen, dreier coriolis den mot høyre på nordlig halvkule. En
-        polgående strøm blir dermed en vestavind. Høyt oppe er det ingen friksjon fra bakken som
-        bremser, så vinden legger seg langs isobarene og blir geostrofisk. Det er derfor jetstrømmen
-        kan bli så sterk nettopp der, og derfor den nesten alltid går vestfra.
+        I overgangssonene mellom sirkulasjonscellene oppstår det brå trappetrinn i tropopausen:
+        Både polarfrontjeten og den subtropiske jeten sitter nøyaktig i disse «tropopausebruddene»!
       </p>
 
       <JetProfileDiagram />
 
-      <p>
-        Neste spørsmål: hvorfor er vinden sterkest akkurat ved tropopausen, og ikke lenger opp?
-        Fordi hellingen på trykkflatene bygger seg opp gjennom hele troposfæren. Så lenge det blir
-        kaldere mot polen, blir hver trykkflate litt brattere enn den under, gradienten litt større,
-        og vinden litt sterkere. Denne sammenhengen — temperaturkontrast på tvers gir vindøkning
-        oppover — kalles termisk vind.
+      <p className="text-sm text-muted-foreground">
+        <em>Merk skillet til polar natt-jet:</em> I stratosfæren over Arktis og Antarktis finnes det
+        om vinteren en tredje jetstrøm, <em>polar natt-jeten</em> (Polar Night Jet). Den oppholder
+        seg i 25–40 kilometers høyde over mørkelagte polare stratosfærelag og er koblet til
+        polarvirvelen og ozonkjemi. Den må ikke forveksles med troposfærens jetstrømmer som styrer
+        norsk vær.
       </p>
+
+      {/* 3. TERMISK VIND */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Fysikken bak jetstrømmen: Termisk vind og trykkflaters helling
+      </h2>
+      <p>
+        Hvordan kan en temperaturforskjell langs bakken forvandle seg til en vanvittig vestavind
+        ti kilometer oppe i luften? Forklaringen er en av meteorologiens mest elegante fysiske lover:{" "}
+        <strong>termisk vind</strong>.
+      </p>
+      <p>
+        La oss bygge mekanismen trinn for trinn fra termodynamiske prinsipper:
+      </p>
+      <ol className="list-decimal space-y-3 pl-6 text-foreground/90">
+        <li>
+          <strong>Hypsometrisk søyletykkelse:</strong> Luft er en gass som adlyder ideell gasslov.
+          Varm luft har lavere tetthet og tar større plass; en varm luftsøyle er derfor{" "}
+          <strong>høy og romslig</strong>. Kald luft trekker seg sammen og er tung; en kald luftsøyle
+          er <strong>komprimert og lav</strong>.
+        </li>
+        <li>
+          <strong>Trykkfall med høyden:</strong> Tenk deg at lufttrykket ved bakken er helt likt
+          (1013 hPa) både i subtropene og over Arktis. I den kalde, tette luften faller trykket
+          ekstremt raskt med høyden. I den varme, tynne luften faller trykket adskillig saktere.
+        </li>
+        <li>
+          <strong>Trykkflatene heller brattere og brattere:</strong> Hvis vi tegner opp flaten der
+          trykket er 500 hPa, ligger denne flaten rundt 5 700 meter over havet i subtropene, men bare
+          5 200 meter over havet i Arktis. Fortsetter vi opp til 250 hPa (tropopausen), er
+          høydeforskjellen blitt over 1 200 meter! Trykkflatene heller altså kraftigere og kraftigere
+          nedover mot polen for hvert trinn vi stiger.
+        </li>
+        <li>
+          <strong>Eksplosiv trykkgradientkraft i høyden:</strong> Hellingen på trykkflatene betyr at
+          det oppstår et kolossalt overtrykk i høyden over tropene, og et tilsvarende undertrykk i
+          høyden over Arktis. <strong>Trykkgradientkraften (F_pg) peker rett mot polen</strong>, og
+          den blir sterkere jo høyere opp vi kommer.
+        </li>
+        <li>
+          <strong>Coriolis fullfører verket:</strong> Idet luften akselererer mot polen i 10
+          kilometers høyde, finnes det ingen bakkefriksjon som bremser farten. Corioliskraften
+          avbøyer luftstrømmen 90° til høyre (på nordlig halvkule). Når trykkgradientkraften og
+          Corioliskraften er i balanse (geostrofisk vind), blåser vinden nøyaktig parallelt med
+          isobarene – <strong>rett fra vest mot øst som en jetstrøm!</strong>
+        </li>
+      </ol>
+
       <OrdBoks
         ord="Termisk vind"
-        barn="Regelen om at vestavinden øker oppover så lenge det blir kaldere mot polen. Stor temperaturkontrast gir sterk jet."
+        barn="Den vertikale endringen i geostrofisk vindhastighet som skyldes en horisontal temperaturgradient. Sterkere temperaturforskjell mellom pol og ekvator gir raskere jetstrøm i høyden."
       />
+
       <p>
-        Over tropopausen snur det. Den tropiske tropopausen ligger høyere og er kaldere enn den
-        polare, så høyt oppe er det ikke lenger varmest mot ekvator. Kontrasten snur, vinden slutter
-        å øke og avtar igjen. Maksimum ligger i overgangen — og det maksimumet er jetkjernen. Det
-        forklarer også hvorfor jetene sitter akkurat der tropopausen har et hopp i høyde: ved 30° og
-        ved polarfronten.
+        <strong>Hvorfor er vinden sterkest akkurat ved tropopausen?</strong>
+        Så lenge vi befinner oss i troposfæren, er det varmest i sør og kaldest i nord. Dermed
+        blir gradienten brattere og vinden sterkere for hver meter vi klatrer. Men over
+        tropopausen – inne i stratosfæren – snur dette! Der absorberer ozonlaget solstråling, og den
+        tropiske tropopausen er faktisk mye kaldere (-75 °C) enn den polare (-50 °C). Den horisontale
+        temperaturgradienten snur, trykkflatenes helling flater ut, og vindhastigheten avtar igjen.
+        Toppunktet for hastighet inntreffer dermed nøyaktig i overgangssonen: <strong>i jetkjernen</strong>.
       </p>
 
       <ThermalWindDiagram />
 
-      <p>
-        Merk konsekvensen av termisk vind:{" "}
-        <strong>jetstrømmens styrke er et mål på temperaturforskjellen under den.</strong> Stor
-        kontrast mellom tropene og polene gir sterk jet. Krymper kontrasten, svekkes jeten. Den
-        regelen skal vi bruke både om årstider og om klimaendringer lenger ned.
-      </p>
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Zonal og meridional form
+      {/* 4. ZONAL VS MERIDIONAL */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Zonal og meridional form: Rossbybølger og virvling
       </h2>
       <p>
-        Jetstrømmen går sjelden helt rett. Den har to grunnformer, og det er formen — ikke først og
-        fremst styrken — som avgjør hva slags vær du får.
+        Jetstrømmen flyter aldri i en snorrett linje rundt jorden. Den bukter og slynger seg i enorme,
+        kontinentstore bølger kalt <strong>Rossby-bølger</strong> (oppkalt etter den svensk-amerikanske
+        meteorologen Carl-Gustaf Rossby). Det er formen på disse bølgene som avgjør om du må pakke
+        paraply, solkrem eller dunjakke den neste uken.
       </p>
+
+      <div className="my-4 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border border-border bg-card p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-sky-400">
+            <span>➡️</span> Zonal strøm: Raskt vestavær
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Jetstrømmen blåser nesten snorrett fra vest mot øst, parallelt med breddegradene.
+            Temperaturkontrasten er jevnt fordelt, og vestavindsbeltet er sterkt. Lavtrykkene langs
+            polarfronten feier raskt over Atlanteren og inn mot Norge. Været er preget av hyppige
+            skifter: regnvær etterfølges raskt av opphold, temperaturene er milde, og ingen værtype
+            rekker å «låse seg fast».
+          </p>
+        </div>
+        <div className="rounded-xl border border-border bg-card p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-amber-400">
+            <span>〰️</span> Meridional strøm: Store bølger og værlås
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Jetstrømmen meandrerer i dype svinger nord–sør. Vinden frakter enorme luftmasser på
+            tvers av breddegradene:
+            <br />
+            • <strong>Rygg (bølgetopp mot nord):</strong> Pumper varm subtropisk luft mot Arktis. Luften
+            synker (subsidens), skyer fordamper og gir hetebølge og tørke.
+            <br />
+            • <strong>Tråg (bølgedal mot sør):</strong> Dumper iskald polarluft langt sørover. Luften
+            stiger, skaper bygeskyer og gir ukelange kuldebølger.
+          </p>
+        </div>
+      </div>
+
       <p>
-        <strong>Zonal form:</strong> jeten går nesten rett vest–øst, parallelt med breddegradene.
-        Lavtrykkene langs polarfronten vandrer raskt østover. Været skifter ofte, og ingen værtype
-        rekker å sette seg. Vestavindsbeltet er sterkt.
+        <strong>Hvorfor begynner jetstrømmen å svinge?</strong>
+        Rossby-bølger drives av jordens krumning og rotasjon gjennom en fysisk lov som kalles{" "}
+        <strong>bevaring av potensiell virvling (vorticity)</strong>:
       </p>
-      <p>
-        <strong>Meridional form,</strong> eller bølgeform: jeten svinger i store bølger mot nord og
-        sør. Det er Rossby-bølger. En bølgetopp som peker mot polen kalles en rygg og fører mild
-        luft nordover. En bølgedal som peker mot ekvator kalles et tråg og fører kald luft sørover.
-        Nå flyttes luftmasser langt på tvers av breddegradene, og en kuldebølge i Nord-Europa kan
-        sitte i samme bølgetog som en hetebølge lenger sør.
-      </p>
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Jordrotasjonens breddegradseffekt (Beta-effekten):</strong> Corioliskraften øker fra
+          null ved ekvator til maksimum ved polene. Når en luftpakke beveger seg nordover, får den
+          mer «spinn» fra jordkloden under seg. For å bevare sitt totale spinn må luften begynne å
+          rotere motsatt vei (med klokken, antisyklonalt). Den tvinges derfor til å svinge mot høyre
+          og sørover igjen – en rygg er født. Når den beveger seg sørover, skjer det motsatte: Den
+          avbøyes mot venstre og nordover – et tråg dannes. Dette skaper en permanent bølgedynamikk!
+        </li>
+        <li>
+          <strong>Fjellkjeder som bølgeutløsere:</strong> Når jetstrømmen treffer mektige fjellkjeder
+          som Rocky Mountains i Nord-Amerika eller Andesfjellene i Sør-Amerika, presses luften opp og
+          klemmes sammen. Dette tvinger frem et stående tråg på lesiden av fjellet, som forplanter
+          seg som en bølgebevegelse hele veien over Atlanteren mot Norge.
+        </li>
+      </ul>
+
       <OrdBoks
         ord="Rossby-bølger"
-        barn="Store bølger på jetstrømmen. Rygg peker mot polen og fører mild luft nordover. Tråg peker mot ekvator og fører kald luft sørover."
-      />
-      <OrdBoks
-        ord="Meandering"
-        barn="At jetstrømmen svinger i store bølger nord–sør i stedet for å gå rett vest–øst."
+        barn="Gigantiske planetære meandrerende bølger på jetstrømmen med bølgelengder på 4000–8000 km. Skapes av variasjon i Corioliskraft med breddegrad og store fjellbarrierer."
       />
 
       <JetFormsDiagram />
 
-      <p>
-        Hvorfor svinger den i det hele tatt? Tre ting drar i den. For det første endrer coriolis seg
-        med breddegraden: den er null ved ekvator og sterkest ved polene. Luft som beveger seg
-        nordover, kommer inn i et område der dreiningen er sterkere, og luft som beveger seg sørover
-        møter svakere dreining. Luftkolonnen «husker» rotasjonen den hadde, og resultatet er at en
-        bane som først bøyer av, svinger tilbake igjen — altså en bølge.
-      </p>
-      <p>
-        For det andre setter fjellkjeder og forskjellen mellom land og hav opp faste bølger.
-        Klippfjellene i Nord-Amerika og Himalaya tvinger strømmen til å bøye av og forankrer trågene
-        et stykke nedstrøms. For det tredje kan kraftig tropisk konveksjon sende bølger nordover og
-        endre hvor rygger og tråg legger seg.
-      </p>
-      <p>
-        Når en rygg blir stående i dagevis, kalles det blocking. Vestavindsbeltet stanser opp, og
-        lavtrykkene må gå rundt. Da står været. Det er den samme situasjonen som gir langvarig kulde
-        om vinteren og langvarig tørke og hete om sommeren.
-      </p>
-      <OrdBoks
-        ord="Blocking"
-        barn="En rygg som blir stående. Vestavindsbeltet stanser, lavtrykkene styres utenom, og været står stille i dagevis."
-      />
-
-      <PhotoPair
-        heading="Samme bølge, motsatt vær"
-        caption="Et tråg og en rygg er to sider av samme Rossby-bølge, og de opptrer samtidig noen hundre mil fra hverandre. Under tråget renner kald luft sørover og kan gi kuldebølge langt sør for der den hører hjemme. Under ryggen synker luften, skyene løses opp, sola steker dag etter dag, og bakken tørker ut."
-        left={{
-          src: "/images/fig-trag-kulde.jpg",
-          alt: "Snødekt bygate i nordeuropeisk by under et kaldt vinterutbrudd",
-          title: "Under tråget: kald luft sørover",
-          arrows: [{ d: "M 50 6 L 50 34", tone: "cold", width: 1.3 }],
-          marks: [{ x: 4, y: 16, n: "1", text: "Kuldeutbrudd", tone: "cold" }],
-        }}
-        right={{
-          src: "/images/fig-rygg-varme.jpg",
-          alt: "Uttørket sørlandsk jordbrukslandskap med sprukken jord under hetebølge",
-          title: "Under ryggen: nedsynking og hete",
-          arrows: [{ d: "M 50 6 L 50 34", tone: "warm", width: 1.3 }],
-          marks: [{ x: 4, y: 16, n: "2", text: "Hetebølge og tørke", tone: "warm" }],
-        }}
-      />
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Fra jetstrøm til lavtrykk
+      {/* 5. JETKJERNER OG 4-KVADRANT-MODELLEN */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Jetkjernen (Jet streak) og syklonenes fødsel: 4-kvadrant-modellen
       </h2>
       <p>
-        Vi sier at jetstrømmen «styrer lavtrykkene». Det er verdt å se nøyaktig hvordan, for det er
-        her mange svarer upresist til eksamen.
+        I lærebøker heter det ofte at «jetstrømmen styrer lavtrykkene». Men jetstrømmen gjør mye mer
+        enn å bare være en passiv reisevei: <strong>Jetstrømmen skaper og forsterker lavtrykkene aktivt!</strong>
       </p>
       <p>
-        Jetstrømmen har ikke samme fart hele veien. Inne i den ligger biter der vinden er ekstra
-        sterk, ofte kalt jetkjerner eller jet streaks. Luft som strømmer inn i en slik kjerne
-        akselererer, og luft som forlater den bremser. Der luften bremser og sprer seg i utløpet,
-        blir det divergens: det fjernes luft fra toppen av luftsøylen. Divergensen er sterkest på
-        nordsiden av utløpet.
+        Inne i jetstrømmen finnes det soner der vinden er lokalt mye sterkere enn i områdene rundt.
+        En slik lomme med topphastighet kalles en <strong>jetkjerne</strong> (engelsk: <em>jet streak</em>).
+        Når luftmolekylene strømmer gjennom denne kjernen, utsettes de for voldsom akselerasjon og
+        bremsing:
       </p>
-      <OrdBoks
-        ord="Divergens"
-        barn="At luft sprer seg fra hverandre. Skjer det høyt oppe, fjernes luft fra toppen av søylen, og trykket ved bakken faller."
-      />
+
+      <ol className="list-decimal space-y-2.5 pl-6 text-foreground/90">
+        <li>
+          <strong>Innløpet (Entrance region):</strong> Luften strømmer inn i kjernen og må{" "}
+          <strong>akselerere</strong> fra f.eks. 150 km/t til 300 km/t. I akselerasjonsfasen henger
+          Corioliskraften litt etter trykkgradientkraften. Luften tvinges på tvers av jeten mot lavt
+          trykk (mot nord).
+        </li>
+        <li>
+          <strong>Utløpet (Exit region):</strong> Luften forlater kjernen og må{" "}
+          <strong>bremse ned</strong> igjen. Nå er farten høyere enn den lokale trykkgradienten
+          tilsier, og Corioliskraften «vinner» drakampen. Luften kastes på tvers av jeten mot høyre
+          (mot sør).
+        </li>
+      </ol>
+
       <p>
-        Når luft forsvinner ut av toppen, må noe erstatte den. Luft nedenfra stiger, vekten av
-        søylen minker, og trykket ved bakken faller. Lavtrykket dypner. Ved bakken strømmer luft inn
-        mot det, blir tvunget opp, avkjøles, og vanndampen kondenserer til skyer og nedbør. Har
-        lavtrykket i tillegg kald og varm luft liggende side om side — noe det har langs
-        polarfronten — kan bølgen vokse av seg selv ved å bytte temperaturkontrast mot rotasjon. Det
-        kalles baroklin ustabilitet.
+        Denne tverrgående bevegelsen deler jetkjernen inn i <strong>fire distinkte kvadranter</strong>:
       </p>
+
+      <div className="my-4 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border border-red-500/30 bg-red-950/20 p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-red-400">
+            <span>🌀</span> Venstre utløp (Left exit): Lavtrykksmotoren!
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            I den venstre delen av utløpet sprer luften seg vifteformet fra hverandre. Her oppstår det{" "}
+            <strong>maksimal divergens i høyden</strong>. Det fjernes bokstavelig talt luftmasse fra
+            toppen av atmosfæren! Tyngden av luftsøylen minker, og barometeret på bakken stuper. For
+            å tette masseunderskuddet suges luft opp fra bakken i en kraftig oppdrift. Luften avkjøles
+            adiabatisk, danner tette skyer, og et <strong>dypgående lavtrykk (syklon)</strong> fødes
+            med voldsomt regnvær og kuling!
+          </p>
+        </div>
+        <div className="rounded-xl border border-sky-500/30 bg-sky-950/20 p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-sky-400">
+            <span>☀️</span> Høyre utløp (Right exit): Nedsynking og høytrykk
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            I den høyre delen av utløpet hoper luftmassene seg opp. Her oppstår det{" "}
+            <strong>konvergens i høyden</strong>. Vekten av luftsøylen øker, og overskuddsmassen
+            presses nedover mot bakken i en storskala subsidens. Luften komprimeres og varmes
+            adiabatisk, skydråpene fordamper, og på bakken dannes det et stabilt{" "}
+            <strong>høytrykk</strong> med klar himmel og rolige vinder.
+          </p>
+        </div>
+      </div>
+
       <OrdBoks
-        ord="Baroklin ustabilitet"
-        barn="Når en bølge på polarfronten vokser til et lavtrykk ved å omdanne temperaturforskjellen mellom kald og varm luft til rotasjon."
+        ord="Divergens i høyden"
+        barn="Horisontal spredning av luftmasser i øvre troposfære (særlig i venstre utløp av en jetkjerne). Fjerner luftmasse fra søylen slik at bakketrykket faller og lavtrykk dypner."
       />
+
+      <p>
+        I tillegg gir den horisontale temperaturkontrasten langs polarfronten næring til en prosess
+        som kalles <strong>baroklin ustabilitet</strong>: Bølgen på bakken kan hente potensiell energi
+        fra temperaturforskjellen og omdanne den til rotasjonsenergi i syklonen. Hvert nytt lavtrykk
+        dannes, forsterkes og feier østover like under jetkjernene. Dette sporet kalles{" "}
+        <strong>stormbanen</strong>.
+      </p>
 
       <JetStreakDiagram />
 
-      <p>
-        Fordi hvert nytt lavtrykk fødes og forsterkes under jeten, følger de hverandre østover langs
-        omtrent samme spor. Det sporet er stormbanen. Flytter jetstrømmen seg, flytter stormbanen
-        seg med — og dermed også hvor det regner og blåser.
-      </p>
-      <OrdBoks
-        ord="Stormbane"
-        barn="Sporet der de vandrende lavtrykkene går, som regel like under jetstrømmen. Flytter jeten seg, flytter stormbanen seg."
-      />
-
-      <PhotoFigure
-        src="/images/fig-stormbane.jpg"
-        alt="Satellittbilde av Nord-Atlanteren med tre lavtrykksspiraler på rekke mot Skandinavia"
-        heading="Lavtrykk på rekke og rad"
-        caption="Tre lavtrykk i samme spor over Nord-Atlanteren, hvert på sitt stadium. De ligger ikke tilfeldig: de er født under den samme jetstrømmen og følger den østover. Dette er stormbanen, og enden av den er norskekysten."
-        arrows={[{ d: "M 14 66 L 82 22", tone: "teal", width: 1.35 }]}
-        marks={[
-          { x: 4, y: 82, n: "1", text: "Ungt lavtrykk", tone: "low" },
-          { x: 34, y: 50, n: "2", text: "Modent", tone: "low" },
-          { x: 96, y: 14, n: "3", text: "Mot Norge", tone: "teal", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Nytt lavtrykk dypner under utløpet av jetkjernen." },
-          { n: "2", label: "Spiralen strammes mens det vandrer østover." },
-          { n: "3", label: "Stormbanen ender ofte mot Norskehavet og kysten." },
-        ]}
-      />
-
-      <p>
-        Her ligger den viktigste presiseringen på hele siden. Det blir ikke våtere under jeten fordi
-        jetstrømmen selv er en regnsky. Den ligger 8–12 km oppe og inneholder nesten ikke vann.
-        Nedbøren kommer ved bakken, i lavtrykkene den styrer, og der fjellene løfter lufta ekstra.
-      </p>
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Årstid: sterkest om vinteren
+      {/* 6. BLOKKERING */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Atmosfærisk blokkering: Omega-blokk og Rex-blokk
       </h2>
       <p>
-        Bruk regelen om termisk vind. Om vinteren står polen i mørke og kjøles kraftig ned, mens
-        tropene fortsatt får sol. Temperaturkontrasten mellom ekvator og pol er da på sitt største,
-        og polarfrontjeten blir sterk. Samtidig trekker polarfronten sørover, og jeten følger med.
+        Noen ganger forsterkes en høytrykksrygg i en Rossby-bølge så kraftig at den stanser opp og
+        nekter å vike. Dette kalles <strong>atmosfærisk blokkering</strong> (blocking high).
       </p>
       <p>
-        Om sommeren varmes Arktis opp. Kontrasten krymper, jeten svekkes og trekker nordover. Derfor
-        er de kraftige lavtrykkene og de store stormene i Norge et vinterfenomen, mens sommeren
-        oftere gir svakere systemer og lengre perioder med samme vær.
+        Det mest kjente blokkeringsmønsteret over Europa kalles en <strong>Omega-blokk</strong>, fordi
+        jetstrømmen tvinges til å splitte seg og bøye seg rundt høytrykket i en bue som ligner på den
+        greske bokstaven Omega (<strong>Ω</strong>):
       </p>
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Sentralt høytrykk:</strong> En mektig, varm antisyklon etablerer seg over
+          Skandinavia og Nordsjøen. Luften synker uavbrutt (subsidens), og skyene holdes unna.
+        </li>
+        <li>
+          <strong>Splittet jetstrøm:</strong> Jetstrømmen deles i to adskilte grener: Én gren
+          ledes langt nord over Svalbard og Barentshavet, mens den andre presses langt sør inn over
+          Middelhavet.
+        </li>
+        <li>
+          <strong>Avsnørte lavtrykk (Cut-off lows):</strong> På begge flanker av høytrykket blir
+          lavtrykk avskåret fra hovedstrømmen. De blir liggende og spinne på samme sted i dagevis
+          eller uker.
+        </li>
+      </ul>
+
+      <p>
+        Konsekvensene for norsk vær er enorme:
+      </p>
+      <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
+        <li>
+          <strong>Sommerblokkering (Hetebølger og tørke):</strong> Den skyfrie himmelen slipper
+          solstrålene uhindret ned i 18–24 timer i døgnet. Sammen med subsidensvarmen gir dette
+          ekstreme hetebølger, tørke og skogbrannfare. Rekordsomrene i Sør-Norge i 2018 og 2021 var
+          klassiske eksempler på en ukelang Omega-blokk!
+        </li>
+        <li>
+          <strong>Vinterblokkering (Sprengkulde og inversjon):</strong> Om vinteren er nettene lange.
+          Den skyfrie himmelen gir katastrofalt stort varmetap ved langbølget stråling. Iskald luft
+          fra Sibir og Arktis samler seg i dalbunnene som dype <strong>temperaturinversjoner</strong>{" "}
+          (-25 °C til -40 °C på Røros, Tynset og Finnmarksvidda), mens vedrøyk og svevestøv stenges inne.
+        </li>
+        <li>
+          <strong>Flomkatastrofer i Sør-Europa:</strong> Mens Norge bader i sol under blokka,
+          fanges de avsnørte lavtrykkene over Middelhavet eller Sentral-Europa og dumper hundrevis av
+          millimeter regn med katastrofale flommer som følge (som flomkatastrofene i Tyskland og Spania).
+        </li>
+      </ul>
+
+      <OrdBoks
+        ord="Omega-blokk (Ω)"
+        barn="En kvasistasjonær blokkeringssituasjon der en høytrykksrygg deler jetstrømmen i to som bokstaven Ω. Låser været i ukesvis og gir tørke/hete om sommeren eller sprengkulde om vinteren."
+      />
+
+      <JetBlockingDiagram />
+
+      {/* 7. ÅRSTIDER */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Årstidsvariasjon: Vinterjet vs. Sommerjet
+      </h2>
+      <p>
+        Bruk regelen om termisk vind: Jetstrømmens styrke er direkte proporsjonal med
+        temperaturkontrasten mellom ekvator og pol. Fordi solinnstrålingen forskyver seg med
+        årstidene, gjennomgår jetstrømmen en dramatisk årlig syklus:
+      </p>
+
+      <div className="my-4 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border border-sky-500/30 bg-sky-950/20 p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-sky-300">
+            ❄️ Vinter: Maksimal temperaturkontrast
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            I vinterhalvåret er Arktis svøpt i mørke under polarnatten, og isen stråler ut varme til
+            temperaturen faller under -40 °C. Samtidig mottar tropene rikelig med solvarme (+30 °C).
+            Temperaturforskjellen er kolossal: <strong>ΔT ≈ 70 °C!</strong>
+            <br />
+            Polarfrontjeten blir sylskarp, akselererer til over <strong>350–400 km/t</strong>, og
+            trekker sørover til ca. <strong>45°–55°N</strong>. Stormbanen peker rett mot Norskehavet,
+            og Norge bombarderes av voldsomme vinterorkaner.
+          </p>
+        </div>
+        <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-5">
+          <h3 className="flex items-center gap-2 font-display text-base font-semibold text-amber-300">
+            ☀️ Sommer: Minimal temperaturkontrast
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Om sommeren skinner midnattssolen døgnet rundt i Arktis. Snø og sjøis smelter, og
+            landmassene varmes opp til plussgrader (+5 til +15 °C). Temperaturforskjellen mot
+            tropene krymper til under <strong>ΔT ≈ 30 °C</strong>.
+            <br />
+            Jetstrømmen svekkes drastisk til <strong>100–160 km/t</strong> og forskyver seg nordover
+            til <strong>65°–70°N</strong>. Lavtrykkene blir vesentlig svakere, stormbanene passerer
+            nord for fastlandet mot Barentshavet, og Norge opplever roligere sommervær.
+          </p>
+        </div>
+      </div>
 
       <JetSeasonDiagram />
 
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Svingninger som flytter jeten
+      {/* 8. KLIMASVINGNINGER */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Klimasvingninger og stormbaner: NAO og arktisk forsterkning
       </h2>
       <p>
-        Jetstrømmen ligger ikke likt fra år til år. Noen svingninger i hav og atmosfære flytter den
-        systematisk, og tre av dem bør du kunne.
+        Hvorfor er noen norske vintre milde, stormfulle og klissvåte, mens andre er knusktørre og
+        iskalde fra desember til mars? Svaret ligger i hvordan storskala klimasvingninger flytter
+        jetstrømmen over Nord-Atlanteren.
       </p>
+
+      <h3 className="pt-2 font-display text-xl font-medium tracking-tight">
+        NAO: Sjefen for det norske vinterværet
+      </h3>
       <p>
-        <strong>NAO</strong> er trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket (NOAA,
-        u.å.-b). Dette er den viktigste for Norge, rett og slett fordi den sitter i Nord-Atlanteren,
-        der været vårt lages. Er forskjellen stor, er gradienten stor, og polarfrontjeten blir sterk
-        og ligger langt nord. Er forskjellen liten, svekkes jeten, den trekker sørover eller brytes
-        opp i blocking.
+        Den viktigste klimaindeksen for Norge er <strong>Den nordatlantiske oscillasjon (NAO)</strong>{" "}
+        (NOAA, u.å.-b). NAO måler trykkforskjellen mellom det subtropiske <strong>Azorhøytrykket</strong>{" "}
+        og det subpolare <strong>Islandslavtrykket</strong>:
       </p>
-      <OrdBoks
-        ord="NAO"
-        barn="Trykkforskjellen mellom Azorhøytrykket og Islandslavtrykket. Stor forskjell: sterk jet langt nord. Liten forskjell: svak jet, mer blocking."
-      />
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Positiv NAO-fase (+NAO):</strong> Både Azorhøytrykket og Islandslavtrykket er
+          uvanlig kraftige. Trykkgradienten over Nord-Atlanteren er bratt, og polarfrontjeten blir
+          ekstremt sterk og rettlinjet (zonal). Stormbanen legges i en rett motorvei rett inn mot
+          Vestlandet og Midt-Norge. Resultatet er en klassisk <strong>mild, våt og stormfull norsk vinter</strong>,
+          mens Middelhavet opplever tørke.
+        </li>
+        <li>
+          <strong>Negativ NAO-fase (-NAO):</strong> Både Azorhøytrykket og Islandslavtrykket er
+          svake. Trykkgradienten flater ut, og polarfrontjeten svekkes og begynner å meandrere i store
+          Rossby-bølger eller blokkeres fullstendig. Stormbanen forskyves sørover mot Storbritannia og
+          Middelhavet. Norge og Skandinavia havner i le eller under et polart tråg, noe som gir en{" "}
+          <strong>bitende kald, tørr og stabil vinter</strong> med lite snø i lavlandet.
+        </li>
+      </ul>
 
       <NaoDiagram />
 
-      <PhotoFigure
-        src="/images/fig-nao.jpg"
-        alt="Nord-Atlanteren fra bane: klar luft i sørvest, syklonspiraler lenger nord, skystrøk mot Norge"
-        heading="Scenen for NAO"
-        caption="Sørvest: mer høytrykk og klarere luft over Azorene. Nord: mer lavtrykk og spiraler ved Island. Skystrøkene imellom er vestavinden og stormbanen inn mot Norge. Jo større forskjellen er mellom de to, desto kraftigere er strømmen imellom."
-        arrows={[{ d: "M 28 62 L 72 38", tone: "teal", width: 1.3 }]}
-        marks={[
-          { x: 6, y: 58, n: "H", text: "Azorhøytrykk", tone: "warm" },
-          { x: 48, y: 12, n: "L", text: "Islandslavtrykk", tone: "low" },
-        ]}
-        points={[
-          { n: "H", label: "Høytrykk i sør: luften synker, ofte klarere." },
-          { n: "L", label: "Lavtrykk i nord: luften stiger, her går stormbanen." },
-        ]}
-      />
+      <h3 className="pt-2 font-display text-xl font-medium tracking-tight">
+        Endrer jetstrømmen seg med global oppvarming?
+      </h3>
+      <p>
+        Et av de heteste forskningstemaene i moderne meteorologi er koblingen mellom global
+        oppvarming og jetstrømmens oppførsel. Her må du som geofagelev være faglig nyansert og
+        skille mellom hypoteser og etablert vitenskap:
+      </p>
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Hypotesen om arktisk forsterkning (Francis &amp; Vavrus):</strong> Arktis varmes opp
+          tre til fire ganger raskere enn det globale gjennomsnittet (blant annet fordi hvit sjøis
+          smelter og erstattes av mørkt hav med lavere albedo). Hypotesen sier at når Arktis varmes mest,
+          krymper temperaturgradienten mot tropene nær bakken. Ifølge loven om termisk vind skal da
+          polarfrontjeten svekkes. En slappere jetstrøm meandrerer lettere i dype Rossby-bølger, noe
+          som skulle gi flere fastlåste blokkeringer, lengre tørkeperioder og flere arktiske kuldeutbrudd.
+        </li>
+        <li>
+          <strong>Hva sier FNs klimapanel (IPCC AR6)?</strong> IPCCs sjette hovedrapport vurderer
+          denne hypotesen med <strong>lav konfidens</strong> for Nord-Atlanteren om vinteren (IPCC, 2021).
+          Hvorfor? Fordi atmosfæren har to motstridende krefter: Samtidig som Arktis varmes ved bakken,
+          varmes den tropiske <em>øvre troposfæren</em> opp kraftig som følge av økt fuktkonveksjon.
+          Dermed <em>øker</em> temperaturgradienten i høyden! Disse to effektene drar jetstrømmen hver
+          sin vei.
+        </li>
+        <li>
+          <strong>Mindre blocking over Grønland i modellene:</strong> Klimamodellene viser faktisk at
+          atmosfærisk blokkering over Grønland og Nord-Stillehavet forventes å <em>avta</em> i frekvens
+          i scenarier med høye utslipp (middels konfidens). Det er derfor faglig feilaktig å påstå
+          skråsikkert at «klimaendringene gir mer blokkering overalt».
+        </li>
+      </ul>
 
-      <p>
-        <strong>ENSO</strong> er koblingen mellom hav og atmosfære i det tropiske Stillehavet, med
-        en syklus på to til sju år (NOAA, u.å.-c). Den flytter hvor tropisk luft stiger, og der luften
-        stiger, mates jetstrømmene. I en El Niño-fase forsterkes den subtropiske jeten over Nord-Stillehavet
-        og strekker seg østover mot sørvestlige USA, stormsporet over USA legger seg sørligere, det
-        blir tørke og brannvær i Indonesia og østlige Australia, og mer nedbør langs kysten av
-        Ecuador og Peru. I en La Niña-fase ligger jeten lenger vest og nord, Indonesia og Australia
-        får mer regn, kysten av Peru blir tørrere, og Nord-Amerika får et nordligere stormspor. For
-        Norge er koblingen indirekte og langt mer usikker enn NAO.
-      </p>
-
-      <PhotoFigure
-        src="/images/fig-enso.jpg"
-        alt="Tropisk Stillehav med varmt overflatevann og kraftige konveksjonsskyer"
-        heading="ENSO flytter der luften stiger"
-        caption="Der havet er varmest, stiger luften kraftigst. Når El Niño flytter det varmeste vannet østover, flytter oppstigningen seg med, og jetstrømmene over Stillehavet og Amerika legger seg annerledes. Mekanismen bak passater og varmt vann står i klima-kapittelet."
-        marks={[
-          { x: 4, y: 16, n: "1", text: "Varmt vann: luft stiger", tone: "warm" },
-          { x: 96, y: 70, n: "2", text: "Jeten flytter seg", tone: "teal", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Oppstigningen sitter over det varmeste havet." },
-          { n: "2", label: "Flyttes oppstigningen, flyttes jetstrømmen." },
-        ]}
-      />
-
-      <p>
-        <strong>IOD</strong>, den indiske dipolen, er en øst–vest-svingning i det tropiske
-        Indiahavet. Ved positiv IOD blir det mer regn og flom i Øst-Afrika, tørke og brannvær i
-        Indonesia og sørvestlige Australia, og monsunen over India kan forsterkes. Ved negativ IOD
-        snur mønsteret. IOD flytter først og fremst den subtropiske jeten over Indiahavet og
-        Australia. Koblingen til polarfrontjeten over Atlanteren er indirekte.
-      </p>
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Norge under jetstrømmen
-      </h2>
-      <p>
-        Norge ligger midt i det området polarfrontjeten vandrer over. Noen få hundre kilometer
-        forskyvning nord eller sør endrer hele vinteren. Det enkleste er å tenke i tre posisjoner.
-      </p>
-      <p>
-        <strong>Jeten ligger nord for oss.</strong> Da treffer de fleste lavtrykkene Nord-Norge og
-        Barentshavet. Sør-Norge kan ligge i den milde luften sør for jeten, med færre kraftige
-        systemer.
-      </p>
-      <p>
-        <strong>Jeten ligger over oss.</strong> Da går stormbanen rett inn over kysten. Lavtrykkene
-        kommer på rekke, vestavinden er fuktig, og fjellene løfter lufta. Vestlandet får orografisk
-        nedbør på losiden, mens Østlandet oftere ligger i regnskygge. Dette er den klassiske milde,
-        våte og urolige norske vinteren.
-      </p>
-      <p>
-        <strong>Jeten ligger sør for oss.</strong> Da treffer lavtrykkene De britiske øyer,
-        Nordsjøen og Biscaya, eller går inn i Middelhavet. Skandinavia får oftere kald, tørr og mer
-        kontinental luft, gjerne med inversjon i dalene.
-      </p>
-      <p>
-        Oversatt til NAO: ved positiv NAO ligger jeten langt nord og er sterk, stormbanen går mot
-        Island, Norskehavet og Nord-Norge, Sør- og Midt-Norge får milde og våte vintrer, Middelhavet
-        blir tørrere, og Grønland og Labrador kaldere. Formen er mer zonal. Ved negativ NAO svekkes
-        jeten, ligger lenger sør eller brytes i blocking, Sør-Europa får mer nedbør og storm, og
-        Skandinavia får oftere kald vinter. Formen er mer meridional.
-      </p>
-      <p>
-        Blocking over Skandinavia er et eget kapittel. Om vinteren gir det klarvær, utstråling og
-        kald luft som samler seg i dalbunnene som inversjon. Om sommeren gir det tørt og varmt vær.
-        Mekanismen er den samme som over Sahara: nedsynking, få skyer og mye innstråling ved bakken.
-      </p>
-
-      <PhotoFigure
-        src="/images/fig-blocking.jpg"
-        alt="Norsk vinterdal fylt av kald tåke under klar himmel, med sol på fjelltoppene"
-        heading="Blocking over Skandinavia om vinteren"
-        caption="Ryggen står, vestavinden er stengt ute og himmelen er klar. Da stråler bakken varme ut, den kalde luften samler seg i dalbunnen under et lokk av mildere luft, og inversjonen kan bli stående i dagevis. Det er stikk motsatt av mildværet en zonal jet gir."
-        arrows={[{ d: "M 50 8 L 50 32", tone: "warm", width: 1.2, dash: true }]}
-        marks={[
-          { x: 6, y: 14, n: "1", text: "Nedsynking, klart", tone: "warm" },
-          { x: 96, y: 62, n: "2", text: "Kaldluft i dalbunnen", tone: "cold", align: "right" },
-        ]}
-        points={[
-          { n: "1", label: "Ryggen står. Luften synker, skyene løses opp." },
-          { n: "2", label: "Utstråling om natten. Kald luft samles: inversjon." },
-        ]}
-      />
-
-      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Endrer jetstrømmen seg med klimaet?
-      </h2>
-      <p>
-        Arktis varmes to til fire ganger raskere enn kloden som helhet. Det kalles arktisk
-        forsterkning. Bruker du regelen om termisk vind rett, følger hypotesen nesten av seg selv:
-        når polen varmes mest, krymper temperaturkontrasten i nedre troposfære, jeten svekkes, og en
-        svakere jet meandrerer lettere. Det skulle gi mer blocking og flere langvarige kuldeutbrudd
-        — selv om kloden totalt sett blir varmere.
-      </p>
-      <p>
-        Det er en hypotese, ikke en konklusjon, og du bør presentere den som det. IPCC AR6 har lav
-        konfidens for regionale endringer i nordlige jetstrømmer og stormbaner, særlig over
-        Nord-Atlanteren om vinteren (IPCC, 2021). Én grunn er at gradientene konkurrerer: nede varmes
-        Arktis og kontrasten svekkes, men oppe i den tropiske øvre troposfæren varmes det også
-        kraftig, og der styrkes kontrasten. De to drar jetstrømmen hver sin vei. En annen grunn er at
-        den naturlige variasjonen fra år til år er stor.
-      </p>
-      <p>
-        Legg også merke til at én mye brukt påstand peker motsatt vei av det man kanskje forventer:
-        blocking over Grønland og Nord-Stillehavet ventes å bli sjeldnere i høye utslippsscenarioer,
-        med middels konfidens. Det er altså ikke dekning for å si at «klimaendringene gir mer
-        blocking».
-      </p>
-      <p>
-        Til slutt en nyanse som ofte blandes sammen. En meandrerende jet kan gi kuldeperioder også i
-        en varmere verden. Men global oppvarming hever hele temperaturfordelingen, og AR6 har høy
-        konfidens for at kuldeekstremer blir sjeldnere og mindre kalde. En kald uke i Europa i 2040
-        kan altså godt skje — den vil bare sannsynligvis være mildere enn en tilsvarende uke i 1960.
-      </p>
-
-      <Callout title="Til eksamen og Norge">
-        <p>
-          Fire ledd holder svaret sammen: temperaturkontrast gir trykkgradient i høyden, coriolis
-          gjør strømmen vestlig, jetkjernen lager divergens som dypner lavtrykkene, og stormbanen
-          følger jeten. Deretter kobler du på Norge: jet nord for oss gir vær til Nord-Norge, jet
-          over oss gir mildt og vått på Vestlandet, jet sør for oss gir kald og tørr vinter i
-          Skandinavia.
-        </p>
+      {/* 9. EKSAMENSFELLER */}
+      <Callout title="De 4 vanligste eksamensfellene i Geofag 2">
+        <ul className="space-y-2 text-sm leading-relaxed">
+          <li>
+            <strong>1. Jetstrømmen regner ikke:</strong> En av de vanligste feilene er å tro at
+            jetstrømmen selv er en regnsky fordi det «regner under den». Jetstrømmen befinner seg 9–11
+            km oppe i iskald, knusktørr luft. Nedbøren produseres ved bakken, i de dynamiske lavtrykkene
+            som suges i gang av jetens øvre divergenssone (venstre utløp).
+          </li>
+          <li>
+            <strong>2. To jetbelter, ikke ett:</strong> Husk at det er to permanente jetbelter på hver
+            halvkule. Polarfrontjeten (55°–65°N, 9–11 km) drives av temperaturgradienten over
+            polarfronten. Den subtropiske jeten (30°N, 13–16 km) drives av bevaring av vinkelmoment i
+            Hadleycellen. Polar natt-jeten er noe helt annet – den ligger i stratosfæren.
+          </li>
+          <li>
+            <strong>3. Termisk vind er ikke vind fra varm bakke:</strong> Ordet «termisk vind» betyr
+            ikke at varm luft blåser bortover bakken. Det er et matematisk/fysisk begrep for den{" "}
+            <em>vertikale vindskjæringen</em> (vindøkningen med høyden) som tvinges frem fordi en varm
+            luftsøyle er tykkere enn en kald luftsøyle.
+          </li>
+          <li>
+            <strong>4. Venstre utløp dypner lavtrykk – ikke innløpet:</strong> Til eksamen må du
+            presisere hvilken del av jetkjernen som skaper storm: Det er <strong>venstre utløp (left exit)</strong>{" "}
+            og høyre innløp som har divergens i høyden og suger opp luft fra bakken. Høyre utløp gir
+            konvergens, nedsynking og høytrykk.
+          </li>
+        </ul>
       </Callout>
 
-      <Callout title="Vanlige misforståelser">
-        <p>
-          Det blir ikke våtere fordi jetstrømmen selv regner. Den ligger 8–12 km oppe. Nedbøren
-          kommer ved bakken, i lavtrykkene den styrer.
-        </p>
-        <p>
-          Det er to jetbelter på hver halvkule, ikke ett: polarfrontjeten og den subtropiske jeten.
-          Polar natt-jeten er noe annet — den ligger i stratosfæren.
-        </p>
-        <p>
-          Jetstrømmen er ikke det samme som vestavindsbeltet. Vestavindsbeltet er bredt og ved
-          bakken. Jetstrømmen er smal og ligger ved tropopausen.
-        </p>
-        <p>
-          At arktisk forsterkning gir mer meandering og mer blocking, er en hypotese. AR6 har lav
-          konfidens for regionale endringer, og venter faktisk mindre blocking over Grønland og
-          Nord-Stillehavet.
-        </p>
-      </Callout>
-
-      <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
+      {/* 10. VIKTIGE BEGREPER */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term
           name="Jetstrøm"
-          def="Smalt, sterkt belte med vestavind i øvre troposfære. Noen hundre km bredt, tusenvis langt."
+          def="Smalt, rørformet belte med ekstrem vestavind i øvre troposfære (150–400 km/t), dannet over store temperaturkontraster."
         />
         <Term
-          name="Polarfrontjet"
-          def="Jeten over polarfronten, 8–12 km oppe, i snitt 50–60° nord. Styrer lavtrykkene mot Norge."
+          name="Polarfrontjeten (PFJ)"
+          def="Meandrerende jetstrøm over polarfronten (9–11 km høyde, 50°–65°N) som styrer lavtrykkene og stormbanene mot Norge."
         />
         <Term
-          name="Subtropisk jet"
-          def="Jeten nær 30°, ved Hadleycellens polvegg. Ligger høyere, typisk 10–16 km."
+          name="Subtropisk jet (STJ)"
+          def="Stabil jetstrøm nær 30° bredde ved Hadleycellens polgrense (13–16 km høyde), drevet av vinkelmoment fra ekvator."
         />
         <Term
           name="Termisk vind"
-          def="Vestavinden øker oppover så lenge det blir kaldere mot polen. Stor kontrast gir sterk jet."
+          def="Loven om at geostrofisk vind øker oppover så lenge det er en horisontal temperaturkontrast. Brattere trykkflater gir sterkere vind."
         />
         <Term
           name="Rossby-bølger"
-          def="Bølger på jetstrømmen. Rygg mot polen med mild luft, tråg mot ekvator med kald luft."
-        />
-        <Term name="Meandering" def="At jetstrømmen svinger nord–sør i stedet for å gå zonal." />
-        <Term
-          name="Blocking"
-          def="En rygg som blir stående. Vestavinden stanser, og været står i dagevis."
+          def="Planetære bølger på jetstrømmen skapt av variasjon i Corioliskraft med breddegrad og topografiske barrierer."
         />
         <Term
-          name="Divergens"
-          def="Luft som sprer seg. Skjer det i jetens utløp, faller trykket ved bakken."
+          name="Zonal strøm"
+          def="Rettlinjet vest-øst-strøm langs breddegradene som gir raske lavtrykkspassasjer og mildt, skiftende atlantisk vestavær."
+        />
+        <Term
+          name="Meridional strøm"
+          def="Kraftig bølgende jetstrøm nord-sør med dype tråg (polare kuldeutbrudd) og rygger (subtropiske hetebølger)."
+        />
+        <Term
+          name="Jetkjerne (Jet streak)"
+          def="Lokalt segment inne i jetstrømmen med maksimal vindhastighet, der aldersofisk vind skaper divergens og konvergens."
+        />
+        <Term
+          name="Venstre utløp (Left exit)"
+          def="Kvadranten foran jetkjernen på nordsiden der divergens i høyden suger opp luft og dypner eksplosive lavtrykk ved bakken."
+        />
+        <Term
+          name="Omega-blokk (Ω)"
+          def="Atmosfærisk blokkering der et mektig høytrykk deler jetstrømmen i to som en Ω, og låser været i ukevis (tørke eller kulde)."
         />
         <Term
           name="Stormbane"
-          def="Sporet lavtrykkene følger, like under jetstrømmen. Flytter jeten seg, flytter sporet seg."
+          def="Hovedsporet som vandrende lavtrykk følger over Nord-Atlanteren, styrt av polarfrontjetens posisjon."
         />
         <Term
-          name="NAO"
-          def="Trykkforskjellen Azorene–Island. Viktigste svingningen for jeten inn mot Norge."
+          name="NAO (Nordatlantisk oscillasjon)"
+          def="Trykksvingning mellom Azorene og Island som bestemmer jetstrømmens styrke og bane over Norge."
         />
       </TermGrid>
 
+      {/* 11. QUIZ */}
+      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
+        Test deg selv: Jetstrømmer og stormbaner
+      </h2>
       <Quiz
         questions={[
           {
-            prompt: "Hvorfor blir Sør- og Midt-Norge våtere når polarfrontjeten ligger over oss?",
+            prompt:
+              "Hvorfor blåser jetstrømmene nesten utelukkende fra vest mot øst på begge halvkuler?",
             options: [
-              "Fordi jetstrømmen selv er en regnsky i øvre troposfære.",
-              "Fordi polar natt-jeten ligger over Skandinavia.",
-              "Stormbanen flyttes med jetstrømmen. Lavtrykkene under den gir stigende luft, skyer og nedbør.",
-              "Fordi den subtropiske jetstrømmen ligger i 8–12 km og regner rett ned.",
-            ],
-            answer: 2,
-            explain:
-              "Jetstrømmen ligger 8–12 km oppe og regner ikke. Den styrer hvor lavtrykkene går, og nedbøren kommer fra den stigende luften i lavtrykkene ved bakken.",
-          },
-          {
-            prompt: "Hvor mange jetbelter er det på hver halvkule, og hvilke?",
-            options: [
-              "Ett: polarfrontjeten.",
-              "Tre: polarfrontjet, subtropisk jet og polar natt-jet.",
-              "To: polarfrontjeten over polarfronten, og den subtropiske nær 30° ved Hadleycellens polvegg.",
-              "To: polarfrontjeten og polar natt-jeten.",
-            ],
-            answer: 2,
-            explain:
-              "To: polarfrontjeten og den subtropiske jeten. Polar natt-jeten ligger i stratosfæren og er noe annet.",
-          },
-          {
-            prompt: "Hva sier regelen om termisk vind?",
-            options: [
-              "At varm luft alltid stiger raskere enn kald.",
-              "At vestavinden øker oppover så lenge det blir kaldere mot polen. Stor temperaturkontrast gir sterk jet.",
-              "At vinden er sterkest der bakken er varmest.",
-              "At jetstrømmen alltid ligger på 30° bredde.",
+              "Fordi solen står opp i øst og trekker luften med seg.",
+              "Fordi varm luft over tropene utvider seg og skaper en trykkgradient i høyden mot polene, som Corioliskraften avbøyer 90° mot øst.",
+              "Fordi friksjonen mot jordoverflaten dytter luften østover i stratosfæren.",
+              "Fordi passatvindene ved bakken snur brått retning ved 1000 meters høyde.",
             ],
             answer: 1,
             explain:
-              "Temperaturkontrast på tvers gir stadig brattere trykkflater oppover, altså sterkere gradient og sterkere vind. Maksimum ligger ved tropopausen, der kontrasten snur.",
-          },
-          {
-            prompt: "Hvordan bidrar en jetkjerne til at et lavtrykk dypner?",
-            options: [
-              "Den presser luft ned i lavtrykket ovenfra.",
-              "I utløpet sprer luften seg. Divergensen fjerner luft fra toppen av søylen, luft nedenfra må stige, og trykket ved bakken faller.",
-              "Den blåser skyene inn over lavtrykket.",
-              "Den varmer opp havoverflaten under seg.",
-            ],
-            answer: 1,
-            explain:
-              "Divergens i utløpet av jetkjernen fjerner luft oppe. Luft nedenfra stiger for å erstatte den, søylen blir lettere, og trykket ved bakken faller.",
-          },
-          {
-            prompt: "Hvorfor er polarfrontjeten sterkere om vinteren enn om sommeren?",
-            options: [
-              "Fordi jorda roterer raskere om vinteren.",
-              "Fordi polen er mørk og kald mens tropene får sol. Temperaturkontrasten er størst, og termisk vind gir sterkere jet.",
-              "Fordi det er mer snø som reflekterer vind.",
-              "Fordi den subtropiske jeten forsvinner om vinteren.",
-            ],
-            answer: 1,
-            explain:
-              "Vinterkontrasten mellom ekvator og pol er størst. Da blir jeten sterk, og den trekker samtidig sørover med polarfronten.",
+              "Tropene er varme, så luftsøylen er tykk. Det skaper et overtrykk i høyden over tropene, og trykkgradientkraften peker mot polen på begge halvkuler. I fri atmosfære avbøyer Corioliskraften luften til høyre på nordlig halvkule og til venstre på sørlig halvkule – i begge tilfeller blir resultatet en ren vestavind!",
           },
           {
             prompt:
-              "Hva er den faglig riktige måten å omtale arktisk forsterkning og jetstrømmen på?",
+              "Hva er den fysiske forklaringen på begrepet «termisk vind» i Geofag 2?",
             options: [
-              "Det er fastslått at jeten meandrerer mer og gir mer blocking.",
-              "Det er en hypotese. AR6 har lav konfidens for regionale endringer, og venter faktisk mindre blocking over Grønland og Nord-Stillehavet.",
-              "Arktisk forsterkning påvirker ikke jetstrømmen i det hele tatt.",
-              "Jetstrømmen forsvinner når Arktis varmes.",
+              "At varm luft stiger opp fra asfalten i byene om sommeren.",
+              "At vindhastigheten i fri atmosfære øker med høyden fordi isobarflatene heller brattere og brattere over en horisontal temperaturkontrast.",
+              "At solgangsbrisen snur med solens gang på himmelen.",
+              "At friksjonen mot bakken forsvinner når luften varmes opp over 20 °C.",
             ],
             answer: 1,
             explain:
-              "Gradientene konkurrerer: nede svekkes kontrasten av arktisk forsterkning, oppe styrkes den av oppvarming i tropisk øvre troposfære. Derfor lav konfidens.",
+              "Termisk vind er den teoretiske vinddifferansen mellom to høydenivåer. Fordi en varm luftsøyle er tykkere enn en kald, ligger trykkflatene høyere i sør enn i nord. Høydeforskjellen øker med høyden, trykkflatene blir brattere, gradienten øker, og den geostrofiske vinden akselererer oppover.",
+          },
+          {
+            prompt:
+              "I hvilken del av en jetkjerne (jet streak) er sjansen aller størst for at et nytt lavtrykk dannes og dypner eksplosivt?",
+            options: [
+              "I høyre utløp, der luften synker ned mot bakken.",
+              "I venstre innløp, der vinden bremser opp.",
+              "I venstre utløp (left exit), der divergens i høyden suger opp luftmasse fra bakkenivå.",
+              "Nøyaktig i midten av kjernen, der trykket er høyest.",
+            ],
+            answer: 2,
+            explain:
+              "I venstre utløp bremser luften opp, og Corioliskraften kaster luften mot høyre. Dette skaper kraftig divergens i høyden på nordsiden (venstre side). Luft fjernes fra toppen av søylen, trykket ved bakken faller, og luft tvinges oppover i en kraftig syklon.",
+          },
+          {
+            prompt:
+              "Hvorfor er polarfrontjeten vesentlig sterkere om vinteren enn om sommeren?",
+            options: [
+              "Fordi jorden roterer med høyere hastighet i januar.",
+              "Fordi polarnatten gjør Arktis iskald (-40 °C) mens tropene forblir varme, slik at temperaturkontrasten (ΔT) er på sitt maksimale.",
+              "Fordi ozonlaget forsvinner helt over Norge hver vinter.",
+              "Fordi snødekket på bakken fjerner all friksjon mot luften i 10 km høyde.",
+            ],
+            answer: 1,
+            explain:
+              "Ifølge termisk vind-ligningen styres jetens styrke av temperaturgradienten under den. Om vinteren er polen bekmørk og iskald mens tropene bader i sol (ΔT ≈ 70 °C). Om sommeren varmer midnattssolen Arktis, og kontrasten krymper til under 30 °C.",
+          },
+          {
+            prompt:
+              "Hva kjennetegner en situasjon med atmosfærisk «Omega-blokkering» over Skandinavia om sommeren?",
+            options: [
+              "Ekstremt mange lavtrykk som passerer over Østlandet hver eneste dag.",
+              "Et stabilt høytrykk som deler jetstrømmen i to, gir uker med subsidens, sol og hetebølge i Norge, mens lavtrykk tvinges utenom.",
+              "At jetstrømmen forsvinner fullstendig fra den nordlige halvkule.",
+              "At havstrømmene snur og renner sørover langs kysten.",
+            ],
+            answer: 1,
+            explain:
+              "En Omega-blokk er en kvasistasjonær høytrykksrygg formet som den greske bokstaven Ω. Den tvinger jetstrømmen i to grener rundt Skandinavia. Under høytrykket synker luften (subsidens), skyer oppløses, og sommerværet låser seg i ukesvis med tørke, hete og skogbrannfare (som i 2018).",
+          },
+          {
+            prompt:
+              "Hva er den vitenskapelig korrekte vurderingen av hypotesen om at arktisk forsterkning gir mer meandrerende jetstrøm og flere blokkeringer?",
+            options: [
+              "Det er et uomtvistelig faktum som alle klimaforskere og IPCC er 100 % enige om.",
+              "Det er en hypotese med lav konfidens i IPCC AR6, fordi oppvarming i den tropiske øvre troposfæren motvirker effekten av arktisk bakkeoppvarming.",
+              "Hypotesen gjelder bare for den sørlige halvkule over Antarktis.",
+              "Hypotesen er motbevist fordi jetstrømmen har sluttet å eksistere.",
+            ],
+            answer: 1,
+            explain:
+              "Selv om hypotesen til Francis & Vavrus er intuitiv (redusert bakkekontrast svekker jeten), viser klimamodeller og observasjoner at tropisk øvre troposfære også varmes kraftig, noe som styrker gradienten i høyden. IPCC AR6 konkluderer derfor med lav konfidens for robuste endringer i meandring over Nord-Atlanteren.",
           },
         ]}
       />

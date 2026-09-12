@@ -30,6 +30,7 @@ export {
   SkredTyperDiagram,
 } from "./skred";
 export {
+  JetBlockingDiagram,
   JetFormsDiagram,
   JetProfileDiagram,
   JetSeasonDiagram,
