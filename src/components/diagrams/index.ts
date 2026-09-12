@@ -155,3 +155,14 @@ export {
   WeatherProgression24hDiagram,
   RadarSatelliteNowcastingDiagram,
 } from "./weather-maps";
+export {
+  HurricaneCrossSectionDiagram,
+  SupercellAnatomyDiagram,
+  TornadoGenesisDiagram,
+  StormSurgeDiagram,
+  AtmosphericRiverDiagram,
+  MeteorologicalBombDiagram,
+  PolarLowFormationDiagram,
+  ClimateRiskShiftDiagram,
+} from "./disasters";
+

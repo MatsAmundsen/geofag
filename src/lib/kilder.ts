@@ -634,15 +634,13 @@ export const KILDER = {
       href: "https://psl.noaa.gov/data/timeseries/month/DMI/",
     },
     {
-      prefix:
-        "National Aeronautics and Space Administration. (2019a, 7. november). ",
+      prefix: "National Aeronautics and Space Administration. (2019a, 7. november). ",
       italic: "Spate of cyclones in the North Indian Ocean",
       suffix: ".",
       href: "https://earthobservatory.nasa.gov/images/145841/spate-of-cyclones-in-the-north-indian-ocean",
     },
     {
-      prefix:
-        "National Aeronautics and Space Administration. (2019b, 13. desember). ",
+      prefix: "National Aeronautics and Space Administration. (2019b, 13. desember). ",
       italic: "Fires take a toll on Australian forests",
       suffix: ".",
       href: "https://earthobservatory.nasa.gov/images/145998/fires-take-a-toll-on-australian-forests",
@@ -697,7 +695,8 @@ export const KILDER = {
       href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
     },
     {
-      prefix: "Smeed, D. A., et al. (2018). The North Atlantic Ocean is in a state of reduced overturning. ",
+      prefix:
+        "Smeed, D. A., et al. (2018). The North Atlantic Ocean is in a state of reduced overturning. ",
       italic: "Geophysical Research Letters, 45",
       suffix: "(3), 1527–1533.",
       href: "https://doi.org/10.1002/2017GL076350",
@@ -736,7 +735,8 @@ export const KILDER = {
       href: "https://doi.org/10.1175/1520-0469(1963)020<0130:DNF>2.0.CO;2",
     },
     {
-      prefix: "Bjerknes, V. (1904). Das Problem der Wettervorhersage, betrachtet vom Standpunkte der Mechanik und der Physik. ",
+      prefix:
+        "Bjerknes, V. (1904). Das Problem der Wettervorhersage, betrachtet vom Standpunkte der Mechanik und der Physik. ",
       italic: "Meteorologische Zeitschrift, 21",
       suffix: ", 1–7.",
       href: "https://explore.scopus.com/record?eid=2-s2.0-85010645063",
@@ -832,8 +832,7 @@ export const KILDER = {
       href: "https://doi.org/10.1002/jqs.1227",
     },
     {
-      prefix:
-        "Berger, A., & Loutre, M. F. (2002). An exceptionally long interglacial ahead? ",
+      prefix: "Berger, A., & Loutre, M. F. (2002). An exceptionally long interglacial ahead? ",
       italic: "Science, 297",
       suffix: "(5585), 1287–1288.",
       href: "https://doi.org/10.1126/science.1076120",
@@ -866,10 +865,52 @@ export const KILDER = {
       href: "https://www.nhc.noaa.gov/climo/",
     },
     {
+      prefix: "National Hurricane Center [NHC]. (2023). ",
+      italic: "The Saffir-Simpson Hurricane Wind Scale",
+      suffix: ".",
+      href: "https://www.nhc.noaa.gov/aboutsshws.php",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
       italic: "The Coriolis effect",
       suffix: ".",
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents1.html",
+    },
+    {
+      prefix: "NOAA Storm Prediction Center [SPC]. (u.å.). ",
+      italic: "The Enhanced Fujita Scale (EF-Scale) and Supercell Dynamics",
+      suffix: ".",
+      href: "https://www.spc.noaa.gov/efscale/",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.-a). ",
+      italic: "Polare lavtrykk — arktiske mini-orkaner",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaer/polare-lavtrykk",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.-b). ",
+      italic: "Værstatistikk og historiske stormer i Norge",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaer",
+    },
+    {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Stormflo og havnivå",
+      suffix: ".",
+      href: "https://www.kartverket.no/til-sjos/se-havniva",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2024). ",
+      italic: "Flom, overvann og ekstremnedbør: Evaluering etter ekstremværet Hans",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/flom-og-overvann/",
+    },
+    {
+      prefix: "Sanders, F., & Gyakum, J. R. (1980). ",
+      italic: "Synoptic-dynamic climatology of the 'Bomb'",
+      suffix: ". Monthly Weather Review, 108(10), 1589–1606.",
+      href: "https://doi.org/10.1175/1520-0493(1980)108<1589:SDCOT>2.0.CO;2",
     },
     {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
@@ -879,16 +920,16 @@ export const KILDER = {
       href: "https://www.ipcc.ch/report/ar6/wg1/",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
-      italic: "Klima i Norge",
+      prefix: "World Weather Attribution [WWA]. (u.å.). ",
+      italic: "Pathways to attribution: How climate change influences extreme weather",
       suffix: ".",
-      href: "https://snl.no/Klima_i_Norge",
+      href: "https://www.worldweatherattribution.org/",
     },
     {
-      prefix: "Kartverket. (u.å.). ",
-      italic: "Stormflo og havnivå",
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Tornado og skypumper i Norge",
       suffix: ".",
-      href: "https://www.kartverket.no/til-sjos/se-havniva",
+      href: "https://snl.no/tornado",
     },
   ],
   eksamen: [
