@@ -147,3 +147,11 @@ export {
   AdaptationExamFrameworkDiagram,
   FieldworkInquiryChainDiagram,
 } from "./inquiry-frameworks";
+export {
+  RealisticSynopticChartDiagram,
+  StationModelExplainedDiagram,
+  FrontVerticalProfileDiagram,
+  UpperAir500hPaMapDiagram,
+  WeatherProgression24hDiagram,
+  RadarSatelliteNowcastingDiagram,
+} from "./weather-maps";

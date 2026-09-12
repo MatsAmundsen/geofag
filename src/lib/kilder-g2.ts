@@ -3,15 +3,33 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_G2 = {
   vaerkart: [
     {
+      prefix: "Bjerknes, J., & Solberg, H. (1922). ",
+      italic: "Life cycle of cyclones and the polar front theory of atmospheric circulation",
+      suffix: ". Geofysiske Publikasjoner, 3(1), 1–18.",
+      href: "https://doi.org/10.1002/qj.49704920608",
+    },
+    {
+      prefix: "Meteorologisk institutt [MET Norway]. (u.å.). ",
+      italic: "Værvarsling, observasjoner og synoptiske kart",
+      suffix: ". Yr / Meteorologisk institutt.",
+      href: "https://www.met.no",
+    },
+    {
+      prefix: "World Meteorological Organization [WMO]. (2021). ",
+      italic: "Manual on the Global Data-processing and Forecasting System (WMO-No. 485)",
+      suffix: ". World Meteorological Organization.",
+      href: "https://library.wmo.int/records/item/35767-manual-on-the-global-data-processing-and-forecasting-system",
+    },
+    {
       prefix: "Sivle, A. (2009, 31. august). ",
       italic: "Værkart og fronter",
-      suffix: ".",
+      suffix: ". Yr.",
       href: "https://www.yr.no/artikkel/vaerkart-og-fronter-1.6750800",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
-      italic: "Air masses",
-      suffix: ".",
+      italic: "Synoptic Meteorology and Station Plots",
+      suffix: ". JetStream - An Online School for Weather.",
       href: "https://www.noaa.gov/jetstream/synoptic/air-masses",
     },
     {

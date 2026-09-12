@@ -23,6 +23,7 @@ export const NAV_GF2 = [
   { to: "/eksamen", label: "Eksamen" },
   { to: "/tema/hoytrykk-lavtrykk", label: "Trykk" },
   { to: "/tema/vindsystemet", label: "Vind" },
+  { to: "/tema/vaerkart", label: "Værkart" },
   { to: "/tema/jetstrommer", label: "Jet" },
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },

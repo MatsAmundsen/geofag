@@ -4,10 +4,10 @@ export const GF2_GAP_THEMES = [
     to: "/tema/vaerkart",
     title: "Værkart og værutvikling",
     kicker: "Atmosfæren",
-    image: "/images/fig-jet.jpg",
-    alt: "Tynn, rask skyelv høyt over havet mot jordas krumning",
+    image: "/images/banner-trykk.jpg",
+    alt: "Synoptisk værkart med isobarer, fronter og stasjonsplott over Nord-Europa",
     blurb:
-      "Isobarer, fronter og 24 timer fram. Kompetansemålet er å tolke kartet, ikke bare peke på L.",
+      "Synoptiske bakkekart, WMO-stasjonsmodeller, 500 hPa styrestrøm, radar og satellitt. Slik tolker og forutsier du været trinn for trinn.",
     status: "klar" as const,
   },
   {
