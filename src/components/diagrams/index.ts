@@ -19,11 +19,7 @@ export {
   ZonalMeridionalDiagram,
   NaoDiagram,
 } from "./coriolis";
-export {
-  NaoRossbyDiagram,
-  NaoEnsoTeleconnectionDiagram,
-  NaoIndexStationsDiagram,
-} from "./nao";
+export { NaoRossbyDiagram, NaoEnsoTeleconnectionDiagram, NaoIndexStationsDiagram } from "./nao";
 export {
   FjellskredBolgeDiagram,
   KvikkleireDiagram,
@@ -75,7 +71,15 @@ export {
   SubductionDiagram,
   TransformDiagram,
 } from "./plates";
-export { SeaBreezeDiagram } from "./pressure";
+export {
+  AtmosphericColumnDiagram,
+  HighPressureCrossSectionDiagram,
+  KatabaticWindDiagram,
+  LowPressureCrossSectionDiagram,
+  RelativePressureDiagram,
+  SeaBreezeDiagram,
+  WindForcesBalanceDiagram,
+} from "./pressure";
 export { ModelGridDiagram } from "./models";
 export {
   AbruptClimateChangeDiagram,
@@ -94,19 +98,11 @@ export {
   PrecessionDetailDiagram,
   Sommersol65NDiagram,
 } from "./paleo";
-export {
-  BoundaryQuakesDiagram,
-  SeismogramDiagram,
-  VolcanoTypesDiagram,
-} from "./quakes";
+export { BoundaryQuakesDiagram, SeismogramDiagram, VolcanoTypesDiagram } from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { CarbonCycleDiagram, SpheresDiagram } from "./spheres";
 export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
-export {
-  FeltbokDiagram,
-  FraBergartTilBruddDiagram,
-  PetroleumSystemDiagram,
-} from "./ressurser";
+export { FeltbokDiagram, FraBergartTilBruddDiagram, PetroleumSystemDiagram } from "./ressurser";
 export {
   SynopticMapDiagram,
   TwentyFourHourDiagram,
