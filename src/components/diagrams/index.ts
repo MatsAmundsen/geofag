@@ -1,10 +1,12 @@
 export {
   ClimateBeltsDiagram,
+  GlobalClimateZonesDiagram,
   HadleyCloseupDiagram,
   InsolationDiagram,
   JetStreamDiagram,
   OneVsThreeCellsDiagram,
   PolarFrontNorwayDiagram,
+  RossbyWavesDiagram,
   SurfaceWindsDiagram,
   WindCellsDiagram,
 } from "./wind";
