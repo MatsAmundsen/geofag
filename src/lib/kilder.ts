@@ -460,33 +460,33 @@ export const KILDER = {
   coriolis: [
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
-      italic: "The Coriolis effect",
+      italic: "The Coriolis effect: What is the Coriolis effect and how does it influence ocean currents?",
       suffix: ".",
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents1.html",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
-      italic: "The jet stream",
-      suffix: ".",
-      href: "https://www.noaa.gov/jetstream/global/jet-stream",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
-      italic: "El Niño and La Niña",
-      suffix: ".",
-      href: "https://www.climate.gov/enso",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-d). ",
-      italic: "North Atlantic Oscillation",
-      suffix: ".",
-      href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
     },
     {
       prefix: "Store norske leksikon. (u.å.). ",
       italic: "Corioliskraften",
       suffix: ".",
       href: "https://snl.no/corioliskraften",
+    },
+    {
+      prefix: "American Meteorological Society [AMS]. (u.å.). ",
+      italic: "Glossary of meteorology: Coriolis parameter and geostrophic balance",
+      suffix: ".",
+      href: "https://glossary.ametsoc.org/wiki/Coriolis_parameter",
+    },
+    {
+      prefix: "Met Office. (u.å.). ",
+      italic: "What is the Coriolis effect?",
+      suffix: ".",
+      href: "https://www.metoffice.gov/weather/learn-about/weather/atmosphere/coriolis-effect",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
+      italic: "The Ekman spiral and coastal upwelling",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents4.html",
     },
   ],
   havstrommer: [

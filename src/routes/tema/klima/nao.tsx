@@ -5,13 +5,17 @@ import { Callout } from "@/components/callout";
 import { CollapsibleSection } from "@/components/collapsible-section";
 import {
   NaoInteractiveSimulator,
+  NaoPhasesComparisonDiagram,
+  NaoDomainDiagram,
+  NaoPositivePhaseDiagram,
+  NaoNegativePhaseDiagram,
+  NaoTimeSeriesDiagram,
   NaoSswBreakdownDiagram,
   NaoBlockeringDiagram,
   NaoRossbyDiagram,
   NaoEnsoTeleconnectionDiagram,
   NaoIndexStationsDiagram,
 } from "@/components/diagrams";
-import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -130,8 +134,8 @@ function NaoPage() {
       kicker="Klimasystemet · Nord-Atlanteren"
       title="NAO: Den nordatlantiske oscillasjon"
       lead="Den nordatlantiske oscillasjon (NAO) er atmosfærens store trykkvippe over Nord-Atlanteren. Svingningen i trykkgradienten mellom Azorhøytrykket og Islandslavtrykket styrer polarjetens posisjon, stormbanenes retning og om den norske vinteren blir mild og fuktig — eller preget av arktisk sprengkulde og blokkerende høytrykk."
-      banner="/images/fig-nao-faser.svg"
-      bannerAlt="To jordkloder over Nord-Atlanteren: negativ NAO til venstre med svak trykkgradient og meandrerende jet, positiv NAO til høyre med dyp gradient og kraftig vestavind mot Norge"
+      banner="/images/fig-nao.jpg"
+      bannerAlt="Atmosfærisk sirkulasjon og stormbaner over Nord-Atlanteren inn mot Norskehavet og Norge"
       prev={{ to: "/tema/klima/iod", label: "Forrige: IOD" }}
       next={{ to: "/tema/klima/amoc", label: "Neste: AMOC" }}
       kilder={KILDER.nao}
@@ -160,23 +164,7 @@ function NaoPage() {
         sentrene er. Denne trykkgradienten fungerer som en kraftig motor for vestavindsbeltet.
       </p>
 
-      <PhotoFigure
-        src="/images/fig-nao-faser.svg"
-        alt="To jordkloder over Nord-Atlanteren som illustrerer positiv og negativ NAO"
-        heading="Figur 1. Positiv og negativ NAO"
-        caption="Venstre klode: Negativ fase (NAO−) med svekket Islandslavtrykk og svakt Azorhøytrykk. Slak gradient gir meandrerende jetstrøm og kaldt vintervær i Skandinavia. Høyre klode: Positiv fase (NAO+) med dypt lavtrykk ved Island og kraftig høytrykk ved Azorene. Bratt trykkgradient pumper mild, fuktig vestavind inn over Nord-Europa."
-        fit="contain"
-        points={[
-          {
-            n: "1",
-            label: "Venstre klode (NAO−): Liten trykkforskjell, svak vestavind, arktisk kulde over Skandinavia.",
-          },
-          {
-            n: "2",
-            label: "Høyre klode (NAO+): Stor trykkforskjell, kraftig sonal vestavind rett mot Norge.",
-          },
-        ]}
-      />
+      <NaoPhasesComparisonDiagram />
 
       <OrdBoks
         ord="NAO (North Atlantic Oscillation)"
@@ -212,18 +200,7 @@ function NaoPage() {
           .
         </p>
 
-        <PhotoFigure
-          src="/images/fig-nao-omrade.svg"
-          alt="Geografisk kart over Nord-Atlanteren med plassering av Island, Norge, Azorene og stormbanen"
-          heading="Figur 2. Det nordatlantiske domenet for NAO"
-          caption="NAO er forankret mellom to nøkkelområder: det subpolare lavtrykksområdet ved Island og det subtropiske høytrykksområdet ved Azorene. Norge og Skandinavia ligger midt i skuddlinjen ved utløpet av det nordatlantiske vestavindsbeltet."
-          fit="contain"
-          points={[
-            { n: "1", label: "Subpolart lavtrykksområde (Islandslavtrykket) ved 60°–65°N." },
-            { n: "2", label: "Subtropisk høytrykksområde (Azorhøytrykket) ved 30°–40°N." },
-            { n: "3", label: "Norge og Norskehavet i utløpet av stormbanen." },
-          ]}
-        />
+        <NaoDomainDiagram />
 
         <div className="space-y-4">
           <div>
@@ -291,27 +268,7 @@ function NaoPage() {
           uvanlig mektig (ofte over 1035 hPa). Trykkdifferansen mellom dem kan nå over 50–60 hPa.
         </p>
 
-        <PhotoFigure
-          src="/images/fig-nao-positiv.svg"
-          alt="Detaljert værkart over positiv NAO med dyp Island-L, sterk Azor-H, rett polarjet, mildt og vått i Norge, tørt i Middelhavet"
-          heading="Figur 3. Positiv NAO (NAO+)"
-          caption="NAO+: Det dype Islandslavtrykket og sterke Azorhøytrykket etablerer en kraftig trykkgradient over Atlanteren. Polarjeten går rett og sonalt mot nordøst, og stormbanen fungerer som en motorvei som sender lavtrykk etter lavtrykk rett inn mot Norskehavet og Vestlandet. Sør-Europa forblir tørt under høytrykksryggen."
-          fit="contain"
-          points={[
-            {
-              n: "1",
-              label: "Ekstrem trykkgradient mellom dypt Island-L og mektig Azor-H.",
-            },
-            {
-              n: "2",
-              label: "Rask og stabil polarjet (~200 km/t) med sonal bane direkte mot Norge.",
-            },
-            {
-              n: "3",
-              label: "Nord-Europa: Svært mildt, vindfullt og fuktig. Middelhavet: Tørt og solrikt.",
-            },
-          ]}
-        />
+        <NaoPositivePhaseDiagram />
 
         <div className="space-y-4">
           <div>
@@ -395,18 +352,7 @@ function NaoPage() {
           enkelte tilfeller kan trykket over Island til og med bli høyere enn over Azorene.
         </p>
 
-        <PhotoFigure
-          src="/images/fig-nao-negativ.svg"
-          alt="Detaljert værkart over negativ NAO med svekket gradient, meandrerende jet, arktisk kulde i Norge og lavtrykk over Middelhavet"
-          heading="Figur 4. Negativ NAO (NAO−)"
-          caption="NAO−: Den slakke trykkgradienten gjør at polarjeten mister fart og begynner å meandrere kraftig i store Rossby-bølger. Et mektig kvasistasjonært blokkerende høytrykk etablerer seg over Skandinavia eller Grønland, og tvinger jetstrømmen og stormene sørover mot Sør-Europa. Norge rammes av tørr, iskald polarluft fra Sibir, mens Middelhavet får uvanlig mye regn og flom."
-          fit="contain"
-          points={[
-            { n: "1", label: "Svak trykkgradient: Både Island-L og Azor-H er svekket." },
-            { n: "2", label: "Polarjeten meandrerer kraftig og danner blokkerende høytrykk." },
-            { n: "3", label: "Nord-Europa: Streng kulde og tørt. Sør-Europa: Milde stormer og flom." },
-          ]}
-        />
+        <NaoNegativePhaseDiagram />
 
         <div className="space-y-4">
           <div>
@@ -418,7 +364,12 @@ function NaoPage() {
               atmosfæren sakker farten, blir den ustabil og begynner å svinge nord og sør i store{" "}
               <strong>Rossby-bølger</strong> (planetære bølger).
             </p>
-            <p className="mt-2 text-sm sm:text-base">
+          </div>
+
+          <NaoRossbyDiagram />
+
+          <div>
+            <p className="text-sm sm:text-base">
               Dersom en rygg i Rossby-bølgen forsterkes over Skandinavia, kan den avsnøres fra det
               generelle vestavindsbeltet og danne et massivt, kvasistasjonært høytrykk som blir
               liggende fast i uke- eller månedsvis. Dette fenomenet kalles en{" "}
@@ -539,6 +490,8 @@ function NaoPage() {
             </p>
           </div>
 
+          <NaoTimeSeriesDiagram />
+
           <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
             <h4 className="font-display text-base font-semibold tracking-tight text-primary">
               Koblingen til AO (Arctic Oscillation / Den arktiske oscillasjon)
@@ -638,7 +591,6 @@ function NaoPage() {
           </div>
 
           <NaoEnsoTeleconnectionDiagram />
-          <NaoRossbyDiagram />
         </div>
       </CollapsibleSection>
 
