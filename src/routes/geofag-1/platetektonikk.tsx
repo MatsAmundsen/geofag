@@ -1,34 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Callout } from "@/components/callout";
-import {
-  BoundaryOverviewDiagram,
-  CollisionDiagram,
-  ContinentalRiftDiagram,
-  ConvectionDiagram,
-  DecompressionMeltingDiagram,
-  EarthLayersDiagram,
-  HotspotPlumeDiagram,
-  NorwayTectonicsHistoryDiagram,
-  OceanOceanSubductionDiagram,
-  PlatesMapDiagram,
-  SolidusDiagram,
-  SpreadingDiagram,
-  SubductionDiagram,
-  TransformDiagram,
-  WilsonCycleDiagram,
-} from "@/components/diagrams";
-import { GeoMap } from "@/components/geo-map";
-import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
-import { PhotoFigure } from "@/components/photo-figure";
-import { Quiz } from "@/components/quiz";
-import { OrdBoks, Term, TermGrid } from "@/components/term";
+import { createFileRoute } from "@tanstack/react-router";
+import { PlateDel1 } from "@/content/g1/plate-del1";
+import { PlateDel2 } from "@/content/g1/plate-del2";
+import { PlateDel3 } from "@/content/g1/plate-del3";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("platetektonikk")!;
-const lenke = "text-primary underline-offset-2 hover:underline";
 
 export const Route = createFileRoute("/geofag-1/platetektonikk")({
   head: () =>
@@ -40,3 +19,28 @@ export const Route = createFileRoute("/geofag-1/platetektonikk")({
     }),
   component: PlatetektonikkPage,
 });
+
+function PlatetektonikkPage() {
+  return (
+    <TopicLayout
+      kicker={`Geofag 1 · ${tema.kicker}`}
+      title={tema.title}
+      lead="Under føttene våre er jordskorpen i konstant, nådeløs bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og havet fornyes kontinuerlig fra jordas brennende indre. Platetektonikken er geovitenskapens samlende teori: Den forklarer hvorfor fjellkjeder reiser seg mot himmelen, hvorfor jordskjelv ryster kloden, hvorfor magma veller fram fra dypet – og hvorfor Norges dramatisk formede kystlinje og fjellverden ser ut som den gjør i dag."
+      banner={tema.image}
+      bannerAlt={tema.alt}
+      prev={{
+        to: "/geofag-1/jordsystemene",
+        label: "Forrige: Jordsystemene",
+      }}
+      next={{
+        to: "/geofag-1/vulkaner-og-jordskjelv",
+        label: "Neste: Vulkaner og jordskjelv",
+      }}
+      kilder={KILDER.platetektonikk}
+    >
+      <PlateDel1 />
+      <PlateDel2 />
+      <PlateDel3 />
+    </TopicLayout>
+  );
+}
