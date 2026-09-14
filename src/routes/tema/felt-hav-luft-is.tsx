@@ -30,6 +30,7 @@ function FeltG2Page() {
       banner="/images/gf1-bergarter.jpg"
       bannerAlt="Lagdelt sedimentær klippe og isskurt fjordlandskap"
       prev={{ to: "/tema/energi-hav-luft", label: "Forrige: Energi fra hav og luft" }}
+      next={{ to: "/eksamen", label: "Neste: Eksamen" }}
       kilder={KILDER_G2.feltG2}
     >
       <Callout title="Kompetansemål">
