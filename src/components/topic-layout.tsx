@@ -14,6 +14,8 @@ import {
 } from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
 
+type TopicLink = { to: string; label: string; params?: Record<string, string> };
+
 export function TopicLayout({
   kicker,
   title,
@@ -34,8 +36,8 @@ export function TopicLayout({
   videoTopic?: string;
   children: ReactNode;
   kilder?: readonly Kilde[];
-  prev?: { to: string; label: string; params?: Record<string, string> };
-  next?: { to: string; label: string; params?: Record<string, string> };
+  prev?: TopicLink;
+  next?: TopicLink;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const override = bannerForPath(pathname);
@@ -43,8 +45,8 @@ export function TopicLayout({
   const src = override?.src ?? banner;
   const alt = override?.alt ?? bannerAlt;
   const navOver = navForTopicPath(pathname);
-  const prevLink = navOver?.prev ?? prev;
-  const nextLink = navOver?.next ?? next;
+  const prevLink: TopicLink | undefined = navOver?.prev ?? prev;
+  const nextLink: TopicLink | undefined = navOver?.next ?? next;
   const eierskap = eierskapForPath(pathname);
 
   return (
@@ -102,7 +104,7 @@ export function TopicLayout({
             {prevLink ? (
               <Link
                 to={prevLink.to}
-                params={"params" in (prevLink as object) ? (prevLink as { params?: Record<string, string> }).params : undefined}
+                params={prevLink.params}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="size-4" />
@@ -114,7 +116,7 @@ export function TopicLayout({
             {nextLink ? (
               <Link
                 to={nextLink.to}
-                params={"params" in (nextLink as object) ? (nextLink as { params?: Record<string, string> }).params : undefined}
+                params={nextLink.params}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground sm:ml-auto"
               >
                 {nextLink.label}
