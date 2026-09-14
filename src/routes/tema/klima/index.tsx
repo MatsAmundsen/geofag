@@ -29,7 +29,7 @@ function KlimaHubPage() {
       banner="/images/banner-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
-      next={{ to: "/tema/kryosfare", label: "Neste: Kryosfæren" }}
+      next={{ to: "/tema/kryosfaeren", label: "Neste: Kryosfæren" }}
       kilder={KILDER.klima}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
