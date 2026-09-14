@@ -8,10 +8,10 @@ import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER_G2 } from "@/lib/kilder-g2";
-import { GF2_GAP_THEMES } from "@/lib/nav-g2-gaps";
+import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 
-const tema = GF2_GAP_THEMES.find((t) => t.to === "/tema/tilpasning")!;
+const tema = GF2_THEMES.find((t) => t.to === "/tema/tilpasning")!;
 
 export const Route = createFileRoute("/tema/tilpasning")({
   head: () =>
