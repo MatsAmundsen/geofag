@@ -50,22 +50,22 @@ export const KILDER = {
   ],
   platetektonikk: [
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "About plate tectonics and volcanoes",
-      suffix: ".",
-      href: "https://www.usgs.gov/programs/vhp/about-plate-tectonics-and-volcanoes",
+      prefix: "Forsyth, D., & Uyeda, S. (1975). On the relative importance of the driving forces of plate motion. ",
+      italic: "Geophysical Journal International, 43",
+      suffix: "(1), 163–200.",
+      href: "https://doi.org/10.1111/j.1365-246X.1975.tb00631.x",
+    },
+    {
+      prefix: "Hess, H. H. (1962). History of ocean basins. I A. E. J. Engel, H. L. James, & B. F. Leonard (Red.), ",
+      italic: "Petrologic Studies: A Volume to Honor A. F. Buddington",
+      suffix: " (s. 599–620). Geological Society of America.",
+      href: "https://doi.org/10.1130/Petrologic.1962.599",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
       italic: "How fast do tectonic plates move?",
       suffix: ".",
       href: "https://oceanexplorer.noaa.gov/facts/plate-tectonics.html",
-    },
-    {
-      prefix: "NORSAR. (u.å.). ",
-      italic: "Jordskjelv i Norge",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -80,10 +80,46 @@ export const KILDER = {
       href: "https://www.ngu.no/emne/marin-grense",
     },
     {
+      prefix: "NORSAR. (u.å.). ",
+      italic: "Jordskjelv i Norge",
+      suffix: ".",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
+    },
+    {
       prefix: "Norsk Polarinstitutt. (u.å.). ",
       italic: "Jan Mayen",
       suffix: ".",
       href: "https://www.npolar.no/tema/jan-mayen/",
+    },
+    {
+      prefix:
+        "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2008). ",
+      italic: "Landet blir til: Norges geologi",
+      suffix: " (2. utg.). Norsk Geologisk Forening.",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
+      italic: "About plate tectonics and volcanoes",
+      suffix: ".",
+      href: "https://www.usgs.gov/programs/vhp/about-plate-tectonics-and-volcanoes",
+    },
+    {
+      prefix: "Vine, F. J., & Matthews, D. H. (1963). Magnetic anomalies over oceanic ridges. ",
+      italic: "Nature, 199",
+      suffix: "(4900), 947–949.",
+      href: "https://doi.org/10.1038/199947a0",
+    },
+    {
+      prefix: "Wegener, A. (1912). Die Entstehung der Kontinente. ",
+      italic: "Geologische Rundschau, 3",
+      suffix: "(4), 276–292.",
+      href: "https://doi.org/10.1007/BF02202896",
+    },
+    {
+      prefix: "Wilson, J. T. (1966). Did the Atlantic close and then re-open? ",
+      italic: "Nature, 211",
+      suffix: "(5050), 676–681.",
+      href: "https://doi.org/10.1038/211676a0",
     },
   ],
   vulkaner: [

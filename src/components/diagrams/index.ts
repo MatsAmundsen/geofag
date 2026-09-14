@@ -86,12 +86,15 @@ export {
   ConvectionDiagram,
   DecompressionMeltingDiagram,
   EarthLayersDiagram,
+  HotspotPlumeDiagram,
+  NorwayTectonicsHistoryDiagram,
   OceanOceanSubductionDiagram,
   PlatesMapDiagram,
   SolidusDiagram,
   SpreadingDiagram,
   SubductionDiagram,
   TransformDiagram,
+  WilsonCycleDiagram,
 } from "./plates";
 export {
   AtmosphericColumnDiagram,
