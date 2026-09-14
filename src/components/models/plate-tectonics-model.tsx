@@ -9,10 +9,71 @@ type BoundaryType =
   | "collision"
   | "rift"
   | "transform"
-  | "hotspot";
+  | "hotspot"
+  | "ofiolitt";
+
+const OPHIOLITE_LAYERS = [
+  {
+    id: 1,
+    name: "1. Pelagiske dypmarine sedimenter & chert",
+    thick: "0–0,5 km dyp",
+    rock: "Kiselchert, radiolaritt, leirskifer",
+    density: "2,2–2,5 g/cm³",
+    desc: "Mikroskopiske kiselskall (radiolarier) og leirpartikler avsatt på dyphavsbunnen langt fra land.",
+    leka: "Tynne, finkornede sedimentlag bevart oppå putelavaene på Leka.",
+    color: "#94a3b8",
+  },
+  {
+    id: 2,
+    name: "2. Basaltisk putelava (Pillow lava)",
+    thick: "0,5–1,5 km dyp",
+    rock: "Putelava med glassaktig herdingsskorpe",
+    desc: "Flytende basalt (1200 °C) som bråkjøles i kontakt med sjøvann og danner avrundede puter med gassblærer.",
+    leka: "Enorme putelavafelt med tydelig bevart putestruktur på Skeisnesset.",
+    color: "#475569",
+  },
+  {
+    id: 3,
+    name: "3. Diabas gangkompleks (Sheeted dykes)",
+    thick: "1,5–2,5 km dyp",
+    rock: "Subvertikale parallelle diabas-ganger",
+    desc: "100 % magmatiske tilførselsganger. Hver gang representerer en oppsprekking idet platene glir 2–10 cm/år.",
+    leka: "Tettstilte parallelle ganger ('bokrygger') som kutter gjennom fjellet.",
+    color: "#334155",
+  },
+  {
+    id: 4,
+    name: "4. Lagdelt og massiv gabbro",
+    thick: "2,5–5,5 km dyp",
+    rock: "Plagioklas- og pyroksenrik gabbro (kumulater)",
+    desc: "Langsom krystallisasjon i et gigantisk magmakammer under midthavsryggen. Mineralene sank til bunns i lag.",
+    leka: "Spektakulær magmatisk lagdeling med vekslende lyse og mørke bånd.",
+    color: "#1e293b",
+  },
+  {
+    id: 5,
+    name: "5. Moho-diskontinuiteten (Skorpe/Mantel-skille)",
+    thick: "Grenseflate (~5,5 km)",
+    rock: "Seismisk overgang: Gabbro til Peridotitt (Vp 6,8 → 8,1 km/s)",
+    desc: "Grensen mellom selve jordskorpen og jordens øvre mantel. Skiller tetthet 3,0 g/cm³ fra 3,3 g/cm³.",
+    leka: "Et av verdens ekstremt få steder der du kan stå med én fot på jordskorpen og én fot på mantelen!",
+    color: "#f59e0b",
+  },
+  {
+    id: 6,
+    name: "6. Ultramafisk øvre mantel (Peridotitt)",
+    thick: "> 5,5 km (litosfærisk mantel)",
+    rock: "Harzburgitt, dunitt (rik på olivin og kromitt), serpentinitt",
+    desc: "Jordens faste mantel. Resten etter at basaltsmelten ble presset ut. Meget rik på magnesium og olivin.",
+    leka: "Karakteristisk guloransje forvitringshud forårsaket av at jern i olivinen oksiderer (ruster).",
+    color: "#d97706",
+  },
+];
 
 export function PlateTectonicsModel() {
   const [boundary, setBoundary] = useState<BoundaryType>("subduction_continent");
+  const [selectedOphiolite, setSelectedOphiolite] = useState<number>(6);
+  const [activeTransformMode, setActiveTransformMode] = useState<"fault" | "fracture_zone">("fault");
   const [rate, setRate] = useState<number>(6); // cm/år
   const [showQuakes, setShowQuakes] = useState<boolean>(true);
   const [showMelting, setShowMelting] = useState<boolean>(true);
@@ -98,6 +159,17 @@ export function PlateTectonicsModel() {
       description:
         "En smal søyle av overopphetet bergart (en mantelplym) stiger opp fra kjerne-mantel-grensen (2900 km dyp). Fordi plymen er forankret dypt i mantelen, står den nesten stille mens litosfæreplaten glir sakte forbi over den. Dette brenner en perlerad av vulkaner inn i platen, der alderen øker jevnt i retningen platen beveger seg.",
     },
+    ofiolitt: {
+      title: "Ofiolittkompleks (Havbunn på land: Leka i Trøndelag)",
+      kicker: "Havbunnens stratigrafi & Obduksjon",
+      typicalRate: "Resirkuleres på ~200 mill. år; overskjøvet på land under Kaledonidene",
+      rockTypes: "Pelagisk sediment, putelava, gangdiabas, lagdelt gabbro, Moho, harzburgitt/dunitt",
+      quaketype: "Fossil havbunn, ingen aktive skjelv, men dokumenterer skorpe- og mantellagene",
+      meltingMechanism: "Nydannet ved dekompresjon i midthavsrygg, deretter skjøvet opp ved obduksjon.",
+      realExample: "Leka i Trøndelag (Norges geologiske nasjonalmonument), Karmøy, Oman",
+      description:
+        "Et ofiolittkompleks er et komplett stykke havbunnsskorpe og øverste litosfæriske mantel som under en kontinentalkollisjon ble skjøvet opp på land i stedet for å subdueres. På Leka kan du gå direkte til fots over selve Moho-grensen!",
+    },
   };
 
   const current = boundaryData[boundary];
@@ -106,7 +178,7 @@ export function PlateTectonicsModel() {
     <ModelFrame
       kicker="Interaktiv geodynamisk simulator"
       title="Platetektonisk Bevegelses- og Grensemodell"
-      lead="Utforsk hvordan platene beveger seg, hvorfor magma oppstår, hvor de dype jordskjelvene befinner seg, og hvilke drivkrefter som opererer ved de ulike plategrensene."
+      lead="Utforsk hvordan platene beveger seg, hvorfor magma oppstår, hvor de dype jordskjelvene befinner seg, hvordan havbunnsskorpen er bygd opp (ofiolitt på Leka), og hvorfor transformforkastninger skiller seg fra bruddsoner."
       toolbar={
         <div className="flex flex-wrap gap-1.5">
           <ModelTab active={boundary === "subduction_continent"} onClick={() => setBoundary("subduction_continent")}>
@@ -125,10 +197,13 @@ export function PlateTectonicsModel() {
             Rift (Øst-Afrika/Oslo)
           </ModelTab>
           <ModelTab active={boundary === "transform"} onClick={() => setBoundary("transform")}>
-            Transform (San Andreas)
+            Transform & Bruddsone
           </ModelTab>
           <ModelTab active={boundary === "hotspot"} onClick={() => setBoundary("hotspot")}>
             Hotspot (Hawaii)
+          </ModelTab>
+          <ModelTab active={boundary === "ofiolitt"} onClick={() => setBoundary("ofiolitt")}>
+            Ofiolitt (Leka-lagene)
           </ModelTab>
         </div>
       }
@@ -845,50 +920,89 @@ export function PlateTectonicsModel() {
           )}
 
           {/* ============================================================ */}
-          {/* SCENE 6: TRANSFORMGRENSE (SAN ANDREAS)                       */}
+          {/* SCENE 6: TRANSFORMGRENSE & BRUDDSONE                         */}
           {boundary === "transform" && (
             <g>
-              {/* 3D-aktig blokkdiagram sett på skrå ovenfra */}
-              <path d="M 120 120 L 440 120 L 440 260 L 120 260 Z" fill="#2d4a3e" stroke="#1d332a" strokeWidth="2" />
-              <path d="M 460 100 L 780 100 L 780 240 L 460 240 Z" fill="#3b372f" stroke="#25231c" strokeWidth="2" />
+              {/* Havbunnsoverflate */}
+              <rect x="50" y="30" width="820" height="420" rx="8" fill="#0d1b26" stroke="#1b2a36" />
 
-              {/* Selve transformforkastningssprekken i midten */}
-              <line x1="450" y1="60" x2="450" y2="380" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" />
-              <text x="450" y="45" fill="#ef4444" fontSize="13" fontWeight="800" textAnchor="middle">
-                Transformforkastning (Konservativ grense)
-              </text>
-
-              {/* Bevegelsespiler som glir motsatt vei horisontalt */}
-              <g transform="translate(280, 190)">
-                <line x1="0" y1="40" x2="0" y2="-40" stroke="#38bdf8" strokeWidth="5" markerEnd="url(#arrow-slab)" />
-                <text x="-15" y="5" fill="#38bdf8" fontSize="13" fontWeight="800" textAnchor="end">
-                  Stillehavsplaten (nordvestover ~5 cm/år)
+              <g transform="translate(70, 55)">
+                <text x="0" y="0" fill="#f8fafc" fontSize="14" fontWeight="800">
+                  Transformforkastning vs. Inaktiv Bruddsone (Fracture Zone)
+                </text>
+                <text x="0" y="18" fill="#94a3b8" fontSize="11">
+                  Hvorfor forekommer jordskjelv KUN mellom midthavsryggsegmentene?
                 </text>
               </g>
 
-              <g transform="translate(620, 170)">
-                <line x1="0" y1="-40" x2="0" y2="40" stroke="#f59e0b" strokeWidth="5" markerEnd="url(#arrow-ridge)" />
-                <text x="15" y="5" fill="#f59e0b" fontSize="13" fontWeight="800">
-                  Nordamerikanske plate (sørøstover relativt)
-                </text>
-              </g>
+              {/* Nordlig Midthavsrygg-akse (x=260, y=90 til 220) */}
+              <rect x="252" y="90" width="16" height="130" fill="#f59e0b" opacity="0.9" rx="3" />
+              <text x="260" y="80" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
+                Nordlig Ryggsegment
+              </text>
+              {/* Spredningspiler for nordlig rygg */}
+              <line x1="240" y1="155" x2="160" y2="155" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+              <text x="200" y="145" fill="#38bdf8" fontSize="10" fontWeight="700" textAnchor="middle">Vestover ←</text>
+              <line x1="280" y1="155" x2="360" y2="155" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+              <text x="320" y="145" fill="#f59e0b" fontSize="10" fontWeight="700" textAnchor="middle">→ Østover</text>
 
-              {/* Forskjøvet elveleie (viser historisk bevegelse) */}
-              <path d="M 220 140 L 450 140 L 450 110 L 680 110" fill="none" stroke="#38bdf8" strokeWidth="3" opacity="0.8" />
-              <text x="470" y="132" fill="#38bdf8" fontSize="10">
-                Forskjøvet elveløp (Wallace Creek)
+              {/* Sørlig Midthavsrygg-akse (x=620, y=240 til 370) */}
+              <rect x="612" y="240" width="16" height="130" fill="#f59e0b" opacity="0.9" rx="3" />
+              <text x="620" y="390" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
+                Sørlig Ryggsegment
+              </text>
+              {/* Spredningspiler for sørlig rygg */}
+              <line x1="600" y1="305" x2="520" y2="305" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+              <text x="560" y="295" fill="#38bdf8" fontSize="10" fontWeight="700" textAnchor="middle">Vestover ←</text>
+              <line x1="640" y1="305" x2="720" y2="305" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+              <text x="680" y="295" fill="#f59e0b" fontSize="10" fontWeight="700" textAnchor="middle">→ Østover</text>
+
+              {/* Vestre inaktive bruddsone (x=70 til 252 ved y=230) */}
+              <line x1="70" y1="230" x2="252" y2="230" stroke="#64748b" strokeWidth="2.5" strokeDasharray="6 4" />
+              <rect x="80" y="238" width="160" height="22" rx="4" fill="#1e293b" stroke="#334155" />
+              <text x="160" y="253" fill="#94a3b8" fontSize="9.5" fontWeight="600" textAnchor="middle">
+                Inaktiv bruddsone (samme retning ← ←)
               </text>
 
-              {/* Låst sone / jordskjelvsenter */}
+              {/* AKTIV TRANSFORMFORKASTNING (x=268 til 612 ved y=230) */}
+              <line x1="268" y1="230" x2="612" y2="230" stroke="#ef4444" strokeWidth="5" />
+              <rect x="330" y="205" width="220" height="24" rx="4" fill="#7f1d1d" stroke="#ef4444" />
+              <text x="440" y="221" fill="#fff" fontSize="11" fontWeight="800" textAnchor="middle">
+                AKTIV TRANSFORMFORKASTNING
+              </text>
+              <text x="440" y="244" fill="#fca5a5" fontSize="10" fontWeight="700" textAnchor="middle">
+                Motsatt bevegelse: Nordside → mot Sørside ← (SEISMISK AKTIV!)
+              </text>
+
+              {/* Jordskjelv langs den aktive sonen */}
               {showQuakes && (
                 <g>
-                  <circle cx="450" cy="200" r="16" fill="#ef4444" opacity="0.3" className={animating ? "quake-ring" : ""} />
-                  <circle cx="450" cy="200" r="6" fill="#ef4444" stroke="#fff" strokeWidth="1.5" />
-                  <text x="475" y="204" fill="#ef4444" fontSize="11" fontWeight="700">
-                    Episenter: Låst segment brister!
-                  </text>
+                  <circle cx="310" cy="230" r="12" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
+                  <circle cx="310" cy="230" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
+                  <circle cx="390" cy="230" r="14" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
+                  <circle cx="390" cy="230" r="6" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
+                  <circle cx="480" cy="230" r="12" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
+                  <circle cx="480" cy="230" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
+                  <circle cx="560" cy="230" r="16" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
+                  <circle cx="560" cy="230" r="6.5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
                 </g>
               )}
+
+              {/* Østre inaktive bruddsone (x=628 til 850) */}
+              <line x1="628" y1="230" x2="850" y2="230" stroke="#64748b" strokeWidth="2.5" strokeDasharray="6 4" />
+              <rect x="650" y="202" width="160" height="22" rx="4" fill="#1e293b" stroke="#334155" />
+              <text x="730" y="217" fill="#94a3b8" fontSize="9.5" fontWeight="600" textAnchor="middle">
+                Inaktiv bruddsone (samme retning → →)
+              </text>
+
+              {/* Forklarende infoboks nede i SVG */}
+              <rect x="100" y="395" width="720" height="42" rx="6" fill="#0f172a" stroke="#1e293b" />
+              <text x="460" y="413" fill="#cbd5e1" fontSize="10.5" textAnchor="middle">
+                Utenfor ryggaksene glir begge sider av sprekken i SAMME retning med SAMME fart. Ingen relativ forskyvning = INGEN jordskjelv!
+              </text>
+              <text x="460" y="427" fill="#f59e0b" fontSize="10" fontWeight="700" textAnchor="middle">
+                Kun mellom de to spredningsryggene beveger blokkene seg forbi hverandre: Derfor er transformsonen seismisk aktiv (Jan Mayen-bruddsonen).
+              </text>
             </g>
           )}
 
@@ -957,6 +1071,105 @@ export function PlateTectonicsModel() {
                   Stillehavsplatens bevegelse ({rate} cm/år) ←
                 </text>
               </g>
+            </g>
+          )}
+
+          {/* ============================================================ */}
+          {/* SCENE 8: OFIOLITTKOMPLEKS (LEKA I TRØNDELAG)                 */}
+          {boundary === "ofiolitt" && (
+            <g>
+              <rect x="50" y="30" width="820" height="420" rx="8" fill="#091017" stroke="#1b2a36" />
+
+              <text x="70" y="55" fill="#f8fafc" fontSize="14" fontWeight="800">
+                Ofiolittkomplekset: Havbunnens stratigrafi (Leka i Trøndelag)
+              </text>
+              <text x="70" y="72" fill="#94a3b8" fontSize="11">
+                Klikk på lagene i søylen til venstre for å undersøke bergartstype, tetthet og dannelsesmekanisme.
+              </text>
+
+              {/* Stratigrafisk søyle (venstre del: x=70 til 310) */}
+              {OPHIOLITE_LAYERS.map((layer, idx) => {
+                const heights = [36, 52, 60, 78, 24, 90];
+                const yOffsets = [90, 126, 178, 238, 316, 340];
+                const isSel = selectedOphiolite === layer.id;
+                return (
+                  <g
+                    key={layer.id}
+                    className="cursor-pointer transition-opacity hover:opacity-90"
+                    onClick={() => setSelectedOphiolite(layer.id)}
+                  >
+                    <rect
+                      x="70"
+                      y={yOffsets[idx]}
+                      width="240"
+                      height={heights[idx]}
+                      fill={layer.color}
+                      stroke={isSel ? "#38bdf8" : "#0f172a"}
+                      strokeWidth={isSel ? 3 : 1.5}
+                      rx="3"
+                    />
+                    <text
+                      x="80"
+                      y={yOffsets[idx] + (layer.id === 5 ? 14 : 20)}
+                      fill={layer.id === 5 ? "#000" : "#fff"}
+                      fontSize={layer.id === 5 ? 10.5 : 10}
+                      fontWeight={isSel ? 800 : 600}
+                    >
+                      {layer.name}
+                    </text>
+                    <text
+                      x="80"
+                      y={yOffsets[idx] + (layer.id === 5 ? 24 : 33)}
+                      fill={layer.id === 5 ? "#222" : "#cbd5e1"}
+                      fontSize="9"
+                    >
+                      {layer.thick} · {layer.rock.slice(0, 32)}...
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* Høyre del: Detaljvisning av valgt ofiolittlag (x=330 til 850) */}
+              {(() => {
+                const curLayer = OPHIOLITE_LAYERS.find((l) => l.id === selectedOphiolite) ?? OPHIOLITE_LAYERS[5];
+                return (
+                  <g transform="translate(340, 90)">
+                    <rect x="0" y="0" width="510" height="340" rx="8" fill="#111c26" stroke="#223647" strokeWidth="1.5" />
+
+                    <rect x="16" y="16" width="12" height="12" rx="3" fill={curLayer.color} />
+                    <text x="36" y="27" fill="#38bdf8" fontSize="13" fontWeight="800">
+                      {curLayer.name}
+                    </text>
+
+                    <rect x="16" y="45" width="478" height="65" rx="6" fill="#0c151e" stroke="#182733" />
+                    <text x="28" y="65" fill="#94a3b8" fontSize="10" fontWeight="600">Dybdenivå i havbunnen:</text>
+                    <text x="170" y="65" fill="#f8fafc" fontSize="10.5" fontWeight="700">{curLayer.thick}</text>
+
+                    <text x="28" y="85" fill="#94a3b8" fontSize="10" fontWeight="600">Typiske bergarter:</text>
+                    <text x="170" y="85" fill="#f59e0b" fontSize="10.5" fontWeight="700">{curLayer.rock}</text>
+
+                    <text x="28" y="102" fill="#94a3b8" fontSize="10" fontWeight="600">Beregnet bergartstetthet:</text>
+                    <text x="170" y="102" fill="#38bdf8" fontSize="10.5" fontWeight="700">{curLayer.density}</text>
+
+                    <text x="16" y="132" fill="#f8fafc" fontSize="11" fontWeight="700">Dannelsesmekanisme under midthavsryggen:</text>
+                    <foreignObject x="16" y="138" width="478" height="75">
+                      <p style={{ color: "#cbd5e1", fontSize: "11px", lineHeight: "1.5" }}>
+                        {curLayer.desc}
+                      </p>
+                    </foreignObject>
+
+                    <rect x="16" y="222" width="478" height="98" rx="6" fill="#1e2d3b" stroke="#38bdf8" strokeWidth="1" />
+                    <text x="28" y="244" fill="#38bdf8" fontSize="11" fontWeight="800">
+                      Sporene på Leka i Trøndelag (Norges geologiske nasjonalmonument):
+                    </text>
+                    <foreignObject x="28" y="252" width="454" height="60">
+                      <p style={{ color: "#e2e8f0", fontSize: "10.5px", lineHeight: "1.45" }}>
+                        {curLayer.leka}
+                      </p>
+                    </foreignObject>
+                  </g>
+                );
+              })()}
             </g>
           )}
         </svg>

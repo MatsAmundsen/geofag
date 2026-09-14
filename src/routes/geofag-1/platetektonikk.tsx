@@ -417,6 +417,25 @@ function PlatetektonikkPage() {
 
       <ContinentalRiftDiagram />
 
+      <PhotoFigure
+        src="/images/geo-midthavsrygg-hydrotermal.jpg"
+        alt="3D-snitt av midthavsrygg med dekompresjonssmelting, aksialt magmakammer, putelava og hydrotermale skorsteiner"
+        heading="Midthavsryggens anatomi: Dekompresjonssmelting og hydrotermale skorsteiner"
+        caption="Når to litosfæreplater trekkes fra hverandre i spredningsaksen, stiger astenosfærisk peridotitt opp uten å tape nevneverdig varme (adiabatisk). Trykkfallet utløser dekompresjonssmelting (10–20 % delvis smelte) som produserer basaltisk magma. På havbunnen størkner lavaen som putelava (pillow basalt), mens nedsivende sjøvann varmes opp til over 350 °C av underliggende gabbro-kamre og spyles ut som metallrike hydrotermale skorsteiner («black smokers»)."
+        marks={[
+          { x: 50, y: 15, n: "1", text: "Black smoker", tone: "warm" },
+          { x: 32, y: 48, n: "2", text: "Putelava", tone: "cold" },
+          { x: 50, y: 62, n: "3", text: "Magmakammer", tone: "warm" },
+          { x: 50, y: 88, n: "4", text: "Dekompresjon", tone: "cold" },
+        ]}
+        points={[
+          { n: "1", label: "Hydrotermale skorsteiner («black smokers») spyr ut overopphetet, mineralrikt fluid som utfeller kobber-, jern- og sinksulfider." },
+          { n: "2", label: "Basaltisk putelava dannes når flytende basalt bråkjøles mot bunnvannet (2 °C) og danner glassaktige, avrundede puter." },
+          { n: "3", label: "Aksialt gabbroid magmakammer på 2–4 km dyp der krystallisasjon og differensiasjon forer gangene ovenfor." },
+          { n: "4", label: "Adiabatisk oppstigende astenosfære der det litostatiske trykket faller under solidus og skaper primær basaltmagma." },
+        ]}
+      />
+
       <h3 className="pt-6 font-display text-xl font-medium tracking-tight text-sky-500">
         2. Konvergerende grenser (Platene kolliderer)
       </h3>
@@ -454,19 +473,59 @@ function PlatetektonikkPage() {
       <CollisionDiagram />
 
       <PhotoFigure
-        src="/images/fig-subduksjon-vulkan.jpg"
-        alt="Stratovulkan i utbrudd over en subduksjonssone med dyp havrenne og askesøyle"
-        heading="Subduksjon i praksis: Eksplosiv stratovulkanbue"
-        caption="Subduksjonssone-vulkaner (som i Andes, Kaskadefjellene eller Indonesia) er blant jordens farligste. Magmaen er rik på silisium (andesitt/dasitt) og inneholder store mengder oppløst vann avgitt fra den synkende havbunnen. Når trykket avtar under oppstigningen, ekspanderer vanndampen eksplosivt og slynger aske titalls kilometer opp i stratosfæren."
+        src="/images/geo-subduksjon-3d.jpg"
+        alt="3D-snitt av subduksjonssone med dyphavsgrop, akkresjonskile, dehydrering, flukssmelting og vulkanbue"
+        heading="Anatomi av en subduksjonssone: Dehydrering, flukssmelting og akkresjonskile"
+        caption="Når en oseanisk litosfæreplate presses ned i mantelen, varmes den opp og presses sammen. Mineraler som har tatt opp sjøvann på havbunnen (særlig serpentinitt og leirmineraler) dehydreres ved 80–150 km dyp og slipper overopphetet vann inn i overliggende mantelkile. Dette senker peridotittens smeltepunkt dramatisk (flukssmelting). Den oppstigende magmaen mater en eksplosiv vulkanbue, mens avskrapede sedimenter danner en mektig akkresjonskile foran dyphavsgropen."
         marks={[
-          { x: 12, y: 70, n: "1", text: "Dyphavsgrop", tone: "cold" },
-          { x: 55, y: 15, n: "2", text: "Stratovulkan", tone: "warm" },
+          { x: 18, y: 55, n: "1", text: "Dyphavsgrop", tone: "cold" },
+          { x: 26, y: 48, n: "2", text: "Akkresjonskile", tone: "warm" },
+          { x: 42, y: 78, n: "3", text: "Dehydrering", tone: "cold" },
+          { x: 54, y: 64, n: "4", text: "Flukssmelting", tone: "warm" },
+          { x: 68, y: 32, n: "5", text: "Vulkanbue", tone: "warm" },
         ]}
         points={[
-          { n: "1", label: "Dyphavsgrop der den kalde havbunnen dykker ned i mantelen." },
-          { n: "2", label: "Eksplosiv vulkanbue dannet av flukssmelting over den synkende platen." },
+          { n: "1", label: "Dyphavsgrop (trench) der den bøyelige litosfæreplaten dykker ned i mantelen (opptil 11 km dyp)." },
+          { n: "2", label: "Akkresjonskile: Havbunnssedimenter skrapes av som foran et snøskjær og stables i imbrikerte skyveforkastninger." },
+          { n: "3", label: "Dehydrering: Trykket omdanner serpentinitt og leire til vannfrie mineraler og slipper fri superkritiske vannrike fluider." },
+          { n: "4", label: "Flukssmelting: Vannet senker peridotittens smeltepunkt (solidus) med flere hundre grader i mantelkilen." },
+          { n: "5", label: "Vulkanbue: Viskøs, andesittisk og gassrik magma stiger opp og bygger opp eksplosive stratovulkaner." },
         ]}
       />
+
+      <h4 className="pt-4 font-display text-lg font-medium tracking-tight">
+        Subduksjonens sonering: Akkresjonskile, forbue- og bakbuebasseng
+      </h4>
+      <p>
+        Et fullstendig tverrsnitt av en konvergerende plategrense består av fem distinkte morfologiske og geologiske
+        elementer ordnet fra havet og innover:
+      </p>
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>1. Dyphavsgropen (trench):</strong> Det dypeste punktet der litosfæren bøyes ned i subduksjonen.
+        </li>
+        <li>
+          <strong>2. Akkresjonskilen (accretionary wedge):</strong> Mens den faste basaltiske havbunnsskorpen
+          subdueres, blir de løse overliggende marine sedimentene (leire, sand, kiselalger) skrapt av av den overkjørende
+          platen. Sedimentene presses sammen og stables opp i lagdelte, imbrikerte forkastningsflak som kan bygge opp
+          flere kilometer høye rygger foran kysten.
+        </li>
+        <li>
+          <strong>3. Forbuebassenget (forearc basin):</strong> Det relativt flate og rolige sedimentasjonsbassenget
+          som ligger mellom akkresjonskilen og den vulkanske buen.
+        </li>
+        <li>
+          <strong>4. Vulkansk bue (magmatic arc):</strong> Rekken av aktive vulkaner (enten på kontinentet eller som
+          en øybue) som mates av flukssmelting i 100–120 km dyp direkte under buen.
+        </li>
+        <li>
+          <strong>5. Bakbuebassenget (backarc basin):</strong> Dersom den synkende litosfæreplaten er gammel og tung,
+          vil den synke brattere enn platen beveger seg fremover. Dette fenomenet kalles <em>«slab rollback»</em>
+          (platen ruller bakover). Det suger den overliggende platen etter seg og skaper tektonisk strekk (tensjon) bak
+          vulkanbuen! Strekket kan sprekke opp jordskorpen og åpne et lite, lokalt havbasseng med egen miniatyr-midthavsrygg –
+          slik <strong>Japanhavet</strong> ble åpnet bak Den japanske vulkanbuen for ca. 15–20 millioner år siden.
+        </li>
+      </ul>
 
       <h3 className="pt-6 font-display text-xl font-medium tracking-tight text-emerald-500">
         3. Transformgrenser (Platene glir sidelengs)
@@ -495,6 +554,35 @@ function PlatetektonikkPage() {
       </p>
 
       <TransformDiagram />
+
+      <h4 className="pt-4 font-display text-lg font-medium tracking-tight">
+        Geometrisk finesse: Transformforkastning vs. inaktiv bruddsone (fracture zone)
+      </h4>
+      <p>
+        I 1965 løste J. Tuzo Wilson et stort geologisk paradoks: Hvorfor er midthavsryggene kuttet opp i hundrevis av
+        forskyvede segmenter, og hvorfor stopper jordskjelvene brått opp utenfor ryggaksen?
+      </p>
+      <p>
+        En midthavsrygg er aldri en rett, uavbrutt linje. Den er delt opp i forskjøvede segmenter bundet sammen av
+        horisontale forkastningssoner. Men her gjelder en fundamental regel som skiller platetektonikk fra vanlige
+        forkastninger på land:
+      </p>
+      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Aktiv transformforkastning (mellom ryggsegmentene):</strong> Bare i strekningen <em>mellom</em> de to
+          spredningsryggene beveger platene seg i motsatt retning. Her oppstår intens friksjon, forkastningslås og hyppige,
+          grunne jordskjelv. Legg også merke til at hvis det høyre ryggsegmentet ligger lenger nord enn det venstre,
+          er platebevegelsen langs forkastningen <em>venstregående (sinistral)</em> – stikk i strid med hva man ville trodd
+          hvis forkastningen hadde kuttet og forskjøvet en opprinnelig sammenhengende rygg!
+        </li>
+        <li>
+          <strong>Inaktiv bruddsone (fracture zone, utenfor ryggaksen):</strong> Utenfor spredningsaksene strekker
+          forkastningssprekken seg tusenvis av kilometer videre over havbunnen som et dypt arr i batymetrien. Men her
+          beveger havbunnen på <em>begge sider</em> av sprekken seg i <strong>nøyaktig samme retning med nøyaktig samme hastighet</strong>!
+          Det er null relativ platebevegelse, ingen friksjon og følgelig <strong>ingen jordskjelv</strong>. Bruddsonene
+          er aseismiske «arr» som bevarer historien om tidligere tiders transformbevegelser.
+        </li>
+      </ul>
 
       {/* 6. SEISMISITET OG WADATI-BENIOFF SONEN */}
       <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
@@ -526,6 +614,66 @@ function PlatetektonikkPage() {
         lagre elastisk spenning eller sprekke sprøtt lenger; de flyter som varm plastelina. Derfor forekommer det
         aldri jordskjelv dypere enn 700 km på jorden.
       </p>
+
+      {/* 7. OFIOLITT-KOMPLEKSET OG LEKA */}
+      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
+        Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
+      </h2>
+      <p>
+        Hvordan vet geologer egentlig hvordan en havbunnsskorpe ser ut i dypet når verdenshavene er dekket av flere tusen
+        meter vann? Svaret ligger i <strong>ofiolitter</strong>: sjeldne geologiske hendelser der biter av havbunnsskorpe
+        og øvre mantel ikke har blitt subdusert og ødelagt, men derimot skjøvet opp på tørt land under en fjellkjedekollisjon
+        (et fenomen kalt <strong>obduksjon</strong>, Furnes et al., 1988).
+      </p>
+      <p>
+        Ved den berømte Penrose-konferansen i 1972 definerte geologene den klassiske <strong>ofiolitt-stratigrafien</strong>,
+        som representerer et komplett vertikalt tverrsnitt gjennom oseanisk litosfære:
+      </p>
+      <ol className="list-decimal space-y-2 pl-6 text-foreground/90">
+        <li>
+          <strong>Pelagiske sedimenter (øverst):</strong> Tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt
+          (dannet av mikroskopiske kiselalger).
+        </li>
+        <li>
+          <strong>Putelava (pillow basalt):</strong> 0,5–1,5 km tykt lag med glassaktige lavaputer som vitner om
+          vulkanske utbrudd direkte under vann.
+        </li>
+        <li>
+          <strong>Plateformede basaltganger (sheeted dykes):</strong> Et unikt 1–2 km tykt kompleks av loddrette,
+          parallelle basaltganger («gang-i-gang») som viser hvordan midthavsryggen kontinuerlig sprekker opp og fylles med ny magma.
+        </li>
+        <li>
+          <strong>Gabbro (isotrop og lagdelt):</strong> 2–4 km tykt lag av grovkornet dypbergart dannet i det aksiale
+          magmakammeret under midthavsryggen. Nederst danner tunge krystaller rytmiske lag (lagdelt gabbro).
+        </li>
+        <li>
+          <strong>Petrologisk Moho:</strong> Selve grenseflaten mellom skorpen (gabbro) og den underliggende mantelen (peridotitt).
+        </li>
+        <li>
+          <strong>Mantel-litosfære (nederst):</strong> Rester av øvre mantel bestående av <strong>peridotitt</strong> (dunitt
+          og harzburgitt) som er utsmeltet for basaltkomponenter. Ved kontakt med sjøvann omdannes peridotitt til den vakre,
+          grønne eller gyllenbrune bergarten <strong>serpentinitt</strong>.
+        </li>
+      </ol>
+
+      <PhotoFigure
+        src="/images/geo-ofiolitt-leka.jpg"
+        alt="Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel"
+        heading="Norges geologiske nasjonalmonument: Leka ofiolittkompleks"
+        caption="På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!"
+        marks={[
+          { x: 22, y: 72, n: "1", text: "Mantelperidotitt", tone: "warm" },
+          { x: 42, y: 55, n: "2", text: "Moho-grensen", tone: "cold" },
+          { x: 62, y: 42, n: "3", text: "Lagdelt gabbro", tone: "warm" },
+          { x: 80, y: 24, n: "4", text: "Putelava", tone: "cold" },
+        ]}
+        points={[
+          { n: "1", label: "Gulbrun forvitret dunitt og harzburgitt: Dette er selve jordens øvre mantel eksponert i dagslys!" },
+          { n: "2", label: "Petrologisk Moho: Overgangen mellom ultramafisk mantel og mafisk gabbroid jordskorpe." },
+          { n: "3", label: "Lagdelt gabbro: Krystallisasjonsprodukter fra havbunnens aksiale magmakammer for 497 millioner år siden." },
+          { n: "4", label: "Plateformede ganger og putelava som en gang utgjorde havbunnen i Iapetushavet." },
+        ]}
+      />
 
       {/* 7. INTERAKTIV MODELL */}
       <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
@@ -595,6 +743,25 @@ function PlatetektonikkPage() {
       </p>
 
       <WilsonCycleDiagram />
+
+      <PhotoFigure
+        src="/images/geo-wilsonsyklus-3d.jpg"
+        alt="Wilsonsyklusens 6 stadier fra kontinental oppsprekking til havlukking og fjellkjededannelse"
+        heading="Wilsonsyklusens 6 stadier: Superkontinentenes kretsløp i 3D"
+        caption="J. Tuzo Wilsons modell beskriver hvordan havbassenger fødes, utvides, lukkes og forsvinner i en syklus på 400–600 millioner år (Wilson, 1966). 1: Embryonisk stadium (kontinental riftdal, f.eks. Øst-Afrika). 2: Ungt stadium (smalt havbasseng med begynnende midthavsrygg, Rødehavet). 3: Modent stadium (vidt hav med passive marginer, Atlanterhavet). 4: Avtagende stadium (subduksjonssoner spiser opp havbunnen, Stillehavet). 5: Sluttstadium/terminalt (smalt, lukket hav med kollisjonsfronter, Middelhavet). 6: Suturstadium (kontinentkollisjon og høyfjellskjede, f.eks. Himalaya og oldtidens Kaledonider)."
+        marks={[
+          { x: 18, y: 22, n: "1", text: "1: Rifting", tone: "warm" },
+          { x: 48, y: 22, n: "2", text: "2–3: Havspredning", tone: "cold" },
+          { x: 80, y: 22, n: "3", text: "4: Subduksjon", tone: "cold" },
+          { x: 50, y: 75, n: "4", text: "5–6: Kollisjon & Sutur", tone: "warm" },
+        ]}
+        points={[
+          { n: "1", label: "Embryonisk & ungt stadium: Kontinental skorpe tynnes og sprekker opp (riftdal -> Rødehavet)." },
+          { n: "2", label: "Modent stadium: Havbunnsspredning over titalls millioner år skaper brede verdenshav (Atlanterhavet)." },
+          { n: "3", label: "Avtagende stadium: Kald og tung litosfære begynner å subduere langs havets render (Ildringen i Stillehavet)." },
+          { n: "4", label: "Suturstadium: Havbunnen forsvinner fullstendig; kontinentene støter sammen i orogenese (fjellkjededannelse)." },
+        ]}
+      />
 
       {/* 9. NORGES PLATETEKTONISKE REISE */}
       <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
@@ -718,8 +885,13 @@ function PlatetektonikkPage() {
         <Term name="ridge push" def="gravitasjonsglidning: litosfæren sklir nedover fra den 2–3 km høye midthavsryggen" />
         <Term name="dekompresjon" def="manteloppstigning gir trykkfall; solidus krysses uten ekstra varme (rygg/rift)" />
         <Term name="flukssmelting" def="vann fra synkende slab senker solidustemperaturen i mantelkilen over (subduksjon)" />
+        <Term name="dehydrering" def="høyt trykk presser vann ut av serpentinitt og leirmineraler i den synkende havbunnen" />
+        <Term name="akkresjonskile" def="havbunnssedimenter skrapet av den synkende platen og stablet opp foran dyphavsgropen" />
+        <Term name="bakbuebasseng" def="ekstensjonsbasseng dannet bak en vulkanbue på grunn av slab rollback (f.eks. Japanhavet)" />
+        <Term name="bruddsone" def="inaktiv, aseismisk forlengelse av en transformforkastning utenfor spredningsryggene" />
         <Term name="Wadati-Benioff" def="skrått seismisk plan av jordskjelv (0–700 km dyp) som sporer den synkende platen" />
-        <Term name="ofiolitt" def="komplett tverrsnitt av havbunnsskorpe: sedimenter, putelava, diker, gabbro, peridotitt" />
+        <Term name="ofiolitt" def="komplett tverrsnitt av havbunnsskorpe og øvre mantel obdusert på land (f.eks. Leka)" />
+        <Term name="obduksjon" def="overkjøring der tung havbunn unntaksvis skyves opp på lett kontinental skorpe i kollisjon" />
         <Term name="paleomagnetisme" def="symmetriske striper med magnetisk reversering i havbunnen (Vine-Matthews-Morley)" />
         <Term name="hotspot" def="mantelplym fra kjerne-mantel-grensen (D'') som brenner vulkankjeder (f.eks. Hawaii)" />
         <Term name="Wilsonsyklus" def="syklisk åpning og lukking av verdenshav over 400–600 mill. år (superkontinenter)" />
@@ -755,6 +927,30 @@ function PlatetektonikkPage() {
             answer: 1,
             explain:
               "Riktig! Geodynamiske målinger viser at slab pull står for om lag 90 % av bevegelseskraften. Tetthetsøkningen ved faseovergang til eklogitt trekker hele platen etter seg.",
+          },
+          {
+            prompt: "Hvorfor er Leka i Trøndelag kåret til Norges geologiske nasjonalmonument?",
+            options: [
+              "Fordi det er landets eneste aktive vulkan.",
+              "Fordi en komplett bit av Iapetushavets bunn og øvre mantel ble skjøvet på land under Kaledonidene (ofiolitt), slik at man kan gå tørrskodd over Moho-grensen.",
+              "Fordi Norges eldste meteorittkrater ligger der.",
+              "Fordi det er det eneste stedet i Europa med permafrost.",
+            ],
+            answer: 1,
+            explain:
+              "Riktig! Leka ofiolittkompleks er et geologisk verdensfenomen der obduksjon bevarte hele lagrekken fra mantelperidotitt, over Moho, og opp til lagdelt gabbro og putelava.",
+          },
+          {
+            prompt: "Hvorfor er en transformforkastning seismisk aktiv bare mellom spredningsryggene, og ikke i bruddsonen utenfor?",
+            options: [
+              "Fordi havvannet kjøler ned bergartene utenfor ryggen.",
+              "Fordi platene på hver side av sprekken utenfor ryggaksen beveger seg i samme retning med samme fart (ingen relativ bevegelse).",
+              "Fordi jordskjelvbølger bare kan bevege seg mot øst.",
+              "Fordi bruddsonene er fylt med flytende magma som demper rystelser.",
+            ],
+            answer: 1,
+            explain:
+              "Riktig! Som J. Tuzo Wilson viste i 1965: Kun mellom ryggsegmentene glir platene i motsatt retning. Utenfor ryggene beveger skorpen seg unisont i samme retning; bruddsonene er derfor aseismiske arr.",
           },
           {
             prompt: "Hvordan beviste Vine og Matthews havbunnsspredning i 1963?",

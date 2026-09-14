@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
-type VolcanoScenario = "shield" | "stratovolcano" | "caldera" | "earthquake_sim";
+type VolcanoScenario = "shield" | "stratovolcano" | "caldera" | "earthquake_sim" | "monitoring" | "tsunami_sim";
 
 export function VolcanoModel() {
   const [scenario, setScenario] = useState<VolcanoScenario>("stratovolcano");
@@ -18,6 +18,15 @@ export function VolcanoModel() {
   const [epicenterDist, setEpicenterDist] = useState<number>(120); // km fra stasjon
   const [focalDepth, setFocalDepth] = useState<number>(15); // km
   const [quakeTriggered, setQuakeTriggered] = useState<boolean>(false);
+
+  // Kontroller for vulkanovervåking (Early Warning)
+  const [monitorDay, setMonitorDay] = useState<number>(-4); // -30 til 0 dager
+  const [seismicTremorRate, setSeismicTremorRate] = useState<number>(75); // 0-100%
+
+  // Kontroller for tsunamisimulator
+  const [tsunamiDepth, setTsunamiDepth] = useState<number>(3500); // 10 til 5000 m
+  const [tsunamiDist, setTsunamiDist] = useState<number>(180); // km til kyst
+  const [initWaveHeight, setInitWaveHeight] = useState<number>(2.5); // m
 
   // Avledede egenskaper for vulkan
   // Viskositet øker eksponentielt med SiO2 og synker med temperatur
@@ -52,7 +61,7 @@ export function VolcanoModel() {
       };
     } else if (score < 110) {
       return {
-        type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens)",
+        type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens, Eyjafjallajökull)",
         vei: "VEI 4–5",
         desc: "Massiv vedvarende gassutblåsning med konvektiv askesøyle til stratosfæren (10–35 km). Fragmentering av seig magma til pimpstein og finaske.",
         hazards: "Pyroklastiske tetthetsstrømmer (PDC) i 200–700 km/t, dødelig askeopphopning og laharer.",
@@ -72,13 +81,53 @@ export function VolcanoModel() {
   const eruptionStyle = calcEruptionStyle();
 
   // Jordskjelvberegninger
-  // P-bølge: vp ~ 6.0 km/s, S-bølge: vs ~ 3.5 km/s
-  // Hypocenteravstand: d = sqrt(dist^2 + depth^2)
   const hypDist = Math.sqrt(epicenterDist * epicenterDist + focalDepth * focalDepth);
   const tP = (hypDist / 6.0).toFixed(1);
   const tS = (hypDist / 3.5).toFixed(1);
   const deltaT = (parseFloat(tS) - parseFloat(tP)).toFixed(1);
   const estMagnitude = (3.0 + (faultStress / 100) * 4.8).toFixed(1);
+
+  // Vulkanovervåking beregninger
+  const calcMonitoringStatus = () => {
+    const prog = 1 - Math.abs(monitorDay) / 30; // 0 til 1
+    const tremorVal = Math.round(4 + prog * 96 * (seismicTremorRate / 100)); // um/s
+    const upliftVal = (prog * 42.5).toFixed(1); // cm heving
+    const so2Val = Math.round(180 + Math.pow(prog, 1.9) * 4800); // tonn/døgn
+
+    let alertLevel = "GRØNN (Normaltilstand)";
+    let alertColor = "text-emerald-400";
+    let alertBg = "bg-emerald-500/10 border-emerald-500/30";
+    let action = "Rutinemessig forskningsovervåking. Ingen spesielle tiltak.";
+
+    if (monitorDay >= -14 && monitorDay < -6) {
+      alertLevel = "GUL (Advarsel / Uro)";
+      alertColor = "text-amber-400";
+      alertBg = "bg-amber-500/10 border-amber-500/30";
+      action = "Økt seismisk beredskap. Observasjonsflyvninger og varsling til luftfart (VONA).";
+    } else if (monitorDay >= -6 && monitorDay < -1) {
+      alertLevel = "ORANSJE (Magmaoppstigning / Høy fare)";
+      alertColor = "text-orange-400";
+      alertBg = "bg-orange-500/10 border-orange-500/30";
+      action = "Forbered evakuering av 10 km faresone. Totalforbud mot opphold på fjellet.";
+    } else if (monitorDay >= -1) {
+      alertLevel = "RØD (UTBRUDD OVERHENGENDE / EVAKUER!)";
+      alertColor = "text-rose-400 font-bold";
+      alertBg = "bg-rose-500/10 border-rose-500/30 animate-pulse";
+      action = "OBLIGATORISK FULL EVAKUERING av alle dalfører innen 25 km! Flyforbud innføres.";
+    }
+
+    return { tremorVal, upliftVal, so2Val, alertLevel, alertColor, alertBg, action };
+  };
+
+  const monitorStatus = calcMonitoringStatus();
+
+  // Tsunamiberegninger (v = sqrt(g * d))
+  const g = 9.81;
+  const tsunamiSpeedMs = Math.sqrt(g * tsunamiDepth);
+  const tsunamiSpeedKmh = Math.round(tsunamiSpeedMs * 3.6);
+  const travelTimeMin = Math.round((tsunamiDist * 1000) / tsunamiSpeedMs / 60);
+  const shoalingFactor = Math.pow(tsunamiDepth / 12, 0.25);
+  const coastalHeight = (initWaveHeight * shoalingFactor).toFixed(1);
 
   // Forhåndsinnstilte scenario-moduser
   const setScenarioPreset = (sc: VolcanoScenario) => {
@@ -99,35 +148,48 @@ export function VolcanoModel() {
       setFaultStress(80);
       setEpicenterDist(140);
       setFocalDepth(12);
+    } else if (sc === "monitoring") {
+      setMonitorDay(-4);
+      setSeismicTremorRate(85);
+    } else if (sc === "tsunami_sim") {
+      setTsunamiDepth(4000);
+      setTsunamiDist(220);
+      setInitWaveHeight(2.0);
     }
   };
 
   return (
     <ModelFrame
-      kicker="Interaktiv vulkansk & seismologisk simulator"
-      title="Magmakjemi, Utbruddsdynamikk og Seismisk Bølgeforplantning"
-      lead="Eksperimenter med silikatinnhold (SiO₂), gass og temperatur for å se hvordan magmakjemi styrer eksplosivitet — eller utforsk hvordan elastisk forkastningsspenning utløser P- og S-bølger med distanseavhengig seismogram."
+      kicker="Interaktiv vulkansk & geofysisk simulator"
+      title="Magmakjemi, Utbruddsdynamikk, Seismogram og Geofarer"
+      lead="Eksperimenter med magmakjemi (SiO₂, gass, temp), test utbruddstyper, tolk sanntids vulkanovervåking (tremor, GPS, SO₂), studer seismiske P- og S-bølger, eller beregn tsunamihastighet og oppstuing (shoaling)."
       toolbar={
         <div className="flex flex-wrap gap-1.5">
           <ModelTab active={scenario === "stratovolcano"} onClick={() => setScenarioPreset("stratovolcano")}>
-            Eksplosiv Stratovulkan (Subduksjon)
+            Stratovulkan (Subduksjon)
           </ModelTab>
           <ModelTab active={scenario === "shield"} onClick={() => setScenarioPreset("shield")}>
-            Effusiv Skjoldvulkan (Hotspot/Rift)
+            Skjoldvulkan (Hotspot/Rift)
           </ModelTab>
           <ModelTab active={scenario === "caldera"} onClick={() => setScenarioPreset("caldera")}>
-            Kalderakollaps & Supervulkan
+            Kaldera & Supervulkan
+          </ModelTab>
+          <ModelTab active={scenario === "monitoring"} onClick={() => setScenarioPreset("monitoring")}>
+            Vulkanovervåking (Varsling)
           </ModelTab>
           <ModelTab active={scenario === "earthquake_sim"} onClick={() => setScenarioPreset("earthquake_sim")}>
             Jordskjelv & Seismogram
+          </ModelTab>
+          <ModelTab active={scenario === "tsunami_sim"} onClick={() => setScenarioPreset("tsunami_sim")}>
+            Tsunamikalkulator (Shoaling)
           </ModelTab>
         </div>
       }
     >
       <ModelMarkers />
 
-      {/* Kontroller for vulkanscenarioene */}
-      {scenario !== "earthquake_sim" ? (
+      {/* KONTROLLPANEL FOR DE ULIKE SCENARIOENE */}
+      {scenario === "shield" || scenario === "stratovolcano" || scenario === "caldera" ? (
         <div className="mb-6 grid gap-4 rounded-xl border border-border bg-background/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex justify-between text-xs">
@@ -196,8 +258,63 @@ export function VolcanoModel() {
             </Button>
           </div>
         </div>
-      ) : (
-        /* Kontroller for jordskjelvsimulator */
+      ) : scenario === "monitoring" ? (
+        /* KONTROLLER FOR VULKANOVERVÅKING OG TIDLIG VARSLING */
+        <div className="mb-6 grid gap-4 rounded-xl border border-border bg-background/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <div className="flex justify-between text-xs">
+              <span className="font-semibold text-foreground">Tidslinje før utbrudd:</span>
+              <span className="font-mono text-primary">
+                {monitorDay === 0 ? "Dag 0 (Utbrudd i dag!)" : `Dag ${monitorDay}`}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={-30}
+              max={0}
+              step={1}
+              value={monitorDay}
+              onChange={(e) => setMonitorDay(Number(e.target.value))}
+              className="mt-2 w-full accent-primary cursor-pointer"
+            />
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Skyv mot Dag 0 for å simulere økende magmapress i vulkanen.
+            </p>
+          </div>
+
+          <div>
+            <div className="flex justify-between text-xs">
+              <span className="font-semibold text-foreground">Magmatilførsel / seismisk intensitet:</span>
+              <span className="font-mono text-primary">{seismicTremorRate} %</span>
+            </div>
+            <input
+              type="range"
+              min={20}
+              max={100}
+              step={5}
+              value={seismicTremorRate}
+              onChange={(e) => setSeismicTremorRate(Number(e.target.value))}
+              className="mt-2 w-full accent-primary cursor-pointer"
+            />
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Hvor fort magma stiger opp fra mantelen og inn i jordskorpen.
+            </p>
+          </div>
+
+          <div className="sm:col-span-2 flex flex-col justify-center rounded-lg border p-2.5 text-xs transition-colors border-border/80">
+            <div className="flex items-center justify-between">
+              <span className="font-semibold text-foreground text-xs">Vulkansk Farenivå (Alert Level):</span>
+              <span className={`text-xs px-2 py-0.5 rounded font-mono font-bold ${monitorStatus.alertColor} ${monitorStatus.alertBg}`}>
+                {monitorStatus.alertLevel}
+              </span>
+            </div>
+            <p className="mt-1.5 text-[11px] text-muted-foreground leading-tight">
+              <strong>Sivilforsvarets tiltak:</strong> {monitorStatus.action}
+            </p>
+          </div>
+        </div>
+      ) : scenario === "earthquake_sim" ? (
+        /* KONTROLLER FOR JORDSKJELVSIMULATOR */
         <div className="mb-6 grid gap-4 rounded-xl border border-border bg-background/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex justify-between text-xs">
@@ -269,11 +386,451 @@ export function VolcanoModel() {
             </Button>
           </div>
         </div>
+      ) : (
+        /* KONTROLLER FOR TSUNAMISIMULATOR */
+        <div className="mb-6 grid gap-4 rounded-xl border border-border bg-background/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <div className="flex justify-between text-xs">
+              <span className="font-semibold text-foreground">Havbunnens dybde (d):</span>
+              <span className="font-mono text-primary">{tsunamiDepth} meter</span>
+            </div>
+            <input
+              type="range"
+              min={50}
+              max={5000}
+              step={50}
+              value={tsunamiDepth}
+              onChange={(e) => setTsunamiDepth(Number(e.target.value))}
+              className="mt-2 w-full accent-primary cursor-pointer"
+            />
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Fart v = √(g·d). Dypere vann = ekstrem bølgehastighet!
+            </p>
+          </div>
+
+          <div>
+            <div className="flex justify-between text-xs">
+              <span className="font-semibold text-foreground">Avstand til kysten:</span>
+              <span className="font-mono text-primary">{tsunamiDist} km</span>
+            </div>
+            <input
+              type="range"
+              min={10}
+              max={500}
+              step={10}
+              value={tsunamiDist}
+              onChange={(e) => setTsunamiDist(Number(e.target.value))}
+              className="mt-2 w-full accent-primary cursor-pointer"
+            />
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Beregnet varslingstid: {travelTimeMin} minutter.
+            </p>
+          </div>
+
+          <div>
+            <div className="flex justify-between text-xs">
+              <span className="font-semibold text-foreground">Vertikal forskyvning:</span>
+              <span className="font-mono text-primary">{initWaveHeight.toFixed(1)} meter</span>
+            </div>
+            <input
+              type="range"
+              min={0.5}
+              max={10.0}
+              step={0.5}
+              value={initWaveHeight}
+              onChange={(e) => setInitWaveHeight(Number(e.target.value))}
+              className="mt-2 w-full accent-primary cursor-pointer"
+            />
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Forkastningssprang eller skredvolum (Storegga/Åknes).
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 p-2.5 text-xs">
+            <span className="font-semibold text-sky-400 block">Kyst-bølgehøyde (Shoaling):</span>
+            <span className="font-mono text-base font-extrabold text-foreground">{coastalHeight} m</span>
+            <span className="text-[10px] text-muted-foreground block">
+              Fart i dypet: {tsunamiSpeedKmh} km/t ({tsunamiSpeedMs.toFixed(0)} m/s)
+            </span>
+          </div>
+        </div>
       )}
 
       {/* SVG VISUALISERING */}
       <div className="relative overflow-hidden rounded-2xl border border-border bg-slate-950 p-2 shadow-inner">
-        {scenario !== "earthquake_sim" ? (
+        {scenario === "monitoring" ? (
+          /* VULKANOVERVÅKING OG SANNTIDS VARSLING */
+          <svg viewBox="0 0 900 460" className="w-full h-auto select-none">
+            <defs>
+              <linearGradient id="monSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#090f18" />
+                <stop offset="100%" stopColor="#172635" />
+              </linearGradient>
+              <linearGradient id="monRock" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#29221b" />
+                <stop offset="100%" stopColor="#140f0c" />
+              </linearGradient>
+              <radialGradient id="magmaRiseGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#ff4400" stopOpacity="1" />
+                <stop offset="60%" stopColor="#e11d48" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#7a0000" stopOpacity="0" />
+              </radialGradient>
+              <filter id="monGlow">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            {/* Himmel og fjellprofil */}
+            <rect x="0" y="0" width="900" height="460" fill="url(#monSky)" />
+            <rect x="0" y="270" width="460" height="190" fill="url(#monRock)" />
+
+            {/* Vulkanfjellet (venstre side) */}
+            {(() => {
+              const prog = 1 - Math.abs(monitorDay) / 30; // 0 til 1
+              const inflationPx = prog * 14;
+              const magmaHeadY = 380 - prog * 160;
+
+              return (
+                <g>
+                  {/* Bakgrunnsfjell */}
+                  <path d="M 0 270 L 60 210 L 140 250 L 230 150 L 320 240 L 460 270 Z" fill="#1e293b" opacity="0.5" />
+
+                  {/* Inflasjons-stiplet profil (referanse) */}
+                  <path
+                    d="M 30 270 L 230 140 L 430 270 Z"
+                    fill="none"
+                    stroke="#64748b"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                  />
+
+                  {/* Faktisk fjellkropp (hever seg ved magmaopptrenging) */}
+                  <path
+                    d={`M 30 270 Q 130 ${210 - inflationPx} 220 ${140 - inflationPx} L 240 ${140 - inflationPx} Q 330 ${210 - inflationPx} 430 270 Z`}
+                    fill="#332a24"
+                    stroke="#785c4b"
+                    strokeWidth="2.5"
+                  />
+
+                  {/* Fjellflanke GPS heving-vektorer */}
+                  <g>
+                    <line x1="140" y1={210 - inflationPx} x2="135" y2={185 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
+                    <polygon points={`135,${180 - inflationPx * 1.6} 130,${190 - inflationPx * 1.6} 140,${190 - inflationPx * 1.6}`} fill="#38bdf8" />
+                    <line x1="320" y1={210 - inflationPx} x2="325" y2={185 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
+                    <polygon points={`325,${180 - inflationPx * 1.6} 320,${190 - inflationPx * 1.6} 330,${190 - inflationPx * 1.6}`} fill="#38bdf8" />
+                    <text x="135" y={170 - inflationPx * 1.6} fill="#7dd3fc" fontSize="11" fontWeight="bold" textAnchor="middle">
+                      GNSS +{monitorStatus.upliftVal} cm
+                    </text>
+                  </g>
+
+                  {/* Magmakammer i dypet */}
+                  <ellipse cx="230" cy="400" rx={85 + prog * 20} ry={35 + prog * 12} fill="url(#magmaRiseGlow)" filter="url(#monGlow)" />
+                  <ellipse cx="230" cy="400" rx={60 + prog * 15} ry={25 + prog * 8} fill="#ff5500" />
+                  <text x="230" y="405" fill="#ffffff" fontSize="11" fontWeight="bold" textAnchor="middle">
+                    Magmakammer (oppblåsing)
+                  </text>
+
+                  {/* Magmatilførsel og oppstigende diapir */}
+                  <path d={`M 223 400 L 223 ${magmaHeadY} H 237 L 237 400 Z`} fill="#ff3700" />
+                  <ellipse cx="230" cy={magmaHeadY} rx="14" ry="10" fill="#ffcc00" filter="url(#monGlow)" />
+
+                  {/* Seismiske sverm-episentre (harmonisk tremor) */}
+                  {Array.from({ length: Math.min(18, Math.round(4 + prog * 14)) }).map((_, i) => {
+                    const sx = 230 + (Math.sin(i * 2.3) * (25 + prog * 35));
+                    const sy = 390 - (i * 12 + Math.cos(i * 1.7) * 15);
+                    return (
+                      <circle key={i} cx={sx} cy={sy} r="3.5" fill="#f43f5e" stroke="#ffe4e6" strokeWidth="1" filter="url(#monGlow)" />
+                    );
+                  })}
+
+                  {/* DOAS Gass-målestasjon og gassfane */}
+                  <ellipse cx="230" cy={135 - inflationPx} rx="12" ry="4" fill="#1c1917" />
+                  {/* Gassfaner (større ved høyere SO2) */}
+                  <path
+                    d={`M 230 ${135 - inflationPx} Q ${260 + prog * 30} ${100 - prog * 20} ${290 + prog * 40} ${60 - prog * 25}`}
+                    fill="none"
+                    stroke="#fef08a"
+                    strokeWidth={4 + prog * 8}
+                    opacity="0.6"
+                    strokeLinecap="round"
+                  />
+                  <text x="320" y="55" fill="#fef08a" fontSize="10" fontWeight="bold">
+                    SO₂-fane: {monitorStatus.so2Val} t/d
+                  </text>
+
+                  {/* DOAS spektrometer på bakken */}
+                  <rect x="360" y={250} width="16" height="12" fill="#10b981" rx="2" />
+                  <line x1="368" y1="250" x2="310" y2="65" stroke="#34d399" strokeWidth="1" strokeDasharray="3 3" />
+                  <text x="368" y="276" fill="#6ee7b7" fontSize="10" textAnchor="middle">
+                    DOAS spektrometer
+                  </text>
+                </g>
+              );
+            })()}
+
+            {/* MåLEINSTRUMENT-DASHBOARD (HØYRE SIDE) */}
+            <g transform="translate(470, 16)">
+              {/* Vulkansk varslingsnivå banner */}
+              <rect width="415" height="46" rx="8" fill="#0f172a" stroke="#334155" />
+              <text x="14" y="20" fill="#94a3b8" fontSize="10" fontWeight="bold">
+                CIVIL PROTECTION & AVIATION ALERT (ICAO):
+              </text>
+              <text x="14" y="38" className={`text-sm font-extrabold ${monitorStatus.alertColor}`}>
+                {monitorStatus.alertLevel}
+              </text>
+
+              {/* Instrument 1: Harmonisk Tremor (Seismogram) */}
+              <g transform="translate(0, 56)">
+                <rect width="415" height="110" rx="8" fill="#090d16" stroke="#1e293b" />
+                <text x="14" y="20" fill="#38bdf8" fontSize="11" fontWeight="bold">
+                  1. Harmonisk Tremor (Turbulent magmastrømning)
+                </text>
+                <text x="395" y="20" fill="#38bdf8" fontSize="11" fontWeight="mono" textAnchor="end">
+                  {monitorStatus.tremorVal} µm/s
+                </text>
+
+                {/* Seismogram bølgeform */}
+                <line x1="14" y1="65" x2="400" y2="65" stroke="#1e293b" />
+                {(() => {
+                  const amp = (monitorStatus.tremorVal / 100) * 35;
+                  const pts: string[] = [];
+                  for (let x = 14; x <= 400; x += 4) {
+                    const noise = Math.sin(x * 0.25) * Math.cos(x * 0.08) * amp + (Math.random() - 0.5) * (amp * 0.4);
+                    pts.push(`${x},${65 + noise}`);
+                  }
+                  return (
+                    <polyline
+                      points={pts.join(" ")}
+                      fill="none"
+                      stroke={monitorStatus.tremorVal > 60 ? "#f43f5e" : "#38bdf8"}
+                      strokeWidth="1.8"
+                    />
+                  );
+                })()}
+                <text x="14" y="100" fill="#64748b" fontSize="9">
+                  Kontinuerlig lavfrekvent risting (1–5 Hz) varsler om magma i bevegelse gjennom sprekker.
+                </text>
+              </g>
+
+              {/* Instrument 2: GNSS Bakkedeformasjon */}
+              <g transform="translate(0, 176)">
+                <rect width="415" height="110" rx="8" fill="#090d16" stroke="#1e293b" />
+                <text x="14" y="20" fill="#34d399" fontSize="11" fontWeight="bold">
+                  2. GNSS Vertikal Bakkedeformasjon (Inflasjon)
+                </text>
+                <text x="395" y="20" fill="#34d399" fontSize="11" fontWeight="mono" textAnchor="end">
+                  +{monitorStatus.upliftVal} cm
+                </text>
+
+                {/* Hevingskurve over tid */}
+                <line x1="20" y1="85" x2="395" y2="85" stroke="#1e293b" />
+                <line x1="20" y1="28" x2="20" y2="85" stroke="#1e293b" />
+                {(() => {
+                  const pts: string[] = [];
+                  const w = 375;
+                  const prog = 1 - Math.abs(monitorDay) / 30;
+                  for (let i = 0; i <= 30; i++) {
+                    const tNorm = i / 30;
+                    const x = 20 + tNorm * w;
+                    const h = Math.pow(tNorm, 2.2) * 50 * (prog);
+                    pts.push(`${x},${85 - h}`);
+                  }
+                  return (
+                    <polyline
+                      points={pts.join(" ")}
+                      fill="none"
+                      stroke="#34d399"
+                      strokeWidth="2.5"
+                    />
+                  );
+                })()}
+                <circle cx={20 + (1 - Math.abs(monitorDay) / 30) * 375} cy={85 - (parseFloat(monitorStatus.upliftVal) / 42.5) * 50} r="4" fill="#6ee7b7" />
+                <text x="14" y="100" fill="#64748b" fontSize="9">
+                  Mogu-modell: Bakkedeformasjon skyldes volumøkning i magmakammer på 4–8 km dyp.
+                </text>
+              </g>
+
+              {/* Instrument 3: SO₂ Gassfluks (DOAS) */}
+              <g transform="translate(0, 296)">
+                <rect width="415" height="135" rx="8" fill="#090d16" stroke="#1e293b" />
+                <text x="14" y="20" fill="#facc15" fontSize="11" fontWeight="bold">
+                  3. Svoveldioksid-utslipp (SO₂ UV-spektrometri)
+                </text>
+                <text x="395" y="20" fill="#facc15" fontSize="11" fontWeight="mono" textAnchor="end">
+                  {monitorStatus.so2Val} tonn/døgn
+                </text>
+
+                {/* Gass-søylediagram */}
+                <rect x="20" y="42" width="375" height="20" fill="#1e293b" rx="4" />
+                <rect
+                  x="20"
+                  y="42"
+                  width={Math.min(375, (monitorStatus.so2Val / 5000) * 375)}
+                  height="20"
+                  fill={monitorStatus.so2Val > 2500 ? "#f43f5e" : "#facc15"}
+                  rx="4"
+                />
+                <line x1={20 + (1000 / 5000) * 375} y1="38" x2={20 + (1000 / 5000) * 375} y2="66" stroke="#94a3b8" strokeWidth="1.5" />
+                <text x={20 + (1000 / 5000) * 375} y="34" fill="#94a3b8" fontSize="8" textAnchor="middle">Uro (1000 t/d)</text>
+
+                <line x1={20 + (3000 / 5000) * 375} y1="38" x2={20 + (3000 / 5000) * 375} y2="66" stroke="#f43f5e" strokeWidth="1.5" />
+                <text x={20 + (3000 / 5000) * 375} y="34" fill="#f43f5e" fontSize="8" textAnchor="middle">Kritisk (3000 t/d)</text>
+
+                <p className="text-[10px] text-muted-foreground mt-2">
+                  <text x="14" y="86" fill="#94a3b8" fontSize="10">
+                    Tiltak: {monitorStatus.action}
+                  </text>
+                </p>
+                <text x="14" y="118" fill="#64748b" fontSize="9">
+                  Kraftig stigning i SO₂ bekrefter at fersk magma når overflatenære dyp hvor gassen eksolveres.
+                </text>
+              </g>
+            </g>
+          </svg>
+        ) : scenario === "tsunami_sim" ? (
+          /* TSUNAMI KALKULATOR OG BØLGEOPPSTUING (SHOALING) */
+          <svg viewBox="0 0 900 460" className="w-full h-auto select-none">
+            <defs>
+              <linearGradient id="tsuSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#081426" />
+                <stop offset="100%" stopColor="#1e3a5f" />
+              </linearGradient>
+              <linearGradient id="deepWater" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#0284c7" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#082f49" stopOpacity="0.95" />
+              </linearGradient>
+              <linearGradient id="shelfRock" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#382e25" />
+                <stop offset="100%" stopColor="#1a140f" />
+              </linearGradient>
+            </defs>
+
+            {/* Himmel */}
+            <rect x="0" y="0" width="900" height="460" fill="url(#tsuSky)" />
+
+            {/* Havbunnens batymetri (Dypbasseng -> Kontinentalskråning -> Kystsokkel) */}
+            {(() => {
+              // Dypdeprofil
+              const deepFloorY = 380;
+              const coastX = 760;
+              const coastY = 220;
+              const surgeH = Math.min(120, parseFloat(coastalHeight) * 7.5);
+
+              return (
+                <g>
+                  {/* Fjell og kystlinje til høyre */}
+                  <path
+                    d={`M 0 ${deepFloorY} L 360 ${deepFloorY} L 580 270 L ${coastX} ${coastY} L 900 210 L 900 460 L 0 460 Z`}
+                    fill="url(#shelfRock)"
+                    stroke="#574636"
+                    strokeWidth="2"
+                  />
+
+                  {/* Forkastningsbrudd på havbunnen (jordskjelvsenter) */}
+                  <g transform="translate(100, 380)">
+                    <line x1="-30" y1="0" x2="30" y2="0" stroke="#f43f5e" strokeWidth="4" />
+                    <line x1="0" y1="-20" x2="0" y2="30" stroke="#f43f5e" strokeWidth="3" strokeDasharray="4 3" />
+                    <polygon points="0,-25 -8,-12 8,-12" fill="#ef4444" />
+                    <text x="0" y="-30" fill="#fca5a5" fontSize="11" fontWeight="bold" textAnchor="middle">
+                      Forkastningssprang (+{initWaveHeight} m)
+                    </text>
+                  </g>
+
+                  {/* Vannsøyle */}
+                  <path
+                    d={`M 0 210 Q 140 ${210 - initWaveHeight * 2} 240 210 Q 380 210 520 210 Q 640 205 680 ${210 - surgeH * 0.4} Q ${coastX - 30} ${210 - surgeH} ${coastX} ${coastY} L ${coastX} ${coastY} L 580 270 L 360 ${deepFloorY} L 0 ${deepFloorY} Z`}
+                    fill="url(#deepWater)"
+                  />
+
+                  {/* Bølgefront i dypet (Lav amplitude, ekstrem hastighet) */}
+                  <path
+                    d="M 60 210 Q 150 204 240 210"
+                    fill="none"
+                    stroke="#38bdf8"
+                    strokeWidth="3.5"
+                  />
+                  <line x1="150" y1="195" x2="210" y2="195" stroke="#38bdf8" strokeWidth="2" />
+                  <polygon points="215,195 205,190 205,200" fill="#38bdf8" />
+                  <text x="180" y="185" fill="#bae6fd" fontSize="11" fontWeight="bold" textAnchor="middle">
+                    v = √(g·d) = {tsunamiSpeedKmh} km/t
+                  </text>
+                  <text x="180" y="240" fill="#e0f2fe" fontSize="10" textAnchor="middle">
+                    Dyp: d = {tsunamiDepth} m · Bølgelengde λ ~ 150 km
+                  </text>
+
+                  {/* Tilbaketrekning like foran kysten (drawback) */}
+                  <path
+                    d={`M 660 210 Q 710 ${210 + surgeH * 0.25} ${coastX - 40} ${210 - surgeH * 0.2}`}
+                    fill="none"
+                    stroke="#facc15"
+                    strokeWidth="2"
+                    strokeDasharray="4 3"
+                  />
+                  <text x="690" y="240" fill="#fef08a" fontSize="10" fontWeight="bold">
+                    Havet trekker seg tilbake! ⚠
+                  </text>
+
+                  {/* Shoaling kystbølge (oppstuing: enorm vannvegg) */}
+                  <path
+                    d={`M ${coastX - 60} 210 Q ${coastX - 30} ${210 - surgeH * 1.1} ${coastX - 10} ${210 - surgeH} Q ${coastX} ${210 - surgeH * 0.7} ${coastX + 25} ${coastY - 10}`}
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeWidth="4"
+                  />
+                  {/* Skum og brytende bølgetopp */}
+                  <circle cx={coastX - 10} cy={210 - surgeH} r="6" fill="#ffffff" />
+                  <circle cx={coastX + 5} cy={210 - surgeH * 0.85} r="5" fill="#e0f2fe" />
+                  <circle cx={coastX + 18} cy={210 - surgeH * 0.7} r="4" fill="#bae6fd" />
+
+                  {/* Målelinje for kysthøyde */}
+                  <line x1={coastX + 45} y1={coastY} x2={coastX + 45} y2={210 - surgeH} stroke="#f43f5e" strokeWidth="2" strokeDasharray="3 3" />
+                  <text x={coastX + 55} y={215 - surgeH / 2} fill="#f43f5e" fontSize="13" fontWeight="bold">
+                    H = {coastalHeight} m!
+                  </text>
+
+                  {/* Kystlandsby og trær på land */}
+                  {/* Hus 1 */}
+                  <rect x={coastX + 40} y={coastY - 24} width="22" height="18" fill="#e2e8f0" />
+                  <polygon points={`${coastX + 37},${coastY - 24} ${coastX + 51},${coastY - 36} ${coastX + 65},${coastY - 24}`} fill="#dc2626" />
+                  {/* Hus 2 (oversvømmes ved høy tsunami) */}
+                  <rect x={coastX + 75} y={coastY - 30} width="24" height="20" fill="#f8fafc" />
+                  <polygon points={`${coastX + 72},${coastY - 30} ${coastX + 87},${coastY - 44} ${coastX + 102},${coastY - 30}`} fill="#2563eb" />
+                  {/* Fyrlykt på høyden */}
+                  <polygon points="870,210 862,140 878,140" fill="#ffffff" stroke="#94a3b8" />
+                  <rect x="862" y="132" width="16" height="8" fill="#dc2626" />
+                  <circle cx="870" cy="128" r="5" fill="#fef08a" />
+                  <text x="870" y="118" fill="#fef08a" fontSize="9" textAnchor="middle">Sikker sone &gt; 30 m</text>
+
+                  {/* Avstandslinje fra arnested til kyst */}
+                  <line x1="100" y1="435" x2={coastX} y2="435" stroke="#94a3b8" strokeWidth="1.5" />
+                  <polygon points="100,435 110,430 110,440" fill="#94a3b8" />
+                  <polygon points={`${coastX},435 ${coastX - 10},430 ${coastX - 10},440`} fill="#94a3b8" />
+                  <text x={(100 + coastX) / 2} y="430" fill="#f1f5f9" fontSize="11" fontWeight="bold" textAnchor="middle">
+                    Total avstand: {tsunamiDist} km · Varslingstid før treff: {travelTimeMin} minutter
+                  </text>
+                </g>
+              );
+            })()}
+
+            {/* FORMELPANEL (ØVERST) */}
+            <g transform="translate(20, 20)">
+              <rect width="360" height="95" rx="8" fill="#090d16" stroke="#1e293b" />
+              <text x="14" y="24" fill="#38bdf8" fontSize="13" fontWeight="bold">
+                Tsunamifysikk: Greens lov
+              </text>
+              <text x="14" y="44" fill="#f1f5f9" fontSize="11">
+                Fart: v = √(g · d) = √({g} · {tsunamiDepth}) = <tspan fill="#38bdf8" fontWeight="bold">{tsunamiSpeedKmh} km/t</tspan>
+              </text>
+              <text x="14" y="64" fill="#f1f5f9" fontSize="11">
+                Shoaling: H₂ = H₁ · (d₁ / d₂)¼ = <tspan fill="#f43f5e" fontWeight="bold">{coastalHeight} m</tspan>
+              </text>
+              <text x="14" y="84" fill="#94a3b8" fontSize="10">
+                Når dypet faller bremses fronten, bølgelengden krymper og energien presses opp!
+              </text>
+            </g>
+          </svg>
+        ) : scenario !== "earthquake_sim" ? (
           /* VULKAN-VISUALISERING */
           <svg viewBox="0 0 900 460" className="w-full h-auto select-none">
             <defs>
@@ -677,7 +1234,29 @@ export function VolcanoModel() {
             <h4 className="font-semibold text-foreground text-sm">Fysisk og kjemisk drivkraft</h4>
             <p className="text-[11px] text-muted-foreground">Hvorfor oppstår reaksjonen?</p>
           </div>
-          {scenario !== "earthquake_sim" ? (
+          {scenario === "monitoring" ? (
+            <div className="space-y-2 text-xs text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Dekompresjon og avgassing:</strong> Når magma migrerer oppover fra 10–20 km dyp,
+                faller det hydrostatiske trykket. Oppløste gasser (H₂O, CO₂, SO₂) danner gassbobler (eksolsjon) som øker volumet og det hydrauliske trykket mot sidebergartene.
+              </p>
+              <p>
+                <strong className="text-foreground">Mogi-inflasjonsmodell:</strong> Trykkøkningen i det elastiske reservoaret får
+                overliggende fjelloverflate til å bøye seg oppover (heving) og til sidene, målbart med millimeterpresisjon via GNSS og satellitt-radar (InSAR).
+              </p>
+            </div>
+          ) : scenario === "tsunami_sim" ? (
+            <div className="space-y-2 text-xs text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Vertikal vannforskyvning:</strong> Tsunamier skapes når et stort volum vann plutselig
+                løftes eller senkes. Dette skjer ved megathrust-jordskjelv i subduksjonssoner, massive undersjøiske skred (f.eks. Storeggaskredet) eller kalderakollaps i havet.
+              </p>
+              <p>
+                <strong className="text-foreground">Ekstrem bølgelengde:</strong> Med bølgelengder på 100–300 km oppfører tsunamien seg
+                som en grunntvannsbølge selv over 4000 meters dyp, fordi bølgelengden er mye større enn havdybden ($\lambda \gg d$).
+              </p>
+            </div>
+          ) : scenario !== "earthquake_sim" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
                 <strong className="text-foreground">Polymerisering:</strong> Silikatmolekylene (SiO₄⁴⁻) danner
@@ -710,7 +1289,30 @@ export function VolcanoModel() {
             <h4 className="font-semibold text-foreground text-sm">Målinger og observasjoner</h4>
             <p className="text-[11px] text-muted-foreground">Hva ser forskere i felten?</p>
           </div>
-          {scenario !== "earthquake_sim" ? (
+          {scenario === "monitoring" ? (
+            <div className="space-y-2 text-xs text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Harmonisk tremor:</strong> I motsetning til vanlige skarpbrytende jordskjelv,
+                viser tremor en kontinuerlig lavfrekvent sinusformet resonans (1–5 Hz). Dette er den akustiske signaturen til magma og gasser som strømmer turbulent gjennom sprekker.
+              </p>
+              <p>
+                <strong className="text-foreground">DOAS & Multi-GAS:</strong> Differensiell optisk absorpsjonsspektrometri måler
+                svoveldioksid (SO₂). Kraftig økning i SO₂/CO₂-forholdet er et sikkert tegn på at magmaen er få kilometer fra overflaten.
+              </p>
+            </div>
+          ) : scenario === "tsunami_sim" ? (
+            <div className="space-y-2 text-xs text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Greens lov og Shoaling:</strong> I åpent hav har bølgen liten amplitude (&lt; 1 m) og
+                passerer umerkelig under skip. Når bølgen treffer kontinentalsokkelen synker farten fra ~800 km/t til ~40 km/t. Energibevaring tvinger da bølgelengden til å krympe og vannet presses vertikalt opp:
+                $H_2 = H_1 \cdot (d_1 / d_2)^{0.25}$.
+              </p>
+              <p>
+                <strong className="text-foreground">Tilbaketrekning (Drawback):</strong> Hvis bølgedalen ankommer først, suger kysten
+                til seg vann og tørrlegger havbunnen flere hundre meter utover minutter før vannveggen slår inn.
+              </p>
+            </div>
+          ) : scenario !== "earthquake_sim" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
                 <strong className="text-foreground">Utbruddsstil:</strong> {eruptionStyle.desc}
@@ -741,7 +1343,29 @@ export function VolcanoModel() {
             <h4 className="font-semibold text-foreground text-sm">Farer og samfunnsrisiko</h4>
             <p className="text-[11px] text-muted-foreground">Hva betyr dette for mennesker?</p>
           </div>
-          {scenario !== "earthquake_sim" ? (
+          {scenario === "monitoring" ? (
+            <div className="space-y-2 text-xs text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Varslingskoder (VONA):</strong> Vulkanobservatorier opererer med fargekoder:
+                Grønn (hvile), Gul (uro), Oransje (magmaoppstigning) og Rød (utbrudd nært forestående eller i gang med askeutslipp til luftfart).
+              </p>
+              <p>
+                <strong className="text-foreground">Evakuering og livredning:</strong> Ved Pinatubo (1991) reddet tidlig varsling basert på
+                seismikk og SO₂ titusenvis av menneskeliv. Ved Reykjanes på Island (2021–2024) ga bakkedeformasjon tid til å evakuere Grindavík og bygge beskyttelsesvoller.
+              </p>
+            </div>
+          ) : scenario === "tsunami_sim" ? (
+            <div className="space-y-2 text-xs text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Norsk sårbarhet (Åkneset / Tafjord):</strong> I bratte norske vestlandsfjorder
+                kan fjellskred utløse lokale kjempetsunamier. Tafjord-ulykken i 1934 krevde 40 menneskeliv (oppskylling 62 moh). Åkneset overvåkes derfor døgnkontinuerlig med radar og seismikk.
+              </p>
+              <p>
+                <strong className="text-foreground">Varslingssystemer (DART):</strong> I Stillehavet og Atlanteren registrerer
+                bunnmonterte trykksensorer (DART-bøyer) tsunamibølger i sanntid og gir kystbefolkningen livsviktige minutter og timer til å evakuere opp i høyden (&gt; 30 moh).
+              </p>
+            </div>
+          ) : scenario !== "earthquake_sim" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
                 <strong className="text-foreground">Dominerende fare:</strong> {eruptionStyle.hazards}

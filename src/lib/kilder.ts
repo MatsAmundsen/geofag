@@ -121,6 +121,19 @@ export const KILDER = {
       suffix: "(5050), 676–681.",
       href: "https://doi.org/10.1038/211676a0",
     },
+    {
+      prefix:
+        "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
+      italic: "Journal of the Geological Society, 145",
+      suffix: "(3), 401–412.",
+      href: "https://doi.org/10.1144/gsjgs.145.3.0401",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      italic: "Leka – Norges geologiske nasjonalmonument og ofiolittkompleks",
+      suffix: ".",
+      href: "https://www.ngu.no/geologiske-arv/leka",
+    },
   ],
   vulkaner: [
     {
@@ -201,6 +214,26 @@ export const KILDER = {
       italic: "Cascades Volcano Observatory: Mount St. Helens and stratovolcano hazards",
       suffix: ".",
       href: "https://www.usgs.gov/observatories/cvo",
+    },
+    {
+      prefix:
+        "Gíslason, S. R., Hassenkam, T., Nedel, S., Bovet, N., Eiriksdottir, E. S., Alfredsson, H. A., Hem, C. P., Balogh, Z. I., Dideriksen, K., & Stipp, S. L. S. (2011). Characterization of Eyjafjallajökull volcanic ash particles and a protocol for rapid risk assessment. ",
+      italic: "Proceedings of the National Academy of Sciences, 108",
+      suffix: "(18), 7307–7312.",
+      href: "https://doi.org/10.1073/pnas.1015053108",
+    },
+    {
+      prefix:
+        "Sigurdsson, H., Houghton, B., McNutt, S., Rymer, H., & Stix, J. (Red.). (2015). ",
+      italic: "The Encyclopedia of Volcanoes",
+      suffix: " (2. utg.). Academic Press.",
+      href: "https://doi.org/10.1016/C2011-0-06950-8",
+    },
+    {
+      prefix: "Standard Norge. (2021). ",
+      italic: "Eurokode 8: Prosjektering av konstruksjoner for seismisk påvirkning (NS-EN 1998-1)",
+      suffix: ".",
+      href: "https://www.standard.no/",
     },
   ],
   bergarter: [

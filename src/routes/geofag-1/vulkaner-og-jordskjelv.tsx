@@ -207,6 +207,25 @@ function VulkanerOgJordskjelvPage() {
 
         <VolcanoTypesDiagram />
 
+        <PhotoFigure
+          src="/images/geo-vulkantyper-3d.jpg"
+          alt="3D-sammenligning av de fire vulkantypene: skjoldvulkan, stratovulkan, sinderkjegle og kaldera"
+          heading="3D-geometri og dimensjoner: De fire vulkantypene"
+          caption="Vulkanbygningens form gjenspeiler direkte magmaens kjemiske viskositet og gassinnhold. Skjoldvulkaner (slak helling 2–10°, basalt) dekker enorme arealer. Stratovulkaner (bratt helling 25–35°, andesitt/dasitt) er høyreiste og lagdelte. Sinderkjegler (scoria cones) er små kjegler av slagg og pimpstein. Kalderaer er gigantiske innsynkningskratere etter magmakammertak som kollapser."
+          marks={[
+            { x: 18, y: 55, n: "1", text: "Skjoldvulkan", tone: "cold" },
+            { x: 44, y: 38, n: "2", text: "Stratovulkan", tone: "warm" },
+            { x: 70, y: 55, n: "3", text: "Sinderkjegle", tone: "cold" },
+            { x: 88, y: 48, n: "4", text: "Kaldera", tone: "warm" },
+          ]}
+          points={[
+            { n: "1", label: "Skjoldvulkan (f.eks. Mauna Loa): Ekstremt bred fot og slak profil bygd opp av titusenvis av tynne basaltiske lavastrømmer." },
+            { n: "2", label: "Stratovulkan (f.eks. Fuji og St. Helens): Bratt, symmetrisk kjegle oppbygd av vekslende lag av seig lava og tefra." },
+            { n: "3", label: "Sinderkjegle (scoria cone): Sjelden over 300 m høy; dannet ved eksplosiv utblåsing av basaltiske gassfontener." },
+            { n: "4", label: "Kaldera (f.eks. Yellowstone og Toba): Enorm innsynkning der jordskorpetaket har rast sammen ned i magmakammeret." },
+          ]}
+        />
+
         <div className="grid gap-4 md:grid-cols-3 pt-2">
           <div className="rounded-xl border border-border bg-card/70 p-4">
             <h4 className="font-semibold text-warm text-sm">1. Skjoldvulkaner</h4>
@@ -324,19 +343,233 @@ function VulkanerOgJordskjelvPage() {
         </ol>
 
         <PhotoFigure
-          src="/images/fig-subduksjon-vulkan.jpg"
-          alt="Stratovulkan i utbrudd over kyst"
-          heading="Eksplosiv subduksjonsvulkanisme"
-          caption="Når en oseanisk litosfæreplate dykker ned i mantelen, frigis overkritisk vann som senker mantelens smeltepunkt. Den resulterende magmaen reagerer med kontinentalskorpen og blir beriket på SiO₂ og oppløst vann, noe som skaper voldsomme plinianske utbrudd med stratosfæriske askesøyler."
-          marks={[{ x: 48, y: 15, n: "1", text: "Pliniansk askesøyle", tone: "warm" }]}
+          src="/images/geo-pliniansk-anatomi.jpg"
+          alt="3D-tverrsnitt av pliniansk erupsjon med fragmenteringsnivå, konvektiv søyle, paraplysky, PDC og lahar"
+          heading="Pliniansk utbruddsdynamikk: Den eksplosive gass- og askemotoren"
+          caption="Når seig, gassmettet magma stiger mot overflaten, når den fragmenteringsnivået (zf) der overtrykket i vesiklene river smelten i stykker. Blandingen skytes ut som en overlydsstråle, suger inn luft og stiger konvektivt som en 15–35 km høy søyle som brer seg ut som en paraplysky i stratosfæren. Dersom tettheten blir for høy, kollapser søylen og sender dødelige pyroklastiske tetthetsstrømmer (PDC) nedover sidene, mens smeltevann utløser laharer."
+          marks={[
+            { x: 50, y: 15, n: "1", text: "Paraplysky (stratosfæren)", tone: "cold" },
+            { x: 50, y: 42, n: "2", text: "Konvektiv askesøyle", tone: "warm" },
+            { x: 28, y: 72, n: "3", text: "Pyroklastisk strøm (PDC)", tone: "warm" },
+            { x: 74, y: 76, n: "4", text: "Lahar (slamstrøm)", tone: "cold" },
+            { x: 50, y: 92, n: "5", text: "Magmakammer & zf", tone: "warm" },
+          ]}
           points={[
-            {
-              n: "1",
-              label:
-                "Askesøylen kan stige 30 km opp i stratosfæren og føre aske og aerosoler jorden rundt.",
-            },
+            { n: "1", label: "Paraplysky: Asken sprer seg sideveis ved det nøytrale oppdriftsnivået i stratosfæren og føres jorden rundt med jetstrømmene." },
+            { n: "2", label: "Konvektiv søyle: Oppvarmet luft gjør gass-aske-blandingen lettere enn atmosfæren, og løfter den titalls kilometer opp." },
+            { n: "3", label: "PDC (Pyroklastisk tetthetsstrøm): Delvis kollaps av søylen genererer en glohet askelavine i 200–700 km/t." },
+            { n: "4", label: "Lahar: Vulkansk slamstrøm utløst ved smelting av snø og is eller regnvær; flyter som våt betong i dalbunnene." },
+            { n: "5", label: "Fragmenteringsnivå: Overgang fra sammenhengende magma til opprevet gass-partikkel-suspensjon." },
           ]}
         />
+
+        {/* KASUSSTUDIE: EYJAFJALLAJÖKULL 2010 */}
+        <div className="pt-4 space-y-3">
+          <h3 className="font-display text-xl font-medium tracking-tight text-primary">
+            Kasusstudie: Eyjafjallajökull 2010 og europeisk flystans (freatomagmatisme)
+          </h3>
+          <p>
+            Våren 2010 ble et relativt moderat vulkanutbrudd (VEI 4) på Island til den mest kostbare naturkatastrofen for
+            sivil luftfart i historien. Over 100 000 flyvninger ble kansellert, og 10 millioner reisende ble strandet over hele kloden
+            (Gíslason et al., 2011). Hvorfor fikk et mellomstort utbrudd så enorme konsekvenser?
+          </p>
+
+          <PhotoFigure
+            src="/images/geo-eyjafjallajokull-aske.jpg"
+            alt="Eyjafjallajökulls subglasiale utbrudd i 2010 med freatomagmatisk askesky og jökulhlaup"
+            heading="Eyjafjallajökull 2010: Freatomagmatisme og kontinental flystans"
+            caption="Da intermediær trakyandesittisk magma (SiO₂ ~58 %) brøt gjennom den 200 meter tykke isbreen på Eyjafjallajökull, eksploderte blandingen i kontakt med smeltevann (freatomagmatisme, Gíslason et al., 2011). Termisk sjokk knuste smelten til ekstremt finkornet, glassaktig aske (< 10 µm). En stabil høytrykksrygg førte askeskyen rett mot Sør-Norge og Nord-Europa, der partiklene truet med å smelte og stanse flyenes jetmotorer."
+            marks={[
+              { x: 48, y: 22, n: "1", text: "Freatomagmatisk fane", tone: "cold" },
+              { x: 32, y: 72, n: "2", text: "Subglasialt krater", tone: "warm" },
+              { x: 68, y: 78, n: "3", text: "Jökulhlaup (flom)", tone: "cold" },
+            ]}
+            points={[
+              { n: "1", label: "Freatomagmatisk askesky: Ekstremt finkornede silikat-glasspartikler med skarpe kanter som holdt seg svevende over tusenvis av kilometer." },
+              { n: "2", label: "Subglasialt krater: Smelting av 200 meter isbre forårsaket kontinuerlig dampeksplosjoner og termisk sjokkoppsprekking." },
+              { n: "3", label: "Jökulhlaup: Voldsom flom av brevann, slam og isblokker som feide over islandske sandsletter mot Atlanterhavet." },
+            ]}
+          />
+
+          <p>
+            Tre geofysiske faktorer sammenfalt:
+          </p>
+          <ul className="list-disc pl-6 space-y-1.5 text-sm text-muted-foreground">
+            <li>
+              <strong className="text-foreground">1. Freatomagmatisme (vann-magma-interaksjon):</strong> Magmaen trengte opp
+              gjennom en 200 meter tykk kaldeisbre. Det overopphetede smeltevannet fungerte som en termisk sjokk-katalysator:
+              Smelten ble bråkjølt og sprengt i ufattelig mange ørsmå, skarpe glasspartikler (&lt; 10 mikrometer).
+            </li>
+            <li>
+              <strong className="text-foreground">2. Høy svevetid og jetmotor-fare:</strong> Partiklene var så lette at de
+              ikke falt ut lokalt, men svevde over kontinentale avstander. Silikatglass har et smeltepunkt på ~1100 °C, mens
+              forbrenningskamrene i moderne jetmotorer opererer ved over 1400–1700 °C! Når jetmotorer suger inn vulkansk aske,
+              smelter glasset momentant i brennkammeret og størkner igjen som en glassglasur på turbinbladene, noe som kveler
+              luftstrømmen og fører til full motorstans.
+            </li>
+            <li>
+              <strong className="text-foreground">3. Meteorologiske jetstrømmer:</strong> Et vedvarende blokkerende høytrykk
+              over Nord-Atlanteren styrte luftstrømmene i en uavbrutt korridor fra Island, over Nordsjøen, inn over Norge og
+              tvers over det sentraleuropeiske luftrommet.
+            </li>
+          </ul>
+        </div>
+
+        {/* VEI-TABELL (VOLCANIC EXPLOSIVITY INDEX) */}
+        <div className="pt-4 space-y-3">
+          <h3 className="font-display text-xl font-medium tracking-tight text-primary">
+            VEI: Vulkansk eksplosivitetsindeks (0 til 8)
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            For å kvantifisere styrken på vulkanutbrudd innførte Chris Newhall og Steve Self i 1982 den logaritmiske
+            <strong> Volcanic Explosivity Index (VEI)</strong>. Hvert trinn over VEI 1 representerer en tidobling i volumet av
+            utkastet tefra:
+          </p>
+
+          <div className="overflow-x-auto rounded-xl border border-border bg-card/60 p-4">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead>
+                <tr className="border-b border-border text-muted-foreground">
+                  <th className="pb-2 font-semibold">VEI</th>
+                  <th className="pb-2 font-semibold">Tefravolum</th>
+                  <th className="pb-2 font-semibold">Søylehøyde</th>
+                  <th className="pb-2 font-semibold">Klassifisering</th>
+                  <th className="pb-2 font-semibold">Frekvens globalt</th>
+                  <th className="pb-2 font-semibold">Kjente eksempler</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/50 text-muted-foreground">
+                <tr>
+                  <td className="py-2 font-bold text-emerald-400">0</td>
+                  <td>&lt; 10 000 m³</td>
+                  <td>&lt; 100 m</td>
+                  <td>Hawaiisk (effusiv)</td>
+                  <td>Konstant</td>
+                  <td>Kilauea, Fagradalsfjall (Island)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-emerald-400">1</td>
+                  <td>&gt; 10 000 m³</td>
+                  <td>0,1–1 km</td>
+                  <td>Hawaiisk / Strombolsk</td>
+                  <td>Daglig</td>
+                  <td>Stromboli (Italia)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-teal-400">2</td>
+                  <td>&gt; 1 mill. m³</td>
+                  <td>1–5 km</td>
+                  <td>Strombolsk / Vulkansk</td>
+                  <td>Ukentlig</td>
+                  <td>Galeras (Colombia)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-teal-400">3</td>
+                  <td>&gt; 10 mill. m³</td>
+                  <td>3–15 km</td>
+                  <td>Vulkansk / Sub-pliniansk</td>
+                  <td>Månedlig</td>
+                  <td>Nevado del Ruiz (1985)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-amber-400">4</td>
+                  <td>&gt; 0,1 km³</td>
+                  <td>10–25 km</td>
+                  <td>Sub-pliniansk / Pliniansk</td>
+                  <td>~1 per år</td>
+                  <td>Eyjafjallajökull (2010)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-orange-400">5</td>
+                  <td>&gt; 1 km³</td>
+                  <td>20–35 km</td>
+                  <td>Pliniansk</td>
+                  <td>~1 per 12 år</td>
+                  <td>Mount St. Helens (1980), Vesuv (79)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-rose-400">6</td>
+                  <td>&gt; 10 km³</td>
+                  <td>&gt; 30 km</td>
+                  <td>Ultra-pliniansk / Kaldera</td>
+                  <td>~1 per 100 år</td>
+                  <td>Pinatubo (1991), Krakatau (1883)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-rose-500">7</td>
+                  <td>&gt; 100 km³</td>
+                  <td>&gt; 35 km</td>
+                  <td>Super-kolossal / Kaldera</td>
+                  <td>~1 per 1000 år</td>
+                  <td>Tambora (1815), Santorini (~1600 f.Kr.)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold text-purple-400">8</td>
+                  <td>&gt; 1000 km³</td>
+                  <td>&gt; 45 km</td>
+                  <td>Mega-kolossal (Supervulkan)</td>
+                  <td>~1 per 50 000 år</td>
+                  <td>Toba (74 000 år siden), Yellowstone</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* VULKANOVERVÅKING OG TIDLIG VARSLING */}
+        <div className="pt-4 space-y-3">
+          <h3 className="font-display text-xl font-medium tracking-tight text-primary">
+            Vulkanovervåking og tidlig varsling (Early Warning Systems)
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            I motsetning til jordskjelv – som opptrer plutselig uten sikre forvarsler – gir vulkaner nesten alltid
+            tydelige fysiske og kjemiske signaler uker eller måneder før et utbrudd (Sigurdsson et al., 2015).
+            Moderne vulkanobservatorier overvåker fire uavhengige parametere:
+          </p>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-sky-400 text-sm">1. Seismisk tremor og jordskjelvsvermer</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Når magma bryter seg oppover gjennom skorpen, sprekker fjellet opp i tusenvis av små skjelv (vulkano-tektoniske
+                skjelv). Når magma og gasser strømmer turbulent gjennom sprekker, oppstår en kontinuerlig, lavfrekvent resonanslyd
+                kalt <strong>harmonisk tremor (1–5 Hz)</strong>. Tremor er det sikreste akustiske tegnet på magma i bevegelse.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-emerald-400 text-sm">2. GNSS, InSAR og bakkedeformasjon</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Når magmakammeret fylles, utvider det seg som en ballong (Mogi-modell). Fjellflankene buler utover og hever seg
+                med millimeter til titalls centimeter. Dette måles i sanntid med høypresisjons-GNSS på bakken, elektroniske tiltmetere
+                og satellitt-radarinterferometri (InSAR).
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-amber-400 text-sm">3. Gassfluks (SO₂ og CO₂ spektrometri)</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Oppstigende magma avgasser flyktige stoffer ved trykkfall. Optiske spektrometere (DOAS) og mobile Multi-GAS-instrumenter
+                måler tonnasjen av svoveldioksid (SO₂) og karbondioksid (CO₂). En brå økning i SO₂-fluks betyr at magmaen har nådd
+                overflatenære dyp (&lt; 2–3 km).
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-rose-400 text-sm">4. Termografi og satellittovervåking</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Infrarøde satellittkameraer (MODIS, Sentinel) og bakkebaserte varmekameraer oppdager termiske anomalier
+                (oppvarming av kraterbunner, sprekker og fumaroler) før synlig magma når dagslys.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-xs text-muted-foreground">
+            Dataene integreres i det internasjonale <strong>Aviation Colour Code-systemet</strong> (Grønn, Gul, Oransje, Rød)
+            som administreres av ICAO, og utløser formelle VONA-varsler (Volcano Observatory Notice for Aviation) som lar flyselskap
+            omdirigere flygninger før askeskyen treffer luftkorridorene.
+          </p>
+        </div>
       </section>
 
       {/* SEKSJON 5: VULKANSKE FARER OG KLIMAPÅVIRKNING */}
@@ -498,6 +731,25 @@ function VulkanerOgJordskjelvPage() {
         </p>
 
         <EarthquakeWavePhysicsDiagram />
+
+        <PhotoFigure
+          src="/images/geo-jordskjelv-bolger-3d.jpg"
+          alt="3D-snitt av forkastningsbrudd, hyposenter, episenter og utbredelse av P-, S-, Rayleigh- og Love-bølger"
+          heading="3D-seismologi: Fra forkastningsbrudd til overflatebølger"
+          caption="Når en forkastning brister, frigjøres elastisk spenningsenergi fra hyposenteret (fokus). Energien forplanter seg innover i jorden som romlige bølger (raske P-kompresjonsbølger og langsommere S-skjærbølger). Når bølgene treffer jordoverflaten ved episenteret, omdannes de til overflatebølger: Love-bølger (horisontal sideveis skjærbevegelse) og Rayleigh-bølger (rullende elliptisk bevegelse). Det er overflatebølgenes store amplitude som forårsaker de største strukturelle skadene på bygninger."
+          marks={[
+            { x: 38, y: 75, n: "1", text: "Hyposenter (fokus)", tone: "warm" },
+            { x: 55, y: 62, n: "2", text: "P-bølge (kompresjon)", tone: "cold" },
+            { x: 25, y: 55, n: "3", text: "S-bølge (skjær)", tone: "warm" },
+            { x: 42, y: 22, n: "4", text: "Episenter & overflatebølger", tone: "cold" },
+          ]}
+          points={[
+            { n: "1", label: "Hyposenter (fokus): Det eksakte bruddpunktet på den låste forkastningsflaten der spenningen overstiger bergartens skjærfasthet." },
+            { n: "2", label: "P-bølger (primære): Longitudinelle bølger med vekslende kompresjon og strekk; raskest (~6–8 km/s) og kan gå gjennom både fast stoff og væske." },
+            { n: "3", label: "S-bølger (sekundære): Transversale skjærbølger (~3,5–4,5 km/s); kan KUN forplante seg i fast stoff (stoppes momentant av jordens flytende ytre kjerne)." },
+            { n: "4", label: "Overflatebølger (Rayleigh & Love): Beveger seg langs jordoverflaten med størst amplitude og lavest frekvens; raserer bygninger og broer." },
+          ]}
+        />
 
         <h3 className="font-display text-xl font-medium tracking-tight text-primary">
           Bølgefysikk og elastisitetsmoduler
@@ -767,6 +1019,54 @@ function VulkanerOgJordskjelvPage() {
         </p>
 
         <h3 className="pt-2 font-display text-xl font-medium tracking-tight text-primary">
+          Tsunamifysikk: Bølgehastighet, oppstuing (shoaling) og Greens lov
+        </h3>
+        <p>
+          En <em>tsunami</em> er ikke en vanlig vindbølge, men en serie gravitasjonelle sjøbølger utløst av en plutselig,
+          storskala vertikal forskyvning av vannsøylen. Fordi bølgelengden ($\lambda$) typisk er mellom 100 og 300 kilometer,
+          oppfyller tsunamier kriteriet for <strong>grunntvannsbølger</strong> ($\lambda \gg d$) selv over de dypeste
+          havslettene på 4000 til 6000 meters dyp!
+        </p>
+
+        <PhotoFigure
+          src="/images/geo-tsunami-shoaling.jpg"
+          alt="Tsunami fra dyphavsforplantning i 800 km/t til kystoppstuing (shoaling) og tilbaketrekning"
+          heading="Tsunamifysikk: Fra dypvannsbølge til kystoppstuing (shoaling)"
+          caption="På 4000 meters dyp beveger tsunamien seg med jetflyfart (v = √(gd) ≈ 700–800 km/t) med en bølgehøyde på under én meter. Når bølgen nærmer seg land og dypet faller, bremser bunnfriksjonen bølgefronten. Energibevaring og Greens lov (H₂ = H₁ · (d₁/d₂)¼) tvinger bølgelengden til å komprimeres og vannet opp i en livsfarlig flodbølge. Like før bølgen treffer kysten, trekker havet seg ofte hundrevis av meter tilbake (drawback)."
+          marks={[
+            { x: 15, y: 78, n: "1", text: "Vertikalt forkastningssprang", tone: "warm" },
+            { x: 38, y: 45, n: "2", text: "Dypvannsbølge (800 km/t)", tone: "cold" },
+            { x: 68, y: 55, n: "3", text: "Tilbaketrekning (drawback)", tone: "warm" },
+            { x: 84, y: 38, n: "4", text: "Shoaling & oppskylling", tone: "warm" },
+          ]}
+          points={[
+            { n: "1", label: "Havbunnsforskyvning: Megathrust-jordskjelv eller undersjøisk skred løfter momentant kubikkilometere med vannmasser." },
+            { n: "2", label: "Dypvannsforplantning: Fart v = √(g·d) ≈ 200 m/s (720 km/t). Bølgen passerer umerkelig under skip på åpent hav." },
+            { n: "3", label: "Tilbaketrekning (drawback): Når bølgedalen ankommer først, suges vannet ut fra strendene og tørrlegger havbunnen minutter før bølgetoppen slår inn." },
+            { n: "4", label: "Shoaling: Fronten bremses mens hekken raser på med høyere fart; bølgen komprimeres horisontalt og tvinges opp i en massiv vannvegg." },
+          ]}
+        />
+
+        <div className="space-y-2 text-sm text-muted-foreground pt-2">
+          <p>
+            To matematiske prinsipper styrer tsunamiens dynamikk:
+          </p>
+          <ul className="list-disc pl-6 space-y-1.5">
+            <li>
+              <strong className="text-foreground">Fart i dypet (v = √(g · d)):</strong> På 4000 meters dyp
+              er farten v = √(9,81 m/s² × 4000 m) ≈ 198 m/s ≈ 713 km/t.
+              Tsunamien krysser hele Atlanterhavet på under 7 timer og Stillehavet på under 15 timer.
+            </li>
+            <li>
+              <strong className="text-foreground">Greens lov og Shoaling (H₂ = H₁ · (d₁ / d₂)¼):</strong> Når
+              dypet avtar fra 4000 meter til 10 meter nær land, synker hastigheten fra 713 km/t til 36 km/t. Fordi energifluksen
+              må bevares, komprimeres bølgelengden, og bølgehøyden ganges med (4000 / 10)^0,25 ≈ 4,5
+              (eller over 10–20 ganger i trange viker og V-formede fjorder).
+            </li>
+          </ul>
+        </div>
+
+        <h3 className="pt-2 font-display text-xl font-medium tracking-tight text-primary">
           Tsunamirisiko i Norge: Fjellskred fremfor subduksjon
         </h3>
         <p>
@@ -790,7 +1090,56 @@ function VulkanerOgJordskjelvPage() {
             tsunami med opptil 10–12 meters oppskyllingshøyde langs norskekysten og over 20 meter på Shetland.
           </li>
         </ul>
-        <p className="text-sm text-muted-foreground">
+
+        {/* JORDSKJELVSIKRING OG KONSTRUKSJONSTEKNIKK */}
+        <div className="pt-4 space-y-3">
+          <h3 className="font-display text-xl font-medium tracking-tight text-primary">
+            Jordskjelvsikring og konstruksjonsteknikk: Eurokode 8 og baseisolering
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Det er et velkjent geofaglig ordtak at <em>«jordskjelv dreper ikke mennesker — det er kollapsende bygninger som gjør det»</em>.
+            Moderne seismisk ingeniørkunst har utviklet metoder for å beskytte samfunnet:
+          </p>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-sky-400 text-sm">Eurokode 8 (NS-EN 1998-1)</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Den europeiske standarden for prosjektering av konstruksjoner for seismisk påvirkning, lovpålagt også i Norge.
+                Standarden krever at samfunnskritisk infrastruktur (sykehus, demninger, skoler, broer) dimensjoneres for å
+                motstå forventede spissakselerasjoner i grunnen (PGA) uten total kollaps.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-emerald-400 text-sm">Baseisolering (Seismiske dempere)</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                I stedet for å bolte bygget stivt til fjellet, plasseres fundamentet på fleksible bly-gummi-lagre
+                (elastomeric bearings) eller friksjonspendellagre. Når bakken ryster horisontalt frem og tilbake, glir
+                fundamentet på demperne mens selve bygget forblir tilnærmet i ro.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-amber-400 text-sm">Svingningsdempere (Tuned Mass Dampers)</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                I skyskrapere som Taipei 101 henger en 660 tonns tung stålkule i toppen av tårnet. Under jordskjelv svinger
+                kulen i motfase med bygningens resonansfrekvens og absorberer opptil 40 % av svingningsenergien.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <h4 className="font-semibold text-rose-400 text-sm">Jordlikvifaksjon (Jordflyt)</h4>
+              <p className="mt-1 text-xs text-muted-foreground">
+                I vannmettet, løst sand- og siltjord fører gjentatt seismisk risting til at poretrykket i vannet stiger dramatisk.
+                Vannet presser sandkornene fra hverandre, friksjonen forsvinner, og fast grunn forvandles momentant til en
+                flytende kvikksandsuppe. Tunge betongbygg synker eller velter overende (som under Niigata 1964 og Lurøyskjelvet 1819).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-sm text-muted-foreground pt-2">
           Les mer om skredmekanismer, stabilitetsberegninger og overvåking i vårt dedikerte{" "}
           <Link to="/geofag-1/skred" className="text-primary font-semibold underline-offset-2 hover:underline">
             kapittel om skred og massesukksessjon
@@ -806,8 +1155,8 @@ function VulkanerOgJordskjelvPage() {
           <div className="mt-2 text-xs text-muted-foreground space-y-1 border-t border-border/50 pt-2">
             <p><strong>Kjerneelementer som dekkes i dette kapittelet:</strong></p>
             <p>• <em>Jordens oppbygning og indre prosesser:</em> Magmakjemi, platebevegelser og seismisk bølgeforplantning.</p>
-            <p>• <em>Geofarer og samfunnssikkerhet:</em> Vulkanske farer (PDC, lahar, aske), jordskjelvrisiko, Eurokode 8 og tsunamier i Norge.</p>
-            <p>• <em>Naturvitenskapelige metoder:</em> Seismogramanalyse, triangulering av episenter og bruk av seismiske skyggesoner til å avbilde jordens indre lag.</p>
+            <p>• <em>Geofarer og samfunnssikkerhet:</em> Vulkanske farer (PDC, lahar, aske, VEI), jordskjelvrisiko, Eurokode 8, tsunamier og vulkanovervåking.</p>
+            <p>• <em>Naturvitenskapelige metoder:</em> Seismogramanalyse, triangulering av episenter, spektrometri (DOAS) og bruk av seismiske skyggesoner til å avbilde jordens indre lag.</p>
           </div>
         </Callout>
 
@@ -838,6 +1187,18 @@ function VulkanerOgJordskjelvPage() {
             def="vulkansk slamstrøm dannet når fersk tefra blandes med smeltevann fra isbreer eller kraftig nedbør; flyter som våt betong"
           />
           <Term
+            name="freatomagmatisme"
+            def="eksplosivt utbrudd forårsaket av direkte kontakt mellom stigende magma og vann eller is (f.eks. Eyjafjallajökull)"
+          />
+          <Term
+            name="VEI"
+            def="Volcanic Explosivity Index (0–8); logaritmisk skala for utbruddsstyrke basert på utkastet tefravolum og søylehøyde"
+          />
+          <Term
+            name="harmonisk tremor"
+            def="kontinuerlig lavfrekvent seismisk resonans (1–5 Hz) skapt av turbulent strømning av magma og gass i sprekker"
+          />
+          <Term
             name="elastisk tilbakefjæring"
             def="Reids teori for jordskjelv der bergarter bøyes elastisk langs en låst forkastning inntil friksjonslåsen brister og fjellet spretter tilbake"
           />
@@ -856,6 +1217,22 @@ function VulkanerOgJordskjelvPage() {
           <Term
             name="S-bølge"
             def="sekundær skjærbølge (tverrbølge); krever skjærstivhet (μ > 0) og kan derfor IKKE forplante seg gjennom væsker"
+          />
+          <Term
+            name="shoaling"
+            def="bølgeoppstuing: når en tsunami nærmer seg kysten, synker farten, bølgelengden krymper, og høyden vokser dramatisk"
+          />
+          <Term
+            name="Eurokode 8"
+            def="europeisk byggestandard (NS-EN 1998-1) med krav til seismisk dimensjonering og jordskjelvsikring av byggverk"
+          />
+          <Term
+            name="baseisolering"
+            def="seismisk sikringsmetode der byggverk frikoples fra bakkerystelser ved hjelp av fleksible gummilagre under fundamentet"
+          />
+          <Term
+            name="jordlikvifaksjon"
+            def="fenomen der vannmettet sand/silt mister all skjærstyrke og oppfører seg som flytende væske under seismisk rystelse"
           />
           <Term
             name="momentmagnitude (Mw)"
@@ -890,6 +1267,19 @@ function VulkanerOgJordskjelvPage() {
               },
               {
                 prompt:
+                  "Hvorfor forårsaket Eyjafjallajökull-utbruddet i 2010 en så omfattende flystans i hele Europa, til tross for at utbruddet bare var VEI 4?",
+                options: [
+                  "Fordi utbruddet slynget ut radioaktiv lava som ødela satellittnavigasjonen.",
+                  "Fordi magmaen eksploderte i kontakt med smeltevann fra isbreen (freatomagmatisme) og dannet ekstremt finkornet silikatglassaske som smelter inne i varme jetmotorer.",
+                  "Fordi røyken fra vulkanen reagerte med ozonlaget og dannet kvelende giftgasser.",
+                  "Fordi flyselskapenes radarer ble blendet av lyset fra lavafontenene.",
+                ],
+                answer: 1,
+                explain:
+                  "Riktig! Freatomagmatisme: Magmaens møte med isbreen knuste smelten i ørsmå, mikroskopiske glasskår. Disse partiklene svevde med jetstrømmene mot Europa, hvor de utgjorde en akutt fare for fly fordi de smelter ved 1100 °C inne i jetmotorenes forbrenningskamre og forårsaker motorstans.",
+              },
+              {
+                prompt:
                   "Hva var Richard Dixon Oldhams (1906) avgjørende bevis for at jordens ytre kjerne er flytende?",
                 options: [
                   "P-bølger reflekteres ikke fra jordens overflate.",
@@ -913,6 +1303,32 @@ function VulkanerOgJordskjelvPage() {
                 answer: 3,
                 explain:
                   "Riktig! Magnitudeskalaen er logaritmisk med grunntall 10^(1,5) for energi. Én enhet opp tilsvarer ca. 31,6 ganger mer frigjort seismisk energi. To enheter opp tilsvarer 10^(1,5 × 2) = 10³ = 1000 ganger mer energi!",
+              },
+              {
+                prompt:
+                  "Hva skjer fysisk med en tsunami når den forplanter seg fra dyphavet (4000 m) og inn mot kysten (10 m dyp)?",
+                options: [
+                  "Bølgens hastighet øker kraftig, mens bølgehøyden avtar til null.",
+                  "Bølgehastigheten synker dramatisk fra ~700 km/t til ~36 km/t, bølgelengden komprimeres, og bølgehøyden presses opp etter Greens lov (shoaling).",
+                  "Bølgen forvandles fra en tverrbølge til en lengdebølge.",
+                  "Ingenting endrer seg; tsunamier har konstant hastighet og høyde overalt.",
+                ],
+                answer: 1,
+                explain:
+                  "Riktig! Fordi v = √(g·d), fører det grunnere vannet til at bølgefronten bremses kraftig opp. For at den totale energifluksen skal bevares, må bølgelengden krympe og vannsøylen heve seg oppover i en massiv vannvegg (shoaling).",
+              },
+              {
+                prompt:
+                  "Hvordan fungerer seismisk baseisolering ved jordskjelvsikring av bygninger (Eurokode 8)?",
+                options: [
+                  "Bygningen boltes fast til fjellet med gigantiske stålstag for å hindre all bevegelse.",
+                  "Bygningen monteres på fleksible elastomere gummilagre eller glidependler, slik at bakken kan ryste under bygget mens selve strukturen forblir tilnærmet i ro.",
+                  "Bygningen kles med blyplater for å stoppe seismisk stråling.",
+                  "Fundamentet fylles med vann for å absorbere P-bølger.",
+                ],
+                answer: 1,
+                explain:
+                  "Riktig! Baseisolering frikopler bygningens overbygning fra bakkeakselerasjonene ved hjelp av fleksible bly-gummi-lagre. Dette reduserer horisontale skjærkrefter på bygningskroppen med opptil 70–80 %.",
               },
               {
                 prompt:
