@@ -28,6 +28,10 @@ export const BANNER_BY_PATH: Record<string, { src: string; alt: string }> = {
     src: "/images/fig-hoytrykk-fjell.jpg",
     alt: "Norsk fjell under klarvær — felt i luft og is, ikke bergartssnitt",
   },
+  "/geofag-1/feltarbeid": {
+    src: "/images/fig-forvitring.jpg",
+    alt: "Forvitret blotning — felt i geosfæren, ikke samme foto som bergartssiden",
+  },
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {
