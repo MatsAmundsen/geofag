@@ -53,6 +53,18 @@ export const KILDER_G2 = {
   ],
   lokale: [
     {
+      prefix: "Bjerknes, J., & Solberg, H. (1922). ",
+      italic: "Life cycle of cyclones and the polar front theory of atmospheric circulation",
+      suffix: ". Geofysiske Publikasjoner, 3(1), 1–18.",
+      href: "https://doi.org/10.1002/qj.49704920608",
+    },
+    {
+      prefix: "Sivle, A. (2009, 31. august). ",
+      italic: "Værkart og fronter",
+      suffix: ". Yr.",
+      href: "https://www.yr.no/artikkel/vaerkart-og-fronter-1.6750800",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
       italic: "The sea breeze",
       suffix: ".",
@@ -81,6 +93,12 @@ export const KILDER_G2 = {
       italic: "Regnskygge",
       suffix: ".",
       href: "https://snl.no/regnskygge",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (2020). ",
+      italic: "Læreplan i geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03",
     },
   ],
   kryosfare: [
