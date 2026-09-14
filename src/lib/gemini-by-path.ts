@@ -2,6 +2,8 @@ import { GEMINI } from "@/lib/gemini-slots";
 
 export type GeminiSlot = (typeof GEMINI)[keyof typeof GEMINI];
 
+export type NavLink = { to: string; label: string };
+
 /** Banner som skiller sider som ellers lånte samme foto. */
 export const BANNER_BY_PATH: Record<string, { src: string; alt: string }> = {
   "/tema/vaerkart": {
@@ -34,6 +36,36 @@ export const BANNER_BY_PATH: Record<string, { src: string; alt: string }> = {
   },
 };
 
+/** Overstyr prev/next der sideteksten henger etter GF2_THEMES. */
+export const NAV_BY_PATH: Record<string, { prev?: NavLink; next?: NavLink }> = {
+  "/tema/vindsystemet": {
+    next: { to: "/tema/vaerkart", label: "Neste: Værkart" },
+  },
+  "/tema/vaerkart": {
+    next: { to: "/tema/lokale-vaersystemer", label: "Neste: Lokale værsystemer" },
+  },
+  "/tema/jetstrommer": {
+    prev: { to: "/tema/lokale-vaersystemer", label: "Forrige: Lokale værsystemer" },
+  },
+  "/tema/numeriske-modeller": {
+    prev: { to: "/tema/kryosfaeren", label: "Forrige: Kryosfæren" },
+  },
+};
+
+/** Eierskap øverst på sidene som ellers ville krevd 50 kB-redigering. */
+export const EIERSKAP_BY_PATH: Record<string, string> = {
+  "/tema/klima/enso":
+    "Oversikten eier stråling, pådriv og tilbakekobling. Denne siden eier Walker-cellen, El Niño og La Niña. IOD, NAO og AMOC eier de andre svingningene.",
+  "/tema/klima/iod":
+    "ENSO eier Stillehavet. Denne siden eier temperaturgradienten i Det indiske hav. Strålingsbudsjettet ligger i oversikt.",
+  "/tema/klima/nao":
+    "Denne siden eier trykkvippen mellom Asorene og Island — og dermed norsk vintervær. AMOC eier det trege havbeltet. Oversikten eier pådriv.",
+  "/tema/paleoklima":
+    "Denne siden eier arkivene: proxy, iskjerne og brå hopp. Banen som setter innstrålingen på 65 °N, eier neste kapittel. Kryosfæren eier isen som jobber i år.",
+  "/tema/milankovitch":
+    "Denne siden eier hvorfor isen kommer: Milankovitch, albedo og CO₂. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
+};
+
 const SLOTS: Record<string, GeminiSlot[]> = {
   "/tema/vaerkart": [GEMINI.vaerkartSynoptisk, GEMINI.vaerkart24t],
   "/tema/lokale-vaersystemer": [GEMINI.polarfrontStadier],
@@ -46,12 +78,22 @@ const SLOTS: Record<string, GeminiSlot[]> = {
   "/geofag-1/feltarbeid": [GEMINI.feltbokUtfylt],
 };
 
+function norm(pathname: string) {
+  return pathname.replace(/\/$/, "") || "/";
+}
+
 export function figuresForPath(pathname: string): GeminiSlot[] {
-  const path = pathname.replace(/\/$/, "") || "/";
-  return SLOTS[path] ?? [];
+  return SLOTS[norm(pathname)] ?? [];
 }
 
 export function bannerForPath(pathname: string): { src: string; alt: string } | undefined {
-  const path = pathname.replace(/\/$/, "") || "/";
-  return BANNER_BY_PATH[path];
+  return BANNER_BY_PATH[norm(pathname)];
+}
+
+export function navForTopicPath(pathname: string): { prev?: NavLink; next?: NavLink } | undefined {
+  return NAV_BY_PATH[norm(pathname)];
+}
+
+export function eierskapForPath(pathname: string): string | undefined {
+  return EIERSKAP_BY_PATH[norm(pathname)];
 }

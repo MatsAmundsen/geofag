@@ -1,11 +1,17 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Callout } from "@/components/callout";
 import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { bannerForPath, figuresForPath } from "@/lib/gemini-by-path";
+import {
+  bannerForPath,
+  eierskapForPath,
+  figuresForPath,
+  navForTopicPath,
+} from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
 
 export function TopicLayout({
@@ -36,6 +42,10 @@ export function TopicLayout({
   const slots = figuresForPath(pathname);
   const src = override?.src ?? banner;
   const alt = override?.alt ?? bannerAlt;
+  const navOver = navForTopicPath(pathname);
+  const prevLink = navOver?.prev ?? prev;
+  const nextLink = navOver?.next ?? next;
+  const eierskap = eierskapForPath(pathname);
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -65,7 +75,14 @@ export function TopicLayout({
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-          <div className="space-y-5 text-base leading-relaxed text-foreground/95">{children}</div>
+          <div className="space-y-5 text-base leading-relaxed text-foreground/95">
+            {eierskap ? (
+              <Callout title="Eierskap">
+                <p>{eierskap}</p>
+              </Callout>
+            ) : null}
+            {children}
+          </div>
 
           {slots.length > 0 ? (
             <section className="mt-12" aria-label="Læringsfigurer">
@@ -82,25 +99,25 @@ export function TopicLayout({
           {kilder ? <Kildeliste kilder={kilder} /> : null}
 
           <nav className="mt-14 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
-            {prev ? (
+            {prevLink ? (
               <Link
-                to={prev.to}
-                params={prev.params}
+                to={prevLink.to}
+                params={"params" in (prevLink as object) ? (prevLink as { params?: Record<string, string> }).params : undefined}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="size-4" />
-                {prev.label}
+                {prevLink.label}
               </Link>
             ) : (
               <span />
             )}
-            {next ? (
+            {nextLink ? (
               <Link
-                to={next.to}
-                params={next.params}
+                to={nextLink.to}
+                params={"params" in (nextLink as object) ? (nextLink as { params?: Record<string, string> }).params : undefined}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground sm:ml-auto"
               >
-                {next.label}
+                {nextLink.label}
                 <ArrowRight className="size-4" />
               </Link>
             ) : null}
