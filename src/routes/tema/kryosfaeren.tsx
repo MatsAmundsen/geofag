@@ -31,12 +31,18 @@ function KryosfaerenPage() {
       kicker="Geofag 2 · Kryosfæren"
       title="Kryosfæren"
       lead="Is og snø er ikke bare istid. Kryosfæren er breer, permafrost, havis og snødekke — nå. Hvordan vi leser de lange syklusene, ligger i paleoklima. Hvorfor istidene kommer, ligger i istider. Denne siden er isen som jobber i år."
-      banner="/images/tema-klima.jpg"
-      bannerAlt="Grønlands innlandsis mot mørkt polarhav"
-      prev={{ to: "/tema/klima", label: "Forrige: Klima" }}
+      banner="/images/fig-albedo.jpg"
+      bannerAlt="Is og snø mot mørkt hav — albedoen som styrer massebalansen i år"
+      prev={{ to: "/tema/klima/amoc", label: "Forrige: AMOC" }}
       next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
       kilder={KILDER_G2.kryosfare}
     >
+      <Callout title="Eierskap">
+        <p>
+          Massebalanse, permafrost, havis og snøskred hører her. Istidene og proxyene ligger i
+          paleoklima og istider. Klimahuben er kartet, ikke isen.
+        </p>
+      </Callout>
       <Callout title="Kompetansemål">
         <p>
           Gjøre rede for vekselvirkninger mellom jordsystemene og hvordan de kan påvirke havet,
