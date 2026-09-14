@@ -662,10 +662,38 @@ export const KILDER = {
   nao: [
     {
       prefix:
+        "Hurrell, J. W. (1995). Decadal trends in the North Atlantic Oscillation: regional temperatures and precipitation. ",
+      italic: "Science, 269",
+      suffix: "(5224), 676–679.",
+      href: "https://doi.org/10.1126/science.269.5224.676",
+    },
+    {
+      prefix:
         "Hurrell, J. W., Kushnir, Y., Ottersen, G., & Visbeck, M. (2003). An overview of the North Atlantic Oscillation. ",
       italic: "Geophysical Monograph-American Geophysical Union, 134",
       suffix: ", 1–36.",
       href: "https://doi.org/10.1029/134GM01",
+    },
+    {
+      prefix:
+        "Baldwin, M. P., & Dunkerton, T. J. (2001). Stratospheric harbingers of anomalous weather regimes. ",
+      italic: "Science, 294",
+      suffix: "(5542), 581–584.",
+      href: "https://doi.org/10.1126/science.1063315",
+    },
+    {
+      prefix:
+        "Nesje, A., Lie, Ø., & Dahl, S. O. (2000). Is the North Atlantic Oscillation reflected in Scandinavian glacier mass balance records? ",
+      italic: "Journal of Quaternary Science, 15",
+      suffix: "(6), 587–601.",
+      href: "https://doi.org/10.1002/1099-1417(200009)15:6<587::AID-JQS559>3.0.CO;2-3",
+    },
+    {
+      prefix:
+        "Cassou, C. (2008). Intraseasonal interaction between the Madden–Julian Oscillation and the North Atlantic Oscillation. ",
+      italic: "Nature, 455",
+      suffix: "(7212), 523–527.",
+      href: "https://doi.org/10.1038/nature07286",
     },
     {
       prefix: "Meteorologisk institutt. (u.å.). ",

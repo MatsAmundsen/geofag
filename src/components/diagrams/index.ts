@@ -21,7 +21,14 @@ export {
   ZonalMeridionalDiagram,
   NaoDiagram,
 } from "./coriolis";
-export { NaoRossbyDiagram, NaoEnsoTeleconnectionDiagram, NaoIndexStationsDiagram } from "./nao";
+export {
+  NaoInteractiveSimulator,
+  NaoSswBreakdownDiagram,
+  NaoBlockeringDiagram,
+  NaoRossbyDiagram,
+  NaoEnsoTeleconnectionDiagram,
+  NaoIndexStationsDiagram,
+} from "./nao";
 export {
   FjellskredBolgeDiagram,
   KvikkleireDiagram,
