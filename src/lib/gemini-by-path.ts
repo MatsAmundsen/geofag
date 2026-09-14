@@ -64,6 +64,10 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
     "Denne siden eier arkivene: proxy, iskjerne og brå hopp. Banen som setter innstrålingen på 65 °N, eier neste kapittel. Kryosfæren eier isen som jobber i år.",
   "/tema/milankovitch":
     "Denne siden eier hvorfor isen kommer: Milankovitch, albedo og CO₂. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
+  "/geofag-1/platetektonikk":
+    "Denne siden eier platene, drivkreftene og hvor mantelen smelter. Vulkaner og jordskjelv eier utbruddsstil, bølger og magnitude. Skred eier Åknes og Storegga.",
+  "/geofag-1/vulkaner-og-jordskjelv":
+    "Platetektonikk eier platene og smeltemekanismene. Denne siden eier magmaens viskositet, utbrudd, seismiske bølger og norske intraplate-skjelv. Norske flodbølger peker videre til skred.",
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {
