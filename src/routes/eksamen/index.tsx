@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Callout } from "@/components/callout";
+import { MaalKart } from "@/components/exam/maal-kart";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -183,6 +184,8 @@ function EksamenIndex() {
               vi den. De erstatter ikke den offisielle sensorveiledningen.
             </p>
           </Callout>
+
+          <MaalKart />
 
           <section id="sett" className="mt-14 scroll-mt-24">
             <h2 className="font-display text-3xl font-medium tracking-tight">
