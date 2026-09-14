@@ -592,6 +592,13 @@ export const KILDER = {
       suffix: "(12), 2771–2777.",
       href: "https://doi.org/10.1175/1520-0477(1997)078<2771:TDOENO>2.0.CO;2",
     },
+    {
+      prefix:
+        "Jin, F.-F. (1997). An equatorial ocean recharge paradigm for ENSO. Part I: Conceptual model. ",
+      italic: "Journal of Climate, 10",
+      suffix: "(8), 1823–1849.",
+      href: "https://doi.org/10.1175/1520-0442(1997)010<1823:AEORPF>2.0.CO;2",
+    },
   ],
   iod: [
     {

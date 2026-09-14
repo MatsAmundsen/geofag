@@ -59,7 +59,7 @@ export {
   IodWalkerShiftDiagram,
   IodJetMeetingDiagram,
 } from "./iod";
-export { EnsoComparisonDiagram } from "./enso";
+export { BjerknesLoopDiagram, EnsoComparisonDiagram } from "./enso";
 export {
   BoundaryOverviewDiagram,
   CollisionDiagram,

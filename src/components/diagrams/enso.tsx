@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FigureFrame } from "@/components/figure-frame";
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
 export function EnsoComparisonDiagram() {
@@ -62,7 +63,7 @@ export function EnsoComparisonDiagram() {
           phase === "neutral"
             ? "Stabile passatvinder blåser mot vest og stabler opp varmt overflatevann ved Indonesia (Warm Pool). Her stiger fuktig luft og danner kraftig nedbør. Utenfor Peru trekkes kaldt, næringsrikt dypvann opp (oppvelling). Termoklinen heller bratt opp mot øst."
             : phase === "elnino"
-            ? "Passatvindene svekkes kraftig eller snur til vestlige vinder. Det varme overflatevannet skvulper østover mot Sør-Amerika. Termoklinen flater ut og trykkes ned i øst, noe som stanser tilførselen av kaldt næringsvann ved Peru. Konveksjon og regn forflytter seg til det sentrale og østlige Stillehavet, mens Indonesia og Australia rammes av alvorlig tørke."
+            ? "Passatvindene svekkes kraftig eller snur til vestlige vinder. Det varme overflatevannet skvulper østover mot Sør-Amerika. Termoklinen flater ut og trykkes ned i øst. Oppvelling pågår, men henter lunkent vann ovenfor den dypere termoklinen. Konveksjon og regn forflytter seg til det sentrale og østlige Stillehavet, mens Indonesia og Australia rammes av alvorlig tørke."
             : "Passatvindene blåser uvanlig sterkt mot vest. Varmtvannsbassenget presses ekstra langt vest mot Asia/Australia med flom og sykloner som følge. I øst blir oppvellingen usedvanlig kraftig, og havoverflaten blir 1–3 °C kaldere enn normalt."
         }
         viewBox="0 0 900 480"
@@ -189,7 +190,7 @@ export function EnsoComparisonDiagram() {
                 />
                 <line x1="130" y1="320" x2="770" y2="320" stroke="#fb923c" strokeWidth="3.5" />
                 <L x="450" y="340" fill="#fb923c" size={14} weight={800} anchor="middle">
-                  Termoklinen flater ut (synker i øst) — ingen oppvelling!
+                  Termoklinen flater ut (synker i øst)
                 </L>
 
                 {/* Varmt vann dekker hele overflaten */}
@@ -286,5 +287,49 @@ export function EnsoComparisonDiagram() {
         )}
       </Diagram>
     </div>
+  );
+}
+
+export function BjerknesLoopDiagram() {
+  return (
+    <FigureFrame
+      heading="Bjerknes-løkka: ingen av dem er «først» når El Niño først er i gang"
+      caption="Positiv tilbakekobling. Svakere passat flatter termoklinen. Varmere øst svekker Walker og dermed passaten enda mer. Løkka forsterker. Den forklarer ikke alene hva som tente den."
+    >
+      <div className="grid gap-3 sm:grid-cols-2">
+        {[
+          {
+            n: "1",
+            t: "Passaten svekkes",
+            d: "Mindre stabling mot Indonesia. Vinden holder ikke lenger skråningen mot tyngdekraften.",
+          },
+          {
+            n: "2",
+            t: "Termoklinen synker i øst",
+            d: "En ekvatorial Kelvin-bølge bruker et par måneder vest → øst. Det varme laget blir tykkere utenfor Peru.",
+          },
+          {
+            n: "3",
+            t: "Øst blir varmere",
+            d: "Oppvelling fortsetter, men henter lunkent vann ovenfor den dypere termoklinen. SST-gradienten vest–øst minkes.",
+          },
+          {
+            n: "4",
+            t: "Walker svekkes",
+            d: "Konveksjonen flytter mot midten av Stillehavet. Passaten slakker mer. Tilbake til 1.",
+          },
+        ].map((b) => (
+          <div key={b.n} className="rounded-lg border border-border bg-background px-4 py-4">
+            <p className="text-sm font-medium text-primary">
+              {b.n} · {b.t}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 text-center text-sm text-muted-foreground">
+        1 → 2 → 3 → 4 → 1. Derfor holder verken «vinden først» eller «termoklinen først» som regel.
+      </p>
+    </FigureFrame>
   );
 }
