@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Callout } from "@/components/callout";
 import { CollapsibleSection } from "@/components/collapsible-section";
-import { EnsoComparisonDiagram } from "@/components/diagrams";
+import { BjerknesLoopDiagram, EnsoComparisonDiagram } from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -304,7 +304,8 @@ function EnsoPage() {
       <p>
         ENSO har tre tilstander — nøytral, El Niño og La Niña — som kan skilles
         fra hverandre ved å se på havtemperaturene i det sentrale og østlige
-        tropiske Stillehavet.
+        tropiske Stillehavet. Passaten og termoklinen jager hverandre. Ingen av
+        dem er startknappen alene.
       </p>
       <ul className="list-disc space-y-2 pl-6">
         <li>
@@ -314,8 +315,8 @@ function EnsoPage() {
         </li>
         <li>
           <strong>El Niño (varm fase):</strong> Passatvindene svekkes eller
-          snur. Varmt overflatevann flyter østover mot Sør-Amerika. Oppvellingen
-          utenfor Peru kollapser.
+          snur. Varmt overflatevann flyter østover mot Sør-Amerika. Termoklinen
+          synker i øst, så oppvellingen henter lunkent vann.
         </li>
         <li>
           <strong>La Niña (kald fase):</strong> Passatvindene er unormalt
@@ -406,6 +407,8 @@ function EnsoPage() {
               Ecuador — en prosess som kalles <strong>oppvelling</strong> (
               <em>upwelling</em>). Det kalde vannet gir stabilt høytrykk og lite
               nedbør langs kysten, men mater verdens rikeste fiskerier av ansjos.
+              Det virker fordi termoklinen i øst står grunt: bunnen av det varme
+              laget er så nær overflaten at oppvellingen treffer kaldt vann.
             </p>
           </div>
         </div>
@@ -473,14 +476,65 @@ function EnsoPage() {
       {/* ── Knapp 2: El Niño ────────────────────────────────────────── */}
       <CollapsibleSection
         title="2. El Niño (Varm fase — Når systemet snur)"
-        subtitle="Svake passater · Bjerknes-tilbakekobling · Kelvin-bølger · Oppvelling kollapser · Flom i Peru, tørke i vest"
+        subtitle="Bjerknes-løkka · Kelvin-bølger · Termoklin synker i øst · Flom i Peru, tørke i vest"
         badge="Varm fase"
         badgeVariant="amber"
       >
         <p>
-          Med ujevne mellomrom begynner passatvindene å svekkes (Trenberth,
-          1997). Dette utløser en kjede av forandringer over hele Stillehavet.
+          Termoklinen er bunnen av det varme laget. Passaten holder skråningen
+          mot tyngdekraften: dyp i vest, grunn i øst. Når termoklinen synker i
+          øst under El Niño, er det fordi den skråningen ikke lenger holdes —
+          og fordi en Kelvin-bølge har trykket det varme laget ned der.
         </p>
+        <p>
+          Det står ofte at passatene svekkes, og at termoklinen derfor endres.
+          Da er det naturlig å spørre: må ikke termoklinen endres <em>først</em>,
+          ellers hvorfor skulle passaten slakke?
+        </p>
+        <p>
+          Nei. De to er låst i samme løkke. Ingen av dem er «først» når El Niño
+          først er i gang (Bjerknes, 1969). Utløseren kan sitte i atmosfæren.
+          Havet kan være oppladet på forhånd. Det er to ulike «først».
+        </p>
+
+        <BjerknesLoopDiagram />
+
+        <div>
+          <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+            Hvorfor termoklinen endres
+          </h4>
+          <p className="mt-1 text-sm sm:text-base">
+            Vindstresset holder varmt vann stablet i vest. Tyngdekraften vil
+            flate ut bunken. Slipper passaten taket, går likevekten i oppløsning.
+            Langs ekvator forplanter det seg som en <strong>Kelvin-bølge</strong>:
+            en indre bølge i sjiktningen, 2–3 m/s østover, to–tre måneder over
+            bassenget. Der bølgen kommer, synker termoklinen. Oppvelling
+            fortsetter, men henter nå lunkent vann ovenfor det dypere skillet —
+            ikke kaldt næringsvann fra under det. SST stiger utenfor Peru uten
+            at «vinden suger vann opp» på en ny måte.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-display text-lg font-medium tracking-tight text-primary">
+            To ulike «først»
+          </h4>
+          <p className="mt-1 text-sm sm:text-base">
+            <strong>Atmosfæren kan gå først.</strong> Et vestavindsutbrudd —
+            ofte knyttet til Madden–Julian-oscillasjonen — svekker passaten i
+            uker uten at termoklinen har endret seg ennå. Så sender den
+            Kelvin-bølger som endrer termoklinen i øst.
+          </p>
+          <p className="mt-2 text-sm sm:text-base">
+            <strong>Havet kan være oppladet først.</strong> Etter La Niña bygges
+            varmelageret i ekvatorialt Stillehav opp igjen (Jin, 1997).
+            Termoklinen er da dypere i snitt. Systemet er ustabilt: et lite
+            vindavvik vokser. Her har termoklinen (varmelageret) endret seg som{" "}
+            <em>forutsetning</em>, ikke som selve utløseren. Mange
+            vestavindsutbrudd dør ut uten å bli El Niño nettopp fordi havet
+            ikke er oppladet.
+          </p>
+        </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-border/70 bg-card/70 p-4">
@@ -488,9 +542,9 @@ function EnsoPage() {
               Bjerknes-tilbakekoblingen
             </h4>
             <p className="mt-1 text-xs text-foreground/85 sm:text-sm">
-              Svakere passater → varmt vann flyter østover → det østlige
-              Stillehavet varmes opp → enda svakere passater. Denne positive
-              tilbakekoblingen gjør El Niño til en rask og dramatisk omveltning.
+              Svakere passater → termoklin synker i øst → SST stiger i øst →
+              Walker svekkes → enda svakere passater. Positiv tilbakekobling:
+              den forsterker, den starter ikke.
             </p>
           </div>
           <div className="rounded-lg border border-border/70 bg-card/70 p-4">
@@ -498,9 +552,9 @@ function EnsoPage() {
               Ekvatoriale Kelvin-bølger
             </h4>
             <p className="mt-1 text-xs text-foreground/85 sm:text-sm">
-              Det oppdemmede varmtvannet frigjøres og brer seg østover som en
-              indre oseanisk bølge langs ekvator med 2–3 m/s. Satellitter sporer
-              dette 3–6 måneder før hendelsen når Sør-Amerikas kyst.
+              Det er slik en vindendring i vest blir til en dypere termoklin i
+              øst. Satellitter sporer havnivået 3–6 måneder før varmen når
+              Sør-Amerikas kyst.
             </p>
           </div>
         </div>
@@ -550,7 +604,7 @@ function EnsoPage() {
             {
               n: "3",
               label:
-                "Termoklinen trykkes ned i øst. Oppvelling kollapser — fiskeriet svikter.",
+                "Termoklinen trykkes ned i øst. Oppvelling henter lunkent vann — fiskeriet svikter.",
             },
             {
               n: "4",
@@ -562,14 +616,14 @@ function EnsoPage() {
 
         <div>
           <h4 className="font-display text-lg font-medium tracking-tight text-primary">
-            Termoklinen og oppvellingens kollaps
+            Termoklinen og den lunkne oppvellingen
           </h4>
           <p className="mt-1 text-sm sm:text-base">
-            Termoklinen flater ut og trykkes ned i det østlige Stillehavet.
-            Oppvellingen klarer ikke lenger å hente opp kaldt næringsvann; den
-            resirkulerer bare lunkent overflatevann. Ansjosbestandene kollapser.
-            Peruanske kystfiskere ga fenomenet navnet <em>El Niño</em> (
-            «Jesusbarnet») fordi oppvarmingen ofte kulminerte rundt juletider.
+            Oppvellingen «stanser» ikke som en kran som skrus av. Vannet stiger
+            fortsatt. Men termoklinen ligger dypere, så det som kommer opp er
+            lunkent overflatevann, ikke kaldt næringsvann. Ansjosbestandene
+            kollapser. Peruanske kystfiskere ga fenomenet navnet <em>El Niño</em>{" "}
+            («Jesusbarnet») fordi oppvarmingen ofte kulminerte rundt juletider.
           </p>
         </div>
 
@@ -970,16 +1024,20 @@ function EnsoPage() {
       {/* ── Eksamensbokser ────────────────────────────────────────────── */}
       <Callout title="Til eksamen">
         <p>
-          Husk den fulle <strong>El Niño-årsakskjeden</strong>:
+          Inne i en El Niño kan du fortelle kjeden slik:
           <br />
           <strong>
-            1. Passatvinden svekkes → 2. Bjerknes-tilbakekobling forsterker
-            svingningen → 3. Ekvatorial Kelvin-bølge bærer varmt vann østover
-            → 4. Termoklinen synker i øst, oppvelling kollapser → 5.
-            Konveksjon og regn forskyves fra Indonesia til sentralt/østlig
-            Stillehav → 6. Telekoblinger via Rossby-bølger endrer
-            jetstrømmene globalt.
+            1. Passaten svekkes → 2. Kelvin-bølge trykker termoklinen ned i øst
+            → 3. Oppvelling henter lunkent vann, SST stiger → 4. Walker svekkes
+            og konveksjonen flytter østover → 5. Telekoblinger via Rossby-bølger
+            endrer jetstrømmene globalt.
           </strong>
+        </p>
+        <p>
+          Si at det er <strong>Bjerknes-løkka</strong>, ikke en startknapp.
+          Passaten må ikke vente på at termoklinen endres først: et
+          vestavindsutbrudd kan starte i atmosfæren. Havets varmelager kan
+          likevel være oppladet på forhånd (etter La Niña).
         </p>
         <p>
           Skil mellom <strong>SOI</strong> (lufttrykk-indeks, Tahiti minus
@@ -1004,6 +1062,17 @@ function EnsoPage() {
           Forbindelsene er indirekte og moduleres av NAO og polarvirvelen.
           Telekoblingene er statistiske tendenser, ikke garantier for
           enkeltvintre.
+        </p>
+        <p>
+          <em>Passaten må ikke vente på at termoklinen endres først.</em> De
+          forsterker hverandre. Et vestavindsutbrudd kan starte i atmosfæren;
+          Kelvin-bølger endrer så termoklinen i øst. Havet kan likevel være
+          oppladet på forhånd.
+        </p>
+        <p>
+          <em>Oppvellingen skrus ikke av.</em> Den henter lunkent vann fordi
+          termoklinen ligger dypere — derfor svikter næringen, ikke fordi
+          vannet slutter å stige.
         </p>
         <p>
           <em>Ikke forveksl El Niño med IOD.</em> El Niño sitter i tropisk
@@ -1036,7 +1105,7 @@ function EnsoPage() {
         />
         <Term
           name="Oppvelling (Upwelling)"
-          def="Heving av kaldt, næringsrikt dypvann til overflaten. Viktig for fiskeriene langs Perus kyst. Stanser under El Niño."
+          def="Heving av kaldt, næringsrikt dypvann til overflaten. Under El Niño henter den lunkent vann fordi termoklinen ligger dypere."
         />
         <Term
           name="Termoklin"
@@ -1048,7 +1117,7 @@ function EnsoPage() {
         />
         <Term
           name="Bjerknes-tilbakekoblingen"
-          def="Selvforsterkende mekanisme: svakere passatvinder → varmere hav i øst → enda svakere vinder."
+          def="Selvforsterkende løkke: svakere passat → dypere termoklin i øst → varmere SST → enda svakere passat. Forsterker, starter ikke."
         />
         <Term
           name="Telekobling"
@@ -1078,7 +1147,7 @@ function EnsoPage() {
             ],
             answer: 1,
             explain:
-              "Under El Niño svekkes passatene (Bjerknes-tilbakekoblingen forsterker dette), og det varme overflatevannet flyter østover som en Kelvin-bølge. Termoklinen trykkes ned i øst og oppvellingen av kaldt næringsvann stopper.",
+              "Under El Niño svekkes passatene, og Bjerknes-løkka forsterker det. Kelvin-bølger trykker termoklinen ned i øst. Oppvelling fortsetter, men henter lunkent vann — derfor svikter næringen.",
           },
           {
             prompt: "Hva er forskjellen mellom SOI og ONI?",
@@ -1103,6 +1172,19 @@ function EnsoPage() {
             answer: 1,
             explain:
               "Warm pool og den kraftige konveksjonen flytter fra Indonesia/Australia til det sentrale og østlige Stillehavet. Regionen mister nedbørsmotoren og opplever tørke, varme og økt skogbrannfare.",
+          },
+          {
+            prompt:
+              "Må termoklinen endres før passatene kan svekkes i en El Niño?",
+            options: [
+              "Ja. Termoklinen må alltid synke i øst før passaten kan slakke.",
+              "Nei. De forsterker hverandre. Et vestavindsutbrudd kan starte i atmosfæren; Kelvin-bølger endrer så termoklinen. Havet kan likevel være oppladet på forhånd.",
+              "Ja, men bare i La Niña.",
+              "Nei, fordi termoklinen ikke finnes i tropene.",
+            ],
+            answer: 1,
+            explain:
+              "Bjerknes-løkka har ingen fast startknapp. Atmosfæren kan gå først (vestavindsutbrudd). Havets varmelager kan være oppladet etter La Niña uten at det alene er utløseren.",
           },
           {
             prompt:
