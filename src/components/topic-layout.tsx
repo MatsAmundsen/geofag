@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { bannerForPath, figuresForPath } from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
 
 export function TopicLayout({
@@ -29,6 +31,12 @@ export function TopicLayout({
   prev?: { to: string; label: string; params?: Record<string, string> };
   next?: { to: string; label: string; params?: Record<string, string> };
 }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const override = bannerForPath(pathname);
+  const slots = figuresForPath(pathname);
+  const src = override?.src ?? banner;
+  const alt = override?.alt ?? bannerAlt;
+
   return (
     <div className="flex min-h-dvh flex-col">
       <a
@@ -41,8 +49,8 @@ export function TopicLayout({
       <main id="innhold" className="flex-1">
         <header className="relative isolate min-h-72 overflow-hidden">
           <img
-            src={banner}
-            alt={bannerAlt}
+            src={src}
+            alt={alt}
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -58,6 +66,18 @@ export function TopicLayout({
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <div className="space-y-5 text-base leading-relaxed text-foreground/95">{children}</div>
+
+          {slots.length > 0 ? (
+            <section className="mt-12" aria-label="Læringsfigurer">
+              <h2 className="font-display text-2xl font-medium tracking-tight">Læringsfigurer</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Felt reservert til figur. Les bildeteksten — den er pensum selv før bildet er fylt.
+              </p>
+              {slots.map((slot) => (
+                <GeminiFigure key={slot.id} {...slot} />
+              ))}
+            </section>
+          ) : null}
 
           {kilder ? <Kildeliste kilder={kilder} /> : null}
 
