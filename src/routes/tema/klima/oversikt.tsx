@@ -1,1 +1,1 @@
-PLACEHOLDER_OVERSIKT
+import { createFileRoute } from "@tanstack/react-router";
