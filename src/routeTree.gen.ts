@@ -31,6 +31,7 @@ import { Route as TemaFeltHavLuftIsRouteImport } from './routes/tema/felt-hav-lu
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaJetstrommerRouteImport } from './routes/tema/jetstrommer'
+import { Route as TemaKryosfaerenRouteImport } from './routes/tema/kryosfaeren'
 import { Route as TemaKryosfareRouteImport } from './routes/tema/kryosfare'
 import { Route as TemaLokaleVaersystemerRouteImport } from './routes/tema/lokale-vaersystemer'
 import { Route as TemaMilankovitchRouteImport } from './routes/tema/milankovitch'
@@ -160,6 +161,11 @@ const TemaJetstrommerRoute = TemaJetstrommerRouteImport.update({
   path: '/tema/jetstrommer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaKryosfaerenRoute = TemaKryosfaerenRouteImport.update({
+  id: '/tema/kryosfaeren',
+  path: '/tema/kryosfaeren',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaKryosfareRoute = TemaKryosfareRouteImport.update({
   id: '/tema/kryosfare',
   path: '/tema/kryosfare',
@@ -257,6 +263,7 @@ export interface FileRoutesByFullPath {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
@@ -296,6 +303,7 @@ export interface FileRoutesByTo {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
@@ -336,6 +344,7 @@ export interface FileRoutesById {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
@@ -377,6 +386,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
@@ -416,6 +426,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
@@ -455,6 +466,7 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
@@ -495,6 +507,7 @@ export interface RootRouteChildren {
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaJetstrommerRoute: typeof TemaJetstrommerRoute
+  TemaKryosfaerenRoute: typeof TemaKryosfaerenRoute
   TemaKryosfareRoute: typeof TemaKryosfareRoute
   TemaLokaleVaersystemerRoute: typeof TemaLokaleVaersystemerRoute
   TemaMilankovitchRoute: typeof TemaMilankovitchRoute
@@ -670,6 +683,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaJetstrommerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/kryosfaeren': {
+      id: '/tema/kryosfaeren'
+      path: '/tema/kryosfaeren'
+      fullPath: '/tema/kryosfaeren'
+      preLoaderRoute: typeof TemaKryosfaerenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/kryosfare': {
       id: '/tema/kryosfare'
       path: '/tema/kryosfare'
@@ -799,6 +819,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaJetstrommerRoute: TemaJetstrommerRoute,
+  TemaKryosfaerenRoute: TemaKryosfaerenRoute,
   TemaKryosfareRoute: TemaKryosfareRoute,
   TemaLokaleVaersystemerRoute: TemaLokaleVaersystemerRoute,
   TemaMilankovitchRoute: TemaMilankovitchRoute,

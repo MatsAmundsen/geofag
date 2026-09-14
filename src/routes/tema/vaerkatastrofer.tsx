@@ -148,7 +148,7 @@ function KatastroferPage() {
           fuktige luftpakker, slik at konveksjonen kan trenge uhemmet opp til tropopausen.
         </li>
         <li>
-          <strong>Svak vertikal vindskjæring (< 10 m/s mellom overflaten og 200 hPa):</strong>{" "}
+          <strong>Svak vertikal vindskjæring (&lt; 10 m/s mellom overflaten og 200 hPa):</strong>{" "}
           Dette er et kritisk krav! Dersom vindens fart eller retning endrer seg kraftig med høyden,
           blir orkanens vertikale søyle av latent varme blåst skjev eller revet fra hverandre.
           Varmekjernen ventileres bort, og systemet kollapser.
@@ -304,7 +304,7 @@ function KatastroferPage() {
         </li>
         <li>
           <strong>2. Oppdriften tipper virvelen vertikalt:</strong> Når supercellens eksplosive
-          oppdrift (drevet av ekstrem termisk ustabilitet og høy CAPE, ofte > 2500 J/kg) treffer
+          oppdrift (drevet av ekstrem termisk ustabilitet og høy CAPE, ofte &gt; 2500 J/kg) treffer
           dette horisontale virvelrøret, suges midtpartiet oppover. Røret bøyes til en hesteskoform.
           Den ene halvdelen av virvelen roterer syklonalt (mot klokken på nordlig halvkule) og
           forsterkes til supercellens <em>mesosyklon</em>.
@@ -396,7 +396,7 @@ function KatastroferPage() {
         </div>
         <div className="rounded-xl border border-red-500/40 bg-red-950/30 p-4">
           <h4 className="font-display text-sm font-bold text-red-400">
-            EF4–EF5 (> 267–322+ km/t)
+            EF4–EF5 (&gt; 267–322+ km/t)
           </h4>
           <p className="mt-1 text-xs text-muted-foreground">
             Total utslettelse. Velbygde murhus feies fullstendig av grunnmuren, biler slynges flere
@@ -441,7 +441,7 @@ function KatastroferPage() {
             Tropisk syklon (Varmkjerne)
           </h4>
           <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
-            <li>• Dannes over homogent varmt hav (>26,5 °C) uten fronter.</li>
+            <li>• Dannes over homogent varmt hav (&gt; 26,5 °C) uten fronter.</li>
             <li>
               • Drives av <em>latent varme</em> fra kondensasjon.
             </li>
