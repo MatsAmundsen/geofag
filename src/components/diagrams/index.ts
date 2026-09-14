@@ -131,7 +131,17 @@ export {
   PrecessionDetailDiagram,
   Sommersol65NDiagram,
 } from "./paleo";
-export { BoundaryQuakesDiagram, SeismogramDiagram, VolcanoTypesDiagram } from "./quakes";
+export {
+  BoundaryQuakesDiagram,
+  CalderaFormationDiagram,
+  EarthquakeWavePhysicsDiagram,
+  ElasticReboundDiagram,
+  NorwayEarthquakesDiagram,
+  SeismogramDiagram,
+  VolcanicHazardsDiagram,
+  VolcanoEruptionAnatomyDiagram,
+  VolcanoTypesDiagram,
+} from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
 export { CarbonCycleDiagram, SpheresDiagram } from "./spheres";
 export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";

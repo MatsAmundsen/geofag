@@ -131,6 +131,13 @@ export const KILDER = {
       href: "https://doi.org/10.1785/0120080357",
     },
     {
+      prefix:
+        "Newhall, C. G., & Self, S. (1982). The Volcanic Explosivity Index (VEI): An estimate of explosive magnitude for historical volcanism. ",
+      italic: "Journal of Geophysical Research, 87",
+      suffix: "(C2), 1231–1238.",
+      href: "https://doi.org/10.1029/JC087iC02p01231",
+    },
+    {
       prefix: "NORSAR. (u.å.-a). ",
       italic: "Jordskjelvet i Oslo i 1904",
       suffix: ".",
@@ -138,40 +145,62 @@ export const KILDER = {
     },
     {
       prefix: "NORSAR. (u.å.-b). ",
-      italic: "Jordskjelv i Norge",
+      italic: "Jordskjelv i Norge og seismisk risiko",
       suffix: ".",
       href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "Hawaiian Volcano Observatory",
+      prefix: "Norsk Polarinstitutt. (u.å.). ",
+      italic: "Jan Mayen og Beerenberg",
+      suffix: ".",
+      href: "https://www.npolar.no/tema/jan-mayen/",
+    },
+    {
+      prefix:
+        "Oldham, R. D. (1906). The Constitution of the Interior of the Earth, as Revealed by Earthquakes. ",
+      italic: "Quarterly Journal of the Geological Society, 62",
+      suffix: "(1–4), 456–475.",
+      href: "https://doi.org/10.1144/GSL.JGS.1906.062.01-04.21",
+    },
+    {
+      prefix:
+        "Oppenheimer, C. (2003). Climatic, environmental and human consequences of the largest known historic eruption: Tambora volcano (Indonesia) 1815. ",
+      italic: "Progress in Physical Geography, 27",
+      suffix: "(2), 230–259.",
+      href: "https://doi.org/10.1191/0309133303pp379ra",
+    },
+    {
+      prefix:
+        "Reid, H. F. (1910). ",
+      italic: "The Mechanics of the Earthquake: The California Earthquake of April 18, 1906",
+      suffix: " (Vol. 2). Carnegie Institution of Washington.",
+      href: "https://doi.org/10.5962/bhl.title.35824",
+    },
+    {
+      prefix:
+        "Robock, A. (2000). Volcanic eruptions and climate. ",
+      italic: "Reviews of Geophysics, 38",
+      suffix: "(2), 191–219.",
+      href: "https://doi.org/10.1029/1998RG000054",
+    },
+    {
+      prefix:
+        "Sparks, R. S. J. (1978). The dynamics of bubble formation and growth in magmas: A review and analysis. ",
+      italic: "Journal of Volcanology and Geothermal Research, 3",
+      suffix: "(1–2), 1–37.",
+      href: "https://doi.org/10.1016/0377-0273(78)90002-1",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
+      italic: "Hawaiian Volcano Observatory: Hawaiian volcano monitoring and shield volcanoes",
       suffix: ".",
       href: "https://www.usgs.gov/observatories/hvo",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
-      italic: "Åknes",
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-b). ",
+      italic: "Cascades Volcano Observatory: Mount St. Helens and stratovolcano hazards",
       suffix: ".",
-      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026). ",
-      italic: "Fjellskred fra Åknes. Reviderte scenarioer, sannsynligheter og konsekvenser",
-      suffix: " (Rapport 16/2026).",
-      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
-    },
-    {
-      prefix:
-        "Haflidason, H., Sejrup, H. P., Nygård, A., Mienert, J., Bryn, P., Lien, R., Forsberg, C. F., Berg, K., & Masson, D. (2004). The Storegga Slide: Architecture, geometry and slide development. ",
-      italic: "Marine Geology, 213",
-      suffix: "(1–4), 201–234.",
-      href: "https://doi.org/10.1016/j.margeo.2004.10.007",
-    },
-    {
-      prefix: "Norsk Polarinstitutt. (u.å.). ",
-      italic: "Jan Mayen",
-      suffix: ".",
-      href: "https://www.npolar.no/tema/jan-mayen/",
+      href: "https://www.usgs.gov/observatories/cvo",
     },
   ],
   bergarter: [
