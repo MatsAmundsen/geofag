@@ -10,7 +10,8 @@ export const NAV_GF1 = [
   { to: "/geofag-1/jordsystemene", label: "Sfærer" },
   { to: "/geofag-1/platetektonikk", label: "Plater" },
   { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
-  { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
+  { to: "/geofag-1/bergarter", label: "Berg" },
+  { to: "/geofag-1/landformer", label: "Landform" },
   { to: "/geofag-1/vann-og-flom", label: "Vann" },
   { to: "/geofag-1/skred", label: "Skred" },
   { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
@@ -265,16 +266,28 @@ export const GF1_THEMES = [
     maal: "Naturfarer knyttet til geosfæren. Risiko, forebygging og tilpasning.",
   },
   {
-    slug: "bergarter-og-landformer",
-    to: "/geofag-1/bergarter-og-landformer",
-    title: "Bergarter og landformer",
-    kicker: "Bergartssyklusen",
-    image: "/images/gf1-bergarter.jpg",
-    alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
+    slug: "bergarter",
+    to: "/geofag-1/bergarter",
+    title: "Bergarter og det geologiske kretsløpet",
+    kicker: "Geosfærens byggesteiner",
+    image: "/images/geo-geologisk-kretslop-3d.jpg",
+    alt: "3D-blokkdiagram av det geologiske kretsløpet med magmakammer, sedimentasjonsbasseng og regional metamorfose",
     blurb:
-      "Mineraler, bergarter og sedimenter. Datering. Hvordan indre og ytre krefter — og mennesker — lager og endrer landformer.",
+      "Mineralogi, silikatstrukturer, de tre bergartsgruppene, Bowens reaksjonsserie, tynnsnitt under polarisasjonsmikroskopi og aldersdatering.",
     status: "klar" as const,
-    maal: "Mineral- og bergartsgrupper, datering, lokal geologi og landformer.",
+    maal: "Gjøre rede for mineral- og bergartsdannende prosesser, klassifisere vanlige norske bergarter og forklare prinsipper for relativ og radiometrisk datering.",
+  },
+  {
+    slug: "landformer",
+    to: "/geofag-1/landformer",
+    title: "Landformer og geomorfologiske prosesser",
+    kicker: "Erosjon, forvitring og landskap",
+    image: "/images/fig-vestlandet.jpg",
+    alt: "Vestlandsk fjordlandskap med dyp U-dal og bratte fjellsider",
+    blurb:
+      "Mekanisk og kjemisk forvitring, Hjulstrøms kurve, glasiale og fluviale landformer, strandflaten og den paleiske overflaten i Norge.",
+    status: "klar" as const,
+    maal: "Beskrive og forklare hvordan indre og ytre krefter, spesielt rennende vann og isbreer, har formet og endrer det norske landskapet gjennom geologisk tid.",
   },
   {
     slug: "vann-og-flom",
@@ -384,6 +397,7 @@ export const KLIMA_SUBTHEMES = [
 ] as const;
 
 export function gf1Theme(slug: string) {
+  if (slug === "bergarter-og-landformer") return GF1_THEMES.find((t) => t.slug === "bergarter");
   return GF1_THEMES.find((t) => t.slug === slug);
 }
 

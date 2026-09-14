@@ -55,7 +55,7 @@ function Geofag1() {
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl font-medium tracking-tight">Temaer</h2>
             <p className="mt-3 text-muted-foreground">
-              Åtte innganger etter kompetansemålene. Naturfarer sitter i tre av dem: vulkaner og
+              Ni innganger etter kompetansemålene. Naturfarer sitter i tre av dem: vulkaner og
               jordskjelv, vann og flom, og skred.
             </p>
           </div>

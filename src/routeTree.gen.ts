@@ -15,10 +15,12 @@ import { Route as EksamenIndexRouteImport } from './routes/eksamen/index'
 import { Route as EksamenSlugRouteImport } from './routes/eksamen/$slug'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
 import { Route as Geofag1SlugRouteImport } from './routes/geofag-1/$slug'
+import { Route as Geofag1BergarterRouteImport } from './routes/geofag-1/bergarter'
 import { Route as Geofag1BergarterOgLandformerRouteImport } from './routes/geofag-1/bergarter-og-landformer'
 import { Route as Geofag1FeltarbeidRouteImport } from './routes/geofag-1/feltarbeid'
 import { Route as Geofag1GeologiskeRessurserRouteImport } from './routes/geofag-1/geologiske-ressurser'
 import { Route as Geofag1JordsystemeneRouteImport } from './routes/geofag-1/jordsystemene'
+import { Route as Geofag1LandformerRouteImport } from './routes/geofag-1/landformer'
 import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as Geofag1RessurserOgFeltRouteImport } from './routes/geofag-1/ressurser-og-felt'
 import { Route as Geofag1SkredRouteImport } from './routes/geofag-1/skred'
@@ -78,6 +80,11 @@ const Geofag1SlugRoute = Geofag1SlugRouteImport.update({
   path: '/geofag-1/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Geofag1BergarterRoute = Geofag1BergarterRouteImport.update({
+  id: '/geofag-1/bergarter',
+  path: '/geofag-1/bergarter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Geofag1BergarterOgLandformerRoute =
   Geofag1BergarterOgLandformerRouteImport.update({
     id: '/geofag-1/bergarter-og-landformer',
@@ -98,6 +105,11 @@ const Geofag1GeologiskeRessurserRoute =
 const Geofag1JordsystemeneRoute = Geofag1JordsystemeneRouteImport.update({
   id: '/geofag-1/jordsystemene',
   path: '/geofag-1/jordsystemene',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1LandformerRoute = Geofag1LandformerRouteImport.update({
+  id: '/geofag-1/landformer',
+  path: '/geofag-1/landformer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
@@ -247,10 +259,12 @@ export interface FileRoutesByFullPath {
   '/geofag-2': typeof Geofag2Route
   '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/bergarter': typeof Geofag1BergarterRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
   '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
+  '/geofag-1/landformer': typeof Geofag1LandformerRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
@@ -287,10 +301,12 @@ export interface FileRoutesByTo {
   '/geofag-2': typeof Geofag2Route
   '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/bergarter': typeof Geofag1BergarterRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
   '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
+  '/geofag-1/landformer': typeof Geofag1LandformerRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
@@ -328,10 +344,12 @@ export interface FileRoutesById {
   '/geofag-2': typeof Geofag2Route
   '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
+  '/geofag-1/bergarter': typeof Geofag1BergarterRoute
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
   '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
+  '/geofag-1/landformer': typeof Geofag1LandformerRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
@@ -370,10 +388,12 @@ export interface FileRouteTypes {
     | '/geofag-2'
     | '/eksamen/$slug'
     | '/geofag-1/$slug'
+    | '/geofag-1/bergarter'
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
     | '/geofag-1/geologiske-ressurser'
     | '/geofag-1/jordsystemene'
+    | '/geofag-1/landformer'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
@@ -410,10 +430,12 @@ export interface FileRouteTypes {
     | '/geofag-2'
     | '/eksamen/$slug'
     | '/geofag-1/$slug'
+    | '/geofag-1/bergarter'
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
     | '/geofag-1/geologiske-ressurser'
     | '/geofag-1/jordsystemene'
+    | '/geofag-1/landformer'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
@@ -450,10 +472,12 @@ export interface FileRouteTypes {
     | '/geofag-2'
     | '/eksamen/$slug'
     | '/geofag-1/$slug'
+    | '/geofag-1/bergarter'
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
     | '/geofag-1/geologiske-ressurser'
     | '/geofag-1/jordsystemene'
+    | '/geofag-1/landformer'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
@@ -491,10 +515,12 @@ export interface RootRouteChildren {
   Geofag2Route: typeof Geofag2Route
   EksamenSlugRoute: typeof EksamenSlugRoute
   Geofag1SlugRoute: typeof Geofag1SlugRoute
+  Geofag1BergarterRoute: typeof Geofag1BergarterRoute
   Geofag1BergarterOgLandformerRoute: typeof Geofag1BergarterOgLandformerRoute
   Geofag1FeltarbeidRoute: typeof Geofag1FeltarbeidRoute
   Geofag1GeologiskeRessurserRoute: typeof Geofag1GeologiskeRessurserRoute
   Geofag1JordsystemeneRoute: typeof Geofag1JordsystemeneRoute
+  Geofag1LandformerRoute: typeof Geofag1LandformerRoute
   Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
   Geofag1RessurserOgFeltRoute: typeof Geofag1RessurserOgFeltRoute
   Geofag1SkredRoute: typeof Geofag1SkredRoute
@@ -571,6 +597,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Geofag1SlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/geofag-1/bergarter': {
+      id: '/geofag-1/bergarter'
+      path: '/geofag-1/bergarter'
+      fullPath: '/geofag-1/bergarter'
+      preLoaderRoute: typeof Geofag1BergarterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/geofag-1/bergarter-og-landformer': {
       id: '/geofag-1/bergarter-og-landformer'
       path: '/geofag-1/bergarter-og-landformer'
@@ -597,6 +630,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/jordsystemene'
       fullPath: '/geofag-1/jordsystemene'
       preLoaderRoute: typeof Geofag1JordsystemeneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/landformer': {
+      id: '/geofag-1/landformer'
+      path: '/geofag-1/landformer'
+      fullPath: '/geofag-1/landformer'
+      preLoaderRoute: typeof Geofag1LandformerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/platetektonikk': {
@@ -803,10 +843,12 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag2Route: Geofag2Route,
   EksamenSlugRoute: EksamenSlugRoute,
   Geofag1SlugRoute: Geofag1SlugRoute,
+  Geofag1BergarterRoute: Geofag1BergarterRoute,
   Geofag1BergarterOgLandformerRoute: Geofag1BergarterOgLandformerRoute,
   Geofag1FeltarbeidRoute: Geofag1FeltarbeidRoute,
   Geofag1GeologiskeRessurserRoute: Geofag1GeologiskeRessurserRoute,
   Geofag1JordsystemeneRoute: Geofag1JordsystemeneRoute,
+  Geofag1LandformerRoute: Geofag1LandformerRoute,
   Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
   Geofag1RessurserOgFeltRoute: Geofag1RessurserOgFeltRoute,
   Geofag1SkredRoute: Geofag1SkredRoute,

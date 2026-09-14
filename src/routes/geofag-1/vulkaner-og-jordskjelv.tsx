@@ -45,8 +45,8 @@ function VulkanerOgJordskjelvPage() {
         label: "Forrige: Platetektonikk",
       }}
       next={{
-        to: "/geofag-1/bergarter-og-landformer",
-        label: "Neste: Bergarter og landformer",
+        to: "/geofag-1/bergarter",
+        label: "Neste: Bergarter og mineraler",
       }}
       kilder={KILDER.vulkaner}
     >

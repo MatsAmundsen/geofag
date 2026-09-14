@@ -238,20 +238,32 @@ export const KILDER = {
   ],
   bergarter: [
     {
+      prefix: "Bowen, N. L. (1928). ",
+      italic: "The Evolution of the Igneous Rocks",
+      suffix: ". Princeton University Press.",
+      href: "https://doi.org/10.1515/9781400874538",
+    },
+    {
+      prefix: "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2013). ",
+      italic: "Landet blir til: Norges geologi",
+      suffix: " (2. utg.). Norsk Geologisk Forening.",
+      href: "https://geologi.no/nettbutikk/boker/landet-blir-til-detail",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
-      italic: "Geologi på land",
+      italic: "Geologi på land: Norges berggrunn og dannelse",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/geologi-pa-land",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
-      italic: "Larvikitt",
+      italic: "Larvikitt – Norges nasjonalbergart",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/larvikitt",
     },
     {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "The rock cycle",
+      italic: "The rock cycle and petrologic classification",
       suffix: ".",
       href: "https://www.usgs.gov/media/images/usgs-simplified-rock-classification",
     },
@@ -267,6 +279,50 @@ export const KILDER = {
       italic: "Radiocarbon, 62",
       suffix: "(4), 725–757.",
       href: "https://doi.org/10.1017/RDC.2020.41",
+    },
+    {
+      prefix: "Schoene, B. (2014). U–Th–Pb Geochronology. I H. D. Holland & K. K. Turekian (Red.), ",
+      italic: "Treatise on Geochemistry",
+      suffix: " (2. utg., Bd. 4, s. 341–378). Elsevier.",
+      href: "https://doi.org/10.1016/B978-0-08-095975-7.00310-7",
+    },
+  ],
+  landformer: [
+    {
+      prefix: "Gjessing, J. (1978). ",
+      italic: "Norges landformer",
+      suffix: ". Universitetsforlaget.",
+      href: "https://urn.nb.no/URN:NBN:no-nb_digibok_2012050908064",
+    },
+    {
+      prefix: "Holtedahl, O. (1960). Features of the geomorphology. I O. Holtedahl (Red.), ",
+      italic: "Geology of Norway (NGU Skrifter 208)",
+      suffix: " (s. 508–534). Norges geologiske undersøkelse.",
+      href: "https://www.ngu.no/",
+    },
+    {
+      prefix: "Hjulström, F. (1935). Studies of the morphological activity of rivers as illustrated by the River Fyris. ",
+      italic: "Bulletin of the Geological Institution of the University of Uppsala, 25",
+      suffix: ", 221–527.",
+      href: "https://doi.org/10.1080/04353676.1935.11825595",
+    },
+    {
+      prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
+      italic: "Glaciers and Glaciation",
+      suffix: " (2. utg.). Routledge.",
+      href: "https://doi.org/10.4324/9780203785010",
+    },
+    {
+      prefix: "Nesje, A., & Dahl, S. O. (1993). The high mountain style of landforms in southern Norway: A result of multiple quaternary glaciations. ",
+      italic: "Norsk Geologisk Tidsskrift, 73",
+      suffix: "(2), 125–135.",
+      href: "https://geologi.no/tidsskrift",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
+      italic: "Løsmasser og glasiale landformer i Norge",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/losmasser",
     },
   ],
   vannFlom: [
