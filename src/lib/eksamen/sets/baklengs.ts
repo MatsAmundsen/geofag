@@ -125,7 +125,7 @@ Oppgave 7 — Energi fra hav og luft
 Effekten i en vindturbin skaleres omtrent med v³. Et felt på kysten har middelvind 8 m/s. Et felt lenger til havs har 10 m/s.
 
 a) Omtrent hvor mye mer effekt gir 10 m/s enn 8 m/s, alt annet likt?
-B) Drøft én økologisk eller samfunnsmessig kostnad ved å flytte parken til havs.
+b) Drøft én økologisk eller samfunnsmessig kostnad ved å flytte parken til havs.
 
 Maks én side.`,
     },
