@@ -1,4 +1,3 @@
-import { Callout } from "@/components/callout";
 import {
   ConvectionDiagram,
   DecompressionMeltingDiagram,
@@ -11,7 +10,6 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks } from "@/components/term";
 
-/** Full tekst i artifacts/g1-struktur/content/plate-del1.tsx — fylles i neste commit. */
 export function PlateDel1() {
   return (
     <>
