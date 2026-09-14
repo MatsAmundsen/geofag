@@ -162,6 +162,12 @@ export const KILDER_G2 = {
   ],
   feltG2: [
     {
+      prefix: "Meteorologisk institutt [MET Norway]. (u.å.). ",
+      italic: "Yr — værvarsel og observasjoner",
+      suffix: ".",
+      href: "https://www.yr.no",
+    },
+    {
       prefix: "Utdanningsdirektoratet. (2020). ",
       italic: "Læreplan i geofag (GFG01-03)",
       suffix: ".",
@@ -175,6 +181,12 @@ export const KILDER_G2 = {
     },
   ],
   tilpasning: [
+    {
+      prefix: "Norsk klimaservicesenter [NCCS]. (u.å.). ",
+      italic: "Klima i Norge og fylkesvise klimaprofiler",
+      suffix: ".",
+      href: "https://klimaservicesenter.no/",
+    },
     {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2022). ",
       italic:

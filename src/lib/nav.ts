@@ -33,6 +33,9 @@ export const NAV_GF2 = [
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
+  { to: "/tema/tilpasning", label: "Tilpasning" },
+  { to: "/tema/energi-hav-luft", label: "Energi" },
+  { to: "/tema/felt-hav-luft-is", label: "Felt" },
 ] as const;
 
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
@@ -197,7 +200,7 @@ export const GF2_THEMES = [
     alt: "En atlantisk orkan sett fra verdensrommet, med tydelig øye",
     blurb:
       "Fysikk blir skade for folk, by og økosystem. Drøft kutt og tilpasning — og hvem som betaler.",
-    status: "utkast" as const,
+    status: "klar" as const,
   },
   {
     to: "/tema/energi-hav-luft",
@@ -207,7 +210,7 @@ export const GF2_THEMES = [
     alt: "Nord-Atlanteren med fargekontrast som minner om en vestlig randstrøm",
     blurb:
       "Vind, havvind, bølger og tidevann. Bærekraft er avveining mellom kutt, areal, arter og forsyning.",
-    status: "utkast" as const,
+    status: "klar" as const,
   },
   {
     to: "/tema/felt-hav-luft-is",
@@ -217,7 +220,7 @@ export const GF2_THEMES = [
     alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
     blurb:
       "Planlegg, mål, tolk og presentér i atmosfære, hav eller kryosfære. Været er både objekt og risiko.",
-    status: "utkast" as const,
+    status: "klar" as const,
   },
 ] as const;
 
