@@ -9,7 +9,8 @@ export const NAV_GF1 = [
   { to: "/geofag-1", label: "Oversikt" },
   { to: "/geofag-1/jordsystemene", label: "Sfærer" },
   { to: "/geofag-1/platetektonikk", label: "Plater" },
-  { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
+  { to: "/geofag-1/vulkaner", label: "Vulkaner" },
+  { to: "/geofag-1/jordskjelv", label: "Jordskjelv" },
   { to: "/geofag-1/bergarter", label: "Berg" },
   { to: "/geofag-1/landformer", label: "Landform" },
   { to: "/geofag-1/vann-og-flom", label: "Vann" },
@@ -254,16 +255,28 @@ export const GF1_THEMES = [
     maal: "Bevegelser i jordas indre og konsekvenser for jordskorpe og overflate.",
   },
   {
-    slug: "vulkaner-og-jordskjelv",
-    to: "/geofag-1/vulkaner-og-jordskjelv",
-    title: "Vulkaner og jordskjelv",
+    slug: "vulkaner",
+    to: "/geofag-1/vulkaner",
+    title: "Vulkaner",
     kicker: "Naturfarer i geosfæren",
     image: "/images/gf1-vulkan-jordskjelv.jpg",
-    alt: "Snødekt stratovulkan med aske og oppsprukket dal",
+    alt: "Snødekt stratovulkan med aske og gassutblåsning",
     blurb:
-      "Der platene møtes, bygges spenning og magma. Risiko, varsling og hvordan samfunn kan forebygge og tilpasse seg.",
+      "Magmakjemi, silikatpolymerisering, eksplosivitet og utbruddstyper. Fra rolige lavafontener til plinianske katastrofeutbrudd, overvåking og vulkansk klimaeffekt.",
     status: "klar" as const,
-    maal: "Naturfarer knyttet til geosfæren. Risiko, forebygging og tilpasning.",
+    maal: "Gjøre rede for årsakene til vulkanisme, forklare sammenhengen mellom magmakjemi og utbruddsstil, og vurdere geofarer, overvåking og samfunnssikkerhet.",
+  },
+  {
+    slug: "jordskjelv",
+    to: "/geofag-1/jordskjelv",
+    title: "Jordskjelv og tsunamier",
+    kicker: "Naturfarer i geosfæren",
+    image: "/images/geo-jordskjelv-bolger-3d.jpg",
+    alt: "3D-snitt av forkastningsbrudd, seismiske bølger og overflateskader",
+    blurb:
+      "Elastisk tilbakefjæring, P- og S-bølger, momentmagnitude, Wadati-Benioff-sonen, norsk seismisitet, tsunamifysikk og jordskjelvsikring med Eurokode 8.",
+    status: "klar" as const,
+    maal: "Forklare mekanismene bak jordskjelv og tsunamier, gjøre rede for seismisk bølgeforplantning og vurdere seismisk risiko og sikringstiltak i Norge og globalt.",
   },
   {
     slug: "bergarter",
@@ -398,6 +411,7 @@ export const KLIMA_SUBTHEMES = [
 
 export function gf1Theme(slug: string) {
   if (slug === "bergarter-og-landformer") return GF1_THEMES.find((t) => t.slug === "bergarter");
+  if (slug === "vulkaner-og-jordskjelv") return GF1_THEMES.find((t) => t.slug === "vulkaner");
   return GF1_THEMES.find((t) => t.slug === slug);
 }
 

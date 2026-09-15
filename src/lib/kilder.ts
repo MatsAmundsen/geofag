@@ -138,29 +138,10 @@ export const KILDER = {
   vulkaner: [
     {
       prefix:
-        "Bungum, H., Pettenati, F., Schweitzer, J., & Sirovich, L. (2009). The 23 October 1904 MS 5.4 Oslofjord earthquake: Reanalysis based on macroseismic and instrumental data. ",
-      italic: "Bulletin of the Seismological Society of America, 99",
-      suffix: "(5), 2836–2854.",
-      href: "https://doi.org/10.1785/0120080357",
-    },
-    {
-      prefix:
         "Newhall, C. G., & Self, S. (1982). The Volcanic Explosivity Index (VEI): An estimate of explosive magnitude for historical volcanism. ",
       italic: "Journal of Geophysical Research, 87",
       suffix: "(C2), 1231–1238.",
       href: "https://doi.org/10.1029/JC087iC02p01231",
-    },
-    {
-      prefix: "NORSAR. (u.å.-a). ",
-      italic: "Jordskjelvet i Oslo i 1904",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/jordskjelvet-i-oslo-i-1904/",
-    },
-    {
-      prefix: "NORSAR. (u.å.-b). ",
-      italic: "Jordskjelv i Norge og seismisk risiko",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
       prefix: "Norsk Polarinstitutt. (u.å.). ",
@@ -170,24 +151,10 @@ export const KILDER = {
     },
     {
       prefix:
-        "Oldham, R. D. (1906). The Constitution of the Interior of the Earth, as Revealed by Earthquakes. ",
-      italic: "Quarterly Journal of the Geological Society, 62",
-      suffix: "(1–4), 456–475.",
-      href: "https://doi.org/10.1144/GSL.JGS.1906.062.01-04.21",
-    },
-    {
-      prefix:
         "Oppenheimer, C. (2003). Climatic, environmental and human consequences of the largest known historic eruption: Tambora volcano (Indonesia) 1815. ",
       italic: "Progress in Physical Geography, 27",
       suffix: "(2), 230–259.",
       href: "https://doi.org/10.1191/0309133303pp379ra",
-    },
-    {
-      prefix:
-        "Reid, H. F. (1910). ",
-      italic: "The Mechanics of the Earthquake: The California Earthquake of April 18, 1906",
-      suffix: " (Vol. 2). Carnegie Institution of Washington.",
-      href: "https://doi.org/10.5962/bhl.title.35824",
     },
     {
       prefix:
@@ -228,6 +195,41 @@ export const KILDER = {
       italic: "The Encyclopedia of Volcanoes",
       suffix: " (2. utg.). Academic Press.",
       href: "https://doi.org/10.1016/C2011-0-06950-8",
+    },
+  ],
+  jordskjelv: [
+    {
+      prefix:
+        "Bungum, H., Pettenati, F., Schweitzer, J., & Sirovich, L. (2009). The 23 October 1904 MS 5.4 Oslofjord earthquake: Reanalysis based on macroseismic and instrumental data. ",
+      italic: "Bulletin of the Seismological Society of America, 99",
+      suffix: "(5), 2836–2854.",
+      href: "https://doi.org/10.1785/0120080357",
+    },
+    {
+      prefix: "NORSAR. (u.å.-a). ",
+      italic: "Jordskjelvet i Oslo i 1904",
+      suffix: ".",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/jordskjelvet-i-oslo-i-1904/",
+    },
+    {
+      prefix: "NORSAR. (u.å.-b). ",
+      italic: "Jordskjelv i Norge og seismisk risiko",
+      suffix: ".",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
+    },
+    {
+      prefix:
+        "Oldham, R. D. (1906). The Constitution of the Interior of the Earth, as Revealed by Earthquakes. ",
+      italic: "Quarterly Journal of the Geological Society, 62",
+      suffix: "(1–4), 456–475.",
+      href: "https://doi.org/10.1144/GSL.JGS.1906.062.01-04.21",
+    },
+    {
+      prefix:
+        "Reid, H. F. (1910). ",
+      italic: "The Mechanics of the Earthquake: The California Earthquake of April 18, 1906",
+      suffix: " (Vol. 2). Carnegie Institution of Washington.",
+      href: "https://doi.org/10.5962/bhl.title.35824",
     },
     {
       prefix: "Standard Norge. (2021). ",

@@ -39,8 +39,8 @@ function BergarterPage() {
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
-        to: "/geofag-1/vulkaner-og-jordskjelv",
-        label: "Forrige: Vulkaner og jordskjelv",
+        to: "/geofag-1/jordskjelv",
+        label: "Forrige: Jordskjelv og tsunamier",
       }}
       next={{
         to: "/geofag-1/landformer",

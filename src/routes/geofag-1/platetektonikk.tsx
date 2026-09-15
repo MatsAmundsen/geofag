@@ -54,15 +54,30 @@ function PlatetektonikkPage() {
         label: "Forrige: Jordsystemene",
       }}
       next={{
-        to: "/geofag-1/vulkaner-og-jordskjelv",
-        label: "Neste: Vulkaner og jordskjelv",
+        to: "/geofag-1/vulkaner",
+        label: "Neste: Vulkaner",
       }}
       kilder={KILDER.platetektonikk}
     >
+      <Callout title="Kompetansemål i LK20 (Geofag 1)">
+        <p>
+          Målet for kapittelet er at eleven skal kunne <em>gjøre rede for indre krefter og prosesser, platetektonikk og
+          hvilke konsekvenser dette har for jordskorpen og jordoverflaten</em>, samt forstå hvordan norsk natur og
+          geologi er et resultat av denne globale dynamikken.
+        </p>
+        <div className="mt-2 text-xs text-muted-foreground space-y-1 border-t border-border/50 pt-2">
+          <p><strong>Kjerneelementer som dekkes i dette kapittelet:</strong></p>
+          <p>• <em>Jordens indre krefter og prosesser:</em> Litosfære, astenosfære, konveksjon og slab pull som hoveddrivkraft.</p>
+          <p>• <em>Plategrenser og landskapsutvikling:</em> Divergente, konvergente og transforme grenser samt Wilsonsyklusen.</p>
+          <p>• <em>Norge i platetektonisk lys:</em> Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og postglasial landheving.</p>
+        </div>
+      </Callout>
+
       {/* 1. JORDENS OPPBYGNING OG REOLOGI */}
-      <h2 className="font-display text-2xl font-medium tracking-tight">
-        Jordens dynamiske indre: Litosfære, astenosfære og reologi
-      </h2>
+      <section className="space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Jordens dynamiske indre: Litosfære, astenosfære og reologi
+        </h2>
       <p>
         For å forstå platetektonikk må vi først avlive en av de mest seiglivede misforståelsene i geofaget:
         Troen på at jordas plater er «et stykke jordskorpe som flyter på et hav av flytende magma». Slik
@@ -122,11 +137,13 @@ function PlatetektonikkPage() {
       />
 
       <EarthLayersDiagram />
+      </section>
 
       {/* 2. VITENSKAPSHISTORIE OG BEVISENE */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Oppdagelsen og bevisene: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Oppdagelsen og bevisene: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
+        </h2>
       <p>
         I dag tar vi platetektonikken som en selvfølge, men fram til midten av 1960-tallet var ideen om bevegelige
         kontinenter regnet som ren villfarelse blant de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
@@ -222,16 +239,19 @@ function PlatetektonikkPage() {
           { n: "2", label: "Normalforkastningsvegg på nordamerikansk side som glir vestover." },
         ]}
       />
+      </section>
 
       {/* 3. HVILKE KREFTER DRIVER PLATENE? */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Hva driver platene? Slab pull, ridge push og gravitasjonell fysikk
-      </h2>
-      <p>
-        I mange eldre lærebøker forklares platebevegelsene som om mantelen fungerer som et transportbånd som drar
-        platene med seg via friksjon (basal drag). Moderne geodynamiske beregninger og seismisk tomografi har snudd
-        dette bildet på hodet (Forsyth & Uyeda, 1975): <strong>Platene driver i stor grad seg selv!</strong>
-      </p>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Hva driver platene? Slab pull, ridge push og gravitasjonell fysikk
+        </h2>
+        <p>
+          I mange eldre lærebøker forklares platebevegelsene som om mantelen fungerer som et transportbånd som drar
+          platene med seg via friksjon (basal drag). Moderne geodynamiske beregninger og <em>seismisk tomografi</em>{" "}
+          (3D-avbildning av mantelen ved hjelp av seismiske bølger) har snudd dette bildet på hodet
+          (Forsyth & Uyeda, 1975): <strong>Platene driver i stor grad seg selv!</strong>
+        </p>
       <p>
         Platebevegelsene styres av et samspill mellom fire gravitasjonelle og termiske mekanismer:
       </p>
@@ -284,11 +304,13 @@ function PlatetektonikkPage() {
       </p>
 
       <PlatesMapDiagram />
+      </section>
 
       {/* 4. SMELTEFYSIKK OG MAGMADANNELSE */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer
+        </h2>
       <p>
         En av de mest fundamentale leksjonene i Geofag 1 er å forstå <strong>hvorfor og hvordan magma dannes</strong>.
         Nesten all magma på jorden oppstår i den faste øvre mantelen ved delvis oppsmelting (partiell smelting) av
@@ -375,11 +397,13 @@ function PlatetektonikkPage() {
           },
         ]}
       />
+      </section>
 
       {/* 5. DE TRE HOVEDTYPENE PLATEGRENSER */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Plategrensene: Tre relative bevegelser, seks geologiske miljøer
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Plategrensene: Tre relative bevegelser, seks geologiske miljøer
+        </h2>
       <p>
         Jordens mest dramatiske geologiske hendelser er konsentrert langs grensene mellom litosfæreplatene.
         Hva som skjer ved en gitt grense, avhenger av to faktorer: <strong>bevegelsesretningen</strong> (fra
@@ -584,10 +608,43 @@ function PlatetektonikkPage() {
         </li>
       </ul>
 
+      <Quiz
+        questions={[
+          {
+            prompt:
+              "Hva er den fundamentale mekaniske forskjellen mellom en aktiv transformforkastning og en inaktiv bruddsone (fracture zone) i et havbasseng?",
+            options: [
+              "Det er ingen forskjell; begrepene brukes synonymt i geofaget.",
+              "En aktiv transformforkastning forbinder to spredningsryggsegmenter der platene beveger seg i motsatte retninger (kraftig seismisitet), mens bruddsonen utenfor har skorpe som beveger seg i samme retning (aseismisk arr).",
+              "Bruddsoner oppstår bare i subduksjonssoner, mens transformforkastninger bare finnes på land.",
+              "Transformforkastninger har alltid dype jordskjelv dypere enn 300 km.",
+            ],
+            answer: 1,
+            explain:
+              "Riktig! J. Tuzo Wilson viste i 1965 at transformbevegelse kun foregår mellom de to forskjøvede ryggaksene der platene gnisser mot hverandre. Utenfor ryggene beveger havbunnen på begge sider seg i samme retning med samme fart – dermed oppstår det ingen jordskjelv langs bruddsonen.",
+          },
+          {
+            prompt:
+              "Hva kjennetegner soneringen foran en subduksjonssone (fra havet og inn mot kontinentet)?",
+            options: [
+              "Dyphavsgrop → Akkresjonskile → Forbuebasseng → Vulkanbue (og eventuelt bakbuebasseng).",
+              "Midthavsrygg → Normalforkastning → Graben → Skjoldvulkan.",
+              "Kaldera → Sinderkjegle → Stratovulkan → Dyphavsslette.",
+              "Aseismisk bruddsone → Transformforkastning → Kontinentalrift.",
+            ],
+            answer: 0,
+            explain:
+              "Riktig! Denne karakteristiske soneringen skyldes subduksjonens geometri: Platen bøyes ned i dyphavsgropen, sedimenter skrapes av i akkresjonskilen, forbuebassenget dannes foran vulkanbuen som mates av flukssmelting, og slab rollback kan åpne et bakbuebasseng bakerst.",
+          },
+        ]}
+      />
+      </section>
+
       {/* 6. SEISMISITET OG WADATI-BENIOFF SONEN */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
+        </h2>
       <p>
         Jordskjelv er ikke jevnt fordelt over jorden – de avslører plategrensenes eksakte anatomi. Ved å kartlegge
         jordskjelvenes <strong>fokus (hyposenterdybde)</strong> oppdaget de to seismologene Kiyoo Wadati og Hugo
@@ -614,16 +671,24 @@ function PlatetektonikkPage() {
         lagre elastisk spenning eller sprekke sprøtt lenger; de flyter som varm plastelina. Derfor forekommer det
         aldri jordskjelv dypere enn 700 km på jorden.
       </p>
+      </section>
 
       {/* 7. OFIOLITT-KOMPLEKSET OG LEKA */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
+        </h2>
       <p>
-        Hvordan vet geologer egentlig hvordan en havbunnsskorpe ser ut i dypet når verdenshavene er dekket av flere tusen
-        meter vann? Svaret ligger i <strong>ofiolitter</strong>: sjeldne geologiske hendelser der biter av havbunnsskorpe
+        Husk tilbake til tverrsnittet og analysen av midthavsryggen tidligere i kapittelet: Der så vi putelava på toppen,
+        en sverm av sprekker med loddrette basaltganger, og et magmakammer med gabbro som hvilte på mantelen.
+        Hvordan kan vi vite alt dette med sikkerhet når havbunnen befinner seg under flere tusen meter med stummende mørkt vann?
+      </p>
+      <p>
+        Svaret ligger i <strong>ofiolitter</strong>: sjeldne geologiske hendelser der biter av havbunnsskorpe
         og øvre mantel ikke har blitt subdusert og ødelagt, men derimot skjøvet opp på tørt land under en fjellkjedekollisjon
-        (et fenomen kalt <strong>obduksjon</strong>, Furnes et al., 1988).
+        (et fenomen kalt <strong>obduksjon</strong>, Furnes et al., 1988). En ofiolitt er med andre ord et komplett,
+        fossilt stykke havbunn som er hevet på land og veltet over ende, slik at geologer i dag kan spasere tvers gjennom
+        hele lagdelingen — fra dyphavssedimenter ned til selve mantelen — til fots!
       </p>
       <p>
         Ved den berømte Penrose-konferansen i 1972 definerte geologene den klassiske <strong>ofiolitt-stratigrafien</strong>,
@@ -686,11 +751,13 @@ function PlatetektonikkPage() {
       </p>
 
       <PlateTectonicsModel />
+      </section>
 
       {/* 8. HOTSPOTS OG WILSONSYKLUSEN */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp
+        </h2>
       <p>
         Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest imponerende vulkaner –
         som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater.
@@ -742,6 +809,24 @@ function PlatetektonikkPage() {
         nytt superkontinent.
       </p>
 
+      <div className="grid gap-4 sm:grid-cols-2 pt-2">
+        <div className="rounded-xl border border-border bg-card p-4">
+          <h4 className="font-semibold text-emerald-500 text-sm">Atlanterhavet: Modent vekststadium</h4>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Atlanterhavet utvider seg kontinuerlig med 2–2,5 cm i året fra Den midtatlantiske ryggen.
+            Havbassenget er omkranset av <strong>passive kontinentalmarginer</strong> (uten subduksjon eller dype groper).
+            Havet vokser fremdeles.
+          </p>
+        </div>
+        <div className="rounded-xl border border-border bg-card p-4">
+          <h4 className="font-semibold text-rose-400 text-sm">Stillehavet: Avtagende stadium</h4>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Stillehavet er omkranset av subduksjonssoner («Ildringen»). Her slukes gammel, tung havbunn ned i
+            mantelen raskere enn spredningsryggene klarer å produsere ny havbunnsskorpe. Stillehavsbassenget krymper.
+          </p>
+        </div>
+      </div>
+
       <WilsonCycleDiagram />
 
       <PhotoFigure
@@ -763,10 +848,43 @@ function PlatetektonikkPage() {
         ]}
       />
 
+      <Quiz
+        questions={[
+          {
+            prompt:
+              "Hva er en ofiolitt (som på Leka), og hvorfor er den av så enorm vitenskapelig verdi?",
+            options: [
+              "En ofiolitt er et komplett fossil av et forhistorisk havdyr fra silurtiden.",
+              "En ofiolitt er et komplett stykke havbunnsskorpe og øvre mantel som er skjøvet opp på land (obdusert), slik at hele lagdelingen ned til Moho kan studeres til fots.",
+              "En ofiolitt er et meteorittkrater fylt med basaltisk lava.",
+              "En ofiolitt er et magmakammer under en aktiv vulkan.",
+            ],
+            answer: 1,
+            explain:
+              "Riktig! Ofiolitter (som Leka i Trøndelag) oppstår når havbunnsskorpe under spesielle tektoniske kollisjoner unntaksvis skyves opp på land i stedet for å subduere. Det gir geologer et unikt vindu til havbunnens og mantelens dype lagdeling.",
+          },
+          {
+            prompt:
+              "Hva er den fundamentale forskjellen mellom et modent havstadium (Atlanterhavet) og et avtagende havstadium (Stillehavet) i Wilsonsyklusen?",
+            options: [
+              "Atlanterhavet har ferskvann, mens Stillehavet er salt.",
+              "Atlanterhavet utvider seg og har passive kontinentalmarginer uten subduksjonssoner, mens Stillehavet krymper fordi subduksjonssoner langs randen (Ildringen) sluker havbunn raskere enn den produseres.",
+              "Stillehavet har ingen midthavsrygger, mens Atlanterhavet har mange.",
+              "Wilsonsyklusen gjelder kun for Middelhavet, ikke for store verdenshav.",
+            ],
+            answer: 1,
+            explain:
+              "Riktig! I Wilsonsyklusen er Atlanterhavet et voksende hav med passive kontinentalmarginer, mens Stillehavet er et krympende hav dominert av subduksjonssoner som trekker havbunnsskorpen ned i mantelen.",
+          },
+        ]}
+      />
+      </section>
+
       {/* 9. NORGES PLATETEKTONISKE REISE */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi
-      </h2>
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi
+        </h2>
       <p>
         Norge ligger i dag midt inne på <strong>Den eurasiske kontinentalplaten</strong>, tusenvis av kilometer fra
         aktive subduksjonssoner og plategrenser. Grensen i vest er Den midtatlantiske ryggen ute i Norskehavet.
@@ -867,29 +985,25 @@ function PlatetektonikkPage() {
         heading="Geodynamiske nøkkelsteder i Norges nærområde"
         caption="Kartet viser sentrale geologiske lokaliteter: Den aktive spredningsaksen på Island og Jan Mayen, den kaledonske fjellkjederoten i Jotunheimen, og den permiske riftdalen i Oslofeltet."
       />
-
-      <Callout title="Kompetansemål i LK20 (Geofag 1)">
-        <p>
-          Målet for kapittelet er at eleven skal kunne <em>gjøre rede for indre krefter og prosesser, platetektonikk og
-          hvilke konsekvenser dette har for jordskorpen og jordoverflaten</em>, samt forstå hvordan norsk natur og
-          geologi er et resultat av denne globale dynamikken.
-        </p>
-      </Callout>
+      </section>
 
       {/* 10. BEGREPER OG SAMMENDRAG */}
       <h2 className="font-display text-2xl font-medium tracking-tight">Sentralt fagvokabular</h2>
       <TermGrid>
         <Term name="litosfære" def="skorpe + stiv øvre mantel (0–100/250 km) som utgjør de tektoniske platene" />
         <Term name="astenosfære" def="varm, fast silikatmantel (100–350 km) som flyter duktilt over millioner av år" />
-        <Term name="slab pull" def="den dominerende drivkraften: kald, tett eklogitt-slab synker i subduksjonssonen" />
+        <Term name="slab pull" def="den dominerende drivkraften: kald, tett eklogitt-slab synker under egen vekt i subduksjonssonen" />
         <Term name="ridge push" def="gravitasjonsglidning: litosfæren sklir nedover fra den 2–3 km høye midthavsryggen" />
+        <Term name="eklogitt" def="ekstremt tung høytrykksmetamorf bergart (granat + omfasitt) omdannet fra basaltisk havbunnsskorpe i subduksjonssoner; drivmotoren i slab pull" />
         <Term name="dekompresjon" def="manteloppstigning gir trykkfall; solidus krysses uten ekstra varme (rygg/rift)" />
         <Term name="flukssmelting" def="vann fra synkende slab senker solidustemperaturen i mantelkilen over (subduksjon)" />
         <Term name="dehydrering" def="høyt trykk presser vann ut av serpentinitt og leirmineraler i den synkende havbunnen" />
         <Term name="akkresjonskile" def="havbunnssedimenter skrapet av den synkende platen og stablet opp foran dyphavsgropen" />
         <Term name="bakbuebasseng" def="ekstensjonsbasseng dannet bak en vulkanbue på grunn av slab rollback (f.eks. Japanhavet)" />
+        <Term name="passiv margin" def="kontinentalmargin inne på en plate uten subduksjon eller jordskjelvaktivitet (f.eks. norskekysten); fungerer som en mektig sedimentfelle" />
         <Term name="bruddsone" def="inaktiv, aseismisk forlengelse av en transformforkastning utenfor spredningsryggene" />
         <Term name="Wadati-Benioff" def="skrått seismisk plan av jordskjelv (0–700 km dyp) som sporer den synkende platen" />
+        <Term name="seismisk tomografi" def="3D-avbildning av jordens indre mantelstruktur ved hjelp av milliarder av seismiske bølgehastighetsmålinger" />
         <Term name="ofiolitt" def="komplett tverrsnitt av havbunnsskorpe og øvre mantel obdusert på land (f.eks. Leka)" />
         <Term name="obduksjon" def="overkjøring der tung havbunn unntaksvis skyves opp på lett kontinental skorpe i kollisjon" />
         <Term name="paleomagnetisme" def="symmetriske striper med magnetisk reversering i havbunnen (Vine-Matthews-Morley)" />
@@ -1002,6 +1116,16 @@ function PlatetektonikkPage() {
           },
         ]}
       />
+
+      <Callout title="Oppsummering: De viktigste læringspunktene om platetektonikk">
+        <ul className="space-y-1.5 text-sm list-disc pl-4">
+          <li><strong>Mantelen er fast bergart:</strong> Litosfæreplatene flyter ikke på flytende magma, men på duktil astenosfære (varm peridotitt) som flyter seigt over millioner av år.</li>
+          <li><strong>Slab pull er hovedmotoren:</strong> Oseanisk litosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker hele platen med seg (~90 % av kraften).</li>
+          <li><strong>Smelting krever en utløsende mekanisme:</strong> Trykkfall (dekompresjon) ved midthavsrygger, tilførsel av vann (flukssmelting) ved subduksjonssoner, eller temperaturøkning ved dype mantelplymer (hotspots).</li>
+          <li><strong>Ofiolitter er havbunn på land:</strong> Leka i Trøndelag gir en enestående mulighet til å studere hele havbunnsskorpen og Moho-grenseflaten til fots.</li>
+          <li><strong>Norges geologi er skapt av platetektonikk:</strong> Fra den kaledonske kollisjonen og Leka-ofiolitten, via permisk riftdannelse i Oslofeltet, til åpningen av Nord-Atlanteren og dagens postglasiale landheving.</li>
+        </ul>
+      </Callout>
     </TopicLayout>
   );
 }
