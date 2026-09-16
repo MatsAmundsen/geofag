@@ -4,40 +4,60 @@ Rediger tekst under `src/content/`. Rute-filene røres bare ved tittel, lead, pr
 
 ## Platetektonikk — `/geofag-1/platetektonikk`
 
-Mappe: `src/content/g1/platetektonikk/`
+`src/content/g1/platetektonikk/`
 
-| Fil | Hva du redigerer |
+| Fil | Hva |
 |---|---|
-| `00-kompetansemal.tsx` | LK20-boks |
-| `01-indre.tsx` | Litosfære, astenosfære, reologi |
-| `02-bevis.tsx` | Wegener, Tharp, Hess, Vine–Matthews |
-| `03-drivkrefter.tsx` | Slab pull, ridge push |
-| `04-smelting.tsx` | Dekompresjon, fluks, plym |
-| `05-plategrenser.tsx` | Divergent, konvergent, transform |
-| `06-benioff.tsx` | Wadati–Benioff |
-| `07-ofiolitt.tsx` | Leka |
-| `08-modell.tsx` | Interaktiv modell |
-| `09-wilson.tsx` | Hotspot og Wilsonsyklus |
-| `10-norge.tsx` | Kaledonidene, Oslofeltet, isostasi |
-| `11-begreper.tsx` | Fagvokabular |
-| `12-quiz.tsx` | Sluttquiz og oppsummering |
+| `00-kompetansemal` | LK20 |
+| `01-indre` | Litosfære / astenosfære |
+| `02-bevis` | Wegener – Vine–Matthews |
+| `03-drivkrefter` | Slab pull |
+| `04-smelting` | Smeltefysikk |
+| `05-plategrenser` | Tre grenser |
+| `06-benioff` | Wadati–Benioff |
+| `07-ofiolitt` | Leka |
+| `08-modell` | Simulator |
+| `09-wilson` | Wilsonsyklus |
+| `10-norge` | Norges reise |
+| `11-begreper` | Ordliste |
+| `12-quiz` | Quiz |
 
 ## ENSO — `/tema/klima/enso`
 
-Mappe: `src/content/g2/enso/`
+`src/content/g2/enso/`
 
-| Fil | Hva du redigerer |
+| Fil | Hva |
 |---|---|
-| `00-aarets.tsx` | Boksen «Årets El Niño» |
-| `01-hva-er.tsx` | Hva er ENSO |
-| `02-utforsk.tsx` | Ingress til foldene |
-| `03-walker.tsx` | Walker / nøytral |
-| `04-elnino.tsx` | El Niño-fasen |
-| `05-lanina.tsx` | La Niña-fasen |
-| `06-modell.tsx` | Sammenligningsdiagram |
-| `07-indekser.tsx` | SOI og ONI |
-| `08-telekoblinger.tsx` | Rossby / IOD / NAO |
-| `09-varmere.tsx` | Varmere verden og paleo |
-| `10-aarets.tsx` | Plassering av årets boks |
-| `11-eksamen.tsx` | Eksamens- og misforståelsesbokser |
-| `12-begreper-quiz.tsx` | Begrep + quiz |
+| `00-aarets` | Årets El Niño |
+| `01-hva-er` | Hva er ENSO |
+| `02-utforsk` | Ingress |
+| `03-walker` | Walker |
+| `04-elnino` | El Niño |
+| `05-lanina` | La Niña |
+| `06-modell` | Sammenligning |
+| `07-indekser` | SOI / ONI |
+| `08-telekoblinger` | Rossby / IOD |
+| `09-varmere` | Paleo / klima |
+| `10-aarets` | Plassering |
+| `11-eksamen` | Eksamen |
+| `12-begreper-quiz` | Begrep + quiz |
+
+## NAO — `/tema/klima/nao`
+
+`src/content/g2/nao/`
+
+| Fil | Hva |
+|---|---|
+| `00-ekstreme` | Ekstreme vintre |
+| `01-hva-er` | Hva NAO er |
+| `02-utforsk` | Ingress |
+| `03-motor` | Geostrofisk motor |
+| `04-positiv` | NAO+ |
+| `05-negativ` | NAO− |
+| `06-simulator` | Simulator |
+| `07-indeks` | Indeks / AO |
+| `08-stratosfare` | SSW / tele |
+| `09-varmere` | AMOC / klima |
+| `10-ekstreme` | Plassering |
+| `11-eksamen` | Eksamen |
+| `12-begreper-quiz` | Begrep + quiz |
