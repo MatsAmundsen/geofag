@@ -34,6 +34,35 @@ export function Eksamen() {
       <Callout title="Vanlige misforståelser">
         <p>
           ENSO er <em>ikke</em> comprsåket av menneskeskapt global oppvarming.
+          Det er en naturlig svingning som har eksistert i tusenvis av år.
+          Spørsmålet er om klimaendringer gjør ekstremhendelsene kraftigere.
+        </p>
+        <p>
+          <em>El Niño betyr ikke nødvendigvis varmt vær i Europa.</em>{" "}
+          Forbindelsene er indirekte og moduleres av NAO og polarvirvelen.
+          Telekoblingene er statistiske tendenser, ikke garantier for
+          enkeltvintre.
+        </p>
+        <p>
+          <em>Passaten må ikke vente på at termoklinen endres først.</em> De
+          forsterker hverandre. Et vestavindsutbrudd kan starte i atmosfæren;
+          Kelvin-bølger endrer så termoklinen i øst. Havet kan likevel være
+          oppladet på forhånd.
+        </p>
+        <p>
+          <em>Oppvellingen skrus ikke av.</em> Den henter lunkent vann fordi
+          termoklinen ligger dypere — derfor svikter næringen, ikke fordi
+          vannet slutter å stige.
+        </p>
+        <p>
+          <em>Ikke forveksl El Niño med IOD.</em> El Niño sitter i tropisk
+          Stillehav; IOD sitter i tropisk Indiahav. De er ulike fenomener som
+          kan sammenfalle og forsterke hverandre.
+        </p>
+        <p>
+          <em>SOI og ONI måler det samme fenomenet, men med ulike metoder.</em>{" "}
+          SOI er atmosfærebasert (lufttrykk), ONI er havbasert (temperatur).
+          Begge brukes — og kan noen ganger peke litt ulikt i overgangsfaser.
         </p>
       </Callout>
     </>
