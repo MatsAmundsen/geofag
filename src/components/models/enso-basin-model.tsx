@@ -129,6 +129,34 @@ function Marker({ id, color }: { id: string; color: string }) {
   );
 }
 
+/** Path geometry sets direction; dash animation always runs toward markerEnd. */
+function FlowArrow({
+  d,
+  color,
+  width,
+  markerId,
+  opacity = 1,
+}: {
+  d: string;
+  color: string;
+  width: number;
+  markerId: string;
+  opacity?: number;
+}) {
+  return (
+    <path
+      d={d}
+      fill="none"
+      stroke={color}
+      strokeWidth={width}
+      strokeLinecap="round"
+      markerEnd={`url(#${markerId})`}
+      className="enso-flow"
+      opacity={opacity}
+    />
+  );
+}
+
 function CloudBank({
   x,
   y,
@@ -276,10 +304,10 @@ export function EnsoBasinModel() {
   const title = index >= 0 ? "El Niño-tilstand" : "La Niña-tilstand";
   const walkerLabel =
     index >= 0.25
-      ? "Brutt / svekket Walker-sirkulasjon"
+      ? "Forskjøvet Walker-sirkulasjon (oppstigning flyttet øst)"
       : index <= -0.25
         ? "Forsterket Walker-sirkulasjon"
-        : "Walker-sirkulasjonen i overgang";
+        : "Walker-sirkulasjonen (nøytral)";
 
   const sstStops = useMemo(() => {
     return [0, 0.18, 0.36, 0.52, 0.68, 0.84, 1].map((f) => ({
@@ -294,12 +322,26 @@ export function EnsoBasinModel() {
 
   const poolX = lerp(CUT_L, CUT_R, lerp3(0.22, 0.32, 0.68, index));
   const poolRx = lerp3(150, 210, 310, index);
-  const convectionX = lerp(210, 860, lerp3(0.02, 0.12, 0.82, index));
+  const convectionX = lerp(210, 860, lerp3(0.08, 0.16, 0.62, index));
   const eastStorm = elNino;
   const westStorm = laNina;
-  const tradeDir = lerp3(-1, -0.85, 0.42, index);
-  const tradeStrength = lerp3(1.35, 1, 0.32, index);
+  const classicWalker = clamp(1 - index, 0, 1);
+  const reversedWalker = elNino;
   const upwell = lerp3(1, 0.55, 0.12, index);
+  const tradeArrows = [0.18, 0.34, 0.5, 0.66, 0.82].map((f, i) => {
+    const x = lerp(CUT_L + 50, CUT_R - 50, f);
+    const y = 292 + (i % 2) * 8;
+    const towardEast = lerp3(-1.35, -0.9, f < 0.7 ? 0.9 : -0.4, index);
+    const strength = Math.abs(towardEast);
+    const dir = towardEast >= 0 ? 1 : -1;
+    const len = 58 * strength;
+    return {
+      key: i,
+      d: `M ${x - dir * len * 0.5} ${y} L ${x + dir * len * 0.5} ${y}`,
+      width: 1.6 + strength,
+      opacity: 0.4 + 0.55 * strength,
+    };
+  });
   const oni = (index * 2.05).toFixed(1);
   const westSst = sstAt(0.12, index).toFixed(1);
   const eastSst = sstAt(0.9, index).toFixed(1);
@@ -309,21 +351,18 @@ export function EnsoBasinModel() {
       ? "Passatene slakker. Varmt overflatevann brer seg østover, termoklinen flater ut, og oppvellingen utenfor Peru henter lunkent vann. Konveksjonen flytter mot sentralt og østlig Stillehav — tørke i Indonesia, flom i Peru."
       : "Passatene er unormalt sterke. Varmtvannet stables i vest, termoklinen står bratt og grunn i øst, og oppvellingen utenfor Peru er kraftig. Monsun og flom i Indonesia og Australia, tørke langs Peru.";
 
-  const tradeY = 292;
-  const tradePaths = [0.22, 0.4, 0.58, 0.74].map((f, i) => {
-    const x = lerp(CUT_L + 40, CUT_R - 40, f);
-    const len = 70 * tradeStrength;
-    const dir = tradeDir >= 0 ? 1 : -1;
-    const x1 = x - dir * len * 0.45;
-    const x2 = x + dir * len * 0.45;
-    return { key: i, d: `M ${x1} ${tradeY + (i % 2) * 10} L ${x2} ${tradeY + (i % 2) * 10}` };
-  });
+  const tradeCaption =
+    index >= 0.25
+      ? "Vestavind i vest/sentralt Stillehav → · svekket passat nær Sør-Amerika ←"
+      : index <= -0.25
+        ? "← Ekstra sterke passatvinder (øst mot vest)"
+        : "← Passatvinder (øst mot vest)";
 
   return (
     <ModelFrame
       kicker="Interaktiv 3D-animasjon"
       title="El Niño og La Niña i tropisk Stillehav"
-      lead="Samme snitt som lærebokfiguren: vest (Indonesia/Australia) til venstre, øst (Peru) til høyre. Animasjonen viser hvordan passat, varmtvannsbasseng, Walker-celler og termoklin bytter side."
+      lead="Samme snitt som lærebokfiguren: vest (Indonesia/Australia) til venstre, øst (Peru) til høyre. Pilene følger NOAA Climate.gov / PMEL og NASA: klassisk Walker (opp i vest, øvre strøm mot øst, ned i øst) ved La Niña; forskjøvet celle med nedsynking over Indonesia og oppstigning over sentralt/østlig tropisk hav ved El Niño."
       toolbar={
         <div className="flex flex-wrap gap-2">
           <ModelTab active={phase === "elnino"} onClick={() => snapTo(1)}>
@@ -502,87 +541,60 @@ export function EnsoBasinModel() {
               Stillehav
             </text>
 
-            {/* Walker-celler i himmelen */}
-            <g opacity={0.35 + laNina * 0.65}>
-              <path
-                d="M 250 210 C 250 92, 760 88, 820 210"
-                fill="none"
-                stroke="#334155"
-                strokeWidth="2.4"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-steel)`}
+            {/* Walker: én celle om gangen. Klassisk = La Niña/nøytral (NOAA Climate.gov).
+                El Niño = forskjøvet/reversert stillehavscelle: nedsynking over Indonesia,
+                oppstigning over sentralt/østlig tropisk hav, øvre retur mot vest. */}
+            <g opacity={classicWalker}>
+              <FlowArrow
+                d="M 250 208 L 250 98"
+                color="#2563eb"
+                width={2.2 + laNina * 1.2}
+                markerId={`${uid}-blue`}
               />
-              <path
-                d="M 250 210 L 250 118"
-                fill="none"
-                stroke="#2563eb"
-                strokeWidth="2.6"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-blue)`}
+              <FlowArrow
+                d="M 268 92 L 800 92"
+                color="#334155"
+                width={2 + laNina * 0.8}
+                markerId={`${uid}-steel`}
               />
-              <path
-                d="M 820 118 L 820 210"
-                fill="none"
-                stroke="#334155"
-                strokeWidth="2.6"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-steel)`}
+              <FlowArrow
+                d="M 820 98 L 820 208"
+                color="#334155"
+                width={2.2 + laNina * 1.2}
+                markerId={`${uid}-steel`}
               />
+              <text
+                x="530"
+                y="84"
+                textAnchor="middle"
+                fill="#1e293b"
+                fontSize="12"
+                fontWeight={700}
+                fontFamily="Source Sans 3, sans-serif"
+              >
+                Øvre returstrøm mot øst →
+              </text>
             </g>
-            <g opacity={elNino}>
-              <path
-                d="M 240 112 C 320 70, 430 70, 500 130"
-                fill="none"
-                stroke="#475569"
-                strokeWidth="2.3"
-                className="enso-flow-rev"
-                markerEnd={`url(#${uid}-steel)`}
-              />
-              <path
-                d="M 500 112 C 430 200, 300 205, 240 150"
-                fill="none"
-                stroke="#475569"
-                strokeWidth="2.3"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-steel)`}
-              />
-              <path
-                d="M 560 120 C 640 68, 790 72, 860 128"
-                fill="none"
-                stroke="#475569"
-                strokeWidth="2.3"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-steel)`}
-              />
-              <path
-                d="M 860 118 C 790 205, 650 208, 560 150"
-                fill="none"
-                stroke="#475569"
-                strokeWidth="2.3"
-                className="enso-flow-rev"
-                markerEnd={`url(#${uid}-steel)`}
-              />
-              <path
-                d="M 240 118 L 240 205"
-                fill="none"
-                stroke="#334155"
-                strokeWidth="2.5"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-steel)`}
-              />
-              <path
-                d="M 860 205 L 860 118"
-                fill="none"
-                stroke="#2563eb"
-                strokeWidth="2.6"
-                className="enso-flow"
-                markerEnd={`url(#${uid}-blue)`}
-              />
+            <g opacity={reversedWalker}>
+              <FlowArrow d="M 250 98 L 250 208" color="#334155" width={2.6} markerId={`${uid}-steel`} />
+              <FlowArrow d="M 700 208 L 700 98" color="#2563eb" width={2.8} markerId={`${uid}-blue`} />
+              <FlowArrow d="M 682 92 L 268 92" color="#334155" width={2.4} markerId={`${uid}-steel`} />
+              <text
+                x="470"
+                y="84"
+                textAnchor="middle"
+                fill="#1e293b"
+                fontSize="12"
+                fontWeight={700}
+                fontFamily="Source Sans 3, sans-serif"
+              >
+                ← Øvre returstrøm mot vest
+              </text>
             </g>
 
             <text
               x="560"
-              y="78"
+              y="64"
               textAnchor="middle"
               fill="#1e293b"
               fontSize="15"
@@ -604,7 +616,7 @@ export function EnsoBasinModel() {
               {index >= 0 ? "Synkende luft" : "Oppstigende luft"}
             </text>
             <text
-              x="868"
+              x={index >= 0 ? 700 : 868}
               y="96"
               textAnchor="middle"
               fill="#1e293b"
@@ -613,10 +625,10 @@ export function EnsoBasinModel() {
               fontFamily="Source Sans 3, sans-serif"
               opacity={0.25 + Math.max(elNino, laNina) * 0.75}
             >
-              {index >= 0 ? "Konvektive stormer" : "Synkende luft"}
+              {index >= 0 ? "Konveksjon over sentralt/østlig hav" : "Synkende luft"}
             </text>
             <text
-              x="868"
+              x="700"
               y="112"
               textAnchor="middle"
               fill="#1e293b"
@@ -625,7 +637,7 @@ export function EnsoBasinModel() {
               fontFamily="Source Sans 3, sans-serif"
               opacity={elNino}
             >
-              og kraftig nedbør
+              (regn når kysten av Peru)
             </text>
 
             <CloudBank
@@ -636,10 +648,10 @@ export function EnsoBasinModel() {
               rain={0.15 + Math.max(eastStorm, westStorm) * 0.85}
             />
             <CloudBank
-              x={index >= 0 ? 250 : 840}
-              y={148}
-              scale={0.55}
-              storm={0.1}
+              x={index >= 0 ? 250 : 820}
+              y={150}
+              scale={0.48}
+              storm={0.05}
               rain={0}
             />
 
@@ -726,34 +738,29 @@ export function EnsoBasinModel() {
               strokeWidth="1.4"
             />
 
-            {/* Passatvinder på overflaten */}
+            {/* Passatvinder: easterlies = mot vest. El Niño: vestavind i vest/sentralt
+                Stillehav, svekket easterly nær Sør-Amerika (NASA 2015/16, NOAA PMEL). */}
             <g>
-              {tradePaths.map((p) => (
-                <path
+              {tradeArrows.map((p) => (
+                <FlowArrow
                   key={p.key}
                   d={p.d}
-                  fill="none"
-                  stroke="#1e3a5f"
-                  strokeWidth={1.8 + tradeStrength}
-                  className={tradeDir >= 0 ? "enso-flow" : "enso-flow-rev"}
-                  markerEnd={`url(#${uid}-trade)`}
-                  opacity={0.55 + tradeStrength * 0.35}
+                  color="#1e3a5f"
+                  width={p.width}
+                  markerId={`${uid}-trade`}
+                  opacity={p.opacity}
                 />
               ))}
-            <text
-              x="560"
-              y="268"
-              textAnchor="middle"
-              fill="#0f172a"
-              fontSize="13"
-              fontWeight={700}
-              fontFamily="Source Sans 3, sans-serif"
-            >
-                {index >= 0.2
-                  ? "Svekkede passatvinder / vestavindsutbrudd →"
-                  : index <= -0.2
-                    ? "← Ekstra sterke passatvinder"
-                    : "← Passatvinder (øst mot vest)"}
+              <text
+                x="560"
+                y="268"
+                textAnchor="middle"
+                fill="#0f172a"
+                fontSize="12.5"
+                fontWeight={700}
+                fontFamily="Source Sans 3, sans-serif"
+              >
+                {tradeCaption}
               </text>
             </g>
 
@@ -862,24 +869,19 @@ export function EnsoBasinModel() {
               </text>
             </g>
 
-            {/* Oppvelling ved Peru */}
-            <g transform={`translate(990 ${depthY(210)})`} opacity={0.25 + upwell * 0.75}>
-              <path
+            {/* Oppvelling fortsetter, men svekkes (PMEL: reduced efficiency, not reversed). */}
+            <g transform={`translate(990 ${depthY(210)})`} opacity={0.2 + upwell * 0.8}>
+              <FlowArrow
                 d="M 0 70 L 0 -70"
-                fill="none"
-                stroke="#7dd3fc"
-                strokeWidth={2 + upwell * 2.4}
-                className="enso-flow"
-                markerEnd={`url(#${uid}-up)`}
+                color="#7dd3fc"
+                width={1.6 + upwell * 2.6}
+                markerId={`${uid}-up`}
               />
-              <path
+              <FlowArrow
                 d="M -16 54 L -16 -46"
-                fill="none"
-                stroke="#38bdf8"
-                strokeWidth="1.8"
-                className="enso-flow"
-                style={{ animationDelay: "-0.4s" }}
-                markerEnd={`url(#${uid}-up)`}
+                color="#38bdf8"
+                width={1.4 + upwell * 1.2}
+                markerId={`${uid}-up`}
               />
               <text
                 x="18"
@@ -889,7 +891,7 @@ export function EnsoBasinModel() {
                 fontWeight={700}
                 fontFamily="Source Sans 3, sans-serif"
               >
-                {index >= 0.25 ? "Undertrykt oppvelling" : "Intens oppvelling"}
+                {index >= 0.25 ? "Svekket oppvelling (lunkent vann)" : "Intens oppvelling"}
               </text>
             </g>
 
