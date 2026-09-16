@@ -339,8 +339,8 @@ export function EnsoBasinModel() {
         </div>
       }
     >
-      <div className="grid items-start gap-5 lg:grid-cols-12">
-        <div className="flex flex-col gap-4 lg:col-span-4">
+      <div className="flex flex-col gap-5">
+        <div className="grid items-start gap-4 lg:grid-cols-2">
           <ModelPanel>
             <label className="flex justify-between gap-3 text-sm font-medium">
               <span>ENSO-fase</span>
@@ -383,7 +383,7 @@ export function EnsoBasinModel() {
           </ModelNote>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-border bg-[#f4f1ea] lg:col-span-8">
+        <div className="overflow-hidden rounded-xl border border-border bg-[#f4f1ea]">
           <svg
             viewBox="0 0 1120 640"
             className={`mx-auto h-auto w-full ${playing ? "" : "model-paused"}`}
@@ -740,15 +740,15 @@ export function EnsoBasinModel() {
                   opacity={0.55 + tradeStrength * 0.35}
                 />
               ))}
-              <text
-                x="560"
-                y="278"
-                textAnchor="middle"
-                fill="#0f172a"
-                fontSize="13"
-                fontWeight={700}
-                fontFamily="Source Sans 3, sans-serif"
-              >
+            <text
+              x="560"
+              y="268"
+              textAnchor="middle"
+              fill="#0f172a"
+              fontSize="13"
+              fontWeight={700}
+              fontFamily="Source Sans 3, sans-serif"
+            >
                 {index >= 0.2
                   ? "Svekkede passatvinder / vestavindsutbrudd →"
                   : index <= -0.2
@@ -830,16 +830,16 @@ export function EnsoBasinModel() {
               Termoklin ({index >= 0 ? "utdypet og utflatet" : "bratt, grunn i øst"})
             </text>
             <text
-              x="560"
+              x={index >= 0 ? 560 : 320}
               y={SURFACE_Y + 28}
               textAnchor="middle"
               fill="#fff7ed"
               fontSize="15"
               fontWeight={800}
               fontFamily="Source Sans 3, sans-serif"
-              opacity={0.4 + elNino * 0.6}
+              opacity={0.55 + Math.abs(index) * 0.45}
             >
-              Varmt overflatevann {index >= 0 ? "> 28 °C" : "stables i vest"}
+              {index >= 0 ? "Varmt overflatevann > 28 °C" : "Varmt basseng i vest"}
             </text>
 
             <g opacity={elNino}>
