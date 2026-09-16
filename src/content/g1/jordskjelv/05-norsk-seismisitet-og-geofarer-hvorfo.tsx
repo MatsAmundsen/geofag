@@ -1,11 +1,10 @@
 import { Callout } from "@/components/callout";
-import {
-  NorwayEarthquakesDiagram,
-} from "@/components/diagrams";
+import { NorwayEarthquakesDiagram } from "@/components/diagrams";
 
 export function NorskSeismisitetOgGeofarerHvorfo() {
   return (
     <>
+      {/* SEKSJON 5: NORSK SEISMISITET */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Norsk seismisitet og geofarer: Hvorfor skjelver Norge?
@@ -73,6 +72,7 @@ export function NorskSeismisitetOgGeofarerHvorfo() {
           </ul>
         </div>
       </section>
+
     </>
   );
 }

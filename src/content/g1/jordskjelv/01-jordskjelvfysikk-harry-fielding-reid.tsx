@@ -1,11 +1,10 @@
+import { ElasticReboundDiagram } from "@/components/diagrams";
 import { OrdBoks } from "@/components/term";
-import {
-  ElasticReboundDiagram,
-} from "@/components/diagrams";
 
 export function JordskjelvfysikkHarryFieldingReid() {
   return (
     <>
+      {/* SEKSJON 1: ELASTISK TILBAKEFJÆRING */}
       <section className="space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Jordskjelvfysikk: Harry Fielding Reids elastiske tilbakefjæring
@@ -68,6 +67,7 @@ export function JordskjelvfysikkHarryFieldingReid() {
           barn="Punktet på jordoverflaten som ligger loddrett over hyposenteret."
         />
       </section>
+
     </>
   );
 }

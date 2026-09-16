@@ -7,18 +7,21 @@ export function Seksjon2() {
         <Quiz
           questions={[
             {
-              prompt: "Hva var Richard Dixon Oldhams (1906) avgjørende bevis for at jordens ytre kjerne er flytende?",
+              prompt:
+                "Hva var Richard Dixon Oldhams (1906) avgjørende bevis for at jordens ytre kjerne er flytende?",
               options: [
                 "P-bølger reflekteres ikke fra jordens overflate.",
-                "S-bølger mangler fullstendig på målestasjoner mellom 103° og 180° fra episenteret.",
+                "S-bølger (transversale skjærbølger) mangler fullstendig på seismiske målestasjoner i vinkelavstanden mellom 103° og 180° fra episenteret.",
                 "Borehull i Russland nådde flytende magma på 12 kilometers dyp.",
                 "Rayleigh-bølger forplanter seg raskere gjennom havet enn gjennom kontinenter.",
               ],
               answer: 1,
-              explain: "Riktig! S-bølger har Vs = √(μ/ρ). Væsker har μ = 0. Oldhams S-skyggesone mellom 103° og 180° beviste at den ytre kjernen er flytende.",
+              explain:
+                "Riktig! S-bølger er transversale skjærbølger med hastighet Vs = √(μ/ρ). Fordi væsker mangler skjærstivhet (μ = 0), kan ikke S-bølger eksistere eller forplante seg i en væske. Oldhams påvisning av S-bølgenes skyggesone mellom 103° og 180° beviste ugjendrivelig at jordens kjerne har et flytende ytre lag.",
             },
             {
-              prompt: "Dersom et jordskjelv øker fra magnitude 5,0 til 7,0 på Mw, hvor mange ganger mer seismisk energi frigjøres?",
+              prompt:
+                "Dersom et jordskjelv øker fra magnitude 5,0 til magnitude 7,0 på momentmagnitudeskalaen (Mw), hvor mange ganger mer seismisk energi frigjøres?",
               options: [
                 "2 ganger mer energi.",
                 "20 ganger mer energi.",
@@ -26,73 +29,86 @@ export function Seksjon2() {
                 "Nøyaktig 1000 ganger mer energi (31,6² ≈ 1000).",
               ],
               answer: 3,
-              explain: "Riktig! Én enhet = ca. 31,6 ganger mer energi. To enheter = 10^(1,5 × 2) = 1000 ganger mer energi.",
+              explain:
+                "Riktig! Magnitudeskalaen er logaritmisk med grunntall 10^(1,5) for energi. Én enhet opp tilsvarer ca. 31,6 ganger mer frigjort seismisk energi. To enheter opp tilsvarer 10^(1,5 × 2) = 10³ = 1000 ganger mer energi!",
             },
             {
-              prompt: "Hva skjer fysisk med en tsunami når den går fra dyphavet (4000 m) inn mot kysten (10 m dyp)?",
+              prompt:
+                "Hva skjer fysisk med en tsunami når den forplanter seg fra dyphavet (4000 m) og inn mot kysten (10 m dyp)?",
               options: [
-                "Hastigheten øker, mens bølgehøyden avtar til null.",
-                "Hastigheten synker fra ~700 km/t til ~36 km/t, bølgelengden komprimeres, og høyden presses opp etter Greens lov (shoaling).",
-                "Bølgen forvandles fra tverrbølge til lengdebølge.",
-                "Ingenting endrer seg.",
+                "Bølgens hastighet øker kraftig, mens bølgehøyden avtar til null.",
+                "Bølgehastigheten synker dramatisk fra ~700 km/t til ~36 km/t, bølgelengden komprimeres, og bølgehøyden presses opp etter Greens lov (shoaling).",
+                "Bølgen forvandles fra en tverrbølge til en lengdebølge.",
+                "Ingenting endrer seg; tsunamier har konstant hastighet og høyde overalt.",
               ],
               answer: 1,
-              explain: "Riktig! v = √(g·d). Grunnere vann bremser fronten. Energifluks bevares ved at bølgelengden krymper og vannsøylen heves (shoaling).",
+              explain:
+                "Riktig! Fordi v = √(g·d), fører det grunnere vannet til at bølgefronten bremses kraftig opp. For at den totale energifluksen skal bevares, må bølgelengden krympe og vannsøylen heve seg oppover i en massiv vannvegg (shoaling).",
             },
             {
-              prompt: "Hva er de to viktigste drivkreftene bak jordskjelv i Norge?",
+              prompt:
+                "Hva er de to viktigste geofysiske drivkreftene bak jordskjelv i Norge, til tross for at landet er et intraplate-område?",
               options: [
-                "Subduksjon av Nordsjøen og vulkanisme i Oslofeltet.",
-                "Ryggtrykk fra Den midtatlantiske ryggen og postglasial landheving (isostasi).",
-                "Tidevannskrefter og sentrifugalkraft.",
-                "Oljeboring og smelting av permafrost.",
+                "Subduksjon av Nordsjøen under Vestlandet og vulkanisme i Oslofeltet.",
+                "Ryggtrykk («ridge push») fra Den midtatlantiske ryggen i vest og postglasial landheving (isostasi) etter istiden.",
+                "Tidevannskrefter fra månen og sentrifugalkraft fra jordrotasjonen.",
+                "Oljeboring i Nordsjøen og smelting av permafrost i Finnmark.",
               ],
               answer: 1,
-              explain: "Riktig! Ridge push øst-sørøst pluss differensiell heving etter iskappen reaktiverer gamle forkastninger.",
+              explain:
+                "Riktig! Norge utsettes for kompresjonsspenninger rettet mot øst-sørøst på grunn av ryggtrykk fra den ekspanderende Midtatlantiske ryggen, kombinert med differensiell heving (opptil 8–9 mm/år) etter at den 3 km tykke iskappen smeltet. Dette reaktiverer gamle forkastningssoner.",
             },
             {
-              prompt: "Forskjellen på opprinnelsen til tsunamier i Stillehavet og i Norge?",
+              prompt:
+                "Hva er den fundamentale forskjellen på opprinnelsen til tsunamier i Stillehavet sammenlignet med historiske tsunamier i Norge?",
               options: [
-                "Stillehavet: megathrust ved subduksjon. Norge: skred i fjorder eller på sokkelen (Tafjord, Storegga).",
+                "I Stillehavet skyldes tsunamier store megathrust-jordskjelv ved subduksjonssoner; i Norge skyldes de nesten utelukkende skred i fjorder eller på sokkelskråningen (f.eks. Tafjord og Storegga).",
                 "Norske tsunamier skapes av tropiske orkaner i Nordsjøen.",
-                "Stillehavet er tidevann; Norge er Beerenberg.",
-                "Ingen forskjell.",
+                "Stillehavstsunamier er forårsaket av tidevann, mens norske tsunamier er forårsaket av Beerenberg på Jan Mayen.",
+                "Det er ingen forskjell; begge typer dannes ved at litosfæreplater kolliderer langs kystlinjen.",
               ],
               answer: 0,
-              explain: "Riktig! Norge har ingen aktive subduksjonssoner. Tsunamier kommer fra fjellskred og undervannsskred.",
+              explain:
+                "Riktig! Norge har ingen aktive subduksjonssoner som kan heve havbunnen over store områder. Norske tsunamier oppstår når store stein- og sedimentvolumer raser ned i vannmassene — enten som fjellskred i trange vestlandsfjorder (Tafjord 1934, Loen, Åknes) eller som massive undervannsskred på kontinentalskråningen (Storeggaskredet for 8150 år siden).",
             },
             {
-              prompt: "Hva er seismisk baseisolering (Eurokode 8)?",
+              prompt:
+                "Hva er seismisk baseisolering, og hva er prinsippet bak (Eurokode 8)?",
               options: [
-                "Bygningen boltes fast til fjellet.",
-                "Bygningen står på fleksible elastomere gummilagre slik at bakken kan ryste under mens strukturen forblir tilnærmet i ro.",
-                "Bygningen kles med blyplater.",
-                "Fundamentet fylles med vann.",
+                "Bygningen boltes fast til fjellet med gigantiske stålstag for å hindre all bevegelse.",
+                "Bygningen monteres på fleksible elastomere gummilagre eller glidependler, slik at bakken kan ryste under bygget mens selve strukturen forblir tilnærmet i ro.",
+                "Bygningen kles med blyplater for å stoppe seismisk stråling.",
+                "Fundamentet fylles med vann for å absorbere P-bølger.",
               ],
               answer: 1,
-              explain: "Riktig! Baseisolering frikopler overbygningen og kan redusere horisontale skjærkrefter med 70–80 %.",
+              explain:
+                "Riktig! Baseisolering frikopler bygningens overbygning fra bakkeakselerasjonene ved hjelp av fleksible bly-gummi-lagre. Dette reduserer horisontale skjærkrefter på bygningskroppen med opptil 70–80 %.",
             },
             {
-              prompt: "Hva er forskjellen på seismisk fare og seismisk risiko?",
+              prompt:
+                "Hva er forskjellen på seismisk fare og seismisk risiko?",
               options: [
-                "Samme begrep.",
-                "Fare er fysisk sannsynlighet for skjelv; risiko kombinerer fare med sårbarhet og eksponering.",
-                "Risiko gjelder bare tsunamier.",
-                "Fare måles i magnitude, risiko i intensitet.",
+                "Det er det samme begrepet; bare ulikt norsk og engelsk uttrykk.",
+                "Seismisk fare er den fysiske sannsynligheten for jordskjelv i et område, mens seismisk risiko kombinerer fare med sårbarhet og eksponering av befolkning og bebyggelse.",
+                "Seismisk risiko gjelder bare tsunamier, mens seismisk fare gjelder jordskjelv på land.",
+                "Seismisk fare måles i magnitude, mens seismisk risiko måles i intensitet.",
               ],
               answer: 1,
-              explain: "Riktig! Kraftig skjelv i ødemark = høy fare, lav risiko. Svakt skjelv under by = lav fare, høy risiko.",
+              explain:
+                "Riktig! Et kraftig skjelv i øde fjellandskap er høy fare, men lav risiko fordi ingen er eksponert. Et svakt skjelv under en tett befolket by med gammel bygningsstock er lav fare, men potensielt høy risiko på grunn av sårbar infrastruktur og stor eksponering.",
             },
             {
-              prompt: "Hvorfor er Wadati-Benioff-sonen bevis på subduksjon av kald havbunn?",
+              prompt:
+                "Hvorfor er den seismiske Wadati-Benioff-sonen et bevis på at en kald havbunnsplate subdueres nedover i mantelen?",
               options: [
-                "Fordi magmaen smelter og eksploderer.",
-                "Fordi den kalde, stive platen er sprø ned til 700 km og skjelvfokusene sporer plategeometrien.",
-                "Fordi bølger reflekteres av plategrensen.",
-                "Fordi varme får bergartene til å kollapse.",
+                "Fordi jordskjelv i sonen oppstår fordi magmaen smelter og eksploderer.",
+                "Fordi den kalde, stive havbunnsplaten er sprø ned til 700 km dyp og kan lagre og frigjøre elastisk spenning langs et skrått plan av fokuspunkter som sporer nøyaktig plategeometrien.",
+                "Fordi seismiske bølger reflekteres av plategrenseflaten og danner tydelige signaler.",
+                "Fordi subduksjon produserer varme som får bergartene til å kollapse og utløse skjelv.",
               ],
               answer: 1,
-              explain: "Riktig! Det skrå planet av skjelv følger den kalde platen. Under 700 km er bergartene plastiske — ingen skjelv.",
+              explain:
+                "Riktig! Det skrå planet av jordskjelv (0–700 km dyp) i subduksjonssoner følger nøyaktig den kalde, sprø platen som tvinges ned i den varme, plastiske astenosfæren. Under 700 km er trykk og temperatur så høyt at bergartene deformeres plastisk — og ingen jordskjelv oppstår.",
             },
           ]}
         />

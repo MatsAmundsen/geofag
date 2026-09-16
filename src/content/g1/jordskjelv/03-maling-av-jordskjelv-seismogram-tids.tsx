@@ -1,11 +1,10 @@
 import { Callout } from "@/components/callout";
-import {
-  SeismogramDiagram,
-} from "@/components/diagrams";
+import { SeismogramDiagram } from "@/components/diagrams";
 
 export function MalingAvJordskjelvSeismogramTids() {
   return (
     <>
+      {/* SEKSJON 3: SEISMOGRAM OG TRIANGULERING */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Måling av jordskjelv: Seismogram, tidsdifferanse og magnitude
@@ -72,6 +71,7 @@ export function MalingAvJordskjelvSeismogramTids() {
           </p>
         </Callout>
       </section>
+
     </>
   );
 }

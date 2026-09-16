@@ -4,6 +4,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 export function TsunamifysikkBolgehastighetOppstui() {
   return (
     <>
+      {/* SEKSJON 6: TSUNAMIFYSIKK */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Tsunamifysikk: Bølgehastighet, oppstuing (shoaling) og Greens lov
@@ -72,11 +73,12 @@ export function TsunamifysikkBolgehastighetOppstui() {
         <p className="text-sm text-muted-foreground">
           Les mer om skredmekanismer, stabilitetsberegninger og overvåking i vårt dedikerte{" "}
           <Link to="/geofag-1/skred" className="font-semibold text-primary underline-offset-4 hover:underline">
-            kapittel om skred og massesuksesjon
+            kapittel om skred og massesukkessjon
           </Link>
           .
         </p>
       </section>
+
     </>
   );
 }
