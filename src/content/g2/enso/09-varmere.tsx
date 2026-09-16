@@ -5,7 +5,7 @@ export function Varmere() {
   return (
     <CollapsibleSection
       title="7. ENSO i en varmere verden & Paleoklima"
-      subtitle="Korallkjerner som klimatermometre og framtidige super-El Niño-episoder"
+      subtitle="Korallkjerner som klimatermometre"
       badge="Klimaendringer"
       badgeVariant="teal"
     >
@@ -22,7 +22,7 @@ export function Varmere() {
       />
       <ul className="mt-2 list-disc space-y-2 pl-5 text-sm">
         <li>Bakgrunnstemperaturen stiger, så moderate El Niño-er kan slå rekorder.</li>
-        <li>Ekstremnedbør intensiveres (Clausius–Clapeyron, ~7 % mer fukt per grad).</li>
+        <li>Ekstremnedbør intensiveres (~7 % mer fukt per grad).</li>
         <li>Noen studier antyder flere «super» El Niño-er (Cai et al., 2014).</li>
       </ul>
     </CollapsibleSection>
