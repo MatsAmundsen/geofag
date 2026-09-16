@@ -65,9 +65,11 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/tema/milankovitch":
     "Denne siden eier hvorfor isen kommer: Milankovitch, albedo og CO₂. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
   "/geofag-1/platetektonikk":
-    "Denne siden eier platene, drivkreftene og hvor mantelen smelter. Vulkaner og jordskjelv eier utbruddsstil, bølger og magnitude. Skred eier Åknes og Storegga.",
-  "/geofag-1/vulkaner-og-jordskjelv":
-    "Platetektonikk eier platene og smeltemekanismene. Denne siden eier magmaens viskositet, utbrudd, seismiske bølger og norske intraplate-skjelv. Norske flodbølger peker videre til skred.",
+    "Denne siden eier platene, drivkreftene og hvor mantelen smelter. Vulkaner eier utbruddsstil. Jordskjelv eier bølger og magnitude. Skred eier Åknes og Storegga.",
+  "/geofag-1/vulkaner":
+    "Platetektonikk eier platene og smeltemekanismene. Denne siden eier magmaens viskositet, utbruddsstil og VEI. Jordskjelv eier bølger og magnitude. Norske flodbølger peker til skred.",
+  "/geofag-1/jordskjelv":
+    "Platetektonikk eier platene. Vulkaner eier utbrudd. Denne siden eier seismiske bølger, magnitude og norske intraplate-skjelv. Norske flodbølger peker til skred.",
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {
@@ -76,8 +78,16 @@ const SLOTS: Record<string, GeminiSlot[]> = {
   "/tema/numeriske-modeller": [GEMINI.modellerGrid, GEMINI.modellerParam, GEMINI.modellerEnsemble],
   "/tema/kryosfaeren": [GEMINI.kryoMassebalanse, GEMINI.kryoFlakskred],
   "/tema/energi-hav-luft": [GEMINI.energiOversikt],
-  "/tema/klima/nao": [GEMINI.naoRossby, GEMINI.naoIndeks],
-  "/geofag-1/bergarter-og-landformer": [GEMINI.bergartssyklus, GEMINI.relativDatering, GEMINI.kornfordeling],
+  "/tema/klima/oversikt": [GEMINI.klimaStraling],
+  "/tema/klima": [GEMINI.klimaStraling],
+  "/tema/klima/nao": [GEMINI.naoRossby, GEMINI.naoIndeks, GEMINI.naoEnsoTele],
+  "/tema/klima/iod": [
+    GEMINI.iodNoytral,
+    GEMINI.iodWalkerSkift,
+    GEMINI.iodJetMote,
+    GEMINI.iodAnomaliVsTemp,
+  ],
+  "/geofag-1/bergarter": [GEMINI.bergartssyklus, GEMINI.relativDatering, GEMINI.kornfordeling],
   "/geofag-1/vann-og-flom": [GEMINI.hydrogramTo],
   "/geofag-1/feltarbeid": [GEMINI.feltbokUtfylt],
 };
