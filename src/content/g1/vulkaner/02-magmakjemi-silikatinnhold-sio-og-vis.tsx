@@ -3,6 +3,7 @@ import { OrdBoks } from "@/components/term";
 export function MagmakjemiSilikatinnholdSioOgVis() {
   return (
     <>
+      {/* SEKSJON 2: MAGMAKJEMI OG VISKOSITET */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Magmakjemi, silikatinnhold (SiO₂) og viskositet: Nøkkelen til eksplosivitet
@@ -79,7 +80,9 @@ export function MagmakjemiSilikatinnholdSioOgVis() {
           og gassene begynner å felle seg ut som bittesmå gassbobler (en prosess kalt <em>vesikulasjon</em> eller
           <em> eksolusjon</em>; Sparks, 1978).
         </p>
-        <p>Her inntreffer det avgjørende kjemiske veiskillet:</p>
+        <p>
+          Her inntreffer det avgjørende kjemiske veiskillet:
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-4">
             <h4 className="font-semibold text-emerald-400 text-sm">I basaltisk magma (lav viskositet)</h4>
@@ -110,6 +113,7 @@ export function MagmakjemiSilikatinnholdSioOgVis() {
           barn="Utskilling av oppløst gass som bobler (vesikler) fra en væske når trykket faller, tilsvarende det som skjer når du åpner en ristet brusflaske."
         />
       </section>
+
     </>
   );
 }

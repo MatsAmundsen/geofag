@@ -1,11 +1,10 @@
+import { VolcanicHazardsDiagram } from "@/components/diagrams";
 import { OrdBoks } from "@/components/term";
-import {
-  VolcanicHazardsDiagram,
-} from "@/components/diagrams";
 
 export function VulkanskeFarerOgGlobalKlimapavir() {
   return (
     <>
+      {/* SEKSJON 5: VULKANSKE FARER OG KLIMAPÅVIRKNING */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Vulkanske farer og global klimapåvirkning
@@ -82,6 +81,7 @@ export function VulkanskeFarerOgGlobalKlimapavir() {
           barn="Global nedkjøling forårsaket av mikroskopiske svovelsyreaerosoler i stratosfæren som reflekterer solstråling etter store, eksplosive utbrudd."
         />
       </section>
+
     </>
   );
 }

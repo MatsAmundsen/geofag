@@ -1,11 +1,8 @@
+import { VolcanoEruptionAnatomyDiagram } from "@/components/diagrams";
 import { PhotoFigure } from "@/components/photo-figure";
-import {
-  VolcanoEruptionAnatomyDiagram,
-} from "@/components/diagrams";
 
 export function AnatomiAvEtPlinianskUtbruddFra() {
   return (
-    <>
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Anatomi av et pliniansk utbrudd: Fra fragmentering til paraplysky
@@ -66,7 +63,8 @@ export function AnatomiAvEtPlinianskUtbruddFra() {
             { n: "5", label: "Fragmenteringsnivå: Overgang fra sammenhengende magma til opprevet gass-partikkel-suspensjon." },
           ]}
         />
-      </section>
-    </>
+
+        {/* KASUSSTUDIE 1: EYJAFJALLAJÖKULL 2010 */}
+    </section>
   );
 }

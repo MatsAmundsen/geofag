@@ -1,6 +1,6 @@
 export function Seksjon4() {
   return (
-    <>
+    <section className="space-y-4">
         <div className="pt-4 space-y-3">
           <h3 className="font-display text-xl font-medium tracking-tight text-primary">
             VEI: Vulkansk eksplosivitetsindeks (0 til 8)
@@ -100,6 +100,7 @@ export function Seksjon4() {
             </table>
           </div>
         </div>
-    </>
+
+    </section>
   );
 }

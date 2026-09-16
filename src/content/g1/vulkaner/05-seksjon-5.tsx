@@ -2,7 +2,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 
 export function Seksjon2() {
   return (
-    <>
+    <section className="space-y-4">
         <div className="pt-4 space-y-3">
           <h3 className="font-display text-xl font-medium tracking-tight text-primary">
             Kasusstudie: Eyjafjallajökull 2010 og europeisk flystans (freatomagmatisme)
@@ -53,6 +53,7 @@ export function Seksjon2() {
             </li>
           </ul>
         </div>
-    </>
+
+    </section>
   );
 }
