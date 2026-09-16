@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Callout } from "@/components/callout";
+import { ChapterToc } from "@/components/chapter-toc";
 import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
@@ -83,7 +84,10 @@ export function TopicLayout({
                 <p>{eierskap}</p>
               </Callout>
             ) : null}
-            {children}
+            <ChapterToc />
+            <div id="kapittel-kropp" className="space-y-5">
+              {children}
+            </div>
           </div>
 
           {slots.length > 0 ? (
