@@ -33,7 +33,7 @@ export function Eksamen() {
       </Callout>
       <Callout title="Vanlige misforståelser">
         <p>
-          ENSO er <em>ikke</em> comprsåket av menneskeskapt global oppvarming.
+          ENSO er <em>ikke</em> forårsaket av menneskeskapt global oppvarming.
           Det er en naturlig svingning som har eksistert i tusenvis av år.
           Spørsmålet er om klimaendringer gjør ekstremhendelsene kraftigere.
         </p>
