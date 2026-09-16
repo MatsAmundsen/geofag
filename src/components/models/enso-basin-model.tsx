@@ -577,8 +577,8 @@ export function EnsoBasinModel() {
             </g>
             <g opacity={reversedWalker}>
               <FlowArrow d="M 250 98 L 250 208" color="#334155" width={2.6} markerId={`${uid}-steel`} />
-              <FlowArrow d="M 700 208 L 700 98" color="#2563eb" width={2.8} markerId={`${uid}-blue`} />
-              <FlowArrow d="M 682 92 L 268 92" color="#334155" width={2.4} markerId={`${uid}-steel`} />
+              <FlowArrow d="M 760 208 L 760 98" color="#2563eb" width={2.8} markerId={`${uid}-blue`} />
+              <FlowArrow d="M 742 92 L 268 92" color="#334155" width={2.4} markerId={`${uid}-steel`} />
               <text
                 x="470"
                 y="84"
@@ -616,7 +616,7 @@ export function EnsoBasinModel() {
               {index >= 0 ? "Synkende luft" : "Oppstigende luft"}
             </text>
             <text
-              x={index >= 0 ? 700 : 868}
+              x={index >= 0 ? 760 : 868}
               y="96"
               textAnchor="middle"
               fill="#1e293b"
@@ -628,7 +628,7 @@ export function EnsoBasinModel() {
               {index >= 0 ? "Konveksjon over sentralt/østlig hav" : "Synkende luft"}
             </text>
             <text
-              x="700"
+              x="760"
               y="112"
               textAnchor="middle"
               fill="#1e293b"
