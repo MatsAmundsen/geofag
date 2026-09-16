@@ -40,12 +40,24 @@ export function Indekser() {
             src="/images/fig-enso-soi-seesaw.jpg"
             alt="Infografikk som viser den atmosfæriske trykkvippen (SOI) mellom Darwin og Tahiti under El Niño og La Niña"
             heading="Figur 5. Den atmosfæriske SOI-vippen (Tahiti vs. Darwin)"
-            caption="Southern Oscillation Index (SOI) fungerer som en barometrisk vippe over Stillehavet. Under El Niño er det unormalt lavt trykk over Tahiti og høyt trykk over Darwin (negativ SOI). Under La Niña er trykkgradienten bratt med høytrykk over Tahiti og lavtrykk over Darwin (positiv SOI)."
+            caption="Southern Oscillation Index (SOI) fungerer som en barometrisk vippe over Stillehavet. Under El Niño (øverst) er det unormalt lavt trykk over Tahiti og høyt trykk over Darwin (negativ SOI), noe som svekker passatene. Under La Niña (nederst) er trykkgradienten bratt med høytrykk over Tahiti og lavtrykk over Darwin (positiv SOI), noe som superforsterker passatvindene."
             fit="contain"
             points={[
-              { n: "1", label: "El Niño (negativ SOI): Høytrykk over Darwin, lavtrykk over Tahiti. Svake passater." },
-              { n: "2", label: "La Niña (positiv SOI): Lavtrykk over Darwin, høytrykk over Tahiti. Ekstremt sterke passater." },
-              { n: "3", label: "Trykkvippen måler den atmosfæriske delen av ENSO-sirkulasjonen direkte." },
+              {
+                n: "1",
+                label:
+                  "El Niño (negativ SOI): Høytrykk over Darwin, lavtrykk over Tahiti. Svake passater.",
+              },
+              {
+                n: "2",
+                label:
+                  "La Niña (positiv SOI): Lavtrykk over Darwin, høytrykk over Tahiti. Ekstremt sterke passater.",
+              },
+              {
+                n: "3",
+                label:
+                  "Trykkvippen måler den atmosfæriske delen av ENSO-sirkulasjonen direkte.",
+              },
             ]}
           />
 
@@ -75,12 +87,24 @@ export function Indekser() {
             src="/images/fig-enso-oni-tidsserie.jpg"
             alt="Graf som viser ONI-indeksen fra 1950 til i dag med El Niño-episoder i rødt og La Niña i blått"
             heading="Figur 6. ONI-tidsserie 1950 – i dag"
-            caption="ONI-indeksen viser hvordan ENSO har svingt siden 1950. Kraftige El Niño-episoder inkluderer 1972/73, 1982/83, 1997/98, 2015/16 og 2023/24. Kraftige La Niña inkluderer 1973/74, 1988/89, 1999/2000 og 2010/11. Kilde: NOAA."
+            caption="ONI-indeksen viser hvordan ENSO har svingt siden 1950. Kraftige El Niño-episoder (rødt, ONI over +1,5) inkluderer 1972/73, 1982/83, 1997/98, 2015/16 og 2023/24. Kraftige La Niña (blått) inkluderer 1973/74, 1988/89, 1999/2000 og 2010/11. Kilde: NOAA."
             fit="contain"
             points={[
-              { n: "1", label: "Rekord-El Niño 1997/98: ONI nådde +2,3 °C. Global lufttemperaturrekord." },
-              { n: "2", label: "El Niño 2015/16: blant de sterkeste målt. Bidro til rekordvarm 2016." },
-              { n: "3", label: "La Niña 2010/11: sterk negativ fase etter El Niño 2009/10." },
+              {
+                n: "1",
+                label:
+                  "Rekord-El Niño 1997/98: ONI nådde +2,3 °C. Global lufttemperaturrekord.",
+              },
+              {
+                n: "2",
+                label:
+                  "El Niño 2015/16: blant de sterkeste målt. Bidro til rekordvarm 2016.",
+              },
+              {
+                n: "3",
+                label:
+                  "La Niña 2010/11: sterk negativ fase etter El Niño 2009/10.",
+              },
             ]}
           />
         </div>

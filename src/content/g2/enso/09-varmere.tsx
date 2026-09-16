@@ -11,28 +11,57 @@ export function Varmere() {
         badgeVariant="teal"
       >
         <p>
-          ENSO er ikke forårsaket av menneskeskapt global oppvarming. Geologiske arkiv — koraller, iskjerner og sedimenter — viser at El Niño har eksistert i tusenvis av år (Cobb et al., 2003). Det er et naturlig trekk ved Jordens klimasystem.
+          ENSO er ikke forårsaket av menneskeskapt global oppvarming. Geologiske
+          arkiv — koraller, iskjerner og sedimenter — viser at El Niño har
+          eksistert i tusenvis av år (Cobb et al., 2003). Det er et naturlig
+          trekk ved Jordens klimasystem.
         </p>
 
         <PhotoFigure
           src="/images/fig-enso-korall-paleo.jpg"
-          alt="Korallkjerne og kjemiske proksydata for historiske ENSO-episoder"
+          alt="Vitenskapelig diagram av korallkjerne og kjemiske proksydata som viser historiske El Niño og La Niña-episoder"
           heading="Figur 8. Paleoklima — Korallkjerner som klimatermometer for ENSO"
-          caption="Massive koraller (Porites) bygger kalkskjelett med årlige vekstbånd. δ18O og Sr/Ca i kalken avhenger av havtemperaturen. Slike kjerner rekonstruerer ENSO flere hundre år tilbake."
+          caption="Massive koraller (f.eks. Porites) bygger kalkskjelett med årlige vekstbånd, akkurat som årringer i et tre. Oksygenisotopforholdet (δ18O) og strontium/kalsium-forholdet (Sr/Ca) i kalken avhenger direkte av havtemperaturen. Slike borekjerner gjør det mulig å rekonstruere ENSO-svingninger flere hundre år tilbake i tid — lenge før termometere fantes."
           fit="contain"
           points={[
-            { n: "1", label: "Røntgenbilde av korallkjerne viser årlige vekstbånd." },
-            { n: "2", label: "δ18O og Sr/Ca avslører historiske El Niño-topper (1877/78, 1982/83)." },
-            { n: "3", label: "Dokumenterer at ENSO er en naturlig klimamodus med tusenårige røtter." },
+            {
+              n: "1",
+              label:
+                "Røntgenbilde (X-ray) av korallkjerne viser årlige vekstbånd med vekslende kalktetthet.",
+            },
+            {
+              n: "2",
+              label:
+                "Kjemiske analyser (δ18O og Sr/Ca) avslører historiske El Niño-topper (f.eks. 1877/78 og 1982/83).",
+            },
+            {
+              n: "3",
+              label:
+                "Dokumenterer at ENSO er en naturlig klimamodus med tusenårige røtter.",
+            },
           ]}
         />
 
         <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
-          <h4 className="font-display text-base font-semibold tracking-tight text-primary">Hva betyr global oppvarming for ENSO?</h4>
+          <h4 className="font-display text-base font-semibold tracking-tight text-primary">
+            Hva betyr global oppvarming for ENSO?
+          </h4>
           <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
-            <li><strong>Bakgrunnstemperaturen stiger:</strong> Moderate El Niño-episoder kan slå globale temperaturrekorder oppå en varmere grunnlinje.</li>
-            <li><strong>Ekstremnedbør intensiveres:</strong> Clausius-Clapeyron: ~7 % mer fukt per grad oppvarming.</li>
-            <li><strong>Mulig økning i «super» El Niño-er:</strong> Noen studier antyder at de kraftigste episodene kan bli hyppigere (Cai et al., 2014).</li>
+            <li>
+              <strong>Bakgrunnstemperaturen stiger:</strong> Selv moderate El
+              Niño-episoder kan nå slå globale temperaturrekorder fordi de
+              legger seg oppå en allerede varmere grunnlinje.
+            </li>
+            <li>
+              <strong>Ekstremnedbør intensiveres:</strong> Varmere atmosfære
+              holder mer fuktighet (Clausius-Clapeyron: ~7 % mer fukt per grad
+              oppvarming).
+            </li>
+            <li>
+              <strong>Mulig økning i «super» El Niño-er:</strong> Noen studier
+              antyder at de aller kraftigste El Niño-episodene kan bli
+              hyppigere (Cai et al., 2014).
+            </li>
           </ul>
         </div>
       </CollapsibleSection>
