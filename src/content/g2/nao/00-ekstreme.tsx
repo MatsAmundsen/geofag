@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -22,6 +24,7 @@ export function EkstremeNaoVintre() {
           <ChevronDown className="size-5 shrink-0 text-sky-400" />
         )}
       </button>
+
       {open && (
         <div className="space-y-5 border-t border-sky-500/20 px-5 py-5 text-sm leading-relaxed text-foreground/90">
           <p>
@@ -30,10 +33,12 @@ export function EkstremeNaoVintre() {
             knusktørr. De siste tiårene har vi sett dramatiske eksempler på hva som skjer når
             svingningen låser seg i ytterpunktene:
           </p>
+
           <div className="grid gap-3 sm:grid-cols-2">
+            {/* Vinteren 2009/2010 */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-sky-400">
-                Vinteren 2009/2010 — Ekstrem NAO− og sprengkulde
+                ❄️ Vinteren 2009/2010 — Ekstrem NAO− og sprengkulde
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
                 Den mest ekstreme negative NAO-vinteren registrert siden målingene startet i 1821.
@@ -44,9 +49,11 @@ export function EkstremeNaoVintre() {
                 sin vestside — den klassiske «seesaw»-effekten.
               </p>
             </div>
+
+            {/* Januar 2024 */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-sky-400">
-                Januar 2024 — SSW og arktisk kuldesjokk (-31,1 °C i Oslo)
+                🌡️ Januar 2024 — SSW og arktisk kuldesjokk (-31,1 °C i Oslo)
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
                 I slutten av desember 2023 inntraff en plutselig stratosfærisk oppvarming (SSW) over
@@ -56,9 +63,11 @@ export function EkstremeNaoVintre() {
                 tid. Kautokeino målte <strong>-44,0 °C</strong>.
               </p>
             </div>
+
+            {/* 1989–1995 */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-amber-400">
-                1989–1995 — Super-NAO+ og historisk brevekst
+                🌊 1989–1995 — Super-NAO+ og historisk brevekst
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
                 En enestående serie med vedvarende positive NAO-vintre. Polarjeten sto som en
@@ -68,9 +77,11 @@ export function EkstremeNaoVintre() {
                 rykket frem flere hundre meter på få år (Nesje et al., 2000).
               </p>
             </div>
+
+            {/* Middelhavstørke */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-amber-400">
-                Middelhavets tørkekrise under sterk NAO+
+                ☀️ Middelhavets tørkekrise under sterk NAO+
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
                 Når NAO+ bringer flom og mildvær til Norge, blokkerer et forsterket Azorhøytrykk

@@ -6,110 +6,170 @@ export function BegreperQuiz() {
     <>
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
-        <Term name="NAO (Nordatlantisk oscillasjon)" def="Svingning i lufttrykksforskjellen mellom Azorhøytrykket og Islandslavtrykket som styrer vestavindsbeltet over Nord-Atlanteren." />
-        <Term name="NAO+" def="Positiv fase: bratt trykkgradient, sterk sonal polarjet, milde, våte og stormfulle vintre i Norge, tørke i Sør-Europa." />
-        <Term name="NAO−" def="Negativ fase: slak gradient, meandrerende jet, blokkerende høytrykk, arktisk kulde i Norge og regn i Middelhavet." />
-        <Term name="Geostrofisk vind" def="Balanse mellom trykkgradientkraft og Coriolis. u_g = −(1/ρf)(∂P/∂y)." />
-        <Term name="Polarjet" def="Hurtig vestlig luftstrøm i 9–11 km høyde langs polarfronten." />
-        <Term name="Stormbane" def="Hovedkorridoren lavtrykk følger over Nord-Atlanteren mot Europa." />
-        <Term name="Rossby-bølger" def="Planetære meandrer i jetstrømmen. Danner trau (L) og rygger (H)." />
-        <Term name="Blokkerende høytrykk" def="Kvasistasjonært høytrykk (f.eks. Omega) som tvinger jet og lavtrykk til omveier i ukevis." />
-        <Term name="Polarvirvel" def="Sirkumpolart stratosfærisk lavtrykk over Arktis om vinteren." />
-        <Term name="SSW" def="Plutselig stratosfærisk oppvarming (+30–50 °C) som splitter virvelen og tipper NAO− 2–4 uker senere." />
-        <Term name="AO" def="Halvkuledekkende trykkmodus mellom Arktis og midlere breddegrader, sterkt korrelert med NAO om vinteren." />
-        <Term name="Orografisk nedbør" def="Nedbør når fuktig maritim vind tvinges opp over fjell." />
-        <Term name="Telekobling" def="Klimasammenheng over store avstander, f.eks. ENSO → NAO via bølgetog." />
-        <Term name="Seesaw-effekten" def="Motsatt temperaturavvik mellom Skandinavia og Vest-Grønland under ekstreme NAO-faser." />
+        <Term
+          name="NAO (Nordatlantisk oscillasjon)"
+          def="Svingning i lufttrykksforskjellen mellom Azorhøytrykket og Islandslavtrykket som styrer vestavindsbeltet over Nord-Atlanteren."
+        />
+        <Term
+          name="NAO+"
+          def="Positiv fase: Bratt trykkgradient, sterk sonal polarjet, milde, våte og stormfulle vintre i Norge, tørke i Sør-Europa."
+        />
+        <Term
+          name="NAO−"
+          def="Negativ fase: Slak trykkgradient, meandrerende jetstrøm, blokkerende høytrykk, streng arktisk kulde i Norge og regn i Middelhavet."
+        />
+        <Term
+          name="Geostrofisk vind"
+          def="Teoretisk vind som oppstår ved eksakt balanse mellom trykkgradientkraften og Coriolis-kraften. u_g = -(1/ρf)(∂P/∂y)."
+        />
+        <Term
+          name="Polarjet"
+          def="Hurtig vestlig luftstrøm i 9–11 km høyde langs polarfronten drevet av temperaturkontrasten mellom Arktis og subtropene."
+        />
+        <Term
+          name="Stormbane (Storm track)"
+          def="Hovedkorridoren som lavtrykk og sykloner følger over Nord-Atlanteren mot Europa."
+        />
+        <Term
+          name="Rossby-bølger"
+          def="Store planetære meandrer i jetstrømmen forårsaket av jordrotasjon og temperaturkontraster. Danner trau (L) og rygger (H)."
+        />
+        <Term
+          name="Blokkerende høytrykk"
+          def="Mektig, kvasistasjonært høytrykk (f.eks. Omega-blokkering) som tvinger jetstrøm og lavtrykk til å ta store omveier i ukevis."
+        />
+        <Term
+          name="Polarvirvel (Polar vortex)"
+          def="Sirkumpolart stratosfærisk lavtrykk over Arktis om vinteren som sperrer inne den kaldeste arktiske luften."
+        />
+        <Term
+          name="SSW (Plutselig stratosfærisk oppvarming)"
+          def="Dramatisk temperaturhopp (+30–50 °C) i stratosfæren som splitter polarvirvelen og tipper NAO over i negativ fase 2–4 uker senere."
+        />
+        <Term
+          name="AO (Arctic Oscillation)"
+          def="Halvkuledekkende trykkmodus mellom Arktis og midlere breddegrader, sterkt korrelert med NAO om vinteren."
+        />
+        <Term
+          name="Orografisk nedbør"
+          def="Nedbør som oppstår når fuktig maritim vind tvinges opp over fjell (f.eks. Vestlandsfjellene), avkjøles og kondenserer."
+        />
+        <Term
+          name="Telekobling"
+          def="Klimatiske sammenhenger over enorme avstander, f.eks. hvordan ENSO i Stillehavet påvirker NAO via atmosfæriske bølgetog."
+        />
+        <Term
+          name="Seesaw-effekten"
+          def="Det motsatte temperaturforholdet mellom Skandinavia og Vest-Grønland/Canada under ekstreme NAO-faser."
+        />
       </TermGrid>
+
+      {/* ── 5. Quiz ─────────────────────────────────────────────────── */}
       <Quiz
         questions={[
           {
-            prompt: "Hva kjennetegner trykk og polarjet under sterkt positiv NAO?",
+            prompt:
+              "Hva kjennetegner trykkforholdene og polarjeten under en sterkt positiv NAO-fase (NAO+)?",
             options: [
-              "Begge trykksentre svekket; jet meandrerer mot Sahara.",
-              "Dypt Island-L og sterkt Azor-H; bratt gradient gir rask, rett, sonal polarjet mot Nord-Europa.",
-              "Azorhøytrykket forsvinner; all vind blir østlig.",
-              "Trykket over Island stiger til 1040 hPa og danner Omega-blokkering.",
+              "Både Islandslavtrykket og Azorhøytrykket er svekket, og polarjeten meandrerer langt sør mot Sahara.",
+              "Islandslavtrykket er uvanlig dypt og Azorhøytrykket er sterkt; den bratte trykkgradienten gir en rask, rett og sonal polarjet mot Nord-Europa.",
+              "Azorhøytrykket forsvinner helt, og all vind snur til østlig retning over Atlanteren.",
+              "Trykket over Island stiger til 1040 hPa og danner en kvasistasjonær Omega-blokkering.",
             ],
             answer: 1,
-            explain: "NAO+ forsterker begge sentre. Bratt gradient driver rett sonal jet og lavtrykksmotorvei mot Vestlandet.",
+            explain:
+              "Under NAO+ er begge de semi-permanente trykksentrene forsterket. Den bratte trykkgradienten gir en sterk geostrofisk balanse, som driver en rett, sonal polarjet og lavtrykksmotorvei rett inn mot Vestlandet og Norskehavet.",
           },
           {
-            prompt: "Hvilket vintervær er typisk i Norge under sterkt negativ NAO?",
+            prompt:
+              "Hvilket vintervær er typisk for Norge når NAO-indeksen er sterkt negativ (NAO−)?",
             options: [
-              "Mildt, vestavind, regn og rekordsnø på vestlandsbreene.",
-              "Knusktørr sprengkulde fra Sibir under blokkerende høytrykk, med bakkeinversjon i byene.",
-              "Tropiske hetebølger over 25 °C.",
-              "Konstant vestavindsstorm og stormflo.",
+              "Milde temperaturer, kraftig vestavind, regnskyll ved kysten og rekordstor snøakkumulasjon på vestlandsbreene.",
+              "Knusktørr, vindstille og streng sprengkulde fra Sibir/Arktis under et blokkerende høytrykk, med fare for bakkeinversjon i byene.",
+              "Tropiske hetebølger med temperaturer over 25 °C over hele Skandinavia.",
+              "Konstant vestavindsstorm og ekstrem stormflo langs hele kysten.",
             ],
             answer: 1,
-            explain: "NAO−: svekket vestavind, meandrerende jet, blokkerende høytrykk trekker iskald kontinentalluft østfra.",
+            explain:
+              "Under NAO− svekkes vestavinden og polarjeten meandrerer. Et mektig blokkerende høytrykk etablerer seg over Skandinavia og trekker tørr, iskald kontinentalluft fra øst/nordøst over Norge.",
           },
           {
-            prompt: "Hva skjer i Sør-Europa når Norge har mild, stormfull NAO+-vinter?",
+            prompt:
+              "Hva skjer med været i Sør-Europa og Middelhavet når Norge opplever en mild og stormfull NAO+-vinter?",
             options: [
-              "Samme vær: voldsom nedbør og flom.",
-              "Tørt, solrikt vær og vintertørke fordi Azorhøytrykket blokkerer lavtrykkene.",
-              "Middelhavet fryser.",
-              "Polarjeten danner tropiske orkaner i Hellas.",
+              "Sør-Europa opplever nøyaktig det samme været som Norge: voldsom nedbør og flom.",
+              "Middelhavsområdet opplever tørt, solrikt vær og fare for vintertørke fordi det forsterkede Azorhøytrykket blokkerer lavtrykkene.",
+              "Middelhavet fryser til is pga. arktisk luftmasse.",
+              "Polarjeten flytter seg helt ned til ekvator og danner tropiske orkaner i Hellas.",
             ],
             answer: 1,
-            explain: "Vippe: stormbane nordover, Azor-H over Iberia og Middelhavet, nedsynking og tørke i sør.",
+            explain:
+              "NAO fungerer som en vippe: Når stormbanen dyttes nordover mot Norge i NAO+, ekspanderer Azorhøytrykket over Den iberiske halvøy og Middelhavet. Nedsynkende luftmasse gir stabilt, tørt vær og tørkefare i sør.",
           },
           {
-            prompt: "Hva er seesaw-effekten mellom Norge og Vest-Grønland under NAO−?",
+            prompt:
+              "Hva menes med den meteorologiske «seesaw»-effekten mellom Norge og Vest-Grønland under NAO−?",
             options: [
-              "Havnivået stiger 1 m på Grønland og synker 1 m i Norge.",
-              "Motsatt fortegn på temperaturavvik: sprengkulde i Norge, unormal varme på Vest-Grønland.",
-              "Vindretningen veksler hvert 10. minutt.",
-              "Jordskjelv på Island tipper skorpen.",
+              "At havoverflaten stiger med 1 meter på Grønland og synker med 1 meter i Norge.",
+              "At Norge og Vest-Grønland har motsatt fortegn på temperaturavviket: når Norge har sprengkulde, har Vest-Grønland unormal varme.",
+              "At vindretningen veksler mellom øst og vest hvert 10. minutt.",
+              "At jordskjelv på Island tipper jordskorpen mellom Grønland og Norge.",
             ],
             answer: 1,
-            explain: "Blokkering over Skandinavia: østsiden trekker kulde over Norge, vestsiden pumper mild luft langs Vest-Grønland.",
+            explain:
+              "Når et blokkerende høytrykk parkerer over Skandinavia under NAO−, trekker østsiden kald polarluft sørover over Norge, mens vestsiden pumper mild atlantisk luft nordover langs kysten av Vest-Grønland og Davisstredet.",
           },
           {
-            prompt: "Hva er SSW, og hvordan henger den sammen med norsk vintervær?",
+            prompt:
+              "Hva er en Sudden Stratospheric Warming (SSW), og hvordan henger den sammen med vinterværet i Norge?",
             options: [
-              "Oppvarming av havet ved Azorene.",
-              "Brått +30–50 °C i stratosfæren over Arktis som splitter polarvirvelen og ofte utløser NAO− med kulde 2–4 uker senere.",
-              "Lokalt fenomen over Oslofjorden.",
-              "Permanent oppvarming som gjør kuldegrader umulig.",
+              "En oppvarming av havet ved Azorene som smelter korallrev på under 24 timer.",
+              "Et brått temperaturhopp (+30–50 °C) i stratosfæren over Arktis som forstyrrer eller splitter polarvirvelen, og 2–4 uker senere ofte utløser en dyp NAO− med kulde i Norge.",
+              "Et lokalt fenomen i troposfæren over Oslofjorden forårsaket av bilkjøring.",
+              "En permanent global oppvarming som gjør at det aldri mer kan bli kuldegrader i Skandinavia.",
             ],
             answer: 1,
-            explain: "Planetære bølger kan kollapse virvelen. Signalet synker på 2–4 uker, Island-L svekkes, sibirkulde over Norden.",
+            explain:
+              "Når planetære bølger bryter opp i stratosfæren, kan polarvirvelen kollapse i en SSW. Signalet forplanter seg ned i troposfæren over 2–4 uker, svekker Islandslavtrykket og etablerer blokkerende sibirkulde over Norden (dyp NAO−).",
           },
           {
-            prompt: "Hvorfor rykket Briksdalsbreen og Nigardsbreen frem på 1990-tallet?",
+            prompt:
+              "Hvorfor rykket maritime vestlandsbreer som Briksdalsbreen og Nigardsbreen frem på 1990-tallet?",
             options: [
-              "Sommertemperatur under −10 °C på Vestlandet.",
-              "Serie med sterkt positive NAO-vintre pumpet enorme snømengder inn over fjellet — positiv vinterbalanse.",
-              "Golfstrømmen stoppet.",
-              "Permafrost ned til havnivå i Sogn.",
+              "Fordi sommertemperaturene sank til under -10 °C på Vestlandet.",
+              "Fordi en vedvarende serie med sterkt positive NAO-vintre (NAO+) pumpet enorme snømengder inn over fjellet, som ga kraftig positiv vinterbalanse.",
+              "Fordi Golfstrømmen stoppet helt opp og gjorde Norskehavet bunnfrossent.",
+              "Fordi permafrosten ekspanderte ned til havnivå i Sogn og Fjordane.",
             ],
             answer: 1,
-            explain: "1989–1995: NAO+ ga rekordstor orografisk vintersnø som oversteg sommersmeltingen (Nesje et al., 2000).",
+            explain:
+              "I perioden 1989–1995 var NAO uvanlig sterkt positiv. De fuktige vestavindene ga rekordstor orografisk vintersnø på breene i høyfjellet, som oversteg sommerens bresmelting og førte til rask fremrykking (Nesje et al., 2000).",
           },
           {
-            prompt: "Hvordan beregnes den tradisjonelle stasjonsbaserte NAO-indeksen?",
+            prompt:
+              "Hvordan beregnes den tradisjonelle stasjonsbaserte NAO-indeksen?",
             options: [
-              "Temperatur Madrid minus Tromsø.",
-              "Normalisert lufttrykksforskjell Ponta Delgada/Lisboa minus Reykjavík.",
-              "Antall lavtrykk i Nordsjøen per år.",
-              "SST i Niño 3.4.",
+              "Ved å ta gjennomsnittstemperaturen i Madrid minus temperaturen i Tromsø.",
+              "Som den normaliserte lufttrykksforskjellen ved havnivå mellom en sørlig stasjon (Ponta Delgada/Lisboa) og en nordlig stasjon (Reykjavík).",
+              "Ved å telle antall lavtrykk som passerer Nordsjøen i løpet av ett kalenderår.",
+              "Ved å måle havtemperaturen i Niño 3.4-regionen i Stillehavet.",
             ],
             answer: 1,
-            explain: "Barometrisk indeks: P_norm(Sør) − P_norm(Nord). Måler gradienten som driver vestavinden.",
+            explain:
+              "NAO-indeksen er en barometrisk indeks: P_norm(Sør) − P_norm(Nord). Den måler styrken på den horisontale trykkgradienten som driver vestavindene over Atlanteren.",
           },
           {
-            prompt: "Hvordan kan en kraftig El Niño påvirke NAO?",
+            prompt:
+              "Hvordan kan en kraftig El Niño i Stillehavet påvirke NAO-systemet over Atlanteren?",
             options: [
-              "Vann renner gjennom Panama og varmer Nordsjøen.",
-              "Rossby-bølgetog over Nord-Amerika kan forstyrre polarvirvelen og øke sjansen for NAO− i Europa.",
-              "Jordrotasjonen slås av.",
-              "El Niño kan ikke påvirke vær utenfor Sør-Amerika.",
+              "Vannet fra Stillehavet renner direkte gjennom Panamakanalen og varmer opp Nordsjøen.",
+              "El Niño sender ut planetære Rossby-bølgetog over Nord-Amerika som kan forstyrre polarvirvelen og statistisk øke sjansen for NAO− i Europa.",
+              "El Niño slår av jordrotasjonen slik at Coriolis-effekten opphører i Nord-Atlanteren.",
+              "El Niño har absolutt ingen fysisk mulighet til å påvirke været utenfor Sør-Amerika.",
             ],
             answer: 1,
-            explain: "PNA-telekobling: tropisk konveksjon sender bølger inn i stratosfæren og øker sannsynligheten for meandrerende jet og NAO−.",
+            explain:
+              "Via atmosfæriske telekoblinger (PNA-mønsteret) genererer El Niños tropiske konveksjon bølgetog som forplanter seg inn i stratosfæren, forstyrrer polarvirvelen og øker sannsynligheten for en meandrerende jet og negativ NAO i Europa.",
           },
         ]}
       />
