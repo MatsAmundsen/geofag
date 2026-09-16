@@ -1,11 +1,13 @@
 # Geofag
 
-Læringsnettsted for Geofag 1 og Geofag 2 (LK20).
+Læringsnettsted for Geofag 1 og Geofag 2 (LK20). Live: [geofag.com](https://geofag.com).
 
 ## Innhold
 
-- **Geofag 1** — utkast: jordsystemene, platetektonikk, vulkaner og jordskjelv, bergarter, flom og skred, ressurser
-- **Geofag 2** — ferdig: trykk, det globale vindsystemet, coriolis, havstrømmer, klima, værkatastrofer
+- **Geofag 1** — jordsystemene, platetektonikk, vulkaner, jordskjelv, bergarter, landformer, flom, skred, ressurser, felt
+- **Geofag 2** — trykk, vindsystemet, Coriolis, havstrømmer, klima, værkart, kryosfære, modeller, eksamen
+
+Statisk innhold. Ingen innlogging eller database.
 
 ## Kjøre lokalt
 
