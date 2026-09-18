@@ -40,30 +40,41 @@ export type PostsDoOp =
 
 export type PostsDoResult = { ok: true; data: unknown } | { ok: false; error: string };
 
-async function ensureSeed(storage: DoStorage, seed: Post): Promise<void> {
-  if (await storage.get(SEEDED)) {
-    const existing = await storage.get<Post>(`${POST_PREFIX}${seed.slug}`);
-    const body = existing?.bodyMarkdown ?? "";
-    if (body.trim() && isShortPlatetektonikkBody(body)) {
-      await storage.put(`${POST_PREFIX}${seed.slug}`, {
-        ...seed,
-        id: existing?.id ?? seed.id,
-        published: existing?.published ?? seed.published,
-        createdAt: existing?.createdAt || seed.createdAt,
+function asSeeds(seed: Post | Post[]): Post[] {
+  return Array.isArray(seed) ? seed : [seed];
+}
+
+/** Insert missing chapter posts. Never overwrite author text; upgrade the old Platetektonikk stub. */
+async function ensureSeed(storage: DoStorage, seed: Post | Post[]): Promise<void> {
+  const seeds = asSeeds(seed);
+  let nextId = Number(await storage.get<number>(NEXT_ID)) || 1;
+  for (const row of seeds) {
+    const key = `${POST_PREFIX}${row.slug}`;
+    const existing = await storage.get<Post>(key);
+    if (!existing) {
+      const id = row.id || nextId;
+      await storage.put(key, { ...row, id });
+      nextId = Math.max(nextId, id + 1);
+      continue;
+    }
+    if (row.slug === "platetektonikk" && isShortPlatetektonikkBody(existing.bodyMarkdown ?? "")) {
+      await storage.put(key, {
+        ...row,
+        id: existing.id,
+        published: existing.published,
+        createdAt: existing.createdAt || row.createdAt,
         updatedAt: stamp(),
       } satisfies Post);
     }
-    return;
   }
-  await storage.put(`${POST_PREFIX}${seed.slug}`, seed);
-  await storage.put(NEXT_ID, Math.max(2, seed.id + 1));
+  await storage.put(NEXT_ID, nextId);
   await storage.put(SEEDED, "1");
 }
 
 export async function handlePostsDoOp(
   storage: DoStorage,
   op: PostsDoOp,
-  seed: Post,
+  seed: Post | Post[],
 ): Promise<unknown> {
   await ensureSeed(storage, seed);
   switch (op.op) {
@@ -114,7 +125,7 @@ export async function handlePostsDoOp(
 export async function handlePostsDoRequest(
   storage: DoStorage,
   request: Request,
-  seed: Post,
+  seed: Post | Post[],
 ): Promise<Response> {
   try {
     const op = (await request.json()) as PostsDoOp;

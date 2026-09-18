@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
 import {
   BoundaryOverviewDiagram,
@@ -59,9 +58,7 @@ function PlatetektonikkPage() {
         label: "Neste: Vulkaner",
       }}
       kilder={KILDER.platetektonikk}
-      posterSlug="platetektonikk"
     >
-      <AdminEditLink slug="platetektonikk" />
       <Callout title="Kompetansemål i LK20 (Geofag 1)">
         <p>
           Målet for kapittelet er at eleven skal kunne <em>gjøre rede for indre krefter og prosesser, platetektonikk og

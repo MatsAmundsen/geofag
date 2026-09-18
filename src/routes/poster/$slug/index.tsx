@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { getCmsStatus } from "@/lib/cms";
 import { getPost } from "@/lib/posts";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import { seedBySlug } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
 
 const guestCms = {
@@ -23,9 +23,10 @@ export const Route = createFileRoute("/poster/$slug/")({
       if (!post) throw notFound();
       return { post, cms };
     } catch (err) {
-      if (params.slug === PLATETEKTONIKK_SEED.slug) {
+      const fallback = seedBySlug(params.slug);
+      if (fallback) {
         console.error("[poster] slug loader failed, using seed", err);
-        return { post: { id: 1, ...PLATETEKTONIKK_SEED }, cms: guestCms };
+        return { post: fallback, cms: guestCms };
       }
       throw err;
     }

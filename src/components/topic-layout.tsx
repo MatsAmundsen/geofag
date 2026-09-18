@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
 import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { posterSlugForPath } from "@/lib/chapter-posts";
 import {
   bannerForPath,
   eierskapForPath,
@@ -40,7 +42,7 @@ export function TopicLayout({
   kilder?: readonly Kilde[];
   prev?: TopicLink;
   next?: TopicLink;
-  /** When set, shows a Poster button that opens the editable CMS post. */
+  /** Optional override. Canonical chapters get a Poster button from the current path. */
   posterSlug?: string;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -52,6 +54,7 @@ export function TopicLayout({
   const prevLink: TopicLink | undefined = navOver?.prev ?? prev;
   const nextLink: TopicLink | undefined = navOver?.next ?? next;
   const eierskap = eierskapForPath(pathname);
+  const resolvedPoster = posterSlug ?? posterSlugForPath(pathname);
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -77,10 +80,10 @@ export function TopicLayout({
               {title}
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">{lead}</p>
-            {posterSlug ? (
+            {resolvedPoster ? (
               <div className="mt-6">
                 <Button asChild size="lg" className="shadow-lg">
-                  <Link to="/poster/$slug" params={{ slug: posterSlug }}>
+                  <Link to="/poster/$slug" params={{ slug: resolvedPoster }}>
                     <FileText className="size-4" aria-hidden="true" />
                     Poster
                   </Link>
@@ -97,6 +100,7 @@ export function TopicLayout({
                 <p>{eierskap}</p>
               </Callout>
             ) : null}
+            {resolvedPoster ? <AdminEditLink slug={resolvedPoster} /> : null}
             {children}
           </div>
 

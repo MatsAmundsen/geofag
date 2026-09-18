@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getCmsStatus } from "@/lib/cms";
 import { listPosts } from "@/lib/posts";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import { seededPosts } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
 
 const guestCms = {
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/poster/")({
       return { posts, cms };
     } catch (err) {
       console.error("[poster] loader failed", err);
-      return { posts: [{ id: 1, ...PLATETEKTONIKK_SEED }], cms: guestCms };
+      return { posts: seededPosts(), cms: guestCms };
     }
   },
   head: () =>

@@ -1,8 +1,6 @@
 import { DurableObject } from "cloudflare:workers";
-import { PLATETEKTONIKK_SEED } from "./src/lib/post-seed";
+import { seededPosts } from "./src/lib/post-seed";
 import { handlePostsDoRequest } from "./src/lib/posts-durable-object";
-
-const seed = { id: 1, ...PLATETEKTONIKK_SEED };
 
 /**
  * SQLite-backed Durable Object that holds CMS posts and the admin session.
@@ -10,6 +8,6 @@ const seed = { id: 1, ...PLATETEKTONIKK_SEED };
  */
 export class PostsDurableObject extends DurableObject {
   fetch(request: Request): Promise<Response> {
-    return handlePostsDoRequest(this.ctx.storage, request, seed);
+    return handlePostsDoRequest(this.ctx.storage, request, seededPosts());
   }
 }

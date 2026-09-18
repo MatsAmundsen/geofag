@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cmsLogout, getCmsStatus, type CmsStatus } from "@/lib/cms";
 import { deletePost, getPost, savePost, type Post } from "@/lib/posts";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import { seedBySlug } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
 
 const guestCms: CmsStatus = {
@@ -27,8 +27,7 @@ export const Route = createFileRoute("/poster/$slug/rediger")({
       return { post, slug: params.slug, cms };
     } catch (err) {
       console.error("[poster] editor loader failed", err);
-      const post =
-        params.slug === PLATETEKTONIKK_SEED.slug ? { id: 1, ...PLATETEKTONIKK_SEED } : null;
+      const post = seedBySlug(params.slug);
       return { post, slug: params.slug, cms: guestCms };
     }
   },

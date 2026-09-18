@@ -1,10 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import { seedBySlug, seededPosts } from "@/lib/post-seed";
 import type { Post, PostInput } from "@/lib/post-types";
 
 export type { Post, PostInput };
-
-const seedPost = (): Post => ({ id: 1, ...PLATETEKTONIKK_SEED });
 
 const str = (v: unknown): string => (typeof v === "string" ? v : "");
 
@@ -32,7 +30,7 @@ export const listPosts = createServerFn({ method: "GET" }).handler(async () => {
     return (await getPostStore()).list();
   } catch (err) {
     console.error("[posts] list failed", err);
-    return [seedPost()];
+    return seededPosts();
   }
 });
 
@@ -50,7 +48,7 @@ export const getPost = createServerFn({ method: "GET" })
     } catch (err) {
       console.error("[posts] get failed", err);
     }
-    return slug === PLATETEKTONIKK_SEED.slug ? seedPost() : null;
+    return seedBySlug(slug);
   });
 
 /** Create or update a post (keyed by slug). Requires CMS access. */

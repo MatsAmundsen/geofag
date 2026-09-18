@@ -77,4 +77,45 @@ describe("handlePostsDoOp", () => {
     await handlePostsDoOp(storage, { op: "setMeta", key: "session", value: "abc" }, seed);
     assert.equal(await handlePostsDoOp(storage, { op: "getMeta", key: "session" }, seed), "abc");
   });
+
+  it("fills in missing chapter seeds without overwriting existing posts", async () => {
+    const vulkaner: Post = {
+      ...seed,
+      id: 2,
+      slug: "vulkaner",
+      title: "Vulkaner",
+      bodyMarkdown: "## Magmakjemi\n\nseed",
+    };
+    const storage = memoryDoStorage();
+    await handlePostsDoOp(storage, { op: "list" }, [seed]);
+    const afterFirst = (await handlePostsDoOp(storage, { op: "list" }, [seed, vulkaner])) as {
+      slug: string;
+    }[];
+    assert.deepEqual(
+      afterFirst.map((p) => p.slug).sort(),
+      ["platetektonikk", "vulkaner"],
+    );
+
+    await handlePostsDoOp(
+      storage,
+      {
+        op: "save",
+        input: {
+          slug: "vulkaner",
+          title: "Vulkaner",
+          summary: "s",
+          ingress: "i",
+          thumbnail: "/x.jpg",
+          bodyMarkdown: "Mitt vulkanutkast.",
+          published: 1,
+        },
+      },
+      [seed, vulkaner],
+    );
+    const got = (await handlePostsDoOp(storage, { op: "get", slug: "vulkaner" }, [
+      seed,
+      { ...vulkaner, bodyMarkdown: "## Magmakjemi\n\nNY SEED" },
+    ])) as { bodyMarkdown: string };
+    assert.equal(got.bodyMarkdown, "Mitt vulkanutkast.");
+  });
 });
