@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 /**
  * Ensure the Cloudflare D1 database used for hybrid CMS posts exists, and
- * write its UUID into wrangler.toml so `wrangler deploy` can bind POSTS_DB.
+ * write its UUID into wrangler.toml *and* the Nitro-generated
+ * `.output/server/wrangler.json` so `wrangler deploy` actually binds POSTS_DB.
  *
- * Production has no DATABASE_URL (GitHub Actions migrate step skips Neon).
- * PGLite cannot run on Workers (it throws "Invalid URL string"), so posts
- * persist in D1 instead. Local `npm run dev` still uses PGLite.
+ * Nitro copies wrangler.toml into `.output/server/wrangler.json` at build
+ * time, and Wrangler then deploys that file (via `.wrangler/deploy/config.json`).
+ * Patching only the source toml after `npm run build` is ignored.
+ *
+ * D1 is optional: Durable Objects (`POSTS_DO`) persist edits even when the
+ * API token cannot create D1. Local `npm run dev` still uses PGLite.
  */
 import { execFile } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -40,6 +44,34 @@ database_name = "${databaseName}"
 database_id = "${databaseId}"
 `;
   return toml.trimEnd() + "\n" + block;
+}
+
+/**
+ * @param {string} jsonText
+ * @param {string} databaseId
+ */
+export function patchWranglerJson(jsonText, databaseId) {
+  const cfg = JSON.parse(jsonText);
+  const dbs = Array.isArray(cfg.d1_databases) ? cfg.d1_databases : [];
+  const idx = dbs.findIndex(
+    (row) => row && (row.database_name === D1_DATABASE_NAME || row.binding === D1_BINDING),
+  );
+  const row = {
+    ...(idx >= 0 ? dbs[idx] : {}),
+    binding: D1_BINDING,
+    database_name: D1_DATABASE_NAME,
+    database_id: databaseId,
+  };
+  if (idx >= 0) dbs[idx] = row;
+  else dbs.push(row);
+  cfg.d1_databases = dbs;
+  return `${JSON.stringify(cfg, null, 2)}\n`;
+}
+
+export function cloudflareAuthFromEnv(env = process.env) {
+  const accountId = String(env.CLOUDFLARE_ACCOUNT_ID ?? env.CF_ACCOUNT_ID ?? "").trim();
+  const token = String(env.CLOUDFLARE_API_TOKEN ?? env.CF_API_TOKEN ?? "").trim();
+  return { accountId, token };
 }
 
 function projectRoot() {
@@ -83,25 +115,67 @@ export function idFromCreateOutput(stdout) {
   return match?.[1] ?? null;
 }
 
-/** wrangler-action preCommands do not always have `wrangler` on PATH. */
+/** Prefer PATH/`npx` wrangler (wrangler-action). Nitro's nested CLI often fails. */
 function wranglerFileAndArgs(args) {
-  const local = join(projectRoot(), "node_modules", ".bin", "wrangler");
-  if (existsSync(local)) return { file: local, argv: args };
+  if (process.env.WRANGLER_BIN) return { file: process.env.WRANGLER_BIN, argv: args };
   return { file: "npx", argv: ["--yes", "wrangler", ...args] };
 }
 
-async function wranglerJson(args) {
+async function wranglerCapture(args) {
   const { file, argv } = wranglerFileAndArgs(args);
-  const { stdout } = await execFileAsync(file, argv, {
-    encoding: "utf8",
-    env: process.env,
-    cwd: projectRoot(),
-  });
-  return stdout;
+  try {
+    return await execFileAsync(file, argv, {
+      encoding: "utf8",
+      env: process.env,
+      cwd: projectRoot(),
+      maxBuffer: 10 * 1024 * 1024,
+    });
+  } catch (err) {
+    const stdout = String(err.stdout ?? "");
+    const stderr = String(err.stderr ?? "");
+    throw new Error(
+      `${err.message}\nstdout: ${stdout.slice(0, 2000)}\nstderr: ${stderr.slice(0, 2000)}`,
+    );
+  }
 }
 
-async function resolveDatabaseId() {
-  const listedRaw = await wranglerJson(["d1", "list", "--json"]);
+async function resolveDatabaseIdViaApi(auth, fetchImpl = fetch) {
+  const headers = { Authorization: `Bearer ${auth.token}` };
+  const url = `https://api.cloudflare.com/client/v4/accounts/${auth.accountId}/d1/database`;
+  const listed = await fetchImpl(url, { headers });
+  const listJson = await listed.json();
+  if (!listed.ok || listJson.success === false) {
+    throw new Error(
+      `D1 list API ${listed.status}: ${JSON.stringify(listJson.errors ?? listJson)}`,
+    );
+  }
+  const existing = idFromWranglerList(listJson.result ?? listJson, D1_DATABASE_NAME);
+  if (existing) {
+    console.log(`[ensure-d1] using existing ${D1_DATABASE_NAME} (${existing})`);
+    return existing;
+  }
+  console.log(`[ensure-d1] creating ${D1_DATABASE_NAME} via API`);
+  const created = await fetchImpl(url, {
+    method: "POST",
+    headers: { ...headers, "Content-Type": "application/json" },
+    body: JSON.stringify({ name: D1_DATABASE_NAME }),
+  });
+  const createdJson = await created.json();
+  if (!created.ok || createdJson.success === false) {
+    throw new Error(
+      `D1 create API ${created.status}: ${JSON.stringify(createdJson.errors ?? createdJson)}`,
+    );
+  }
+  const id = createdJson.result?.uuid ?? createdJson.result?.id;
+  if (typeof id !== "string" || !id) {
+    throw new Error(`D1 create returned no id: ${JSON.stringify(createdJson)}`);
+  }
+  console.log(`[ensure-d1] created ${D1_DATABASE_NAME} (${id})`);
+  return id;
+}
+
+async function resolveDatabaseIdViaCli() {
+  const listedRaw = (await wranglerCapture(["d1", "list", "--json"])).stdout;
   const listed = parseWranglerJson(listedRaw);
   const existing = idFromWranglerList(listed, D1_DATABASE_NAME);
   if (existing) {
@@ -109,7 +183,7 @@ async function resolveDatabaseId() {
     return existing;
   }
   console.log(`[ensure-d1] creating ${D1_DATABASE_NAME}`);
-  const created = await wranglerJson(["d1", "create", D1_DATABASE_NAME]);
+  const created = (await wranglerCapture(["d1", "create", D1_DATABASE_NAME])).stdout;
   const id = idFromCreateOutput(created);
   if (!id) {
     throw new Error(`wrangler d1 create did not print a database_id:\n${created}`);
@@ -118,22 +192,55 @@ async function resolveDatabaseId() {
   return id;
 }
 
-async function main() {
-  const root = projectRoot();
+async function resolveDatabaseId() {
+  const auth = cloudflareAuthFromEnv();
+  if (auth.accountId && auth.token) {
+    try {
+      return await resolveDatabaseIdViaApi(auth);
+    } catch (err) {
+      console.warn("[ensure-d1] Cloudflare API failed, trying wrangler CLI:", err?.message || err);
+    }
+  }
+  return resolveDatabaseIdViaCli();
+}
+
+function patchConfigFiles(root, id) {
   const wranglerPath = join(root, "wrangler.toml");
-  const id = await resolveDatabaseId();
-  const next = patchWranglerToml(readFileSync(wranglerPath, "utf8"), id);
-  writeFileSync(wranglerPath, next);
+  writeFileSync(wranglerPath, patchWranglerToml(readFileSync(wranglerPath, "utf8"), id));
   console.log(`[ensure-d1] wrote ${id} to wrangler.toml`);
+
+  const generated = [
+    join(root, ".output/server/wrangler.json"),
+    join(root, "dist/server/wrangler.json"),
+  ];
+  const deployPointer = join(root, ".wrangler/deploy/config.json");
+  if (existsSync(deployPointer)) {
+    try {
+      const pointed = JSON.parse(readFileSync(deployPointer, "utf8")).configPath;
+      if (typeof pointed === "string") {
+        generated.push(join(dirname(deployPointer), pointed));
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+  for (const path of generated) {
+    if (!existsSync(path)) continue;
+    writeFileSync(path, patchWranglerJson(readFileSync(path, "utf8"), id));
+    console.log(`[ensure-d1] wrote ${id} to ${path}`);
+  }
+}
+
+async function main() {
+  const id = await resolveDatabaseId();
+  patchConfigFiles(projectRoot(), id);
 }
 
 if (isMainModule(import.meta.url)) {
   main().catch((err) => {
-    // Deploy must still succeed: the Worker falls back to an in-memory seed
-    // when POSTS_DB is missing. Blocking deploy here would leave geofag.com
-    // on the old PGLite crash ("Invalid URL string").
+    // Durable Objects still persist posts when D1 cannot be created.
     console.error(
-      "[ensure-d1] failed, deploying without D1 (edits will not persist):",
+      "[ensure-d1] failed, deploying without D1 (POSTS_DO still persists edits):",
       err?.message || err,
     );
     process.exit(0);

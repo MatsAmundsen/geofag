@@ -8,7 +8,11 @@ describe("choosePostBackend", () => {
     assert.equal(choosePostBackend(true, false), "d1");
   });
 
-  it("never boots PGLite on a Worker without D1", () => {
+  it("uses a Durable Object on Workers without D1", () => {
+    assert.equal(choosePostBackend(false, true, true), "do");
+  });
+
+  it("never boots PGLite on a Worker without D1 or DO", () => {
     assert.equal(choosePostBackend(false, true), "memory");
   });
 

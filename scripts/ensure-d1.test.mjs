@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   D1_DATABASE_NAME,
+  cloudflareAuthFromEnv,
   idFromCreateOutput,
   idFromWranglerList,
+  patchWranglerJson,
   patchWranglerToml,
   PLACEHOLDER_ID,
 } from "./ensure-d1.mjs";
@@ -51,4 +53,22 @@ database_name = "geofag-posts"
 database_id = "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz"
 `;
   assert.equal(idFromCreateOutput(stdout), "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz");
+});
+
+test("patchWranglerJson inserts or updates d1_databases", () => {
+  const first = patchWranglerJson(JSON.stringify({ name: "geofag" }), "abc-id");
+  assert.match(first, /"database_id": "abc-id"/);
+  assert.match(first, /"binding": "POSTS_DB"/);
+  const next = patchWranglerJson(first, "def-id");
+  assert.match(next, /"database_id": "def-id"/);
+  assert.equal(JSON.parse(next).d1_databases.length, 1);
+});
+
+test("cloudflareAuthFromEnv reads token and account", () => {
+  const auth = cloudflareAuthFromEnv({
+    CLOUDFLARE_ACCOUNT_ID: "acct",
+    CLOUDFLARE_API_TOKEN: "tok",
+  });
+  assert.equal(auth.accountId, "acct");
+  assert.equal(auth.token, "tok");
 });

@@ -27,7 +27,7 @@ export type PostInput = {
   published: number;
 };
 
-export type CmsPersist = "d1" | "postgres" | "memory";
+export type CmsPersist = "d1" | "do" | "postgres" | "memory";
 
 export type CmsStatus = {
   allowed: boolean;

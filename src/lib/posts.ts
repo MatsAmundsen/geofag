@@ -59,8 +59,14 @@ export const savePost = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { assertCanEdit, getPostStore } = await import("@/lib/post-store.server");
     await assertCanEdit();
-    await (await getPostStore()).save(data);
-    return { ok: true as const, slug: data.slug };
+    const store = await getPostStore();
+    if (store.persist === "memory") {
+      throw new Error(
+        "Lagring er ikke tilkoblet på geofag.com ennå (ingen varig database). Last siden på nytt etter siste deploy og prøv igjen.",
+      );
+    }
+    await store.save(data);
+    return { ok: true as const, slug: data.slug, persist: store.persist };
   });
 
 /** Delete a post by slug. Requires CMS access. */

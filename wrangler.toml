@@ -6,3 +6,13 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = "./.output/public/"
 binding = "ASSETS"
+
+# CMS posts persist here even when the deploy token cannot create D1.
+# Nitro merges this into `.output/server/wrangler.json` at build time.
+[[durable_objects.bindings]]
+name = "POSTS_DO"
+class_name = "PostsDurableObject"
+
+[[migrations]]
+tag = "v1-posts-do"
+new_sqlite_classes = ["PostsDurableObject"]

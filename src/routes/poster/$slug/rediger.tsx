@@ -119,8 +119,9 @@ function EditPost() {
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6">
         {cms.persist === "memory" ? (
           <div className="mb-6 rounded-xl border border-border bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
-            Poster kjører uten D1-binding akkurat nå — lagring varer bare til Worker-isolatet
-            restarter. Etter deploy med D1 er endringene varige.
+            Poster kjører uten varig lagring akkurat nå — det du lagrer forsvinner
+            når serveren restarter. Etter siste deploy med Durable Object / D1 er
+            endringene varige.
           </div>
         ) : null}
 

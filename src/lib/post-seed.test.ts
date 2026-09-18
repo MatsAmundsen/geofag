@@ -29,6 +29,14 @@ describe("isShortPlatetektonikkBody", () => {
     );
   });
 
+  it("does not treat a short user edit as the stub", () => {
+    assert.equal(isShortPlatetektonikkBody("Mitt korte utkast til kapittelet."), false);
+  });
+
+  it("treats an empty body as missing seed", () => {
+    assert.equal(isShortPlatetektonikkBody(""), true);
+  });
+
   it("treats the bundled Platetektonikk fagtekst as the full chapter", () => {
     assert.ok(chapterMarkdown.length > 20_000, `got ${chapterMarkdown.length} chars`);
     assert.match(chapterMarkdown, /Jordens dynamiske indre: Litosfære/);

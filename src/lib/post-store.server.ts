@@ -2,9 +2,9 @@
  * Hybrid CMS storage.
  *
  * - Local `npm run dev` (Node): Postgres via PGLite (`getSql()`), as before.
- * - Cloudflare Workers: D1 (`env.POSTS_DB`). PGLite cannot instantiate there
- *   (it throws "Invalid URL string" — that is why /poster returned 500).
- * - Worker without a D1 binding: in-memory seed so the page still renders.
+ * - Cloudflare Workers: D1 (`env.POSTS_DB`) when bound, otherwise a Durable
+ *   Object (`env.POSTS_DO`). PGLite cannot instantiate there.
+ * - Worker without either binding: in-memory seed so the page still renders.
  */
 import { getCookie, getRequest, setCookie } from "@tanstack/react-start/server";
 import { passwordCookieValue, sha256Hex, timingSafeEqual } from "@/lib/cms-crypto";
@@ -13,6 +13,12 @@ import { needsCmsSetup, nonEmptyMeta } from "@/lib/cms-password";
 import { choosePostBackend } from "@/lib/post-backend";
 import { isShortPlatetektonikkBody } from "@/lib/post-seed-upgrade";
 import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import {
+  POSTS_DO_BINDING,
+  POSTS_DO_NAME,
+  type PostsDoOp,
+  type PostsDoResult,
+} from "@/lib/posts-durable-object";
 import type { CmsPersist, CmsStatus, Post, PostInput } from "@/lib/post-types";
 import { isCloudflareWorker } from "@/lib/runtime";
 
@@ -33,8 +39,14 @@ type D1Database = {
   exec: (query: string) => Promise<unknown>;
 };
 
+type DurableNs = {
+  idFromName: (name: string) => unknown;
+  get: (id: unknown) => { fetch: (input: string, init?: RequestInit) => Promise<Response> };
+};
+
 type WorkerEnv = {
   POSTS_DB?: D1Database;
+  POSTS_DO?: DurableNs;
   ASSETS?: unknown;
   CMS_PASSWORD?: string;
 };
@@ -65,14 +77,21 @@ const SELECT_POSTGRES = `
 function getWorkerEnv(): WorkerEnv | null {
   try {
     const req = getRequest() as
-      | { runtime?: { cloudflare?: { env?: WorkerEnv } } }
+      | {
+          runtime?: { cloudflare?: { env?: WorkerEnv } };
+          context?: { cloudflare?: { env?: WorkerEnv } };
+          env?: WorkerEnv;
+        }
       | undefined;
-    const fromReq = req?.runtime?.cloudflare?.env;
+    const fromReq =
+      req?.runtime?.cloudflare?.env ?? req?.context?.cloudflare?.env ?? req?.env;
+    if (fromReq?.POSTS_DB || fromReq?.POSTS_DO) return fromReq;
     if (fromReq) return fromReq;
   } catch {
     /* no request context */
   }
-  return (globalThis as { __env__?: WorkerEnv }).__env__ ?? null;
+  const g = globalThis as { __env__?: WorkerEnv };
+  return g.__env__ ?? null;
 }
 
 function envPassword(): string | undefined {
@@ -314,14 +333,57 @@ function memoryStore(): Store {
   };
 }
 
+async function callPostsDo<T>(ns: DurableNs, op: PostsDoOp): Promise<T> {
+  const stub = ns.get(ns.idFromName(POSTS_DO_NAME));
+  const res = await stub.fetch("https://posts-do/op", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(op),
+  });
+  const json = (await res.json()) as PostsDoResult;
+  if (!res.ok || !json.ok) {
+    const error = json && typeof json === "object" && "error" in json ? json.error : res.statusText;
+    throw new Error(`${POSTS_DO_BINDING} ${op.op} failed: ${error}`);
+  }
+  return json.data as T;
+}
+
+function durableStore(ns: DurableNs): Store {
+  return {
+    persist: "do",
+    list: () => callPostsDo<Post[]>(ns, { op: "list" }),
+    get: (slug) => callPostsDo<Post | null>(ns, { op: "get", slug }),
+    async save(input) {
+      await callPostsDo(ns, { op: "save", input });
+    },
+    async remove(slug) {
+      await callPostsDo(ns, { op: "remove", slug });
+    },
+    getMeta: (key) => callPostsDo<string | null>(ns, { op: "getMeta", key }),
+    async setMeta(key, value) {
+      await callPostsDo(ns, { op: "setMeta", key, value });
+    },
+  };
+}
+
 export async function getPostStore(): Promise<Store> {
   try {
     const env = getWorkerEnv();
-    const backend = choosePostBackend(Boolean(env?.POSTS_DB), isCloudflareWorker());
+    const backend = choosePostBackend(
+      Boolean(env?.POSTS_DB),
+      isCloudflareWorker(),
+      Boolean(env?.POSTS_DO),
+    );
+    console.info("[posts] backend", backend);
     if (backend === "d1" && env?.POSTS_DB) return d1Store(env.POSTS_DB);
+    if (backend === "do" && env?.POSTS_DO) {
+      const store = durableStore(env.POSTS_DO);
+      await upgradeShortPlatetektonikk(store);
+      return store;
+    }
     if (backend === "memory") {
       console.warn(
-        "[posts] POSTS_DB D1 binding missing — using in-memory seed (edits will not persist)",
+        "[posts] no POSTS_DB/POSTS_DO binding — using in-memory seed (edits will not persist)",
       );
       await upgradeShortPlatetektonikk(memoryStore());
       return memoryStore();
@@ -340,7 +402,8 @@ export async function getPostStore(): Promise<Store> {
 async function upgradeShortPlatetektonikk(store: Store): Promise<void> {
   try {
     const post = await store.get(PLATETEKTONIKK_SEED.slug);
-    if (!isShortPlatetektonikkBody(post?.bodyMarkdown ?? "")) return;
+    const body = post?.bodyMarkdown ?? "";
+    if (!body.trim() || !isShortPlatetektonikkBody(body)) return;
     await store.save({
       slug: PLATETEKTONIKK_SEED.slug,
       title: PLATETEKTONIKK_SEED.title,

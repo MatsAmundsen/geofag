@@ -2,8 +2,10 @@
 export function choosePostBackend(
   hasD1: boolean,
   isWorker: boolean,
-): "d1" | "memory" | "postgres" {
+  hasDurableObject = false,
+): "d1" | "do" | "memory" | "postgres" {
   if (hasD1) return "d1";
+  if (hasDurableObject) return "do";
   if (isWorker) return "memory";
   return "postgres";
 }
