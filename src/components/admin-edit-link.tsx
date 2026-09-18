@@ -1,25 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { Pencil } from "lucide-react";
-import { useCurrentUserState } from "@/lib/auth/use-current-user";
-import { editingAllowed } from "@/lib/editing";
+import { useEffect, useState } from "react";
+import { getCmsStatus, type CmsStatus } from "@/lib/cms";
 
 /**
- * A small "edit this as a post" link, shown ONLY to a signed-in user (the admin
- * path). Regular visitors never see it. With auth disabled locally
- * (`VITE_AUTH_ENABLED=false`) the dev user is always present, so it shows during
- * local editing. It links a hardcoded chapter to its editable post counterpart.
+ * "Rediger som post" — shown when the visitor may use the hybrid CMS
+ * (local `npm run dev`, or a signed-in CMS session on the live site).
  */
 export function AdminEditLink({ slug }: { slug: string }) {
-  const { user, isPending } = useCurrentUserState();
-  // Option A: no editing affordance off the local dev server.
-  if (!editingAllowed || isPending || !user) return null;
+  const [status, setStatus] = useState<CmsStatus | null>(null);
+  useEffect(() => {
+    void getCmsStatus().then(setStatus).catch(() => setStatus(null));
+  }, []);
+  if (!status?.allowed) return null;
 
   return (
     <div className="mb-6 flex items-center justify-between gap-3 rounded-xl border border-dashed border-primary/40 bg-primary/5 px-4 py-3 text-sm">
-      <span className="text-muted-foreground">
-        Redigeringsmodus — du er innlogget som{" "}
-        <span className="text-foreground">{user.displayName ?? "admin"}</span>.
-      </span>
+      <span className="text-muted-foreground">Redigeringsmodus er på.</span>
       <Link
         to="/poster/$slug/rediger"
         params={{ slug }}

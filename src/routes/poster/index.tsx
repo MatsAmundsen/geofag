@@ -1,14 +1,18 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { ArrowRight, Pencil, Plus } from "lucide-react";
+import { useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { getCmsStatus } from "@/lib/cms";
 import { listPosts } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/poster/")({
   loader: async () => {
-    const posts = await listPosts();
-    return { posts };
+    const [posts, cms] = await Promise.all([listPosts(), getCmsStatus()]);
+    return { posts, cms };
   },
   head: () =>
     topicHead({
@@ -20,8 +24,22 @@ export const Route = createFileRoute("/poster/")({
 });
 
 function PostsIndex() {
-  const { posts } = Route.useLoaderData();
-  const published = posts.filter((p) => p.published === 1);
+  const { posts, cms } = Route.useLoaderData();
+  const navigate = Route.useNavigate();
+  const router = useRouter();
+  const [newSlug, setNewSlug] = useState("");
+  const visible = cms.allowed ? posts : posts.filter((p) => p.published === 1);
+
+  function onCreate(e: React.FormEvent) {
+    e.preventDefault();
+    const slug = newSlug
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    if (!slug) return;
+    void navigate({ to: "/poster/$slug/rediger", params: { slug } });
+  }
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -37,11 +55,54 @@ function PostsIndex() {
             sider — dette er testsporet ved siden av dem.
           </p>
 
-          {published.length === 0 ? (
+          {cms.allowed ? (
+            <form onSubmit={onCreate} className="mt-8 flex flex-wrap items-end gap-3">
+              <div className="min-w-56 flex-1">
+                <label htmlFor="new-slug" className="text-xs font-medium text-muted-foreground">
+                  Ny post (slug)
+                </label>
+                <Input
+                  id="new-slug"
+                  value={newSlug}
+                  onChange={(e) => setNewSlug(e.target.value)}
+                  placeholder="f.eks. vulkaner"
+                />
+              </div>
+              <Button type="submit" size="sm">
+                <Plus className="size-4" />
+                Opprett
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  void router.navigate({ to: "/poster/$slug/rediger", params: { slug: "platetektonikk" } });
+                }}
+              >
+                <Pencil className="size-4" />
+                Rediger
+              </Button>
+            </form>
+          ) : (
+            <p className="mt-6 text-sm text-muted-foreground">
+              For å redigere: åpne{" "}
+              <Link
+                to="/poster/$slug/rediger"
+                params={{ slug: "platetektonikk" }}
+                className="text-primary underline-offset-4 hover:underline"
+              >
+                redigeringssiden
+              </Link>{" "}
+              og logg inn med admin-passord.
+            </p>
+          )}
+
+          {visible.length === 0 ? (
             <p className="mt-10 text-muted-foreground">Ingen publiserte poster ennå.</p>
           ) : (
             <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-              {published.map((post) => (
+              {visible.map((post) => (
                 <li key={post.slug}>
                   <Link
                     to="/poster/$slug"
@@ -58,12 +119,17 @@ function PostsIndex() {
                       </div>
                     ) : null}
                     <div className="flex flex-1 flex-col gap-2 p-5">
-                      <h2 className="font-display text-2xl font-medium tracking-tight">
-                        {post.title}
-                      </h2>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {post.summary}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <h2 className="font-display text-2xl font-medium tracking-tight">
+                          {post.title}
+                        </h2>
+                        {post.published === 1 ? null : (
+                          <span className="rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                            Utkast
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm leading-relaxed text-muted-foreground">{post.summary}</p>
                       <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-primary">
                         Les posten
                         <ArrowRight className="size-4" />

@@ -4,15 +4,15 @@ import { Markdown } from "@/components/markdown";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { editingAllowed } from "@/lib/editing";
+import { getCmsStatus } from "@/lib/cms";
 import { getPost } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/poster/$slug/")({
   loader: async ({ params }) => {
-    const post = await getPost({ data: params.slug });
+    const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
     if (!post) throw notFound();
-    return { post };
+    return { post, cms };
   },
   head: ({ loaderData }) =>
     topicHead({
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/poster/$slug/")({
 });
 
 function PostView() {
-  const { post } = Route.useLoaderData();
+  const { post, cms } = Route.useLoaderData();
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -47,14 +47,12 @@ function PostView() {
               <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{post.ingress}</p>
             ) : null}
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              {editingAllowed ? (
-                <Button asChild variant="secondary" size="sm">
-                  <Link to="/poster/$slug/rediger" params={{ slug: post.slug }}>
-                    <Pencil className="size-4" />
-                    Rediger
-                  </Link>
-                </Button>
-              ) : null}
+              <Button asChild variant="secondary" size="sm">
+                <Link to="/poster/$slug/rediger" params={{ slug: post.slug }}>
+                  <Pencil className="size-4" />
+                  {cms.allowed ? "Rediger" : "Rediger / logg inn"}
+                </Link>
+              </Button>
               <span className="text-xs text-muted-foreground">Opprettet: {post.createdAt}</span>
             </div>
           </div>

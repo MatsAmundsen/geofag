@@ -1,0 +1,405 @@
+/**
+ * Hybrid CMS storage.
+ *
+ * - Local `npm run dev` (Node): Postgres via PGLite (`getSql()`), as before.
+ * - Cloudflare Workers: D1 (`env.POSTS_DB`). PGLite cannot instantiate there
+ *   (it throws "Invalid URL string" — that is why /poster returned 500).
+ * - Worker without a D1 binding: in-memory seed so the page still renders.
+ */
+import { getCookie, getRequest, setCookie } from "@tanstack/react-start/server";
+import { passwordCookieValue, sha256Hex, timingSafeEqual } from "@/lib/cms-crypto";
+import { getSql, type Sql } from "@/lib/db";
+import { isLocalDev } from "@/lib/editing";
+import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import type { CmsPersist, CmsStatus, Post, PostInput } from "@/lib/post-types";
+
+export const CMS_COOKIE = "geofag_cms";
+const SESSION_META = "session";
+const PASSWORD_META = "password_hash";
+const SALT_META = "password_salt";
+
+type D1PreparedStatement = {
+  bind: (...values: unknown[]) => D1PreparedStatement;
+  first: <T = Record<string, unknown>>() => Promise<T | null>;
+  all: <T = Record<string, unknown>>() => Promise<{ results: T[] }>;
+  run: () => Promise<unknown>;
+};
+
+type D1Database = {
+  prepare: (query: string) => D1PreparedStatement;
+  exec: (query: string) => Promise<unknown>;
+};
+
+type WorkerEnv = {
+  POSTS_DB?: D1Database;
+  ASSETS?: unknown;
+  CMS_PASSWORD?: string;
+};
+
+type Store = {
+  persist: CmsPersist;
+  list: () => Promise<Post[]>;
+  get: (slug: string) => Promise<Post | null>;
+  save: (input: PostInput) => Promise<void>;
+  remove: (slug: string) => Promise<void>;
+  getMeta: (key: string) => Promise<string | null>;
+  setMeta: (key: string, value: string) => Promise<void>;
+};
+
+const SELECT_POSTGRES = `
+  select
+    id, slug, title, summary, ingress, thumbnail,
+    body_markdown as "bodyMarkdown",
+    published,
+    to_char(created_at, 'YYYY-MM-DD HH24:MI:SS.US') as "createdAt",
+    to_char(updated_at, 'YYYY-MM-DD HH24:MI:SS.US') as "updatedAt"
+  from posts`;
+
+export function isCloudflareWorker(): boolean {
+  return typeof (globalThis as { WebSocketPair?: unknown }).WebSocketPair !== "undefined";
+}
+
+function getWorkerEnv(): WorkerEnv | null {
+  try {
+    const req = getRequest() as
+      | { runtime?: { cloudflare?: { env?: WorkerEnv } } }
+      | undefined;
+    const fromReq = req?.runtime?.cloudflare?.env;
+    if (fromReq) return fromReq;
+  } catch {
+    /* no request context */
+  }
+  return (globalThis as { __env__?: WorkerEnv }).__env__ ?? null;
+}
+
+function envPassword(): string | undefined {
+  const fromProcess =
+    typeof process !== "undefined" ? process.env.CMS_PASSWORD?.trim() : undefined;
+  const fromWorker = getWorkerEnv()?.CMS_PASSWORD?.trim();
+  return fromProcess || fromWorker || undefined;
+}
+
+function mapD1Row(row: Record<string, unknown>): Post {
+  return {
+    id: Number(row.id) || 0,
+    slug: String(row.slug ?? ""),
+    title: String(row.title ?? ""),
+    summary: String(row.summary ?? ""),
+    ingress: String(row.ingress ?? ""),
+    thumbnail: String(row.thumbnail ?? ""),
+    bodyMarkdown: String(row.body_markdown ?? ""),
+    published: Number(row.published) === 1 ? 1 : 0,
+    createdAt: String(row.created_at ?? ""),
+    updatedAt: String(row.updated_at ?? ""),
+  };
+}
+
+async function d1Store(db: D1Database): Promise<Store> {
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS posts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      slug TEXT NOT NULL UNIQUE,
+      title TEXT NOT NULL,
+      summary TEXT NOT NULL DEFAULT '',
+      ingress TEXT NOT NULL DEFAULT '',
+      thumbnail TEXT NOT NULL DEFAULT '',
+      body_markdown TEXT NOT NULL DEFAULT '',
+      published INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    )
+  `);
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS cms_meta (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    )
+  `);
+  const countRow = await db.prepare("SELECT COUNT(*) AS n FROM posts").first<{ n: number }>();
+  if (!Number(countRow?.n)) {
+    const s = PLATETEKTONIKK_SEED;
+    await db
+      .prepare(
+        `INSERT INTO posts (slug, title, summary, ingress, thumbnail, body_markdown, published, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .bind(
+        s.slug,
+        s.title,
+        s.summary,
+        s.ingress,
+        s.thumbnail,
+        s.bodyMarkdown,
+        s.published,
+        s.createdAt,
+        s.updatedAt,
+      )
+      .run();
+  }
+  return {
+    persist: "d1",
+    async list() {
+      const { results } = await db
+        .prepare("SELECT * FROM posts ORDER BY created_at DESC")
+        .all<Record<string, unknown>>();
+      return results.map(mapD1Row);
+    },
+    async get(slug) {
+      const row = await db
+        .prepare("SELECT * FROM posts WHERE slug = ?")
+        .bind(slug)
+        .first<Record<string, unknown>>();
+      return row ? mapD1Row(row) : null;
+    },
+    async save(input) {
+      const stamp = nowStamp();
+      await db
+        .prepare(
+          `INSERT INTO posts (slug, title, summary, ingress, thumbnail, body_markdown, published, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT (slug) DO UPDATE SET
+             title = excluded.title,
+             summary = excluded.summary,
+             ingress = excluded.ingress,
+             thumbnail = excluded.thumbnail,
+             body_markdown = excluded.body_markdown,
+             published = excluded.published,
+             updated_at = excluded.updated_at`,
+        )
+        .bind(
+          input.slug,
+          input.title,
+          input.summary,
+          input.ingress,
+          input.thumbnail,
+          input.bodyMarkdown,
+          input.published,
+          stamp,
+          stamp,
+        )
+        .run();
+    },
+    async remove(slug) {
+      await db.prepare("DELETE FROM posts WHERE slug = ?").bind(slug).run();
+    },
+    async getMeta(key) {
+      const row = await db
+        .prepare("SELECT value FROM cms_meta WHERE key = ?")
+        .bind(key)
+        .first<{ value: string }>();
+      return row?.value ?? null;
+    },
+    async setMeta(key, value) {
+      await db
+        .prepare(
+          `INSERT INTO cms_meta (key, value) VALUES (?, ?)
+           ON CONFLICT (key) DO UPDATE SET value = excluded.value`,
+        )
+        .bind(key, value)
+        .run();
+    },
+  };
+}
+
+function postgresStore(sql: Sql): Store {
+  return {
+    persist: "postgres",
+    list: () => sql.query<Post>(`${SELECT_POSTGRES} order by created_at desc`),
+    async get(slug) {
+      const rows = await sql.query<Post>(`${SELECT_POSTGRES} where slug = $1`, [slug]);
+      return rows[0] ?? null;
+    },
+    async save(data) {
+      await sql.query(
+        `insert into posts (slug, title, summary, ingress, thumbnail, body_markdown, published, updated_at)
+         values ($1, $2, $3, $4, $5, $6, $7, now())
+         on conflict (slug) do update set
+           title = excluded.title,
+           summary = excluded.summary,
+           ingress = excluded.ingress,
+           thumbnail = excluded.thumbnail,
+           body_markdown = excluded.body_markdown,
+           published = excluded.published,
+           updated_at = now()`,
+        [
+          data.slug,
+          data.title,
+          data.summary,
+          data.ingress,
+          data.thumbnail,
+          data.bodyMarkdown,
+          data.published,
+        ],
+      );
+    },
+    async remove(slug) {
+      await sql.query(`delete from posts where slug = $1`, [slug]);
+    },
+    async getMeta() {
+      return null;
+    },
+    async setMeta() {
+      /* local editing does not persist a CMS password */
+    },
+  };
+}
+
+const memory = {
+  posts: new Map<string, Post>([
+    [PLATETEKTONIKK_SEED.slug, { id: 1, ...PLATETEKTONIKK_SEED }],
+  ]),
+  meta: new Map<string, string>(),
+  nextId: 2,
+};
+
+function memoryStore(): Store {
+  return {
+    persist: "memory",
+    async list() {
+      return [...memory.posts.values()].sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+    },
+    async get(slug) {
+      return memory.posts.get(slug) ?? null;
+    },
+    async save(input) {
+      const existing = memory.posts.get(input.slug);
+      const stamp = nowStamp();
+      memory.posts.set(input.slug, {
+        id: existing?.id ?? memory.nextId++,
+        slug: input.slug,
+        title: input.title,
+        summary: input.summary,
+        ingress: input.ingress,
+        thumbnail: input.thumbnail,
+        bodyMarkdown: input.bodyMarkdown,
+        published: input.published,
+        createdAt: existing?.createdAt || stamp,
+        updatedAt: stamp,
+      });
+    },
+    async remove(slug) {
+      memory.posts.delete(slug);
+    },
+    async getMeta(key) {
+      return memory.meta.get(key) ?? null;
+    },
+    async setMeta(key, value) {
+      memory.meta.set(key, value);
+    },
+  };
+}
+
+export async function getPostStore(): Promise<Store> {
+  const env = getWorkerEnv();
+  if (env?.POSTS_DB) return d1Store(env.POSTS_DB);
+  if (isCloudflareWorker()) {
+    console.warn("[posts] POSTS_DB D1 binding missing — using in-memory seed (edits will not persist)");
+    return memoryStore();
+  }
+  return postgresStore(await getSql());
+}
+
+function setSessionCookie(value: string) {
+  setCookie(CMS_COOKIE, value, {
+    path: "/",
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 30,
+  });
+}
+
+function clearSessionCookie() {
+  setCookie(CMS_COOKIE, "", {
+    path: "/",
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    maxAge: 0,
+  });
+}
+
+async function cookieIsValid(store: Store, cookie: string | undefined): Promise<boolean> {
+  if (!cookie) return false;
+  const password = envPassword();
+  if (password) {
+    const expected = await passwordCookieValue(password);
+    return timingSafeEqual(cookie, expected);
+  }
+  const sessionHash = await store.getMeta(SESSION_META);
+  if (!sessionHash) return false;
+  return timingSafeEqual(await sha256Hex(cookie), sessionHash);
+}
+
+export async function cmsStatus(): Promise<CmsStatus> {
+  if (isLocalDev) {
+    return { allowed: true, signedIn: true, needsSetup: false, persist: "postgres" };
+  }
+  const store = await getPostStore();
+  const signedIn = await cookieIsValid(store, getCookie(CMS_COOKIE));
+  const password = envPassword();
+  const storedHash = await store.getMeta(PASSWORD_META);
+  const needsSetup = !password && !storedHash;
+  return {
+    allowed: signedIn,
+    signedIn,
+    needsSetup,
+    persist: store.persist,
+  };
+}
+
+export async function assertCanEdit(): Promise<void> {
+  const status = await cmsStatus();
+  if (status.allowed) return;
+  throw new Error("Unauthorized");
+}
+
+export async function loginCms(password: string): Promise<CmsStatus> {
+  if (isLocalDev) return cmsStatus();
+  const store = await getPostStore();
+  const configured = envPassword();
+  if (configured) {
+    const expected = await passwordCookieValue(configured);
+    const given = await passwordCookieValue(password);
+    if (!timingSafeEqual(given, expected)) throw new Error("Feil passord");
+    setSessionCookie(expected);
+    return cmsStatus();
+  }
+  const salt = await store.getMeta(SALT_META);
+  const hash = await store.getMeta(PASSWORD_META);
+  if (!salt || !hash) throw new Error("Ingen admin-passord er satt ennå");
+  const given = await sha256Hex(`${salt}:${password}`);
+  if (!timingSafeEqual(given, hash)) throw new Error("Feil passord");
+  const token = crypto.randomUUID() + crypto.randomUUID();
+  await store.setMeta(SESSION_META, await sha256Hex(token));
+  setSessionCookie(token);
+  return cmsStatus();
+}
+
+export async function setupCms(password: string): Promise<CmsStatus> {
+  if (isLocalDev) return cmsStatus();
+  if (password.trim().length < 8) throw new Error("Passordet må være minst 8 tegn");
+  const store = await getPostStore();
+  if (envPassword()) throw new Error("Passordet styres av CMS_PASSWORD i Cloudflare");
+  if (await store.getMeta(PASSWORD_META)) throw new Error("Passordet er allerede satt");
+  const salt = crypto.randomUUID();
+  await store.setMeta(SALT_META, salt);
+  await store.setMeta(PASSWORD_META, await sha256Hex(`${salt}:${password}`));
+  const token = crypto.randomUUID() + crypto.randomUUID();
+  await store.setMeta(SESSION_META, await sha256Hex(token));
+  setSessionCookie(token);
+  return cmsStatus();
+}
+
+export async function logoutCms(): Promise<CmsStatus> {
+  clearSessionCookie();
+  if (!isLocalDev) {
+    try {
+      const store = await getPostStore();
+      await store.setMeta(SESSION_META, "");
+    } catch {
+      /* ignore */
+    }
+  }
+  return cmsStatus();
+}
