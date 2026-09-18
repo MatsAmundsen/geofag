@@ -26,30 +26,25 @@ function asPostInput(input: unknown): PostInput {
 }
 
 /** All posts, newest first (drafts included — the admin list needs them). */
-export const listPosts = createServerFn({ method: "GET" }).handler(async () => {
-  try {
-    const { getPostStore } = await import("@/lib/post-store.server");
-    return (await getPostStore()).list();
-  } catch (err) {
-    console.error("[posts] list failed", err);
-    return [seedPost()];
-  }
+export const listPosts = createServerFn({ method: "POST" }).handler(async () => {
+  const { getPostStore, noStorePosterResponse } = await import("@/lib/post-store.server");
+  noStorePosterResponse();
+  return (await getPostStore()).list();
 });
 
 /** A single post by slug, or `null` when it does not exist. */
-export const getPost = createServerFn({ method: "GET" })
+export const getPost = createServerFn({ method: "POST" })
   .validator((slug: unknown): string => {
     if (typeof slug !== "string" || !slug.trim()) throw new Error("slug is required");
     return slug;
   })
   .handler(async ({ data: slug }) => {
-    try {
-      const { getPostStore } = await import("@/lib/post-store.server");
-      const post = await (await getPostStore()).get(slug);
-      if (post) return post;
-    } catch (err) {
-      console.error("[posts] get failed", err);
-    }
+    const { getPostStore, noStorePosterResponse } = await import("@/lib/post-store.server");
+    noStorePosterResponse();
+    const post = await (await getPostStore()).get(slug);
+    if (post) return post;
+    // Bundled seed only when the store has no row yet — never as a stand-in
+    // for a failed Durable Object read (that hid live edits behind the old chapter).
     return slug === PLATETEKTONIKK_SEED.slug ? seedPost() : null;
   });
 

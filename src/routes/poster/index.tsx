@@ -5,27 +5,24 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { getCmsStatus } from "@/lib/cms";
+import { GUEST_CMS, getCmsStatus } from "@/lib/cms";
 import { listPosts } from "@/lib/posts";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
 
-const guestCms = {
-  allowed: false,
-  signedIn: false,
-  needsSetup: true,
-  persist: "memory" as const,
-};
-
 export const Route = createFileRoute("/poster/")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
   loader: async () => {
+    const posts = await listPosts();
+    let cms = GUEST_CMS;
     try {
-      const [posts, cms] = await Promise.all([listPosts(), getCmsStatus()]);
-      return { posts, cms };
+      cms = await getCmsStatus();
     } catch (err) {
-      console.error("[poster] loader failed", err);
-      return { posts: [{ id: 1, ...PLATETEKTONIKK_SEED }], cms: guestCms };
+      console.error("[poster] cms status failed", err);
     }
+    return { posts, cms };
   },
   head: () =>
     topicHead({

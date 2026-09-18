@@ -10,7 +10,7 @@ import { getCookie, getRequest, setCookie } from "@tanstack/react-start/server";
 import { passwordCookieValue, sha256Hex, timingSafeEqual } from "@/lib/cms-crypto";
 import { isLocalDev } from "@/lib/editing";
 import { needsCmsSetup, nonEmptyMeta } from "@/lib/cms-password";
-import { choosePostBackend } from "@/lib/post-backend";
+import { canUseMemorySeedFallback, choosePostBackend } from "@/lib/post-backend";
 import { isShortPlatetektonikkBody } from "@/lib/post-seed-upgrade";
 import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import {
@@ -21,6 +21,8 @@ import {
 } from "@/lib/posts-durable-object";
 import type { CmsPersist, CmsStatus, Post, PostInput } from "@/lib/post-types";
 import { isCloudflareWorker } from "@/lib/runtime";
+import { pickWorkerEnv, preventPosterCaching, type WorkerBindings } from "@/lib/worker-env";
+import { setResponseHeader } from "@tanstack/react-start/server";
 
 export const CMS_COOKIE = "geofag_cms";
 const SESSION_META = "session";
@@ -44,11 +46,9 @@ type DurableNs = {
   get: (id: unknown) => { fetch: (input: string, init?: RequestInit) => Promise<Response> };
 };
 
-type WorkerEnv = {
+type WorkerEnv = WorkerBindings & {
   POSTS_DB?: D1Database;
   POSTS_DO?: DurableNs;
-  ASSETS?: unknown;
-  CMS_PASSWORD?: string;
 };
 
 type Store = {
@@ -74,7 +74,7 @@ const SELECT_POSTGRES = `
     to_char(updated_at, 'YYYY-MM-DD HH24:MI:SS.US') as "updatedAt"
   from posts`;
 
-function getWorkerEnv(): WorkerEnv | null {
+function requestWorkerEnv(): WorkerEnv | undefined {
   try {
     const req = getRequest() as
       | {
@@ -83,15 +83,39 @@ function getWorkerEnv(): WorkerEnv | null {
           env?: WorkerEnv;
         }
       | undefined;
-    const fromReq =
-      req?.runtime?.cloudflare?.env ?? req?.context?.cloudflare?.env ?? req?.env;
-    if (fromReq?.POSTS_DB || fromReq?.POSTS_DO) return fromReq;
-    if (fromReq) return fromReq;
+    return req?.runtime?.cloudflare?.env ?? req?.context?.cloudflare?.env ?? req?.env;
   } catch {
-    /* no request context */
+    return undefined;
   }
-  const g = globalThis as { __env__?: WorkerEnv };
-  return g.__env__ ?? null;
+}
+
+function globalWorkerEnv(): WorkerEnv | undefined {
+  return (globalThis as { __env__?: WorkerEnv }).__env__;
+}
+
+function getWorkerEnv(): WorkerEnv | null {
+  return pickWorkerEnv([requestWorkerEnv(), globalWorkerEnv()]) as WorkerEnv | null;
+}
+
+/** Prefer `cloudflare:workers` env so HTML SSR sees POSTS_DO, not a stub Request. */
+async function resolveWorkerEnv(): Promise<WorkerEnv | null> {
+  let fromCf: WorkerEnv | undefined;
+  try {
+    const spec = "cloudflare:workers";
+    const mod = (await import(/* @vite-ignore */ spec)) as { env?: WorkerEnv };
+    fromCf = mod.env;
+  } catch {
+    /* Node / tests / older runtimes */
+  }
+  return pickWorkerEnv([fromCf, requestWorkerEnv(), globalWorkerEnv()]) as WorkerEnv | null;
+}
+
+export function noStorePosterResponse(): void {
+  try {
+    preventPosterCaching((name, value) => setResponseHeader(name, value));
+  } catch {
+    /* not in a request (tests) */
+  }
 }
 
 function envPassword(): string | undefined {
@@ -367,16 +391,20 @@ function durableStore(ns: DurableNs): Store {
 }
 
 export async function getPostStore(): Promise<Store> {
+  const env = await resolveWorkerEnv();
   try {
-    const env = getWorkerEnv();
     const backend = choosePostBackend(
       Boolean(env?.POSTS_DB),
       isCloudflareWorker(),
       Boolean(env?.POSTS_DO),
     );
     console.info("[posts] backend", backend);
-    if (backend === "d1" && env?.POSTS_DB) return d1Store(env.POSTS_DB);
-    if (backend === "do" && env?.POSTS_DO) {
+    if (backend === "d1") {
+      if (!env?.POSTS_DB) throw new Error("POSTS_DB binding missing");
+      return d1Store(env.POSTS_DB);
+    }
+    if (backend === "do") {
+      if (!env?.POSTS_DO) throw new Error("POSTS_DO binding missing");
       const store = durableStore(env.POSTS_DO);
       await upgradeShortPlatetektonikk(store);
       return store;
@@ -393,6 +421,9 @@ export async function getPostStore(): Promise<Store> {
     await upgradeShortPlatetektonikk(store);
     return store;
   } catch (err) {
+    if (!canUseMemorySeedFallback(Boolean(env?.POSTS_DB), Boolean(env?.POSTS_DO))) {
+      throw err;
+    }
     console.error("[posts] store init failed, using in-memory seed", err);
     await upgradeShortPlatetektonikk(memoryStore());
     return memoryStore();

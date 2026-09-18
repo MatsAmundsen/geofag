@@ -36,7 +36,7 @@ function requestHost(event: GrokPwaEvent): string {
   );
 }
 
-function injectHeadStreaming(response: Response, host: string): Response {
+function injectHeadStreaming(response: Response, host: string, pathname: string): Response {
   const injector = createHeadInjector({
     host,
     site: grokOgIdentity.site,
@@ -53,6 +53,11 @@ function injectHeadStreaming(response: Response, host: string): Response {
   );
   const headers = new Headers(response.headers);
   headers.delete("content-length");
+  if (pathname.startsWith("/poster")) {
+    headers.set("cache-control", "private, no-store, no-cache, must-revalidate");
+    headers.set("cdn-cache-control", "no-store");
+    headers.set("cloudflare-cdn-cache-control", "no-store");
+  }
   return new Response(transformed, {
     status: response.status,
     statusText: response.statusText,
@@ -105,7 +110,7 @@ export default async function grokPwaMiddleware(
     String(result.headers.get("content-type") ?? "").includes("text/html") &&
     !result.headers.get("content-encoding")
   ) {
-    return injectHeadStreaming(result, requestHost(event));
+    return injectHeadStreaming(result, requestHost(event), path);
   }
   return result;
 }

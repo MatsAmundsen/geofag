@@ -8,29 +8,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { cmsLogout, getCmsStatus, type CmsStatus } from "@/lib/cms";
+import { GUEST_CMS, cmsLogout, getCmsStatus, type CmsStatus } from "@/lib/cms";
 import { deletePost, getPost, savePost, type Post } from "@/lib/posts";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
 
-const guestCms: CmsStatus = {
-  allowed: false,
-  signedIn: false,
-  needsSetup: true,
-  persist: "memory",
-};
-
 export const Route = createFileRoute("/poster/$slug/rediger")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
   loader: async ({ params }) => {
+    const post = await getPost({ data: params.slug });
+    let cms = GUEST_CMS;
     try {
-      const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
-      return { post, slug: params.slug, cms };
+      cms = await getCmsStatus();
     } catch (err) {
-      console.error("[poster] editor loader failed", err);
-      const post =
-        params.slug === PLATETEKTONIKK_SEED.slug ? { id: 1, ...PLATETEKTONIKK_SEED } : null;
-      return { post, slug: params.slug, cms: guestCms };
+      console.error("[poster] editor cms status failed", err);
     }
+    return { post, slug: params.slug, cms };
   },
   head: () => topicHead({ title: "Rediger post", description: "", path: "" }),
   component: EditPost,
@@ -158,7 +153,11 @@ function EditPost() {
                 <Button
                   variant="secondary"
                   size="sm"
-                  onClick={() => navigate({ to: "/poster/$slug", params: { slug } })}
+                  onClick={() => {
+                    void router.invalidate().then(() =>
+                      navigate({ to: "/poster/$slug", params: { slug } }),
+                    );
+                  }}
                 >
                   Se posten
                 </Button>

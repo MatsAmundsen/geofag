@@ -1,34 +1,32 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { Pencil } from "lucide-react";
+import { useEffect } from "react";
 import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { getCmsStatus } from "@/lib/cms";
+import { GUEST_CMS, getCmsStatus } from "@/lib/cms";
 import { getPost } from "@/lib/posts";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import { posterNeedsRefresh } from "@/lib/poster-fresh";
 import { topicHead } from "@/lib/seo";
 
-const guestCms = {
-  allowed: false,
-  signedIn: false,
-  needsSetup: true,
-  persist: "memory" as const,
-};
-
 export const Route = createFileRoute("/poster/$slug/")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
   loader: async ({ params }) => {
+    // Fetch the post on its own. A CMS-status failure must not replace the
+    // saved body with the bundled seed chapter.
+    const post = await getPost({ data: params.slug });
+    if (!post) throw notFound();
+    let cms = GUEST_CMS;
     try {
-      const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
-      if (!post) throw notFound();
-      return { post, cms };
+      cms = await getCmsStatus();
     } catch (err) {
-      if (params.slug === PLATETEKTONIKK_SEED.slug) {
-        console.error("[poster] slug loader failed, using seed", err);
-        return { post: { id: 1, ...PLATETEKTONIKK_SEED }, cms: guestCms };
-      }
-      throw err;
+      console.error("[poster] cms status failed", err);
     }
+    return { post, cms };
   },
   head: ({ loaderData }) =>
     topicHead({
@@ -41,6 +39,19 @@ export const Route = createFileRoute("/poster/$slug/")({
 
 function PostView() {
   const { post, cms } = Route.useLoaderData();
+  const router = useRouter();
+
+  useEffect(() => {
+    let cancelled = false;
+    const displayed = { bodyMarkdown: post.bodyMarkdown, updatedAt: post.updatedAt };
+    void getPost({ data: post.slug }).then((fresh) => {
+      if (cancelled || !posterNeedsRefresh(displayed, fresh)) return;
+      void router.invalidate();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [post.bodyMarkdown, post.slug, post.updatedAt, router]);
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -69,7 +80,9 @@ function PostView() {
                   {cms.allowed ? "Rediger" : "Rediger / logg inn"}
                 </Link>
               </Button>
-              <span className="text-xs text-muted-foreground">Opprettet: {post.createdAt}</span>
+              <span className="text-xs text-muted-foreground">
+                Sist oppdatert: {post.updatedAt || post.createdAt || "—"}
+              </span>
             </div>
           </div>
         </header>

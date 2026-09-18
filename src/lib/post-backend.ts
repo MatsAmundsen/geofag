@@ -9,3 +9,12 @@ export function choosePostBackend(
   if (isWorker) return "memory";
   return "postgres";
 }
+
+/**
+ * Memory seed is only allowed when the Worker has no durable store. If D1 or
+ * a Durable Object is bound, falling back to the bundled chapter hides live
+ * edits behind the original fagtekst.
+ */
+export function canUseMemorySeedFallback(hasD1: boolean, hasDurableObject: boolean): boolean {
+  return !hasD1 && !hasDurableObject;
+}
