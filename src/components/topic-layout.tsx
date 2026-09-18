@@ -79,9 +79,9 @@ export function TopicLayout({
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">{lead}</p>
             {posterSlug ? (
               <div className="mt-6">
-                <Button asChild>
+                <Button asChild size="lg" className="shadow-lg">
                   <Link to="/poster/$slug" params={{ slug: posterSlug }}>
-                    <FileText className="size-4" />
+                    <FileText className="size-4" aria-hidden="true" />
                     Poster
                   </Link>
                 </Button>

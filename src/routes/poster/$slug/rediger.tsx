@@ -72,6 +72,7 @@ function EditPost() {
 
   const exists = (loaded?.id ?? 0) > 0;
   const readOnly = !cms.allowed;
+  const headings = markdownH2(body);
 
   async function refresh() {
     await router.invalidate();
@@ -172,14 +173,14 @@ function EditPost() {
               </div>
             </div>
 
-            <div className="mt-8 grid gap-8 lg:grid-cols-2">
-              <form
-                className="space-y-5"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  void onSave();
-                }}
-              >
+            <form
+              className="mt-8 space-y-8"
+              onSubmit={(e) => {
+                e.preventDefault();
+                void onSave();
+              }}
+            >
+              <div className="grid gap-5 sm:grid-cols-2">
                 <Field label="Title of post">
                   <Input value={title} onChange={(e) => setTitle(e.target.value)} />
                 </Field>
@@ -207,59 +208,87 @@ function EditPost() {
                     onChange={(e) => setPublishedField(e.target.value)}
                   />
                 </Field>
-                <Field label="Markdown formatted post, image: /images/image.jpg">
+              </div>
+
+              <div className="grid gap-6 lg:grid-cols-2">
+                <Field
+                  label={`Hele kapittelet (markdown) · ${body.length.toLocaleString("nb-NO")} tegn`}
+                >
+                  <p className="text-xs text-muted-foreground">
+                    Rull inne i feltet for å redigere hele fagteksten, ikke bare starten. Bilder:
+                    /images/image.jpg
+                  </p>
+                  {headings.length > 0 ? (
+                    <details className="text-xs text-muted-foreground">
+                      <summary className="cursor-pointer">
+                        {headings.length} avsnitt i kapittelet
+                      </summary>
+                      <ul className="mt-1 list-disc space-y-0.5 pl-4">
+                        {headings.map((heading) => (
+                          <li key={heading}>{heading}</li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : null}
                   <Textarea
                     value={body}
                     onChange={(e) => setBody(e.target.value)}
-                    className="min-h-[36rem] font-mono"
+                    spellCheck={false}
+                    className="h-[min(70vh,44rem)] min-h-[24rem] resize-y overflow-y-auto font-mono text-xs leading-relaxed"
                   />
                 </Field>
-                <div className="flex items-center gap-3 pt-2">
-                  <Button type="submit" disabled={status.kind === "saving"}>
-                    {status.kind === "saving" ? "Lagrer…" : "Lagre"}
-                  </Button>
-                  {exists ? (
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      className="text-destructive hover:bg-destructive/10"
-                      onClick={onDelete}
-                      disabled={status.kind === "saving"}
-                    >
-                      Slett post
-                    </Button>
-                  ) : null}
-                </div>
-              </form>
-
-              <div className="lg:sticky lg:top-6 lg:self-start">
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  Forhåndsvisning (sanntid)
-                </p>
-                <div className="mt-3 rounded-2xl border border-border bg-card p-6">
-                  <h2 className="font-display text-3xl font-medium tracking-tight">
-                    {title || "Uten tittel"}
-                  </h2>
-                  {ingress ? <p className="mt-3 text-lg text-muted-foreground">{ingress}</p> : null}
-                  {thumbnail ? (
-                    <img
-                      src={thumbnail}
-                      alt=""
-                      className="mt-6 w-full rounded-xl border border-border object-cover"
-                    />
-                  ) : null}
-                  <div className="mt-6">
-                    <Markdown>{body}</Markdown>
+                <div className="lg:sticky lg:top-6 lg:self-start">
+                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    Forhåndsvisning (sanntid)
+                  </p>
+                  <div className="mt-3 max-h-[min(70vh,44rem)] overflow-y-auto rounded-2xl border border-border bg-card p-6">
+                    <h2 className="font-display text-3xl font-medium tracking-tight">
+                      {title || "Uten tittel"}
+                    </h2>
+                    {ingress ? (
+                      <p className="mt-3 text-lg text-muted-foreground">{ingress}</p>
+                    ) : null}
+                    {thumbnail ? (
+                      <img
+                        src={thumbnail}
+                        alt=""
+                        className="mt-6 w-full rounded-xl border border-border object-cover"
+                      />
+                    ) : null}
+                    <div className="mt-6">
+                      <Markdown>{body}</Markdown>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <Button type="submit" disabled={status.kind === "saving"}>
+                  {status.kind === "saving" ? "Lagrer…" : "Lagre"}
+                </Button>
+                {exists ? (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    className="text-destructive hover:bg-destructive/10"
+                    onClick={onDelete}
+                    disabled={status.kind === "saving"}
+                  >
+                    Slett post
+                  </Button>
+                ) : null}
+              </div>
+            </form>
           </>
         )}
       </main>
       <SiteFooter />
     </div>
   );
+}
+
+function markdownH2(md: string): string[] {
+  return [...md.matchAll(/^## (.+)$/gm)].map((m) => m[1] ?? "").filter(Boolean);
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
