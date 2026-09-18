@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Pencil } from "lucide-react";
-import { Markdown } from "@/components/markdown";
+import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
@@ -82,7 +82,7 @@ function PostView() {
               className="mb-8 w-full rounded-2xl border border-border object-cover"
             />
           ) : null}
-          <Markdown>{post.bodyMarkdown}</Markdown>
+          <PosterBody>{post.bodyMarkdown}</PosterBody>
         </article>
       </main>
       <SiteFooter />

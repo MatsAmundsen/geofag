@@ -1,7 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CmsGate } from "@/components/cms-gate";
-import { Markdown } from "@/components/markdown";
+import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
@@ -68,7 +68,13 @@ function EditPost() {
   const [createdAt, setCreatedAt] = useState(initial.createdAt);
   const [publishedField, setPublishedField] = useState(String(initial.published));
   const [body, setBody] = useState(initial.bodyMarkdown);
+  const [previewBody, setPreviewBody] = useState(initial.bodyMarkdown);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setPreviewBody(body), 300);
+    return () => window.clearTimeout(timer);
+  }, [body]);
 
   const exists = (loaded?.id ?? 0) > 0;
   const readOnly = !cms.allowed;
@@ -216,8 +222,9 @@ function EditPost() {
                   label={`Hele kapittelet (markdown) · ${body.length.toLocaleString("nb-NO")} tegn`}
                 >
                   <p className="text-xs text-muted-foreground">
-                    Rull inne i feltet for å redigere hele fagteksten, ikke bare starten. Bilder:
-                    /images/image.jpg
+                    Rull inne i feltet for å redigere hele fagteksten, ikke bare starten. Diagrammer,
+                    quizer, kart og den interaktive modellen vises i forhåndsvisningen til høyre.
+                    Bilder: /images/image.jpg
                   </p>
                   {headings.length > 0 ? (
                     <details className="text-xs text-muted-foreground">
@@ -257,7 +264,7 @@ function EditPost() {
                       />
                     ) : null}
                     <div className="mt-6">
-                      <Markdown>{body}</Markdown>
+                      <PosterBody>{previewBody}</PosterBody>
                     </div>
                   </div>
                 </div>

@@ -1,5 +1,8 @@
+import { Children, isValidElement } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { PhotoFigure } from "@/components/photo-figure";
+import { getPosterPhotoFigure } from "@/lib/poster-figures";
 import { cn } from "@/lib/utils";
 
 /**
@@ -29,7 +32,19 @@ export function Markdown({ children, className }: { children: string; className?
               {children}
             </h3>
           ),
-          p: ({ children }) => <p>{children}</p>,
+          p: ({ children }) => {
+            const visible = Children.toArray(children).filter(
+              (child) => !(typeof child === "string" && !child.trim()),
+            );
+            if (
+              visible.length === 1 &&
+              isValidElement(visible[0]) &&
+              visible[0].type === PhotoFigure
+            ) {
+              return visible[0];
+            }
+            return <p>{children}</p>;
+          },
           a: ({ href, children }) => (
             <a
               href={href}
@@ -50,14 +65,29 @@ export function Markdown({ children, className }: { children: string; className?
           code: ({ children }) => (
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">{children}</code>
           ),
-          img: ({ src, alt }) => (
-            <img
-              src={typeof src === "string" ? src : undefined}
-              alt={alt ?? ""}
-              className="w-full rounded-xl border border-border"
-              loading="lazy"
-            />
-          ),
+          img: ({ src, alt }) => {
+            const photo = getPosterPhotoFigure(typeof src === "string" ? src : undefined);
+            if (photo) {
+              return (
+                <PhotoFigure
+                  src={photo.src}
+                  alt={photo.alt || alt || ""}
+                  heading={photo.heading}
+                  caption={photo.caption}
+                  marks={photo.marks}
+                  points={photo.points}
+                />
+              );
+            }
+            return (
+              <img
+                src={typeof src === "string" ? src : undefined}
+                alt={alt ?? ""}
+                className="w-full rounded-xl border border-border"
+                loading="lazy"
+              />
+            );
+          },
           hr: () => <hr className="border-border" />,
         }}
       >
