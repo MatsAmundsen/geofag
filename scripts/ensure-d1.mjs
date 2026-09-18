@@ -8,7 +8,7 @@
  * persist in D1 instead. Local `npm run dev` still uses PGLite.
  */
 import { execFile } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
@@ -83,10 +83,19 @@ export function idFromCreateOutput(stdout) {
   return match?.[1] ?? null;
 }
 
+/** wrangler-action preCommands do not always have `wrangler` on PATH. */
+function wranglerFileAndArgs(args) {
+  const local = join(projectRoot(), "node_modules", ".bin", "wrangler");
+  if (existsSync(local)) return { file: local, argv: args };
+  return { file: "npx", argv: ["--yes", "wrangler", ...args] };
+}
+
 async function wranglerJson(args) {
-  const { stdout } = await execFileAsync("wrangler", args, {
+  const { file, argv } = wranglerFileAndArgs(args);
+  const { stdout } = await execFileAsync(file, argv, {
     encoding: "utf8",
     env: process.env,
+    cwd: projectRoot(),
   });
   return stdout;
 }
