@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
 import {
   BoundaryOverviewDiagram,
@@ -53,6 +54,7 @@ function PlatetektonikkPage() {
       }}
       kilder={KILDER.platetektonikk}
     >
+      <AdminEditLink slug="platetektonikk" />
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Jordas lag og hva en plate egentlig er
       </h2>

@@ -2,6 +2,7 @@ export const NAV_HUB = [
   { to: "/", label: "Forside" },
   { to: "/geofag-1", label: "Geofag 1" },
   { to: "/geofag-2", label: "Geofag 2" },
+  { to: "/poster", label: "Poster" },
 ] as const;
 
 export const NAV_GF1 = [
@@ -15,6 +16,7 @@ export const NAV_GF1 = [
   { to: "/geofag-1/skred", label: "Skred" },
   { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
   { to: "/geofag-1/feltarbeid", label: "Felt" },
+  { to: "/poster", label: "Poster" },
 ] as const;
 
 export const NAV_GF2 = [
@@ -32,6 +34,7 @@ export const NAV_GF2 = [
   { to: "/tema/paleoklima", label: "Paleo" },
   { to: "/tema/milankovitch", label: "Istider" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
+  { to: "/poster", label: "Poster" },
 ] as const;
 
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
