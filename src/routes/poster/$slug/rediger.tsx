@@ -48,29 +48,13 @@ function EditPost() {
   const [ingress, setIngress] = useState(initial.ingress);
   const [thumbnail, setThumbnail] = useState(initial.thumbnail);
   const [createdAt, setCreatedAt] = useState(initial.createdAt);
-  // The template's combined field: 0 = draft, 1 = published, <id> = delete.
   const [publishedField, setPublishedField] = useState(String(initial.published));
   const [body, setBody] = useState(initial.bodyMarkdown);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
-  const postId = loaded?.id ?? 0;
+  const exists = (loaded?.id ?? 0) > 0;
 
   async function onSave() {
-    // DELETE sentinel: typing the post's own id into the published field deletes
-    // it (mirrors the "DELETE=<id>" affordance in the template).
-    if (postId > 0 && Number(publishedField) === postId) {
-      if (!confirm(`Slette posten «${title || slug}»? Dette kan ikke angres.`)) return;
-      setStatus({ kind: "saving" });
-      try {
-        await deletePost({ data: slug });
-        await router.invalidate();
-        void navigate({ to: "/poster" });
-      } catch (err) {
-        setStatus({ kind: "error", message: errorText(err) });
-      }
-      return;
-    }
-
     setStatus({ kind: "saving" });
     try {
       await savePost({
@@ -87,6 +71,18 @@ function EditPost() {
       // Re-run loaders so the published post reflects the change immediately.
       await router.invalidate();
       setStatus({ kind: "saved" });
+    } catch (err) {
+      setStatus({ kind: "error", message: errorText(err) });
+    }
+  }
+
+  async function onDelete() {
+    if (!confirm(`Slette posten «${title || slug}»? Dette kan ikke angres.`)) return;
+    setStatus({ kind: "saving" });
+    try {
+      await deletePost({ data: slug });
+      await router.invalidate();
+      void navigate({ to: "/poster" });
     } catch (err) {
       setStatus({ kind: "error", message: errorText(err) });
     }
@@ -149,7 +145,7 @@ function EditPost() {
                 disabled
               />
             </Field>
-            <Field label={`Not published=0, Published=1, DELETE=${postId || "<id>"}`}>
+            <Field label="Not published=0, Published=1">
               <Input
                 value={publishedField}
                 inputMode="numeric"
@@ -163,9 +159,22 @@ function EditPost() {
                 className="min-h-[24rem] font-mono"
               />
             </Field>
-            <Button type="submit" disabled={status.kind === "saving"}>
-              {status.kind === "saving" ? "Lagrer…" : "Lagre"}
-            </Button>
+            <div className="flex items-center gap-3 pt-2">
+              <Button type="submit" disabled={status.kind === "saving"}>
+                {status.kind === "saving" ? "Lagrer…" : "Lagre"}
+              </Button>
+              {exists ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  className="text-destructive hover:bg-destructive/10"
+                  onClick={onDelete}
+                  disabled={status.kind === "saving"}
+                >
+                  Slett post
+                </Button>
+              ) : null}
+            </div>
           </form>
 
           {/* Right: live preview — updates on every keystroke. */}
