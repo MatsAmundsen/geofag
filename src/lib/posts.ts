@@ -1,7 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
+import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import type { Post, PostInput } from "@/lib/post-types";
 
 export type { Post, PostInput };
+
+const seedPost = (): Post => ({ id: 1, ...PLATETEKTONIKK_SEED });
 
 const str = (v: unknown): string => (typeof v === "string" ? v : "");
 
@@ -24,8 +27,13 @@ function asPostInput(input: unknown): PostInput {
 
 /** All posts, newest first (drafts included — the admin list needs them). */
 export const listPosts = createServerFn({ method: "GET" }).handler(async () => {
-  const { getPostStore } = await import("@/lib/post-store.server");
-  return (await getPostStore()).list();
+  try {
+    const { getPostStore } = await import("@/lib/post-store.server");
+    return (await getPostStore()).list();
+  } catch (err) {
+    console.error("[posts] list failed", err);
+    return [seedPost()];
+  }
 });
 
 /** A single post by slug, or `null` when it does not exist. */
@@ -35,8 +43,14 @@ export const getPost = createServerFn({ method: "GET" })
     return slug;
   })
   .handler(async ({ data: slug }) => {
-    const { getPostStore } = await import("@/lib/post-store.server");
-    return (await getPostStore()).get(slug);
+    try {
+      const { getPostStore } = await import("@/lib/post-store.server");
+      const post = await (await getPostStore()).get(slug);
+      if (post) return post;
+    } catch (err) {
+      console.error("[posts] get failed", err);
+    }
+    return slug === PLATETEKTONIKK_SEED.slug ? seedPost() : null;
   });
 
 /** Create or update a post (keyed by slug). Requires CMS access. */

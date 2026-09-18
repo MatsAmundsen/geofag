@@ -120,7 +120,13 @@ async function main() {
 
 if (isMainModule(import.meta.url)) {
   main().catch((err) => {
-    console.error("[ensure-d1] failed:", err?.message || err);
-    process.exit(1);
+    // Deploy must still succeed: the Worker falls back to an in-memory seed
+    // when POSTS_DB is missing. Blocking deploy here would leave geofag.com
+    // on the old PGLite crash ("Invalid URL string").
+    console.error(
+      "[ensure-d1] failed, deploying without D1 (edits will not persist):",
+      err?.message || err,
+    );
+    process.exit(0);
   });
 }

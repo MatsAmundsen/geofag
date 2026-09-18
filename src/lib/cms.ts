@@ -4,8 +4,13 @@ import type { CmsStatus } from "@/lib/post-types";
 export type { CmsStatus };
 
 export const getCmsStatus = createServerFn({ method: "GET" }).handler(async () => {
-  const { cmsStatus } = await import("@/lib/post-store.server");
-  return cmsStatus();
+  try {
+    const { cmsStatus } = await import("@/lib/post-store.server");
+    return cmsStatus();
+  } catch (err) {
+    console.error("[cms] status failed", err);
+    return { allowed: false, signedIn: false, needsSetup: false, persist: "memory" as const };
+  }
 });
 
 export const cmsLogin = createServerFn({ method: "POST" })

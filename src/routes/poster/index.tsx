@@ -7,12 +7,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getCmsStatus } from "@/lib/cms";
 import { listPosts } from "@/lib/posts";
+import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
+
+const guestCms = {
+  allowed: false,
+  signedIn: false,
+  needsSetup: false,
+  persist: "memory" as const,
+};
 
 export const Route = createFileRoute("/poster/")({
   loader: async () => {
-    const [posts, cms] = await Promise.all([listPosts(), getCmsStatus()]);
-    return { posts, cms };
+    try {
+      const [posts, cms] = await Promise.all([listPosts(), getCmsStatus()]);
+      return { posts, cms };
+    } catch (err) {
+      console.error("[poster] loader failed", err);
+      return { posts: [{ id: 1, ...PLATETEKTONIKK_SEED }], cms: guestCms };
+    }
   },
   head: () =>
     topicHead({

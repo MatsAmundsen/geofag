@@ -10,12 +10,27 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cmsLogout, getCmsStatus, type CmsStatus } from "@/lib/cms";
 import { deletePost, getPost, savePost, type Post } from "@/lib/posts";
+import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
+
+const guestCms: CmsStatus = {
+  allowed: false,
+  signedIn: false,
+  needsSetup: false,
+  persist: "memory",
+};
 
 export const Route = createFileRoute("/poster/$slug/rediger")({
   loader: async ({ params }) => {
-    const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
-    return { post, slug: params.slug, cms };
+    try {
+      const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
+      return { post, slug: params.slug, cms };
+    } catch (err) {
+      console.error("[poster] editor loader failed", err);
+      const post =
+        params.slug === PLATETEKTONIKK_SEED.slug ? { id: 1, ...PLATETEKTONIKK_SEED } : null;
+      return { post, slug: params.slug, cms: guestCms };
+    }
   },
   head: () => topicHead({ title: "Rediger post", description: "", path: "" }),
   component: EditPost,

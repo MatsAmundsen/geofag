@@ -8,10 +8,11 @@
  */
 import { getCookie, getRequest, setCookie } from "@tanstack/react-start/server";
 import { passwordCookieValue, sha256Hex, timingSafeEqual } from "@/lib/cms-crypto";
-import { getSql, type Sql } from "@/lib/db";
 import { isLocalDev } from "@/lib/editing";
+import { choosePostBackend } from "@/lib/post-backend";
 import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import type { CmsPersist, CmsStatus, Post, PostInput } from "@/lib/post-types";
+import { isCloudflareWorker } from "@/lib/runtime";
 
 export const CMS_COOKIE = "geofag_cms";
 const SESSION_META = "session";
@@ -46,6 +47,10 @@ type Store = {
   setMeta: (key: string, value: string) => Promise<void>;
 };
 
+type SqlClient = {
+  query: <T = Record<string, unknown>>(text: string, params?: unknown[]) => Promise<T[]>;
+};
+
 const SELECT_POSTGRES = `
   select
     id, slug, title, summary, ingress, thumbnail,
@@ -54,10 +59,6 @@ const SELECT_POSTGRES = `
     to_char(created_at, 'YYYY-MM-DD HH24:MI:SS.US') as "createdAt",
     to_char(updated_at, 'YYYY-MM-DD HH24:MI:SS.US') as "updatedAt"
   from posts`;
-
-export function isCloudflareWorker(): boolean {
-  return typeof (globalThis as { WebSocketPair?: unknown }).WebSocketPair !== "undefined";
-}
 
 function getWorkerEnv(): WorkerEnv | null {
   try {
@@ -201,7 +202,7 @@ async function d1Store(db: D1Database): Promise<Store> {
   };
 }
 
-function postgresStore(sql: Sql): Store {
+function postgresStore(sql: SqlClient): Store {
   return {
     persist: "postgres",
     list: () => sql.query<Post>(`${SELECT_POSTGRES} order by created_at desc`),
@@ -290,13 +291,22 @@ function memoryStore(): Store {
 }
 
 export async function getPostStore(): Promise<Store> {
-  const env = getWorkerEnv();
-  if (env?.POSTS_DB) return d1Store(env.POSTS_DB);
-  if (isCloudflareWorker()) {
-    console.warn("[posts] POSTS_DB D1 binding missing — using in-memory seed (edits will not persist)");
+  try {
+    const env = getWorkerEnv();
+    const backend = choosePostBackend(Boolean(env?.POSTS_DB), isCloudflareWorker());
+    if (backend === "d1" && env?.POSTS_DB) return d1Store(env.POSTS_DB);
+    if (backend === "memory") {
+      console.warn(
+        "[posts] POSTS_DB D1 binding missing — using in-memory seed (edits will not persist)",
+      );
+      return memoryStore();
+    }
+    const { getSql } = await import("@/lib/db");
+    return postgresStore(await getSql());
+  } catch (err) {
+    console.error("[posts] store init failed, using in-memory seed", err);
     return memoryStore();
   }
-  return postgresStore(await getSql());
 }
 
 function setSessionCookie(value: string) {
@@ -332,20 +342,25 @@ async function cookieIsValid(store: Store, cookie: string | undefined): Promise<
 }
 
 export async function cmsStatus(): Promise<CmsStatus> {
-  if (isLocalDev) {
-    return { allowed: true, signedIn: true, needsSetup: false, persist: "postgres" };
+  try {
+    if (isLocalDev) {
+      return { allowed: true, signedIn: true, needsSetup: false, persist: "postgres" };
+    }
+    const store = await getPostStore();
+    const signedIn = await cookieIsValid(store, getCookie(CMS_COOKIE));
+    const password = envPassword();
+    const storedHash = await store.getMeta(PASSWORD_META);
+    const needsSetup = !password && !storedHash;
+    return {
+      allowed: signedIn,
+      signedIn,
+      needsSetup,
+      persist: store.persist,
+    };
+  } catch (err) {
+    console.error("[cms] status failed", err);
+    return { allowed: false, signedIn: false, needsSetup: false, persist: "memory" };
   }
-  const store = await getPostStore();
-  const signedIn = await cookieIsValid(store, getCookie(CMS_COOKIE));
-  const password = envPassword();
-  const storedHash = await store.getMeta(PASSWORD_META);
-  const needsSetup = !password && !storedHash;
-  return {
-    allowed: signedIn,
-    signedIn,
-    needsSetup,
-    persist: store.persist,
-  };
 }
 
 export async function assertCanEdit(): Promise<void> {

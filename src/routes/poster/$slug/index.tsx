@@ -6,13 +6,29 @@ import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { getCmsStatus } from "@/lib/cms";
 import { getPost } from "@/lib/posts";
+import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import { topicHead } from "@/lib/seo";
+
+const guestCms = {
+  allowed: false,
+  signedIn: false,
+  needsSetup: false,
+  persist: "memory" as const,
+};
 
 export const Route = createFileRoute("/poster/$slug/")({
   loader: async ({ params }) => {
-    const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
-    if (!post) throw notFound();
-    return { post, cms };
+    try {
+      const [post, cms] = await Promise.all([getPost({ data: params.slug }), getCmsStatus()]);
+      if (!post) throw notFound();
+      return { post, cms };
+    } catch (err) {
+      if (params.slug === PLATETEKTONIKK_SEED.slug) {
+        console.error("[poster] slug loader failed, using seed", err);
+        return { post: { id: 1, ...PLATETEKTONIKK_SEED }, cms: guestCms };
+      }
+      throw err;
+    }
   },
   head: ({ loaderData }) =>
     topicHead({

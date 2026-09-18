@@ -1,4 +1,5 @@
 import { pendingMigrations } from "../../scripts/migration-plan.mjs";
+import { isCloudflareWorker } from "./runtime";
 
 /** Which database backend is active. */
 export type DbSource = "neon" | "pglite";
@@ -169,11 +170,6 @@ async function createPgliteSql(): Promise<Sql> {
 
 let sqlPromise: Promise<Sql> | null = null;
 
-/** Cloudflare Workers expose WebSocketPair; Node/PGLite does not. */
-function isCloudflareWorker(): boolean {
-  return typeof (globalThis as { WebSocketPair?: unknown }).WebSocketPair !== "undefined";
-}
-
 async function createSql(): Promise<Sql> {
   if (typeof window !== "undefined") {
     throw new Error(
@@ -245,6 +241,5 @@ if (typeof window === "undefined" && dbSource === "pglite" && !isCloudflareWorke
   globalBoot.__pgBootstrapPromise__ ??= ensureDbReady().catch((err) => {
     globalBoot.__pgBootstrapPromise__ = undefined;
     console.error("[db] PGLite bootstrap failed:", err);
-    throw err;
   });
 }
