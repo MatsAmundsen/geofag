@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getSql } from "@/lib/db";
 import { authMiddleware } from "@/lib/auth/middleware";
+import { editingAllowed, READ_ONLY_MESSAGE } from "@/lib/editing";
 
 /**
  * Hybrid CMS posts: database-backed, Markdown-bodied content rendered at request
@@ -83,6 +84,9 @@ export const savePost = createServerFn({ method: "POST" })
     };
   })
   .handler(async ({ data }) => {
+    // Option A: refuse writes anywhere but the local dev server (fail-closed —
+    // `editingAllowed` is a hardcoded `false` in the production build).
+    if (!editingAllowed) throw new Error(READ_ONLY_MESSAGE);
     const sql = await getSql();
     await sql.query(
       `insert into posts (slug, title, summary, ingress, thumbnail, body_markdown, published, updated_at)
@@ -116,6 +120,7 @@ export const deletePost = createServerFn({ method: "POST" })
     return slug;
   })
   .handler(async ({ data: slug }) => {
+    if (!editingAllowed) throw new Error(READ_ONLY_MESSAGE);
     const sql = await getSql();
     await sql.query(`delete from posts where slug = $1`, [slug]);
     return { ok: true as const };

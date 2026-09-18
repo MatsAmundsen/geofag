@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { editingAllowed, READ_ONLY_MESSAGE } from "@/lib/editing";
 import { deletePost, getPost, savePost, type Post } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
@@ -53,8 +54,10 @@ function EditPost() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   const exists = (loaded?.id ?? 0) > 0;
+  const readOnly = !editingAllowed;
 
   async function onSave() {
+    if (readOnly) return;
     setStatus({ kind: "saving" });
     try {
       await savePost({
@@ -77,6 +80,7 @@ function EditPost() {
   }
 
   async function onDelete() {
+    if (readOnly) return;
     if (!confirm(`Slette posten «${title || slug}»? Dette kan ikke angres.`)) return;
     setStatus({ kind: "saving" });
     try {
@@ -92,6 +96,11 @@ function EditPost() {
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6">
+        {readOnly ? (
+          <div className="mb-6 rounded-xl border border-border bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+            {READ_ONLY_MESSAGE}
+          </div>
+        ) : null}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="font-display text-4xl font-medium tracking-tight">Rediger post</h1>
@@ -110,7 +119,7 @@ function EditPost() {
             >
               Se posten
             </Button>
-            <Button size="sm" onClick={onSave} disabled={status.kind === "saving"}>
+            <Button size="sm" onClick={onSave} disabled={readOnly || status.kind === "saving"}>
               {status.kind === "saving" ? "Lagrer…" : "Lagre"}
             </Button>
           </div>
@@ -160,7 +169,7 @@ function EditPost() {
               />
             </Field>
             <div className="flex items-center gap-3 pt-2">
-              <Button type="submit" disabled={status.kind === "saving"}>
+              <Button type="submit" disabled={readOnly || status.kind === "saving"}>
                 {status.kind === "saving" ? "Lagrer…" : "Lagre"}
               </Button>
               {exists ? (
@@ -169,7 +178,7 @@ function EditPost() {
                   variant="ghost"
                   className="text-destructive hover:bg-destructive/10"
                   onClick={onDelete}
-                  disabled={status.kind === "saving"}
+                  disabled={readOnly || status.kind === "saving"}
                 >
                   Slett post
                 </Button>

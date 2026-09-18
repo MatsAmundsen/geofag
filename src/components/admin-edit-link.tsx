@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Pencil } from "lucide-react";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
+import { editingAllowed } from "@/lib/editing";
 
 /**
  * A small "edit this as a post" link, shown ONLY to a signed-in user (the admin
@@ -10,7 +11,8 @@ import { useCurrentUserState } from "@/lib/auth/use-current-user";
  */
 export function AdminEditLink({ slug }: { slug: string }) {
   const { user, isPending } = useCurrentUserState();
-  if (isPending || !user) return null;
+  // Option A: no editing affordance off the local dev server.
+  if (!editingAllowed || isPending || !user) return null;
 
   return (
     <div className="mb-6 flex items-center justify-between gap-3 rounded-xl border border-dashed border-primary/40 bg-primary/5 px-4 py-3 text-sm">

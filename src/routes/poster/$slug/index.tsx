@@ -4,6 +4,7 @@ import { Markdown } from "@/components/markdown";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { editingAllowed } from "@/lib/editing";
 import { getPost } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
@@ -46,12 +47,14 @@ function PostView() {
               <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{post.ingress}</p>
             ) : null}
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild variant="secondary" size="sm">
-                <Link to="/poster/$slug/rediger" params={{ slug: post.slug }}>
-                  <Pencil className="size-4" />
-                  Rediger
-                </Link>
-              </Button>
+              {editingAllowed ? (
+                <Button asChild variant="secondary" size="sm">
+                  <Link to="/poster/$slug/rediger" params={{ slug: post.slug }}>
+                    <Pencil className="size-4" />
+                    Rediger
+                  </Link>
+                </Button>
+              ) : null}
               <span className="text-xs text-muted-foreground">Opprettet: {post.createdAt}</span>
             </div>
           </div>
