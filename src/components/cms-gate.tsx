@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cmsLogin, cmsSetup, type CmsStatus } from "@/lib/cms";
+import { cmsUnlock, type CmsStatus } from "@/lib/cms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,7 +21,7 @@ export function CmsGate({
     setBusy(true);
     setError(null);
     try {
-      const next = setup ? await cmsSetup({ data: { password } }) : await cmsLogin({ data: { password } });
+      const next = await cmsUnlock({ data: { password } });
       onChange(next);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Ukjent feil");
@@ -40,8 +40,8 @@ export function CmsGate({
       </h2>
       <p className="text-sm text-muted-foreground">
         {setup
-          ? "Første gang: velg et passord for å redigere poster på geofag.com. Den som setter passordet, eier redigeringen."
-          : "Skriv inn admin-passordet for å redigere og publisere poster."}
+          ? "Første gang: velg et passord (minst 8 tegn) for å redigere poster på geofag.com."
+          : "Skriv inn det samme admin-passordet som du satte forrige gang."}
       </p>
       <div className="space-y-1.5">
         <Label htmlFor="cms-password">Passord</Label>

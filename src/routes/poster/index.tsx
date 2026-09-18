@@ -13,7 +13,7 @@ import { topicHead } from "@/lib/seo";
 const guestCms = {
   allowed: false,
   signedIn: false,
-  needsSetup: false,
+  needsSetup: true,
   persist: "memory" as const,
 };
 
@@ -107,7 +107,7 @@ function PostsIndex() {
               >
                 redigeringssiden
               </Link>{" "}
-              og logg inn med admin-passord.
+              og {cms.needsSetup ? "velg et admin-passord (minst 8 tegn)" : "logg inn med admin-passord"}.
             </p>
           )}
 

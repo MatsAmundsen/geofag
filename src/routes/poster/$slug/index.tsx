@@ -12,7 +12,7 @@ import { topicHead } from "@/lib/seo";
 const guestCms = {
   allowed: false,
   signedIn: false,
-  needsSetup: false,
+  needsSetup: true,
   persist: "memory" as const,
 };
 

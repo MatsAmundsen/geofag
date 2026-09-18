@@ -16,7 +16,7 @@ import { topicHead } from "@/lib/seo";
 const guestCms: CmsStatus = {
   allowed: false,
   signedIn: false,
-  needsSetup: false,
+  needsSetup: true,
   persist: "memory",
 };
 

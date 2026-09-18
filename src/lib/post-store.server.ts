@@ -9,6 +9,7 @@
 import { getCookie, getRequest, setCookie } from "@tanstack/react-start/server";
 import { passwordCookieValue, sha256Hex, timingSafeEqual } from "@/lib/cms-crypto";
 import { isLocalDev } from "@/lib/editing";
+import { needsCmsSetup, nonEmptyMeta } from "@/lib/cms-password";
 import { choosePostBackend } from "@/lib/post-backend";
 import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import type { CmsPersist, CmsStatus, Post, PostInput } from "@/lib/post-types";
@@ -188,7 +189,7 @@ async function d1Store(db: D1Database): Promise<Store> {
         .prepare("SELECT value FROM cms_meta WHERE key = ?")
         .bind(key)
         .first<{ value: string }>();
-      return row?.value ?? null;
+      return nonEmptyMeta(row?.value);
     },
     async setMeta(key, value) {
       await db
@@ -282,7 +283,7 @@ function memoryStore(): Store {
       memory.posts.delete(slug);
     },
     async getMeta(key) {
-      return memory.meta.get(key) ?? null;
+      return nonEmptyMeta(memory.meta.get(key));
     },
     async setMeta(key, value) {
       memory.meta.set(key, value);
@@ -341,6 +342,21 @@ async function cookieIsValid(store: Store, cookie: string | undefined): Promise<
   return timingSafeEqual(await sha256Hex(cookie), sessionHash);
 }
 
+async function readStoredPassword(
+  store: Store,
+): Promise<{ salt: string; hash: string } | null> {
+  const salt = nonEmptyMeta(await store.getMeta(SALT_META));
+  const hash = nonEmptyMeta(await store.getMeta(PASSWORD_META));
+  if (salt && hash) return { salt, hash };
+  return null;
+}
+
+async function startSession(store: Store): Promise<void> {
+  const token = crypto.randomUUID() + crypto.randomUUID();
+  await store.setMeta(SESSION_META, await sha256Hex(token));
+  setSessionCookie(token);
+}
+
 export async function cmsStatus(): Promise<CmsStatus> {
   try {
     if (isLocalDev) {
@@ -348,18 +364,21 @@ export async function cmsStatus(): Promise<CmsStatus> {
     }
     const store = await getPostStore();
     const signedIn = await cookieIsValid(store, getCookie(CMS_COOKIE));
-    const password = envPassword();
-    const storedHash = await store.getMeta(PASSWORD_META);
-    const needsSetup = !password && !storedHash;
+    const stored = await readStoredPassword(store);
     return {
       allowed: signedIn,
       signedIn,
-      needsSetup,
+      needsSetup: needsCmsSetup(envPassword(), stored?.salt, stored?.hash),
       persist: store.persist,
     };
   } catch (err) {
     console.error("[cms] status failed", err);
-    return { allowed: false, signedIn: false, needsSetup: false, persist: "memory" };
+    return {
+      allowed: false,
+      signedIn: false,
+      needsSetup: needsCmsSetup(envPassword(), null, null),
+      persist: "memory",
+    };
   }
 }
 
@@ -369,41 +388,47 @@ export async function assertCanEdit(): Promise<void> {
   throw new Error("Unauthorized");
 }
 
-export async function loginCms(password: string): Promise<CmsStatus> {
+/**
+ * One entry point for the gate: log in if a complete password exists,
+ * otherwise set it. Avoids “already set” vs “not set yet” on the same form.
+ */
+export async function unlockCms(password: string): Promise<CmsStatus> {
   if (isLocalDev) return cmsStatus();
-  const store = await getPostStore();
+  const trimmed = password.trim();
+  if (!trimmed) throw new Error("Passord er påkrevd");
+
   const configured = envPassword();
   if (configured) {
     const expected = await passwordCookieValue(configured);
-    const given = await passwordCookieValue(password);
+    const given = await passwordCookieValue(trimmed);
     if (!timingSafeEqual(given, expected)) throw new Error("Feil passord");
     setSessionCookie(expected);
     return cmsStatus();
   }
-  const salt = await store.getMeta(SALT_META);
-  const hash = await store.getMeta(PASSWORD_META);
-  if (!salt || !hash) throw new Error("Ingen admin-passord er satt ennå");
-  const given = await sha256Hex(`${salt}:${password}`);
-  if (!timingSafeEqual(given, hash)) throw new Error("Feil passord");
-  const token = crypto.randomUUID() + crypto.randomUUID();
-  await store.setMeta(SESSION_META, await sha256Hex(token));
-  setSessionCookie(token);
+
+  const store = await getPostStore();
+  const stored = await readStoredPassword(store);
+  if (stored) {
+    const given = await sha256Hex(`${stored.salt}:${trimmed}`);
+    if (!timingSafeEqual(given, stored.hash)) throw new Error("Feil passord");
+    await startSession(store);
+    return cmsStatus();
+  }
+
+  if (trimmed.length < 8) throw new Error("Passordet må være minst 8 tegn");
+  const salt = crypto.randomUUID();
+  await store.setMeta(SALT_META, salt);
+  await store.setMeta(PASSWORD_META, await sha256Hex(`${salt}:${trimmed}`));
+  await startSession(store);
   return cmsStatus();
 }
 
+export async function loginCms(password: string): Promise<CmsStatus> {
+  return unlockCms(password);
+}
+
 export async function setupCms(password: string): Promise<CmsStatus> {
-  if (isLocalDev) return cmsStatus();
-  if (password.trim().length < 8) throw new Error("Passordet må være minst 8 tegn");
-  const store = await getPostStore();
-  if (envPassword()) throw new Error("Passordet styres av CMS_PASSWORD i Cloudflare");
-  if (await store.getMeta(PASSWORD_META)) throw new Error("Passordet er allerede satt");
-  const salt = crypto.randomUUID();
-  await store.setMeta(SALT_META, salt);
-  await store.setMeta(PASSWORD_META, await sha256Hex(`${salt}:${password}`));
-  const token = crypto.randomUUID() + crypto.randomUUID();
-  await store.setMeta(SESSION_META, await sha256Hex(token));
-  setSessionCookie(token);
-  return cmsStatus();
+  return unlockCms(password);
 }
 
 export async function logoutCms(): Promise<CmsStatus> {
