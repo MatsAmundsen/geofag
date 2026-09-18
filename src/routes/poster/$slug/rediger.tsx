@@ -211,7 +211,7 @@ function EditPost() {
                   <Textarea
                     value={body}
                     onChange={(e) => setBody(e.target.value)}
-                    className="min-h-[24rem] font-mono"
+                    className="min-h-[36rem] font-mono"
                   />
                 </Field>
                 <div className="flex items-center gap-3 pt-2">

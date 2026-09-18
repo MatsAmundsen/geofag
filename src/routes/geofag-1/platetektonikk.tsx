@@ -59,6 +59,7 @@ function PlatetektonikkPage() {
         label: "Neste: Vulkaner",
       }}
       kilder={KILDER.platetektonikk}
+      posterSlug="platetektonikk"
     >
       <AdminEditLink slug="platetektonikk" />
       <Callout title="Kompetansemål i LK20 (Geofag 1)">

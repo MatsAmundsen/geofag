@@ -11,6 +11,7 @@ import { passwordCookieValue, sha256Hex, timingSafeEqual } from "@/lib/cms-crypt
 import { isLocalDev } from "@/lib/editing";
 import { needsCmsSetup, nonEmptyMeta } from "@/lib/cms-password";
 import { choosePostBackend } from "@/lib/post-backend";
+import { isShortPlatetektonikkBody } from "@/lib/post-seed-upgrade";
 import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
 import type { CmsPersist, CmsStatus, Post, PostInput } from "@/lib/post-types";
 import { isCloudflareWorker } from "@/lib/runtime";
@@ -137,6 +138,28 @@ async function d1Store(db: D1Database): Promise<Store> {
         s.updatedAt,
       )
       .run();
+  } else {
+    const existing = await db
+      .prepare("SELECT body_markdown FROM posts WHERE slug = ?")
+      .bind(PLATETEKTONIKK_SEED.slug)
+      .first<{ body_markdown: string }>();
+    if (isShortPlatetektonikkBody(existing?.body_markdown ?? "")) {
+      await db
+        .prepare(
+          `UPDATE posts SET title = ?, summary = ?, ingress = ?, thumbnail = ?, body_markdown = ?, updated_at = ?
+           WHERE slug = ?`,
+        )
+        .bind(
+          PLATETEKTONIKK_SEED.title,
+          PLATETEKTONIKK_SEED.summary,
+          PLATETEKTONIKK_SEED.ingress,
+          PLATETEKTONIKK_SEED.thumbnail,
+          PLATETEKTONIKK_SEED.bodyMarkdown,
+          nowStamp(),
+          PLATETEKTONIKK_SEED.slug,
+        )
+        .run();
+    }
   }
   return {
     persist: "d1",
@@ -300,13 +323,35 @@ export async function getPostStore(): Promise<Store> {
       console.warn(
         "[posts] POSTS_DB D1 binding missing — using in-memory seed (edits will not persist)",
       );
+      await upgradeShortPlatetektonikk(memoryStore());
       return memoryStore();
     }
     const { getSql } = await import("@/lib/db");
-    return postgresStore(await getSql());
+    const store = postgresStore(await getSql());
+    await upgradeShortPlatetektonikk(store);
+    return store;
   } catch (err) {
     console.error("[posts] store init failed, using in-memory seed", err);
+    await upgradeShortPlatetektonikk(memoryStore());
     return memoryStore();
+  }
+}
+
+async function upgradeShortPlatetektonikk(store: Store): Promise<void> {
+  try {
+    const post = await store.get(PLATETEKTONIKK_SEED.slug);
+    if (!isShortPlatetektonikkBody(post?.bodyMarkdown ?? "")) return;
+    await store.save({
+      slug: PLATETEKTONIKK_SEED.slug,
+      title: PLATETEKTONIKK_SEED.title,
+      summary: PLATETEKTONIKK_SEED.summary,
+      ingress: PLATETEKTONIKK_SEED.ingress,
+      thumbnail: PLATETEKTONIKK_SEED.thumbnail,
+      bodyMarkdown: PLATETEKTONIKK_SEED.bodyMarkdown,
+      published: post?.published ?? 1,
+    });
+  } catch (err) {
+    console.error("[posts] platetektonikk upgrade failed", err);
   }
 }
 

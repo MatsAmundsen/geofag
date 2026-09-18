@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { Callout } from "@/components/callout";
 import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
 import {
   bannerForPath,
   eierskapForPath,
@@ -27,6 +28,7 @@ export function TopicLayout({
   kilder,
   prev,
   next,
+  posterSlug,
 }: {
   kicker: string;
   title: string;
@@ -38,6 +40,8 @@ export function TopicLayout({
   kilder?: readonly Kilde[];
   prev?: TopicLink;
   next?: TopicLink;
+  /** When set, shows a Poster button that opens the editable CMS post. */
+  posterSlug?: string;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const override = bannerForPath(pathname);
@@ -73,6 +77,16 @@ export function TopicLayout({
               {title}
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">{lead}</p>
+            {posterSlug ? (
+              <div className="mt-6">
+                <Button asChild>
+                  <Link to="/poster/$slug" params={{ slug: posterSlug }}>
+                    <FileText className="size-4" />
+                    Poster
+                  </Link>
+                </Button>
+              </div>
+            ) : null}
           </div>
         </header>
 
