@@ -25,6 +25,7 @@ import { Route as Geofag1SkredRouteImport } from './routes/geofag-1/skred'
 import { Route as Geofag1VannFlomOgSkredRouteImport } from './routes/geofag-1/vann-flom-og-skred'
 import { Route as Geofag1VannOgFlomRouteImport } from './routes/geofag-1/vann-og-flom'
 import { Route as Geofag1VulkanerOgJordskjelvRouteImport } from './routes/geofag-1/vulkaner-og-jordskjelv'
+import { Route as PosterIndexRouteImport } from './routes/poster/index'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaEnergiHavLuftRouteImport } from './routes/tema/energi-hav-luft'
 import { Route as TemaFeltHavLuftIsRouteImport } from './routes/tema/felt-hav-luft-is'
@@ -40,6 +41,8 @@ import { Route as TemaTilpasningRouteImport } from './routes/tema/tilpasning'
 import { Route as TemaVaerkartRouteImport } from './routes/tema/vaerkart'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
 import { Route as TemaVindsystemetRouteImport } from './routes/tema/vindsystemet'
+import { Route as PosterSlugIndexRouteImport } from './routes/poster/$slug/index'
+import { Route as PosterSlugRedigerRouteImport } from './routes/poster/$slug/rediger'
 import { Route as TemaKlimaIndexRouteImport } from './routes/tema/klima/index'
 import { Route as TemaKlimaAmocRouteImport } from './routes/tema/klima/amoc'
 import { Route as TemaKlimaEnsoRouteImport } from './routes/tema/klima/enso'
@@ -130,6 +133,11 @@ const Geofag1VulkanerOgJordskjelvRoute =
     path: '/geofag-1/vulkaner-og-jordskjelv',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PosterIndexRoute = PosterIndexRouteImport.update({
+  id: '/poster/',
+  path: '/poster/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaCoriolisRoute = TemaCoriolisRouteImport.update({
   id: '/tema/coriolis',
   path: '/tema/coriolis',
@@ -205,6 +213,16 @@ const TemaVindsystemetRoute = TemaVindsystemetRouteImport.update({
   path: '/tema/vindsystemet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PosterSlugIndexRoute = PosterSlugIndexRouteImport.update({
+  id: '/poster/$slug/',
+  path: '/poster/$slug/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PosterSlugRedigerRoute = PosterSlugRedigerRouteImport.update({
+  id: '/poster/$slug/rediger',
+  path: '/poster/$slug/rediger',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaKlimaIndexRoute = TemaKlimaIndexRouteImport.update({
   id: '/tema/klima/',
   path: '/tema/klima/',
@@ -268,11 +286,14 @@ export interface FileRoutesByFullPath {
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
+  '/poster/': typeof PosterIndexRoute
+  '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/poster/$slug/': typeof PosterSlugIndexRoute
   '/tema/klima/': typeof TemaKlimaIndexRoute
 }
 export interface FileRoutesByTo {
@@ -307,11 +328,14 @@ export interface FileRoutesByTo {
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/eksamen': typeof EksamenIndexRoute
   '/geofag-1': typeof Geofag1IndexRoute
+  '/poster': typeof PosterIndexRoute
+  '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/poster/$slug': typeof PosterSlugIndexRoute
   '/tema/klima': typeof TemaKlimaIndexRoute
 }
 export interface FileRoutesById {
@@ -347,11 +371,14 @@ export interface FileRoutesById {
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
+  '/poster/': typeof PosterIndexRoute
+  '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
+  '/poster/$slug/': typeof PosterSlugIndexRoute
   '/tema/klima/': typeof TemaKlimaIndexRoute
 }
 export interface FileRouteTypes {
@@ -388,11 +415,14 @@ export interface FileRouteTypes {
     | '/tema/vindsystemet'
     | '/eksamen/'
     | '/geofag-1/'
+    | '/poster/'
+    | '/poster/$slug/rediger'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
+    | '/poster/$slug/'
     | '/tema/klima/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -427,11 +457,14 @@ export interface FileRouteTypes {
     | '/tema/vindsystemet'
     | '/eksamen'
     | '/geofag-1'
+    | '/poster'
+    | '/poster/$slug/rediger'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
+    | '/poster/$slug'
     | '/tema/klima'
   id:
     | '__root__'
@@ -466,11 +499,14 @@ export interface FileRouteTypes {
     | '/tema/vindsystemet'
     | '/eksamen/'
     | '/geofag-1/'
+    | '/poster/'
+    | '/poster/$slug/rediger'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
+    | '/poster/$slug/'
     | '/tema/klima/'
   fileRoutesById: FileRoutesById
 }
@@ -506,11 +542,14 @@ export interface RootRouteChildren {
   TemaVindsystemetRoute: typeof TemaVindsystemetRoute
   EksamenIndexRoute: typeof EksamenIndexRoute
   Geofag1IndexRoute: typeof Geofag1IndexRoute
+  PosterIndexRoute: typeof PosterIndexRoute
+  PosterSlugRedigerRoute: typeof PosterSlugRedigerRoute
   TemaKlimaAmocRoute: typeof TemaKlimaAmocRoute
   TemaKlimaEnsoRoute: typeof TemaKlimaEnsoRoute
   TemaKlimaIodRoute: typeof TemaKlimaIodRoute
   TemaKlimaNaoRoute: typeof TemaKlimaNaoRoute
   TemaKlimaOversiktRoute: typeof TemaKlimaOversiktRoute
+  PosterSlugIndexRoute: typeof PosterSlugIndexRoute
   TemaKlimaIndexRoute: typeof TemaKlimaIndexRoute
 }
 
@@ -628,6 +667,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Geofag1VulkanerOgJordskjelvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/poster/': {
+      id: '/poster/'
+      path: '/poster'
+      fullPath: '/poster/'
+      preLoaderRoute: typeof PosterIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/coriolis': {
       id: '/tema/coriolis'
       path: '/tema/coriolis'
@@ -733,6 +779,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaVindsystemetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/poster/$slug/': {
+      id: '/poster/$slug/'
+      path: '/poster/$slug'
+      fullPath: '/poster/$slug/'
+      preLoaderRoute: typeof PosterSlugIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poster/$slug/rediger': {
+      id: '/poster/$slug/rediger'
+      path: '/poster/$slug/rediger'
+      fullPath: '/poster/$slug/rediger'
+      preLoaderRoute: typeof PosterSlugRedigerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/klima/': {
       id: '/tema/klima/'
       path: '/tema/klima'
@@ -810,11 +870,14 @@ const rootRouteChildren: RootRouteChildren = {
   TemaVindsystemetRoute: TemaVindsystemetRoute,
   EksamenIndexRoute: EksamenIndexRoute,
   Geofag1IndexRoute: Geofag1IndexRoute,
+  PosterIndexRoute: PosterIndexRoute,
+  PosterSlugRedigerRoute: PosterSlugRedigerRoute,
   TemaKlimaAmocRoute: TemaKlimaAmocRoute,
   TemaKlimaEnsoRoute: TemaKlimaEnsoRoute,
   TemaKlimaIodRoute: TemaKlimaIodRoute,
   TemaKlimaNaoRoute: TemaKlimaNaoRoute,
   TemaKlimaOversiktRoute: TemaKlimaOversiktRoute,
+  PosterSlugIndexRoute: PosterSlugIndexRoute,
   TemaKlimaIndexRoute: TemaKlimaIndexRoute,
 }
 export const routeTree = rootRouteImport
