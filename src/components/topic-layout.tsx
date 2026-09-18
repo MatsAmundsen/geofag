@@ -1,10 +1,20 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Callout } from "@/components/callout";
+import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import {
+  bannerForPath,
+  eierskapForPath,
+  figuresForPath,
+  navForTopicPath,
+} from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
+
+type TopicLink = { to: string; label: string; params?: Record<string, string> };
 
 export function TopicLayout({
   kicker,
@@ -26,9 +36,19 @@ export function TopicLayout({
   videoTopic?: string;
   children: ReactNode;
   kilder?: readonly Kilde[];
-  prev?: { to: string; label: string; params?: Record<string, string> };
-  next?: { to: string; label: string; params?: Record<string, string> };
+  prev?: TopicLink;
+  next?: TopicLink;
 }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const override = bannerForPath(pathname);
+  const slots = figuresForPath(pathname);
+  const src = override?.src ?? banner;
+  const alt = override?.alt ?? bannerAlt;
+  const navOver = navForTopicPath(pathname);
+  const prevLink: TopicLink | undefined = navOver?.prev ?? prev;
+  const nextLink: TopicLink | undefined = navOver?.next ?? next;
+  const eierskap = eierskapForPath(pathname);
+
   return (
     <div className="flex min-h-dvh flex-col">
       <a
@@ -41,8 +61,8 @@ export function TopicLayout({
       <main id="innhold" className="flex-1">
         <header className="relative isolate min-h-72 overflow-hidden">
           <img
-            src={banner}
-            alt={bannerAlt}
+            src={src}
+            alt={alt}
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -57,30 +77,49 @@ export function TopicLayout({
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-          <div className="space-y-5 text-base leading-relaxed text-foreground/95">{children}</div>
+          <div className="space-y-5 text-base leading-relaxed text-foreground/95">
+            {eierskap ? (
+              <Callout title="Eierskap">
+                <p>{eierskap}</p>
+              </Callout>
+            ) : null}
+            {children}
+          </div>
+
+          {slots.length > 0 ? (
+            <section className="mt-12" aria-label="Læringsfigurer">
+              <h2 className="font-display text-2xl font-medium tracking-tight">Læringsfigurer</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Felt reservert til figur. Les bildeteksten — den er pensum selv før bildet er fylt.
+              </p>
+              {slots.map((slot) => (
+                <GeminiFigure key={slot.id} {...slot} />
+              ))}
+            </section>
+          ) : null}
 
           {kilder ? <Kildeliste kilder={kilder} /> : null}
 
           <nav className="mt-14 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
-            {prev ? (
+            {prevLink ? (
               <Link
-                to={prev.to}
-                params={prev.params}
+                to={prevLink.to}
+                params={prevLink.params}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
                 <ArrowLeft className="size-4" />
-                {prev.label}
+                {prevLink.label}
               </Link>
             ) : (
               <span />
             )}
-            {next ? (
+            {nextLink ? (
               <Link
-                to={next.to}
-                params={next.params}
+                to={nextLink.to}
+                params={nextLink.params}
                 className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground sm:ml-auto"
               >
-                {next.label}
+                {nextLink.label}
                 <ArrowRight className="size-4" />
               </Link>
             ) : null}

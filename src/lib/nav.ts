@@ -10,8 +10,10 @@ export const NAV_GF1 = [
   { to: "/geofag-1", label: "Oversikt" },
   { to: "/geofag-1/jordsystemene", label: "Sfærer" },
   { to: "/geofag-1/platetektonikk", label: "Plater" },
-  { to: "/geofag-1/vulkaner-og-jordskjelv", label: "Vulkan" },
-  { to: "/geofag-1/bergarter-og-landformer", label: "Berg" },
+  { to: "/geofag-1/vulkaner", label: "Vulkaner" },
+  { to: "/geofag-1/jordskjelv", label: "Jordskjelv" },
+  { to: "/geofag-1/bergarter", label: "Berg" },
+  { to: "/geofag-1/landformer", label: "Landform" },
   { to: "/geofag-1/vann-og-flom", label: "Vann" },
   { to: "/geofag-1/skred", label: "Skred" },
   { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
@@ -26,14 +28,19 @@ export const NAV_GF2 = [
   { to: "/tema/hoytrykk-lavtrykk", label: "Trykk" },
   { to: "/tema/vindsystemet", label: "Vind" },
   { to: "/tema/vaerkart", label: "Værkart" },
+  { to: "/tema/lokale-vaersystemer", label: "Lokalt" },
   { to: "/tema/jetstrommer", label: "Jet" },
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
+  { to: "/tema/kryosfaeren", label: "Is" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
   { to: "/tema/milankovitch", label: "Istider" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
+  { to: "/tema/tilpasning", label: "Tilpasning" },
+  { to: "/tema/energi-hav-luft", label: "Energi" },
+  { to: "/tema/felt-hav-luft-is", label: "Felt" },
   { to: "/poster", label: "Poster" },
 ] as const;
 
@@ -82,6 +89,26 @@ export const GF2_THEMES = [
     status: "klar" as const,
   },
   {
+    to: "/tema/vaerkart",
+    title: "Værkart og værutvikling",
+    kicker: "Atmosfæren",
+    image: "/images/fig-lavtrykk-hav.jpg",
+    alt: "Lavtrykk over hav med spiralformede skyer — utgangspunktet for et synoptisk kart",
+    blurb:
+      "Synoptiske bakkekart, WMO-stasjonsmodeller, 500 hPa styrestrøm, radar og satellitt. Slik tolker og forutsier du været trinn for trinn.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/lokale-vaersystemer",
+    title: "Lokale og regionale værsystemer",
+    kicker: "Atmosfæren",
+    image: "/images/fig-polarfront.jpg",
+    alt: "Polarfronten som bølge mellom kald og varm luft, med lavtrykk i bølgen",
+    blurb:
+      "Polarfrontsyklon steg for steg. Sjøbris, dalvind og føn. Samme fysikk i tre målestokker.",
+    status: "klar" as const,
+  },
+  {
     to: "/tema/jetstrommer",
     title: "Jetstrømmer",
     kicker: "Atmosfæren",
@@ -115,10 +142,20 @@ export const GF2_THEMES = [
     to: "/tema/klima",
     title: "Klima",
     kicker: "Jordsystemet",
-    image: "/images/tema-klima.jpg",
+    image: "/images/banner-klima.jpg",
     alt: "Grønlands innlandsis mot mørkt polarhav",
     blurb:
-      "Luft, hav og is henger sammen over år og årtusener. Tilbakekoblinger, ENSO og menneskeskapt pådriv.",
+      "Kart over klimasystemet. Oversikten eier stråling og tilbakekobling. ENSO, IOD, NAO og AMOC eier svingningene.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/kryosfaeren",
+    title: "Kryosfæren",
+    kicker: "Is og snø",
+    image: "/images/fig-albedo.jpg",
+    alt: "Is og snø mot mørkt hav — albedoen som styrer massebalansen i år",
+    blurb:
+      "Massebalanse, permafrost, havis og snøskred. Istidene ligger i paleo. Her er isen som jobber i år.",
     status: "klar" as const,
   },
   {
@@ -161,6 +198,36 @@ export const GF2_THEMES = [
       "Orkaner, ekstremnedbør og stormflo er værsystemer drevet av samme fysikk. Risikoen forskyves når klimaet endres.",
     status: "klar" as const,
   },
+  {
+    to: "/tema/tilpasning",
+    title: "Konsekvenser og tilpasning",
+    kicker: "Samfunn",
+    image: "/images/fig-stormflo.jpg",
+    alt: "Stormflo mot kai og bebyggelse — der fysikk blir skade",
+    blurb:
+      "Fysikk blir skade for folk, by og økosystem. Drøft kutt og tilpasning — og hvem som betaler.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/energi-hav-luft",
+    title: "Energi fra hav og atmosfære",
+    kicker: "Ressurser",
+    image: "/images/fig-passat.jpg",
+    alt: "Passatskyer over hav — vinden som energikilde, før den blir kilowatt",
+    blurb:
+      "Vind, havvind, bølger og tidevann. Bærekraft er avveining mellom kutt, areal, arter og forsyning.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/felt-hav-luft-is",
+    title: "Feltarbeid i hav, luft og is",
+    kicker: "Metode",
+    image: "/images/fig-hoytrykk-fjell.jpg",
+    alt: "Norsk fjell under klarvær — felt i luft og is, ikke bergartssnitt",
+    blurb:
+      "Planlegg, mål, tolk og presentér i atmosfære, hav eller kryosfære. Været er både objekt og risiko.",
+    status: "klar" as const,
+  },
 ] as const;
 
 export const THEMES = GF2_THEMES;
@@ -191,28 +258,52 @@ export const GF1_THEMES = [
     maal: "Bevegelser i jordas indre og konsekvenser for jordskorpe og overflate.",
   },
   {
-    slug: "vulkaner-og-jordskjelv",
-    to: "/geofag-1/vulkaner-og-jordskjelv",
-    title: "Vulkaner og jordskjelv",
+    slug: "vulkaner",
+    to: "/geofag-1/vulkaner",
+    title: "Vulkaner",
     kicker: "Naturfarer i geosfæren",
     image: "/images/gf1-vulkan-jordskjelv.jpg",
-    alt: "Snødekt stratovulkan med aske og oppsprukket dal",
+    alt: "Snødekt stratovulkan med aske og gassutblåsning",
     blurb:
-      "Der platene møtes, bygges spenning og magma. Risiko, varsling og hvordan samfunn kan forebygge og tilpasse seg.",
+      "Magmakjemi, silikatpolymerisering, eksplosivitet og utbruddstyper. Fra rolige lavafontener til plinianske katastrofeutbrudd, overvåking og vulkansk klimaeffekt.",
     status: "klar" as const,
-    maal: "Naturfarer knyttet til geosfæren. Risiko, forebygging og tilpasning.",
+    maal: "Gjøre rede for årsakene til vulkanisme, forklare sammenhengen mellom magmakjemi og utbruddsstil, og vurdere geofarer, overvåking og samfunnssikkerhet.",
   },
   {
-    slug: "bergarter-og-landformer",
-    to: "/geofag-1/bergarter-og-landformer",
-    title: "Bergarter og landformer",
-    kicker: "Bergartssyklusen",
-    image: "/images/gf1-bergarter.jpg",
-    alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
+    slug: "jordskjelv",
+    to: "/geofag-1/jordskjelv",
+    title: "Jordskjelv og tsunamier",
+    kicker: "Naturfarer i geosfæren",
+    image: "/images/geo-jordskjelv-bolger-3d.jpg",
+    alt: "3D-snitt av forkastningsbrudd, seismiske bølger og overflateskader",
     blurb:
-      "Mineraler, bergarter og sedimenter. Datering. Hvordan indre og ytre krefter — og mennesker — lager og endrer landformer.",
+      "Elastisk tilbakefjæring, P- og S-bølger, momentmagnitude, Wadati-Benioff-sonen, norsk seismisitet, tsunamifysikk og jordskjelvsikring med Eurokode 8.",
     status: "klar" as const,
-    maal: "Mineral- og bergartsgrupper, datering, lokal geologi og landformer.",
+    maal: "Forklare mekanismene bak jordskjelv og tsunamier, gjøre rede for seismisk bølgeforplantning og vurdere seismisk risiko og sikringstiltak i Norge og globalt.",
+  },
+  {
+    slug: "bergarter",
+    to: "/geofag-1/bergarter",
+    title: "Bergarter og det geologiske kretsløpet",
+    kicker: "Geosfærens byggesteiner",
+    image: "/images/geo-geologisk-kretslop-3d.jpg",
+    alt: "3D-blokkdiagram av det geologiske kretsløpet med magmakammer, sedimentasjonsbasseng og regional metamorfose",
+    blurb:
+      "Mineralogi, silikatstrukturer, de tre bergartsgruppene, Bowens reaksjonsserie, tynnsnitt under polarisasjonsmikroskopi og aldersdatering.",
+    status: "klar" as const,
+    maal: "Gjøre rede for mineral- og bergartsdannende prosesser, klassifisere vanlige norske bergarter og forklare prinsipper for relativ og radiometrisk datering.",
+  },
+  {
+    slug: "landformer",
+    to: "/geofag-1/landformer",
+    title: "Landformer og geomorfologiske prosesser",
+    kicker: "Erosjon, forvitring og landskap",
+    image: "/images/fig-vestlandet.jpg",
+    alt: "Vestlandsk fjordlandskap med dyp U-dal og bratte fjellsider",
+    blurb:
+      "Mekanisk og kjemisk forvitring, Hjulstrøms kurve, glasiale og fluviale landformer, strandflaten og den paleiske overflaten i Norge.",
+    status: "klar" as const,
+    maal: "Beskrive og forklare hvordan indre og ytre krefter, spesielt rennende vann og isbreer, har formet og endrer det norske landskapet gjennom geologisk tid.",
   },
   {
     slug: "vann-og-flom",
@@ -255,8 +346,8 @@ export const GF1_THEMES = [
     to: "/geofag-1/feltarbeid",
     title: "Feltarbeid",
     kicker: "Data i felt",
-    image: "/images/gf1-bergarter.jpg",
-    alt: "Lagdelt sedimentær klippe og isskurt fjordlandskap",
+    image: "/images/fig-forvitring.jpg",
+    alt: "Forvitret blotning — felt i geosfæren, ikke samme foto som bergartssiden",
     blurb:
       "Planlegge, samle georefererte data, ivareta HMS, bearbeide, tolke og presentere. Feltboka er primærkilden.",
     status: "klar" as const,
@@ -322,6 +413,8 @@ export const KLIMA_SUBTHEMES = [
 ] as const;
 
 export function gf1Theme(slug: string) {
+  if (slug === "bergarter-og-landformer") return GF1_THEMES.find((t) => t.slug === "bergarter");
+  if (slug === "vulkaner-og-jordskjelv") return GF1_THEMES.find((t) => t.slug === "vulkaner");
   return GF1_THEMES.find((t) => t.slug === slug);
 }
 
@@ -331,5 +424,6 @@ export function allThemePaths(): string[] {
     ...GF1_THEMES.map((t) => t.to),
     ...GF2_THEMES.map((t) => t.to),
     ...KLIMA_SUBTHEMES.map((t) => t.to),
+    "/tema/kryosfare",
   ];
 }

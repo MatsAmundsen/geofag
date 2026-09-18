@@ -28,9 +28,15 @@ function AmocPage() {
       banner="/images/fig-amoc.jpg"
       bannerAlt="Nord-Atlanteren med fargegradient som illustrerer varme overflatestrømmer og kalde dypstrømmer"
       prev={{ to: "/tema/klima/nao", label: "Forrige: NAO" }}
-      next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
+      next={{ to: "/tema/kryosfaeren", label: "Neste: Kryosfæren" }}
       kilder={KILDER.amoc}
     >
+      <Callout title="Eierskap">
+        <p>
+          Havstrømmer eier gyre og Ekman. Denne siden eier omveltningen: dypvannsdannelse,
+          ferskvannspådrag og stabilitet. Neste kapittel eier isen som jobber i år.
+        </p>
+      </Callout>
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Hva er AMOC?
       </h2>

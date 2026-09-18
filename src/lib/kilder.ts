@@ -50,22 +50,22 @@ export const KILDER = {
   ],
   platetektonikk: [
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "About plate tectonics and volcanoes",
-      suffix: ".",
-      href: "https://www.usgs.gov/programs/vhp/about-plate-tectonics-and-volcanoes",
+      prefix: "Forsyth, D., & Uyeda, S. (1975). On the relative importance of the driving forces of plate motion. ",
+      italic: "Geophysical Journal International, 43",
+      suffix: "(1), 163–200.",
+      href: "https://doi.org/10.1111/j.1365-246X.1975.tb00631.x",
+    },
+    {
+      prefix: "Hess, H. H. (1962). History of ocean basins. I A. E. J. Engel, H. L. James, & B. F. Leonard (Red.), ",
+      italic: "Petrologic Studies: A Volume to Honor A. F. Buddington",
+      suffix: " (s. 599–620). Geological Society of America.",
+      href: "https://doi.org/10.1130/Petrologic.1962.599",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
       italic: "How fast do tectonic plates move?",
       suffix: ".",
       href: "https://oceanexplorer.noaa.gov/facts/plate-tectonics.html",
-    },
-    {
-      prefix: "NORSAR. (u.å.). ",
-      italic: "Jordskjelv i Norge",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -80,13 +80,124 @@ export const KILDER = {
       href: "https://www.ngu.no/emne/marin-grense",
     },
     {
+      prefix: "NORSAR. (u.å.). ",
+      italic: "Jordskjelv i Norge",
+      suffix: ".",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
+    },
+    {
       prefix: "Norsk Polarinstitutt. (u.å.). ",
       italic: "Jan Mayen",
       suffix: ".",
       href: "https://www.npolar.no/tema/jan-mayen/",
     },
+    {
+      prefix:
+        "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2008). ",
+      italic: "Landet blir til: Norges geologi",
+      suffix: " (2. utg.). Norsk Geologisk Forening.",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
+      italic: "About plate tectonics and volcanoes",
+      suffix: ".",
+      href: "https://www.usgs.gov/programs/vhp/about-plate-tectonics-and-volcanoes",
+    },
+    {
+      prefix: "Vine, F. J., & Matthews, D. H. (1963). Magnetic anomalies over oceanic ridges. ",
+      italic: "Nature, 199",
+      suffix: "(4900), 947–949.",
+      href: "https://doi.org/10.1038/199947a0",
+    },
+    {
+      prefix: "Wegener, A. (1912). Die Entstehung der Kontinente. ",
+      italic: "Geologische Rundschau, 3",
+      suffix: "(4), 276–292.",
+      href: "https://doi.org/10.1007/BF02202896",
+    },
+    {
+      prefix: "Wilson, J. T. (1966). Did the Atlantic close and then re-open? ",
+      italic: "Nature, 211",
+      suffix: "(5050), 676–681.",
+      href: "https://doi.org/10.1038/211676a0",
+    },
+    {
+      prefix:
+        "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
+      italic: "Journal of the Geological Society, 145",
+      suffix: "(3), 401–412.",
+      href: "https://doi.org/10.1144/gsjgs.145.3.0401",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      italic: "Leka – Norges geologiske nasjonalmonument og ofiolittkompleks",
+      suffix: ".",
+      href: "https://www.ngu.no/geologiske-arv/leka",
+    },
   ],
   vulkaner: [
+    {
+      prefix:
+        "Newhall, C. G., & Self, S. (1982). The Volcanic Explosivity Index (VEI): An estimate of explosive magnitude for historical volcanism. ",
+      italic: "Journal of Geophysical Research, 87",
+      suffix: "(C2), 1231–1238.",
+      href: "https://doi.org/10.1029/JC087iC02p01231",
+    },
+    {
+      prefix: "Norsk Polarinstitutt. (u.å.). ",
+      italic: "Jan Mayen og Beerenberg",
+      suffix: ".",
+      href: "https://www.npolar.no/tema/jan-mayen/",
+    },
+    {
+      prefix:
+        "Oppenheimer, C. (2003). Climatic, environmental and human consequences of the largest known historic eruption: Tambora volcano (Indonesia) 1815. ",
+      italic: "Progress in Physical Geography, 27",
+      suffix: "(2), 230–259.",
+      href: "https://doi.org/10.1191/0309133303pp379ra",
+    },
+    {
+      prefix:
+        "Robock, A. (2000). Volcanic eruptions and climate. ",
+      italic: "Reviews of Geophysics, 38",
+      suffix: "(2), 191–219.",
+      href: "https://doi.org/10.1029/1998RG000054",
+    },
+    {
+      prefix:
+        "Sparks, R. S. J. (1978). The dynamics of bubble formation and growth in magmas: A review and analysis. ",
+      italic: "Journal of Volcanology and Geothermal Research, 3",
+      suffix: "(1–2), 1–37.",
+      href: "https://doi.org/10.1016/0377-0273(78)90002-1",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
+      italic: "Hawaiian Volcano Observatory: Hawaiian volcano monitoring and shield volcanoes",
+      suffix: ".",
+      href: "https://www.usgs.gov/observatories/hvo",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-b). ",
+      italic: "Cascades Volcano Observatory: Mount St. Helens and stratovolcano hazards",
+      suffix: ".",
+      href: "https://www.usgs.gov/observatories/cvo",
+    },
+    {
+      prefix:
+        "Gíslason, S. R., Hassenkam, T., Nedel, S., Bovet, N., Eiriksdottir, E. S., Alfredsson, H. A., Hem, C. P., Balogh, Z. I., Dideriksen, K., & Stipp, S. L. S. (2011). Characterization of Eyjafjallajökull volcanic ash particles and a protocol for rapid risk assessment. ",
+      italic: "Proceedings of the National Academy of Sciences, 108",
+      suffix: "(18), 7307–7312.",
+      href: "https://doi.org/10.1073/pnas.1015053108",
+    },
+    {
+      prefix:
+        "Sigurdsson, H., Houghton, B., McNutt, S., Rymer, H., & Stix, J. (Red.). (2015). ",
+      italic: "The Encyclopedia of Volcanoes",
+      suffix: " (2. utg.). Academic Press.",
+      href: "https://doi.org/10.1016/C2011-0-06950-8",
+    },
+  ],
+  jordskjelv: [
     {
       prefix:
         "Bungum, H., Pettenati, F., Schweitzer, J., & Sirovich, L. (2009). The 23 October 1904 MS 5.4 Oslofjord earthquake: Reanalysis based on macroseismic and instrumental data. ",
@@ -102,58 +213,59 @@ export const KILDER = {
     },
     {
       prefix: "NORSAR. (u.å.-b). ",
-      italic: "Jordskjelv i Norge",
+      italic: "Jordskjelv i Norge og seismisk risiko",
       suffix: ".",
       href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "Hawaiian Volcano Observatory",
-      suffix: ".",
-      href: "https://www.usgs.gov/observatories/hvo",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
-      italic: "Åknes",
-      suffix: ".",
-      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026). ",
-      italic: "Fjellskred fra Åknes. Reviderte scenarioer, sannsynligheter og konsekvenser",
-      suffix: " (Rapport 16/2026).",
-      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
+      prefix:
+        "Oldham, R. D. (1906). The Constitution of the Interior of the Earth, as Revealed by Earthquakes. ",
+      italic: "Quarterly Journal of the Geological Society, 62",
+      suffix: "(1–4), 456–475.",
+      href: "https://doi.org/10.1144/GSL.JGS.1906.062.01-04.21",
     },
     {
       prefix:
-        "Haflidason, H., Sejrup, H. P., Nygård, A., Mienert, J., Bryn, P., Lien, R., Forsberg, C. F., Berg, K., & Masson, D. (2004). The Storegga Slide: Architecture, geometry and slide development. ",
-      italic: "Marine Geology, 213",
-      suffix: "(1–4), 201–234.",
-      href: "https://doi.org/10.1016/j.margeo.2004.10.007",
+        "Reid, H. F. (1910). ",
+      italic: "The Mechanics of the Earthquake: The California Earthquake of April 18, 1906",
+      suffix: " (Vol. 2). Carnegie Institution of Washington.",
+      href: "https://doi.org/10.5962/bhl.title.35824",
     },
     {
-      prefix: "Norsk Polarinstitutt. (u.å.). ",
-      italic: "Jan Mayen",
+      prefix: "Standard Norge. (2021). ",
+      italic: "Eurokode 8: Prosjektering av konstruksjoner for seismisk påvirkning (NS-EN 1998-1)",
       suffix: ".",
-      href: "https://www.npolar.no/tema/jan-mayen/",
+      href: "https://www.standard.no/",
     },
   ],
   bergarter: [
     {
+      prefix: "Bowen, N. L. (1928). ",
+      italic: "The Evolution of the Igneous Rocks",
+      suffix: ". Princeton University Press.",
+      href: "https://doi.org/10.1515/9781400874538",
+    },
+    {
+      prefix: "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2013). ",
+      italic: "Landet blir til: Norges geologi",
+      suffix: " (2. utg.). Norsk Geologisk Forening.",
+      href: "https://geologi.no/nettbutikk/boker/landet-blir-til-detail",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
-      italic: "Geologi på land",
+      italic: "Geologi på land: Norges berggrunn og dannelse",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/geologi-pa-land",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
-      italic: "Larvikitt",
+      italic: "Larvikitt – Norges nasjonalbergart",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/larvikitt",
     },
     {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "The rock cycle",
+      italic: "The rock cycle and petrologic classification",
       suffix: ".",
       href: "https://www.usgs.gov/media/images/usgs-simplified-rock-classification",
     },
@@ -169,6 +281,50 @@ export const KILDER = {
       italic: "Radiocarbon, 62",
       suffix: "(4), 725–757.",
       href: "https://doi.org/10.1017/RDC.2020.41",
+    },
+    {
+      prefix: "Schoene, B. (2014). U–Th–Pb Geochronology. I H. D. Holland & K. K. Turekian (Red.), ",
+      italic: "Treatise on Geochemistry",
+      suffix: " (2. utg., Bd. 4, s. 341–378). Elsevier.",
+      href: "https://doi.org/10.1016/B978-0-08-095975-7.00310-7",
+    },
+  ],
+  landformer: [
+    {
+      prefix: "Gjessing, J. (1978). ",
+      italic: "Norges landformer",
+      suffix: ". Universitetsforlaget.",
+      href: "https://urn.nb.no/URN:NBN:no-nb_digibok_2012050908064",
+    },
+    {
+      prefix: "Holtedahl, O. (1960). Features of the geomorphology. I O. Holtedahl (Red.), ",
+      italic: "Geology of Norway (NGU Skrifter 208)",
+      suffix: " (s. 508–534). Norges geologiske undersøkelse.",
+      href: "https://www.ngu.no/",
+    },
+    {
+      prefix: "Hjulström, F. (1935). Studies of the morphological activity of rivers as illustrated by the River Fyris. ",
+      italic: "Bulletin of the Geological Institution of the University of Uppsala, 25",
+      suffix: ", 221–527.",
+      href: "https://doi.org/10.1080/04353676.1935.11825595",
+    },
+    {
+      prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
+      italic: "Glaciers and Glaciation",
+      suffix: " (2. utg.). Routledge.",
+      href: "https://doi.org/10.4324/9780203785010",
+    },
+    {
+      prefix: "Nesje, A., & Dahl, S. O. (1993). The high mountain style of landforms in southern Norway: A result of multiple quaternary glaciations. ",
+      italic: "Norsk Geologisk Tidsskrift, 73",
+      suffix: "(2), 125–135.",
+      href: "https://geologi.no/tidsskrift",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
+      italic: "Løsmasser og glasiale landformer i Norge",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/losmasser",
     },
   ],
   vannFlom: [
@@ -460,33 +616,33 @@ export const KILDER = {
   coriolis: [
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
-      italic: "The Coriolis effect",
+      italic: "The Coriolis effect: What is the Coriolis effect and how does it influence ocean currents?",
       suffix: ".",
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents1.html",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
-      italic: "The jet stream",
-      suffix: ".",
-      href: "https://www.noaa.gov/jetstream/global/jet-stream",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
-      italic: "El Niño and La Niña",
-      suffix: ".",
-      href: "https://www.climate.gov/enso",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-d). ",
-      italic: "North Atlantic Oscillation",
-      suffix: ".",
-      href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
     },
     {
       prefix: "Store norske leksikon. (u.å.). ",
       italic: "Corioliskraften",
       suffix: ".",
       href: "https://snl.no/corioliskraften",
+    },
+    {
+      prefix: "American Meteorological Society [AMS]. (u.å.). ",
+      italic: "Glossary of meteorology: Coriolis parameter and geostrophic balance",
+      suffix: ".",
+      href: "https://glossary.ametsoc.org/wiki/Coriolis_parameter",
+    },
+    {
+      prefix: "Met Office. (u.å.). ",
+      italic: "What is the Coriolis effect?",
+      suffix: ".",
+      href: "https://www.metoffice.gov/weather/learn-about/weather/atmosphere/coriolis-effect",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
+      italic: "The Ekman spiral and coastal upwelling",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents4.html",
     },
   ],
   havstrommer: [

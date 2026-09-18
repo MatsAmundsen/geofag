@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { GF2_GAP_THEMES } from "@/lib/nav-g2-gaps";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -20,7 +19,7 @@ export const Route = createFileRoute("/geofag-2")({
 });
 
 function Geofag2() {
-  const themes = [...GF2_THEMES, ...GF2_GAP_THEMES];
+  const themes = GF2_THEMES;
   return (
     <div className="flex min-h-dvh flex-col">
       <a
@@ -90,7 +89,7 @@ function Geofag2() {
                   <div className="relative aspect-photo overflow-hidden">
                     <img src={tema.image} alt={tema.alt} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                     <span className={cn("absolute left-3 top-3 rounded-md px-2 py-1 text-xs font-medium", tema.status === "klar" ? "bg-background/80 text-primary" : "bg-background/80 text-muted-foreground")}>
-                      {tema.status === "klar" ? "Klar" : "Kommer"}
+                      {tema.status === "klar" ? "Klar" : "Utkast"}
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col gap-2 p-5">

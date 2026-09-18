@@ -1,0 +1,17 @@
+{
+  "name": "Geofag",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev",
+      "description": "Vite dev server for the Geofag site (TanStack Start). Serves on http://localhost:8080 with the embedded PGLite fallback, so no external database is required."
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 8080
+    }
+  ]
+}

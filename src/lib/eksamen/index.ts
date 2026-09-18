@@ -6,8 +6,9 @@ import { h2024 } from "./sets/h2024";
 import { v2025 } from "./sets/v2025";
 import { h2025 } from "./sets/h2025";
 import { v2026 } from "./sets/v2026";
+import { baklengs } from "./sets/baklengs";
 
-export const EXAM_SETS: ExamSet[] = [v2026, h2025, v2025, h2024, v2024, h2023, eksempel];
+export const EXAM_SETS: ExamSet[] = [v2026, baklengs, h2025, v2025, h2024, v2024, h2023, eksempel];
 
 export function examSet(slug: string): ExamSet | undefined {
   return EXAM_SETS.find((s) => s.slug === slug);
@@ -20,6 +21,7 @@ export function displayPrompt(prompt: string): string {
     .replace(/^\.\.\.\n/gm, "")
     .replace(/^Eksamen (høsten|våren) \d+ fra Udir\n/gim, "")
     .replace(/^Eksempeloppgaver[^\n]*\n/gim, "")
+    .replace(/^Geofag 2 · Øv baklengs\n/gim, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
   const lines = body.split("\n");
@@ -46,6 +48,8 @@ export function taskHeading(prompt: string, fallback: string): string {
   return fallback;
 }
 
+export { MAAL_KART } from "./baklengs-kart";
+export type { MaalKart } from "./baklengs-kart";
 export { solutionFor, SOLUTIONS } from "./solutions";
 export type { ExamSet, ExamTask } from "./types";
 export type { FigureId, Solution, WhyNot } from "./solution-types";

@@ -39,7 +39,7 @@ function KatastroferPage() {
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye og spiralformede regnbånd"
       prev={{ to: "/tema/milankovitch", label: "Forrige: Istider" }}
-      next={{ to: "/eksamen", label: "Neste: Eksamen i Geofag 2" }}
+      next={{ to: "/tema/tilpasning", label: "Neste: Konsekvenser og tilpasning" }}
       kilder={KILDER.vaerkatastrofer}
     >
       {/* 1. SAMME FYSIKK, HØYERE INNSATS */}
@@ -441,7 +441,7 @@ function KatastroferPage() {
             Tropisk syklon (Varmkjerne)
           </h4>
           <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
-            <li>• Dannes over homogent varmt hav (&gt;26,5 °C) uten fronter.</li>
+            <li>• Dannes over homogent varmt hav (&gt; 26,5 °C) uten fronter.</li>
             <li>
               • Drives av <em>latent varme</em> fra kondensasjon.
             </li>
@@ -471,7 +471,7 @@ function KatastroferPage() {
       </h3>
       <p>
         Når et ekstratropisk lavtrykk intensiveres med ekstrem hastighet, omtales det internasjonalt
-        som en <strong>meteorologisk bombe</strong> (Sanders &amp; Gyakum, 1980). Det vitenskapelige
+        som en <strong>meteorologisk bombe</strong> (Sanders & Gyakum, 1980). Det vitenskapelige
         kriteriet for en bombe er et sentraltrykkfall på minst{" "}
         <strong>24 hPa i løpet av 24 timer</strong> (korrigert for breddegrad ved formelen 24
         &times; (sin &phi; / sin 60&deg;) hPa).

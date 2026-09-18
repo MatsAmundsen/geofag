@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { EarthRadiationBudgetDiagram } from "@/components/diagrams/climate-radiation";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -30,6 +31,20 @@ function KlimaOversiktPage() {
       next={{ to: "/tema/klima/enso", label: "Neste: ENSO" }}
       kilder={KILDER.klima}
     >
+      <Callout title="Kompetansemål">
+        <p>
+          Gjøre rede for klimasystemet og hvordan menneskelig aktivitet kan påvirke det. Skill vær
+          og klima, pådriv og tilbakekobling, naturlig svingning og antropogent pådriv
+          (Utdanningsdirektoratet, 2020).
+        </p>
+      </Callout>
+      <Callout title="Hva denne siden eier">
+        <p>
+          Strålingsbalanse, drivhuseffekt, pådriv og tilbakekobling. Is-albedo som forsterker.
+          Havet som varmelager. Modusene, arkivene og isen som jobber i år har egne sider.
+        </p>
+      </Callout>
+
       <h2 className="font-display text-2xl font-medium tracking-tight">
         Vær er dager. Klima er tiår.
       </h2>
@@ -106,6 +121,12 @@ function KlimaOversiktPage() {
         ord="Strålingspådriv"
         barn="Et dytt som forskyver balansen mellom stråling inn og ut. Solen kan dytte. Vulkaner kan dytte. Drivhusgasser kan dytte. Et positivt pådriv varmer. Et negativt kjøler."
       />
+      <p>
+        Globalt middel i toppen av atmosfæren er omtrent 340 W/m² inn. Rundt 30 prosent kastes
+        tilbake (albedo). Resten tas opp. Ut går som langbølge. Drivhusgasser bremser ut. Tallene er
+        avrundede globale middel (NASA, u.å.-c; IPCC, 2021).
+      </p>
+      <EarthRadiationBudgetDiagram />
 
       <PhotoPair
         heading="Samme jord, to ledd i energien"
@@ -149,7 +170,11 @@ function KlimaOversiktPage() {
       <p>
         Hvit is kaster mye sollys tilbake. Mørkt hav tar det opp. Smelter isen, blir flaten mørkere,
         tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen — en av
-        de tydeligste forsterkerne i polarstrøk.
+        de tydeligste forsterkerne i polarstrøk. Massebalanse, ELA og permafrost eier{" "}
+        <Link to="/tema/kryosfaeren" className="text-primary underline-offset-2 hover:underline">
+          kryosfæren
+        </Link>
+        .
       </p>
       <OrdBoks
         ord="Albedo"
@@ -206,31 +231,41 @@ function KlimaOversiktPage() {
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        ENSO: klimaet på noen år
+        Fire svingninger. Fire sider.
       </h2>
       <p>
-        I det tropiske Stillehavet svinger et samspill mellom passatvind og varmt overflatevann.
-        Vanligvis blåser passatene varmt vann mot Indonesia. Der stiger lufta, og det regner
-        kraftig. Østkysten av Stillehavet, utenfor Peru, er da kjøligere og tørrere.
+        Oversikten eier inn og ut. Modusene eier omfordeling. De flytter varme og nedbør uten å
+        endre jordas totale energibalanse vesentlig.
       </p>
+      <ul className="list-disc space-y-2 pl-6">
+        <li>
+          <Link to="/tema/klima/enso" className="text-primary underline-offset-2 hover:underline">
+            ENSO
+          </Link>{" "}
+          — tropisk Stillehav. Walker-cellen, El Niño og La Niña.
+        </li>
+        <li>
+          <Link to="/tema/klima/iod" className="text-primary underline-offset-2 hover:underline">
+            IOD
+          </Link>{" "}
+          — Det indiske hav. Dipolen mot Øst-Afrika og Australia.
+        </li>
+        <li>
+          <Link to="/tema/klima/nao" className="text-primary underline-offset-2 hover:underline">
+            NAO
+          </Link>{" "}
+          — Nord-Atlanteren. Trykkvippa inn mot norske vintre.
+        </li>
+        <li>
+          <Link to="/tema/klima/amoc" className="text-primary underline-offset-2 hover:underline">
+            AMOC
+          </Link>{" "}
+          — Atlanterens omveltning. Tregere enn været. Ikke en bryter.
+        </li>
+      </ul>
       <p>
-        I et El Niño-år svekkes passatene. Det varme vannet sprer seg østover. Regnet flytter med.
-        Peru kan få flom. Indonesia og Australia tørke. Vinden og jetstrømmene andre steder på
-        kloden merker det — det kalles telekobling. Les mer på vår{" "}
-        <Link to="/tema/klima/enso" className="text-primary underline-offset-2 hover:underline">
-          fordypningsside om ENSO
-        </Link>
-        .
+        Les dem i den rekkefølgen. Hopp ikke til en modus før du kan skille pådriv fra svingning.
       </p>
-      <p>
-        La Niña er den andre siden: sterkere passater, enda varmere i vest, kjøligere i øst. ENSO er
-        naturlig (NOAA, u.å.). Den er ikke det samme som global oppvarming. Men den rir oppå et
-        varmere hav.
-      </p>
-      <OrdBoks
-        ord="ENSO"
-        barn="El Niño–Sørlige oscillasjon: et naturlig samspill mellom tropisk Stillehav og passatvindene, med El Niño og La Niña som to ytterpunkter. Det forskyver regn og tørke over store deler av kloden i noen år."
-      />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Klimaet har alltid endret seg
@@ -250,9 +285,13 @@ function KlimaOversiktPage() {
         barn="Klimaet i fortiden, rekonstruert fra iskjerner, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er."
       />
       <p>
-        Hvordan arkivene blir til kunnskap — proxy, iskjerne, Milanković og terskler — står under{" "}
+        Hvordan arkivene blir til kunnskap står under{" "}
         <Link to="/tema/paleoklima" className="text-primary underline-offset-2 hover:underline">
           paleoklima
+        </Link>
+        . Hvorfor istidene kommer, står under{" "}
+        <Link to="/tema/milankovitch" className="text-primary underline-offset-2 hover:underline">
+          istider
         </Link>
         .
       </p>
@@ -308,7 +347,7 @@ function KlimaOversiktPage() {
       <Callout title="Til eksamen">
         <p>
           Skill vær og klima. Skill pådriv og tilbakekobling. Vanndamp forsterker, karbondioksid
-          dytter. ENSO er naturlig årsvariasjon i Stillehavet, ikke synonymt med global oppvarming.
+          dytter. ENSO, IOD og NAO er naturlige svingninger, ikke synonymt med global oppvarming.
           Norges milde kyst er vestavind pluss hav — AMOC inkludert.
         </p>
       </Callout>

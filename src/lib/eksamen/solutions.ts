@@ -1,4 +1,5 @@
 import type { Solution } from "./solution-types";
+import { baklengsSolutions } from "./solutions/baklengs";
 import { eksempelSolutions } from "./solutions/eksempel";
 import { h2023Solutions } from "./solutions/h2023";
 import { h2024Solutions } from "./solutions/h2024";
@@ -11,6 +12,7 @@ export type { FigureId, Solution, WhyNot } from "./solution-types";
 
 export const SOLUTIONS: Record<string, Record<number, Solution>> = {
   v2026: v2026Solutions,
+  baklengs: baklengsSolutions,
   h2025: h2025Solutions,
   v2025: v2025Solutions,
   h2024: h2024Solutions,

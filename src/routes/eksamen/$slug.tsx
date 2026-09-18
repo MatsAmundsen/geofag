@@ -68,12 +68,14 @@ function ExamSetPage() {
               {set.themes.join(" · ")}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild>
-                <a href={set.officialUrl} target="_blank" rel="noreferrer">
-                  Åpne hos Udir
-                  <ExternalLink className="size-4" />
-                </a>
-              </Button>
+              {set.officialUrl ? (
+                <Button asChild>
+                  <a href={set.officialUrl} target="_blank" rel="noreferrer">
+                    Åpne hos Udir
+                    <ExternalLink className="size-4" />
+                  </a>
+                </Button>
+              ) : null}
               <Button asChild variant="secondary">
                 <Link to="/eksamen">Alle sett</Link>
               </Button>
@@ -100,18 +102,28 @@ function ExamSetPage() {
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-          <Callout title="Figurer og fasit">
-            <p>
-              Udirs kart, satellittbilder og grafer åpner du i det offisielle settet — bak passord
-              fra skolen. Vi kopierer dem ikke. Figurene under løsningsforslagene er våre egne
-              pedagogiske tegninger.
-            </p>
-            <p>
-              {set.fasitSource === "udir"
-                ? "Interaktive nøkler og skrivepunkter er sjekket mot Udirs forhåndssensur og sensorveiledning. Teksten er omskrevet — last ned originalen hos Udir hvis du skal sensurere."
-                : "Udir har ikke lagt ut sensorveiledning for dette settet. Løsningsforslagene er våre egne."}
-            </p>
-          </Callout>
+          {set.officialUrl ? (
+            <Callout title="Figurer og fasit">
+              <p>
+                Udirs kart, satellittbilder og grafer åpner du i det offisielle settet — bak passord
+                fra skolen. Vi kopierer dem ikke. Figurene under løsningsforslagene er våre egne
+                pedagogiske tegninger.
+              </p>
+              <p>
+                {set.fasitSource === "udir"
+                  ? "Interaktive nøkler og skrivepunkter er sjekket mot Udirs forhåndssensur og sensorveiledning. Teksten er omskrevet — last ned originalen hos Udir hvis du skal sensurere."
+                  : "Udir har ikke lagt ut sensorveiledning for dette settet. Løsningsforslagene er våre egne."}
+              </p>
+            </Callout>
+          ) : (
+            <Callout title="Eget øvesett">
+              <p>
+                Dette settet er skrevet baklengs fra kompetansemålene. Ingen Udir-figur og ingen
+                offisiell sensorveiledning. Fasiten er eget forslag, knyttet til kapitlene i
+                kartet på eksamensforsiden.
+              </p>
+            </Callout>
+          )}
 
           {!set.complete ? (
             <Callout title="Ufullstendig sett">

@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Callout } from "@/components/callout";
-import { EarthRadiationBudgetDiagram } from "@/components/diagrams/climate-radiation";
 import { Quiz } from "@/components/quiz";
 import { Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -14,7 +13,7 @@ export const Route = createFileRoute("/tema/klima/")({
     topicHead({
       title: "Klima og klimasystemer · Geofag 2",
       description:
-        "Klimasystemet og hav-atmosfære-svingningene: Klimasystemet, ENSO, IOD, NAO og AMOC. Drivhuseffekt, telekoblinger og Norges klima.",
+        "Kart over klimasystemet: oversikt med stråling og tilbakekobling, deretter ENSO, IOD, NAO og AMOC.",
       path: "/tema/klima",
     }),
   component: KlimaHubPage,
@@ -25,32 +24,42 @@ function KlimaHubPage() {
     <TopicLayout
       kicker="Jordsystemet"
       title="Klima og klimasystemer"
-      lead="Vær er dager, klima er tiår. Men mellom den daglige værmeldingen og årtusenenes istider finner vi havets og atmosfærens egne rytmer: ENSO, IOD, NAO og AMOC. Her fordyper du deg i mekanismene som styrer jordas klimasystem."
+      lead="Denne siden er kartet. Oversikten eier stråling, pådriv og tilbakekobling. ENSO, IOD, NAO og AMOC eier hver sin svingning. Kryosfæren eier isen som jobber i år."
       banner="/images/banner-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
-      next={{ to: "/tema/kryosfare", label: "Neste: Kryosfæren" }}
+      next={{ to: "/tema/klima/oversikt", label: "Neste: Klimasystemet (oversikt)" }}
       kilder={KILDER.klima}
     >
-      <h2 className="font-display text-2xl font-medium tracking-tight">
-        Inn og ut — med tall
-      </h2>
-      <p>
-        Forståelsen av klimaet krever både den store helheten — hvordan energi flyter inn og ut av
-        planeten — og de koblete hav-atmosfære-svingningene. Globalt middel i toppen av atmosfæren er
-        omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går som
-        langbølge. Drivhusgasser bremser ut. Foto av jordkloden viser stemning. Tallene viser
-        budsjettet (NASA, u.å.-c; WMO, u.å.).
-      </p>
-      <EarthRadiationBudgetDiagram />
+      <Callout title="Kompetansemål">
+        <p>
+          Gjøre rede for klimasystemet og hvordan menneskelig aktivitet kan påvirke det. Her: kartet.
+          Tallene og tilbakekoblingene ligger i oversikt. Modusene har egne sider (Utdanningsdirektoratet,
+          2020).
+        </p>
+      </Callout>
 
-      <h2 className="font-display text-2xl font-medium tracking-tight">
+      <h2 className="font-display text-2xl font-medium tracking-tight">To slags spørsmål</h2>
+      <p>
+        Vær er dager. Klima er tiår. Mellom dem ligger to ulike spørsmål. Det første: hvordan energi
+        går inn og ut av planeten, og hva som forsterker eller demper et dytt. Det eier{" "}
+        <Link to="/tema/klima/oversikt" className="text-primary underline-offset-2 hover:underline">
+          klimasystemet (oversikt)
+        </Link>
+        . Det andre: hvordan hav og luft flytter varme og nedbør uten å endre jordas totale
+        energibalanse vesentlig. Det eier de fire modusene under.
+      </p>
+
+      <Callout title="Leserekkefølge">
+        <p>
+          Oversikt → ENSO → IOD → NAO → AMOC. Deretter videre til kryosfæren. Hopp ikke til en modus
+          før du kan skille pådriv fra svingning.
+        </p>
+      </Callout>
+
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
         Velg emne i klimasystemet
       </h2>
-      <p>
-        Velg en underkategori under for å utforske mekanismene i dybden.
-      </p>
-
       <div className="my-8 grid gap-4 sm:grid-cols-2">
         {KLIMA_SUBTHEMES.map((sub) => (
           <Link
@@ -71,49 +80,46 @@ function KlimaHubPage() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{sub.blurb}</p>
             </div>
             <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-              Les fordypning
+              Åpne
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </span>
           </Link>
         ))}
       </div>
 
-      <h2 className="pt-4 font-display text-2xl font-medium tracking-tight">
-        Hvorfor studerer vi klimamoduser og svingninger?
+      <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
+        Hvorfor egne sider for svingningene?
       </h2>
       <p>
-        Atmosfæren og havet er ikke to adskilte beholdere; de er mekanisk og termisk låst til
-        hverandre. Vinden dytter på havoverflaten og stabler opp varmt vann, mens havtemperaturen
-        bestemmer hvor lufta stiger og danner skyer og nedbør.
-      </p>
-      <p>
-        Når dette samspillet svinger frem og tilbake, oppstår det <em>klimamoduser</em>. En svingning i
-        tropisk Stillehav (ENSO) kan utløse tørke i Australia og flom i Peru. I Nord-Atlanteren avgjør
-        NAO norske vintre, mens AMOC frakter varme fra tropene til Norden.
+        Vinden dytter på havet. Havtemperaturen styrer hvor lufta stiger. Når det samspillet svinger,
+        flyttes tørke og flom. ENSO i Stillehavet. IOD i Det indiske hav. NAO over Nord-Atlanteren inn
+        mot norske vintre. AMOC som tregt belte, ikke som en bryter. Mekanikken står på sidene. Ikke
+        her.
       </p>
 
       <Callout title="Til eksamen">
         <p>
-          Skill mellom <strong>naturlig variabilitet</strong> (ENSO, IOD, NAO) og{" "}
-          <strong>antropogent pådriv</strong>. De naturlige svingningene rir oppå den langsiktige trenden.
+          Skill <strong>naturlig variabilitet</strong> (ENSO, IOD, NAO) fra{" "}
+          <strong>antropogent pådriv</strong>. Svingningene rir oppå trenden. De er ikke trenden.
         </p>
       </Callout>
-
       <Callout title="Vanlige misforståelser">
         <p>
-          El Niño eller en positiv NAO er ikke et resultat av klimaendringer. De er eldgamle, naturlige
-          svingninger. Forskningen ser på hvordan oppvarming kan endre frekvens, intensitet eller konsekvens.
+          El Niño eller en positiv NAO er ikke et resultat av klimaendringer. De er gamle, naturlige
+          svingninger. Forskningen spør om oppvarming endrer frekvens, intensitet eller konsekvens —
+          ikke om de ble oppfunnet av CO₂.
         </p>
       </Callout>
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
-        <Term name="Klimasystemet" def="Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren." />
-        <Term name="Klimamodus" def="Et regelmessig romlig og tidsmessig mønster i hav og atmosfære." />
+        <Term name="Klimasystemet" def="Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren. Oversikten eier samspillet." />
+        <Term name="Pådriv" def="Et dytt som forskyver strålingsbalansen. Sol, vulkan, drivhusgass." />
+        <Term name="Klimamodus" def="Et regelmessig mønster i hav og luft som omfordeler energi, ikke et nytt budsjett." />
         <Term name="ENSO" def="El Niño–Sørlige oscillasjon i det tropiske Stillehavet." />
-        <Term name="IOD" def="Den indiske hav-dipolen; temperaturgradient i Det indiske hav." />
-        <Term name="NAO" def="Den nordatlantiske oscillasjon; trykkforskjell mellom Asorene og Island." />
-        <Term name="AMOC" def="Den atlantiske omveltningssirkulasjonen; havets store transportbånd." />
+        <Term name="IOD" def="Den indiske hav-dipolen." />
+        <Term name="NAO" def="Den nordatlantiske oscillasjon. Nærmest norsk vintervær." />
+        <Term name="AMOC" def="Den atlantiske omveltningssirkulasjonen. Tregere enn været." />
       </TermGrid>
 
       <Quiz
@@ -141,6 +147,18 @@ function KlimaHubPage() {
             answer: 1,
             explain:
               "NAO styrer trykkgradienten i Nord-Atlanteren og stormbanen inn mot Norge.",
+          },
+          {
+            prompt: "Hvor hører strålingsbudsjettet og tilbakekoblingene hjemme i dette kapitlet?",
+            options: [
+              "På ENSO-siden, fordi El Niño endrer jordas energibalanse mest.",
+              "På oversiktssiden. Hubben er kartet. Modusene eier svingningene.",
+              "Bare i paleoklima.",
+              "Bare i numeriske modeller.",
+            ],
+            answer: 1,
+            explain:
+              "Oversikten eier inn og ut, pådriv og tilbakekobling. Modusene eier omfordeling.",
           },
         ]}
       />
