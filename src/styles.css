@@ -230,4 +230,103 @@
   .model-paused * {
     animation-play-state: paused !important;
   }
+
+  @keyframes enso-flow {
+    to {
+      stroke-dashoffset: -44;
+    }
+  }
+
+  @keyframes enso-flow-rev {
+    to {
+      stroke-dashoffset: 44;
+    }
+  }
+
+  @keyframes enso-rain {
+    to {
+      stroke-dashoffset: 24;
+    }
+  }
+
+  @keyframes enso-lightning {
+    0%,
+    88%,
+    100% {
+      opacity: 0;
+    }
+    90% {
+      opacity: 1;
+    }
+    92% {
+      opacity: 0.15;
+    }
+    93.5% {
+      opacity: 0.95;
+    }
+    96% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes enso-wave {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+  }
+
+  @keyframes enso-cloud {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(8px);
+    }
+  }
+
+  @keyframes enso-pool {
+    0%,
+    100% {
+      opacity: 0.82;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .enso-flow {
+    stroke-dasharray: 12 10;
+    animation: enso-flow 1.6s linear infinite;
+  }
+
+  .enso-flow-rev {
+    stroke-dasharray: 12 10;
+    animation: enso-flow-rev 1.1s linear infinite;
+  }
+
+  .enso-rain-drop {
+    stroke-dasharray: 7 16;
+    animation: enso-rain 0.65s linear infinite;
+  }
+
+  .enso-lightning {
+    animation: enso-lightning 3.4s ease-in-out infinite;
+  }
+
+  .enso-wave {
+    animation: enso-wave 4s ease-in-out infinite;
+  }
+
+  .enso-cloud {
+    animation: enso-cloud 6s ease-in-out infinite;
+  }
+
+  .enso-pool {
+    animation: enso-pool 3.2s ease-in-out infinite;
+  }
 }

@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { Callout } from "@/components/callout";
 import { CollapsibleSection } from "@/components/collapsible-section";
 import { BjerknesLoopDiagram, EnsoComparisonDiagram } from "@/components/diagrams";
+import { EnsoBasinModel } from "@/components/models/enso-basin-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -329,6 +330,8 @@ function EnsoPage() {
         ord="ENSO"
         barn="En naturlig og syklisk variasjon i havtemperatur og lufttrykk i det ekvatoriale Stillehavet, bestående av El Niño (varm fase), La Niña (kald fase) og nøytrale faser. Perioden er typisk 2–7 år."
       />
+
+      <EnsoBasinModel />
 
       {/* ── 2. Interaktive temaknapper ──────────────────────────────── */}
       <div className="pt-2">
@@ -737,9 +740,10 @@ function EnsoPage() {
         badgeVariant="primary"
       >
         <p className="text-sm sm:text-base text-foreground/90">
-          Bruk knappene inne i diagrammet for å sammenligne hvordan
-          passatvindene, det vestlige bassenget og termoklinen endrer seg
-          mellom de tre tilstandene.
+          3D-animasjonen øverst på siden viser El Niño og La Niña i samme snitt
+          som lærebokfiguren. Skissen under er den forenklede 2D-versjonen du
+          kan tegne til eksamen: passatvinder, varmtvannsbasseng og termoklin
+          i de tre tilstandene.
         </p>
         <EnsoComparisonDiagram />
       </CollapsibleSection>
