@@ -1,8 +1,6 @@
 > Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.
 
-> **Kompetansemål i LK20 (Geofag 1)**
-
-Målet for kapittelet er at eleven skal kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser dette har for jordskorpen og jordoverflaten, samt forstå hvordan norsk natur og geologi er et resultat av denne globale dynamikken.
+Målet for kapittelet er at eleven skal kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser dette har for jordskorpen og jordoverflaten, samt forstå hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
 
 Kjerneelementer som dekkes i dette kapittelet:
 
@@ -12,25 +10,80 @@ Kjerneelementer som dekkes i dette kapittelet:
 
 • Norge i platetektonisk lys: Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og postglasial landheving.
 
-## Jordens dynamiske indre: Litosfære, astenosfære og reologi
+## Platetektonikk
 
-For å forstå platetektonikk må vi først avlive en av de mest seiglivede misforståelsene i geofaget: Troen på at jordas plater er «et stykke jordskorpe som flyter på et hav av flytende magma». Slik er ikke planeten vår bygd opp.
+For å forstå platetektonikk må vi først forstå hvordan jorden er bygd opp og de ulike prosessene som skjer i jordens indre  
 
-Jordkloden er lagdelt etter kjemisk sammensetning (tetthet) og mekaniske egenskaper (reologi):
 
-- Jordskorpen (0–70 km): Klodens ytterste, tynne «skall». Vi skiller skarpt mellom to typer skorpe: Kontinentalskorpe: Tykk (vanligvis 30–50 km, men opptil 70–80 km under Himalaya), hovedsakelig granittisk med høyt innhold av silisium og aluminium (felsisk), og med relativt lav tetthet (om lag 2,7 g/cm³). Den er for lett til noensinne å synke dypt ned i mantelen, og kan derfor bli milliarder av år gammel.
+### Inndeling av jorden indre 
+Jorden er kan deles inn i flere lag, basert på sammensetning, tetthet og egenskaper. I geofag 1, deler vi jorden inn i: skorpe, øvre mantel, nedre mantel, ytre kjerne og indre kjerne 
+#### Skorpe 
+Det ytterste laget til jorden kalles skorpe. Skorpen er igjen delt inn i 2 typer, havbunnsskorpe og kontinentalskorpe. Skorpene varierer i tykkelse fra 0 - 100km. Mer om detaler om dette, kan du lese under jordplater
 
-- Havbunnsskorpe (oseanisk skorpe): Tynn (bare 5–8 km), basaltisk og gabbroid med høyt innhold av jern og magnesium (mafisk), og med vesentlig høyere tetthet (om lag 3,0 g/cm³). Den nydannes i midthavsryggene og resirkuleres kontinuerlig. Ingen steder i dagens verdenshav finnes det havbunn som er eldre enn ca. 180–200 millioner år.
+#### Øvre mantel 
+Som vi kan se i figuren, så strekker den øvre mantelen  seg fra bunnen av jordskorpen og ned til ca. 660–700km (Tarbuck et al., 2020, s. 371). Den øvre mantelen er dominert av ultramafiske bergarter som i hovedsak består av mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44)
 
-- Moho-diskontinuiteten: Den seismiske grenseflaten mellom skorpen og den underliggende mantelen, oppdaget av den kroatiske seismologen Andrija Mohorovičić i 1909. Her gjør seismiske bølger et karakteristisk hopp i hastighet (P-bølger øker fra ca. 6 til over 8 km/s) fordi bergartene under Moho er vesentlig tettere og rikere på olivin.
+Den øvre mantelen kan igjen deles inn i flere deler: 
+#### Litosfærisk mantel (øverste faste mantel)
+Dette delen er direkte under jordskirpen og er den kalde og mekanisk stive delen (Fowler, 2005, s. 102). Bergartene her er faste og sprø, og har en tetthet på d≈3,0–3,3g/cm3. Temperaturen her ligger på rundt 1250 C
 
-- Litosfæren (0–100/250 km): Selve fundamentet for platetektonikken. En tektonisk plate er ikke bare skorpe, men litosfære: jordskorpen pluss den aller øverste, kalde og fullstendig stive delen av mantelen (litosfærisk mantel). Litosfæren oppfører seg som et sprøtt og elastisk fast stoff som brekker opp i plater.
+#### Astenosfærisk mantel
 
-- Astenosfæren (ca. 100–350 km dyp): Det seige underlaget som litosfæreplatene glir oppå. Astenosfæren består av fast silikatbergart (peridotitt) – den er IKKE flytende! Men fordi temperaturen her er nær bergartens smeltepunkt (om lag 1300–1400 °C), mister krystallgitteret sin stivhet. Over geologiske tidsskalaer på millioner av år deformeres astenosfæren plastisk og duktilt med en enorm viskositet på om lag 10¹⁹–10²¹ Pa·s. Platene kan derfor gli over den nesten som en kjelke på hardpakket snø.
+Under den øverste delen, har vi den Astenosfæren. Som strekker seg fra rundr 100km ned til ca 400km. Her stiger temperaturen opptil 1450- 1650C (Tarbuck et al., 2020, s. 372).
 
-**Litosfære:** Jordens stive ytterste skall (0–100 km under havbunn, opptil 250 km under kontinenter). Består av jordskorpen pluss den øverste, kalde og mekanisk stive delen av mantelen. Det er litosfæren som er oppdelt i plater.
+På grunn av den høye temperaturen i forhold til trykket, befinner bergartene seg nær smeltepunktet. Enkelte soner har en liten brøkdel delvis oppsmeltet materiale (1–2% partiell smelte), ofte referert til som lavhastighetssonen (Low Velocity Zone, LVZ) for seismiske bølger (Lowrie & Fichtner, 2020, s. 157).
 
-**Astenosfære:** Sone i øvre mantel (100–350 km) direkte under litosfæren. Består av fast bergart (peridotitt), men er så varm at den deformeres seigtflytende (plastisk) over geologisk tid. Tillater litosfæreplatene å bevege seg.
+Astenosfæren er seigtflytende over millioner av år. Den fungerer som et smørelag, som gjør at de overliggende jordskorpen kan gli, samtidig som konveksjonsstrømmer her transporterer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
+
+
+#### Nedre mantel 
+Nedre mantel utgjør jordas største enkeltlag etter volum (om lag 56 % av jordas volum) (Tarbuck et al., 2020, s. 368). Det voldsomme overliggende trykket hindrer bergartene i å smelte, til tross for at temperaturen øker fra ca. 1900 helt opp til 3370C (Lowrie & Fichtner, 2020, s. 160).
+Mineralogien er dominert av bridgmanitt(Mg,Fe)SiO3 og ferroperiklas (Mg,Fe)O.
+Tettheten øker gradvis som følge av det litostatiske trykket, fra 
+4,4 g/cm 3 til rundt d≈5,5g/cm3 (Fowler, 2005, s. 110).
+
+#### Ytre flytende kjerne
+
+Den ytre flytende kjerne starter på 2900km dybde og går ned til 5150km. Ved 2900 km dyp er det et radikalt materialskifte fra faste silikatbergarter til flytende metall (Fowler, 2005, s. 112).
+Her har vi flytende smelte som består av ca 85% jern, 5% nikkel og 10% av lettere grunnstoffer (svovel, silisium, oksygen) (Marshak, 2019, s. 49).
+Tettheten hopper fra 5,5 til10–11,5g/cm3 og temperaturen stiger fra ca. 3370 til rundt ∼5000C
+ 
+Grunnen til at vi vet at de ytre kjernen er flytende, er seismisk bevis. Vi vet at skjærbølger kan bevege seg gjennom ulike materialer, men ikke væsker.Ved å observere at seismiske S-bølger (skjærbølger) ikke går gjennom disse områdene i jordens indre, kan vi dermed fastlå at denne delen av kjernen er flytende
+
+#### Indre fast kjerne 
+Den indre kjerne, starter på ca 5150–6371 km dybde. Dette er jordens sentrum, og er en fast metallisk kule, til tross for den ekstreme varme temperaturen, på 5000-6000 C.
+Denne temperaturen tilsvarer temperaturen på Solen, men trykket her, er så massivt at det hindrer kjerne i å smelte.  
+
+Trykket her, ligger på 3,3–3,6 millioner atmosfærer/330–360 GPa). Dette tvinger jern-nikkel-atomene inn i en fast krystallinsk heksagonal eller kubisk struktur (Fowler, 2005, s. 114).
+I kjernen, har tettheten nådd sitt maksimum på d≈12–13 g/cm3
+
+Etterhvert som jorda langsomt avkjøles (geologisk tid), så krystalliseres den indre kjernen mer og mer. Per år, så vokser kjernen med millimetre i størrelse 
+
+(Marshak, 2019, s. 50).
+
+
+### Litosfæren og  astenosfæren 
+I tillegg til denne laginndelingen, deler vi også jordens indre inn i sfærer: litosfæren, astenosfæren og mesosfæren (ikke pensum) 
+
+
+#### Litosfæren 
+Selve fundamentet for platetektonikken. En tektonisk plate er ikke bare skorpe, men litosfære: jordskorpen pluss den aller øverste, kalde og fullstendig stive delen av mantelen (litosfærisk mantel). Litosfæren strekker seg ned til 100-200 km og den oppfører seg som et sprøtt og elastisk fast stoff som brekker opp i plater.
+
+Litosfæren deles igjen inn i litosfæriske plater. Disse kalles kontinentalplater og havbunnsplater. 
+
+- Kontinentalplater: er de tykkeste platene vi har, vanligvis mellom 30–50 km, men opptil 70–80 km under Himalaya. Disse platene innholder ofte kontinenter og havbunn. Altså disse består av kontinentalskorpe og havbunnsskorpe. Disse platene består  hovedsakelig av bergarter med høyt innhold av silisium og aluminium (felsisk).
+Platene har relativt lav tetthet (om lag 2,7 g/cm³). Den er dermed for lett for å kunne synke dypt ned i mantelen. Dette gjør at disse type platene kan bli milliarder av år gammel.
+
+- Havbunnsplater: Er karakterisert som tynne, med bare 5–8 km tykkelse. De består ofte av mafiske magmatiske bergarter som basat, gabbro, diabas og dolerit. Disse bergartene har et høyt innhold av jern og magnesium. Denne sammensetningen gjør at disse platene har en høy tetthet (om lag 3,0 g/cm³). Denne tettheten gjør det mulig for havbunnsplater å synke ned i mantelen ved konvergerende plategrenser. 
+
+Divergerende plategrenser (ofte midthavsrygger) danner kontinuerlig ny havbunnsplate og i konvergerende plategrenser, synker havbunnsplater ned i mantelen. Dette gjør at disse type platene blir sjelden eldre enn ca. 180–200 millioner år.)
+
+#### Astenosfæren (ca. 100–350 km)
+Det seige underlaget som litosfæreplatene glir oppå. Astenosfæren består av fast silikatbergart (peridotitt. Temperaturen i dette området er nær bergartens smeltepunkt (om lag 1300–1400 °C). Dette gjør at bergartene mister krystallgitteret sin stivhet og blir plastisk. 
+Begrepet plastisk, betyr at bergartene (i dette tilfellet) får kan oppføre seg som flytende, men den beholder sin faste form.
+
+Over geologiske tidsskalaer på millioner av år deformeres astenosfæren plastisk og duktilt med en enorm viskositet på om lag 10¹⁹–10²¹ Pa·s. Litosfæreplatene kan dermed gli over astenosfæren. 
+
 
 ## Oppdagelsen og bevisene: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
 

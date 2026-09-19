@@ -9,6 +9,7 @@ import {
   parsePosterMarkdown,
   POSTER_WIDGET_IDS,
   stripCatalogImageCaptions,
+  stripChapterEditorNotice,
 } from "./poster-markdown.ts";
 
 const chapterMarkdown = readFileSync(
@@ -75,5 +76,18 @@ describe("stripCatalogImageCaptions", () => {
     assert.equal(stripped.includes("*Island"), false);
     assert.equal(stripped.includes("![Divergerende grense](/images/fig-spredring.jpg)"), true);
     assert.equal(stripped.includes("Neste avsnitt."), true);
+  });
+});
+
+describe("stripChapterEditorNotice", () => {
+  it("strips the leading editor blockquote notice from a chapter", () => {
+    const raw =
+      "> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.\n\n## Kapittelstart\nInnhold her.";
+    assert.equal(stripChapterEditorNotice(raw), "## Kapittelstart\nInnhold her.");
+  });
+
+  it("leaves markdown without the editor notice untouched", () => {
+    const raw = "## Egendefinert post\nIngen melding her.";
+    assert.equal(stripChapterEditorNotice(raw), raw);
   });
 });

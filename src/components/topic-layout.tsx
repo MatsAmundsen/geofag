@@ -1,12 +1,15 @@
-import type { ReactNode } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { type ReactNode, useEffect, useState } from "react";
+import { Link, useMatches, useRouter, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
 import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
+import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { posterSlugForPath } from "@/lib/chapter-posts";
 import {
   bannerForPath,
   eierskapForPath,
@@ -14,6 +17,8 @@ import {
   navForTopicPath,
 } from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
+import { posterNeedsRefresh } from "@/lib/poster-fresh";
+import { getPost, type Post } from "@/lib/posts";
 
 type TopicLink = { to: string; label: string; params?: Record<string, string> };
 
@@ -29,6 +34,7 @@ export function TopicLayout({
   prev,
   next,
   posterSlug,
+  post: propPost,
 }: {
   kicker: string;
   title: string;
@@ -42,8 +48,13 @@ export function TopicLayout({
   next?: TopicLink;
   /** When set, shows a Poster button that opens the editable CMS post. */
   posterSlug?: string;
+  /** Preloaded post from route loader (if available) */
+  post?: Post | null;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const router = useRouter();
+  const matches = useMatches();
+
   const override = bannerForPath(pathname);
   const slots = figuresForPath(pathname);
   const src = override?.src ?? banner;
@@ -52,6 +63,54 @@ export function TopicLayout({
   const prevLink: TopicLink | undefined = navOver?.prev ?? prev;
   const nextLink: TopicLink | undefined = navOver?.next ?? next;
   const eierskap = eierskapForPath(pathname);
+
+  const resolvedSlug = posterSlug ?? posterSlugForPath(pathname);
+
+  const matchPost = matches
+    .map((m) => (m.loaderData as { post?: Post | null } | undefined)?.post)
+    .filter((p): p is Post => Boolean(p))
+    .at(-1);
+
+  const initialPost = propPost !== undefined ? propPost : (matchPost ?? null);
+  const [currentPost, setCurrentPost] = useState<Post | null>(initialPost);
+
+  useEffect(() => {
+    if (propPost !== undefined) {
+      setCurrentPost(propPost);
+    }
+  }, [propPost]);
+
+  useEffect(() => {
+    if (!resolvedSlug) return;
+    let cancelled = false;
+    const displayed = {
+      bodyMarkdown: currentPost?.bodyMarkdown ?? "",
+      updatedAt: currentPost?.updatedAt ?? "",
+    };
+    void getPost({ data: resolvedSlug })
+      .then((fresh) => {
+        if (cancelled || !fresh) return;
+        if (posterNeedsRefresh(displayed, fresh)) {
+          setCurrentPost(fresh);
+          void router.invalidate();
+        } else if (!currentPost && fresh) {
+          setCurrentPost(fresh);
+        }
+      })
+      .catch((err) => {
+        console.error("[topic-layout] failed to check fresh post", err);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resolvedSlug, currentPost?.bodyMarkdown, currentPost?.updatedAt, router]);
+
+  const hasEdits = Boolean(
+    currentPost?.bodyMarkdown &&
+      (Boolean(currentPost.updatedAt) || resolvedSlug === "platetektonikk"),
+  );
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -77,10 +136,10 @@ export function TopicLayout({
               {title}
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">{lead}</p>
-            {posterSlug ? (
-              <div className="mt-6">
+            {resolvedSlug ? (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Button asChild size="lg" className="shadow-lg">
-                  <Link to="/poster/$slug" params={{ slug: posterSlug }}>
+                  <Link to="/poster/$slug" params={{ slug: resolvedSlug }}>
                     <FileText className="size-4" aria-hidden="true" />
                     Poster
                   </Link>
@@ -92,12 +151,17 @@ export function TopicLayout({
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <div className="space-y-5 text-base leading-relaxed text-foreground/95">
+            {resolvedSlug ? <AdminEditLink slug={resolvedSlug} /> : null}
             {eierskap ? (
               <Callout title="Eierskap">
                 <p>{eierskap}</p>
               </Callout>
             ) : null}
-            {children}
+            {hasEdits && currentPost ? (
+              <PosterBody cleanChapter>{currentPost.bodyMarkdown}</PosterBody>
+            ) : (
+              children
+            )}
           </div>
 
           {slots.length > 0 ? (

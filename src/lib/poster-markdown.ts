@@ -182,3 +182,10 @@ function insertAfter(markdown: string, pattern: RegExp, insertion: string): stri
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
+export function stripChapterEditorNotice(markdown: string): string {
+  return markdown.replace(
+    /^>\s*Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet[^\r\n]*\r?\n+/i,
+    "",
+  );
+}

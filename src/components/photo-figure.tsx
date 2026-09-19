@@ -117,6 +117,7 @@ export function PhotoFigure({
   arrows,
   marks,
   fit = "cover",
+  videoSrc,
 }: {
   src: string;
   alt: string;
@@ -126,22 +127,48 @@ export function PhotoFigure({
   arrows?: FigArrow[];
   marks?: FigMark[];
   fit?: "cover" | "contain";
+  videoSrc?: string;
 }) {
   return (
     <figure className="my-8 overflow-hidden rounded-xl border border-border bg-card">
-      <p className="border-b border-border px-4 py-3 text-sm font-medium text-foreground sm:px-6">
-        {heading}
-      </p>
-      <div className="relative aspect-video bg-muted">
+      <div className="flex items-center justify-between border-b border-border px-4 py-3 sm:px-6">
+        <p className="text-sm font-medium text-foreground">{heading}</p>
+        {videoSrc ? (
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
+            <span className="size-1.5 rounded-full bg-primary animate-pulse" />
+            Animasjon
+          </span>
+        ) : null}
+      </div>
+      <div className="relative aspect-video bg-muted overflow-hidden">
+        {videoSrc ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={src}
+            className={
+              fit === "contain"
+                ? "absolute inset-0 h-full w-full object-contain motion-reduce:hidden"
+                : "absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+            }
+            aria-label={alt}
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        ) : null}
         <img
           src={src}
           alt={alt}
           loading="lazy"
           decoding="async"
           className={
-            fit === "contain"
+            (fit === "contain"
               ? "absolute inset-0 h-full w-full object-contain"
-              : "absolute inset-0 h-full w-full object-cover"
+              : "absolute inset-0 h-full w-full object-cover") +
+            (videoSrc ? " hidden motion-reduce:block" : "")
           }
         />
         <Overlay arrows={arrows} marks={marks} />

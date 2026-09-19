@@ -17,6 +17,34 @@ export const C = {
 
 export const font = "Source Sans 3, ui-sans-serif, system-ui, sans-serif";
 
+export function PlayPauseToggle({
+  isPlaying,
+  onToggle,
+  label,
+}: {
+  isPlaying: boolean;
+  onToggle: () => void;
+  label?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={isPlaying ? "Pause animasjon" : "Start animasjon"}
+      className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-muted/60 px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted hover:text-primary transition-colors active:scale-95"
+    >
+      <span
+        className={
+          isPlaying
+            ? "size-1.5 rounded-full bg-emerald-500 animate-pulse"
+            : "size-1.5 rounded-full bg-muted-foreground"
+        }
+      />
+      <span>{label ? (isPlaying ? `⏸ ${label}` : `▶ ${label}`) : (isPlaying ? "⏸ Pause animasjon" : "▶ Start animasjon")}</span>
+    </button>
+  );
+}
+
 function Marker({ id, color }: { id: string; color: string }) {
   return (
     <marker
@@ -40,12 +68,14 @@ export function Diagram({
   viewBox,
   children,
   wide,
+  action,
 }: {
   title: string;
   heading: string;
   caption: string;
   viewBox: string;
   wide?: boolean;
+  action?: ReactNode;
   children: (m: {
     teal: string;
     warm: string;
@@ -69,7 +99,7 @@ export function Diagram({
     rain: `${uid}-rain`,
   };
   return (
-    <FigureFrame heading={heading} caption={caption}>
+    <FigureFrame heading={heading} caption={caption} action={action}>
       <svg
         viewBox={viewBox}
         className={wide ? "mx-auto h-auto w-full max-w-5xl" : "mx-auto h-auto w-full max-w-3xl"}

@@ -1,10 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
-import { PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import { seedBySlug } from "@/lib/post-seed";
 import type { Post, PostInput } from "@/lib/post-types";
 
 export type { Post, PostInput };
-
-const seedPost = (): Post => ({ id: 1, ...PLATETEKTONIKK_SEED });
 
 const str = (v: unknown): string => (typeof v === "string" ? v : "");
 
@@ -45,7 +43,7 @@ export const getPost = createServerFn({ method: "POST" })
     if (post) return post;
     // Bundled seed only when the store has no row yet — never as a stand-in
     // for a failed Durable Object read (that hid live edits behind the old chapter).
-    return slug === PLATETEKTONIKK_SEED.slug ? seedPost() : null;
+    return seedBySlug(slug);
   });
 
 /** Create or update a post (keyed by slug). Requires CMS access. */

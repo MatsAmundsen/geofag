@@ -12,7 +12,13 @@ import { isLocalDev } from "@/lib/editing";
 import { needsCmsSetup, nonEmptyMeta } from "@/lib/cms-password";
 import { canUseMemorySeedFallback, choosePostBackend } from "@/lib/post-backend";
 import { isShortPlatetektonikkBody } from "@/lib/post-seed-upgrade";
-import { nowStamp, PLATETEKTONIKK_SEED } from "@/lib/post-seed";
+import {
+  CHAPTER_POST_SEEDS,
+  nowStamp,
+  PLATETEKTONIKK_SEED,
+  seededPosts,
+  toPostInput,
+} from "@/lib/post-seed";
 import {
   POSTS_DO_BINDING,
   POSTS_DO_NAME,
@@ -312,12 +318,11 @@ function postgresStore(sql: SqlClient): Store {
   };
 }
 
+const memorySeeds = seededPosts();
 const memory = {
-  posts: new Map<string, Post>([
-    [PLATETEKTONIKK_SEED.slug, { id: 1, ...PLATETEKTONIKK_SEED }],
-  ]),
+  posts: new Map<string, Post>(memorySeeds.map((post) => [post.slug, post])),
   meta: new Map<string, string>(),
-  nextId: 2,
+  nextId: memorySeeds.length + 1,
 };
 
 function memoryStore(): Store {
@@ -406,46 +411,47 @@ export async function getPostStore(): Promise<Store> {
     if (backend === "do") {
       if (!env?.POSTS_DO) throw new Error("POSTS_DO binding missing");
       const store = durableStore(env.POSTS_DO);
-      await upgradeShortPlatetektonikk(store);
+      await ensureChapterSeeds(store);
       return store;
     }
     if (backend === "memory") {
       console.warn(
         "[posts] no POSTS_DB/POSTS_DO binding — using in-memory seed (edits will not persist)",
       );
-      await upgradeShortPlatetektonikk(memoryStore());
+      await ensureChapterSeeds(memoryStore());
       return memoryStore();
     }
     const { getSql } = await import("@/lib/db");
     const store = postgresStore(await getSql());
-    await upgradeShortPlatetektonikk(store);
+    await ensureChapterSeeds(store);
     return store;
   } catch (err) {
     if (!canUseMemorySeedFallback(Boolean(env?.POSTS_DB), Boolean(env?.POSTS_DO))) {
       throw err;
     }
     console.error("[posts] store init failed, using in-memory seed", err);
-    await upgradeShortPlatetektonikk(memoryStore());
+    await ensureChapterSeeds(memoryStore());
     return memoryStore();
   }
 }
 
-async function upgradeShortPlatetektonikk(store: Store): Promise<void> {
+async function ensureChapterSeeds(store: Store): Promise<void> {
   try {
-    const post = await store.get(PLATETEKTONIKK_SEED.slug);
-    const body = post?.bodyMarkdown ?? "";
-    if (!body.trim() || !isShortPlatetektonikkBody(body)) return;
-    await store.save({
-      slug: PLATETEKTONIKK_SEED.slug,
-      title: PLATETEKTONIKK_SEED.title,
-      summary: PLATETEKTONIKK_SEED.summary,
-      ingress: PLATETEKTONIKK_SEED.ingress,
-      thumbnail: PLATETEKTONIKK_SEED.thumbnail,
-      bodyMarkdown: PLATETEKTONIKK_SEED.bodyMarkdown,
-      published: post?.published ?? 1,
-    });
+    for (const seed of CHAPTER_POST_SEEDS) {
+      const post = await store.get(seed.slug);
+      if (!post) {
+        await store.save(toPostInput(seed));
+        continue;
+      }
+      if (seed.slug === "platetektonikk" && isShortPlatetektonikkBody(post.bodyMarkdown)) {
+        await store.save({
+          ...toPostInput(seed),
+          published: post.published ?? 1,
+        });
+      }
+    }
   } catch (err) {
-    console.error("[posts] platetektonikk upgrade failed", err);
+    console.error("[posts] chapter seed failed", err);
   }
 }
 

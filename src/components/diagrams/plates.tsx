@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FigureFrame } from "@/components/figure-frame";
-import { Arrow, C, Diagram, L } from "./svg-kit";
+import { Arrow, C, Diagram, L, PlayPauseToggle } from "./svg-kit";
 
 /**
  * 1. EarthLayersDiagram:
@@ -203,6 +203,8 @@ export function EarthLayersDiagram() {
  * Slab pull (hoveddrivkraft), Ridge push, Basal drag, og mantelkonveksjon.
  */
 export function ConvectionDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Platetektonikkens drivkrefter: Slab pull, ridge push og mantelkonveksjon"
@@ -210,6 +212,12 @@ export function ConvectionDiagram() {
       caption="Tidligere trodde man platene var passive flåter som ble skjøvet rundt av mantelkonveksjon. I dag vet vi at platene selv er en aktiv del av konveksjonssystemet. Den suverent største drivkraften er slab pull (~90 % av kraften): Kald, eldre havbunn er tettere enn astenosfæren under. Når den dykker i en subduksjonssone, omdannes basalten til den ultrahøytette bergarten eklogitt ved 40–60 km dyp, og fungerer som et gigantisk lodd som trekker hele platen etter seg. Ved midthavsryggen rager litosfæren 2–3 km høyere enn omkringliggende havbunn; tyngdekraften får den til å gli sakte nedover bakken (ridge push). Basal drag er friksjonskoblingen mot den seige astenosfæren."
       viewBox="0 0 940 480"
       wide
+      action={
+        <PlayPauseToggle
+          isPlaying={isPlaying}
+          onToggle={() => setIsPlaying((p) => !p)}
+        />
+      }
     >
       {(m) => (
         <>
@@ -219,7 +227,45 @@ export function ConvectionDiagram() {
               <stop offset="60%" stopColor="#251e18" />
               <stop offset="100%" stopColor="#3d1f14" />
             </linearGradient>
+            <linearGradient id="cf-core" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#b91c1c" />
+              <stop offset="50%" stopColor="#ef4444" />
+              <stop offset="100%" stopColor="#b91c1c" />
+            </linearGradient>
           </defs>
+
+          <style>{`
+            @keyframes cf-flow-cw {
+              to { stroke-dashoffset: -140; }
+            }
+            @keyframes cf-flow-ccw {
+              to { stroke-dashoffset: 140; }
+            }
+            @keyframes cf-slab-shiver {
+              0%, 100% { transform: translateY(0); }
+              50% { transform: translate(1.5px, 2px); }
+            }
+            @keyframes cf-plume-glow {
+              0%, 100% { opacity: 0.5; }
+              50% { opacity: 0.85; }
+            }
+            .cf-anim-cw {
+              animation: cf-flow-cw 6s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .cf-anim-ccw {
+              animation: cf-flow-ccw 6s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .cf-anim-slab {
+              animation: cf-slab-shiver 2s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .cf-anim-plume {
+              animation: cf-plume-glow 3s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
 
           {/* Bakgrunnsmantel */}
           <rect x="40" y="40" width="860" height="400" rx="8" fill="url(#cf-mantle)" />
@@ -246,21 +292,31 @@ export function ConvectionDiagram() {
           </L>
 
           {/* Varm manteloppstrøm under ryggen */}
-          <path d="M 250 440 C 270 300, 275 180, 280 115 C 285 180, 290 300, 310 440 Z" fill="#b45309" opacity="0.6" />
+          <path
+            d="M 250 440 C 270 300, 275 180, 280 115 C 285 180, 290 300, 310 440 Z"
+            fill="#b45309"
+            className="cf-anim-plume"
+          />
 
-          {/* Animerte / dynamiske konveksjonssirkler i mantelen */}
-          <g stroke="#f97316" strokeWidth="2.4" fill="none" opacity="0.6" strokeDasharray="8 6">
+          {/* Animerte konveksjonssirkler i mantelen med stroke-dashoffset */}
+          <g stroke="#f97316" strokeWidth="2.8" fill="none" opacity="0.8" strokeDasharray="10 8">
             {/* Medurs celle til høyre */}
-            <path d="M 330 380 C 440 400, 560 380, 600 280 C 620 220, 560 170, 440 170 C 350 170, 320 240, 330 380" />
+            <path
+              className="cf-anim-cw"
+              d="M 330 380 C 440 400, 560 380, 600 280 C 620 220, 560 170, 440 170 C 350 170, 320 240, 330 380"
+            />
             {/* Moturs celle til venstre */}
-            <path d="M 230 380 C 140 400, 80 360, 70 260 C 60 180, 140 170, 220 170" />
+            <path
+              className="cf-anim-ccw"
+              d="M 230 380 C 140 400, 80 360, 70 260 C 60 180, 140 170, 220 170"
+            />
           </g>
           <L x="450" y="270" fill="#f97316" size={13} weight={700} anchor="middle">
-            Mantelkonveksjon (drevet av jordas indre varme)
+            Mantelkonveksjon (seig, duktil peridotittflyt)
           </L>
 
           {/* DRIVKRAFT 1: SLAB PULL (HOVEDKRAFTEN) */}
-          <g transform="translate(740, 320)">
+          <g transform="translate(740, 320)" className="cf-anim-slab">
             <Arrow d="M 0 0 L 65 95" marker={m.teal} color={C.teal} width={4.5} />
             <rect x="75" y="80" width="200" height="60" rx="6" fill="#0b1622" stroke={C.teal} strokeWidth="1.5" opacity="0.95" />
             <L x="85" y="100" fill={C.teal} size={13} weight={800}>
@@ -301,7 +357,7 @@ export function ConvectionDiagram() {
           </g>
 
           {/* KJERNEN I BUNN */}
-          <rect x="40" y="420" width="860" height="20" fill="#991b1b" />
+          <rect x="40" y="420" width="860" height="20" fill="url(#cf-core)" />
           <L x="470" y="435" fill="#fef08a" size={11} weight={700} anchor="middle">
             Kjerne-mantel-grensen (D''-laget · 2900 km dyp): Leverer varmeenergien til motoren
           </L>
@@ -819,6 +875,8 @@ export function BoundaryOverviewDiagram() {
  * og paleomagnetiske reverseringsbånd (jordens båndopptaker).
  */
 export function SpreadingDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Havbunnsspredning, ofiolittsekvens og paleomagnetiske striper"
@@ -826,9 +884,83 @@ export function SpreadingDiagram() {
       caption="Ved midthavsryggen dannes ny havbunnsskorpe kontinuerlig i et lagdelt system kalt en ofiolittsekvens: 1) Dype marine sedimenter, 2) Putelava (pillow basalt) som bråkjøles mot sjøvannet, 3) Basaltganger (sheeted dykes) som tilførte magmaen, 4) Gabbro i det dype magmakammeret, og 5) Peridotitt under Moho. Når basalten avkjøles under Curie-temperaturen (~580 °C), orienterer jernmineralet magnetitt seg etter jordens magnetfelt og «fryses» fast. Fordi jordas magnetfelt jevnlig bytter polaritet (reverserer), fungerer havbunnen som et gigantisk magnetisk båndopptak med symmetriske striper av normal og reversert magnetisering på hver side av ryggen. Dette var Vine-Matthews-Morley-hypotesen (1963) som ga det ugjendrivelige beviset for platetektonikken."
       viewBox="0 0 940 520"
       wide
+      action={
+        <PlayPauseToggle
+          isPlaying={isPlaying}
+          onToggle={() => setIsPlaying((p) => !p)}
+        />
+      }
     >
       {(m) => (
         <>
+          <defs>
+            <linearGradient id="sd-magma-glow" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fed7aa" />
+              <stop offset="40%" stopColor="#f97316" />
+              <stop offset="100%" stopColor="#c2410c" />
+            </linearGradient>
+            <clipPath id="sd-tape-clip-left">
+              <rect x="40" y="32" width="360" height="30" />
+            </clipPath>
+            <clipPath id="sd-tape-clip-right">
+              <rect x="460" y="32" width="360" height="30" />
+            </clipPath>
+          </defs>
+
+          <style>{`
+            @keyframes smoker-rise-1 {
+              0% { transform: translateY(0) scale(0.8); opacity: 0.9; }
+              50% { transform: translate(-3px, -18px) scale(1.3); opacity: 0.6; }
+              100% { transform: translate(-6px, -36px) scale(1.9); opacity: 0; }
+            }
+            @keyframes smoker-rise-2 {
+              0% { transform: translateY(0) scale(0.8); opacity: 0.9; }
+              50% { transform: translate(3px, -18px) scale(1.3); opacity: 0.6; }
+              100% { transform: translate(6px, -36px) scale(1.9); opacity: 0; }
+            }
+            @keyframes magma-pulse-sd {
+              0%, 100% { transform: scale(0.97); opacity: 0.88; }
+              50% { transform: scale(1.03); opacity: 1; }
+            }
+            @keyframes tape-move-left {
+              0% { transform: translateX(0px); }
+              100% { transform: translateX(-50px); }
+            }
+            @keyframes tape-move-right {
+              0% { transform: translateX(0px); }
+              100% { transform: translateX(50px); }
+            }
+            @keyframes axis-glow {
+              0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 3px #38bdf8); }
+              50% { opacity: 1; filter: drop-shadow(0 0 8px #60a5fa); }
+            }
+            .smoker-plume-1 {
+              animation: smoker-rise-1 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .smoker-plume-2 {
+              animation: smoker-rise-2 2.6s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sd-magma {
+              transform-origin: 470px 155px;
+              animation: magma-pulse-sd 2.5s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sd-axis-glow {
+              animation: axis-glow 2s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sd-tape-left {
+              animation: tape-move-left 4s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sd-tape-right {
+              animation: tape-move-right 4s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
           {/* Havvann øverst */}
           <rect x="40" y="30" width="860" height="110" fill="#0a1e2c" />
           <L x="60" y="55" fill="#38bdf8" size={13} weight={600}>
@@ -886,8 +1018,8 @@ export function SpreadingDiagram() {
             Litosfærisk mantel (harzburgitt / serpentinisert peridotitt)
           </L>
 
-          {/* Magmakammer i aksen (x=445 til x=495) */}
-          <ellipse cx="470" cy="155" rx="35" ry="25" fill="#f97316" opacity="0.9" />
+          {/* Magmakammer i aksen (x=445 til x=495) med pulserende glød */}
+          <ellipse cx="470" cy="155" rx="35" ry="25" fill="url(#sd-magma-glow)" className="sd-magma" />
           <L x="470" y="152" fill="#fff" size={10.5} weight={800} anchor="middle">
             Aksialt
           </L>
@@ -895,19 +1027,23 @@ export function SpreadingDiagram() {
             magmakammer
           </L>
 
-          {/* Hydrotermale skorsteiner (Black smokers) i riftdalen */}
+          {/* Hydrotermale skorsteiner (Black smokers) i riftdalen med animert mineralrøyk */}
           <g transform="translate(458, 95)">
             <rect x="0" y="0" width="4" height="7" fill="#334155" />
             <line x1="2" y1="0" x2="2" y2="-18" stroke="#000" strokeWidth="2.5" />
-            <circle cx="2" cy="-20" r="4.5" fill="#475569" opacity="0.7" />
+            {/* Animert røyksøyle */}
+            <circle cx="2" cy="-22" r="5" fill="#1e293b" className="smoker-plume-1" />
+            <circle cx="1" cy="-28" r="6" fill="#334155" className="smoker-plume-2" />
           </g>
           <g transform="translate(478, 95)">
             <rect x="0" y="0" width="4" height="7" fill="#334155" />
             <line x1="2" y1="0" x2="2" y2="-18" stroke="#000" strokeWidth="2.5" />
-            <circle cx="2" cy="-20" r="4.5" fill="#475569" opacity="0.7" />
+            {/* Animert røyksøyle */}
+            <circle cx="2" cy="-22" r="5" fill="#1e293b" className="smoker-plume-2" />
+            <circle cx="3" cy="-28" r="6" fill="#334155" className="smoker-plume-1" />
           </g>
           <L x="470" y="70" fill="#f59e0b" size={10.5} weight={700} anchor="middle">
-            Hydrotermale felt (&quot;Black smokers&quot; · 350 °C)
+            Hydrotermale felt (&quot;Black smokers&quot; · 350 °C mineralrøyk)
           </L>
 
           {/* Spredningspiler */}
@@ -924,53 +1060,63 @@ export function SpreadingDiagram() {
           {/* PALEOMAGNETISKE REVERSERINGSBÅND (BÅNDOPPTAKER)         */}
           {/* ======================================================= */}
           <g transform="translate(40, 385)">
-            <rect x="0" y="0" width="860" height="95" rx="6" fill="#0b151f" stroke="#253a4b" strokeWidth="1.2" />
+            <rect x="0" y="0" width="860" height="100" rx="6" fill="#0b151f" stroke="#253a4b" strokeWidth="1.2" />
             <L x="430" y="20" fill={C.warm} size={12.5} weight={800} anchor="middle">
-              PALEOMAGNETISK «BÅNDOPPTAKER»: Magnetiske striper i havbunnen (Vine-Matthews-Morley 1963)
+              PALEOMAGNETISK «BÅNDOPPTAKER»: Symmetrisk magnetisk havbunnshistorie (Vine-Matthews-Morley 1963)
             </L>
 
-            {/* Symmetriske magnetstriper (Mørk = Normal polaritet, Lys/stiplet = Reversert polaritet) */}
-            {/* Senter (x=430): Nåværende Brunhes normale epoke (0–0,78 mill. år) */}
-            <rect x="400" y="32" width="60" height="30" fill="#2563eb" />
-            <L x="430" y="52" fill="#fff" size={10} weight={800} anchor="middle">
+            {/* Venstre bevegelig stripebånd under clipPath */}
+            <g clipPath="url(#sd-tape-clip-left)">
+              <g className="sd-tape-left">
+                <rect x="330" y="32" width="70" height="30" fill="#475569" />
+                <rect x="250" y="32" width="80" height="30" fill="#2563eb" />
+                <rect x="150" y="32" width="100" height="30" fill="#475569" />
+                <rect x="40" y="32" width="110" height="30" fill="#2563eb" />
+                <rect x="-60" y="32" width="100" height="30" fill="#475569" />
+                <L x="365" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
+                <L x="290" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
+                <L x="200" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
+                <L x="95" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
+              </g>
+            </g>
+
+            {/* Høyre bevegelig stripebånd under clipPath */}
+            <g clipPath="url(#sd-tape-clip-right)">
+              <g className="sd-tape-right">
+                <rect x="460" y="32" width="70" height="30" fill="#475569" />
+                <rect x="530" y="32" width="80" height="30" fill="#2563eb" />
+                <rect x="610" y="32" width="100" height="30" fill="#475569" />
+                <rect x="710" y="32" width="110" height="30" fill="#2563eb" />
+                <rect x="820" y="32" width="100" height="30" fill="#475569" />
+                <L x="495" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
+                <L x="570" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
+                <L x="660" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
+                <L x="765" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
+              </g>
+            </g>
+
+            {/* Senter-aksen (x=400 til 460): Aktiv dannelse med pulserende normal polaritet */}
+            <rect x="400" y="30" width="60" height="34" rx="3" fill="#1d4ed8" stroke="#60a5fa" strokeWidth="1.5" className="sd-axis-glow" />
+            <L x="430" y="47" fill="#fff" size={9.5} weight={800} anchor="middle">
               Normal (N)
             </L>
-
-            {/* Matuyama reversert (venstre: 340–400, høyre: 460–520) */}
-            <rect x="330" y="32" width="70" height="30" fill="#475569" />
-            <rect x="460" y="32" width="70" height="30" fill="#475569" />
-            <L x="365" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers (R)</L>
-            <L x="495" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers (R)</L>
-
-            {/* Gauss normal (venstre: 250–330, høyre: 530–610) */}
-            <rect x="250" y="32" width="80" height="30" fill="#2563eb" />
-            <rect x="530" y="32" width="80" height="30" fill="#2563eb" />
-            <L x="290" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
-            <L x="570" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
-
-            {/* Gilbert reversert (venstre: 150–250, høyre: 610–710) */}
-            <rect x="150" y="32" width="100" height="30" fill="#475569" />
-            <rect x="610" y="32" width="100" height="30" fill="#475569" />
-            <L x="200" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
-            <L x="660" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
-
-            {/* Eldre striper ytterst */}
-            <rect x="40" y="32" width="110" height="30" fill="#2563eb" />
-            <rect x="710" y="32" width="110" height="30" fill="#2563eb" />
+            <L x="430" y="58" fill="#93c5fd" size={8} weight={700} anchor="middle">
+              Nydannes nå
+            </L>
 
             {/* Tidsskala (millioner år før nåtid) */}
-            <L x="430" y="78" fill="#38bdf8" size={10} weight={700} anchor="middle">
+            <L x="430" y="82" fill="#38bdf8" size={10} weight={700} anchor="middle">
               Ryggakse: 0 Ma
             </L>
-            <L x="365" y="78" fill="#94a3b8" size={9.5} anchor="middle">1 Ma</L>
-            <L x="290" y="78" fill="#94a3b8" size={9.5} anchor="middle">3 Ma</L>
-            <L x="200" y="78" fill="#94a3b8" size={9.5} anchor="middle">5 Ma</L>
-            <L x="95" y="78" fill="#94a3b8" size={9.5} anchor="middle">← 8 Ma (Eldre)</L>
+            <L x="365" y="82" fill="#94a3b8" size={9.5} anchor="middle">1 Ma</L>
+            <L x="290" y="82" fill="#94a3b8" size={9.5} anchor="middle">3 Ma</L>
+            <L x="200" y="82" fill="#94a3b8" size={9.5} anchor="middle">5 Ma</L>
+            <L x="95" y="82" fill="#94a3b8" size={9.5} anchor="middle">← 8 Ma (Eldre)</L>
 
-            <L x="495" y="78" fill="#94a3b8" size={9.5} anchor="middle">1 Ma</L>
-            <L x="570" y="78" fill="#94a3b8" size={9.5} anchor="middle">3 Ma</L>
-            <L x="660" y="78" fill="#94a3b8" size={9.5} anchor="middle">5 Ma</L>
-            <L x="765" y="78" fill="#94a3b8" size={9.5} anchor="middle">8 Ma (Eldre) →</L>
+            <L x="495" y="82" fill="#94a3b8" size={9.5} anchor="middle">1 Ma</L>
+            <L x="570" y="82" fill="#94a3b8" size={9.5} anchor="middle">3 Ma</L>
+            <L x="660" y="82" fill="#94a3b8" size={9.5} anchor="middle">5 Ma</L>
+            <L x="765" y="82" fill="#94a3b8" size={9.5} anchor="middle">8 Ma (Eldre) →</L>
           </g>
         </>
       )}
@@ -984,16 +1130,64 @@ export function SpreadingDiagram() {
  * dekompresjonssmelting) som i Øst-Afrika og fortidens Oslofelt.
  */
 export function ContinentalRiftDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Kontinental rifting: Fra innsynkningsdal til gryende havbasseng"
       heading="Kontinental rift: Når kontinentet rives i to av tektonisk strekk"
       caption="Når litosfæren utsettes for tektonisk strekk, reagerer den øvre, sprø jordskorpen med å sprekke opp langs steile forkastninger (normalforkastninger). Blokkene i midten sklir nedover og danner en langstrakt innsynkningsdal kalt en graben. De hevede blokkene på sidene danner riftskuldre (horster). Mantelen under stiger opp i det avlastede området, trykket faller, og dekompresjonssmelting produserer basaltiske vulkaner. Dette er tilstanden i Den østafrikanske riftdalen i dag. Oslofeltet var en tilsvarende aktiv rift for ca. 300 millioner år siden i perm. Hvis strekket vedvarer, flommer havet inn og danner et smalt havbasseng (som Rødehavet), før en ekte midthavsrygg etableres."
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />}
       viewBox="0 0 880 430"
       wide
     >
       {(m) => (
         <>
+          <style>{`
+            @keyframes rift-mantle-up {
+              0% { stroke-dashoffset: 24; }
+              100% { stroke-dashoffset: 0; }
+            }
+            @keyframes rift-magma-pulse {
+              0%, 100% { transform: scale(1); opacity: 0.9; }
+              50% { transform: scale(1.06); opacity: 1; filter: drop-shadow(0 0 8px #f97316); }
+            }
+            @keyframes rift-smoke {
+              0% { transform: translate(0, 0) scale(0.8); opacity: 0.7; }
+              100% { transform: translate(-4px, -18px) scale(1.5); opacity: 0; }
+            }
+            @keyframes rift-stretch-left {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(-4px); }
+            }
+            @keyframes rift-stretch-right {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(4px); }
+            }
+            .rift-mantle-flow {
+              stroke-dasharray: 6 4;
+              animation: rift-mantle-up 1.8s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .rift-magma {
+              transform-origin: 440px 220px;
+              animation: rift-magma-pulse 2.5s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .rift-smoke-puff {
+              animation: rift-smoke 2s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .rift-arrow-l {
+              animation: rift-stretch-left 2s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .rift-arrow-r {
+              animation: rift-stretch-right 2s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
           {/* Luft over landskapet */}
           <rect x="40" y="30" width="800" height="70" fill="#0a1520" />
 
@@ -1008,6 +1202,10 @@ export function ContinentalRiftDiagram() {
           {/* Steile normalforkastninger (skrenter) */}
           <line x1="280" y1="85" x2="340" y2="145" stroke="#ef4444" strokeWidth="2.8" />
           <line x1="600" y1="85" x2="540" y2="145" stroke="#ef4444" strokeWidth="2.8" />
+
+          {/* Glidningsindikatorer langs forkastningene */}
+          <path d="M 298 98 L 312 112" stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
+          <path d="M 582 98 L 568 112" stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
 
           {/* Riftskuldre og graben-tekst */}
           <L x="160" y="70" fill="#f8fafc" size={13} weight={700} anchor="middle">
@@ -1050,8 +1248,12 @@ export function ContinentalRiftDiagram() {
             opacity="0.8"
           />
 
+          {/* Animerte oppstrømslinjer for astenosfæren */}
+          <path d="M 390 380 C 410 300, 428 240, 436 185" fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
+          <path d="M 490 380 C 470 300, 452 240, 444 185" fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
+
           {/* Dekompresjonssmelting i astenosfæren */}
-          <ellipse cx="440" cy="220" rx="42" ry="25" fill="#ea580c" opacity="0.9" />
+          <ellipse cx="440" cy="220" rx="42" ry="25" fill="#ea580c" className="rift-magma" />
           <L x="440" y="215" fill="#fff" size={11} weight={800} anchor="middle">
             Dekompresjonssmelting
           </L>
@@ -1062,19 +1264,27 @@ export function ContinentalRiftDiagram() {
           {/* Magmatilførsel og vulkan i riftdalen */}
           <path d="M 440 195 L 420 145" stroke="#ef4444" strokeWidth="3" />
           <polygon points="410,145 420,130 430,145" fill="#dc2626" />
+          {/* Røyk fra vulkan */}
+          <circle cx="420" cy="122" r="3.5" fill="#94a3b8" className="rift-smoke-puff" />
+          <circle cx="417" cy="116" r="4.5" fill="#64748b" className="rift-smoke-puff" style={{ animationDelay: "0.8s" }} />
+
           <L x="440" y="110" fill="#ef4444" size={9.5} weight={700}>
             Riftvulkan (f.eks. Ol Doinyo Lengai)
           </L>
 
-          {/* Strekkpiler */}
-          <Arrow d="M 230 110 L 140 110" marker={m.warm} color={C.warm} width={3.6} />
-          <L x="185" y="100" fill={C.warm} size={11} weight={800} anchor="middle">
-            ← Strekk
-          </L>
-          <Arrow d="M 650 110 L 740 110" marker={m.warm} color={C.warm} width={3.6} />
-          <L x="695" y="100" fill={C.warm} size={11} weight={800} anchor="middle">
-            Strekk →
-          </L>
+          {/* Strekkpiler med animert dynamikk */}
+          <g className="rift-arrow-l">
+            <Arrow d="M 230 110 L 140 110" marker={m.warm} color={C.warm} width={3.6} />
+            <L x="185" y="100" fill={C.warm} size={11} weight={800} anchor="middle">
+              ← Strekk
+            </L>
+          </g>
+          <g className="rift-arrow-r">
+            <Arrow d="M 650 110 L 740 110" marker={m.warm} color={C.warm} width={3.6} />
+            <L x="695" y="100" fill={C.warm} size={11} weight={800} anchor="middle">
+              Strekk →
+            </L>
+          </g>
 
           {/* Referanse til Oslofeltet */}
           <g transform="translate(60, 310)">
@@ -1101,6 +1311,8 @@ export function ContinentalRiftDiagram() {
  * mineraldehydrering, flukssmelting, og Wadati-Benioff jordskjelvsonen.
  */
 export function SubductionDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Subduksjon hav mot kontinent: Flukssmelting og Wadati-Benioff-sonen"
@@ -1108,9 +1320,60 @@ export function SubductionDiagram() {
       caption="Når oseanisk litosfære subdueres under et kontinent (som Nazcaplaten under Sør-Amerika), presses den ned i et miljø med økende trykk og temperatur. Ved dyphavsgropen dannes en akkresjonskile av sedimenter som skrapes av havbunnen. I dypet mellom 80 og 150 km gjennomgår havbunnsskorpen metamorfose: hydratiserte mineraler som amfibol og serpentin brytes ned og avgir overkritisk vann (dehydrering). Dette vannet stiger inn i den overliggende mantelkilen av peridotitt. Vannmolekylene bryter silikatbindingene og senker bergartens smeltepunkt dramatisk – dette kalles flukssmelting! Magmaen stiger og bygger opp en eksplosiv vulkansk bue (Andesfjellene). Samtidig sporer jordskjelvene den synkende platen helt ned til 700 km dyp i den berømte Wadati-Benioff-sonen."
       viewBox="0 0 940 520"
       wide
+      action={
+        <PlayPauseToggle
+          isPlaying={isPlaying}
+          onToggle={() => setIsPlaying((p) => !p)}
+        />
+      }
     >
       {(m) => (
         <>
+          <style>{`
+            @keyframes sub-h2o {
+              0% { transform: translate(0, 0) scale(0.7); opacity: 0; }
+              30% { opacity: 1; }
+              100% { transform: translate(18px, -42px) scale(1.1); opacity: 0; }
+            }
+            @keyframes sub-melt-glow {
+              0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 4px #f97316); }
+              50% { opacity: 1; filter: drop-shadow(0 0 12px #fb923c); }
+            }
+            @keyframes sub-magma-stream {
+              to { stroke-dashoffset: -40; }
+            }
+            @keyframes sub-volcano-puff {
+              0% { transform: translateY(0) scale(0.6); opacity: 0; }
+              40% { opacity: 0.8; }
+              100% { transform: translate(6px, -24px) scale(1.6); opacity: 0; }
+            }
+            @keyframes sub-quake-ring {
+              0% { r: 5; opacity: 0.9; stroke-width: 2; }
+              70% { r: 16; opacity: 0; stroke-width: 0.5; }
+              100% { r: 5; opacity: 0; }
+            }
+            .sub-h2o-bubble {
+              animation: sub-h2o 2.4s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sub-melt {
+              animation: sub-melt-glow 2.5s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sub-magma-path {
+              animation: sub-magma-stream 2s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sub-puff {
+              animation: sub-volcano-puff 3s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .sub-quake {
+              animation: sub-quake-ring 2.8s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
           {/* Havvannslag til venstre */}
           <polygon points="40,80 430,80 380,130 40,110" fill="#0d283c" opacity="0.95" />
           <L x="140" y="98" fill="#38bdf8" size={12} weight={600}>
@@ -1138,7 +1401,9 @@ export function SubductionDiagram() {
           />
           {/* Snødekte stratovulkaner */}
           <polygon points="600,40 610,25 620,40" fill="#fff" />
-          <L x="610" y="18" fill="#f8fafc" size={13} weight={800} anchor="middle">
+          {/* Vulkanutslipp / røyksky */}
+          <circle cx="610" cy="20" r="5" fill="#94a3b8" className="sub-puff" />
+          <L x="610" y="14" fill="#f8fafc" size={13} weight={800} anchor="middle">
             Andesfjellene (Stratovulkaner)
           </L>
           <L x="750" y="125" fill="#d1d5db" size={12} weight={700}>
@@ -1179,21 +1444,21 @@ export function SubductionDiagram() {
           </L>
 
           {/* FLUKSSMELTING: VANNUTSLIPP OG MAGMAOPPSTIGNING */}
-          {/* H2O frigjøres fra platen (dehydrering) */}
+          {/* H2O frigjøres fra platen (dehydrering) med animerte partikler */}
           <g fill="#38bdf8" stroke="#38bdf8" opacity="0.95">
             <path d="M 490 260 L 510 220" strokeWidth="2.5" strokeDasharray="3 2" />
-            <circle cx="510" cy="215" r="4" />
+            <circle cx="510" cy="215" r="4" className="sub-h2o-bubble" />
             <path d="M 525 300 L 545 255" strokeWidth="2.5" strokeDasharray="3 2" />
-            <circle cx="545" cy="250" r="4" />
+            <circle cx="545" cy="250" r="4" className="sub-h2o-bubble" style={{ animationDelay: "0.8s" }} />
             <path d="M 560 340 L 580 295" strokeWidth="2.5" strokeDasharray="3 2" />
-            <circle cx="580" cy="290" r="4" />
+            <circle cx="580" cy="290" r="4" className="sub-h2o-bubble" style={{ animationDelay: "1.6s" }} />
             <L x="600" y="340" fill="#38bdf8" size={11} weight={700}>
               H₂O frigjøres (dehydrering)
             </L>
           </g>
 
-          {/* Smeltesone i mantelkilen */}
-          <ellipse cx="560" cy="245" rx="42" ry="24" fill="#f97316" opacity="0.9" />
+          {/* Smeltesone i mantelkilen med pulserende flukssmelte */}
+          <ellipse cx="560" cy="245" rx="42" ry="24" fill="#f97316" className="sub-melt" />
           <L x="560" y="242" fill="#fff" size={10.5} weight={800} anchor="middle">
             FLUKSSMELTING
           </L>
@@ -1202,7 +1467,15 @@ export function SubductionDiagram() {
           </L>
 
           {/* Magmaplier opp til vulkanen */}
-          <path d="M 560 221 C 570 170, 595 120, 610 50" stroke="#ef4444" strokeWidth="3.5" strokeDasharray="6 4" fill="none" markerEnd={`url(#${m.low})`} />
+          <path
+            d="M 560 221 C 570 170, 595 120, 610 50"
+            stroke="#ef4444"
+            strokeWidth="3.5"
+            strokeDasharray="6 4"
+            fill="none"
+            className="sub-magma-path"
+            markerEnd={`url(#${m.low})`}
+          />
           <ellipse cx="605" cy="115" rx="20" ry="12" fill="#ef4444" opacity="0.9" />
           <L x="605" y="119" fill="#fff" size={9} weight={700} anchor="middle">
             Magmakammer
@@ -1210,6 +1483,11 @@ export function SubductionDiagram() {
 
           {/* JORDSKJELV: WADATI-BENIOFF SONEN (FYSIKK OG DYBDEFORSKJELLER) */}
           <g>
+            {/* Animert seismisk ring rundt representativt fokus */}
+            <circle cx="420" cy="150" r="12" fill="none" stroke="#ef4444" className="sub-quake" />
+            <circle cx="530" cy="285" r="12" fill="none" stroke="#f59e0b" className="sub-quake" style={{ animationDelay: "1s" }} />
+            <circle cx="645" cy="445" r="12" fill="none" stroke="#8b5cf6" className="sub-quake" style={{ animationDelay: "1.8s" }} />
+
             {/* Grunne megathrust (0–70 km, rød) */}
             <circle cx="390" cy="125" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
             <circle cx="420" cy="150" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
@@ -1267,16 +1545,57 @@ export function SubductionDiagram() {
  * Osean-osean subduksjon med vulkanøybue, Marianegropen og bakbuebasseng.
  */
 export function OceanOceanSubductionDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Subduksjon hav mot hav: Vulkanøybue, Marianegropen og bakbuebasseng"
       heading="Hav mot hav: Den eldste, kaldeste platen må vike"
       caption="Når to oseaniske plater kolliderer, er det alltid den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på 11 034 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />}
       viewBox="0 0 880 430"
       wide
     >
       {(m) => (
         <>
+          <style>{`
+            @keyframes oos-water {
+              0% { transform: translate(0, 0); opacity: 0; }
+              40% { opacity: 0.9; }
+              100% { transform: translate(12px, -30px); opacity: 0; }
+            }
+            @keyframes oos-magma-pulse {
+              0%, 100% { transform: scale(1); opacity: 0.85; }
+              50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 8px #f97316); }
+            }
+            @keyframes oos-smoke {
+              0% { transform: translate(0, 0) scale(0.8); opacity: 0.7; }
+              100% { transform: translate(6px, -18px) scale(1.4); opacity: 0; }
+            }
+            @keyframes oos-quake-pulse {
+              0% { r: 4; opacity: 0.9; }
+              70% { r: 12; opacity: 0; }
+              100% { r: 4; opacity: 0.9; }
+            }
+            .oos-h2o {
+              animation: oos-water 2.5s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .oos-magma {
+              transform-origin: 525px 225px;
+              animation: oos-magma-pulse 2.8s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .oos-smoke-puff {
+              animation: oos-smoke 2.2s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .oos-quake {
+              animation: oos-quake-pulse 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
           {/* Hav over hele flaten */}
           <rect x="40" y="30" width="800" height="90" fill="#091b29" />
           <L x="60" y="55" fill="#38bdf8" size={13} weight={600}>
@@ -1292,6 +1611,10 @@ export function OceanOceanSubductionDiagram() {
           {/* Vulkanøy (f.eks. Mariana-øybue) som stikker opp over havflaten */}
           <path d="M 470 85 L 530 45 L 550 45 L 610 85 Z" fill="#38493f" stroke="#222f28" strokeWidth="1.5" />
           <polygon points="535,45 540,35 545,45" fill="#ef4444" />
+          {/* Vulkanrøyk */}
+          <circle cx="540" cy="30" r="3.5" fill="#94a3b8" className="oos-smoke-puff" />
+          <circle cx="544" cy="22" r="5" fill="#64748b" className="oos-smoke-puff" style={{ animationDelay: "0.9s" }} />
+
           <L x="540" y="25" fill="#f8fafc" size={13} weight={800} anchor="middle">
             Vulkanøybue (Japan / Marianene)
           </L>
@@ -1322,8 +1645,15 @@ export function OceanOceanSubductionDiagram() {
             Bakbuebasseng (Back-arc basin)
           </L>
 
+          {/* Dehydrering (H2O dråper) */}
+          <g className="oos-h2o">
+            <circle cx="460" cy="250" r="3" fill="#38bdf8" />
+            <circle cx="490" cy="285" r="3" fill="#38bdf8" />
+            <path d="M 460 250 L 470 230" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 2" />
+          </g>
+
           {/* Flukssmelting under øybuen */}
-          <ellipse cx="525" cy="225" rx="35" ry="20" fill="#f97316" opacity="0.9" />
+          <ellipse cx="525" cy="225" rx="35" ry="20" fill="#f97316" className="oos-magma" />
           <Arrow d="M 530 205 L 540 50" marker={m.low} color={C.low} width={3} />
           <L x="525" y="222" fill="#fff" size={10} weight={800} anchor="middle">
             Flukssmelting
@@ -1331,10 +1661,13 @@ export function OceanOceanSubductionDiagram() {
 
           {/* Dype jordskjelv i Wadati-Benioff sonen */}
           <circle cx="375" cy="155" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+          <circle cx="375" cy="155" r="4" fill="none" stroke="#ef4444" strokeWidth="1.5" className="oos-quake" />
+
           <circle cx="420" cy="205" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
           <circle cx="480" cy="275" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
           <circle cx="540" cy="345" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
           <circle cx="590" cy="405" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
+          <circle cx="590" cy="405" r="5" fill="none" stroke="#8b5cf6" strokeWidth="1.5" className="oos-quake" style={{ animationDelay: "1s" }} />
         </>
       )}
     </Diagram>
@@ -1347,16 +1680,55 @@ export function OceanOceanSubductionDiagram() {
  * regional metamorfose og fravær av vulkanisme.
  */
 export function CollisionDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Kontinentalkollisjon: Fjellkjededannelse, skyvedekker og dyp skorperot"
       heading="Kontinent mot kontinent: Himalaya i dag og Kaledonidene i Norges fortid"
       caption="Når to kontinentale litosfæreplater møtes (som da India traff Asia for 50 mill. år siden, eller da Baltika og Laurentia kolliderte og dannet Kaledonidene for 400 mill. år siden), kan ingen av platene subdueres i dypet fordi kontinentalskorpen har for lav tetthet (~2,7 g/cm³). Resultatet er kolossal skorpeforkorting. Jordskorpen presses opp i svimlende fjellkjeder og stables i store flak som kalles skyvedekker (nappes), som ble skjøvet hundrevis av kilometer over grunnfjellet. Samtidig dannes en enorm jordskorperot som stikker 70–80 km ned i mantelen for å holde fjellene flytende isostatisk. Fordi det ikke lenger føres vannrik havbunn ned i mantelen, opphører vulkanismen nesten helt – men kollisjonen skaper voldsom regional metamorfose (gneis og glimmerskifer)."
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />}
       viewBox="0 0 940 480"
       wide
     >
       {(m) => (
         <>
+          <style>{`
+            @keyframes collision-arrow-l {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(6px); }
+            }
+            @keyframes collision-arrow-r {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(-6px); }
+            }
+            @keyframes nappe-dash {
+              0% { stroke-dashoffset: 24; }
+              100% { stroke-dashoffset: 0; }
+            }
+            @keyframes moho-root-glow {
+              0%, 100% { opacity: 0.5; }
+              50% { opacity: 1; filter: drop-shadow(0 0 5px #ef4444); }
+            }
+            .collision-l {
+              animation: collision-arrow-l 2.2s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .collision-r {
+              animation: collision-arrow-r 2.2s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .nappe-thrust {
+              stroke-dasharray: 8 4;
+              animation: nappe-dash 2s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .moho-root {
+              animation: moho-root-glow 2.8s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
           {/* Himmel */}
           <rect x="40" y="30" width="860" height="110" fill="#09141d" />
 
@@ -1377,8 +1749,8 @@ export function CollisionDiagram() {
           </L>
 
           {/* Kaledonske skyvedekker (stables langs basale skyveforkastninger) */}
-          <path d="M 260 170 C 340 135, 430 90, 520 80" stroke="#f59e0b" strokeWidth="3" fill="none" />
-          <path d="M 300 205 C 390 170, 490 125, 580 110" stroke="#f59e0b" strokeWidth="3" fill="none" />
+          <path d="M 260 170 C 340 135, 430 90, 520 80" stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
+          <path d="M 300 205 C 390 170, 490 125, 580 110" stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
           <L x="320" y="130" fill="#f59e0b" size={12} weight={800}>
             Skyvedekker (Nappes, f.eks. Jotundekket i Norge)
           </L>
@@ -1393,7 +1765,7 @@ export function CollisionDiagram() {
             stroke="#16232b"
             strokeWidth="1.5"
           />
-          <path d="M 40 190 L 250 270 L 470 310 L 720 270 L 900 190" stroke="#ef4444" strokeWidth="2.5" strokeDasharray="4 2" fill="none" />
+          <path d="M 40 190 L 250 270 L 470 310 L 720 270 L 900 190" stroke="#ef4444" strokeWidth="2.5" strokeDasharray="4 2" fill="none" className="moho-root" />
           <L x="470" y="340" fill="#38bdf8" size={13} weight={800} anchor="middle">
             SKORPEROT: Moho nedtrykt til ~75 km dyp!
           </L>
@@ -1412,15 +1784,19 @@ export function CollisionDiagram() {
             </L>
           </g>
 
-          {/* Kollisjonspiler */}
-          <Arrow d="M 120 110 L 200 110" marker={m.low} color={C.low} width={4} />
-          <L x="160" y="100" fill={C.low} size={12} weight={800} anchor="middle">
-            India / Baltika (~5 cm/år) →
-          </L>
-          <Arrow d="M 820 110 L 740 110" marker={m.low} color={C.low} width={4} />
-          <L x="780" y="100" fill={C.low} size={12} weight={800} anchor="middle">
-            ← Asia / Laurentia
-          </L>
+          {/* Kollisjonspiler med animasjon */}
+          <g className="collision-l">
+            <Arrow d="M 120 110 L 200 110" marker={m.low} color={C.low} width={4} />
+            <L x="160" y="100" fill={C.low} size={12} weight={800} anchor="middle">
+              India / Baltika (~5 cm/år) →
+            </L>
+          </g>
+          <g className="collision-r">
+            <Arrow d="M 820 110 L 740 110" marker={m.low} color={C.low} width={4} />
+            <L x="780" y="100" fill={C.low} size={12} weight={800} anchor="middle">
+              ← Asia / Laurentia
+            </L>
+          </g>
 
           {/* Fakta-advarsel om fravær av vulkanisme */}
           <g transform="translate(60, 395)">
@@ -1443,40 +1819,98 @@ export function CollisionDiagram() {
  * Viser transformforkastninger på land (San Andreas) og i havet (Jan Mayen-bruddsonen).
  */
 export function TransformDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Transformforkastninger: Sidelengs bevegelse og elastisk spenningsutløsning"
       heading="Transformgrenser: Når litosfæreplater gnir sidelengs forbi hverandre"
       caption="Langs en transformforkastning glir to plater horisontalt forbi hverandre. Skorpe verken nydannes eller ødelegges, og fraværet av vertikal mantelbevegelse eller dehydrering gjør at det praktisk talt ikke oppstår vulkanisme. I stedet oppstår voldsom mekanisk friksjon: Bergartene henger seg opp i en «friksjonslås». Mens platene fortsetter å bevege seg med noen centimeter i året noen titalls kilometer unna, bøyes og deformeres bergartene elastisk over årtier. Når spenningen overstiger bergartens bruddstyrke, brister forkastningen plutselig i løpet av sekunder – et ødeleggende jordskjelv. På land forskyver dette elveløp og gjerder (San Andreas); på havbunn segmenterer transformforkastninger midthavsryggene (f.eks. Jan Mayen-bruddsonen)."
-      viewBox="0 0 880 420"
+      viewBox="0 0 880 430"
       wide
+      action={
+        <PlayPauseToggle
+          isPlaying={isPlaying}
+          onToggle={() => setIsPlaying((p) => !p)}
+        />
+      }
     >
       {(m) => (
         <>
-          {/* To motstående forkastningsblokker i 3D-perspektiv */}
-          {/* Venstre blokk (beveger seg nordvestover / oppover) */}
-          <path d="M 80 120 L 430 120 L 430 320 L 80 320 Z" fill="#2d4237" stroke="#1d2d25" strokeWidth="2" />
-          <L x="255" y="155" fill="#38bdf8" size={14} weight={800} anchor="middle">
-            PLATE A (f.eks. Stillehavsplaten)
-          </L>
-          <Arrow d="M 255 270 L 255 180" marker={m.teal} color={C.teal} width={4.5} />
-          <L x="240" y="225" fill="#38bdf8" size={12} weight={700} anchor="end">
-            Nordover ~5 cm/år
-          </L>
+          <style>{`
+            @keyframes td-plate-a {
+              0% { transform: translateY(0px); }
+              45% { transform: translateY(-8px); }
+              50% { transform: translateY(-16px); }
+              90% { transform: translateY(-16px); }
+              100% { transform: translateY(0px); }
+            }
+            @keyframes td-plate-b {
+              0% { transform: translateY(0px); }
+              45% { transform: translateY(8px); }
+              50% { transform: translateY(16px); }
+              90% { transform: translateY(16px); }
+              100% { transform: translateY(0px); }
+            }
+            @keyframes td-quake-burst {
+              0%, 40% { r: 6; opacity: 0; }
+              45% { r: 12; opacity: 0.5; }
+              50% { r: 32; opacity: 0.95; stroke: #fff; }
+              65% { r: 50; opacity: 0; }
+              100% { r: 6; opacity: 0; }
+            }
+            @keyframes td-elastic-strain {
+              0% { opacity: 0.4; }
+              45% { opacity: 0.95; filter: drop-shadow(0 0 6px #ef4444); }
+              50% { opacity: 0.2; }
+              100% { opacity: 0.4; }
+            }
+            .td-anim-plate-a {
+              animation: td-plate-a 6s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .td-anim-plate-b {
+              animation: td-plate-b 6s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .td-anim-burst {
+              animation: td-quake-burst 6s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .td-anim-strain {
+              animation: td-elastic-strain 6s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
+          {/* To motstående forkastningsblokker i 3D-perspektiv med dynamisk glidebevegelse */}
+          {/* Venstre blokk (beveger seg nordover / oppover) */}
+          <g className="td-anim-plate-a">
+            <path d="M 80 120 L 430 120 L 430 320 L 80 320 Z" fill="#2d4237" stroke="#1d2d25" strokeWidth="2" />
+            <L x="255" y="155" fill="#38bdf8" size={14} weight={800} anchor="middle">
+              PLATE A (f.eks. Stillehavsplaten)
+            </L>
+            <Arrow d="M 255 270 L 255 180" marker={m.teal} color={C.teal} width={4.5} />
+            <L x="240" y="225" fill="#38bdf8" size={12} weight={700} anchor="end">
+              Nordover ~5 cm/år ↑
+            </L>
+          </g>
 
           {/* Høyre blokk (beveger seg sørover / nedover) */}
-          <path d="M 450 80 L 800 80 L 800 280 L 450 280 Z" fill="#3d372e" stroke="#28241e" strokeWidth="2" />
-          <L x="625" y="115" fill={C.warm} size={14} weight={800} anchor="middle">
-            PLATE B (f.eks. Nordamerikanske plate)
-          </L>
-          <Arrow d="M 625 140 L 625 230" marker={m.warm} color={C.warm} width={4.5} />
-          <L x="640" y="185" fill={C.warm} size={12} weight={700}>
-            Sørover (relativt)
-          </L>
+          <g className="td-anim-plate-b">
+            <path d="M 450 80 L 800 80 L 800 280 L 450 280 Z" fill="#3d372e" stroke="#28241e" strokeWidth="2" />
+            <L x="625" y="115" fill={C.warm} size={14} weight={800} anchor="middle">
+              PLATE B (f.eks. Nordamerikanske plate)
+            </L>
+            <Arrow d="M 625 140 L 625 230" marker={m.warm} color={C.warm} width={4.5} />
+            <L x="640" y="185" fill={C.warm} size={12} weight={700}>
+              ↓ Sørover (relativt)
+            </L>
+          </g>
 
           {/* Selve forkastningssprekken i midten (San Andreas-sporet) */}
-          <line x1="440" y1="40" x2="440" y2="360" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" />
-          <L x="440" y="28" fill="#ef4444" size={13} weight={800} anchor="middle">
+          <line x1="440" y1="35" x2="440" y2="355" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" />
+          <L x="440" y="24" fill="#ef4444" size={13} weight={800} anchor="middle">
             TRANSFORMFORKASTNING (San Andreas / Jan Mayen bruddsone)
           </L>
 
@@ -1486,18 +1920,25 @@ export function TransformDiagram() {
             Forskjøvet elveløp (130 meter sideforskyvning)
           </L>
 
-          {/* Låst sone / jordskjelvfokus */}
-          <circle cx="440" cy="220" r="14" fill="#ef4444" opacity="0.3" />
+          {/* Låst sone / jordskjelvfokus med pulserende spenningsglød og seismisk burst */}
+          <circle cx="440" cy="220" r="18" fill="#ef4444" className="td-anim-strain" />
+          <circle cx="440" cy="220" r="10" fill="none" stroke="#ef4444" strokeWidth="2" className="td-anim-burst" />
           <circle cx="440" cy="220" r="6" fill="#ef4444" stroke="#fff" strokeWidth="2" />
-          <L x="465" y="224" fill="#ef4444" size={12} weight={800}>
+          <L x="465" y="215" fill="#ef4444" size={12} weight={800}>
             Friksjonslås: Spenning bygges over 100–250 år!
           </L>
+          <L x="465" y="230" fill="#fca5a5" size={10} weight={600}>
+            Plutselig bruddutløsning (jordskjelv)
+          </L>
 
-          {/* Forklaring nederst */}
-          <g transform="translate(80, 365)">
-            <rect x="0" y="0" width="720" height="35" rx="5" fill="#080e14" stroke="#334155" />
-            <L x="360" y="18" fill="#cbd5e1" size={11} anchor="middle">
-              <strong>Konservativ grense:</strong> Skorpe verken lages eller ødelegges · Ingen vulkanisme · Ekstremt ødeleggende grunne skjelv.
+          {/* Wilson-finesse forklaring nederst */}
+          <g transform="translate(60, 365)">
+            <rect x="0" y="0" width="760" height="45" rx="6" fill="#080e14" stroke="#334155" />
+            <L x="380" y="18" fill="#38bdf8" size={11} weight={700} anchor="middle">
+              J. Tuzo Wilsons geometriske finesse (1965):
+            </L>
+            <L x="380" y="32" fill="#cbd5e1" size={10} anchor="middle">
+              KUN mellom de to forskjøvede spredningsryggene glir platene i motsatt retning (aktiv seismisitet). Utenfor ryggene beveger skorpen seg i samme retning (aseismiske arr).
             </L>
           </g>
         </>
@@ -1512,6 +1953,8 @@ export function TransformDiagram() {
  * med det berømte 47-millioner-år-knekkpunktet.
  */
 export function HotspotPlumeDiagram() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <Diagram
       title="Hotspots og mantelplymer: Dype termiske oppstrømmer og vulkankjeder"
@@ -1519,9 +1962,42 @@ export function HotspotPlumeDiagram() {
       caption="De fleste vulkaner ligger på plategrenser, men noen av jordens mektigste oppstår midt inne på platene (intraplate-vulkanisme). Dette skyldes mantelplymer (hotspots): tynne, termiske oppstrømmer av overopphetet bergart som har sine røtter helt nede ved kjerne-mantel-grensen (D''-laget på 2900 km dyp). Fordi plymen er forankret så dypt, står den praktisk talt i ro over titalls millioner år, mens litosfæreplaten glir sakte forbi over den. Plymen smelter seg gjennom platen og skaper en lineær kjede av vulkanske øyer der alderen øker jevnt i platens bevegelsesretning. Den berømte 60 graders knekken i Hawaii-Emperor-ryggen viser at Stillehavsplaten endret bevegelsesretning for 47 millioner år siden!"
       viewBox="0 0 940 480"
       wide
+      action={
+        <PlayPauseToggle
+          isPlaying={isPlaying}
+          onToggle={() => setIsPlaying((p) => !p)}
+        />
+      }
     >
       {(m) => (
         <>
+          <style>{`
+            @keyframes hp-plume-flow {
+              to { stroke-dashoffset: -60; }
+            }
+            @keyframes hp-plume-pulse {
+              0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 4px #f97316); }
+              50% { opacity: 1; filter: drop-shadow(0 0 12px #fb923c); }
+            }
+            @keyframes hp-vent-smoke {
+              0% { transform: translateY(0) scale(0.6); opacity: 0; }
+              40% { opacity: 0.85; }
+              100% { transform: translate(-8px, -20px) scale(1.6); opacity: 0; }
+            }
+            .hp-flow-line {
+              animation: hp-plume-flow 2.5s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .hp-head-glow {
+              animation: hp-plume-pulse 2.8s ease-in-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .hp-smoke {
+              animation: hp-vent-smoke 2.4s ease-out infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+          `}</style>
+
           {/* Havbasseng øverst */}
           <rect x="40" y="30" width="860" height="90" fill="#0b1d2c" />
           <L x="60" y="55" fill="#38bdf8" size={13} weight={600}>
@@ -1539,6 +2015,8 @@ export function HotspotPlumeDiagram() {
           {/* Aktiv vulkan (Kilauea / Mauna Loa) rett over plymen ved x=700 */}
           <path d="M 640 120 L 700 45 L 760 120 Z" fill="#423b32" stroke="#25211b" strokeWidth="1.5" />
           <polygon points="695,45 700,32 705,45" fill="#ef4444" />
+          {/* Vulkanutbrudd røyk/ild */}
+          <circle cx="700" cy="30" r="4.5" fill="#f97316" className="hp-smoke" />
           <L x="700" y="24" fill="#f8fafc" size={12} weight={800} anchor="middle">
             Hawaii (Aktiv nå · 0 Ma)
           </L>
@@ -1574,9 +2052,43 @@ export function HotspotPlumeDiagram() {
           <path
             d="M 685 430 L 685 240 C 670 200, 640 160, 680 135 L 720 135 C 760 160, 730 200, 715 240 L 715 430 Z"
             fill="#ea580c"
-            opacity="0.9"
+            opacity="0.92"
           />
-          <ellipse cx="700" cy="145" rx="35" ry="18" fill="#f97316" />
+          {/* Animerte oppstigende termiske strømmer inne i plymmen */}
+          <line
+            x1="700"
+            y1="420"
+            x2="700"
+            y2="155"
+            stroke="#fed7aa"
+            strokeWidth="3.5"
+            strokeDasharray="8 6"
+            className="hp-flow-line"
+          />
+          <line
+            x1="693"
+            y1="400"
+            x2="693"
+            y2="180"
+            stroke="#fef08a"
+            strokeWidth="2"
+            strokeDasharray="6 4"
+            className="hp-flow-line"
+            style={{ animationDelay: "0.5s" }}
+          />
+          <line
+            x1="707"
+            y1="400"
+            x2="707"
+            y2="180"
+            stroke="#fef08a"
+            strokeWidth="2"
+            strokeDasharray="6 4"
+            className="hp-flow-line"
+            style={{ animationDelay: "1s" }}
+          />
+
+          <ellipse cx="700" cy="145" rx="35" ry="18" fill="#f97316" className="hp-head-glow" />
           <L x="700" y="270" fill="#fff" size={13} weight={800} anchor="middle">
             MANTELPLYM (HOTSPOT)
           </L>

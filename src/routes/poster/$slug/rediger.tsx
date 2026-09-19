@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { chapterMetaBySlug } from "@/lib/chapter-posts";
 import { GUEST_CMS, cmsLogout, getCmsStatus, type CmsStatus } from "@/lib/cms";
 import { deletePost, getPost, savePost, type Post } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
@@ -51,6 +52,7 @@ type Status = { kind: "idle" | "saving" | "saved" | "error"; message?: string };
 
 function EditPost() {
   const { post: loaded, slug, cms: initialCms } = Route.useLoaderData();
+  const chapterMeta = chapterMetaBySlug(slug);
   const router = useRouter();
   const navigate = Route.useNavigate();
   const [cms, setCms] = useState<CmsStatus>(initialCms);
@@ -150,6 +152,19 @@ function EditPost() {
               </div>
               <div className="flex items-center gap-3">
                 <StatusPill status={status} />
+                {chapterMeta ? (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => {
+                      void router.invalidate().then(() => {
+                        window.location.href = chapterMeta.path;
+                      });
+                    }}
+                  >
+                    Gå til kapittelet (Live)
+                  </Button>
+                ) : null}
                 <Button
                   variant="secondary"
                   size="sm"

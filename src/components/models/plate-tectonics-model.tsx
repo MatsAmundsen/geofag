@@ -10,7 +10,8 @@ type BoundaryType =
   | "rift"
   | "transform"
   | "hotspot"
-  | "ofiolitt";
+  | "ofiolitt"
+  | "paleomag";
 
 const OPHIOLITE_LAYERS = [
   {
@@ -74,6 +75,7 @@ export function PlateTectonicsModel() {
   const [boundary, setBoundary] = useState<BoundaryType>("subduction_continent");
   const [selectedOphiolite, setSelectedOphiolite] = useState<number>(6);
   const [activeTransformMode, setActiveTransformMode] = useState<"fault" | "fracture_zone">("fault");
+  const [activePolarity, setActivePolarity] = useState<"normal" | "reversed">("normal");
   const [rate, setRate] = useState<number>(6); // cm/år
   const [showQuakes, setShowQuakes] = useState<boolean>(true);
   const [showMelting, setShowMelting] = useState<boolean>(true);
@@ -170,6 +172,17 @@ export function PlateTectonicsModel() {
       description:
         "Et ofiolittkompleks er et komplett stykke havbunnsskorpe og øverste litosfæriske mantel som under en kontinentalkollisjon ble skjøvet opp på land i stedet for å subdueres. På Leka kan du gå direkte til fots over selve Moho-grensen!",
     },
+    paleomag: {
+      title: "Paleomagnetisk «båndopptaker» (Vine-Matthews-Morley 1963)",
+      kicker: "Geomagnetiske reverseringer & symmetrisk havbunn",
+      typicalRate: "Symmetrisk spredning (f.eks. 2,5 cm/år totalt, 1,25 cm/år per plate)",
+      rockTypes: "Basalt med magnetittmineraler frosset under Curie-temperaturen (580 °C)",
+      quaketype: "Grunne riftdalskjelv i spredningsaksen",
+      meltingMechanism: "Dekompresjonssmelting av astenosfæren under spredningsryggen",
+      realExample: "Reykjanesryggen sør for Island, Stillehavs-antarktiske rygg",
+      description:
+        "Når basaltisk magma stiger opp og størkner ved midthavsryggen, orienterer mikroskopiske krystaller av mineralet magnetitt seg parallelt med jordens gjeldende magnetfelt. Når temperaturen synker under 580 °C (Curie-temperaturen), låses magnetiseringen permanent. Fordi jordens magnetfelt reverserer med ujevne mellomrom, danner den symmetriske havbunnsspredningen et speilvendt magnetisk mønster på hver side av ryggaksen – det ugjendrivelige beviset på at havbunnen sprer seg!",
+    },
   };
 
   const current = boundaryData[boundary];
@@ -204,6 +217,9 @@ export function PlateTectonicsModel() {
           </ModelTab>
           <ModelTab active={boundary === "ofiolitt"} onClick={() => setBoundary("ofiolitt")}>
             Ofiolitt (Leka-lagene)
+          </ModelTab>
+          <ModelTab active={boundary === "paleomag"} onClick={() => setBoundary("paleomag")}>
+            Båndopptaker (Paleomag)
           </ModelTab>
         </div>
       }
@@ -252,6 +268,25 @@ export function PlateTectonicsModel() {
             >
               {showMelting ? "✓ Smeltesoner" : "+ Smeltesoner"}
             </Button>
+            {boundary === "paleomag" && (
+              <Button
+                type="button"
+                size="sm"
+                variant="default"
+                className={`h-7 text-xs font-semibold ${
+                  activePolarity === "normal"
+                    ? "bg-blue-600 hover:bg-blue-500 text-white"
+                    : "bg-slate-700 hover:bg-slate-600 text-white"
+                }`}
+                onClick={() =>
+                  setActivePolarity((p) => (p === "normal" ? "reversed" : "normal"))
+                }
+              >
+                {activePolarity === "normal"
+                  ? "Felt: Normal (N) ⇄ Snu"
+                  : "Felt: Revers (R) ⇄ Snu"}
+              </Button>
+            )}
           </div>
         </div>
 
@@ -1170,6 +1205,272 @@ export function PlateTectonicsModel() {
                   </g>
                 );
               })()}
+            </g>
+          )}
+
+          {/* ============================================================ */}
+          {/* SCENE 8: PALEOMAGNETISK BÅNDOPPTAKER (VINE-MATTHEWS-MORLEY)  */}
+          {/* ============================================================ */}
+          {boundary === "paleomag" && (
+            <g>
+              {/* Havvann og havoverflate */}
+              <rect x="50" y="55" width="820" height="95" fill="url(#pt-ocean)" />
+              <line x1="50" y1="55" x2="870" y2="55" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
+              <text x="60" y="50" fill="#7dd3fc" fontSize="10" fontWeight="600">
+                Havoverflate (Atlanterhavet / Stillehavet)
+              </text>
+
+              {/* Marin-geofysisk forskningsskip med proton-magnetometer */}
+              <g transform="translate(560, 32)">
+                <path d="M 0 16 L 10 24 L 55 24 L 62 16 L 45 16 L 45 8 L 35 8 L 35 16 Z" fill="#f8fafc" stroke="#334155" strokeWidth="1" />
+                <rect x="22" y="11" width="10" height="5" fill="#38bdf8" />
+                <line x1="30" y1="8" x2="30" y2="2" stroke="#cbd5e1" strokeWidth="1.5" />
+                <text x="70" y="18" fill="#e2e8f0" fontSize="9.5" fontWeight="700">
+                  Forskningsskip m/ proton-magnetometer
+                </text>
+                {/* Slepekabel og magnetometer "fisk" */}
+                <path d="M 0 22 C -30 28, -70 38, -100 42" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3 2" />
+                <ellipse cx="-102" cy="43" rx="5" ry="2.5" fill="#f59e0b" />
+              </g>
+
+              {/* OSCILLOSKOP / MAGNETOMETER-MÅLING (MÅLT ANOMALI ΔB) */}
+              <g transform="translate(60, 68)">
+                <rect x="0" y="0" width="800" height="66" rx="6" fill="#071018" stroke="#1e293b" strokeWidth="1.5" />
+                <text x="12" y="15" fill="#38bdf8" fontSize="10" fontWeight="800">
+                  MARIN MAGNETISK PROFIL (ΔB = Totalt målt magnetfelt − Jordas referansefelt)
+                </text>
+                <text x="640" y="15" fill="#94a3b8" fontSize="9" textAnchor="end">
+                  Symmetrisk om midthavsryggens spredningsakse (x = 0 km)
+                </text>
+
+                {/* Null-referanselinje (0 nT) */}
+                <line x1="20" y1="38" x2="780" y2="38" stroke="#334155" strokeWidth="1" strokeDasharray="4 3" />
+                <text x="784" y="41" fill="#64748b" fontSize="8" fontFamily="monospace">0 nT</text>
+                <text x="784" y="24" fill="#38bdf8" fontSize="8" fontFamily="monospace">+400</text>
+                <text x="784" y="56" fill="#f43f5e" fontSize="8" fontFamily="monospace">-400</text>
+
+                {/* Magnetisk anomalikurve (symmetrisk speiling) */}
+                {/* Midten er ved x = 400 (tilsvarer x = 460 i svg) */}
+                <path
+                  d={`
+                    M 20 38
+                    L 40 22 L 65 22 L 85 38
+                    L 100 54 L 140 54 L 155 38
+                    L 170 24 L 210 24 L 230 38
+                    L 245 52 L 280 52 L 290 38
+                    L 295 28 L 305 28 L 310 38
+                    L 315 52 L 340 52 L 350 38
+                    L 370 ${activePolarity === "normal" ? "18" : "58"}
+                    L 400 ${activePolarity === "normal" ? "16" : "60"}
+                    L 430 ${activePolarity === "normal" ? "18" : "58"}
+                    L 450 38 L 460 52 L 485 52 L 490 38
+                    L 495 28 L 505 28 L 510 38
+                    L 520 52 L 555 52 L 570 38
+                    L 590 24 L 630 24 L 645 38
+                    L 660 54 L 700 54 L 715 38
+                    L 735 22 L 760 22 L 780 38
+                  `}
+                  fill="none"
+                  stroke={activePolarity === "normal" ? "#38bdf8" : "#f43f5e"}
+                  strokeWidth="2.2"
+                />
+
+                {/* Små etiketter for positiv/negativ anomali */}
+                <text x="400" y={activePolarity === "normal" ? "28" : "52"} fill={activePolarity === "normal" ? "#38bdf8" : "#f43f5e"} fontSize="9" fontWeight="800" textAnchor="middle">
+                  {activePolarity === "normal" ? "+ΔB Brunhes (Normal)" : "-ΔB (Reversert nydanning)"}
+                </text>
+                <text x="270" y="60" fill="#94a3b8" fontSize="8" textAnchor="middle">-ΔB (Matuyama)</text>
+                <text x="530" y="60" fill="#94a3b8" fontSize="8" textAnchor="middle">-ΔB (Matuyama)</text>
+                <text x="200" y="20" fill="#38bdf8" fontSize="8" textAnchor="middle">+ΔB (Gauss)</text>
+                <text x="600" y="20" fill="#38bdf8" fontSize="8" textAnchor="middle">+ΔB (Gauss)</text>
+              </g>
+
+              {/* HAVBUNNSSKORPE MED MAGNETISKE STRIPER (BÅNDOPPTAKER) */}
+              {/* Spredningssenter ved x = 460. Høyde: y = 145 til y = 210 */}
+              <g>
+                {/* Brunhes Chron (0 - 0.78 Ma, Normal i dag) */}
+                {/* Ytre Brunhes striper */}
+                <rect x="410" y="145" width="40" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
+                <text x="430" y="178" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
+
+                {/* Nyeste nydannet basalt i selve spredningsaksen (påvirket av activePolarity) */}
+                <rect
+                  x="450"
+                  y="142"
+                  width="20"
+                  height="68"
+                  fill={activePolarity === "normal" ? "#2563eb" : "#475569"}
+                  stroke={activePolarity === "normal" ? "#60a5fa" : "#cbd5e1"}
+                  strokeWidth={animating ? 2 : 1}
+                  className={animating ? "pulse-border" : ""}
+                />
+                <text x="460" y="178" fill="#ffffff" fontSize="10" fontWeight="800" textAnchor="middle">
+                  {activePolarity === "normal" ? "↑ N" : "↓ S"}
+                </text>
+
+                <rect x="470" y="145" width="40" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
+                <text x="490" y="178" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
+
+                {/* Matuyama Chron (0.78 - 2.58 Ma, Reversert) */}
+                {/* Venstre side */}
+                <rect x="305" y="147" width="105" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
+                <text x="330" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
+                <text x="390" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
+                {/* Jaramillo normal subchron (1.0 Ma) */}
+                <rect x="350" y="147" width="15" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="0.8" />
+                <text x="357.5" y="176" fill="#fff" fontSize="7.5" fontWeight="700" textAnchor="middle">↑</text>
+
+                {/* Høyre side */}
+                <rect x="510" y="147" width="105" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
+                <text x="535" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
+                <text x="595" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
+                {/* Jaramillo normal subchron (1.0 Ma) */}
+                <rect x="555" y="147" width="15" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="0.8" />
+                <text x="562.5" y="176" fill="#fff" fontSize="7.5" fontWeight="700" textAnchor="middle">↑</text>
+
+                {/* Gauss Chron (2.58 - 3.58 Ma, Normal) */}
+                {/* Venstre side */}
+                <rect x="215" y="150" width="90" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
+                <text x="260" y="180" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
+
+                {/* Høyre side */}
+                <rect x="615" y="150" width="90" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
+                <text x="660" y="180" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
+
+                {/* Gilbert Chron (3.58 - 5.3 Ma, Reversert) */}
+                {/* Venstre side */}
+                <rect x="125" y="153" width="90" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
+                <text x="170" y="182" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
+
+                {/* Høyre side */}
+                <rect x="705" y="153" width="90" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
+                <text x="750" y="182" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
+
+                {/* Eldre havbunn (> 5.3 Ma) */}
+                <rect x="50" y="156" width="75" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
+                <text x="85" y="184" fill="#ffffff" fontSize="9" fontWeight="600" textAnchor="middle">Kron 5 (N)</text>
+
+                <rect x="795" y="156" width="75" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
+                <text x="835" y="184" fill="#ffffff" fontSize="9" fontWeight="600" textAnchor="middle">Kron 5 (N)</text>
+              </g>
+
+              {/* Tidslinje under havbunnen med million år (Ma) */}
+              <g transform="translate(0, 218)">
+                <line x1="50" y1="0" x2="870" y2="0" stroke="#475569" strokeWidth="1" />
+                {/* Ticks og etiketter */}
+                <line x1="460" y1="-3" x2="460" y2="5" stroke="#f59e0b" strokeWidth="2" />
+                <text x="460" y="15" fill="#f59e0b" fontSize="9.5" fontWeight="800" textAnchor="middle">0 Ma (Aksen)</text>
+
+                <line x1="410" y1="-3" x2="410" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <line x1="510" y1="-3" x2="510" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <text x="410" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">0.78 Ma</text>
+                <text x="510" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">0.78 Ma</text>
+
+                <line x1="305" y1="-3" x2="305" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <line x1="615" y1="-3" x2="615" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <text x="305" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">2.58 Ma</text>
+                <text x="615" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">2.58 Ma</text>
+
+                <line x1="215" y1="-3" x2="215" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <line x1="705" y1="-3" x2="705" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <text x="215" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">3.58 Ma</text>
+                <text x="705" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">3.58 Ma</text>
+
+                <line x1="125" y1="-3" x2="125" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <line x1="795" y1="-3" x2="795" y2="4" stroke="#94a3b8" strokeWidth="1" />
+                <text x="125" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">5.3 Ma</text>
+                <text x="795" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">5.3 Ma</text>
+
+                <text x="70" y="14" fill="#64748b" fontSize="8" textAnchor="middle">← Eldre skorpe</text>
+                <text x="850" y="14" fill="#64748b" fontSize="8" textAnchor="middle">Eldre skorpe →</text>
+              </g>
+
+              {/* SPREDNINGSVETORER OG CURIE-TEMPERATUR */}
+              {/* Spredningspiler */}
+              <g>
+                <path d="M 430 135 L 360 135" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+                <text x="395" y="130" fill="#f59e0b" fontSize="9.5" fontWeight="700" textAnchor="middle">
+                  {(rate / 2).toFixed(1)} cm/år (vest)
+                </text>
+
+                <path d="M 490 135 L 560 135" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+                <text x="525" y="130" fill="#f59e0b" fontSize="9.5" fontWeight="700" textAnchor="middle">
+                  {(rate / 2).toFixed(1)} cm/år (øst)
+                </text>
+              </g>
+
+              {/* LITOSFÆRISK MANTEL OG CURIE-ISOTERM (580 °C) */}
+              <g transform="translate(0, 238)">
+                {/* Litosfærisk mantel bunn */}
+                <path
+                  d="M 50 20 L 400 0 L 440 -10 L 480 -10 L 520 0 L 870 20 L 870 70 L 540 60 L 480 30 L 440 30 L 380 60 L 50 70 Z"
+                  fill="#152631"
+                  stroke="#1e3a4c"
+                  strokeWidth="1"
+                />
+
+                {/* Curie-isomet stiplet linje (580 °C) */}
+                <path
+                  d="M 120 15 C 300 12, 420 -5, 460 -12 C 500 -5, 620 12, 800 15"
+                  fill="none"
+                  stroke="#ef4444"
+                  strokeWidth="1.8"
+                  strokeDasharray="5 3"
+                />
+                <text x="460" y="-16" fill="#f87171" fontSize="9.5" fontWeight="800" textAnchor="middle">
+                  Curie-isoterm (580 °C) – Magnetittkorn fryses i feltets retning!
+                </text>
+
+                {/* Aksialt magmakammer under riften */}
+                <ellipse cx="460" cy="40" rx="35" ry="20" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
+                <text x="460" y="44" fill="#ffffff" fontSize="9.5" fontWeight="800" textAnchor="middle">
+                  Aksialt magmakammer (1200 °C)
+                </text>
+                <text x="460" y="55" fill="#fde68a" fontSize="8" textAnchor="middle">
+                  Over Curie-punktet: Uordnet/paramagnetisk
+                </text>
+              </g>
+
+              {/* OPPSUMMERENDE FORKLARINGSBOKSER NEDE I MODELLEN */}
+              <g transform="translate(60, 340)">
+                <rect x="0" y="0" width="380" height="98" rx="8" fill="#0b1520" stroke="#1e293b" strokeWidth="1.2" />
+                <text x="14" y="20" fill="#38bdf8" fontSize="11" fontWeight="800">
+                  Vine-Matthews-Morley-hypotesen (1963):
+                </text>
+                <foreignObject x="14" y="26" width="352" height="66">
+                  <p style={{ color: "#cbd5e1", fontSize: "10.5px", lineHeight: "1.45" }}>
+                    Fred Vine, Drummond Matthews og Lawrence Morley innså at midthavsryggen fungerer som et gigantisk, tosidig magnetbånd. Når ny basalt strømmer opp og kjøles under <strong>580 °C (Curie-temperaturen)</strong>, blir magnetittkrystallene låst i retning mot datidens magnetiske nordpol (TRM).
+                  </p>
+                </foreignObject>
+              </g>
+
+              <g transform="translate(460, 340)">
+                <rect
+                  x="0"
+                  y="0"
+                  width="400"
+                  height="98"
+                  rx="8"
+                  fill="#0b1520"
+                  stroke={activePolarity === "normal" ? "#2563eb" : "#f43f5e"}
+                  strokeWidth="1.5"
+                />
+                <circle cx="20" cy="18" r="6" fill={activePolarity === "normal" ? "#2563eb" : "#f43f5e"} />
+                <text x="34" y="22" fill="#f8fafc" fontSize="11" fontWeight="800">
+                  Aktiv geomagnetisk tilstand: {activePolarity === "normal" ? "Normal polaritet" : "Reversert polaritet"}
+                </text>
+                <foreignObject x="14" y="28" width="372" height="64">
+                  <p style={{ color: "#e2e8f0", fontSize: "10.5px", lineHeight: "1.45" }}>
+                    {activePolarity === "normal"
+                      ? "Feltet peker mot nord (som i dag). Ny basalt forsterker det lokale magnetfeltet og gir en positiv magnetisk anomali (+ΔB). Brunhes-kronen har vart i 780 000 år."
+                      : "Feltet er snudd (polvending)! Magnetisk nord var på sydpolen. Ny basalt motvirker dagens felt og gir en negativ magnetisk anomali (−ΔB) når det måles i dag."}
+                    <br />
+                    <span style={{ color: "#38bdf8", fontWeight: 700 }}>
+                      Bruk «Felt: Normal/Revers ⇄ Snu» i verktøylinjen for å teste en polvending!
+                    </span>
+                  </p>
+                </foreignObject>
+              </g>
             </g>
           )}
         </svg>

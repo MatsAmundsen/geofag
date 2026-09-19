@@ -39,7 +39,7 @@ describe("isShortPlatetektonikkBody", () => {
 
   it("treats the bundled Platetektonikk fagtekst as the full chapter", () => {
     assert.ok(chapterMarkdown.length > 20_000, `got ${chapterMarkdown.length} chars`);
-    assert.match(chapterMarkdown, /Jordens dynamiske indre: Litosfære/);
+    assert.match(chapterMarkdown, /Inndeling av jorden indre/);
     assert.match(chapterMarkdown, /Wilsonsyklusen/);
     assert.match(chapterMarkdown, /Leka/);
     assert.match(chapterMarkdown, /Sentralt fagvokabular/);

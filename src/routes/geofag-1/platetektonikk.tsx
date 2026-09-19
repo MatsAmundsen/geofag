@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
 import {
   BoundaryOverviewDiagram,
@@ -32,6 +31,14 @@ const tema = gf1Theme("platetektonikk")!;
 const lenke = "text-primary underline-offset-2 hover:underline";
 
 export const Route = createFileRoute("/geofag-1/platetektonikk")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
+  loader: async () => {
+    const { loadChapterPost } = await import("@/lib/chapter-posts");
+    return { post: await loadChapterPost("platetektonikk") };
+  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -43,6 +50,7 @@ export const Route = createFileRoute("/geofag-1/platetektonikk")({
 });
 
 function PlatetektonikkPage() {
+  const { post } = Route.useLoaderData();
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -60,8 +68,8 @@ function PlatetektonikkPage() {
       }}
       kilder={KILDER.platetektonikk}
       posterSlug="platetektonikk"
+      post={post}
     >
-      <AdminEditLink slug="platetektonikk" />
       <Callout title="Kompetansemål i LK20 (Geofag 1)">
         <p>
           Målet for kapittelet er at eleven skal kunne <em>gjøre rede for indre krefter og prosesser, platetektonikk og

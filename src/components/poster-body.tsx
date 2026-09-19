@@ -21,7 +21,7 @@ import { Markdown } from "@/components/markdown";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
-import { injectPosterWidgets, parsePosterMarkdown } from "@/lib/poster-markdown";
+import { injectPosterWidgets, parsePosterMarkdown, stripChapterEditorNotice } from "@/lib/poster-markdown";
 import {
   QUIZ_BOUNDARIES,
   QUIZ_MELTING,
@@ -101,11 +101,14 @@ function PosterWidget({ id }: { id: string }) {
 export function PosterBody({
   children,
   className,
+  cleanChapter,
 }: {
   children: string;
   className?: string;
+  cleanChapter?: boolean;
 }) {
-  const parts = parsePosterMarkdown(injectPosterWidgets(children));
+  const content = cleanChapter ? stripChapterEditorNotice(children) : children;
+  const parts = parsePosterMarkdown(injectPosterWidgets(content));
   return (
     <div className={cn("space-y-4", className)}>
       {parts.map((part, index) =>
