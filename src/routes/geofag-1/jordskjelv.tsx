@@ -293,11 +293,12 @@ function JordskjelvPage() {
       {/* SEKSJON 4: PLATEGRENSER OG DYPE SKJELV */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
-          Plategrenser og dype skjelv: Wadati-Benioff-sonen
+          Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
         </h2>
         <p>
-          Jordskjelv forekommer ikke tilfeldig fordelt utover kloden. De tegner opp de globale plategrensene med
-          forbløffende presisjon. Men fokaldybden (hvor dypt hyposenteret befinner seg) varierer dramatisk med tektonisk regime.
+          Jordskjelv forekommer ikke tilfeldig fordelt utover kloden – de avslører plategrensenes eksakte anatomi og geometri.
+          Ved å kartlegge jordskjelvenes <strong>fokus (hyposenterdybde)</strong> oppdaget de to seismologene Kiyoo
+          Wadati og Hugo Benioff et slående mønster:
         </p>
 
         <BoundaryQuakesDiagram />
@@ -305,24 +306,35 @@ function JordskjelvPage() {
         <div className="grid gap-4 sm:grid-cols-2 pt-2">
           <div className="rounded-xl border border-border bg-card p-4">
             <h4 className="font-semibold text-teal text-sm">Spredningsrygger og transformforkastninger</h4>
-            <p className="mt-2 text-xs text-muted-foreground">
-              Her er litosfæren tynn og astenosfæren varm. Bergarter deformeres plastisk uten sprøe brudd.
-              Jordskjelv er utelukkende grunne <strong>(&lt; 20–25 km dype)</strong>.
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              Midthavsrygger og transformgrenser har <em>utelukkende grunne jordskjelv</em> (typisk &lt; 15–20 km dype).
+              Her er litosfæren tynn og astenosfæren så varm at dypere bergarter deformeres plastisk uten evne til sprøtt brudd.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-4">
             <h4 className="font-semibold text-rose-400 text-sm">Subduksjonssoner (Wadati-Benioff-sonen)</h4>
-            <p className="mt-2 text-xs text-muted-foreground">
-              Her tvinges en kald, stiv oseanisk litosfæreplate dypt ned. Fordi platen er så kald,
-              forblir kjernen sprø helt ned til <strong>670–700 kilometers dyp</strong>! Under 700 km opphører skjelvene
-              fordi mineralene rekrystalliserer til tette faser som deformeres plastisk.
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              Her finner vi et skrått, dyptgående plan av jordskjelv som strekker seg fra dyphavsgropen og helt ned til{" "}
+              <strong>700 kilometers dyp</strong> inn under kontinentet eller øybuen! Dette planet sporer nøyaktig den kalde,
+              sprø havbunnsplaten mens den synker ned i den varme astenosfæren.
             </p>
           </div>
         </div>
 
+        <h3 className="pt-3 font-display text-xl font-medium tracking-tight text-primary">
+          Hvorfor stopper jordskjelvene brått ved 700 kilometers dyp?
+        </h3>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          Under 700 kilometers dyp – ved overgangen til den nedre mantelen – er både det litostatiske overtrykket og
+          temperaturen så høye at silikatkrystallene deformeres plastisk ved <em>dislokasjonskryp</em>. Samtidig har
+          mineralene i den nedsynkende platen gjennomgått faseoverganger til ekstremt tette krystallstrukturer (bridgmanitt
+          og ferroperiklas). Bergartene kan rett og slett ikke lenger lagre elastisk spenning eller sprekke sprøtt;
+          de flyter som seig plastelina. Derfor forekommer det aldri jordskjelv dypere enn 700 km på jorden.
+        </p>
+
         <OrdBoks
           ord="Wadati-Benioff-sone"
-          barn="En skrå sone av dype jordskjelv (helt ned til 700 km) som oppstår inne i en kald havbunnsplate idet den subdueres ned i mantelen under en annen plate."
+          barn="En skrå sone av dype jordskjelv (0–700 km dyp) som oppstår inne i en kald havbunnsplate idet den subdueres ned i mantelen under en annen plate. Planet fungerer som et geologisk røntgenbilde av subduksjonsgeometrien."
         />
       </section>
 

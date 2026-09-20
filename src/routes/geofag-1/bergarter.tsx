@@ -43,8 +43,8 @@ function BergarterPage() {
         label: "Forrige: Jordskjelv og tsunamier",
       }}
       next={{
-        to: "/geofag-1/landformer",
-        label: "Neste: Landformer og geomorfologi",
+        to: "/geofag-1/norges-geologi",
+        label: "Neste: Norges geologiske historie",
       }}
       kilder={KILDER.bergarter}
     >

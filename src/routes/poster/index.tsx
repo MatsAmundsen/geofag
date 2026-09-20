@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { GUEST_CMS, getCmsStatus } from "@/lib/cms";
-import { listPosts } from "@/lib/posts";
+import { listPosts, type Post } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/poster/")({
@@ -38,7 +38,8 @@ function PostsIndex() {
   const navigate = Route.useNavigate();
   const router = useRouter();
   const [newSlug, setNewSlug] = useState("");
-  const visible = cms.allowed ? posts : posts.filter((p) => p.published === 1);
+  const postList = posts as Post[];
+  const visible = cms.allowed ? postList : postList.filter((p: Post) => p.published === 1);
 
   function onCreate(e: React.FormEvent) {
     e.preventDefault();

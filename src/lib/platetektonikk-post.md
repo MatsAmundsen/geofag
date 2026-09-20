@@ -8,7 +8,7 @@ Kjerneelementer som dekkes i dette kapittelet:
 
 • Plategrenser og landskapsutvikling: Divergente, konvergente og transforme grenser samt Wilsonsyklusen.
 
-• Norge i platetektonisk lys: Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og postglasial landheving.
+• Geodynamiske modeller: Dekompresjons- og flukssmelting, litosfærens kretsløp fra rifting til kollisjon.
 
 ## Platetektonikk
 
@@ -217,77 +217,27 @@ En midthavsrygg er aldri en rett, uavbrutt linje. Den er delt opp i forskjøvede
 
 - Inaktiv bruddsone (fracture zone, utenfor ryggaksen): Utenfor spredningsaksene strekker forkastningssprekken seg tusenvis av kilometer videre over havbunnen som et dypt arr i batymetrien. Men her beveger havbunnen på begge sider av sprekken seg i nøyaktig samme retning med nøyaktig samme hastighet! Det er null relativ platebevegelse, ingen friksjon og følgelig ingen jordskjelv. Bruddsonene er aseismiske «arr» som bevarer historien om tidligere tiders transformbevegelser.
 
-## Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
-
-Jordskjelv er ikke jevnt fordelt over jorden – de avslører plategrensenes eksakte anatomi. Ved å kartlegge jordskjelvenes fokus (hyposenterdybde) oppdaget de to seismologene Kiyoo Wadati og Hugo Benioff et slående mønster:
-
-- Midthavsrygger og transformgrenser: Har utelukkende grunne jordskjelv (< 15–20 km dyp). Litosfæren ved midthavsryggen er så varm og tynn at dypere bergarter oppfører seg plastisk i stedet for å brekke sprøtt.
-
-- Subduksjonssoner (Wadati-Benioff-sonen): Viser et skrått plan av jordskjelv som strekker seg fra dyphavsgropen og helt ned til 700 kilometers dyp inn under kontinentet! Dette planet sporer nøyaktig den kalde, sprø havbunnsplaten mens den synker ned i den varme astenosfæren.
-
-Hvorfor stopper jordskjelvene brått ved 700 km dyp?
-
-Under 700 kilometers dyp – ved overgangen til den nedre mantelen – er både omgivelsestrykket og temperaturen så høye at silikatkrystallene deformeres plastisk ved dislokasjonskryp. Bergartene kan rett og slett ikke lagre elastisk spenning eller sprekke sprøtt lenger; de flyter som varm plastelina. Derfor forekommer det aldri jordskjelv dypere enn 700 km på jorden.
-
-## Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
-
-Husk tilbake til tverrsnittet og analysen av midthavsryggen tidligere i kapittelet: Der så vi putelava på toppen, en sverm av sprekker med loddrette basaltganger, og et magmakammer med gabbro som hvilte på mantelen. Hvordan kan vi vite alt dette med sikkerhet når havbunnen befinner seg under flere tusen meter med stummende mørkt vann?
-
-Svaret ligger i ofiolitter: sjeldne geologiske hendelser der biter av havbunnsskorpe og øvre mantel ikke har blitt subdusert og ødelagt, men derimot skjøvet opp på tørt land under en fjellkjedekollisjon (et fenomen kalt obduksjon, Furnes et al., 1988). En ofiolitt er med andre ord et komplett, fossilt stykke havbunn som er hevet på land og veltet over ende, slik at geologer i dag kan spasere tvers gjennom hele lagdelingen — fra dyphavssedimenter ned til selve mantelen — til fots!
-
-Ved den berømte Penrose-konferansen i 1972 definerte geologene den klassiske ofiolitt-stratigrafien, som representerer et komplett vertikalt tverrsnitt gjennom oseanisk litosfære:
-
-- Pelagiske sedimenter (øverst): Tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt (dannet av mikroskopiske kiselalger).
-
-- Putelava (pillow basalt): 0,5–1,5 km tykt lag med glassaktige lavaputer som vitner om vulkanske utbrudd direkte under vann.
-
-- Plateformede basaltganger (sheeted dykes): Et unikt 1–2 km tykt kompleks av loddrette, parallelle basaltganger («gang-i-gang») som viser hvordan midthavsryggen kontinuerlig sprekker opp og fylles med ny magma.
-
-- Gabbro (isotrop og lagdelt): 2–4 km tykt lag av grovkornet dypbergart dannet i det aksiale magmakammeret under midthavsryggen. Nederst danner tunge krystaller rytmiske lag (lagdelt gabbro).
-
-- Petrologisk Moho: Selve grenseflaten mellom skorpen (gabbro) og den underliggende mantelen (peridotitt).
-
-- Mantel-litosfære (nederst): Rester av øvre mantel bestående av peridotitt (dunitt og harzburgitt) som er utsmeltet for basaltkomponenter. Ved kontakt med sjøvann omdannes peridotitt til den vakre, grønne eller gyllenbrune bergarten serpentinitt.
-
-![Norges geologiske nasjonalmonument: Leka ofiolittkompleks](/images/geo-ofiolitt-leka.jpg)
-
-*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!*
-
 ## Interaktiv geodynamisk modell: Utforsk plategrensene
 
-Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på jordskjelvfokus (legg merke til hvordan Wadati-Benioff-sonen tegnes opp i subduksjonsmodus), og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting:
+Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på jordskjelvfokus, og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting:
 
-## Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp
+## Wilsonsyklusen: Havbassengenes liv og død
 
-Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest imponerende vulkaner – som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater.
+I 1966 stilte den kanadiske geofysikeren J. Tuzo Wilson et fundamentalt spørsmål i en berømt Nature-artikkel: «Did the Atlantic close and then re-open?» (Wilson, 1966). Svaret var et rungende ja.
 
-I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære «hotspots» (varmeflekker) dypt i mantelen. Senere viste Jason Morgan at hotspots er overflateuttrykket for mantelplymer: smale søyler av overopphetet bergart som stiger helt fra D''-laget (kjerne-mantel-grensen på 2900 km dyp).
+Jordens overflate gjennomgår en syklisk prosess over 400 til 600 millioner år, kalt Wilsonsyklusen. Et superkontinent samler all kontinental skorpe på én flate. Fordi kontinental skorpe fungerer som et varmeisolerende teppe over mantelen, samles det opp overskuddsvarme under superkontinentet. Mantelen begynner å bule opp, kontinentet sprekker i en riftdal, og et nytt havbasseng åpner seg. Etter hvert avkjøles havbunnen, blir tung, begynner å subduere langs passive marginer som omdannes til aktive subduksjonssoner, og havet lukkes igjen inntil kontinentene kolliderer i et nytt superkontinent.
 
-Fordi mantelplymen er forankret så dypt, står den praktisk talt stille over geologisk tid. Mens litosfæreplaten glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
+### Atlanterhavet: Modent vekststadium
 
-- Hawaii-Emperor-ryggen: Den aktive vulkanen (Kilauea og Mauna Loa) ligger rett over hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene: Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
+Atlanterhavet utvider seg kontinuerlig med 2–2,5 cm i året fra Den midtatlantiske ryggen. Havbassenget er omkranset av passive kontinentalmarginer (uten subduksjon eller dype groper). Havet vokser fremdeles.
 
-- Den berømte 47 Ma-bøyen: For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått endret bevegelsesretning!
+### Stillehavet: Avtagende stadium
 
-- Island – en unik kombinasjon: Island er spesiell fordi en kraftig mantelplym ligger nøyaktig under Den midtatlantiske ryggen. Kombinasjonen av dekompresjonssmelting fra ryggspredningen og ekstraordinær termisk oppvarming fra plymen har produsert så enorme mengder basalt at skorpen her er over 35–40 km tykk, og rager høyt over havoverflaten.
-
-### Wilsonsyklusen: Havbassengenes liv og død
-
-I 1966 stilte Tuzo Wilson et fundamentalt spørsmål i en berømt Nature-artikkel: «Did the Atlantic close and then re-open?» (Wilson, 1966). Svaret var et rungende ja.
-
-Jordens overflate gjennomgår en syklisk prosess over 400 til 600 millioner år, kalt Wilsonsyklusen. Et superkontinent samler all kontinental skorpe på én flate. Fordi kontinental skorpe fungerer som et varmeisolerende teppe over mantelen, samles det opp overskuddsvarme under superkontinentet. Mantelen begynner å bule opp, kontinentet sprekker i en riftdal, og et nytt havbasseng åpner seg. Etter hvert avkjøles havbunnen, blir tung, begynner å subduere, og havet lukkes igjen inntil kontinentene kolliderer i et nytt superkontinent.
-
-#### Atlanterhavet: Modent vekststadium
-
-#### Stillehavet: Avtagende stadium
+Stillehavet er omkranset av subduksjonssoner («Ildringen»). Her slukes gammel, tung havbunn ned i mantelen raskere enn spredningsryggene klarer å produsere ny havbunnsskorpe. Stillehavsbassenget krymper.
 
 ![Wilsonsyklusens 6 stadier: Superkontinentenes kretsløp i 3D](/images/geo-wilsonsyklus-3d.jpg)
 
 *J. Tuzo Wilsons modell beskriver hvordan havbassenger fødes, utvides, lukkes og forsvinner i en syklus på 400–600 millioner år (Wilson, 1966). 1: Embryonisk stadium (kontinental riftdal, f.eks. Øst-Afrika). 2: Ungt stadium (smalt havbasseng med begynnende midthavsrygg, Rødehavet). 3: Modent stadium (vidt hav med passive marginer, Atlanterhavet). 4: Avtagende stadium (subduksjonssoner spiser opp havbunnen, Stillehavet). 5: Sluttstadium/terminalt (smalt, lukket hav med kollisjonsfronter, Middelhavet). 6: Suturstadium (kontinentkollisjon og høyfjellskjede, f.eks. Himalaya og oldtidens Kaledonider).*
-
-## Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi
-
-Norge ligger i dag midt inne på Den eurasiske kontinentalplaten, tusenvis av kilometer fra aktive subduksjonssoner og plategrenser. Grensen i vest er Den midtatlantiske ryggen ute i Norskehavet. Likevel er hele det norske landskapet formet av fortidens dramatiske platetektoniske hendelser (Ramberg et al., 2008):
 
 ## Sentralt fagvokabular
 
@@ -315,25 +265,17 @@ Norge ligger i dag midt inne på Den eurasiske kontinentalplaten, tusenvis av ki
 
 - **bruddsone:** inaktiv, aseismisk forlengelse av en transformforkastning utenfor spredningsryggene
 
-- **Wadati-Benioff:** skrått seismisk plan av jordskjelv (0–700 km dyp) som sporer den synkende platen
-
 - **seismisk tomografi:** 3D-avbildning av jordens indre mantelstruktur ved hjelp av milliarder av seismiske bølgehastighetsmålinger
-
-- **ofiolitt:** komplett tverrsnitt av havbunnsskorpe og øvre mantel obdusert på land (f.eks. Leka)
-
-- **obduksjon:** overkjøring der tung havbunn unntaksvis skyves opp på lett kontinental skorpe i kollisjon
 
 - **paleomagnetisme:** symmetriske striper med magnetisk reversering i havbunnen (Vine-Matthews-Morley)
 
-- **hotspot:** mantelplym fra kjerne-mantel-grensen (D'') som brenner vulkankjeder (f.eks. Hawaii)
-
 - **Wilsonsyklus:** syklisk åpning og lukking av verdenshav over 400–600 mill. år (superkontinenter)
 
-- **skyvedekke:** store bergflak overskjøvet hundrevis av km under kontinentkollisjon (Kaledonidene)
+- **rift:** innsunket forkastningssone der en tektonisk plate sprekker opp (f.eks. Øst-Afrika)
 
-- **graben:** innsunket forkastningsblokk i en kontinental riftdal (f.eks. Øst-Afrika, Oslofeltet)
+- **orogenese:** fjellkjededannelse forårsaket av tektonisk kollisjon og jordskorpeforkortelse
 
-- **isostasi:** litosfærens flytelikevekt på astenosfæren; landheving etter istidens istrykk
+- **sutur:** grenselinjen der to kontinentale plater har smeltet sammen etter at et havbasseng er lukket
 
 ## Test deg selv
 
@@ -343,8 +285,8 @@ Norge ligger i dag midt inne på Den eurasiske kontinentalplaten, tusenvis av ki
 
 - Slab pull er hovedmotoren: Oseanisk litosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker hele platen med seg (~90 % av kraften).
 
-- Smelting krever en utløsende mekanisme: Trykkfall (dekompresjon) ved midthavsrygger, tilførsel av vann (flukssmelting) ved subduksjonssoner, eller temperaturøkning ved dype mantelplymer (hotspots).
+- Smelting krever en utløsende mekanisme: Trykkfall (dekompresjon) ved midthavsrygger og tilførsel av vann (flukssmelting) ved subduksjonssoner.
 
-- Ofiolitter er havbunn på land: Leka i Trøndelag gir en enestående mulighet til å studere hele havbunnsskorpen og Moho-grenseflaten til fots.
+- Plategrensene styrer geodynamikken: Divergente grenser skaper ny havbunn, konvergente grenser resirkulerer litosfære og bygger fjell, og transforme grenser avlaster sideveis spenning.
 
-- Norges geologi er skapt av platetektonikk: Fra den kaledonske kollisjonen og Leka-ofiolitten, via permisk riftdannelse i Oslofeltet, til åpningen av Nord-Atlanteren og dagens postglasiale landheving.
+- Wilsonsyklusen styrer superkontinentene: Verdenshav åpnes og lukkes i sykluser på 400–600 millioner år i en evig runddans av rifting, spredning og orogenese.

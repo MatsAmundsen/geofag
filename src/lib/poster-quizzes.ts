@@ -57,16 +57,16 @@ export const QUIZ_BOUNDARIES: QuizQuestion[] = [
 
 export const QUIZ_OFIOLITT_WILSON: QuizQuestion[] = [
   {
-    prompt: "Hva er en ofiolitt (som på Leka), og hvorfor er den av så enorm vitenskapelig verdi?",
+    prompt: "Hva kjennetegner suturstadiet (orogenese) i Wilsonsyklusen?",
     options: [
-      "En ofiolitt er et komplett fossil av et forhistorisk havdyr fra silurtiden.",
-      "En ofiolitt er et komplett stykke havbunnsskorpe og øvre mantel som er skjøvet opp på land (obdusert), slik at hele lagdelingen ned til Moho kan studeres til fots.",
-      "En ofiolitt er et meteorittkrater fylt med basaltisk lava.",
-      "En ofiolitt er et magmakammer under en aktiv vulkan.",
+      "Kontinentet sprekker opp og danner en langstrakt riftdal med innsjøer.",
+      "To kontinentalplater kolliderer etter at havbunnen er fullstendig subdusert; jordskorpen forkortes og fortykkes til en mektig fjellkjede.",
+      "Havbunnen utvider seg med 2–10 cm i året fra en sentral midthavsrygg.",
+      "En mantelplym brenner hull gjennom litosfæren og bygger en rekke av vulkanske øyer.",
     ],
     answer: 1,
     explain:
-      "Riktig! Ofiolitter (som Leka i Trøndelag) oppstår når havbunnsskorpe under spesielle tektoniske kollisjoner unntaksvis skyves opp på land i stedet for å subduere. Det gir geologer et unikt vindu til havbunnens og mantelens dype lagdeling.",
+      "Riktig! I suturstadiet (som i dagens Himalaya og oldtidens Kaledonider) har havbassenget lukket seg helt. Den lette kontinentale skorpen kan ikke subdueres, og kollisjonen folder og stabler jordskorpen i mektige skyvedekker og fjellkjeder langs suturlinjen.",
   },
   {
     prompt:
@@ -109,16 +109,16 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
       "Riktig! Geodynamiske målinger viser at slab pull står for om lag 90 % av bevegelseskraften. Tetthetsøkningen ved faseovergang til eklogitt trekker hele platen etter seg.",
   },
   {
-    prompt: "Hvorfor er Leka i Trøndelag kåret til Norges geologiske nasjonalmonument?",
+    prompt: "Hva er den grunnleggende forskjellen mellom dekompresjonssmelting og flukssmelting?",
     options: [
-      "Fordi det er landets eneste aktive vulkan.",
-      "Fordi en komplett bit av Iapetushavets bunn og øvre mantel ble skjøvet på land under Kaledonidene (ofiolitt), slik at man kan gå tørrskodd over Moho-grensen.",
-      "Fordi Norges eldste meteorittkrater ligger der.",
-      "Fordi det er det eneste stedet i Europa med permafrost.",
+      "Dekompresjonssmelting skjer bare i kjernen, mens flukssmelting skjer i atmosfæren.",
+      "Dekompresjonssmelting skjer ved trykkfall når varm mantel stiger (ved midthavsrygger), mens flukssmelting skjer når vann fra en subdusert plate senker smeltetemperaturen i mantelkilen.",
+      "Dekompresjonssmelting krever ekstern oppvarming fra meteorittnedslag, mens flukssmelting skjer spontant i granitt.",
+      "Det er ingen forskjell; begge prosessene krever at temperaturen stiger til over 5000 °C.",
     ],
     answer: 1,
     explain:
-      "Riktig! Leka ofiolittkompleks er et geologisk verdensfenomen der obduksjon bevarte hele lagrekken fra mantelperidotitt, over Moho, og opp til lagdelt gabbro og putelava.",
+      "Riktig! Dekompresjonssmelting drives av trykkavlastning under midthavsrygger og rifter uten tilførsel av ny varme. Flukssmelting drives av vann og flyktige stoffer som frigjøres fra den synkende havbunnsplaten og senker peridotittens solidus.",
   },
   {
     prompt:
@@ -146,39 +146,39 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
       "Riktig! Da havbunnen spredte seg og størknet, frøs magnetittmineralene inn jordas vekslende magnetfelt som et gigantisk symmetrisk båndopptak.",
   },
   {
-    prompt: "Hvorfor finnes det aldri jordskjelv dypere enn 700 kilometer i Wadati-Benioff-sonen?",
+    prompt: "Hva oppstår når to oseaniske plater konvergerer (kolliderer)?",
     options: [
-      "Fordi platen fordamper fullstendig når den når 700 km dyp.",
-      "Fordi trykk og temperatur i mantelen under 700 km gjør bergartene fullstendig plastiske; de kan ikke lenger lagre elastisk spenning eller sprekke sprøtt.",
-      "Fordi seismometrene på overflaten ikke klarer å registrere bølger fra større dyp.",
-      "Fordi den flytende ytre kjernen starter ved 700 km dyp.",
+      "En enorm kontinental riftdal med ferskvannsinnsjøer.",
+      "Den eldste og tetteste havbunnsplaten subduerer, og det dannes en dyphavsgrop og en vulkansk øybue (f.eks. Marianene eller Japan).",
+      "Det dannes en passiv margin uten noen form for seismisk aktivitet.",
+      "Begge platene smelter momentant og danner en ny kontinental kraton.",
     ],
     answer: 1,
     explain:
-      "Riktig! Under 700 km dybde fører høyt trykk og høy temperatur til at bergartene deformeres kontinuerlig ved plastisk flyt (dislokasjonskryp). Uten sprøtt brudd oppstår ingen jordskjelv.",
+      "Riktig! Ved oseanisk-oseanisk konvergens vil den eldste, kaldeste og dermed tetteste litosfæreplaten presses ned i subduksjon. Resultatet er en dyp grop og en buet kjede av vulkanske øyer (øybue).",
   },
   {
-    prompt: "Hva var den kaledonske fjellkjedefoldingen i Norges geologiske historie?",
+    prompt: "Hvorfor begynner gammel havbunnsskorpe til slutt å subduere av seg selv i Wilsonsyklusen?",
     options: [
-      "En oppsprekking av Norge i perm da Oslofeltet sank inn.",
-      "En kontinent-kontinent-kollisjon i silur der Baltika og Laurentia kolliderte, lukket Iapetushavet og skjøv store skyvedekker over landet.",
-      "En istidsepoke for 10 000 år siden som gravde ut de norske fjordene.",
-      "Dannelsen av Jan Mayen og Beerenberg-vulkanen.",
+      "Fordi havvannet gjør skorpen magnetisk frastøtende.",
+      "Fordi litosfæren avkjøles og tykner over titalls millioner år, slik at den til slutt blir tettere enn den underliggende astenosfæren.",
+      "Fordi månen drar i sedimentene på havbunnen.",
+      "Fordi midthavsryggene slutter å eksistere etter 10 millioner år.",
     ],
     answer: 1,
     explain:
-      "Riktig! Kaledonidene oppsto for 430–400 mill. år siden da Iapetushavet lukket seg og Baltika kolliderte med Grønland/Amerika. Skyvedekkene i Jotunheimen er rester av denne fjellkjeden.",
+      "Riktig! Mens litosfæren beveger seg bort fra midthavsryggen, avkjøles den fra toppen og underfra. Litosfæren tykner og tettheten øker. Etter ca. 20–30 millioner år er oseanisk litosfære tettere enn astenosfæren den hviler på, og blir ustabil overfor subduksjon.",
   },
   {
-    prompt: "Hvorfor kan marin leire finnes opptil 220 meter over dagens havnivå på Østlandet (marin grense)?",
+    prompt: "Hvordan virker drivkraften «ridge push» (ryggtrykk)?",
     options: [
-      "Fordi havet under istiden sto 220 meter høyere globalt på grunn av voldsom nedbør.",
-      "Fordi den 3 km tykke innlandsisen presset litosfæren ned; da isen smeltet, hevet landet seg raskere enn havet (glasial isostasi).",
-      "Fordi tsunamibølger kastet leiren opp i fjellsidene.",
-      "Fordi Oslofeltets vulkaner slynget leire opp i høyden under perm.",
+      "Magma presses ut som fra en sprøyte og dytter kontinentene sideveis.",
+      "Det er en gravitasjonsglidning der den hevede, varme midthavsryggen (2–3 km over dyphavssletten) sklir nedover skråningen under egen vekt.",
+      "Bølger på havoverflaten dytter mot vulkantoppene.",
+      "Kontinentene suger til seg havbunnsskorpen ved elektrostatisk tiltrekning.",
     ],
     answer: 1,
     explain:
-      "Riktig! Glasial isostasi: Isens enorme vekt trykket litosfæren ned i astenosfæren. Da isen forsvant, hevet landet seg med opptil flere hundre meter, slik at gammel havbunn i dag ligger som fruktbart jordbruksland langt over havnivå.",
+      "Riktig! Midthavsryggene rager 2–3 km høyere enn dyphavsslettene på grunn av termisk oppdrift. Tyngdekraften skaper en horisontal kraftkomponent som får litosfæren til å skli nedover skråningen bort fra ryggen.",
   },
 ];

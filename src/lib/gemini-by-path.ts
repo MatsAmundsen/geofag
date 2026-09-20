@@ -65,9 +65,13 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/tema/milankovitch":
     "Denne siden eier hvorfor isen kommer: Milankovitch, albedo og CO₂. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
   "/geofag-1/platetektonikk":
-    "Denne siden eier platene, drivkreftene og hvor mantelen smelter. Vulkaner og jordskjelv eier utbruddsstil, bølger og magnitude. Skred eier Åknes og Storegga.",
-  "/geofag-1/vulkaner-og-jordskjelv":
-    "Platetektonikk eier platene og smeltemekanismene. Denne siden eier magmaens viskositet, utbrudd, seismiske bølger og norske intraplate-skjelv. Norske flodbølger peker videre til skred.",
+    "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier bølger og Wadati-Benioff. Norges geologi eier Kaledonidene og Oslofeltet.",
+  "/geofag-1/vulkaner":
+    "Denne siden eier magmatyper, viskositet, utbruddsformer og hotspots/mantelplymer. Platetektonikk eier smeltemekanismer og plategrenser.",
+  "/geofag-1/jordskjelv":
+    "Denne siden eier seismiske bølger, seismogrammer, hyposenter/episentrum, magnitude og Wadati-Benioff-sonen. Platetektonikk eier plategrensene.",
+  "/geofag-1/norges-geologi":
+    "Denne siden eier Norges geologiske historie fra urtid til nåtid: Leka-ofiolitten, Kaledonidene, Oslofeltets rift og landhevingen. Bergarter eier mineralklassifisering. Landformer eier kvartær erosjon.",
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import {
   CalderaFormationDiagram,
+  HotspotPlumeDiagram,
   VolcanicHazardsDiagram,
   VolcanoEruptionAnatomyDiagram,
   VolcanoTypesDiagram,
@@ -294,6 +295,54 @@ function VulkanerPage() {
         <OrdBoks
           ord="Kaldera"
           barn="En stor, sirkulær innsynkningsfordypning i jordskorpen (ofte 5–50 km bred) som oppstår når taket over et delvis tømt magmakammer kollapser."
+        />
+      </section>
+
+      {/* SEKSJON: INTRAPLATEVULKANISME OG HOTSPOTS */}
+      <section className="pt-6 space-y-4">
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Intraplatevulkanisme: Hotspots og dype mantelplymer
+        </h2>
+        <p>
+          Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest massive vulkanske strukturer –
+          som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater, tusenvis av kilometer fra nærmeste midthavsrygg
+          eller subduksjonssone.
+        </p>
+        <p>
+          I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære{" "}
+          <strong>«hotspots»</strong> (varmeflekker) dypt i mantelen. Senere påviste Jason Morgan at hotspots er
+          overflateuttrykket for <strong>mantelplymer</strong>: smale søyler av overopphetet bergart som stiger helt fra{" "}
+          <strong>D&apos;&apos;-laget (kjerne-mantel-grensen på 2900 km dyp)</strong>.
+        </p>
+        <p>
+          Fordi mantelplymen er forankret så dypt nede ved jordkjernen, står den tilnærmet i ro over titalls millioner år.
+          Mens litosfæreplaten glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
+        </p>
+
+        <HotspotPlumeDiagram />
+
+        <ul className="list-disc space-y-2 pl-6 text-foreground/90 text-sm">
+          <li>
+            <strong>Hawaii-Emperor-ryggen:</strong> Den aktive vulkanismen (Kilauea og Mauna Loa) ligger rett over
+            hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene:
+            Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
+          </li>
+          <li>
+            <strong>Den berømte 47 Ma-knekken:</strong> For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders
+            knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått
+            endret bevegelsesretning!
+          </li>
+          <li>
+            <strong>Island – en unik kombinasjon:</strong> Island er spesiell fordi en kraftig mantelplym ligger nøyaktig
+            under Den midtatlantiske ryggen. Kombinasjonen av dekompresjonssmelting fra ryggspredningen og ekstraordinær
+            termisk oppvarming fra plymen har produsert så enorme mengder basalt at skorpen her er over 35–40 km tykk,
+            og rager høyt over havoverflaten.
+          </li>
+        </ul>
+
+        <OrdBoks
+          ord="Hotspot (varmeflekk)"
+          barn="Et vulkansk område på jordoverflaten som mates av en oppstigende mantelplym fra jordens dype mantel (D''-laget). Hotspoten står tilnærmet i ro mens litosfæreplaten glir forbi, noe som danner en rekke av vulkanske øyer med økende alder."
         />
       </section>
 
@@ -732,12 +781,27 @@ function VulkanerPage() {
         <Term name="VEI" def="Volcanic Explosivity Index (0–8); logaritmisk skala for utbruddsstyrke basert på utkastet tefravolum og søylehøyde" />
         <Term name="harmonisk tremor" def="kontinuerlig lavfrekvent seismisk resonans (1–5 Hz) skapt av turbulent strømning av magma og gass i sprekker" />
         <Term name="eksolusjon" def="utskilling av oppløst gass fra magma som bittesmå bobler (vesikler) når trykket synker under oppstigning" />
+        <Term name="hotspot" def="vulkansk område på jordoverflaten matet av en dyp mantelplym (f.eks. Hawaii, Yellowstone, Island)" />
+        <Term name="mantelplym" def="smal søyle av overopphetet bergart som stiger fra kjerne-mantel-grensen (D'' på 2900 km dyp)" />
       </TermGrid>
 
       {/* QUIZ */}
       <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">Test deg selv</h2>
       <Quiz
         questions={[
+          {
+            prompt:
+              "Hva er en hotspot (varmeflekk), og hva beviser Hawaii-Emperor-øykjeden med sin 47 Ma-knekk?",
+            options: [
+              "En hotspot er et meteorittkrater; knekken skyldes at en ny meteoritt traff 47 millioner år senere.",
+              "En hotspot er en stasjonær mantelplym fra 2900 km dyp; knekken er et direkte bevis på at litosfæreplaten (Stillehavsplaten) brått endret bevegelsesretning over den stasjonære plymen.",
+              "En hotspot oppstår bare langs subduksjonssoner når en plate brekker i to.",
+              "Knekken på 47 Ma skyldes at jordens magnetfelt byttet polaritet.",
+            ],
+            answer: 1,
+            explain:
+              "Riktig! J. Tuzo Wilson og Jason Morgan viste at dype mantelplymer står tilnærmet i ro. Når Stillehavsplaten gled over Hawaii-hotspoten, ble en perlerad av øyer brent inn i havbunnen, og den 60-graders knekken for 47 Ma siden beviser at platens bevegelsesretning brått endret seg.",
+          },
           {
             prompt:
               "Hvorfor er et utbrudd fra en ryolittisk stratovulkan dramatisk mye mer eksplosivt enn et utbrudd fra en basaltisk skjoldvulkan på Hawaii?",

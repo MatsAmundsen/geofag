@@ -22,6 +22,7 @@ import { Route as Geofag1GeologiskeRessurserRouteImport } from './routes/geofag-
 import { Route as Geofag1JordskjelvRouteImport } from './routes/geofag-1/jordskjelv'
 import { Route as Geofag1JordsystemeneRouteImport } from './routes/geofag-1/jordsystemene'
 import { Route as Geofag1LandformerRouteImport } from './routes/geofag-1/landformer'
+import { Route as Geofag1NorgesGeologiRouteImport } from './routes/geofag-1/norges-geologi'
 import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as Geofag1RessurserOgFeltRouteImport } from './routes/geofag-1/ressurser-og-felt'
 import { Route as Geofag1SkredRouteImport } from './routes/geofag-1/skred'
@@ -120,6 +121,11 @@ const Geofag1JordsystemeneRoute = Geofag1JordsystemeneRouteImport.update({
 const Geofag1LandformerRoute = Geofag1LandformerRouteImport.update({
   id: '/geofag-1/landformer',
   path: '/geofag-1/landformer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1NorgesGeologiRoute = Geofag1NorgesGeologiRouteImport.update({
+  id: '/geofag-1/norges-geologi',
+  path: '/geofag-1/norges-geologi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Geofag1PlatetektonikkRoute = Geofag1PlatetektonikkRouteImport.update({
@@ -296,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/geofag-1/jordskjelv': typeof Geofag1JordskjelvRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/landformer': typeof Geofag1LandformerRoute
+  '/geofag-1/norges-geologi': typeof Geofag1NorgesGeologiRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
@@ -343,6 +350,7 @@ export interface FileRoutesByTo {
   '/geofag-1/jordskjelv': typeof Geofag1JordskjelvRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/landformer': typeof Geofag1LandformerRoute
+  '/geofag-1/norges-geologi': typeof Geofag1NorgesGeologiRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
@@ -391,6 +399,7 @@ export interface FileRoutesById {
   '/geofag-1/jordskjelv': typeof Geofag1JordskjelvRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/landformer': typeof Geofag1LandformerRoute
+  '/geofag-1/norges-geologi': typeof Geofag1NorgesGeologiRoute
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
@@ -440,6 +449,7 @@ export interface FileRouteTypes {
     | '/geofag-1/jordskjelv'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/landformer'
+    | '/geofag-1/norges-geologi'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
@@ -487,6 +497,7 @@ export interface FileRouteTypes {
     | '/geofag-1/jordskjelv'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/landformer'
+    | '/geofag-1/norges-geologi'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
@@ -534,6 +545,7 @@ export interface FileRouteTypes {
     | '/geofag-1/jordskjelv'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/landformer'
+    | '/geofag-1/norges-geologi'
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
@@ -582,6 +594,7 @@ export interface RootRouteChildren {
   Geofag1JordskjelvRoute: typeof Geofag1JordskjelvRoute
   Geofag1JordsystemeneRoute: typeof Geofag1JordsystemeneRoute
   Geofag1LandformerRoute: typeof Geofag1LandformerRoute
+  Geofag1NorgesGeologiRoute: typeof Geofag1NorgesGeologiRoute
   Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
   Geofag1RessurserOgFeltRoute: typeof Geofag1RessurserOgFeltRoute
   Geofag1SkredRoute: typeof Geofag1SkredRoute
@@ -709,6 +722,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/landformer'
       fullPath: '/geofag-1/landformer'
       preLoaderRoute: typeof Geofag1LandformerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/norges-geologi': {
+      id: '/geofag-1/norges-geologi'
+      path: '/geofag-1/norges-geologi'
+      fullPath: '/geofag-1/norges-geologi'
+      preLoaderRoute: typeof Geofag1NorgesGeologiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/platetektonikk': {
@@ -950,6 +970,7 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag1JordskjelvRoute: Geofag1JordskjelvRoute,
   Geofag1JordsystemeneRoute: Geofag1JordsystemeneRoute,
   Geofag1LandformerRoute: Geofag1LandformerRoute,
+  Geofag1NorgesGeologiRoute: Geofag1NorgesGeologiRoute,
   Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
   Geofag1RessurserOgFeltRoute: Geofag1RessurserOgFeltRoute,
   Geofag1SkredRoute: Geofag1SkredRoute,

@@ -56,23 +56,15 @@ const INJECT_RULES: InjectRule[] = [
   { widgets: ["Transform"], beforeHeading: "Geometrisk finesse" },
   {
     widgets: ["QuizBoundaries"],
-    beforeHeading: "Seismisitet og Wadati-Benioff-sonen",
+    beforeHeading: "Interaktiv geodynamisk modell",
   },
   {
     widgets: ["PlateTectonicsModel"],
-    beforeHeading: "Hotspots og Wilsonsyklusen",
-  },
-  {
-    widgets: ["HotspotPlume"],
-    beforeHeading: "Wilsonsyklusen: Havbassengenes liv og død",
+    beforeHeading: "Wilsonsyklusen",
   },
   { widgets: ["WilsonCycle"], beforeImage: "/images/geo-wilsonsyklus-3d.jpg" },
   {
     widgets: ["QuizOfiolittWilson"],
-    beforeHeading: "Norge i et platetektonisk lys",
-  },
-  {
-    widgets: ["NorwayTectonics", "GeoMapNorway"],
     beforeHeading: "Sentralt fagvokabular",
   },
   { widgets: ["QuizTestDegSelv"], afterHeading: "Test deg selv" },

@@ -13,6 +13,7 @@ export const NAV_GF1 = [
   { to: "/geofag-1/vulkaner", label: "Vulkaner" },
   { to: "/geofag-1/jordskjelv", label: "Jordskjelv" },
   { to: "/geofag-1/bergarter", label: "Berg" },
+  { to: "/geofag-1/norges-geologi", label: "Norge" },
   { to: "/geofag-1/landformer", label: "Landform" },
   { to: "/geofag-1/vann-og-flom", label: "Vann" },
   { to: "/geofag-1/skred", label: "Skred" },
@@ -265,7 +266,7 @@ export const GF1_THEMES = [
     image: "/images/gf1-vulkan-jordskjelv.jpg",
     alt: "Snødekt stratovulkan med aske og gassutblåsning",
     blurb:
-      "Magmakjemi, silikatpolymerisering, eksplosivitet og utbruddstyper. Fra rolige lavafontener til plinianske katastrofeutbrudd, overvåking og vulkansk klimaeffekt.",
+      "Magmakjemi, silikatpolymerisering, eksplosivitet, utbruddstyper og intraplatevulkanisme (hotspots). Fra rolige lavafontener til plinianske katastrofeutbrudd, overvåking og vulkansk klimaeffekt.",
     status: "klar" as const,
     maal: "Gjøre rede for årsakene til vulkanisme, forklare sammenhengen mellom magmakjemi og utbruddsstil, og vurdere geofarer, overvåking og samfunnssikkerhet.",
   },
@@ -292,6 +293,18 @@ export const GF1_THEMES = [
       "Mineralogi, silikatstrukturer, de tre bergartsgruppene, Bowens reaksjonsserie, tynnsnitt under polarisasjonsmikroskopi og aldersdatering.",
     status: "klar" as const,
     maal: "Gjøre rede for mineral- og bergartsdannende prosesser, klassifisere vanlige norske bergarter og forklare prinsipper for relativ og radiometrisk datering.",
+  },
+  {
+    slug: "norges-geologi",
+    to: "/geofag-1/norges-geologi",
+    title: "Norges geologiske historie",
+    kicker: "Landet blir til",
+    image: "/images/geo-ofiolitt-leka.jpg",
+    alt: "Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel",
+    blurb:
+      "Fra urtid og Iapetushavets ofiolitter på Leka, til Kaledonidene, Oslofeltets riftdal, Atlanterhavets åpning og landhevingen etter istiden.",
+    status: "klar" as const,
+    maal: "Forstå hvordan norsk natur og geologi er et resultat av global platedynamikk og landformdannende prosesser gjennom geologisk tid.",
   },
   {
     slug: "landformer",

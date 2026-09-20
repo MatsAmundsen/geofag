@@ -41,8 +41,8 @@ function LandformerPage() {
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
-        to: "/geofag-1/bergarter",
-        label: "Forrige: Bergarter og mineraler",
+        to: "/geofag-1/norges-geologi",
+        label: "Forrige: Norges geologiske historie",
       }}
       next={{
         to: "/geofag-1/vann-og-flom",

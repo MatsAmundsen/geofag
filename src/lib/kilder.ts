@@ -289,6 +289,45 @@ export const KILDER = {
       href: "https://doi.org/10.1016/B978-0-08-095975-7.00310-7",
     },
   ],
+  "norges-geologi": [
+    {
+      prefix:
+        "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2008). ",
+      italic: "Landet blir til: Norges geologi",
+      suffix: " (2. utg.). Norsk Geologisk Forening.",
+    },
+    {
+      prefix:
+        "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
+      italic: "Journal of the Geological Society, 145",
+      suffix: "(3), 401–412.",
+      href: "https://doi.org/10.1144/gsjgs.145.3.0401",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
+      italic: "Geologi på land",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/geologi-pa-land",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+      italic: "Marin grense",
+      suffix: ".",
+      href: "https://www.ngu.no/emne/marin-grense",
+    },
+    {
+      prefix: "NORSAR. (u.å.). ",
+      italic: "Jordskjelv i Norge",
+      suffix: ".",
+      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
+    },
+    {
+      prefix: "Norsk Polarinstitutt. (u.å.). ",
+      italic: "Jan Mayen",
+      suffix: ".",
+      href: "https://www.npolar.no/tema/jan-mayen/",
+    },
+  ],
   landformer: [
     {
       prefix: "Gjessing, J. (1978). ",

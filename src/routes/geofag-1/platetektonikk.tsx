@@ -7,8 +7,6 @@ import {
   ConvectionDiagram,
   DecompressionMeltingDiagram,
   EarthLayersDiagram,
-  HotspotPlumeDiagram,
-  NorwayTectonicsHistoryDiagram,
   OceanOceanSubductionDiagram,
   PlatesMapDiagram,
   SolidusDiagram,
@@ -17,7 +15,6 @@ import {
   TransformDiagram,
   WilsonCycleDiagram,
 } from "@/components/diagrams";
-import { GeoMap } from "@/components/geo-map";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
@@ -43,7 +40,7 @@ export const Route = createFileRoute("/geofag-1/platetektonikk")({
     topicHead({
       title: `${tema.title} · Geofag 1`,
       description:
-        "Platetektonikk: Jordens dynamiske skall, drivkrefter (slab pull og ridge push), dekompresjons- og flukssmelting, de tre plategrensene, Wadati-Benioff-sonen, Wilsonsyklusen og Norges geologiske reise.",
+        "Platetektonikk: Jordens dynamiske skall, drivkrefter (slab pull og ridge push), dekompresjons- og flukssmelting, de tre plategrensene og Wilsonsyklusen.",
       path: "/geofag-1/platetektonikk",
     }),
   component: PlatetektonikkPage,
@@ -55,7 +52,7 @@ function PlatetektonikkPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Under føttene våre er jordskorpen i konstant, nådeløs bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og havet fornyes kontinuerlig fra jordas brennende indre. Platetektonikken er geovitenskapens samlende teori: Den forklarer hvorfor fjellkjeder reiser seg mot himmelen, hvorfor jordskjelv ryster kloden, hvorfor magma veller fram fra dypet – og hvorfor Norges dramatisk formede kystlinje og fjellverden ser ut som den gjør i dag."
+      lead="Under føttene våre er jordskorpen i konstant, nådeløs bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og havet fornyes kontinuerlig fra jordas brennende indre. Platetektonikken er geovitenskapens samlende teori: Den forklarer hvorfor fjellkjeder reiser seg mot himmelen, hvorfor jordskjelv ryster kloden, og hvorfor magma veller fram fra dypet i et evig kretsløp."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
@@ -73,14 +70,13 @@ function PlatetektonikkPage() {
       <Callout title="Kompetansemål i LK20 (Geofag 1)">
         <p>
           Målet for kapittelet er at eleven skal kunne <em>gjøre rede for indre krefter og prosesser, platetektonikk og
-          hvilke konsekvenser dette har for jordskorpen og jordoverflaten</em>, samt forstå hvordan norsk natur og
-          geologi er et resultat av denne globale dynamikken.
+          hvilke konsekvenser dette har for jordskorpen og jordoverflaten</em>, samt forstå hvordan platene beveger seg og samvirker i et globalt kretsløp.
         </p>
         <div className="mt-2 text-xs text-muted-foreground space-y-1 border-t border-border/50 pt-2">
           <p><strong>Kjerneelementer som dekkes i dette kapittelet:</strong></p>
           <p>• <em>Jordens indre krefter og prosesser:</em> Litosfære, astenosfære, konveksjon og slab pull som hoveddrivkraft.</p>
           <p>• <em>Plategrenser og landskapsutvikling:</em> Divergente, konvergente og transforme grenser samt Wilsonsyklusen.</p>
-          <p>• <em>Norge i platetektonisk lys:</em> Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og postglasial landheving.</p>
+          <p>• <em>Geodynamiske modeller:</em> Dekompresjons- og flukssmelting, litosfærens kretsløp fra rifting til kollisjon.</p>
         </div>
       </Callout>
 
@@ -651,354 +647,141 @@ function PlatetektonikkPage() {
       />
       </section>
 
-      {/* 6. SEISMISITET OG WADATI-BENIOFF SONEN */}
+      {/* 6. INTERAKTIV MODELL */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
-          Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
+          Interaktiv geodynamisk modell: Utforsk plategrensene
         </h2>
-      <p>
-        Jordskjelv er ikke jevnt fordelt over jorden – de avslører plategrensenes eksakte anatomi. Ved å kartlegge
-        jordskjelvenes <strong>fokus (hyposenterdybde)</strong> oppdaget de to seismologene Kiyoo Wadati og Hugo
-        Benioff et slående mønster:
-      </p>
-      <ul className="list-disc space-y-2 pl-6 text-foreground/90">
-        <li>
-          <strong>Midthavsrygger og transformgrenser:</strong> Har <em>utelukkende grunne jordskjelv</em> (&lt; 15–20 km
-          dyp). Litosfæren ved midthavsryggen er så varm og tynn at dypere bergarter oppfører seg plastisk i stedet for
-          å brekke sprøtt.
-        </li>
-        <li>
-          <strong>Subduksjonssoner (Wadati-Benioff-sonen):</strong> Viser et skrått plan av jordskjelv som strekker
-          seg fra dyphavsgropen og helt ned til <strong>700 kilometers dyp</strong> inn under kontinentet! Dette planet
-          sporer nøyaktig den kalde, sprø havbunnsplaten mens den synker ned i den varme astenosfæren.
-        </li>
-      </ul>
-      <p>
-        Hvorfor stopper jordskjelvene brått ved 700 km dyp?
-      </p>
-      <p>
-        Under 700 kilometers dyp – ved overgangen til den nedre mantelen – er både omgivelsestrykket og temperaturen
-        så høye at silikatkrystallene deformeres plastisk ved dislokasjonskryp. Bergartene kan rett og slett ikke
-        lagre elastisk spenning eller sprekke sprøtt lenger; de flyter som varm plastelina. Derfor forekommer det
-        aldri jordskjelv dypere enn 700 km på jorden.
-      </p>
+        <p>
+          Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på
+          jordskjelvfokus, og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting:
+        </p>
+
+        <PlateTectonicsModel />
       </section>
 
-      {/* 7. OFIOLITT-KOMPLEKSET OG LEKA */}
+      {/* 7. WILSONSYKLUSEN */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
-          Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
+          Wilsonsyklusen: Havbassengenes liv og død
         </h2>
-      <p>
-        Husk tilbake til tverrsnittet og analysen av midthavsryggen tidligere i kapittelet: Der så vi putelava på toppen,
-        en sverm av sprekker med loddrette basaltganger, og et magmakammer med gabbro som hvilte på mantelen.
-        Hvordan kan vi vite alt dette med sikkerhet når havbunnen befinner seg under flere tusen meter med stummende mørkt vann?
-      </p>
-      <p>
-        Svaret ligger i <strong>ofiolitter</strong>: sjeldne geologiske hendelser der biter av havbunnsskorpe
-        og øvre mantel ikke har blitt subdusert og ødelagt, men derimot skjøvet opp på tørt land under en fjellkjedekollisjon
-        (et fenomen kalt <strong>obduksjon</strong>, Furnes et al., 1988). En ofiolitt er med andre ord et komplett,
-        fossilt stykke havbunn som er hevet på land og veltet over ende, slik at geologer i dag kan spasere tvers gjennom
-        hele lagdelingen — fra dyphavssedimenter ned til selve mantelen — til fots!
-      </p>
-      <p>
-        Ved den berømte Penrose-konferansen i 1972 definerte geologene den klassiske <strong>ofiolitt-stratigrafien</strong>,
-        som representerer et komplett vertikalt tverrsnitt gjennom oseanisk litosfære:
-      </p>
-      <ol className="list-decimal space-y-2 pl-6 text-foreground/90">
-        <li>
-          <strong>Pelagiske sedimenter (øverst):</strong> Tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt
-          (dannet av mikroskopiske kiselalger).
-        </li>
-        <li>
-          <strong>Putelava (pillow basalt):</strong> 0,5–1,5 km tykt lag med glassaktige lavaputer som vitner om
-          vulkanske utbrudd direkte under vann.
-        </li>
-        <li>
-          <strong>Plateformede basaltganger (sheeted dykes):</strong> Et unikt 1–2 km tykt kompleks av loddrette,
-          parallelle basaltganger («gang-i-gang») som viser hvordan midthavsryggen kontinuerlig sprekker opp og fylles med ny magma.
-        </li>
-        <li>
-          <strong>Gabbro (isotrop og lagdelt):</strong> 2–4 km tykt lag av grovkornet dypbergart dannet i det aksiale
-          magmakammeret under midthavsryggen. Nederst danner tunge krystaller rytmiske lag (lagdelt gabbro).
-        </li>
-        <li>
-          <strong>Petrologisk Moho:</strong> Selve grenseflaten mellom skorpen (gabbro) og den underliggende mantelen (peridotitt).
-        </li>
-        <li>
-          <strong>Mantel-litosfære (nederst):</strong> Rester av øvre mantel bestående av <strong>peridotitt</strong> (dunitt
-          og harzburgitt) som er utsmeltet for basaltkomponenter. Ved kontakt med sjøvann omdannes peridotitt til den vakre,
-          grønne eller gyllenbrune bergarten <strong>serpentinitt</strong>.
-        </li>
-      </ol>
+        <p>
+          I 1966 stilte den kanadiske geofysikeren J. Tuzo Wilson et fundamentalt spørsmål i en berømt Nature-artikkel:{" "}
+          <em>«Did the Atlantic close and then re-open?»</em> (Wilson, 1966). Svaret var et rungende ja.
+        </p>
+        <p>
+          Jordens overflate gjennomgår en syklisk prosess over 400 til 600 millioner år, kalt{" "}
+          <strong>Wilsonsyklusen</strong>. Et superkontinent samler all kontinental skorpe på én flate. Fordi kontinental
+          skorpe fungerer som et varmeisolerende teppe over mantelen, samles det opp overskuddsvarme under superkontinentet.
+          Mantelen begynner å bule opp, kontinentet sprekker i en riftdal, og et nytt havbasseng åpner seg. Etter hvert
+          avkjøles havbunnen, blir tung, begynner å subduere langs passive marginer som omdannes til aktive subduksjonssoner,
+          og havet lukkes igjen inntil kontinentene kolliderer i et nytt superkontinent.
+        </p>
 
-      <PhotoFigure
-        src="/images/geo-ofiolitt-leka.jpg"
-        alt="Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel"
-        heading="Norges geologiske nasjonalmonument: Leka ofiolittkompleks"
-        caption="På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!"
-        marks={[
-          { x: 22, y: 72, n: "1", text: "Mantelperidotitt", tone: "warm" },
-          { x: 42, y: 55, n: "2", text: "Moho-grensen", tone: "cold" },
-          { x: 62, y: 42, n: "3", text: "Lagdelt gabbro", tone: "warm" },
-          { x: 80, y: 24, n: "4", text: "Putelava", tone: "cold" },
-        ]}
-        points={[
-          { n: "1", label: "Gulbrun forvitret dunitt og harzburgitt: Dette er selve jordens øvre mantel eksponert i dagslys!" },
-          { n: "2", label: "Petrologisk Moho: Overgangen mellom ultramafisk mantel og mafisk gabbroid jordskorpe." },
-          { n: "3", label: "Lagdelt gabbro: Krystallisasjonsprodukter fra havbunnens aksiale magmakammer for 497 millioner år siden." },
-          { n: "4", label: "Plateformede ganger og putelava som en gang utgjorde havbunnen i Iapetushavet." },
-        ]}
-      />
+        <div className="grid gap-4 sm:grid-cols-2 pt-2">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h4 className="font-semibold text-emerald-500 text-sm">Atlanterhavet: Modent vekststadium</h4>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Atlanterhavet utvider seg kontinuerlig med 2–2,5 cm i året fra Den midtatlantiske ryggen.
+              Havbassenget er omkranset av <strong>passive kontinentalmarginer</strong> (uten subduksjon eller dype groper).
+              Havet vokser fremdeles.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h4 className="font-semibold text-rose-400 text-sm">Stillehavet: Avtagende stadium</h4>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Stillehavet er omkranset av subduksjonssoner («Ildringen»). Her slukes gammel, tung havbunn ned i
+              mantelen raskere enn spredningsryggene klarer å produsere ny havbunnsskorpe. Stillehavsbassenget krymper.
+            </p>
+          </div>
+        </div>
 
-      {/* 7. INTERAKTIV MODELL */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
-        Interaktiv geodynamisk modell: Utforsk plategrensene
-      </h2>
-      <p>
-        Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på
-        jordskjelvfokus (legg merke til hvordan Wadati-Benioff-sonen tegnes opp i subduksjonsmodus), og studer hvordan
-        dekompresjonssmelting skiller seg fra flukssmelting:
-      </p>
+        <WilsonCycleDiagram />
 
-      <PlateTectonicsModel />
+        <PhotoFigure
+          src="/images/geo-wilsonsyklus-3d.jpg"
+          alt="Wilsonsyklusens 6 stadier fra kontinental oppsprekking til havlukking og fjellkjededannelse"
+          heading="Wilsonsyklusens 6 stadier: Superkontinentenes kretsløp i 3D"
+          caption="J. Tuzo Wilsons modell beskriver hvordan havbassenger fødes, utvides, lukkes og forsvinner i en syklus på 400–600 millioner år (Wilson, 1966). 1: Embryonisk stadium (kontinental riftdal, f.eks. Øst-Afrika). 2: Ungt stadium (smalt havbasseng med begynnende midthavsrygg, Rødehavet). 3: Modent stadium (vidt hav med passive marginer, Atlanterhavet). 4: Avtagende stadium (subduksjonssoner spiser opp havbunnen, Stillehavet). 5: Sluttstadium/terminalt (smalt, lukket hav med kollisjonsfronter, Middelhavet). 6: Suturstadium (kontinentkollisjon og høyfjellskjede, f.eks. Himalaya og oldtidens Kaledonider)."
+          marks={[
+            { x: 18, y: 22, n: "1", text: "1: Rifting", tone: "warm" },
+            { x: 48, y: 22, n: "2", text: "2–3: Havspredning", tone: "cold" },
+            { x: 80, y: 22, n: "3", text: "4: Subduksjon", tone: "cold" },
+            { x: 50, y: 75, n: "4", text: "5–6: Kollisjon & Sutur", tone: "warm" },
+          ]}
+          points={[
+            { n: "1", label: "Embryonisk & ungt stadium: Kontinental skorpe tynnes og sprekker opp (riftdal -> Rødehavet)." },
+            { n: "2", label: "Modent stadium: Havbunnsspredning over titalls millioner år skaper brede verdenshav (Atlanterhavet)." },
+            { n: "3", label: "Avtagende stadium: Kald og tung litosfære begynner å subduere langs havets render (Ildringen i Stillehavet)." },
+            { n: "4", label: "Suturstadium: Havbunnen forsvinner fullstendig; kontinentene støter sammen i orogenese (fjellkjededannelse)." },
+          ]}
+        />
+
+        <Quiz
+          questions={[
+            {
+              prompt:
+                "Hva kjennetegner suturstadiet (orogenese) i Wilsonsyklusen?",
+              options: [
+                "Kontinentet sprekker opp og danner en langstrakt riftdal med innsjøer.",
+                "To kontinentalplater kolliderer etter at havbunnen er fullstendig subdusert; jordskorpen forkortes og fortykkes til en mektig fjellkjede.",
+                "Havbunnen utvider seg med 2–10 cm i året fra en sentral midthavsrygg.",
+                "En mantelplym brenner hull gjennom litosfæren og bygger en rekke av vulkanske øyer.",
+              ],
+              answer: 1,
+              explain:
+                "Riktig! I suturstadiet (som i dagens Himalaya og oldtidens Kaledonider) har havbassenget lukket seg helt. Den lette kontinentale skorpen kan ikke subdueres, og kollisjonen folder og stabler jordskorpen i mektige skyvedekker og fjellkjeder langs suturlinjen.",
+            },
+            {
+              prompt:
+                "Hva er den fundamentale forskjellen mellom et modent havstadium (Atlanterhavet) og et avtagende havstadium (Stillehavet) i Wilsonsyklusen?",
+              options: [
+                "Atlanterhavet har ferskvann, mens Stillehavet er salt.",
+                "Atlanterhavet utvider seg og har passive kontinentalmarginer uten subduksjonssoner, mens Stillehavet krymper fordi subduksjonssoner langs randen (Ildringen) sluker havbunn raskere enn den produseres.",
+                "Stillehavet har ingen midthavsrygger, mens Atlanterhavet har mange.",
+                "Wilsonsyklusen gjelder kun for Middelhavet, ikke for store verdenshav.",
+              ],
+              answer: 1,
+              explain:
+                "Riktig! I Wilsonsyklusen er Atlanterhavet et voksende hav med passive kontinentalmarginer, mens Stillehavet er et krympende hav dominert av subduksjonssoner som trekker havbunnsskorpen ned i mantelen.",
+            },
+          ]}
+        />
+
+        <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 space-y-3">
+          <h3 className="font-display text-lg font-bold text-foreground">
+            Utforsk beslektede temaer i egne dybdekapitler
+          </h3>
+          <p className="text-sm text-foreground/90 leading-relaxed">
+            Platetektonikken er det overordnede rammeverket for jordskorpens kretsløp. Spesifikke prosesser og fenomener behandles i dybden i egne kapitler:
+          </p>
+          <ul className="space-y-2 text-sm text-foreground/90">
+            <li>
+              🌋{" "}
+              <Link to="/geofag-1/vulkaner" className={lenke}>
+                <strong>Vulkaner og magmatiske prosesser</strong>
+              </Link>
+              : Magmakjemi, viskositet, utbruddsstiler og <em>intraplatevulkanisme/hotspots</em> (Hawaii, Yellowstone og Island).
+            </li>
+            <li>
+              ⚡{" "}
+              <Link to="/geofag-1/jordskjelv" className={lenke}>
+                <strong>Jordskjelv og tsunamier</strong>
+              </Link>
+              : Seismiske bølger, episenterberegning og <em>Wadati-Benioff-sonens 700 km dybdegrense</em>.
+            </li>
+            <li>
+              🏔️{" "}
+              <Link to="/geofag-1/norges-geologi" className={lenke}>
+                <strong>Norges geologiske historie</strong>
+              </Link>
+              : Den kaledonske kollisjonen, <em>Leka-ofiolitten (havbunn på land)</em>, Oslofeltets graben og postglasial landheving.
+            </li>
+          </ul>
+        </div>
       </section>
 
-      {/* 8. HOTSPOTS OG WILSONSYKLUSEN */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp
-        </h2>
-      <p>
-        Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest imponerende vulkaner –
-        som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater.
-      </p>
-      <p>
-        I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære{" "}
-        <strong>«hotspots»</strong> (varmeflekker) dypt i mantelen. Senere viste Jason Morgan at hotspots er
-        overflateuttrykket for <strong>mantelplymer</strong>: smale søyler av overopphetet bergart som stiger helt fra{" "}
-        <strong>D&apos;&apos;-laget (kjerne-mantel-grensen på 2900 km dyp)</strong>.
-      </p>
-      <p>
-        Fordi mantelplymen er forankret så dypt, står den praktisk talt stille over geologisk tid. Mens litosfæreplaten
-        glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
-      </p>
-      <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
-        <li>
-          <strong>Hawaii-Emperor-ryggen:</strong> Den aktive vulkanen (Kilauea og Mauna Loa) ligger rett over
-          hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene:
-          Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
-        </li>
-        <li>
-          <strong>Den berømte 47 Ma-bøyen:</strong> For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders
-          knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått
-          endret bevegelsesretning!
-        </li>
-        <li>
-          <strong>Island – en unik kombinasjon:</strong> Island er spesiell fordi en kraftig mantelplym ligger nøyaktig
-          under Den midtatlantiske ryggen. Kombinasjonen av dekompresjonssmelting fra ryggspredningen og ekstraordinær
-          termisk oppvarming fra plymen har produsert så enorme mengder basalt at skorpen her er over 35–40 km tykk,
-          og rager høyt over havoverflaten.
-        </li>
-      </ul>
-
-      <HotspotPlumeDiagram />
-
-      <h3 className="pt-6 font-display text-xl font-medium tracking-tight">
-        Wilsonsyklusen: Havbassengenes liv og død
-      </h3>
-      <p>
-        I 1966 stilte Tuzo Wilson et fundamentalt spørsmål i en berømt Nature-artikkel:{" "}
-        <em>«Did the Atlantic close and then re-open?»</em> (Wilson, 1966). Svaret var et rungende ja.
-      </p>
-      <p>
-        Jordens overflate gjennomgår en syklisk prosess over 400 til 600 millioner år, kalt{" "}
-        <strong>Wilsonsyklusen</strong>. Et superkontinent samler all kontinental skorpe på én flate. Fordi kontinental
-        skorpe fungerer som et varmeisolerende teppe over mantelen, samles det opp overskuddsvarme under superkontinentet.
-        Mantelen begynner å bule opp, kontinentet sprekker i en riftdal, og et nytt havbasseng åpner seg. Etter hvert
-        avkjøles havbunnen, blir tung, begynner å subduere, og havet lukkes igjen inntil kontinentene kolliderer i et
-        nytt superkontinent.
-      </p>
-
-      <div className="grid gap-4 sm:grid-cols-2 pt-2">
-        <div className="rounded-xl border border-border bg-card p-4">
-          <h4 className="font-semibold text-emerald-500 text-sm">Atlanterhavet: Modent vekststadium</h4>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Atlanterhavet utvider seg kontinuerlig med 2–2,5 cm i året fra Den midtatlantiske ryggen.
-            Havbassenget er omkranset av <strong>passive kontinentalmarginer</strong> (uten subduksjon eller dype groper).
-            Havet vokser fremdeles.
-          </p>
-        </div>
-        <div className="rounded-xl border border-border bg-card p-4">
-          <h4 className="font-semibold text-rose-400 text-sm">Stillehavet: Avtagende stadium</h4>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Stillehavet er omkranset av subduksjonssoner («Ildringen»). Her slukes gammel, tung havbunn ned i
-            mantelen raskere enn spredningsryggene klarer å produsere ny havbunnsskorpe. Stillehavsbassenget krymper.
-          </p>
-        </div>
-      </div>
-
-      <WilsonCycleDiagram />
-
-      <PhotoFigure
-        src="/images/geo-wilsonsyklus-3d.jpg"
-        alt="Wilsonsyklusens 6 stadier fra kontinental oppsprekking til havlukking og fjellkjededannelse"
-        heading="Wilsonsyklusens 6 stadier: Superkontinentenes kretsløp i 3D"
-        caption="J. Tuzo Wilsons modell beskriver hvordan havbassenger fødes, utvides, lukkes og forsvinner i en syklus på 400–600 millioner år (Wilson, 1966). 1: Embryonisk stadium (kontinental riftdal, f.eks. Øst-Afrika). 2: Ungt stadium (smalt havbasseng med begynnende midthavsrygg, Rødehavet). 3: Modent stadium (vidt hav med passive marginer, Atlanterhavet). 4: Avtagende stadium (subduksjonssoner spiser opp havbunnen, Stillehavet). 5: Sluttstadium/terminalt (smalt, lukket hav med kollisjonsfronter, Middelhavet). 6: Suturstadium (kontinentkollisjon og høyfjellskjede, f.eks. Himalaya og oldtidens Kaledonider)."
-        marks={[
-          { x: 18, y: 22, n: "1", text: "1: Rifting", tone: "warm" },
-          { x: 48, y: 22, n: "2", text: "2–3: Havspredning", tone: "cold" },
-          { x: 80, y: 22, n: "3", text: "4: Subduksjon", tone: "cold" },
-          { x: 50, y: 75, n: "4", text: "5–6: Kollisjon & Sutur", tone: "warm" },
-        ]}
-        points={[
-          { n: "1", label: "Embryonisk & ungt stadium: Kontinental skorpe tynnes og sprekker opp (riftdal -> Rødehavet)." },
-          { n: "2", label: "Modent stadium: Havbunnsspredning over titalls millioner år skaper brede verdenshav (Atlanterhavet)." },
-          { n: "3", label: "Avtagende stadium: Kald og tung litosfære begynner å subduere langs havets render (Ildringen i Stillehavet)." },
-          { n: "4", label: "Suturstadium: Havbunnen forsvinner fullstendig; kontinentene støter sammen i orogenese (fjellkjededannelse)." },
-        ]}
-      />
-
-      <Quiz
-        questions={[
-          {
-            prompt:
-              "Hva er en ofiolitt (som på Leka), og hvorfor er den av så enorm vitenskapelig verdi?",
-            options: [
-              "En ofiolitt er et komplett fossil av et forhistorisk havdyr fra silurtiden.",
-              "En ofiolitt er et komplett stykke havbunnsskorpe og øvre mantel som er skjøvet opp på land (obdusert), slik at hele lagdelingen ned til Moho kan studeres til fots.",
-              "En ofiolitt er et meteorittkrater fylt med basaltisk lava.",
-              "En ofiolitt er et magmakammer under en aktiv vulkan.",
-            ],
-            answer: 1,
-            explain:
-              "Riktig! Ofiolitter (som Leka i Trøndelag) oppstår når havbunnsskorpe under spesielle tektoniske kollisjoner unntaksvis skyves opp på land i stedet for å subduere. Det gir geologer et unikt vindu til havbunnens og mantelens dype lagdeling.",
-          },
-          {
-            prompt:
-              "Hva er den fundamentale forskjellen mellom et modent havstadium (Atlanterhavet) og et avtagende havstadium (Stillehavet) i Wilsonsyklusen?",
-            options: [
-              "Atlanterhavet har ferskvann, mens Stillehavet er salt.",
-              "Atlanterhavet utvider seg og har passive kontinentalmarginer uten subduksjonssoner, mens Stillehavet krymper fordi subduksjonssoner langs randen (Ildringen) sluker havbunn raskere enn den produseres.",
-              "Stillehavet har ingen midthavsrygger, mens Atlanterhavet har mange.",
-              "Wilsonsyklusen gjelder kun for Middelhavet, ikke for store verdenshav.",
-            ],
-            answer: 1,
-            explain:
-              "Riktig! I Wilsonsyklusen er Atlanterhavet et voksende hav med passive kontinentalmarginer, mens Stillehavet er et krympende hav dominert av subduksjonssoner som trekker havbunnsskorpen ned i mantelen.",
-          },
-        ]}
-      />
-      </section>
-
-      {/* 9. NORGES PLATETEKTONISKE REISE */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi
-        </h2>
-      <p>
-        Norge ligger i dag midt inne på <strong>Den eurasiske kontinentalplaten</strong>, tusenvis av kilometer fra
-        aktive subduksjonssoner og plategrenser. Grensen i vest er Den midtatlantiske ryggen ute i Norskehavet.
-        Likevel er hele det norske landskapet formet av fortidens dramatiske platetektoniske hendelser (Ramberg et al.,
-        2008):
-      </p>
-
-      <NorwayTectonicsHistoryDiagram />
-
-      <div className="my-6 space-y-4">
-        <div className="rounded-xl border border-border bg-card p-5">
-          <p className="font-display text-base font-bold text-primary">
-            1. Den kaledonske fjellkjedefoldingen (430–400 millioner år siden)
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-            I silur og devon lukket det opprinnelige Atlanterhavet – <strong>Iapetushavet</strong> – seg i henhold til
-            Wilsonsyklusen. Vårt urgamle kontinent <strong>Baltika</strong> kolliderte frontalt med Nord-Amerika og
-            Grønland (<strong>Laurentia</strong>). Kollisjonen skapte en Himalaya-lignende fjellkjede med tinder på over
-            9000 meter. Enorme flak av havbunn og kontinentalrand ble høvlet av og skjøvet hundrevis av kilometer inn
-            over Norge som <strong>skyvedekker (nappes)</strong>. De karakteristiske toppene i Jotunheimen (som
-            Galdhøpiggen og Glittertind), Rondane og Trollheimen er eroderte rester av disse kaledonske skyvedekkene!
-          </p>
-        </div>
-
-        <div className="rounded-xl border border-border bg-card p-5">
-          <p className="font-display text-base font-bold text-amber-500">
-            2. Oslofeltets dramatiske riftdal i perm (300–250 millioner år siden)
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-            I karbon og perm holdt superkontinentet Pangea på å sprekke opp. En gren av denne oppsprekkingen skar rett inn
-            gjennom Østlandet fra Langesund til Mjøsa. Jordskorpen sank inn som en dyp graben (Oslo-graben), ledsaget av
-            voldsom vulkanisme. Det oppsto enorme sprekkevulkaner som spydde ut den verdenskjente lavaen{" "}
-            <strong>rombeporfyr</strong> (som kun finnes i Oslofeltet, på Mount Erebus i Antarktis og i Øst-Afrika!). I
-            dypet størknet gigantiske magmakamre og ble til prydsteinen <strong>larvikitt</strong> (Norges nasjonalbergart).
-            Riften stoppet opp og ble en «fossil rift», men forkastningslinjene preger fortsatt Oslofjordens geografi.
-          </p>
-        </div>
-
-        <div className="rounded-xl border border-border bg-card p-5">
-          <p className="font-display text-base font-bold text-sky-500">
-            3. Åpningen av Norskehavet og Jan Mayen (55 millioner år siden til i dag)
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-            I tidlig tertiær (eocen) sprakk litosfæren mellom Norge og Grønland fullstendig opp. Nord-Atlanteren åpnet
-            seg, og Norge fikk en <strong>passiv kontinentalmargin</strong>. Elver og isbreer fra fastlandet eroderte
-            fjellene og avsatte kilometertykke lag med sand og leire på kontinentalsokkelen – bergartslag som i dag er
-            kilde- og reservoarbergarter for Norges olje- og gassrikdom. Lenger ute i havet, på spredningsryggen, ligger
-            vulkanøya <strong>Jan Mayen</strong> med Beerenberg (2277 moh.) – Norges eneste aktive vulkan over havnivå
-            (Norsk Polarinstitutt, u.å.).
-          </p>
-        </div>
-
-        <div className="rounded-xl border border-border bg-card p-5">
-          <p className="font-display text-base font-bold text-emerald-500">
-            4. Glasial isostasi: Landet som reiser seg etter isen
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-            Under siste istid hvilte en opptil 3 kilometer tykk iskappe over Skandinavia. Den kolossale vekten trykket
-            den faste litosfæren ned i astenosfæren med opptil 800 meter! Da isen smeltet bort for ca. 10 000 år siden,
-            begynte litosfæren å sprette opp igjen i henhold til <strong>isostasi</strong> (Archimedes&apos; lov for
-            jordskorpen). Havet flommet først inn over det nedtrykte landet og avsatte saltvannsleire. Da landet hevet
-            seg opptil 220 meter (<strong>marin grense</strong>, NGU, u.å.-b), ble denne marine leiren tørt land – og ga
-            opphav til Norges fruktbare jordbruksbygder på Romerike, i Trøndelag og i Vestfold, men også faren for{" "}
-            <Link to="/geofag-1/skred" className={lenke}>
-              kvikkleireskred
-            </Link>
-            . Oslo hever seg fortsatt med ca. 4 mm per år, og spenningene etter landhevingen utløser jevnlig{" "}
-            <strong>intraplate-jordskjelv</strong> i Rana, på Vestlandet og i Oslofjorden (NORSAR, u.å.).
-          </p>
-        </div>
-      </div>
-
-      <GeoMap
-        center={[65, -3]}
-        zoom={4}
-        markers={[
-          {
-            lat: 64.2558,
-            lng: -21.131,
-            label: "Þingvellir (Island) – Synlig spredningsrift i Den midtatlantiske ryggen",
-          },
-          {
-            lat: 71.0,
-            lng: -8.5,
-            label: "Jan Mayen (Beerenberg) – Norges eneste aktive vulkan på ryggsystemet",
-          },
-          {
-            lat: 59.91,
-            lng: 10.75,
-            label: "Oslofeltet – Permisk innsunket riftdal med rombeporfyr og larvikitt",
-          },
-          {
-            lat: 61.63,
-            lng: 8.31,
-            label: "Jotunheimen – Kaledonsk skyvedekke (nappe) overskjøvet under Iapetus-lukkingen",
-          },
-        ]}
-        heading="Geodynamiske nøkkelsteder i Norges nærområde"
-        caption="Kartet viser sentrale geologiske lokaliteter: Den aktive spredningsaksen på Island og Jan Mayen, den kaledonske fjellkjederoten i Jotunheimen, og den permiske riftdalen i Oslofeltet."
-      />
-      </section>
-
-      {/* 10. BEGREPER OG SAMMENDRAG */}
+      {/* 8. BEGREPER OG SAMMENDRAG */}
       <h2 className="font-display text-2xl font-medium tracking-tight">Sentralt fagvokabular</h2>
       <TermGrid>
         <Term name="litosfære" def="skorpe + stiv øvre mantel (0–100/250 km) som utgjør de tektoniske platene" />
@@ -1013,19 +796,15 @@ function PlatetektonikkPage() {
         <Term name="bakbuebasseng" def="ekstensjonsbasseng dannet bak en vulkanbue på grunn av slab rollback (f.eks. Japanhavet)" />
         <Term name="passiv margin" def="kontinentalmargin inne på en plate uten subduksjon eller jordskjelvaktivitet (f.eks. norskekysten); fungerer som en mektig sedimentfelle" />
         <Term name="bruddsone" def="inaktiv, aseismisk forlengelse av en transformforkastning utenfor spredningsryggene" />
-        <Term name="Wadati-Benioff" def="skrått seismisk plan av jordskjelv (0–700 km dyp) som sporer den synkende platen" />
         <Term name="seismisk tomografi" def="3D-avbildning av jordens indre mantelstruktur ved hjelp av milliarder av seismiske bølgehastighetsmålinger" />
-        <Term name="ofiolitt" def="komplett tverrsnitt av havbunnsskorpe og øvre mantel obdusert på land (f.eks. Leka)" />
-        <Term name="obduksjon" def="overkjøring der tung havbunn unntaksvis skyves opp på lett kontinental skorpe i kollisjon" />
         <Term name="paleomagnetisme" def="symmetriske striper med magnetisk reversering i havbunnen (Vine-Matthews-Morley)" />
-        <Term name="hotspot" def="mantelplym fra kjerne-mantel-grensen (D'') som brenner vulkankjeder (f.eks. Hawaii)" />
         <Term name="Wilsonsyklus" def="syklisk åpning og lukking av verdenshav over 400–600 mill. år (superkontinenter)" />
-        <Term name="skyvedekke" def="store bergflak overskjøvet hundrevis av km under kontinentkollisjon (Kaledonidene)" />
-        <Term name="graben" def="innsunket forkastningsblokk i en kontinental riftdal (f.eks. Øst-Afrika, Oslofeltet)" />
-        <Term name="isostasi" def="litosfærens flytelikevekt på astenosfæren; landheving etter istidens istrykk" />
+        <Term name="rift" def="innsunket forkastningssone der en tektonisk plate sprekker opp (f.eks. Øst-Afrika)" />
+        <Term name="orogenese" def="fjellkjededannelse forårsaket av tektonisk kollisjon og jordskorpeforkortelse" />
+        <Term name="sutur" def="grenselinjen der to kontinentale plater har smeltet sammen etter at et havbasseng er lukket" />
       </TermGrid>
 
-      {/* 11. QUIZ */}
+      {/* 9. QUIZ */}
       <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">Test deg selv</h2>
       <Quiz
         questions={[
@@ -1054,16 +833,16 @@ function PlatetektonikkPage() {
               "Riktig! Geodynamiske målinger viser at slab pull står for om lag 90 % av bevegelseskraften. Tetthetsøkningen ved faseovergang til eklogitt trekker hele platen etter seg.",
           },
           {
-            prompt: "Hvorfor er Leka i Trøndelag kåret til Norges geologiske nasjonalmonument?",
+            prompt: "Hva er den grunnleggende forskjellen mellom dekompresjonssmelting og flukssmelting?",
             options: [
-              "Fordi det er landets eneste aktive vulkan.",
-              "Fordi en komplett bit av Iapetushavets bunn og øvre mantel ble skjøvet på land under Kaledonidene (ofiolitt), slik at man kan gå tørrskodd over Moho-grensen.",
-              "Fordi Norges eldste meteorittkrater ligger der.",
-              "Fordi det er det eneste stedet i Europa med permafrost.",
+              "Dekompresjonssmelting skjer bare i kjernen, mens flukssmelting skjer i atmosfæren.",
+              "Dekompresjonssmelting skjer ved trykkfall når varm mantel stiger (ved midthavsrygger), mens flukssmelting skjer når vann fra en subdusert plate senker smeltetemperaturen i mantelkilen.",
+              "Dekompresjonssmelting krever ekstern oppvarming fra meteorittnedslag, mens flukssmelting skjer spontant i granitt.",
+              "Det er ingen forskjell; begge prosessene krever at temperaturen stiger til over 5000 °C.",
             ],
             answer: 1,
             explain:
-              "Riktig! Leka ofiolittkompleks er et geologisk verdensfenomen der obduksjon bevarte hele lagrekken fra mantelperidotitt, over Moho, og opp til lagdelt gabbro og putelava.",
+              "Riktig! Dekompresjonssmelting drives av trykkavlastning under midthavsrygger og rifter uten tilførsel av ny varme. Flukssmelting drives av vann og flyktige stoffer som frigjøres fra den synkende havbunnsplaten og senker peridotittens solidus.",
           },
           {
             prompt: "Hvorfor er en transformforkastning seismisk aktiv bare mellom spredningsryggene, og ikke i bruddsonen utenfor?",
@@ -1090,40 +869,40 @@ function PlatetektonikkPage() {
               "Riktig! Da havbunnen spredte seg og størknet, frøs magnetittmineralene inn jordas vekslende magnetfelt som et gigantisk symmetrisk båndopptak.",
           },
           {
-            prompt: "Hvorfor finnes det aldri jordskjelv dypere enn 700 kilometer i Wadati-Benioff-sonen?",
+            prompt: "Hva oppstår når to oseaniske plater konvergerer (kolliderer)?",
             options: [
-              "Fordi platen fordamper fullstendig når den når 700 km dyp.",
-              "Fordi trykk og temperatur i mantelen under 700 km gjør bergartene fullstendig plastiske; de kan ikke lenger lagre elastisk spenning eller sprekke sprøtt.",
-              "Fordi seismometrene på overflaten ikke klarer å registrere bølger fra større dyp.",
-              "Fordi den flytende ytre kjernen starter ved 700 km dyp.",
+              "En enorm kontinental riftdal med ferskvannsinnsjøer.",
+              "Den eldste og tetteste havbunnsplaten subduerer, og det dannes en dyphavsgrop og en vulkansk øybue (f.eks. Marianene eller Japan).",
+              "Det dannes en passiv margin uten noen form for seismisk aktivitet.",
+              "Begge platene smelter momentant og danner en ny kontinental kraton.",
             ],
             answer: 1,
             explain:
-              "Riktig! Under 700 km dybde fører høyt trykk og høy temperatur til at bergartene deformeres kontinuerlig ved plastisk flyt (dislokasjonskryp). Uten sprøtt brudd oppstår ingen jordskjelv.",
+              "Riktig! Ved oseanisk-oseanisk konvergens vil den eldste, kaldeste og dermed tetteste litosfæreplaten presses ned i subduksjon. Resultatet er en dyp grop og en buet kjede av vulkanske øyer (øybue).",
           },
           {
-            prompt: "Hva var den kaledonske fjellkjedefoldingen i Norges geologiske historie?",
+            prompt: "Hvorfor begynner gammel havbunnsskorpe til slutt å subduere av seg selv i Wilsonsyklusen?",
             options: [
-              "En oppsprekking av Norge i perm da Oslofeltet sank inn.",
-              "En kontinent-kontinent-kollisjon i silur der Baltika og Laurentia kolliderte, lukket Iapetushavet og skjøv store skyvedekker over landet.",
-              "En istidsepoke for 10 000 år siden som gravde ut de norske fjordene.",
-              "Dannelsen av Jan Mayen og Beerenberg-vulkanen.",
+              "Fordi havvannet gjør skorpen magnetisk frastøtende.",
+              "Fordi litosfæren avkjøles og tykner over titalls millioner år, slik at den til slutt blir tettere enn den underliggende astenosfæren.",
+              "Fordi månen drar i sedimentene på havbunnen.",
+              "Fordi midthavsryggene slutter å eksistere etter 10 millioner år.",
             ],
             answer: 1,
             explain:
-              "Riktig! Kaledonidene oppsto for 430–400 mill. år siden da Iapetushavet lukket seg og Baltika kolliderte med Grønland/Amerika. Skyvedekkene i Jotunheimen er rester av denne fjellkjeden.",
+              "Riktig! Mens litosfæren beveger seg bort fra midthavsryggen, avkjøles den fra toppen og underfra. Litosfæren tykner og tettheten øker. Etter ca. 20–30 millioner år er oseanisk litosfære tettere enn astenosfæren den hviler på, og blir ustabil overfor subduksjon.",
           },
           {
-            prompt: "Hvorfor kan marin leire finnes opptil 220 meter over dagens havnivå på Østlandet (marin grense)?",
+            prompt: "Hvordan virker drivkraften «ridge push» (ryggtrykk)?",
             options: [
-              "Fordi havet under istiden sto 220 meter høyere globalt på grunn av voldsom nedbør.",
-              "Fordi den 3 km tykke innlandsisen presset litosfæren ned; da isen smeltet, hevet landet seg raskere enn havet (glasial isostasi).",
-              "Fordi tsunamibølger kastet leiren opp i fjellsidene.",
-              "Fordi Oslofeltets vulkaner slynget leire opp i høyden under perm.",
+              "Magma presses ut som fra en sprøyte og dytter kontinentene sideveis.",
+              "Det er en gravitasjonsglidning der den hevede, varme midthavsryggen (2–3 km over dyphavssletten) sklir nedover skråningen under egen vekt.",
+              "Bølger på havoverflaten dytter mot vulkantoppene.",
+              "Kontinentene suger til seg havbunnsskorpen ved elektrostatisk tiltrekning.",
             ],
             answer: 1,
             explain:
-              "Riktig! Glasial isostasi: Isens enorme vekt trykket litosfæren ned i astenosfæren. Da isen forsvant, hevet landet seg med opptil flere hundre meter, slik at gammel havbunn i dag ligger som fruktbart jordbruksland langt over havnivå.",
+              "Riktig! Midthavsryggene rager 2–3 km høyere enn dyphavsslettene på grunn av termisk oppdrift. Tyngdekraften skaper en horisontal kraftkomponent som får litosfæren til å skli nedover skråningen bort fra ryggen.",
           },
         ]}
       />
@@ -1132,9 +911,9 @@ function PlatetektonikkPage() {
         <ul className="space-y-1.5 text-sm list-disc pl-4">
           <li><strong>Mantelen er fast bergart:</strong> Litosfæreplatene flyter ikke på flytende magma, men på duktil astenosfære (varm peridotitt) som flyter seigt over millioner av år.</li>
           <li><strong>Slab pull er hovedmotoren:</strong> Oseanisk litosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker hele platen med seg (~90 % av kraften).</li>
-          <li><strong>Smelting krever en utløsende mekanisme:</strong> Trykkfall (dekompresjon) ved midthavsrygger, tilførsel av vann (flukssmelting) ved subduksjonssoner, eller temperaturøkning ved dype mantelplymer (hotspots).</li>
-          <li><strong>Ofiolitter er havbunn på land:</strong> Leka i Trøndelag gir en enestående mulighet til å studere hele havbunnsskorpen og Moho-grenseflaten til fots.</li>
-          <li><strong>Norges geologi er skapt av platetektonikk:</strong> Fra den kaledonske kollisjonen og Leka-ofiolitten, via permisk riftdannelse i Oslofeltet, til åpningen av Nord-Atlanteren og dagens postglasiale landheving.</li>
+          <li><strong>Smelting krever en utløsende mekanisme:</strong> Trykkfall (dekompresjon) ved midthavsrygger og tilførsel av vann (flukssmelting) ved subduksjonssoner.</li>
+          <li><strong>Plategrensene styrer geodynamikken:</strong> Divergente grenser skaper ny havbunn, konvergente grenser resirkulerer litosfære og bygger fjell, og transforme grenser avlaster sideveis spenning.</li>
+          <li><strong>Wilsonsyklusen styrer superkontinentene:</strong> Verdenshav åpnes og lukkes i sykluser på 400–600 millioner år i en evig runddans av rifting, spredning og orogenese.</li>
         </ul>
       </Callout>
     </TopicLayout>
