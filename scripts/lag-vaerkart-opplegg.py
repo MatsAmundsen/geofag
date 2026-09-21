@@ -296,6 +296,10 @@ def build():
     add_body(doc, "Utstyr til hele klassen:", space_after=4)
     add_bullet(doc, "Tre værstasjoner. De blir stående fast på post A, B og D.")
     add_bullet(doc, "Kompass, eller telefon med kompass, og en stoffstrimmel til post C.")
+    add_bullet(
+        doc,
+        "iPhone 6 eller nyere, med en barometer-app som viser lufttrykk i hPa. Appen installeres og prøves i klasserommet før dagen.",
+    )
     add_bullet(doc, "Feltbok eller tabellen bakerst i dette dokumentet.")
     add_bullet(doc, "Noe som viser posten for neste gruppe: sekk, kjegle eller jakke.")
 
@@ -468,11 +472,125 @@ def build():
         "Skriv det dere kan si om denne timen. En time på Sognsvann er ikke været i Oslo resten av døgnet. Forskjellen mellom to poster noen hundre meter fra hverandre er friksjon og le.",
     )
 
+    add_heading_styled(doc, "Isobarer for et større område", 1)
+    add_body(
+        doc,
+        "Runden rundt vannet er for liten til å tegne isobarer. Trykkforskjellen langs en ekte isobar over 3 km er mindre enn forskjellen mellom to telefoner. Isobarene tegnes derfor for et større område: fra Vetakolltoppen og Sognsvann sørover langs T-banen til Blindern, med ett punkt østover mot Svartkulp.",
+    )
+    add_body(doc, "iPhone som barometer", bold=True, space_after=4)
+    add_bullet(doc, "iPhone 6 og nyere har barometer. Eldre telefoner har det ikke.")
+    add_bullet(doc, "Appen skal vise hektopascal (hPa). En app som bare viser høyde, holder ikke.")
+    add_bullet(
+        doc,
+        "Telefonen ligger stille på en benk, eller holdes i brysthøyde. Ute, ikke i lomma, og ikke rett fra en varm jakke.",
+    )
+    add_bullet(doc, "Vent til tallet roer seg, omtrent ett minutt. Skriv verdien med én desimal hvis appen viser det.")
+    add_body(
+        doc,
+        "Før gruppene sprer seg, står alle samlet ved Sognsvann stasjon. På samme minutt leser alle telefonene, og værstasjonen hvis den viser hPa. Referansen er værstasjonen. Mangler den trykk, er referansen én avtalt telefon. Hver telefon skriver avvik = referanse minus egen avlesning. I felt er korrigert trykk = avlesning pluss avvik.",
+    )
+    add_body(
+        doc,
+        "Gruppene går hver sin vei med en gang, og leser av på samme avtalte minutt. Mål ute, ikke i togvognen.",
+    )
+    add_table(
+        doc,
+        ["Gruppe", "Punkt", "Vei", "Høyde"],
+        [
+            [
+                "1",
+                "Vetakolltoppen",
+                "Gå vest fra Sognsvann.",
+                "419 m. Sjekk koten der dere står.",
+            ],
+            [
+                "2",
+                "Sognsvann stasjon",
+                "Blir på perrongen, ute.",
+                "198 m. Det er stasjonen, ikke vannflaten på 183 m.",
+            ],
+            [
+                "3",
+                "Svartkulp, øst for Sognsvann",
+                "Gå østover, om lag 10 minutter.",
+                "Les koten på kartet der dere står.",
+            ],
+            [
+                "4",
+                "Tåsen stasjon",
+                "T-bane linje 5 sørover.",
+                "123 m.",
+            ],
+            [
+                "5",
+                "Ullevål stadion stasjon",
+                "T-bane linje 5 sørover.",
+                "98 m.",
+            ],
+            [
+                "6",
+                "Blindern stasjon",
+                "T-bane linje 5 sørover.",
+                "75 m.",
+            ],
+        ],
+        [2.2, 4.4, 5.2, 4.9],
+    )
+    add_body(
+        doc,
+        "Har klassen bare fire grupper, tar de Sognsvann, Tåsen, Ullevål stadion og Blindern. Da er målingene et snitt nord–sør. Isobarene tegnes på tvers av det snittet, der tallene gir grunnlag for det.",
+    )
+    add_body(
+        doc,
+        "Avtalt klokkeslett er 40 minutter etter at gruppene har skilt lag, så gruppen til Vetakolltoppen rekker fram. De andre venter ute ved punktet sitt til minuttet.",
+    )
+    add_body(doc, "Omregning til havnivå", bold=True, space_after=4)
+    add_body(
+        doc,
+        "Isobarene på værkartet er trykk redusert til havnivå. Telefonen måler trykket der dere står. Nær bakken faller trykket med om lag 1 hPa per 8 meter.",
+    )
+    add_rich(
+        doc,
+        [
+            ("Havnivåtrykk = korrigert telefontrykk + høyde / 8. ", True, False),
+            (
+                "Eksempel: 980,0 hPa på Sognsvann stasjon, 198 m, gir 980,0 + 198/8 = 980,0 + 24,8 = 1004,8 hPa.",
+                False,
+                False,
+            ),
+        ],
+    )
+    add_body(
+        doc,
+        "Høyden tas fra tabellen, eller fra koten på kartet der dere faktisk står. Telefonens egen høydemåler brukes ikke. Den bommer ofte med titalls meter.",
+    )
+    add_body(doc, "Slik tegnes isobarene", bold=True, space_after=4)
+    add_bullet(doc, "På et kart som dekker Vetakolltoppen til Blindern skriver dere havnivåtrykket ved hvert punkt.")
+    add_bullet(doc, "Velg intervall 1 hPa hvis spennet i tallene er over 2 hPa. Er spennet mindre, bruk 0,5 hPa.")
+    add_bullet(
+        doc,
+        "Trekk linjer gjennom like verdier. Linjene krysser ikke. Der to nabopunkt skiller mindre enn intervallet, tegnes ingen linje mellom dem.",
+    )
+    add_bullet(doc, "Ikke tegn buer der dere ikke har et punkt.")
+    add_body(
+        doc,
+        "Sammenlign med analysenkartet fra formiddagen. Faller trykket samme vei, og er linjene like tette? Vinden går langs isobarene, med lavtrykk til venstre.",
+    )
+    add_body(
+        doc,
+        "Uten høydekorreksjon vil linjene følge bakken: lavere tall på Vetakolltoppen enn på Blindern, selv om været er det samme. Det kartet viser terrenget. Havnivåkartet er det som kan sammenlignes med værkartet.",
+    )
+
     add_heading_styled(doc, "HMS", 1)
     add_bullet(doc, "Grusstien er trafikkert. Mål fra siden av stien.")
     add_bullet(doc, "Bryggene er glatte. Mål fra land.")
     add_bullet(doc, "Vannet er kaldt. Ingen går uti for å lese av.")
-    add_bullet(doc, "Hold dere på grusstien. Det ligger gamle gruver i åsen vest for vannet.")
+    add_bullet(doc, "Hold dere på grusstien rundt vannet. Det ligger gamle gruver i åsen vest for vannet.")
+    add_bullet(doc, "T-banen: mål ute på stasjonen, ikke i vognen. Gruppen holder sammen og har billett.")
+    add_bullet(
+        doc,
+        "Vetakolltoppen er bratt. Gruppen snur hvis stien er glatt eller de ikke rekker minuttet, og måler da på et lavere punkt der koten er kjent.",
+    )
 
     add_heading_styled(doc, "Elevark", 1)
     add_body(doc, "Fylles ut før avgang.", space_after=4)
@@ -521,6 +639,36 @@ def build():
         ],
         [8.0, 8.7],
         row_cm=1.1,
+    )
+
+    add_body(doc, "Isobarer. Én rad per punkt. Havnivåtrykk = korrigert trykk + høyde / 8.", space_after=4)
+    add_table(
+        doc,
+        ["Punkt", "Kl.", "Telefon", "Avvik", "Korrigert", "Høyde m", "Havnivå"],
+        [
+            ["Vetakolltoppen", "", "", "", "", "419", ""],
+            ["Sognsvann stasjon", "", "", "", "", "198", ""],
+            ["Svartkulp", "", "", "", "", "", ""],
+            ["Tåsen", "", "", "", "", "123", ""],
+            ["Ullevål stadion", "", "", "", "", "98", ""],
+            ["Blindern", "", "", "", "", "75", ""],
+        ],
+        [3.4, 1.6, 2.3, 1.8, 2.4, 2.0, 3.2],
+        row_cm=1.05,
+    )
+    add_table(
+        doc,
+        ["", "Svar"],
+        [
+            ["Intervall på isobarene", ""],
+            ["Laveste havnivåtrykk", ""],
+            ["Høyeste havnivåtrykk", ""],
+            ["Trykket faller mot", ""],
+            ["Stemmer retningen med værkartet?", ""],
+            ["Er linjene like tette som på kartet?", ""],
+        ],
+        [8.0, 8.7],
+        row_cm=1.0,
     )
 
     add_body(doc, "Kort konklusjon om denne timen:", space_after=4)
