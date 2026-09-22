@@ -2,163 +2,918 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
+import {
+  AMPHIBOLE_KM,
+  CRUSTAL_ROOT_KM,
+  DEPTH_MAX_KM,
+  FLUX_MELT_KM,
+  HOTSPOT_STATIONS,
+  JARAMILLO,
+  MAG_CHRONS,
+  PX_PER_KM,
+  SEA_Y,
+  SERPENTINE_KM,
+  ageMaAtDistance,
+  distanceKm,
+  halfRateCmYr,
+  layerAvailability,
+  lithosphereThicknessKm,
+  polarityAtAge,
+  rateCaption,
+  ridgeAxisLabel,
+  ridgeBathymetryKm,
+  showsDepthScale,
+  yDepth,
+  type BoundaryType,
+} from "./plate-tectonics-geometry";
 
-type BoundaryType =
-  | "ridge"
-  | "subduction_continent"
-  | "subduction_island"
-  | "collision"
-  | "rift"
-  | "transform"
-  | "hotspot"
-  | "paleomag";
+type SceneProps = {
+  rate: number;
+  showQuakes: boolean;
+  showMelting: boolean;
+  showForces: boolean;
+  animating: boolean;
+  polarity: "normal" | "reversed";
+};
+
+type Pt = { x: number; y: number };
+
+function pts(points: Pt[]): string {
+  return points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+}
+
+function slabPoint(trenchX: number, depthKm: number, dipDeg: number, pxPerKmX: number): Pt {
+  const dip = (dipDeg * Math.PI) / 180;
+  const runKm = depthKm / Math.tan(dip);
+  return { x: trenchX + runKm * pxPerKmX, y: yDepth(depthKm) };
+}
+
+function dippingSlab(
+  trenchX: number,
+  dipDeg: number,
+  maxDepthKm: number,
+  thicknessKm: number,
+  pxPerKmX: number,
+): Pt[] {
+  const dip = (dipDeg * Math.PI) / 180;
+  const nx = -Math.sin(dip);
+  const ny = Math.cos(dip);
+  const top: Pt[] = [];
+  const bottom: Pt[] = [];
+  for (let d = 0; d <= maxDepthKm; d += 8) {
+    const p = slabPoint(trenchX, d, dipDeg, pxPerKmX);
+    top.push(p);
+    bottom.push({
+      x: p.x + nx * thicknessKm * PX_PER_KM,
+      y: p.y + ny * thicknessKm * PX_PER_KM,
+    });
+  }
+  return [...top, ...bottom.reverse()];
+}
+
+function DepthScale() {
+  const ticks = [0, 50, 100, 150, 200];
+  return (
+    <g fill="#7ba3be" fontSize="10" fontFamily="ui-monospace, monospace">
+      <line x1="46" y1={yDepth(0)} x2="46" y2={yDepth(DEPTH_MAX_KM)} stroke="#334e68" strokeWidth="1" />
+      {ticks.map((km) => (
+        <g key={km}>
+          <line x1="42" x2="50" y1={yDepth(km)} y2={yDepth(km)} stroke="#334e68" />
+          <text x="38" y={yDepth(km) + 3} textAnchor="end">
+            {km} km
+          </text>
+        </g>
+      ))}
+      <text x="18" y="300" textAnchor="middle" transform="rotate(-90 18 300)" fill="#6488a0">
+        Dyp under skorpetoppen
+      </text>
+    </g>
+  );
+}
+
+function Foci({ points, animating }: { points: Pt[]; animating: boolean }) {
+  return (
+    <g>
+      {points.map((p, i) => (
+        <g key={i}>
+          <circle cx={p.x} cy={p.y} r="9" fill="#ef4444" opacity="0.35" className={animating ? "quake-ring" : ""} />
+          <circle cx={p.x} cy={p.y} r="4.2" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: SceneProps) {
+  const axis = 460;
+  const px = 1.2;
+  const dists = Array.from({ length: 51 }, (_, i) => -300 + i * 12);
+  const xAt = (d: number) => axis + d * px;
+  const bathy = dists.map((d) => {
+    const depth = ridgeBathymetryKm(d, rate);
+    const y = Math.min(SEA_Y - 2, Math.max(34, SEA_Y - 36 + (depth - 2.5) * 18));
+    return { x: xAt(d), y };
+  });
+  const lith = dists.map((d) => ({
+    x: xAt(d),
+    y: yDepth(lithosphereThicknessKm(ageMaAtDistance(d, rate))),
+  }));
+  const half = halfRateCmYr(rate);
+  const axisLabel = ridgeAxisLabel(rate);
+  const crustBottom = yDepth(7);
+  const left = xAt(-300);
+  const right = xAt(300);
+
+  return (
+    <g>
+      <polygon points={`${pts(bathy)} ${right},32 ${left},32`} fill="#0f2b3e" />
+      <polyline points={pts(bathy)} fill="none" stroke="#38bdf8" strokeWidth="2" />
+      <text x="80" y="48" fill="#7dd3fc" fontSize="11">
+        Havdyp overdrevet. 0 km er toppen av skorpen.
+      </text>
+      <polygon
+        points={`${left},${SEA_Y} ${right},${SEA_Y} ${right},${crustBottom} ${left},${crustBottom}`}
+        fill="#2d3d34"
+      />
+      <polygon points={`${pts(lith)} ${right},${crustBottom} ${left},${crustBottom}`} fill="#1b2e38" />
+      <text x={axis} y="28" fill="#f59e0b" fontSize="13" fontWeight="700" textAnchor="middle">
+        {axisLabel}
+      </text>
+      <text x="150" y={SEA_Y + 22} fill="#94a3b8" fontSize="11">
+        ← {half.toFixed(1)} cm/år
+      </text>
+      <text x="680" y={SEA_Y + 22} fill="#94a3b8" fontSize="11">
+        {half.toFixed(1)} cm/år →
+      </text>
+      <text x="150" y={yDepth(55)} fill="#94a3b8" fontSize="11">
+        {rate <= 4 ? "Tykk, kald flankelitosfære" : "Tynnere litosfære ved samme avstand"}
+      </text>
+      {showMelting ? (
+        <g>
+          <ellipse cx={axis} cy={yDepth(30)} rx="34" ry="16" fill="#ef4444" opacity="0.85" className={animating ? "magma-pulse" : ""} />
+          <text x={axis} y={yDepth(30) + 4} fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
+            Dekompresjon
+          </text>
+          <text x={axis} y={yDepth(48)} fill="#fed7aa" fontSize="10" textAnchor="middle">
+            Solidus krysses når trykket faller
+          </text>
+        </g>
+      ) : null}
+      {showQuakes ? (
+        <g>
+          <Foci
+            animating={animating}
+            points={[
+              { x: axis - 18, y: yDepth(6) },
+              { x: axis, y: yDepth(8) },
+              { x: axis + 16, y: yDepth(5) },
+              { x: axis - 8, y: yDepth(12) },
+              { x: axis + 10, y: yDepth(11) },
+            ]}
+          />
+          <text x={axis} y={yDepth(20)} fill="#fca5a5" fontSize="11" fontWeight="700" textAnchor="middle">
+            Bare grunne skjelv, under 15 km
+          </text>
+        </g>
+      ) : null}
+      {showForces ? (
+        <g>
+          <path
+            d={`M ${axis} ${yDepth(170)} C ${axis - 20} ${yDepth(80)}, ${axis - 40} ${yDepth(40)}, ${axis - 130} ${yDepth(48)}`}
+            fill="none"
+            stroke="#f97316"
+            strokeWidth="2"
+            strokeDasharray="6 6"
+            className={animating ? "mantle-anim-left" : ""}
+          />
+          <path
+            d={`M ${axis} ${yDepth(170)} C ${axis + 20} ${yDepth(80)}, ${axis + 40} ${yDepth(40)}, ${axis + 130} ${yDepth(48)}`}
+            fill="none"
+            stroke="#f97316"
+            strokeWidth="2"
+            strokeDasharray="6 6"
+            className={animating ? "mantle-anim-right" : ""}
+          />
+          <text x={axis} y={yDepth(150)} fill="#fdba74" fontSize="11" fontWeight="700" textAnchor="middle">
+            Passiv oppstrømning. Mantelen fyller etter.
+          </text>
+          <line x1={axis - 70} y1={SEA_Y - 18} x2={axis - 150} y2={SEA_Y - 6} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+          <line x1={axis + 70} y1={SEA_Y - 18} x2={axis + 150} y2={SEA_Y - 6} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+          <text x={axis - 120} y={SEA_Y - 28} fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
+            Ridge push
+          </text>
+          <text x={axis + 120} y={SEA_Y - 28} fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
+            Ridge push
+          </text>
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+function SubductionScene({
+  rate,
+  showMelting,
+  showQuakes,
+  showForces,
+  animating,
+  trenchX,
+  arcX,
+  dip,
+  pxX,
+  oceanLabel,
+  slabLabel,
+  arcLabel,
+  backarc,
+}: SceneProps & {
+  trenchX: number;
+  arcX: number;
+  dip: number;
+  pxX: number;
+  oceanLabel: string;
+  slabLabel: string;
+  arcLabel: string;
+  backarc: boolean;
+}) {
+  const amph = slabPoint(trenchX, AMPHIBOLE_KM, dip, pxX);
+  const serp = slabPoint(trenchX, SERPENTINE_KM, dip, pxX);
+  const melt = slabPoint(trenchX, FLUX_MELT_KM, dip, pxX);
+  const pull = slabPoint(trenchX, 185, dip, pxX);
+  const quakes = [20, 45, 70, 95, 120, 145].map((d) => slabPoint(trenchX, d, dip, pxX));
+  const slab = dippingSlab(trenchX, dip, 200, 70, pxX);
+  const wedgeX = trenchX + 18;
+
+  return (
+    <g>
+      <polygon points={`50,72 ${trenchX - 16},72 ${trenchX}, ${SEA_Y + 16} ${trenchX + 28},${SEA_Y - 8} 50,${SEA_Y}`} fill="#0f2b3e" />
+      <text x="70" y="64" fill="#7dd3fc" fontSize="11">
+        {oceanLabel}
+      </text>
+      <text x={trenchX} y="52" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
+        Dyphavsgrop
+      </text>
+      <polygon points={`${trenchX},${SEA_Y + 10} ${wedgeX + 36},${SEA_Y - 22} ${wedgeX + 8},${SEA_Y - 6}`} fill="#3d493f" />
+      <text x={wedgeX + 16} y={SEA_Y - 26} fill="#cbd5e1" fontSize="10" textAnchor="middle">
+        Akkresjonskile
+      </text>
+      <text x={(wedgeX + arcX) / 2} y={SEA_Y - 8} fill="#94a3b8" fontSize="10" textAnchor="middle">
+        Forbuebasseng
+      </text>
+      <polygon
+        points={`${arcX - 36},${SEA_Y} ${arcX},${backarc ? 58 : 46} ${arcX + 28},${backarc ? 64 : 58} ${arcX + 48},${SEA_Y}`}
+        fill="#4b5d52"
+      />
+      <text x={arcX} y="36" fill="#f8fafc" fontSize="12" fontWeight="700" textAnchor="middle">
+        {arcLabel}
+      </text>
+      {backarc ? (
+        <g>
+          <polyline
+            points={`${arcX + 90},${SEA_Y - 16} ${arcX + 120},${SEA_Y + 6} ${arcX + 150},${SEA_Y - 16}`}
+            fill="none"
+            stroke="#f59e0b"
+            strokeWidth="2"
+          />
+          <text x={arcX + 120} y={SEA_Y - 24} fill="#fbbf24" fontSize="10" fontWeight="700" textAnchor="middle">
+            Bakbue med spredning
+          </text>
+          <polygon
+            points={`${arcX + 70},${SEA_Y} 880,${SEA_Y} 880,${yDepth(18)} ${arcX + 70},${yDepth(22)}`}
+            fill="#243038"
+          />
+        </g>
+      ) : (
+        <polygon
+          points={`${trenchX + 48},${SEA_Y} 890,${SEA_Y} 890,${yDepth(42)} ${trenchX + 70},${yDepth(48)}`}
+          fill="#4b5d52"
+        />
+      )}
+      {!backarc ? (
+        <text x="760" y={yDepth(24)} fill="#e2e8f0" fontSize="11">
+          Kontinentalskorpe, ca. 40 km
+        </text>
+      ) : null}
+      <polygon points={`50,${SEA_Y} ${trenchX},${SEA_Y} ${trenchX},${yDepth(8)} 50,${yDepth(8)}`} fill="#2e4238" />
+      <polygon points={`50,${yDepth(8)} ${trenchX},${yDepth(8)} ${trenchX},${yDepth(70)} 50,${yDepth(70)}`} fill="#1c2f3a" />
+      <text x="70" y={yDepth(40)} fill="#94a3b8" fontSize="11">
+        {slabLabel}
+      </text>
+      <polygon points={pts(slab)} fill="#1a3330" stroke="#245046" />
+      <text x={melt.x + 28} y={melt.y - 36} fill="#86efac" fontSize="11" fontWeight="700">
+        Mantelkile
+      </text>
+      {showMelting ? (
+        <g>
+          <circle cx={amph.x} cy={amph.y} r="4" fill="#38bdf8" />
+          <text x={amph.x + 10} y={amph.y - 8} fill="#7dd3fc" fontSize="10" fontWeight="700">
+            H₂O fra amfibol, ca. {AMPHIBOLE_KM} km
+          </text>
+          <circle cx={serp.x} cy={serp.y} r="4" fill="#38bdf8" />
+          <text x={serp.x + 10} y={serp.y + 14} fill="#7dd3fc" fontSize="10" fontWeight="700">
+            H₂O fra serpentin, ca. {SERPENTINE_KM} km
+          </text>
+          <ellipse
+            cx={melt.x - 16}
+            cy={yDepth(100)}
+            rx="36"
+            ry="14"
+            fill="#ef4444"
+            opacity="0.9"
+            className={animating ? "magma-pulse" : ""}
+          />
+          <text x={melt.x - 16} y={yDepth(100) + 4} fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
+            Flukssmelting
+          </text>
+          <path
+            d={`M ${melt.x - 16} ${yDepth(92)} C ${arcX - 10} ${yDepth(50)}, ${arcX} ${yDepth(20)}, ${arcX} 70`}
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth="3"
+            strokeDasharray="6 4"
+            markerEnd="url(#arrow-magma)"
+          />
+        </g>
+      ) : null}
+      {showQuakes ? (
+        <g>
+          <Foci animating={animating} points={quakes} />
+          <text x="70" y={yDepth(190)} fill="#fca5a5" fontSize="11">
+            Jordskjelv langs plategrensen. Dybdefordelingen eier Jordskjelv.
+          </text>
+        </g>
+      ) : null}
+      {showForces ? (
+        <g>
+          <line
+            x1={pull.x}
+            y1={pull.y}
+            x2={pull.x + 36}
+            y2={pull.y + 28}
+            stroke="#38bdf8"
+            strokeWidth="4"
+            markerEnd="url(#arrow-slab)"
+          />
+          <text x={Math.min(pull.x + 44, 760)} y={pull.y + 8} fill="#38bdf8" fontSize="12" fontWeight="800">
+            Slab pull
+          </text>
+          <line x1={trenchX - 120} y1="84" x2={trenchX - 40} y2="84" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <text x={trenchX - 80} y="76" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
+            {rate} cm/år
+          </text>
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+function CollisionScene({ rate, showMelting, showQuakes, showForces, animating }: SceneProps) {
+  const xs = Array.from({ length: 41 }, (_, i) => 70 + i * 20);
+  const thick = (x: number) => {
+    const n = (x - 460) / 340;
+    return 35 + (CRUSTAL_ROOT_KM - 35) * Math.max(0, 1 - n * n);
+  };
+  const crest = xs.map((x) => {
+    const n = (x - 460) / 340;
+    return { x, y: 40 + (SEA_Y - 52) * Math.min(1, n * n) };
+  });
+  const base = xs.map((x) => ({ x, y: yDepth(thick(x)) }));
+
+  return (
+    <g>
+      <polygon points={`${pts(crest)} 870,${SEA_Y} 70,${SEA_Y}`} fill="#4b5e52" />
+      <polygon points={`70,${SEA_Y} 870,${SEA_Y} ${pts([...base].reverse())}`} fill="#3d4f46" />
+      <polyline points={pts(base)} fill="none" stroke="#38bdf8" strokeWidth="2" />
+      <text x="460" y="28" fill="#f8fafc" fontSize="13" fontWeight="800" textAnchor="middle">
+        Himalaya
+      </text>
+      <text x="460" y={yDepth(CRUSTAL_ROOT_KM) - 8} fill="#7dd3fc" fontSize="11" fontWeight="700" textAnchor="middle">
+        Skorperot, Moho ca. {CRUSTAL_ROOT_KM} km
+      </text>
+      <text x="460" y={yDepth(CRUSTAL_ROOT_KM) + 16} fill="#cbd5e1" fontSize="10" textAnchor="middle">
+        Kontinental skorpe subdueres ikke dypt
+      </text>
+      {showMelting ? (
+        <g>
+          <ellipse cx="460" cy={yDepth(42)} rx="40" ry="12" fill="#f59e0b" opacity="0.85" />
+          <text x="460" y={yDepth(42) + 3} fill="#1c1917" fontSize="10" fontWeight="700" textAnchor="middle">
+            Skorpesmelting (anatekse)
+          </text>
+        </g>
+      ) : null}
+      {showQuakes ? (
+        <Foci
+          animating={animating}
+          points={[
+            { x: 340, y: yDepth(8) },
+            { x: 400, y: yDepth(16) },
+            { x: 460, y: yDepth(12) },
+            { x: 520, y: yDepth(22) },
+            { x: 580, y: yDepth(10) },
+          ]}
+        />
+      ) : null}
+      {showForces ? (
+        <g>
+          <line x1="150" y1="78" x2="230" y2="78" stroke="#ef4444" strokeWidth="4" markerEnd="url(#arrow-magma)" />
+          <text x="190" y="70" fill="#fca5a5" fontSize="11" fontWeight="700" textAnchor="middle">
+            India, relativt {rate} cm/år
+          </text>
+          <text x="730" y="70" fill="#fca5a5" fontSize="11" fontWeight="700" textAnchor="middle">
+            Eurasiske plate
+          </text>
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+function RiftScene({ rate, showMelting, showQuakes, showForces, animating }: SceneProps) {
+  return (
+    <g>
+      <polygon
+        points={`60,70 340,62 400,108 520,108 580,62 860,70 860,${SEA_Y} 60,${SEA_Y}`}
+        fill="#544c3d"
+      />
+      <line x1="340" y1="62" x2="400" y2="108" stroke="#f59e0b" strokeWidth="2.5" />
+      <line x1="580" y1="62" x2="520" y2="108" stroke="#f59e0b" strokeWidth="2.5" />
+      <text x="460" y="96" fill="#fbbf24" fontSize="12" fontWeight="700" textAnchor="middle">
+        Graben
+      </text>
+      <text x="220" y="52" fill="#e2e8f0" fontSize="11">
+        Riftskulder
+      </text>
+      <rect x="430" y="100" width="60" height="8" fill="#0284c7" />
+      <polygon
+        points={`60,${SEA_Y} 300,${SEA_Y} 390,${yDepth(18)} 530,${yDepth(18)} 620,${SEA_Y} 860,${SEA_Y} 860,${yDepth(40)} 60,${yDepth(40)}`}
+        fill="#4a4338"
+      />
+      <path
+        d={`M 390 ${yDepth(190)} C 410 ${yDepth(80)}, 430 ${yDepth(40)}, 450 ${yDepth(18)} L 470 ${yDepth(18)} C 490 ${yDepth(40)}, 510 ${yDepth(80)}, 530 ${yDepth(190)} Z`}
+        fill="#3a1e16"
+        opacity="0.9"
+      />
+      {showMelting ? (
+        <g>
+          <ellipse cx="460" cy={yDepth(48)} rx="32" ry="12" fill="#ef4444" opacity="0.9" className={animating ? "magma-pulse" : ""} />
+          <text x="460" y={yDepth(66)} fill="#fed7aa" fontSize="11" fontWeight="700" textAnchor="middle">
+            Dekompresjon under tynn skorpe
+          </text>
+        </g>
+      ) : null}
+      {showQuakes ? (
+        <Foci
+          animating={animating}
+          points={[
+            { x: 360, y: yDepth(6) },
+            { x: 390, y: yDepth(12) },
+            { x: 560, y: yDepth(6) },
+            { x: 530, y: yDepth(12) },
+          ]}
+        />
+      ) : null}
+      {showForces ? (
+        <g>
+          <line x1="250" y1="88" x2="180" y2="88" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+          <line x1="670" y1="88" x2="740" y2="88" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+          <text x="460" y="52" fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
+            Relativt strekk {rate} cm/år
+          </text>
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+function TransformScene({ rate, showQuakes, animating }: SceneProps) {
+  return (
+    <g>
+      <rect x="40" y="36" width="840" height="400" rx="8" fill="#0d1b26" />
+      <text x="60" y="58" fill="#f8fafc" fontSize="14" fontWeight="800">
+        Transformsegment og bruddsoner
+      </text>
+      <text x="60" y="76" fill="#94a3b8" fontSize="11">
+        Skjematisk kart. Ingen dybdeskala.
+      </text>
+      <rect x="250" y="96" width="14" height="110" rx="2" fill="#f59e0b" />
+      <text x="257" y="90" fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
+        Nordlig rygg
+      </text>
+      <rect x="620" y="250" width="14" height="110" rx="2" fill="#f59e0b" />
+      <text x="627" y="376" fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
+        Sørlig rygg
+      </text>
+      <line x1="70" y1="220" x2="250" y2="220" stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
+      <line x1="264" y1="220" x2="620" y2="220" stroke="#ef4444" strokeWidth="5" />
+      <line x1="634" y1="220" x2="860" y2="220" stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
+
+      <line x1="200" y1="200" x2="120" y2="200" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <line x1="120" y1="242" x2="50" y2="242" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="130" y="188" fill="#94a3b8" fontSize="10" textAnchor="middle">
+        Bruddsone: samme vei, {rate} cm/år
+      </text>
+
+      <line x1="340" y1="198" x2="430" y2="198" stroke="#fca5a5" strokeWidth="3" markerEnd="url(#arrow-magma)" />
+      <line x1="520" y1="246" x2="430" y2="246" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="440" y="184" fill="#fff" fontSize="11" fontWeight="800" textAnchor="middle">
+        Transform: motsatt retning
+      </text>
+
+      <line x1="700" y1="198" x2="790" y2="198" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <line x1="760" y1="242" x2="850" y2="242" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="760" y="188" fill="#94a3b8" fontSize="10" textAnchor="middle">
+        Bruddsone: samme vei
+      </text>
+
+      <line x1="230" y1="150" x2="150" y2="150" stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
+      <line x1="290" y1="150" x2="370" y2="150" stroke="#f59e0b" strokeWidth="2.5" markerEnd="url(#arrow-ridge)" />
+      <line x1="600" y1="300" x2="520" y2="300" stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
+      <line x1="650" y1="300" x2="730" y2="300" stroke="#f59e0b" strokeWidth="2.5" markerEnd="url(#arrow-ridge)" />
+
+      {showQuakes ? (
+        <Foci
+          animating={animating}
+          points={[
+            { x: 320, y: 220 },
+            { x: 400, y: 220 },
+            { x: 480, y: 220 },
+            { x: 560, y: 220 },
+          ]}
+        />
+      ) : null}
+      <text x="460" y="410" fill="#e2e8f0" fontSize="11" textAnchor="middle">
+        Jordskjelv bare der sidene går motsatt vei, mellom ryggene.
+      </text>
+      <text x="460" y="428" fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
+        Jan Mayen: det seismiske stykket er transformsegmentet. Bruddsonen utenfor er et arr.
+      </text>
+    </g>
+  );
+}
+
+function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) {
+  const plumeX = 760;
+  const px = 0.72;
+  const stations = HOTSPOT_STATIONS.map((station, index) => {
+    const km = distanceKm(rate, station.ageMa);
+    return { ...station, km, x: plumeX - km * px, index };
+  }).filter((station) => station.x > 70);
+
+  return (
+    <g>
+      <rect x="50" y="70" width="820" height="40" fill="#0f2b3e" />
+      <text x="70" y="64" fill="#7dd3fc" fontSize="11">
+        Stillehavet. Avstand = fart × alder. Eldre øyer ligger bak platen.
+      </text>
+      <rect x="50" y={SEA_Y} width="820" height={yDepth(8) - SEA_Y} fill="#1b2e25" />
+      <rect x="50" y={yDepth(8)} width="820" height={yDepth(55) - yDepth(8)} fill="#152630" />
+      <path
+        d={`M ${plumeX - 18} ${yDepth(200)} L ${plumeX - 16} ${yDepth(70)} C ${plumeX - 28} ${yDepth(40)}, ${plumeX - 10} ${yDepth(20)}, ${plumeX} ${yDepth(12)} L ${plumeX + 8} ${yDepth(12)} C ${plumeX + 24} ${yDepth(24)}, ${plumeX + 22} ${yDepth(48)}, ${plumeX + 18} ${yDepth(70)} L ${plumeX + 18} ${yDepth(200)} Z`}
+        fill="#ea580c"
+        opacity="0.92"
+      />
+      <text x={plumeX - 28} y={yDepth(120)} fill="#ffedd5" fontSize="11" fontWeight="800" textAnchor="end">
+        Øverste 200 km av plymen
+      </text>
+      <text x={plumeX - 28} y={yDepth(136)} fill="#fed7aa" fontSize="10" textAnchor="end">
+        Kilden er D''-laget, ca. 2900 km
+      </text>
+      {showMelting ? (
+        <g>
+          <ellipse cx={plumeX} cy={yDepth(40)} rx="26" ry="10" fill="#ef4444" className={animating ? "magma-pulse" : ""} />
+          <text x={plumeX + 36} y={yDepth(44)} fill="#fecaca" fontSize="10">
+            Dekompresjon i varm mantel
+          </text>
+        </g>
+      ) : null}
+      {stations.map((station) => {
+        const h = Math.max(18, 56 - station.ageMa * 7);
+        return (
+          <g key={station.label}>
+            <polygon
+              points={`${station.x - h * 0.7},${SEA_Y} ${station.x},${SEA_Y - h} ${station.x + h * 0.55},${SEA_Y}`}
+              fill={station.ageMa === 0 ? "#5c5346" : "#2c3330"}
+            />
+            <text x={station.x} y={SEA_Y - h - 8 - (station.index % 2) * 12} fill="#f8fafc" fontSize="10" textAnchor="middle">
+              {station.label}
+            </text>
+          </g>
+        );
+      })}
+      {showQuakes ? (
+        <Foci
+          animating={animating}
+          points={[
+            { x: plumeX - 8, y: yDepth(10) },
+            { x: plumeX + 6, y: yDepth(16) },
+          ]}
+        />
+      ) : null}
+      <line x1={plumeX - 40} y1={yDepth(28)} x2={plumeX - 140} y2={yDepth(28)} stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
+      <text x={plumeX - 90} y={yDepth(22)} fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
+        Platen {rate} cm/år
+      </text>
+      <line x1={plumeX} y1="452" x2={plumeX - 100 * px} y2="452" stroke="#94a3b8" strokeWidth="1.5" />
+      <text x={plumeX - 50 * px} y="466" fill="#94a3b8" fontSize="10" textAnchor="middle">
+        100 km
+      </text>
+    </g>
+  );
+}
+
+function PaleomagScene({ rate, showMelting, showQuakes, animating, polarity }: SceneProps) {
+  const axis = 460;
+  const windowKm = 220;
+  const px = 1.4;
+  const half = halfRateCmYr(rate);
+  const xAt = (kmFromAxis: number) => axis + kmFromAxis * px;
+
+  const stripes = MAG_CHRONS.flatMap((chron) =>
+    ([-1, 1] as const).map((side) => {
+      const inner = distanceKm(half, chron.startMa);
+      const outer = Math.min(distanceKm(half, chron.endMa), windowKm);
+      if (inner >= windowKm) return null;
+      const x1 = xAt(side * inner);
+      const x2 = xAt(side * outer);
+      return {
+        key: `${chron.name}-${side}`,
+        x: Math.min(x1, x2),
+        w: Math.abs(x2 - x1),
+        polarity: chron.polarity,
+        label: chron.name,
+      };
+    }),
+  ).filter((stripe): stripe is NonNullable<typeof stripe> => stripe !== null && stripe.w > 0.8);
+
+  const jara = ([-1, 1] as const).map((side) => {
+    const inner = distanceKm(half, JARAMILLO.startMa);
+    const outer = distanceKm(half, JARAMILLO.endMa);
+    if (inner >= windowKm) return null;
+    const x1 = xAt(side * inner);
+    const x2 = xAt(side * Math.min(outer, windowKm));
+    return { side, x: Math.min(x1, x2), w: Math.abs(x2 - x1) };
+  });
+
+  const gilbertOuter = distanceKm(half, 6.033);
+  const samples: Pt[] = [];
+  for (let km = -windowKm; km <= windowKm; km += 4) {
+    const age = ageMaAtDistance(km, rate);
+    const known = age <= 6.033;
+    const pol = Math.abs(km) < 14 ? polarity : polarityAtAge(age, polarity);
+    const y = known ? 96 + (pol === "normal" ? -16 : 16) : 96;
+    samples.push({ x: xAt(km), y });
+  }
+
+  return (
+    <g>
+      <text x="60" y="40" fill="#e2e8f0" fontSize="12" fontWeight="700">
+        Magnetstriper. Bredde = halvrate × alder. Horisontal skala, ikke dybdeakse.
+      </text>
+      <rect x="70" y="52" width="780" height="78" rx="6" fill="#071018" stroke="#1e293b" />
+      <line x1="80" y1="96" x2="840" y2="96" stroke="#334155" strokeDasharray="4 3" />
+      <polyline points={pts(samples)} fill="none" stroke={polarity === "normal" ? "#38bdf8" : "#f43f5e"} strokeWidth="2" />
+      <text x={axis} y="68" fill="#f8fafc" fontSize="10" fontWeight="800" textAnchor="middle">
+        {polarity === "normal" ? "+ΔB i aksen (normal)" : "−ΔB i aksen (reversert nå)"}
+      </text>
+
+      {gilbertOuter < windowKm
+        ? ([-1, 1] as const).map((side) => {
+            const x1 = xAt(side * gilbertOuter);
+            const x2 = xAt(side * windowKm);
+            return (
+              <g key={`old-${side}`}>
+                <rect x={Math.min(x1, x2)} y="150" width={Math.abs(x2 - x1)} height="58" fill="#1e293b" />
+                <text x={(x1 + x2) / 2} y="182" fill="#94a3b8" fontSize="9" textAnchor="middle">
+                  Eldre enn 6 Ma
+                </text>
+              </g>
+            );
+          })
+        : null}
+
+      {stripes.map((stripe) => (
+        <g key={stripe.key}>
+          <rect
+            x={stripe.x}
+            y="150"
+            width={stripe.w}
+            height="58"
+            fill={stripe.polarity === "normal" ? "#1d4ed8" : "#334155"}
+          />
+          {stripe.w > 36 ? (
+            <text x={stripe.x + stripe.w / 2} y="182" fill="#fff" fontSize="9" textAnchor="middle">
+              {stripe.label}
+            </text>
+          ) : null}
+        </g>
+      ))}
+      {jara.map((band) =>
+        band && band.w > 0.6 ? (
+          <rect key={band.side} x={band.x} y="150" width={Math.max(band.w, 2)} height="58" fill="#1d4ed8" />
+        ) : null,
+      )}
+      <rect
+        x={axis - 6}
+        y="146"
+        width="12"
+        height="66"
+        fill={polarity === "normal" ? "#2563eb" : "#64748b"}
+        stroke="#fff"
+        strokeWidth="1"
+      />
+      <text x={axis} y="224" fill="#fbbf24" fontSize="10" fontWeight="800" textAnchor="middle">
+        0 km
+      </text>
+      {[-200, -100, 100, 200].map((km) => (
+        <text key={km} x={xAt(km)} y="224" fill="#94a3b8" fontSize="9" textAnchor="middle">
+          {km > 0 ? "+" : ""}
+          {km} km
+        </text>
+      ))}
+      <text x={axis - 80} y="142" fill="#fbbf24" fontSize="10" fontWeight="700" textAnchor="middle">
+        ← {half.toFixed(1)} cm/år
+      </text>
+      <text x={axis + 80} y="142" fill="#fbbf24" fontSize="10" fontWeight="700" textAnchor="middle">
+        {half.toFixed(1)} cm/år →
+      </text>
+      <path
+        d={`M 180 250 C 320 246, 400 236, ${axis} 232 C 520 236, 640 246, 760 250`}
+        fill="none"
+        stroke="#ef4444"
+        strokeWidth="1.6"
+        strokeDasharray="5 3"
+      />
+      <text x={axis} y="268" fill="#fca5a5" fontSize="10" fontWeight="700" textAnchor="middle">
+        Curie-isoterm, 580 °C, i skorpen
+      </text>
+      {showMelting ? (
+        <g>
+          <ellipse cx={axis} cy="300" rx="28" ry="12" fill="#ef4444" className={animating ? "magma-pulse" : ""} />
+          <text x={axis} y="304" fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
+            Magmakammer
+          </text>
+        </g>
+      ) : null}
+      {showQuakes ? <Foci animating={animating} points={[{ x: axis - 8, y: 168 }, { x: axis + 8, y: 176 }]} /> : null}
+      <text x="70" y="360" fill="#cbd5e1" fontSize="11">
+        Jaramillo er den tynne normale stripen inne i Matuyama, nær 1 million år.
+      </text>
+      <text x="70" y="380" fill="#cbd5e1" fontSize="11">
+        Polvendingen endrer bare ny skorpe i aksen. Eldre striper er allerede frosset.
+      </text>
+      <text x="70" y="400" fill="#94a3b8" fontSize="11">
+        Raskere spredning gir bredere striper, og eldre kronologier glir ut av vinduet på ±{windowKm} km.
+      </text>
+    </g>
+  );
+}
+
+const boundaryData: Record<
+  BoundaryType,
+  {
+    title: string;
+    kicker: string;
+    rockTypes: string;
+    quaketype: string;
+    meltingMechanism: string;
+    realExample: string;
+    description: string;
+  }
+> = {
+  ridge: {
+    title: "Midthavsrygg (divergerende grense)",
+    kicker: "Havbunnsspredning og dekompresjon",
+    rockTypes: "Basalt (putelava), basaltganger, gabbro, serpentinisert peridotitt",
+    quaketype: "Bare grunne jordskjelv, under 15–20 km, langs normalforkastninger i aksen.",
+    meltingMechanism: "Dekompresjonssmelting: mantelen stiger og krysser solidus uten ekstra varme.",
+    realExample: "Den midtatlantiske ryggen og Øst-Stillehavsryggen",
+    description:
+      "Platene glir fra hverandre. Treg spredning gir en riftdal og tykk flankelitosfære. Rask spredning gir en aksial høyde og tynnere plate ved samme avstand fra aksen.",
+  },
+  subduction_continent: {
+    title: "Subduksjon hav mot kontinent",
+    kicker: "Plateneddykking og flukssmelting",
+    rockTypes: "Andesitt, dasitt, granodioritt, eklogitt i den synkende platen",
+    quaketype: "Jordskjelv langs plategrensen. Dybdefordelingen ligger i kapittelet Jordskjelv.",
+    meltingMechanism: `Flukssmelting. Amfibol slipper vann rundt ${AMPHIBOLE_KM} km, serpentin dypere, rundt ${SERPENTINE_KM} km.`,
+    realExample: "Andesfjellene og Kaskadefjellene",
+    description:
+      "Tett oseanisk litosfære bøyer ned under kontinentet. Vann fra den synkende platen senker smeltepunktet i mantelkilen. Soneringen fra havet er grop, akkresjonskile, forbuebasseng og vulkanbue.",
+  },
+  subduction_island: {
+    title: "Subduksjon hav mot hav",
+    kicker: "Vulkanøybue og bakbue",
+    rockTypes: "Basaltisk andesitt, tefra og pelagiske sedimenter",
+    quaketype: "Jordskjelv langs subduksjonsgrensen. Dybde og tsunamifysikk ligger i kapittelet Jordskjelv.",
+    meltingMechanism: "Flukssmelting i mantelkilen. Bak buen kan slab rollback åpne et bakbuebasseng.",
+    realExample: "Marianene og Japanhavet som bakbue",
+    description:
+      "Den eldste og tetteste havbunnsplaten synker. Foran buen ligger grop, kile og forbue. Bak buen kan skorpen sprekke opp i et bakbuebasseng med egen spredning.",
+  },
+  collision: {
+    title: "Kontinentalkollisjon",
+    kicker: "Orogenese og skorperot",
+    rockTypes: "Gneis, glimmerskifer, amfibolitt og granitt fra skorpesmelting",
+    quaketype: "Jordskjelv i den fortykkede skorpen. Kontinental skorpe subdueres ikke dypt.",
+    meltingMechanism: "Lite mantelsmelte. Skorpesmelting (anatekse) kan danne granitt.",
+    realExample: "Himalaya og Tibet-platået",
+    description:
+      "Begge skorper er for lette til å synke dypt. Skorpen forkortes, og Moho trykkes ned til om lag 75 km under fjellkjeden. Den kaledonske kollisjonen ligger i kapitlet Norges geologi.",
+  },
+  rift: {
+    title: "Kontinentalrift",
+    kicker: "Oppsprekking",
+    rockTypes: "Alkalisk basalt, ryolitt og innsjøsedimenter",
+    quaketype: "Grunne jordskjelv langs de steile normalforkastningene.",
+    meltingMechanism: "Dekompresjonssmelting under den uttynnede skorpen.",
+    realExample: "Den østafrikanske riftdalen. Rødehavet er neste stadium.",
+    description:
+      "Strekk tynner kontinentet. Blokker synker inn som en graben. Fortsetter riftingen, kan havet flomme inn og en midthavsrygg oppstå.",
+  },
+  transform: {
+    title: "Transformforkastning",
+    kicker: "Sidelengs glidning",
+    rockTypes: "Forkastningsbreksje, mylonitt og kataklasitt",
+    quaketype: "Grunne jordskjelv bare på segmentet mellom ryggene, der sidene går motsatt vei.",
+    meltingMechanism: "Ingen smelting. Skorpe verken lages eller forsvinner.",
+    realExample: "San Andreas-forkastningen. Jan Mayen har et seismisk transformsegment mellom ryggene.",
+    description:
+      "Mellom to ryggsegmenter går platene motsatt vei. Utenfor ryggene, på bruddsonene, går begge sider samme vei med samme fart. Der er det ingen jordskjelv.",
+  },
+  hotspot: {
+    title: "Hotspot / mantelplym",
+    kicker: "Intraplate, ikke en plategrense",
+    rockTypes: "Basalt og peridotitt",
+    quaketype: "Små, grunne skjelv under den aktive vulkanen.",
+    meltingMechanism:
+      "En varm søyle fra ca. 2900 km smelter ved dekompresjon når den stiger. Figuren viser bare de øverste 200 km.",
+    realExample: "Hawaii. Øyalderen øker i platens fartsretning.",
+    description:
+      "Plymen står nesten stille mens platen glir over. Avstanden mellom øyene er fart ganger alder. Dette er ikke en plategrense. Magmakjemi og Hawaii-Emperor-kjeden ligger i kapittelet Vulkaner.",
+  },
+  paleomag: {
+    title: "Paleomagnetiske striper",
+    kicker: "Vine-Matthews-Morley",
+    rockTypes: "Basalt med magnetitt låst under Curie-temperaturen, 580 °C",
+    quaketype: "Grunne skjelv i spredningsaksen.",
+    meltingMechanism: "Dekompresjonssmelting under ryggen.",
+    realExample: "Reykjanesryggen og ryggene i Stillehavet",
+    description:
+      "Ny basalt fryser magnetfeltet. Stripene er speilvendt om aksen. Bredden er halv spredningsrate ganger kronens alder. Jaramillo er en kort normal periode inne i Matuyama, nær 1 million år.",
+  },
+};
 
 export function PlateTectonicsModel() {
   const [boundary, setBoundary] = useState<BoundaryType>("subduction_continent");
-  const [activeTransformMode, setActiveTransformMode] = useState<"fault" | "fracture_zone">("fault");
-  const [activePolarity, setActivePolarity] = useState<"normal" | "reversed">("normal");
-  const [rate, setRate] = useState<number>(6); // cm/år
-  const [showQuakes, setShowQuakes] = useState<boolean>(true);
-  const [showMelting, setShowMelting] = useState<boolean>(true);
-  const [showForces, setShowForces] = useState<boolean>(true);
-  const [animating, setAnimating] = useState<boolean>(true);
-
-  // Informasjon om de ulike plategrensene
-  const boundaryData = {
-    ridge: {
-      title: "Midthavsrygg (Divergerende grense)",
-      kicker: "Havbunnsspredning & Dekompresjon",
-      typicalRate: "2–16 cm/år (f.eks. 2,5 cm/år i Atlanteren, 15 cm/år i Stillehavet)",
-      rockTypes: "Basalt (putelava), basaltganger, gabbro, serpentinisert peridotitt",
-      quaketype: "Bare grunne jordskjelv (< 20 km dyp), normalforkastninger",
-      meltingMechanism: "Dekompresjonssmelting: Mantelen stiger og krysser solidus uten tilførsel av varme.",
-      realExample: "Den midtatlantiske ryggen (Island, Jan Mayen), Øst-Stillehavsryggen",
-      description:
-        "Litosfæreplatene glir fra hverandre. I sprekken synker trykket på den underliggende mantelen. Varm peridotitt stiger opp, og fordi trykket faller raskere enn temperaturen, smelter om lag 10–20 % av mantelen. Den basaltiske smelten stiger og bygger ny havbunnsskorpe.",
-    },
-    subduction_continent: {
-      title: "Subduksjon hav mot kontinent (Konvergerende grense)",
-      kicker: "Plateneddykking & flukssmelting",
-      typicalRate: "5–10 cm/år (f.eks. Nazcaplaten under Sør-Amerika ~7 cm/år)",
-      rockTypes: "Andesitt, dasitt, granodioritt (i dypet), eklogitt (i den synkende slabben)",
-      quaketype: "Jordskjelv langs plategrensen. Dybdefordeling eier kapittelet Jordskjelv.",
-      meltingMechanism: "Flukssmelting: Vann fra den synkende havbunnen senker smeltepunktet i mantelkilen over.",
-      realExample: "Andesfjellene (Sør-Amerika), Kaskadefjellene (USA)",
-      description:
-        "Tett, kald oseanisk litosfære bøyes ned under den lettere kontinentalskorpen. Hydratiserte mineraler i havbunnen (serpentin m.fl.) presses under enormt trykk og avgir overkritisk vann. Dette vannet stiger inn i den varme mantelkilen over og senker peridotittens smeltepunkt. Magmaen stiger til en eksplosiv vulkanbue.",
-    },
-    subduction_island: {
-      title: "Subduksjon hav mot hav (Konvergerende grense)",
-      kicker: "Vulkanøybue & Dyphavsgrop",
-      typicalRate: "6–12 cm/år (f.eks. Stillehavsplaten under Filippinerplaten)",
-      rockTypes: "Basaltisk andesitt, tefra, vulkanske tuffer, dype pelagiske sedimenter",
-      quaketype: "Jordskjelv langs subduksjonsgrensen. Dybde og tsunamifysikk eier kapittelet Jordskjelv.",
-      meltingMechanism: "Flukssmelting i mantelkilen under øybuen, med mulig bakbue-spredning.",
-      realExample: "Marianene, Japan, Aleutene, De små antiller",
-      description:
-        "Når to havbunnsplater møtes, er det den eldste, kaldeste og dermed tetteste platen som tvinges ned i mantelen. Foran subduksjonssonen oppstår ekstreme dyphavsgroper (f.eks. Marianegropen, 11 034 m). Magmaen som dannes via flukssmelting stiger opp gjennom havbunnen og bygger buer av vulkanske øyer.",
-    },
-    collision: {
-      title: "Kontinentalkollisjon (Konvergerende grense)",
-      kicker: "Orogenese & Skyvedekker",
-      typicalRate: "3–5 cm/år (India krasjer inn i Asia med ~4 cm/år)",
-      rockTypes: "Gneis, glimmerskifer, amfibolitt, granitt (anatekse), omdannet kalkstein (marmor)",
-      quaketype: "Svært ødeleggende grunne og intermediære jordskjelv over et enormt areal",
-      meltingMechanism: "Svært begrenset mantel-vulkanisme. Skorpesmelting (anatekse) kan danne granitter.",
-      realExample: "Himalaya og Tibet-platået i dag; Kaledonidene i Norge for 400 mill. år siden",
-      description:
-        "Fordi begge kontinentalplatene har lav tetthet (granittisk, ~2,7 g/cm³), kan ingen av dem subdueres dypt i mantelen. Resultatet er kolossal skorpeforkorting, stabling av gigantiske skyvedekker (nappes), og dannelse av en opptil 70–80 km dyp jordskorperot som flyter isostatisk i mantelen.",
-    },
-    rift: {
-      title: "Kontinental rift (Divergerende grense på land)",
-      kicker: "Oppsprekking & Gryende hav",
-      typicalRate: "0,5–3 cm/år (Øst-Afrika rifting ~0,5–1 cm/år)",
-      rockTypes: "Alkalisk basalt, ryolitt, innsjøsedimenter, evaporitter",
-      quaketype: "Hyppige, grunne jordskjelv langs steile forkastninger",
-      meltingMechanism: "Dekompresjonssmelting av astenosfære under uttynnet kontinentallitosfære.",
-      realExample: "Den østafrikanske riftdalen; Oslofeltet i perm (død paleorift)",
-      description:
-        "Tektonisk strekk trekker kontinentet fra hverandre. Skorpen sprekker opp langs normale forkastninger, og sentrale blokker synker inn som grabener (innsynkningsdaler). Hvis riftingen fortsetter over millioner av år, flommer havet inn og danner en lineær sjø (som Rødehavet), før det utvikler seg til et fullt verdenshav.",
-    },
-    transform: {
-      title: "Transformforkastning (Konservativ grense)",
-      kicker: "Sidelengs glidning & Friksjonslås",
-      typicalRate: "3–6 cm/år (San Andreas ~3,5–5 cm/år)",
-      rockTypes: "Forkastningsbreksje, mylonitt, oppknust bergart (kataklasitt)",
-      quaketype: "Grunne, men ekstremt kraftige jordskjelv når låste forkastningssegmenter brister",
-      meltingMechanism: "Ingen aktiv smelting! Skorpe verken lages eller ødelegges.",
-      realExample: "San Andreas-forkastningen (California), Jan Mayen-bruddsonen (Norskehavet)",
-      description:
-        "Platene glir horisontalt forbi hverandre. Fordi det ikke skjer heving eller nedsynking av mantel, forekommer det praktisk talt ingen vulkanisme. Friksjonen mellom bergartene gjør at platene henger seg opp i tiår eller århundrer mens spenning akkumuleres elastisk, inntil forkastningen plutselig slipper i et ødeleggende jordskjelv.",
-    },
-    hotspot: {
-      title: "Hotspot / Mantelplym (Intraplate-vulkanisme)",
-      kicker: "Dyp varmestrøm & Vulkankjeder",
-      typicalRate: "Platen beveger seg over den stasjonære plymen i 5–10 cm/år",
-      rockTypes: "Tholeiittisk basalt, pikritt, alkalisk basalt, peridotitt",
-      quaketype: "Vulkanrelaterte småskjelv og harmonisk skjelving under magmaopptrengning",
-      meltingMechanism: "Ekstraordinær termisk oppvarming fra kjerne-mantel-grensen (D''-laget).",
-      realExample: "Hawaii, Yellowstone, Island (hotspot plassert midt på midthavsrygg)",
-      description:
-        "En smal søyle av overopphetet bergart (en mantelplym) stiger opp fra kjerne-mantel-grensen (2900 km dyp). Fordi plymen er forankret dypt i mantelen, står den nesten stille mens litosfæreplaten glir sakte forbi over den. Dette brenner en perlerad av vulkaner inn i platen, der alderen øker jevnt i retningen platen beveger seg.",
-    },
-    paleomag: {
-      title: "Paleomagnetisk «båndopptaker» (Vine-Matthews-Morley 1963)",
-      kicker: "Geomagnetiske reverseringer & symmetrisk havbunn",
-      typicalRate: "Symmetrisk spredning (f.eks. 2,5 cm/år totalt, 1,25 cm/år per plate)",
-      rockTypes: "Basalt med magnetittmineraler frosset under Curie-temperaturen (580 °C)",
-      quaketype: "Grunne riftdalskjelv i spredningsaksen",
-      meltingMechanism: "Dekompresjonssmelting av astenosfæren under spredningsryggen",
-      realExample: "Reykjanesryggen sør for Island, Stillehavs-antarktiske rygg",
-      description:
-        "Når basaltisk magma stiger opp og størkner ved midthavsryggen, orienterer mikroskopiske krystaller av mineralet magnetitt seg parallelt med jordens gjeldende magnetfelt. Når temperaturen synker under 580 °C (Curie-temperaturen), låses magnetiseringen permanent. Fordi jordens magnetfelt reverserer med ujevne mellomrom, danner den symmetriske havbunnsspredningen et speilvendt magnetisk mønster på hver side av ryggaksen – det ugjendrivelige beviset på at havbunnen sprer seg!",
-    },
-  };
+  const [polarity, setPolarity] = useState<"normal" | "reversed">("normal");
+  const [rate, setRate] = useState(6);
+  const [showQuakes, setShowQuakes] = useState(true);
+  const [showMelting, setShowMelting] = useState(true);
+  const [showForces, setShowForces] = useState(true);
+  const [animating, setAnimating] = useState(true);
 
   const current = boundaryData[boundary];
+  const layers = layerAvailability(boundary);
+  const scene: SceneProps = {
+    rate,
+    showQuakes: layers.quakes && showQuakes,
+    showMelting: layers.melting && showMelting,
+    showForces: layers.forces && showForces,
+    animating,
+    polarity,
+  };
 
   return (
     <ModelFrame
       kicker="Interaktiv geodynamisk simulator"
-      title="Platetektonisk Bevegelses- og Grensemodell"
-      lead="Utforsk hvordan platene beveger seg, hvorfor magma oppstår ved dekompresjon og flukssmelting, og hvorfor transformforkastninger skiller seg fra bruddsoner. Seismisitet og ofiolitter eier egne kapitler."
+      title="Platetektonisk bevegelses- og grensemodell"
+      lead="Juster platehastigheten og se riftdal, litosfæretykkelse og magnetstripebredde endre seg. Slå av og på jordskjelv, smelting og drivkrefter der grensen har dem."
       toolbar={
         <div className="flex flex-wrap gap-1.5">
-          <ModelTab active={boundary === "subduction_continent"} onClick={() => setBoundary("subduction_continent")}>
-            Subduksjon (Andes)
-          </ModelTab>
-          <ModelTab active={boundary === "ridge"} onClick={() => setBoundary("ridge")}>
-            Midthavsrygg
-          </ModelTab>
-          <ModelTab active={boundary === "subduction_island"} onClick={() => setBoundary("subduction_island")}>
-            Øybue (Marianene)
-          </ModelTab>
-          <ModelTab active={boundary === "collision"} onClick={() => setBoundary("collision")}>
-            Kollisjon (Himalaya)
-          </ModelTab>
-          <ModelTab active={boundary === "rift"} onClick={() => setBoundary("rift")}>
-            Rift (Øst-Afrika/Oslo)
-          </ModelTab>
-          <ModelTab active={boundary === "transform"} onClick={() => setBoundary("transform")}>
-            Transform & Bruddsone
-          </ModelTab>
-          <ModelTab active={boundary === "hotspot"} onClick={() => setBoundary("hotspot")}>
-            Hotspot (Hawaii)
-          </ModelTab>
-          <ModelTab active={boundary === "paleomag"} onClick={() => setBoundary("paleomag")}>
-            Båndopptaker (Paleomag)
-          </ModelTab>
+          {(
+            [
+              ["subduction_continent", "Subduksjon (Andes)"],
+              ["ridge", "Midthavsrygg"],
+              ["subduction_island", "Øybue"],
+              ["collision", "Kollisjon (Himalaya)"],
+              ["rift", "Rift (Øst-Afrika)"],
+              ["transform", "Transform"],
+              ["hotspot", "Hotspot"],
+              ["paleomag", "Båndopptaker"],
+            ] as const
+          ).map(([id, label]) => (
+            <ModelTab key={id} active={boundary === id} onClick={() => setBoundary(id)}>
+              {label}
+            </ModelTab>
+          ))}
         </div>
       }
     >
       <ModelMarkers />
-
-      {/* Kontrollpanel */}
       <div className="mb-6 grid gap-4 rounded-xl border border-border bg-background/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center justify-between text-xs font-semibold">
-            <span>Relativ platehastighet:</span>
-            <span className="text-primary font-mono">{rate} cm/år</span>
+            <span>Relativ platehastighet</span>
+            <span className="font-mono text-primary">{rate} cm/år</span>
           </div>
           <input
             type="range"
@@ -166,1150 +921,159 @@ export function PlateTectonicsModel() {
             max={16}
             step={1}
             value={rate}
+            aria-label="Relativ platehastighet"
             onChange={(e) => setRate(Number(e.target.value))}
-            className="mt-2 w-full accent-primary cursor-pointer"
+            className="mt-2 w-full cursor-pointer accent-primary"
           />
-          <span className="text-[10px] text-muted-foreground">
-            {rate <= 3 ? "Treg spredning (Atlanteren)" : rate <= 9 ? "Middels fart (Nazca/Andes)" : "Rask plate (Øst-Stillehavet)"}
-          </span>
+          <span className="text-[10px] text-muted-foreground">{rateCaption(boundary, rate)}</span>
         </div>
-
         <div className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-foreground">Visningslag:</span>
+          <span className="text-xs font-semibold">Visningslag</span>
           <div className="flex flex-wrap gap-2">
             <Button
               type="button"
               size="sm"
-              variant={showQuakes ? "default" : "secondary"}
+              variant={scene.showQuakes ? "default" : "secondary"}
               className="h-7 text-xs"
+              disabled={!layers.quakes}
               onClick={() => setShowQuakes((q) => !q)}
             >
-              {showQuakes ? "✓ Jordskjelv (fokus)" : "+ Jordskjelv"}
+              {scene.showQuakes ? "Jordskjelv på" : "Jordskjelv av"}
             </Button>
             <Button
               type="button"
               size="sm"
-              variant={showMelting ? "default" : "secondary"}
+              variant={scene.showMelting ? "default" : "secondary"}
               className="h-7 text-xs"
+              disabled={!layers.melting}
+              title={layers.melting ? "Smeltesoner" : "Ingen smelting på denne grensen"}
               onClick={() => setShowMelting((m) => !m)}
             >
-              {showMelting ? "✓ Smeltesoner" : "+ Smeltesoner"}
+              {layers.melting ? (scene.showMelting ? "Smelting på" : "Smelting av") : "Ingen smelting"}
             </Button>
-            {boundary === "paleomag" && (
+            {boundary === "paleomag" ? (
               <Button
                 type="button"
                 size="sm"
                 variant="default"
-                className={`h-7 text-xs font-semibold ${
-                  activePolarity === "normal"
-                    ? "bg-blue-600 hover:bg-blue-500 text-white"
-                    : "bg-slate-700 hover:bg-slate-600 text-white"
-                }`}
-                onClick={() =>
-                  setActivePolarity((p) => (p === "normal" ? "reversed" : "normal"))
-                }
+                className="h-7 text-xs"
+                onClick={() => setPolarity((p) => (p === "normal" ? "reversed" : "normal"))}
               >
-                {activePolarity === "normal"
-                  ? "Felt: Normal (N) ⇄ Snu"
-                  : "Felt: Revers (R) ⇄ Snu"}
+                {polarity === "normal" ? "Felt: normal" : "Felt: reversert"}
               </Button>
-            )}
+            ) : null}
           </div>
         </div>
-
         <div className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-foreground">Fysiske krefter:</span>
+          <span className="text-xs font-semibold">Drivkrefter</span>
           <div className="flex flex-wrap gap-2">
             <Button
               type="button"
               size="sm"
-              variant={showForces ? "default" : "secondary"}
+              variant={scene.showForces ? "default" : "secondary"}
               className="h-7 text-xs"
+              disabled={!layers.forces}
+              title={layers.forces ? "Drivkrefter" : "Pilene på denne fanen er selve bevegelsen"}
               onClick={() => setShowForces((f) => !f)}
             >
-              {showForces ? "✓ Drivkrefter (vektorer)" : "+ Drivkrefter"}
+              {layers.forces ? (scene.showForces ? "Krefter på" : "Krefter av") : "Bevegelse alltid vist"}
             </Button>
-            <Button
-              type="button"
-              size="sm"
-              variant={animating ? "secondary" : "ghost"}
-              className="h-7 text-xs"
-              onClick={() => setAnimating((a) => !a)}
-            >
-              {animating ? "⏸ Pause animasjon" : "▶ Start animasjon"}
+            <Button type="button" size="sm" variant="secondary" className="h-7 text-xs" onClick={() => setAnimating((a) => !a)}>
+              {animating ? "Pause" : "Start"}
             </Button>
           </div>
         </div>
-
         <div className="rounded-lg border border-border/60 bg-muted/40 p-2.5 text-xs">
-          <span className="font-semibold text-primary block">{current.kicker}</span>
-          <span className="text-muted-foreground line-clamp-2 mt-0.5">{current.typicalRate}</span>
+          <span className="block font-semibold text-primary">{current.kicker}</span>
+          <span className="mt-0.5 line-clamp-3 text-muted-foreground">{rateCaption(boundary, rate)}</span>
         </div>
       </div>
 
-      {/* SVG-simulatorkjerne */}
       <div className="relative overflow-hidden rounded-xl border border-border bg-[#0a1118]">
-        {/* CSS animasjoner for strømmer og partikler */}
         <style>{`
-          @keyframes mantle-flow-left {
-            0% { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: -40; }
-          }
-          @keyframes mantle-flow-right {
-            0% { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 40; }
-          }
-          @keyframes magma-rise {
-            0% { transform: translateY(0px) scale(0.95); opacity: 0.7; }
-            50% { transform: translateY(-8px) scale(1.05); opacity: 1; }
-            100% { transform: translateY(0px) scale(0.95); opacity: 0.7; }
-          }
-          @keyframes quake-pulse {
-            0% { r: 3; opacity: 0.9; }
-            70% { r: 8; opacity: 0; }
-            100% { r: 3; opacity: 0.9; }
-          }
-          .mantle-anim-left {
-            animation: mantle-flow-left ${24 / (rate * 0.5)}s linear infinite;
-          }
-          .mantle-anim-right {
-            animation: mantle-flow-right ${24 / (rate * 0.5)}s linear infinite;
-          }
-          .magma-pulse {
-            animation: magma-rise 3s ease-in-out infinite;
-          }
-          .quake-ring {
-            animation: quake-pulse 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
-          }
+          @keyframes mantle-flow-left { to { stroke-dashoffset: -40; } }
+          @keyframes mantle-flow-right { to { stroke-dashoffset: 40; } }
+          @keyframes magma-rise { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+          @keyframes quake-pulse { 0%, 100% { opacity: 0.45; } 70% { opacity: 0; } }
+          .mantle-anim-left { animation: mantle-flow-left ${Math.max(2.2, 16 / rate)}s linear infinite; }
+          .mantle-anim-right { animation: mantle-flow-right ${Math.max(2.2, 16 / rate)}s linear infinite; }
+          .magma-pulse { animation: magma-rise 3s ease-in-out infinite; }
+          .quake-ring { animation: quake-pulse 2s ease-out infinite; }
         `}</style>
-
-        <svg
-          viewBox="0 0 920 480"
-          className="w-full h-auto select-none"
-          role="img"
-          aria-label={current.title}
-        >
+        <svg viewBox="0 0 920 480" className="h-auto w-full select-none" role="img" aria-label={current.title} data-boundary={boundary}>
           <defs>
-            {/* Bakgrunnsgradient for himmel og overflate */}
-            <linearGradient id="pt-sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0b1622" />
-              <stop offset="100%" stopColor="#142638" />
-            </linearGradient>
-
-            {/* Havgradient */}
-            <linearGradient id="pt-ocean" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0f2b3e" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#0a1d2c" stopOpacity="0.95" />
-            </linearGradient>
-
-            {/* Astenosfære-gradient */}
-            <linearGradient id="pt-astheno" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1a2e3b" />
-              <stop offset="50%" stopColor="#22201e" />
-              <stop offset="100%" stopColor="#321e16" />
-            </linearGradient>
-
-            {/* Magmasmelt-glød */}
-            <radialGradient id="pt-magma-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#ff7b24" stopOpacity="1" />
-              <stop offset="50%" stopColor="#ef4444" stopOpacity="0.75" />
-              <stop offset="100%" stopColor="#991b1b" stopOpacity="0" />
-            </radialGradient>
-
-            {/* Flukssmelting vann-dråpe gradient */}
-            <radialGradient id="pt-flux-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#818cf8" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#4f46e5" stopOpacity="0" />
-            </radialGradient>
-
-            {/* Pil-markører */}
-            <marker id="arrow-slab" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+            <marker id="arrow-slab" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <path d="M0,0 L0,6 L7,3 z" fill="#38bdf8" />
             </marker>
-            <marker id="arrow-ridge" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+            <marker id="arrow-ridge" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <path d="M0,0 L0,6 L7,3 z" fill="#f59e0b" />
             </marker>
-            <marker id="arrow-magma" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+            <marker id="arrow-magma" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <path d="M0,0 L0,6 L7,3 z" fill="#ef4444" />
             </marker>
           </defs>
-
-          {/* Himmel overflate */}
-          <rect x="0" y="0" width="920" height="150" fill="url(#pt-sky)" />
-
-          {/* Astenosfære bunnlag (150–480) */}
-          <rect x="0" y="150" width="920" height="330" fill="url(#pt-astheno)" />
-
-          {/* Dybdeskala til venstre */}
-          <g opacity="0.6" className="text-[10px] font-mono" fill="#7ba3be">
-            <line x1="38" y1="90" x2="38" y2="460" stroke="#334e68" strokeWidth="1" strokeDasharray="3 3" />
-            <line x1="34" y1="90" x2="42" y2="90" stroke="#334e68" strokeWidth="1" />
-            <text x="30" y="94" textAnchor="end">0 km</text>
-            <line x1="34" y1="150" x2="42" y2="150" stroke="#334e68" strokeWidth="1" />
-            <text x="30" y="154" textAnchor="end">50 km</text>
-            <line x1="34" y1="230" x2="42" y2="230" stroke="#334e68" strokeWidth="1" />
-            <text x="30" y="234" textAnchor="end">150 km</text>
-            <line x1="34" y1="350" x2="42" y2="350" stroke="#334e68" strokeWidth="1" />
-            <text x="30" y="354" textAnchor="end">350 km</text>
-            <line x1="34" y1="450" x2="42" y2="450" stroke="#334e68" strokeWidth="1" />
-            <text x="30" y="454" textAnchor="end">670 km</text>
-            <text x="25" y="280" textAnchor="middle" transform="rotate(-90 25 280)" fill="#6488a0" fontSize="10">
-              DYP (KM)
-            </text>
-          </g>
-
-          {/* ============================================================ */}
-          {/* SCENE 1: SUBDUKSJON HAV MOT KONTINENT                        */}
-          {/* ============================================================ */}
-          {boundary === "subduction_continent" && (
-            <g>
-              {/* Havbasseng over havbunn (venstre side) */}
-              <polygon points="50,90 440,90 400,125 50,110" fill="url(#pt-ocean)" />
-              <text x="180" y="102" fill="#38bdf8" fontSize="11" opacity="0.8">
-                Stillehavet / Havvann (ca. 4 km)
-              </text>
-
-              {/* Subduksjonssone dyphavsgrop (trench) */}
-              <path d="M 370 90 L 405 125 L 435 90" fill="#06121c" stroke="#38bdf8" strokeWidth="1.2" opacity="0.8" />
-              <text x="405" y="82" fill="#38bdf8" fontSize="10.5" fontWeight="600" textAnchor="middle">
-                Dyphavsgrop (Trench)
-              </text>
-
-              {/* Akkresjonskile (sedimentprisme foran buen) */}
-              <polygon points="405,125 460,95 440,90 405,125" fill="#3d493f" stroke="#2c3a30" strokeWidth="1" />
-              <text x="435" y="112" fill="#94a3b8" fontSize="9" textAnchor="middle">Kile</text>
-
-              {/* Kontinentalskorpe med Andes-fjellkjede (høyre side) */}
-              {/* Fjellprofil på overflaten */}
-              <path
-                d="M 460 95 L 490 85 L 530 65 L 565 80 L 610 50 L 650 78 L 700 70 L 780 85 L 900 85 L 900 160 L 460 160 Z"
-                fill="#4b5d52"
-                stroke="#2d3d34"
-                strokeWidth="1.5"
-              />
-              <path d="M 600 50 L 610 40 L 620 50 Z" fill="#ffffff" opacity="0.8" />
-              <path d="M 525 65 L 530 58 L 535 65 Z" fill="#ffffff" opacity="0.8" />
-              <text x="610" y="32" fill="#f8fafc" fontSize="12" fontWeight="700" textAnchor="middle">
-                Vulkansk bue (Andesfjellene)
-              </text>
-              <text x="740" y="125" fill="#d1d5db" fontSize="12" fontWeight="600">
-                Kontinentalskorpe (granittisk, 40–60 km)
-              </text>
-
-              {/* Kontinental litosfærisk stiv mantel under skorpen */}
-              <polygon points="460,160 900,160 900,225 510,225" fill="#243742" stroke="#1b2a33" strokeWidth="1" />
-              <text x="750" y="195" fill="#94a3b8" fontSize="11" textAnchor="middle">
-                Litosfærisk mantel (kald, stiv)
-              </text>
-
-              {/* Den subduserende oseaniske platen (litosfære som dykker i ~35-45 graders vinkel) */}
-              {/* Oseanisk skorpe (basaltisk øverste lag, 7 km) */}
-              <path
-                d="M 50 110 L 400 125 L 680 430 L 635 445 L 380 145 L 50 125 Z"
-                fill="#2e4238"
-                stroke="#1c2d25"
-                strokeWidth="1.2"
-              />
-              {/* Oseanisk litosfærisk mantel under skorpen */}
-              <path
-                d="M 50 125 L 380 145 L 635 445 L 565 470 L 340 185 L 50 170 Z"
-                fill="#1c2f3a"
-                stroke="#122028"
-                strokeWidth="1.2"
-              />
-              <text x="210" y="152" fill="#94a3b8" fontSize="11" fontWeight="600">
-                Oseanisk litosfære (Nazcaplaten) →
-              </text>
-
-              {/* Mantelkilen (wedge) mellom slabben og overliggende kontinent */}
-              <polygon points="430,140 510,225 650,400 480,240" fill="#1b2e25" opacity="0.3" />
-              <text x="540" y="270" fill="#4ade80" fontSize="11" fontWeight="600" textAnchor="middle">
-                Mantelkile (peridotitt)
-              </text>
-
-              {/* FLUKSSMELTING: Vannutslipp (dehydrering) og stigende magma */}
-              {showMelting && (
-                <g>
-                  {/* Dehydrering fra slab (blå vanndråper/piler) */}
-                  <g opacity="0.9" fill="#38bdf8">
-                    <circle cx="500" cy="245" r="3" />
-                    <circle cx="530" cy="280" r="3.5" />
-                    <circle cx="560" cy="315" r="4" />
-                    <circle cx="590" cy="350" r="3.5" />
-                    <path d="M 500 240 L 515 210" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 2" />
-                    <path d="M 530 275 L 545 240" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 2" />
-                    <path d="M 560 310 L 575 275" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 2" />
-                    <text x="590" y="325" fill="#38bdf8" fontSize="10.5" fontWeight="600">
-                      H₂O frigjøres fra amfibol/serpentin
-                    </text>
-                  </g>
-
-                  {/* Smeltesone i mantelkilen */}
-                  <ellipse cx="560" cy="230" rx="45" ry="25" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
-                  <text x="560" y="234" fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
-                    Flukssmelting (senket solidus)
-                  </text>
-
-                  {/* Magmaplier som stiger mot vulkanen */}
-                  <path
-                    d="M 560 215 C 570 170, 595 120, 610 60"
-                    fill="none"
-                    stroke="#ef4444"
-                    strokeWidth="3.5"
-                    strokeDasharray="6 4"
-                    markerEnd="url(#arrow-magma)"
-                  />
-                  {/* Magmakammer under vulkanen */}
-                  <ellipse cx="605" cy="115" rx="22" ry="14" fill="#ef4444" opacity="0.9" />
-                  <text x="605" y="119" fill="#fff" fontSize="9" fontWeight="700" textAnchor="middle">
-                    Magmakammer
-                  </text>
-                  {/* Utbrudd/damp fra krateret */}
-                  <path d="M 610 40 L 602 18 L 618 15 L 610 40" fill="#f97316" opacity="0.9" />
-                  <circle cx="610" cy="12" r="7" fill="#cbd5e1" opacity="0.6" />
-                  <circle cx="620" cy="8" r="9" fill="#cbd5e1" opacity="0.4" />
-                </g>
-              )}
-
-              {/* Jordskjelv langs plategrensen */}
-              {showQuakes && (
-                <g>
-                  <circle cx="410" cy="120" r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="430" cy="135" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="455" cy="155" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="475" cy="175" r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="510" cy="220" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="540" cy="260" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <path d="M 410 120 L 540 260" fill="none" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.45" />
-                  <g transform="translate(680, 330)">
-                    <rect x="0" y="0" width="200" height="52" rx="6" fill="#0f172a" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
-                    <text x="10" y="20" fill="#ef4444" fontSize="11" fontWeight="700">Jordskjelv langs slabben</text>
-                    <text x="10" y="38" fill="#94a3b8" fontSize="10">Dybdefordeling eier Jordskjelv.</text>
-                  </g>
-                </g>
-              )}
-
-              {/* KRAFTVEKTORER (SLAB PULL & TRENCH SUCTION) */}
-              {showForces && (
-                <g>
-                  {/* Slab pull kraftvektor som trekker platen ned */}
-                  <g transform="translate(630, 410)">
-                    <line x1="0" y1="0" x2="45" y2="55" stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
-                    <text x="50" y="70" fill="#38bdf8" fontSize="12" fontWeight="800">
-                      SLAB PULL (~90 % av drivkraften)
-                    </text>
-                    <text x="50" y="85" fill="#94a3b8" fontSize="10">
-                      Tett eklogitt synker under egen vekt
-                    </text>
-                  </g>
-                  {/* Konvergens-pil ved overflaten */}
-                  <g transform="translate(180, 80)">
-                    <line x1="0" y1="0" x2="60" y2="0" stroke="#38bdf8" strokeWidth="3.5" markerEnd="url(#arrow-slab)" />
-                    <text x="30" y="-8" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-                      {rate} cm/år
-                    </text>
-                  </g>
-                </g>
-              )}
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 2: MIDTHAVSRYGG OG HAVBUNNSSPREDNING                   */}
-          {/* ============================================================ */}
-          {boundary === "ridge" && (
-            <g>
-              {/* Havvann */}
-              <rect x="50" y="85" width="820" height="75" fill="url(#pt-ocean)" />
-              <text x="120" y="105" fill="#38bdf8" fontSize="11" opacity="0.8">
-                Atlanterhavet (vannsøyle 2–4 km)
-              </text>
-
-              {/* Midthavsrygg tverrsnitt (høyest på midten ved x=460) */}
-              {/* Havbunnsskorpe venstre og høyre flanke */}
-              <path
-                d="M 50 160 L 380 120 L 440 108 L 452 118 L 468 118 L 480 108 L 540 120 L 870 160 L 870 185 L 540 145 L 480 133 L 440 133 L 380 145 L 50 185 Z"
-                fill="#2d3d34"
-                stroke="#1e2c24"
-                strokeWidth="1.5"
-              />
-              {/* Sentral riftdal i aksen */}
-              <text x="460" y="98" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-                Sentral riftdal (rift axis)
-              </text>
-
-              {/* Litosfærisk mantel under skorpen (tykner bort fra ryggen med sqrt(alder)) */}
-              <path
-                d="M 50 185 L 380 145 L 440 133 L 452 138 L 468 138 L 480 133 L 540 145 L 870 185 L 870 280 L 580 210 L 480 160 L 440 160 L 340 210 L 50 280 Z"
-                fill="#1b2e38"
-                stroke="#122028"
-                strokeWidth="1.2"
-              />
-              <text x="180" y="240" fill="#94a3b8" fontSize="11">
-                Litosfæren avkjøles og tykner utover →
-              </text>
-              <text x="740" y="240" fill="#94a3b8" fontSize="11" textAnchor="end">
-                ← Eldre og tyngre havbunn
-              </text>
-
-              {/* Varm oppstigende astenosfære i midten */}
-              <path
-                d="M 380 470 C 420 350, 435 220, 450 138 L 470 138 C 485 220, 500 350, 540 470 Z"
-                fill="#361f18"
-                opacity="0.85"
-              />
-
-              {/* DEKOMPRESJONSSMELTING OG MAGMA */}
-              {showMelting && (
-                <g>
-                  {/* Smeltesone under ryggen */}
-                  <ellipse cx="460" cy="170" rx="35" ry="25" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
-                  <text x="460" y="174" fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
-                    Dekompresjonssmelting (10–20 %)
-                  </text>
-                  <text x="460" y="188" fill="#fed7aa" fontSize="9" textAnchor="middle">
-                    Solidus krysses pga. trykkfall
-                  </text>
-
-                  {/* Magmatilførsel til overflaten */}
-                  <path d="M 460 155 L 460 118" stroke="#ef4444" strokeWidth="4" markerEnd="url(#arrow-magma)" />
-
-                  {/* Hydrotermale skorsteiner ("Black smokers") i riftdalen */}
-                  <g transform="translate(448, 108)">
-                    <rect x="0" y="0" width="4" height="9" fill="#475569" />
-                    <line x1="2" y1="0" x2="2" y2="-16" stroke="#000" strokeWidth="2.5" opacity="0.8" />
-                    <circle cx="2" cy="-18" r="4" fill="#64748b" opacity="0.5" />
-                  </g>
-                  <g transform="translate(468, 108)">
-                    <rect x="0" y="0" width="4" height="9" fill="#475569" />
-                    <line x1="2" y1="0" x2="2" y2="-16" stroke="#000" strokeWidth="2.5" opacity="0.8" />
-                    <circle cx="2" cy="-18" r="4" fill="#64748b" opacity="0.5" />
-                  </g>
-                  <text x="515" y="85" fill="#94a3b8" fontSize="9.5">
-                    Hydrotermale skorsteiner (350 °C)
-                  </text>
-                </g>
-              )}
-
-              {/* ANIMERTE MANTELKONVEKSJONSSTRØMMER */}
-              {animating && (
-                <g stroke="#f97316" strokeWidth="2" fill="none" opacity="0.6">
-                  <path
-                    d="M 440 450 C 440 320, 420 220, 320 220 L 150 240"
-                    strokeDasharray="6 6"
-                    className="mantle-anim-left"
-                  />
-                  <path
-                    d="M 480 450 C 480 320, 500 220, 600 220 L 770 240"
-                    strokeDasharray="6 6"
-                    className="mantle-anim-right"
-                  />
-                </g>
-              )}
-
-              {/* JORDSKJELV VED MIDTHAVSRYGG (KUN GRUNNE) */}
-              {showQuakes && (
-                <g>
-                  <circle cx="452" cy="120" r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="460" cy="115" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="468" cy="120" r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="435" cy="130" r="4" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="485" cy="130" r="4" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <text x="460" y="65" fill="#ef4444" fontSize="10.5" fontWeight="600" textAnchor="middle">
-                    Bare grunne skjelv (&lt; 15 km dyp) i spredningsaksen!
-                  </text>
-                </g>
-              )}
-
-              {/* KRAFTVEKTORER: RIDGE PUSH */}
-              {showForces && (
-                <g>
-                  {/* Ridge push piler som sklir ned ryggskråningen */}
-                  <g transform="translate(360, 130)">
-                    <line x1="0" y1="0" x2="-60" y2="16" stroke="#f59e0b" strokeWidth="3.5" markerEnd="url(#arrow-ridge)" />
-                    <text x="-30" y="-8" fill="#f59e0b" fontSize="11" fontWeight="700">
-                      RIDGE PUSH (gravitasjonsglidning)
-                    </text>
-                  </g>
-                  <g transform="translate(560, 130)">
-                    <line x1="0" y1="0" x2="60" y2="16" stroke="#f59e0b" strokeWidth="3.5" markerEnd="url(#arrow-ridge)" />
-                    <text x="30" y="-8" fill="#f59e0b" fontSize="11" fontWeight="700">
-                      RIDGE PUSH
-                    </text>
-                  </g>
-                  {/* Spredningsrate etikett */}
-                  <text x="220" y="145" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-                    ← {rate / 2} cm/år
-                  </text>
-                  <text x="700" y="145" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-                    {rate / 2} cm/år →
-                  </text>
-                </g>
-              )}
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 3: SUBDUKSJON HAV MOT HAV (ØYBUE & DYPHAVSGROP)       */}
-          {boundary === "subduction_island" && (
-            <g>
-              {/* Hav over hele flaten */}
-              <rect x="50" y="85" width="820" height="55" fill="url(#pt-ocean)" />
-              <text x="120" y="105" fill="#38bdf8" fontSize="11">
-                Stillehavet (f.eks. Marianegropen og Filippinerhavet)
-              </text>
-
-              {/* Ekstrem dyphavsgrop ved x=390 */}
-              <path d="M 330 85 L 390 145 L 430 85" fill="#040b12" stroke="#38bdf8" strokeWidth="1.5" />
-              <text x="390" y="75" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-                Dyphavsgrop (~11 000 m, f.eks. Challengerdypet)
-              </text>
-
-              {/* Vulkanøy som stikker opp av havet ved x=550 */}
-              <path d="M 480 85 L 540 50 L 560 50 L 620 85 Z" fill="#3b4d42" stroke="#25352c" strokeWidth="1.5" />
-              <text x="550" y="40" fill="#f8fafc" fontSize="12" fontWeight="700" textAnchor="middle">
-                Vulkanøybue (f.eks. Japan, Marianene)
-              </text>
-
-              {/* Subduserende eldre, kaldere havbunn (dykker mot høyre) */}
-              <path
-                d="M 50 120 L 380 145 L 640 440 L 580 460 L 330 170 L 50 140 Z"
-                fill="#1f332a"
-                stroke="#12201a"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M 50 140 L 330 170 L 580 460 L 500 480 L 280 200 L 50 180 Z"
-                fill="#152630"
-                stroke="#0e1920"
-                strokeWidth="1.2"
-              />
-              <text x="160" y="165" fill="#94a3b8" fontSize="11" fontWeight="600">
-                Eldste og tetteste havbunn synker →
-              </text>
-
-              {/* Overliggende yngre havbunnsplate og bakbuebasseng (til høyre) */}
-              <path
-                d="M 430 120 L 480 85 L 620 85 L 680 120 L 870 120 L 870 160 L 470 160 Z"
-                fill="#2c3e34"
-                stroke="#1b2a22"
-                strokeWidth="1.2"
-              />
-              <text x="760" y="105" fill="#94a3b8" fontSize="10.5">
-                Bakbuebasseng (Back-arc basin)
-              </text>
-
-              {/* Flukssmelting under øybuen */}
-              {showMelting && (
-                <g>
-                  <ellipse cx="530" cy="220" rx="35" ry="20" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
-                  <path d="M 535 205 L 550 55" stroke="#ef4444" strokeWidth="3" strokeDasharray="5 3" markerEnd="url(#arrow-magma)" />
-                  <text x="530" y="248" fill="#fca5a5" fontSize="10" textAnchor="middle">
-                    Flukssmelting i mantelkilen
-                  </text>
-                </g>
-              )}
-
-              {/* Jordskjelv langs plategrensen */}
-              {showQuakes && (
-                <g>
-                  <circle cx="395" cy="145" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="430" cy="180" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="475" cy="235" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                </g>
-              )}
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 4: KONTINENTALKOLLISJON (HIMALAYA & KALEDONIDENE)      */}
-          {boundary === "collision" && (
-            <g>
-              {/* Kolossalt fjellmassiv i midten (Himalaya og Tibet-platået) */}
-              <path
-                d="M 50 110 L 260 110 L 330 65 L 390 40 L 450 30 L 520 45 L 580 55 L 660 110 L 870 110 L 870 170 L 680 230 L 460 260 L 280 230 L 50 170 Z"
-                fill="#4b5e52"
-                stroke="#2a3a30"
-                strokeWidth="1.8"
-              />
-              {/* Snødekte fjelltinder */}
-              <polygon points="440,45 450,30 460,45" fill="#fff" />
-              <polygon points="380,52 390,40 400,52" fill="#fff" />
-              <polygon points="510,58 520,45 530,58" fill="#fff" />
-              <text x="450" y="20" fill="#f8fafc" fontSize="13" fontWeight="800" textAnchor="middle">
-                Himalaya (Mt. Everest 8848 moh. / Kaledonidene)
-              </text>
-
-              {/* Skyvedekker (nappes) som er overskjøvet langs forkastninger */}
-              <path d="M 280 150 C 340 120, 420 85, 480 80" stroke="#f59e0b" strokeWidth="2.5" fill="none" />
-              <path d="M 320 180 C 400 150, 490 110, 560 100" stroke="#f59e0b" strokeWidth="2.5" fill="none" />
-              <text x="320" y="115" fill="#f59e0b" fontSize="10.5" fontWeight="700">
-                Skyvedekker (overskjøvet bergart)
-              </text>
-
-              {/* Kjemperot (Moho er presset ned til 70–80 km dyp!) */}
-              <path
-                d="M 50 170 L 280 230 L 460 260 L 680 230 L 870 170 L 870 210 L 720 270 L 460 310 L 240 270 L 50 210 Z"
-                fill="#243740"
-                stroke="#15242b"
-                strokeWidth="1.2"
-              />
-              <text x="460" y="290" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-                Skorperot: Moho nedtrykt til ~75 km dyp!
-              </text>
-              <text x="460" y="306" fill="#94a3b8" fontSize="9.5" textAnchor="middle">
-                Isostatisk likevekt: Høye fjell krever dype røtter (som isfjell)
-              </text>
-
-              {/* Kollisjonspiler fra begge sider */}
-              {showForces && (
-                <g>
-                  <g transform="translate(140, 95)">
-                    <line x1="0" y1="0" x2="60" y2="0" stroke="#ef4444" strokeWidth="4" markerEnd="url(#arrow-magma)" />
-                    <text x="30" y="-8" fill="#ef4444" fontSize="11" fontWeight="700" textAnchor="middle">
-                      Indiaplaten ({rate} cm/år)
-                    </text>
-                  </g>
-                  <g transform="translate(780, 95)">
-                    <line x1="0" y1="0" x2="-60" y2="0" stroke="#ef4444" strokeWidth="4" markerEnd="url(#arrow-magma)" />
-                    <text x="-30" y="-8" fill="#ef4444" fontSize="11" fontWeight="700" textAnchor="middle">
-                      Eurasiske plate
-                    </text>
-                  </g>
-                </g>
-              )}
-
-              {/* Jordskjelv over et bredt belte */}
-              {showQuakes && (
-                <g>
-                  <circle cx="310" cy="110" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="360" cy="90" r="6" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="430" cy="75" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="490" cy="85" r="6" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="560" cy="100" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="410" cy="160" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <circle cx="480" cy="170" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <text x="460" y="345" fill="#ef4444" fontSize="11" fontWeight="600" textAnchor="middle">
-                    Ingen subduksjon = ingen dype mantelskjelv (&gt; 300 km), men voldsomme grunne jordskjelv!
-                  </text>
-                </g>
-              )}
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 5: KONTINENTAL RIFT (ØST-AFRIKA / OSLOFELTET)          */}
-          {boundary === "rift" && (
-            <g>
-              {/* Landoverflate med sentral riftdal (graben) */}
-              <path
-                d="M 50 90 L 320 90 L 370 140 L 530 140 L 580 90 L 870 90 L 870 170 L 590 180 L 520 160 L 380 160 L 310 180 L 50 170 Z"
-                fill="#544c3d"
-                stroke="#332c20"
-                strokeWidth="1.5"
-              />
-              {/* Steile forkastningsskrenter (horst og graben) */}
-              <line x1="320" y1="90" x2="370" y2="140" stroke="#f59e0b" strokeWidth="2.5" />
-              <line x1="580" y1="90" x2="530" y2="140" stroke="#f59e0b" strokeWidth="2.5" />
-              <text x="450" y="125" fill="#f59e0b" fontSize="12" fontWeight="700" textAnchor="middle">
-                Graben (Innsunket riftdal)
-              </text>
-              <text x="220" y="80" fill="#cbd5e1" fontSize="11" fontWeight="600">
-                Horst (Riftskulder)
-              </text>
-              <text x="680" y="80" fill="#cbd5e1" fontSize="11" fontWeight="600">
-                Horst (Riftskulder)
-              </text>
-
-              {/* Vann/innsjø i bunnen av riftdalen (som Tanganyika/Malawisjøen) */}
-              <rect x="400" y="132" width="100" height="8" fill="#0284c7" opacity="0.85" />
-              <text x="450" y="152" fill="#38bdf8" fontSize="9.5" textAnchor="middle">
-                Riftsjø (f.eks. Tanganyikasjøen)
-              </text>
-
-              {/* Manteloppstigning under den tynnede skorpen */}
-              <path
-                d="M 350 470 C 390 320, 420 220, 440 160 L 460 160 C 480 220, 510 320, 550 470 Z"
-                fill="#3a1e16"
-                opacity="0.8"
-              />
-
-              {/* Dekompresjon og vulkanisme i riftdalen */}
-              {showMelting && (
-                <g>
-                  <ellipse cx="450" cy="200" rx="35" ry="20" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
-                  <path d="M 450 185 L 430 135" stroke="#ef4444" strokeWidth="3" markerEnd="url(#arrow-magma)" />
-                  <polygon points="420,135 430,120 440,135" fill="#dc2626" />
-                  <text x="450" y="235" fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
-                    Dekompresjon pga. skorpetynning
-                  </text>
-                  <text x="450" y="250" fill="#fed7aa" fontSize="9" textAnchor="middle">
-                    (Oslofeltets vulkaner i perm)
-                  </text>
-                </g>
-              )}
-
-              {/* Strekkpiler */}
-              {showForces && (
-                <g>
-                  <g transform="translate(240, 105)">
-                    <line x1="0" y1="0" x2="-50" y2="0" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
-                    <text x="-25" y="-8" fill="#f59e0b" fontSize="11" fontWeight="700">Strekk</text>
-                  </g>
-                  <g transform="translate(660, 105)">
-                    <line x1="0" y1="0" x2="50" y2="0" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
-                    <text x="25" y="-8" fill="#f59e0b" fontSize="11" fontWeight="700">Strekk</text>
-                  </g>
-                </g>
-              )}
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 6: TRANSFORMGRENSE & BRUDDSONE                         */}
-          {boundary === "transform" && (
-            <g>
-              {/* Havbunnsoverflate */}
-              <rect x="50" y="30" width="820" height="420" rx="8" fill="#0d1b26" stroke="#1b2a36" />
-
-              <g transform="translate(70, 55)">
-                <text x="0" y="0" fill="#f8fafc" fontSize="14" fontWeight="800">
-                  Transformforkastning vs. Inaktiv Bruddsone (Fracture Zone)
-                </text>
-                <text x="0" y="18" fill="#94a3b8" fontSize="11">
-                  Hvorfor forekommer jordskjelv KUN mellom midthavsryggsegmentene?
-                </text>
-              </g>
-
-              {/* Nordlig Midthavsrygg-akse (x=260, y=90 til 220) */}
-              <rect x="252" y="90" width="16" height="130" fill="#f59e0b" opacity="0.9" rx="3" />
-              <text x="260" y="80" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-                Nordlig Ryggsegment
-              </text>
-              {/* Spredningspiler for nordlig rygg */}
-              <line x1="240" y1="155" x2="160" y2="155" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-              <text x="200" y="145" fill="#38bdf8" fontSize="10" fontWeight="700" textAnchor="middle">Vestover ←</text>
-              <line x1="280" y1="155" x2="360" y2="155" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
-              <text x="320" y="145" fill="#f59e0b" fontSize="10" fontWeight="700" textAnchor="middle">→ Østover</text>
-
-              {/* Sørlig Midthavsrygg-akse (x=620, y=240 til 370) */}
-              <rect x="612" y="240" width="16" height="130" fill="#f59e0b" opacity="0.9" rx="3" />
-              <text x="620" y="390" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-                Sørlig Ryggsegment
-              </text>
-              {/* Spredningspiler for sørlig rygg */}
-              <line x1="600" y1="305" x2="520" y2="305" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-              <text x="560" y="295" fill="#38bdf8" fontSize="10" fontWeight="700" textAnchor="middle">Vestover ←</text>
-              <line x1="640" y1="305" x2="720" y2="305" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
-              <text x="680" y="295" fill="#f59e0b" fontSize="10" fontWeight="700" textAnchor="middle">→ Østover</text>
-
-              {/* Vestre inaktive bruddsone (x=70 til 252 ved y=230) */}
-              <line x1="70" y1="230" x2="252" y2="230" stroke="#64748b" strokeWidth="2.5" strokeDasharray="6 4" />
-              <rect x="80" y="238" width="160" height="22" rx="4" fill="#1e293b" stroke="#334155" />
-              <text x="160" y="253" fill="#94a3b8" fontSize="9.5" fontWeight="600" textAnchor="middle">
-                Inaktiv bruddsone (samme retning ← ←)
-              </text>
-
-              {/* AKTIV TRANSFORMFORKASTNING (x=268 til 612 ved y=230) */}
-              <line x1="268" y1="230" x2="612" y2="230" stroke="#ef4444" strokeWidth="5" />
-              <rect x="330" y="205" width="220" height="24" rx="4" fill="#7f1d1d" stroke="#ef4444" />
-              <text x="440" y="221" fill="#fff" fontSize="11" fontWeight="800" textAnchor="middle">
-                AKTIV TRANSFORMFORKASTNING
-              </text>
-              <text x="440" y="244" fill="#fca5a5" fontSize="10" fontWeight="700" textAnchor="middle">
-                Motsatt bevegelse: Nordside → mot Sørside ← (SEISMISK AKTIV!)
-              </text>
-
-              {/* Jordskjelv langs den aktive sonen */}
-              {showQuakes && (
-                <g>
-                  <circle cx="310" cy="230" r="12" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
-                  <circle cx="310" cy="230" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
-                  <circle cx="390" cy="230" r="14" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
-                  <circle cx="390" cy="230" r="6" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
-                  <circle cx="480" cy="230" r="12" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
-                  <circle cx="480" cy="230" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
-                  <circle cx="560" cy="230" r="16" fill="#ef4444" opacity="0.4" className={animating ? "quake-ring" : ""} />
-                  <circle cx="560" cy="230" r="6.5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
-                </g>
-              )}
-
-              {/* Østre inaktive bruddsone (x=628 til 850) */}
-              <line x1="628" y1="230" x2="850" y2="230" stroke="#64748b" strokeWidth="2.5" strokeDasharray="6 4" />
-              <rect x="650" y="202" width="160" height="22" rx="4" fill="#1e293b" stroke="#334155" />
-              <text x="730" y="217" fill="#94a3b8" fontSize="9.5" fontWeight="600" textAnchor="middle">
-                Inaktiv bruddsone (samme retning → →)
-              </text>
-
-              {/* Forklarende infoboks nede i SVG */}
-              <rect x="100" y="395" width="720" height="42" rx="6" fill="#0f172a" stroke="#1e293b" />
-              <text x="460" y="413" fill="#cbd5e1" fontSize="10.5" textAnchor="middle">
-                Utenfor ryggaksene glir begge sider av sprekken i SAMME retning med SAMME fart. Ingen relativ forskyvning = INGEN jordskjelv!
-              </text>
-              <text x="460" y="427" fill="#f59e0b" fontSize="10" fontWeight="700" textAnchor="middle">
-                Kun mellom de to spredningsryggene beveger blokkene seg forbi hverandre: Derfor er transformsonen seismisk aktiv (Jan Mayen-bruddsonen).
-              </text>
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 7: HOTSPOT / MANTELPLYM (HAWAII)                        */}
-          {boundary === "hotspot" && (
-            <g>
-              {/* Havvann */}
-              <rect x="50" y="90" width="820" height="60" fill="url(#pt-ocean)" />
-              <text x="100" y="110" fill="#38bdf8" fontSize="11">
-                Stillehavet
-              </text>
-
-              {/* Oseanisk litosfære som glir mot venstre */}
-              <rect x="50" y="150" width="820" height="40" fill="#1b2e25" stroke="#122018" strokeWidth="1.2" />
-              <rect x="50" y="190" width="820" height="60" fill="#152630" stroke="#0f1a20" strokeWidth="1" />
-
-              {/* Perlerad av vulkaner over platen (Hawaii-øykjeden) */}
-              {/* Aktiv vulkan over plymen (Kilauea/Mauna Loa) ved x=650 */}
-              <path d="M 580 150 L 650 70 L 720 150 Z" fill="#3f3b33" stroke="#26241f" strokeWidth="1.5" />
-              <path d="M 650 70 L 650 60" stroke="#ef4444" strokeWidth="3" />
-              <text x="650" y="55" fill="#f8fafc" fontSize="11" fontWeight="700" textAnchor="middle">
-                Hawaii (Nå: Aktiv vulkan)
-              </text>
-
-              {/* Eldre eroderte vulkanøyer lenger mot venstre (Maui, Oahu, Kauai) */}
-              <path d="M 440 150 L 490 95 L 540 150 Z" fill="#333833" stroke="#222522" strokeWidth="1.2" />
-              <text x="490" y="85" fill="#cbd5e1" fontSize="10.5" textAnchor="middle">
-                Maui (1 mill. år)
-              </text>
-
-              <path d="M 310 150 L 350 115 L 390 150 Z" fill="#2d332d" stroke="#1e221e" strokeWidth="1.2" />
-              <text x="350" y="105" fill="#cbd5e1" fontSize="10" textAnchor="middle">
-                Oahu (3 mill. år)
-              </text>
-
-              <path d="M 180 150 L 210 130 L 240 150 Z" fill="#262b26" stroke="#181b18" strokeWidth="1" />
-              <text x="210" y="122" fill="#cbd5e1" fontSize="9.5" textAnchor="middle">
-                Kauai (5 mill. år)
-              </text>
-
-              {/* Sunke undersjøiske guyoter / seamounts */}
-              <path d="M 70 150 L 95 145 L 120 150 Z" fill="#1e241e" />
-              <text x="95" y="138" fill="#94a3b8" fontSize="9" textAnchor="middle">
-                Guyot (30 mill. år)
-              </text>
-
-              {/* MANTELPLYM FRA DYPET (STASJONÆR VED x=650) */}
-              <path
-                d="M 635 480 L 635 240 C 620 200, 600 170, 640 155 L 660 155 C 700 170, 680 200, 665 240 L 665 480 Z"
-                fill="#ea580c"
-                opacity="0.9"
-              />
-              <ellipse cx="650" cy="165" rx="35" ry="18" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
-              <text x="650" y="270" fill="#fff" fontSize="11" fontWeight="800" textAnchor="middle">
-                MANTELPLYM (Hotspot)
-              </text>
-              <text x="650" y="285" fill="#fed7aa" fontSize="9.5" textAnchor="middle">
-                Forankret dypt ved D''-laget (2900 km)
-              </text>
-
-              {/* Platebevegelses-pil mot venstre */}
-              <g transform="translate(480, 180)">
-                <line x1="60" y1="0" x2="-60" y2="0" stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
-                <text x="0" y="-10" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-                  Stillehavsplatens bevegelse ({rate} cm/år) ←
-                </text>
-              </g>
-            </g>
-          )}
-
-          {/* ============================================================ */}
-          {/* SCENE 8: PALEOMAGNETISK BÅNDOPPTAKER (VINE-MATTHEWS-MORLEY)  */}
-          {/* ============================================================ */}
-          {boundary === "paleomag" && (
-            <g>
-              {/* Havvann og havoverflate */}
-              <rect x="50" y="55" width="820" height="95" fill="url(#pt-ocean)" />
-              <line x1="50" y1="55" x2="870" y2="55" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
-              <text x="60" y="50" fill="#7dd3fc" fontSize="10" fontWeight="600">
-                Havoverflate (Atlanterhavet / Stillehavet)
-              </text>
-
-              {/* Marin-geofysisk forskningsskip med proton-magnetometer */}
-              <g transform="translate(560, 32)">
-                <path d="M 0 16 L 10 24 L 55 24 L 62 16 L 45 16 L 45 8 L 35 8 L 35 16 Z" fill="#f8fafc" stroke="#334155" strokeWidth="1" />
-                <rect x="22" y="11" width="10" height="5" fill="#38bdf8" />
-                <line x1="30" y1="8" x2="30" y2="2" stroke="#cbd5e1" strokeWidth="1.5" />
-                <text x="70" y="18" fill="#e2e8f0" fontSize="9.5" fontWeight="700">
-                  Forskningsskip m/ proton-magnetometer
-                </text>
-                {/* Slepekabel og magnetometer "fisk" */}
-                <path d="M 0 22 C -30 28, -70 38, -100 42" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="3 2" />
-                <ellipse cx="-102" cy="43" rx="5" ry="2.5" fill="#f59e0b" />
-              </g>
-
-              {/* OSCILLOSKOP / MAGNETOMETER-MÅLING (MÅLT ANOMALI ΔB) */}
-              <g transform="translate(60, 68)">
-                <rect x="0" y="0" width="800" height="66" rx="6" fill="#071018" stroke="#1e293b" strokeWidth="1.5" />
-                <text x="12" y="15" fill="#38bdf8" fontSize="10" fontWeight="800">
-                  MARIN MAGNETISK PROFIL (ΔB = Totalt målt magnetfelt − Jordas referansefelt)
-                </text>
-                <text x="640" y="15" fill="#94a3b8" fontSize="9" textAnchor="end">
-                  Symmetrisk om midthavsryggens spredningsakse (x = 0 km)
-                </text>
-
-                {/* Null-referanselinje (0 nT) */}
-                <line x1="20" y1="38" x2="780" y2="38" stroke="#334155" strokeWidth="1" strokeDasharray="4 3" />
-                <text x="784" y="41" fill="#64748b" fontSize="8" fontFamily="monospace">0 nT</text>
-                <text x="784" y="24" fill="#38bdf8" fontSize="8" fontFamily="monospace">+400</text>
-                <text x="784" y="56" fill="#f43f5e" fontSize="8" fontFamily="monospace">-400</text>
-
-                {/* Magnetisk anomalikurve (symmetrisk speiling) */}
-                {/* Midten er ved x = 400 (tilsvarer x = 460 i svg) */}
-                <path
-                  d={`
-                    M 20 38
-                    L 40 22 L 65 22 L 85 38
-                    L 100 54 L 140 54 L 155 38
-                    L 170 24 L 210 24 L 230 38
-                    L 245 52 L 280 52 L 290 38
-                    L 295 28 L 305 28 L 310 38
-                    L 315 52 L 340 52 L 350 38
-                    L 370 ${activePolarity === "normal" ? "18" : "58"}
-                    L 400 ${activePolarity === "normal" ? "16" : "60"}
-                    L 430 ${activePolarity === "normal" ? "18" : "58"}
-                    L 450 38 L 460 52 L 485 52 L 490 38
-                    L 495 28 L 505 28 L 510 38
-                    L 520 52 L 555 52 L 570 38
-                    L 590 24 L 630 24 L 645 38
-                    L 660 54 L 700 54 L 715 38
-                    L 735 22 L 760 22 L 780 38
-                  `}
-                  fill="none"
-                  stroke={activePolarity === "normal" ? "#38bdf8" : "#f43f5e"}
-                  strokeWidth="2.2"
-                />
-
-                {/* Små etiketter for positiv/negativ anomali */}
-                <text x="400" y={activePolarity === "normal" ? "28" : "52"} fill={activePolarity === "normal" ? "#38bdf8" : "#f43f5e"} fontSize="9" fontWeight="800" textAnchor="middle">
-                  {activePolarity === "normal" ? "+ΔB Brunhes (Normal)" : "-ΔB (Reversert nydanning)"}
-                </text>
-                <text x="270" y="60" fill="#94a3b8" fontSize="8" textAnchor="middle">-ΔB (Matuyama)</text>
-                <text x="530" y="60" fill="#94a3b8" fontSize="8" textAnchor="middle">-ΔB (Matuyama)</text>
-                <text x="200" y="20" fill="#38bdf8" fontSize="8" textAnchor="middle">+ΔB (Gauss)</text>
-                <text x="600" y="20" fill="#38bdf8" fontSize="8" textAnchor="middle">+ΔB (Gauss)</text>
-              </g>
-
-              {/* HAVBUNNSSKORPE MED MAGNETISKE STRIPER (BÅNDOPPTAKER) */}
-              {/* Spredningssenter ved x = 460. Høyde: y = 145 til y = 210 */}
-              <g>
-                {/* Brunhes Chron (0 - 0.78 Ma, Normal i dag) */}
-                {/* Ytre Brunhes striper */}
-                <rect x="410" y="145" width="40" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
-                <text x="430" y="178" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
-
-                {/* Nyeste nydannet basalt i selve spredningsaksen (påvirket av activePolarity) */}
-                <rect
-                  x="450"
-                  y="142"
-                  width="20"
-                  height="68"
-                  fill={activePolarity === "normal" ? "#2563eb" : "#475569"}
-                  stroke={activePolarity === "normal" ? "#60a5fa" : "#cbd5e1"}
-                  strokeWidth={animating ? 2 : 1}
-                  className={animating ? "pulse-border" : ""}
-                />
-                <text x="460" y="178" fill="#ffffff" fontSize="10" fontWeight="800" textAnchor="middle">
-                  {activePolarity === "normal" ? "↑ N" : "↓ S"}
-                </text>
-
-                <rect x="470" y="145" width="40" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
-                <text x="490" y="178" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
-
-                {/* Matuyama Chron (0.78 - 2.58 Ma, Reversert) */}
-                {/* Venstre side */}
-                <rect x="305" y="147" width="105" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
-                <text x="330" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
-                <text x="390" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
-                {/* Jaramillo normal subchron (1.0 Ma) */}
-                <rect x="350" y="147" width="15" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="0.8" />
-                <text x="357.5" y="176" fill="#fff" fontSize="7.5" fontWeight="700" textAnchor="middle">↑</text>
-
-                {/* Høyre side */}
-                <rect x="510" y="147" width="105" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
-                <text x="535" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
-                <text x="595" y="178" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
-                {/* Jaramillo normal subchron (1.0 Ma) */}
-                <rect x="555" y="147" width="15" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="0.8" />
-                <text x="562.5" y="176" fill="#fff" fontSize="7.5" fontWeight="700" textAnchor="middle">↑</text>
-
-                {/* Gauss Chron (2.58 - 3.58 Ma, Normal) */}
-                {/* Venstre side */}
-                <rect x="215" y="150" width="90" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
-                <text x="260" y="180" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
-
-                {/* Høyre side */}
-                <rect x="615" y="150" width="90" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
-                <text x="660" y="180" fill="#ffffff" fontSize="10" fontWeight="700" textAnchor="middle">↑ N</text>
-
-                {/* Gilbert Chron (3.58 - 5.3 Ma, Reversert) */}
-                {/* Venstre side */}
-                <rect x="125" y="153" width="90" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
-                <text x="170" y="182" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
-
-                {/* Høyre side */}
-                <rect x="705" y="153" width="90" height="65" fill="#334155" stroke="#1e293b" strokeWidth="1" />
-                <text x="750" y="182" fill="#cbd5e1" fontSize="10" fontWeight="700" textAnchor="middle">↓ S</text>
-
-                {/* Eldre havbunn (> 5.3 Ma) */}
-                <rect x="50" y="156" width="75" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
-                <text x="85" y="184" fill="#ffffff" fontSize="9" fontWeight="600" textAnchor="middle">Kron 5 (N)</text>
-
-                <rect x="795" y="156" width="75" height="65" fill="#1d4ed8" stroke="#172554" strokeWidth="1" />
-                <text x="835" y="184" fill="#ffffff" fontSize="9" fontWeight="600" textAnchor="middle">Kron 5 (N)</text>
-              </g>
-
-              {/* Tidslinje under havbunnen med million år (Ma) */}
-              <g transform="translate(0, 218)">
-                <line x1="50" y1="0" x2="870" y2="0" stroke="#475569" strokeWidth="1" />
-                {/* Ticks og etiketter */}
-                <line x1="460" y1="-3" x2="460" y2="5" stroke="#f59e0b" strokeWidth="2" />
-                <text x="460" y="15" fill="#f59e0b" fontSize="9.5" fontWeight="800" textAnchor="middle">0 Ma (Aksen)</text>
-
-                <line x1="410" y1="-3" x2="410" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <line x1="510" y1="-3" x2="510" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <text x="410" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">0.78 Ma</text>
-                <text x="510" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">0.78 Ma</text>
-
-                <line x1="305" y1="-3" x2="305" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <line x1="615" y1="-3" x2="615" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <text x="305" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">2.58 Ma</text>
-                <text x="615" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">2.58 Ma</text>
-
-                <line x1="215" y1="-3" x2="215" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <line x1="705" y1="-3" x2="705" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <text x="215" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">3.58 Ma</text>
-                <text x="705" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">3.58 Ma</text>
-
-                <line x1="125" y1="-3" x2="125" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <line x1="795" y1="-3" x2="795" y2="4" stroke="#94a3b8" strokeWidth="1" />
-                <text x="125" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">5.3 Ma</text>
-                <text x="795" y="14" fill="#94a3b8" fontSize="8" textAnchor="middle">5.3 Ma</text>
-
-                <text x="70" y="14" fill="#64748b" fontSize="8" textAnchor="middle">← Eldre skorpe</text>
-                <text x="850" y="14" fill="#64748b" fontSize="8" textAnchor="middle">Eldre skorpe →</text>
-              </g>
-
-              {/* SPREDNINGSVETORER OG CURIE-TEMPERATUR */}
-              {/* Spredningspiler */}
-              <g>
-                <path d="M 430 135 L 360 135" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
-                <text x="395" y="130" fill="#f59e0b" fontSize="9.5" fontWeight="700" textAnchor="middle">
-                  {(rate / 2).toFixed(1)} cm/år (vest)
-                </text>
-
-                <path d="M 490 135 L 560 135" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
-                <text x="525" y="130" fill="#f59e0b" fontSize="9.5" fontWeight="700" textAnchor="middle">
-                  {(rate / 2).toFixed(1)} cm/år (øst)
-                </text>
-              </g>
-
-              {/* LITOSFÆRISK MANTEL OG CURIE-ISOTERM (580 °C) */}
-              <g transform="translate(0, 238)">
-                {/* Litosfærisk mantel bunn */}
-                <path
-                  d="M 50 20 L 400 0 L 440 -10 L 480 -10 L 520 0 L 870 20 L 870 70 L 540 60 L 480 30 L 440 30 L 380 60 L 50 70 Z"
-                  fill="#152631"
-                  stroke="#1e3a4c"
-                  strokeWidth="1"
-                />
-
-                {/* Curie-isomet stiplet linje (580 °C) */}
-                <path
-                  d="M 120 15 C 300 12, 420 -5, 460 -12 C 500 -5, 620 12, 800 15"
-                  fill="none"
-                  stroke="#ef4444"
-                  strokeWidth="1.8"
-                  strokeDasharray="5 3"
-                />
-                <text x="460" y="-16" fill="#f87171" fontSize="9.5" fontWeight="800" textAnchor="middle">
-                  Curie-isoterm (580 °C) – Magnetittkorn fryses i feltets retning!
-                </text>
-
-                {/* Aksialt magmakammer under riften */}
-                <ellipse cx="460" cy="40" rx="35" ry="20" fill="url(#pt-magma-glow)" className={animating ? "magma-pulse" : ""} />
-                <text x="460" y="44" fill="#ffffff" fontSize="9.5" fontWeight="800" textAnchor="middle">
-                  Aksialt magmakammer (1200 °C)
-                </text>
-                <text x="460" y="55" fill="#fde68a" fontSize="8" textAnchor="middle">
-                  Over Curie-punktet: Uordnet/paramagnetisk
-                </text>
-              </g>
-
-              {/* OPPSUMMERENDE FORKLARINGSBOKSER NEDE I MODELLEN */}
-              <g transform="translate(60, 340)">
-                <rect x="0" y="0" width="380" height="98" rx="8" fill="#0b1520" stroke="#1e293b" strokeWidth="1.2" />
-                <text x="14" y="20" fill="#38bdf8" fontSize="11" fontWeight="800">
-                  Vine-Matthews-Morley-hypotesen (1963):
-                </text>
-                <foreignObject x="14" y="26" width="352" height="66">
-                  <p style={{ color: "#cbd5e1", fontSize: "10.5px", lineHeight: "1.45" }}>
-                    Fred Vine, Drummond Matthews og Lawrence Morley innså at midthavsryggen fungerer som et gigantisk, tosidig magnetbånd. Når ny basalt strømmer opp og kjøles under <strong>580 °C (Curie-temperaturen)</strong>, blir magnetittkrystallene låst i retning mot datidens magnetiske nordpol (TRM).
-                  </p>
-                </foreignObject>
-              </g>
-
-              <g transform="translate(460, 340)">
-                <rect
-                  x="0"
-                  y="0"
-                  width="400"
-                  height="98"
-                  rx="8"
-                  fill="#0b1520"
-                  stroke={activePolarity === "normal" ? "#2563eb" : "#f43f5e"}
-                  strokeWidth="1.5"
-                />
-                <circle cx="20" cy="18" r="6" fill={activePolarity === "normal" ? "#2563eb" : "#f43f5e"} />
-                <text x="34" y="22" fill="#f8fafc" fontSize="11" fontWeight="800">
-                  Aktiv geomagnetisk tilstand: {activePolarity === "normal" ? "Normal polaritet" : "Reversert polaritet"}
-                </text>
-                <foreignObject x="14" y="28" width="372" height="64">
-                  <p style={{ color: "#e2e8f0", fontSize: "10.5px", lineHeight: "1.45" }}>
-                    {activePolarity === "normal"
-                      ? "Feltet peker mot nord (som i dag). Ny basalt forsterker det lokale magnetfeltet og gir en positiv magnetisk anomali (+ΔB). Brunhes-kronen har vart i 780 000 år."
-                      : "Feltet er snudd (polvending)! Magnetisk nord var på sydpolen. Ny basalt motvirker dagens felt og gir en negativ magnetisk anomali (−ΔB) når det måles i dag."}
-                    <br />
-                    <span style={{ color: "#38bdf8", fontWeight: 700 }}>
-                      Bruk «Felt: Normal/Revers ⇄ Snu» i verktøylinjen for å teste en polvending!
-                    </span>
-                  </p>
-                </foreignObject>
-              </g>
-            </g>
-          )}
+          <rect width="920" height="480" fill="#12110f" />
+          {showsDepthScale(boundary) ? <DepthScale /> : null}
+          {boundary === "ridge" ? <RidgeScene {...scene} /> : null}
+          {boundary === "subduction_continent" ? (
+            <SubductionScene
+              {...scene}
+              trenchX={400}
+              arcX={590}
+              dip={40}
+              pxX={1.25}
+              oceanLabel="Hav, ca. 4 km. Høyden er overdrevet."
+              slabLabel="Oseanisk litosfære"
+              arcLabel="Vulkanbue"
+              backarc={false}
+            />
+          ) : null}
+          {boundary === "subduction_island" ? (
+            <SubductionScene
+              {...scene}
+              trenchX={340}
+              arcX={530}
+              dip={42}
+              pxX={1.35}
+              oceanLabel="Hav–hav. Høyden er overdrevet."
+              slabLabel="Eldst og tettest plate"
+              arcLabel="Vulkanøybue"
+              backarc
+            />
+          ) : null}
+          {boundary === "collision" ? <CollisionScene {...scene} /> : null}
+          {boundary === "rift" ? <RiftScene {...scene} /> : null}
+          {boundary === "transform" ? <TransformScene {...scene} /> : null}
+          {boundary === "hotspot" ? <HotspotScene {...scene} /> : null}
+          {boundary === "paleomag" ? <PaleomagScene {...scene} /> : null}
         </svg>
       </div>
+      <p className="mt-2 text-xs text-muted-foreground">
+        {showsDepthScale(boundary)
+          ? "Dybdeskalaen er lineær fra 0 til 200 km under skorpetoppen. Fjell og havdyp over streken er overdrevet."
+          : "Denne fanen er et kart eller et profil langs havbunnen, med horisontal skala."}
+      </p>
 
-      {/* Detaljert faktaboks under modellen */}
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <ModelPanel>
-          <p className="text-xs font-semibold uppercase tracking-wider text-primary">Plategrensens fysikk</p>
-          <p className="mt-1 text-base font-semibold text-foreground">{current.title}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-primary">Plategrensen</p>
+          <p className="mt-1 text-base font-semibold">{current.title}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{current.description}</p>
         </ModelPanel>
-
         <ModelPanel>
-          <p className="text-xs font-semibold uppercase tracking-wider text-amber-500">Magma & Smelteprosess</p>
-          <p className="mt-1 text-sm font-medium text-foreground">{current.meltingMechanism}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-500">Magma</p>
+          <p className="mt-1 text-sm font-medium">{current.meltingMechanism}</p>
           <div className="mt-3 border-t border-border/50 pt-2 text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">Bergarter som dannes:</span> {current.rockTypes}
+            <span className="font-semibold text-foreground">Bergarter: </span>
+            {current.rockTypes}
           </div>
         </ModelPanel>
-
         <ModelPanel className="sm:col-span-2 lg:col-span-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-rose-500">Jordskjelv ved grensen</p>
-          <p className="mt-1 text-sm text-foreground">{current.quaketype}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-rose-500">Jordskjelv</p>
+          <p className="mt-1 text-sm">{current.quaketype}</p>
           <div className="mt-3 border-t border-border/50 pt-2 text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">Kjente eksempler:</span> {current.realExample}
+            <span className="font-semibold text-foreground">Eksempel: </span>
+            {current.realExample}
           </div>
         </ModelPanel>
       </div>
@@ -1329,18 +1093,16 @@ export function PlateTectonicsModel() {
           </p>
         </ModelNote>
         <ModelNote title="Eksamenstips (LK20 Geofag 1)" tone="warm">
-          <p>
-            Husk alltid skillet mellom de tre hovedveiene til magma:
-          </p>
-          <ul className="list-disc pl-5 space-y-1 mt-1 text-xs">
+          <p>Tre veier til magma:</p>
+          <ul className="mt-1 list-disc space-y-1 pl-5 text-xs">
             <li>
-              <strong>Dekompresjonssmelting (midthavsrygg & kontinental rift):</strong> Mantelen stiger, overliggende trykk faller bratt, og peridotitt krysser solidus uten ekstra varme.
+              <strong>Dekompresjon (midthavsrygg og rift):</strong> Mantelen stiger, trykket faller, og peridotitt krysser solidus.
             </li>
             <li>
-              <strong>Flukssmelting (subduksjonssone):</strong> Vann fra den synkende havbunnsskorpen senker solidus-temperaturen i mantelkilen over platen.
+              <strong>Fluks (subduksjon):</strong> Vann fra amfibol rundt 90 km og fra serpentin dypere senker solidus i mantelkilen.
             </li>
             <li>
-              <strong>Termisk oppvarming / mantelplym (hotspot):</strong> Ekstraordinær varme fra kjerne-mantel-grensen løfter temperaturen over solidus uavhengig av plategrenser.
+              <strong>Mantelplym:</strong> Ekstra varm mantel stiger og smelter ved dekompresjon, uavhengig av en plategrense.
             </li>
           </ul>
         </ModelNote>
