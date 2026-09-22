@@ -37,7 +37,6 @@ export function TopicLayout({
   posterSlug,
   post: propPost,
   bodyMode = "auto",
-  previewBanner,
 }: {
   kicker: string;
   title: string;
@@ -53,9 +52,8 @@ export function TopicLayout({
   posterSlug?: string;
   /** Preloaded post from route loader (if available) */
   post?: Post | null;
-  /** auto = existing CMS override. scan = same text in collapsible sections. */
+  /** auto = existing CMS override. scan = same text behind horizontal topic chips. */
   bodyMode?: "auto" | "coded" | "poster" | "scan";
-  previewBanner?: ReactNode;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const router = useRouter();
@@ -168,7 +166,6 @@ export function TopicLayout({
                 <p>{eierskap}</p>
               </Callout>
             ) : null}
-            {previewBanner}
             {useScan ? (
               <ChapterScanBody markdown={markdown} />
             ) : usePoster ? (
