@@ -111,7 +111,7 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
   const xAt = (d: number) => axis + d * px;
   const bathy = dists.map((d) => {
     const depth = ridgeBathymetryKm(d, rate);
-    const y = Math.min(SEA_Y - 2, Math.max(34, SEA_Y - 36 + (depth - 2.5) * 18));
+    const y = Math.min(SEA_Y - 4, Math.max(30, SEA_Y - 58 + (depth - 2.5) * 32));
     return { x: xAt(d), y };
   });
   const lith = dists.map((d) => ({
@@ -126,8 +126,8 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
 
   return (
     <g>
-      <polygon points={`${pts(bathy)} ${right},32 ${left},32`} fill="#0f2b3e" />
-      <polyline points={pts(bathy)} fill="none" stroke="#38bdf8" strokeWidth="2" />
+      <polygon points={`${pts(bathy)} ${right},28 ${left},28`} fill="#0c4a6e" opacity="0.85" />
+      <polyline points={pts(bathy)} fill="none" stroke="#7dd3fc" strokeWidth="3.5" />
       <text x="80" y="48" fill="#7dd3fc" fontSize="11">
         Havdyp overdrevet. 0 km er toppen av skorpen.
       </text>
@@ -145,8 +145,8 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
       <text x="680" y={SEA_Y + 22} fill="#94a3b8" fontSize="11">
         {half.toFixed(1)} cm/år →
       </text>
-      <text x="150" y={yDepth(55)} fill="#94a3b8" fontSize="11">
-        {rate <= 4 ? "Tykk, kald flankelitosfære" : "Tynnere litosfære ved samme avstand"}
+      <text x="120" y={yDepth(78)} fill="#e2e8f0" fontSize="12" fontWeight="700">
+        Litosfære ca. {Math.round(lithosphereThicknessKm(ageMaAtDistance(250, rate)))} km, 250 km fra aksen
       </text>
       {showMelting ? (
         <g>
@@ -268,19 +268,19 @@ function SubductionScene({
       </text>
       {backarc ? (
         <g>
-          <polyline
-            points={`${arcX + 90},${SEA_Y - 16} ${arcX + 120},${SEA_Y + 6} ${arcX + 150},${SEA_Y - 16}`}
-            fill="none"
-            stroke="#f59e0b"
-            strokeWidth="2"
-          />
-          <text x={arcX + 120} y={SEA_Y - 24} fill="#fbbf24" fontSize="10" fontWeight="700" textAnchor="middle">
-            Bakbue med spredning
-          </text>
           <polygon
             points={`${arcX + 70},${SEA_Y} 880,${SEA_Y} 880,${yDepth(18)} ${arcX + 70},${yDepth(22)}`}
             fill="#243038"
           />
+          <polyline
+            points={`${arcX + 90},${SEA_Y - 20} ${arcX + 120},${SEA_Y + 10} ${arcX + 150},${SEA_Y - 20}`}
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="3"
+          />
+          <text x={arcX + 150} y={SEA_Y - 28} fill="#fbbf24" fontSize="11" fontWeight="700">
+            Bakbue med spredning
+          </text>
         </g>
       ) : (
         <polygon
@@ -337,8 +337,8 @@ function SubductionScene({
       {showQuakes ? (
         <g>
           <Foci animating={animating} points={quakes} />
-          <text x="70" y={yDepth(190)} fill="#fca5a5" fontSize="11">
-            Jordskjelv langs plategrensen. Dybdefordelingen eier Jordskjelv.
+          <text x="640" y="96" fill="#fca5a5" fontSize="11">
+            Jordskjelv langs grensen. Dybdefordeling eier Jordskjelv.
           </text>
         </g>
       ) : null}
@@ -506,22 +506,37 @@ function TransformScene({ rate, showQuakes, animating }: SceneProps) {
       <line x1="264" y1="220" x2="620" y2="220" stroke="#ef4444" strokeWidth="5" />
       <line x1="634" y1="220" x2="860" y2="220" stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
 
-      <line x1="200" y1="200" x2="120" y2="200" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-      <line x1="120" y1="242" x2="50" y2="242" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-      <text x="130" y="188" fill="#94a3b8" fontSize="10" textAnchor="middle">
-        Bruddsone: samme vei, {rate} cm/år
+      <line x1="210" y1="196" x2="110" y2="196" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="160" y="188" fill="#7dd3fc" fontSize="10" textAnchor="middle">
+        vestover
+      </text>
+      <line x1="150" y1="246" x2="60" y2="246" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="110" y="264" fill="#7dd3fc" fontSize="10" textAnchor="middle">
+        vestover
+      </text>
+      <text x="140" y="278" fill="#94a3b8" fontSize="10" textAnchor="middle">
+        Bruddsone, samme vei, {rate} cm/år
       </text>
 
-      <line x1="340" y1="198" x2="430" y2="198" stroke="#fca5a5" strokeWidth="3" markerEnd="url(#arrow-magma)" />
-      <line x1="520" y1="246" x2="430" y2="246" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-      <text x="440" y="184" fill="#fff" fontSize="11" fontWeight="800" textAnchor="middle">
+      <line x1="330" y1="196" x2="450" y2="196" stroke="#fca5a5" strokeWidth="3.5" markerEnd="url(#arrow-magma)" />
+      <text x="390" y="186" fill="#fecaca" fontSize="11" fontWeight="800" textAnchor="middle">
+        østover
+      </text>
+      <line x1="540" y1="248" x2="420" y2="248" stroke="#7dd3fc" strokeWidth="3.5" markerEnd="url(#arrow-slab)" />
+      <text x="480" y="266" fill="#7dd3fc" fontSize="11" fontWeight="800" textAnchor="middle">
+        vestover
+      </text>
+      <text x="450" y="160" fill="#fff" fontSize="12" fontWeight="800" textAnchor="middle">
         Transform: motsatt retning
       </text>
 
-      <line x1="700" y1="198" x2="790" y2="198" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-      <line x1="760" y1="242" x2="850" y2="242" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-      <text x="760" y="188" fill="#94a3b8" fontSize="10" textAnchor="middle">
-        Bruddsone: samme vei
+      <line x1="690" y1="196" x2="820" y2="196" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="750" y="188" fill="#7dd3fc" fontSize="10" textAnchor="middle">
+        østover
+      </text>
+      <line x1="730" y1="246" x2="850" y2="246" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+      <text x="790" y="264" fill="#7dd3fc" fontSize="10" textAnchor="middle">
+        østover
       </text>
 
       <line x1="230" y1="150" x2="150" y2="150" stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
@@ -551,8 +566,8 @@ function TransformScene({ rate, showQuakes, animating }: SceneProps) {
 }
 
 function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) {
-  const plumeX = 760;
-  const px = 0.72;
+  const plumeX = 780;
+  const px = 0.95;
   const stations = HOTSPOT_STATIONS.map((station, index) => {
     const km = distanceKm(rate, station.ageMa);
     return { ...station, km, x: plumeX - km * px, index };
@@ -593,8 +608,8 @@ function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) 
               points={`${station.x - h * 0.7},${SEA_Y} ${station.x},${SEA_Y - h} ${station.x + h * 0.55},${SEA_Y}`}
               fill={station.ageMa === 0 ? "#5c5346" : "#2c3330"}
             />
-            <text x={station.x} y={SEA_Y - h - 8 - (station.index % 2) * 12} fill="#f8fafc" fontSize="10" textAnchor="middle">
-              {station.label}
+            <text x={station.x} y={yDepth(18) + station.index * 16} fill="#f8fafc" fontSize="11" fontWeight="700" textAnchor="middle">
+              {station.ageMa === 0 ? station.label : `${station.label} · ${Math.round(station.km)} km`}
             </text>
           </g>
         );
@@ -622,8 +637,8 @@ function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) 
 
 function PaleomagScene({ rate, showMelting, showQuakes, animating, polarity }: SceneProps) {
   const axis = 460;
-  const windowKm = 220;
-  const px = 1.4;
+  const windowKm = 160;
+  const px = 2.1;
   const half = halfRateCmYr(rate);
   const xAt = (kmFromAxis: number) => axis + kmFromAxis * px;
 
@@ -697,9 +712,11 @@ function PaleomagScene({ rate, showMelting, showQuakes, animating, polarity }: S
             y="150"
             width={stripe.w}
             height="58"
-            fill={stripe.polarity === "normal" ? "#1d4ed8" : "#334155"}
+            fill={stripe.polarity === "normal" ? "#3b82f6" : "#0f172a"}
+            stroke="#94a3b8"
+            strokeWidth="0.6"
           />
-          {stripe.w > 36 ? (
+          {stripe.w > 22 ? (
             <text x={stripe.x + stripe.w / 2} y="182" fill="#fff" fontSize="9" textAnchor="middle">
               {stripe.label}
             </text>
@@ -708,7 +725,7 @@ function PaleomagScene({ rate, showMelting, showQuakes, animating, polarity }: S
       ))}
       {jara.map((band) =>
         band && band.w > 0.6 ? (
-          <rect key={band.side} x={band.x} y="150" width={Math.max(band.w, 2)} height="58" fill="#1d4ed8" />
+          <rect key={band.side} x={band.x} y="150" width={Math.max(band.w, 3)} height="58" fill="#bfdbfe" />
         ) : null,
       )}
       <rect
@@ -723,7 +740,7 @@ function PaleomagScene({ rate, showMelting, showQuakes, animating, polarity }: S
       <text x={axis} y="224" fill="#fbbf24" fontSize="10" fontWeight="800" textAnchor="middle">
         0 km
       </text>
-      {[-200, -100, 100, 200].map((km) => (
+      {[-150, -75, 75, 150].map((km) => (
         <text key={km} x={xAt(km)} y="224" fill="#94a3b8" fontSize="9" textAnchor="middle">
           {km > 0 ? "+" : ""}
           {km} km
