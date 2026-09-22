@@ -5,6 +5,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   CHAPTER_SCAN_WIDGET_IDS,
+  EARTH_LAYERS_PHOTO_SRC,
+  injectEarthLayersPhoto,
   injectPosterWidgets,
   listedWidgetIds,
   parsePosterMarkdown,
@@ -66,6 +68,33 @@ describe("injectPosterWidgets", () => {
   it("skips missing anchors instead of inventing content", () => {
     const injected = injectPosterWidgets("Kort egendefinert post uten kapitteloverskrifter.");
     assert.equal(listedWidgetIds(injected).size, 0);
+    assert.equal(injected.includes(EARTH_LAYERS_PHOTO_SRC), false);
+  });
+
+  it("inserts the earth-layer photo above Inndeling when a saved post lacks it", () => {
+    const stored = [
+      "## Platetektonikk",
+      "",
+      "For å forstå platetektonikk må vi først forstå hvordan jorden er bygd opp.",
+      "",
+      "### Inndeling av jorden indre",
+      "Jorden er kan deles inn i flere lag.",
+      "",
+      "## Oppdagelsen og bevisene",
+      "Wegener.",
+    ].join("\n");
+    const injected = injectEarthLayersPhoto(stored);
+    const photoAt = injected.indexOf(EARTH_LAYERS_PHOTO_SRC);
+    const headingAt = injected.indexOf("### Inndeling av jorden indre");
+    assert.ok(photoAt > 0);
+    assert.ok(photoAt < headingAt);
+    assert.equal(injectEarthLayersPhoto(injected), injected);
+    assert.equal((injected.match(/geo-jordens-indre-lagdeling-3d\.jpg/g) ?? []).length, 1);
+  });
+
+  it("does not duplicate the earth-layer photo already in the seed", () => {
+    const injected = injectPosterWidgets(chapterMarkdown);
+    assert.equal((injected.match(/geo-jordens-indre-lagdeling-3d\.jpg/g) ?? []).length, 1);
   });
 
   it("does not put the Platetektonikk quiz into Vulkaner", () => {
