@@ -57,8 +57,8 @@ function PlatetektonikkForslagPage() {
             <Link to="/geofag-1/platetektonikk" className={lenke}>
               /geofag-1/platetektonikk
             </Link>
-            . Forskjellen er layout: kapittelet er delt i oversiktlige seksjoner, med innholdsmeny
-            og søkbar «utvid alle» / «skjul alle». Ingenting er slettet.
+            . Forskjellen er layout: de horisontale knappene åpner og lukker fagteksten under.
+            Trykk en gang for å vise, trykk en gang til for å skjule. Ingenting er slettet.
           </p>
           <p>
             Si ifra om dette er bra nok til å erstatte originalen på main. Inntil da ligger

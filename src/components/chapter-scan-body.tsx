@@ -1,22 +1,37 @@
 import { useEffect, useMemo, useState } from "react";
 import { PosterBody } from "@/components/poster-body";
-import { CollapsibleSection } from "@/components/collapsible-section";
 import { Button } from "@/components/ui/button";
 import { prepareChapterScan, type ChapterScanSection } from "@/lib/chapter-scan";
 import { cn } from "@/lib/utils";
 
-function initialOpenMap(sections: ChapterScanSection[], hash: string): Record<string, boolean> {
-  const first = sections[0]?.id;
-  const fromHash = sections.some((section) => section.id === hash) ? hash : "";
-  const openId = fromHash || first;
-  return Object.fromEntries(sections.map((section) => [section.id, section.id === openId]));
+function closedMap(sections: ChapterScanSection[]): Record<string, boolean> {
+  return Object.fromEntries(sections.map((section) => [section.id, false]));
+}
+
+function SectionText({ section }: { section: ChapterScanSection }) {
+  return (
+    <article
+      id={section.id}
+      role="region"
+      aria-labelledby={`kapittel-knapp-${section.id}`}
+      className="scroll-mt-44 space-y-4 rounded-xl border border-primary/30 bg-card/60 px-5 py-6 sm:px-7"
+    >
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-wider text-primary">{section.label}</p>
+        <h2 className="mt-1 font-display text-2xl font-medium tracking-tight text-foreground">
+          {section.title}
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground">{section.subtitle}</p>
+      </div>
+      {section.markdown.trim() ? <PosterBody>{section.markdown}</PosterBody> : null}
+    </article>
+  );
 }
 
 export function ChapterScanBody({ markdown }: { markdown: string }) {
   const doc = useMemo(() => prepareChapterScan(markdown), [markdown]);
-  const [openMap, setOpenMap] = useState<Record<string, boolean>>(() =>
-    initialOpenMap(doc.sections, typeof window === "undefined" ? "" : window.location.hash.slice(1)),
-  );
+  const [openMap, setOpenMap] = useState<Record<string, boolean>>(() => closedMap(doc.sections));
+  const [focusId, setFocusId] = useState<string | null>(null);
 
   useEffect(() => {
     setOpenMap((prev) => {
@@ -32,29 +47,43 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
     const hash = window.location.hash.slice(1);
     if (!hash || !doc.sections.some((section) => section.id === hash)) return;
     setOpenMap((prev) => ({ ...prev, [hash]: true }));
-    const timer = window.setTimeout(() => {
-      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 40);
-    return () => window.clearTimeout(timer);
+    setFocusId(hash);
   }, [doc.sections]);
 
-  const allOpen = doc.sections.length > 0 && doc.sections.every((section) => openMap[section.id]);
+  useEffect(() => {
+    if (!focusId || !openMap[focusId]) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(focusId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 40);
+    return () => window.clearTimeout(timer);
+  }, [focusId, openMap]);
+
+  const openSections = doc.sections.filter((section) => openMap[section.id]);
 
   function setAll(open: boolean) {
     setOpenMap(Object.fromEntries(doc.sections.map((section) => [section.id, open])));
     if (!open) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
       window.setTimeout(() => {
-        document.getElementById("innhold")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document
+          .querySelector("[data-chapter-scan-toc]")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 30);
     }
   }
 
-  function openAndScroll(id: string) {
-    setOpenMap((prev) => ({ ...prev, [id]: true }));
-    window.history.replaceState(null, "", `#${id}`);
-    window.requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+  function toggleSection(id: string) {
+    const willOpen = !openMap[id];
+    setOpenMap((prev) => ({ ...prev, [id]: willOpen }));
+    if (willOpen) {
+      setFocusId(id);
+      window.history.replaceState(null, "", `#${id}`);
+      return;
+    }
+    setFocusId(null);
+    if (window.location.hash.slice(1) === id) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
   }
 
   return (
@@ -62,95 +91,70 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
       {doc.preamble ? <PosterBody>{doc.preamble}</PosterBody> : null}
 
       {doc.sections.length > 0 ? (
-        <nav
-          data-chapter-scan-toc
-          aria-label="Kapittelinnhold"
-          className="sticky top-16 z-30 -mx-4 border-y border-border/80 bg-background/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6"
-        >
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">
-                Innhold i kapittelet
-              </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                All fagtekst er her. Åpne én del om gangen, eller utvid alle.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Button type="button" size="sm" variant="secondary" onClick={() => setAll(true)}>
-                Utvid alle
-              </Button>
-              <Button
-                type="button"
-                size="sm"
-                variant="ghost"
-                onClick={() => setAll(false)}
-                disabled={!doc.sections.some((section) => openMap[section.id])}
-              >
-                Skjul alle
-              </Button>
-            </div>
-          </div>
-          <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-            {doc.sections.map((section) => {
-              const isOpen = Boolean(openMap[section.id]);
-              return (
-                <button
-                  key={section.id}
+        <div className="space-y-4">
+          <nav
+            data-chapter-scan-toc
+            aria-label="Kapittelinnhold"
+            className="sticky top-16 z-30 -mx-4 border-y border-border/80 bg-background/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-primary">
+                  Innhold i kapittelet
+                </p>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  Trykk på en knapp for å vise teksten. Trykk en gang til for å skjule den.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button type="button" size="sm" variant="secondary" onClick={() => setAll(true)}>
+                  Utvid alle
+                </Button>
+                <Button
                   type="button"
-                  onClick={() => openAndScroll(section.id)}
-                  aria-current={isOpen && !allOpen ? "true" : undefined}
-                  className={cn(
-                    "shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-                    isOpen
-                      ? "border-primary/50 bg-primary/10 text-primary"
-                      : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",
-                  )}
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => setAll(false)}
+                  disabled={openSections.length === 0}
                 >
-                  {section.label}
-                </button>
-              );
-            })}
-          </div>
-        </nav>
-      ) : null}
-
-      {doc.sections.map((section) => (
-        <CollapsibleSection
-          key={section.id}
-          id={section.id}
-          title={section.title}
-          subtitle={section.subtitle}
-          badge={section.label}
-          badgeVariant={openMap[section.id] ? "primary" : "default"}
-          open={Boolean(openMap[section.id])}
-          onOpenChange={(open) =>
-            setOpenMap((prev) => ({
-              ...prev,
-              [section.id]: open,
-            }))
-          }
-        >
-          {section.subsections.length > 0 ? (
-            <div className="space-y-4">
-              {section.lead.trim() ? <PosterBody>{section.lead}</PosterBody> : null}
-              {section.subsections.map((sub, index) => (
-                <CollapsibleSection
-                  key={sub.id}
-                  id={sub.id}
-                  title={sub.title}
-                  defaultOpen={index === 0}
-                  className="my-0"
-                >
-                  {sub.markdown.trim() ? <PosterBody>{sub.markdown}</PosterBody> : null}
-                </CollapsibleSection>
-              ))}
+                  Skjul alle
+                </Button>
+              </div>
             </div>
-          ) : section.markdown.trim() ? (
-            <PosterBody>{section.markdown}</PosterBody>
-          ) : null}
-        </CollapsibleSection>
-      ))}
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              {doc.sections.map((section) => {
+                const isOpen = Boolean(openMap[section.id]);
+                return (
+                  <button
+                    key={section.id}
+                    id={`kapittel-knapp-${section.id}`}
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={section.id}
+                    onClick={() => toggleSection(section.id)}
+                    className={cn(
+                      "shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                      isOpen
+                        ? "border-primary/50 bg-primary/10 text-primary"
+                        : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",
+                    )}
+                  >
+                    {section.label}
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+
+          {openSections.length === 0 ? (
+            <p className="rounded-xl border border-dashed border-border bg-muted/30 px-5 py-4 text-sm text-muted-foreground">
+              Ingen del er åpen. Trykk på en av knappene over for å lese fagteksten.
+            </p>
+          ) : (
+            openSections.map((section) => <SectionText key={section.id} section={section} />)
+          )}
+        </div>
+      ) : null}
     </div>
   );
 }
