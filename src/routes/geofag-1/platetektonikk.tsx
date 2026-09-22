@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
+import { CollapsibleSection } from "@/components/collapsible-section";
 import {
   BoundaryOverviewDiagram,
   CollisionDiagram,
   ContinentalRiftDiagram,
   ConvectionDiagram,
   DecompressionMeltingDiagram,
-  EarthLayersDiagram,
   OceanOceanSubductionDiagram,
   PlatesMapDiagram,
   SolidusDiagram,
@@ -82,15 +82,41 @@ function PlatetektonikkPage() {
       </Callout>
 
       {/* 1. JORDENS OPPBYGNING OG REOLOGI */}
-      <section className="space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Jordens dynamiske indre: Litosfære, astenosfære og reologi
-        </h2>
+      <CollapsibleSection
+        title="Jordens dynamiske indre: Litosfære, astenosfære og reologi"
+        subtitle="Lagdeling, skorpetyper, Moho, litosfære vs. astenosfære"
+        badge="Indre oppbygning"
+        badgeVariant="teal"
+        defaultOpen={true}
+      >
       <p>
-        For å forstå platetektonikk må vi først avlive en av de mest seiglivede misforståelsene i geofaget:
-        Troen på at jordas plater er «et stykke jordskorpe som flyter på et hav av flytende magma». Slik
-        er ikke planeten vår bygd opp.
+        For å forstå platetektonikk må vi først forstå hvordan jorden er bygd opp og de ulike prosessene som skjer i jordens indre.
       </p>
+
+      <PhotoFigure
+        src="/images/geo-jordens-indre-lagdeling-3d.jpg"
+        alt="Fotorealistisk 3D-tverrsnitt av jordens lagdeling fra jordskorpen og Moho ned til den faste indre kjernen"
+        heading="Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater"
+        caption="Jordkloden er lagdelt etter kjemisk sammensetning og mekaniske egenskaper (reologi). Litosfæren (jordskorpen og det øverste stive mantellaget) utgjør de tektoniske platene som glir over den seige, plastiske astenosfæren. Under overgangssonen ligger den massive nedre mantelen (opptil 2900 km). Den flytende ytre jern-nikkelkjernen (2900–5150 km) genererer jordas magnetfelt via geodynamoen, mens det enorme trykket i sentrum (5150–6371 km) holder den indre kjernen i fast, krystallinsk tilstand til tross for temperaturer på rundt 5000 °C."
+        marks={[
+          { x: 28, y: 28, n: "1", text: "Litosfære & Moho", tone: "cold" },
+          { x: 38, y: 37, n: "2", text: "Astenosfære", tone: "warm" },
+          { x: 41, y: 54, n: "3", text: "Nedre mantel", tone: "cold" },
+          { x: 44, y: 70, n: "4", text: "Flytende ytre kjerne", tone: "warm" },
+          { x: 48, y: 88, n: "5", text: "Fast indre kjerne", tone: "warm" },
+        ]}
+        points={[
+          { n: "1", label: "Litosfære og Moho (0–100/200 km): Jordens stive ytterste skall delt i litosfæreplater. Består av skorpen (kontinental 30–40 km, havbunn 5–7 km) og øverste stive mantel, adskilt av Moho-grensen der seismiske bølger øker brått i fart." },
+          { n: "2", label: "Astenosfæren (~100–350 km, ~1450 °C): Fast peridotitt nær smeltepunktet som oppfører seg duktilt og seigtflytende over geologisk tid, slik at litosfæreplatene kan gli oppå." },
+          { n: "3", label: "Nedre mantel (660–2900 km, opptil ~3370 °C): Fast silikatbergart under enormt trykk, med konveksjonsstrømmer som langsomt transporterer varme fra jordas dyp." },
+          { n: "4", label: "Ytre kjerne (2900–5150 km, ~3370–5000 °C): Flytende jern og nikkel. S-bølger stoppes fullstendig her. Kraftige konveksjonsstrømmer genererer jordens magnetfelt." },
+          { n: "5", label: "Indre kjerne (5150–6371 km, ~5000 °C): Fast krystallinsk jern-nikkelkule. Selv om temperaturen er på høyde med solens overflate, tvinger det kolossale trykket (~3,6 millioner atmosfærer) atomene inn i et fast metallgitter." },
+        ]}
+      />
+
+      <h3 className="pt-2 font-display text-xl font-medium tracking-tight">
+        Inndeling av jordens indre
+      </h3>
       <p>
         Jordkloden er lagdelt etter kjemisk sammensetning (tetthet) og mekaniske egenskaper (reologi):
       </p>
@@ -143,15 +169,15 @@ function PlatetektonikkPage() {
         ord="Astenosfære"
         barn="Sone i øvre mantel (100–350 km) direkte under litosfæren. Består av fast bergart (peridotitt), men er så varm at den deformeres seigtflytende (plastisk) over geologisk tid. Tillater litosfæreplatene å bevege seg."
       />
-
-      <EarthLayersDiagram />
-      </section>
+      </CollapsibleSection>
 
       {/* 2. VITENSKAPSHISTORIE OG BEVISENE */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Oppdagelsen og bevisene: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
-        </h2>
+      <CollapsibleSection
+        title="Fra Wegeners puslespill til den magnetiske «båndopptakeren»"
+        subtitle="Wegener, Marie Tharp, Hess og Vine-Matthews"
+        badge="Bevisene"
+        badgeVariant="amber"
+      >
       <p>
         I dag tar vi platetektonikken som en selvfølge, men fram til midten av 1960-tallet var ideen om bevegelige
         kontinenter regnet som ren villfarelse blant de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
@@ -247,13 +273,14 @@ function PlatetektonikkPage() {
           { n: "2", label: "Normalforkastningsvegg på nordamerikansk side som glir vestover." },
         ]}
       />
-      </section>
-
+      </CollapsibleSection>
       {/* 3. HVILKE KREFTER DRIVER PLATENE? */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Hva driver platene? Slab pull, ridge push og gravitasjonell fysikk
-        </h2>
+      <CollapsibleSection
+        title="Hva driver platene? Slab pull, ridge push og gravitasjonell fysikk"
+        subtitle="De fire drivkreftene bak platebevegelsene"
+        badge="Drivkrefter"
+        badgeVariant="primary"
+      >
         <p>
           I mange eldre lærebøker forklares platebevegelsene som om mantelen fungerer som et transportbånd som drar
           platene med seg via friksjon (basal drag). Moderne geodynamiske beregninger og <em>seismisk tomografi</em>{" "}
@@ -312,13 +339,15 @@ function PlatetektonikkPage() {
       </p>
 
       <PlatesMapDiagram />
-      </section>
+      </CollapsibleSection>
 
       {/* 4. SMELTEFYSIKK OG MAGMADANNELSE */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer
-        </h2>
+      <CollapsibleSection
+        title="Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer"
+        subtitle="Solidus, liquidus og de tre smeltemekanismene"
+        badge="Magma"
+        badgeVariant="warning"
+      >
       <p>
         En av de mest fundamentale leksjonene i Geofag 1 er å forstå <strong>hvorfor og hvordan magma dannes</strong>.
         Nesten all magma på jorden oppstår i den faste øvre mantelen ved delvis oppsmelting (partiell smelting) av
@@ -405,13 +434,15 @@ function PlatetektonikkPage() {
           },
         ]}
       />
-      </section>
+      </CollapsibleSection>
 
       {/* 5. DE TRE HOVEDTYPENE PLATEGRENSER */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Plategrensene: Tre relative bevegelser, seks geologiske miljøer
-        </h2>
+      <CollapsibleSection
+        title="Plategrensene: Tre relative bevegelser, seks geologiske miljøer"
+        subtitle="Divergens, konvergens (3 varianter) og transformgrenser"
+        badge="Plategrenser"
+        badgeVariant="sky"
+      >
       <p>
         Jordens mest dramatiske geologiske hendelser er konsentrert langs grensene mellom litosfæreplatene.
         Hva som skjer ved en gitt grense, avhenger av to faktorer: <strong>bevegelsesretningen</strong> (fra
@@ -646,26 +677,30 @@ function PlatetektonikkPage() {
           },
         ]}
       />
-      </section>
+      </CollapsibleSection>
 
       {/* 6. INTERAKTIV MODELL */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Interaktiv geodynamisk modell: Utforsk plategrensene
-        </h2>
+      <CollapsibleSection
+        title="Interaktiv geodynamisk modell: Utforsk plategrensene"
+        subtitle="Eksperimenter med platehastigheter, jordskjelvfokus og smeltemekanismer"
+        badge="Simulator"
+        badgeVariant="teal"
+      >
         <p>
           Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på
           jordskjelvfokus, og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting:
         </p>
 
         <PlateTectonicsModel />
-      </section>
+      </CollapsibleSection>
 
       {/* 7. WILSONSYKLUSEN */}
-      <section className="pt-6 space-y-4">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Wilsonsyklusen: Havbassengenes liv og død
-        </h2>
+      <CollapsibleSection
+        title="Wilsonsyklusen: Havbassengenes liv og død"
+        subtitle="Superkontinenter, rifting, havlukking og orogenese i 400–600 M.å.-sykluser"
+        badge="Kretsløp"
+        badgeVariant="amber"
+      >
         <p>
           I 1966 stilte den kanadiske geofysikeren J. Tuzo Wilson et fundamentalt spørsmål i en berømt Nature-artikkel:{" "}
           <em>«Did the Atlantic close and then re-open?»</em> (Wilson, 1966). Svaret var et rungende ja.
@@ -780,7 +815,7 @@ function PlatetektonikkPage() {
             </li>
           </ul>
         </div>
-      </section>
+      </CollapsibleSection>
 
       {/* 8. BEGREPER OG SAMMENDRAG */}
       <h2 className="font-display text-2xl font-medium tracking-tight">Sentralt fagvokabular</h2>
@@ -806,7 +841,12 @@ function PlatetektonikkPage() {
       </TermGrid>
 
       {/* 9. QUIZ */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">Test deg selv</h2>
+      <CollapsibleSection
+        title="Test deg selv: 8 spørsmål om platetektonikk"
+        subtitle="Sjekk om du har forstått kjerneinnholdet"
+        badge="Quiz"
+        badgeVariant="primary"
+      >
       <Quiz
         questions={[
           {
@@ -907,6 +947,7 @@ function PlatetektonikkPage() {
           },
         ]}
       />
+      </CollapsibleSection>
 
       <Callout title="Oppsummering: De viktigste læringspunktene om platetektonikk">
         <ul className="space-y-1.5 text-sm list-disc pl-4">
