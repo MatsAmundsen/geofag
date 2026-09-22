@@ -66,10 +66,12 @@ export function topicHead({
   title,
   description,
   path,
+  robots,
 }: {
   title: string;
   description: string;
   path: string;
+  robots?: string;
 }) {
   const canonical = absoluteUrl(path);
   const isFront = path === "/";
@@ -122,6 +124,7 @@ export function topicHead({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      ...(robots ? [{ name: "robots", content: robots }] : []),
       { "script:ld+json": jsonLd },
       ...(breadcrumbList ? [{ "script:ld+json": breadcrumbList }] : []),
     ],

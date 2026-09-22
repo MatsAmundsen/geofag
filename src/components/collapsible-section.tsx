@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export type BadgeVariant =
   | "default"
@@ -18,8 +19,11 @@ interface CollapsibleSectionProps {
   badge?: string;
   badgeVariant?: BadgeVariant;
   defaultOpen?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   icon?: ReactNode;
   id?: string;
+  className?: string;
   children: ReactNode;
 }
 
@@ -41,24 +45,36 @@ export function CollapsibleSection({
   badge,
   badgeVariant = "default",
   defaultOpen = false,
+  open,
+  onOpenChange,
   icon,
   id,
+  className,
   children,
 }: CollapsibleSectionProps) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const isControlled = open !== undefined;
+  const isOpen = isControlled ? open : uncontrolledOpen;
+
+  function setOpen(next: boolean) {
+    if (!isControlled) setUncontrolledOpen(next);
+    onOpenChange?.(next);
+  }
 
   return (
     <section
       id={id}
-      className={`my-5 overflow-hidden rounded-xl border transition-all duration-200 ${
+      className={cn(
+        "my-5 scroll-mt-44 overflow-hidden rounded-xl border transition-all duration-200",
         isOpen
           ? "border-primary/40 bg-card shadow-md ring-1 ring-primary/20"
-          : "border-border/80 bg-card/60 hover:border-primary/30 hover:bg-card/80"
-      }`}
+          : "border-border/80 bg-card/60 hover:border-primary/30 hover:bg-card/80",
+        className,
+      )}
     >
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => setOpen(!isOpen)}
         aria-expanded={isOpen}
         className="group flex w-full items-center justify-between gap-4 px-5 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >

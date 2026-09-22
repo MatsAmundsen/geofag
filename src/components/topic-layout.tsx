@@ -3,6 +3,7 @@ import { Link, useMatches, useRouter, useRouterState } from "@tanstack/react-rou
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
+import { ChapterScanBody } from "@/components/chapter-scan-body";
 import { GeminiFigure } from "@/components/gemini-figure";
 import { Kildeliste } from "@/components/kildeliste";
 import { PosterBody } from "@/components/poster-body";
@@ -35,6 +36,8 @@ export function TopicLayout({
   next,
   posterSlug,
   post: propPost,
+  bodyMode = "auto",
+  previewBanner,
 }: {
   kicker: string;
   title: string;
@@ -50,6 +53,9 @@ export function TopicLayout({
   posterSlug?: string;
   /** Preloaded post from route loader (if available) */
   post?: Post | null;
+  /** auto = existing CMS override. scan = same text in collapsible sections. */
+  bodyMode?: "auto" | "coded" | "poster" | "scan";
+  previewBanner?: ReactNode;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const router = useRouter();
@@ -111,6 +117,11 @@ export function TopicLayout({
     currentPost?.bodyMarkdown &&
       (Boolean(currentPost.updatedAt) || resolvedSlug === "platetektonikk"),
   );
+  const markdown = currentPost?.bodyMarkdown ?? "";
+  const useScan = bodyMode === "scan" && Boolean(markdown);
+  const usePoster =
+    bodyMode === "poster" || (bodyMode === "auto" && hasEdits && Boolean(markdown));
+  const useCoded = bodyMode === "coded" || (!useScan && !usePoster);
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -157,8 +168,13 @@ export function TopicLayout({
                 <p>{eierskap}</p>
               </Callout>
             ) : null}
-            {hasEdits && currentPost ? (
-              <PosterBody cleanChapter>{currentPost.bodyMarkdown}</PosterBody>
+            {previewBanner}
+            {useScan ? (
+              <ChapterScanBody markdown={markdown} />
+            ) : usePoster ? (
+              <PosterBody cleanChapter>{markdown}</PosterBody>
+            ) : useCoded ? (
+              children
             ) : (
               children
             )}
