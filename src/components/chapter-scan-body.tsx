@@ -42,6 +42,11 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
 
   function setAll(open: boolean) {
     setOpenMap(Object.fromEntries(doc.sections.map((section) => [section.id, open])));
+    if (!open) {
+      window.setTimeout(() => {
+        document.getElementById("innhold")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 30);
+    }
   }
 
   function openAndScroll(id: string) {
@@ -58,6 +63,7 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
 
       {doc.sections.length > 0 ? (
         <nav
+          data-chapter-scan-toc
           aria-label="Kapittelinnhold"
           className="sticky top-16 z-30 -mx-4 border-y border-border/80 bg-background/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6"
         >
@@ -125,7 +131,24 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
             }))
           }
         >
-          {section.markdown.trim() ? <PosterBody>{section.markdown}</PosterBody> : null}
+          {section.subsections.length > 0 ? (
+            <div className="space-y-4">
+              {section.lead.trim() ? <PosterBody>{section.lead}</PosterBody> : null}
+              {section.subsections.map((sub, index) => (
+                <CollapsibleSection
+                  key={sub.id}
+                  id={sub.id}
+                  title={sub.title}
+                  defaultOpen={index === 0}
+                  className="my-0"
+                >
+                  {sub.markdown.trim() ? <PosterBody>{sub.markdown}</PosterBody> : null}
+                </CollapsibleSection>
+              ))}
+            </div>
+          ) : section.markdown.trim() ? (
+            <PosterBody>{section.markdown}</PosterBody>
+          ) : null}
         </CollapsibleSection>
       ))}
     </div>

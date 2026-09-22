@@ -1,11 +1,19 @@
 import { injectPosterWidgets, stripChapterEditorNotice } from "./poster-markdown.ts";
 
+export type ChapterScanBlock = {
+  id: string;
+  title: string;
+  markdown: string;
+};
+
 export type ChapterScanSection = {
   id: string;
   title: string;
   label: string;
   subtitle: string;
   markdown: string;
+  lead: string;
+  subsections: ChapterScanBlock[];
 };
 
 export type ChapterScanDoc = {
@@ -41,14 +49,14 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Dekompresjon, flukssmelting og mantelplymer",
   },
   {
-    match: /plategrensene/i,
-    label: "Plategrenser",
-    subtitle: "Divergens, konvergens og transform — seks geologiske miljøer",
-  },
-  {
-    match: /interaktiv|modell/i,
+    match: /interaktiv|geodynamisk modell/i,
     label: "Modell",
     subtitle: "Simulator for plategrenser, jordskjelv og smelting",
+  },
+  {
+    match: /^plategrensene/i,
+    label: "Plategrenser",
+    subtitle: "Divergens, konvergens og transform — seks geologiske miljøer",
   },
   {
     match: /wilsonsyklus/i,
@@ -68,6 +76,7 @@ const SECTION_META: SectionMeta[] = [
 ];
 
 const H2_LINE = /^#{2}(?!#)[ \t]+(.+?)\s*$/;
+const H3_LINE = /^#{3}(?!#)[ \t]+(.+?)\s*$/;
 
 export function slugifyHeading(title: string): string {
   const slug = title
@@ -92,40 +101,69 @@ export function metaForHeading(title: string): Pick<ChapterScanSection, "label" 
   };
 }
 
-export function splitChapterByH2(markdown: string): ChapterScanDoc {
+export function splitMarkdownByHeading(
+  markdown: string,
+  pattern: RegExp,
+): { lead: string; blocks: { title: string; markdown: string }[] } {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-  const preamble: string[] = [];
+  const lead: string[] = [];
   const raw: { title: string; lines: string[] }[] = [];
   let current: { title: string; lines: string[] } | null = null;
 
   for (const line of lines) {
-    const match = H2_LINE.exec(line);
+    const match = pattern.exec(line);
     if (match) {
       if (current) raw.push(current);
       current = { title: match[1].trim(), lines: [] };
       continue;
     }
     if (current) current.lines.push(line);
-    else preamble.push(line);
+    else lead.push(line);
   }
   if (current) raw.push(current);
 
+  return {
+    lead: lead.join("\n").replace(/^\n+/, "").replace(/\n+$/, ""),
+    blocks: raw.map((block) => ({
+      title: block.title,
+      markdown: block.lines.join("\n").replace(/^\n+/, "").replace(/\n+$/, ""),
+    })),
+  };
+}
+
+function uniqueId(title: string, used: Map<string, number>): string {
+  const base = slugifyHeading(title);
+  const count = (used.get(base) ?? 0) + 1;
+  used.set(base, count);
+  return count === 1 ? base : `${base}-${count}`;
+}
+
+export function splitChapterByH2(markdown: string): ChapterScanDoc {
+  const { lead: preamble, blocks } = splitMarkdownByHeading(markdown, H2_LINE);
   const used = new Map<string, number>();
-  const sections = raw.map((section) => {
-    const base = slugifyHeading(section.title);
-    const count = (used.get(base) ?? 0) + 1;
-    used.set(base, count);
-    const id = count === 1 ? base : `${base}-${count}`;
+  const sections = blocks.map((section) => {
+    const id = uniqueId(section.title, used);
+    const nested = splitMarkdownByHeading(section.markdown, H3_LINE);
+    const subsections =
+      nested.blocks.length >= 2
+        ? nested.blocks.map((block) => ({
+            id: uniqueId(block.title, used),
+            title: block.title,
+            markdown: block.markdown,
+          }))
+        : [];
     return {
       id,
       title: section.title,
       ...metaForHeading(section.title),
-      markdown: section.lines.join("\n").replace(/^\n+/, "").replace(/\n+$/, ""),
+      markdown: section.markdown,
+      lead: subsections.length > 0 ? nested.lead : "",
+      subsections,
     };
   });
 
   return {
-    preamble: preamble.join("\n").replace(/^\n+/, "").replace(/\n+$/, ""),
+    preamble,
     sections,
   };
 }

@@ -63,8 +63,26 @@ describe("splitChapterByH2", () => {
     );
     assert.equal(doc.sections[0]?.label, "Jordens indre");
     assert.equal(doc.sections[4]?.label, "Plategrenser");
+    assert.equal(doc.sections[5]?.label, "Modell");
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      [
+        "Jordens indre",
+        "Bevisene",
+        "Drivkrefter",
+        "Smelting",
+        "Plategrenser",
+        "Modell",
+        "Wilsonsyklus",
+        "Begreper",
+        "Quiz",
+      ],
+    );
     assert.match(doc.sections[0]?.markdown ?? "", /Indre fast kjerne/);
     assert.match(doc.sections[2]?.markdown ?? "", /Trench suction/);
+    assert.ok(doc.sections[0]?.subsections.length >= 2);
+    assert.equal(doc.sections[0]?.subsections[0]?.title, "Inndeling av jorden indre");
+    assert.match(doc.sections[0]?.subsections[0]?.markdown ?? "", /Indre fast kjerne/);
   });
 });
 
