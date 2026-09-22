@@ -51,7 +51,7 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /interaktiv|geodynamisk modell/i,
     label: "Modell",
-    subtitle: "Simulator for plategrenser, jordskjelv og smelting",
+    subtitle: "Simulator for plategrenser, drivkrefter og smelting",
   },
   {
     match: /^plategrensene/i,

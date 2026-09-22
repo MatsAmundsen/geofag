@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
@@ -1313,7 +1314,20 @@ export function PlateTectonicsModel() {
         </ModelPanel>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 space-y-4">
+        <ModelNote title="Egne kapitler" tone="teal">
+          <p>
+            Seismisitet og Wadati-Benioff-sonen ligger i{" "}
+            <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
+              Jordskjelv og tsunamier
+            </Link>
+            . Ofiolittkomplekset på Leka ligger i{" "}
+            <Link to="/geofag-1/norges-geologi" className="font-medium text-primary underline underline-offset-2">
+              Norges geologiske historie
+            </Link>
+            .
+          </p>
+        </ModelNote>
         <ModelNote title="Eksamenstips (LK20 Geofag 1)" tone="warm">
           <p>
             Husk alltid skillet mellom de tre hovedveiene til magma:
