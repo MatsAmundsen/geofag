@@ -14,6 +14,7 @@ Kjerneelementer som dekkes i dette kapittelet:
 
 For å forstå platetektonikk må vi først forstå hvordan jorden er bygd opp og de ulike prosessene som skjer i jordens indre  
 
+![Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater](/images/geo-jordens-indre-lagdeling-3d.jpg)
 
 ### Inndeling av jorden indre 
 Jorden er kan deles inn i flere lag, basert på sammensetning, tetthet og egenskaper. I geofag 1, deler vi jorden inn i: skorpe, øvre mantel, nedre mantel, ytre kjerne og indre kjerne 

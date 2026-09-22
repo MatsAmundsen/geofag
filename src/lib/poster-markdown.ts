@@ -16,6 +16,7 @@ export type PosterPart =
   | { type: "widget"; id: string };
 
 export const POSTER_PHOTO_SRCS = [
+  "/images/geo-jordens-indre-lagdeling-3d.jpg",
   "/images/fig-spredring.jpg",
   "/images/geo-midthavsrygg-hydrotermal.jpg",
   "/images/geo-subduksjon-3d.jpg",

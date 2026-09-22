@@ -10,6 +10,47 @@ export type PosterPhotoFigure = {
 };
 
 export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
+  "/images/geo-jordens-indre-lagdeling-3d.jpg": {
+    src: "/images/geo-jordens-indre-lagdeling-3d.jpg",
+    alt: "Fotorealistisk 3D-tverrsnitt av jordens lagdeling fra jordskorpen og Moho ned til den faste indre kjernen",
+    heading: "Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater",
+    caption:
+      "Jordkloden er lagdelt etter kjemisk sammensetning og mekaniske egenskaper (reologi). Litosfæren (jordskorpen og det øverste stive mantellaget) utgjør de tektoniske platene som glir over den seige, plastiske astenosfæren. Under overgangssonen ligger den massive nedre mantelen (opptil 2900 km). Den flytende ytre jern-nikkelkjernen (2900–5150 km) genererer jordas magnetfelt via geodynamoen, mens det enorme trykket i sentrum (5150–6371 km) holder den indre kjernen i fast, krystallinsk tilstand til tross for temperaturer på rundt 5000 °C.",
+    marks: [
+      { x: 28, y: 28, n: "1", text: "Litosfære & Moho", tone: "cold" },
+      { x: 38, y: 37, n: "2", text: "Astenosfære", tone: "warm" },
+      { x: 41, y: 54, n: "3", text: "Nedre mantel", tone: "cold" },
+      { x: 44, y: 70, n: "4", text: "Flytende ytre kjerne", tone: "warm" },
+      { x: 48, y: 88, n: "5", text: "Fast indre kjerne", tone: "warm" },
+    ],
+    points: [
+      {
+        n: "1",
+        label:
+          "Litosfære og Moho (0–100/200 km): Jordens stive ytterste skall delt i litosfæreplater. Består av skorpen (kontinental 30–40 km, havbunn 5–7 km) og øverste stive mantel, adskilt av Moho-grensen der seismiske bølger øker brått i fart.",
+      },
+      {
+        n: "2",
+        label:
+          "Astenosfæren (~100–350 km, ~1450 °C): Fast peridotitt nær smeltepunktet som oppfører seg duktilt og seigtflytende over geologisk tid, slik at litosfæreplatene kan gli oppå.",
+      },
+      {
+        n: "3",
+        label:
+          "Nedre mantel (660–2900 km, opptil ~3370 °C): Fast silikatbergart under enormt trykk, med konveksjonsstrømmer som langsomt transporterer varme fra jordas dyp.",
+      },
+      {
+        n: "4",
+        label:
+          "Ytre kjerne (2900–5150 km, ~3370–5000 °C): Flytende jern og nikkel. S-bølger stoppes fullstendig her. Kraftige konveksjonsstrømmer genererer jordens magnetfelt.",
+      },
+      {
+        n: "5",
+        label:
+          "Indre kjerne (5150–6371 km, ~5000 °C): Fast krystallinsk jern-nikkelkule. Selv om temperaturen er på høyde med solens overflate, tvinger det kolossale trykket (~3,6 millioner atmosfærer) atomene inn i et fast metallgitter.",
+      },
+    ],
+  },
   "/images/fig-spredring.jpg": {
     src: "/images/fig-spredring.jpg",
     alt: "Sprekk i basalt og vulkansk rifting på Island der to plater glir fra hverandre",
