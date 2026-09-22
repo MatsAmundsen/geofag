@@ -80,12 +80,6 @@ export const KILDER = {
       href: "https://www.ngu.no/emne/marin-grense",
     },
     {
-      prefix: "NORSAR. (u.å.). ",
-      italic: "Jordskjelv i Norge",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
-    },
-    {
       prefix: "Norsk Polarinstitutt. (u.å.). ",
       italic: "Jan Mayen",
       suffix: ".",
@@ -120,19 +114,6 @@ export const KILDER = {
       italic: "Nature, 211",
       suffix: "(5050), 676–681.",
       href: "https://doi.org/10.1038/211676a0",
-    },
-    {
-      prefix:
-        "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
-      italic: "Journal of the Geological Society, 145",
-      suffix: "(3), 401–412.",
-      href: "https://doi.org/10.1144/gsjgs.145.3.0401",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
-      italic: "Leka – Norges geologiske nasjonalmonument og ofiolittkompleks",
-      suffix: ".",
-      href: "https://www.ngu.no/geologiske-arv/leka",
     },
   ],
   vulkaner: [

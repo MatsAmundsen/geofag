@@ -219,7 +219,9 @@ En midthavsrygg er aldri en rett, uavbrutt linje. Den er delt opp i forskjøvede
 
 ## Interaktiv geodynamisk modell: Utforsk plategrensene
 
-Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på jordskjelvfokus, og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting:
+Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på jordskjelvfokus, og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting.
+
+Jordskjelv, Wadati-Benioff-sonen og norsk seismisitet ligger i [Jordskjelv og tsunamier](/geofag-1/jordskjelv). Ofiolittkomplekset på Leka ligger i [Norges geologiske historie](/geofag-1/norges-geologi).
 
 ## Wilsonsyklusen: Havbassengenes liv og død
 

@@ -836,7 +836,7 @@ export function BoundaryOverviewDiagram() {
               <strong>Kontinent mot kontinent:</strong> Ingen subduksjon pga. lav tetthet. Skorpefortykning og skyvedekker (Himalaya, Kaledonidene).
             </li>
             <li>
-              <strong>Jordskjelv:</strong> Hele dybdespekteret (0–700 km i Wadati-Benioff-sonen).
+              <strong>Jordskjelv:</strong> Langs plategrensen. Dybdefordeling eier kapittelet Jordskjelv.
             </li>
           </ul>
         </div>
@@ -871,7 +871,7 @@ export function BoundaryOverviewDiagram() {
 
 /**
  * 7. SpreadingDiagram & SeafloorSpreadingPaleomagDiagram:
- * Havbunnsspredning med komplett ofiolittlagdeling, hydrotermale black smokers
+ * Havbunnsspredning med lagdelt havbunnsskorpe, hydrotermale black smokers
  * og paleomagnetiske reverseringsbånd (jordens båndopptaker).
  */
 export function SpreadingDiagram() {
@@ -879,9 +879,9 @@ export function SpreadingDiagram() {
 
   return (
     <Diagram
-      title="Havbunnsspredning, ofiolittsekvens og paleomagnetiske striper"
+      title="Havbunnsspredning, lagdelt havbunnsskorpe og paleomagnetiske striper"
       heading="Midthavsryggen: Havbunnsskorpens fødested og paleomagnetiske bånd"
-      caption="Ved midthavsryggen dannes ny havbunnsskorpe kontinuerlig i et lagdelt system kalt en ofiolittsekvens: 1) Dype marine sedimenter, 2) Putelava (pillow basalt) som bråkjøles mot sjøvannet, 3) Basaltganger (sheeted dykes) som tilførte magmaen, 4) Gabbro i det dype magmakammeret, og 5) Peridotitt under Moho. Når basalten avkjøles under Curie-temperaturen (~580 °C), orienterer jernmineralet magnetitt seg etter jordens magnetfelt og «fryses» fast. Fordi jordas magnetfelt jevnlig bytter polaritet (reverserer), fungerer havbunnen som et gigantisk magnetisk båndopptak med symmetriske striper av normal og reversert magnetisering på hver side av ryggen. Dette var Vine-Matthews-Morley-hypotesen (1963) som ga det ugjendrivelige beviset for platetektonikken."
+      caption="Ved midthavsryggen dannes ny havbunnsskorpe kontinuerlig i et lagdelt system: 1) Dype marine sedimenter, 2) Putelava (pillow basalt) som bråkjøles mot sjøvannet, 3) Basaltganger (sheeted dykes) som tilførte magmaen, 4) Gabbro i det dype magmakammeret, og 5) Peridotitt under Moho. Når den samme lagrekken skyves på land, kalles den ofiolitt — det eier kapittelet Norges geologiske historie. Når basalten avkjøles under Curie-temperaturen (~580 °C), orienterer jernmineralet magnetitt seg etter jordens magnetfelt og «fryses» fast. Fordi jordas magnetfelt jevnlig bytter polaritet (reverserer), fungerer havbunnen som et gigantisk magnetisk båndopptak med symmetriske striper av normal og reversert magnetisering på hver side av ryggen. Dette var Vine-Matthews-Morley-hypotesen (1963) som ga det ugjendrivelige beviset for platetektonikken."
       viewBox="0 0 940 520"
       wide
       action={
@@ -1306,18 +1306,18 @@ export function ContinentalRiftDiagram() {
 }
 
 /**
- * 9. SubductionDiagram / WadatiBenioffSubductionDiagram:
+ * 9. SubductionDiagram:
  * Osean-kontinent subduksjon med dyphavsgrop, akkresjonskile,
- * mineraldehydrering, flukssmelting, og Wadati-Benioff jordskjelvsonen.
+ * mineraldehydrering og flukssmelting.
  */
 export function SubductionDiagram() {
   const [isPlaying, setIsPlaying] = useState(true);
 
   return (
     <Diagram
-      title="Subduksjon hav mot kontinent: Flukssmelting og Wadati-Benioff-sonen"
-      heading="Subduksjon og seismikk: H₂O-frigjøring, vulkanbuer og dype jordskjelv"
-      caption="Når oseanisk litosfære subdueres under et kontinent (som Nazcaplaten under Sør-Amerika), presses den ned i et miljø med økende trykk og temperatur. Ved dyphavsgropen dannes en akkresjonskile av sedimenter som skrapes av havbunnen. I dypet mellom 80 og 150 km gjennomgår havbunnsskorpen metamorfose: hydratiserte mineraler som amfibol og serpentin brytes ned og avgir overkritisk vann (dehydrering). Dette vannet stiger inn i den overliggende mantelkilen av peridotitt. Vannmolekylene bryter silikatbindingene og senker bergartens smeltepunkt dramatisk – dette kalles flukssmelting! Magmaen stiger og bygger opp en eksplosiv vulkansk bue (Andesfjellene). Samtidig sporer jordskjelvene den synkende platen helt ned til 700 km dyp i den berømte Wadati-Benioff-sonen."
+      title="Subduksjon hav mot kontinent: Dehydrering og flukssmelting"
+      heading="Subduksjon: H₂O-frigjøring, flukssmelting og vulkanbue"
+      caption="Når oseanisk litosfære subdueres under et kontinent (som Nazcaplaten under Sør-Amerika), presses den ned i et miljø med økende trykk og temperatur. Ved dyphavsgropen dannes en akkresjonskile av sedimenter som skrapes av havbunnen. I dypet mellom 80 og 150 km gjennomgår havbunnsskorpen metamorfose: hydratiserte mineraler som amfibol og serpentin brytes ned og avgir overkritisk vann (dehydrering). Dette vannet stiger inn i den overliggende mantelkilen av peridotitt. Vannmolekylene bryter silikatbindingene og senker bergartens smeltepunkt dramatisk – dette kalles flukssmelting! Magmaen stiger og bygger opp en eksplosiv vulkansk bue (Andesfjellene). Jordskjelvene som følger den synkende platen, og Wadati-Benioff-sonen, eier kapittelet Jordskjelv."
       viewBox="0 0 940 520"
       wide
       action={
@@ -1481,48 +1481,25 @@ export function SubductionDiagram() {
             Magmakammer
           </L>
 
-          {/* JORDSKJELV: WADATI-BENIOFF SONEN (FYSIKK OG DYBDEFORSKJELLER) */}
+          {/* Jordskjelv langs plategrensen */}
           <g>
-            {/* Animert seismisk ring rundt representativt fokus */}
             <circle cx="420" cy="150" r="12" fill="none" stroke="#ef4444" className="sub-quake" />
-            <circle cx="530" cy="285" r="12" fill="none" stroke="#f59e0b" className="sub-quake" style={{ animationDelay: "1s" }} />
-            <circle cx="645" cy="445" r="12" fill="none" stroke="#8b5cf6" className="sub-quake" style={{ animationDelay: "1.8s" }} />
-
-            {/* Grunne megathrust (0–70 km, rød) */}
             <circle cx="390" cy="125" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
             <circle cx="420" cy="150" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
             <circle cx="450" cy="180" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
+            <circle cx="490" cy="230" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1.2" />
+            <path d="M 390 125 L 490 230" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="5 4" fill="none" opacity="0.5" />
 
-            {/* Intermediære skjelv (70–300 km, oransje/gul) */}
-            <circle cx="490" cy="230" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1.2" />
-            <circle cx="530" cy="285" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1.2" />
-            <circle cx="570" cy="340" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1.2" />
-
-            {/* Dype skjelv (300–700 km, lilla) */}
-            <circle cx="610" cy="395" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1.2" />
-            <circle cx="645" cy="445" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1.2" />
-            <circle cx="675" cy="485" r="5.5" fill="#8b5cf6" stroke="#fff" strokeWidth="1.2" />
-
-            {/* Wadati-Benioff sonelinje */}
-            <path d="M 390 125 L 675 485" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="5 4" fill="none" opacity="0.7" />
-
-            {/* Forklaringsboks */}
-            <g transform="translate(680, 290)">
-              <rect x="0" y="0" width="220" height="95" rx="6" fill="#080f16" stroke="#f59e0b" strokeWidth="1.2" opacity="0.95" />
-              <L x="12" y="20" fill="#f59e0b" size={12} weight={800}>
-                WADATI-BENIOFF-SONEN:
+            <g transform="translate(680, 330)">
+              <rect x="0" y="0" width="220" height="58" rx="6" fill="#080f16" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
+              <L x="12" y="22" fill="#ef4444" size={12} weight={800}>
+                Jordskjelv langs slabben
               </L>
-              <L x="12" y="38" fill="#ef4444" size={10.5} weight={700}>
-                ● 0–70 km: Grunne megathrust
+              <L x="12" y="42" fill="#d1d5db" size={10}>
+                Fokus følger plategrensen.
               </L>
-              <L x="22" y="52" fill="#94a3b8" size={9.5}>
-                (Tsunamifare, friksjonslås i grenseflaten)
-              </L>
-              <L x="12" y="68" fill="#f59e0b" size={10.5} weight={700}>
-                ● 70–300 km: Dehydreringssprekk
-              </L>
-              <L x="12" y="84" fill="#8b5cf6" size={10.5} weight={700}>
-                ● 300–700 km: Mineralfaseoverganger
+              <L x="12" y="54" fill="#94a3b8" size={9.5}>
+                Dybdefordeling eier Jordskjelv.
               </L>
             </g>
           </g>
@@ -1659,15 +1636,11 @@ export function OceanOceanSubductionDiagram() {
             Flukssmelting
           </L>
 
-          {/* Dype jordskjelv i Wadati-Benioff sonen */}
+          {/* Jordskjelv langs plategrensen */}
           <circle cx="375" cy="155" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
           <circle cx="375" cy="155" r="4" fill="none" stroke="#ef4444" strokeWidth="1.5" className="oos-quake" />
-
-          <circle cx="420" cy="205" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-          <circle cx="480" cy="275" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-          <circle cx="540" cy="345" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
-          <circle cx="590" cy="405" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
-          <circle cx="590" cy="405" r="5" fill="none" stroke="#8b5cf6" strokeWidth="1.5" className="oos-quake" style={{ animationDelay: "1s" }} />
+          <circle cx="420" cy="205" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+          <circle cx="480" cy="275" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
         </>
       )}
     </Diagram>

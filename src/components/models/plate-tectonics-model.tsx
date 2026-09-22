@@ -10,70 +10,10 @@ type BoundaryType =
   | "rift"
   | "transform"
   | "hotspot"
-  | "ofiolitt"
   | "paleomag";
-
-const OPHIOLITE_LAYERS = [
-  {
-    id: 1,
-    name: "1. Pelagiske dypmarine sedimenter & chert",
-    thick: "0–0,5 km dyp",
-    rock: "Kiselchert, radiolaritt, leirskifer",
-    density: "2,2–2,5 g/cm³",
-    desc: "Mikroskopiske kiselskall (radiolarier) og leirpartikler avsatt på dyphavsbunnen langt fra land.",
-    leka: "Tynne, finkornede sedimentlag bevart oppå putelavaene på Leka.",
-    color: "#94a3b8",
-  },
-  {
-    id: 2,
-    name: "2. Basaltisk putelava (Pillow lava)",
-    thick: "0,5–1,5 km dyp",
-    rock: "Putelava med glassaktig herdingsskorpe",
-    desc: "Flytende basalt (1200 °C) som bråkjøles i kontakt med sjøvann og danner avrundede puter med gassblærer.",
-    leka: "Enorme putelavafelt med tydelig bevart putestruktur på Skeisnesset.",
-    color: "#475569",
-  },
-  {
-    id: 3,
-    name: "3. Diabas gangkompleks (Sheeted dykes)",
-    thick: "1,5–2,5 km dyp",
-    rock: "Subvertikale parallelle diabas-ganger",
-    desc: "100 % magmatiske tilførselsganger. Hver gang representerer en oppsprekking idet platene glir 2–10 cm/år.",
-    leka: "Tettstilte parallelle ganger ('bokrygger') som kutter gjennom fjellet.",
-    color: "#334155",
-  },
-  {
-    id: 4,
-    name: "4. Lagdelt og massiv gabbro",
-    thick: "2,5–5,5 km dyp",
-    rock: "Plagioklas- og pyroksenrik gabbro (kumulater)",
-    desc: "Langsom krystallisasjon i et gigantisk magmakammer under midthavsryggen. Mineralene sank til bunns i lag.",
-    leka: "Spektakulær magmatisk lagdeling med vekslende lyse og mørke bånd.",
-    color: "#1e293b",
-  },
-  {
-    id: 5,
-    name: "5. Moho-diskontinuiteten (Skorpe/Mantel-skille)",
-    thick: "Grenseflate (~5,5 km)",
-    rock: "Seismisk overgang: Gabbro til Peridotitt (Vp 6,8 → 8,1 km/s)",
-    desc: "Grensen mellom selve jordskorpen og jordens øvre mantel. Skiller tetthet 3,0 g/cm³ fra 3,3 g/cm³.",
-    leka: "Et av verdens ekstremt få steder der du kan stå med én fot på jordskorpen og én fot på mantelen!",
-    color: "#f59e0b",
-  },
-  {
-    id: 6,
-    name: "6. Ultramafisk øvre mantel (Peridotitt)",
-    thick: "> 5,5 km (litosfærisk mantel)",
-    rock: "Harzburgitt, dunitt (rik på olivin og kromitt), serpentinitt",
-    desc: "Jordens faste mantel. Resten etter at basaltsmelten ble presset ut. Meget rik på magnesium og olivin.",
-    leka: "Karakteristisk guloransje forvitringshud forårsaket av at jern i olivinen oksiderer (ruster).",
-    color: "#d97706",
-  },
-];
 
 export function PlateTectonicsModel() {
   const [boundary, setBoundary] = useState<BoundaryType>("subduction_continent");
-  const [selectedOphiolite, setSelectedOphiolite] = useState<number>(6);
   const [activeTransformMode, setActiveTransformMode] = useState<"fault" | "fracture_zone">("fault");
   const [activePolarity, setActivePolarity] = useState<"normal" | "reversed">("normal");
   const [rate, setRate] = useState<number>(6); // cm/år
@@ -97,10 +37,10 @@ export function PlateTectonicsModel() {
     },
     subduction_continent: {
       title: "Subduksjon hav mot kontinent (Konvergerende grense)",
-      kicker: "Plateneddykking & Wadati-Benioff",
+      kicker: "Plateneddykking & flukssmelting",
       typicalRate: "5–10 cm/år (f.eks. Nazcaplaten under Sør-Amerika ~7 cm/år)",
       rockTypes: "Andesitt, dasitt, granodioritt (i dypet), eklogitt (i den synkende slabben)",
-      quaketype: "Svært aktive, fra grunne skjelv ved renna til dype megathrust (helt ned til 700 km)",
+      quaketype: "Jordskjelv langs plategrensen. Dybdefordeling eier kapittelet Jordskjelv.",
       meltingMechanism: "Flukssmelting: Vann fra den synkende havbunnen senker smeltepunktet i mantelkilen over.",
       realExample: "Andesfjellene (Sør-Amerika), Kaskadefjellene (USA)",
       description:
@@ -111,7 +51,7 @@ export function PlateTectonicsModel() {
       kicker: "Vulkanøybue & Dyphavsgrop",
       typicalRate: "6–12 cm/år (f.eks. Stillehavsplaten under Filippinerplaten)",
       rockTypes: "Basaltisk andesitt, tefra, vulkanske tuffer, dype pelagiske sedimenter",
-      quaketype: "Kraftige jordskjelv og tsunamifare langs hele subduksjonsgrensen",
+      quaketype: "Jordskjelv langs subduksjonsgrensen. Dybde og tsunamifysikk eier kapittelet Jordskjelv.",
       meltingMechanism: "Flukssmelting i mantelkilen under øybuen, med mulig bakbue-spredning.",
       realExample: "Marianene, Japan, Aleutene, De små antiller",
       description:
@@ -161,17 +101,6 @@ export function PlateTectonicsModel() {
       description:
         "En smal søyle av overopphetet bergart (en mantelplym) stiger opp fra kjerne-mantel-grensen (2900 km dyp). Fordi plymen er forankret dypt i mantelen, står den nesten stille mens litosfæreplaten glir sakte forbi over den. Dette brenner en perlerad av vulkaner inn i platen, der alderen øker jevnt i retningen platen beveger seg.",
     },
-    ofiolitt: {
-      title: "Ofiolittkompleks (Havbunn på land: Leka i Trøndelag)",
-      kicker: "Havbunnens stratigrafi & Obduksjon",
-      typicalRate: "Resirkuleres på ~200 mill. år; overskjøvet på land under Kaledonidene",
-      rockTypes: "Pelagisk sediment, putelava, gangdiabas, lagdelt gabbro, Moho, harzburgitt/dunitt",
-      quaketype: "Fossil havbunn, ingen aktive skjelv, men dokumenterer skorpe- og mantellagene",
-      meltingMechanism: "Nydannet ved dekompresjon i midthavsrygg, deretter skjøvet opp ved obduksjon.",
-      realExample: "Leka i Trøndelag (Norges geologiske nasjonalmonument), Karmøy, Oman",
-      description:
-        "Et ofiolittkompleks er et komplett stykke havbunnsskorpe og øverste litosfæriske mantel som under en kontinentalkollisjon ble skjøvet opp på land i stedet for å subdueres. På Leka kan du gå direkte til fots over selve Moho-grensen!",
-    },
     paleomag: {
       title: "Paleomagnetisk «båndopptaker» (Vine-Matthews-Morley 1963)",
       kicker: "Geomagnetiske reverseringer & symmetrisk havbunn",
@@ -191,7 +120,7 @@ export function PlateTectonicsModel() {
     <ModelFrame
       kicker="Interaktiv geodynamisk simulator"
       title="Platetektonisk Bevegelses- og Grensemodell"
-      lead="Utforsk hvordan platene beveger seg, hvorfor magma oppstår, hvor de dype jordskjelvene befinner seg, hvordan havbunnsskorpen er bygd opp (ofiolitt på Leka), og hvorfor transformforkastninger skiller seg fra bruddsoner."
+      lead="Utforsk hvordan platene beveger seg, hvorfor magma oppstår ved dekompresjon og flukssmelting, og hvorfor transformforkastninger skiller seg fra bruddsoner. Seismisitet og ofiolitter eier egne kapitler."
       toolbar={
         <div className="flex flex-wrap gap-1.5">
           <ModelTab active={boundary === "subduction_continent"} onClick={() => setBoundary("subduction_continent")}>
@@ -214,9 +143,6 @@ export function PlateTectonicsModel() {
           </ModelTab>
           <ModelTab active={boundary === "hotspot"} onClick={() => setBoundary("hotspot")}>
             Hotspot (Hawaii)
-          </ModelTab>
-          <ModelTab active={boundary === "ofiolitt"} onClick={() => setBoundary("ofiolitt")}>
-            Ofiolitt (Leka-lagene)
           </ModelTab>
           <ModelTab active={boundary === "paleomag"} onClick={() => setBoundary("paleomag")}>
             Båndopptaker (Paleomag)
@@ -545,32 +471,20 @@ export function PlateTectonicsModel() {
                 </g>
               )}
 
-              {/* JORDSKJELV: WADATI-BENIOFF SONEN */}
+              {/* Jordskjelv langs plategrensen */}
               {showQuakes && (
                 <g>
-                  {/* Grunne skjelv (røde, 0–70 km) */}
                   <circle cx="410" cy="120" r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
                   <circle cx="430" cy="135" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
                   <circle cx="455" cy="155" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
                   <circle cx="475" cy="175" r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  {/* Intermediære skjelv (oransje/gule, 70–300 km) */}
-                  <circle cx="510" cy="220" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <circle cx="540" cy="260" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <circle cx="575" cy="305" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <circle cx="610" cy="350" r="5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  {/* Dype skjelv (fiolette/blå, 300–700 km) */}
-                  <circle cx="640" cy="390" r="5.5" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
-                  <circle cx="665" cy="425" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
-                  <circle cx="685" cy="450" r="5.5" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
-
-                  {/* Forklaring på Wadati-Benioff sonen */}
-                  <path d="M 410 120 L 685 450" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" />
-                  <g transform="translate(680, 310)">
-                    <rect x="0" y="0" width="200" height="78" rx="6" fill="#0f172a" stroke="#f59e0b" strokeWidth="1.2" opacity="0.95" />
-                    <text x="10" y="18" fill="#f59e0b" fontSize="11" fontWeight="700">Wadati-Benioff-sonen:</text>
-                    <text x="10" y="34" fill="#ef4444" fontSize="10">● 0–70 km: Grunne megathrust</text>
-                    <text x="10" y="49" fill="#f59e0b" fontSize="10">● 70–300 km: Intermediære skjelv</text>
-                    <text x="10" y="64" fill="#8b5cf6" fontSize="10">● 300–700 km: Dype faseskift</text>
+                  <circle cx="510" cy="220" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+                  <circle cx="540" cy="260" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+                  <path d="M 410 120 L 540 260" fill="none" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.45" />
+                  <g transform="translate(680, 330)">
+                    <rect x="0" y="0" width="200" height="52" rx="6" fill="#0f172a" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
+                    <text x="10" y="20" fill="#ef4444" fontSize="11" fontWeight="700">Jordskjelv langs slabben</text>
+                    <text x="10" y="38" fill="#94a3b8" fontSize="10">Dybdefordeling eier Jordskjelv.</text>
                   </g>
                 </g>
               )}
@@ -796,15 +710,12 @@ export function PlateTectonicsModel() {
                 </g>
               )}
 
-              {/* Wadati-Benioff jordskjelv */}
+              {/* Jordskjelv langs plategrensen */}
               {showQuakes && (
                 <g>
                   <circle cx="395" cy="145" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
                   <circle cx="430" cy="180" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-                  <circle cx="475" cy="235" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <circle cx="525" cy="300" r="5.5" fill="#f59e0b" stroke="#fff" strokeWidth="1" />
-                  <circle cx="580" cy="370" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
-                  <circle cx="625" cy="425" r="6" fill="#8b5cf6" stroke="#fff" strokeWidth="1" />
+                  <circle cx="475" cy="235" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
                 </g>
               )}
             </g>
@@ -1110,105 +1021,6 @@ export function PlateTectonicsModel() {
           )}
 
           {/* ============================================================ */}
-          {/* SCENE 8: OFIOLITTKOMPLEKS (LEKA I TRØNDELAG)                 */}
-          {boundary === "ofiolitt" && (
-            <g>
-              <rect x="50" y="30" width="820" height="420" rx="8" fill="#091017" stroke="#1b2a36" />
-
-              <text x="70" y="55" fill="#f8fafc" fontSize="14" fontWeight="800">
-                Ofiolittkomplekset: Havbunnens stratigrafi (Leka i Trøndelag)
-              </text>
-              <text x="70" y="72" fill="#94a3b8" fontSize="11">
-                Klikk på lagene i søylen til venstre for å undersøke bergartstype, tetthet og dannelsesmekanisme.
-              </text>
-
-              {/* Stratigrafisk søyle (venstre del: x=70 til 310) */}
-              {OPHIOLITE_LAYERS.map((layer, idx) => {
-                const heights = [36, 52, 60, 78, 24, 90];
-                const yOffsets = [90, 126, 178, 238, 316, 340];
-                const isSel = selectedOphiolite === layer.id;
-                return (
-                  <g
-                    key={layer.id}
-                    className="cursor-pointer transition-opacity hover:opacity-90"
-                    onClick={() => setSelectedOphiolite(layer.id)}
-                  >
-                    <rect
-                      x="70"
-                      y={yOffsets[idx]}
-                      width="240"
-                      height={heights[idx]}
-                      fill={layer.color}
-                      stroke={isSel ? "#38bdf8" : "#0f172a"}
-                      strokeWidth={isSel ? 3 : 1.5}
-                      rx="3"
-                    />
-                    <text
-                      x="80"
-                      y={yOffsets[idx] + (layer.id === 5 ? 14 : 20)}
-                      fill={layer.id === 5 ? "#000" : "#fff"}
-                      fontSize={layer.id === 5 ? 10.5 : 10}
-                      fontWeight={isSel ? 800 : 600}
-                    >
-                      {layer.name}
-                    </text>
-                    <text
-                      x="80"
-                      y={yOffsets[idx] + (layer.id === 5 ? 24 : 33)}
-                      fill={layer.id === 5 ? "#222" : "#cbd5e1"}
-                      fontSize="9"
-                    >
-                      {layer.thick} · {layer.rock.slice(0, 32)}...
-                    </text>
-                  </g>
-                );
-              })}
-
-              {/* Høyre del: Detaljvisning av valgt ofiolittlag (x=330 til 850) */}
-              {(() => {
-                const curLayer = OPHIOLITE_LAYERS.find((l) => l.id === selectedOphiolite) ?? OPHIOLITE_LAYERS[5];
-                return (
-                  <g transform="translate(340, 90)">
-                    <rect x="0" y="0" width="510" height="340" rx="8" fill="#111c26" stroke="#223647" strokeWidth="1.5" />
-
-                    <rect x="16" y="16" width="12" height="12" rx="3" fill={curLayer.color} />
-                    <text x="36" y="27" fill="#38bdf8" fontSize="13" fontWeight="800">
-                      {curLayer.name}
-                    </text>
-
-                    <rect x="16" y="45" width="478" height="65" rx="6" fill="#0c151e" stroke="#182733" />
-                    <text x="28" y="65" fill="#94a3b8" fontSize="10" fontWeight="600">Dybdenivå i havbunnen:</text>
-                    <text x="170" y="65" fill="#f8fafc" fontSize="10.5" fontWeight="700">{curLayer.thick}</text>
-
-                    <text x="28" y="85" fill="#94a3b8" fontSize="10" fontWeight="600">Typiske bergarter:</text>
-                    <text x="170" y="85" fill="#f59e0b" fontSize="10.5" fontWeight="700">{curLayer.rock}</text>
-
-                    <text x="28" y="102" fill="#94a3b8" fontSize="10" fontWeight="600">Beregnet bergartstetthet:</text>
-                    <text x="170" y="102" fill="#38bdf8" fontSize="10.5" fontWeight="700">{curLayer.density}</text>
-
-                    <text x="16" y="132" fill="#f8fafc" fontSize="11" fontWeight="700">Dannelsesmekanisme under midthavsryggen:</text>
-                    <foreignObject x="16" y="138" width="478" height="75">
-                      <p style={{ color: "#cbd5e1", fontSize: "11px", lineHeight: "1.5" }}>
-                        {curLayer.desc}
-                      </p>
-                    </foreignObject>
-
-                    <rect x="16" y="222" width="478" height="98" rx="6" fill="#1e2d3b" stroke="#38bdf8" strokeWidth="1" />
-                    <text x="28" y="244" fill="#38bdf8" fontSize="11" fontWeight="800">
-                      Sporene på Leka i Trøndelag (Norges geologiske nasjonalmonument):
-                    </text>
-                    <foreignObject x="28" y="252" width="454" height="60">
-                      <p style={{ color: "#e2e8f0", fontSize: "10.5px", lineHeight: "1.45" }}>
-                        {curLayer.leka}
-                      </p>
-                    </foreignObject>
-                  </g>
-                );
-              })()}
-            </g>
-          )}
-
-          {/* ============================================================ */}
           {/* SCENE 8: PALEOMAGNETISK BÅNDOPPTAKER (VINE-MATTHEWS-MORLEY)  */}
           {/* ============================================================ */}
           {boundary === "paleomag" && (
@@ -1493,7 +1305,7 @@ export function PlateTectonicsModel() {
         </ModelPanel>
 
         <ModelPanel className="sm:col-span-2 lg:col-span-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-rose-500">Seismisitet & Naturfare</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-rose-500">Jordskjelv ved grensen</p>
           <p className="mt-1 text-sm text-foreground">{current.quaketype}</p>
           <div className="mt-3 border-t border-border/50 pt-2 text-xs text-muted-foreground">
             <span className="font-semibold text-foreground">Kjente eksempler:</span> {current.realExample}
