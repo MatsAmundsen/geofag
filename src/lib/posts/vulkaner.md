@@ -92,6 +92,20 @@ Kalderaer spenner fra få kilometer i diameter (som Crater Lake i Oregon etter M
 
 **Kaldera:** En stor, sirkulær innsynkningsfordypning i jordskorpen (ofte 5–50 km bred) som oppstår når taket over et delvis tømt magmakammer kollapser.
 
+## Intraplatevulkanisme: Hotspots og dype mantelplymer
+
+Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest massive vulkanske strukturer – som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater, tusenvis av kilometer fra nærmeste midthavsrygg eller subduksjonssone.
+
+I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære **«hotspots»** (varmeflekker) dypt i mantelen. Senere påviste Jason Morgan at hotspots er overflateuttrykket for **mantelplymer**: smale søyler av overopphetet bergart som stiger helt fra **D''-laget (kjerne-mantel-grensen på 2900 km dyp)**.
+
+Fordi mantelplymen er forankret så dypt nede ved jordkjernen, står den tilnærmet i ro over titalls millioner år. Mens litosfæreplaten glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
+
+- **Hawaii-Emperor-ryggen:** Den aktive vulkanismen (Kilauea og Mauna Loa) ligger rett over hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene: Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
+- **Den berømte 47 Ma-knekken:** For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått endret bevegelsesretning!
+- **Island – en unik kombinasjon:** Island er spesiell fordi en kraftig mantelplym ligger nøyaktig under Den midtatlantiske ryggen. Kombinasjonen av dekompresjonssmelting fra ryggspredningen og ekstraordinær termisk oppvarming fra plymen har produsert så enorme mengder basalt at skorpen her er over 35–40 km tykk, og rager høyt over havoverflaten.
+
+**Hotspot (varmeflekk):** Et vulkansk område på jordoverflaten som mates av en oppstigende mantelplym fra jordens dype mantel (D''-laget). Hotspoten står tilnærmet i ro mens litosfæreplaten glir forbi, noe som danner en rekke av vulkanske øyer med økende alder.
+
 ## Anatomi av et pliniansk utbrudd: Fra fragmentering til paraplysky
 
 Begrepet *pliniansk utbrudd* er oppkalt etter den romerske forfatteren Plinius den yngre, som i to berømte brev til historikeren Tacitus beskrev Vesuvs ødeleggelse av Pompeii og Herculaneum i år 79 e.Kr. Plinius sammenlignet askesøylen med en pinje (italiensk furu): en loddrett, tynn stamme som forgrener seg høyt oppe på himmelen.
@@ -203,6 +217,10 @@ Da vulkanen Tambora i Indonesia eksploderte i april 1815 (det største utbruddet
 **Lahar:** Vulkansk slamstrøm som oppstår når aske blandes med smeltevann fra breer eller kraftig regn. Har tyngde som våt betong og begraver dalbunner.
 
 **Vulkansk vinter:** Global nedkjøling forårsaket av mikroskopiske svovelsyreaerosoler i stratosfæren som reflekterer solstråling etter store, eksplosive utbrudd.
+
+## Interaktiv modell: Utforsk vulkaner
+
+Bruk simulatoren under til å eksperimentere med magmakjemi, utbruddsstil og seismiske forvarsler.
 
 ## Norsk vulkanisme: Jan Mayen og Beerenberg
 

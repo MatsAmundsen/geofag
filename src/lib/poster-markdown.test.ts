@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  CHAPTER_SCAN_WIDGET_IDS,
   injectPosterWidgets,
   listedWidgetIds,
   parsePosterMarkdown,
@@ -65,6 +66,41 @@ describe("injectPosterWidgets", () => {
   it("skips missing anchors instead of inventing content", () => {
     const injected = injectPosterWidgets("Kort egendefinert post uten kapitteloverskrifter.");
     assert.equal(listedWidgetIds(injected).size, 0);
+  });
+
+  it("does not put the Platetektonikk quiz into Vulkaner", () => {
+    const vulkaner = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/vulkaner.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(vulkaner));
+    assert.equal(ids.has("QuizTestDegSelv"), false);
+    assert.equal(ids.has("QuizVulkaner"), true);
+    assert.equal(ids.has("VolcanoTypes"), true);
+    assert.equal(ids.has("VolcanoModel"), true);
+  });
+
+  it("places chapter-scan widgets into Vulkaner, Jordskjelv and Bergarter", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const vulkaner = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/vulkaner.md"), "utf8")),
+    );
+    const jordskjelv = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/jordskjelv.md"), "utf8")),
+    );
+    const bergarter = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/bergarter.md"), "utf8")),
+    );
+    for (const id of ["VolcanoTypes", "HotspotPlume", "VolcanoModel", "QuizVulkaner"]) {
+      assert.equal(vulkaner.has(id), true, `vulkaner missing ${id}`);
+    }
+    for (const id of ["ElasticRebound", "BoundaryQuakes", "QuizJordskjelv"]) {
+      assert.equal(jordskjelv.has(id), true, `jordskjelv missing ${id}`);
+    }
+    for (const id of ["RockCycle", "RockPetrologyModel", "QuizBergarter"]) {
+      assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
+    }
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVulkaner"));
   });
 });
 

@@ -19,6 +19,14 @@ import { topicHead } from "@/lib/seo";
 const tema = gf1Theme("vulkaner")!;
 
 export const Route = createFileRoute("/geofag-1/vulkaner")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
+  loader: async () => {
+    const { loadChapterPost } = await import("@/lib/chapter-posts");
+    return { post: await loadChapterPost("vulkaner") };
+  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -29,6 +37,7 @@ export const Route = createFileRoute("/geofag-1/vulkaner")({
 });
 
 function VulkanerPage() {
+  const { post } = Route.useLoaderData();
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -45,6 +54,9 @@ function VulkanerPage() {
         label: "Neste: Jordskjelv og tsunamier",
       }}
       kilder={KILDER.vulkaner}
+      posterSlug="vulkaner"
+      post={post}
+      bodyMode="scan"
     >
       <Callout title="Kompetansemål i Geofag 1 (LK20)">
         <p>{tema.maal}</p>

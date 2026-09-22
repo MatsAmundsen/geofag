@@ -17,10 +17,11 @@ import {
   stripChapterEditorNotice,
 } from "./poster-markdown.ts";
 
-const chapterMarkdown = readFileSync(
-  join(dirname(fileURLToPath(import.meta.url)), "platetektonikk-post.md"),
-  "utf8",
-);
+const libDir = dirname(fileURLToPath(import.meta.url));
+const readChapter = (name: string) =>
+  readFileSync(join(libDir, name === "platetektonikk" ? "platetektonikk-post.md" : `posts/${name}.md`), "utf8");
+
+const chapterMarkdown = readChapter("platetektonikk");
 
 describe("splitChapterByH2", () => {
   it("keeps preamble and does not treat ### as a new section", () => {
@@ -107,5 +108,63 @@ describe("slugifyHeading", () => {
   it("makes stable Norwegian anchors", () => {
     assert.equal(slugifyHeading("Sentralt fagvokabular"), "sentralt-fagvokabular");
     assert.equal(slugifyHeading("Wilsonsyklusen: Havbassengenes liv og død").startsWith("wilsonsyklusen"), true);
+  });
+});
+
+describe("scan chips for the other geosfære chapters", () => {
+  it("labels Vulkaner with short topic chips", () => {
+    const doc = prepareChapterScan(readChapter("vulkaner"));
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      [
+        "Motor",
+        "Magmakjemi",
+        "Vulkantyper",
+        "Hotspots",
+        "Pliniansk",
+        "Farer",
+        "Modell",
+        "Jan Mayen",
+        "Begreper",
+        "Quiz",
+      ],
+    );
+  });
+
+  it("labels Jordskjelv with short topic chips", () => {
+    const doc = prepareChapterScan(readChapter("jordskjelv"));
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      [
+        "Tilbakefjæring",
+        "Bølger",
+        "Måling",
+        "Wadati-Benioff",
+        "Norge",
+        "Tsunami",
+        "Sikring",
+        "Begreper",
+        "Quiz",
+      ],
+    );
+  });
+
+  it("labels Bergarter with short topic chips", () => {
+    const doc = prepareChapterScan(readChapter("bergarter"));
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      [
+        "Mineraler",
+        "Kretsløpet",
+        "Magmatiske",
+        "Sedimentære",
+        "Metamorfe",
+        "Tynnsnitt",
+        "Modell",
+        "Datering",
+        "Begreper",
+        "Quiz",
+      ],
+    );
   });
 });

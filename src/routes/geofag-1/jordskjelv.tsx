@@ -18,6 +18,14 @@ import { topicHead } from "@/lib/seo";
 const tema = gf1Theme("jordskjelv")!;
 
 export const Route = createFileRoute("/geofag-1/jordskjelv")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
+  loader: async () => {
+    const { loadChapterPost } = await import("@/lib/chapter-posts");
+    return { post: await loadChapterPost("jordskjelv") };
+  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -31,6 +39,7 @@ const lenke =
   "text-primary font-semibold underline-offset-2 hover:underline";
 
 function JordskjelvPage() {
+  const { post } = Route.useLoaderData();
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -47,6 +56,9 @@ function JordskjelvPage() {
         label: "Neste: Bergarter og mineraler",
       }}
       kilder={KILDER.jordskjelv}
+      posterSlug="jordskjelv"
+      post={post}
+      bodyMode="scan"
     >
       <Callout title="Kompetansemål i Geofag 1 (LK20)">
         <p>{tema.maal}</p>

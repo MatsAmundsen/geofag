@@ -221,3 +221,5 @@ I vannmettet, løst sand- og siltjord fører gjentatt seismisk risting til at po
 **seismisk fare:** den fysiske sannsynligheten og styrken av jordskjelv i et område, uavhengig av menneskelig eksponering
 
 **seismisk risiko:** kombinasjonen av seismisk fare, sårbarhet i bebyggelse/infrastruktur og eksponering av befolkning og verdier
+
+## Test deg selv

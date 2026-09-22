@@ -146,6 +146,10 @@ I håndstykke er det ofte umulig å skille mineraler som er mindre enn en halv m
 
 Mikroskopet bruker to polarisasjonsfiltre: En *polarisator* under prøven som slipper gjennom lys som svinger i ett plan, og en *analysator* over prøven som er vridd 90° i forhold til polarisatoren (kryssede nicoler, XPL). Når anisotrope mineralkrystaller roteres mellom filtrene, spaltes lyset i to stråler med ulik hastighet (dobbeltbrytning). Dette skaper praktfulle **interferensfarger** og karakteristiske **utslukningsvinkler** som gjør det mulig å identifisere mineraler med mikroskopisk presisjon.
 
+## Interaktiv modell: Petrologi i laboratoriet
+
+Bruk laboratoriemodellen under til å sammenligne håndstykke, tynnsnitt og dannelsesmiljø for magmatiske, sedimentære og metamorfe bergarter.
+
 ## Geologisk tid og datering — relativ rekkefølge og absolutte årstall
 
 Geologien opererer med to fundamentalt forskjellige måter å bestemme alder på: **relativ alder** (hva skjedde før hva?) og **absolutt alder** (hvor mange millioner år siden skjedde det?).
@@ -201,3 +205,5 @@ N(t) = N₀ · (1/2)^(t / T½) = N₀ · e^(-λt)
 **Krysskjæring:** En gang, forkastning eller intrusjon er alltid yngre enn bergartene den skjærer gjennom.
 
 **Halveringstid:** Tiden det tar før halvparten av en radioaktiv morisotop har henfalt til stabile datteratomer.
+
+## Test deg selv

@@ -1,32 +1,55 @@
 import type { JSX } from "react";
 import {
   BoundaryOverviewDiagram,
+  BoundaryQuakesDiagram,
+  CalderaFormationDiagram,
   CollisionDiagram,
   ContinentalRiftDiagram,
   ConvectionDiagram,
   DecompressionMeltingDiagram,
   EarthLayersDiagram,
+  EarthquakeWavePhysicsDiagram,
+  ElasticReboundDiagram,
   HotspotPlumeDiagram,
+  NorwayEarthquakesDiagram,
   NorwayTectonicsHistoryDiagram,
   OceanOceanSubductionDiagram,
   PlatesMapDiagram,
+  SeismogramDiagram,
   SolidusDiagram,
   SpreadingDiagram,
   SubductionDiagram,
   TransformDiagram,
+  VolcanicHazardsDiagram,
+  VolcanoEruptionAnatomyDiagram,
+  VolcanoTypesDiagram,
   WilsonCycleDiagram,
 } from "@/components/diagrams";
+import {
+  MetamorphicFaciesDiagram,
+  RockCycleDiagram,
+  SilicateStructureDiagram,
+} from "@/components/diagrams/bergarter";
+import {
+  BowenReactionSeriesDiagram,
+  RelativeDatingDiagram,
+} from "@/components/diagrams/geology-extra";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
+import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
+import { VolcanoModel } from "@/components/models/volcano-model";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
 import { injectPosterWidgets, parsePosterMarkdown, stripChapterEditorNotice } from "@/lib/poster-markdown";
 import {
+  QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_JORDSKJELV,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
@@ -80,6 +103,25 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     />
   ),
   QuizTestDegSelv: () => <Quiz questions={QUIZ_TEST_DEG_SELV} />,
+  VolcanoTypes: () => <VolcanoTypesDiagram />,
+  CalderaFormation: () => <CalderaFormationDiagram />,
+  VolcanoEruptionAnatomy: () => <VolcanoEruptionAnatomyDiagram />,
+  VolcanicHazards: () => <VolcanicHazardsDiagram />,
+  VolcanoModel: () => <VolcanoModel />,
+  QuizVulkaner: () => <Quiz questions={QUIZ_VULKANER} />,
+  ElasticRebound: () => <ElasticReboundDiagram />,
+  EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,
+  Seismogram: () => <SeismogramDiagram />,
+  BoundaryQuakes: () => <BoundaryQuakesDiagram />,
+  NorwayEarthquakes: () => <NorwayEarthquakesDiagram />,
+  QuizJordskjelv: () => <Quiz questions={QUIZ_JORDSKJELV} />,
+  SilicateStructure: () => <SilicateStructureDiagram />,
+  RockCycle: () => <RockCycleDiagram />,
+  BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
+  MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
+  RelativeDating: () => <RelativeDatingDiagram />,
+  RockPetrologyModel: () => <RockPetrologyModel />,
+  QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
 };
 
 function PosterWidget({ id }: { id: string }) {

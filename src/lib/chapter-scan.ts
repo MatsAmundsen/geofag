@@ -34,7 +34,7 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Skorpe, mantel, kjerne, litosfære og astenosfære",
   },
   {
-    match: /oppdagelsen|bevisene/i,
+    match: /oppdagelsen og bevisene|wegeners puslespill/i,
     label: "Bevisene",
     subtitle: "Wegener, Tharp, Hess og den magnetiske båndopptakeren",
   },
@@ -49,12 +49,27 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Dekompresjon, flukssmelting og mantelplymer",
   },
   {
+    match: /utforsk vulkaner/i,
+    label: "Modell",
+    subtitle: "Simulator for magmakjemi, utbruddsstil og forvarsler",
+  },
+  {
+    match: /petrologi i laboratoriet/i,
+    label: "Modell",
+    subtitle: "Håndstykke, tynnsnitt og bergartssyklus",
+  },
+  {
     match: /interaktiv|geodynamisk modell/i,
     label: "Modell",
     subtitle: "Simulator for plategrenser, drivkrefter og smelting",
   },
   {
-    match: /^plategrensene/i,
+    match: /wadati-benioff|dype skjelv/i,
+    label: "Wadati-Benioff",
+    subtitle: "Fokusdybde langs plategrensene ned til 700 km",
+  },
+  {
+    match: /^plategrensene:/i,
     label: "Plategrenser",
     subtitle: "Divergens, konvergens og transform — seks geologiske miljøer",
   },
@@ -62,6 +77,106 @@ const SECTION_META: SectionMeta[] = [
     match: /wilsonsyklus/i,
     label: "Wilsonsyklus",
     subtitle: "Havbassengenes liv og død over 400–600 millioner år",
+  },
+  {
+    match: /termiske motor/i,
+    label: "Motor",
+    subtitle: "Primordial varme, radiogen varme og vulkanisme som ventil",
+  },
+  {
+    match: /^magmakjemi|silikatinnhold/i,
+    label: "Magmakjemi",
+    subtitle: "SiO₂, viskositet, Henrys lov og eksplosivitet",
+  },
+  {
+    match: /vulkantyper|geomorfologi/i,
+    label: "Vulkantyper",
+    subtitle: "Skjoldvulkan, stratovulkan, sinderkjegle og kaldera",
+  },
+  {
+    match: /intraplate|hotspot/i,
+    label: "Hotspots",
+    subtitle: "Mantelplymer, Hawaii-Emperor og Island",
+  },
+  {
+    match: /pliniansk/i,
+    label: "Pliniansk",
+    subtitle: "Fragmentering, askesøyle, Eyjafjallajökull og VEI",
+  },
+  {
+    match: /vulkanske farer|klimapåvirkning/i,
+    label: "Farer",
+    subtitle: "PDC, laharer og vulkansk vinter",
+  },
+  {
+    match: /norsk vulkanisme|jan mayen|beerenberg/i,
+    label: "Jan Mayen",
+    subtitle: "Beerenberg — Norges eneste aktive vulkan",
+  },
+  {
+    match: /tilbakefjæring|jordskjelvfysikk/i,
+    label: "Tilbakefjæring",
+    subtitle: "Reids teori og den seismiske syklusen",
+  },
+  {
+    match: /seismiske bølger|flytende kjerne/i,
+    label: "Bølger",
+    subtitle: "P-, S-, Rayleigh- og Love-bølger",
+  },
+  {
+    match: /måling av jordskjelv|seismogram/i,
+    label: "Måling",
+    subtitle: "Triangulering, Δt og momentmagnitude",
+  },
+  {
+    match: /norsk seismisitet/i,
+    label: "Norge",
+    subtitle: "Ridge push, landheving og historiske skjelv",
+  },
+  {
+    match: /tsunamifysikk|shoaling/i,
+    label: "Tsunami",
+    subtitle: "Bølgefart, Greens lov og norske skredtsunamier",
+  },
+  {
+    match: /jordskjelvsikring|eurokode/i,
+    label: "Sikring",
+    subtitle: "Eurokode 8, baseisolering og likvifaksjon",
+  },
+  {
+    match: /^mineraler/i,
+    label: "Mineraler",
+    subtitle: "Silikater, Mohs, kløv, strekfarge og syretest",
+  },
+  {
+    match: /geologiske kretsløpet|bergartssyklus/i,
+    label: "Kretsløpet",
+    subtitle: "Magmatisk, sedimentær og metamorf resirkulering",
+  },
+  {
+    match: /magmatiske/i,
+    label: "Magmatiske",
+    subtitle: "Dyp-, gang- og dagbergart, Bowen, larvikitt",
+  },
+  {
+    match: /sedimentære/i,
+    label: "Sedimentære",
+    subtitle: "Klastiske, kjemiske og biogene bergarter",
+  },
+  {
+    match: /metamorfe/i,
+    label: "Metamorfe",
+    subtitle: "Foliasjon og metamorfosefacies",
+  },
+  {
+    match: /petrografi|tynnsnitt/i,
+    label: "Tynnsnitt",
+    subtitle: "Polarisasjonsmikroskop og kryssede nicoler",
+  },
+  {
+    match: /geologisk tid|datering/i,
+    label: "Datering",
+    subtitle: "Superposisjon, krysskjæring og isotopur",
   },
   {
     match: /fagvokabular|begrep/i,

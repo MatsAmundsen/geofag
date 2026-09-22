@@ -25,6 +25,8 @@ export const POSTER_PHOTO_SRCS = [
 
 type InjectRule = {
   widgets: string[];
+  /** Skip the rule unless this snippet exists in the chapter markdown. */
+  require?: string;
 } & (
   | { beforeHeading: string }
   | { afterHeading: string }
@@ -32,7 +34,7 @@ type InjectRule = {
   | { beforeLine: string }
 );
 
-const INJECT_RULES: InjectRule[] = [
+const PLATE_INJECT_RULES: InjectRule[] = [
   { widgets: ["EarthLayers"], beforeHeading: "Oppdagelsen og bevisene" },
   { widgets: ["Spreading"], beforeImage: "/images/fig-spredring.jpg" },
   {
@@ -67,10 +69,75 @@ const INJECT_RULES: InjectRule[] = [
     widgets: ["QuizOfiolittWilson"],
     beforeHeading: "Sentralt fagvokabular",
   },
-  { widgets: ["QuizTestDegSelv"], afterHeading: "Test deg selv" },
+  {
+    widgets: ["QuizTestDegSelv"],
+    afterHeading: "Test deg selv",
+    require: "Wilsonsyklusen",
+  },
 ];
 
-export const POSTER_WIDGET_IDS: string[] = INJECT_RULES.flatMap((rule) => rule.widgets);
+const CHAPTER_INJECT_RULES: InjectRule[] = [
+  { widgets: ["VolcanoTypes"], beforeImage: "/images/geo-vulkantyper-3d.jpg" },
+  { widgets: ["CalderaFormation"], beforeHeading: "Kalderaer og supervulkaner" },
+  { widgets: ["HotspotPlume"], beforeHeading: "Anatomi av et pliniansk" },
+  {
+    widgets: ["VolcanoEruptionAnatomy"],
+    beforeImage: "/images/geo-pliniansk-anatomi.jpg",
+  },
+  {
+    widgets: ["VolcanicHazards"],
+    beforeHeading: "1. Pyroklastiske tetthetsstrømmer",
+  },
+  { widgets: ["VolcanoModel"], beforeHeading: "Norsk vulkanisme" },
+  {
+    widgets: ["QuizVulkaner"],
+    afterHeading: "Test deg selv",
+    require: "Eyjafjallajökull",
+  },
+  { widgets: ["ElasticRebound"], beforeHeading: "Den seismiske syklusen" },
+  {
+    widgets: ["EarthquakeWavePhysics"],
+    beforeImage: "/images/geo-jordskjelv-bolger-3d.jpg",
+  },
+  { widgets: ["Seismogram"], beforeHeading: "Lokalisering via sirkeltriangulering" },
+  {
+    widgets: ["BoundaryQuakes"],
+    beforeHeading: "Spredningsrygger og transformforkastninger",
+  },
+  {
+    widgets: ["NorwayEarthquakes"],
+    beforeHeading: "To dominerende spenningskilder",
+  },
+  {
+    widgets: ["QuizJordskjelv"],
+    afterHeading: "Test deg selv",
+    require: "elastisk tilbakefjæring",
+  },
+  {
+    widgets: ["SilicateStructure"],
+    beforeHeading: "Fysiske identifikasjonsegenskaper",
+  },
+  { widgets: ["RockCycle"], beforeHeading: "Magmatiske bergarter" },
+  { widgets: ["BowenReactionSeries"], beforeHeading: "Norske nasjonalskatter" },
+  { widgets: ["MetamorphicFacies"], beforeHeading: "Petrografi og tynnsnitt" },
+  {
+    widgets: ["RockPetrologyModel"],
+    beforeHeading: "Geologisk tid og datering",
+  },
+  { widgets: ["RelativeDating"], beforeHeading: "Radiometrisk datering" },
+  {
+    widgets: ["QuizBergarter"],
+    afterHeading: "Test deg selv",
+    require: "Bowens reaksjonsserie",
+  },
+];
+
+const INJECT_RULES: InjectRule[] = [...PLATE_INJECT_RULES, ...CHAPTER_INJECT_RULES];
+
+export const POSTER_WIDGET_IDS: string[] = PLATE_INJECT_RULES.flatMap((rule) => rule.widgets);
+export const CHAPTER_SCAN_WIDGET_IDS: string[] = CHAPTER_INJECT_RULES.flatMap(
+  (rule) => rule.widgets,
+);
 
 const WIDGET_FENCE = /```widget[ \t]*\r?\n([A-Za-z][A-Za-z0-9_-]*)[ \t]*\r?\n```/g;
 
@@ -106,6 +173,7 @@ export function injectPosterWidgets(markdown: string): string {
   const present = listedWidgetIds(markdown);
   let out = markdown;
   for (const rule of INJECT_RULES) {
+    if (rule.require && !markdown.includes(rule.require)) continue;
     const missing = rule.widgets.filter((id) => !present.has(id));
     if (missing.length === 0) continue;
     const insertion = fences(missing);

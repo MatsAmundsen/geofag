@@ -21,6 +21,14 @@ import { topicHead } from "@/lib/seo";
 const tema = gf1Theme("bergarter")!;
 
 export const Route = createFileRoute("/geofag-1/bergarter")({
+  staleTime: 0,
+  preloadStaleTime: 0,
+  gcTime: 0,
+  shouldReload: true,
+  loader: async () => {
+    const { loadChapterPost } = await import("@/lib/chapter-posts");
+    return { post: await loadChapterPost("bergarter") };
+  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -31,6 +39,7 @@ export const Route = createFileRoute("/geofag-1/bergarter")({
 });
 
 function BergarterPage() {
+  const { post } = Route.useLoaderData();
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -47,6 +56,9 @@ function BergarterPage() {
         label: "Neste: Norges geologiske historie",
       }}
       kilder={KILDER.bergarter}
+      posterSlug="bergarter"
+      post={post}
+      bodyMode="scan"
     >
       {/* ------------------------------------------------------------------ */}
       {/* 1. MINERALER OG KRYSTALLKJEMI                                      */}
