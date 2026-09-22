@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """Bygg redigerbar Word-fil: værkartfelt på Sognsvann."""
 
+from pathlib import Path
+
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn, nsmap
 from docx.shared import Cm, Pt, RGBColor
+
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lag_kart  # noqa: E402
 
 OUT = "/workspace/opplegg/vaerkart-sognsvann.docx"
 
@@ -125,6 +132,22 @@ def add_table(doc, headers, rows, col_widths, row_cm=None):
 
     doc.add_paragraph()
     return table
+
+
+def add_figure(doc, path, caption):
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_before = Pt(8)
+    p.paragraph_format.space_after = Pt(2)
+    run = p.add_run()
+    run.add_picture(str(path), width=Cm(16.8))
+    cap = doc.add_paragraph()
+    cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cap.paragraph_format.space_before = Pt(0)
+    cap.paragraph_format.space_after = Pt(10)
+    r = cap.add_run(caption)
+    set_run_font(r, size=9.5, italic=True, color=MUTED)
+    return p
 
 
 def add_heading_styled(doc, text, level):
@@ -261,6 +284,8 @@ def add_page_number(paragraph):
 
 
 def build():
+    loop_map, isobar_map = lag_kart.main()
+
     doc = Document()
     set_doc_defaults(doc)
 
@@ -338,6 +363,11 @@ def build():
             ],
         ],
         [1.6, 6.2, 3.6, 5.3],
+    )
+    add_figure(
+        doc,
+        loop_map,
+        "Kart 1. Grusstien rundt Sognsvann. Alle går med klokka, med vannet på høyre hånd. Rød strek er løypa. A–D er målepostene.",
     )
 
     add_heading_styled(doc, "Grupper og start", 1)
@@ -535,6 +565,11 @@ def build():
             ],
         ],
         [2.2, 4.4, 5.2, 4.9],
+    )
+    add_figure(
+        doc,
+        isobar_map,
+        "Kart 2. Trykkpunktene for isobarene. Rød strek er til fots. Blå strek er T-bane linje 5 sørover til Blindern.",
     )
     add_body(
         doc,
