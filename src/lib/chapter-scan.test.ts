@@ -104,6 +104,42 @@ describe("prepareChapterScan", () => {
     );
   });
 
+  it("drops Wadati-Benioff and ofiolitt from a saved Platetektonikk post", () => {
+    const stored = [
+      "Ingress.",
+      "",
+      "## Platetektonikk",
+      "",
+      "Lagdeling.",
+      "",
+      "## Plategrensene: Tre relative bevegelser, seks geologiske miljøer",
+      "",
+      "Grenser.",
+      "",
+      "## Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde",
+      "",
+      "Dype skjelv ned til 700 km.",
+      "",
+      "## Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag",
+      "",
+      "Leka ofiolitt på land.",
+      "",
+      "## Wilsonsyklusen: Havbassengenes liv og død",
+      "",
+      "Syklusen fortsetter.",
+    ].join("\n");
+    const doc = prepareChapterScan(stored);
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      ["Jordens indre", "Plategrenser", "Wilsonsyklus"],
+    );
+    const body = doc.sections.map((section) => section.markdown).join("\n");
+    assert.equal(body.includes("700 km"), false);
+    assert.equal(body.includes("Leka ofiolitt"), false);
+    assert.match(body, /Syklusen fortsetter/);
+    assert.match(body, /Grenser/);
+  });
+
   it("shows the earth-layer photo under Jordens indre when the saved body omits it", () => {
     const stored = [
       "Ingress.",
