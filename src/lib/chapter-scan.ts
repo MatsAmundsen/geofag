@@ -297,7 +297,34 @@ export function collapseWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
+const PLATETEKTONIKK_CHAPTER = /^##[ \t]+(?:Platetektonikk|Hva driver platene|Wilsonsyklusen)\b/m;
+const RELOCATED_PLATE_SECTION = /wadati[-\s]?benioff|ofiolitt/i;
+
+function isPlatetektonikkChapter(markdown: string): boolean {
+  return PLATETEKTONIKK_CHAPTER.test(markdown);
+}
+
+/**
+ * The saved Platetektonikk post can still contain the Wadati-Benioff and
+ * Leka-ofiolitt chapters after they moved. Drop those H2s at render time.
+ * Jordskjelv keeps Wadati-Benioff, and Norges geologi keeps ofiolitten.
+ */
+export function omitRelocatedPlatetektonikkSections(markdown: string): string {
+  if (!isPlatetektonikkChapter(markdown)) return markdown;
+  const { lead, blocks } = splitMarkdownByHeading(markdown, H2_LINE);
+  const kept = blocks.filter((block) => !RELOCATED_PLATE_SECTION.test(block.title));
+  if (kept.length === blocks.length) return markdown;
+  const parts: string[] = [];
+  if (lead.trim()) parts.push(lead.trim());
+  for (const block of kept) {
+    parts.push(`## ${block.title}`);
+    if (block.markdown.trim()) parts.push(block.markdown.trim());
+  }
+  return parts.join("\n\n");
+}
+
 /** Same live chapter text the public page shows, ready to split into scan sections. */
 export function prepareChapterScan(markdown: string): ChapterScanDoc {
-  return splitChapterByH2(injectPosterWidgets(stripChapterEditorNotice(markdown)));
+  const source = omitRelocatedPlatetektonikkSections(stripChapterEditorNotice(markdown));
+  return splitChapterByH2(injectPosterWidgets(source));
 }
