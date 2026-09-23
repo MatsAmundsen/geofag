@@ -9,14 +9,24 @@
  * SVG diagrams / quizzes / model). `injectPosterWidgets` places those widgets
  * at render time from heading and image anchors so the live preview and the
  * published post match the coded chapter — without rewriting stored text.
+ *
+ * The live CMS row can also predate `geo-jordens-indre-lagdeling-3d.jpg`.
+ * That photo is inserted above «Inndeling av jorden indre» when the stored
+ * body does not already point at the file.
  */
 
 export type PosterPart =
   | { type: "markdown"; value: string }
   | { type: "widget"; id: string };
 
+export const EARTH_LAYERS_PHOTO_SRC = "/images/geo-jordens-indre-lagdeling-3d.jpg";
+
+const EARTH_LAYERS_PHOTO_MD = `![Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater](${EARTH_LAYERS_PHOTO_SRC})`;
+
+const EARTH_LAYERS_SECTION_HEADING = /^#{3,6}[^\n]*Inndeling av jorden indre[^\n]*$/m;
+
 export const POSTER_PHOTO_SRCS = [
-  "/images/geo-jordens-indre-lagdeling-3d.jpg",
+  EARTH_LAYERS_PHOTO_SRC,
   "/images/fig-spredring.jpg",
   "/images/geo-midthavsrygg-hydrotermal.jpg",
   "/images/geo-subduksjon-3d.jpg",
@@ -170,9 +180,15 @@ export function parsePosterMarkdown(markdown: string): PosterPart[] {
   return parts;
 }
 
+/** Puts the 3D layer figure in Jordens indre when a saved post predates the file. */
+export function injectEarthLayersPhoto(markdown: string): string {
+  if (markdown.includes(EARTH_LAYERS_PHOTO_SRC)) return markdown;
+  return insertBefore(markdown, EARTH_LAYERS_SECTION_HEADING, `\n\n${EARTH_LAYERS_PHOTO_MD}\n\n`);
+}
+
 export function injectPosterWidgets(markdown: string): string {
   const present = listedWidgetIds(markdown);
-  let out = markdown;
+  let out = injectEarthLayersPhoto(markdown);
   for (const rule of INJECT_RULES) {
     if (rule.require && !markdown.includes(rule.require)) continue;
     const missing = rule.widgets.filter((id) => !present.has(id));

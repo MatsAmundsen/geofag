@@ -96,11 +96,32 @@ describe("prepareChapterScan", () => {
       assert.equal(ids.has(id), true, `missing widget ${id}`);
     }
     assert.match(doc.sections[0]?.markdown ?? "", /EarthLayers/);
+    assert.match(doc.sections[0]?.markdown ?? "", /geo-jordens-indre-lagdeling-3d\.jpg/);
     assert.match(doc.sections[5]?.markdown ?? "", /PlateTectonicsModel/);
     assert.equal(
       collapseWhitespace(reconstructChapterMarkdown(doc)),
       collapseWhitespace(injectPosterWidgets(stripChapterEditorNotice(chapterMarkdown))),
     );
+  });
+
+  it("shows the earth-layer photo under Jordens indre when the saved body omits it", () => {
+    const stored = [
+      "Ingress.",
+      "",
+      "## Platetektonikk",
+      "",
+      "For å forstå platetektonikk må vi først forstå hvordan jorden er bygd opp.",
+      "",
+      "### Inndeling av jorden indre",
+      "Skorpe, mantel og kjerne.",
+      "",
+      "## Oppdagelsen og bevisene: Fra Wegeners puslespill til den magnetiske «båndopptakeren»",
+      "Wegener.",
+    ].join("\n");
+    const doc = prepareChapterScan(stored);
+    assert.equal(doc.sections[0]?.label, "Jordens indre");
+    assert.match(doc.sections[0]?.markdown ?? "", /geo-jordens-indre-lagdeling-3d\.jpg/);
+    assert.equal(doc.sections[1]?.markdown.includes("geo-jordens-indre-lagdeling-3d.jpg"), false);
   });
 });
 
