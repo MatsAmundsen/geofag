@@ -111,10 +111,7 @@ export function TopicLayout({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resolvedSlug, currentPost?.bodyMarkdown, currentPost?.updatedAt, router]);
 
-  const hasEdits = Boolean(
-    currentPost?.bodyMarkdown &&
-      (Boolean(currentPost.updatedAt) || resolvedSlug === "platetektonikk"),
-  );
+  const hasEdits = Boolean(currentPost?.bodyMarkdown && Boolean(currentPost.updatedAt));
   const markdown = currentPost?.bodyMarkdown ?? "";
   const useScan = bodyMode === "scan" && Boolean(markdown);
   const usePoster =

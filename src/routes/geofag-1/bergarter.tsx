@@ -58,7 +58,7 @@ function BergarterPage() {
       kilder={KILDER.bergarter}
       posterSlug="bergarter"
       post={post}
-      bodyMode="scan"
+      bodyMode="coded"
     >
       {/* ------------------------------------------------------------------ */}
       {/* 1. MINERALER OG KRYSTALLKJEMI                                      */}

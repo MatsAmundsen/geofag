@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FigureFrame } from "@/components/figure-frame";
+import { PhotoFigure } from "@/components/photo-figure";
+import { getPosterPhotoFigure } from "@/lib/poster-figures";
 import { Arrow, C, Diagram, L, PlayPauseToggle } from "./svg-kit";
 
 /**
@@ -8,6 +10,20 @@ import { Arrow, C, Diagram, L, PlayPauseToggle } from "./svg-kit";
  * med seismiske diskontinuiteter (Moho, Gutenberg, Lehmann), tettheter og reologi.
  */
 export function EarthLayersDiagram() {
+  const photo = getPosterPhotoFigure("/images/geo-jordens-indre-lagdeling-3d.jpg");
+  if (photo) {
+    return (
+      <PhotoFigure
+        src={photo.src}
+        alt={photo.alt}
+        heading={photo.heading}
+        caption={photo.caption}
+        marks={photo.marks}
+        points={photo.points}
+      />
+    );
+  }
+
   return (
     <Diagram
       title="Jordens oppbygning: Kjerne, mantel, astenosfære og litosfære"

@@ -58,7 +58,7 @@ function JordskjelvPage() {
       kilder={KILDER.jordskjelv}
       posterSlug="jordskjelv"
       post={post}
-      bodyMode="scan"
+      bodyMode="coded"
     >
       <Callout title="Kompetansemål i Geofag 1 (LK20)">
         <p>{tema.maal}</p>

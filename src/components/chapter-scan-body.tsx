@@ -5,7 +5,7 @@ import { prepareChapterScan, type ChapterScanSection } from "@/lib/chapter-scan"
 import { cn } from "@/lib/utils";
 
 function closedMap(sections: ChapterScanSection[]): Record<string, boolean> {
-  return Object.fromEntries(sections.map((section) => [section.id, false]));
+  return Object.fromEntries(sections.map((section, idx) => [section.id, idx === 0]));
 }
 
 function SectionText({ section }: { section: ChapterScanSection }) {
