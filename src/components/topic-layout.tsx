@@ -36,7 +36,7 @@ export function TopicLayout({
   next,
   posterSlug,
   post: propPost,
-  bodyMode = "auto",
+  bodyMode = "coded",
 }: {
   kicker: string;
   title: string;
@@ -114,8 +114,7 @@ export function TopicLayout({
   const hasEdits = Boolean(currentPost?.bodyMarkdown && Boolean(currentPost.updatedAt));
   const markdown = currentPost?.bodyMarkdown ?? "";
   const useScan = bodyMode === "scan" && Boolean(markdown);
-  const usePoster =
-    bodyMode === "poster" || (bodyMode === "auto" && hasEdits && Boolean(markdown));
+  const usePoster = bodyMode === "poster";
   const useCoded = bodyMode === "coded" || (!useScan && !usePoster);
 
   return (

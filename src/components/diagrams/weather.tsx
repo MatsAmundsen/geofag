@@ -791,3 +791,123 @@ export function PolarLowDiagram() {
     </Diagram>
   );
 }
+
+export function TemperatureInversionDiagram() {
+  return (
+    <Diagram
+      title="Temperaturinversjon: Normal atmosfærisk temperaturprofil kontra bakkeinversjon"
+      heading="Temperaturinversjon: Atmosfærens giftige lokk"
+      caption="Normalt synker temperaturen med høyden (venstre, ca. 0,65 °C / 100 m), slik at varmere luft ved bakken kan stige og tynne ut forurensning via konveksjon. Ved en temperaturinversjon (høyre) fører sterk langbølget strålingsavkjøling på klare, stille vinternetter til at bakken og luften nærmest bakken blir mye kaldere enn luften lenger oppe (dT/dz > 0). Det varme sjiktet danner et ugjennomtrengelig termisk lokk. I bygryter og dalfører (som Bergen, Oslo og Lillehammer) stenges vedrøyk, eksos (NO₂) og svevestøv (PM₁₀) inne i bunnen og når akutt helsefarlige nivåer."
+      viewBox="0 0 920 440"
+      wide
+    >
+      {(m) => (
+        <>
+          {/* Skillelinje */}
+          <line x1="460" y1="35" x2="460" y2="405" stroke={C.dim} strokeDasharray="4 4" />
+
+          {/* --- VENSTRE: NORMAL SITUASJON (USTABIL / NØYTRAL) --- */}
+          <rect x="30" y="30" width="410" height="380" rx="8" fill="#121b22" stroke={C.dim} strokeWidth="1.2" />
+          <L x="235" y="60" fill={C.fg} size={16} weight={700} anchor="middle">
+            1. Normal tilstand: Fri blanding
+          </L>
+          <L x="235" y="80" fill={C.muted} size={12} anchor="middle">
+            Kaldere oppover (dT/dz &lt; 0) · Forurensning stiger og spres
+          </L>
+
+          {/* Bakke */}
+          <rect x="50" y="350" width="370" height="40" fill="#1c2826" stroke="#334155" strokeWidth="1" />
+          <L x="235" y="375" fill={C.muted} size={11} anchor="middle">
+            Bakkenivå: Mildere eller oppvarmet · Ingen sperre
+          </L>
+
+          {/* Vertikal akse for høyde */}
+          <line x1="90" y1="350" x2="90" y2="120" stroke={C.dim} strokeWidth="1.5" />
+          <L x="85" y="115" fill={C.muted} size={10} anchor="end">Høyde (z)</L>
+          <L x="85" y="150" fill={C.muted} size={9} anchor="end">1000 m (-5 °C)</L>
+          <L x="85" y="250" fill={C.muted} size={9} anchor="end">500 m (-2 °C)</L>
+          <L x="85" y="340" fill={C.muted} size={9} anchor="end">0 m (+2 °C)</L>
+
+          {/* Normal temperaturprofil-kurve (går skrått mot venstre oppover: blir kaldere) */}
+          <line x1="300" y1="345" x2="160" y2="135" stroke="#38bdf8" strokeWidth="3" />
+          <L x="260" y="225" fill="#38bdf8" size={12} weight={600}>
+            Temperaturprofil T(z)
+          </L>
+
+          {/* Fabrikkpipe / by og røyk som stiger fritt */}
+          <rect x="180" y="315" width="16" height="35" fill="#475569" />
+          <ellipse cx="188" cy="275" rx="14" ry="10" fill="#94a3b8" opacity="0.4" />
+          <ellipse cx="200" cy="235" rx="26" ry="16" fill="#94a3b8" opacity="0.3" />
+          <ellipse cx="215" cy="185" rx="42" ry="22" fill="#94a3b8" opacity="0.2" />
+          <ellipse cx="230" cy="140" rx="60" ry="26" fill="#94a3b8" opacity="0.1" />
+
+          {/* Oppdrifts-piler */}
+          <Arrow d="M 270 310 L 270 170" marker={m.warm} color={C.warm} width={2.4} />
+          <L x="280" y="240" fill={C.warm} size={11} weight={600}>Termisk oppdrift</L>
+          <L x="280" y="256" fill={C.muted} size={10}>Ren og trygg byluft</L>
+
+          {/* --- HØYRE: TEMPERATURINVERSJON (STERKT STABIL) --- */}
+          <rect x="480" y="30" width="410" height="380" rx="8" fill="#141923" stroke="#f87171" strokeWidth="1.5" />
+          <L x="685" y="60" fill="#f87171" size={16} weight={700} anchor="middle">
+            2. Temperaturinversjon: Termisk lokk
+          </L>
+          <L x="685" y="80" fill={C.muted} size={12} anchor="middle">
+            Varmere oppover (dT/dz &gt; 0) · Forurensning fanges i bunnen
+          </L>
+
+          {/* Kald dalbunn */}
+          <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1" />
+          <L x="685" y="375" fill="#7dd3fc" size={11} weight={600} anchor="middle">
+            Kald dalbunn: -15 °C (Kraftig nattlig strålingstap)
+          </L>
+
+          {/* Vertikal akse for høyde */}
+          <line x1="540" y1="350" x2="540" y2="120" stroke={C.dim} strokeWidth="1.5" />
+          <L x="535" y="115" fill={C.muted} size={10} anchor="end">Høyde (z)</L>
+          <L x="535" y="160" fill={C.muted} size={9} anchor="end">600 m (-5 °C)</L>
+          <L x="535" y="240" fill={C.muted} size={9} anchor="end">300 m (-2 °C)</L>
+          <L x="535" y="340" fill={C.muted} size={9} anchor="end">0 m (-15 °C)</L>
+
+          {/* Inversjonslagets "knekk": Går mot høyre (varmere!) fra bakken til 300m, deretter mot venstre */}
+          {/* 0m: T=-15°C (x=600), 300m: T=-2°C (x=730), 600m: T=-5°C (x=670) */}
+          <polyline
+            points="610,345 730,240 670,140"
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth="3.5"
+          />
+
+          {/* Inversjonslaget skravert som "Termisk lokk" */}
+          <rect x="550" y="225" width="320" height="30" fill="#ea580c" opacity="0.25" rx="4" />
+          <line x1="550" y1="240" x2="870" y2="240" stroke="#f97316" strokeDasharray="4 2" strokeWidth="1.5" />
+          <L x="710" y="235" fill="#fdba74" size={11} weight={800} anchor="middle">
+            INVERSJONSLAG (TERMISK LOKK, ~300 m)
+          </L>
+          <L x="710" y="249" fill="#fde68a" size={9} anchor="middle">
+            dT/dz &gt; 0 · Oppdrift er strengt forbudt!
+          </L>
+
+          {/* Fanget forurensning i bunnen (Smog / Giftlokk) */}
+          <rect x="550" y="260" width="320" height="85" fill="#451a03" opacity="0.4" rx="4" />
+          {/* Utslippskilder */}
+          <rect x="610" y="325" width="12" height="25" fill="#64748b" />
+          <rect x="760" y="330" width="16" height="20" fill="#64748b" />
+          {/* Fanget røyk som bøyer av mot lokket */}
+          <ellipse cx="616" cy="295" rx="35" ry="12" fill="#d97706" opacity="0.6" />
+          <ellipse cx="660" cy="285" rx="65" ry="16" fill="#b45309" opacity="0.6" />
+          <ellipse cx="730" cy="285" rx="75" ry="16" fill="#b45309" opacity="0.6" />
+          <ellipse cx="768" cy="305" rx="40" ry="14" fill="#d97706" opacity="0.6" />
+
+          {/* Tekst om faren */}
+          <L x="700" y="300" fill="#fef08a" size={11} weight={700} anchor="middle">
+            ⚠️ Akutt opphopning: PM₁₀, PM₂,₅ og NO₂
+          </L>
+          <L x="700" y="318" fill="#fde68a" size={10} anchor="middle">
+            Lokalforurensning i Danmarks plass (Bergen) / Oslo-gryta
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+

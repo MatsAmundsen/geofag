@@ -667,6 +667,27 @@ export const KILDER = {
   ],
   havstrommer: [
     {
+      prefix: "Ekman, V. W. (1905). On the influence of the Earth's rotation on ocean-currents. ",
+      italic: "Arkiv för matematik, astronomi och fysik, 2",
+      suffix: "(11), 1–52.",
+    },
+    {
+      prefix: "Stommel, H. (1948). The westward intensification of wind-driven ocean currents. ",
+      italic: "Transactions, American Geophysical Union, 29",
+      suffix: "(2), 202–206.",
+      href: "https://doi.org/10.1029/TR029i002p00202",
+    },
+    {
+      prefix: "Talley, L. D., Pickard, G. L., Emery, W. J., & Swift, J. H. (2011). ",
+      italic: "Descriptive physical oceanography: An introduction",
+      suffix: " (6. utg.). Academic Press.",
+    },
+    {
+      prefix: "Marshall, J., & Plumb, R. A. (2008). ",
+      italic: "Atmosphere, ocean, and climate dynamics: An introductory text",
+      suffix: ". Academic Press.",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
       italic: "Ocean currents",
       suffix: ".",
@@ -702,6 +723,62 @@ export const KILDER = {
       italic: "Klima i Norge",
       suffix: ".",
       href: "https://snl.no/Klima_i_Norge",
+    },
+  ],
+  kryosfaeren: [
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
+      italic: "Glaciological investigations in Norway 2022",
+      suffix: " (NVE Rapport 26/2023). NVE.",
+      href: "https://publikasjoner.nve.no/rapport/2023/rapport2023_26.pdf",
+    },
+    {
+      prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.). ",
+      italic: "All about sea ice",
+      suffix: ".",
+      href: "https://nsidc.org/learn/parts-cryosphere/sea-ice",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). Ocean, cryosphere and sea level change. I ",
+      italic: "Climate change 2021: The physical science basis",
+      suffix: " (s. 1211–1362). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.011",
+    },
+    {
+      prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
+      italic: "Glaciers and glaciation",
+      suffix: " (2. utg.). Routledge.",
+    },
+    {
+      prefix:
+        "Gisnås, K., Etzelmüller, B., Lussana, C., Hjort, J., Sannel, A. B. K., Isaksen, K., Westermann, S., Kuhry, P., Nussbaumer, S. U., Boike, J., Degeller, R., & Joshi, S. (2017). Permafrost map for Norway, Sweden and Finland. ",
+      italic: "Permafrost and Periglacial Processes, 28",
+      suffix: "(2), 359–378.",
+      href: "https://doi.org/10.1002/ppp.1922",
+    },
+    {
+      prefix: "Schweizer, J., Jamieson, J. B., & Schneebeli, M. (2003). Snow avalanche formation. ",
+      italic: "Reviews of Geophysics, 41",
+      suffix: "(4), 1016.",
+      href: "https://doi.org/10.1029/2002RG000123",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Snøskredvarsling i Norge",
+      suffix: ". Varsom.",
+      href: "https://www.varsom.no/snoskred",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Permafrost",
+      suffix: ".",
+      href: "https://snl.no/permafrost",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (2020). ",
+      italic: "Læreplan i geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03",
     },
   ],
   klima: [
@@ -790,6 +867,20 @@ export const KILDER = {
       italic: "Nature, 401",
       suffix: "(6751), 356–360.",
       href: "https://doi.org/10.1038/43848",
+    },
+    {
+      prefix:
+        "Abram, N. J., Wright, N. M., Ellis, B., Dixon, B. C., Wurtzel, J. B., England, M. H., Ummenhofer, C. C., Philibosian, B., Cahyarini, S. Y., Shen, C. C., & Suwargadi, B. W. (2020). Coupling of Indo-Pacific climate variability over the last millennium. ",
+      italic: "Nature, 579",
+      suffix: "(7799), 385–392.",
+      href: "https://doi.org/10.1038/s41586-020-2084-4",
+    },
+    {
+      prefix:
+        "Marchant, R., Mumbi, C., Behera, S., & Yamagata, T. (2007). The Indian Ocean dipole—the unsung driver of East African climate variability. ",
+      italic: "African Journal of Ecology, 45",
+      suffix: "(1), 4–16.",
+      href: "https://doi.org/10.1111/j.1365-2028.2006.00707.x",
     },
     {
       prefix: "Australian Bureau of Meteorology. (u.å.). ",
@@ -885,6 +976,18 @@ export const KILDER = {
   ],
   amoc: [
     {
+      prefix: "Stommel, H. (1961). Thermohaline convection with two stable regimes of flow. ",
+      italic: "Tellus, 13",
+      suffix: "(2), 224–230.",
+      href: "https://doi.org/10.1111/j.2153-3490.1961.tb00079.x",
+    },
+    {
+      prefix: "Broecker, W. S. (1991). The great ocean conveyor. ",
+      italic: "Oceanography, 4",
+      suffix: "(2), 79–89.",
+      href: "https://doi.org/10.5670/oceanog.1991.07",
+    },
+    {
       prefix:
         "Rahmstorf, S., Box, J. E., Feulner, G., Mann, M. E., Robinson, A., Rutherford, S., & Schaffernicht, E. J. (2015). Exceptional twentieth-century slowdown in Atlantic Ocean overturning circulation. ",
       italic: "Nature Climate Change, 5",
@@ -899,18 +1002,32 @@ export const KILDER = {
       href: "https://doi.org/10.1038/s41586-018-0006-5",
     },
     {
-      prefix: "Intergovernmental Panel on Climate Change. (2021). ",
-      italic:
-        "Chapter 9: Ocean, cryosphere and sea level change. In Climate Change 2021: The Physical Science Basis",
-      suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
-    },
-    {
       prefix:
         "Smeed, D. A., et al. (2018). The North Atlantic Ocean is in a state of reduced overturning. ",
       italic: "Geophysical Research Letters, 45",
       suffix: "(3), 1527–1533.",
       href: "https://doi.org/10.1002/2017GL076350",
+    },
+    {
+      prefix:
+        "Ditlevsen, P., & Ditlevsen, S. (2023). Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. ",
+      italic: "Nature Communications, 14",
+      suffix: "(1), 4254.",
+      href: "https://doi.org/10.1038/s41467-023-39810-w",
+    },
+    {
+      prefix:
+        "van Westen, R. M., Kliphuis, M., & Dijkstra, H. A. (2024). Physics-based early warning signal shows that AMOC is on tipping course. ",
+      italic: "Science Advances, 10",
+      suffix: "(6), eadk1189.",
+      href: "https://doi.org/10.1126/sciadv.adk1189",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      italic:
+        "Chapter 9: Ocean, cryosphere and sea level change. In Climate Change 2021: The Physical Science Basis",
+      suffix: ". Cambridge University Press.",
+      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
     },
   ],
   modeller: [

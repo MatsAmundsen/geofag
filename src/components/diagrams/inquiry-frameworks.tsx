@@ -409,3 +409,227 @@ export function FieldworkInquiryChainDiagram() {
     </Diagram>
   );
 }
+
+export function RadiosondeAscentDiagram() {
+  return (
+    <Diagram
+      title="Radiosonde og aerologisk profil: Vertikal sondering fra bakken til stratosfæren"
+      heading="Radiosonde og atmosfærisk profil: Værballongens oppstigning"
+      caption="Radiosonden er meteorologiens vertikale måleverktøy. En heliumfylt latexballong stiger med ca. 5 m/s fra bakken opp til over 30 km (stratosfæren) før den sprekker. Underveis måler den nøyaktig temperatur, lufttrykk og relativ fuktighet, mens GPS-sporing gir vindstyrke og vindretning i alle høyder. Dataene plottes i et aerologisk diagram (Skew-T log-P) som avslører bakkeinversjoner, skybaser, skytop og tropopausen."
+      viewBox="0 0 940 440"
+      wide
+    >
+      {(m) => (
+        <>
+          {/* Skillelinje */}
+          <line x1="470" y1="35" x2="470" y2="405" stroke={C.dim} strokeDasharray="4 4" />
+
+          {/* --- VENSTRE: BALLONG OG SONDE-SYSTEM --- */}
+          <rect x="30" y="30" width="420" height="380" rx="8" fill="#0d1b2a" stroke={C.dim} strokeWidth="1.2" />
+          <L x="240" y="58" fill={C.fg} size={15} weight={700} anchor="middle">
+            Radiosondesystemet i oppstigning
+          </L>
+          <L x="240" y="78" fill={C.muted} size={11} anchor="middle">
+            Måler trykk, temperatur, fuktighet og vind opp til 35 000 m
+          </L>
+
+          {/* Latex-ballong */}
+          <circle cx="170" cy="140" r="45" fill="#f8fafc" opacity="0.9" stroke="#cbd5e1" strokeWidth="2" />
+          <path d="M 170 185 L 165 195 L 175 195 Z" fill="#cbd5e1" />
+          <L x="170" y="145" fill="#0f172a" size={11} weight={800} anchor="middle">HELIUM</L>
+
+          {/* Snøre og fallskjerm */}
+          <line x1="170" y1="195" x2="170" y2="230" stroke="#94a3b8" strokeWidth="1.5" />
+          {/* Liten fallskjerm */}
+          <path d="M 155 235 Q 170 220 185 235 Z" fill="#ef4444" />
+          <line x1="155" y1="235" x2="170" y2="260" stroke="#94a3b8" strokeWidth="1" />
+          <line x1="185" y1="235" x2="170" y2="260" stroke="#94a3b8" strokeWidth="1" />
+
+          {/* Radiosonde måleinstrumentboks */}
+          <rect x="155" y="260" width="30" height="42" rx="4" fill="#1e293b" stroke="#38bdf8" strokeWidth="1.5" />
+          <circle cx="170" cy="275" r="3" fill="#f59e0b" className="animate-ping" />
+          {/* Antenne */}
+          <line x1="170" y1="302" x2="170" y2="330" stroke="#38bdf8" strokeWidth="1.5" />
+          {/* Sensorbom */}
+          <line x1="185" y1="268" x2="205" y2="260" stroke="#ef4444" strokeWidth="1.5" />
+          <circle cx="205" cy="260" r="2.5" fill="#ef4444" />
+
+          {/* Sensorforklaringer */}
+          <rect x="235" y="110" width="195" height="230" rx="6" fill="#142230" stroke="#334155" />
+          <L x="250" y="132" fill="#38bdf8" size={12} weight={700}>Instrumentering:</L>
+          <L x="250" y="155" fill={C.fg} size={11}>• Termistor: Lufttemp (±0,1 °C)</L>
+          <L x="250" y="178" fill={C.fg} size={11}>• Kapasitiv hygrometer: Relativ fukt</L>
+          <L x="250" y="201" fill={C.fg} size={11}>• Piezoresistiv: Lufttrykk i hPa</L>
+          <L x="250" y="224" fill={C.fg} size={11}>• GPS-mottaker: Vindstyrke &amp; retning</L>
+          <L x="250" y="247" fill={C.fg} size={11}>• 400 MHz radiosender: Telemetri</L>
+          <line x1="245" y1="265" x2="420" y2="265" stroke="#334155" />
+          <L x="250" y="285" fill="#fde68a" size={10} weight={600}>WMO Standard:</L>
+          <L x="250" y="303" fill={C.muted} size={10}>Slippes globalt kl. 00 og 12 UTC</L>
+          <L x="250" y="321" fill={C.muted} size={10}>Norge: Sola, Ørland, Bodø, Jan Mayen</L>
+
+          {/* Radiosignal-bølger ned mot bakkestasjon */}
+          <path d="M 155 330 Q 120 350 80 370" fill="none" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 3" />
+          <L x="100" y="380" fill="#38bdf8" size={10}>403 MHz radiosignal</L>
+
+          {/* --- HØYRE: AEROLOGISK DIAGRAM (SKEW-T STYLE) --- */}
+          <rect x="490" y="30" width="420" height="380" rx="8" fill="#111c26" stroke="#38bdf8" strokeWidth="1.2" />
+          <L x="700" y="58" fill="#38bdf8" size={15} weight={700} anchor="middle">
+            Aerologisk profil (Temperatur mot høyde)
+          </L>
+          <L x="700" y="78" fill={C.muted} size={11} anchor="middle">
+            Temperatur T (rød) og duggpunkt T_d (blå)
+          </L>
+
+          {/* Høydeakse (0 til 14 km -> y: 350 til 100) */}
+          <line x1="550" y1="350" x2="550" y2="100" stroke={C.dim} strokeWidth="1.5" />
+          <L x="545" y="105" fill={C.muted} size={9} anchor="end">12 km (Tropopause)</L>
+          <L x="545" y="170" fill={C.muted} size={9} anchor="end">8 km (350 hPa)</L>
+          <L x="545" y="240" fill={C.muted} size={9} anchor="end">4 km (600 hPa)</L>
+          <L x="545" y="315" fill={C.muted} size={9} anchor="end">1 km (900 hPa)</L>
+          <L x="545" y="348" fill={C.muted} size={9} anchor="end">0 km (1013 hPa)</L>
+
+          {/* Temperaturakse på bunnen (-60 °C til +20 °C) */}
+          <line x1="550" y1="350" x2="880" y2="350" stroke={C.dim} strokeWidth="1.5" />
+          <L x="580" y="365" fill={C.muted} size={9}>-60 °C</L>
+          <L x="680" y="365" fill={C.muted} size={9}>-20 °C</L>
+          <L x="780" y="365" fill={C.muted} size={9}>0 °C</L>
+          <L x="860" y="365" fill={C.muted} size={9}>+15 °C</L>
+
+          {/* Bakkeinversjon i de nederste 500 m */}
+          {/* T(z): 0m= -10°C (x=730), 500m= -2°C (x=770), 11km= -58°C (x=590), stratosfære= flat/varmere */}
+          <polyline
+            points="730,348 770,325 710,240 640,160 590,115 590,95"
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth="3"
+          />
+          <L x="780" y="325" fill="#f87171" size={10} weight={700}>Bakkeinversjon!</L>
+
+          {/* Duggpunktskurve T_d(z) i blått */}
+          {/* Møter T(z) mellom 1500m og 4000m (Skydekke!) */}
+          <polyline
+            points="700,348 720,325 690,290 640,240 580,180 540,115"
+            fill="none"
+            stroke="#38bdf8"
+            strokeWidth="2.5"
+            strokeDasharray="4 2"
+          />
+
+          {/* Sky-område der T og T_d møtes (1500–4000 m) */}
+          <rect x="560" y="240" width="310" height="50" fill="#38bdf8" opacity="0.12" rx="4" />
+          <L x="760" y="268" fill="#7dd3fc" size={11} weight={600} anchor="middle">
+            SKYLAG: T = T_d (100 % relativ fuktighet)
+          </L>
+
+          {/* Tropopause linje */}
+          <line x1="550" y1="115" x2="880" y2="115" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 3" />
+          <L x="760" y="110" fill="#fbbf24" size={10} weight={700} anchor="middle">
+            TROPOPAUSE (-58 °C) · Taket for været
+          </L>
+          <L x="760" y="90" fill="#94a3b8" size={9} anchor="middle">
+            Stratosfæren over: Temperatur slutter å falle
+          </L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+
+export function MeteorologicalStationDiagram() {
+  return (
+    <Diagram
+      title="Automatisk meteorologisk bakkestasjon (AWS): WMO-standarder og sensorplassering"
+      heading="Den automatiske værstasjonen (AWS): Standarder som sikrer nøyaktighet"
+      caption="For at værdata skal være vitenskapelig gyldige og sammenlignbare på tvers av landegrenser, har Verdens meteorologiorganisasjon (WMO) strenge krav til sensorplassering. Vind måles 10 meter over bakken for å unngå bakkefriksjon. Lufttemperatur og relativ fuktighet måles 2 meter over bakken i en hvit, ventilert lamellskjerm (Stevenson-skjerm) som beskytter sensorene mot direkte solstråling og nedbør. Nedbørsmålere utstyres med Nipher-vindskjerm for å motvirke vindturbulens."
+      viewBox="0 0 920 440"
+      wide
+    >
+      {(m) => (
+        <>
+          {/* Terreng og gressbakke */}
+          <rect x="30" y="30" width="860" height="340" fill="#0d1822" />
+          <rect x="30" y="370" width="860" height="40" fill="#1b2820" />
+          <line x1="30" y1="370" x2="890" y2="370" stroke="#34d399" strokeWidth="1.5" />
+          <L x="60" y="392" fill="#6ee7b7" size={11}>Kortklippet gressunderlag (WMO-standard)</L>
+
+          {/* --- 1. VINDMAST (10 METER) TIL VENSTRE --- */}
+          {/* Fagverksmast */}
+          <line x1="180" y1="370" x2="180" y2="90" stroke="#94a3b8" strokeWidth="4" />
+          <line x1="160" y1="370" x2="180" y2="280" stroke="#64748b" strokeWidth="1.5" />
+          <line x1="200" y1="370" x2="180" y2="280" stroke="#64748b" strokeWidth="1.5" />
+          <line x1="165" y1="280" x2="180" y2="180" stroke="#64748b" strokeWidth="1.5" />
+          <line x1="195" y1="280" x2="180" y2="180" stroke="#64748b" strokeWidth="1.5" />
+
+          {/* Vindmåler på toppen (10 m) */}
+          <line x1="150" y1="90" x2="210" y2="90" stroke="#cbd5e1" strokeWidth="2" />
+          {/* Koppanemometer venstre */}
+          <circle cx="160" cy="80" r="5" fill="#f59e0b" />
+          <line x1="160" y1="90" x2="160" y2="80" stroke="#f59e0b" strokeWidth="1.5" />
+          {/* Vindfløy høyre */}
+          <polygon points="200,82 215,80 200,78 203,80" fill="#38bdf8" />
+          <line x1="200" y1="90" x2="200" y2="80" stroke="#38bdf8" strokeWidth="1.5" />
+
+          <rect x="70" y="50" width="220" height="34" rx="4" fill="#1e293b" stroke="#f59e0b" />
+          <L x="180" y="65" fill="#fbbf24" size={11} weight={700} anchor="middle">
+            Vindhastighet &amp; retning: 10 meter
+          </L>
+          <L x="180" y="78" fill={C.muted} size={9} anchor="middle">
+            Unngår friksjon og lokal terrengturbulens
+          </L>
+
+          {/* --- 2. LAMELLSKJERM / STEVENSON-SKJERM (2 METER) MIDTEN --- */}
+          {/* Stativben */}
+          <line x1="450" y1="370" x2="470" y2="290" stroke="#94a3b8" strokeWidth="2" />
+          <line x1="510" y1="370" x2="490" y2="290" stroke="#94a3b8" strokeWidth="2" />
+          {/* Den hvite kassa */}
+          <rect x="455" y="240" width="50" height="50" rx="4" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
+          {/* Sjalusier / lameller */}
+          <line x1="460" y1="250" x2="500" y2="250" stroke="#94a3b8" strokeWidth="1.5" />
+          <line x1="460" y1="260" x2="500" y2="260" stroke="#94a3b8" strokeWidth="1.5" />
+          <line x1="460" y1="270" x2="500" y2="270" stroke="#94a3b8" strokeWidth="1.5" />
+          <line x1="460" y1="280" x2="500" y2="280" stroke="#94a3b8" strokeWidth="1.5" />
+
+          <rect x="365" y="185" width="230" height="46" rx="6" fill="#1e293b" stroke="#38bdf8" />
+          <L x="480" y="202" fill="#38bdf8" size={11} weight={700} anchor="middle">
+            Lamellskjerm (2 meter over bakken)
+          </L>
+          <L x="480" y="216" fill={C.fg} size={10} anchor="middle">
+            • PT100 Termistor (Temperatur)
+          </L>
+          <L x="480" y="227" fill={C.fg} size={10} anchor="middle">
+            • Hygrometer (Relativ fuktighet %)
+          </L>
+          <L x="480" y="305" fill="#fde68a" size={9} anchor="middle">
+            Hvit farge reflekterer solstråling · Lameller lufter
+          </L>
+
+          {/* --- 3. NEDBØRSMÅLER MED NIPHER-SKJERM (HØYRE) --- */}
+          <line x1="720" y1="370" x2="720" y2="290" stroke="#64748b" strokeWidth="3" />
+          {/* Nipher-traktformet vindskjerm */}
+          <polygon points="695,270 745,270 735,290 705,290" fill="#475569" stroke="#94a3b8" />
+          <rect x="712" y="285" width="16" height="25" fill="#334155" />
+
+          <rect x="635" y="210" width="220" height="42" rx="6" fill="#1e293b" stroke="#34d399" />
+          <L x="745" y="228" fill="#34d399" size={11} weight={700} anchor="middle">
+            Nedbørsmåler (1,5–2 meter)
+          </L>
+          <L x="745" y="244" fill={C.muted} size={9} anchor="middle">
+            Nipher-vindskjerm hindrer at vind feier snø forbi
+          </L>
+
+          {/* --- 4. DATALOGGER & SOLCELLEPANEL --- */}
+          <rect x="420" y="325" width="25" height="35" rx="3" fill="#334155" stroke="#f59e0b" />
+          <L x="405" y="345" fill="#fbbf24" size={9} anchor="end">Datalogger &amp; 4G</L>
+
+          {/* --- 5. JORDTERMOMETRE I BAKKEN --- */}
+          <line x1="570" y1="370" x2="570" y2="405" stroke="#ef4444" strokeWidth="2" />
+          <circle cx="570" cy="380" r="3" fill="#ef4444" />
+          <circle cx="570" cy="390" r="3" fill="#ef4444" />
+          <circle cx="570" cy="405" r="3" fill="#ef4444" />
+          <L x="585" y="392" fill="#fca5a5" size={10}>Jordtemperatur (10, 20, 50 cm)</L>
+        </>
+      )}
+    </Diagram>
+  );
+}
+

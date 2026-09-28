@@ -155,8 +155,14 @@ export {
   FrontCrossSectionDiagram,
   HurricaneStructureDiagram,
   PolarLowDiagram,
+  TemperatureInversionDiagram,
 } from "./weather";
-export { EnergySourcesDiagram, WindPowerTradeoffDiagram } from "./energy";
+export {
+  EnergySourcesDiagram,
+  WindPowerTradeoffDiagram,
+  OffshoreWindShelfDiagram,
+  OtecRankineCycleDiagram,
+} from "./energy";
 export { AssimilationDiagram, EnsembleRibbonDiagram } from "./models-extra";
 export {
   BowenReactionSeriesDiagram,
@@ -178,6 +184,8 @@ export {
   ImpactLevelsDiagram,
   AdaptationExamFrameworkDiagram,
   FieldworkInquiryChainDiagram,
+  RadiosondeAscentDiagram,
+  MeteorologicalStationDiagram,
 } from "./inquiry-frameworks";
 export {
   RealisticSynopticChartDiagram,
