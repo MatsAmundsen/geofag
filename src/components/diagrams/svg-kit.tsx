@@ -72,7 +72,7 @@ export function Diagram({
 }: {
   title: string;
   heading: string;
-  caption: string;
+  caption: ReactNode;
   viewBox: string;
   wide?: boolean;
   action?: ReactNode;

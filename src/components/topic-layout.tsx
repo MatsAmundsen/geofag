@@ -66,6 +66,8 @@ export function TopicLayout({
   const prevLink: TopicLink | undefined = navOver?.prev ?? prev;
   const nextLink: TopicLink | undefined = navOver?.next ?? next;
   const eierskap = eierskapForPath(pathname);
+  const showEierskap =
+    Boolean(eierskap) && pathname.replace(/\/$/, "") !== "/geofag-1/platetektonikk";
 
   const resolvedSlug = posterSlug ?? posterSlugForPath(pathname);
 
@@ -164,7 +166,7 @@ export function TopicLayout({
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <div className="space-y-5 text-base leading-relaxed text-foreground/95">
             {resolvedSlug ? <AdminEditLink slug={resolvedSlug} /> : null}
-            {eierskap ? (
+            {showEierskap ? (
               <Callout title="Eierskap">
                 <p>{eierskap}</p>
               </Callout>
