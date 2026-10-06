@@ -184,6 +184,48 @@ export const KILDER = {
       suffix: " (2. utg.). Academic Press.",
       href: "https://doi.org/10.1016/C2011-0-06950-8",
     },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
+      italic: "Geologi på land",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/geologi-pa-land",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+      italic: "Om berggrunn",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-berggrunn",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      italic: "Skorpe, mantel og kjerne",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/skorpe-mantel-og-kjerne",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (2015). ",
+      italic: "Scenarios of microcontinent formation applied to the Jan Mayen microcontinent",
+      suffix: " (rapport 2015.019).",
+      href: "https://www.ngu.no/publikasjon/scenarios-microcontinent-formation-applied-jan-mayen-microcontinent",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      italic: "Beerenberg",
+      suffix: ".",
+      href: "https://snl.no/Beerenberg",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-c). ",
+      italic: "Volcanoes Can Affect Climate",
+      suffix: ".",
+      href: "https://www.usgs.gov/programs/VHP/volcanoes-can-affect-climate",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-d). ",
+      italic: "Hotspots",
+      suffix: " (This Dynamic Earth).",
+      href: "https://pubs.usgs.gov/gip/dynamic/hotspots.html",
+    },
   ],
   jordskjelv: [
     {

@@ -18,6 +18,7 @@ export function Quiz({
   questions: QuizQuestion[];
   /** Null hides the heading when the surrounding chapter already has one. */
   heading?: string | null;
+  /** Null hides the intro line. Other chapters keep the default. */
   intro?: string | null;
 }) {
   const baseId = useId();

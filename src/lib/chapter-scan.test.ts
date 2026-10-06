@@ -183,10 +183,12 @@ describe("scan chips for the other geosfære chapters", () => {
     assert.deepEqual(
       doc.sections.map((section) => section.label),
       [
-        "Motor",
-        "Magmakjemi",
+        "Magma",
         "Vulkantyper",
         "Pliniansk",
+        "Island",
+        "VEI",
+        "Overvåking",
         "Farer",
         "Jan Mayen",
         "Begreper",

@@ -46,7 +46,7 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /driver platene|slab pull/i,
     label: "Drivkrefter",
-    subtitle: "Slab pull, ridge push, basal drag og gropsug",
+    subtitle: "Platetrekk, ryggskyv, manteldrag og gropsug",
   },
   {
     match: /mantelberg smelter|dekompresjon/i,
@@ -89,9 +89,14 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Primordial varme, radiogen varme og vulkanisme som ventil",
   },
   {
+    match: /magma og viskositet/i,
+    label: "Magma",
+    subtitle: "SiO₂, viskositet og gass i magma",
+  },
+  {
     match: /^magmakjemi|silikatinnhold/i,
     label: "Magmakjemi",
-    subtitle: "SiO₂, viskositet, Henrys lov og eksplosivitet",
+    subtitle: "SiO₂, viskositet og gass i magma",
   },
   {
     match: /vulkantyper|geomorfologi/i,
@@ -106,7 +111,22 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /pliniansk/i,
     label: "Pliniansk",
-    subtitle: "Fragmentering, askesøyle, Eyjafjallajökull og VEI",
+    subtitle: "Fragmentering, askesøyle og paraplysky",
+  },
+  {
+    match: /to utbrudd på island/i,
+    label: "Island",
+    subtitle: "Eyjafjallajökull og Fagradalsfjall",
+  },
+  {
+    match: /^vei:/i,
+    label: "VEI",
+    subtitle: "Vulkansk eksplosivitetsindeks",
+  },
+  {
+    match: /^overvåking/i,
+    label: "Overvåking",
+    subtitle: "Signaler før utbrudd og varsel til luftfarten",
   },
   {
     match: /vulkanske farer|klimapåvirkning/i,
@@ -136,7 +156,7 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /norsk seismisitet/i,
     label: "Norge",
-    subtitle: "Ridge push, landheving og historiske skjelv",
+    subtitle: "Ryggskyv, landheving og historiske skjelv",
   },
   {
     match: /tsunamifysikk|shoaling/i,
