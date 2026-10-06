@@ -8,22 +8,32 @@ export function ModelFrame({
   lead,
   toolbar,
   children,
+  stackHeader = false,
 }: {
   kicker: string;
   title: string;
   lead: string;
   toolbar?: ReactNode;
   children: ReactNode;
+  /** Title and toolbar on separate rows, so a long button row cannot crush the title. */
+  stackHeader?: boolean;
 }) {
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6">
-      <figcaption className="flex flex-col gap-4 border-b border-border pb-4 sm:flex-row sm:items-start sm:justify-between">
+      <figcaption
+        className={cn(
+          "flex flex-col gap-4 border-b border-border pb-4",
+          !stackHeader && "sm:flex-row sm:items-start sm:justify-between",
+        )}
+      >
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase tracking-wider text-primary">{kicker}</p>
           <p className="mt-1 font-display text-xl font-medium tracking-tight sm:text-2xl">{title}</p>
-          <p className="mt-2 text-sm text-muted-foreground">{lead}</p>
+          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{lead}</p>
         </div>
-        {toolbar ? <div className="flex shrink-0 flex-wrap gap-2">{toolbar}</div> : null}
+        {toolbar ? (
+          <div className={cn("flex min-w-0 flex-wrap gap-2", !stackHeader && "shrink-0")}>{toolbar}</div>
+        ) : null}
       </figcaption>
       <div className="pt-5">{children}</div>
     </figure>

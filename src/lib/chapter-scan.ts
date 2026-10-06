@@ -34,6 +34,11 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Skorpe, mantel, kjerne, litosfære og astenosfære",
   },
   {
+    match: /^jordas oppbygning$/i,
+    label: "Jordens indre",
+    subtitle: "Skorpe, mantel, kjerne, litosfære og astenosfære",
+  },
+  {
     match: /oppdagelsen og bevisene|wegeners puslespill/i,
     label: "Bevisene",
     subtitle: "Wegener, Tharp, Hess og den magnetiske båndopptakeren",

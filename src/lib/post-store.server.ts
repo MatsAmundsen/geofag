@@ -457,11 +457,27 @@ async function restoreSavedPosters(store: Store): Promise<void> {
 
 const seededStoreVersions = new Set<string>();
 
+/** One-shot so an existing CMS row picks up the 2026-10-06 platetektonikk copy edit. */
+const PLATETEKTONIKK_COPY_FLAG = "platetektonikk-copy-2026-10-06";
+
+async function publishPlatetektonikkCopy(store: Store): Promise<void> {
+  if (await store.getMeta(PLATETEKTONIKK_COPY_FLAG)) return;
+  const existing = await store.get(PLATETEKTONIKK_SEED.slug);
+  if (!existing || existing.bodyMarkdown !== PLATETEKTONIKK_SEED.bodyMarkdown) {
+    await store.save({
+      ...toPostInput(PLATETEKTONIKK_SEED),
+      published: existing?.published ?? 1,
+    });
+  }
+  await store.setMeta(PLATETEKTONIKK_COPY_FLAG, "1");
+}
+
 async function ensureChapterSeeds(store: Store): Promise<void> {
   const version = chapterSeedVersion(CHAPTER_POST_SEEDS.map((seed) => seed.slug));
   const memoryKey = `${store.persist}:${version}`;
   if (seededStoreVersions.has(memoryKey)) return;
   try {
+    await publishPlatetektonikkCopy(store);
     if (store.persist === "do" || store.persist === "d1") {
       const saved = await store.getMeta(CHAPTER_SEED_FLAG);
       if (chapterSeedIsCurrent(saved, version)) {

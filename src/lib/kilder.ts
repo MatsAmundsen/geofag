@@ -56,6 +56,13 @@ export const KILDER = {
       href: "https://doi.org/10.1111/j.1365-246X.1975.tb00631.x",
     },
     {
+      prefix:
+        "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
+      italic: "Journal of the Geological Society, 145",
+      suffix: "(3), 401–412.",
+      href: "https://doi.org/10.1144/gsjgs.145.3.0401",
+    },
+    {
       prefix: "Hess, H. H. (1962). History of ocean basins. I A. E. J. Engel, H. L. James, & B. F. Leonard (Red.), ",
       italic: "Petrologic Studies: A Volume to Honor A. F. Buddington",
       suffix: " (s. 599–620). Geological Society of America.",

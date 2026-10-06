@@ -41,7 +41,13 @@ import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
-import { injectPosterWidgets, parsePosterMarkdown, stripChapterEditorNotice } from "@/lib/poster-markdown";
+import {
+  EARTH_LAYERS_PHOTO_SRC,
+  injectPosterWidgets,
+  parsePosterMarkdown,
+  stripChapterEditorNotice,
+  type PosterPart,
+} from "@/lib/poster-markdown";
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
@@ -52,6 +58,8 @@ import {
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
 
+const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   EarthLayers: () => <EarthLayersDiagram />,
   Spreading: () => <SpreadingDiagram />,
@@ -59,18 +67,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   PlatesMap: () => <PlatesMapDiagram />,
   Solidus: () => <SolidusDiagram />,
   DecompressionMelting: () => <DecompressionMeltingDiagram />,
-  QuizMelting: () => <Quiz questions={QUIZ_MELTING} />,
+  QuizMelting: () => <Quiz questions={QUIZ_MELTING} intro={PLATE_QUIZ_INTRO} />,
   BoundaryOverview: () => <BoundaryOverviewDiagram />,
   ContinentalRift: () => <ContinentalRiftDiagram />,
   Subduction: () => <SubductionDiagram />,
   OceanOceanSubduction: () => <OceanOceanSubductionDiagram />,
   Collision: () => <CollisionDiagram />,
   Transform: () => <TransformDiagram />,
-  QuizBoundaries: () => <Quiz questions={QUIZ_BOUNDARIES} />,
+  QuizBoundaries: () => <Quiz questions={QUIZ_BOUNDARIES} intro={PLATE_QUIZ_INTRO} />,
   PlateTectonicsModel: () => <PlateTectonicsModel />,
   HotspotPlume: () => <HotspotPlumeDiagram />,
   WilsonCycle: () => <WilsonCycleDiagram />,
-  QuizOfiolittWilson: () => <Quiz questions={QUIZ_OFIOLITT_WILSON} />,
+  QuizOfiolittWilson: () => <Quiz questions={QUIZ_OFIOLITT_WILSON} intro={PLATE_QUIZ_INTRO} />,
   NorwayTectonics: () => <NorwayTectonicsHistoryDiagram />,
   GeoMapNorway: () => (
     <GeoMap
@@ -102,7 +110,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       caption="Kartet viser sentrale geologiske lokaliteter: Den aktive spredningsaksen på Island og Jan Mayen, den kaledonske fjellkjederoten i Jotunheimen, og den permiske riftdalen i Oslofeltet."
     />
   ),
-  QuizTestDegSelv: () => <Quiz questions={QUIZ_TEST_DEG_SELV} />,
+  QuizTestDegSelv: () => (
+    <Quiz questions={QUIZ_TEST_DEG_SELV} heading={null} intro={PLATE_QUIZ_INTRO} />
+  ),
   VolcanoTypes: () => <VolcanoTypesDiagram />,
   CalderaFormation: () => <CalderaFormationDiagram />,
   VolcanoEruptionAnatomy: () => <VolcanoEruptionAnatomyDiagram />,
@@ -123,6 +133,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   RockPetrologyModel: () => <RockPetrologyModel />,
   QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
 };
+
+/** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */
+function withoutDuplicateEarthFigure(parts: PosterPart[]): PosterPart[] {
+  const hasPhoto = parts.some(
+    (part) => part.type === "markdown" && part.value.includes(EARTH_LAYERS_PHOTO_SRC),
+  );
+  if (!hasPhoto) return parts;
+  return parts.filter((part) => !(part.type === "widget" && part.id === "EarthLayers"));
+}
 
 function PosterWidget({ id }: { id: string }) {
   const render = POSTER_WIDGETS[id];
@@ -150,7 +169,7 @@ export function PosterBody({
   cleanChapter?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
-  const parts = parsePosterMarkdown(injectPosterWidgets(content));
+  const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
   return (
     <div className={cn("space-y-4", className)}>
       {parts.map((part, index) =>

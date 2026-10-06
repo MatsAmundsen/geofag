@@ -142,6 +142,14 @@ describe("stripCatalogImageCaptions", () => {
     assert.equal(stripped.includes("![Divergerende grense](/images/fig-spredring.jpg)"), true);
     assert.equal(stripped.includes("Neste avsnitt."), true);
   });
+
+  it("drops an italic caption separated from the photo by a horizontal rule", () => {
+    const md =
+      "![Divergerende grense](/images/fig-spredring.jpg)\n\n--------\n\n*Island er et av de få stedene.*\n\n------\n\nNeste avsnitt.";
+    const stripped = stripCatalogImageCaptions(md);
+    assert.equal(stripped.includes("*Island"), false);
+    assert.equal(stripped.includes("Neste avsnitt."), true);
+  });
 });
 
 describe("stripChapterEditorNotice", () => {

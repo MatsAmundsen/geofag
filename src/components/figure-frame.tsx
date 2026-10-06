@@ -7,7 +7,7 @@ export function FigureFrame({
   children,
 }: {
   heading?: string;
-  caption: string;
+  caption: ReactNode;
   action?: ReactNode;
   children: ReactNode;
 }) {
