@@ -362,7 +362,7 @@ I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyl
 
 Fordi mantelplymen er forankret så dypt, står den praktisk talt stille over geologisk tid. Mens litosfæreplaten glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
 
-- Hawaii-Emperor-ryggen: Den aktive vulkanen (Kilauea og Mauna Loa) ligger rett over hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene: Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
+- Hawaii-Emperor-ryggen: Den aktive vulkanen (Kilauea og Mauna Loa) ligger rett over hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene: Maui (1 Ma), Oahu (3 Ma), Kauai (ca. 5,5 millioner år) og Midway (28 Ma).
 
 - Den berømte 47 Ma-bøyen: For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått endret bevegelsesretning!
 

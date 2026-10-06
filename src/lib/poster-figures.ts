@@ -27,12 +27,12 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
       {
         n: "1",
         label:
-          "Litosfære og Moho (0–100/200 km): Jordens stive ytterste skall delt i litosfæreplater. Består av skorpen (kontinental 30–40 km, havbunn 5–7 km) og øverste stive mantel, adskilt av Moho-grensen der seismiske bølger øker brått i fart.",
+          "Litosfære og Moho (0–100/200 km): Jordens stive ytterste skall delt i litosfæreplater. Består av skorpen (kontinental 30–50 km, havbunn 5–8 km) og øverste stive mantel, adskilt av Moho-grensen der seismiske bølger øker brått i fart.",
       },
       {
         n: "2",
         label:
-          "Astenosfæren (~100–350 km, ~1450 °C): Fast peridotitt nær smeltepunktet som oppfører seg duktilt og seigtflytende over geologisk tid, slik at litosfæreplatene kan gli oppå.",
+          "Astenosfæren (~100–350 km, ca. 1300–1400 °C): Fast peridotitt nær smeltepunktet som oppfører seg duktilt og seigtflytende over geologisk tid, slik at litosfæreplatene kan gli oppå.",
       },
       {
         n: "3",

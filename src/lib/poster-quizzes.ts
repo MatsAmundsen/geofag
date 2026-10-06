@@ -100,7 +100,7 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
     prompt: "Hva er den viktigste drivkraften bak litosfæreplates bevegelse?",
     options: [
       "Tidevannskrefter fra månen som trekker kontinentene vestover.",
-      "Slab pull: Kald og gammel havbunnsskorpe omdannes til tung eklogitt og synker under egen vekt i subduksjonssonen.",
+      "Platetrekk (slab pull): Kald og gammel havbunnsskorpe omdannes til tung eklogitt og synker under egen vekt i subduksjonssonen.",
       "Friksjonsdrag fra vinder i troposfæren som dytter på fjellkjedene.",
       "Sentrifugalkraft fra jordas rotasjon som kaster platene mot ekvator.",
     ],
@@ -170,7 +170,7 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
       "Riktig! Mens litosfæren beveger seg bort fra midthavsryggen, avkjøles den fra toppen og underfra. Litosfæren tykner og tettheten øker. Etter ca. 20–30 millioner år er oseanisk litosfære tettere enn astenosfæren den hviler på, og blir ustabil overfor subduksjon.",
   },
   {
-    prompt: "Hvordan virker drivkraften «ridge push» (ryggtrykk)?",
+    prompt: "Hvordan virker drivkraften ryggskyv (ridge push)?",
     options: [
       "Magma presses ut som fra en sprøyte og dytter kontinentene sideveis.",
       "Det er en gravitasjonsglidning der den hevede, varme midthavsryggen (2–3 km over dyphavssletten) sklir nedover skråningen under egen vekt.",

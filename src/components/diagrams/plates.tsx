@@ -336,7 +336,7 @@ export function ConvectionDiagram() {
             <Arrow d="M 0 0 L 65 95" marker={m.teal} color={C.teal} width={4.5} />
             <rect x="75" y="80" width="200" height="60" rx="6" fill="#0b1622" stroke={C.teal} strokeWidth="1.5" opacity="0.95" />
             <L x="85" y="100" fill={C.teal} size={13} weight={800}>
-              1. SLAB PULL (~90 % av kraften)
+              1. Platetrekk (~90 % av kraften)
             </L>
             <L x="85" y="118" fill="#d1d5db" size={10.5}>
               Kald litosfære omdannes til
@@ -852,7 +852,7 @@ export function BoundaryOverviewDiagram() {
               <strong>Kontinent mot kontinent:</strong> Ingen subduksjon pga. lav tetthet. Skorpefortykning og skyvedekker (Himalaya, Kaledonidene).
             </li>
             <li>
-              <strong>Jordskjelv:</strong> Langs plategrensen. Dybdefordeling eier kapittelet Jordskjelv.
+              <strong>Jordskjelv:</strong> Langs plategrensen. Les mer om dybdefordelingen i Jordskjelv og tsunamier.
             </li>
           </ul>
         </div>
@@ -1507,15 +1507,18 @@ export function SubductionDiagram() {
             <path d="M 390 125 L 490 230" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="5 4" fill="none" opacity="0.5" />
 
             <g transform="translate(680, 330)">
-              <rect x="0" y="0" width="220" height="58" rx="6" fill="#080f16" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
-              <L x="12" y="22" fill="#ef4444" size={12} weight={800}>
+              <rect x="0" y="0" width="220" height="78" rx="6" fill="#080f16" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
+              <L x="12" y="18" fill="#ef4444" size={12} weight={800}>
                 Jordskjelv langs slabben
               </L>
-              <L x="12" y="42" fill="#d1d5db" size={10}>
+              <L x="12" y="34" fill="#d1d5db" size={10}>
                 Fokus følger plategrensen.
               </L>
-              <L x="12" y="54" fill="#94a3b8" size={9.5}>
-                Dybdefordeling eier Jordskjelv.
+              <L x="12" y="52" fill="#94a3b8" size={9.5}>
+                Les mer om dybdefordelingen
+              </L>
+              <L x="12" y="66" fill="#94a3b8" size={9.5}>
+                i Jordskjelv og tsunamier.
               </L>
             </g>
           </g>
@@ -1524,7 +1527,7 @@ export function SubductionDiagram() {
           <g transform="translate(620, 440)">
             <Arrow d="M 0 0 L 45 60" marker={m.teal} color={C.teal} width={4.5} />
             <L x="52" y="70" fill={C.teal} size={13} weight={800}>
-              SLAB PULL
+              Platetrekk
             </L>
           </g>
         </>
