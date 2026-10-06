@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { brandForPath, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
+import { brandForPath, NAV_GF1, NAV_GF1_ROWS, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -22,11 +22,11 @@ export function SiteHeader() {
     pathname.startsWith("/tema") ||
     pathname.startsWith("/eksamen");
   const isHome = pathname === "/";
-  const wideNav = items === NAV_GF2;
+  const menuRows = items === NAV_GF2 ? NAV_GF2_ROWS : items === NAV_GF1 ? NAV_GF1_ROWS : null;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md">
-      {wideNav ? (
+      {menuRows ? (
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex min-h-14 items-center justify-between gap-3 py-2">
             <BrandCluster
@@ -42,7 +42,7 @@ export function SiteHeader() {
             className="hidden w-full min-w-0 gap-0.5 border-t border-border/70 py-1.5 md:flex md:flex-col"
             aria-label="Hovedmeny"
           >
-            {NAV_GF2_ROWS.map((row) => (
+            {menuRows.map((row) => (
               <div key={row[0]?.to} className="flex w-full min-w-0 flex-wrap items-center gap-1">
                 {row.map((item) => (
                   <NavLink key={item.to} item={item} pathname={pathname} />
