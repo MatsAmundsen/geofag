@@ -104,9 +104,24 @@ describe("injectPosterWidgets", () => {
     const ids = listedWidgetIds(injected);
     assert.equal(ids.has("QuizHoytrykk"), true);
     assert.equal((injected.match(/QuizHoytrykk/g) ?? []).length, 1);
+    for (const id of [
+      "AtmosphericColumn",
+      "RelativePressure",
+      "LowPressureCrossSection",
+      "HighPressureCrossSection",
+      "MettetForklaring",
+    ]) {
+      assert.equal(ids.has(id), true, `hoytrykk missing ${id}`);
+      assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
     assert.equal(ids.has("QuizVulkaner"), false);
     assert.equal(hoytrykk.includes("10 tonn"), false);
     assert.equal(hoytrykk.includes("fuktadiabatisk"), false);
+    assert.equal(hoytrykk.includes("Det ser vi nærmere på nedenfor"), false);
+    assert.equal(hoytrykk.includes("Hva betyr «mettet»?"), false);
+    assert.equal(hoytrykk.includes("**Mettet luft:**"), true);
+    assert.equal(hoytrykk.includes("**Duggpunkt:**"), true);
+    assert.equal(hoytrykk.includes("## Hva er høytrykk og lavtrykk?"), true);
     assert.equal(hoytrykk.includes("<"), false);
   });
 

@@ -1,30 +1,43 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/hoytrykk-lavtrykk](/tema/hoytrykk-lavtrykk). Her kan du redigere **hele fagteksten**.
-
 ## Hva er lufttrykk?
 
-Vi lever på bunnen av et hav av luft. Luft er en blanding av gasser, mest nitrogen (78 %) og oksygen (21 %), og alle gassmolekylene har masse. Tyngdekraften trekker dem mot bakken. Lufttrykket et sted er vekten av luftsøylen over stedet, helt opp til verdensrommet, per arealenhet (NOAA, u.å.-a).
+Vi lever på bunnen av et hav av luft. Luften består mest av nitrogen (78 %) og oksygen (21 %). Den føles vektløs, men alle gassmolekylene har masse, og tyngdekraften trekker dem mot bakken. Luften over oss presser derfor ned på alt den hviler på. Dette trykket kaller vi lufttrykk. Det er vekten av hele luftsøylen over et sted, helt opp til verdensrommet, fordelt på arealet den hviler på (NOAA, u.å.-a).
 
-Om et område har høytrykk eller lavtrykk, avgjøres alltid i forhold til områdene rundt. Det ser vi nærmere på nedenfor.
-
-Lufttrykk måles i hektopascal (hPa). Ved havnivå er gjennomsnittstrykket om lag 1013 hPa (NOAA, u.å.-a).
+Lufttrykk måles i hektopascal (hPa). Ved havnivå er gjennomsnittet om lag 1013 hPa (NOAA, u.å.-a). Tallet alene sier likevel lite om været. Om et område har høytrykk eller lavtrykk, avgjøres alltid ved å sammenligne med områdene rundt.
 
 ### Trykket avtar med høyden
 
-Luft er en gass og kan presses sammen. Tyngden av luften over presser de nederste lagene sammen. Derfor er luften tettest ved havnivå og blir raskt tynnere oppover. Lufttrykket avtar derfor raskt med høyden, og raskest nær bakken:
+Luft er en gass og kan presses sammen. De nederste luftlagene bærer vekten av all luften over seg, og derfor er luften tettest nær bakken. Jo høyere opp du kommer, desto mindre luft har du over deg, og desto lavere blir trykket. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter oppover. I om lag 5,5 km høyde er trykket halvert, til ca. 500 hPa. Halvparten av all luften i atmosfæren ligger altså under denne høyden.
 
-- Nær bakken faller trykket med om lag 1 hPa for hver 8. meter oppover.
-- I om lag 5,5 km høyde er trykket halvert, til ca. 500 hPa. Halvparten av luften i atmosfæren ligger altså under denne høyden.
+```widget
+AtmosphericColumn
+```
+
+## Hva er høytrykk og lavtrykk?
+
+Luften i atmosfæren er hele tiden i bevegelse, også opp og ned. Det er denne loddrette bevegelsen som skaper høytrykk og lavtrykk.
+
+I et **lavtrykk (L)** stiger luften. Når luft stiger opp fra et område, presser mindre luft ned på bakken der, og trykket blir lavere enn i områdene rundt. Luft fra omgivelsene strømmer da inn langs bakken og fyller på. Den stigende luften avkjøles, og det dannes skyer og ofte nedbør. På den nordlige halvkule roterer luften mot klokka rundt et lavtrykk. Et lavtrykk kalles derfor også en syklon.
+
+I et **høytrykk (H)** synker luften. Det samler seg mer luft over bakken, og trykket blir høyere enn i områdene rundt. Langs bakken strømmer luften ut til sidene. Den synkende luften varmes opp, skyene løses opp, og været blir stabilt og ofte klart. På den nordlige halvkule roterer luften med klokka rundt et høytrykk. Et høytrykk kalles derfor også en antisyklon.
+
+Vind er luft som strømmer fra høyt mot lavt trykk, og jo større trykkforskjellen er, desto sterkere blir vinden. Jordrotasjonen bøyer av vinden, så den blåser ikke rett inn i lavtrykket, men skrått inn og rundt det. Mellom et høytrykk og et lavtrykk går det dermed en sammenhengende strøm av luft: ned i høytrykket, ut langs bakken, inn i lavtrykket, opp, og tilbake i høyden.
+
+| | Lavtrykk (L) | Høytrykk (H) |
+|---|---|---|
+| Luften | stiger | synker |
+| Ved bakken | strømmer inn (konvergens) | strømmer ut (divergens) |
+| Rotasjon på nordlig halvkule | mot klokka (syklon) | med klokka (antisyklon) |
+| Typisk vær | skyer, nedbør og vind | oppholdsvær, ofte klart og stabilt |
 
 ## Høytrykk og lavtrykk er relative begreper
 
-En vanlig misforståelse er at et fast tall skiller høytrykk fra lavtrykk, for eksempel at alt over gjennomsnittet ved havnivå er høytrykk og alt under er lavtrykk. Slik er det ikke.
-
-Høytrykk og lavtrykk er alltid relative begreper (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b):
-
-- Et **lavtrykk (L)** er et område der lufttrykket er lavere enn i de omkringliggende luftmassene.
-- Et **høytrykk (H)** er et område der lufttrykket er høyere enn i de omkringliggende luftmassene.
+Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. En vanlig misforståelse er at et fast tall skiller dem, for eksempel at alt over gjennomsnittet ved havnivå er høytrykk og alt under er lavtrykk. Slik er det ikke (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
 Tenk deg et område der trykket i sentrum er 1015 hPa. Er det omgitt av høytrykk på 1025 hPa, strømmer luften inn mot sentrum. Området er da et lavtrykk, med stigende luft og skydannelse. Ligger det samme området mellom lavtrykk på 995 hPa, er det et høytrykk. Luften strømmer da ut til sidene, og det blir ofte tørt og klart.
+
+```widget
+RelativePressure
+```
 
 Det er trykkforskjellen mot områdene rundt som betyr noe for været, ikke hPa-tallet alene. Trykkforskjellen over en avstand kalles trykkgradient.
 
@@ -50,6 +63,10 @@ Uansett type skjer det samme i sentrum: Luften stiger, og det blir mindre luft n
 
 ### Hva skjer når luften stiger?
 
+```widget
+MettetForklaring
+```
+
 Når luft stiger, skjer tre ting etter hverandre:
 
 #### 1. Luften utvider seg og avkjøles
@@ -67,6 +84,10 @@ Når vanndamp kondenserer til dråper, frigjøres energien som ble brukt da vann
 ### Hvor stopper stigningen?
 
 Nesten alt vær skjer i troposfæren, det nederste laget i atmosfæren. Over den ligger stratosfæren. Grensen mellom dem heter tropopausen og ligger ca. 8–11 km over Norge (NOAA, u.å.-b). I stratosfæren øker temperaturen med høyden fordi ozonlaget tar opp ultrafiolett stråling fra sola. Det kalles en temperaturinversjon, og den gjør lagene stabile. Når den stigende luften når tropopausen, er den kaldere og tyngre enn luften over. Den slutter å stige og sprer seg ut til sidene. Det kalles divergens i høyden, og det gir toppen av bygeskyen en flat amboltform.
+
+```widget
+LowPressureCrossSection
+```
 
 ## Høytrykk: nedsynking, oppvarming og klarvær
 
@@ -96,6 +117,10 @@ Om sommeren er dagene lange. Uten skyer slipper mye solstråling ned til bakken.
 
 Om vinteren står sola lavt, og det er langt færre soltimer. Uten skyer mister bakken mye varme som langbølget stråling ut mot verdensrommet. På steder som Røros og Finnmarksvidda kan bakken og det nederste luftlaget bli svært kaldt. Da kan det oppstå bakkeinversjon: Luften i dalbunnen blir kald og tung, mens det er mildere lenger opp. Det mildere laget ligger som et lokk over den kalde luften, og luften sirkulerer lite. Forurensning og vedrøyk blir da liggende i dalbunnen.
 
+```widget
+HighPressureCrossSection
+```
+
 > **To vanlige misforståelser**
 >
 > 1. **Trykket på værkartet er relativt:** Gjennomsnittstrykket ved havnivå er ingen fast grense mellom høytrykk og lavtrykk. Et lavtrykk har lavere trykk enn områdene rundt, og et høytrykk har høyere.
@@ -104,6 +129,10 @@ Om vinteren står sola lavt, og det er langt færre soltimer. Uten skyer mister 
 ## Viktige begreper
 
 **Lufttrykk:** Vekten av luftsøylen over et sted, per arealenhet. Måles i hektopascal (hPa) eller millibar (mbar). Gjennomsnittet ved havnivå er om lag 1013 hPa.
+
+**Mettet luft:** Luft som inneholder så mye vanndamp som den kan ved sin temperatur. Den relative fuktigheten er 100 %.
+
+**Duggpunkt:** Temperaturen luften må avkjøles til for å bli mettet.
 
 **Isobar:** Linje på værkartet som binder sammen steder med samme lufttrykk redusert til havnivå.
 

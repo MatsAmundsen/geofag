@@ -178,7 +178,10 @@ export function TopicLayout({
                 {posterStatus === "error" ? "Teksten kunne ikke lastes." : "Laster teksten…"}
               </p>
             ) : usePoster ? (
-              <PosterBody cleanChapter scrollTables={resolvedSlug === "vulkaner"}>
+              <PosterBody
+                cleanChapter
+                scrollTables={resolvedSlug === "vulkaner" || resolvedSlug === "hoytrykk-lavtrykk"}
+              >
                 {markdown}
               </PosterBody>
             ) : useCoded ? (

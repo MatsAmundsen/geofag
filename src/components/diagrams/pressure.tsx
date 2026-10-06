@@ -8,8 +8,8 @@ export function AtmosphericColumnDiagram() {
   return (
     <Diagram
       title="Luftsøylen og trykkfall med høyden"
-      heading="Luftsøylen: Lufttrykk er vekten av all luft over deg"
-      caption="Luft har masse og trekkes mot jorden av tyngdekraften. Lufttrykket på ethvert punkt er nøyaktig lik tyngden av hele luftsøylen som hviler ovenfor. Ved havnivå veier luftsøylen over én kvadratmeter om lag 10 330 kg (over 10 tonn!), noe som tilsvarer et standardtrykk på 1013,25 hPa. Fordi luft er komprimerbar, er gassmolekylene tettest pakket nær bakken. Allerede ved 5500 meter er trykket halvert (500 hPa), og over tropopausen (~11 km) befinner mer enn 75 % av hele atmosfærens masse seg under et rutefly."
+      heading="Luftsøylen: Lufttrykk er vekten av luften over deg"
+      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Luften er tettest nær bakken, fordi de nederste lagene bærer vekten av luften over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av luften i atmosfæren ligger under denne høyden. Ved havnivå er gjennomsnittet om lag 1013 hPa."
       viewBox="0 0 940 520"
       wide
     >
@@ -51,7 +51,7 @@ export function AtmosphericColumnDiagram() {
           <rect x="30" y="30" width="880" height="460" rx="8" fill="url(#col-sky-bg)" />
 
           {/* Fjell- og terrengsilhuett i bakgrunnen */}
-          {/* Mount Everest silhuett i det fjerne (~8848 m) */}
+          {/* Fjellsilhuett i bakgrunnen, uten høyde- eller trykktall */}
           <path
             d="M 520 440 L 590 125 L 620 180 L 660 440 Z"
             fill="#182633"
@@ -83,16 +83,16 @@ export function AtmosphericColumnDiagram() {
             />
             <line x1="-80" y1="1" x2="-5" y2="1" stroke="#ffffff" strokeWidth="1.8" opacity="0.6" />
             <L x="65" y="5" fill={C.teal} size={11} weight={700}>
-              Passasjerfly i marsjhøyde (11 km)
+              Passasjerfly i øvre troposfære
             </L>
           </g>
 
           {/* Fjell-etiketter */}
           <L x="590" y="112" fill={C.muted} size={10.5} anchor="middle">
-            Mt. Everest (8 848 moh. · ~330 hPa)
+            Høyfjell
           </L>
           <L x="460" y="325" fill={C.muted} size={10.5} anchor="middle">
-            Galdhøpiggen (2 469 moh. · ~750 hPa)
+            Fjell
           </L>
 
           {/* SELVE LUFTSØYLEN: 1 m² prisme / søyle */}
@@ -156,7 +156,7 @@ export function AtmosphericColumnDiagram() {
               Tyngdekraft (g)
             </L>
             <L x="50" y="263" fill={C.fg} size={10} anchor="middle">
-              10 330 kg luft
+              Luften har masse
             </L>
           </g>
 
@@ -164,10 +164,10 @@ export function AtmosphericColumnDiagram() {
           <line x1="180" y1="70" x2="200" y2="70" stroke={C.teal} strokeWidth="2" />
           <line x1="70" y1="70" x2="180" y2="70" stroke={C.teal} strokeDasharray="3 3" opacity="0.7" />
           <L x="60" y="66" fill={C.teal} size={14} weight={800} anchor="end">
-            11 000 m
+            Tropopausen
           </L>
           <L x="60" y="82" fill={C.muted} size={11} anchor="end">
-            Tropopausen · ~250 hPa
+            ca. 8–11 km over Norge
           </L>
 
           <line x1="180" y1="260" x2="200" y2="260" stroke={C.sand} strokeWidth="2" />
@@ -176,19 +176,19 @@ export function AtmosphericColumnDiagram() {
             5 500 m
           </L>
           <L x="60" y="270" fill={C.warm} size={12} weight={800} anchor="end">
-            500 hPa (Halvert trykk!)
+            ca. 500 hPa
           </L>
           <L x="60" y="285" fill={C.muted} size={10} anchor="end">
-            50 % av atmosfærens masse under
+            Halvparten av luften ligger under
           </L>
 
           <line x1="180" y1="390" x2="200" y2="390" stroke={C.cold} strokeWidth="1.8" />
           <line x1="70" y1="390" x2="180" y2="390" stroke={C.cold} strokeDasharray="3 3" opacity="0.6" />
           <L x="60" y="386" fill={C.cold} size={13} weight={700} anchor="end">
-            1 500 m
+            {" "}
           </L>
           <L x="60" y="401" fill={C.muted} size={11} anchor="end">
-            Høyfjell · ~850 hPa
+            {" "}
           </L>
 
           <line x1="180" y1="440" x2="200" y2="440" stroke="#38bdf8" strokeWidth="2.4" />
@@ -196,10 +196,10 @@ export function AtmosphericColumnDiagram() {
             0 moh. (Havnivå)
           </L>
           <L x="60" y="454" fill="#38bdf8" size={14} weight={800} anchor="end">
-            1013,25 hPa
+            om lag 1013 hPa
           </L>
           <L x="60" y="469" fill={C.muted} size={10.5} anchor="end">
-            Standard atmosfæretrykk
+            Gjennomsnitt ved havnivå
           </L>
 
           {/* HØYRE SIDE: PEDAGOGISKE FORKLARINGSBOKSER & BAROMETER */}
@@ -215,13 +215,13 @@ export function AtmosphericColumnDiagram() {
               strokeWidth="1.5"
             />
             <L x="16" y="24" fill={C.warm} size={13} weight={800}>
-              ⚖️ Hvor mye veier luftsøylen?
+              Hva er lufttrykk?
             </L>
             <L x="16" y="44" fill={C.fg} size={12} weight={700}>
-              1 m² grunnflate bærer ca. 10,3 tonn luft!
+              Vekten av luftsøylen over stedet.
             </L>
             <L x="16" y="62" fill={C.muted} size={11}>
-              Kroppen knuses ikke fordi cellene våre har samme indre mottrykk.
+              Trykket måles i hektopascal (hPa).
             </L>
 
             <rect
@@ -235,16 +235,16 @@ export function AtmosphericColumnDiagram() {
               strokeWidth="1.5"
             />
             <L x="16" y="115" fill={C.teal} size={13} weight={800}>
-              📉 Eksponentielt trykkfall
+              Trykket avtar med høyden
             </L>
             <L x="16" y="134" fill={C.fg} size={11.5}>
-              Luft er en komprimerbar gass. Tyngden av de øvre
+              Luft er en gass og kan presses sammen. De
             </L>
             <L x="16" y="150" fill={C.fg} size={11.5}>
-              lagene presser de nederste molekylene tett sammen.
+              nederste lagene bærer luften over seg.
             </L>
             <L x="16" y="168" fill={C.sand} size={11.5} weight={700}>
-              Nær bakken faller trykket med hele 1 hPa per 8 meter!
+              Nær bakken: om lag 1 hPa per 8 meter.
             </L>
 
             <rect
@@ -258,13 +258,13 @@ export function AtmosphericColumnDiagram() {
               strokeWidth="1.5"
             />
             <L x="16" y="223" fill="#a5f3fc" size={13} weight={800}>
-              🌡️ Torricellis kvikksølvbarometer (1643)
+              Halvparten av luften
             </L>
             <L x="16" y="242" fill={C.fg} size={11.5}>
-              Luftens vekt ved havnivå balanserer nøyaktig
+              I om lag 5,5 km høyde er trykket
             </L>
             <L x="16" y="259" fill={C.fg} size={11.5}>
-              en <tspan fill={C.warm} fontWeight="bold">760 mm</tspan> høy søyle med flytende kvikksølv (Hg).
+              halvert, til ca. 500 hPa.
             </L>
           </g>
         </>
@@ -281,8 +281,8 @@ export function RelativePressureDiagram() {
   return (
     <Diagram
       title="Trykk er relativt: Samme verdi kan være lavtrykk eller høytrykk"
-      heading="Trykk er relativt – Hvorfor 1015 hPa kan bety to stikk motsatte værtyper"
-      caption="Det finnes ikke noe fast tall som avgjør om et område har høytrykk eller lavtrykk. Et lavtrykk er definert som et område med lavere trykk enn omgivelsene, mens et høytrykk har høyere trykk enn omgivelsene. På kart A (venstre) er et senter med 1015 hPa et lavtrykk (L) fordi naboene har 1025 hPa. Trykkgradientkraften (oransje piler) trekker luften innover, og vinden (hvite buede piler) spiraliserer mot klokken inn i senteret med heving og skyer. På kart B (høyre) er nøyaktig samme trykk, 1015 hPa, et høytrykk (H) fordi det er omgitt av dype lavtrykk på 1005 hPa. Her presses luften utover med klokken, luften synker fra høyden, og himmelen blir skyfri."
+      heading="Trykk er relativt: 1015 hPa kan være lavtrykk eller høytrykk"
+      caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Luften strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Luften strømmer ut, synker, og det blir ofte tørt og klart."
       viewBox="0 0 940 430"
       wide
     >
@@ -321,7 +321,7 @@ export function RelativePressureDiagram() {
               KART A: Lavtrykkssenter (1015 hPa)
             </L>
             <L x="242" y="76" size={12} fill={C.muted} anchor="middle">
-              Omgitt av HØYERE trykk (1020–1025 hPa)
+              Omgitt av høyere trykk (1025 hPa)
             </L>
 
             <path
@@ -372,8 +372,7 @@ export function RelativePressureDiagram() {
               <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften (F_pg) suger luft innover.
             </L>
             <L x="242" y="378" fill={C.fg} size={11} anchor="middle">
-              <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden avbøyes mot høyre $
-ightarrow$ spiral mot klokken inn.
+              <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler mot klokken inn.
             </L>
           </g>
 
@@ -386,7 +385,7 @@ ightarrow$ spiral mot klokken inn.
               KART B: Høytrykkssenter (1015 hPa)
             </L>
             <L x="227" y="76" size={12} fill={C.muted} anchor="middle">
-              Omgitt av LAVERE trykk (1005–1010 hPa)
+              Omgitt av lavere trykk (995 hPa)
             </L>
 
             <path
@@ -397,7 +396,7 @@ ightarrow$ spiral mot klokken inn.
             />
             <rect x="305" y="80" width="56" height="17" rx="3" fill="#0d151c" />
             <L x="333" y="93" fill={C.muted} size={11} anchor="middle" weight={600}>
-              1005 hPa
+              995 hPa
             </L>
 
             <path
@@ -408,7 +407,7 @@ ightarrow$ spiral mot klokken inn.
             />
             <rect x="275" y="125" width="56" height="17" rx="3" fill="#0d151c" />
             <L x="303" y="138" fill={C.muted} size={11} anchor="middle" weight={600}>
-              1010 hPa
+              {" "}
             </L>
 
             <circle cx="227" cy="195" r="42" fill="#0f2b32" stroke={C.teal} strokeWidth="2.5" />
@@ -437,8 +436,7 @@ ightarrow$ spiral mot klokken inn.
               <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften (F_pg) presser luften utover.
             </L>
             <L x="227" y="378" fill={C.fg} size={11} anchor="middle">
-              <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden avbøyes mot høyre $
-ightarrow$ spiral med klokken ut.
+              <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler med klokken ut.
             </L>
           </g>
         </>
@@ -456,8 +454,8 @@ export function LowPressureCrossSectionDiagram() {
   return (
     <Diagram
       title="Tverrsnitt av et lavtrykk fra bakken til tropopausen"
-      heading="Lavtrykkets anatomi: Konvergens, heving og skydannelse"
-      caption="I et lavtrykk trekkes luft inn langs bakken mot senteret med lavest trykk (konvergens). Bakken danner en fast bunn som tvinger luften oppover. Luften avkjøles først tørradiabatisk (DALR = 1,0 °C / 100 m) inntil den når kondensasjonsnivået (LCL, skybasen) der relativ fuktighet når 100 %. Videre heving frigjør enorme mengder latent varme (~2,5 MJ/kg kondensert vann), noe som gir luften ekstra oppdrift og bygger mektige Cumulonimbus-skyer. Ved tropopausen (10–12 km) er stratosfæren stabilt varmere, og hevingen stanser brått: Skytoppen flater ut i en gigantisk ambolt (incus), og luften spres ut til sidene i høyden (divergens)."
+      heading="Lavtrykk: konvergens, stigning og skydannelse"
+      caption="I et lavtrykk strømmer luft inn langs bakken (konvergens) og stiger. Før luften er mettet, avkjøles den med om lag 1 °C per 100 meter. Det er den tørradiabatiske temperaturgradienten (dry adiabatic lapse rate, DALR). Ved løftingskondensasjonsnivået (lifting condensation level, LCL) er luften mettet, og vanndampen kondenserer. Latent varme frigjøres, så mettet luft avkjøles langsommere, typisk ca. 0,5 °C per 100 meter. Det er den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR). Ved tropopausen, ca. 8–11 km over Norge, stopper stigningen. Skytoppen flater ut, og luften sprer seg ut til sidene (divergens i høyden)."
       viewBox="0 0 940 510"
       wide
     >
@@ -499,7 +497,7 @@ export function LowPressureCrossSectionDiagram() {
             Stratosfæren (Temperaturinversjon · Ozonvarme)
           </L>
           <L x="890" y="60" fill={C.cold} size={13} weight={700} anchor="end">
-            Tropopausen (~11 km): Ufravikelig lokk på hevingen!
+            Tropopausen: stigningen stopper
           </L>
 
           <rect x="30" y="440" width="880" height="40" rx="4" fill="#15241b" />
@@ -510,7 +508,7 @@ export function LowPressureCrossSectionDiagram() {
 
           <line x1="120" y1="330" x2="820" y2="330" stroke={C.teal} strokeDasharray="4 3" strokeWidth="1.8" />
           <L x="130" y="322" fill={C.teal} size={12} weight={800}>
-            Kondensasjonsnivå (LCL, ~1 000 m) · 100 % Relativ fuktighet (RF)
+            Løftingskondensasjonsnivå (LCL) · mettet luft
           </L>
           <L x="130" y="345" fill={C.muted} size={10.5}>
             Her dannes den flate skybasen
@@ -537,7 +535,7 @@ export function LowPressureCrossSectionDiagram() {
             );
           })}
           <L x="470" y="415" fill="#e0f2fe" size={14} weight={800} anchor="middle">
-            Kraftig nedbør og byger 🌧️⚡
+            Nedbør
           </L>
 
           <path
@@ -570,10 +568,10 @@ export function LowPressureCrossSectionDiagram() {
           <Arrow d="M 470 330 L 470 130" marker={m.warm} color={C.warm} width={4.2} />
           <rect x="395" y="195" width="150" height="42" rx="6" fill="#0f172a" opacity="0.9" />
           <L x="470" y="212" fill={C.warm} size={12} weight={800} anchor="middle">
-            KRAFTIG OPP DRIFT
+            Luften stiger
           </L>
           <L x="470" y="228" fill="#fde68a" size={10.5} weight={700} anchor="middle">
-            Latent varme frigjøres!
+            Latent varme frigjøres
           </L>
 
           <Arrow d="M 80 430 L 310 430" marker={m.low} color={C.low} width={3.6} />
@@ -599,45 +597,44 @@ export function LowPressureCrossSectionDiagram() {
           <g transform="translate(680, 160)">
             <rect x="0" y="0" width="220" height="150" rx="8" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
             <L x="14" y="24" fill={C.warm} size={12} weight={800}>
-              🔥 Hvorfor stiger luften så høyt?
+              Når luften stiger
             </L>
             <L x="14" y="44" fill={C.fg} size={11}>
-              1. <tspan fill={C.teal}>Umettet luft:</tspan> Avkjøles med DALR
+              1. Umettet luft avkjøles med
             </L>
             <L x="28" y="59" fill={C.muted} size={10.5}>
-              (-1,0 °C per 100 meter).
+              om lag 1 °C per 100 meter (DALR).
             </L>
             <L x="14" y="78" fill={C.fg} size={11}>
-              2. <tspan fill="#fca5a5">Over LCL:</tspan> Vanndamp kondenserer.
+              2. Ved LCL er luften mettet.
             </L>
             <L x="14" y="96" fill={C.warm} size={11} weight={700}>
-              Latent varme frigjøres! (~2,5 MJ/kg)
+              Vanndampen kondenserer.
             </L>
             <L x="14" y="114" fill={C.fg} size={11}>
-              3. Luften avkjøles nå saktere
+              3. Mettet luft avkjøles saktere,
             </L>
             <L x="28" y="129" fill={C.sand} size={10.5}>
-              med SALR (~0,6 °C / 100 m) $
-ightarrow$ enorm oppdrift!
+              typisk ca. 0,5 °C per 100 meter (SALR).
             </L>
           </g>
 
           <g transform="translate(45, 170)">
             <rect x="0" y="0" width="180" height="120" rx="8" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
             <L x="14" y="24" fill={C.cold} size={12} weight={800}>
-              🌡️ Vertikal temperatur:
+              Hvor stopper stigningen?
             </L>
             <L x="14" y="46" fill={C.cold} size={11}>
-              11 km: <tspan fontWeight="bold">-55 °C</tspan> (Tropopause)
+              Tropopausen ligger ca. 8–11 km
             </L>
             <L x="14" y="66" fill="#93c5fd" size={11}>
-              5 km: <tspan fontWeight="bold">-15 °C</tspan> (Underkjølt)
+              over Norge.
             </L>
             <L x="14" y="86" fill={C.teal} size={11}>
-              1 km: <tspan fontWeight="bold">+5 °C</tspan> (LCL / Skybase)
+              Der er luften kaldere enn
             </L>
             <L x="14" y="106" fill={C.warm} size={11}>
-              0 m: <tspan fontWeight="bold">+15 °C</tspan> (Varm bakke)
+              laget over, og stigningen stopper.
             </L>
           </g>
         </>
@@ -654,8 +651,8 @@ export function HighPressureCrossSectionDiagram() {
   return (
     <Diagram
       title="Tverrsnitt av et høytrykk fra tropopausen til bakken"
-      heading="Høytrykkets anatomi: Subsidens, adiabatisk oppvarming og skyoppløsning"
-      caption="I et høytrykk strømmer luften sammen i den øvre troposfæren og presses nedover mot bakken (subsidens). Denne nedsynkingen skjer sakte (få centimeter per sekund) over enorme geografiske områder. Ettersom luften synker ned i lag med høyere trykk, komprimeres den og varmes tørradiabatisk med 1,0 °C per 100 m. Varmere luft kan holde på langt mer vanndamp, og den relative fuktigheten (RF) stuper: Skydråper fordamper til usynlig gass, og himmelen blir krystallklar. Ved bakken oppstår et massivt overskudd av luft som strømmer ut til sidene (divergens). Om sommeren gir dette hetebølger og tørke; om vinteren fører skyfritt vær til ekstrem varmeutstråling og bitende kulde."
+      heading="Høytrykk: nedsynking, oppvarming og klarvær"
+      caption="I et høytrykk strømmer luft sammen i øvre troposfære og synker mot bakken. Det kalles subsidens (nedsynking). Synkende luft varmes med om lag 1 °C per 100 meter. Den relative fuktigheten faller, skydråpene fordamper, og himmelen blir klar. Ved bakken strømmer luften ut til sidene (divergens). Om sommeren kan det gi varme og tørke. Om vinteren kan bakken bli svært kald, og det kan oppstå bakkeinversjon."
       viewBox="0 0 940 510"
       wide
     >
@@ -685,7 +682,7 @@ export function HighPressureCrossSectionDiagram() {
           <rect x="30" y="30" width="880" height="50" rx="4" fill="#080e14" opacity="0.8" />
           <line x1="30" y1="80" x2="910" y2="80" stroke={C.cold} strokeWidth="1.8" strokeDasharray="6 4" />
           <L x="50" y="55" fill={C.cold} size={14} weight={800}>
-            Øvre troposfære / Tropopause (~11 km)
+            Øvre troposfære
           </L>
           <L x="890" y="55" fill={C.cold} size={13} weight={700} anchor="end">
             Konvergens i høyden mater nedsynkingen
@@ -709,7 +706,7 @@ export function HighPressureCrossSectionDiagram() {
             SUBSIDENS (NEDSYNKNING)
           </L>
           <L x="470" y="234" fill="#fde68a" size={11} weight={700} anchor="middle">
-            Tørradiabatisk oppvarming (+1,0 °C / 100 m)
+            Oppvarming om lag 1 °C per 100 m
           </L>
 
           <g transform="translate(640, 160)">
@@ -724,20 +721,19 @@ export function HighPressureCrossSectionDiagram() {
             <Arrow d="M 60 55 L 60 25" marker={m.sand} color={C.sand} width={1.8} />
             <Arrow d="M 95 55 L 95 25" marker={m.sand} color={C.sand} width={1.8} />
             <L x="75" y="88" fill={C.sand} size={12} weight={800} anchor="middle">
-              Skyrester fordamper!
+              Skydråpene fordamper
             </L>
             <L x="75" y="104" fill={C.fg} size={10.5} anchor="middle">
-              Økende temperatur $
-ightarrow$ lavere RF
+              Relativ fuktighet faller
             </L>
           </g>
 
           <line x1="80" y1="360" x2="860" y2="360" stroke="#f59e0b" strokeWidth="2" strokeDasharray="5 3" />
           <L x="90" y="352" fill="#fbbf24" size={12} weight={800}>
-            Subsidensinversjon (Temperaturlokk ved ~1 500 m)
+            Synkende luft varmes opp
           </L>
           <L x="850" y="352" fill={C.muted} size={11} anchor="end">
-            Tåke og forurensning kan fanges under lokket
+            Skyene løses opp
           </L>
 
           <Arrow d="M 430 425 L 120 425" marker={m.warm} color={C.warm} width={3.6} />
@@ -753,22 +749,20 @@ ightarrow$ lavere RF
           <g transform="translate(50, 220)">
             <rect x="0" y="0" width="260" height="110" rx="8" fill="#0f172a" opacity="0.92" stroke="#334155" strokeWidth="1.5" />
             <L x="16" y="24" fill={C.warm} size={13} weight={800}>
-              ☀️ Sommerhøytrykk:
+              Sommerhøytrykk
             </L>
             <L x="16" y="42" fill={C.fg} size={11}>
-              Maks solinnstråling hele dagen.
+              Lange dager og mye sol.
             </L>
             <L x="16" y="58" fill={C.warm} size={11} weight={700}>
-              $
-ightarrow$ Hetebølge, tørke og skogbrannfare.
+              Kan gi varme, tørke og skogbrannfare.
             </L>
 
             <L x="16" y="80" fill={C.cold} size={13} weight={800}>
-              ❄️ Vinterhøytrykk:
+              Vinterhøytrykk
             </L>
             <L x="16" y="98" fill={C.cold} size={11} weight={700}>
-              $
-ightarrow$ Maks varmeutstråling, sprengkulde & inversjon.
+              Svært kaldt, med bakkeinversjon.
             </L>
           </g>
         </>

@@ -119,6 +119,31 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     afterHeading: "Test deg selv",
     require: "løftingskondensasjonsnivå",
   },
+  {
+    widgets: ["AtmosphericColumn"],
+    beforeHeading: "Hva er høytrykk og lavtrykk?",
+    require: "1 hPa for hver 8. meter",
+  },
+  {
+    widgets: ["MettetForklaring"],
+    afterHeading: "Hva skjer når luften stiger?",
+    require: "duggpunktet",
+  },
+  {
+    widgets: ["RelativePressure"],
+    beforeHeading: "Isobarer og trykkgradient",
+    require: "995 hPa",
+  },
+  {
+    widgets: ["LowPressureCrossSection"],
+    beforeHeading: "Høytrykk: nedsynking",
+    require: "løftingskondensasjonsnivå",
+  },
+  {
+    widgets: ["HighPressureCrossSection"],
+    beforeHeading: "Viktige begreper",
+    require: "bakkeinversjon",
+  },
   { widgets: ["ElasticRebound"], beforeHeading: "Den seismiske syklusen" },
   {
     widgets: ["EarthquakeWavePhysics"],
