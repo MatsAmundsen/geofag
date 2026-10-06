@@ -200,10 +200,10 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
           <line x1={axis - 70} y1={SEA_Y - 18} x2={axis - 150} y2={SEA_Y - 6} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
           <line x1={axis + 70} y1={SEA_Y - 18} x2={axis + 150} y2={SEA_Y - 6} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
           <text x={axis - 120} y={SEA_Y - 28} fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-            Ridge push
+            Ryggskyv
           </text>
           <text x={axis + 120} y={SEA_Y - 28} fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-            Ridge push
+            Ryggskyv
           </text>
         </g>
       ) : null}

@@ -920,7 +920,7 @@ export function NorwayEarthquakesDiagram() {
     <Diagram
       title="Norges seismiske risikobilde og historiske jordskjelv"
       heading="Hvorfor skjelver Norge når vi ikke er på en plategrense?"
-      caption="Norge er et intraplate-område der litosfæren påvirkes av to dominerende spenningskilder: 1. Ryggtrykk ('ridge push') fra den ekspanderende Midtatlantiske ryggen i vest dytter kontinentalskorpen i kompresjon mot øst-sørøst. 2. Postglasial landheving (isostatisk tilbakefjæring etter Weichsel-istidens 3 km tykke iskappe) skaper differensielle spenninger langs kysten og i forkastningssoner. Dette utløser skjelv i gamle svakhetssoner som Oslo-graben, Nordlandskysten og på kontinentalsokkelen. Historiske kjempeskjelv inkluderer Lurøyskjelvet i 1819 (M ~5,8) og Oslofjordskjelvet i 1904 (M 5,4)."
+      caption="Norge er et intraplate-område der litosfæren påvirkes av to dominerende spenningskilder: 1. Ryggskyv (ridge push) fra den ekspanderende Midtatlantiske ryggen i vest dytter kontinentalskorpen i kompresjon mot øst-sørøst. 2. Postglasial landheving (isostatisk tilbakefjæring etter Weichsel-istidens 3 km tykke iskappe) skaper differensielle spenninger langs kysten og i forkastningssoner. Dette utløser skjelv i gamle svakhetssoner som Oslo-graben, Nordlandskysten og på kontinentalsokkelen. Historiske kjempeskjelv inkluderer Lurøyskjelvet i 1819 (M ~5,8) og Oslofjordskjelvet i 1904 (M 5,4)."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -947,14 +947,14 @@ export function NorwayEarthquakesDiagram() {
             Jan Mayen (Beerenberg) 🌋
           </L>
 
-          {/* Ryggtrykk-vektorer mot øst ("Ridge Push") */}
+          {/* Ryggskyv-vektorer mot øst */}
           <path d="M 125 100 L 220 120" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 220 120 L 210 112 M 220 120 L 212 126" stroke={C.teal} strokeWidth="2.5" />
 
           <path d="M 140 220 L 230 235" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 230 235 L 220 227 M 230 235 L 222 241" stroke={C.teal} strokeWidth="2.5" />
           <L x="150" y="260" fill={C.teal} size={12} weight={700}>
-            Ryggtrykk (Ridge push) →
+            Ryggskyv (ridge push) →
           </L>
 
           {/* Postglasial landheving piler oppover i innlandet */}
@@ -1005,7 +1005,7 @@ export function NorwayEarthquakesDiagram() {
             Hoveddrivkrefter for skjelv i Norge:
           </L>
           <L x="552" y="110" fill={C.fg} size={11}>
-            • <strong className="text-teal">Ryggtrykk:</strong> Atlanterhavet utvider seg
+            • <strong className="text-teal">Ryggskyv (ridge push):</strong> Atlanterhavet utvider seg
           </L>
           <L x="552" y="128" fill={C.fg} size={11}>
             • <strong className="text-sand">Postglasial heving:</strong> Avlastning etter isbre

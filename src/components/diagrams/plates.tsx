@@ -223,9 +223,9 @@ export function ConvectionDiagram() {
 
   return (
     <Diagram
-      title="Platetektonikkens drivkrefter: Slab pull, ridge push og mantelkonveksjon"
+      title="Platetektonikkens drivkrefter: platetrekk, ryggskyv og mantelkonveksjon"
       heading="Hva beveger platene? Gravitasjon og tetthetsforskjeller styrer maskineriet"
-      caption="Tidligere trodde man platene var passive flåter som ble skjøvet rundt av mantelkonveksjon. I dag vet vi at platene selv er en aktiv del av konveksjonssystemet. Den suverent største drivkraften er slab pull (~90 % av kraften): Kald, eldre havbunn er tettere enn astenosfæren under. Når den dykker i en subduksjonssone, omdannes basalten til den ultrahøytette bergarten eklogitt ved 40–60 km dyp, og fungerer som et gigantisk lodd som trekker hele platen etter seg. Ved midthavsryggen rager litosfæren 2–3 km høyere enn omkringliggende havbunn; tyngdekraften får den til å gli sakte nedover bakken (ridge push). Basal drag er friksjonskoblingen mot den seige astenosfæren."
+      caption="Tidligere trodde man platene var passive flåter som ble skjøvet rundt av mantelkonveksjon. I dag vet vi at platene selv er en aktiv del av konveksjonssystemet. Den suverent største drivkraften er slab pull (~90 % av kraften): Kald, eldre havbunn er tettere enn astenosfæren under. Når den dykker i en subduksjonssone, omdannes basalten til den ultrahøytette bergarten eklogitt ved 40–60 km dyp, og fungerer som et gigantisk lodd som trekker hele platen etter seg. Ved midthavsryggen rager litosfæren 2–3 km høyere enn omkringliggende havbunn; tyngdekraften får den til å gli sakte nedover bakken. Det kalles ryggskyv (ridge push). Basal drag er friksjonskoblingen mot den seige astenosfæren."
       viewBox="0 0 940 480"
       wide
       action={
@@ -351,7 +351,7 @@ export function ConvectionDiagram() {
             <Arrow d="M 15 15 L 75 35" marker={m.warm} color={C.warm} width={3.6} />
             <Arrow d="M -15 15 L -75 35" marker={m.warm} color={C.warm} width={3.6} />
             <L x="0" y="-12" fill={C.warm} size={13} weight={800} anchor="middle">
-              2. RIDGE PUSH (Ryggstøt)
+              2. Ryggskyv (ridge push)
             </L>
             <L x="0" y="2" fill="#d1d5db" size={10.5} anchor="middle">
               Midthavsryggen rager 2–3 km høyt.

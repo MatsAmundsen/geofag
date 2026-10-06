@@ -41,7 +41,7 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /driver platene|slab pull/i,
     label: "Drivkrefter",
-    subtitle: "Slab pull, ridge push, basal drag og gropsug",
+    subtitle: "Platetrekk, ryggskyv, manteldrag og gropsug",
   },
   {
     match: /mantelberg smelter|dekompresjon/i,
@@ -151,7 +151,7 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /norsk seismisitet/i,
     label: "Norge",
-    subtitle: "Ridge push, landheving og historiske skjelv",
+    subtitle: "Ryggskyv, landheving og historiske skjelv",
   },
   {
     match: /tsunamifysikk|shoaling/i,

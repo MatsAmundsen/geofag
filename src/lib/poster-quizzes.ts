@@ -318,13 +318,13 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
       "Hva er de to viktigste geofysiske drivkreftene bak jordskjelv i Norge, til tross for at landet er et intraplate-område?",
     options: [
       "Subduksjon av Nordsjøen under Vestlandet og vulkanisme i Oslofeltet.",
-      "Ryggtrykk («ridge push») fra Den midtatlantiske ryggen i vest og postglasial landheving (isostasi) etter istiden.",
+      "Ryggskyv (ridge push) fra Den midtatlantiske ryggen i vest og postglasial landheving (isostasi) etter istiden.",
       "Tidevannskrefter fra månen og sentrifugalkraft fra jordrotasjonen.",
       "Oljeboring i Nordsjøen og smelting av permafrost i Finnmark.",
     ],
     answer: 1,
     explain:
-      "Riktig! Norge utsettes for kompresjonsspenninger rettet mot øst-sørøst på grunn av ryggtrykk fra den ekspanderende Midtatlantiske ryggen, kombinert med differensiell heving (opptil 8–9 mm/år) etter at den 3 km tykke iskappen smeltet. Dette reaktiverer gamle forkastningssoner.",
+      "Riktig! Norge utsettes for kompresjonsspenninger rettet mot øst-sørøst på grunn av ryggskyv (ridge push) fra den ekspanderende Midtatlantiske ryggen, kombinert med differensiell heving (opptil 8–9 mm/år) etter at den 3 km tykke iskappen smeltet. Dette reaktiverer gamle forkastningssoner.",
   },
   {
     prompt:

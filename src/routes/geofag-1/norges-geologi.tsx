@@ -222,7 +222,7 @@ function NorgesGeologiPage() {
           </li>
           <li>
             <strong>Jan Mayen – Norges aktive vulkan:</strong> Ute i Norskehavet, på spredningsryggen nord for Island, ligger
-            den isolerte vulkanøya Jan Mayen. Her troner <strong>Beerenberg (2277 moh.)</strong> – Norges eneste aktive
+            den isolerte vulkanøya Jan Mayen. Her troner <strong>Beerenberg (2272 m o.h.)</strong> – Norges eneste aktive
             vulkan over havnivå, med siste utbrudd i 1985.
           </li>
         </ul>
@@ -261,7 +261,7 @@ function NorgesGeologiPage() {
             <h4 className="font-semibold text-sky-400 text-sm">Postglasiale intraplate-jordskjelv</h4>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Landet hever seg fremdeles med 4–9 mm per år rundt Oslofjorden og Bottenviken. Spenningene etter den asymmetriske
-              landhevingen, kombinert med ryggtrykk (ridge push) fra Atlanterhavsryggen, reaktiverer eldgamle forkastninger og
+              landhevingen, kombinert med ryggskyv (ridge push) fra Atlanterhavsryggen, reaktiverer eldgamle forkastninger og
               utløser jevnlig{" "}
               <Link to="/geofag-1/jordskjelv" className={lenke}>
                 intraplate-jordskjelv
@@ -409,7 +409,7 @@ function NorgesGeologiPage() {
             prompt: "Hvorfor opplever Norge fortsatt intraplate-jordskjelv i dag?",
             options: [
               "Fordi Norge ligger rett over en aktiv subduksjonssone.",
-              "Kombinasjonen av pågående postglasial landheving (4–9 mm/år) og ryggtrykk (ridge push) fra Den midtatlantiske ryggen reaktiverer gamle forkastningssoner.",
+              "Kombinasjonen av pågående postglasial landheving (4–9 mm/år) og ryggskyv (ridge push) fra Den midtatlantiske ryggen reaktiverer gamle forkastningssoner.",
               "Fordi vulkanene i Oslofeltet er i ferd med å våkne til liv.",
               "Fordi tidevannet trekker kontinentet vestover.",
             ],

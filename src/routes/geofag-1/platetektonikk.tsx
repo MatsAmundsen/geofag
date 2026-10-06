@@ -11,7 +11,7 @@ export const Route = createFileRoute("/geofag-1/platetektonikk")({
     topicHead({
       title: `${tema.title} · Geofag 1`,
       description:
-        "Platetektonikk: Jordens dynamiske skall, drivkrefter (slab pull og ridge push), dekompresjons- og flukssmelting, de tre plategrensene og Wilsonsyklusen.",
+        "Platetektonikk: Jordens dynamiske skall, drivkrefter (platetrekk og ryggskyv), dekompresjons- og flukssmelting, de tre plategrensene og Wilsonsyklusen.",
       path: "/geofag-1/platetektonikk",
     }),
   component: PlatetektonikkPage,

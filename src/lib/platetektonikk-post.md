@@ -33,7 +33,7 @@ Dette delen er direkte under jordskirpen og er den kalde og mekanisk stive delen
 #### Astenosfærisk mantel
 ---
 
-Under den øverste delen, har vi den Astenosfæren. Som strekker seg fra rundr 100km ned til ca 400km. Her stiger temperaturen opptil 1450- 1650C (Tarbuck et al., 2020, s. 372).
+Under den øverste delen, har vi den Astenosfæren. Som strekker seg fra rundr 100km ned til ca 400km. Temperaturen her er ca. 1300–1400 °C.
 
 På grunn av den høye temperaturen i forhold til trykket, befinner bergartene seg nær smeltepunktet. Enkelte soner har en liten brøkdel delvis oppsmeltet materiale (1–2% partiell smelte), ofte referert til som lavhastighetssonen (Low Velocity Zone, LVZ) for seismiske bølger (Lowrie & Fichtner, 2020, s. 157).
 
@@ -154,13 +154,13 @@ Når havbunnen sprer seg kontinuerlig til begge sider, fryser havbunnsskorpen in
 ## Platedrift og plategrenser: hva er det som driver platene? 
 Før vi kan gå inn på plategrenser, må vi forstå opphavet til platedriften. 
 
-Platebevegelsene styres av et samspill mellom fire gravitasjonelle og termiske mekanismer. I mangel på gode norske fagbegrep, bruker vi de engelske fagbegrepene:
+Platebevegelsene styres av et samspill mellom fire gravitasjonelle og termiske mekanismer:
 
 
-- Slab pull 
-- Ridge push 
-- Basal drag 
-- Trench suction 
+- Slab pull (platetrekk)
+- Ryggskyv (ridge push)
+- Basal drag (manteldrag)
+- Trench suction (gropsug) 
 
 
 
@@ -179,9 +179,9 @@ Dette gjør platen enda tyngre og dermed forsterker effekten av drag ned i mante
 
 
 
-**Ridge push (gravitasjonsglidning)**
+**Ryggskyv (ridge push)**
 
-Ridge push skjer der platene går i fra hverandre. Ofte beste synlig på midthavsrygger, da vi har flest av disse. Forklaringen nedenfor tar utgangspunkt i midthavsrygger. 
+Ryggskyv (ridge push) skjer der platene går i fra hverandre. Ofte beste synlig på midthavsrygger, da vi har flest av disse. Forklaringen nedenfor tar utgangspunkt i midthavsrygger. 
 
 Midthavsrygger er undersjøiske varme magmatiske fjellrygger som 
 rager derfor 2000 til 3000 meter høyere enn den omkringliggende dyphavssletten. I spredningssonen kommer det kontinuerlig opp magma som trenger seg opppover. Denne strømmen av magma skaper en oppbuling av litosfæren, som gjør at vi får en skråning bort fra der magmaen kommer opp (se animasjon om midthavsrygger ovenfor og nedenfor) 
@@ -229,7 +229,7 @@ Under divergens utsettes litosfæren for tektonisk strekk (tensjon). Denne pross
 
 **Havbunnsspredning**: 
 
-Som navnet tilsier, så skjer denne prosessen på havbunn. På grunn av redusert trykk, smelter bergarter i astenosfæren og smelter seg oppover. I prosessen med å trenge seg opp ved å smelte, skaper den en oppbuling av litosfæren, som fører til rifting av platen. Samtidig som rifting skjer, trenger magma kontinuerlig seg opp i sprekkene og kommer opp til overflaten (havbunn). Deretter tar slab pull, ridge push, basal drag og trench suction kreftene over. 
+Som navnet tilsier, så skjer denne prosessen på havbunn. På grunn av redusert trykk, smelter bergarter i astenosfæren og smelter seg oppover. I prosessen med å trenge seg opp ved å smelte, skaper den en oppbuling av litosfæren, som fører til rifting av platen. Samtidig som rifting skjer, trenger magma kontinuerlig seg opp i sprekkene og kommer opp til overflaten (havbunn). Deretter tar platetrekk (slab pull), ryggskyv (ridge push), manteldrag (basal drag) og gropsug (trench suction) over. 
 
 
 **Kontinental rifting**: 
@@ -394,7 +394,7 @@ Norge ligger i dag midt inne på Den eurasiske kontinentalplaten, tusenvis av ki
 
 - **slab pull:** den dominerende drivkraften: kald, tett eklogitt-slab synker under egen vekt i subduksjonssonen
 
-- **ridge push:** gravitasjonsglidning: litosfæren sklir nedover fra den 2–3 km høye midthavsryggen
+- **ryggskyv (ridge push):** gravitasjonsglidning: litosfæren sklir nedover fra den 2–3 km høye midthavsryggen
 
 - **eklogitt:** ekstremt tung høytrykksmetamorf bergart (granat + omfasitt) omdannet fra basaltisk havbunnsskorpe i subduksjonssoner; drivmotoren i slab pull
 
