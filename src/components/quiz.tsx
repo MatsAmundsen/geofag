@@ -10,7 +10,17 @@ export type QuizQuestion = {
   explain: string;
 };
 
-export function Quiz({ questions }: { questions: QuizQuestion[] }) {
+export function Quiz({
+  questions,
+  heading = "Sjekk deg selv",
+  intro = "Velg ett svar per spørsmål. Dette er VG3-nivå med et par steg mot universitet.",
+}: {
+  questions: QuizQuestion[];
+  /** Null hides the heading so the chapter can keep a single «Test deg selv». */
+  heading?: string | null;
+  /** Null hides the intro line. Other chapters keep the default. */
+  intro?: string | null;
+}) {
   const baseId = useId();
   const [picked, setPicked] = useState<(number | null)[]>(() => questions.map(() => null));
   const [revealed, setRevealed] = useState(false);
@@ -38,10 +48,10 @@ export function Quiz({ questions }: { questions: QuizQuestion[] }) {
 
   return (
     <section className="my-10 rounded-xl border border-border bg-card p-5 sm:p-6">
-      <h2 className="font-display text-2xl font-medium tracking-tight">Sjekk deg selv</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Velg ett svar per spørsmål. Dette er VG3-nivå med et par steg mot universitet.
-      </p>
+      {heading ? (
+        <h2 className="font-display text-2xl font-medium tracking-tight">{heading}</h2>
+      ) : null}
+      {intro ? <p className="mt-1 text-sm text-muted-foreground">{intro}</p> : null}
 
       <ol className="mt-6 space-y-8">
         {questions.map((q, qi) => {

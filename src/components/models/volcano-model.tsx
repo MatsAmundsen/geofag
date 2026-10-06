@@ -1,10 +1,21 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
 type VolcanoScenario = "shield" | "stratovolcano" | "caldera" | "earthquake_sim" | "monitoring" | "tsunami_sim";
 
-export function VolcanoModel() {
+function nb1(value: number): string {
+  return value.toFixed(1).replace(".", ",");
+}
+
+function viscosityShort(label: string): string {
+  const paren = label.indexOf(" (");
+  return paren === -1 ? label : label.slice(0, paren);
+}
+
+/** Jordskjelv- og tsunamimoduser beholdes i koden, men skjules på Vulkaner-siden. */
+export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: boolean } = {}) {
   const [scenario, setScenario] = useState<VolcanoScenario>("stratovolcano");
 
   // Kontroller for vulkan-simulering
@@ -55,7 +66,7 @@ export function VolcanoModel() {
       return {
         type: "Stromboliansk / Vulkansk",
         vei: "VEI 2–3",
-        desc: "Periodiske eksplosjoner, lavabomber og moderate askesøyler (1–5 km høyde).",
+        desc: "Periodiske eksplosjoner, lavabomber og moderate askesøyler.",
         hazards: "Tefra-nedfall, brann og giftige gasser i nærområdet.",
         color: "#f97316",
       };
@@ -63,16 +74,16 @@ export function VolcanoModel() {
       return {
         type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens, Eyjafjallajökull)",
         vei: "VEI 4–5",
-        desc: "Massiv vedvarende gassutblåsning med konvektiv askesøyle til stratosfæren (10–35 km). Fragmentering av seig magma til pimpstein og finaske.",
+        desc: "Vedvarende gassutblåsning med konvektiv askesøyle inn i stratosfæren. Seig magma fragmenteres til pimpstein og fin aske.",
         hazards: "Pyroklastiske tetthetsstrømmer (PDC) i 200–700 km/t, dødelig askeopphopning og laharer.",
         color: "#ef4444",
       };
     } else {
       return {
-        type: "Ultra-pliniansk / Kalderautbrudd (Supervulkan)",
+        type: "Ultra-pliniansk / kalderautbrudd",
         vei: "VEI 6–8",
-        desc: "Tømming av gigantiske magmakamre. Magmataket kollapser og danner en enorm kaldera. Global klimapåvirkning via SO₂-aerosoler.",
-        hazards: "Kontinentale askelag, tiårslang vulkansk vinter og regional totalødeleggelse.",
+        desc: "Et stort magmakammer tømmes. Taket kollapser og danner en kaldera. SO₂-aerosoler kan påvirke klimaet.",
+        hazards: "Askelag over store områder og nedkjøling i flere år.",
         color: "#b91c1c",
       };
     }
@@ -108,12 +119,12 @@ export function VolcanoModel() {
       alertLevel = "ORANSJE (Magmaoppstigning / Høy fare)";
       alertColor = "text-orange-400";
       alertBg = "bg-orange-500/10 border-orange-500/30";
-      action = "Forbered evakuering av 10 km faresone. Totalforbud mot opphold på fjellet.";
+      action = "Forbered evakuering av nærområdet. Steng fjellet for ferdsel.";
     } else if (monitorDay >= -1) {
-      alertLevel = "RØD (UTBRUDD OVERHENGENDE / EVAKUER!)";
+      alertLevel = "RØD (utbrudd nært forestående)";
       alertColor = "text-rose-400 font-bold";
-      alertBg = "bg-rose-500/10 border-rose-500/30 animate-pulse";
-      action = "OBLIGATORISK FULL EVAKUERING av alle dalfører innen 25 km! Flyforbud innføres.";
+      alertBg = "bg-rose-500/10 border-rose-500/30";
+      action = "Evakuer dalene rundt vulkanen. Innfør flyforbud.";
     }
 
     return { tremorVal, upliftVal, so2Val, alertLevel, alertColor, alertBg, action };
@@ -160,29 +171,34 @@ export function VolcanoModel() {
 
   return (
     <ModelFrame
-      kicker="Interaktiv vulkansk & geofysisk simulator"
-      title="Magmakjemi, Utbruddsdynamikk, Seismogram og Geofarer"
-      lead="Eksperimenter med magmakjemi (SiO₂, gass, temp), test utbruddstyper, tolk sanntids vulkanovervåking (tremor, GPS, SO₂), studer seismiske P- og S-bølger, eller beregn tsunamihastighet og oppstuing (shoaling)."
+      stackToolbar
+      kicker="Interaktiv vulkansimulator"
+      title="Magmakjemi, utbruddsdynamikk og geofarer"
+      lead="Prøv hvordan silikat (SiO₂), gass og temperatur styrer utbruddet, og hvordan overvåking med tremor, GNSS og SO₂ brukes til varsling."
       toolbar={
         <div className="flex flex-wrap gap-1.5">
           <ModelTab active={scenario === "stratovolcano"} onClick={() => setScenarioPreset("stratovolcano")}>
-            Stratovulkan (Subduksjon)
+            Stratovulkan (subduksjon)
           </ModelTab>
           <ModelTab active={scenario === "shield"} onClick={() => setScenarioPreset("shield")}>
-            Skjoldvulkan (Hotspot/Rift)
+            Skjoldvulkan (hotspot/rift)
           </ModelTab>
           <ModelTab active={scenario === "caldera"} onClick={() => setScenarioPreset("caldera")}>
-            Kaldera & Supervulkan
+            Kaldera
           </ModelTab>
           <ModelTab active={scenario === "monitoring"} onClick={() => setScenarioPreset("monitoring")}>
-            Vulkanovervåking (Varsling)
+            Vulkanovervåking
           </ModelTab>
-          <ModelTab active={scenario === "earthquake_sim"} onClick={() => setScenarioPreset("earthquake_sim")}>
-            Jordskjelv & Seismogram
-          </ModelTab>
-          <ModelTab active={scenario === "tsunami_sim"} onClick={() => setScenarioPreset("tsunami_sim")}>
-            Tsunamikalkulator (Shoaling)
-          </ModelTab>
+          {showSeismicModes ? (
+            <>
+              <ModelTab active={scenario === "earthquake_sim"} onClick={() => setScenarioPreset("earthquake_sim")}>
+                Jordskjelv og seismogram
+              </ModelTab>
+              <ModelTab active={scenario === "tsunami_sim"} onClick={() => setScenarioPreset("tsunami_sim")}>
+                Tsunamikalkulator (oppstuing)
+              </ModelTab>
+            </>
+          ) : null}
         </div>
       }
     >
@@ -213,7 +229,7 @@ export function VolcanoModel() {
           <div>
             <div className="flex justify-between text-xs">
               <span className="font-semibold text-foreground">Gassinnhold (H₂O, CO₂):</span>
-              <span className="font-mono text-primary">{gasContent.toFixed(1)} vekt-%</span>
+              <span className="font-mono text-primary">{nb1(gasContent)} vekt-%</span>
             </div>
             <input
               type="range"
@@ -225,7 +241,7 @@ export function VolcanoModel() {
               className="mt-2 w-full accent-primary cursor-pointer"
             />
             <p className="mt-1 text-[11px] text-muted-foreground">
-              {gasContent < 2 ? "Lavt drivtrykk" : gasContent < 4 ? "Moderat drivtrykk" : "Voldsom ekspansjonskraft!"}
+              {gasContent < 2 ? "Lavt drivtrykk" : gasContent < 4 ? "Moderat drivtrykk" : "Høyt drivtrykk"}
             </p>
           </div>
 
@@ -265,7 +281,7 @@ export function VolcanoModel() {
             <div className="flex justify-between text-xs">
               <span className="font-semibold text-foreground">Tidslinje før utbrudd:</span>
               <span className="font-mono text-primary">
-                {monitorDay === 0 ? "Dag 0 (Utbrudd i dag!)" : `Dag ${monitorDay}`}
+                {monitorDay === 0 ? "Dag 0 (utbrudd)" : `Dag ${monitorDay}`}
               </span>
             </div>
             <input
@@ -303,13 +319,13 @@ export function VolcanoModel() {
 
           <div className="sm:col-span-2 flex flex-col justify-center rounded-lg border p-2.5 text-xs transition-colors border-border/80">
             <div className="flex items-center justify-between">
-              <span className="font-semibold text-foreground text-xs">Vulkansk Farenivå (Alert Level):</span>
+              <span className="font-semibold text-foreground text-xs">Vulkansk farenivå:</span>
               <span className={`text-xs px-2 py-0.5 rounded font-mono font-bold ${monitorStatus.alertColor} ${monitorStatus.alertBg}`}>
                 {monitorStatus.alertLevel}
               </span>
             </div>
             <p className="mt-1.5 text-[11px] text-muted-foreground leading-tight">
-              <strong>Sivilforsvarets tiltak:</strong> {monitorStatus.action}
+              <strong>Tiltak:</strong> {monitorStatus.action}
             </p>
           </div>
         </div>
@@ -520,7 +536,7 @@ export function VolcanoModel() {
                     <line x1="320" y1={210 - inflationPx} x2="325" y2={185 - inflationPx * 1.6} stroke="#38bdf8" strokeWidth="2.5" />
                     <polygon points={`325,${180 - inflationPx * 1.6} 320,${190 - inflationPx * 1.6} 330,${190 - inflationPx * 1.6}`} fill="#38bdf8" />
                     <text x="135" y={170 - inflationPx * 1.6} fill="#7dd3fc" fontSize="11" fontWeight="bold" textAnchor="middle">
-                      GNSS +{monitorStatus.upliftVal} cm
+                      GNSS +{monitorStatus.upliftVal.replace(".", ",")} cm
                     </text>
                   </g>
 
@@ -563,7 +579,7 @@ export function VolcanoModel() {
                   <rect x="360" y={250} width="16" height="12" fill="#10b981" rx="2" />
                   <line x1="368" y1="250" x2="310" y2="65" stroke="#34d399" strokeWidth="1" strokeDasharray="3 3" />
                   <text x="368" y="276" fill="#6ee7b7" fontSize="10" textAnchor="middle">
-                    DOAS spektrometer
+                    Gassmåler
                   </text>
                 </g>
               );
@@ -574,7 +590,7 @@ export function VolcanoModel() {
               {/* Vulkansk varslingsnivå banner */}
               <rect width="415" height="46" rx="8" fill="#0f172a" stroke="#334155" />
               <text x="14" y="20" fill="#94a3b8" fontSize="10" fontWeight="bold">
-                CIVIL PROTECTION & AVIATION ALERT (ICAO):
+                Varsel til befolkning og luftfart (ICAO):
               </text>
               <text x="14" y="38" className={`text-sm font-extrabold ${monitorStatus.alertColor}`}>
                 {monitorStatus.alertLevel}
@@ -609,7 +625,7 @@ export function VolcanoModel() {
                   );
                 })()}
                 <text x="14" y="100" fill="#64748b" fontSize="9">
-                  Kontinuerlig lavfrekvent risting (1–5 Hz) varsler om magma i bevegelse gjennom sprekker.
+                  Kontinuerlig lavfrekvent risting varsler om magma i bevegelse gjennom sprekker.
                 </text>
               </g>
 
@@ -620,7 +636,7 @@ export function VolcanoModel() {
                   2. GNSS Vertikal Bakkedeformasjon (Inflasjon)
                 </text>
                 <text x="395" y="20" fill="#34d399" fontSize="11" fontWeight="mono" textAnchor="end">
-                  +{monitorStatus.upliftVal} cm
+                  +{monitorStatus.upliftVal.replace(".", ",")} cm
                 </text>
 
                 {/* Hevingskurve over tid */}
@@ -647,7 +663,7 @@ export function VolcanoModel() {
                 })()}
                 <circle cx={20 + (1 - Math.abs(monitorDay) / 30) * 375} cy={85 - (parseFloat(monitorStatus.upliftVal) / 42.5) * 50} r="4" fill="#6ee7b7" />
                 <text x="14" y="100" fill="#64748b" fontSize="9">
-                  Mogu-modell: Bakkedeformasjon skyldes volumøkning i magmakammer på 4–8 km dyp.
+                  Bakken hever seg når magmakammeret fylles.
                 </text>
               </g>
 
@@ -655,7 +671,7 @@ export function VolcanoModel() {
               <g transform="translate(0, 296)">
                 <rect width="415" height="135" rx="8" fill="#090d16" stroke="#1e293b" />
                 <text x="14" y="20" fill="#facc15" fontSize="11" fontWeight="bold">
-                  3. Svoveldioksid-utslipp (SO₂ UV-spektrometri)
+                  3. Svoveldioksid-utslipp (SO₂)
                 </text>
                 <text x="395" y="20" fill="#facc15" fontSize="11" fontWeight="mono" textAnchor="end">
                   {monitorStatus.so2Val} tonn/døgn
@@ -683,7 +699,7 @@ export function VolcanoModel() {
                   </text>
                 </p>
                 <text x="14" y="118" fill="#64748b" fontSize="9">
-                  Kraftig stigning i SO₂ bekrefter at fersk magma når overflatenære dyp hvor gassen eksolveres.
+                  Kraftig stigning i SO₂ tyder på at magmaen er nær overflaten, der gassen skilles ut (eksolusjon).
                 </text>
               </g>
             </g>
@@ -873,10 +889,10 @@ export function VolcanoModel() {
             <ellipse cx="450" cy="405" rx={scenario === "caldera" ? 180 : 100} ry={scenario === "caldera" ? 45 : 32} fill="url(#chamberGlow)" />
             <ellipse cx="450" cy="405" rx={scenario === "caldera" ? 150 : 80} ry={scenario === "caldera" ? 35 : 24} fill="url(#magmaGrad)" />
             <text x="450" y="408" fill="#fff" fontSize="13" fontWeight="bold" textAnchor="middle">
-              {scenario === "caldera" ? "Gigantisk ryolitt-kammer (~700 km³)" : `Magmakammer (${temp} °C)`}
+              {scenario === "caldera" ? "Stort ryolittkammer" : `Magmakammer (${temp} °C)`}
             </text>
             <text x="450" y="424" fill="#fed7aa" fontSize="10" textAnchor="middle">
-              SiO₂: {sio2}% · Gass: {gasContent.toFixed(1)}% · Viskositet: {viscosityInfo.label.split(" ")[0]}
+              SiO₂: {sio2} % · Gass: {nb1(gasContent)} % · Viskositet: {viscosityShort(viscosityInfo.label)}
             </text>
 
             {/* VULKANGEOMETRI BASERT PÅ SCENARIO / SIO2 */}
@@ -961,7 +977,7 @@ export function VolcanoModel() {
 
                 {/* Fragmenteringsnivå markering */}
                 <line x1="410" y1="260" x2="490" y2="260" stroke="#facc15" strokeWidth="1.5" strokeDasharray="3 3" />
-                <text x="500" y="264" fill="#facc15" fontSize="10">Fragmenteringssone (zf)</text>
+                <text x="500" y="264" fill="#facc15" fontSize="10">Fragmenteringsnivå</text>
 
                 {isErupting && (
                   <g>
@@ -976,7 +992,7 @@ export function VolcanoModel() {
                     <ellipse cx="410" cy="20" rx="140" ry="18" fill="#475569" opacity="0.85" />
                     <ellipse cx="500" cy="25" rx="120" ry="16" fill="#64748b" opacity="0.8" />
                     <text x="450" y="28" fill="#f1f5f9" fontSize="12" fontWeight="bold" textAnchor="middle">
-                      Paraplysky (stratosfæren: 15–35 km)
+                      Paraplysky (inn i stratosfæren)
                     </text>
 
                     {/* Vulkanske lyn i askesøylen pga statisk elektrisitet */}
@@ -997,7 +1013,7 @@ export function VolcanoModel() {
                       fill="none"
                     />
                     <text x="210" y="275" fill="#ffe4e6" fontSize="11" fontWeight="bold" transform="rotate(-30 210 275)">
-                      Pyroklastisk strøm (PDC ~400 km/t) ⚡
+                      Pyroklastisk strøm (PDC)
                     </text>
 
                     {/* Lahar (vulkansk slamstrøm) i dalbunn */}
@@ -1040,7 +1056,7 @@ export function VolcanoModel() {
                     <ellipse cx="450" cy="70" rx="320" ry="45" fill="#475569" opacity="0.6" />
                     <ellipse cx="450" cy="50" rx="260" ry="35" fill="#334155" opacity="0.75" />
                     <text x="450" y="55" fill="#f8fafc" fontSize="14" fontWeight="bold" textAnchor="middle">
-                      Global SO₂-aerosolsky & vulkansk vinter (VEI 7–8)
+                      SO₂-aerosoler høyt i atmosfæren (VEI 7–8)
                     </text>
                   </g>
                 )}
@@ -1052,7 +1068,7 @@ export function VolcanoModel() {
             <text x="35" y="42" fill="#93c5fd" fontSize="13" fontWeight="bold">Utbruddsklassifisering</text>
             <text x="35" y="62" fill="#f8fafc" fontSize="12" fontWeight="600">{eruptionStyle.type}</text>
             <text x="35" y="80" fill={eruptionStyle.color} fontSize="12" fontWeight="bold">{eruptionStyle.vei}</text>
-            <text x="35" y="98" fill="#94a3b8" fontSize="11">Viskositet: {viscosityInfo.label.split(" ")[0]}</text>
+            <text x="35" y="98" fill="#94a3b8" fontSize="11">Viskositet: {viscosityShort(viscosityInfo.label)}</text>
           </svg>
         ) : (
           /* JORDSKJELV & SEISMOGRAM-VISUALISERING */
@@ -1237,12 +1253,12 @@ export function VolcanoModel() {
           {scenario === "monitoring" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
-                <strong className="text-foreground">Dekompresjon og avgassing:</strong> Når magma migrerer oppover fra 10–20 km dyp,
-                faller det hydrostatiske trykket. Oppløste gasser (H₂O, CO₂, SO₂) danner gassbobler (eksolsjon) som øker volumet og det hydrauliske trykket mot sidebergartene.
+                <strong className="text-foreground">Trykkfall og avgassing:</strong> Når magma stiger, faller trykket fra berget over.
+                Oppløste gasser (H₂O, CO₂, SO₂) danner gassbobler (eksolusjon).
               </p>
               <p>
-                <strong className="text-foreground">Mogi-inflasjonsmodell:</strong> Trykkøkningen i det elastiske reservoaret får
-                overliggende fjelloverflate til å bøye seg oppover (heving) og til sidene, målbart med millimeterpresisjon via GNSS og satellitt-radar (InSAR).
+                <strong className="text-foreground">Heving av bakken:</strong> Når magmakammeret fylles, bøyer overflaten seg opp.
+                Hevingen måles med GNSS og satellitt-radar (InSAR).
               </p>
             </div>
           ) : scenario === "tsunami_sim" ? (
@@ -1259,14 +1275,13 @@ export function VolcanoModel() {
           ) : scenario !== "earthquake_sim" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
-                <strong className="text-foreground">Polymerisering:</strong> Silikatmolekylene (SiO₄⁴⁻) danner
-                lange kovalente nettverkskjeder når SiO₂-innholdet overstiger 60 %. Dette øker væskens viskositet
-                med opptil <span className="font-semibold text-primary">en million ganger</span> sammenlignet med basalt!
+                <strong className="text-foreground">Silikatnettverk:</strong> Silikattetraedrene kobles sammen i kjeder og nettverk
+                når magmaen har mye SiO₂ (over 63 % i tabellen). Magmaen blir seig, og gassboblene slipper ikke ut.
               </p>
               <p>
-                <strong className="text-foreground">Henrys lov & Eksolusjon:</strong> Ved stort dyp holdes vanndamp
-                og CO₂ oppløst under hydrostatisk trykk. Når magmaen stiger og trykket faller, oppløses ikke gassen lenger
-                og danner bobler (vesikler). I seig ryolittmagma kan ikke boblene unnslippe, noe som bygger opp et ekstremt overtrykk.
+                <strong className="text-foreground">Gass i magma:</strong> Ved stort dyp holdes vanndamp
+                og CO₂ oppløst under trykket fra berget over. Når magmaen stiger og trykket faller, holdes gassen ikke lenger oppløst,
+                og det dannes bobler (eksolusjon). I seig ryolittmagma slipper boblene ikke ut.
               </p>
             </div>
           ) : (
@@ -1292,12 +1307,12 @@ export function VolcanoModel() {
           {scenario === "monitoring" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
-                <strong className="text-foreground">Harmonisk tremor:</strong> I motsetning til vanlige skarpbrytende jordskjelv,
-                viser tremor en kontinuerlig lavfrekvent sinusformet resonans (1–5 Hz). Dette er den akustiske signaturen til magma og gasser som strømmer turbulent gjennom sprekker.
+                <strong className="text-foreground">Tremor:</strong> Vanlige jordskjelv er korte rykk.
+                Tremor er en vedvarende, lavfrekvent risting fra magma og gass som beveger seg i sprekker.
               </p>
               <p>
-                <strong className="text-foreground">DOAS & Multi-GAS:</strong> Differensiell optisk absorpsjonsspektrometri måler
-                svoveldioksid (SO₂). Kraftig økning i SO₂/CO₂-forholdet er et sikkert tegn på at magmaen er få kilometer fra overflaten.
+                <strong className="text-foreground">Gassmåling:</strong> Instrumentene måler
+                svoveldioksid (SO₂). En kraftig økning tyder på at magmaen er nær overflaten.
               </p>
             </div>
           ) : scenario === "tsunami_sim" ? (
@@ -1391,11 +1406,12 @@ export function VolcanoModel() {
       </div>
 
       <div className="mt-4">
-        <ModelNote title="Pedagogisk nøkkelpoeng" tone="teal">
-          Vulkanisme og jordskjelv er overflateuttrykk for jordens indre varmemaskin.
-          Magmaens eksplosivitet styres mikroskopisk av kjemien i silikatpolymerene og gassens evne til å unnslippe. Jordskjelv
-          representerer elastisk energi som plutselig frigjøres langs bruddsoner, der tidsforskjellen mellom de seismiske bølgene
-          lar oss avbilde jordens indre lag med millimeterpresisjon.
+        <ModelNote title="Hovedpoeng" tone="teal">
+          Vulkanisme er et overflateuttrykk for varme fra jordas indre. Hvor eksplosivt et utbrudd blir, styres av hvor mye
+          silikat (SiO₂) magmaen inneholder, og av om gassen slipper ut.{" "}
+          <Link to="/geofag-1/jordskjelv" className="underline underline-offset-2">
+            Les mer om jordskjelv og tsunamier i kapittelet Jordskjelv og tsunamier.
+          </Link>
         </ModelNote>
       </div>
     </ModelFrame>

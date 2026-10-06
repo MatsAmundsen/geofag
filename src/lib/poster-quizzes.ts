@@ -185,30 +185,29 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
 
 export const QUIZ_VULKANER: QuizQuestion[] = [
   {
-    prompt:
-      "Hva er en hotspot (varmeflekk), og hva beviser Hawaii-Emperor-øykjeden med sin 47 Ma-knekk?",
+    prompt: "Hvorfor blir Hawaii-øyene eldre mot nordvest?",
     options: [
-      "En hotspot er et meteorittkrater; knekken skyldes at en ny meteoritt traff 47 millioner år senere.",
-      "En hotspot er en stasjonær mantelplym fra 2900 km dyp; knekken er et direkte bevis på at litosfæreplaten (Stillehavsplaten) brått endret bevegelsesretning over den stasjonære plymen.",
+      "En meteoritt traff øyene, og alderen øker ut fra krateret.",
+      "Stillehavsplaten glir over en langvarig, varm sone (hotspot), så nye vulkaner dannes over hotspoten mens de gamle flyttes bort med platen.",
       "En hotspot oppstår bare langs subduksjonssoner når en plate brekker i to.",
-      "Knekken på 47 Ma skyldes at jordens magnetfelt byttet polaritet.",
+      "Øyene blir eldre mot nordvest fordi jordens magnetfelt byttet polaritet.",
     ],
     answer: 1,
     explain:
-      "Riktig! J. Tuzo Wilson og Jason Morgan viste at dype mantelplymer står tilnærmet i ro. Når Stillehavsplaten gled over Hawaii-hotspoten, ble en perlerad av øyer brent inn i havbunnen, og den 60-graders knekken for 47 Ma siden beviser at platens bevegelsesretning brått endret seg.",
+      "Riktig! J. Tuzo Wilson (1963) beskrev en langvarig, varm sone under platen. Nye vulkaner dannes over hotspoten, og de eldre følger med platen mot nordvest. Kauai er ca. 5,5 millioner år. Big Island er yngre enn 0,7 millioner år og fortsatt aktiv (USGS, u.å.-d).",
   },
   {
     prompt:
-      "Hvorfor er et utbrudd fra en ryolittisk stratovulkan dramatisk mye mer eksplosivt enn et utbrudd fra en basaltisk skjoldvulkan på Hawaii?",
+      "Hvorfor er et utbrudd fra en ryolittisk stratovulkan mer eksplosivt enn et utbrudd fra en basaltisk skjoldvulkan på Hawaii?",
     options: [
       "Ryolittisk magma er mye varmere enn basaltisk magma, noe som skaper høyere damptrykk.",
-      "Ryolittisk magma har høyt SiO₂-innhold som danner silikatnettverk med ekstrem viskositet; dette fanger oppløste gasser under kolossalt trykk inntil fragmenteringsnivået nås.",
+      "Ryolittisk magma har høyt SiO₂-innhold. Silikattetraedrene kobles sammen i kjeder og nettverk, magmaen blir seig, og gassboblene slipper ikke ut.",
       "Basaltisk magma inneholder mer uran og thorium, som forhindrer gassdannelse.",
       "Hawaii har ingen magmakammer under overflaten, og lavaen presses ut av gravitasjonsbølger.",
     ],
     answer: 1,
     explain:
-      "Riktig! Når SiO₂-innholdet overstiger 60 %, danner silikat-tetraedrene sterke kovalente polymerkjeder som øker viskositeten med opptil en million ganger sammenlignet med basalt. Gassboblene kan ikke unnslippe, og resultatet er et eksplosivt pliniansk utbrudd.",
+      "Riktig! Ryolittisk magma har mye SiO₂ (over 63 % i tabellen). Silikattetraedrene kobles sammen i kjeder og nettverk, og magmaen blir seig. Gassboblene slipper ikke ut, og utbruddet kan bli eksplosivt.",
   },
   {
     prompt:
@@ -228,13 +227,13 @@ export const QUIZ_VULKANER: QuizQuestion[] = [
       "Hva er den viktigste årsaken til at vulkaner på subduksjonssoner er mer eksplosive enn vulkaner på midthavsrygger?",
     options: [
       "Subduksjonssoner er nærmere jordens kjerne og har høyere temperatur.",
-      "Vann frigjort fra den synkende oseaniske platen senker magmaens solidustemperatur og øker SiO₂-innholdet, noe som gir høyere viskositet og gasstrykk.",
+      "Vann fra den synkende platen senker smeltepunktet i mantelen over (flukssmelting). Magmaen her er oftere andesittisk eller ryolittisk, seigere og mer gassrik enn basalten ved midthavsrygger.",
       "Midthavsrygg-vulkaner har ingen magmakammer og kan ikke eksplodere.",
       "Subduksjonsvulkaner bruker kald havbunnsskorpe som drivstoff, noe som gir mer energi.",
     ],
     answer: 1,
     explain:
-      "Riktig! Flukssmelting i mantelkilen over den synkende platen produserer intermediær til felsisk magma med høyere SiO₂ og mer oppløste gasser enn den enkle dekompresjonssmeltingen under midthavsrygger.",
+      "Riktig! Ved subduksjon senker vann fra den synkende platen smeltepunktet i mantelen (flukssmelting). Ved midthavsrygger smelter mantelen fordi trykket faller (dekompresjon). Subduksjonsvulkaner gir oftere andesittisk og ryolittisk magma. Den er seig og holder på gassen, så utbruddene blir eksplosive.",
   },
   {
     prompt: "Hva er 'vulkansk vinter', og hvilket historisk utbrudd forårsaket det tydeligste eksempelet?",
@@ -246,24 +245,24 @@ export const QUIZ_VULKANER: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Riktig! Tamboras stratosfæriske SO₂-injeksjon på 100 millioner tonn i 1815 dannet et globalt aerosolslør av svovelsyre som kuttet solinnstrålingen nok til at avlingene sviktet globalt i 1816.",
+      "Riktig! Etter Tambora i 1815 ble 1816 kalt «året uten sommer». Svovel i stratosfæren kan danne aerosoler som sprer sollys. Pinatubo i 1991 kjølte jordoverflaten i om lag tre år, med inntil ca. 0,7 °C på det meste (USGS, u.å.-c).",
   },
   {
     prompt: "Hva er en kaldera, og hva skiller den fra et vanlig vulkankrater?",
     options: [
       "En kaldera er et vanlig eksplosjonskrater i toppen av en vulkan.",
-      "En kaldera er en kolossal innsynkningsstruktur (5–50 km bred) som oppstår når taket over et delvis tømt magmakammer raser loddrett ned under et katastrofalt utbrudd.",
+      "En kaldera er en stor innsynkning som oppstår når taket over et delvis tømt magmakammer synker inn.",
       "En kaldera er et underjordisk magmakammer under en skjoldvulkan.",
       "En kaldera er et lahar-fyllt dalstrøk etter et vulkanutbrudd.",
     ],
     answer: 1,
     explain:
-      "Riktig! Et vulkankrater er en utblåsningsåpning fra tilførselsrøret. En kaldera oppstår ved kollapsen av hele magmakammertaket — en gigantisk senkningsstruktur som kan være titalls kilometer bred.",
+      "Riktig! Et vulkankrater er åpningen over tilførselsrøret. En kaldera oppstår når taket over magmakammeret synker inn. Senkningen kan være flere kilometer bred.",
   },
   {
     prompt: "Hvorfor er Beerenberg på Jan Mayen klassifisert som stratovulkan til tross for basaltisk magma?",
     options: [
-      "Fordi all vulkan over 2000 moh. kalles stratovulkan.",
+      "Fordi alle vulkaner over 2000 m o.h. kalles stratovulkaner.",
       "Fordi Jan Mayen ligger på en rift der magmaen er ryolittisk.",
       "Fordi utbruddsstilen veksler mellom strombolsk og hawaiisk, noe som over tid har bygd opp lagdelte avsettinger av lava og tefra til en klassisk kjegleform.",
       "Fordi Beerenberg aldri har hatt ekte lavastrømmer.",

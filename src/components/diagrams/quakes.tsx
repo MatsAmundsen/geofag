@@ -255,9 +255,9 @@ export function SeismogramDiagram() {
 export function VolcanoTypesDiagram() {
   return (
     <Diagram
-      title="Vulkantyper: Skjoldvulkan vs. Stratovulkan"
+      title="Vulkantyper: Skjoldvulkan og stratovulkan"
       heading="Magmakjemi avgjør form og eksplosivitet"
-      caption="Vulkanens form styres av magmaets silikatinnhold (SiO₂), temperatur og viskositet. Skjoldvulkaner mates av tyntflytende, varm basaltisk lava med lite gass — lavaen flyter langt og bygger slake, brede skjold (f.eks. Mauna Loa og Kilauea på Hawaii). Stratovulkaner (sammensatte vulkaner) dannes ved subduksjon der vann senker smeltepunktet og danner seig, gassrik andesittisk/ryolittisk magma. Dette gir voldsomme eksplosjoner, høye askesøyler, pyroklastiske strømmer og bratte, lagdelte kjegler (f.eks. Fuji, Vesuv og Pinatubo)."
+      caption="Skjoldvulkaner har tyntflytende basaltisk lava og slake sider. Stratovulkaner har seigere magma og bratte, lagdelte kjegler."
       viewBox="0 0 860 400"
     >
       {() => (
@@ -299,7 +299,7 @@ export function VolcanoTypesDiagram() {
           <L x="150" y="132" fill={C.fg} size={13}>Basaltisk (mafisk, &lt;52 % SiO₂)</L>
 
           <L x="65" y="152" fill={C.sand} size={13} weight={600}>Viskositet:</L>
-          <L x="145" y="152" fill={C.fg} size={13}>Lav (tyntflytende, ~1100–1200 °C)</L>
+          <L x="145" y="152" fill={C.fg} size={13}>Lav (1050–1200 °C)</L>
 
           <L x="65" y="172" fill={C.sand} size={13} weight={600}>Tektonisk setting:</L>
           <L x="180" y="172" fill={C.fg} size={13}>Hotspot / spredningsrygg</L>
@@ -314,7 +314,7 @@ export function VolcanoTypesDiagram() {
             Stratovulkan (f.eks. Fuji, Vesuv)
           </L>
           <L x="637" y="70" fill={C.muted} size={13} anchor="middle">
-            Eksplosive utbrudd · Felsisk/andesittisk lava
+            Eksplosive utbrudd · andesitt og ryolitt
           </L>
 
           {/* Vulkanprofil bratt kjegle */}
@@ -353,10 +353,10 @@ export function VolcanoTypesDiagram() {
           <L x="550" y="112" fill={C.fg} size={13}>Bratt, 25–35° (kjegleform)</L>
 
           <L x="480" y="132" fill={C.low} size={13} weight={600}>Magmatype:</L>
-          <L x="565" y="132" fill={C.fg} size={13}>Andesitt / ryolitt (felsisk, &gt;60 % SiO₂)</L>
+          <L x="565" y="132" fill={C.fg} size={13}>intermediær og felsisk</L>
 
           <L x="480" y="152" fill={C.low} size={13} weight={600}>Viskositet:</L>
-          <L x="560" y="152" fill={C.fg} size={13}>Høy (seigtflytende, ~800–1000 °C)</L>
+          <L x="560" y="152" fill={C.fg} size={13}>Høy (700–1050 °C)</L>
 
           <L x="480" y="172" fill={C.low} size={13} weight={600}>Tektonisk setting:</L>
           <L x="595" y="172" fill={C.fg} size={13}>Subduksjonssone (konvergent)</L>
@@ -375,7 +375,7 @@ export function VolcanoEruptionAnatomyDiagram() {
     <Diagram
       title="Anatomi av et eksplosivt vulkanutbrudd"
       heading="Pliniansk søyle, fragmenteringsnivå og tetthetsstrømmer"
-      caption="Under et pliniansk utbrudd stiger gassmettet magma mot overflaten. Ved fragmenteringsnivået (zf) overstiger gassblærenes ekspansjonstrykk smeltenes elastiske strekkfasthet; magmaen rives i stykker til en blanding av gass, pimpstein og mikro-aske. Ut av krateret slynges blandingen i supersonisk fart (gas-thrust-region), før termisk konveksjon driver askesøylen 20–40 km opp i stratosfæren. Dersom tettheten i søylen blir for høy i forhold til atmosfæren, inntreffer søylekollaps som utløser livsfarlige pyroklastiske tetthetsstrømmer (PDC)."
+      caption="Gass i seig magma river smelten i stykker ved fragmenteringsnivået. Søylen kan nå inn i stratosfæren. Blir den for tung, kollapser den til en pyroklastisk strøm (PDC)."
       viewBox="0 0 880 460"
     >
       {(m) => (
@@ -411,7 +411,7 @@ export function VolcanoEruptionAnatomyDiagram() {
           {/* Fragmenteringsnivå markering */}
           <line x1="390" y1="310" x2="490" y2="310" stroke={C.sand} strokeDasharray="3 3" strokeWidth="2" />
           <L x="500" y="314" fill={C.sand} size={11} weight={700}>
-            Fragmenteringsnivå (z_f)
+            Fragmenteringsnivå
           </L>
           <L x="500" y="328" fill={C.muted} size={10}>
             Gassblærer sprenger magmaen til tefra
@@ -420,7 +420,7 @@ export function VolcanoEruptionAnatomyDiagram() {
           {/* Gas thrust region rett over krateret */}
           <path d="M 430 242 L 420 180 H 460 L 450 242 Z" fill="#d97706" opacity="0.9" />
           <L x="475" y="215" fill="#f59e0b" size={11} weight={600}>
-            Gass-skyvesone (gas-thrust)
+            Gassen skyver blandingen ut
           </L>
 
           {/* Konvektiv pliniansk askesøyle */}
@@ -433,7 +433,7 @@ export function VolcanoEruptionAnatomyDiagram() {
           <ellipse cx="440" cy="45" rx="270" ry="25" fill="#334155" opacity="0.9" />
           <ellipse cx="400" cy="40" rx="180" ry="20" fill="#475569" opacity="0.85" />
           <L x="440" y="48" fill="#f8fafc" size={14} weight={700} anchor="middle">
-            Paraplysky (Umbrella cloud) · Vindbåren spredning
+            Paraplysky (umbrella cloud)
           </L>
 
           {/* Vulkansk lyn */}
@@ -480,7 +480,7 @@ export function CalderaFormationDiagram() {
     <Diagram
       title="Dannelse av en kaldera i 4 trinn"
       heading="Magmatømming og gigantisk takkollaps"
-      caption="En kaldera er en stor vulkansk innsynkningsstruktur dannet ved takkollaps. 1: Et enormt gassmettet magmakammer bygger seg opp og presser jordskorpen i bue oppover. 2: Ringforkastninger sprekker opp og utløser katastrofale plinianske utbrudd som tømmer titalls til hundrevis av kubikkilometer magma. 3: Uten understøttelse fra magmaen raser skorpetaket loddrett ned i kammeret. 4: I ettertid fylles senkningen med vann (kalderasjø), og ny opptrengende magma danner en oppbulende, resurgent kuppel (f.eks. Yellowstone, Santorini, Toba)."
+      caption="En kaldera dannes når taket over et magmakammer synker inn etter et stort utbrudd. Senkningen kan senere fylles med vann."
       viewBox="0 0 880 440"
     >
       {() => (
@@ -507,7 +507,7 @@ export function CalderaFormationDiagram() {
           {/* TRINN 2: ØVERST HØYRE */}
           <rect x="450" y="20" width="405" height="195" rx="8" fill="#121a22" stroke={C.dim} strokeWidth="1.4" />
           <L x="465" y="44" fill={C.warm} size={14} weight={700}>
-            2. Katastrofalt ringutbrudd (VEI 7–8)
+            2. Ringutbrudd (VEI 7–8)
           </L>
           <path d="M 460 120 H 845 V 160 H 460 Z" fill="#2b241e" />
           {/* Ringventiler som spyr ut aske */}
@@ -517,7 +517,7 @@ export function CalderaFormationDiagram() {
           <path d="M 735 140 L 725 70 H 755 L 745 140 Z" fill={C.low} />
           <ellipse cx="650" cy="175" rx="85" ry="24" fill={C.warm} opacity="0.4" stroke={C.warm} strokeDasharray="4 3" />
           <L x="650" y="178" fill={C.sand} size={11} weight={600} anchor="middle">
-            Kammeret tømmes i voldsomt tempo
+            Kammeret tømmes
           </L>
 
           {/* TRINN 3: NEDERST VENSTRE */}
@@ -569,9 +569,9 @@ export function CalderaFormationDiagram() {
 export function VolcanicHazardsDiagram() {
   return (
     <Diagram
-      title="De 5 dødeligste vulkanske farene"
+      title="Fem vulkanske farer"
       heading="Primære og sekundære vulkanske trusler"
-      caption="Vulkanske katastrofer forårsakes sjelden av selve lavastrømmen, som beveger seg langsomt nok til at mennesker kan evakuere. De største dødstallene skyldes: 1. Pyroklastiske tetthetsstrømmer (PDC) som raser med hundrevis av km/t. 2. Laharer (vulkanske slamstrømmer) som begraver hele byer i dalbunner. 3. Askenedfall som får hustak til å rase sammen og kveler avlinger. 4. Giftige og kvelende gasser (CO₂, SO₂, HF). 5. Vulkanske tsunamier og global klimapåvirkning (vulkansk vinter)."
+      caption="Lavastrømmer beveger seg ofte langsomt nok til at folk kan komme seg unna. De største farene er pyroklastiske strømmer, laharer, aske, gass og, i noen tilfeller, tsunami og klimaeffekt."
       viewBox="0 0 880 400"
     >
       {() => (
@@ -588,12 +588,12 @@ export function VolcanicHazardsDiagram() {
           <L x="75" y="130" fill={C.low} size={12}>200–700 km/t</L>
           <L x="38" y="152" fill={C.fg} size={12} weight={700}>Temperatur:</L>
           <L x="115" y="152" fill={C.low} size={12}>300–800 °C</L>
-          <L x="38" y="180" fill={C.muted} size={11}>
-            Glohet blanding av gass, aske og steinblokker. Ingen kan løpe fra den. Forkuller alt på sekunder.
-          </L>
+          <L x="38" y="180" fill={C.muted} size={11}>Glohet gass, aske og stein.</L>
+          <L x="38" y="196" fill={C.muted} size={11}>Den går fortere enn</L>
+          <L x="38" y="212" fill={C.muted} size={11}>man kan løpe.</L>
           <rect x="35" y="270" width="135" height="85" rx="6" fill="#241418" />
           <L x="42" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="42" y="310" fill={C.fg} size={10}>St. Pierre 1902 (29 000 døde)</L>
+          <L x="42" y="310" fill={C.fg} size={10}>Saint-Pierre 1902</L>
           <L x="42" y="326" fill={C.fg} size={10}>Pompeii 79 e.Kr. (Vesuv)</L>
 
           {/* FARE 2: Lahar */}
@@ -607,13 +607,13 @@ export function VolcanicHazardsDiagram() {
           <L x="285" y="130" fill={C.sand} size={12}>Våt betong</L>
           <L x="208" y="152" fill={C.fg} size={12} weight={700}>Hastighet:</L>
           <L x="275" y="152" fill={C.sand} size={12}>opptil 100 km/t</L>
-          <L x="208" y="180" fill={C.muted} size={11}>
-            Oppstår når glohet aske smelter isbreer på toppen eller ved styrtregn. Fyller daler og begraver byer.
-          </L>
+          <L x="208" y="180" fill={C.muted} size={11}>Aske og vann i en dal.</L>
+          <L x="208" y="196" fill={C.muted} size={11}>Kan komme fra smeltet</L>
+          <L x="208" y="212" fill={C.muted} size={11}>is eller fra regn.</L>
           <rect x="205" y="270" width="135" height="85" rx="6" fill="#242116" />
           <L x="212" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="212" y="310" fill={C.fg} size={10}>Armero 1985 (Nevado del Ruiz,</L>
-          <L x="212" y="326" fill={C.fg} size={10}>23 000 begravet i gjørme)</L>
+          <L x="212" y="310" fill={C.fg} size={10}>Armero 1985. Over</L>
+          <L x="212" y="326" fill={C.fg} size={10}>23 000 mistet livet.</L>
 
           {/* FARE 3: Askenedfall */}
           <rect x="365" y="30" width="155" height="340" rx="8" fill="#14181f" stroke={C.rain} strokeWidth="1.6" />
@@ -624,11 +624,11 @@ export function VolcanicHazardsDiagram() {
           <L x="442" y="95" fill="#93c5fd" size={24} anchor="middle">🌋</L>
           <L x="378" y="130" fill={C.fg} size={12} weight={700}>Rekkevidde:</L>
           <L x="455" y="130" fill={C.rain} size={12}>10–2000 km</L>
-          <L x="378" y="152" fill={C.fg} size={12} weight={700}>Tung masse:</L>
+          <L x="378" y="152" fill={C.fg} size={12} weight={700}>Tetthet:</L>
           <L x="450" y="152" fill={C.rain} size={12}>1000–1500 kg/m³</L>
-          <L x="378" y="180" fill={C.muted} size={11}>
-            Finmalt glass og stein som ødelegger flymotorer, kollapser hustak, forurenser drikkevann og kveler lunger.
-          </L>
+          <L x="378" y="180" fill={C.muted} size={11}>Fin aske og stein.</L>
+          <L x="378" y="196" fill={C.muted} size={11}>Kan skade flymotorer</L>
+          <L x="378" y="212" fill={C.muted} size={11}>og tynge ned tak.</L>
           <rect x="375" y="270" width="135" height="85" rx="6" fill="#19232c" />
           <L x="382" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
           <L x="382" y="310" fill={C.fg} size={10}>Eyjafjallajökull 2010</L>
@@ -645,13 +645,14 @@ export function VolcanicHazardsDiagram() {
           <L x="600" y="130" fill={C.warm} size={12}>CO₂, SO₂, HF, H₂S</L>
           <L x="548" y="152" fill={C.fg} size={12} weight={700}>Virkning:</L>
           <L x="600" y="152" fill={C.warm} size={12}>Kvelning / syre</L>
-          <L x="548" y="180" fill={C.muted} size={11}>
-            CO₂ er tyngre enn luft og samler seg i groper. SO₂ og HF gir sur nedbør og fluorforgiftning av beitedyr.
-          </L>
+          <L x="548" y="180" fill={C.muted} size={11}>CO₂ er tyngre enn luft</L>
+          <L x="548" y="196" fill={C.muted} size={11}>og samler seg i groper.</L>
+          <L x="548" y="212" fill={C.muted} size={11}>SO₂ gir sur nedbør.</L>
           <rect x="545" y="270" width="135" height="85" rx="6" fill="#252418" />
           <L x="552" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="552" y="310" fill={C.fg} size={10}>Laki 1783 (Island, 80 % sau</L>
-          <L x="552" y="326" fill={C.fg} size={10}>og 20 % befolkning døde)</L>
+          <L x="552" y="308" fill={C.fg} size={10}>Laki 1783</L>
+          <L x="552" y="322" fill={C.fg} size={10}>80 % av sauene og</L>
+          <L x="552" y="336" fill={C.fg} size={10}>20 % av befolkningen</L>
 
           {/* FARE 5: Tsunami & Vinter */}
           <rect x="705" y="30" width="155" height="340" rx="8" fill="#131b20" stroke={C.teal} strokeWidth="1.6" />
@@ -660,13 +661,13 @@ export function VolcanicHazardsDiagram() {
             5. Tsunami & Vinter
           </L>
           <L x="782" y="95" fill="#67e8f9" size={24} anchor="middle">❄️</L>
-          <L x="718" y="130" fill={C.fg} size={12} weight={700}>Global effekt:</L>
-          <L x="795" y="130" fill={C.teal} size={12}>-1 til -3 °C</L>
-          <L x="718" y="152" fill={C.fg} size={12} weight={700}>Tsunamibølger:</L>
-          <L x="805" y="152" fill={C.teal} size={12}>opptil 40 m</L>
-          <L x="718" y="180" fill={C.muted} size={11}>
-            Kalderakollaps i havet utløser megatsunami. Svovel-aerosoler i stratosfæren gir global hungersnød.
-          </L>
+          <L x="718" y="130" fill={C.fg} size={12} weight={700}>Klima:</L>
+          <L x="768" y="130" fill={C.teal} size={12}>SO₂ kan kjøle</L>
+          <L x="718" y="152" fill={C.fg} size={12} weight={700}>Tsunami:</L>
+          <L x="778" y="152" fill={C.teal} size={12}>kalderakollaps</L>
+          <L x="718" y="180" fill={C.muted} size={11}>Svovel høyt oppe kan</L>
+          <L x="718" y="196" fill={C.muted} size={11}>kjøle klimaet. Kollaps</L>
+          <L x="718" y="212" fill={C.muted} size={11}>i havet kan gi tsunami.</L>
           <rect x="715" y="270" width="135" height="85" rx="6" fill="#17262f" />
           <L x="722" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
           <L x="722" y="310" fill={C.fg} size={10}>Tambora 1815 ("Året uten</L>

@@ -1,4 +1,4 @@
-import { Children, isValidElement } from "react";
+import { Children, isValidElement, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PhotoFigure } from "@/components/photo-figure";
@@ -11,7 +11,16 @@ import { cn } from "@/lib/utils";
  * site's typographic voice. Used both for the published post and for the live
  * editor preview, so what you type is what you get.
  */
-export function Markdown({ children, className }: { children: string; className?: string }) {
+export function Markdown({
+  children,
+  className,
+  scrollTables = false,
+}: {
+  children: string;
+  className?: string;
+  /** Wrap tables so only this chapter scrolls sideways on a narrow screen. */
+  scrollTables?: boolean;
+}) {
   return (
     <div className={cn("space-y-4 text-base leading-relaxed text-foreground/90", className)}>
       <ReactMarkdown
@@ -89,6 +98,25 @@ export function Markdown({ children, className }: { children: string; className?
             );
           },
           hr: () => <hr className="border-border" />,
+          ...(scrollTables
+            ? {
+                table: ({ children }: { children?: ReactNode }) => (
+                  <div className="max-w-full overflow-x-auto">
+                    <table className="w-max border-collapse text-left text-sm">{children}</table>
+                  </div>
+                ),
+                th: ({ children }: { children?: ReactNode }) => (
+                  <th className="whitespace-nowrap border border-border px-2 py-1 font-medium">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }: { children?: ReactNode }) => (
+                  <td className="whitespace-nowrap border border-border px-2 py-1 align-top">
+                    {children}
+                  </td>
+                ),
+              }
+            : {}),
         }}
       >
         {children}

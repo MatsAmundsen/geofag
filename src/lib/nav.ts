@@ -266,7 +266,7 @@ export const GF1_THEMES = [
     image: "/images/gf1-vulkan-jordskjelv.jpg",
     alt: "Snødekt stratovulkan med aske og gassutblåsning",
     blurb:
-      "Magmakjemi, silikatpolymerisering, eksplosivitet, utbruddstyper og intraplatevulkanisme (hotspots). Fra rolige lavafontener til plinianske katastrofeutbrudd, overvåking og vulkansk klimaeffekt.",
+      "Noen vulkaner har rolige lavastrømmer, andre har eksplosive utbrudd. Forskjellen henger sammen med silikat (SiO₂), viskositet og gass. Magmatyper, tre hovedtyper vulkaner og kalderaer, utbruddstyper, overvåking og Beerenberg.",
     status: "klar" as const,
     maal: "Gjøre rede for årsakene til vulkanisme, forklare sammenhengen mellom magmakjemi og utbruddsstil, og vurdere geofarer, overvåking og samfunnssikkerhet.",
   },

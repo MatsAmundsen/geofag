@@ -89,15 +89,24 @@ const PLATE_INJECT_RULES: InjectRule[] = [
 
 const CHAPTER_INJECT_RULES: InjectRule[] = [
   { widgets: ["VolcanoTypes"], beforeImage: "/images/geo-vulkantyper-3d.jpg" },
-  { widgets: ["CalderaFormation"], beforeHeading: "Kalderaer og supervulkaner" },
-  { widgets: ["HotspotPlume"], beforeHeading: "Anatomi av et pliniansk" },
+  {
+    widgets: ["CalderaFormation"],
+    beforeHeading: "Kalderaer",
+    require: "Eyjafjallajökull",
+  },
+  {
+    widgets: ["HotspotPlume"],
+    beforeHeading: "Hotspots",
+    require: "Eyjafjallajökull",
+  },
   {
     widgets: ["VolcanoEruptionAnatomy"],
     beforeImage: "/images/geo-pliniansk-anatomi.jpg",
   },
   {
     widgets: ["VolcanicHazards"],
-    beforeHeading: "1. Pyroklastiske tetthetsstrømmer",
+    beforeHeading: "1. Pyroklastiske strømmer",
+    require: "Eyjafjallajökull",
   },
   { widgets: ["VolcanoModel"], beforeHeading: "Norsk vulkanisme" },
   {
