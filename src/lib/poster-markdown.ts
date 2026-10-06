@@ -114,6 +114,11 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     afterHeading: "Test deg selv",
     require: "Eyjafjallajökull",
   },
+  {
+    widgets: ["QuizHoytrykk"],
+    afterHeading: "Test deg selv",
+    require: "løftingskondensasjonsnivå",
+  },
   { widgets: ["ElasticRebound"], beforeHeading: "Den seismiske syklusen" },
   {
     widgets: ["EarthquakeWavePhysics"],

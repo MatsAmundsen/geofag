@@ -97,6 +97,19 @@ describe("injectPosterWidgets", () => {
     assert.equal((injected.match(/geo-jordens-indre-lagdeling-3d\.jpg/g) ?? []).length, 1);
   });
 
+  it("places the Høytrykk quiz once and keeps it off Vulkaner", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const hoytrykk = readFileSync(join(lib, "posts/hoytrykk-lavtrykk.md"), "utf8");
+    const injected = injectPosterWidgets(hoytrykk);
+    const ids = listedWidgetIds(injected);
+    assert.equal(ids.has("QuizHoytrykk"), true);
+    assert.equal((injected.match(/QuizHoytrykk/g) ?? []).length, 1);
+    assert.equal(ids.has("QuizVulkaner"), false);
+    assert.equal(hoytrykk.includes("10 tonn"), false);
+    assert.equal(hoytrykk.includes("fuktadiabatisk"), false);
+    assert.equal(hoytrykk.includes("<"), false);
+  });
+
   it("does not put the Platetektonikk quiz into Vulkaner", () => {
     const vulkaner = readFileSync(
       join(dirname(fileURLToPath(import.meta.url)), "posts/vulkaner.md"),

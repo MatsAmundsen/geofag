@@ -51,6 +51,7 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
@@ -120,6 +121,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   VolcanoModel: () => <VolcanoModel showSeismicModes={false} />,
   QuizVulkaner: () => (
     <Quiz questions={QUIZ_VULKANER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  QuizHoytrykk: () => (
+    <Quiz questions={QUIZ_HOYTRYKK} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   ElasticRebound: () => <ElasticReboundDiagram />,
   EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,

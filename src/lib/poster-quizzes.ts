@@ -429,3 +429,61 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
       "En diskordans representerer en gammel erosjonsflate og et betydelig tidsintervall som mangler i steinens lagdelte arkiv.",
   },
 ];
+
+export const QUIZ_HOYTRYKK: QuizQuestion[] = [
+  {
+    prompt: "Et område har 1015 hPa i sentrum. Er det høytrykk eller lavtrykk?",
+    options: [
+      "Høytrykk, fordi tallet er over gjennomsnittet ved havnivå.",
+      "Det kommer an på trykket i områdene rundt.",
+      "Lavtrykk, fordi 1015 hPa alltid gir skyer.",
+    ],
+    answer: 1,
+    explain:
+      "Høytrykk og lavtrykk er relative. 1015 hPa er et lavtrykk hvis områdene rundt har høyere trykk, og et høytrykk hvis de har lavere.",
+  },
+  {
+    prompt: "Hva viser tette isobarer?",
+    options: [
+      "Høyt lufttrykk.",
+      "At luften synker.",
+      "Stor trykkgradient og sterk vind.",
+    ],
+    answer: 2,
+    explain:
+      "Tette isobarer betyr at trykket endrer seg mye over kort avstand. Det er en stor trykkgradient, og vinden blir sterk.",
+  },
+  {
+    prompt: "Hvorfor dannes det skyer når luft stiger?",
+    options: [
+      "Luften utvider seg og avkjøles til duggpunktet, og vanndampen kondenserer.",
+      "Luften får mer vanndamp i høyden.",
+      "Trykket øker og presser vanndampen sammen til dråper.",
+    ],
+    answer: 0,
+    explain:
+      "Når luft stiger, utvider den seg og avkjøles. Ved duggpunktet er den mettet, og vanndampen kondenserer til skydråper.",
+  },
+  {
+    prompt: "Hvorfor forsvinner skyene i et høytrykk?",
+    options: [
+      "Vinden blåser skyene bort.",
+      "Synkende luft varmes opp, den relative fuktigheten faller, og dråpene fordamper.",
+      "Dråpene fryser og faller ned.",
+    ],
+    answer: 1,
+    explain:
+      "I et høytrykk synker luften og varmes opp. Den relative fuktigheten faller, og skydråpene fordamper.",
+  },
+  {
+    prompt: "Hvorfor kan vinterhøytrykk gi forurensning i dalbunner?",
+    options: [
+      "Høytrykk trekker røyk ned fra høyden.",
+      "Det blåser mer i dalbunnen om vinteren.",
+      "Kald, tung luft blir liggende under et mildere lag (bakkeinversjon), og luften sirkulerer lite.",
+    ],
+    answer: 2,
+    explain:
+      "Under et vinterhøytrykk kan kald, tung luft bli liggende i dalbunnen under et mildere lag. Luften sirkulerer lite, og forurensning blir liggende.",
+  },
+];

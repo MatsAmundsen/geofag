@@ -545,12 +545,6 @@ export const KILDER = {
       href: "https://www.noaa.gov/jetstream/atmosphere/layers-of-atmosphere",
     },
     {
-      prefix: "Sivle, A. (2009, 31. august). ",
-      italic: "Værkart og fronter",
-      suffix: ".",
-      href: "https://www.yr.no/artikkel/vaerkart-og-fronter-1.6750800",
-    },
-    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Høytrykk",
       suffix: ".",
@@ -561,24 +555,6 @@ export const KILDER = {
       italic: "Lavtrykk",
       suffix: ".",
       href: "https://snl.no/lavtrykk",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
-      italic: "The sea breeze",
-      suffix: ".",
-      href: "https://www.noaa.gov/jetstream/ocean/sea-breeze",
-    },
-    {
-      prefix: "Store norske leksikon. (u.å.-c). ",
-      italic: "Orografisk nedbør",
-      suffix: ".",
-      href: "https://snl.no/orografisk_nedb%C3%B8r",
-    },
-    {
-      prefix: "Store norske leksikon. (u.å.-d). ",
-      italic: "Regnskygge",
-      suffix: ".",
-      href: "https://snl.no/regnskygge",
     },
   ],
   vindsystemet: [

@@ -41,6 +41,11 @@ export function Markdown({
               {children}
             </h3>
           ),
+          h4: ({ children }) => (
+            <h4 className="mt-4 font-display text-lg font-medium tracking-tight text-foreground">
+              {children}
+            </h4>
+          ),
           p: ({ children }) => {
             const visible = Children.toArray(children).filter(
               (child) => !(typeof child === "string" && !child.trim()),
