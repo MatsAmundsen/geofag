@@ -57,7 +57,7 @@ const PLATE_INJECT_RULES: InjectRule[] = [
     widgets: ["Solidus", "DecompressionMelting", "QuizMelting"],
     beforeHeading: "Plategrensene: Tre relative bevegelser",
   },
-  { widgets: ["BoundaryOverview"], beforeHeading: "1. Divergerende grenser" },
+  { widgets: ["BoundaryOverview"], beforeHeading: "1. Divergerende" },
   {
     widgets: ["ContinentalRift"],
     beforeImage: "/images/geo-midthavsrygg-hydrotermal.jpg",

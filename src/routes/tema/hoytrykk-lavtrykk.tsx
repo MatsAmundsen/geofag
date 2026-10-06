@@ -20,6 +20,10 @@ import { topicHead } from "@/lib/seo";
 const tema = GF2_THEMES.find((t) => t.to === "/tema/hoytrykk-lavtrykk")!;
 
 export const Route = createFileRoute("/tema/hoytrykk-lavtrykk")({
+  loader: async () => {
+    const { loadChapterPost } = await import("@/lib/chapter-posts");
+    return { post: await loadChapterPost("hoytrykk-lavtrykk") };
+  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 2`,
@@ -30,6 +34,7 @@ export const Route = createFileRoute("/tema/hoytrykk-lavtrykk")({
 });
 
 function TrykkPage() {
+  const { post } = Route.useLoaderData();
   return (
     <TopicLayout
       kicker="Atmosfæren"
@@ -39,6 +44,9 @@ function TrykkPage() {
       bannerAlt="Kyst i to slags vær: storm og lavtrykk til venstre, klar himmel og høytrykk til høyre"
       next={{ to: "/tema/vindsystemet", label: "Neste: Vindsystemet" }}
       kilder={KILDER.trykk}
+      posterSlug="hoytrykk-lavtrykk"
+      post={post}
+      bodyMode="poster"
     >
       {/* 1. LUFTTRYKK */}
       <h2 className="font-display text-2xl font-medium tracking-tight">

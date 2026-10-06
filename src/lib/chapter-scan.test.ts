@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   collapseWhitespace,
+  omitRelocatedPlatetektonikkSections,
   prepareChapterScan,
   reconstructChapterMarkdown,
   slugifyHeading,
@@ -52,19 +53,22 @@ describe("splitChapterByH2", () => {
       doc.sections.map((section) => section.title),
       [
         "Platetektonikk",
-        "Oppdagelsen og bevisene: Fra Wegeners puslespill til den magnetiske «båndopptakeren»",
-        "Hva driver platene? Slab pull, ridge push og gravitasjonell fysikk",
+        "Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»",
+        "Platedrift og plategrenser: hva er det som driver platene?",
         "Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer",
         "Plategrensene: Tre relative bevegelser, seks geologiske miljøer",
+        "Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde",
+        "Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag",
         "Interaktiv geodynamisk modell: Utforsk plategrensene",
-        "Wilsonsyklusen: Havbassengenes liv og død",
+        "Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp",
+        "Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi",
         "Sentralt fagvokabular",
         "Test deg selv",
       ],
     );
     assert.equal(doc.sections[0]?.label, "Jordens indre");
     assert.equal(doc.sections[4]?.label, "Plategrenser");
-    assert.equal(doc.sections[5]?.label, "Modell");
+    assert.equal(doc.sections[7]?.label, "Modell");
     assert.deepEqual(
       doc.sections.map((section) => section.label),
       [
@@ -73,8 +77,11 @@ describe("splitChapterByH2", () => {
         "Drivkrefter",
         "Smelting",
         "Plategrenser",
+        "Wadati-Benioff",
+        "Ofiolittkomplekset",
         "Modell",
         "Wilsonsyklus",
+        "Norge i et platetektonisk lys",
         "Begreper",
         "Quiz",
       ],
@@ -97,10 +104,12 @@ describe("prepareChapterScan", () => {
     }
     assert.match(doc.sections[0]?.markdown ?? "", /EarthLayers/);
     assert.match(doc.sections[0]?.markdown ?? "", /geo-jordens-indre-lagdeling-3d\.jpg/);
-    assert.match(doc.sections[5]?.markdown ?? "", /PlateTectonicsModel/);
+    const model = doc.sections.find((section) => section.markdown.includes("PlateTectonicsModel"));
+    assert.ok(model, "PlateTectonicsModel is injected with the plate chapter");
+    const shown = omitRelocatedPlatetektonikkSections(stripChapterEditorNotice(chapterMarkdown));
     assert.equal(
       collapseWhitespace(reconstructChapterMarkdown(doc)),
-      collapseWhitespace(injectPosterWidgets(stripChapterEditorNotice(chapterMarkdown))),
+      collapseWhitespace(injectPosterWidgets(shown)),
     );
   });
 
@@ -177,10 +186,8 @@ describe("scan chips for the other geosfære chapters", () => {
         "Motor",
         "Magmakjemi",
         "Vulkantyper",
-        "Hotspots",
         "Pliniansk",
         "Farer",
-        "Modell",
         "Jan Mayen",
         "Begreper",
         "Quiz",

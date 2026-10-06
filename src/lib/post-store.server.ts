@@ -435,6 +435,25 @@ export async function getPostStore(): Promise<Store> {
   }
 }
 
+/** One-shot write of the three poster bodies Mats saved before they were overwritten. */
+const SAVED_POSTER_RESTORE = "saved-poster-restore-2026-10-06";
+const SAVED_POSTER_SLUGS = ["platetektonikk", "vulkaner", "hoytrykk-lavtrykk"] as const;
+
+async function restoreSavedPosters(store: Store): Promise<void> {
+  if (await store.getMeta(SAVED_POSTER_RESTORE)) return;
+  for (const slug of SAVED_POSTER_SLUGS) {
+    const seed = CHAPTER_POST_SEEDS.find((row) => row.slug === slug);
+    if (!seed) continue;
+    const existing = await store.get(slug);
+    if (existing?.bodyMarkdown === seed.bodyMarkdown) continue;
+    await store.save({
+      ...toPostInput(seed),
+      published: existing?.published ?? 1,
+    });
+  }
+  await store.setMeta(SAVED_POSTER_RESTORE, "1");
+}
+
 async function ensureChapterSeeds(store: Store): Promise<void> {
   try {
     for (const seed of CHAPTER_POST_SEEDS) {
@@ -449,6 +468,9 @@ async function ensureChapterSeeds(store: Store): Promise<void> {
           published: post.published ?? 1,
         });
       }
+    }
+    if (store.persist === "do" || store.persist === "d1") {
+      await restoreSavedPosters(store);
     }
   } catch (err) {
     console.error("[posts] chapter seed failed", err);

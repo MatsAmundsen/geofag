@@ -66,7 +66,7 @@ function PlatetektonikkPage() {
       kilder={KILDER.platetektonikk}
       posterSlug="platetektonikk"
       post={post}
-      bodyMode="coded"
+      bodyMode="poster"
     >
       <Callout title="Kompetansemål i LK20 (Geofag 1)">
         <p>

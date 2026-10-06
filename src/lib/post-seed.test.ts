@@ -43,6 +43,7 @@ describe("isShortPlatetektonikkBody", () => {
     assert.match(chapterMarkdown, /Wilsonsyklusen/);
     assert.match(chapterMarkdown, /Leka/);
     assert.match(chapterMarkdown, /Sentralt fagvokabular/);
+    assert.match(chapterMarkdown, /Slab pull \(platetrekk\) står for opptil 90%/);
     assert.equal(isShortPlatetektonikkBody(chapterMarkdown), false);
   });
 });

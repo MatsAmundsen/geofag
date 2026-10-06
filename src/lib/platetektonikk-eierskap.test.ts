@@ -56,12 +56,14 @@ describe("platetektonikk chapter ownership", () => {
     assert.doesNotMatch(model, /670 km/);
   });
 
-  it("points seismicity and ofiolitt to the owner chapters", () => {
+  it("keeps the saved poster sections on seismicity, ofiolitt and Norway", () => {
     const post = read("src/lib/platetektonikk-post.md");
     const eierskap = read("src/lib/gemini-by-path.ts");
 
-    assert.match(post, /\/geofag-1\/jordskjelv/);
-    assert.match(post, /\/geofag-1\/norges-geologi/);
+    assert.match(post, /Wadati-Benioff/);
+    assert.match(post, /Ofiolittkomplekset/);
+    assert.match(post, /Leka/);
+    assert.match(post, /Norge i et platetektonisk lys/);
     assert.match(eierskap, /Jordskjelv eier seismisitet, bølger og Wadati-Benioff/);
     assert.match(eierskap, /Norges geologi eier Leka-ofiolitten/);
   });

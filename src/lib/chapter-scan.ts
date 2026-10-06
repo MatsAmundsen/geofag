@@ -79,7 +79,7 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Havbassengenes liv og død over 400–600 millioner år",
   },
   {
-    match: /termiske motor/i,
+    match: /termiske motor|indre motor/i,
     label: "Motor",
     subtitle: "Primordial varme, radiogen varme og vulkanisme som ventil",
   },

@@ -10,21 +10,47 @@
 >
 > • *Geofarer og samfunnssikkerhet:* Pyroklastiske strømmer (PDC), laharer, vulkansk aske i luftfart, vulkansk vinter og tidlig varsling.
 
-## Jordens indre termiske motor og dynamiske overflate
+## Jordens indre motor og dynamiske overflate
 
-Vår planet er en termisk varmemaskin. Dypt inne i mantelen og kjernen opprettholdes temperaturer på flere tusen grader celsius gjennom to fundamentale kilder: primordial varme (restvarme fra jordens akkresjon og differensiering for 4,54 milliarder år siden) og radiogen varme fra radioaktiv spalting av ustabile isotoper (særlig uran-238, uran-235, thorium-232 og kalium-40). Denne enorme varmen kan ikke overføres til verdensrommet gjennom ren varmeledning alene; i stedet drives langsomme konveksjonsstrømmer i astenosfæren og den dype mantelen.
+Vår planet er en termisk varmemaskin. Dypt inne i mantelen og kjernen opprettholdes temperaturer på flere tusen grader celsius gjennom to fundamentale kilder: primordial varme (restvarme fra jordens dannelse for 4,54 milliarder år siden) og varme fra radioaktiv spalting av ustabile isotoper (særlig uran-238, uran-235, thorium-232 og kalium-40). 
+Denne varmen kan fra kjernen, fordeler seg utover og setter i gang saktegående konveksjonsstrømmer i astenosfæren og i den dype mantelen . 
+I noen områder på kloden kommer denne varmen opp til overflaten, i riftssoner, kollisjonssoner og hotspots, og det er her vi får vulkanisme. 
+Hvis jordens indre er en termisk varmemaskin, vil vulkanismen være selve ventialsjonssystemet.
 
-På overflaten flyter litosfæreplatene oppå denne seige mantelen. Der platene glir fra hverandre, kolliderer eller skjærer forbi hverandre, konsentreres smelting og magmatisme. Vulkanisme er selve ventilasjonssystemet: oppstigning og utbrudd av smeltet stein (magma), faste krystaller og oppløste flyktige gasser fra mantelen eller skorpen til jordoverflaten.
+For å forstå hvorfor enkelte vulkaner spyr ut lavabekker mens andre eksploderer med global slagkraft, må vi dykke ned i magmaens underliggende fysikk og kjemiske oppbygning.
 
-For å forstå hvorfor enkelte vulkaner spyr ut fredelige lavabekker mens andre eksploderer med global slagkraft, må vi dykke ned i magmaens underliggende fysikk og kjemiske oppbygning.
+## Magmakjemi, silikatinnhold (SiO₂) og viskositet: 
 
-## Magmakjemi, silikatinnhold (SiO₂) og viskositet: Nøkkelen til eksplosivitet
 
 Hva avgjør om et vulkanutbrudd blir en rolig strøm av flytende stein (effusivt) eller en altødeleggende eksplosjon som mørklegger himmelen i månedsvis? Svaret ligger i to sammenkoblede faktorer: **magmaens viskositet** og dens **innhold av oppløste gasser**.
 
 ### Silikatpolymerisering og væskens indre friksjon
 
-Viskositet er et mål på en væskes motstand mot å flyte. I en silikatsmelte er det grunnleggende byggeelementet silikat-tetraederet [SiO₄]⁴⁻, der et sentralt silisiumatom er kovalent bundet til fire oksygenatomer. Når silisiuminnholdet i magmaen øker, begynner tetraedrene å dele oksygenatomer i hjørnene og danner lange, forgrenede polymerkjeder og tredimensjonale nettverk. Dette øker væskens indre friksjon kolossalt:
+Viskositet er et mål på en væskes motstand mot å flyte. Du kan tenke på det slik. Du har et bord og et glass med honning og et glass med vann: 
+ 
+- Når du heller ut glasset med honningen over bordet, vil honningen bevege seg langsomt ut av glasset og fordele seg på bordet. Her blir fordeling ujevn, der honningen tykkest der man helte ut glasset og bli gradvis mindre mot ytterkantene. 
+---
+- Når du heller ut vannet over bordet, vil vannet raskt fordele seg så langt den klarer utover bordet før den stopper. Denne bevegelsen av rask og vannlaget på bordet er så tynt som mulig.  
+
+Honningen er da væske med høy viskositet og vann er væske med lav viskositet. De samme egneskapene har magma, basert på kjemisk sammensetning kan magamen ha høy viskositet, lav viskositet eller noe midt i mellom.   
+ 
+**Magmasammensetning**
+
+Magma er opprinnelig er lettflytende og har lav viskositet. 
+Men, på sin reise opp mot overflaten, må den ofte smelte seg gjennom overliggende bergarter. Dette fører til en endring i den kjemiske sammensetningen til magmaen, og det er nettopp her vi kan få dannet magma med høyere viskositet. 
+
+I magma har vi flere forskjellige kjemiske forbindelser , der silikakt tetraedet [SiO₄]⁴⁻ er en viktig komponent når det kommer til viskositet. Når silisium (Si) øker, øker silikatet [SiO₄]⁴⁻, som gjør at magmaen får høyere viskositet. 
+Årsaken til dette, er at når silisiuminnholdet i magmaen øker, begynner silikat tetraedrene å dele oksygenatomer i hjørnene og danner lange, forgrenede polymerkjeder og tredimensjonale nettverk. Dette øker væskens indre friksjon kolossalt.
+
+Økningen av Si, skjer når magma må smelte seg gjennom tektoniske plater, spesielt når magmaen må smelte seg gjennom kontinentalplater. 
+Dette er fordi kontinentalplater (i skorpen) inneholder mye silisium, der vi har i hovedsak 2 prosesser som har bidratt til dette: 
+
+1. Kontinentalskorpen har blitt til gjennom omsmelting av basaltiske bergarter. Her vil da silisum bli smeltet raskt ut når magma smelter seg igjennom. Dette øker da konsentrasjonene på silisum når magmaen kommer til overflaten. Denne prosessen har skjedd gjentatte ganger på våre kontinentalplater. 
+
+2. Forvitring av bergarter feller ut silisum, som f.eks kvarts (SiO₂), når disse løsmassene blir omdannet til sedimentære bergarter, får vi bergarter med høyt silisium innhold 
+    
+---
+******Magmatyper******
 
 | Magmatype | SiO₂-innhold | Temperatur | Viskositet (Pa·s) | Utbruddsstil | Typisk miljø |
 | --- | --- | --- | --- | --- | --- |
@@ -91,20 +117,6 @@ Mange forveksler et vulkankrater med en *kaldera*. Et krater er en utblåsnings�
 Kalderaer spenner fra få kilometer i diameter (som Crater Lake i Oregon etter Mazamas utbrudd for 7700 år siden, eller Santorini i Hellas ca. 1600 f.Kr.) til titalls kilometer brede strukturer (som Toba på Sumatra og Yellowstone i USA). Slike gigantiske utbrudd klassifiseres ofte som supervulkaner (VEI 8) og har potensial til å endre jordens biosfære og klima fundamentalt.
 
 **Kaldera:** En stor, sirkulær innsynkningsfordypning i jordskorpen (ofte 5–50 km bred) som oppstår når taket over et delvis tømt magmakammer kollapser.
-
-## Intraplatevulkanisme: Hotspots og dype mantelplymer
-
-Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest massive vulkanske strukturer – som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater, tusenvis av kilometer fra nærmeste midthavsrygg eller subduksjonssone.
-
-I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære **«hotspots»** (varmeflekker) dypt i mantelen. Senere påviste Jason Morgan at hotspots er overflateuttrykket for **mantelplymer**: smale søyler av overopphetet bergart som stiger helt fra **D''-laget (kjerne-mantel-grensen på 2900 km dyp)**.
-
-Fordi mantelplymen er forankret så dypt nede ved jordkjernen, står den tilnærmet i ro over titalls millioner år. Mens litosfæreplaten glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
-
-- **Hawaii-Emperor-ryggen:** Den aktive vulkanismen (Kilauea og Mauna Loa) ligger rett over hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene: Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
-- **Den berømte 47 Ma-knekken:** For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått endret bevegelsesretning!
-- **Island – en unik kombinasjon:** Island er spesiell fordi en kraftig mantelplym ligger nøyaktig under Den midtatlantiske ryggen. Kombinasjonen av dekompresjonssmelting fra ryggspredningen og ekstraordinær termisk oppvarming fra plymen har produsert så enorme mengder basalt at skorpen her er over 35–40 km tykk, og rager høyt over havoverflaten.
-
-**Hotspot (varmeflekk):** Et vulkansk område på jordoverflaten som mates av en oppstigende mantelplym fra jordens dype mantel (D''-laget). Hotspoten står tilnærmet i ro mens litosfæreplaten glir forbi, noe som danner en rekke av vulkanske øyer med økende alder.
 
 ## Anatomi av et pliniansk utbrudd: Fra fragmentering til paraplysky
 
@@ -217,10 +229,6 @@ Da vulkanen Tambora i Indonesia eksploderte i april 1815 (det største utbruddet
 **Lahar:** Vulkansk slamstrøm som oppstår når aske blandes med smeltevann fra breer eller kraftig regn. Har tyngde som våt betong og begraver dalbunner.
 
 **Vulkansk vinter:** Global nedkjøling forårsaket av mikroskopiske svovelsyreaerosoler i stratosfæren som reflekterer solstråling etter store, eksplosive utbrudd.
-
-## Interaktiv modell: Utforsk vulkaner
-
-Bruk simulatoren under til å eksperimentere med magmakjemi, utbruddsstil og seismiske forvarsler.
 
 ## Norsk vulkanisme: Jan Mayen og Beerenberg
 

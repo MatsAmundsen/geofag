@@ -56,7 +56,7 @@ function VulkanerPage() {
       kilder={KILDER.vulkaner}
       posterSlug="vulkaner"
       post={post}
-      bodyMode="coded"
+      bodyMode="poster"
     >
       <Callout title="Kompetansemål i Geofag 1 (LK20)">
         <p>{tema.maal}</p>
