@@ -23,7 +23,7 @@ export const EARTH_LAYERS_PHOTO_SRC = "/images/geo-jordens-indre-lagdeling-3d.jp
 
 const EARTH_LAYERS_PHOTO_MD = `![Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater](${EARTH_LAYERS_PHOTO_SRC})`;
 
-const EARTH_LAYERS_SECTION_HEADING = /^#{3,6}[^\n]*Inndeling av jorden indre[^\n]*$/m;
+const EARTH_LAYERS_SECTION_HEADING = /^#{3,6}[^\n]*Inndeling av jord(?:en|as) indre[^\n]*$/m;
 
 export const POSTER_PHOTO_SRCS = [
   EARTH_LAYERS_PHOTO_SRC,
@@ -215,7 +215,7 @@ export function stripCatalogImageCaptions(markdown: string): string {
   let out = markdown;
   for (const src of POSTER_PHOTO_SRCS) {
     const re = new RegExp(
-      `(!\\[[^\\]]*\\]\\(${escapeRegExp(src)}\\))\\s*\\n+\\*[^\\n*]+\\*\\s*`,
+      `(!\\[[^\\]]*\\]\\(${escapeRegExp(src)}\\))(?:\\s*\\n+(?:-{3,}|\\*{3,}|_{3,}))*\\s*\\n+\\*[^\\n*]+\\*\\s*`,
       "g",
     );
     out = out.replace(re, "$1\n\n");

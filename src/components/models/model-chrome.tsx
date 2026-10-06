@@ -9,6 +9,7 @@ export function ModelFrame({
   toolbar,
   stackToolbar = false,
   children,
+  stackHeader = false,
 }: {
   kicker: string;
   title: string;
@@ -17,22 +18,31 @@ export function ModelFrame({
   /** When true, the toolbar sits under the title on all widths. Other models keep the side-by-side header. */
   stackToolbar?: boolean;
   children: ReactNode;
+  /** Title and toolbar on separate rows, so a long button row cannot crush the title. */
+  stackHeader?: boolean;
 }) {
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6">
       <figcaption
         className={cn(
           "flex flex-col gap-4 border-b border-border pb-4",
-          !stackToolbar && "sm:flex-row sm:items-start sm:justify-between",
+          !(stackToolbar || stackHeader) && "sm:flex-row sm:items-start sm:justify-between",
         )}
       >
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase tracking-wider text-primary">{kicker}</p>
           <p className="mt-1 font-display text-xl font-medium tracking-tight sm:text-2xl">{title}</p>
-          <p className="mt-2 text-sm text-muted-foreground">{lead}</p>
+          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{lead}</p>
         </div>
         {toolbar ? (
-          <div className={cn("flex flex-wrap gap-2", stackToolbar ? "w-full" : "shrink-0")}>{toolbar}</div>
+          <div
+            className={cn(
+              "flex min-w-0 flex-wrap gap-2",
+              stackToolbar || stackHeader ? "w-full" : "shrink-0",
+            )}
+          >
+            {toolbar}
+          </div>
         ) : null}
       </figcaption>
       <div className="pt-5">{children}</div>

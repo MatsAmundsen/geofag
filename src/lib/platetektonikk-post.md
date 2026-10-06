@@ -1,382 +1,330 @@
 > Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.
 
-Målet for kapittelet er at eleven skal kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser dette har for jordskorpen og jordoverflaten, samt forstå hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
+I dette kapittelet skal du kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser det har for jordskorpen og jordoverflaten. Du skal også kunne forklare hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
 
 Kjerneelementer som dekkes i dette kapittelet:
 
-• Jordens indre krefter og prosesser: Litosfære, astenosfære, konveksjon og slab pull som hoveddrivkraft.
+- Jordas indre krefter og prosesser: litosfære, astenosfære, konveksjon og platetrekk (slab pull) som hoveddrivkraft.
 
-• Plategrenser og landskapsutvikling: Divergente, konvergente og transforme grenser samt Wilsonsyklusen.
+- Plategrenser og landskapsutvikling: divergerende, konvergente og transforme grenser, samt Wilsonsyklusen.
 
-• Norge i platetektonisk lys: Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og postglasial landheving.
+- Norge i platetektonisk lys: Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og landheving etter istiden.
 
-## Platetektonikk
----
+## Jordas oppbygning
 
-For å forstå platetektonikk må vi først forstå hvordan jorden er bygd opp og de ulike prosessene som skjer i jordens indre  
+For å forstå platetektonikk må vi først forstå hvordan jorda er bygd opp, og hvilke prosesser som skjer i det indre.
 
+### Inndeling av jordas indre
 
-### Inndeling av jorden indre 
-Jorden er kan deles inn i flere lag, basert på sammensetning, tetthet og egenskaper. I geofag 1, deler vi jorden inn i: skorpe, øvre mantel, nedre mantel, ytre kjerne og indre kjerne 
-#### Skorpe 
----
-Det ytterste laget til jorden kalles skorpe. Skorpen er igjen delt inn i 2 typer, havbunnsskorpe og kontinentalskorpe. Skorpene varierer i tykkelse fra 0 - 100km. Mer om detaler om dette, kan du lese under jordplater
+Jorda kan deles inn i flere lag etter sammensetning, tetthet og egenskaper. I geofag 1 deler vi jorda inn i skorpe, øvre mantel, nedre mantel, ytre kjerne og indre kjerne.
 
-#### Øvre mantel 
----
-Som vi kan se i figuren, så strekker den øvre mantelen  seg fra bunnen av jordskorpen og ned til ca. 660–700km (Tarbuck et al., 2020, s. 371). Den øvre mantelen er dominert av ultramafiske bergarter som i hovedsak består av mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44)
+#### Skorpe
 
-Den øvre mantelen kan igjen deles inn i flere deler: 
+Det ytterste laget kalles skorpe. Skorpen er av to typer: kontinentalskorpe og havbunnsskorpe. Kontinentalskorpe er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder. Havbunnsskorpe er 5–8 km tykk. Mer om bergarter og alder står under litosfæren.
+
+#### Øvre mantel
+
+Den øvre mantelen strekker seg fra bunnen av jordskorpen og ned til ca. 660–700 km (Tarbuck et al., 2020, s. 371). Den består hovedsakelig av ultramafiske bergarter, med mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44).
+
+Den øvre mantelen kan deles videre inn.
+
 #### Litosfærisk mantel (øverste faste mantel)
-Dette delen er direkte under jordskirpen og er den kalde og mekanisk stive delen (Fowler, 2005, s. 102). Bergartene her er faste og sprø, og har en tetthet på d≈3,0–3,3g/cm3. Temperaturen her ligger på rundt 1250 C
+
+Denne delen ligger rett under jordskorpen. Den er kald og mekanisk stiv (Fowler, 2005, s. 102). Bergartene er faste og sprø, med tetthet på om lag 3,0–3,3 g/cm³. Temperaturen ligger på rundt 1250 °C.
 
 #### Astenosfærisk mantel
----
 
-Under den øverste delen, har vi den Astenosfæren. Som strekker seg fra rundr 100km ned til ca 400km. Temperaturen her er ca. 1300–1400 °C.
+Under den stive delen ligger astenosfæren. Den strekker seg fra ca. 100 km til ca. 350 km dyp. Temperaturen er ca. 1300–1400 °C.
 
-På grunn av den høye temperaturen i forhold til trykket, befinner bergartene seg nær smeltepunktet. Enkelte soner har en liten brøkdel delvis oppsmeltet materiale (1–2% partiell smelte), ofte referert til som lavhastighetssonen (Low Velocity Zone, LVZ) for seismiske bølger (Lowrie & Fichtner, 2020, s. 157).
+På grunn av høy temperatur i forhold til trykket ligger bergartene nær smeltepunktet. Enkelte soner har en liten andel delvis smelte (1–2 %). Seismiske bølger går saktere der. Sonen kalles lavhastighetssonen (low velocity zone, LVZ) (Lowrie & Fichtner, 2020, s. 157).
 
-Astenosfæren er seigtflytende over millioner av år. Den fungerer som et smørelag, som gjør at de overliggende jordskorpen kan gli, samtidig som konveksjonsstrømmer her transporterer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
+Astenosfæren er seigtflytende over millioner av år. Den virker som et glidelag, slik at litosfæren over kan bevege seg. Samtidig fører konveksjonsstrømmer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
 
+#### Nedre mantel
 
-#### Nedre mantel 
----
-Nedre mantel utgjør jordas største enkeltlag etter volum (om lag 56 % av jordas volum) (Tarbuck et al., 2020, s. 368). Det voldsomme overliggende trykket hindrer bergartene i å smelte, til tross for at temperaturen øker fra ca. 1900 helt opp til 3370C (Lowrie & Fichtner, 2020, s. 160).
-Mineralogien er dominert av bridgmanitt(Mg,Fe)SiO3 og ferroperiklas (Mg,Fe)O.
-Tettheten øker gradvis som følge av det litostatiske trykket, fra 
-4,4 g/cm 3 til rundt d≈5,5g/cm3 (Fowler, 2005, s. 110).
+Nedre mantel er jordas største enkeltlag etter volum, om lag 56 % av jordas volum (Tarbuck et al., 2020, s. 368). Trykket fra lagene over hindrer bergartene i å smelte, selv om temperaturen øker fra ca. 1900 °C til 3370 °C (Lowrie & Fichtner, 2020, s. 160).
+
+Tettheten øker gradvis med trykket, fra 4,4 g/cm³ til om lag 5,5 g/cm³ (Fowler, 2005, s. 110).
 
 #### Ytre flytende kjerne
----
 
-Den ytre flytende kjerne starter på 2900km dybde og går ned til 5150km. Ved 2900 km dyp er det et radikalt materialskifte fra faste silikatbergarter til flytende metall (Fowler, 2005, s. 112).
-Her har vi flytende smelte som består av ca 85% jern, 5% nikkel og 10% av lettere grunnstoffer (svovel, silisium, oksygen) (Marshak, 2019, s. 49).
-Tettheten hopper fra 5,5 til10–11,5g/cm3 og temperaturen stiger fra ca. 3370 til rundt ∼5000C
- 
-Grunnen til at vi vet at de ytre kjernen er flytende, er seismisk bevis. Vi vet at skjærbølger kan bevege seg gjennom ulike materialer, men ikke væsker.Ved å observere at seismiske S-bølger (skjærbølger) ikke går gjennom disse områdene i jordens indre, kan vi dermed fastlå at denne delen av kjernen er flytende
+Den ytre kjernen starter på 2900 km dyp og går ned til 5150 km. Ved 2900 km skifter materialet fra fast silikatbergart til flytende metall (Fowler, 2005, s. 112). Smelten består av ca. 85 % jern, 5 % nikkel og 10 % lettere grunnstoffer (svovel, silisium og oksygen) (Marshak, 2019, s. 49). Tettheten hopper fra 5,5 til 10–11,5 g/cm³, og temperaturen stiger fra ca. 3370 °C til rundt 5000 °C.
 
-#### Indre fast kjerne 
----
-Den indre kjerne, starter på ca 5150–6371 km dybde. Dette er jordens sentrum, og er en fast metallisk kule, til tross for den ekstreme varme temperaturen, på 5000-6000 C.
-Denne temperaturen tilsvarer temperaturen på Solen, men trykket her, er så massivt at det hindrer kjerne i å smelte.  
+Den ytre kjernen er flytende. Det vet vi fordi seismiske S-bølger (skjærbølger) går gjennom fast stoff, men ikke gjennom væske. S-bølgene stopper i denne delen av kjernen.
 
-Trykket her, ligger på 3,3–3,6 millioner atmosfærer/330–360 GPa). Dette tvinger jern-nikkel-atomene inn i en fast krystallinsk heksagonal eller kubisk struktur (Fowler, 2005, s. 114).
-I kjernen, har tettheten nådd sitt maksimum på d≈12–13 g/cm3
+#### Indre fast kjerne
 
-Etterhvert som jorda langsomt avkjøles (geologisk tid), så krystalliseres den indre kjernen mer og mer. Per år, så vokser kjernen med millimetre i størrelse 
+Den indre kjernen går fra ca. 5150 km dyp til sentrum (6371 km). Den er en fast metallkule. Temperaturen er ca. 5000 °C, omtrent som på solas overflate, men trykket er så høyt at kjernen ikke smelter.
 
-(Marshak, 2019, s. 50).
+Trykket er 3,3–3,6 millioner atmosfærer (Fowler, 2005, s. 114). Det holder jern og nikkel i fast form. Tettheten er på det høyeste, om lag 12–13 g/cm³.
 
+Etter hvert som jorda avkjøles, vokser den faste indre kjernen. Den vokser med noen millimeter i året (Marshak, 2019, s. 50).
 
-### Litosfæren og  astenosfæren 
----
-I tillegg til denne laginndelingen, deler vi også jordens indre inn i sfærer: litosfæren, astenosfæren og mesosfæren (ikke pensum) 
+### Litosfæren og astenosfæren
 
+I tillegg til lagene etter kjemi deler vi jordas indre inn etter hvordan bergartene oppfører seg: litosfæren, astenosfæren og mesosfæren. Mesosfæren er ikke pensum.
 
-#### Litosfæren 
----
-Selve fundamentet for platetektonikken. En tektonisk plate er ikke bare skorpe, men litosfære: jordskorpen pluss den aller øverste, kalde og fullstendig stive delen av mantelen (litosfærisk mantel). Litosfæren strekker seg ned til 100-200 km og den oppfører seg som et sprøtt og elastisk fast stoff som brekker opp i plater.
+#### Litosfæren
 
-Litosfæren deles igjen inn i litosfæriske plater. Disse kalles kontinentalplater og havbunnsplater. 
+En tektonisk plate er ikke bare skorpe. Den er litosfære: jordskorpen pluss den øverste, kalde og stive delen av mantelen (litosfærisk mantel). Litosfæren er i snitt ca. 100 km tykk. Den er tynnest under midthavsrygger og tykkest, opptil ca. 200 km, under gamle kontinenter. Den er fast og kan brekke opp i plater.
 
-- Kontinentalplater: er de tykkeste platene vi har, vanligvis mellom 30–50 km, men opptil 70–80 km under Himalaya. Disse platene innholder ofte kontinenter og havbunn. Altså disse består av kontinentalskorpe og havbunnsskorpe. Disse platene består  hovedsakelig av bergarter med høyt innhold av silisium og aluminium (felsisk).
-Platene har relativt lav tetthet (om lag 2,7 g/cm³). Den er dermed for lett for å kunne synke dypt ned i mantelen. Dette gjør at disse type platene kan bli milliarder av år gammel.
+Samme plate kan bære både kontinentalskorpe og havbunnsskorpe.
 
-- Havbunnsplater: Er karakterisert som tynne, med bare 5–8 km tykkelse. De består ofte av mafiske magmatiske bergarter som basat, gabbro, diabas og dolerit. Disse bergartene har et høyt innhold av jern og magnesium. Denne sammensetningen gjør at disse platene har en høy tetthet (om lag 3,0 g/cm³). Denne tettheten gjør det mulig for havbunnsplater å synke ned i mantelen ved konvergerende plategrenser. 
+**Kontinentalskorpe** er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder som Himalaya. Den består hovedsakelig av bergarter med mye silisium og aluminium (felsiske bergarter). Tettheten er relativt lav, om lag 2,7 g/cm³. Skorpen er for lett til å synke dypt ned i mantelen. Derfor kan kontinentalskorpe bli svært gammel, flere milliarder år.
 
-Divergerende plategrenser (ofte midthavsrygger) danner kontinuerlig ny havbunnsplate og i konvergerende plategrenser, synker havbunnsplater ned i mantelen. Dette gjør at disse type platene blir sjelden eldre enn ca. 180–200 millioner år.)
+**Havbunnsskorpe** er tynn, bare 5–8 km. Den består av mafiske magmatiske bergarter som basalt, gabbro, diabas og doleritt. Disse har mye jern og magnesium. Tettheten er høyere, om lag 3,0 g/cm³. Derfor kan havbunnslitosfære synke ned i mantelen ved konvergerende plategrenser.
+
+Ny havbunn dannes ved divergerende plategrenser, ofte midthavsrygger. Ved konvergerende grenser synker havbunnslitosfæren ned i mantelen. Derfor blir havbunn sjelden eldre enn ca. 180–200 millioner år.
 
 #### Astenosfæren (ca. 100–350 km)
----
-Det seige underlaget som litosfæreplatene glir oppå. Astenosfæren består av fast silikatbergart (peridotitt. Temperaturen i dette området er nær bergartens smeltepunkt (om lag 1300–1400 °C). Dette gjør at bergartene mister krystallgitteret sin stivhet og blir plastisk. 
-Begrepet plastisk, betyr at bergartene (i dette tilfellet) får kan oppføre seg som flytende, men den beholder sin faste form.
 
-Over geologiske tidsskalaer på millioner av år deformeres astenosfæren plastisk og duktilt med en enorm viskositet på om lag 10¹⁹–10²¹ Pa·s. Litosfæreplatene kan dermed gli over astenosfæren. 
+Astenosfæren er det seige laget litosfæren glir på. Den består av fast silikatbergart (peridotitt). Temperaturen er nær smeltepunktet, ca. 1300–1400 °C. Bergartene kan derfor endre form, men de er fortsatt faste. Det kalles plastisk: bergarten beholder fast form, men kan deformeres over lang tid.
 
+Over millioner av år deformeres astenosfæren seigt. Litosfæreplatene kan gli oppå den.
 
 ## Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
 
-I dag tar vi platetektonikken som en selvfølge, men fram til midten av 1960-tallet var ideen om bevegelige kontinenter regnet som ren villfarelse blant de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
+I dag er platetektonikk den samlende forklaringen på hvordan jordskorpen beveger seg. Fram til midten av 1960-tallet ble ideen om bevegelige kontinenter likevel avvist av de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
 
 ### Alfred Wegener og kontinentaldrift (1912)
 
-Den tyske meteorologen og geofysikeren Alfred Wegener la i 1912 fram teorien om kontinentaldrift (Wegener, 1912). Han observerte at kontinentene på hver side av Atlanterhavet passet sammen som brikker i et puslespill, særlig kystlinjene til Sør-Amerika og Afrika. 
+Den tyske meteorologen og geofysikeren Alfred Wegener la i 1912 fram teorien om kontinentaldrift (Wegener, 1912). Han observerte at kontinentene på hver side av Atlanterhavet passet sammen som brikker i et puslespill, særlig kystlinjene til Sør-Amerika og Afrika.
 
-Wegener samlet inn mengder av bevis: 
+Wegener samlet inn flere typer bevis.
 
-**Fossilfunn** 
- 
-Fossiler av ferskvannsreptilet Mesosaurus og den bregnelignende planten Glossopteris ble funnet i identiske berglag i både Brasil og Sør-Afrika. Disse organismene kunne umulig ha krysset et tusenvis av kilometer bredt, salt verdenshav.
+**Fossilfunn**
+
+Fossiler av ferskvannsreptilet Mesosaurus og den bregnelignende planten Glossopteris ble funnet i identiske berglag i både Brasil og Sør-Afrika. Disse organismene kunne ikke ha krysset et salt verdenshav som var tusenvis av kilometer bredt.
 
 **Matchende fjellkjeder og bergarter**
 
-Fjellkjedene i Nord-Amerika (Appalachene) har samme  alder, bergartstype og foldestruktur med Kaledonidene i Norge, Skottland og Grønland.
+Fjellkjedene i Nord-Amerika (Appalachene) har samme alder, bergartstype og foldestruktur som Kaledonidene i Norge, Skottland og Grønland.
 
 **Paleoklimatiske spor**
 
-Spor etter istidsbreer (skuringsstriper og moreneavsetninger) fra samme tidsperiode (perm-karbon) ble funnet i tropiske strøk i India, Australia, Sør-Amerika og Afrika.
+Spor etter istidsbreer (skuringsstriper og moreneavsetninger) fra samme tidsperiode (perm–karbon) ble funnet i det som i dag er tropiske strøk i India, Australia, Sør-Amerika og Afrika.
 
-**kontinentaldrift**
+Wegener hadde ikke en holdbar forklaring på hvordan kontinentene beveget seg. Han foreslo at kontinentene pløyde gjennom havbunnen som isbrytere, drevet av tidevannskrefter og jordrotasjonens sentrifugalkraft.
 
-Wegener hadde ikke noen klare bevis for hvordan kontinentene beveget seg, men ha foreslo at kontinentene pløyde gjennom havbunnen som isbrytere, drevet av tidevannskrefter og jordrotasjonens sentrifugalkraft.  
+Ut fra funnene konkluderte han med at alle landmassene en gang hadde vært samlet i ett superkontinent, Pangea (gresk for «alt land»). Bevisene for at kontinentene hadde hengt sammen, var godt dokumentert. Likevel ble teorien avvist. Wegener manglet en fysisk drivmekanisme som fysikerne kunne godta. Forslaget hans ble raskt motbevist, og teorien om kontinentaldrift ble avvist.
 
-Basert på disse funnene, konkluderte Wegener med at alle landmassene en gang hadde vært samlet i ett gigantisk superkontinent, Pangea (gresk for «alt land»). 
-Til tross for sine godt dokumenterte bevis ble teorien hans avvist av fagmiljøet. Dette var på grunn av at han ikke hadde bevis for den fysisk drivmekanisme til kontinentene. Hans forslag ble rask motbevist av fysikere og teorien hans om platedrift ble blankt avvist 
+### Marie Tharp og kartleggingen av havbunnen (1950-tallet)
 
-
-
->**Marie Tharp og kartleggingen av havbunnen (1950-tallet)**
-
-Det store vendepunktet kom etter andre verdenskrig. Under den kalde krigen kartla den amerikanske geologen og oseanografen Marie Tharp sammen med Bruce Heezen havbunnen ved hjelp av millioner av ekkoloddprofiler. Tharp oppdaget en kontinuerlig, 65 000 km lang undersjøisk fjellkjede – Den midtatlantiske ryggen – og identifiserte en dyp innsynkningsdal (riftdal) midt langs ryggens akse. Dette var det fysiske beviset på at havbunnen holdt på å revne.
+Vendepunktet kom etter andre verdenskrig. Under den kalde krigen kartla den amerikanske geologen og oseanografen Marie Tharp sammen med Bruce Heezen havbunnen ved hjelp av millioner av ekkoloddprofiler. Tharp oppdaget en sammenhengende, 65 000 km lang undersjøisk fjellkjede, Den midtatlantiske ryggen, og en dyp riftdal midt langs ryggens akse. Det var et fysisk tegn på at havbunnen sprakk opp.
 
 ### Harry Hess og havbunnsspredning (1962)
 
-I 1962 koblet geologiprofessor og marineoffiser Harry Hess trådene sammen i en banebrytende artikkel: «History of Ocean Basins» (Hess, 1962). Hess foreslo at mantelen har langsomme konveksjonsstrømmer. Varm mantel stiger opp under midthavsryggene, der det kontinuerlig dannes ny havbunnsskorpe. Havbunnen beveger seg deretter som et gigantisk samlebånd vekk fra ryggen, før den til slutt avkjøles, blir tung og synker ned i dype havgroper (subduksjon). Kontinentene «pløyer» ikke gjennom havbunnen, men sitter fast i samme litosfæreplate og følger passivt med.
+I 1962 koblet geologiprofessor og marineoffiser Harry Hess observasjonene i artikkelen «History of Ocean Basins» (Hess, 1962). Hess foreslo at mantelen har langsomme konveksjonsstrømmer. Varm mantel stiger opp under midthavsryggene, der det dannes ny havbunnsskorpe. Havbunnen beveger seg deretter som et samlebånd vekk fra ryggen, før den avkjøles, blir tung og synker ned i dype havgroper (subduksjon). Kontinentene pløyer ikke gjennom havbunnen. De sitter fast i samme litosfæreplate og følger med.
 
-### Det ubestridelige beviset: Den magnetiske «båndopptakeren» (1963)
+### Den magnetiske «båndopptakeren» (1963)
 
-Året etter leverte Fred Vine og Drummond Matthews (1963) det endelige empiriske beviset med sin berømte hypotese (Vine & Matthews, 1963):
+Året etter la Fred Vine og Drummond Matthews (1963) fram en hypotese som kunne testes (Vine & Matthews, 1963).
 
-Når basaltisk lava veller opp i midthavsryggen og størkner under Curie-temperaturen (ca. 580 °C for jernoksidet magnetitt), magnetiseres mineralene parallelt med jordens eksisterende magnetfelt. Jordens magnetfelt er ikke statisk; med ujevne mellomrom på noen hundre tusen til millioner av år bytter magnetpolene plass (geomagnetisk reversering).
+Når basaltisk lava kommer opp i midthavsryggen og størkner under Curie-temperaturen (ca. 580 °C for jernoksidet magnetitt), magnetiseres mineralene parallelt med jordas magnetfelt slik det er da. Magnetfeltet er ikke fast. Med ujevne mellomrom, fra noen hundre tusen år til millioner av år, bytter magnetpolene plass (geomagnetisk reversering).
 
-Når havbunnen sprer seg kontinuerlig til begge sider, fryser havbunnsskorpen inn et symmetrisk mønster av striper med normal magnetisering (feltet peker nordover som i dag) og reversert magnetisering (feltet pekte sørover). Da forskerne seilte over Atlanteren med magnetometre på slep, oppdaget de at det magnetiske mønsteret på østsiden av Den midtatlantiske ryggen var et nøyaktig speilbilde av mønsteret på vestsiden! Dette beviste at ny havbunn lages symmetrisk i aksen og skyves utover.
-
+Når havbunnen sprer seg til begge sider, fryser havbunnsskorpen inn et symmetrisk mønster av striper med normal magnetisering (feltet peker nordover, som i dag) og reversert magnetisering (feltet pekte sørover). Da forskerne seilte over Atlanteren med magnetometre, var mønsteret på østsiden av Den midtatlantiske ryggen et speilbilde av mønsteret på vestsiden. Ny havbunn lages altså symmetrisk i aksen og skyves utover.
 
 ![Divergerende grense eksponert på tørt land: Þingvellir på Island](/images/fig-spredring.jpg)
 
---------
+## Hva driver platene?
 
-*Island er et av de få stedene på jorden der en midthavsrygg rager opp over havoverflaten. Her ved Þingvellir kan du fysisk gå i sprekken mellom Den eurasiske platen (til venstre) og Den nordamerikanske platen (til høyre). Sprekken vider seg ut med om lag 2–2,5 cm hvert eneste år.*
+Før vi går inn på plategrensene, må vi forstå hva som driver platene.
 
-------
+Platebevegelsene styres av et samspill mellom fire krefter. Tyngdekraft og varme virker sammen.
 
-## Platedrift og plategrenser: hva er det som driver platene? 
-Før vi kan gå inn på plategrenser, må vi forstå opphavet til platedriften. 
+### Platetrekk (slab pull)
 
-Platebevegelsene styres av et samspill mellom fire gravitasjonelle og termiske mekanismer:
+Platetrekk (slab pull) står for om lag 90 % av kraften som driver platene, og er den viktigste.
 
+Når enden av en havbunnsplate synker ned i mantelen, drar den resten av platen med seg.
 
-- Slab pull (platetrekk)
-- Ryggskyv (ridge push)
-- Basal drag (manteldrag)
-- Trench suction (gropsug) 
+**Hvorfor skjer dette?**
 
+Når havbunnslitosfære beveger seg bort fra midthavsryggen, avkjøles den gjennom millioner av år. Astenosfære under platen avkjøles, fester seg til undersiden og blir en del av litosfæren. Litosfæren blir da tykkere og tettere. Til slutt er platen tettere enn astenosfæren under. Derfor kan havbunnslitosfære synke ned i mantelen.
 
+I en subduksjonssone øker trykket. Ved 40–60 km dyp omdannes basalt og gabbro i skorpen til eklogitt. Eklogitt er en svært tung bergart av granat og omfasitt, med tetthet om lag 3,5 g/cm³.
 
-Slab pull (platetrekk)
----
+Platen blir enda tyngre, og draget nedover blir sterkere. Den synkende delen virker som et anker som trekker resten av platen etter seg (Forsyth & Uyeda, 1975).
 
-Slab pull (platetrekk) står for opptil 90% av kraften som driver platedrift og er dermed den viktigste. Kort fortalt, handler denne prosessen om at når plate-enden synker ned i mantelen. Så denne delen av platen et bevegelses momement nedover, som drar resten av hele platene ned mot mantelen.  
+### Ryggskyv (ridge push)
 
-**Hvorfor skjer dette?** 
+Ryggskyv, også kalt gravitasjonsglidning (ridge push), skjer der platene går fra hverandre. Det sees tydeligst ved midthavsrygger. Forklaringen nedenfor tar utgangspunkt i dem.
 
-Når oseanisk litosfære beveger seg bort fra midthavsryggen, avkjøles den gjennom millioner av år. Den oppadstigende underliggende astenosfæren "fryser" fast til bunnen av platen og blir en del av litosfæren. Dette fører til at litosfæren vokser i tykkelse og tetthet. Til slutt før platen høyere tetthet enn den underliggende astenosfæren. Dette er også grunnen til at havbunnsplate kan synke ned i mantelen. 
+Midthavsrygger er undersjøiske fjellrygger. De rager 2000 til 3000 meter høyere enn dyphavssletten rundt. I spredningssonen stiger magma opp fordi den er lettere enn bergarten rundt. Det gir en oppbuling av litosfæren og en skråning bort fra ryggen.
 
-Når platen tvinges ned i en subduksjonssone, øker trykket dramatisk. Ved 40–60 km dyp gjennomgår basalten og gabbroen i skorpen en metamorf faseovergang og omdannes til eklogitt (en ultrahøytett bergart bestående av granat og omfasitt, tetthet ~3,5 g/cm³). 
+Platen glir nedover skråningen. Tyngdekraften langs skråningen er større enn friksjonen mot astenosfæren. Det er mulig fordi astenosfæren er seig og plastisk.
 
-Dette gjør platen enda tyngre og dermed forsterker effekten av drag ned i mantelen. Man kan tenke seg at denne delen av platen fungrer som et gigantisk anker som trekker hele resten av platen bak seg (Forsyth & Uyeda, 1975).
+### Manteldrag (basal drag)
 
+I astenosfæren er det konveksjonsstrømmer. De drives av varme fra jordas indre.
 
+Astenosfæren er ikke smeltet bergart.
 
-**Ryggskyv (ridge push)**
+Friksjonen mellom astenosfæren og undersiden av litosfæren kan enten hjelpe bevegelsen eller bremse den. Det avhenger av retningen, og av om mantelen strømmer raskere eller saktere enn platen.
 
-Ryggskyv (ridge push) skjer der platene går i fra hverandre. Ofte beste synlig på midthavsrygger, da vi har flest av disse. Forklaringen nedenfor tar utgangspunkt i midthavsrygger. 
+### Grøftesug (trench suction)
 
-Midthavsrygger er undersjøiske varme magmatiske fjellrygger som 
-rager derfor 2000 til 3000 meter høyere enn den omkringliggende dyphavssletten. I spredningssonen kommer det kontinuerlig opp magma som trenger seg opppover. Denne strømmen av magma skaper en oppbuling av litosfæren, som gjør at vi får en skråning bort fra der magmaen kommer opp (se animasjon om midthavsrygger ovenfor og nedenfor) 
+Når en tung havbunnsplate synker bratt ned i mantelen, drar den med seg astenosfære rundt seg. Det oppstår et lokalt sug som trekker den overliggende platen mot dyphavsgropen.
 
-Denne skråningen, kombinert med den enorme tyngden til de magmatiske fjellene gjør at vi får bevegelse av platene nedover skråningen. Grunnen til at dette skjer, er at gravitasjonskraften blir større enn friksjonskraften i skråningen mellom litsofære og astenosfæren. Og her må vi huske på at det som gjør dette mulig, er at astenosfæren oppfører seg seigtflytende på grunn av sine platiske egenskaper. 
- 
---- 
-
-**Basal drag (manteldrag)**
-
-I astenosføren har vi konveksjonstrømmer. Der konveksjonsstrømmene er drevet av den varme kjernen. 
-
-*Viktig å huske på, astenosfæren er ikke smeltede bergarter* 
-
-Friksjonen mellom astenosfæren og undersiden av litosfæreplaten kan enten hjelpe på bevegelsen eller bremse den. Dette styres av orientering på bevegelse og om mantelen strømmer raskere eller saktere enn platen.
-
---- 
-
-**Trench suction**
-
-Når en tung havbunnsplate synker bratt ned i mantelen, trekker den med seg omkringliggende astenosfære, noe som skaper et lokalt undertrykk som suger den overliggende platen mot dyphavsgropen.
-
------
-
-I dag kan vi måle disse bevegelsene direkte ved hjelp av globale satellittnettverk (GPS og VLBI). Målingene viser at platene beveger seg kontinuerlig med en fart på mellom 1 og 16 centimeter per år (NOAA, u.å.) – omtrent like fort som menneskets negler vokser. Plater som har store subduksjonssoner festet til seg (som Stillehavsplaten og Nazcaplaten) beveger seg desidert raskest (7–15 cm/år), noe som bekrefter at slab pull er den dominerende drivkraften!
+I dag kan vi måle disse bevegelsene direkte med satellitter (GPS og VLBI). Platene beveger seg med mellom 1 og 16 centimeter per år (NOAA, u.å.), omtrent like fort som negler vokser. Plater med store subduksjonssoner, som Stillehavsplaten og Nazcaplaten, beveger seg raskest (7–15 cm/år). Det stemmer med at platetrekk (slab pull) er den dominerende drivkraften.
 
 ## Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer
 
-En av de mest fundamentale leksjonene i Geofag 1 er å forstå hvorfor og hvordan magma dannes. Nesten all magma på jorden oppstår i den faste øvre mantelen ved delvis oppsmelting (partiell smelting) av bergarten peridotitt.
+Nesten all magma på jorda dannes i den faste øvre mantelen, ved delvis smelting av bergarten peridotitt.
 
-Bergarter smelter ikke ved en enkelt temperatur, men over et temperaturintervall:
+Bergarter smelter ikke ved én temperatur, men over et temperaturintervall.
 
-- Solidus: Temperaturen der en bergart begynner å smelte (første dråpe smelte dannes).
+- Solidus: temperaturen der en bergart begynner å smelte (første dråpe smelte dannes).
 
-- Liquidus: Temperaturen der bergarten er 100 % flytende smelte.
+- Liquidus: temperaturen der bergarten er 100 % flytende smelte.
 
-Under normale forhold under et stabilt kontinent er mantelen under solidus: Den er glødende varm (1300–1400 °C), men det enorme litostatiske overtrykket presser atomene så tett sammen at smelte ikke kan oppstå. For å få mantelen til å krysse solidus finnes det bare tre fysiske mekanismer:
+Under et stabilt kontinent ligger mantelen under solidus. Den er varm (1300–1400 °C), men trykket fra lagene over presser atomene så tett sammen at smelte ikke kan oppstå. Det er bare tre måter mantelen kan krysse solidus på.
 
 ## Plategrensene: Tre relative bevegelser, seks geologiske miljøer
 
-
 ### 1. Divergerende plategrense (platene glir fra hverandre)
 
-Under divergens utsettes litosfæren for tektonisk strekk (tensjon). Denne prossesen observerer vi i to geologiske eventer, havbunnsspredning og kontinental rifting. 
+Under divergens strekkes litosfæren. Det skjer i to miljøer: havbunnsspredning og kontinental rifting.
 
-**Havbunnsspredning**: 
+**Havbunnsspredning**
 
-Som navnet tilsier, så skjer denne prosessen på havbunn. På grunn av redusert trykk, smelter bergarter i astenosfæren og smelter seg oppover. I prosessen med å trenge seg opp ved å smelte, skaper den en oppbuling av litosfæren, som fører til rifting av platen. Samtidig som rifting skjer, trenger magma kontinuerlig seg opp i sprekkene og kommer opp til overflaten (havbunn). Deretter tar platetrekk (slab pull), ryggskyv (ridge push), manteldrag (basal drag) og gropsug (trench suction) over. 
+Havbunnsspredning skjer på havbunnen. Når platene trekkes fra hverandre, blir litosfæren tynnere, og trykket på mantelen under faller. Bergart i astenosfæren smelter da ved dekompresjonssmelting, uten at det tilføres ekstra varme. Magmaen er lettere enn bergarten rundt og stiger. Den fyller sprekkene og kommer ut på havbunnen som ny skorpe. Samtidig buler litosfæren opp, og platen riftes. Platetrekk, ryggskyv, manteldrag og grøftesug holder bevegelsen i gang.
 
+**Kontinental rifting**
 
-**Kontinental rifting**: 
-
-Kontinental rifting oppstår inne på et kontinent. Skorpen strekkes og tynnes, og store blokker raser ned langs normalforkastninger og danner en langstrakt innsynkningsdal kalt en graben (som Den østafrikanske riftdalen med Tanganyikasjøen og Victoriasjøen). Hvis riftingen fortsetter over millioner av år, vil riftdalen utvide seg til et smalt havbasseng (som Rødehavet), før det oppstår en fullverdig midthavsrygg. Dette var nøyaktig hvordan Atlanterhavet ble født da superkontinentet Pangea revnet for ca. 180 millioner år siden.
-
------
+Kontinental rifting starter inne på et kontinent. Skorpen strekkes og tynnes. Store blokker synker langs normalforkastninger og danner en langstrakt innsynkningsdal, en graben. Den østafrikanske riftdalen, med Tanganyikasjøen og Victoriasjøen, er et eksempel. Hvis riftingen fortsetter i millioner av år, kan riftdalen bli et smalt havbasseng, som Rødehavet, og deretter en midthavsrygg. Slik åpnet Atlanterhavet seg da superkontinentet Pangea revnet for ca. 180 millioner år siden.
 
 ![Midthavsryggens anatomi: Dekompresjonssmelting og hydrotermale skorsteiner](/images/geo-midthavsrygg-hydrotermal.jpg)
 
 *Når to litosfæreplater trekkes fra hverandre i spredningsaksen, stiger astenosfærisk peridotitt opp uten å tape nevneverdig varme (adiabatisk). Trykkfallet utløser dekompresjonssmelting (10–20 % delvis smelte) som produserer basaltisk magma. På havbunnen størkner lavaen som putelava (pillow basalt), mens nedsivende sjøvann varmes opp til over 350 °C av underliggende gabbro-kamre og spyles ut som metallrike hydrotermale skorsteiner («black smokers»).*
 
----- 
 ### 2. Konvergerende plategrense (platene kolliderer)
 
-Ved konvergens møter to litosfæreplater mot hverandre og skaper enorm kompresjon. På grunn av at vi har forskjellige varianter av plater, kan vi få tre ulike scenarioer: 
+Ved konvergens møtes to litosfæreplater, og skorpen presses sammen. Hvilket landskap som dannes, avhenger av hvilke skorper som møtes. Det er tre varianter.
 
-- Havbunnsplate mot kontinentalplate 
-- Havbunnsplate mot havbunnsplate 
-- Kontinentalplate mot kontinetalplate 
+#### Havbunn mot kontinent
 
-**Havbunnsplate mot kontinententalplate** 
+Den tunge havbunnsplaten, for eksempel Nazcaplaten, bøyes ned under den lettere platen som bærer kontinentet, her Sør-Amerika. Foran nedbøyingen dannes en dyp havrenne, Peru–Chile-gropen, på over 8000 meters dyp, og en akkresjonskile av avskrapede havsedimenter. Flukssmelting i mantelkilen gir seig, gassrik magma (andesitt og dasitt). Magmaen stiger og bygger eksplosive stratovulkaner langs en kontinental vulkanbue, som Andesfjellene og Kaskadefjellene.
 
+#### Hav mot hav
 
-*Eksempel -  Andesfjellene*
+Når to havbunnsplater møtes, synker én av dem. Det er alltid den eldste, kaldeste og dermed tetteste havbunnsplaten som presses under den andre. Slik dannes jordas dypeste groper, som Marianegropen med Challengerdypet på 11 034 meter. Når platen synker, frigjøres vann, mantelen over smelter, og magma stiger. Her bygges vulkanøyer, ikke stratovulkaner på et kontinent. Klassiske eksempler er De japanske øyer, Marianene og Aleutene.
 
-Den tunge, oseaniske platen (Nazcaplaten) bøyes ned under den lettere kontinentalplaten (Sør-Amerika). Foran kollisjonen dannes en dyp havrenne (Peru-Chile-gropen, over 8000 meter dyp) og en akkresjonskile av avskrapede havsedimenter. Flukssmelting i mantelkilen skaper seig, gassrik magma (andesitt og dasitt) som stiger og bygger opp majestetiske, men eksplosive stratovulkaner langs en kontinental vulkanbue (Andesfjellene, Kaskadefjellene).
-____
+#### Kontinent mot kontinent
 
-**Hav mot hav**
-Når to havbunnsplater møtes, vil vi få en subduksjon av en av platene. Det er alltid den eldste, kaldeste og dermed tetteste havbunnsplaten som tvinges under den andre. Dette skaper jordens aller dypeste groper som Marianegropen med Challengerdypet på 11 034 meter. Når havbunnsplaten synker ned, vil deler av den smelte til magma. Denne magmaen vil stige opp, akkurat slik som med kontinent-havbunn, men her får vi vulkanse øyer og ikke strato vulkaner på land. Klassiske eksempler på dette, er De japanske øyer, Marianene og Aleutene.  
-___
+Når to kontinenter møtes, kan ingen av dem synke ned i mantelen. Kontinentalskorpen er for lett. Himalaya og Kaledonidene er eksempler. Jordskorpen foldes, presses sammen og stables i skyvedekker.
 
-**Kontinent mot kontinent** 
+Skyvedekker er store bergflak som skyves hundrevis av kilometer innover land.
 
-Når to kontinenter møter på hverander, kan ingen av dem synke ned i mantelen fordi kontinentalplatene er for lette (f.eks. Himalaya og Kaledonidene). I stedet vil jordskorpen foldes, presses sammen og stables opp i mektige skyvedekker (nappes). Det er under disse foldningene at vi får store fjellkjeder.  
+Fjellkjeden vokser ikke bare oppover. Den kan også vokse nedover, opptil 70–80 km, fordi litosfæren flyter i likevekt på mantelen (isostasi). Det blir nesten ingen vulkanisme. Bergartene omdannes regionalt til gneis og glimmerskifer.
 
->*Skyvedekker er store bergflak som skyves hundrevis av kilometer innover land*  
-
-Når fjellkjeder dannes under slike prosesser, vokser de ikke bare i høyden. De kan vokse nedover, opptil 70–80 km, der litosfæren som flyter isostatisk i mantelen. Det oppstår nesten ingen vulkanisme, men intens regional metamorfose omdanner bergartene til gneis og glimmerskifer.
-
----- 
 ![Anatomi av en subduksjonssone: Dehydrering, flukssmelting og akkresjonskile](/images/geo-subduksjon-3d.jpg)
 
 *Når en oseanisk litosfæreplate presses ned i mantelen, varmes den opp og presses sammen. Mineraler som har tatt opp sjøvann på havbunnen (særlig serpentinitt og leirmineraler) dehydreres ved 80–150 km dyp og slipper overopphetet vann inn i overliggende mantelkile. Dette senker peridotittens smeltepunkt dramatisk (flukssmelting). Den oppstigende magmaen mater en eksplosiv vulkanbue, mens avskrapede sedimenter danner en mektig akkresjonskile foran dyphavsgropen.*
 
 #### Subduksjonens sonering: Akkresjonskile, forbue- og bakbuebasseng
 
-Et fullstendig tverrsnitt av en konvergerende plategrense består av fem distinkte morfologiske og geologiske elementer ordnet fra havet og innover:
+Et tverrsnitt av en konvergerende plategrense har fem deler, fra havet og innover.
 
-- 1. Dyphavsgropen (trench): Det dypeste punktet der litosfæren bøyes ned i subduksjonen.
+1. Dyphavsgropen (trench) er det dypeste punktet, der litosfæren bøyes ned.
 
-- 2. Akkresjonskilen (accretionary wedge): Mens den faste basaltiske havbunnsskorpen subdueres, blir de løse overliggende marine sedimentene (leire, sand, kiselalger) skrapt av av den overkjørende platen. Sedimentene presses sammen og stables opp i lagdelte, imbrikerte forkastningsflak som kan bygge opp flere kilometer høye rygger foran kysten.
+2. Akkresjonskilen (accretionary wedge) bygges når løse marine sedimenter (leire, sand og kiselalger) skrapes av den overkjørende platen. Den faste basaltiske havbunnsskorpen fortsetter ned. Sedimentene presses sammen og stables i skråstilte forkastningsflak, som kan bli flere kilometer høye rygger foran kysten.
 
-- 3. Forbuebassenget (forearc basin): Det relativt flate og rolige sedimentasjonsbassenget som ligger mellom akkresjonskilen og den vulkanske buen.
+3. Forbuebassenget (forearc basin) er det relativt flate sedimentbassenget mellom akkresjonskilen og den vulkanske buen.
 
-- 4. Vulkansk bue (magmatic arc): Rekken av aktive vulkaner (enten på kontinentet eller som en øybue) som mates av flukssmelting i 100–120 km dyp direkte under buen.
+4. Den vulkanske buen (magmatic arc) er rekken av aktive vulkaner, enten på kontinentet eller som en øybue. Den mates av flukssmelting på 100–120 km dyp rett under buen.
 
-- 5. Bakbuebassenget (backarc basin): Dersom den synkende litosfæreplaten er gammel og tung, vil den synke brattere enn platen beveger seg fremover. Dette fenomenet kalles «slab rollback» (platen ruller bakover). Det suger den overliggende platen etter seg og skaper tektonisk strekk (tensjon) bak vulkanbuen! Strekket kan sprekke opp jordskorpen og åpne et lite, lokalt havbasseng med egen miniatyr-midthavsrygg – slik Japanhavet ble åpnet bak Den japanske vulkanbuen for ca. 15–20 millioner år siden.
+5. Bakbuebassenget (backarc basin) kan åpne seg hvis den synkende platen er gammel og tung. Da synker den brattere enn platen selv beveger seg framover. Det kalles tilbakerulling (slab rollback). Den overliggende platen strekkes bak vulkanbuen. Strekket kan sprekke opp jordskorpen og åpne et lite havbasseng med egen midthavsrygg. Japanhavet åpnet seg slik bak den japanske vulkanbuen for ca. 15–20 millioner år siden.
 
+### 3. Transforme plategrenser (platene glir sidelengs)
 
-### 3. Transforme plategrenser (Platene glir sidelengs)
+Transforme plategrenser oppstår når plater glir sidelengs i forhold til hverandre. Her blir verken plater ødelagt eller nye plater dannet.
 
-Transforme plategrenser oppstår når vi ha plater som glir sidelengs i forhold til hverandre. Her får vi hverken ødeleggelse av plater, eller dannelse av nye plater. 
-Disse plategrensene er helt uten vulkanimse, men til gjengjeld er preget av små og store jordskjelv. 
+Disse grensene har ikke vulkanisme. De har derimot både små og store jordskjelv.
 
-I dette området blir bergartene på hver side presses hardt mot hverandre. Friksjonen låser forkastningen i en «mekanisk lås». Mens platene fortsetter å bevege seg med 3–5 cm i året noen kilometer unna, deformeres bergartene elastisk over årtier og århundrer. 
-Tenk deg en stålfjær som spennes strammere og strammere. Til slutt overstiger den opphopede spenningen bergartenes friksjon og bregartene forskyves flere meter i et massivt jordskjelv.
+Bergartene på hver side presses hardt mot hverandre. Friksjonen låser forkastningen. Mens platene fortsetter å bevege seg med 3–5 cm i året et stykke unna, deformeres bergartene elastisk over tiår og århundrer. Spenningen bygger seg opp omtrent som i en stålfjær som spennes. Til slutt overstiger spenningen friksjonen, og bergartene forskyves flere meter i et jordskjelv.
 
-San Andreas forkastningen i California er et klassisk eksempel på en transform plategrense på land, der vi har tektoniske spenninger som bygger seg opp. Her beveger Stillehavsplaten nordvestover i forhold til Den nordamerikanske platen. 
+San Andreas-forkastningen i California er et klassisk eksempel på land. Stillehavsplaten beveger seg nordvestover i forhold til den nordamerikanske platen, og spenningen bygger seg opp.
 
-I tillegg til den vanlige transeforme plategrensene, har vi mange mindre transforme plategrenser som dannes på midthavsryggene. Dette kan vi observere ved å se på sikksakkmønsterne på samtlige midthavsrygger i havet 
-
+I tillegg finnes mange kortere transforme grenser langs midthavsryggene. De gir sikksakkmønsteret man ser langs ryggene.
 
 #### Geometrisk finesse: Transformforkastning vs. inaktiv bruddsone (fracture zone)
 
-I 1965 løste J. Tuzo Wilson et stort geologisk paradoks: Hvorfor er midthavsryggene kuttet opp i hundrevis av forskyvede segmenter, og hvorfor stopper jordskjelvene brått opp utenfor ryggaksen?
+I 1965 løste J. Tuzo Wilson et paradoks: Hvorfor er midthavsryggene delt i forskjøvne segmenter, og hvorfor stopper jordskjelvene brått utenfor ryggaksen?
 
-En midthavsrygg er aldri en rett, uavbrutt linje. Den er delt opp i forskjøvede segmenter bundet sammen av horisontale forkastningssoner. Men her gjelder en fundamental regel som skiller platetektonikk fra vanlige forkastninger på land:
+En midthavsrygg er aldri én rett linje. Den er delt i segmenter som er bundet sammen av sidelengs forkastninger. Her skiller platetektonikk seg fra vanlige forkastninger på land.
 
-- Aktiv transformforkastning (mellom ryggsegmentene): Bare i strekningen mellom de to spredningsryggene beveger platene seg i motsatt retning. Her oppstår intens friksjon, forkastningslås og hyppige, grunne jordskjelv. Legg også merke til at hvis det høyre ryggsegmentet ligger lenger nord enn det venstre, er platebevegelsen langs forkastningen venstregående (sinistral) – stikk i strid med hva man ville trodd hvis forkastningen hadde kuttet og forskjøvet en opprinnelig sammenhengende rygg!
+- Aktiv transformforkastning (mellom ryggsegmentene): Bare mellom de to spredningsryggene beveger platene seg i motsatt retning. Der er friksjonen høy, forkastningen kan låse seg, og det kommer hyppige, grunne jordskjelv. Hvis det høyre ryggsegmentet ligger lenger nord enn det venstre, er bevegelsen langs forkastningen venstregående (sinistral). Det er motsatt av det man skulle tro hvis forkastningen bare hadde kuttet en rygg som opprinnelig hang sammen.
 
-- Inaktiv bruddsone (fracture zone, utenfor ryggaksen): Utenfor spredningsaksene strekker forkastningssprekken seg tusenvis av kilometer videre over havbunnen som et dypt arr i batymetrien. Men her beveger havbunnen på begge sider av sprekken seg i nøyaktig samme retning med nøyaktig samme hastighet! Det er null relativ platebevegelse, ingen friksjon og følgelig ingen jordskjelv. Bruddsonene er aseismiske «arr» som bevarer historien om tidligere tiders transformbevegelser.
+- Inaktiv bruddsone (fracture zone, utenfor ryggaksen): Utenfor spredningsaksene fortsetter sprekken tusenvis av kilometer som et dypt arr i havbunnen. Her beveger havbunnen på begge sider seg i samme retning og med samme fart. Det er ingen relativ platebevegelse, ingen friksjon og ingen jordskjelv. Bruddsonene er aseismiske arr som viser tidligere transformbevegelse.
 
 ## Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
 
-Jordskjelv er ikke jevnt fordelt over jorden – de avslører plategrensenes eksakte anatomi. Ved å kartlegge jordskjelvenes fokus (hyposenterdybde) oppdaget de to seismologene Kiyoo Wadati og Hugo Benioff et slående mønster:
+Jordskjelv er ikke jevnt fordelt. De viser hvor plategrensene ligger, og hvordan de er bygd. Da seismologene Kiyoo Wadati og Hugo Benioff kartla jordskjelvenes fokus (hyposenterdyp), fant de et tydelig mønster.
 
-- Midthavsrygger og transformgrenser: Har utelukkende grunne jordskjelv (< 15–20 km dyp). Litosfæren ved midthavsryggen er så varm og tynn at dypere bergarter oppfører seg plastisk i stedet for å brekke sprøtt.
+- Midthavsrygger og transformgrenser har bare grunne jordskjelv, grunnere enn 15–20 km. Litosfæren ved midthavsryggen er så varm og tynn at dypere bergarter deformeres seigt i stedet for å brekke.
 
-- Subduksjonssoner (Wadati-Benioff-sonen): Viser et skrått plan av jordskjelv som strekker seg fra dyphavsgropen og helt ned til 700 kilometers dyp inn under kontinentet! Dette planet sporer nøyaktig den kalde, sprø havbunnsplaten mens den synker ned i den varme astenosfæren.
+- Subduksjonssoner (Wadati-Benioff-sonen) viser et skrått plan av jordskjelv fra dyphavsgropen og ned til 700 km under kontinentet. Planet følger den kalde, sprø havbunnsplaten mens den synker ned i den varme astenosfæren.
 
-Hvorfor stopper jordskjelvene brått ved 700 km dyp?
+Hvorfor stopper jordskjelvene ved 700 km dyp?
 
-Under 700 kilometers dyp – ved overgangen til den nedre mantelen – er både omgivelsestrykket og temperaturen så høye at silikatkrystallene deformeres plastisk ved dislokasjonskryp. Bergartene kan rett og slett ikke lagre elastisk spenning eller sprekke sprøtt lenger; de flyter som varm plastelina. Derfor forekommer det aldri jordskjelv dypere enn 700 km på jorden.
+Under 700 km, ved overgangen til den nedre mantelen, er både trykket og temperaturen så høye at bergartene deformeres seigt. De kan ikke lagre elastisk spenning eller sprekke. Derfor er det ingen jordskjelv dypere enn 700 km.
 
 ## Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
 
-Husk tilbake til tverrsnittet og analysen av midthavsryggen tidligere i kapittelet: Der så vi putelava på toppen, en sverm av sprekker med loddrette basaltganger, og et magmakammer med gabbro som hvilte på mantelen. Hvordan kan vi vite alt dette med sikkerhet når havbunnen befinner seg under flere tusen meter med stummende mørkt vann?
+Tidligere i kapittelet så vi tverrsnittet av en midthavsrygg: putelava øverst, loddrette basaltganger, og et magmakammer med gabbro over mantelen. Havbunnen ligger under flere tusen meter vann. Likevel kan vi se lagene på land.
 
-Svaret ligger i ofiolitter: sjeldne geologiske hendelser der biter av havbunnsskorpe og øvre mantel ikke har blitt subdusert og ødelagt, men derimot skjøvet opp på tørt land under en fjellkjedekollisjon (et fenomen kalt obduksjon, Furnes et al., 1988). En ofiolitt er med andre ord et komplett, fossilt stykke havbunn som er hevet på land og veltet over ende, slik at geologer i dag kan spasere tvers gjennom hele lagdelingen — fra dyphavssedimenter ned til selve mantelen — til fots!
+Ofiolitter er biter av havbunnsskorpe og øvre mantel som ikke ble subdusert, men skjøvet opp på land under en fjellkjedekollisjon. Det kalles obduksjon (Furnes et al., 1988). En ofiolitt er et fossilt stykke havbunn som er hevet og veltet, slik at man kan gå fra dyphavssedimenter ned til mantelen.
 
-Ved den berømte Penrose-konferansen i 1972 definerte geologene den klassiske ofiolitt-stratigrafien, som representerer et komplett vertikalt tverrsnitt gjennom oseanisk litosfære:
+Ved Penrose-konferansen i 1972 ble den klassiske ofiolitt-lagrekken definert. Den er et vertikalt tverrsnitt gjennom havbunnslitosfære.
 
-- Pelagiske sedimenter (øverst): Tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt (dannet av mikroskopiske kiselalger).
+- Pelagiske sedimenter (øverst): tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt, dannet av mikroskopiske kiselalger.
 
-- Putelava (pillow basalt): 0,5–1,5 km tykt lag med glassaktige lavaputer som vitner om vulkanske utbrudd direkte under vann.
+- Putelava (pillow basalt): 0,5–1,5 km tykt lag med glassaktige lavaputer fra utbrudd direkte under vann.
 
-- Plateformede basaltganger (sheeted dykes): Et unikt 1–2 km tykt kompleks av loddrette, parallelle basaltganger («gang-i-gang») som viser hvordan midthavsryggen kontinuerlig sprekker opp og fylles med ny magma.
+- Plateformede basaltganger (sheeted dykes): et 1–2 km tykt kompleks av loddrette, parallelle basaltganger («gang-i-gang»). De viser hvordan midthavsryggen sprekker opp og fylles med ny magma.
 
-- Gabbro (isotrop og lagdelt): 2–4 km tykt lag av grovkornet dypbergart dannet i det aksiale magmakammeret under midthavsryggen. Nederst danner tunge krystaller rytmiske lag (lagdelt gabbro).
+- Gabbro (isotrop og lagdelt): 2–4 km tykt lag av grovkornet dypbergart fra det aksiale magmakammeret. Nederst danner tunge krystaller rytmiske lag (lagdelt gabbro).
 
-- Petrologisk Moho: Selve grenseflaten mellom skorpen (gabbro) og den underliggende mantelen (peridotitt).
+- Petrologisk Moho: grensen mellom skorpen (gabbro) og mantelen under (peridotitt).
 
-- Mantel-litosfære (nederst): Rester av øvre mantel bestående av peridotitt (dunitt og harzburgitt) som er utsmeltet for basaltkomponenter. Ved kontakt med sjøvann omdannes peridotitt til den vakre, grønne eller gyllenbrune bergarten serpentinitt.
+- Mantel-litosfære (nederst): rester av øvre mantel, peridotitt (dunitt og harzburgitt) som basaltsmelten er trukket ut av. I kontakt med sjøvann omdannes peridotitt til serpentinitt, som ofte er grønn eller gyllenbrun.
 
 ![Norges geologiske nasjonalmonument: Leka ofiolittkompleks](/images/geo-ofiolitt-leka.jpg)
 
-*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!*
+*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.*
 
 ## Interaktiv geodynamisk modell: Utforsk plategrensene
 
-Bruk simulatoren under til å eksperimentere med de ulike plategrensene. Juster platehastigheten, slå av og på jordskjelvfokus (legg merke til hvordan Wadati-Benioff-sonen tegnes opp i subduksjonsmodus), og studer hvordan dekompresjonssmelting skiller seg fra flukssmelting:
+Bruk simulatoren under til å sammenligne plategrensene. Juster platehastigheten, slå av og på jordskjelvfokus, og se hvordan Wadati-Benioff-sonen tegnes opp i subduksjon. Se også hvordan dekompresjonssmelting skiller seg fra flukssmelting.
 
 ## Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp
 
-Ikke all vulkansk aktivitet kan forklares av plategrenser. Noen av planetens mest imponerende vulkaner – som Hawaii og Yellowstone – oppstår midt inne på litosfæreplater.
+Ikke all vulkanisme ligger på plategrenser. Noen store vulkaner, som på Hawaii og i Yellowstone, ligger midt inne på en litosfæreplate.
 
-I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære «hotspots» (varmeflekker) dypt i mantelen. Senere viste Jason Morgan at hotspots er overflateuttrykket for mantelplymer: smale søyler av overopphetet bergart som stiger helt fra D''-laget (kjerne-mantel-grensen på 2900 km dyp).
+I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyldes stasjonære varmeflekker (hotspots) dypt i mantelen. Senere viste Jason Morgan at hotspots er overflaten av mantelplymer: smale søyler av ekstra varm bergart som stiger fra kjerne-mantel-grensen på 2900 km dyp.
 
-Fordi mantelplymen er forankret så dypt, står den praktisk talt stille over geologisk tid. Mens litosfæreplaten glir sakte forbi over plymen, brenner den en perlerad av vulkanske øyer inn i havbunnen:
+Fordi søylen er forankret så dypt, står den nesten stille over geologisk tid. Mens litosfæren glir over den, dannes en kjede av vulkanske øyer.
 
-- Hawaii-Emperor-ryggen: Den aktive vulkanen (Kilauea og Mauna Loa) ligger rett over hotspoten i dag (0 Ma). Jo lenger nordvestover langs øykjeden du reiser, desto eldre og mer eroderte er øyene: Maui (1 Ma), Oahu (3 Ma), Kauai (ca. 5,5 millioner år) og Midway (28 Ma).
+- Hawaii-Emperor-ryggen: De aktive vulkanene Kilauea og Mauna Loa ligger over hotspoten i dag (0 Ma). Lenger nordvest er øyene eldre og mer erodert: Maui (1 Ma), Oahu (3 Ma), Kauai (ca. 5,5 millioner år) og Midway (28 Ma).
 
-- Den berømte 47 Ma-bøyen: For ca. 47 millioner år siden gjør vulkankjeden en skarp 60-graders knekk fra nord-nordvest til vest-nordvest. Dette er et direkte geologisk bevis på at Stillehavsplaten brått endret bevegelsesretning!
+- Knekken ved 47 Ma: For ca. 47 millioner år siden gjør vulkankjeden en skarp knekk på 60 grader, fra nord-nordvest til vest-nordvest. Det viser at Stillehavsplaten endret retning.
 
-- Island – en unik kombinasjon: Island er spesiell fordi en kraftig mantelplym ligger nøyaktig under Den midtatlantiske ryggen. Kombinasjonen av dekompresjonssmelting fra ryggspredningen og ekstraordinær termisk oppvarming fra plymen har produsert så enorme mengder basalt at skorpen her er over 35–40 km tykk, og rager høyt over havoverflaten.
+- Island: En kraftig mantelplym ligger rett under Den midtatlantiske ryggen. Dekompresjonssmelting fra spredningen og ekstra varme fra plymen har gitt så mye basalt at skorpen her er over 35–40 km tykk, og ryggen står over havet.
 
 ### Wilsonsyklusen: Havbassengenes liv og død
 
-I 1966 stilte Tuzo Wilson et fundamentalt spørsmål i en berømt Nature-artikkel: «Did the Atlantic close and then re-open?» (Wilson, 1966). Svaret var et rungende ja.
+I 1966 stilte Tuzo Wilson et spørsmål i Nature: «Did the Atlantic close and then re-open?» (Wilson, 1966). Svaret var ja.
 
-Jordens overflate gjennomgår en syklisk prosess over 400 til 600 millioner år, kalt Wilsonsyklusen. Et superkontinent samler all kontinental skorpe på én flate. Fordi kontinental skorpe fungerer som et varmeisolerende teppe over mantelen, samles det opp overskuddsvarme under superkontinentet. Mantelen begynner å bule opp, kontinentet sprekker i en riftdal, og et nytt havbasseng åpner seg. Etter hvert avkjøles havbunnen, blir tung, begynner å subduere, og havet lukkes igjen inntil kontinentene kolliderer i et nytt superkontinent.
+Jordas overflate gjennomgår en syklus på 400 til 600 millioner år, Wilsonsyklusen. Et superkontinent samler kontinental skorpe. Skorpen isolerer varmen i mantelen under, slik at overskuddsvarme samler seg. Mantelen buler opp, kontinentet sprekker i en riftdal, og et nytt havbasseng åpner seg. Etter hvert avkjøles havbunnen, blir tung og begynner å subduseres. Havet lukkes til kontinentene kolliderer i et nytt superkontinent.
 
 #### Atlanterhavet: Modent vekststadium
 
+Atlanterhavet er et modent hav: vidt, med passive kontinentalmarginer og en midthavsrygg.
+
 #### Stillehavet: Avtagende stadium
+
+Stillehavet er i et avtagende stadium. Subduksjonssoner langs randen tar opp havbunn.
 
 ![Wilsonsyklusens 6 stadier: Superkontinentenes kretsløp i 3D](/images/geo-wilsonsyklus-3d.jpg)
 
@@ -384,64 +332,74 @@ Jordens overflate gjennomgår en syklisk prosess over 400 til 600 millioner år,
 
 ## Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi
 
-Norge ligger i dag midt inne på Den eurasiske kontinentalplaten, tusenvis av kilometer fra aktive subduksjonssoner og plategrenser. Grensen i vest er Den midtatlantiske ryggen ute i Norskehavet. Likevel er hele det norske landskapet formet av fortidens dramatiske platetektoniske hendelser (Ramberg et al., 2008):
+Norge ligger i dag midt inne på den eurasiske platen, tusenvis av kilometer fra aktive subduksjonssoner og plategrenser. Grensen i vest er Den midtatlantiske ryggen i Norskehavet. Likevel er landskapet formet av tidligere platebevegelser (Ramberg et al., 2008).
+
+Kaledonidene ble til da landområder i dagens Europa kolliderte med Amerika og Grønland. Fjellkjededannelsen pågikk gjennom ordovicium, silur og devon, for 400–500 millioner år siden (NGU, u.å.-a). Store bergflak ble skjøvet som skyvedekker gjennom det som i dag er Skandinavia. Bergartene ble omdannet, blant annet til gneis. Fjellene vi går i, er den eroderte roten av den kjeden, ikke fjell som istiden har bygd.
+
+Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm ble det en riftdal med strekk, store forkastninger og vulkaner. De yngste bergartene på land i Norge har spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
+
+Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsisen presset skorpen ned. Da isen smeltet, hevet landet seg. Marin grense, det høyeste havnivået etter siste istid, ligger i dag fra 0 til 220 m over havet, avhengig av sted (NGU, u.å.-b). Mange fjorder og daler følger også om lag 200 millioner år gamle forkastningssoner fra da Atlanteren åpnet seg.
 
 ## Sentralt fagvokabular
 
-- **litosfære:** skorpe + stiv øvre mantel (0–100/250 km) som utgjør de tektoniske platene
+- **litosfære:** skorpe pluss stiv øvre mantel. I snitt ca. 100 km tykk, tynnest under midthavsrygger og opptil ca. 200 km under gamle kontinenter. Utgjør de tektoniske platene.
 
-- **astenosfære:** varm, fast silikatmantel (100–350 km) som flyter duktilt over millioner av år
+- **astenosfære:** varm, fast silikatmantel (ca. 100–350 km, ca. 1300–1400 °C) som deformeres seigt over millioner av år.
 
-- **slab pull:** den dominerende drivkraften: kald, tett eklogitt-slab synker under egen vekt i subduksjonssonen
+- **platetrekk (slab pull):** den dominerende drivkraften, om lag 90 % av kraften. Kald, tett eklogitt i den synkende platen trekker platen ned i subduksjonssonen.
 
-- **ryggskyv (ridge push):** gravitasjonsglidning: litosfæren sklir nedover fra den 2–3 km høye midthavsryggen
+- **ryggskyv (ridge push):** gravitasjonsglidning. Litosfæren sklir nedover fra midthavsryggen, som står 2–3 km høyere enn dyphavssletten.
 
-- **eklogitt:** ekstremt tung høytrykksmetamorf bergart (granat + omfasitt) omdannet fra basaltisk havbunnsskorpe i subduksjonssoner; drivmotoren i slab pull
+- **manteldrag (basal drag):** friksjon mellom astenosfæren og undersiden av litosfæren. Kan skyve eller bremse platen.
 
-- **dekompresjon:** manteloppstigning gir trykkfall; solidus krysses uten ekstra varme (rygg/rift)
+- **grøftesug (trench suction):** sug mot dyphavsgropen når en tung plate synker bratt og drar med seg astenosfære.
 
-- **flukssmelting:** vann fra synkende slab senker solidustemperaturen i mantelkilen over (subduksjon)
+- **eklogitt:** svært tung høytrykksbergart (granat og omfasitt), omdannet fra basaltisk havbunnsskorpe i subduksjonssoner. Viktig for platetrekk.
 
-- **dehydrering:** høyt trykk presser vann ut av serpentinitt og leirmineraler i den synkende havbunnen
+- **dekompresjon:** mantel stiger, trykket faller, og solidus krysses uten ekstra varme (midthavsrygg og rift).
 
-- **akkresjonskile:** havbunnssedimenter skrapet av den synkende platen og stablet opp foran dyphavsgropen
+- **flukssmelting:** vann fra den synkende platen senker smeltetemperaturen i mantelkilen over (subduksjon).
 
-- **bakbuebasseng:** ekstensjonsbasseng dannet bak en vulkanbue på grunn av slab rollback (f.eks. Japanhavet)
+- **dehydrering:** høyt trykk presser vann ut av serpentinitt og leirmineraler i den synkende havbunnen.
 
-- **passiv margin:** kontinentalmargin inne på en plate uten subduksjon eller jordskjelvaktivitet (f.eks. norskekysten); fungerer som en mektig sedimentfelle
+- **akkresjonskile:** havbunnssedimenter som skrapes av den synkende platen og stables foran dyphavsgropen.
 
-- **bruddsone:** inaktiv, aseismisk forlengelse av en transformforkastning utenfor spredningsryggene
+- **bakbuebasseng:** basseng som åpnes bak en vulkanbue når den synkende platen ruller bakover (slab rollback), for eksempel Japanhavet.
 
-- **Wadati-Benioff:** skrått seismisk plan av jordskjelv (0–700 km dyp) som sporer den synkende platen
+- **passiv margin:** kontinentalmargin inne på en plate, uten subduksjon eller plategrensejordskjelv (for eksempel norskekysten). Her kan det samle seg tykke sedimentlag.
 
-- **seismisk tomografi:** 3D-avbildning av jordens indre mantelstruktur ved hjelp av milliarder av seismiske bølgehastighetsmålinger
+- **bruddsone:** inaktiv, aseismisk fortsettelse av en transformforkastning utenfor spredningsryggene.
 
-- **ofiolitt:** komplett tverrsnitt av havbunnsskorpe og øvre mantel obdusert på land (f.eks. Leka)
+- **Wadati-Benioff:** skrått plan av jordskjelv (0–700 km dyp) som følger den synkende platen.
 
-- **obduksjon:** overkjøring der tung havbunn unntaksvis skyves opp på lett kontinental skorpe i kollisjon
+- **seismisk tomografi:** tredimensjonalt bilde av mantelen, bygd av milliarder av målinger av hvor fort seismiske bølger går.
 
-- **paleomagnetisme:** symmetriske striper med magnetisk reversering i havbunnen (Vine-Matthews-Morley)
+- **ofiolitt:** tverrsnitt av havbunnsskorpe og øvre mantel som er skjøvet opp på land (for eksempel Leka).
 
-- **hotspot:** mantelplym fra kjerne-mantel-grensen (D'') som brenner vulkankjeder (f.eks. Hawaii)
+- **obduksjon:** havbunn som unntaksvis skyves opp på lettere kontinental skorpe i en kollisjon.
 
-- **Wilsonsyklus:** syklisk åpning og lukking av verdenshav over 400–600 mill. år (superkontinenter)
+- **paleomagnetisme:** symmetriske striper med normal og reversert magnetisering i havbunnen (Vine–Matthews–Morley).
 
-- **skyvedekke:** store bergflak overskjøvet hundrevis av km under kontinentkollisjon (Kaledonidene)
+- **hotspot:** mantelplym fra kjerne-mantel-grensen som lager vulkankjeder (for eksempel Hawaii).
 
-- **graben:** innsunket forkastningsblokk i en kontinental riftdal (f.eks. Øst-Afrika, Oslofeltet)
+- **Wilsonsyklus:** syklisk åpning og lukking av verdenshav over 400–600 millioner år.
 
-- **isostasi:** litosfærens flytelikevekt på astenosfæren; landheving etter istidens istrykk
+- **skyvedekke:** store bergflak som er skjøvet hundrevis av kilometer under en kontinentkollisjon (Kaledonidene).
+
+- **graben:** innsunket blokk mellom normalforkastninger i en kontinental riftdal (for eksempel Øst-Afrika og Oslofeltet).
+
+- **isostasi:** litosfæren i likevekt på astenosfæren. Etter istiden hever landet seg når istyngden forsvinner.
 
 ## Test deg selv
 
-> **Oppsummering: De viktigste læringspunktene om platetektonikk**
+**Oppsummering**
 
-- Mantelen er fast bergart: Litosfæreplatene flyter ikke på flytende magma, men på duktil astenosfære (varm peridotitt) som flyter seigt over millioner av år.
+- Mantelen er fast bergart. Litosfæreplatene flyter ikke på flytende magma, men på varm peridotitt i astenosfæren, som deformeres seigt over millioner av år.
 
-- Slab pull er hovedmotoren: Oseanisk litosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker hele platen med seg (~90 % av kraften).
+- Platetrekk (slab pull) er hoveddrivkraften. Havbunnslitosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker platen med seg. Det utgjør om lag 90 % av kraften.
 
-- Smelting krever en utløsende mekanisme: Trykkfall (dekompresjon) ved midthavsrygger, tilførsel av vann (flukssmelting) ved subduksjonssoner, eller temperaturøkning ved dype mantelplymer (hotspots).
+- Smelting krever en utløser. Trykkfall (dekompresjon) ved midthavsrygger, vann (flukssmelting) ved subduksjonssoner, eller ekstra varme ved mantelplymer (hotspots).
 
-- Ofiolitter er havbunn på land: Leka i Trøndelag gir en enestående mulighet til å studere hele havbunnsskorpen og Moho-grenseflaten til fots.
+- Ofiolitter er havbunn på land. På Leka i Trøndelag kan man gå gjennom havbunnsskorpen og krysse Moho.
 
-- Norges geologi er skapt av platetektonikk: Fra den kaledonske kollisjonen og Leka-ofiolitten, via permisk riftdannelse i Oslofeltet, til åpningen av Nord-Atlanteren og dagens postglasiale landheving.
+- Norges geologi er formet av platetektonikk: den kaledonske kollisjonen og Leka-ofiolitten, permisk rift i Oslofeltet, åpningen av Nord-Atlanteren, og landheving etter siste istid.

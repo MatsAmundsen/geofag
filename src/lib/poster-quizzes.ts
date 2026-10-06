@@ -94,7 +94,7 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Riktig! Begge består av fast bergart, men litosfæren er kald og sprø (brekker i plater), mens astenosfæren er så varm (~1350 °C) at den deformeres plastisk og lar platene gli over seg.",
+      "Riktig. Begge består av fast bergart, men litosfæren er kald og sprø (brekker i plater), mens astenosfæren er så varm (ca. 1300–1400 °C) at den deformeres plastisk og lar platene gli over seg.",
   },
   {
     prompt: "Hva er den viktigste drivkraften bak litosfæreplates bevegelse?",

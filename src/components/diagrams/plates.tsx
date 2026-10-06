@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { FigureFrame } from "@/components/figure-frame";
 import { PhotoFigure } from "@/components/photo-figure";
 import { getPosterPhotoFigure } from "@/lib/poster-figures";
@@ -28,7 +29,7 @@ export function EarthLayersDiagram() {
     <Diagram
       title="Jordens oppbygning: Kjerne, mantel, astenosfære og litosfære"
       heading="Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater"
-      caption="Jordkloden er lagdelt etter tetthet og reologi. Innerst ligger den faste jern-nikkelkjernen (5150–6371 km), omgitt av den flytende ytre kjernen (2900–5150 km) som genererer jordas magnetfelt. Mantelen består av fast silikatberg (peridotitt). I den øvre mantelen (100–350 km) ligger astenosfæren – fast bergart som på grunn av høy temperatur oppfører seg plastisk og duktilt over millioner av år. Over astenosfæren hviler litosfæren: den kalde, stive platen som består av litosfærisk mantel pluss jordskorpen. Skorpen deles i tykk, lett kontinentalskorpe (granittisk, 30–70 km) og tynn, tung havbunnsskorpe (basaltisk, 5–8 km)."
+      caption="Jorda er lagdelt etter tetthet og etter hvordan lagene oppfører seg. Innerst ligger den faste jern-nikkelkjernen (5150–6371 km, ca. 5000 °C), omgitt av den flytende ytre kjernen (2900–5150 km) som lager jordas magnetfelt. Mantelen består av fast silikatbergart (peridotitt). Astenosfæren (ca. 100–350 km, ca. 1300–1400 °C) er fast bergart som deformeres seigt over millioner av år. Over den hviler litosfæren: i snitt ca. 100 km, opptil ca. 200 km under gamle kontinenter. Skorpen deles i kontinentalskorpe (30–50 km, opptil 70–80 km under høye fjell) og havbunnsskorpe (5–8 km)."
       viewBox="0 0 940 520"
       wide
     >
@@ -83,7 +84,7 @@ export function EarthLayersDiagram() {
               Indre kjerne (fast Fe-Ni)
             </L>
             <L x="200" y="378" fill="#222" size={9.5} anchor="middle">
-              ~6000 °C · 5150–6371 km
+              ca. 5000 °C · 5150–6371 km
             </L>
 
             <L x="200" y="295" fill="#fff" size={12} weight={700} anchor="middle">
@@ -97,14 +98,14 @@ export function EarthLayersDiagram() {
               Nedre mantel (mesosfære)
             </L>
             <L x="200" y="235" fill="#d1d5db" size={10} anchor="middle">
-              Fast silikatberg (bridgmanitt) · 660–2900 km
+              Fast silikatbergart · 660–2900 km
             </L>
 
             <L x="200" y="145" fill={C.teal} size={11.5} weight={700} anchor="middle">
-              Øvre mantel & astenosfære (100–660 km)
+              Astenosfære (ca. 100–350 km)
             </L>
             <L x="200" y="85" fill={C.fg} size={12} weight={800} anchor="middle">
-              Litosfære (skorpe + stiv mantel, 0–100 km)
+              Litosfære (i snitt ca. 100 km)
             </L>
 
             {/* Diskontinuiteter markert med piler */}
@@ -133,7 +134,7 @@ export function EarthLayersDiagram() {
               Kontinentalskorpe
             </L>
             <L x="110" y="86" fill={C.sand} size={10.5} anchor="middle">
-              Granittisk · 30–70 km tykk
+              Granittisk · 30–50 km tykk
             </L>
             <L x="110" y="100" fill="#d1d5db" size={9.5} anchor="middle">
               Lav tetthet: ~2,7 g/cm³
@@ -174,13 +175,13 @@ export function EarthLayersDiagram() {
               Stiv litosfærisk mantel
             </L>
             <L x="300" y="152" fill="#94a3b8" size={10} anchor="middle">
-              Oseanisk litosfære (~70–100 km)
+              Havbunnslitosfære (tynnest ved ryggen)
             </L>
 
             {/* Klammer / dybdeindikatorer */}
             <line x1="12" y1="45" x2="12" y2="195" stroke={C.warm} strokeWidth="2.5" />
             <L x="8" y="125" fill={C.warm} size={10} weight={700} anchor="end">
-              Kontinentallitosfære (opptil 150–250 km)
+              Kontinentallitosfære (opptil ca. 200 km)
             </L>
 
             {/* Astenosfæren under hele bredden */}
@@ -195,7 +196,7 @@ export function EarthLayersDiagram() {
               Oppfører seg plastisk og duktilt (seigtflytende) over millioner av år.
             </L>
             <L x="205" y="288" fill="#94a3b8" size={10} anchor="middle">
-              Viskositet ~10¹⁹–10²¹ Pa·s · Her glir litosfæreplatene!
+              Seigt over millioner av år. Her glir platene.
             </L>
 
             {/* Dypere overgangssone i mantelen */}
@@ -225,7 +226,7 @@ export function ConvectionDiagram() {
     <Diagram
       title="Platetektonikkens drivkrefter: platetrekk, ryggskyv og mantelkonveksjon"
       heading="Hva beveger platene? Gravitasjon og tetthetsforskjeller styrer maskineriet"
-      caption="Tidligere trodde man platene var passive flåter som ble skjøvet rundt av mantelkonveksjon. I dag vet vi at platene selv er en aktiv del av konveksjonssystemet. Den suverent største drivkraften er slab pull (~90 % av kraften): Kald, eldre havbunn er tettere enn astenosfæren under. Når den dykker i en subduksjonssone, omdannes basalten til den ultrahøytette bergarten eklogitt ved 40–60 km dyp, og fungerer som et gigantisk lodd som trekker hele platen etter seg. Ved midthavsryggen rager litosfæren 2–3 km høyere enn omkringliggende havbunn; tyngdekraften får den til å gli sakte nedover bakken. Det kalles ryggskyv (ridge push). Basal drag er friksjonskoblingen mot den seige astenosfæren."
+      caption="Platene er en aktiv del av konveksjonen, ikke bare flåter som skyves rundt. Den største drivkraften er platetrekk (slab pull), om lag 90 % av kraften. Kald, eldre havbunn er tettere enn astenosfæren under. I en subduksjonssone omdannes basalten til den tunge bergarten eklogitt ved 40–60 km dyp, og platen trekkes nedover. Ved midthavsryggen står litosfæren 2–3 km høyere enn havbunnen rundt, og tyngdekraften får den til å gli ned skråningen (ryggskyv, ridge push). Manteldrag (basal drag) er friksjonen mot den seige astenosfæren."
       viewBox="0 0 940 480"
       wide
       action={
@@ -336,7 +337,7 @@ export function ConvectionDiagram() {
             <Arrow d="M 0 0 L 65 95" marker={m.teal} color={C.teal} width={4.5} />
             <rect x="75" y="80" width="200" height="60" rx="6" fill="#0b1622" stroke={C.teal} strokeWidth="1.5" opacity="0.95" />
             <L x="85" y="100" fill={C.teal} size={13} weight={800}>
-              1. Platetrekk (~90 % av kraften)
+              1. Platetrekk (om lag 90 %)
             </L>
             <L x="85" y="118" fill="#d1d5db" size={10.5}>
               Kald litosfære omdannes til
@@ -365,7 +366,7 @@ export function ConvectionDiagram() {
           <g transform="translate(430, 135)">
             <Arrow d="M 0 0 L 60 0" marker={m.cold} color={C.cold} width={3} />
             <L x="30" y="-8" fill={C.cold} size={11} weight={700} anchor="middle">
-              3. Basal drag (manteldrag)
+              3. Manteldrag (basal drag)
             </L>
             <L x="30" y="16" fill="#94a3b8" size={9.5} anchor="middle">
               Friksjon mot konveksjonsstrømmen
@@ -375,7 +376,7 @@ export function ConvectionDiagram() {
           {/* KJERNEN I BUNN */}
           <rect x="40" y="420" width="860" height="20" fill="url(#cf-core)" />
           <L x="470" y="435" fill="#fef08a" size={11} weight={700} anchor="middle">
-            Kjerne-mantel-grensen (D''-laget · 2900 km dyp): Leverer varmeenergien til motoren
+            Kjerne-mantel-grensen (2900 km): varme fra jordas indre
           </L>
         </>
       )}
@@ -597,24 +598,24 @@ export function SolidusDiagram() {
           </L>
           <g transform="rotate(-90 30 220)">
             <L x="30" y="220" fill={C.fg} size={13} weight={700} anchor="middle">
-              Dybde (km) / Trykk (GPa) ↓
+              Dybde (km) ↓
             </L>
           </g>
 
           {/* Dybdemerker på Y-aksen */}
-          <L x="80" y="65" fill={C.muted} size={11} anchor="end">0 km (0 GPa)</L>
+          <L x="80" y="65" fill={C.muted} size={11} anchor="end">0 km</L>
           <line x1="86" y1="60" x2="94" y2="60" stroke="#475569" strokeWidth="1.5" />
 
-          <L x="80" y="150" fill={C.muted} size={11} anchor="end">50 km (1,5 GPa)</L>
+          <L x="80" y="150" fill={C.muted} size={11} anchor="end">50 km</L>
           <line x1="86" y1="145" x2="94" y2="145" stroke="#475569" strokeWidth="1.5" />
 
-          <L x="80" y="235" fill={C.muted} size={11} anchor="end">100 km (3,0 GPa)</L>
+          <L x="80" y="235" fill={C.muted} size={11} anchor="end">100 km</L>
           <line x1="86" y1="230" x2="94" y2="230" stroke="#475569" strokeWidth="1.5" />
 
-          <L x="80" y="320" fill={C.muted} size={11} anchor="end">150 km (4,5 GPa)</L>
+          <L x="80" y="320" fill={C.muted} size={11} anchor="end">150 km</L>
           <line x1="86" y1="315" x2="94" y2="315" stroke="#475569" strokeWidth="1.5" />
 
-          <L x="80" y="395" fill={C.muted} size={11} anchor="end">200 km (6,0 GPa)</L>
+          <L x="80" y="395" fill={C.muted} size={11} anchor="end">200 km</L>
           <line x1="86" y1="390" x2="94" y2="390" stroke="#475569" strokeWidth="1.5" />
 
           {/* Temperaturmerker på X-aksen */}
@@ -688,7 +689,7 @@ export function SolidusDiagram() {
               Vann fra slab senker solidus mot venstre.
             </L>
             <L x="410" y="305" fill="#cbd5e1" size={10} anchor="end">
-              Mantelen smelter ved uendret temperatur!
+              Mantelen smelter ved uendret temperatur.
             </L>
           </g>
         </>
@@ -706,7 +707,7 @@ export function DecompressionMeltingDiagram() {
     <Diagram
       title="Dekompresjonssmelting ved tynning av jordskorpe og litosfære"
       heading="Trykkfall som drivstoff: Hvorfor skorpetynning smelter mantelen"
-      caption="Under et stabilt kontinent med 150 km tykk litosfære hviler det et enormt litostatisk trykk på mantelen under. Selv om astenosfæren er 1350 °C varm, hindrer trykket peridotitten i å smelte. Når jordskorpen og litosfæren strekkes og tynnes ved en rift eller midthavsrygg, minker den overliggende vekten brått. Astenosfæren stiger opp i tomrommet. Fordi varmeledningsevnen i stein er svært lav, rekker ikke bergartene å avkjøles nevneverdig mens de stiger; banen er nær adiabatisk. Ved rundt 60 kilometers dyp krysser banen soliduskurven, og 10–20 % av mantelen smelter delvis. Den nydannede basaltiske magmaen har lavere tetthet og stiger til overflaten."
+      caption="Under et stabilt kontinent kan litosfæren være opptil ca. 200 km tykk, og trykket på mantelen under er høyt. Selv om astenosfæren er 1300–1400 °C varm, hindrer trykket peridotitten i å smelte. Når jordskorpen og litosfæren strekkes og tynnes ved en rift eller midthavsrygg, minker vekten over brått. Astenosfæren stiger opp i tomrommet. Stein leder varme dårlig, så bergartene rekker ikke å avkjøles nevneverdig mens de stiger. Banen er nær adiabatisk. Ved rundt 60 kilometers dyp krysses solidus, og 10–20 % av mantelen smelter delvis. Den nydannede basaltiske magmaen har lavere tetthet og stiger til overflaten."
       viewBox="0 0 880 400"
       wide
     >
@@ -722,7 +723,7 @@ export function DecompressionMeltingDiagram() {
             {/* Tykk skorpe (35 km) */}
             <rect x="20" y="45" width="330" height="65" fill="#4b5d52" stroke="#2d3d34" />
             <L x="185" y="75" fill="#fff" size={12.5} weight={700} anchor="middle">
-              Tykk kontinentalskorpe (35–45 km)
+              Kontinentalskorpe (30–50 km)
             </L>
             <L x="185" y="93" fill="#cbd5e1" size={10.5} anchor="middle">
               Massiv overliggende vekt → enormt litostatisk trykk
@@ -731,7 +732,7 @@ export function DecompressionMeltingDiagram() {
             {/* Tykk litosfærisk stiv mantel (ned til 150 km) */}
             <rect x="20" y="110" width="330" height="95" fill="#1b2933" stroke="#121e25" />
             <L x="185" y="150" fill={C.cold} size={12} weight={700} anchor="middle">
-              Kald litosfærisk mantel (120 km)
+              Litosfærisk mantel (opptil ca. 200 km)
             </L>
             <L x="185" y="168" fill="#94a3b8" size={10.5} anchor="middle">
               Holder astenosfæren nede på høyt trykk
@@ -740,7 +741,7 @@ export function DecompressionMeltingDiagram() {
             {/* Astenosfære i bunn (fast peridotitt) */}
             <rect x="20" y="205" width="330" height="110" fill="#221e1a" stroke="#332a22" />
             <L x="185" y="250" fill={C.teal} size={13} weight={700} anchor="middle">
-              Astenosfære (~1350 °C)
+              Astenosfære (1300–1400 °C)
             </L>
             <L x="185" y="270" fill="#ef4444" size={11} weight={600} anchor="middle">
               FAST STOFF (T &lt; T_solidus)
@@ -852,7 +853,11 @@ export function BoundaryOverviewDiagram() {
               <strong>Kontinent mot kontinent:</strong> Ingen subduksjon pga. lav tetthet. Skorpefortykning og skyvedekker (Himalaya, Kaledonidene).
             </li>
             <li>
-              <strong>Jordskjelv:</strong> Langs plategrensen. Les mer om dybdefordelingen i Jordskjelv og tsunamier.
+              <strong>Jordskjelv:</strong> Langs plategrensen. Les mer om dybdefordelingen i kapittelet{" "}
+              <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
+                Jordskjelv og tsunamier
+              </Link>
+              .
             </li>
           </ul>
         </div>
@@ -897,7 +902,24 @@ export function SpreadingDiagram() {
     <Diagram
       title="Havbunnsspredning, lagdelt havbunnsskorpe og paleomagnetiske striper"
       heading="Midthavsryggen: Havbunnsskorpens fødested og paleomagnetiske bånd"
-      caption="Ved midthavsryggen dannes ny havbunnsskorpe kontinuerlig i et lagdelt system: 1) Dype marine sedimenter, 2) Putelava (pillow basalt) som bråkjøles mot sjøvannet, 3) Basaltganger (sheeted dykes) som tilførte magmaen, 4) Gabbro i det dype magmakammeret, og 5) Peridotitt under Moho. Når den samme lagrekken skyves på land, kalles den ofiolitt — det eier kapittelet Norges geologiske historie. Når basalten avkjøles under Curie-temperaturen (~580 °C), orienterer jernmineralet magnetitt seg etter jordens magnetfelt og «fryses» fast. Fordi jordas magnetfelt jevnlig bytter polaritet (reverserer), fungerer havbunnen som et gigantisk magnetisk båndopptak med symmetriske striper av normal og reversert magnetisering på hver side av ryggen. Dette var Vine-Matthews-Morley-hypotesen (1963) som ga det ugjendrivelige beviset for platetektonikken."
+      caption={
+        <>
+          Ved midthavsryggen dannes ny havbunnsskorpe kontinuerlig i et lagdelt system: 1) Dype marine
+          sedimenter, 2) Putelava (pillow basalt) som bråkjøles mot sjøvannet, 3) Basaltganger (sheeted
+          dykes) som tilførte magmaen, 4) Gabbro i det dype magmakammeret, og 5) Peridotitt under Moho.
+          Når den samme lagrekken skyves på land, kalles den ofiolitt. Les mer i kapittelet{" "}
+          <Link
+            to="/geofag-1/norges-geologi"
+            className="font-medium text-primary underline underline-offset-2"
+          >
+            Norges geologiske historie
+          </Link>
+          . Når basalten avkjøles under Curie-temperaturen (ca. 580 °C), orienterer jernmineralet
+          magnetitt seg etter jordas magnetfelt og fryses fast. Fordi magnetfeltet jevnlig bytter
+          polaritet, får havbunnen symmetriske striper av normal og reversert magnetisering på hver side
+          av ryggen. Det var Vine–Matthews–Morley-hypotesen (1963), som beviste havbunnsspredning.
+        </>
+      }
       viewBox="0 0 940 520"
       wide
       action={
@@ -1309,10 +1331,10 @@ export function ContinentalRiftDiagram() {
               NORSK EKSEMPEL: OSLOFELTET
             </L>
             <L x="12" y="36" fill="#d1d5db" size={10}>
-              En fossil paleorift fra perm (300 Ma).
+              Fossil paleorift. Vulkanisme 250–300 Ma.
             </L>
             <L x="12" y="50" fill="#94a3b8" size={9.5}>
-              Graben fra Skagerrak til Mjøsa · Rombeporfyr
+              Skagerrak–Østerdalen · Rombeporfyr
             </L>
           </g>
         </>
@@ -1333,7 +1355,22 @@ export function SubductionDiagram() {
     <Diagram
       title="Subduksjon hav mot kontinent: Dehydrering og flukssmelting"
       heading="Subduksjon: H₂O-frigjøring, flukssmelting og vulkanbue"
-      caption="Når oseanisk litosfære subdueres under et kontinent (som Nazcaplaten under Sør-Amerika), presses den ned i et miljø med økende trykk og temperatur. Ved dyphavsgropen dannes en akkresjonskile av sedimenter som skrapes av havbunnen. I dypet mellom 80 og 150 km gjennomgår havbunnsskorpen metamorfose: hydratiserte mineraler som amfibol og serpentin brytes ned og avgir overkritisk vann (dehydrering). Dette vannet stiger inn i den overliggende mantelkilen av peridotitt. Vannmolekylene bryter silikatbindingene og senker bergartens smeltepunkt dramatisk – dette kalles flukssmelting! Magmaen stiger og bygger opp en eksplosiv vulkansk bue (Andesfjellene). Jordskjelvene som følger den synkende platen, og Wadati-Benioff-sonen, eier kapittelet Jordskjelv."
+      caption={
+        <>
+          Når havbunnslitosfære subdueres under et kontinent (som Nazcaplaten under Sør-Amerika),
+          presses den ned der trykk og temperatur øker. Ved dyphavsgropen dannes en akkresjonskile av
+          sedimenter som skrapes av havbunnen. Mellom 80 og 150 km dyp brytes vannholdige mineraler som
+          amfibol og serpentin ned og avgir overopphetet vann (dehydrering). Vannet stiger inn i
+          mantelkilen av peridotitt over, bryter bindingene i bergarten og senker smeltepunktet. Mantelen
+          smelter (flukssmelting). Magmaen stiger og
+          bygger en eksplosiv vulkanbue (Andesfjellene). Les mer om jordskjelvene langs den synkende
+          platen og Wadati-Benioff-sonen i kapittelet{" "}
+          <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
+            Jordskjelv og tsunamier
+          </Link>
+          .
+        </>
+      }
       viewBox="0 0 940 520"
       wide
       action={
@@ -1737,7 +1774,7 @@ export function CollisionDiagram() {
           <polygon points="380,65 390,50 400,65" fill="#fff" />
           <polygon points="540,68 550,55 560,68" fill="#fff" />
           <L x="470" y="24" fill="#f8fafc" size={14} weight={800} anchor="middle">
-            Himalaya (8848 moh.) / Kaledonidene i silur (~9000 moh.!)
+            Himalaya (8848 moh.) / Kaledonidene i silur (ca. 9000 moh.)
           </L>
 
           {/* Kaledonske skyvedekker (stables langs basale skyveforkastninger) */}

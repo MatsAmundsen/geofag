@@ -15,7 +15,7 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     alt: "Fotorealistisk 3D-tverrsnitt av jordens lagdeling fra jordskorpen og Moho ned til den faste indre kjernen",
     heading: "Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater",
     caption:
-      "Jordkloden er lagdelt etter kjemisk sammensetning og mekaniske egenskaper (reologi). Litosfæren (jordskorpen og det øverste stive mantellaget) utgjør de tektoniske platene som glir over den seige, plastiske astenosfæren. Under overgangssonen ligger den massive nedre mantelen (opptil 2900 km). Den flytende ytre jern-nikkelkjernen (2900–5150 km) genererer jordas magnetfelt via geodynamoen, mens det enorme trykket i sentrum (5150–6371 km) holder den indre kjernen i fast, krystallinsk tilstand til tross for temperaturer på rundt 5000 °C.",
+      "Jorda er lagdelt etter kjemisk sammensetning og etter hvordan lagene oppfører seg. Litosfæren (jordskorpen og det øverste stive mantellaget) utgjør de tektoniske platene som glir over den seige astenosfæren. Under overgangssonen ligger den nedre mantelen (ned til 2900 km). Den flytende ytre kjernen av jern og nikkel (2900–5150 km) lager jordas magnetfelt. Trykket i sentrum (5150–6371 km) holder den indre kjernen fast, selv om temperaturen er ca. 5000 °C.",
     marks: [
       { x: 28, y: 28, n: "1", text: "Litosfære & Moho", tone: "cold" },
       { x: 38, y: 37, n: "2", text: "Astenosfære", tone: "warm" },
@@ -27,12 +27,12 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
       {
         n: "1",
         label:
-          "Litosfære og Moho (0–100/200 km): Jordens stive ytterste skall delt i litosfæreplater. Består av skorpen (kontinental 30–50 km, havbunn 5–8 km) og øverste stive mantel, adskilt av Moho-grensen der seismiske bølger øker brått i fart.",
+          "Litosfære og Moho (i snitt ca. 100 km, opptil ca. 200 km under gamle kontinenter): Jordas stive ytterste skall, delt i litosfæreplater. Består av skorpen (kontinental 30–50 km, havbunn 5–8 km) og øverste stive mantel, adskilt av Moho-grensen der seismiske bølger øker brått i fart.",
       },
       {
         n: "2",
         label:
-          "Astenosfæren (~100–350 km, ca. 1300–1400 °C): Fast peridotitt nær smeltepunktet som oppfører seg duktilt og seigtflytende over geologisk tid, slik at litosfæreplatene kan gli oppå.",
+          "Astenosfæren (ca. 100–350 km, ca. 1300–1400 °C): Fast peridotitt nær smeltepunktet som deformeres seigt over geologisk tid, slik at litosfæreplatene kan gli oppå.",
       },
       {
         n: "3",

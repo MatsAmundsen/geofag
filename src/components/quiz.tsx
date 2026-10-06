@@ -16,7 +16,7 @@ export function Quiz({
   intro = "Velg ett svar per spørsmål. Dette er VG3-nivå med et par steg mot universitet.",
 }: {
   questions: QuizQuestion[];
-  /** Null hides the heading so the chapter can keep a single «Test deg selv». */
+  /** Null hides the heading when the surrounding chapter already has one. */
   heading?: string | null;
   /** Null hides the intro line. Other chapters keep the default. */
   intro?: string | null;

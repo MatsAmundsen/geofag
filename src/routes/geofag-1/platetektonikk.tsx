@@ -22,7 +22,7 @@ function PlatetektonikkPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Under føttene våre er jordskorpen i konstant, nådeløs bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og havet fornyes kontinuerlig fra jordas brennende indre. Platetektonikken er geovitenskapens samlende teori: Den forklarer hvorfor fjellkjeder reiser seg mot himmelen, hvorfor jordskjelv ryster kloden, og hvorfor magma veller fram fra dypet i et evig kretsløp."
+      lead="Jordskorpen er i stadig bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og ny havbunn dannes fra jordas indre. Platetektonikk er geovitenskapens samlende teori. Den forklarer hvordan fjellkjeder bygges, hvorfor jordskjelv oppstår, og hvordan magma dannes."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

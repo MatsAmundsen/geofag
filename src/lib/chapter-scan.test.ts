@@ -52,9 +52,9 @@ describe("splitChapterByH2", () => {
     assert.deepEqual(
       doc.sections.map((section) => section.title),
       [
-        "Platetektonikk",
+        "Jordas oppbygning",
         "Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»",
-        "Platedrift og plategrenser: hva er det som driver platene?",
+        "Hva driver platene?",
         "Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer",
         "Plategrensene: Tre relative bevegelser, seks geologiske miljøer",
         "Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde",
@@ -87,9 +87,9 @@ describe("splitChapterByH2", () => {
       ],
     );
     assert.match(doc.sections[0]?.markdown ?? "", /Indre fast kjerne/);
-    assert.match(doc.sections[2]?.markdown ?? "", /Trench suction/);
+    assert.match(doc.sections[2]?.markdown ?? "", /trench suction/i);
     assert.ok(doc.sections[0]?.subsections.length >= 2);
-    assert.equal(doc.sections[0]?.subsections[0]?.title, "Inndeling av jorden indre");
+    assert.equal(doc.sections[0]?.subsections[0]?.title, "Inndeling av jordas indre");
     assert.match(doc.sections[0]?.subsections[0]?.markdown ?? "", /Indre fast kjerne/);
   });
 });

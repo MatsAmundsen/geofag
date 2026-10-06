@@ -590,7 +590,7 @@ function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) 
         Øverste 200 km av plymen
       </text>
       <text x={plumeX - 28} y={yDepth(136)} fill="#fed7aa" fontSize="10" textAnchor="end">
-        Kilden er D''-laget, ca. 2900 km
+        Kilden er grensen mot kjernen, 2900 km
       </text>
       {showMelting ? (
         <g>
@@ -901,6 +901,7 @@ export function PlateTectonicsModel() {
 
   return (
     <ModelFrame
+      stackHeader
       kicker="Interaktiv geodynamisk simulator"
       title="Platetektonisk bevegelses- og grensemodell"
       lead="Juster platehastigheten og se riftdal, litosfæretykkelse og magnetstripebredde endre seg. Slå av og på jordskjelv, smelting og drivkrefter der grensen har dem."
@@ -1096,13 +1097,13 @@ export function PlateTectonicsModel() {
       </div>
 
       <div className="mt-4 space-y-4">
-        <ModelNote title="Egne kapitler" tone="teal">
+        <ModelNote title="Les mer" tone="teal">
           <p>
-            Seismisitet og Wadati-Benioff-sonen ligger i{" "}
+            Les mer om seismisitet og Wadati-Benioff-sonen i kapittelet{" "}
             <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
               Jordskjelv og tsunamier
             </Link>
-            . Ofiolittkomplekset på Leka ligger i{" "}
+            . Les mer om ofiolittkomplekset på Leka i kapittelet{" "}
             <Link to="/geofag-1/norges-geologi" className="font-medium text-primary underline underline-offset-2">
               Norges geologiske historie
             </Link>
