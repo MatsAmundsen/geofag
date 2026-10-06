@@ -9,7 +9,7 @@ export function AtmosphericColumnDiagram() {
     <Diagram
       title="Luftsøylen og trykkfall med høyden"
       heading="Luftsøylen: Lufttrykk er vekten av luften over deg"
-      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Luften er tettest nær bakken, fordi de nederste lagene bærer vekten av luften over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av luften i atmosfæren ligger under denne høyden. Ved havnivå er gjennomsnittet om lag 1013 hPa."
+      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Luften er tettest nær bakken, fordi de nederste lagene bærer vekten av luften over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av luften i atmosfæren ligger under denne høyden."
       viewBox="0 0 940 520"
       wide
     >
@@ -196,7 +196,7 @@ export function AtmosphericColumnDiagram() {
             0 moh. (Havnivå)
           </L>
           <L x="60" y="454" fill="#38bdf8" size={14} weight={800} anchor="end">
-            om lag 1013 hPa
+            Luften er tettest her
           </L>
           <L x="60" y="469" fill={C.muted} size={10.5} anchor="end">
             Gjennomsnitt ved havnivå
