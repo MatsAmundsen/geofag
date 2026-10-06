@@ -80,13 +80,27 @@
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  *:not(.motion-unlocked):not(.motion-unlocked *),
+  *:not(.motion-unlocked):not(.motion-unlocked *)::before,
+  *:not(.motion-unlocked):not(.motion-unlocked *)::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Scale particles about their own centre. A CSS transform otherwise uses the SVG origin. */
+.sub-h2o-bubble,
+.sub-puff,
+.rift-smoke-puff,
+.oos-smoke-puff,
+.oos-h2o,
+.hp-smoke,
+.smoker-plume-1,
+.smoker-plume-2,
+.vm-particle {
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 @layer components {
