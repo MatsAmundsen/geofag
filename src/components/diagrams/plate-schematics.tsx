@@ -160,87 +160,114 @@ export function EarthShellDiagram() {
 export function RidgeAnatomyDiagram() {
   return (
     <Schematic
-      title="Midthavsrygg med putelava, plateformede ganger, magmakammer, dekompresjonssmelting og svart skorstein."
+      title="Midthavsrygg med putelava, plateformede ganger, gabbro, magmakammer, litosfærisk mantel, dekompresjonssmelting og svart skorstein."
       heading="Midthavsryggens anatomi: Dekompresjonssmelting og hydrotermale skorsteiner"
       caption="Når to litosfæreplater trekkes fra hverandre, stiger astenosfærisk peridotitt uten å tape nevneverdig varme. Trykkfallet gir dekompresjonssmelting og basaltisk magma. På havbunnen størkner lavaen som putelava (pillow basalt). Sjøvann varmes til 350–400 °C og kommer ut i svarte skorsteiner (black smokers). Havdypet ved aksen er ca. 2500 m."
-      viewBox="0 0 400 600"
+      viewBox="0 0 400 640"
     >
-      <L x="200" y="26" fill={C.fg} size={16} weight={700} anchor="middle">
+      <L x="200" y="24" fill={C.fg} size={16} weight={700} anchor="middle">
         Midthavsrygg (mid-ocean ridge)
       </L>
 
-      <path d="M16 44 H168 L196 78 L224 44 H384 V148 H16 Z" fill="#143044" />
-      <L x="72" y="66" fill={C.cold} size={16} weight={650} anchor="middle">
-        Hav
-      </L>
-      <L x="72" y="90" fill={C.fg} size={15} anchor="middle">
-        ca. 2500 m
-      </L>
-      <L x="168" y="118" fill={C.fg} size={14} weight={650} anchor="middle">
-        Aksedal
-      </L>
-      <L x="168" y="140" fill={C.muted} size={14} anchor="middle">
-        (axial valley)
-      </L>
+      {/* Astenosfæren stiger under aksen, så den litosfæriske mantelen blir tynn der */}
+      <path
+        d="M16 468 L120 468 L200 368 L280 468 L384 468 L384 624 L16 624 Z"
+        fill="#16343c"
+        stroke={C.teal}
+      />
+      <path
+        d="M16 356 L152 356 L200 340 L248 356 L384 356 L384 468 L280 468 L200 368 L120 468 L16 468 Z"
+        fill="#1b2a33"
+      />
+      <path d="M16 356 L152 356 L200 340 L248 356 L384 356" fill="none" stroke={C.low} strokeWidth="2.5" />
 
-      {/* Skorstein til høyre for aksedalen. Teksten står til høyre for pipa. */}
-      <rect x="236" y="78" width="8" height="36" fill="#4b5563" />
-      <rect x="228" y="72" width="24" height="8" fill="#374151" />
-      <path d="M240 72 C246 58, 258 52, 266 44" fill="none" stroke="#9ca3af" strokeWidth="3" />
-      <L x="268" y="64" fill={C.warm} size={14} weight={650}>
-        Svart skorstein
+      <L x="72" y="404" fill={C.cold} size={14} weight={650} anchor="middle">
+        Litosfærisk
       </L>
-      <L x="268" y="88" fill={C.sand} size={14}>
-        (black smoker)
+      <L x="72" y="430" fill={C.cold} size={14} weight={650} anchor="middle">
+        mantel
       </L>
-      <L x="268" y="112" fill={C.warm} size={14}>
-        350–400 °C
-      </L>
-
-      <Band x={16} y={148} w={368} h={68} fill="#2f6f52" stroke="#1e4634" />
-      <circle cx="48" cy="182" r="12" fill="#1f4d38" />
-      <circle cx="72" cy="176" r="9" fill="#1a4030" />
-      <L x="214" y="178" fill={C.fg} size={16} weight={700} anchor="middle">
-        Putelava (pillow basalt)
-      </L>
-      <L x="214" y="200" fill={C.sand} size={14} anchor="middle">
-        havbunnens basalt
-      </L>
-
-      <Band x={16} y={216} w={368} h={68} fill="#1e3a4c" />
-      {[48, 64, 80, 300, 316, 332].map((x) => (
-        <line key={x} x1={x} y1="220" x2={x} y2="280" stroke="#163044" strokeWidth="3" />
-      ))}
-      <L x="190" y="246" fill={C.fg} size={16} weight={700} anchor="middle">
-        Plateformede ganger
-      </L>
-      <L x="190" y="268" fill={C.cold} size={14} anchor="middle">
-        (sheeted dikes)
-      </L>
-
-      <Band x={16} y={284} w={368} h={72} fill="#3f3a34" />
-      <L x="200" y="316" fill={C.fg} size={16} weight={700} anchor="middle">
-        Magmakammer (gabbro)
-      </L>
-      <ellipse cx="200" cy="338" rx="48" ry="12" fill="#9a3412" />
-
-      <line x1="16" y1="356" x2="384" y2="356" stroke={C.low} strokeWidth="2.5" />
-      <L x="200" y="376" fill={C.low} size={15} weight={700} anchor="middle">
+      <L x="328" y="342" fill={C.low} size={14} weight={700} anchor="middle">
         Moho
       </L>
 
-      <Band x={16} y={388} w={368} h={192} fill="#16343c" stroke={C.teal} />
-      <L x="200" y="428" fill={C.teal} size={17} weight={700} anchor="middle">
+      <path d="M16 268 H384 V356 H248 L200 340 L152 356 H16 Z" fill="#3f3a34" />
+      <L x="78" y="308" fill={C.fg} size={16} weight={700} anchor="middle">
+        Gabbro
+      </L>
+      <ellipse cx="200" cy="308" rx="52" ry="18" fill="#9a3412" />
+      <L x="200" y="313" fill="#fff7ed" size={13} weight={700} anchor="middle">
+        Magmakammer
+      </L>
+
+      <path d="M16 188 H176 L200 214 L224 188 H384 V268 H16 Z" fill="#1e3a4c" />
+      {[40, 56, 72].map((x) => (
+        <line key={x} x1={x} y1="192" x2={x} y2="264" stroke="#163044" strokeWidth="3" />
+      ))}
+      <L x="290" y="224" fill={C.fg} size={15} weight={700} anchor="middle">
+        Plateformede ganger
+      </L>
+      <L x="290" y="246" fill={C.cold} size={14} anchor="middle">
+        (sheeted dikes)
+      </L>
+
+      <path
+        d="M16 108 L132 96 L164 128 L200 144 L236 128 L268 96 L384 108 L384 188 L224 188 L200 214 L176 188 L16 188 Z"
+        fill="#2f6f52"
+        stroke="#1e4634"
+      />
+      <circle cx="48" cy="156" r="11" fill="#1f4d38" />
+      <circle cx="70" cy="150" r="8" fill="#1a4030" />
+      <L x="324" y="152" fill={C.fg} size={14} weight={700} anchor="middle">
+        Putelava
+      </L>
+      <L x="324" y="176" fill={C.sand} size={13} anchor="middle">
+        (pillow basalt)
+      </L>
+
+      <path
+        d="M16 40 H384 V108 L268 96 L236 128 L200 144 L164 128 L132 96 L16 108 Z"
+        fill="#143044"
+      />
+      <L x="58" y="62" fill={C.cold} size={16} weight={650} anchor="middle">
+        Hav
+      </L>
+      <L x="58" y="86" fill={C.fg} size={15} anchor="middle">
+        ca. 2500 m
+      </L>
+      <L x="168" y="68" fill={C.fg} size={14} weight={650} anchor="middle">
+        Aksedal
+      </L>
+      <L x="168" y="92" fill={C.muted} size={13} anchor="middle">
+        (axial valley)
+      </L>
+
+      {/* Skorsteinen står på havbunnen i høyre vegg av aksedalen.
+          Bunnen (x 228–236) treffer havbunnen ved y ≈ 130. */}
+      <rect x="228" y="104" width="8" height="28" fill="#4b5563" />
+      <rect x="220" y="98" width="24" height="8" fill="#374151" />
+      <path d="M232 98 C238 84, 246 74, 252 62" fill="none" stroke="#9ca3af" strokeWidth="3" />
+      <L x="258" y="56" fill={C.warm} size={14} weight={650}>
+        Svart skorstein
+      </L>
+      <L x="258" y="80" fill={C.sand} size={13}>
+        (black smoker)
+      </L>
+      <L x="258" y="104" fill={C.warm} size={14}>
+        350–400 °C
+      </L>
+
+      <L x="68" y="508" fill={C.teal} size={16} weight={700} anchor="middle">
         Astenosfære
       </L>
-      <L x="200" y="452" fill={C.fg} size={16} anchor="middle">
+      <line x1="146" y1="536" x2="186" y2="334" stroke={C.warm} strokeWidth="2.5" />
+      <path d="M186 334 L178 348 L194 344 Z" fill={C.warm} />
+      <line x1="254" y1="536" x2="214" y2="334" stroke={C.warm} strokeWidth="2.5" />
+      <path d="M214 334 L206 348 L222 344 Z" fill={C.warm} />
+      <L x="200" y="566" fill={C.fg} size={15} weight={650} anchor="middle">
         Dekompresjonssmelting
       </L>
-      <line x1="150" y1="530" x2="150" y2="472" stroke={C.warm} strokeWidth="2.5" />
-      <path d="M150 472 L144 486 L156 486 Z" fill={C.warm} />
-      <line x1="250" y1="530" x2="250" y2="472" stroke={C.warm} strokeWidth="2.5" />
-      <path d="M250 472 L244 486 L256 486 Z" fill={C.warm} />
-      <L x="200" y="558" fill={C.warm} size={15} anchor="middle">
+      <L x="200" y="592" fill={C.warm} size={15} anchor="middle">
         Peridotitt stiger
       </L>
     </Schematic>
@@ -252,82 +279,105 @@ export function SubductionAnatomyDiagram() {
     <Schematic
       title="Subduksjonssone med dyphavsgrop, akkresjonskile, havbunnsskorpe 5 til 8 kilometer, kontinentalskorpe 30 til 50 kilometer, dehydrering og flukssmelting."
       heading="Anatomi av en subduksjonssone: Dehydrering, flukssmelting og akkresjonskile"
-      caption="En havbunnsplate bøyer ned i mantelen ved dyphavsgropen (trench). Havbunnsskorpen er 5–8 km tykk, kontinentalskorpen 30–50 km. Sedimenter skrapes av som en akkresjonskile. Vann fra platen (dehydrering) senker smeltepunktet i mantelen over (flukssmelting) og mater vulkanbuen (volcanic arc)."
-      viewBox="0 0 400 620"
+      caption="En havbunnsplate bøyer ned i mantelen ved dyphavsgropen (trench). Havbunnsskorpen er 5–8 km tykk, kontinentalskorpen 30–50 km. Sedimenter skrapes av som en akkresjonskile på kontinentets side. Vann fra den synkende platen stiger inn i mantelkilen (dehydrering) og setter i gang flukssmelting. Smelten stiger gjennom skorpen og mater vulkanbuen (volcanic arc)."
+      viewBox="0 0 400 640"
     >
-      <Band x={12} y={52} w={136} h={36} fill="#143044" stroke="#1d4e6a" />
-      <L x="80" y="76" fill={C.cold} size={16} weight={650} anchor="middle">
-        Hav
-      </L>
-      <Band x={12} y={88} w={136} h={60} fill="#245c45" stroke="#163828" />
-      <L x="80" y="112" fill={C.fg} size={14} weight={700} anchor="middle">
-        Havbunnsskorpe
-      </L>
-      <L x="80" y="136" fill={C.teal} size={15} anchor="middle">
-        5–8 km
-      </L>
+      {/* Astenosfæren ligger under begge platene */}
+      <rect x="0" y="216" width="400" height="424" fill="#16343c" />
 
-      <L x="176" y="20" fill={C.cold} size={15} weight={700} anchor="middle">
+      {/* Én sammenhengende havbunnsplate: litosfæren bøyer ved gropen og dukker under kontinentet.
+          Skorpen er det samme polygonets toppflate, ikke en egen boks. */}
+      <path d="M8 96 H150 L178 184 L330 468 L263 504 L111 220 H8 Z" fill="#1b2a33" />
+      <path d="M8 96 H150 L178 184 L330 468 L308 480 L156 196 L140 158 H8 Z" fill="#245c45" />
+
+      {/* Mantelkile mellom den synkende platen og kontinentplaten */}
+      <path d="M248 216 L392 216 L392 300 L340 380 L300 460 L230 330 Z" fill="#1a4550" />
+      {/* Kontinentalskorpen ligger på kontinental litosfære */}
+      <path d="M292 176 H392 V216 H292 Z" fill="#243038" />
+
+      <path d="M292 40 H392 V176 H292 Z" fill="#5c6b60" stroke="#2f4236" />
+      <path d="M278 40 L296 14 L314 40 Z" fill="#7f1d1d" />
+
+      {/* Gropen er hakket der platen knekker. Vann tegnes før kilen, så kilen blir liggende oppå. */}
+      <path d="M8 52 H240 L208 80 L178 184 L150 96 H8 Z" fill="#143044" />
+      {/* Akkresjonskilen ligger på kontinentets side, over den synkende platen */}
+      <path d="M178 184 L208 80 L292 68 L292 176 L250 316 Z" fill={C.sand} />
+
+      <L x="72" y="22" fill={C.cold} size={14} weight={700} anchor="middle">
         Dyphavsgrop
       </L>
-      <L x="176" y="44" fill={C.muted} size={14} anchor="middle">
+      <L x="72" y="46" fill={C.muted} size={13} anchor="middle">
         (trench)
       </L>
-      <path d="M148 88 L176 156 L204 88 Z" fill="#071820" stroke={C.cold} strokeWidth="1.5" />
-      <line x1="176" y1="50" x2="176" y2="88" stroke={C.cold} strokeWidth="1.5" />
+      <L x="64" y="78" fill={C.cold} size={16} weight={650} anchor="middle">
+        Hav
+      </L>
+      <L x="70" y="120" fill={C.fg} size={13} weight={700} anchor="middle">
+        Havbunnsskorpe
+      </L>
+      <L x="70" y="146" fill={C.teal} size={13} anchor="middle">
+        5–8 km
+      </L>
+      <L x="62" y="178" fill={C.cold} size={14} weight={650} anchor="middle">
+        Havbunns-
+      </L>
+      <L x="62" y="204" fill={C.cold} size={14} weight={650} anchor="middle">
+        litosfære
+      </L>
 
-      <path d="M12 156 H136 L176 118 L196 146 L136 200 H12 Z" fill={C.sand} />
-      <L x="74" y="184" fill="#1c1408" size={15} weight={700} anchor="middle">
+      <L x="248" y="132" fill="#1c1408" size={13} weight={700} anchor="middle">
         Akkresjonskile
       </L>
 
-      <Band x={200} y={78} w={188} h={108} fill="#5c6b60" stroke="#2f4236" />
-      <path d="M336 78 L358 42 L380 78 Z" fill="#7f1d1d" />
-      <L x="248" y="36" fill={C.low} size={14} weight={700}>
+      <L x="392" y="22" fill={C.low} size={14} weight={700} anchor="end">
         Vulkanbue
       </L>
-      <L x="248" y="58" fill={C.sand} size={14}>
+      <L x="392" y="46" fill={C.sand} size={13} anchor="end">
         (volcanic arc)
       </L>
-      <L x="268" y="112" fill={C.fg} size={15} weight={700} anchor="middle">
+      <L x="354" y="78" fill={C.fg} size={14} weight={700} anchor="middle">
         Kontinental
       </L>
-      <L x="268" y="136" fill={C.fg} size={15} weight={700} anchor="middle">
+      <L x="354" y="104" fill={C.fg} size={14} weight={700} anchor="middle">
         skorpe
       </L>
-      <L x="268" y="162" fill={C.sand} size={15} anchor="middle">
+      <L x="354" y="130" fill={C.sand} size={14} anchor="middle">
         30–50 km
       </L>
+      <L x="360" y="202" fill={C.cold} size={13} weight={650} anchor="middle">
+        Litosfære
+      </L>
 
-      <path d="M12 208 H150 L280 300 L280 372 L190 372 L100 264 H12 Z" fill="#1b2a33" stroke="#131e24" />
-      <L x="70" y="230" fill={C.cold} size={14} weight={650} anchor="middle">
-        Havbunns-
+      <L x="348" y="246" fill={C.teal} size={14} weight={700} anchor="middle">
+        Mantelkile
       </L>
-      <L x="70" y="254" fill={C.cold} size={14} weight={650} anchor="middle">
-        litosfære
-      </L>
-      <L x="240" y="324" fill={C.fg} size={14} weight={650} anchor="middle">
+
+      <L x="200" y="300" fill={C.fg} size={14} weight={650} anchor="middle">
         Synkende
       </L>
-      <L x="240" y="348" fill={C.fg} size={14} weight={650} anchor="middle">
+      <L x="200" y="326" fill={C.fg} size={14} weight={650} anchor="middle">
         plate
       </L>
 
-      <Band x={12} y={392} w={376} h={212} fill="#16343c" stroke={C.teal} />
-      <L x="270" y="450" fill={C.teal} size={16} weight={700} anchor="middle">
-        Astenosfære
-      </L>
-
-      <line x1="150" y1="520" x2="168" y2="220" stroke={C.warm} strokeWidth="2.5" />
-      <path d="M168 220 L158 234 L174 230 Z" fill={C.warm} />
-      <L x="24" y="548" fill={C.warm} size={15} weight={650}>
+      {/* Dehydrering: korte piler fra platen i dypet, opp i mantelkilen */}
+      <line x1="242" y1="408" x2="270" y2="336" stroke={C.warm} strokeWidth="2.5" />
+      <path d="M270 336 L262 348 L278 346 Z" fill={C.warm} />
+      <line x1="278" y1="452" x2="298" y2="376" stroke={C.warm} strokeWidth="2.5" />
+      <path d="M298 376 L290 388 L306 386 Z" fill={C.warm} />
+      <L x="318" y="362" fill={C.warm} size={13} weight={650} anchor="middle">
         Dehydrering
       </L>
 
-      <line x1="358" y1="560" x2="358" y2="78" stroke={C.low} strokeWidth="2.5" />
-      <path d="M358 78 L350 92 L366 92 Z" fill={C.low} />
-      <L x="196" y="580" fill={C.low} size={15} weight={650}>
+      {/* Flukssmelting i mantelkilen, deretter opp gjennom skorpen til vulkanbuen */}
+      <ellipse cx="296" cy="332" rx="15" ry="10" fill="#c2410c" />
+      <line x1="296" y1="326" x2="296" y2="40" stroke={C.low} strokeWidth="2.5" />
+      <path d="M296 40 L288 54 L304 54 Z" fill={C.low} />
+      <L x="348" y="286" fill={C.low} size={12} weight={650} anchor="middle">
         Flukssmelting
+      </L>
+
+      <L x="78" y="560" fill={C.teal} size={16} weight={700} anchor="middle">
+        Astenosfære
       </L>
     </Schematic>
   );
