@@ -69,6 +69,7 @@ export function Diagram({
   children,
   wide,
   action,
+  scroll,
 }: {
   title: string;
   heading: string;
@@ -76,6 +77,8 @@ export function Diagram({
   viewBox: string;
   wide?: boolean;
   action?: ReactNode;
+  /** Keep the graphic wide enough to read on a phone, and scroll it inside the frame. */
+  scroll?: boolean;
   children: (m: {
     teal: string;
     warm: string;
@@ -99,10 +102,14 @@ export function Diagram({
     rain: `${uid}-rain`,
   };
   return (
-    <FigureFrame heading={heading} caption={caption} action={action}>
+    <FigureFrame heading={heading} caption={caption} action={action} scroll={scroll}>
       <svg
         viewBox={viewBox}
-        className={wide ? "mx-auto h-auto w-full max-w-5xl" : "mx-auto h-auto w-full max-w-3xl"}
+        className={
+          wide
+            ? `mx-auto h-auto w-full max-w-5xl${scroll ? " max-sm:min-w-[64rem] max-sm:max-w-none" : ""}`
+            : `mx-auto h-auto w-full max-w-3xl${scroll ? " max-sm:min-w-[48rem] max-sm:max-w-none" : ""}`
+        }
         role="img"
         aria-labelledby={`${uid}-title`}
       >

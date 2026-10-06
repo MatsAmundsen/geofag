@@ -10,8 +10,9 @@ export function AtmosphericColumnDiagram() {
       title="Luftsøylen og trykkfall med høyden"
       heading="Luftsøylen: Lufttrykk er vekten av luften over deg"
       caption="Lufttrykket er vekten av hele luftsøylen over et sted. Luften er tettest nær bakken, fordi de nederste lagene bærer vekten av luften over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av luften i atmosfæren ligger under denne høyden."
-      viewBox="0 0 940 520"
+      viewBox="-140 0 1070 540"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -48,7 +49,7 @@ export function AtmosphericColumnDiagram() {
           </defs>
 
           {/* Bakgrunnsatmosfære */}
-          <rect x="30" y="30" width="880" height="460" rx="8" fill="url(#col-sky-bg)" />
+          <rect x="-160" y="20" width="1080" height="490" rx="8" fill="url(#col-sky-bg)" />
 
           {/* Fjell- og terrengsilhuett i bakgrunnen */}
           {/* Fjellsilhuett i bakgrunnen, uten høyde- eller trykktall */}
@@ -70,9 +71,9 @@ export function AtmosphericColumnDiagram() {
           <path d="M 450 350 L 460 335 L 472 350 Z" fill="url(#col-snow-grad)" />
 
           {/* Havoverflate og kystlandskap nederst */}
-          <rect x="30" y="440" width="880" height="50" rx="4" fill="#0f1920" />
-          <path d="M 30 440 Q 200 435 370 440 L 370 490 L 30 490 Z" fill="#132635" />
-          <line x1="30" y1="440" x2="910" y2="440" stroke="#334e68" strokeWidth="2" />
+          <rect x="-160" y="440" width="1080" height="60" rx="4" fill="#0f1920" />
+          <path d="M -160 440 Q 200 435 370 440 L 370 500 L -160 500 Z" fill="#132635" />
+          <line x1="-160" y1="440" x2="910" y2="440" stroke="#334e68" strokeWidth="2" />
 
           {/* Rutefly ved tropopausen (11 km) */}
           <g transform="translate(680, 75)">
@@ -151,9 +152,9 @@ export function AtmosphericColumnDiagram() {
 
             {/* Tyngdekraftvektor som presser hele søylen ned */}
             <Arrow d="M 50 85 L 50 425" marker={m.warm} color={C.warm} width={3.6} />
-            <rect x="6" y="235" width="88" height="34" rx="4" fill="#0f172a" opacity="0.9" />
-            <L x="50" y="249" fill={C.warm} size={11} weight={800} anchor="middle">
-              Tyngdekraft (g)
+            <rect x="2" y="232" width="96" height="36" rx="4" fill="#0f172a" opacity="0.9" />
+            <L x="50" y="248" fill={C.warm} size={11} weight={800} anchor="middle">
+              Tyngdekraft
             </L>
             <L x="50" y="263" fill={C.fg} size={10} anchor="middle">
               Luften har masse
@@ -163,42 +164,33 @@ export function AtmosphericColumnDiagram() {
           {/* HØYDENIVÅER OG TRYKKSKALA PÅ VENSTRE SIDE */}
           <line x1="180" y1="70" x2="200" y2="70" stroke={C.teal} strokeWidth="2" />
           <line x1="70" y1="70" x2="180" y2="70" stroke={C.teal} strokeDasharray="3 3" opacity="0.7" />
-          <L x="60" y="66" fill={C.teal} size={14} weight={800} anchor="end">
+          <L x="52" y="58" fill={C.teal} size={15} weight={800} anchor="end">
             Tropopausen
           </L>
-          <L x="60" y="82" fill={C.muted} size={11} anchor="end">
+          <L x="52" y="80" fill={C.muted} size={12} anchor="end">
             ca. 8–11 km over Norge
           </L>
 
-          <line x1="180" y1="260" x2="200" y2="260" stroke={C.sand} strokeWidth="2" />
-          <line x1="70" y1="260" x2="180" y2="260" stroke={C.sand} strokeDasharray="4 3" opacity="0.8" />
-          <L x="60" y="254" fill={C.sand} size={14} weight={800} anchor="end">
-            5 500 m
+          <line x1="180" y1="250" x2="200" y2="250" stroke={C.sand} strokeWidth="2" />
+          <line x1="70" y1="250" x2="180" y2="250" stroke={C.sand} strokeDasharray="4 3" opacity="0.8" />
+          <L x="52" y="238" fill={C.sand} size={15} weight={800} anchor="end">
+            ca. 5,5 km
           </L>
-          <L x="60" y="270" fill={C.warm} size={12} weight={800} anchor="end">
+          <L x="52" y="260" fill={C.warm} size={13} weight={800} anchor="end">
             ca. 500 hPa
           </L>
-          <L x="60" y="285" fill={C.muted} size={10} anchor="end">
+          <L x="52" y="280" fill={C.muted} size={12} anchor="end">
             Halvparten av luften ligger under
           </L>
 
-          <line x1="180" y1="390" x2="200" y2="390" stroke={C.cold} strokeWidth="1.8" />
-          <line x1="70" y1="390" x2="180" y2="390" stroke={C.cold} strokeDasharray="3 3" opacity="0.6" />
-          <L x="60" y="386" fill={C.cold} size={13} weight={700} anchor="end">
-            {" "}
-          </L>
-          <L x="60" y="401" fill={C.muted} size={11} anchor="end">
-            {" "}
-          </L>
-
           <line x1="180" y1="440" x2="200" y2="440" stroke="#38bdf8" strokeWidth="2.4" />
-          <L x="60" y="436" fill={C.fg} size={15} weight={900} anchor="end">
+          <L x="52" y="424" fill={C.fg} size={15} weight={800} anchor="end">
             0 moh. (Havnivå)
           </L>
-          <L x="60" y="454" fill="#38bdf8" size={14} weight={800} anchor="end">
+          <L x="52" y="448" fill="#38bdf8" size={14} weight={800} anchor="end">
             Luften er tettest her
           </L>
-          <L x="60" y="469" fill={C.muted} size={10.5} anchor="end">
+          <L x="52" y="470" fill={C.muted} size={12} anchor="end">
             Gjennomsnitt ved havnivå
           </L>
 
@@ -285,6 +277,7 @@ export function RelativePressureDiagram() {
       caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Luften strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Luften strømmer ut, synker, og det blir ofte tørt og klart."
       viewBox="0 0 940 430"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -317,12 +310,7 @@ export function RelativePressureDiagram() {
             <rect x="35" y="30" width="415" height="375" rx="8" fill="#0d151c" stroke="#1d2d3d" strokeWidth="1.5" />
             <circle cx="242" cy="195" r="145" fill="url(#rel-low-rad)" />
 
-            <L x="242" y="58" size={16} weight={800} anchor="middle" fill={C.low}>
-              KART A: Lavtrykkssenter (1015 hPa)
-            </L>
-            <L x="242" y="76" size={12} fill={C.muted} anchor="middle">
-              Omgitt av høyere trykk (1025 hPa)
-            </L>
+            <rect x="36" y="31" width="413" height="62" rx="7" fill="#0d151c" />
 
             <path
               d="M 105 195 C 105 115, 165 75, 242 75 C 325 75, 380 120, 380 195 C 380 270, 320 315, 242 315 C 160 315, 105 270, 105 195 Z"
@@ -330,8 +318,8 @@ export function RelativePressureDiagram() {
               stroke="#475569"
               strokeWidth="1.8"
             />
-            <rect x="320" y="80" width="56" height="17" rx="3" fill="#0d151c" />
-            <L x="348" y="93" fill={C.muted} size={11} anchor="middle" weight={600}>
+            <rect x="46" y="104" width="78" height="22" rx="4" fill="#0d151c" />
+            <L x="85" y="120" fill={C.muted} size={12} anchor="middle" weight={700}>
               1025 hPa
             </L>
 
@@ -341,16 +329,11 @@ export function RelativePressureDiagram() {
               stroke="#64748b"
               strokeWidth="2"
             />
-            <rect x="290" y="125" width="56" height="17" rx="3" fill="#0d151c" />
-            <L x="318" y="138" fill={C.muted} size={11} anchor="middle" weight={600}>
-              1020 hPa
-            </L>
-
             <circle cx="242" cy="195" r="42" fill="#3b151b" stroke={C.low} strokeWidth="2.5" />
             <L x="242" y="200" fill={C.low} size={26} weight={900} anchor="middle">
               L
             </L>
-            <L x="242" y="218" fill="#fca5a5" size={11} weight={800} anchor="middle">
+            <L x="242" y="228" fill="#fca5a5" size={12} weight={800} anchor="middle">
               1015 hPa
             </L>
 
@@ -364,14 +347,22 @@ export function RelativePressureDiagram() {
             <Arrow d="M 330 160 Q 280 130 250 160" marker={m.fg} color={C.white} width={2.6} />
             <Arrow d="M 180 130 Q 200 170 215 175" marker={m.fg} color={C.white} width={2.6} />
 
-            <rect x="55" y="325" width="375" height="65" rx="6" fill="#171216" stroke="#4a1820" strokeWidth="1.3" />
-            <L x="242" y="344" fill={C.low} size={12} weight={800} anchor="middle">
+            <rect x="36" y="34" width="413" height="58" fill="#0d151c" />
+            <L x="242" y="54" size={15} weight={800} anchor="middle" fill={C.low}>
+              KART A: Lavtrykkssenter (1015 hPa)
+            </L>
+            <L x="242" y="76" size={13} fill={C.fg} anchor="middle">
+              Omgitt av høyere trykk (1025 hPa)
+            </L>
+
+            <rect x="48" y="318" width="390" height="78" rx="6" fill="#171216" stroke="#4a1820" strokeWidth="1.3" />
+            <L x="242" y="338" fill={C.low} size={12} weight={800} anchor="middle">
               Netto bevegelse: Konvergens mot sentrum
             </L>
-            <L x="242" y="362" fill={C.fg} size={11} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften (F_pg) suger luft innover.
+            <L x="242" y="360" fill={C.fg} size={12} anchor="middle">
+              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver luften innover.
             </L>
-            <L x="242" y="378" fill={C.fg} size={11} anchor="middle">
+            <L x="242" y="382" fill={C.fg} size={12} anchor="middle">
               <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler mot klokken inn.
             </L>
           </g>
@@ -381,12 +372,7 @@ export function RelativePressureDiagram() {
             <rect x="20" y="30" width="415" height="375" rx="8" fill="#0d151c" stroke="#1d2d3d" strokeWidth="1.5" />
             <circle cx="227" cy="195" r="145" fill="url(#rel-high-rad)" />
 
-            <L x="227" y="58" size={16} weight={800} anchor="middle" fill={C.teal}>
-              KART B: Høytrykkssenter (1015 hPa)
-            </L>
-            <L x="227" y="76" size={12} fill={C.muted} anchor="middle">
-              Omgitt av lavere trykk (995 hPa)
-            </L>
+            <rect x="21" y="31" width="413" height="62" rx="7" fill="#0d151c" />
 
             <path
               d="M 90 195 C 90 115, 150 75, 227 75 C 310 75, 365 120, 365 195 C 365 270, 305 315, 227 315 C 145 315, 90 270, 90 195 Z"
@@ -394,8 +380,8 @@ export function RelativePressureDiagram() {
               stroke="#475569"
               strokeWidth="1.8"
             />
-            <rect x="305" y="80" width="56" height="17" rx="3" fill="#0d151c" />
-            <L x="333" y="93" fill={C.muted} size={11} anchor="middle" weight={600}>
+            <rect x="78" y="168" width="72" height="22" rx="4" fill="#0d151c" />
+            <L x="114" y="184" fill={C.muted} size={12} anchor="middle" weight={700}>
               995 hPa
             </L>
 
@@ -405,16 +391,11 @@ export function RelativePressureDiagram() {
               stroke="#64748b"
               strokeWidth="2"
             />
-            <rect x="275" y="125" width="56" height="17" rx="3" fill="#0d151c" />
-            <L x="303" y="138" fill={C.muted} size={11} anchor="middle" weight={600}>
-              {" "}
-            </L>
-
             <circle cx="227" cy="195" r="42" fill="#0f2b32" stroke={C.teal} strokeWidth="2.5" />
             <L x="227" y="200" fill={C.teal} size={26} weight={900} anchor="middle">
               H
             </L>
-            <L x="227" y="218" fill="#67e8f9" size={11} weight={800} anchor="middle">
+            <L x="227" y="228" fill="#67e8f9" size={12} weight={800} anchor="middle">
               1015 hPa
             </L>
 
@@ -428,14 +409,22 @@ export function RelativePressureDiagram() {
             <Arrow d="M 190 230 Q 145 220 135 170" marker={m.fg} color={C.white} width={2.6} />
             <Arrow d="M 185 160 Q 185 125 240 120" marker={m.fg} color={C.white} width={2.6} />
 
-            <rect x="40" y="325" width="375" height="65" rx="6" fill="#101c22" stroke="#1c444f" strokeWidth="1.3" />
-            <L x="227" y="344" fill={C.teal} size={12} weight={800} anchor="middle">
+            <rect x="21" y="34" width="413" height="58" fill="#0d151c" />
+            <L x="227" y="54" size={15} weight={800} anchor="middle" fill={C.teal}>
+              KART B: Høytrykkssenter (1015 hPa)
+            </L>
+            <L x="227" y="76" size={13} fill={C.fg} anchor="middle">
+              Omgitt av lavere trykk (995 hPa)
+            </L>
+
+            <rect x="32" y="318" width="390" height="78" rx="6" fill="#101c22" stroke="#1c444f" strokeWidth="1.3" />
+            <L x="227" y="338" fill={C.teal} size={12} weight={800} anchor="middle">
               Netto bevegelse: Divergens ut fra sentrum
             </L>
-            <L x="227" y="362" fill={C.fg} size={11} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften (F_pg) presser luften utover.
+            <L x="227" y="360" fill={C.fg} size={12} anchor="middle">
+              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver luften utover.
             </L>
-            <L x="227" y="378" fill={C.fg} size={11} anchor="middle">
+            <L x="227" y="382" fill={C.fg} size={12} anchor="middle">
               <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler med klokken ut.
             </L>
           </g>
@@ -458,6 +447,7 @@ export function LowPressureCrossSectionDiagram() {
       caption="I et lavtrykk strømmer luft inn langs bakken (konvergens) og stiger. Før luften er mettet, avkjøles den med om lag 1 °C per 100 meter. Det er den tørradiabatiske temperaturgradienten (dry adiabatic lapse rate, DALR). Ved løftingskondensasjonsnivået (lifting condensation level, LCL) er luften mettet, og vanndampen kondenserer. Latent varme frigjøres, så mettet luft avkjøles langsommere, typisk ca. 0,5 °C per 100 meter. Det er den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR). Ved tropopausen, ca. 8–11 km over Norge, stopper stigningen. Skytoppen flater ut, og luften sprer seg ut til sidene (divergens i høyden)."
       viewBox="0 0 940 510"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -491,27 +481,38 @@ export function LowPressureCrossSectionDiagram() {
 
           <rect x="30" y="30" width="880" height="450" rx="8" fill="url(#low-cross-sky)" />
 
-          <rect x="30" y="30" width="880" height="60" rx="4" fill="#0b1118" opacity="0.8" />
-          <line x1="30" y1="90" x2="910" y2="90" stroke={C.cold} strokeWidth="2" strokeDasharray="6 4" />
-          <L x="50" y="60" fill={C.cold} size={14} weight={800}>
-            Stratosfæren (Temperaturinversjon · Ozonvarme)
+          <rect x="30" y="30" width="880" height="78" rx="4" fill="#0b1118" opacity="0.96" />
+          <line x1="30" y1="108" x2="910" y2="108" stroke={C.cold} strokeWidth="2" strokeDasharray="6 4" />
+          <L x="48" y="52" fill={C.cold} size={14} weight={800}>
+            Stratosfæren
           </L>
-          <L x="890" y="60" fill={C.cold} size={13} weight={700} anchor="end">
+          <L x="892" y="52" fill={C.cold} size={13} weight={700} anchor="end">
             Tropopausen: stigningen stopper
+          </L>
+          <Arrow d="M 250 78 L 70 78" marker={m.teal} color={C.teal} width={3} />
+          <L x="262" y="82" fill={C.teal} size={13} weight={800}>
+            Divergens i høyden
+          </L>
+          <Arrow d="M 690 78 L 870 78" marker={m.teal} color={C.teal} width={3} />
+          <L x="678" y="82" fill={C.teal} size={13} weight={800} anchor="end">
+            Divergens i høyden
           </L>
 
           <rect x="30" y="440" width="880" height="40" rx="4" fill="#15241b" />
           <line x1="30" y1="440" x2="910" y2="440" stroke="#2a4c36" strokeWidth="2.5" />
-          <L x="470" y="465" fill={C.low} size={16} weight={900} anchor="middle">
-            LAVTRYKKSSENTER VED BAKKEN (L) · MINIMUMSLUFTTRYKK
+          <L x="470" y="465" fill={C.low} size={15} weight={800} anchor="middle">
+            Lavtrykkssenter ved bakken (L)
           </L>
 
-          <line x1="120" y1="330" x2="820" y2="330" stroke={C.teal} strokeDasharray="4 3" strokeWidth="1.8" />
-          <L x="130" y="322" fill={C.teal} size={12} weight={800}>
-            Løftingskondensasjonsnivå (LCL) · mettet luft
+          <line x1="250" y1="318" x2="820" y2="318" stroke={C.teal} strokeDasharray="4 3" strokeWidth="1.8" />
+          <L x="42" y="306" fill={C.teal} size={13} weight={800}>
+            Løftingskondensasjonsnivå
           </L>
-          <L x="130" y="345" fill={C.muted} size={10.5}>
-            Her dannes den flate skybasen
+          <L x="42" y="324" fill={C.teal} size={12} weight={700}>
+            (LCL) · mettet luft
+          </L>
+          <L x="42" y="344" fill={C.muted} size={12}>
+            Her dannes skybasen
           </L>
 
           <polygon
@@ -561,8 +562,8 @@ export function LowPressureCrossSectionDiagram() {
                C 220 125, 180 100, 200 95 Z"
             fill="url(#cb-anvil-grad)"
           />
-          <L x="470" y="82" fill="#f8fafc" size={12} weight={800} anchor="middle">
-            Iset ambolt (incus) · Cirrusslør
+          <L x="470" y="112" fill="#0f172a" size={13} weight={800} anchor="middle">
+            Amboltformet skytopp
           </L>
 
           <Arrow d="M 470 330 L 470 130" marker={m.warm} color={C.warm} width={4.2} />
@@ -582,16 +583,6 @@ export function LowPressureCrossSectionDiagram() {
           <Arrow d="M 860 430 L 630 430" marker={m.low} color={C.low} width={3.6} />
           <L x="760" y="420" fill={C.low} size={13} weight={800} anchor="middle">
             ← Konvergens ved bakken
-          </L>
-
-          <Arrow d="M 390 105 L 140 105" marker={m.teal} color={C.teal} width={3.4} />
-          <L x="240" y="96" fill={C.teal} size={12} weight={800} anchor="middle">
-            ← Divergens i høyden
-          </L>
-
-          <Arrow d="M 550 105 L 800 105" marker={m.teal} color={C.teal} width={3.4} />
-          <L x="700" y="96" fill={C.teal} size={12} weight={800} anchor="middle">
-            Divergens i høyden →
           </L>
 
           <g transform="translate(680, 160)">
@@ -619,21 +610,21 @@ export function LowPressureCrossSectionDiagram() {
             </L>
           </g>
 
-          <g transform="translate(45, 170)">
-            <rect x="0" y="0" width="180" height="120" rx="8" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
-            <L x="14" y="24" fill={C.cold} size={12} weight={800}>
+          <g transform="translate(42, 168)">
+            <rect x="0" y="0" width="230" height="116" rx="8" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
+            <L x="14" y="24" fill={C.cold} size={13} weight={800}>
               Hvor stopper stigningen?
             </L>
-            <L x="14" y="46" fill={C.cold} size={11}>
+            <L x="14" y="48" fill={C.cold} size={12}>
               Tropopausen ligger ca. 8–11 km
             </L>
-            <L x="14" y="66" fill="#93c5fd" size={11}>
+            <L x="14" y="66" fill="#93c5fd" size={12}>
               over Norge.
             </L>
-            <L x="14" y="86" fill={C.teal} size={11}>
+            <L x="14" y="88" fill={C.teal} size={12}>
               Der er luften kaldere enn
             </L>
-            <L x="14" y="106" fill={C.warm} size={11}>
+            <L x="14" y="106" fill={C.warm} size={12}>
               laget over, og stigningen stopper.
             </L>
           </g>
@@ -655,6 +646,7 @@ export function HighPressureCrossSectionDiagram() {
       caption="I et høytrykk strømmer luft sammen i øvre troposfære og synker mot bakken. Det kalles subsidens (nedsynking). Synkende luft varmes med om lag 1 °C per 100 meter. Den relative fuktigheten faller, skydråpene fordamper, og himmelen blir klar. Ved bakken strømmer luften ut til sidene (divergens). Om sommeren kan det gi varme og tørke. Om vinteren kan bakken bli svært kald, og det kan oppstå bakkeinversjon."
       viewBox="0 0 940 510"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -674,38 +666,37 @@ export function HighPressureCrossSectionDiagram() {
 
           <rect x="30" y="30" width="880" height="450" rx="8" fill="url(#high-cross-sky)" />
 
-          <circle cx="160" cy="90" r="35" fill="#fef08a" opacity="0.95" />
-          <circle cx="160" cy="90" r="55" fill="#fde047" opacity="0.25" />
+          <circle cx="160" cy="160" r="35" fill="#fef08a" opacity="0.95" />
+          <circle cx="160" cy="160" r="55" fill="#fde047" opacity="0.25" />
           <polygon points="135,115 50,440 320,440 185,115" fill="url(#high-sun-rays)" />
           <polygon points="160,125 350,440 650,440 180,125" fill="url(#high-sun-rays)" />
 
-          <rect x="30" y="30" width="880" height="50" rx="4" fill="#080e14" opacity="0.8" />
-          <line x1="30" y1="80" x2="910" y2="80" stroke={C.cold} strokeWidth="1.8" strokeDasharray="6 4" />
-          <L x="50" y="55" fill={C.cold} size={14} weight={800}>
+          <rect x="30" y="30" width="880" height="72" rx="4" fill="#080e14" opacity="0.96" />
+          <line x1="30" y1="102" x2="910" y2="102" stroke={C.cold} strokeWidth="1.8" strokeDasharray="6 4" />
+          <L x="48" y="52" fill={C.cold} size={14} weight={800}>
             Øvre troposfære
           </L>
-          <L x="890" y="55" fill={C.cold} size={13} weight={700} anchor="end">
+          <L x="892" y="52" fill={C.cold} size={13} weight={700} anchor="end">
             Konvergens i høyden mater nedsynkingen
           </L>
-
-          <Arrow d="M 680 50 L 530 50" marker={m.teal} color={C.teal} width={3.2} />
-          <Arrow d="M 260 50 L 410 50" marker={m.teal} color={C.teal} width={3.2} />
+          <Arrow d="M 430 82 L 250 82" marker={m.teal} color={C.teal} width={3.2} />
+          <Arrow d="M 510 82 L 690 82" marker={m.teal} color={C.teal} width={3.2} />
 
           <rect x="30" y="440" width="880" height="40" rx="4" fill="#2d2212" />
           <line x1="30" y1="440" x2="910" y2="440" stroke="#785a2b" strokeWidth="2.5" />
-          <L x="470" y="465" fill={C.warm} size={16} weight={900} anchor="middle">
-            HØYTRYKKSSENTER VED BAKKEN (H) · MAKSIMALT LUFTTRYKK (LUFTOVERSKUDD)
+          <L x="470" y="465" fill={C.warm} size={15} weight={800} anchor="middle">
+            Høytrykkssenter ved bakken (H)
           </L>
 
-          <Arrow d="M 380 95 L 380 380" marker={m.warm} color={C.warm} width={3.8} />
-          <Arrow d="M 470 95 L 470 380" marker={m.warm} color={C.warm} width={4.4} />
-          <Arrow d="M 560 95 L 560 380" marker={m.warm} color={C.warm} width={3.8} />
+          <Arrow d="M 380 118 L 380 380" marker={m.warm} color={C.warm} width={3.8} />
+          <Arrow d="M 470 118 L 470 380" marker={m.warm} color={C.warm} width={4.4} />
+          <Arrow d="M 560 118 L 560 380" marker={m.warm} color={C.warm} width={3.8} />
 
-          <rect x="360" y="195" width="220" height="50" rx="8" fill="#0f172a" opacity="0.9" stroke={C.warm} strokeWidth="1.5" />
-          <L x="470" y="217" fill={C.warm} size={14} weight={900} anchor="middle">
-            SUBSIDENS (NEDSYNKNING)
+          <rect x="330" y="188" width="280" height="54" rx="8" fill="#0f172a" opacity="0.94" stroke={C.warm} strokeWidth="1.5" />
+          <L x="470" y="210" fill={C.warm} size={14} weight={800} anchor="middle">
+            Subsidens (nedsynking)
           </L>
-          <L x="470" y="234" fill="#fde68a" size={11} weight={700} anchor="middle">
+          <L x="470" y="230" fill="#fde68a" size={12} weight={700} anchor="middle">
             Oppvarming om lag 1 °C per 100 m
           </L>
 
