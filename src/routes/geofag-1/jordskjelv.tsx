@@ -374,7 +374,7 @@ function JordskjelvPage() {
         </h3>
         <ol className="list-decimal pl-6 space-y-2 text-sm text-muted-foreground">
           <li>
-            <strong className="text-foreground">Ryggtrykk («Ridge push»):</strong> Den midtatlantiske ryggen i vest utvider seg
+            <strong className="text-foreground">Ryggskyv (ridge push):</strong> Den midtatlantiske ryggen i vest utvider seg
             kontinuerlig med 2–2,5 cm per år. Den gravitasjonelle tyngden av ryggen presser det eurasiske kontinentet østover
             og setter den norske kontinentalskorpen under et regionalt, nordvest–sørøst-rettet kompresjonstrykk.
           </li>
@@ -638,13 +638,13 @@ function JordskjelvPage() {
                 "Hva er de to viktigste geofysiske drivkreftene bak jordskjelv i Norge, til tross for at landet er et intraplate-område?",
               options: [
                 "Subduksjon av Nordsjøen under Vestlandet og vulkanisme i Oslofeltet.",
-                "Ryggtrykk («ridge push») fra Den midtatlantiske ryggen i vest og postglasial landheving (isostasi) etter istiden.",
+                "Ryggskyv (ridge push) fra Den midtatlantiske ryggen i vest og postglasial landheving (isostasi) etter istiden.",
                 "Tidevannskrefter fra månen og sentrifugalkraft fra jordrotasjonen.",
                 "Oljeboring i Nordsjøen og smelting av permafrost i Finnmark.",
               ],
               answer: 1,
               explain:
-                "Riktig! Norge utsettes for kompresjonsspenninger rettet mot øst-sørøst på grunn av ryggtrykk fra den ekspanderende Midtatlantiske ryggen, kombinert med differensiell heving (opptil 8–9 mm/år) etter at den 3 km tykke iskappen smeltet. Dette reaktiverer gamle forkastningssoner.",
+                "Riktig! Norge utsettes for kompresjonsspenninger rettet mot øst-sørøst på grunn av ryggskyv (ridge push) fra den ekspanderende Midtatlantiske ryggen, kombinert med differensiell heving (opptil 8–9 mm/år) etter at den 3 km tykke iskappen smeltet. Dette reaktiverer gamle forkastningssoner.",
             },
             {
               prompt:

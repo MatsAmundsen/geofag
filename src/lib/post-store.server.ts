@@ -407,7 +407,9 @@ export async function getPostStore(): Promise<Store> {
     console.info("[posts] backend", backend);
     if (backend === "d1") {
       if (!env?.POSTS_DB) throw new Error("POSTS_DB binding missing");
-      return d1Store(env.POSTS_DB);
+      const store = await d1Store(env.POSTS_DB);
+      await reseedFlaggedCopies(store);
+      return store;
     }
     if (backend === "do") {
       if (!env?.POSTS_DO) throw new Error("POSTS_DO binding missing");
@@ -433,6 +435,53 @@ export async function getPostStore(): Promise<Store> {
     console.error("[posts] store init failed, using in-memory seed", err);
     await ensureChapterSeeds(memoryStore());
     return memoryStore();
+  }
+}
+
+/**
+ * One-shot overwrites of chapter bodies after a copy correction.
+ * Durable Object and D1 remember the flag. Local Postgres has no meta table,
+ * so it only replaces a body that still contains a stale marker.
+ */
+const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
+  {
+    flag: "vulkaner-copy-2026-10-06",
+    slug: "vulkaner",
+    stale: ["Henrys lov", "ventialsjonssystemet"],
+  },
+  {
+    flag: "platetektonikk-rester-2026-10-06",
+    slug: "platetektonikk",
+    stale: ["Kauai (5 Ma)"],
+  },
+  {
+    flag: "platetektonikk-astenosfare-2026-10-06",
+    slug: "platetektonikk",
+    stale: ["1450- 1650C", "Ridge push"],
+  },
+];
+
+async function reseedFlaggedCopies(store: Store): Promise<void> {
+  const durable = store.persist === "do" || store.persist === "d1";
+  for (const item of COPY_RESEEDS) {
+    const seed = CHAPTER_POST_SEEDS.find((row) => row.slug === item.slug);
+    if (!seed) continue;
+    const existing = await store.get(item.slug);
+    if (!existing) continue;
+    if (existing.bodyMarkdown === seed.bodyMarkdown) {
+      if (durable && !(await store.getMeta(item.flag))) await store.setMeta(item.flag, "1");
+      continue;
+    }
+    if (durable) {
+      if (await store.getMeta(item.flag)) continue;
+    } else if (!item.stale.some((marker) => existing.bodyMarkdown.includes(marker))) {
+      continue;
+    }
+    await store.save({
+      ...toPostInput(seed),
+      published: existing.published ?? 1,
+    });
+    if (durable) await store.setMeta(item.flag, "1");
   }
 }
 
@@ -478,6 +527,7 @@ async function ensureChapterSeeds(store: Store): Promise<void> {
   if (seededStoreVersions.has(memoryKey)) return;
   try {
     await publishPlatetektonikkCopy(store);
+    await reseedFlaggedCopies(store);
     if (store.persist === "do" || store.persist === "d1") {
       const saved = await store.getMeta(CHAPTER_SEED_FLAG);
       if (chapterSeedIsCurrent(saved, version)) {

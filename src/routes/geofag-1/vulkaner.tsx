@@ -21,7 +21,7 @@ function VulkanerPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Vulkanutbrudd er jordens mest spektakulære og energirike overflateprosess. Hvorfor flyter lavaen rolig som rødglødende elver på Hawaii og Island, mens Pinatubo og Vesuv eksploderer med ufattelig kraft og mørklegger himmelen? Svaret ligger i magmaens kjemiske oppbygning: silikatinnhold, viskositet og innestengt gass. Her utforsker vi magmafysikken, de fire vulkantypene, pliniansk erupsjonsdynamikk, overvåkingsteknologi og Norges egen aktive vulkan — Beerenberg på Jan Mayen."
+      lead="Noen vulkaner har rolige lavastrømmer, andre har eksplosive utbrudd. Forskjellen henger sammen med hvor mye silikat (SiO₂) magmaen inneholder, hvor seig den er (viskositet) og hvor mye gass den holder på. Her lærer du om magmatyper, tre hovedtyper vulkaner og kalderaer, utbruddstyper, overvåking og Beerenberg på Jan Mayen, Norges eneste aktive vulkan over havet."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

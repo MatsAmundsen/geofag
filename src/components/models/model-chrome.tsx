@@ -7,6 +7,7 @@ export function ModelFrame({
   title,
   lead,
   toolbar,
+  stackToolbar = false,
   children,
   stackHeader = false,
 }: {
@@ -14,6 +15,8 @@ export function ModelFrame({
   title: string;
   lead: string;
   toolbar?: ReactNode;
+  /** When true, the toolbar sits under the title on all widths. Other models keep the side-by-side header. */
+  stackToolbar?: boolean;
   children: ReactNode;
   /** Title and toolbar on separate rows, so a long button row cannot crush the title. */
   stackHeader?: boolean;
@@ -23,7 +26,7 @@ export function ModelFrame({
       <figcaption
         className={cn(
           "flex flex-col gap-4 border-b border-border pb-4",
-          !stackHeader && "sm:flex-row sm:items-start sm:justify-between",
+          !(stackToolbar || stackHeader) && "sm:flex-row sm:items-start sm:justify-between",
         )}
       >
         <div className="min-w-0">
@@ -32,7 +35,14 @@ export function ModelFrame({
           <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{lead}</p>
         </div>
         {toolbar ? (
-          <div className={cn("flex min-w-0 flex-wrap gap-2", !stackHeader && "shrink-0")}>{toolbar}</div>
+          <div
+            className={cn(
+              "flex min-w-0 flex-wrap gap-2",
+              stackToolbar || stackHeader ? "w-full" : "shrink-0",
+            )}
+          >
+            {toolbar}
+          </div>
         ) : null}
       </figcaption>
       <div className="pt-5">{children}</div>

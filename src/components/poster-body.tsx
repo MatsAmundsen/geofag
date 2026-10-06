@@ -117,8 +117,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   CalderaFormation: () => <CalderaFormationDiagram />,
   VolcanoEruptionAnatomy: () => <VolcanoEruptionAnatomyDiagram />,
   VolcanicHazards: () => <VolcanicHazardsDiagram />,
-  VolcanoModel: () => <VolcanoModel />,
-  QuizVulkaner: () => <Quiz questions={QUIZ_VULKANER} />,
+  VolcanoModel: () => <VolcanoModel showSeismicModes={false} />,
+  QuizVulkaner: () => (
+    <Quiz questions={QUIZ_VULKANER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   ElasticRebound: () => <ElasticReboundDiagram />,
   EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,
   Seismogram: () => <SeismogramDiagram />,
@@ -163,10 +165,12 @@ export function PosterBody({
   children,
   className,
   cleanChapter,
+  scrollTables = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
+  scrollTables?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
@@ -176,7 +180,9 @@ export function PosterBody({
         part.type === "widget" ? (
           <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />
         ) : (
-          <Markdown key={`m-${index}`}>{part.value}</Markdown>
+          <Markdown key={`m-${index}`} scrollTables={scrollTables}>
+            {part.value}
+          </Markdown>
         ),
       )}
     </div>

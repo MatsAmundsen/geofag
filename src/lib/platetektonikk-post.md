@@ -306,7 +306,7 @@ I 1963 foreslo den kanadiske geofysikeren J. Tuzo Wilson at disse vulkanene skyl
 
 Fordi søylen er forankret så dypt, står den nesten stille over geologisk tid. Mens litosfæren glir over den, dannes en kjede av vulkanske øyer.
 
-- Hawaii-Emperor-ryggen: De aktive vulkanene Kilauea og Mauna Loa ligger over hotspoten i dag (0 Ma). Lenger nordvest er øyene eldre og mer erodert: Maui (1 Ma), Oahu (3 Ma), Kauai (5 Ma) og Midway (28 Ma).
+- Hawaii-Emperor-ryggen: De aktive vulkanene Kilauea og Mauna Loa ligger over hotspoten i dag (0 Ma). Lenger nordvest er øyene eldre og mer erodert: Maui (1 Ma), Oahu (3 Ma), Kauai (ca. 5,5 millioner år) og Midway (28 Ma).
 
 - Knekken ved 47 Ma: For ca. 47 millioner år siden gjør vulkankjeden en skarp knekk på 60 grader, fra nord-nordvest til vest-nordvest. Det viser at Stillehavsplaten endret retning.
 

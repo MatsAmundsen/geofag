@@ -200,10 +200,10 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
           <line x1={axis - 70} y1={SEA_Y - 18} x2={axis - 150} y2={SEA_Y - 6} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
           <line x1={axis + 70} y1={SEA_Y - 18} x2={axis + 150} y2={SEA_Y - 6} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
           <text x={axis - 120} y={SEA_Y - 28} fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-            Ridge push
+            Ryggskyv
           </text>
           <text x={axis + 120} y={SEA_Y - 28} fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle">
-            Ridge push
+            Ryggskyv
           </text>
         </g>
       ) : null}
@@ -338,7 +338,7 @@ function SubductionScene({
         <g>
           <Foci animating={animating} points={quakes} />
           <text x="640" y="96" fill="#fca5a5" fontSize="11">
-            Jordskjelv langs grensen. Dybdefordeling eier Jordskjelv.
+            Mer i kapittelet Jordskjelv.
           </text>
         </g>
       ) : null}
@@ -354,7 +354,7 @@ function SubductionScene({
             markerEnd="url(#arrow-slab)"
           />
           <text x={Math.min(pull.x + 44, 760)} y={pull.y + 8} fill="#38bdf8" fontSize="12" fontWeight="800">
-            Slab pull
+            Platetrekk
           </text>
           <line x1={trenchX - 120} y1="84" x2={trenchX - 40} y2="84" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
           <text x={trenchX - 80} y="76" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">

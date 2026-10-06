@@ -22,7 +22,7 @@ export function ConvectionDiagram() {
 
   return (
     <Diagram
-      title="Platetektonikkens drivkrefter: Slab pull, ridge push og mantelkonveksjon"
+      title="Platetektonikkens drivkrefter: platetrekk, ryggskyv og mantelkonveksjon"
       heading="Hva beveger platene? Gravitasjon og tetthetsforskjeller styrer maskineriet"
       caption="Platene er en aktiv del av konveksjonen, ikke bare flåter som skyves rundt. Den største drivkraften er platetrekk (slab pull), om lag 90 % av kraften. Kald, eldre havbunn er tettere enn astenosfæren under. I en subduksjonssone omdannes basalten til den tunge bergarten eklogitt ved 40–60 km dyp, og platen trekkes nedover. Ved midthavsryggen står litosfæren 2–3 km høyere enn havbunnen rundt, og tyngdekraften får den til å gli ned skråningen (ryggskyv, ridge push). Manteldrag (basal drag) er friksjonen mot den seige astenosfæren."
       viewBox="0 0 940 480"
@@ -1342,15 +1342,18 @@ export function SubductionDiagram() {
             <path d="M 390 125 L 490 230" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="5 4" fill="none" opacity="0.5" />
 
             <g transform="translate(680, 330)">
-              <rect x="0" y="0" width="220" height="58" rx="6" fill="#080f16" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
-              <L x="12" y="22" fill="#ef4444" size={12} weight={800}>
+              <rect x="0" y="0" width="220" height="78" rx="6" fill="#080f16" stroke="#ef4444" strokeWidth="1.2" opacity="0.95" />
+              <L x="12" y="18" fill="#ef4444" size={12} weight={800}>
                 Jordskjelv langs slabben
               </L>
-              <L x="12" y="42" fill="#d1d5db" size={10}>
+              <L x="12" y="34" fill="#d1d5db" size={10}>
                 Fokus følger plategrensen.
               </L>
-              <L x="12" y="54" fill="#94a3b8" size={9.5}>
-                Dybdefordeling eier Jordskjelv.
+              <L x="12" y="52" fill="#94a3b8" size={9.5}>
+                Les mer om dybdefordelingen
+              </L>
+              <L x="12" y="66" fill="#94a3b8" size={9.5}>
+                i Jordskjelv og tsunamier.
               </L>
             </g>
           </g>
@@ -1359,7 +1362,7 @@ export function SubductionDiagram() {
           <g transform="translate(620, 440)">
             <Arrow d="M 0 0 L 45 60" marker={m.teal} color={C.teal} width={4.5} />
             <L x="52" y="70" fill={C.teal} size={13} weight={800}>
-              SLAB PULL
+              Platetrekk
             </L>
           </g>
         </>
@@ -1773,17 +1776,17 @@ export function TransformDiagram() {
 
 /**
  * 13. HotspotPlumeDiagram:
- * Viser mantelplym fra D''-grensen, intraplate-vulkanisme og Hawaii-Emperor-øykjeden
- * med det berømte 47-millioner-år-knekkpunktet.
+ * Vises bare på Vulkaner (injeksjonen krever Eyjafjallajökull).
+ * Kort Hawaii-kjede uten dybdetall som biblioteket ikke belegger.
  */
 export function HotspotPlumeDiagram() {
   const [isPlaying, setIsPlaying] = useState(true);
 
   return (
     <Diagram
-      title="Hotspots og mantelplymer: Dype termiske oppstrømmer og vulkankjeder"
-      heading="Hotspots: Jordens dypeste brennere og Hawaii-Emperor-bøyen"
-      caption="De fleste vulkaner ligger på plategrenser, men noen av jordens mektigste oppstår midt inne på platene (intraplate-vulkanisme). Dette skyldes mantelplymer (hotspots): tynne, termiske oppstrømmer av overopphetet bergart som har sine røtter helt nede ved kjerne-mantel-grensen (D''-laget på 2900 km dyp). Fordi plymen er forankret så dypt, står den praktisk talt i ro over titalls millioner år, mens litosfæreplaten glir sakte forbi over den. Plymen smelter seg gjennom platen og skaper en lineær kjede av vulkanske øyer der alderen øker jevnt i platens bevegelsesretning. Den berømte 60 graders knekken i Hawaii-Emperor-ryggen viser at Stillehavsplaten endret bevegelsesretning for 47 millioner år siden!"
+      title="Hotspots og Hawaii-kjeden"
+      heading="En varm sone under platen"
+      caption="En hotspot er en langvarig, varm sone under platen. Platen glir over, og øyene blir eldre i bevegelsesretningen. Hvor dypt røttene sitter, er omdiskutert."
       viewBox="0 0 940 480"
       wide
       action={
@@ -1825,13 +1828,13 @@ export function HotspotPlumeDiagram() {
           {/* Havbasseng øverst */}
           <rect x="40" y="30" width="860" height="90" fill="#0b1d2c" />
           <L x="60" y="55" fill="#38bdf8" size={13} weight={600}>
-            Stillehavet (vannsøyle ~5000 m)
+            Stillehavet
           </L>
 
           {/* Oseanisk litosfære som glir mot venstre */}
           <rect x="40" y="120" width="860" height="55" fill="#273830" stroke="#18241f" strokeWidth="1.2" />
           <L x="160" y="152" fill="#d1d5db" size={12} weight={700}>
-            Stillehavsplaten glir mot nordvest (9 cm/år) ←
+            Stillehavsplaten glir mot nordvest ←
           </L>
           <Arrow d="M 450 148 L 360 148" marker={m.teal} color={C.teal} width={3.6} />
 
@@ -1842,31 +1845,31 @@ export function HotspotPlumeDiagram() {
           {/* Vulkanutbrudd røyk/ild */}
           <circle cx="700" cy="30" r="4.5" fill="#f97316" className="hp-smoke" />
           <L x="700" y="24" fill="#f8fafc" size={12} weight={800} anchor="middle">
-            Hawaii (Aktiv nå · 0 Ma)
+            Hawaii (aktiv nå)
           </L>
 
           {/* Maui (1 mill. år) */}
           <path d="M 520 120 L 560 65 L 600 120 Z" fill="#35352c" stroke="#1f1f1a" />
           <L x="560" y="55" fill="#cbd5e1" size={11} weight={600} anchor="middle">
-            Maui (1 Ma)
+            Maui
           </L>
 
           {/* Oahu (3 mill. år) */}
           <path d="M 400 120 L 435 80 L 470 120 Z" fill="#2d3028" stroke="#1a1c17" />
           <L x="435" y="72" fill="#cbd5e1" size={10.5} anchor="middle">
-            Oahu (3 Ma)
+            Oahu
           </L>
 
           {/* Kauai (5 mill. år) */}
           <path d="M 280 120 L 310 95 L 340 120 Z" fill="#252822" />
           <L x="310" y="88" fill="#94a3b8" size={10} anchor="middle">
-            Kauai (5 Ma)
+            Kauai (ca. 5,5 mill. år)
           </L>
 
           {/* Undersjøisk guyot / erodert vulkan */}
           <path d="M 140 120 L 165 112 L 190 120 Z" fill="#1b1f1a" />
           <L x="165" y="104" fill="#64748b" size={9.5} anchor="middle">
-            Midway (28 Ma)
+            Midway
           </L>
 
           {/* Astenosfære og mantel under litosfæren */}
@@ -1920,31 +1923,26 @@ export function HotspotPlumeDiagram() {
             Stasjonær termisk oppstrøm
           </L>
           <L x="700" y="304" fill="#cbd5e1" size={10} anchor="middle">
-            Forankret ved kjerne-mantel-grensen (2900 km dyp)
+            Varm oppstrøm under platen
           </L>
 
           {/* Kjerne-mantel-grensen nederst */}
           <rect x="40" y="430" width="860" height="25" fill="#991b1b" />
           <L x="470" y="447" fill="#fef08a" size={11.5} weight={800} anchor="middle">
-            D''-LAGET / KJERNE-MANTEL-GRENSEN (2900 km dyp · Varmekilde for mantelplymen)
+            Hvor dypt hotspots har røttene sine, er omdiskutert
           </L>
 
-          {/* Grafisk miniatyr over Hawaii-Emperor-bøyen */}
           <g transform="translate(60, 200)">
-            <rect x="0" y="0" width="260" height="110" rx="6" fill="#080f14" stroke="#f59e0b" strokeWidth="1.2" opacity="0.95" />
-            <L x="12" y="22" fill="#f59e0b" size={12} weight={800}>
-              HAWAII-EMPEROR-BØYEN:
+            <rect x="0" y="0" width="260" height="70" rx="6" fill="#080f14" stroke="#f59e0b" strokeWidth="1.2" opacity="0.95" />
+            <L x="12" y="24" fill="#f59e0b" size={12} weight={800}>
+              Eldre mot nordvest
             </L>
-            {/* Liten illustrasjon av knekklinjen */}
-            <path d="M 40 95 L 110 65 L 110 32" stroke="#38bdf8" strokeWidth="2.8" fill="none" markerEnd={`url(#${m.teal})`} />
-            <circle cx="110" cy="65" r="4" fill="#ef4444" />
-            <L x="125" y="68" fill="#ef4444" size={10.5} weight={700}>
-              Knekkpunkt: 47 mill. år siden
+            <L x="12" y="44" fill="#d1d5db" size={11}>
+              Kauai ca. 5,5 mill. år.
             </L>
-            <L x="125" y="82" fill="#d1d5db" size={9.5}>
-              Stillehavsplatens kurs endret seg!
+            <L x="12" y="58" fill="#94a3b8" size={10}>
+              Big Island yngre enn 0,7 mill. år.
             </L>
-            <L x="40" y="105" fill="#94a3b8" size={9}>Hawaii nå</L>
           </g>
         </>
       )}

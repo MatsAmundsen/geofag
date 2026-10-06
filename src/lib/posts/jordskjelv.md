@@ -138,7 +138,7 @@ Mange tror at Norge er fullstendig skjermet mot jordskjelv fordi vi ligger langt
 
 ### To dominerende spenningskilder i norsk jordskorpe
 
-1. **Ryggtrykk («Ridge push»):** Den midtatlantiske ryggen i vest utvider seg kontinuerlig med 2–2,5 cm per år. Den gravitasjonelle tyngden av ryggen presser det eurasiske kontinentet østover og setter den norske kontinentalskorpen under et regionalt, nordvest–sørøst-rettet kompresjonstrykk.
+1. **Ryggskyv (ridge push):** Den midtatlantiske ryggen i vest utvider seg kontinuerlig med 2–2,5 cm per år. Den gravitasjonelle tyngden av ryggen presser det eurasiske kontinentet østover og setter den norske kontinentalskorpen under et regionalt, nordvest–sørøst-rettet kompresjonstrykk.
 
 2. **Postglasial landheving (isostasi):** Under siste istid (Weichsel) var Skandinavia tynget ned av en opptil 3 kilometer tykk iskappe. Da isen smeltet for 10 000 år siden, begynte jordskorpen å heve seg elastisk og viskøst tilbake mot isostatisk likevekt. Innlandet hever seg fortsatt med opptil 8–9 mm per år rundt Bottenviken. Denne skjeve hevingen reaktiverer eldgamle svakhetssoner i fjellet.
 
