@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect, useState } from "react";
-import { Link, useMatches, useRouter, useRouterState } from "@tanstack/react-router";
+import { Link, useMatches, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { AdminEditLink } from "@/components/admin-edit-link";
 import { Callout } from "@/components/callout";
@@ -56,7 +56,6 @@ export function TopicLayout({
   bodyMode?: "auto" | "coded" | "poster" | "scan";
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const router = useRouter();
   const matches = useMatches();
 
   const override = bannerForPath(pathname);
@@ -77,41 +76,49 @@ export function TopicLayout({
 
   const initialPost = propPost !== undefined ? propPost : (matchPost ?? null);
   const [currentPost, setCurrentPost] = useState<Post | null>(initialPost);
+  const [posterStatus, setPosterStatus] = useState<"ready" | "loading" | "error">(
+    initialPost?.bodyMarkdown ? "ready" : "loading",
+  );
 
   useEffect(() => {
     if (propPost !== undefined) {
       setCurrentPost(propPost);
+      setPosterStatus(propPost?.bodyMarkdown ? "ready" : "loading");
     }
   }, [propPost]);
 
   useEffect(() => {
-    if (!resolvedSlug) return;
+    if (bodyMode === "coded" || !resolvedSlug) return;
     let cancelled = false;
     const displayed = {
       bodyMarkdown: currentPost?.bodyMarkdown ?? "",
       updatedAt: currentPost?.updatedAt ?? "",
     };
+    if (!displayed.bodyMarkdown) setPosterStatus("loading");
     void getPost({ data: resolvedSlug })
       .then((fresh) => {
-        if (cancelled || !fresh) return;
-        if (posterNeedsRefresh(displayed, fresh)) {
-          setCurrentPost(fresh);
-          void router.invalidate();
-        } else if (!currentPost && fresh) {
+        if (cancelled) return;
+        if (!fresh) {
+          if (!displayed.bodyMarkdown) setPosterStatus("error");
+          return;
+        }
+        if (!currentPost || posterNeedsRefresh(displayed, fresh)) {
           setCurrentPost(fresh);
         }
+        setPosterStatus("ready");
       })
       .catch((err) => {
         console.error("[topic-layout] failed to check fresh post", err);
+        if (!cancelled && !displayed.bodyMarkdown) setPosterStatus("error");
       });
 
     return () => {
       cancelled = true;
     };
+    // The fetch runs once per chapter. A later edit shows up on the next visit.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resolvedSlug, currentPost?.bodyMarkdown, currentPost?.updatedAt, router]);
+  }, [resolvedSlug, bodyMode]);
 
-  const hasEdits = Boolean(currentPost?.bodyMarkdown && Boolean(currentPost.updatedAt));
   const markdown = currentPost?.bodyMarkdown ?? "";
   const useScan = bodyMode === "scan" && Boolean(markdown);
   const usePoster = bodyMode === "poster";
@@ -164,6 +171,10 @@ export function TopicLayout({
             ) : null}
             {useScan ? (
               <ChapterScanBody markdown={markdown} />
+            ) : usePoster && !markdown ? (
+              <p className="text-sm text-muted-foreground">
+                {posterStatus === "error" ? "Teksten kunne ikke lastes." : "Laster teksten…"}
+              </p>
             ) : usePoster ? (
               <PosterBody cleanChapter>{markdown}</PosterBody>
             ) : useCoded ? (

@@ -18,14 +18,6 @@ const tema = gf1Theme("geologiske-ressurser")!;
 const lenke = "text-primary underline-offset-2 hover:underline";
 
 export const Route = createFileRoute("/geofag-1/geologiske-ressurser")({
-  staleTime: 0,
-  preloadStaleTime: 0,
-  gcTime: 0,
-  shouldReload: true,
-  loader: async () => {
-    const { loadChapterPost } = await import("@/lib/chapter-posts");
-    return { post: await loadChapterPost("geologiske-ressurser") };
-  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -36,8 +28,6 @@ export const Route = createFileRoute("/geofag-1/geologiske-ressurser")({
 });
 
 function GeologiskeRessurserPage() {
-  const { post } = Route.useLoaderData();
-
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -55,7 +45,6 @@ function GeologiskeRessurserPage() {
       }}
       kilder={KILDER.ressurser}
       posterSlug="geologiske-ressurser"
-      post={post}
       bodyMode="coded"
     >
       <Callout title="Kompetansemål i LK20 (Geofag 1)">

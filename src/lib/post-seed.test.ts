@@ -3,12 +3,22 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { chapterSeedIsCurrent, chapterSeedVersion } from "./chapter-seed-version.ts";
 import { isShortPlatetektonikkBody } from "./post-seed-upgrade.ts";
 
 const chapterMarkdown = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "platetektonikk-post.md"),
   "utf8",
 );
+
+describe("chapterSeedIsCurrent", () => {
+  it("skips the full seed read when the stored version matches", () => {
+    const version = chapterSeedVersion(["platetektonikk", "vulkaner"]);
+    assert.equal(chapterSeedIsCurrent(version, version), true);
+    assert.equal(chapterSeedIsCurrent(null, version), false);
+    assert.equal(chapterSeedIsCurrent(chapterSeedVersion(["platetektonikk"]), version), false);
+  });
+});
 
 describe("isShortPlatetektonikkBody", () => {
   it("treats the original stub as short", () => {

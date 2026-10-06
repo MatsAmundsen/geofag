@@ -12,6 +12,7 @@ import { isLocalDev } from "@/lib/editing";
 import { needsCmsSetup, nonEmptyMeta } from "@/lib/cms-password";
 import { canUseMemorySeedFallback, choosePostBackend } from "@/lib/post-backend";
 import { isShortPlatetektonikkBody } from "@/lib/post-seed-upgrade";
+import { CHAPTER_SEED_FLAG, chapterSeedIsCurrent, chapterSeedVersion } from "@/lib/chapter-seed-version";
 import {
   CHAPTER_POST_SEEDS,
   nowStamp,
@@ -454,8 +455,20 @@ async function restoreSavedPosters(store: Store): Promise<void> {
   await store.setMeta(SAVED_POSTER_RESTORE, "1");
 }
 
+const seededStoreVersions = new Set<string>();
+
 async function ensureChapterSeeds(store: Store): Promise<void> {
+  const version = chapterSeedVersion(CHAPTER_POST_SEEDS.map((seed) => seed.slug));
+  const memoryKey = `${store.persist}:${version}`;
+  if (seededStoreVersions.has(memoryKey)) return;
   try {
+    if (store.persist === "do" || store.persist === "d1") {
+      const saved = await store.getMeta(CHAPTER_SEED_FLAG);
+      if (chapterSeedIsCurrent(saved, version)) {
+        seededStoreVersions.add(memoryKey);
+        return;
+      }
+    }
     for (const seed of CHAPTER_POST_SEEDS) {
       const post = await store.get(seed.slug);
       if (!post) {
@@ -471,7 +484,9 @@ async function ensureChapterSeeds(store: Store): Promise<void> {
     }
     if (store.persist === "do" || store.persist === "d1") {
       await restoreSavedPosters(store);
+      await store.setMeta(CHAPTER_SEED_FLAG, version);
     }
+    seededStoreVersions.add(memoryKey);
   } catch (err) {
     console.error("[posts] chapter seed failed", err);
   }

@@ -17,14 +17,6 @@ const tema = gf1Theme("feltarbeid")!;
 const lenke = "text-primary underline-offset-2 hover:underline";
 
 export const Route = createFileRoute("/geofag-1/feltarbeid")({
-  staleTime: 0,
-  preloadStaleTime: 0,
-  gcTime: 0,
-  shouldReload: true,
-  loader: async () => {
-    const { loadChapterPost } = await import("@/lib/chapter-posts");
-    return { post: await loadChapterPost("feltarbeid") };
-  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -35,8 +27,6 @@ export const Route = createFileRoute("/geofag-1/feltarbeid")({
 });
 
 function FeltarbeidPage() {
-  const { post } = Route.useLoaderData();
-
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -54,7 +44,6 @@ function FeltarbeidPage() {
       }}
       kilder={KILDER.feltarbeid}
       posterSlug="feltarbeid"
-      post={post}
       bodyMode="coded"
     >
       <Callout title="Kompetansemål i LK20 (Geofag 1)">

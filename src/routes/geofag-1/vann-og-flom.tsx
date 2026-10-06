@@ -16,14 +16,6 @@ const tema = gf1Theme("vann-og-flom")!;
 const lenke = "text-primary underline-offset-2 hover:underline";
 
 export const Route = createFileRoute("/geofag-1/vann-og-flom")({
-  staleTime: 0,
-  preloadStaleTime: 0,
-  gcTime: 0,
-  shouldReload: true,
-  loader: async () => {
-    const { loadChapterPost } = await import("@/lib/chapter-posts");
-    return { post: await loadChapterPost("vann-og-flom") };
-  },
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,
@@ -34,8 +26,6 @@ export const Route = createFileRoute("/geofag-1/vann-og-flom")({
 });
 
 function VannOgFlomPage() {
-  const { post } = Route.useLoaderData();
-
   return (
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
@@ -53,7 +43,6 @@ function VannOgFlomPage() {
       }}
       kilder={KILDER.vannFlom}
       posterSlug="vann-og-flom"
-      post={post}
       bodyMode="coded"
     >
       <Callout title="Kompetansemål i LK20 (Geofag 1)">
