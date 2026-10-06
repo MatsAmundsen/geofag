@@ -45,6 +45,13 @@ export const NAV_GF2 = [
   { to: "/poster", label: "Poster" },
 ] as const;
 
+/**
+ * Geofag 2-menyen er for lang til én rad innenfor max-w-6xl.
+ * Rad 1 er inngang, vær og hav. Rad 2 er klima, is, samfunn og metode.
+ * Rekkefølgen er den samme som NAV_GF2.
+ */
+export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 10), NAV_GF2.slice(10)] as const;
+
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
 export const NAV = NAV_GF2;
 

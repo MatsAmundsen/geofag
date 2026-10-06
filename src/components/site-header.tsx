@@ -1,9 +1,14 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { brandForPath, navForPath } from "@/lib/nav";
+import { brandForPath, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
+function isItemActive(pathname: string, to: string) {
+  if (to === "/") return pathname === "/";
+  return pathname === to || (to !== "/geofag-2" && pathname.startsWith(`${to}/`));
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -17,122 +22,151 @@ export function SiteHeader() {
     pathname.startsWith("/tema") ||
     pathname.startsWith("/eksamen");
   const isHome = pathname === "/";
+  const wideNav = items === NAV_GF2;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <div className="flex min-h-11 items-center gap-3">
-          <Link
-            to="/"
-            className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-muted"
-            onClick={() => setOpen(false)}
-            aria-label="Gå til hovedforsiden"
+      {wideNav ? (
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="flex min-h-14 items-center justify-between gap-3 py-2">
+            <BrandCluster
+              brand={brand}
+              isHome={isHome}
+              isGf1={isGf1}
+              isGf2={isGf2}
+              onNavigate={() => setOpen(false)}
+            />
+            <MenuButton open={open} onClick={() => setOpen((v) => !v)} />
+          </div>
+          <nav
+            className="hidden w-full min-w-0 gap-0.5 border-t border-border/70 py-1.5 md:flex md:flex-col"
+            aria-label="Hovedmeny"
           >
-            <div className="grid size-8 place-items-center rounded-md border border-border bg-card text-primary">
-              <GlobeMark />
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="font-display text-sm font-semibold tracking-tight text-foreground">
-                Geofag
-              </span>
-              <span className="text-[10px] text-muted-foreground">Forside</span>
-            </div>
-          </Link>
-
-          {!isHome && (
-            <>
-              <span className="text-border select-none" aria-hidden="true">
-                /
-              </span>
-              <Link
-                to={isGf1 ? "/geofag-1" : isGf2 ? "/geofag-2" : "/"}
-                className="leading-tight"
-                onClick={() => setOpen(false)}
-              >
-                <span className="block font-display text-sm font-medium tracking-tight text-foreground">
-                  {brand.title}
-                </span>
-                <span className="hidden text-xs text-muted-foreground sm:block">{brand.sub}</span>
-              </Link>
-            </>
-          )}
-
-          {/* Quick Subject Switcher on larger screens */}
-          {isGf1 && (
-            <Link
-              to="/geofag-2"
-              className="ml-2 hidden items-center gap-1 rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-card hover:text-foreground lg:inline-flex"
-            >
-              <span>Geofag 2</span>
-              <ArrowRight className="size-3" />
-            </Link>
-          )}
-          {isGf2 && (
-            <Link
-              to="/geofag-1"
-              className="ml-2 hidden items-center gap-1 rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-lava/50 hover:bg-card hover:text-foreground lg:inline-flex"
-            >
-              <ArrowLeft className="size-3" />
-              <span>Geofag 1</span>
-            </Link>
-          )}
+            {NAV_GF2_ROWS.map((row) => (
+              <div key={row[0]?.to} className="flex w-full min-w-0 flex-wrap items-center gap-1">
+                {row.map((item) => (
+                  <NavLink key={item.to} item={item} pathname={pathname} />
+                ))}
+              </div>
+            ))}
+          </nav>
         </div>
+      ) : (
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+          <div className="flex min-h-11 items-center gap-3">
+            <Link
+              to="/"
+              className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-muted"
+              onClick={() => setOpen(false)}
+              aria-label="Gå til hovedforsiden"
+            >
+              <div className="grid size-8 place-items-center rounded-md border border-border bg-card text-primary">
+                <GlobeMark />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="font-display text-sm font-semibold tracking-tight text-foreground">
+                  Geofag
+                </span>
+                <span className="text-[10px] text-muted-foreground">Forside</span>
+              </div>
+            </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Hovedmeny">
-          {items.map((item) => {
-            const active =
-              item.to === "/"
-                ? pathname === "/"
-                : pathname === item.to || (item.to !== "/geofag-2" && pathname.startsWith(`${item.to}/`));
-            return (
+            {!isHome && (
+              <>
+                <span className="text-border select-none" aria-hidden="true">
+                  /
+                </span>
+                <Link
+                  to={isGf1 ? "/geofag-1" : isGf2 ? "/geofag-2" : "/"}
+                  className="leading-tight"
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="block font-display text-sm font-medium tracking-tight text-foreground">
+                    {brand.title}
+                  </span>
+                  <span className="hidden text-xs text-muted-foreground sm:block">{brand.sub}</span>
+                </Link>
+              </>
+            )}
+
+            {/* Quick Subject Switcher on larger screens */}
+            {isGf1 && (
               <Link
-                key={item.to}
-                to={item.to}
-                aria-current={active ? "page" : undefined}
-                className={cn(
-                  "inline-flex h-10 items-center rounded-md px-2 text-sm transition-colors",
-                  active
-                    ? "bg-muted font-medium text-foreground"
-                    : "text-muted-foreground hover:bg-accent hover:text-foreground",
-                )}
+                to="/geofag-2"
+                className="ml-2 hidden items-center gap-1 rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-card hover:text-foreground lg:inline-flex"
               >
-                {item.label}
+                <span>Geofag 2</span>
+                <ArrowRight className="size-3" />
               </Link>
-            );
-          })}
+            )}
+            {isGf2 && (
+              <Link
+                to="/geofag-1"
+                className="ml-2 hidden items-center gap-1 rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-lava/50 hover:bg-card hover:text-foreground lg:inline-flex"
+              >
+                <ArrowLeft className="size-3" />
+                <span>Geofag 1</span>
+              </Link>
+            )}
+          </div>
 
-          {isGf1 && (
-            <Link
-              to="/geofag-2"
-              className="ml-2 inline-flex h-9 items-center gap-1 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden"
-            >
-              <span>Geofag 2</span>
-              <ArrowRight className="size-3" />
-            </Link>
-          )}
-          {isGf2 && (
-            <Link
-              to="/geofag-1"
-              className="ml-2 inline-flex h-9 items-center gap-1 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground transition-colors hover:border-lava hover:text-lava lg:hidden"
-            >
-              <ArrowLeft className="size-3" />
-              <span>Geofag 1</span>
-            </Link>
-          )}
-        </nav>
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Hovedmeny">
+            {items.map((item) => {
+              const active =
+                item.to === "/"
+                  ? pathname === "/"
+                  : pathname === item.to ||
+                    (item.to !== "/geofag-2" && pathname.startsWith(`${item.to}/`));
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "inline-flex h-10 items-center rounded-md px-2 text-sm transition-colors",
+                    active
+                      ? "bg-muted font-medium text-foreground"
+                      : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
 
-        <Button
-          variant="ghost"
-          size="sm"
-          className="md:hidden"
-          aria-expanded={open}
-          aria-controls="mobilmeny"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
-        </Button>
-      </div>
+            {isGf1 && (
+              <Link
+                to="/geofag-2"
+                className="ml-2 inline-flex h-9 items-center gap-1 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden"
+              >
+                <span>Geofag 2</span>
+                <ArrowRight className="size-3" />
+              </Link>
+            )}
+            {isGf2 && (
+              <Link
+                to="/geofag-1"
+                className="ml-2 inline-flex h-9 items-center gap-1 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground transition-colors hover:border-lava hover:text-lava lg:hidden"
+              >
+                <ArrowLeft className="size-3" />
+                <span>Geofag 1</span>
+              </Link>
+            )}
+          </nav>
+
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden"
+            aria-expanded={open}
+            aria-controls="mobilmeny"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
+          </Button>
+        </div>
+      )}
 
       {open ? (
         <nav
@@ -146,7 +180,9 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className={cn(
                 "rounded-md border p-2 text-xs font-medium",
-                pathname === "/" ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground",
+                pathname === "/"
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "border-border text-muted-foreground",
               )}
             >
               Forside
@@ -156,7 +192,9 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className={cn(
                 "rounded-md border p-2 text-xs font-medium",
-                isGf1 ? "border-lava bg-lava/10 font-semibold text-foreground" : "border-border text-muted-foreground",
+                isGf1
+                  ? "border-lava bg-lava/10 font-semibold text-foreground"
+                  : "border-border text-muted-foreground",
               )}
             >
               Geofag 1
@@ -166,7 +204,9 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className={cn(
                 "rounded-md border p-2 text-xs font-medium",
-                isGf2 ? "border-primary bg-primary/10 font-semibold text-foreground" : "border-border text-muted-foreground",
+                isGf2
+                  ? "border-primary bg-primary/10 font-semibold text-foreground"
+                  : "border-border text-muted-foreground",
               )}
             >
               Geofag 2
@@ -196,6 +236,111 @@ export function SiteHeader() {
         </nav>
       ) : null}
     </header>
+  );
+}
+
+function BrandCluster({
+  brand,
+  isHome,
+  isGf1,
+  isGf2,
+  onNavigate,
+}: {
+  brand: { title: string; sub: string };
+  isHome: boolean;
+  isGf1: boolean;
+  isGf2: boolean;
+  onNavigate: () => void;
+}) {
+  const pill =
+    "ml-2 hidden items-center gap-1 whitespace-nowrap rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-card hover:text-foreground md:inline-flex";
+
+  return (
+    <div className="flex min-h-11 min-w-0 items-center gap-3">
+      <Link
+        to="/"
+        className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-muted"
+        onClick={onNavigate}
+        aria-label="Gå til hovedforsiden"
+      >
+        <div className="grid size-8 place-items-center rounded-md border border-border bg-card text-primary">
+          <GlobeMark />
+        </div>
+        <div className="flex flex-col text-left">
+          <span className="font-display text-sm font-semibold tracking-tight text-foreground">
+            Geofag
+          </span>
+          <span className="text-[10px] text-muted-foreground">Forside</span>
+        </div>
+      </Link>
+
+      {!isHome && (
+        <nav aria-label="Brødsmule" className="flex min-w-0 items-center gap-3">
+          <span className="text-border select-none" aria-hidden="true">
+            /
+          </span>
+          <Link
+            to={isGf1 ? "/geofag-1" : isGf2 ? "/geofag-2" : "/"}
+            className="leading-tight"
+            onClick={onNavigate}
+          >
+            <span className="block whitespace-nowrap font-display text-sm font-medium tracking-tight text-foreground">
+              {brand.title}
+            </span>
+            <span className="hidden whitespace-nowrap text-xs text-muted-foreground sm:block">
+              {brand.sub}
+            </span>
+          </Link>
+        </nav>
+      )}
+
+      {isGf1 && (
+        <Link to="/geofag-2" className={cn(pill, "hover:border-primary/40")}>
+          <span>Geofag 2</span>
+          <ArrowRight className="size-3" />
+        </Link>
+      )}
+      {isGf2 && !isGf1 && (
+        <Link to="/geofag-1" className={cn(pill, "hover:border-lava/50")}>
+          <ArrowLeft className="size-3" />
+          <span>Geofag 1</span>
+        </Link>
+      )}
+    </div>
+  );
+}
+
+function NavLink({ item, pathname }: { item: { to: string; label: string }; pathname: string }) {
+  const active = isItemActive(pathname, item.to);
+  return (
+    <Link
+      to={item.to}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "inline-flex h-10 shrink-0 items-center whitespace-nowrap rounded-md px-2 text-sm transition-colors",
+        active
+          ? "bg-muted font-medium text-foreground"
+          : "text-muted-foreground hover:bg-accent hover:text-foreground",
+      )}
+    >
+      {item.label}
+    </Link>
+  );
+}
+
+function MenuButton({ open, onClick }: { open: boolean; onClick: () => void }) {
+  return (
+    <Button
+      variant="ghost"
+      size="sm"
+      className="shrink-0 md:hidden"
+      aria-expanded={open}
+      aria-controls="mobilmeny"
+      onClick={onClick}
+    >
+      {open ? <X className="size-5" /> : <Menu className="size-5" />}
+      <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
+    </Button>
   );
 }
 
