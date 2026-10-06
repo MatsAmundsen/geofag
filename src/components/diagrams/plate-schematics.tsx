@@ -290,18 +290,21 @@ export function SubductionAnatomyDiagram() {
       <path d="M8 96 H150 L178 184 L330 468 L263 504 L111 220 H8 Z" fill="#1b2a33" />
       <path d="M8 96 H150 L178 184 L330 468 L308 480 L156 196 L140 158 H8 Z" fill="#245c45" />
 
-      {/* Mantelkile mellom den synkende platen og kontinentplaten */}
-      <path d="M248 216 L392 216 L392 300 L340 380 L300 460 L230 330 Z" fill="#1a4550" />
+      {/* Mantelkilen fyller fra den synkende platen opp til undersiden av den kontinentale litosfæren */}
+      <path
+        d="M176 176 L392 176 L392 300 L360 390 L318 440 L274 358 L246 300 L218 248 L190 198 L176 176 Z"
+        fill="#1a4550"
+      />
       {/* Kontinentalskorpen ligger på kontinental litosfære */}
       <path d="M292 176 H392 V216 H292 Z" fill="#243038" />
 
       <path d="M292 40 H392 V176 H292 Z" fill="#5c6b60" stroke="#2f4236" />
       <path d="M278 40 L296 14 L314 40 Z" fill="#7f1d1d" />
 
-      {/* Gropen er hakket der platen knekker. Vann tegnes før kilen, så kilen blir liggende oppå. */}
-      <path d="M8 52 H240 L208 80 L178 184 L150 96 H8 Z" fill="#143044" />
-      {/* Akkresjonskilen ligger på kontinentets side, over den synkende platen */}
-      <path d="M178 184 L208 80 L292 68 L292 176 L250 316 Z" fill={C.sand} />
+      {/* Havet dekker havbunnsplaten og stopper ved gropen og kilen, ikke over kontinentet */}
+      <path d="M8 52 H292 L292 90 L206 98 L176 176 L150 96 H8 Z" fill="#143044" />
+      {/* Liten sedimentkile i gropen, ikke dypere enn kontinentalskorpens underside */}
+      <path d="M176 176 L206 98 L292 86 L292 176 Z" fill={C.sand} />
 
       <L x="72" y="22" fill={C.cold} size={14} weight={700} anchor="middle">
         Dyphavsgrop
