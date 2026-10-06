@@ -95,7 +95,11 @@ function PostView() {
               className="mb-8 w-full rounded-2xl border border-border object-cover"
             />
           ) : null}
-          <PosterBody scrollTables={post.slug === "vulkaner"}>{post.bodyMarkdown}</PosterBody>
+          <PosterBody
+            scrollTables={post.slug === "vulkaner" || post.slug === "hoytrykk-lavtrykk"}
+          >
+            {post.bodyMarkdown}
+          </PosterBody>
         </article>
       </main>
       <SiteFooter />

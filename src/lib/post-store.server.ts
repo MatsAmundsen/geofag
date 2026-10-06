@@ -445,6 +445,16 @@ export async function getPostStore(): Promise<Store> {
  */
 const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
   {
+    flag: "hoytrykk-copy-2026-10-06",
+    slug: "hoytrykk-lavtrykk",
+    stale: ["10 tonn", "Hva er egentlig lufttrykk", "fuktadiabatisk"],
+  },
+  {
+    flag: "hoytrykk-copy-2-2026-10-06",
+    slug: "hoytrykk-lavtrykk",
+    stale: ["Det ser vi nærmere på nedenfor", "Luft er en blanding av gasser"],
+  },
+  {
     flag: "vulkaner-copy-2026-10-06",
     slug: "vulkaner",
     stale: ["Henrys lov", "ventialsjonssystemet"],

@@ -24,6 +24,10 @@ import {
   VolcanoEruptionAnatomyDiagram,
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
+  AtmosphericColumnDiagram,
+  HighPressureCrossSectionDiagram,
+  LowPressureCrossSectionDiagram,
+  RelativePressureDiagram,
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
@@ -34,6 +38,7 @@ import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
+import { Callout } from "@/components/callout";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
@@ -51,6 +56,7 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
@@ -120,6 +126,25 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   VolcanoModel: () => <VolcanoModel showSeismicModes={false} />,
   QuizVulkaner: () => (
     <Quiz questions={QUIZ_VULKANER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  QuizHoytrykk: () => (
+    <Quiz questions={QUIZ_HOYTRYKK} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  AtmosphericColumn: () => <AtmosphericColumnDiagram />,
+  RelativePressure: () => <RelativePressureDiagram />,
+  LowPressureCrossSection: () => <LowPressureCrossSectionDiagram />,
+  HighPressureCrossSection: () => <HighPressureCrossSectionDiagram />,
+  MettetForklaring: () => (
+    <Callout title="Hva betyr «mettet»?">
+      <p>
+        Luft kan bare inneholde en viss mengde vanndamp, og hvor mye avhenger av temperaturen. Varm
+        luft kan holde mer vanndamp enn kald luft. Når luften inneholder så mye vanndamp som den
+        kan ved den temperaturen den har, er den <strong>mettet</strong>. Den relative fuktigheten
+        er da 100 %. Temperaturen der luften blir mettet, kalles <strong>duggpunktet</strong>.
+        Avkjøles mettet luft enda mer, kondenserer vanndampen til små vanndråper, og det dannes
+        skyer, tåke eller dugg.
+      </p>
+    </Callout>
   ),
   ElasticRebound: () => <ElasticReboundDiagram />,
   EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,
