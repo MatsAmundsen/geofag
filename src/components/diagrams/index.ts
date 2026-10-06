@@ -97,6 +97,13 @@ export {
   WilsonCycleDiagram,
 } from "./plates";
 export {
+  EarthShellDiagram,
+  LekaOphioliteDiagram,
+  RidgeAnatomyDiagram,
+  SubductionAnatomyDiagram,
+  WilsonStagesDiagram,
+} from "./plate-schematics";
+export {
   AtmosphericColumnDiagram,
   HighPressureCrossSectionDiagram,
   KatabaticWindDiagram,

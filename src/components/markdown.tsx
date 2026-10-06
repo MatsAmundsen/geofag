@@ -1,6 +1,7 @@
 import { Children, isValidElement } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { plateSchematicFor } from "@/components/diagrams/plate-schematics";
 import { PhotoFigure } from "@/components/photo-figure";
 import { getPosterPhotoFigure } from "@/lib/poster-figures";
 import { cn } from "@/lib/utils";
@@ -39,7 +40,7 @@ export function Markdown({ children, className }: { children: string; className?
             if (
               visible.length === 1 &&
               isValidElement(visible[0]) &&
-              visible[0].type === PhotoFigure
+              (visible[0].type === PhotoFigure || typeof visible[0].type === "function")
             ) {
               return visible[0];
             }
@@ -66,6 +67,8 @@ export function Markdown({ children, className }: { children: string; className?
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">{children}</code>
           ),
           img: ({ src, alt }) => {
+            const schematic = plateSchematicFor(typeof src === "string" ? src : undefined);
+            if (schematic) return schematic;
             const photo = getPosterPhotoFigure(typeof src === "string" ? src : undefined);
             if (photo) {
               return (

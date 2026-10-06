@@ -11,21 +11,17 @@ export type PosterPhotoFigure = {
 
 export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
   "/images/geo-jordens-indre-lagdeling-3d.jpg": {
-    src: "/images/geo-jordens-indre-lagdeling-3d-ren.jpg",
-    alt: "3D-tverrsnitt av jordens lagdeling. Havbunnsskorpe 5–8 km, kontinentalskorpe 30–50 km (opptil 70–80 km under høye fjell), astenosfære ca. 100–350 km dyp og ca. 1300–1400 °C.",
+    src: "/images/geo-jordens-indre-lagdeling-3d.jpg",
+    alt: "Fotorealistisk 3D-tverrsnitt av jordens lagdeling fra jordskorpen og Moho ned til den faste indre kjernen",
     heading: "Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater",
     caption:
       "Jorda er lagdelt etter kjemisk sammensetning og etter hvordan lagene oppfører seg. Litosfæren (jordskorpen og det øverste stive mantellaget) utgjør de tektoniske platene som glir over den seige astenosfæren. Under overgangssonen ligger den nedre mantelen (ned til 2900 km). Den flytende ytre kjernen av jern og nikkel (2900–5150 km) lager jordas magnetfelt. Trykket i sentrum (5150–6371 km) holder den indre kjernen fast, selv om temperaturen er ca. 5000 °C.",
     marks: [
-      { x: 2, y: 14, text: "Havbunnsskorpe 5–8 km", tone: "cold" },
-      { x: 2, y: 34, text: "Kontinentalskorpe 30–50 km", tone: "warm" },
-      { x: 2, y: 54, text: "opptil 70–80 km under høye fjell", tone: "warm" },
-      { x: 2, y: 74, n: "2", text: "Astenosfære ca. 100–350 km dyp", tone: "warm" },
-      { x: 2, y: 90, text: "ca. 1300–1400 °C", tone: "warm" },
-      { x: 98, y: 18, n: "1", text: "Litosfære og Moho", tone: "cold", align: "right" },
-      { x: 98, y: 42, n: "3", text: "Nedre mantel", tone: "cold", align: "right" },
-      { x: 98, y: 64, n: "4", text: "Ytre kjerne (flytende)", tone: "warm", align: "right" },
-      { x: 98, y: 84, n: "5", text: "Indre kjerne (fast)", tone: "warm", align: "right" },
+      { x: 28, y: 28, n: "1", text: "Litosfære & Moho", tone: "cold" },
+      { x: 38, y: 37, n: "2", text: "Astenosfære", tone: "warm" },
+      { x: 41, y: 54, n: "3", text: "Nedre mantel", tone: "cold" },
+      { x: 44, y: 70, n: "4", text: "Flytende ytre kjerne", tone: "warm" },
+      { x: 48, y: 88, n: "5", text: "Fast indre kjerne", tone: "warm" },
     ],
     points: [
       {
@@ -71,30 +67,27 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     ],
   },
   "/images/geo-midthavsrygg-hydrotermal.jpg": {
-    src: "/images/geo-midthavsrygg-hydrotermal-ren.jpg",
-    alt: "3D-snitt av en midthavsrygg (mid-ocean ridge) med dekompresjonssmelting, magmakammer, putelava og svarte skorsteiner (black smokers)",
+    src: "/images/geo-midthavsrygg-hydrotermal.jpg",
+    alt: "3D-snitt av midthavsrygg med dekompresjonssmelting, aksialt magmakammer, putelava og hydrotermale skorsteiner",
     heading: "Midthavsryggens anatomi: Dekompresjonssmelting og hydrotermale skorsteiner",
     caption:
-      "Når to litosfæreplater trekkes fra hverandre i spredningsaksen, stiger astenosfærisk peridotitt opp uten å tape nevneverdig varme (adiabatisk). Trykkfallet utløser dekompresjonssmelting (10–20 % delvis smelte) som produserer basaltisk magma. På havbunnen størkner lavaen som putelava (pillow basalt), mens nedsivende sjøvann varmes opp til over 350 °C av underliggende gabbro-kamre og spyles ut som metallrike svarte skorsteiner (black smokers).",
+      "Når to litosfæreplater trekkes fra hverandre i spredningsaksen, stiger astenosfærisk peridotitt opp uten å tape nevneverdig varme (adiabatisk). Trykkfallet utløser dekompresjonssmelting (10–20 % delvis smelte) som produserer basaltisk magma. På havbunnen størkner lavaen som putelava (pillow basalt), mens nedsivende sjøvann varmes opp til over 350 °C av underliggende gabbro-kamre og spyles ut som metallrike hydrotermale skorsteiner («black smokers»).",
     marks: [
-      { x: 2, y: 14, text: "Midthavsrygg (mid-ocean ridge)", tone: "cold" },
-      { x: 98, y: 16, n: "1", text: "Svart skorstein (black smoker)", tone: "warm", align: "right" },
-      { x: 2, y: 38, n: "2", text: "Putelava (pillow basalt)", tone: "cold" },
-      { x: 2, y: 56, text: "Ganger (sheeted dikes)", tone: "cold" },
-      { x: 2, y: 74, n: "3", text: "Magmakammer", tone: "warm" },
-      { x: 2, y: 90, n: "4", text: "Dekompresjonssmelting", tone: "warm" },
-      { x: 98, y: 86, text: "Astenosfære", tone: "cold", align: "right" },
+      { x: 50, y: 15, n: "1", text: "Black smoker", tone: "warm" },
+      { x: 32, y: 48, n: "2", text: "Putelava", tone: "cold" },
+      { x: 50, y: 62, n: "3", text: "Magmakammer", tone: "warm" },
+      { x: 50, y: 88, n: "4", text: "Dekompresjon", tone: "cold" },
     ],
     points: [
       {
         n: "1",
         label:
-          "Svarte skorsteiner (black smokers) spyr ut overopphetet, mineralrikt fluid som utfeller kobber-, jern- og sinksulfider.",
+          "Hydrotermale skorsteiner («black smokers») spyr ut overopphetet, mineralrikt fluid som utfeller kobber-, jern- og sinksulfider.",
       },
       {
         n: "2",
         label:
-          "Basaltisk putelava (pillow basalt) i aksedalen (axial valley) dannes når flytende basalt bråkjøles mot bunnvannet (2 °C) og danner glassaktige, avrundede puter.",
+          "Basaltisk putelava dannes når flytende basalt bråkjøles mot bunnvannet (2 °C) og danner glassaktige, avrundede puter.",
       },
       {
         n: "3",
@@ -109,21 +102,17 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     ],
   },
   "/images/geo-subduksjon-3d.jpg": {
-    src: "/images/geo-subduksjon-3d-ren.jpg",
-    alt: "3D-snitt av en subduksjonssone med dyphavsgrop (trench), akkresjonskile, dehydrering, flukssmelting og vulkanbue (volcanic arc). Havbunnsskorpe 5–8 km.",
+    src: "/images/geo-subduksjon-3d.jpg",
+    alt: "3D-snitt av subduksjonssone med dyphavsgrop, akkresjonskile, dehydrering, flukssmelting og vulkanbue",
     heading: "Anatomi av en subduksjonssone: Dehydrering, flukssmelting og akkresjonskile",
     caption:
       "Når en oseanisk litosfæreplate presses ned i mantelen, varmes den opp og presses sammen. Mineraler som har tatt opp sjøvann på havbunnen (særlig serpentinitt og leirmineraler) dehydreres ved 80–150 km dyp og slipper overopphetet vann inn i overliggende mantelkile. Dette senker peridotittens smeltepunkt dramatisk (flukssmelting). Den oppstigende magmaen mater en eksplosiv vulkanbue, mens avskrapede sedimenter danner en mektig akkresjonskile foran dyphavsgropen.",
     marks: [
-      { x: 2, y: 14, n: "1", text: "Dyphavsgrop (trench)", tone: "cold" },
-      { x: 2, y: 32, n: "2", text: "Akkresjonskile", tone: "warm" },
-      { x: 2, y: 50, text: "Havbunnsskorpe 5–8 km", tone: "cold" },
-      { x: 2, y: 68, text: "Havbunnslitosfære", tone: "cold" },
-      { x: 2, y: 86, text: "Astenosfære", tone: "cold" },
-      { x: 98, y: 18, n: "5", text: "Vulkanbue (volcanic arc)", tone: "warm", align: "right" },
-      { x: 98, y: 42, text: "Kontinentalskorpe 30–50 km", tone: "warm", align: "right" },
-      { x: 98, y: 66, n: "4", text: "Flukssmelting", tone: "warm", align: "right" },
-      { x: 98, y: 84, n: "3", text: "Dehydrering", tone: "cold", align: "right" },
+      { x: 18, y: 55, n: "1", text: "Dyphavsgrop", tone: "cold" },
+      { x: 26, y: 48, n: "2", text: "Akkresjonskile", tone: "warm" },
+      { x: 42, y: 78, n: "3", text: "Dehydrering", tone: "cold" },
+      { x: 54, y: 64, n: "4", text: "Flukssmelting", tone: "warm" },
+      { x: 68, y: 32, n: "5", text: "Vulkanbue", tone: "warm" },
     ],
     points: [
       {
@@ -154,18 +143,16 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     ],
   },
   "/images/geo-ofiolitt-leka.jpg": {
-    src: "/images/geo-ofiolitt-leka-ren.jpg",
-    alt: "Ofiolittkompleks fra Leka: dyphavssediment, putelava (pillow lava), plateformede ganger (sheeted dikes), gabbro, Moho og mantelperidotitt",
+    src: "/images/geo-ofiolitt-leka.jpg",
+    alt: "Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel",
     heading: "Norges geologiske nasjonalmonument: Leka ofiolittkompleks",
     caption:
       "På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!",
     marks: [
-      { x: 2, y: 12, text: "Sediment og chert", tone: "warm" },
-      { x: 2, y: 28, n: "4", text: "Putelava (pillow lava)", tone: "cold" },
-      { x: 2, y: 44, text: "Ganger (sheeted dikes)", tone: "cold" },
-      { x: 2, y: 60, n: "3", text: "Lagdelt gabbro", tone: "warm" },
-      { x: 2, y: 74, n: "2", text: "Moho", tone: "cold" },
-      { x: 2, y: 88, n: "1", text: "Mantel (peridotitt)", tone: "warm" },
+      { x: 22, y: 72, n: "1", text: "Mantelperidotitt", tone: "warm" },
+      { x: 42, y: 55, n: "2", text: "Moho-grensen", tone: "cold" },
+      { x: 62, y: 42, n: "3", text: "Lagdelt gabbro", tone: "warm" },
+      { x: 80, y: 24, n: "4", text: "Putelava", tone: "cold" },
     ],
     points: [
       {
@@ -189,19 +176,16 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     ],
   },
   "/images/geo-wilsonsyklus-3d.jpg": {
-    src: "/images/geo-wilsonsyklus-3d-ren.jpg",
-    alt: "Wilsonsyklusens seks stadier, fra kontinental rifting til havspredning, subduksjon og kontinentkollisjon",
+    src: "/images/geo-wilsonsyklus-3d.jpg",
+    alt: "Wilsonsyklusens 6 stadier fra kontinental oppsprekking til havlukking og fjellkjededannelse",
     heading: "Wilsonsyklusens 6 stadier: Superkontinentenes kretsløp i 3D",
     caption:
       "J. Tuzo Wilsons modell beskriver hvordan havbassenger fødes, utvides, lukkes og forsvinner i en syklus på 400–600 millioner år (Wilson, 1966). 1: Embryonisk stadium (kontinental riftdal, f.eks. Øst-Afrika). 2: Ungt stadium (smalt havbasseng med begynnende midthavsrygg, Rødehavet). 3: Modent stadium (vidt hav med passive marginer, Atlanterhavet). 4: Avtagende stadium (subduksjonssoner spiser opp havbunnen, Stillehavet). 5: Sluttstadium/terminalt (smalt, lukket hav med kollisjonsfronter, Middelhavet). 6: Suturstadium (kontinentkollisjon og høyfjellskjede, f.eks. Himalaya og oldtidens Kaledonider).",
     marks: [
-      { x: 2, y: 14, text: "Midthavsrygg (mid-ocean ridge)", tone: "cold" },
-      { x: 2, y: 70, n: "1", text: "Rifting", tone: "warm" },
-      { x: 28, y: 70, text: "Ungt hav", tone: "cold" },
-      { x: 54, y: 70, n: "2", text: "Modent hav", tone: "cold" },
-      { x: 2, y: 88, n: "3", text: "Subduksjon", tone: "warm" },
-      { x: 34, y: 88, text: "Lukking", tone: "warm" },
-      { x: 62, y: 88, n: "4", text: "Kollisjon", tone: "warm" },
+      { x: 18, y: 22, n: "1", text: "1: Rifting", tone: "warm" },
+      { x: 48, y: 22, n: "2", text: "2–3: Havspredning", tone: "cold" },
+      { x: 80, y: 22, n: "3", text: "4: Subduksjon", tone: "cold" },
+      { x: 50, y: 75, n: "4", text: "5–6: Kollisjon & Sutur", tone: "warm" },
     ],
     points: [
       {
@@ -217,7 +201,7 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
       {
         n: "3",
         label:
-          "Avtagende stadium: Kald og tung litosfære begynner å subduere (subduction) langs havets render (Ildringen i Stillehavet).",
+          "Avtagende stadium: Kald og tung litosfære begynner å subduere langs havets render (Ildringen i Stillehavet).",
       },
       {
         n: "4",
