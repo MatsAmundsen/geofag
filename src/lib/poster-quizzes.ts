@@ -736,6 +736,66 @@ export const QUIZ_VAERKART: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
+  {
+    prompt:
+      "Hvorfor er sirkulasjonen delt i tre celler på hver halvkule, og ikke én sløyfe fra ekvator til pol?",
+    options: [
+      "Fordi hav og land er ujevnt fordelt.",
+      "Fordi jorda roterer. Luft som går mot polen i høyden, blir vestavind og synker nær 30°.",
+      "Fordi tyngdekraften er mye svakere ved polene.",
+    ],
+    answer: 1,
+    explain:
+      "Hadley foreslo én celle i 1735. Rotasjonen gjør at den øvre strømmen blir vestavind, lufta synker nær 30°, og vi får tre celler (NOAA).",
+  },
+  {
+    prompt: "Hva kjennetegner den intertropiske konvergenssonen?",
+    options: [
+      "Høytrykk, klar himmel og stødige nordavinder.",
+      "Passatene møtes, lufta stiger, og det blir skyer og byger.",
+      "Kald luft som synker fra stratosfæren.",
+    ],
+    answer: 1,
+    explain:
+      "Konvergenssonen er lavtrykksbeltet der nordøstpassaten og sørøstpassaten møtes og fuktig luft tvinges opp.",
+  },
+  {
+    prompt: "Hvorfor ligger mange av de store ørkenene nær 30° bredde?",
+    options: [
+      "Luft som har steget ved ekvator, synker. Den varmes opp, og skyene løses opp.",
+      "Det finnes ingen fjell som kan stoppe vinden.",
+      "Havet koker og tørker ut landmassene.",
+    ],
+    answer: 0,
+    explain:
+      "Subsidens nær 30° gir høytrykk og tørke, blant annet i Nord-Afrika og Australia.",
+  },
+  {
+    prompt: "Hvorfor kalles Ferrel-cellen termisk indirekte?",
+    options: [
+      "Fordi den bare finnes om sommeren.",
+      "Fordi den drives av friksjon mellom de to andre cellene, ikke av varmekontrasten mellom ekvator og pol.",
+      "Fordi den frakter kulde fra ekvator mot polene.",
+    ],
+    answer: 1,
+    explain:
+      "NOAA beskriver vestavinden mellom 35° og 60° som drevet av friksjon, ikke av varmekontrasten mellom ekvator og polene.",
+  },
+  {
+    prompt:
+      "Hvorfor kan vestkysten av Norge få over 3000 mm nedbør i året, mens Ottadalen får ned mot 200 mm?",
+    options: [
+      "Vestkysten ligger i Hadley-cellen, og Ottadalen ligger i polarcellen.",
+      "Fuktig vestavind tvinges opp av fjellene og gir orografisk nedbør på luvsiden. På lesiden synker lufta, og Ottadalen ligger i regnskygge.",
+      "Det regner bare om natten på vestkysten.",
+    ],
+    answer: 1,
+    explain:
+      "SNL beskriver soner med stedvis over 3000 mm innenfor vestkysten, under 300 mm øst for Breheimen, og ned mot 200 mm i Ottadalen.",
+  },
+];
+
 export const QUIZ_ISBRE: QuizQuestion[] = [
   {
     prompt: "Hvorfor er morene usortert, mens breelvmateriale er sortert?",

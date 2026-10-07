@@ -125,6 +125,38 @@ describe("injectPosterWidgets", () => {
     assert.equal(hoytrykk.includes("<"), false);
   });
 
+  it("keeps the vindsystemet poster on the template", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const md = readFileSync(join(lib, "posts/vindsystemet.md"), "utf8");
+    const injected = injectPosterWidgets(md);
+    const ids = listedWidgetIds(injected);
+    for (const id of [
+      "StralingsbalanseForklaring",
+      "InsolationDiagram",
+      "TermiskDirekteForklaring",
+      "OneVsThreeCellsDiagram",
+      "WindCellsDiagram",
+      "HadleyCloseupDiagram",
+      "SubsidensForklaring",
+      "SurfaceWindsDiagram",
+      "GlobalClimateZonesDiagram",
+      "VindBelterFoto",
+      "PolarFrontNorwayDiagram",
+      "WindSystemModel",
+      "QuizVindsystemet",
+    ]) {
+      assert.equal(ids.has(id), true, `vindsystemet missing ${id}`);
+      assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("2,5 MJ"), false);
+    assert.equal(md.includes("3500"), false);
+  });
+
   it("keeps the værkart poster on the template", () => {
     const lib = dirname(fileURLToPath(import.meta.url));
     const md = readFileSync(join(lib, "posts/vaerkart.md"), "utf8");
@@ -274,6 +306,8 @@ describe("jordskjelv poster", () => {
       "HyposenterForklaring",
       "ElasticRebound",
       "EarthquakeWavePhysics",
+      "Partikkelbolger",
+      "JordasBolger",
       "Seismogram",
       "BoundaryQuakes",
       "IntraplateForklaring",
