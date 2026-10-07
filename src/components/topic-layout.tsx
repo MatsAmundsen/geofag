@@ -181,11 +181,15 @@ export function TopicLayout({
               <PosterBody
                 cleanChapter
                 scrollTables={
+                  resolvedSlug === "jetstrommer" ||
+                  resolvedSlug === "lokale-vaersystemer" ||
                   resolvedSlug === "vulkaner" ||
                   resolvedSlug === "hoytrykk-lavtrykk" ||
                   resolvedSlug === "jordskjelv" ||
                   resolvedSlug === "jordsystemene" ||
-                  resolvedSlug === "isbreer-og-landformer"
+                  resolvedSlug === "isbreer-og-landformer" ||
+                  resolvedSlug === "vaerkart" ||
+                  resolvedSlug === "vindsystemet"
                 }
                 wrapTables={
                   resolvedSlug === "skred" ||
