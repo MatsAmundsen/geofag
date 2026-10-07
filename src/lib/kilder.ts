@@ -1478,10 +1478,22 @@ export const KILDER = {
       href: "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
+      prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Istid",
       suffix: ".",
       href: "https://snl.no/istid",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Weichsel",
+      suffix: ".",
+      href: "https://snl.no/weichsel",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      italic: "Climate change: atmospheric carbon dioxide",
+      suffix: ".",
+      href: "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",

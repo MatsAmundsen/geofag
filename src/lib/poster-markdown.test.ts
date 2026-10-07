@@ -327,6 +327,9 @@ describe("milankovitch poster", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("65 °N"), false);
+    assert.equal(md.includes("65°N"), true);
+    assert.equal(md.includes("Weichsel"), true);
+    assert.equal(md.includes("Dagens breer er ikke kvartærtidens innlandsis."), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/milankovitch"), true);

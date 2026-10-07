@@ -14,9 +14,9 @@
 IstidForklaring
 ```
 
-[Istider](/tema/milankovitch) handler om hvorfor store iskapper kommer og går. Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av kontinentene og grunne havområder. Flere istider er skilt av mellomistider. Vi lever i kvartær, som har vart i 2,6 millioner år, med nesten 50 istider. Siste istid sluttet for 11 600 år siden (Store norske leksikon, u.å.).
+[Istider](/tema/milankovitch) handler om hvorfor store iskapper kommer og går. Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av kontinentene og grunne havområder. Flere istider er skilt av mellomistider. Vi lever i kvartær, som har vart i 2,6 millioner år, med nesten 50 istider. Siste istid sluttet for 11 600 år siden (Store norske leksikon, u.å.-a).
 
-Årsakene til hele istidsperioder, som kvartær, er andre enn årsakene til vekslingen mellom istid og mellomistid inne i en slik periode (Store norske leksikon, u.å.). Sporene i is og havbunn eier [paleoklima](/tema/paleoklima). Isen som måles i år, eier [kryosfæren](/tema/kryosfaeren).
+Årsakene til hele istidsperioder, som kvartær, er andre enn årsakene til vekslingen mellom istid og mellomistid inne i en slik periode (Store norske leksikon, u.å.-a). Sporene i is og havbunn eier [paleoklima](/tema/paleoklima). Isen som måles i år, eier [kryosfæren](/tema/kryosfaeren).
 
 ## Tre svingninger
 
@@ -28,7 +28,7 @@ Milankovitch-syklusene er tre bevegelser i jordas bane og akse. De endrer hvor m
 | Skråstilling | Aksens vinkel mot baneplanet | om lag 41 000 år |
 | Presesjon | Retningen aksen peker | om lag 25 771,5 år |
 
-Det er enighet om at Milanković-syklusene utløser klimaendringene som gir istider og mellomistider i kvartær, men at forsterkningsmekanismer gir de store utslagene. Teorien ble etablert av Milutin Milanković, i publikasjoner fra 1914 og i endelig form i 1941. Variasjonen i den totale solinnstrålingen til jorda er mindre enn 0,5 prosent. Syklusene omfordeler innstrålingen mellom breddegrader og årstider (Store norske leksikon, u.å.).
+Det er enighet om at Milanković-syklusene utløser klimaendringene som gir istider og mellomistider i kvartær, men at forsterkningsmekanismer gir de store utslagene. Teorien ble etablert av Milutin Milanković, i publikasjoner fra 1914 og i endelig form i 1941. Variasjonen i den totale solinnstrålingen til jorda er mindre enn 0,5 prosent. Syklusene omfordeler innstrålingen mellom breddegrader og årstider, slik at det i løpet av årtusener kan være opptil 20 prosent høyere innstråling på for eksempel 65°N til visse årstider. De store kontinentene ligger på midlere høye breddegrader, og det er innstrålingen der som teller (Store norske leksikon, u.å.-a). NASA beskriver den samme omfordelingen som opptil 25 prosent på midlere breddegrader, om lag 30 til 60 grader nord og sør (NASA, u.å.). Tallene er ikke regnet om til hverandre.
 
 ## Eksentrisitet
 
@@ -44,19 +44,27 @@ Mens jorda roterer, vingler aksen litt, omtrent som en snurrebass. Syklusen vare
 
 Milanković regnet med at istider kommer omtrent hvert 41 000. år. Senere forskning bekrefter 41 000-års mellomrom for mellom én og tre millioner år siden. For om lag 800 000 år siden ble syklusen lengre, 100 000 år, i takt med eksentrisiteten. Forskerne har ikke et klart svar på det skiftet. I 1976 fant en studie av dyphavssedimenter i tidsskriftet Science at syklusene svarer til store klimaendringer de siste 450 000 årene (NASA, u.å.).
 
+## Weichsel
+
+Weichsel er navnet på siste istid i Nord-Europa, cirka 117 000–10 000 år siden. Store deler av Nord-Europa og Nord-Amerika var da dekket av is. Samme istid kalles Würm i Alpene og Wisconsin i Nord-Amerika (Store norske leksikon, u.å.-b). Istidsoppslaget skriver at siste istid sluttet for 11 600 år siden (Store norske leksikon, u.å.-a). De to årstallene står i hver sin artikkel.
+
+## Karbondioksid i iskjerner
+
+CO₂ målt i iskjerner fra Antarktis er en viktig forsterkningsmekanisme. Under istidene lagres mye CO₂ i dyphavet, og innholdet i atmosfæren blir lavere (Store norske leksikon, u.å.-a). I istidssyklusene det siste millionåret kom ikke karbondioksid høyere enn 300 ppm. Før den industrielle revolusjonen midt på 1700-tallet var det 280 ppm eller lavere. Iskjernekurven dekker de siste 800 000 årene (NOAA, u.å.).
+
 ## Siste istids maksimum
 
-For 20 000 år siden, under siste istids maksimum, strakk iskappen seg til det sørlige England og østover i Russland. De kaldeste områdene i Sibir var isfrie, fordi klimaet var så tørt. Det globale havnivået sto 125 meter lavere enn i dag, så England var landfast med Frankrike (Store norske leksikon, u.å.).
+For 20 000 år siden, under siste istids maksimum, strakk iskappen seg til det sørlige England og østover i Russland. De kaldeste områdene i Sibir var isfrie, fordi klimaet var så tørt. Det globale havnivået sto 125 meter lavere enn i dag, så England var landfast med Frankrike (Store norske leksikon, u.å.-a).
 
-I dag er det en stor iskappe bare på Grønland. Små breer finnes i det nordlige Canada, på Island, Svalbard og Novaja Semlja, og i Norge blant annet Folgefonna, Jostedalsbreen og Svartisen. I Polhavet er det flytende havis (Store norske leksikon, u.å.).
+I dag er det en stor iskappe bare på Grønland. Små breer finnes i det nordlige Canada, på Island, Svalbard og Novaja Semlja, og i Norge blant annet Folgefonna, Jostedalsbreen og Svartisen. I Polhavet er det flytende havis (Store norske leksikon, u.å.-a).
 
 > **Vanlige misforståelser**
 >
 > De tre svingningene forklarer ikke oppvarmingen vi ser nå (NASA, u.å.).
 >
-> Den totale solinnstrålingen til jorda varierer med mindre enn 0,5 prosent. Det som varierer mer, er hvor og når på året strålingen treffer. På midlere breddegrader kan den variere med opptil 25 prosent (Store norske leksikon, u.å.; NASA, u.å.).
+> Den totale solinnstrålingen til jorda varierer med mindre enn 0,5 prosent. Det som varierer mer, er hvor og når på året strålingen treffer. På for eksempel 65°N kan den til visse årstider være opptil 20 prosent høyere (Store norske leksikon, u.å.-a). På midlere breddegrader kan den variere med opptil 25 prosent (NASA, u.å.).
 >
-> Dagens breer er ikke kvartærtidens innlandsis. En stor iskappe finnes i dag bare på Grønland (Store norske leksikon, u.å.).
+> Dagens små breer er ikke kvartærtidens innlandsis. En stor iskappe finnes i dag bare på Grønland (Store norske leksikon, u.å.-a).
 
 ## Viktige begreper
 
@@ -70,7 +78,11 @@ I dag er det en stor iskappe bare på Grønland. Små breer finnes i det nordlig
 
 **Presesjon:** Aksens vingling, med en syklus på om lag 25 771,5 år.
 
+**Weichsel:** Siste istid i Nord-Europa, cirka 117 000–10 000 år siden. Würm i Alpene og Wisconsin i Nord-Amerika.
+
 **Siste istids maksimum:** For 20 000 år siden, da havet sto 125 meter lavere enn i dag.
+
+**Iskjerne-CO₂:** Ikke over 300 ppm i istidssyklusene det siste millionåret. 280 ppm eller lavere før midten av 1700-tallet.
 
 ## Test deg selv
 

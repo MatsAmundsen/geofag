@@ -371,7 +371,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       <p>
         Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
         kontinentene og grunne havområder. Mellom dem ligger mellomistider (Store norske leksikon,
-        u.å.).
+        u.å.-a).
       </p>
     </Callout>
   ),
