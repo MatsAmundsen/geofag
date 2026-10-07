@@ -179,8 +179,18 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
   { widgets: ["ElasticRebound"], beforeHeading: "Den seismiske syklusen" },
   {
+    widgets: ["Partikkelbolger"],
+    beforeImage: "/images/geo-jordskjelv-bolger-3d.jpg",
+    require: "kompresjon: stoffet skyves",
+  },
+  {
     widgets: ["EarthquakeWavePhysics"],
     beforeImage: "/images/geo-jordskjelv-bolger-3d.jpg",
+  },
+  {
+    widgets: ["JordasBolger"],
+    beforeHeading: "Hvor skjer de store skjelvene",
+    require: "om lag 103",
   },
   { widgets: ["Seismogram"], beforeHeading: "Lokalisering via sirkeltriangulering" },
   {

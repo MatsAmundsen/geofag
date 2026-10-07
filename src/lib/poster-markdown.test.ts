@@ -246,6 +246,8 @@ describe("jordskjelv poster", () => {
       "HyposenterForklaring",
       "ElasticRebound",
       "EarthquakeWavePhysics",
+      "Partikkelbolger",
+      "JordasBolger",
       "Seismogram",
       "BoundaryQuakes",
       "IntraplateForklaring",
