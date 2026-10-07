@@ -17,7 +17,7 @@ export function FigureFrame({
   return (
     <figure className="my-8 max-w-full overflow-hidden rounded-xl border border-border bg-card">
       {heading || action ? (
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-border px-4 py-2.5 sm:px-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-2.5 sm:px-6">
           {heading ? (
             <p className="min-w-0 flex-1 text-sm font-medium leading-snug text-foreground">{heading}</p>
           ) : (

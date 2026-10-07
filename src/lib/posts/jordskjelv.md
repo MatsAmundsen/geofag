@@ -1,225 +1,154 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/jordskjelv](/geofag-1/jordskjelv). Her kan du redigere **hele fagteksten**.
-
 > **Kompetansemål i Geofag 1 (LK20)**
+>
+> Målet er at du skal kunne gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten, og gjøre rede for naturfarer knyttet til geosfæren og hydrosfæren og vurdere hvordan mennesker kan forebygge og tilpasse seg dem (Udir, u.å.-b).
 >
 > **Kjerneelementer som dekkes i dette kapittelet:**
 >
-> • *Jordens oppbygning og indre prosesser:* Elastisk tilbakefjæring og seismisk bølgeforplantning.
+> • *Jordsystemer i tid og rom:* Jordskjelv er et plutselig brudd i skorpen. De samme bølgene rister hus og viser hvordan jorda er lagdelt (Udir, u.å.-a).
 >
-> • *Geofarer og samfunnssikkerhet:* Jordskjelvrisiko, tsunamier, Eurokode 8, baseisolering og norsk seismisitet.
+> • *Mennesket i jordsystemene:* Fare, eksponering og sårbarhet. Kunnskap og analyser brukes til å sikre bygg der skjelv kan komme (Udir, u.å.-a).
 >
-> • *Naturvitenskapelige metoder:* Seismogramanalyse, triangulering av episenter og bruk av seismiske skyggesoner til å avbilde jordens indre lag.
+> • *Prosesser du skal kunne gjøre rede for:* Elastisk tilbakefjæring, P- og S-bølger, skjelv ved plategrenser og inne på platen, og tsunami fra skjelv eller fra skred.
 
-## Jordskjelvfysikk: Harry Fielding Reids elastiske tilbakefjæring
+## Hva er et jordskjelv?
 
-Frem til begynnelsen av 1900-tallet trodde mange forskere at forkastninger i jordskorpen var et sekundært resultat av mystiske eksplosjoner dypt nede i jorden. Den sanne fysiske forklaringen ble først avdekket etter det store jordskjelvet i San Francisco 18. april 1906.
+```widget
+HyposenterForklaring
+```
 
-Den amerikanske geofysikeren Harry Fielding Reid (1910) analyserte nitidige landmålinger av vei- og gjerdelinjer som krysset San Andreas-forkastningen før og etter skjelvet. Han la merke til at gjerder som opprinnelig var snorrette, hadde blitt gradvis bøyd til en svak S-kurve i tiårene forut for katastrofen, før de plutselig ble kuttet tvert av med en permanent forskyvning på opptil 6 meter under selve skjelvet.
+Et jordskjelv er en bevegelse som oppstår der oppbygd spenning blir utløst ved et plutselig brudd i jordskorpa. Skjelvet kan gjøre stor skade (NGU, u.å.-a).
 
-### Den seismiske syklusen trinn for trinn
+De fleste skjelv sitter langs plategrenser. Der henger platene i hverandre, så spenningen bygger seg opp til flaten glir. Energien sprer seg gjennom jorda som seismiske bølger (seismic waves) (NGU, u.å.-a).
 
-Reids teori om **elastisk tilbakefjæring (elastic rebound theory)** danner i dag fundamentet for all moderne jordskjelvforskning og forklarer den periodiske *seismiske syklusen*:
+Tenk på en fjær som du spenner sakte. Fjellet langs en låst forkastning (fault) bøyes på samme måte, over lang tid. Når friksjonen ryker, spretter fjellet tilbake. Det kalles elastisk tilbakefjæring (elastic rebound). Bruddet kan bli stående som en forkastning på overflaten, eller det kan skje i en gammel forkastning som glir på nytt (NGU, u.å.-a).
 
-1. **Tektonisk spenningsoppbygging:** Platetektoniske krefter driver to jordskorpeblokker i motsatte retninger med noen centimeter per år. Langs forkastningsflaten hindrer imidlertid enorm friksjon og rugositeter (asperiteter) blokkene i å gli jevnt forbi hverandre. Forkastningen er *låst*.
+```widget
+ElasticRebound
+```
 
-2. **Elastisk deformasjon:** Fordi bergartene ikke kan gli, begynner fjellmassene på hver side av forkastningen å bøyes og tøyes elastisk, akkurat som en stålfjær eller en spent pil og bue. Mekanisk potensiell energi akkumuleres over tiår, århundrer eller årtusener.
+Grunne skjelv kan altså lage et synlig brudd. Energi som utløses dypt nede, kan likevel gjøre stor skade, fordi bølgene rister overflaten (NGU, u.å.-a). Les mer om hvordan platene beveger seg i kapittelet [Platetektonikk](/geofag-1/platetektonikk).
 
-3. **Spenningsbrudd:** Når den oppbygde skjærspenningen (τ) til slutt overstiger bergartens skjærfasthet eller friksjonslåsens motstand, svikter asperitetene brått.
+## P-bølger og S-bølger
 
-4. **Tilbakefjæring og bølgeutstråling:** I løpet av brøkdeler av et sekund spretter de elastisk deformerte bergartene tilbake til sin opprinnelige, ubelastede form. Den frigjorte elastiske energien omdannes til varme og **seismiske sjokkbølger** som stråler ut i alle retninger fra bruddstedet (hyposenteret).
+Når bruddet skjer, går to typer bølger gjennom jorda. **P-bølger** (P-waves) er kompresjon: stoffet skyves og trekkes i bølgens retning. De går gjennom både fast berg og væske. **S-bølger** (S-waves) er skjær: stoffet beveger seg på tvers av bølgeretningen. De går bare gjennom fast stoff (USGS, u.å.-a).
 
-**Elastisk tilbakefjæring:** Prinsippet der bergarter spennes opp som en fjær langs en låst forkastning. Når friksjonen ryker, spretter fjellet tilbake og utløser jordskjelv.
+| | P-bølge | S-bølge |
+| --- | --- | --- |
+| Bevegelse | kompresjon, langs bølgen | skjær, på tvers av bølgen |
+| Går gjennom | fast berg og væske | bare fast stoff |
+| Hva den viser | den kommer fram også gjennom kjernen | den stopper, så den ytre kjernen er flytende |
 
-**Hyposenter (fokus):** Det nøyaktige punktet dypt nede i jordskorpen der forkastningsbruddet starter og den seismiske energien utløses.
+```widget
+EarthquakeWavePhysics
+```
 
-**Episenter:** Punktet på jordoverflaten som ligger loddrett over hyposenteret.
+![Snitt av et forkastningsbrudd med P-bølger, S-bølger og bølger langs overflaten](/images/geo-jordskjelv-bolger-3d.jpg)
 
-## Seismiske bølger og oppdagelsen av jordens flytende kjerne
+*Bruddet starter i dypet. P- og S-bølger går gjennom jorda. Bølgene langs overflaten kommer sist og rister bygningene.*
 
-Når en forkastning brister, forplanter energien seg gjennom jorden i form av elastiske deformasjonsbølger. Vi deler dem inn i to hovedgrupper: **romlige bølger (body waves)**, som reiser gjennom jordens indre, og **overflatebølger (surface waves)**, som er bundet til jordens overflate.
+P-bølgen kommer først fram til en målestasjon. S-bølgen kommer etter. Tidsforskjellen blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret.
 
-![3D-snitt av forkastningsbrudd, hyposenter, episenter og utbredelse av P-, S-, Rayleigh- og Love-bølger](/images/geo-jordskjelv-bolger-3d.jpg)
+```widget
+Seismogram
+```
 
-*3D-seismologi: Fra forkastningsbrudd til overflatebølger — Når en forkastning brister, frigjøres elastisk spenningsenergi fra hyposenteret (fokus). Energien forplanter seg innover i jorden som romlige bølger (raske P-kompresjonsbølger og langsommere S-skjærbølger). Når bølgene treffer jordoverflaten ved episenteret, omdannes de til overflatebølger: Love-bølger (horisontal sideveis skjærbevegelse) og Rayleigh-bølger (rullende elliptisk bevegelse). Det er overflatebølgenes store amplitude som forårsaker de største strukturelle skadene på bygninger.*
+Bølgene langs overflaten kommer sist. Det er de som har størst utslag og som rister husene mest. Figuren kaller dem Rayleigh- og Love-bølger.
 
-### Bølgefysikk og elastisitetsmoduler
+### Skyggesonen
 
-#### P-bølger (primære kompresjonsbølger)
+Ingen har boret gjennom skorpa. Et sovjetisk hull på Kolahalvøya nådde 12 km, og det er fortsatt inne i skorpa. Grensen mellom skorpe og mantel, Moho (Mohorovicic discontinuity), er kjent som et hopp i bølgehastighet, ikke som noe vi har sett (USGS, u.å.-a).
 
-P-bølger er *longitudinelle bølger*: Partiklene svinger frem og tilbake parallelt med bølgens utbredelsesretning.
+Den ytre kjernen regnes som flytende fordi den ikke slipper gjennom S-bølger, og fordi P-bølgene som går gjennom den, blir brått langsommere. Farten faller med om lag 30 prosent fra mantel til kjerne, samtidig som tettheten øker med om lag 30 prosent. Kjernen ble identifisert i 1906 av R.D. Oldham ut fra jordskjelvregistreringer. Den indre kjernen regnes som fast ut fra hvordan bølgene oppfører seg når de går gjennom den (USGS, u.å.-a).
 
-v_p = √((K + 4/3 μ) / ρ) ≈ 6,0–8,0 km/s (i skorpen)
+S-bølger kommer ikke tilbake lenger ut enn om lag 103 grader fra skjelvet, fordi væsken stopper dem. Direkte P-bølger mangler mellom om lag 103 og 140 grader, fordi de bøyes av ved grensen mot kjernen (IRIS, u.å.). Det området kalles skyggesonen (shadow zone).
 
-Fordi kompresjonsmodulen K aldri er null, kan P-bølger forplante seg gjennom **både faste bergarter, væsker og gasser**. De ankommer alltid først til en seismisk stasjon.
+## Hvor skjer de store skjelvene?
 
-#### S-bølger (sekundære skjærbølger)
+De fleste skjelv sitter i smale soner mellom platene (USGS, u.å.-b). NGU beskriver det samme: spenningen bygges opp der platene henger i hverandre (NGU, u.å.-a).
 
-S-bølger er *transversale bølger*: Partiklene svinger vinkelrett på bølgens forplantningsretning.
+```widget
+BoundaryQuakes
+```
 
-v_s = √(μ / ρ) ≈ 3,5–4,5 km/s (i skorpen)
+Ved en midthavsrygg går platene fra hverandre. Island ligger på Den midtatlantiske ryggen og er stedet der du kan se den samme spredningen på land (USGS, u.å.-b). Plategrensen ligger altså vest for Norge. Den går ikke gjennom Oslo.
 
-Væsker og gasser har ingen skjærstivhet (μ = 0). Derfor er **v_s = 0 i væsker** — S-bølger kan overhodet ikke forplante seg gjennom flytende medier!
+Der en havbunnsplate synker under en annen, blir det sterke og ødeleggende skjelv. Andesfjellene er typeeksempelet: Nazcaplaten synker under Sør-Amerika, og landet heves (USGS, u.å.-b).
 
-### Overflatebølger: Rayleigh og Love
+Ved en transformforkastning glir platene sidelengs. Skorpe blir verken laget eller ødelagt, og skjelvene er grunne. San Andreas i California er eksempelet på land. Stillehavsplaten har glidd horisontalt forbi den nordamerikanske platen i 10 millioner år, med om lag 5 cm i året (USGS, u.å.-b).
 
-Når P- og S-bølgene treffer jordoverflaten, reflekteres og interfererer de med grenseflaten mot atmosfæren. Dette genererer to typer **overflatebølger**:
+| | Ved plategrense | I Norge |
+| --- | --- | --- |
+| Hvor | rygg, synkende plate eller transform | inne på Den eurasiske platen |
+| Typisk skjelv | her sitter de store | færre, og oftest mindre |
+| Tsunami | undersjøisk skjelv kan flytte havbunnen | historiske flodbølger kommer fra skred |
 
-- **Rayleigh-bølger:** Rullende bølgebevegelse i vertikalplanet (retrograd elliptisk), tilsvarende dønninger på havet.
+## Hvorfor skjelver Norge?
 
-- **Love-bølger:** Rent horisontal skjærbevegelse på tvers av bølgeretningen. Det er Love- og Rayleigh-bølgene som forårsaker de suverent største ødeleggelsene på bygninger og infrastruktur!
+```widget
+IntraplateForklaring
+```
 
-### Oldhams oppdagelse (1906): S-bølgenes skyggesone
+Norge ligger inne på Den eurasiske platen. Likevel er Norge området i Nord-Europa som opplever flest jordskjelv. Bare et fåtall har gitt skader på bygninger (NGU, u.å.-a; NORSAR, u.å.-b). Små skjelv finnes også langt fra plategrensene, og noen få i året i Norge er kraftige nok til at folk merker dem (NGU, u.å.-a).
 
-I 1906 publiserte den britiske geologen Richard Dixon Oldham en banebrytende oppdagelse: Seismografer plassert i en vinkelavstand på mellom **103° og 180°** fra et jordskjelvs episenter registrerte aldri direkte S-bølger (Oldham, 1906).
+```widget
+NorwayEarthquakes
+```
 
-Fordi S-bølger ikke kan gå gjennom væske, innså Oldham at jordens sentrum måtte bestå av en gigantisk flytende kjerne! P-bølgene ble dessuten kraftig avbøyd (refraktert) innover på grunn av en brå nedgang i lydhastigheten, noe som også skapte en P-bølge-skyggesone mellom 103° og 142°. I 1936 viste den danske seismologen Inge Lehmann at svake P-bølger likevel dukket opp i skyggesonen, og beviste dermed eksistensen av en fast, indre kjerne.
+Spenningen kommer ikke fra en subduksjonssone under Vestlandet. NORSAR beskriver tre spor. Ved Svalbard, øst for Den midtatlantiske ryggen, sprer spenningen fra havbunnsspredningen seg inn mot øyene og kan reaktivere forkastninger. I Nordsjøen ligger gamle rifter. Spenningen der kan komme fra spredningen langs ryggen, eller fra landheving etter at isen smeltet. I Nordland antas skjelvene å skyldes strekking av skorpen, fra landheving og omfordeling av sedimenter etter siste istid (NORSAR, u.å.-b).
 
-## Måling av jordskjelv: Seismogram, tidsdifferanse og magnitude
+Det største kjente skjelvet i Oslo-området er Oslofjordskjelvet søndag 23. oktober 1904 kl. 11:27. Styrken er beregnet til 5,4. Episenteret er senere lagt til Kattegat, om lag 25 km sør for Hvaler. Skjelvet ble følt over et stort område, fra Namsos i nord til Polen i sør, og det ga betydelige skader på bygninger (NORSAR, u.å.-a). Ved Lurøy i Nordland i 1819 er styrken estimert til 5,9 (NORSAR, u.å.-b).
 
-Et *seismometer* registrerer bakkebevegelse i tre ortogonale dimensjoner (nord-sør, øst-vest og vertikalt) ved hjelp av en opphengt treghetsmasse som forblir i ro mens jorden ryster rundt den. Den digitale utskriften kalles et **seismogram**.
+Aktiviteten overvåkes av jordskjelvstasjonen ved Universitetet i Bergen og av NORSAR (NGU, u.å.-a). Norsk nasjonalt seismisk nettverk har over 50 stasjoner og arrayer på fastlandet og på øyene i Arktis. Nettverket ble etablert i 1992, ledes av Universitetet i Bergen, og NORSAR er partner (NORSAR, u.å.-c).
 
-### Lokalisering via sirkeltriangulering
+## Tsunami: skjelv eller skred?
 
-Fordi P-bølgene beveger seg omtrent 1,7 ganger raskere enn S-bølgene, vil avstanden mellom de to bølgetogene øke jo lenger de reiser. Tidsdifferansen mellom første P-bølgeankomst og første S-bølgeankomst kalles **Δt = t_S - t_P**.
+En tsunami (tsunami) er en bølge som settes i gang når et stort vannvolum flyttes. Store undersjøiske jordskjelv kan danne slike bølger, og de kan gjøre skade på kysten langt fra selve skjelvet (NGU, u.å.-a). Det er mekanismen ved mange store skjelv der en plate synker under en annen.
 
-d = Δt · (v_p · v_s) / (v_p - v_s) ≈ Δt · 8,0 km/s (i typisk kontinentalskorpe)
+Norske historiske flodbølger har en annen årsak. De kommer fra skred som treffer fjord, innsjø eller sokkel, ikke fra en plategrense utenfor kysten.
 
-Én stasjon gir oss avstandsradien som en sirkel. To stasjoner gir to sirkler som skjærer hverandre i to punkter. Først med en **tredje uavhengig seismisk stasjon** krysser sirklene i et unikt, felles punkt: **jordskjelvets episenter**!
+Storeggaskredet gikk for om lag 8150 år siden i Norskehavet. Volumet er vurdert til 2400–3200 km³. En teori er at et stort jordskjelv utløste den første utglidingen. Deretter spiste skredet seg bakover, på samme måte som et kvikkleireskred (SNL, u.å.). Skredet er altså sediment som sviktet. Det er ikke bevis på at Norge ligger på en plategrense.
 
-### Magnitude: Hvor mye energi slapp skjelvet?
+Tafjordskredet 7. april 1934 tok 40 liv da fjell raste i fjorden og satte opp en flodbølge (NGU, u.å.-b). Les mer om skred og flodbølger i kapittelet [Skred](/geofag-1/skred).
 
-Historisk ble jordskjelv målt med Charles Richters *lokalmagnitude (M_L)* fra 1935. Richters skala har imidlertid en alvorlig fysisk begrensning: Ved svært store jordskjelv «mettes» seismometeret, slik at et skjelv på magnitude 8 og et på magnitude 9,5 kan gi tilnærmet samme utslag.
+## Fare og risiko
 
-I moderne geofag brukes derfor utelukkende **momentmagnitude (M_w)**, introdusert av Hiroo Kanamori og Thomas Hanks. Momentmagnituden er direkte forankret i skjelvets fysiske parametere via det *seismiske momentet (M₀)*:
+Fare (hazard) er selve fenomenet: at fjellet kan briste. Eksponering er folk, hus og vei som ligger der bølgene treffer. Sårbarhet er hvor ille det går, gitt treff. Risiko er de tre sett sammen.
 
-M₀ = μ · A · D
+Oslofjordskjelvet i 1904 gjorde skade den gangen. NORSAR skriver at et tilsvarende skjelv i dag sannsynligvis ville gitt større skader og større samfunnskostnad, fordi bebyggelsen er tettere og høyere, og fordi gamle murbygninger tåler rystelser dårlig. Geologien i Oslo-området kan dessuten forsterke rystelsene. Kunnskap og analyser brukes til å sikre bygninger og infrastruktur (NORSAR, u.å.-b).
 
-Hvor:
+Det er tilpasning og forebygging uten at du trenger en formel. Du flytter ikke platen. Du unngår å bygge som om skjelv ikke finnes, og du bruker registreringene fra nettverket til å vite hvor spenningen sitter. I Norge er de store skjelvene sjeldne. Det er ikke det samme som at faren er null (NGU, u.å.-a).
 
-• **μ** = bergartens skjærstivhet (typisk ~30 GPa i jordskorpen)
-
-• **A** = arealet av forkastningsflaten som brast (lengde × bredde i m²)
-
-• **D** = gjennomsnittlig forskyvning langs bruddflaten (i meter)
-
-Momentmagnituden beregnes deretter logaritmisk: M_w = ⅔ log₁₀(M₀) - 6,07.
-
-> **Viktig eksamenspoeng: Den logaritmiske energiskalaen**
+> **To vanlige misforståelser**
 >
-> En økning på **1 enhet i magnitude** betyr at den frigjorte seismiske energien øker med en faktor på 10^(1,5) ≈ **31,6 ganger**!
->
-> En økning på **2 enheter** (f.eks. fra M 5 til M 7) betyr at skjelvet frigjør nøyaktig 31,6 × 31,6 = **1000 ganger mer energi**! Det kraftigste skjelvet som noensinne er målt, Valdivia-skjelvet i Chile i 1960 (M_w 9,5), frigjorde mer seismisk energi enn titusenvis av Hiroshima-atombomber.
+> 1. **Norge ligger på en plategrense fordi vi har jordskjelv.** Skjelvene er intraplate. Plategrensen er midthavsryggen vest for oss.
+> 2. **S-bølger går gjennom hele jorda.** De stopper i den flytende ytre kjernen. Det er argumentet for at kjernen er flytende.
 
-## Plategrenser og dype skjelv: Wadati-Benioff-sonen
+## Viktige begreper
 
-Jordskjelv forekommer ikke tilfeldig fordelt utover kloden. De tegner opp de globale plategrensene med forbløffende presisjon. Men fokaldybden (hvor dypt hyposenteret befinner seg) varierer dramatisk med tektonisk regime.
+**Jordskjelv:** Plutselig brudd der oppbygd spenning i skorpen slippes fri, og energien sprer seg som bølger.
 
-#### Spredningsrygger og transformforkastninger
+**Hyposenter:** Stedet i dypet der bruddet starter.
 
-Her er litosfæren tynn og astenosfæren varm. Bergarter deformeres plastisk uten sprøe brudd. Jordskjelv er utelukkende grunne **(&lt; 20–25 km dype)**.
+**Episenter:** Punktet på overflaten rett over hyposenteret.
 
-#### Subduksjonssoner (Wadati-Benioff-sonen)
+**Elastisk tilbakefjæring:** Fjellet bøyes langs en låst forkastning og spretter tilbake når friksjonen ryker.
 
-Her tvinges en kald, stiv oseanisk litosfæreplate dypt ned. Fordi platen er så kald, forblir kjernen sprø helt ned til **670–700 kilometers dyp**! Under 700 km opphører skjelvene fordi mineralene rekrystalliserer til tette faser som deformeres plastisk.
+**P-bølge:** Kompresjonsbølge. Går gjennom fast stoff og væske, og kommer først fram.
 
-**Wadati-Benioff-sone:** En skrå sone av dype jordskjelv (helt ned til 700 km) som oppstår inne i en kald havbunnsplate idet den subdueres ned i mantelen under en annen plate.
+**S-bølge:** Skjærbølge. Går bare gjennom fast stoff, og stopper i den flytende ytre kjernen.
 
-## Norsk seismisitet og geofarer: Hvorfor skjelver Norge?
+**Skyggesone:** Området der direkte S-bølger, og et stykke på vei også P-bølger, ikke kommer fram, fordi de møter kjernen.
 
-Mange tror at Norge er fullstendig skjermet mot jordskjelv fordi vi ligger langt inne på den eurasiske kontinentalplaten. Det stemmer at Norge er et *intraplate-område* uten aktive subduksjonssoner. Likevel er Norge blant de **mest seismisk aktive områdene i hele Nord-Europa**!
+**Intraplate-jordskjelv:** Skjelv inne på en plate, ikke ved en aktiv plategrense. Typisk for Norge.
 
-> **Seismisk fare vs. seismisk risiko**
->
-> Det er viktig å skille mellom to begreper i LK20-kompetansemålene om naturfarer:
->
-> - **Seismisk fare** er den fysiske hendelsen — styrken og hyppigheten av jordskjelv i et område. Norge har moderat fare, særlig langs kysten og i Oslofjordområdet.
->
-> - **Seismisk risiko** = fare × sårbarhet × eksponering. Et kraftig skjelv i et øde fjellstrøk er høy fare, men lav risiko. Et svakt skjelv under Oslo med gammel bygningsmasse er lav fare, men høy risiko.
+**Tsunami:** Bølge som oppstår når et stort vannvolum flyttes, av et undersjøisk skjelv eller av et skred.
 
-### To dominerende spenningskilder i norsk jordskorpe
+**Fare:** Selve naturfenomenet, før du spør hvem som bor der.
 
-1. **Ryggskyv (ridge push):** Den midtatlantiske ryggen i vest utvider seg kontinuerlig med 2–2,5 cm per år. Den gravitasjonelle tyngden av ryggen presser det eurasiske kontinentet østover og setter den norske kontinentalskorpen under et regionalt, nordvest–sørøst-rettet kompresjonstrykk.
-
-2. **Postglasial landheving (isostasi):** Under siste istid (Weichsel) var Skandinavia tynget ned av en opptil 3 kilometer tykk iskappe. Da isen smeltet for 10 000 år siden, begynte jordskorpen å heve seg elastisk og viskøst tilbake mot isostatisk likevekt. Innlandet hever seg fortsatt med opptil 8–9 mm per år rundt Bottenviken. Denne skjeve hevingen reaktiverer eldgamle svakhetssoner i fjellet.
-
-### Historiske kjempeskjelv i Norge
-
-- **Lurøyskjelvet 31. august 1819 (M ≈ 5,8):** Det største kjente jordskjelvet i Nord-Europa i historisk tid. Episenteret lå på Helgelandskysten i Nordland. Rystelsene forårsaket store fjellskred, jordlikvifaksjon og ble merket til Stockholm og Kola.
-
-- **Oslofjordskjelvet 23. oktober 1904 (M 5,4):** Det største skjelvet i moderne tid på Østlandet. Episenteret lå i Skagerrak/Kattegat, ca. 25 km sør for Hvaler. Ble følt over 800 000 km² (Bungum et al., 2009).
-
-- **Storfjordskjelvet på Svalbard 21. februar 2008 (M_w 6,0):** Det kraftigste instrumentelt registrerte jordskjelvet på norsk territorium i moderne tid.
-
-## Tsunamifysikk: Bølgehastighet, oppstuing (shoaling) og Greens lov
-
-En *tsunami* er ikke en vanlig vindbølge, men en serie gravitasjonelle sjøbølger utløst av en plutselig, storskala vertikal forskyvning av vannsøylen. Fordi bølgelengden (λ) typisk er mellom 100 og 300 kilometer, oppfyller tsunamier kriteriet for **grunntvannsbølger** (λ ≫ d) selv over de dypeste havslettene på 4000 til 6000 meters dyp!
-
-![Tsunami fra dyphavsforplantning i 800 km/t til kystoppstuing (shoaling) og tilbaketrekning](/images/geo-tsunami-shoaling.jpg)
-
-*Tsunamifysikk: Fra dypvannsbølge til kystoppstuing (shoaling) — På 4000 meters dyp beveger tsunamien seg med jetflyfart (v = √(gd) ≈ 700–800 km/t) med en bølgehøyde på under én meter. Når bølgen nærmer seg land og dypet faller, bremser bunnfriksjonen bølgefronten. Energibevaring og Greens lov (H₂ = H₁ · (d₁/d₂)¼) tvinger bølgelengden til å komprimeres og vannet opp i en livsfarlig flodbølge.*
-
-- **Fart i dypet (v = √(g · d)):** På 4000 meters dyp er farten v = √(9,81 m/s² × 4000 m) ≈ 198 m/s ≈ 713 km/t. Tsunamien krysser hele Atlanterhavet på under 7 timer.
-
-- **Greens lov og Shoaling (H₂ = H₁ · (d₁ / d₂)¼):** Når dypet avtar fra 4000 til 10 meter nær land, synker hastigheten fra 713 km/t til 36 km/t. Bølgehøyden ganges med (4000 / 10)^0,25 ≈ 4,5 — eller over 10–20 ganger i trange viker og V-formede fjorder.
-
-### Tsunamirisiko i Norge: Fjellskred fremfor subduksjon
-
-I Stillehavet utløses katastrofale tsunamier av gigantiske megathrust-jordskjelv i subduksjonssoner. I Norge er situasjonen en helt annen: Norske tsunamier forårsakes nesten utelukkende av **gravitasjonelle skred**!
-
-- **Fjellskred i trange fjorder:** Historiske ulykker som Tafjord (1934, 40 døde, opptil 62 m flodbølgehøyde) og Loen (1905 og 1936, 135 døde) skyldtes ustabile fjellpartier som raste rett i fjorden. I dag overvåker NVE det ustabile partiet *Åknes* i Storfjorden døgnkontinuerlig.
-
-- **Ubåt-skred på sokkelskråningen:** Det gigantiske *Storeggaskredet* for om lag 8150 år siden var et enormt undersjøisk sedimentras på 3000 km³ utenfor Møre. Skredet utløste en tsunami med opptil 10–12 meters oppskyllingshøyde langs norskekysten og over 20 meter på Shetland.
-
-Les mer om skredmekanismer, stabilitetsberegninger og overvåking i vårt dedikerte [kapittel om skred og massesukkessjon](/geofag-1/skred) .
-
-## Jordskjelvsikring og konstruksjonsteknikk: Eurokode 8 og baseisolering
-
-Det er et velkjent geofaglig ordtak at *«jordskjelv dreper ikke mennesker — det er kollapsende bygninger som gjør det»*. Moderne seismisk ingeniørkunst har utviklet metoder for å beskytte samfunnet:
-
-#### Eurokode 8 (NS-EN 1998-1)
-
-Den europeiske standarden for prosjektering av konstruksjoner for seismisk påvirkning, lovpålagt i Norge. Krever at samfunnskritisk infrastruktur dimensjoneres for å motstå forventede spissakselerasjoner i grunnen (PGA) uten total kollaps (Standard Norge, 2021).
-
-#### Baseisolering (Seismiske dempere)
-
-I stedet for å bolte bygget stivt til fjellet, plasseres fundamentet på fleksible bly-gummi-lagre (elastomeric bearings) eller friksjonspendellagre. Når bakken ryster horisontalt, glir fundamentet på demperne mens selve bygget forblir tilnærmet i ro.
-
-#### Svingningsdempere (Tuned Mass Dampers)
-
-I skyskrapere som Taipei 101 henger en 660 tonns tung stålkule i toppen av tårnet. Under jordskjelv svinger kulen i motfase med bygningens resonansfrekvens og absorberer opptil 40 % av svingningsenergien.
-
-#### Jordlikvifaksjon (Jordflyt)
-
-I vannmettet, løst sand- og siltjord fører gjentatt seismisk risting til at poretrykket i vannet stiger dramatisk. Vannet presser sandkornene fra hverandre, friksjonen forsvinner, og fast grunn forvandles momentant til en flytende kvikksandsuppe (som under Niigata 1964 og Lurøyskjelvet 1819).
-
-## Viktige faglige begreper
-
-**elastisk tilbakefjæring:** Reids teori for jordskjelv der bergarter bøyes elastisk langs en låst forkastning inntil friksjonslåsen brister og fjellet spretter tilbake
-
-**hyposenter (fokus):** det eksakte bruddpunktet i jordskorpen der jordskjelvets seismiske energi først utløses
-
-**episenter:** punktet på jordoverflaten som ligger loddrett over jordskjelvets hyposenter
-
-**P-bølge:** primær kompresjonsbølge (lengdebølge); raskeste seismiske bølge (~6–8 km/s) som kan gå gjennom både fast stoff og væske
-
-**S-bølge:** sekundær skjærbølge (tverrbølge); krever skjærstivhet (μ > 0) og kan derfor IKKE forplante seg gjennom væsker
-
-**momentmagnitude (Mw):** det moderne fysiske målet på jordskjelvenergi, beregnet direkte fra forkastningsareal, forskyvning og bergartens stivhet
-
-**Wadati-Benioff-sone:** en skrå sone av dype jordskjelv (helt ned til 700 km dyp) i en subduksjonssone der en kald havbunnsplate presses ned i mantelen
-
-**intraplate-jordskjelv:** jordskjelv som oppstår inne på en litosfæreplate langt unna aktive plategrenser (som jordskjelv i Norge)
-
-**shoaling:** bølgeoppstuing: når en tsunami nærmer seg kysten, synker farten, bølgelengden krymper, og høyden vokser dramatisk
-
-**Eurokode 8:** europeisk byggestandard (NS-EN 1998-1) med krav til seismisk dimensjonering og jordskjelvsikring av byggverk
-
-**baseisolering:** seismisk sikringsmetode der byggverk frikoples fra bakkerystelser ved hjelp av fleksible gummilagre under fundamentet
-
-**jordlikvifaksjon:** fenomen der vannmettet sand/silt mister all skjærstyrke og oppfører seg som flytende væske under seismisk rystelse
-
-**seismisk fare:** den fysiske sannsynligheten og styrken av jordskjelv i et område, uavhengig av menneskelig eksponering
-
-**seismisk risiko:** kombinasjonen av seismisk fare, sårbarhet i bebyggelse/infrastruktur og eksponering av befolkning og verdier
+**Risiko:** Fare sett sammen med hvem og hva som er eksponert, og hvor sårbare de er.
 
 ## Test deg selv
+
+```widget
+QuizJordskjelv
+```

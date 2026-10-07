@@ -135,7 +135,7 @@ export function CarbonCycleDiagram() {
     <Diagram
       title="Det globale karbonkretsløpet"
       heading="Raske biologiske og langsomme geologiske kretsløp"
-      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (kjemisk forvitring, kalksteinsdannelse og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilfører ca. 10 GtC/år til atmosfæren."
+      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilfører ca. 10 GtC/år til atmosfæren."
       viewBox="0 0 860 480"
     >
       {(m) => (
@@ -255,7 +255,7 @@ export function CarbonCycleDiagram() {
 
           {/* Kjemisk silikatforvitring fra atmosfære til litosfære */}
           <L x="448" y="255" fill={C.muted} size={11}>
-            Silikatforvitring balanserer
+            Den trege sløyfen
           </L>
         </>
       )}

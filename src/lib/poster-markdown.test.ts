@@ -139,18 +139,31 @@ describe("injectPosterWidgets", () => {
 
   it("places chapter-scan widgets into Vulkaner, Jordskjelv and Bergarter", () => {
     const lib = dirname(fileURLToPath(import.meta.url));
-    const vulkaner = listedWidgetIds(
-      injectPosterWidgets(readFileSync(join(lib, "posts/vulkaner.md"), "utf8")),
-    );
-    const jordskjelv = listedWidgetIds(
-      injectPosterWidgets(readFileSync(join(lib, "posts/jordskjelv.md"), "utf8")),
-    );
+    const vulkanInjected = injectPosterWidgets(readFileSync(join(lib, "posts/vulkaner.md"), "utf8"));
+    const vulkaner = listedWidgetIds(vulkanInjected);
+    const jordInjected = injectPosterWidgets(readFileSync(join(lib, "posts/jordskjelv.md"), "utf8"));
+    const jordskjelv = listedWidgetIds(jordInjected);
     const bergarter = listedWidgetIds(
       injectPosterWidgets(readFileSync(join(lib, "posts/bergarter.md"), "utf8")),
     );
-    for (const id of ["VolcanoTypes", "HotspotPlume", "VolcanoModel", "QuizVulkaner"]) {
+    for (const id of [
+      "VolcanoTypes",
+      "MagmaViscosity",
+      "CalderaFormation",
+      "IcelandContrast",
+      "VeiScale",
+      "VolcanoMonitoring",
+      "VolcanicHazards",
+      "VolcanicWinter",
+      "JanMayen",
+      "HotspotPlume",
+      "VolcanoModel",
+      "QuizVulkaner",
+    ]) {
       assert.equal(vulkaner.has(id), true, `vulkaner missing ${id}`);
+      assert.equal((vulkanInjected.match(new RegExp(`\\b${id}\\b`, "g")) ?? []).length, 1, id);
     }
+    assert.equal(jordskjelv.has("JanMayen"), false);
     for (const id of ["ElasticRebound", "BoundaryQuakes", "QuizJordskjelv"]) {
       assert.equal(jordskjelv.has(id), true, `jordskjelv missing ${id}`);
     }
@@ -192,6 +205,67 @@ describe("injectPosterWidgets", () => {
     );
     assert.equal(vulkaner.has("QuizIsbre"), false);
     assert.equal(vulkaner.has("BreLengdesnitt"), false);
+  });
+});
+
+describe("jordskjelv poster", () => {
+  it("keeps the chapter widgets and drops formulas and exclamation marks", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/jordskjelv.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "HyposenterForklaring",
+      "ElasticRebound",
+      "EarthquakeWavePhysics",
+      "Seismogram",
+      "BoundaryQuakes",
+      "IntraplateForklaring",
+      "NorwayEarthquakes",
+      "QuizJordskjelv",
+    ]) {
+      assert.equal(ids.has(id), true, `jordskjelv missing ${id}`);
+    }
+    assert.equal(md.replace(/!\[[^\]]*\]\([^)]*\)/g, "").includes("!"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Greens"), false);
+    assert.equal(md.includes("Eurokode"), false);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("## Test deg selv"), true);
+  });
+});
+
+describe("jordsystemene poster", () => {
+  it("keeps the chapter widgets and drops the editor notice", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/jordsystemene.md"),
+      "utf8",
+    );
+    const injected = injectPosterWidgets(md);
+    const ids = listedWidgetIds(injected);
+    for (const id of [
+      "VekselvirkningForklaring",
+      "SpheresDiagram",
+      "FjordFoto",
+      "CarbonCycleDiagram",
+      "EarthSystemsModel",
+      "QuizJordsystemene",
+    ]) {
+      assert.equal(ids.has(id), true, `jordsystemene missing ${id}`);
+      assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    for (const gone of ["AkviferForklaring", "ForvitringFoto", "IsostasiForklaring", "Hva er forvitring?"]) {
+      assert.equal(md.includes(gone), false, gone);
+    }
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("## Test deg selv"), true);
+    assert.equal(md.includes("## Kilder"), false);
+    assert.equal(ids.size, 6);
+    assert.equal(ids.has("QuizVulkaner"), false);
+    assert.equal(ids.has("QuizHoytrykk"), false);
   });
 });
 
