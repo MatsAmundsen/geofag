@@ -87,6 +87,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_IOD,
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
@@ -365,6 +366,16 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  IodForklaring: () => (
+    <Callout title="Hva betyr «indisk hav-dipol»?">
+      <p>
+        Den indiske hav-dipolen er vedvarende endring i forskjellen mellom havtemperaturen vest og
+        øst i det tropiske Indiahavet. Positiv fase har varmere vann i vest og kjøligere i øst (BOM,
+        u.å.).
+      </p>
+    </Callout>
+  ),
+  QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */

@@ -796,3 +796,59 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_IOD: QuizQuestion[] = [
+  {
+    prompt: "Hva er den indiske hav-dipolen?",
+    options: [
+      "Vedvarende forskjell i havtemperatur mellom vest og øst i det tropiske Indiahavet.",
+      "Et annet navn på El Niño.",
+      "Trykkvippen mellom Asorene og Island.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er den indiske hav-dipolen?». IOD er forskjellen mellom vest og øst.",
+  },
+  {
+    prompt: "Hvordan er havet i en positiv fase?",
+    options: [
+      "Varmere enn normalt i vest og kjøligere i øst.",
+      "Varmere enn normalt både i vest og i øst.",
+      "Kjøligere enn normalt i vest og varmere i øst.",
+    ],
+    answer: 0,
+    explain: "Se tabellen. Positiv fase er varmere i vest og kjøligere i øst.",
+  },
+  {
+    prompt: "Hva er DMI?",
+    options: [
+      "Forskjellen i temperaturavvik mellom en vestlig og en østlig rute.",
+      "Havnivået ved ekvator.",
+      "Nedbøren i Australia i millimeter.",
+    ],
+    answer: 0,
+    explain: "Se «Hvordan den måles». DMI er vest minus øst.",
+  },
+  {
+    prompt: "Er dipolen det samme som ENSO?",
+    options: [
+      "Nei. Saji og medforfattere fant et mønster som er uavhengig av ENSO.",
+      "Ja. Positiv IOD er El Niño.",
+      "Ja. Negativ IOD er La Niña.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Vanlige misforståelser». Mønsteret er en indre variasjon i Indiahavet og er uavhengig av ENSO.",
+  },
+  {
+    prompt: "Når topper en IOD-hendelse seg vanligvis?",
+    options: [
+      "Mellom august og oktober.",
+      "I januar.",
+      "Den varer uendret hele året.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Tre faser». Hendelsene starter ofte i mai eller juni, topper seg mellom august og oktober, og dør ut rundt slutten av våren på den sørlige halvkule.",
+  },
+];

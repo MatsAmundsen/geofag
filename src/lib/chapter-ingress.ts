@@ -29,7 +29,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "felt-hav-luft-is": "G1-felt er berg og vann på land. G2-felt er hav, atmosfære eller kryosfære. Målet er det samme: planlegge, samle, bearbeide, tolke, presentere. Forskjellen er hva du måler, og at været selv er både objekt og risiko.",
   "oversikt": "Vær er det som skjer i dag. Klima er det som gjentar seg over tiår. Når du har trykk, vind, coriolis og hav, kan du se hvorfor klimaet henger sammen — og hvorfor det kan forskyves.",
   "enso": "Ingen enkelt svingning påvirker jordas vær fra år til år mer enn ENSO. Når passatvindene slakker av over det tropiske Stillehavet, forskyves planetens største varmelager — med flom, tørke og globale temperaturhopp som resultat.",
-  "iod": "Indian Ocean Dipole er klimasyklusen i Det indiske hav. Når vest blir varmt og øst kaldt, får Øst-Afrika flom og Australia tørke. Snur vippa, snur været.",
+  "iod": "IOD er den vedvarende forskjellen i havtemperatur mellom vest og øst i det tropiske Indiahavet. I positiv fase er vest varmere og øst kjøligere.",
   "nao": "Den nordatlantiske oscillasjon (NAO) er atmosfærens store trykkvippe over Nord-Atlanteren. Svingningen i trykkgradienten mellom Azorhøytrykket og Islandslavtrykket styrer polarjetens posisjon, stormbanenes retning og om den norske vinteren blir mild og fuktig — eller preget av arktisk sprengkulde og blokkerende høytrykk.",
   "amoc": "Atlanterhavet har en enorm termisk motor: AMOC. Den frakter varme fra ekvator helt opp til Arktis og gjør Norge beboelig på 60°N. Men når isen smelter og ferskvann strømmer ut, settes stabiliteten på prøve.",
 };
