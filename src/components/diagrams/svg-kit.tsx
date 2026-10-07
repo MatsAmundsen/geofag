@@ -70,6 +70,7 @@ export function Diagram({
   wide,
   action,
   scroll,
+  toolbar,
 }: {
   title: string;
   heading: string;
@@ -79,6 +80,8 @@ export function Diagram({
   action?: ReactNode;
   /** Keep the graphic wide enough to read on a phone, and scroll it inside the frame. */
   scroll?: boolean;
+  /** Controls above the graphic, so a phone header is not crushed by sliders. */
+  toolbar?: ReactNode;
   children: (m: {
     teal: string;
     warm: string;
@@ -103,6 +106,7 @@ export function Diagram({
   };
   return (
     <FigureFrame heading={heading} caption={caption} action={action} scroll={scroll}>
+      {toolbar ? <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">{toolbar}</div> : null}
       <svg
         viewBox={viewBox}
         className={

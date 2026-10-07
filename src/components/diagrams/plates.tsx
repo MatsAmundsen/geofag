@@ -1,9 +1,97 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { FigureFrame } from "@/components/figure-frame";
 import { PhotoFigure } from "@/components/photo-figure";
 import { getPosterPhotoFigure } from "@/lib/poster-figures";
+import { useAnimationPlaying, useStepCycle } from "./use-motion";
 import { Arrow, C, Diagram, L, PlayPauseToggle } from "./svg-kit";
+
+function mix(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
+function nbNum(value: number, digits = 1) {
+  return value.toLocaleString("nb-NO", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  });
+}
+
+function MiniSlider({
+  label,
+  min,
+  max,
+  step,
+  value,
+  onChange,
+  valueLabel,
+}: {
+  label: string;
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+  onChange: (value: number) => void;
+  valueLabel: string;
+}) {
+  return (
+    <label className="flex min-w-0 items-center gap-2 text-xs font-medium text-foreground">
+      <span className="whitespace-nowrap">{label}</span>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        aria-label={label}
+        onChange={(event) => onChange(Number(event.target.value))}
+        className="w-28 cursor-pointer accent-primary sm:w-36"
+      />
+      <span className="w-16 shrink-0 font-mono text-primary">{valueLabel}</span>
+    </label>
+  );
+}
+
+function StepPicker({
+  labels,
+  step,
+  onStep,
+}: {
+  labels: string[];
+  step: number;
+  onStep: (step: number) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-1.5" role="group" aria-label="Trinn">
+      {labels.map((label, index) => {
+        const n = index + 1;
+        const active = step === n;
+        return (
+          <button
+            key={label}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onStep(n)}
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+              active
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
+            }`}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function stepOpacity(step: number, n: number, playing: boolean) {
+  if (!playing) return 1;
+  if (step < n) return 0;
+  if (step === n) return 1;
+  return 0.5;
+}
 
 /**
  * 1. EarthLayersDiagram:
@@ -220,7 +308,9 @@ export function EarthLayersDiagram() {
  * Slab pull (hoveddrivkraft), Ridge push, Basal drag, og mantelkonveksjon.
  */
 export function ConvectionDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const [force] = useStepCycle(3, motion.playing, 2400);
+  const forceName = ["Platetrekk", "Ryggskyv", "Manteldrag"][force - 1];
 
   return (
     <Diagram
@@ -229,11 +319,12 @@ export function ConvectionDiagram() {
       caption="Platene er en aktiv del av konveksjonen, ikke bare flåter som skyves rundt. Den største drivkraften er platetrekk (slab pull), om lag 90 % av kraften. Kald, eldre havbunn er tettere enn astenosfæren under. I en subduksjonssone omdannes basalten til den tunge bergarten eklogitt ved 40–60 km dyp, og platen trekkes nedover. Ved midthavsryggen står litosfæren 2–3 km høyere enn havbunnen rundt, og tyngdekraften får den til å gli ned skråningen (ryggskyv, ridge push). Manteldrag (basal drag) er friksjonen mot den seige astenosfæren."
       viewBox="0 0 940 480"
       wide
-      action={
-        <PlayPauseToggle
-          isPlaying={isPlaying}
-          onToggle={() => setIsPlaying((p) => !p)}
-        />
+      scroll
+      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+      toolbar={
+        <p className="text-xs text-muted-foreground">
+          {motion.playing ? `Uthevet nå: ${force}. ${forceName}` : "Alle tre drivkreftene er lesbare. Play går 1 → 2 → 3."}
+        </p>
       }
     >
       {(m) => (
@@ -268,21 +359,23 @@ export function ConvectionDiagram() {
             }
             .cf-anim-cw {
               animation: cf-flow-cw 6s linear infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
+              animation-play-state: ${motion.playing ? "running" : "paused"};
             }
             .cf-anim-ccw {
               animation: cf-flow-ccw 6s linear infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
+              animation-play-state: ${motion.playing ? "running" : "paused"};
             }
             .cf-anim-slab {
               animation: cf-slab-shiver 2s ease-in-out infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
+              animation-play-state: ${motion.playing ? "running" : "paused"};
             }
             .cf-anim-plume {
               animation: cf-plume-glow 3s ease-in-out infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
+              animation-play-state: ${motion.playing ? "running" : "paused"};
             }
           `}</style>
+
+          <g className={motion.motionClass} data-playing={motion.playing ? "yes" : "no"}>
 
           {/* Bakgrunnsmantel */}
           <rect x="40" y="40" width="860" height="400" rx="8" fill="url(#cf-mantle)" />
@@ -332,23 +425,44 @@ export function ConvectionDiagram() {
             Mantelkonveksjon (seig, duktil peridotittflyt)
           </L>
 
-          {/* DRIVKRAFT 1: SLAB PULL (HOVEDKRAFTEN) */}
-          <g transform="translate(740, 320)" className="cf-anim-slab">
-            <Arrow d="M 0 0 L 65 95" marker={m.teal} color={C.teal} width={4.5} />
-            <rect x="75" y="80" width="200" height="60" rx="6" fill="#0b1622" stroke={C.teal} strokeWidth="1.5" opacity="0.95" />
-            <L x="85" y="100" fill={C.teal} size={13} weight={800}>
-              1. Platetrekk (om lag 90 %)
-            </L>
-            <L x="85" y="118" fill="#d1d5db" size={10.5}>
-              Kald litosfære omdannes til
-            </L>
-            <L x="85" y="132" fill={C.warm} size={10.5} weight={700}>
-              høytett eklogitt (synker som et lodd)
-            </L>
+          {/* DRIVKRAFT 1: SLAB PULL. Outer g holds position; inner g may animate transform. */}
+          <g
+            transform="translate(520, 208)"
+            data-slab-label="platetrekk"
+            opacity={motion.playing && force !== 1 ? 0.84 : 1}
+            style={motion.playing && force === 1 ? { filter: "drop-shadow(0 0 6px #6fb3b8)" } : undefined}
+          >
+            <g className="cf-anim-slab">
+              <Arrow d="M 196 18 L 268 156" marker={m.teal} color={C.teal} width={4.5} />
+              <rect
+                x="0"
+                y="0"
+                width="204"
+                height="76"
+                rx="6"
+                fill="#0b1622"
+                stroke={C.teal}
+                strokeWidth={motion.playing && force === 1 ? 2.6 : 1.5}
+                opacity="0.96"
+              />
+              <L x="10" y="20" fill={C.teal} size={12} weight={800}>
+                1. Platetrekk (om lag 90 %)
+              </L>
+              <L x="10" y="40" fill="#d1d5db" size={10.5}>
+                Kald litosfære omdannes til
+              </L>
+              <L x="10" y="58" fill={C.warm} size={10.5} weight={700}>
+                høytett eklogitt (synker som et lodd)
+              </L>
+            </g>
           </g>
 
           {/* DRIVKRAFT 2: RIDGE PUSH */}
-          <g transform="translate(280, 70)">
+          <g
+            transform="translate(280, 70)"
+            opacity={motion.playing && force !== 2 ? 0.84 : 1}
+            style={motion.playing && force === 2 ? { filter: "drop-shadow(0 0 6px #e0b48a)" } : undefined}
+          >
             <Arrow d="M 15 15 L 75 35" marker={m.warm} color={C.warm} width={3.6} />
             <Arrow d="M -15 15 L -75 35" marker={m.warm} color={C.warm} width={3.6} />
             <L x="0" y="-12" fill={C.warm} size={13} weight={800} anchor="middle">
@@ -363,7 +477,11 @@ export function ConvectionDiagram() {
           </g>
 
           {/* DRIVKRAFT 3: BASAL DRAG */}
-          <g transform="translate(430, 135)">
+          <g
+            transform="translate(430, 135)"
+            opacity={motion.playing && force !== 3 ? 0.84 : 1}
+            style={motion.playing && force === 3 ? { filter: "drop-shadow(0 0 6px #8eb4d4)" } : undefined}
+          >
             <Arrow d="M 0 0 L 60 0" marker={m.cold} color={C.cold} width={3} />
             <L x="30" y="-8" fill={C.cold} size={11} weight={700} anchor="middle">
               3. Manteldrag (basal drag)
@@ -378,6 +496,7 @@ export function ConvectionDiagram() {
           <L x="470" y="435" fill="#fef08a" size={11} weight={700} anchor="middle">
             Kjerne-mantel-grensen (2900 km): varme fra jordas indre
           </L>
+          </g>
         </>
       )}
     </Diagram>
@@ -896,7 +1015,33 @@ export function BoundaryOverviewDiagram() {
  * og paleomagnetiske reverseringsbånd (jordens båndopptaker).
  */
 export function SpreadingDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
+  const [rate, setRate] = useState(2.5);
+  const scale = rate / 2.5;
+  const bands = [
+    { w: 64 * scale, fill: "#475569", name: "Revers", age: "1 Ma", ink: "#cbd5e1" },
+    { w: 76 * scale, fill: "#2563eb", name: "Normal", age: "3 Ma", ink: "#fff" },
+    { w: 92 * scale, fill: "#475569", name: "Revers", age: "5 Ma", ink: "#cbd5e1" },
+    { w: 104 * scale, fill: "#2563eb", name: "Normal", age: "8 Ma", ink: "#fff" },
+  ];
+  const period = bands.reduce((sum, band) => sum + band.w, 0);
+  const leftBands = [0, 1].flatMap((copy) => {
+    let edge = 400 + copy * period;
+    return bands.map((band, index) => {
+      edge -= band.w;
+      return { ...band, x: edge, key: `l-${copy}-${index}` };
+    });
+  });
+  const rightBands = [0, 1].flatMap((copy) => {
+    let x = 460 - copy * period;
+    return bands.map((band, index) => {
+      const item = { ...band, x, key: `r-${copy}-${index}` };
+      x += band.w;
+      return item;
+    });
+  });
+  const halfLabel = nbNum(rate / 2, 2);
 
   return (
     <Diagram
@@ -922,10 +1067,17 @@ export function SpreadingDiagram() {
       }
       viewBox="0 0 940 520"
       wide
-      action={
-        <PlayPauseToggle
-          isPlaying={isPlaying}
-          onToggle={() => setIsPlaying((p) => !p)}
+      scroll
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
+      toolbar={
+        <MiniSlider
+          label="Full spredningsrate"
+          min={1}
+          max={12}
+          step={0.5}
+          value={rate}
+          onChange={setRate}
+          valueLabel={`${nbNum(rate, rate % 1 === 0 ? 0 : 1)} cm/år`}
         />
       }
     >
@@ -938,10 +1090,10 @@ export function SpreadingDiagram() {
               <stop offset="100%" stopColor="#c2410c" />
             </linearGradient>
             <clipPath id="sd-tape-clip-left">
-              <rect x="40" y="32" width="360" height="30" />
+              <rect x="40" y="32" width="360" height="64" />
             </clipPath>
             <clipPath id="sd-tape-clip-right">
-              <rect x="460" y="32" width="360" height="30" />
+              <rect x="460" y="32" width="360" height="64" />
             </clipPath>
           </defs>
 
@@ -961,16 +1113,20 @@ export function SpreadingDiagram() {
               50% { transform: scale(1.03); opacity: 1; }
             }
             @keyframes tape-move-left {
-              0% { transform: translateX(0px); }
-              100% { transform: translateX(-50px); }
+              from { transform: translateX(0); }
+              to { transform: translateX(${-period}px); }
             }
             @keyframes tape-move-right {
-              0% { transform: translateX(0px); }
-              100% { transform: translateX(50px); }
+              from { transform: translateX(0); }
+              to { transform: translateX(${period}px); }
             }
             @keyframes axis-glow {
               0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 3px #38bdf8); }
               50% { opacity: 1; filter: drop-shadow(0 0 8px #60a5fa); }
+            }
+            .smoker-plume-1, .smoker-plume-2 {
+              transform-box: fill-box;
+              transform-origin: center;
             }
             .smoker-plume-1 {
               animation: smoker-rise-1 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
@@ -990,14 +1146,15 @@ export function SpreadingDiagram() {
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .sd-tape-left {
-              animation: tape-move-left 4s linear infinite;
+              animation: tape-move-left 12s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .sd-tape-right {
-              animation: tape-move-right 4s linear infinite;
+              animation: tape-move-right 12s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
           `}</style>
+          <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
 
           {/* Havvann øverst */}
           <rect x="40" y="30" width="860" height="110" fill="#0a1e2c" />
@@ -1087,11 +1244,11 @@ export function SpreadingDiagram() {
           {/* Spredningspiler */}
           <Arrow d="M 370 95 L 280 95" marker={m.teal} color={C.teal} width={3.2} />
           <L x="325" y="85" fill={C.teal} size={11} weight={700} anchor="middle">
-            ← 1,25 cm/år
+            ← {halfLabel} cm/år
           </L>
           <Arrow d="M 570 95 L 660 95" marker={m.teal} color={C.teal} width={3.2} />
           <L x="615" y="85" fill={C.teal} size={11} weight={700} anchor="middle">
-            1,25 cm/år →
+            {halfLabel} cm/år →
           </L>
 
           {/* ======================================================= */}
@@ -1103,33 +1260,37 @@ export function SpreadingDiagram() {
               PALEOMAGNETISK «BÅNDOPPTAKER»: Symmetrisk magnetisk havbunnshistorie (Vine-Matthews-Morley 1963)
             </L>
 
-            {/* Venstre bevegelig stripebånd under clipPath */}
             <g clipPath="url(#sd-tape-clip-left)">
               <g className="sd-tape-left">
-                <rect x="330" y="32" width="70" height="30" fill="#475569" />
-                <rect x="250" y="32" width="80" height="30" fill="#2563eb" />
-                <rect x="150" y="32" width="100" height="30" fill="#475569" />
-                <rect x="40" y="32" width="110" height="30" fill="#2563eb" />
-                <rect x="-60" y="32" width="100" height="30" fill="#475569" />
-                <L x="365" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
-                <L x="290" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
-                <L x="200" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
-                <L x="95" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
+                {leftBands.map((band) => (
+                  <g key={band.key}>
+                    <rect x={band.x} y="32" width={band.w} height="30" fill={band.fill} />
+                    <line x1={band.x + band.w / 2} y1="62" x2={band.x + band.w / 2} y2="72" stroke="#94a3b8" strokeWidth="1" />
+                    {band.w > 48 ? (
+                      <>
+                        <L x={band.x + band.w / 2} y="51" fill={band.ink} size={9} weight={700} anchor="middle">{band.name}</L>
+                        <L x={band.x + band.w / 2} y="84" fill="#94a3b8" size={9} anchor="middle">{band.age}</L>
+                      </>
+                    ) : null}
+                  </g>
+                ))}
               </g>
             </g>
 
-            {/* Høyre bevegelig stripebånd under clipPath */}
             <g clipPath="url(#sd-tape-clip-right)">
               <g className="sd-tape-right">
-                <rect x="460" y="32" width="70" height="30" fill="#475569" />
-                <rect x="530" y="32" width="80" height="30" fill="#2563eb" />
-                <rect x="610" y="32" width="100" height="30" fill="#475569" />
-                <rect x="710" y="32" width="110" height="30" fill="#2563eb" />
-                <rect x="820" y="32" width="100" height="30" fill="#475569" />
-                <L x="495" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
-                <L x="570" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
-                <L x="660" y="52" fill="#cbd5e1" size={9.5} weight={700} anchor="middle">Revers</L>
-                <L x="765" y="52" fill="#fff" size={9.5} weight={700} anchor="middle">Normal</L>
+                {rightBands.map((band) => (
+                  <g key={band.key}>
+                    <rect x={band.x} y="32" width={band.w} height="30" fill={band.fill} />
+                    <line x1={band.x + band.w / 2} y1="62" x2={band.x + band.w / 2} y2="72" stroke="#94a3b8" strokeWidth="1" />
+                    {band.w > 48 ? (
+                      <>
+                        <L x={band.x + band.w / 2} y="51" fill={band.ink} size={9} weight={700} anchor="middle">{band.name}</L>
+                        <L x={band.x + band.w / 2} y="84" fill="#94a3b8" size={9} anchor="middle">{band.age}</L>
+                      </>
+                    ) : null}
+                  </g>
+                ))}
               </g>
             </g>
 
@@ -1143,18 +1304,10 @@ export function SpreadingDiagram() {
             </L>
 
             {/* Tidsskala (millioner år før nåtid) */}
-            <L x="430" y="82" fill="#38bdf8" size={10} weight={700} anchor="middle">
-              Ryggakse: 0 Ma
+            <L x="430" y="96" fill="#38bdf8" size={10} weight={700} anchor="middle">
+              Ryggakse: 0 Ma · alder følger skorpen
             </L>
-            <L x="365" y="82" fill="#94a3b8" size={9.5} anchor="middle">1 Ma</L>
-            <L x="290" y="82" fill="#94a3b8" size={9.5} anchor="middle">3 Ma</L>
-            <L x="200" y="82" fill="#94a3b8" size={9.5} anchor="middle">5 Ma</L>
-            <L x="95" y="82" fill="#94a3b8" size={9.5} anchor="middle">← 8 Ma (Eldre)</L>
-
-            <L x="495" y="82" fill="#94a3b8" size={9.5} anchor="middle">1 Ma</L>
-            <L x="570" y="82" fill="#94a3b8" size={9.5} anchor="middle">3 Ma</L>
-            <L x="660" y="82" fill="#94a3b8" size={9.5} anchor="middle">5 Ma</L>
-            <L x="765" y="82" fill="#94a3b8" size={9.5} anchor="middle">8 Ma (Eldre) →</L>
+          </g>
           </g>
         </>
       )}
@@ -1168,16 +1321,52 @@ export function SpreadingDiagram() {
  * dekompresjonssmelting) som i Øst-Afrika og fortidens Oslofelt.
  */
 export function ContinentalRiftDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
+  const [extension, setExtension] = useState(40);
+  const centered = extension / 100 - 0.4;
+  const spread = centered * 110;
+  const drop = centered * 48;
+  const thin = centered * 36;
+  const xL = 280 - spread;
+  const xR = 600 + spread;
+  const xLf = 340 - spread * 0.45;
+  const xRf = 540 + spread * 0.45;
+  const yFloor = 145 + drop;
+  const crust = Math.max(12, 20 - thin * 1.8);
+  const yLith = yFloor + Math.max(8, crust * 0.5);
+  const yAsth = yLith + 20;
+  const yPlume = yLith + 10;
+  const yMelt = yPlume + 55;
+  const ySide = 165 + drop * 0.3;
+  const xInL = 310 - spread;
+  const xInR = 570 + spread;
+  const xMohoL = 370 - spread * 0.35;
+  const xMohoR = 510 + spread * 0.35;
+  const volcanoX = 420 - spread * 0.15;
+  const lakeW = 120 + spread * 0.5;
+  const lakeX = 440 - lakeW / 2;
 
   return (
     <Diagram
       title="Kontinental rifting: Fra innsynkningsdal til gryende havbasseng"
       heading="Kontinental rift: Når kontinentet rives i to av tektonisk strekk"
       caption="Når litosfæren utsettes for tektonisk strekk, reagerer den øvre, sprø jordskorpen med å sprekke opp langs steile forkastninger (normalforkastninger). Blokkene i midten sklir nedover og danner en langstrakt innsynkningsdal kalt en graben. De hevede blokkene på sidene danner riftskuldre (horster). Mantelen under stiger opp i det avlastede området, trykket faller, og dekompresjonssmelting produserer basaltiske vulkaner. Dette er tilstanden i Den østafrikanske riftdalen i dag. Oslofeltet var en tilsvarende aktiv rift for ca. 300 millioner år siden i perm. Hvis strekket vedvarer, flommer havet inn og danner et smalt havbasseng (som Rødehavet), før en ekte midthavsrygg etableres."
-      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />}
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
+      toolbar={
+        <MiniSlider
+          label="Strekk"
+          min={0}
+          max={100}
+          step={1}
+          value={extension}
+          onChange={setExtension}
+          valueLabel={extension < 35 ? "lite" : extension > 70 ? "mye" : "rift"}
+        />
+      }
       viewBox="0 0 880 430"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -1194,56 +1383,42 @@ export function ContinentalRiftDiagram() {
               0% { transform: translate(0, 0) scale(0.8); opacity: 0.7; }
               100% { transform: translate(-4px, -18px) scale(1.5); opacity: 0; }
             }
-            @keyframes rift-stretch-left {
-              0%, 100% { transform: translateX(0); }
-              50% { transform: translateX(-4px); }
-            }
-            @keyframes rift-stretch-right {
-              0%, 100% { transform: translateX(0); }
-              50% { transform: translateX(4px); }
-            }
             .rift-mantle-flow {
               stroke-dasharray: 6 4;
               animation: rift-mantle-up 1.8s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .rift-magma {
-              transform-origin: 440px 220px;
+              transform-box: fill-box;
+              transform-origin: center;
               animation: rift-magma-pulse 2.5s ease-in-out infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .rift-smoke-puff {
+              transform-box: fill-box;
+              transform-origin: center;
               animation: rift-smoke 2s ease-out infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
-            .rift-arrow-l {
-              animation: rift-stretch-left 2s ease-in-out infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
-            }
-            .rift-arrow-r {
-              animation: rift-stretch-right 2s ease-in-out infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
-            }
           `}</style>
+          <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
 
           {/* Luft over landskapet */}
           <rect x="40" y="30" width="800" height="70" fill="#0a1520" />
 
           {/* Landoverflate med sentral riftdal (graben) */}
           <path
-            d="M 40 85 L 280 85 L 340 145 L 540 145 L 600 85 L 840 85 L 840 165 L 570 175 L 510 155 L 370 155 L 310 175 L 40 165 Z"
+            d={`M 40 85 L ${xL} 85 L ${xLf} ${yFloor} L ${xRf} ${yFloor} L ${xR} 85 L 840 85 L 840 ${ySide} L ${xInR} ${175 + drop * 0.2} L ${xMohoR} ${yLith} L ${xMohoL} ${yLith} L ${xInL} ${175 + drop * 0.2} L 40 ${ySide} Z`}
             fill="#524a3c"
             stroke="#2d281f"
             strokeWidth="1.5"
           />
 
-          {/* Steile normalforkastninger (skrenter) */}
-          <line x1="280" y1="85" x2="340" y2="145" stroke="#ef4444" strokeWidth="2.8" />
-          <line x1="600" y1="85" x2="540" y2="145" stroke="#ef4444" strokeWidth="2.8" />
+          <line x1={xL} y1="85" x2={xLf} y2={yFloor} stroke="#ef4444" strokeWidth="2.8" />
+          <line x1={xR} y1="85" x2={xRf} y2={yFloor} stroke="#ef4444" strokeWidth="2.8" />
 
-          {/* Glidningsindikatorer langs forkastningene */}
-          <path d="M 298 98 L 312 112" stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
-          <path d="M 582 98 L 568 112" stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
+          <path d={`M ${xL + 18} ${85 + (yFloor - 85) * 0.28} L ${xL + 32} ${85 + (yFloor - 85) * 0.45}`} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
+          <path d={`M ${xR - 18} ${85 + (yFloor - 85) * 0.28} L ${xR - 32} ${85 + (yFloor - 85) * 0.45}`} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
 
           {/* Riftskuldre og graben-tekst */}
           <L x="160" y="70" fill="#f8fafc" size={13} weight={700} anchor="middle">
@@ -1252,19 +1427,17 @@ export function ContinentalRiftDiagram() {
           <L x="720" y="70" fill="#f8fafc" size={13} weight={700} anchor="middle">
             Horst (Riftskulder)
           </L>
-          <L x="440" y="125" fill="#f59e0b" size={14} weight={800} anchor="middle">
+          <L x="440" y={yFloor - 20} fill="#f59e0b" size={14} weight={800} anchor="middle">
             GRABEN (Innsunket riftdal)
           </L>
 
-          {/* Dyp innsjø i bunnen av riftdalen (f.eks. Tanganyika eller Malawisjøen) */}
-          <rect x="380" y="138" width="120" height="7" fill="#0284c7" />
-          <L x="440" y="160" fill="#38bdf8" size={10} weight={600} anchor="middle">
+          <rect x={lakeX} y={yFloor - 7} width={lakeW} height="7" fill="#0284c7" />
+          <L x="440" y={yFloor + 15} fill="#38bdf8" size={10} weight={600} anchor="middle">
             Riftsjø (Tanganyikasjøen 1470 m dyp)
           </L>
 
-          {/* Litosfærisk stiv mantel under kontinentet */}
           <path
-            d="M 40 165 L 310 175 L 370 155 L 510 155 L 570 175 L 840 165 L 840 240 L 590 200 L 530 175 L 350 175 L 290 200 L 40 240 Z"
+            d={`M 40 ${ySide} L ${xInL} ${175 + drop * 0.2} L ${xMohoL} ${yLith} L ${xMohoR} ${yLith} L ${xInR} ${175 + drop * 0.2} L 840 ${ySide} L 840 240 L ${590 + spread * 0.2} ${yAsth + 25} L ${530 + spread * 0.15} ${yAsth} L ${350 - spread * 0.15} ${yAsth} L ${290 - spread * 0.2} ${yAsth + 25} L 40 240 Z`}
             fill="#1d2c36"
             stroke="#131e25"
           />
@@ -1277,49 +1450,44 @@ export function ContinentalRiftDiagram() {
 
           {/* Varm astenosfære som velter opp under den tynnede skorpen */}
           <path
-            d="M 40 240 L 290 200 L 350 175 L 530 175 L 590 200 L 840 240 L 840 390 L 40 390 Z"
+            d={`M 40 ${Math.max(220, yAsth + 40)} L ${290 - spread * 0.3} ${yAsth + 25} L ${350 - spread * 0.2} ${yAsth} L ${530 + spread * 0.2} ${yAsth} L ${590 + spread * 0.3} ${yAsth + 25} L 840 ${Math.max(220, yAsth + 40)} L 840 390 L 40 390 Z`}
             fill="#2c1f17"
           />
           <path
-            d="M 320 390 C 370 290, 410 200, 440 165 C 470 200, 510 290, 560 390 Z"
+            d={`M ${320 - spread * 0.4} 390 C ${370 - spread * 0.2} 290, ${410 - spread * 0.15} ${yPlume + 35}, 440 ${yPlume} C ${470 + spread * 0.15} ${yPlume + 35}, ${510 + spread * 0.2} 290, ${560 + spread * 0.4} 390 Z`}
             fill="#7c2d12"
             opacity="0.8"
           />
 
-          {/* Animerte oppstrømslinjer for astenosfæren */}
-          <path d="M 390 380 C 410 300, 428 240, 436 185" fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
-          <path d="M 490 380 C 470 300, 452 240, 444 185" fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
+          <path d={`M 390 380 C 410 300, 428 ${yMelt + 20}, 436 ${yPlume + 20}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
+          <path d={`M 490 380 C 470 300, 452 ${yMelt + 20}, 444 ${yPlume + 20}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
 
-          {/* Dekompresjonssmelting i astenosfæren */}
-          <ellipse cx="440" cy="220" rx="42" ry="25" fill="#ea580c" className="rift-magma" />
-          <L x="440" y="215" fill="#fff" size={11} weight={800} anchor="middle">
+          <ellipse cx="440" cy={yMelt} rx="42" ry="25" fill="#ea580c" className="rift-magma" />
+          <L x="440" y={yMelt - 5} fill="#fff" size={11} weight={800} anchor="middle">
             Dekompresjonssmelting
           </L>
-          <L x="440" y="230" fill="#fef08a" size={9.5} weight={700} anchor="middle">
+          <L x="440" y={yMelt + 10} fill="#fef08a" size={9.5} weight={700} anchor="middle">
             (P faller under tynn skorpe)
           </L>
 
-          {/* Magmatilførsel og vulkan i riftdalen */}
-          <path d="M 440 195 L 420 145" stroke="#ef4444" strokeWidth="3" />
-          <polygon points="410,145 420,130 430,145" fill="#dc2626" />
-          {/* Røyk fra vulkan */}
-          <circle cx="420" cy="122" r="3.5" fill="#94a3b8" className="rift-smoke-puff" />
-          <circle cx="417" cy="116" r="4.5" fill="#64748b" className="rift-smoke-puff" style={{ animationDelay: "0.8s" }} />
+          <path d={`M 440 ${yMelt - 25} L ${volcanoX} ${yFloor}`} stroke="#ef4444" strokeWidth="3" />
+          <polygon points={`${volcanoX - 10},${yFloor} ${volcanoX},${yFloor - 15} ${volcanoX + 10},${yFloor}`} fill="#dc2626" />
+          <circle cx={volcanoX} cy={yFloor - 23} r="3.5" fill="#94a3b8" className="rift-smoke-puff" />
+          <circle cx={volcanoX - 3} cy={yFloor - 29} r="4.5" fill="#64748b" className="rift-smoke-puff" style={{ animationDelay: "0.8s" }} />
 
-          <L x="440" y="110" fill="#ef4444" size={9.5} weight={700}>
+          <L x={volcanoX + 16} y={yFloor - 28} fill="#ef4444" size={9.5} weight={700}>
             Riftvulkan (f.eks. Ol Doinyo Lengai)
           </L>
 
-          {/* Strekkpiler med animert dynamikk */}
-          <g className="rift-arrow-l">
-            <Arrow d="M 230 110 L 140 110" marker={m.warm} color={C.warm} width={3.6} />
-            <L x="185" y="100" fill={C.warm} size={11} weight={800} anchor="middle">
+          <g>
+            <Arrow d={`M ${xL - 50} 110 L ${xL - 140} 110`} marker={m.warm} color={C.warm} width={3.6} />
+            <L x={xL - 95} y="100" fill={C.warm} size={11} weight={800} anchor="middle">
               ← Strekk
             </L>
           </g>
-          <g className="rift-arrow-r">
-            <Arrow d="M 650 110 L 740 110" marker={m.warm} color={C.warm} width={3.6} />
-            <L x="695" y="100" fill={C.warm} size={11} weight={800} anchor="middle">
+          <g>
+            <Arrow d={`M ${xR + 50} 110 L ${xR + 140} 110`} marker={m.warm} color={C.warm} width={3.6} />
+            <L x={xR + 95} y="100" fill={C.warm} size={11} weight={800} anchor="middle">
               Strekk →
             </L>
           </g>
@@ -1337,6 +1505,7 @@ export function ContinentalRiftDiagram() {
               Skagerrak–Østerdalen · Rombeporfyr
             </L>
           </g>
+          </g>
         </>
       )}
     </Diagram>
@@ -1349,7 +1518,10 @@ export function ContinentalRiftDiagram() {
  * mineraldehydrering og flukssmelting.
  */
 export function SubductionDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
+  const [step, setStep] = useStepCycle(4, isPlaying, 2800);
+  const stepLabels = ["1 Platen synker", "2 H₂O frigjøres", "3 Flukssmelting", "4 Magma til buen"];
 
   return (
     <Diagram
@@ -1373,11 +1545,15 @@ export function SubductionDiagram() {
       }
       viewBox="0 0 940 520"
       wide
-      action={
-        <PlayPauseToggle
-          isPlaying={isPlaying}
-          onToggle={() => setIsPlaying((p) => !p)}
-        />
+      scroll
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
+      toolbar={
+        <>
+          <StepPicker labels={stepLabels} step={step} onStep={setStep} />
+          <span className="text-xs text-muted-foreground">
+            {isPlaying ? stepLabels[step - 1] : "Pause viser alle fire trinn"}
+          </span>
+        </>
       }
     >
       {(m) => (
@@ -1405,6 +1581,10 @@ export function SubductionDiagram() {
               70% { r: 16; opacity: 0; stroke-width: 0.5; }
               100% { r: 5; opacity: 0; }
             }
+            .sub-h2o-bubble, .sub-puff {
+              transform-box: fill-box;
+              transform-origin: center;
+            }
             .sub-h2o-bubble {
               animation: sub-h2o 2.4s ease-out infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
@@ -1426,6 +1606,7 @@ export function SubductionDiagram() {
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
           `}</style>
+          <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
 
           {/* Havvannslag til venstre */}
           <polygon points="40,80 430,80 380,130 40,110" fill="#0d283c" opacity="0.95" />
@@ -1498,41 +1679,40 @@ export function SubductionDiagram() {
 
           {/* FLUKSSMELTING: VANNUTSLIPP OG MAGMAOPPSTIGNING */}
           {/* H2O frigjøres fra platen (dehydrering) med animerte partikler */}
-          <g fill="#38bdf8" stroke="#38bdf8" opacity="0.95">
+          <g fill="#38bdf8" stroke="#38bdf8" opacity={stepOpacity(step, 2, isPlaying)}>
             <path d="M 490 260 L 510 220" strokeWidth="2.5" strokeDasharray="3 2" />
             <circle cx="510" cy="215" r="4" className="sub-h2o-bubble" />
             <path d="M 525 300 L 545 255" strokeWidth="2.5" strokeDasharray="3 2" />
             <circle cx="545" cy="250" r="4" className="sub-h2o-bubble" style={{ animationDelay: "0.8s" }} />
             <path d="M 560 340 L 580 295" strokeWidth="2.5" strokeDasharray="3 2" />
             <circle cx="580" cy="290" r="4" className="sub-h2o-bubble" style={{ animationDelay: "1.6s" }} />
-            <L x="600" y="340" fill="#38bdf8" size={11} weight={700}>
-              H₂O frigjøres (dehydrering)
+          </g>
+
+          <g opacity={stepOpacity(step, 3, isPlaying)}>
+            <ellipse cx="560" cy="245" rx="42" ry="24" fill="#f97316" className="sub-melt" />
+            <L x="560" y="242" fill="#fff" size={10.5} weight={800} anchor="middle">
+              FLUKSSMELTING
+            </L>
+            <L x="560" y="255" fill="#fef08a" size={9} weight={700} anchor="middle">
+              Solidus senket av vann!
             </L>
           </g>
 
-          {/* Smeltesone i mantelkilen med pulserende flukssmelte */}
-          <ellipse cx="560" cy="245" rx="42" ry="24" fill="#f97316" className="sub-melt" />
-          <L x="560" y="242" fill="#fff" size={10.5} weight={800} anchor="middle">
-            FLUKSSMELTING
-          </L>
-          <L x="560" y="255" fill="#fef08a" size={9} weight={700} anchor="middle">
-            Solidus senket av vann!
-          </L>
-
-          {/* Magmaplier opp til vulkanen */}
-          <path
-            d="M 560 221 C 570 170, 595 120, 610 50"
-            stroke="#ef4444"
-            strokeWidth="3.5"
-            strokeDasharray="6 4"
-            fill="none"
-            className="sub-magma-path"
-            markerEnd={`url(#${m.low})`}
-          />
-          <ellipse cx="605" cy="115" rx="20" ry="12" fill="#ef4444" opacity="0.9" />
-          <L x="605" y="119" fill="#fff" size={9} weight={700} anchor="middle">
-            Magmakammer
-          </L>
+          <g opacity={stepOpacity(step, 4, isPlaying)}>
+            <path
+              d="M 560 221 C 570 170, 595 120, 610 50"
+              stroke="#ef4444"
+              strokeWidth="3.5"
+              strokeDasharray="6 4"
+              fill="none"
+              className="sub-magma-path"
+              markerEnd={`url(#${m.low})`}
+            />
+            <ellipse cx="605" cy="115" rx="20" ry="12" fill="#ef4444" opacity="0.9" />
+            <L x="605" y="119" fill="#fff" size={9} weight={700} anchor="middle">
+              Magmakammer
+            </L>
+          </g>
 
           {/* Jordskjelv langs plategrensen */}
           <g>
@@ -1560,12 +1740,19 @@ export function SubductionDiagram() {
             </g>
           </g>
 
-          {/* Slab pull kraftvektor */}
-          <g transform="translate(620, 440)">
+          <g transform="translate(620, 440)" opacity={stepOpacity(step, 1, isPlaying)}>
             <Arrow d="M 0 0 L 45 60" marker={m.teal} color={C.teal} width={4.5} />
             <L x="52" y="70" fill={C.teal} size={13} weight={800}>
               Platetrekk
             </L>
+          </g>
+
+          <g opacity={stepOpacity(step, 2, isPlaying)} data-label="h2o-release">
+            <rect x="408" y="168" width="214" height="26" rx="4" fill="#071018" stroke="#38bdf8" strokeWidth="1" />
+            <L x="418" y="186" fill="#38bdf8" size={12} weight={800}>
+              H₂O frigjøres (dehydrering)
+            </L>
+          </g>
           </g>
         </>
       )}
@@ -1578,16 +1765,74 @@ export function SubductionDiagram() {
  * Osean-osean subduksjon med vulkanøybue, Marianegropen og bakbuebasseng.
  */
 export function OceanOceanSubductionDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
+  const [oldCold, setOldCold] = useState(true);
+  const [step, setStep] = useStepCycle(3, isPlaying, 2600);
+  const slab = oldCold
+    ? "M 40 115 L 360 145 L 640 410 L 580 430 L 310 175 L 40 145 Z"
+    : "M 40 115 L 360 145 L 800 280 L 740 302 L 330 175 L 40 145 Z";
+  const slabMantle = oldCold
+    ? "M 40 145 L 310 175 L 580 430 L 510 450 L 260 205 L 40 185 Z"
+    : "M 40 145 L 330 175 L 740 302 L 680 324 L 280 205 L 40 185 Z";
+  const melt = oldCold ? { x: 525, y: 225 } : { x: 600, y: 178 };
+  const drops = oldCold
+    ? [
+        { x: 460, y: 250 },
+        { x: 490, y: 285 },
+      ]
+    : [
+        { x: 500, y: 195 },
+        { x: 548, y: 225 },
+      ];
+  const quakes = oldCold
+    ? [
+        { x: 375, y: 155 },
+        { x: 420, y: 205 },
+        { x: 480, y: 275 },
+      ]
+    : [
+        { x: 390, y: 158 },
+        { x: 530, y: 198 },
+        { x: 670, y: 242 },
+      ];
 
   return (
     <Diagram
       title="Subduksjon hav mot hav: Vulkanøybue, Marianegropen og bakbuebasseng"
       heading="Hav mot hav: Den eldste, kaldeste platen må vike"
       caption="Når to oseaniske plater kolliderer, er det alltid den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på 11 034 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
-      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />}
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
+      toolbar={
+        <>
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Platen som synker">
+            <button
+              type="button"
+              aria-pressed={oldCold}
+              onClick={() => setOldCold(true)}
+              className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${oldCold ? "border-primary bg-primary text-primary-foreground" : "border-border/80 bg-muted/60"}`}
+            >
+              Gammel, kald plate
+            </button>
+            <button
+              type="button"
+              aria-pressed={!oldCold}
+              onClick={() => setOldCold(false)}
+              className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${!oldCold ? "border-primary bg-primary text-primary-foreground" : "border-border/80 bg-muted/60"}`}
+            >
+              Ung, varm plate
+            </button>
+          </div>
+          <StepPicker
+            labels={["1 Synker", "2 Vann", "3 Øybue"]}
+            step={step}
+            onStep={setStep}
+          />
+        </>
+      }
       viewBox="0 0 880 430"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -1610,12 +1855,15 @@ export function OceanOceanSubductionDiagram() {
               70% { r: 12; opacity: 0; }
               100% { r: 4; opacity: 0.9; }
             }
+            .oos-h2o, .oos-smoke-puff, .oos-magma {
+              transform-box: fill-box;
+              transform-origin: center;
+            }
             .oos-h2o {
               animation: oos-water 2.5s ease-out infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .oos-magma {
-              transform-origin: 525px 225px;
               animation: oos-magma-pulse 2.8s ease-in-out infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
@@ -1628,6 +1876,7 @@ export function OceanOceanSubductionDiagram() {
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
           `}</style>
+          <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
 
           {/* Hav over hele flaten */}
           <rect x="40" y="30" width="800" height="90" fill="#091b29" />
@@ -1653,19 +1902,10 @@ export function OceanOceanSubductionDiagram() {
           </L>
 
           {/* Subduserende eldre havbunn (dykker mot høyre) */}
-          <path
-            d="M 40 115 L 360 145 L 640 410 L 580 430 L 310 175 L 40 145 Z"
-            fill="#1e3328"
-            stroke="#122019"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M 40 145 L 310 175 L 580 430 L 510 450 L 260 205 L 40 185 Z"
-            fill="#13242e"
-            stroke="#0d181f"
-          />
+          <path d={slab} fill="#1e3328" stroke="#122019" strokeWidth={step === 1 && isPlaying ? 2.4 : 1.5} />
+          <path d={slabMantle} fill="#13242e" stroke="#0d181f" />
           <L x="160" y="170" fill={C.cold} size={12} weight={700}>
-            Eldste, kaldeste havbunn synker (Stillehavsplaten) →
+            {oldCold ? "Eldste, kaldeste havbunn synker (Stillehavsplaten) →" : "Yngre, varmere plate synker slakere →"}
           </L>
 
           {/* Overliggende yngre havbunn (Filippinerplaten) og bakbuebasseng */}
@@ -1679,24 +1919,33 @@ export function OceanOceanSubductionDiagram() {
           </L>
 
           {/* Dehydrering (H2O dråper) */}
-          <g className="oos-h2o">
-            <circle cx="460" cy="250" r="3" fill="#38bdf8" />
-            <circle cx="490" cy="285" r="3" fill="#38bdf8" />
-            <path d="M 460 250 L 470 230" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 2" />
+          <g className="oos-h2o" opacity={stepOpacity(step, 2, isPlaying)}>
+            {drops.map((drop) => (
+              <circle key={`${drop.x}-${drop.y}`} cx={drop.x} cy={drop.y} r="3" fill="#38bdf8" />
+            ))}
+            <path d={`M ${drops[0].x} ${drops[0].y} L ${drops[0].x + 10} ${drops[0].y - 20}`} stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 2" />
+            <L x={drops[0].x - 8} y={drops[0].y - 28} fill="#7dd3fc" size={11} weight={700}>
+              H₂O frigjøres
+            </L>
           </g>
 
-          {/* Flukssmelting under øybuen */}
-          <ellipse cx="525" cy="225" rx="35" ry="20" fill="#f97316" className="oos-magma" />
-          <Arrow d="M 530 205 L 540 50" marker={m.low} color={C.low} width={3} />
-          <L x="525" y="222" fill="#fff" size={10} weight={800} anchor="middle">
-            Flukssmelting
-          </L>
+          <g opacity={stepOpacity(step, 3, isPlaying)}>
+            <ellipse cx={melt.x} cy={melt.y} rx="35" ry="20" fill="#f97316" className="oos-magma" />
+            <Arrow d={`M ${melt.x} ${melt.y - 18} L 540 50`} marker={m.low} color={C.low} width={3} />
+            <L x={melt.x} y={melt.y - 2} fill="#fff" size={10} weight={800} anchor="middle">
+              Flukssmelting
+            </L>
+          </g>
 
-          {/* Jordskjelv langs plategrensen */}
-          <circle cx="375" cy="155" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-          <circle cx="375" cy="155" r="4" fill="none" stroke="#ef4444" strokeWidth="1.5" className="oos-quake" />
-          <circle cx="420" cy="205" r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
-          <circle cx="480" cy="275" r="5.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+          {quakes.map((quake, index) => (
+            <g key={`${quake.x}-${quake.y}`}>
+              <circle cx={quake.x} cy={quake.y} r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+              {index === 0 ? (
+                <circle cx={quake.x} cy={quake.y} r="4" fill="none" stroke="#ef4444" strokeWidth="1.5" className="oos-quake" />
+              ) : null}
+            </g>
+          ))}
+          </g>
         </>
       )}
     </Diagram>
@@ -1709,28 +1958,59 @@ export function OceanOceanSubductionDiagram() {
  * regional metamorfose og fravær av vulkanisme.
  */
 export function CollisionDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
+  const [time, setTime] = useState(100);
+  const t = time / 100;
+  useEffect(() => {
+    if (!isPlaying || time >= 100) return;
+    const id = window.setInterval(() => setTime((value) => Math.min(100, value + 1)), 140);
+    return () => window.clearInterval(id);
+  }, [isPlaying, time]);
+  const shoulder = mix(148, 130, t);
+  const peak = mix(110, 35, t);
+  const pL = mix(122, 50, t);
+  const pR = mix(120, 55, t);
+  const midL = mix(134, 80, t);
+  const midR = mix(132, 75, t);
+  const rootTop = mix(210, 310, t);
+  const mohoL = mix(190, 270, t);
+  const deep = mix(240, 365, t);
+  const side = mix(200, 190, t);
+  const rootKm = Math.round(mix(40, 75, t));
 
   return (
     <Diagram
       title="Kontinentalkollisjon: Fjellkjededannelse, skyvedekker og dyp skorperot"
       heading="Kontinent mot kontinent: Himalaya i dag og Kaledonidene i Norges fortid"
       caption="Når to kontinentale litosfæreplater møtes (som da India traff Asia for 50 mill. år siden, eller da Baltika og Laurentia kolliderte og dannet Kaledonidene for 400 mill. år siden), kan ingen av platene subdueres i dypet fordi kontinentalskorpen har for lav tetthet (~2,7 g/cm³). Resultatet er kolossal skorpeforkorting. Jordskorpen presses opp i svimlende fjellkjeder og stables i store flak som kalles skyvedekker (nappes), som ble skjøvet hundrevis av kilometer over grunnfjellet. Samtidig dannes en enorm jordskorperot som stikker 70–80 km ned i mantelen for å holde fjellene flytende isostatisk. Fordi det ikke lenger føres vannrik havbunn ned i mantelen, opphører vulkanismen nesten helt – men kollisjonen skaper voldsom regional metamorfose (gneis og glimmerskifer)."
-      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />}
+      action={
+        <PlayPauseToggle
+          isPlaying={isPlaying}
+          onToggle={() => {
+            if (!isPlaying && time >= 100) setTime(0);
+            motion.toggle();
+          }}
+        />
+      }
+      toolbar={
+        <MiniSlider
+          label="Forkorting"
+          min={0}
+          max={100}
+          step={1}
+          value={time}
+          onChange={setTime}
+          valueLabel={time < 35 ? "tidlig" : time < 75 ? "underveis" : "moden"}
+        />
+      }
       viewBox="0 0 940 480"
       wide
+      scroll
     >
       {(m) => (
         <>
           <style>{`
-            @keyframes collision-arrow-l {
-              0%, 100% { transform: translateX(0); }
-              50% { transform: translateX(6px); }
-            }
-            @keyframes collision-arrow-r {
-              0%, 100% { transform: translateX(0); }
-              50% { transform: translateX(-6px); }
-            }
             @keyframes nappe-dash {
               0% { stroke-dashoffset: 24; }
               100% { stroke-dashoffset: 0; }
@@ -1738,14 +2018,6 @@ export function CollisionDiagram() {
             @keyframes moho-root-glow {
               0%, 100% { opacity: 0.5; }
               50% { opacity: 1; filter: drop-shadow(0 0 5px #ef4444); }
-            }
-            .collision-l {
-              animation: collision-arrow-l 2.2s ease-in-out infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
-            }
-            .collision-r {
-              animation: collision-arrow-r 2.2s ease-in-out infinite;
-              animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .nappe-thrust {
               stroke-dasharray: 8 4;
@@ -1757,29 +2029,34 @@ export function CollisionDiagram() {
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
           `}</style>
+          <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
 
-          {/* Himmel */}
           <rect x="40" y="30" width="860" height="110" fill="#09141d" />
 
-          {/* Kolossalt fjellmassiv i kollisjonssonen (Himalaya / Kaledonidene) */}
           <path
-            d="M 40 130 L 240 130 L 320 80 L 390 50 L 470 35 L 550 55 L 620 75 L 700 130 L 900 130 L 900 190 L 720 270 L 470 310 L 250 270 L 40 190 Z"
+            d={`M 40 ${shoulder} L 240 ${shoulder} L 320 ${midL} L 390 ${pL} L 470 ${peak} L 550 ${pR} L 620 ${midR} L 700 ${shoulder} L 900 ${shoulder} L 900 ${side} L 720 ${mohoL} L 470 ${rootTop} L 250 ${mohoL} L 40 ${side} Z`}
             fill="#4d5e53"
             stroke="#28382e"
             strokeWidth="1.8"
           />
 
-          {/* Snødekte tinder */}
-          <polygon points="460,50 470,35 480,50" fill="#fff" />
-          <polygon points="380,65 390,50 400,65" fill="#fff" />
-          <polygon points="540,68 550,55 560,68" fill="#fff" />
+          <polygon points={`${470 - 10},${peak + 15} 470,${peak} ${470 + 10},${peak + 15}`} fill="#fff" />
+          <polygon points={`${390 - 10},${pL + 15} 390,${pL} ${390 + 10},${pL + 15}`} fill="#fff" />
+          <polygon points={`${550 - 10},${pR + 13} 550,${pR} ${550 + 10},${pR + 13}`} fill="#fff" />
           <L x="470" y="24" fill="#f8fafc" size={14} weight={800} anchor="middle">
             Himalaya (8848 moh.) / Kaledonidene i silur (ca. 9000 moh.)
           </L>
 
           {/* Kaledonske skyvedekker (stables langs basale skyveforkastninger) */}
-          <path d="M 260 170 C 340 135, 430 90, 520 80" stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
-          <path d="M 300 205 C 390 170, 490 125, 580 110" stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
+          {t > 0.25 ? (
+            <path d={`M 260 ${mix(200, 170, t)} C 340 ${mix(180, 135, t)}, 430 ${mix(150, 90, t)}, 520 ${mix(140, 80, t)}`} stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
+          ) : null}
+          {t > 0.55 ? (
+            <path d={`M 300 ${mix(220, 205, t)} C 390 ${mix(200, 170, t)}, 490 ${mix(170, 125, t)}, 580 ${mix(155, 110, t)}`} stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
+          ) : null}
+          {t > 0.82 ? (
+            <path d={`M 280 ${mix(230, 188, t)} C 380 ${mix(200, 155, t)}, 470 ${mix(175, 120, t)}, 560 ${mix(160, 102, t)}`} stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
+          ) : null}
           <L x="320" y="130" fill="#f59e0b" size={12} weight={800}>
             Skyvedekker (Nappes, f.eks. Jotundekket i Norge)
           </L>
@@ -1789,16 +2066,16 @@ export function CollisionDiagram() {
 
           {/* KJEMPEROT (MOHO NEDTRYKT TIL 75 KM DYP) */}
           <path
-            d="M 40 190 L 250 270 L 470 310 L 720 270 L 900 190 L 900 240 L 750 320 L 470 365 L 220 320 L 40 240 Z"
+            d={`M 40 ${side} L 250 ${mohoL} L 470 ${rootTop} L 720 ${mohoL} L 900 ${side} L 900 ${mix(220, 240, t)} L 750 ${mix(250, 320, t)} L 470 ${deep} L 220 ${mix(250, 320, t)} L 40 ${mix(220, 240, t)} Z`}
             fill="#23343e"
             stroke="#16232b"
             strokeWidth="1.5"
           />
-          <path d="M 40 190 L 250 270 L 470 310 L 720 270 L 900 190" stroke="#ef4444" strokeWidth="2.5" strokeDasharray="4 2" fill="none" className="moho-root" />
-          <L x="470" y="340" fill="#38bdf8" size={13} weight={800} anchor="middle">
-            SKORPEROT: Moho nedtrykt til ~75 km dyp!
+          <path d={`M 40 ${side} L 250 ${mohoL} L 470 ${rootTop} L 720 ${mohoL} L 900 ${side}`} stroke="#ef4444" strokeWidth="2.5" strokeDasharray="4 2" fill="none" className="moho-root" />
+          <L x="470" y={mix(228, 340, t)} fill="#38bdf8" size={13} weight={800} anchor="middle">
+            SKORPEROT: Moho nedtrykt til ca. {rootKm} km dyp
           </L>
-          <L x="470" y="358" fill="#d1d5db" size={10.5} anchor="middle">
+          <L x="470" y={mix(246, 358, t)} fill="#d1d5db" size={10.5} anchor="middle">
             Isostasi (Airys modell): For hver 1000 meter fjell over havet, trengs ca. 8000 meter rot under!
           </L>
 
@@ -1814,13 +2091,13 @@ export function CollisionDiagram() {
           </g>
 
           {/* Kollisjonspiler med animasjon */}
-          <g className="collision-l">
+          <g>
             <Arrow d="M 120 110 L 200 110" marker={m.low} color={C.low} width={4} />
             <L x="160" y="100" fill={C.low} size={12} weight={800} anchor="middle">
               India / Baltika (~5 cm/år) →
             </L>
           </g>
-          <g className="collision-r">
+          <g>
             <Arrow d="M 820 110 L 740 110" marker={m.low} color={C.low} width={4} />
             <L x="780" y="100" fill={C.low} size={12} weight={800} anchor="middle">
               ← Asia / Laurentia
@@ -1837,6 +2114,7 @@ export function CollisionDiagram() {
               Ingen vannrik havbunnsslab føres ned i mantelen lenger → Ingen flukssmelting! Fjellene eroderer i stedet ned til grunnfjellet.
             </L>
           </g>
+          </g>
         </>
       )}
     </Diagram>
@@ -1848,7 +2126,8 @@ export function CollisionDiagram() {
  * Viser transformforkastninger på land (San Andreas) og i havet (Jan Mayen-bruddsonen).
  */
 export function TransformDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
 
   return (
     <Diagram
@@ -1857,85 +2136,99 @@ export function TransformDiagram() {
       caption="Langs en transformforkastning glir to plater horisontalt forbi hverandre. Skorpe verken nydannes eller ødelegges, og fraværet av vertikal mantelbevegelse eller dehydrering gjør at det praktisk talt ikke oppstår vulkanisme. I stedet oppstår voldsom mekanisk friksjon: Bergartene henger seg opp i en «friksjonslås». Mens platene fortsetter å bevege seg med noen centimeter i året noen titalls kilometer unna, bøyes og deformeres bergartene elastisk over årtier. Når spenningen overstiger bergartens bruddstyrke, brister forkastningen plutselig i løpet av sekunder – et ødeleggende jordskjelv. På land forskyver dette elveløp og gjerder (San Andreas); på havbunn segmenterer transformforkastninger midthavsryggene (f.eks. Jan Mayen-bruddsonen)."
       viewBox="0 0 880 430"
       wide
-      action={
-        <PlayPauseToggle
-          isPlaying={isPlaying}
-          onToggle={() => setIsPlaying((p) => !p)}
-        />
-      }
+      scroll
+      action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
     >
       {(m) => (
         <>
           <style>{`
-            @keyframes td-plate-a {
-              0% { transform: translateY(0px); }
-              45% { transform: translateY(-8px); }
-              50% { transform: translateY(-16px); }
-              90% { transform: translateY(-16px); }
-              100% { transform: translateY(0px); }
+            @keyframes td-slip-north {
+              from { transform: translateY(0); }
+              to { transform: translateY(-24px); }
             }
-            @keyframes td-plate-b {
-              0% { transform: translateY(0px); }
-              45% { transform: translateY(8px); }
-              50% { transform: translateY(16px); }
-              90% { transform: translateY(16px); }
-              100% { transform: translateY(0px); }
+            @keyframes td-slip-south {
+              from { transform: translateY(0); }
+              to { transform: translateY(24px); }
             }
             @keyframes td-quake-burst {
-              0%, 40% { r: 6; opacity: 0; }
-              45% { r: 12; opacity: 0.5; }
-              50% { r: 32; opacity: 0.95; stroke: #fff; }
-              65% { r: 50; opacity: 0; }
+              0%, 82% { r: 6; opacity: 0; }
+              88% { r: 16; opacity: 0.55; }
+              92% { r: 40; opacity: 0.95; }
+              98% { r: 52; opacity: 0; }
               100% { r: 6; opacity: 0; }
             }
             @keyframes td-elastic-strain {
-              0% { opacity: 0.4; }
-              45% { opacity: 0.95; filter: drop-shadow(0 0 6px #ef4444); }
-              50% { opacity: 0.2; }
-              100% { opacity: 0.4; }
+              0% { opacity: 0.35; }
+              86% { opacity: 1; filter: drop-shadow(0 0 6px #ef4444); }
+              93% { opacity: 0.2; }
+              100% { opacity: 0.35; }
             }
-            .td-anim-plate-a {
-              animation: td-plate-a 6s ease-in-out infinite;
+            @keyframes td-stress {
+              0% { transform: scaleX(0.06); }
+              88% { transform: scaleX(1); }
+              93% { transform: scaleX(0.08); }
+              100% { transform: scaleX(0.1); }
+            }
+            .td-slip-north {
+              animation: td-slip-north 6s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
-            .td-anim-plate-b {
-              animation: td-plate-b 6s ease-in-out infinite;
+            .td-slip-south {
+              animation: td-slip-south 6s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .td-anim-burst {
-              animation: td-quake-burst 6s ease-out infinite;
+              animation: td-quake-burst 6s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .td-anim-strain {
-              animation: td-elastic-strain 6s ease-in-out infinite;
+              animation: td-elastic-strain 6s linear infinite;
+              animation-play-state: ${isPlaying ? "running" : "paused"};
+            }
+            .td-stress {
+              transform-box: fill-box;
+              transform-origin: left center;
+              animation: td-stress 6s linear infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
           `}</style>
+          <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
+          <defs>
+            <clipPath id="td-clip-a"><rect x="82" y="122" width="346" height="196" /></clipPath>
+            <clipPath id="td-clip-b"><rect x="452" y="82" width="346" height="196" /></clipPath>
+          </defs>
 
-          {/* To motstående forkastningsblokker i 3D-perspektiv med dynamisk glidebevegelse */}
-          {/* Venstre blokk (beveger seg nordover / oppover) */}
-          <g className="td-anim-plate-a">
-            <path d="M 80 120 L 430 120 L 430 320 L 80 320 Z" fill="#2d4237" stroke="#1d2d25" strokeWidth="2" />
-            <L x="255" y="155" fill="#38bdf8" size={14} weight={800} anchor="middle">
-              PLATE A (f.eks. Stillehavsplaten)
-            </L>
-            <Arrow d="M 255 270 L 255 180" marker={m.teal} color={C.teal} width={4.5} />
-            <L x="240" y="225" fill="#38bdf8" size={12} weight={700} anchor="end">
-              Nordover ~5 cm/år ↑
-            </L>
+          <path d="M 80 120 L 430 120 L 430 320 L 80 320 Z" fill="#2d4237" stroke="#1d2d25" strokeWidth="2" />
+          <g clipPath="url(#td-clip-a)">
+            <g className="td-slip-north">
+              {Array.from({ length: 16 }, (_, i) => (
+                <line key={`a-${i}`} x1="90" x2="420" y1={100 + i * 24} y2={100 + i * 24} stroke="#5eead4" strokeWidth="2" opacity="0.55" />
+              ))}
+            </g>
           </g>
+          <L x="255" y="155" fill="#38bdf8" size={14} weight={800} anchor="middle">
+            PLATE A (f.eks. Stillehavsplaten)
+          </L>
+          <Arrow d="M 255 270 L 255 180" marker={m.teal} color={C.teal} width={4.5} />
+          <L x="240" y="225" fill="#38bdf8" size={12} weight={700} anchor="end">
+            Nordover ~5 cm/år ↑
+          </L>
 
-          {/* Høyre blokk (beveger seg sørover / nedover) */}
-          <g className="td-anim-plate-b">
-            <path d="M 450 80 L 800 80 L 800 280 L 450 280 Z" fill="#3d372e" stroke="#28241e" strokeWidth="2" />
-            <L x="625" y="115" fill={C.warm} size={14} weight={800} anchor="middle">
-              PLATE B (f.eks. Nordamerikanske plate)
-            </L>
-            <Arrow d="M 625 140 L 625 230" marker={m.warm} color={C.warm} width={4.5} />
-            <L x="640" y="185" fill={C.warm} size={12} weight={700}>
-              ↓ Sørover (relativt)
-            </L>
+          <path d="M 450 80 L 800 80 L 800 280 L 450 280 Z" fill="#3d372e" stroke="#28241e" strokeWidth="2" />
+          <g clipPath="url(#td-clip-b)">
+            <g className="td-slip-south">
+              {Array.from({ length: 16 }, (_, i) => (
+                <line key={`b-${i}`} x1="460" x2="790" y1={60 + i * 24} y2={60 + i * 24} stroke="#fbbf24" strokeWidth="2" opacity="0.55" />
+              ))}
+            </g>
           </g>
+          <L x="625" y="115" fill={C.warm} size={14} weight={800} anchor="middle">
+            PLATE B (f.eks. Nordamerikanske plate)
+          </L>
+          <Arrow d="M 625 140 L 625 230" marker={m.warm} color={C.warm} width={4.5} />
+          <L x="640" y="185" fill={C.warm} size={12} weight={700}>
+            ↓ Sørover (relativt)
+          </L>
 
           {/* Selve forkastningssprekken i midten (San Andreas-sporet) */}
           <line x1="440" y1="35" x2="440" y2="355" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" />
@@ -1944,10 +2237,16 @@ export function TransformDiagram() {
           </L>
 
           {/* Forskjøvet elveleie (viser historisk forskyvning) */}
-          <path d="M 180 140 L 440 140 L 440 100 L 700 100" stroke="#38bdf8" strokeWidth="3" fill="none" opacity="0.85" />
           <L x="455" y="125" fill="#38bdf8" size={10.5} weight={700}>
-            Forskjøvet elveløp (130 meter sideforskyvning)
+            Glidningen fortsetter samme vei. Elveløp forskyves sidelengs.
           </L>
+          <g transform="translate(80, 332)">
+            <rect x="0" y="0" width="720" height="14" rx="4" fill="#0f172a" stroke="#334155" />
+            <rect className="td-stress" x="0" y="0" width="720" height="14" rx="4" fill="#ef4444" />
+            <L x="360" y="11" fill="#fff" size={9} weight={700} anchor="middle">
+              Spenning bygges opp og utløses i skjelvet
+            </L>
+          </g>
 
           {/* Låst sone / jordskjelvfokus med pulserende spenningsglød og seismisk burst */}
           <circle cx="440" cy="220" r="18" fill="#ef4444" className="td-anim-strain" />
@@ -1970,6 +2269,7 @@ export function TransformDiagram() {
               KUN mellom de to forskjøvede spredningsryggene glir platene i motsatt retning (aktiv seismisitet). Utenfor ryggene beveger skorpen seg i samme retning (aseismiske arr).
             </L>
           </g>
+          </g>
         </>
       )}
     </Diagram>
@@ -1982,7 +2282,46 @@ export function TransformDiagram() {
  * Kort Hawaii-kjede uten dybdetall som biblioteket ikke belegger.
  */
 export function HotspotPlumeDiagram() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const motion = useAnimationPlaying();
+  const isPlaying = motion.playing;
+  const [ageMa, setAgeMa] = useState(6);
+  const plumeX = 700;
+  const pxPerMa = (plumeX - 310) / 5.5;
+
+  useEffect(() => {
+    if (!isPlaying || ageMa >= 6) return;
+    const id = window.setInterval(() => {
+      setAgeMa((current) => Math.min(6, Math.round((current + 0.08) * 100) / 100));
+    }, 90);
+    return () => window.clearInterval(id);
+  }, [ageMa, isPlaying]);
+
+  const chain = [
+    {
+      id: "maui",
+      formedAt: 6 - (plumeX - 560) / pxPerMa,
+      label: "Maui",
+      peak: 55,
+      half: 40,
+      fill: "#35352c",
+    },
+    {
+      id: "oahu",
+      formedAt: 6 - (plumeX - 435) / pxPerMa,
+      label: "Oahu",
+      peak: 40,
+      half: 35,
+      fill: "#2d3028",
+    },
+    {
+      id: "kauai",
+      formedAt: 0.5,
+      label: "Kauai (ca. 5,5 mill. år)",
+      peak: 25,
+      half: 30,
+      fill: "#252822",
+    },
+  ];
 
   return (
     <Diagram
@@ -1991,15 +2330,35 @@ export function HotspotPlumeDiagram() {
       caption="En hotspot er en langvarig, varm sone under platen. Platen glir over, og øyene blir eldre i bevegelsesretningen. Hvor dypt røttene sitter, er omdiskutert."
       viewBox="0 0 940 480"
       wide
+      scroll
+      toolbar={
+        <>
+          <MiniSlider
+            label="Tid"
+            min={0}
+            max={6}
+            step={0.1}
+            value={ageMa}
+            onChange={setAgeMa}
+            valueLabel={`${nbNum(ageMa, 1)} Ma`}
+          />
+          <span className="text-xs text-muted-foreground">
+            Plymen står stille. Platen glir mot nordvest, og kjeden bygges.
+          </span>
+        </>
+      }
       action={
         <PlayPauseToggle
           isPlaying={isPlaying}
-          onToggle={() => setIsPlaying((p) => !p)}
+          onToggle={() => {
+            if (!isPlaying && ageMa >= 6) setAgeMa(0);
+            motion.toggle();
+          }}
         />
       }
     >
       {(m) => (
-        <>
+        <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"} data-hotspot-age={ageMa.toFixed(1)}>
           <style>{`
             @keyframes hp-plume-flow {
               to { stroke-dashoffset: -60; }
@@ -2009,9 +2368,8 @@ export function HotspotPlumeDiagram() {
               50% { opacity: 1; filter: drop-shadow(0 0 12px #fb923c); }
             }
             @keyframes hp-vent-smoke {
-              0% { transform: translateY(0) scale(0.6); opacity: 0; }
-              40% { opacity: 0.85; }
-              100% { transform: translate(-8px, -20px) scale(1.6); opacity: 0; }
+              0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+              100% { transform: translate(-8px, -20px) scale(1.5); opacity: 0.15; }
             }
             .hp-flow-line {
               animation: hp-plume-flow 2.5s linear infinite;
@@ -2022,10 +2380,18 @@ export function HotspotPlumeDiagram() {
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
             .hp-smoke {
+              transform-box: fill-box;
+              transform-origin: center;
               animation: hp-vent-smoke 2.4s ease-out infinite;
               animation-play-state: ${isPlaying ? "running" : "paused"};
             }
           `}</style>
+
+          <defs>
+            <clipPath id="hp-plate-clip">
+              <rect x="40" y="120" width="860" height="55" />
+            </clipPath>
+          </defs>
 
           {/* Havbasseng øverst */}
           <rect x="40" y="30" width="860" height="90" fill="#0b1d2c" />
@@ -2033,46 +2399,61 @@ export function HotspotPlumeDiagram() {
             Stillehavet
           </L>
 
-          {/* Oseanisk litosfære som glir mot venstre */}
+          {/* Oseanisk litosfære som glir mot venstre, låst til tiden */}
           <rect x="40" y="120" width="860" height="55" fill="#273830" stroke="#18241f" strokeWidth="1.2" />
+          <g clipPath="url(#hp-plate-clip)">
+            <g transform={`translate(${-((ageMa * pxPerMa) % 48)} 0)`}>
+              {Array.from({ length: 22 }, (_, index) => (
+                <line
+                  key={index}
+                  x1={20 + index * 48}
+                  y1="128"
+                  x2={38 + index * 48}
+                  y2="168"
+                  stroke="#3d5248"
+                  strokeWidth="2"
+                />
+              ))}
+            </g>
+          </g>
           <L x="160" y="152" fill="#d1d5db" size={12} weight={700}>
             Stillehavsplaten glir mot nordvest ←
           </L>
           <Arrow d="M 450 148 L 360 148" marker={m.teal} color={C.teal} width={3.6} />
 
-          {/* Hawaii-øykjeden (alder øker mot venstre) */}
-          {/* Aktiv vulkan (Kilauea / Mauna Loa) rett over plymen ved x=700 */}
-          <path d="M 640 120 L 700 45 L 760 120 Z" fill="#423b32" stroke="#25211b" strokeWidth="1.5" />
-          <polygon points="695,45 700,32 705,45" fill="#ef4444" />
-          {/* Vulkanutbrudd røyk/ild */}
-          <circle cx="700" cy="30" r="4.5" fill="#f97316" className="hp-smoke" />
-          <L x="700" y="24" fill="#f8fafc" size={12} weight={800} anchor="middle">
+          {/* Aktiv vulkan blir stående over den faste plymen */}
+          <path d={`M ${plumeX - 60} 120 L ${plumeX} 45 L ${plumeX + 60} 120 Z`} fill="#423b32" stroke="#25211b" strokeWidth="1.5" />
+          <polygon points={`${plumeX - 5},45 ${plumeX},32 ${plumeX + 5},45`} fill="#ef4444" />
+          <circle cx={plumeX} cy="30" r="4.5" fill="#f97316" className="hp-smoke" />
+          <L x={plumeX} y="24" fill="#f8fafc" size={12} weight={800} anchor="middle">
             Hawaii (aktiv nå)
           </L>
 
-          {/* Maui (1 mill. år) */}
-          <path d="M 520 120 L 560 65 L 600 120 Z" fill="#35352c" stroke="#1f1f1a" />
-          <L x="560" y="55" fill="#cbd5e1" size={11} weight={600} anchor="middle">
-            Maui
-          </L>
+          {chain.map((island) => {
+            if (ageMa + 0.02 < island.formedAt) return null;
+            const x = plumeX - (ageMa - island.formedAt) * pxPerMa;
+            return (
+              <g key={island.id} data-island={island.id}>
+                <path
+                  d={`M ${x - island.half} 120 L ${x} ${120 - island.peak} L ${x + island.half} 120 Z`}
+                  fill={island.fill}
+                  stroke="#1f1f1a"
+                />
+                <L x={x} y={120 - island.peak - 8} fill="#cbd5e1" size={island.id === "kauai" ? 10 : 11} weight={600} anchor="middle">
+                  {island.label}
+                </L>
+              </g>
+            );
+          })}
 
-          {/* Oahu (3 mill. år) */}
-          <path d="M 400 120 L 435 80 L 470 120 Z" fill="#2d3028" stroke="#1a1c17" />
-          <L x="435" y="72" fill="#cbd5e1" size={10.5} anchor="middle">
-            Oahu
-          </L>
-
-          {/* Kauai (5 mill. år) */}
-          <path d="M 280 120 L 310 95 L 340 120 Z" fill="#252822" />
-          <L x="310" y="88" fill="#94a3b8" size={10} anchor="middle">
-            Kauai (ca. 5,5 mill. år)
-          </L>
-
-          {/* Undersjøisk guyot / erodert vulkan */}
-          <path d="M 140 120 L 165 112 L 190 120 Z" fill="#1b1f1a" />
-          <L x="165" y="104" fill="#64748b" size={9.5} anchor="middle">
-            Midway
-          </L>
+          {ageMa > 5.7 ? (
+            <g data-island="midway" opacity={Math.min(1, (ageMa - 5.7) / 0.3)}>
+              <path d="M 140 120 L 165 112 L 190 120 Z" fill="#1b1f1a" />
+              <L x="165" y="104" fill="#64748b" size={9.5} anchor="middle">
+                Midway
+              </L>
+            </g>
+          ) : null}
 
           {/* Astenosfære og mantel under litosfæren */}
           <rect x="40" y="175" width="860" height="255" fill="#1b2832" />
@@ -2146,7 +2527,7 @@ export function HotspotPlumeDiagram() {
               Big Island yngre enn 0,7 mill. år.
             </L>
           </g>
-        </>
+        </g>
       )}
     </Diagram>
   );

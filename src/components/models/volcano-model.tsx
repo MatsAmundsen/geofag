@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { useAnimationPlaying } from "@/components/diagrams/use-motion";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
 type VolcanoScenario = "shield" | "stratovolcano" | "caldera" | "earthquake_sim" | "monitoring" | "tsunami_sim";
@@ -22,7 +23,8 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
   const [sio2, setSio2] = useState<number>(62); // 48% (basalt) til 73% (ryolitt)
   const [gasContent, setGasContent] = useState<number>(4.2); // 0.5% til 6.0% H2O/CO2
   const [temp, setTemp] = useState<number>(950); // 750 C til 1200 C
-  const [isErupting, setIsErupting] = useState<boolean>(true);
+  const eruptionMotion = useAnimationPlaying();
+  const isErupting = eruptionMotion.playing;
 
   // Kontroller for jordskjelv-simulering
   const [faultStress, setFaultStress] = useState<number>(65); // 0-100%
@@ -53,9 +55,11 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
 
   // Eksplosivitet bestemt av produktet av gass og viskositet
   const calcEruptionStyle = () => {
-    const score = (sio2 - 45) * 1.5 + gasContent * 12;
+    const tempShift = ((temp - 950) / 500) * 16;
+    const score = (sio2 - 45) * 1.5 + gasContent * 12 - tempShift;
     if (score < 40) {
       return {
+        draw: "effusive" as const,
         type: "Hawaiisk / Effusiv",
         vei: "VEI 0–1",
         desc: "Rolige lavastrømmer og lavafontener. Lav viskositet lar gassbobler unnslippe uten å sprenge smelten i fillebiter.",
@@ -64,6 +68,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
       };
     } else if (score < 75) {
       return {
+        draw: "strombolian" as const,
         type: "Stromboliansk / Vulkansk",
         vei: "VEI 2–3",
         desc: "Periodiske eksplosjoner, lavabomber og moderate askesøyler.",
@@ -72,6 +77,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
       };
     } else if (score < 110) {
       return {
+        draw: "plinian" as const,
         type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens, Eyjafjallajökull)",
         vei: "VEI 4–5",
         desc: "Vedvarende gassutblåsning med konvektiv askesøyle inn i stratosfæren. Seig magma fragmenteres til pimpstein og fin aske.",
@@ -80,6 +86,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
       };
     } else {
       return {
+        draw: "ultra" as const,
         type: "Ultra-pliniansk / kalderautbrudd",
         vei: "VEI 6–8",
         desc: "Et stort magmakammer tømmes. Taket kollapser og danner en kaldera. SO₂-aerosoler kan påvirke klimaet.",
@@ -218,6 +225,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
               max={75}
               step={1}
               value={sio2}
+              aria-label="Silikatinnhold"
               onChange={(e) => setSio2(Number(e.target.value))}
               className="mt-2 w-full accent-primary cursor-pointer"
             />
@@ -267,10 +275,10 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           <div className="flex flex-col justify-end">
             <Button
               variant={isErupting ? "default" : "secondary"}
-              onClick={() => setIsErupting(!isErupting)}
+              onClick={eruptionMotion.toggle}
               className="w-full text-xs font-semibold"
             >
-              {isErupting ? "Pause animasjon" : "Start utbruddsanimasjon"}
+              {isErupting ? "⏸ Pause animasjon" : "▶ Start animasjon"}
             </Button>
           </div>
         </div>
@@ -848,7 +856,13 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           </svg>
         ) : scenario !== "earthquake_sim" ? (
           /* VULKAN-VISUALISERING */
-          <svg viewBox="0 0 900 460" className="w-full h-auto select-none">
+          <svg
+            viewBox="0 0 900 460"
+            className={`h-auto w-full select-none ${eruptionMotion.motionClass}`}
+            data-eruption-style={eruptionStyle.draw}
+            data-has-umbrella={eruptionStyle.draw === "plinian" || eruptionStyle.draw === "ultra" ? "yes" : "no"}
+            data-playing={isErupting ? "yes" : "no"}
+          >
             <defs>
               <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#081018" />
@@ -875,6 +889,24 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
               </filter>
             </defs>
 
+            <style>{`
+              .vm-lava { stroke-dasharray: 18 12; animation: vm-lava 1.4s linear infinite; animation-play-state: ${isErupting ? "running" : "paused"}; }
+              .vm-fountain, .vm-plume { transform-box: fill-box; transform-origin: center bottom; animation-play-state: ${isErupting ? "running" : "paused"}; }
+              .vm-fountain { animation: vm-fountain 0.8s ease-in-out infinite; }
+              .vm-plume { animation: vm-plume 2.2s ease-in-out infinite; }
+              .vm-umbrella { transform-box: fill-box; transform-origin: center; animation: vm-umbrella 4s ease-in-out infinite; animation-play-state: ${isErupting ? "running" : "paused"}; }
+              .vm-pdc { stroke-dasharray: 10 8; animation: vm-pdc 0.9s linear infinite; animation-play-state: ${isErupting ? "running" : "paused"}; }
+              .vm-particle { animation: vm-rise 2.4s ease-out infinite; animation-play-state: ${isErupting ? "running" : "paused"}; }
+              .vm-bolt { animation: vm-bolt 1.6s steps(2, end) infinite; animation-play-state: ${isErupting ? "running" : "paused"}; }
+              @keyframes vm-lava { to { stroke-dashoffset: -60; } }
+              @keyframes vm-fountain { 0%, 100% { transform: translateY(0) scaleY(0.9); } 50% { transform: translateY(-12px) scaleY(1.12); } }
+              @keyframes vm-plume { 0%, 100% { transform: scaleY(0.94); } 50% { transform: scaleY(1.06); } }
+              @keyframes vm-umbrella { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
+              @keyframes vm-pdc { to { stroke-dashoffset: -36; } }
+              @keyframes vm-rise { 0% { transform: translateY(0) scale(1); opacity: 0.85; } 100% { transform: translateY(-56px) scale(1.35); opacity: 0.1; } }
+              @keyframes vm-bolt { 0%, 60% { opacity: 0.15; } 70%, 100% { opacity: 1; } }
+            `}</style>
+
             {/* Himmel */}
             <rect x="0" y="0" width="900" height="340" fill="url(#skyGrad)" />
 
@@ -886,180 +918,108 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
             <line x1="0" y1="320" x2="900" y2="320" stroke="#44392e" strokeWidth="2" />
 
             {/* Magmakammer i dypet */}
-            <ellipse cx="450" cy="405" rx={scenario === "caldera" ? 180 : 100} ry={scenario === "caldera" ? 45 : 32} fill="url(#chamberGlow)" />
-            <ellipse cx="450" cy="405" rx={scenario === "caldera" ? 150 : 80} ry={scenario === "caldera" ? 35 : 24} fill="url(#magmaGrad)" />
+            <ellipse cx="450" cy="405" rx={eruptionStyle.draw === "ultra" ? 180 : 100} ry={eruptionStyle.draw === "ultra" ? 45 : 32} fill="url(#chamberGlow)" />
+            <ellipse cx="450" cy="405" rx={eruptionStyle.draw === "ultra" ? 150 : 80} ry={eruptionStyle.draw === "ultra" ? 35 : 24} fill="url(#magmaGrad)" />
             <text x="450" y="408" fill="#fff" fontSize="13" fontWeight="bold" textAnchor="middle">
-              {scenario === "caldera" ? "Stort ryolittkammer" : `Magmakammer (${temp} °C)`}
+              {eruptionStyle.draw === "ultra" ? "Stort ryolittkammer" : `Magmakammer (${temp} °C)`}
             </text>
             <text x="450" y="424" fill="#fed7aa" fontSize="10" textAnchor="middle">
               SiO₂: {sio2} % · Gass: {nb1(gasContent)} % · Viskositet: {viscosityShort(viscosityInfo.label)}
             </text>
 
-            {/* VULKANGEOMETRI BASERT PÅ SCENARIO / SIO2 */}
-            {scenario === "shield" ? (
-              /* Skjoldvulkan: Slak helling (3–8°), bred fot */
-              <g>
-                <path
-                  d="M 60 320 Q 450 240 840 320 Z"
-                  fill="#2d2822"
-                  stroke="#574838"
-                  strokeWidth="2"
-                />
-                {/* Flate lavalag */}
+            {/* Formen følger SiO₂, gass og temperatur, ikke bare fanen. */}
+            {eruptionStyle.draw === "effusive" ? (
+              <g data-volcano-shape="shield">
+                <path d="M 60 320 Q 450 240 840 320 Z" fill="#2d2822" stroke="#574838" strokeWidth="2" />
                 <path d="M 160 318 Q 450 255 740 318" fill="none" stroke="#221d17" strokeWidth="3" />
                 <path d="M 260 316 Q 450 270 640 316" fill="none" stroke="#3d3329" strokeWidth="2.5" />
-
-                {/* Sentral krateråpning */}
                 <ellipse cx="450" cy="242" rx="35" ry="8" fill="#1b1612" stroke="#e07a30" strokeWidth="1.5" />
-
-                {/* Tilførselsgang */}
                 <path d="M 444 380 L 444 242 H 456 L 456 380 Z" fill="#ff5500" opacity="0.9" />
-
-                {/* Lavafontener og rolige lavastrømmer */}
-                {isErupting && (
-                  <g>
-                    {/* Lavafontene ved krateret */}
-                    <path
-                      d="M 446 242 Q 440 200 445 180 Q 450 170 455 180 Q 460 200 454 242 Z"
-                      fill="#ff7700"
-                      filter="url(#glowEffect)"
-                    />
-                    <ellipse cx="450" cy="180" rx="6" ry="12" fill="#ffcc00" />
-                    
-                    {/* Pahoehoe / Aa lavastrømmer som renner sakte ned sidene */}
-                    <path
-                      d="M 430 244 Q 300 260 140 320"
-                      fill="none"
-                      stroke="#ff4400"
-                      strokeWidth="5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M 430 244 Q 300 260 140 320"
-                      fill="none"
-                      stroke="#ffaa00"
-                      strokeWidth="2.5"
-                      strokeDasharray="14 10"
-                    />
-                    <path
-                      d="M 470 244 Q 600 262 760 320"
-                      fill="none"
-                      stroke="#ff3300"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                    />
-
-                    {/* Gass- og dampslør */}
-                    <ellipse cx="450" cy="210" rx="30" ry="15" fill="#94a3b8" opacity="0.3" />
-                    <ellipse cx="465" cy="170" rx="20" ry="12" fill="#cbd5e1" opacity="0.25" />
-                  </g>
-                )}
+                <g className="vm-fountain">
+                  <path d="M 446 242 Q 440 200 445 180 Q 450 170 455 180 Q 460 200 454 242 Z" fill="#ff7700" filter="url(#glowEffect)" />
+                  <ellipse cx="450" cy="180" rx="6" ry="12" fill="#ffcc00" />
+                </g>
+                <path className="vm-lava" d="M 430 244 Q 300 260 140 320" fill="none" stroke="#ff4400" strokeWidth="6" strokeLinecap="round" />
+                <path className="vm-lava" d="M 470 244 Q 600 262 760 320" fill="none" stroke="#ffaa00" strokeWidth="5" strokeLinecap="round" />
+                <circle className="vm-particle" cx="442" cy="210" r="6" fill="#e2e8f0" />
+                <circle className="vm-particle" cx="462" cy="198" r="5" fill="#cbd5e1" style={{ animationDelay: "0.7s" }} />
+                <text x="450" y="158" fill="#fed7aa" fontSize="12" fontWeight="bold" textAnchor="middle">
+                  Lavafontene og lavastrøm
+                </text>
               </g>
-            ) : scenario === "stratovolcano" ? (
-              /* Stratovulkan: Bratt kjegle (25–35°), lagdelt aske og lava */
-              <g>
-                <path
-                  d="M 180 320 L 420 180 Q 450 190 480 180 L 720 320 Z"
-                  fill="#332a26"
-                  stroke="#57453d"
-                  strokeWidth="2"
-                />
-                {/* Lagdeling (stratifikasjon) */}
+            ) : eruptionStyle.draw === "strombolian" ? (
+              <g data-volcano-shape="cone">
+                <path d="M 180 320 L 420 180 Q 450 190 480 180 L 720 320 Z" fill="#332a26" stroke="#57453d" strokeWidth="2" />
+                <path d="M 230 310 L 426 195 L 474 195 L 670 310" fill="none" stroke="#261d1a" strokeWidth="4" />
+                <ellipse cx="450" cy="182" rx="30" ry="9" fill="#1c1412" stroke="#ff5500" strokeWidth="2" />
+                <path d="M 444 380 L 444 182 H 456 L 456 380 Z" fill="#ff3b00" />
+                <path className="vm-plume" d="M 436 178 Q 424 120 418 96 Q 450 78 482 96 Q 476 120 464 178 Z" fill="#64748b" opacity="0.92" />
+                <circle className="vm-particle" cx="428" cy="150" r="5" fill="#f97316" />
+                <circle className="vm-particle" cx="470" cy="138" r="4.5" fill="#fbbf24" style={{ animationDelay: "0.5s" }} />
+                <circle className="vm-particle" cx="450" cy="160" r="4" fill="#fb7185" style={{ animationDelay: "1s" }} />
+                <text x="450" y="62" fill="#f8fafc" fontSize="12" fontWeight="bold" textAnchor="middle">
+                  Kort askesøyle
+                </text>
+              </g>
+            ) : eruptionStyle.draw === "plinian" ? (
+              <g data-volcano-shape="cone">
+                <path d="M 180 320 L 420 180 Q 450 190 480 180 L 720 320 Z" fill="#332a26" stroke="#57453d" strokeWidth="2" />
                 <path d="M 230 310 L 426 195 L 474 195 L 670 310" fill="none" stroke="#261d1a" strokeWidth="4" />
                 <path d="M 280 295 L 432 215 L 468 215 L 620 295" fill="none" stroke="#4a3b34" strokeWidth="3" />
-                <path d="M 330 270 L 438 235 L 462 235 L 570 270" fill="none" stroke="#1f1816" strokeWidth="3" />
-
-                {/* Krater */}
                 <ellipse cx="450" cy="182" rx="30" ry="9" fill="#1c1412" stroke="#ff5500" strokeWidth="2" />
-
-                {/* Tilførselsgang og gassboble-fragmentering */}
                 <path d="M 444 380 L 444 182 H 456 L 456 380 Z" fill="#ff3b00" />
-
-                {/* Fragmenteringsnivå markering */}
                 <line x1="410" y1="260" x2="490" y2="260" stroke="#facc15" strokeWidth="1.5" strokeDasharray="3 3" />
                 <text x="500" y="264" fill="#facc15" fontSize="10">Fragmenteringsnivå</text>
-
-                {isErupting && (
-                  <g>
-                    {/* Pliniansk konvektiv askesøyle rett opp i stratosfæren */}
-                    <path
-                      d="M 440 180 Q 430 110 390 60 Q 350 20 280 18 L 620 18 Q 550 20 510 60 Q 470 110 460 180 Z"
-                      fill="#475569"
-                      opacity="0.85"
-                    />
-                    {/* Paraplysky / tefrasky i toppen */}
-                    <ellipse cx="450" cy="24" rx="200" ry="22" fill="#334155" opacity="0.9" />
-                    <ellipse cx="410" cy="20" rx="140" ry="18" fill="#475569" opacity="0.85" />
-                    <ellipse cx="500" cy="25" rx="120" ry="16" fill="#64748b" opacity="0.8" />
-                    <text x="450" y="28" fill="#f1f5f9" fontSize="12" fontWeight="bold" textAnchor="middle">
-                      Paraplysky (inn i stratosfæren)
-                    </text>
-
-                    {/* Vulkanske lyn i askesøylen pga statisk elektrisitet */}
-                    <path d="M 425 120 L 415 135 L 430 145 L 420 160" stroke="#fef08a" strokeWidth="2" fill="none" filter="url(#glowEffect)" />
-                    <path d="M 470 95 L 485 110 L 475 125 L 490 140" stroke="#fef08a" strokeWidth="2" fill="none" filter="url(#glowEffect)" />
-
-                    {/* Pyroklastisk tetthetsstrøm (PDC) som raser nedover fjellsiden */}
-                    <path
-                      d="M 420 190 Q 360 220 290 260 Q 230 290 150 320 L 220 320 Q 320 280 430 210 Z"
-                      fill="#e11d48"
-                      opacity="0.75"
-                    />
-                    <path
-                      d="M 150 320 Q 220 280 300 250"
-                      stroke="#fb7185"
-                      strokeWidth="4"
-                      strokeDasharray="6 4"
-                      fill="none"
-                    />
-                    <text x="210" y="275" fill="#ffe4e6" fontSize="11" fontWeight="bold" transform="rotate(-30 210 275)">
-                      Pyroklastisk strøm (PDC)
-                    </text>
-
-                    {/* Lahar (vulkansk slamstrøm) i dalbunn */}
-                    <path d="M 475 200 Q 560 250 670 320 L 730 320 Q 600 250 485 200 Z" fill="#78716c" opacity="0.85" />
-                    <text x="610" y="280" fill="#f5f5f4" fontSize="10" fontWeight="bold" transform="rotate(28 610 280)">
-                      Lahar (slamstrøm)
-                    </text>
-                  </g>
-                )}
+                <g className="vm-plume">
+                  <path d="M 440 180 Q 430 110 390 60 Q 350 20 280 18 L 620 18 Q 550 20 510 60 Q 470 110 460 180 Z" fill="#475569" opacity="0.85" />
+                </g>
+                <g className="vm-umbrella">
+                  <ellipse cx="450" cy="24" rx="200" ry="22" fill="#334155" opacity="0.9" />
+                  <ellipse cx="410" cy="20" rx="140" ry="18" fill="#475569" opacity="0.85" />
+                  <text x="450" y="28" fill="#f1f5f9" fontSize="12" fontWeight="bold" textAnchor="middle">
+                    Paraplysky (inn i stratosfæren)
+                  </text>
+                </g>
+                <circle className="vm-particle" cx="390" cy="90" r="5" fill="#94a3b8" />
+                <circle className="vm-particle" cx="510" cy="80" r="4" fill="#cbd5e1" style={{ animationDelay: "0.6s" }} />
+                <path className="vm-bolt" d="M 425 120 L 415 135 L 430 145 L 420 160" stroke="#fef08a" strokeWidth="2" fill="none" />
+                <path className="vm-bolt" d="M 470 95 L 485 110 L 475 125 L 490 140" stroke="#fef08a" strokeWidth="2" fill="none" style={{ animationDelay: "0.4s" }} />
+                <path d="M 420 190 Q 360 220 290 260 Q 230 290 150 320 L 220 320 Q 320 280 430 210 Z" fill="#e11d48" opacity="0.75" />
+                <path className="vm-pdc" d="M 180 310 Q 240 270 320 230" stroke="#fb7185" strokeWidth="4" fill="none" />
+                <text x="210" y="275" fill="#ffe4e6" fontSize="11" fontWeight="bold" transform="rotate(-30 210 275)">
+                  Pyroklastisk strøm (PDC)
+                </text>
+                <path d="M 475 200 Q 560 250 670 320 L 730 320 Q 600 250 485 200 Z" fill="#78716c" opacity="0.85" />
+                <text x="610" y="280" fill="#f5f5f4" fontSize="10" fontWeight="bold" transform="rotate(28 610 280)">
+                  Lahar (slamstrøm)
+                </text>
               </g>
             ) : (
-              /* Kalderakollaps: Tømt magmakammer, innsunket blokk */
-              <g>
-                <path
-                  d="M 120 320 L 290 220 L 330 270 L 570 270 L 610 220 L 780 320 Z"
-                  fill="#2e2523"
-                  stroke="#57453d"
-                  strokeWidth="2"
-                />
-                {/* Innsunket kalderabunn / innsjø */}
+              <g data-volcano-shape="caldera">
+                <path d="M 120 320 L 290 220 L 330 270 L 570 270 L 610 220 L 780 320 Z" fill="#2e2523" stroke="#57453d" strokeWidth="2" />
                 <rect x="330" y="270" width="240" height="50" fill="#1b2024" />
                 <path d="M 330 285 Q 450 282 570 285 L 570 305 Q 450 308 330 305 Z" fill="#0284c7" opacity="0.75" />
                 <text x="450" y="298" fill="#e0f2fe" fontSize="12" fontWeight="bold" textAnchor="middle">
                   Kalderasjø (innsunket platetak)
                 </text>
-
-                {/* Resurgent kuppel (ny oppbuling) */}
                 <ellipse cx="450" cy="275" rx="35" ry="12" fill="#44352f" stroke="#78594c" strokeWidth="1.5" />
                 <text x="450" y="273" fill="#cbd5e1" fontSize="9" textAnchor="middle">Resurgent kuppel</text>
-
-                {/* Ringforkastninger */}
                 <line x1="330" y1="220" x2="330" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
                 <line x1="570" y1="220" x2="570" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
                 <text x="310" y="250" fill="#f43f5e" fontSize="10" textAnchor="end">Ringforkastning ↓</text>
                 <text x="590" y="250" fill="#f43f5e" fontSize="10" textAnchor="start">↓ Ringforkastning</text>
-
-                {/* Gigantisk aske- og gass-slør */}
-                {isErupting && (
-                  <g>
-                    <ellipse cx="450" cy="70" rx="320" ry="45" fill="#475569" opacity="0.6" />
-                    <ellipse cx="450" cy="50" rx="260" ry="35" fill="#334155" opacity="0.75" />
-                    <text x="450" y="55" fill="#f8fafc" fontSize="14" fontWeight="bold" textAnchor="middle">
-                      SO₂-aerosoler høyt i atmosfæren (VEI 7–8)
-                    </text>
-                  </g>
-                )}
+                <g className="vm-umbrella">
+                  <ellipse cx="450" cy="70" rx="320" ry="45" fill="#475569" opacity="0.6" />
+                  <ellipse cx="450" cy="50" rx="260" ry="35" fill="#334155" opacity="0.75" />
+                  <text x="450" y="48" fill="#f8fafc" fontSize="13" fontWeight="bold" textAnchor="middle">
+                    Paraplysky
+                  </text>
+                  <text x="450" y="66" fill="#e2e8f0" fontSize="11" textAnchor="middle">
+                    SO₂-aerosoler høyt i atmosfæren
+                  </text>
+                </g>
+                <circle className="vm-particle" cx="280" cy="90" r="6" fill="#94a3b8" />
+                <circle className="vm-particle" cx="620" cy="80" r="5" fill="#cbd5e1" style={{ animationDelay: "0.8s" }} />
               </g>
             )}
 

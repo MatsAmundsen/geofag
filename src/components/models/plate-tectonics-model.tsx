@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { useAnimationPlaying } from "@/components/diagrams/use-motion";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 import {
   AMPHIBOLE_KM,
@@ -87,6 +88,53 @@ function DepthScale() {
       <text x="18" y="300" textAnchor="middle" transform="rotate(-90 18 300)" fill="#6488a0">
         Dyp under skorpetoppen
       </text>
+    </g>
+  );
+}
+
+function PlateDrift({
+  id,
+  x,
+  y,
+  width,
+  dir,
+  animating,
+}: {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  dir: 1 | -1;
+  animating: boolean;
+}) {
+  const period = 28;
+  const count = Math.ceil(width / period) + 3;
+  return (
+    <g transform={`translate(${x} ${y})`} data-plate-drift={dir > 0 ? "pos" : "neg"}>
+      <defs>
+        <clipPath id={id}>
+          <rect width={width} height="16" />
+        </clipPath>
+      </defs>
+      <g clipPath={`url(#${id})`}>
+        <g className={animating ? (dir > 0 ? "pt-drift-pos" : "pt-drift-neg") : undefined}>
+          {Array.from({ length: count }, (_, index) => {
+            const px = -period + index * period;
+            const tip = dir > 0 ? px + 10 : px;
+            const tail = dir > 0 ? px : px + 10;
+            return (
+              <path
+                key={index}
+                d={`M ${tail} 1 L ${tip} 8 L ${tail} 15`}
+                fill="none"
+                stroke="#f59e0b"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            );
+          })}
+        </g>
+      </g>
     </g>
   );
 }
@@ -207,6 +255,8 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
           </text>
         </g>
       ) : null}
+      <PlateDrift id="pt-ridge-l" x={left + 16} y={SEA_Y - 22} width={axis - left - 70} dir={-1} animating={animating} />
+      <PlateDrift id="pt-ridge-r" x={axis + 36} y={SEA_Y - 22} width={right - axis - 70} dir={1} animating={animating} />
     </g>
   );
 }
@@ -362,6 +412,14 @@ function SubductionScene({
           </text>
         </g>
       ) : null}
+      <PlateDrift
+        id={`pt-sub-${trenchX}`}
+        x={70}
+        y={88}
+        width={Math.max(90, trenchX - 170)}
+        dir={1}
+        animating={animating}
+      />
     </g>
   );
 }
@@ -423,6 +481,8 @@ function CollisionScene({ rate, showMelting, showQuakes, showForces, animating }
           </text>
         </g>
       ) : null}
+      <PlateDrift id="pt-col-l" x={90} y={86} width={200} dir={1} animating={animating} />
+      <PlateDrift id="pt-col-r" x={630} y={86} width={200} dir={-1} animating={animating} />
     </g>
   );
 }
@@ -480,6 +540,8 @@ function RiftScene({ rate, showMelting, showQuakes, showForces, animating }: Sce
           </text>
         </g>
       ) : null}
+      <PlateDrift id="pt-rift-l" x={80} y={78} width={170} dir={-1} animating={animating} />
+      <PlateDrift id="pt-rift-r" x={660} y={78} width={170} dir={1} animating={animating} />
     </g>
   );
 }
@@ -502,6 +564,8 @@ function TransformScene({ rate, showQuakes, animating }: SceneProps) {
       <text x="627" y="376" fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
         Sørlig rygg
       </text>
+      <PlateDrift id="pt-tr-n" x={300} y={168} width={280} dir={1} animating={animating} />
+      <PlateDrift id="pt-tr-s" x={300} y={252} width={280} dir={-1} animating={animating} />
       <line x1="70" y1="220" x2="250" y2="220" stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
       <line x1="264" y1="220" x2="620" y2="220" stroke="#ef4444" strokeWidth="5" />
       <line x1="634" y1="220" x2="860" y2="220" stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
@@ -631,6 +695,7 @@ function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) 
       <text x={plumeX - 50 * px} y="466" fill="#94a3b8" fontSize="10" textAnchor="middle">
         100 km
       </text>
+      <PlateDrift id="pt-hs" x={80} y={SEA_Y + 6} width={480} dir={-1} animating={animating} />
     </g>
   );
 }
@@ -771,6 +836,8 @@ function PaleomagScene({ rate, showMelting, showQuakes, animating, polarity }: S
         </g>
       ) : null}
       {showQuakes ? <Foci animating={animating} points={[{ x: axis - 8, y: 168 }, { x: axis + 8, y: 176 }]} /> : null}
+      <PlateDrift id="pt-pm-l" x={120} y={286} width={240} dir={-1} animating={animating} />
+      <PlateDrift id="pt-pm-r" x={560} y={286} width={240} dir={1} animating={animating} />
       <text x="70" y="360" fill="#cbd5e1" fontSize="11">
         Jaramillo er den tynne normale stripen inne i Matuyama, nær 1 million år.
       </text>
@@ -886,7 +953,8 @@ export function PlateTectonicsModel() {
   const [showQuakes, setShowQuakes] = useState(true);
   const [showMelting, setShowMelting] = useState(true);
   const [showForces, setShowForces] = useState(true);
-  const [animating, setAnimating] = useState(true);
+  const motion = useAnimationPlaying();
+  const animating = motion.playing;
 
   const current = boundaryData[boundary];
   const layers = layerAvailability(boundary);
@@ -904,7 +972,7 @@ export function PlateTectonicsModel() {
       stackHeader
       kicker="Interaktiv geodynamisk simulator"
       title="Platetektonisk bevegelses- og grensemodell"
-      lead="Juster platehastigheten og se riftdal, litosfæretykkelse og magnetstripebredde endre seg. Slå av og på jordskjelv, smelting og drivkrefter der grensen har dem."
+      lead="Juster platehastigheten. Platene glir på hver fane, og riftdal, litosfæretykkelse og magnetstripebredde følger med. Slå av og på jordskjelv, smelting og drivkrefter der grensen har dem."
       toolbar={
         <div className="flex flex-wrap gap-1.5">
           {(
@@ -996,8 +1064,8 @@ export function PlateTectonicsModel() {
             >
               {layers.forces ? (scene.showForces ? "Krefter på" : "Krefter av") : "Bevegelse alltid vist"}
             </Button>
-            <Button type="button" size="sm" variant="secondary" className="h-7 text-xs" onClick={() => setAnimating((a) => !a)}>
-              {animating ? "Pause" : "Start"}
+            <Button type="button" size="sm" variant="secondary" className="h-7 text-xs" onClick={motion.toggle}>
+              {animating ? "⏸ Pause animasjon" : "▶ Start animasjon"}
             </Button>
           </div>
         </div>
@@ -1007,18 +1075,26 @@ export function PlateTectonicsModel() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-xl border border-border bg-[#0a1118]">
+      <div
+        className={`relative overflow-x-auto rounded-xl border border-border bg-[#0a1118] ${motion.motionClass}`}
+        data-playing={animating ? "yes" : "no"}
+      >
         <style>{`
           @keyframes mantle-flow-left { to { stroke-dashoffset: -40; } }
           @keyframes mantle-flow-right { to { stroke-dashoffset: 40; } }
           @keyframes magma-rise { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
           @keyframes quake-pulse { 0%, 100% { opacity: 0.45; } 70% { opacity: 0; } }
+          @keyframes pt-drift-pos { from { transform: translateX(0); } to { transform: translateX(28px); } }
+          @keyframes pt-drift-neg { from { transform: translateX(0); } to { transform: translateX(-28px); } }
           .mantle-anim-left { animation: mantle-flow-left ${Math.max(2.2, 16 / rate)}s linear infinite; }
           .mantle-anim-right { animation: mantle-flow-right ${Math.max(2.2, 16 / rate)}s linear infinite; }
           .magma-pulse { animation: magma-rise 3s ease-in-out infinite; }
           .quake-ring { animation: quake-pulse 2s ease-out infinite; }
+          .pt-drift-pos, .pt-drift-neg { animation-duration: ${Math.max(1.2, 18 / rate)}s; animation-timing-function: linear; animation-iteration-count: infinite; }
+          .pt-drift-pos { animation-name: pt-drift-pos; }
+          .pt-drift-neg { animation-name: pt-drift-neg; }
         `}</style>
-        <svg viewBox="0 0 920 480" className="h-auto w-full select-none" role="img" aria-label={current.title} data-boundary={boundary}>
+        <svg viewBox="0 0 920 480" className="h-auto w-[920px] max-w-none select-none sm:w-full" role="img" aria-label={current.title} data-boundary={boundary}>
           <defs>
             <marker id="arrow-slab" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <path d="M0,0 L0,6 L7,3 z" fill="#38bdf8" />
