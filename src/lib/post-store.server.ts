@@ -14,6 +14,12 @@ import { canUseMemorySeedFallback, choosePostBackend } from "@/lib/post-backend"
 import { isShortPlatetektonikkBody } from "@/lib/post-seed-upgrade";
 import { CHAPTER_SEED_FLAG, chapterSeedIsCurrent, chapterSeedVersion } from "@/lib/chapter-seed-version";
 import {
+  type CopyReseed,
+  copyReseedsVersion,
+  oncePerKey,
+  reseedFlaggedCopies as runCopyReseeds,
+} from "@/lib/copy-reseed";
+import {
   CHAPTER_POST_SEEDS,
   nowStamp,
   PLATETEKTONIKK_SEED,
@@ -443,7 +449,7 @@ export async function getPostStore(): Promise<Store> {
  * Durable Object and D1 remember the flag. Local Postgres has no meta table,
  * so it only replaces a body that still contains a stale marker.
  */
-const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
+const COPY_RESEEDS: CopyReseed[] = [
   {
     flag: "hoytrykk-copy-2026-10-06",
     slug: "hoytrykk-lavtrykk",
@@ -737,28 +743,19 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
   }
 ];
 
-async function reseedFlaggedCopies(store: Store): Promise<void> {
-  const durable = store.persist === "do" || store.persist === "d1";
-  for (const item of COPY_RESEEDS) {
-    const seed = CHAPTER_POST_SEEDS.find((row) => row.slug === item.slug);
-    if (!seed) continue;
-    const existing = await store.get(item.slug);
-    if (!existing) continue;
-    if (existing.bodyMarkdown === seed.bodyMarkdown) {
-      if (durable && !(await store.getMeta(item.flag))) await store.setMeta(item.flag, "1");
-      continue;
-    }
-    if (durable) {
-      if (await store.getMeta(item.flag)) continue;
-    } else if (!item.stale.some((marker) => existing.bodyMarkdown.includes(marker))) {
-      continue;
-    }
-    await store.save({
-      ...toPostInput(seed),
-      published: existing.published ?? 1,
-    });
-    if (durable) await store.setMeta(item.flag, "1");
-  }
+const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
+  slug: seed.slug,
+  bodyMarkdown: seed.bodyMarkdown,
+  input: () => toPostInput(seed),
+}));
+
+/** Én kjøring per isolate. Samtidige forespørsler på en kald isolate deler samme løfte. */
+const copyReseedOnce = oncePerKey();
+
+function reseedFlaggedCopies(store: Store): Promise<void> {
+  return copyReseedOnce(`${store.persist}:${copyReseedsVersion(COPY_RESEEDS)}`, () =>
+    runCopyReseeds(store, COPY_RESEEDS, COPY_RESEED_SEEDS),
+  );
 }
 
 /** One-shot write of the three poster bodies Mats saved before they were overwritten. */
@@ -780,7 +777,7 @@ async function restoreSavedPosters(store: Store): Promise<void> {
   await store.setMeta(SAVED_POSTER_RESTORE, "1");
 }
 
-const seededStoreVersions = new Set<string>();
+const chapterSeedOnce = oncePerKey();
 
 /** One-shot so an existing CMS row picks up the 2026-10-06 platetektonikk copy edit. */
 const PLATETEKTONIKK_COPY_FLAG = "platetektonikk-copy-2026-10-06";
@@ -799,38 +796,36 @@ async function publishPlatetektonikkCopy(store: Store): Promise<void> {
 
 async function ensureChapterSeeds(store: Store): Promise<void> {
   const version = chapterSeedVersion(CHAPTER_POST_SEEDS.map((seed) => seed.slug));
-  const memoryKey = `${store.persist}:${version}`;
-  if (seededStoreVersions.has(memoryKey)) return;
   try {
-    await publishPlatetektonikkCopy(store);
-    await reseedFlaggedCopies(store);
-    if (store.persist === "do" || store.persist === "d1") {
-      const saved = await store.getMeta(CHAPTER_SEED_FLAG);
-      if (chapterSeedIsCurrent(saved, version)) {
-        seededStoreVersions.add(memoryKey);
-        return;
-      }
-    }
-    for (const seed of CHAPTER_POST_SEEDS) {
-      const post = await store.get(seed.slug);
-      if (!post) {
-        await store.save(toPostInput(seed));
-        continue;
-      }
-      if (seed.slug === "platetektonikk" && isShortPlatetektonikkBody(post.bodyMarkdown)) {
-        await store.save({
-          ...toPostInput(seed),
-          published: post.published ?? 1,
-        });
-      }
-    }
-    if (store.persist === "do" || store.persist === "d1") {
-      await restoreSavedPosters(store);
-      await store.setMeta(CHAPTER_SEED_FLAG, version);
-    }
-    seededStoreVersions.add(memoryKey);
+    await chapterSeedOnce(`${store.persist}:${version}`, () => runChapterSeeds(store, version));
   } catch (err) {
     console.error("[posts] chapter seed failed", err);
+  }
+}
+
+async function runChapterSeeds(store: Store, version: string): Promise<void> {
+  await publishPlatetektonikkCopy(store);
+  await reseedFlaggedCopies(store);
+  if (store.persist === "do" || store.persist === "d1") {
+    const saved = await store.getMeta(CHAPTER_SEED_FLAG);
+    if (chapterSeedIsCurrent(saved, version)) return;
+  }
+  for (const seed of CHAPTER_POST_SEEDS) {
+    const post = await store.get(seed.slug);
+    if (!post) {
+      await store.save(toPostInput(seed));
+      continue;
+    }
+    if (seed.slug === "platetektonikk" && isShortPlatetektonikkBody(post.bodyMarkdown)) {
+      await store.save({
+        ...toPostInput(seed),
+        published: post.published ?? 1,
+      });
+    }
+  }
+  if (store.persist === "do" || store.persist === "d1") {
+    await restoreSavedPosters(store);
+    await store.setMeta(CHAPTER_SEED_FLAG, version);
   }
 }
 
