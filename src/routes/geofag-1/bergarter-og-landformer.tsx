@@ -52,9 +52,9 @@ function BergarterOgLandformerBridgePage() {
               Bergarter og mineraler
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Mineralogi, silikatstrukturenes krystallkjemi, det geologiske kretsløpet,
-              Bowens reaksjonsserie, tynnsnitt under polarisasjonsmikroskopi (larvikitt,
-              rombeporfyr, gneis) og relativ/radiometrisk aldersdatering (U-Pb og ¹⁴C).
+              Mineraler, de tre bergartsgruppene og forvitring på stedet. Bergartssyklusen
+              brukes som modell, med norske håndstykker som larvikitt, rombeporfyr, fyllitt
+              og gneis.
             </p>
           </div>
           <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">

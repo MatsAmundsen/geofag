@@ -199,6 +199,26 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Eurokode 8, baseisolering og likvifaksjon",
   },
   {
+    match: /hva er et mineral/i,
+    label: "Mineraler",
+    subtitle: "Krystall, kvarts og silikatgrupper",
+  },
+  {
+    match: /^hva er en bergart/i,
+    label: "Bergart",
+    subtitle: "Ett eller flere mineraler, pluss løst sediment",
+  },
+  {
+    match: /håndstykke/i,
+    label: "Felt",
+    subtitle: "Lupe, Mohs, syre og struktur",
+  },
+  {
+    match: /hva er forvitring/i,
+    label: "Forvitring",
+    subtitle: "På stedet, mekanisk og kjemisk, før erosjon",
+  },
+  {
     match: /^mineraler/i,
     label: "Mineraler",
     subtitle: "Silikater, Mohs, kløv, strekfarge og syretest",
@@ -206,22 +226,22 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /geologiske kretsløpet|bergartssyklus/i,
     label: "Kretsløpet",
-    subtitle: "Magmatisk, sedimentær og metamorf resirkulering",
+    subtitle: "En modell med flere veier",
   },
   {
     match: /magmatiske/i,
     label: "Magmatiske",
-    subtitle: "Dyp-, gang- og dagbergart, Bowen, larvikitt",
+    subtitle: "Dypbergart og dagbergart, gabbro, larvikitt",
   },
   {
     match: /sedimentære/i,
     label: "Sedimentære",
-    subtitle: "Klastiske, kjemiske og biogene bergarter",
+    subtitle: "Sandstein, leirstein og kalkstein",
   },
   {
     match: /metamorfe/i,
     label: "Metamorfe",
-    subtitle: "Foliasjon og metamorfosefacies",
+    subtitle: "Fyllitt, gneis og grønnstein",
   },
   {
     match: /petrografi|tynnsnitt/i,
