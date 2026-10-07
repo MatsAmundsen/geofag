@@ -455,6 +455,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["Det ser vi nærmere på nedenfor", "Luft er en blanding av gasser"],
   },
   {
+    flag: "vindsystemet-copy-2026-10-07",
+    slug: "vindsystemet",
+    stale: ["Her kan du redigere", "Nøkkelbegreper til repetisjon"],
+  },
+  {
     flag: "vulkaner-copy-2026-10-06",
     slug: "vulkaner",
     stale: ["Henrys lov", "ventialsjonssystemet"],
