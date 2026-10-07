@@ -16,6 +16,8 @@ import {
   EarthLayersDiagram,
   EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
+  JordasBolgerDiagram,
+  PartikkelbolgerDiagram,
   HotspotPlumeDiagram,
   NorwayEarthquakesDiagram,
   NorwayTectonicsHistoryDiagram,
@@ -31,10 +33,23 @@ import {
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
   AtmosphericColumnDiagram,
+  FrontVerticalProfileDiagram,
+  GlobalClimateZonesDiagram,
+  HadleyCloseupDiagram,
   HighPressureCrossSectionDiagram,
+  InsolationDiagram,
   LowPressureCrossSectionDiagram,
-  PolarFrontCycloneSteps,
+  OneVsThreeCellsDiagram,
+  RadarSatelliteNowcastingDiagram,
+  RealisticSynopticChartDiagram,
+  PolarFrontNorwayDiagram,
   RelativePressureDiagram,
+  StationModelExplainedDiagram,
+  SurfaceWindsDiagram,
+  UpperAir500hPaMapDiagram,
+  WeatherProgression24hDiagram,
+  WindCellsDiagram,
+  PolarFrontCycloneSteps,
   SeaBreezeLandBreezeDiagram,
   ValleyWindDiagram,
 } from "@/components/diagrams";
@@ -66,6 +81,7 @@ import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
+import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
@@ -83,7 +99,8 @@ import {
   QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_SKRED,
   QUIZ_HOYTRYKK,
-  QUIZ_LOKALE,
+  QUIZ_VAERKART,
+  QUIZ_VINDSYSTEMET,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
@@ -92,6 +109,7 @@ import {
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
+  QUIZ_LOKALE,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -166,10 +184,106 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizHoytrykk: () => (
     <Quiz questions={QUIZ_HOYTRYKK} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  QuizLokale: () => (
+  QuizVindsystemet: () => (
+    <Quiz questions={QUIZ_VINDSYSTEMET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  InsolationDiagram: () => <InsolationDiagram />,
+  OneVsThreeCellsDiagram: () => <OneVsThreeCellsDiagram />,
+  WindCellsDiagram: () => <WindCellsDiagram />,
+  HadleyCloseupDiagram: () => <HadleyCloseupDiagram />,
+  SurfaceWindsDiagram: () => <SurfaceWindsDiagram />,
+  GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
+  PolarFrontNorwayDiagram: () => <PolarFrontNorwayDiagram />,
+  WindSystemModel: () => <WindSystemModel />,
+  VindBelterFoto: () => (
+    <PhotoFigure
+      src="/images/fig-belter-globus.jpg"
+      alt="Jorda fra bane med grønt ekvatorbelte, ørkenbelte, stormer mot Skandinavia og polaris"
+      heading="Klimabeltene sett fra rommet"
+      caption="Satellittbildet viser de samme ringene: grønt ved ekvator, tørt rundt 30°, stormbaner mot Norge, is mot polen."
+      marks={[
+        { x: 6, y: 48, n: "1", text: "Tropisk regnskog (konvergenssonen)", tone: "teal" },
+        { x: 4, y: 32, n: "2", text: "Ørkenbelte (nedsynking nær 30°)", tone: "warm" },
+        { x: 52, y: 22, n: "3", text: "Vestavindsbeltet og Norge", tone: "cold" },
+        { x: 58, y: 8, n: "4", text: "Polarcellen og isen", tone: "fg" },
+      ]}
+      points={[
+        { n: "1", label: "Ved ekvator stiger lufta. Det gir skyer og tropisk regnskog." },
+        { n: "2", label: "Nær 30° synker lufta. Skyene løses opp, og ørkenene ligger her." },
+        { n: "3", label: "Mellom om lag 50° og 60° treffer lavtrykkene fra polarfronten Vest-Europa." },
+        { n: "4", label: "Over polen synker kald luft, og det er lite fuktighet." },
+      ]}
+    />
+  ),
+  StralingsbalanseForklaring: () => (
+    <Callout title="Hva betyr «strålingsbalanse»?">
+      <p>
+        Strålingsbalanse er forskjellen mellom innkommende solstråling og utgående varmestråling.
+        Globalt, over et år, er netto om lag null. Regionalt er det overskudd i tropene og underskudd
+        mot polene. Den ubalansen setter atmosfæren og havet i bevegelse (NASA, u.å.).
+      </p>
+    </Callout>
+  ),
+  TermiskDirekteForklaring: () => (
+    <Callout title="Hva betyr «termisk direkte»?">
+      <p>
+        Termisk direkte vil si at varm luft stiger og kald luft synker. Slik er Hadley-cellen og
+        polarcellen. Ferrel-cellen er termisk indirekte: den drives av friksjon mellom de to andre,
+        ikke av varmekontrasten mellom ekvator og polene. Kjøligere luft tvinges opp nær 50–60°, og
+        varmere luft synker nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  SubsidensForklaring: () => (
+    <Callout title="Hva betyr «subsidens»?">
+      <p>
+        Subsidens er storskala nedsynking av luft. Når lufta synker, presses den sammen og varmes
+        opp. Den relative fuktigheten faller, skyene løses opp, og det blir tørre høytrykk. Det ser
+        vi nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  QuizVaerkart: () => (
+    <Quiz questions={QUIZ_VAERKART} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  SynopticChart: () => <RealisticSynopticChartDiagram />,
+  FrontProfile: () => <FrontVerticalProfileDiagram />,
+  StationModel: () => <StationModelExplainedDiagram />,
+  UpperAir500: () => <UpperAir500hPaMapDiagram />,
+  Weather24h: () => <WeatherProgression24hDiagram />,
+  RadarNowcast: () => <RadarSatelliteNowcastingDiagram />,
+  SynoptiskForklaring: () => (
+    <Callout title="Hva betyr «synoptisk»?">
+      <p>
+        Synoptisk betyr å se været under ett. Et synoptisk kart viser observasjoner fra samme
+        tidspunkt over et stort område, med isobarer og fronter. Tidspunktet oppgis i UTC (NOAA,
+        u.å.-e).
+      </p>
+    </Callout>
+  ),
+  IsobarForklaring: () => (
+    <Callout title="Hva betyr «isobar»?">
+      <p>
+        En isobar er en kurve gjennom steder med likt lufttrykk. På norske kart er det vanligvis 5
+        hPa mellom linjene. Trykket er redusert til havnivå, så et fjell og en kyst kan sammenlignes
+        (Store norske leksikon, u.å.-c).
+      </p>
+    </Callout>
+  ),
+  FrontForklaring: () => (
+    <Callout title="Hva betyr «front»?">
+      <p>
+        En front er skillet mellom to luftmasser med ulik tetthet, som oftest ulik temperatur. Den
+        varmere lufta løftes, og det kan bli skyer og nedbør. Neste ord du trenger, er okklusjon:
+        kaldfronten har tatt igjen varmfronten (Store norske leksikon, u.å.-a; NOAA, u.å.-b).
+      </p>
+    </Callout>
+  ),
+
+    QuizLokale: () => (
     <Quiz questions={QUIZ_LOKALE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  SolgangsbrisForklaring: () => (
+    SolgangsbrisForklaring: () => (
     <Callout title="Hva betyr «solgangsvind»?">
       <p>
         Solgangsvind er pålandsvind om dagen og fralandsvind om natten langs kysten. Dagvinden
@@ -179,10 +293,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
-  ValleyWind: () => <ValleyWindDiagram />,
-  PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
-  FonForklaring: () => (
+    SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
+    ValleyWind: () => <ValleyWindDiagram />,
+    PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
+    FonForklaring: () => (
     <Callout title="Hva betyr «føn»?">
       <p>
         Føn er en forholdsvis varm og tørr vind som slår ned i lavlandet etter å ha passert et
@@ -192,7 +306,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  InversjonForklaring: () => (
+    InversjonForklaring: () => (
     <Callout title="Hva betyr «inversjon»?">
       <p>
         En inversjon er et lag der temperaturen stiger med høyden. Vanligvis er det kaldere jo
@@ -201,6 +315,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
+
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
   LowPressureCrossSection: () => <LowPressureCrossSectionDiagram />,
@@ -218,7 +333,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
   ElasticRebound: () => <ElasticReboundDiagram />,
+  Partikkelbolger: () => <PartikkelbolgerDiagram />,
   EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,
+  JordasBolger: () => <JordasBolgerDiagram />,
   Seismogram: () => <SeismogramDiagram />,
   BoundaryQuakes: () => <BoundaryQuakesDiagram />,
   NorwayEarthquakes: () => <NorwayEarthquakesDiagram />,

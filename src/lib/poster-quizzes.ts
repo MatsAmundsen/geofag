@@ -736,6 +736,124 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_VAERKART: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr tette isobarer på et værkart?",
+    options: [
+      "At lufttrykket er lavt overalt.",
+      "Stor trykkforskjell over kort avstand, og sterk vind.",
+      "At kartet er tegnet med feil enhet.",
+    ],
+    answer: 1,
+    explain:
+      "Isobarene viser likt trykk. Når de ligger tett, endrer trykket seg mye over kort avstand, og vinden blir sterk.",
+  },
+  {
+    prompt: "Hvorfor reduseres lufttrykket til havnivå før det tegnes på kartet?",
+    options: [
+      "Slik at stasjoner i ulik høyde kan sammenlignes.",
+      "Fordi havet alltid har 1013 hPa.",
+      "Fordi fjellstasjoner ikke måler trykk.",
+    ],
+    answer: 0,
+    explain:
+      "Trykket faller med høyden. Reduksjon til havnivå gjør at et fjell og en kyst kan sammenlignes på samme kart.",
+  },
+  {
+    prompt: "Hva er en varmfront?",
+    options: [
+      "En front der lufta bak er varmere enn lufta foran, ofte med skyet vær og jevn nedbør.",
+      "En front som alltid har temperatur over 20 °C.",
+      "En blå strek med trekanter.",
+    ],
+    answer: 0,
+    explain:
+      "Varm og kald er relativt. En varmfront tegnes rød med halvsirkler, og den forbindes med skyet vær og jevn nedbør.",
+  },
+  {
+    prompt: "Hva skjer når kaldfronten tar igjen varmfronten?",
+    options: [
+      "Lavtrykket blir liggende uendret i flere uker.",
+      "Det dannes en okkludert front, og den varme lufta løftes bort fra sentrum.",
+      "Frontene bytter farge og blir en stasjonær front.",
+    ],
+    answer: 1,
+    explain:
+      "I den norske syklonmodellen går kaldfronten fortere. Når den tar igjen varmfronten, blir fronten okkludert, og lavtrykket svekkes etter hvert.",
+  },
+  {
+    prompt: "Hva brukes 500 hPa-kartet til?",
+    options: [
+      "Å vise bølgehøyden på havet.",
+      "Å vise høyden av flaten der trykket er 500 hPa, om lag midt i atmosfæren, og hvor lufta kan stige.",
+      "Å erstatte bakkekartet, fordi bakketrykket ikke betyr noe.",
+    ],
+    answer: 1,
+    explain:
+      "500 hPa-kartet er det viktigste høydekartet. Flaten ligger om lag 5 000 til 6 000 meter oppe. Foran sterk virvling kan lufta stige, og det kan bli nedbør.",
+  },
+];
+
+export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
+  {
+    prompt:
+      "Hvorfor er sirkulasjonen delt i tre celler på hver halvkule, og ikke én sløyfe fra ekvator til pol?",
+    options: [
+      "Fordi hav og land er ujevnt fordelt.",
+      "Fordi jorda roterer. Luft som går mot polen i høyden, blir vestavind og synker nær 30°.",
+      "Fordi tyngdekraften er mye svakere ved polene.",
+    ],
+    answer: 1,
+    explain:
+      "Hadley foreslo én celle i 1735. Rotasjonen gjør at den øvre strømmen blir vestavind, lufta synker nær 30°, og vi får tre celler (NOAA).",
+  },
+  {
+    prompt: "Hva kjennetegner den intertropiske konvergenssonen?",
+    options: [
+      "Høytrykk, klar himmel og stødige nordavinder.",
+      "Passatene møtes, lufta stiger, og det blir skyer og byger.",
+      "Kald luft som synker fra stratosfæren.",
+    ],
+    answer: 1,
+    explain:
+      "Konvergenssonen er lavtrykksbeltet der nordøstpassaten og sørøstpassaten møtes og fuktig luft tvinges opp.",
+  },
+  {
+    prompt: "Hvorfor ligger mange av de store ørkenene nær 30° bredde?",
+    options: [
+      "Luft som har steget ved ekvator, synker. Den varmes opp, og skyene løses opp.",
+      "Det finnes ingen fjell som kan stoppe vinden.",
+      "Havet koker og tørker ut landmassene.",
+    ],
+    answer: 0,
+    explain:
+      "Subsidens nær 30° gir høytrykk og tørke, blant annet i Nord-Afrika og Australia.",
+  },
+  {
+    prompt: "Hvorfor kalles Ferrel-cellen termisk indirekte?",
+    options: [
+      "Fordi den bare finnes om sommeren.",
+      "Fordi den drives av friksjon mellom de to andre cellene, ikke av varmekontrasten mellom ekvator og pol.",
+      "Fordi den frakter kulde fra ekvator mot polene.",
+    ],
+    answer: 1,
+    explain:
+      "NOAA beskriver vestavinden mellom 35° og 60° som drevet av friksjon, ikke av varmekontrasten mellom ekvator og polene.",
+  },
+  {
+    prompt:
+      "Hvorfor kan vestkysten av Norge få over 3000 mm nedbør i året, mens Ottadalen får ned mot 200 mm?",
+    options: [
+      "Vestkysten ligger i Hadley-cellen, og Ottadalen ligger i polarcellen.",
+      "Fuktig vestavind tvinges opp av fjellene og gir orografisk nedbør på luvsiden. På lesiden synker lufta, og Ottadalen ligger i regnskygge.",
+      "Det regner bare om natten på vestkysten.",
+    ],
+    answer: 1,
+    explain:
+      "SNL beskriver soner med stedvis over 3000 mm innenfor vestkysten, under 300 mm øst for Breheimen, og ned mot 200 mm i Ottadalen.",
+  },
+];
+
 export const QUIZ_ISBRE: QuizQuestion[] = [
   {
     prompt: "Hvorfor er morene usortert, mens breelvmateriale er sortert?",
