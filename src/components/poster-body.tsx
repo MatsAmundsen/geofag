@@ -88,6 +88,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_TILPASNING,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -364,6 +365,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  TilpasningForklaring: () => (
+    <Callout title="Hva betyr «klimatilpasning»?">
+      <p>
+        Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak
+        som hindrer eller reduserer skade, eller som utnytter mulighetene. Å redusere
+        klimaendringene er et annet svar (Miljødirektoratet, u.å.; Udir, u.å.-b).
+      </p>
+    </Callout>
+  ),
+  QuizTilpasning: () => (
+    <Quiz questions={QUIZ_TILPASNING} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

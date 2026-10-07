@@ -1,103 +1,63 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/tilpasning](/tema/tilpasning). Her kan du redigere **hele fagteksten**.
-
-> **Kompetansemål**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Drøfte konsekvenser av klimaendringer for enkeltmennesker, samfunn og økosystem, og vurdere bærekraftige løsninger for hvordan enkeltmennesker og samfunn kan redusere og tilpasse seg klimaendringer i nåtid og framtid (Utdanningsdirektoratet, 2020).
-
-## To verb i samme mål
-
-Målet har to verb som ikke er det samme. *Redusere* betyr å kutte pådrivet: mindre CO₂ og metan, slik at jorda holder igjen mindre langbølge. *Tilpasse* betyr å senke skaden av været som allerede kommer — og som vil komme mens kuttet virker.
-
-Kutt uten tilpasning etterlater folk i flomsonen i tiårene som allerede er «bestilt» av gassene i lufta. Tilpasning uten kutt gir et tiltak som må bygges om igjen når ekstremene vokser. En tekst som bare tar det ene, treffer halve målet.
-
-Fysikken bak pådrivet eier [klima](/tema/klima) . Fysikken bak ekstremene eier [værkatastrofer](/tema/vaerkatastrofer) . Denne siden eier det som skjer når fysikken treffer et hus, en kommune og et rev.
-
-**Tilpasning:** Å redusere skade av det været og klimaet som faktisk kommer. Varsling, plan, bygg, forsikring.
-
-**Utslippskutt:** Å redusere pådrivet. Virkningen er treg. Uten kutt vokser tilpasningsbehovet uten tak.
-
-## Tre nivåer — ellers er svaret halvt
-
-Kompetansemålet lister tre nivåer med vilje. Samme hetebølge er tre ulike historier.
-
-- **Enkeltmenneske:** helse, bolig, jobb. Eldre i en loftsetasje uten nattkjøling. En gårdbruker som mister avling. En familie i kjelleren når sluket går fullt.
-
-- **Samfunn:** vei, strøm, sykehus, vann og avløp, forsikring, kommunebudsjett. Når E6 stenges av skred, er det ikke bare «vær». Det er varer som ikke kommer fram.
-
-- **Økosystem:** korall som blekes, torsk som flytter nordover, myr som tørker og slipper karbon, fjellrev som presses oppover til det ikke er mer fjell.
-
-En eksamenstekst som bare beskriver personen i kjelleren, har ikke truffet økosystemet. En tekst som bare nevner korall, har ikke truffet kommunen. Tre nivåer er ikke pynt. Det er målet.
-
-## Fare, eksponering, sårbarhet
-
-Samme storm gir ulik skade. IPCC skiller mellom faren (hendelsen), eksponeringen (hvem og hva som står i veien) og sårbarheten (hvor hardt systemet rammes gitt evne til å tåle og komme seg) (IPCC, 2022). Risiko er produktet, ikke varslet alene.
-
-Derfor kan to kystbyer møte samme stormflo og få to utfall. Den ene har voll, varsling og evakueringsvei. Den andre har kjellerboliger i gammel sjøbunn og et sluknett bygd for 1980-tallets regn. Faren er lik. Sårbarheten er det ikke.
-
-**Sårbarhet:** Hvor hardt et system rammes, gitt eksponering og evne til å tåle. Ikke det samme som faren.
-
-## Norge: mer vann, mer skred, høyere sjø
-
-Norsk klimaservicesenter tegner et land som blir våtere og mildere, med flere korte, intense regnskyll. Det er ikke «det blir varmere, slutt». Det er hvor vannet lander, og hvor bakken allerede er mettet (Store norske leksikon, u.å.; IPCC, 2022).
-
-- **Oslo og andre byer:** overvann. Tette flater, gamle rør, kjellere. Styrtregn på en time kan fylle det sluknettet brukte et døgn på.
-
-- **Vestlandet:** flom i bratte felt. Kort vei fra sky til elv. Samme fysikk som i [Geofag 1 flom](/geofag-1/vann-og-flom) , men drivkraften her er et varmere, fuktigere vestavindsbelte.
-
-- **Nordland og fjellfylker:** våte skred og svekket permafrost i høyfjellet. Snøskred eier [kryosfæren](/tema/kryosfaeren) . Poenget her er samfunnet: vei, tunellmunning, hyttefelt.
-
-- **Kysten:** stormflo oppå et høyere middelvann. Vollen som holdt i 1990, er lavere i 2050 uten at noen har flyttet den.
-
-Mildere vintre er ikke gratis. Mindre frost kan gi mer flått og mer råte i trehus. Mer vinternedbør som regn i stedet for snø gir flom når bakken ikke er frossen. Konsekvens er mer enn «det blir ubehagelig varmt i juli».
-
-## Globalt: mat, rev, lavt land
-
-Tre nivåer gjelder også utenfor Norge. En tørke i Sahel er person (sult), samfunn (flytting, stat) og økosystem (beite som ikke kommer tilbake). Korallbleking er økosystem først, men fiskeri og turisme gjør den til samfunn. Små øystater møter stormflo som eksistensiell fare, ikke som kommunal overvannssak.
-
-Fordelingen er skjev. De som har sluppet ut minst, rammes ofte hardest, og har minst kapital til å bygge voll eller flytte by. En drøfting som later som tilpasning bare er teknikk, hopper over det målet kaller «bærekraftige løsninger».
-
-## Maltilpasning: tiltaket som flytter skaden
-
-Et tiltak kan senke risikoen her og øke den der — eller senere. Voll bakom et nytt boligfelt gir falsk trygghet: folk bygger tettere, og når vollen overtoppes, er skaden større. Aircondition uten kuttet strøm øker pådrivet mens den redder liv i heten. Å pumpe grunnvann i tørke senker speilet til naboen.
-
-Det heter maltilpasning. Det er ikke argument mot å gjøre noe. Det er argument for å si hvem som vinner, hvem som taper, og hva som skjer om 30 år.
-
-**Maltilpasning:** Tiltak som øker risikoen senere, flytter den til andre, eller låser samfunnet til en løsning som ikke tåler neste steg.
-
-## Mal for en drøfting
-
-1. Velg ett fenomen (for eksempel styrtregn over en by, eller stormflo på kysten).
-
-2. Si fysikken i én setning (varmere luft holder mer vanndamp; høyere middelvann løfter floen).
-
-3. Konsekvens på tre nivåer: person, kommune, økosystem.
-
-4. Ett tiltak som kutter pådriv, ett som tilpasser. Si hvem som betaler.
-
-5. En begrensning: maltilpasning, treghet, eller at kuttet virker for sent alene.
-
-> **Til eksamen**
+> Målet er at du skal kunne drøfte konsekvenser av klimaendringer for enkeltmennesker, samfunn og økosystem, og vurdere bærekraftige løsninger for hvordan enkeltmennesker og samfunn kan redusere og tilpasse seg klimaendringer i nåtid og framtid (Udir, u.å.-b).
 >
-> «Vi må tilpasse oss» er ikke et svar. Si *hva*, *for hvem*, og *hva som gjenstår hvis ingen kutter*. Tre nivåer. To verb.
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Mennesket i jordsystemene:* Kjerneelementet handler om hvordan vi utnytter naturressursene og endrer jordsystemene, og hvordan vi kan forebygge og beskytte oss mot klimaendringer og naturfarer (Udir, u.å.-a).
+>
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om hvordan delsystemene vekselvirker, på ulike tidsskalaer (Udir, u.å.-a). Konsekvensene treffer folk, samfunn og økosystem der de bor.
+
+## To svar
+
+```widget
+TilpasningForklaring
+```
+
+[Konsekvenser og tilpasning](/tema/tilpasning) handler om hva klimaendringer gjør med enkeltmennesker, samfunn og økosystem, og om to ulike svar. Målet ber deg vurdere bærekraftige løsninger for hvordan enkeltmennesker og samfunn kan redusere klimaendringene, og hvordan de kan tilpasse seg dem (Udir, u.å.-b).
+
+Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak. På den ene siden skal tiltakene hindre eller redusere skade. På den andre siden kan de utnytte muligheter som endringene kan innebære. Norge har et nasjonalt mål om at samfunnet og økosystemene skal forberedes på og tilpasses klimaendringene (Miljødirektoratet, u.å.).
+
+| Svar | Hva det gjelder |
+| --- | --- |
+| Redusere | Bærekraftige løsninger for å redusere klimaendringene, for enkeltmennesker og samfunn |
+| Tilpasse | Forstå konsekvensene, hindre eller redusere skade, og bruke mulighetene endringene kan gi |
+| Hvem som rammes | Enkeltmennesker, samfunn og økosystem, både globalt og regionalt |
+
+FNs klimapanels arbeidsgruppe II vurderer konsekvensene av klimaendringer for økosystem, biologisk mangfold og menneskesamfunn, globalt og regionalt. Den gjennomgår også sårbarhet, og hvor langt naturen og samfunn kan tilpasse seg, og hvor grensene går (IPCC, 2022).
+
+## Klimaet konsekvensene treffer i Norge
+
+Fastlands-Norge er mildere enn breddegraden skulle tilsi, fordi havstrømmer og vind frakter varme hit. Polarklima finnes i fjellet, langs kysten av Finnmark og på Svalbard. Hele kysten fra Oslofjorden til Troms har varmtemperert klima med milde vintre, Köppens C. Innlandet har kaldtemperert klima, Köppens D, med snødekke hvert år og barskog som naturlig vegetasjon (Store norske leksikon, u.å.).
+
+Dype fjorder, daler og høye fjell gir store kontraster. Fjellene skjermer, så særlig Østlandet og Finnmarksvidda får et mer kontinentalt preg enn avstanden til kysten skulle tilsi. Fjellene styrer også nedbøren. Variasjonen fra år til år er ganske stor, særlig i nord, som ligger i utkanten av den tempererte sonen. Noen vintre er milde og vestlige. Andre domineres av kalde luftmasser fra øst (Store norske leksikon, u.å.).
+
+Det er dette klimaet folk, byer og økosystem allerede lever i. Tilpasning er tiltak i det landskapet. Å redusere klimaendringene er et annet svar, og målet ber om begge (Udir, u.å.-b; Miljødirektoratet, u.å.).
 
 > **Vanlige misforståelser**
 >
-> Tilpasning erstatter ikke kutt. Kuttet senker taket på skaden. Tilpasning senker skaden under taket.
+> Tilpasning er ikke det samme som å redusere klimaendringene. Målet ber om begge deler (Udir, u.å.-b).
 >
-> Ett varmt år er ikke hele konsekvensen. Risiko leses i trenden og i hvem som står i veien.
+> Klimatilpasning er ikke bare å hindre skade. Den kan også utnytte muligheter som endringene kan innebære (Miljødirektoratet, u.å.).
 >
-> En voll er et tiltak. Den er ikke bærekraft alene.
+> Kysten fra Oslofjorden til Troms har ikke polarklima. Polarklima ligger i fjellet, langs kysten av Finnmark og på Svalbard (Store norske leksikon, u.å.).
 
 ## Viktige begreper
 
-**Tilpasning:** Redusere skade av klimaet som kommer. Varsling, plan, bygg.
+**Konsekvens:** Det klimaendringer gjør med enkeltmennesker, samfunn og økosystem.
 
-**Utslippskutt:** Redusere pådrivet. Virkningen er treg, men uten tak på skaden.
+**Klimatilpasning:** Å forstå konsekvensene og sette inn tiltak som hindrer eller reduserer skade, eller som bruker mulighetene.
 
-**Sårbarhet:** Hvor hardt et system rammes, gitt eksponering og evne til å tåle.
+**Redusere:** Løsninger som gjør klimaendringene mindre. Det er et annet svar enn å tilpasse seg.
 
-**Eksponering:** Hvem og hva som står i veien for faren.
+**Sårbarhet:** Hvor utsatt natur og samfunn er, og hvor langt de kan tilpasse seg.
 
-**Maltilpasning:** Tiltak som øker risikoen senere eller flytter den til andre.
+**Varmtemperert kyst:** Köppens C, med milde vintre, fra Oslofjorden til Troms.
 
-**Overvann:** Regn som ikke får plass i sluk og grunn. Byens flom.
+**Kaldtemperert innland:** Köppens D, med snødekke hvert år og barskog.
+
+## Test deg selv
+
+```widget
+QuizTilpasning
+```

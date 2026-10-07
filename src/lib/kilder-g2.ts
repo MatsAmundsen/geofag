@@ -182,10 +182,10 @@ export const KILDER_G2 = {
   ],
   tilpasning: [
     {
-      prefix: "Norsk klimaservicesenter [NCCS]. (u.å.). ",
-      italic: "Klima i Norge og fylkesvise klimaprofiler",
+      prefix: "Miljødirektoratet. (u.å.). ",
+      italic: "Klimatilpasning",
       suffix: ".",
-      href: "https://klimaservicesenter.no/",
+      href: "https://www.miljodirektoratet.no/klimatilpasning/",
     },
     {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2022). ",
@@ -201,10 +201,16 @@ export const KILDER_G2 = {
       href: "https://snl.no/Klima_i_Norge",
     },
     {
-      prefix: "Utdanningsdirektoratet. (2020). ",
-      italic: "Læreplan i geofag (GFG01-03)",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
-      href: "https://www.udir.no/lk20/gfg01-03",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
 } as const satisfies Record<string, readonly Kilde[]>;
