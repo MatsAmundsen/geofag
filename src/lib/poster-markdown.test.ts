@@ -157,7 +157,16 @@ describe("injectPosterWidgets", () => {
     for (const id of ["RockCycle", "RockPetrologyModel", "QuizBergarter"]) {
       assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
     }
+    const vann = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/vann-og-flom.md"), "utf8")),
+    );
+    for (const id of ["Kretslop", "AkviferForklaring", "Hydrograph", "QuizVannOgFlom"]) {
+      assert.equal(vann.has(id), true, `vann-og-flom missing ${id}`);
+    }
+    assert.equal(bergarter.has("QuizVannOgFlom"), false);
+    assert.equal(vann.has("QuizBergarter"), false);
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVulkaner"));
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVannOgFlom"));
   });
 });
 

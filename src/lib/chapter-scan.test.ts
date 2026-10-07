@@ -215,6 +215,14 @@ describe("scan chips for the other geosfære chapters", () => {
     );
   });
 
+  it("labels Vann og flom with short topic chips", () => {
+    const doc = prepareChapterScan(readChapter("vann-og-flom"));
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      ["Kretsløp", "Akvifer", "Hydrogram", "Flom", "Hans", "Begreper", "Quiz"],
+    );
+  });
+
   it("labels Bergarter with short topic chips", () => {
     const doc = prepareChapterScan(readChapter("bergarter"));
     assert.deepEqual(

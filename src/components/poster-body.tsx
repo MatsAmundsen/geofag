@@ -38,6 +38,7 @@ import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
+import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
 import { Callout } from "@/components/callout";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
@@ -61,6 +62,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
 
@@ -159,6 +161,21 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
   QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  Kretslop: () => <KretslopDiagram />,
+  Hydrograph: () => <HydrographDiagram />,
+  AkviferForklaring: () => (
+    <Callout title="Hva betyr «akvifer»?">
+      <p>
+        En akvifer er berg eller løsmasse som kan lagre grunnvann og slippe det fra seg, for
+        eksempel sand, grus eller oppsprukket fjell. Tenk på en svamp. Den holder på vann, og
+        slipper det når du presser. Vannet ligger ikke i underjordiske elver. Det fyller porer i
+        sand og grus, eller sprekker i fjell.
+      </p>
+    </Callout>
+  ),
+  QuizVannOgFlom: () => (
+    <Quiz questions={QUIZ_VANN_OG_FLOM} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */

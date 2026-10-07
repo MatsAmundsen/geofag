@@ -204,6 +204,31 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Superposisjon, krysskjæring og isotopur",
   },
   {
+    match: /hydrologiske kretsløpet/i,
+    label: "Kretsløp",
+    subtitle: "Fordampning, nedbør, infiltrasjon og grunnvann",
+  },
+  {
+    match: /akvifer/i,
+    label: "Akvifer",
+    subtitle: "Porer, sprekker og grunnvann som lagres",
+  },
+  {
+    match: /hydrogram/i,
+    label: "Hydrogram",
+    subtitle: "Vannføring mot tid",
+  },
+  {
+    match: /^hva er en flom/i,
+    label: "Flom",
+    subtitle: "Regn, snøsmelting og varsel",
+  },
+  {
+    match: /hva viste hans/i,
+    label: "Hans",
+    subtitle: "Nedbørrekorder i august 2023",
+  },
+  {
     match: /fagvokabular|begrep/i,
     label: "Begreper",
     subtitle: "Kjernebegrepene du skal kunne forklare",
