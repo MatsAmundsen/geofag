@@ -129,6 +129,7 @@ import {
   QUIZ_IOD,
   QUIZ_NAO,
   QUIZ_AMOC,
+  QUIZ_KRYO,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -527,6 +528,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizAmoc: () => <Quiz questions={QUIZ_AMOC} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    KryoForklaring: () => (
+    <Callout title="Hva betyr «kryosfæren»?">
+      <p>
+        Kryosfæren er den frosne delen av jordoverflaten: breer, havis, snødekke og permafrost.
+        Permafrost er bakke som i to sammenhengende år ikke blir varmere enn 0 °C (Store norske
+        leksikon, u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizKryo: () => <Quiz questions={QUIZ_KRYO} heading={null} intro="Velg ett svar per spørsmål." />,
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,

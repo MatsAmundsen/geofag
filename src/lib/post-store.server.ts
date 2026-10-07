@@ -608,6 +608,17 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "amoc",
     stale: ["## Ferskvann kan bremse beltet"],
   }
+,
+  {
+    flag: "kryosfaeren-copy-2026-10-07",
+    slug: "kryosfaeren",
+    stale: ["Her kan du redigere", "alle breer dør i år"],
+  },
+  {
+    flag: "kryosfaeren-copy-2-2026-10-07",
+    slug: "kryosfaeren",
+    stale: ["Her er isen som måles i år."],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {
