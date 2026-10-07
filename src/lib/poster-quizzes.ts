@@ -1,5 +1,60 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_NAO: QuizQuestion[] = [
+  {
+    prompt: "Hva sammenligner NAO?",
+    options: [
+      "Lavtrykket nær Island og høytrykket nær Asorene.",
+      "Havtemperaturen vest og øst i Indiahavet.",
+      "Passatvinden i Stillehavet.",
+    ],
+    answer: 0,
+    explain: "Se «Hva er NAO?». Indeksen beskriver de to trykkmønstrene over Nord-Atlanteren.",
+  },
+  {
+    prompt: "Hva er en positiv fase?",
+    options: [
+      "Både lavtrykket og høytrykket er sterkere enn gjennomsnittet.",
+      "Begge er svakere enn gjennomsnittet.",
+      "Bare høytrykket finnes.",
+    ],
+    answer: 0,
+    explain: "Se tabellen. Positiv fase er sterk trykkforskjell.",
+  },
+  {
+    prompt: "Hva merker Nord-Europa i positiv fase?",
+    options: [
+      "Mer storm, mer nedbør og varmere enn gjennomsnittet.",
+      "Mindre storm og kaldere enn gjennomsnittet.",
+      "Ingen endring i været.",
+    ],
+    answer: 0,
+    explain:
+      "Se tabellen. Sterkere jetstrøm og stormbane lenger nord gir mer storm og varme i Nord-Europa.",
+  },
+  {
+    prompt: "Hva merker Sør-Europa i negativ fase?",
+    options: [
+      "Mer storm, mer nedbør og varmere enn gjennomsnittet.",
+      "Mindre nedbør enn gjennomsnittet.",
+      "Det samme som Nord-Europa i positiv fase.",
+    ],
+    answer: 0,
+    explain: "Se tabellen. Negativ fase gir mer storm og varme i Sør-Europa.",
+  },
+  {
+    prompt: "Er positiv NAO det samme som oppvarmingstrenden?",
+    options: [
+      "Nei. Det er en sterk trykkforskjell mellom Island og Asorene.",
+      "Ja. Positiv NAO er drivhuseffekten.",
+      "Ja. Negativ NAO er drivhuseffekten.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Vanlige misforståelser». Positiv NAO er en fase i trykkmønsteret, ikke oppvarmingstrenden.",
+  },
+];
+
 export const QUIZ_IOD: QuizQuestion[] = [
   {
     prompt: "Hva er den indiske hav-dipolen?",

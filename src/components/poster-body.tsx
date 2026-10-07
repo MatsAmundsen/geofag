@@ -127,6 +127,7 @@ import {
   QUIZ_OVERSIKT,
   QUIZ_ENSO,
   QUIZ_IOD,
+  QUIZ_NAO,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -502,6 +503,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    NaoForklaring: () => (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Den beskriver styrken på lavtrykket nær Island og
+        høytrykket nær Asorene. Stor trykkforskjell er positiv fase. Liten forskjell er negativ fase
+        (NOAA, u.å.).
+      </p>
+    </Callout>
+  ),
+    QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
