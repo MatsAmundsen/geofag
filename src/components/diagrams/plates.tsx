@@ -749,11 +749,14 @@ export function SolidusDiagram() {
             fill="#ea580c"
             opacity="0.12"
           />
-          <L x="730" y="140" fill="#f97316" size={15} weight={800}>
+          <L x="700" y="118" fill="#f97316" size={15} weight={800}>
             DELVIS SMELTE
           </L>
-          <L x="730" y="160" fill="#fed7aa" size={11.5}>
-            (Magma oppstår her: basaltisk smelte)
+          <L x="700" y="136" fill="#fed7aa" size={11.5}>
+            (Magma oppstår her:
+          </L>
+          <L x="700" y="151" fill="#fed7aa" size={11.5}>
+            basaltisk smelte)
           </L>
 
           {/* FAST FELT (venstre for solidus) */}
