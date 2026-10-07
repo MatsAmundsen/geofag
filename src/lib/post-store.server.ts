@@ -474,6 +474,31 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "vann-og-flom",
     stale: ["Her kan du redigere", "Sandsekker når elva stiger"],
   },
+  {
+    flag: "bergarter-copy-2026-10-07",
+    slug: "bergarter",
+    stale: ["Her kan du redigere", "Bowens reaksjonsserie"],
+  },
+  {
+    flag: "jordskjelv-copy-2026-10-07",
+    slug: "jordskjelv",
+    stale: ["Her kan du redigere", "Greens lov", "Harry Fielding"],
+  },
+  {
+    flag: "jordsystemene-copy-2026-10-07",
+    slug: "jordsystemene",
+    stale: ["Fem sfærer, to spor", "Her kan du redigere"],
+  },
+  {
+    flag: "jordsystemene-copy-2-2026-10-07",
+    slug: "jordsystemene",
+    stale: ["omtrent et livsløp"],
+  },
+  {
+    flag: "jordsystemene-copy-3-2026-10-07",
+    slug: "jordsystemene",
+    stale: ["Hva er forvitring?", "AkviferForklaring", "IsostasiForklaring"],
+  },
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

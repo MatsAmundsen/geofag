@@ -3,6 +3,12 @@ import {
   BoundaryOverviewDiagram,
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
+  IcelandContrastDiagram,
+  JanMayenDiagram,
+  MagmaViscosityDiagram,
+  VeiScaleDiagram,
+  VolcanicWinterDiagram,
+  VolcanoMonitoringDiagram,
   CollisionDiagram,
   ContinentalRiftDiagram,
   ConvectionDiagram,
@@ -42,9 +48,12 @@ import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrol
 import { Callout } from "@/components/callout";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
+import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
+import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
 import {
@@ -59,6 +68,7 @@ import {
   QUIZ_BOUNDARIES,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
+  QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
@@ -122,7 +132,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_TEST_DEG_SELV} heading={null} intro={PLATE_QUIZ_INTRO} />
   ),
   VolcanoTypes: () => <VolcanoTypesDiagram />,
+  MagmaViscosity: () => <MagmaViscosityDiagram />,
   CalderaFormation: () => <CalderaFormationDiagram />,
+  IcelandContrast: () => <IcelandContrastDiagram />,
+  VeiScale: () => <VeiScaleDiagram />,
+  VolcanoMonitoring: () => <VolcanoMonitoringDiagram />,
+  VolcanicWinter: () => <VolcanicWinterDiagram />,
+  JanMayen: () => <JanMayenDiagram />,
   VolcanoEruptionAnatomy: () => <VolcanoEruptionAnatomyDiagram />,
   VolcanicHazards: () => <VolcanicHazardsDiagram />,
   VolcanoModel: () => <VolcanoModel showSeismicModes={false} />,
@@ -153,14 +169,53 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   Seismogram: () => <SeismogramDiagram />,
   BoundaryQuakes: () => <BoundaryQuakesDiagram />,
   NorwayEarthquakes: () => <NorwayEarthquakesDiagram />,
-  QuizJordskjelv: () => <Quiz questions={QUIZ_JORDSKJELV} />,
+  HyposenterForklaring: () => (
+    <Callout title="Hva betyr «hyposenter»?">
+      <p>
+        Hyposenteret (hypocenter), også kalt fokus, er stedet i dypet der bruddet starter. Episenteret
+        (epicenter) er punktet på overflaten rett over. Neste ord du trenger, er seismisk bølge: det
+        er energien som sprer seg ut fra hyposenteret og rister bakken.
+      </p>
+    </Callout>
+  ),
+  IntraplateForklaring: () => (
+    <Callout title="Hva betyr «intraplate»?">
+      <p>
+        Intraplate betyr inne på en plate, ikke ved en aktiv plategrense. Norge ligger inne på Den
+        eurasiske platen. Skjelvene her kalles intraplate-jordskjelv. Neste ord du trenger, er
+        forkastning: et gammelt brudd som kan gli på nytt når spenningen blir stor nok.
+      </p>
+    </Callout>
+  ),
+  QuizJordskjelv: () => (
+    <Quiz questions={QUIZ_JORDSKJELV} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   SilicateStructure: () => <SilicateStructureDiagram />,
   RockCycle: () => <RockCycleDiagram />,
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
-  QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  ForvitringForklaring: () => (
+    <Callout title="Hva betyr «forvitring»?">
+      <p>
+        Forvitring er nedbrytning av berg på stedet. Berget flyttes ikke. Det kan skje mekanisk,
+        uten at mineralenes kjemi endres, eller kjemisk, når mineralene løses. Neste skille er
+        erosjon: nedsliting pluss transport.
+      </p>
+    </Callout>
+  ),
+  ForvitringFoto: () => (
+    <PhotoFigure
+      src="/images/fig-forvitring.jpg"
+      alt="Oppsprukket bergvegg med is i sprekken og løse fragmenter som fortsatt ligger ved blotningen"
+      heading="Forvitring på stedet"
+      caption="Vann i sprekken kan fryse og kile fjellet. Fragmentene ligger fortsatt ved blotningen. Først når vann, is eller tyngdekraft flytter dem, er det erosjon."
+    />
+  ),
+  QuizBergarter: () => (
+    <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   Kretslop: () => <KretslopDiagram />,
   Hydrograph: () => <HydrographDiagram />,
   AkviferForklaring: () => (
@@ -175,6 +230,50 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizVannOgFlom: () => (
     <Quiz questions={QUIZ_VANN_OG_FLOM} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  SpheresDiagram: () => <SpheresDiagram />,
+  CarbonCycleDiagram: () => <CarbonCycleDiagram />,
+  EarthSystemsModel: () => <EarthSystemsModel />,
+  FjordFoto: () => (
+    <PhotoFigure
+      src="/images/fig-vestlandet.jpg"
+      alt="Vestlandsk fjordlandskap med dype U-daler og bratte fjellsider formet av isbreer"
+      heading="Dal og fjord gravd av is"
+      caption="Breisen grov ut dype daler og fjorder. Fjorden er dalen som havet fylte etter at isen smeltet."
+      marks={[
+        { x: 32, y: 45, n: "1", text: "Bratt dalside", tone: "cold" },
+        { x: 74, y: 38, n: "2", text: "Hengende sidedal", tone: "warm" },
+        { x: 50, y: 72, n: "3", text: "Fjord", tone: "teal" },
+      ]}
+      points={[
+        {
+          n: "1",
+          label:
+            "Innlandsisen fylte dalen og eroderte både i bunnen og langs sidene. Profilet ble en U-dal.",
+        },
+        {
+          n: "2",
+          label:
+            "En mindre sidebre eroderte svakere enn hovedbreen, så sidedalen kan munne høyt oppe i fjellsiden.",
+        },
+        {
+          n: "3",
+          label: "Fjorden er den iseroderte dalen, fylt av hav etter at isen trakk seg tilbake.",
+        },
+      ]}
+    />
+  ),
+  VekselvirkningForklaring: () => (
+    <Callout title="Hva betyr «vekselvirkning»?">
+      <p>
+        En vekselvirkning er en endring i ett delsystem som utløser respons i ett eller flere
+        andre. Elva som graver en dal, er hydrosfære som endrer geosfæren. Breen som sliper berget,
+        er kryosfære som svarer. Neste ord du trenger, er tidsskala: hvor lang tid responsen tar.
+      </p>
+    </Callout>
+  ),
+  QuizJordsystemene: () => (
+    <Quiz questions={QUIZ_JORDSYSTEMENE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

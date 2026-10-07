@@ -275,158 +275,117 @@ export const QUIZ_VULKANER: QuizQuestion[] = [
 
 export const QUIZ_JORDSKJELV: QuizQuestion[] = [
   {
-    prompt:
-      "Hva var Richard Dixon Oldhams (1906) avgjørende bevis for at jordens ytre kjerne er flytende?",
+    prompt: "Hva viser det at S-bølger ikke kommer fram på den andre siden av jorda?",
     options: [
-      "P-bølger reflekteres ikke fra jordens overflate.",
-      "S-bølger (transversale skjærbølger) mangler fullstendig på seismiske målestasjoner i vinkelavstanden mellom 103° og 180° fra episenteret.",
-      "Borehull i Russland nådde flytende magma på 12 kilometers dyp.",
-      "Rayleigh-bølger forplanter seg raskere gjennom havet enn gjennom kontinenter.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! S-bølger er transversale skjærbølger med hastighet Vs = √(μ/ρ). Fordi væsker mangler skjærstivhet (μ = 0), kan ikke S-bølger eksistere eller forplante seg i en væske. Oldhams påvisning av S-bølgenes skyggesone mellom 103° og 180° beviste ugjendrivelig at jordens kjerne har et flytende ytre lag.",
-  },
-  {
-    prompt:
-      "Dersom et jordskjelv øker fra magnitude 5,0 til magnitude 7,0 på momentmagnitudeskalaen (Mw), hvor mange ganger mer seismisk energi frigjøres?",
-    options: [
-      "2 ganger mer energi.",
-      "20 ganger mer energi.",
-      "Omtrent 100 ganger mer energi.",
-      "Nøyaktig 1000 ganger mer energi (31,6² ≈ 1000).",
-    ],
-    answer: 3,
-    explain:
-      "Riktig! Magnitudeskalaen er logaritmisk med grunntall 10^(1,5) for energi. Én enhet opp tilsvarer ca. 31,6 ganger mer frigjort seismisk energi. To enheter opp tilsvarer 10^(1,5 × 2) = 10³ = 1000 ganger mer energi!",
-  },
-  {
-    prompt:
-      "Hva skjer fysisk med en tsunami når den forplanter seg fra dyphavet (4000 m) og inn mot kysten (10 m dyp)?",
-    options: [
-      "Bølgens hastighet øker kraftig, mens bølgehøyden avtar til null.",
-      "Bølgehastigheten synker dramatisk fra ~700 km/t til ~36 km/t, bølgelengden komprimeres, og bølgehøyden presses opp etter Greens lov (shoaling).",
-      "Bølgen forvandles fra en tverrbølge til en lengdebølge.",
-      "Ingenting endrer seg; tsunamier har konstant hastighet og høyde overalt.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Fordi v = √(g·d), fører det grunnere vannet til at bølgefronten bremses kraftig opp. For at den totale energifluksen skal bevares, må bølgelengden krympe og vannsøylen heve seg oppover i en massiv vannvegg (shoaling).",
-  },
-  {
-    prompt:
-      "Hva er de to viktigste geofysiske drivkreftene bak jordskjelv i Norge, til tross for at landet er et intraplate-område?",
-    options: [
-      "Subduksjon av Nordsjøen under Vestlandet og vulkanisme i Oslofeltet.",
-      "Ryggskyv (ridge push) fra Den midtatlantiske ryggen i vest og postglasial landheving (isostasi) etter istiden.",
-      "Tidevannskrefter fra månen og sentrifugalkraft fra jordrotasjonen.",
-      "Oljeboring i Nordsjøen og smelting av permafrost i Finnmark.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Norge utsettes for kompresjonsspenninger rettet mot øst-sørøst på grunn av ryggskyv (ridge push) fra den ekspanderende Midtatlantiske ryggen, kombinert med differensiell heving (opptil 8–9 mm/år) etter at den 3 km tykke iskappen smeltet. Dette reaktiverer gamle forkastningssoner.",
-  },
-  {
-    prompt:
-      "Hva er den fundamentale forskjellen på opprinnelsen til tsunamier i Stillehavet sammenlignet med historiske tsunamier i Norge?",
-    options: [
-      "I Stillehavet skyldes tsunamier store megathrust-jordskjelv ved subduksjonssoner; i Norge skyldes de nesten utelukkende skred i fjorder eller på sokkelskråningen (f.eks. Tafjord og Storegga).",
-      "Norske tsunamier skapes av tropiske orkaner i Nordsjøen.",
-      "Stillehavstsunamier er forårsaket av tidevann, mens norske tsunamier er forårsaket av Beerenberg på Jan Mayen.",
-      "Det er ingen forskjell; begge typer dannes ved at litosfæreplater kolliderer langs kystlinjen.",
+      "At den ytre kjernen er flytende, så skjærbølger stopper.",
+      "At S-bølger bare finnes i atmosfæren.",
+      "At jordskorpa er for tykk til at bølgene når fram.",
     ],
     answer: 0,
     explain:
-      "Riktig! Norge har ingen aktive subduksjonssoner som kan heve havbunnen over store områder. Norske tsunamier oppstår når store stein- og sedimentvolumer raser ned i vannmassene — enten som fjellskred i trange vestlandsfjorder (Tafjord 1934, Loen, Åknes) eller som massive undervannsskred på kontinentalskråningen (Storeggaskredet for 8150 år siden).",
+      "Se «P-bølger og S-bølger». S-bølger går bare gjennom fast stoff. De stopper i den flytende ytre kjernen, og det er derfor det blir en skyggesone.",
   },
   {
-    prompt: "Hva er seismisk baseisolering, og hva er prinsippet bak (Eurokode 8)?",
+    prompt: "Hvorfor har Norge jordskjelv når landet ikke ligger på en plategrense?",
     options: [
-      "Bygningen boltes fast til fjellet med gigantiske stålstag for å hindre all bevegelse.",
-      "Bygningen monteres på fleksible elastomere gummilagre eller glidependler, slik at bakken kan ryste under bygget mens selve strukturen forblir tilnærmet i ro.",
-      "Bygningen kles med blyplater for å stoppe seismisk stråling.",
-      "Fundamentet fylles med vann for å absorbere P-bølger.",
+      "Fordi Oslofeltet fortsatt er en aktiv rift.",
+      "Fordi gamle forkastninger kan gli på nytt når spredning og landheving bygger spenning.",
+      "Fordi alle skjelv i Norge kommer fra subduksjon under Vestlandet.",
     ],
     answer: 1,
     explain:
-      "Riktig! Baseisolering frikopler bygningens overbygning fra bakkeakselerasjonene ved hjelp av fleksible bly-gummi-lagre. Dette reduserer horisontale skjærkrefter på bygningskroppen med opptil 70–80 %.",
+      "Se «Hvorfor skjelver Norge?». Norge ligger inne på Den eurasiske platen. Spenning fra havbunnsspredning og fra landheving etter siste istid kan reaktivere gamle brudd.",
   },
   {
-    prompt: "Hva er forskjellen på seismisk fare og seismisk risiko?",
+    prompt: "Hva er forskjellen på en tsunami fra et undersjøisk skjelv og de historiske flodbølgene i Norge?",
     options: [
-      "Det er det samme begrepet; bare ulikt norsk og engelsk uttrykk.",
-      "Seismisk fare er den fysiske sannsynligheten for jordskjelv i et område, mens seismisk risiko kombinerer fare med sårbarhet og eksponering av befolkning og bebyggelse.",
-      "Seismisk risiko gjelder bare tsunamier, mens seismisk fare gjelder jordskjelv på land.",
-      "Seismisk fare måles i magnitude, mens seismisk risiko måles i intensitet.",
+      "Begge kommer av at to plater kolliderer utenfor norskekysten.",
+      "Et undersjøisk skjelv kan flytte havbunnen. Storegga og Tafjord var skred som traff vann.",
+      "Norske flodbølger kommer bare fra vind, aldri fra masse som treffer vann.",
     ],
     answer: 1,
     explain:
-      "Riktig! Et kraftig skjelv i øde fjellandskap er høy fare, men lav risiko fordi ingen er eksponert. Et svakt skjelv under en tett befolket by med gammel bygningsstock er lav fare, men potensielt høy risiko på grunn av sårbar infrastruktur og stor eksponering.",
+      "Se «Tsunami: skjelv eller skred?». Store undersjøiske skjelv kan lage tsunami. Storegga og Tafjord var skred, ikke en plategrense som røyk.",
   },
   {
-    prompt:
-      "Hvorfor er den seismiske Wadati-Benioff-sonen et bevis på at en kald havbunnsplate subdueres nedover i mantelen?",
+    prompt: "Hvorfor kan et skjelv som Oslofjordskjelvet i 1904 gjøre mer skade i dag?",
     options: [
-      "Fordi jordskjelv i sonen oppstår fordi magmaen smelter og eksploderer.",
-      "Fordi den kalde, stive havbunnsplaten er sprø ned til 700 km dyp og kan lagre og frigjøre elastisk spenning langs et skrått plan av fokuspunkter som sporer nøyaktig plategeometrien.",
-      "Fordi seismiske bølger reflekteres av plategrenseflaten og danner tydelige signaler.",
-      "Fordi subduksjon produserer varme som får bergartene til å kollapse og utløse skjelv.",
+      "Fordi fjellet er blitt sprøere siden 1904.",
+      "Fordi bebyggelsen er tettere og høyere, så flere er eksponert.",
+      "Fordi Norge har flyttet seg inn på en subduksjonssone.",
     ],
     answer: 1,
     explain:
-      "Riktig! Det skrå planet av jordskjelv (0–700 km dyp) i subduksjonssoner følger nøyaktig den kalde, sprø platen som tvinges ned i den varme, plastiske astenosfæren. Under 700 km er trykk og temperatur så høyt at bergartene deformeres plastisk — og ingen jordskjelv oppstår.",
+      "Se «Fare og risiko». Faren i bakken er den samme typen. Risikoen blir større når flere hus, veier og gamle murbygg ligger der bølgene treffer.",
+  },
+  {
+    prompt: "Hvor sitter de store, ødeleggende jordskjelvene oftest?",
+    options: [
+      "Langs plategrenser, der spenning bygges opp mellom platene.",
+      "Bare midt inne på platene, slik som i Oslo.",
+      "Bare der en vulkan har utbrudd.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvor skjer de store skjelvene?». De fleste skjelv, og de store, sitter der platene møtes. Norge har skjelv inne på platen, men de er sjeldnere og oftest mindre.",
   },
 ];
 
 export const QUIZ_BERGARTER: QuizQuestion[] = [
   {
-    prompt: "Hvorfor kan Mohs hardhetsskala kun brukes på mineraler og ikke på bergarter?",
+    prompt: "Hvorfor tester du Mohs på ett mineralkorn, ikke på hele bergarten?",
     options: [
-      "Fordi bergarter alltid er mykere enn mineraler.",
-      "Fordi en bergart er et aggregat av ulike mineraler med hver sin hardhet (f.eks. myk glimmer og hard kvarts i samme gneis).",
-      "Fordi Mohs skala bare gjelder for kalsitt og diamant.",
-      "Fordi bergarter smelter hvis man prøver å ripe dem.",
+      "En bergart er alltid like hard overalt, så ett tall holder.",
+      "En bergart kan bestå av flere mineraler, og hvert korn har sin egen hardhet.",
+      "Mohs-skalaen gjelder bare for kalkstein.",
     ],
     answer: 1,
     explain:
-      "Mohs måler ripehardheten til et bestemt krystallgitter. I en granitt vil kvartskornene ha hardhet 7, mens feltspat har 6 og biotitt har 2,5.",
+      "Se «Hvordan undersøker du et håndstykke?». Mohs er en skala for mineraler. Kvarts er 7 og feltspat er 6. Rip ett korn.",
   },
   {
-    prompt:
-      "Hva er den fundamentale kjemiske forskjellen mellom mineralene i Bowens diskontinuerlige og kontinuerlige serie?",
+    prompt: "Hvordan viser larvikitt og rombeporfyr forskjellen på dypbergart og dagbergart?",
     options: [
-      "Diskontinuerlig serie består av jern- og magnesiumsilikater som endrer krystallgitter trinnvis, mens kontinuerlig serie er plagioklas der Ca og Na byttes ut i samme gitter.",
-      "Diskontinuerlig serie har ingen silisium, mens kontinuerlig serie er ren kvarts.",
-      "Kontinuerlig serie krystalliserer bare på overflaten, mens diskontinuerlig krystalliserer i rombeporfyr.",
-      "Det er ingen kjemisk forskjell; begge serier danner utelukkende ortoklas kalifeltspat.",
+      "De kommer fra to ulike magmaer, dannet i hver sin tidsalder.",
+      "Larvikitt størknet ferdig på dypet. Rombeporfyr har store feltspatkrystaller i en grunnmasse, fordi smelten nådde overflaten før den var ferdig krystallisert.",
+      "Begge er sedimentære bergarter, kittet av kalk.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hva er magmatiske bergarter?». NGU kaller rombeporfyr tvillingbroren til larvikitt. Forskjellen er hvor smelten størknet.",
+  },
+  {
+    prompt: "Hva er forskjellen på forvitring og erosjon?",
+    options: [
+      "Forvitring bryter ned berg på stedet. Erosjon er nedsliting pluss transport.",
+      "Begge betyr at vann frakter sand til havet.",
+      "Forvitring er transport. Erosjon er oppløsning på stedet.",
     ],
     answer: 0,
     explain:
-      "Venstre gren endrer mineraltype og struktur trinnvis (olivin → pyroksen → amfibol → biotitt), mens høyre gren opprettholder plagioklasens feltspatgitter mens kalsium kontinuerlig erstattes av natrium.",
+      "Se «Hva er forvitring?». Ved forvitring blir fragmentene liggende. Først når vann, is eller tyngdekraft flytter dem, er det erosjon.",
   },
   {
-    prompt: "Hvorfor kan Karbon-14 (¹⁴C) ikke brukes til å datere en båndgneis eller en rombeporfyr?",
+    prompt: "Hvorfor viser gneis eldre enn 900 millioner år at en bergart ikke må gjennom hele syklusen?",
     options: [
-      "Fordi Karbon-14 kun finnes på den sørlige halvkule.",
-      "Fordi ¹⁴C har for kort halveringstid (5730 år) og kun tas opp i organisk materiale; gammelt grunnfjell dateres med U-Pb i zirkon.",
-      "Fordi gneis inneholder for mye kalsitt.",
-      "Fordi rombeporfyr har for høy tetthet til at radioaktivitet slipper ut.",
+      "Gneis må smelte før den kan bli så gammel.",
+      "Gneis i grunnfjellet i Sør-Norge er fortsatt metamorf. Syklusen er en modell med flere veier.",
+      "Alle bergarter blir sedimentære etter 900 millioner år.",
     ],
     answer: 1,
     explain:
-      "¹⁴C har en rekkevidde på ca. 50 000 år og forutsetter biologisk karbonopptak. Norsk grunnfjell er hundrevis til milliarder av år gammelt og måles med langlivede radioaktive ur som ²³⁸U → ²⁰⁶Pb.",
+      "Se «Hva er bergartssyklusen?». Gneis ble dannet for mer enn 900 millioner år siden og er fortsatt en metamorf bergart.",
   },
   {
-    prompt: "Hva er en diskordans i en geologisk lagrekke?",
+    prompt: "I granittisk sand, hvilket mineral forsvinner først?",
     options: [
-      "Et lag som bruser med saltsyre.",
-      "En intrusjon av flytende basaltlava.",
-      "Et tidshull der erosjon eller manglende avsetning har fjernet deler av den geologiske historien før nye lag ble avsatt.",
-      "En overgang der sedimentær bergart smelter direkte til magma.",
+      "Kvarts, fordi det løses før de andre.",
+      "Hornblende fortere enn plagioklas, og plagioklas fortere enn kalifeltspat. Kaolinitt og kvarts blir igjen.",
+      "Kalifeltspat forsvinner før hornblende.",
     ],
-    answer: 2,
+    answer: 1,
     explain:
-      "En diskordans representerer en gammel erosjonsflate og et betydelig tidsintervall som mangler i steinens lagdelte arkiv.",
+      "Se «Hva er forvitring?». White et al. (1996) fant denne rekkefølgen i granittisk sand. Resten er kaolinitt og kvarts.",
   },
 ];
 
@@ -542,5 +501,63 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
     answer: 2,
     explain:
       "Under et vinterhøytrykk kan kald, tung luft bli liggende i dalbunnen under et mildere lag. Luften sirkulerer lite, og forurensning blir liggende.",
+  },
+];
+
+export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
+  {
+    prompt: "Hvilke sfærer er mottakerne i geofag 1?",
+    options: [
+      "Geosfæren og hydrosfæren. Atmosfæren, kryosfæren og biosfæren er med som drivere.",
+      "Alle fem sfærene er mottakere, og ingen er drivere.",
+      "Bare atmosfæren, fordi regn og CO₂ kommer derfra.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er et jordsystem?». I geofag 1 følger du hvordan berg og ferskvann svarer. Atmosfæren, kryosfæren og biosfæren er med fordi de driver endringen.",
+  },
+  {
+    prompt: "Hvorfor kan et stort eksplosivt utbrudd kjøle jorda i noen år?",
+    options: [
+      "Fordi asken blir liggende i stratosfæren i mange år og stenger sola ute.",
+      "Fordi SO₂ i stratosfæren blir til sulfataerosoler som reflekterer sollys.",
+      "Fordi lavaen tar varme fra lufta når den størkner.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Vulkaner på kort sikt». Aske faller ut i løpet av dager til uker. Det er sulfataerosolene fra SO₂ som kan kjøle troposfæren i noen år, som etter Pinatubo i 1991.",
+  },
+  {
+    prompt: "Hva skiller det raske karbonkretsløpet fra det trege?",
+    options: [
+      "I det raske kommer karbonet tilbake når planter og plankton brytes ned. I det trege bruker karbon 100–200 millioner år.",
+      "Begge kretsløpene tar noen år.",
+      "Det trege går bare gjennom livet, det raske bare gjennom vulkaner.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Karbonat–silikat-syklusen». Det raske kretsløpet går gjennom livet og gir karbonet tilbake når organismene brytes ned. Det trege går mellom berg, jord, hav og atmosfære og tar 100–200 millioner år.",
+  },
+  {
+    prompt: "Hva skjer i den trege karbonsløyfen når CO₂ i atmosfæren stiger?",
+    options: [
+      "Det blir varmere og mer regn, mer berg løses, og mer karbon lagres i kalkstein.",
+      "Sløyfen stopper, så CO₂ blir værende i lufta for alltid.",
+      "Karbonet lagres i kalkstein i løpet av noen år, samme klokke som et vulkanutbrudd.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Karbonat–silikat-syklusen». Mer CO₂ gir høyere temperatur og mer regn. Da løses mer berg, og mer karbon avsettes på havbunnen. Det demper endringen, men det tar noen hundre tusen år.",
+  },
+  {
+    prompt: "Hvorfor er Pinatubo-kjøling og den trege karbonsløyfen ikke samme vulkan–klima?",
+    options: [
+      "Begge virker på samme tidsskala, noen år.",
+      "Pinatubo-kjølingen varte i år. Den trege sløyfen bruker noen hundre tusen år.",
+      "Den trege sløyfen kjøler jorda i tre år, akkurat som SO₂.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];

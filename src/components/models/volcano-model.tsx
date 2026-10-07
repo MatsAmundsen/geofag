@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useAnimationPlaying } from "@/components/diagrams/use-motion";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
-type VolcanoScenario = "shield" | "stratovolcano" | "caldera" | "earthquake_sim" | "monitoring" | "tsunami_sim";
+type VolcanoScenario = "shield" | "stratovolcano" | "cinder" | "caldera" | "earthquake_sim" | "monitoring" | "tsunami_sim";
 
 function nb1(value: number): string {
   return value.toFixed(1).replace(".", ",");
@@ -32,7 +32,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
   const [focalDepth, setFocalDepth] = useState<number>(15); // km
   const [quakeTriggered, setQuakeTriggered] = useState<boolean>(false);
 
-  // Kontroller for vulkanovervåking (Early Warning)
+  // Kontroller for vulkanovervåking
   const [monitorDay, setMonitorDay] = useState<number>(-4); // -30 til 0 dager
   const [seismicTremorRate, setSeismicTremorRate] = useState<number>(75); // 0-100%
 
@@ -81,7 +81,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
         type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens, Eyjafjallajökull)",
         vei: "VEI 4–5",
         desc: "Vedvarende gassutblåsning med konvektiv askesøyle inn i stratosfæren. Seig magma fragmenteres til pimpstein og fin aske.",
-        hazards: "Pyroklastiske tetthetsstrømmer (PDC) i 200–700 km/t, dødelig askeopphopning og laharer.",
+        hazards: "Pyroklastiske tetthetsstrømmer i 200–700 km/t, askenedfall og laharer.",
         color: "#ef4444",
       };
     } else {
@@ -97,6 +97,17 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
   };
 
   const eruptionStyle = calcEruptionStyle();
+  const shownStyle =
+    scenario === "cinder"
+      ? {
+          draw: "cinder" as const,
+          type: "Sinderkjegle",
+          vei: "Kort, gassdrevet utbrudd",
+          desc: "Lavafontener kaster slagg og sinder opp i lufta. Fragmentene størkner i flukten og bygger en bratt haug rundt åpningen, sjelden over 300–400 meter, med krater i toppen.",
+          hazards: "Slagg og sinder samler seg rundt åpningen. Parícutin i Mexico vokste opp på en åker i 1943.",
+          color: "#f97316",
+        }
+      : eruptionStyle;
 
   // Jordskjelvberegninger
   const hypDist = Math.sqrt(epicenterDist * epicenterDist + focalDepth * focalDepth);
@@ -158,6 +169,10 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
       setSio2(62);
       setGasContent(4.5);
       setTemp(950);
+    } else if (sc === "cinder") {
+      setSio2(50);
+      setGasContent(2.4);
+      setTemp(1120);
     } else if (sc === "caldera") {
       setSio2(73);
       setGasContent(5.8);
@@ -187,6 +202,9 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           <ModelTab active={scenario === "stratovolcano"} onClick={() => setScenarioPreset("stratovolcano")}>
             Stratovulkan (subduksjon)
           </ModelTab>
+          <ModelTab active={scenario === "cinder"} onClick={() => setScenarioPreset("cinder")}>
+            Sinderkjegle
+          </ModelTab>
           <ModelTab active={scenario === "shield"} onClick={() => setScenarioPreset("shield")}>
             Skjoldvulkan (hotspot/rift)
           </ModelTab>
@@ -212,7 +230,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
       <ModelMarkers />
 
       {/* KONTROLLPANEL FOR DE ULIKE SCENARIOENE */}
-      {scenario === "shield" || scenario === "stratovolcano" || scenario === "caldera" ? (
+      {scenario === "shield" || scenario === "stratovolcano" || scenario === "cinder" || scenario === "caldera" ? (
         <div className="mb-6 grid gap-4 rounded-xl border border-border bg-background/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex justify-between text-xs">
@@ -859,8 +877,8 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           <svg
             viewBox="0 0 900 460"
             className={`h-auto w-full select-none ${eruptionMotion.motionClass}`}
-            data-eruption-style={eruptionStyle.draw}
-            data-has-umbrella={eruptionStyle.draw === "plinian" || eruptionStyle.draw === "ultra" ? "yes" : "no"}
+            data-eruption-style={shownStyle.draw}
+            data-has-umbrella={shownStyle.draw === "plinian" || shownStyle.draw === "ultra" ? "yes" : "no"}
             data-playing={isErupting ? "yes" : "no"}
           >
             <defs>
@@ -928,7 +946,32 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
             </text>
 
             {/* Formen følger SiO₂, gass og temperatur, ikke bare fanen. */}
-            {eruptionStyle.draw === "effusive" ? (
+            {scenario === "cinder" ? (
+              <g data-volcano-shape="cinder">
+                <path d="M40 320 H860" stroke="#3a332c" strokeWidth="2" />
+                <path d="M330 320 L430 168 L450 188 L470 168 L570 320 Z" fill="#5a3028" stroke="#8a5344" strokeWidth="2" />
+                <path d="M360 300 L434 190 L466 190 L540 300" fill="none" stroke="#3a201c" strokeWidth="3" />
+                <ellipse cx="450" cy="176" rx="22" ry="8" fill="#140e0c" stroke="#ff7a18" strokeWidth="1.6" />
+                <g className="vm-fountain">
+                  <path d="M444 176 Q438 140 444 118 Q450 108 456 118 Q462 140 456 176 Z" fill="#ff7700" />
+                  <circle cx="442" cy="112" r="4" fill="#ffcc00" />
+                  <circle cx="458" cy="100" r="3" fill="#ffb020" />
+                </g>
+                <circle className="vm-particle" cx="410" cy="150" r="4" fill="#6b3a2a" />
+                <circle className="vm-particle" cx="490" cy="160" r="3.5" fill="#8a5344" style={{ animationDelay: "0.4s" }} />
+                <circle className="vm-particle" cx="380" cy="210" r="3" fill="#a1624a" style={{ animationDelay: "0.8s" }} />
+                <circle className="vm-particle" cx="520" cy="220" r="3.2" fill="#6b3a2a" style={{ animationDelay: "1.1s" }} />
+                <text x="200" y="150" fill="#fed7aa" fontSize="13" fontWeight="bold" textAnchor="end">
+                  Krater i toppen
+                </text>
+                <text x="48" y="300" fill="#e7c4a4" fontSize="13" fontWeight="bold">
+                  Slagg og sinder
+                </text>
+                <text x="600" y="150" fill="#f8fafc" fontSize="13">
+                  Sjelden over 300–400 m
+                </text>
+              </g>
+            ) : eruptionStyle.draw === "effusive" ? (
               <g data-volcano-shape="shield">
                 <path d="M 60 320 Q 450 240 840 320 Z" fill="#2d2822" stroke="#574838" strokeWidth="2" />
                 <path d="M 160 318 Q 450 255 740 318" fill="none" stroke="#221d17" strokeWidth="3" />
@@ -982,12 +1025,10 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
                 </g>
                 <circle className="vm-particle" cx="390" cy="90" r="5" fill="#94a3b8" />
                 <circle className="vm-particle" cx="510" cy="80" r="4" fill="#cbd5e1" style={{ animationDelay: "0.6s" }} />
-                <path className="vm-bolt" d="M 425 120 L 415 135 L 430 145 L 420 160" stroke="#fef08a" strokeWidth="2" fill="none" />
-                <path className="vm-bolt" d="M 470 95 L 485 110 L 475 125 L 490 140" stroke="#fef08a" strokeWidth="2" fill="none" style={{ animationDelay: "0.4s" }} />
                 <path d="M 420 190 Q 360 220 290 260 Q 230 290 150 320 L 220 320 Q 320 280 430 210 Z" fill="#e11d48" opacity="0.75" />
                 <path className="vm-pdc" d="M 180 310 Q 240 270 320 230" stroke="#fb7185" strokeWidth="4" fill="none" />
                 <text x="210" y="275" fill="#ffe4e6" fontSize="11" fontWeight="bold" transform="rotate(-30 210 275)">
-                  Pyroklastisk strøm (PDC)
+                  Pyroklastisk tetthetsstrøm
                 </text>
                 <path d="M 475 200 Q 560 250 670 320 L 730 320 Q 600 250 485 200 Z" fill="#78716c" opacity="0.85" />
                 <text x="610" y="280" fill="#f5f5f4" fontSize="10" fontWeight="bold" transform="rotate(28 610 280)">
@@ -1003,7 +1044,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
                   Kalderasjø (innsunket platetak)
                 </text>
                 <ellipse cx="450" cy="275" rx="35" ry="12" fill="#44352f" stroke="#78594c" strokeWidth="1.5" />
-                <text x="450" y="273" fill="#cbd5e1" fontSize="9" textAnchor="middle">Resurgent kuppel</text>
+                <text x="450" y="258" fill="#cbd5e1" fontSize="11" textAnchor="middle">Oppadstigende kuppel</text>
                 <line x1="330" y1="220" x2="330" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
                 <line x1="570" y1="220" x2="570" y2="380" stroke="#f43f5e" strokeWidth="2.5" strokeDasharray="6 4" />
                 <text x="310" y="250" fill="#f43f5e" fontSize="10" textAnchor="end">Ringforkastning ↓</text>
@@ -1026,8 +1067,8 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
             {/* Skala og annoteringer */}
             <rect x="20" y="20" width="220" height="95" rx="8" fill="#0f172a" opacity="0.88" stroke="#334155" />
             <text x="35" y="42" fill="#93c5fd" fontSize="13" fontWeight="bold">Utbruddsklassifisering</text>
-            <text x="35" y="62" fill="#f8fafc" fontSize="12" fontWeight="600">{eruptionStyle.type}</text>
-            <text x="35" y="80" fill={eruptionStyle.color} fontSize="12" fontWeight="bold">{eruptionStyle.vei}</text>
+            <text x="35" y="62" fill="#f8fafc" fontSize="12" fontWeight="600">{shownStyle.type}</text>
+            <text x="35" y="80" fill={shownStyle.color} fontSize="12" fontWeight="bold">{shownStyle.vei}</text>
             <text x="35" y="98" fill="#94a3b8" fontSize="11">Viskositet: {viscosityShort(viscosityInfo.label)}</text>
           </svg>
         ) : (
@@ -1290,7 +1331,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           ) : scenario !== "earthquake_sim" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
-                <strong className="text-foreground">Utbruddsstil:</strong> {eruptionStyle.desc}
+                <strong className="text-foreground">Utbruddsstil:</strong> {shownStyle.desc}
               </p>
               <p>
                 <strong className="text-foreground">Vulkanovervåking:</strong> Økning i svoveldioksid (SO₂-fluks),
@@ -1343,7 +1384,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           ) : scenario !== "earthquake_sim" ? (
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
-                <strong className="text-foreground">Dominerende fare:</strong> {eruptionStyle.hazards}
+                <strong className="text-foreground">Dominerende fare:</strong> {shownStyle.hazards}
               </p>
               <p>
                 <strong className="text-foreground">Global påvirkning:</strong> Store eksplosive utbrudd sender svovelaerosoler
