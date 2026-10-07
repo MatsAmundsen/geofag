@@ -1,113 +1,126 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/havstrommer](/tema/havstrommer). Her kan du redigere **hele fagteksten**.
-
-## Hva en havstrøm er
-
-En havstrøm er vann som beveger seg samlet fra ett sted til et annet — ikke bare bølger som skvulper på stedet. De samme tre kreftene som styrer lufta, styrer havet: trykk (fra vind), tyngde (tetthet) og rotasjon (coriolis) (NOAA, u.å.-a). Havet er bare langt tregere enn lufta og lagrer enormt med varme. Derfor demper det klimaet over måneder og tiår, ikke bare over timer.
-
-Tenk havet som to etasjer. Overflaten — de øverste titalls til hundre metrene — skyves rundt av vinden. Dypet drives av noe helt annet: hvor kaldt og salt vannet er. De to etasjene møtes i termoklinen, laget der temperaturen stuper og som skiller varmt overflatevann fra kaldt dyphav. I Atlanteren henger etasjene sammen i et belte som kalles AMOC.
-
-**Overflatestrøm og dypstrøm:** Overflaten (noen titalls til noen hundre meter) drives av vind. Dypet drives av at kaldt, salt vann er tyngre og synker. Tidevann rører kysten, men driver ikke de store kretsløpene.
-
-Resten av kapittelet følger de tre kreftene i figuren. Først overflaten: Ekman, gyrer og oppwelling. Så dypet: tetthet. Til slutt beltet som binder etasjene, og hva det betyr for Norge.
-
-## Overflaten: vinden peker ikke dit vannet går
-
-Vinden tar i de øverste meterne. Coriolis dreier strømmen til høyre i nord. Laget under dreies enda mer. Summen — det som faktisk flytter vannmasser — går omtrent rett til høyre for vinden på nordlig halvkule, til venstre i sør (NOAA, u.å.-b). Figuren under viser hvordan vindretningen og nettotransporten skiller seg fra hverandre.
-
-**Ekman-transport:** At vannet i det øverste laget samlet sett flyttes 90° på vinden. Vestavind i Nord-Atlanteren skyver derfor vann mot sør. Passatene skyver vann mot nord. Da stables vannet midt i kretsløpet.
-
-![Lange skumstriper på havet, drevet av vind mot høyre](/images/fig-ekman.jpg)
-
-*Ekman-transport i naturen — Skumstripene viser vinden. Vannmassene under dreies til høyre i nord, akkurat som i figuren ovenfor — derfor peker pil 2 et annet sted enn pil 1.*
-
-## Gyrene: slik organiseres overflaten
-
-I hvert store havbasseng samler Ekman-transporten seg til et lukket kretsløp — en gyre. I nord går den med klokken. Figuren under viser hvorfor: coriolis øker mot polene, så vann som beveger seg nordover dreies mer og presses mot kontinentet. Det gjør vestkanten smal og rask, mens østkanten blir bred og treig.
-
-**Gyre:** Et stort, lukket kretsløp i havoverflaten, drevet av vind og formet av coriolis og kontinentene. Nord-Atlanteren har én. Stillehavet har sine.
-
-**Vestlig randstrøm:** Den smale, raske kanten av en gyre mot vest: Golfstrømmen, Kuroshio. Coriolis øker mot polene, så strømmen presses mot kontinentet.
-
-![Nord-Atlanteren fra verdensrommet med varm strøm langs Amerika og drift mot Europa](/images/fig-gyre.jpg)
-
-*Nord-Atlanteren sett ovenfra — Samme gyre som i figuren ovenfor, sett fra satellitt. Den vestlige kanten er den sterke. Mot Europa blir det bredere og slappere.*
-
-Gyren har et klimautfall. Vestkanten er varm og rask — Golfstrømmen, Kuroshio, Agulhas. Østkanten er kald og treig — Kanaristrømmen, Benguela, Humboldt. Derfor kan øst- og vestkysten av samme kontinent, på samme bredde, ha ti grader forskjell i havoverflaten. Sør-Afrika er det klassiske eksempelet: varm Agulhas i øst, kald Benguela i vest.
-
-## Oppwelling: når Ekman tømmer kysten
-
-Oppwelling er det tydeligste beviset på at Ekman-transport er reell: den flytter vann, og noe må fylle tomrommet den lager. Blåser vinden slik at nettotransporten peker rett ut fra kysten, skyves det varme overflatevannet vekk fra land. Kaldt, næringsrikt dypvann stiger da opp for å fylle plassen. Figuren under viser hele forløpet, fra vind til nytt liv i vannet.
-
-**Oppwelling:** Når overflatevann skyves bort fra kysten av Ekman-transport, stiger kaldt, næringsrikt dypvann opp for å fylle tomrommet. Det er Ekman-transporten som avgjør, ikke at «vinden blåser opp vann» direkte.
-
-Det oppstrømmede vannet er rikt på næringssalter fra dyphavet. Det gjør oppwellingssoner til noen av de mest produktive fiskeområdene i verden — utenfor Peru, Vest-Afrika og California er alle klassiske eksempler (NOAA, u.å.-d). Norskekysten har ikke like kraftig oppwelling som disse områdene, men samme mekanisme kan gi lokale kaldtvannsbelter der vind blåser langs kysten over tid.
-
-Når vinden slakner og strømmen svekkes, blir overflaten stille. Da varmes det øverste laget opp uten å blandes. Det er et av vilkårene for marine hetebølger — perioder med unormalt varm overflate, som eksamen har spurt om flere ganger.
-
-## Dypet: kaldt og salt synker
-
-Vann blir tyngre når det avkjøles, og når det blir saltere. I tropene er overflaten varm og «lett». I de nordiske hav mister den varme til lufta om vinteren. Når det dannes is, blir saltet igjen i vannet. Figuren under viser de to ytterpunktene: varmt, ferskere vann som flyter, og kaldt, salt vann tungt nok til å synke gjennom termoklinen.
-
-**Tetthet:** Hvor tungt et visst volum vann er. Kaldt vann er tyngre enn varmt. Salt vann er tyngre enn ferskere vann. Det tyngste synker.
-
-**Termohalin sirkulasjon:** Dypstrøm drevet av tetthet: termo for temperatur, halin for salt. Ferskvannstilførsel gjør overflaten lettere og bremser synkingen — den øker den ikke.
-
-![Vinterhav med sjørokk og ny is, mørkt åpent vann som avgir varme](/images/fig-synker.jpg)
-
-*Her mister Atlanteren varmen — Åpent polarhav om vinteren røyker av varme til lufta. Overflaten blir kald, av og til saltere, og kan synke — akkurat det høyre feltet i figuren ovenfor beskriver.*
-
-## AMOC: etasjene møtes
-
-I Atlanteren går varmt, saltere vann nordover i toppen. I Norskehavet, Grønlandshavet og Labradorhavet synker det og returnerer sørover i dypet. Hele sløyfa kalles AMOC (NOAA, u.å.-c). Den er treg. Den kan svekkes hvis overflaten blir for fersk eller for varm til å synke (IPCC, 2021). Det skjer ikke over natta — men over tiår kan det merkes i nordvest-Europa. Figuren under viser hele beltet i ett bilde.
-
-**AMOC:** Den atlantiske omveltningen: varmt nordover i overflaten, kaldt sørover i dypet. Inkluderer både Den nordatlantiske strømmen og det dype returløpet. Ikke en bryter som slår av Golfstrømmen på en dag.
-
-Modellen under samler det du nå har: vind i toppen, tetthet i dypet, termoklinen imellom. Skyv glideren og se hva som skjer med dypvannsdannelsen når polene går fra frysing til smelting.
-
-![Varm gyllen overflatestrøm mot nord og kald dypblå strøm mot sør under is](/images/fig-amoc.jpg)
-
-*To veier i samme hav — Oppvarmet vann nordover i lyset. Avkjølt vann sørover i mørket. Der de møtes i nord, synker det — samme sløyfe som i AMOC-figuren ovenfor.*
-
-Svekkelse, vippepunkt og «kaldlommen» sør for Grønland hører i klimasystemet, ikke her. Les videre på [AMOC-fordypningen](/tema/klima/amoc) .
-
-## Tre navn, og hvorfor Norge er mildt
-
-I dagligtale sies det at «Golfstrømmen gjør Norge varmt». Faglig er det for slapt. Mild kystklima på denne breddegraden henger sammen med vestavind og varmt atlanterhavsvann (Store norske leksikon, u.å.). Skill tre ting, ikke to.
-
-**Golfstrømmen og Den nordatlantiske strømmen:** Golfstrømmen: vestlig, rask strøm langs USA. Den nordatlantiske strømmen: fortsettelsen mot Norge. Ikke samme strekning, selv om folk bruker navnene om hverandre.
-
-![Varm turkis-gull strøm som et bånd langs amerikansk østkyst mot Atlanteren](/images/fig-golfstrom.jpg)
-
-*Den vestlige kanten nærbilde — Golfstrømmen er selve båndet langs USA. Etter kysten løsner den. En gren fortsetter nordøstover som Den nordatlantiske strømmen — grensen figuren ovenfor viser.*
-
-Golfstrømmen er den sterke strømmen langs USA. Etter kysten løsner den. En gren fortsetter nordøstover som Den nordatlantiske strømmen mot de nordiske hav. Det er denne grenen — sammen med hele beltet i dypet og vestavinden — som preger norsk klima (Norsk klimaservicesenter, u.å.). AMOC er sløyfa som også inkluderer returen i dypet.
-
-![Grønn norsk fjord med åpent vann til venstre, islagt Labrador-kyst til høyre](/images/fig-norge-labrador.jpg)
-
-*Samme breddegrad, to verdener — Norskekysten og Labrador ligger omtrent like langt nord. Solhøyden er den samme. Utfallet er det ikke, fordi havstrømmene er ulike.*
-
-> **Til eksamen og Norge**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Skill tre ting: Golfstrømmen langs USA, Den nordatlantiske strømmen mot Norge, og AMOC som hele beltet. Vestavinden driver både strøm og storm. Varmt hav gir fukt til regnet på Vestlandet. En svekket nordatlantisk strøm gir lavere temperatur og mindre nedbør langs vestkysten — ikke mer.
+> Målet er at du skal kunne gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren (Udir, u.å.-b).
+>
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om komponenter og prosesser i dem (Udir, u.å.-a). Havstrømmer er en slik prosess i hydrosfæren, der vind, rotasjon og tetthet virker sammen.
+>
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Havvirvelen, ekmantransporten og det globale transportbåndet er slike modeller.
+
+## Hva driver en havstrøm?
+
+```widget
+HavstromForklaring
+```
+
+En havstrøm er vann i bevegelse. Havstrømmer drives av tidevann, vind og forskjeller i tetthet. Tidevannet kommer av sola og månen, og det lager strøm nær land, i bukter og i elvemunninger. Vinden driver strømmer både langs kysten og i åpent hav. Tetthetsstrømmene, den termohaline sirkulasjonen, drives av temperatur og saltholdighet. De finnes både dypt og grunt, og de går mye saktere enn tidevannsstrømmer og overflatestrømmer (NOAA, u.å.-a).
+
+```widget
+DrivkrefterDiagram
+```
+
+[Havstrømmer](/tema/havstrommer) handler om disse drivkreftene. Selve avbøyningen tar vi i [corioliseffekten](/tema/coriolis). Den trege omveltningen i Atlanteren tar vi grundigere i [AMOC](/tema/klima/amoc).
+
+Vinden driver strømmene i de øvre om lag 100 meterne. Dypere strømmer drives av tetthetsforskjeller (NOAA, u.å.-e).
+
+## Overflaten: ekmantransport og havvirvler
+
+Når vinden drar i overflaten, drar laget med seg dypere vann. Hvert dypere lag går saktere, til bevegelsen dør ut på om lag 100 meters dyp. Lagene avbøyes mot høyre på den nordlige halvkule og mot venstre på den sørlige, og de dypeste kan gå motsatt vei av overflatestrømmen. Det er ekmanspiralen, beskrevet av Vagn Walfrid Ekman i 1902 (NOAA, u.å.-b).
+
+```widget
+EkmanHavForklaring
+```
+
+Transporten av overflatelaget, om lag de øverste 50 meterne, går på tvers av vinden. På den nordlige halvkule går den til høyre for vindretningen (Store norske leksikon, u.å.-b).
+
+De store overflatestrømmene avbøyes også, med klokken på den nordlige halvkule og mot klokken på den sørlige. Slike havvirvler finnes nord og sør for ekvator, men ikke ved ekvator, der corioliseffekten ikke virker. Det er fem store havvirvler: Nord-Atlanteren, Sør-Atlanteren, Nord-Stillehavet, Sør-Stillehavet og Det indiske hav. Hver har en sterk og smal vestlig randstrøm og en svak og bred østlig randstrøm (NOAA, u.å.-c).
+
+| | Vestlig randstrøm | Østlig randstrøm |
+| --- | --- | --- |
+| Form | sterk og smal | svak og bred |
+| Eksempel i Nord-Atlanteren | Golfstrømmen | Kanaristrømmen |
+| Retning i havvirvelen | med klokken på den nordlige halvkule | med klokken på den nordlige halvkule |
+
+```widget
+GyreDiagram
+```
+
+Vinden stuver varmt vann slik at havspeilet står relativt høyt. Øst for Newfoundland ligger havspeilet nær én meter lavere enn i Golfstrømmens kildeområde og i den tropiske delen av Atlanteren. Jordrotasjonen bøyer strømmen til høyre for den retningen skråningen alene skulle tilsi (Store norske leksikon, u.å.-a).
+
+## Oppvelling
+
+Oppvelling er at vann løftes fra dypere nivåer når overflatelaget skyves til siden. En nordavind langs en vestkyst på den nordlige halvkule skyver overflaten utover, fordi ekmantransporten går til høyre. Vannet som kommer opp, er kaldere og rikt på næringsstoffer, og fiskefeltene er ofte gode der. Prosessen er langsom, om lag 10 meter per dag (Store norske leksikon, u.å.-b; NOAA, u.å.-d).
+
+```widget
+OppvellingDiagram
+```
+
+Det er særlig tydelig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. Langs vestkysten av Afrika og Sør-Amerika holder oppvellingen fiskeriene i gang året rundt. Utenfor vestkysten av USA gir vind fra sør mot nord nedvelling om vinteren, og vind fra nord mot sør oppvelling om sommeren (Store norske leksikon, u.å.-b; NOAA, u.å.-d).
+
+Om lag halvparten av primærproduksjonen i havet skjer i oppvellingsområder. Om lag 25 prosent av det som fiskes, kommer fra områdene knyttet til Kanaristrømmen, Benguelastrømmen, Californiastrømmen, Perustrømmen og Somalistrømmen (Store norske leksikon, u.å.-b).
+
+## Golfstrømmen og Norges klima
+
+```widget
+GolfDiagram
+```
+
+Golfstrømmen er en varm overflatestrøm fra Floridastredet langs kysten av USA. Den bøyer ut i Atlanteren mellom 35° og 40° nord. Den beholder en markert akse til 40–45° vest, og brer seg så ut. Mesteparten av vannet går videre mot øst eller nordøst i Den nordatlantiske strømmen og Den norske atlanterhavsstrømmen. Navnet Golfstrømmen brukes også feilaktig om strømmen nordover langs norskekysten. Den er en forgrening av Den nordatlantiske strømmen (Store norske leksikon, u.å.-a).
+
+| | Golfstrømmen |
+| --- | --- |
+| Fart nær Florida | 1,0–1,5 meter per sekund i middel |
+| Fart lenger nord langs kysten | 0,5–1,0 meter per sekund |
+| Dyp | over 500 meter |
+| Transport | om lag 40 millioner kubikkmeter per sekund |
+
+I kildeområdet er temperaturen cirka 25 °C om vinteren, og til dels over 28 °C på ettersommeren. Etter at strømmen bøyer av, møter den den kalde Labradorstrømmen. Temperaturforskjellen kan være 10–15 °C over kort avstand (Store norske leksikon, u.å.-a).
+
+Det varme overflatevannet avgir varme til lufta. I fronten mellom varm luft over havdriften og kaldere luft lenger nord dannes lavtrykk som vandrer nordøstover og frakter varme og fuktighet til Vest-Europa. Derfor er klimaet i Norge mye mildere enn i Alaska, som ligger like langt mot nord (Store norske leksikon, u.å.-a). Norskehavet er opptil 10 °C varmere enn gjennomsnittet for 65° nord. De nord–sør-gående fjellkjedene i Nord-Amerika og på Grønland, kystlinjen og den åpne veien mot Polhavet fører også varme luft- og vannmasser mot nord (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-c).
+
+## Dypet: det globale transportbåndet
+
+```widget
+TetthetDiagram
+```
+
+I polområdene blir havvannet svært kaldt, og det dannes havis. Saltet blir igjen i vannet, tettheten øker, og vannet synker. Overflatevann trekkes inn for å erstatte det som sank. Slik starter dypstrømmene som driver det globale transportbåndet (NOAA, u.å.-e).
+
+Båndet begynner i overflaten nær polen i Nord-Atlanteren. Vannet avkjøles, blir saltere når havis fryser, og synker. Dypvannet går sørover, forbi ekvator, og ned mot sørspissen av Afrika og Sør-Amerika. Rundt Antarktis avkjøles og synker vannet på nytt. To greiner går nordover, én i Det indiske hav og én i Stillehavet. Der varmes de, blir lettere og stiger. Så går de tilbake mot Sør-Atlanteren og til slutt Nord-Atlanteren (NOAA, u.å.-f).
+
+Transportbåndet går mye saktere enn vinddrevne strømmer: noen centimeter per sekund, mot titalls til hundrevis av centimeter per sekund. En kubikkmeter vann bruker om lag 1000 år på runden. Båndet flytter mer enn 100 ganger vannføringen i Amazonas. Varmt overflatevann er fattig på næringsstoffer og karbondioksid, og anrikes igjen på veien i dypet (NOAA, u.å.-f).
+
+Mer regn i Nord-Atlanteren, og smelting av isbreer og havis, kan legge varmt ferskvann på overflaten. Da kan dannelsen av havis svekkes, og det kalde, salte vannet synker ikke like lett. Båndet kan da gå saktere eller stoppe, med store temperaturendringer i Europa som mulig følge (NOAA, u.å.-g).
 
 > **Vanlige misforståelser**
 >
-> Norge er ikke mildt «bare på grunn av Golfstrømmen». Vestavind, havets varmelager og fjellene spiller inn. Vannet går ikke samme vei som vinden — det dreies. Og ferskvann fra smelting bremser den termohaline sirkulasjonen. Det øker den ikke.
+> Overflatevannet følger ikke vinden. Ekmantransporten går på tvers av vinden, til høyre på den nordlige halvkule (Store norske leksikon, u.å.-b).
+>
+> Strømmen langs norskekysten er ikke Golfstrømmen. Golfstrømmen går langs USA. Langs Norge heter den Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Store norske leksikon, u.å.-a).
+>
+> Dypstrømmene drives ikke av vinden på samme måte som overflaten. Vinden tar de øvre om lag 100 meterne. Dypet drives av tetthet (NOAA, u.å.-e).
 
 ## Viktige begreper
 
-**Gyre:** Stort kretsløp i havoverflaten.
+**Havstrøm:** Vann i bevegelse, drevet av tidevann, vind eller tetthetsforskjeller.
 
-**Ekman-transport:** Vannet flyttes 90° på vinden (til høyre i nord).
+**Ekmantransport:** Transport av overflatelaget på tvers av vinden, til høyre på den nordlige halvkule.
 
-**Vestlig randstrøm:** Smal, rask vestkant av en gyre. Golfstrømmen, Kuroshio.
+**Havvirvel:** Stor sirkulasjon i overflatehavet. Med klokken på den nordlige halvkule, mot klokken på den sørlige. Ikke ved ekvator.
 
-**Oppwelling:** Kaldt, næringsrikt dypvann stiger der overflaten skyves bort.
+**Oppvelling:** At dypere vann løftes opp når overflaten skyves til siden.
 
-**Termohalin sirkulasjon:** Dypstrøm drevet av temperatur og salt.
+**Golfstrømmen:** Varm overflatestrøm fra Floridastredet langs kysten av USA, som bøyer ut i Atlanteren.
 
-**AMOC:** Atlantisk belte: varmt nordover oppe, kaldt sørover nede.
+**Den norske atlanterhavsstrømmen:** Forgreningen som går nordover langs norskekysten. Ikke selve Golfstrømmen.
 
-**Den nordatlantiske strømmen:** Fortsettelsen av Golfstrømmen mot Norge.
+**Termohalin sirkulasjon:** Strøm drevet av tetthetsforskjeller fra temperatur og salt.
 
-**Tetthet:** Kaldt og salt er tungt og kan synke.
+**Det globale transportbåndet:** Den langsomme, verdensomspennende strømmen som starter der kaldt og salt vann synker i Nord-Atlanteren.
+
+## Test deg selv
+
+```widget
+QuizHavstrommer
+```

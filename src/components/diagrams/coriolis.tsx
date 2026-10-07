@@ -14,7 +14,7 @@ export function CarouselFrameDiagram() {
     <Diagram
       title="Referanserammer og treghetskrefter: Karusell-eksperimentet"
       heading="Hvorfor oppstår Corioliseffekten? Rommet vs. Den roterende observatøren"
-      caption="Corioliskraften er en fiktiv kraft (treghetskraft) som oppstår fordi vi observerer bevegelse fra et roterende referansesystem. Til venstre (Treghetssystem / Rommet): Karusellen roterer mot klokken (akkurat som jordens nordlige halvkule). En person i sentrum (A) kaster en ball rett mot en person på kanten (B). I rommet beveger ballen seg i en snorrett linje i henhold til Newtons 1. lov. Men mens ballen er i luften, har person B rotert videre mot venstre! Til høyre (Roterende referansesystem / På karusellen): For personene som står på karusellen og føler seg i ro, ser det ut som om ballen på mystisk vis krummer til høyre og bommer på målet. Ingen fysisk hånd dyttet på ballen; avbøyningen er en ren konsekvens av observatørens egen rotasjon."
+      caption="Corioliskraften er en fiktiv kraft som oppstår fordi vi observerer bevegelse fra et roterende referansesystem. Til venstre, sett fra rommet, går ballen i en rett linje mens målet på kanten roterer videre. Til høyre, sett fra karusellen, ser ballen ut til å krumme mot høyre. Ingen fysisk hånd dytter på ballen."
       viewBox="0 0 920 420"
       wide
     >
@@ -112,7 +112,7 @@ export function CarouselFrameDiagram() {
             {/* Bunnotat */}
             <rect x="70" y="375" width="320" height="30" rx="6" fill="#0f172a" stroke="#334155" strokeWidth="1" />
             <L x="230" y="394" fill="#94a3b8" size={11.5} weight={600} anchor="middle">
-              Ballen går rett fram — målet roterer vekk!
+              Ballen går rett fram — målet roterer vekk
             </L>
           </g>
 
@@ -164,7 +164,7 @@ export function CarouselFrameDiagram() {
             {/* Fiktiv kraft-pil (Coriolis) */}
             <Arrow d="M 725 155 L 755 170" marker={m.warm} color={C.warm} width={2.4} />
             <L x="765" y="180" fill={C.warm} size={11} weight={800}>
-              F_c (avbøyer til høyre)
+              avbøyer til høyre
             </L>
 
             {/* Animert ball i krum bane */}
@@ -177,7 +177,7 @@ export function CarouselFrameDiagram() {
             {/* Tydelig treff-markør som bommer */}
             <circle cx="780" cy="115" r="8" fill="none" stroke="#ef4444" strokeWidth="2" strokeDasharray="3 2" />
             <L x="792" y="112" fill="#ef4444" size={11.5} weight={800}>
-              Bommer til høyre!
+              Bommer til høyre
             </L>
 
             {/* Bunnotat */}
@@ -203,8 +203,8 @@ export function GlobalDeflectionDiagram() {
   return (
     <Diagram
       title="Coriolis på den roterende jordkloden (Alle himmelretninger)"
-      heading="Alltid mot høyre i nord, alltid mot venstre i sør – uansett kompasskurs"
-      caption="En av de vanligste feiloppfatningene er at Corioliseffekten bare virker når man beveger seg fra nord mot sør eller omvendt. Figuren viser at avbøyningen er like sterk uansett hvilken vei en luftpakke eller et prosjektil sendes: 1) På nordlig halvkule (øverst): Bevegelse mot nord bøyes mot øst (høyre), bevegelse mot sør bøyes mot vest (høyre), bevegelse mot øst bøyes mot sør (høyre), og bevegelse mot vest bøyes mot nord (høyre). 2) På sørlig halvkule (nederst) er regelen speilvendt: All horisontal bevegelse bøyes mot venstre. 3) Ved ekvator (0°) er den horisontale komponenten av Corioliskraften nøyaktig null (sin 0° = 0)."
+      heading="Mot høyre i nord, mot venstre i sør"
+      caption="En strøm bøyes til høyre for strømretningen på den nordlige halvkule og til venstre på den sørlige. Ved ekvator er coriolisparameteren null, så der er det ingen avbøyning."
       viewBox="0 0 940 460"
       wide
     >
@@ -260,7 +260,7 @@ export function GlobalDeflectionDiagram() {
           {/* BREDDEGRADSLINJER */}
           {/* 60°N */}
           <ellipse cx="470" cy="115" rx="135" ry="24" fill="none" stroke="#64748b" strokeWidth="1.2" strokeDasharray="4 3" />
-          <L x="320" y="119" fill="#94a3b8" size={11} anchor="end">60°N (Norge: f = 1,26 × 10⁻⁴)</L>
+          <L x="320" y="119" fill="#94a3b8" size={11} anchor="end">60°N, avbøyningen er sterk</L>
 
           {/* 30°N */}
           <ellipse cx="470" cy="170" rx="165" ry="30" fill="none" stroke="#64748b" strokeWidth="1.2" strokeDasharray="4 3" />
@@ -268,7 +268,7 @@ export function GlobalDeflectionDiagram() {
 
           {/* Ekvator (0°) */}
           <ellipse cx="470" cy="230" rx="175" ry="34" fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 4" />
-          <L x="280" y="234" fill="#fef08a" size={12} weight={800} anchor="end">Ekvator 0° (f = 0)</L>
+          <L x="280" y="234" fill="#fef08a" size={12} weight={800} anchor="end">Ekvator 0°, ingen avbøyning</L>
 
           {/* 30°S */}
           <ellipse cx="470" cy="290" rx="165" ry="30" fill="none" stroke="#64748b" strokeWidth="1.2" strokeDasharray="4 3" />
@@ -287,7 +287,7 @@ export function GlobalDeflectionDiagram() {
 
           {/* Rotasjonspil ved ekvator (mot øst) */}
           <Arrow d="M 430 230 L 520 230" marker={m.warm} color={C.warm} width={3} />
-          <L x="475" y="222" fill="#fef08a" size={11} weight={800} anchor="middle">Jordrotasjon mot øst (1670 km/t)</L>
+          <L x="475" y="222" fill="#fef08a" size={11} weight={800} anchor="middle">Mot øst, mer enn 400 m/s</L>
 
           {/* ─── NORDLIG HALVKULE: 4-VEIS UTBYTE FRA PUNKT (470, 145) ─── */}
           <circle cx="470" cy="145" r="7" fill="#f59e0b" stroke="#ffffff" strokeWidth="2" />
@@ -1149,15 +1149,15 @@ export function CoriolisScaleDiagram() {
     <Diagram
       title="Coriolis krever stor skala"
       heading="Vasken lyver, orkanen forteller sannheten"
-      caption="Coriolis er svak. Den vinner bare når bevegelsen er stor og varer lenge, og friksjonen er liten. Derfor styrer den Golfstrømmen og et lavtrykk, men ikke vannet i en vask — der avgjør kummens form og hvordan vannet slås på."
+      caption="Jordrotasjonen merkes nesten ikke i hverdagen, unntatt i havstrømmer og vind. I en vask avgjør kummens form og hvordan vannet settes i bevegelse, ikke corioliseffekten."
       viewBox="0 0 820 240"
     >
       {() => (
         <>
           {[
-            { x: 50, title: "Vask / toalett", note: "meter · sekunder", ok: false },
-            { x: 300, title: "Fotballstadion", note: "100 m · minutter", ok: false },
-            { x: 550, title: "Lavtrykk / orkan", note: "100–1000 km · døgn", ok: true },
+            { x: 50, title: "Vask / toalett", note: "liten og kortvarig", ok: false },
+            { x: 300, title: "Hverdagsbevegelse", note: "for liten til å merkes", ok: false },
+            { x: 550, title: "Havstrøm og vind", note: "stor og langvarig", ok: true },
           ].map((b) => (
             <g key={b.title}>
               <rect
