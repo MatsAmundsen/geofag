@@ -49,22 +49,22 @@ export function EnsoComparisonDiagram() {
           phase === "neutral"
             ? "Normaltilstand og Walker-sirkulasjon"
             : phase === "elnino"
-            ? "El Niño — svekkede passater og kollaps i oppvellingen"
-            : "La Niña — forsterkede passater og intens oppvelling"
+            ? "El Niño — varmere sentrum og øst, svakere østlige vinder"
+            : "La Niña — kaldere sentrum og øst, sterkere østlige vinder"
         }`}
         heading={
           phase === "neutral"
             ? "Normaltilstand: Passatvinder og Walker-sirkulasjon"
             : phase === "elnino"
             ? "El Niño: Varmtvannet flyter østover — tørke i vest, regn i øst"
-            : "La Niña: Ekstra sterke passatvinder og ekstrem oppvelling"
+            : "La Niña: Sterkere østlige vinder og kaldere hav i øst"
         }
         caption={
           phase === "neutral"
-            ? "Stabile passatvinder blåser mot vest og stabler opp varmt overflatevann ved Indonesia (Warm Pool). Her stiger fuktig luft og danner kraftig nedbør. Utenfor Peru trekkes kaldt, næringsrikt dypvann opp (oppvelling). Termoklinen heller bratt opp mot øst."
+            ? "Passatvindene blåser fra øst mot vest og skyver sjøvann vestover. Vannet varmes på veien, så vest er varmere og øst kjøligere. Luft stiger over det varme vannet i vest og synker over det kjøligere vannet i øst (Di Liberto, 2014)."
             : phase === "elnino"
-            ? "Passatvindene svekkes kraftig eller snur til vestlige vinder. Det varme overflatevannet skvulper østover mot Sør-Amerika. Termoklinen flater ut og trykkes ned i øst. Oppvelling pågår, men henter lunkent vann ovenfor den dypere termoklinen. Konveksjon og regn forflytter seg til det sentrale og østlige Stillehavet, mens Indonesia og Australia rammes av alvorlig tørke."
-            : "Passatvindene blåser uvanlig sterkt mot vest. Varmtvannsbassenget presses ekstra langt vest mot Asia/Australia med flom og sykloner som følge. I øst blir oppvellingen usedvanlig kraftig, og havoverflaten blir 1–3 °C kaldere enn normalt."
+            ? "Overflaten i det sentrale og østlige tropiske Stillehavet blir varmere enn vanlig. De østlige vindene svekkes eller snur. Det blir mindre regn over Indonesia og mer over det tropiske Stillehavet (L'Heureux, 2014)."
+            : "Overflaten i det sentrale og østlige tropiske Stillehavet blir kaldere enn vanlig. De østlige vindene blir sterkere. Det blir mer regn over Indonesia og mindre over det sentrale tropiske Stillehavet (L'Heureux, 2014)."
         }
         viewBox="0 0 900 480"
         wide
@@ -120,7 +120,7 @@ export function EnsoComparisonDiagram() {
                   fill="none"
                 />
                 <L x="500" y="325" fill="#fb923c" size={13} weight={700}>
-                  Termoklin (bratt helning) ↘
+                  Kjøligere i øst, varmere i vest
                 </L>
 
                 {/* Kaldt bunnvann under termoklinen */}
@@ -130,7 +130,7 @@ export function EnsoComparisonDiagram() {
 
                 {/* Varmt overflatebasseng i vest */}
                 <L x="230" y="295" fill="#fff" size={15} weight={800}>
-                  Varmtvannsbasseng (&gt;29 °C)
+                  Varmere vann i vest
                 </L>
                 <L x="230" y="315" fill={C.fg} size={12}>
                   Høyere havnivå (~0,5 m)
@@ -190,15 +190,15 @@ export function EnsoComparisonDiagram() {
                 />
                 <line x1="130" y1="320" x2="770" y2="320" stroke="#fb923c" strokeWidth="3.5" />
                 <L x="450" y="340" fill="#fb923c" size={14} weight={800} anchor="middle">
-                  Termoklinen flater ut (synker i øst)
+                  Varmen brer seg mot øst
                 </L>
 
                 {/* Varmt vann dekker hele overflaten */}
                 <L x="450" y="285" fill="#fff" size={16} weight={800} anchor="middle">
-                  Varmt overflatevann brer seg over hele Stillehavet (&gt;28 °C)
+                  Varmere overflate i sentrum og øst
                 </L>
                 <L x="700" y="305" fill={C.warm} size={13} weight={700}>
-                  Kollaps i fisket ved Peru!
+                  Dårligere ansjosfiske ved Peru
                 </L>
 
                 {/* ATMOSFÆRE: KONVEKSJON FLYTTET TIL MIDTEN/ØST */}
@@ -218,18 +218,18 @@ export function EnsoComparisonDiagram() {
                 {/* Svekket eller reversert passat */}
                 <Arrow d="M 320 200 L 460 200" marker={m.warm} color={C.warm} width={3.2} />
                 <L x="390" y="190" fill={C.warm} size={13} weight={700} anchor="middle">
-                  Vestavindsutbrudd (Westerly Bursts) →
+                  Vind fra vest mot øst
                 </L>
 
                 {/* Synkende luft og tørke over Indonesia */}
                 <Arrow d="M 180 70 L 180 190" marker={m.cold} color={C.cold} width={2.6} />
                 <L x="180" y="210" fill={C.sand} size={13} weight={700} anchor="middle">
-                  Tørke & skogbranner!
+                  Mindre regn over Indonesia
                 </L>
 
                 {/* Nedbør og flom over Peru */}
                 <L x="750" y="180" fill={C.rain} size={13} weight={700} anchor="middle">
-                  Flom & leirskred!
+                  Mer regn over Stillehavet
                 </L>
               </>
             )}
@@ -249,16 +249,16 @@ export function EnsoComparisonDiagram() {
                   fill="none"
                 />
                 <L x="500" y="335" fill="#38bdf8" size={13} weight={700}>
-                  Termoklin (ekstremt bratt helning) ↘
+                  Ekstra varmt i vest, kaldt i øst
                 </L>
 
                 {/* Intens oppvelling ved Peru */}
                 <Arrow d="M 740 400 L 740 272" marker={m.cold} color="#38bdf8" width={4} />
                 <L x="730" y="340" fill="#38bdf8" size={13} weight={800} anchor="end">
-                  Ekstrem oppvelling!
+                  Kaldere hav i øst
                 </L>
                 <L x="730" y="358" fill={C.cold} size={11} weight={600} anchor="end">
-                  Havtemperatur 1–3 °C under normalen
+                  Kaldere enn vanlig
                 </L>
 
                 {/* Varmt basseng presset hardt mot vest */}
@@ -273,13 +273,13 @@ export function EnsoComparisonDiagram() {
                 <ellipse cx="230" cy="85" rx="55" ry="32" fill="#cbd5e1" opacity="0.95" />
                 <ellipse cx="200" cy="55" rx="55" ry="30" fill="#64748b" opacity="0.98" />
                 <L x="200" y="112" fill="#0f172a" size={14} weight={800} anchor="middle">
-                  Ekstrem monsun & flom
+                  Mer regn over Indonesia
                 </L>
 
                 {/* Ekstra sterke passater */}
                 <Arrow d="M 710 200 L 260 200" marker={m.teal} color={C.teal} width={4.2} />
                 <L x="485" y="190" fill={C.teal} size={16} weight={900} anchor="middle">
-                  ⇇ Ekstra sterke passatvinder (super-passater)
+                  Sterkere østlige vinder
                 </L>
               </>
             )}
@@ -293,30 +293,30 @@ export function EnsoComparisonDiagram() {
 export function BjerknesLoopDiagram() {
   return (
     <FigureFrame
-      heading="Bjerknes-løkka: ingen av dem er «først» når El Niño først er i gang"
-      caption="Positiv tilbakekobling. Svakere passat flatter termoklinen. Varmere øst svekker Walker og dermed passaten enda mer. Løkka forsterker. Den forklarer ikke alene hva som tente den."
+      heading="Hav og luft henger sammen"
+      caption="ENSO krever endring både i havet og i lufta. Svakere østlige vinder, varmere sentrum og øst, og mer regn der, hører til samme fase (L'Heureux, 2014)."
     >
       <div className="grid gap-3 sm:grid-cols-2">
         {[
           {
             n: "1",
-            t: "Passaten svekkes",
-            d: "Mindre stabling mot Indonesia. Vinden holder ikke lenger skråningen mot tyngdekraften.",
+            t: "De østlige vindene svekkes",
+            d: "Vindene som vanligvis blåser fra øst mot vest, blir svakere eller snur.",
           },
           {
             n: "2",
-            t: "Termoklinen synker i øst",
-            d: "En ekvatorial Kelvin-bølge bruker et par måneder vest → øst. Det varme laget blir tykkere utenfor Peru.",
+            t: "Sentrum og øst blir varmere",
+            d: "Havoverflaten i det sentrale og østlige tropiske Stillehavet ligger over gjennomsnittet.",
           },
           {
             n: "3",
-            t: "Øst blir varmere",
-            d: "Oppvelling fortsetter, men henter lunkent vann ovenfor den dypere termoklinen. SST-gradienten vest–øst minkes.",
+            t: "Regnet flytter seg",
+            d: "Mindre regn over Indonesia. Mer regn over det tropiske Stillehavet.",
           },
           {
             n: "4",
-            t: "Walker svekkes",
-            d: "Konveksjonen flytter mot midten av Stillehavet. Passaten slakker mer. Tilbake til 1.",
+            t: "Lufta følger med",
+            d: "Mer tordenvær over det varme vannet. Det er et samspill, ikke bare et hav.",
           },
         ].map((b) => (
           <div key={b.n} className="rounded-lg border border-border bg-background px-4 py-4">
@@ -328,7 +328,7 @@ export function BjerknesLoopDiagram() {
         ))}
       </div>
       <p className="mt-3 text-center text-sm text-muted-foreground">
-        1 → 2 → 3 → 4 → 1. Derfor holder verken «vinden først» eller «termoklinen først» som regel.
+        Hav og luft må begge være med. Ellers er det ikke en El Niño- eller La Niña-fase.
       </p>
     </FigureFrame>
   );
