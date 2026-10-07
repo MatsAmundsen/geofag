@@ -201,7 +201,7 @@ export const GF2_THEMES = [
     image: "/images/tema-milankovitch.jpg",
     alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
     blurb:
-      "Hvorfor isen kommer: Milankovitch, 65 °N, albedo og CO₂. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
+      "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. De tre svingningene forklarer ikke oppvarmingen vi ser nå.",
     status: "klar" as const,
   },
   {
@@ -211,7 +211,7 @@ export const GF2_THEMES = [
     image: "/images/tema-katastrofer.jpg",
     alt: "En atlantisk orkan sett fra verdensrommet, med tydelig øye",
     blurb:
-      "Orkaner, ekstremnedbør og stormflo er værsystemer drevet av samme fysikk. Risikoen forskyves når klimaet endres.",
+      "Orkan som vindstyrke er sterkere enn 32,6 m/s. En tropisk orkan er et lavtrykk med middelvind på minst 119 km/t.",
     status: "klar" as const,
   },
   {

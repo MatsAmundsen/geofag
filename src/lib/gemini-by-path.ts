@@ -59,11 +59,11 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/tema/klima/iod":
     "ENSO eier Stillehavet. Denne siden eier temperaturgradienten i Det indiske hav. Strålingsbudsjettet ligger i oversikt.",
   "/tema/klima/nao":
-    "Denne siden eier trykkvippen mellom Asorene og Island — og dermed norsk vintervær. AMOC eier det trege havbeltet. Oversikten eier pådriv.",
+    "Denne siden eier trykkvippen mellom Asorene og Island, og virkningen på Nord-Europa. AMOC eier det trege havbeltet. Oversikten eier pådriv.",
   "/tema/paleoklima":
-    "Denne siden eier arkivene: proxy, iskjerne og brå hopp. Banen som setter innstrålingen på 65 °N, eier neste kapittel. Kryosfæren eier isen som jobber i år.",
+    "Denne siden eier arkivene: direkte CO₂-målinger og iskjerner. Neste kapittel eier jordbanen. Kryosfæren eier isen som jobber i år.",
   "/tema/milankovitch":
-    "Denne siden eier hvorfor isen kommer: Milankovitch, albedo og CO₂. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
+    "Denne siden eier hvorfor isen kommer: de tre svingningene i jordbanen. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
   "/geofag-1/platetektonikk":
     "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier seismisitet, bølger og Wadati-Benioff. Norges geologi eier Leka-ofiolitten, Kaledonidene og Oslofeltet.",
   "/geofag-1/jordskjelv":
