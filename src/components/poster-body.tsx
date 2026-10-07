@@ -207,11 +207,13 @@ export function PosterBody({
   className,
   cleanChapter,
   scrollTables = false,
+  wrapTables = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
   scrollTables?: boolean;
+  wrapTables?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
@@ -221,7 +223,7 @@ export function PosterBody({
         part.type === "widget" ? (
           <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />
         ) : (
-          <Markdown key={`m-${index}`} scrollTables={scrollTables}>
+          <Markdown key={`m-${index}`} scrollTables={scrollTables} wrapTables={wrapTables}>
             {part.value}
           </Markdown>
         ),
