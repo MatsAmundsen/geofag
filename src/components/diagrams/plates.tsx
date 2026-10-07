@@ -340,14 +340,14 @@ export function ConvectionDiagram() {
               <stop offset="50%" stopColor="#ef4444" />
               <stop offset="100%" stopColor="#b91c1c" />
             </linearGradient>
+            <marker id="cf-flow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+              <path d="M0 1.5 L11 6 L0 10.5 z" fill="#f97316" />
+            </marker>
           </defs>
 
           <style>{`
-            @keyframes cf-flow-cw {
-              to { stroke-dashoffset: -140; }
-            }
-            @keyframes cf-flow-ccw {
-              to { stroke-dashoffset: 140; }
+            @keyframes cf-flow-along {
+              to { stroke-dashoffset: -144; }
             }
             @keyframes cf-slab-shiver {
               0%, 100% { transform: translateY(0); }
@@ -357,12 +357,8 @@ export function ConvectionDiagram() {
               0%, 100% { opacity: 0.5; }
               50% { opacity: 0.85; }
             }
-            .cf-anim-cw {
-              animation: cf-flow-cw 6s linear infinite;
-              animation-play-state: ${motion.playing ? "running" : "paused"};
-            }
-            .cf-anim-ccw {
-              animation: cf-flow-ccw 6s linear infinite;
+            .cf-anim-flow {
+              animation: cf-flow-along 6s linear infinite;
               animation-play-state: ${motion.playing ? "running" : "paused"};
             }
             .cf-anim-slab {
@@ -408,50 +404,54 @@ export function ConvectionDiagram() {
             className="cf-anim-plume"
           />
 
-          {/* Animerte konveksjonssirkler i mantelen med stroke-dashoffset */}
-          <g stroke="#f97316" strokeWidth="2.8" fill="none" opacity="0.8" strokeDasharray="10 8">
-            {/* Medurs celle til høyre */}
+          {/* Konveksjonsceller. Streken følger banen: topp ut fra ryggen, synk ved slaben. */}
+          <g stroke="#f97316" strokeWidth="2.8" fill="none" opacity="0.8" strokeDasharray="10 8" markerMid="url(#cf-flow)" markerEnd="url(#cf-flow)">
             <path
-              className="cf-anim-cw"
-              d="M 330 380 C 440 400, 560 380, 600 280 C 620 220, 560 170, 440 170 C 350 170, 320 240, 330 380"
+              className="cf-anim-flow"
+              data-convection-cell="right"
+              d="M 330 380 C 320 240, 350 170, 440 170 C 560 170, 620 220, 600 280 C 560 380, 440 400, 330 380"
             />
-            {/* Moturs celle til venstre */}
             <path
-              className="cf-anim-ccw"
-              d="M 230 380 C 140 400, 80 360, 70 260 C 60 180, 140 170, 220 170"
+              className="cf-anim-flow"
+              data-convection-cell="left"
+              d="M 230 380 C 248 310, 240 210, 220 170 C 140 170, 60 180, 70 260 C 80 360, 140 400, 230 380"
             />
           </g>
           <L x="450" y="270" fill="#f97316" size={13} weight={700} anchor="middle">
             Mantelkonveksjon (seig, duktil peridotittflyt)
           </L>
 
-          {/* DRIVKRAFT 1: SLAB PULL. Outer g holds position; inner g may animate transform. */}
+          {/* DRIVKRAFT 1: SLAB PULL. Boxen står stille; pilene viser trekk mot gropen og ned langs slaben. */}
           <g
-            transform="translate(520, 208)"
             data-slab-label="platetrekk"
             opacity={motion.playing && force !== 1 ? 0.84 : 1}
             style={motion.playing && force === 1 ? { filter: "drop-shadow(0 0 6px #6fb3b8)" } : undefined}
           >
-            <g className="cf-anim-slab">
-              <Arrow d="M 196 18 L 268 156" marker={m.teal} color={C.teal} width={4.5} />
+            <g data-plate-pull="toward-trench">
+              <Arrow d="M 548 124 L 652 124" marker={m.teal} color={C.teal} width={3.6} />
+            </g>
+            <g className="cf-anim-slab" data-slab-pull="down">
+              <Arrow d="M 706 148 L 792 312" marker={m.teal} color={C.teal} width={4.5} />
+            </g>
+            <g data-force-label="platetrekk">
               <rect
-                x="0"
-                y="0"
-                width="204"
-                height="76"
+                x="618"
+                y="332"
+                width="200"
+                height="70"
                 rx="6"
                 fill="#0b1622"
                 stroke={C.teal}
                 strokeWidth={motion.playing && force === 1 ? 2.6 : 1.5}
                 opacity="0.96"
               />
-              <L x="10" y="20" fill={C.teal} size={12} weight={800}>
+              <L x="628" y="350" fill={C.teal} size={12} weight={800}>
                 1. Platetrekk (om lag 90 %)
               </L>
-              <L x="10" y="40" fill="#d1d5db" size={10.5}>
+              <L x="628" y="368" fill="#d1d5db" size={10.5}>
                 Kald litosfære omdannes til
               </L>
-              <L x="10" y="58" fill={C.warm} size={10.5} weight={700}>
+              <L x="628" y="386" fill={C.warm} size={10.5} weight={700}>
                 høytett eklogitt (synker som et lodd)
               </L>
             </g>
