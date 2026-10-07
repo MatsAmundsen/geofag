@@ -33,15 +33,21 @@ import {
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
   AtmosphericColumnDiagram,
+  FrontVerticalProfileDiagram,
   GlobalClimateZonesDiagram,
   HadleyCloseupDiagram,
   HighPressureCrossSectionDiagram,
   InsolationDiagram,
   LowPressureCrossSectionDiagram,
   OneVsThreeCellsDiagram,
+  RadarSatelliteNowcastingDiagram,
+  RealisticSynopticChartDiagram,
   PolarFrontNorwayDiagram,
   RelativePressureDiagram,
+  StationModelExplainedDiagram,
   SurfaceWindsDiagram,
+  UpperAir500hPaMapDiagram,
+  WeatherProgression24hDiagram,
   WindCellsDiagram,
 } from "@/components/diagrams";
 import {
@@ -90,6 +96,7 @@ import {
   QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_SKRED,
   QUIZ_HOYTRYKK,
+  QUIZ_VAERKART,
   QUIZ_VINDSYSTEMET,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
@@ -229,6 +236,42 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         Subsidens er storskala nedsynking av luft. Når lufta synker, presses den sammen og varmes
         opp. Den relative fuktigheten faller, skyene løses opp, og det blir tørre høytrykk. Det ser
         vi nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  QuizVaerkart: () => (
+    <Quiz questions={QUIZ_VAERKART} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  SynopticChart: () => <RealisticSynopticChartDiagram />,
+  FrontProfile: () => <FrontVerticalProfileDiagram />,
+  StationModel: () => <StationModelExplainedDiagram />,
+  UpperAir500: () => <UpperAir500hPaMapDiagram />,
+  Weather24h: () => <WeatherProgression24hDiagram />,
+  RadarNowcast: () => <RadarSatelliteNowcastingDiagram />,
+  SynoptiskForklaring: () => (
+    <Callout title="Hva betyr «synoptisk»?">
+      <p>
+        Synoptisk betyr å se været under ett. Et synoptisk kart viser observasjoner fra samme
+        tidspunkt over et stort område, med isobarer og fronter. Tidspunktet oppgis i UTC (NOAA,
+        u.å.-e).
+      </p>
+    </Callout>
+  ),
+  IsobarForklaring: () => (
+    <Callout title="Hva betyr «isobar»?">
+      <p>
+        En isobar er en kurve gjennom steder med likt lufttrykk. På norske kart er det vanligvis 5
+        hPa mellom linjene. Trykket er redusert til havnivå, så et fjell og en kyst kan sammenlignes
+        (Store norske leksikon, u.å.-c).
+      </p>
+    </Callout>
+  ),
+  FrontForklaring: () => (
+    <Callout title="Hva betyr «front»?">
+      <p>
+        En front er skillet mellom to luftmasser med ulik tetthet, som oftest ulik temperatur. Den
+        varmere lufta løftes, og det kan bli skyer og nedbør. Neste ord du trenger, er okklusjon:
+        kaldfronten har tatt igjen varmfronten (Store norske leksikon, u.å.-a; NOAA, u.å.-b).
       </p>
     </Callout>
   ),

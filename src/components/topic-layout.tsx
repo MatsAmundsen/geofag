@@ -186,6 +186,7 @@ export function TopicLayout({
                   resolvedSlug === "jordskjelv" ||
                   resolvedSlug === "jordsystemene" ||
                   resolvedSlug === "isbreer-og-landformer" ||
+                  resolvedSlug === "vaerkart" ||
                   resolvedSlug === "vindsystemet"
                 }
                 wrapTables={

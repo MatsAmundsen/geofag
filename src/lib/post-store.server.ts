@@ -465,6 +465,16 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["Her kan du redigere", "Nøkkelbegreper til repetisjon"],
   },
   {
+    flag: "vaerkart-copy-2026-10-07",
+    slug: "vaerkart",
+    stale: ["Her kan du redigere", "WMO-stasjonsmodeller"],
+  },
+  {
+    flag: "vaerkart-copy-2-2026-10-07",
+    slug: "vaerkart",
+    stale: ["følger ofte et fast løp"],
+  },
+  {
     flag: "vulkaner-copy-2026-10-06",
     slug: "vulkaner",
     stale: ["Henrys lov", "ventialsjonssystemet"],

@@ -678,6 +678,64 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_VAERKART: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr tette isobarer på et værkart?",
+    options: [
+      "At lufttrykket er lavt overalt.",
+      "Stor trykkforskjell over kort avstand, og sterk vind.",
+      "At kartet er tegnet med feil enhet.",
+    ],
+    answer: 1,
+    explain:
+      "Isobarene viser likt trykk. Når de ligger tett, endrer trykket seg mye over kort avstand, og vinden blir sterk.",
+  },
+  {
+    prompt: "Hvorfor reduseres lufttrykket til havnivå før det tegnes på kartet?",
+    options: [
+      "Slik at stasjoner i ulik høyde kan sammenlignes.",
+      "Fordi havet alltid har 1013 hPa.",
+      "Fordi fjellstasjoner ikke måler trykk.",
+    ],
+    answer: 0,
+    explain:
+      "Trykket faller med høyden. Reduksjon til havnivå gjør at et fjell og en kyst kan sammenlignes på samme kart.",
+  },
+  {
+    prompt: "Hva er en varmfront?",
+    options: [
+      "En front der lufta bak er varmere enn lufta foran, ofte med skyet vær og jevn nedbør.",
+      "En front som alltid har temperatur over 20 °C.",
+      "En blå strek med trekanter.",
+    ],
+    answer: 0,
+    explain:
+      "Varm og kald er relativt. En varmfront tegnes rød med halvsirkler, og den forbindes med skyet vær og jevn nedbør.",
+  },
+  {
+    prompt: "Hva skjer når kaldfronten tar igjen varmfronten?",
+    options: [
+      "Lavtrykket blir liggende uendret i flere uker.",
+      "Det dannes en okkludert front, og den varme lufta løftes bort fra sentrum.",
+      "Frontene bytter farge og blir en stasjonær front.",
+    ],
+    answer: 1,
+    explain:
+      "I den norske syklonmodellen går kaldfronten fortere. Når den tar igjen varmfronten, blir fronten okkludert, og lavtrykket svekkes etter hvert.",
+  },
+  {
+    prompt: "Hva brukes 500 hPa-kartet til?",
+    options: [
+      "Å vise bølgehøyden på havet.",
+      "Å vise høyden av flaten der trykket er 500 hPa, om lag midt i atmosfæren, og hvor lufta kan stige.",
+      "Å erstatte bakkekartet, fordi bakketrykket ikke betyr noe.",
+    ],
+    answer: 1,
+    explain:
+      "500 hPa-kartet er det viktigste høydekartet. Flaten ligger om lag 5 000 til 6 000 meter oppe. Foran sterk virvling kan lufta stige, og det kan bli nedbør.",
+  },
+];
+
 export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
   {
     prompt:

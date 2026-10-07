@@ -157,6 +157,34 @@ describe("injectPosterWidgets", () => {
     assert.equal(md.includes("3500"), false);
   });
 
+  it("keeps the værkart poster on the template", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const md = readFileSync(join(lib, "posts/vaerkart.md"), "utf8");
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "SynoptiskForklaring",
+      "IsobarForklaring",
+      "SynopticChart",
+      "FrontForklaring",
+      "FrontProfile",
+      "Weather24h",
+      "StationModel",
+      "UpperAir500",
+      "RadarNowcast",
+      "QuizVaerkart",
+    ]) {
+      assert.equal(ids.has(id), true, `vaerkart missing ${id}`);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/vaerkart"), true);
+    assert.equal(md.includes("Bjerknes-modellen"), true);
+    assert.equal(md.includes("følger ofte et fast løp"), false);
+  });
+
   it("does not put the Platetektonikk quiz into Vulkaner", () => {
     const vulkaner = readFileSync(
       join(dirname(fileURLToPath(import.meta.url)), "posts/vulkaner.md"),
