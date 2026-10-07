@@ -796,3 +796,55 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_KLIMA: QuizQuestion[] = [
+  {
+    prompt: "Hvilke fem deler består klimasystemet av?",
+    options: [
+      "Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren.",
+      "Bare atmosfæren og havet.",
+      "Bare is, land og livet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er klimasystemet?». WMO beskriver de fem delene, og samspillet mellom dem.",
+  },
+  {
+    prompt: "Hva skiller indre dynamikk fra ytre pådriv?",
+    options: [
+      "Indre dynamikk er variasjon i systemet selv. Ytre pådriv er et dytt utenfra, som vulkan, sol, bane eller menneskelig endring.",
+      "Begge er det samme som oppvarmingstrenden.",
+      "Ytre pådriv er bare været fra dag til dag.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er klimasystemet?». Systemet endrer seg både av egen indre dynamikk og av ytre pådriv.",
+  },
+  {
+    prompt: "Hvor i dette kapitlet ligger stråling, pådriv og tilbakekobling?",
+    options: ["I oversikten.", "På ENSO-siden.", "På AMOC-siden."],
+    answer: 0,
+    explain: "Se tabellen. Oversikten eier stråling, pådriv og tilbakekobling. Denne siden er kartet.",
+  },
+  {
+    prompt: "Hvilken svingning ligger nærmest norsk vintervær?",
+    options: [
+      "NAO, svingningen over Nord-Atlanteren.",
+      "IOD, svingningen i Det indiske hav.",
+      "ENSO, svingningen i det tropiske Stillehavet.",
+    ],
+    answer: 0,
+    explain: "Se tabellen. NAO er svingningen over Nord-Atlanteren, nærmest norsk vintervær.",
+  },
+  {
+    prompt: "Er El Niño eller en positiv NAO det samme som oppvarmingstrenden?",
+    options: [
+      "Nei. De hører til den indre dynamikken. Mer drivhusgass er et ytre pådriv.",
+      "Ja. El Niño er oppvarmingstrenden.",
+      "Ja. Positiv NAO er det samme som mer drivhusgass.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Vanlige misforståelser». El Niño og positiv NAO hører til den indre dynamikken. Ytre pådriv, som mer drivhusgass, er noe annet.",
+  },
+];

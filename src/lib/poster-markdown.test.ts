@@ -312,6 +312,24 @@ describe("jordsystemene poster", () => {
   });
 });
 
+describe("klima poster", () => {
+  it("keeps the climate-map poster on the template", () => {
+    const md = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "posts/klima.md"), "utf8");
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["KlimaForklaring", "KlimaKart", "QuizKlima"]) {
+      assert.equal(ids.has(id), true, `klima missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Utdanningsdirektoratet, 2020"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/klima"), true);
+  });
+});
+
 describe("stripCatalogImageCaptions", () => {
   it("drops the italic line under a known photo so PhotoFigure is not doubled", () => {
     const md =
