@@ -12,7 +12,7 @@ export function RealisticSynopticChartDiagram() {
     <Diagram
       title="Synoptisk bakkekart over Nord-Atlanteren og Skandinavia med isobarer, fronter og stasjonsplott"
       heading="Det synoptiske bakkekartet: Værets anatomiske kart"
-      caption="Et offisielt synoptisk bakkekart (overflateanalyse) fra Meteorologisk institutt. Isobarene (hvite/grå linjer) binder sammen steder med samme lufttrykk i havnivå i 5 hPa-intervaller. Tette isobarer sør og vest for lavtrykket L1 (968 hPa) viser en voldsom trykkgradient som gir full storm på kysten. Vinden blåser mot klokken og krysser isobarene 20°–30° inn mot lavtrykket som følge av bakkefriksjon. Frontsystemet etter Bergensskolens modell viser en varmfront (rød med halvsirkler) over Sørøst-Norge, en kaldfront (blå med trekanter) over Nordsjøen, en okklusjon (lilla med vekslende symboler) mot lavtrykkssenteret, samt stasjonsplott med vindpiler, temperatur og lufttrykk."
+      caption="Illustrasjon av et bakkekart. Isobarene binder sammen steder med likt lufttrykk redusert til havnivå. På norske kart er intervallet vanligvis 5 hPa. Tette isobarer betyr stor trykkforskjell og sterk vind. Varmfront tegnes rød med halvsirkler, kaldfront blå med trekanter, og en okkludert front lilla med begge symbolene."
       viewBox="0 0 940 560"
       wide
     >
@@ -243,7 +243,7 @@ export function StationModelExplainedDiagram() {
     <Diagram
       title="WMO Stasjonsmodell (plottemodell) i detalj med temperatur, trykk, vind og skydekke"
       heading="Slik dekoder du en meteorologisk stasjonsmodell (WMO)"
-      caption="På meteorologiske kart er observasjoner fra hver værstasjon komprimert inn i en standardisert stasjonsmodell (WMO Station Plot). 1) Sirkelen i midten angir skydekke i åttedeler (oktas). 2) Øverst til venstre: lufttemperatur (12 °C). 3) Nederst til venstre: duggpunkt (11 °C). Liten forskjell betyr nær 100 % relativ fuktighet (tåke eller regn). 4) Øverst til høyre: lufttrykk i tiendedels hPa uten 10- eller 9-tall foran («084» betyr 1008,4 hPa). 5) Nederst til høyre: trykkendring siste 3 timer (-3,4 hPa med fallende kurve). 6) Venstre symbol: nåværende vær ww (tre prikker = moderat regn). 7) Vindpil: peker i retningen luften kommer fra, og fjærene angir hastighet (halv fjær = 5 knop, hel = 10 knop, flagg = 50 knop)."
+      caption="Et stasjonsplott samler været på ett sted: temperatur, duggpunkt, trykk, et symbol for været nå, og en vindpil som peker dit vinden kommer fra. Symbolene for været nå er standardiserte. Liten forskjell mellom temperatur og duggpunkt betyr at lufta er nær mettet."
       viewBox="0 0 940 520"
       wide
     >
@@ -275,7 +275,7 @@ export function StationModelExplainedDiagram() {
               <L x="-45" y="28" fill={C.cold} size={22} weight={800} anchor="end">11</L>
               <line x1="-42" y1="22" x2="-80" y2="55" stroke={C.cold} strokeWidth="1.4" />
               <L x="-85" y="60" fill={C.cold} size={12} weight={700} anchor="end">Duggpunkt: 11 °C</L>
-              <L x="-85" y="74" fill={C.muted} size={10} anchor="end">Depresjon = 1 °C (T-Td) · Mettet luft!</L>
+              <L x="-85" y="74" fill={C.muted} size={10} anchor="end">Liten forskjell mellom temperatur og duggpunkt: lufta er nær mettet.</L>
 
               {/* 3. LUFTRYKK (PPP) - Øverst til høyre */}
               <L x="45" y="-12" fill="#f8fafc" size={22} weight={800}>084</L>
@@ -291,7 +291,7 @@ export function StationModelExplainedDiagram() {
               </g>
               <line x1="42" y1="22" x2="85" y2="55" stroke={C.low} strokeWidth="1.4" />
               <L x="90" y="58" fill={C.low} size={12} weight={700}>Tendens siste 3 timer:</L>
-              <L x="90" y="72" fill="#f8fafc" size={11}>-3,4 hPa (Raskt fallende!)</L>
+              <L x="90" y="72" fill="#f8fafc" size={11}>Trykket faller.</L>
 
               {/* 5. VÆRTYPE (ww) - Til venstre for sirkel */}
               {/* Tre fylte prikker = moderat sammenhengende regn */}
@@ -342,7 +342,7 @@ export function StationModelExplainedDiagram() {
                 {/* 50 knop stormflagg */}
                 <line x1="10" y1="52" x2="40" y2="52" stroke="#f8fafc" strokeWidth="2" />
                 <polygon points="40,52 40,36 28,52" fill="#f8fafc" />
-                <L x="55" y="55" fill={C.warm} size={11} weight={700}>Trekantflagg = 50 knop (25 m/s, storm!)</L>
+                <L x="55" y="55" fill={C.warm} size={11} weight={700}>Lang strek på vindpilen betyr sterk vind.</L>
               </g>
             </g>
 
@@ -405,7 +405,7 @@ export function FrontVerticalProfileDiagram() {
     <Diagram
       title="Vertikalt atmosfærisk tverrsnitt gjennom en polarfrontsyklon (1500 km profil)"
       heading="Vertikalt tverrsnitt: Skyer, temperatur og nedbør gjennom frontene"
-      caption="Tverrsnitt gjennom en moden polarfrontsyklon fra vest (venstre) til øst (høyre) over en avstand på ca. 1500 km. 1) Varmfronten (høyre) har en svært slak helning (1:150–1:200). Den varme, fuktige luften glir langsomt oppover den tilbaketrekkende kaldluften. Dette danner en karakteristisk skysekvens over hundrevis av kilometer: Høye fjærskyer (Cirrus) varsler fronten 800 km unna, etterfulgt av slørskyer (Cirrostratus med halo), lagskyer (Altostratus) og til slutt tykke regnskyer (Nimbostratus) med vedvarende, jevnt silregn. 2) Varm sektor (midten): Mild luft, spredt yr eller stratocumulus. 3) Kaldfronten (venstre) har en bratt helning (1:50). Den tunge polarluften pløyer brutalt inn under varmluften og tvinger den voldsomt til værs. Dette utløser opptårnende tordenskyer (Cumulonimbus) med kraftige byger, hagl og vindkast, etterfulgt av oppklarning i kaldluften bak."
+      caption="Frontflaten heller svakt mot bakken, oftest mellom 1:200 og 1:100. Varm luft løftes over kald luft, og det dannes skyer og frontnedbør. En varmfront gir skyet vær og jevn nedbør. En kaldfront fortrenger varmere luft og gir oftere byger."
       viewBox="0 0 940 520"
       wide
     >
@@ -588,7 +588,7 @@ export function UpperAir500hPaMapDiagram() {
     <Diagram
       title="500 hPa Høydekart: Geopotensiell høyde, isohypser og værets styrestrøm"
       heading="500 hPa Høydekart: Styrestrømmen i 5,5 kilometers høyde"
-      caption="Høydekartet for 500 hPa viser høyden til trykkflaten på 500 hPa målt i geopotensielle meter (gpm). Konturlinjene kalles isohypser. Fordi kald luft er tett og kompakt, synker 500 hPa-flaten dypt ned over kalde luftmasser og danner et høyde-tråg (trough, f.eks. 5400 gpm over Norskehavet). Over varm luft hever flaten seg og danner en høyde-rygg (ridge, f.eks. 5760 gpm over Kontinentet). I fri atmosfære blåser vinden parallelt med isohypsene (geostrofisk vind). Denne kraftige øvre luftstrømmen (polarfrontjeten) fungerer som styrestrøm for overflateværet: Bakkens lavtrykk (L) trekkes mot nordøst langs isohypsene i omtrent halvparten av vindhastigheten i 500 hPa."
+      caption="500 hPa-kartet er det viktigste høydekartet. Flaten ligger om lag 5 000 til 6 000 meter over havet. Konturene viser høyden på flaten. Luftmassenes bevegelse følger i stor grad vinden i høyden og jetstrømmen. Foran et område med sterk virvling stiger lufta, og det kan bli nedbør."
       viewBox="0 0 940 500"
       wide
     >
@@ -686,7 +686,7 @@ export function UpperAir500hPaMapDiagram() {
             <rect x="0" y="0" width="850" height="34" rx="6" fill="#0d1b26" stroke="#23384a" />
             <L x="20" y="21" fill={C.teal} size={11} weight={700}>Huskeregel for eksamen:</L>
             <L x="160" y="21" fill="#cbd5e1" size={11}>
-              Bakkens lavtrykk styres parallelt med 500 hPa-isohypsene, på forsiden (østsiden) av høyde-tråget der øvre divergens puster liv i syklonen!
+              Luftmassene følger i stor grad vinden i høyden. Foran sterk virvling kan lufta stige, og det kan bli nedbør.
             </L>
           </g>
         </>
@@ -705,7 +705,7 @@ export function WeatherProgression24hDiagram() {
     <Diagram
       title="Værutvikling og adveksjon over 24 timer (0t, +12t, +24t) med vinddreining på Vestlandet"
       heading="Værutvikling i 3 trinn: Slik forutsier du været 24 timer fram"
-      caption="En klassisk værutvikling over 24 timer. Trinn 1 (0 timer, venstre): Lavtrykket L1 (975 hPa) ligger vest for Stad. Varmfronten gir sørøstlig kuling og silregn på Vestlandet. Trinn 2 (+12 timer, midten): Lavtrykket har rykket inn over Trøndelagskysten. Varmfronten har passert østover, og Vestlandet er i den varme sektoren med mildluft og vinddreining til sørvest. Trinn 3 (+24 timer, høyre): Lavtrykket har okkludert og ligger over Sverige. Kaldfronten har feiet forbi; vinden har dreid brått til nordvestlig kuling («veering»), temperaturen stuper, og været preges av ustabile byger med hagl og oppklarning."
+      caption="Illustrasjon av den norske syklonmodellen. Først en bølge på en front som nesten ligger i ro. Så en moden syklon med varmfront og kaldfront. Til slutt tar kaldfronten igjen varmfronten, og det blir en okkludert front. Uten den varme lufta i sentrum svekkes lavtrykket."
       viewBox="0 0 940 520"
       wide
     >
@@ -808,9 +808,9 @@ export function WeatherProgression24hDiagram() {
                 <L x="12" y="54" fill={C.low} size={10} weight={700}>• Trykk:</L>
                 <L x="55" y="54" fill="#cbd5e1" size={10}>982 hPa (Bunnpunkt)</L>
                 <L x="12" y="72" fill="#38bdf8" size={10} weight={700}>• Vær:</L>
-                <L x="45" y="72" fill="#cbd5e1" size={10}>Regnet stopper! Yr og tåke</L>
+                <L x="45" y="72" fill="#cbd5e1" size={10}>Regnet avtar. Yr og tåke.</L>
                 <L x="12" y="90" fill={C.warm} size={10} weight={700}>• Temp:</L>
-                <L x="52" y="90" fill={C.warm} size={10} weight={800}>Stiger til 11 °C (Mildt!)</L>
+                <L x="52" y="90" fill={C.warm} size={10} weight={800}>Mildere luft bak varmfronten.</L>
                 <L x="12" y="106" fill={C.warm} size={9}>Status: I VARM SEKTOR</L>
               </g>
             </g>
@@ -855,11 +855,11 @@ export function WeatherProgression24hDiagram() {
                 <L x="12" y="36" fill={C.cold} size={10} weight={700}>• Vind:</L>
                 <L x="50" y="36" fill={C.cold} size={10} weight={800}>Dreid til NORDVEST (18 m/s)</L>
                 <L x="12" y="54" fill="#22c55e" size={10} weight={700}>• Trykk:</L>
-                <L x="55" y="54" fill="#22c55e" size={10}>998 hPa (Raskt stigende!)</L>
+                <L x="55" y="54" fill="#22c55e" size={10}>Trykket stiger.</L>
                 <L x="12" y="72" fill="#60a5fa" size={10} weight={700}>• Vær:</L>
                 <L x="45" y="72" fill="#cbd5e1" size={10}>Kraftige haglbyger & oppklarning</L>
                 <L x="12" y="90" fill={C.cold} size={10} weight={700}>• Temp:</L>
-                <L x="52" y="90" fill={C.cold} size={10} weight={800}>Stuper til 3 °C (Polarluft!)</L>
+                <L x="52" y="90" fill={C.cold} size={10} weight={800}>Kaldere luft bak kaldfronten.</L>
                 <L x="12" y="106" fill={C.cold} size={9}>Status: BAK KALDFRONTEN</L>
               </g>
             </g>
@@ -890,7 +890,7 @@ export function RadarSatelliteNowcastingDiagram() {
     <Diagram
       title="Radar og satellitt: Nowcasting og farevarsling hos Meteorologisk institutt og Yr"
       heading="Radar og satellitt: Været i sanntid og farevarsling (Nowcasting)"
-      caption="Venstre panel: Værradar sender ut mikrobølgepulser som reflekteres av nedbørspartikler. Reflektiviteten måles i dBZ og omregnes til nedbørsrate i mm per time (fra 0,5 mm/t lyseblått til over 30 mm/t rødt/lilla for ekstrem styrtregn). Viser orografisk oppstuing av regn mot vestlandsfjellene. Høyre panel: Værsatellitten (Meteosat) måler infrarød utstråling fra skytoppene. Jo kaldere skytopp (hvite og lilla områder med temperaturer ned mot -60 °C), desto høyere rager skyene i troposfæren (f.eks. Cumulonimbus og dype frontskyer). Meteorologene kombinerer disse sanntidsdataene med MEPS-modellen for å utstede farevarsler på gult, oransje og rødt nivå på Yr."
+      caption="Radar og satellitt brukes til de nærmeste timene. Tidspunktet på værkart, radar og satellittbilder oppgis i UTC, også kalt Z-tid."
       viewBox="0 0 940 500"
       wide
     >
@@ -996,7 +996,7 @@ export function RadarSatelliteNowcastingDiagram() {
                 <L x="140" y="17" fill="#fdba74" size={10} weight={700}>Oransje: Vær forberedt</L>
 
                 <circle cx="260" cy="14" r="5" fill="#ef4444" />
-                <L x="270" y="17" fill="#fca5a5" size={10} weight={700}>Rødt: Gjør tiltak!</L>
+                <L x="270" y="17" fill="#fca5a5" size={10} weight={700}>Rødt: gjør tiltak.</L>
               </g>
             </g>
           </g>
