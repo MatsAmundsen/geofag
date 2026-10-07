@@ -29,7 +29,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "felt-hav-luft-is": "G1-felt er berg og vann på land. G2-felt er hav, atmosfære eller kryosfære. Målet er det samme: planlegge, samle, bearbeide, tolke, presentere. Forskjellen er hva du måler, og at været selv er både objekt og risiko.",
   "oversikt": "Klima er det langvarige mønsteret i været. Denne siden eier stråling, pådriv og tilbakekobling. Svingningene har egne sider.",
   "enso": "ENSO er den naturlige svingningen i det tropiske Stillehavet. El Niño er den varme fasen og La Niña den kalde. Den flytter vind og regn, også langt utenfor Stillehavet.",
-  "iod": "Indian Ocean Dipole er klimasyklusen i Det indiske hav. Når vest blir varmt og øst kaldt, får Øst-Afrika flom og Australia tørke. Snur vippa, snur været.",
+  "iod": "IOD er den vedvarende forskjellen i havtemperatur mellom vest og øst i det tropiske Indiahavet. I positiv fase er vest varmere og øst kjøligere.",
   "nao": "Den nordatlantiske oscillasjon (NAO) er atmosfærens store trykkvippe over Nord-Atlanteren. Svingningen i trykkgradienten mellom Azorhøytrykket og Islandslavtrykket styrer polarjetens posisjon, stormbanenes retning og om den norske vinteren blir mild og fuktig — eller preget av arktisk sprengkulde og blokkerende høytrykk.",
   "amoc": "Atlanterhavet har en enorm termisk motor: AMOC. Den frakter varme fra ekvator helt opp til Arktis og gjør Norge beboelig på 60°N. Men når isen smelter og ferskvann strømmer ut, settes stabiliteten på prøve.",
 };

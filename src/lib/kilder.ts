@@ -1328,6 +1328,12 @@ export const KILDER = {
   ],
   iod: [
     {
+      prefix: "Australian Bureau of Meteorology [BOM]. (u.å.). ",
+      italic: "Indian Ocean climate influences",
+      suffix: ".",
+      href: "https://www.bom.gov.au/climate/iod/",
+    },
+    {
       prefix:
         "Saji, N. H., Goswami, B. N., Vinayachandran, P. N., & Yamagata, T. (1999). A dipole mode in the tropical Indian Ocean. ",
       italic: "Nature, 401",
@@ -1335,68 +1341,16 @@ export const KILDER = {
       href: "https://doi.org/10.1038/43854",
     },
     {
-      prefix:
-        "Webster, P. J., Moore, A. M., Loschnigg, J. P., & Leben, R. R. (1999). Coupled ocean–atmosphere dynamics in the Indian Ocean during 1997–98. ",
-      italic: "Nature, 401",
-      suffix: "(6751), 356–360.",
-      href: "https://doi.org/10.1038/43848",
-    },
-    {
-      prefix:
-        "Abram, N. J., Wright, N. M., Ellis, B., Dixon, B. C., Wurtzel, J. B., England, M. H., Ummenhofer, C. C., Philibosian, B., Cahyarini, S. Y., Shen, C. C., & Suwargadi, B. W. (2020). Coupling of Indo-Pacific climate variability over the last millennium. ",
-      italic: "Nature, 579",
-      suffix: "(7799), 385–392.",
-      href: "https://doi.org/10.1038/s41586-020-2084-4",
-    },
-    {
-      prefix:
-        "Marchant, R., Mumbi, C., Behera, S., & Yamagata, T. (2007). The Indian Ocean dipole—the unsung driver of East African climate variability. ",
-      italic: "African Journal of Ecology, 45",
-      suffix: "(1), 4–16.",
-      href: "https://doi.org/10.1111/j.1365-2028.2006.00707.x",
-    },
-    {
-      prefix: "Australian Bureau of Meteorology. (u.å.). ",
-      italic: "Indian Ocean Dipole (IOD)",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
-      href: "https://www.bom.gov.au/climate/iod/",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },
     {
-      prefix: "Barthel, K. (2021). ",
-      italic: "Ekmantransport",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
-      href: "https://snl.no/ekmantransport",
-    },
-    {
-      prefix:
-        "Hu, S., & Fedorov, A. V. (2019). Indian Ocean warming can strengthen the Atlantic meridional overturning circulation. ",
-      italic: "Nature Climate Change, 9",
-      suffix: "(10), 747–751.",
-      href: "https://doi.org/10.1038/s41558-019-0566-4",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
-      italic: "Dipole Mode Index (DMI) monthly time-series",
-      suffix: ".",
-      href: "https://psl.noaa.gov/data/timeseries/month/DMI/",
-    },
-    {
-      prefix: "National Aeronautics and Space Administration. (2019a, 7. november). ",
-      italic: "Spate of cyclones in the North Indian Ocean",
-      suffix: ".",
-      href: "https://earthobservatory.nasa.gov/images/145841/spate-of-cyclones-in-the-north-indian-ocean",
-    },
-    {
-      prefix: "National Aeronautics and Space Administration. (2019b, 13. desember). ",
-      italic: "Fires take a toll on Australian forests",
-      suffix: ".",
-      href: "https://earthobservatory.nasa.gov/images/145998/fires-take-a-toll-on-australian-forests",
-    },
-    {
-      prefix: "National Aeronautics and Space Administration. (2006). ",
-      italic: "El Niño and rainfall",
-      suffix: ".",
-      href: "https://earthobservatory.nasa.gov/images/7247/el-nino-and-rainfall",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   nao: [

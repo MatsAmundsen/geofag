@@ -580,6 +580,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "enso",
     stale: ["Noen ganger ser havet ut som El Niño eller La Niña"],
   }
+,
+  {
+    flag: "iod-copy-2026-10-07",
+    slug: "iod",
+    stale: ["Her kan du redigere", "Black Summer"],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

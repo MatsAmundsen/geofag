@@ -126,6 +126,7 @@ import {
   QUIZ_HAVSTROMMER,
   QUIZ_OVERSIKT,
   QUIZ_ENSO,
+  QUIZ_IOD,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -489,6 +490,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     QuizEnso: () => (
     <Quiz questions={QUIZ_ENSO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+
+
+    IodForklaring: () => (
+    <Callout title="Hva betyr «indisk hav-dipol»?">
+      <p>
+        Den indiske hav-dipolen er vedvarende endring i forskjellen mellom havtemperaturen vest og
+        øst i det tropiske Indiahavet. Positiv fase har varmere vann i vest og kjøligere i øst (BOM,
+        u.å.).
+      </p>
+    </Callout>
+  ),
+    QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
