@@ -139,18 +139,31 @@ describe("injectPosterWidgets", () => {
 
   it("places chapter-scan widgets into Vulkaner, Jordskjelv and Bergarter", () => {
     const lib = dirname(fileURLToPath(import.meta.url));
-    const vulkaner = listedWidgetIds(
-      injectPosterWidgets(readFileSync(join(lib, "posts/vulkaner.md"), "utf8")),
-    );
-    const jordskjelv = listedWidgetIds(
-      injectPosterWidgets(readFileSync(join(lib, "posts/jordskjelv.md"), "utf8")),
-    );
+    const vulkanInjected = injectPosterWidgets(readFileSync(join(lib, "posts/vulkaner.md"), "utf8"));
+    const vulkaner = listedWidgetIds(vulkanInjected);
+    const jordInjected = injectPosterWidgets(readFileSync(join(lib, "posts/jordskjelv.md"), "utf8"));
+    const jordskjelv = listedWidgetIds(jordInjected);
     const bergarter = listedWidgetIds(
       injectPosterWidgets(readFileSync(join(lib, "posts/bergarter.md"), "utf8")),
     );
-    for (const id of ["VolcanoTypes", "HotspotPlume", "VolcanoModel", "QuizVulkaner"]) {
+    for (const id of [
+      "VolcanoTypes",
+      "MagmaViscosity",
+      "CalderaFormation",
+      "IcelandContrast",
+      "VeiScale",
+      "VolcanoMonitoring",
+      "VolcanicHazards",
+      "VolcanicWinter",
+      "JanMayen",
+      "HotspotPlume",
+      "VolcanoModel",
+      "QuizVulkaner",
+    ]) {
       assert.equal(vulkaner.has(id), true, `vulkaner missing ${id}`);
+      assert.equal((vulkanInjected.match(new RegExp(`\\b${id}\\b`, "g")) ?? []).length, 1, id);
     }
+    assert.equal(jordskjelv.has("JanMayen"), false);
     for (const id of ["ElasticRebound", "BoundaryQuakes", "QuizJordskjelv"]) {
       assert.equal(jordskjelv.has(id), true, `jordskjelv missing ${id}`);
     }
