@@ -1,73 +1,86 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/felt-hav-luft-is](/tema/felt-hav-luft-is). Her kan du redigere **hele fagteksten**.
-
-> **Kompetansemål**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Gjennomføre geofaglig feltarbeid knyttet til havet, atmosfæren eller kryosfæren, bearbeide og tolke de innsamlede dataene og presentere resultatene (Utdanningsdirektoratet, 2020).
-
-## Samme kjede, annen sfære
-
-Planlegg, samle, bearbeid, tolk, presenter. Det er G1-kjeden. Den gjelder. Det som skifter, er objektet: luft, sjø eller snø — og at været kan avlyse dagen. Mal og HMS-logikk ligger i [Geofag 1 feltarbeid](/geofag-1/feltarbeid) . Ikke skriv den om. Bruk den, og bytt det du måler.
-
-Ett feltopplegg, én sfære. Et opplegg som «måler alt» måler ingenting godt nok til å tåle en tolkning.
-
-## Tre holdbare oppdrag
-
-- **Atmosfære — sjøbris.** Temperatur, vindretning og sky langs en kyst–innland-transekt gjennom en dag. Hypotese: pålandsvind og temperaturfall ved kai bygger seg etter lunsj, mens innlandet henger etter. Fysikken eier [lokale værsystemer](/tema/lokale-vaersystemer) .
-
-- **Hav — ferskvannslinse.** Temperatur og saltholdighet i et sund eller en fjordarm, overflate mot et par meters dyp. Hypotese: ferskere og kanskje kaldere linse innerst, saltere mot munningen. Tetthet eier [havstrømmer](/tema/havstrommer) .
-
-- **Kryosfære — snølag.** Dybde, lagdeling og temperatur i trygt øvingsterreng. Bare der skolen har avtale og HMS. Hypotese: et svakt lag under nysnø, eller hard skare etter føn. Faregrad og flak eier [kryosfæren](/tema/kryosfaeren) . Faregrad 3 og opp er ikke skolefelt uten profesjonell skredkompetanse (NVE, u.å.).
-
-## Et design som tåler tolkning
-
-Ta sjøbrisen. Én temperatur på skoleplassen kl. 12 kan ikke vise et kretsløp. Du trenger kontrast i rom og tid: kai og et punkt noen kilometer innland, hver time fra formiddag til kveld, med vindretning og skydekke i samme slå. Da kan du si om pålandsvinden kom, når den kom, og om innlandet ble hengende etter.
-
-I fjorden: mål ikke «saltholdighet et sted». Mål overflate og dyp, innerst og ytterst, og skriv tid. En linse flytter seg med tidevann og elv. Uten klokkeslett blander du to tilstander.
-
-**Transekt:** Rekke av målepunkt langs en linje. Kyst til innland. Innerst til munning. Uten linjen har du bare enkeltverdier.
-
-## Metadata eller det er ikke data
-
-Skriv tid, sted (koordinat, ikke bare «ved kaia»), instrument, usikkerhet og observatør i feltboka før du går. En temperatur uten klokkeslett er verdiløs i en sjøbris-undersøkelse. En saltholdighet uten dyp er en blanding av to vannmasser.
-
-Usikkerhet er det målingen ikke kan skille. Et skoletermometer på ±0,5 °C kan ikke bevise en gradient på 0,3 °C. Si det. Det er tolkning, ikke nederlag.
-
-**Metadata:** Tid, sted, instrument, usikkerhet, observatør. Uten dem kan ingen gjenskape målingen.
-
-## Bearbeid, tolk, presenter
-
-Målet slutter ikke i feltboka. Bearbeid: tabell, enkel figur, tid mot temperatur på kai og innland. Tolk: matcher kurven hypotesen, eller blåste det fra land hele dagen? Presenter: problemstilling, metode, data, det du kan si, og det du ikke kan si.
-
-«Vi målte vær» er ikke en konklusjon. «Pålandsvind og 2 °C lavere temperatur ved kai fra kl. 14, innlandet uendret — forenlig med sjøbris den dagen, men én dag er ikke en sesong» er en konklusjon.
-
-## HMS i G2
-
-Kyst: bølger, glatt svaberg, flod. Fjord: båt og kaldt vann. Fjell vinter: skred. Været er objektet du måler, og risikoen som kan avlyse. Bruk Yr og Varsom. Avlys er en del av kompetansen, ikke et avvik fra den (NVE, u.å.).
-
-G1-regelen gjelder: sikkerhet går foran data. En rapport som dokumenterer avlysning med varsel og begrunnelse, er feltkompetanse. En rapport fra faregrad 3 uten plan er det ikke.
-
-> **Til eksamen**
+> Målet er at du skal kunne gjennomføre geofaglig feltarbeid knyttet til havet, atmosfæren eller kryosfæren, bearbeide og tolke de innsamlede dataene og presentere resultatene (Udir, u.å.-b).
 >
-> Vis kjeden. Vis at du valgte én sfære. Vis metadata. Si usikkerheten. En figur med to kurver slår en side med stemning.
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Geofaglig feltarbeid:* Kjerneelementet handler om planlegging, innsamling av georefererte data i felt og bearbeiding. Det skal skje på en faglig forsvarlig måte som også ivaretar helse, miljø og sikkerhet (Udir, u.å.-a).
+>
+> • *Mennesket i jordsystemene:* Kjerneelementet handler også om hvordan vi kan forebygge og beskytte oss mot naturfarer (Udir, u.å.-a). Snøskredvarselet er et slikt hjelpemiddel.
+
+## Tre felt i samme kjede
+
+```widget
+FeltHavForklaring
+```
+
+[Feltarbeid i hav, luft og is](/tema/felt-hav-luft-is) er å planlegge, samle inn, bearbeide, tolke og presentere data fra havet, atmosfæren eller kryosfæren (Udir, u.å.-b). Dataene skal være georeferert, og arbeidet skal ivareta helse, miljø og sikkerhet (Udir, u.å.-a).
+
+| Felt | Hva du kan måle | Hvor tallene kommer fra |
+| --- | --- | --- |
+| Luft | Temperatur, fuktighet og lufttrykk oppover i atmosfæren | Radiosonde på værballong |
+| Hav | Observert og varslet vannstand, og tidevann | Kartverkets tjeneste Se havnivå |
+| Snø og is | Regionalt snøskredvarsel og andres observasjoner | Varsom, hver dag i vinterhalvåret |
+| Kystlinje | Temperatur og vindretning fra kai og innover | Sjøbris en solrik sommerdag |
+| Havdyp | Konduktivitet og temperatur mot dyp | CTD |
+| Snødekke | Lag, hardhet, korn og fukt | Snøprofil |
+
+## Luft
+
+En radiosonde måler atmosfærens temperatur, fuktighet og lufttrykk fra bakken og oppover. Dataene gir et vertikalt bilde av atmosfærens tilstand. Sonden festes vanligvis til en værballong med hydrogen eller helium, så den stiger. En radiosender sender måledata ned til bakken etter hvert som sonden stiger (Store norske leksikon, u.å.-a).
+
+## Hav
+
+Kartverket har det nasjonale ansvaret for vannstandsmåling. Se havnivå viser observert og varslet vannstand, tidevann, landheving og framtidig havnivå. Vannstanden varierer på grunn av tidevannet og været. De fleste steder er det to høyvann og to lavvann i døgnet (Kartverket, u.å.).
+
+Et enkelt havoppdrag er å sammenligne den observerte vannstanden med det du ser på kaia, og å skille tidevannet fra været. Stormflo er særlig høy vannstand langs kysten i forbindelse med storm, ikke den vanlige floa (Store norske leksikon, u.å.-b; Kartverket, u.å.).
+
+CTD står for konduktivitet, temperatur og dyp. Det er en pakke med elektroniske instrumenter som registrerer hvordan konduktivitet og temperatur endrer seg med dypet. På skip er den ofte festet til en rosett som senkes med en kabel. Niskin-flasker på rosetten kan lukkes i bestemte dyp (NOAA, u.å.). Et opplegg er å senke en CTD og lese av hvordan konduktivitet og temperatur endrer seg nedover, med georeferert posisjon (Udir, u.å.-a).
+
+## Sjøbris
+
+Sjøbris er vind som blåser inn fra havet fordi sola varmer opp landet. Varm luft stiger over land og erstattes av kjøligere luft fra sjøen. I Norge er sjøbris en del av solgangsvinden, og den oppstår om sommeren. Artikkelen bygger på tekst fra Meteorologisk institutt (Store norske leksikon, u.å.-c).
+
+Et opplegg for sjøbris er en linje av georefererte punkter fra kaia og innover land en solrik sommerdag. Mål temperatur og noter vindretning på hvert punkt (Udir, u.å.-a; Store norske leksikon, u.å.-c).
+
+## Snø og is
+
+På Varsom ligger snøskredvarsel for Norge hver dag i vinterhalvåret. I Varsom-appen kan du dele og lese andres observasjoner av snø og snøskred. NVE publiserer varsel for 24 regioner på fastlandet og Svalbard. Varselet er et hjelpemiddel, ikke en fasit. Gjør alltid egne vurderinger. Varslene er regionale og bygger på tilgjengelige observasjoner og værprognoser. Forholdene kan være komplekse og avvike (NVE, u.å.; Varsom, u.å.-a).
+
+Faregraden kan ikke settes for ett heng. Den gjelder et område på minst 100 kvadratkilometer, og den settes etter den europeiske snøskredfareskalaen: hvor lett skred løses ut, hvor utbredt problemet er, og hvor store skred som kan ventes (Varsom, u.å.-b).
+
+En snøprofil viser lagdelingen, eventuelle svake lag og temperaturforskjeller i snøen. For hvert lag noteres hardhet, tykkelse, kornform, kornstørrelse og fuktighet. Gravepunktet skal være skredtrygt, med et jevnt snødekke som er representativt for området (NVE, 2022).
 
 > **Vanlige misforståelser**
 >
-> Ett tall kl. 12 er ikke et kretsløp. Du trenger rom og tid.
+> Varselet er ikke en fasit for ett heng. Det gjelder minst 100 kvadratkilometer, og egne vurderinger hører med (Varsom, u.å.-a; u.å.-b).
 >
-> Foto erstatter ikke feltbok. GPS erstatter ikke koordinat skrevet ned.
+> Observert vannstand er ikke bare tidevann. Været påvirker også vannstanden (Kartverket, u.å.).
 >
-> Avlys er ikke stryk. Udokumentert tur i faregrad 3 er det.
+> En radiosonde er ikke en måling ved bakken alene. Den måler temperatur, fuktighet og lufttrykk oppover (Store norske leksikon, u.å.-a).
 
 ## Viktige begreper
 
-**Transekt:** Rekke av målepunkt langs en linje, for eksempel kyst til innland.
+**Feltarbeid:** Planlegge, samle inn georefererte data, bearbeide, tolke og presentere. Helse, miljø og sikkerhet hører med.
 
-**Metadata:** Tid, sted, instrument, usikkerhet. Det som gjør data gjenbrukbare.
+**Radiosonde:** Instrument som måler temperatur, fuktighet og lufttrykk fra bakken og oppover, vanligvis på en værballong.
 
-**Usikkerhet:** Hva målingen ikke kan skille. Oppgi den, ikke gjem den.
+**Se havnivå:** Kartverkets tjeneste for observert og varslet vannstand og tidevann.
 
-**HMS:** Vær og skred er både objekt og risiko. Avlys når varslet sier det.
+**Stormflo:** Særlig høy vannstand langs kysten i forbindelse med storm.
 
-**Hypotese:** En testbar setning. «Sjøbris etter lunsj» kan falles. «Vær» kan ikke.
+**Faregrad:** Regional vurdering for minst 100 kvadratkilometer, ikke for ett heng.
 
-**Tolkning:** Hva dataene kan bære. Én dag er ikke en sesong.
+**Egne vurderinger:** Varselet er et hjelpemiddel. Den som ferdes, skal selv vurdere forholdene.
+
+**Sjøbris:** Vind inn fra havet fordi sola varmer landet. I Norge en del av solgangsvinden om sommeren.
+
+**CTD:** Instrument som måler konduktivitet og temperatur mot dyp.
+
+**Snøprofil:** Registrering av lag, hardhet, korn og fukt i snødekket, på et skredtrygt punkt.
+
+## Test deg selv
+
+```widget
+QuizFeltHav
+```

@@ -543,12 +543,158 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     flag: "jetstrommer-copy-2026-10-07",
     slug: "jetstrommer",
     stale: ["Her kan du redigere", "Shinkansen"],
+  }
+,
+  {
+    flag: "coriolis-copy-2026-10-07",
+    slug: "coriolis",
+    stale: ["Her kan du redigere", "Rossby-tallet"],
+  }
+,
+  {
+    flag: "klima-copy-2026-10-07",
+    slug: "klima",
+    stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
+  }
+,
+  {
+    flag: "havstrommer-copy-2026-10-07",
+    slug: "havstrommer",
+    stale: ["Her kan du redigere", "termoklinen"],
+  }
+,
+  {
+    flag: "oversikt-copy-2026-10-07",
+    slug: "oversikt",
+    stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
+  }
+,
+  {
+    flag: "enso-copy-2026-10-07",
+    slug: "enso",
+    stale: ["Her kan du redigere", "Kelvin-bølger"],
+  },
+  {
+    flag: "enso-copy-2-2026-10-07",
+    slug: "enso",
+    stale: ["Noen ganger ser havet ut som El Niño eller La Niña"],
+  }
+,
+  {
+    flag: "iod-copy-2026-10-07",
+    slug: "iod",
+    stale: ["Her kan du redigere", "Black Summer"],
+  }
+,
+  {
+    flag: "nao-copy-2026-10-07",
+    slug: "nao",
+    stale: ["Her kan du redigere", "sprengkulde"],
+  },
+  {
+    flag: "nao-copy-2-2026-10-07",
+    slug: "nao",
+    stale: ["ikke automatisk det samme utslaget i hver landsdel"],
+  }
+,
+  {
+    flag: "amoc-copy-2026-10-07",
+    slug: "amoc",
+    stale: ["Her kan du redigere", "vippepunkt"],
+  },
+  {
+    flag: "amoc-copy-2-2026-10-07",
+    slug: "amoc",
+    stale: ["## Ferskvann kan bremse beltet"],
+  }
+,
+  {
+    flag: "kryosfaeren-copy-2026-10-07",
+    slug: "kryosfaeren",
+    stale: ["Her kan du redigere", "alle breer dør i år"],
+  },
+  {
+    flag: "kryosfaeren-copy-2-2026-10-07",
+    slug: "kryosfaeren",
+    stale: ["Her er isen som måles i år."],
+  }
+,
+  {
+    flag: "numeriske-modeller-copy-2026-10-07",
+    slug: "numeriske-modeller",
+    stale: ["Her kan du redigere", "petaflops"],
+  },
+  {
+    flag: "numeriske-modeller-copy-2-2026-10-07",
+    slug: "numeriske-modeller",
+    stale: ["Ett enkelt regnestykke sier ikke hvor sikkert været er."],
+  }
+,
+  {
+    flag: "paleoklima-copy-2026-10-07",
+    slug: "paleoklima",
+    stale: ["Her kan du redigere", "Rayleigh-fraksjonering"],
+  },
+  {
+    flag: "paleoklima-copy-2-2026-10-07",
+    slug: "paleoklima",
+    stale: ["Satellittrekken starter altså i 1979."],
+  }
+,
+  {
+    flag: "milankovitch-copy-2026-10-07",
+    slug: "milankovitch",
+    stale: ["Her kan du redigere", "65 °N"],
+  },
+  {
+    flag: "milankovitch-copy-2-2026-10-07",
+    slug: "milankovitch",
+    stale: ["Dagens breer er ikke kvartærtidens innlandsis."],
+  }
+,
+  {
+    flag: "vaerkatastrofer-copy-2026-10-07",
+    slug: "vaerkatastrofer",
+    stale: ["Her kan du redigere", "Grays seks dannelseskriterier"],
+  },
+  {
+    flag: "vaerkatastrofer-copy-2-2026-10-07",
+    slug: "vaerkatastrofer",
+    stale: ["Bare store orkaner er farlige, er feil."],
+  }
+,
+  {
+    flag: "tilpasning-copy-2026-10-07",
+    slug: "tilpasning",
+    stale: ["Her kan du redigere", "bestilt"],
+  }
+,
+  {
+    flag: "energi-hav-luft-copy-2026-10-07",
+    slug: "energi-hav-luft",
+    stale: ["Her kan du redigere", "kubikken"],
+  },
+  {
+    flag: "energi-hav-luft-copy-2-2026-10-07",
+    slug: "energi-hav-luft",
+    stale: ["Bærekraft er denne avveiningen, ikke bare at vinden kommer tilbake."],
+  }
+,
+  {
+    flag: "felt-hav-luft-is-copy-2026-10-07",
+    slug: "felt-hav-luft-is",
+    stale: ["Her kan du redigere", "Samme kjede, annen sfære"],
+  },
+  {
+    flag: "felt-hav-luft-is-copy-2-2026-10-07",
+    slug: "felt-hav-luft-is",
+    stale: ["## Tre felt, samme kjede"],
   },
   {
     flag: "isbreer-og-landformer-copy-2026-10-07",
     slug: "isbreer-og-landformer",
     stale: ["(SNL, u.å.-a). Prosessen krever vann"],
-  },
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

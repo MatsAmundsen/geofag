@@ -201,7 +201,7 @@ export const GF2_THEMES = [
     image: "/images/tema-milankovitch.jpg",
     alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
     blurb:
-      "Hvorfor isen kommer: Milankovitch, 65 °N, albedo og CO₂. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
+      "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. De tre svingningene forklarer ikke oppvarmingen vi ser nå.",
     status: "klar" as const,
   },
   {
@@ -211,7 +211,7 @@ export const GF2_THEMES = [
     image: "/images/tema-katastrofer.jpg",
     alt: "En atlantisk orkan sett fra verdensrommet, med tydelig øye",
     blurb:
-      "Orkaner, ekstremnedbør og stormflo er værsystemer drevet av samme fysikk. Risikoen forskyves når klimaet endres.",
+      "Orkan som vindstyrke er sterkere enn 32,6 m/s. En tropisk orkan er et lavtrykk med middelvind på minst 119 km/t.",
     status: "klar" as const,
   },
   {
@@ -221,7 +221,7 @@ export const GF2_THEMES = [
     image: "/images/fig-stormflo.jpg",
     alt: "Stormflo mot kai og bebyggelse — der fysikk blir skade",
     blurb:
-      "Fysikk blir skade for folk, by og økosystem. Drøft kutt og tilpasning — og hvem som betaler.",
+      "Klimatilpasning er å forstå konsekvensene og sette inn tiltak som reduserer skade. Å redusere og å tilpasse seg er to ulike svar.",
     status: "klar" as const,
   },
   {
@@ -231,7 +231,7 @@ export const GF2_THEMES = [
     image: "/images/fig-passat.jpg",
     alt: "Passatskyer over hav — vinden som energikilde, før den blir kilowatt",
     blurb:
-      "Vind, havvind, bølger og tidevann. Bærekraft er avveining mellom kutt, areal, arter og forsyning.",
+      "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola.",
     status: "klar" as const,
   },
   {
@@ -241,7 +241,7 @@ export const GF2_THEMES = [
     image: "/images/fig-hoytrykk-fjell.jpg",
     alt: "Norsk fjell under klarvær — felt i luft og is, ikke bergartssnitt",
     blurb:
-      "Planlegg, mål, tolk og presentér i atmosfære, hav eller kryosfære. Været er både objekt og risiko.",
+      "Planlegge, samle inn, bearbeide, tolke og presentere data fra hav, luft eller is. Varselet er et hjelpemiddel.",
     status: "klar" as const,
   },
 ] as const;

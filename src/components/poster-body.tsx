@@ -52,6 +52,14 @@ import {
   PolarFrontCycloneSteps,
   SeaBreezeLandBreezeDiagram,
   ValleyWindDiagram,
+  CarouselFrameDiagram,
+  CoriolisDiagram,
+  CoriolisScaleDiagram,
+  CycloneSpinDiagram,
+  GlobalDeflectionDiagram,
+  EarthRadiationBudgetDiagram,
+  BjerknesLoopDiagram,
+  EnsoComparisonDiagram,
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
@@ -63,6 +71,7 @@ import {
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
 import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import {
   AvsetningsformerDiagram,
   BotnEggTindDiagram,
@@ -84,6 +93,7 @@ import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
+import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import {
   EARTH_LAYERS_PHOTO_SRC,
@@ -107,10 +117,26 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_KLIMA,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
   QUIZ_LOKALE,
   QUIZ_JET,
+  QUIZ_CORIOLIS,
+  QUIZ_HAVSTROMMER,
+  QUIZ_OVERSIKT,
+  QUIZ_ENSO,
+  QUIZ_IOD,
+  QUIZ_NAO,
+  QUIZ_AMOC,
+  QUIZ_KRYO,
+  QUIZ_MODELLER,
+  QUIZ_PALEO,
+  QUIZ_ISTIDER,
+  QUIZ_FARER,
+  QUIZ_TILPASNING,
+  QUIZ_ENERGI,
+  QUIZ_FELT_HAV,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -340,6 +366,286 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
 
+
+    CoriolisForklaring: () => (
+    <Callout title="Hva betyr «corioliseffekten»?">
+      <p>
+        Corioliseffekten er avbøyningen av en bevegelse sett fra den roterende jorda. Den er ikke en
+        reell kraft som dytter på lufta. På den nordlige halvkule bøyer bevegelsen av mot høyre, på
+        den sørlige mot venstre, og ved ekvator er avbøyningen null.
+      </p>
+    </Callout>
+  ),
+    KarusellDiagram: () => <CarouselFrameDiagram />,
+    AvboyningDiagram: () => <GlobalDeflectionDiagram />,
+    SyklonDiagram: () => <CycloneSpinDiagram />,
+    GeostrofiskDiagram: () => <CoriolisDiagram />,
+    EkmanForklaring: () => (
+    <Callout title="Hva betyr «ekmantransport»?">
+      <p>
+        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
+        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
+        dypere vann komme opp.
+      </p>
+    </Callout>
+  ),
+    SkalaDiagram: () => <CoriolisScaleDiagram />,
+    QuizCoriolis: () => (
+    <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    HavstromForklaring: () => (
+    <Callout title="Hva betyr «havstrøm»?">
+      <p>
+        En havstrøm er vann i bevegelse. Den kan drives av tidevann nær land, av vind i overflaten,
+        eller av tetthetsforskjeller som får kaldt og salt vann til å synke.
+      </p>
+    </Callout>
+  ),
+    DrivkrefterDiagram: () => <OceanDriversDiagram />,
+    EkmanHavForklaring: () => (
+    <Callout title="Hva betyr «ekmantransport»?">
+      <p>
+        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
+        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
+        dypere vann komme opp.
+      </p>
+    </Callout>
+  ),
+    GyreDiagram: () => <GyreDiagram />,
+    OppvellingDiagram: () => <UpwellingDiagram />,
+    GolfDiagram: () => <GulfVsNacDiagram />,
+    TetthetDiagram: () => <DensityDiagram />,
+    QuizHavstrommer: () => (
+    <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    KlimaDefinisjon: () => (
+    <Callout title="Hva betyr «klima»?">
+      <p>
+        Klimaendring er et skifte i det langvarige gjennomsnittet av været (WMO, u.å.). En enkelt uke
+        er vær. Mønsteret over lang tid er klima.
+      </p>
+    </Callout>
+  ),
+    StralingDiagram: () => <EarthRadiationBudgetDiagram />,
+    DrivhusForklaring: () => (
+    <Callout title="Hva betyr «drivhuseffekt»?">
+      <p>
+        Drivhuseffekten er at gasser holder igjen varme nær jordoverflaten, omtrent som et teppe.
+        Vanndamp, karbondioksid og metan er slike gasser. Vanndamp er i hovedsak en tilbakekobling:
+        den forsterker en oppvarming som noe annet har startet (NASA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    PaadrivForklaring: () => (
+    <Callout title="Hva betyr «pådriv»?">
+      <p>
+        Et pådriv er en endring som påvirker hvor mye energi som kommer inn eller går ut. Da kan
+        temperaturen stige eller falle. En tilbakekobling er systemets svar, som kan forsterke eller
+        svekke dytten (NASA, 2009).
+      </p>
+    </Callout>
+  ),
+    AlbedoFoto: () => (
+    <PhotoFigure
+      src="/images/fig-albedo.jpg"
+      alt="Arktisk iskant der hvit is møter mørkt åpent hav"
+      heading="Isen er et speil"
+      caption="Tap av is ved polene gjør flaten mindre reflekterende. Det er en tilbakekobling, ikke det første pådrivet (NASA, 2009)."
+      marks={[
+        { x: 8, y: 16, n: "1", text: "Is kaster tilbake", tone: "fg" },
+        { x: 68, y: 38, n: "2", text: "Hav tar opp", tone: "cold", align: "right" },
+      ]}
+      points={[
+        { n: "1", label: "Høy albedo. Mye sollys kastes tilbake." },
+        { n: "2", label: "Mørkere flate tar opp mer av sollyset." },
+      ]}
+    />
+  ),
+    NorgeKlimaFoto: () => (
+    <PhotoFigure
+      src="/images/fig-norge-labrador.jpg"
+      alt="Norsk kyst mot et kaldere landskap på samme type bredde"
+      heading="Mildere enn beliggenheten"
+      caption="Fastlands-Norge er mildere enn den nordlige beliggenheten skulle tilsi, fordi havstrømmer og vind transporterer varme hit (SNL, u.å.)."
+      marks={[
+        { x: 6, y: 16, n: "1", text: "Norsk kyst", tone: "teal" },
+        { x: 58, y: 16, n: "2", text: "Hav og vind", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Kysten fra Oslofjorden til Troms har milde vintre." },
+        { n: "2", label: "Varmen kommer med havstrømmer og vind, ikke bare med solhøyden." },
+      ]}
+    />
+  ),
+    QuizOversikt: () => (
+    <Quiz questions={QUIZ_OVERSIKT} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    EnsoForklaring: () => (
+    <Callout title="Hva betyr «ENSO»?">
+      <p>
+        ENSO er El Niño–sørlig oscillasjon. El Niño er den varme fasen og La Niña den kalde fasen av
+        et naturlig klimamønster i det tropiske Stillehavet. Mønsteret skifter uregelmessig, omtrent
+        hvert andre til sjuende år (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    FaseDiagram: () => <EnsoComparisonDiagram />,
+    BjerknesLoop: () => <BjerknesLoopDiagram />,
+    QuizEnso: () => (
+    <Quiz questions={QUIZ_ENSO} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    IodForklaring: () => (
+    <Callout title="Hva betyr «indisk hav-dipol»?">
+      <p>
+        Den indiske hav-dipolen er vedvarende endring i forskjellen mellom havtemperaturen vest og
+        øst i det tropiske Indiahavet. Positiv fase har varmere vann i vest og kjøligere i øst (BOM,
+        u.å.).
+      </p>
+    </Callout>
+  ),
+    QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    NaoForklaring: () => (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Den beskriver styrken på lavtrykket nær Island og
+        høytrykket nær Asorene. Stor trykkforskjell er positiv fase. Liten forskjell er negativ fase
+        (NOAA, u.å.).
+      </p>
+    </Callout>
+  ),
+    QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    AmocForklaring: () => (
+    <Callout title="Hva betyr «den atlantiske omveltningen»?">
+      <p>
+        Den atlantiske omveltningen, AMOC, er starten på det trege beltet. Kaldt og salt vann synker
+        i Nord-Atlanteren og går sørover i dypet. En runde tar omtrent tusen år (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizAmoc: () => <Quiz questions={QUIZ_AMOC} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    KryoForklaring: () => (
+    <Callout title="Hva betyr «kryosfæren»?">
+      <p>
+        Kryosfæren er den frosne delen av jordoverflaten: breer, havis, snødekke og permafrost.
+        Permafrost er bakke som i to sammenhengende år ikke blir varmere enn 0 °C (Store norske
+        leksikon, u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizKryo: () => <Quiz questions={QUIZ_KRYO} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    ModellForklaring: () => (
+    <Callout title="Hva betyr «numerisk modell»?">
+      <p>
+        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin.
+        ECMWF lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og
+        sammen viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizModeller: () => (
+    <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    PaleoForklaring: () => (
+    <Callout title="Hva betyr «paleoklima»?">
+      <p>
+        Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
+        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i
+        istidssyklusene det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizPaleo: () => (
+    <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    IstidForklaring: () => (
+    <Callout title="Hva betyr «istid»?">
+      <p>
+        Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
+        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Store norske leksikon,
+        u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizIstider: () => (
+    <Quiz questions={QUIZ_ISTIDER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    OrkanForklaring: () => (
+    <Callout title="Hva betyr «orkan»?">
+      <p>
+        Orkan er den sterkeste av alle vinder: sterkere enn 32,6 m/s, målt ti meter over bakken i ti
+        minutter. Ordet brukes også om lavtrykket som gir vinden. En tropisk orkan er en tropisk
+        syklon, ikke den samme grensen (Store norske leksikon, u.å.-a; National Hurricane Center,
+        u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizFarer: () => (
+    <Quiz questions={QUIZ_FARER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    TilpasningForklaring: () => (
+    <Callout title="Hva betyr «klimatilpasning»?">
+      <p>
+        Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak
+        som hindrer eller reduserer skade, eller som utnytter mulighetene. Å redusere
+        klimaendringene er et annet svar (Miljødirektoratet, u.å.; Udir, u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizTilpasning: () => (
+    <Quiz questions={QUIZ_TILPASNING} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    VindkraftForklaring: () => (
+    <Callout title="Hva betyr «vindkraft»?">
+      <p>
+        Vindkraft er vindenergi gjort om til nyttig energi, mekanisk eller elektrisk. I dag brukes
+        ordet mest om elektrisitet fra et vindkraftverk (Store norske leksikon, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizEnergi: () => (
+    <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    FeltHavForklaring: () => (
+    <Callout title="Hva betyr «feltarbeid» her?">
+      <p>
+        Feltarbeid i geofag 2 er å planlegge, samle inn georefererte data fra hav, luft eller is,
+        bearbeide, tolke og presentere dem. Helse, miljø og sikkerhet hører med (Udir, u.å.-a;
+        u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizFeltHav: () => (
+    <Quiz questions={QUIZ_FELT_HAV} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
   LowPressureCrossSection: () => <LowPressureCrossSectionDiagram />,
@@ -540,6 +846,44 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  KlimaForklaring: () => (
+    <Callout title="Hva betyr «klimasystemet»?">
+      <p>
+        Klimasystemet er atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren, og samspillet
+        mellom dem. Utveksling av energi, vann og karbondioksid bestemmer klimamønstre og variasjon
+        (WMO, u.å.).
+      </p>
+    </Callout>
+  ),
+  KlimaKart: () => (
+    <div className="my-8 grid gap-4 sm:grid-cols-2">
+      {KLIMA_SUBTHEMES.map((sub) => (
+        <Link
+          key={sub.to}
+          to={sub.to}
+          className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/50 hover:shadow-md"
+        >
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">{sub.kicker}</p>
+            <h3 className="mt-1 font-display text-xl font-medium tracking-tight group-hover:text-primary">
+              {sub.title}
+            </h3>
+            {"subtitle" in sub && sub.subtitle ? (
+              <p className="text-xs text-muted-foreground">{sub.subtitle}</p>
+            ) : null}
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{sub.blurb}</p>
+          </div>
+          <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+            Åpne
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        </Link>
+      ))}
+    </div>
+  ),
+  QuizKlima: () => (
+    <Quiz questions={QUIZ_KLIMA} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 
