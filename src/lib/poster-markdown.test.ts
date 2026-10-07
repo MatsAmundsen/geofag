@@ -172,9 +172,6 @@ describe("jordsystemene poster", () => {
     for (const id of [
       "VekselvirkningForklaring",
       "SpheresDiagram",
-      "AkviferForklaring",
-      "ForvitringFoto",
-      "IsostasiForklaring",
       "FjordFoto",
       "CarbonCycleDiagram",
       "EarthSystemsModel",
@@ -183,12 +180,15 @@ describe("jordsystemene poster", () => {
       assert.equal(ids.has(id), true, `jordsystemene missing ${id}`);
       assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
     }
+    for (const gone of ["AkviferForklaring", "ForvitringFoto", "IsostasiForklaring", "Hva er forvitring?"]) {
+      assert.equal(md.includes(gone), false, gone);
+    }
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("## Test deg selv"), true);
     assert.equal(md.includes("## Kilder"), false);
-    assert.equal(ids.size, 9);
+    assert.equal(ids.size, 6);
     assert.equal(ids.has("QuizVulkaner"), false);
     assert.equal(ids.has("QuizHoytrykk"), false);
   });

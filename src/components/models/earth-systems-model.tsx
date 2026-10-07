@@ -52,13 +52,13 @@ export function EarthSystemsModel() {
       name: "Geosfæren (Den faste jorden)",
       role: "Jordskorpen, mantelen og litosfæren. Hovedlager for karbon i form av kalkstein (CaCO₃) og kerogen i sedimentære bergarter.",
       inputs: "Vann og karbonsyre fra hydrosfære og atmosfære bryter ned mineraler; organisk materiale fra biosfæren begraves som fossilt brensel.",
-      outputs: "Vulkanutbrudd frigjør CO₂, SO₂ og vanndamp til atmosfæren. Forvitring frigjør kalsium-, magnesium- og jernioner til elver og hav.",
+      outputs: "Vulkanutbrudd frigjør CO₂, SO₂ og vanndamp til atmosfæren. Regn løser berg og sender kalsium-, magnesium- og jernioner til elver og hav.",
       timescale: "Fra sekunder (jordskjelv, vulkaner) til hundrevis av millioner år (platetektonikk og bergartskretsløp).",
     },
     hydro: {
       name: "Hydrosfæren (Vannets sfære)",
       role: "Elver, innsjøer, grunnvann, porevann og verdenshavene. I Geofag 1 ligger hovedfokuset på ferskvannet på kontinentene.",
-      inputs: "Nedbør fra atmosfæren, smeltevann fra kryosfæren, kjemiske ioner fra forvitring i geosfæren.",
+      inputs: "Nedbør fra atmosfæren, smeltevann fra kryosfæren, og ioner fra berg som regnet har løst.",
       outputs: "Evapotranspirasjon til atmosfæren, sediment- og ionetransport til havbassenger, oppfylling av grunnvannsmagasiner.",
       timescale: "Fra timer og dager (flom i elver) til tusenvis av år (dyp grunnvannssirkulasjon og havstrømmer).",
     },
@@ -66,7 +66,7 @@ export function EarthSystemsModel() {
       name: "Atmosfæren (Gasskappen)",
       role: "Det tynne gasslaget som omgir jorden. Regulerer overflatetemperaturen via drivhuseffekten og transporterer fuktighet og varme.",
       inputs: "Vanndamp fra hydrosfæren/biosfæren, vulkanske gasser fra geosfæren, oksygen og karbondioksid fra biologiske prosesser.",
-      outputs: "Nedbør til hydro- og kryosfæren, kjemisk forvitringsagens (karbonsyrlig regnvann) til geosfæren.",
+      outputs: "Nedbør til hydro- og kryosfæren, og regn med karbonsyre som løser berg i geosfæren.",
       timescale: "Timer og uker (synoptisk vær og stormer) til århundrer (klimagassakkumulering).",
     },
     kryo: {
@@ -74,12 +74,12 @@ export function EarthSystemsModel() {
       role: "Isbreer, innlandsis, permafrost, tele og sesongsnø. Regulerer klodens overflatealbedo og fungerer som geologisk gravemaskin.",
       inputs: "Fast nedbør (snø) fra atmosfæren i akkumulasjonsområder.",
       outputs: "Smeltevann som mater elver og grunnvann i hydrosfæren, breslam og erodert morenemateriale til geosfæren.",
-      timescale: "Årstider (snødekke) til titusener av år (istidssykluser og isostatiske bevegelser).",
+      timescale: "Årstider (snødekke) til titusener av år (istidssykluser).",
     },
     bio: {
       name: "Biosfæren (Livets sfære)",
       role: "Alt levende materiale på planeten: planter, dyr, sopp og mikroorganismer.",
-      inputs: "Sollys, vann fra hydrosfæren, CO₂ fra atmosfæren, mineralnæringsstoffer (P, K, Ca, Fe) fra forvitret berg i geosfæren.",
+      inputs: "Sollys, vann fra hydrosfæren, CO₂ fra atmosfæren, og mineralnæringsstoffer (P, K, Ca, Fe) fra geosfæren.",
       outputs: "O₂ til atmosfæren via fotosyntese, organisk humus til jordsmonn, oppsprekking av berggrunn via planterøtter.",
       timescale: "Dager og årstider (vegetasjonssyklus) til millioner av år (evolusjon og dannelse av kull- og oljeleier).",
     },
@@ -93,7 +93,7 @@ export function EarthSystemsModel() {
       toolbar={
         <>
           <ModelTab active={tab === "silicate_weathering"} onClick={() => setTab("silicate_weathering")}>
-            Kjemisk silikatforvitring (Urey)
+            Den trege karbonsløyfen
           </ModelTab>
           <ModelTab active={tab === "albedo_feedback"} onClick={() => setTab("albedo_feedback")}>
             Is-albedo-tilbakekobling
@@ -112,13 +112,12 @@ export function EarthSystemsModel() {
           <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="space-y-4 lg:col-span-6">
               <h4 className="text-base font-semibold text-foreground">
-                Walker-tilbakekoblingen: Jordens geologiske termostat
+                Den trege sløyfen: jordens geologiske termostat
               </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Når vulkansk aktivitet øker CO₂ i atmosfæren, stiger temperaturen og nedbørsmengden.
-                Dette akselererer den kjemiske forvitringen av silikatbergarter på kontinentene (Urey-reaksjonen).
-                Kalsium- og bikarbonat-ioner vaskes ut i havet og felles ut som kalkstein (CaCO₃),
-                noe som permanent fjerner karbon fra atmosfæren og kjøler kloden ned igjen.
+                Når vulkaner slipper ut mer CO₂, stiger temperaturen og det blir mer regn.
+                Mer karbonsyre løser mer berg. Elvene fører ionene til havet, der karbon lagres i kalkstein.
+                Da trekkes temperaturen tilbake. Det tar noen hundre tusen år.
               </p>
 
               <div className="space-y-3 pt-2">
@@ -175,7 +174,7 @@ export function EarthSystemsModel() {
                   </p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Forvitringsrate</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Ioner til havet</p>
                   <p className="font-mono text-lg font-bold text-amber-400">
                     {totalWeatheringRate}×
                   </p>
@@ -191,7 +190,7 @@ export function EarthSystemsModel() {
 
             {/* Skjematisk kjemisk kretsløp SVG */}
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/50 p-4 lg:col-span-6">
-              <svg viewBox="0 0 500 320" className="w-full h-auto" aria-label="Silikatforvitring kretsløp">
+              <svg viewBox="0 0 500 320" className="w-full h-auto" aria-label="Den trege karbonsløyfen">
                 <defs>
                   <marker id="arr-teal" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
                     <polygon points="0 0, 6 3, 0 6" fill="#14b8a6" />
@@ -213,7 +212,7 @@ export function EarthSystemsModel() {
                 {/* Geosfære (Fjell) */}
                 <polygon points="40,240 140,140 240,240" fill="#2d2720" stroke="#f59e0b" strokeWidth="1.5" />
                 <text x="140" y="195" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">GEOSFÆRE</text>
-                <text x="140" y="215" textAnchor="middle" fill="#d4d4d8" fontSize="10">Silikatbergart (CaSiO₃)</text>
+                <text x="140" y="215" textAnchor="middle" fill="#d4d4d8" fontSize="10">Berg som regnet løser</text>
 
                 {/* Elvetransport */}
                 <path d="M 230 220 C 270 210, 300 230, 330 230" stroke="#14b8a6" strokeWidth="3" fill="none" markerEnd="url(#arr-teal)" />
@@ -233,20 +232,19 @@ export function EarthSystemsModel() {
               </svg>
 
               <div className="mt-2 rounded-lg bg-card/80 p-2.5 border border-border text-xs text-muted-foreground">
-                <strong className="text-foreground">Reaksjonslikning (Urey-reaksjonen):</strong>
-                <p className="font-mono text-primary mt-1">CaSiO₃ + CO₂ ⇄ CaCO₃ + SiO₂</p>
+                <strong className="text-foreground">Tre steg:</strong>
                 <p className="mt-1">
-                  Reaksjonen mot høyre (forvitring og sedimentasjon) trekker CO₂ ut av atmosfæren.
-                  Reaksjonen mot venstre (metamorfose på dypet) frigjør CO₂ tilbake via vulkanisme.
+                  Mer CO₂ gir mer regn. Regnet løser mer berg, og elvene fører ionene til havet.
+                  Der lagres karbon i kalkstein, og vulkaner gir CO₂ tilbake på den trege klokken.
                 </p>
               </div>
             </div>
           </ModelPanel>
 
           <ModelNote title="Viktig eksamenspoeng i LK20" tone="teal">
-            Kjemisk forvitring av silikater er en <strong>negativ tilbakekobling</strong>. Når klimaet blir varmere,
-            øker forvitringshastigheten, noe som trekker CO₂ ut av atmosfæren og stabiliserer jordens klima over geologiske
-            tidsskalaer (noen hundre tusen år). Kalksteinforvitring fjerner derimot ingen netto CO₂ fra systemet på lang sikt.
+            Den trege sløyfen er en <strong>negativ tilbakekobling</strong>. Når det blir varmere og mer regn,
+            løses mer berg, og mer karbon lagres i kalkstein. Det trekker CO₂ ut av atmosfæren igjen,
+            men det tar noen hundre tusen år.
           </ModelNote>
         </div>
       )}
@@ -609,7 +607,7 @@ export function EarthSystemsModel() {
                   <div className="mt-4 border-t border-border/50 pt-3 text-xs text-muted-foreground space-y-1.5">
                     <p className="font-medium text-foreground">Eksempel på koblet prosess i Norge:</p>
                     {selectedSphere === "geo" && (
-                      <p>Kaledonsk foldning løftet bergartene; forvitring danner i dag næringsrikt forvitringssmonn over kambrosilursk skifer i Mjøsområdet.</p>
+                      <p>Den kaledonske fjellkjeden løftet bergartene. I dag graver elver og is i det berget.</p>
                     )}
                     {selectedSphere === "hydro" && (
                       <p>Vannmettet leirjord under marin grense mister saltioner til grunnvannet, noe som kan utløse kvikkleireskred i geosfæren.</p>
@@ -618,10 +616,10 @@ export function EarthSystemsModel() {
                       <p>Orografisk nedbør fra vestavindsbeltet over Vestlandet driver intens fluvial erosjon og dype V-daler mot fjordene.</p>
                     )}
                     {selectedSphere === "kryo" && (
-                      <p>Nedsmelting av den 3000 meter tykke Weichsel-innlandsisen for 10 000 år siden utløste 200–300 meter isostatisk landheving (postglasial heving).</p>
+                      <p>Innlandsisen grov ut daler og fjorder. Da isen smeltet, fylte havet mange av dalene.</p>
                     )}
                     {selectedSphere === "bio" && (
-                      <p>Røtter sprenger sprekker i gneisfjell (mekanisk forvitring) og danner humussyrer som løser feltspat og glimmer til leirmineraler.</p>
+                      <p>Planter tar opp CO₂. Karbonet kommer tilbake når de brytes ned, blant annet ved slutten av vekstsesongen.</p>
                     )}
                   </div>
                 </div>

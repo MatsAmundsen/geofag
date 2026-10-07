@@ -490,15 +490,15 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
 
 export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
   {
-    prompt: "Hva er forskjellen på forvitring og erosjon?",
+    prompt: "Hvilke sfærer er mottakerne i geofag 1?",
     options: [
-      "Forvitring er nedbrytning på stedet. Erosjon er nedsliting pluss transport.",
-      "Forvitring flytter berget, erosjon skjer på stedet.",
-      "De er to navn på samme prosess.",
+      "Geosfæren og hydrosfæren. Atmosfæren, kryosfæren og biosfæren er med som drivere.",
+      "Alle fem sfærene er mottakere, og ingen er drivere.",
+      "Bare atmosfæren, fordi regn og CO₂ kommer derfra.",
     ],
     answer: 0,
     explain:
-      "Se «Hva er forvitring?». Forvitring kiler eller løser berget der det ligger. Erosjon er når vann, is eller tyngdekraft i tillegg frakter materialet bort.",
+      "Se «Hva er et jordsystem?». I geofag 1 følger du hvordan berg og ferskvann svarer. Atmosfæren, kryosfæren og biosfæren er med fordi de driver endringen.",
   },
   {
     prompt: "Hvorfor kan et stort eksplosivt utbrudd kjøle jorda i noen år?",
@@ -512,33 +512,33 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Vulkaner på kort sikt». Aske faller ut i løpet av dager til uker. Det er sulfataerosolene fra SO₂ som kan kjøle troposfæren i noen år, som etter Pinatubo i 1991.",
   },
   {
-    prompt: "Hvorfor ligger marin leire på land flere steder i Norge?",
+    prompt: "Hva skiller det raske karbonkretsløpet fra det trege?",
     options: [
-      "Fordi elvene har lagt leire på fjellet i vår tid.",
-      "Fordi isen presset landet ned, havet avsatte leire, og landet hevet seg etterpå.",
-      "Fordi leire bare dannes over marin grense.",
+      "I det raske kommer karbonet tilbake når planter og plankton brytes ned. I det trege bruker karbon 100–200 millioner år.",
+      "Begge kretsløpene tar noen år.",
+      "Det trege går bare gjennom livet, det raske bare gjennom vulkaner.",
     ],
-    answer: 1,
+    answer: 0,
     explain:
-      "Se «Isbreen graver og avsetter». Isostasi løftet havavsatt leire over dagens havnivå. Marin grense er det høyeste nivået havet nådde etter siste istid.",
+      "Se «Karbonat–silikat-syklusen». Det raske kretsløpet går gjennom livet og gir karbonet tilbake når organismene brytes ned. Det trege går mellom berg, jord, hav og atmosfære og tar 100–200 millioner år.",
   },
   {
     prompt: "Hva skjer i den trege karbonsløyfen når CO₂ i atmosfæren stiger?",
     options: [
       "Det blir varmere og mer regn, mer berg løses, og mer karbon lagres i kalkstein.",
-      "Silikatforvitringen stopper, så CO₂ blir værende i lufta for alltid.",
-      "Kalksteinforvitring og silikatforvitring fjerner like mye CO₂ på noen år.",
+      "Sløyfen stopper, så CO₂ blir værende i lufta for alltid.",
+      "Karbonet lagres i kalkstein i løpet av noen år, samme klokke som et vulkanutbrudd.",
     ],
     answer: 0,
     explain:
       "Se «Karbonat–silikat-syklusen». Mer CO₂ gir høyere temperatur og mer regn. Da løses mer berg, og mer karbon avsettes på havbunnen. Det demper endringen, men det tar noen hundre tusen år.",
   },
   {
-    prompt: "Hvorfor er Pinatubo-kjøling og silikatforvitring ikke samme vulkan–klima?",
+    prompt: "Hvorfor er Pinatubo-kjøling og den trege karbonsløyfen ikke samme vulkan–klima?",
     options: [
       "Begge virker på samme tidsskala, noen år.",
-      "Pinatubo-kjølingen varte i år. Silikatforvitringen bruker noen hundre tusen år.",
-      "Silikatforvitring kjøler jorda i tre år, akkurat som SO₂.",
+      "Pinatubo-kjølingen varte i år. Den trege sløyfen bruker noen hundre tusen år.",
+      "Den trege sløyfen kjøler jorda i tre år, akkurat som SO₂.",
     ],
     answer: 1,
     explain:

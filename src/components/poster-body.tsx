@@ -166,30 +166,6 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   SpheresDiagram: () => <SpheresDiagram />,
   CarbonCycleDiagram: () => <CarbonCycleDiagram />,
   EarthSystemsModel: () => <EarthSystemsModel />,
-  ForvitringFoto: () => (
-    <PhotoFigure
-      src="/images/fig-forvitring.jpg"
-      alt="Sprekk i metamorf gneis fylt med is der steinblokker kiles fra hverandre i høyfjellet"
-      heading="Mekanisk forvitring på stedet"
-      caption="Vann i sprekken fryser og kiler fjellet. Berget ligger fortsatt der. Det er bare mer oppsprukket, og det er forvitring, ikke erosjon."
-      marks={[
-        { x: 38, y: 32, n: "1", text: "Isfylt sprekk", tone: "cold" },
-        { x: 68, y: 58, n: "2", text: "Oppsprukket blokk", tone: "warm" },
-      ]}
-      points={[
-        {
-          n: "1",
-          label:
-            "Frostsprengning: vann fra hydrosfæren fryser i en sprekk i geosfæren og kiler berget fra hverandre.",
-        },
-        {
-          n: "2",
-          label:
-            "Fragmentene blir liggende på stedet. Først når vann, is eller tyngdekraft frakter dem bort, er det erosjon.",
-        },
-      ]}
-    />
-  ),
   FjordFoto: () => (
     <PhotoFigure
       src="/images/fig-vestlandet.jpg"
@@ -224,30 +200,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «vekselvirkning»?">
       <p>
         En vekselvirkning er en endring i ett delsystem som utløser respons i ett eller flere
-        andre. Regn som løser kalkstein, er atmosfære og hydrosfære som endrer geosfæren. Elva som
-        fører ionene videre, er hydrosfæren som svarer. Neste ord du trenger, er tidsskala: hvor
-        lang tid responsen tar.
-      </p>
-    </Callout>
-  ),
-  AkviferForklaring: () => (
-    <Callout title="Hva betyr «akvifer»?">
-      <p>
-        En akvifer (aquifer) er berg eller løsmasse som kan lagre og avgi grunnvann. Vannet ligger
-        ikke i underjordiske elver. Det fyller porer i sand og grus, eller sprekker i fjell. Tenk
-        på en svamp som holder på vann og slipper det fra seg når du presser. Neste ord du trenger,
-        er marin grense, for under den kan tett leire og salt endre både hvor vannet renner og
-        kvaliteten på vannet.
-      </p>
-    </Callout>
-  ),
-  IsostasiForklaring: () => (
-    <Callout title="Hva betyr «isostasi»?">
-      <p>
-        Isostasi (isostasy) betyr at litosfæren ligger i likevekt på astenosfæren, omtrent som den
-        flyter. Tenk på en brygge med last. Tar du lasten av, stiger brygga. Da innlandsisen
-        smeltet, forsvant en tung last, og landet hevet seg. Neste ord du trenger, er marin grense:
-        det høyeste nivået havet nådde etter siste istid.
+        andre. Elva som graver en dal, er hydrosfære som endrer geosfæren. Breen som sliper berget,
+        er kryosfære som svarer. Neste ord du trenger, er tidsskala: hvor lang tid responsen tar.
       </p>
     </Callout>
   ),

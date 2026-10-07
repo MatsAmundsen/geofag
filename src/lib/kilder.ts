@@ -47,22 +47,10 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/om-berggrunn",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-f). ",
-      italic: "Om kart over marin grense",
-      suffix: ".",
-      href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
-    },
-    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-g). ",
       italic: "Om løsmasser",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/om-losmasser",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-h). ",
-      italic: "Om nasjonal grunnvannsdatabase (GRANADA)",
-      suffix: ".",
-      href: "https://www.ngu.no/node/274",
     },
     {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
@@ -81,13 +69,6 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 1",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
-    },
-    {
-      prefix:
-        "White, A. F., Blum, A. E., Schulz, M. S., Bullen, T. D., Harden, J. W., & Peterson, M. L. (1996). Chemical weathering rates of a soil chronosequence on granitic alluvium: I. Quantification of mineralogical and surface area changes and calculation of primary silicate reaction rates. ",
-      italic: "Geochimica et Cosmochimica Acta, 60",
-      suffix: "(14), 2533–2550.",
-      href: "https://www.usgs.gov/publications/chemical-weathering-rates-a-soil-chronosequence-granitic-alluvium-i-quantification",
     },
   ],
   platetektonikk: [
