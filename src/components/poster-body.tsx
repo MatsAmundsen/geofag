@@ -81,6 +81,7 @@ import {
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
+import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import { KvikkleireDiagram } from "@/components/diagrams/skred";
 import { GeoMap } from "@/components/geo-map";
@@ -148,6 +149,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   PlatesMap: () => <PlatesMapDiagram />,
   Solidus: () => <SolidusDiagram />,
   DecompressionMelting: () => <DecompressionMeltingDiagram />,
+  SmeltingUnderTynnPlate: () => <SmeltingUnderTynnPlateDiagram />,
   QuizMelting: () => <Quiz questions={QUIZ_MELTING} intro={PLATE_QUIZ_INTRO} />,
   BoundaryOverview: () => <BoundaryOverviewDiagram />,
   ContinentalRift: () => <ContinentalRiftDiagram />,

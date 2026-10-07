@@ -223,3 +223,4 @@ export {
   ClimateRiskShiftDiagram,
 } from "./disasters";
 
+export { SmeltingUnderTynnPlateDiagram } from "./mantle-melting";

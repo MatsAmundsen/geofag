@@ -59,7 +59,7 @@ const PLATE_INJECT_RULES: InjectRule[] = [
   },
   { widgets: ["PlatesMap"], beforeHeading: "Hvorfor mantelberg smelter" },
   {
-    widgets: ["Solidus", "DecompressionMelting", "QuizMelting"],
+    widgets: ["Solidus", "DecompressionMelting", "SmeltingUnderTynnPlate", "QuizMelting"],
     beforeHeading: "Plategrensene: Tre relative bevegelser",
   },
   { widgets: ["BoundaryOverview"], beforeHeading: "1. Divergerende" },
