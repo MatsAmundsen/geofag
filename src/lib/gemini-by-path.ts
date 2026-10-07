@@ -67,7 +67,7 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/geofag-1/platetektonikk":
     "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier seismisitet, bølger og Wadati-Benioff. Norges geologi eier Leka-ofiolitten, Kaledonidene og Oslofeltet.",
   "/geofag-1/jordskjelv":
-    "Denne siden eier seismiske bølger, seismogrammer, hyposenter/episentrum, magnitude og Wadati-Benioff-sonen. Platetektonikk eier plategrensene.",
+    "Denne siden eier jordskjelv, P- og S-bølger, skjelv inne på platen og tsunami fra skjelv eller skred. Platetektonikk eier plategrensene.",
   "/geofag-1/norges-geologi":
     "Denne siden eier Norges geologiske historie fra urtid til nåtid: Leka-ofiolitten, Kaledonidene, Oslofeltets rift og landhevingen. Bergarter eier mineralklassifisering. Landformer eier kvartær erosjon.",
 };

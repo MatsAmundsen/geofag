@@ -44,9 +44,9 @@ function Station({
 export function RockCycleDiagram() {
   return (
     <Diagram
-      title="Bergartssyklusen: samspillet mellom magmatiske, sedimentære og metamorfe bergarter"
-      heading="Bergartssyklusen — naturens store gjenbruk"
-      caption="Bergartssyklusen er en dynamisk modell som viser hvordan jordas bergarter kontinuerlig nydannes, brytes ned og omdannes. Ingen bergart er evig. Magma krystalliserer til magmatiske bergarter (dypbergarter eller dagbergarter). På overflaten forvitrer og eroderer eksponert fjell til løsmasser, som gjennom diagenese (kompaksjon og sementering) forsteines til sedimentære bergarter. Under tektonisk nedsenkning, fjellkjedefolding og varme omdannes bergartene i fast tilstand til metamorfe bergarter. Blir temperaturen høy nok (>650–800 °C), inntreffer partiell eller full smelting (anateksis) tilbake til magma."
+      title="Bergartssyklusen som modell, med magmatiske, sedimentære og metamorfe bergarter"
+      heading="Bergartssyklusen"
+      caption="Bergartssyklusen er en modell, ikke én tvungen rute. Magma størkner til magmatiske bergarter. På overflaten kan berg brytes ned til sediment, som kan forsteines. Høyt trykk og høy temperatur kan omdanne berg i fast tilstand. En bergart kan gå til en annen stasjon, men den må ikke innom alle."
       viewBox="0 0 860 480"
     >
       {(m) => (
