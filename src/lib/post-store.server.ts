@@ -597,6 +597,17 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "nao",
     stale: ["ikke automatisk det samme utslaget i hver landsdel"],
   }
+,
+  {
+    flag: "amoc-copy-2026-10-07",
+    slug: "amoc",
+    stale: ["Her kan du redigere", "vippepunkt"],
+  },
+  {
+    flag: "amoc-copy-2-2026-10-07",
+    slug: "amoc",
+    stale: ["## Ferskvann kan bremse beltet"],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

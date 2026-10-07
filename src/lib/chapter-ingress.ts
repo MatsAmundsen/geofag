@@ -31,5 +31,5 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "enso": "ENSO er den naturlige svingningen i det tropiske Stillehavet. El Niño er den varme fasen og La Niña den kalde. Den flytter vind og regn, også langt utenfor Stillehavet.",
   "iod": "IOD er den vedvarende forskjellen i havtemperatur mellom vest og øst i det tropiske Indiahavet. I positiv fase er vest varmere og øst kjøligere.",
   "nao": "Den nordatlantiske oscillasjon er trykkforskjellen mellom lavtrykket ved Island og høytrykket ved Asorene. Positiv fase gir sterkere jetstrøm og mer storm og varme i Nord-Europa.",
-  "amoc": "Atlanterhavet har en enorm termisk motor: AMOC. Den frakter varme fra ekvator helt opp til Arktis og gjør Norge beboelig på 60°N. Men når isen smelter og ferskvann strømmer ut, settes stabiliteten på prøve.",
+  "amoc": "Det trege beltet starter i Nord-Atlanteren, der kaldt og salt vann synker og går sørover i dypet. En runde tar omtrent tusen år. Mer regn og smeltevann kan bremse det.",
 };

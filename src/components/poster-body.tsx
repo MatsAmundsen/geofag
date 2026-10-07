@@ -128,6 +128,7 @@ import {
   QUIZ_ENSO,
   QUIZ_IOD,
   QUIZ_NAO,
+  QUIZ_AMOC,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -515,6 +516,17 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    AmocForklaring: () => (
+    <Callout title="Hva betyr «den atlantiske omveltningen»?">
+      <p>
+        Den atlantiske omveltningen, AMOC, er starten på det trege beltet. Kaldt og salt vann synker
+        i Nord-Atlanteren og går sørover i dypet. En runde tar omtrent tusen år (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizAmoc: () => <Quiz questions={QUIZ_AMOC} heading={null} intro="Velg ett svar per spørsmål." />,
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,

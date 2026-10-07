@@ -1381,58 +1381,40 @@ export const KILDER = {
   ],
   amoc: [
     {
-      prefix: "Stommel, H. (1961). Thermohaline convection with two stable regimes of flow. ",
-      italic: "Tellus, 13",
-      suffix: "(2), 224–230.",
-      href: "https://doi.org/10.1111/j.2153-3490.1961.tb00079.x",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
+      italic: "The global conveyor belt",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor2.html",
     },
     {
-      prefix: "Broecker, W. S. (1991). The great ocean conveyor. ",
-      italic: "Oceanography, 4",
-      suffix: "(2), 79–89.",
-      href: "https://doi.org/10.5670/oceanog.1991.07",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
+      italic: "Effects of climate change",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor3.html",
     },
     {
-      prefix:
-        "Rahmstorf, S., Box, J. E., Feulner, G., Mann, M. E., Robinson, A., Rutherford, S., & Schaffernicht, E. J. (2015). Exceptional twentieth-century slowdown in Atlantic Ocean overturning circulation. ",
-      italic: "Nature Climate Change, 5",
-      suffix: "(5), 475–480.",
-      href: "https://doi.org/10.1038/nclimate2554",
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021a). ",
+      italic: "Summary for policymakers. In Climate change 2021: The physical science basis",
+      suffix: ". C.3.4.",
+      href: "https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM.pdf",
     },
     {
-      prefix:
-        "Caesar, L., Rahmstorf, S., Robinson, A., Feulner, G., & Saba, V. (2018). Observed fingerprint of a weakening Atlantic Ocean overturning circulation. ",
-      italic: "Nature, 556",
-      suffix: "(7700), 191–196.",
-      href: "https://doi.org/10.1038/s41586-018-0006-5",
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021b). ",
+      italic: "FAQ 9.3: Will the Gulf Stream shut down?",
+      suffix: ". In Climate change 2021: The physical science basis.",
+      href: "https://www.ipcc.ch/report/ar6/wg1/downloads/faqs/IPCC_AR6_WGI_FAQ_Chapter_09.pdf",
     },
     {
-      prefix:
-        "Smeed, D. A., et al. (2018). The North Atlantic Ocean is in a state of reduced overturning. ",
-      italic: "Geophysical Research Letters, 45",
-      suffix: "(3), 1527–1533.",
-      href: "https://doi.org/10.1002/2017GL076350",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },
     {
-      prefix:
-        "Ditlevsen, P., & Ditlevsen, S. (2023). Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. ",
-      italic: "Nature Communications, 14",
-      suffix: "(1), 4254.",
-      href: "https://doi.org/10.1038/s41467-023-39810-w",
-    },
-    {
-      prefix:
-        "van Westen, R. M., Kliphuis, M., & Dijkstra, H. A. (2024). Physics-based early warning signal shows that AMOC is on tipping course. ",
-      italic: "Science Advances, 10",
-      suffix: "(6), eadk1189.",
-      href: "https://doi.org/10.1126/sciadv.adk1189",
-    },
-    {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
-      italic:
-        "Chapter 9: Ocean, cryosphere and sea level change. In Climate Change 2021: The Physical Science Basis",
-      suffix: ". Cambridge University Press.",
-      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   modeller: [
