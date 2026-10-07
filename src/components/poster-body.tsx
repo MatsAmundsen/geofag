@@ -370,8 +370,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «paleoklima»?">
       <p>
         Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
-        mars 1958. Iskjernene viser at CO₂ i istidssyklusene det siste millionåret ikke kom over 300
-        ppm (NOAA, u.å.-a; u.å.-b).
+        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i
+        istidssyklusene det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
       </p>
     </Callout>
   ),

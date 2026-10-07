@@ -38,11 +38,23 @@ En liten økning i solinnstråling om sommeren på den nordlige halvkule, fra jo
 
 Kurven for de siste 800 000 årene er bygget på iskjerner. Dalene er istider med lav CO₂. Toppene er varmere mellomistider med høyere CO₂. Gjennom hele den tiden var CO₂ aldri høyere enn 300 ppm. Økningen de siste 60 årene er om lag 100 ganger raskere enn de naturlige økningene, slik de som skjedde mot slutten av forrige istid for 11 000–17 000 år siden (NOAA, u.å.-a).
 
-Det er denne sammenligningen forskningen på forhistorisk klima bidrar med til prognosene: 2024-verdien er tegnet inn mot iskjernekurven, og farten sammenlignes med de naturlige økningene mot slutten av forrige istid (NOAA, u.å.-a). Banen som flytter solinnstrålingen, eier neste kapittel.
+Det er denne sammenligningen forskningen på forhistorisk klima bidrar med til prognosene: 2024-verdien på 422,8 ppm er tegnet inn mot iskjernekurven, og farten sammenlignes med de naturlige økningene mot slutten av forrige istid (NOAA, u.å.-a). Banen som flytter solinnstrålingen, eier neste kapittel.
+
+## Oksygenisotoper som klimaarkiv
+
+Paleoklimatologi leser tidligere klima i blant annet iskjerner og i oksygenisotoper (Store norske leksikon, u.å.-a). I borkjerner fra dyphavet måles to oksygenisotoper, 18O og 16O, i kalkskall fra foraminiferer. 16O fordamper lettest og anrikes i isbreene. Under istider blir det derfor forholdsvis mer 18O i havet. Topper med mye 18O er istider, og perioder med lite 18O er mellomistider (Store norske leksikon, u.å.-b).
+
+## Hvor lange er måleseriene
+
+Hvert av de siste fire tiårene har vært varmere enn alle tiår før det siden 1850. Global overflatetemperatur i 2011–2020 lå 1,09 grader høyere enn i 1850–1900 (IPCC, 2021-a). I Norge har Meteorologisk institutt måleserier fra 1900 som er gode nok til en kurve for temperatur og nedbør for landet som helhet. Hovedtendensen de siste drøyt hundre årene er at det har blitt varmere (Meteorologisk institutt, 2026). Den direkte CO₂-serien på Mauna Loa er kortere: den startet i mars 1958 (NOAA, u.å.-b).
+
+## Klimafølsomhet
+
+Likevektsklimafølsomhet er den langsiktige globale oppvarmingen som følger av en dobling av karbondioksid over førindustrielt nivå (IPCC, 2021-b). Beste estimat i sjette hovedrapport er 3 grader, med et sannsynlig spenn fra 2,5 til 4 grader. Det svært sannsynlige spennet er fra 2 til 5 grader (IPCC, 2021-a).
 
 ## Havis er et annet arkiv
 
-Sea Ice Index gir konsistent bearbeidet utbredelse og konsentrasjon av havis siden 1979. Månedsbildene viser utbredelsen med omrisset av medianen for 30-årsperioden 1981–2010 (National Snow and Ice Data Center, u.å.). Satellittrekken starter altså i 1979. Den er ikke en iskjerne, og den sier ikke hva CO₂ var i istidene.
+Sea Ice Index gir konsistent bearbeidet utbredelse og konsentrasjon av havis siden 1979. Månedsbildene viser utbredelsen med omrisset av medianen for 30-årsperioden 1981–2010 (National Snow and Ice Data Center, u.å.). Satellittrekken starter i 1979. Den er ikke en iskjerne, og den sier ikke hva CO₂ var i istidene.
 
 > **Vanlige misforståelser**
 >
@@ -65,6 +77,10 @@ Sea Ice Index gir konsistent bearbeidet utbredelse og konsentrasjon av havis sid
 **Årstidssvingning:** Sommerens plantevekst senker CO₂, og vinterens nedbryting hever den.
 
 **Sea Ice Index:** Satellittserie for havisens utbredelse og konsentrasjon siden 1979.
+
+**Oksygenisotoper:** 16O fordamper lettest og lagres i isbreene. Mer 18O i havet betyr mer is på land.
+
+**Likevektsklimafølsomhet:** Langsiktig global oppvarming ved en dobling av CO₂. Beste estimat er 3 grader.
 
 ## Test deg selv
 

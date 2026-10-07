@@ -517,7 +517,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
   {
     flag: "paleoklima-copy-2026-10-07",
     slug: "paleoklima",
-    stale: ["Her kan du redigere", "klimafølsomhet"],
+    stale: ["Her kan du redigere", "Rayleigh-fraksjonering"],
+  },
+  {
+    flag: "paleoklima-copy-2-2026-10-07",
+    slug: "paleoklima",
+    stale: ["Satellittrekken starter altså i 1979."],
   },
 ];
 

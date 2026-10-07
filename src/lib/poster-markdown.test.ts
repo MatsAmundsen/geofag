@@ -326,7 +326,8 @@ describe("paleoklima poster", () => {
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
-    assert.equal(md.includes("klimafølsomhet"), false);
+    assert.equal(md.includes("Satellittrekken starter altså"), false);
+    assert.equal(md.includes("klimafølsomhet"), true);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/paleoklima"), true);

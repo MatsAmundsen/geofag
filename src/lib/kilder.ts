@@ -1448,6 +1448,36 @@ export const KILDER = {
       href: "https://nsidc.org/data/seaice_index",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-a). ",
+      italic: "Paleoklimatologi",
+      suffix: ".",
+      href: "https://snl.no/paleoklimatologi",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Marine isotoptrinn",
+      suffix: ".",
+      href: "https://snl.no/marine_isotoptrinn",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021-a). ",
+      italic: "Summary for policymakers. Climate change 2021: The physical science basis",
+      suffix: ".",
+      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021-b). ",
+      italic: "FAQ 7.3: What is equilibrium climate sensitivity",
+      suffix: ". In Climate change 2021: The physical science basis.",
+      href: "https://www.ipcc.ch/report/ar6/wg1/downloads/faqs/IPCC_AR6_WGI_FAQ_Chapter_07.pdf",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2026). ",
+      italic: "Klima fra 1900 til i dag",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/klima-siste-150-ar",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",

@@ -14,17 +14,24 @@ Dato: 2026-10-07. User-Agent: curl/8.0. HTTP 200 på sidene under. Ingen nye tal
 | Udir (u.å.-a) | https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer | 200 | Jordsystemer i tid og rom. Modeller og modellering. |
 | Udir (u.å.-b) | https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973 | 200 | Gjøre rede for forskning på forhistorisk klima, og hvordan det bidrar til å lage prognoser for framtidens klima. |
 
+| SNL (u.å.-a) | https://snl.no/paleoklimatologi | 200 | Iskjerner og oksygenisotoper som hjelpemidler. |
+| SNL (u.å.-b) | https://snl.no/marine_isotoptrinn | 200 | 18O og 16O i foraminiferer. 16O anrikes i isbreene. Mer 18O i havet under istider. |
+| IPCC (2021-a) | https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/ | 200 | Tiår siden 1850. 2011–2020 var 1,09 grader over 1850–1900. Likevektsklimafølsomhet: beste estimat 3 grader, sannsynlig 2,5–4, svært sannsynlig 2–5. |
+| IPCC (2021-b) | FAQ 7.3, kapittel 7 | 200 | Definisjon: langsiktig oppvarming ved dobling av CO₂ over førindustrielt nivå. |
+| MET (2026) | https://www.met.no/vaer-og-klima/klima-siste-150-ar | 200 | Norske serier fra 1900. Hovedtendens de siste drøyt hundre årene: varmere. |
+
 ## Avvik på climate.gov
 
-Høydepunktsboksen skriver 422,7 ppm for det globale middeltallet i 2024. Analyseteksten og figurteksten skriver 422,8 ppm. Kapitlet bruker 422,8 ppm fra analyseteksten.
+Høydepunktsboksen skriver 422,7 ppm for det globale middeltallet i 2024. Analyseteksten og figurteksten skriver 422,8 ppm. Både brødteksten og forklaringsboksen bruker 422,8 ppm fra analyseteksten. Mai 2024 «rett under 427 ppm» er månedsmiddel på Mauna Loa, ikke årsmiddelet.
+
+Symbolet δ¹⁸O står ikke på de åpnede SNL-sidene. Kapitlet forklarer 18O og 16O med ord.
 
 ## Droppet
 
 | Påstand | Hvorfor |
 | --- | --- |
-| 150–170 år med instrumentelle målinger | Ikke funnet på de åpnede sidene. |
-| Klimafølsomhet rundt 3,0 °C | Ikke på de åpnede sidene. Strengen er stale-markør og skal ikke stå i den nye teksten. |
-| δ¹⁸O, formler og isotopdiagrammer | Ikke gjengitt. Diagrammene er ikke rendret. |
+| «150–170 år» som ett tall | Ikke på de åpnede sidene. I stedet: globale temperaturer siden 1850 (IPCC) og norske serier fra 1900 (MET). |
+| Rayleigh-fraksjonering og isotopdiagrammer | Diagrammene er ikke rendret. Isotopene er forklart med SNL sine ord. |
 | 65 °N | Ikke på de åpnede sidene. Tatt ut av eierskapsteksten. |
 | Lüthi 2008, Petit 1999, Walker 2009, IPCC AR6-forsiden | DOI-er og forsiden er ikke brukt som undervisningskilde i denne runden. Climate.gov nevner Lüthi et al. 2008 som datagrunnlag for grafen. Kapitlet siterer climate.gov, ikke DOI-en. |
 | 800 ppm som mulig framtid | Nevnt som scenario på climate.gov. Ikke undervist som et faktum om nåtiden. |
