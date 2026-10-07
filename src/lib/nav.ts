@@ -231,7 +231,7 @@ export const GF2_THEMES = [
     image: "/images/fig-passat.jpg",
     alt: "Passatskyer over hav — vinden som energikilde, før den blir kilowatt",
     blurb:
-      "Vind, havvind, bølger og tidevann. Bærekraft er avveining mellom kutt, areal, arter og forsyning.",
+      "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola.",
     status: "klar" as const,
   },
   {

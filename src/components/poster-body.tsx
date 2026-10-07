@@ -87,6 +87,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_ENERGI,
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
@@ -364,6 +365,17 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  VindkraftForklaring: () => (
+    <Callout title="Hva betyr «vindkraft»?">
+      <p>
+        Vindkraft er vindenergi gjort om til nyttig energi, mekanisk eller elektrisk. I dag brukes
+        ordet mest om elektrisitet fra et vindkraftverk (Store norske leksikon, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  QuizEnergi: () => (
+    <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

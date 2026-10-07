@@ -1,73 +1,71 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/energi-hav-luft](/tema/energi-hav-luft). Her kan du redigere **hele fagteksten**.
-
-> **Kompetansemål**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte, både nasjonalt og globalt (Utdanningsdirektoratet, 2020).
-
-## Hvor energien kommer fra
-
-Nesten all fornybar energi i atmosfæren og i bølgene er omdannet solenergi. Ujevn oppvarming gir trykkforskjeller. Trykkforskjeller blir vind. Vind over hav blir bølger. Tidevann er unntaket: gravitasjon fra måne og sol, styrt av jordas rotasjon og bassengenes form.
-
-Derfor eier denne siden det [globale vindsystemet](/tema/vindsystemet) allerede har forklart — men nå som ressurs, ikke som vær. Vestavindsbeltet over Nordsjøen er det samme beltet som styrer lavtrykkene inn mot Vestlandet.
-
-## Effekt, kubikk og kapasitetsfaktor
-
-Effekten i en vindturbin vokser med tettheten i lufta, arealet rotoren sveiper, og *kubikken* av vindhastigheten. Dobbelt så mye vind er ikke dobbelt så mye strøm. Det er omtrent åtte ganger, før virkningsgrad og kapping ved storm tas med. Derfor slår plassering antall master. Et anlegg i jevn 9 m/s slår et anlegg i ujevn 6 m/s, selv med færre tårn.
-
-Kapasitetsfaktor er det tallet som skiller brosjyre fra år. Den er faktisk årsproduksjon delt på det anlegget ville levert om det gikk for fullt hver time. Landvind i Norge ligger typisk under havvind fordi havet har jevnere og sterkere vind, og fordi terreng og naboer tvinger landanlegg inn i kompromiss (NVE, u.å.-b).
-
-**Kapasitetsfaktor:** Faktisk årsproduksjon delt på teoretisk maks. Den forteller hvor mye ressursen og plasseringen faktisk leverer.
-
-## Vind på land
-
-Landvind er billigst per kilowattime der vinden er god og nettet finnes. Konfliktene er like faste: støy, skyggekast, reindrift, friluftsliv, rovfugl og et landskap noen eier som utsikt. Bærekraft her er ikke «fornybart, derfor ferdig». Det er avveining mellom kutt, areal og den som bor under rotoren.
-
-En drøfting som bare teller tonn CO₂, har hoppet over nasjonalt nivå i målet. En drøfting som bare teller naboer, har hoppet over det globale pådrivet.
-
-## Havvind: dypet bestemmer teknologien
-
-Over hav er vinden jevnere. Det er geografi, ikke politikk. Det som *er* politikk og geologi, er bunnen. Danmark og Nederland har grunn sokkel. Bunnfaste turbiner står der. Norge har dyp sokkel utenfor det meste av kysten. Flytende matcher den bunnen (NVE, u.å.-a).
-
-Derfor er «hvorfor ikke bare gjøre som Danmark?» et dårlig svar. Samme ressurs, annen hylle. Flytende er dyrere og yngre. Bunnfast er utprøvd der det er grunt nok. Valget følger kontinentalsokkelen, ikke ønsket om å kopiere naboen.
-
-Konfliktene skifter medium, de forsvinner ikke: fiskeri, skipstrafikk, sjøfugl, radar, kabler til land og hvem som eier strømmen når den kommer i land. Et felt i Nordsjøen er ikke tomt hav. Det er et arbeidsfelt.
-
-## Bølger og tidevann
-
-Bølgeenergi er vindenergi flyttet over i vannoverflaten. Potensialet er stort der vestavinden har hatt lang strekning. Problemet er 100-årshavet: innretningen må tåle den bølgen som kommer sjelden, ikke bare middelbølgen som ser pen ut i en modell.
-
-Tidevann er predikerbart. Det er den store fordelen mot vind. Ulempen er geografi: få steder har både amplitude og et inngrep i fjære som samfunnet godtar. En tidevannsbarriere tvers over et estuar endrer sediment, gyting og landskap. Ressursen er der. Prisen er ikke bare turbinen (Store norske leksikon, u.å.).
-
-Vannkraft i elv eier Geofag 1 og norsk energihistorie. Den er ikke «energi fra hav og atmosfære» i dette målet. Hold deg til vind, bølge og tidevann — og si hvorfor vannkraft likevel er bakteppet for norsk forsyning.
-
-## Nasjonalt og globalt
-
-Målet ber om begge skalaer. Nasjonalt: Norges dype sokkel, eksisterende vannkraft som buffer, og kyst som allerede er i bruk. Globalt: vestavindsbeltene på midlere bredde, passatene, og kyststater uten vannmagasin. Et land uten fjell og uten sokkel må velge annerledes enn Norge. Bærekraft er da også fordeling: hvem får strømmen, og hvem får inngrepet.
-
-Sammenlign med [tilpasning](/tema/tilpasning) : havvind kutter pådriv. Tilpasning lever med været som kommer. Begge kan være bærekraftige. Ingen av dem er det automatisk.
-
-> **Til eksamen**
+> Målet er at du skal kunne drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte, både nasjonalt og globalt (Udir, u.å.-b).
 >
-> Drøft minst tre hensyn: klima (kutt), areal/arter, og forsyning. Si hvorfor Norges sokkel peker mot flytende. Skill tidevann (gravitasjon, predikerbart) fra bølger (vær, variabelt).
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Mennesket i jordsystemene:* Kjerneelementet handler om hvordan vi utnytter naturressursene og endrer jordsystemene (Udir, u.å.-a). Vind, havvind og tidevann er slike ressurser.
+>
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om atmosfæren og hydrosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a).
+
+## Tre ressurser
+
+```widget
+VindkraftForklaring
+```
+
+[Energi fra hav og atmosfære](/tema/energi-hav-luft) tar for seg vind, havvind og tidevann. Vindkraft er vindenergi omgjort til nyttig energi, mekanisk eller elektrisk. Seil og vindmøller er gamle bruksmåter. I dag brukes ordet mest om elektrisk energi fra et vindkraftverk: vinden blir rotasjon, og en generator gjør rotasjonen om til elektrisitet (Store norske leksikon, u.å.-a).
+
+| Ressurs | Hva som driver den | Hvor den tas ut |
+| --- | --- | --- |
+| Vindkraft | Vind | På land, i et vindkraftverk |
+| Havvind | Vind til havs | På sokkelen, eller på flytende understell |
+| Tidevann | Månens og solas tiltrekning | Langs kysten, som veksling i vannstand |
+
+## Vindkraft i Norge
+
+I 2023 ble det produsert 14 terawattimer vindkraft i Norge, 9,1 prosent av den samlede kraftproduksjonen. Ved starten av 2025 var utbygd kapasitet om lag 5082 megawatt. Fosen Vind, Europas hittil største landbaserte vindkraftanlegg, kom i ordinær drift fra mars 2021. Anlegget har 277 vindturbiner, 1057 megawatt og en beregnet årsproduksjon på 3,4 terawattimer, om lag forbruket til 170 000 norske husstander (Store norske leksikon, u.å.-a).
+
+Vindkraft er utslippsfri og fornybar, og likevel omstridt i Norge. Den legger beslag på relativt store landområder og kan være et problem for reindriftsnæringen. Fosen-saken er et eksempel. Norge har derfor i fortsettelsen satset hovedsakelig på vindkraftparker til havs (Store norske leksikon, u.å.-a). Bærekraft er denne avveiningen, ikke bare at vinden kommer tilbake.
+
+## Havvind
+
+Havvind er vind brukt til kraftproduksjon til havs. En havvindpark er vindturbiner på grunne havområder, knyttet sammen i et nett. Understellet kan stå direkte på kontinentalsokkelen, eller flyte, i betong. Står de på sokkelen, må havet ikke være for dypt. Flest parker finnes i Kina, Sørøst-Asia, USA og Storbritannia (Store norske leksikon, u.å.-b).
+
+Ved utgangen av 2016 var det 3589 offshore vindturbiner i drift i Europa, 12 631 megawatt, i 84 parker i 11 land. Gjennomsnittlig årsproduksjon i 2017 var drøyt 40 terawattimer. I 2021 var den totale kapasiteten fra havvind økt til 26 gigawatt. Tallene hører til de årene, ikke til et senere år (Store norske leksikon, u.å.-b).
+
+Hywind, 25 kilometer utenfor nordkysten av Skottland, er en testpark på flytende understell som Equinor satte i drift i 2017, utviklet sammen med Norsk Hydro. Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den kom i drift i 2022, drives av Equinor, og erstatter gassturbiner slik at energiforsyningen er utslippsfri. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b).
+
+## Tidevann
+
+Tidevann, flo og fjære, er en regelmessig veksling i vannstanden langs kystene. Laveste vannstand er fjære eller lavvann. Høyeste er flo eller høyvann. I innhav og innsjøer er tidevannet som regel ubetydelig. Mellom to høyvann, eller to lavvann, går det på våre kyster om lag 12 timer og 25 minutter, et halvt månedøgn. Størst veksling, springflo, kommer omtrent ved nymåne og fullmåne. Minst veksling, nippflo, kommer om lag sju og et kvart døgn før og etter springflo (Store norske leksikon, u.å.-c).
+
+Isaac Newton viste at tidevannet følger tyngdekraften. Det skyldes månens og solas tiltrekning på havet. Tiltrekningen er sterkere på siden som vender mot månen. På den motsatte siden er den svakere enn gjennomsnittet, og vannet strømmer mot det motsatte punktet. Fordi jorda roterer, blir det to høyvann i døgnet (Store norske leksikon, u.å.-c). Tidevannet kommer altså ikke av vinden.
 
 > **Vanlige misforståelser**
 >
-> Fornybart er ikke det samme som bærekraftig. Areal og arter teller i målet.
+> At energien er fornybar, gjør den ikke automatisk ukontroversiell. Vindkraft legger beslag på land og kan være et problem for reindrift (Store norske leksikon, u.å.-a).
 >
-> Havvind er ikke «gratis vind». Kabel, bunn og konflikt er del av regnestykket.
+> Havvind må ikke stå på bunnen. Den kan også flyte, og da kan havet være dypere (Store norske leksikon, u.å.-b).
 >
-> Tidevann kommer ikke fra sola på samme måte som bølger. Gravitasjon er en annen motor.
+> Tidevann er ikke vind. Det kommer av månen og sola (Store norske leksikon, u.å.-c).
 
 ## Viktige begreper
 
-**Kapasitetsfaktor:** Faktisk årsproduksjon delt på teoretisk maks.
+**Vindkraft:** Vindenergi gjort om til mekanisk eller elektrisk energi. I dag mest elektrisitet fra et vindkraftverk.
 
-**Havvind:** Samme ressurs som landvind, jevnere over hav. Bunnfast eller flytende.
+**Havvindpark:** Vindturbiner på grunne havområder, knyttet sammen i et nett.
 
-**Bølgeenergi:** Vindenergi flyttet over i vannoverflaten. Høyt potensial, hardt miljø.
+**Flytende havvind:** Turbiner på et understell som flyter, ikke et som står på sokkelen.
 
-**Tidevann:** Gravitasjonsdrevet, predikerbart. Få egnede steder.
+**Tidevann:** Regelmessig veksling mellom flo og fjære langs kysten.
 
-**Kubikkloven:** Effekt i vindturbin vokser omtrent med v³. Plassering slår antall master.
+**Springflo:** Størst veksling i vannstand, omtrent ved nymåne og fullmåne.
 
-**Bærekraft:** Kutt, areal, arter, forsyning og fordeling. Ett hensyn er et innlegg.
+**Nippflo:** Minst veksling, om lag sju og et kvart døgn før og etter springflo.
+
+## Test deg selv
+
+```widget
+QuizEnergi
+```

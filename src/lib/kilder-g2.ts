@@ -136,28 +136,34 @@ export const KILDER_G2 = {
   ],
   energi: [
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
-      italic: "Havvind",
-      suffix: ".",
-      href: "https://www.nve.no/energi/energisystem/havvind/",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Vindkraft",
       suffix: ".",
-      href: "https://www.nve.no/energi/energisystem/vindkraft/",
+      href: "https://snl.no/vindkraft",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Havvind",
+      suffix: ".",
+      href: "https://snl.no/havvind",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-c). ",
       italic: "Tidevann",
       suffix: ".",
       href: "https://snl.no/tidevann",
     },
     {
-      prefix: "Utdanningsdirektoratet. (2020). ",
-      italic: "Læreplan i geofag (GFG01-03)",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
-      href: "https://www.udir.no/lk20/gfg01-03",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   feltG2: [
