@@ -8,7 +8,7 @@ export function GlacialLandformsDiagram() {
     <Diagram
       title="Glasiale landformer: Alpine og kontinentale former skapt av isbreenes erosjon og avsetning"
       heading="Det glasiale landskapet — isbreens mektige arkitektur"
-      caption="Isbreer er naturens mest kraftfulle geomorfologiske erosjonsagenter. Gjennom frostforvitring, plukking (isbreen fryser fast i steinblokker og river dem løs) og skuring (stein i brebånn riper og polerer fjellet) omdannes landskapet. Alpine breer skaper sylskarpe tinder, egger og botner. Dalbreer graver dype U-daler og fjorder med terskler og hengedaler, mens breens framstøt og smelting etterlater usorterte morener, drumlins og smeltevannsskapte eskere."
+      caption="Isbreer er naturens mest kraftfulle geomorfologiske erosjonsagenter. Gjennom frostforvitring, plukking (isbreen fryser fast i steinblokker og river dem løs) og skuring (stein i bresålen riper og polerer fjellet) omdannes landskapet. Alpine breer skaper sylskarpe tinder, egger og botner. Dalbreer graver dype U-daler og fjorder med terskler og hengedaler, mens breens framstøt og smelting etterlater usorterte morener, drumliner og smeltevannsskapte eskere."
       viewBox="0 0 940 520"
       wide
     >
@@ -93,7 +93,7 @@ export function GlacialLandformsDiagram() {
           </g>
           <g>
             <rect x="320" y="455" width="280" height="26" rx="4" fill="#17222a" stroke={C.warm} strokeWidth="1" />
-            <L x="330" y="472" fill={C.warm} size={11} weight={700}>Endemorene: Marker breens maksimale fremstøt</L>
+            <L x="330" y="472" fill={C.warm} size={11} weight={700}>Endemorene: markerer hvor langt breen rykket fram</L>
           </g>
           <g>
             <rect x="615" y="455" width="280" height="26" rx="4" fill="#17222a" stroke={C.cold} strokeWidth="1" />
@@ -268,8 +268,8 @@ export function WeatheringMechanismsDiagram() {
             <rect x="65" y="115" width="375" height="85" rx="6" fill="#141c22" stroke={C.dim} strokeWidth="1" />
             <L x="80" y="138" fill={C.cold} size={13} weight={700}>1. Frostsprengning (Frost wedging)</L>
             <L x="80" y="156" fill={C.fg} size={11}>• Vann trenger inn i sprekker og utvider seg med 9 % ved frysing.</L>
-            <L x="80" y="172" fill={C.fg} size={11}>• Utvikler trykk på over 200 MPa — sprenger blokker løs til ur og talus.</L>
-            <L x="80" y="188" fill={C.sand} size={10}>Vanligst ved fryse-tine-vekslinger rundt 0 °C i høyfjellet i Norge.</L>
+            <L x="80" y="172" fill={C.fg} size={11}>• Islinser vokser og presser sprekken videre, til blokker løsner og blir ur.</L>
+            <L x="80" y="188" fill={C.sand} size={10}>Mange fryse–tine-sykluser og tilgang på vann betyr mer enn sterk kulde.</L>
           </g>
 
           {/* 2. Trykkavlastning / Eksfoliering */}
@@ -337,60 +337,65 @@ export function NorwegianLandscapeEvolutionDiagram() {
   return (
     <Diagram
       title="Norges landskapsutvikling: Fra mesozoisk paleisk flate til tertiær landheving og kvartære istider"
-      heading="Det norske landskapets 4D-historie — gamle vidder og unge fjorder"
-      caption="Det norske landskapet består av to vidt forskjellige generasjoner landformer: 1) De gamle landformene (den paleiske overflaten): rolige vidder, avrundede åser og vide daler formet gjennom titalls millioner år under mesozoikum og tidlig tertiær. 2) De unge landformene: Dype fjorder, U-daler, alpine tinder og strandflaten, skapt av elver og kvartære isbreer etter at den skandinaviske landblokken ble hevet asymmetrisk opp mot vest i tertiær tid (paleogen/neogen) da Atlanterhavet åpnet seg."
-      viewBox="0 0 940 500"
+      heading="Det norske landskapets historie — gamle vidder og unge fjorder"
+      caption="Det norske landskapet består av to vidt forskjellige generasjoner landformer: 1) De gamle landformene (den paleiske overflaten): rolige vidder, avrundede åser og vide daler formet gjennom titalls millioner år under mesozoikum og tidlig tertiær. 2) De unge landformene: Dype fjorder, U-daler, alpine tinder og strandflaten, skapt av elver og kvartære isbreer. Figuren viser den klassiske modellen, der landblokken ble hevet asymmetrisk opp mot vest i tertiær tid (paleogen/neogen) da Atlanterhavet åpnet seg. Dette er én av to modeller: Andre forskere mener fjellene har vært høye helt siden Kaledonidene, og at istidene høvlet ned toppene til en jevn høyde rundt snøgrensen («glacial buzzsaw»). Vestlandsfjorden er en U-dal gravd ut av is under havnivå."
+      viewBox="0 0 940 590"
       wide
     >
       {(m) => (
         <>
-          <rect x="30" y="30" width="880" height="440" rx="12" fill="#121a22" stroke={C.dim} strokeWidth="1.6" />
+          <rect x="30" y="30" width="880" height="530" rx="12" fill="#121a22" stroke={C.dim} strokeWidth="1.6" />
 
           {/* Skjematisk profil fra Norskehavet i vest til Sverige i øst */}
           {/* Havflate Norskehavet (vest, venstre) */}
-          <rect x="40" y="320" width="180" height="130" fill="#0f2b3c" />
+          <rect x="40" y="320" width="180" height="145" fill="#0f2b3c" />
           <line x1="40" y1="320" x2="220" y2="320" stroke="#38bdf8" strokeWidth="2" strokeDasharray="6 3" />
           <L x="110" y="312" fill="#38bdf8" size={13} weight={700} anchor="middle">Norskehavet</L>
 
           {/* Strandflaten (lav brem av øyer og skjær langs kysten) */}
           <path d="M 160 315 L 240 315 L 250 280 L 160 320 Z" fill="#2d2922" stroke={C.teal} strokeWidth="1.5" />
-          <L x="200" y="270" fill={C.teal} size={13} weight={800} anchor="middle">Strandflaten</L>
-          <L x="200" y="286" fill={C.fg} size={10} anchor="middle">0–50 moh. Skjærgård</L>
-          <L x="200" y="300" fill={C.muted} size={9} anchor="middle">Frostsprengning &amp; bølgeerosjon</L>
+          <L x="168" y="248" fill={C.teal} size={13} weight={800} anchor="middle">Strandflaten</L>
+          <L x="168" y="264" fill={C.fg} size={10} anchor="middle">0–50 moh. Skjærgård</L>
+          <L x="168" y="278" fill={C.muted} size={9} anchor="middle">Frostsprengning &amp; bølgeerosjon</L>
 
-          {/* Steil vestkyst med dyp fjord (Sognefjorden) */}
+          {/* Fjordvann: fast havnivå. Tegnes før landet, så vannet bare synes i fjorden. */}
+          <rect x="285" y="320" width="150" height="135" fill="#15425b" />
+          <line x1="285" y1="320" x2="435" y2="320" stroke="#38bdf8" strokeWidth="1.5" />
+
+          {/* Steil vestkyst med dyp fjord (Sognefjorden): U-formet trau gravd ut av is, bunnen under havnivå.
+              Høydeskala ca. 10 m per enhet: havnivå y=320, fjordbunn −1300 m y=450, toppene ca. 2000 moh. */}
           <path
-            d="M 240 315 L 290 100 L 320 220 L 350 420 L 380 220 L 410 90 L 580 120 L 750 180 L 890 260 L 890 450 L 160 450 Z"
+            d="M 240 315 L 280 110 C 291 200 297 330 305 418 Q 311 450 336 450 L 384 450 Q 409 450 415 418 C 423 330 427 200 432 92 L 580 120 L 750 180 L 890 260 L 890 465 L 160 465 Z"
             fill="#23201a"
             stroke={C.fg}
             strokeWidth="1.4"
           />
 
-          {/* Fjordvann som trenger dypt inn i landet */}
-          <path d="M 335 320 L 365 320 L 350 420 Z" fill="#15425b" stroke="#38bdf8" strokeWidth="1" />
-          <line x1="280" y1="320" x2="400" y2="320" stroke="#38bdf8" strokeWidth="1.5" />
-          <L x="350" y="285" fill="#38bdf8" size={12} weight={700} anchor="middle">Vestlandsfjord</L>
-          <L x="350" y="300" fill={C.muted} size={10} anchor="middle">(Innskåret i den hevede blokken)</L>
-          <L x="350" y="435" fill={C.sand} size={10} anchor="middle">Overfordypet under havnivå (-1300 m)</L>
+          <L x="356" y="285" fill="#38bdf8" size={12} weight={700} anchor="middle">Vestlandsfjord</L>
+          <L x="356" y="300" fill={C.muted} size={10} anchor="middle">(U-dal gravd ut av is)</L>
+          <L x="360" y="372" fill={C.white} size={10} weight={700} anchor="middle">U-formet fjord</L>
+          <L x="360" y="386" fill={C.white} size={10} anchor="middle">under havnivå</L>
+          <L x="360" y="442" fill={C.sand} size={10} anchor="middle">−1300 m</L>
 
           {/* Alpine tinder på kanten i vest (Jotunheimen / Sunnmørsalpene) */}
-          <polygon points="290,100 275,140 305,140" fill="#e2e8f0" opacity="0.8" />
-          <polygon points="410,90 395,130 425,130" fill="#e2e8f0" opacity="0.8" />
-          <L x="350" y="70" fill={C.warm} size={14} weight={800} anchor="middle">Unge alpine landformer</L>
-          <L x="350" y="86" fill={C.muted} size={10} anchor="middle">Tinder, botner og egger (Kvartære breer)</L>
+          <polygon points="280,110 272,140 287,140" fill="#e2e8f0" opacity="0.8" />
+          <polygon points="432,92 426,124 440,124" fill="#e2e8f0" opacity="0.8" />
+          <L x="340" y="62" fill={C.warm} size={14} weight={800} anchor="middle">Unge alpine landformer</L>
+          <L x="340" y="78" fill={C.muted} size={10} anchor="middle">Tinder, botner og egger (kvartære breer)</L>
 
           {/* Den paleiske overflaten (Hardangervidda) */}
           {/* Stiplet linje som viser den opprinnelige flata før istidens innsnitt */}
-          <line x1="290" y1="100" x2="410" y2="90" stroke={C.sand} strokeWidth="2" strokeDasharray="4 4" />
-          <path d="M 410 90 Q 560 115 720 170" fill="none" stroke={C.sand} strokeWidth="3" />
-          <L x="560" y="85" fill={C.sand} size={15} weight={800} anchor="middle">Den paleiske overflaten (Gamle landformer)</L>
-          <L x="560" y="103" fill={C.fg} size={11} anchor="middle">Hardangervidda, Finnmarksvidda (Mesozoisk peneplan)</L>
+          <line x1="280" y1="110" x2="432" y2="92" stroke={C.sand} strokeWidth="2" strokeDasharray="4 4" />
+          <path d="M 432 92 Q 560 115 720 170" fill="none" stroke={C.sand} strokeWidth="3" />
+          <L x="660" y="68" fill={C.sand} size={15} weight={800} anchor="middle">Den paleiske overflaten (Gamle landformer)</L>
+          <L x="660" y="86" fill={C.fg} size={11} anchor="middle">Hardangervidda, Finnmarksvidda (klassisk modell)</L>
 
           {/* Tertiær heving pil */}
-          <Arrow d="M 120 220 L 120 120" marker={m.warm} color={C.warm} width={3.2} />
-          <L x="135" y="150" fill={C.warm} size={13} weight={800}>Tertiær landheving</L>
-          <L x="135" y="168" fill={C.fg} size={11}>Opptil 1500–2000 moh i vest</L>
-          <L x="135" y="184" fill={C.muted} size={10}>Skandinaviske blokk tippet mot øst</L>
+          <Arrow d="M 66 220 L 66 120" marker={m.warm} color={C.warm} width={3.2} />
+          <L x="80" y="134" fill={C.warm} size={13} weight={800}>Tertiær landheving</L>
+          <L x="80" y="150" fill={C.warm} size={11}>(klassisk modell)</L>
+          <L x="80" y="168" fill={C.fg} size={11}>Opptil 1500–2000 moh i vest</L>
+          <L x="80" y="184" fill={C.muted} size={10}>Skandinaviske blokk tippet mot øst</L>
 
           {/* Østlandsdalene (slakere U-daler som følger den paleiske helningen) */}
           <path d="M 720 170 L 760 230 L 800 200 L 890 260" fill="none" stroke={C.cold} strokeWidth="2" />
@@ -400,19 +405,19 @@ export function NorwegianLandscapeEvolutionDiagram() {
 
           {/* Forklarende tabell nederst */}
           <g>
-            <rect x="50" y="370" width="390" height="85" rx="8" fill="#18232c" stroke={C.warm} strokeWidth="1.2" />
-            <L x="65" y="392" fill={C.warm} size={13} weight={700}>Unge landformer (Kvartær tid &lt; 2,6 mill. år)</L>
-            <L x="65" y="410" fill={C.fg} size={11}>• Fjorder, U-daler, canyoner, botner, tinder og morener.</L>
-            <L x="65" y="426" fill={C.fg} size={11}>• Skapt ved voldsom bre- og elveerosjon etter tertiærhevingen.</L>
-            <L x="65" y="442" fill={C.teal} size={10}>Strandflaten er en hybridflate: frostforvitring, brenninger og is.</L>
+            <rect x="50" y="465" width="390" height="85" rx="8" fill="#18232c" stroke={C.warm} strokeWidth="1.2" />
+            <L x="65" y="487" fill={C.warm} size={13} weight={700}>Unge landformer (Kvartær tid &lt; 2,6 mill. år)</L>
+            <L x="65" y="505" fill={C.fg} size={11}>• Fjorder, U-daler, canyoner, botner, tinder og morener.</L>
+            <L x="65" y="521" fill={C.fg} size={11}>• Skapt ved voldsom bre- og elveerosjon etter tertiærhevingen.</L>
+            <L x="65" y="537" fill={C.teal} size={10}>Strandflaten er en hybridflate: frostforvitring, brenninger og is.</L>
           </g>
 
           <g>
-            <rect x="460" y="370" width="430" height="85" rx="8" fill="#18232c" stroke={C.sand} strokeWidth="1.2" />
-            <L x="475" y="392" fill={C.sand} size={13} weight={700}>Gamle landformer (Mesozoikum &amp; Tidlig Tertiær)</L>
-            <L x="475" y="410" fill={C.fg} size={11}>• Viddelandskap, avrundede heier og vide daler (peneplan).</L>
-            <L x="475" y="426" fill={C.fg} size={11}>• Formet av millioner av års forvitring i et varmt og fuktig klima.</L>
-            <L x="475" y="442" fill={C.sand} size={10}>Hardangervidda overlevde fordi innlandsisen var kald og fastfrosset!</L>
+            <rect x="460" y="465" width="430" height="85" rx="8" fill="#18232c" stroke={C.sand} strokeWidth="1.2" />
+            <L x="475" y="487" fill={C.sand} size={13} weight={700}>Gamle landformer (Mesozoikum &amp; Tidlig Tertiær)</L>
+            <L x="475" y="505" fill={C.fg} size={11}>• Viddelandskap, avrundede heier og vide daler (peneplan).</L>
+            <L x="475" y="521" fill={C.fg} size={11}>• Formet av millioner av års forvitring i et varmt og fuktig klima.</L>
+            <L x="475" y="537" fill={C.sand} size={10}>Hardangervidda overlevde fordi innlandsisen var kald og fastfrosset!</L>
           </g>
         </>
       )}

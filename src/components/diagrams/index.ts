@@ -88,6 +88,7 @@ export {
   EarthLayersDiagram,
   HotspotPlumeDiagram,
   NorwayTectonicsHistoryDiagram,
+  OfiolittSnittDiagram,
   OceanOceanSubductionDiagram,
   PlatesMapDiagram,
   SolidusDiagram,

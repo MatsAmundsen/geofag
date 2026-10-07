@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
-import { NorwayTectonicsHistoryDiagram } from "@/components/diagrams";
+import { NorwayTectonicsHistoryDiagram, OfiolittSnittDiagram } from "@/components/diagrams";
 import { GeoMap } from "@/components/geo-map";
-import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
@@ -100,24 +99,15 @@ function NorgesGeologiPage() {
           </li>
         </ol>
 
-        <PhotoFigure
-          src="/images/geo-ofiolitt-leka.jpg"
-          alt="Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel"
-          heading="Norges geologiske nasjonalmonument: Leka ofiolittkompleks"
-          caption="På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!"
-          marks={[
-            { x: 22, y: 72, n: "1", text: "Mantelperidotitt", tone: "warm" },
-            { x: 42, y: 55, n: "2", text: "Moho-grensen", tone: "cold" },
-            { x: 62, y: 42, n: "3", text: "Lagdelt gabbro", tone: "warm" },
-            { x: 80, y: 24, n: "4", text: "Putelava", tone: "cold" },
-          ]}
-          points={[
-            { n: "1", label: "Gulbrun forvitret dunitt og harzburgitt: Dette er selve jordens øvre mantel eksponert i dagslys!" },
-            { n: "2", label: "Petrologisk Moho: Overgangen mellom ultramafisk mantel og mafisk gabbroid jordskorpe." },
-            { n: "3", label: "Lagdelt gabbro: Krystallisasjonsprodukter fra havbunnens aksiale magmakammer for 497 millioner år siden." },
-            { n: "4", label: "Plateformede ganger og putelava som en gang utgjorde havbunnen i Iapetushavet." },
-          ]}
-        />
+        <p>
+          Leka-ofiolitten er en bit av havbunnsskorpe og øvre mantel fra Iapetushavet, dannet for ca. 497 millioner år
+          siden. Den ble trolig skjøvet opp på kanten av et kontinent for ca. 470 millioner år siden og senere ført inn over
+          Baltika under den kaledonske fjellkjededannelsen. Lagpakken ble veltet over på siden, så i dag kan man gå bortover
+          på øya fra mantelbergarter til putelava (Dunning &amp; Pedersen, 1988; Titus mfl., 2002; Leka steinsenter, u.å.;
+          Trollfjell Geopark, u.å.).
+        </p>
+
+        <OfiolittSnittDiagram />
 
         <OrdBoks
           ord="Ofiolitt"
@@ -137,8 +127,10 @@ function NorgesGeologiPage() {
           frontalt med det nordamerikanske og grønlandske kontinentet (<strong>Laurentia</strong>).
         </p>
         <p>
-          Kollisjonen var av samme kaliber som dagens kollisjon mellom India og Asia, og skapte en Himalaya-lignende
-          fjellkjede med tinder på over 8000–9000 meter – <strong>Kaledonidene</strong>.
+          Kollisjonen var av samme kaliber som dagens kollisjon mellom India og Asia, og skapte fjellkjeden{" "}
+          <strong>Kaledonidene</strong>. Kaledonidene var trolig minst like høye som dagens Himalaya. Noen forskere mener
+          toppene kan ha nådd over 8000 meter, men den nøyaktige høyden er ukjent fordi fjellkjeden er erodert ned til
+          røttene (NGU, u.å.-a; Løvø, 2014; Amundsen, 2021).
         </p>
 
         <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 space-y-3">
@@ -292,6 +284,7 @@ function NorgesGeologiPage() {
         <GeoMap
           center={[65, -3]}
           zoom={4}
+          fitMarkers
           markers={[
             {
               lat: 65.08,
@@ -422,7 +415,7 @@ function NorgesGeologiPage() {
 
       <Callout title="Oppsummering: Norges geologiske reise">
         <ul className="space-y-1.5 text-sm list-disc pl-4">
-          <li><strong>Leka ofiolitt:</strong> Et enestående vindu til Iapetushavets bunn og øvre mantel, skjøvet på land ved obduksjon for ca. 420 millioner år siden.</li>
+          <li><strong>Leka ofiolitt:</strong> Et enestående vindu til Iapetushavets bunn og øvre mantel, dannet for ca. 497 millioner år siden og trolig skjøvet opp på kanten av et kontinent for ca. 470 millioner år siden.</li>
           <li><strong>Kaledonidene:</strong> Frontalkollisjon mellom Baltika og Laurentia for 430–400 Ma som bygget en Himalaya-høy fjellkjede og skjøv mektige skyvedekker over Norge.</li>
           <li><strong>Oslofeltets riftdal:</strong> Pangeas oppsprekking i perm skapte en innsunket graben med sjelden rombeporfyrlava og larvikitt.</li>
           <li><strong>Nord-Atlanterens åpning:</strong> For 55 Ma siden skilte Norge og Grønland lag; Norge fikk en passiv margin med rike sedimentbassenger på sokkelen.</li>

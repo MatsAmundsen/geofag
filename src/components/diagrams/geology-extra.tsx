@@ -98,7 +98,7 @@ export function GrainSizeDistributionDiagram() {
         <>
           {/* Øvre seksjon: Kornstørrelseskala (Udden-Wentworth) */}
           <rect x="40" y="30" width="820" height="150" rx="10" fill="#141f27" stroke={C.dim} strokeWidth="1.5" />
-          <L x="60" y="55" fill={C.teal} size={15} weight={700}>Klassifisering etter kornstørrelse (ISO / NGU-standard)</L>
+          <L x="60" y="55" fill={C.teal} size={15} weight={700}>Klassifisering etter kornstørrelse</L>
 
           {/* 4 kolonner for kornklasser */}
           {/* 1. Leir */}
@@ -132,8 +132,8 @@ export function GrainSizeDistributionDiagram() {
           <g>
             <rect x="660" y="70" width="185" height="95" rx="8" fill="#29201c" stroke={C.warm} strokeWidth="1.2" />
             <L x="675" y="94" fill={C.warm} size={15} weight={700}>Grus, stein, blokk</L>
-            <L x="675" y="114" fill={C.fg} size={12}>Grus: 2–64 mm · Blokk &gt;64 mm</L>
-            <L x="675" y="132" fill={C.muted} size={11}>Høy strømenergi kreves</L>
+            <L x="675" y="114" fill={C.fg} size={11}>Grus 2–64 · Stein 64–256 mm</L>
+            <L x="675" y="132" fill={C.fg} size={11}>Blokk over 256 mm</L>
             <L x="675" y="148" fill={C.low} size={11}>Fjellbekker, jettegryter, morener</L>
           </g>
 
@@ -402,7 +402,38 @@ export function BowenReactionSeriesDiagram() {
   );
 }
 
+/** Myk kurve (Catmull-Rom → kubisk Bézier) gjennom punktene, uten startende M. */
+function smoothSegments(pts: [number, number][]) {
+  let d = "";
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] ?? pts[i]!;
+    const p1 = pts[i]!;
+    const p2 = pts[i + 1]!;
+    const p3 = pts[i + 2] ?? p2;
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += ` C ${c1[0]!.toFixed(1)} ${c1[1]!.toFixed(1)}, ${c2[0]!.toFixed(1)} ${c2[1]!.toFixed(1)}, ${p2[0]} ${p2[1]}`;
+  }
+  return d;
+}
+
+/*
+ * Logaritmisk y-akse: 90 enheter per tidobling (1000 cm/s ved y=50, 100 ved 140, 10 ved 230, 1 ved 320, 0,1 ved 410).
+ * 20 cm/s ligger ved y≈203. Erosjonskurven har bunnpunkt der for sand 0,1–0,5 mm (x≈400–500).
+ * Avsetningskurven nærmer seg erosjonskurven for grove korn.
+ */
+const HJ_EROSION: [number, number][] = [
+  [70, 95], [140, 118], [210, 140], [290, 168], [370, 192], [440, 203], [500, 200], [590, 181], [670, 150], [750, 113], [830, 77],
+];
+const HJ_DEPOSITION: [number, number][] = [
+  [270, 410], [320, 375], [370, 340], [440, 293], [500, 262], [590, 203], [670, 160], [750, 124], [830, 86],
+];
+
 export function HjulstromDiagram() {
+  const erosion = `M ${HJ_EROSION[0]![0]} ${HJ_EROSION[0]![1]}${smoothSegments(HJ_EROSION)}`;
+  const erosionBack = smoothSegments([...HJ_EROSION].reverse());
+  const deposition = `M ${HJ_DEPOSITION[0]![0]} ${HJ_DEPOSITION[0]![1]}${smoothSegments(HJ_DEPOSITION)}`;
+  const depositionBack = smoothSegments([...HJ_DEPOSITION].reverse());
   return (
     <Diagram
       title="Hjulstrøms diagram: sammenheng mellom strømhastighet og sedimenttransport"
@@ -416,43 +447,20 @@ export function HjulstromDiagram() {
           {/* Koordinatramme */}
           <rect x="70" y="40" width="760" height="370" rx="8" fill="#121a22" stroke={C.dim} strokeWidth="1.6" />
 
-          {/* Sone 1: Erosjon (øverst) */}
-          <path
-            d="M 70 40 L 830 40 L 830 110 L 730 140 L 580 200 L 440 240 L 320 230 L 220 180 L 150 120 L 70 85 Z"
-            fill="#3a1b1b"
-            opacity="0.65"
-          />
+          {/* Sone 1: Erosjon (over erosjonskurven) */}
+          <path d={`M 70 40 L 830 40 L 830 77${erosionBack} Z`} fill="#3a1b1b" opacity="0.65" />
 
-          {/* Sone 2: Transport (i midten) */}
-          <path
-            d="M 70 85 L 150 120 L 220 180 L 320 230 L 440 240 L 580 200 L 730 140 L 830 110 L 830 280 L 730 310 L 580 340 L 440 360 L 300 375 L 70 405 Z"
-            fill="#2c2a1b"
-            opacity="0.6"
-          />
+          {/* Sone 2: Transport (mellom kurvene) */}
+          <path d={`${erosion} L 830 86${depositionBack} L 70 410 Z`} fill="#2c2a1b" opacity="0.6" />
 
-          {/* Sone 3: Sedimentasjon (nederst) */}
-          <path
-            d="M 70 405 L 300 375 L 440 360 L 580 340 L 730 310 L 830 280 L 830 410 L 70 410 Z"
-            fill="#142c26"
-            opacity="0.65"
-          />
+          {/* Sone 3: Sedimentasjon (under avsetningskurven) */}
+          <path d={`${deposition} L 830 410 Z`} fill="#142c26" opacity="0.65" />
 
           {/* Kurve 1: Kritisk erosjonshastighet */}
-          <path
-            d="M 70 85 Q 150 120 220 180 Q 320 235 440 240 Q 580 200 730 140 L 830 110"
-            fill="none"
-            stroke={C.warm}
-            strokeWidth="3.2"
-          />
+          <path d={erosion} fill="none" stroke={C.warm} strokeWidth="3.2" />
 
           {/* Kurve 2: Sedimentasjonshastighet */}
-          <path
-            d="M 70 405 Q 300 375 440 360 Q 580 340 730 310 L 830 280"
-            fill="none"
-            stroke={C.teal}
-            strokeWidth="2.8"
-            strokeDasharray="6 4"
-          />
+          <path d={deposition} fill="none" stroke={C.teal} strokeWidth="2.8" strokeDasharray="6 4" />
 
           {/* Tekster i sonene */}
           <L x="480" y="90" fill={C.warm} size={20} weight={800} anchor="middle">
@@ -462,11 +470,14 @@ export function HjulstromDiagram() {
             Partikler rives løs fra bunnen og settes i bevegelse
           </L>
 
-          <L x="480" y="275" fill="#edd08e" size={20} weight={800} anchor="middle">
-            TRANSPORZONE
+          <L x="185" y="300" fill="#edd08e" size={20} weight={800} anchor="middle">
+            TRANSPORTSONE
           </L>
-          <L x="480" y="296" fill={C.fg} size={12} anchor="middle">
-            Partikler holdes i bevegelse (suspensjon eller bunntransport)
+          <L x="185" y="320" fill={C.fg} size={12} anchor="middle">
+            Partikler holdes i bevegelse
+          </L>
+          <L x="185" y="336" fill={C.fg} size={12} anchor="middle">
+            (svevende eller langs bunnen)
           </L>
 
           <L x="480" y="382" fill={C.teal} size={18} weight={800} anchor="middle">
@@ -478,30 +489,33 @@ export function HjulstromDiagram() {
 
           {/* Kohesjon og sand-merknader */}
           {/* Kohesjon leire */}
-          <rect x="85" y="105" width="130" height="50" rx="5" fill="#1b252d" stroke={C.warm} strokeWidth="1.2" />
-          <L x="150" y="124" fill={C.warm} size={11} weight={700} anchor="middle">
+          <rect x="85" y="165" width="130" height="46" rx="5" fill="#1b252d" stroke={C.warm} strokeWidth="1.2" />
+          <L x="150" y="184" fill={C.warm} size={11} weight={700} anchor="middle">
             Kohesjonseffekt!
           </L>
-          <L x="150" y="142" fill={C.fg} size={10} anchor="middle">
+          <L x="150" y="201" fill={C.fg} size={10} anchor="middle">
             Elektrostatisk binding
           </L>
 
           {/* Letteste erosjon ved sand */}
-          <rect x="360" y="195" width="150" height="38" rx="5" fill="#1b252d" stroke={C.sand} strokeWidth="1.2" />
-          <L x="435" y="212" fill={C.sand} size={11} weight={700} anchor="middle">
+          <rect x="358" y="212" width="146" height="36" rx="5" fill="#1b252d" stroke={C.sand} strokeWidth="1.2" />
+          <L x="431" y="228" fill={C.sand} size={11} weight={700} anchor="middle">
             Eroderes lettest (~20 cm/s)
           </L>
-          <L x="435" y="226" fill={C.muted} size={10} anchor="middle">
+          <L x="431" y="242" fill={C.muted} size={10} anchor="middle">
             Middels sand (0,2–0,5 mm)
           </L>
 
           {/* Y-akse: Strømhastighet (cm/s) */}
-          <L x="25" y="50" fill={C.fg} size={12} weight={700}>cm/s</L>
-          <L x="60" y="55" fill={C.muted} size={11} anchor="end">1000</L>
-          <L x="60" y="130" fill={C.muted} size={11} anchor="end">100</L>
-          <L x="60" y="225" fill={C.muted} size={11} anchor="end">10</L>
-          <L x="60" y="320" fill={C.muted} size={11} anchor="end">1,0</L>
-          <L x="60" y="410" fill={C.muted} size={11} anchor="end">0,1</L>
+          <L x="62" y="28" fill={C.fg} size={12} weight={700} anchor="end">cm/s</L>
+          <L x="60" y="54" fill={C.muted} size={11} anchor="end">1000</L>
+          <L x="60" y="144" fill={C.muted} size={11} anchor="end">100</L>
+          <L x="60" y="234" fill={C.muted} size={11} anchor="end">10</L>
+          <L x="60" y="324" fill={C.muted} size={11} anchor="end">1,0</L>
+          <L x="60" y="414" fill={C.muted} size={11} anchor="end">0,1</L>
+          {[50, 140, 230, 320].map((y) => (
+            <line key={y} x1="64" y1={y} x2="70" y2={y} stroke={C.muted} strokeWidth="1" />
+          ))}
 
           {/* X-akse inndeling (Kornstørrelser) */}
           {/* Skillelinjer vertikalt */}

@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelPanel, ModelTab } from "./model-chrome";
 
+/** Vest–øst-profil etter istidene: fjord (U-dal under havet) og U-dal over havet. */
+const U_PROFILE =
+  "M 20 120 L 40 120 L 50 45 C 56 95 58 134 64 142 Q 68 146 74 146 L 84 146 Q 90 146 92 140 C 96 124 98 84 100 45 L 108 52 C 111 80 113 104 116 112 Q 119 116 124 116 L 130 116 Q 134 116 136 108 C 138 90 139 70 141 50 L 200 80 L 240 95 L 240 155 L 20 155 Z";
+
 type LandformTab = "glacier" | "river_meander" | "weathering_climate" | "norway_timeline";
 
 export function LandformGeomorphologyModel() {
@@ -57,16 +61,18 @@ export function LandformGeomorphologyModel() {
     if (frostScore > 8) frostLabel = "Ekstremt sterk (Høyfjell / Periglacial)";
     else if (frostScore > 4) frostLabel = "Moderat til sterk";
 
-    let chemLabel = "Ubetydelig (kulde begrenser)";
-    if (chemScore > 12) chemLabel = "Meget sterk (Tropisk / Subtropisk)";
-    else if (chemScore > 6) chemLabel = "Moderat (Fuktig temperert klima)";
+    const chemShown = Math.min(10, chemScore);
+    let chemLabel = "Ubetydelig (kulde eller tørke begrenser)";
+    if (chemShown > 7) chemLabel = "Sterk (Tropisk / Subtropisk)";
+    else if (chemShown > 4) chemLabel = "Moderat (Fuktig temperert klima)";
+    else if (chemShown > 1.5) chemLabel = "Svak";
 
     let landscapeType = "Norsk kyst- og fjordklima";
     if (meanTemp < -3) landscapeType = "Arktisk / Alpint permafrostlandskap (blokkmark, ur)";
     else if (meanTemp > 18 && annualPrecip > 1800) landscapeType = "Tropisk regnskog (dyp kjemisk forvitringshud / saprolitt)";
     else if (annualPrecip < 300) landscapeType = "Arid / Ørkenlandskap (saltsprengning og vind)";
 
-    return { frostScore: Math.min(10, frostScore).toFixed(1), chemScore: chemScore.toFixed(1), frostLabel, chemLabel, landscapeType };
+    return { frostScore: Math.min(10, frostScore).toFixed(1), chemScore: chemShown.toFixed(1), frostLabel, chemLabel, landscapeType };
   };
 
   const weatheringInfo = calcWeatheringRegime();
@@ -164,7 +170,7 @@ export function LandformGeomorphologyModel() {
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <label htmlFor="ice-speed">Gladehastighet:</label>
+                <label htmlFor="ice-speed">Isens fart:</label>
                 <span className="font-mono text-primary font-bold">{iceSpeed} m/år</span>
               </div>
               <input
@@ -207,43 +213,39 @@ export function LandformGeomorphologyModel() {
               </p>
               <div className="h-56 w-full rounded-lg border border-border bg-[#0f171e] p-3 overflow-hidden">
                 <svg viewBox="0 0 300 200" className="h-full w-full">
-                  {/* Opprinnelig V-dal stiplet */}
-                  <path d="M 20 40 L 150 180 L 280 40" fill="none" stroke="#64748b" strokeWidth="1.5" strokeDasharray="4 3" />
-                  <text x="150" y="30" fill="#64748b" fontSize="8" textAnchor="middle">Opprinnelig V-dal (Fluvial før istiden)</text>
-
-                  {/* Utgravd U-dal profil basert på totalErosion */}
                   {(() => {
-                    const depthFactor = Math.min(1.0, totalErosionMeters / 1000);
-                    const flatWidth = 20 + depthFactor * 80;
-                    const wallY = 40 + depthFactor * 130;
+                    // Fast skala: 0,1 px per meter. Elvedalens bunn lå 300 moh. før istiden (modellantakelse).
+                    const vBottom = 120;
+                    const seaY = vBottom + 300 * 0.1;
+                    const depthFactor = Math.min(1, totalErosionMeters / 525);
+                    // U-dalbunnen ligger alltid under V-dalens bunn og blir bredere med mer erosjon.
+                    const wallY = Math.min(192, vBottom + 8 + totalErosionMeters * 0.1);
+                    const flatWidth = 40 + depthFactor * 100;
                     const xL = 150 - flatWidth / 2;
                     const xR = 150 + flatWidth / 2;
                     return (
                       <g>
-                        {/* Fjellmasse */}
+                        {/* Fjordvann: fast havnivå, fyller bare det som ligger under havet */}
+                        {fjordDepth > 0 && (
+                          <rect x="15" y={seaY} width="270" height={200 - seaY} fill="#0284c7" opacity="0.7" />
+                        )}
+                        {/* Fjellmasse etter istiden: U-dalen ligger utenfor og under den gamle V-dalen */}
                         <path
-                          d={`M 0 40 L 20 40 Q 50 120, ${xL} ${wallY} L ${xR} ${wallY} Q 250 120, 280 40 L 300 40 L 300 200 L 0 200 Z`}
+                          d={`M 0 40 L 20 40 C 30 ${wallY * 0.7 + 12}, ${xL - 25} ${wallY}, ${xL} ${wallY} L ${xR} ${wallY} C ${xR + 25} ${wallY}, 270 ${wallY * 0.7 + 12}, 280 40 L 300 40 L 300 200 L 0 200 Z`}
                           fill="#26221c"
                           stroke="#cbd5e1"
                           strokeWidth="1.6"
                         />
-
-                        {/* Isbre fyller dalen */}
-                        {iceThickness > 400 && (
-                          <path
-                            d={`M 35 70 Q 150 60 265 70 L 255 ${wallY - 10} L 45 ${wallY - 10} Z`}
-                            fill="#38bdf8"
-                            opacity="0.35"
-                          />
-                        )}
-
-                        {/* Fjordvann under havnivå dersom overfordypet */}
-                        {fjordDepth > 100 && (
-                          <rect x={xL - 10} y={wallY - 30} width={flatWidth + 20} height={30} fill="#0284c7" opacity="0.6" />
-                        )}
-
-                        <text x="150" y={wallY - 8} fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle">
-                          {fjordDepth > 100 ? `Fjordbunn (-${fjordDepth} m under hav)` : "U-dalbunn"}
+                        {/* Opprinnelig V-dal stiplet */}
+                        <path d={`M 20 40 L 150 ${vBottom} L 280 40`} fill="none" stroke="#e0b48a" strokeWidth="1.5" strokeDasharray="4 3" />
+                        <text x="150" y="22" fill="#e0b48a" fontSize="8" textAnchor="middle">Stiplet: elvens V-dal før istiden</text>
+                        {/* Isens overflate under istiden */}
+                        <path d="M 22 46 Q 150 36 278 46" fill="none" stroke="#7dd3fc" strokeWidth="1.2" strokeDasharray="2 3" />
+                        <text x="150" y="34" fill="#7dd3fc" fontSize="7" textAnchor="middle">Isens overflate under istiden</text>
+                        <line x1="8" y1={seaY} x2="292" y2={seaY} stroke="#7dd3fc" strokeWidth="1" strokeDasharray="5 3" opacity="0.8" />
+                        <text x="292" y={seaY - 3} fill="#7dd3fc" fontSize="7" textAnchor="end">Havnivå</text>
+                        <text x="150" y={Math.min(wallY - 5, seaY - 5)} fill="#f8fafc" fontSize="8" fontWeight="bold" textAnchor="middle">
+                          {fjordDepth > 0 ? `Fjord: bunnen ${fjordDepth} m under havet` : "U-dalbunn over havet"}
                         </text>
                       </g>
                     );
@@ -255,6 +257,9 @@ export function LandformGeomorphologyModel() {
                 <span>Vertikal erosjon: ~{totalErosionMeters} m</span>
                 <span>Fjorddybde: {fjordDepth > 0 ? `${fjordDepth} m under havnivå` : "Over havnivå"}</span>
               </div>
+              <p className="text-[11px] text-muted-foreground">
+                Modellen antar at elvedalens bunn lå 300 moh. før istiden. Én istid graver bare noen hundre meter. Dype fjorder som Sognefjorden er gravd ut gjennom mange istider.
+              </p>
             </ModelPanel>
 
             {/* Fysisk tolkning og eksempler */}
@@ -270,13 +275,13 @@ export function LandformGeomorphologyModel() {
 
               <div className="space-y-2 text-xs">
                 <div className="rounded border border-border bg-card/60 p-2.5">
-                  <span className="font-bold text-foreground">1. Plukking (Quarrying):</span>
+                  <span className="font-bold text-foreground">1. Plukking:</span>
                   <p className="text-muted-foreground mt-0.5">
                     Smeltevann under trykk trenger inn i fjellets sprekker på lesiden av knauser, fryser fast og river løs store steinblokker i takt med at isen glir fremover.
                   </p>
                 </div>
                 <div className="rounded border border-border bg-card/60 p-2.5">
-                  <span className="font-bold text-foreground">2. Skuring (Abrasion):</span>
+                  <span className="font-bold text-foreground">2. Skuring (avsliping):</span>
                   <p className="text-muted-foreground mt-0.5">
                     Steinblokkene og grusen i breens såle fungerer som et gigantisk sandpapir under et basaltrykk på {basalPressureMPa} MPa. De riper opp skuringsstriper og polerer svaberg.
                   </p>
@@ -284,7 +289,7 @@ export function LandformGeomorphologyModel() {
                 <div className="rounded border border-primary/30 bg-primary/10 p-2.5">
                   <span className="font-bold text-primary">Terskelfenomenet:</span>
                   <p className="text-foreground/90 mt-0.5">
-                    Breens erosjonsevne var størst der dalen var smalest og isen tykkest. Ytterst ved kysten fløt breen ut og mistet trykk, slik at fjellet ikke ble like dypt utgravd. Derfor har alle store norske fjorder en grunn terskel ytterst!
+                    Breens erosjonsevne var størst der dalen var smalest og isen tykkest. Ytterst ved kysten fløt breen ut og mistet trykk, slik at fjellet ikke ble like dypt utgravd. Derfor har de fleste store norske fjorder en grunnere terskel ytterst.
                   </p>
                 </div>
               </div>
@@ -379,14 +384,15 @@ export function LandformGeomorphologyModel() {
                         />
 
                         {/* Yttersving (erosjon rød markering) */}
-                        <circle cx={130} cy={80 - amp} r="6" fill="#ef4444" />
-                        <text x={130} y={80 - amp - 9} fill="#ef4444" fontSize="8" fontWeight="bold" textAnchor="middle">
+                        <circle cx={130} cy={80 - amp - 7} r="5" fill="#ef4444" />
+                        <text x={130} y={80 - amp - 15} fill="#ef4444" fontSize="8" fontWeight="bold" textAnchor="middle">
                           Yttersving: {outerVelocity} m/s
                         </text>
 
                         {/* Innersving (avsetning grønn markering) */}
-                        <circle cx={130} cy={80 - amp + 15} r="6" fill="#10b981" />
-                        <text x={130} y={80 - amp + 28} fill="#10b981" fontSize="7" fontWeight="bold" textAnchor="middle">
+                        <ellipse cx={130} cy={80 - amp + 15} rx="18" ry="6" fill="#c9b896" opacity="0.8" />
+                        <circle cx={130} cy={80 - amp + 15} r="5" fill="#10b981" />
+                        <text x={130} y={80 - amp + 31} fill="#10b981" fontSize="7" fontWeight="bold" textAnchor="middle">
                           Innersving: {innerVelocity} m/s
                         </text>
 
@@ -435,7 +441,7 @@ export function LandformGeomorphologyModel() {
                   </div>
                   <p className={`mt-1 font-semibold ${innerResp.color}`}>{innerResp.action}</p>
                   <p className="text-muted-foreground mt-0.5">
-                    Vannhastigheten faller under sedimentasjonsterskelen. Sand og rullestein avsettes som lagdelte sandører.
+                    Farten er lavest i innersvingen. Når farten blir for lav til å frakte sand og grus, avsettes de her som lagdelte sandører.
                   </p>
                 </div>
 
@@ -550,7 +556,7 @@ export function LandformGeomorphologyModel() {
                 <div className="rounded border border-border bg-card/60 p-2.5">
                   <span className="font-bold text-sky-400">Mekanisk forvitring (Score {weatheringInfo.frostScore} / 10):</span>
                   <p className="text-muted-foreground mt-0.5">
-                    Høyest når temperaturen hyppig passerer frysepunktet (0 °C) med vann i sprekken. Ved -25 °C er vannet permanent frosset, så frostsprengningen stopper faktisk opp!
+                    Høyest når temperaturen ofte veksler rundt frysepunktet og det er vann i sprekkene. Islinser vokser best like under frysepunktet, ca. −3 til −6 °C. Ved -25 °C er vannet permanent frosset, så frostsprengningen stopper faktisk opp!
                   </p>
                 </div>
 
@@ -588,6 +594,14 @@ export function LandformGeomorphologyModel() {
               </Button>
             ))}
           </div>
+
+          {epoch === 2 || epoch === 3 ? (
+            <p className="rounded-lg border border-border bg-card/60 p-2.5 text-xs text-muted-foreground">
+              Steg 2 og 3 viser den klassiske modellen. Hvordan fjellplatåene ble dannet, er omdiskutert: Andre forskere
+              mener fjellene har vært høye helt siden Kaledonidene, og at istidene høvlet ned toppene til en jevn høyde
+              rundt snøgrensen («glacial buzzsaw»).
+            </p>
+          ) : null}
 
           <div className="grid gap-5 md:grid-cols-2">
             <ModelPanel className="space-y-4">
@@ -646,17 +660,19 @@ export function LandformGeomorphologyModel() {
                   {epoch === 4 && (
                     <g>
                       <text x="130" y="20" fill="#94a3b8" fontSize="9" textAnchor="middle">Kvartære istider graver fjorder og U-daler</text>
-                      <path d="M 20 120 L 40 120 L 55 45 L 75 140 L 95 45 L 120 120 L 140 50 L 240 95 L 240 150 L 20 150 Z" fill="#23201a" stroke="#38bdf8" strokeWidth="2" />
-                      {/* Fjordvann */}
-                      <rect x="65" y="115" width="20" height="25" fill="#0284c7" />
-                      <text x="80" y="130" fill="#fff" fontSize="7">Fjord</text>
+                      {/* Fjordvann under fast havnivå */}
+                      <rect x="45" y="123" width="60" height="25" fill="#0284c7" />
+                      <path d={U_PROFILE} fill="#23201a" stroke="#38bdf8" strokeWidth="2" />
+                      <text x="78" y="136" fill="#fff" fontSize="7" textAnchor="middle">Fjord</text>
+                      <text x="126" y="106" fill="#cbd5e1" fontSize="6" textAnchor="middle">U-dal</text>
                       <text x="180" y="75" fill="#f59e0b" fontSize="7">Paleisk vidde</text>
                     </g>
                   )}
                   {epoch === 5 && (
                     <g>
                       <text x="130" y="20" fill="#94a3b8" fontSize="9" textAnchor="middle">Postglasial landheving og marine leiravsetninger</text>
-                      <path d="M 20 120 L 55 45 L 75 140 L 95 45 L 140 50 L 200 80 L 240 95 L 240 150 L 20 150 Z" fill="#23201a" stroke="#cbd5e1" strokeWidth="1.5" />
+                      <rect x="45" y="123" width="60" height="25" fill="#0284c7" />
+                      <path d={U_PROFILE} fill="#23201a" stroke="#cbd5e1" strokeWidth="1.5" />
                       <rect x="180" y="85" width="40" height="20" fill="#0d9488" opacity="0.4" />
                       <text x="200" y="98" fill="#5eead4" fontSize="7" textAnchor="middle">Marin leire</text>
                       <text x="60" y="35" fill="#38bdf8" fontSize="7">Alpine tinder</text>
