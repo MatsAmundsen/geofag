@@ -1,5 +1,59 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_OVERSIKT: QuizQuestion[] = [
+  {
+    prompt: "Hva er klima, til forskjell fra været?",
+    options: [
+      "Det langvarige mønsteret i været. Et skifte i det langvarige gjennomsnittet er klimaendring.",
+      "Temperaturen i én uke.",
+      "Bare nedbøren i tropene.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er klima?». Klima er mønsteret over lang tid. Været er tilstanden nå.",
+  },
+  {
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    options: [
+      "Den reagerer på temperaturen og forsterker en oppvarming som noe annet har startet.",
+      "Den er ikke en drivhusgass.",
+      "Den finnes bare over hav.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva betyr drivhuseffekten?». NASA omtaler vanndamp som en tilbakekobling som forsterker.",
+  },
+  {
+    prompt: "Hvor stor del av sollyset som treffer jorda, kastes tilbake?",
+    options: ["29 prosent.", "Hele innstrålingen.", "Ingenting. Alt tas opp ved bakken."],
+    answer: 0,
+    explain:
+      "Se tabellen. 29 prosent reflekteres. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten.",
+  },
+  {
+    prompt: "Hvor har det meste av overskuddsvarmen det siste århundret blitt av?",
+    options: [
+      "Omtrent 90 prosent er tatt opp i havet.",
+      "Alt er blitt værende i lufta.",
+      "Havet tar ikke opp varme.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Havet husker». NASA sier at omtrent 90 prosent av overskuddsvarmen er tatt opp i havet.",
+  },
+  {
+    prompt: "Hva er tap av is ved polene i energibudsjettet?",
+    options: [
+      "En tilbakekobling. Flaten blir mindre reflekterende.",
+      "Det første pådrivet som starter oppvarmingen.",
+      "En endring som bare gjelder været i én dag.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Isen er et speil». NASA bruker istap ved polene som eksempel på en tilbakekobling.",
+  },
+];
+
 export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
   {
     prompt: "Hva driver havstrømmer?",

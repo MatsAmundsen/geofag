@@ -57,6 +57,7 @@ import {
   CoriolisScaleDiagram,
   CycloneSpinDiagram,
   GlobalDeflectionDiagram,
+  EarthRadiationBudgetDiagram,
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
@@ -121,6 +122,7 @@ import {
   QUIZ_JET,
   QUIZ_CORIOLIS,
   QUIZ_HAVSTROMMER,
+  QUIZ_OVERSIKT,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -403,6 +405,70 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     TetthetDiagram: () => <DensityDiagram />,
     QuizHavstrommer: () => (
     <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    KlimaDefinisjon: () => (
+    <Callout title="Hva betyr «klima»?">
+      <p>
+        Klimaendring er et skifte i det langvarige gjennomsnittet av været (WMO, u.å.). En enkelt uke
+        er vær. Mønsteret over lang tid er klima.
+      </p>
+    </Callout>
+  ),
+    StralingDiagram: () => <EarthRadiationBudgetDiagram />,
+    DrivhusForklaring: () => (
+    <Callout title="Hva betyr «drivhuseffekt»?">
+      <p>
+        Drivhuseffekten er at gasser holder igjen varme nær jordoverflaten, omtrent som et teppe.
+        Vanndamp, karbondioksid og metan er slike gasser. Vanndamp er i hovedsak en tilbakekobling:
+        den forsterker en oppvarming som noe annet har startet (NASA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    PaadrivForklaring: () => (
+    <Callout title="Hva betyr «pådriv»?">
+      <p>
+        Et pådriv er en endring som påvirker hvor mye energi som kommer inn eller går ut. Da kan
+        temperaturen stige eller falle. En tilbakekobling er systemets svar, som kan forsterke eller
+        svekke dytten (NASA, 2009).
+      </p>
+    </Callout>
+  ),
+    AlbedoFoto: () => (
+    <PhotoFigure
+      src="/images/fig-albedo.jpg"
+      alt="Arktisk iskant der hvit is møter mørkt åpent hav"
+      heading="Isen er et speil"
+      caption="Tap av is ved polene gjør flaten mindre reflekterende. Det er en tilbakekobling, ikke det første pådrivet (NASA, 2009)."
+      marks={[
+        { x: 8, y: 16, n: "1", text: "Is kaster tilbake", tone: "fg" },
+        { x: 68, y: 38, n: "2", text: "Hav tar opp", tone: "cold", align: "right" },
+      ]}
+      points={[
+        { n: "1", label: "Høy albedo. Mye sollys kastes tilbake." },
+        { n: "2", label: "Mørkere flate tar opp mer av sollyset." },
+      ]}
+    />
+  ),
+    NorgeKlimaFoto: () => (
+    <PhotoFigure
+      src="/images/fig-norge-labrador.jpg"
+      alt="Norsk kyst mot et kaldere landskap på samme type bredde"
+      heading="Mildere enn beliggenheten"
+      caption="Fastlands-Norge er mildere enn den nordlige beliggenheten skulle tilsi, fordi havstrømmer og vind transporterer varme hit (SNL, u.å.)."
+      marks={[
+        { x: 6, y: 16, n: "1", text: "Norsk kyst", tone: "teal" },
+        { x: 58, y: 16, n: "2", text: "Hav og vind", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Kysten fra Oslofjorden til Troms har milde vintre." },
+        { n: "2", label: "Varmen kommer med havstrømmer og vind, ikke bare med solhøyden." },
+      ]}
+    />
+  ),
+    QuizOversikt: () => (
+    <Quiz questions={QUIZ_OVERSIKT} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,

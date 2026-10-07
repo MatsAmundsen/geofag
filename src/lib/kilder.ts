@@ -1232,6 +1232,50 @@ export const KILDER = {
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
+  oversikt: [
+    {
+      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
+      italic: "Climate",
+      suffix: ".",
+      href: "https://wmo.int/themes/climate",
+    },
+    {
+      prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-a). ",
+      italic: "What is the greenhouse effect?",
+      suffix: ".",
+      href: "https://science.nasa.gov/climate-change/faq/what-is-the-greenhouse-effect/",
+    },
+    {
+      prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-b). ",
+      italic: "Ocean warming",
+      suffix: ".",
+      href: "https://science.nasa.gov/earth/explore/earth-indicators/ocean-warming/",
+    },
+    {
+      prefix: "National Aeronautics and Space Administration [NASA]. (2009). ",
+      italic: "Climate and Earth’s energy budget",
+      suffix: ".",
+      href: "https://science.nasa.gov/earth/earth-observatory/climate-and-earths-energy-budget/",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Klima i Norge",
+      suffix: ".",
+      href: "https://snl.no/Klima_i_Norge",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+  ],
   enso: [
     {
       prefix: "National Oceanic and Atmospheric Administration. (u.å.). ",
