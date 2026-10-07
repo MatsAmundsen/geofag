@@ -125,6 +125,66 @@ describe("injectPosterWidgets", () => {
     assert.equal(hoytrykk.includes("<"), false);
   });
 
+  it("keeps the vindsystemet poster on the template", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const md = readFileSync(join(lib, "posts/vindsystemet.md"), "utf8");
+    const injected = injectPosterWidgets(md);
+    const ids = listedWidgetIds(injected);
+    for (const id of [
+      "StralingsbalanseForklaring",
+      "InsolationDiagram",
+      "TermiskDirekteForklaring",
+      "OneVsThreeCellsDiagram",
+      "WindCellsDiagram",
+      "HadleyCloseupDiagram",
+      "SubsidensForklaring",
+      "SurfaceWindsDiagram",
+      "GlobalClimateZonesDiagram",
+      "VindBelterFoto",
+      "PolarFrontNorwayDiagram",
+      "WindSystemModel",
+      "QuizVindsystemet",
+    ]) {
+      assert.equal(ids.has(id), true, `vindsystemet missing ${id}`);
+      assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("2,5 MJ"), false);
+    assert.equal(md.includes("3500"), false);
+  });
+
+  it("keeps the værkart poster on the template", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const md = readFileSync(join(lib, "posts/vaerkart.md"), "utf8");
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "SynoptiskForklaring",
+      "IsobarForklaring",
+      "SynopticChart",
+      "FrontForklaring",
+      "FrontProfile",
+      "Weather24h",
+      "StationModel",
+      "UpperAir500",
+      "RadarNowcast",
+      "QuizVaerkart",
+    ]) {
+      assert.equal(ids.has(id), true, `vaerkart missing ${id}`);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/vaerkart"), true);
+    assert.equal(md.includes("Bjerknes-modellen"), true);
+    assert.equal(md.includes("følger ofte et fast løp"), false);
+  });
+
   it("does not put the Platetektonikk quiz into Vulkaner", () => {
     const vulkaner = readFileSync(
       join(dirname(fileURLToPath(import.meta.url)), "posts/vulkaner.md"),
@@ -312,22 +372,33 @@ describe("jordsystemene poster", () => {
   });
 });
 
-describe("enso poster", () => {
-  it("keeps the ENSO poster on the template", () => {
-    const md = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "posts/enso.md"), "utf8");
+describe("coriolis poster", () => {
+  it("keeps the coriolis poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/coriolis.md"),
+      "utf8",
+    );
     const ids = listedWidgetIds(injectPosterWidgets(md));
-    for (const id of ["EnsoForklaring", "FaseDiagram", "BjerknesLoop", "QuizEnso"]) {
-      assert.equal(ids.has(id), true, `enso missing ${id}`);
+    for (const id of [
+      "CoriolisForklaring",
+      "KarusellDiagram",
+      "AvboyningDiagram",
+      "SyklonDiagram",
+      "GeostrofiskDiagram",
+      "EkmanForklaring",
+      "SkalaDiagram",
+      "QuizCoriolis",
+    ]) {
+      assert.equal(ids.has(id), true, `coriolis missing ${id}`);
       assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
     }
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
-    assert.equal(md.includes("Niño 3.4"), true);
-    assert.equal(md.includes("Noen ganger ser havet ut som El Niño eller La Niña"), false);
+    assert.equal(md.includes("Rossby-tallet"), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
-    assert.equal(md.includes("/tema/klima/enso"), true);
+    assert.equal(md.includes("/tema/coriolis"), true);
   });
 });
 
@@ -350,6 +421,37 @@ describe("stripCatalogImageCaptions", () => {
   });
 });
 
+describe("lokale værsystemer poster", () => {
+  it("keeps the lokale poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/lokale-vaersystemer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "SolgangsbrisForklaring",
+      "SeaBreezeLandBreeze",
+      "ValleyWind",
+      "FonForklaring",
+      "InversjonForklaring",
+      "PolarFrontCyclone",
+      "QuizLokale",
+    ]) {
+      assert.equal(ids.has(id), true, `lokale missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/lokale-vaersystemer"), true);
+    assert.equal(md.includes("4184"), false);
+    assert.equal(md.includes("Rossby"), false);
+    assert.equal(md.includes("sørvest for Island"), false);
+  });
+});
+
 describe("stripChapterEditorNotice", () => {
   it("strips the leading editor blockquote notice from a chapter", () => {
     const raw =
@@ -360,5 +462,127 @@ describe("stripChapterEditorNotice", () => {
   it("leaves markdown without the editor notice untouched", () => {
     const raw = "## Egendefinert post\nIngen melding her.";
     assert.equal(stripChapterEditorNotice(raw), raw);
+  });
+});
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the jetstrømmer poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/jetstrommer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["JetForklaring", "NaoForklaring", "QuizJet"]) {
+      assert.equal(ids.has(id), true, `jet missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Shinkansen"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/jetstrommer"), true);
+  });
+});
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the climate-map poster on the template", () => {
+    const md = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "posts/klima.md"), "utf8");
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["KlimaForklaring", "KlimaKart", "QuizKlima"]) {
+      assert.equal(ids.has(id), true, `klima missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Utdanningsdirektoratet, 2020"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/klima"), true);
+  });
+});
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the havstrømmer poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/havstrommer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "HavstromForklaring",
+      "DrivkrefterDiagram",
+      "EkmanHavForklaring",
+      "GyreDiagram",
+      "OppvellingDiagram",
+      "GolfDiagram",
+      "TetthetDiagram",
+      "QuizHavstrommer",
+    ]) {
+      assert.equal(ids.has(id), true, `havstrommer missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("termoklinen"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/havstrommer"), true);
+  });
+});
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the climate overview poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/oversikt.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "KlimaDefinisjon",
+      "StralingDiagram",
+      "DrivhusForklaring",
+      "PaadrivForklaring",
+      "AlbedoFoto",
+      "NorgeKlimaFoto",
+      "QuizOversikt",
+    ]) {
+      assert.equal(ids.has(id), true, `oversikt missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("tretti"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/klima/oversikt"), true);
+  });
+});
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the ENSO poster on the template", () => {
+    const md = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "posts/enso.md"), "utf8");
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["EnsoForklaring", "FaseDiagram", "BjerknesLoop", "QuizEnso"]) {
+      assert.equal(ids.has(id), true, `enso missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Niño 3.4"), true);
+    assert.equal(md.includes("Noen ganger ser havet ut som El Niño eller La Niña"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/klima/enso"), true);
   });
 });

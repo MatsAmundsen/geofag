@@ -5,7 +5,7 @@ export function SeaBreezeLandBreezeDiagram() {
     <Diagram
       title="Sjøbris om dagen og landbris om natten: termisk drevet lokal luftsirkulasjon"
       heading="Sjøbris og landbris: termisk kystsirkulasjon"
-      caption="Land varmes og avkjøles langt raskere enn hav på grunn av ulik spesifikk varmekapasitet. Om dagen stiger varm luft over land og trekker kjølig sjøbris inn. Om natten reverseres kretsløpet til en svakere landbris mot det relativt varmere havet."
+      caption="Havet har stor varmekapasitet, så land varmes og avkjøles raskere. Om dagen stiger varm luft over land, og sjøbris trekkes inn ved bakken. Returstrømmen går mot havet i høyden. Om natten snus kretsløpet, og landbrisen er som regel svakere."
       viewBox="0 0 900 440"
       wide
     >
@@ -36,14 +36,14 @@ export function SeaBreezeLandBreezeDiagram() {
 
             {/* 2. Returstrøm i høyden (fra land mot hav) */}
             <Arrow d="M 300 130 L 160 130" marker={m.muted} color={C.muted} width={2.4} />
-            <L x="230" y="120" fill={C.muted} size={11} anchor="middle">Returstrøm i høyden (~1 km)</L>
+            <L x="230" y="120" fill={C.muted} size={11} anchor="middle">Returstrøm i høyden (ofte 1–1,5 km)</L>
 
             {/* 3. Nedsynkning over hav */}
             <Arrow d="M 130 145 L 130 245" marker={m.cold} color={C.cold} width={2.4} />
 
             {/* 4. Sjøbrisen ved bakken (inn mot land) */}
             <Arrow d="M 150 260 L 290 260" marker={m.teal} color={C.teal} width={3.8} />
-            <L x="220" y="285" fill={C.teal} size={14} weight={700} anchor="middle">Sjøbris (pålandsvind 5–10 m/s)</L>
+            <L x="220" y="285" fill={C.teal} size={14} weight={700} anchor="middle">Sjøbris (pålandsvind)</L>
           </g>
 
           {/* Høyre panel: LANDBRIS (NATT) */}
@@ -76,7 +76,7 @@ export function SeaBreezeLandBreezeDiagram() {
 
             {/* 4. Landbrisen ved bakken (ut mot sjø) */}
             <Arrow d="M 730 260 L 590 260" marker={m.sand} color={C.sand} width={3} />
-            <L x="660" y="285" fill={C.sand} size={14} weight={700} anchor="middle">Landbris (fralandsvind 2–5 m/s)</L>
+            <L x="660" y="285" fill={C.sand} size={14} weight={700} anchor="middle">Landbris (som regel svakere)</L>
           </g>
         </>
       )}
