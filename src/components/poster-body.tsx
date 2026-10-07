@@ -33,9 +33,16 @@ import {
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
   AtmosphericColumnDiagram,
+  GlobalClimateZonesDiagram,
+  HadleyCloseupDiagram,
   HighPressureCrossSectionDiagram,
+  InsolationDiagram,
   LowPressureCrossSectionDiagram,
+  OneVsThreeCellsDiagram,
+  PolarFrontNorwayDiagram,
   RelativePressureDiagram,
+  SurfaceWindsDiagram,
+  WindCellsDiagram,
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
@@ -65,6 +72,7 @@ import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
+import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
@@ -82,6 +90,7 @@ import {
   QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_SKRED,
   QUIZ_HOYTRYKK,
+  QUIZ_VINDSYSTEMET,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
@@ -163,6 +172,65 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizHoytrykk: () => (
     <Quiz questions={QUIZ_HOYTRYKK} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  QuizVindsystemet: () => (
+    <Quiz questions={QUIZ_VINDSYSTEMET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  InsolationDiagram: () => <InsolationDiagram />,
+  OneVsThreeCellsDiagram: () => <OneVsThreeCellsDiagram />,
+  WindCellsDiagram: () => <WindCellsDiagram />,
+  HadleyCloseupDiagram: () => <HadleyCloseupDiagram />,
+  SurfaceWindsDiagram: () => <SurfaceWindsDiagram />,
+  GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
+  PolarFrontNorwayDiagram: () => <PolarFrontNorwayDiagram />,
+  WindSystemModel: () => <WindSystemModel />,
+  VindBelterFoto: () => (
+    <PhotoFigure
+      src="/images/fig-belter-globus.jpg"
+      alt="Jorda fra bane med grønt ekvatorbelte, ørkenbelte, stormer mot Skandinavia og polaris"
+      heading="Klimabeltene sett fra rommet"
+      caption="Satellittbildet viser de samme ringene: grønt ved ekvator, tørt rundt 30°, stormbaner mot Norge, is mot polen."
+      marks={[
+        { x: 6, y: 48, n: "1", text: "Tropisk regnskog (konvergenssonen)", tone: "teal" },
+        { x: 4, y: 32, n: "2", text: "Ørkenbelte (nedsynking nær 30°)", tone: "warm" },
+        { x: 52, y: 22, n: "3", text: "Vestavindsbeltet og Norge", tone: "cold" },
+        { x: 58, y: 8, n: "4", text: "Polarcellen og isen", tone: "fg" },
+      ]}
+      points={[
+        { n: "1", label: "Ved ekvator stiger lufta. Det gir skyer og tropisk regnskog." },
+        { n: "2", label: "Nær 30° synker lufta. Skyene løses opp, og ørkenene ligger her." },
+        { n: "3", label: "Mellom om lag 50° og 60° treffer lavtrykkene fra polarfronten Vest-Europa." },
+        { n: "4", label: "Over polen synker kald luft, og det er lite fuktighet." },
+      ]}
+    />
+  ),
+  StralingsbalanseForklaring: () => (
+    <Callout title="Hva betyr «strålingsbalanse»?">
+      <p>
+        Strålingsbalanse er forskjellen mellom innkommende solstråling og utgående varmestråling.
+        Globalt, over et år, er netto om lag null. Regionalt er det overskudd i tropene og underskudd
+        mot polene. Den ubalansen setter atmosfæren og havet i bevegelse (NASA, u.å.).
+      </p>
+    </Callout>
+  ),
+  TermiskDirekteForklaring: () => (
+    <Callout title="Hva betyr «termisk direkte»?">
+      <p>
+        Termisk direkte vil si at varm luft stiger og kald luft synker. Slik er Hadley-cellen og
+        polarcellen. Ferrel-cellen er termisk indirekte: den drives av friksjon mellom de to andre,
+        ikke av varmekontrasten mellom ekvator og polene. Kjøligere luft tvinges opp nær 50–60°, og
+        varmere luft synker nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  SubsidensForklaring: () => (
+    <Callout title="Hva betyr «subsidens»?">
+      <p>
+        Subsidens er storskala nedsynking av luft. Når lufta synker, presses den sammen og varmes
+        opp. Den relative fuktigheten faller, skyene løses opp, og det blir tørre høytrykk. Det ser
+        vi nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
   ),
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
