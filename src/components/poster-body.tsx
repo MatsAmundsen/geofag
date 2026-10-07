@@ -33,9 +33,25 @@ import {
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
   AtmosphericColumnDiagram,
+  FrontVerticalProfileDiagram,
+  GlobalClimateZonesDiagram,
+  HadleyCloseupDiagram,
   HighPressureCrossSectionDiagram,
+  InsolationDiagram,
   LowPressureCrossSectionDiagram,
+  OneVsThreeCellsDiagram,
+  RadarSatelliteNowcastingDiagram,
+  RealisticSynopticChartDiagram,
+  PolarFrontNorwayDiagram,
   RelativePressureDiagram,
+  StationModelExplainedDiagram,
+  SurfaceWindsDiagram,
+  UpperAir500hPaMapDiagram,
+  WeatherProgression24hDiagram,
+  WindCellsDiagram,
+  PolarFrontCycloneSteps,
+  SeaBreezeLandBreezeDiagram,
+  ValleyWindDiagram,
   CarouselFrameDiagram,
   CoriolisDiagram,
   CoriolisScaleDiagram,
@@ -70,6 +86,7 @@ import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
+import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
@@ -87,6 +104,8 @@ import {
   QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_SKRED,
   QUIZ_HOYTRYKK,
+  QUIZ_VAERKART,
+  QUIZ_VINDSYSTEMET,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
@@ -95,6 +114,8 @@ import {
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
+  QUIZ_LOKALE,
+  QUIZ_JET,
   QUIZ_CORIOLIS,
 } from "@/lib/poster-quizzes";
 
@@ -170,6 +191,189 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizHoytrykk: () => (
     <Quiz questions={QUIZ_HOYTRYKK} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  QuizVindsystemet: () => (
+    <Quiz questions={QUIZ_VINDSYSTEMET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  InsolationDiagram: () => <InsolationDiagram />,
+  OneVsThreeCellsDiagram: () => <OneVsThreeCellsDiagram />,
+  WindCellsDiagram: () => <WindCellsDiagram />,
+  HadleyCloseupDiagram: () => <HadleyCloseupDiagram />,
+  SurfaceWindsDiagram: () => <SurfaceWindsDiagram />,
+  GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
+  PolarFrontNorwayDiagram: () => <PolarFrontNorwayDiagram />,
+  WindSystemModel: () => <WindSystemModel />,
+  VindBelterFoto: () => (
+    <PhotoFigure
+      src="/images/fig-belter-globus.jpg"
+      alt="Jorda fra bane med grønt ekvatorbelte, ørkenbelte, stormer mot Skandinavia og polaris"
+      heading="Klimabeltene sett fra rommet"
+      caption="Satellittbildet viser de samme ringene: grønt ved ekvator, tørt rundt 30°, stormbaner mot Norge, is mot polen."
+      marks={[
+        { x: 6, y: 48, n: "1", text: "Tropisk regnskog (konvergenssonen)", tone: "teal" },
+        { x: 4, y: 32, n: "2", text: "Ørkenbelte (nedsynking nær 30°)", tone: "warm" },
+        { x: 52, y: 22, n: "3", text: "Vestavindsbeltet og Norge", tone: "cold" },
+        { x: 58, y: 8, n: "4", text: "Polarcellen og isen", tone: "fg" },
+      ]}
+      points={[
+        { n: "1", label: "Ved ekvator stiger lufta. Det gir skyer og tropisk regnskog." },
+        { n: "2", label: "Nær 30° synker lufta. Skyene løses opp, og ørkenene ligger her." },
+        { n: "3", label: "Mellom om lag 50° og 60° treffer lavtrykkene fra polarfronten Vest-Europa." },
+        { n: "4", label: "Over polen synker kald luft, og det er lite fuktighet." },
+      ]}
+    />
+  ),
+  StralingsbalanseForklaring: () => (
+    <Callout title="Hva betyr «strålingsbalanse»?">
+      <p>
+        Strålingsbalanse er forskjellen mellom innkommende solstråling og utgående varmestråling.
+        Globalt, over et år, er netto om lag null. Regionalt er det overskudd i tropene og underskudd
+        mot polene. Den ubalansen setter atmosfæren og havet i bevegelse (NASA, u.å.).
+      </p>
+    </Callout>
+  ),
+  TermiskDirekteForklaring: () => (
+    <Callout title="Hva betyr «termisk direkte»?">
+      <p>
+        Termisk direkte vil si at varm luft stiger og kald luft synker. Slik er Hadley-cellen og
+        polarcellen. Ferrel-cellen er termisk indirekte: den drives av friksjon mellom de to andre,
+        ikke av varmekontrasten mellom ekvator og polene. Kjøligere luft tvinges opp nær 50–60°, og
+        varmere luft synker nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  SubsidensForklaring: () => (
+    <Callout title="Hva betyr «subsidens»?">
+      <p>
+        Subsidens er storskala nedsynking av luft. Når lufta synker, presses den sammen og varmes
+        opp. Den relative fuktigheten faller, skyene løses opp, og det blir tørre høytrykk. Det ser
+        vi nær 30° (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  QuizVaerkart: () => (
+    <Quiz questions={QUIZ_VAERKART} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  SynopticChart: () => <RealisticSynopticChartDiagram />,
+  FrontProfile: () => <FrontVerticalProfileDiagram />,
+  StationModel: () => <StationModelExplainedDiagram />,
+  UpperAir500: () => <UpperAir500hPaMapDiagram />,
+  Weather24h: () => <WeatherProgression24hDiagram />,
+  RadarNowcast: () => <RadarSatelliteNowcastingDiagram />,
+  SynoptiskForklaring: () => (
+    <Callout title="Hva betyr «synoptisk»?">
+      <p>
+        Synoptisk betyr å se været under ett. Et synoptisk kart viser observasjoner fra samme
+        tidspunkt over et stort område, med isobarer og fronter. Tidspunktet oppgis i UTC (NOAA,
+        u.å.-e).
+      </p>
+    </Callout>
+  ),
+  IsobarForklaring: () => (
+    <Callout title="Hva betyr «isobar»?">
+      <p>
+        En isobar er en kurve gjennom steder med likt lufttrykk. På norske kart er det vanligvis 5
+        hPa mellom linjene. Trykket er redusert til havnivå, så et fjell og en kyst kan sammenlignes
+        (Store norske leksikon, u.å.-c).
+      </p>
+    </Callout>
+  ),
+  FrontForklaring: () => (
+    <Callout title="Hva betyr «front»?">
+      <p>
+        En front er skillet mellom to luftmasser med ulik tetthet, som oftest ulik temperatur. Den
+        varmere lufta løftes, og det kan bli skyer og nedbør. Neste ord du trenger, er okklusjon:
+        kaldfronten har tatt igjen varmfronten (Store norske leksikon, u.å.-a; NOAA, u.å.-b).
+      </p>
+    </Callout>
+  ),
+
+    QuizLokale: () => (
+    <Quiz questions={QUIZ_LOKALE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+    SolgangsbrisForklaring: () => (
+    <Callout title="Hva betyr «solgangsvind»?">
+      <p>
+        Solgangsvind er pålandsvind om dagen og fralandsvind om natten langs kysten. Dagvinden
+        kalles sjøbris: varm luft stiger over land, og kjøligere luft fra havet strømmer inn.
+        Nattvinden kalles landbris, og den er som regel svakere. Neste ord du trenger, er
+        termisk lavtrykk: lavtrykket som oppstår fordi lufta over det varme landet blir lettere.
+      </p>
+    </Callout>
+  ),
+    SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
+    ValleyWind: () => <ValleyWindDiagram />,
+    PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
+    FonForklaring: () => (
+    <Callout title="Hva betyr «føn»?">
+      <p>
+        Føn er en forholdsvis varm og tørr vind som slår ned i lavlandet etter å ha passert et
+        fjell. Lufta synker på lesiden og varmes fordi trykket øker. Luvsiden, også kalt losiden,
+        er siden vinden kommer fra. Der kan det falle orografisk nedbør. Lesiden er siden vinden
+        går ned på.
+      </p>
+    </Callout>
+  ),
+    InversjonForklaring: () => (
+    <Callout title="Hva betyr «inversjon»?">
+      <p>
+        En inversjon er et lag der temperaturen stiger med høyden. Vanligvis er det kaldere jo
+        høyere du kommer. I en inversjon ligger kald, tung luft nede i dalen eller fjorden, og
+        varmere luft over den virker som et lokk. Lokale utslipp kan da bli liggende nær bakken.
+      </p>
+    </Callout>
+  ),
+
+
+    QuizJet: () => (
+    <Quiz questions={QUIZ_JET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+    JetForklaring: () => (
+    <Callout title="Hva betyr «jetstrøm»?">
+      <p>
+        En jetstrøm er et smalt belte med sterk vind høyt oppe i atmosfæren. Vinden blåser fra vest
+        mot øst og følger skillet mellom varm og kald luft. Neste ord du trenger, er polarjet: den
+        jetstrømmen som ligger mellom 50° og 60° bredde.
+      </p>
+    </Callout>
+  ),
+    NaoForklaring: () => (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Det er svingningen i trykkforskjellen mellom
+        lavtrykket ved Island og høytrykket ved Asorene. Når forskjellen er stor, blir jetstrømmen
+        over Atlanteren sterkere, og stormbanen ligger lenger nord.
+      </p>
+    </Callout>
+  ),
+
+
+    CoriolisForklaring: () => (
+    <Callout title="Hva betyr «corioliseffekten»?">
+      <p>
+        Corioliseffekten er avbøyningen av en bevegelse sett fra den roterende jorda. Den er ikke en
+        reell kraft som dytter på lufta. På den nordlige halvkule bøyer bevegelsen av mot høyre, på
+        den sørlige mot venstre, og ved ekvator er avbøyningen null.
+      </p>
+    </Callout>
+  ),
+    KarusellDiagram: () => <CarouselFrameDiagram />,
+    AvboyningDiagram: () => <GlobalDeflectionDiagram />,
+    SyklonDiagram: () => <CycloneSpinDiagram />,
+    GeostrofiskDiagram: () => <CoriolisDiagram />,
+    EkmanForklaring: () => (
+    <Callout title="Hva betyr «ekmantransport»?">
+      <p>
+        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
+        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
+        dypere vann komme opp.
+      </p>
+    </Callout>
+  ),
+    SkalaDiagram: () => <CoriolisScaleDiagram />,
+    QuizCoriolis: () => (
+    <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
   LowPressureCrossSection: () => <LowPressureCrossSectionDiagram />,
@@ -370,32 +574,6 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
-  ),
-  CoriolisForklaring: () => (
-    <Callout title="Hva betyr «corioliseffekten»?">
-      <p>
-        Corioliseffekten er avbøyningen av en bevegelse sett fra den roterende jorda. Den er ikke en
-        reell kraft som dytter på lufta. På den nordlige halvkule bøyer bevegelsen av mot høyre, på
-        den sørlige mot venstre, og ved ekvator er avbøyningen null.
-      </p>
-    </Callout>
-  ),
-  KarusellDiagram: () => <CarouselFrameDiagram />,
-  AvboyningDiagram: () => <GlobalDeflectionDiagram />,
-  SyklonDiagram: () => <CycloneSpinDiagram />,
-  GeostrofiskDiagram: () => <CoriolisDiagram />,
-  EkmanForklaring: () => (
-    <Callout title="Hva betyr «ekmantransport»?">
-      <p>
-        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
-        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
-        dypere vann komme opp.
-      </p>
-    </Callout>
-  ),
-  SkalaDiagram: () => <CoriolisScaleDiagram />,
-  QuizCoriolis: () => (
-    <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

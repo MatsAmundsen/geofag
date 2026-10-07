@@ -883,6 +883,18 @@ export const KILDER = {
       suffix: ".",
       href: "https://snl.no/lavtrykk",
     },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
   ],
   vindsystemet: [
     {
@@ -957,32 +969,49 @@ export const KILDER = {
       suffix: ".",
       href: "https://snl.no/polarfront",
     },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
   ],
   jetstrommer: [
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
       italic: "The jet stream",
-      suffix: ".",
+      suffix: ". JetStream.",
       href: "https://www.noaa.gov/jetstream/global/jet-stream",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
       italic: "North Atlantic Oscillation",
-      suffix: ".",
+      suffix: ". Climate.gov.",
       href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
     },
     {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
-      italic: "El Niño and La Niña",
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Polarfront",
       suffix: ".",
-      href: "https://www.climate.gov/enso",
+      href: "https://snl.no/polarfront",
     },
     {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
-      italic:
-        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
-      suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/",
+      prefix: "Utdanningsdirektoratet. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ". Læreplan i geofag (GFG01-03).",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ". Læreplan i geofag (GFG01-03).",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   coriolis: [
