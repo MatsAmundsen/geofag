@@ -455,6 +455,26 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["Det ser vi nærmere på nedenfor", "Luft er en blanding av gasser"],
   },
   {
+    flag: "hoytrykk-copy-3-2026-10-07",
+    slug: "hoytrykk-lavtrykk",
+    stale: ["Vi lever på bunnen av et hav av luft."],
+  },
+  {
+    flag: "vindsystemet-copy-2026-10-07",
+    slug: "vindsystemet",
+    stale: ["Her kan du redigere", "Nøkkelbegreper til repetisjon"],
+  },
+  {
+    flag: "vaerkart-copy-2026-10-07",
+    slug: "vaerkart",
+    stale: ["Her kan du redigere", "WMO-stasjonsmodeller"],
+  },
+  {
+    flag: "vaerkart-copy-2-2026-10-07",
+    slug: "vaerkart",
+    stale: ["følger ofte et fast løp"],
+  },
+  {
     flag: "vulkaner-copy-2026-10-06",
     slug: "vulkaner",
     stale: ["Henrys lov", "ventialsjonssystemet"],
@@ -515,6 +535,92 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["Hva er forvitring?", "AkviferForklaring", "IsostasiForklaring"],
   },
   {
+    flag: "lokale-vaersystemer-copy-2026-10-07",
+    slug: "lokale-vaersystemer",
+    stale: ["Her kan du redigere", "barokline sonen"],
+  },
+,
+  {
+    flag: "jetstrommer-copy-2026-10-07",
+    slug: "jetstrommer",
+    stale: ["Her kan du redigere", "Shinkansen"],
+  }
+,
+  {
+    flag: "coriolis-copy-2026-10-07",
+    slug: "coriolis",
+    stale: ["Her kan du redigere", "Rossby-tallet"],
+  }
+,
+  {
+    flag: "klima-copy-2026-10-07",
+    slug: "klima",
+    stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
+  }
+,
+  {
+    flag: "havstrommer-copy-2026-10-07",
+    slug: "havstrommer",
+    stale: ["Her kan du redigere", "termoklinen"],
+  }
+,
+  {
+    flag: "oversikt-copy-2026-10-07",
+    slug: "oversikt",
+    stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
+  }
+,
+  {
+    flag: "enso-copy-2026-10-07",
+    slug: "enso",
+    stale: ["Her kan du redigere", "Kelvin-bølger"],
+  },
+  {
+    flag: "enso-copy-2-2026-10-07",
+    slug: "enso",
+    stale: ["Noen ganger ser havet ut som El Niño eller La Niña"],
+  }
+,
+  {
+    flag: "iod-copy-2026-10-07",
+    slug: "iod",
+    stale: ["Her kan du redigere", "Black Summer"],
+  }
+,
+  {
+    flag: "nao-copy-2026-10-07",
+    slug: "nao",
+    stale: ["Her kan du redigere", "sprengkulde"],
+  },
+  {
+    flag: "nao-copy-2-2026-10-07",
+    slug: "nao",
+    stale: ["ikke automatisk det samme utslaget i hver landsdel"],
+  }
+,
+  {
+    flag: "amoc-copy-2026-10-07",
+    slug: "amoc",
+    stale: ["Her kan du redigere", "vippepunkt"],
+  },
+  {
+    flag: "amoc-copy-2-2026-10-07",
+    slug: "amoc",
+    stale: ["## Ferskvann kan bremse beltet"],
+  }
+,
+  {
+    flag: "kryosfaeren-copy-2026-10-07",
+    slug: "kryosfaeren",
+    stale: ["Her kan du redigere", "alle breer dør i år"],
+  },
+  {
+    flag: "kryosfaeren-copy-2-2026-10-07",
+    slug: "kryosfaeren",
+    stale: ["Her er isen som måles i år."],
+  }
+,
+  {
     flag: "numeriske-modeller-copy-2026-10-07",
     slug: "numeriske-modeller",
     stale: ["Her kan du redigere", "petaflops"],
@@ -523,7 +629,7 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     flag: "numeriske-modeller-copy-2-2026-10-07",
     slug: "numeriske-modeller",
     stale: ["Ett enkelt regnestykke sier ikke hvor sikkert været er."],
-  },
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {
