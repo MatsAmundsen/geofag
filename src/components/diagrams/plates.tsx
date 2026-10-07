@@ -1769,33 +1769,78 @@ export function OceanOceanSubductionDiagram() {
   const isPlaying = motion.playing;
   const [oldCold, setOldCold] = useState(true);
   const [step, setStep] = useStepCycle(3, isPlaying, 2600);
-  const slab = oldCold
-    ? "M 40 115 L 360 145 L 640 410 L 580 430 L 310 175 L 40 145 Z"
-    : "M 40 115 L 360 145 L 800 280 L 740 302 L 330 175 L 40 145 Z";
-  const slabMantle = oldCold
-    ? "M 40 145 L 310 175 L 580 430 L 510 450 L 260 205 L 40 185 Z"
-    : "M 40 145 L 330 175 L 740 302 L 680 324 L 280 205 L 40 185 Z";
-  const melt = oldCold ? { x: 525, y: 225 } : { x: 600, y: 178 };
-  const drops = oldCold
-    ? [
-        { x: 460, y: 250 },
-        { x: 490, y: 285 },
-      ]
-    : [
-        { x: 500, y: 195 },
-        { x: 548, y: 225 },
-      ];
-  const quakes = oldCold
-    ? [
-        { x: 375, y: 155 },
-        { x: 420, y: 205 },
-        { x: 480, y: 275 },
-      ]
-    : [
-        { x: 390, y: 158 },
-        { x: 530, y: 198 },
-        { x: 670, y: 242 },
-      ];
+  const dip = oldCold ? 40 : 28;
+  const rad = (dip * Math.PI) / 180;
+  const pxX = 1.32;
+  const pxY = 1.22;
+  const trenchX = 292;
+  const plainY = 122;
+  const floorY = plainY + 46;
+  const seaTop = 46;
+  const arcDepthKm = 105;
+  const toeKm = oldCold ? 172 : 150;
+  const atDepth = (km: number) => ({
+    x: trenchX + (km / Math.tan(rad)) * pxX,
+    y: floorY + km * pxY,
+  });
+  const arcKm = arcDepthKm / Math.tan(rad);
+  const arc = atDepth(arcDepthKm);
+  const approach = [
+    { x: 44, y: plainY },
+    { x: trenchX - 96, y: plainY },
+    { x: trenchX - 58, y: plainY - 7 },
+    { x: trenchX - 34, y: plainY + 8 },
+    { x: trenchX - 16, y: plainY + 26 },
+    { x: trenchX, y: floorY },
+  ];
+  const dipPts = [0, 12, 28, 48, 70, 90, arcDepthKm, 128, toeKm].map((km) => atDepth(km));
+  const top = [...approach, ...dipPts.slice(1)];
+  const underside = top.map((p, i) => {
+    const prev = top[Math.max(0, i - 1)];
+    const next = top[Math.min(top.length - 1, i + 1)];
+    const tx = next.x - prev.x;
+    const ty = next.y - prev.y;
+    const len = Math.hypot(tx, ty) || 1;
+    return { x: p.x + (-ty / len) * 34, y: p.y + (tx / len) * 34 };
+  });
+  const crustUnder = top.map((p, i) => {
+    const prev = top[Math.max(0, i - 1)];
+    const next = top[Math.min(top.length - 1, i + 1)];
+    const tx = next.x - prev.x;
+    const ty = next.y - prev.y;
+    const len = Math.hypot(tx, ty) || 1;
+    return { x: p.x + (-ty / len) * 11, y: p.y + (tx / len) * 11 };
+  });
+  const toPath = (pts: { x: number; y: number }[]) => pts.map((p) => `${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" L ");
+  const slab = `M ${toPath(top)} L ${toPath([...underside].reverse())} Z`;
+  const slabCrust = `M ${toPath(top)} L ${toPath([...crustUnder].reverse())} Z`;
+  const backarcX = Math.min(800, arc.x + 78);
+  const overrideTop = [
+    { x: trenchX, y: floorY },
+    { x: trenchX + 12, y: plainY - 2 },
+    { x: trenchX + 26, y: plainY - 20 },
+    { x: trenchX + 48, y: plainY - 6 },
+    { x: arc.x - 46, y: plainY + 2 },
+    { x: arc.x - 16, y: plainY - 2 },
+    { x: arc.x + 22, y: plainY + 2 },
+    { x: backarcX, y: plainY + 16 },
+    { x: 824, y: plainY + 8 },
+  ];
+  const wedge = [
+    { x: trenchX + 4, y: floorY - 2 },
+    atDepth(18),
+    atDepth(70),
+    atDepth(arcDepthKm + 8),
+    { x: arc.x + 36, y: plainY + 58 },
+    { x: trenchX + 30, y: plainY + 24 },
+  ];
+  const melt = {
+    x: arc.x - Math.sin(rad) * 8,
+    y: arc.y - Math.cos(rad) * 22,
+  };
+  const drops = [86, 108].map(atDepth);
+  const quakes = [22, 58, 96].map(atDepth);
+  const h2o = drops[0];
 
   return (
     <Diagram
@@ -1878,68 +1923,95 @@ export function OceanOceanSubductionDiagram() {
           `}</style>
           <g className={motion.motionClass} data-playing={isPlaying ? "yes" : "no"}>
 
-          {/* Hav over hele flaten */}
-          <rect x="40" y="30" width="800" height="90" fill="#091b29" />
-          <L x="60" y="55" fill="#38bdf8" size={13} weight={600}>
-            Stillehavet
-          </L>
+          <rect x="36" y="28" width="812" height="378" rx="8" fill="#1a1814" />
+          <path d={`M ${toPath(wedge)} Z`} fill="#6b3b28" opacity="0.96" />
+          <path d={slab} fill="#16303a" stroke="#245066" strokeWidth={step === 1 && isPlaying ? 2.6 : 1.4} />
+          <path d={slabCrust} fill="#1e3328" />
 
-          {/* Ekstrem dyphavsgrop ved x=370 */}
-          <path d="M 320 80 L 370 150 L 410 85" fill="#03080d" stroke="#38bdf8" strokeWidth="1.6" />
-          <L x="370" y="68" fill="#38bdf8" size={12} weight={800} anchor="middle">
-            Marianegropen (~11 000 m dyp)
-          </L>
-
-          {/* Vulkanøy (f.eks. Mariana-øybue) som stikker opp over havflaten */}
-          <path d="M 470 85 L 530 45 L 550 45 L 610 85 Z" fill="#38493f" stroke="#222f28" strokeWidth="1.5" />
-          <polygon points="535,45 540,35 545,45" fill="#ef4444" />
-          {/* Vulkanrøyk */}
-          <circle cx="540" cy="30" r="3.5" fill="#94a3b8" className="oos-smoke-puff" />
-          <circle cx="544" cy="22" r="5" fill="#64748b" className="oos-smoke-puff" style={{ animationDelay: "0.9s" }} />
-
-          <L x="540" y="25" fill="#f8fafc" size={13} weight={800} anchor="middle">
-            Vulkanøybue (Japan / Marianene)
-          </L>
-
-          {/* Subduserende eldre havbunn (dykker mot høyre) */}
-          <path d={slab} fill="#1e3328" stroke="#122019" strokeWidth={step === 1 && isPlaying ? 2.4 : 1.5} />
-          <path d={slabMantle} fill="#13242e" stroke="#0d181f" />
-          <L x="160" y="170" fill={C.cold} size={12} weight={700}>
-            {oldCold ? "Eldste, kaldeste havbunn synker (Stillehavsplaten) →" : "Yngre, varmere plate synker slakere →"}
-          </L>
-
-          {/* Overliggende yngre havbunn (Filippinerplaten) og bakbuebasseng */}
           <path
-            d="M 410 115 L 470 85 L 610 85 L 670 125 L 840 125 L 840 175 L 470 175 Z"
+            d={`M ${toPath(overrideTop)} L 824 ${plainY + 52} L ${trenchX + 18} ${plainY + 28} Z`}
             fill="#2c3e34"
             stroke="#1b2822"
           />
-          <L x="750" y="105" fill="#94a3b8" size={11} weight={600} anchor="middle">
-            Bakbuebasseng (Back-arc basin)
-          </L>
+          <path
+            d={`M 44 ${seaTop} L 824 ${seaTop} L 824 ${plainY + 8} L ${toPath([...overrideTop].reverse())} L ${toPath([...approach].reverse())} Z`}
+            fill="#091b29"
+          />
+          <path
+            d={`M ${toPath(approach)} L ${trenchX + 12} ${plainY - 2}`}
+            fill="none"
+            stroke="#38bdf8"
+            strokeWidth="1.7"
+            data-trench-profile="yes"
+          />
+          <path
+            d={`M ${trenchX} ${floorY} L ${trenchX + 13} ${plainY - 4} L ${trenchX + 32} ${plainY - 18} L ${trenchX + 20} ${plainY + 6} Z`}
+            fill="#5b5346"
+            stroke="#3f382e"
+          />
 
-          {/* Dehydrering (H2O dråper) */}
+          <path
+            d={`M ${arc.x - 34} ${plainY} L ${arc.x - 8} ${seaTop - 16} L ${arc.x + 4} ${seaTop - 24} L ${arc.x + 16} ${plainY} Z`}
+            fill="#38493f"
+            stroke="#222f28"
+          />
+          <polygon points={`${arc.x - 5},${seaTop - 18} ${arc.x + 2},${seaTop - 28} ${arc.x + 8},${seaTop - 18}`} fill="#ef4444" />
+          <circle cx={arc.x + 2} cy={seaTop - 34} r="3.2" fill="#94a3b8" className="oos-smoke-puff" />
+          <circle cx={arc.x + 8} cy={seaTop - 40} r="4" fill="#64748b" className="oos-smoke-puff" style={{ animationDelay: "0.9s" }} />
+
+          <g data-ocean-trench={trenchX} data-arc-km={arcKm.toFixed(0)} data-arc-x={arc.x.toFixed(0)}>
+            <L x="58" y={seaTop + 16} fill="#38bdf8" size={12} weight={600}>
+              Stillehavet
+            </L>
+            <L x={trenchX - 18} y={22} fill="#38bdf8" size={11} weight={800} anchor="end">
+              Marianegropen
+            </L>
+            <L x={trenchX - 18} y={38} fill="#7dd3fc" size={10} weight={700} anchor="end">
+              (~11 000 m dyp)
+            </L>
+            <L x={arc.x + 18} y={30} fill="#f8fafc" size={12} weight={800}>
+              Vulkanøybue (Japan / Marianene)
+            </L>
+            <L x="78" y={plainY + 36} fill={C.cold} size={11} weight={700}>
+              {oldCold ? "Eldste, kaldeste havbunn synker →" : "Yngre, varmere plate synker slakere →"}
+            </L>
+            <L x={Math.min(760, backarcX + 70)} y={plainY - 6} fill="#94a3b8" size={11} weight={600} anchor="middle">
+              Bakbuebasseng
+            </L>
+            <L x={(trenchX + arc.x) / 2 - 10} y={(floorY + arc.y) / 2 - 8} fill="#fdba74" size={12} weight={800} anchor="middle">
+              Mantelkile
+            </L>
+            <L x={trenchX + 28} y={plainY - 26} fill="#e7d7b8" size={10} weight={700} anchor="start">
+              Akkresjonskile
+            </L>
+          </g>
+
           <g className="oos-h2o" opacity={stepOpacity(step, 2, isPlaying)}>
             {drops.map((drop) => (
-              <circle key={`${drop.x}-${drop.y}`} cx={drop.x} cy={drop.y} r="3" fill="#38bdf8" />
+              <circle key={`${drop.x}-${drop.y}`} cx={drop.x} cy={drop.y} r="3.2" fill="#38bdf8" />
             ))}
-            <path d={`M ${drops[0].x} ${drops[0].y} L ${drops[0].x + 10} ${drops[0].y - 20}`} stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 2" />
-            <L x={drops[0].x - 8} y={drops[0].y - 28} fill="#7dd3fc" size={11} weight={700}>
+            <path
+              d={`M ${h2o.x} ${h2o.y} L ${h2o.x + Math.sin(rad) * 16} ${h2o.y - Math.cos(rad) * 18}`}
+              stroke="#38bdf8"
+              strokeWidth="1.5"
+              strokeDasharray="3 2"
+            />
+            <L x={h2o.x + Math.sin(rad) * 20} y={h2o.y - Math.cos(rad) * 22} fill="#7dd3fc" size={11} weight={700}>
               H₂O frigjøres
             </L>
           </g>
 
           <g opacity={stepOpacity(step, 3, isPlaying)}>
-            <ellipse cx={melt.x} cy={melt.y} rx="35" ry="20" fill="#f97316" className="oos-magma" />
-            <Arrow d={`M ${melt.x} ${melt.y - 18} L 540 50`} marker={m.low} color={C.low} width={3} />
-            <L x={melt.x} y={melt.y - 2} fill="#fff" size={10} weight={800} anchor="middle">
+            <ellipse cx={melt.x} cy={melt.y} rx="28" ry="14" fill="#f97316" className="oos-magma" />
+            <Arrow d={`M ${melt.x} ${melt.y - 12} L ${arc.x} ${seaTop - 8}`} marker={m.low} color={C.low} width={3} />
+            <L x={melt.x - 36} y={melt.y + 4} fill="#fff" size={10} weight={800} anchor="end">
               Flukssmelting
             </L>
           </g>
 
           {quakes.map((quake, index) => (
             <g key={`${quake.x}-${quake.y}`}>
-              <circle cx={quake.x} cy={quake.y} r="5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
+              <circle cx={quake.x} cy={quake.y} r="4.5" fill="#ef4444" stroke="#fff" strokeWidth="1" />
               {index === 0 ? (
                 <circle cx={quake.x} cy={quake.y} r="4" fill="none" stroke="#ef4444" strokeWidth="1.5" className="oos-quake" />
               ) : null}

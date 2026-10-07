@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useAnimationPlaying } from "@/components/diagrams/use-motion";
@@ -8,7 +8,6 @@ import {
   CRUSTAL_ROOT_KM,
   DEPTH_MAX_KM,
   FLUX_MELT_KM,
-  HOTSPOT_STATIONS,
   JARAMILLO,
   MAG_CHRONS,
   PX_PER_KM,
@@ -76,17 +75,17 @@ function DepthScale() {
   const ticks = [0, 50, 100, 150, 200];
   return (
     <g fill="#7ba3be" fontSize="10" fontFamily="ui-monospace, monospace">
-      <line x1="46" y1={yDepth(0)} x2="46" y2={yDepth(DEPTH_MAX_KM)} stroke="#334e68" strokeWidth="1" />
+      <line x1="48" y1={yDepth(0)} x2="48" y2={yDepth(DEPTH_MAX_KM)} stroke="#334e68" strokeWidth="1" />
       {ticks.map((km) => (
         <g key={km}>
-          <line x1="42" x2="50" y1={yDepth(km)} y2={yDepth(km)} stroke="#334e68" />
-          <text x="38" y={yDepth(km) + 3} textAnchor="end">
-            {km} km
+          <line x1="44" x2="52" y1={yDepth(km)} y2={yDepth(km)} stroke="#334e68" />
+          <text x="42" y={yDepth(km) + 3} textAnchor="end">
+            {km}
           </text>
         </g>
       ))}
-      <text x="18" y="300" textAnchor="middle" transform="rotate(-90 18 300)" fill="#6488a0">
-        Dyp under skorpetoppen
+      <text x="14" y="312" textAnchor="middle" transform="rotate(-90 14 312)" fill="#6488a0">
+        km
       </text>
     </g>
   );
@@ -261,165 +260,293 @@ function RidgeScene({ rate, showMelting, showQuakes, showForces, animating }: Sc
   );
 }
 
-function SubductionScene({
+function easeInOut(t: number) {
+  const x = Math.min(1, Math.max(0, t));
+  return x * x * (3 - 2 * x);
+}
+
+function AndesScene({
   rate,
   showMelting,
   showQuakes,
   showForces,
   animating,
-  trenchX,
-  arcX,
-  dip,
-  pxX,
-  oceanLabel,
-  slabLabel,
-  arcLabel,
-  backarc,
-}: SceneProps & {
-  trenchX: number;
-  arcX: number;
-  dip: number;
-  pxX: number;
-  oceanLabel: string;
-  slabLabel: string;
-  arcLabel: string;
-  backarc: boolean;
-}) {
+  stage,
+}: SceneProps & { stage: number }) {
+  const t = easeInOut(stage / 100);
+  const trenchX = 300;
+  const dip = 30;
+  const pxX = 1.26;
+  const meltKm = FLUX_MELT_KM;
+  const arcX = trenchX + (meltKm / Math.tan((dip * Math.PI) / 180)) * pxX;
+  const maxDepth = 32 + t * 168;
+  const peak = SEA_Y - 6 - t * 64;
+  const peak2 = SEA_Y - 2 - t * 40;
+  const shoulder = SEA_Y - t * 14;
+  const slab = dippingSlab(trenchX, dip, maxDepth, 54, pxX);
   const amph = slabPoint(trenchX, AMPHIBOLE_KM, dip, pxX);
   const serp = slabPoint(trenchX, SERPENTINE_KM, dip, pxX);
-  const melt = slabPoint(trenchX, FLUX_MELT_KM, dip, pxX);
-  const pull = slabPoint(trenchX, 185, dip, pxX);
-  const quakes = [20, 45, 70, 95, 120, 145].map((d) => slabPoint(trenchX, d, dip, pxX));
-  const slab = dippingSlab(trenchX, dip, 200, 70, pxX);
-  const wedgeX = trenchX + 18;
+  const melt = slabPoint(trenchX, meltKm, dip, pxX);
+  const pull = slabPoint(trenchX, Math.min(180, Math.max(40, maxDepth - 10)), dip, pxX);
+  const quakes = [18, 40, 65, 90, 115, 145].filter((d) => d < maxDepth - 4).map((d) => slabPoint(trenchX, d, dip, pxX));
+  const wedgeDepths = [12, 36, 60, 85, Math.min(meltKm, maxDepth - 2)].filter((d) => d < maxDepth);
+  const wedge = wedgeDepths.map((d) => slabPoint(trenchX, d, dip, pxX));
+  const showMelt = showMelting && maxDepth >= AMPHIBOLE_KM;
+  const arcKm = (arcX - trenchX) / pxX;
 
   return (
-    <g>
-      <polygon points={`50,72 ${trenchX - 16},72 ${trenchX}, ${SEA_Y + 16} ${trenchX + 28},${SEA_Y - 8} 50,${SEA_Y}`} fill="#0f2b3e" />
-      <text x="70" y="64" fill="#7dd3fc" fontSize="11">
-        {oceanLabel}
-      </text>
-      <text x={trenchX} y="52" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
-        Dyphavsgrop
-      </text>
-      <polygon points={`${trenchX},${SEA_Y + 10} ${wedgeX + 36},${SEA_Y - 22} ${wedgeX + 8},${SEA_Y - 6}`} fill="#3d493f" />
-      <text x={wedgeX + 16} y={SEA_Y - 26} fill="#cbd5e1" fontSize="10" textAnchor="middle">
-        Akkresjonskile
-      </text>
-      <text x={(wedgeX + arcX) / 2} y={SEA_Y - 8} fill="#94a3b8" fontSize="10" textAnchor="middle">
-        Forbuebasseng
-      </text>
+    <g data-scene="andes" data-arc-km={arcKm.toFixed(0)} data-stage={stage}>
       <polygon
-        points={`${arcX - 36},${SEA_Y} ${arcX},${backarc ? 58 : 46} ${arcX + 28},${backarc ? 64 : 58} ${arcX + 48},${SEA_Y}`}
+        points={`60,40 ${trenchX + 12},40 ${trenchX + 12},${SEA_Y - 22} ${trenchX},${SEA_Y} ${trenchX - 18},${SEA_Y - 2} ${trenchX - 46},${SEA_Y - 8} 60,${SEA_Y - 8}`}
+        fill="#0c4a6e"
+      />
+      <polyline
+        points={`60,${SEA_Y - 8} ${trenchX - 46},${SEA_Y - 8} ${trenchX - 18},${SEA_Y - 2} ${trenchX},${SEA_Y} ${trenchX + 12},${SEA_Y - 22}`}
+        fill="none"
+        stroke="#7dd3fc"
+        strokeWidth="2.6"
+        data-trench="andes"
+      />
+      <polygon
+        points={`60,${SEA_Y - 8} ${trenchX - 46},${SEA_Y - 8} ${trenchX - 18},${SEA_Y - 2} ${trenchX},${SEA_Y} ${trenchX},${yDepth(8)} 60,${yDepth(8)}`}
+        fill="#2e4238"
+      />
+      <polygon points={`60,${yDepth(8)} ${trenchX},${yDepth(8)} ${trenchX},${yDepth(68)} 60,${yDepth(68)}`} fill="#1c2f3a" />
+      {wedge.length > 1 ? (
+        <polygon
+          points={`${trenchX + 6},${SEA_Y + 6} ${pts(wedge)} ${arcX - 20},${yDepth(44)} ${trenchX + 28},${yDepth(24)}`}
+          fill="#5a3024"
+        />
+      ) : null}
+      <polygon points={pts(slab)} fill="#1a3330" stroke="#2f6a58" strokeWidth="1.4" />
+      <polygon
+        points={`${trenchX + 11},${SEA_Y - 18} ${trenchX + 36},${SEA_Y - 28 - t * 8} ${trenchX + 86},${SEA_Y - 10} ${arcX - 48},${shoulder + 6} ${arcX - 18},${peak + 16} ${arcX},${peak} ${arcX + 16},${peak + 12} ${arcX + 42},${peak2} ${arcX + 86},${shoulder} 880,${SEA_Y - 12} 880,${yDepth(40)} ${arcX},${yDepth(46)} ${trenchX + 40},${yDepth(36)} ${trenchX + 11},${SEA_Y - 2}`}
         fill="#4b5d52"
       />
-      <text x={arcX} y="36" fill="#f8fafc" fontSize="12" fontWeight="700" textAnchor="middle">
-        {arcLabel}
+      <polygon
+        points={`${trenchX},${SEA_Y} ${trenchX + 18 + t * 16},${SEA_Y - 24 - t * 10} ${trenchX + 52 + t * 14},${SEA_Y - 6}`}
+        fill="#6d5c45"
+        stroke="#4a3f30"
+      />
+      <text x="78" y="58" fill="#7dd3fc" fontSize="11">
+        Hav, ca. 4 km. Høyden er overdrevet.
       </text>
-      {backarc ? (
-        <g>
-          <polygon
-            points={`${arcX + 70},${SEA_Y} 880,${SEA_Y} 880,${yDepth(18)} ${arcX + 70},${yDepth(22)}`}
-            fill="#243038"
-          />
-          <polyline
-            points={`${arcX + 90},${SEA_Y - 20} ${arcX + 120},${SEA_Y + 10} ${arcX + 150},${SEA_Y - 20}`}
-            fill="none"
-            stroke="#fbbf24"
-            strokeWidth="3"
-          />
-          <text x={arcX + 150} y={SEA_Y - 28} fill="#fbbf24" fontSize="11" fontWeight="700">
-            Bakbue med spredning
-          </text>
-        </g>
-      ) : (
-        <polygon
-          points={`${trenchX + 48},${SEA_Y} 890,${SEA_Y} 890,${yDepth(42)} ${trenchX + 70},${yDepth(48)}`}
-          fill="#4b5d52"
-        />
-      )}
-      {!backarc ? (
-        <text x="760" y={yDepth(24)} fill="#e2e8f0" fontSize="11">
-          Kontinentalskorpe, ca. 40 km
+      <text x={trenchX - 4} y="34" fill="#38bdf8" fontSize="12" fontWeight="800" textAnchor="middle">
+        Dyphavsgrop
+      </text>
+      <text x={trenchX + 58} y={SEA_Y - 36 - t * 8} fill="#e7d7b8" fontSize="10" fontWeight="700">
+        Akkresjonskile
+      </text>
+      <text x={(trenchX + 100 + arcX - 60) / 2} y={SEA_Y - 18} fill="#cbd5e1" fontSize="10" textAnchor="middle">
+        Forbuebasseng
+      </text>
+      <text x={arcX + 8} y="30" fill="#f8fafc" fontSize="13" fontWeight="800">
+        Andesfjellene
+      </text>
+      <text x="742" y={yDepth(22)} fill="#e2e8f0" fontSize="11">
+        Kontinentalskorpe, ca. 40 km
+      </text>
+      {maxDepth >= 85 ? (
+        <text x={arcX - 78} y={yDepth(44)} fill="#fdba74" fontSize="12" fontWeight="800">
+          Mantelkile
         </text>
       ) : null}
-      <polygon points={`50,${SEA_Y} ${trenchX},${SEA_Y} ${trenchX},${yDepth(8)} 50,${yDepth(8)}`} fill="#2e4238" />
-      <polygon points={`50,${yDepth(8)} ${trenchX},${yDepth(8)} ${trenchX},${yDepth(70)} 50,${yDepth(70)}`} fill="#1c2f3a" />
-      <text x="70" y={yDepth(40)} fill="#94a3b8" fontSize="11">
-        {slabLabel}
+      <text x="78" y={yDepth(46)} fill="#94a3b8" fontSize="11">
+        Oseanisk litosfære
       </text>
-      <polygon points={pts(slab)} fill="#1a3330" stroke="#245046" />
-      <text x={melt.x + 28} y={melt.y - 36} fill="#86efac" fontSize="11" fontWeight="700">
-        Mantelkile
-      </text>
-      {showMelting ? (
+      {showMelt ? (
         <g>
-          <circle cx={amph.x} cy={amph.y} r="4" fill="#38bdf8" />
-          <text x={amph.x + 10} y={amph.y - 8} fill="#7dd3fc" fontSize="10" fontWeight="700">
+          <circle cx={amph.x} cy={amph.y} r="4" fill="#38bdf8" className={animating ? "pt-h2o" : ""} />
+          <text x={amph.x - 118} y={amph.y - 10} fill="#7dd3fc" fontSize="10" fontWeight="700">
             H₂O fra amfibol, ca. {AMPHIBOLE_KM} km
           </text>
-          <circle cx={serp.x} cy={serp.y} r="4" fill="#38bdf8" />
-          <text x={serp.x + 10} y={serp.y + 14} fill="#7dd3fc" fontSize="10" fontWeight="700">
-            H₂O fra serpentin, ca. {SERPENTINE_KM} km
-          </text>
-          <ellipse
-            cx={melt.x - 16}
-            cy={yDepth(100)}
-            rx="36"
-            ry="14"
-            fill="#ef4444"
-            opacity="0.9"
-            className={animating ? "magma-pulse" : ""}
-          />
-          <text x={melt.x - 16} y={yDepth(100) + 4} fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
-            Flukssmelting
-          </text>
-          <path
-            d={`M ${melt.x - 16} ${yDepth(92)} C ${arcX - 10} ${yDepth(50)}, ${arcX} ${yDepth(20)}, ${arcX} 70`}
-            fill="none"
-            stroke="#ef4444"
-            strokeWidth="3"
-            strokeDasharray="6 4"
-            markerEnd="url(#arrow-magma)"
-          />
+          {maxDepth >= SERPENTINE_KM ? (
+            <g>
+              <circle cx={serp.x} cy={serp.y} r="4" fill="#38bdf8" className={animating ? "pt-h2o" : ""} />
+              <text x={serp.x - 150} y={serp.y + 16} fill="#7dd3fc" fontSize="10" fontWeight="700">
+                H₂O fra serpentin, ca. {SERPENTINE_KM} km
+              </text>
+            </g>
+          ) : null}
+          {maxDepth >= meltKm - 6 ? (
+            <g>
+              <ellipse cx={melt.x - 18} cy={melt.y - 16} rx="30" ry="12" fill="#ef4444" opacity="0.92" className={animating ? "magma-pulse" : ""} />
+              <text x={melt.x - 18} y={melt.y - 12} fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
+                Flukssmelting
+              </text>
+              <path
+                d={`M ${melt.x - 10} ${melt.y - 26} C ${arcX - 20} ${yDepth(62)}, ${arcX - 4} ${yDepth(24)}, ${arcX} ${peak + 18}`}
+                fill="none"
+                stroke="#ef4444"
+                strokeWidth="3"
+                strokeDasharray="7 5"
+                className={animating ? "pt-magma-dash" : ""}
+                markerEnd="url(#arrow-magma)"
+              />
+            </g>
+          ) : null}
         </g>
       ) : null}
-      {showQuakes ? (
-        <g>
-          <Foci animating={animating} points={quakes} />
-          <text x="640" y="96" fill="#fca5a5" fontSize="11">
-            Mer i kapittelet Jordskjelv.
-          </text>
-        </g>
-      ) : null}
+      {showQuakes ? <Foci animating={animating} points={quakes} /> : null}
       {showForces ? (
         <g>
-          <line
-            x1={pull.x}
-            y1={pull.y}
-            x2={pull.x + 36}
-            y2={pull.y + 28}
-            stroke="#38bdf8"
-            strokeWidth="4"
-            markerEnd="url(#arrow-slab)"
-          />
-          <text x={Math.min(pull.x + 44, 760)} y={pull.y + 8} fill="#38bdf8" fontSize="12" fontWeight="800">
+          <line x1={pull.x} y1={pull.y} x2={pull.x + 28} y2={pull.y + 22} stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
+          <text x={Math.min(pull.x + 36, 780)} y={pull.y + 10} fill="#38bdf8" fontSize="12" fontWeight="800">
             Platetrekk
           </text>
-          <line x1={trenchX - 120} y1="84" x2={trenchX - 40} y2="84" stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
-          <text x={trenchX - 80} y="76" fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
+          <line x1={120} y1={SEA_Y + 6} x2={210} y2={SEA_Y + 6} stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <text x={165} y={SEA_Y + 20} fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
             {rate} cm/år
           </text>
         </g>
       ) : null}
-      <PlateDrift
-        id={`pt-sub-${trenchX}`}
-        x={70}
-        y={88}
-        width={Math.max(90, trenchX - 170)}
-        dir={1}
-        animating={animating}
+      <PlateDrift id="pt-andes" x={78} y={SEA_Y - 24} width={Math.max(80, trenchX - 160)} dir={1} animating={animating} />
+    </g>
+  );
+}
+
+function IslandArcScene({
+  rate,
+  showMelting,
+  showQuakes,
+  showForces,
+  animating,
+  stage,
+}: SceneProps & { stage: number }) {
+  const t = easeInOut(stage / 100);
+  const trenchX = 276;
+  const dip = 40;
+  const pxX = 1.34;
+  const meltKm = FLUX_MELT_KM;
+  const arcX = trenchX + (meltKm / Math.tan((dip * Math.PI) / 180)) * pxX;
+  const maxDepth = 32 + t * 168;
+  const peak = SEA_Y - 4 - t * 50;
+  const peak2 = SEA_Y - t * 28;
+  const slab = dippingSlab(trenchX, dip, maxDepth, 50, pxX);
+  const amph = slabPoint(trenchX, AMPHIBOLE_KM, dip, pxX);
+  const serp = slabPoint(trenchX, SERPENTINE_KM, dip, pxX);
+  const melt = slabPoint(trenchX, meltKm, dip, pxX);
+  const pull = slabPoint(trenchX, Math.min(175, Math.max(36, maxDepth - 8)), dip, pxX);
+  const quakes = [16, 40, 70, 100, 130].filter((d) => d < maxDepth - 4).map((d) => slabPoint(trenchX, d, dip, pxX));
+  const wedgeDepths = [10, 32, 58, 84, Math.min(meltKm, maxDepth - 2)].filter((d) => d < maxDepth);
+  const wedge = wedgeDepths.map((d) => slabPoint(trenchX, d, dip, pxX));
+  const showMelt = showMelting && maxDepth >= AMPHIBOLE_KM;
+  const arcKm = (arcX - trenchX) / pxX;
+  const backX = arcX + 92;
+
+  return (
+    <g data-scene="island" data-arc-km={arcKm.toFixed(0)} data-stage={stage}>
+      <polygon
+        points={`60,40 ${trenchX + 13},40 ${trenchX + 13},${SEA_Y - 24} ${trenchX},${SEA_Y} ${trenchX - 16},${SEA_Y - 3} ${trenchX - 48},${SEA_Y - 10} 60,${SEA_Y - 10}`}
+        fill="#0c4a6e"
       />
+      <polygon
+        points={`${arcX + 24},${SEA_Y - 12} ${backX},${SEA_Y + 10} ${backX + 28},${SEA_Y - 6} 880,${SEA_Y - 4} 880,40 ${arcX + 24},40`}
+        fill="#0c4a6e"
+      />
+      <polyline
+        points={`60,${SEA_Y - 10} ${trenchX - 48},${SEA_Y - 10} ${trenchX - 16},${SEA_Y - 3} ${trenchX},${SEA_Y} ${trenchX + 13},${SEA_Y - 24}`}
+        fill="none"
+        stroke="#7dd3fc"
+        strokeWidth="2.6"
+        data-trench="island"
+      />
+      <polygon
+        points={`60,${SEA_Y - 10} ${trenchX - 48},${SEA_Y - 10} ${trenchX - 16},${SEA_Y - 3} ${trenchX},${SEA_Y} ${trenchX},${yDepth(8)} 60,${yDepth(8)}`}
+        fill="#2e4238"
+      />
+      <polygon points={`60,${yDepth(8)} ${trenchX},${yDepth(8)} ${trenchX},${yDepth(64)} 60,${yDepth(64)}`} fill="#1c2f3a" />
+      {wedge.length > 1 ? (
+        <polygon
+          points={`${trenchX + 8},${SEA_Y + 8} ${pts(wedge)} ${arcX + 30},${yDepth(30)} ${trenchX + 26},${yDepth(18)}`}
+          fill="#5a3024"
+        />
+      ) : null}
+      <polygon points={pts(slab)} fill="#1a3330" stroke="#2f6a58" strokeWidth="1.4" />
+      <polygon
+        points={`${trenchX + 12},${SEA_Y - 16} ${arcX - 20},${SEA_Y - 12} 880,${SEA_Y - 8} 880,${yDepth(15)} ${arcX + 10},${yDepth(16)} ${trenchX + 18},${yDepth(14)}`}
+        fill="#24382f"
+      />
+      <polygon points={`${arcX - 26},${SEA_Y - 10} ${arcX - 4},${peak} ${arcX + 14},${SEA_Y - 10}`} fill="#4e6056" stroke="#243028" />
+      <polygon points={`${arcX + 18},${SEA_Y - 10} ${arcX + 34},${peak2} ${arcX + 50},${SEA_Y - 10}`} fill="#3e5148" />
+      {t > 0.45 ? <polygon points={`${arcX - 5},${peak + 8} ${arcX + 1},${peak - 6} ${arcX + 7},${peak + 8}`} fill="#ef4444" /> : null}
+      <polyline
+        points={`${backX - 8},${SEA_Y - 14} ${backX + 8},${SEA_Y + 6} ${backX + 26},${SEA_Y - 14}`}
+        fill="none"
+        stroke="#fbbf24"
+        strokeWidth="3"
+      />
+      <polygon
+        points={`${trenchX},${SEA_Y} ${trenchX + 14 + t * 10},${SEA_Y - 22 - t * 6} ${trenchX + 36},${SEA_Y - 8}`}
+        fill="#6d5c45"
+      />
+      <text x="68" y="72" fill="#7dd3fc" fontSize="11">
+        Hav–hav. Høyden er overdrevet.
+      </text>
+      <text x={trenchX - 6} y="32" fill="#38bdf8" fontSize="12" fontWeight="800" textAnchor="middle">
+        Dyphavsgrop
+      </text>
+      <text x={arcX - 8} y="46" fill="#f8fafc" fontSize="12" fontWeight="800">
+        Vulkanøybue
+      </text>
+      <text x={backX + 36} y={SEA_Y - 22} fill="#fbbf24" fontSize="11" fontWeight="700">
+        Bakbue med spredning
+      </text>
+      {maxDepth >= 80 ? (
+        <text x={trenchX + 128} y={yDepth(30)} fill="#fdba74" fontSize="12" fontWeight="800">
+          Mantelkile
+        </text>
+      ) : null}
+      <text x="74" y={yDepth(42)} fill="#94a3b8" fontSize="11">
+        Eldst og tettest plate
+      </text>
+      {showMelt ? (
+        <g>
+          <circle cx={amph.x} cy={amph.y} r="4" fill="#38bdf8" className={animating ? "pt-h2o" : ""} />
+          <text x={amph.x - 116} y={amph.y - 8} fill="#7dd3fc" fontSize="10" fontWeight="700">
+            H₂O fra amfibol, ca. {AMPHIBOLE_KM} km
+          </text>
+          {maxDepth >= SERPENTINE_KM ? (
+            <g>
+              <circle cx={serp.x} cy={serp.y} r="4" fill="#38bdf8" className={animating ? "pt-h2o" : ""} />
+              <text x={serp.x - 8} y={serp.y + 16} fill="#7dd3fc" fontSize="10" fontWeight="700" textAnchor="end">
+                H₂O fra serpentin, ca. {SERPENTINE_KM} km
+              </text>
+            </g>
+          ) : null}
+          {maxDepth >= meltKm - 6 ? (
+            <g>
+              <ellipse cx={melt.x - 14} cy={melt.y - 18} rx="26" ry="11" fill="#ef4444" className={animating ? "magma-pulse" : ""} />
+              <text x={melt.x - 14} y={melt.y - 14} fill="#fff" fontSize="10" fontWeight="700" textAnchor="middle">
+                Flukssmelting
+              </text>
+              <path
+                d={`M ${melt.x - 8} ${melt.y - 28} C ${arcX - 16} ${yDepth(58)}, ${arcX} ${yDepth(20)}, ${arcX} ${peak + 14}`}
+                fill="none"
+                stroke="#ef4444"
+                strokeWidth="3"
+                strokeDasharray="7 5"
+                className={animating ? "pt-magma-dash" : ""}
+                markerEnd="url(#arrow-magma)"
+              />
+            </g>
+          ) : null}
+        </g>
+      ) : null}
+      {showQuakes ? <Foci animating={animating} points={quakes} /> : null}
+      {showForces ? (
+        <g>
+          <line x1={pull.x} y1={pull.y} x2={pull.x + 26} y2={pull.y + 20} stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
+          <text x={Math.min(pull.x + 34, 760)} y={pull.y + 8} fill="#38bdf8" fontSize="12" fontWeight="800">
+            Platetrekk
+          </text>
+          <line x1={110} y1={SEA_Y + 8} x2={190} y2={SEA_Y + 8} stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <text x={150} y={SEA_Y + 22} fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
+            {rate} cm/år
+          </text>
+        </g>
+      ) : null}
+      <PlateDrift id="pt-island" x={78} y={SEA_Y - 26} width={Math.max(70, trenchX - 170)} dir={1} animating={animating} />
     </g>
   );
 }
@@ -629,19 +756,45 @@ function TransformScene({ rate, showQuakes, animating }: SceneProps) {
   );
 }
 
-function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) {
-  const plumeX = 780;
-  const px = 0.95;
-  const stations = HOTSPOT_STATIONS.map((station, index) => {
-    const km = distanceKm(rate, station.ageMa);
-    return { ...station, km, x: plumeX - km * px, index };
-  }).filter((station) => station.x > 70);
+function HotspotScene({ rate, showMelting, showQuakes, animating, stage }: SceneProps & { stage: number }) {
+  const plumeX = 748;
+  const px = 0.72;
+  const now = (stage / 100) * 6;
+  const births = [
+    { birth: 0.5, mature: "ca. 5,5 Ma" },
+    { birth: 3, mature: "3 Ma" },
+    { birth: 5, mature: "1 Ma" },
+    { birth: 5.72, mature: "0 Ma · aktiv" },
+  ];
+  const islands = births
+    .map((item, index) => {
+      const age = now - item.birth;
+      if (age < 0) return null;
+      const km = distanceKm(rate, age);
+      const x = plumeX - km * px;
+      if (x < 78 || x > 890) return null;
+      const grow = Math.min(1, age / 0.25);
+      const erode = Math.exp(-Math.max(0, age - 0.35) / 3.4);
+      const h = 12 + 48 * grow * erode;
+      const sink = Math.min(20, Math.max(0, age - 1.1) * 3.2);
+      const active = age < 0.45;
+      const label = stage >= 96 ? item.mature : active ? "aktiv" : `${age.toFixed(1).replace(".", ",")} Ma`;
+      return { ...item, age, km, x, h, sink, active, label, index };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null)
+    .sort((a, b) => a.x - b.x);
+  let lastLabel = -200;
+  const placed = islands.map((island) => {
+    const showLabel = island.active || island.x - lastLabel > 76;
+    if (showLabel) lastLabel = island.x;
+    return { ...island, showLabel };
+  });
 
   return (
-    <g>
+    <g data-scene="hotspot" data-stage={stage}>
       <rect x="50" y="70" width="820" height="40" fill="#0f2b3e" />
-      <text x="70" y="64" fill="#7dd3fc" fontSize="11">
-        Stillehavet. Avstand = fart × alder. Eldre øyer ligger bak platen.
+      <text x="70" y="62" fill="#7dd3fc" fontSize="11">
+        Stillehavet. Plymen står stille. Avstand = fart × alder.
       </text>
       <rect x="50" y={SEA_Y} width="820" height={yDepth(8) - SEA_Y} fill="#1b2e25" />
       <rect x="50" y={yDepth(8)} width="820" height={yDepth(55) - yDepth(8)} fill="#152630" />
@@ -650,31 +803,47 @@ function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) 
         fill="#ea580c"
         opacity="0.92"
       />
-      <text x={plumeX - 28} y={yDepth(120)} fill="#ffedd5" fontSize="11" fontWeight="800" textAnchor="end">
+      <text x="70" y={yDepth(118)} fill="#ffedd5" fontSize="11" fontWeight="800">
         Øverste 200 km av plymen
       </text>
-      <text x={plumeX - 28} y={yDepth(136)} fill="#fed7aa" fontSize="10" textAnchor="end">
+      <text x="70" y={yDepth(134)} fill="#fed7aa" fontSize="10">
         Kilden er grensen mot kjernen, 2900 km
       </text>
       {showMelting ? (
         <g>
           <ellipse cx={plumeX} cy={yDepth(40)} rx="26" ry="10" fill="#ef4444" className={animating ? "magma-pulse" : ""} />
-          <text x={plumeX + 36} y={yDepth(44)} fill="#fecaca" fontSize="10">
+          <path
+            d={`M ${plumeX} ${yDepth(52)} L ${plumeX} ${SEA_Y + 2}`}
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth="3"
+            strokeDasharray="6 4"
+            className={animating ? "pt-magma-dash" : ""}
+            markerEnd="url(#arrow-magma)"
+          />
+          <text x={plumeX + 34} y={yDepth(44)} fill="#fecaca" fontSize="10">
             Dekompresjon i varm mantel
           </text>
         </g>
       ) : null}
-      {stations.map((station) => {
-        const h = Math.max(18, 56 - station.ageMa * 7);
+      {placed.map((island) => {
+        const base = SEA_Y + island.sink;
+        const half = 14 + island.age * 3.2;
         return (
-          <g key={station.label}>
+          <g key={island.birth}>
             <polygon
-              points={`${station.x - h * 0.7},${SEA_Y} ${station.x},${SEA_Y - h} ${station.x + h * 0.55},${SEA_Y}`}
-              fill={station.ageMa === 0 ? "#5c5346" : "#2c3330"}
+              points={`${island.x - half},${base} ${island.x},${base - island.h} ${island.x + half * 0.72},${base}`}
+              fill={island.active ? "#6a5b48" : "#333a36"}
             />
-            <text x={station.x} y={yDepth(18) + station.index * 16} fill="#f8fafc" fontSize="11" fontWeight="700" textAnchor="middle">
-              {station.ageMa === 0 ? station.label : `${station.label} · ${Math.round(station.km)} km`}
-            </text>
+            {island.active ? (
+              <polygon points={`${island.x - 5},${base - island.h + 8} ${island.x},${base - island.h - 6} ${island.x + 6},${base - island.h + 8}`} fill="#ef4444" />
+            ) : null}
+            {island.showLabel ? (
+              <text x={island.x} y={island.active ? base - island.h - 12 : yDepth(16) + (island.index % 3) * 14} fill="#f8fafc" fontSize="11" fontWeight="700" textAnchor="middle">
+                {island.label}
+                {island.active ? "" : ` · ${Math.round(island.km)} km`}
+              </text>
+            ) : null}
           </g>
         );
       })}
@@ -687,15 +856,107 @@ function HotspotScene({ rate, showMelting, showQuakes, animating }: SceneProps) 
           ]}
         />
       ) : null}
-      <line x1={plumeX - 40} y1={yDepth(28)} x2={plumeX - 140} y2={yDepth(28)} stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
-      <text x={plumeX - 90} y={yDepth(22)} fill="#38bdf8" fontSize="11" fontWeight="700" textAnchor="middle">
+      <line x1={210} y1={96} x2={120} y2={96} stroke="#38bdf8" strokeWidth="4" markerEnd="url(#arrow-slab)" />
+      <text x={250} y={92} fill="#38bdf8" fontSize="11" fontWeight="700">
         Platen {rate} cm/år
       </text>
-      <line x1={plumeX} y1="452" x2={plumeX - 100 * px} y2="452" stroke="#94a3b8" strokeWidth="1.5" />
-      <text x={plumeX - 50 * px} y="466" fill="#94a3b8" fontSize="10" textAnchor="middle">
-        100 km
+      <text x="70" y="456" fill="#cbd5e1" fontSize="11">
+        Alder øker mot venstre, som Hawaii–Emperor. Midway (28 Ma) ligger utenfor bildet.
       </text>
-      <PlateDrift id="pt-hs" x={80} y={SEA_Y + 6} width={480} dir={-1} animating={animating} />
+      <PlateDrift id="pt-hs" x={80} y={SEA_Y + 6} width={420} dir={-1} animating={animating} />
+    </g>
+  );
+}
+
+function TransformGenesis({ stage, rate, showQuakes, animating }: SceneProps & { stage: number }) {
+  const u = stage / 100;
+  const split = u < 0.22 ? 0 : u < 0.5 ? (u - 0.22) / 0.28 : 1;
+  const fault = split;
+  const northX = 455 + (257 - 455) * split;
+  const southX = 455 + (627 - 455) * split;
+  const northTop = 150 + (96 - 150) * split;
+  const northH = 110;
+  const southTop = 150 + (250 - 150) * split;
+  const faultY = 220;
+  const caption =
+    u < 0.32 ? "Rett spredningsrygg" : u < 0.62 ? "Ryggen deles i forskjøvne segmenter" : "Transform mellom segmentene";
+
+  return (
+    <g data-scene="transform-genesis" data-stage={stage}>
+      <rect x="40" y="36" width="840" height="400" rx="8" fill="#0d1b26" />
+      <text x="60" y="58" fill="#f8fafc" fontSize="14" fontWeight="800">
+        Slik oppstår en transformgrense
+      </text>
+      <text x="60" y="76" fill="#94a3b8" fontSize="11">
+        {caption}
+      </text>
+      <rect x={northX - 7} y={northTop} width="14" height={northH} rx="2" fill="#f59e0b" />
+      <text x={northX} y={northTop - 8} fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
+        {split < 0.2 ? "Spredningsrygg" : "Nordlig rygg"}
+      </text>
+      {split > 0.04 ? (
+        <g>
+          <rect x={southX - 7} y={southTop} width="14" height={northH} rx="2" fill="#f59e0b" />
+          <text x={southX} y={southTop + northH + 16} fill="#fbbf24" fontSize="11" fontWeight="700" textAnchor="middle">
+            Sørlig rygg
+          </text>
+          <line x1={southX - 24} y1={faultY + 36} x2={southX - 120} y2={faultY + 36} stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <line x1={southX + 24} y1={faultY + 36} x2={southX + 110} y2={faultY + 36} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+        </g>
+      ) : null}
+      {split === 0 ? (
+        <g>
+          <line x1={440} y1={210} x2={330} y2={210} stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <line x1={470} y1={210} x2={580} y2={210} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+          <text x="455" y="196" fill="#e2e8f0" fontSize="11" fontWeight="700" textAnchor="middle">
+            Platene glir fra hverandre
+          </text>
+        </g>
+      ) : (
+        <g>
+          <line x1={northX - 70} y1={faultY - 28} x2={northX - 150} y2={faultY - 28} stroke="#38bdf8" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <line x1={northX + 24} y1={faultY - 28} x2={northX + 110} y2={faultY - 28} stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow-ridge)" />
+        </g>
+      )}
+      {fault > 0.05 ? (
+        <g opacity={fault}>
+          <line x1={northX + 8} y1={faultY} x2={southX - 8} y2={faultY} stroke="#ef4444" strokeWidth="5" />
+          <line x1={northX + 40} y1={faultY - 16} x2={northX + 130} y2={faultY - 16} stroke="#fca5a5" strokeWidth="3" markerEnd="url(#arrow-magma)" />
+          <line x1={southX - 40} y1={faultY + 16} x2={southX - 130} y2={faultY + 16} stroke="#7dd3fc" strokeWidth="3" markerEnd="url(#arrow-slab)" />
+          <text x={(northX + southX) / 2} y={faultY - 52} fill="#fff" fontSize="12" fontWeight="800" textAnchor="middle">
+            Aktivt: motsatt retning
+          </text>
+        </g>
+      ) : null}
+      {u > 0.6 ? (
+        <g>
+          <line x1="70" y1={faultY} x2={northX - 10} y2={faultY} stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
+          <line x1={southX + 10} y1={faultY} x2="860" y2={faultY} stroke="#64748b" strokeWidth="2" strokeDasharray="6 4" />
+          <line x1="180" y1={faultY - 18} x2="100" y2={faultY - 18} stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
+          <line x1="180" y1={faultY + 18} x2="100" y2={faultY + 18} stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
+          <line x1="720" y1={faultY - 18} x2="820" y2={faultY - 18} stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
+          <line x1="720" y1={faultY + 18} x2="820" y2={faultY + 18} stroke="#38bdf8" strokeWidth="2.5" markerEnd="url(#arrow-slab)" />
+          <text x="140" y={faultY + 40} fill="#94a3b8" fontSize="10" textAnchor="middle">
+            Bruddsone, samme vei, {rate} cm/år
+          </text>
+          <text x="770" y={faultY + 40} fill="#94a3b8" fontSize="10" textAnchor="middle">
+            Bruddsone, samme vei
+          </text>
+        </g>
+      ) : null}
+      {showQuakes && fault > 0.45 ? (
+        <Foci
+          animating={animating}
+          points={[0.3, 0.5, 0.7].map((f) => ({ x: northX + 8 + (southX - northX - 16) * f, y: faultY }))}
+        />
+      ) : null}
+      <text x="460" y="430" fill="#e2e8f0" fontSize="11" textAnchor="middle">
+        {u < 0.22
+          ? "En rett konstruktiv grense, før den deles i segmenter."
+          : u < 0.5
+            ? "Segmentene forskyves, og transformforkastningen vokser fram mellom dem."
+            : "Aktiv bevegelse bare mellom ryggene. Bruddsonene utenfor går samme vei."}
+      </text>
     </g>
   );
 }
@@ -955,6 +1216,19 @@ export function PlateTectonicsModel() {
   const [showForces, setShowForces] = useState(true);
   const motion = useAnimationPlaying();
   const animating = motion.playing;
+  const timed =
+    boundary === "subduction_continent" ||
+    boundary === "subduction_island" ||
+    boundary === "hotspot" ||
+    boundary === "transform";
+  const [stage, setStage] = useState(100);
+  useEffect(() => {
+    if (!animating || !timed) return;
+    const id = window.setInterval(() => {
+      setStage((currentStage) => Math.min(100, currentStage + Math.max(0.45, rate / 7)));
+    }, 90);
+    return () => window.clearInterval(id);
+  }, [animating, timed, rate]);
 
   const current = boundaryData[boundary];
   const layers = layerAvailability(boundary);
@@ -1064,7 +1338,16 @@ export function PlateTectonicsModel() {
             >
               {layers.forces ? (scene.showForces ? "Krefter på" : "Krefter av") : "Bevegelse alltid vist"}
             </Button>
-            <Button type="button" size="sm" variant="secondary" className="h-7 text-xs" onClick={motion.toggle}>
+            <Button
+              type="button"
+              size="sm"
+              variant="secondary"
+              className="h-7 text-xs"
+              onClick={() => {
+                if (!animating && timed && stage >= 99) setStage(0);
+                motion.toggle();
+              }}
+            >
               {animating ? "⏸ Pause animasjon" : "▶ Start animasjon"}
             </Button>
           </div>
@@ -1074,6 +1357,76 @@ export function PlateTectonicsModel() {
           <span className="mt-0.5 line-clamp-3 text-muted-foreground">{rateCaption(boundary, rate)}</span>
         </div>
       </div>
+
+      {timed ? (
+        <div className="mb-4 flex flex-col gap-2">
+          {boundary === "transform" ? (
+            <div className="flex flex-wrap gap-1.5" role="group" aria-label="Transformtrinn">
+              {(
+                [
+                  ["1 Rett rygg", 10],
+                  ["2 Segmenter", 40],
+                  ["3 Transform", 64],
+                  ["4 Aktiv og inaktiv", 100],
+                ] as const
+              ).map(([label, value]) => {
+                const active =
+                  (value === 10 && stage < 28) ||
+                  (value === 40 && stage >= 28 && stage < 52) ||
+                  (value === 64 && stage >= 52 && stage < 76) ||
+                  (value === 100 && stage >= 76);
+                return (
+                  <button
+                    key={label}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setStage(value)}
+                    className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+                      active ? "border-primary bg-primary text-primary-foreground" : "border-border/80 bg-muted/60"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+          <label className="flex min-w-0 items-center gap-2 text-xs font-medium text-foreground">
+            <span className="whitespace-nowrap">Utvikling</span>
+            <input
+              type="range"
+              min={0}
+              max={100}
+              step={1}
+              value={stage}
+              aria-label="Utvikling"
+              onChange={(event) => setStage(Number(event.target.value))}
+              className="w-full cursor-pointer accent-primary"
+            />
+            <span className="w-24 shrink-0 font-mono text-primary">
+              {boundary === "transform"
+                ? stage < 28
+                  ? "rett rygg"
+                  : stage < 52
+                    ? "segmenter"
+                    : stage < 76
+                      ? "transform"
+                      : "som i dag"
+                : boundary === "hotspot"
+                  ? stage < 34
+                    ? "ny øy"
+                    : stage < 78
+                      ? "driver bort"
+                      : "øyrekke"
+                  : stage < 34
+                    ? "tidlig"
+                    : stage < 72
+                      ? "underveis"
+                      : "moden"}
+            </span>
+          </label>
+        </div>
+      ) : null}
 
       <div
         className={`relative overflow-x-auto rounded-xl border border-border bg-[#0a1118] ${motion.motionClass}`}
@@ -1093,6 +1446,18 @@ export function PlateTectonicsModel() {
           .pt-drift-pos, .pt-drift-neg { animation-duration: ${Math.max(1.2, 18 / rate)}s; animation-timing-function: linear; animation-iteration-count: infinite; }
           .pt-drift-pos { animation-name: pt-drift-pos; }
           .pt-drift-neg { animation-name: pt-drift-neg; }
+          @keyframes pt-h2o-rise {
+            0% { transform: translate(0, 0); opacity: 0; }
+            30% { opacity: 1; }
+            100% { transform: translate(-6px, -18px); opacity: 0; }
+          }
+          @keyframes pt-magma-dash { to { stroke-dashoffset: -48; } }
+          .pt-h2o {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: pt-h2o-rise 2.2s ease-out infinite;
+          }
+          .pt-magma-dash { animation: pt-magma-dash 1.5s linear infinite; }
         `}</style>
         <svg viewBox="0 0 920 480" className="h-auto w-[920px] max-w-none select-none sm:w-full" role="img" aria-label={current.title} data-boundary={boundary}>
           <defs>
@@ -1109,36 +1474,14 @@ export function PlateTectonicsModel() {
           <rect width="920" height="480" fill="#12110f" />
           {showsDepthScale(boundary) ? <DepthScale /> : null}
           {boundary === "ridge" ? <RidgeScene {...scene} /> : null}
-          {boundary === "subduction_continent" ? (
-            <SubductionScene
-              {...scene}
-              trenchX={400}
-              arcX={590}
-              dip={40}
-              pxX={1.25}
-              oceanLabel="Hav, ca. 4 km. Høyden er overdrevet."
-              slabLabel="Oseanisk litosfære"
-              arcLabel="Vulkanbue"
-              backarc={false}
-            />
-          ) : null}
-          {boundary === "subduction_island" ? (
-            <SubductionScene
-              {...scene}
-              trenchX={340}
-              arcX={530}
-              dip={42}
-              pxX={1.35}
-              oceanLabel="Hav–hav. Høyden er overdrevet."
-              slabLabel="Eldst og tettest plate"
-              arcLabel="Vulkanøybue"
-              backarc
-            />
-          ) : null}
+          {boundary === "subduction_continent" ? <AndesScene {...scene} stage={stage} /> : null}
+          {boundary === "subduction_island" ? <IslandArcScene {...scene} stage={stage} /> : null}
           {boundary === "collision" ? <CollisionScene {...scene} /> : null}
           {boundary === "rift" ? <RiftScene {...scene} /> : null}
-          {boundary === "transform" ? <TransformScene {...scene} /> : null}
-          {boundary === "hotspot" ? <HotspotScene {...scene} /> : null}
+          {boundary === "transform" ? (
+            stage >= 76 ? <TransformScene {...scene} /> : <TransformGenesis {...scene} stage={stage} />
+          ) : null}
+          {boundary === "hotspot" ? <HotspotScene {...scene} stage={stage} /> : null}
           {boundary === "paleomag" ? <PaleomagScene {...scene} /> : null}
         </svg>
       </div>
