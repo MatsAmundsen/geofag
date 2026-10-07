@@ -340,9 +340,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-flom-skred.jpg",
     alt: "Flomelv ved et fjellskred i norsk landskap",
     blurb:
-      "Kretsløp, lager, hydrogram. Regnflom, snøsmelteflom og kombinasjonsflom. Hans 2023. NVE-flomkart og Varsom.",
+      "Hydrologisk kretsløp, akvifer og grunnvann. Hydrogram, regnflom, snøsmelteflom og Hans 2023.",
     status: "klar" as const,
-    maal: "Hydrologisk kretsløp, ferskvann, flom og modellering av risiko i hydrosfæren.",
+    maal: "Gjøre rede for det hydrologiske kretsløpet med vekt på ferskvann, og hvordan menneskelig aktivitet påvirker det.",
   },
   {
     slug: "skred",

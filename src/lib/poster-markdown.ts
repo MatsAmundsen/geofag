@@ -209,6 +209,26 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     afterHeading: "Test deg selv",
     require: "Hva er forvitring?",
   },
+  {
+    widgets: ["Kretslop"],
+    afterHeading: "Hva er det hydrologiske kretsløpet?",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["AkviferForklaring"],
+    afterHeading: "Hva er en akvifer?",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["Hydrograph"],
+    afterHeading: "Hva er et hydrogram?",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["QuizVannOgFlom"],
+    afterHeading: "Test deg selv",
+    require: "Hva er en akvifer?",
+  },
 ];
 
 const INJECT_RULES: InjectRule[] = [...PLATE_INJECT_RULES, ...CHAPTER_INJECT_RULES];

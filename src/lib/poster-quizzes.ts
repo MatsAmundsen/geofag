@@ -389,6 +389,63 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
+  {
+    prompt: "Hvor ligger grunnvannet i en akvifer?",
+    options: [
+      "I underjordiske elver.",
+      "I porer i sand og grus, eller i sprekker i fjell.",
+      "Bare i innsjøer over bakken.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hva er en akvifer?». Grunnvann fyller porer og sprekker. Det er ikke elver under bakken.",
+  },
+  {
+    prompt: "Hvorfor har godt sortert grus og sand høyere permeabilitet enn silt og leire?",
+    options: [
+      "Grus og sand som er løst pakket og godt sortert, har store hulrom. Silt og leire er tett pakket og har lav permeabilitet.",
+      "Leire har alltid høyere porøsitet enn sand.",
+      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en akvifer?». NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser.",
+  },
+  {
+    prompt: "Hva skiller en regnflom fra en snøsmelteflom?",
+    options: [
+      "Regnflom skyldes bare regn, og er ofte de største flommene på Sørlandet og Vestlandet. Snøsmelteflom skyldes snøsmelting alene, og er de største vårflommene i store vassdrag i Finnmark.",
+      "Begge skyldes bare regn på asfalt.",
+      "Snøsmelteflom er flom som bare kommer av tidevann.",
+    ],
+    answer: 0,
+    explain: "Se «Hva er en flom?». Skillet står i ordlisten til Varsom.",
+  },
+  {
+    prompt: "Hva viser et hydrogram?",
+    options: [
+      "Vannføring mot tid. Figuren sammenligner en spiss regnflom med en bred snøsmelteflom.",
+      "Hvor dypt grunnvannsspeilet ligger i fjell.",
+      "Hvor mange millimeter som falt på Geilo i 1938.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er et hydrogram?». Vannføring er volum per tidsenhet. Hydrogrammet er den kurven mot tid.",
+  },
+  {
+    prompt: "Hva kan du si om elva i en tørkeperiode?",
+    options: [
+      "Elvene kan bestå av 40–100 prosent grunnvann.",
+      "Elva får alt vannet fra havet.",
+      "Grunnvannet slutter å bidra så snart det slutter å regne.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en akvifer?». NGU skriver at elvene i en tørkeperiode med lav vannføring kan bestå av 40–100 prosent grunnvann.",
+  },
+];
+
 export const QUIZ_HOYTRYKK: QuizQuestion[] = [
   {
     prompt: "Et område har 1015 hPa i sentrum. Er det høytrykk eller lavtrykk?",
