@@ -88,6 +88,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_PALEO,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -364,6 +365,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  PaleoForklaring: () => (
+    <Callout title="Hva betyr «paleoklima»?">
+      <p>
+        Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
+        mars 1958. Iskjernene viser at CO₂ i istidssyklusene det siste millionåret ikke kom over 300
+        ppm (NOAA, u.å.-a; u.å.-b).
+      </p>
+    </Callout>
+  ),
+  QuizPaleo: () => (
+    <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

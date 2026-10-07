@@ -1430,7 +1430,13 @@ export const KILDER = {
   ],
   paleoklima: [
     {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
+      italic: "Climate change: atmospheric carbon dioxide",
+      suffix: ".",
+      href: "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
       italic: "Trends in atmospheric carbon dioxide",
       suffix: ".",
       href: "https://gml.noaa.gov/ccgg/trends/",
@@ -1442,32 +1448,16 @@ export const KILDER = {
       href: "https://nsidc.org/data/seaice_index",
     },
     {
-      prefix:
-        "Lüthi, D., Le Floch, M., Bereiter, B., Blunier, T., Barnola, J.-M., Siegenthaler, U., Raynaud, D., Jouzel, J., Fischer, H., Kawamura, K., & Stocker, T. F. (2008). High-resolution carbon dioxide concentration record 650,000–800,000 years before present. ",
-      italic: "Nature, 453",
-      suffix: "(7193), 379–382.",
-      href: "https://doi.org/10.1038/nature06949",
-    },
-    {
-      prefix:
-        "Petit, J. R., Jouzel, J., Raynaud, D., Barkov, N. I., Barnola, J.-M., Basile, I., Bender, M., Chappellaz, J., Davis, M., Delaygue, G., Delmotte, M., Kotlyakov, V. M., Legrand, M., Lipenkov, V. Y., Lorius, C., Pépin, L., Ritz, C., Saltzman, E., & Stievenard, M. (1999). Climate and atmospheric history of the past 420,000 years from the Vostok ice core, Antarctica. ",
-      italic: "Nature, 399",
-      suffix: "(6735), 429–436.",
-      href: "https://doi.org/10.1038/20859",
-    },
-    {
-      prefix: "Intergovernmental Panel on Climate Change. (2021). ",
-      italic:
-        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },
     {
-      prefix:
-        "Walker, M., Johnsen, S., Rasmussen, S. O., Popp, T., Steffensen, J.-P., Gibbard, P., Hoek, W., Lowe, J., Andrews, J., Björck, S., Cwynar, L. C., Hughen, K., Kershaw, P., Kromer, B., Litt, T., Lowe, D. J., Nakagawa, T., Newnham, R., & Schwander, J. (2009). Formal definition and dating of the GSSP (Global Stratotype Section and Point) for the base of the Holocene using the Greenland NGRIP ice core, and selected auxiliary records. ",
-      italic: "Journal of Quaternary Science, 24",
-      suffix: "(1), 3–17.",
-      href: "https://doi.org/10.1002/jqs.1227",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   milankovitch: [
