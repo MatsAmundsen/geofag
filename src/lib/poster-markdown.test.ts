@@ -812,3 +812,27 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("/tema/energi-hav-luft"), true);
   });
 });
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the fieldwork poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/felt-hav-luft-is.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["FeltHavForklaring", "QuizFeltHav"]) {
+      assert.equal(ids.has(id), true, `felt missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.toLowerCase().includes("sjøbris"), true);
+    assert.equal(md.includes("CTD"), true);
+    assert.equal(md.includes("## Tre felt, samme kjede"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/felt-hav-luft-is"), true);
+  });
+});

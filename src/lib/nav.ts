@@ -241,7 +241,7 @@ export const GF2_THEMES = [
     image: "/images/fig-hoytrykk-fjell.jpg",
     alt: "Norsk fjell under klarvær — felt i luft og is, ikke bergartssnitt",
     blurb:
-      "Planlegg, mål, tolk og presentér i atmosfære, hav eller kryosfære. Været er både objekt og risiko.",
+      "Planlegge, samle inn, bearbeide, tolke og presentere data fra hav, luft eller is. Varselet er et hjelpemiddel.",
     status: "klar" as const,
   },
 ] as const;

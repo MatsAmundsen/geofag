@@ -136,6 +136,7 @@ import {
   QUIZ_FARER,
   QUIZ_TILPASNING,
   QUIZ_ENERGI,
+  QUIZ_FELT_HAV,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -629,6 +630,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     QuizEnergi: () => (
     <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    FeltHavForklaring: () => (
+    <Callout title="Hva betyr «feltarbeid» her?">
+      <p>
+        Feltarbeid i geofag 2 er å planlegge, samle inn georefererte data fra hav, luft eller is,
+        bearbeide, tolke og presentere dem. Helse, miljø og sikkerhet hører med (Udir, u.å.-a;
+        u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizFeltHav: () => (
+    <Quiz questions={QUIZ_FELT_HAV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
