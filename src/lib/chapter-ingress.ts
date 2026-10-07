@@ -25,7 +25,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "milankovitch": "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. Eksentrisitet, skråstilling og presesjon er de tre svingningene. De forklarer ikke oppvarmingen vi ser nå.",
   "vaerkatastrofer": "Orkan som vindstyrke er sterkere enn 32,6 m/s. En tropisk orkan er et lavtrykk med middelvind på minst 119 km/t. Stormflo er særlig høy vannstand langs kysten i forbindelse med storm.",
   "tilpasning": "Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak som reduserer skade. Å redusere klimaendringene og å tilpasse seg dem er to ulike svar.",
-  "energi-hav-luft": "Vind, havvind, bølger og tidevann er fornybare fordi sola og månen fortsetter å drive dem. Bærekraft er likevel ikke gitt. Kompetansemålet ber om å drøfte utnyttelse nasjonalt og globalt — ikke bare å prise kilowatten.",
+  "energi-hav-luft": "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola, ikke av vinden.",
   "felt-hav-luft-is": "G1-felt er berg og vann på land. G2-felt er hav, atmosfære eller kryosfære. Målet er det samme: planlegge, samle, bearbeide, tolke, presentere. Forskjellen er hva du måler, og at været selv er både objekt og risiko.",
   "oversikt": "Klima er det langvarige mønsteret i været. Denne siden eier stråling, pådriv og tilbakekobling. Svingningene har egne sider.",
   "enso": "ENSO er den naturlige svingningen i det tropiske Stillehavet. El Niño er den varme fasen og La Niña den kalde. Den flytter vind og regn, også langt utenfor Stillehavet.",

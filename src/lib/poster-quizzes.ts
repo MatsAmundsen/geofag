@@ -1,5 +1,59 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_ENERGI: QuizQuestion[] = [
+  {
+    prompt: "Hva er vindkraft i daglig bruk?",
+    options: [
+      "Elektrisk energi fra et vindkraftverk.",
+      "Tidevannet langs kysten.",
+      "Varme fra havdypet.",
+    ],
+    answer: 0,
+    explain: "Se «Tre ressurser». Vinden blir rotasjon, og generatoren gjør den om til elektrisitet.",
+  },
+  {
+    prompt: "Hvorfor er vindkraft omstridt i Norge, selv om den er utslippsfri?",
+    options: [
+      "Den legger beslag på store landområder og kan være et problem for reindrift.",
+      "Fordi vinden tar slutt etter noen år.",
+      "Fordi den bare virker i tropene.",
+    ],
+    answer: 0,
+    explain: "Se «Vindkraft i Norge». Fosen-saken er eksemplet på siden.",
+  },
+  {
+    prompt: "Hvordan kan en havvindturbin stå?",
+    options: [
+      "Direkte på sokkelen, eller på et flytende understell.",
+      "Bare på land, som Fosen.",
+      "Bare der havet er dypere enn 800 meter.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Havvind». Står den på sokkelen, må havet ikke være for dypt. Flytende turbiner kan stå dypere.",
+  },
+  {
+    prompt: "Hva driver tidevannet?",
+    options: [
+      "Månens og solas tiltrekning.",
+      "Vinden langs kysten.",
+      "En generator i en vindturbin.",
+    ],
+    answer: 0,
+    explain: "Se «Tidevann». Newton viste at tidevannet følger tyngdekraften.",
+  },
+  {
+    prompt: "Hva er springflo?",
+    options: [
+      "Den største vekslingen i vannstand, omtrent ved nymåne og fullmåne.",
+      "Den minste vekslingen, en uke etter fullmåne.",
+      "Høy vannstand bare når det blåser storm.",
+    ],
+    answer: 0,
+    explain: "Se «Tidevann». Nippflo er den minste vekslingen.",
+  },
+];
+
 export const QUIZ_TILPASNING: QuizQuestion[] = [
   {
     prompt: "Hva er klimatilpasning?",

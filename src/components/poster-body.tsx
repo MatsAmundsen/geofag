@@ -135,6 +135,7 @@ import {
   QUIZ_ISTIDER,
   QUIZ_FARER,
   QUIZ_TILPASNING,
+  QUIZ_ENERGI,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -615,6 +616,19 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     QuizTilpasning: () => (
     <Quiz questions={QUIZ_TILPASNING} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    VindkraftForklaring: () => (
+    <Callout title="Hva betyr «vindkraft»?">
+      <p>
+        Vindkraft er vindenergi gjort om til nyttig energi, mekanisk eller elektrisk. I dag brukes
+        ordet mest om elektrisitet fra et vindkraftverk (Store norske leksikon, u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizEnergi: () => (
+    <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
