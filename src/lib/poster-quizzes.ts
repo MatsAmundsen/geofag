@@ -487,3 +487,61 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
       "Under et vinterhøytrykk kan kald, tung luft bli liggende i dalbunnen under et mildere lag. Luften sirkulerer lite, og forurensning blir liggende.",
   },
 ];
+
+export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
+  {
+    prompt: "Hva er forskjellen på forvitring og erosjon?",
+    options: [
+      "Forvitring er nedbrytning på stedet. Erosjon er nedsliting pluss transport.",
+      "Forvitring flytter berget, erosjon skjer på stedet.",
+      "De er to navn på samme prosess.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er forvitring?». Forvitring kiler eller løser berget der det ligger. Erosjon er når vann, is eller tyngdekraft i tillegg frakter materialet bort.",
+  },
+  {
+    prompt: "Hvorfor kan et stort eksplosivt utbrudd kjøle jorda i noen år?",
+    options: [
+      "Fordi asken blir liggende i stratosfæren i mange år og stenger sola ute.",
+      "Fordi SO₂ i stratosfæren blir til sulfataerosoler som reflekterer sollys.",
+      "Fordi lavaen tar varme fra lufta når den størkner.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Vulkaner på kort sikt». Aske faller ut i løpet av dager til uker. Det er sulfataerosolene fra SO₂ som kan kjøle troposfæren i noen år, som etter Pinatubo i 1991.",
+  },
+  {
+    prompt: "Hvorfor ligger marin leire på land flere steder i Norge?",
+    options: [
+      "Fordi elvene har lagt leire på fjellet i vår tid.",
+      "Fordi isen presset landet ned, havet avsatte leire, og landet hevet seg etterpå.",
+      "Fordi leire bare dannes over marin grense.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Isbreen graver og avsetter». Isostasi løftet havavsatt leire over dagens havnivå. Marin grense er det høyeste nivået havet nådde etter siste istid.",
+  },
+  {
+    prompt: "Hva skjer i den trege karbonsløyfen når CO₂ i atmosfæren stiger?",
+    options: [
+      "Det blir varmere og mer regn, mer berg løses, og mer karbon lagres i kalkstein.",
+      "Silikatforvitringen stopper, så CO₂ blir værende i lufta for alltid.",
+      "Kalksteinforvitring og silikatforvitring fjerner like mye CO₂ på noen år.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Karbonat–silikat-syklusen». Mer CO₂ gir høyere temperatur og mer regn. Da løses mer berg, og mer karbon avsettes på havbunnen. Det demper endringen, men det tar noen hundre tusen år.",
+  },
+  {
+    prompt: "Hvorfor er Pinatubo-kjøling og silikatforvitring ikke samme vulkan–klima?",
+    options: [
+      "Begge virker på samme tidsskala, noen år.",
+      "Pinatubo-kjølingen varte i år. Silikatforvitringen bruker noen hundre tusen år.",
+      "Silikatforvitring kjøler jorda i tre år, akkurat som SO₂.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
+  },
+];

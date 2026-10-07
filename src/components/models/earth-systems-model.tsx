@@ -246,7 +246,7 @@ export function EarthSystemsModel() {
           <ModelNote title="Viktig eksamenspoeng i LK20" tone="teal">
             Kjemisk forvitring av silikater er en <strong>negativ tilbakekobling</strong>. Når klimaet blir varmere,
             øker forvitringshastigheten, noe som trekker CO₂ ut av atmosfæren og stabiliserer jordens klima over geologiske
-            tidsskalaer (ca. 100 000 til 500 000 år). Kalksteinforvitring fjerner derimot ingen netto CO₂ fra systemet på lang sikt!
+            tidsskalaer (noen hundre tusen år). Kalksteinforvitring fjerner derimot ingen netto CO₂ fra systemet på lang sikt.
           </ModelNote>
         </div>
       )}

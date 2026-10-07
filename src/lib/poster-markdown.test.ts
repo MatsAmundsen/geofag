@@ -161,6 +161,39 @@ describe("injectPosterWidgets", () => {
   });
 });
 
+describe("jordsystemene poster", () => {
+  it("keeps the chapter widgets and drops the editor notice", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/jordsystemene.md"),
+      "utf8",
+    );
+    const injected = injectPosterWidgets(md);
+    const ids = listedWidgetIds(injected);
+    for (const id of [
+      "VekselvirkningForklaring",
+      "SpheresDiagram",
+      "AkviferForklaring",
+      "ForvitringFoto",
+      "IsostasiForklaring",
+      "FjordFoto",
+      "CarbonCycleDiagram",
+      "EarthSystemsModel",
+      "QuizJordsystemene",
+    ]) {
+      assert.equal(ids.has(id), true, `jordsystemene missing ${id}`);
+      assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("## Test deg selv"), true);
+    assert.equal(md.includes("## Kilder"), false);
+    assert.equal(ids.size, 9);
+    assert.equal(ids.has("QuizVulkaner"), false);
+    assert.equal(ids.has("QuizHoytrykk"), false);
+  });
+});
+
 describe("stripCatalogImageCaptions", () => {
   it("drops the italic line under a known photo so PhotoFigure is not doubled", () => {
     const md =
