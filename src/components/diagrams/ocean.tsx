@@ -10,7 +10,7 @@ export function OceanDriversDiagram() {
       <div className="grid gap-3 sm:grid-cols-3">
         {[
           { n: "1", t: "Vind", d: "Passater og vestavind gir pådrag i overflaten." },
-          { n: "2", t: "Coriolis", d: "Bøyer strømmen. Ekman-transport 90° på vinden." },
+          { n: "2", t: "Coriolis", d: "Bøyer strømmen til høyre i nord. Transporten går på tvers av vinden." },
           { n: "3", t: "Tetthet", d: "Temperatur og salt styrer hva som synker." },
         ].map((b) => (
           <div
@@ -129,7 +129,7 @@ export function GyreDiagram() {
     <Diagram
       title="Den nordatlantiske gyren"
       heading="Med klokken, sterk i vest, slapp i øst"
-      caption="Fire strømmer lukker kretsen. Golfstrømmen er den vestlige randstrømmen: smal og rask. Kanaristrømmen i øst er bred og treig. Midten — Sargassohavet — har litt høyere vannstand. Coriolis balanserer trykket utover, så strømmen følger «høyden» i havoverflaten."
+      caption="Havvirvelen går med klokken på den nordlige halvkule. Den vestlige randstrømmen er sterk og smal, den østlige er svak og bred. Havspeilet står relativt høyt der vinden stuver vann, og jordrotasjonen bøyer strømmen til høyre for skråningen."
       viewBox="0 0 840 400"
     >
       {(m) => (
@@ -154,7 +154,7 @@ export function GyreDiagram() {
             H
           </L>
           <L x="400" y="216" fill={C.muted} size={12} anchor="middle">
-            Sargasso
+            høyere havspeil
           </L>
           <Arrow d="M 230 250 C 250 140, 280 90, 430 88" marker={m.warm} color={C.warm} width={3.6} />
           <L x="250" y="150" fill={C.warm} size={14}>
@@ -192,7 +192,7 @@ export function GulfVsNacDiagram() {
     <Diagram
       title="Golfstrømmen og Den nordatlantiske strømmen"
       heading="To navn, to strekninger"
-      caption="Golfstrømmen er den sterke vestlige randstrømmen langs USA. Etter Kapp Hatteras løsner den og fortsetter som Den nordatlantiske strømmen mot de nordiske hav. Det er denne grenen som preger norsk kystklima — ikke selve Golfstrømmen utenfor Florida."
+      caption="Golfstrømmen går fra Floridastredet langs kysten av USA og bøyer ut i Atlanteren. Videre mot øst og nordøst heter den Den nordatlantiske strømmen, og langs norskekysten Den norske atlanterhavsstrømmen."
       viewBox="0 0 840 320"
     >
       {(m) => (
@@ -211,7 +211,7 @@ export function GulfVsNacDiagram() {
           </L>
           <circle cx="348" cy="128" r="5" fill={C.fg} />
           <L x="360" y="122" size={13}>
-            Kapp Hatteras
+            bøyer av
           </L>
           <Arrow d="M 360 124 C 480 90, 580 80, 680 88" marker={m.teal} color={C.teal} width={3.2} />
           <L x="500" y="74" fill={C.teal} size={14}>
@@ -352,7 +352,7 @@ export function UpwellingDiagram() {
             strokeDasharray="5 4"
           />
           <L x="480" y="215" fill={C.cold} size={13} anchor="middle">
-            termoklinen presses opp mot kysten
+            grensen mot dypere vann løftes
           </L>
 
           <Arrow d="M 195 300 L 195 175" marker={m.cold} color={C.cold} width={3.4} />
