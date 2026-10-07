@@ -149,6 +149,14 @@ export {
   VolcanoTypesDiagram,
 } from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
+export {
+  AvsetningsformerDiagram,
+  BotnEggTindDiagram,
+  BreLengdesnittDiagram,
+  FrostsprengningDiagram,
+  IsostasiSnittDiagram,
+  VdalTilUdalDiagram,
+} from "./isbreer";
 export { CarbonCycleDiagram, SpheresDiagram } from "./spheres";
 export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
 export { FeltbokDiagram, FraBergartTilBruddDiagram, PetroleumSystemDiagram } from "./ressurser";

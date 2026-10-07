@@ -184,7 +184,8 @@ export function TopicLayout({
                   resolvedSlug === "vulkaner" ||
                   resolvedSlug === "hoytrykk-lavtrykk" ||
                   resolvedSlug === "jordskjelv" ||
-                  resolvedSlug === "jordsystemene"
+                  resolvedSlug === "jordsystemene" ||
+                  resolvedSlug === "isbreer-og-landformer"
                 }
                 wrapTables={
                   resolvedSlug === "skred" ||

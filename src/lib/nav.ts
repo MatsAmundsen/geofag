@@ -15,6 +15,7 @@ export const NAV_GF1 = [
   { to: "/geofag-1/bergarter", label: "Berg" },
   { to: "/geofag-1/norges-geologi", label: "Norge" },
   { to: "/geofag-1/landformer", label: "Landform" },
+  { to: "/geofag-1/isbreer-og-landformer", label: "Isbre" },
   { to: "/geofag-1/vann-og-flom", label: "Vann" },
   { to: "/geofag-1/skred", label: "Skred" },
   { to: "/geofag-1/geologiske-ressurser", label: "Ressurs" },
@@ -331,6 +332,18 @@ export const GF1_THEMES = [
       "Mekanisk og kjemisk forvitring, Hjulstrøms kurve, glasiale og fluviale landformer, strandflaten og den paleiske overflaten i Norge.",
     status: "klar" as const,
     maal: "Beskrive og forklare hvordan indre og ytre krefter, spesielt rennende vann og isbreer, har formet og endrer det norske landskapet gjennom geologisk tid.",
+  },
+  {
+    slug: "isbreer-og-landformer",
+    to: "/geofag-1/isbreer-og-landformer",
+    title: "Isbreer og landformer",
+    kicker: "Isen som agent",
+    image: "/images/isbre-nigardsbreen.jpg",
+    alt: "Nigardsbreen med isfront og løsmasser foran breen",
+    blurb:
+      "Det er isen som har formet mest av landskapet vi ser i Norge i dag. Her lærer du hvordan en isbre beveger seg, eroderer og avsetter, og hvordan du kjenner igjen sporene.",
+    status: "klar" as const,
+    maal: "Sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet.",
   },
   {
     slug: "vann-og-flom",

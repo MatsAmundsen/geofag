@@ -96,7 +96,11 @@ function PostView() {
             />
           ) : null}
           <PosterBody
-            scrollTables={post.slug === "vulkaner" || post.slug === "hoytrykk-lavtrykk"}
+            scrollTables={
+              post.slug === "vulkaner" ||
+              post.slug === "hoytrykk-lavtrykk" ||
+              post.slug === "isbreer-og-landformer"
+            }
           >
             {post.bodyMarkdown}
           </PosterBody>

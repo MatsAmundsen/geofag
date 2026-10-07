@@ -44,6 +44,15 @@ import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
+import { Link } from "@tanstack/react-router";
+import {
+  AvsetningsformerDiagram,
+  BotnEggTindDiagram,
+  BreLengdesnittDiagram,
+  FrostsprengningDiagram,
+  IsostasiSnittDiagram,
+  VdalTilUdalDiagram,
+} from "@/components/diagrams/isbreer";
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
 import { Callout } from "@/components/callout";
 import { KvikkleireDiagram } from "@/components/diagrams/skred";
@@ -76,6 +85,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -292,6 +302,38 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizJordsystemene: () => (
     <Quiz questions={QUIZ_JORDSYSTEMENE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  FirnForklaring: () => (
+    <Callout title="Hva betyr «firn»?">
+      <p>
+        Firn er gammel, grovkornet snø som har overlevd minst én sommer. Den er en mellomting mellom
+        snø og is, litt som en snøball som har blitt hard og kornete etter å ha ligget lenge. Når
+        firnen blir presset sammen enda mer, blir den til breis (SNL, u.å.-b).
+      </p>
+    </Callout>
+  ),
+  BreLengdesnitt: () => <BreLengdesnittDiagram />,
+  VdalTilUdal: () => <VdalTilUdalDiagram />,
+  BotnEggTind: () => <BotnEggTindDiagram />,
+  Avsetningsformer: () => <AvsetningsformerDiagram />,
+  Frostsprengning: () => <FrostsprengningDiagram />,
+  IsostasiForklaring: () => (
+    <Callout title="Hva betyr «isostasi»?">
+      <p>
+        Isostasi (isostasy) betyr at den stive litosfæren ligger i likevekt på den seigere
+        astenosfæren under, omtrent som en båt som flyter. Legger du tung last i båten, synker den
+        dypere. Tar du lasten ut, flyter den høyere igjen. Mer om litosfæren og astenosfæren står i
+        kapittelet{" "}
+        <Link to="/geofag-1/platetektonikk" className="font-medium text-primary underline underline-offset-2">
+          Platetektonikk
+        </Link>
+        .
+      </p>
+    </Callout>
+  ),
+  IsostasiSnitt: () => <IsostasiSnittDiagram />,
+  QuizIsbre: () => (
+    <Quiz questions={QUIZ_ISBRE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   MalmForklaring: () => (
     <Callout title="Hva betyr «malm»?">

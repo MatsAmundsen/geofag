@@ -5,6 +5,30 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { getPosterPhotoFigure } from "@/lib/poster-figures";
 import { cn } from "@/lib/utils";
 
+function MarkdownImage({ src, alt }: { src?: string; alt?: string }) {
+  const photo = getPosterPhotoFigure(typeof src === "string" ? src : undefined);
+  if (photo) {
+    return (
+      <PhotoFigure
+        src={photo.src}
+        alt={photo.alt || alt || ""}
+        heading={photo.heading}
+        caption={photo.caption}
+        marks={photo.marks}
+        points={photo.points}
+      />
+    );
+  }
+  return (
+    <img
+      src={typeof src === "string" ? src : undefined}
+      alt={alt ?? ""}
+      className="w-full rounded-xl border border-border"
+      loading="lazy"
+    />
+  );
+}
+
 /**
  * Render post Markdown to styled HTML. Element overrides (rather than a
  * `prose` plugin, which this project does not include) keep the output in the
@@ -56,7 +80,7 @@ export function Markdown({
             if (
               visible.length === 1 &&
               isValidElement(visible[0]) &&
-              visible[0].type === PhotoFigure
+              (visible[0].type === PhotoFigure || visible[0].type === MarkdownImage)
             ) {
               return visible[0];
             }
@@ -82,29 +106,7 @@ export function Markdown({
           code: ({ children }) => (
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">{children}</code>
           ),
-          img: ({ src, alt }) => {
-            const photo = getPosterPhotoFigure(typeof src === "string" ? src : undefined);
-            if (photo) {
-              return (
-                <PhotoFigure
-                  src={photo.src}
-                  alt={photo.alt || alt || ""}
-                  heading={photo.heading}
-                  caption={photo.caption}
-                  marks={photo.marks}
-                  points={photo.points}
-                />
-              );
-            }
-            return (
-              <img
-                src={typeof src === "string" ? src : undefined}
-                alt={alt ?? ""}
-                className="w-full rounded-xl border border-border"
-                loading="lazy"
-              />
-            );
-          },
+          img: MarkdownImage,
           hr: () => <hr className="border-border" />,
           ...(wrapTables
             ? {

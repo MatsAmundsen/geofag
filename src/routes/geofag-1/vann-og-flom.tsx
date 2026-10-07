@@ -25,8 +25,8 @@ function VannOgFlomPage() {
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
-        to: "/geofag-1/landformer",
-        label: "Forrige: Landformer og geomorfologi",
+        to: "/geofag-1/isbreer-og-landformer",
+        label: "Forrige: Isbreer og landformer",
       }}
       next={{
         to: "/geofag-1/skred",

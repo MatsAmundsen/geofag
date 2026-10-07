@@ -199,6 +199,40 @@ describe("injectPosterWidgets", () => {
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizGeologiskeRessurser"));
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizFeltarbeid"));
   });
+
+  it("places glacier widgets into Isbreer og landformer and keeps them off Vulkaner", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const isbre = readFileSync(join(lib, "posts/isbreer-og-landformer.md"), "utf8");
+    assert.equal(isbre.includes("## Kilder"), false);
+    assert.equal(isbre.includes("Til DesignBOT"), false);
+    assert.equal(isbre.includes("[FIGUR:"), false);
+    assert.equal(isbre.includes("[FOTO:"), false);
+    const injected = injectPosterWidgets(isbre);
+    const ids = listedWidgetIds(injected);
+    for (const id of [
+      "FirnForklaring",
+      "BreLengdesnitt",
+      "VdalTilUdal",
+      "BotnEggTind",
+      "Avsetningsformer",
+      "Frostsprengning",
+      "IsostasiForklaring",
+      "IsostasiSnitt",
+      "QuizIsbre",
+    ]) {
+      assert.equal(ids.has(id), true, `isbre missing ${id}`);
+      assert.equal(
+        (injected.match(new RegExp("```widget\\n" + id + "\\n```", "g")) ?? []).length,
+        1,
+        id,
+      );
+    }
+    const vulkaner = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/vulkaner.md"), "utf8")),
+    );
+    assert.equal(vulkaner.has("QuizIsbre"), false);
+    assert.equal(vulkaner.has("BreLengdesnitt"), false);
+  });
 });
 
 describe("jordskjelv poster", () => {

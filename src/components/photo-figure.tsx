@@ -26,6 +26,29 @@ export type FigMark = {
   align?: "left" | "center" | "right";
 };
 
+function CaptionWithLinks({ text }: { text: string }) {
+  const parts = text.split(/(https?:\/\/[^\s)]+)/g);
+  return (
+    <>
+      {parts.map((part, index) =>
+        part.startsWith("http") ? (
+          <a
+            key={`${part}-${index}`}
+            href={part}
+            className="inline-block max-w-full break-all text-primary underline-offset-2 hover:underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {part}
+          </a>
+        ) : (
+          <span key={`${index}-${part.slice(0, 12)}`}>{part}</span>
+        ),
+      )}
+    </>
+  );
+}
+
 function Overlay({ arrows, marks }: { arrows?: FigArrow[]; marks?: FigMark[] }) {
   const uid = useId().replace(/:/g, "");
   if (!arrows?.length && !marks?.length) return null;
@@ -186,7 +209,7 @@ export function PhotoFigure({
         </ol>
       ) : null}
       <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6">
-        {caption}
+        <CaptionWithLinks text={caption} />
       </figcaption>
     </figure>
   );
