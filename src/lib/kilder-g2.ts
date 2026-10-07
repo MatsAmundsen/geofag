@@ -63,6 +63,12 @@ export const KILDER_G2 = {
       href: "https://snl.no/isobar",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Den norske syklonmodellen",
+      suffix: ". Tekst av Marit Kollstuen, Meteorologisk institutt.",
+      href: "https://snl.no/Den_norske_syklonmodellen",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",

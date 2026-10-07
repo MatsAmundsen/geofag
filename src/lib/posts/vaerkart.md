@@ -68,7 +68,11 @@ FrontProfile
 
 ## Den norske syklonmodellen
 
-Lavtrykk på midlere breddegrader følger ofte et fast løp. Modellen er kalt opp etter norske meteorologer som beskrev det i 1910- og 1920-årene (NOAA, u.å.-b).
+Den norske syklonmodellen viser hvordan et lavtrykk og frontene utvikler seg gjennom livsløpet. Den kalles også Bjerknes-modellen. Vilhelm Bjerknes og Halvor Solberg utviklet den ved Bergensskolen for meteorologi i 1922 (Store norske leksikon, u.å.-d). NOAA beskriver det samme løpet og plasserer arbeidet hos norske meteorologer i 1910- og 1920-årene (NOAA, u.å.-b). Kildene oppgir ulike årstall, og begge står.
+
+Ifølge modellen fører bølger i en stasjonær front til en varmfront og en kaldfront, og til syklonal sirkulasjon, mot klokken på den nordlige halvkule. Dette steget kalles syklogenese. I det modne stadiet beveger kaldfronten seg raskere enn varmfronten. Der kaldfronten har tatt igjen varmfronten, dannes en okkludert front, og varmsektoren løftes opp over bakken. Til slutt svekkes lavtrykket (Store norske leksikon, u.å.-d).
+
+NOAA beskriver løpet slik:
 
 1. Først ligger en front nesten i ro, med varm luft på den ene siden og kald luft på den andre.
 2. En bølge vokser på fronten når et lavtrykk i høyden, i jetstrømmen, passerer over. Fronten knekker. Den stasjonære fronten blir en kaldfront og en varmfront, og det begynner å falle nedbør langs frontene.
@@ -126,6 +130,8 @@ Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale v�
 **Luftmasse:** Stort volum luft med ganske jevn temperatur og fuktighet, preget av området den kommer fra (NOAA, u.å.-a).
 
 **Front:** Skillet mellom to luftmasser med ulik tetthet. Den viktigste er polarfronten (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
+
+**Den norske syklonmodellen:** Også kalt Bjerknes-modellen. Den viser livsløpet til et lavtrykk, fra bølge på en stasjonær front til okklusjon. Vilhelm Bjerknes og Halvor Solberg, Bergensskolen, 1922 (Store norske leksikon, u.å.-d).
 
 **Okklusjon:** Kaldfronten har tatt igjen varmfronten, og den varme lufta er løftet bort fra bakken (NOAA, u.å.-b; Sivle, 2009).
 
