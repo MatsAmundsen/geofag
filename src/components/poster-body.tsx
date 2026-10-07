@@ -130,6 +130,7 @@ import {
   QUIZ_NAO,
   QUIZ_AMOC,
   QUIZ_KRYO,
+  QUIZ_MODELLER,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -540,6 +541,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizKryo: () => <Quiz questions={QUIZ_KRYO} heading={null} intro="Velg ett svar per spørsmål." />,
+
+
+    ModellForklaring: () => (
+    <Callout title="Hva betyr «numerisk modell»?">
+      <p>
+        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin.
+        ECMWF lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og
+        sammen viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizModeller: () => (
+    <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,

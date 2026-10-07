@@ -619,6 +619,17 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "kryosfaeren",
     stale: ["Her er isen som måles i år."],
   }
+,
+  {
+    flag: "numeriske-modeller-copy-2026-10-07",
+    slug: "numeriske-modeller",
+    stale: ["Her kan du redigere", "petaflops"],
+  },
+  {
+    flag: "numeriske-modeller-copy-2-2026-10-07",
+    slug: "numeriske-modeller",
+    stale: ["Ett enkelt regnestykke sier ikke hvor sikkert været er."],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

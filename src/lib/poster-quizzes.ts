@@ -1,5 +1,58 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_MODELLER: QuizQuestion[] = [
+  {
+    prompt: "Hva er et ensemble hos ECMWF?",
+    options: [
+      "Mange fulle værforløp som sammen viser hvor sannsynlige ulike utfall er.",
+      "Ett endelig tall for morgendagens temperatur.",
+      "Et arkiv som bare viser været i fjor.",
+    ],
+    answer: 0,
+    explain: "Se «Ensemblet». Hvert medlem er et fullt forløp.",
+  },
+  {
+    prompt: "Hvor ofte kjører ECMWF globale numeriske værvarsler?",
+    options: [
+      "Én gang i uken.",
+      "Fire ganger i døgnet.",
+      "Bare når det er storm.",
+    ],
+    answer: 1,
+    explain: "Se «Observasjoner, hav og klima». De globale varslene kjøres fire ganger i døgnet.",
+  },
+  {
+    prompt: "Hva hviler varslene på?",
+    options: [
+      "Bare på et kart noen tegner for hånd.",
+      "Et globalt observasjonssystem som ECMWF overvåker.",
+      "Bare på målinger fra én værstasjon.",
+    ],
+    answer: 1,
+    explain: "Se «Observasjoner, hav og klima». Satellitter, vanlige målinger og havobservasjoner er med.",
+  },
+  {
+    prompt: "Hva bruker ECMWF modellene til, ved siden av vær til i morgen?",
+    options: [
+      "Bare til å tegne fronter på et papirkart.",
+      "Blant annet klimaovervåking og analyse av havsirkulasjonen.",
+      "Bare til å varsle snøskred i ett heng.",
+    ],
+    answer: 1,
+    explain: "Se «Observasjoner, hav og klima». Hav og klima ligger i samme arbeid.",
+  },
+  {
+    prompt: "Hvordan videreutvikles varslene?",
+    options: [
+      "Ved forskning som skal gjøre varslene bedre.",
+      "Ved å la være å bruke nye observasjoner.",
+      "Ved å fjerne ensemblet.",
+    ],
+    answer: 0,
+    explain: "Se «Hva er en numerisk modell?». Forskning for bedre treffsikkerhet er en kjerneoppgave.",
+  },
+];
+
 export const QUIZ_KRYO: QuizQuestion[] = [
   {
     prompt: "Hva er permafrost?",
