@@ -154,6 +154,24 @@ export const KILDER_G2 = {
       href: "https://snl.no/tidevann",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Vindturbin",
+      suffix: ".",
+      href: "https://snl.no/vindturbin",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-e). ",
+      italic: "Bølgekraftverk",
+      suffix: ".",
+      href: "https://snl.no/bølgekraftverk",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Havvarmekraft",
+      suffix: ".",
+      href: "https://snl.no/havvarmekraft",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",

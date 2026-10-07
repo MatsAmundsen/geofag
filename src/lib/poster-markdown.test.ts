@@ -327,6 +327,9 @@ describe("energi-hav-luft poster", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("kubikken"), false);
+    assert.equal(md.includes("bølgekraftverk"), true);
+    assert.equal(md.includes("OTEC"), true);
+    assert.equal(md.includes("Bærekraft er denne avveiningen, ikke bare at vinden kommer tilbake."), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/energi-hav-luft"), true);

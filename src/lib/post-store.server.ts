@@ -519,6 +519,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "energi-hav-luft",
     stale: ["Her kan du redigere", "kubikken"],
   },
+  {
+    flag: "energi-hav-luft-copy-2-2026-10-07",
+    slug: "energi-hav-luft",
+    stale: ["Bærekraft er denne avveiningen, ikke bare at vinden kommer tilbake."],
+  },
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {
