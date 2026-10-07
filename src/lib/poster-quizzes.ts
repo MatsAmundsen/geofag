@@ -549,7 +549,7 @@ export const QUIZ_IOD: QuizQuestion[] = [
   {
     prompt: "Hva er den indiske hav-dipolen?",
     options: [
-      "Vedvarende forskjell i havtemperatur mellom vest og øst i det tropiske Indiahavet.",
+      "Vedvarende forskjell i havtemperatur mellom vest og øst i den tropiske delen av Det indiske hav.",
       "Et annet navn på El Niño.",
       "Trykkvippen mellom Asorene og Island.",
     ],
@@ -580,7 +580,7 @@ export const QUIZ_IOD: QuizQuestion[] = [
   {
     prompt: "Er dipolen det samme som ENSO?",
     options: [
-      "Nei. Det er et eget mønster i Indiahavet, men det opptrer ofte sammen med El Niño.",
+      "Nei. Det er et eget mønster i Det indiske hav, men det opptrer ofte sammen med El Niño.",
       "Ja. Positiv IOD er El Niño.",
       "Ja. Negativ IOD er La Niña.",
     ],
