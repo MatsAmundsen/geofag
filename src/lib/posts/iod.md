@@ -1,121 +1,66 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/klima/iod](/tema/klima/iod). Her kan du redigere **hele fagteksten**.
-
-## Hva IOD er
-
-**Indian Ocean Dipole (IOD)** beskriver svingninger i havtemperatur og atmosfære i Det indiske hav. Den påvirker været rundt bassenget: Øst-Afrika, Sør-Asia, Australia og deler av Indonesia (Saji et al., 1999).
-
-Syklusen varer ofte 4–6 måneder. El Niño, La Niña og monsunen kan korte den ned eller forlenge den.
-
-To hovedfaser: positiv og negativ. De styres av havtemperaturen mellom Øst-Afrika i vest og Indonesia/Australia i øst. Styrken måles med **DMI** (Dipole Mode Index): temperatur i vest minus temperatur i øst.
-
-**IOD:** Øst–vest-svingning i tropisk Indiahav. Temperaturforskjellen mellom polene styrer hvor lufta stiger, hvor den synker, og hvor regnet faller.
-
-## Utforsk fasene og mekanismene
-
-Trykk på knappene under for å se detaljert tekst, figurer og jetstrømpåvirkning for hver fase.
-
-### Positiv IOD (Varm fase i vest)
-
-*Varmt hav og flom i Øst-Afrika · Kaldt hav, tørke og skogbranner i Australia*
-
-Varmere vann enn normalt ved Øst-Afrika. Kjøligere vann ved Indonesia og Australia. Oppvelling ved vestkysten av Australia.
-
-Havoverflatetemperatur styrer høytrykk og lavtrykk, og dermed vinden. I positiv fase blåser vinden fra Indonesia og Australia mot Øst-Afrika.
-
-![Positiv IOD: varmere vann og konveksjon i vest, kaldere vann, svekket konveksjon og oppvelling i øst](/images/fig-iod-positiv.png)
-
-*Figur 1. Positiv IOD — Vest: varmere enn normalt, stigende luft og regn mot Øst-Afrika. Øst: kjøligere enn normalt, synkende luft og tørke over Indonesia og Nord-Australia. Snittet under viser termoklinen — nede i vest (nedvelling), oppe i øst (oppvelling). Etter Weatherzone.*
-
-Landskapet i Øst-Afrika er ikke bygd for slike mengder. Resultatet kan bli flom. I øst gir kaldt vann og høytrykk tørke, hete og høy skogbrannfare. «Black Summer» i Australia 2019/20 falt sammen med en av de sterkeste positive IOD-hendelsene som er målt.
-
-### Positiv fase og jetstrømmene
-
-- Kjøligere hav rundt Australia og Indonesia: mindre konveksjon der.
-
-- Varmere hav ved Øst-Afrika: mer konveksjon der.
-
-- Walker-sirkulasjonen skifter vestover. Mer synkende luft over østlige Indiahav og kystene der.
-
-**Sørlig subtropisk jet:** kan trekkes sørover og gi redusert nedbør i Australia.
-
-**Nordlig subtropisk jet:** redusert konveksjon langs Indiahavets kyst svekker kontrasten ved ca. 30°. Jeten blir oftere mer bølget.
-
-**Polarjet:** En bølget subtropisk jet øker sjansen for at den møter polarjeten på høyere breddegrader. Der kald luft møter varm og fuktig luft, blir det nedbør. Når de møtes, kan den subtropiske jeten også ta med seg kald, tørr luft fra polarjeten inn over Australia og Sør-Afrika.
-
-### Negativ IOD (Kald fase i vest)
-
-*Kaldt hav og tørke i vest · Varmt hav, nedbør og flomfare i Indonesia og Australia*
-
-Temperaturen snur: kjøligere vann i vest, varmere i øst. Oppvelling flytter til kysten av Øst-Afrika. Ingen oppvelling ved Australia og Indonesia. Høytrykk i vest, lavtrykk i øst. Vinden snur.
-
-![Negativ IOD: kaldere vann og tørke i vest, varmere vann og økt konveksjon over Indonesia og Australia](/images/fig-iod-negativ.jpg)
-
-*Figur 2. Negativ IOD — Speil av figur 1. Øst: varmt hav, lavtrykk og mer regn over Indonesia og Nordvest-Australia. Vest: kaldt hav, høytrykk og tørke i Øst-Afrika — og ofte i deler av India.*
-
-### Negativ fase og jetstrømmer
-
-- Varmere hav i øst: mer konveksjon over Indonesia og Nordvest-Australia.
-
-- Kjøligere hav i vest: redusert konveksjon over Afrika.
-
-- Walker-sirkulasjonen endres østover.
-
-**Sørlig halvkule:** svekket temperaturgradient gir svakere, mer bølget subtropisk jet. Den kan flytte seg nordover (mot ekvator).
-
-**Nordlig halvkule:** økt konveksjon kan gi en sterkere og rettere subtropisk jet.
-
-**Polarjet:** oftere svekket og mer bølget på sørlig halvkule. Færre møter med den subtropiske jeten gir færre kuldeutbrudd i Sør-Australia.
-
-### Påvirkning på jetstrømmene og havtemperatur (SST)
-
-*Hvordan temperaturgradienter og anomalier i Indiahavet forskyver jetstrømmene*
-
-Jetstrømmer dannes i grensesonene mellom globale høytrykk og lavtrykk. Havoverflaten styrer lufttemperaturen, og dermed hvor de grensene ligger. Jetene følger de store temperaturgrensene i hav og på land.
-
-![Havoverflatetemperatur i Indiahavet med skarp fargegrense mot sør](/images/fig-iod-sst.png)
-
-*Figur 3. Havtemperatur i Det indiske hav — Dette er grader, ikke avvik. Tropisk Indiahav er alltid varmt. Den svarte/skarpe grensen mot sør er der den subtropiske jeten hører hjemme (figur 4). For dipolen — vest varmere eller kaldere enn øst — trenger du et anomalikart, ikke dette.*
-
-![Jordklode med subtropiske jetstrømmer som gule og røde bånd nord og sør for ekvator over Indiahavet](/images/fig-iod-jet.png)
-
-*Figur 4. Subtropiske jetstrømmer over Indiahavet — Jetene følger temperaturgrensene i figur 3. Når IOD flytter konveksjonen, flytter grensen — og dermed banen og formen på jeten.*
-
-### Samspill: IOD og ENSO
-
-*Hvordan IOD og El Niño / La Niña forsterker hverandre (1997, 2019)*
-
-IOD er en egen modus i Indiahavet, men den snakker med [ENSO](/tema/klima/enso) . Når positiv IOD faller sammen med El Niño, som i 1997 og 2019, forsterker de tørken i Australia. Begge vipper tørker Indonesia-siden samtidig. Negativ IOD kan forsterke nedbøren under La Niña.
-
-Mekanikken bak bølgene — Rossby og Coriolis — står under [jetstrømmer](/tema/jetstrommer) .
-
-> **Til eksamen**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Varmt hav: luft stiger, lavtrykk, nedbør. Kaldt hav: luft synker, høytrykk, tørke.
+> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Udir, u.å.-b).
 >
-> Positiv IOD: varmt i vest (Øst-Afrika = flom), kaldt i øst (Australia/Indonesia = tørke). Negativ IOD: motsatt.
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
-> Skill IOD fra ENSO. ENSO sitter i tropisk Stillehav, IOD i tropisk Indiahav. De kan falle sammen, men de er ikke det samme.
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a). Dipolen er et samspill mellom hav og luft i Det indiske hav.
 >
-> Skill temperaturkart og anomalikart (figur 3 mot et SST-avvikskart). Lilla vest på et temperaturkart er tropisk varmt vann, ikke automatisk positiv IOD.
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). De tre fasene er en slik modell.
+
+## Hva er den indiske hav-dipolen?
+
+```widget
+IodForklaring
+```
+
+[Den indiske hav-dipolen](/tema/klima/iod) (Indian Ocean Dipole, IOD) er vedvarende endringer i forskjellen mellom havtemperaturen i det tropiske Indiahavet i vest og i øst. Den er en av de viktige driverne for Australias klima, og hendelsene faller ofte sammen med vekstsesongen for vinteravlinger (BOM, u.å.).
+
+Stråling og pådriv ligger i [oversikten](/tema/klima/oversikt). ENSO eier Stillehavet: [ENSO](/tema/klima/enso).
+
+Saji og medforfattere beskrev et dipolmønster: uvanlig lav overflatetemperatur utenfor Sumatra og høy i det vestlige Indiahavet, med vind- og nedbørsavvik. Mønsteret er en indre variasjon i Indiahavet og er uavhengig av ENSO. I aktive år gir det kraftig regn i Øst-Afrika og tørke i Indonesia. Det forklarer omtrent 12 prosent av variasjonen i havoverflatetemperaturen i Indiahavet (Saji m.fl., 1999).
+
+## Tre faser
+
+Hendelsene starter vanligvis rundt mai eller juni, topper seg mellom august og oktober, og dør raskt ut når monsunen kommer på den sørlige halvkule rundt slutten av våren (BOM, u.å.).
+
+| Fase | Havet | Vinden | Typisk utslag |
+| --- | --- | --- | --- |
+| Nøytral | Temperaturen nær det normale | Vestlig vind langs ekvator. Luft stiger nordvest for Australia | Liten endring i Australias klima |
+| Positiv | Varmere enn normalt i vest, kjøligere i øst | Den vestlige vinden svekkes. Varmt vann forskyves mot Afrika. Kaldt vann stiger opp i øst | Mindre regn og høyere temperatur i deler av Australia vinter og vår. Kraftig regn i Øst-Afrika og tørke i Indonesia i aktive år |
+| Negativ | Varmere enn normalt i øst, kjøligere i vest | Den vestlige vinden blir sterkere. Varmere vann samles nær Australia | Mer regn enn gjennomsnittet i deler av Sør-Australia vinter og vår |
+
+I nøytral fase strømmer vann fra Stillehavet mellom øyene i Indonesia og holder havet nordvest for Australia varmt (BOM, u.å.; Saji m.fl., 1999).
+
+## Hvordan den måles
+
+Dipolindeksen (Dipole Mode Index, DMI) er forskjellen i temperaturavvik mellom en vestlig og en østlig rute (BOM, u.å.).
+
+| Rute | Avgrensning |
+| --- | --- |
+| Vest | 50–70° øst, 10° sør til 10° nord |
+| Øst | 90–110° øst, 10° sør til ekvator |
 
 > **Vanlige misforståelser**
 >
-> All tørke i Australia er ikke El Niño. IOD er ofte en like direkte pådriver for tørke og brannfare der.
+> Dipolen er ikke ENSO. Saji og medforfattere viste at mønsteret er uavhengig av El Niño–sørlig oscillasjon (Saji m.fl., 1999).
 >
-> Vestkysten av Australia er den *østlige* IOD-polen. Vest og øst følger Indiahavet, ikke det australske kontinentet.
+> Positiv fase er varmere i vest og kjøligere i øst, ikke varmere overalt (BOM, u.å.).
+>
+> En positiv hendelse gir ikke tørke i hele Australia. BOM beskriver mindre regn og høyere temperatur i deler av landet, om vinteren og våren.
 
-## Ord å eie
+## Viktige begreper
 
-**IOD:** Øst–vest-svingning i tropisk Indiahav. Temperaturforskjellen styrer regn og tørke.
+**Indisk hav-dipol:** Vedvarende forskjell i havtemperatur mellom vest og øst i det tropiske Indiahavet.
 
-**DMI:** Dipole Mode Index: havtemperatur i vest minus havtemperatur i øst.
+**Positiv fase:** Varmere i vest, kjøligere i øst. Mindre fukt nordvest for Australia.
 
-**positiv IOD:** Varmt i vest, kaldt i øst. Flom i Øst-Afrika. Tørke i Indonesia og Nord-Australia.
+**Negativ fase:** Varmere i øst, kjøligere i vest. Mer tilgjengelig fukt for værsystemer som krysser Sør-Australia.
 
-**negativ IOD:** Kaldt i vest, varmt i øst. Tørke i Øst-Afrika. Mer regn i Indonesia og Australia.
+**DMI:** Forskjellen i temperaturavvik mellom den vestlige og den østlige ruta.
 
-**oppvelling:** Kaldt dypvann som stiger når overflatevannet skyves bort. Øst i positiv IOD, vest i negativ.
+## Test deg selv
 
-**Walker-sirkulasjon:** Øst–vest-celle over tropisk hav. IOD flytter den vest eller øst.
-
-**anomali:** Avvik fra normalen. Viser om havet er varmere eller kaldere enn det pleier — ikke hvor mange grader det er.
+```widget
+QuizIod
+```
