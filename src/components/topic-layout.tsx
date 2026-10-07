@@ -66,8 +66,8 @@ export function TopicLayout({
   const prevLink: TopicLink | undefined = navOver?.prev ?? prev;
   const nextLink: TopicLink | undefined = navOver?.next ?? next;
   const eierskap = eierskapForPath(pathname);
-  const showEierskap =
-    Boolean(eierskap) && pathname.replace(/\/$/, "") !== "/geofag-1/platetektonikk";
+  const isGeofag1 = pathname.replace(/\/$/, "").startsWith("/geofag-1");
+  const showEierskap = Boolean(eierskap) && !isGeofag1;
 
   const resolvedSlug = posterSlug ?? posterSlugForPath(pathname);
 
@@ -209,11 +209,13 @@ export function TopicLayout({
           {slots.length > 0 ? (
             <section className="mt-12" aria-label="Læringsfigurer">
               <h2 className="font-display text-2xl font-medium tracking-tight">Læringsfigurer</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Felt reservert til figur. Les bildeteksten — den er pensum selv før bildet er fylt.
-              </p>
+              {isGeofag1 ? null : (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Felt reservert til figur. Les bildeteksten — den er pensum selv før bildet er fylt.
+                </p>
+              )}
               {slots.map((slot) => (
-                <GeminiFigure key={slot.id} {...slot} />
+                <GeminiFigure key={slot.id} {...slot} neutral={isGeofag1} />
               ))}
             </section>
           ) : null}

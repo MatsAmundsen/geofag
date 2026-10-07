@@ -726,7 +726,7 @@ export function JordasBolgerDiagram() {
     <Diagram
       title="P- og S-bølger gjennom jordas lag, skyggesoner og seismogram"
       heading="P- og S-bølger gjennom jorda"
-      caption="P-bølgen kommer først og går gjennom fast berg og væske. S-bølgen kommer etter og stopper i den flytende ytre kjernen. Farten til P-bølgen faller med om lag 30 prosent fra mantel til kjerne, og bølgene bøyes av ved grensen. S-bølger kommer ikke fram lenger ut enn om lag 103 grader. Direkte P-bølger mangler mellom om lag 103 og 140 grader. Tidsforskjellen mellom P og S blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret. Når bølgene når overflaten, kommer overflatebølgene sist og rister bakken mest. Skorpen er tegnet tykkere enn den er, så Moho synes. Kapittelet beskriver avbøyning ved kjernen, ikke egne reflekterte bølger."
+      caption="P-bølgen kommer først og går gjennom fast berg og væske. S-bølgen kommer etter og stopper i den flytende ytre kjernen. Farten til P-bølgen faller med om lag 40 prosent fra mantel til kjerne, tettheten øker med om lag 78 prosent, og bølgene bøyes av ved grensen. S-bølger kommer ikke fram lenger ut enn om lag 103 grader. Direkte P-bølger mangler mellom om lag 103 og 140 grader. Tidsforskjellen mellom P og S blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret. Når bølgene når overflaten, kommer overflatebølgene sist og rister bakken mest. Skorpen er tegnet tykkere enn den er, så Moho synes. Kapittelet beskriver avbøyning ved kjernen, ikke egne reflekterte bølger."
       viewBox="0 0 800 540"
       scroll
       action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} />}

@@ -250,7 +250,7 @@ export function WeatheringMechanismsDiagram() {
     <Diagram
       title="Forvitringsmekanismer: Mekanisk oppsprekking mot kjemisk oppløsning og mineralforvandling"
       heading="Forvitring — fjellets nedbrytning i fast tilstand på overflaten"
-      caption="Forvitring bryter ned fast fjell uten transport (når materialet flyttes, kalles det erosjon). Mekanisk forvitring spalter bergmassen fysisk opp i mindre biter (frostsprengning ved 9 % volumutvidelse, trykkavlastning/eksfoliering når overliggende stein fjernes, og rotsvingning). Kjemisk forvitring endrer mineralenes kjemiske sammensetning via vann og atmosfæriske gasser (hydrolyse av feltspat til leirmineraler, oksidasjon av jern, og karst-oppløsning av kalkstein til dryppsteinshuler)."
+      caption="Forvitring bryter ned fast fjell uten transport (når materialet flyttes, kalles det erosjon). Mekanisk forvitring spalter bergmassen fysisk opp i mindre biter (frostsprengning ved 9 % volumutvidelse, trykkavlastning/eksfoliering når overliggende stein fjernes, og rotsprengning). Kjemisk forvitring endrer mineralenes kjemiske sammensetning via vann og atmosfæriske gasser (hydrolyse av feltspat til leirmineraler, oksidasjon av jern, og karst-oppløsning av kalkstein til dryppsteinshuler)."
       viewBox="0 0 940 480"
       wide
     >
@@ -285,7 +285,7 @@ export function WeatheringMechanismsDiagram() {
           {/* 3. Rotsvingning & Solsprengning */}
           <g>
             <rect x="65" y="325" width="375" height="95" rx="6" fill="#141c22" stroke={C.dim} strokeWidth="1" />
-            <L x="80" y="348" fill={C.teal} size={13} weight={700}>3. Biologisk rotsvingning &amp; saltsprengning</L>
+            <L x="80" y="348" fill={C.teal} size={13} weight={700}>3. Biologisk rotsprengning &amp; saltsprengning</L>
             <L x="80" y="366" fill={C.fg} size={11}>• Planterøtter kiler seg inn i mikroskopiske sprekker og vokser.</L>
             <L x="80" y="382" fill={C.fg} size={11}>• Røttenes celletrykk (turgortrykk) utvider sprekkene mekanisk.</L>
             <L x="80" y="398" fill={C.fg} size={11}>• Krystallisasjon av salt i tørre kyst- eller ørkenområder gir sprekking.</L>

@@ -128,11 +128,12 @@ function NorgesGeologiPage() {
       {/* SEKSJON 2: DEN KALEDONSKE FJELLKJEDEFOLDINGEN */}
       <section className="pt-6 space-y-4">
         <h2 className="font-display text-2xl font-medium tracking-tight">
-          1. Den kaledonske fjellkjedefoldingen (430–400 mill. år siden)
+          1. Den kaledonske fjellkjedefoldingen (400–500 mill. år siden)
         </h2>
         <p>
           Norges ryggrad av høye fjell og forrevne kystlandskap har sine dypeste røtter i den paleozoiske tidsalderen.
-          I silur og devon lukket det opprinnelige Atlanterhavet – <strong>Iapetushavet</strong> – seg i henhold til
+          Fjellkjededannelsen pågikk gjennom ordovicium, silur og devon, for 400–500 millioner år siden (NGU, u.å.-a).
+          Da lukket det opprinnelige Atlanterhavet – <strong>Iapetushavet</strong> – seg i henhold til
           Wilsonsyklusen. Vårt urgamle kontinent <strong>Baltika</strong> (Skandinavia og Vest-Russland) kolliderte
           frontalt med det nordamerikanske og grønlandske kontinentet (<strong>Laurentia</strong>).
         </p>
@@ -149,9 +150,10 @@ function NorgesGeologiPage() {
             østover inn over det baltiske grunnfjellet som <strong>skyvedekker (nappes)</strong>.
           </p>
           <p className="text-sm text-foreground/90 leading-relaxed">
-            De karakteristiske høye tindene i <strong>Jotunheimen</strong> (som Galdhøpiggen og Glittertind), Rondane og
+            De karakteristiske høye tindene i <strong>Jotunheimen</strong> (som Galdhøpiggen og Glittertind) og
             Trollheimen består av harde, motstandsdyktige bergarter (særlig gabbro, anortositt og granulitt) som hører til
-            Jotundekket – overskjøvet under kollisjonen med Laurentia!
+            Jotundekket – overskjøvet under kollisjonen med Laurentia. Rondane hører ikke til dette dekket.
+            Bergartene der er feltspatrik sandstein, sparagmitt (Oftedahl, 1948).
           </p>
         </div>
 
@@ -180,8 +182,8 @@ function NorgesGeologiPage() {
             <h4 className="font-display text-base font-bold text-amber-500">Rombeporfyr (sjelden lava)</h4>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Enorme sprekkevulkaner spydde ut tykke lavadekker av <strong>rombeporfyr</strong> – en lavabergart med store,
-              båtlignende (rombeformede) feltspatkrystaller i en finkornet grunnmasse. Rombeporfyr finnes i dag bare tre steder
-              i hele verden: i Oslofeltet, på Mount Erebus i Antarktis og i Den østafrikanske riftdalen!
+              båtlignende (rombeformede) feltspatkrystaller i en finkornet grunnmasse. Rombeporfyr er bare funnet fem steder
+              på jorda (NGU, u.å.-c).
             </p>
           </div>
 
@@ -190,7 +192,7 @@ function NorgesGeologiPage() {
             <p className="text-xs text-muted-foreground leading-relaxed">
               Dypt nede under vulkanene størknet gigantiske magmakamre langsomt. Her krystalliserte den vakre, blåskimrende
               dypbergarten <strong>larvikitt</strong>. Larvikitt brytes i dag som eksklusiv fasadestein og eksporteres over
-              hele kloden. I 2007 ble den kåret til Norges offisielle nasjonalbergart.
+              hele kloden. I 2008 ble den kåret til Norges nasjonalbergart (forskning.no, 2008).
             </p>
           </div>
         </div>
@@ -342,8 +344,8 @@ function NorgesGeologiPage() {
       </TermGrid>
 
       {/* TEST DEG SELV */}
-      <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">Test deg selv</h2>
       <Quiz
+        intro="Velg ett svar per spørsmål."
         questions={[
           {
             prompt: "Hvorfor er Leka i Trøndelag kåret til Norges geologiske nasjonalmonument?",
@@ -358,7 +360,7 @@ function NorgesGeologiPage() {
               "Riktig! Leka ofiolittkompleks er et geologisk verdensfenomen der obduksjon bevarte hele lagrekken fra mantelperidotitt, over Moho, og opp til lagdelt gabbro, basaltganger og putelava.",
           },
           {
-            prompt: "Hva forårsaket Den kaledonske fjellkjedefoldingen for 430–400 millioner år siden?",
+            prompt: "Hva forårsaket Den kaledonske fjellkjedefoldingen for 400–500 millioner år siden?",
             options: [
               "En oppsprekking av jordskorpen da Oslofeltet sank inn i perm.",
               "En voldsom kontinent-kontinent-kollisjon der urkontinentene Baltika og Laurentia støtte sammen og lukket Iapetushavet.",
@@ -423,7 +425,7 @@ function NorgesGeologiPage() {
       <Callout title="Oppsummering: Norges geologiske reise">
         <ul className="space-y-1.5 text-sm list-disc pl-4">
           <li><strong>Leka ofiolitt:</strong> Et enestående vindu til Iapetushavets bunn og øvre mantel, skjøvet på land ved obduksjon for ca. 420 millioner år siden.</li>
-          <li><strong>Kaledonidene:</strong> Frontalkollisjon mellom Baltika og Laurentia for 430–400 Ma som bygget en Himalaya-høy fjellkjede og skjøv mektige skyvedekker over Norge.</li>
+          <li><strong>Kaledonidene:</strong> Frontalkollisjon mellom Baltika og Laurentia for 400–500 millioner år siden som bygget en Himalaya-høy fjellkjede og skjøv mektige skyvedekker over Norge.</li>
           <li><strong>Oslofeltets riftdal:</strong> Pangeas oppsprekking i perm skapte en innsunket graben med sjelden rombeporfyrlava og larvikitt.</li>
           <li><strong>Nord-Atlanterens åpning:</strong> For 55 Ma siden skilte Norge og Grønland lag; Norge fikk en passiv margin med rike sedimentbassenger på sokkelen.</li>
           <li><strong>Glasial isostasi:</strong> Da innlandsisen smeltet for 10 000 år siden, hevet landet seg opptil 220 meter og skapte dagens fruktbare leirbygder og hevede strandlinjer.</li>

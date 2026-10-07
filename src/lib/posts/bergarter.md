@@ -39,7 +39,7 @@ Verbet i kompetansemålet er utforske. Du velger en test, noterer det du ser, og
 
 **Lupe.** En lupe med 6–10 ganger forstørrelse brukes til å se mineralkorn (USGS, u.å.-a). Er kornene synlige? Like store? Lyse eller mørke?
 
-**Mohs.** Friedrich Mohs laget skalaen i 1822. Talk er 1, gips 2, kalsitt 3, fluoritt 4, apatitt 5, feltspat 6, kvarts 7, topas 8, safir 9 og diamant 10 (USGS, u.å.-b). En lommekniv tester hardheten til mineralkorn (USGS, u.å.-a). Skalaen gjelder mineralet, ikke hele bergarten. En bergart kan ha flere mineraler, og hvert korn har sin egen hardhet. Rip ett korn.
+**Mohs.** Friedrich Mohs laget skalaen i 1822. Talk er 1, gips 2, kalsitt 3, fluoritt 4, apatitt 5, ortoklas 6, kvarts 7, topas 8, korund 9 og diamant 10 (SNL, u.å.). En lommekniv tester hardheten til mineralkorn (USGS, u.å.-a). Skalaen gjelder mineralet, ikke hele bergarten. En bergart kan ha flere mineraler, og hvert korn har sin egen hardhet. Rip ett korn.
 
 **Syre.** Fortynnet saltsyre brukes til å kjenne igjen kalkstein og dolomitt (USGS, u.å.-a).
 

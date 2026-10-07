@@ -62,7 +62,7 @@ Bølgene langs overflaten kommer sist. Det er de som har størst utslag og som r
 
 Ingen har boret gjennom skorpa. Et sovjetisk hull på Kolahalvøya nådde 12 km, og det er fortsatt inne i skorpa. Grensen mellom skorpe og mantel, Moho (Mohorovicic discontinuity), er kjent som et hopp i bølgehastighet, ikke som noe vi har sett (USGS, u.å.-a).
 
-Den ytre kjernen regnes som flytende fordi den ikke slipper gjennom S-bølger, og fordi P-bølgene som går gjennom den, blir brått langsommere. Farten faller med om lag 30 prosent fra mantel til kjerne, samtidig som tettheten øker med om lag 30 prosent. Kjernen ble identifisert i 1906 av R.D. Oldham ut fra jordskjelvregistreringer. Den indre kjernen regnes som fast ut fra hvordan bølgene oppfører seg når de går gjennom den (USGS, u.å.-a).
+Den ytre kjernen regnes som flytende fordi den ikke slipper gjennom S-bølger, og fordi P-bølgene som går gjennom den, blir brått langsommere. I referansemodellen PREM faller P-bølgefarten med om lag 40 prosent ved overgangen fra mantel til kjerne, samtidig som tettheten øker med om lag 78 prosent (Dziewonski & Anderson, 1981). Kjernen ble identifisert i 1906 av R.D. Oldham ut fra jordskjelvregistreringer. Den indre kjernen regnes som fast ut fra hvordan bølgene oppfører seg når de går gjennom den (USGS, u.å.-a).
 
 S-bølger kommer ikke tilbake lenger ut enn om lag 103 grader fra skjelvet, fordi væsken stopper dem. Direkte P-bølger mangler mellom om lag 103 og 140 grader, fordi de bøyes av ved grensen mot kjernen (IRIS, u.å.). Det området kalles skyggesonen (shadow zone).
 

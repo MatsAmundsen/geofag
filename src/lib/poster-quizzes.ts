@@ -987,7 +987,7 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Riktig! Geodynamiske målinger viser at slab pull står for om lag 90 % av bevegelseskraften. Tetthetsøkningen ved faseovergang til eklogitt trekker hele platen etter seg.",
+      "Riktig! Platetrekk (slab pull) er den viktigste drivkraften. Tetthetsøkningen ved faseovergang til eklogitt trekker hele platen etter seg.",
   },
   {
     prompt: "Hva er den grunnleggende forskjellen mellom dekompresjonssmelting og flukssmelting?",
@@ -1222,7 +1222,7 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Se «Hvordan undersøker du et håndstykke?». Mohs er en skala for mineraler. Kvarts er 7 og feltspat er 6. Rip ett korn.",
+      "Se «Hvordan undersøker du et håndstykke?». Mohs er en skala for mineraler. Kvarts er 7 og ortoklas er 6. Rip ett korn.",
   },
   {
     prompt: "Hvordan viser larvikitt og rombeporfyr forskjellen på dypbergart og dagbergart?",
@@ -1286,7 +1286,7 @@ export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
     prompt: "Hvorfor har godt sortert grus og sand høyere permeabilitet enn silt og leire?",
     options: [
       "Grus og sand som er løst pakket og godt sortert, har store hulrom. Silt og leire er tett pakket og har lav permeabilitet.",
-      "Leire har alltid høyere porøsitet enn sand.",
+      "Leire har alltid høyere permeabilitet enn sand.",
       "Permeabiliteten i løsmasser styres bare av sprekker i fjellet.",
     ],
     answer: 0,

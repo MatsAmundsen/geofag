@@ -70,9 +70,9 @@ Vulkaner er geosfære som sender gass og aske til atmosfæren, og som kan flytte
 
 Aske som slynges opp i stratosfæren (stratosphere), faller ut i løpet av dager til uker og har liten klimaeffekt. SO₂ som når stratosfæren, omdannes til sulfataerosoler (sulfate aerosols). De reflekterer sollys og kan kjøle troposfæren (troposphere), det nederste luftlaget (USGS, u.å.).
 
-Utbruddet av Pinatubo 15. juni 1991 injiserte en sky på 20 millioner tonn SO₂ mer enn 20 miles opp i stratosfæren. Skyen kjølte jordoverflaten i tre år, med så mye som 1,3 grader Fahrenheit på det meste (USGS, u.å.). Det er kort sikt.
+Utbruddet av Pinatubo 15. juni 1991 injiserte en sky på 20 millioner tonn SO₂ om lag 32 km opp i stratosfæren. Skyen kjølte jordoverflaten i tre år, med så mye som om lag 0,7 °C på det meste (USGS, u.å.). Det er kort sikt.
 
-Vulkaner slipper også ut CO₂, som er en drivhusgass og kan virke oppvarmende over lang tid. Dagens vulkanske utslipp er likevel små mot de menneskeskapte. Anslagene for alle vulkaner på land og i havet ligger mellom 0,13 og 0,44 gigatonn CO₂ per år. De menneskeskapte utslippene var anslått til 35 gigatonn i 2010 (USGS, u.å.). Kort sikt er derfor SO₂ og aske, ikke at vulkanene forklarer dagens oppvarming.
+Vulkaner slipper også ut CO₂, som er en drivhusgass og kan virke oppvarmende over lang tid. Dagens vulkanske utslipp er likevel små mot de menneskeskapte. Anslagene for alle vulkaner på land og i havet ligger mellom 0,13 og 0,44 gigatonn CO₂ per år (USGS, u.å.). De menneskeskapte utslippene fra fossilt brensel var 37,8 ± 1,8 gigatonn CO₂ i 2024 (Friedlingstein et al., 2025). Kort sikt er derfor SO₂ og aske, ikke at vulkanene forklarer dagens oppvarming.
 
 Et norsk eksempel på kort tid er Jan Mayen. Kartlegging sørvest for Beerenberg viser vertikal heving på om lag 14 meter, knyttet til utbruddet i 1732 som dannet Eggøya. Magma trengte opp i skorpen uten å nå overflaten, fire–fem kilometer unna selve utbruddet. Hevingen stengte utløpet fra Nordlaguna, så innsjøen ble avstengt fra havet (NGU, u.å.-a). Geosfære flyttet hydrosfære på menneskelig tidsskala.
 
