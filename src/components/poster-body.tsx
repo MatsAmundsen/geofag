@@ -3,6 +3,12 @@ import {
   BoundaryOverviewDiagram,
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
+  IcelandContrastDiagram,
+  JanMayenDiagram,
+  MagmaViscosityDiagram,
+  VeiScaleDiagram,
+  VolcanicWinterDiagram,
+  VolcanoMonitoringDiagram,
   CollisionDiagram,
   ContinentalRiftDiagram,
   ConvectionDiagram,
@@ -41,9 +47,12 @@ import {
 import { Callout } from "@/components/callout";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
+import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
+import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { cn } from "@/lib/utils";
 import {
@@ -58,6 +67,7 @@ import {
   QUIZ_BOUNDARIES,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
+  QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
@@ -120,7 +130,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_TEST_DEG_SELV} heading={null} intro={PLATE_QUIZ_INTRO} />
   ),
   VolcanoTypes: () => <VolcanoTypesDiagram />,
+  MagmaViscosity: () => <MagmaViscosityDiagram />,
   CalderaFormation: () => <CalderaFormationDiagram />,
+  IcelandContrast: () => <IcelandContrastDiagram />,
+  VeiScale: () => <VeiScaleDiagram />,
+  VolcanoMonitoring: () => <VolcanoMonitoringDiagram />,
+  VolcanicWinter: () => <VolcanicWinterDiagram />,
+  JanMayen: () => <JanMayenDiagram />,
   VolcanoEruptionAnatomy: () => <VolcanoEruptionAnatomyDiagram />,
   VolcanicHazards: () => <VolcanicHazardsDiagram />,
   VolcanoModel: () => <VolcanoModel showSeismicModes={false} />,
@@ -179,6 +195,51 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
   QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  SpheresDiagram: () => <SpheresDiagram />,
+  CarbonCycleDiagram: () => <CarbonCycleDiagram />,
+  EarthSystemsModel: () => <EarthSystemsModel />,
+  FjordFoto: () => (
+    <PhotoFigure
+      src="/images/fig-vestlandet.jpg"
+      alt="Vestlandsk fjordlandskap med dype U-daler og bratte fjellsider formet av isbreer"
+      heading="Dal og fjord gravd av is"
+      caption="Breisen grov ut dype daler og fjorder. Fjorden er dalen som havet fylte etter at isen smeltet."
+      marks={[
+        { x: 32, y: 45, n: "1", text: "Bratt dalside", tone: "cold" },
+        { x: 74, y: 38, n: "2", text: "Hengende sidedal", tone: "warm" },
+        { x: 50, y: 72, n: "3", text: "Fjord", tone: "teal" },
+      ]}
+      points={[
+        {
+          n: "1",
+          label:
+            "Innlandsisen fylte dalen og eroderte både i bunnen og langs sidene. Profilet ble en U-dal.",
+        },
+        {
+          n: "2",
+          label:
+            "En mindre sidebre eroderte svakere enn hovedbreen, så sidedalen kan munne høyt oppe i fjellsiden.",
+        },
+        {
+          n: "3",
+          label:
+            "Fjorden er den iseroderte dalen, fylt av hav etter at isen trakk seg tilbake.",
+        },
+      ]}
+    />
+  ),
+  VekselvirkningForklaring: () => (
+    <Callout title="Hva betyr «vekselvirkning»?">
+      <p>
+        En vekselvirkning er en endring i ett delsystem som utløser respons i ett eller flere
+        andre. Elva som graver en dal, er hydrosfære som endrer geosfæren. Breen som sliper berget,
+        er kryosfære som svarer. Neste ord du trenger, er tidsskala: hvor lang tid responsen tar.
+      </p>
+    </Callout>
+  ),
+  QuizJordsystemene: () => (
+    <Quiz questions={QUIZ_JORDSYSTEMENE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */

@@ -183,7 +183,8 @@ export function TopicLayout({
                 scrollTables={
                   resolvedSlug === "vulkaner" ||
                   resolvedSlug === "hoytrykk-lavtrykk" ||
-                  resolvedSlug === "jordskjelv"
+                  resolvedSlug === "jordskjelv" ||
+                  resolvedSlug === "jordsystemene"
                 }
               >
                 {markdown}

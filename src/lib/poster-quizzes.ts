@@ -440,3 +440,61 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
       "Under et vinterhøytrykk kan kald, tung luft bli liggende i dalbunnen under et mildere lag. Luften sirkulerer lite, og forurensning blir liggende.",
   },
 ];
+
+export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
+  {
+    prompt: "Hvilke sfærer er mottakerne i geofag 1?",
+    options: [
+      "Geosfæren og hydrosfæren. Atmosfæren, kryosfæren og biosfæren er med som drivere.",
+      "Alle fem sfærene er mottakere, og ingen er drivere.",
+      "Bare atmosfæren, fordi regn og CO₂ kommer derfra.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er et jordsystem?». I geofag 1 følger du hvordan berg og ferskvann svarer. Atmosfæren, kryosfæren og biosfæren er med fordi de driver endringen.",
+  },
+  {
+    prompt: "Hvorfor kan et stort eksplosivt utbrudd kjøle jorda i noen år?",
+    options: [
+      "Fordi asken blir liggende i stratosfæren i mange år og stenger sola ute.",
+      "Fordi SO₂ i stratosfæren blir til sulfataerosoler som reflekterer sollys.",
+      "Fordi lavaen tar varme fra lufta når den størkner.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Vulkaner på kort sikt». Aske faller ut i løpet av dager til uker. Det er sulfataerosolene fra SO₂ som kan kjøle troposfæren i noen år, som etter Pinatubo i 1991.",
+  },
+  {
+    prompt: "Hva skiller det raske karbonkretsløpet fra det trege?",
+    options: [
+      "I det raske kommer karbonet tilbake når planter og plankton brytes ned. I det trege bruker karbon 100–200 millioner år.",
+      "Begge kretsløpene tar noen år.",
+      "Det trege går bare gjennom livet, det raske bare gjennom vulkaner.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Karbonat–silikat-syklusen». Det raske kretsløpet går gjennom livet og gir karbonet tilbake når organismene brytes ned. Det trege går mellom berg, jord, hav og atmosfære og tar 100–200 millioner år.",
+  },
+  {
+    prompt: "Hva skjer i den trege karbonsløyfen når CO₂ i atmosfæren stiger?",
+    options: [
+      "Det blir varmere og mer regn, mer berg løses, og mer karbon lagres i kalkstein.",
+      "Sløyfen stopper, så CO₂ blir værende i lufta for alltid.",
+      "Karbonet lagres i kalkstein i løpet av noen år, samme klokke som et vulkanutbrudd.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Karbonat–silikat-syklusen». Mer CO₂ gir høyere temperatur og mer regn. Da løses mer berg, og mer karbon avsettes på havbunnen. Det demper endringen, men det tar noen hundre tusen år.",
+  },
+  {
+    prompt: "Hvorfor er Pinatubo-kjøling og den trege karbonsløyfen ikke samme vulkan–klima?",
+    options: [
+      "Begge virker på samme tidsskala, noen år.",
+      "Pinatubo-kjølingen varte i år. Den trege sløyfen bruker noen hundre tusen år.",
+      "Den trege sløyfen kjøler jorda i tre år, akkurat som SO₂.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
+  },
+];
