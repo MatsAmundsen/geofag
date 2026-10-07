@@ -33,6 +33,8 @@ import {
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
   AtmosphericColumnDiagram,
+  BjerknesLoopDiagram,
+  EnsoComparisonDiagram,
   HighPressureCrossSectionDiagram,
   LowPressureCrossSectionDiagram,
   RelativePressureDiagram,
@@ -87,6 +89,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_ENSO,
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
@@ -364,6 +367,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  EnsoForklaring: () => (
+    <Callout title="Hva betyr «ENSO»?">
+      <p>
+        ENSO er El Niño–sørlig oscillasjon. El Niño er den varme fasen og La Niña den kalde fasen av
+        et naturlig klimamønster i det tropiske Stillehavet. Mønsteret skifter uregelmessig, omtrent
+        hvert andre til sjuende år (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  FaseDiagram: () => <EnsoComparisonDiagram />,
+  BjerknesLoop: () => <BjerknesLoopDiagram />,
+  QuizEnso: () => (
+    <Quiz questions={QUIZ_ENSO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

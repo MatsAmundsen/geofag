@@ -796,3 +796,61 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_ENSO: QuizQuestion[] = [
+  {
+    prompt: "Hva er El Niño og La Niña?",
+    options: [
+      "Den varme og den kalde fasen av ENSO i det tropiske Stillehavet.",
+      "To navn på oppvarmingstrenden.",
+      "Vindsystemet over Nord-Atlanteren.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er ENSO?». El Niño er varm fase og La Niña kald fase av et naturlig mønster.",
+  },
+  {
+    prompt: "Hva skjer med vinden under El Niño?",
+    options: [
+      "De østlige vindene langs ekvator svekkes eller snur.",
+      "De østlige vindene blir alltid sterkere.",
+      "Vinden slutter helt i hele atmosfæren.",
+    ],
+    answer: 0,
+    explain:
+      "Se tabellen. Under El Niño svekkes de østlige vindene, eller de blåser fra vest mot øst.",
+  },
+  {
+    prompt: "Hvor flytter regnet seg under El Niño?",
+    options: [
+      "Mindre over Indonesia, mer over det tropiske Stillehavet.",
+      "Mer over Indonesia, mindre over Stillehavet.",
+      "Regnet endrer seg ikke.",
+    ],
+    answer: 0,
+    explain:
+      "Se tabellen. El Niño gir mindre regn over Indonesia og mer over det tropiske Stillehavet.",
+  },
+  {
+    prompt: "Hvorfor setter ENSO spor i den globale middeltemperaturen?",
+    options: [
+      "Stillehavet er stort. Det varmeste året i et tiår er vanligvis et El Niño-år.",
+      "Fordi El Niño er det samme som oppvarmingstrenden.",
+      "Fordi La Niña varmer hele kloden hvert år.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Virkninger langt unna». Innenfor et tiår er det varmeste året vanligvis et El Niño-år.",
+  },
+  {
+    prompt: "Hva skjer med ansjosfisket utenfor det nordvestlige Peru under El Niño?",
+    options: [
+      "Det varme vannet blir ugunstig, og fisken trekker mot kjøligere vann.",
+      "Fisket blir bedre fordi vannet blir kaldere.",
+      "El Niño gjelder bare lufta, ikke fisket.",
+    ],
+    answer: 0,
+    explain:
+      "Se «El Niño og La Niña». Varmere vann gjør at ansjosen trekker mot kjøligere vann, og fangsten blir dårlig.",
+  },
+];
