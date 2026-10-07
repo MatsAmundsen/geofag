@@ -326,7 +326,10 @@ describe("vaerkatastrofer poster", () => {
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
-    assert.equal(md.includes("baroklin"), false);
+    assert.equal(md.toLowerCase().includes("baroklin"), true);
+    assert.equal(md.includes("Bare store orkaner er farlige, er feil."), false);
+    assert.equal(md.includes("bombesyklon"), true);
+    assert.equal(md.includes("Hans"), true);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/vaerkatastrofer"), true);
