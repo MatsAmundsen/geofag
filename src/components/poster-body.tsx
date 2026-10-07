@@ -46,6 +46,7 @@ import {
 } from "@/components/diagrams/geology-extra";
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
 import { Callout } from "@/components/callout";
+import { KvikkleireDiagram } from "@/components/diagrams/skred";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
@@ -66,6 +67,7 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_SKRED,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
@@ -231,6 +233,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizVannOgFlom: () => (
     <Quiz questions={QUIZ_VANN_OG_FLOM} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  KvikkleireForklaring: () => (
+    <Callout title="Hva betyr «kvikkleire»?">
+      <p>
+        Kvikkleire er marin leire der saltet mellom leirpartiklene er vasket ut. Partiklene ligger i
+        en åpen korthusstruktur. Saltvann holder strukturen. Ferskt grunnvann kan vaske saltet ut
+        over lang tid. Da svekkes bindingene. Blir leira overbelastet, klapper strukturen sammen, og
+        leira blir flytende.
+      </p>
+    </Callout>
+  ),
+  KvikkleireSteg: () => <KvikkleireDiagram />,
+  QuizSkred: () => (
+    <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   SpheresDiagram: () => <SpheresDiagram />,
   CarbonCycleDiagram: () => <CarbonCycleDiagram />,
   EarthSystemsModel: () => <EarthSystemsModel />,
@@ -307,11 +323,13 @@ export function PosterBody({
   className,
   cleanChapter,
   scrollTables = false,
+  wrapTables = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
   scrollTables?: boolean;
+  wrapTables?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
@@ -321,7 +339,7 @@ export function PosterBody({
         part.type === "widget" ? (
           <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />
         ) : (
-          <Markdown key={`m-${index}`} scrollTables={scrollTables}>
+          <Markdown key={`m-${index}`} scrollTables={scrollTables} wrapTables={wrapTables}>
             {part.value}
           </Markdown>
         ),

@@ -186,6 +186,7 @@ export function TopicLayout({
                   resolvedSlug === "jordskjelv" ||
                   resolvedSlug === "jordsystemene"
                 }
+                wrapTables={resolvedSlug === "skred"}
               >
                 {markdown}
               </PosterBody>

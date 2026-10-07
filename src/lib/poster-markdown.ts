@@ -229,6 +229,21 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     afterHeading: "Test deg selv",
     require: "Hva er en akvifer?",
   },
+  {
+    widgets: ["KvikkleireForklaring"],
+    afterHeading: "Hva er kvikkleire?",
+    require: "Hva er kvikkleire?",
+  },
+  {
+    widgets: ["KvikkleireSteg"],
+    beforeLine: "Figuren er en modell av de stegene",
+    require: "Hva er kvikkleire?",
+  },
+  {
+    widgets: ["QuizSkred"],
+    afterHeading: "Test deg selv",
+    require: "Hva er kvikkleire?",
+  },
 ];
 
 const INJECT_RULES: InjectRule[] = [...PLATE_INJECT_RULES, ...CHAPTER_INJECT_RULES];
