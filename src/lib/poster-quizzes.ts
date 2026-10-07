@@ -796,3 +796,61 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
+  {
+    prompt: "Hva driver havstrømmer?",
+    options: [
+      "Tidevann, vind og forskjeller i tetthet.",
+      "Bare vinden, både i overflaten og i hele dyphavet.",
+      "Bare månens drag, også midt i de store havvirvlene.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva driver en havstrøm?». Tidevann, vind og tetthet driver strømmene. Tetthetsstrømmene går mye saktere.",
+  },
+  {
+    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
+    options: [
+      "På tvers av vinden, til høyre for vindretningen.",
+      "Nøyaktig samme vei som vinden blåser.",
+      "Til venstre for vinden, som på den sørlige halvkule.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Overflaten: ekmantransport og havvirvler». Overflatelaget, om lag de øverste 50 meterne, transporteres på tvers av vinden.",
+  },
+  {
+    prompt: "Hva er oppvelling langs en vestkyst?",
+    options: [
+      "Overflatevann skyves ut, og kaldere, næringsrikt vann kommer opp fra dypet.",
+      "Overflatevannet presses inn mot land og synker.",
+      "Havisen fryser, og saltet blir igjen i overflaten.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Oppvelling». En nordavind langs en vestkyst på den nordlige halvkule skyver overflaten utover.",
+  },
+  {
+    prompt: "Hva heter strømmen nordover langs norskekysten?",
+    options: [
+      "Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen.",
+      "Selve Golfstrømmen, hele veien fra Florida.",
+      "Labradorstrømmen, som kommer sørfra langs Norge.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Golfstrømmen og Norges klima». Navnet Golfstrømmen brukes feilaktig om strømmen langs Norge.",
+  },
+  {
+    prompt: "Hvorfor synker vann i Nord-Atlanteren og starter transportbåndet?",
+    options: [
+      "Vannet avkjøles, og salt blir igjen når havis fryser, så tettheten øker.",
+      "Vinden presser overflatevannet rett ned til bunnen.",
+      "Varmt ferskvann er tyngre enn kaldt salt vann.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Dypet: det globale transportbåndet». Kaldt og saltere vann blir tettere og synker. Overflatevann trekkes inn.",
+  },
+];

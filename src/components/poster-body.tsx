@@ -38,6 +38,13 @@ import {
   RelativePressureDiagram,
 } from "@/components/diagrams";
 import {
+  DensityDiagram,
+  GulfVsNacDiagram,
+  GyreDiagram,
+  OceanDriversDiagram,
+  UpwellingDiagram,
+} from "@/components/diagrams/ocean";
+import {
   MetamorphicFaciesDiagram,
   RockCycleDiagram,
   SilicateStructureDiagram,
@@ -90,6 +97,7 @@ import {
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
+  QUIZ_HAVSTROMMER,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -364,6 +372,31 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  HavstromForklaring: () => (
+    <Callout title="Hva betyr «havstrøm»?">
+      <p>
+        En havstrøm er vann i bevegelse. Den kan drives av tidevann nær land, av vind i overflaten,
+        eller av tetthetsforskjeller som får kaldt og salt vann til å synke.
+      </p>
+    </Callout>
+  ),
+  DrivkrefterDiagram: () => <OceanDriversDiagram />,
+  EkmanHavForklaring: () => (
+    <Callout title="Hva betyr «ekmantransport»?">
+      <p>
+        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
+        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
+        dypere vann komme opp.
+      </p>
+    </Callout>
+  ),
+  GyreDiagram: () => <GyreDiagram />,
+  OppvellingDiagram: () => <UpwellingDiagram />,
+  GolfDiagram: () => <GulfVsNacDiagram />,
+  TetthetDiagram: () => <DensityDiagram />,
+  QuizHavstrommer: () => (
+    <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

@@ -1019,29 +1019,8 @@ export const KILDER = {
   ],
   havstrommer: [
     {
-      prefix: "Ekman, V. W. (1905). On the influence of the Earth's rotation on ocean-currents. ",
-      italic: "Arkiv för matematik, astronomi och fysik, 2",
-      suffix: "(11), 1–52.",
-    },
-    {
-      prefix: "Stommel, H. (1948). The westward intensification of wind-driven ocean currents. ",
-      italic: "Transactions, American Geophysical Union, 29",
-      suffix: "(2), 202–206.",
-      href: "https://doi.org/10.1029/TR029i002p00202",
-    },
-    {
-      prefix: "Talley, L. D., Pickard, G. L., Emery, W. J., & Swift, J. H. (2011). ",
-      italic: "Descriptive physical oceanography: An introduction",
-      suffix: " (6. utg.). Academic Press.",
-    },
-    {
-      prefix: "Marshall, J., & Plumb, R. A. (2008). ",
-      italic: "Atmosphere, ocean, and climate dynamics: An introductory text",
-      suffix: ". Academic Press.",
-    },
-    {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
-      italic: "Ocean currents",
+      italic: "Currents",
       suffix: ".",
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/",
     },
@@ -1053,28 +1032,63 @@ export const KILDER = {
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
-      italic: "Atlantic meridional overturning circulation",
+      italic: "Boundary currents",
       suffix: ".",
-      href: "https://www.climate.gov/news-features/understanding-climate/climate-change-atlantic-meridional-overturning-circulation",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents3.html",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-d). ",
-      italic: "What is upwelling?",
+      italic: "Upwelling",
       suffix: ".",
-      href: "https://oceanservice.noaa.gov/facts/upwelling.html",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/03coastal4.html",
     },
     {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
-      italic:
-        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-e). ",
+      italic: "Thermohaline circulation",
       suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor1.html",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-f). ",
+      italic: "The global conveyor belt",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor2.html",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-g). ",
+      italic: "Effects of climate change on the global conveyor belt",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor3.html",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-a). ",
+      italic: "Golfstrømmen",
+      suffix: ".",
+      href: "https://snl.no/Golfstr%C3%B8mmen",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Oppvelling",
+      suffix: ".",
+      href: "https://snl.no/oppvelling",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-c). ",
       italic: "Klima i Norge",
       suffix: ".",
       href: "https://snl.no/Klima_i_Norge",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   kryosfaeren: [
