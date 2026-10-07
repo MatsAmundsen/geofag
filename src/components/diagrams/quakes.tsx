@@ -955,7 +955,7 @@ export function NorwayEarthquakesDiagram() {
           {/* Postglasial landheving piler oppover i innlandet */}
           <ellipse cx="400" cy="270" rx="55" ry="40" fill="none" stroke={C.sand} strokeDasharray="4 3" strokeWidth="1.5" />
           <L x="400" y="270" fill={C.sand} size={11} weight={700} anchor="middle">
-            Landheving (isostasi)
+            Landheving
           </L>
           <L x="400" y="285" fill={C.muted} size={10} anchor="middle">
             etter siste istid
