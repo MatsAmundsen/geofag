@@ -534,6 +534,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "jordsystemene",
     stale: ["Hva er forvitring?", "AkviferForklaring", "IsostasiForklaring"],
   },
+  {
+    flag: "lokale-vaersystemer-copy-2026-10-07",
+    slug: "lokale-vaersystemer",
+    stale: ["Her kan du redigere", "barokline sonen"],
+  },
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

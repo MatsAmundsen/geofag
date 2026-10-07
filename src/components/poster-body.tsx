@@ -49,6 +49,9 @@ import {
   UpperAir500hPaMapDiagram,
   WeatherProgression24hDiagram,
   WindCellsDiagram,
+  PolarFrontCycloneSteps,
+  SeaBreezeLandBreezeDiagram,
+  ValleyWindDiagram,
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
@@ -106,6 +109,7 @@ import {
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
+  QUIZ_LOKALE,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -275,6 +279,43 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
+
+    QuizLokale: () => (
+    <Quiz questions={QUIZ_LOKALE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+    SolgangsbrisForklaring: () => (
+    <Callout title="Hva betyr «solgangsvind»?">
+      <p>
+        Solgangsvind er pålandsvind om dagen og fralandsvind om natten langs kysten. Dagvinden
+        kalles sjøbris: varm luft stiger over land, og kjøligere luft fra havet strømmer inn.
+        Nattvinden kalles landbris, og den er som regel svakere. Neste ord du trenger, er
+        termisk lavtrykk: lavtrykket som oppstår fordi lufta over det varme landet blir lettere.
+      </p>
+    </Callout>
+  ),
+    SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
+    ValleyWind: () => <ValleyWindDiagram />,
+    PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
+    FonForklaring: () => (
+    <Callout title="Hva betyr «føn»?">
+      <p>
+        Føn er en forholdsvis varm og tørr vind som slår ned i lavlandet etter å ha passert et
+        fjell. Lufta synker på lesiden og varmes fordi trykket øker. Luvsiden, også kalt losiden,
+        er siden vinden kommer fra. Der kan det falle orografisk nedbør. Lesiden er siden vinden
+        går ned på.
+      </p>
+    </Callout>
+  ),
+    InversjonForklaring: () => (
+    <Callout title="Hva betyr «inversjon»?">
+      <p>
+        En inversjon er et lag der temperaturen stiger med høyden. Vanligvis er det kaldere jo
+        høyere du kommer. I en inversjon ligger kald, tung luft nede i dalen eller fjorden, og
+        varmere luft over den virker som et lokk. Lokale utslipp kan da bli liggende nær bakken.
+      </p>
+    </Callout>
+  ),
+
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
   LowPressureCrossSection: () => <LowPressureCrossSectionDiagram />,

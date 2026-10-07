@@ -620,6 +620,64 @@ export const QUIZ_FELTARBEID: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_LOKALE: QuizQuestion[] = [
+  {
+    prompt: "Hva setter i gang sjøbris om dagen?",
+    options: [
+      "Land varmes raskere enn hav, varm luft stiger, og kjøligere luft fra sjøen strømmer inn.",
+      "Havet varmes raskere enn land, så lufta synker over sjøen og presser vinden ut.",
+      "Jordrotasjonen starter vinden av seg selv, uten temperaturforskjell.",
+    ],
+    answer: 0,
+    explain:
+      "Sjøbris er pålandsvind fordi varm luft stiger over land og erstattes av kjøligere luft fra havet. Se «Solgangsvind».",
+  },
+  {
+    prompt: "Hvorfor dreier solgangsvinden langs norskekysten ofte fra pålandsvind til vind langs kysten?",
+    options: [
+      "Vinden følger tidevannet inn og ut av fjorden.",
+      "Jordrotasjonen bøyer vinden av mot høyre på den nordlige halvkule.",
+      "Havet blir mye kaldere utover ettermiddagen, så vinden må snu.",
+    ],
+    answer: 1,
+    explain:
+      "På den nordlige halvkule dreier sjøbrisen mot høyre, fra pålandsvind til vind langs kysten. I en fjord kan den likevel fortsette rett inn. Se «Solgangsvind».",
+  },
+  {
+    prompt: "Hva sier leksikonet om hvorfor fønvind er varm?",
+    options: [
+      "Luft som synker på lesiden varmes med omtrent én grad per hundre meter. Regn på losiden kan bidra, men betyr mindre enn man før trodde.",
+      "Føn blir varm bare fordi det regner på lesiden.",
+      "Føn er kald vind, fordi lufta alltid avkjøles når den synker.",
+    ],
+    answer: 0,
+    explain:
+      "Synkende luft kommer under høyere trykk og varmes adiabatisk. Kondensasjon på losiden kan spille en rolle, men har mindre betydning enn tidligere antatt. Se «Orografisk nedbør og føn».",
+  },
+  {
+    prompt: "Hva er en temperaturinversjon, og hvorfor kan lufta i en dal bli dårlig?",
+    options: [
+      "Temperaturen stiger med høyden. Varmere luft over virker som et lokk, og lokale utslipp samler seg nær bakken.",
+      "Temperaturen faller raskere enn vanlig, så røyken stiger høyere og forsvinner.",
+      "Inversjon er et lavtrykk som roterer over byen og suger til seg all røyken.",
+    ],
+    answer: 0,
+    explain:
+      "I en inversjon er det kaldere nær bakken enn høyere oppe. Lufta nede blandes dårlig, og utslipp kan hope seg opp. Se «Temperaturinversjon».",
+  },
+  {
+    prompt: "Hva skjer når en polarfrontsyklon blir moden, ifølge den norske syklonmodellen?",
+    options: [
+      "Kaldfronten tar igjen varmfronten, og det dannes en okkludert front.",
+      "Varmfronten tar igjen kaldfronten, og lavtrykket forsvinner med en gang.",
+      "Fronten blir liggende i ro, og nedbøren slutter.",
+    ],
+    answer: 0,
+    explain:
+      "Kaldfronten går raskere enn varmfronten. Når den tar igjen varmfronten, løftes den varme lufta, og fronten kalles okkludert. Se «Polarfrontsyklonen».",
+  },
+];
+
 export const QUIZ_HOYTRYKK: QuizQuestion[] = [
   {
     prompt: "Et område har 1015 hPa i sentrum. Er det høytrykk eller lavtrykk?",
