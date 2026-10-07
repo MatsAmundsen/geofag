@@ -796,3 +796,54 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_AMOC: QuizQuestion[] = [
+  {
+    prompt: "Hvor starter det trege beltet?",
+    options: [
+      "I overflaten nær polen i Nord-Atlanteren, der kaldt og salt vann synker.",
+      "I Indiahavet, der vannet alltid synker.",
+      "Langs ekvator, der passatvinden skyver overflaten.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er den atlantiske omveltningen?». Beltet begynner i Nord-Atlanteren.",
+  },
+  {
+    prompt: "Hvorfor blir vannet saltere der havisen fryser?",
+    options: [
+      "Fordi elver fører mer salt ut i havet om vinteren.",
+      "Fordi saltet ikke fryser med isen, men blir liggende i vannet rundt.",
+      "Fordi varmt vann alltid er saltere enn kaldt vann.",
+    ],
+    answer: 1,
+    explain: "Se «Hva er den atlantiske omveltningen?». Saltet blir igjen når havisen fryser.",
+  },
+  {
+    prompt: "Hvor raskt går beltet, sammenlignet med vind og tidevann?",
+    options: [
+      "Noen få centimeter i sekundet. Vind og tidevann går i titalls til hundretalls.",
+      "Like raskt som de vinddrevne strømmene.",
+      "Raskere enn tidevannet.",
+    ],
+    answer: 0,
+    explain: "Se tabellen. Det trege beltet er den langsomme strømmen.",
+  },
+  {
+    prompt: "Hvor lang tid tar en runde for en kubikkmeter vann?",
+    options: ["Noen uker.", "Omtrent ti år.", "Omtrent 1000 år."],
+    answer: 2,
+    explain: "Se «Veien rundt jorda». En gitt kubikkmeter bruker omtrent 1000 år.",
+  },
+  {
+    prompt: "Hva kan mer regn og smeltevann gjøre med beltet?",
+    options: [
+      "Gjøre beltet raskere enn de vinddrevne strømmene.",
+      "Hindre nedsynking av kaldt, salt vann, slik at beltet kan gå saktere eller stoppe.",
+      "Ingenting. Ferskvann endrer ikke tettheten.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Ferskvann kan bremse beltet». Varmt ferskvann på overflaten kan forstyrre nedsynkingen.",
+  },
+];

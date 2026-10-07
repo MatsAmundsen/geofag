@@ -87,6 +87,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_AMOC,
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
@@ -365,6 +366,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  AmocForklaring: () => (
+    <Callout title="Hva betyr «den atlantiske omveltningen»?">
+      <p>
+        Den atlantiske omveltningen, AMOC, er starten på det trege beltet. Kaldt og salt vann synker
+        i Nord-Atlanteren og går sørover i dypet. En runde tar omtrent tusen år (NOAA, u.å.-a).
+      </p>
+    </Callout>
+  ),
+  QuizAmoc: () => <Quiz questions={QUIZ_AMOC} heading={null} intro="Velg ett svar per spørsmål." />,
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */

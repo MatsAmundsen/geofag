@@ -1,79 +1,65 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/klima/amoc](/tema/klima/amoc). Her kan du redigere **hele fagteksten**.
-
-> **Eierskap**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Havstrømmer eier gyre og Ekman. Denne siden eier omveltningen: dypvannsdannelse, ferskvannspådrag og stabilitet. Neste kapittel eier isen som jobber i år.
-
-## Hva er AMOC?
-
-**AMOC** står for *Atlantic Meridional Overturning Circulation* (Den atlantiske meridionale omveltningssirkulasjonen). Det er den atlantiske grenen av det globale, termohaline transportbåndet i verdenshavene (Rahmstorf et al., 2015).
-
-AMOC består av to hovedledd:
-
-- **En varm, overflatenær strøm nordover:** Varmt og saltholdig vann fraktes fra tropene og Mexicogolfen via Golfstrømsystemet og Den nordatlantiske strømmen mot Norskehavet og Polhavet.
-
-- **En kald, dyp returstrøm sørover:** Vannet avkjøles i nord, synker mot havbunnen (dypvannsdannelse), og strømmer sørover som *Nordatlantisk dypvann (NADW)* langs havbunnen.
-
-**AMOC:** Det store omveltningssystemet i Atlanterhavet, drevet av tetthetsforskjeller (temperatur og saltholdighet) og vind. Frakter overskuddsvarme fra tropene til Nord-Europa.
-
-## Forskjellen på Golfstrømmen og AMOC
-
-I media omtales ofte «Golfstrømmen» som om den kan stoppe helt opp. I geofag er det avgjørende å skille presist mellom disse to begrepene:
-
-- **Golfstrømmen (Gulf Stream):** Er primært en *vinddrevet overflatestrøm*. Så lenge jorda roterer og passat- og vestavindene blåser, vil den subtropiske gyren og Golfstrømmen eksistere. Den kan ikke «slås av».
-
-- **AMOC:** Er hele den vertikale *omveltningssirkulasjonen*. Det er denne termohaline pumpen — dypvannsdannelsen i nord — som kan svekkes eller i verste fall nå et vippepunkt.
-
-## Mekanismen: Hvorfor synker vannet?
-
-Havvannets tetthet styres av to faktorer: **temperatur** (kaldt vann er tyngre enn varmt vann) og **saltholdighet** (salt vann er tyngre enn ferskvann).
-
-Når overflatevannet strømmer nordover, fordamper mye fuktighet, noe som gjør vannet relativt salt. Når dette salte vannet når de subpolare områdene om vinteren, møter det iskald arktisk luft. Vannet avkjøles kraftig. Kombinasjonen av *høy saltholdighet* og *lav temperatur* gjør overflatevannet tettere enn lagene under.
-
-Vannet blir ustabilt og synker i gigantiske synletrakter (åpenhavskonveksjon) helt ned til 2000–3000 meters dyp. Dette danner et sug som trekker mer varmt vann nordover fra tropene.
-
-## Ferskvannstrusselen og vippepunkter
-
-Hva skjer når klimaet blir varmere?
-
-- **Økt smelting fra Grønland og havisen:** Smelting av landis tilfører enorme mengder *rent ferskvann* til Nord-Atlanteren.
-
-- **Økt nedbør og elveavrenning:** En varmere atmosfære holder mer fuktighet og øker nedbøren over subpolare områder.
-
-Ferskvann har lavere tetthet enn saltvann. Når ferskvannet legger seg som et lokk på overflaten, klarer ikke overflatevannet lenger å bli tungt nok til å synke, selv om det avkjøles. Dermed kan den vertikale motoren i AMOC bremses (Caesar et al., 2018).
-
-**Vippepunkt (Tipping point):** En kritisk terskel der en liten ytterligere endring kan utløse en selvforsterkende og uomvendelig overgang til en helt ny tilstand i et system.
-
-## Hva betyr en svekket AMOC for Norge og verden?
-
-Målinger og klimarekonstruksjoner tyder på at AMOC allerede er svekket med 10–15 % siden midten av 1900-tallet (Smeed et al., 2018). Det mest synlige tegnet på dette er den såkalte *«kaldlommen» (cold blob)* i Nord-Atlanteren sør for Grønland — det eneste havområdet på jorda som har blitt kjøligere i en periode med global oppvarming.
-
-Dersom AMOC fortsetter å svekkes kraftig:
-
-- **For Norge og Nordvest-Europa:** Den raske oppvarmingen kan bremses eller lokalt snus til en relativ avkjøling. Men stormbanene vil trolig intensiveres, og værvariabiliteten vil øke markant.
-
-- **Havnivåstigning:** Når strømmen svekkes, stuves mindre vann opp i midten av Atlanteren, noe som fører til ekstra rask lokal havnivåstigning langs USAs østkyst.
-
-- **Tropene:** Det tropiske regnbeltet (ITCZ) forskyves sørover, noe som kan gi katastrofal tørke i Sahel-regionen i Afrika og forstyrre de asiatiske monsunene.
-
-> **Til eksamen**
+> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Udir, u.å.-b).
 >
-> Husk: 1. **AMOC drives av tetthet (termohalin = temperatur + salt).** 2. **Ferskvann fra Grønland reduserer saltholdigheten → vannet blir for lett til å synke → AMOC svekkes.** 3. **Golfstrømmen stopper ikke (den er vinddrevet), men den dype omveltningen (AMOC) kan bremses vesentlig.**
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a). Det trege beltet kobler hav, is og luft, og en runde tar omtrent tusen år.
+>
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Skillet mellom det trege beltet og de raske vinddrevne strømmene er en slik modell.
+
+## Hva er den atlantiske omveltningen?
+
+```widget
+AmocForklaring
+```
+
+[Den atlantiske omveltningen](/tema/klima/amoc) (Atlantic Meridional Overturning Circulation, AMOC) er starten på det trege beltet i havet. NOAA kaller hele beltet the global conveyor belt. Det drives av termohalin sirkulasjon, altså forskjeller i temperatur og salt (NOAA, u.å.-a).
+
+Beltet begynner i overflaten nær polen i Nord-Atlanteren. Arktisk luft kjøler vannet. Når havisen fryser, fryser ikke saltet med. Det blir liggende igjen i vannet rundt. Det kalde, salte vannet blir tettere og synker mot bunnen. Overflatevann strømmer inn og erstatter det som synker, og slik oppstår en strøm (NOAA, u.å.-a).
+
+Vind, gyre og Ekman ligger i [havstrømmer](/tema/havstrommer). Stråling og pådriv ligger i [oversikten](/tema/klima/oversikt). Isen som jobber i år, ligger i [kryosfæren](/tema/kryosfaeren).
+
+## Veien rundt jorda
+
+Det dype vannet går sørover langs vestsiden av Atlanterhavet, mellom kontinentene, forbi ekvator og ned til sørenden av Afrika og Sør-Amerika. Langs kanten av Antarktis kjøles vannet og synker på nytt, slik det gjør i Nord-Atlanteren. Beltet lades opp igjen (NOAA, u.å.-a).
+
+Deretter deler hovedstrømmen seg. Én gren går inn i Indiahavet. Den andre går inn i Stillehavet. På vei nordover mot ekvator varmes vannet, blir lettere og stiger til overflaten. Det kalles oppvelling. Så bøyer grenene sørover og vestover til Sør-Atlanteren, og til slutt tilbake til Nord-Atlanteren, der runden starter igjen (NOAA, u.å.-a).
+
+| | Det trege beltet | Vinddrevne og tidevannsdrevne strømmer |
+| --- | --- | --- |
+| Fart | Noen få centimeter i sekundet | Titalls til hundretalls centimeter i sekundet |
+| Driv | Termohalin sirkulasjon: kaldt og salt vann synker | Vind eller tidevann |
+| En vannpakke | Omtrent 1000 år rundt beltet | Mye raskere strøm, målt i centimeter per sekund |
+
+Beltet flytter mer enn hundre ganger så mye vann som Amazonas. Varmt overflatevann er fattig på næringsstoffer og karbondioksid. På veien som dypt vann blir det rikt igjen. Kjølig, næringsrikt vann som kommer opp, gir vekst av alger og tare, og dermed starten på næringskjeden (NOAA, u.å.-a).
+
+## Ferskvann kan bremse beltet
+
+Beltet er sterkt, men lett å forstyrre. Forskning tyder på at klimaendringer kan påvirke det. Hvis global oppvarming gir mer regn i Nord-Atlanteren, og isbreer og havis smelter, kan varmt ferskvann legge seg på overflaten. Da kan det hindre at havis dannes, og nedsynkingen av kaldt, salt vann blir forstyrret. Denne rekken av hendelser kan gjøre beltet saktere, eller stoppe det. Det kan gi store temperaturendringer i Europa, og også andre steder i verden (NOAA, u.å.-b).
 
 > **Vanlige misforståelser**
 >
-> «Istid i Norge i morgen» er en Hollywood-myte (som i filmen *The Day After Tomorrow*). En svekkelse av AMOC er en gradvis prosess over tiår og århundrer, og den kjemper mot den samtidige globale oppvarmingen fra drivhusgasser.
+> Det trege beltet er ikke en vinddrevet overflatestrøm. Vinddrevne og tidevannsdrevne strømmer går mye raskere (NOAA, u.å.-a).
+>
+> At mer regn og smeltevann kan bremse beltet, betyr ikke at det allerede har stoppet. NOAA beskriver en mulig svekkelse hvis ferskvannet hindrer nedsynking (NOAA, u.å.-b).
+>
+> En runde tar omtrent tusen år. Det er ikke det samme som været neste uke.
 
 ## Viktige begreper
 
-**AMOC:** Den atlantiske meridionale omveltningssirkulasjonen.
+**Den atlantiske omveltningen (AMOC):** Kaldt og salt vann som synker i Nord-Atlanteren og går sørover i dypet. Starten på det trege beltet.
 
-**Termohalin sirkulasjon:** Dypvannssirkulasjon drevet av tetthetsforskjeller (temperatur og salt).
+**Det trege beltet:** Den globale strømmen NOAA kaller the global conveyor belt. Drevet av termohalin sirkulasjon.
 
-**NADW:** North Atlantic Deep Water; det kalde dypvannet som strømmer sørover.
+**Termohalin sirkulasjon:** Strøm drevet av tetthet, altså temperatur og salt.
 
-**Dyp konveksjon:** Vertikal nedsynking av tungt overflatevann i subpolare hav.
+**Oppvelling:** At en gren av beltet varmes, blir lettere og stiger til overflaten.
 
-**Ferskvannspådrag:** Tilførsel av smeltevann som hemmer nedsynking ved å redusere tettheten.
+**Havisen og saltet:** Når havisen fryser, blir saltet liggende i vannet rundt, og vannet kan bli tungt nok til å synke.
 
-**Cold blob:** Det avkjølte havområdet i Nord-Atlanteren som indikerer svekket AMOC.
+## Test deg selv
+
+```widget
+QuizAmoc
+```
