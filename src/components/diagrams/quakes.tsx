@@ -14,9 +14,9 @@ function Star({ x, y, r = 7 }: { x: number; y: number; r?: number }) {
 export function BoundaryQuakesDiagram() {
   return (
     <Diagram
-      title="Grunne skjelv ved rygg og transform. Dype skjelv i den synkende platen ved subduksjon."
+      title="Skjelv ved rygg, transform og der en plate synker."
       heading="Skjelv ved plategrenser"
-      caption="Grunne skjelv oppstår ved midthavsrygger og transformforkastninger der litosfæren er tynn og sprø. Ved subduksjonssone trekkes den kalde oseaniske litosfæren dypt ned i astenosfæren; brudd og fasetransformasjoner i den nedsynkende platen skaper en skrå skjelvsone (Wadati-Benioff-sonen) helt ned til 670–700 kilometers dyp."
+      caption="Skjelv oppstår ved midthavsrygger. Transformforkastninger er kjent for grunne skjelv. Der en havbunnsplate synker, blir skjelvene sterke og ødeleggende. De store skjelvene sitter ved plategrenser, ikke inne på en plate slik som i Norge."
       viewBox="0 0 820 400"
     >
       {(m) => (
@@ -82,7 +82,7 @@ export function BoundaryQuakesDiagram() {
             midthavsrygg
           </L>
           <L x="188" y={92} fill={C.low} size={13}>
-            grunne skjelv (&lt; 20 km)
+            grunne skjelv
           </L>
           <L x="348" y={92} fill={C.low} size={13} anchor="middle">
             transform
@@ -94,7 +94,7 @@ export function BoundaryQuakesDiagram() {
             synkende plate
           </L>
           <L x="560" y="168" fill={C.low} size={13} anchor="end">
-            Wadati-Benioff-sone
+            skjelv i platen
           </L>
           <L x="680" y="58" fill={C.low} size={15}>
             vulkanbue
@@ -110,7 +110,7 @@ export function SeismogramDiagram() {
     <Diagram
       title="Seismogram og seismiske bølger"
       heading="P-bølger, S-bølger og lokalisering av episenter"
-      caption="Når et jordskjelv inntreffer, forplanter energien seg som tre hovedgrupper bølger. P-bølgene (primære kompresjonsbølger) er raskest og ankommer først. Deretter kommer S-bølgene (sekundære skjærbølger) med større amplitude. Tidsdifferansen Δt øker lineært med avstanden til episenteret. Overflatebølgene (Rayleigh og Love) ankommer sist, men har størst amplitude og lavest frekvens, og forårsaker de største bygningsødeleggelsene. Tre seismiske stasjoner gir nøyaktig posisjon via sirkeltriangulering."
+      caption="P-bølgen kommer først, S-bølgen etter. Tidsforskjellen mellom dem blir større jo lenger unna skjelvet er, og tre stasjoner kan derfor peke ut episenteret. Bølgene langs overflaten kommer sist og rister bygningene mest."
       viewBox="0 0 840 420"
     >
       {() => (
@@ -143,7 +143,7 @@ export function SeismogramDiagram() {
             P-bølge ankomst
           </L>
           <L x="150" y="104" fill={C.muted} size={11} anchor="middle">
-            (kompresjon, ~6 km/s)
+            (kompresjon, kommer først)
           </L>
 
           {/* S-bølge ankomst ved x=280 */}
@@ -158,7 +158,7 @@ export function SeismogramDiagram() {
             S-bølge ankomst
           </L>
           <L x="280" y="104" fill={C.muted} size={11} anchor="middle">
-            (skjærbølge, ~3,5 km/s)
+            (skjær, kommer etter)
           </L>
 
           {/* Tidsdifferanse Δt markering */}
@@ -166,7 +166,7 @@ export function SeismogramDiagram() {
           <line x1="150" y1="208" x2="150" y2="222" stroke={C.sand} strokeWidth="2" />
           <line x1="280" y1="208" x2="280" y2="222" stroke={C.sand} strokeWidth="2" />
           <L x="215" y="234" fill={C.sand} size={13} weight={700} anchor="middle">
-            Δt = t_S - t_P → gir avstand
+            tidsforskjell gir avstand
           </L>
 
           {/* Overflatebølger ankomst ved x=410 */}
@@ -238,13 +238,13 @@ export function SeismogramDiagram() {
           <L x="650" y="338" fill={C.fg} size={12}>Rullebølge / sidebølge</L>
 
           <L x="50" y="362" fill={C.muted} size={12}>Hastighet i jordskorpen:</L>
-          <L x="230" y="362" fill={C.fg} size={12}>Raskest (~6–8 km/s)</L>
-          <L x="440" y="362" fill={C.fg} size={12}>Middels (~3,5–4,5 km/s)</L>
-          <L x="650" y="362" fill={C.fg} size={12}>Tregest (~2–3 km/s)</L>
+          <L x="230" y="362" fill={C.fg} size={12}>Raskest</L>
+          <L x="440" y="362" fill={C.fg} size={12}>Langsommere</L>
+          <L x="650" y="362" fill={C.fg} size={12}>Tregest</L>
 
           <L x="50" y="386" fill={C.muted} size={12}>Utbredelse i væsker:</L>
           <L x="230" y="386" fill={C.teal} size={12} weight={600}>Går gjennom fast og væske</L>
-          <L x="440" y="386" fill={C.warm} size={12} weight={600}>Stanser i væske (ytre kjerne!)</L>
+          <L x="440" y="386" fill={C.warm} size={12} weight={600}>Stanser i væske (ytre kjerne)</L>
           <L x="650" y="386" fill={C.low} size={12} weight={600}>Kun langs overflaten</L>
         </>
       )}
@@ -252,438 +252,25 @@ export function SeismogramDiagram() {
   );
 }
 
-export function VolcanoTypesDiagram() {
-  return (
-    <Diagram
-      title="Vulkantyper: Skjoldvulkan og stratovulkan"
-      heading="Magmakjemi avgjør form og eksplosivitet"
-      caption="Skjoldvulkaner har tyntflytende basaltisk lava og slake sider. Stratovulkaner har seigere magma og bratte, lagdelte kjegler."
-      viewBox="0 0 860 400"
-    >
-      {() => (
-        <>
-          {/* VENSTRE: SKJOLDVULKAN */}
-          <rect x="30" y="24" width="385" height="355" rx="8" fill="#141c22" stroke={C.dim} strokeWidth="1.6" />
-          <L x="222" y="50" fill={C.warm} size={17} weight={700} anchor="middle">
-            Skjoldvulkan (f.eks. Hawaii)
-          </L>
-          <L x="222" y="70" fill={C.muted} size={13} anchor="middle">
-            Effusive utbrudd · Mafisk basaltisk lava
-          </L>
-
-          {/* Vulkanprofil slak */}
-          <path
-            d="M 50 250 Q 222 205 395 250 L 395 270 L 50 270 Z"
-            fill="#2c2822"
-            stroke={C.sand}
-            strokeWidth="1.8"
-          />
-
-          {/* Lavastrømmer nedover de slake sidene */}
-          <path d="M 215 210 Q 140 220 70 250" fill="none" stroke={C.warm} strokeWidth="3" />
-          <path d="M 230 210 Q 300 220 375 250" fill="none" stroke={C.warm} strokeWidth="3" />
-
-          {/* Magmatilførsel og kammer */}
-          <path d="M 220 270 L 220 212" stroke={C.warm} strokeWidth="4" />
-          <ellipse cx="222" cy="300" rx="42" ry="20" fill={C.warm} opacity="0.85" />
-          <L x="222" y="304" fill="#000" size={11} weight={700} anchor="middle">
-            Magmakammer
-          </L>
-
-          {/* Kjennetegn Skjoldvulkan */}
-          <rect x="50" y="90" width="345" height="100" rx="6" fill="#1b252b" />
-          <L x="65" y="112" fill={C.sand} size={13} weight={600}>Helning:</L>
-          <L x="135" y="112" fill={C.fg} size={13}>Slak, 2–10° (stor utbredelse)</L>
-
-          <L x="65" y="132" fill={C.sand} size={13} weight={600}>Magmatype:</L>
-          <L x="150" y="132" fill={C.fg} size={13}>Basaltisk (mafisk, &lt;52 % SiO₂)</L>
-
-          <L x="65" y="152" fill={C.sand} size={13} weight={600}>Viskositet:</L>
-          <L x="145" y="152" fill={C.fg} size={13}>Lav (1050–1200 °C)</L>
-
-          <L x="65" y="172" fill={C.sand} size={13} weight={600}>Tektonisk setting:</L>
-          <L x="180" y="172" fill={C.fg} size={13}>Hotspot / spredningsrygg</L>
-
-          <L x="222" y="350" fill={C.teal} size={13} weight={600} anchor="middle">
-            Rolig utgassing · Lite aske · Flytende lava
-          </L>
-
-          {/* HØYRE: STRATOVULKAN */}
-          <rect x="445" y="24" width="385" height="355" rx="8" fill="#141c22" stroke={C.dim} strokeWidth="1.6" />
-          <L x="637" y="50" fill={C.low} size={17} weight={700} anchor="middle">
-            Stratovulkan (f.eks. Fuji, Vesuv)
-          </L>
-          <L x="637" y="70" fill={C.muted} size={13} anchor="middle">
-            Eksplosive utbrudd · andesitt og ryolitt
-          </L>
-
-          {/* Vulkanprofil bratt kjegle */}
-          <path
-            d="M 470 250 L 610 135 L 637 142 L 664 135 L 805 250 L 805 270 L 470 270 Z"
-            fill="#322625"
-            stroke={C.low}
-            strokeWidth="1.8"
-          />
-
-          {/* Askesky / eksplosjonstopp */}
-          <ellipse cx="637" cy="100" rx="35" ry="18" fill="#555" opacity="0.7" />
-          <ellipse cx="615" cy="85" rx="25" ry="15" fill="#666" opacity="0.75" />
-          <ellipse cx="660" cy="85" rx="28" ry="16" fill="#666" opacity="0.75" />
-          <ellipse cx="637" cy="72" rx="42" ry="20" fill="#777" opacity="0.8" />
-          <L x="637" y="77" fill="#fff" size={11} weight={700} anchor="middle">
-            Askesøyle / Tefra
-          </L>
-
-          {/* Pyroklastisk strøm ned langs siden */}
-          <path d="M 610 145 Q 560 170 510 240" fill="none" stroke={C.low} strokeWidth="3.5" strokeDasharray="5 3" />
-          <L x="500" y="200" fill={C.low} size={11} weight={700}>
-            Pyroklastisk strøm ⚡
-          </L>
-
-          {/* Magmatilførsel og kammer */}
-          <path d="M 637 270 L 637 145" stroke={C.warm} strokeWidth="4" />
-          <ellipse cx="637" cy="300" rx="38" ry="22" fill={C.warm} opacity="0.9" />
-          <L x="637" y="304" fill="#000" size={11} weight={700} anchor="middle">
-            Gassrik magma
-          </L>
-
-          {/* Kjennetegn Stratovulkan */}
-          <rect x="465" y="90" width="345" height="100" rx="6" fill="#241b1d" opacity="0.85" />
-          <L x="480" y="112" fill={C.low} size={13} weight={600}>Helning:</L>
-          <L x="550" y="112" fill={C.fg} size={13}>Bratt, 25–35° (kjegleform)</L>
-
-          <L x="480" y="132" fill={C.low} size={13} weight={600}>Magmatype:</L>
-          <L x="565" y="132" fill={C.fg} size={13}>intermediær og felsisk</L>
-
-          <L x="480" y="152" fill={C.low} size={13} weight={600}>Viskositet:</L>
-          <L x="560" y="152" fill={C.fg} size={13}>Høy (700–1050 °C)</L>
-
-          <L x="480" y="172" fill={C.low} size={13} weight={600}>Tektonisk setting:</L>
-          <L x="595" y="172" fill={C.fg} size={13}>Subduksjonssone (konvergent)</L>
-
-          <L x="637" y="350" fill={C.low} size={13} weight={600} anchor="middle">
-            Fanger gassbobler → Eksplosjoner & askenedfall
-          </L>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
-export function VolcanoEruptionAnatomyDiagram() {
-  return (
-    <Diagram
-      title="Anatomi av et eksplosivt vulkanutbrudd"
-      heading="Pliniansk søyle, fragmenteringsnivå og tetthetsstrømmer"
-      caption="Gass i seig magma river smelten i stykker ved fragmenteringsnivået. Søylen kan nå inn i stratosfæren. Blir den for tung, kollapser den til en pyroklastisk strøm (PDC)."
-      viewBox="0 0 880 460"
-    >
-      {(m) => (
-        <>
-          {/* Stratosfære / Troposfære bakgrunn */}
-          <rect x="20" y="20" width="840" height="240" fill="#0e1722" rx="8" />
-          <line x1="20" y1="110" x2="860" y2="110" stroke={C.dim} strokeDasharray="4 4" />
-          <L x="35" y="100" fill={C.muted} size={11}>STRATOSFÆRE (&gt; 11 km)</L>
-          <L x="35" y="125" fill={C.muted} size={11}>TROPOSFÆRE</L>
-
-          {/* Jordskorpe og vulkankropp */}
-          <path
-            d="M 20 380 H 860 V 440 H 20 Z"
-            fill="#231e1a"
-          />
-          {/* Stratovulkankjegle */}
-          <path
-            d="M 160 380 L 400 240 Q 440 248 480 240 L 720 380 Z"
-            fill="#382e29"
-            stroke="#52433c"
-            strokeWidth="2"
-          />
-
-          {/* Magmakammer i skorpen */}
-          <ellipse cx="440" cy="420" rx="90" ry="28" fill={C.warm} opacity="0.95" />
-          <L x="440" y="424" fill="#000" size={12} weight={700} anchor="middle">
-            Magmakammer (oppløst H₂O, CO₂, SO₂)
-          </L>
-
-          {/* Tilførselsrør (conduit) */}
-          <path d="M 432 400 V 242 H 448 V 400 Z" fill={C.warm} />
-
-          {/* Fragmenteringsnivå markering */}
-          <line x1="390" y1="310" x2="490" y2="310" stroke={C.sand} strokeDasharray="3 3" strokeWidth="2" />
-          <L x="500" y="314" fill={C.sand} size={11} weight={700}>
-            Fragmenteringsnivå
-          </L>
-          <L x="500" y="328" fill={C.muted} size={10}>
-            Gassblærer sprenger magmaen til tefra
-          </L>
-
-          {/* Gas thrust region rett over krateret */}
-          <path d="M 430 242 L 420 180 H 460 L 450 242 Z" fill="#d97706" opacity="0.9" />
-          <L x="475" y="215" fill="#f59e0b" size={11} weight={600}>
-            Gassen skyver blandingen ut
-          </L>
-
-          {/* Konvektiv pliniansk askesøyle */}
-          <path
-            d="M 420 180 Q 400 120 340 70 Q 280 40 180 35 L 700 35 Q 600 40 540 70 Q 480 120 460 180 Z"
-            fill="#475569"
-            opacity="0.85"
-          />
-          {/* Paraplysky (Umbrella cloud) */}
-          <ellipse cx="440" cy="45" rx="270" ry="25" fill="#334155" opacity="0.9" />
-          <ellipse cx="400" cy="40" rx="180" ry="20" fill="#475569" opacity="0.85" />
-          <L x="440" y="48" fill="#f8fafc" size={14} weight={700} anchor="middle">
-            Paraplysky (umbrella cloud)
-          </L>
-
-          {/* Vulkansk lyn */}
-          <path d="M 420 120 L 410 135 L 425 145 L 415 160" stroke="#fef08a" strokeWidth="2" fill="none" />
-          <L x="365" y="145" fill="#fef08a" size={10} weight={700} anchor="end">
-            Vulkanske lyn ⚡
-          </L>
-
-          {/* Askenedfall / tefra */}
-          <path d="M 580 70 L 680 280" stroke={C.muted} strokeDasharray="3 4" strokeWidth="1.5" />
-          <path d="M 620 70 L 720 280" stroke={C.muted} strokeDasharray="3 4" strokeWidth="1.5" />
-          <path d="M 660 70 L 760 280" stroke={C.muted} strokeDasharray="3 4" strokeWidth="1.5" />
-          <L x="720" y="200" fill={C.muted} size={12} weight={600}>
-            Askenedfall & pimpstein
-          </L>
-
-          {/* Pyroklastisk tetthetsstrøm (PDC) ned venstre flanke */}
-          <path
-            d="M 400 245 Q 330 280 250 320 Q 180 350 90 380 L 160 380 Q 250 340 380 265 Z"
-            fill={C.low}
-            opacity="0.8"
-          />
-          <Arrow d="M 370 260 L 220 340" marker={m.low} color={C.low} width={3} />
-          <g transform="rotate(-25 210 315)">
-            <L x="210" y="315" fill={C.low} size={12} weight={700}>
-              Pyroklastisk strøm (PDC) 200–700 km/t
-            </L>
-          </g>
-
-          {/* Lahar i dalbunn til høyre */}
-          <path d="M 480 250 Q 560 310 680 380 L 740 380 Q 600 300 490 245 Z" fill="#64748b" opacity="0.8" />
-          <Arrow d="M 520 270 L 650 360" marker={m.sand} color={C.sand} width={2.5} />
-          <L x="620" y="340" fill={C.sand} size={11} weight={700}>
-            Lahar (slamstrøm)
-          </L>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
-export function CalderaFormationDiagram() {
-  return (
-    <Diagram
-      title="Dannelse av en kaldera i 4 trinn"
-      heading="Magmatømming og gigantisk takkollaps"
-      caption="En kaldera dannes når taket over et magmakammer synker inn etter et stort utbrudd. Senkningen kan senere fylles med vann."
-      viewBox="0 0 880 440"
-    >
-      {() => (
-        <>
-          {/* 4 paneler: 2x2 grid */}
-          {/* TRINN 1: ØVERST VENSTRE */}
-          <rect x="25" y="20" width="405" height="195" rx="8" fill="#121a22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="40" y="44" fill={C.teal} size={14} weight={700}>
-            1. Magmaoppstuvning & oppbuling
-          </L>
-          {/* Skorpe */}
-          <path d="M 35 120 Q 227 95 420 120 V 160 H 35 Z" fill="#2b241e" />
-          <ellipse cx="227" cy="170" rx="90" ry="32" fill={C.warm} opacity="0.9" />
-          <L x="227" y="174" fill="#000" size={11} weight={700} anchor="middle">
-            Gassrik felsisk magma under høyt trykk
-          </L>
-          {/* Strekksprekker */}
-          <line x1="140" y1="110" x2="140" y2="140" stroke={C.low} strokeDasharray="3 3" />
-          <line x1="315" y1="110" x2="315" y2="140" stroke={C.low} strokeDasharray="3 3" />
-          <L x="227" y="82" fill={C.fg} size={11} anchor="middle">
-            Ringforkastninger dannes under strekk ↑
-          </L>
-
-          {/* TRINN 2: ØVERST HØYRE */}
-          <rect x="450" y="20" width="405" height="195" rx="8" fill="#121a22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="465" y="44" fill={C.warm} size={14} weight={700}>
-            2. Ringutbrudd (VEI 7–8)
-          </L>
-          <path d="M 460 120 H 845 V 160 H 460 Z" fill="#2b241e" />
-          {/* Ringventiler som spyr ut aske */}
-          <ellipse cx="560" cy="50" rx="40" ry="18" fill="#475569" opacity="0.8" />
-          <ellipse cx="740" cy="50" rx="40" ry="18" fill="#475569" opacity="0.8" />
-          <path d="M 555 140 L 545 70 H 575 L 565 140 Z" fill={C.low} />
-          <path d="M 735 140 L 725 70 H 755 L 745 140 Z" fill={C.low} />
-          <ellipse cx="650" cy="175" rx="85" ry="24" fill={C.warm} opacity="0.4" stroke={C.warm} strokeDasharray="4 3" />
-          <L x="650" y="178" fill={C.sand} size={11} weight={600} anchor="middle">
-            Kammeret tømmes
-          </L>
-
-          {/* TRINN 3: NEDERST VENSTRE */}
-          <rect x="25" y="230" width="405" height="195" rx="8" fill="#121a22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="40" y="254" fill={C.low} size={14} weight={700}>
-            3. Skorpetaket kollapser (Kalderadannelse)
-          </L>
-          {/* Ytterkanter */}
-          <path d="M 35 320 H 140 V 380 H 35 Z" fill="#2b241e" />
-          <path d="M 315 320 H 420 V 380 H 315 Z" fill="#2b241e" />
-          {/* Innsunket blokk */}
-          <path d="M 140 350 H 315 V 400 H 140 Z" fill="#1e1814" stroke={C.low} strokeWidth="1.5" />
-          <L x="227" y="340" fill={C.low} size={12} weight={700} anchor="middle">
-            Innsunket blokk (stempelet faller ned ↓)
-          </L>
-          <line x1="140" y1="310" x2="140" y2="390" stroke={C.low} strokeWidth="2" strokeDasharray="4 2" />
-          <line x1="315" y1="310" x2="315" y2="390" stroke={C.low} strokeWidth="2" strokeDasharray="4 2" />
-          <L x="227" y="414" fill={C.muted} size={11} anchor="middle">
-            Kalderavegger etterlater dyp senkning (flere mil bred)
-          </L>
-
-          {/* TRINN 4: NEDERST HØYRE */}
-          <rect x="450" y="230" width="405" height="195" rx="8" fill="#121a22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="465" y="254" fill={C.rain} size={14} weight={700}>
-            4. Kalderasjø & resurgent kuppel
-          </L>
-          {/* Kalderasjø */}
-          <path d="M 460 320 H 550 V 390 H 460 Z" fill="#2b241e" />
-          <path d="M 750 320 H 845 V 390 H 750 Z" fill="#2b241e" />
-          <rect x="550" y="335" width="200" height="30" fill="#0369a1" opacity="0.8" />
-          <L x="650" y="354" fill="#e0f2fe" size={11} weight={600} anchor="middle">
-            Kratersjø / kalderasjø
-          </L>
-          {/* Resurgent kuppel i midten */}
-          <ellipse cx="650" cy="358" rx="30" ry="12" fill="#3a2f28" stroke={C.warm} strokeWidth="1.5" />
-          <ellipse cx="650" cy="395" rx="50" ry="16" fill={C.warm} opacity="0.85" />
-          <L x="650" y="399" fill="#000" size={10} weight={700} anchor="middle">
-            Ny oppadstigende magma
-          </L>
-          <L x="650" y="325" fill={C.sand} size={11} weight={700} anchor="middle">
-            Resurgent kuppel hever innsjøbunnen
-          </L>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
-export function VolcanicHazardsDiagram() {
-  return (
-    <Diagram
-      title="Fem vulkanske farer"
-      heading="Primære og sekundære vulkanske trusler"
-      caption="Lavastrømmer beveger seg ofte langsomt nok til at folk kan komme seg unna. De største farene er pyroklastiske strømmer, laharer, aske, gass og, i noen tilfeller, tsunami og klimaeffekt."
-      viewBox="0 0 880 400"
-    >
-      {() => (
-        <>
-          {/* 5 kolonner med farekort */}
-          {/* FARE 1: Pyroklastisk strøm */}
-          <rect x="25" y="30" width="155" height="340" rx="8" fill="#181316" stroke={C.low} strokeWidth="1.6" />
-          <rect x="25" y="30" width="155" height="42" rx="8" fill="#3d1419" />
-          <L x="102" y="56" fill={C.low} size={13} weight={700} anchor="middle">
-            1. Pyroklastisk strøm
-          </L>
-          <L x="102" y="95" fill="#fca5a5" size={24} anchor="middle">⚡</L>
-          <L x="38" y="130" fill={C.fg} size={12} weight={700}>Fart:</L>
-          <L x="75" y="130" fill={C.low} size={12}>200–700 km/t</L>
-          <L x="38" y="152" fill={C.fg} size={12} weight={700}>Temperatur:</L>
-          <L x="115" y="152" fill={C.low} size={12}>300–800 °C</L>
-          <L x="38" y="180" fill={C.muted} size={11}>Glohet gass, aske og stein.</L>
-          <L x="38" y="196" fill={C.muted} size={11}>Den går fortere enn</L>
-          <L x="38" y="212" fill={C.muted} size={11}>man kan løpe.</L>
-          <rect x="35" y="270" width="135" height="85" rx="6" fill="#241418" />
-          <L x="42" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="42" y="310" fill={C.fg} size={10}>Saint-Pierre 1902</L>
-          <L x="42" y="326" fill={C.fg} size={10}>Pompeii 79 e.Kr. (Vesuv)</L>
-
-          {/* FARE 2: Lahar */}
-          <rect x="195" y="30" width="155" height="340" rx="8" fill="#161816" stroke={C.sand} strokeWidth="1.6" />
-          <rect x="195" y="30" width="155" height="42" rx="8" fill="#2d291e" />
-          <L x="272" y="56" fill={C.sand} size={13} weight={700} anchor="middle">
-            2. Lahar (slamstrøm)
-          </L>
-          <L x="272" y="95" fill="#fde047" size={24} anchor="middle">🌊</L>
-          <L x="208" y="130" fill={C.fg} size={12} weight={700}>Konsistens:</L>
-          <L x="285" y="130" fill={C.sand} size={12}>Våt betong</L>
-          <L x="208" y="152" fill={C.fg} size={12} weight={700}>Hastighet:</L>
-          <L x="275" y="152" fill={C.sand} size={12}>opptil 100 km/t</L>
-          <L x="208" y="180" fill={C.muted} size={11}>Aske og vann i en dal.</L>
-          <L x="208" y="196" fill={C.muted} size={11}>Kan komme fra smeltet</L>
-          <L x="208" y="212" fill={C.muted} size={11}>is eller fra regn.</L>
-          <rect x="205" y="270" width="135" height="85" rx="6" fill="#242116" />
-          <L x="212" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="212" y="310" fill={C.fg} size={10}>Armero 1985. Over</L>
-          <L x="212" y="326" fill={C.fg} size={10}>23 000 mistet livet.</L>
-
-          {/* FARE 3: Askenedfall */}
-          <rect x="365" y="30" width="155" height="340" rx="8" fill="#14181f" stroke={C.rain} strokeWidth="1.6" />
-          <rect x="365" y="30" width="155" height="42" rx="8" fill="#1c2b36" />
-          <L x="442" y="56" fill={C.rain} size={13} weight={700} anchor="middle">
-            3. Askenedfall & tefra
-          </L>
-          <L x="442" y="95" fill="#93c5fd" size={24} anchor="middle">🌋</L>
-          <L x="378" y="130" fill={C.fg} size={12} weight={700}>Rekkevidde:</L>
-          <L x="455" y="130" fill={C.rain} size={12}>10–2000 km</L>
-          <L x="378" y="152" fill={C.fg} size={12} weight={700}>Tetthet:</L>
-          <L x="450" y="152" fill={C.rain} size={12}>1000–1500 kg/m³</L>
-          <L x="378" y="180" fill={C.muted} size={11}>Fin aske og stein.</L>
-          <L x="378" y="196" fill={C.muted} size={11}>Kan skade flymotorer</L>
-          <L x="378" y="212" fill={C.muted} size={11}>og tynge ned tak.</L>
-          <rect x="375" y="270" width="135" height="85" rx="6" fill="#19232c" />
-          <L x="382" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="382" y="310" fill={C.fg} size={10}>Eyjafjallajökull 2010</L>
-          <L x="382" y="326" fill={C.fg} size={10}>(100 000 flygninger stanset)</L>
-
-          {/* FARE 4: Giftige gasser */}
-          <rect x="535" y="30" width="155" height="340" rx="8" fill="#191914" stroke={C.warm} strokeWidth="1.6" />
-          <rect x="535" y="30" width="155" height="42" rx="8" fill="#302d1a" />
-          <L x="612" y="56" fill={C.warm} size={13} weight={700} anchor="middle">
-            4. Giftige gasser
-          </L>
-          <L x="612" y="95" fill="#fde68a" size={24} anchor="middle">☣️</L>
-          <L x="548" y="130" fill={C.fg} size={12} weight={700}>Gasser:</L>
-          <L x="600" y="130" fill={C.warm} size={12}>CO₂, SO₂, HF, H₂S</L>
-          <L x="548" y="152" fill={C.fg} size={12} weight={700}>Virkning:</L>
-          <L x="600" y="152" fill={C.warm} size={12}>Kvelning / syre</L>
-          <L x="548" y="180" fill={C.muted} size={11}>CO₂ er tyngre enn luft</L>
-          <L x="548" y="196" fill={C.muted} size={11}>og samler seg i groper.</L>
-          <L x="548" y="212" fill={C.muted} size={11}>SO₂ gir sur nedbør.</L>
-          <rect x="545" y="270" width="135" height="85" rx="6" fill="#252418" />
-          <L x="552" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="552" y="308" fill={C.fg} size={10}>Laki 1783</L>
-          <L x="552" y="322" fill={C.fg} size={10}>80 % av sauene og</L>
-          <L x="552" y="336" fill={C.fg} size={10}>20 % av befolkningen</L>
-
-          {/* FARE 5: Tsunami & Vinter */}
-          <rect x="705" y="30" width="155" height="340" rx="8" fill="#131b20" stroke={C.teal} strokeWidth="1.6" />
-          <rect x="705" y="30" width="155" height="42" rx="8" fill="#16303d" />
-          <L x="782" y="56" fill={C.teal} size={13} weight={700} anchor="middle">
-            5. Tsunami & Vinter
-          </L>
-          <L x="782" y="95" fill="#67e8f9" size={24} anchor="middle">❄️</L>
-          <L x="718" y="130" fill={C.fg} size={12} weight={700}>Klima:</L>
-          <L x="768" y="130" fill={C.teal} size={12}>SO₂ kan kjøle</L>
-          <L x="718" y="152" fill={C.fg} size={12} weight={700}>Tsunami:</L>
-          <L x="778" y="152" fill={C.teal} size={12}>kalderakollaps</L>
-          <L x="718" y="180" fill={C.muted} size={11}>Svovel høyt oppe kan</L>
-          <L x="718" y="196" fill={C.muted} size={11}>kjøle klimaet. Kollaps</L>
-          <L x="718" y="212" fill={C.muted} size={11}>i havet kan gi tsunami.</L>
-          <rect x="715" y="270" width="135" height="85" rx="6" fill="#17262f" />
-          <L x="722" y="290" fill={C.sand} size={10} weight={700}>Historisk eksempel:</L>
-          <L x="722" y="310" fill={C.fg} size={10}>Tambora 1815 ("Året uten</L>
-          <L x="722" y="326" fill={C.fg} size={10}>sommer"), Krakatau 1883</L>
-        </>
-      )}
-    </Diagram>
-  );
-}
+export {
+  CalderaFormationDiagram,
+  IcelandContrastDiagram,
+  JanMayenDiagram,
+  MagmaViscosityDiagram,
+  VeiScaleDiagram,
+  VolcanicHazardsDiagram,
+  VolcanicWinterDiagram,
+  VolcanoEruptionAnatomyDiagram,
+  VolcanoMonitoringDiagram,
+  VolcanoTypesDiagram,
+} from "./volcanoes";
 
 export function EarthquakeWavePhysicsDiagram() {
   return (
     <Diagram
-      title="Bølgefysikk og S-bølgenes skyggesone"
-      heading="P-bølger, S-bølger og beviset for flytende ytre kjerne"
-      caption="Primære P-bølger er longitudinelle kompresjonsbølger der partiklene svinger parallelt med bølgeretningen; de forplanter seg gjennom både faste bergarter og væsker (hastighet Vp = sqrt((K + 4/3μ)/ρ)). Sekundære S-bølger er transversale skjærbølger med partikkelbevegelse vinkelrett på bølgeretningen (Vs = sqrt(μ/ρ)). Fordi væsker mangler skjærstivhet (μ = 0), kan S-bølger IKKE forplante seg gjennom væsker. Richard Dixon Oldham oppdaget i 1906 at seismografer mellom 103° og 180° aldri registrerer direkte S-bølger — det ugjendrivelige beviset på at jordens ytre kjerne er flytende."
+      title="P-bølger, S-bølger og skyggesonen"
+      heading="Hvorfor den ytre kjernen må være flytende"
+      caption="P-bølger er kompresjon og går gjennom både fast berg og væske. S-bølger er skjær og stopper i væske. Derfor kommer ikke S-bølgene fram på den andre siden av jorda. R.D. Oldham så dette i jordskjelvregistreringer i 1906, og kjernen ble identifisert."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -721,7 +308,7 @@ export function EarthquakeWavePhysicsDiagram() {
             Partikkelbevegelse: ↔ Parallelt med bølgens retning
           </L>
           <L x="55" y="186" fill={C.muted} size={11}>
-            Vp = √((K + 4/3μ) / ρ) ≈ 6–13 km/s · Går gjennom både fast og væske!
+            Går gjennom både fast berg og væske.
           </L>
 
           {/* S-bølge visualisering */}
@@ -743,10 +330,10 @@ export function EarthquakeWavePhysicsDiagram() {
             Partikkelbevegelse: ↕ Vinkelrett på bølgens retning
           </L>
           <L x="55" y="360" fill={C.muted} size={11}>
-            Vs = √(μ / ρ) ≈ 3,5–7 km/s · Krever skjærstivhet (μ &gt; 0)
+            Krever at stoffet kan skjæres, altså at det er fast.
           </L>
           <L x="55" y="378" fill={C.low} size={11} weight={700}>
-            I væske er μ = 0 → S-bølger stanser fullstendig!
+            I væske stanser S-bølgene.
           </L>
 
           {/* Høyre panel: Jordkloden og S-bølgenes skyggesone */}
@@ -803,7 +390,7 @@ export function EarthquakeWavePhysicsDiagram() {
 
             {/* Etiketter på kjerne */}
             <L x="0" y="-35" fill="#fff" size={11} weight={700} anchor="middle">
-              Flytende ytre kjerne (Fe-Ni)
+              Flytende ytre kjerne
             </L>
             <L x="0" y="4" fill="#000" size={9} weight={700} anchor="middle">
               Fast kjerne
@@ -811,7 +398,7 @@ export function EarthquakeWavePhysicsDiagram() {
           </g>
 
           <L x="460" y="395" fill={C.muted} size={11}>
-            S-bølger stanser ved kjerne-mantel-grensen (Gutenberg-diskontinuiteten, 2900 km dyp).
+            S-bølger stanser ved grensen mot den flytende ytre kjernen.
           </L>
         </>
       )}
@@ -822,9 +409,9 @@ export function EarthquakeWavePhysicsDiagram() {
 export function ElasticReboundDiagram() {
   return (
     <Diagram
-      title="Harry Fielding Reids elastiske tilbakefjæringsteori (1910)"
-      heading="Hvordan jordskjelv bygges opp og utløses"
-      caption="Etter jordskjelvet i San Francisco i 1906 analyserte geodeten Harry Fielding Reid oppmålinger av landskapet. Han formulerte teorien om elastisk tilbakefjæring: 1: En uforstyrret bergartmasse krysses av en forkastningslinje. 2: Langsomme tektoniske krefter forskyver jordskorpen, men friksjonen langs forkastningen låser flaten. Bergartene deformeres elastisk som en spent stålfjær over tiår eller århundrer. 3: Når spenningen overstiger bergartens skjærfasthet, svikter låsen; forkastningen glipper plutselig, bergartene spretter tilbake til ubelastet form, og frigjort potensiell energi stråler ut som jordskjelvbølger. 4: Resultatet er en permanent forskyvning på overflaten."
+      title="Elastisk tilbakefjæring"
+      heading="Hvordan et jordskjelv bygges opp og utløses"
+      caption="1: Forkastningen er i ro. 2: Platene drar, men friksjonen låser flaten, så fjellet bøyes som en spent fjær. 3: Når spenningen blir stor nok, ryker låsen. Fjellet spretter tilbake, og energien sprer seg som seismiske bølger. 4: Forskyvningen på overflaten blir stående."
       viewBox="0 0 880 390"
     >
       {() => (
@@ -876,7 +463,7 @@ export function ElasticReboundDiagram() {
           {/* PANEL 3: Brudd og tilbakefjæring */}
           <rect x="450" y="30" width="195" height="330" rx="8" fill="#1e1316" stroke={C.low} strokeWidth="1.6" />
           <L x="465" y="55" fill={C.low} size={13} weight={700}>
-            3. Brudd & Jordskjelv! ⚡
+            3. Brudd og jordskjelv
           </L>
           <path d="M 460 110 H 635 V 320 H 460 Z" fill="#2b1c1e" />
           <line x1="547" y1="110" x2="547" y2="320" stroke={C.low} strokeWidth="3" />
@@ -888,7 +475,7 @@ export function ElasticReboundDiagram() {
           <line x1="475" y1="245" x2="547" y2="245" stroke={C.sand} strokeWidth="3" />
           <line x1="547" y1="185" x2="620" y2="185" stroke={C.sand} strokeWidth="3" />
           <L x="465" y="348" fill="#fca5a5" size={11} weight={600}>
-            Friksjonen ryker. Bølgene forplanter seg ut!
+            Friksjonen ryker. Bølgene sprer seg ut.
           </L>
 
           {/* PANEL 4: Permanent forskyvning */}
@@ -904,10 +491,10 @@ export function ElasticReboundDiagram() {
           {/* Forskyvningspil */}
           <line x1="772" y1="185" x2="772" y2="245" stroke={C.teal} strokeWidth="2" />
           <L x="785" y="218" fill={C.teal} size={12} weight={700}>
-            ΔD (forskyvning)
+            forskyvning
           </L>
           <L x="680" y="348" fill={C.muted} size={11}>
-            Ny spenningssyklus starter (seismisk syklus).
+            Ny spenning kan bygge seg opp.
           </L>
         </>
       )}
@@ -920,7 +507,7 @@ export function NorwayEarthquakesDiagram() {
     <Diagram
       title="Norges seismiske risikobilde og historiske jordskjelv"
       heading="Hvorfor skjelver Norge når vi ikke er på en plategrense?"
-      caption="Norge er et intraplate-område der litosfæren påvirkes av to dominerende spenningskilder: 1. Ryggskyv (ridge push) fra den ekspanderende Midtatlantiske ryggen i vest dytter kontinentalskorpen i kompresjon mot øst-sørøst. 2. Postglasial landheving (isostatisk tilbakefjæring etter Weichsel-istidens 3 km tykke iskappe) skaper differensielle spenninger langs kysten og i forkastningssoner. Dette utløser skjelv i gamle svakhetssoner som Oslo-graben, Nordlandskysten og på kontinentalsokkelen. Historiske kjempeskjelv inkluderer Lurøyskjelvet i 1819 (M ~5,8) og Oslofjordskjelvet i 1904 (M 5,4)."
+      caption="Norge ligger inne på Den eurasiske platen. Skjelvene kommer likevel, i gamle svakhetssoner. Spredning langs Den midtatlantiske ryggen og landheving etter siste istid bygger spenning som kan reaktivere forkastninger. Lurøy i 1819 er estimert til M 5,9. Oslofjordskjelvet i 1904 var 5,4."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -942,11 +529,6 @@ export function NorwayEarthquakesDiagram() {
             Den midtatlantiske rygg
           </L>
           {/* Jan Mayen vulkan */}
-          <ellipse cx="108" cy="140" rx="7" ry="5" fill={C.low} />
-          <L x="122" y="144" fill={C.low} size={11} weight={700}>
-            Jan Mayen (Beerenberg) 🌋
-          </L>
-
           {/* Ryggskyv-vektorer mot øst */}
           <path d="M 125 100 L 220 120" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 220 120 L 210 112 M 220 120 L 212 126" stroke={C.teal} strokeWidth="2.5" />
@@ -954,16 +536,16 @@ export function NorwayEarthquakesDiagram() {
           <path d="M 140 220 L 230 235" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 230 235 L 220 227 M 230 235 L 222 241" stroke={C.teal} strokeWidth="2.5" />
           <L x="150" y="260" fill={C.teal} size={12} weight={700}>
-            Ryggskyv (ridge push) →
+            Havbunnsspredning →
           </L>
 
           {/* Postglasial landheving piler oppover i innlandet */}
           <ellipse cx="400" cy="270" rx="55" ry="40" fill="none" stroke={C.sand} strokeDasharray="4 3" strokeWidth="1.5" />
           <L x="400" y="270" fill={C.sand} size={11} weight={700} anchor="middle">
-            Landheving (isostasi)
+            Landheving
           </L>
           <L x="400" y="285" fill={C.muted} size={10} anchor="middle">
-            opptil 8–9 mm/år
+            etter siste istid
           </L>
 
           {/* Historiske jordskjelv stjerner */}
@@ -974,7 +556,7 @@ export function NorwayEarthquakesDiagram() {
             Lurøy 1819
           </L>
           <L x="240" y="162" fill="#fca5a5" size={10}>
-            M ~5,8 (størst i hist. tid)
+            M 5,9
           </L>
 
           {/* 2. Oslofjord 1904 */}
@@ -984,13 +566,12 @@ export function NorwayEarthquakesDiagram() {
             Oslofjorden 1904
           </L>
           <L x="370" y="362" fill="#fca5a5" size={10}>
-            M 5,4 (Oslo-graben)
+            M 5,4
           </L>
 
           {/* 3. Nordsjøskjelvet 1989 & sokkelen */}
-          <Star x={230} y={320} r={7} />
-          <L x="180" y="315" fill={C.fg} size={10} weight={600}>
-            Nordsjøen 1989 (M 5,1)
+          <L x="160" y="315" fill={C.fg} size={10} weight={600}>
+            Nordsjøen: gamle rifter
           </L>
 
           {/* Høyre panel: Forklaringstabell og risikofakta */}
@@ -1005,43 +586,43 @@ export function NorwayEarthquakesDiagram() {
             Hoveddrivkrefter for skjelv i Norge:
           </L>
           <L x="552" y="110" fill={C.fg} size={11}>
-            • <strong className="text-teal">Ryggskyv (ridge push):</strong> Atlanterhavet utvider seg
+            • Havbunnsspredning langs ryggen i vest
           </L>
           <L x="552" y="128" fill={C.fg} size={11}>
-            • <strong className="text-sand">Postglasial heving:</strong> Avlastning etter isbre
+            • Landheving etter siste istid
           </L>
           <L x="552" y="146" fill={C.fg} size={11}>
-            • <strong className="text-warm">Gamle riftsoner:</strong> Oslofeltet fra perm
+            • Gamle forkastninger som reaktiveres
           </L>
 
           {/* Boks 2: De mest aktive sonene */}
           <rect x="540" y="175" width="300" height="105" rx="6" fill="#1a232c" />
           <L x="552" y="195" fill={C.warm} size={12} weight={700}>
-            Mest skjelvaktive områder i Norge:
+            Områder med skjelv i Norge:
           </L>
           <L x="552" y="215" fill={C.fg} size={11}>
-            1. Nordland og Helgelandskysten
+            • Nordland
           </L>
           <L x="552" y="233" fill={C.fg} size={11}>
-            2. Vestlandet og sokkelens oljefelt
+            • Vestlandet og Nordsjøen
           </L>
           <L x="552" y="251" fill={C.fg} size={11}>
-            3. Osloriften (innsynkningsgraven)
+            • Oslo-riften
           </L>
           <L x="552" y="269" fill={C.fg} size={11}>
-            4. Svalbard og Storfjorden (M 6,0 i 2008)
+            • Svalbard, øst for ryggen
           </L>
 
           {/* Boks 3: Byggestandarder og Eurokode 8 */}
           <rect x="540" y="290" width="300" height="100" rx="6" fill="#241a1c" />
           <L x="552" y="312" fill={C.low} size={12} weight={700}>
-            Samfunnssikkerhet (Eurokode 8):
+            Sikring av bygg:
           </L>
           <L x="552" y="332" fill={C.muted} size={11}>
-            Selv om Norge er intraplate, krever Plan- og bygningsloven at sykehus, demninger og bruer dimensjoneres mot jordskjelv.
+            Tettere bebyggelse gjør at et skjelv som 1904 kan gjøre mer skade i dag. Kunnskap og analyser brukes til å sikre bygg.
           </L>
           <L x="552" y="365" fill={C.low} size={11} weight={600}>
-            NORSAR overvåker 24/7 med seismografer.
+            UiB og NORSAR overvåker aktiviteten.
           </L>
         </>
       )}
