@@ -324,6 +324,8 @@ describe("nao poster", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("sprengkulde"), false);
+    assert.equal(md.includes("Sør-Norge"), true);
+    assert.equal(md.includes("ikke automatisk det samme utslaget i hver landsdel"), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/klima/nao"), true);

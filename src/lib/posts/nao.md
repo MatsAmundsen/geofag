@@ -34,11 +34,19 @@ Lavtrykket ved Grønland og Island kalles det subpolare lavtrykket, eller Island
 
 Sterkt positive verdier henger sammen med varme forhold i det østlige USA og i Nord-Europa, og kalde forhold i Sør-Europa. Sterkt negative verdier henger sammen med det motsatte (NOAA, u.å.).
 
+## Norsk vinter
+
+Den nord-atlantiske oscillasjonen kommer av forskjellen i lufttrykk mellom Island og Asorene. Trykket ved havnivå over Island svinger i motfase med trykket over Asorene. NAO er framtredende på seinhøsten, om vinteren og tidlig på våren (Store norske leksikon, u.å.).
+
+Høy indeks betyr at trykket over Island er lavere enn normalt. Da blir det mer vestavind, med mild og fuktig luft over Sør-Norge, og milde vintre i sør. Lav indeks gir kaldere vintervær, med luftmasser fra øst (Store norske leksikon, u.å.).
+
+Med positiv indeks er lufta varmere enn normalt over Nord-Europa, og kaldere enn normalt over det vestlige Grønland og Labrador. Nedbøren er da større enn normalt i det sørlige Skandinavia og i Nord-Europa, og mindre enn normalt over det sørlige Spania og Portugal (Store norske leksikon, u.å.).
+
 > **Vanlige misforståelser**
 >
 > Positiv NAO er ikke oppvarmingstrenden. Det er en sterk trykkforskjell mellom Island og Asorene (NOAA, u.å.).
 >
-> Virkningen NOAA beskriver for Europa, er Nord-Europa og Sør-Europa. En positiv fase gir mer storm og varme i Nord-Europa, ikke automatisk det samme utslaget i hver landsdel.
+> Virkningen NOAA beskriver for Europa, er Nord-Europa og Sør-Europa. For Sør-Norge er det SNL som sier det konkret: høy indeks gir milde vintre i sør, og lav indeks gir kaldere vintervær med luft fra øst (Store norske leksikon, u.å.).
 >
 > Negativ fase er ikke «stille vær». I det østlige Nord-Amerika gir den sterkere kaldluftsutbrudd og mer storm (NOAA, u.å.).
 
@@ -53,6 +61,10 @@ Sterkt positive verdier henger sammen med varme forhold i det østlige USA og i 
 **Islandslavtrykket:** Det subpolare lavtrykket nær Grønland og Island.
 
 **Asorhøytrykket:** Det subtropiske høytrykket over det sentrale Nord-Atlanteren.
+
+**Høy NAO-indeks:** Trykket over Island er lavere enn normalt. Mer vestavind, mild og fuktig luft over Sør-Norge, og milde vintre i sør (Store norske leksikon, u.å.).
+
+**Lav NAO-indeks:** Kaldere vintervær, med luftmasser fra øst (Store norske leksikon, u.å.).
 
 ## Test deg selv
 

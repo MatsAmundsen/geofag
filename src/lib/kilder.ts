@@ -1286,6 +1286,12 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
     },
     {
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Den nord-atlantiske oscillasjonen",
+      suffix: ". Tekst fra MetLex, Meteorologisk institutt.",
+      href: "https://snl.no/Den_nord-atlantiske_oscillasjonen",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
