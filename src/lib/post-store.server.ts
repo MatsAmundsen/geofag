@@ -557,6 +557,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "klima",
     stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
   }
+,
+  {
+    flag: "havstrommer-copy-2026-10-07",
+    slug: "havstrommer",
+    stale: ["Her kan du redigere", "termoklinen"],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

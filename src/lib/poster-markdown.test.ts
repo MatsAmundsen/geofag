@@ -505,3 +505,34 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("/tema/klima"), true);
   });
 });
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the havstrømmer poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/havstrommer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "HavstromForklaring",
+      "DrivkrefterDiagram",
+      "EkmanHavForklaring",
+      "GyreDiagram",
+      "OppvellingDiagram",
+      "GolfDiagram",
+      "TetthetDiagram",
+      "QuizHavstrommer",
+    ]) {
+      assert.equal(ids.has(id), true, `havstrommer missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("termoklinen"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/havstrommer"), true);
+  });
+});

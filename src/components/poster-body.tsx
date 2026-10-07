@@ -120,6 +120,7 @@ import {
   QUIZ_LOKALE,
   QUIZ_JET,
   QUIZ_CORIOLIS,
+  QUIZ_HAVSTROMMER,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -375,6 +376,33 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     SkalaDiagram: () => <CoriolisScaleDiagram />,
     QuizCoriolis: () => (
     <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    HavstromForklaring: () => (
+    <Callout title="Hva betyr «havstrøm»?">
+      <p>
+        En havstrøm er vann i bevegelse. Den kan drives av tidevann nær land, av vind i overflaten,
+        eller av tetthetsforskjeller som får kaldt og salt vann til å synke.
+      </p>
+    </Callout>
+  ),
+    DrivkrefterDiagram: () => <OceanDriversDiagram />,
+    EkmanHavForklaring: () => (
+    <Callout title="Hva betyr «ekmantransport»?">
+      <p>
+        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
+        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
+        dypere vann komme opp.
+      </p>
+    </Callout>
+  ),
+    GyreDiagram: () => <GyreDiagram />,
+    OppvellingDiagram: () => <UpwellingDiagram />,
+    GolfDiagram: () => <GulfVsNacDiagram />,
+    TetthetDiagram: () => <DensityDiagram />,
+    QuizHavstrommer: () => (
+    <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
