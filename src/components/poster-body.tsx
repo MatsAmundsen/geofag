@@ -132,6 +132,7 @@ import {
   QUIZ_KRYO,
   QUIZ_MODELLER,
   QUIZ_PALEO,
+  QUIZ_ISTIDER,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -569,6 +570,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     QuizPaleo: () => (
     <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    IstidForklaring: () => (
+    <Callout title="Hva betyr «istid»?">
+      <p>
+        Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
+        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Store norske leksikon,
+        u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizIstider: () => (
+    <Quiz questions={QUIZ_ISTIDER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,

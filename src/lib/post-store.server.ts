@@ -641,6 +641,17 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "paleoklima",
     stale: ["Satellittrekken starter altså i 1979."],
   }
+,
+  {
+    flag: "milankovitch-copy-2026-10-07",
+    slug: "milankovitch",
+    stale: ["Her kan du redigere", "65 °N"],
+  },
+  {
+    flag: "milankovitch-copy-2-2026-10-07",
+    slug: "milankovitch",
+    stale: ["Dagens breer er ikke kvartærtidens innlandsis."],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

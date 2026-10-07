@@ -63,7 +63,7 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/tema/paleoklima":
     "Denne siden eier arkivene: direkte CO₂-målinger og iskjerner. Neste kapittel eier jordbanen. Kryosfæren eier isen som jobber i år.",
   "/tema/milankovitch":
-    "Denne siden eier hvorfor isen kommer: Milankovitch, albedo og CO₂. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
+    "Denne siden eier hvorfor isen kommer: de tre svingningene i jordbanen. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
   "/geofag-1/platetektonikk":
     "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier seismisitet, bølger og Wadati-Benioff. Norges geologi eier Leka-ofiolitten, Kaledonidene og Oslofeltet.",
   "/geofag-1/jordskjelv":

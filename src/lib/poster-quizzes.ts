@@ -1,5 +1,61 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_ISTIDER: QuizQuestion[] = [
+  {
+    prompt: "Hvilke tre svingninger er Milankovitch-syklusene?",
+    options: [
+      "Eksentrisitet, skråstilling og presesjon.",
+      "Passat, monsun og jetstrøm.",
+      "El Niño, La Niña og NAO.",
+    ],
+    answer: 0,
+    explain: "Se «Tre svingninger». De tre er banens form, aksens vinkel og aksens vingling.",
+  },
+  {
+    prompt: "Hva gjør minkende skråstilling med somrene på høye breddegrader?",
+    options: [
+      "Sommene blir kjøligere, så snø og is kan bygge seg opp.",
+      "Sommene blir varmere, så all is smelter med en gang.",
+      "Årstidene forsvinner, fordi aksen slutter å helle.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Skråstilling». Mildere årstider betyr varmere vintre og kjøligere somre. Mer is kaster mer solenergi tilbake.",
+  },
+  {
+    prompt: "Forklarer Milankovitch-syklusene oppvarmingen vi ser nå?",
+    options: [
+      "Ja, fordi eksentrisiteten øker raskt.",
+      "Nei. NASA skriver at syklusene ikke forklarer den oppvarmingen.",
+      "Ja, fordi presesjonen snur hvert år.",
+    ],
+    answer: 1,
+    explain: "Se «Tre svingninger». Syklusene utløser istider. De forklarer ikke oppvarmingen nå.",
+  },
+  {
+    prompt: "Hva kjennetegnet siste istids maksimum for 20 000 år siden?",
+    options: [
+      "Iskappen nådde det sørlige England, og havet sto 125 meter lavere enn i dag.",
+      "Havet sto høyere enn i dag, og England var en øy langt fra Frankrike.",
+      "Hele Sibir var dekket av en 3000 meter tykk iskappe.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Siste istids maksimum». De kaldeste delene av Sibir var isfrie fordi klimaet var tørt.",
+  },
+  {
+    prompt: "Når sluttet siste istid, ifølge Store norske leksikon?",
+    options: [
+      "For 11 600 år siden.",
+      "For 20 000 år siden, som er siste istids maksimum.",
+      "I 1976, da havbunnsstudien ble publisert.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvorfor istidene kommer». 20 000 år er siste istids maksimum. 11 600 år er slutten på siste istid.",
+  },
+];
+
 export const QUIZ_PALEO: QuizQuestion[] = [
   {
     prompt: "Når startet de direkte målingene av CO₂ på Mauna Loa?",
