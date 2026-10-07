@@ -1,5 +1,115 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_KLIMA: QuizQuestion[] = [
+  {
+    prompt: "Hvilke fem deler består klimasystemet av?",
+    options: [
+      "Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren.",
+      "Bare atmosfæren og havet.",
+      "Bare is, land og livet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er klimasystemet?». WMO beskriver de fem delene, og samspillet mellom dem.",
+  },
+  {
+    prompt: "Hva skiller indre dynamikk fra ytre pådriv?",
+    options: [
+      "Indre dynamikk er variasjon i systemet selv. Ytre pådriv er et dytt utenfra, som vulkan, sol, bane eller menneskelig endring.",
+      "Begge er det samme som oppvarmingstrenden.",
+      "Ytre pådriv er bare været fra dag til dag.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er klimasystemet?». Systemet endrer seg både av egen indre dynamikk og av ytre pådriv.",
+  },
+  {
+    prompt: "Hvor i dette kapitlet ligger stråling, pådriv og tilbakekobling?",
+    options: ["I oversikten.", "På ENSO-siden.", "På AMOC-siden."],
+    answer: 0,
+    explain: "Se tabellen. Oversikten eier stråling, pådriv og tilbakekobling. Denne siden er kartet.",
+  },
+  {
+    prompt: "Hvilken svingning ligger nærmest norsk vintervær?",
+    options: [
+      "NAO, svingningen over Nord-Atlanteren.",
+      "IOD, svingningen i Det indiske hav.",
+      "ENSO, svingningen i det tropiske Stillehavet.",
+    ],
+    answer: 0,
+    explain: "Se tabellen. NAO er svingningen over Nord-Atlanteren, nærmest norsk vintervær.",
+  },
+  {
+    prompt: "Er El Niño eller en positiv NAO det samme som oppvarmingstrenden?",
+    options: [
+      "Nei. De hører til den indre dynamikken. Mer drivhusgass er et ytre pådriv.",
+      "Ja. El Niño er oppvarmingstrenden.",
+      "Ja. Positiv NAO er det samme som mer drivhusgass.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Vanlige misforståelser». El Niño og positiv NAO hører til den indre dynamikken. Ytre pådriv, som mer drivhusgass, er noe annet.",
+  },
+];
+
+export const QUIZ_JET: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei blåser vinden i en jetstrøm?",
+    options: [
+      "Fra vest mot øst.",
+      "Fra øst mot vest, på begge halvkuler.",
+      "Rett fra ekvator mot polen, uten sideveis avbøyning.",
+    ],
+    answer: 0,
+    explain:
+      "I jetstrømmen blåser vinden fra vest mot øst. Beltet kan likevel flytte seg nordover og sørover. Se «Hva er en jetstrøm?».",
+  },
+  {
+    prompt: "Hvor ligger polarjeten og den subtropiske jetstrømmen?",
+    options: [
+      "Polarjeten mellom 50° og 60°, den subtropiske rundt 30°.",
+      "Begge ligger fast over ekvator.",
+      "Polarjeten rundt 30°, den subtropiske mellom 50° og 60°.",
+    ],
+    answer: 0,
+    explain:
+      "Polarjeten ligger mellom 50° og 60° på begge halvkuler. Den subtropiske jetstrømmen ligger rundt 30°. Se tabellen i «Hva er en jetstrøm?».",
+  },
+  {
+    prompt: "Når er jetstrømmene sterkest, og hvorfor?",
+    options: [
+      "Om vinteren, fordi skillet mellom varm og kald luft er tydeligst da.",
+      "Om sommeren, fordi sola varmer jetstrømmen direkte.",
+      "De er like sterke hele året, fordi jorda roterer like fort.",
+    ],
+    answer: 0,
+    explain:
+      "Grensen mellom varm og kald luft er mest markert om vinteren, og da er jetstrømmene sterkest. Se «Hva er en jetstrøm?».",
+  },
+  {
+    prompt: "Hva gjør en positiv NAO med stormbanen over Atlanteren?",
+    options: [
+      "Jetstrømmen blir sterkere, og stormbanen flytter seg nordover. Nord-Europa får mer storm og mildere vær.",
+      "Jetstrømmen stopper, og Nord-Europa får ørkenklima.",
+      "Stormbanen flytter seg til ekvator, og Island får høytrykk hele vinteren.",
+    ],
+    answer: 0,
+    explain:
+      "Positiv NAO er en sterkere trykkforskjell mellom Island og Asorene. Den atlantiske jetstrømmen blir sterkere, og stormbanen ligger lenger nord. Se «Slynger, årstid og stormbane».",
+  },
+  {
+    prompt: "Hvorfor er jetstrømmen tegnet som en strek på værkartet en forenkling?",
+    options: [
+      "Streken viser der vinden er sterkest. Selve beltet er bredere, og vinden øker inn mot kjernen.",
+      "Streken er en front på bakken, med like sterk vind overalt.",
+      "Streken viser bare flyruter, ikke vind.",
+    ],
+    answer: 0,
+    explain:
+      "Jetstrømmen er et belte der vinden er sterkest i kjernen, omtrent som strømmen midt i en elv. Se «Hva er en jetstrøm?».",
+  },
+];
+
 export const QUIZ_MELTING: QuizQuestion[] = [
   {
     prompt: "Hvorfor oppstår det dekompresjonssmelting under en midthavsrygg?",
@@ -620,6 +730,64 @@ export const QUIZ_FELTARBEID: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_LOKALE: QuizQuestion[] = [
+  {
+    prompt: "Hva setter i gang sjøbris om dagen?",
+    options: [
+      "Land varmes raskere enn hav, varm luft stiger, og kjøligere luft fra sjøen strømmer inn.",
+      "Havet varmes raskere enn land, så lufta synker over sjøen og presser vinden ut.",
+      "Jordrotasjonen starter vinden av seg selv, uten temperaturforskjell.",
+    ],
+    answer: 0,
+    explain:
+      "Sjøbris er pålandsvind fordi varm luft stiger over land og erstattes av kjøligere luft fra havet. Se «Solgangsvind».",
+  },
+  {
+    prompt: "Hvorfor dreier solgangsvinden langs norskekysten ofte fra pålandsvind til vind langs kysten?",
+    options: [
+      "Vinden følger tidevannet inn og ut av fjorden.",
+      "Jordrotasjonen bøyer vinden av mot høyre på den nordlige halvkule.",
+      "Havet blir mye kaldere utover ettermiddagen, så vinden må snu.",
+    ],
+    answer: 1,
+    explain:
+      "På den nordlige halvkule dreier sjøbrisen mot høyre, fra pålandsvind til vind langs kysten. I en fjord kan den likevel fortsette rett inn. Se «Solgangsvind».",
+  },
+  {
+    prompt: "Hva sier leksikonet om hvorfor fønvind er varm?",
+    options: [
+      "Luft som synker på lesiden varmes med omtrent én grad per hundre meter. Regn på losiden kan bidra, men betyr mindre enn man før trodde.",
+      "Føn blir varm bare fordi det regner på lesiden.",
+      "Føn er kald vind, fordi lufta alltid avkjøles når den synker.",
+    ],
+    answer: 0,
+    explain:
+      "Synkende luft kommer under høyere trykk og varmes adiabatisk. Kondensasjon på losiden kan spille en rolle, men har mindre betydning enn tidligere antatt. Se «Orografisk nedbør og føn».",
+  },
+  {
+    prompt: "Hva er en temperaturinversjon, og hvorfor kan lufta i en dal bli dårlig?",
+    options: [
+      "Temperaturen stiger med høyden. Varmere luft over virker som et lokk, og lokale utslipp samler seg nær bakken.",
+      "Temperaturen faller raskere enn vanlig, så røyken stiger høyere og forsvinner.",
+      "Inversjon er et lavtrykk som roterer over byen og suger til seg all røyken.",
+    ],
+    answer: 0,
+    explain:
+      "I en inversjon er det kaldere nær bakken enn høyere oppe. Lufta nede blandes dårlig, og utslipp kan hope seg opp. Se «Temperaturinversjon».",
+  },
+  {
+    prompt: "Hva skjer når en polarfrontsyklon blir moden, ifølge den norske syklonmodellen?",
+    options: [
+      "Kaldfronten tar igjen varmfronten, og det dannes en okkludert front.",
+      "Varmfronten tar igjen kaldfronten, og lavtrykket forsvinner med en gang.",
+      "Fronten blir liggende i ro, og nedbøren slutter.",
+    ],
+    answer: 0,
+    explain:
+      "Kaldfronten går raskere enn varmfronten. Når den tar igjen varmfronten, løftes den varme lufta, og fronten kalles okkludert. Se «Polarfrontsyklonen».",
+  },
+];
+
 export const QUIZ_HOYTRYKK: QuizQuestion[] = [
   {
     prompt: "Et område har 1015 hPa i sentrum. Er det høytrykk eller lavtrykk?",
@@ -675,6 +843,124 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
     answer: 2,
     explain:
       "Under et vinterhøytrykk kan kald, tung luft bli liggende i dalbunnen under et mildere lag. Luften sirkulerer lite, og forurensning blir liggende.",
+  },
+];
+
+export const QUIZ_VAERKART: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr tette isobarer på et værkart?",
+    options: [
+      "At lufttrykket er lavt overalt.",
+      "Stor trykkforskjell over kort avstand, og sterk vind.",
+      "At kartet er tegnet med feil enhet.",
+    ],
+    answer: 1,
+    explain:
+      "Isobarene viser likt trykk. Når de ligger tett, endrer trykket seg mye over kort avstand, og vinden blir sterk.",
+  },
+  {
+    prompt: "Hvorfor reduseres lufttrykket til havnivå før det tegnes på kartet?",
+    options: [
+      "Slik at stasjoner i ulik høyde kan sammenlignes.",
+      "Fordi havet alltid har 1013 hPa.",
+      "Fordi fjellstasjoner ikke måler trykk.",
+    ],
+    answer: 0,
+    explain:
+      "Trykket faller med høyden. Reduksjon til havnivå gjør at et fjell og en kyst kan sammenlignes på samme kart.",
+  },
+  {
+    prompt: "Hva er en varmfront?",
+    options: [
+      "En front der lufta bak er varmere enn lufta foran, ofte med skyet vær og jevn nedbør.",
+      "En front som alltid har temperatur over 20 °C.",
+      "En blå strek med trekanter.",
+    ],
+    answer: 0,
+    explain:
+      "Varm og kald er relativt. En varmfront tegnes rød med halvsirkler, og den forbindes med skyet vær og jevn nedbør.",
+  },
+  {
+    prompt: "Hva skjer når kaldfronten tar igjen varmfronten?",
+    options: [
+      "Lavtrykket blir liggende uendret i flere uker.",
+      "Det dannes en okkludert front, og den varme lufta løftes bort fra sentrum.",
+      "Frontene bytter farge og blir en stasjonær front.",
+    ],
+    answer: 1,
+    explain:
+      "I den norske syklonmodellen går kaldfronten fortere. Når den tar igjen varmfronten, blir fronten okkludert, og lavtrykket svekkes etter hvert.",
+  },
+  {
+    prompt: "Hva brukes 500 hPa-kartet til?",
+    options: [
+      "Å vise bølgehøyden på havet.",
+      "Å vise høyden av flaten der trykket er 500 hPa, om lag midt i atmosfæren, og hvor lufta kan stige.",
+      "Å erstatte bakkekartet, fordi bakketrykket ikke betyr noe.",
+    ],
+    answer: 1,
+    explain:
+      "500 hPa-kartet er det viktigste høydekartet. Flaten ligger om lag 5 000 til 6 000 meter oppe. Foran sterk virvling kan lufta stige, og det kan bli nedbør.",
+  },
+];
+
+export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
+  {
+    prompt:
+      "Hvorfor er sirkulasjonen delt i tre celler på hver halvkule, og ikke én sløyfe fra ekvator til pol?",
+    options: [
+      "Fordi hav og land er ujevnt fordelt.",
+      "Fordi jorda roterer. Luft som går mot polen i høyden, blir vestavind og synker nær 30°.",
+      "Fordi tyngdekraften er mye svakere ved polene.",
+    ],
+    answer: 1,
+    explain:
+      "Hadley foreslo én celle i 1735. Rotasjonen gjør at den øvre strømmen blir vestavind, lufta synker nær 30°, og vi får tre celler (NOAA).",
+  },
+  {
+    prompt: "Hva kjennetegner den intertropiske konvergenssonen?",
+    options: [
+      "Høytrykk, klar himmel og stødige nordavinder.",
+      "Passatene møtes, lufta stiger, og det blir skyer og byger.",
+      "Kald luft som synker fra stratosfæren.",
+    ],
+    answer: 1,
+    explain:
+      "Konvergenssonen er lavtrykksbeltet der nordøstpassaten og sørøstpassaten møtes og fuktig luft tvinges opp.",
+  },
+  {
+    prompt: "Hvorfor ligger mange av de store ørkenene nær 30° bredde?",
+    options: [
+      "Luft som har steget ved ekvator, synker. Den varmes opp, og skyene løses opp.",
+      "Det finnes ingen fjell som kan stoppe vinden.",
+      "Havet koker og tørker ut landmassene.",
+    ],
+    answer: 0,
+    explain:
+      "Subsidens nær 30° gir høytrykk og tørke, blant annet i Nord-Afrika og Australia.",
+  },
+  {
+    prompt: "Hvorfor kalles Ferrel-cellen termisk indirekte?",
+    options: [
+      "Fordi den bare finnes om sommeren.",
+      "Fordi den drives av friksjon mellom de to andre cellene, ikke av varmekontrasten mellom ekvator og pol.",
+      "Fordi den frakter kulde fra ekvator mot polene.",
+    ],
+    answer: 1,
+    explain:
+      "NOAA beskriver vestavinden mellom 35° og 60° som drevet av friksjon, ikke av varmekontrasten mellom ekvator og polene.",
+  },
+  {
+    prompt:
+      "Hvorfor kan vestkysten av Norge få over 3000 mm nedbør i året, mens Ottadalen får ned mot 200 mm?",
+    options: [
+      "Vestkysten ligger i Hadley-cellen, og Ottadalen ligger i polarcellen.",
+      "Fuktig vestavind tvinges opp av fjellene og gir orografisk nedbør på luvsiden. På lesiden synker lufta, og Ottadalen ligger i regnskygge.",
+      "Det regner bare om natten på vestkysten.",
+    ],
+    answer: 1,
+    explain:
+      "SNL beskriver soner med stedvis over 3000 mm innenfor vestkysten, under 300 mm øst for Breheimen, og ned mot 200 mm i Ottadalen.",
   },
 ];
 
@@ -797,54 +1083,60 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
   },
 ];
 
-export const QUIZ_KLIMA: QuizQuestion[] = [
+export const QUIZ_CORIOLIS: QuizQuestion[] = [
   {
-    prompt: "Hvilke fem deler består klimasystemet av?",
+    prompt: "Hva er corioliseffekten?",
     options: [
-      "Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren.",
-      "Bare atmosfæren og havet.",
-      "Bare is, land og livet.",
+      "Avbøyningen vi ser fordi jorda roterer under en bevegelse som ellers går rett fram.",
+      "En reell kraft som setter lufta i gang fra høytrykk mot lavtrykk.",
+      "Månens drag, som styrer tidevannet.",
     ],
     answer: 0,
     explain:
-      "Se «Hva er klimasystemet?». WMO beskriver de fem delene, og samspillet mellom dem.",
+      "Se «Hva er corioliseffekten?». Avbøyningen kommer av rotasjonen, ikke av en reell kraft som dytter på lufta.",
   },
   {
-    prompt: "Hva skiller indre dynamikk fra ytre pådriv?",
+    prompt: "Hvor er den horisontale avbøyningen null?",
     options: [
-      "Indre dynamikk er variasjon i systemet selv. Ytre pådriv er et dytt utenfra, som vulkan, sol, bane eller menneskelig endring.",
-      "Begge er det samme som oppvarmingstrenden.",
-      "Ytre pådriv er bare været fra dag til dag.",
+      "Ved ekvator, der coriolisparameteren er null.",
+      "Ved 60°, omtrent Oslo og Bergen, der farten østover er minst.",
+      "Ved Nordpolen, der bakken står stille.",
     ],
     answer: 0,
     explain:
-      "Se «Hva er klimasystemet?». Systemet endrer seg både av egen indre dynamikk og av ytre pådriv.",
+      "Se «Breddegraden bestemmer styrken». Parameteren er null ved ekvator og øker mot polene.",
   },
   {
-    prompt: "Hvor i dette kapitlet ligger stråling, pådriv og tilbakekobling?",
-    options: ["I oversikten.", "På ENSO-siden.", "På AMOC-siden."],
-    answer: 0,
-    explain: "Se tabellen. Oversikten eier stråling, pådriv og tilbakekobling. Denne siden er kartet.",
-  },
-  {
-    prompt: "Hvilken svingning ligger nærmest norsk vintervær?",
+    prompt: "Hva skjer med et lavtrykk hvis jorda ikke roterer?",
     options: [
-      "NAO, svingningen over Nord-Atlanteren.",
-      "IOD, svingningen i Det indiske hav.",
-      "ENSO, svingningen i det tropiske Stillehavet.",
-    ],
-    answer: 0,
-    explain: "Se tabellen. NAO er svingningen over Nord-Atlanteren, nærmest norsk vintervær.",
-  },
-  {
-    prompt: "Er El Niño eller en positiv NAO det samme som oppvarmingstrenden?",
-    options: [
-      "Nei. De hører til den indre dynamikken. Mer drivhusgass er et ytre pådriv.",
-      "Ja. El Niño er oppvarmingstrenden.",
-      "Ja. Positiv NAO er det samme som mer drivhusgass.",
+      "Det fylles raskt igjen, fordi lufta ikke avbøyes til en virvel.",
+      "Det blir en sterkere orkan, fordi ingenting bremser vinden.",
+      "Vinden legger seg langs isobarene av seg selv.",
     ],
     answer: 0,
     explain:
-      "Se «Vanlige misforståelser». El Niño og positiv NAO hører til den indre dynamikken. Ytre pådriv, som mer drivhusgass, er noe annet.",
+      "Se «Breddegraden bestemmer styrken». Uten rotasjon fylles lavtrykket. Avbøyningen er det som gir rotasjonen orkaner trenger.",
+  },
+  {
+    prompt: "Hvilken vinkel danner vinden med isobarene nær bakken over land?",
+    options: [
+      "20–40°, fordi friksjonen er større enn over havet.",
+      "Alltid 0°, parallelt med isobarene.",
+      "Alltid 90°, rett inn mot lavtrykket.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Vind, isobarer og friksjon». Over havet er vinkelen 0–20°, over land 20–40°.",
+  },
+  {
+    prompt: "Hva skjer ved langvarig nordavind langs en vestkyst på den nordlige halvkule?",
+    options: [
+      "Ekmantransporten skyver overflaten utover, og dypere vann kommer opp.",
+      "Overflatevannet presses inn mot land og synker.",
+      "Corioliseffekten er null langs alle vestkyster, så ingenting skjer.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Havet: ekmantransport og oppvelling». På den nordlige halvkule går ekmantransporten til høyre for vinden.",
   },
 ];
