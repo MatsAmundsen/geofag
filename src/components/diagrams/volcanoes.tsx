@@ -848,7 +848,7 @@ export function IcelandContrastDiagram() {
             <L x="160" y="168" anchor="middle" size={12} fill={C.fg}>Fontene og lavastrøm</L>
           </svg>
           <ul className="mt-3 space-y-1.5 text-sm leading-relaxed">
-            <li>Fagradalsfjall 2021–2023 og Sundhnúkur 2023–2024 på Reykjaneshalvøya.</li>
+            <li>Fagradalsfjall 2021–2023 og Sundhnúkur 2023–2025 på Reykjaneshalvøya.</li>
             <li>Basaltisk magma, SiO₂ ca. 48 %, kommer opp langs sprekker. Ingen isbre over.</li>
             <li>Tyntflytende basalt avgasser i fontener og lavastrømmer. Asken når ikke stratosfæren.</li>
             <li>Flytrafikken er ikke truet. Infrastruktur og hus, som i Grindavík, kan likevel bli truet.</li>

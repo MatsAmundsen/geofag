@@ -53,7 +53,7 @@ describe("isShortPlatetektonikkBody", () => {
     assert.match(chapterMarkdown, /Wilsonsyklusen/);
     assert.match(chapterMarkdown, /Leka/);
     assert.match(chapterMarkdown, /Sentralt fagvokabular/);
-    assert.match(chapterMarkdown, /Platetrekk \(slab pull\) står for om lag 90 %/);
+    assert.match(chapterMarkdown, /Platetrekk \(slab pull\) er den viktigste kraften som driver platene/);
     assert.equal(isShortPlatetektonikkBody(chapterMarkdown), false);
   });
 });

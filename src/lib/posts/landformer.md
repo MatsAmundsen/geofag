@@ -30,7 +30,7 @@ Mekanisk forvitring sprenger fjellet fysisk i mindre stykker. Kjemien og mineral
 
 - **Trykkavlastning og eksfoliering (Sheet jointing):** Plutoniske dypbergarter (som granitt) krystalliserte under kilometerdyp med et voldsomt overliggende litostatisk trykk. Når millioner av år med erosjon fjerner de overliggende berglagene, utvider granitten seg elastisk mot den frie overflaten. Fjellet sprekker opp i parallelle bueformede flak («løkskalling»). Karakteristiske eksempler i Norge er de hvelvede granittkuplene på Helgeland (Torghatten) og i Iddefjorden.
 
-- **Rotsvingning (Biologisk forvitring):** Planterøtter og lav kiler seg inn i mikroskopiske sprekker. Når trærne vokser, utøver rotdiameteren et mekanisk sidetrykk (turgortrykk) som tvinger sprekkene fra hverandre.
+- **Rotsprengning (Biologisk forvitring):** Planterøtter og lav kiler seg inn i mikroskopiske sprekker. Når trærne vokser, utøver rotdiameteren et mekanisk sidetrykk (turgortrykk) som tvinger sprekkene fra hverandre.
 
 ![Geologisk blotning i felt som viser oppsprukket, forvitret fjellvegg med frostsprengningsur](/images/fig-forvitring.jpg)
 
@@ -114,7 +114,7 @@ Alt materiale en isbre river løs, fraktes usortert med isen og avsettes som **m
 
 - **Bunnmorene:** Løsmasser presset ut under breens såle over hele landet. Kaotisk blanding av leire, sand og kjempeblokker.
 
-- **Endemorene og Raet:** Når brefronten ble liggende i ro over lengre tid (fordi snøtilvekst og smelting balanserte hverandre), fungerte breen som en gigantisk bulldoser som skjøv opp en mektig voll av stein og grus. Det mest berømte eksempelet er **Raet**, en enorm endemorenerygg dannet under kuldeperioden *Yngre Dryas* for ca. 12 800–11 700 år siden, som kan følges fra Østfold og Vestfold rundt hele kysten til Trøndelag og Nord-Norge (NGU, u.å.).
+- **Endemorene og Raet:** Når brefronten ble liggende i ro over lengre tid (fordi snøtilvekst og smelting balanserte hverandre), fungerte breen som en gigantisk bulldoser som skjøv opp en mektig voll av stein og grus. Det mest berømte eksempelet er **Raet**, et israndtrinn fra *Yngre Dryas* (ca. 12 800–11 700 år siden). Det er ikke én rygg til Nord-Norge, men en lang sone av morene, breelvgrus og strandmateriale, særlig på begge sider av Oslofjorden. Mot vest kan sonen følges til Lysefjorden. Lenger nord har morener fra samme tid andre navn, som Halsnøymorenen og Herdlamorenen (SNL, u.å.).
 
 - **Esker:** En slangeformet, langstrakt grusrygg avsatt av en smeltevannselv som rant i en lukket tunnel under innlandsisen mot slutten av istiden.
 
@@ -144,7 +144,7 @@ I løpet av kvartærtidens mange istider ble de tertiære elvedalene invadert av
 
 *Geomorfologisk kontrast: Fra fjordbunn til alpine tinder — Et klassisk vestnorsk landskap der unge, dramatiske glasiale landformer (den overfordypede fjorden og de steile fjellsidene) skjærer seg dypt ned i den opprinnelige hevede landblokken. Langs slike bratte fjellsider er fjellet kontinuerlig utsatt for frostforvitring og storskala fjellskred.*
 
-> **Kompetansemål (LK20 Geofag 1)**
+> **Kompetansemål (LK20 Geofag 1)** – sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet (Udir, u.å.).
 
 ## Viktige begreper
 
@@ -166,7 +166,7 @@ I løpet av kvartærtidens mange istider ble de tertiære elvedalene invadert av
 
 **Endemorene:** Rygg av usortert morenemateriale skjøvet opp foran brefronten under et langvarig stillstand.
 
-**Raet:** Norges største endemorene, dannet under kuldeperioden Yngre Dryas for ca. 12 000 år siden.
+**Raet:** Israndtrinn fra Yngre Dryas (ca. 12 800–11 700 år siden), særlig langs begge sider av Oslofjorden. Ikke én rygg til Nord-Norge.
 
 **Den paleiske overflaten:** Eldgamle, bølgende vidder (Hardangervidda) formet under varmt mesozoisk klima før tertiærhevingen.
 

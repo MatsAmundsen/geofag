@@ -78,7 +78,7 @@ Avsetningsformer er landformer der isen eller smeltevannet har lagt igjen løsma
 
 Steinene i isen blir fraktet fram til brefronten. Står fronten stille en tid, eller rykker den litt fram, hoper materialet seg opp til en rygg. Når isen trekker seg tilbake, blir ryggen liggende igjen som et spor etter hvor fronten lå. Denne ryggen kalles en endemorene (end moraine), og hauger langs kanten av breen kalles sidemorener (NDLA, u.å.).
 
-Raet er det tydeligste israndtrinnet i Norge. Det ble dannet i yngre dryas (Younger Dryas), da klimaet ble kaldere og isfronten sto stille eller rykket fram (SNL, u.å.-c). Raet er ikke én haug, men en lang sone av morene, breelvgrus og strandmateriale som havet senere har vasket over. Det går blant annet på begge sider av Oslofjorden, og store deler ble avsatt under daværende havnivå (SNL, u.å.-c).
+Raet er det tydeligste israndtrinnet i Norge. Det ble dannet i yngre dryas (Younger Dryas), da klimaet ble kaldere og isfronten sto stille eller rykket fram (SNL, u.å.-c). Raet er ikke én haug, men en lang sone av morene, breelvgrus og strandmateriale som havet senere har vasket over. Det går særlig på begge sider av Oslofjorden, og store deler ble avsatt under daværende havnivå. Mot vest kan sonen følges til Lysefjorden. Lenger nord har morener fra samme tid andre navn, som Halsnøymorenen og Herdlamorenen (SNL, u.å.-c).
 
 ![Raet, en rygg av morene og breelvmateriale](/images/isbre-raet.jpg)
 
@@ -138,7 +138,7 @@ Smeltevannet fraktet finstoff ut i havet, der det sank til bunns som leire. Land
 
 En aktiv landform er en form som fortsatt bygges eller endres. En fossil landform er en form som ble dannet under andre forhold enn i dag, og som ligger igjen som et spor. De fleste store isformene i Norge er fossile. U-dalene, fjordene og Raet ble formet av isen under og like etter siste istid, og ingen isbre arbeider med dem i dag.
 
-Breene som finnes i Norge nå, er aktive. Nigardsbreen, en arm av Jostedalsbreen, er et eksempel. Foran slike breer kan du se de samme prosessene som dannet Raet, bare i mye mindre skala og på et annet tidspunkt. Breene i Norge har mistet 10 % av arealet sitt fra 1960-tallet til i dag (NVE, u.å.).
+Breene som finnes i Norge nå, er aktive. Nigardsbreen, en arm av Jostedalsbreen, er et eksempel. Foran slike breer kan du se de samme prosessene som dannet Raet, bare i mye mindre skala og på et annet tidspunkt. Norske breer dekket 2328 km² etter kartlegging med satellittbilder fra 2018 og 2019. Det er 14 prosent mindre enn i perioden 1999–2006 (NVE, 2022).
 
 ![Nigardsbreen, en aktiv bre med løsmasser foran isfronten](/images/isbre-nigardsbreen.jpg)
 

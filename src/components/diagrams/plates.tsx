@@ -316,7 +316,7 @@ export function ConvectionDiagram() {
     <Diagram
       title="Platetektonikkens drivkrefter: platetrekk, ryggskyv og mantelkonveksjon"
       heading="Hva beveger platene? Gravitasjon og tetthetsforskjeller styrer maskineriet"
-      caption="Platene er en aktiv del av konveksjonen, ikke bare flåter som skyves rundt. Den største drivkraften er platetrekk (slab pull), om lag 90 % av kraften. Kald, eldre havbunn er tettere enn astenosfæren under. I en subduksjonssone omdannes basalten til den tunge bergarten eklogitt ved 40–60 km dyp, og platen trekkes nedover. Ved midthavsryggen står litosfæren 2–3 km høyere enn havbunnen rundt, og tyngdekraften får den til å gli ned skråningen (ryggskyv, ridge push). Manteldrag (basal drag) er friksjonen mot den seige astenosfæren."
+      caption="Platene er en aktiv del av konveksjonen, ikke bare flåter som skyves rundt. Den største drivkraften er platetrekk (slab pull). Kald, eldre havbunn er tettere enn astenosfæren under. I en subduksjonssone omdannes basalten til den tunge bergarten eklogitt ved 40–60 km dyp, og platen trekkes nedover. Ved midthavsryggen står litosfæren 2–3 km høyere enn havbunnen rundt, og tyngdekraften får den til å gli ned skråningen (ryggskyv, ridge push). Manteldrag (basal drag) er friksjonen mot den seige astenosfæren."
       viewBox="0 0 940 480"
       wide
       scroll
@@ -446,7 +446,7 @@ export function ConvectionDiagram() {
                 opacity="0.96"
               />
               <L x="628" y="350" fill={C.teal} size={12} weight={800}>
-                1. Platetrekk (om lag 90 %)
+                1. Platetrekk
               </L>
               <L x="628" y="368" fill="#d1d5db" size={10.5}>
                 Kald litosfære omdannes til
@@ -512,7 +512,7 @@ export function PlatesMapDiagram() {
   return (
     <Diagram
       title="Verdenskart over litosfæreplater og relative bevegelsesvektorer"
-      heading="Jordas tektoniske puslespill: De 7 store platene og Ring of Fire"
+      heading="Jordas tektoniske puslespill: De store platene og Ring of Fire"
       caption="Litosfæren er delt i et dusin store og en rekke mindre plater. Kartet viser de største litosfæreplater med deres relative bevegelsesretninger og hastigheter (cm/år). Legg merke til Stillehavsplaten, som beveger seg hurtig (7–11 cm/år) nordvestover mot subduksjonssonene i Asia og Nord-Amerika. Dette omkranser Stillehavet med jordens mest seismisk og vulkansk aktive belte: «Ildringen» (Ring of Fire), der over 75 % av verdens aktive vulkaner og 90 % av alle jordskjelv finner sted. Norge ligger trygt plassert inne på Den eurasiske kontinentalplaten, langt fra de aktive grensene."
       viewBox="0 0 940 500"
       wide
@@ -1846,7 +1846,7 @@ export function OceanOceanSubductionDiagram() {
     <Diagram
       title="Subduksjon hav mot hav: Vulkanøybue, Marianegropen og bakbuebasseng"
       heading="Hav mot hav: Den eldste, kaldeste platen må vike"
-      caption="Når to oseaniske plater kolliderer, er det alltid den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på 11 034 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
+      caption="Når to oseaniske plater kolliderer, er det alltid den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på ca. 10 935 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
       action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
       toolbar={
         <>

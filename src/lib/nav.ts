@@ -319,7 +319,7 @@ export const GF1_THEMES = [
     blurb:
       "Fra urtid og Iapetushavets ofiolitter på Leka, til Kaledonidene, Oslofeltets riftdal, Atlanterhavets åpning og landhevingen etter istiden.",
     status: "klar" as const,
-    maal: "Forstå hvordan norsk natur og geologi er et resultat av global platedynamikk og landformdannende prosesser gjennom geologisk tid.",
+    maal: "Gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten. Utforske berggrunn, løsmasser og jordarter lokalt, og tolke observasjonene for å beskrive områdets geologiske historie og betydning for lokale ressurser.",
   },
   {
     slug: "landformer",
@@ -331,7 +331,7 @@ export const GF1_THEMES = [
     blurb:
       "Mekanisk og kjemisk forvitring, Hjulstrøms kurve, glasiale og fluviale landformer, strandflaten og den paleiske overflaten i Norge.",
     status: "klar" as const,
-    maal: "Beskrive og forklare hvordan indre og ytre krefter, spesielt rennende vann og isbreer, har formet og endrer det norske landskapet gjennom geologisk tid.",
+    maal: "Sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet.",
   },
   {
     slug: "isbreer-og-landformer",

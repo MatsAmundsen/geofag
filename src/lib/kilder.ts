@@ -11,6 +11,12 @@ export type Kilde = {
 export const KILDER = {
   jordsystemene: [
     {
+      prefix: "Friedlingstein, P., et al. (2025). Global Carbon Budget 2025. ",
+      italic: "Earth System Science Data, 18",
+      suffix: ", 3211.",
+      href: "https://doi.org/10.5194/essd-18-3211-2026",
+    },
+    {
       prefix: "National Aeronautics and Space Administration [NASA]. (2011). ",
       italic: "The carbon cycle",
       suffix: ".",
@@ -79,6 +85,11 @@ export const KILDER = {
       href: "https://doi.org/10.1111/j.1365-246X.1975.tb00631.x",
     },
     {
+      prefix: "Fowler, C. M. R. (2005). ",
+      italic: "The solid Earth: An introduction to global geophysics",
+      suffix: " (2. utg.). Cambridge University Press.",
+    },
+    {
       prefix:
         "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
       italic: "Journal of the Geological Society, 145",
@@ -92,10 +103,32 @@ export const KILDER = {
       href: "https://doi.org/10.1130/Petrologic.1962.599",
     },
     {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
-      italic: "How fast do tectonic plates move?",
+      prefix: "Lowrie, W., & Fichtner, A. (2020). ",
+      italic: "Fundamentals of geophysics",
+      suffix: " (3. utg.). Cambridge University Press.",
+    },
+    {
+      prefix: "Marshak, S. (2019). ",
+      italic: "Earth: Portrait of a planet",
+      suffix: " (6. utg.). W. W. Norton.",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
+      italic: "What is a mid-ocean ridge?",
       suffix: ".",
-      href: "https://oceanexplorer.noaa.gov/facts/plate-tectonics.html",
+      href: "https://oceanexplorer.noaa.gov/ocean-fact/mid-ocean-ridge/",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
+      italic: "How deep is the ocean?",
+      suffix: ".",
+      href: "https://oceanexplorer.noaa.gov/ocean-fact/ocean-depth/",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (2016). ",
+      italic: "Geofysisk logging av 4 borehull i Ramså-feltet, Andøya, Nordland",
+      suffix: " (rapport 2016.023).",
+      href: "https://www.ngu.no/publikasjon/geofysisk-logging-av-4-borehull-i-ramsa-feltet-andoya-nordland",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -105,9 +138,9 @@ export const KILDER = {
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
-      italic: "Marin grense",
+      italic: "Om kart over marin grense",
       suffix: ".",
-      href: "https://www.ngu.no/emne/marin-grense",
+      href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
     },
     {
       prefix: "Norsk Polarinstitutt. (u.å.). ",
@@ -122,10 +155,15 @@ export const KILDER = {
       suffix: " (2. utg.). Norsk Geologisk Forening.",
     },
     {
+      prefix: "Tarbuck, E. J., Lutgens, F. K., & Tasa, D. G. (2020). ",
+      italic: "Earth: An introduction to physical geology",
+      suffix: " (13. utg.). Pearson.",
+    },
+    {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
-      italic: "About plate tectonics and volcanoes",
+      italic: "Volcanoes: Plate-Tectonics Theory",
       suffix: ".",
-      href: "https://www.usgs.gov/programs/vhp/about-plate-tectonics-and-volcanoes",
+      href: "https://pubs.usgs.gov/gip/volc/tectonics.html",
     },
     {
       prefix: "Vine, F. J., & Matthews, D. H. (1963). Magnetic anomalies over oceanic ridges. ",
@@ -249,8 +287,32 @@ export const KILDER = {
       suffix: " (This Dynamic Earth).",
       href: "https://pubs.usgs.gov/gip/dynamic/hotspots.html",
     },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
+      italic: "Kompetansemål etter geofag 1 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
+    },
+    {
+      prefix: "Veðurstofa Íslands. (u.å.). ",
+      italic: "Fréttir og viðvaranir: Eldgos á Reykjanesi",
+      suffix: ".",
+      href: "https://www.vedur.is/eldfjoll/eldgos-a-reykjanesi/frettir-og-vidvaranir/",
+    },
+    {
+      prefix: "Wilson, J. T. (1963). A possible origin of the Hawaiian Islands. ",
+      italic: "Canadian Journal of Physics, 41",
+      suffix: "(6), 863–870.",
+      href: "https://doi.org/10.1139/p63-094",
+    },
   ],
   jordskjelv: [
+    {
+      prefix: "Dziewonski, A. M., & Anderson, D. L. (1981). Preliminary reference Earth model. ",
+      italic: "Physics of the Earth and Planetary Interiors, 25",
+      suffix: "(4), 297–356.",
+      href: "https://doi.org/10.1016/0031-9201(81)90046-7",
+    },
     {
       prefix: "Incorporated Research Institutions for Seismology [IRIS]. (u.å.). ",
       italic: "Seismic shadow zone: Basic introduction",
@@ -404,6 +466,12 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/sandstein",
     },
     {
+      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      italic: "Mohs' hardhetsskala",
+      suffix: ".",
+      href: "https://snl.no/hardhet_-_mineralogi",
+    },
+    {
       prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
       italic: "Collecting rocks",
       suffix: ".",
@@ -437,6 +505,18 @@ export const KILDER = {
   ],
   "norges-geologi": [
     {
+      prefix: "forskning.no. (2008, 7. februar). ",
+      italic: "Larvikitt er nasjonalbergart",
+      suffix: ".",
+      href: "https://www.forskning.no/larvikitt-er-nasjonalbergart/980811",
+    },
+    {
+      prefix: "Oftedahl, C. (1948). Petrology and geology of the Rondane area. ",
+      italic: "Norsk Geologisk Tidsskrift, 28",
+      suffix: ", 199–225.",
+      href: "https://njg.geologi.no/images/NJG_articles/NGT_28_2-4_199-225.pdf",
+    },
+    {
       prefix:
         "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2008). ",
       italic: "Landet blir til: Norges geologi",
@@ -457,9 +537,15 @@ export const KILDER = {
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
-      italic: "Marin grense",
+      italic: "Om kart over marin grense",
       suffix: ".",
-      href: "https://www.ngu.no/emne/marin-grense",
+      href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      italic: "Rombeporfyr",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/rombeporfyr",
     },
     {
       prefix: "NORSAR. (u.å.). ",
@@ -551,6 +637,12 @@ export const KILDER = {
       href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/klima/klima-naa-og-i-framtiden/",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2022, 10. februar). ",
+      italic: "Norske breer kartlagt på ny",
+      suffix: ".",
+      href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/norske-breer-kartlagt-pa-ny/",
+    },
+    {
       prefix: "Store norske leksikon [SNL]. (u.å.-a). ",
       italic: "Frostsprengning",
       suffix: ".",
@@ -592,7 +684,6 @@ export const KILDER = {
       prefix: "Hjulström, F. (1935). Studies of the morphological activity of rivers as illustrated by the River Fyris. ",
       italic: "Bulletin of the Geological Institution of the University of Uppsala, 25",
       suffix: ", 221–527.",
-      href: "https://doi.org/10.1080/04353676.1935.11825595",
     },
     {
       prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
@@ -611,6 +702,18 @@ export const KILDER = {
       italic: "Løsmasser og glasiale landformer i Norge",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/losmasser",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      italic: "Raet",
+      suffix: ".",
+      href: "https://snl.no/Raet",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
+      italic: "Kompetansemål etter geofag 1 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
     {
       prefix:
@@ -640,6 +743,11 @@ export const KILDER = {
     },
   ],
   vannFlom: [
+    {
+      prefix: "Freeze, R. A., & Cherry, J. A. (1979). ",
+      italic: "Groundwater",
+      suffix: ". Prentice-Hall.",
+    },
     {
       prefix: "Meteorologisk institutt [MET]. (2023). ",
       italic: "Over 100 år siden det har regnet så mye på Østlandet",

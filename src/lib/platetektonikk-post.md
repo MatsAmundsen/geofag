@@ -62,7 +62,7 @@ Etter hvert som jorda avkjøles, vokser den faste indre kjernen. Den vokser med 
 
 ### Litosfæren og astenosfæren
 
-I tillegg til lagene etter kjemi deler vi jordas indre inn etter hvordan bergartene oppfører seg: litosfæren, astenosfæren og mesosfæren. Mesosfæren er ikke pensum.
+I tillegg til lagene etter kjemi deler vi jordas indre inn etter hvordan bergartene oppfører seg: litosfæren, astenosfæren og mesosfæren. Mesosfæren tas ikke med her.
 
 #### Litosfæren
 
@@ -110,7 +110,7 @@ Ut fra funnene konkluderte han med at alle landmassene en gang hadde vært samle
 
 ### Marie Tharp og kartleggingen av havbunnen (1950-tallet)
 
-Vendepunktet kom etter andre verdenskrig. Under den kalde krigen kartla den amerikanske geologen og oseanografen Marie Tharp sammen med Bruce Heezen havbunnen ved hjelp av millioner av ekkoloddprofiler. Tharp oppdaget en sammenhengende, 65 000 km lang undersjøisk fjellkjede, Den midtatlantiske ryggen, og en dyp riftdal midt langs ryggens akse. Det var et fysisk tegn på at havbunnen sprakk opp.
+Vendepunktet kom etter andre verdenskrig. Under den kalde krigen kartla den amerikanske geologen og oseanografen Marie Tharp sammen med Bruce Heezen havbunnen ved hjelp av millioner av ekkoloddprofiler. Tharp oppdaget en sammenhengende undersjøisk fjellkjede, Den midtatlantiske ryggen, og en dyp riftdal midt langs ryggens akse. Det globale systemet av midthavsrygger er nesten 65 000 km langt (NOAA, u.å.-a). Det var et fysisk tegn på at havbunnen sprakk opp.
 
 ### Harry Hess og havbunnsspredning (1962)
 
@@ -134,7 +134,7 @@ Platebevegelsene styres av et samspill mellom fire krefter. Tyngdekraft og varme
 
 ### Platetrekk (slab pull)
 
-Platetrekk (slab pull) står for om lag 90 % av kraften som driver platene, og er den viktigste.
+Platetrekk (slab pull) er den viktigste kraften som driver platene.
 
 Når enden av en havbunnsplate synker ned i mantelen, drar den resten av platen med seg.
 
@@ -166,7 +166,7 @@ Friksjonen mellom astenosfæren og undersiden av litosfæren kan enten hjelpe be
 
 Når en tung havbunnsplate synker bratt ned i mantelen, drar den med seg astenosfære rundt seg. Det oppstår et lokalt sug som trekker den overliggende platen mot dyphavsgropen.
 
-I dag kan vi måle disse bevegelsene direkte med satellitter (GPS og VLBI). Platene beveger seg med mellom 1 og 16 centimeter per år (NOAA, u.å.), omtrent like fort som negler vokser. Plater med store subduksjonssoner, som Stillehavsplaten og Nazcaplaten, beveger seg raskest (7–15 cm/år). Det stemmer med at platetrekk (slab pull) er den dominerende drivkraften.
+I dag kan vi måle disse bevegelsene direkte med satellitter (GPS og VLBI). Spredningen langs midthavsryggene er om lag 2–5 centimeter per år i Atlanterhavet og 6–16 centimeter per år langs East Pacific Rise (NOAA, u.å.-a). Det stemmer med at platetrekk (slab pull) er den dominerende drivkraften.
 
 ## Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer
 
@@ -192,7 +192,7 @@ Havbunnsspredning skjer på havbunnen. Når platene trekkes fra hverandre, blir 
 
 **Kontinental rifting**
 
-Kontinental rifting starter inne på et kontinent. Skorpen strekkes og tynnes. Store blokker synker langs normalforkastninger og danner en langstrakt innsynkningsdal, en graben. Den østafrikanske riftdalen, med Tanganyikasjøen og Victoriasjøen, er et eksempel. Hvis riftingen fortsetter i millioner av år, kan riftdalen bli et smalt havbasseng, som Rødehavet, og deretter en midthavsrygg. Slik åpnet Atlanterhavet seg da superkontinentet Pangea revnet for ca. 180 millioner år siden.
+Kontinental rifting starter inne på et kontinent. Skorpen strekkes og tynnes. Store blokker synker langs normalforkastninger og danner en langstrakt innsynkningsdal, en graben. Den østafrikanske riftdalen, med Tanganyikasjøen og Malawisjøen, er et eksempel. Hvis riftingen fortsetter i millioner av år, kan riftdalen bli et smalt havbasseng, som Rødehavet, og deretter en midthavsrygg. Slik åpnet Atlanterhavet seg da superkontinentet Pangea revnet for ca. 180 millioner år siden.
 
 ![Midthavsryggens anatomi: Dekompresjonssmelting og hydrotermale skorsteiner](/images/geo-midthavsrygg-hydrotermal.jpg)
 
@@ -208,7 +208,7 @@ Den tunge havbunnsplaten, for eksempel Nazcaplaten, bøyes ned under den lettere
 
 #### Hav mot hav
 
-Når to havbunnsplater møtes, synker én av dem. Det er alltid den eldste, kaldeste og dermed tetteste havbunnsplaten som presses under den andre. Slik dannes jordas dypeste groper, som Marianegropen med Challengerdypet på 11 034 meter. Når platen synker, frigjøres vann, mantelen over smelter, og magma stiger. Her bygges vulkanøyer, ikke stratovulkaner på et kontinent. Klassiske eksempler er De japanske øyer, Marianene og Aleutene.
+Når to havbunnsplater møtes, synker én av dem. Det er alltid den eldste, kaldeste og dermed tetteste havbunnsplaten som presses under den andre. Slik dannes jordas dypeste groper, som Marianegropen med Challengerdypet på ca. 10 935 meter (NOAA, u.å.-b). Når platen synker, frigjøres vann, mantelen over smelter, og magma stiger. Her bygges vulkanøyer, ikke stratovulkaner på et kontinent. Klassiske eksempler er De japanske øyer, Marianene og Aleutene.
 
 #### Kontinent mot kontinent
 
@@ -336,7 +336,7 @@ Norge ligger i dag midt inne på den eurasiske platen, tusenvis av kilometer fra
 
 Kaledonidene ble til da landområder i dagens Europa kolliderte med Amerika og Grønland. Fjellkjededannelsen pågikk gjennom ordovicium, silur og devon, for 400–500 millioner år siden (NGU, u.å.-a). Store bergflak ble skjøvet som skyvedekker gjennom det som i dag er Skandinavia. Bergartene ble omdannet, blant annet til gneis. Fjellene vi går i, er den eroderte roten av den kjeden, ikke fjell som istiden har bygd.
 
-Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm ble det en riftdal med strekk, store forkastninger og vulkaner. De yngste bergartene på land i Norge har spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
+Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm ble det en riftdal med strekk, store forkastninger og vulkaner. I Oslofeltet har bergartene spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. De er ikke de yngste bergartene på land i Norge. På Andøya ligger sedimenter fra midtre og øvre jura og nedre kritt, de eneste bergartene av mesozoisk alder på land i landet (NGU, 2016). I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
 
 Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsisen presset skorpen ned. Da isen smeltet, hevet landet seg. Marin grense, det høyeste havnivået etter siste istid, ligger i dag fra 0 til 220 m over havet, avhengig av sted (NGU, u.å.-b). Mange fjorder og daler følger også om lag 200 millioner år gamle forkastningssoner fra da Atlanteren åpnet seg.
 
@@ -346,7 +346,7 @@ Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsis
 
 - **astenosfære:** varm, fast silikatmantel (ca. 100–350 km, ca. 1300–1400 °C) som deformeres seigt over millioner av år.
 
-- **platetrekk (slab pull):** den dominerende drivkraften, om lag 90 % av kraften. Kald, tett eklogitt i den synkende platen trekker platen ned i subduksjonssonen.
+- **platetrekk (slab pull):** den dominerende drivkraften. Kald, tett eklogitt i den synkende platen trekker platen ned i subduksjonssonen.
 
 - **ryggskyv (ridge push):** gravitasjonsglidning. Litosfæren sklir nedover fra midthavsryggen, som står 2–3 km høyere enn dyphavssletten.
 
@@ -396,7 +396,7 @@ Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsis
 
 - Mantelen er fast bergart. Litosfæreplatene flyter ikke på flytende magma, men på varm peridotitt i astenosfæren, som deformeres seigt over millioner av år.
 
-- Platetrekk (slab pull) er hoveddrivkraften. Havbunnslitosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker platen med seg. Det utgjør om lag 90 % av kraften.
+- Platetrekk (slab pull) er hoveddrivkraften. Havbunnslitosfære omdannes til tung eklogitt under subduksjon, og tyngdekraften trekker platen med seg.
 
 - Smelting krever en utløser. Trykkfall (dekompresjon) ved midthavsrygger, vann (flukssmelting) ved subduksjonssoner, eller ekstra varme ved mantelplymer (hotspots).
 

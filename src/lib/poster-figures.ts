@@ -230,7 +230,7 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     alt: "Romsdalseggen, en smal fjellrygg mellom to daler",
     heading: "Romsdalseggen",
     caption:
-      "Romsdalseggen er en smal fjellrygg mellom to daler som er formet av is. Foto: –Any–. Lisens: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/). https://commons.wikimedia.org/wiki/File:Rauma,_Norway_-_panoramio_(58)_(cropped).jpg",
+      "Romsdalseggen er en smal fjellrygg mellom to daler som er formet av is. Foto: –Any–. Lisens: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/). https://commons.wikimedia.org/wiki/File:Rauma,_Norway_-_panoramio_%2858%29_%28cropped%29.jpg",
     marks: [
       { x: 55, y: 38, n: "1", text: "Egg", tone: "warm" },
       { x: 22, y: 70, n: "2", text: "Dal", tone: "cold" },

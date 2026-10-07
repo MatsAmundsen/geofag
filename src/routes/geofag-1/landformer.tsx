@@ -130,7 +130,7 @@ function LandformerPage() {
           (Torghatten) og i Iddefjorden.
         </li>
         <li>
-          <strong className="text-foreground">Rotsvingning (Biologisk forvitring):</strong> Planterøtter
+          <strong className="text-foreground">Rotsprengning (Biologisk forvitring):</strong> Planterøtter
           og lav kiler seg inn i mikroskopiske sprekker. Når trærne vokser, utøver rotdiameteren et
           mekanisk sidetrykk (turgortrykk) som tvinger sprekkene fra hverandre.
         </li>
@@ -373,8 +373,10 @@ function LandformerPage() {
           <strong className="text-foreground">Endemorene og Raet:</strong> Når brefronten ble liggende i ro over
           lengre tid (fordi snøtilvekst og smelting balanserte hverandre), fungerte breen som en gigantisk
           bulldoser som skjøv opp en mektig voll av stein og grus. Det mest berømte eksempelet er <strong>Raet</strong>,
-          en enorm endemorenerygg dannet under kuldeperioden <em>Yngre Dryas</em> for ca. 12 800–11 700 år siden,
-          som kan følges fra Østfold og Vestfold rundt hele kysten til Trøndelag og Nord-Norge (NGU, u.å.).
+          et israndtrinn fra <em>Yngre Dryas</em> (ca. 12 800–11 700 år siden). Det er ikke én rygg til Nord-Norge,
+          men en lang sone av morene, breelvgrus og strandmateriale, særlig på begge sider av Oslofjorden.
+          Mot vest kan sonen følges til Lysefjorden. Lenger nord har morener fra samme tid andre navn,
+          som Halsnøymorenen og Herdlamorenen (SNL, u.å.).
         </li>
         <li>
           <strong className="text-foreground">Esker:</strong> En slangeformet, langstrakt grusrygg avsatt av
@@ -511,7 +513,7 @@ function LandformerPage() {
         />
         <Term
           name="Raet"
-          def="Norges største endemorene, dannet under kuldeperioden Yngre Dryas for ca. 12 000 år siden."
+          def="Israndtrinn fra Yngre Dryas (ca. 12 800–11 700 år siden), særlig langs begge sider av Oslofjorden. Ikke én rygg til Nord-Norge."
         />
         <Term
           name="Den paleiske overflaten"
@@ -524,6 +526,7 @@ function LandformerPage() {
       </TermGrid>
 
       <Quiz
+        intro="Velg ett svar per spørsmål."
         questions={[
           {
             prompt: "Hva er den fundamentale forskjellen på forvitring og erosjon?",

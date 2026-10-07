@@ -2,6 +2,8 @@
 
 > **Kompetansemål i Geofag 1 (LK20)**
 >
+> Målet er at du skal kunne gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene (Udir, u.å.).
+>
 > **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Jordens indre prosesser:* Magmadannelse, silikatkjemi, viskositet og gass i magma.
@@ -145,7 +147,7 @@ Tre forhold virket sammen:
 
 ### Fagradalsfjall
 
-Utbruddene på Reykjaneshalvøya (Fagradalsfjall 2021–2023 og Sundhnúkur 2023–2024) er annerledes. Her kommer basaltisk magma (SiO₂ ca. 48 %) opp langs sprekker, uten isbre over.
+Utbruddene på Reykjaneshalvøya (Fagradalsfjall 2021–2023 og Sundhnúkur 2023–2025) er annerledes (Veðurstofa Íslands, u.å.). Her kommer basaltisk magma (SiO₂ ca. 48 %) opp langs sprekker, uten isbre over.
 
 Tyntflytende basalt avgasser i fontener og lavastrømmer. Asken når ikke stratosfæren, og flytrafikken er ikke truet. Infrastruktur og hus, som i Grindavík, kan likevel bli truet.
 

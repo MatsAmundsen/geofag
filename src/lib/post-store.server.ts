@@ -694,6 +694,46 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     flag: "isbreer-og-landformer-copy-2026-10-07",
     slug: "isbreer-og-landformer",
     stale: ["(SNL, u.å.-a). Prosessen krever vann"],
+  },
+  {
+    flag: "g1-fakta-platetektonikk-2026-10-07",
+    slug: "platetektonikk",
+    stale: ["65 000 km lang undersjøisk fjellkjede, Den midtatlantiske"],
+  },
+  {
+    flag: "g1-fakta-jordsystemene-2026-10-07",
+    slug: "jordsystemene",
+    stale: ["35 gigatonn i 2010"],
+  },
+  {
+    flag: "g1-fakta-jordskjelv-2026-10-07",
+    slug: "jordskjelv",
+    stale: ["tettheten øker med om lag 30 prosent"],
+  },
+  {
+    flag: "g1-fakta-bergarter-2026-10-07",
+    slug: "bergarter",
+    stale: ["safir 9"],
+  },
+  {
+    flag: "g1-fakta-isbreer-2026-10-07",
+    slug: "isbreer-og-landformer",
+    stale: ["mistet 10 % av arealet"],
+  },
+  {
+    flag: "g1-fakta-vann-og-flom-2026-10-07",
+    slug: "vann-og-flom",
+    stale: ["Sandig jord har større porøsitet"],
+  },
+  {
+    flag: "g1-fakta-vulkaner-2026-10-07",
+    slug: "vulkaner",
+    stale: ["Sundhnúkur 2023–2024"],
+  },
+  {
+    flag: "g1-fakta-landformer-2026-10-07",
+    slug: "landformer",
+    stale: ["kan følges fra Østfold og Vestfold"],
   }
 ];
 

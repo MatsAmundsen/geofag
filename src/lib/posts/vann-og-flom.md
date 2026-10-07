@@ -30,7 +30,7 @@ Grunnvann er vann som fyller og strømmer gjennom porer og sprekker i undergrunn
 
 Hvor mye vann bakken kan holde, følger porøsiteten. I norske løsmasser og bergarter går den fra nærmest null i krystalline bergarter til 50 prosent i løsmasser (NGU, u.å.-c). Om vannet kan strømme, følger permeabiliteten. Løst pakket, godt sortert grus og sand har store, sammenhengende hulrom og høy permeabilitet. Silt og leire har små korn, er tett pakket og har lav permeabilitet. Usortert materiale har også lav permeabilitet, fordi de små kornene fyller hulrommene mellom de store. I fjell styres permeabiliteten av sprekker, med unntak av sandstein og kalkbergarter (NGU, u.å.-b).
 
-Regn og snøsmelting gir både overflateavrenning og infiltrasjon. Vannet som siger ned, blir først markvann og deretter grunnvann. Sandig jord har større porøsitet enn leirholdig jord (NVE, u.å.-b).
+Regn og snøsmelting gir både overflateavrenning og infiltrasjon. Vannet som siger ned, blir først markvann og deretter grunnvann. Leire har høy total porøsitet og lav permeabilitet. Sand har lavere total porøsitet, men høyere effektiv porøsitet og permeabilitet (Freeze & Cherry, 1979).
 
 I en tørkeperiode med lav vannføring kan elvene bestå av 40–100 prosent grunnvann (NGU, u.å.-b). Grunnvannsmagasiner som ikke ligger langs et vassdrag, får nytt vann bare fra nedbør og snøsmelting. De er derfor følsomme for klimaendringer, ekstreme forhold og menneskelige inngrep (NVE, u.å.-b).
 
