@@ -1,141 +1,124 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/tema/klima/oversikt](/tema/klima/oversikt). Her kan du redigere **hele fagteksten**.
-
-> **Kompetansemål**
+> **Kompetansemål i Geofag 2 (LK20)**
 >
-> Gjøre rede for klimasystemet og hvordan menneskelig aktivitet kan påvirke det. Skill vær og klima, pådriv og tilbakekobling, naturlig svingning og antropogent pådriv (Utdanningsdirektoratet, 2020).
-
-> **Hva denne siden eier**
+> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Udir, u.å.-b).
 >
-> Strålingsbalanse, drivhuseffekt, pådriv og tilbakekobling. Is-albedo som forsterker. Havet som varmelager. Modusene, arkivene og isen som jobber i år har egne sider.
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a). Klimasystemet er disse delene sett sammen.
+>
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Energibudsjettet er en slik modell av inn og ut.
 
-## Vær er dager. Klima er tiår.
+## Hva er klima?
 
-En mild januaruke er vær. At Vestlandet er vått, og at norskekysten på 60°N er mildere enn Labrador på samme bredde — det er klima. Klima er statistikken: typisk temperatur, nedbør, vind og is over minst tretti år (WMO, u.å.).
+```widget
+KlimaDefinisjon
+```
 
-Derfor kan du ikke «motbevise» klimaendring med én kald vinter. Og du kan ikke «bevise» den med én varm uke. Du trenger mønsteret.
+[Klimasystemet (oversikt)](/tema/klima/oversikt) eier stråling, pådriv og tilbakekobling. Kartet ligger på [klima og klimasystemer](/tema/klima). Isen som jobber i år, ligger i [kryosfæren](/tema/kryosfaeren).
 
-**Klima:** Gjennomsnitt og variasjonsmønster i vær over lang tid, vanligvis tretti år eller mer. Klimaet beskriver hva som er typisk — og hva som er ekstremt — på et sted.
+Klimasystemet består av fem deler: atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren. Utveksling av energi, vann og karbondioksid bestemmer mønstre og variasjon. Systemet endrer seg både av egen indre dynamikk og av ytre pådriv (WMO, u.å.).
 
-## Fem deler, ett system
+## Inn og ut
 
-Klimasystemet er ikke bare luft. Atmosfæren, havet, isen, landoverflaten og livet bytter varme, vann og karbon. Endrer du én del, svarer de andre.
+```widget
+StralingDiagram
+```
 
-Kryosfæren er mer enn innlandsisen på figuren. Havis i Arktis styrer albedo fra uke til uke. Permafrost lagrer karbon i bakken. Breer i Norge er små, men de er synlige agenter: de graver om sommeren og mater elvene. Isen er treg, men ikke stille.
+Sola varmer jordas system. Over året tar land, hav og atmosfære opp omtrent 240 watt per kvadratmeter. Når innstråling og varmestråling ut er like store, er den globale temperaturen relativt stabil. Noe som øker eller minker inn eller ut, forskyver den balansen (NASA, 2009).
 
-**Permafrost:** Bakke som er frosset året rundt. Lagrer karbon. Tiner den, kan noe av karbonet slippe ut som CO₂ eller metan.
+| Ledd | Andel av innstrålingen |
+| --- | --- |
+| Reflektert tilbake til rommet | 29 prosent, mest fra skyer |
+| Tatt opp i atmosfæren | 23 prosent |
+| Tatt opp ved overflaten | 48 prosent |
 
-**Kryosfæren:** All is og snø på jorda: innlandsis, isbreer, havis og permafrost. Den er hvit, kald og treg — og den henger tett sammen med havet.
+Tallene gjelder 340 watt per kvadratmeter som treffer jorda (NASA, 2009).
 
-![Jorda fra verdensrommet med tynn atmosfære, hav, skyer og innlandsis](/images/fig-klimasystem.jpg)
+## Drivhuseffekten
 
-*Ett system, flere etasjer — Det du ser her, er klimasystemet: luft, hav, is og land i samme bilde. Ingenting av dette kjører alene.*
+```widget
+DrivhusForklaring
+```
 
-## Inn og ut — og det som holder igjen
+Drivhusgasser holder igjen varme nær overflaten. Den naturlige drivhuseffekten holder en gjennomsnittstemperatur på omtrent 15 °C. Tar man bort karbondioksid, faller overflaten med omtrent 33 °C. Brenning av fossilt brensel har sluppet ut karbondioksid og andre drivhusgasser og forskjøvet energibalansen. Karbondioksid har økt både i atmosfæren og i havet (NASA, u.å.-a).
 
-Sola sender inn kortbølget lys. Jorda sender ut langbølget stråling. Er inn og ut i balanse over tid, er den globale temperaturen stabil. Er de ikke det, varmes eller kjøles planeten til balansen er gjenopprettet.
+Vanndamp, karbondioksid og metan slipper lite gjennom av mange bølgelengder i varmestrålingen. Karbondioksid tar opp varme i et vindu der vanndamp slipper mer gjennom, og dytter dermed budsjettet ut av balanse (NASA, 2009).
 
-Enkelte gasser i lufta — vanndamp, karbondioksid, metan — slipper sollyset inn, men bremser varmen på vei ut (NASA, u.å.-a). Uten dem ville jorda vært en frossen stein. Med for mye av dem stiger temperaturen.
+## Pådriv og tilbakekobling
 
-**Drivhuseffekt:** At atmosfæren slipper sollys inn, men holder igjen noe av varmen jorda sender ut. Den er naturlig og nødvendig. Mennesket forsterker den ved å øke mengden av visse gasser.
+```widget
+PaadrivForklaring
+```
 
-**Strålingspådriv:** Et dytt som forskyver balansen mellom stråling inn og ut. Solen kan dytte. Vulkaner kan dytte. Drivhusgasser kan dytte. Et positivt pådriv varmer. Et negativt kjøler.
+Naturlige pådriv er blant annet endret solstyrke, små endringer i jordas bane og akse over tusener av år, og store vulkanutbrudd. Menneskeskapte pådriv er blant annet partikler i lufta, avskoging og mer karbondioksid og andre drivhusgasser. Drivhusgassene minker varmen som stråler ut til rommet (NASA, 2009). WMO regner vulkan, sol, bane og menneskelig endring av atmosfæren og arealbruk som ytre pådriv (WMO, u.å.).
 
-Globalt middel i toppen av atmosfæren er omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går som langbølge. Drivhusgasser bremser ut. Tallene er avrundede globale middel (NASA, u.å.-c; IPCC, 2021).
-
-**Samme jord, to ledd i energien**
-
-*Venstre: sola treffer mest ved ekvator — det du allerede har i vindkapitlet. Høyre: den tynne glødende atmosfæren er teppet som bremser varmen på vei ut.*
-
-## Pådriv dytter. Tilbakekobling forsterker eller demper.
-
-Et pådriv er det første dytet. En tilbakekobling er systemets svar. Noen svar forsterker dytten. Noen svekker den.
-
-Vanndamp er den sterkeste drivhusgassen i lufta — men den er i hovedsak en forsterker, ikke det første dytet. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer varme. Det kalles en positiv tilbakekobling.
-
-**Vanndamp:** Den sterkeste drivhusgassen i lufta, men mengden styres av temperaturen. Derfor er den en forsterker, ikke det første dytet.
-
-**Tilbakekobling:** Når en endring utløser en ny endring som enten forsterker (positiv) eller demper (negativ) den første. Positiv betyr ikke «bra». Det betyr forsterkende.
+| | Pådriv | Tilbakekobling |
+| --- | --- | --- |
+| Hva det er | Det første dytet på energibalansen | Systemets svar |
+| Eksempel | Mer karbondioksid | Vanndamp, eller tap av is ved polene |
+| Retning | Kan varme eller kjøle | Kan forsterke eller svekke dytten |
 
 ## Isen er et speil
 
-Hvit is kaster mye sollys tilbake. Mørkt hav tar det opp. Smelter isen, blir flaten mørkere, tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen — en av de tydeligste forsterkerne i polarstrøk. Massebalanse, ELA og permafrost eier [kryosfæren](/tema/kryosfaeren) .
+```widget
+AlbedoFoto
+```
 
-**Albedo:** Hvor stor del av sollyset en flate kaster tilbake. Snø og is har høy albedo. Hav og skog har lav. Jo mørkere flate, jo mer energi tas opp.
-
-![Arktisk iskant der hvit is møter mørkt åpent hav](/images/fig-albedo.jpg)
-
-*To flater, to utfall — Samme sol. Hvit is sender mye tilbake. Mørkt vann tar det opp. Når iskanten trekker seg tilbake, vinner den mørke flaten.*
+Hvit is kaster mye sollys tilbake. Mørkt hav tar opp mer. Når is ved polene forsvinner, blir flaten mindre reflekterende. Det forsterker det opprinnelige pådrivet (NASA, 2009). Massebalanse og permafrost eier [kryosfæren](/tema/kryosfaeren).
 
 ## Havet husker
 
-Det meste av overskuddsvarmen de siste tiårene har gått i havet, ikke i lufta (NASA, u.å.-b). Derfor kan lufttemperaturen svinge fra år til år, mens havet jevnt tar opp mer energi.
+Vann kan lagre mye varme, sammenlignet med luft. Omtrent 90 prosent av overskuddsvarmen fra oppvarmingen det siste århundret er tatt opp i havet (NASA, u.å.-b). Derfor kan lufttemperaturen svinge fra år til år, mens havet tar opp det meste av overskuddet.
 
-AMOC — beltet du møtte under havstrømmer — er en del av dette minnet. Smelter mer is og kommer mer ferskvann ut i de nordiske hav, blir overflaten lettere. Da kan synkingen svekkes. Usikkerheten for Nord-Europa er reell, men beltet er ikke «slått av». Se også egen [fordypningsside om AMOC](/tema/klima/amoc) .
+Det trege beltet i Atlanteren har egen side: [AMOC](/tema/klima/amoc).
 
-![Nord-Atlanteren med varm overflate nordover og kaldt dyp](/images/fig-amoc.jpg)
+## Fire svingninger
 
-*Havet som klimaminne — Varmt nordover i lyset, kaldt sørover i mørket. Dette er tregere enn været — og derfor en del av klimaet, ikke av ukas prognose.*
+Oversikten eier inn og ut. Svingningene hører til den indre dynamikken, ikke til et nytt ytre pådriv (WMO, u.å.).
 
-## Fire svingninger. Fire sider.
+| Side | Hva siden eier |
+| --- | --- |
+| ENSO | Svingningen i det tropiske Stillehavet |
+| IOD | Svingningen i Det indiske hav |
+| NAO | Svingningen over Nord-Atlanteren |
+| AMOC | Det trege beltet i Atlanteren |
 
-Oversikten eier inn og ut. Modusene eier omfordeling. De flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig.
-
-- [ENSO](/tema/klima/enso) — tropisk Stillehav. Walker-cellen, El Niño og La Niña.
-
-- [IOD](/tema/klima/iod) — Det indiske hav. Dipolen mot Øst-Afrika og Australia.
-
-- [NAO](/tema/klima/nao) — Nord-Atlanteren. Trykkvippa inn mot norske vintre.
-
-- [AMOC](/tema/klima/amoc) — Atlanterens omveltning. Tregere enn været. Ikke en bryter.
-
-Les dem i den rekkefølgen. Hopp ikke til en modus før du kan skille pådriv fra svingning.
-
-## Klimaet har alltid endret seg
-
-Istidene kom og gikk. Jordas bane og helning endrer hvor sola treffer gjennom årtusener. Vulkaner kan kjøle i noen år. Solen svinger svakt. Det er ikke et argument mot at mennesket endrer klimaet nå. Det er bakgrunnen.
-
-I iskjerner sitter gamle luftbobler. De viser at temperatur og karbondioksid har fulgt hverandre lenge — og at dagens stigning i karbondioksid er brattere enn det isen har sett gjennom hundretusener av år.
-
-**Paleoklima:** Klimaet i fortiden, rekonstruert fra iskjerner, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er.
-
-Hvordan arkivene blir til kunnskap står under [paleoklima](/tema/paleoklima) . Hvorfor istidene kommer, står under [istider](/tema/milankovitch) .
-
-## Det mennesket gjør
-
-Når vi brenner kull, olje og gass, slipper vi ut karbon som har ligget i berggrunnen. Karbondioksid i lufta stiger. Det er et positivt strålingspådriv (IPCC, 2021). Vanndamp og is-albedo forsterker. Havet tar unna mye varme, men ikke alt — og det blir surere når det tar opp karbondioksid.
-
-Naturlig drivhuseffekt er ikke det samme som menneskeskapt forsterkning. Den første gjør planeten beboelig. Den andre forskyver klimaet vi har bygget samfunn i.
-
-**Antropogen:** Menneskeskapt. Antropogen klimapåvirkning er dytten fra våre utslipp og arealbruk, oppå den naturlige variasjonen.
+Les dem i den rekkefølgen. Arkivene ligger i [paleoklima](/tema/paleoklima). Hvorfor istidene kommer, ligger i [istider](/tema/milankovitch). Baneendringer over tusener av år er et naturlig pådriv (NASA, 2009).
 
 ## Norge i dette bildet
 
-Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mild for breddegraden. I et varmere klima holder lufta mer fukt. Vestlandet, som allerede tvinges av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
+```widget
+NorgeKlimaFoto
+```
 
-AMOC og NAO er sentrale usikkerhets- og variasjonsmomenter. En svekket nordovertransport av varme kan dempe oppvarmingen i Nord-Atlanteren uten å «slå av Golfstrømmen». Klima i Norge er et samspill mellom atmosfære, hav og geografi.
+Fastlands-Norge er mildere enn den nordlige beliggenheten skulle tilsi, fordi havstrømmer og vind transporterer varme hit. Kysten fra Oslofjorden til Troms har milde vintre. Innlandet har årvisst snødekke. Fjellene virker sterkt inn på hvordan nedbøren fordeler seg (SNL, u.å.).
 
-![Norsk kyst mot isete Labrador-landskap som kontrast](/images/fig-norge-labrador.jpg)
-
-*Samme bredde, ulikt klima — Norge er ikke mildt fordi vi ligger lenger sør. Vi er milde fordi luft og hav flytter varme hit. Endres det samspillet, endres det norske klimaet.*
-
-> **Til eksamen**
->
-> Skill vær og klima. Skill pådriv og tilbakekobling. Vanndamp forsterker, karbondioksid dytter. ENSO, IOD og NAO er naturlige svingninger, ikke synonymt med global oppvarming. Norges milde kyst er vestavind pluss hav — AMOC inkludert.
+Menneskelig påvirkning varmer atmosfæren, havet og landoverflaten, i hovedsak gjennom utslipp av drivhusgasser (WMO, u.å.). Det er et ytre pådriv, oppå den indre dynamikken.
 
 > **Vanlige misforståelser**
 >
-> «Klimaet har alltid endret seg» er sant, og det motbeviser ikke et menneskeskapt pådriv nå. Drivhuseffekten er ikke noe vi har funnet opp — vi forsterker en naturlig effekt. Og én kald vinter er vær.
+> En kald uke er vær. Den motbeviser ikke et skifte i det langvarige gjennomsnittet (WMO, u.å.).
+>
+> Vanndamp er en drivhusgass, men den er i hovedsak en tilbakekobling, ikke det første dytet (NASA, u.å.-a).
+>
+> El Niño, IOD og NAO er ikke oppvarmingstrenden. De hører til den indre dynamikken (WMO, u.å.).
 
 ## Viktige begreper
 
-**Klima:** Værmønster over tiår, ikke enkeltuker.
+**Klima:** Det langvarige mønsteret i været.
 
-**Strålingspådriv:** Dytt som forskyver inn og ut av energi.
+**Strålingspådriv:** Et dytt som endrer energi inn eller ut.
 
-**Tilbakekobling:** Svar som forsterker eller demper dytten.
+**Tilbakekobling:** Systemets svar, som kan forsterke eller svekke dytten.
 
-**Albedo:** Andel sollys som kastes tilbake.
+**Albedo:** Hvor stor del av sollyset en flate kaster tilbake.
 
-**ENSO:** Naturlig svingning i tropisk Stillehav.
+**Drivhuseffekt:** At gasser holder igjen varme nær overflaten.
 
-**Antropogen:** Menneskeskapt påvirkning.
+**Antropogen:** Menneskeskapt. Her: utslipp og arealbruk som ytre pådriv.
+
+## Test deg selv
+
+```widget
+QuizOversikt
+```

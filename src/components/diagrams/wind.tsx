@@ -173,7 +173,7 @@ export function OneVsThreeCellsDiagram() {
     <Diagram
       title="Én celle uten rotasjon, tre celler med rotasjon"
       heading="Hvorfor tre celler og ikke én? Corioliskraftens oppsplitting"
-      caption="I 1735 foreslo George Hadley at jorden hadde én gigantisk sirkulasjonscelle på hver halvkule: Varm luft stiger ved ekvator, strømmer helt til polen i høyden, synker over polisen og returnerer langs bakken (venstre globus). Men jorden roterer! Idet luften i høyden beveger seg nordover, avbøyes den kraftig mot høyre av Corioliskraften. Allerede ved 30° breddegrad er den blitt til en ren vestavind som ikke klarer å trenge lenger nord. Den hoper seg opp og tvinges ned til bakken. Dermed brytes den enkle termiske sløyfen opp i de tre cellene vi kjenner i dag (høyre globus): Hadleycellen, Ferrelcellen og Polarcellen."
+      caption="I 1735 foreslo George Hadley at jorden hadde én gigantisk sirkulasjonscelle på hver halvkule: Varm luft stiger ved ekvator, strømmer helt til polen i høyden, synker over polisen og returnerer langs bakken (venstre globus). Men jorden roterer. Idet luften i høyden beveger seg nordover, avbøyes den kraftig mot høyre av Corioliskraften. Allerede ved 30° breddegrad er den blitt til en ren vestavind som ikke klarer å trenge lenger nord. Den hoper seg opp og tvinges ned til bakken. Dermed brytes den enkle termiske sløyfen opp i de tre cellene vi kjenner i dag (høyre globus): Hadleycellen, Ferrelcellen og Polarcellen."
       viewBox="0 0 940 400"
       wide
     >
@@ -239,7 +239,7 @@ export function OneVsThreeCellsDiagram() {
 
             <rect x="65" y="325" width="340" height="42" rx="6" fill="#1c1417" stroke="#4a1820" strokeWidth="1.2" />
             <L x="235" y="344" fill={C.low} size={11.5} weight={800} anchor="middle">
-              Urealistisk: Ignorerer Corioliskraften helt!
+              Urealistisk: Ignorerer Corioliskraften helt.
             </L>
             <L x="235" y="358" fill={C.fg} size={10.5} anchor="middle">
               Luft i høyden kan aldri nå helt til polen uten å avbøyes.
@@ -308,7 +308,7 @@ export function OneVsThreeCellsDiagram() {
 
             <rect x="45" y="325" width="380" height="42" rx="6" fill="#101c22" stroke="#1c444f" strokeWidth="1.2" />
             <L x="235" y="344" fill={C.teal} size={11.5} weight={800} anchor="middle">
-              Coriolis avbøyer øvre luft ved 30°N ⟹ 3 celler!
+              Coriolis avbøyer øvre luft ved 30°N ⟹ 3 celler.
             </L>
             <L x="235" y="358" fill={C.fg} size={10.5} anchor="middle">
               Hadley og Polar er termisk direkte · Ferrel er termisk indirekte.
@@ -656,7 +656,7 @@ export function HadleyCloseupDiagram() {
               (+1,0 °C / 100 m)
             </L>
             <L x="12" y="69" fill="#fde68a" size={10} weight={700}>
-              Skyer fordamper!
+              Skyer fordamper.
             </L>
           </g>
 
@@ -690,7 +690,7 @@ export function SurfaceWindsDiagram() {
     <Diagram
       title="De globale overflatevindene på nordlig halvkule"
       heading="De tre vindbeltene ved bakken: Passater, vestavinder og polare østavinder"
-      caption="Vindene ved bakken drives av trykkgradienten mellom de globale trykkbeltene, men avbøyes til høyre av Corioliskraften på den roterende jorden: 1) Nordøstpassaten (0°–30°N): Luften trekkes sørover fra høytrykket ved 30° mot ITCZ, men avbøyes mot høyre og blåser jevnt fra nordøst mot sørvest. 2) Vestavindsbeltet (30°–60°N): Luften trekkes nordover mot lavtrykkene ved polarfronten og avbøyes kraftig mot høyre, slik at den blåser fra sørvest mot nordøst (dette beltet treffer Norge og bringer mild atlanterhavsluft). 3) Polare østavinder (60°–90°N): Iskald arktisk luft strømmer sørover fra polarhøytrykket og avbøyes mot vest (blåser fra øst mot vest). Husk den gylne meteorologiske regelen: Vinden har alltid navn etter retningen den KOMMER FRA!"
+      caption="Vindene ved bakken drives av trykkgradienten mellom de globale trykkbeltene, men avbøyes til høyre av Corioliskraften på den roterende jorden: 1) Nordøstpassaten (0°–30°N): Luften trekkes sørover fra høytrykket ved 30° mot ITCZ, men avbøyes mot høyre og blåser jevnt fra nordøst mot sørvest. 2) Vestavindsbeltet (30°–60°N): Luften trekkes nordover mot lavtrykkene ved polarfronten og avbøyes kraftig mot høyre, slik at den blåser fra sørvest mot nordøst (dette beltet treffer Norge og bringer mild atlanterhavsluft). 3) Polare østavinder (60°–90°N): Iskald arktisk luft strømmer sørover fra polarhøytrykket og avbøyes mot vest (blåser fra øst mot vest). Husk den gylne meteorologiske regelen: Vinden har alltid navn etter retningen den kommer fra."
       viewBox="0 0 940 480"
       wide
     >
@@ -785,7 +785,7 @@ export function SurfaceWindsDiagram() {
               Vinden har alltid navn etter retningen
             </L>
             <L x="16" y="62" fill={C.warm} size={12} weight={800}>
-              den KOMMER FRA, ikke dit den blåser!
+              den kommer fra, ikke dit den blåser.
             </L>
 
             <line x1="16" y1="78" x2="234" y2="78" stroke="#334155" />
@@ -812,14 +812,14 @@ export function SurfaceWindsDiagram() {
             </L>
 
             <L x="16" y="218" fill="#a5f3fc" size={11} weight={700}>
-              Coriolis avbøyer ALLTID til høyre!
+              Coriolis avbøyer alltid til høyre.
             </L>
           </g>
 
           {/* OPPGAVESAMMENDRAG NEDERST */}
           <rect x="45" y="405" width="850" height="36" rx="6" fill="#0d1822" stroke="#1e293b" strokeWidth="1.2" />
           <L x="470" y="427" fill={C.sand} size={12} weight={700} anchor="middle">
-            Globusperspektiv: Fra 30°N trekkes luften mot både 0° og 60°N — Coriolis avbøyer begge til høyre, og skaper motsatte vindretninger!
+            Globusperspektiv: Fra 30°N trekkes luften mot både 0° og 60°N. Coriolis avbøyer begge til høyre, og skaper motsatte vindretninger.
           </L>
         </>
       )}
@@ -933,7 +933,7 @@ export function GlobalClimateZonesDiagram() {
             Den gylne huskeregelen for geofagelever:
           </L>
           <L x="470" y="426" fill={C.sand} size={12} weight={800} anchor="middle">
-            Der luften i gjennomsnitt STIGER (0° og 60°N), blir det skyer og frodig liv. Der den SYNKER (30° og 90°N), tørker landskapet ut!
+            Der luften i gjennomsnitt stiger (0° og 60°N), blir det skyer og frodig liv. Der den synker (30° og 90°N), tørker landskapet ut.
           </L>
         </>
       )}
@@ -1057,7 +1057,7 @@ export function PolarFrontNorwayDiagram() {
           {/* Forklaringsbunn */}
           <rect x="40" y="375" width="860" height="42" rx="6" fill="#0f1722" stroke="#1e293b" strokeWidth="1.2" />
           <L x="470" y="401" fill={C.sand} size={12} weight={700} anchor="middle">
-            Polarfronten er en permanent kollisjonssone mellom varm og kald luft. Norge ligger midt i skuddlinjen for frontnedbør og stormer!
+            Polarfronten er en kollisjonssone mellom varm og kald luft. Norge ligger i vestavindsbeltet, der frontnedbør og lavtrykk er vanlige.
           </L>
         </>
       )}
