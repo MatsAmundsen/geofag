@@ -88,6 +88,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_NAO,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -365,6 +366,16 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  NaoForklaring: () => (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Den beskriver styrken på lavtrykket nær Island og
+        høytrykket nær Asorene. Stor trykkforskjell er positiv fase. Liten forskjell er negativ fase
+        (NOAA, u.å.).
+      </p>
+    </Callout>
+  ),
+  QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */

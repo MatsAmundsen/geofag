@@ -30,6 +30,6 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "oversikt": "Vær er det som skjer i dag. Klima er det som gjentar seg over tiår. Når du har trykk, vind, coriolis og hav, kan du se hvorfor klimaet henger sammen — og hvorfor det kan forskyves.",
   "enso": "Ingen enkelt svingning påvirker jordas vær fra år til år mer enn ENSO. Når passatvindene slakker av over det tropiske Stillehavet, forskyves planetens største varmelager — med flom, tørke og globale temperaturhopp som resultat.",
   "iod": "Indian Ocean Dipole er klimasyklusen i Det indiske hav. Når vest blir varmt og øst kaldt, får Øst-Afrika flom og Australia tørke. Snur vippa, snur været.",
-  "nao": "Den nordatlantiske oscillasjon (NAO) er atmosfærens store trykkvippe over Nord-Atlanteren. Svingningen i trykkgradienten mellom Azorhøytrykket og Islandslavtrykket styrer polarjetens posisjon, stormbanenes retning og om den norske vinteren blir mild og fuktig — eller preget av arktisk sprengkulde og blokkerende høytrykk.",
+  "nao": "Den nordatlantiske oscillasjon er trykkforskjellen mellom lavtrykket ved Island og høytrykket ved Asorene. Positiv fase gir sterkere jetstrøm og mer storm og varme i Nord-Europa.",
   "amoc": "Atlanterhavet har en enorm termisk motor: AMOC. Den frakter varme fra ekvator helt opp til Arktis og gjør Norge beboelig på 60°N. Men når isen smelter og ferskvann strømmer ut, settes stabiliteten på prøve.",
 };

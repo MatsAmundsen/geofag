@@ -514,6 +514,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "jordsystemene",
     stale: ["Hva er forvitring?", "AkviferForklaring", "IsostasiForklaring"],
   },
+  {
+    flag: "nao-copy-2026-10-07",
+    slug: "nao",
+    stale: ["Her kan du redigere", "sprengkulde"],
+  },
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {
