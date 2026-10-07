@@ -88,6 +88,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_ISTIDER,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -364,6 +365,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  IstidForklaring: () => (
+    <Callout title="Hva betyr «istid»?">
+      <p>
+        Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
+        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Store norske leksikon,
+        u.å.).
+      </p>
+    </Callout>
+  ),
+  QuizIstider: () => (
+    <Quiz questions={QUIZ_ISTIDER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

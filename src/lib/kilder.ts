@@ -1478,63 +1478,22 @@ export const KILDER = {
       href: "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
     },
     {
-      prefix: "National Aeronautics and Space Administration. (2000). ",
-      italic: "Milankovitch cycles and glaciation",
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Istid",
       suffix: ".",
-      href: "https://earthobservatory.nasa.gov/features/Milankovitch",
+      href: "https://snl.no/istid",
     },
     {
-      prefix:
-        "Hays, J. D., Imbrie, J., & Shackleton, N. J. (1976). Variations in the Earth’s orbit: Pacemaker of the ice ages. ",
-      italic: "Science, 194",
-      suffix: "(4270), 1121–1132.",
-      href: "https://doi.org/10.1126/science.194.4270.1121",
-    },
-    {
-      prefix:
-        "Lisiecki, L. E., & Raymo, M. E. (2005). A Pliocene-Pleistocene stack of 57 globally distributed benthic δ¹⁸O records. ",
-      italic: "Paleoceanography, 20",
-      suffix: "(1), PA1003.",
-      href: "https://doi.org/10.1029/2004PA001071",
-    },
-    {
-      prefix:
-        "Lüthi, D., Le Floch, M., Bereiter, B., Blunier, T., Barnola, J.-M., Siegenthaler, U., Raynaud, D., Jouzel, J., Fischer, H., Kawamura, K., & Stocker, T. F. (2008). High-resolution carbon dioxide concentration record 650,000–800,000 years before present. ",
-      italic: "Nature, 453",
-      suffix: "(7193), 379–382.",
-      href: "https://doi.org/10.1038/nature06949",
-    },
-    {
-      prefix:
-        "Walker, M., Johnsen, S., Rasmussen, S. O., Popp, T., Steffensen, J.-P., Gibbard, P., Hoek, W., Lowe, J., Andrews, J., Björck, S., Cwynar, L. C., Hughen, K., Kershaw, P., Kromer, B., Litt, T., Lowe, D. J., Nakagawa, T., Newnham, R., & Schwander, J. (2009). Formal definition and dating of the GSSP (Global Stratotype Section and Point) for the base of the Holocene using the Greenland NGRIP ice core, and selected auxiliary records. ",
-      italic: "Journal of Quaternary Science, 24",
-      suffix: "(1), 3–17.",
-      href: "https://doi.org/10.1002/jqs.1227",
-    },
-    {
-      prefix: "Berger, A., & Loutre, M. F. (2002). An exceptionally long interglacial ahead? ",
-      italic: "Science, 297",
-      suffix: "(5585), 1287–1288.",
-      href: "https://doi.org/10.1126/science.1076120",
-    },
-    {
-      prefix: "Intergovernmental Panel on Climate Change. (2021). ",
-      italic:
-        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
-      italic: "Marin grense",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
-      href: "https://www.ngu.no/emne/marin-grense",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
-      italic: "Om kart over marin grense",
-      suffix: ".",
-      href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   vaerkatastrofer: [
