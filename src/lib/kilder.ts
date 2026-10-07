@@ -1340,6 +1340,18 @@ export const KILDER = {
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor3.html",
     },
     {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021a). ",
+      italic: "Summary for policymakers. In Climate change 2021: The physical science basis",
+      suffix: ". C.3.4.",
+      href: "https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM.pdf",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021b). ",
+      italic: "FAQ 9.3: Will the Gulf Stream shut down?",
+      suffix: ". In Climate change 2021: The physical science basis.",
+      href: "https://www.ipcc.ch/report/ar6/wg1/downloads/faqs/IPCC_AR6_WGI_FAQ_Chapter_09.pdf",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",

@@ -34,15 +34,21 @@ Deretter deler hovedstrømmen seg. Én gren går inn i Indiahavet. Den andre gå
 
 Beltet flytter mer enn hundre ganger så mye vann som Amazonas. Varmt overflatevann er fattig på næringsstoffer og karbondioksid. På veien som dypt vann blir det rikt igjen. Kjølig, næringsrikt vann som kommer opp, gir vekst av alger og tare, og dermed starten på næringskjeden (NOAA, u.å.-a).
 
-## Ferskvann kan bremse beltet
+## Ferskvann og en saktere omveltning
 
 Beltet er sterkt, men lett å forstyrre. Forskning tyder på at klimaendringer kan påvirke det. Hvis global oppvarming gir mer regn i Nord-Atlanteren, og isbreer og havis smelter, kan varmt ferskvann legge seg på overflaten. Da kan det hindre at havis dannes, og nedsynkingen av kaldt, salt vann blir forstyrret. Denne rekken av hendelser kan gjøre beltet saktere, eller stoppe det. Det kan gi store temperaturendringer i Europa, og også andre steder i verden (NOAA, u.å.-b).
+
+IPCC skriver det mer presist. AMOC er svært sannsynlig å svekkes gjennom det 21. århundret, i alle utslippsscenarioer. Det er høy sikkerhet for at den går ned, og lav sikkerhet for hvor stor nedgangen blir. Det er middels sikkerhet for at det ikke blir et brått sammenbrudd før 2100. Hvis et slikt sammenbrudd likevel skjedde, ville det svært sannsynlig gi brå skifter i regionale værmønstre og i vannets kretsløp, blant annet tørrere forhold i Europa (IPCC, 2021a).
+
+Golfstrømmen er del av to mønstre: AMOC og den subtropiske gyren i Nord-Atlanteren. Gyren drives først og fremst av vind, og vinden ventes ikke å endre seg mye. Gyren bidrar mellom 2 og 10 ganger mer til Golfstrømmen enn AMOC gjør. Golfstrømmen vil ikke endre seg mye, og den ville ikke stoppe helt selv om AMOC gjorde det (IPCC, 2021b).
+
+I AMOC leverer Golfstrømmen overflatevann som kjøles, blir tettere og synker. Det blir kaldt, dypt vann som går sørover, om lag 1500 meter under Golfstrømmen. En grunn til svekkelsen er at vannet blir ferskere, fra smeltevann på Grønland, endret arktisk havis og mer nedbør over varmere hav i nord. Et målenett over Atlanteren har fulgt AMOC siden 2004. Serien er ikke lang nok til at en trend kan skilles fra den vanlige variasjonen. I fortiden har AMOC endret seg mye, særlig når klimaet gikk fra kaldere til varmere, men den har vært stabil i 8000 år (IPCC, 2021b).
 
 > **Vanlige misforståelser**
 >
 > Det trege beltet er ikke en vinddrevet overflatestrøm. Vinddrevne og tidevannsdrevne strømmer går mye raskere (NOAA, u.å.-a).
 >
-> At mer regn og smeltevann kan bremse beltet, betyr ikke at det allerede har stoppet. NOAA beskriver en mulig svekkelse hvis ferskvannet hindrer nedsynking (NOAA, u.å.-b).
+> At mer regn og smeltevann kan bremse beltet, betyr ikke at det allerede har stoppet. NOAA beskriver en mulig svekkelse hvis ferskvannet hindrer nedsynking (NOAA, u.å.-b). IPCC venter en svekkelse dette århundret, og måleserien fra 2004 er for kort til å vise en trend (IPCC, 2021a; IPCC, 2021b).
 >
 > En runde tar omtrent tusen år. Det er ikke det samme som været neste uke.
 
@@ -57,6 +63,8 @@ Beltet er sterkt, men lett å forstyrre. Forskning tyder på at klimaendringer k
 **Oppvelling:** At en gren av beltet varmes, blir lettere og stiger til overflaten.
 
 **Havisen og saltet:** Når havisen fryser, blir saltet liggende i vannet rundt, og vannet kan bli tungt nok til å synke.
+
+**Kaldt, dypt vann:** Overflatevann som kjøles, blir tettere og synker, og så går sørover om lag 1500 meter under Golfstrømmen (IPCC, 2021b).
 
 ## Test deg selv
 

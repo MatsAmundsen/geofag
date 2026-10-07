@@ -324,6 +324,8 @@ describe("amoc poster", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("vippepunkt"), false);
+    assert.equal(md.includes("## Ferskvann kan bremse beltet"), false);
+    assert.equal(md.includes("siden 2004"), true);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/klima/amoc"), true);
