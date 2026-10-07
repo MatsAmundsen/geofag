@@ -48,6 +48,8 @@ type InjectRule = {
   | { afterHeading: string }
   | { beforeImage: string }
   | { beforeLine: string }
+  /** Insert after the whole paragraph that contains the match (up to the next blank line). */
+  | { afterParagraph: string | RegExp }
 );
 
 const PLATE_INJECT_RULES: InjectRule[] = [
@@ -93,6 +95,13 @@ const PLATE_INJECT_RULES: InjectRule[] = [
 ];
 
 const CHAPTER_INJECT_RULES: InjectRule[] = [
+  {
+    // Etter «… Vi har dermed fått en divergerende plategrense» / «Denne prosessen er det som
+    // setter igang platedrift.» i Platetektonikk-
+    // teksten i CMS (ikke i md-seeden). Skrivemåten «i gang» godtas også.
+    widgets: ["SmeltingUnderTynnPlate"],
+    afterParagraph: /setter i ?gang platedrift/i,
+  },
   {
     widgets: ["MagmaViscosity"],
     beforeLine: "**Magmatyper**",
@@ -411,7 +420,23 @@ function applyRule(markdown: string, rule: InjectRule, insertion: string): strin
   if ("beforeImage" in rule) {
     return insertBefore(markdown, imagePattern(rule.beforeImage), insertion);
   }
+  if ("afterParagraph" in rule) {
+    return insertAfterParagraph(markdown, rule.afterParagraph, insertion);
+  }
   return insertBefore(markdown, linePattern(rule.beforeLine), insertion);
+}
+
+function insertAfterParagraph(markdown: string, needle: string | RegExp, insertion: string): string {
+  const pattern =
+    typeof needle === "string"
+      ? new RegExp(escapeRegExp(needle))
+      : new RegExp(needle.source, needle.flags.replace("g", ""));
+  const match = pattern.exec(markdown);
+  if (!match) return markdown;
+  const from = match.index + match[0].length;
+  const blank = /\r?\n[ \t]*\r?\n/.exec(markdown.slice(from));
+  const end = blank ? from + blank.index : markdown.length;
+  return markdown.slice(0, end) + insertion + markdown.slice(end);
 }
 
 function headingPattern(needle: string): RegExp {

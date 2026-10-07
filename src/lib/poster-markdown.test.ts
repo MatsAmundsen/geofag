@@ -836,3 +836,49 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("/tema/felt-hav-luft-is"), true);
   });
 });
+
+describe("smelting under tynn plate", () => {
+  const liveSnippet = [
+    "## Platedrift - hva er det som driver platene?",
+    "",
+    "Innad i hver enkelt plate, har vi varierende tykkelse.",
+    "Dette fører til at trykket blir akkurat lavt nok. **Vi har dermed fått en divergerende plategrense**",
+    "",
+    "Denne prosessen er det som setter igang platedrift. ",
+    "",
+    "---",
+    "---",
+    "",
+    "Etter at smelteprosessen av mantelbergarter har funnet sted.",
+    "",
+    "## Hvorfor mantelberg smelter: Dekompresjon",
+    "",
+    "Tekst.",
+    "",
+    "## Plategrensene: Tre relative bevegelser",
+    "",
+  ].join("\n");
+
+  const count = (md: string, id: string) =>
+    md.split(`\`\`\`widget\n${id}\n\`\`\``).length - 1;
+
+  it("places the figure once, right after «setter igang platedrift.»", () => {
+    const out = injectPosterWidgets(liveSnippet);
+    assert.equal(count(out, "SmeltingUnderTynnPlate"), 1);
+    const sentence = out.indexOf("setter igang platedrift.");
+    const fig = out.indexOf("```widget\nSmeltingUnderTynnPlate");
+    const rule = out.indexOf("---", sentence);
+    assert.ok(sentence > 0 && fig > sentence && fig < rule, "figure sits between the sentence and the rule");
+    assert.ok(fig < out.indexOf("Hvorfor mantelberg smelter"), "not in the old melting section");
+  });
+
+  it("accepts the spelling «i gang»", () => {
+    const out = injectPosterWidgets(liveSnippet.replace("igang", "i gang"));
+    assert.equal(count(out, "SmeltingUnderTynnPlate"), 1);
+    assert.ok(out.indexOf("```widget\nSmeltingUnderTynnPlate") > out.indexOf("setter i gang platedrift."));
+  });
+
+  it("does not place the figure when the sentence is missing", () => {
+    assert.equal(count(injectPosterWidgets(chapterMarkdown), "SmeltingUnderTynnPlate"), 0);
+  });
+});
