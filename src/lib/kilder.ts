@@ -1204,6 +1204,12 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/el-nino-and-la-nina-frequently-asked-questions",
     },
     {
+      prefix: "Climate Prediction Center. (u.å.). ",
+      italic: "Oceanic Niño Index (ONI)",
+      suffix: ". National Oceanic and Atmospheric Administration.",
+      href: "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/oni/v6/",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",

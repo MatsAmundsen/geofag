@@ -323,7 +323,8 @@ describe("enso poster", () => {
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
-    assert.equal(md.includes("Niño 3.4"), false);
+    assert.equal(md.includes("Niño 3.4"), true);
+    assert.equal(md.includes("Noen ganger ser havet ut som El Niño eller La Niña"), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/klima/enso"), true);

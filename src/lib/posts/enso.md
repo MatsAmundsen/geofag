@@ -24,7 +24,15 @@ Stråling og pådriv ligger i [oversikten](/tema/klima/oversikt). Kartet ligger 
 | El Niño | Varmere enn gjennomsnittet i sentrum og øst | De østlige vindene svekkes eller snur | Mindre over Indonesia, mer over det tropiske Stillehavet |
 | La Niña | Kaldere enn gjennomsnittet i sentrum og øst | De østlige vindene blir sterkere | Mer over Indonesia, mindre over det sentrale tropiske Stillehavet |
 
-Noen ganger ser havet ut som El Niño eller La Niña, uten at lufta følger med. Da er det ikke en full fase. Begge deler må være med (L'Heureux, 2014).
+Noen ganger ligner havet på El Niño eller La Niña, uten at lufta følger med. Da er det ikke en full fase. Begge deler må være med (L'Heureux, 2014).
+
+## Niño 3.4 og ONI
+
+Den oseaniske Niño-indeksen, på engelsk Oceanic Niño Index (ONI), er ett mål på ENSO. Den er et tremåneders løpende middel av avviket i havoverflatetemperaturen i Niño 3.4-området. Området ligger mellom 5° nord og 5° sør, og mellom 120° og 170° vest. Avviket regnes mot sentrerte 30-års normalperioder som oppdateres hvert femte år. Tallgrunnlaget er ERSST versjon 6 (Climate Prediction Center, u.å.).
+
+En varm periode markeres når avviket har ligget minst 0,5 grader over normalen i fem overlappende sesonger på rad. En kald periode markeres på samme måte når avviket har ligget minst 0,5 grader under normalen (Climate Prediction Center, u.å.).
+
+ONI er ett av flere mål. Andre indekser kan bekrefte om hav og luft har fulgt med. Til offisiell overvåking og varsling bruker National Weather Service nå den relative oseaniske Niño-indeksen, RONI. De nyeste ONI-verdiene er et estimat. De kan endre seg inntil to måneder etter at de først er lagt ut (Climate Prediction Center, u.å.).
 
 ## Walker-sirkulasjonen
 
@@ -77,6 +85,10 @@ Innenfor et tiår er det varmeste året vanligvis et El Niño-år, og det kaldes
 **Walker-sirkulasjonen:** Kretsen langs ekvator, med stigning i vest og synking i øst.
 
 **Fjernvirkning:** Teleconnection. Endret sirkulasjon som merkes langt fra det tropiske Stillehavet.
+
+**Niño 3.4:** Havområdet mellom 5° nord og 5° sør og mellom 120° og 170° vest, der ONI måles (Climate Prediction Center, u.å.).
+
+**ONI:** Den oseaniske Niño-indeksen. Tremåneders middel av temperaturavviket i Niño 3.4. Ett mål på ENSO. Offisiell overvåking bruker nå RONI (Climate Prediction Center, u.å.).
 
 ## Test deg selv
 

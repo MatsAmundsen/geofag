@@ -517,7 +517,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
   {
     flag: "enso-copy-2026-10-07",
     slug: "enso",
-    stale: ["Her kan du redigere", "Niño 3.4"],
+    stale: ["Her kan du redigere", "Kelvin-bølger"],
+  },
+  {
+    flag: "enso-copy-2-2026-10-07",
+    slug: "enso",
+    stale: ["Noen ganger ser havet ut som El Niño eller La Niña"],
   },
 ];
 
