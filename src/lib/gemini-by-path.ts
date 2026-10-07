@@ -80,7 +80,6 @@ const SLOTS: Record<string, GeminiSlot[]> = {
   "/tema/energi-hav-luft": [GEMINI.energiOversikt],
   "/tema/klima/nao": [GEMINI.naoRossby, GEMINI.naoIndeks],
   "/geofag-1/bergarter-og-landformer": [GEMINI.bergartssyklus, GEMINI.relativDatering, GEMINI.kornfordeling],
-  "/geofag-1/vann-og-flom": [GEMINI.hydrogramTo],
   "/geofag-1/feltarbeid": [GEMINI.feltbokUtfylt],
 };
 

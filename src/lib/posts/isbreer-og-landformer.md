@@ -110,7 +110,7 @@ Forvitring betyr at berget brytes ned der det ligger, uten at det blir fraktet b
 
 ### Frostsprengning
 
-Når vann fryser til is, øker volumet. Vann som har trengt inn i sprekker i berget, presser derfor sprekkene utover når det fryser. Skjer dette mange ganger, kiles biter av berget løs. Dette kalles frostsprengning (frost wedging) (SNL, u.å.-a). Prosessen krever vann, frost og sprekker i berget, altså at hydrosfæren, atmosfæren og geosfæren virker sammen.
+Når vann fryser til is, øker volumet. Vann som har trengt inn i sprekker i berget, presser derfor sprekkene utover når det fryser. Skjer dette mange ganger, kiles biter av berget løs. Dette kalles frostsprengning (frost wedging) (SNL, u.å.-a). I naturen sprekker berget likevel oftest fordi islinser vokser: Vann trekkes mot isen i sprekken, og isen vokser og presser sprekken videre ved temperaturer like under frysepunktet, ca. −3 til −6 °C. Derfor betyr mange fryse–tine-sykluser og tilgang på vann mer enn sterk kulde (Murton mfl., 2006). Prosessen krever vann, frost og sprekker i berget, altså at hydrosfæren, atmosfæren og geosfæren virker sammen.
 
 ### Ur
 

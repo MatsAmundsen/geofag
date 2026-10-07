@@ -4,23 +4,32 @@ function Lager({
   x,
   y,
   w,
+  h = 70,
   title,
+  sub,
   stroke,
   fill,
 }: {
   x: number;
   y: number;
   w: number;
+  h?: number;
   title: string;
+  sub?: string;
   stroke: string;
   fill: string;
 }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={72} rx="10" fill={fill} stroke={stroke} strokeWidth="1.8" />
-      <L x={x + w / 2} y={y + 44} fill={C.fg} size={16} anchor="middle" weight={600}>
+      <rect x={x} y={y} width={w} height={h} rx="10" fill={fill} stroke={stroke} strokeWidth="1.8" />
+      <L x={x + w / 2} y={y + (sub ? 30 : 41)} fill={C.fg} size={17} anchor="middle" weight={700}>
         {title}
       </L>
+      {sub ? (
+        <L x={x + w / 2} y={y + 52} fill={C.muted} size={14} anchor="middle">
+          {sub}
+        </L>
+      ) : null}
     </g>
   );
 }
@@ -28,85 +37,86 @@ function Lager({
 export function KretslopDiagram() {
   return (
     <Diagram
-      title="Kretsløp med lager og piler. Snø, mark, grunnvann, innsjø, elv."
+      title="Det hydrologiske kretsløpet: fordampning fra havet og land, nedbør, snø, markvann, grunnvann, innsjø, elv og tilbake til havet"
       heading="Hydrologisk kretsløp"
-      caption="Kretsløp med lager og piler. Snø, mark, grunnvann, innsjø, elv."
-      viewBox="0 0 820 520"
+      caption="Vannets kretsløp. Sola driver fordampningen, og mest vann fordamper fra havet. Vanndampen blir skyer og faller som nedbør. På land lagres vannet en stund som snø, markvann, grunnvann og i innsjøer. Derfra renner det via elver tilbake til havet, eller det fordamper igjen (NGU, u.å.-e)."
+      viewBox="0 0 860 500"
+      scroll
     >
       {(m) => (
         <>
-          <L x="410" y="36" fill={C.muted} size={14} anchor="middle">
-            tilførsel
-          </L>
-          <rect
-            x="300"
-            y="48"
-            width="220"
-            height="56"
-            rx="10"
-            fill="#163038"
-            stroke={C.rain}
-            strokeWidth="1.8"
-          />
-          <L x="410" y="82" fill={C.fg} size={16} anchor="middle" weight={600}>
-            nedbør
-          </L>
-          <Arrow d="M 410 108 L 410 148" marker={m.teal} color={C.rain} width={2.4} />
+          {/* Lager */}
+          <Lager x={310} y={20} w={260} title="Atmosfæren" sub="vanndamp og skyer" stroke={C.rain} fill="#163038" />
+          <Lager x={20} y={170} w={170} title="Snø og is" sub="lagres en stund" stroke={C.cold} fill="#16303a" />
+          <Lager x={240} y={170} w={200} title="Mark" sub="markvann og planter" stroke={C.sand} fill="#2a241c" />
+          <Lager x={480} y={170} w={140} title="Innsjø" stroke={C.rain} fill="#163038" />
+          <Lager x={480} y={300} w={140} title="Elv" stroke={C.rain} fill="#163038" />
+          <Lager x={240} y={330} w={200} title="Grunnvann" sub="i porer og sprekker" stroke={C.teal} fill="#152028" />
+          <Lager x={700} y={300} w={140} h={140} title="Havet" sub="største lager" stroke={C.cold} fill="#123048" />
 
-          <L x="410" y="176" fill={C.muted} size={14} anchor="middle">
-            lager
+          {/* Fordampning fra havet */}
+          <Arrow d="M 750 296 L 576 82" marker={m.warm} color={C.warm} width={2.8} />
+          <L x="680" y="160" fill={C.warm} size={15} weight={700}>
+            Fordampning
           </L>
-          <Lager x={24} y={192} w={140} title="Snø" stroke={C.cold} fill="#16303a" />
-          <Lager x={180} y={192} w={140} title="mark" stroke={C.sand} fill="#2a241c" />
-          <Lager x={336} y={192} w={148} title="grunnvann" stroke={C.teal} fill="#152028" />
-          <Lager x={500} y={192} w={140} title="innsjø" stroke={C.rain} fill="#163038" />
-          <Lager x={656} y={192} w={140} title="elv" stroke={C.rain} fill="#163038" />
-
-          <Arrow d="M 164 228 L 178 228" marker={m.cold} color={C.cold} width={2.2} />
-          <Arrow d="M 320 228 L 334 228" marker={m.warm} color={C.sand} width={2.2} />
-          <Arrow d="M 484 228 L 498 228" marker={m.teal} color={C.teal} width={2.2} />
-          <Arrow d="M 640 228 L 654 228" marker={m.teal} color={C.rain} width={2.2} />
-
-          <Arrow d="M 94 268 L 94 360" marker={m.warm} color={C.warm} width={2.2} />
-          <Arrow d="M 250 268 L 250 360" marker={m.warm} color={C.warm} width={2.2} />
-          <Arrow d="M 410 268 L 580 360" marker={m.cold} color={C.teal} width={2.2} />
-          <Arrow d="M 726 268 L 726 360" marker={m.cold} color={C.rain} width={2.2} />
-
-          <L x="172" y="356" fill={C.muted} size={14} anchor="middle">
-            tap
-          </L>
-          <rect
-            x="24"
-            y="368"
-            width="296"
-            height="72"
-            rx="10"
-            fill="#3a3428"
-            stroke={C.warm}
-            strokeWidth="1.8"
-          />
-          <L x="172" y="400" fill={C.fg} size={15} anchor="middle" weight={600}>
-            evapotranspirasjon
-          </L>
-          <L x="172" y="422" fill={C.muted} size={13} anchor="middle">
-            tilbake til lufta
+          <L x="680" y="178" fill={C.muted} size={13}>
+            mest fra havet
           </L>
 
-          <rect
-            x="500"
-            y="368"
-            width="296"
-            height="72"
-            rx="10"
-            fill="#16303a"
-            stroke={C.cold}
-            strokeWidth="1.8"
-          />
-          <L x="648" y="400" fill={C.fg} size={16} anchor="middle" weight={600}>
-            hav
+          {/* Evapotranspirasjon fra land og innsjø */}
+          <Arrow d="M 420 166 L 470 96" marker={m.warm} color={C.warm} width={2.4} />
+          <L x="462" y="134" fill={C.warm} size={14} weight={700}>
+            Evapotranspirasjon
           </L>
-          <L x="648" y="422" fill={C.muted} size={13} anchor="middle">
-            magasin og mottaker
+
+          {/* Nedbør */}
+          <Arrow d="M 318 80 C 220 90, 130 110, 105 166" marker={m.rain} color={C.rain} width={2.6} dash="6 4" />
+          <Arrow d="M 360 94 L 330 166" marker={m.rain} color={C.rain} width={2.6} dash="6 4" />
+          <L x="30" y="108" fill={C.rain} size={15} weight={700}>
+            Nedbør
+          </L>
+          <L x="30" y="126" fill={C.muted} size={13}>
+            regn og snø
+          </L>
+
+          {/* Snøsmelting */}
+          <Arrow d="M 192 205 L 236 205" marker={m.cold} color={C.cold} width={2.4} />
+          <L x="214" y="262" fill={C.cold} size={13} anchor="middle">
+            Smelting
+          </L>
+
+          {/* Infiltrasjon */}
+          <Arrow d="M 340 242 L 340 326" marker={m.teal} color={C.teal} width={2.6} />
+          <L x="350" y="290" fill={C.teal} size={14} weight={700}>
+            Infiltrasjon
+          </L>
+
+          {/* Overflateavrenning til innsjø og elv */}
+          <Arrow d="M 442 205 L 476 205" marker={m.sand} color={C.sand} width={2.4} />
+          <Arrow d="M 442 232 C 462 260, 468 280, 478 312" marker={m.sand} color={C.sand} width={2.4} />
+          <L x="470" y="272" fill={C.sand} size={13} weight={700}>
+            Overflateavrenning
+          </L>
+
+          {/* Innsjø til elv */}
+          <Arrow d="M 600 242 L 600 296" marker={m.rain} color={C.rain} width={2.4} />
+
+          {/* Grunnvannstilsig til elv */}
+          <Arrow d="M 442 362 L 476 345" marker={m.teal} color={C.teal} width={2.4} />
+          <L x="450" y="392" fill={C.teal} size={13}>
+            Grunnvannstilsig
+          </L>
+
+          {/* Elv til hav */}
+          <Arrow d="M 622 335 L 696 335" marker={m.rain} color={C.rain} width={2.6} />
+          <L x="660" y="325" fill={C.muted} size={12} anchor="middle">
+            til havet
+          </L>
+
+          {/* Grunnvann rett ut i havet */}
+          <Arrow d="M 340 402 C 340 470, 600 470, 700 420" marker={m.teal} color={C.teal} width={2} dash="5 4" />
+          <L x="520" y="482" fill={C.teal} size={13} anchor="middle">
+            Noe grunnvann renner rett ut i havet
           </L>
         </>
       )}
@@ -114,49 +124,48 @@ export function KretslopDiagram() {
   );
 }
 
+const HYDRO = { top: 60, base: 270, flow: 236 };
+
 function HydrographPanel({
   x,
-  y,
   w,
-  h,
   path,
   color,
-  fill,
   title,
   xlabel,
+  showBaseLabel,
 }: {
   x: number;
-  y: number;
   w: number;
-  h: number;
   path: string;
   color: string;
-  fill: string;
   title: string;
   xlabel: string;
+  showBaseLabel?: boolean;
 }) {
-  const base = y + h;
+  const { top, base, flow } = HYDRO;
   return (
     <g>
-      <L x={x} y={y - 8} fill={C.fg} size={15} weight={600}>
+      <L x={x} y={top - 16} fill={C.fg} size={17} weight={700}>
         {title}
       </L>
-      <L x={x} y={y + 14} fill={C.muted} size={13}>
-        vannføring
-      </L>
-      <line x1={x} y1={y + 22} x2={x} y2={base} stroke={C.dim} strokeWidth="1.8" />
+      <line x1={x} y1={top} x2={x} y2={base} stroke={C.dim} strokeWidth="1.8" />
       <line x1={x} y1={base} x2={x + w} y2={base} stroke={C.dim} strokeWidth="1.8" />
-      <path d={`${path} L ${x + w} ${base} L ${x} ${base} Z`} fill={fill} opacity="0.28" />
-      <path
-        d={path}
-        fill="none"
-        stroke={color}
-        strokeWidth="2.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <L x={x + w} y={base + 22} fill={C.muted} size={13} anchor="end">
-        tid · {xlabel}
+      <L x={x - 8} y={base + 5} fill={C.muted} size={13} anchor="end">
+        0
+      </L>
+      {/* Grunnvannstilsig: elva har vann også før og etter flommen */}
+      <rect x={x} y={flow} width={w} height={base - flow} fill={C.teal} opacity="0.16" />
+      <line x1={x} y1={flow} x2={x + w} y2={flow} stroke={C.teal} strokeWidth="1.4" strokeDasharray="6 4" />
+      {showBaseLabel ? (
+        <L x={x + 10} y={base - 10} fill={C.teal} size={13}>
+          grunnvannstilsig
+        </L>
+      ) : null}
+      <path d={`${path} L ${x + w} ${base} L ${x} ${base} Z`} fill={color} opacity="0.22" />
+      <path d={path} fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <L x={x + w} y={base + 24} fill={C.muted} size={14} anchor="end">
+        tid ({xlabel}) →
       </L>
     </g>
   );
@@ -165,34 +174,35 @@ function HydrographPanel({
 export function HydrographDiagram() {
   return (
     <Diagram
-      title="To hydrogram: spiss regnflom mot bred snøsmelteflom."
+      title="To hydrogram side om side med samme vannføringsakse: spiss regnflom mot bred snøsmelteflom. Begge elvene har grunnvannstilsig før og etter flommen."
       heading="To hydrogram"
-      caption="To hydrogram: spiss regnflom mot bred snøsmelteflom."
-      viewBox="0 0 820 500"
+      caption="To hydrogram side om side, med samme akse for vannføring. Regnflommen stiger og synker raskt (timer). Snøsmelteflommen er bred og varer lenge (dager til uker). Elva tørker ikke ut mellom flommene: Grunnvannstilsiget gir vannføring hele tiden."
+      viewBox="0 0 860 310"
+      scroll
     >
       {() => (
         <>
+          <g transform="rotate(-90 24 165)">
+            <L x="24" y="165" fill={C.muted} size={14} anchor="middle">
+              vannføring →
+            </L>
+          </g>
           <HydrographPanel
-            x={70}
-            y={48}
-            w={700}
-            h={160}
+            x={64}
+            w={350}
             title="Spiss regnflom"
             xlabel="timer"
             color={C.rain}
-            fill={C.rain}
-            path="M 70 208 C 160 206 210 198 250 150 S 300 48 338 42 S 385 78 420 128 S 500 200 770 208"
+            showBaseLabel
+            path="M 64 236 C 120 236 140 234 165 205 S 192 82 214 76 S 244 130 270 178 S 330 228 414 230"
           />
           <HydrographPanel
-            x={70}
-            y={286}
-            w={700}
-            h={160}
+            x={490}
+            w={350}
             title="Bred snøsmelteflom"
             xlabel="dager–uker"
             color={C.cold}
-            fill={C.cold}
-            path="M 70 446 C 160 438 250 400 340 360 S 470 300 560 308 S 680 360 770 446"
+            path="M 490 236 C 540 234 580 206 620 168 S 690 112 722 118 S 794 186 840 220"
           />
         </>
       )}
