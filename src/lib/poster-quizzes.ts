@@ -796,3 +796,59 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_FARER: QuizQuestion[] = [
+  {
+    prompt: "Når er vindstyrken orkan i Norge?",
+    options: [
+      "Når middelvinden er sterkere enn 32,6 m/s, målt ti meter over bakken i ti minutter.",
+      "Når et vindkast passerer 20 m/s.",
+      "Når en tropisk syklon har kategori 3.",
+    ],
+    answer: 0,
+    explain: "Se «Orkan er to ulike ting». Storm ligger under denne grensen.",
+  },
+  {
+    prompt: "Hva er en tropisk orkan?",
+    options: [
+      "En tropisk syklon med middelvind på minst 74 mph.",
+      "All vind over 32,6 m/s på norskekysten.",
+      "En tornado med tverrmål på 100 meter.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Orkan er to ulike ting». I vestlige Nord-Stillehavet kalles de tyfoner. Kategori 1 starter ved 119 km/t.",
+  },
+  {
+    prompt: "Hvilke orkaner kan gi dødelig stormflo?",
+    options: [
+      "Bare kategori 5.",
+      "Orkaner i alle kategorier.",
+      "Bare orkaner som treffer Norge.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Norskekysten og tropene». Skalaen graderer vinden. Stormflo, regnflom og tornadoer kan komme i alle kategorier.",
+  },
+  {
+    prompt: "Hva er stormflo?",
+    options: [
+      "Særlig høy vannstand langs kysten i forbindelse med storm.",
+      "Det vanlige tidevannet to ganger i døgnet.",
+      "En tornado over havet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Stormflo». I Oslofjorden 16. oktober 1987 sto vannet 1,5 meter over normalt høyvann.",
+  },
+  {
+    prompt: "Hva er en tornado?",
+    options: [
+      "En lokal virvelvind, den kraftigste av virvelvindene, med tverrmål i størrelsesorden 100 meter.",
+      "En tropisk syklon med øye.",
+      "Et regionalt snøskredvarsel.",
+    ],
+    answer: 0,
+    explain: "Se «Tornado». Skypumper og støvvirvler er svakere virvelvinder.",
+  },
+];

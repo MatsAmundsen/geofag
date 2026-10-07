@@ -87,6 +87,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_FARER,
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
@@ -364,6 +365,19 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  OrkanForklaring: () => (
+    <Callout title="Hva betyr «orkan»?">
+      <p>
+        Orkan er den sterkeste av alle vinder: sterkere enn 32,6 m/s, målt ti meter over bakken i ti
+        minutter. Ordet brukes også om lavtrykket som gir vinden. En tropisk orkan er en tropisk
+        syklon, ikke den samme grensen (Store norske leksikon, u.å.-a; National Hurricane Center,
+        u.å.-a).
+      </p>
+    </Callout>
+  ),
+  QuizFarer: () => (
+    <Quiz questions={QUIZ_FARER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 

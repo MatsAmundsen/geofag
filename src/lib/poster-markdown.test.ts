@@ -312,6 +312,27 @@ describe("jordsystemene poster", () => {
   });
 });
 
+describe("vaerkatastrofer poster", () => {
+  it("keeps the hazard poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/vaerkatastrofer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["OrkanForklaring", "QuizFarer"]) {
+      assert.equal(ids.has(id), true, `vaerkatastrofer missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("baroklin"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/vaerkatastrofer"), true);
+  });
+});
+
 describe("stripCatalogImageCaptions", () => {
   it("drops the italic line under a known photo so PhotoFigure is not doubled", () => {
     const md =
