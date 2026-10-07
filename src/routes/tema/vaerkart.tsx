@@ -33,7 +33,7 @@ function VaerkartPage() {
       banner="/images/banner-trykk.jpg"
       bannerAlt="Synoptisk værkart over Nord-Atlanteren og Skandinavia med isobarer, lavtrykkssentre og fronter"
       prev={{ to: "/tema/vindsystemet", label: "Forrige: Vindsystemet" }}
-      next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
+      next={{ to: "/tema/lokale-vaersystemer", label: "Neste: Lokale værsystemer" }}
       kilder={KILDER_G2.vaerkart}
       posterSlug="vaerkart"
       post={post}

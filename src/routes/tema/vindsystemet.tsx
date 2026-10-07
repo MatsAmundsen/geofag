@@ -33,7 +33,7 @@ function VindsystemetPage() {
       banner="/images/banner-vind.jpg"
       bannerAlt="Jordas atmosfære sett fra bane med skyformasjoner over kontinenter og hav"
       prev={{ to: "/tema/hoytrykk-lavtrykk", label: "Forrige: Høytrykk og lavtrykk" }}
-      next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
+      next={{ to: "/tema/vaerkart", label: "Neste: Værkart" }}
       kilder={KILDER.vindsystemet}
       posterSlug="vindsystemet"
       post={post}
