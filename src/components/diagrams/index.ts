@@ -136,6 +136,8 @@ export {
   CalderaFormationDiagram,
   EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
+  JordasBolgerDiagram,
+  PartikkelbolgerDiagram,
   IcelandContrastDiagram,
   JanMayenDiagram,
   MagmaViscosityDiagram,

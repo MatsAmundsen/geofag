@@ -1,3 +1,13 @@
+> **Kompetansemål i Geofag 2 (LK20)**
+>
+> Målet er at du skal kunne gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren (Udir, u.å.-b).
+>
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om komponenter og prosesser i dem (Udir, u.å.-a). Lufttrykk og loddrett bevegelse av luft er slike prosesser i atmosfæren.
+>
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Luftsøylen og snittet gjennom høytrykk og lavtrykk er slike modeller.
+
 ## Hva er lufttrykk?
 
 Vi lever på bunnen av et hav av luft. Luften består mest av nitrogen (78 %) og oksygen (21 %). Den føles vektløs, men alle gassmolekylene har masse, og tyngdekraften trekker dem mot bakken. Luften over oss presser derfor ned på alt den hviler på. Dette trykket kaller vi lufttrykk. Det er vekten av hele luftsøylen over et sted, helt opp til verdensrommet, fordelt på arealet den hviler på (NOAA, u.å.-a).
