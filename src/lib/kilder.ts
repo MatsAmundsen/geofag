@@ -473,6 +473,44 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.npolar.no/tema/jan-mayen/",
     },
+    {
+      prefix: "Leka steinsenter. (u.å.). ",
+      italic: "Lekas opprinnelse",
+      suffix: ".",
+      href: "http://www.leka-steinsenter.no/geologi/lekas_opprinnelse_norsk.htm",
+    },
+    {
+      prefix:
+        "Dunning, G. R., & Pedersen, R. B. (1988). U/Pb ages of ophiolites and arc-related plutons of the Norwegian Caledonides: Implications for the development of Iapetus. ",
+      italic: "Contributions to Mineralogy and Petrology, 98",
+      suffix: "(1), 13–23.",
+      href: "https://doi.org/10.1007/BF00371904",
+    },
+    {
+      prefix:
+        "Titus, S. J., Fossen, H., Pedersen, R. B., Vigneresse, J. L., & Tikoff, B. (2002). Pull-apart formation and strike-slip partitioning in an obliquely divergent setting, Leka Ophiolite, Norway. ",
+      italic: "Tectonophysics, 354",
+      suffix: "(1–2), 101–119.",
+      href: "https://doi.org/10.1016/S0040-1951(02)00293-9",
+    },
+    {
+      prefix: "Trollfjell Geopark. (u.å.). ",
+      italic: "Leka",
+      suffix: ".",
+      href: "https://trollfjellgeopark.no/besok-geoparken/leka/",
+    },
+    {
+      prefix: "Løvø, G. (2014, 28. oktober). ",
+      italic: "For 500 millioner år siden så Midt-Norge ut som Indonesia",
+      suffix: ". forskning.no (Norges geologiske undersøkelse).",
+      href: "https://www.forskning.no/partner-norges-geologiske-undersokelse-geofag/for-500-millioner-ar-siden-sa-midt-norge-ut-som-indonesia/534066",
+    },
+    {
+      prefix: "Amundsen, B. (2021, 22. januar). ",
+      italic: "Fjell i Norge har vært over 8000 meter høye",
+      suffix: ". forskning.no.",
+      href: "https://www.forskning.no/geologi/fjell-i-norge-har-vaert-over-8000-meter-hoye/1799186",
+    },
   ],
   isbre: [
     {
@@ -480,6 +518,13 @@ export const KILDER = {
       italic: "Slik arbeider isbreen",
       suffix: ".",
       href: "https://ndla.no/r/geografi/slik-arbeider-isbreen/6c8858f799",
+    },
+    {
+      prefix:
+        "Murton, J. B., Peterson, R., & Ozouf, J.-C. (2006). Bedrock fracture by ice segregation in cold regions. ",
+      italic: "Science, 314",
+      suffix: "(5802), 1127–1129.",
+      href: "https://doi.org/10.1126/science.1132127",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -566,6 +611,32 @@ export const KILDER = {
       italic: "Løsmasser og glasiale landformer i Norge",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/losmasser",
+    },
+    {
+      prefix:
+        "Murton, J. B., Peterson, R., & Ozouf, J.-C. (2006). Bedrock fracture by ice segregation in cold regions. ",
+      italic: "Science, 314",
+      suffix: "(5802), 1127–1129.",
+      href: "https://doi.org/10.1126/science.1132127",
+    },
+    {
+      prefix: "Matsuoka, N., & Murton, J. (2008). Frost weathering: Recent advances and future directions. ",
+      italic: "Permafrost and Periglacial Processes, 19",
+      suffix: "(2), 195–210.",
+      href: "https://doi.org/10.1002/ppp.620",
+    },
+    {
+      prefix: "Egholm, D. L., Nielsen, S. B., Pedersen, V. K., & Lesemann, J.-E. (2009). Glacial effects limiting mountain height. ",
+      italic: "Nature, 460",
+      suffix: "(7257), 884–887.",
+      href: "https://doi.org/10.1038/nature08263",
+    },
+    {
+      prefix:
+        "Nielsen, S. B., Gallagher, K., Leighton, C., Balling, N., Svenningsen, L., Jacobsen, B. H., Thomsen, E., Nielsen, O. B., Heilmann-Clausen, C., Egholm, D. L., Summerfield, M. A., Clausen, O. R., Piotrowski, J. A., Thorsen, M. R., Huuse, M., Abrahamsen, N., King, C., & Lykke-Andersen, H. (2009). The evolution of western Scandinavian topography: A review of Neogene uplift versus the ICE (isostasy–climate–erosion) hypothesis. ",
+      italic: "Journal of Geodynamics, 47",
+      suffix: "(2–3), 72–95.",
+      href: "https://doi.org/10.1016/j.jog.2008.09.001",
     },
   ],
   vannFlom: [
