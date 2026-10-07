@@ -151,7 +151,27 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   Seismogram: () => <SeismogramDiagram />,
   BoundaryQuakes: () => <BoundaryQuakesDiagram />,
   NorwayEarthquakes: () => <NorwayEarthquakesDiagram />,
-  QuizJordskjelv: () => <Quiz questions={QUIZ_JORDSKJELV} />,
+  HyposenterForklaring: () => (
+    <Callout title="Hva betyr «hyposenter»?">
+      <p>
+        Hyposenteret (hypocenter), også kalt fokus, er stedet i dypet der bruddet starter. Episenteret
+        (epicenter) er punktet på overflaten rett over. Neste ord du trenger, er seismisk bølge: det
+        er energien som sprer seg ut fra hyposenteret og rister bakken.
+      </p>
+    </Callout>
+  ),
+  IntraplateForklaring: () => (
+    <Callout title="Hva betyr «intraplate»?">
+      <p>
+        Intraplate betyr inne på en plate, ikke ved en aktiv plategrense. Norge ligger inne på Den
+        eurasiske platen. Skjelvene her kalles intraplate-jordskjelv. Neste ord du trenger, er
+        forkastning: et gammelt brudd som kan gli på nytt når spenningen blir stor nok.
+      </p>
+    </Callout>
+  ),
+  QuizJordskjelv: () => (
+    <Quiz questions={QUIZ_JORDSKJELV} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   SilicateStructure: () => <SilicateStructureDiagram />,
   RockCycle: () => <RockCycleDiagram />,
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,

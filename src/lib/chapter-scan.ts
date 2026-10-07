@@ -139,6 +139,36 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Beerenberg — Norges eneste aktive vulkan",
   },
   {
+    match: /^hva er et jordskjelv/i,
+    label: "Jordskjelv",
+    subtitle: "Plutselig brudd og elastisk tilbakefjæring",
+  },
+  {
+    match: /p-bølger og s-bølger/i,
+    label: "Bølger",
+    subtitle: "P- og S-bølger og skyggesonen",
+  },
+  {
+    match: /hvor skjer de store skjelvene/i,
+    label: "Plategrenser",
+    subtitle: "Rygg, synkende plate og transform",
+  },
+  {
+    match: /hvorfor skjelver norge/i,
+    label: "Norge",
+    subtitle: "Intraplate, spredning og landheving",
+  },
+  {
+    match: /^tsunami:/i,
+    label: "Tsunami",
+    subtitle: "Undersjøiske skjelv og norske skredbølger",
+  },
+  {
+    match: /^fare og risiko/i,
+    label: "Risiko",
+    subtitle: "Fare, eksponering og sikring av bygg",
+  },
+  {
     match: /tilbakefjæring|jordskjelvfysikk/i,
     label: "Tilbakefjæring",
     subtitle: "Reids teori og den seismiske syklusen",

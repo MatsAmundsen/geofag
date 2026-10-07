@@ -14,9 +14,9 @@ function Star({ x, y, r = 7 }: { x: number; y: number; r?: number }) {
 export function BoundaryQuakesDiagram() {
   return (
     <Diagram
-      title="Grunne skjelv ved rygg og transform. Dype skjelv i den synkende platen ved subduksjon."
+      title="Skjelv ved rygg, transform og der en plate synker."
       heading="Skjelv ved plategrenser"
-      caption="Grunne skjelv oppstår ved midthavsrygger og transformforkastninger der litosfæren er tynn og sprø. Ved subduksjonssone trekkes den kalde oseaniske litosfæren dypt ned i astenosfæren; brudd og fasetransformasjoner i den nedsynkende platen skaper en skrå skjelvsone (Wadati-Benioff-sonen) helt ned til 670–700 kilometers dyp."
+      caption="Skjelv oppstår ved midthavsrygger. Transformforkastninger er kjent for grunne skjelv. Der en havbunnsplate synker, blir skjelvene sterke og ødeleggende. De store skjelvene sitter ved plategrenser, ikke inne på en plate slik som i Norge."
       viewBox="0 0 820 400"
     >
       {(m) => (
@@ -82,7 +82,7 @@ export function BoundaryQuakesDiagram() {
             midthavsrygg
           </L>
           <L x="188" y={92} fill={C.low} size={13}>
-            grunne skjelv (&lt; 20 km)
+            grunne skjelv
           </L>
           <L x="348" y={92} fill={C.low} size={13} anchor="middle">
             transform
@@ -94,7 +94,7 @@ export function BoundaryQuakesDiagram() {
             synkende plate
           </L>
           <L x="560" y="168" fill={C.low} size={13} anchor="end">
-            Wadati-Benioff-sone
+            skjelv i platen
           </L>
           <L x="680" y="58" fill={C.low} size={15}>
             vulkanbue
@@ -110,7 +110,7 @@ export function SeismogramDiagram() {
     <Diagram
       title="Seismogram og seismiske bølger"
       heading="P-bølger, S-bølger og lokalisering av episenter"
-      caption="Når et jordskjelv inntreffer, forplanter energien seg som tre hovedgrupper bølger. P-bølgene (primære kompresjonsbølger) er raskest og ankommer først. Deretter kommer S-bølgene (sekundære skjærbølger) med større amplitude. Tidsdifferansen Δt øker lineært med avstanden til episenteret. Overflatebølgene (Rayleigh og Love) ankommer sist, men har størst amplitude og lavest frekvens, og forårsaker de største bygningsødeleggelsene. Tre seismiske stasjoner gir nøyaktig posisjon via sirkeltriangulering."
+      caption="P-bølgen kommer først, S-bølgen etter. Tidsforskjellen mellom dem blir større jo lenger unna skjelvet er, og tre stasjoner kan derfor peke ut episenteret. Bølgene langs overflaten kommer sist og rister bygningene mest."
       viewBox="0 0 840 420"
     >
       {() => (
@@ -143,7 +143,7 @@ export function SeismogramDiagram() {
             P-bølge ankomst
           </L>
           <L x="150" y="104" fill={C.muted} size={11} anchor="middle">
-            (kompresjon, ~6 km/s)
+            (kompresjon, kommer først)
           </L>
 
           {/* S-bølge ankomst ved x=280 */}
@@ -158,7 +158,7 @@ export function SeismogramDiagram() {
             S-bølge ankomst
           </L>
           <L x="280" y="104" fill={C.muted} size={11} anchor="middle">
-            (skjærbølge, ~3,5 km/s)
+            (skjær, kommer etter)
           </L>
 
           {/* Tidsdifferanse Δt markering */}
@@ -166,7 +166,7 @@ export function SeismogramDiagram() {
           <line x1="150" y1="208" x2="150" y2="222" stroke={C.sand} strokeWidth="2" />
           <line x1="280" y1="208" x2="280" y2="222" stroke={C.sand} strokeWidth="2" />
           <L x="215" y="234" fill={C.sand} size={13} weight={700} anchor="middle">
-            Δt = t_S - t_P → gir avstand
+            tidsforskjell gir avstand
           </L>
 
           {/* Overflatebølger ankomst ved x=410 */}
@@ -238,13 +238,13 @@ export function SeismogramDiagram() {
           <L x="650" y="338" fill={C.fg} size={12}>Rullebølge / sidebølge</L>
 
           <L x="50" y="362" fill={C.muted} size={12}>Hastighet i jordskorpen:</L>
-          <L x="230" y="362" fill={C.fg} size={12}>Raskest (~6–8 km/s)</L>
-          <L x="440" y="362" fill={C.fg} size={12}>Middels (~3,5–4,5 km/s)</L>
-          <L x="650" y="362" fill={C.fg} size={12}>Tregest (~2–3 km/s)</L>
+          <L x="230" y="362" fill={C.fg} size={12}>Raskest</L>
+          <L x="440" y="362" fill={C.fg} size={12}>Langsommere</L>
+          <L x="650" y="362" fill={C.fg} size={12}>Tregest</L>
 
           <L x="50" y="386" fill={C.muted} size={12}>Utbredelse i væsker:</L>
           <L x="230" y="386" fill={C.teal} size={12} weight={600}>Går gjennom fast og væske</L>
-          <L x="440" y="386" fill={C.warm} size={12} weight={600}>Stanser i væske (ytre kjerne!)</L>
+          <L x="440" y="386" fill={C.warm} size={12} weight={600}>Stanser i væske (ytre kjerne)</L>
           <L x="650" y="386" fill={C.low} size={12} weight={600}>Kun langs overflaten</L>
         </>
       )}
@@ -681,9 +681,9 @@ export function VolcanicHazardsDiagram() {
 export function EarthquakeWavePhysicsDiagram() {
   return (
     <Diagram
-      title="Bølgefysikk og S-bølgenes skyggesone"
-      heading="P-bølger, S-bølger og beviset for flytende ytre kjerne"
-      caption="Primære P-bølger er longitudinelle kompresjonsbølger der partiklene svinger parallelt med bølgeretningen; de forplanter seg gjennom både faste bergarter og væsker (hastighet Vp = sqrt((K + 4/3μ)/ρ)). Sekundære S-bølger er transversale skjærbølger med partikkelbevegelse vinkelrett på bølgeretningen (Vs = sqrt(μ/ρ)). Fordi væsker mangler skjærstivhet (μ = 0), kan S-bølger IKKE forplante seg gjennom væsker. Richard Dixon Oldham oppdaget i 1906 at seismografer mellom 103° og 180° aldri registrerer direkte S-bølger — det ugjendrivelige beviset på at jordens ytre kjerne er flytende."
+      title="P-bølger, S-bølger og skyggesonen"
+      heading="Hvorfor den ytre kjernen må være flytende"
+      caption="P-bølger er kompresjon og går gjennom både fast berg og væske. S-bølger er skjær og stopper i væske. Derfor kommer ikke S-bølgene fram på den andre siden av jorda. R.D. Oldham så dette i jordskjelvregistreringer i 1906, og kjernen ble identifisert."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -721,7 +721,7 @@ export function EarthquakeWavePhysicsDiagram() {
             Partikkelbevegelse: ↔ Parallelt med bølgens retning
           </L>
           <L x="55" y="186" fill={C.muted} size={11}>
-            Vp = √((K + 4/3μ) / ρ) ≈ 6–13 km/s · Går gjennom både fast og væske!
+            Går gjennom både fast berg og væske.
           </L>
 
           {/* S-bølge visualisering */}
@@ -743,10 +743,10 @@ export function EarthquakeWavePhysicsDiagram() {
             Partikkelbevegelse: ↕ Vinkelrett på bølgens retning
           </L>
           <L x="55" y="360" fill={C.muted} size={11}>
-            Vs = √(μ / ρ) ≈ 3,5–7 km/s · Krever skjærstivhet (μ &gt; 0)
+            Krever at stoffet kan skjæres, altså at det er fast.
           </L>
           <L x="55" y="378" fill={C.low} size={11} weight={700}>
-            I væske er μ = 0 → S-bølger stanser fullstendig!
+            I væske stanser S-bølgene.
           </L>
 
           {/* Høyre panel: Jordkloden og S-bølgenes skyggesone */}
@@ -803,7 +803,7 @@ export function EarthquakeWavePhysicsDiagram() {
 
             {/* Etiketter på kjerne */}
             <L x="0" y="-35" fill="#fff" size={11} weight={700} anchor="middle">
-              Flytende ytre kjerne (Fe-Ni)
+              Flytende ytre kjerne
             </L>
             <L x="0" y="4" fill="#000" size={9} weight={700} anchor="middle">
               Fast kjerne
@@ -811,7 +811,7 @@ export function EarthquakeWavePhysicsDiagram() {
           </g>
 
           <L x="460" y="395" fill={C.muted} size={11}>
-            S-bølger stanser ved kjerne-mantel-grensen (Gutenberg-diskontinuiteten, 2900 km dyp).
+            S-bølger stanser ved grensen mot den flytende ytre kjernen.
           </L>
         </>
       )}
@@ -822,9 +822,9 @@ export function EarthquakeWavePhysicsDiagram() {
 export function ElasticReboundDiagram() {
   return (
     <Diagram
-      title="Harry Fielding Reids elastiske tilbakefjæringsteori (1910)"
-      heading="Hvordan jordskjelv bygges opp og utløses"
-      caption="Etter jordskjelvet i San Francisco i 1906 analyserte geodeten Harry Fielding Reid oppmålinger av landskapet. Han formulerte teorien om elastisk tilbakefjæring: 1: En uforstyrret bergartmasse krysses av en forkastningslinje. 2: Langsomme tektoniske krefter forskyver jordskorpen, men friksjonen langs forkastningen låser flaten. Bergartene deformeres elastisk som en spent stålfjær over tiår eller århundrer. 3: Når spenningen overstiger bergartens skjærfasthet, svikter låsen; forkastningen glipper plutselig, bergartene spretter tilbake til ubelastet form, og frigjort potensiell energi stråler ut som jordskjelvbølger. 4: Resultatet er en permanent forskyvning på overflaten."
+      title="Elastisk tilbakefjæring"
+      heading="Hvordan et jordskjelv bygges opp og utløses"
+      caption="1: Forkastningen er i ro. 2: Platene drar, men friksjonen låser flaten, så fjellet bøyes som en spent fjær. 3: Når spenningen blir stor nok, ryker låsen. Fjellet spretter tilbake, og energien sprer seg som seismiske bølger. 4: Forskyvningen på overflaten blir stående."
       viewBox="0 0 880 390"
     >
       {() => (
@@ -876,7 +876,7 @@ export function ElasticReboundDiagram() {
           {/* PANEL 3: Brudd og tilbakefjæring */}
           <rect x="450" y="30" width="195" height="330" rx="8" fill="#1e1316" stroke={C.low} strokeWidth="1.6" />
           <L x="465" y="55" fill={C.low} size={13} weight={700}>
-            3. Brudd & Jordskjelv! ⚡
+            3. Brudd og jordskjelv
           </L>
           <path d="M 460 110 H 635 V 320 H 460 Z" fill="#2b1c1e" />
           <line x1="547" y1="110" x2="547" y2="320" stroke={C.low} strokeWidth="3" />
@@ -888,7 +888,7 @@ export function ElasticReboundDiagram() {
           <line x1="475" y1="245" x2="547" y2="245" stroke={C.sand} strokeWidth="3" />
           <line x1="547" y1="185" x2="620" y2="185" stroke={C.sand} strokeWidth="3" />
           <L x="465" y="348" fill="#fca5a5" size={11} weight={600}>
-            Friksjonen ryker. Bølgene forplanter seg ut!
+            Friksjonen ryker. Bølgene sprer seg ut.
           </L>
 
           {/* PANEL 4: Permanent forskyvning */}
@@ -904,10 +904,10 @@ export function ElasticReboundDiagram() {
           {/* Forskyvningspil */}
           <line x1="772" y1="185" x2="772" y2="245" stroke={C.teal} strokeWidth="2" />
           <L x="785" y="218" fill={C.teal} size={12} weight={700}>
-            ΔD (forskyvning)
+            forskyvning
           </L>
           <L x="680" y="348" fill={C.muted} size={11}>
-            Ny spenningssyklus starter (seismisk syklus).
+            Ny spenning kan bygge seg opp.
           </L>
         </>
       )}
@@ -920,7 +920,7 @@ export function NorwayEarthquakesDiagram() {
     <Diagram
       title="Norges seismiske risikobilde og historiske jordskjelv"
       heading="Hvorfor skjelver Norge når vi ikke er på en plategrense?"
-      caption="Norge er et intraplate-område der litosfæren påvirkes av to dominerende spenningskilder: 1. Ryggskyv (ridge push) fra den ekspanderende Midtatlantiske ryggen i vest dytter kontinentalskorpen i kompresjon mot øst-sørøst. 2. Postglasial landheving (isostatisk tilbakefjæring etter Weichsel-istidens 3 km tykke iskappe) skaper differensielle spenninger langs kysten og i forkastningssoner. Dette utløser skjelv i gamle svakhetssoner som Oslo-graben, Nordlandskysten og på kontinentalsokkelen. Historiske kjempeskjelv inkluderer Lurøyskjelvet i 1819 (M ~5,8) og Oslofjordskjelvet i 1904 (M 5,4)."
+      caption="Norge ligger inne på Den eurasiske platen. Skjelvene kommer likevel, i gamle svakhetssoner. Spredning langs Den midtatlantiske ryggen og landheving etter siste istid bygger spenning som kan reaktivere forkastninger. Lurøy i 1819 er estimert til M 5,9. Oslofjordskjelvet i 1904 var 5,4."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -942,11 +942,6 @@ export function NorwayEarthquakesDiagram() {
             Den midtatlantiske rygg
           </L>
           {/* Jan Mayen vulkan */}
-          <ellipse cx="108" cy="140" rx="7" ry="5" fill={C.low} />
-          <L x="122" y="144" fill={C.low} size={11} weight={700}>
-            Jan Mayen (Beerenberg) 🌋
-          </L>
-
           {/* Ryggskyv-vektorer mot øst */}
           <path d="M 125 100 L 220 120" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 220 120 L 210 112 M 220 120 L 212 126" stroke={C.teal} strokeWidth="2.5" />
@@ -954,7 +949,7 @@ export function NorwayEarthquakesDiagram() {
           <path d="M 140 220 L 230 235" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 230 235 L 220 227 M 230 235 L 222 241" stroke={C.teal} strokeWidth="2.5" />
           <L x="150" y="260" fill={C.teal} size={12} weight={700}>
-            Ryggskyv (ridge push) →
+            Havbunnsspredning →
           </L>
 
           {/* Postglasial landheving piler oppover i innlandet */}
@@ -963,7 +958,7 @@ export function NorwayEarthquakesDiagram() {
             Landheving (isostasi)
           </L>
           <L x="400" y="285" fill={C.muted} size={10} anchor="middle">
-            opptil 8–9 mm/år
+            etter siste istid
           </L>
 
           {/* Historiske jordskjelv stjerner */}
@@ -974,7 +969,7 @@ export function NorwayEarthquakesDiagram() {
             Lurøy 1819
           </L>
           <L x="240" y="162" fill="#fca5a5" size={10}>
-            M ~5,8 (størst i hist. tid)
+            M 5,9
           </L>
 
           {/* 2. Oslofjord 1904 */}
@@ -984,13 +979,12 @@ export function NorwayEarthquakesDiagram() {
             Oslofjorden 1904
           </L>
           <L x="370" y="362" fill="#fca5a5" size={10}>
-            M 5,4 (Oslo-graben)
+            M 5,4
           </L>
 
           {/* 3. Nordsjøskjelvet 1989 & sokkelen */}
-          <Star x={230} y={320} r={7} />
-          <L x="180" y="315" fill={C.fg} size={10} weight={600}>
-            Nordsjøen 1989 (M 5,1)
+          <L x="160" y="315" fill={C.fg} size={10} weight={600}>
+            Nordsjøen: gamle rifter
           </L>
 
           {/* Høyre panel: Forklaringstabell og risikofakta */}
@@ -1005,43 +999,43 @@ export function NorwayEarthquakesDiagram() {
             Hoveddrivkrefter for skjelv i Norge:
           </L>
           <L x="552" y="110" fill={C.fg} size={11}>
-            • <strong className="text-teal">Ryggskyv (ridge push):</strong> Atlanterhavet utvider seg
+            • Havbunnsspredning langs ryggen i vest
           </L>
           <L x="552" y="128" fill={C.fg} size={11}>
-            • <strong className="text-sand">Postglasial heving:</strong> Avlastning etter isbre
+            • Landheving etter siste istid
           </L>
           <L x="552" y="146" fill={C.fg} size={11}>
-            • <strong className="text-warm">Gamle riftsoner:</strong> Oslofeltet fra perm
+            • Gamle forkastninger som reaktiveres
           </L>
 
           {/* Boks 2: De mest aktive sonene */}
           <rect x="540" y="175" width="300" height="105" rx="6" fill="#1a232c" />
           <L x="552" y="195" fill={C.warm} size={12} weight={700}>
-            Mest skjelvaktive områder i Norge:
+            Områder med skjelv i Norge:
           </L>
           <L x="552" y="215" fill={C.fg} size={11}>
-            1. Nordland og Helgelandskysten
+            • Nordland
           </L>
           <L x="552" y="233" fill={C.fg} size={11}>
-            2. Vestlandet og sokkelens oljefelt
+            • Vestlandet og Nordsjøen
           </L>
           <L x="552" y="251" fill={C.fg} size={11}>
-            3. Osloriften (innsynkningsgraven)
+            • Oslo-riften
           </L>
           <L x="552" y="269" fill={C.fg} size={11}>
-            4. Svalbard og Storfjorden (M 6,0 i 2008)
+            • Svalbard, øst for ryggen
           </L>
 
           {/* Boks 3: Byggestandarder og Eurokode 8 */}
           <rect x="540" y="290" width="300" height="100" rx="6" fill="#241a1c" />
           <L x="552" y="312" fill={C.low} size={12} weight={700}>
-            Samfunnssikkerhet (Eurokode 8):
+            Sikring av bygg:
           </L>
           <L x="552" y="332" fill={C.muted} size={11}>
-            Selv om Norge er intraplate, krever Plan- og bygningsloven at sykehus, demninger og bruer dimensjoneres mot jordskjelv.
+            Tettere bebyggelse gjør at et skjelv som 1904 kan gjøre mer skade i dag. Kunnskap og analyser brukes til å sikre bygg.
           </L>
           <L x="552" y="365" fill={C.low} size={11} weight={600}>
-            NORSAR overvåker 24/7 med seismografer.
+            UiB og NORSAR overvåker aktiviteten.
           </L>
         </>
       )}
