@@ -1030,3 +1030,61 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_CORIOLIS: QuizQuestion[] = [
+  {
+    prompt: "Hva er corioliseffekten?",
+    options: [
+      "Avbøyningen vi ser fordi jorda roterer under en bevegelse som ellers går rett fram.",
+      "En reell kraft som setter lufta i gang fra høytrykk mot lavtrykk.",
+      "Månens drag, som styrer tidevannet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er corioliseffekten?». Avbøyningen kommer av rotasjonen, ikke av en reell kraft som dytter på lufta.",
+  },
+  {
+    prompt: "Hvor er den horisontale avbøyningen null?",
+    options: [
+      "Ved ekvator, der coriolisparameteren er null.",
+      "Ved 60°, omtrent Oslo og Bergen, der farten østover er minst.",
+      "Ved Nordpolen, der bakken står stille.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Breddegraden bestemmer styrken». Parameteren er null ved ekvator og øker mot polene.",
+  },
+  {
+    prompt: "Hva skjer med et lavtrykk hvis jorda ikke roterer?",
+    options: [
+      "Det fylles raskt igjen, fordi lufta ikke avbøyes til en virvel.",
+      "Det blir en sterkere orkan, fordi ingenting bremser vinden.",
+      "Vinden legger seg langs isobarene av seg selv.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Breddegraden bestemmer styrken». Uten rotasjon fylles lavtrykket. Avbøyningen er det som gir rotasjonen orkaner trenger.",
+  },
+  {
+    prompt: "Hvilken vinkel danner vinden med isobarene nær bakken over land?",
+    options: [
+      "20–40°, fordi friksjonen er større enn over havet.",
+      "Alltid 0°, parallelt med isobarene.",
+      "Alltid 90°, rett inn mot lavtrykket.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Vind, isobarer og friksjon». Over havet er vinkelen 0–20°, over land 20–40°.",
+  },
+  {
+    prompt: "Hva skjer ved langvarig nordavind langs en vestkyst på den nordlige halvkule?",
+    options: [
+      "Ekmantransporten skyver overflaten utover, og dypere vann kommer opp.",
+      "Overflatevannet presses inn mot land og synker.",
+      "Corioliseffekten er null langs alle vestkyster, så ingenting skjer.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Havet: ekmantransport og oppvelling». På den nordlige halvkule går ekmantransporten til høyre for vinden.",
+  },
+];

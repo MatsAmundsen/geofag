@@ -52,6 +52,11 @@ import {
   PolarFrontCycloneSteps,
   SeaBreezeLandBreezeDiagram,
   ValleyWindDiagram,
+  CarouselFrameDiagram,
+  CoriolisDiagram,
+  CoriolisScaleDiagram,
+  CycloneSpinDiagram,
+  GlobalDeflectionDiagram,
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
@@ -111,6 +116,7 @@ import {
   QUIZ_VULKANER,
   QUIZ_LOKALE,
   QUIZ_JET,
+  QUIZ_CORIOLIS,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -338,6 +344,34 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         over Atlanteren sterkere, og stormbanen ligger lenger nord.
       </p>
     </Callout>
+  ),
+
+
+    CoriolisForklaring: () => (
+    <Callout title="Hva betyr «corioliseffekten»?">
+      <p>
+        Corioliseffekten er avbøyningen av en bevegelse sett fra den roterende jorda. Den er ikke en
+        reell kraft som dytter på lufta. På den nordlige halvkule bøyer bevegelsen av mot høyre, på
+        den sørlige mot venstre, og ved ekvator er avbøyningen null.
+      </p>
+    </Callout>
+  ),
+    KarusellDiagram: () => <CarouselFrameDiagram />,
+    AvboyningDiagram: () => <GlobalDeflectionDiagram />,
+    SyklonDiagram: () => <CycloneSpinDiagram />,
+    GeostrofiskDiagram: () => <CoriolisDiagram />,
+    EkmanForklaring: () => (
+    <Callout title="Hva betyr «ekmantransport»?">
+      <p>
+        Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
+        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
+        dypere vann komme opp.
+      </p>
+    </Callout>
+  ),
+    SkalaDiagram: () => <CoriolisScaleDiagram />,
+    QuizCoriolis: () => (
+    <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
