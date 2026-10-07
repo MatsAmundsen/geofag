@@ -88,6 +88,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_MODELLER,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -364,6 +365,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  ModellForklaring: () => (
+    <Callout title="Hva betyr «numerisk modell»?">
+      <p>
+        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin.
+        ECMWF lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og
+        sammen viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
+      </p>
+    </Callout>
+  ),
+  QuizModeller: () => (
+    <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 
