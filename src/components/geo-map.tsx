@@ -32,6 +32,7 @@ export function GeoMap({
   caption,
   heading,
   className,
+  fitMarkers,
 }: {
   center: [number, number];
   zoom: number;
@@ -41,6 +42,8 @@ export function GeoMap({
   /** Optional heading shown above the map, matching other figure components' style. */
   heading?: string;
   className?: string;
+  /** Zoom so every marker (including its pin) is visible, instead of using center/zoom. */
+  fitMarkers?: boolean;
 }): JSX.Element {
   const placeholder = <div className={cn("bg-muted", mapFrameClassName)} />;
 
@@ -53,7 +56,7 @@ export function GeoMap({
       ) : null}
       <ClientOnly fallback={placeholder}>
         <Suspense fallback={placeholder}>
-          <LeafletMap center={center} zoom={zoom} markers={markers} className={mapFrameClassName} />
+          <LeafletMap center={center} zoom={zoom} markers={markers} className={mapFrameClassName} fitMarkers={fitMarkers} />
         </Suspense>
       </ClientOnly>
       <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6">

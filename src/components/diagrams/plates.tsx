@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { FigureFrame } from "@/components/figure-frame";
 import { PhotoFigure } from "@/components/photo-figure";
@@ -2695,173 +2695,327 @@ export function WilsonCycleDiagram() {
 /**
  * 15. NorwayTectonicsHistoryDiagram:
  * Norges geologiske reise i et platetektonisk lys:
- * Fra Baltika og Kaledonidene til Oslo-rifting, Norskehavets åpning og isostasi.
+ * Fra grunnfjellet og Kaledonidene til Oslo-rifting, Norskehavets åpning og isostasi.
+ * PC: fem kort i én SVG. Mobil: de samme kortene som lesbar liste.
  */
+type NorwayEpochCard = {
+  key: string;
+  title: string;
+  age: string;
+  color: string;
+  ageColor: string;
+  headline: string;
+  sub: string;
+  bullets: { text: string; note?: string }[];
+  today: [string, string];
+};
+
+const NORWAY_EPOCHS: NorwayEpochCard[] = [
+  {
+    key: "grunnfjell",
+    title: "0. GRUNNFJELLET",
+    age: "Opptil 2800 mill. år siden",
+    color: "#a78bfa",
+    ageColor: "#ddd6fe",
+    headline: "Prekambrium",
+    sub: "Baltikas gamle kjerne",
+    bullets: [
+      { text: "Norges eldste berggrunn" },
+      { text: "Underlaget som skyvedekkene", note: "senere ble skjøvet inn over" },
+    ],
+    today: ["Grunnfjellet er det eldste", "fjellet vi har i Norge."],
+  },
+  {
+    key: "kaledonidene",
+    title: "1. KALEDONIDENE",
+    age: "430–400 mill. år siden (silur)",
+    color: "#f59e0b",
+    ageColor: "#fed7aa",
+    headline: "Iapetushavet lukkes",
+    sub: "Baltika kolliderer med Laurentia",
+    bullets: [
+      { text: "Fjellkjede på størrelse med", note: "Himalaya (400–500 mill. år siden)" },
+      { text: "Gigantiske skyvedekker", note: "(Jotunheimen, Rondane)" },
+      { text: "Gneis og glimmerskifer" },
+    ],
+    today: ["Berggrunnen er den eroderte", "roten av Kaledonidene."],
+  },
+  {
+    key: "oslofeltet",
+    title: "2. OSLOFELTET",
+    age: "300–250 mill. år siden (perm)",
+    color: "#ef4444",
+    ageColor: "#fca5a5",
+    headline: "Pangea revner",
+    sub: "Skorpen sprekker i en riftdal",
+    bullets: [
+      { text: "Graben fra Langesund til Mjøsa" },
+      { text: "Voldsomme vulkaner", note: "(Kolsås, Krokskogen)" },
+      { text: "Rombeporfyr og larvikitt" },
+    ],
+    today: ["En død riftdal rik på", "byggeråstoff og naturstein!"],
+  },
+  {
+    key: "norskehavet",
+    title: "3. NORSKEHAVET",
+    age: "55 mill. år siden (eocen)",
+    color: "#38bdf8",
+    ageColor: "#bae6fd",
+    headline: "Nord-Atlanteren åpnes",
+    sub: "Norge skilles fra Grønland",
+    bullets: [
+      { text: "Passiv kontinentalmargin" },
+      { text: "Ny havbunn dannes langs", note: "Den midtatlantiske ryggen" },
+      { text: "Sedimenter bygger ut sokkelen" },
+    ],
+    today: ["Beerenberg på Jan Mayen er", "Norges eneste aktive vulkan!"],
+  },
+  {
+    key: "isostasi",
+    title: "4. GLASIAL ISOSTASI",
+    age: "Siste 10 000 år til i dag",
+    color: "#10b981",
+    ageColor: "#a7f3d0",
+    headline: "Landet reiser seg!",
+    sub: "3 km innlandsis smeltet bort",
+    bullets: [
+      { text: "Litosfæren spratt opp" },
+      { text: "Marin grense opptil 220 m", note: "(Marin leire på tørt land)" },
+      { text: "Intraplate-jordskjelv" },
+    ],
+    today: ["Oslo hever seg 4 mm/år.", "Skaper kvikkleire og skjelv!"],
+  },
+];
+
+function NorwayEpochIcon({ k, arrowMarker }: { k: string; arrowMarker: string }) {
+  switch (k) {
+    case "grunnfjell":
+      return (
+        <g>
+          <path d="M 15 115 L 15 88 Q 60 80 100 86 T 170 84 L 170 115 Z" fill="#3f3a52" />
+          {[0, 1, 2, 3].map((i) => (
+            <path key={i} d={`M 20 ${94 + i * 6} Q 60 ${88 + i * 6} 100 ${94 + i * 6} T 165 ${92 + i * 6}`} fill="none" stroke="#a78bfa" strokeWidth="1.2" opacity="0.7" />
+          ))}
+        </g>
+      );
+    case "kaledonidene":
+      return (
+        <g>
+          <path d="M 15 115 L 65 75 L 95 55 L 135 80 L 170 115 Z" fill="#4d5e53" />
+          <path d="M 35 115 C 75 95, 115 70, 155 65" stroke="#f59e0b" strokeWidth="2.5" fill="none" />
+        </g>
+      );
+    case "oslofeltet":
+      return (
+        <g>
+          <path d="M 15 80 L 55 80 L 75 115 L 115 115 L 135 80 L 170 80 L 170 120 L 15 120 Z" fill="#544c3d" />
+          <polygon points="90,115 95,102 100,115" fill="#ef4444" />
+        </g>
+      );
+    case "norskehavet":
+      return (
+        <g>
+          <rect x="15" y="70" width="155" height="25" fill="#0284c7" opacity="0.6" />
+          <path d="M 15 80 L 65 80 L 92 108 L 112 108 L 170 80 L 170 120 L 15 120 Z" fill="#2d3d34" />
+        </g>
+      );
+    default:
+      return (
+        <g>
+          <path d="M 15 100 C 55 75, 125 75, 170 100 Z" fill="#4d5c55" />
+          <Arrow d="M 92 125 L 92 75" marker={arrowMarker} color={C.teal} width={3.2} />
+        </g>
+      );
+  }
+}
+
 export function NorwayTectonicsHistoryDiagram() {
+  const uid = useId().replace(/:/g, "");
+  const marker = `${uid}-teal`;
+  const caption =
+    "Norge er et levende museum over platetektonikkens historie. Det prekambriske grunnfjellet (Baltika) ble dannet for opptil 2,8 milliarder år siden. For ca. 430–400 millioner år siden lukket det gamle Iapetushavet seg, og Baltika kolliderte med Grønland/Nord-Amerika (Laurentia) i den kaledonske orogenesen – en fjellkjede på størrelse med Himalaya stablet enorme skyvedekker over landet vårt. I perm (for 300 mill. år siden) holdt superkontinentet Pangea på å sprekke opp, og skapte Oslofeltets dramatiske riftdal med vulkaner og dypbergarter. For 55 millioner år siden åpnet Norskehavet seg da Atlanteren spredte seg nordover, og Norge fikk en passiv kontinentalmargin. Vulkanen Beerenberg på Jan Mayen er langt yngre og er aktiv i dag. Etter forrige istid har Norge hevet seg opptil 220 meter (isostasi), noe som hevet gammel havbunn (marin leire) opp på tørt land.";
+  const W = 182;
+  const gap = 12;
+  return (
+    <FigureFrame heading="Norges geologiske reise: Grunnfjell, Kaledonidene, Oslofeltet og Norskehavet" caption={caption}>
+      {/* PC og nettbrett */}
+      <svg
+        viewBox="0 0 1000 420"
+        className="mx-auto hidden h-auto w-full max-w-5xl sm:block"
+        role="img"
+        aria-labelledby={`${uid}-title`}
+      >
+        <title id={`${uid}-title`}>Norges platetektoniske reise gjennom geologisk tid</title>
+        <defs>
+          <marker id={marker} viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M0 1.5 L11 6 L0 10.5 z" fill={C.teal} />
+          </marker>
+        </defs>
+        <rect width="100%" height="100%" fill={C.bg} rx="10" />
+        {NORWAY_EPOCHS.map((card, index) => {
+          const x = 13 + index * (W + gap);
+          let y = 182;
+          return (
+            <g key={card.key} transform={`translate(${x}, 24)`}>
+              <rect x="0" y="0" width={W} height="350" rx="8" fill="#0d1822" stroke={card.color} strokeWidth="1.5" />
+              <L x={W / 2} y="28" fill={card.color} size={13} weight={800} anchor="middle">
+                {card.title}
+              </L>
+              <L x={W / 2} y="45" fill={card.ageColor} size={10.5} anchor="middle">
+                {card.age}
+              </L>
+              <g transform={`translate(${(W - 185) / 2}, 5)`}>
+                <NorwayEpochIcon k={card.key} arrowMarker={marker} />
+              </g>
+              <L x={W / 2} y="140" fill="#f8fafc" size={11.5} weight={700} anchor="middle">
+                {card.headline}
+              </L>
+              <L x={W / 2} y="156" fill="#d1d5db" size={10.5} anchor="middle">
+                {card.sub}
+              </L>
+              {card.bullets.map((b) => {
+                const rows = (
+                  <g key={b.text}>
+                    <L x="12" y={y} fill="#cbd5e1" size={10.5}>
+                      ● {b.text}
+                    </L>
+                    {b.note ? (
+                      <L x="24" y={y + 15} fill="#94a3b8" size={10}>
+                        {b.note}
+                      </L>
+                    ) : null}
+                  </g>
+                );
+                y += b.note ? 36 : 22;
+                return rows;
+              })}
+              <rect x="10" y="276" width={W - 20} height="60" rx="4" fill="#1b2832" />
+              <L x={W / 2} y="295" fill="#38bdf8" size={11} weight={700} anchor="middle">
+                I dag i Norge:
+              </L>
+              <L x={W / 2} y="311" fill="#cbd5e1" size={10} anchor="middle">
+                {card.today[0]}
+              </L>
+              <L x={W / 2} y="325" fill="#cbd5e1" size={10} anchor="middle">
+                {card.today[1]}
+              </L>
+            </g>
+          );
+        })}
+        <L x="500" y="402" fill="#94a3b8" size={12} weight={600} anchor="middle">
+          Fra kontinentkollisjon og riftdannelse til havbunnsspredning og landheving: Norge har opplevd alle faser i platetektonikken.
+        </L>
+      </svg>
+
+      {/* Mobil: samme innhold som lesbar liste */}
+      <ol className="space-y-3 sm:hidden" aria-label="Norges geologiske reise">
+        {NORWAY_EPOCHS.map((card) => (
+          <li key={card.key} className="rounded-lg border bg-[#0d1822] p-3" style={{ borderColor: card.color }}>
+            <p className="text-sm font-extrabold tracking-wide" style={{ color: card.color }}>
+              {card.title}
+            </p>
+            <p className="text-xs" style={{ color: card.ageColor }}>
+              {card.age}
+            </p>
+            <p className="mt-2 text-sm font-bold text-slate-50">{card.headline}</p>
+            <p className="text-xs text-slate-300">{card.sub}</p>
+            <ul className="mt-2 list-disc space-y-0.5 pl-5 text-xs text-slate-300">
+              {card.bullets.map((b) => (
+                <li key={b.text}>
+                  {b.text}
+                  {b.note ? ` ${b.note}` : ""}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 rounded bg-[#1b2832] px-2 py-1.5 text-xs text-slate-300">
+              <span className="font-bold text-sky-400">I dag i Norge: </span>
+              {card.today.join(" ")}
+            </p>
+          </li>
+        ))}
+        <li className="text-xs text-muted-foreground">
+          Fra kontinentkollisjon og riftdannelse til havbunnsspredning og landheving: Norge har opplevd alle faser i platetektonikken.
+        </li>
+      </ol>
+    </FigureFrame>
+  );
+}
+
+/** Snitt gjennom en ofiolitt slik lagene ligger på Leka (tykkelser fra teksten, midtverdier). */
+export function OfiolittSnittDiagram() {
+  // Skjematisk og omtrentlig: putelava ~1 km, ganger ~1,5 km, gabbro ~3 km.
+  const layers = [
+    { y0: 50, y1: 62, ly: 48, fill: "#6b7a8a", label: "Pelagiske sedimenter", note: "tynne lag av dyphavsslam", color: C.muted },
+    { y0: 62, y1: 112, ly: 100, fill: "#3f5d4c", label: "Putelava (basalt)", note: "0,5–1,5 km", color: C.teal },
+    { y0: 112, y1: 172, ly: 152, fill: "#3b4a52", label: "Plateformede ganger", note: "1–2 km loddrette basaltganger", color: C.cold },
+    { y0: 172, y1: 282, ly: 218, fill: "#4a4f3c", label: "Gabbro", note: "2–4 km, lagdelt nederst", color: C.sand },
+    { y0: 282, y1: 372, ly: 334, fill: "#7a6a3a", label: "Mantelperidotitt", note: "dunitt og harzburgitt", color: C.warm },
+  ];
   return (
     <Diagram
-      title="Norges platetektoniske reise gjennom geologisk tid"
-      heading="Norges geologiske reise: Grunnfjell, Kaledonidene, Oslofeltet og Norskehavet"
-      caption="Norge er et levende museum over platetektonikkens historie. Det prekambriske grunnfjellet (Baltika) ble dannet for opptil 2,8 milliarder år siden. For ca. 430–400 millioner år siden lukket det gamle Iapetushavet seg, og Baltika kolliderte med Grønland/Nord-Amerika (Laurentia) i den kaledonske orogenesen – fjell som rager over 9000 meter stablet enorme skyvedekker over landet vårt. I perm (for 300 mill. år siden) holdt superkontinentet Pangea på å sprekke opp, og skapte Oslofeltets dramatiske riftdal med vulkaner og dypbergarter. For 55 millioner år siden åpnet Norskehavet seg da Atlanteren spredte seg nordover, og skapte Jan Mayen og Norges sokkelbassenger. Etter forrige istid har Norge hevet seg opptil 220 meter (isostasi), noe som hevet gammel havbunn (marin leire) opp på tørt land."
-      viewBox="0 0 940 450"
-      wide
+      title="Snitt gjennom en ofiolitt: pelagiske sedimenter, putelava, plateformede ganger, gabbro, Moho og mantelperidotitt"
+      heading="Norges geologiske nasjonalmonument: Leka ofiolittkompleks"
+      caption="Leka-ofiolitten er en bit av havbunnsskorpe og øvre mantel fra Iapetushavet, dannet for ca. 497 millioner år siden (Dunning & Pedersen, 1988). Den ble trolig skjøvet opp på kanten av et kontinent for ca. 470 millioner år siden og senere ført inn over Baltika under den kaledonske fjellkjededannelsen. Lagpakken ble veltet over på siden, så i dag kan man gå bortover på øya fra mantelbergarter til putelava (Titus mfl., 2002; Leka steinsenter, u.å.; Trollfjell Geopark, u.å.). Figuren viser lagene slik de lå i havbunnen, før de ble veltet. Tykkelsene er omtrentlige."
+      viewBox="0 0 460 436"
     >
-      {(m) => (
-        <>
-          {/* Tidslinje-kort fra venstre til høyre (4 tidsepoker) */}
-          {/* 1. Kaledonidene (Silur/Devon, 430–400 Ma) */}
-          <g transform="translate(50, 40)">
-            <rect x="0" y="0" width="195" height="360" rx="8" fill="#0d1822" stroke="#f59e0b" strokeWidth="1.5" />
-            <L x="97" y="28" fill="#f59e0b" size={13} weight={800} anchor="middle">
-              1. KALEDONIDENE
-            </L>
-            <L x="97" y="44" fill="#fed7aa" size={10.5} anchor="middle">
-              430–400 mill. år siden (Silur)
-            </L>
-
-            {/* Illustrasjon av kollisjon og skyvedekker */}
-            <path d="M 20 120 L 70 80 L 100 60 L 140 85 L 175 120 Z" fill="#4d5e53" />
-            <path d="M 40 120 C 80 100, 120 75, 160 70" stroke="#f59e0b" strokeWidth="2.5" fill="none" />
-            <L x="97" y="145" fill="#f8fafc" size={11} weight={700} anchor="middle">
-              Iapetushavet lukkes
-            </L>
-            <L x="97" y="160" fill="#d1d5db" size={10} anchor="middle">
-              Baltika krasjer med Grønland
-            </L>
-
-            <L x="15" y="195" fill="#cbd5e1" size={10}>● Fjellkjede på over 9000 moh.</L>
-            <L x="15" y="215" fill="#cbd5e1" size={10}>● Gigantiske skyvedekker</L>
-            <L x="25" y="230" fill="#94a3b8" size={9.5}>(Jotunheimen, Rondane)</L>
-            <L x="15" y="250" fill="#cbd5e1" size={10}>● Gneis og glimmerskifer</L>
-
-            <rect x="15" y="285" width="165" height="55" rx="4" fill="#1b2832" />
-            <L x="97" y="304" fill="#38bdf8" size={10.5} weight={700} anchor="middle">
-              I dag i Norge:
-            </L>
-            <L x="97" y="320" fill="#cbd5e1" size={9.5} anchor="middle">
-              De norske fjellene er den
-            </L>
-            <L x="97" y="333" fill="#cbd5e1" size={9.5} anchor="middle">
-              eroderte roten av Kaledonidene!
-            </L>
-          </g>
-
-          {/* 2. Oslofeltet (Karbon/Perm, 310–250 Ma) */}
-          <g transform="translate(265, 40)">
-            <rect x="0" y="0" width="195" height="360" rx="8" fill="#0d1822" stroke="#ef4444" strokeWidth="1.5" />
-            <L x="97" y="28" fill="#ef4444" size={13} weight={800} anchor="middle">
-              2. OSLOFELTET
-            </L>
-            <L x="97" y="44" fill="#fca5a5" size={10.5} anchor="middle">
-              300–250 mill. år siden (Perm)
-            </L>
-
-            {/* Illustrasjon av graben og riftvulkan */}
-            <path d="M 20 80 L 60 80 L 80 115 L 120 115 L 140 80 L 175 80 Z" fill="#544c3d" />
-            <polygon points="95,115 100,102 105,115" fill="#ef4444" />
-            <L x="97" y="145" fill="#f8fafc" size={11} weight={700} anchor="middle">
-              Pangea revner
-            </L>
-            <L x="97" y="160" fill="#d1d5db" size={10} anchor="middle">
-              Skorpen sprekker i en riftdal
-            </L>
-
-            <L x="15" y="195" fill="#cbd5e1" size={10}>● Graben fra Langesund til Mjøsa</L>
-            <L x="15" y="215" fill="#cbd5e1" size={10}>● Voldsomme vulkaner</L>
-            <L x="25" y="230" fill="#94a3b8" size={9.5}>(Kolsås, Krokskogen)</L>
-            <L x="15" y="250" fill="#cbd5e1" size={10}>● Rombeporfyr og larvikitt</L>
-
-            <rect x="15" y="285" width="165" height="55" rx="4" fill="#1b2832" />
-            <L x="97" y="304" fill="#38bdf8" size={10.5} weight={700} anchor="middle">
-              I dag i Norge:
-            </L>
-            <L x="97" y="320" fill="#cbd5e1" size={9.5} anchor="middle">
-              En død riftdal rik på
-            </L>
-            <L x="97" y="333" fill="#cbd5e1" size={9.5} anchor="middle">
-              byggeråstoff og naturstein!
-            </L>
-          </g>
-
-          {/* 3. Norskehavets åpning (Tertiær, 55 Ma) */}
-          <g transform="translate(480, 40)">
-            <rect x="0" y="0" width="195" height="360" rx="8" fill="#0d1822" stroke="#38bdf8" strokeWidth="1.5" />
-            <L x="97" y="28" fill="#38bdf8" size={13} weight={800} anchor="middle">
-              3. NORSKEHAVET
-            </L>
-            <L x="97" y="44" fill="#bae6fd" size={10.5} anchor="middle">
-              55 mill. år siden (Eocen)
-            </L>
-
-            {/* Illustrasjon av midthavsrygg og sokkel */}
-            <path d="M 20 80 L 70 80 L 100 110 L 120 110 L 175 80 Z" fill="#2d3d34" />
-            <rect x="20" y="70" width="155" height="25" fill="#0284c7" opacity="0.6" />
-            <L x="97" y="145" fill="#f8fafc" size={11} weight={700} anchor="middle">
-              Nord-Atlanteren åpnes
-            </L>
-            <L x="97" y="160" fill="#d1d5db" size={10} anchor="middle">
-              Norge skilles fra Grønland
-            </L>
-
-            <L x="15" y="195" fill="#cbd5e1" size={10}>● Passiv kontinentalmargin</L>
-            <L x="15" y="215" fill="#cbd5e1" size={10}>● Olje- og gassbassenger</L>
-            <L x="25" y="230" fill="#94a3b8" size={9.5}>(Sedimenter i Nordsjøen)</L>
-            <L x="15" y="250" fill="#cbd5e1" size={10}>● Jan Mayen & Beerenberg</L>
-
-            <rect x="15" y="285" width="165" height="55" rx="4" fill="#1b2832" />
-            <L x="97" y="304" fill="#38bdf8" size={10.5} weight={700} anchor="middle">
-              I dag i Norge:
-            </L>
-            <L x="97" y="320" fill="#cbd5e1" size={9.5} anchor="middle">
-              Beerenberg på Jan Mayen er
-            </L>
-            <L x="97" y="333" fill="#cbd5e1" size={9.5} anchor="middle">
-              Norges eneste aktive vulkan!
-            </L>
-          </g>
-
-          {/* 4. Isostasi & Landheving (Kvartær til Nåtid) */}
-          <g transform="translate(695, 40)">
-            <rect x="0" y="0" width="195" height="360" rx="8" fill="#0d1822" stroke="#10b981" strokeWidth="1.5" />
-            <L x="97" y="28" fill="#10b981" size={13} weight={800} anchor="middle">
-              4. GLASIAL ISOSTASI
-            </L>
-            <L x="97" y="44" fill="#a7f3d0" size={10.5} anchor="middle">
-              Siste 10 000 år til i dag
-            </L>
-
-            {/* Illustrasjon av heving etter isen */}
-            <path d="M 20 100 C 60 75, 130 75, 175 100 Z" fill="#4d5c55" />
-            <Arrow d="M 97 125 L 97 75" marker={m.teal} color={C.teal} width={3.2} />
-            <L x="97" y="145" fill="#f8fafc" size={11} weight={700} anchor="middle">
-              Landet reiser seg!
-            </L>
-            <L x="97" y="160" fill="#d1d5db" size={10} anchor="middle">
-              3 km innlandsis smeltet bort
-            </L>
-
-            <L x="15" y="195" fill="#cbd5e1" size={10}>● Litosfæren spratt opp</L>
-            <L x="15" y="215" fill="#cbd5e1" size={10}>● Marin grense opptil 220 m</L>
-            <L x="25" y="230" fill="#94a3b8" size={9.5}>(Marin leire på tørt land)</L>
-            <L x="15" y="250" fill="#cbd5e1" size={10}>● Intraplate-jordskjelv</L>
-
-            <rect x="15" y="285" width="165" height="55" rx="4" fill="#1b2832" />
-            <L x="97" y="304" fill="#38bdf8" size={10.5} weight={700} anchor="middle">
-              I dag i Norge:
-            </L>
-            <L x="97" y="320" fill="#cbd5e1" size={9.5} anchor="middle">
-              Oslo hever seg 4 mm/år.
-            </L>
-            <L x="97" y="333" fill="#cbd5e1" size={9.5} anchor="middle">
-              Skaper kvikkleire og skjelv!
-            </L>
-          </g>
-
-          {/* Bunntekst */}
-          <L x="470" y="425" fill="#94a3b8" size={11.5} weight={600} anchor="middle">
-            Fra kontinentalkollisjon og riftdannelse til havbunnssubduksjon og landheving: Norge har opplevd alle faser i platetektonikken.
+      {() => (
+        <g data-figur="ofiolitt-snitt">
+          <L x="20" y="34" fill={C.cold} size={15} weight={700}>
+            Havbunnen
           </L>
-        </>
+          {layers.map((l) => {
+            const mid = (l.y0 + l.y1) / 2;
+            return (
+              <g key={l.label}>
+                <rect x="20" y={l.y0} width="130" height={l.y1 - l.y0} fill={l.fill} />
+                <polyline
+                  points={`150,${mid} 160,${mid} 166,${l.ly - 6}`}
+                  fill="none"
+                  stroke={l.color}
+                  strokeWidth="1.5"
+                />
+                <L x="172" y={l.ly} fill={l.color} size={20} weight={700}>
+                  {l.label}
+                </L>
+                <L x="172" y={l.ly + 19} fill={C.muted} size={16}>
+                  {l.note}
+                </L>
+              </g>
+            );
+          })}
+          {/* Puter i putelavaen */}
+          {Array.from({ length: 8 }, (_, i) => (
+            <ellipse
+              key={i}
+              cx={36 + (i % 4) * 32 + (i > 3 ? 14 : 0)}
+              cy={i > 3 ? 98 : 76}
+              rx="14"
+              ry="9"
+              fill="none"
+              stroke="#7fb59a"
+              strokeWidth="1.3"
+            />
+          ))}
+          {/* Loddrette ganger */}
+          {Array.from({ length: 12 }, (_, i) => (
+            <line key={i} x1={27 + i * 10.5} y1="114" x2={27 + i * 10.5} y2="170" stroke="#8eb4d4" strokeWidth="1.2" opacity="0.7" />
+          ))}
+          {/* Lagdelt gabbro nederst */}
+          {Array.from({ length: 5 }, (_, i) => (
+            <line key={i} x1="24" y1={242 + i * 8} x2="146" y2={242 + i * 8} stroke="#c9b896" strokeWidth="1.2" opacity="0.6" />
+          ))}
+          {/* Moho */}
+          <line x1="12" y1="282" x2="160" y2="282" stroke={C.white} strokeWidth="2.2" strokeDasharray="8 5" />
+          <L x="172" y="288" fill={C.white} size={17} weight={700}>
+            Moho: grensen skorpe–mantel
+          </L>
+          <L x="20" y="400" fill={C.muted} size={15}>
+            På Leka ligger lagene på siden, så du går bortover
+          </L>
+          <L x="20" y="420" fill={C.muted} size={15}>
+            fra mantelperidotitt til putelava.
+          </L>
+        </g>
       )}
     </Diagram>
   );

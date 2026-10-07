@@ -539,7 +539,6 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "lokale-vaersystemer",
     stale: ["Her kan du redigere", "barokline sonen"],
   },
-,
   {
     flag: "jetstrommer-copy-2026-10-07",
     slug: "jetstrommer",
@@ -690,8 +689,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     flag: "felt-hav-luft-is-copy-2-2026-10-07",
     slug: "felt-hav-luft-is",
     stale: ["## Tre felt, samme kjede"],
-  }
-,
+  },
+  {
+    flag: "isbreer-og-landformer-copy-2026-10-07",
+    slug: "isbreer-og-landformer",
+    stale: ["(SNL, u.å.-a). Prosessen krever vann"],
+  },
   {
     flag: "g1-fakta-platetektonikk-2026-10-07",
     slug: "platetektonikk",

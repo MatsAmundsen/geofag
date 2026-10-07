@@ -28,14 +28,26 @@ export default function LeafletMap({
   zoom,
   markers = [],
   className,
+  fitMarkers,
 }: {
   center: [number, number];
   zoom: number;
   markers?: GeoMapMarker[];
   className: string;
+  fitMarkers?: boolean;
 }) {
+  const bounds =
+    fitMarkers && markers.length > 1 ? L.latLngBounds(markers.map((m) => [m.lat, m.lng] as [number, number])) : undefined;
   return (
-    <MapContainer center={center} zoom={zoom} className={className}>
+    <MapContainer
+      // react-leaflet bruker center/zoom foran bounds, så de må utelates når kartet skal tilpasses markørene.
+      center={bounds ? undefined : center}
+      zoom={bounds ? undefined : zoom}
+      bounds={bounds}
+      // Ekstra luft i toppen, så markørnålen (41 px høy) ikke kuttes.
+      boundsOptions={bounds ? { paddingTopLeft: [24, 52], paddingBottomRight: [24, 16] } : undefined}
+      className={className}
+    >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsytere'

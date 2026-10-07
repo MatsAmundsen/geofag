@@ -113,10 +113,12 @@ function LandformerPage() {
       <ul className="list-disc pl-6 space-y-2 text-sm text-muted-foreground">
         <li>
           <strong className="text-foreground">Frostsprengning (Frost wedging):</strong> Vann trenger inn
-          i mikroskopiske sprekker og svakhetssoner i fjellet. Når vann fryser til is ved 0 °C, utvider
-          det seg med omtrent <strong>9 prosent</strong>. I lukkede sprekker utvikles det et sprengtrykk
-          på over 200 MPa (mer enn 2000 atmosfærer!), som langt overskrider bergartens strekkfasthet.
-          Dette er den dominerende forvitringsformen i Norges høyfjell og skaper enorme urer, rasmarker
+          i mikroskopiske sprekker og svakhetssoner i fjellet. Når vann fryser, utvider det seg
+          ca. <strong>9 %</strong>. I en tett, vannfylt sprekk kan det i teorien gi svært høyt trykk, men i
+          naturen sprekker berget oftest fordi <strong>islinser</strong> vokser. Vann trekkes mot isen i
+          sprekken, og isen vokser og presser sprekken videre ved temperaturer like under frysepunktet,
+          ca. −3 til −6 °C. Derfor er mange fryse–tine-sykluser og tilgang på vann viktigere enn sterk
+          kulde (Murton mfl., 2006; Matsuoka &amp; Murton, 2008). Dette er den dominerende forvitringsformen i Norges høyfjell og skaper enorme urer, rasmarker
           og blokkmark.
         </li>
         <li>
@@ -136,18 +138,16 @@ function LandformerPage() {
 
       <PhotoFigure
         src="/images/fig-forvitring.jpg"
-        alt="Geologisk blotning i felt som viser oppsprukket, forvitret fjellvegg med frostsprengningsur"
-        heading="Mekanisk forvitring og oppsprekking ved blotning"
-        caption="En typisk norsk fjellblotning utsatt for frostforvitring langs svakhetssoner og lagdelingsflater. Vann siver inn om høsten og fryser om vinteren, noe som sprenger fjellet i kantete blokker som etter hvert raser ned og danner grovkornede urer (talus) ved skråningsfoten."
+        alt="Nærbilde av iskrystaller som har vokst i en sprekk i båndet gneis"
+        heading="Mekanisk forvitring: is i en sprekk"
+        caption="Is i en sprekk i berget. Når vann fryser, utvider det seg ca. 9 %, men i naturen sprekker berget oftest fordi islinser vokser: Vann trekkes mot isen, og isen presser sprekken videre ved temperaturer like under frysepunktet, ca. −3 til −6 °C. Derfor betyr mange fryse–tine-sykluser og tilgang på vann mer enn sterk kulde. Over tid løsner kantete blokker som raser ned og danner ur (talus) ved skråningsfoten."
         marks={[
-          { x: 28, y: 35, n: "1", text: "Primærsprekk", tone: "warm" },
-          { x: 65, y: 55, n: "2", text: "Frostforvitret blokk", tone: "teal" },
-          { x: 82, y: 80, n: "3", text: "Ur / Talus", tone: "cold" },
+          { x: 39, y: 84, n: "1", text: "Sprekk", tone: "warm", align: "right" },
+          { x: 56, y: 20, n: "2", text: "Is i sprekken", tone: "cold" },
         ]}
         points={[
-          { n: "1", label: "Tektoniske sprekker og lagflater fungerer som inngangsvei for smeltevann." },
-          { n: "2", label: "9 % volumøkning ved frysing sprenger gradvis løs kantete steinblokker." },
-          { n: "3", label: "Tyngdekraften frakter de løsnede blokkene ned i ura: overgang fra forvitring til erosjon." },
+          { n: "1", label: "Sprekker og lagflater i berget slipper inn vann." },
+          { n: "2", label: "Isen vokser i sprekken og presser den videre. Mange fryse–tine-sykluser kiler til slutt løs blokker." },
         ]}
       />
 
@@ -433,20 +433,31 @@ function LandformerPage() {
         </div>
       </div>
 
+      <Callout title="To modeller for fjellplatåene">
+        <p>
+          Hvordan fjellplatåene og høyfjellet i Sør-Norge ble dannet, er omdiskutert. Den klassiske modellen sier at
+          en gammel, lav og flat overflate (den paleiske flaten) ble hevet i tertiær. Andre forskere mener fjellene
+          har vært høye helt siden Kaledonidene, og at istidene høvlet ned toppene til en jevn høyde rundt snøgrensen
+          («glacial buzzsaw») (Egholm mfl., 2009; Nielsen mfl., 2009).
+        </p>
+      </Callout>
+
       <PhotoFigure
         src="/images/fig-fjellskred-fjord.jpg"
-        alt="Dramatisk vestnorsk fjordlandskap med bratte fjellsider, U-dal og strandflate i forgrunnen"
-        heading="Geomorfologisk kontrast: Fra fjordbunn til alpine tinder"
+        alt="Vestnorsk fjord med bratt fjellside, skredarr og ur ned mot fjorden"
+        heading="Geomorfologisk kontrast: Fra fjordbunn til bratte fjellsider"
         caption="Et klassisk vestnorsk landskap der unge, dramatiske glasiale landformer (den overfordypede fjorden og de steile fjellsidene) skjærer seg dypt ned i den opprinnelige hevede landblokken. Langs slike bratte fjellsider er fjellet kontinuerlig utsatt for frostforvitring og storskala fjellskred."
         marks={[
-          { x: 22, y: 30, n: "1", text: "Alpint fjellplatå", tone: "warm" },
-          { x: 50, y: 65, n: "2", text: "U-dalsvegg", tone: "teal" },
-          { x: 78, y: 82, n: "3", text: "Fjordbasseng", tone: "cold" },
+          { x: 47, y: 23, n: "1", text: "Skredarr", tone: "warm" },
+          { x: 8, y: 42, n: "2", text: "Bratt dalside", tone: "teal" },
+          { x: 40, y: 62, n: "3", text: "Ur og skredmasser", tone: "warm" },
+          { x: 45, y: 90, n: "4", text: "Fjord", tone: "cold" },
         ]}
         points={[
-          { n: "1", label: "Rest av den gamle tertiærhevede overflaten, overpreget av botnbreer." },
-          { n: "2", label: "Over 1000 meter loddrett fjellvegg skuret og plukket ut av kvartære isbreer." },
-          { n: "3", label: "Dyp fjord gravd ut langt under dagens havnivå." },
+          { n: "1", label: "Lys, bar bergflate der fjell har løsnet fra den bratte fjellsiden." },
+          { n: "2", label: "Bratt fjellside skuret og plukket ut av kvartære isbreer." },
+          { n: "3", label: "Stein og blokker fra fjellsiden har hopet seg opp ved foten, helt ned mot fjorden." },
+          { n: "4", label: "Dyp fjord gravd ut langt under dagens havnivå." },
         ]}
       />
 
@@ -554,7 +565,7 @@ function LandformerPage() {
               "Breens erosjonskraft avhenger direkte av istykkelse og trykk. Inne i den trange fjorden overfordypet breen fjellet til over 1300 m dyp, mens den flatet ut og deponerte morene og bergterskler ytterst.",
           },
           {
-            prompt: "Hvilken geologisk hendelse utløste dannelsen av Norges unge, dype fjorder og U-daler i den opprinnelig flate paleiske overflaten?",
+            prompt: "Etter den klassiske modellen: Hvilken geologisk hendelse utløste dannelsen av Norges unge, dype fjorder og U-daler i den opprinnelig flate paleiske overflaten?",
             options: [
               "At Oslofeltet sank ned som en riftdal.",
               "Den asymmetriske landhevingen i tertiærtid da Atlanterhavet åpnet seg, som hevet Vestlandet opptil 2000 moh og ga elver og senere breer enorm fallhøyde og gravkraft.",
@@ -563,7 +574,7 @@ function LandformerPage() {
             ],
             answer: 1,
             explain:
-              "Tertiærhevingen hevet den gamle paleiske flaten høyt opp mot vest. Dette senket den relative erosjonsbasis dramatisk og gjorde at elver og kvartære isbreer skar seg dypt ned i platået.",
+              "I den klassiske modellen hevet tertiærhevingen den gamle paleiske flaten høyt opp mot vest. Dette senket den relative erosjonsbasis dramatisk og gjorde at elver og kvartære isbreer skar seg dypt ned i platået. Modellen er omdiskutert: Andre forskere mener fjellene har vært høye helt siden Kaledonidene.",
           },
         ]}
       />
