@@ -796,3 +796,56 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_KRYO: QuizQuestion[] = [
+  {
+    prompt: "Hva er permafrost?",
+    options: [
+      "Bakke der temperaturen i to sammenhengende år ikke overstiger 0 °C.",
+      "All is som ligger på en bre.",
+      "Havis som er tykkere enn to meter.",
+    ],
+    answer: 0,
+    explain: "Se «Permafrost og det aktive laget». Definisjonen er temperatur, ikke is i bakken.",
+  },
+  {
+    prompt: "Hva skiller akkumulasjonsområdet fra ablasjonsområdet?",
+    options: [
+      "Akkumulasjon er der snøen blir liggende. Ablasjonsområdet er der den smelter.",
+      "Begge er der isen kalver i havet.",
+      "Akkumulasjon er bare permafrost.",
+    ],
+    answer: 0,
+    explain: "Se «Breer». Firngrensen ligger mellom de to områdene.",
+  },
+  {
+    prompt: "Hva er havis?",
+    options: [
+      "En innlandsis på Grønland.",
+      "Frossent havvann som flyter på havet.",
+      "Snø som ligger på en dalbre.",
+    ],
+    answer: 1,
+    explain: "Se «Havis og snø». Havis er frossent havvann, ikke en bre på land.",
+  },
+  {
+    prompt: "Hva gjelder en snøskredfaregrad for?",
+    options: [
+      "Ett enkelt heng.",
+      "Et område på minst 100 kvadratkilometer.",
+      "Bare Svalbard.",
+    ],
+    answer: 1,
+    explain: "Se «Snøskredvarsel». Graden er regional og kan ikke settes for ett heng.",
+  },
+  {
+    prompt: "Hva har skjedd med de fleste breene i Norge siden starten av 2000-tallet?",
+    options: [
+      "De har vokst, fordi vintrene er blitt kaldere.",
+      "De har smeltet mye tilbake, hovedsakelig på grunn av varme somre.",
+      "De er uendret, fordi massebalansen alltid er null.",
+    ],
+    answer: 1,
+    explain: "Se «Breer». Tilbakegangen henger sammen med varme somre.",
+  },
+];

@@ -88,6 +88,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_KRYO,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
@@ -365,6 +366,16 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  KryoForklaring: () => (
+    <Callout title="Hva betyr «kryosfæren»?">
+      <p>
+        Kryosfæren er den frosne delen av jordoverflaten: breer, havis, snødekke og permafrost.
+        Permafrost er bakke som i to sammenhengende år ikke blir varmere enn 0 °C (Store norske
+        leksikon, u.å.-b).
+      </p>
+    </Callout>
+  ),
+  QuizKryo: () => <Quiz questions={QUIZ_KRYO} heading={null} intro="Velg ett svar per spørsmål." />,
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */
