@@ -174,6 +174,24 @@ export const KILDER_G2 = {
       href: "https://snl.no/stormflo",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-c). ",
+      italic: "Sjøbris",
+      suffix: ". Tekst fra MetLex, Meteorologisk institutt.",
+      href: "https://snl.no/sjøbris",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      italic: "CTD",
+      suffix: ".",
+      href: "https://oceanexplorer.noaa.gov/technology/ctd/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2022). ",
+      italic: "Snøprofil",
+      suffix: " (Faktaark 1/2022).",
+      href: "https://publikasjoner.nve.no/faktaark/2022/faktaark2022_01.pdf",
+    },
+    {
       prefix: "Kartverket. (u.å.). ",
       italic: "Se havnivå",
       suffix: ".",

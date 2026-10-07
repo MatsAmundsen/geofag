@@ -8,7 +8,7 @@
 >
 > • *Mennesket i jordsystemene:* Kjerneelementet handler også om hvordan vi kan forebygge og beskytte oss mot naturfarer (Udir, u.å.-a). Snøskredvarselet er et slikt hjelpemiddel.
 
-## Tre felt, samme kjede
+## Tre felt i samme kjede
 
 ```widget
 FeltHavForklaring
@@ -21,6 +21,9 @@ FeltHavForklaring
 | Luft | Temperatur, fuktighet og lufttrykk oppover i atmosfæren | Radiosonde på værballong |
 | Hav | Observert og varslet vannstand, og tidevann | Kartverkets tjeneste Se havnivå |
 | Snø og is | Regionalt snøskredvarsel og andres observasjoner | Varsom, hver dag i vinterhalvåret |
+| Kystlinje | Temperatur og vindretning fra kai og innover | Sjøbris en solrik sommerdag |
+| Havdyp | Konduktivitet og temperatur mot dyp | CTD |
+| Snødekke | Lag, hardhet, korn og fukt | Snøprofil |
 
 ## Luft
 
@@ -32,11 +35,21 @@ Kartverket har det nasjonale ansvaret for vannstandsmåling. Se havnivå viser o
 
 Et enkelt havoppdrag er å sammenligne den observerte vannstanden med det du ser på kaia, og å skille tidevannet fra været. Stormflo er særlig høy vannstand langs kysten i forbindelse med storm, ikke den vanlige floa (Store norske leksikon, u.å.-b; Kartverket, u.å.).
 
+CTD står for konduktivitet, temperatur og dyp. Det er en pakke med elektroniske instrumenter som registrerer hvordan konduktivitet og temperatur endrer seg med dypet. På skip er den ofte festet til en rosett som senkes med en kabel. Niskin-flasker på rosetten kan lukkes i bestemte dyp (NOAA, u.å.). Et opplegg er å senke en CTD og lese av hvordan konduktivitet og temperatur endrer seg nedover, med georeferert posisjon (Udir, u.å.-a).
+
+## Sjøbris
+
+Sjøbris er vind som blåser inn fra havet fordi sola varmer opp landet. Varm luft stiger over land og erstattes av kjøligere luft fra sjøen. I Norge er sjøbris en del av solgangsvinden, og den oppstår om sommeren. Artikkelen bygger på tekst fra Meteorologisk institutt (Store norske leksikon, u.å.-c).
+
+Et opplegg for sjøbris er en linje av georefererte punkter fra kaia og innover land en solrik sommerdag. Mål temperatur og noter vindretning på hvert punkt (Udir, u.å.-a; Store norske leksikon, u.å.-c).
+
 ## Snø og is
 
 På Varsom ligger snøskredvarsel for Norge hver dag i vinterhalvåret. I Varsom-appen kan du dele og lese andres observasjoner av snø og snøskred. NVE publiserer varsel for 24 regioner på fastlandet og Svalbard. Varselet er et hjelpemiddel, ikke en fasit. Gjør alltid egne vurderinger. Varslene er regionale og bygger på tilgjengelige observasjoner og værprognoser. Forholdene kan være komplekse og avvike (NVE, u.å.; Varsom, u.å.-a).
 
 Faregraden kan ikke settes for ett heng. Den gjelder et område på minst 100 kvadratkilometer, og den settes etter den europeiske snøskredfareskalaen: hvor lett skred løses ut, hvor utbredt problemet er, og hvor store skred som kan ventes (Varsom, u.å.-b).
+
+En snøprofil viser lagdelingen, eventuelle svake lag og temperaturforskjeller i snøen. For hvert lag noteres hardhet, tykkelse, kornform, kornstørrelse og fuktighet. Gravepunktet skal være skredtrygt, med et jevnt snødekke som er representativt for området (NVE, 2022).
 
 > **Vanlige misforståelser**
 >
@@ -59,6 +72,12 @@ Faregraden kan ikke settes for ett heng. Den gjelder et område på minst 100 kv
 **Faregrad:** Regional vurdering for minst 100 kvadratkilometer, ikke for ett heng.
 
 **Egne vurderinger:** Varselet er et hjelpemiddel. Den som ferdes, skal selv vurdere forholdene.
+
+**Sjøbris:** Vind inn fra havet fordi sola varmer landet. I Norge en del av solgangsvinden om sommeren.
+
+**CTD:** Instrument som måler konduktivitet og temperatur mot dyp.
+
+**Snøprofil:** Registrering av lag, hardhet, korn og fukt i snødekket, på et skredtrygt punkt.
 
 ## Test deg selv
 

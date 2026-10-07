@@ -517,7 +517,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
   {
     flag: "felt-hav-luft-is-copy-2026-10-07",
     slug: "felt-hav-luft-is",
-    stale: ["Her kan du redigere", "sjøbris"],
+    stale: ["Her kan du redigere", "Samme kjede, annen sfære"],
+  },
+  {
+    flag: "felt-hav-luft-is-copy-2-2026-10-07",
+    slug: "felt-hav-luft-is",
+    stale: ["## Tre felt, samme kjede"],
   },
 ];
 

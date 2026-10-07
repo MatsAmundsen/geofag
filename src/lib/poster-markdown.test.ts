@@ -326,7 +326,9 @@ describe("felt-hav-luft-is poster", () => {
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
-    assert.equal(md.includes("sjøbris"), false);
+    assert.equal(md.toLowerCase().includes("sjøbris"), true);
+    assert.equal(md.includes("CTD"), true);
+    assert.equal(md.includes("## Tre felt, samme kjede"), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/felt-hav-luft-is"), true);
