@@ -326,7 +326,8 @@ describe("kryosfaeren poster", () => {
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
-    assert.equal(md.includes("ELA"), false);
+    assert.equal(md.includes("ELA"), true);
+    assert.equal(md.includes("Her er isen som måles i år."), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/kryosfaeren"), true);

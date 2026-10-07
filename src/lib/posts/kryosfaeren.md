@@ -16,7 +16,7 @@
 KryoForklaring
 ```
 
-[Kryosfæren](/tema/kryosfaeren) er den frosne delen av jordoverflaten. Permafrost hører til den, og det samme gjør breer, havis og snødekke (Store norske leksikon, u.å.-b). Istidene og arkivene i isen ligger i [paleoklima](/tema/paleoklima) og [istider](/tema/milankovitch). Her er isen som måles i år.
+[Kryosfæren](/tema/kryosfaeren) er den frosne delen av jordoverflaten. Permafrost hører til den, og det samme gjør breer, havis og snødekke (Store norske leksikon, u.å.-b). Istidene og arkivene i isen ligger i [paleoklima](/tema/paleoklima) og [istider](/tema/milankovitch). Her er isen som måles fra år til år.
 
 | Del | Hva det er |
 | --- | --- |
@@ -25,11 +25,15 @@ KryoForklaring
 | Havis | Frossent havvann som flyter på havet |
 | Snødekke | Snø som i løpet av året kan dekke så mye som 46 millioner kvadratkilometer |
 
-Albedo er et mål på hvor godt en flate reflekterer lys. Vann, is og skyer reflekterer sollys i ulik grad (Store norske leksikon, u.å.-c). Når isdekket øker, kastes mer av solas energi tilbake til verdensrommet, og avkjølingen kan forsterkes (NASA, u.å.).
+Albedo er et mål på hvor godt en flate reflekterer lys. En albedo på 0,10 betyr at 10 prosent av det innfallende lyset kastes tilbake. For jorda sett under ett er albedoen om lag 0,3, altså 30 prosent. Tørr nysnø har en albedo på 0,9. For skog er verdien 0,1–0,15. I tabellen er vann 0,06 og gammel, skitten snø 0,40 (Store norske leksikon, u.å.-c).
+
+På siden om albedoeffekten er nysnø 0,9, som er 90 prosent av solstrålingen, og gammel skitten snø 0,4, som er 40 prosent. Havis er 0,5–0,7 og hav 0,03–0,4. Is har høyere albedo enn vann, så vann tar opp mer av varmen fra sola (Store norske leksikon, u.å.-d). Når isdekket øker, kastes mer av solas energi tilbake til verdensrommet, og avkjølingen kan forsterkes (NASA, u.å.).
 
 ## Breer
 
-På en bre er det et akkumulasjonsområde, der snøen hoper seg opp og ikke smelter bort om sommeren, og et ablasjonsområde, der smeltingen skjer. Grensen mellom dem kalles firngrensen. Snøen i dypet går over til is. Isen er seig og siger nedover mot lavere terreng, der den etter hvert smelter (Store norske leksikon, u.å.-a).
+På en bre er det et akkumulasjonsområde, der snøen hoper seg opp og ikke smelter bort om sommeren, og et ablasjonsområde, der smeltingen skjer. Mot slutten av sommeren kan grensen mellom dem, firngrensen, ses tydelig på breoverflaten. Snøen i dypet går over til is. Isen er seig og siger nedover mot lavere terreng, der den etter hvert smelter (Store norske leksikon, u.å.-a).
+
+Likevektslinjen, forkortet ELA, er høyden på breflaten der akkumulasjon og ablasjon er like stor (NVE, 2017). Firngrensen er den synlige grensen mot slutten av sommeren. De to ordene er ikke satt lik hverandre her.
 
 I Norge er det om lag 5260 isbreer som er større enn 0,01 kvadratkilometer, med et samlet areal på rundt 2320 kvadratkilometer. Siden starten av 2000-tallet har de fleste breene i Norge smeltet mye tilbake, hovedsakelig på grunn av varme somre. Systematiske målinger av massebalansen på Storbrean i Jotunheimen startet i 1949. Fra begynnelsen av 1960-tallet er massebalansen målt år for år på enkelte utvalgte breer (Store norske leksikon, u.å.-a).
 
@@ -67,7 +71,11 @@ NVE publiserer snøskredvarsel for 24 regioner på fastlandet og Svalbard hver d
 
 **Kryosfæren:** Den frosne delen av jordoverflaten, blant annet breer, havis, snø og permafrost.
 
-**Akkumulasjon og ablasjon:** Der snøen blir liggende, og der den smelter. Firngrensen skiller de to.
+**Akkumulasjon og ablasjon:** Der snøen blir liggende, og der den smelter. Firngrensen er den synlige grensen mot slutten av sommeren.
+
+**Albedo:** Hvor stor del av lyset som kastes tilbake. Tørr nysnø 0,9. Gammel skitten snø 0,4, altså 40 prosent.
+
+**Likevektslinje (ELA):** Høyden på breflaten der akkumulasjon og ablasjon er like stor.
 
 **Permafrost:** Bakke der temperaturen i to sammenhengende år ikke overstiger 0 °C.
 

@@ -1097,6 +1097,12 @@ export const KILDER = {
       href: "https://snl.no/albedo",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Albedoeffekt",
+      suffix: ".",
+      href: "https://snl.no/albedoeffekt",
+    },
+    {
       prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.-a). ",
       italic: "Sea ice",
       suffix: ".",
@@ -1119,6 +1125,12 @@ export const KILDER = {
       italic: "Milankovitch (orbital) cycles and their role in Earth’s climate",
       suffix: ".",
       href: "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2017). ",
+      italic: "Homogenisering av korte massebalanseserier i Norge",
+      suffix: " (NVE Rapport 33/2017).",
+      href: "https://publikasjoner.nve.no/rapport/2017/rapport2017_33.pdf",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
