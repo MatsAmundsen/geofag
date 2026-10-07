@@ -88,6 +88,11 @@ const PLATE_INJECT_RULES: InjectRule[] = [
 ];
 
 const CHAPTER_INJECT_RULES: InjectRule[] = [
+  {
+    widgets: ["MagmaViscosity"],
+    beforeLine: "**Magmatyper**",
+    require: "Eyjafjallajökull",
+  },
   { widgets: ["VolcanoTypes"], beforeImage: "/images/geo-vulkantyper-3d.jpg" },
   {
     widgets: ["CalderaFormation"],
@@ -100,6 +105,21 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Eyjafjallajökull",
   },
   {
+    widgets: ["IcelandContrast"],
+    beforeHeading: "VEI: vulkansk eksplosivitetsindeks",
+    require: "Eyjafjallajökull",
+  },
+  {
+    widgets: ["VeiScale"],
+    beforeLine: "| VEI | Tefravolum",
+    require: "Eyjafjallajökull",
+  },
+  {
+    widgets: ["VolcanoMonitoring"],
+    beforeHeading: "Vulkanske farer og klima",
+    require: "Eyjafjallajökull",
+  },
+  {
     widgets: ["VolcanoEruptionAnatomy"],
     beforeImage: "/images/geo-pliniansk-anatomi.jpg",
   },
@@ -108,7 +128,15 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     beforeHeading: "1. Pyroklastiske strømmer",
     require: "Eyjafjallajökull",
   },
-  { widgets: ["VolcanoModel"], beforeHeading: "Norsk vulkanisme" },
+  {
+    widgets: ["VolcanicWinter", "VolcanoModel"],
+    beforeHeading: "Norsk vulkanisme",
+  },
+  {
+    widgets: ["JanMayen"],
+    beforeHeading: "Viktige faglige begreper",
+    require: "Beerenberg",
+  },
   {
     widgets: ["QuizVulkaner"],
     afterHeading: "Test deg selv",

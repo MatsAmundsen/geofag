@@ -11,41 +11,64 @@ export type Kilde = {
 export const KILDER = {
   jordsystemene: [
     {
-      prefix: "National Aeronautics and Space Administration [NASA]. (u.å.). ",
-      italic: "Earth’s spheres",
+      prefix: "National Aeronautics and Space Administration [NASA]. (2011). ",
+      italic: "The carbon cycle",
       suffix: ".",
-      href: "https://science.nasa.gov/earth/earth-observatory/",
+      href: "https://science.nasa.gov/earth/earth-observatory/the-carbon-cycle/",
     },
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
-      italic: "What is the difference between weathering and erosion?",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
+      italic: "Fisk innesperret i nær 300 år etter vulkanutbrudd",
       suffix: ".",
-      href: "https://www.usgs.gov/faqs/what-difference-between-weathering-and-erosion",
+      href: "https://www.ngu.no/nyheter/fisk-innesperret-i-naer-300-ar-etter-vulkanutbrudd",
     },
     {
-      prefix: "International Commission on Stratigraphy. (2024). ",
-      italic: "International chronostratigraphic chart",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+      italic: "Geologi på land",
       suffix: ".",
-      href: "https://stratigraphy.org/",
+      href: "https://www.ngu.no/om-geologi/geologi-pa-land",
     },
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-b). ",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      italic: "Grunnvann",
+      suffix: ".",
+      href: "https://www.ngu.no/geologiske-ressurser/grunnvann",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-d). ",
+      italic: "Karbonatmineraler",
+      suffix: ".",
+      href: "https://www.ngu.no/geologiske-ressurser/karbonatmineraler",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-e). ",
+      italic: "Om berggrunn",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-berggrunn",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-g). ",
+      italic: "Om løsmasser",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-losmasser",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
       italic: "Volcanoes can affect climate",
       suffix: ".",
       href: "https://www.usgs.gov/programs/VHP/volcanoes-can-affect-climate",
     },
     {
-      prefix: "Gerlach, T. (2011). Volcanic versus anthropogenic carbon dioxide. ",
-      italic: "Eos, 92",
-      suffix: "(24), 201–202.",
-      href: "https://doi.org/10.1029/2011EO240001",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },
     {
-      prefix:
-        "Walker, J. C. G., Hays, P. B., & Kasting, J. F. (1981). A negative feedback mechanism for the long-term stabilization of Earth’s surface temperature. ",
-      italic: "Journal of Geophysical Research, 86",
-      suffix: "(C10), 9776–9782.",
-      href: "https://doi.org/10.1029/JC086iC10p09776",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 1",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
   ],
   platetektonikk: [
@@ -229,11 +252,22 @@ export const KILDER = {
   ],
   jordskjelv: [
     {
-      prefix:
-        "Bungum, H., Pettenati, F., Schweitzer, J., & Sirovich, L. (2009). The 23 October 1904 MS 5.4 Oslofjord earthquake: Reanalysis based on macroseismic and instrumental data. ",
-      italic: "Bulletin of the Seismological Society of America, 99",
-      suffix: "(5), 2836–2854.",
-      href: "https://doi.org/10.1785/0120080357",
+      prefix: "Incorporated Research Institutions for Seismology [IRIS]. (u.å.). ",
+      italic: "Seismic shadow zone: Basic introduction",
+      suffix: ".",
+      href: "https://www.iris.edu/hq/inclass/animation/seismic_shadow_zone_basic_introduction",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
+      italic: "Jordskjelv",
+      suffix: ".",
+      href: "https://www.ngu.no/geologi-og-risiko/jordskjelv",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+      italic: "Tafjordskredet i 1934 – 40 mennesker døde",
+      suffix: ".",
+      href: "https://www.ngu.no/geologi-og-risiko/tafjordskredet-i-1934-40-mennesker-dode",
     },
     {
       prefix: "NORSAR. (u.å.-a). ",
@@ -243,29 +277,45 @@ export const KILDER = {
     },
     {
       prefix: "NORSAR. (u.å.-b). ",
-      italic: "Jordskjelv i Norge og seismisk risiko",
+      italic: "Jordskjelv i Norge",
       suffix: ".",
       href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
     },
     {
-      prefix:
-        "Oldham, R. D. (1906). The Constitution of the Interior of the Earth, as Revealed by Earthquakes. ",
-      italic: "Quarterly Journal of the Geological Society, 62",
-      suffix: "(1–4), 456–475.",
-      href: "https://doi.org/10.1144/GSL.JGS.1906.062.01-04.21",
-    },
-    {
-      prefix:
-        "Reid, H. F. (1910). ",
-      italic: "The Mechanics of the Earthquake: The California Earthquake of April 18, 1906",
-      suffix: " (Vol. 2). Carnegie Institution of Washington.",
-      href: "https://doi.org/10.5962/bhl.title.35824",
-    },
-    {
-      prefix: "Standard Norge. (2021). ",
-      italic: "Eurokode 8: Prosjektering av konstruksjoner for seismisk påvirkning (NS-EN 1998-1)",
+      prefix: "NORSAR. (u.å.-c). ",
+      italic: "Norsk nasjonalt seismisk nettverk",
       suffix: ".",
-      href: "https://www.standard.no/",
+      href: "https://www.norsar.no/prosjekter/norsk-nasjonalt-seismisk-nettverk/",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      italic: "Storeggaskredet",
+      suffix: ".",
+      href: "https://snl.no/Storeggaskredet",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
+      italic: "The interior of the Earth",
+      suffix: ".",
+      href: "https://pubs.usgs.gov/gip/interior/",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-b). ",
+      italic: "Understanding plate motions",
+      suffix: ".",
+      href: "https://pubs.usgs.gov/gip/dynamic/understanding.html",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 1",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
   ],
   bergarter: [

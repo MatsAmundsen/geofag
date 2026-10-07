@@ -202,13 +202,12 @@ describe("scan chips for the other geosfære chapters", () => {
     assert.deepEqual(
       doc.sections.map((section) => section.label),
       [
-        "Tilbakefjæring",
+        "Jordskjelv",
         "Bølger",
-        "Måling",
-        "Wadati-Benioff",
+        "Plategrenser",
         "Norge",
         "Tsunami",
-        "Sikring",
+        "Risiko",
         "Begreper",
         "Quiz",
       ],

@@ -136,10 +136,16 @@ export {
   CalderaFormationDiagram,
   EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
+  IcelandContrastDiagram,
+  JanMayenDiagram,
+  MagmaViscosityDiagram,
   NorwayEarthquakesDiagram,
   SeismogramDiagram,
+  VeiScaleDiagram,
   VolcanicHazardsDiagram,
+  VolcanicWinterDiagram,
   VolcanoEruptionAnatomyDiagram,
+  VolcanoMonitoringDiagram,
   VolcanoTypesDiagram,
 } from "./quakes";
 export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
