@@ -233,4 +233,12 @@ describe("scan chips for the other geosfære chapters", () => {
       ],
     );
   });
+
+  it("labels Skred with short topic chips", () => {
+    const doc = prepareChapterScan(readChapter("skred"));
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      ["Skred", "Kvikkleire", "Fjellskred", "Forebygging", "Begreper", "Quiz"],
+    );
+  });
 });

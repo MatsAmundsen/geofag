@@ -352,9 +352,9 @@ export const GF1_THEMES = [
     image: "/images/fig-ravine.jpg",
     alt: "Ravine og skredløp i løsmasse",
     blurb:
-      "Steinskred, fjellskred, løsmasseskred og havbunnsskred. Åknes, Tafjord, Gjerdrum, Storegga. Snøskred hører i geofag 2.",
+      "Fjellskred, jordskred og kvikkleire. Åknes, Mannen og Gjerdrum. Kart og varsling.",
     status: "klar" as const,
-    maal: "Naturfarer knyttet til geosfæren: skred, risiko, forebygging og tilpasning.",
+    maal: "Gjøre rede for skredfare, og vurdere forebygging og tilpasning.",
   },
   {
     slug: "geologiske-ressurser",

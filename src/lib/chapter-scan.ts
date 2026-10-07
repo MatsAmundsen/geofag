@@ -204,6 +204,26 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Superposisjon, krysskjæring og isotopur",
   },
   {
+    match: /^hva er et skred/i,
+    label: "Skred",
+    subtitle: "Fjell, løsmasse og volum",
+  },
+  {
+    match: /^hva er kvikkleire/i,
+    label: "Kvikkleire",
+    subtitle: "Marin leire, salt og utvasking",
+  },
+  {
+    match: /^hva er et fjellskred/i,
+    label: "Fjellskred",
+    subtitle: "Åknes, Mannen og overvåking",
+  },
+  {
+    match: /^hvordan kan vi forebygge/i,
+    label: "Forebygging",
+    subtitle: "Sikring, kart og varsel",
+  },
+  {
     match: /fagvokabular|begrep/i,
     label: "Begreper",
     subtitle: "Kjernebegrepene du skal kunne forklare",

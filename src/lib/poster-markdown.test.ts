@@ -159,6 +159,20 @@ describe("injectPosterWidgets", () => {
     }
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVulkaner"));
   });
+
+  it("places the quick-clay widgets into Skred without borrowing them elsewhere", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const skred = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/skred.md"), "utf8")),
+    );
+    for (const id of ["KvikkleireForklaring", "KvikkleireSteg", "QuizSkred"]) {
+      assert.equal(skred.has(id), true, `skred missing ${id}`);
+    }
+    const bergarter = readFileSync(join(lib, "posts/bergarter.md"), "utf8");
+    const injected = injectPosterWidgets(bergarter);
+    assert.equal(listedWidgetIds(injected).has("QuizSkred"), false);
+    assert.equal(listedWidgetIds(injected).has("KvikkleireForklaring"), false);
+  });
 });
 
 describe("stripCatalogImageCaptions", () => {

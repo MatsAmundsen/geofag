@@ -469,6 +469,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "platetektonikk",
     stale: ["1450- 1650C", "Ridge push"],
   },
+  {
+    flag: "skred-copy-2026-10-07",
+    slug: "skred",
+    stale: ["Her kan du redigere", "Ormen Lange"],
+  },
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

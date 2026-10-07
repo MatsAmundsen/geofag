@@ -39,6 +39,7 @@ import {
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
 import { Callout } from "@/components/callout";
+import { KvikkleireDiagram } from "@/components/diagrams/skred";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
@@ -56,6 +57,7 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_SKRED,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
   QUIZ_MELTING,
@@ -159,6 +161,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
   QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  KvikkleireForklaring: () => (
+    <Callout title="Hva betyr «kvikkleire»?">
+      <p>
+        Kvikkleire er marin leire der saltet mellom leirpartiklene er vasket ut. Partiklene ligger i
+        en åpen korthusstruktur. Saltvann holder strukturen. Ferskt grunnvann kan vaske saltet ut
+        over lang tid. Da svekkes bindingene. Blir leira overbelastet, klapper strukturen sammen, og
+        leira blir flytende.
+      </p>
+    </Callout>
+  ),
+  KvikkleireSteg: () => <KvikkleireDiagram />,
+  QuizSkred: () => (
+    <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */
