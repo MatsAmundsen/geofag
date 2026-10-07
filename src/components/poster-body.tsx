@@ -80,6 +80,7 @@ import {
   QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_SKRED,
   QUIZ_HOYTRYKK,
+  QUIZ_JET,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
@@ -161,6 +162,27 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizHoytrykk: () => (
     <Quiz questions={QUIZ_HOYTRYKK} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  QuizJet: () => (
+    <Quiz questions={QUIZ_JET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  JetForklaring: () => (
+    <Callout title="Hva betyr «jetstrøm»?">
+      <p>
+        En jetstrøm er et smalt belte med sterk vind høyt oppe i atmosfæren. Vinden blåser fra vest
+        mot øst og følger skillet mellom varm og kald luft. Neste ord du trenger, er polarjet: den
+        jetstrømmen som ligger mellom 50° og 60° bredde.
+      </p>
+    </Callout>
+  ),
+  NaoForklaring: () => (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Det er svingningen i trykkforskjellen mellom
+        lavtrykket ved Island og høytrykket ved Asorene. Når forskjellen er stor, blir jetstrømmen
+        over Atlanteren sterkere, og stormbanen ligger lenger nord.
+      </p>
+    </Callout>
   ),
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
