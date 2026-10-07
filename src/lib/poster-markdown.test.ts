@@ -740,3 +740,28 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("/tema/milankovitch"), true);
   });
 });
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the hazard poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/vaerkatastrofer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["OrkanForklaring", "QuizFarer"]) {
+      assert.equal(ids.has(id), true, `vaerkatastrofer missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.toLowerCase().includes("baroklin"), true);
+    assert.equal(md.includes("Bare store orkaner er farlige, er feil."), false);
+    assert.equal(md.includes("bombesyklon"), true);
+    assert.equal(md.includes("Hans"), true);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/vaerkatastrofer"), true);
+  });
+});

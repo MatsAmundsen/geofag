@@ -211,7 +211,7 @@ export const GF2_THEMES = [
     image: "/images/tema-katastrofer.jpg",
     alt: "En atlantisk orkan sett fra verdensrommet, med tydelig øye",
     blurb:
-      "Orkaner, ekstremnedbør og stormflo er værsystemer drevet av samme fysikk. Risikoen forskyves når klimaet endres.",
+      "Orkan som vindstyrke er sterkere enn 32,6 m/s. En tropisk orkan er et lavtrykk med middelvind på minst 119 km/t.",
     status: "klar" as const,
   },
   {

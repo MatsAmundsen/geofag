@@ -652,6 +652,17 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "milankovitch",
     stale: ["Dagens breer er ikke kvartærtidens innlandsis."],
   }
+,
+  {
+    flag: "vaerkatastrofer-copy-2026-10-07",
+    slug: "vaerkatastrofer",
+    stale: ["Her kan du redigere", "Grays seks dannelseskriterier"],
+  },
+  {
+    flag: "vaerkatastrofer-copy-2-2026-10-07",
+    slug: "vaerkatastrofer",
+    stale: ["Bare store orkaner er farlige, er feil."],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

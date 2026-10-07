@@ -133,6 +133,7 @@ import {
   QUIZ_MODELLER,
   QUIZ_PALEO,
   QUIZ_ISTIDER,
+  QUIZ_FARER,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -584,6 +585,21 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     QuizIstider: () => (
     <Quiz questions={QUIZ_ISTIDER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    OrkanForklaring: () => (
+    <Callout title="Hva betyr «orkan»?">
+      <p>
+        Orkan er den sterkeste av alle vinder: sterkere enn 32,6 m/s, målt ti meter over bakken i ti
+        minutter. Ordet brukes også om lavtrykket som gir vinden. En tropisk orkan er en tropisk
+        syklon, ikke den samme grensen (Store norske leksikon, u.å.-a; National Hurricane Center,
+        u.å.-a).
+      </p>
+    </Callout>
+  ),
+    QuizFarer: () => (
+    <Quiz questions={QUIZ_FARER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
