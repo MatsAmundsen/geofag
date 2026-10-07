@@ -630,6 +630,17 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "numeriske-modeller",
     stale: ["Ett enkelt regnestykke sier ikke hvor sikkert været er."],
   }
+,
+  {
+    flag: "paleoklima-copy-2026-10-07",
+    slug: "paleoklima",
+    stale: ["Her kan du redigere", "Rayleigh-fraksjonering"],
+  },
+  {
+    flag: "paleoklima-copy-2-2026-10-07",
+    slug: "paleoklima",
+    stale: ["Satellittrekken starter altså i 1979."],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

@@ -131,6 +131,7 @@ import {
   QUIZ_AMOC,
   QUIZ_KRYO,
   QUIZ_MODELLER,
+  QUIZ_PALEO,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -554,6 +555,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     QuizModeller: () => (
     <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    PaleoForklaring: () => (
+    <Callout title="Hva betyr «paleoklima»?">
+      <p>
+        Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
+        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i
+        istidssyklusene det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizPaleo: () => (
+    <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,

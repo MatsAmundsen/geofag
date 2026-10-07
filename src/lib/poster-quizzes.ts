@@ -1,5 +1,63 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_PALEO: QuizQuestion[] = [
+  {
+    prompt: "Når startet de direkte målingene av CO₂ på Mauna Loa?",
+    options: [
+      "I mars 1958.",
+      "I 1979, da satellittene begynte å måle havis.",
+      "I mai 1974, da NOAA startet egne målinger.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Tre arkiv, tre klokker». Keeling startet serien i mars 1958. NOAA kom med egne målinger i mai 1974.",
+  },
+  {
+    prompt: "Hva viser iskjerner om CO₂ i istidssyklusene det siste millionåret?",
+    options: [
+      "At CO₂ ikke kom over 300 ppm.",
+      "At CO₂ hele tiden lå rundt 422 ppm.",
+      "At CO₂ først ble målt i 1958.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Iskjerner og det naturlige spennet». 300 ppm er taket i de syklusene. 422,8 ppm er det globale årsmiddelet i 2024.",
+  },
+  {
+    prompt: "Hvor lå CO₂ før midten av 1700-tallet?",
+    options: [
+      "På 280 ppm eller lavere.",
+      "Over 400 ppm, som i 2024.",
+      "Rett under 427 ppm, som mai-verdien på Mauna Loa.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Iskjerner og det naturlige spennet». Før den industrielle revolusjonen lå CO₂ på 280 ppm eller lavere.",
+  },
+  {
+    prompt: "Hva driver årstidssvingningen, og hva driver den langsiktige stigningen?",
+    options: [
+      "Vegetasjon driver svingningen. Menneskelig aktivitet driver stigningen.",
+      "Begge kommer av istidene.",
+      "Satellittene driver begge, fordi serien starter i 1979.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Tre arkiv, tre klokker». Sommerens plantevekst senker CO₂, og vinterens nedbryting hever den. Stigningen er menneskedrevet.",
+  },
+  {
+    prompt: "Hva er Sea Ice Index?",
+    options: [
+      "Iskjernekurven for 800 000 år.",
+      "Utbredelse og konsentrasjon av havis siden 1979.",
+      "Månedsmiddelet av CO₂ på Mauna Loa.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Havis er et annet arkiv». Serien starter i 1979 og sammenlignes med medianen for 1981–2010.",
+  },
+];
+
 export const QUIZ_MODELLER: QuizQuestion[] = [
   {
     prompt: "Hva er et ensemble hos ECMWF?",
