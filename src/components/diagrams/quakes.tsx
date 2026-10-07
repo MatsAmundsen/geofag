@@ -106,146 +106,148 @@ export function BoundaryQuakesDiagram() {
 }
 
 export function SeismogramDiagram() {
+  const epicenter = { x: 206, y: 328 };
+  const stations = [
+    { name: "A", x: 158, y: 300, color: C.teal },
+    { name: "B", x: 270, y: 306, color: C.warm },
+    { name: "C", x: 198, y: 386, color: C.cold },
+  ];
   return (
     <Diagram
-      title="Seismogram og seismiske bølger"
+      title="Seismogram med P-, S- og overflatebølger, og tre stasjoner som krysser i episenteret"
       heading="P-bølger, S-bølger og lokalisering av episenter"
-      caption="P-bølgen kommer først, S-bølgen etter. Tidsforskjellen mellom dem blir større jo lenger unna skjelvet er, og tre stasjoner kan derfor peke ut episenteret. Bølgene langs overflaten kommer sist og rister bygningene mest."
-      viewBox="0 0 840 420"
+      caption="P-bølgen kommer først, S-bølgen etter. Tidsforskjellen mellom dem blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret. Bølgene langs overflaten kommer sist. De har størst utslag og rister husene mest. Figuren kaller dem Rayleigh- og Love-bølger."
+      viewBox="0 0 840 460"
     >
       {() => (
         <>
-          {/* Seismogram boks */}
-          <rect x="30" y="30" width="540" height="230" rx="8" fill="#111c24" stroke={C.dim} strokeWidth="1.6" />
-          <L x="45" y="54" fill={C.muted} size={13} weight={600}>
-            Tidsakse (sekunder etter brudd) →
+          <rect x="24" y="18" width="792" height="176" rx="8" fill="#111c24" stroke={C.dim} strokeWidth="1.6" />
+          <L x="40" y="40" fill={C.muted} size={13} weight={600}>
+            tid etter bruddet
           </L>
-          <line x1="40" y1="150" x2="550" y2="150" stroke="#1f2f3a" strokeWidth="1.2" strokeDasharray="4 4" />
-
-          {/* Seismogram kurve */}
-          {/* Før P-bølge: støy */}
+          <line x1="48" y1="102" x2="790" y2="102" stroke="#1f2f3a" strokeWidth="1.2" strokeDasharray="4 4" />
+          <path d="M 48 102 L 100 101 L 140 103 L 168 102" fill="none" stroke={C.dim} strokeWidth="1.8" />
           <path
-            d="M 40 150 L 70 149 L 90 151 L 110 150 L 130 149 L 150 150"
-            fill="none"
-            stroke={C.dim}
-            strokeWidth="1.8"
-          />
-
-          {/* P-bølge ankomst ved x=150 */}
-          <path
-            d="M 150 150 L 158 136 L 166 164 L 174 138 L 182 160 L 190 142 L 198 158 L 206 144 L 214 155 L 222 147 L 230 153 L 240 148 L 250 152 L 260 149 L 270 151 L 280 150"
+            d="M 168 102 L 178 90 L 188 114 L 198 92 L 208 112 L 222 98 L 236 108 L 258 100 L 286 104 L 318 102"
             fill="none"
             stroke={C.teal}
             strokeWidth="2.2"
           />
-          <line x1="150" y1="70" x2="150" y2="230" stroke={C.teal} strokeDasharray="3 3" strokeWidth="1.4" />
-          <L x="150" y="86" fill={C.teal} size={14} weight={700} anchor="middle">
-            P-bølge ankomst
-          </L>
-          <L x="150" y="104" fill={C.muted} size={11} anchor="middle">
-            (kompresjon, kommer først)
-          </L>
-
-          {/* S-bølge ankomst ved x=280 */}
           <path
-            d="M 280 150 L 290 115 L 302 185 L 314 118 L 326 180 L 338 125 L 350 172 L 362 132 L 374 165 L 386 138 L 398 160 L 410 150"
+            d="M 318 102 L 332 74 L 346 132 L 360 78 L 374 126 L 388 88 L 404 118 L 424 102"
             fill="none"
             stroke={C.warm}
             strokeWidth="2.4"
           />
-          <line x1="280" y1="70" x2="280" y2="230" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.4" />
-          <L x="280" y="86" fill={C.warm} size={14} weight={700} anchor="middle">
-            S-bølge ankomst
-          </L>
-          <L x="280" y="104" fill={C.muted} size={11} anchor="middle">
-            (skjær, kommer etter)
-          </L>
-
-          {/* Tidsdifferanse Δt markering */}
-          <line x1="150" y1="215" x2="280" y2="215" stroke={C.sand} strokeWidth="2.2" />
-          <line x1="150" y1="208" x2="150" y2="222" stroke={C.sand} strokeWidth="2" />
-          <line x1="280" y1="208" x2="280" y2="222" stroke={C.sand} strokeWidth="2" />
-          <L x="215" y="234" fill={C.sand} size={13} weight={700} anchor="middle">
-            tidsforskjell gir avstand
-          </L>
-
-          {/* Overflatebølger ankomst ved x=410 */}
           <path
-            d="M 410 150 L 424 75 L 442 225 L 460 82 L 478 215 L 496 95 L 514 195 L 530 120 L 544 168 L 554 150"
+            d="M 500 102 L 518 52 L 538 156 L 558 58 L 578 148 L 598 72 L 618 134 L 638 90 L 656 118 L 674 102"
             fill="none"
             stroke={C.low}
-            strokeWidth="2.8"
+            strokeWidth="2.6"
           />
-          <line x1="410" y1="70" x2="410" y2="230" stroke={C.low} strokeDasharray="3 3" strokeWidth="1.4" />
-          <L x="470" y="58" fill={C.low} size={14} weight={700} anchor="middle">
-            Overflatebølger (Rayleigh / Love)
+          <line x1="168" y1="56" x2="168" y2="148" stroke={C.teal} strokeDasharray="3 3" strokeWidth="1.3" />
+          <line x1="318" y1="56" x2="318" y2="148" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.3" />
+          <line x1="500" y1="56" x2="500" y2="148" stroke={C.low} strokeDasharray="3 3" strokeWidth="1.3" />
+          <line x1="168" y1="148" x2="318" y2="148" stroke={C.sand} strokeWidth="2" />
+          <L x="243" y="142" fill={C.sand} size={12} weight={700} anchor="middle">
+            tidsforskjell gir avstand
           </L>
-          <L x="470" y="74" fill={C.muted} size={11} anchor="middle">
-            (størst amplitude · mest ødeleggelse)
+          <L x="168" y="176" fill={C.teal} size={13} weight={700} anchor="middle">
+            P kommer først
           </L>
-
-          {/* Høyre panel: Triangulering med 3 stasjoner */}
-          <rect x="590" y="30" width="220" height="230" rx="8" fill="#152028" stroke={C.dim} strokeWidth="1.6" />
-          <L x="700" y="54" fill={C.fg} size={14} weight={700} anchor="middle">
-            Triangulering av episenter
+          <L x="360" y="176" fill={C.warm} size={13} weight={700} anchor="middle">
+            S kommer etter
           </L>
-
-          {/* Sirkler for stasjon A, B, C */}
-          <circle cx="670" cy="115" r="48" fill="none" stroke={C.teal} strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
-          <circle cx="730" cy="120" r="42" fill="none" stroke={C.warm} strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
-          <circle cx="700" cy="180" r="52" fill="none" stroke={C.rain} strokeWidth="1.8" strokeDasharray="4 3" opacity="0.8" />
-
-          {/* Stasjonsmarkører */}
-          <circle cx="670" cy="115" r="3.5" fill={C.teal} />
-          <L x="658" y="112" fill={C.teal} size={11} weight={600}>A</L>
-
-          <circle cx="730" cy="120" r="3.5" fill={C.warm} />
-          <L x="736" y="118" fill={C.warm} size={11} weight={600}>B</L>
-
-          <circle cx="700" cy="180" r="3.5" fill={C.rain} />
-          <L x="700" y="196" fill={C.rain} size={11} weight={600} anchor="middle">C</L>
-
-          {/* Skjæringspunkt: Episenter */}
-          <Star x={700} y={138} r={8} />
-          <L x="700" y="154" fill={C.low} size={12} weight={700} anchor="middle">
-            Episenter
-          </L>
-          <L x="700" y="246" fill={C.muted} size={11} anchor="middle">
-            Tre sirkler krysser i ett punkt
+          <L x="590" y="176" fill={C.low} size={13} weight={700} anchor="middle">
+            overflatebølger sist
           </L>
 
-          {/* Sammenligningstabell nederst */}
-          <rect x="30" y="280" width="780" height="120" rx="8" fill="#16222b" stroke={C.dim} strokeWidth="1.4" />
-          
-          <L x="50" y="306" fill={C.fg} size={14} weight={700}>
-            Egenskap
+          <rect x="24" y="206" width="392" height="236" rx="8" fill="#152028" stroke={C.dim} strokeWidth="1.4" />
+          <L x="220" y="230" fill={C.fg} size={14} weight={700} anchor="middle">
+            Tre stasjoner, ett episenter
           </L>
-          <L x="230" y="306" fill={C.teal} size={14} weight={700}>
-            P-bølger (primære)
-          </L>
-          <L x="440" y="306" fill={C.warm} size={14} weight={700}>
-            S-bølger (sekundære)
-          </L>
-          <L x="650" y="306" fill={C.low} size={14} weight={700}>
-            Overflatebølger
+          {stations.map((station) => {
+            const radius = Math.hypot(station.x - epicenter.x, station.y - epicenter.y);
+            return (
+              <g key={station.name}>
+                <circle
+                  cx={station.x}
+                  cy={station.y}
+                  r={radius}
+                  fill="none"
+                  stroke={station.color}
+                  strokeWidth="1.7"
+                  strokeDasharray="4 3"
+                />
+                <circle cx={station.x} cy={station.y} r="3.4" fill={station.color} />
+                <L
+                  x={station.x + (station.name === "B" ? 8 : station.name === "C" ? 0 : -14)}
+                  y={station.y + (station.name === "C" ? 16 : -8)}
+                  fill={station.color}
+                  size={12}
+                  weight={700}
+                  anchor={station.name === "C" ? "middle" : "start"}
+                >
+                  {station.name}
+                </L>
+              </g>
+            );
+          })}
+          <Star x={epicenter.x} y={epicenter.y} r={7} />
+          <L x={epicenter.x + 14} y={epicenter.y - 10} fill={C.low} size={12} weight={700}>
+            episenter
           </L>
 
-          <line x1="40" y1="316" x2="800" y2="316" stroke={C.dim} />
-
-          <L x="50" y="338" fill={C.muted} size={12}>Bølgetype & bevegelse:</L>
-          <L x="230" y="338" fill={C.fg} size={12}>Lengdebølge (trykk/drag)</L>
-          <L x="440" y="338" fill={C.fg} size={12}>Tverrbølge (skjær, opp/ned)</L>
-          <L x="650" y="338" fill={C.fg} size={12}>Rullebølge / sidebølge</L>
-
-          <L x="50" y="362" fill={C.muted} size={12}>Hastighet i jordskorpen:</L>
-          <L x="230" y="362" fill={C.fg} size={12}>Raskest</L>
-          <L x="440" y="362" fill={C.fg} size={12}>Langsommere</L>
-          <L x="650" y="362" fill={C.fg} size={12}>Tregest</L>
-
-          <L x="50" y="386" fill={C.muted} size={12}>Utbredelse i væsker:</L>
-          <L x="230" y="386" fill={C.teal} size={12} weight={600}>Går gjennom fast og væske</L>
-          <L x="440" y="386" fill={C.warm} size={12} weight={600}>Stanser i væske (ytre kjerne)</L>
-          <L x="650" y="386" fill={C.low} size={12} weight={600}>Kun langs overflaten</L>
+          <rect x="432" y="206" width="384" height="236" rx="8" fill="#16222b" stroke={C.dim} strokeWidth="1.4" />
+          <L x="456" y="234" fill={C.teal} size={13} weight={700}>
+            P-bølge
+          </L>
+          <L x="580" y="234" fill={C.warm} size={13} weight={700}>
+            S-bølge
+          </L>
+          <L x="692" y="234" fill={C.low} size={13} weight={700}>
+            Overflate
+          </L>
+          <line x1="448" y1="246" x2="800" y2="246" stroke={C.dim} />
+          <L x="456" y="272" fill={C.fg} size={12}>
+            kompresjon
+          </L>
+          <L x="580" y="272" fill={C.fg} size={12}>
+            skjær
+          </L>
+          <L x="692" y="272" fill={C.fg} size={12}>
+            langs bakken
+          </L>
+          <L x="456" y="298" fill={C.muted} size={12}>
+            langs bølgen
+          </L>
+          <L x="580" y="298" fill={C.muted} size={12}>
+            på tvers
+          </L>
+          <L x="692" y="298" fill={C.muted} size={12}>
+            Rayleigh og Love
+          </L>
+          <L x="456" y="332" fill={C.fg} size={12}>
+            fast og væske
+          </L>
+          <L x="580" y="332" fill={C.fg} size={12}>
+            bare fast stoff
+          </L>
+          <L x="692" y="332" fill={C.fg} size={12}>
+            størst utslag
+          </L>
+          <L x="456" y="366" fill={C.teal} size={12}>
+            kommer først
+          </L>
+          <L x="580" y="366" fill={C.warm} size={12}>
+            kommer etter
+          </L>
+          <L x="692" y="366" fill={C.low} size={12}>
+            rister husene
+          </L>
+          <L x="456" y="408" fill={C.muted} size={12}>
+            Større tidsforskjell, større avstand.
+          </L>
         </>
       )}
     </Diagram>
@@ -266,139 +268,138 @@ export {
 } from "./volcanoes";
 
 export function EarthquakeWavePhysicsDiagram() {
+  const globe = { cx: 0, cy: 0, r: 108 };
+  const rc = globe.r * 0.55;
+  const ri = globe.r * 0.2;
+  const rim = (deg: number, r: number) => {
+    const a = -Math.PI / 2 + (deg * Math.PI) / 180;
+    return { x: r * Math.cos(a), y: r * Math.sin(a) };
+  };
+  const s103 = rim(103, globe.r);
+  const s103b = rim(-103, globe.r);
+  const p140 = rim(140, globe.r);
+  const p140b = rim(-140, globe.r);
   return (
     <Diagram
-      title="P-bølger, S-bølger og skyggesonen"
+      title="P-bølger går gjennom væske, S-bølger stopper, og skyggesonene"
       heading="Hvorfor den ytre kjernen må være flytende"
-      caption="P-bølger er kompresjon og går gjennom både fast berg og væske. S-bølger er skjær og stopper i væske. Derfor kommer ikke S-bølgene fram på den andre siden av jorda. R.D. Oldham så dette i jordskjelvregistreringer i 1906, og kjernen ble identifisert."
-      viewBox="0 0 880 430"
+      caption="P-bølger er kompresjon og går gjennom både fast berg og væske. S-bølger er skjær og stopper i væske. Derfor kommer ikke S-bølgene fram lenger ut enn om lag 103 grader. Direkte P-bølger mangler mellom om lag 103 og 140 grader, fordi de bøyes av ved grensen mot kjernen. R.D. Oldham så dette i jordskjelvregistreringer i 1906."
+      viewBox="0 0 880 460"
     >
       {() => (
         <>
-          {/* Venstre panel: Partikkelbevegelse P-bølge og S-bølge */}
-          <rect x="25" y="25" width="390" height="380" rx="8" fill="#131c24" stroke={C.dim} strokeWidth="1.4" />
-          <L x="45" y="52" fill={C.teal} size={15} weight={700}>
-            Partikkelfysikk: Romlige bølger (Body waves)
+          <rect x="20" y="16" width="400" height="428" rx="8" fill="#131c24" stroke={C.dim} strokeWidth="1.4" />
+          <L x="40" y="44" fill={C.fg} size={15} weight={700}>
+            Hvordan stoffet beveger seg
           </L>
 
-          {/* P-bølge visualisering */}
-          <rect x="40" y="70" width="360" height="135" rx="6" fill="#1a252f" />
-          <L x="55" y="92" fill={C.teal} size={14} weight={700}>
-            P-bølge: Longitudinell kompresjonsbølge
+          <rect x="36" y="60" width="368" height="160" rx="6" fill="#1a252f" />
+          <L x="52" y="84" fill={C.teal} size={14} weight={700}>
+            P-bølge: kompresjon langs bølgen
           </L>
-          {/* Kompresjonsrutenett */}
-          <g transform="translate(55, 105)">
-            {/* Tett kompresjon */}
-            <rect x="0" y="0" width="15" height="40" fill={C.teal} opacity="0.8" />
-            <rect x="18" y="0" width="15" height="40" fill={C.teal} opacity="0.8" />
-            {/* Dilatasjon (strekk) */}
-            <rect x="45" y="0" width="15" height="40" fill={C.teal} opacity="0.3" />
-            <rect x="75" y="0" width="15" height="40" fill={C.teal} opacity="0.3" />
-            {/* Kompresjon */}
-            <rect x="105" y="0" width="15" height="40" fill={C.teal} opacity="0.8" />
-            <rect x="123" y="0" width="15" height="40" fill={C.teal} opacity="0.8" />
-            {/* Dilatasjon */}
-            <rect x="150" y="0" width="15" height="40" fill={C.teal} opacity="0.3" />
-            <rect x="180" y="0" width="15" height="40" fill={C.teal} opacity="0.3" />
-            {/* Kompresjon */}
-            <rect x="210" y="0" width="15" height="40" fill={C.teal} opacity="0.8" />
-            <rect x="228" y="0" width="15" height="40" fill={C.teal} opacity="0.8" />
+          <g transform="translate(52, 100)">
+            {[0, 16, 48, 78, 110, 126, 158, 188, 220, 236].map((x, index) => (
+              <rect
+                key={x}
+                x={x}
+                y="0"
+                width="14"
+                height="40"
+                fill={C.teal}
+                opacity={index % 4 < 2 ? 0.85 : 0.28}
+              />
+            ))}
           </g>
-          <L x="55" y="166" fill={C.fg} size={12}>
-            Partikkelbevegelse: ↔ Parallelt med bølgens retning
+          <L x="52" y="164" fill={C.fg} size={12}>
+            Stoffet skyves og trekkes langs bølgen.
           </L>
-          <L x="55" y="186" fill={C.muted} size={11}>
-            Går gjennom både fast berg og væske.
+          <L x="52" y="184" fill={C.muted} size={12}>
+            Går gjennom fast berg og væske.
+          </L>
+          <L x="52" y="204" fill={C.teal} size={12}>
+            Tett er skyv. Glissent er trekk.
           </L>
 
-          {/* S-bølge visualisering */}
-          <rect x="40" y="220" width="360" height="170" rx="6" fill="#221b1e" />
-          <L x="55" y="244" fill={C.warm} size={14} weight={700}>
-            S-bølge: Transversal skjærbølge
+          <rect x="36" y="236" width="368" height="188" rx="6" fill="#221b1e" />
+          <L x="52" y="260" fill={C.warm} size={14} weight={700}>
+            S-bølge: skjær, på tvers
           </L>
-          {/* Sinuskurve skjær */}
           <path
-            d="M 55 295 Q 85 265 115 295 T 175 295 T 235 295 T 295 295 T 355 295"
+            d="M 52 320 Q 92 286 132 320 T 212 320 T 292 320 T 372 320"
             fill="none"
             stroke={C.warm}
-            strokeWidth="3.5"
+            strokeWidth="3.2"
           />
-          {/* Skjærpiler opp og ned */}
-          <path d="M 85 275 V 260 M 85 260 L 80 268 M 85 260 L 90 268" stroke={C.sand} strokeWidth="1.8" />
-          <path d="M 145 315 V 330 M 145 330 L 140 322 M 145 330 L 150 322" stroke={C.sand} strokeWidth="1.8" />
-          <L x="55" y="340" fill={C.fg} size={12}>
-            Partikkelbevegelse: ↕ Vinkelrett på bølgens retning
+          <path d="M 92 300 V 284 M 92 284 L 87 292 M 92 284 L 97 292" stroke={C.sand} strokeWidth="1.8" />
+          <path d="M 172 340 V 356 M 172 356 L 167 348 M 172 356 L 177 348" stroke={C.sand} strokeWidth="1.8" />
+          <L x="52" y="378" fill={C.fg} size={12}>
+            Stoffet beveger seg på tvers av bølgen.
           </L>
-          <L x="55" y="360" fill={C.muted} size={11}>
-            Krever at stoffet kan skjæres, altså at det er fast.
-          </L>
-          <L x="55" y="378" fill={C.low} size={11} weight={700}>
-            I væske stanser S-bølgene.
+          <L x="52" y="398" fill={C.low} size={12} weight={700}>
+            I væske stopper S-bølgen.
           </L>
 
-          {/* Høyre panel: Jordkloden og S-bølgenes skyggesone */}
-          <rect x="440" y="25" width="415" height="380" rx="8" fill="#121820" stroke={C.dim} strokeWidth="1.4" />
-          <L x="460" y="52" fill={C.fg} size={15} weight={700}>
-            Oldhams oppdagelse (1906): S-bølgenes skyggesone
+          <rect x="440" y="16" width="420" height="428" rx="8" fill="#121820" stroke={C.dim} strokeWidth="1.4" />
+          <L x="460" y="44" fill={C.fg} size={15} weight={700}>
+            Skyggesonen rundt kjernen
           </L>
-
-          {/* Globus */}
-          <g transform="translate(645, 230)">
-            {/* Mantel */}
-            <circle cx="0" cy="0" r="140" fill="#2d251d" stroke="#524335" strokeWidth="2" />
-            {/* Ytre flytende kjerne */}
-            <circle cx="0" cy="0" r="75" fill="#4d1b1f" stroke={C.low} strokeWidth="2" />
-            {/* Indre fast kjerne */}
-            <circle cx="0" cy="0" r="28" fill={C.warm} />
-
-            {/* Jordskjelvfokus på toppen (nordpol x=0, y=-140) */}
-            <Star x={0} y={-140} r={9} />
-            <L x="0" y={-152} fill={C.low} size={12} weight={700} anchor="middle">
-              Jordskjelvfokus (0°)
-            </L>
-
-            {/* S-bølger som bøyer av i mantelen frem til 103° */}
-            {/* Venstre side */}
-            <path d="M 0 -138 Q -70 -100 -120 -60" fill="none" stroke={C.warm} strokeWidth="2.2" />
-            <path d="M 0 -138 Q -90 -60 -136 20" fill="none" stroke={C.warm} strokeWidth="2.2" />
-            <path d="M 0 -138 Q -105 -20 -110 85" fill="none" stroke={C.warm} strokeWidth="2.2" />
-
-            {/* Høyre side */}
-            <path d="M 0 -138 Q 70 -100 120 -60" fill="none" stroke={C.warm} strokeWidth="2.2" />
-            <path d="M 0 -138 Q 90 -60 136 20" fill="none" stroke={C.warm} strokeWidth="2.2" />
-            <path d="M 0 -138 Q 105 -20 110 85" fill="none" stroke={C.warm} strokeWidth="2.2" />
-
-            {/* Skyggesone vinkelbue (103° til 180° på begge sider) */}
+          <g transform="translate(650, 188)">
+            <circle r={globe.r} fill="#2d251d" stroke="#524335" strokeWidth="2" />
+            <circle r={rc} fill="#4d1b1f" stroke={C.low} strokeWidth="2" />
+            <circle r={ri} fill={C.warm} />
             <path
-              d="M -110 85 A 140 140 0 0 0 110 85 L 0 0 Z"
-              fill="#ef4444"
-              opacity="0.18"
+              d={`M ${rim(103, globe.r + 6).x.toFixed(1)} ${rim(103, globe.r + 6).y.toFixed(1)} A ${globe.r + 6} ${globe.r + 6} 0 0 1 ${rim(257, globe.r + 6).x.toFixed(1)} ${rim(257, globe.r + 6).y.toFixed(1)}`}
+              fill="none"
+              stroke={C.warm}
+              strokeWidth="7"
+              opacity="0.9"
             />
-            <line x1="0" y1="0" x2="-110" y2="85" stroke={C.low} strokeDasharray="4 3" strokeWidth="1.5" />
-            <line x1="0" y1="0" x2="110" y2="85" stroke={C.low} strokeDasharray="4 3" strokeWidth="1.5" />
-
-            <L x="-125" y="95" fill={C.low} size={11} weight={700}>103°</L>
-            <L x="115" y="95" fill={C.low} size={11} weight={700}>103°</L>
-            <L x="0" y="155" fill={C.low} size={12} weight={700} anchor="middle">180°</L>
-
-            <L x="0" y="115" fill={C.low} size={13} weight={700} anchor="middle">
-              S-bølgenes skyggesone
+            <path
+              d={`M ${rim(103, globe.r + 16).x.toFixed(1)} ${rim(103, globe.r + 16).y.toFixed(1)} A ${globe.r + 16} ${globe.r + 16} 0 0 1 ${rim(140, globe.r + 16).x.toFixed(1)} ${rim(140, globe.r + 16).y.toFixed(1)}`}
+              fill="none"
+              stroke={C.teal}
+              strokeWidth="5"
+            />
+            <path
+              d={`M ${rim(-140, globe.r + 16).x.toFixed(1)} ${rim(-140, globe.r + 16).y.toFixed(1)} A ${globe.r + 16} ${globe.r + 16} 0 0 1 ${rim(-103, globe.r + 16).x.toFixed(1)} ${rim(-103, globe.r + 16).y.toFixed(1)}`}
+              fill="none"
+              stroke={C.teal}
+              strokeWidth="5"
+            />
+            <line x1="0" y1={-globe.r + 6} x2="0" y2={-rc - 3} stroke={C.warm} strokeWidth="2" />
+            <line x1="0" y1={-globe.r + 6} x2={-46} y2={-rc + 8} stroke={C.warm} strokeWidth="1.6" />
+            <line x1="0" y1={-globe.r + 6} x2={46} y2={-rc + 8} stroke={C.warm} strokeWidth="1.6" />
+            <Star x={0} y={-globe.r + 2} r={7} />
+            <L x="0" y={-globe.r - 10} fill={C.low} size={12} weight={700} anchor="middle">
+              hyposenter
             </L>
-            <L x="0" y="130" fill="#fca5a5" size={10} anchor="middle">
-              (Ingen direkte S-bølger slipper gjennom)
+            <L x={s103.x + 8} y={s103.y + 4} fill={C.warm} size={11} weight={700}>
+              103°
             </L>
-
-            {/* Etiketter på kjerne */}
-            <L x="0" y="-35" fill="#fff" size={11} weight={700} anchor="middle">
-              Flytende ytre kjerne
+            <L x={s103b.x - 8} y={s103b.y + 4} fill={C.warm} size={11} weight={700} anchor="end">
+              103°
             </L>
-            <L x="0" y="4" fill="#000" size={9} weight={700} anchor="middle">
-              Fast kjerne
+            <L x={p140.x + 6} y={p140.y + 12} fill={C.teal} size={11} weight={700}>
+              140°
+            </L>
+            <L x={p140b.x - 6} y={p140b.y + 12} fill={C.teal} size={11} weight={700} anchor="end">
+              140°
             </L>
           </g>
-
-          <L x="460" y="395" fill={C.muted} size={11}>
-            S-bølger stanser ved grensen mot den flytende ytre kjernen.
+          <L x="460" y="328" fill={C.low} size={12} weight={700}>
+            hyposenter øverst på globusen
+          </L>
+          <L x="460" y="350" fill={C.warm} size={12}>
+            S stopper i den flytende ytre kjernen.
+          </L>
+          <L x="460" y="370" fill={C.warm} size={12}>
+            S kommer ikke ut forbi om lag 103°.
+          </L>
+          <L x="460" y="390" fill={C.teal} size={12}>
+            Direkte P mangler mellom 103° og 140°.
+          </L>
+          <L x="460" y="414" fill={C.muted} size={12}>
+            Indre kjerne er fast. Oldham, 1906.
           </L>
         </>
       )}
@@ -406,108 +407,18 @@ export function EarthquakeWavePhysicsDiagram() {
   );
 }
 
-export function ElasticReboundDiagram() {
-  return (
-    <Diagram
-      title="Elastisk tilbakefjæring"
-      heading="Hvordan et jordskjelv bygges opp og utløses"
-      caption="1: Forkastningen er i ro. 2: Platene drar, men friksjonen låser flaten, så fjellet bøyes som en spent fjær. 3: Når spenningen blir stor nok, ryker låsen. Fjellet spretter tilbake, og energien sprer seg som seismiske bølger. 4: Forskyvningen på overflaten blir stående."
-      viewBox="0 0 880 390"
-    >
-      {() => (
-        <>
-          {/* 4 paneler horisontalt */}
-          {/* PANEL 1: Uforstyrret tilstand */}
-          <rect x="20" y="30" width="195" height="330" rx="8" fill="#131b22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="35" y="55" fill={C.teal} size={13} weight={700}>
-            1. Uforstyrret bergart
-          </L>
-          <path d="M 30 110 H 205 V 320 H 30 Z" fill="#24211b" />
-          {/* Rett forkastningslinje */}
-          <line x1="117" y1="110" x2="117" y2="320" stroke={C.low} strokeWidth="2.5" />
-          {/* Rett referanselinje (f.eks. gjerde/vei) */}
-          <line x1="45" y1="215" x2="190" y2="215" stroke={C.sand} strokeWidth="3" />
-          <L x="117" y="195" fill={C.sand} size={11} weight={600} anchor="middle">
-            Rett gjerde / vei
-          </L>
-          <L x="117" y="130" fill={C.low} size={11} weight={600} anchor="middle">
-            Forkastning
-          </L>
-          <L x="35" y="348" fill={C.muted} size={11}>
-            Ingen mekanisk spenning.
-          </L>
-
-          {/* PANEL 2: Elastisk spenningsoppbygging */}
-          <rect x="235" y="30" width="195" height="330" rx="8" fill="#131b22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="250" y="55" fill={C.warm} size={13} weight={700}>
-            2. Elastisk tøyning (tiår)
-          </L>
-          <path d="M 245 110 H 420 V 320 H 245 Z" fill="#24211b" />
-          <line x1="332" y1="110" x2="332" y2="320" stroke={C.low} strokeWidth="2.5" />
-          {/* Låst friksjonskontakt */}
-          <rect x="326" y="195" width="12" height="40" fill={C.low} />
-          {/* Bøyd referanselinje (S-form) */}
-          <path
-            d="M 260 235 Q 310 235 332 215 Q 355 195 405 195"
-            fill="none"
-            stroke={C.warm}
-            strokeWidth="3.5"
-          />
-          {/* Krefter som dytter */}
-          <path d="M 270 140 V 165 M 270 165 L 265 157 M 270 165 L 275 157" stroke={C.teal} strokeWidth="2.4" />
-          <path d="M 395 290 V 265 M 395 265 L 390 273 M 395 265 L 400 273" stroke={C.teal} strokeWidth="2.4" />
-          <L x="250" y="348" fill={C.warm} size={11}>
-            Friksjon låser flaten. Fjellet bøyes som en bue.
-          </L>
-
-          {/* PANEL 3: Brudd og tilbakefjæring */}
-          <rect x="450" y="30" width="195" height="330" rx="8" fill="#1e1316" stroke={C.low} strokeWidth="1.6" />
-          <L x="465" y="55" fill={C.low} size={13} weight={700}>
-            3. Brudd og jordskjelv
-          </L>
-          <path d="M 460 110 H 635 V 320 H 460 Z" fill="#2b1c1e" />
-          <line x1="547" y1="110" x2="547" y2="320" stroke={C.low} strokeWidth="3" />
-          {/* Seismiske sjokkbølger */}
-          <circle cx="547" cy="215" r="22" fill="none" stroke="#f43f5e" strokeWidth="2" opacity="0.8" />
-          <circle cx="547" cy="215" r="45" fill="none" stroke="#f43f5e" strokeWidth="2" opacity="0.5" />
-          <Star x={547} y={215} r={10} />
-          {/* Lynrask tilbakefjæring */}
-          <line x1="475" y1="245" x2="547" y2="245" stroke={C.sand} strokeWidth="3" />
-          <line x1="547" y1="185" x2="620" y2="185" stroke={C.sand} strokeWidth="3" />
-          <L x="465" y="348" fill="#fca5a5" size={11} weight={600}>
-            Friksjonen ryker. Bølgene sprer seg ut.
-          </L>
-
-          {/* PANEL 4: Permanent forskyvning */}
-          <rect x="665" y="30" width="195" height="330" rx="8" fill="#131b22" stroke={C.dim} strokeWidth="1.4" />
-          <L x="680" y="55" fill={C.sand} size={13} weight={700}>
-            4. Ny likevekt & forskyvning
-          </L>
-          <path d="M 675 110 H 850 V 320 H 675 Z" fill="#24211b" />
-          <line x1="762" y1="110" x2="762" y2="320" stroke={C.low} strokeWidth="2.5" />
-          {/* Rettet opp linjer, men forskjøvet */}
-          <line x1="690" y1="245" x2="762" y2="245" stroke={C.sand} strokeWidth="3" />
-          <line x1="762" y1="185" x2="835" y2="185" stroke={C.sand} strokeWidth="3" />
-          {/* Forskyvningspil */}
-          <line x1="772" y1="185" x2="772" y2="245" stroke={C.teal} strokeWidth="2" />
-          <L x="785" y="218" fill={C.teal} size={12} weight={700}>
-            forskyvning
-          </L>
-          <L x="680" y="348" fill={C.muted} size={11}>
-            Ny spenning kan bygge seg opp.
-          </L>
-        </>
-      )}
-    </Diagram>
-  );
-}
+export {
+  ElasticReboundDiagram,
+  JordasBolgerDiagram,
+  PartikkelbolgerDiagram,
+} from "./quake-motion";
 
 export function NorwayEarthquakesDiagram() {
   return (
     <Diagram
       title="Norges seismiske risikobilde og historiske jordskjelv"
       heading="Hvorfor skjelver Norge når vi ikke er på en plategrense?"
-      caption="Norge ligger inne på Den eurasiske platen. Skjelvene kommer likevel, i gamle svakhetssoner. Spredning langs Den midtatlantiske ryggen og landheving etter siste istid bygger spenning som kan reaktivere forkastninger. Lurøy i 1819 er estimert til M 5,9. Oslofjordskjelvet i 1904 var 5,4."
+      caption="Norge ligger inne på Den eurasiske platen. Ved Svalbard kan spredning fra ryggen reaktivere forkastninger. I Nordsjøen ligger gamle rifter, med spenning fra ryggen eller fra landheving. I Nordland antas strekking fra landheving og omfordeling av sedimenter etter siste istid. Lurøy 1819 er estimert til styrke 5,9. Oslofjordskjelvet 1904 hadde styrke 5,4, med episenter i Kattegat."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -524,8 +435,8 @@ export function NorwayEarthquakesDiagram() {
           />
 
           {/* Midthavsryggen og Jan Mayen i vest */}
-          <line x1="80" y1="40" x2="140" y2="380" stroke={C.warm} strokeWidth="3" strokeDasharray="6 4" />
-          <L x="145" y="370" fill={C.warm} size={11} weight={700}>
+          <line x1="80" y1="40" x2="140" y2="360" stroke={C.warm} strokeWidth="3" strokeDasharray="6 4" />
+          <L x="155" y="58" fill={C.warm} size={12} weight={700}>
             Den midtatlantiske rygg
           </L>
           {/* Jan Mayen vulkan */}
@@ -535,94 +446,74 @@ export function NorwayEarthquakesDiagram() {
 
           <path d="M 140 220 L 230 235" stroke={C.teal} strokeWidth="2.5" />
           <path d="M 230 235 L 220 227 M 230 235 L 222 241" stroke={C.teal} strokeWidth="2.5" />
-          <L x="150" y="260" fill={C.teal} size={12} weight={700}>
-            Havbunnsspredning →
+          <L x="155" y="252" fill={C.teal} size={12} weight={700}>
+            spredning mot land
           </L>
 
-          {/* Postglasial landheving piler oppover i innlandet */}
-          <ellipse cx="400" cy="270" rx="55" ry="40" fill="none" stroke={C.sand} strokeDasharray="4 3" strokeWidth="1.5" />
-          <L x="400" y="270" fill={C.sand} size={11} weight={700} anchor="middle">
-            Landheving
-          </L>
-          <L x="400" y="285" fill={C.muted} size={10} anchor="middle">
-            etter siste istid
-          </L>
-
-          {/* Historiske jordskjelv stjerner */}
-          {/* 1. Lurøy 1819 */}
-          <Star x={315} y={150} r={11} />
-          <rect x="235" y="130" width="70" height="20" rx="4" fill="#0f172a" opacity="0.8" />
-          <L x="240" y="144" fill={C.low} size={11} weight={700}>
+          <Star x={318} y={148} r={10} />
+          <L x="336" y="144" fill={C.low} size={12} weight={700}>
             Lurøy 1819
           </L>
-          <L x="240" y="162" fill="#fca5a5" size={10}>
-            M 5,9
+          <L x="336" y="160" fill="#fca5a5" size={11}>
+            styrke 5,9
           </L>
 
-          {/* 2. Oslofjord 1904 */}
-          <Star x={350} y={345} r={9} />
-          <rect x="365" y="335" width="105" height="34" rx="4" fill="#0f172a" opacity="0.8" />
-          <L x="370" y="348" fill={C.low} size={11} weight={700}>
-            Oslofjorden 1904
+          <Star x={300} y={392} r={8} />
+          <L x="168" y="386" fill={C.low} size={12} weight={700}>
+            Kattegat 1904
           </L>
-          <L x="370" y="362" fill="#fca5a5" size={10}>
-            M 5,4
+          <L x="168" y="402" fill="#fca5a5" size={11}>
+            styrke 5,4
           </L>
 
-          {/* 3. Nordsjøskjelvet 1989 & sokkelen */}
-          <L x="160" y="315" fill={C.fg} size={10} weight={600}>
+          <L x="168" y="300" fill={C.fg} size={12} weight={600}>
             Nordsjøen: gamle rifter
           </L>
 
           {/* Høyre panel: Forklaringstabell og risikofakta */}
           <rect x="525" y="25" width="330" height="380" rx="8" fill="#131a22" stroke={C.dim} strokeWidth="1.4" />
           <L x="545" y="52" fill={C.sand} size={15} weight={700}>
-            Nøkkelfakta: Norsk seismisitet
+            Tre spor, ifølge NORSAR
           </L>
 
-          {/* Boks 1: Hvorfor skjelver det? */}
-          <rect x="540" y="70" width="300" height="95" rx="6" fill="#1a232c" />
+          <rect x="540" y="68" width="300" height="188" rx="6" fill="#1a232c" />
           <L x="552" y="90" fill={C.teal} size={12} weight={700}>
-            Hoveddrivkrefter for skjelv i Norge:
+            Svalbard
           </L>
-          <L x="552" y="110" fill={C.fg} size={11}>
-            • Havbunnsspredning langs ryggen i vest
+          <L x="552" y="108" fill={C.fg} size={12}>
+            Spredning fra ryggen kan
           </L>
-          <L x="552" y="128" fill={C.fg} size={11}>
-            • Landheving etter siste istid
+          <L x="552" y="126" fill={C.fg} size={12}>
+            reaktivere forkastninger.
           </L>
-          <L x="552" y="146" fill={C.fg} size={11}>
-            • Gamle forkastninger som reaktiveres
+          <L x="552" y="150" fill={C.warm} size={12} weight={700}>
+            Nordsjøen
           </L>
-
-          {/* Boks 2: De mest aktive sonene */}
-          <rect x="540" y="175" width="300" height="105" rx="6" fill="#1a232c" />
-          <L x="552" y="195" fill={C.warm} size={12} weight={700}>
-            Områder med skjelv i Norge:
+          <L x="552" y="168" fill={C.fg} size={12}>
+            Gamle rifter. Spenning fra
           </L>
-          <L x="552" y="215" fill={C.fg} size={11}>
-            • Nordland
+          <L x="552" y="186" fill={C.fg} size={12}>
+            ryggen eller fra landheving.
           </L>
-          <L x="552" y="233" fill={C.fg} size={11}>
-            • Vestlandet og Nordsjøen
+          <L x="552" y="210" fill={C.sand} size={12} weight={700}>
+            Nordland
           </L>
-          <L x="552" y="251" fill={C.fg} size={11}>
-            • Oslo-riften
+          <L x="552" y="228" fill={C.fg} size={12}>
+            Landheving og sedimenter.
           </L>
-          <L x="552" y="269" fill={C.fg} size={11}>
-            • Svalbard, øst for ryggen
+          <L x="552" y="246" fill={C.muted} size={12}>
+            Lurøy 1819, styrke 5,9.
           </L>
 
-          {/* Boks 3: Byggestandarder og Eurokode 8 */}
-          <rect x="540" y="290" width="300" height="100" rx="6" fill="#241a1c" />
-          <L x="552" y="312" fill={C.low} size={12} weight={700}>
-            Sikring av bygg:
+          <rect x="540" y="320" width="300" height="72" rx="6" fill="#241a1c" />
+          <L x="552" y="342" fill={C.low} size={12} weight={700}>
+            1904: styrke 5,4, Kattegat
           </L>
-          <L x="552" y="332" fill={C.muted} size={11}>
-            Tettere bebyggelse gjør at et skjelv som 1904 kan gjøre mer skade i dag. Kunnskap og analyser brukes til å sikre bygg.
+          <L x="552" y="362" fill={C.muted} size={12}>
+            Tettere bygg kan gi mer skade.
           </L>
-          <L x="552" y="365" fill={C.low} size={11} weight={600}>
-            UiB og NORSAR overvåker aktiviteten.
+          <L x="552" y="382" fill={C.muted} size={12}>
+            UiB og NORSAR overvåker.
           </L>
         </>
       )}

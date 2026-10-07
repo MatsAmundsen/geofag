@@ -211,9 +211,9 @@ export function PolarFrontCycloneSteps() {
 export function ValleyWindDiagram() {
   return (
     <Diagram
-      title="Dalvind og fjellvind: lokal sirkulasjon i et dalføre"
-      heading="Dalvind om dagen, fjellvind om natten"
-      caption="Venstre: Om dagen varmes de bratte dalsidene raskere opp av solen enn luften midt i dalen. Den varme luften stiger oppover dalsidene (solgangsbris/dalvind). Høyre: Om natten avkjøles dalsidene raskt ved langbølget utstråling. Den kalde, tunge luften renner som en katabatisk vind ned i dalbunnen, der det kan dannes en kald luftpytt med temperaturinversjon og frost."
+      title="Dalvind og bergvind: lokal sirkulasjon i et dalføre"
+      heading="Dalvind om dagen, bergvind om natten"
+      caption="Venstre: Om dagen varmes fjellsidene mer enn lufta i samme nivå utenfor fjellet. Dalvinden blåser fra lavlandet og opp dalen. Høyre: Om natten avkjøles sidene, og kald, tung luft renner ned mot dalbunnen som bergvind. Kald luft kan hope seg opp nede, med frostfare om vinteren."
       viewBox="0 0 840 330"
     >
       {(m) => (
@@ -249,7 +249,7 @@ export function ValleyWindDiagram() {
 
           {/* --- HØYRE: NATT / FJELLVIND --- */}
           <L x="630" y="32" size={16} weight={700} anchor="middle">
-            Natt: Utstråling · Fjellvind
+            Natt: Utstråling · Bergvind
           </L>
           <L x="630" y="52" fill={C.muted} size={12} anchor="middle">
             Varme stråler ut i rommet $\rightarrow$ tung kaldluft renner ned
@@ -272,8 +272,8 @@ export function ValleyWindDiagram() {
           {/* Kalde piler nedover fjellsidene */}
           <Arrow d="M 545 125 L 495 230" marker={m.cold} color={C.cold} width={2.8} />
           <Arrow d="M 715 125 L 765 230" marker={m.cold} color={C.cold} width={2.8} />
-          <L x="520" y="170" fill={C.cold} size={12} weight={600}>Fjellvind ned</L>
-          <L x="740" y="170" fill={C.cold} size={12} weight={600}>Fjellvind ned</L>
+          <L x="520" y="170" fill={C.cold} size={12} weight={600}>Bergvind ned</L>
+          <L x="740" y="170" fill={C.cold} size={12} weight={600}>Bergvind ned</L>
         </>
       )}
     </Diagram>

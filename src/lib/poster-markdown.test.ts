@@ -125,6 +125,66 @@ describe("injectPosterWidgets", () => {
     assert.equal(hoytrykk.includes("<"), false);
   });
 
+  it("keeps the vindsystemet poster on the template", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const md = readFileSync(join(lib, "posts/vindsystemet.md"), "utf8");
+    const injected = injectPosterWidgets(md);
+    const ids = listedWidgetIds(injected);
+    for (const id of [
+      "StralingsbalanseForklaring",
+      "InsolationDiagram",
+      "TermiskDirekteForklaring",
+      "OneVsThreeCellsDiagram",
+      "WindCellsDiagram",
+      "HadleyCloseupDiagram",
+      "SubsidensForklaring",
+      "SurfaceWindsDiagram",
+      "GlobalClimateZonesDiagram",
+      "VindBelterFoto",
+      "PolarFrontNorwayDiagram",
+      "WindSystemModel",
+      "QuizVindsystemet",
+    ]) {
+      assert.equal(ids.has(id), true, `vindsystemet missing ${id}`);
+      assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("2,5 MJ"), false);
+    assert.equal(md.includes("3500"), false);
+  });
+
+  it("keeps the værkart poster on the template", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const md = readFileSync(join(lib, "posts/vaerkart.md"), "utf8");
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "SynoptiskForklaring",
+      "IsobarForklaring",
+      "SynopticChart",
+      "FrontForklaring",
+      "FrontProfile",
+      "Weather24h",
+      "StationModel",
+      "UpperAir500",
+      "RadarNowcast",
+      "QuizVaerkart",
+    ]) {
+      assert.equal(ids.has(id), true, `vaerkart missing ${id}`);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/vaerkart"), true);
+    assert.equal(md.includes("Bjerknes-modellen"), true);
+    assert.equal(md.includes("følger ofte et fast løp"), false);
+  });
+
   it("does not put the Platetektonikk quiz into Vulkaner", () => {
     const vulkaner = readFileSync(
       join(dirname(fileURLToPath(import.meta.url)), "posts/vulkaner.md"),
@@ -246,6 +306,8 @@ describe("jordskjelv poster", () => {
       "HyposenterForklaring",
       "ElasticRebound",
       "EarthquakeWavePhysics",
+      "Partikkelbolger",
+      "JordasBolger",
       "Seismogram",
       "BoundaryQuakes",
       "IntraplateForklaring",
@@ -329,7 +391,52 @@ describe("stripCatalogImageCaptions", () => {
   });
 });
 
-describe("jetstrømmer poster", () => {
+describe("lokale værsystemer poster", () => {
+  it("keeps the lokale poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/lokale-vaersystemer.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "SolgangsbrisForklaring",
+      "SeaBreezeLandBreeze",
+      "ValleyWind",
+      "FonForklaring",
+      "InversjonForklaring",
+      "PolarFrontCyclone",
+      "QuizLokale",
+    ]) {
+      assert.equal(ids.has(id), true, `lokale missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/lokale-vaersystemer"), true);
+    assert.equal(md.includes("4184"), false);
+    assert.equal(md.includes("Rossby"), false);
+    assert.equal(md.includes("sørvest for Island"), false);
+  });
+});
+
+describe("stripChapterEditorNotice", () => {
+  it("strips the leading editor blockquote notice from a chapter", () => {
+    const raw =
+      "> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.\n\n## Kapittelstart\nInnhold her.";
+    assert.equal(stripChapterEditorNotice(raw), "## Kapittelstart\nInnhold her.");
+  });
+
+  it("leaves markdown without the editor notice untouched", () => {
+    const raw = "## Egendefinert post\nIngen melding her.";
+    assert.equal(stripChapterEditorNotice(raw), raw);
+  });
+});
+
+
+describe("chapter posters from this pull request", () => {
   it("keeps the jetstrømmer poster on the template", () => {
     const md = readFileSync(
       join(dirname(fileURLToPath(import.meta.url)), "posts/jetstrommer.md"),
@@ -347,18 +454,5 @@ describe("jetstrømmer poster", () => {
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/jetstrommer"), true);
-  });
-});
-
-describe("stripChapterEditorNotice", () => {
-  it("strips the leading editor blockquote notice from a chapter", () => {
-    const raw =
-      "> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.\n\n## Kapittelstart\nInnhold her.";
-    assert.equal(stripChapterEditorNotice(raw), "## Kapittelstart\nInnhold her.");
-  });
-
-  it("leaves markdown without the editor notice untouched", () => {
-    const raw = "## Egendefinert post\nIngen melding her.";
-    assert.equal(stripChapterEditorNotice(raw), raw);
   });
 });
