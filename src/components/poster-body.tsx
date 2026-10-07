@@ -134,6 +134,7 @@ import {
   QUIZ_PALEO,
   QUIZ_ISTIDER,
   QUIZ_FARER,
+  QUIZ_TILPASNING,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -600,6 +601,20 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     QuizFarer: () => (
     <Quiz questions={QUIZ_FARER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+
+
+    TilpasningForklaring: () => (
+    <Callout title="Hva betyr «klimatilpasning»?">
+      <p>
+        Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak
+        som hindrer eller reduserer skade, eller som utnytter mulighetene. Å redusere
+        klimaendringene er et annet svar (Miljødirektoratet, u.å.; Udir, u.å.-b).
+      </p>
+    </Callout>
+  ),
+    QuizTilpasning: () => (
+    <Quiz questions={QUIZ_TILPASNING} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,

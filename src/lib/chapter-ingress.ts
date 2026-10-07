@@ -24,7 +24,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "paleoklima": "Direkte målinger av CO₂ startet på Mauna Loa i 1958. I istidssyklusene det siste millionåret kom CO₂ ikke over 300 ppm. Før midten av 1700-tallet lå den på 280 ppm eller lavere.",
   "milankovitch": "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. Eksentrisitet, skråstilling og presesjon er de tre svingningene. De forklarer ikke oppvarmingen vi ser nå.",
   "vaerkatastrofer": "Orkan som vindstyrke er sterkere enn 32,6 m/s. En tropisk orkan er et lavtrykk med middelvind på minst 119 km/t. Stormflo er særlig høy vannstand langs kysten i forbindelse med storm.",
-  "tilpasning": "Klimaendring er fysikk. Konsekvens er det fysikken gjør med folk, mat, byer og økosystem. Tilpasning er å leve med været som kommer. Utslippskutt er å bremse pådrivet. Kompetansemålet ber om å drøfte begge — og si hvem som betaler.",
+  "tilpasning": "Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak som reduserer skade. Å redusere klimaendringene og å tilpasse seg dem er to ulike svar.",
   "energi-hav-luft": "Vind, havvind, bølger og tidevann er fornybare fordi sola og månen fortsetter å drive dem. Bærekraft er likevel ikke gitt. Kompetansemålet ber om å drøfte utnyttelse nasjonalt og globalt — ikke bare å prise kilowatten.",
   "felt-hav-luft-is": "G1-felt er berg og vann på land. G2-felt er hav, atmosfære eller kryosfære. Målet er det samme: planlegge, samle, bearbeide, tolke, presentere. Forskjellen er hva du måler, og at været selv er både objekt og risiko.",
   "oversikt": "Klima er det langvarige mønsteret i været. Denne siden eier stråling, pådriv og tilbakekobling. Svingningene har egne sider.",

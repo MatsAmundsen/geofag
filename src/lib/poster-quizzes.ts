@@ -1,5 +1,61 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_TILPASNING: QuizQuestion[] = [
+  {
+    prompt: "Hva er klimatilpasning?",
+    options: [
+      "Å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak.",
+      "Bare å måle CO₂ på Mauna Loa.",
+      "Det samme som å redusere klimaendringene.",
+    ],
+    answer: 0,
+    explain:
+      "Se «To svar». Tiltakene kan hindre eller redusere skade, eller utnytte muligheter.",
+  },
+  {
+    prompt: "Hva er Norges nasjonale mål for klimatilpasning?",
+    options: [
+      "At samfunnet og økosystemene skal forberedes på og tilpasses klimaendringene.",
+      "At bare byene skal tilpasses, ikke økosystemene.",
+      "At tilpasning erstatter alle andre svar.",
+    ],
+    answer: 0,
+    explain: "Se «To svar». Målet gjelder både samfunn og økosystem.",
+  },
+  {
+    prompt: "Hva ber kompetansemålet deg vurdere?",
+    options: [
+      "Både løsninger som reduserer klimaendringene, og løsninger for å tilpasse seg.",
+      "Bare utslippsregnskapet for ett år.",
+      "Bare værvarselet for i morgen.",
+    ],
+    answer: 0,
+    explain: "Se «To svar». Redusere og tilpasse seg er to ulike svar.",
+  },
+  {
+    prompt: "Hvilket klima har kysten fra Oslofjorden til Troms?",
+    options: [
+      "Varmtemperert klima med milde vintre.",
+      "Polarklima, som på Svalbard.",
+      "Kaldtemperert innlandsklima med barskog hele veien.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Klimaet konsekvensene treffer i Norge». Polarklima ligger i fjellet, langs Finnmarkskysten og på Svalbard.",
+  },
+  {
+    prompt: "Hva vurderer FNs klimapanels arbeidsgruppe II?",
+    options: [
+      "Konsekvenser for økosystem, biologisk mangfold og samfunn, og grensene for tilpasning.",
+      "Bare banens tre svingninger.",
+      "Bare vindstyrken orkan.",
+    ],
+    answer: 0,
+    explain:
+      "Se «To svar». Rapporten ser på konsekvenser globalt og regionalt, og på hvor langt tilpasning kan gå.",
+  },
+];
+
 export const QUIZ_FARER: QuizQuestion[] = [
   {
     prompt: "Når er vindstyrken orkan i Norge?",

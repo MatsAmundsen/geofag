@@ -221,7 +221,7 @@ export const GF2_THEMES = [
     image: "/images/fig-stormflo.jpg",
     alt: "Stormflo mot kai og bebyggelse — der fysikk blir skade",
     blurb:
-      "Fysikk blir skade for folk, by og økosystem. Drøft kutt og tilpasning — og hvem som betaler.",
+      "Klimatilpasning er å forstå konsekvensene og sette inn tiltak som reduserer skade. Å redusere og å tilpasse seg er to ulike svar.",
     status: "klar" as const,
   },
   {

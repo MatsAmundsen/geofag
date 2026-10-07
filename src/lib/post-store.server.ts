@@ -663,6 +663,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "vaerkatastrofer",
     stale: ["Bare store orkaner er farlige, er feil."],
   }
+,
+  {
+    flag: "tilpasning-copy-2026-10-07",
+    slug: "tilpasning",
+    stale: ["Her kan du redigere", "bestilt"],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

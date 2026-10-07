@@ -765,3 +765,25 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("/tema/vaerkatastrofer"), true);
   });
 });
+
+
+describe("chapter posters from this pull request", () => {
+  it("keeps the adaptation poster on the template", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/tilpasning.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["TilpasningForklaring", "QuizTilpasning"]) {
+      assert.equal(ids.has(id), true, `tilpasning missing ${id}`);
+      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+    }
+    assert.equal(md.includes("!"), false);
+    assert.equal(md.includes("<"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("bestilt"), false);
+    assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("/tema/tilpasning"), true);
+  });
+});
