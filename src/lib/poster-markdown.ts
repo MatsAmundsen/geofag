@@ -180,6 +180,26 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     afterHeading: "Test deg selv",
     require: "Bowens reaksjonsserie",
   },
+  {
+    widgets: ["MalmForklaring"],
+    beforeHeading: "Hvordan dannes malm?",
+    require: "Hva er en geologisk ressurs?",
+  },
+  {
+    widgets: ["QuizGeologiskeRessurser"],
+    afterHeading: "Test deg selv",
+    require: "Hva er en geologisk ressurs?",
+  },
+  {
+    widgets: ["FeltarbeidForklaring"],
+    beforeHeading: "Hva kan observasjonene svare på?",
+    require: "Hva er geofaglig feltarbeid?",
+  },
+  {
+    widgets: ["QuizFeltarbeid"],
+    afterHeading: "Test deg selv",
+    require: "Hva er geofaglig feltarbeid?",
+  },
 ];
 
 const INJECT_RULES: InjectRule[] = [...PLATE_INJECT_RULES, ...CHAPTER_INJECT_RULES];

@@ -181,6 +181,9 @@ export function TopicLayout({
               <PosterBody
                 cleanChapter
                 scrollTables={resolvedSlug === "vulkaner" || resolvedSlug === "hoytrykk-lavtrykk"}
+                wrapTables={
+                  resolvedSlug === "geologiske-ressurser" || resolvedSlug === "feltarbeid"
+                }
               >
                 {markdown}
               </PosterBody>

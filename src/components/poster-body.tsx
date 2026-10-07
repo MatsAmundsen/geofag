@@ -56,6 +56,8 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_FELTARBEID,
+  QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
   QUIZ_MELTING,
@@ -159,6 +161,32 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
   QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  MalmForklaring: () => (
+    <Callout title="Hva betyr «malm»?">
+      <p>
+        Malm er en bergart som inneholder ett eller flere mineraler eller grunnstoffer i økonomisk
+        drivverdige mengder.
+      </p>
+    </Callout>
+  ),
+  QuizGeologiskeRessurser: () => (
+    <Quiz
+      questions={QUIZ_GEOLOGISKE_RESSURSER}
+      heading={null}
+      intro="Velg ett svar per spørsmål."
+    />
+  ),
+  FeltarbeidForklaring: () => (
+    <Callout title="Hva betyr «feltarbeid»?">
+      <p>
+        Feltarbeid er innsamling av data i en undersøkelse. I geologi kan det være å samle
+        steinprøver.
+      </p>
+    </Callout>
+  ),
+  QuizFeltarbeid: () => (
+    <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */
@@ -191,11 +219,13 @@ export function PosterBody({
   className,
   cleanChapter,
   scrollTables = false,
+  wrapTables = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
   scrollTables?: boolean;
+  wrapTables?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
@@ -205,7 +235,7 @@ export function PosterBody({
         part.type === "widget" ? (
           <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />
         ) : (
-          <Markdown key={`m-${index}`} scrollTables={scrollTables}>
+          <Markdown key={`m-${index}`} scrollTables={scrollTables} wrapTables={wrapTables}>
             {part.value}
           </Markdown>
         ),

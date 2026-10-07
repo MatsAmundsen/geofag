@@ -204,6 +204,51 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Superposisjon, krysskjæring og isotopur",
   },
   {
+    match: /geologisk ressurs/i,
+    label: "Ressurs",
+    subtitle: "Kartlegging, kritiske mineraler og grunnvann",
+  },
+  {
+    match: /hvordan dannes malm/i,
+    label: "Malm",
+    subtitle: "Magmatisk og hydrotermal dannelse",
+  },
+  {
+    match: /naturstein og pukk/i,
+    label: "Stein",
+    subtitle: "Naturstein, larvikitt og pukk",
+  },
+  {
+    match: /utvinnes i norge/i,
+    label: "Norge",
+    subtitle: "Metaller, kobber, industrimineraler og petroleum",
+  },
+  {
+    match: /drøfte konsekvensene/i,
+    label: "Konsekvenser",
+    subtitle: "Klimaavtrykk, klimagasser og kulturminner",
+  },
+  {
+    match: /geofaglig feltarbeid/i,
+    label: "Felt",
+    subtitle: "Innsamling av data i geosfæren eller hydrosfæren",
+  },
+  {
+    match: /observasjonene svare/i,
+    label: "Spørsmål",
+    subtitle: "Berggrunn, løsmasser, jordarter og lokale ressurser",
+  },
+  {
+    match: /bearbeider og tolker/i,
+    label: "Tolkning",
+    subtitle: "Ordne data og forklare dem med en modell",
+  },
+  {
+    match: /presenterer vi/i,
+    label: "Presentasjon",
+    subtitle: "Resultatene skal vise data og tolkning",
+  },
+  {
     match: /fagvokabular|begrep/i,
     label: "Begreper",
     subtitle: "Kjernebegrepene du skal kunne forklare",

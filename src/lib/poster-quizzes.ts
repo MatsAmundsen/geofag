@@ -430,6 +430,122 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_GEOLOGISKE_RESSURSER: QuizQuestion[] = [
+  {
+    prompt: "Hva må til for at en bergart kalles malm?",
+    options: [
+      "Den inneholder mineraler eller grunnstoffer i økonomisk drivverdige mengder.",
+      "Den inneholder et hvilket som helst spor av metall.",
+      "Den er knust til pukk.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan dannes malm?». Malm er en bergart med mineraler eller grunnstoffer i økonomisk drivverdige mengder.",
+  },
+  {
+    prompt: "Hvilke metallmalmer er det hovedsakelig drift på i Norge i dag?",
+    options: [
+      "Ilmenitt i Sokndal og hematitt i Rana.",
+      "Kobber i Røros og Løkken.",
+      "Sølv på Kongsberg.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva utvinnes i Norge i dag?». I dag er det hovedsakelig drift på ilmenitt i Sokndal og hematitt i Rana.",
+  },
+  {
+    prompt: "Hvorfor prioriterer NGU kartlegging av kritiske og strategiske mineraler?",
+    options: [
+      "Behovet for mineraler og metaller øker, og kartleggingen skal tjene både næring og forvaltning.",
+      "Fordi all malm i Norge allerede er drevet ut.",
+      "Fordi pukk ikke kan brukes i vei.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en geologisk ressurs?». Behovet øker, og NGU kartlegger både for næringsutvikling og for miljø-, natur- og ressursforvaltning.",
+  },
+  {
+    prompt: "Hva sier NGU om kobberutvinning i Norge i 2024?",
+    options: [
+      "Det er ingen utvinning. Drift planlegges på Nussir i Finnmark.",
+      "Kobber utvinnes i Sokndal sammen med ilmenitt.",
+      "Nussir ble lagt ned i 2002.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva utvinnes i Norge i dag?». Oppdateringen i 2024 sier at det ikke er kobberutvinning. Drift planlegges på Nussir.",
+  },
+  {
+    prompt: "Hvor tar vi hvordan grunnvann lagres og strømmer?",
+    options: [
+      "I kapittelet Vann og flom. Her nevnes grunnvann bare som en ressurs.",
+      "I dette kapittelet, som en del av malmdannelsen.",
+      "Grunnvann er ikke en geologisk ressurs.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en geologisk ressurs?». Grunnvann er en geologisk ressurs. Lagring og strømning tas i Vann og flom.",
+  },
+];
+
+export const QUIZ_FELTARBEID: QuizQuestion[] = [
+  {
+    prompt: "Hva er feltarbeid?",
+    options: [
+      "Innsamling av data i en undersøkelse. I geologi kan det være steinprøver.",
+      "En tur der klassen bare ser på landskapet.",
+      "Et begrep som bare brukes i samfunnsfag.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er geofaglig feltarbeid?». Feltarbeid er innsamling av data. I geologi kan det være steinprøver.",
+  },
+  {
+    prompt: "Hvilke deler av jordsystemet gjelder feltarbeidet i geofag 1?",
+    options: [
+      "Geosfæren eller hydrosfæren.",
+      "Bare atmosfæren.",
+      "Bare kryosfæren.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er geofaglig feltarbeid?». Feltarbeidet er knyttet til geosfæren eller hydrosfæren.",
+  },
+  {
+    prompt: "Hva skal du gjøre med dataene etter at de er samlet inn?",
+    options: [
+      "Bearbeide og tolke dem.",
+      "Kaste dem når prøvene er merket.",
+      "La dem ligge uten å knytte dem til spørsmålet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan bearbeider og tolker vi?». De innsamlede dataene skal bearbeides og tolkes.",
+  },
+  {
+    prompt: "Hva skal lokale observasjoner kunne si noe om?",
+    options: [
+      "Områdets geologiske historie og betydningen for lokale ressurser.",
+      "Bare hvor langt det er til nærmeste vei.",
+      "Bare navnet på kommunen.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva kan observasjonene svare på?». Observasjonene tolkes for å beskrive historien og betydningen for lokale ressurser.",
+  },
+  {
+    prompt: "Hva skal presentasjonen av feltarbeidet gjøre mulig?",
+    options: [
+      "Å se hvilke data som ble samlet inn, og hvordan de ble tolket.",
+      "Å erstatte dataene med et inntrykk fra turen.",
+      "Å sløyfe tolkningen når prøvene er tatt.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan presenterer vi resultatene?». Presentasjonen skal vise dataene og tolkningen.",
+  },
+];
+
 export const QUIZ_HOYTRYKK: QuizQuestion[] = [
   {
     prompt: "Et område har 1015 hPa i sentrum. Er det høytrykk eller lavtrykk?",
