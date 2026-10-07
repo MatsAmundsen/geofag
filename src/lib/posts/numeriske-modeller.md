@@ -20,9 +20,19 @@ Selve varslingssystemet kalles IFS, Integrated Forecasting System. Det gir varsl
 
 Isen som måles i år, ligger i [kryosfæren](/tema/kryosfaeren). Arkivene som modellene kan sammenlignes med, ligger i [paleoklima](/tema/paleoklima).
 
+## Fra idé til regnestykke
+
+Vilhelm Bjerknes la i 1905 fram et program for å behandle værforutsigelse som et eksakt matematisk-fysisk problem (Store norske leksikon, u.å.-a). Bergensskolen, miljøet rundt ham, innførte begreper som polarfront og luftmasse (Store norske leksikon, u.å.-b).
+
+Lewis Fry Richardson publiserte i 1922 metoder for vitenskapelig værvarsling ved numeriske beregninger. Metodene fikk liten anvendelse mens han levde, fordi tidens regnemetoder ikke var raske nok. Etter andre verdenskrig, da datamaskiner kom i bruk i meteorologien, fikk teoriene fornyet interesse (Store norske leksikon, u.å.-c).
+
+Selve regnestykket løser de hydrodynamiske og termodynamiske ligningene tallmessig. De handler særlig om hvordan lufttrykk og temperatur fordeler seg i stor skala, og de regnes ut i et tredimensjonalt rutenett (Store norske leksikon, u.å.-d). En veiledning fra den amerikanske værtjenesten sier det samme med ord, uten formel: bevegelsesmengde bevares, masse bevares, energi bevares, og lufta følger gassloven (National Weather Service, u.å.).
+
+Edward Lorenz viste at små utslag i begynnelsesverdien kan gi svært store utslag i sluttverdien (Store norske leksikon, u.å.-e). I et slikt system endrer en ørliten endring i starten den videre oppførselen dramatisk. Når starten kommer fra målinger, kjenner man den ikke eksakt, og da kan man ikke forutsi utviklingen langt fram (Store norske leksikon, u.å.-f).
+
 ## Ensemblet
 
-Ett enkelt regnestykke sier ikke hvor sikkert været er. ECMWF lager et ensemble av varsler. Hvert medlem er en full beskrivelse av hvordan været kan utvikle seg. Samlet viser de hvor sannsynlige ulike værforløp er (ECMWF, u.å.-b).
+Ett varsel alene sier ikke hvor sikkert været er. ECMWF lager operasjonelle ensemblebaserte analyser og varsler. De beskriver spennet av mulige forløp og hvor sannsynlige de er. De globale numeriske værvarslene kommer fire ganger i døgnet (ECMWF, u.å.-a). På siden om varslene står det at hvert medlem i ensemblet er en full beskrivelse av hvordan været kan utvikle seg, og at medlemmene samlet viser hvor sannsynlige ulike forløp er (ECMWF, u.å.-b).
 
 | | Ett varsel | Et ensemble |
 | --- | --- | --- |
@@ -47,7 +57,9 @@ Forskningen som gjør varslene bedre, er videreutviklingen kompetansemålet ber 
 
 ## Viktige begreper
 
-**Numerisk værvarsel:** Et varsel regnet fram av en datamaskin fra observasjoner og fysiske sammenhenger.
+**Numerisk værvarsel:** Et varsel regnet fram av en datamaskin fra observasjoner og de hydrodynamiske og termodynamiske ligningene.
+
+**Kaos i varselet:** Små feil i starten kan vokse, så ett regnestykke ikke holder langt fram.
 
 **IFS:** Integrated Forecasting System, varslingssystemet ECMWF bruker.
 

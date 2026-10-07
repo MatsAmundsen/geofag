@@ -1396,6 +1396,48 @@ export const KILDER = {
       href: "https://www.ecmwf.int/en/forecasts",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-a). ",
+      italic: "Vilhelm Bjerknes",
+      suffix: ".",
+      href: "https://snl.no/Vilhelm_Bjerknes",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Bergensskolen – i meteorologi",
+      suffix: ".",
+      href: "https://snl.no/Bergensskolen",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-c). ",
+      italic: "Lewis Fry Richardson",
+      suffix: ".",
+      href: "https://snl.no/Lewis_Fry_Richardson",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Numerisk værvarsling",
+      suffix: ".",
+      href: "https://snl.no/numerisk_v%C3%A6rvarsling",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-e). ",
+      italic: "Edward Lorenz",
+      suffix: ".",
+      href: "https://snl.no/Edward_Lorenz",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Kaosteori",
+      suffix: ".",
+      href: "https://snl.no/kaosteori",
+    },
+    {
+      prefix: "National Weather Service. (u.å.). ",
+      italic: "Numerical weather prediction (weather models)",
+      suffix: ".",
+      href: "https://www.weather.gov/media/ajk/brochures/NumericalWeatherPrediction.pdf",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer – Geofag (GFG01-03)",
       suffix: ".",
