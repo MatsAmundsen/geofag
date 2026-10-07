@@ -1,5 +1,63 @@
 import type { QuizQuestion } from "@/components/quiz";
 
+export const QUIZ_JET: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei blåser vinden i en jetstrøm?",
+    options: [
+      "Fra vest mot øst.",
+      "Fra øst mot vest, på begge halvkuler.",
+      "Rett fra ekvator mot polen, uten sideveis avbøyning.",
+    ],
+    answer: 0,
+    explain:
+      "I jetstrømmen blåser vinden fra vest mot øst. Beltet kan likevel flytte seg nordover og sørover. Se «Hva er en jetstrøm?».",
+  },
+  {
+    prompt: "Hvor ligger polarjeten og den subtropiske jetstrømmen?",
+    options: [
+      "Polarjeten mellom 50° og 60°, den subtropiske rundt 30°.",
+      "Begge ligger fast over ekvator.",
+      "Polarjeten rundt 30°, den subtropiske mellom 50° og 60°.",
+    ],
+    answer: 0,
+    explain:
+      "Polarjeten ligger mellom 50° og 60° på begge halvkuler. Den subtropiske jetstrømmen ligger rundt 30°. Se tabellen i «Hva er en jetstrøm?».",
+  },
+  {
+    prompt: "Når er jetstrømmene sterkest, og hvorfor?",
+    options: [
+      "Om vinteren, fordi skillet mellom varm og kald luft er tydeligst da.",
+      "Om sommeren, fordi sola varmer jetstrømmen direkte.",
+      "De er like sterke hele året, fordi jorda roterer like fort.",
+    ],
+    answer: 0,
+    explain:
+      "Grensen mellom varm og kald luft er mest markert om vinteren, og da er jetstrømmene sterkest. Se «Hva er en jetstrøm?».",
+  },
+  {
+    prompt: "Hva gjør en positiv NAO med stormbanen over Atlanteren?",
+    options: [
+      "Jetstrømmen blir sterkere, og stormbanen flytter seg nordover. Nord-Europa får mer storm og mildere vær.",
+      "Jetstrømmen stopper, og Nord-Europa får ørkenklima.",
+      "Stormbanen flytter seg til ekvator, og Island får høytrykk hele vinteren.",
+    ],
+    answer: 0,
+    explain:
+      "Positiv NAO er en sterkere trykkforskjell mellom Island og Asorene. Den atlantiske jetstrømmen blir sterkere, og stormbanen ligger lenger nord. Se «Slynger, årstid og stormbane».",
+  },
+  {
+    prompt: "Hvorfor er jetstrømmen tegnet som en strek på værkartet en forenkling?",
+    options: [
+      "Streken viser der vinden er sterkest. Selve beltet er bredere, og vinden øker inn mot kjernen.",
+      "Streken er en front på bakken, med like sterk vind overalt.",
+      "Streken viser bare flyruter, ikke vind.",
+    ],
+    answer: 0,
+    explain:
+      "Jetstrømmen er et belte der vinden er sterkest i kjernen, omtrent som strømmen midt i en elv. Se «Hva er en jetstrøm?».",
+  },
+];
+
 export const QUIZ_MELTING: QuizQuestion[] = [
   {
     prompt: "Hvorfor oppstår det dekompresjonssmelting under en midthavsrygg?",

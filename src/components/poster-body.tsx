@@ -110,6 +110,7 @@ import {
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
   QUIZ_LOKALE,
+  QUIZ_JET,
 } from "@/lib/poster-quizzes";
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
@@ -312,6 +313,29 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         En inversjon er et lag der temperaturen stiger med høyden. Vanligvis er det kaldere jo
         høyere du kommer. I en inversjon ligger kald, tung luft nede i dalen eller fjorden, og
         varmere luft over den virker som et lokk. Lokale utslipp kan da bli liggende nær bakken.
+      </p>
+    </Callout>
+  ),
+
+
+    QuizJet: () => (
+    <Quiz questions={QUIZ_JET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+    JetForklaring: () => (
+    <Callout title="Hva betyr «jetstrøm»?">
+      <p>
+        En jetstrøm er et smalt belte med sterk vind høyt oppe i atmosfæren. Vinden blåser fra vest
+        mot øst og følger skillet mellom varm og kald luft. Neste ord du trenger, er polarjet: den
+        jetstrømmen som ligger mellom 50° og 60° bredde.
+      </p>
+    </Callout>
+  ),
+    NaoForklaring: () => (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Det er svingningen i trykkforskjellen mellom
+        lavtrykket ved Island og høytrykket ved Asorene. Når forskjellen er stor, blir jetstrømmen
+        over Atlanteren sterkere, og stormbanen ligger lenger nord.
       </p>
     </Callout>
   ),

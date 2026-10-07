@@ -539,6 +539,12 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "lokale-vaersystemer",
     stale: ["Her kan du redigere", "barokline sonen"],
   },
+,
+  {
+    flag: "jetstrommer-copy-2026-10-07",
+    slug: "jetstrommer",
+    stale: ["Her kan du redigere", "Shinkansen"],
+  }
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

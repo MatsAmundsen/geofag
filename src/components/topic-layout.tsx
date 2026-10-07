@@ -181,6 +181,7 @@ export function TopicLayout({
               <PosterBody
                 cleanChapter
                 scrollTables={
+                  resolvedSlug === "jetstrommer" ||
                   resolvedSlug === "lokale-vaersystemer" ||
                   resolvedSlug === "vulkaner" ||
                   resolvedSlug === "hoytrykk-lavtrykk" ||
