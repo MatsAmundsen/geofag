@@ -470,6 +470,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["1450- 1650C", "Ridge push"],
   },
   {
+    flag: "jordskjelv-copy-2026-10-07",
+    slug: "jordskjelv",
+    stale: ["Her kan du redigere", "Greens lov", "Harry Fielding"],
+  },
+  {
     flag: "jordsystemene-copy-2026-10-07",
     slug: "jordsystemene",
     stale: ["Fem sfærer, to spor", "Her kan du redigere"],

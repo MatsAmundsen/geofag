@@ -292,9 +292,9 @@ export const GF1_THEMES = [
     image: "/images/geo-jordskjelv-bolger-3d.jpg",
     alt: "3D-snitt av forkastningsbrudd, seismiske bølger og overflateskader",
     blurb:
-      "Elastisk tilbakefjæring, P- og S-bølger, momentmagnitude, Wadati-Benioff-sonen, norsk seismisitet, tsunamifysikk og jordskjelvsikring med Eurokode 8.",
+      "Plutselig brudd, P- og S-bølger, skjelv ved plategrenser og inne på platen, norsk seismisitet og hvorfor norske flodbølger kommer fra skred.",
     status: "klar" as const,
-    maal: "Forklare mekanismene bak jordskjelv og tsunamier, gjøre rede for seismisk bølgeforplantning og vurdere seismisk risiko og sikringstiltak i Norge og globalt.",
+    maal: "Gjøre rede for hvordan jordskjelv oppstår, hvilke konsekvenser de har for skorpe og overflate, og hvordan mennesker kan forebygge og tilpasse seg faren.",
   },
   {
     slug: "bergarter",

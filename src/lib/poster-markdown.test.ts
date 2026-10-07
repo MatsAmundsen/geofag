@@ -174,6 +174,34 @@ describe("injectPosterWidgets", () => {
   });
 });
 
+describe("jordskjelv poster", () => {
+  it("keeps the chapter widgets and drops formulas and exclamation marks", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/jordskjelv.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of [
+      "HyposenterForklaring",
+      "ElasticRebound",
+      "EarthquakeWavePhysics",
+      "Seismogram",
+      "BoundaryQuakes",
+      "IntraplateForklaring",
+      "NorwayEarthquakes",
+      "QuizJordskjelv",
+    ]) {
+      assert.equal(ids.has(id), true, `jordskjelv missing ${id}`);
+    }
+    assert.equal(md.replace(/!\[[^\]]*\]\([^)]*\)/g, "").includes("!"), false);
+    assert.equal(md.includes("Her kan du redigere"), false);
+    assert.equal(md.includes("Greens"), false);
+    assert.equal(md.includes("Eurokode"), false);
+    assert.equal(md.includes("## Viktige begreper"), true);
+    assert.equal(md.includes("## Test deg selv"), true);
+  });
+});
+
 describe("jordsystemene poster", () => {
   it("keeps the chapter widgets and drops the editor notice", () => {
     const md = readFileSync(
