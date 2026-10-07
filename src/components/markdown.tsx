@@ -39,11 +39,14 @@ export function Markdown({
   children,
   className,
   scrollTables = false,
+  wrapTables = false,
 }: {
   children: string;
   className?: string;
   /** Wrap tables so only this chapter scrolls sideways on a narrow screen. */
   scrollTables?: boolean;
+  /** Let table text wrap so the page itself does not scroll sideways. */
+  wrapTables?: boolean;
 }) {
   return (
     <div className={cn("space-y-4 text-base leading-relaxed text-foreground/90", className)}>
@@ -105,7 +108,25 @@ export function Markdown({
           ),
           img: MarkdownImage,
           hr: () => <hr className="border-border" />,
-          ...(scrollTables
+          ...(wrapTables
+            ? {
+                table: ({ children }: { children?: ReactNode }) => (
+                  <div className="w-full overflow-x-auto">
+                    <table className="w-full border-collapse text-left text-sm">{children}</table>
+                  </div>
+                ),
+                th: ({ children }: { children?: ReactNode }) => (
+                  <th className="border border-border px-2 py-1 align-top font-medium [overflow-wrap:anywhere]">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }: { children?: ReactNode }) => (
+                  <td className="border border-border px-2 py-1 align-top [overflow-wrap:anywhere]">
+                    {children}
+                  </td>
+                ),
+              }
+            : scrollTables
             ? {
                 table: ({ children }: { children?: ReactNode }) => (
                   <div className="max-w-full overflow-x-auto">

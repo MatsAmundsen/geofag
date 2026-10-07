@@ -187,6 +187,11 @@ export function TopicLayout({
                   resolvedSlug === "jordsystemene" ||
                   resolvedSlug === "isbreer-og-landformer"
                 }
+                wrapTables={
+                  resolvedSlug === "skred" ||
+                  resolvedSlug === "geologiske-ressurser" ||
+                  resolvedSlug === "feltarbeid"
+                }
               >
                 {markdown}
               </PosterBody>

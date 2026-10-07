@@ -305,9 +305,9 @@ export const GF1_THEMES = [
     image: "/images/geo-geologisk-kretslop-3d.jpg",
     alt: "3D-blokkdiagram av det geologiske kretsløpet med magmakammer, sedimentasjonsbasseng og regional metamorfose",
     blurb:
-      "Mineralogi, silikatstrukturer, de tre bergartsgruppene, Bowens reaksjonsserie, tynnsnitt under polarisasjonsmikroskopi og aldersdatering.",
+      "Mineraler, de tre bergartsgruppene, forvitring og bergartssyklusen som modell. Norske eksempler er gabbro, larvikitt, rombeporfyr, fyllitt og gneis.",
     status: "klar" as const,
-    maal: "Gjøre rede for mineral- og bergartsdannende prosesser, klassifisere vanlige norske bergarter og forklare prinsipper for relativ og radiometrisk datering.",
+    maal: "Utforske ulike mineralgrupper, bergartsgrupper og sedimenter, og tolke hvor de passer inn i bergartssyklusen.",
   },
   {
     slug: "norges-geologi",
@@ -353,9 +353,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-flom-skred.jpg",
     alt: "Flomelv ved et fjellskred i norsk landskap",
     blurb:
-      "Kretsløp, lager, hydrogram. Regnflom, snøsmelteflom og kombinasjonsflom. Hans 2023. NVE-flomkart og Varsom.",
+      "Hydrologisk kretsløp, akvifer og grunnvann. Hydrogram, regnflom, snøsmelteflom og Hans 2023.",
     status: "klar" as const,
-    maal: "Hydrologisk kretsløp, ferskvann, flom og modellering av risiko i hydrosfæren.",
+    maal: "Gjøre rede for det hydrologiske kretsløpet med vekt på ferskvann, og hvordan menneskelig aktivitet påvirker det.",
   },
   {
     slug: "skred",
@@ -365,9 +365,9 @@ export const GF1_THEMES = [
     image: "/images/fig-ravine.jpg",
     alt: "Ravine og skredløp i løsmasse",
     blurb:
-      "Steinskred, fjellskred, løsmasseskred og havbunnsskred. Åknes, Tafjord, Gjerdrum, Storegga. Snøskred hører i geofag 2.",
+      "Fjellskred, jordskred og kvikkleire. Åknes, Mannen og Gjerdrum. Kart og varsling.",
     status: "klar" as const,
-    maal: "Naturfarer knyttet til geosfæren: skred, risiko, forebygging og tilpasning.",
+    maal: "Gjøre rede for skredfare, og vurdere forebygging og tilpasning.",
   },
   {
     slug: "geologiske-ressurser",
@@ -377,9 +377,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-ressurser.jpg",
     alt: "Dagbrudd i fjellandskap i kveldslys",
     blurb:
-      "Malm, pukk, naturstein, olje og gass. Danning, kartlegging, utvinning og bærekraft. Engebø er en drøfting, ikke et fasitsvar.",
+      "Malm, naturstein, pukk og petroleum. Danning, kartlegging, utvinning og konsekvenser. Grunnvann nevnes og tas i Vann og flom.",
     status: "klar" as const,
-    maal: "Utvinning av geologiske ressurser i et bærekraftsperspektiv.",
+    maal: "Danning, kartlegging og utvinning av geologiske ressurser, og konsekvenser i et bærekraftsperspektiv.",
   },
   {
     slug: "feltarbeid",
@@ -387,11 +387,11 @@ export const GF1_THEMES = [
     title: "Feltarbeid",
     kicker: "Data i felt",
     image: "/images/fig-forvitring.jpg",
-    alt: "Forvitret blotning — felt i geosfæren, ikke samme foto som bergartssiden",
+    alt: "Blotning i fjell. Felt i geosfæren.",
     blurb:
-      "Planlegge, samle georefererte data, ivareta HMS, bearbeide, tolke og presentere. Feltboka er primærkilden.",
+      "Samle data i geosfæren eller hydrosfæren, bearbeide, tolke og presentere. Lokale observasjoner av berggrunn, løsmasser og jordarter.",
     status: "klar" as const,
-    maal: "Geofaglig feltarbeid i geosfære eller hydrosfære.",
+    maal: "Geofaglig feltarbeid i geosfæren eller hydrosfæren.",
   },
 ] as const;
 

@@ -53,7 +53,9 @@ import {
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
+import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
 import { Callout } from "@/components/callout";
+import { KvikkleireDiagram } from "@/components/diagrams/skred";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
@@ -74,6 +76,9 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_FELTARBEID,
+  QUIZ_GEOLOGISKE_RESSURSER,
+  QUIZ_SKRED,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
   QUIZ_JORDSYSTEMENE,
@@ -81,6 +86,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
 } from "@/lib/poster-quizzes";
 
@@ -204,7 +210,55 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
-  QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  ForvitringForklaring: () => (
+    <Callout title="Hva betyr «forvitring»?">
+      <p>
+        Forvitring er nedbrytning av berg på stedet. Berget flyttes ikke. Det kan skje mekanisk,
+        uten at mineralenes kjemi endres, eller kjemisk, når mineralene løses. Neste skille er
+        erosjon: nedsliting pluss transport.
+      </p>
+    </Callout>
+  ),
+  ForvitringFoto: () => (
+    <PhotoFigure
+      src="/images/fig-forvitring.jpg"
+      alt="Oppsprukket bergvegg med is i sprekken og løse fragmenter som fortsatt ligger ved blotningen"
+      heading="Forvitring på stedet"
+      caption="Vann i sprekken kan fryse og kile fjellet. Fragmentene ligger fortsatt ved blotningen. Først når vann, is eller tyngdekraft flytter dem, er det erosjon."
+    />
+  ),
+  QuizBergarter: () => (
+    <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  Kretslop: () => <KretslopDiagram />,
+  Hydrograph: () => <HydrographDiagram />,
+  AkviferForklaring: () => (
+    <Callout title="Hva betyr «akvifer»?">
+      <p>
+        En akvifer er berg eller løsmasse som kan lagre grunnvann og slippe det fra seg, for
+        eksempel sand, grus eller oppsprukket fjell. Tenk på en svamp. Den holder på vann, og
+        slipper det når du presser. Vannet ligger ikke i underjordiske elver. Det fyller porer i
+        sand og grus, eller sprekker i fjell.
+      </p>
+    </Callout>
+  ),
+  QuizVannOgFlom: () => (
+    <Quiz questions={QUIZ_VANN_OG_FLOM} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  KvikkleireForklaring: () => (
+    <Callout title="Hva betyr «kvikkleire»?">
+      <p>
+        Kvikkleire er marin leire der saltet mellom leirpartiklene er vasket ut. Partiklene ligger i
+        en åpen korthusstruktur. Saltvann holder strukturen. Ferskt grunnvann kan vaske saltet ut
+        over lang tid. Da svekkes bindingene. Blir leira overbelastet, klapper strukturen sammen, og
+        leira blir flytende.
+      </p>
+    </Callout>
+  ),
+  KvikkleireSteg: () => <KvikkleireDiagram />,
+  QuizSkred: () => (
+    <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   SpheresDiagram: () => <SpheresDiagram />,
   CarbonCycleDiagram: () => <CarbonCycleDiagram />,
   EarthSystemsModel: () => <EarthSystemsModel />,
@@ -232,8 +286,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         },
         {
           n: "3",
-          label:
-            "Fjorden er den iseroderte dalen, fylt av hav etter at isen trakk seg tilbake.",
+          label: "Fjorden er den iseroderte dalen, fylt av hav etter at isen trakk seg tilbake.",
         },
       ]}
     />
@@ -282,6 +335,32 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizIsbre: () => (
     <Quiz questions={QUIZ_ISBRE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  MalmForklaring: () => (
+    <Callout title="Hva betyr «malm»?">
+      <p>
+        Malm er en bergart som inneholder ett eller flere mineraler eller grunnstoffer i økonomisk
+        drivverdige mengder.
+      </p>
+    </Callout>
+  ),
+  QuizGeologiskeRessurser: () => (
+    <Quiz
+      questions={QUIZ_GEOLOGISKE_RESSURSER}
+      heading={null}
+      intro="Velg ett svar per spørsmål."
+    />
+  ),
+  FeltarbeidForklaring: () => (
+    <Callout title="Hva betyr «feltarbeid»?">
+      <p>
+        Feltarbeid er innsamling av data i en undersøkelse. I geologi kan det være å samle
+        steinprøver.
+      </p>
+    </Callout>
+  ),
+  QuizFeltarbeid: () => (
+    <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */
@@ -314,11 +393,13 @@ export function PosterBody({
   className,
   cleanChapter,
   scrollTables = false,
+  wrapTables = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
   scrollTables?: boolean;
+  wrapTables?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
@@ -328,7 +409,7 @@ export function PosterBody({
         part.type === "widget" ? (
           <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />
         ) : (
-          <Markdown key={`m-${index}`} scrollTables={scrollTables}>
+          <Markdown key={`m-${index}`} scrollTables={scrollTables} wrapTables={wrapTables}>
             {part.value}
           </Markdown>
         ),

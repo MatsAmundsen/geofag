@@ -197,21 +197,77 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "elastisk tilbakefjæring",
   },
   {
-    widgets: ["SilicateStructure"],
-    beforeHeading: "Fysiske identifikasjonsegenskaper",
+    widgets: ["ForvitringForklaring"],
+    afterHeading: "Hva er forvitring?",
   },
-  { widgets: ["RockCycle"], beforeHeading: "Magmatiske bergarter" },
-  { widgets: ["BowenReactionSeries"], beforeHeading: "Norske nasjonalskatter" },
-  { widgets: ["MetamorphicFacies"], beforeHeading: "Petrografi og tynnsnitt" },
   {
-    widgets: ["RockPetrologyModel"],
-    beforeHeading: "Geologisk tid og datering",
+    widgets: ["ForvitringFoto"],
+    beforeHeading: "Hva er magmatiske bergarter?",
+    require: "Hva er forvitring?",
   },
-  { widgets: ["RelativeDating"], beforeHeading: "Radiometrisk datering" },
+  {
+    widgets: ["RockCycle"],
+    afterHeading: "Hva er bergartssyklusen?",
+  },
   {
     widgets: ["QuizBergarter"],
     afterHeading: "Test deg selv",
-    require: "Bowens reaksjonsserie",
+    require: "Hva er forvitring?",
+  },
+  {
+    widgets: ["Kretslop"],
+    afterHeading: "Hva er det hydrologiske kretsløpet?",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["AkviferForklaring"],
+    afterHeading: "Hva er en akvifer?",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["Hydrograph"],
+    afterHeading: "Hva er et hydrogram?",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["QuizVannOgFlom"],
+    afterHeading: "Test deg selv",
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["KvikkleireForklaring"],
+    afterHeading: "Hva er kvikkleire?",
+    require: "Hva er kvikkleire?",
+  },
+  {
+    widgets: ["KvikkleireSteg"],
+    beforeLine: "Figuren er en modell av de stegene",
+    require: "Hva er kvikkleire?",
+  },
+  {
+    widgets: ["QuizSkred"],
+    afterHeading: "Test deg selv",
+    require: "Hva er kvikkleire?",
+  },
+  {
+    widgets: ["MalmForklaring"],
+    beforeHeading: "Hvordan dannes malm?",
+    require: "Hva er en geologisk ressurs?",
+  },
+  {
+    widgets: ["QuizGeologiskeRessurser"],
+    afterHeading: "Test deg selv",
+    require: "Hva er en geologisk ressurs?",
+  },
+  {
+    widgets: ["FeltarbeidForklaring"],
+    beforeHeading: "Hva kan observasjonene svare på?",
+    require: "Hva er geofaglig feltarbeid?",
+  },
+  {
+    widgets: ["QuizFeltarbeid"],
+    afterHeading: "Test deg selv",
+    require: "Hva er geofaglig feltarbeid?",
   },
   {
     widgets: ["FirnForklaring"],

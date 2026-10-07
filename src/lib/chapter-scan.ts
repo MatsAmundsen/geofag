@@ -199,6 +199,26 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Eurokode 8, baseisolering og likvifaksjon",
   },
   {
+    match: /hva er et mineral/i,
+    label: "Mineraler",
+    subtitle: "Krystall, kvarts og silikatgrupper",
+  },
+  {
+    match: /^hva er en bergart/i,
+    label: "Bergart",
+    subtitle: "Ett eller flere mineraler, pluss løst sediment",
+  },
+  {
+    match: /håndstykke/i,
+    label: "Felt",
+    subtitle: "Lupe, Mohs, syre og struktur",
+  },
+  {
+    match: /hva er forvitring/i,
+    label: "Forvitring",
+    subtitle: "På stedet, mekanisk og kjemisk, før erosjon",
+  },
+  {
     match: /^mineraler/i,
     label: "Mineraler",
     subtitle: "Silikater, Mohs, kløv, strekfarge og syretest",
@@ -206,22 +226,22 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /geologiske kretsløpet|bergartssyklus/i,
     label: "Kretsløpet",
-    subtitle: "Magmatisk, sedimentær og metamorf resirkulering",
+    subtitle: "En modell med flere veier",
   },
   {
     match: /magmatiske/i,
     label: "Magmatiske",
-    subtitle: "Dyp-, gang- og dagbergart, Bowen, larvikitt",
+    subtitle: "Dypbergart og dagbergart, gabbro, larvikitt",
   },
   {
     match: /sedimentære/i,
     label: "Sedimentære",
-    subtitle: "Klastiske, kjemiske og biogene bergarter",
+    subtitle: "Sandstein, leirstein og kalkstein",
   },
   {
     match: /metamorfe/i,
     label: "Metamorfe",
-    subtitle: "Foliasjon og metamorfosefacies",
+    subtitle: "Fyllitt, gneis og grønnstein",
   },
   {
     match: /petrografi|tynnsnitt/i,
@@ -232,6 +252,96 @@ const SECTION_META: SectionMeta[] = [
     match: /geologisk tid|datering/i,
     label: "Datering",
     subtitle: "Superposisjon, krysskjæring og isotopur",
+  },
+  {
+    match: /hydrologiske kretsløpet/i,
+    label: "Kretsløp",
+    subtitle: "Fordampning, nedbør, infiltrasjon og grunnvann",
+  },
+  {
+    match: /akvifer/i,
+    label: "Akvifer",
+    subtitle: "Porer, sprekker og grunnvann som lagres",
+  },
+  {
+    match: /hydrogram/i,
+    label: "Hydrogram",
+    subtitle: "Vannføring mot tid",
+  },
+  {
+    match: /^hva er en flom/i,
+    label: "Flom",
+    subtitle: "Regn, snøsmelting og varsel",
+  },
+  {
+    match: /hva viste hans/i,
+    label: "Hans",
+    subtitle: "Nedbørrekorder i august 2023",
+  },
+  {
+    match: /^hva er et skred/i,
+    label: "Skred",
+    subtitle: "Fjell, løsmasse og volum",
+  },
+  {
+    match: /^hva er kvikkleire/i,
+    label: "Kvikkleire",
+    subtitle: "Marin leire, salt og utvasking",
+  },
+  {
+    match: /^hva er et fjellskred/i,
+    label: "Fjellskred",
+    subtitle: "Åknes, Mannen og overvåking",
+  },
+  {
+    match: /^hvordan kan vi forebygge/i,
+    label: "Forebygging",
+    subtitle: "Sikring, kart og varsel",
+  },
+  {
+    match: /geologisk ressurs/i,
+    label: "Ressurs",
+    subtitle: "Kartlegging, kritiske mineraler og grunnvann",
+  },
+  {
+    match: /hvordan dannes malm/i,
+    label: "Malm",
+    subtitle: "Magmatisk og hydrotermal dannelse",
+  },
+  {
+    match: /naturstein og pukk/i,
+    label: "Stein",
+    subtitle: "Naturstein, larvikitt og pukk",
+  },
+  {
+    match: /utvinnes i norge/i,
+    label: "Norge",
+    subtitle: "Metaller, kobber, industrimineraler og petroleum",
+  },
+  {
+    match: /drøfte konsekvensene/i,
+    label: "Konsekvenser",
+    subtitle: "Klimaavtrykk, klimagasser og kulturminner",
+  },
+  {
+    match: /geofaglig feltarbeid/i,
+    label: "Felt",
+    subtitle: "Innsamling av data i geosfæren eller hydrosfæren",
+  },
+  {
+    match: /observasjonene svare/i,
+    label: "Spørsmål",
+    subtitle: "Berggrunn, løsmasser, jordarter og lokale ressurser",
+  },
+  {
+    match: /bearbeider og tolker/i,
+    label: "Tolkning",
+    subtitle: "Ordne data og forklare dem med en modell",
+  },
+  {
+    match: /presenterer vi/i,
+    label: "Presentasjon",
+    subtitle: "Resultatene skal vise data og tolkning",
   },
   {
     match: /fagvokabular|begrep/i,

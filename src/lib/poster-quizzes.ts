@@ -333,53 +333,290 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
 
 export const QUIZ_BERGARTER: QuizQuestion[] = [
   {
-    prompt: "Hvorfor kan Mohs hardhetsskala kun brukes på mineraler og ikke på bergarter?",
+    prompt: "Hvorfor tester du Mohs på ett mineralkorn, ikke på hele bergarten?",
     options: [
-      "Fordi bergarter alltid er mykere enn mineraler.",
-      "Fordi en bergart er et aggregat av ulike mineraler med hver sin hardhet (f.eks. myk glimmer og hard kvarts i samme gneis).",
-      "Fordi Mohs skala bare gjelder for kalsitt og diamant.",
-      "Fordi bergarter smelter hvis man prøver å ripe dem.",
+      "En bergart er alltid like hard overalt, så ett tall holder.",
+      "En bergart kan bestå av flere mineraler, og hvert korn har sin egen hardhet.",
+      "Mohs-skalaen gjelder bare for kalkstein.",
     ],
     answer: 1,
     explain:
-      "Mohs måler ripehardheten til et bestemt krystallgitter. I en granitt vil kvartskornene ha hardhet 7, mens feltspat har 6 og biotitt har 2,5.",
+      "Se «Hvordan undersøker du et håndstykke?». Mohs er en skala for mineraler. Kvarts er 7 og feltspat er 6. Rip ett korn.",
   },
   {
-    prompt:
-      "Hva er den fundamentale kjemiske forskjellen mellom mineralene i Bowens diskontinuerlige og kontinuerlige serie?",
+    prompt: "Hvordan viser larvikitt og rombeporfyr forskjellen på dypbergart og dagbergart?",
     options: [
-      "Diskontinuerlig serie består av jern- og magnesiumsilikater som endrer krystallgitter trinnvis, mens kontinuerlig serie er plagioklas der Ca og Na byttes ut i samme gitter.",
-      "Diskontinuerlig serie har ingen silisium, mens kontinuerlig serie er ren kvarts.",
-      "Kontinuerlig serie krystalliserer bare på overflaten, mens diskontinuerlig krystalliserer i rombeporfyr.",
-      "Det er ingen kjemisk forskjell; begge serier danner utelukkende ortoklas kalifeltspat.",
+      "De kommer fra to ulike magmaer, dannet i hver sin tidsalder.",
+      "Larvikitt størknet ferdig på dypet. Rombeporfyr har store feltspatkrystaller i en grunnmasse, fordi smelten nådde overflaten før den var ferdig krystallisert.",
+      "Begge er sedimentære bergarter, kittet av kalk.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hva er magmatiske bergarter?». NGU kaller rombeporfyr tvillingbroren til larvikitt. Forskjellen er hvor smelten størknet.",
+  },
+  {
+    prompt: "Hva er forskjellen på forvitring og erosjon?",
+    options: [
+      "Forvitring bryter ned berg på stedet. Erosjon er nedsliting pluss transport.",
+      "Begge betyr at vann frakter sand til havet.",
+      "Forvitring er transport. Erosjon er oppløsning på stedet.",
     ],
     answer: 0,
     explain:
-      "Venstre gren endrer mineraltype og struktur trinnvis (olivin → pyroksen → amfibol → biotitt), mens høyre gren opprettholder plagioklasens feltspatgitter mens kalsium kontinuerlig erstattes av natrium.",
+      "Se «Hva er forvitring?». Ved forvitring blir fragmentene liggende. Først når vann, is eller tyngdekraft flytter dem, er det erosjon.",
   },
   {
-    prompt: "Hvorfor kan Karbon-14 (¹⁴C) ikke brukes til å datere en båndgneis eller en rombeporfyr?",
+    prompt: "Hvorfor viser gneis eldre enn 900 millioner år at en bergart ikke må gjennom hele syklusen?",
     options: [
-      "Fordi Karbon-14 kun finnes på den sørlige halvkule.",
-      "Fordi ¹⁴C har for kort halveringstid (5730 år) og kun tas opp i organisk materiale; gammelt grunnfjell dateres med U-Pb i zirkon.",
-      "Fordi gneis inneholder for mye kalsitt.",
-      "Fordi rombeporfyr har for høy tetthet til at radioaktivitet slipper ut.",
+      "Gneis må smelte før den kan bli så gammel.",
+      "Gneis i grunnfjellet i Sør-Norge er fortsatt metamorf. Syklusen er en modell med flere veier.",
+      "Alle bergarter blir sedimentære etter 900 millioner år.",
     ],
     answer: 1,
     explain:
-      "¹⁴C har en rekkevidde på ca. 50 000 år og forutsetter biologisk karbonopptak. Norsk grunnfjell er hundrevis til milliarder av år gammelt og måles med langlivede radioaktive ur som ²³⁸U → ²⁰⁶Pb.",
+      "Se «Hva er bergartssyklusen?». Gneis ble dannet for mer enn 900 millioner år siden og er fortsatt en metamorf bergart.",
   },
   {
-    prompt: "Hva er en diskordans i en geologisk lagrekke?",
+    prompt: "I granittisk sand, hvilket mineral forsvinner først?",
     options: [
-      "Et lag som bruser med saltsyre.",
-      "En intrusjon av flytende basaltlava.",
-      "Et tidshull der erosjon eller manglende avsetning har fjernet deler av den geologiske historien før nye lag ble avsatt.",
-      "En overgang der sedimentær bergart smelter direkte til magma.",
+      "Kvarts, fordi det løses før de andre.",
+      "Hornblende fortere enn plagioklas, og plagioklas fortere enn kalifeltspat. Kaolinitt og kvarts blir igjen.",
+      "Kalifeltspat forsvinner før hornblende.",
     ],
-    answer: 2,
+    answer: 1,
     explain:
-      "En diskordans representerer en gammel erosjonsflate og et betydelig tidsintervall som mangler i steinens lagdelte arkiv.",
+      "Se «Hva er forvitring?». White et al. (1996) fant denne rekkefølgen i granittisk sand. Resten er kaolinitt og kvarts.",
+  },
+];
+
+export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
+  {
+    prompt: "Hvor ligger grunnvannet i en akvifer?",
+    options: [
+      "I underjordiske elver.",
+      "I porer i sand og grus, eller i sprekker i fjell.",
+      "Bare i innsjøer over bakken.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hva er en akvifer?». Grunnvann fyller porer og sprekker. Det er ikke elver under bakken.",
+  },
+  {
+    prompt: "Hvorfor har godt sortert grus og sand høyere permeabilitet enn silt og leire?",
+    options: [
+      "Grus og sand som er løst pakket og godt sortert, har store hulrom. Silt og leire er tett pakket og har lav permeabilitet.",
+      "Leire har alltid høyere porøsitet enn sand.",
+      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en akvifer?». NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser.",
+  },
+  {
+    prompt: "Hva skiller en regnflom fra en snøsmelteflom?",
+    options: [
+      "Regnflom skyldes bare regn, og er ofte de største flommene på Sørlandet og Vestlandet. Snøsmelteflom skyldes snøsmelting alene, og er de største vårflommene i store vassdrag i Finnmark.",
+      "Begge skyldes bare regn på asfalt.",
+      "Snøsmelteflom er flom som bare kommer av tidevann.",
+    ],
+    answer: 0,
+    explain: "Se «Hva er en flom?». Skillet står i ordlisten til Varsom.",
+  },
+  {
+    prompt: "Hva viser et hydrogram?",
+    options: [
+      "Vannføring mot tid. Figuren sammenligner en spiss regnflom med en bred snøsmelteflom.",
+      "Hvor dypt grunnvannsspeilet ligger i fjell.",
+      "Hvor mange millimeter som falt på Geilo i 1938.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er et hydrogram?». Vannføring er volum per tidsenhet. Hydrogrammet er den kurven mot tid.",
+  },
+  {
+    prompt: "Hva kan du si om elva i en tørkeperiode?",
+    options: [
+      "Elvene kan bestå av 40–100 prosent grunnvann.",
+      "Elva får alt vannet fra havet.",
+      "Grunnvannet slutter å bidra så snart det slutter å regne.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en akvifer?». NGU skriver at elvene i en tørkeperiode med lav vannføring kan bestå av 40–100 prosent grunnvann.",
+  },
+];
+
+export const QUIZ_SKRED: QuizQuestion[] = [
+  {
+    prompt: "Hva skjer når kvikkleire blir overbelastet?",
+    options: [
+      "Korthusstrukturen kollapser, og leira blir flytende.",
+      "All marin leire er allerede flytende fra den ble avsatt.",
+      "Leira blir fastere fordi saltinnholdet øker.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er kvikkleire?». Overbelastning får strukturen til å kollapse. I omrørt tilstand er leira flytende.",
+  },
+  {
+    prompt: "Hvordan kan saltet i marin leire forsvinne?",
+    options: [
+      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
+      "All marin leire er kvikk allerede da den ble avsatt i sjøen.",
+      "Saltet forsvinner så snart det har regnet én dag.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er kvikkleire?». Leira er tett, så utvaskingen tar mange hundre til flere tusen år. Ikke all marin leire blir kvikk.",
+  },
+  {
+    prompt: "Hva er de to vanlige måtene et kvikkleireskred blir utløst på?",
+    options: [
+      "Erosjon fra bekker og elver, eller graving i foten og fylling på toppen.",
+      "Et gult jordskredvarsel.",
+      "At snøen i fjellet blir til sørpeskred.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er kvikkleire?». NVE peker på graving fra bekker og elver, og på graving i bunnen eller fylling på toppen.",
+  },
+  {
+    prompt: "Hvorfor overvåkes Åknes kontinuerlig?",
+    options: [
+      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
+      "Åknes er et jordskred som går i en elv hvert år.",
+      "Grønt jordskredvarsel dekker også fjellskred fra Åknes.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er et fjellskred?». Åknes overvåkes kontinuerlig fordi et skred kan gi flodbølger, og varselet skal komme i tide.",
+  },
+  {
+    prompt: "Hva sier et grønt jordskredvarsel om steinsprang og kvikkleire?",
+    options: [
+      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
+      "Grønt nivå betyr at steinsprang og kvikkleire er avblåst.",
+      "Varselet gjelder bare kvikkleire.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan kan vi forebygge og tilpasse oss?». Jordskredvarselet gjelder jordskred, sørpeskred og flomskred. Steinsprang og kvikkleireskred inngår ikke.",
+  },
+];
+
+export const QUIZ_GEOLOGISKE_RESSURSER: QuizQuestion[] = [
+  {
+    prompt: "Hva må til for at en bergart kalles malm?",
+    options: [
+      "Den inneholder mineraler eller grunnstoffer i økonomisk drivverdige mengder.",
+      "Den inneholder et hvilket som helst spor av metall.",
+      "Den er knust til pukk.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan dannes malm?». Malm er en bergart med mineraler eller grunnstoffer i økonomisk drivverdige mengder.",
+  },
+  {
+    prompt: "Hvilke metallmalmer er det hovedsakelig drift på i Norge i dag?",
+    options: [
+      "Ilmenitt i Sokndal og hematitt i Rana.",
+      "Kobber i Røros og Løkken.",
+      "Sølv på Kongsberg.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva utvinnes i Norge i dag?». I dag er det hovedsakelig drift på ilmenitt i Sokndal og hematitt i Rana.",
+  },
+  {
+    prompt: "Hvorfor prioriterer NGU kartlegging av kritiske og strategiske mineraler?",
+    options: [
+      "Behovet for mineraler og metaller øker, og kartleggingen skal tjene både næring og forvaltning.",
+      "Fordi all malm i Norge allerede er drevet ut.",
+      "Fordi pukk ikke kan brukes i vei.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en geologisk ressurs?». Behovet øker, og NGU kartlegger både for næringsutvikling og for miljø-, natur- og ressursforvaltning.",
+  },
+  {
+    prompt: "Hva sier NGU om kobberutvinning i Norge i 2024?",
+    options: [
+      "Det er ingen utvinning. Drift planlegges på Nussir i Finnmark.",
+      "Kobber utvinnes i Sokndal sammen med ilmenitt.",
+      "Nussir ble lagt ned i 2002.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva utvinnes i Norge i dag?». Oppdateringen i 2024 sier at det ikke er kobberutvinning. Drift planlegges på Nussir.",
+  },
+  {
+    prompt: "Hvor tar vi hvordan grunnvann lagres og strømmer?",
+    options: [
+      "I kapittelet Vann og flom. Her nevnes grunnvann bare som en ressurs.",
+      "I dette kapittelet, som en del av malmdannelsen.",
+      "Grunnvann er ikke en geologisk ressurs.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er en geologisk ressurs?». Grunnvann er en geologisk ressurs. Lagring og strømning tas i Vann og flom.",
+  },
+];
+
+export const QUIZ_FELTARBEID: QuizQuestion[] = [
+  {
+    prompt: "Hva er feltarbeid?",
+    options: [
+      "Innsamling av data i en undersøkelse. I geologi kan det være steinprøver.",
+      "En tur der klassen bare ser på landskapet.",
+      "Et begrep som bare brukes i samfunnsfag.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er geofaglig feltarbeid?». Feltarbeid er innsamling av data. I geologi kan det være steinprøver.",
+  },
+  {
+    prompt: "Hvilke deler av jordsystemet gjelder feltarbeidet i geofag 1?",
+    options: [
+      "Geosfæren eller hydrosfæren.",
+      "Bare atmosfæren.",
+      "Bare kryosfæren.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva er geofaglig feltarbeid?». Feltarbeidet er knyttet til geosfæren eller hydrosfæren.",
+  },
+  {
+    prompt: "Hva skal du gjøre med dataene etter at de er samlet inn?",
+    options: [
+      "Bearbeide og tolke dem.",
+      "Kaste dem når prøvene er merket.",
+      "La dem ligge uten å knytte dem til spørsmålet.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan bearbeider og tolker vi?». De innsamlede dataene skal bearbeides og tolkes.",
+  },
+  {
+    prompt: "Hva skal lokale observasjoner kunne si noe om?",
+    options: [
+      "Områdets geologiske historie og betydningen for lokale ressurser.",
+      "Bare hvor langt det er til nærmeste vei.",
+      "Bare navnet på kommunen.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hva kan observasjonene svare på?». Observasjonene tolkes for å beskrive historien og betydningen for lokale ressurser.",
+  },
+  {
+    prompt: "Hva skal presentasjonen av feltarbeidet gjøre mulig?",
+    options: [
+      "Å se hvilke data som ble samlet inn, og hvordan de ble tolket.",
+      "Å erstatte dataene med et inntrykk fra turen.",
+      "Å sløyfe tolkningen når prøvene er tatt.",
+    ],
+    answer: 0,
+    explain:
+      "Se «Hvordan presenterer vi resultatene?». Presentasjonen skal vise dataene og tolkningen.",
   },
 ];
 

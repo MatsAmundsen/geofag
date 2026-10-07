@@ -167,10 +167,37 @@ describe("injectPosterWidgets", () => {
     for (const id of ["ElasticRebound", "BoundaryQuakes", "QuizJordskjelv"]) {
       assert.equal(jordskjelv.has(id), true, `jordskjelv missing ${id}`);
     }
-    for (const id of ["RockCycle", "RockPetrologyModel", "QuizBergarter"]) {
+    for (const id of ["ForvitringForklaring", "ForvitringFoto", "RockCycle", "QuizBergarter"]) {
       assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
     }
+    const ressurser = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/geologiske-ressurser.md"), "utf8")),
+    );
+    const felt = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/feltarbeid.md"), "utf8")),
+    );
+    for (const id of ["MalmForklaring", "QuizGeologiskeRessurser"]) {
+      assert.equal(ressurser.has(id), true, `ressurser missing ${id}`);
+    }
+    for (const id of ["FeltarbeidForklaring", "QuizFeltarbeid"]) {
+      assert.equal(felt.has(id), true, `feltarbeid missing ${id}`);
+    }
+    assert.equal(ressurser.has("QuizFeltarbeid"), false);
+    assert.equal(felt.has("QuizGeologiskeRessurser"), false);
+    const vann = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/vann-og-flom.md"), "utf8")),
+    );
+    for (const id of ["Kretslop", "AkviferForklaring", "Hydrograph", "QuizVannOgFlom"]) {
+      assert.equal(vann.has(id), true, `vann-og-flom missing ${id}`);
+    }
+    assert.equal(bergarter.has("QuizVannOgFlom"), false);
+    assert.equal(vann.has("QuizBergarter"), false);
+    assert.equal(bergarter.has("RockPetrologyModel"), false);
+    assert.equal(bergarter.has("BowenReactionSeries"), false);
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVulkaner"));
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVannOgFlom"));
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizGeologiskeRessurser"));
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizFeltarbeid"));
   });
 
   it("places glacier widgets into Isbreer og landformer and keeps them off Vulkaner", () => {
@@ -266,6 +293,20 @@ describe("jordsystemene poster", () => {
     assert.equal(ids.size, 6);
     assert.equal(ids.has("QuizVulkaner"), false);
     assert.equal(ids.has("QuizHoytrykk"), false);
+  });
+
+  it("places the quick-clay widgets into Skred without borrowing them elsewhere", () => {
+    const lib = dirname(fileURLToPath(import.meta.url));
+    const skred = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/skred.md"), "utf8")),
+    );
+    for (const id of ["KvikkleireForklaring", "KvikkleireSteg", "QuizSkred"]) {
+      assert.equal(skred.has(id), true, `skred missing ${id}`);
+    }
+    const bergarter = readFileSync(join(lib, "posts/bergarter.md"), "utf8");
+    const injected = injectPosterWidgets(bergarter);
+    assert.equal(listedWidgetIds(injected).has("QuizSkred"), false);
+    assert.equal(listedWidgetIds(injected).has("KvikkleireForklaring"), false);
   });
 });
 

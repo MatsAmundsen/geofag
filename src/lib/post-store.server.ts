@@ -470,6 +470,31 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["1450- 1650C", "Ridge push"],
   },
   {
+    flag: "geologiske-ressurser-copy-2026-10-07",
+    slug: "geologiske-ressurser",
+    stale: ["Her kan du redigere", "Engebø"],
+  },
+  {
+    flag: "feltarbeid-copy-2026-10-07",
+    slug: "feltarbeid",
+    stale: ["Her kan du redigere", "Vestland"],
+  },
+  {
+    flag: "skred-copy-2026-10-07",
+    slug: "skred",
+    stale: ["Her kan du redigere", "Ormen Lange"],
+  },
+  {
+    flag: "vann-og-flom-copy-2026-10-07",
+    slug: "vann-og-flom",
+    stale: ["Her kan du redigere", "Sandsekker når elva stiger"],
+  },
+  {
+    flag: "bergarter-copy-2026-10-07",
+    slug: "bergarter",
+    stale: ["Her kan du redigere", "Bowens reaksjonsserie"],
+  },
+  {
     flag: "jordskjelv-copy-2026-10-07",
     slug: "jordskjelv",
     stale: ["Her kan du redigere", "Greens lov", "Harry Fielding"],

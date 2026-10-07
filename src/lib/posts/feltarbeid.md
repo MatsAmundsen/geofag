@@ -1,31 +1,58 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/feltarbeid](/geofag-1/feltarbeid). Her kan du redigere **hele fagteksten**.
+> **Kompetansemål i Geofag 1 (LK20)**
+>
+> Målet er at du skal kunne gjennomføre geofaglig feltarbeid knyttet til geosfæren eller hydrosfæren, bearbeide og tolke de innsamlede dataene og presentere resultatene (Udir, u.å.-b).
+>
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a).
+>
+> • *Mennesket i jordsystemene:* Vi utnytter naturressursene og endrer jordsystemene (Udir, u.å.-a).
 
-## Problemstilling
+## Hva er geofaglig feltarbeid?
 
-Start med et avgrenset spørsmål knyttet til geosfære eller hydrosfære. «Hvordan varierer kornstørrelse fra raet til ravinen?» er en problemstilling. «Geologi» er det ikke. Tyngdepunktet skal ikke gli over i vær, sjø eller brefront.
+```widget
+FeltarbeidForklaring
+```
 
-Kjeden er fast: planlegg, samle, bearbeid, tolk, presenter. Ta med kart, utstyr, tillatelser og HMS før du går ut.
+Feltarbeid er arbeid med innsamling av data i en empirisk undersøkelse. Ordet brukes i flere fag. I geologi kan feltarbeid være å samle inn steinprøver (SNL, 2026).
 
-## Georefererte data
+I geofag 1 er feltarbeidet knyttet til geosfæren eller hydrosfæren. Du skal gjennomføre det, bearbeide og tolke de innsamlede dataene, og presentere resultatene (Udir, u.å.-b).
 
-Georeferering knytter observasjonen til sted og tid. Feltboka er primærkilden: punkt-ID, tid, vær, måling, usikkerhet, skisse. Foto og GPS supplerer. De erstatter ikke boka. Mobil-GPS holder til skolefelt, typisk noen meter, ikke til centimeter på en skredkant.
+## Hva kan observasjonene svare på?
 
-**georeferert:** Observasjon knyttet til sted og tid. Uten det er dataene ikke geofaglige. Feltboka er primærkilden. Foto og GPS supplerer.
+Et mål i faget er å utforske berggrunn, løsmasser og jordarter lokalt. Observasjonene skal tolkes slik at du kan beskrive områdets geologiske historie, og si hva den betyr for lokale ressurser (Udir, u.å.-b).
 
-## HMS
+Når spørsmålet gjelder mineraler, arbeider NGU både på laboratoriet og ute i felt. I felt gransker de utseende, hardhet, vekt, kløv, strek, glans, spalting og krystallstruktur (NGU, u.å.). Hvordan du kjenner igjen mineralene, tar vi i kapittelet [Bergarter](/geofag-1/bergarter).
 
-HMS er fag, ikke vedlegg. Én side: fare, sannsynlighet, konsekvens, tiltak. Steinsprang, kvikkleire under marin grense, trafikk i grustak, elv og flom. Sikkerhet går foran data. Risiko er vurdering før utfallet, ikke at det gikk galt.
+## Hvordan bearbeider og tolker vi?
 
-**risiko:** Vurdering før utfallet: fare, sannsynlighet, konsekvens, tiltak. Ikke at det gikk galt. Sikkerhet går foran data.
+Målet sier at de innsamlede dataene skal bearbeides og tolkes (Udir, u.å.-b). Bearbeiding vil si å ordne observasjonene slik at de kan leses mot spørsmålet du stilte. Tolkning vil si å si hva de kan bety for berggrunn, løsmasser, jordarter eller ressursene på stedet.
 
-## Feltrapport
+Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Når du skal forklare tolkningen, kan en modell være oversikten som viser hva du observerte.
 
-Rapporten skal vise kjeden: problemstilling, plan og HMS, georefererte data, bearbeiding, tolkning og det du ikke kan konkludere. I Vestland skal privatister ha feltrapport på papir ved oppmøte (Vestland fylkeskommune, u.å.). Uten rapport: ingen eksamen. PDF på PC holder ikke der. Rogaland har skrevet det motsatte: kandidater trenger ikke ta med felt (Rogaland fylkeskommune, u.å.). Kravet om papir er fylkespraksis, ikke nasjonalt. Ha rapporten likevel. I Vestland er den obligatorisk.
+## Hvordan presenterer vi resultatene?
 
-> **Kompetansemål**
+Målet sier at resultatene skal presenteres (Udir, u.å.-b). Presentasjonen skal gjøre det mulig å se hvilke data som ble samlet inn, og hvordan de ble tolket.
+
+Feltarbeid om lokale ressurser hører sammen med at vi utnytter naturressursene og endrer jordsystemene (Udir, u.å.-a).
+
+> **To vanlige misforståelser**
+>
+> 1. **Feltarbeid er bare et samfunnsfaglig begrep.** Leksikonet sier at ordet brukes i flere fag, og nevner innsamling av steinprøver i geologi (SNL, 2026).
+> 2. **Feltarbeidet er ferdig når prøvene er samlet inn.** Målet krever også at dataene bearbeides og tolkes, og at resultatene presenteres (Udir, u.å.-b).
 
 ## Viktige begreper
 
-**georeferert:** Observasjon knyttet til sted og tid. Uten det er dataene ikke geofaglige. Feltboka er primærkilden. Foto og GPS supplerer.
+**Feltarbeid:** Innsamling av data i en undersøkelse. I geologi kan det være steinprøver.
 
-**risiko:** Vurdering før utfallet: fare, sannsynlighet, konsekvens, tiltak. Ikke at det gikk galt. Sikkerhet går foran data.
+**Innsamlede data:** Det du har observert og samlet inn i felt, og som senere skal bearbeides, tolkes og presenteres.
+
+**Geosfæren og hydrosfæren:** De to delene av jordsystemet som feltarbeidet i geofag 1 er knyttet til.
+
+**Lokal observasjon:** Undersøkelse av berggrunn, løsmasser og jordarter på et sted, lest mot områdets historie og ressurser.
+
+## Test deg selv
+
+```widget
+QuizFeltarbeid
+```
