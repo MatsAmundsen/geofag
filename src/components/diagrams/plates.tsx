@@ -701,7 +701,7 @@ export function SolidusDiagram() {
     <Diagram
       title="Trykk-temperatur-diagram: Dekompresjonssmelting, flukssmelting og geoterm"
       heading="Smeltefysikk i mantelen: Hvorfor fast bergart smelter på tre ulike måter"
-      caption="Bergarter smelter ikke ved én fast temperatur slik som rent isvann, men over et temperaturintervall. Solidus er kurven der den aller første dråpen smelte dannes; liquidus er kurven der alt er flytende. Fordi trykket øker innover i jorden (ca. 30 bar/km), stiger solidustemperaturen bratt med dypet. Normalt ligger jordens geoterm godt til venstre for solidus (mantelen er fast). Magma kan oppstå på tre måter: 1) Dekompresjonssmelting: mantel stiger adiabatisk (uten varmetap) under tynn skorpe og krysser tørr solidus. 2) Flukssmelting: vann fra en synkende plate forskyver solidus til venstre slik at den krysser den normale geotermen. 3) Mantelplym (hotspot): ekstraordinær varme fra dypet løfter geotermen over solidus."
+      caption="Bergarter smelter ikke ved én fast temperatur slik som rent isvann, men over et temperaturintervall. Solidus er kurven der den aller første dråpen smelte dannes; liquidus er kurven der alt er flytende. Fordi trykket øker innover i jorden (ca. 300 bar/km), stiger solidustemperaturen bratt med dypet. Normalt ligger jordens geoterm godt til venstre for solidus (mantelen er fast). Magma kan oppstå på tre måter: 1) Dekompresjonssmelting: mantel stiger adiabatisk (uten varmetap) under tynn skorpe og krysser tørr solidus. 2) Flukssmelting: vann fra en synkende plate forskyver solidus til venstre slik at den krysser den normale geotermen. 3) Mantelplym (hotspot): ekstraordinær varme fra dypet løfter geotermen over solidus."
       viewBox="0 0 880 470"
       wide
     >
