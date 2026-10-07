@@ -514,6 +514,11 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     slug: "jordsystemene",
     stale: ["Hva er forvitring?", "AkviferForklaring", "IsostasiForklaring"],
   },
+  {
+    flag: "felt-hav-luft-is-copy-2026-10-07",
+    slug: "felt-hav-luft-is",
+    stale: ["Her kan du redigere", "sjøbris"],
+  },
 ];
 
 async function reseedFlaggedCopies(store: Store): Promise<void> {

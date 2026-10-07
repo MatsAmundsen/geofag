@@ -796,3 +796,56 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
       "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
   },
 ];
+
+export const QUIZ_FELT_HAV: QuizQuestion[] = [
+  {
+    prompt: "Hva skal du gjøre med dataene i feltarbeidet?",
+    options: [
+      "Bearbeide, tolke og presentere dem.",
+      "Bare samle dem inn og la dem ligge.",
+      "Bare lese et varsel, uten egne data.",
+    ],
+    answer: 0,
+    explain: "Se «Tre felt, samme kjede». Kjeden er planlegge, samle inn, bearbeide, tolke og presentere.",
+  },
+  {
+    prompt: "Hva måler en radiosonde?",
+    options: [
+      "Temperatur, fuktighet og lufttrykk fra bakken og oppover.",
+      "Bare vannstanden ved kaia.",
+      "Snøskredfaregraden i ett heng.",
+    ],
+    answer: 0,
+    explain: "Se «Luft». Sonden festes vanligvis til en værballong.",
+  },
+  {
+    prompt: "Hva viser Se havnivå?",
+    options: [
+      "Observert og varslet vannstand, og tidevann.",
+      "Temperaturen oppover i atmosfæren.",
+      "Et snøskredvarsel for 24 regioner.",
+    ],
+    answer: 0,
+    explain: "Se «Hav». Vannstanden varierer på grunn av tidevannet og været.",
+  },
+  {
+    prompt: "Hva gjelder en snøskredfaregrad for?",
+    options: [
+      "Et område på minst 100 kvadratkilometer, ikke ett heng.",
+      "Ett enkelt heng.",
+      "Bare Svalbard.",
+    ],
+    answer: 0,
+    explain: "Se «Snø og is». Graden er regional.",
+  },
+  {
+    prompt: "Hva er varselet, ifølge Varsom?",
+    options: [
+      "Et hjelpemiddel. Egne vurderinger hører med.",
+      "En fasit for akkurat det henget du skal gå.",
+      "En erstatning for å presentere egne data.",
+    ],
+    answer: 0,
+    explain: "Se «Snø og is». Varslene er regionale og kan avvike fra forholdene der du er.",
+  },
+];

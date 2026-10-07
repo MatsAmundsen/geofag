@@ -87,6 +87,7 @@ import {
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
+  QUIZ_FELT_HAV,
   QUIZ_ISBRE,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
@@ -364,6 +365,18 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  FeltHavForklaring: () => (
+    <Callout title="Hva betyr «feltarbeid» her?">
+      <p>
+        Feltarbeid i geofag 2 er å planlegge, samle inn georefererte data fra hav, luft eller is,
+        bearbeide, tolke og presentere dem. Helse, miljø og sikkerhet hører med (Udir, u.å.-a;
+        u.å.-b).
+      </p>
+    </Callout>
+  ),
+  QuizFeltHav: () => (
+    <Quiz questions={QUIZ_FELT_HAV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 
