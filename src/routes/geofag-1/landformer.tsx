@@ -45,8 +45,8 @@ function LandformerPage() {
         label: "Forrige: Norges geologiske historie",
       }}
       next={{
-        to: "/geofag-1/vann-og-flom",
-        label: "Neste: Vann og flom",
+        to: "/geofag-1/isbreer-og-landformer",
+        label: "Neste: Isbreer og landformer",
       }}
       kilder={KILDER.landformer}
     >

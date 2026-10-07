@@ -180,7 +180,11 @@ export function TopicLayout({
             ) : usePoster ? (
               <PosterBody
                 cleanChapter
-                scrollTables={resolvedSlug === "vulkaner" || resolvedSlug === "hoytrykk-lavtrykk"}
+                scrollTables={
+                  resolvedSlug === "vulkaner" ||
+                  resolvedSlug === "hoytrykk-lavtrykk" ||
+                  resolvedSlug === "isbreer-og-landformer"
+                }
               >
                 {markdown}
               </PosterBody>

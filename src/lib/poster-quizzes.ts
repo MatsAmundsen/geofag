@@ -487,3 +487,64 @@ export const QUIZ_HOYTRYKK: QuizQuestion[] = [
       "Under et vinterhøytrykk kan kald, tung luft bli liggende i dalbunnen under et mildere lag. Luften sirkulerer lite, og forurensning blir liggende.",
   },
 ];
+
+export const QUIZ_ISBRE: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er morene usortert, mens breelvmateriale er sortert?",
+    options: [
+      "Morene er eldre og har blitt blandet over tid",
+      "Isen frakter alle kornstørrelser sammen, mens rennende vann skiller dem etter størrelse",
+      "Breelvmateriale er alltid avsatt i havet",
+      "Morene består bare av store blokker",
+    ],
+    answer: 1,
+    explain:
+      "Isen skiller ikke kornene fra hverandre, men vannet mister farten gradvis og legger igjen de tyngste kornene først. Se «Usortert transport».",
+  },
+  {
+    prompt: "Hva forteller skuringsstriper i berget?",
+    options: [
+      "Hvor gammelt berget er",
+      "Hvor høyt havet sto etter istida",
+      "Hvilken retning isen beveget seg",
+      "Hvor mye frost det har vært",
+    ],
+    answer: 2,
+    explain:
+      "Stripene er laget av steiner i bresålen og går i samme retning som isen. Se «Rundsva og skuringsstriper».",
+  },
+  {
+    prompt: "Hva er forskjellen på en fjord og en U-dal som Gudbrandsdalen?",
+    options: [
+      "Fjorden er laget av elv, U-dalen av is",
+      "Begge er gravd ut av is, men bunnen i fjorden ligger under havnivå",
+      "Fjorden er en V-dal som har druknet",
+      "U-dalen er yngre enn fjorden",
+    ],
+    answer: 1,
+    explain: "Fjord og dal er samme type landform med ulik vannstand. Se «Fjord».",
+  },
+  {
+    prompt: "Hvorfor ligger det marin leire på land, for eksempel på Østlandet?",
+    options: [
+      "Havnivået har steget siden istida",
+      "Elvene har fraktet leira opp fra havet",
+      "Landet ble presset ned av isen, leira ble avsatt i havet, og så hevet landet seg igjen",
+      "Leira ble avsatt av isbreen som morene",
+    ],
+    answer: 2,
+    explain: "Dette er isostasi. Se «Isostasi: landet som hever seg etter isen».",
+  },
+  {
+    prompt: "Hvorfor er Raet en fossil landform, mens breene i Norge i dag er aktive?",
+    options: [
+      "Raet ble dannet av en isfront som ikke finnes lenger, mens dagens breer fortsatt eroderer og avsetter materiale",
+      "Raet består av fast berg",
+      "Raet er dannet av bølger, ikke av is",
+      "Nigardsbreen er en innlandsis",
+    ],
+    answer: 0,
+    explain:
+      "Prosessen er den samme, men den skjedde til ulik tid. Se «Aktive og fossile landformer».",
+  },
+];

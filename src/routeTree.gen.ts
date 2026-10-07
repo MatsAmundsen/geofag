@@ -19,6 +19,7 @@ import { Route as Geofag1BergarterRouteImport } from './routes/geofag-1/bergarte
 import { Route as Geofag1BergarterOgLandformerRouteImport } from './routes/geofag-1/bergarter-og-landformer'
 import { Route as Geofag1FeltarbeidRouteImport } from './routes/geofag-1/feltarbeid'
 import { Route as Geofag1GeologiskeRessurserRouteImport } from './routes/geofag-1/geologiske-ressurser'
+import { Route as Geofag1IsbreerOgLandformerRouteImport } from './routes/geofag-1/isbreer-og-landformer'
 import { Route as Geofag1JordskjelvRouteImport } from './routes/geofag-1/jordskjelv'
 import { Route as Geofag1JordsystemeneRouteImport } from './routes/geofag-1/jordsystemene'
 import { Route as Geofag1LandformerRouteImport } from './routes/geofag-1/landformer'
@@ -106,6 +107,12 @@ const Geofag1GeologiskeRessurserRoute =
   Geofag1GeologiskeRessurserRouteImport.update({
     id: '/geofag-1/geologiske-ressurser',
     path: '/geofag-1/geologiske-ressurser',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Geofag1IsbreerOgLandformerRoute =
+  Geofag1IsbreerOgLandformerRouteImport.update({
+    id: '/geofag-1/isbreer-og-landformer',
+    path: '/geofag-1/isbreer-og-landformer',
     getParentRoute: () => rootRouteImport,
   } as any)
 const Geofag1JordskjelvRoute = Geofag1JordskjelvRouteImport.update({
@@ -299,6 +306,7 @@ export interface FileRoutesByFullPath {
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
   '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
+  '/geofag-1/isbreer-og-landformer': typeof Geofag1IsbreerOgLandformerRoute
   '/geofag-1/jordskjelv': typeof Geofag1JordskjelvRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/landformer': typeof Geofag1LandformerRoute
@@ -347,6 +355,7 @@ export interface FileRoutesByTo {
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
   '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
+  '/geofag-1/isbreer-og-landformer': typeof Geofag1IsbreerOgLandformerRoute
   '/geofag-1/jordskjelv': typeof Geofag1JordskjelvRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/landformer': typeof Geofag1LandformerRoute
@@ -396,6 +405,7 @@ export interface FileRoutesById {
   '/geofag-1/bergarter-og-landformer': typeof Geofag1BergarterOgLandformerRoute
   '/geofag-1/feltarbeid': typeof Geofag1FeltarbeidRoute
   '/geofag-1/geologiske-ressurser': typeof Geofag1GeologiskeRessurserRoute
+  '/geofag-1/isbreer-og-landformer': typeof Geofag1IsbreerOgLandformerRoute
   '/geofag-1/jordskjelv': typeof Geofag1JordskjelvRoute
   '/geofag-1/jordsystemene': typeof Geofag1JordsystemeneRoute
   '/geofag-1/landformer': typeof Geofag1LandformerRoute
@@ -446,6 +456,7 @@ export interface FileRouteTypes {
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
     | '/geofag-1/geologiske-ressurser'
+    | '/geofag-1/isbreer-og-landformer'
     | '/geofag-1/jordskjelv'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/landformer'
@@ -494,6 +505,7 @@ export interface FileRouteTypes {
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
     | '/geofag-1/geologiske-ressurser'
+    | '/geofag-1/isbreer-og-landformer'
     | '/geofag-1/jordskjelv'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/landformer'
@@ -542,6 +554,7 @@ export interface FileRouteTypes {
     | '/geofag-1/bergarter-og-landformer'
     | '/geofag-1/feltarbeid'
     | '/geofag-1/geologiske-ressurser'
+    | '/geofag-1/isbreer-og-landformer'
     | '/geofag-1/jordskjelv'
     | '/geofag-1/jordsystemene'
     | '/geofag-1/landformer'
@@ -591,6 +604,7 @@ export interface RootRouteChildren {
   Geofag1BergarterOgLandformerRoute: typeof Geofag1BergarterOgLandformerRoute
   Geofag1FeltarbeidRoute: typeof Geofag1FeltarbeidRoute
   Geofag1GeologiskeRessurserRoute: typeof Geofag1GeologiskeRessurserRoute
+  Geofag1IsbreerOgLandformerRoute: typeof Geofag1IsbreerOgLandformerRoute
   Geofag1JordskjelvRoute: typeof Geofag1JordskjelvRoute
   Geofag1JordsystemeneRoute: typeof Geofag1JordsystemeneRoute
   Geofag1LandformerRoute: typeof Geofag1LandformerRoute
@@ -701,6 +715,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/geologiske-ressurser'
       fullPath: '/geofag-1/geologiske-ressurser'
       preLoaderRoute: typeof Geofag1GeologiskeRessurserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/isbreer-og-landformer': {
+      id: '/geofag-1/isbreer-og-landformer'
+      path: '/geofag-1/isbreer-og-landformer'
+      fullPath: '/geofag-1/isbreer-og-landformer'
+      preLoaderRoute: typeof Geofag1IsbreerOgLandformerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/jordskjelv': {
@@ -967,6 +988,7 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag1BergarterOgLandformerRoute: Geofag1BergarterOgLandformerRoute,
   Geofag1FeltarbeidRoute: Geofag1FeltarbeidRoute,
   Geofag1GeologiskeRessurserRoute: Geofag1GeologiskeRessurserRoute,
+  Geofag1IsbreerOgLandformerRoute: Geofag1IsbreerOgLandformerRoute,
   Geofag1JordskjelvRoute: Geofag1JordskjelvRoute,
   Geofag1JordsystemeneRoute: Geofag1JordsystemeneRoute,
   Geofag1LandformerRoute: Geofag1LandformerRoute,

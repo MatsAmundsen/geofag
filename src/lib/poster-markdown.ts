@@ -32,6 +32,11 @@ export const POSTER_PHOTO_SRCS = [
   "/images/geo-subduksjon-3d.jpg",
   "/images/geo-ofiolitt-leka.jpg",
   "/images/geo-wilsonsyklus-3d.jpg",
+  "/images/isbre-naeroyfjorden.jpg",
+  "/images/isbre-romsdalseggen.jpg",
+  "/images/isbre-raet.jpg",
+  "/images/isbre-ur.jpg",
+  "/images/isbre-nigardsbreen.jpg",
 ] as const;
 
 type InjectRule = {
@@ -179,6 +184,51 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     widgets: ["QuizBergarter"],
     afterHeading: "Test deg selv",
     require: "Bowens reaksjonsserie",
+  },
+  {
+    widgets: ["FirnForklaring"],
+    beforeHeading: "Næringsområde og tæringsområde",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["BreLengdesnitt"],
+    beforeHeading: "Isen som agent",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["VdalTilUdal"],
+    beforeHeading: "Fjord",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["BotnEggTind"],
+    beforeImage: "/images/isbre-romsdalseggen.jpg",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["Avsetningsformer"],
+    beforeHeading: "Erosjonsformer og avsetningsformer side om side",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["Frostsprengning"],
+    beforeHeading: "Ur",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["IsostasiForklaring"],
+    afterHeading: "Isostasi: landet som hever seg etter isen",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["IsostasiSnitt"],
+    beforeHeading: "Marin grense",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    widgets: ["QuizIsbre"],
+    afterHeading: "Test deg selv",
+    require: "Nigardsbreen, en arm av Jostedalsbreen",
   },
 ];
 

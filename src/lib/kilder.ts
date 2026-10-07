@@ -358,6 +358,62 @@ export const KILDER = {
       href: "https://www.npolar.no/tema/jan-mayen/",
     },
   ],
+  isbre: [
+    {
+      prefix: "NDLA. (u.å.). ",
+      italic: "Slik arbeider isbreen",
+      suffix: ".",
+      href: "https://ndla.no/r/geografi/slik-arbeider-isbreen/6c8858f799",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
+      italic: "Geologi på land",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/geologi-pa-land",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+      italic: "Om kart over marin grense",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      italic: "Om løsmasser",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-losmasser",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Klima nå og i framtiden",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/klima/klima-naa-og-i-framtiden/",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-a). ",
+      italic: "Frostsprengning",
+      suffix: ".",
+      href: "https://snl.no/frostsprengning",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-b). ",
+      italic: "Isbre",
+      suffix: ".",
+      href: "https://snl.no/isbre",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-c). ",
+      italic: "Raet",
+      suffix: ".",
+      href: "https://snl.no/Raet",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
+      italic: "Kompetansemål etter geofag 1 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
+    },
+  ],
   landformer: [
     {
       prefix: "Gjessing, J. (1978). ",

@@ -210,6 +210,79 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
       },
     ],
   },
+  "/images/isbre-naeroyfjorden.jpg": {
+    src: "/images/isbre-naeroyfjorden.jpg",
+    alt: "Nærøyfjorden, en smal fjord med bratte fjellsider",
+    heading: "Nærøyfjorden",
+    caption:
+      "Nærøyfjorden er en smal fjord med bratte fjellsider. Formen viser at dalen er gravd ut av is. Foto: Acediscovery. Lisens: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). https://commons.wikimedia.org/wiki/File:Nærøyfjord-Norway-April-2011.jpg",
+    marks: [
+      { x: 48, y: 62, n: "1", text: "Fjord", tone: "cold" },
+      { x: 18, y: 28, n: "2", text: "Bratt fjellside", tone: "warm" },
+    ],
+    points: [
+      { n: "1", label: "Smal fjord. Dalen er gravd ut av is og bunnen ligger under havnivå." },
+      { n: "2", label: "Bratte fjellsider, slik en U-dal ser ut når den er fylt med sjø." },
+    ],
+  },
+  "/images/isbre-romsdalseggen.jpg": {
+    src: "/images/isbre-romsdalseggen.jpg",
+    alt: "Romsdalseggen, en smal fjellrygg mellom to daler",
+    heading: "Romsdalseggen",
+    caption:
+      "Romsdalseggen er en smal fjellrygg mellom to daler som er formet av is. Foto: –Any–. Lisens: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/). https://commons.wikimedia.org/wiki/File:Rauma,_Norway_-_panoramio_(58)_(cropped).jpg",
+    marks: [
+      { x: 55, y: 38, n: "1", text: "Egg", tone: "warm" },
+      { x: 22, y: 70, n: "2", text: "Dal", tone: "cold" },
+    ],
+    points: [
+      { n: "1", label: "Smal fjellrygg mellom to daler som er formet av is." },
+      { n: "2", label: "Dalene på hver side er gravd ut av is." },
+    ],
+  },
+  "/images/isbre-raet.jpg": {
+    src: "/images/isbre-raet.jpg",
+    alt: "Mølen, en del av Raet, sett fra lufta",
+    heading: "Raet",
+    caption:
+      "Raet er en lang rygg av morene og breelvmateriale som markerer hvor isfronten sto i yngre dryas. Foto: Bjoertvedt. Lisens: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). https://commons.wikimedia.org/wiki/File:Vestfold_IMG_4058_Moelen.jpg",
+    marks: [
+      { x: 46, y: 58, n: "1", text: "Raet", tone: "warm" },
+    ],
+    points: [
+      { n: "1", label: "Rygg av morene og breelvmateriale der isfronten sto i yngre dryas." },
+    ],
+  },
+  "/images/isbre-ur.jpg": {
+    src: "/images/isbre-ur.jpg",
+    alt: "Ur av kantete stein under en bratt fjellside ved Lista",
+    heading: "Ur",
+    caption:
+      "En ur under en bratt fjellside. Steinene er kantete fordi de er sprengt løs av frost og ikke slipt av vann. Foto: Bjoertvedt. Lisens: CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/). https://commons.wikimedia.org/wiki/File:Lista_Eidsfjorden_Indrepollen_talus_IMG_1081.JPG",
+    marks: [
+      { x: 62, y: 72, n: "1", text: "Ur", tone: "warm" },
+      { x: 28, y: 28, n: "2", text: "Stup", tone: "cold" },
+    ],
+    points: [
+      { n: "1", label: "Kjegle av kantete stein under et stup." },
+      { n: "2", label: "Bratt fjellside der steinene er sprengt løs av frost." },
+    ],
+  },
+  "/images/isbre-nigardsbreen.jpg": {
+    src: "/images/isbre-nigardsbreen.jpg",
+    alt: "Nigardsbreen, en aktiv bre med løsmasser foran isfronten",
+    heading: "Nigardsbreen",
+    caption:
+      "Nigardsbreen er en aktiv bre. Foran isfronten ligger løsmasser som breen har lagt igjen. Foto: Hartmut Schmidt Heidelberg. Lisens: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). https://commons.wikimedia.org/wiki/File:At_the_edge_of_the_glacier_Nigardsbreen,_Norway.jpg",
+    marks: [
+      { x: 62, y: 36, n: "1", text: "Isfront", tone: "cold" },
+      { x: 18, y: 84, n: "2", text: "Løsmasser", tone: "warm" },
+    ],
+    points: [
+      { n: "1", label: "Aktiv bre. Isen er fortsatt i bevegelse." },
+      { n: "2", label: "Løsmasser som breen har lagt igjen foran isfronten." },
+    ],
+  },
 };
 
 export function getPosterPhotoFigure(src: string | undefined): PosterPhotoFigure | undefined {
