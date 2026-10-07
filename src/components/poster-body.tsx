@@ -40,6 +40,7 @@ import {
 } from "@/components/diagrams/geology-extra";
 import { Callout } from "@/components/callout";
 import { GeoMap } from "@/components/geo-map";
+import { PhotoFigure } from "@/components/photo-figure";
 import { Markdown } from "@/components/markdown";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
@@ -158,7 +159,26 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,
   RockPetrologyModel: () => <RockPetrologyModel />,
-  QuizBergarter: () => <Quiz questions={QUIZ_BERGARTER} />,
+  ForvitringForklaring: () => (
+    <Callout title="Hva betyr «forvitring»?">
+      <p>
+        Forvitring er nedbrytning av berg på stedet. Berget flyttes ikke. Det kan skje mekanisk,
+        uten at mineralenes kjemi endres, eller kjemisk, når mineralene løses. Neste skille er
+        erosjon: nedsliting pluss transport.
+      </p>
+    </Callout>
+  ),
+  ForvitringFoto: () => (
+    <PhotoFigure
+      src="/images/fig-forvitring.jpg"
+      alt="Oppsprukket bergvegg med is i sprekken og løse fragmenter som fortsatt ligger ved blotningen"
+      heading="Forvitring på stedet"
+      caption="Vann i sprekken kan fryse og kile fjellet. Fragmentene ligger fortsatt ved blotningen. Først når vann, is eller tyngdekraft flytter dem, er det erosjon."
+    />
+  ),
+  QuizBergarter: () => (
+    <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 };
 
 /** The earth-layer photo and the EarthLayers widget render the same figure. Keep the photo. */

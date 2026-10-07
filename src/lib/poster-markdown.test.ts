@@ -154,9 +154,11 @@ describe("injectPosterWidgets", () => {
     for (const id of ["ElasticRebound", "BoundaryQuakes", "QuizJordskjelv"]) {
       assert.equal(jordskjelv.has(id), true, `jordskjelv missing ${id}`);
     }
-    for (const id of ["RockCycle", "RockPetrologyModel", "QuizBergarter"]) {
+    for (const id of ["ForvitringForklaring", "ForvitringFoto", "RockCycle", "QuizBergarter"]) {
       assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
     }
+    assert.equal(bergarter.has("RockPetrologyModel"), false);
+    assert.equal(bergarter.has("BowenReactionSeries"), false);
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVulkaner"));
   });
 });

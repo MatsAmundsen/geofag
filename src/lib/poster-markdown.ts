@@ -164,21 +164,22 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "elastisk tilbakefjæring",
   },
   {
-    widgets: ["SilicateStructure"],
-    beforeHeading: "Fysiske identifikasjonsegenskaper",
+    widgets: ["ForvitringForklaring"],
+    afterHeading: "Hva er forvitring?",
   },
-  { widgets: ["RockCycle"], beforeHeading: "Magmatiske bergarter" },
-  { widgets: ["BowenReactionSeries"], beforeHeading: "Norske nasjonalskatter" },
-  { widgets: ["MetamorphicFacies"], beforeHeading: "Petrografi og tynnsnitt" },
   {
-    widgets: ["RockPetrologyModel"],
-    beforeHeading: "Geologisk tid og datering",
+    widgets: ["ForvitringFoto"],
+    beforeHeading: "Hva er magmatiske bergarter?",
+    require: "Hva er forvitring?",
   },
-  { widgets: ["RelativeDating"], beforeHeading: "Radiometrisk datering" },
+  {
+    widgets: ["RockCycle"],
+    afterHeading: "Hva er bergartssyklusen?",
+  },
   {
     widgets: ["QuizBergarter"],
     afterHeading: "Test deg selv",
-    require: "Bowens reaksjonsserie",
+    require: "Hva er forvitring?",
   },
 ];
 

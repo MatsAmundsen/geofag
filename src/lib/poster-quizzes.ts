@@ -380,53 +380,59 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
 
 export const QUIZ_BERGARTER: QuizQuestion[] = [
   {
-    prompt: "Hvorfor kan Mohs hardhetsskala kun brukes på mineraler og ikke på bergarter?",
+    prompt: "Hvorfor tester du Mohs på ett mineralkorn, ikke på hele bergarten?",
     options: [
-      "Fordi bergarter alltid er mykere enn mineraler.",
-      "Fordi en bergart er et aggregat av ulike mineraler med hver sin hardhet (f.eks. myk glimmer og hard kvarts i samme gneis).",
-      "Fordi Mohs skala bare gjelder for kalsitt og diamant.",
-      "Fordi bergarter smelter hvis man prøver å ripe dem.",
+      "En bergart er alltid like hard overalt, så ett tall holder.",
+      "En bergart kan bestå av flere mineraler, og hvert korn har sin egen hardhet.",
+      "Mohs-skalaen gjelder bare for kalkstein.",
     ],
     answer: 1,
     explain:
-      "Mohs måler ripehardheten til et bestemt krystallgitter. I en granitt vil kvartskornene ha hardhet 7, mens feltspat har 6 og biotitt har 2,5.",
+      "Se «Hvordan undersøker du et håndstykke?». Mohs er en skala for mineraler. Kvarts er 7 og feltspat er 6. Rip ett korn.",
   },
   {
-    prompt:
-      "Hva er den fundamentale kjemiske forskjellen mellom mineralene i Bowens diskontinuerlige og kontinuerlige serie?",
+    prompt: "Hvordan viser larvikitt og rombeporfyr forskjellen på dypbergart og dagbergart?",
     options: [
-      "Diskontinuerlig serie består av jern- og magnesiumsilikater som endrer krystallgitter trinnvis, mens kontinuerlig serie er plagioklas der Ca og Na byttes ut i samme gitter.",
-      "Diskontinuerlig serie har ingen silisium, mens kontinuerlig serie er ren kvarts.",
-      "Kontinuerlig serie krystalliserer bare på overflaten, mens diskontinuerlig krystalliserer i rombeporfyr.",
-      "Det er ingen kjemisk forskjell; begge serier danner utelukkende ortoklas kalifeltspat.",
+      "De kommer fra to ulike magmaer, dannet i hver sin tidsalder.",
+      "Larvikitt størknet ferdig på dypet. Rombeporfyr har store feltspatkrystaller i en grunnmasse, fordi smelten nådde overflaten før den var ferdig krystallisert.",
+      "Begge er sedimentære bergarter, kittet av kalk.",
+    ],
+    answer: 1,
+    explain:
+      "Se «Hva er magmatiske bergarter?». NGU kaller rombeporfyr tvillingbroren til larvikitt. Forskjellen er hvor smelten størknet.",
+  },
+  {
+    prompt: "Hva er forskjellen på forvitring og erosjon?",
+    options: [
+      "Forvitring bryter ned berg på stedet. Erosjon er nedsliting pluss transport.",
+      "Begge betyr at vann frakter sand til havet.",
+      "Forvitring er transport. Erosjon er oppløsning på stedet.",
     ],
     answer: 0,
     explain:
-      "Venstre gren endrer mineraltype og struktur trinnvis (olivin → pyroksen → amfibol → biotitt), mens høyre gren opprettholder plagioklasens feltspatgitter mens kalsium kontinuerlig erstattes av natrium.",
+      "Se «Hva er forvitring?». Ved forvitring blir fragmentene liggende. Først når vann, is eller tyngdekraft flytter dem, er det erosjon.",
   },
   {
-    prompt: "Hvorfor kan Karbon-14 (¹⁴C) ikke brukes til å datere en båndgneis eller en rombeporfyr?",
+    prompt: "Hvorfor viser gneis eldre enn 900 millioner år at en bergart ikke må gjennom hele syklusen?",
     options: [
-      "Fordi Karbon-14 kun finnes på den sørlige halvkule.",
-      "Fordi ¹⁴C har for kort halveringstid (5730 år) og kun tas opp i organisk materiale; gammelt grunnfjell dateres med U-Pb i zirkon.",
-      "Fordi gneis inneholder for mye kalsitt.",
-      "Fordi rombeporfyr har for høy tetthet til at radioaktivitet slipper ut.",
+      "Gneis må smelte før den kan bli så gammel.",
+      "Gneis i grunnfjellet i Sør-Norge er fortsatt metamorf. Syklusen er en modell med flere veier.",
+      "Alle bergarter blir sedimentære etter 900 millioner år.",
     ],
     answer: 1,
     explain:
-      "¹⁴C har en rekkevidde på ca. 50 000 år og forutsetter biologisk karbonopptak. Norsk grunnfjell er hundrevis til milliarder av år gammelt og måles med langlivede radioaktive ur som ²³⁸U → ²⁰⁶Pb.",
+      "Se «Hva er bergartssyklusen?». Gneis ble dannet for mer enn 900 millioner år siden og er fortsatt en metamorf bergart.",
   },
   {
-    prompt: "Hva er en diskordans i en geologisk lagrekke?",
+    prompt: "I granittisk sand, hvilket mineral forsvinner først?",
     options: [
-      "Et lag som bruser med saltsyre.",
-      "En intrusjon av flytende basaltlava.",
-      "Et tidshull der erosjon eller manglende avsetning har fjernet deler av den geologiske historien før nye lag ble avsatt.",
-      "En overgang der sedimentær bergart smelter direkte til magma.",
+      "Kvarts, fordi det løses før de andre.",
+      "Hornblende fortere enn plagioklas, og plagioklas fortere enn kalifeltspat. Kaolinitt og kvarts blir igjen.",
+      "Kalifeltspat forsvinner før hornblende.",
     ],
-    answer: 2,
+    answer: 1,
     explain:
-      "En diskordans representerer en gammel erosjonsflate og et betydelig tidsintervall som mangler i steinens lagdelte arkiv.",
+      "Se «Hva er forvitring?». White et al. (1996) fant denne rekkefølgen i granittisk sand. Resten er kaolinitt og kvarts.",
   },
 ];
 

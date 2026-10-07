@@ -1,209 +1,169 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/bergarter](/geofag-1/bergarter). Her kan du redigere **hele fagteksten**.
+> **Kompetansemål i Geofag 1 (LK20)**
+>
+> Målet er at du skal kunne utforske ulike mineralgrupper, bergartsgrupper og sedimenter, og tolke hvor de passer inn i bergartssyklusen (Udir, u.å.-b).
+>
+> **Kjerneelementer som dekkes i dette kapittelet:**
+>
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser. Bergartssyklusen er en slik modell, ikke én tvungen rute (Udir, u.å.-a).
+>
+> • *Forvitring:* Berg brytes ned på stedet, mekanisk eller kjemisk, før erosjon flytter materialet.
 
-## Mineraler — geosfærens kjemiske byggesteiner
+## Hva er et mineral?
 
-Alt fast fjell på jorda er bygget opp av mineraler. I geologisk forstand er et mineral definert som et **naturlig forekommende, uorganisk fast stoff med en veldefinert kjemisk sammensetning og en ordnet, tredimensjonal krystallstruktur** (NGU, u.å.-a).
+Et mineral er et naturlig, uorganisk fast stoff med en bestemt kjemisk sammensetning og en ordnet krystallstruktur. Kvarts er SiO₂. Det er bygget av oksygen og silisium, de to grunnstoffene som opptrer i størst konsentrasjon i jordskorpa. Kvarts riper glass. På Mohs-skalaen er kvarts 7 og diamant 10 (NGU, u.å.-h).
 
-Kunstig fremstilte laboratoriediamanter, flytende vann og organisk trevirke er derfor per definisjon ikke mineraler, mens naturlig dannet bre-is oppfyller alle kriterier. Krystallstrukturen betyr at atomene er bundet sammen i et repetitivt geometrisk gitter. Dersom en silikatsmelte avkjøles så lynraskt at atomene ikke rekker å organisere seg i et krystallgitter, dannes et amorft vulkansk glass (obsidian), som regnes som en bergart, men ikke et mineral.
+Silikatmineraler bygges av silisium–oksygen-tetraeder. Gruppene skilles etter hvordan tetraedrene deler oksygen. Du trenger ikke alle undergruppene. Du trenger å se mineralet og si hvilken gruppe det hører til.
 
-**Mineral:** Naturlig, uorganisk fast stoff med en bestemt kjemisk formel og et regelmessig, indre krystallgitter. Byggestein i bergarter.
+| Gruppe | Tetraedrene | Eksempel du møter |
+| --- | --- | --- |
+| Nesosilikat | isolert | olivin i mafisk magma |
+| Inosilikat | kjeder | pyroksen i gabbro, amfibol i grønnstein (NGU, u.å.-b; NGU, u.å.-e) |
+| Fyllosilikat | sjikt | glimmer i fyllitt, kloritt i grønnstein (NGU, u.å.-a; NGU, u.å.-e) |
+| Tektosilikat | rammeverk | kvarts og feltspat (NGU, u.å.-h; NGU, u.å.-i) |
 
-### Silikatene — jordskorpens dominerende mineralgruppe
+Fyllosilikater spalter i flak. Det ser du som skifrighet når flakene er orientert (NGU, u.å.-a). Tektosilikater som kvarts er harde. De blir ofte korn i sand.
 
-Selv om jorden inneholder 92 naturlige grunnstoffer, utgjør bare to av dem nesten tre fjerdedeler av kontinentalskorpens masse: **oksygen (46,6 %)** og **silisium (27,7 %)**, etterfulgt av aluminium, jern, kalsium, natrium, kalium og magnesium. Derfor består over 90 prosent av alle bergarter i jordskorpa av **silikatmineraler**.
+## Hva er en bergart?
 
-Den fundamentale kjemiske byggesteinen i alle silikater er **silisium-oksygen-tetraederet ([SiO₄]⁴⁻)**: Ett lite, fireverdig silisiumion (Si⁴⁺) er kovalent bundet til fire større oksygenioner (O²⁻). Fordi tetraederet har en netto negativ ladning på -4, må det enten bindes til positive metallkationer (Fe²⁺, Mg²⁺, Ca²⁺, Na⁺, K⁺) eller dele oksygenatomer med nabotetraedre. Graden av oksygendeling bestemmer silikatenes struktur og fysiske egenskaper:
+En bergart består av ett eller flere mineraler. Farge, kornstørrelse og kornform gir utseendet. Etter opprinnelse er det tre hovedtyper: sedimentære, metamorfe og magmatiske. Magmatiske og metamorfe bergarter utgjør 90–95 prosent av jordskorpa (NGU, u.å.-k).
 
-### Fysiske identifikasjonsegenskaper i felt og håndstykke
+![Tre håndstykker: grovkornet magmatisk bergart, lagdelt sedimentær bergart og stripet metamorf bergart](/images/fig-tre-bergarter.jpg)
 
-For å identifisere et mineral i felt undersøker geologen et sett diagnostiske egenskaper:
+*Tre grupper etter opprinnelse. Korn og prikker peker magmatisk, lagdeling sedimentært, striper og folder metamorf (NGU, u.å.-k).*
 
-- **Hardhet (Mohs skala 1–10):** Mineralets relative evne til å ripe et annet. Skalaen ble utarbeidet av Friedrich Mohs i 1812: Talk (1), gips (2), kalsitt (3), fluoritt (4), apatitt (5), ortoklas feltspat (6), kvarts (7), topas (8), korund (9) og diamant (10). Mohs er en mineralskala, ikke en bergartsskala. En gneis kan inneholde både myk glimmer (Mohs 2,5) og hard kvarts (Mohs 7).
+Sediment er løst: grus, sand og leire. Det er ikke bergart ennå. En sedimentær bergart dannes når sedimentene forsteines. Kjennetegn er lagdeling, korn, fossiler og steiner som er kittet sammen (NGU, u.å.-k). Sandstein er sand av kvarts og feltspat, kittet av kvarts, kalkspat eller jernforbindelser (NGU, u.å.-m). Leirstein er meget finkornete sedimenter som er presset sammen (NGU, u.å.-j).
 
-- **Kløv og brudd:** Kløv er tendensen et mineral har til å spalte langs svake krystallografiske plan der atomvbindingene er svakest. Glimmer har én ekstremt perfekt kløvretning (spalter i tynne elastiske flak), feltspat har to retninger i nær 90° vinkel, mens kalsitt kløver i romboedre. Kvarts har ingen kløvplan, men brekker med glassaktig, skjellformet *musklete brudd*.
+## Hvordan undersøker du et håndstykke?
 
-- **Strekfarge:** Fargen på mineralets pulver når det skrapes mot en uglassert porselensplate. Mens overflatefargen kan variere voldsomt på grunn av små urenheter (kvarts kan være hvit, lilla, gul eller røyksort), er strekfargen konstant: Hematitt (Fe₂O₃) er metallisk stålgrå i klump, men gir alltid en karakteristisk rødbrun strek.
+Verbet i kompetansemålet er utforske. Du velger en test, noterer det du ser, og tolker hvilken stasjon i syklusen prøven sitter på.
 
-- **Kjemisk syretest:** Karbonatmineralet kalsitt (CaCO₃) reagerer umiddelbart og bruser kraftig med fortynnet saltsyre (10 % HCl) under utvikling av karbondioksidgass: CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑. Dette er den sikreste testen for å skille kalkstein og marmor fra kvartsitt.
+**Lupe.** En lupe med 6–10 ganger forstørrelse brukes til å se mineralkorn (USGS, u.å.-a). Er kornene synlige? Like store? Lyse eller mørke?
 
-## Det geologiske kretsløpet — naturens store resirkulering
+**Mohs.** Friedrich Mohs laget skalaen i 1822. Talk er 1, gips 2, kalsitt 3, fluoritt 4, apatitt 5, feltspat 6, kvarts 7, topas 8, safir 9 og diamant 10 (USGS, u.å.-b). En lommekniv tester hardheten til mineralkorn (USGS, u.å.-a). Skalaen gjelder mineralet, ikke hele bergarten. En bergart kan ha flere mineraler, og hvert korn har sin egen hardhet. Rip ett korn.
 
-En bergart er et fast aggregat sammensatt av ett eller flere mineraler, eller i noen tilfeller mineraloid masse som vulkansk glass eller organisk kull (Ramberg et al., 2013). Norges geologiske undersøkelse (NGU) og internasjonal geovitenskap klassifiserer alle bergarter i tre hovedgrupper etter dannelsesmåte:
+**Syre.** Fortynnet saltsyre brukes til å kjenne igjen kalkstein og dolomitt (USGS, u.å.-a).
 
-![Tre håndstykker: grovkornet magmatisk bergart, lagdelt sedimentær kalkstein og stripet metamorf gneis](/images/fig-tre-bergarter.jpg)
+**Struktur.** Lagdeling, korn, fossiler og kittede steiner peker på sedimentær bergart. Korn og prikker peker på magmatisk bergart. Striper og folder peker på metamorf bergart (NGU, u.å.-k). Lagdeling er sedimentære lag. Striper i en gneis er noe annet: berget er omdannet.
 
-*Geosfærens tre bergartsgrupper — Fra venstre: Magmatisk bergart (størknet fra glødende smelte, sammenvokste krystaller), sedimentær bergart (avsatt i lag av fragmenter eller kjemisk/biologisk utfelling, ofte fossilbærende), og metamorf bergart (omdannet i fast tilstand under trykk og varme, markert med foliasjon/bånding).*
+## Hva er forvitring?
 
-**Bergartssyklusen** er den overordnede modellen for hvordan materialet i jordskorpa og øvre mantel sirkulerer (USGS, u.å.). Det er ingen fast start og ingen fast slutt: Enhver bergart kan omdannes direkte til enhver annen bergartstype avhengig av de tektoniske kreftene:
+```widget
+ForvitringForklaring
+```
 
-![3D-blokksnitt av det geologiske kretsløpet med magmakammer, overflatevulkan, elveerosjon, sedimentasjonsbasseng og regionalmetamorf sone](/images/geo-geologisk-kretslop-3d.jpg)
+Uten forvitring blir det knapt løse korn. Uten løse korn blir det ikke sediment, og uten sediment ingen ny sedimentær bergart.
 
-*Det geologiske kretsløpet i 3D-perspektiv — Fra dyp magmadannelse i mantelen til overflatevulkanisme, fluvial forvitring og erosjon, bassengsedimentasjon og dyp tektonisk metamorfose i en kollisjonssone. Ingen bergart må innom alle stasjoner; kretsløpet har utallige snarveier drevet av jordas indre konveksjon og ytre solenergi.*
+### Mekanisk forvitring
 
-**Diagenese:** De fysiske og kjemiske prosessene som forvandler et løst sediment til fast sedimentær bergart ved lav temperatur (<200 °C) og moderat trykk: kompaksjon og sementering.
+Mekanisk forvitring endrer ikke mineralenes kjemi. Berget sprekker, men kornene er de samme mineralene.
 
-## Magmatiske bergarter og magmadifferensiasjon
+Frostsprengning er ett eksempel: vann siger inn i en sprekk, fryser og kiler fjellet. Det tar vi nærmere i kapittelet Isbreer og landformer.
 
-Magmatiske bergarter (eruptiver) dannes når smeltet steinmasse (magma i dypet, lava på overflaten) avkjøles og krystalliserer. De klassifiseres etter to uavhengige kriterier: **dannelsesdyp (tekstur)** og **kjemisk sammensetning (silikainnhold)**.
+Trykkavlastning er et annet eksempel. Når isen som lå oppå berget forsvinner, kan berget skalle av i flak. Røtter i sprekker kan også kile berget.
 
-Dypbergart
+### Kjemisk forvitring
 
-#### Plutonisk
+Kjemisk forvitring endrer mineralene. Regn tar opp CO₂. Det dannes en svak karbonsyre som løser berg, og ioner av kalsium, magnesium, kalium og natrium frigjøres. Elvene fører ionene videre (NASA, 2011).
 
-Størkner kilometerlangt nede i jordskorpa, isolert av tykke overliggende bergmasser. Avkjølingen tar hundretusener av år. Atomene rekker å vokse til store, synlige mineralkorn (fanerittisk tekstur, &gt;1–5 mm).
+I granittisk sand skjer tapet i en bestemt rekkefølge. Hornblende forsvinner fortere enn plagioklas, og plagioklas fortere enn kalifeltspat. Til slutt blir kaolinitt og kvarts igjen (White et al., 1996).
 
-Eksempler: Granitt, gabbro, dioritt, larvikitt.
+Kalkstein i Oslofeltet ble avsatt i ordovicium og silur (NGU, u.å.-g). Kalkstein består av mer enn 50 prosent karbonater (NGU, u.å.-f). Karbonsyren løser også slikt berg. Hvordan ionene inngår i den trege karbonsløyfen, tar vi i [Jordsystemene](/geofag-1/jordsystemene).
 
-Gangbergart
+| | Forvitring | Erosjon |
+| --- | --- | --- |
+| Hva som skjer | Berg brytes ned | Materialet slites og flyttes |
+| Hvor | På stedet | Bort fra stedet |
+| Hva som flytter det | Ingenting. Fragmentene blir liggende | Vann, is eller tyngdekraft |
 
-#### Hypabyssal
+```widget
+ForvitringFoto
+```
 
-Størkner i tilførselsganger, sprekker og magmasprekker (diker og siller) på vei mot overflaten. Middels rask avkjøling gir ofte porfyrisk tekstur: store krystaller (fenokrystaller) omgitt av en finkornet grunnmasse.
+## Hva er magmatiske bergarter?
 
-Eksempler: Diabas, pegmatitt, porfyritt.
+Magmatisk bergart dannes når magma størkner. Det skjer i jordskorpa (dypbergart), i sprekker (gangbergart) eller på overflaten (dagbergart). Kjennetegn er korn og prikker (NGU, u.å.-k).
 
-Dagbergart
+Avkjølingen styrer kornstørrelsen. Når magma kjøles langsomt, vanligvis på dypet, vokser krystallene, og bergarten blir grovkornet. Når magma kjøles raskt, ved eller nær overflaten, blir krystallene svært små, og bergarten blir finkornet. Obsidian er vulkansk glass (USGS, u.å.-a).
 
-#### Vulkansk
+**Gabbro og basalt** har samme sammensetning. Gabbro er dypbergarten og består hovedsakelig av plagioklas og pyroksen. I Norge finnes store mengder i Lyngen og Jotunheimen (NGU, u.å.-b). Basalt er dagbergarten med samme kjemi og raskere avkjøling. Grønnstein er gabbro eller basalt som er omdannet, med kloritt, epidot og amfibol (NGU, u.å.-e). Da har den magmatiske bergarten flyttet seg til metamorf stasjon.
 
-Kastes ut eller flyter over bakken som lava i vulkanske utbrudd. Den brå temperaturforskjellen mot luft eller sjøvann gjør at krystallisasjonen skjer i løpet av dager eller uker. Finkornet (afanittisk) eller glassaktig.
+**Larvikitt og rombeporfyr** hører til Osloriften. For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen. Vulkanismen fortsatte inn i perm, og det ble dannet en riftdal (NGU, u.å.-c).
 
-Eksempler: Basalt, rombeporfyr, ryolitt, pimpstein.
+Larvikitt er en dypbergart med to typer feltspat, som kan gi fargespill. Den er dannet for cirka 290 millioner år siden, er oppkalt etter Larvik og finnes i Vestfold og Telemark. Den er Norges nasjonalbergart (NGU, u.å.-i).
 
-### Bowens reaksjonsserie — krystallisasjonens termodynamikk
+Rombeporfyr er en dagbergart, funnet fem steder på jorda, og en av Oslofeltets signaturbergarter. Store rombeformede lyse feltspatkrystaller ligger i en grålig til rødbrun grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten. NGU kaller den tvillingbroren til larvikitt, som størknet ferdig under overflaten (NGU, u.å.-l).
 
-I 1928 publiserte den canadiske geologen Norman L. Bowen sitt banebrytende verk *The Evolution of the Igneous Rocks* (Bowen, 1928). Gjennom laboratorieeksperimenter påviste han at mineraler ikke krystalliserer samtidig når en silikatsmelte kjøles ned, men i en strengt definert termodynamisk rekkefølge:
+Samme smeltefamilie, to steder: dypet og overflaten.
 
-![3D-fremstilling av Bowens reaksjonsserie fra 1200 til 600 grader celsius](/images/geo-bowens-reaksjonsserie-3d.jpg)
+## Hva er sedimentære bergarter?
 
-*Bowens reaksjonsserie og krystallisasjonssekvens — Venstre gren viser den diskontinuerlige serien av Fe-Mg-silikater (olivin → pyroksen → amfibol → biotitt), der mineralene reagerer med smelten og omdannes til en ny krystallstruktur. Høyre gren viser den kontinuerlige plagioklasserien, der kalsium gradvis byttes ut med natrium i samme krystallgitter. Ved lav temperatur møtes grenene i kalifeltspat, muskovitt og til slutt ren kvarts.*
+Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbonat fra organismer.
 
-### Norske nasjonalskatter: Larvikitt og Rombeporfyr
+**Sandstein** består hovedsakelig av kvarts og feltspat, kittet av kvarts, kalkspat eller jernforbindelser. Fargen går ofte fra gråhvit til rødbrun. Den er ikke svært vanlig på land i Norge, men finnes i Oslofeltet, på Vestlandet og i Trøndelag (NGU, u.å.-m).
 
-Norge har to verdenskjente magmatiske bergarter som ble dannet da det oppsto en massiv riftdal gjennom det som i dag kalles **Oslofeltet** for cirka 300–280 millioner år siden i perm-tiden (Ramberg et al., 2013):
+**Leirstein** er tett og meget finkornet. Leirskifer kan kløves i tynne flak. Den er dannet av leire og slam i innsjø eller hav. På land finnes den i Oslofeltet, Trøndelag og på Svalbard (NGU, u.å.-j).
 
-- **Larvikitt (Norges nasjonalbergart):** En monzonittisk dypbergart sammensatt nesten utelukkende av feltspater. Det særegne blåfiolette eller sølvblå fargespillet kalles *labradorescens* og skyldes mikroskopiske lameller av kalifeltspat og natriumrik plagioklas som avblandes under langsom avkjøling (kryptoperthitt). Larvikitt brytes i Larvik og eksporteres over hele verden som eksklusiv fasade- og monumentstein (NGU, u.å.-b).
+**Kalkstein** består av mer enn 50 prosent karbonater. Den er dannet ved forsteining og opphopning av organismer som skiller ut kalk, som koraller og alger, og inneholder ofte fossiler. De fleste kalksteiner i Norge er omdannet til marmor. Helt sedimentær kalkstein finnes i bassengene utenfor kysten. Svakt omdannet kalkstein finnes i Oslo-området og i Trøndelag (NGU, u.å.-f). I Oslofeltet ble kalkstein avsatt i ordovicium og silur (NGU, u.å.-g).
 
-- **Rombeporfyr:** En vulkansk dagbergart (lava) med karakteristiske båt- eller rombeformede fenokrystaller av feltspat liggende i en finkornet rødbrun eller grå grunnmasse. Rombeporfyrlavaer dekket store deler av Oslofeltet (Krokskogen, Vestfold) og er ekstremt sjeldne i verden: Utenom Oslofeltet finnes de bare på Mount Erebus i Antarktis og i Riftdalen i Øst-Afrika!
+## Hva er metamorfe bergarter?
 
-## Sedimentære bergarter — jordoverflatens historiebok
+En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy temperatur og/eller kjemisk påvirkning omdanner den til en ny bergart, uten at du leser den som en ny smelte. Kjennetegn er striper og folder (NGU, u.å.-k).
 
-Mens magmatiske og metamorfe bergarter utgjør over 90 prosent av jordskorpas samlede volum, dekker sedimentære bergarter og løsmasser over **75 prosent av jordas kontinentoverside**. Det er i de sedimentære bergartene vi finner fossiler, kull, olje, gass og grunnvannsmagasiner.
+Den kaledonske fjellkjededannelsen foregikk i ordovicium, silur og devon, for 400–500 millioner år siden. To landområder kolliderte, og store bergflak ble skjøvet (NGU, u.å.-c). Les mer om platekollisjon i [Platetektonikk](/geofag-1/platetektonikk).
 
-Sedimentære bergarter dannes gjennom en femtrinns prosess: Forvitring → Erosjon → Transport → Avsetning (sedimentasjon) → Diagenese (litifisering).
+**Fyllitt** har tydelig skifrighet og silkeglans på kløvflatene, og kornene er små. Den dannes ved lavgrads regional metamorfose av leire, og er meget vanlig i Norge (NGU, u.å.-a). Protolitten er leire. Stasjonen er lav metamorfose.
 
-1. Klastiske
+**Gneis** er mellom- til grovkornet, stripet eller bølget. Den har opprinnelig vært magmatisk eller sedimentær bergart. Den dominerer grunnfjellet i Sør-Norge og er dannet for mer enn 900 millioner år siden (NGU, u.å.-d). Kornene er synlige, og båndene er grovere enn i fyllitt.
 
-#### Fragmentbergarter
+**Grønnstein** er omdannet gabbro eller basalt (NGU, u.å.-e). Protolitten er magmatisk. Stasjonen er metamorf.
 
-Bygget opp av mekaniske bruddstykker (klaster) av eldre bergarter. Klassifiseres etter kornstørrelse: Leirskifer (&lt;0,002 mm), sandstein (0,063–2 mm), konglomerat (avrundede steiner &gt;2 mm) og breksje (skarpkantede steiner &gt;2 mm).
+## Hva er bergartssyklusen?
 
-2. Kjemiske
+```widget
+RockCycle
+```
 
-#### Utfelte salter
+Syklusen er en modell du bruker for å undersøke og forklare (Udir, u.å.-a). En bergart kan bli en annen. Ingen bergart må innom alle stasjonene.
 
-Dannes ved direkte kjemisk eller uorganisk utfelling av ioner oppløst i vann når vannet fordamper eller mettes. Eksempler er evaporitter som steinsalt (halitt, NaCl), gips (CaSO₄ · 2H₂O) og uorganisk kalktuff.
+Gneis i grunnfjellet i Sør-Norge ble dannet for mer enn 900 millioner år siden og er fortsatt metamorf (NGU, u.å.-d). Larvikitt har vært dypbergart siden den størknet for cirka 290 millioner år siden (NGU, u.å.-i). Kalkstein i Oslo-området kan være bare svakt omdannet, ikke marmor (NGU, u.å.-f). Å tolke inn i syklusen er å peke på stasjonen og på hvilken vei som er tatt, og hvilken som ikke er det.
 
-3. Biogene
+Forvitring og erosjon er overflateleddet, fra fast berg mot sediment. Størkning er veien fra magma til magmatisk bergart. Omdanning i fast tilstand er veien til metamorf bergart.
 
-#### Organiske bergarter
-
-Opphopning av biologiske rester fra levende organismer. Kalkstein dannes av skjell, koraller og mikroskopiske kalkalger (foraminiferer/kokkolitter). Kull dannes av sammenpressede planterester fra myrområder i oksygenfattige sumper.
-
-**Diagenese (litifisering)** omfatter alle kjemiske, fysiske og biologiske endringer som omdanner løst sediment til fast bergart etter avsetning, ved temperaturer under ca. 200 °C:
-
-1. **Kompaksjon:** Når nye sedimentlag legger seg oppå, øker vekten. Porerommet presses sammen, og vann presses ut. For leire kan volumet reduseres med opptil 60–80 %, slik at leirmineralene legger seg parallelt i tynne lag.
-
-2. **Sementering:** Grunnvann som sirkulerer gjennom de gjenværende porene er mettet på oppløste stoffer. Silika (SiO₂), kalsitt (CaCO₃) eller jernoksider felles ut og danner en kjemisk «sement» som kitter mineralkornene uløselig sammen.
-
-## Metamorfe bergarter og metamorfosefacies
-
-Metamorfose betyr «formforandring». En metamorf bergart oppstår når en opprinnelig bergart (magmatisk, sedimentær eller eldre metamorf) utsettes for et trykk (P), en temperatur (T) eller kjemisk aktive fluider som er vesentlig annerledes enn forholdene der den ble dannet. Det avgjørende premisset er at **omdanningen skjer i fast tilstand** — bergarten smelter ikke. Dersom bergarten smelter, overskrides granittisk solidus, og smelten vil ved avkjøling danne en ny magmatisk bergart.
-
-**Metamorf bergart:** Bergart omdannet i fast tilstand ved endret trykk, temperatur og fluidpåvirkning, uten full smelting. Rekrystallisering og nydanning av likevektsmineraler.
-
-### Foliasjon — beviset for rettet trykk
-
-Når bergarter utsettes for rettet tektonisk trykk (differensialtrykk) under en fjellkjedefolding, vil flakformede mineraler som glimmer og stavformede mineraler som amfibol rotere og vokse vinkelrett på den største trykkspenningen (σ₁). Dette skaper en planstruktur som kalles **foliasjon**. Økende metamorfosegrad av en opprinnelig leirskifer gir følgende metamorfe sekvens:
-
-Leirskifer (sediment)→Fyllitt (silkeaktig)→Glimmerskifer (synlig glimmer)→Båndgneis (bånddelt foliasjon)
-
-### Metamorfe facies i platetektoniske miljøer
-
-Et **metamorf facies** er en mineralsamling som opptrer i likevekt under et bestemt intervall av trykk og temperatur. Ved å kartlegge hvilke metamorfe mineraler som finnes i fjellet, kan geologen rekonstruere den eksakte dybden og temperaturhistorien til bergarten:
-
-![3D-blokkdiagram av metamorfe facies i subduksjonssoner og fjellkjedekollisjoner](/images/geo-metamorfose-facies-3d.jpg)
-
-*Metamorfe facies og platetektoniske P-T-gradienter — Subduksjon av en kald oseanbunnplate genererer høyt trykk under lave temperaturer: Dette gir blåskifer- og eklogittfacies. Kontinental kollisjon og fjellkjedefolding (orogenese) gir regionalmetamorfose med grønnskifer-, amfibolitt- og granulittfacies. Varm magma som trenger opp i overflateskorpen skaper kontaktmetamorfose (hornfels) ved lavt trykk og høy temperatur.*
-
-## Petrografi og tynnsnitt — bergartene under mikroskopet
-
-I håndstykke er det ofte umulig å skille mineraler som er mindre enn en halv millimeter. Det viktigste verktøyet i moderne petrologi er derfor **polarisasjonsmikroskopet**. Geologen sager ut en millimeter-tykk skive av bergarten, limer den på et objektglass og sliper den ned til en nøyaktig standardtykkelse på **30 mikrometer (0,030 mm)**. Ved denne tykkelsen er nesten alle silikater gjennomsiktige for lys.
-
-![Sammenligning av makroskopisk håndstykke og polarisasjonsmikroskopisk tynnsnitt under kryssede nicoler for larvikitt, sandstein og gneis](/images/geo-bergartstyper-tynnsnitt-3d.jpg)
-
-*Tynnsnittanalyse under kryssede nicoler (XPL) — Fra makroskopisk stein til mikroskopisk optikk. 1) Magmatisk larvikitt med karakteristiske tvillingstriper og perthittiske avblandingslameller i feltspat. 2) Klastisk sandstein med avrundede kvartskorn og sekundær silikasement. 3) Metamorf båndgneis med bølgende foliasjonslag, granater og høye interferensfarger i biotitt.*
-
-Mikroskopet bruker to polarisasjonsfiltre: En *polarisator* under prøven som slipper gjennom lys som svinger i ett plan, og en *analysator* over prøven som er vridd 90° i forhold til polarisatoren (kryssede nicoler, XPL). Når anisotrope mineralkrystaller roteres mellom filtrene, spaltes lyset i to stråler med ulik hastighet (dobbeltbrytning). Dette skaper praktfulle **interferensfarger** og karakteristiske **utslukningsvinkler** som gjør det mulig å identifisere mineraler med mikroskopisk presisjon.
-
-## Interaktiv modell: Petrologi i laboratoriet
-
-Bruk laboratoriemodellen under til å sammenligne håndstykke, tynnsnitt og dannelsesmiljø for magmatiske, sedimentære og metamorfe bergarter.
-
-## Geologisk tid og datering — relativ rekkefølge og absolutte årstall
-
-Geologien opererer med to fundamentalt forskjellige måter å bestemme alder på: **relativ alder** (hva skjedde før hva?) og **absolutt alder** (hvor mange millioner år siden skjedde det?).
-
-### De relative dateringsprinsippene
-
-De grunnleggende prinsippene for relativ datering ble først formulert av den danske naturforskeren Niels Stensen (Nicolaus Steno) i 1669:
-
-- **Superposisjonsprinsippet:** I en uforstyrret sedimentær lagrekke er det nederste laget alltid eldst, og lagene oppover blir suksessivt yngre.
-
-- **Krysskjæringsprinsippet:** En geologisk struktur (som en magmatisk gang, en forkastning eller en pluton) er alltid *yngre* enn de bergartene eller strukturene den skjærer gjennom.
-
-- **Inklusjonsprinsippet:** Fragmenter av bergarter (xenolitter i magma eller rullestein i konglomerat) er alltid *eldre* enn bergarten de er innesluttet i.
-
-En **diskordans** representerer et tidshull i den geologiske lagrekken. Det oppstår når sedimentasjon stopper opp, landskapet heves over havnivå og eroderes, før overflaten synker på nytt og nye sedimenter avsettes oppå den gamle erosjonsflaten.
-
-**Diskordans:** Erosjonsflate eller opphold i sedimentasjonen som representerer et betydelig tidshull mellom to lagrekker.
-
-### Radiometrisk datering — isotopenes atomur
-
-Absolutt datering bygger på radioaktivt henfall av ustabile isotoper. Henfallet er upåvirket av trykk, temperatur og kjemiske bindinger. Hastigheten uttrykkes ved isotopens **halveringstid (T½)** — tiden det tar før halvparten av de opprinnelige mor-atomene har henfalt til stabile datteratomer:
-
-N(t) = N₀ · (1/2)^(t / T½) = N₀ · e^(-λt)
-
-- **Uran-Bly (²³⁸U → ²⁰⁶Pb) i zirkon:** Halveringstid 4,47 milliarder år (Schoene, 2014). Mineralet zirkon (ZrSiO₄) er uhyre robust og tåler både forvitring og metamorfose. Når zirkonkrystallen vokser i magma, slipper U⁴⁺ inn i gitteret, mens bly (Pb²⁺) avvises på grunn av ioneradius og ladning. Alt bly i zirkon er dermed dannet etter krystallisasjonen. Dette systemet har datert Norges eldste grunnfjell i Lofoten og Finnmark til **2,8 milliarder år**.
-
-- **Karbon-14 (¹⁴C → ¹⁴N):** Halveringstid 5730 år (Godwin, 1962; Reimer et al., 2020). Dannes i atmosfæren ved kosmisk stråling og tas opp i levende organismer via fotosyntese og næringskjeder. Når organismen dør, opphører opptaket. Rekkevidden er maksimalt 50 000 år. *Karbon-14 kan aldri brukes til å datere gneis, granitt eller dinosaurer!*
-
-> **Kompetansemål (LK20 Geofag 1)**
+> **To vanlige misforståelser**
+>
+> 1. **Mineral og bergart er det samme.** Et mineral har kjemi og krystallstruktur. En bergart består av ett eller flere mineraler (NGU, u.å.-k). Test kornene, ikke steinen som helhet.
+> 2. **Alle bergarter går gjennom hele syklusen.** Modellen har flere veier. Gneis eldre enn 900 millioner år er fortsatt metamorf bergart (NGU, u.å.-d).
 
 ## Viktige begreper
 
-**Mineral:** Naturlig, uorganisk fast stoff med definert kjemisk formel og velordnet krystallgitter.
+**Mineral:** Naturlig, uorganisk fast stoff med bestemt kjemi og krystallstruktur. Kvarts er SiO₂.
 
-**Bergart:** Et naturlig aggregat sammensatt av ett eller flere mineraler, glass eller organisk materiale.
+**Bergart:** Fast fjell av ett eller flere mineraler.
 
-**Silikat:** Mineralgruppe basert på [SiO₄]⁴⁻-tetraedre; utgjør over 90 prosent av jordskorpen.
+**Sediment:** Løst materiale, som grus, sand og leire, før det er forsteinet.
 
-**Bowens reaksjonsserie:** Modell for rekkefølgen mineraler krystalliserer fra en silikatsmelte ved synkende temperatur.
+**Silikat:** Mineral bygget av silisium–oksygen-tetraeder. Gruppene skilles etter hvordan tetraedrene deler oksygen.
 
-**Diagenese:** Fysiske og kjemiske prosesser (kompaksjon og sementering) som forvandler løsmasser til fast bergart.
+**Mohs-skala:** Relativ ripehardhet for mineraler, fra talk 1 til diamant 10. Gjelder ett korn, ikke hele bergarten.
 
-**Foliasjon:** Planstruktur i metamorfe bergarter dannet ved at flakmineraler orienterer seg vinkelrett på trykket.
+**Magmatisk bergart:** Bergart dannet når magma størkner, som dypbergart, gangbergart eller dagbergart.
 
-**Metamorfosefacies:** Mineralsamling i kjemisk likevekt som gjenspeiler spesifikke trykk- og temperaturforhold.
+**Sedimentær bergart:** Forsteinet sediment. Kjennetegn er lagdeling, korn, fossiler og kitting.
 
-**Larvikitt:** Norges nasjonalbergart; monzonittisk dypbergart i Oslofeltet med karakteristisk labradorescens.
+**Metamorf bergart:** Eldre bergart omdannet av trykk, temperatur og/eller kjemisk påvirkning. Kjennetegn er striper og folder.
 
-**Rombeporfyr:** Sjelden lavabergart med rombeformede feltspatkrystaller, karakteristisk for Oslofeltet.
+**Forvitring:** Nedbrytning av berg på stedet, mekanisk eller kjemisk. Berget flyttes ikke.
 
-**Superposisjon:** Prinsippet om at det dypeste laget i en uforstyrret sedimentær lagrekke er eldst.
+**Erosjon:** Nedsliting pluss transport med vann, is eller tyngdekraft.
 
-**Krysskjæring:** En gang, forkastning eller intrusjon er alltid yngre enn bergartene den skjærer gjennom.
+**Skifrighet:** Plan struktur der bergarten spalter langs flak, som i fyllitt.
 
-**Halveringstid:** Tiden det tar før halvparten av en radioaktiv morisotop har henfalt til stabile datteratomer.
+**Protolitt:** Bergarten som ble omdannet. For fyllitt er det leire. For grønnstein er det gabbro eller basalt.
+
+**Bergartssyklus:** Modell for hvordan magma, sediment og de tre bergartsgruppene kan gå over i hverandre. Ingen bergart må innom alle stasjonene.
 
 ## Test deg selv
+
+```widget
+QuizBergarter
+```
