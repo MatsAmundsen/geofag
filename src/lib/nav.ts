@@ -201,7 +201,7 @@ export const GF2_THEMES = [
     image: "/images/tema-milankovitch.jpg",
     alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
     blurb:
-      "Hvorfor isen kommer: Milankovitch, 65 °N, albedo og CO₂. Weichsel sluttet for 11 700 år siden — sporene ligger i fjord og Raet.",
+      "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. De tre svingningene forklarer ikke oppvarmingen vi ser nå.",
     status: "klar" as const,
   },
   {
