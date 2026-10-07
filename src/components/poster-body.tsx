@@ -16,6 +16,8 @@ import {
   EarthLayersDiagram,
   EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
+  JordasBolgerDiagram,
+  PartikkelbolgerDiagram,
   HotspotPlumeDiagram,
   NorwayEarthquakesDiagram,
   NorwayTectonicsHistoryDiagram,
@@ -179,7 +181,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
   ElasticRebound: () => <ElasticReboundDiagram />,
+  Partikkelbolger: () => <PartikkelbolgerDiagram />,
   EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,
+  JordasBolger: () => <JordasBolgerDiagram />,
   Seismogram: () => <SeismogramDiagram />,
   BoundaryQuakes: () => <BoundaryQuakesDiagram />,
   NorwayEarthquakes: () => <NorwayEarthquakesDiagram />,
