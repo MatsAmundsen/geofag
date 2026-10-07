@@ -233,8 +233,8 @@ export const QUIZ_ISTIDER: QuizQuestion[] = [
   {
     prompt: "Hva gjør minkende skråstilling med somrene på høye breddegrader?",
     options: [
-      "Sommene blir kjøligere, så snø og is kan bygge seg opp.",
-      "Sommene blir varmere, så all is smelter med en gang.",
+      "Somrene blir kjøligere, så snø og is kan bygge seg opp.",
+      "Somrene blir varmere, så all is smelter med en gang.",
       "Årstidene forsvinner, fordi aksen slutter å helle.",
     ],
     answer: 0,
@@ -549,7 +549,7 @@ export const QUIZ_IOD: QuizQuestion[] = [
   {
     prompt: "Hva er den indiske hav-dipolen?",
     options: [
-      "Vedvarende forskjell i havtemperatur mellom vest og øst i det tropiske Indiahavet.",
+      "Vedvarende forskjell i havtemperatur mellom vest og øst i den tropiske delen av Det indiske hav.",
       "Et annet navn på El Niño.",
       "Trykkvippen mellom Asorene og Island.",
     ],
@@ -580,13 +580,12 @@ export const QUIZ_IOD: QuizQuestion[] = [
   {
     prompt: "Er dipolen det samme som ENSO?",
     options: [
-      "Nei. Saji og medforfattere fant et mønster som er uavhengig av ENSO.",
+      "Nei. Det er et eget mønster i Det indiske hav, men det opptrer ofte sammen med El Niño.",
       "Ja. Positiv IOD er El Niño.",
       "Ja. Negativ IOD er La Niña.",
     ],
     answer: 0,
-    explain:
-      "Se «Vanlige misforståelser». Mønsteret er en indre variasjon i Indiahavet og er uavhengig av ENSO.",
+    explain: "Se «Vanlige misforståelser». Positiv IOD faller ofte, ikke alltid, sammen med El Niño.",
   },
   {
     prompt: "Når topper en IOD-hendelse seg vanligvis?",
@@ -775,13 +774,14 @@ export const QUIZ_KLIMA: QuizQuestion[] = [
   {
     prompt: "Hvilke fem deler består klimasystemet av?",
     options: [
-      "Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren.",
-      "Bare atmosfæren og havet.",
-      "Bare is, land og livet.",
+      "Atmosfæren, hydrosfæren, kryosfæren, landoverflaten og biosfæren.",
+      "Atmosfæren, hydrosfæren, kryosfæren og biosfæren.",
+      "Atmosfæren, hydrosfæren, kryosfæren, landoverflaten og magnetosfæren.",
+      "Atmosfæren, hydrosfæren, landoverflaten, biosfæren og jordkjernen.",
     ],
     answer: 0,
     explain:
-      "Se «Hva er klimasystemet?». WMO beskriver de fem delene, og samspillet mellom dem.",
+      "Se «Hva er klimasystemet?». Klimasystemet består av atmosfæren, hydrosfæren, kryosfæren, landoverflaten (litosfæren) og biosfæren.",
   },
   {
     prompt: "Hva skiller indre dynamikk fra ytre pådriv?",
@@ -793,12 +793,6 @@ export const QUIZ_KLIMA: QuizQuestion[] = [
     answer: 0,
     explain:
       "Se «Hva er klimasystemet?». Systemet endrer seg både av egen indre dynamikk og av ytre pådriv.",
-  },
-  {
-    prompt: "Hvor i dette kapitlet ligger stråling, pådriv og tilbakekobling?",
-    options: ["I oversikten.", "På ENSO-siden.", "På AMOC-siden."],
-    answer: 0,
-    explain: "Se tabellen. Oversikten eier stråling, pådriv og tilbakekobling. Denne siden er kartet.",
   },
   {
     prompt: "Hvilken svingning ligger nærmest norsk vintervær?",
@@ -1714,12 +1708,11 @@ export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
     prompt: "Hvorfor kalles Ferrel-cellen termisk indirekte?",
     options: [
       "Fordi den bare finnes om sommeren.",
-      "Fordi den drives av friksjon mellom de to andre cellene, ikke av varmekontrasten mellom ekvator og pol.",
+      "Fordi lufta synker nær 30° og stiger nær 50–60°, motsatt av en celle som drives direkte av oppvarming.",
       "Fordi den frakter kulde fra ekvator mot polene.",
     ],
     answer: 1,
-    explain:
-      "NOAA beskriver vestavinden mellom 35° og 60° som drevet av friksjon, ikke av varmekontrasten mellom ekvator og polene.",
+    explain: "Se tabellen. Ferrel-cellen drives av vandrende lavtrykk og høytrykk, ikke direkte av oppvarming.",
   },
   {
     prompt:

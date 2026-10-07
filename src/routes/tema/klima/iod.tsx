@@ -28,8 +28,8 @@ function IodPage() {
       kicker="Geofag 2 · Klimasystemet"
       title="IOD: Den indiske hav-dipolen"
       lead={LEAD}
-      banner="/images/fig-iod-positiv.png"
-      bannerAlt="Positiv IOD: varmere hav utenfor Øst-Afrika, kaldere utenfor Indonesia"
+      banner="/images/banner-hav.jpg"
+      bannerAlt="Havoverflate sett ovenfra"
       prev={{ to: "/tema/klima/enso", label: "Forrige: ENSO" }}
       next={{ to: "/tema/klima/nao", label: "Neste: NAO" }}
       kilder={KILDER.iod}

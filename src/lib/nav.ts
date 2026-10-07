@@ -161,7 +161,7 @@ export const GF2_THEMES = [
     image: "/images/banner-klima.jpg",
     alt: "Grønlands innlandsis mot mørkt polarhav",
     blurb:
-      "Kart over klimasystemet. Oversikten eier stråling og tilbakekobling. ENSO, IOD, NAO og AMOC eier svingningene.",
+      "Kart over klimasystemet. Stråling og tilbakekobling står i oversikten. ENSO, IOD, NAO og AMOC har hver sin side.",
     status: "klar" as const,
   },
   {
@@ -171,7 +171,7 @@ export const GF2_THEMES = [
     image: "/images/fig-albedo.jpg",
     alt: "Is og snø mot mørkt hav — albedoen som styrer massebalansen i år",
     blurb:
-      "Massebalanse, permafrost, havis og snøskred. Istidene ligger i paleo. Her er isen som jobber i år.",
+      "Breer, permafrost, havis og snø, og snøskredvarselet. Istidene står i paleoklima og istider.",
     status: "klar" as const,
   },
   {
@@ -191,7 +191,7 @@ export const GF2_THEMES = [
     image: "/images/fig-paleo.jpg",
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
-      "Slik leser vi fortiden: proxy, iskjerne, δ¹⁸O og brå hopp. Banen og sporene i Norge ligger i neste kapittel.",
+      "Slik leser vi fortiden: CO₂-målinger fra Mauna Loa, iskjerner, oksygenisotoper og havis fra satellitt. Jordbanen står i neste kapittel.",
     status: "klar" as const,
   },
   {
@@ -422,8 +422,8 @@ export const KLIMA_SUBTHEMES = [
     title: "IOD",
     subtitle: "Den indiske hav-dipolen",
     kicker: "Det indiske hav",
-    image: "/images/fig-iod-positiv.png",
-    alt: "Positiv IOD: varmere hav utenfor Øst-Afrika, kaldere utenfor Indonesia",
+    image: "/images/banner-hav.jpg",
+    alt: "Havoverflate sett ovenfra",
     blurb:
       "Temperaturgradienten i Det indiske hav. Positiv og negativ fase, samspill med monsunen og ekstreme tørke- og flomperioder.",
     status: "klar" as const,
@@ -447,7 +447,7 @@ export const KLIMA_SUBTHEMES = [
     image: "/images/fig-amoc.jpg",
     alt: "Nord-Atlanteren med varm overflatestrøm nordover og kald dypstrøm sørover",
     blurb:
-      "Havets store transportbånd. Dypvannsdannelse i Norskehavet og Labradorhavet, ferskvannspådrag, stabilitet og klimaeffekt for Norge.",
+      "Havets store transportbånd: veien rundt jorda, hvorfor ferskvann kan bremse det, og hva IPCC sier om svekkelse.",
     status: "klar" as const,
   },
 ] as const;

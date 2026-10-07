@@ -54,16 +54,6 @@ export const NAV_BY_PATH: Record<string, { prev?: NavLink; next?: NavLink }> = {
 
 /** Eierskap øverst på sidene som ellers ville krevd 50 kB-redigering. */
 export const EIERSKAP_BY_PATH: Record<string, string> = {
-  "/tema/klima/enso":
-    "Oversikten eier stråling, pådriv og tilbakekobling. Denne siden eier Walker-cellen, El Niño og La Niña. IOD, NAO og AMOC eier de andre svingningene.",
-  "/tema/klima/iod":
-    "ENSO eier Stillehavet. Denne siden eier temperaturgradienten i Det indiske hav. Strålingsbudsjettet ligger i oversikt.",
-  "/tema/klima/nao":
-    "Denne siden eier trykkvippen mellom Asorene og Island, og virkningen på Nord-Europa. AMOC eier det trege havbeltet. Oversikten eier pådriv.",
-  "/tema/paleoklima":
-    "Denne siden eier arkivene: direkte CO₂-målinger og iskjerner. Neste kapittel eier jordbanen. Kryosfæren eier isen som jobber i år.",
-  "/tema/milankovitch":
-    "Denne siden eier hvorfor isen kommer: de tre svingningene i jordbanen. Paleoklima eier hvordan vi leser sporene. Kryosfæren eier dagens massebalanse.",
   "/geofag-1/platetektonikk":
     "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier seismisitet, bølger og Wadati-Benioff. Norges geologi eier Leka-ofiolitten, Kaledonidene og Oslofeltet.",
   "/geofag-1/jordskjelv":
@@ -73,12 +63,6 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {
-  "/tema/vaerkart": [GEMINI.vaerkartSynoptisk, GEMINI.vaerkart24t],
-  "/tema/lokale-vaersystemer": [GEMINI.polarfrontStadier],
-  "/tema/numeriske-modeller": [GEMINI.modellerGrid, GEMINI.modellerParam, GEMINI.modellerEnsemble],
-  "/tema/kryosfaeren": [GEMINI.kryoMassebalanse, GEMINI.kryoFlakskred],
-  "/tema/energi-hav-luft": [GEMINI.energiOversikt],
-  "/tema/klima/nao": [GEMINI.naoRossby, GEMINI.naoIndeks],
   "/geofag-1/bergarter-og-landformer": [GEMINI.bergartssyklus, GEMINI.relativDatering, GEMINI.kornfordeling],
   "/geofag-1/feltarbeid": [GEMINI.feltbokUtfylt],
 };
