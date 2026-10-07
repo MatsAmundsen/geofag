@@ -364,9 +364,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-ressurser.jpg",
     alt: "Dagbrudd i fjellandskap i kveldslys",
     blurb:
-      "Malm, pukk, naturstein, olje og gass. Danning, kartlegging, utvinning og bærekraft. Engebø er en drøfting, ikke et fasitsvar.",
+      "Malm, naturstein, pukk og petroleum. Danning, kartlegging, utvinning og konsekvenser. Grunnvann nevnes og tas i Vann og flom.",
     status: "klar" as const,
-    maal: "Utvinning av geologiske ressurser i et bærekraftsperspektiv.",
+    maal: "Danning, kartlegging og utvinning av geologiske ressurser, og konsekvenser i et bærekraftsperspektiv.",
   },
   {
     slug: "feltarbeid",
@@ -374,11 +374,11 @@ export const GF1_THEMES = [
     title: "Feltarbeid",
     kicker: "Data i felt",
     image: "/images/fig-forvitring.jpg",
-    alt: "Forvitret blotning — felt i geosfæren, ikke samme foto som bergartssiden",
+    alt: "Blotning i fjell. Felt i geosfæren.",
     blurb:
-      "Planlegge, samle georefererte data, ivareta HMS, bearbeide, tolke og presentere. Feltboka er primærkilden.",
+      "Samle data i geosfæren eller hydrosfæren, bearbeide, tolke og presentere. Lokale observasjoner av berggrunn, løsmasser og jordarter.",
     status: "klar" as const,
-    maal: "Geofaglig feltarbeid i geosfære eller hydrosfære.",
+    maal: "Geofaglig feltarbeid i geosfæren eller hydrosfæren.",
   },
 ] as const;
 

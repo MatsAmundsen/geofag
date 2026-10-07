@@ -214,6 +214,19 @@ describe("scan chips for the other geosfære chapters", () => {
     );
   });
 
+  it("labels Geologiske ressurser and Feltarbeid with short topic chips", () => {
+    const ressurser = prepareChapterScan(readChapter("geologiske-ressurser"));
+    assert.deepEqual(
+      ressurser.sections.map((section) => section.label),
+      ["Ressurs", "Malm", "Stein", "Norge", "Konsekvenser", "Begreper", "Quiz"],
+    );
+    const felt = prepareChapterScan(readChapter("feltarbeid"));
+    assert.deepEqual(
+      felt.sections.map((section) => section.label),
+      ["Felt", "Spørsmål", "Tolkning", "Presentasjon", "Begreper", "Quiz"],
+    );
+  });
+
   it("labels Vann og flom with short topic chips", () => {
     const doc = prepareChapterScan(readChapter("vann-og-flom"));
     assert.deepEqual(

@@ -170,6 +170,20 @@ describe("injectPosterWidgets", () => {
     for (const id of ["ForvitringForklaring", "ForvitringFoto", "RockCycle", "QuizBergarter"]) {
       assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
     }
+    const ressurser = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/geologiske-ressurser.md"), "utf8")),
+    );
+    const felt = listedWidgetIds(
+      injectPosterWidgets(readFileSync(join(lib, "posts/feltarbeid.md"), "utf8")),
+    );
+    for (const id of ["MalmForklaring", "QuizGeologiskeRessurser"]) {
+      assert.equal(ressurser.has(id), true, `ressurser missing ${id}`);
+    }
+    for (const id of ["FeltarbeidForklaring", "QuizFeltarbeid"]) {
+      assert.equal(felt.has(id), true, `feltarbeid missing ${id}`);
+    }
+    assert.equal(ressurser.has("QuizFeltarbeid"), false);
+    assert.equal(felt.has("QuizGeologiskeRessurser"), false);
     const vann = listedWidgetIds(
       injectPosterWidgets(readFileSync(join(lib, "posts/vann-og-flom.md"), "utf8")),
     );
@@ -182,6 +196,8 @@ describe("injectPosterWidgets", () => {
     assert.equal(bergarter.has("BowenReactionSeries"), false);
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVulkaner"));
     assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizVannOgFlom"));
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizGeologiskeRessurser"));
+    assert.ok(CHAPTER_SCAN_WIDGET_IDS.includes("QuizFeltarbeid"));
   });
 });
 

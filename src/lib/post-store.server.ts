@@ -470,6 +470,16 @@ const COPY_RESEEDS: { flag: string; slug: string; stale: string[] }[] = [
     stale: ["1450- 1650C", "Ridge push"],
   },
   {
+    flag: "geologiske-ressurser-copy-2026-10-07",
+    slug: "geologiske-ressurser",
+    stale: ["Her kan du redigere", "Engebø"],
+  },
+  {
+    flag: "feltarbeid-copy-2026-10-07",
+    slug: "feltarbeid",
+    stale: ["Her kan du redigere", "Vestland"],
+  },
+  {
     flag: "skred-copy-2026-10-07",
     slug: "skred",
     stale: ["Her kan du redigere", "Ormen Lange"],

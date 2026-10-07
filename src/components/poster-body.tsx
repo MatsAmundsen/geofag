@@ -67,6 +67,8 @@ import {
 import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
+  QUIZ_FELTARBEID,
+  QUIZ_GEOLOGISKE_RESSURSER,
   QUIZ_SKRED,
   QUIZ_HOYTRYKK,
   QUIZ_JORDSKJELV,
@@ -290,6 +292,32 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizJordsystemene: () => (
     <Quiz questions={QUIZ_JORDSYSTEMENE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  MalmForklaring: () => (
+    <Callout title="Hva betyr «malm»?">
+      <p>
+        Malm er en bergart som inneholder ett eller flere mineraler eller grunnstoffer i økonomisk
+        drivverdige mengder.
+      </p>
+    </Callout>
+  ),
+  QuizGeologiskeRessurser: () => (
+    <Quiz
+      questions={QUIZ_GEOLOGISKE_RESSURSER}
+      heading={null}
+      intro="Velg ett svar per spørsmål."
+    />
+  ),
+  FeltarbeidForklaring: () => (
+    <Callout title="Hva betyr «feltarbeid»?">
+      <p>
+        Feltarbeid er innsamling av data i en undersøkelse. I geologi kan det være å samle
+        steinprøver.
+      </p>
+    </Callout>
+  ),
+  QuizFeltarbeid: () => (
+    <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 
