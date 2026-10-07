@@ -68,6 +68,7 @@ import {
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
 import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import {
   AvsetningsformerDiagram,
   BotnEggTindDiagram,
@@ -89,6 +90,7 @@ import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
+import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import {
   EARTH_LAYERS_PHOTO_SRC,
@@ -112,6 +114,7 @@ import {
   QUIZ_OFIOLITT_WILSON,
   QUIZ_TEST_DEG_SELV,
   QUIZ_ISBRE,
+  QUIZ_KLIMA,
   QUIZ_VANN_OG_FLOM,
   QUIZ_VULKANER,
   QUIZ_LOKALE,
@@ -574,6 +577,44 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizFeltarbeid: () => (
     <Quiz questions={QUIZ_FELTARBEID} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  KlimaForklaring: () => (
+    <Callout title="Hva betyr «klimasystemet»?">
+      <p>
+        Klimasystemet er atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren, og samspillet
+        mellom dem. Utveksling av energi, vann og karbondioksid bestemmer klimamønstre og variasjon
+        (WMO, u.å.).
+      </p>
+    </Callout>
+  ),
+  KlimaKart: () => (
+    <div className="my-8 grid gap-4 sm:grid-cols-2">
+      {KLIMA_SUBTHEMES.map((sub) => (
+        <Link
+          key={sub.to}
+          to={sub.to}
+          className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/50 hover:shadow-md"
+        >
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">{sub.kicker}</p>
+            <h3 className="mt-1 font-display text-xl font-medium tracking-tight group-hover:text-primary">
+              {sub.title}
+            </h3>
+            {"subtitle" in sub && sub.subtitle ? (
+              <p className="text-xs text-muted-foreground">{sub.subtitle}</p>
+            ) : null}
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{sub.blurb}</p>
+          </div>
+          <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+            Åpne
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        </Link>
+      ))}
+    </div>
+  ),
+  QuizKlima: () => (
+    <Quiz questions={QUIZ_KLIMA} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 };
 
