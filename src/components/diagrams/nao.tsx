@@ -64,10 +64,10 @@ export function NaoInteractiveSimulator() {
         }
         caption={
           phase === "positive"
-            ? "Under NAO+ er trykkgradienten mellom Azorhøytrykket og Islandslavtrykket ekstra bratt (ofte >50 hPa). Den geostrofiske kraftbalansen gir en sterk, rett og sonal polarjet som trekkes nordover. Stormbanen peker som en spyletråle mot Vestlandet og Nordvest-Europa, med store mengder mild atlantisk fuktighet, orografisk regn og kraftig vind. Middelhavet domineres av stabilt høytrykk med tørt vær og tørkefare."
+            ? "Under NAO+ er trykkgradienten mellom Azorhøytrykket og Islandslavtrykket ekstra bratt. Den geostrofiske kraftbalansen gir en sterk, rett og sonal polarjet som trekkes nordover. Stormbanen peker som en spyletråle mot Vestlandet og Nordvest-Europa, med store mengder mild atlantisk fuktighet, orografisk regn og kraftig vind. Middelhavet domineres av stabilt høytrykk med tørt vær og tørkefare."
             : phase === "neutral"
             ? "I nøytral tilstand er trykkforskjellen gjennomsnittlig (~20–25 hPa). Polarjeten har moderate bølger, og stormene følger den klassiske ruten over Nord-Atlanteren mot De britiske øyer, Nordsjøen og Skandinavia med typisk vekslende kystvær."
-            : "Under NAO− svekkes både Islandslavtrykket og Azorhøytrykket kraftig. Den svake trykkgradienten gjør at polarjeten mister moment og meandrerer i dype planetære Rossby-bølger. Et mektig kvasistasjonært høytrykk (blokkering) etablerer seg ofte over Skandinavia eller Grønland, og tvinger lavtrykkene sørover mot Spania og Middelhavet. Norge opplever tørr, iskald kontinentalluft fra Sibir/Arktis."
+            : "Under NAO− svekkes både Islandslavtrykket og Azorhøytrykket kraftig. Den svake trykkgradienten gjør at polarjeten mister moment og meandrerer i dype planetære Rossby-bølger. Et mektig høytrykk som ligger nesten i ro (blokkering), etablerer seg ofte over Skandinavia eller Grønland, og tvinger lavtrykkene sørover mot Spania og Middelhavet. Norge opplever kald, tørr kontinentalluft fra Russland og Nordishavet."
         }
       >
         <svg
@@ -141,7 +141,7 @@ export function NaoInteractiveSimulator() {
             stroke={phase === "positive" ? "#f87171" : "#38bdf8"}
             strokeWidth={phase === "positive" ? "1.8" : "1.2"}
           />
-          <text x="470" y="152" fill="#e2e8f0" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>Island</text>
+          <text x="436" y="158" fill="#e2e8f0" fontSize="11" fontWeight="800" textAnchor="end" fontFamily={font}>Island</text>
 
           {/* De britiske øyer (UK / Irland) */}
           <path
@@ -159,7 +159,7 @@ export function NaoInteractiveSimulator() {
             stroke={phase === "positive" ? "#2dd4bf" : phase === "negative" ? "#38bdf8" : "#475569"}
             strokeWidth="1.5"
           />
-          <text x="740" y="145" fill={phase === "positive" ? "#2dd4bf" : "#7dd3fc"} fontSize="13" fontWeight="800" textAnchor="middle" fontFamily={font}>
+          <text x={phase === "negative" ? 688 : 740} y={phase === "negative" ? 122 : 145} fill={phase === "positive" ? "#2dd4bf" : "#7dd3fc"} fontSize="13" fontWeight="800" textAnchor={phase === "negative" ? "end" : "middle"} fontFamily={font}>
             Norge
           </text>
 
@@ -177,7 +177,7 @@ export function NaoInteractiveSimulator() {
           <circle cx="380" cy="405" r="4" fill="#f59e0b" />
           <circle cx="390" cy="402" r="3" fill="#f59e0b" />
           <circle cx="370" cy="408" r="2.5" fill="#f59e0b" />
-          <text x="380" y="426" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="middle" fontFamily={font}>Azorene</text>
+          <text x="430" y="410" fill="#f59e0b" fontSize="11" fontWeight="700" textAnchor="start" fontFamily={font}>Azorene</text>
 
           {/* ── FASE 1: POSITIV NAO (NAO+) ── */}
           {phase === "positive" && (
@@ -192,8 +192,8 @@ export function NaoInteractiveSimulator() {
                 </g>
                 <circle cx="0" cy="0" r="24" fill="#1c1917" stroke="#ef4444" strokeWidth="2.5" />
                 <text x="0" y="7" fill="#ef4444" fontSize="19" fontWeight="900" textAnchor="middle" fontFamily={font}>L</text>
-                <text x="0" y="38" fill="#fca5a5" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>Dypere lavtrykk</text>
-                <text x="0" y="50" fill="#fca5a5" opacity="0.8" fontSize="10" textAnchor="middle" fontFamily={font}>Dypere enn normalt</text>
+                <text x="0" y="-45" fill="#fca5a5" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>Dypere lavtrykk</text>
+                <text x="0" y="-32" fill="#fca5a5" opacity="0.8" fontSize="10" textAnchor="middle" fontFamily={font}>Dypere enn normalt</text>
               </g>
 
               {/* Kraftig Azor-høytrykk (H) med roterende antisyklon-isobarer */}
@@ -362,11 +362,11 @@ export function NaoInteractiveSimulator() {
                 <circle cx="0" cy="0" r="25" fill="#0c2333" stroke="#38bdf8" strokeWidth="2.5" />
                 <text x="0" y="8" fill="#38bdf8" fontSize="20" fontWeight="900" textAnchor="middle" fontFamily={font}>H</text>
                 <text x="0" y="38" fill="#bae6fd" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>BLOKKERING</text>
-                <text x="0" y="50" fill="#7dd3fc" fontSize="10" textAnchor="middle" fontFamily={font}>Kald luft fra øst</text>
+                <text x="0" y="55" fill="#7dd3fc" fontSize="10" textAnchor="middle" fontFamily={font}>Kald luft fra øst</text>
               </g>
 
               <path d="M 880 120 Q 820 130 780 150" stroke="#38bdf8" strokeWidth="3" markerEnd={`url(#${uid}-arrow-cold)`} />
-              <text x="830" y="110" fill="#bae6fd" fontSize="11" fontWeight="800" fontFamily={font}>Arktisk kuldeluft ➔</text>
+              <text x="915" y="152" fill="#bae6fd" fontSize="11" fontWeight="800" textAnchor="end" fontFamily={font}>Arktisk kuldeluft ➔</text>
 
               {/* Meandrerende jetstrøm sørover mot Middelhavet */}
               <path
@@ -423,7 +423,7 @@ export function NaoInteractiveSimulator() {
                 <line x1="12" y1="20" x2="8" y2="34" stroke="#38bdf8" strokeWidth="2" strokeDasharray="2 2" />
                 <line x1="22" y1="20" x2="18" y2="34" stroke="#38bdf8" strokeWidth="2" strokeDasharray="2 2" />
                 <line x1="32" y1="20" x2="28" y2="34" stroke="#38bdf8" strokeWidth="2" strokeDasharray="2 2" />
-                <text x="22" y="44" fill="#bae6fd" fontSize="9" fontWeight="800" textAnchor="middle" fontFamily={font}>Flomfare</text>
+                <text x="52" y="24" fill="#bae6fd" fontSize="9" fontWeight="800" textAnchor="start" fontFamily={font}>Flomfare</text>
               </g>
 
               <rect x="680" y="55" width="220" height="52" rx="6" fill="#0f2638" stroke="#38bdf8" strokeWidth="1.5" />
@@ -484,7 +484,7 @@ export function NaoPhasesComparisonDiagram() {
     <Diagram
       title="Positiv vs. negativ NAO: Den atmosfæriske trykkvippen"
       heading="Figur 1. Positiv og negativ NAO over Nord-Atlanteren"
-      caption="Venstre panel (NAO+): Bratt trykkgradient mellom et forsterket dypt Islandslavtrykk og et mektig Azorhøytrykk. Polarjeten og stormbanen danner en sonal motorvei rett mot Vestlandet med mildt, vindfullt vær og store nedbørmengder, mens Middelhavet opplever tørke. Høyre panel (NAO−): Svak trykkgradient gjør polarjeten ustabil og meandrerende. Et mektig kvasistasjonært høytrykk (blokkering) etablerer seg over Skandinavia og trekker kald, tørr luft inn over Norge, mens stormbanen presses sørover mot Middelhavet."
+      caption="Venstre panel (NAO+): Bratt trykkgradient mellom et forsterket dypt Islandslavtrykk og et mektig Azorhøytrykk. Polarjeten og stormbanen danner en sonal motorvei rett mot Vestlandet med mildt, vindfullt vær og store nedbørmengder, mens Middelhavet opplever tørke. Høyre panel (NAO−): Svak trykkgradient gjør polarjeten ustabil og meandrerende. Et mektig høytrykk som ligger nesten i ro (blokkering), etablerer seg over Skandinavia og trekker kald, tørr luft inn over Norge, mens stormbanen presses sørover mot Middelhavet."
       viewBox="0 0 920 440"
       wide
     >
@@ -504,7 +504,7 @@ export function NaoPhasesComparisonDiagram() {
 
           {/* Island */}
           <path d="M 195 130 C 225 125, 240 135, 235 150 C 215 160, 195 150, 195 130 Z" fill="#203444" stroke="#ef4444" strokeWidth="1.5" />
-          <L x="215" y="145" fill="#fca5a5" size={9} weight={800} anchor="middle">Island</L>
+          <L x="172" y="149" fill="#fca5a5" size={9} weight={800} anchor="end">Island</L>
 
           {/* Norge / Skandinavia */}
           <path d="M 330 90 C 355 85, 375 105, 385 140 C 370 170, 350 180, 340 160 Z" fill="#1b3935" stroke="#2dd4bf" strokeWidth="1.5" />
@@ -566,11 +566,11 @@ export function NaoPhasesComparisonDiagram() {
           <L x="570" y="115" fill={C.muted} size={10} weight={700} anchor="middle">Grønland</L>
 
           <path d="M 645 130 C 675 125, 690 135, 685 150 C 665 160, 645 150, 645 130 Z" fill="#203444" stroke={C.dim} />
-          <L x="665" y="145" fill={C.muted} size={9} weight={700} anchor="middle">Island</L>
+          <L x="642" y="149" fill={C.muted} size={9} weight={700} anchor="end">Island</L>
 
           {/* Norge / Skandinavia under NAO− */}
           <path d="M 780 90 C 805 85, 825 105, 835 140 C 820 170, 800 180, 790 160 Z" fill="#162739" stroke="#38bdf8" strokeWidth="1.5" />
-          <L x="810" y="135" fill="#7dd3fc" size={11} weight={800} anchor="middle">Norge</L>
+          <L x="805" y="196" fill="#7dd3fc" size={11} weight={800} anchor="middle">Norge</L>
 
           <path d="M 740 185 C 755 180, 765 195, 760 215 C 745 220, 735 205, 740 185 Z" fill="#1a2835" stroke={C.dim} />
 
@@ -590,11 +590,10 @@ export function NaoPhasesComparisonDiagram() {
           <circle cx="805" cy="140" r="38" fill="#0c2333" stroke="#38bdf8" strokeWidth="2.2" />
           <L x="805" y="147" fill="#38bdf8" size={20} weight={900} anchor="middle">H</L>
           <L x="805" y="170" fill="#bae6fd" size={10} weight={800} anchor="middle">BLOKKERING</L>
-          <L x="805" y="183" fill="#7dd3fc" size={9} anchor="middle">H</L>
 
-          {/* Sibirkulde-pil */}
+          {/* Pil: kald luft fra øst */}
           <Arrow d="M 880 110 L 835 125" marker={m.cold} color="#38bdf8" width={2.5} />
-          <L x="860" y="105" fill="#bae6fd" size={9} weight={800}>Sibirkulde ➔</L>
+          <L x="900" y="96" fill="#bae6fd" size={9} weight={800} anchor="end">Kald luft fra øst ➔</L>
 
           {/* Meandrerende jet NAO− */}
           <path d="M 500 240 C 580 240, 630 160, 700 170 C 760 180, 750 300, 840 310" fill="none" stroke="#38bdf8" strokeWidth="13" opacity="0.22" strokeLinecap="round" />
@@ -661,7 +660,7 @@ export function NaoDomainDiagram() {
 
           {/* Island */}
           <path d="M 210 150 C 235 145, 250 155, 245 170 C 230 180, 210 170, 210 150 Z" fill="#203444" stroke="#ef4444" strokeWidth="1.5" />
-          <L x="230" y="165" fill="#fca5a5" size={10} weight={800} anchor="middle">Island</L>
+          <L x="202" y="169" fill="#fca5a5" size={10} weight={800} anchor="end">Island</L>
 
           {/* Norge / Skandinavia */}
           <path d="M 370 100 C 400 95, 430 120, 440 170 C 415 200, 390 205, 380 180 Z" fill="#1b3935" stroke="#2dd4bf" strokeWidth="1.6" />
@@ -670,7 +669,7 @@ export function NaoDomainDiagram() {
 
           {/* UK */}
           <path d="M 315 205 C 330 200, 345 215, 340 235 C 325 240, 310 225, 315 205 Z" fill="#1a2835" stroke={C.dim} />
-          <L x="330" y="222" fill={C.muted} size={9} anchor="middle">UK</L>
+          <L x="300" y="225" fill={C.muted} size={9} anchor="middle">UK</L>
 
           {/* Iberia */}
           <path d="M 320 285 C 360 280, 385 295, 380 330 L 325 330 Z" fill="#1a2835" stroke={C.dim} />
@@ -706,7 +705,7 @@ export function NaoDomainDiagram() {
           {/* Stormbanebånd */}
           <path d="M 80 300 Q 230 220 375 165" fill="none" stroke="#f59e0b" strokeWidth="8" opacity="0.25" />
           <path d="M 80 300 Q 230 220 375 165" fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="6 4" />
-          <L x="180" y="245" fill="#fef08a" size={10} weight={700}>Nordatlantisk stormbane ➔</L>
+          <L x="150" y="280" fill="#fef08a" size={10} weight={700}>Nordatlantisk stormbane ➔</L>
 
 
           {/* HØYRE FORKLARINGSPANEL (x: 585-900) */}
@@ -772,8 +771,8 @@ export function NaoPositivePhaseDiagram() {
           <ellipse cx="460" cy="140" rx="60" ry="42" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.85" />
           <circle cx="460" cy="140" r="24" fill="#201317" stroke="#ef4444" strokeWidth="2.5" />
           <L x="460" y="148" fill="#ef4444" size={20} weight={900} anchor="middle">L</L>
-          <L x="460" y="174" fill="#fca5a5" size={11} weight={800} anchor="middle">Dypere lavtrykk</L>
-          <L x="460" y="187" fill="#fca5a5" size={9} anchor="middle">Islandslavtrykket (dypere enn normalt)</L>
+          <L x="460" y="94" fill="#fca5a5" size={11} weight={800} anchor="middle">Dypere lavtrykk</L>
+          <L x="460" y="107" fill="#fca5a5" size={9} anchor="middle">Islandslavtrykket (dypere enn normalt)</L>
 
           {/* Isobar-ringer for Azorhøytrykk H */}
           <ellipse cx="370" cy="330" rx="150" ry="90" fill="none" stroke="#22c55e" strokeWidth="1" strokeDasharray="10 5" opacity="0.4" />
@@ -861,12 +860,12 @@ export function NaoNegativePhaseDiagram() {
           <circle cx="730" cy="150" r="26" fill="#0b2438" stroke="#38bdf8" strokeWidth="2.8" />
           <L x="730" y="158" fill="#38bdf8" size={22} weight={900} anchor="middle">H</L>
           <L x="730" y="186" fill="#bae6fd" size={12} weight={800} anchor="middle">BLOKKERING</L>
-          <L x="730" y="200" fill="#7dd3fc" size={10} anchor="middle">1042 hPa · Kvasistasjonært</L>
+          <L x="730" y="206" fill="#7dd3fc" size={10} anchor="middle">Blokkerende høytrykk · Ligger nesten i ro</L>
 
-          {/* Sibirkulde / Arktisk luftstrøm */}
+          {/* Kald luft fra øst / arktisk luftstrøm */}
           <Arrow d="M 860 100 L 790 125" marker={m.cold} color="#38bdf8" width={3.5} />
           <Arrow d="M 830 160 L 775 195" marker={m.cold} color="#38bdf8" width={3} />
-          <L x="893" y="85" fill="#bae6fd" size={11} weight={800} anchor="end">Iskald polarluft fra Sibir ➔</L>
+          <L x="893" y="85" fill="#bae6fd" size={11} weight={800} anchor="end">Kald luft fra øst ➔</L>
 
           {/* Meandrerende jetstrøm som dykker sørover */}
           <path
@@ -958,8 +957,8 @@ export function NaoBlockeringDiagram() {
         }
         caption={
           blockingType === "omega"
-            ? "Under en klassisk Omega-blokkering (formen som den greske bokstaven Ω) presses en mektig høytrykksrygg nordover over Skandinavia, flankert av to dype lavtrykkstrau over Atlanteren og Russland. Polarjeten tvinges i en kolossal bue nord for Norden. Skandinavia opplever ukevis med tørt klarvær, inversjon og sibirkulde, mens stormene presses sørover mot Middelhavet."
-            : "Under en Rex-blokkering etablerer det seg en kvasistasjonær trykkdipol: et kraftig blokkerende høytrykk legger seg over Norskehavet og Skandinavia (rundt 65°N), mens et avsnørt lavtrykk (cut-off low) legger seg direkte sør for dette over Sentral- eller Sør-Europa (rundt 45°N). Polarjeten splittes fullstendig i to grener. I sonen mellom høytrykket og lavtrykket reverseres vinden til en kraftig og vedvarende østavind (retrograd strøm) som pumper kontinentalkulde fra Russland tvers over Europa."
+            ? "Under en klassisk Omega-blokkering (formen som den greske bokstaven Ω) presses en mektig høytrykksrygg nordover over Skandinavia, flankert av to dype lavtrykkstrau over Atlanteren og Russland. Polarjeten tvinges i en kolossal bue nord for Norden. Skandinavia opplever ukevis med tørt klarvær og inversjon og blir kaldere enn normalt, mens stormene presses sørover mot Middelhavet."
+            : "Under en Rex-blokkering etablerer det seg en trykkdipol som ligger nesten i ro: et kraftig blokkerende høytrykk legger seg over Norskehavet og Skandinavia (rundt 65°N), mens et avsnørt lavtrykk (cut-off low) legger seg direkte sør for dette over Sentral- eller Sør-Europa (rundt 45°N). Polarjeten splittes fullstendig i to grener. I sonen mellom høytrykket og lavtrykket reverseres vinden til en kraftig og vedvarende østavind (retrograd strøm) som pumper kontinentalkulde fra Russland tvers over Europa."
         }
       >
         <svg viewBox="0 0 880 400" className="mx-auto h-auto w-full max-w-5xl select-none" role="img">
@@ -976,7 +975,7 @@ export function NaoBlockeringDiagram() {
 
           {/* Norge-kontur */}
           <path d="M 440 100 C 470 90, 510 110, 520 160 C 500 210, 470 220, 450 200 Z" fill="#172e3d" stroke="#2f516b" strokeWidth="1.5" />
-          <text x="480" y="155" fill="#7dd3fc" fontSize="12" fontWeight="800" textAnchor="middle" fontFamily={font}>Norge</text>
+          <text x={blockingType === "rex" ? 565 : 560} y={blockingType === "rex" ? 150 : 205} fill="#7dd3fc" fontSize="12" fontWeight="800" textAnchor="start" fontFamily={font}>Norge</text>
 
           {/* ── 1. OMEGA-BLOKKERING ── */}
           {blockingType === "omega" && (
@@ -1003,7 +1002,7 @@ export function NaoBlockeringDiagram() {
                 <circle cx="0" cy="0" r="28" fill="#081b29" stroke="#38bdf8" strokeWidth="3" />
                 <text x="0" y="9" fill="#38bdf8" fontSize="22" fontWeight="900" textAnchor="middle" fontFamily={font}>H</text>
                 <text x="0" y="44" fill="#bae6fd" fontSize="12" fontWeight="800" textAnchor="middle" fontFamily={font}>OMEGA (Ω)</text>
-                <text x="0" y="58" fill="#7dd3fc" fontSize="10" textAnchor="middle" fontFamily={font}>1040 hPa · Kvasistasjonært</text>
+                <text x="0" y="58" fill="#7dd3fc" fontSize="10" textAnchor="middle" fontFamily={font}>1040 hPa · Ligger nesten i ro</text>
               </g>
 
               {/* Omega-jet i bue rundt Norden */}
@@ -1073,7 +1072,7 @@ export function NaoBlockeringDiagram() {
               <path d="M 620 195 L 320 195" stroke="#38bdf8" strokeWidth="4" strokeDasharray="8 4" markerEnd={`url(#${uid}-arrow-cold)`} />
               <rect x="360" y="180" width="220" height="28" rx="4" fill="#082336" stroke="#38bdf8" strokeWidth="1" />
               <text x="470" y="198" fill="#bae6fd" fontSize="11" fontWeight="900" textAnchor="middle" fontFamily={font}>
-                ◀ ◀ Reversert østavind (Sibirkulde)
+                ◀ ◀ Østavind med kald luft
               </text>
             </g>
           )}
@@ -1093,7 +1092,7 @@ export function NaoSswBreakdownDiagram() {
     <Diagram
       title="Plutselig stratosfærisk oppvarming (SSW) og polarvirvelen"
       heading="Polarvirvelens kollaps: Fra stratosfærisk oppvarming (SSW) til NAO− i Norge"
-      caption="Venstre panel: En sterk, intakt polarvirvel i stratosfæren sperrer arktisk sprengkulde inne ved polen og støtter en sterk, rett polarjet (typisk NAO+). Høyre panel: Planetære Rossby-bølger bryter oppover i stratosfæren og skaper en brå temperaturøkning på 30–50 °C (SSW). Polarvirvelen forskyves eller splittes i to. Sirkulasjonen reverseres, og i løpet av 2–4 uker forplanter signalet seg ned i troposfæren. Islandslavtrykket kollapser, og et mektig blokkerende høytrykk etablerer seg over Skandinavia med streng sibirkulde (dyp NAO−)."
+      caption="Venstre panel: En sterk, intakt polarvirvel i stratosfæren sperrer inne den kaldeste arktiske lufta ved polen og støtter en sterk, rett polarjet (typisk NAO+). Høyre panel: Planetære Rossby-bølger bryter oppover i stratosfæren og skaper en brå temperaturøkning på 30–50 °C (SSW). Polarvirvelen forskyves eller splittes i to. Sirkulasjonen reverseres, og i løpet av 2–4 uker forplanter signalet seg ned i troposfæren. Islandslavtrykket kollapser, og et mektig blokkerende høytrykk etablerer seg over Skandinavia og fører kald, tørr kontinentalluft fra Russland og Nordishavet inn over Norden (dyp NAO−)."
       viewBox="0 0 880 400"
     >
       {(m) => (
@@ -1140,7 +1139,7 @@ export function NaoSswBreakdownDiagram() {
           <rect x="450" y="45" width="405" height="335" rx="8" fill="#111c24" stroke={C.dim} />
           <rect x="450" y="45" width="405" height="34" rx="8" fill="#2d1d24" />
           <L x={470} y={68} fill={C.warm} size={13} weight={800}>
-            B. SSW: Polarvirvelen splittes (Utløser NAO−)
+            B. SSW: Polarvirvelen splittes (øker sjansen for NAO−)
           </L>
 
           <g transform="translate(560, 180)">
@@ -1366,7 +1365,7 @@ export function NaoEnsoTeleconnectionDiagram() {
 
           <Arrow d="M 140 115 Q 185 85 220 120" marker={m.warm} color={C.warm} width={2.2} />
           <Arrow d="M 220 120 Q 255 155 295 110" marker={m.warm} color={C.warm} width={2.2} />
-          <L x={220} y={80} fill={C.muted} size={11} anchor="middle">
+          <L x={205} y={93} fill={C.muted} size={11} anchor="middle">
             Rossby-bølgetog (PNA)
           </L>
 

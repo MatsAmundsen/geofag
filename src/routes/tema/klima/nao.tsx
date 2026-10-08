@@ -116,7 +116,7 @@ function NaoPage() {
     <TopicLayout
       kicker="Klimasystemet · Nord-Atlanteren"
       title="NAO: Den nordatlantiske oscillasjon"
-      lead="Den nordatlantiske oscillasjon (NAO) er atmosfærens store trykkvippe over Nord-Atlanteren. Svingningen i trykkgradienten mellom Azorhøytrykket og Islandslavtrykket styrer polarjetens posisjon, stormbanenes retning og om den norske vinteren blir mild og fuktig — eller preget av arktisk sprengkulde og blokkerende høytrykk."
+      lead="Den nordatlantiske oscillasjon (NAO) er atmosfærens store trykkvippe over Nord-Atlanteren. Svingningen i trykkgradienten mellom Azorhøytrykket og Islandslavtrykket styrer polarjetens posisjon, stormbanenes retning og om den norske vinteren blir mild og fuktig — eller kaldere enn normalt og preget av blokkerende høytrykk."
       banner="/images/fig-nao.jpg"
       bannerAlt="Atmosfærisk sirkulasjon og stormbaner over Nord-Atlanteren inn mot Norskehavet og Norge"
       prev={{ to: "/tema/klima/iod", label: "Forrige: IOD" }}
@@ -354,8 +354,8 @@ function NaoPage() {
           <div>
             <p className="text-sm sm:text-base">
               Dersom en rygg i Rossby-bølgen forsterkes over Skandinavia, kan den avsnøres fra det
-              generelle vestavindsbeltet og danne et massivt, kvasistasjonært høytrykk som blir
-              liggende fast i uke- eller månedsvis. Dette fenomenet kalles en{" "}
+              generelle vestavindsbeltet og danne et massivt høytrykk som ligger nesten i ro i uke- eller
+              månedsvis. Dette fenomenet kalles en{" "}
               <strong>atmosfærisk blokkering</strong> (<em>blocking</em>).
             </p>
           </div>
@@ -679,8 +679,8 @@ function NaoPage() {
           <strong>
             1. Svakt Islandslavtrykk + svakt Azorhøytrykk → 2. Slak trykkgradient (liten ΔP) →
             3. Svekket vestavind gjør polarjeten ustabil, den meandrerer i store Rossby-bølger →
-            4. Kvasistasjonært blokkerende høytrykk (Omega-blokkering) legger seg over Skandinavia →
-            5. Kald, tørr arktisk/sibirsk kontinentalluft trekkes inn over Norge (kulde,
+            4. Et blokkerende høytrykk (Omega-blokkering) legger seg over Skandinavia og ligger nesten i ro →
+            5. Kald, tørr kontinentalluft fra Russland og Nordishavet trekkes inn over Norge (kulde,
             klarvær og inversjon) → 6. Stormbanen presses sørover og gir mer regn og storm i Sør-Europa.
           </strong>
         </p>
@@ -688,11 +688,12 @@ function NaoPage() {
           <strong>Sensorfavoritter:</strong>
           <br />
           • Forklar <em>«seesaw»-effekten</em>: Hvorfor opplever Vest-Grønland unormal varme når
-          Norge har sprengkulde under NAO−? (Fordi trykkmønsteret under NAO− gir oftere nordlig og
+          Norge er kaldere enn normalt under NAO−? (Fordi trykkmønsteret under NAO− gir oftere nordlig og
           østlig luft over Nord-Europa og mildere luft mot Vest-Grønland (NOAA, u.å.).)
           <br />
           • Forklar rollen til <em>SSW (Sudden Stratospheric Warming)</em>: Hvorfor kan en
-          oppvarming i stratosfæren 30 km over Nordpolen varsle sprengkulde i Norge 2–4 uker senere?
+          oppvarming i stratosfæren 30 km over Nordpolen øke sjansen for at det blir kaldere enn normalt
+          i Norge noen uker senere?
         </p>
       </Callout>
 
@@ -751,7 +752,7 @@ function NaoPage() {
         />
         <Term
           name="Blokkerende høytrykk"
-          def="Mektig, kvasistasjonært høytrykk (f.eks. Omega-blokkering) som tvinger jetstrøm og lavtrykk til å ta store omveier i ukevis."
+          def="Mektig høytrykk som ligger nesten i ro (f.eks. Omega-blokkering), og som tvinger jetstrøm og lavtrykk til å ta store omveier i ukevis."
         />
         <Term
           name="Polarvirvel (Polar vortex)"
@@ -759,7 +760,7 @@ function NaoPage() {
         />
         <Term
           name="SSW (Plutselig stratosfærisk oppvarming)"
-          def="Dramatisk temperaturhopp (+30–50 °C) i stratosfæren som splitter polarvirvelen og tipper NAO over i negativ fase 2–4 uker senere."
+          def="Brått temperaturhopp (+30–50 °C) i stratosfæren som forstyrrer eller splitter polarvirvelen. Etterpå øker sjansen for negativ NAO i flere uker."
         />
         <Term
           name="AO (Arctic Oscillation)"
@@ -789,7 +790,7 @@ function NaoPage() {
               "Både Islandslavtrykket og Azorhøytrykket er svekket, og polarjeten meandrerer langt sør mot Sahara.",
               "Islandslavtrykket er uvanlig dypt og Azorhøytrykket er sterkt; den bratte trykkgradienten gir en rask, rett og sonal polarjet mot Nord-Europa.",
               "Azorhøytrykket forsvinner helt, og all vind snur til østlig retning over Atlanteren.",
-              "Trykket over Island stiger til 1040 hPa og danner en kvasistasjonær Omega-blokkering.",
+              "Trykket over Island stiger til 1040 hPa og danner en Omega-blokkering som ligger nesten i ro.",
             ],
             answer: 1,
             explain:
@@ -800,7 +801,7 @@ function NaoPage() {
               "Hvilket vintervær er typisk for Norge når NAO-indeksen er sterkt negativ (NAO−)?",
             options: [
               "Milde temperaturer, kraftig vestavind, regnskyll ved kysten og rekordstor snøakkumulasjon på vestlandsbreene.",
-              "Knusktørr, vindstille og streng sprengkulde fra Sibir/Arktis under et blokkerende høytrykk, med fare for bakkeinversjon i byene.",
+              "Knusktørt, vindstille og kaldere enn normalt, med kald, tørr kontinentalluft fra Russland og Nordishavet under et blokkerende høytrykk og fare for bakkeinversjon i byene.",
               "Tropiske hetebølger med temperaturer over 25 °C over hele Skandinavia.",
               "Konstant vestavindsstorm og ekstrem stormflo langs hele kysten.",
             ],
@@ -845,7 +846,7 @@ function NaoPage() {
             ],
             answer: 1,
             explain:
-              "Når planetære bølger bryter opp i stratosfæren, kan polarvirvelen kollapse i en SSW. Signalet forplanter seg ned i troposfæren over 2–4 uker, svekker Islandslavtrykket og etablerer blokkerende sibirkulde over Norden (dyp NAO−).",
+              "Når planetære bølger bryter opp i stratosfæren, kan polarvirvelen kollapse i en SSW. Signalet forplanter seg ned i troposfæren over 2–4 uker, svekker Islandslavtrykket og etablerer et blokkerende høytrykk som fører kald, tørr kontinentalluft fra Russland og Nordishavet inn over Norden (dyp NAO−).",
           },
           {
             prompt:
