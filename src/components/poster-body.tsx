@@ -84,6 +84,13 @@ import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrol
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import { KvikkleireDiagram } from "@/components/diagrams/skred";
+import {
+  DensityDiagram,
+  GulfVsNacDiagram,
+  GyreDiagram,
+  OceanDriversDiagram,
+  UpwellingDiagram,
+} from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
