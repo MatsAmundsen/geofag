@@ -1075,7 +1075,7 @@ export function RossbyWavesDiagram() {
     <Diagram
       title="Rossbybølger i polarfrontjeten"
       heading="Rossbybølger: Jetstrømmens meandere som avgjør ukas vær i Norge"
-      caption="Polarfrontjeten i 9–11 km høyde blåser ikke i en rett linje rundt kloden, men bukter seg i gigantiske planetære meandere som kalles Rossbybølger (etter Carl-Gustaf Rossby). En bølge har to nøkkelelementer: 1) Traug (bølgedal mot sør): Her fosser iskald arktisk luft sørover. På forsiden av trauget skaper divergens i høyden dype lavtrykk med vind og regn. 2) Rygg (bølgetopp mot nord): Her presses mild subtropisk luft nordover, med konvergens i høyden som mater stabilt høytrykk og tørt klarvær. Dersom en kraftig rygg snøres av, oppstår et 'blokkerende høytrykk' (Omega-blokkering) som kan låse godværet eller kulden over Norge i ukevis."
+      caption="Polarfrontjeten i 8–12 km høyde blåser ikke i en rett linje rundt kloden, men bukter seg i gigantiske planetære meandere som kalles Rossbybølger (etter Carl-Gustaf Rossby). En bølge har to nøkkelelementer: 1) Traug (bølgedal mot sør): Her fosser iskald arktisk luft sørover. På forsiden av trauget skaper divergens i høyden dype lavtrykk med vind og regn. 2) Rygg (bølgetopp mot nord): Her presses mild subtropisk luft nordover, med konvergens i høyden som mater stabilt høytrykk og tørt klarvær. Dersom en kraftig rygg snøres av, oppstår et 'blokkerende høytrykk' (Omega-blokkering) som kan låse godværet eller kulden over Norge i ukevis."
       viewBox="0 0 940 450"
       wide
     >
@@ -1207,8 +1207,8 @@ export function JetStreamDiagram() {
   return (
     <Diagram
       title="Polarfrontjeten"
-      heading="Polarfrontjeten: En mektig luftelv i 9–11 km høyde"
-      caption="Der temperaturforskjellen mellom tropene og polene er størst i høyden, oppstår det voldsomme trykkforskjeller. Resultatet er en smal, rørformet jetstrøm med vindhastigheter ofte over 200–300 km/t. Jetstrømmen fungerer som et styringsbelte for alle lavtrykkene som treffer Norge."
+      heading="Polarfrontjeten: En mektig luftelv i 8–12 km høyde"
+      caption="Der temperaturforskjellen mellom tropene og polene er størst i høyden, oppstår det voldsomme trykkforskjeller. Resultatet er en smal, rørformet jetstrøm med svært sterk vind. Jetstrømmen fungerer som et styringsbelte for alle lavtrykkene som treffer Norge."
       viewBox="0 0 940 320"
       wide
     >
@@ -1239,7 +1239,7 @@ export function JetStreamDiagram() {
           <ellipse cx="470" cy="95" rx="80" ry="24" fill="#ef4444" opacity="0.85" />
 
           <L x="470" y="92" fill="#ffffff" size={14} weight={900} anchor="middle">
-            ⊗ JETKJERNE (&gt; 250 km/t)
+            ⊗ JETKJERNE
           </L>
           <L x="470" y="108" fill="#fef08a" size={11} weight={700} anchor="middle">
             Vindretning fra vest mot øst (inn i planet)

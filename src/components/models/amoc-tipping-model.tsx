@@ -420,7 +420,7 @@ export function AmocTippingModel() {
                 <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-3 mt-2">
                   <p className="font-semibold text-amber-300">Hva betyr hysterese?</p>
                   <p className="mt-1">
-                    Hvis en ferskvannspuls dytter AMOC forbi det kritiske vippepunktet (F_crit) slik at den
+                    Hvis en ferskvannspuls fører AMOC forbi det kritiske vippepunktet (F_crit) slik at den
                     kollapser, er det <strong>ikke nok å redusere ferskvannet tilbake til utgangspunktet</strong>.
                     For å starte motoren igjen må ferskvannstilførselen senkes til et langt lavere nivå!
                   </p>

@@ -131,7 +131,7 @@ export const GF2_THEMES = [
     image: "/images/fig-jet.jpg",
     alt: "Tynn, rask skyelv høyt over havet mot jordas krumning",
     blurb:
-      "En elv av luft i 8–12 km høyde, i godt over 200 km/t. Den avgjør hvor lavtrykkene får gå — og dermed været i Norge.",
+      "En elv av luft i 8–12 km høyde, med svært sterk vind. Den avgjør hvor lavtrykkene får gå — og dermed været i Norge.",
     status: "klar" as const,
   },
   {

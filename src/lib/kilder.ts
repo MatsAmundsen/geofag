@@ -1163,6 +1163,12 @@ export const KILDER = {
       href: "https://www.noaa.gov/jetstream/global/jet-stream",
     },
     {
+      prefix: "American Meteorological Society [AMS]. (u.å.). Jet stream. I ",
+      italic: "Glossary of Meteorology",
+      suffix: ".",
+      href: "https://glossary.ametsoc.org/wiki/Jet_stream",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
       italic: "North Atlantic Oscillation",
       suffix: ".",

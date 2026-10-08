@@ -266,7 +266,7 @@ export function IodModeExplorer() {
                 {isPositive ? (
                   <p>
                     Passatvindene over Det indiske hav reverseres til unormale østlige vinder. Dette
-                    dytter overflatevann mot vest og trigger kraftig kystoppvelling utenfor Sumatra/Java.
+                    driver overflatevann mot vest og trigger kraftig kystoppvelling utenfor Sumatra/Java.
                     Termoklinen heves i øst (kaldt vann til overflaten), mens det varme vannet samles
                     utenfor Somalia og Kenya. Walker-sirkulasjonen forskyves vestover: voldsom konveksjon
                     og flom over Øst-Afrika, og tørr subsidens (synkende luft) med tørke over Indonesia

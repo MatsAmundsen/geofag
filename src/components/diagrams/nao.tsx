@@ -725,7 +725,7 @@ export function NaoDomainDiagram() {
           <rect x="595" y="219" width="290" height="85" rx="6" fill="#1a251b" stroke="#f59e0b" strokeWidth="1" />
           <L x="607" y="239" fill="#f59e0b" size={12} weight={800}>3. Geostrofisk balanse</L>
           <L x="607" y="258" fill="#fef08a" size={10} weight={700}>u_g = − (1 / ρf) · (∂P / ∂y)</L>
-          <L x="607" y="274" fill="#fef9c3" size={10}>• PGF dytter lufta nordover mot Island</L>
+          <L x="607" y="274" fill="#fef9c3" size={10}>• PGF virker nordover, fra høyt mot lavt trykk</L>
           <L x="607" y="289" fill="#fef9c3" size={10}>• Coriolis avbøyer 90° til høyre → Vestavind!</L>
 
           <rect x="595" y="313" width="290" height="85" rx="6" fill="#122525" stroke="#2dd4bf" strokeWidth="1" />

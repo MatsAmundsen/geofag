@@ -284,14 +284,14 @@ function MilankovitchPage() {
         Snø og is kaster tilbake en stor del av sollyset. Bart fjell, skog og åpent hav tar det
         opp. Når isen vokser, stiger albedo, mindre energi tas opp, det blir kaldere, isen vokser
         mer. Det er en positiv tilbakekobling: den forsterker, den starter ikke. Uten den ville
-        små orbitale dytt gitt små utslag. Med den kan et dårlig sommerklima på 65 °N bli til
+        små orbitale endringer gitt små utslag. Med den kan et dårlig sommerklima på 65 °N bli til
         kilometer med is over et kontinent.
       </p>
       <PhotoFigure
         src="/images/fig-albedo.jpg"
         alt="Is og snø mot mørkt fjell og vann, med tydelig kontrast i lyshet"
         heading="Is kaster lyset tilbake"
-        caption="Illustrasjon. Høy albedo over snø og is, lav over bart fjell og åpent hav. Når innlandsisen vokser, tar jorda opp mindre solenergi. Når den smelter, tar jorda opp mer. Banen dytter. Albedoen forsterker."
+        caption="Illustrasjon. Høy albedo over snø og is, lav over bart fjell og åpent hav. Når innlandsisen vokser, tar jorda opp mindre solenergi. Når den smelter, tar jorda opp mer. Banen setter i gang endringen. Albedoen forsterker den."
         marks={[
           { x: 10, y: 20, n: "1", text: "Høy albedo", tone: "cold" },
           { x: 62, y: 70, n: "2", text: "Lav albedo", tone: "warm" },

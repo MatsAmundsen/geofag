@@ -13,7 +13,7 @@ export function JetProfileDiagram() {
     <Diagram
       title="Globalt tverrsnitt: To jetbelter, tre celler og tropopausesteget"
       heading="To jetbelter i høyden: Polarfrontjeten og Den subtropiske jeten"
-      caption="Tverrsnitt gjennom den nordlige halvkules atmosfære fra ekvator til Nordpolen. Ved bakken drives tre sirkulasjonsceller: Hadleycellen, Ferrelcellen og Polarcellen. I overgangen mellom cellene oppstår to markante jetstrømmer ved tropopausen: 1) Den subtropiske jeten (STJ) ved ca. 30°N i 13–16 km høyde, drevet av vinkelmoment fra ekvator. 2) Polarfrontjeten (PFJ) ved 55°–65°N i 9–11 km høyde, drevet av den voldsomme temperaturkontrasten over den skråstilte polarfronten. Legg merke til det markerte trappetrinnet i tropopausen: Den tropiske tropopausen rager helt opp til 16 km, mens den polare tropopausen kun ligger 8–9 km over bakken. Begge jetstrømmene blåser inn i planet – mot øst (vestavind)."
+      caption="Tverrsnitt gjennom den nordlige halvkules atmosfære fra ekvator til Nordpolen. Ved bakken drives tre sirkulasjonsceller: Hadleycellen, Ferrelcellen og Polarcellen. I overgangen mellom cellene oppstår to markante jetstrømmer ved tropopausen: 1) Den subtropiske jeten (STJ) ved ca. 30°N i 13–16 km høyde, drevet av vinkelmoment fra ekvator. 2) Polarfrontjeten (PFJ) ved 55°–65°N i 8–12 km høyde, drevet av den voldsomme temperaturkontrasten over den skråstilte polarfronten. Legg merke til det markerte trappetrinnet i tropopausen: Den tropiske tropopausen rager helt opp til 16 km, mens den polare tropopausen kun ligger 8–9 km over bakken. Begge jetstrømmene blåser inn i planet – mot øst (vestavind)."
       viewBox="0 0 940 520"
       wide
     >
@@ -259,7 +259,7 @@ export function JetProfileDiagram() {
               SUBTROPISK JET (STJ)
             </L>
             <L x="0" y="35" fill="#fbbf24" size={10.5} weight={700} anchor="middle">
-              13–16 km · ~200 km/t
+              13–16 km
             </L>
             <L x="0" y="48" fill={C.muted} size={9.5} anchor="middle">
               Drevet av vinkelmoment
@@ -280,7 +280,7 @@ export function JetProfileDiagram() {
               POLARFRONTJETEN (PFJ)
             </L>
             <L x="0" y="38" fill="#38bdf8" size={11} weight={800} anchor="middle">
-              9–11 km · 200–400 km/t
+              8–12 km
             </L>
             <L x="0" y="52" fill="#cbd5e1" size={10} weight={600} anchor="middle">
               Styrer lavtrykkene mot Norge!
@@ -473,7 +473,7 @@ export function ThermalWindDiagram() {
             {/* Jetkjernepunkt */}
             <circle cx="270" cy="150" r="8" fill="#38bdf8" stroke="#ffffff" strokeWidth="2.2" />
             <L x="260" y="172" fill="#38bdf8" size={12} weight={800} anchor="end">
-              Jetkjerne (250–350 km/t)
+              Jetkjerne
             </L>
 
             <L x="165" y="74" fill={C.muted} size={10.5} weight={600}>
@@ -513,7 +513,7 @@ export function JetFormsDiagram() {
     <Diagram
       title="Zonal vs. meridional jetstrøm: Rossby-bølger og norsk vær"
       heading="Zonal vs. meridional strøm: Hvorfor jetens form avgjør ukens vær"
-      caption="Formen på jetstrømmen avgjør om Norge får uker med mildt vestlandsregn eller langvarige ekstremperioder. Kart A (venstre) viser en zonal strøm: Jetstrømmen blåser i en stram, rettlinjet korridor fra vest mot øst. De atlantiske lavtrykkene raser hurtig forbi, og været skifter raskt med mild, fuktig luft. Kart B (høyre) viser en meridional strøm med store Rossby-bølger. I en bølgedal (tråg) stuper iskald arktisk luft sørover over Norge og gir sprengkulde. I en bølgetopp (rygg) pumpes varm luft nordover, luften synker og danner stabilt klarvær eller hetebølger. Rossby-bølgene beveger seg svært langsomt, og været kan 'låse seg' i ukevis."
+      caption="Formen på jetstrømmen avgjør om Norge får uker med mildt vestlandsregn eller langvarige ekstremperioder. Kart A (venstre) viser en zonal strøm: Jetstrømmen blåser i en stram, rettlinjet korridor fra vest mot øst. De atlantiske lavtrykkene raser hurtig forbi, og været skifter raskt med mild, fuktig luft. Kart B (høyre) viser en meridional strøm med store Rossby-bølger. I en bølgedal (tråg) strømmer kald arktisk luft sørover over Norge, og det blir kaldere enn normalt. I en bølgetopp (rygg) pumpes varm luft nordover, luften synker og danner stabilt klarvær eller hetebølger. Rossby-bølgene beveger seg svært langsomt, og været kan 'låse seg' i ukevis."
       viewBox="0 0 940 460"
       wide
     >
@@ -785,7 +785,7 @@ export function JetStreakDiagram() {
           <path d="M 120 130 L 820 130" fill="none" stroke="#ffffff" strokeWidth="2.2" className="model-wind-fast" />
 
           <L x="470" y="134" fill="#ffffff" size={12} weight={900} anchor="middle">
-            VINDMAKSIMUM (&gt;300 km/t)
+            VINDMAKSIMUM
           </L>
 
           {/* INNLØP OG UTLØP MERKER */}

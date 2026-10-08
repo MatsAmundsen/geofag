@@ -265,7 +265,7 @@ function NaoPage() {
                 termalvindligningen
               </Link>{" "}
               betyr en sterk horisontal temperaturgradient at den vertikale vindskjæren øker, noe som
-              akselererer polarjeten i 9–11 km høyde. Jetstrømmen blir stabil, sonal (vest–øst) og
+              akselererer polarjeten i 8–12 km høyde. Jetstrømmen blir stabil, sonal (vest–øst) og
               hindres fra å danne store bølger.
             </p>
           </div>
@@ -740,7 +740,7 @@ function NaoPage() {
         />
         <Term
           name="Polarjet"
-          def="Hurtig vestlig luftstrøm i 9–11 km høyde langs polarfronten drevet av temperaturkontrasten mellom Arktis og subtropene."
+          def="Hurtig vestlig luftstrøm i 8–12 km høyde langs polarfronten drevet av temperaturkontrasten mellom Arktis og subtropene."
         />
         <Term
           name="Stormbane (Storm track)"

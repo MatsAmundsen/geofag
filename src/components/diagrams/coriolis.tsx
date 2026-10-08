@@ -14,7 +14,7 @@ export function CarouselFrameDiagram() {
     <Diagram
       title="Referanserammer og treghetskrefter: Karusell-eksperimentet"
       heading="Hvorfor oppstår Corioliseffekten? Rommet vs. Den roterende observatøren"
-      caption="Corioliskraften er en fiktiv kraft som oppstår fordi vi observerer bevegelse fra et roterende referansesystem. Til venstre, sett fra rommet, går ballen i en rett linje mens målet på kanten roterer videre. Til høyre, sett fra karusellen, ser ballen ut til å krumme mot høyre. Ingen fysisk hånd dytter på ballen."
+      caption="Corioliskraften er en fiktiv kraft som oppstår fordi vi observerer bevegelse fra et roterende referansesystem. Til venstre, sett fra rommet, går ballen i en rett linje mens målet på kanten roterer videre. Til høyre, sett fra karusellen, ser ballen ut til å krumme mot høyre. Ingen fysisk hånd skyver på ballen."
       viewBox="0 0 920 420"
       wide
     >

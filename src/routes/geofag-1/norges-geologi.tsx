@@ -358,7 +358,7 @@ function NorgesGeologiPage() {
               "En oppsprekking av jordskorpen da Oslofeltet sank inn i perm.",
               "En voldsom kontinent-kontinent-kollisjon der urkontinentene Baltika og Laurentia støtte sammen og lukket Iapetushavet.",
               "En gigantisk istid som skuret ned grunnfjellet.",
-              "At Atlanterhavet åpnet seg og dyttet Norge østover.",
+              "At Atlanterhavet åpnet seg og skjøv Norge østover.",
             ],
             answer: 1,
             explain:

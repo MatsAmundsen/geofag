@@ -386,7 +386,7 @@ function FeltG2Page() {
               Kinetisk metamorfose (Bratt gradient, ≥ 10 °C/m)
             </h4>
             <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Ved tynn snøpakke og sterk sprengkulde i luften oppstår en brutal temperaturforskjell.
+              Ved tynn snøpakke og svært kald luft oppstår en brutal temperaturforskjell.
               Varm vanndamp stiger oppover fra den 0-gradige bunnen med voldsom kraft. Krystallene vokser
               eksplosivt til <strong>store, kantete fasetter og hule begerkrystaller (dybderim)</strong>.
               Disse kornene har nesten ingen mekaniske bindinger og fungerer som kulerunder. Dette skaper

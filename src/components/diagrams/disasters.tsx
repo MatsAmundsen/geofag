@@ -1059,7 +1059,7 @@ export function MeteorologicalBombDiagram() {
           />
           <Arrow d="M 60 75 L 850 75" marker={m.teal} color={C.teal} width={5} />
           <L x="180" y="62" fill={C.teal} size={14} weight={800}>
-            POLARFRONTJETEN (PFJ) &gt; 250 km/t
+            POLARFRONTJETEN (PFJ)
           </L>
           <L x="520" y="62" fill="#fde047" size={12} weight={800}>
             Jetstreak: Venstre utgangskvadrant (Divergens i høyden)
