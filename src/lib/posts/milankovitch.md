@@ -46,7 +46,7 @@ Milanković regnet med at istider kommer omtrent hvert 41 000. år. Senere forsk
 
 ## Weichsel
 
-Weichsel er navnet på siste istid i Nord-Europa, cirka 117 000–10 000 år siden. Store deler av Nord-Europa og Nord-Amerika var da dekket av is. Samme istid kalles Würm i Alpene og Wisconsin i Nord-Amerika (Store norske leksikon, u.å.-b).
+Weichsel er navnet på siste istid i Nord-Europa, fra om lag 117 000 til 11 700 år siden (Store norske leksikon, u.å.-b; Walker et al., 2009). Store deler av Nord-Europa og Nord-Amerika var da dekket av is. Samme istid kalles Würm i Alpene og Wisconsin i Nord-Amerika (Store norske leksikon, u.å.-b).
 
 ## Karbondioksid i iskjerner
 
@@ -78,7 +78,7 @@ I dag er det en stor iskappe bare på Grønland. Små breer finnes i det nordlig
 
 **Presesjon:** Aksens vingling, med en syklus på om lag 25 771,5 år.
 
-**Weichsel:** Siste istid i Nord-Europa, cirka 117 000–10 000 år siden. Würm i Alpene og Wisconsin i Nord-Amerika.
+**Weichsel:** Siste istid i Nord-Europa, fra om lag 117 000 til 11 700 år siden. Würm i Alpene og Wisconsin i Nord-Amerika.
 
 **Siste istids maksimum:** For 20 000 år siden, da havet sto 125 meter lavere enn i dag.
 
