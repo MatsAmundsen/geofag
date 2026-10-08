@@ -16,3 +16,7 @@ class_name = "PostsDurableObject"
 [[migrations]]
 tag = "v1-posts-do"
 new_sqlite_classes = ["PostsDurableObject"]
+
+[observability]
+enabled = true
+head_sampling_rate = 1
