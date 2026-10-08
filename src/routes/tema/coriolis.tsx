@@ -104,7 +104,7 @@ function CoriolisPage() {
         src="/images/fig-karusell.jpg"
         alt="En roterende karusell på en lekeplass som demonstrerer treghetskrefter og roterende referanserammer"
         heading="Karusell-eksperimentet: Forskjellen på rommet og den roterende observatøren"
-        caption="Står du på en roterende karusell og kaster en ball mot en venn på motsatt side, ser du ballen krumme til høyre og bomme på målet. Sett fra luften ovenfor går ballen i en snorrett linje; det er vennen din som har rotert vekk mens ballen var i luften!"
+        caption="Illustrasjon. Står du på en roterende karusell og kaster en ball mot en venn på motsatt side, ser du ballen krumme til høyre og bomme på målet. Sett fra luften ovenfor går ballen i en snorrett linje; det er vennen din som har rotert vekk mens ballen var i luften!"
         marks={[
           { x: 50, y: 50, n: "A", text: "Sentrum (Kaster)", tone: "warm" },
           { x: 80, y: 30, n: "B", text: "Mål på kanten", tone: "cold" },
@@ -303,7 +303,8 @@ function CoriolisPage() {
       <p>
         For at en tropisk storm skal kunne vokse til en monsterorkan, kreves det enorme mengder varmt
         havvann (over 26,5 °C). Havet ved ekvator er det varmeste på planeten (ofte 29–30 °C). Likevel
-        har meteorologer aldri observert en orkan som oppstår mellom 0° og 5° breddegrad!
+        dannes orkaner svært sjelden nærmere ekvator enn 5°. Et kjent unntak er tyfonen Vamei, som
+        ble dannet på om lag 1,5° nord i desember 2001 (Chang mfl., 2003).
       </p>
       <p>
         Forklaringen er ren Coriolis-fysikk: Ved ekvator er <strong>f ≈ 0</strong>. Når fuktig luft
@@ -318,25 +319,6 @@ function CoriolisPage() {
         fryktinngytende orkanvirvelen (NOAA, u.å.-a).
       </p>
 
-      <PhotoFigure
-        src="/images/fig-syklon.jpg"
-        alt="Satellittbilde av en fullt utviklet tropisk orkan med spiralbånd og øye"
-        heading="Orkanens motor: Avhengig av Coriolis for å rotere"
-        caption="En orkan er et konsentrert roterende lavtrykk. Luften som suges inn mot det ekstremt lave trykket i øyet, bøyes kontinuerlig mot høyre av Corioliskraften, slik at hele systemet spinner mot klokken på nordlig halvkule."
-        arrows={[
-          { d: "M 38 16 Q 22 28 30 46", tone: "low", width: 1.5 },
-          { d: "M 30 46 Q 48 58 70 46", tone: "low", width: 1.5 },
-          { d: "M 70 46 Q 78 28 58 16", tone: "low", width: 1.5 },
-        ]}
-        marks={[
-          { x: 48, y: 36, n: "L", text: "Orkanens øye (Lavt trykk)", tone: "low" },
-          { x: 12, y: 15, n: "1", text: "Syklonal spiral innover", tone: "warm" },
-        ]}
-        points={[
-          { n: "L", label: "Orkanens øye: Ekstremt lavt lufttrykk (ofte under 920 hPa)." },
-          { n: "1", label: "Rotasjonsretning: Innstrømmende luft bøyes mot høyre, og danner spiral mot klokken i nord." },
-        ]}
-      />
 
       <p className="pt-2 text-sm text-muted-foreground">
         <em>Merk koblingen til Rossby-bølger:</em> Fordi Coriolisparameteren endrer seg med breddegraden
@@ -445,8 +427,8 @@ function CoriolisPage() {
         </li>
       </ul>
       <p>
-        Over åpent hav er vinkelen typisk 10°–15°, mens over kupert terreng og skog på land er friksjonen
-        større, og vinkelen øker til 25°–35°.
+        Over åpent hav er vinkelen typisk 10°–20°. Over land er den i snitt rundt 30°, og over fjell og
+        svært ujevnt terreng kan den bli 45° eller mer (Penn State, u.å.).
       </p>
 
       <PressureSpinDiagram />
@@ -578,7 +560,7 @@ function CoriolisPage() {
         <li>
           <strong>Spiralen i dypet:</strong> For hvert dypere lag vi måler, blir strømningshastigheten
           svakere og vinkelen mer avbøyd. På bunnen av Ekman-laget (typisk 50–100 meters dyp) beveger
-          vannet seg faktisk i <em>motsatt retning</em> av overflatevinden!
+          vannet seg svakt i <em>motsatt retning</em> av overflatestrømmen.
         </li>
       </ol>
       <p>
@@ -667,7 +649,8 @@ function CoriolisPage() {
               <strong>4. Geostrofisk vind blåser ikke ved bakken:</strong> Geostrofisk likevekt (vinden
               parallelt med isobarene) forutsetter null friksjon og oppstår bare i fri atmosfære over ca.
               1000 moh. Ved bakken bremser friksjonen farten, svekker Corioliskraften, og gjør at
-              trykkgradientkraften trekker vinden på skrå (15°–30°) inn mot lavtrykk og ut av høytrykk.
+              trykkgradientkraften trekker vinden på skrå inn mot lavtrykk (vinkelen er minst over hav og størst over
+              ujevnt terreng) og ut av høytrykk.
             </li>
           </ul>
         </Callout>
@@ -731,6 +714,7 @@ function CoriolisPage() {
         Test deg selv: Corioliseffekten
       </h2>
       <Quiz
+        heading={null}
         questions={[
           {
             prompt: "Hva er den fundamentale fysiske årsaken til at Corioliseffekten oppstår?",

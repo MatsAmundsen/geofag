@@ -205,24 +205,6 @@ function HavstrommerPage() {
         {/* Interaktiv simulator */}
         <EkmanUpwellingModel />
 
-        <PhotoFigure
-          src="/images/fig-ekman.jpg"
-          alt="Lange skumstriper på havet, drevet av vind mot høyre"
-          heading="Ekman-transport observert i naturen"
-          caption="Skumstripene (Langmuir-sirkulasjon) viser selve vindretningen. Vannmassene i blandingslaget under dreies systematisk 90° til høyre i nord, nøyaktig slik Ekmans bevegelsesligninger forutsetter."
-          arrows={[
-            { d: "M 14 32 L 70 28", tone: "fg", width: 1.4 },
-            { d: "M 40 30 L 40 50", tone: "teal", width: 1.3 },
-          ]}
-          marks={[
-            { x: 8, y: 16, n: "1", text: "Vindretning", tone: "fg" },
-            { x: 44, y: 52, n: "2", text: "Nettotransport 90° høyre", tone: "teal" },
-          ]}
-          points={[
-            { n: "1", label: "Vindretning på overflaten." },
-            { n: "2", label: "Netto massetransport integrert over Ekman-laget: 90° til høyre i nord." },
-          ]}
-        />
       </CollapsibleSection>
 
       {/* ── 3. KYSTOPPVELLING, NEDVELLING OG MARIN ØKOLOGI ──────────── */}
@@ -357,50 +339,13 @@ function HavstrommerPage() {
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
             Dette fenomenet kalles <strong>beta-effekten</strong> (Stommels vestlige randintensivering
             fra 1948): Jordens krumning gjør at Coriolisparameteren øker mot polene (beta = df/dy).
-            For at virvlingen (vorticity) i hele havbassenget skal gå i null over et omløp, tvinges gyrens
-            sentrum vestover mot Amerika. Den vestlige randen presses mot kontinentalskråningen, noe som
-            gjør hellingen ekstremt bratt og hastigheten voldsom!
+            Vinden tilfører virvling (vorticity) over hele bassenget. Den må fjernes igjen, og det
+            skjer ved friksjon i en smal og rask strøm langs vestkanten. Derfor er strømmen smal og
+            sterk i vest og bred og svak i øst.
           </p>
         </div>
 
-        <PhotoFigure
-          src="/images/fig-gyre.jpg"
-          alt="Nord-Atlanteren fra verdensrommet med varm strøm langs Amerika og drift mot Europa"
-          heading="Nord-Atlanteren sett ovenfra"
-          caption="Den subtropiske gyren i Nord-Atlanteren. Vestkanten (Golfstrømmen) er den smale, kraftige randstrømmen. Mot Europa vider strømmen seg ut og kalles Den nordatlantiske strømmen."
-          arrows={[
-            { d: "M 22 42 L 28 22", tone: "warm", width: 1.3 },
-            { d: "M 32 20 L 58 18", tone: "teal", width: 1.25 },
-            { d: "M 70 28 L 62 48", tone: "cold", width: 1.15 },
-            { d: "M 50 50 L 28 48", tone: "cold", width: 1.1 },
-          ]}
-          marks={[
-            { x: 6, y: 36, n: "1", text: "Golfstrømmen (smal & rask)", tone: "warm" },
-            { x: 48, y: 10, n: "2", text: "Den nordatlantiske strømmen", tone: "teal" },
-            { x: 72, y: 40, n: "3", text: "Kanaristrømmen (bred & treg)", tone: "cold" },
-          ]}
-          points={[
-            { n: "1", label: "Vestlig randstrøm: smal, dyp og rask (Golfstrømmen)." },
-            { n: "2", label: "Fortsettelsen mot Norskehavet og Barentshavet." },
-            { n: "3", label: "Østlig randstrøm: bred, grunn og langsom (Kanaristrømmen)." },
-          ]}
-        />
 
-        <PhotoFigure
-          src="/images/fig-golfstrom.jpg"
-          alt="Varm turkis-gull strøm som et bånd langs amerikansk østkyst mot Atlanteren"
-          heading="Golfstrømmen langs kysten av USA"
-          caption="Satellittbilde av Golfstrømmen. Den forlater kysten ved Cape Hatteras og meandrerer ut i åpent hav, der den avgir store virvler (eddies) før den deler seg mot Europa."
-          arrows={[{ d: "M 22 36 Q 48 24 72 16", tone: "warm", width: 1.45 }]}
-          marks={[
-            { x: 6, y: 44, n: "1", text: "Golfstrømmen", tone: "warm" },
-            { x: 58, y: 10, n: "2", text: "Videre mot Europa", tone: "teal" },
-          ]}
-          points={[
-            { n: "1", label: "Smal, rask vestlig randstrøm langs USA." },
-            { n: "2", label: "Går over i Den nordatlantiske strømmen mot Norge." },
-          ]}
-        />
       </CollapsibleSection>
 
       {/* ── 5. TERMOHALIN SIRKULASJON OG NORSK KLIMA ────────────────── */}
@@ -485,7 +430,7 @@ function HavstrommerPage() {
           src="/images/fig-norge-labrador.jpg"
           alt="Grønn norsk fjord med åpent vann til venstre, islagt Labrador-kyst til høyre"
           heading="Samme breddegrad (60°N), to vidt forskjellige verdener"
-          caption="Bergen og kysten av Labrador ligger på nøyaktig samme breddegrad og mottar samme solhøyde. Likevel er Bergen isfri med gjennomsnittlig vintertemperatur over 0 °C, mens Labrador er fastfrosset i månedsvis. Forskjellen skyldes samspillet mellom havstrømmer, vestavind og havets enorme varmelager."
+          caption="Illustrasjon. Bergen og kysten av Labrador ligger på omtrent samme breddegrad og mottar samme solhøyde. Likevel er Bergen isfri med gjennomsnittlig vintertemperatur over 0 °C, mens Labrador er fastfrosset i månedsvis. Forskjellen skyldes samspillet mellom havstrømmer, vestavind og havets enorme varmelager."
           marks={[
             { x: 6, y: 12, n: "1", text: "Norge: mildt, fuktig, isfritt", tone: "teal" },
             { x: 54, y: 12, n: "2", text: "Labrador: arktisk kulde & havis", tone: "cold" },

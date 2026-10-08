@@ -126,8 +126,11 @@ function PaleoklimaPage() {
             <p className="text-muted-foreground leading-relaxed">
               Holocen ble formelt definert og datert ved en dybde på 1492,45 meter i NGRIP-iskjernen på
               Grønland (Walker et al., 2009). Denne mellomistiden har vært usedvanlig klimastabil. Under{" "}
-              <strong>det holocene klimaoptimumet (ca. 8000–5000 år før nå)</strong> lå sommertemperaturene
-              i Norge 1,5–2,0 °C høyere enn førindustrielt nivå, og Hardangerjøkulen var nesten smeltet bort.
+              <strong>det holocene klimaoptimumet (ca. 8000–4000 år før nå)</strong> var sommertemperaturen i
+              Sør-Norge opptil om lag 2 °C høyere enn i dag, og Hardangerjøkulen var trolig helt borte i lange
+              perioder mellom ca. 7500 og 4800 år før nå (Dahl &amp; Nesje, 1994; Åkesson mfl., 2017). Globalt
+              lå den varmeste perioden i holocen, for om lag 6500 år siden, om lag 0,2–1 °C over 1850–1900
+              (IPCC, 2021).
             </p>
           </div>
         </div>
@@ -138,7 +141,7 @@ function PaleoklimaPage() {
         />
         <OrdBoks
           ord="Holocen"
-          barn="Vår nåværende mellomistid som startet for nøyaktig 11 700 år siden (9700 f.Kr.). Starten er definert av en brå oppvarming i Grønlands iskjerner."
+          barn="Vår nåværende mellomistid som startet for om lag 11 700 år siden. Starten er definert av en brå oppvarming i Grønlands iskjerner."
         />
       </CollapsibleSection>
 
@@ -159,7 +162,7 @@ function PaleoklimaPage() {
           src="/images/fig-iskjerne.jpg"
           alt="Sylinder av blå is med tynne årlige lag og innestengte luftbobler"
           heading="Iskjernens anatomi: Luftboblene er ekte forhistorisk atmosfære"
-          caption="En borekjerne hentet opp fra flere tusen meters dyp i innlandsisen. Iskjernen gir to fundamentalt ulike typer klimainformasjon: Selve isen er frosset nedbør som fungerer som en temperaturproxy via oksygenisotoper (δ¹⁸O). De mikroskopiske luftboblene er derimot direkte, fysiske prøver av jordens forhistoriske atmosfære, forseglet uten forurensning."
+          caption="Illustrasjon. En borekjerne hentet opp fra flere tusen meters dyp i innlandsisen. Iskjernen gir to fundamentalt ulike typer klimainformasjon: Selve isen er frosset nedbør som fungerer som en temperaturproxy via oksygenisotoper (δ¹⁸O). De mikroskopiske luftboblene er derimot direkte, fysiske prøver av jordens forhistoriske atmosfære, forseglet uten forurensning."
           marks={[
             { x: 10, y: 18, n: "1", text: "Årlige snølag", tone: "cold" },
             { x: 58, y: 46, n: "2", text: "Innestengte luftbobler", tone: "teal" },
@@ -562,13 +565,12 @@ function PaleoklimaPage() {
 
         <div className="space-y-3 pt-2 text-foreground/90">
           <h4 className="font-display text-lg font-medium tracking-tight text-primary">
-            Yngre Dryas (12 800–11 600 år før nå): Da Golfstrømmen bremset
+            Yngre Dryas (12 800–11 700 år før nå): Da Golfstrømmen bremset
           </h4>
           <p>
             Under avsmeltingen av det laurentiske isdekket i Nord-Amerika ble gigantiske bresjøer som{" "}
-            <strong>Lake Agassiz</strong> demmet opp bak isrygger. Da isdemningen plutselig brast for
-            ca. 12 800 år siden, fosset hundretusener av kubikk-kilometer ferskvann ut gjennom St. Lawrence-elven
-            og inn i Nord-Atlanteren.
+            <strong>Lake Agassiz</strong> demmet opp bak isrygger. Da isdemningen brast for om lag
+            12 800 år siden, rant trolig store mengder ferskvann ut i Nord-Atlanteren.
           </p>
           <p>
             Ferskvann har lavere tetthet enn saltvann. Det la seg som et flytende «lokk» over havoverflaten og
@@ -582,7 +584,7 @@ function PaleoklimaPage() {
             Uten den nordgående varmetransporten fra Golfstrømmen stupte temperaturen i Norge og Nordvest-Europa
             med <strong>5–10 °C på under et halvt århundre</strong>. Den smeltende innlandsisen rykket fram igjen
             og skjøv opp den mektige randmorenen <strong>Raet</strong> i Norge. Da ferskvannstilførselen stanset,
-            startet AMOC opp igjen like brått for 11 600 år siden, og Holocen begynte.
+            startet AMOC opp igjen like brått for om lag 11 700 år siden, og Holocen begynte.
           </p>
         </div>
 
@@ -599,7 +601,7 @@ function PaleoklimaPage() {
             av frosne metanhydrater på havbunnen.
           </p>
           <p>
-            Resultatet var en global oppvarming på <strong>5–8 °C</strong>, massiv havforsuring og utdøing av
+            Resultatet var en global oppvarming på <strong>om lag 4–6 °C</strong>, massiv havforsuring og utdøing av
             bunnlevende arter. Det tok naturen ca. 150 000 år å fjerne dette karbonet gjennom langsom kjemisk
             forvitring av silikatbergarter.
           </p>
@@ -638,7 +640,7 @@ function PaleoklimaPage() {
 
         <OrdBoks
           ord="Yngre Dryas"
-          barn="En brå kuldeperiode for ca. 12 800–11 600 år siden. Utløst av en enorm ferskvannsflom til Nord-Atlanteren som dannet et lokk og bremset dypvannsdannelsen i AMOC. Isbreene rykket fram til Raet i Norge."
+          barn="En brå kuldeperiode for ca. 12 800–11 700 år siden. Utløst av en enorm ferskvannsflom til Nord-Atlanteren som dannet et lokk og bremset dypvannsdannelsen i AMOC. Isbreene rykket fram til Raet i Norge."
         />
         <OrdBoks
           ord="Klimafølsomhet (ECS)"
@@ -685,11 +687,11 @@ function PaleoklimaPage() {
         />
         <Term
           name="Yngre Dryas"
-          def="Brå kuldeperiode for 12 800–11 600 år siden forårsaket av bresjøtømming og AMOC-kollaps. Dannet Ra-morenen i Norge."
+          def="Brå kuldeperiode for 12 800–11 700 år siden forårsaket av bresjøtømming og AMOC-kollaps. Dannet Ra-morenen i Norge."
         />
         <Term
           name="PETM"
-          def="Massiv oppvarming for 56 mill. år siden (+5–8 °C) forårsaket av raske karbonutslipp. Viktig naturlig analog til i dag."
+          def="Massiv oppvarming for 56 mill. år siden (om lag +4–6 °C) forårsaket av raske karbonutslipp. Viktig naturlig analog til i dag."
         />
       </TermGrid>
 
@@ -733,7 +735,7 @@ function PaleoklimaPage() {
               "Dette er det klassiske speilvendte forholdet: Lett ¹⁶O fordamper lett og låses i iskapper på land under istid. Resthavet får høy δ¹⁸O, mens polarsnøen får lav δ¹⁸O pga. Rayleigh-fraksjonering.",
           },
           {
-            prompt: "Hva forårsaket den brå kuldeperioden i Yngre Dryas (12 800–11 600 år før nå)?",
+            prompt: "Hva forårsaket den brå kuldeperioden i Yngre Dryas (12 800–11 700 år før nå)?",
             options: [
               "Et asteroidenedslag som mørkla solen i 1200 år.",
               "Enorme mengder ferskvann fra bresjøer (Lake Agassiz) flommet ut i Nord-Atlanteren, la et lett lokk på overflaten og bremset dypvannsdannelsen i AMOC.",

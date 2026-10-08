@@ -92,17 +92,13 @@ function KryosfaerenPage() {
               68 % av verdens ferskvann.
             </p>
             <p className="mt-2 text-muted-foreground">
-              Dersom hele Grønlandsisen smelter, vil det globale havnivået stige med ca. <strong>7,2 meter</strong>.
+              Dersom hele Grønlandsisen smelter, vil det globale havnivået stige med ca. <strong>7,4 meter</strong> (IPCC, 2021).
               Hvis Antarktis smelter helt, stiger havet med formidable <strong>58 meter</strong>.
               På grunn av den enorme massen har disse iskappene enorm termisk treghet og reagerer over århundrer.
             </p>
           </div>
         </div>
 
-        <OrdBoks
-          ord="Eierskap mellom kapitler"
-          barn="Hvorfor istider oppstår, Milankovitch-sykluser og istidsavsetninger i Norge hører hjemme i paleoklima og kvartærgeologi. Dette kapittelet eier den aktive kryosfæren som måles og forandrer seg i dag: massebalanse, permafrost, havis og snøskred."
-        />
       </CollapsibleSection>
 
       {/* ── 2. BREMASSEBALANSE OG ELA ───────────────────────────────── */}

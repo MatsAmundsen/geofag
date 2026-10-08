@@ -133,7 +133,7 @@ function AmocPage() {
             <li>
               <strong>3. Åpenhavskonveksjon og nedsynking:</strong> Kombinasjonen av <em>svært lav temperatur</em> og
               <em>høy saltholdighet</em> gjør vannet tyngre enn de underliggende lagene. Vannsøylen blir ustabil, og
-              vannet velter ned i gigantiske roterende synletrakter (chimneys) på 2000–3500 meters dyp.
+              vannet synker ned i store konveksjonsskorsteiner (chimneys).
               Dette danner <strong>Nordatlantisk dypvann (NADW)</strong>, som strømmer sørover langs havbunnen.
             </li>
           </ol>
@@ -163,7 +163,7 @@ function AmocPage() {
 
         <ul className="list-disc space-y-1.5 pl-6 text-xs text-foreground/90">
           <li>
-            <strong>Akselerert smelting av Grønlandsisen:</strong> Grønland mister nå over 250 milliarder tonn is årlig,
+            <strong>Akselerert smelting av Grønlandsisen:</strong> Grønland mistet i snitt om lag 240 milliarder tonn is per år i 2010–2019 (IPCC, 2021),
             og smeltevannet renner ut som <em>rent ferskvann</em> i subpolare havområder.
           </li>
           <li>
@@ -278,8 +278,9 @@ function AmocPage() {
       >
         <p>
           Observasjonssystemene <strong>RAPID-MOCHA</strong> (fortøyningsbøyer langs 26,5°N) og <strong>OSNAP</strong>{" "}
-          (i subpolare Nord-Atlanteren) har overvåket AMOC direkte siden 2004. Rekonstruksjoner og måledata indikerer
-          at AMOC allerede har <strong>svekket seg med 10–15 %</strong> siden midten av 1900-tallet (Smeed et al., 2018).
+          (i subpolare Nord-Atlanteren) har overvåket AMOC direkte siden 2004. IPCC har lav sikkerhet for hvor mye AMOC
+          endret seg i det 20. århundret. AMOC vil svært sannsynlig svekkes i dette århundret, men det er middels
+          sikkerhet for at den ikke bryter brått sammen før 2100 (IPCC, 2021).
         </p>
 
         <div className="my-4 rounded-xl border border-sky-500/30 bg-sky-950/20 p-4 text-xs leading-relaxed">
@@ -302,7 +303,7 @@ function AmocPage() {
             <div className="rounded-lg border border-border bg-background/70 p-3">
               <strong className="text-primary block text-sm">🇳🇴 Norge og Nord-Europa</strong>
               <p className="mt-1 text-muted-foreground">
-                Den globale oppvarmingen motvirkes lokalt. Vintrene kan bli <strong>2–5 °C kaldere</strong> enn i dag.
+                Den globale oppvarmingen motvirkes lokalt. Vintrene kan bli kaldere enn i dag.
                 Temperaturforskjellen mellom Arktis og tropene øker, noe som forsterker stormbanene og gir mer ekstremvær
                 og kortere vekstsesong for landbruket.
               </p>
@@ -311,8 +312,9 @@ function AmocPage() {
               <strong className="text-amber-400 block text-sm">🇺🇸 USAs østkyst</strong>
               <p className="mt-1 text-muted-foreground">
                 Når strømmen svekkes, faller den dynamiske helningen på havoverflaten (som normalt trekker vann bort
-                fra kysten). Dette gir en <strong>ekstra havnivåstigning på 15–35 cm</strong> i New York, Boston og
-                Miami, uavhengig av bresmelting!
+                fra kysten). I klimamodellene gir dette{" "}
+                <strong>15–20 cm ekstra havnivåstigning</strong> i New York, Boston og Washington D.C.
+                innen 2100, i tillegg til den globale stigningen (Yin mfl., 2009).
               </p>
             </div>
             <div className="rounded-lg border border-border bg-background/70 p-3">

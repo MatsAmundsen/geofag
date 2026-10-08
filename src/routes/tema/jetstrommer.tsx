@@ -317,9 +317,9 @@ function JetstrommerPage() {
         </li>
         <li>
           <strong>Fjellkjeder som bølgeutløsere:</strong> Når jetstrømmen treffer mektige fjellkjeder
-          som Rocky Mountains i Nord-Amerika eller Andesfjellene i Sør-Amerika, presses luften opp og
-          klemmes sammen. Dette tvinger frem et stående tråg på lesiden av fjellet, som forplanter
-          seg som en bølgebevegelse hele veien over Atlanteren mot Norge.
+          som Rocky Mountains i Nord-Amerika, presses luften opp og klemmes sammen. Det gir gjerne et
+          tråg på lesiden av fjellet, og bølgemønsteret kan påvirke strømmen videre østover over
+          Atlanteren.
         </li>
       </ul>
 
@@ -444,8 +444,7 @@ function JetstrommerPage() {
         <li>
           <strong>Sommerblokkering (Hetebølger og tørke):</strong> Den skyfrie himmelen slipper
           solstrålene uhindret ned i 18–24 timer i døgnet. Sammen med subsidensvarmen gir dette
-          ekstreme hetebølger, tørke og skogbrannfare. Rekordsomrene i Sør-Norge i 2018 og 2021 var
-          klassiske eksempler på en ukelang Omega-blokk!
+          ekstreme hetebølger, tørke og skogbrannfare.
         </li>
         <li>
           <strong>Vinterblokkering (Sprengkulde og inversjon):</strong> Om vinteren er nettene lange.
@@ -502,7 +501,7 @@ function JetstrommerPage() {
             tropene krymper til under <strong>ΔT ≈ 30 °C</strong>.
             <br />
             Jetstrømmen svekkes drastisk til <strong>100–160 km/t</strong> og forskyver seg nordover
-            til <strong>65°–70°N</strong>. Lavtrykkene blir vesentlig svakere, stormbanene passerer
+            lenger nord. Lavtrykkene blir vesentlig svakere, stormbanene passerer
             nord for fastlandet mot Barentshavet, og Norge opplever roligere sommervær.
           </p>
         </div>
@@ -558,7 +557,8 @@ function JetstrommerPage() {
       <ul className="list-disc space-y-2 pl-6 text-foreground/90">
         <li>
           <strong>Hypotesen om arktisk forsterkning (Francis &amp; Vavrus):</strong> Arktis varmes opp
-          tre til fire ganger raskere enn det globale gjennomsnittet (blant annet fordi hvit sjøis
+          om lag tre til fire ganger raskere enn det globale gjennomsnittet de siste tiårene (AMAP,
+          2021; Rantanen mfl., 2022) (blant annet fordi hvit sjøis
           smelter og erstattes av mørkt hav med lavere albedo). Hypotesen sier at når Arktis varmes mest,
           krymper temperaturgradienten mot tropene nær bakken. Ifølge loven om termisk vind skal da
           polarfrontjeten svekkes. En slappere jetstrøm meandrerer lettere i dype Rossby-bølger, noe
@@ -591,7 +591,7 @@ function JetstrommerPage() {
           </li>
           <li>
             <strong>2. To jetbelter, ikke ett:</strong> Husk at det er to permanente jetbelter på hver
-            halvkule. Polarfrontjeten (55°–65°N, 9–11 km) drives av temperaturgradienten over
+            halvkule. Polarfrontjeten (ca. 50°–65°N, 9–11 km) drives av temperaturgradienten over
             polarfronten. Den subtropiske jeten (30°N, 13–16 km) drives av bevaring av vinkelmoment i
             Hadleycellen. Polar natt-jeten er noe helt annet – den ligger i stratosfæren.
           </li>
@@ -643,7 +643,7 @@ function JetstrommerPage() {
         />
         <Term
           name="Jetkjerne (Jet streak)"
-          def="Lokalt segment inne i jetstrømmen med maksimal vindhastighet, der aldersofisk vind skaper divergens og konvergens."
+          def="Lokalt segment inne i jetstrømmen med maksimal vindhastighet, der ageostrofisk vind skaper divergens og konvergens."
         />
         <Term
           name="Venstre utløp (Left exit)"
@@ -668,6 +668,7 @@ function JetstrommerPage() {
         Test deg selv: Jetstrømmer og stormbaner
       </h2>
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:

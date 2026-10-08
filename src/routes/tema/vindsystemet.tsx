@@ -41,7 +41,7 @@ function VindsystemetPage() {
       banner="/images/banner-vind.jpg"
       bannerAlt="Jordas atmosfære sett fra bane med skyformasjoner over kontinenter og hav"
       prev={{ to: "/tema/hoytrykk-lavtrykk", label: "Forrige: Høytrykk og lavtrykk" }}
-      next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
+      next={{ to: "/tema/vaerkart", label: "Neste: Værkart" }}
       kilder={KILDER.vindsystemet}
     >
       <h2 className="font-display text-2xl font-medium tracking-tight">
@@ -130,10 +130,10 @@ function VindsystemetPage() {
           polarfronten.
         </li>
         <li>
-          <strong>Ferrel-cellen (30°–60°):</strong> termisk indirekte. Den drives ikke av oppvarming
-          fra bakken, men tvinges rundt som et tannhjul mellom de to andre cellene — av friksjon og
-          vandrende lavtrykk. Lufta synker ved 30° og stiger ved 60° (NOAA, u.å.-a; Store norske
-          leksikon, u.å.-a).
+          <strong>Ferrel-cellen (30°–60°):</strong> termisk indirekte. Den drives ikke direkte av
+          oppvarming, men holdes i gang av virvler, altså vandrende lavtrykk og høytrykk i
+          vestavindsbeltet. Lufta synker ved 30° og stiger nær 60° (American Meteorological Society
+          [AMS], u.å.).
         </li>
       </ol>
 
@@ -315,34 +315,6 @@ function VindsystemetPage() {
         polene), tørker landskapet ut.
       </p>
 
-      <PhotoFigure
-        src="/images/fig-belter-globus.jpg"
-        alt="Jorda fra bane med grønt ekvatorbelte, ørkenbelte, stormer mot Skandinavia og polaris"
-        heading="Klimabeltene sett fra rommet"
-        caption="Satellittbildet viser de samme ringene: grønt ved ekvator, tørt rundt 30°, stormbaner mot Norge, is mot polen."
-        marks={[
-          { x: 6, y: 48, n: "1", text: "Tropisk regnskog (ITCZ)", tone: "teal" },
-          { x: 4, y: 32, n: "2", text: "Ørkenbelte (30° subsidens)", tone: "warm" },
-          { x: 52, y: 22, n: "3", text: "Vestavindsbeltet · Norge", tone: "cold" },
-          { x: 58, y: 8, n: "4", text: "Polarcellen og isen", tone: "fg" },
-        ]}
-        points={[
-          { n: "1", label: "ITCZ ved ekvator: skyproduksjon og tropisk regnskog." },
-          {
-            n: "2",
-            label: "Subtropene rundt 30°: subsidens og skyfrihet lager ørkenene.",
-          },
-          {
-            n: "3",
-            label:
-              "Mellombreddegradene (45–60°): lavtrykkene fra polarfronten treffer Vest-Europa.",
-          },
-          {
-            n: "4",
-            label: "Polarområdet: kald, synkende luft og tørr is.",
-          },
-        ]}
-      />
 
       <h2 className="pt-6 font-display text-2xl font-medium tracking-tight">
         Polarfronten og været over Norge
@@ -354,7 +326,7 @@ function VindsystemetPage() {
       <p>
         Over den ligger <strong>polarfrontjeten</strong> (NOAA, u.å.-c). Den bukter seg i{" "}
         <strong>Rossby-bølger</strong> — rygger og tråg — som styrer hvor lavtrykkene får gå. Den
-        fysikken, og hvorfor en rygg kan bli stående som blocking, eier kapittelet om{" "}
+        fysikken, og hvorfor en rygg kan bli stående som blocking, står i kapittelet om{" "}
         <Link to="/tema/jetstrommer" className={lenke}>
           jetstrømmer
         </Link>
@@ -486,6 +458,7 @@ function VindsystemetPage() {
 
       <h2 className="pt-8 font-display text-2xl font-medium tracking-tight">Test deg selv</h2>
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:
@@ -530,7 +503,7 @@ function VindsystemetPage() {
               "Hvorfor kalles Ferrel-cellen mellom 30° og 60° for et termisk indirekte kretsløp?",
             options: [
               "Fordi den bare eksisterer i sommerhalvåret.",
-              "Fordi den ikke drives av lokal soloppvarming fra bakken, men tvinges rundt av friksjon og virvler mellom Hadley-cellen og polarcellen.",
+              "Fordi den ikke drives direkte av oppvarming, men holdes i gang av vandrende lavtrykk og høytrykk (virvler) mellom Hadley-cellen og polarcellen.",
               "Fordi den transporterer kulde fra ekvator mot polene.",
               "Fordi den styres av månens tidevannskrefter.",
             ],

@@ -234,7 +234,7 @@ function LokalePage() {
           src="/images/fig-katabatisk.jpg"
           alt="Snøkledd dalføre i Norge med tydelig lagdeling av kald luft og frostrøyk i bunnen"
           heading="Katabatisk kaldluftsavrenning og dannelse av frostlommer"
-          caption="På stille, stjerneklare netter i norske innlandsdaler strømmer iskald luft ned fra fjellene og samler seg i dalbunnene. Dette skaper lokale frostlommer der temperaturen i bunnen kan være 10–15 °C lavere enn noen hundre meter oppe i dalsiden."
+          caption="Illustrasjon. På stille, stjerneklare netter i norske innlandsdaler strømmer iskald luft ned fra fjellene og samler seg i dalbunnene. Dette skaper lokale frostlommer der temperaturen i bunnen kan være 10–15 °C lavere enn noen hundre meter oppe i dalsiden."
           marks={[
             { x: 30, y: 25, n: "1", text: "Fjellplatå (Strålingstap)", tone: "cold" },
             { x: 42, y: 50, n: "2", text: "Katabatisk avrenning", tone: "cold" },
@@ -351,7 +351,7 @@ function LokalePage() {
           src="/images/fig-fon.jpg"
           alt="Fønvind over fjellkam med skybanke på losiden og klarblå himmel med bølgeskyer på lesiden"
           heading="Fønvind og foehn wall (fønvegg) over fjellet"
-          caption="Her ser vi fønveggen på fjellryggen: På losiden presses fuktig luft opp og danner en sammenhengende skybanke med regn. Idet luften tipper over eggen og synker ned i lesiden, varmes den opp adiabatisk slik at skyene fordampermomentant. Lesiden får tørr, varm fallvind og klar sikt."
+          caption="Illustrasjon. Her ser vi fønveggen på fjellryggen: På losiden presses fuktig luft opp og danner en sammenhengende skybanke med regn. Idet luften tipper over eggen og synker ned i lesiden, varmes den opp adiabatisk slik at skyene fordampermomentant. Lesiden får tørr, varm fallvind og klar sikt."
           marks={[
             { x: 22, y: 65, n: "A", text: "Orografisk heving & regn", tone: "cold" },
             { x: 48, y: 35, n: "B", text: "Fønvegg (Skyen kutter her)", tone: "warm" },
@@ -609,6 +609,7 @@ function LokalePage() {
       </p>
 
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:

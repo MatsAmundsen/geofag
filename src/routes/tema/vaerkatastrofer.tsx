@@ -182,8 +182,8 @@ function KatastroferPage() {
           <strong>Det adiabatiske løftet (Øyveggen):</strong> Luften stiger bratt i øyveggen.
           Vanndampen kondenserer til dråper og frigjør <strong>latent varme</strong> på hele{" "}
           <strong>2,5 millioner joule per kilo vann</strong> (2,5 &times; 10&#8310; J/kg)! Denne
-          latente energien varmer opp luften, holder den lettere enn omgivelsene, og akselererer
-          oppdriften til over 30 m/s.
+          latente energien varmer opp luften, holder den lettere enn omgivelsene, og gir sterk
+          oppdrift.
         </li>
         <li>
           <strong>Kuldreservoaret (Tropopausen ved ~200 K / -73 °C):</strong> I 15 kilometers høyde
@@ -246,8 +246,8 @@ function KatastroferPage() {
       <ol className="list-decimal space-y-2 pl-6 text-foreground/90">
         <li>
           <strong>Stormflo (Storm Surge):</strong> Havet heves og presses inn over land. Dette er
-          den historisk desidert dødeligste faktoren i tropiske orkaner (over 85 % av dødsfallene i
-          orkanen Katrina i 2005 skyldtes drukning som følge av stormflo og brudd på dikene).
+          den historisk desidert dødeligste faktoren i tropiske orkaner (i Louisiana var drukning den
+          vanligste dødsårsaken under Katrina i 2005, med om lag 40 % av dødsfallene).
         </li>
         <li>
           <strong>Ekstrem ferskvannsflom (Inland Flooding):</strong> Tropiske sykloner bærer
@@ -497,15 +497,15 @@ function KatastroferPage() {
         smal luftstrøm (typisk 20–50 km bred) som oppstår i midtre troposfære nær tuppen av det
         okkluderte skybåndet (som brodden på en skorpion). Når regn og snø fordamper i denne tørre
         luften, avkjøles den brått og akselererer ned mot bakken. Idet sting jeten treffer
-        havoverflaten på sørsiden av lavtrykket, kan den utløse vindkast på over{" "}
-        <strong>50–65 m/s (180–230 km/t)</strong>!
+        havoverflaten på sørsiden av lavtrykket, kan den gi ekstremt kraftige
+        vindkast.
       </p>
-      <p>Norge har opplevd flere historiske bombe-lavtrykk med sting jets:</p>
+      <p>Norge har opplevd flere svært kraftige lavtrykk:</p>
       <ul className="list-disc space-y-1 text-foreground/90 pl-6">
         <li>
           <strong>Nyttårsorkanen 1. januar 1992:</strong> Det mest beryktede uværet i moderne norsk
-          historie. Lavtrykket stupte til 940 hPa, og på Svinøy fyr ble det målt middelvind på 46
-          m/s og vindkast på hele <strong>62 m/s (223 km/t)</strong>. Skadene på Vestlandet og i
+          historie. På Svinøy fyr og Skalmen fyr er middelvinden beregnet til 46 m/s og
+          vindkastene anslått til <strong>62 m/s (223 km/t)</strong> (Meteorologisk institutt, 2016). Skadene på Vestlandet og i
           Trøndelag beløp seg til milliarder av kroner.
         </li>
         <li>
@@ -513,9 +513,10 @@ function KatastroferPage() {
           kuttet strøm- og telenettet for hundretusener av innbyggere.
         </li>
         <li>
-          <strong>Ekstremværet Ingunn (februar 2024):</strong> Et monsterlavtrykk der det på Kvaløya
-          i Sømna ble registrert en offisiell norgesrekord i vindkast på utrolige{" "}
-          <strong>62,3 m/s</strong> (Meteorologisk institutt, u.å.-b).
+          <strong>Ekstremværet Ingunn (31. januar–1. februar 2024):</strong> Kvaløyfjellet i Sømna
+          målte 54,4 m/s i middelvind, som er norgesrekord, og vindkast på{" "}
+          <strong>62,3 m/s</strong> (Meteorologisk institutt, 2024a). Under Amy i oktober 2025 målte
+          Mannen i Romsdal vindkast på 62,4 m/s (Meteorologisk institutt, 2025).
         </li>
       </ul>
 
@@ -545,8 +546,8 @@ function KatastroferPage() {
           °C).
         </li>
         <li>
-          Temperaturforskjellen mellom havoverflaten og luften like over kan overstige{" "}
-          <strong>35–45 °C</strong>!
+          Forskjellen mellom havtemperaturen og temperaturen i 500 hPa (om lag 6 km høyde) er gjerne
+          minst <strong>40–44 °C</strong> (Meteorologisk institutt, 2024b).
         </li>
       </ul>
       <p>
@@ -562,8 +563,8 @@ function KatastroferPage() {
       </p>
       <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
         <li>
-          <strong>Liten skala (150–300 km):</strong> De er for små til å fanges opp nøyaktig av
-          globale varslingsmodeller med grovt rutenett, og kan utvikle seg på under 6–12 timer.
+          <strong>Liten skala (de fleste 200–500 km):</strong> De er for små til å fanges opp nøyaktig
+          av globale varslingsmodeller med grovt rutenett, og de lever i snitt bare om lag 18 timer.
         </li>
         <li>
           <strong>Plutselig orkan og vindkantring:</strong> Vinden kan øke fra stille bris til full
@@ -578,7 +579,7 @@ function KatastroferPage() {
 
       <OrdBoks
         ord="Polart lavtrykk"
-        barn="Et lite, intenst marint lavtrykk (150–300 km) i polarområdene drevet av voldsom varmefluks når iskald arktisk luft strømmer ut over åpent, varmt hav (kaldluftsutbrudd). Kjennetegnes av orkan i kastene, tett snøfokk og et øye."
+        barn="Et lite, intenst marint lavtrykk (de fleste 200–500 km) i polarområdene drevet av voldsom varmefluks når iskald arktisk luft strømmer ut over åpent, varmt hav (kaldluftsutbrudd). Gir ofte kuling eller storm, tette snøbyger og et øye i senteret."
       />
 
       {/* 7. EKSTREMNEDBØR OG ATMOSFÆRISKE ELVER */}
@@ -588,14 +589,15 @@ function KatastroferPage() {
       <p>
         Norge er en av Europas våteste nasjoner, og Vestlandet er bygget for nedbør. Likevel ser vi
         en økende forekomst av ekstremnedbørhendelser som utløser omfattende flommer og jordskred
-        (som ekstremværet Hans i august 2023 og Gjerdrum-skredet i 2020) (NVE, 2024).
+        (som ekstremværet Hans i august 2023) (NVE, 2024).
       </p>
       <p>
         De mest voldsomme nedbørsepisodene drives av et fenomen kjent som{" "}
         <strong>atmosfæriske elver (Atmospheric Rivers, AR)</strong>. Dette er smale, flere tusen
         kilometer lange korridorer med konsentrert vanndamptransport i nedre troposfære som pumper
-        fuktighet fra subtropene tvers over Atlanteren mot Vest-Europa. En moden atmosfærisk elv kan
-        frakte mer enn 10–20 ganger så mye vann som Amazonas-elven!
+        fuktighet fra subtropene tvers over Atlanteren mot Vest-Europa. En gjennomsnittlig atmosfærisk elv
+        frakter omtrent like mye vann som Mississippi-elva fører ut i havet, og de sterkeste kan frakte
+        opptil 15 ganger så mye (NOAA, 2025).
       </p>
 
       <AtmosphericRiverDiagram />
@@ -659,7 +661,7 @@ function KatastroferPage() {
           havoverflaten (1013,25 hPa tilsvarer 10 tonn per m²). I et dypt lavtrykk på f.eks. 950 hPa
           veier luftsøylen over havet vesentlig mindre enn i omkringliggende høytrykk. Vekten
           letter, og havoverflaten suges opp:{" "}
-          <strong>For hver 1 hPa lufttrykket faller, heves havoverflaten med nøyaktig 1 cm!</strong>{" "}
+          <strong>For hver 1 hPa lufttrykket faller, heves havoverflaten med omtrent 1 cm!</strong>{" "}
           Et trykkfall på 63 hPa (fra 1013 til 950 hPa) gir en ren barometrisk heving på{" "}
           <strong>+63 cm</strong>.
         </li>
@@ -788,8 +790,9 @@ function KatastroferPage() {
           </ul>
         </li>
         <li>
-          <strong>Arealplanlegging og TEK17:</strong> Plan- og bygningsloven forbyr bygging i 100-
-          og 200-års flomsoner og skredutsatt terreng uten sikringstiltak.
+          <strong>Arealplanlegging og TEK17:</strong> TEK17 deler byggverk i
+          flomutsatte områder i sikkerhetsklassene F1, F2 og F3, med største årlige sannsynlighet 1/20,
+          1/200 og 1/1000.
         </li>
         <li>
           <strong>Klimatilpasning:</strong> Byer må åpne bekker i rør (gjenåpning), etablere regnbed
@@ -891,7 +894,7 @@ function KatastroferPage() {
         />
         <Term
           name="Polart lavtrykk"
-          def="Kompakt, intenst arktisk lavtrykk (150–300 km) som oppstår når kald polarluft strømmer over åpent, varmt havvann (kaldluftsutbrudd)."
+          def="Kompakt, intenst arktisk lavtrykk (de fleste 200–500 km) som oppstår når kald polarluft strømmer over åpent, varmt havvann (kaldluftsutbrudd)."
         />
         <Term
           name="Atmosfærisk elv (AR)"
@@ -920,6 +923,7 @@ function KatastroferPage() {
         Test deg selv: Værkatastrofer
       </h2>
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:
@@ -977,7 +981,7 @@ function KatastroferPage() {
               "Hvorfor er polare lavtrykk i Norskehavet og Barentshavet så notorisk farlige for kystfartøy?",
             options: [
               "Fordi de bare dannes midt på sommeren når fiskerne har ferie.",
-              "Fordi de er kompakte (150–300 km), utvikles på få timer, og gir brå vindøkning til orkan, tett snøfokk (whiteout) og alvorlig ising.",
+              "Fordi de er små (de fleste 200–500 km), kan dannes raskt og gir brå vindøkning, tette snøbyger og svært dårlig sikt.",
               "Fordi de koker havvannet slik at båtene mister oppdriften og synker.",
               "Fordi de alltid ledsages av undersjøiske tsunamier.",
             ],

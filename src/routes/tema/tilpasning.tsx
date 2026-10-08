@@ -162,7 +162,7 @@ function TilpasningPage() {
             </li>
             <li>
               <strong>Uhemmet bruk av aircondition:</strong> Kjøler ned enkeltrom under hetebølger, men blåser
-              varmen ut i bygatene (øker urban varmeøy-effekt) og overbelaster det fossile strømnettet.
+              varmen ut i bygatene (øker urban varmeøy-effekt) og øker strømforbruket.
             </li>
           </ul>
         </div>
@@ -199,7 +199,7 @@ function TilpasningPage() {
           src="/images/fig-ekstremnedbor.jpg"
           alt="Oversvømt bygate der overvann flommer over fortau og inn mot kjellervinduer"
           heading="Byhydrologisk overbelastning: Når regnet ikke finner veien ned"
-          caption="Et urbant bymiljø under et kraftig styrtregn. Tradisjonelle sluk og rørledninger under bakken er dimensjonert for fortidens klima (typisk 10–20-årsregn). Når nedbørsintensiteten overstiger rørnettets kapasitet, oppstår tilbakeslag, kumlokk presses opp av trykket, og vannet flommer inn i kjellere og næringsbygg."
+          caption="Illustrasjon. Et urbant bymiljø under et kraftig styrtregn. Tradisjonelle sluk og rørledninger under bakken er dimensjonert for fortidens klima (typisk 10–20-årsregn). Når nedbørsintensiteten overstiger rørnettets kapasitet, oppstår tilbakeslag, kumlokk presses opp av trykket, og vannet flommer inn i kjellere og næringsbygg."
           marks={[
             { x: 18, y: 35, n: "1", text: "Tett asfalt og tak (C ≈ 0,90)", tone: "low" },
             { x: 52, y: 68, n: "2", text: "Overbelastet sluk / rørnett", tone: "warm" },
@@ -368,7 +368,7 @@ function TilpasningPage() {
           src="/images/fig-erosjonssikring.jpg"
           alt="Elveløp der elvebredden er sikret med grov sprengstein (plastring) og bevart vegetasjon"
           heading="Elvesikring og flomvern: Kombinasjon av grå og naturbasert sikring"
-          caption="Et flomutsatt elveavsnitt sikret mot erosjon og oversvømmelse. NVE krever i dag at flomsikring i størst mulig grad skal bevare elvens naturlige dynamikk og økologiske funksjoner, samtidig som bebyggelse skjermes med tilstrekkelig fribord over dimensjonerende 200-årsflom."
+          caption="Illustrasjon. Et flomutsatt elveavsnitt sikret mot erosjon og oversvømmelse. NVE krever i dag at flomsikring i størst mulig grad skal bevare elvens naturlige dynamikk og økologiske funksjoner, samtidig som bebyggelse skjermes med tilstrekkelig fribord over dimensjonerende 200-årsflom."
           marks={[
             { x: 25, y: 40, n: "1", text: "Plastring med sprengstein (grå)", tone: "teal" },
             { x: 70, y: 30, n: "2", text: "Elveslette & kantvegetasjon (NBS)", tone: "cold" },
@@ -470,34 +470,6 @@ function TilpasningPage() {
           <strong>isostatisk landheving</strong> som løfter berggrunnen under føttene våre.
         </p>
 
-        <PhotoFigure
-          src="/images/fig-stormflo.jpg"
-          alt="Høye bølger og stormflo som skyller inn over en bryggekant ved kysten"
-          heading="Stormfloens anatomi: Når lavtrykk, pålandsvind og tidevann slår seg sammen"
-          caption="En stormflo i full styrke ved en norsk kystby. Vannstanden heves midlertidig av tre sammenfallende krefter: Den inverse barometereffekten fra et dypt lavtrykk, vindstuing som dytter vannmasser inn mot kysten, og astronomisk springflo når sol og måne drar i samme retning."
-          marks={[
-            { x: 20, y: 45, n: "1", text: "Vannstand over kaikanten", tone: "warm" },
-            { x: 55, y: 25, n: "2", text: "Bølgepåslag og sjøsprøyt", tone: "cold" },
-            { x: 80, y: 65, n: "3", text: "Sårbare bryggeområder (F2)", tone: "low" },
-          ]}
-          points={[
-            {
-              n: "1",
-              label:
-                "Invers barometereffekt og vindstuing: Et trykkfall på 1 hPa løfter havflaten med 1 cm. Et kraftig lavtrykk på 950 hPa løfter alene havet med ca. 60 cm, før kraftig pålandsvind stuver ytterligere 1–1,5 meter vann inn mot kysten.",
-            },
-            {
-              n: "2",
-              label:
-                "Bølger og fribord: Selve middelvannstanden under stormfloen er bare halve faren; bølgepåslag på toppen av stormflonivået knuser vinduer, undergraver kaifundamenter og slår over murer.",
-            },
-            {
-              n: "3",
-              label:
-                "Sikkerhetskrav i TEK17: Nye boliger (klasse F2) må prosjekteres med gulvhøyde over 200-års stormflo, tillagt et fribord for bølger og framtidig havnivåstigning mot år 2100.",
-            },
-          ]}
-        />
 
         <div className="space-y-3 pt-2 text-foreground/90">
           <h4 className="font-display text-lg font-medium tracking-tight text-primary">
@@ -529,7 +501,7 @@ function TilpasningPage() {
           <p className="text-xs text-muted-foreground leading-relaxed">
             Under siste istid (Weichsel) var innlandsisen på sitt tykkeste over Bottenviken og
             Østlandet. Jordskorpen ble presset hundrevis av meter ned i den seige mantelen. Da isen
-            smeltet for 10 000 år siden, begynte landet å sprette tilbake:
+            smeltet for om lag 10 000 år siden, begynte landet å sprette tilbake:
           </p>
           <div className="grid gap-3 sm:grid-cols-2 text-xs">
             <div className="rounded-lg bg-card p-3 border border-border">
@@ -647,7 +619,7 @@ function TilpasningPage() {
             Men forsikringsordningen har en grense: Den dekker skader etter at ulykken har skjedd, men
             dekker <em>ikke</em> forebyggende klimatilpasning. Hvis en kommune tillater bygging i en kjent
             flomsone i strid med NVEs råd, kan forsikringsselskapene i framtiden nekte å utbetale erstatning.
-            Klimatilpasning er derfor den mest lønnsomme investeringen et samfunn kan gjøre.
+            Klimatilpasning er derfor ofte en lønnsom investering.
           </p>
         </div>
 

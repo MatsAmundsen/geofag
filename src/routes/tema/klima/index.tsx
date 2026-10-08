@@ -24,7 +24,7 @@ function KlimaHubPage() {
     <TopicLayout
       kicker="Jordsystemet"
       title="Klima og klimasystemer"
-      lead="Denne siden er kartet. Oversikten eier stråling, pådriv og tilbakekobling. ENSO, IOD, NAO og AMOC eier hver sin svingning. Kryosfæren eier isen som jobber i år."
+      lead="Klimasystemet er luft, hav, is, land og liv som virker sammen. Herfra går du videre til stråling og tilbakekobling, de fire svingningene ENSO, IOD, NAO og AMOC, og kryosfæren."
       banner="/images/banner-klima.jpg"
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       prev={{ to: "/tema/havstrommer", label: "Forrige: Havstrømmer" }}
@@ -42,12 +42,12 @@ function KlimaHubPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">To slags spørsmål</h2>
       <p>
         Vær er dager. Klima er tiår. Mellom dem ligger to ulike spørsmål. Det første: hvordan energi
-        går inn og ut av planeten, og hva som forsterker eller demper et dytt. Det eier{" "}
+        går inn og ut av planeten, og hva som forsterker eller demper et dytt. Det står i{" "}
         <Link to="/tema/klima/oversikt" className="text-primary underline-offset-2 hover:underline">
           klimasystemet (oversikt)
         </Link>
         . Det andre: hvordan hav og luft flytter varme og nedbør uten å endre jordas totale
-        energibalanse vesentlig. Det eier de fire modusene under.
+        energibalanse vesentlig. Det handler de fire svingningene nedenfor om.
       </p>
 
       <Callout title="Leserekkefølge">
@@ -113,7 +113,7 @@ function KlimaHubPage() {
 
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
-        <Term name="Klimasystemet" def="Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren. Oversikten eier samspillet." />
+        <Term name="Klimasystemet" def="Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren." />
         <Term name="Pådriv" def="Et dytt som forskyver strålingsbalansen. Sol, vulkan, drivhusgass." />
         <Term name="Klimamodus" def="Et regelmessig mønster i hav og luft som omfordeler energi, ikke et nytt budsjett." />
         <Term name="ENSO" def="El Niño–Sørlige oscillasjon i det tropiske Stillehavet." />
@@ -149,16 +149,16 @@ function KlimaHubPage() {
               "NAO styrer trykkgradienten i Nord-Atlanteren og stormbanen inn mot Norge.",
           },
           {
-            prompt: "Hvor hører strålingsbudsjettet og tilbakekoblingene hjemme i dette kapitlet?",
+            prompt: "Hva er forskjellen på et pådriv og en tilbakekobling?",
             options: [
-              "På ENSO-siden, fordi El Niño endrer jordas energibalanse mest.",
-              "På oversiktssiden. Hubben er kartet. Modusene eier svingningene.",
-              "Bare i paleoklima.",
-              "Bare i numeriske modeller.",
+              "Et pådriv er en ytre endring som forstyrrer strålingsbalansen, for eksempel mer CO₂. En tilbakekobling er en reaksjon i klimasystemet som forsterker eller demper endringen, for eksempel is-albedo.",
+              "Et pådriv er alltid naturlig, mens en tilbakekobling alltid er menneskeskapt.",
+              "Det er to ord for det samme.",
+              "En tilbakekobling virker bare i havet.",
             ],
-            answer: 1,
+            answer: 0,
             explain:
-              "Oversikten eier inn og ut, pådriv og tilbakekobling. Modusene eier omfordeling.",
+              "Se oversikten. Et pådriv setter i gang endringen, og en tilbakekobling forsterker eller demper den.",
           },
         ]}
       />

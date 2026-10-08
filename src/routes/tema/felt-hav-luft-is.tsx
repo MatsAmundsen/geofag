@@ -438,40 +438,6 @@ function FeltG2Page() {
           </p>
         </div>
 
-        <PhotoFigure
-          src="/images/fig-hoytrykk-fjell.jpg"
-          alt="Geofagelever som graver snøgrop og gjennomfører stabilitetstest i sikkert fjellterreng"
-          heading="Feltarbeid i snødekket: Snøgrop, profilering og stabilitetsvurdering"
-          caption="Snøprofilering krever nøyaktighet og disiplin. Her graves en snøgrop i sikkert øvingsterreng under 30 graders helning for å kartlegge metamorfe lag, måle temperaturgradient og utføre en Extended Column Test (ECT)."
-          marks={[
-            { x: 35, y: 35, n: "1", text: "Trygt testterreng (<30°)", tone: "teal" },
-            { x: 48, y: 65, n: "2", text: "Vertikal snøvegg i skygge", tone: "cold" },
-            { x: 62, y: 75, n: "3", text: "Termometre hver 10. cm", tone: "warm" },
-            { x: 78, y: 55, n: "4", text: "Frisaget 90 cm ECT-søyle", tone: "low" },
-          ]}
-          points={[
-            {
-              n: "1",
-              label:
-                "Testlokaliteten må velges i trygt terreng under 30 graders helning uten utløpssoner ovenfor.",
-            },
-            {
-              n: "2",
-              label:
-                "Observasjonsveggen må holdes helt i skyggen for å forhindre at solstråling smelter krystallene.",
-            },
-            {
-              n: "3",
-              label:
-                "Kalibrerte nåltermometre stikkes inn for å plotte nøyaktig temperaturgradient (dT/dz).",
-            },
-            {
-              n: "4",
-              label:
-                "ECT-søylen sages ut med 90 cm bredde og 30 cm dybde for å teste bruddforplantningsevnen.",
-            },
-          ]}
-        />
       </CollapsibleSection>
 
       {/* ── 5. FORSKNINGSDESIGN, TRANSEKT, METADATA OG HMS ──────────────── */}
@@ -631,6 +597,7 @@ function FeltG2Page() {
       </p>
 
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:

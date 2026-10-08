@@ -59,66 +59,50 @@ function EkstremeNaoVintre() {
       {open && (
         <div className="space-y-5 border-t border-sky-500/20 px-5 py-5 text-sm leading-relaxed text-foreground/90">
           <p>
-            NAO er ikke bare en teoretisk indeks i meteorologien — den er den suverent viktigste
-            enkeltfaktoren som avgjør om en norsk vinter blir mild og stormfull eller iskald og
-            knusktørr. De siste tiårene har vi sett dramatiske eksempler på hva som skjer når
-            svingningen låser seg i ytterpunktene:
+            NAO er en av de viktigste faktorene for om en norsk vinter blir mild og våt eller kald og
+            tørr (NOAA, u.å.). Her er noen eksempler på vintre der indeksen lå langt fra null:
           </p>
 
           <div className="grid gap-3 sm:grid-cols-2">
             {/* Vinteren 2009/2010 */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-sky-400">
-                ❄️ Vinteren 2009/2010 — Ekstrem NAO− og sprengkulde
+                ❄️ Vinteren 2009/2010 — rekordlav NAO og kald vinter
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
-                Den mest ekstreme negative NAO-vinteren registrert siden målingene startet i 1821.
-                Et massivt blokkerende høytrykk parkerte over Skandinavia i tre måneder. Oslofjorden
-                frøs til is, strømforbruket og strømprisene satte historiske rekorder, og snøkaos
-                lammet London og Paris. Samtidig opplevde Vest-Grønland og Nord-Canada temperaturer{" "}
-                <strong>5–10 °C over normalen</strong> fordi høytrykket pumpet varmluft nordover på
-                sin vestside — den klassiske «seesaw»-effekten.
-              </p>
-            </div>
-
-            {/* Januar 2024 */}
-            <div className="rounded-lg border border-border/80 bg-background/60 p-4">
-              <p className="font-semibold text-sky-400">
-                🌡️ Januar 2024 — SSW og arktisk kuldesjokk (-31,1 °C i Oslo)
-              </p>
-              <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
-                I slutten av desember 2023 inntraff en plutselig stratosfærisk oppvarming (SSW) over
-                Arktis. Polarvirvelen kollapset, og to uker senere tippet NAO over i dyp negativ
-                fase. 6. januar 2024 falt temperaturen i Bjørnholt i Nordmarka til{" "}
-                <strong>-31,1 °C</strong> — den laveste temperaturen målt i Oslo kommune i moderne
-                tid. Kautokeino målte <strong>-44,0 °C</strong>.
+                Vinteren hadde den mest negative NAO-indeksen siden målingene startet i 1820-årene
+                (Osborn, 2011). I Norge var vinteren 2,5 °C kaldere enn normalen og den 11. kaldeste
+                siden 1900 (Meteorologisk institutt, 2011). Store deler av Nord-Europa fikk kulde og
+                snø.
               </p>
             </div>
 
             {/* 1989–1995 */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-amber-400">
-                🌊 1989–1995 — Super-NAO+ og historisk brevekst
+                🌊 1989–1995 — lang periode med positiv NAO og brefremstøt
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
-                En enestående serie med vedvarende positive NAO-vintre. Polarjeten sto som en
-                spyletråle mot Vestlandet, noe som utløste den voldsomme{" "}
-                <strong>Nyttårsorkanen i 1992</strong> (vindkast over 60 m/s). De enorme snømengdene
-                i fjellet førte til at maritime vestlandsbreer (Nigardsbreen og Briksdalsbreen)
-                rykket frem flere hundre meter på få år (Nesje et al., 2000).
+                Vintrene fra 1986/87 til 1994/95 hadde positiv NAO-indeks ni år på rad, og
+                1988/89 og 1994/95 er blant de høyeste i hele serien (CRU). Vestavindene var sterke,
+                og i denne perioden kom også{" "}
+                <strong>Nyttårsorkanen 1. januar 1992</strong>, med vindkast anslått til 62 m/s
+                (Meteorologisk institutt, 2016). Snørike vintre ga
+                mye snø på breene. Briksdalsbreen rykket fram om lag 300 meter fra 1987 til 1996, og
+                Nigardsbreen om lag 280 meter fra 1988 til 2003 (NVE, 2023). Massebalansen på de
+                maritime breene henger sammen med NAO (Nesje et al., 2000).
               </p>
             </div>
 
             {/* Middelhavstørke */}
             <div className="rounded-lg border border-border/80 bg-background/60 p-4">
               <p className="font-semibold text-amber-400">
-                ☀️ Middelhavets tørkekrise under sterk NAO+
+                ☀️ Tørrere vintre i Sør-Europa under NAO+
               </p>
               <p className="mt-1 text-xs text-foreground/80 sm:text-sm">
-                Når NAO+ bringer flom og mildvær til Norge, blokkerer et forsterket Azorhøytrykk
-                all atlantisk fuktighet over Sør-Europa. Vintrene 2022 og 2023 var preget av sterk
-                positiv NAO, noe som førte til at vannmagasinene i Catalonia og Sør-Spania falt
-                under 18 % kapasitet, med restriksjoner på drikkevann og krise for landbruket.
+                Når NAO+ gir mildt og vått vær i Norge, ligger stormbanen lenger nord, og Sør-Europa
+                og Middelhavsområdet får ofte tørrere vintre enn normalt (NOAA, u.å.). Langvarig tørke
+                der har likevel flere årsaker enn NAO.
               </p>
             </div>
           </div>
@@ -264,8 +248,8 @@ function NaoPage() {
       >
         <p>
           Under en positiv NAO-fase forsterkes begge de semi-permanente trykksystemene samtidig:
-          Islandslavtrykket blir usedvanlig dypt (ofte under 975 hPa), mens Azorhøytrykket blir
-          uvanlig mektig (ofte over 1035 hPa). Trykkdifferansen mellom dem kan nå over 50–60 hPa.
+          Både Islandslavtrykket og Azorhøytrykket blir sterkere enn normalt, så trykkforskjellen
+          mellom dem blir større (NOAA, u.å.).
         </p>
 
         <NaoPositivePhaseDiagram />
@@ -412,12 +396,10 @@ function NaoPage() {
               Den atlantiske vippen: Hvorfor er Grønland varm når Norge fryser?
             </h4>
             <p className="mt-1 text-sm sm:text-base">
-              Et av de mest fascinerende trekkene ved NAO− er den såkalte <em>«seesaw»-effekten</em>.
-              Når et massivt blokkerende høytrykk ligger over Skandinavia, trekker østsiden kald
-              luft sørover over Norge, mens vestsiden pumper varm atlantisk luft nordover langs
-              Grønlands vestkyst og inn i Davisstredet. Under den beryktede vinteren 2009/2010 opplevde
-              Vest-Grønland temperaturer opp mot 10 °C over normalen, mens Norge opplevde sin
-              kaldeste vinter på over 30 år!
+              Et kjent trekk ved NAO er at Vest-Grønland og Nord-Europa ofte har motsatt
+              temperaturavvik. Under NAO+ er det ofte kaldt på Vest-Grønland og mildt i Norge. Under
+              NAO− er det ofte omvendt (NOAA, u.å.). Vinteren 2009/2010 var et eksempel: Norge hadde
+              sin 11. kaldeste vinter siden 1900 (Meteorologisk institutt, 2011).
             </p>
           </div>
         </div>
@@ -470,8 +452,8 @@ function NaoPage() {
             <p className="text-sm sm:text-base">
               Som nordlig stasjon brukes vanligvis <strong>Reykjavík</strong> eller Stykkishólmur på
               Island. Som sørlig stasjon brukes oftest <strong>Ponta Delgada</strong> på Azorene
-              (for å fange det marine høytrykket) eller <strong>Lisboa</strong> i Portugal (fordi
-              måleseriene der strekker seg helt tilbake til 1821).
+              (for å fange det marine høytrykket) eller <strong>Lisboa</strong> i Portugal. Den lengste
+              serien, tilbake til 1821, bruker <strong>Gibraltar</strong> (Jones mfl., 1997).
             </p>
           </div>
 
@@ -558,8 +540,9 @@ function NaoPage() {
             eller splittes i to dattersentre (<em>vortex split</em>). De sirkumpolare vestavindene
             bremses opp og reverseres til østavinder. Dette signalet forplanter seg gradvis nedover
             gjennom atmosfæren i løpet av <strong>2–4 uker</strong>. Når signalet når overflaten,
-            kollapser Islandslavtrykket, og NAO presses inn i en dyp, langvarig negativ fase.
-            Dette er årsaken til at meteorologer ofte kan varsle streng kulde i Norge uker i forveien!
+            øker sjansen for en negativ NAO-fase i flere uker. Derfor kan en SSW gi et forvarsel om
+            økt sjanse for kalde perioder i Nord-Europa, men ikke alle SSW-er gir negativ NAO (Baldwin
+            &amp; Dunkerton, 2001).
           </p>
 
           <div className="pt-2">
@@ -578,9 +561,9 @@ function NaoPage() {
               <li>
                 <strong>El Niño:</strong> Den voldsomme konveksjonen i det sentrale og østlige
                 Stillehavet sender kraftige Rossby-bølger nordøstover over Nord-Amerika
-                (PNA-mønsteret). Disse bølgene forstyrrer ofte polarvirvelen i stratosfæren og øker
-                sannsynligheten for en <strong>negativ NAO (NAO−)</strong> og kaldere vintre i
-                Nord-Europa (Cassou, 2008).
+                (PNA-mønsteret). El Niño-vintre gir noe oftere en{" "}
+                <strong>negativ NAO (NAO−)</strong> i senvinteren og kaldere vær i Nord-Europa, men
+                sammenhengen er svak og gjelder ikke hvert år (Brönnimann, 2007).
               </li>
               <li>
                 <strong>La Niña:</strong> Kjølig hav i øst gir færre oppadgående forstyrrelser.
@@ -623,7 +606,7 @@ function NaoPage() {
             <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
               <li>
                 <strong>Under langvarig NAO+:</strong> Kraftige, iskalde vinder over Labradorhavet
-                og Grønlandshavet trekker varme ut av overflatevannet. Vannet blir tettere, synker til
+                trekker varme ut av overflatevannet. Vannet blir tettere, synker til
                 bunns og stimulerer dypvannsdannelsen. Dette kan <strong>styrke AMOC</strong> med en
                 tidsforsinkelse på 2–5 år.
               </li>
@@ -715,8 +698,8 @@ function NaoPage() {
           <strong>Sensorfavoritter:</strong>
           <br />
           • Forklar <em>«seesaw»-effekten</em>: Hvorfor opplever Vest-Grønland unormal varme når
-          Norge har sprengkulde under NAO−? (Fordi høytrykket over Norden pumper mild atlantisk luft
-          nordover på sin vestside mot Davisstredet).
+          Norge har sprengkulde under NAO−? (Fordi trykkmønsteret under NAO− gir oftere nordlig og
+          østlig luft over Nord-Europa og mildere luft mot Vest-Grønland (NOAA, u.å.).)
           <br />
           • Forklar rollen til <em>SSW (Sudden Stratospheric Warming)</em>: Hvorfor kan en
           oppvarming i stratosfæren 30 km over Nordpolen varsle sprengkulde i Norge 2–4 uker senere?
@@ -853,13 +836,13 @@ function NaoPage() {
               "Hva menes med den meteorologiske «seesaw»-effekten mellom Norge og Vest-Grønland under NAO−?",
             options: [
               "At havoverflaten stiger med 1 meter på Grønland og synker med 1 meter i Norge.",
-              "At Norge og Vest-Grønland har motsatt fortegn på temperaturavviket: når Norge har sprengkulde, har Vest-Grønland unormal varme.",
+              "At Norge og Vest-Grønland ofte har motsatt temperaturavvik: når Norge har kulde, er det ofte mildt på Vest-Grønland, og omvendt.",
               "At vindretningen veksler mellom øst og vest hvert 10. minutt.",
               "At jordskjelv på Island tipper jordskorpen mellom Grønland og Norge.",
             ],
             answer: 1,
             explain:
-              "Når et blokkerende høytrykk parkerer over Skandinavia under NAO−, trekker østsiden kald polarluft sørover over Norge, mens vestsiden pumper mild atlantisk luft nordover langs kysten av Vest-Grønland og Davisstredet.",
+              "NAO endrer hvor vestavinden og stormene går. Under NAO+ er det ofte mildt i Norge og kaldt på Vest-Grønland. Under NAO− er det ofte omvendt.",
           },
           {
             prompt:

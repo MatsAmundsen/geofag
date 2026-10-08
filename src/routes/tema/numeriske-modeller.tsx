@@ -50,7 +50,7 @@ function NumeriskeModellerPage() {
         <strong>numerisk modell</strong> er derimot en ren matematisk-fysisk simulering utført på en
         datamaskin. Atmosfæren, verdenshavene og biosfæren deles inn i milliarder av små
         beregningsvolumer, og superdatamaskinen regner ut hvordan luft- og vannmassene beveger seg,
-        sekund for sekund, basert på klassisk mekanikk og termodynamikk (ECMWF, u.å.).
+        sekund for sekund, basert på klassisk mekanikk og termodynamikk (ECMWF, u.å.-a).
       </p>
       <p>
         Idéen om å beregne været ved hjelp av matematikk ble unnfanget av den norske fysikeren og
@@ -94,7 +94,7 @@ function NumeriskeModellerPage() {
         En utbredt misforståelse blant elever er troen på at værvarsler lages ved at en datamaskin
         leter etter «lignende historiske værkart» i et arkiv. Slik fungerer ikke fysikkbaserte
         modeller. En numerisk modell løser et sett med eksakte, universelle fysiske bevaringslover,
-        kjent som <strong>primitivligningene</strong> (ECMWF, u.å.; MET, u.å.-a):
+        kjent som <strong>primitivligningene</strong> (ECMWF, u.å.-a; MET, u.å.-a):
       </p>
       <ol className="list-decimal space-y-2 pl-6 text-foreground/90">
         <li>
@@ -229,7 +229,7 @@ function NumeriskeModellerPage() {
         <li>
           <strong>Høyt i troposfæren og stratosfæren:</strong> Terrengbøyningen flates gradvis ut, og
           koordinatene går over til å bli rene, glatte isobarflater (konstant trykk) helt opp til
-          modellranden (typisk 0,01 hPa / ca. 65 km høyde).
+          modellranden (i ECMWF-modellen 0,01 hPa, om lag 80 km høyde).
         </li>
       </ul>
 
@@ -255,8 +255,8 @@ function NumeriskeModellerPage() {
         </li>
       </ul>
       <p className="font-semibold text-sky-400">
-        Resultat: $8 \times 2 = 16$ ganger mer datakraft per døgn! En økning i oppløsning krever
-        dermed eksponentielt mer kostbar superdatamaskininfrastruktur.
+        Resultat: $8 \times 2 = 16$ ganger mer datakraft per døgn! Finere oppløsning krever
+        derfor mye mer regnekraft. Kostnaden vokser raskt, men ikke eksponentielt.
       </p>
 
       {/* 4. PARAMETRISERING */}
@@ -266,7 +266,7 @@ function NumeriskeModellerPage() {
       <p>
         Uansett hvor kraftig superdatamaskin vi bygger, vil rutenettet alltid ha en nedre grense.
         Prosesser som foregår på en romlig skala som er mindre enn noen få rutenettceller, kalles{" "}
-        <strong>sub-grid prosesser</strong> (inquiry-prosesser). Disse prosessene er fullstendig
+        <strong>sub-grid prosesser</strong>. Disse prosessene er fullstendig
         usynlige for de primære bevegelsesligningene.
       </p>
       <p>
@@ -359,7 +359,10 @@ function NumeriskeModellerPage() {
 
       <DataAssimilationCycleDiagram />
 
-      <p>Analysesyklusen foregår i en kontinuerlig seks-timers sløyfe døgnet rundt:</p>
+      <p>
+        Analysesyklusen går i en sløyfe døgnet rundt. ECMWF bruker 4D-Var med et tidsvindu på 12
+        timer:
+      </p>
       <ol className="list-decimal space-y-2 pl-6 text-foreground/90">
         <li>
           <strong>Bakgrunnstilstanden («First Guess»):</strong> Modellen har en forrige sekstimers
@@ -378,9 +381,8 @@ function NumeriskeModellerPage() {
         </li>
         <li>
           <strong>Analysen (Starttilstanden):</strong> Resultatet er en ny, fullstendig og fysisk
-          konsistent starttilstand ($x_a$). Fra denne analysen starter et nytt 66-timers MEPS-varsel og
-          et 15-dagers globalt ECMWF-ensemble. Uten denne kontinuerlige justeringen ville modellen
-          drevet ut i sin egen fantasiverden på bare 3–4 døgn.
+          konsistent starttilstand ($x_a$). Fra analysen starter et nytt varsel. Uten denne justeringen
+          ville modellen raskt drive bort fra virkeligheten.
         </li>
       </ol>
 
@@ -422,7 +424,7 @@ function NumeriskeModellerPage() {
       <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
         <li>
           <strong>Døgn 0–3:</strong> Høy forutsigbarhet. Småfeil i starttilstanden er fortsatt små. Store
-          lavtrykk, vindfelt og fronter varsles med millimeterpresisjon.
+          lavtrykk, vindfelt og fronter varsles vanligvis godt.
         </li>
         <li>
           <strong>Døgn 4–7:</strong> Moderat forutsigbarhet. Feilene har vokst til regional skala.
@@ -502,8 +504,8 @@ function NumeriskeModellerPage() {
         </div>
       </div>
       <p>
-        Når du på Yr ser teksten <em>«40 % sjanse for mer enn 20 mm regn»</em>, betyr det at nøyaktig
-        20 av de 50 ensemblemedlemmene har beregnet at det vil falle mer enn 20 mm i den aktuelle
+        Når et ensemblevarsel viser <em>«40 % sjanse for mer enn 20 mm regn»</em>, betyr det at om
+        lag 4 av 10 medlemmer (for eksempel 12 av 30 i MEPS) har beregnet at det vil falle mer enn 20 mm i den aktuelle
         gridcellen. Ensemblet erstatter falsk skråsikkerhet med ekte naturvitenskapelig sannsynlighet.
       </p>
 
@@ -637,7 +639,7 @@ function NumeriskeModellerPage() {
         </li>
         <li>
           <strong>2. MEPS (Regional værmodell for Norden, 2,5 km, 30 medlemmer):</strong> Drives i et
-          nordisk samarbeid (MetCoOp) mellom Norge, Sverige, Finland og Estland. MEPS kutter ut resten
+          nordisk samarbeid (MetCoOp) mellom Norge, Sverige, Finland, Estland og Latvia. MEPS kutter ut resten
           av kloden og fokuserer all regnekraft på Norden. Modellen henter storskala værdata langs sine
           yttergrenser (randbetingelser) fra ECMWF, men beregner det lokale været med 2,5 km
           oppløsning ut til 66 timer (Yr time-for-time). Med 2,5 km fanger MEPS opp fjordkanalisering
@@ -650,8 +652,8 @@ function NumeriskeModellerPage() {
         </li>
         <li>
           <strong>4. Norkyst-800 (Kyst- og fjordhavmodell, 800 m):</strong> Henter time-for-time vind
-          og lufttrykk fra MEPS og elvevannføring fra NVE. Simulerer strøm, overflatetemperatur,
-          bølger og tidevann langs hele norskekysten med 800 meters oppløsning.
+          og lufttrykk fra MEPS og elvevannføring fra NVE. Simulerer strøm, overflatetemperatur
+          og tidevann langs hele norskekysten med 800 meters oppløsning.
         </li>
       </ul>
 
@@ -687,8 +689,8 @@ function NumeriskeModellerPage() {
               CPU-er og timer med regnetid per prognose.
             </li>
             <li>
-              <strong>Styrke:</strong> Fysisk konsistent, universell og strengt bevarende (masse og
-              energi går aldri tapt).
+              <strong>Styrke:</strong> Fysisk konsistent, universell og bygger på bevaringslover for
+              masse, bevegelsesmengde og energi.
             </li>
           </ul>
         </div>
@@ -718,7 +720,7 @@ function NumeriskeModellerPage() {
       </p>
       <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
         <li>
-          AI-modellene kan bare trenes fordi vi har 40 år med perfekte <em>reanalyser</em> produsert av
+          AI-modellene kan bare trenes fordi vi har flere tiår med <em>reanalyser</em> produsert av
           fysikkmodeller og dataassimilering.
         </li>
         <li>
@@ -830,6 +832,7 @@ function NumeriskeModellerPage() {
         Test deg selv: Numeriske modeller
       </h2>
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:
@@ -885,7 +888,7 @@ function NumeriskeModellerPage() {
           },
           {
             prompt:
-              "Hva forteller det deg når de 50 medlemmene i et ensemblevarsel (EPS) på Yr spriker voldsomt fra dag 7 og utover?",
+              "Hva forteller det deg når medlemmene i et ensemblevarsel spriker voldsomt fra dag 7 og utover?",
             options: [
               "At superdatamaskinen har tekniske problemer og må restartes.",
               "At atmosfæren har lav forutsigbarhet på grunn av kaotisk vekst av småfeil, og at varselet må tolkes som sannsynligheter (f.eks. boksplot eller prosent sjanse) fremfor et bestemt tall.",

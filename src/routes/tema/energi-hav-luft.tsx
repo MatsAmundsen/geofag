@@ -255,7 +255,7 @@ function EnergiPage() {
           src="/images/fig-passat.jpg"
           alt="Havoverflate med vindbølger under passatvindene som demonstrerer friksjon og energioverføring fra luft til hav"
           heading="Havoverflatens dynamikk: Friksjon, vindskjær og energioverføring"
-          caption="Ute over åpent hav er det ingen terrenghindringer. Vinden overfører bevegelsesenergi til overflaten gjennom friksjon, noe som bygger opp bølger samtidig som vindhastigheten i 100–150 meters navhøyde forblir ekstremt kraftig og laminær."
+          caption="Illustrasjon. Ute over åpent hav er det ingen terrenghindringer. Vinden overfører bevegelsesenergi til overflaten gjennom friksjon, noe som bygger opp bølger samtidig som vindhastigheten i 100–150 meters navhøyde forblir ekstremt kraftig og laminær."
           marks={[
             { x: 30, y: 30, n: "A", text: "Uforstyrret vindstrøm", tone: "warm" },
             { x: 50, y: 60, n: "B", text: "Grensesjikt mot hav", tone: "teal" },
@@ -616,6 +616,7 @@ function EnergiPage() {
       </p>
 
       <Quiz
+        heading={null}
         questions={[
           {
             prompt:

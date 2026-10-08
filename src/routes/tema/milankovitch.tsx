@@ -15,7 +15,7 @@ import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
-import { VideoPlaceholder } from "@/components/video-placeholder";
+
 import { KILDER } from "@/lib/kilder";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
@@ -44,11 +44,6 @@ function MilankovitchPage() {
       next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
       kilder={KILDER.milankovitch}
     >
-      <Callout title="Videooppsummering">
-        <p>
-          Lyst på en visuell gjennomgang? Nederst på denne siden finner du videoen <b>«Jordens kosmiske urverk»</b> som oppsummerer hele temaet.
-        </p>
-      </Callout>
 
       <h2 className="font-display text-2xl font-medium tracking-tight mt-8">
         1. Hva er Milankovitch-syklusen?
@@ -84,7 +79,7 @@ function MilankovitchPage() {
         >
           paleoklima
         </Link>
-        . Denne siden eier mekanismen: banen, istidsfaktorene og sporene isen etterlot i Norge.
+        . Her ser vi på mekanismen: banen, istidsfaktorene og sporene isen etterlot i Norge.
       </p>
 
       <MilankovitchCyclesDiagram />
@@ -193,7 +188,7 @@ function MilankovitchPage() {
         src="/images/fig-innstraling.jpg"
         alt="Jorda belyst av sola, med tydelig forskjell mellom belyste og skyggesider"
         heading="Innstrålingen treffer skjevt"
-        caption="Sola varmer ekvator mer enn polene. Milankovitch flytter denne skjevheten gjennom årtusener: mer eller mindre sommersol på 65 °N, nesten uten å endre totalt sollys."
+        caption="Illustrasjon. Sola varmer ekvator mer enn polene. Milankovitch flytter denne skjevheten gjennom årtusener: mer eller mindre sommersol på 65 °N, nesten uten å endre totalt sollys."
         marks={[
           { x: 8, y: 18, n: "1", text: "Ekvator får mest", tone: "warm" },
           { x: 70, y: 12, n: "2", text: "65 °N om sommeren", tone: "cold" },
@@ -296,7 +291,7 @@ function MilankovitchPage() {
         src="/images/fig-albedo.jpg"
         alt="Is og snø mot mørkt fjell og vann, med tydelig kontrast i lyshet"
         heading="Is kaster lyset tilbake"
-        caption="Høy albedo over snø og is, lav over bart fjell og åpent hav. Når innlandsisen vokser, tar jorda opp mindre solenergi. Når den smelter, tar jorda opp mer. Banen dytter. Albedoen forsterker."
+        caption="Illustrasjon. Høy albedo over snø og is, lav over bart fjell og åpent hav. Når innlandsisen vokser, tar jorda opp mindre solenergi. Når den smelter, tar jorda opp mer. Banen dytter. Albedoen forsterker."
         marks={[
           { x: 10, y: 20, n: "1", text: "Høy albedo", tone: "cold" },
           { x: 62, y: 70, n: "2", text: "Lav albedo", tone: "warm" },
@@ -311,8 +306,9 @@ function MilankovitchPage() {
         CO₂ som forsterker, ikke bryter
       </h3>
       <p>
-        I iskjerner følger CO₂ temperaturen gjennom istidssyklusene, med et kjent etterslep på
-        hundreårsskala fordi boblene lukkes sent. Det betyr ikke at CO₂ er irrelevant. Kaldt hav
+        I iskjerner følger CO₂ og temperatur hverandre tett gjennom istidssyklusene. Ved slutten av
+        siste istid endret de seg nesten samtidig. Usikkerheten er på noen hundre år, blant annet
+        fordi lufta i boblene er yngre enn isen rundt (Parrenin mfl., 2013). Det betyr ikke at CO₂ er irrelevant. Kaldt hav
         løser mer CO₂. Biologisk pumpe og omrøring i Sørishavet endres. Vegetasjon og jordsmonn
         flytter karbon. Resultatet: ca. 180–190 ppm ved siste glacialmaksimum mot ca. 280 ppm før
         industrialiseringen (Lüthi et al., 2008; IPCC, 2021). Lavere CO₂ gir svakere drivhuseffekt
@@ -425,7 +421,7 @@ function MilankovitchPage() {
         src="/images/gf1-bergarter.jpg"
         alt="Lagdelt sedimentær klippe og isskurt fjordlandskap"
         heading="Fjord er U-dal under vann"
-        caption="Isskurt kyst og dal er ikke elvas verk alene. Innlandsisen gravde tverrsnittet. Elva og havet bruker formen. De fleste norske U-dalene er fossil istidsform."
+        caption="Illustrasjon. Isskurt kyst og dal er ikke elvas verk alene. Innlandsisen gravde tverrsnittet. Elva og havet bruker formen. De fleste norske U-dalene er fossil istidsform."
         marks={[
           { x: 8, y: 28, n: "1", text: "Isskurt berg", tone: "cold" },
           { x: 55, y: 62, n: "2", text: "Dyp dal / fjord", tone: "teal" },
@@ -471,8 +467,8 @@ function MilankovitchPage() {
         barn="Høyeste nivå havet har stått etter siste istid på et gitt sted. Over den: isens løsmasser. Under: gammel sjøbunn, ofte leire."
       />
       <p>
-        Yngre dryas er også et klimaspor, ikke bare en morene. At hoppet sitter i iskjerner og
-        henger sammen med smeltevann og svekket AMOC, eier{" "}
+        Yngre dryas er også et klimaspor, ikke bare en morene. Hvordan hoppet ses i iskjerner, og
+        hvordan det henger sammen med smeltevann og svekket AMOC, står i{" "}
         <Link to="/tema/paleoklima" className="text-primary underline-offset-2 hover:underline">
           paleoklima
         </Link>
@@ -485,12 +481,6 @@ function MilankovitchPage() {
 
       <GlacialLandformsDiagram />
 
-      <VideoPlaceholder
-        topic="Milanković og istider"
-        title="Oppsummering: Jordens kosmiske urverk"
-        description="En visuell oppsummering av orbital pacemaker, forsterkermekanismer og istidssyklusene."
-        src="/videos/jordens_kosmiske_urverk.mp4"
-      />
 
       <Callout title="Kompetansemål">
         <p>

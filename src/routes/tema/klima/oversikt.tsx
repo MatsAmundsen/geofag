@@ -38,10 +38,10 @@ function KlimaOversiktPage() {
           (Utdanningsdirektoratet, 2020).
         </p>
       </Callout>
-      <Callout title="Hva denne siden eier">
+      <Callout title="På denne siden">
         <p>
           Strålingsbalanse, drivhuseffekt, pådriv og tilbakekobling. Is-albedo som forsterker.
-          Havet som varmelager. Modusene, arkivene og isen som jobber i år har egne sider.
+          Havet som varmelager.
         </p>
       </Callout>
 
@@ -87,7 +87,7 @@ function KlimaOversiktPage() {
         src="/images/fig-klimasystem.jpg"
         alt="Jorda fra verdensrommet med tynn atmosfære, hav, skyer og innlandsis"
         heading="Ett system, flere etasjer"
-        caption="Det du ser her, er klimasystemet: luft, hav, is og land i samme bilde. Ingenting av dette kjører alene."
+        caption="Illustrasjon. Det du ser her, er klimasystemet: luft, hav, is og land i samme bilde. Ingenting av dette kjører alene."
         marks={[
           { x: 4, y: 20, n: "1", text: "Atmosfære", tone: "teal" },
           { x: 8, y: 52, n: "2", text: "Hav", tone: "cold" },
@@ -130,7 +130,7 @@ function KlimaOversiktPage() {
 
       <PhotoPair
         heading="Samme jord, to ledd i energien"
-        caption="Venstre: sola treffer mest ved ekvator — det du allerede har i vindkapitlet. Høyre: den tynne glødende atmosfæren er teppet som bremser varmen på vei ut."
+        caption="Illustrasjon. Venstre: sola treffer mest ved ekvator — det du allerede har i vindkapitlet. Høyre: den tynne glødende atmosfæren er teppet som bremser varmen på vei ut."
         left={{
           src: "/images/fig-innstraling.jpg",
           alt: "Jorda belyst sterkest ved ekvator",
@@ -170,7 +170,7 @@ function KlimaOversiktPage() {
       <p>
         Hvit is kaster mye sollys tilbake. Mørkt hav tar det opp. Smelter isen, blir flaten mørkere,
         tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen — en av
-        de tydeligste forsterkerne i polarstrøk. Massebalanse, ELA og permafrost eier{" "}
+        de tydeligste forsterkerne i polarstrøk. Massebalanse, ELA og permafrost står i{" "}
         <Link to="/tema/kryosfaeren" className="text-primary underline-offset-2 hover:underline">
           kryosfæren
         </Link>
@@ -185,7 +185,7 @@ function KlimaOversiktPage() {
         src="/images/fig-albedo.jpg"
         alt="Arktisk iskant der hvit is møter mørkt åpent hav"
         heading="To flater, to utfall"
-        caption="Samme sol. Hvit is sender mye tilbake. Mørkt vann tar det opp. Når iskanten trekker seg tilbake, vinner den mørke flaten."
+        caption="Illustrasjon. Samme sol. Hvit is sender mye tilbake. Mørkt vann tar det opp. Når iskanten trekker seg tilbake, vinner den mørke flaten."
         marks={[
           { x: 8, y: 16, n: "1", text: "Is kaster tilbake", tone: "fg" },
           { x: 68, y: 38, n: "2", text: "Hav tar opp", tone: "cold", align: "right" },
@@ -215,7 +215,7 @@ function KlimaOversiktPage() {
         src="/images/fig-amoc.jpg"
         alt="Nord-Atlanteren med varm overflate nordover og kaldt dyp"
         heading="Havet som klimaminne"
-        caption="Varmt nordover i lyset, kaldt sørover i mørket. Dette er tregere enn været — og derfor en del av klimaet, ikke av ukas prognose."
+        caption="Illustrasjon. Varmt nordover i lyset, kaldt sørover i mørket. Dette er tregere enn været — og derfor en del av klimaet, ikke av ukas prognose."
         arrows={[
           { d: "M 22 22 L 58 16", tone: "warm", width: 1.3 },
           { d: "M 70 42 L 28 48", tone: "cold", width: 1.3 },
@@ -234,7 +234,7 @@ function KlimaOversiktPage() {
         Fire svingninger. Fire sider.
       </h2>
       <p>
-        Oversikten eier inn og ut. Modusene eier omfordeling. De flytter varme og nedbør uten å
+        Svingningene flytter varme og nedbør uten å
         endre jordas totale energibalanse vesentlig.
       </p>
       <ul className="list-disc space-y-2 pl-6">
@@ -330,7 +330,7 @@ function KlimaOversiktPage() {
         src="/images/fig-norge-labrador.jpg"
         alt="Norsk kyst mot isete Labrador-landskap som kontrast"
         heading="Samme bredde, ulikt klima"
-        caption="Norge er ikke mildt fordi vi ligger lenger sør. Vi er milde fordi luft og hav flytter varme hit. Endres det samspillet, endres det norske klimaet."
+        caption="Illustrasjon. Norge er ikke mildt fordi vi ligger lenger sør. Vi er milde fordi luft og hav flytter varme hit. Endres det samspillet, endres det norske klimaet."
         marks={[
           { x: 6, y: 16, n: "1", text: "Norsk kyst", tone: "teal" },
           { x: 58, y: 16, n: "2", text: "Labrador, samme bredde", tone: "cold" },
