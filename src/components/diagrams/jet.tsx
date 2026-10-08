@@ -225,7 +225,7 @@ export function JetProfileDiagram() {
               FERRELCELLE
             </L>
             <L x="485" y="326" fill={C.muted} size={10.5} anchor="middle">
-              Indirekte tannhjul
+              Indirekte, drevet av virvler
             </L>
           </g>
 
@@ -1115,7 +1115,7 @@ export function JetSeasonDiagram() {
     <Diagram
       title="Årstidsvariasjon: Vinterjet vs. Sommerjet"
       heading="Årstidene: Hvorfor stormene herjer om vinteren og stilner om sommeren"
-      caption="Temperaturforskjellen mellom ekvator og pol styrer jetstrømmens kraft (termisk vind). Til venstre: Om vinteren er polen svøpt i stummende polarnatt (-40 °C), mens tropene bader i sol (+30 °C). Temperaturkontrasten er ekstrem (ΔT ≈ 70 °C). Polarfrontjeten blir sylskarp, akselererer til over 350 km/t og forskyves sørover mot 45°–55°N. Den mater kraftige lavtrykk som styrer stormbanen rett mot Norskehavet og Vestlandet. Til høyre: Om sommeren varmer midnattssolen Arktis, og kontrasten krymper til bare ΔT ≈ 30 °C. Jetstrømmen svekkes drastisk (100–150 km/t) og trekker nordover til 65°–70°N. Været i Norge blir roligere, med svakere lavtrykk og lengre perioder med behagelig sommervær."
+      caption="Temperaturforskjellen mellom tropene og polområdene styrer hvor sterk jetstrømmen blir (termisk vind). Til venstre: Om vinteren er kontrasten stor. Polarfrontjeten blir sterkere, ligger lenger sør og styrer kraftige lavtrykk mot Norge. Til høyre: Om sommeren er kontrasten mindre. Jetstrømmen blir svakere og ligger lenger nord, og lavtrykkene blir færre og svakere."
       viewBox="0 0 940 430"
       wide
     >
@@ -1144,15 +1144,15 @@ export function JetSeasonDiagram() {
               ❄️ VINTER (Desember – Februar)
             </L>
             <L x="242" y="74" size={11.5} fill="#94a3b8" anchor="middle">
-              Ekstrem temperaturkontrast: ΔT ≈ 70 °C!
+              Stor temperaturkontrast
             </L>
 
             {/* Breddegradsnett */}
             {[
-              { y: 110, lat: "80°N · Polarnatt (-40 °C)" },
+              { y: 110, lat: "80°N · Polarnatt" },
               { y: 170, lat: "60°N · Norge" },
               { y: 230, lat: "40°N · Sør-Europa" },
-              { y: 290, lat: "20°N · Tropene (+30 °C)" },
+              { y: 290, lat: "20°N · Tropene" },
             ].map((lat) => (
               <g key={lat.lat}>
                 <line x1="55" y1={lat.y} x2="430" y2={lat.y} stroke="#1e293b" strokeWidth="1" strokeDasharray="4 4" />
@@ -1171,10 +1171,10 @@ export function JetSeasonDiagram() {
             <Arrow d="M 405 200 L 430 200" marker={m.teal} color="#38bdf8" width={3.6} />
 
             <L x="180" y="185" fill="#f8fafc" size={12} weight={900}>
-              Kraftig vinterjet: 250–400 km/t
+              Kraftig vinterjet
             </L>
             <L x="180" y="222" fill="#7dd3fc" size={11} weight={700}>
-              Trukket sørover (ca. 45°–55°N)
+              Trukket sørover
             </L>
 
             {/* Norge markør */}
@@ -1206,15 +1206,15 @@ export function JetSeasonDiagram() {
               ☀️ SOMMER (Juni – August)
             </L>
             <L x="227" y="74" size={11.5} fill="#cbd5e1" anchor="middle">
-              Liten temperaturkontrast: ΔT ≈ 30 °C
+              Liten temperaturkontrast
             </L>
 
             {/* Breddegradsnett */}
             {[
-              { y: 110, lat: "80°N · Midnattssol (+5 °C)" },
+              { y: 110, lat: "80°N · Midnattssol" },
               { y: 170, lat: "60°N · Norge" },
               { y: 230, lat: "40°N · Sør-Europa" },
-              { y: 290, lat: "20°N · Tropene (+35 °C)" },
+              { y: 290, lat: "20°N · Tropene" },
             ].map((lat) => (
               <g key={lat.lat}>
                 <line x1="40" y1={lat.y} x2="415" y2={lat.y} stroke="#2a3d4f" strokeWidth="1" strokeDasharray="4 4" />
@@ -1233,10 +1233,10 @@ export function JetSeasonDiagram() {
             <Arrow d="M 390 145 L 415 145" marker={m.teal} color="#38bdf8" width={2.8} />
 
             <L x="160" y="132" fill="#fbbf24" size={12} weight={800}>
-              Svakere sommerjet: 100–160 km/t
+              Svakere sommerjet
             </L>
             <L x="160" y="166" fill="#bae6fd" size={11} weight={700}>
-              Trukket nordover (ca. 65°–70°N)
+              Trukket nordover
             </L>
 
             {/* Norge markør */}

@@ -1302,6 +1302,19 @@ export const KILDER = {
   ],
   kryosfaeren: [
     {
+      prefix: "AMAP. (2021). ",
+      italic: "Arctic climate change update 2021: Key trends and impacts",
+      suffix: ".",
+      href: "https://www.amap.no/documents/doc/arctic-climate-change-update-2021-key-trends-and-impacts/3594",
+    },
+    {
+      prefix:
+        "Rantanen, M. mfl. (2022). The Arctic has warmed nearly four times faster than the globe since 1979. ",
+      italic: "Communications Earth & Environment, 3",
+      suffix: ", 168.",
+      href: "https://doi.org/10.1038/s43247-022-00498-3",
+    },
+    {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
       italic: "Glaciological investigations in Norway 2022",
       suffix: " (NVE Rapport 26/2023). NVE.",

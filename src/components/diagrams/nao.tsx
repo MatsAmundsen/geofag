@@ -192,7 +192,7 @@ export function NaoInteractiveSimulator() {
                 </g>
                 <circle cx="0" cy="0" r="24" fill="#1c1917" stroke="#ef4444" strokeWidth="2.5" />
                 <text x="0" y="7" fill="#ef4444" fontSize="19" fontWeight="900" textAnchor="middle" fontFamily={font}>L</text>
-                <text x="0" y="38" fill="#fca5a5" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>975 hPa</text>
+                <text x="0" y="38" fill="#fca5a5" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>Dypere lavtrykk</text>
                 <text x="0" y="50" fill="#fca5a5" opacity="0.8" fontSize="10" textAnchor="middle" fontFamily={font}>Ekstremt dypt</text>
               </g>
 
@@ -206,7 +206,7 @@ export function NaoInteractiveSimulator() {
                 </g>
                 <circle cx="0" cy="0" r="24" fill="#14291e" stroke="#22c55e" strokeWidth="2.5" />
                 <text x="0" y="7" fill="#22c55e" fontSize="19" fontWeight="900" textAnchor="middle" fontFamily={font}>H</text>
-                <text x="0" y="38" fill="#86efac" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>1035 hPa</text>
+                <text x="0" y="38" fill="#86efac" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>Sterkere høytrykk</text>
                 <text x="0" y="50" fill="#86efac" opacity="0.8" fontSize="10" textAnchor="middle" fontFamily={font}>Svært kraftig</text>
               </g>
 
@@ -522,13 +522,13 @@ export function NaoPhasesComparisonDiagram() {
           <circle cx="215" cy="145" r="38" fill="none" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="5 3" opacity="0.8" />
           <circle cx="215" cy="145" r="22" fill="#1f1416" stroke="#ef4444" strokeWidth="2.2" />
           <L x="215" y="152" fill="#ef4444" size={18} weight={900} anchor="middle">L</L>
-          <L x="215" y="174" fill="#fca5a5" size={10} weight={800} anchor="middle">975 hPa (Dypt)</L>
+          <L x="215" y="174" fill="#fca5a5" size={10} weight={800} anchor="middle">Dypere lavtrykk</L>
 
           {/* Azorhøytrykk H */}
           <circle cx="170" cy="285" r="42" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.8" />
           <circle cx="170" cy="285" r="22" fill="#13241b" stroke="#22c55e" strokeWidth="2.2" />
           <L x="170" y="292" fill="#22c55e" size={18} weight={900} anchor="middle">H</L>
-          <L x="170" y="314" fill="#86efac" size={10} weight={800} anchor="middle">1035 hPa (Sterkt)</L>
+          <L x="170" y="314" fill="#86efac" size={10} weight={800} anchor="middle">Sterkere høytrykk</L>
 
           {/* Trykkgradientpil */}
           <Arrow d="M 180 260 L 205 175" marker={m.warm} color="#f59e0b" width={2.5} />
@@ -753,7 +753,7 @@ export function NaoPositivePhaseDiagram() {
     <Diagram
       title="Positiv NAO (NAO+): Sonal motorvei mot Norge"
       heading="Figur 3. Positiv NAO (NAO+) — Sonal motorvei og mildt kystvær"
-      caption="Under NAO+ forsterkes både Islandslavtrykket (<975 hPa) og Azorhøytrykket (>1035 hPa). Den bratte trykkgradienten (ofte >50–60 hPa) driver en rett, sonal polarjet i over 200 km/t mot Nord-Europa. Lavtrykk etter lavtrykk pumpes rett inn mot Vestlandet og Norskehavet med mild maritim luft, kyststormer og voldsom orografisk nedbør (snø i høyfjellet og brevekst). Samtidig skyter Azorhøytrykket en kile østover som gir vintertørke i Middelhavet."
+      caption="Under NAO+ blir både Islandslavtrykket og Azorhøytrykket sterkere enn normalt. Den store trykkforskjellen gir sterk vestavind og en stormbane rett mot Nord-Europa. Lavtrykk etter lavtrykk fører mild, fuktig luft inn mot Vestlandet, med storm og mye nedbør, og mye snø i fjellet. Sør-Europa og Middelhavet får ofte tørrere vintre."
       viewBox="0 0 900 430"
       wide
     >
@@ -772,7 +772,7 @@ export function NaoPositivePhaseDiagram() {
           <ellipse cx="460" cy="140" rx="60" ry="42" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeDasharray="4 3" opacity="0.85" />
           <circle cx="460" cy="140" r="24" fill="#201317" stroke="#ef4444" strokeWidth="2.5" />
           <L x="460" y="148" fill="#ef4444" size={20} weight={900} anchor="middle">L</L>
-          <L x="460" y="174" fill="#fca5a5" size={11} weight={800} anchor="middle">975 hPa</L>
+          <L x="460" y="174" fill="#fca5a5" size={11} weight={800} anchor="middle">Dypere lavtrykk</L>
           <L x="460" y="187" fill="#fca5a5" size={9} anchor="middle">Islandslavtrykket (Ekstremt dypt)</L>
 
           {/* Isobar-ringer for Azorhøytrykk H */}
@@ -781,7 +781,7 @@ export function NaoPositivePhaseDiagram() {
           <ellipse cx="370" cy="330" rx="65" ry="42" fill="none" stroke="#22c55e" strokeWidth="1.8" strokeDasharray="6 3" opacity="0.85" />
           <circle cx="370" cy="330" r="24" fill="#13241b" stroke="#22c55e" strokeWidth="2.5" />
           <L x="370" y="338" fill="#22c55e" size={20} weight={900} anchor="middle">H</L>
-          <L x="370" y="364" fill="#86efac" size={11} weight={800} anchor="middle">1035 hPa</L>
+          <L x="370" y="364" fill="#86efac" size={11} weight={800} anchor="middle">Sterkere høytrykk</L>
           <L x="370" y="377" fill="#86efac" size={9} anchor="middle">Azorhøytrykket (Ekstra mektig)</L>
 
           {/* Gradientpil */}
@@ -896,9 +896,9 @@ export function NaoNegativePhaseDiagram() {
           {/* Norge infoboks */}
           <rect x="640" y="240" width="220" height="75" rx="6" fill="#0f2638" stroke="#38bdf8" strokeWidth="1.5" />
           <L x="750" y="258" fill="#7dd3fc" size={12} weight={800} anchor="middle">Norge under NAO−:</L>
-          <L x="750" y="274" fill="#e0f2fe" size={10} anchor="middle">• Sprengkulde (−20 til −35 °C)</L>
+          <L x="750" y="274" fill="#e0f2fe" size={10} anchor="middle">• Kaldere enn normalt</L>
           <L x="750" y="288" fill="#e0f2fe" size={10} anchor="middle">• Tørt, klart og bakkeinversjon</L>
-          <L x="750" y="302" fill="#e0f2fe" size={10} anchor="middle">• Frosne vannrør & strømprissjokk</L>
+          <L x="750" y="302" fill="#e0f2fe" size={10} anchor="middle">• Stormbanen ligger lenger sør</L>
 
           {/* Sør-Europa infoboks */}
           <rect x="45" y="330" width="220" height="70" rx="6" fill="#1c2535" stroke="#38bdf8" strokeWidth="1.2" />
@@ -909,191 +909,6 @@ export function NaoNegativePhaseDiagram() {
         </>
       )}
     </Diagram>
-  );
-}
-
-/**
- * NaoTimeSeriesDiagram:
- * Viser den historiske vinter-NAO-indeksen (DJFM) fra 1950 til 2024.
- * Illustrerer multidekadiske svingninger, Super-NAO+ på 1990-tallet,
- * bunnrekorden i 2010 og SSW-kulden i 2024.
- */
-export function NaoTimeSeriesDiagram() {
-  const [selectedEvent, setSelectedEvent] = useState<string | null>("2010");
-
-  // Representativ standardisert vinter-NAO-indeks (Hurrell DJFM stasjonsindeks / PC-indeks)
-  const timeData = [
-    { year: 1950, val: 0.8 },
-    { year: 1952, val: 0.4 },
-    { year: 1954, val: -0.6 },
-    { year: 1956, val: -1.4 },
-    { year: 1958, val: -1.2 },
-    { year: 1960, val: -1.5 },
-    { year: 1962, val: -1.8 },
-    { year: 1963, val: -2.8 },
-    { year: 1965, val: -1.9 },
-    { year: 1967, val: -0.8 },
-    { year: 1969, val: -2.2 },
-    { year: 1971, val: -0.5 },
-    { year: 1973, val: 1.2 },
-    { year: 1975, val: 0.6 },
-    { year: 1977, val: -1.1 },
-    { year: 1979, val: -1.6 },
-    { year: 1981, val: 0.3 },
-    { year: 1983, val: 1.8 },
-    { year: 1985, val: -1.2 },
-    { year: 1987, val: -0.4 },
-    { year: 1989, val: 3.1 },
-    { year: 1990, val: 2.9 },
-    { year: 1992, val: 2.5 },
-    { year: 1993, val: 2.8 },
-    { year: 1994, val: 2.3 },
-    { year: 1995, val: 3.0 },
-    { year: 1996, val: -2.6 },
-    { year: 1998, val: 0.7 },
-    { year: 2000, val: 2.1 },
-    { year: 2002, val: 0.9 },
-    { year: 2004, val: -0.3 },
-    { year: 2006, val: -0.5 },
-    { year: 2008, val: 1.4 },
-    { year: 2010, val: -3.4 },
-    { year: 2011, val: -1.8 },
-    { year: 2012, val: 1.9 },
-    { year: 2014, val: 1.5 },
-    { year: 2015, val: 2.3 },
-    { year: 2017, val: 0.8 },
-    { year: 2019, val: 1.4 },
-    { year: 2020, val: 2.6 },
-    { year: 2021, val: -0.7 },
-    { year: 2023, val: 0.5 },
-    { year: 2024, val: -1.5 },
-  ];
-
-  return (
-    <div className="space-y-4">
-      <FigureFrame
-        heading="Historisk tidsserie: Vinter-NAO-indeksen (DJFM) fra 1950 til i dag"
-        caption="Diagrammet viser den normaliserte vinter-NAO-indeksen (desember–mars) basert på målinger av trykkdifferansen mellom Azorene/Lisboa og Island. Oransje stolper indikerer positive faser (NAO+) dominert av kraftig vestavind, mildvær og nedbør over Norge. Blå stolper indikerer negative faser (NAO−) dominert av blokkerende høytrykk og streng sibirkulde. Legg merke til de vedvarende kalde 1960-årene, den historiske 'Super-NAO+'-perioden 1989–1995, og den absolutte bunnrekorden under vinteren 2009/2010."
-      >
-        <div className="space-y-4">
-          <svg viewBox="0 0 920 360" className="mx-auto h-auto w-full max-w-5xl select-none" role="img">
-            {/* Bakgrunn */}
-            <rect width="920" height="360" fill="#0f171c" rx="8" />
-
-            {/* Rutenett og akser */}
-            <line x1="60" y1="50" x2="880" y2="50" stroke="#1e2c38" strokeDasharray="3 3" />
-            <text x="50" y="54" fill="#64748b" fontSize="10" textAnchor="end" fontFamily={font}>+3 σ</text>
-
-            <line x1="60" y1="100" x2="880" y2="100" stroke="#1e2c38" strokeDasharray="3 3" />
-            <text x="50" y="104" fill="#64748b" fontSize="10" textAnchor="end" fontFamily={font}>+2 σ</text>
-
-            <line x1="60" y1="150" x2="880" y2="150" stroke="#1e2c38" strokeDasharray="3 3" />
-            <text x="50" y="154" fill="#64748b" fontSize="10" textAnchor="end" fontFamily={font}>+1 σ</text>
-
-            {/* 0-linje */}
-            <line x1="60" y1="200" x2="880" y2="200" stroke="#475569" strokeWidth="1.5" />
-            <text x="50" y="204" fill="#94a3b8" fontSize="11" fontWeight="700" textAnchor="end" fontFamily={font}>0</text>
-
-            <line x1="60" y1="250" x2="880" y2="250" stroke="#1e2c38" strokeDasharray="3 3" />
-            <text x="50" y="254" fill="#64748b" fontSize="10" textAnchor="end" fontFamily={font}>−1 σ</text>
-
-            <line x1="60" y1="300" x2="880" y2="300" stroke="#1e2c38" strokeDasharray="3 3" />
-            <text x="50" y="304" fill="#64748b" fontSize="10" textAnchor="end" fontFamily={font}>−2 σ</text>
-
-            {/* Stolper */}
-            {timeData.map((d, i) => {
-              const x = 70 + (i / (timeData.length - 1)) * 790;
-              const barWidth = 11;
-              const isPos = d.val >= 0;
-              const barH = Math.abs(d.val) * 50;
-              const y = isPos ? 200 - barH : 200;
-
-              const isKey1995 = d.year >= 1989 && d.year <= 1995;
-              const isKey2010 = d.year === 2010;
-              const isKey2024 = d.year === 2024;
-
-              return (
-                <g key={`bar-${d.year}`} className="cursor-pointer" onClick={() => setSelectedEvent(d.year.toString())}>
-                  <rect
-                    x={x - barWidth / 2}
-                    y={y}
-                    width={barWidth}
-                    height={Math.max(barH, 2)}
-                    rx="2"
-                    fill={
-                      isKey2010
-                        ? "#0284c7"
-                        : isKey1995
-                        ? "#f59e0b"
-                        : isPos
-                        ? "#d97706"
-                        : "#38bdf8"
-                    }
-                    opacity={isKey2010 || isKey1995 || isKey2024 ? 1 : 0.75}
-                  />
-                  {d.year % 10 === 0 && (
-                    <text x={x} y="335" fill="#94a3b8" fontSize="10" textAnchor="middle" fontFamily={font}>
-                      {d.year}
-                    </text>
-                  )}
-                </g>
-              );
-            })}
-
-            {/* Fremhevede markører og etiketter */}
-            {/* 1960-årene */}
-            <rect x="150" y="270" width="80" height="20" rx="3" fill="#082336" stroke="#38bdf8" strokeWidth="1" />
-            <text x="190" y="284" fill="#7dd3fc" fontSize="9" fontWeight="700" textAnchor="middle" fontFamily={font}>
-              Kalde 1960-år
-            </text>
-
-            {/* 1989–1995 Super-NAO+ */}
-            <rect x="430" y="20" width="135" height="24" rx="4" fill="#2d1c0b" stroke="#f59e0b" strokeWidth="1.2" />
-            <text x="497" y="36" fill="#fef08a" fontSize="10" fontWeight="800" textAnchor="middle" fontFamily={font}>
-              1989–1995: Super-NAO+ 🌊
-            </text>
-            <path d="M 497 45 L 497 58" stroke="#f59e0b" strokeWidth="1.5" />
-
-            {/* 2010 Rekord-NAO- */}
-            <rect x="625" y="315" width="145" height="24" rx="4" fill="#082336" stroke="#38bdf8" strokeWidth="1.2" />
-            <text x="697" y="331" fill="#bae6fd" fontSize="10" fontWeight="800" textAnchor="middle" fontFamily={font}>
-              2010: Bunnrekord (−3,41) ❄️
-            </text>
-            <path d="M 697 314 L 697 302" stroke="#38bdf8" strokeWidth="1.5" />
-
-            {/* 2024 SSW */}
-            <rect x="800" y="240" width="105" height="22" rx="4" fill="#1b2432" stroke="#38bdf8" strokeWidth="1" />
-            <text x="852" y="255" fill="#7dd3fc" fontSize="9" fontWeight="800" textAnchor="middle" fontFamily={font}>
-              2024: SSW-kulde 🌡️
-            </text>
-          </svg>
-
-          {/* Forklarende infokort for historiske ekstremer */}
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-lg border border-amber-500/40 bg-amber-500/5 p-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-500">1989–1995 · Super-NAO+</span>
-              <p className="mt-1 text-xs text-foreground/80 leading-relaxed">
-                Den lengste sammenhengende perioden med ekstrem positiv NAO i moderne tid. Mildt, stormfullt (Nyttårsorkanen 1992), og enorme snømengder i fjellet som fikk maritime vestlandsbreer til å rykke frem flere hundre meter.
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-sky-500/40 bg-sky-500/5 p-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-sky-400">2009/2010 · Tidenes bunnrekord</span>
-              <p className="mt-1 text-xs text-foreground/80 leading-relaxed">
-                Vinter-NAO-indeksen stupte til historiske −3,41. Et massivt kvasistasjonært høytrykk parkerte over Skandinavia i tre måneder. Oslofjorden frøs til, strømprisene eksploderte, og London/Paris opplevde snøkaos.
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-teal-500/40 bg-teal-500/5 p-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Januar 2024 · SSW-effekten</span>
-              <p className="mt-1 text-xs text-foreground/80 leading-relaxed">
-                Stratosfærisk oppvarming i romjulen 2023 forstyrret polarvirvelen og tippet NAO inn i en dyp negativ fase to uker senere. 6. januar 2024 falt temperaturen til −31,1 °C i Oslo og −44,0 °C i Kautokeino.
-              </p>
-            </div>
-          </div>
-        </div>
-      </FigureFrame>
-    </div>
   );
 }
 

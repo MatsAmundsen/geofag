@@ -556,10 +556,10 @@ function JetstrommerPage() {
       </p>
       <ul className="list-disc space-y-2 pl-6 text-foreground/90">
         <li>
-          <strong>Hypotesen om arktisk forsterkning (Francis &amp; Vavrus):</strong> Arktis varmes opp
-          om lag tre til fire ganger raskere enn det globale gjennomsnittet de siste tiårene (AMAP,
-          2021; Rantanen mfl., 2022) (blant annet fordi hvit sjøis
-          smelter og erstattes av mørkt hav med lavere albedo). Hypotesen sier at når Arktis varmes mest,
+          <strong>Hypotesen om arktisk forsterkning (Francis &amp; Vavrus):</strong> Arktis har de siste
+          tiårene blitt varmet opp om lag tre til fire ganger raskere enn det globale gjennomsnittet
+          (AMAP, 2021; Rantanen mfl., 2022). Dette kalles arktisk forsterkning (Arctic amplification).
+          Hypotesen sier at når Arktis varmes mest,
           krymper temperaturgradienten mot tropene nær bakken. Ifølge loven om termisk vind skal da
           polarfrontjeten svekkes. En slappere jetstrøm meandrerer lettere i dype Rossby-bølger, noe
           som skulle gi flere fastlåste blokkeringer, lengre tørkeperioder og flere arktiske kuldeutbrudd.

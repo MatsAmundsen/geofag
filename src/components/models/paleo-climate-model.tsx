@@ -84,7 +84,7 @@ export function PaleoClimateIsotopeModel() {
       desc: "Rask smelting av isdekket. Bjørk og reinrose etablerte seg langs kysten av Norge. Smeltevannet begynte å fylle forsenkninger.",
     },
     {
-      age: "12 800–11 600 år f.nå",
+      age: "12 800–11 700 år før nå",
       name: "Yngre Dryas (kuldehopp)",
       dt: -4.5,
       co2: 235,

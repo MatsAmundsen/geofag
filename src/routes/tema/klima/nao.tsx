@@ -9,7 +9,6 @@ import {
   NaoDomainDiagram,
   NaoPositivePhaseDiagram,
   NaoNegativePhaseDiagram,
-  NaoTimeSeriesDiagram,
   NaoSswBreakdownDiagram,
   NaoBlockeringDiagram,
   NaoRossbyDiagram,
@@ -278,8 +277,8 @@ function NaoPage() {
             <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
               <li>
                 <strong>Milde temperaturer:</strong> Kontinuerlig tilførsel av maritim luftmasse fra
-                Atlanterhavet fortrenger den kalde arktiske luften. Vintertemperaturene kan ligge
-                2–5 °C over klimanormalen.
+                Atlanterhavet fortrenger den kalde arktiske luften. Vintertemperaturene blir ofte høyere
+                enn normalt.
               </li>
               <li>
                 <strong>Voldsom nedbør og orografisk heving:</strong> Når den fuktige vestavinden
@@ -471,8 +470,6 @@ function NaoPage() {
               seg fra år til år.
             </p>
           </div>
-
-          <NaoTimeSeriesDiagram />
 
           <div className="rounded-lg border border-border/70 bg-card/70 p-4 sm:p-5">
             <h4 className="font-display text-base font-semibold tracking-tight text-primary">

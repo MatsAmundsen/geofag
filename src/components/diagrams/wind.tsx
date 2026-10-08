@@ -331,7 +331,7 @@ export function WindCellsDiagram() {
     <Diagram
       title="De tre sirkulasjonscellene på nordlig halvkule"
       heading="De tre cellene: Hadley, Ferrel og Polarcellen i helhetlig tverrsnitt"
-      caption="Sirkulasjonen på nordlig halvkule er organisert i tre distinkte celler: 1) Hadleycellen (0°–30°N, termisk direkte): Varm, fuktig luft stiger voldsomt ved ITCZ, danner dype tordenskyer, strømmer nordover i høyden og synker ned over subtropene ved 30° (hestebreddegradene). Ved bakken blåser returen som nordøstpassaten. 2) Ferrelcellen (30°–60°N, termisk indirekte): Fungerer som et gigantisk mekanisk tannhjul drevet av lavtrykkene langs polarfronten. Ved bakken danner den det milde, fuktige vestavindsbeltet. 3) Polarcellen (60°–90°N, termisk direkte): Iskald luft synker over Arktis (polarhøytrykket) og strømmer sørover som polare østavinder. Tropopausen faller i to markerte trinn (tropopausebrudd): Her finner vi henholdsvis den subtropiske jetstrømmen (STJ ved 30°) og polarfrontjeten (PFJ ved 60°)."
+      caption="Sirkulasjonen på nordlig halvkule er organisert i tre distinkte celler: 1) Hadleycellen (0°–30°N, termisk direkte): Varm, fuktig luft stiger voldsomt ved ITCZ, danner dype tordenskyer, strømmer nordover i høyden og synker ned over subtropene ved 30° (hestebreddegradene). Ved bakken blåser returen som nordøstpassaten. 2) Ferrelcellen (30°–60°N, termisk indirekte): Holdes i gang av virvler, altså vandrende lavtrykk og høytrykk langs polarfronten. Ved bakken danner den det milde, fuktige vestavindsbeltet. 3) Polarcellen (60°–90°N, termisk direkte): Iskald luft synker over Arktis (polarhøytrykket) og strømmer sørover som polare østavinder. Tropopausen faller i to markerte trinn (tropopausebrudd): Her finner vi henholdsvis den subtropiske jetstrømmen (STJ ved 30°) og polarfrontjeten (PFJ ved 60°)."
       viewBox="0 0 940 500"
       wide
     >
@@ -445,7 +445,7 @@ export function WindCellsDiagram() {
             FERREL-CELLEN
           </L>
           <L x="490" y="230" fill={C.sand} size={11} weight={700} anchor="middle">
-            Termisk indirekte (30°–60°N) · Mekanisk tannhjul
+            Termisk indirekte (30°–60°N) · drevet av virvler
           </L>
 
           {/* ============================================================== */}

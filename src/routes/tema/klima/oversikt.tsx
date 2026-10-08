@@ -119,7 +119,7 @@ function KlimaOversiktPage() {
       />
       <OrdBoks
         ord="Strålingspådriv"
-        barn="Et dytt som forskyver balansen mellom stråling inn og ut. Solen kan dytte. Vulkaner kan dytte. Drivhusgasser kan dytte. Et positivt pådriv varmer. Et negativt kjøler."
+        barn="En endring som forskyver balansen mellom stråling inn og ut. Den kan komme fra sola, vulkaner eller drivhusgasser. Et positivt pådriv varmer, og et negativt kjøler."
       />
       <p>
         Globalt middel i toppen av atmosfæren er omtrent 340 W/m² inn. Rundt 30 prosent kastes
@@ -146,11 +146,11 @@ function KlimaOversiktPage() {
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
-        Pådriv dytter. Tilbakekobling forsterker eller demper.
+        Pådriv og tilbakekobling
       </h2>
       <p>
-        Et pådriv er det første dytet. En tilbakekobling er systemets svar. Noen svar forsterker
-        dytten. Noen svekker den.
+        Et pådriv setter i gang en endring. En tilbakekobling er klimasystemets reaksjon, og den kan
+        forsterke eller dempe endringen.
       </p>
       <p>
         Vanndamp er den sterkeste drivhusgassen i lufta — men den er i hovedsak en forsterker, ikke
@@ -309,7 +309,7 @@ function KlimaOversiktPage() {
       </p>
       <OrdBoks
         ord="Antropogen"
-        barn="Menneskeskapt. Antropogen klimapåvirkning er dytten fra våre utslipp og arealbruk, oppå den naturlige variasjonen."
+        barn="Menneskeskapt. Antropogen klimapåvirkning er pådrivet fra utslippene og arealbruken vår, i tillegg til den naturlige variasjonen."
       />
 
       <h2 className="pt-2 font-display text-2xl font-medium tracking-tight">
@@ -346,9 +346,10 @@ function KlimaOversiktPage() {
 
       <Callout title="Til eksamen">
         <p>
-          Skill vær og klima. Skill pådriv og tilbakekobling. Vanndamp forsterker, karbondioksid
-          dytter. ENSO, IOD og NAO er naturlige svingninger, ikke synonymt med global oppvarming.
-          Norges milde kyst er vestavind pluss hav — AMOC inkludert.
+          Skill vær og klima. Skill pådriv og tilbakekobling. Vanndamp er en tilbakekobling, og
+          karbondioksid er et pådriv. ENSO, IOD og NAO er naturlige svingninger, ikke det samme som
+          global oppvarming. Norge har mild kyst på grunn av vestavinden og det varme havet, og AMOC
+          er en del av det.
         </p>
       </Callout>
 
@@ -363,8 +364,8 @@ function KlimaOversiktPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Klima" def="Værmønster over tiår, ikke enkeltuker." />
-        <Term name="Strålingspådriv" def="Dytt som forskyver inn og ut av energi." />
-        <Term name="Tilbakekobling" def="Svar som forsterker eller demper dytten." />
+        <Term name="Strålingspådriv" def="Endring som forskyver balansen mellom energi inn og ut." />
+        <Term name="Tilbakekobling" def="Reaksjon som forsterker eller demper endringen." />
         <Term name="Albedo" def="Andel sollys som kastes tilbake." />
         <Term name="ENSO" def="Naturlig svingning i tropisk Stillehav." />
         <Term name="Antropogen" def="Menneskeskapt påvirkning." />
@@ -387,7 +388,7 @@ function KlimaOversiktPage() {
             prompt: "Hvorfor er vanndamp mest en tilbakekobling, ikke det første pådrivet?",
             options: [
               "Fordi vanndamp ikke er en drivhusgass.",
-              "Fordi mengden vanndamp i lufta styres av temperaturen. Dytten kommer fra noe annet — for eksempel mer karbondioksid.",
+              "Fordi mengden vanndamp i lufta styres av temperaturen. Endringen settes i gang av noe annet, for eksempel mer karbondioksid.",
               "Fordi vanndamp bare finnes over hav.",
               "Fordi den ikke påvirker stråling.",
             ],

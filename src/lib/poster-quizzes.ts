@@ -265,13 +265,13 @@ export const QUIZ_ISTIDER: QuizQuestion[] = [
   {
     prompt: "Når sluttet siste istid, ifølge Store norske leksikon?",
     options: [
-      "For 11 600 år siden.",
+      "For 11 700 år siden.",
       "For 20 000 år siden, som er siste istids maksimum.",
       "I 1976, da havbunnsstudien ble publisert.",
     ],
     answer: 0,
     explain:
-      "Se «Hvorfor istidene kommer». 20 000 år er siste istids maksimum. 11 600 år er slutten på siste istid.",
+      "Se «Hvorfor istidene kommer». 20 000 år er siste istids maksimum. 11 700 år er slutten på siste istid.",
   },
 ];
 

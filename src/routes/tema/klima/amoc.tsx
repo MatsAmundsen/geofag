@@ -297,15 +297,14 @@ function AmocPage() {
 
         <div className="rounded-xl border border-border/70 bg-card p-4 space-y-3 text-xs leading-relaxed">
           <h4 className="font-display font-semibold text-sm text-foreground">
-            Hva skjer dersom AMOC fortsetter å svekkes kraftig?
+            Hva skjer hvis AMOC svekkes kraftig eller bryter sammen?
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="rounded-lg border border-border bg-background/70 p-3">
               <strong className="text-primary block text-sm">🇳🇴 Norge og Nord-Europa</strong>
               <p className="mt-1 text-muted-foreground">
-                Den globale oppvarmingen motvirkes lokalt. Vintrene kan bli kaldere enn i dag.
-                Temperaturforskjellen mellom Arktis og tropene øker, noe som forsterker stormbanene og gir mer ekstremvær
-                og kortere vekstsesong for landbruket.
+                En svakere AMOC demper oppvarmingen rundt Nord-Atlanteren. Hvis AMOC skulle bryte sammen, ville det
+                svært sannsynlig gi brå endringer i vær og nedbør, blant annet tørrere Europa (IPCC, 2021).
               </p>
             </div>
             <div className="rounded-lg border border-border bg-background/70 p-3">
@@ -320,9 +319,7 @@ function AmocPage() {
             <div className="rounded-lg border border-border bg-background/70 p-3">
               <strong className="text-rose-400 block text-sm">🌍 Tropene og Sahel</strong>
               <p className="mt-1 text-muted-foreground">
-                Uten varmetransport nordover blir den sørlige halvkule relativt varmere enn den nordlige.
-                <strong>ITCZ (det tropiske regnbeltet) forskyves sørover</strong>, noe som kan gi katastrofal tørke
-                i Sahel i Afrika og forstyrre monsunregnet som milliarder av mennesker i Asia er avhengige av.
+                Det tropiske regnbeltet (ITCZ) forskyves sørover, og monsunene i Afrika og Asia svekkes (IPCC, 2021).
               </p>
             </div>
           </div>

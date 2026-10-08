@@ -337,8 +337,9 @@ function KryosfaerenPage() {
             <li>Neste vår smelter den tynne isen enda raskere, og syklusen forsterker seg selv!</li>
           </ol>
           <p className="mt-2 text-primary font-medium">
-            Dette er hovedårsaken til <strong>arktisk forsterkning (Arctic amplification)</strong>: Arktis har de siste
-            tiårene blitt varmet opp tre til fire ganger raskere enn det globale gjennomsnittet!
+            Arktis har de siste tiårene blitt varmet opp om lag tre til fire ganger raskere enn det globale
+            gjennomsnittet (AMAP, 2021; Rantanen mfl., 2022). Dette kalles{" "}
+            <strong>arktisk forsterkning (Arctic amplification)</strong>.
           </p>
         </div>
       </CollapsibleSection>

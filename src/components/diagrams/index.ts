@@ -34,7 +34,6 @@ export {
   NaoDomainDiagram,
   NaoPositivePhaseDiagram,
   NaoNegativePhaseDiagram,
-  NaoTimeSeriesDiagram,
   NaoSswBreakdownDiagram,
   NaoBlockeringDiagram,
   NaoRossbyDiagram,

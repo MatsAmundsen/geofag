@@ -42,7 +42,7 @@ function KlimaHubPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">To slags spørsmål</h2>
       <p>
         Vær er dager. Klima er tiår. Mellom dem ligger to ulike spørsmål. Det første: hvordan energi
-        går inn og ut av planeten, og hva som forsterker eller demper et dytt. Det står i{" "}
+        går inn og ut av planeten, og hva som forsterker eller demper en endring. Det står i{" "}
         <Link to="/tema/klima/oversikt" className="text-primary underline-offset-2 hover:underline">
           klimasystemet (oversikt)
         </Link>
@@ -114,7 +114,7 @@ function KlimaHubPage() {
       <h2 className="font-display text-2xl font-medium tracking-tight">Viktige begreper</h2>
       <TermGrid>
         <Term name="Klimasystemet" def="Atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren." />
-        <Term name="Pådriv" def="Et dytt som forskyver strålingsbalansen. Sol, vulkan, drivhusgass." />
+        <Term name="Pådriv" def="En ytre endring som forskyver strålingsbalansen, for eksempel fra sola, vulkaner eller drivhusgasser." />
         <Term name="Klimamodus" def="Et regelmessig mønster i hav og luft som omfordeler energi, ikke et nytt budsjett." />
         <Term name="ENSO" def="El Niño–Sørlige oscillasjon i det tropiske Stillehavet." />
         <Term name="IOD" def="Den indiske hav-dipolen." />
