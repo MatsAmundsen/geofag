@@ -57,13 +57,14 @@ function JetstrommerPage() {
       </p>
       <ul className="list-disc space-y-1.5 pl-6 text-foreground/90">
         <li>
-          <strong>Typisk marsjhastighet:</strong> Vinden i kjernen ligger vanligvis mellom{" "}
-          <strong>150 og 250 km/t</strong> (40–70 m/s).
+          <strong>Vindfart:</strong> Meteorologer markerer en jetstrøm der vinden er minst 50 knop,
+          om lag 90 km/t (AMS, u.å.). I kjernen kan vinden komme opp i over 440 km/t, og
+          jetstrømmene er sterkest om vinteren (NOAA, u.å.-a).
         </li>
         <li>
           <strong>Ekstreme vinterkjerner:</strong> Når temperaturkontrasten mellom polisen og
-          tropene er på sitt skarpeste midtvinters, kan vindfarten over Japan og Nord-Atlanteren
-          passere <strong>400–450 km/t</strong> (&gt;120 m/s) – raskere enn et japansk Shinkansen-lyntog!
+          tropene er på sitt skarpeste midtvinters, blir vinden i kjernen aller sterkest, for
+          eksempel over Japan og Nord-Atlanteren.
         </li>
         <li>
           <strong>Vestavindsretning:</strong> På begge halvkuler blåser jetstrømmene nesten alltid{" "}
@@ -85,7 +86,7 @@ function JetstrommerPage() {
         Wasaburo Oishi, som slapp opp pilotballonger nær Fuji-fjellet. Men fenomenet ble verdenskjent
         under andre verdenskrig: Da amerikanske B-29 bombefly skulle fly vestover mot Japan i 10
         kilometers høyde, opplevde pilotene at flyene nærmest sto stille i forhold til bakken. De
-        hadde fløyet rett inn i en motvind på over 250 km/t som ingen inntil da visste eksisterte.
+        hadde fløyet rett inn i en kraftig motvind som ingen inntil da visste eksisterte.
       </p>
       <p>
         I dag er internasjonal luftfart helt avhengig av å navigere etter jetstrømmen:
@@ -348,7 +349,7 @@ function JetstrommerPage() {
       <ol className="list-decimal space-y-2.5 pl-6 text-foreground/90">
         <li>
           <strong>Innløpet (Entrance region):</strong> Luften strømmer inn i kjernen og må{" "}
-          <strong>akselerere</strong> fra f.eks. 150 km/t til 300 km/t. I akselerasjonsfasen henger
+          <strong>akselerere</strong> opp til den høyere farten i kjernen. I akselerasjonsfasen henger
           Corioliskraften litt etter trykkgradientkraften. Luften tvinges på tvers av jeten mot lavt
           trykk (mot nord).
         </li>
@@ -448,9 +449,10 @@ function JetstrommerPage() {
         </li>
         <li>
           <strong>Vinterblokkering (kulde og inversjon):</strong> Om vinteren er nettene lange.
-          Den skyfrie himmelen gir katastrofalt stort varmetap ved langbølget stråling. Kald luft fra
-          Russland og Nordishavet samler seg i dalbunnene som dype <strong>temperaturinversjoner</strong>{" "}
-          (-25 °C til -40 °C på Røros, Tynset og Finnmarksvidda), mens vedrøyk og svevestøv stenges inne.
+          Under skyfri himmel taper bakken mye varme ved langbølget utstråling. Lufta nær bakken blir
+          avkjølt, og den kalde, tunge lufta renner ned og samler seg i dalbunnene som dype
+          temperaturinversjoner, for eksempel på Røros, Tynset og Finnmarksvidda. Vedrøyk og
+          svevestøv blir da stengt inne.
         </li>
         <li>
           <strong>Flomkatastrofer i Sør-Europa:</strong> Mens Norge bader i sol under blokka,
@@ -486,7 +488,7 @@ function JetstrommerPage() {
             temperaturen faller under -40 °C. Samtidig mottar tropene rikelig med solvarme (+30 °C).
             Temperaturforskjellen er kolossal: <strong>ΔT ≈ 70 °C!</strong>
             <br />
-            Polarfrontjeten blir sylskarp, akselererer til over <strong>350–400 km/t</strong>, og
+            Polarfrontjeten blir sylskarp og <strong>sterkere</strong>, og den
             trekker sørover til ca. <strong>45°–55°N</strong>. Stormbanen peker rett mot Norskehavet,
             og Norge bombarderes av voldsomme vinterorkaner.
           </p>
@@ -500,7 +502,7 @@ function JetstrommerPage() {
             landmassene varmes opp til plussgrader (+5 til +15 °C). Temperaturforskjellen mot
             tropene krymper til under <strong>ΔT ≈ 30 °C</strong>.
             <br />
-            Jetstrømmen svekkes drastisk til <strong>100–160 km/t</strong> og forskyver seg nordover
+            Jetstrømmen <strong>svekkes drastisk</strong> og forskyver seg
             lenger nord. Lavtrykkene blir vesentlig svakere, stormbanene passerer
             nord for fastlandet mot Barentshavet, og Norge opplever roligere sommervær.
           </p>
@@ -616,7 +618,7 @@ function JetstrommerPage() {
       <TermGrid>
         <Term
           name="Jetstrøm"
-          def="Smalt, rørformet belte med ekstrem vestavind i øvre troposfære (150–400 km/t), dannet over store temperaturkontraster."
+          def="Smalt, rørformet belte med ekstrem vestavind i øvre troposfære, dannet over store temperaturkontraster."
         />
         <Term
           name="Polarfrontjeten (PFJ)"

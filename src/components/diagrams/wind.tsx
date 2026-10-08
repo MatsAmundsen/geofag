@@ -1239,7 +1239,7 @@ export function JetStreamDiagram() {
           <ellipse cx="470" cy="95" rx="80" ry="24" fill="#ef4444" opacity="0.85" />
 
           <L x="470" y="92" fill="#ffffff" size={14} weight={900} anchor="middle">
-            ⊗ JETKJERNE (&gt; 250 km/t)
+            ⊗ JETKJERNE
           </L>
           <L x="470" y="108" fill="#fef08a" size={11} weight={700} anchor="middle">
             Vindretning fra vest mot øst (inn i planet)

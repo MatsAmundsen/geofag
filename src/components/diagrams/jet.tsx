@@ -280,7 +280,7 @@ export function JetProfileDiagram() {
               POLARFRONTJETEN (PFJ)
             </L>
             <L x="0" y="38" fill="#38bdf8" size={11} weight={800} anchor="middle">
-              9–11 km · 200–400 km/t
+              8–12 km
             </L>
             <L x="0" y="52" fill="#cbd5e1" size={10} weight={600} anchor="middle">
               Styrer lavtrykkene mot Norge!
@@ -473,7 +473,7 @@ export function ThermalWindDiagram() {
             {/* Jetkjernepunkt */}
             <circle cx="270" cy="150" r="8" fill="#38bdf8" stroke="#ffffff" strokeWidth="2.2" />
             <L x="260" y="172" fill="#38bdf8" size={12} weight={800} anchor="end">
-              Jetkjerne (250–350 km/t)
+              Jetkjerne
             </L>
 
             <L x="165" y="74" fill={C.muted} size={10.5} weight={600}>
@@ -785,7 +785,7 @@ export function JetStreakDiagram() {
           <path d="M 120 130 L 820 130" fill="none" stroke="#ffffff" strokeWidth="2.2" className="model-wind-fast" />
 
           <L x="470" y="134" fill="#ffffff" size={12} weight={900} anchor="middle">
-            VINDMAKSIMUM (&gt;300 km/t)
+            VINDMAKSIMUM
           </L>
 
           {/* INNLØP OG UTLØP MERKER */}
