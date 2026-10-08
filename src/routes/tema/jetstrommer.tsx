@@ -447,9 +447,9 @@ function JetstrommerPage() {
           ekstreme hetebølger, tørke og skogbrannfare.
         </li>
         <li>
-          <strong>Vinterblokkering (Sprengkulde og inversjon):</strong> Om vinteren er nettene lange.
-          Den skyfrie himmelen gir katastrofalt stort varmetap ved langbølget stråling. Iskald luft
-          fra Sibir og Arktis samler seg i dalbunnene som dype <strong>temperaturinversjoner</strong>{" "}
+          <strong>Vinterblokkering (kulde og inversjon):</strong> Om vinteren er nettene lange.
+          Den skyfrie himmelen gir katastrofalt stort varmetap ved langbølget stråling. Kald luft fra
+          Russland og Nordishavet samler seg i dalbunnene som dype <strong>temperaturinversjoner</strong>{" "}
           (-25 °C til -40 °C på Røros, Tynset og Finnmarksvidda), mens vedrøyk og svevestøv stenges inne.
         </li>
         <li>
@@ -461,7 +461,7 @@ function JetstrommerPage() {
 
       <OrdBoks
         ord="Omega-blokk (Ω)"
-        barn="En kvasistasjonær blokkeringssituasjon der en høytrykksrygg deler jetstrømmen i to som bokstaven Ω. Låser været i ukesvis og gir tørke/hete om sommeren eller sprengkulde om vinteren."
+        barn="En kvasistasjonær blokkeringssituasjon der en høytrykksrygg deler jetstrømmen i to som bokstaven Ω. Låser været i ukesvis og gir tørke/hete om sommeren eller kaldere vær enn normalt om vinteren."
       />
 
       <JetBlockingDiagram />
@@ -677,7 +677,7 @@ function JetstrommerPage() {
             options: [
               "Fordi solen står opp i øst og trekker luften med seg.",
               "Fordi varm luft over tropene utvider seg og skaper en trykkgradient i høyden mot polene, som Corioliskraften avbøyer 90° mot øst.",
-              "Fordi friksjonen mot jordoverflaten dytter luften østover i stratosfæren.",
+              "Fordi friksjonen mot jordoverflaten skyver luften østover i stratosfæren.",
               "Fordi passatvindene ved bakken snur brått retning ved 1000 meters høyde.",
             ],
             answer: 1,

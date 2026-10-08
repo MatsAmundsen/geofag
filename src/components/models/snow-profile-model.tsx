@@ -159,7 +159,7 @@ export function SnowProfileModel() {
                 className="w-full accent-primary"
               />
               <div className="flex justify-between text-[10px] text-muted-foreground">
-                <span>Ekstrem sprengkulde (-25 °C)</span>
+                <span>Svært kaldt (-25 °C)</span>
                 <span>Mild vinterdag (-2 °C)</span>
               </div>
             </div>

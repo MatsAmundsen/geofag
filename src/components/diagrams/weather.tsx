@@ -440,7 +440,7 @@ export function FrontCrossSectionDiagram() {
     <Diagram
       title="Frontenes vertikalsnitt: varmfront vs. kaldfront"
       heading="Skyrekkefølge, helning og nedbørsmønster"
-      caption="Frontene er grensene der ulike luftmasser møtes. Varmfronten (øverst) har en slak helning (1:150 til 1:200). Varmluften glir langsomt oppover over den kalde luften, og danner et forvarsel av fjærskyer (Cirrus) opptil 1000 km i forkant. Nedbøren faller fra Nimbostratus i et bredt, jevnt belte (300–400 km). Kaldfronten (nederst) har en bratt helning (1:50) og dytter seg frem som en kile under varmluften. Dette kaster varmluften brått til værs og utløser veldige bygeskyer (Cumulonimbus) med kraftige byger, torden og vindkast i et smalt belte (50–100 km)."
+      caption="Frontene er grensene der ulike luftmasser møtes. Varmfronten (øverst) har en slak helning (1:150 til 1:200). Varmluften glir langsomt oppover over den kalde luften, og danner et forvarsel av fjærskyer (Cirrus) opptil 1000 km i forkant. Nedbøren faller fra Nimbostratus i et bredt, jevnt belte (300–400 km). Kaldfronten (nederst) har en bratt helning (1:50) og skyver seg frem som en kile under varmluften. Dette kaster varmluften brått til værs og utløser veldige bygeskyer (Cumulonimbus) med kraftige byger, torden og vindkast i et smalt belte (50–100 km)."
       viewBox="0 0 920 500"
       wide
     >
@@ -517,14 +517,14 @@ export function FrontCrossSectionDiagram() {
           {/* Bakkelinje */}
           <line x1="40" y1="450" x2="880" y2="450" stroke={C.dim} strokeWidth="1.5" />
 
-          {/* Kald kile som dytter under varmluften */}
+          {/* Kald kile som skyver seg under varmluften */}
           <path d="M 40 450 L 480 450 Q 450 350 380 290 L 40 290 Z" fill="#162c3d" />
           <L x="180" y="410" fill={C.cold} size={14} weight={800}>
             Kald luftmasse (tett & rask)
           </L>
           <Arrow d="M 260 415 L 430 415" marker={m.cold} color={C.cold} width={3.2} />
 
-          {/* Varmluft dyttes bratt til værs */}
+          {/* Varmluft løftes bratt til værs */}
           <path d="M 480 450 Q 450 350 380 290 L 880 290 L 880 450 Z" fill="#2c1a16" opacity="0.4" />
           <L x="680" y="410" fill={C.warm} size={14} weight={800}>
             Varm luftmasse
@@ -644,7 +644,7 @@ export function HurricaneStructureDiagram() {
             Øyveggen (Eyewall)
           </L>
           <L x="270" y="200" fill="#fff" size={11} weight={700} anchor="middle">
-            Sterkeste vind (&gt; 200 km/t)
+            Sterkeste vind
           </L>
           <L x="270" y="218" fill={C.rain} size={11} anchor="middle">
             Maksimal konveksjon & regn
@@ -654,7 +654,7 @@ export function HurricaneStructureDiagram() {
             Øyveggen (Eyewall)
           </L>
           <L x="610" y="200" fill="#fff" size={11} weight={700} anchor="middle">
-            Sterkeste vind (&gt; 200 km/t)
+            Sterkeste vind
           </L>
           <L x="610" y="218" fill={C.rain} size={11} anchor="middle">
             Maksimal konveksjon & regn

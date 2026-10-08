@@ -259,7 +259,7 @@ export function JetProfileDiagram() {
               SUBTROPISK JET (STJ)
             </L>
             <L x="0" y="35" fill="#fbbf24" size={10.5} weight={700} anchor="middle">
-              13–16 km · ~200 km/t
+              13–16 km
             </L>
             <L x="0" y="48" fill={C.muted} size={9.5} anchor="middle">
               Drevet av vinkelmoment
@@ -513,7 +513,7 @@ export function JetFormsDiagram() {
     <Diagram
       title="Zonal vs. meridional jetstrøm: Rossby-bølger og norsk vær"
       heading="Zonal vs. meridional strøm: Hvorfor jetens form avgjør ukens vær"
-      caption="Formen på jetstrømmen avgjør om Norge får uker med mildt vestlandsregn eller langvarige ekstremperioder. Kart A (venstre) viser en zonal strøm: Jetstrømmen blåser i en stram, rettlinjet korridor fra vest mot øst. De atlantiske lavtrykkene raser hurtig forbi, og været skifter raskt med mild, fuktig luft. Kart B (høyre) viser en meridional strøm med store Rossby-bølger. I en bølgedal (tråg) stuper iskald arktisk luft sørover over Norge og gir sprengkulde. I en bølgetopp (rygg) pumpes varm luft nordover, luften synker og danner stabilt klarvær eller hetebølger. Rossby-bølgene beveger seg svært langsomt, og været kan 'låse seg' i ukevis."
+      caption="Formen på jetstrømmen avgjør om Norge får uker med mildt vestlandsregn eller langvarige ekstremperioder. Kart A (venstre) viser en zonal strøm: Jetstrømmen blåser i en stram, rettlinjet korridor fra vest mot øst. De atlantiske lavtrykkene raser hurtig forbi, og været skifter raskt med mild, fuktig luft. Kart B (høyre) viser en meridional strøm med store Rossby-bølger. I en bølgedal (tråg) strømmer kald arktisk luft sørover over Norge, og det blir kaldere enn normalt. I en bølgetopp (rygg) pumpes varm luft nordover, luften synker og danner stabilt klarvær eller hetebølger. Rossby-bølgene beveger seg svært langsomt, og været kan 'låse seg' i ukevis."
       viewBox="0 0 940 460"
       wide
     >

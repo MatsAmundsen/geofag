@@ -371,7 +371,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «corioliseffekten»?">
       <p>
         Corioliseffekten er avbøyningen av en bevegelse sett fra den roterende jorda. Den er ikke en
-        reell kraft som dytter på lufta. På den nordlige halvkule bøyer bevegelsen av mot høyre, på
+        reell kraft som virker på lufta. På den nordlige halvkule bøyer bevegelsen av mot høyre, på
         den sørlige mot venstre, og ved ekvator er avbøyningen null.
       </p>
     </Callout>
@@ -445,7 +445,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       <p>
         Et pådriv er en endring som påvirker hvor mye energi som kommer inn eller går ut. Da kan
         temperaturen stige eller falle. En tilbakekobling er systemets svar, som kan forsterke eller
-        svekke dytten (NASA, 2009).
+        svekke endringen (NASA, 2009).
       </p>
     </Callout>
   ),

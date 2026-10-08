@@ -347,7 +347,7 @@ function NumeriskeModellerPage() {
       </p>
       <p>
         Hvorfor kan vi ikke bare overskrive rutenettpunktene direkte med de ferske målingene der vi har
-        dem? Fordi atmosfæren er i en finstemt hydrostatisk og geostrofisk balanse. Hvis du brått dytter
+        dem? Fordi atmosfæren er i en finstemt hydrostatisk og geostrofisk balanse. Hvis du brått setter
         inn en måling på 1008 hPa i et punkt omgitt av modellpunkter på 1015 hPa, skaper du en enorm,
         kunstig trykkgradient over null avstand. Modellen reagerer med å sende ut voldsomme, kunstige
         sjokkbølger (akustiske gravitasjonsbølger) som «blåser opp» hele prognosen.

@@ -235,11 +235,11 @@ function HavstrommerPage() {
             <ul className="mt-2 list-disc pl-5 space-y-1 text-muted-foreground">
               <li>
                 <strong>Nordlig halvkule, vestkyst (f.eks. California):</strong> Nordavind blåser sørover
-                $\to$ Ekman dytter vann mot vest (ut i Stillehavet) $\to$ Oppvelling!
+                $\to$ Ekman-transporten fører vann mot vest (ut i Stillehavet) $\to$ Oppvelling!
               </li>
               <li>
                 <strong>Sørlig halvkule, vestkyst (f.eks. Peru / Humboldt):</strong> Sønnavind blåser nordover
-                $\to$ Ekman dytter vann mot venstre (vest) $\to$ Verdens kraftigste oppvelling!
+                $\to$ Ekman-transporten fører vann mot venstre (vest) $\to$ Verdens kraftigste oppvelling!
               </li>
             </ul>
             <p className="mt-2 text-emerald-200">
@@ -533,7 +533,7 @@ function HavstrommerPage() {
               ],
               answer: 1,
               explain:
-                "I en ren geostrofisk strøm er trykkgradientkraften (som vil dytte vannet nedover bakken) i likevekt med Corioliskraften (som avbøyer vannet). Strømmen flyter dermed parallelt med kotehøydene.",
+                "I en ren geostrofisk strøm er trykkgradientkraften (som vil trekke vannet nedover bakken) i likevekt med Corioliskraften (som avbøyer vannet). Strømmen flyter dermed parallelt med kotehøydene.",
             },
             {
               prompt: "Hvorfor er Golfstrømmen så mye smalere og raskere enn Kanaristrømmen (vestlig randintensivering)?",

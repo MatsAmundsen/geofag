@@ -82,7 +82,7 @@ function CoriolisPage() {
       <p>
         Fordi denne avbøyningen utelukkende skyldes vårt eget roterende ståsted, kaller fysikere og
         meteorologer Corioliskraften for en <strong>treghetskraft</strong> eller en{" "}
-        <strong>fiktiv kraft</strong> (pseudo-kraft). Det finnes ingen fysisk gjenstand som dytter på
+        <strong>fiktiv kraft</strong> (pseudo-kraft). Det finnes ingen fysisk gjenstand som skyver på
         luften; effekten oppstår utelukkende fordi koordinatsystemet vårt spinner (Met Office, u.å.).
       </p>
 
@@ -732,7 +732,7 @@ function CoriolisPage() {
             prompt:
               "Hvorfor avbøyes også en vind som blåser rett mot ØST mot høyre (sørover mot ekvator) på nordlig halvkule?",
             options: [
-              "Fordi luften treffer fjellkjeder som dytter den sørover.",
+              "Fordi luften treffer fjellkjeder som skyver den sørover.",
               "Fordi vind mot øst øker rotasjonsfarten rundt jordaksen; den økte sentrifugalkraften kaster luften ut fra aksen, noe som gir en overflatekomponent mot ekvator.",
               "Fordi ekvator har sterkere gravitasjon enn polene.",
               "Det er feil; bare nord-sør-vinder avbøyes av Coriolis.",

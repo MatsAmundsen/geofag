@@ -786,7 +786,7 @@ export const QUIZ_KLIMA: QuizQuestion[] = [
   {
     prompt: "Hva skiller indre dynamikk fra ytre pådriv?",
     options: [
-      "Indre dynamikk er variasjon i systemet selv. Ytre pådriv er et dytt utenfra, som vulkan, sol, bane eller menneskelig endring.",
+      "Indre dynamikk er variasjon i systemet selv. Ytre pådriv er en endring utenfra, som vulkan, sol, bane eller menneskelig endring.",
       "Begge er det samme som oppvarmingstrenden.",
       "Ytre pådriv er bare været fra dag til dag.",
     ],
@@ -976,7 +976,7 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
     options: [
       "Tidevannskrefter fra månen som trekker kontinentene vestover.",
       "Platetrekk (slab pull): Kald og gammel havbunnsskorpe omdannes til tung eklogitt og synker under egen vekt i subduksjonssonen.",
-      "Friksjonsdrag fra vinder i troposfæren som dytter på fjellkjedene.",
+      "Friksjonsdrag fra vinder i troposfæren som skyver på fjellkjedene.",
       "Sentrifugalkraft fra jordas rotasjon som kaster platene mot ekvator.",
     ],
     answer: 1,
@@ -1047,9 +1047,9 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
   {
     prompt: "Hvordan virker drivkraften ryggskyv (ridge push)?",
     options: [
-      "Magma presses ut som fra en sprøyte og dytter kontinentene sideveis.",
+      "Magma presses ut som fra en sprøyte og skyver kontinentene sideveis.",
       "Det er en gravitasjonsglidning der den hevede, varme midthavsryggen (2–3 km over dyphavssletten) sklir nedover skråningen under egen vekt.",
-      "Bølger på havoverflaten dytter mot vulkantoppene.",
+      "Bølger på havoverflaten skyver mot vulkantoppene.",
       "Kontinentene suger til seg havbunnsskorpen ved elektrostatisk tiltrekning.",
     ],
     answer: 1,
@@ -1857,7 +1857,7 @@ export const QUIZ_CORIOLIS: QuizQuestion[] = [
     ],
     answer: 0,
     explain:
-      "Se «Hva er corioliseffekten?». Avbøyningen kommer av rotasjonen, ikke av en reell kraft som dytter på lufta.",
+      "Se «Hva er corioliseffekten?». Avbøyningen kommer av rotasjonen, ikke av en reell kraft som virker på lufta.",
   },
   {
     prompt: "Hvor er den horisontale avbøyningen null?",
