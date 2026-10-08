@@ -365,15 +365,6 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-    NaoForklaring: () => (
-    <Callout title="Hva betyr «NAO»?">
-      <p>
-        NAO er den nordatlantiske oscillasjonen. Det er svingningen i trykkforskjellen mellom
-        lavtrykket ved Island og høytrykket ved Asorene. Når forskjellen er stor, blir jetstrømmen
-        over Atlanteren sterkere, og stormbanen ligger lenger nord.
-      </p>
-    </Callout>
-  ),
 
 
     CoriolisForklaring: () => (
