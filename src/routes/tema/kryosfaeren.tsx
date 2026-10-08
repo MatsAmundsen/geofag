@@ -9,7 +9,7 @@ import {
 } from "@/components/diagrams";
 import { GlacierMassBalanceModel } from "@/components/models/glacier-mass-balance-model";
 import { Quiz } from "@/components/quiz";
-import { OrdBoks, Term, TermGrid } from "@/components/term";
+import { Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { GF2_THEMES } from "@/lib/nav";

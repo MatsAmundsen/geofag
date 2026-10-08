@@ -8,7 +8,6 @@ import {
 } from "@/components/diagrams";
 import { SnowProfileModel } from "@/components/models/snow-profile-model";
 import { CtdProfileModel } from "@/components/models/ctd-profile-model";
-import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";

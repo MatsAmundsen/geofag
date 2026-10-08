@@ -10,7 +10,6 @@ import {
   WindCellsDiagram,
 } from "@/components/diagrams";
 import { WindSystemModel } from "@/components/models/wind-system-model";
-import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
 import { TopicLayout } from "@/components/topic-layout";
