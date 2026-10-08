@@ -366,7 +366,6 @@ export function NaoInteractiveSimulator() {
               </g>
 
               <path d="M 880 120 Q 820 130 780 150" stroke="#38bdf8" strokeWidth="3" markerEnd={`url(#${uid}-arrow-cold)`} />
-              <text x="915" y="152" fill="#bae6fd" fontSize="11" fontWeight="800" textAnchor="end" fontFamily={font}>Arktisk kuldeluft ➔</text>
 
               {/* Meandrerende jetstrøm sørover mot Middelhavet */}
               <path
@@ -1044,7 +1043,7 @@ export function NaoBlockeringDiagram() {
                 <circle cx="0" cy="0" r="26" fill="#081b29" stroke="#38bdf8" strokeWidth="3" />
                 <text x="0" y="9" fill="#38bdf8" fontSize="22" fontWeight="900" textAnchor="middle" fontFamily={font}>H</text>
                 <text x="0" y="42" fill="#bae6fd" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>REX HØYTRYKK (NORD)</text>
-                <text x="0" y="55" fill="#7dd3fc" fontSize="9" textAnchor="middle" fontFamily={font}>1038 hPa · 65°N</text>
+                <text x="0" y="55" fill="#7dd3fc" fontSize="9" textAnchor="middle" fontFamily={font}>Blokkerende høytrykk</text>
               </g>
 
               {/* Lavtrykk i sør (Sentral-Europa / Middelhavet / 45°N) */}
