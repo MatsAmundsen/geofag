@@ -1043,7 +1043,6 @@ export function NaoBlockeringDiagram() {
                 <circle cx="0" cy="0" r="26" fill="#081b29" stroke="#38bdf8" strokeWidth="3" />
                 <text x="0" y="9" fill="#38bdf8" fontSize="22" fontWeight="900" textAnchor="middle" fontFamily={font}>H</text>
                 <text x="0" y="42" fill="#bae6fd" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>REX HØYTRYKK (NORD)</text>
-                <text x="0" y="55" fill="#7dd3fc" fontSize="9" textAnchor="middle" fontFamily={font}>Blokkerende høytrykk</text>
               </g>
 
               {/* Lavtrykk i sør (Sentral-Europa / Middelhavet / 45°N) */}
@@ -1052,7 +1051,6 @@ export function NaoBlockeringDiagram() {
                 <circle cx="0" cy="0" r="26" fill="#1a1114" stroke="#ef4444" strokeWidth="2.5" />
                 <text x="0" y="9" fill="#ef4444" fontSize="22" fontWeight="900" textAnchor="middle" fontFamily={font}>L</text>
                 <text x="0" y="42" fill="#fca5a5" fontSize="11" fontWeight="800" textAnchor="middle" fontFamily={font}>AVSNØRT LAVTRYKK (SØR)</text>
-                <text x="0" y="55" fill="#fca5a5" fontSize="9" textAnchor="middle" fontFamily={font}>995 hPa · 45°N</text>
               </g>
 
               {/* Splittet jetstrøm: Nordlig gren */}
