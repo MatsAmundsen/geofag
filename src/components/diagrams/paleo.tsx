@@ -1825,9 +1825,9 @@ export function Insolation65NCurveDiagram() {
               return (
                 <g key={mzone.label}>
                   <rect
-                    x={x2}
+                    x={Math.min(x1, x2)}
                     y="255"
-                    width={x1 - x2}
+                    width={Math.abs(x1 - x2)}
                     height="90"
                     fill={C.warm}
                     opacity="0.2"

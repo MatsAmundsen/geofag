@@ -1046,10 +1046,10 @@ export function PolarFrontNorwayDiagram() {
             <line x1="55" y1="135" x2="50" y2="155" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 2" />
 
             {/* Leside (Østlandet - øst for Langfjella) */}
-            <L x="165" y="110" fill={C.warm} size={13} weight={800}>
+            <L x="100" y="110" fill={C.warm} size={13} weight={800}>
               Østlandet: Leside ☀️
             </L>
-            <L x="165" y="128" fill={C.muted} size={10.5}>
+            <L x="100" y="128" fill={C.muted} size={10.5}>
               Regnskygge & føn (&lt; 400 mm)
             </L>
           </g>

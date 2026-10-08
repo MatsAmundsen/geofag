@@ -116,7 +116,7 @@ export function EkmanDiagram() {
             (90° til venstre på sørlig halvkule)
           </L>
           <L x="605" y="262" fill={C.muted} size={11}>
-            Stabler opp vann inne i gyrene $\rightarrow$ forhøyet havflate
+            Stabler opp vann inne i gyrene → forhøyet havflate
           </L>
         </>
       )}

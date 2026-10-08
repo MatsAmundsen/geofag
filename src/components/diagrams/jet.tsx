@@ -297,7 +297,7 @@ export function JetProfileDiagram() {
               Kryss i sirkel (⊗):
             </L>
             <L x="46" y="35" fill={C.teal} size={10.5} weight={700}>
-              Vind blåser inn i arket (vest $\rightarrow$ øst)
+              Vind blåser inn i arket (vest → øst)
             </L>
           </g>
         </>
@@ -423,7 +423,7 @@ export function ThermalWindDiagram() {
             <line x1="45" y1="390" x2="45" y2="70" stroke="#475569" strokeWidth="1.8" />
 
             <L x="300" y="408" fill={C.muted} size={11} anchor="end">
-              Vindfart (km/t) $\rightarrow$
+              Vindfart (km/t) →
             </L>
             <L x="40" y="65" fill={C.muted} size={11} anchor="end">
               Høyde (km) $\uparrow$
@@ -552,7 +552,7 @@ export function JetFormsDiagram() {
             <rect x="35" y="30" width="415" height="410" rx="8" fill="url(#jf-ocean)" stroke="#1d2d3d" strokeWidth="1.5" />
 
             <L x="242" y="58" size={15} weight={800} anchor="middle" fill="#38bdf8">
-              KART A: Zonal jetstrøm (Vest $\rightarrow$ Øst)
+              KART A: Zonal jetstrøm (Vest → Øst)
             </L>
             <L x="242" y="76" size={11.5} fill={C.muted} anchor="middle">
               Rask vestavind · Raske værskifter · Mild atlantisk luft
@@ -767,7 +767,7 @@ export function JetStreakDiagram() {
             Øvre troposfære (300–250 hPa / ca. 10 km) · Sett ovenfra
           </L>
           <L x="880" y="50" fill={C.muted} size={11} anchor="end">
-            Vindretning: Vest $\rightarrow$ Øst $\longrightarrow$
+            Vindretning: Vest → Øst ⟶
           </L>
 
           {/* Jetbånd bakgrunn og isotaker */}
@@ -1251,7 +1251,10 @@ export function JetSeasonDiagram() {
               Konsekvens i Norge:
             </L>
             <L x="55" y="366" fill={C.fg} size={11}>
-              Stormbanen passerer oftere nord for oss mot Barentshavet. Roligere vær og lengre godværsperioder.
+              Stormbanen passerer oftere nord for oss mot Barentshavet.
+            </L>
+            <L x="55" y="381" fill={C.fg} size={11}>
+              Roligere vær og lengre godværsperioder.
             </L>
           </g>
         </>

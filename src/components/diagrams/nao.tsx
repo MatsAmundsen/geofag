@@ -866,7 +866,7 @@ export function NaoNegativePhaseDiagram() {
           {/* Sibirkulde / Arktisk luftstrøm */}
           <Arrow d="M 860 100 L 790 125" marker={m.cold} color="#38bdf8" width={3.5} />
           <Arrow d="M 830 160 L 775 195" marker={m.cold} color="#38bdf8" width={3} />
-          <L x="825" y="85" fill="#bae6fd" size={11} weight={800}>Iskald polarluft fra Sibir ➔</L>
+          <L x="893" y="85" fill="#bae6fd" size={11} weight={800} anchor="end">Iskald polarluft fra Sibir ➔</L>
 
           {/* Meandrerende jetstrøm som dykker sørover */}
           <path

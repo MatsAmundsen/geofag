@@ -258,7 +258,7 @@ export function WindPowerModel() {
                   <text x="590" y="225" fill="#94a3b8" fontSize="10" textAnchor="end">
                     Vindhastighet v (m/s)
                   </text>
-                  <text x="45" y="24" fill="#94a3b8" fontSize="10" textAnchor="end">
+                  <text x="4" y="24" fill="#94a3b8" fontSize="10" textAnchor="start">
                     Effekt P (MW)
                   </text>
 
