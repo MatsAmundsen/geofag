@@ -84,6 +84,13 @@ import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrol
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import { KvikkleireDiagram } from "@/components/diagrams/skred";
+import {
+  DensityDiagram,
+  GulfVsNacDiagram,
+  GyreDiagram,
+  OceanDriversDiagram,
+  UpwellingDiagram,
+} from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
 import { Markdown } from "@/components/markdown";
 import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
@@ -355,15 +362,6 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         En jetstrøm er et smalt belte med sterk vind høyt oppe i atmosfæren. Vinden blåser fra vest
         mot øst og følger skillet mellom varm og kald luft. Neste ord du trenger, er polarjet: den
         jetstrømmen som ligger mellom 50° og 60° bredde.
-      </p>
-    </Callout>
-  ),
-    NaoForklaring: () => (
-    <Callout title="Hva betyr «NAO»?">
-      <p>
-        NAO er den nordatlantiske oscillasjonen. Det er svingningen i trykkforskjellen mellom
-        lavtrykket ved Island og høytrykket ved Asorene. Når forskjellen er stor, blir jetstrømmen
-        over Atlanteren sterkere, og stormbanen ligger lenger nord.
       </p>
     </Callout>
   ),
