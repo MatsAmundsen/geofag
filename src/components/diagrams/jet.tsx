@@ -13,7 +13,7 @@ export function JetProfileDiagram() {
     <Diagram
       title="Globalt tverrsnitt: To jetbelter, tre celler og tropopausesteget"
       heading="To jetbelter i høyden: Polarfrontjeten og Den subtropiske jeten"
-      caption="Tverrsnitt gjennom den nordlige halvkules atmosfære fra ekvator til Nordpolen. Ved bakken drives tre sirkulasjonsceller: Hadleycellen, Ferrelcellen og Polarcellen. I overgangen mellom cellene oppstår to markante jetstrømmer ved tropopausen: 1) Den subtropiske jeten (STJ) ved ca. 30°N i 13–16 km høyde, drevet av vinkelmoment fra ekvator. 2) Polarfrontjeten (PFJ) ved 55°–65°N i 9–11 km høyde, drevet av den voldsomme temperaturkontrasten over den skråstilte polarfronten. Legg merke til det markerte trappetrinnet i tropopausen: Den tropiske tropopausen rager helt opp til 16 km, mens den polare tropopausen kun ligger 8–9 km over bakken. Begge jetstrømmene blåser inn i planet – mot øst (vestavind)."
+      caption="Tverrsnitt gjennom den nordlige halvkules atmosfære fra ekvator til Nordpolen. Ved bakken drives tre sirkulasjonsceller: Hadleycellen, Ferrelcellen og Polarcellen. I overgangen mellom cellene oppstår to markante jetstrømmer ved tropopausen: 1) Den subtropiske jeten (STJ) ved ca. 30°N i 13–16 km høyde, drevet av vinkelmoment fra ekvator. 2) Polarfrontjeten (PFJ) ved 55°–65°N i 8–12 km høyde, drevet av den voldsomme temperaturkontrasten over den skråstilte polarfronten. Legg merke til det markerte trappetrinnet i tropopausen: Den tropiske tropopausen rager helt opp til 16 km, mens den polare tropopausen kun ligger 8–9 km over bakken. Begge jetstrømmene blåser inn i planet – mot øst (vestavind)."
       viewBox="0 0 940 520"
       wide
     >

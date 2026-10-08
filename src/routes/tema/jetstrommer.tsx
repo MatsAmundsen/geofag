@@ -33,7 +33,7 @@ function JetstrommerPage() {
     <TopicLayout
       kicker="Den globale atmosfæren"
       title="Jetstrømmer og stormbaner"
-      lead="I grenselandet mellom troposfæren og stratosfæren, 8 til 12 kilometer over oss, raser mektige elver av vind i over 300 kilometer i timen. Jetstrømmene er atmosfærens motorveier. De oppstår i kollisjonssonene mellom klodens varme og kalde luftmasser, og de fungerer som et overordnet styringsorgan for alt vær på våre breddegrader: De suger luft opp fra bakken, puster liv i lavtrykkene, og styrer stormbanene rett inn mot norskekysten. Forstår du jetstrømmen, forstår du hvorfor været i Norge kan skifte fra mildt pøsregn til bitende arktisk kulde i løpet av få dager."
+      lead="I grenselandet mellom troposfæren og stratosfæren, 8 til 12 kilometer over oss, raser mektige elver av sterk vind. Jetstrømmene er atmosfærens motorveier. De oppstår i kollisjonssonene mellom klodens varme og kalde luftmasser, og de fungerer som et overordnet styringsorgan for alt vær på våre breddegrader: De suger luft opp fra bakken, puster liv i lavtrykkene, og styrer stormbanene rett inn mot norskekysten. Forstår du jetstrømmen, forstår du hvorfor været i Norge kan skifte fra mildt pøsregn til bitende arktisk kulde i løpet av få dager."
       banner="/images/fig-jet.jpg"
       bannerAlt="Tynn, rask skyelv høyt over havet mot jordas krumning"
       prev={{ to: "/tema/vindsystemet", label: "Forrige: Vindsystemet" }}
@@ -141,7 +141,7 @@ function JetstrommerPage() {
               <strong>Posisjon:</strong> Ca. 50°–65°N, rett over <em>polarfronten</em>.
             </li>
             <li>
-              <strong>Høyde:</strong> Typisk <strong>9–11 km</strong> (polar tropopause).
+              <strong>Høyde:</strong> Typisk <strong>8–12 km</strong> (polar tropopause).
             </li>
             <li>
               <strong>Drivkraft:</strong> Den voldsomme horisontale temperaturkontrasten mellom
@@ -588,13 +588,13 @@ function JetstrommerPage() {
         <ul className="space-y-2 text-sm leading-relaxed">
           <li>
             <strong>1. Jetstrømmen regner ikke:</strong> En av de vanligste feilene er å tro at
-            jetstrømmen selv er en regnsky fordi det «regner under den». Jetstrømmen befinner seg 9–11
+            jetstrømmen selv er en regnsky fordi det «regner under den». Jetstrømmen befinner seg 8–12
             km oppe i iskald, knusktørr luft. Nedbøren produseres ved bakken, i de dynamiske lavtrykkene
             som suges i gang av jetens øvre divergenssone (venstre utløp).
           </li>
           <li>
             <strong>2. To jetbelter, ikke ett:</strong> Husk at det er to permanente jetbelter på hver
-            halvkule. Polarfrontjeten (ca. 50°–65°N, 9–11 km) drives av temperaturgradienten over
+            halvkule. Polarfrontjeten (ca. 50°–65°N, 8–12 km) drives av temperaturgradienten over
             polarfronten. Den subtropiske jeten (30°N, 13–16 km) drives av bevaring av vinkelmoment i
             Hadleycellen. Polar natt-jeten er noe helt annet – den ligger i stratosfæren.
           </li>
@@ -622,7 +622,7 @@ function JetstrommerPage() {
         />
         <Term
           name="Polarfrontjeten (PFJ)"
-          def="Meandrerende jetstrøm over polarfronten (9–11 km høyde, 50°–65°N) som styrer lavtrykkene og stormbanene mot Norge."
+          def="Meandrerende jetstrøm over polarfronten (8–12 km høyde, 50°–65°N) som styrer lavtrykkene og stormbanene mot Norge."
         />
         <Term
           name="Subtropisk jet (STJ)"
