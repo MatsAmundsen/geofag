@@ -44,14 +44,14 @@ export function GlacierMassBalanceDiagram() {
 
           {/* Ablasjonsområde - smelting nederst */}
           <L x="640" y="235" fill={C.low} size={16} weight={700}>Ablasjonsområde</L>
-          <L x="640" y="255" fill={C.fg} size={13}>Smelting og kalving &gt; vintersnø (Netto tap: b &lt; 0)</L>
+          <L x="626" y="255" fill={C.fg} size={13}>Smelting og kalving &gt; vintersnø (Netto tap: b &lt; 0)</L>
           {/* Smeltevann/sol-indikator */}
           <Arrow d="M 620 270 L 640 295" marker={m.low} color={C.low} width={2} />
           <Arrow d="M 680 290 L 700 315" marker={m.low} color={C.low} width={2} />
 
           {/* Breelv ved brefronten */}
           <path d="M 740 330 C 770 345, 810 360, 850 375" fill="none" stroke={C.rain} strokeWidth="4" />
-          <L x="800" y="350" fill={C.rain} size={13} weight={600}>Breelv / smeltevann</L>
+          <L x="786" y="350" fill={C.rain} size={13} weight={600}>Breelv / smeltevann</L>
 
           {/* Isstrømning inne i breen */}
           <Arrow d="M 280 120 C 400 160, 520 220, 650 280" marker={m.cold} color={C.cold} width={3.2} />

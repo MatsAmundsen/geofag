@@ -226,7 +226,7 @@ export function ValleyWindDiagram() {
             Dag: Soloppvarming · Dalvind
           </L>
           <L x="210" y="52" fill={C.muted} size={12} anchor="middle">
-            Solsidene varmes $\rightarrow$ termisk oppdrift langs fjellsiden
+            Solsidene varmes → termisk oppdrift langs fjellsiden
           </L>
           {/* Solsymbol */}
           <circle cx="210" cy="85" r="14" fill={C.warm} opacity="0.9" />
@@ -252,7 +252,7 @@ export function ValleyWindDiagram() {
             Natt: Utstråling · Bergvind
           </L>
           <L x="630" y="52" fill={C.muted} size={12} anchor="middle">
-            Varme stråler ut i rommet $\rightarrow$ tung kaldluft renner ned
+            Varme stråler ut i rommet → tung kaldluft renner ned
           </L>
           {/* Månesymbol */}
           <circle cx="630" cy="85" r="12" fill="#d0e2ec" />
@@ -310,7 +310,7 @@ export function FoehnAdiabaticDiagram() {
 
           {/* 1000 m (Kondensasjonsnivå LCL) */}
           <line x1="40" y1="294" x2="860" y2="294" stroke={C.teal} strokeDasharray="4 4" strokeWidth="1.2" />
-          <L x="35" y="290" fill={C.teal} size={11} anchor="end">1000 m (LCL)</L>
+          <L x="44" y="308" fill={C.teal} size={11}>1000 m (LCL)</L>
           <L x="120" y="284" fill={C.teal} size={12} weight={700}>
             Kondensasjonsnivå (LCL)
           </L>

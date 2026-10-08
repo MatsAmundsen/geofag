@@ -14,15 +14,15 @@
 IodForklaring
 ```
 
-[Den indiske hav-dipolen](/tema/klima/iod) (Indian Ocean Dipole, IOD) er vedvarende endringer i forskjellen mellom havtemperaturen i det tropiske Indiahavet i vest og i øst. Den er en av de viktige driverne for Australias klima, og hendelsene faller ofte sammen med vekstsesongen for vinteravlinger (BOM, u.å.).
+[Den indiske hav-dipolen](/tema/klima/iod) (Indian Ocean Dipole, IOD) er vedvarende endringer i forskjellen mellom havtemperaturen i den tropiske delen av Det indiske hav i vest og i øst. Den er en av de viktige driverne for Australias klima, og hendelsene faller ofte sammen med vekstsesongen for vinteravlinger (BOM, u.å.).
 
-Stråling og pådriv ligger i [oversikten](/tema/klima/oversikt). ENSO eier Stillehavet: [ENSO](/tema/klima/enso).
+Stråling og pådriv står i [oversikten](/tema/klima/oversikt). Stillehavets svingning står i [ENSO](/tema/klima/enso).
 
-Saji og medforfattere beskrev et dipolmønster: uvanlig lav overflatetemperatur utenfor Sumatra og høy i det vestlige Indiahavet, med vind- og nedbørsavvik. Mønsteret er en indre variasjon i Indiahavet og er uavhengig av ENSO. I aktive år gir det kraftig regn i Øst-Afrika og tørke i Indonesia. Det forklarer omtrent 12 prosent av variasjonen i havoverflatetemperaturen i Indiahavet (Saji m.fl., 1999).
+Saji og medforfattere beskrev et dipolmønster: uvanlig lav overflatetemperatur utenfor Sumatra og høy i den vestlige delen av Det indiske hav, med vind- og nedbørsavvik. Mønsteret er en egen variasjon i Det indiske hav, men positiv IOD faller ofte, ikke alltid, sammen med El Niño. I aktive år gir det kraftig regn i Øst-Afrika og tørke i Indonesia. Det forklarer omtrent 12 prosent av variasjonen i havoverflatetemperaturen i Det indiske hav (Saji m.fl., 1999).
 
 ## Tre faser
 
-Hendelsene starter vanligvis rundt mai eller juni, topper seg mellom august og oktober, og dør raskt ut når monsunen kommer på den sørlige halvkule rundt slutten av våren (BOM, u.å.).
+Hendelsene starter vanligvis rundt mai eller juni, topper seg mellom august og oktober, og dør raskt ut når monsunen kommer på den sørlige halvkule rundt slutten av våren der (november–desember) (BOM, u.å.).
 
 | Fase | Havet | Vinden | Typisk utslag |
 | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Dipolindeksen (Dipole Mode Index, DMI) er forskjellen i temperaturavvik mellom e
 
 > **Vanlige misforståelser**
 >
-> Dipolen er ikke ENSO. Saji og medforfattere viste at mønsteret er uavhengig av El Niño–sørlig oscillasjon (Saji m.fl., 1999).
+> Dipolen er ikke ENSO. Saji og medforfattere beskrev den som et eget mønster, men positiv IOD faller ofte sammen med El Niño (BOM, u.å.).
 >
 > Positiv fase er varmere i vest og kjøligere i øst, ikke varmere overalt (BOM, u.å.).
 >
@@ -51,7 +51,7 @@ Dipolindeksen (Dipole Mode Index, DMI) er forskjellen i temperaturavvik mellom e
 
 ## Viktige begreper
 
-**Indisk hav-dipol:** Vedvarende forskjell i havtemperatur mellom vest og øst i det tropiske Indiahavet.
+**Indisk hav-dipol:** Vedvarende forskjell i havtemperatur mellom vest og øst i den tropiske delen av Det indiske hav.
 
 **Positiv fase:** Varmere i vest, kjøligere i øst. Mindre fukt nordvest for Australia.
 

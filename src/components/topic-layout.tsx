@@ -23,6 +23,33 @@ import { getPost, type Post } from "@/lib/posts";
 
 type TopicLink = { to: string; label: string; params?: Record<string, string> };
 
+/**
+ * G2-kapitler som er rullet tilbake til kodet TSX-tekst (c3ca0d9). Plakaten på
+ * /poster/<slug> viser fortsatt den nye md-teksten, så Poster-knappen og
+ * admin-lenken skjules her for å unngå to ulike versjoner av samme kapittel.
+ * Kodede G1-sider og hoytrykk-lavtrykk beholder knappen.
+ */
+const CODED_G2_PATHS = new Set([
+  "/tema/vindsystemet",
+  "/tema/vaerkart",
+  "/tema/lokale-vaersystemer",
+  "/tema/jetstrommer",
+  "/tema/coriolis",
+  "/tema/havstrommer",
+  "/tema/kryosfaeren",
+  "/tema/numeriske-modeller",
+  "/tema/paleoklima",
+  "/tema/milankovitch",
+  "/tema/vaerkatastrofer",
+  "/tema/tilpasning",
+  "/tema/energi-hav-luft",
+  "/tema/felt-hav-luft-is",
+  "/tema/klima",
+  "/tema/klima/oversikt",
+  "/tema/klima/nao",
+  "/tema/klima/amoc",
+]);
+
 export function TopicLayout({
   kicker,
   title,
@@ -70,6 +97,8 @@ export function TopicLayout({
   const showEierskap = Boolean(eierskap) && !isGeofag1;
 
   const resolvedSlug = posterSlug ?? posterSlugForPath(pathname);
+  const isCodedG2 = bodyMode === "coded" && CODED_G2_PATHS.has(pathname.replace(/\/$/, "") || "/");
+  const showPosterLink = Boolean(resolvedSlug) && !isCodedG2;
 
   const matchPost = matches
     .map((m) => (m.loaderData as { post?: Post | null } | undefined)?.post)
@@ -150,7 +179,7 @@ export function TopicLayout({
               {title}
             </h1>
             <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">{lead}</p>
-            {resolvedSlug ? (
+                        {showPosterLink && resolvedSlug ? (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Button asChild size="lg" className="shadow-lg">
                   <Link to="/poster/$slug" params={{ slug: resolvedSlug }}>
@@ -165,7 +194,7 @@ export function TopicLayout({
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <div className="space-y-5 text-base leading-relaxed text-foreground/95">
-            {resolvedSlug ? <AdminEditLink slug={resolvedSlug} /> : null}
+            {showPosterLink && resolvedSlug ? <AdminEditLink slug={resolvedSlug} /> : null}
             {showEierskap ? (
               <Callout title="Eierskap">
                 <p>{eierskap}</p>

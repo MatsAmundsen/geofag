@@ -1,5 +1,21 @@
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
+/** Bryter en kort tekst i linjer på maks `max` tegn (hele ord), for SVG-tspan. */
+function wrapWords(text: string, max: number): string[] {
+  const out: string[] = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    if (line && (line + " " + word).length > max) {
+      out.push(line);
+      line = word;
+    } else {
+      line = line ? line + " " + word : word;
+    }
+  }
+  if (line) out.push(line);
+  return out;
+}
+
 export function SeaBreezeLandBreezeDiagram() {
   return (
     <Diagram
@@ -392,8 +408,12 @@ export function FieldworkInquiryChainDiagram() {
               <text x={s.x + 18} y="185" fill={C.fg} fontSize={12} fontWeight="600" fontFamily="inherit">
                 Fokus:
               </text>
-              <text x={s.x + 18} y="208" fill={C.muted} fontSize={11} fontFamily="inherit" width="110">
-                {s.d}
+              <text x={s.x + 18} y="208" fill={C.muted} fontSize={11} fontFamily="inherit">
+                {wrapWords(s.d, 19).map((line, li, all) => (
+                  <tspan key={li} x={s.x + 18} dy={li === 0 ? 0 : 15}>
+                    {li < all.length - 1 ? `${line} ` : line}
+                  </tspan>
+                ))}
               </text>
               {idx < 4 && (
                 <Arrow d={`M ${s.x + 148} 175 L ${s.x + 160} 175`} marker={m.teal} color={C.teal} width={2.2} />

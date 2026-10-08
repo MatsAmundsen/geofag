@@ -64,7 +64,7 @@ export function PaleoClimateIsotopeModel() {
   // Timeline events for the 20k window
   const timeline20k = [
     {
-      age: "21 000 år f.nå",
+      age: "21 000 år før nå",
       name: "Siste istidsmaksimum (LGM)",
       dt: -6.5,
       co2: 185,
@@ -74,7 +74,7 @@ export function PaleoClimateIsotopeModel() {
       desc: "Skandinavia og Nord-Amerika dekket av 3 km tykk is. Havnivået var 125 meter lavere, og Nordsjøen var tørt land (Nordsjøfastlandet / Doggerland).",
     },
     {
-      age: "14 500 år f.nå",
+      age: "14 500 år før nå",
       name: "Bølling-Allerød varmeperiode",
       dt: -1.5,
       co2: 240,
@@ -84,7 +84,7 @@ export function PaleoClimateIsotopeModel() {
       desc: "Rask smelting av isdekket. Bjørk og reinrose etablerte seg langs kysten av Norge. Smeltevannet begynte å fylle forsenkninger.",
     },
     {
-      age: "12 800–11 600 år f.nå",
+      age: "12 800–11 700 år før nå",
       name: "Yngre Dryas (kuldehopp)",
       dt: -4.5,
       co2: 235,
@@ -94,7 +94,7 @@ export function PaleoClimateIsotopeModel() {
       desc: "Lake Agassiz tømte enorme ferskvannsmasser i Nord-Atlanteren. AMOC bremset opp. Temperaturen stupte 8–10 °C i Norge på få tiår, og isbreene rykket fram til Raet.",
     },
     {
-      age: "8 200 år f.nå",
+      age: "8 200 år før nå",
       name: "8,2 ka-kuldehendelsen",
       dt: -1.8,
       co2: 260,
@@ -104,7 +104,7 @@ export function PaleoClimateIsotopeModel() {
       desc: "Siste rest av bresjøene i Nord-Amerika tømte seg. Rask, men kortvarig kuldeperiode registrert i Grønlandsisen og norske innsjøsedimenter.",
     },
     {
-      age: "7 000–5 000 år f.nå",
+      age: "7 000–5 000 år før nå",
       name: "Holocens klimaoptimum",
       dt: +1.2,
       co2: 275,

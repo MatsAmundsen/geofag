@@ -275,7 +275,8 @@ export function StationModelExplainedDiagram() {
               <L x="-45" y="28" fill={C.cold} size={22} weight={800} anchor="end">11</L>
               <line x1="-42" y1="22" x2="-80" y2="55" stroke={C.cold} strokeWidth="1.4" />
               <L x="-85" y="60" fill={C.cold} size={12} weight={700} anchor="end">Duggpunkt: 11 °C</L>
-              <L x="-85" y="74" fill={C.muted} size={10} anchor="end">Liten forskjell mellom temperatur og duggpunkt: lufta er nær mettet.</L>
+              <L x="-98" y="74" fill={C.muted} size={10} anchor="end">Liten forskjell mellom temperatur og</L>
+              <L x="-98" y="87" fill={C.muted} size={10} anchor="end">duggpunkt: lufta er nær mettet.</L>
 
               {/* 3. LUFTRYKK (PPP) - Øverst til høyre */}
               <L x="45" y="-12" fill="#f8fafc" size={22} weight={800}>084</L>
@@ -314,7 +315,8 @@ export function StationModelExplainedDiagram() {
 
               <line x1="-80" y1="80" x2="-110" y2="105" stroke="#f8fafc" strokeWidth="1.4" />
               <L x="-115" y="115" fill="#f8fafc" size={12} weight={700} anchor="end">Vind: Sørvest 25 knop (13 m/s)</L>
-              <L x="-115" y="129" fill={C.muted} size={10} anchor="end">Skaft peker mot SW (hvor vinden kommer fra)</L>
+              <L x="-115" y="129" fill={C.muted} size={10} anchor="end">Skaft peker mot SW</L>
+              <L x="-115" y="142" fill={C.muted} size={10} anchor="end">(hvor vinden kommer fra)</L>
             </g>
           </g>
 
@@ -332,12 +334,12 @@ export function StationModelExplainedDiagram() {
                 {/* 5 knop */}
                 <line x1="10" y1="12" x2="40" y2="12" stroke="#f8fafc" strokeWidth="2" />
                 <line x1="40" y1="12" x2="40" y2="4" stroke="#f8fafc" strokeWidth="2" />
-                <L x="55" y="15" fill="#cbd5e1" size={11}>Halv fjær = <strong>5 knop</strong> (2,5 m/s)</L>
+                <L x="55" y="15" fill="#cbd5e1" size={11}>Halv fjær = <tspan fontWeight={700}>5 knop</tspan> (2,5 m/s)</L>
 
                 {/* 10 knop */}
                 <line x1="10" y1="32" x2="40" y2="32" stroke="#f8fafc" strokeWidth="2" />
                 <line x1="40" y1="32" x2="40" y2="18" stroke="#f8fafc" strokeWidth="2" />
-                <L x="55" y="35" fill="#cbd5e1" size={11}>Hel fjær = <strong>10 knop</strong> (5 m/s)</L>
+                <L x="55" y="35" fill="#cbd5e1" size={11}>Hel fjær = <tspan fontWeight={700}>10 knop</tspan> (5 m/s)</L>
 
                 {/* 50 knop stormflagg */}
                 <line x1="10" y1="52" x2="40" y2="52" stroke="#f8fafc" strokeWidth="2" />
@@ -406,7 +408,7 @@ export function FrontVerticalProfileDiagram() {
       title="Vertikalt atmosfærisk tverrsnitt gjennom en polarfrontsyklon (1500 km profil)"
       heading="Vertikalt tverrsnitt: Skyer, temperatur og nedbør gjennom frontene"
       caption="Frontflaten heller svakt mot bakken, oftest mellom 1:200 og 1:100. Varm luft løftes over kald luft, og det dannes skyer og frontnedbør. En varmfront gir skyet vær og jevn nedbør. En kaldfront fortrenger varmere luft og gir oftere byger."
-      viewBox="0 0 940 520"
+      viewBox="-95 0 1035 520"
       wide
     >
       {(m) => (

@@ -251,7 +251,7 @@ export function FoehnModel() {
                           strokeWidth="3.5"
                           markerEnd="url(#mdl-red)"
                         />
-                        <text x="510" y={(yTop + yLee) / 2 - 15} fill="#f59e0b" fontSize="11" fontWeight="600">
+                        <text x="486" y={(yTop + yLee) / 2 - 15} fill="#f59e0b" fontSize="11" fontWeight="600">
                           Trinn 3: Tørr kompresjonsoppvarming (1,0 °C / 100m)
                         </text>
 

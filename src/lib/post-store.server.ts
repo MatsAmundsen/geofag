@@ -587,9 +587,15 @@ const COPY_RESEEDS: CopyReseed[] = [
   }
 ,
   {
-    flag: "iod-copy-2026-10-07",
+        flag: "iod-copy-2026-10-07",
     slug: "iod",
     stale: ["Her kan du redigere", "Black Summer"],
+  }
+,
+  {
+    flag: "iod-b1-7-2026-10-08",
+    slug: "iod",
+    stale: ["er uavhengig av ENSO", "ENSO eier Stillehavet"],
   }
 ,
   {

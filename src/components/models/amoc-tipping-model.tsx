@@ -288,7 +288,7 @@ export function AmocTippingModel() {
                   <text x="240" y="32" fill="#f59e0b" fontSize="11" fontWeight="bold">
                     Nord-Atlanteren (45°N)
                   </text>
-                  <text x="420" y="32" fill="#38bdf8" fontSize="11" fontWeight="bold">
+                  <text x="532" y="32" fill="#38bdf8" fontSize="11" fontWeight="bold" textAnchor="end">
                     Norskehavet / GIN (70°N)
                   </text>
 
@@ -357,7 +357,7 @@ export function AmocTippingModel() {
                     ))}
 
                   {/* Dyp returstrøm etikett */}
-                  <text x="240" y="270" fill="#93c5fd" fontSize="11" fontWeight="bold">
+                  <text x="196" y="270" fill="#93c5fd" fontSize="11" fontWeight="bold">
                     Kaldt Nordatlantisk dypvann (NADW) sørover i dypet (2000–3500 m)
                   </text>
                 </svg>
