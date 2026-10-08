@@ -44,7 +44,7 @@ Den nedre delen av kretsen går fra øst mot vest nær overflaten. Den øvre gå
 
 Passatvindene blåser fra øst mot vest og skyver sjøvann vestover. Vannet varmes på veien. Derfor er overflaten varmere i vest og kjøligere i øst. Over det varme vannet stiger luft. Over det kjøligere vannet i øst tørker lufta og synker (Di Liberto, 2014).
 
-I nøytral tilstand, i desember til februar, stiger luft sterkt over den maritime kontinentet, og svakere over det østlige Afrika og det nordlige Sør-Amerika. Luft synker sterkt over det østlige Stillehavet (Di Liberto, 2014).
+I nøytral tilstand, i desember til februar, stiger luft sterkt over det maritime kontinentet, og svakere over det østlige Afrika og det nordlige Sør-Amerika. Luft synker sterkt over det østlige Stillehavet (Di Liberto, 2014).
 
 ## El Niño og La Niña
 

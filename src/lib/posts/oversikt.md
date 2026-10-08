@@ -42,7 +42,7 @@ DrivhusForklaring
 
 Drivhusgasser holder igjen varme nær overflaten. Den naturlige drivhuseffekten holder en gjennomsnittstemperatur på omtrent 15 °C. Tar man bort karbondioksid, faller overflaten med omtrent 33 °C. Brenning av fossilt brensel har sluppet ut karbondioksid og andre drivhusgasser og forskjøvet energibalansen. Karbondioksid har økt både i atmosfæren og i havet (NASA, u.å.-a).
 
-Vanndamp, karbondioksid og metan slipper lite gjennom av mange bølgelengder i varmestrålingen. Karbondioksid tar opp varme i et vindu der vanndamp slipper mer gjennom, og dytter dermed budsjettet ut av balanse (NASA, 2009).
+Vanndamp, karbondioksid og metan slipper lite gjennom av mange bølgelengder i varmestrålingen. Karbondioksid tar opp varme i et vindu der vanndamp slipper mer gjennom, og skyver dermed budsjettet ut av balanse (NASA, 2009).
 
 ## Pådriv og tilbakekobling
 
@@ -56,7 +56,7 @@ Naturlige pådriv er blant annet endret solstyrke, små endringer i jordas bane 
 | --- | --- | --- |
 | Hva det er | Det første dytet på energibalansen | Systemets svar |
 | Eksempel | Mer karbondioksid | Vanndamp, eller tap av is ved polene |
-| Retning | Kan varme eller kjøle | Kan forsterke eller svekke dytten |
+| Retning | Kan varme eller kjøle | Kan forsterke eller svekke endringen |
 
 ## Isen er et speil
 
@@ -107,9 +107,9 @@ Menneskelig påvirkning varmer atmosfæren, havet og landoverflaten, i hovedsak 
 
 **Klima:** Det langvarige mønsteret i været.
 
-**Strålingspådriv:** Et dytt som endrer energi inn eller ut.
+**Strålingspådriv:** En endring som forskyver balansen mellom energi inn og ut.
 
-**Tilbakekobling:** Systemets svar, som kan forsterke eller svekke dytten.
+**Tilbakekobling:** Systemets svar, som kan forsterke eller svekke endringen.
 
 **Albedo:** Hvor stor del av sollyset en flate kaster tilbake.
 

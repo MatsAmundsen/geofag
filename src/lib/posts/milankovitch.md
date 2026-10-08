@@ -14,7 +14,7 @@
 IstidForklaring
 ```
 
-[Istider](/tema/milankovitch) handler om hvorfor store iskapper kommer og går. Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av kontinentene og grunne havområder. Flere istider er skilt av mellomistider. Vi lever i kvartær, som har vart i 2,6 millioner år, med nesten 50 istider. Siste istid sluttet for 11 600 år siden (Store norske leksikon, u.å.-a).
+[Istider](/tema/milankovitch) handler om hvorfor store iskapper kommer og går. Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av kontinentene og grunne havområder. Flere istider er skilt av mellomistider. Vi lever i kvartær, som har vart i 2,6 millioner år, med nesten 50 istider. Siste istid sluttet for 11 700 år siden (Walker et al., 2009).
 
 Årsakene til hele istidsperioder, som kvartær, er andre enn årsakene til vekslingen mellom istid og mellomistid inne i en slik periode (Store norske leksikon, u.å.-a). Sporene i is og havbunn eier [paleoklima](/tema/paleoklima). Isen som måles i år, eier [kryosfæren](/tema/kryosfaeren).
 
@@ -46,7 +46,7 @@ Milanković regnet med at istider kommer omtrent hvert 41 000. år. Senere forsk
 
 ## Weichsel
 
-Weichsel er navnet på siste istid i Nord-Europa, cirka 117 000–10 000 år siden. Store deler av Nord-Europa og Nord-Amerika var da dekket av is. Samme istid kalles Würm i Alpene og Wisconsin i Nord-Amerika (Store norske leksikon, u.å.-b). Istidsoppslaget skriver at siste istid sluttet for 11 600 år siden (Store norske leksikon, u.å.-a). De to årstallene står i hver sin artikkel.
+Weichsel er navnet på siste istid i Nord-Europa, fra om lag 117 000 til 11 700 år siden (Store norske leksikon, u.å.-b; Walker et al., 2009). Store deler av Nord-Europa og Nord-Amerika var da dekket av is. Samme istid kalles Würm i Alpene og Wisconsin i Nord-Amerika (Store norske leksikon, u.å.-b).
 
 ## Karbondioksid i iskjerner
 
@@ -70,7 +70,7 @@ I dag er det en stor iskappe bare på Grønland. Små breer finnes i det nordlig
 
 **Istid:** Klimaperiode der tykke iskapper dekket store deler av kontinentene. Også kalt glasialtid.
 
-**Mellomistid:** Varmere periode mellom istider. Vi er i en slik nå, etter at siste istid sluttet for 11 600 år siden.
+**Mellomistid:** Varmere periode mellom istider. Vi er i en slik nå, etter at siste istid sluttet for 11 700 år siden.
 
 **Eksentrisitet:** Hvor elliptisk jordbanen er. Syklusen er om lag 100 000 år.
 
@@ -78,7 +78,7 @@ I dag er det en stor iskappe bare på Grønland. Små breer finnes i det nordlig
 
 **Presesjon:** Aksens vingling, med en syklus på om lag 25 771,5 år.
 
-**Weichsel:** Siste istid i Nord-Europa, cirka 117 000–10 000 år siden. Würm i Alpene og Wisconsin i Nord-Amerika.
+**Weichsel:** Siste istid i Nord-Europa, fra om lag 117 000 til 11 700 år siden. Würm i Alpene og Wisconsin i Nord-Amerika.
 
 **Siste istids maksimum:** For 20 000 år siden, da havet sto 125 meter lavere enn i dag.
 

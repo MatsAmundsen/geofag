@@ -24,7 +24,7 @@ Jorda er strengt tatt ikke et treghetssystem, fordi den roterer. Virkningene er 
 KarusellDiagram
 ```
 
-Tenk deg en karusell som roterer mot klokken, slik den nordlige halvkula gjør sett ovenfra. Du kaster en ball rett mot en venn på kanten. Sett utenfra går ballen i en rett linje, mens vennen roterer videre. Sett fra karusellen ser ballen ut til å krumme mot høyre. Ingen dytter på ballen. Det er ståstedet som roterer.
+Tenk deg en karusell som roterer mot klokken, slik den nordlige halvkula gjør sett ovenfra. Du kaster en ball rett mot en venn på kanten. Sett utenfra går ballen i en rett linje, mens vennen roterer videre. Sett fra karusellen ser ballen ut til å krumme mot høyre. Ingen skyver på ballen. Det er ståstedet som roterer.
 
 ## Hvorfor mot høyre i nord?
 
