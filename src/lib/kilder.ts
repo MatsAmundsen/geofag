@@ -1148,6 +1148,12 @@ export const KILDER = {
       suffix: ".",
       href: "https://snl.no/polarfront",
     },
+    {
+      prefix: "American Meteorological Society [AMS]. (u.å.). ",
+      italic: "Ferrel cell",
+      suffix: ". Glossary of Meteorology.",
+      href: "https://glossary.ametsoc.org/wiki/ferrel-cell/",
+    },
   ],
   jetstrommer: [
     {
@@ -1174,6 +1180,19 @@ export const KILDER = {
         "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
       suffix: ".",
       href: "https://www.ipcc.ch/report/ar6/wg1/",
+    },
+    {
+      prefix: "AMAP. (2021). ",
+      italic: "Arctic climate change update 2021: Key trends and impacts",
+      suffix: ".",
+      href: "https://www.amap.no/documents/doc/arctic-climate-change-update-2021-key-trends-and-impacts/3594",
+    },
+    {
+      prefix:
+        "Rantanen, M. mfl. (2022). The Arctic has warmed nearly four times faster than the globe since 1979. ",
+      italic: "Communications Earth & Environment, 3",
+      suffix: ", 168.",
+      href: "https://doi.org/10.1038/s43247-022-00498-3",
     },
   ],
   coriolis: [
@@ -1206,6 +1225,19 @@ export const KILDER = {
       italic: "The Ekman spiral and coastal upwelling",
       suffix: ".",
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents4.html",
+    },
+    {
+      prefix:
+        "Chang, C.-P., Liu, C.-H., & Kuo, H.-C. (2003). Typhoon Vamei: An equatorial tropical cyclone formation. ",
+      italic: "Geophysical Research Letters, 30",
+      suffix: "(3).",
+      href: "https://doi.org/10.1029/2002GL016365",
+    },
+    {
+      prefix: "Penn State College of Earth and Mineral Sciences. (u.å.). ",
+      italic: "Getting a handle on the wind",
+      suffix: " (METEO 3: Weather Revealed).",
+      href: "https://courses.ems.psu.edu/meteo3/node/2226",
     },
   ],
   havstrommer: [
@@ -1514,13 +1546,6 @@ export const KILDER = {
       href: "https://doi.org/10.1002/1099-1417(200009)15:6<587::AID-JQS559>3.0.CO;2-3",
     },
     {
-      prefix:
-        "Cassou, C. (2008). Intraseasonal interaction between the Madden–Julian Oscillation and the North Atlantic Oscillation. ",
-      italic: "Nature, 455",
-      suffix: "(7212), 523–527.",
-      href: "https://doi.org/10.1038/nature07286",
-    },
-    {
       prefix: "Meteorologisk institutt. (u.å.). ",
       italic: "Den nordatlantiske oscillasjon (NAO)",
       suffix: ".",
@@ -1530,6 +1555,67 @@ export const KILDER = {
       prefix: "Walker, G. T., & Bliss, E. W. (1932). World weather V. ",
       italic: "Memoirs of the Royal Meteorological Society, 4",
       suffix: "(36), 53–84.",
+    },
+    {
+      prefix:
+        "Jones, P. D., Jónsson, T., & Wheeler, D. (1997). Extension to the North Atlantic Oscillation using early instrumental pressure observations from Gibraltar and south-west Iceland. ",
+      italic: "International Journal of Climatology, 17",
+      suffix: ", 1433–1450.",
+    },
+    {
+      prefix:
+        "Osborn, T. J. (2011). Winter 2009/2010 temperatures and a record-breaking North Atlantic Oscillation index. ",
+      italic: "Weather, 66",
+      suffix: ", 19–21.",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2011). ",
+      italic: "Været i Norge: Klimatologisk oversikt. Året 2010",
+      suffix: " (MET-info 13/2010).",
+      href: "https://www.met.no/publikasjoner/met-info/met-info-2010/_/attachment/download/a902b7ff-e2e1-4ab1-b2f9-236ec1eb0255:3f49f82e88e4e7f6b461af43959b9a1243c62d31/MET-info-13-2010.pdf",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2016). ",
+      italic: "25 år sidan den historiske nyttårsorkanen",
+      suffix: ".",
+      href: "https://www.met.no/nyhetsarkiv/25-ar-siden-den-historiske-nyttarsorkanen/",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      italic: "Climate variability: North Atlantic Oscillation",
+      suffix: ".",
+      href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
+    },
+    {
+      prefix:
+        "Brönnimann, S. (2007). Impact of El Niño–Southern Oscillation on European climate. ",
+      italic: "Reviews of Geophysics, 45",
+      suffix: ", RG3003.",
+      href: "https://doi.org/10.1029/2006RG000199",
+    },
+    {
+      prefix: "NOAA Climate Prediction Center. (u.å.). ",
+      italic: "North Atlantic Oscillation (NAO)",
+      suffix: ".",
+      href: "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/nao.shtml",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
+      italic: "Oversikt over norske breer",
+      suffix: " (NVE Fakta 2/2023).",
+      href: "https://publikasjoner.nve.no/fakta/2023/fakta2023_02.pdf",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Nigardsbreen",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/bre/bremaalinger/massebalansemaalinger/nigardsbreen/",
+    },
+    {
+      prefix: "Climatic Research Unit [CRU]. (u.å.). ",
+      italic: "North Atlantic Oscillation (NAO)",
+      suffix: ". University of East Anglia.",
+      href: "https://crudata.uea.ac.uk/cru/data/nao/",
     },
   ],
   amoc: [
@@ -1561,13 +1647,6 @@ export const KILDER = {
     },
     {
       prefix:
-        "Smeed, D. A., et al. (2018). The North Atlantic Ocean is in a state of reduced overturning. ",
-      italic: "Geophysical Research Letters, 45",
-      suffix: "(3), 1527–1533.",
-      href: "https://doi.org/10.1002/2017GL076350",
-    },
-    {
-      prefix:
         "Ditlevsen, P., & Ditlevsen, S. (2023). Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. ",
       italic: "Nature Communications, 14",
       suffix: "(1), 4254.",
@@ -1587,10 +1666,17 @@ export const KILDER = {
       suffix: ". Cambridge University Press.",
       href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
     },
+    {
+      prefix:
+        "Yin, J., Schlesinger, M. E., & Stouffer, R. J. (2009). Model projections of rapid sea-level rise on the northeast coast of the United States. ",
+      italic: "Nature Geoscience, 2",
+      suffix: ", 262–266.",
+      href: "https://doi.org/10.1038/ngeo462",
+    },
   ],
   modeller: [
     {
-      prefix: "European Centre for Medium-Range Weather Forecasts. (u.å.). ",
+      prefix: "European Centre for Medium-Range Weather Forecasts [ECMWF]. (u.å.-a). ",
       italic: "IFS documentation",
       suffix: ".",
       href: "https://www.ecmwf.int/en/forecasts",
@@ -1633,6 +1719,18 @@ export const KILDER = {
       suffix: ". Cambridge University Press.",
       href: "https://archive.org/details/weatherpredictio00richrich",
     },
+    {
+      prefix: "European Centre for Medium-Range Weather Forecasts [ECMWF]. (u.å.-b). ",
+      italic: "L137 model level definitions",
+      suffix: ".",
+      href: "https://confluence.ecmwf.int/display/UDOC/L137+model+level+definitions",
+    },
+    {
+      prefix: "Meteorologisk institutt [MET]. (u.å.-c). ",
+      italic: "MetCoOp",
+      suffix: ".",
+      href: "https://www.met.no/en/projects/metcoop",
+    },
   ],
   paleoklima: [
     {
@@ -1674,6 +1772,27 @@ export const KILDER = {
       italic: "Journal of Quaternary Science, 24",
       suffix: "(1), 3–17.",
       href: "https://doi.org/10.1002/jqs.1227",
+    },
+    {
+      prefix:
+        "Dahl, S. O., & Nesje, A. (1994). Holocene glacier fluctuations at Hardangerjøkulen, central-southern Norway. ",
+      italic: "The Holocene, 4",
+      suffix: "(3), 269–277.",
+      href: "https://doi.org/10.1177/095968369400400306",
+    },
+    {
+      prefix:
+        "Åkesson, H., Nisancioglu, K. H., Giesen, R. H., & Morlighem, M. (2017). Simulating the evolution of Hardangerjøkulen ice cap in southern Norway since the mid-Holocene and its sensitivity to climate change. ",
+      italic: "The Cryosphere, 11",
+      suffix: ", 281–302.",
+      href: "https://doi.org/10.5194/tc-11-281-2017",
+    },
+    {
+      prefix:
+        "Inglis, G. N. mfl. (2020). Global mean surface temperature and climate sensitivity of the EECO, PETM, and latest Paleocene. ",
+      italic: "Climate of the Past, 16",
+      suffix: ", 1953–1968.",
+      href: "https://doi.org/10.5194/cp-16-1953-2020",
     },
   ],
   milankovitch: [
@@ -1741,6 +1860,13 @@ export const KILDER = {
       italic: "Om kart over marin grense",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
+    },
+    {
+      prefix:
+        "Parrenin, F. mfl. (2013). Synchronous change of atmospheric CO₂ and Antarctic temperature during the last deglacial warming. ",
+      italic: "Science, 339",
+      suffix: ", 1060–1063.",
+      href: "https://doi.org/10.1126/science.1226368",
     },
   ],
   vaerkatastrofer: [
@@ -1816,6 +1942,48 @@ export const KILDER = {
       italic: "Tornado og skypumper i Norge",
       suffix: ".",
       href: "https://snl.no/tornado",
+    },
+    {
+      prefix:
+        "Brunkard, J., Namulanda, G., & Ratard, R. (2008). Hurricane Katrina deaths, Louisiana, 2005. ",
+      italic: "Disaster Medicine and Public Health Preparedness, 2",
+      suffix: "(4), 215–223.",
+      href: "https://pubmed.ncbi.nlm.nih.gov/18756175/",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2016). ",
+      italic: "25 år sidan den historiske nyttårsorkanen",
+      suffix: ".",
+      href: "https://www.met.no/nyhetsarkiv/25-ar-siden-den-historiske-nyttarsorkanen/",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2024a). ",
+      italic: "Ekstremværet Ingunn",
+      suffix: " (MET-info 25/2024).",
+      href: "https://www.met.no/publikasjoner/met-info/ekstremvaer/_/attachment/download/968d86dd-82b8-4fe5-b0b7-451f9b88f7ce:9d41c437c62b0cd4e8eea389fd82f42ce4b1ccb6/MET-info-25-2024.pdf",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2024b). ",
+      italic: "Polare lavtrykk",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/polare-lavtrykk",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2025). ",
+      italic: "Ekstremværet Amy",
+      suffix: " (MET-info 40/2025).",
+      href: "https://www.met.no/publikasjoner/met-info/ekstremvaer/_/attachment/inline/ac6dd15c-5c9f-4863-a6b9-a222be91efd1:4b377a2b7c5f398fe13be725c9dbf94bf965793f/MET-info-40-2025.pdf",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (2025). ",
+      italic: "What are atmospheric rivers?",
+      href: "https://www.noaa.gov/stories/what-are-atmospheric-rivers",
+    },
+    {
+      prefix: "Direktoratet for byggkvalitet. (u.å.). ",
+      italic: "Byggteknisk forskrift (TEK17) § 7-2 Sikkerhet mot flom og stormflo",
+      suffix: ".",
+      href: "https://dibk.no/regelverk/byggteknisk-forskrift-tek17/7/7-2",
     },
   ],
   eksamen: [
