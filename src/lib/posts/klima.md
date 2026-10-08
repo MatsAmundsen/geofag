@@ -52,7 +52,7 @@ Vinden dytter på havet, og havtemperaturen styrer hvor lufta stiger. ENSO høre
 
 **Indre dynamikk:** Variasjon som oppstår i systemet selv, uten et nytt ytre pådriv.
 
-**Ytre pådriv:** Et dytt utenfra, som vulkan, sol, bane eller menneskelig endring av atmosfæren og arealbruk.
+**Ytre pådriv:** En endring utenfra, som vulkan, sol, bane eller menneskelig endring av atmosfæren og arealbruk.
 
 **ENSO:** Svingningen i det tropiske Stillehavet.
 

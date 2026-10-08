@@ -555,12 +555,22 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "coriolis-copy-2026-10-07",
     slug: "coriolis",
     stale: ["Her kan du redigere", "Rossby-tallet"],
+  },
+  {
+    flag: "g2-md-runde-coriolis-2026-10-08",
+    slug: "coriolis",
+    stale: ["Ingen dytter på ballen."],
   }
 ,
   {
     flag: "klima-copy-2026-10-07",
     slug: "klima",
     stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
+  },
+  {
+    flag: "g2-md-runde-klima-2026-10-08",
+    slug: "klima",
+    stale: ["Et dytt utenfra"],
   }
 ,
   {
@@ -573,6 +583,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "oversikt-copy-2026-10-07",
     slug: "oversikt",
     stale: ["Her kan du redigere", "Utdanningsdirektoratet, 2020"],
+  },
+  {
+    flag: "g2-md-runde-oversikt-2026-10-08",
+    slug: "oversikt",
+    stale: ["svekke dytten"],
   }
 ,
   {
@@ -584,6 +599,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "enso-copy-2-2026-10-07",
     slug: "enso",
     stale: ["Noen ganger ser havet ut som El Niño eller La Niña"],
+  },
+  {
+    flag: "g2-md-runde-enso-b1-13-2026-10-08",
+    slug: "enso",
+    stale: ["den maritime kontinentet"],
   }
 ,
   {
@@ -662,6 +682,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "milankovitch-copy-2-2026-10-07",
     slug: "milankovitch",
     stale: ["Dagens breer er ikke kvartærtidens innlandsis."],
+  },
+  {
+    flag: "g2-md-runde-milankovitch-2026-10-08",
+    slug: "milankovitch",
+    stale: ["11 600"],
   }
 ,
   {
