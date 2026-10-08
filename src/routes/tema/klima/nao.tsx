@@ -368,9 +368,8 @@ function NaoPage() {
             </h4>
             <ul className="mt-2 list-disc space-y-2 pl-5 text-sm sm:text-base">
               <li>
-                <strong>Streng sprengkulde (sibirkulde):</strong> Høytrykket roterer med klokken og
-                trekker knusktørr, iskald kontinentalluft fra Sibir, Russland og Nordishavet rett inn
-                over Norge fra øst og nordøst.
+                <strong>Kulde fra øst:</strong> Høytrykket roterer med klokken og trekker kald, tørr
+                kontinentalluft fra Russland og Nordishavet inn over Norge fra øst og nordøst.
               </li>
               <li>
                 <strong>Tørt og lite nedbør:</strong> Nedsynkende luftmasse i høytrykket gir klarvær
@@ -381,11 +380,6 @@ function NaoPage() {
                 bakken kraftig ved varmeutstråling i den mørke årstiden. Luften like over bakken blir
                 kaldere enn luften lenger opp — det oppstår en <strong>inversjon</strong>. Forurensning
                 fra vedfyring og eksos fanges i bygryter (f.eks. Bergen, Oslo, Trondheim).
-              </li>
-              <li>
-                <strong>Strømkrise og samfunnspåvirkning:</strong> Sprengkulden øker energibehovet
-                til oppvarming enormt, samtidig som vannmagasinene ikke får tilsig pga. tørke og frost.
-                Dette gir prissjokk på strømmarkedet og frosne vannrør over hele landet.
               </li>
             </ul>
           </div>
@@ -686,9 +680,8 @@ function NaoPage() {
             1. Svakt Islandslavtrykk + svakt Azorhøytrykk → 2. Slak trykkgradient (liten ΔP) →
             3. Svekket vestavind gjør polarjeten ustabil, den meandrerer i store Rossby-bølger →
             4. Kvasistasjonært blokkerende høytrykk (Omega-blokkering) legger seg over Skandinavia →
-            5. Kald, tørr arktisk/sibirsk kontinentalluft trekkes inn over Norge (streng kulde,
-            klarvær, inversjon og strømkrise) → 6. Stormbanen presses sørover og gir milde lavtrykk
-            og flom i Middelhavet.
+            5. Kald, tørr arktisk/sibirsk kontinentalluft trekkes inn over Norge (kulde,
+            klarvær og inversjon) → 6. Stormbanen presses sørover og gir mer regn og storm i Sør-Europa.
           </strong>
         </p>
         <p className="mt-2">
@@ -826,7 +819,7 @@ function NaoPage() {
             ],
             answer: 1,
             explain:
-              "NAO fungerer som en vippe: Når stormbanen dyttes nordover mot Norge i NAO+, ekspanderer Azorhøytrykket over Den iberiske halvøy og Middelhavet. Nedsynkende luftmasse gir stabilt, tørt vær og tørkefare i sør.",
+              "NAO fungerer som en vippe: Når stormbanen flyttes nordover mot Norge under NAO+, brer Azorhøytrykket seg ut over Den iberiske halvøy og Middelhavet. Synkende luft gir stabilt, tørt vær og fare for tørke i sør.",
           },
           {
             prompt:

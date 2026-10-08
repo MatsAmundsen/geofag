@@ -153,13 +153,13 @@ function KlimaOversiktPage() {
         forsterke eller dempe endringen.
       </p>
       <p>
-        Vanndamp er den sterkeste drivhusgassen i lufta — men den er i hovedsak en forsterker, ikke
-        det første dytet. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer
+        Vanndamp er den sterkeste drivhusgassen i lufta, men den virker i hovedsak som en forsterker og
+        setter ikke i gang endringen selv. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer
         varme. Det kalles en positiv tilbakekobling.
       </p>
       <OrdBoks
         ord="Vanndamp"
-        barn="Den sterkeste drivhusgassen i lufta, men mengden styres av temperaturen. Derfor er den en forsterker, ikke det første dytet."
+        barn="Den sterkeste drivhusgassen i lufta, men mengden styres av temperaturen. Derfor er den en forsterker og ikke det som setter i gang endringen."
       />
       <OrdBoks
         ord="Tilbakekobling"
@@ -346,7 +346,8 @@ function KlimaOversiktPage() {
 
       <Callout title="Til eksamen">
         <p>
-          Skill vær og klima. Skill pådriv og tilbakekobling. Vanndamp er en tilbakekobling, og
+          Til eksamen må du kunne skille vær fra klima og pådriv fra tilbakekobling. Vanndamp er en
+          tilbakekobling, og
           karbondioksid er et pådriv. ENSO, IOD og NAO er naturlige svingninger, ikke det samme som
           global oppvarming. Norge har mild kyst på grunn av vestavinden og det varme havet, og AMOC
           er en del av det.

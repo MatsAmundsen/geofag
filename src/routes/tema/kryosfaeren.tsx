@@ -334,11 +334,11 @@ function KryosfaerenPage() {
             <li>Den mørke havoverflaten blottlegges, og albedoen faller dramatisk fra 0,85 til 0,07.</li>
             <li>Havet absorberer enorme mengder solenergi gjennom de lyse polardøgnene om sommeren.</li>
             <li>Det oppvarmede havvannet forsinker ny isdannelse om høsten og gjør vinterisen tynnere.</li>
-            <li>Neste vår smelter den tynne isen enda raskere, og syklusen forsterker seg selv!</li>
+            <li>Neste vår smelter den tynne isen enda raskere, og syklusen forsterker seg selv.</li>
           </ol>
           <p className="mt-2 text-primary font-medium">
-            Arktis har de siste tiårene blitt varmet opp om lag tre til fire ganger raskere enn det globale
-            gjennomsnittet (AMAP, 2021; Rantanen mfl., 2022). Dette kalles{" "}
+            Denne sløyfa er en av grunnene til at Arktis de siste tiårene er blitt varmet opp om lag tre til
+            fire ganger raskere enn det globale gjennomsnittet (AMAP, 2021; Rantanen mfl., 2022). Dette kalles{" "}
             <strong>arktisk forsterkning (Arctic amplification)</strong>.
           </p>
         </div>
