@@ -171,7 +171,7 @@ function NorgesGeologiPage() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-display text-base font-bold text-amber-500">Rombeporfyr (sjelden lava)</h4>
+            <h3 className="font-display text-base font-bold text-amber-500">Rombeporfyr (sjelden lava)</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Enorme sprekkevulkaner spydde ut tykke lavadekker av <strong>rombeporfyr</strong> – en lavabergart med store,
               båtlignende (rombeformede) feltspatkrystaller i en finkornet grunnmasse. Rombeporfyr er bare funnet fem steder
@@ -180,7 +180,7 @@ function NorgesGeologiPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-display text-base font-bold text-sky-400">Larvikitt (Norges nasjonalbergart)</h4>
+            <h3 className="font-display text-base font-bold text-sky-400">Larvikitt (Norges nasjonalbergart)</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Dypt nede under vulkanene størknet gigantiske magmakamre langsomt. Her krystalliserte den vakre, blåskimrende
               dypbergarten <strong>larvikitt</strong>. Larvikitt brytes i dag som eksklusiv fasadestein og eksporteres over
@@ -238,7 +238,7 @@ function NorgesGeologiPage() {
 
         <div className="grid gap-4 sm:grid-cols-2 pt-2">
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-semibold text-emerald-400 text-sm">Marin grense og leirbygdene</h4>
+            <h3 className="font-semibold text-emerald-400 text-sm">Marin grense og leirbygdene</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Rett etter istiden flommet havet inn over det nedtrykte landet og avsatte saltvannsleire. Etter hvert som landet
               hevet seg, ble denne gamle havbunnen løftet tørt – opptil <strong>220 meter over dagens havnivå</strong> på
@@ -252,7 +252,7 @@ function NorgesGeologiPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-semibold text-sky-400 text-sm">Postglasiale intraplate-jordskjelv</h4>
+            <h3 className="font-semibold text-sky-400 text-sm">Postglasiale intraplate-jordskjelv</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Landet hever seg fremdeles med 4–9 mm per år rundt Oslofjorden og Bottenviken. Spenningene etter den asymmetriske
               landhevingen, kombinert med ryggskyv (ridge push) fra Atlanterhavsryggen, reaktiverer eldgamle forkastninger og
