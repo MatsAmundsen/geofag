@@ -636,6 +636,12 @@ const COPY_RESEEDS: CopyReseed[] = [
   }
 ,
   {
+    flag: "nao-mats-word-2026-10-10",
+    slug: "nao",
+    stale: ["## To faser", "Allerede på slutten av 1700-tallet"],
+  }
+,
+  {
     flag: "amoc-copy-2026-10-07",
     slug: "amoc",
     stale: ["Her kan du redigere", "vippepunkt"],

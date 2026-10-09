@@ -1569,104 +1569,72 @@ export const KILDER = {
   ],
   nao: [
     {
-      prefix:
-        "Hurrell, J. W. (1995). Decadal trends in the North Atlantic Oscillation: regional temperatures and precipitation. ",
-      italic: "Science, 269",
-      suffix: "(5224), 676–679.",
-      href: "https://doi.org/10.1126/science.269.5224.676",
-    },
-    {
-      prefix:
-        "Hurrell, J. W., Kushnir, Y., Ottersen, G., & Visbeck, M. (2003). An overview of the North Atlantic Oscillation. ",
-      italic: "Geophysical Monograph-American Geophysical Union, 134",
-      suffix: ", 1–36.",
-      href: "https://doi.org/10.1029/134GM01",
-    },
-    {
-      prefix:
-        "Baldwin, M. P., & Dunkerton, T. J. (2001). Stratospheric harbingers of anomalous weather regimes. ",
-      italic: "Science, 294",
-      suffix: "(5542), 581–584.",
-      href: "https://doi.org/10.1126/science.1063315",
-    },
-    {
-      prefix:
-        "Nesje, A., Lie, Ø., & Dahl, S. O. (2000). Is the North Atlantic Oscillation reflected in Scandinavian glacier mass balance records? ",
-      italic: "Journal of Quaternary Science, 15",
-      suffix: "(6), 587–601.",
-      href: "https://doi.org/10.1002/1099-1417(200009)15:6<587::AID-JQS559>3.0.CO;2-3",
-    },
-    {
-      prefix: "Meteorologisk institutt. (u.å.). ",
-      italic: "Den nordatlantiske oscillasjon (NAO)",
-      suffix: ".",
-      href: "https://www.met.no/vaer-og-klima/klima-og-klimavariasjoner",
-    },
-    {
-      prefix: "Walker, G. T., & Bliss, E. W. (1932). World weather V. ",
-      italic: "Memoirs of the Royal Meteorological Society, 4",
-      suffix: "(36), 53–84.",
-    },
-    {
-      prefix:
-        "Jones, P. D., Jónsson, T., & Wheeler, D. (1997). Extension to the North Atlantic Oscillation using early instrumental pressure observations from Gibraltar and south-west Iceland. ",
-      italic: "International Journal of Climatology, 17",
-      suffix: ", 1433–1450.",
-    },
-    {
-      prefix:
-        "Osborn, T. J. (2011). Winter 2009/2010 temperatures and a record-breaking North Atlantic Oscillation index. ",
-      italic: "Weather, 66",
-      suffix: ", 19–21.",
-    },
-    {
-      prefix: "Meteorologisk institutt. (2011). ",
-      italic: "Været i Norge: Klimatologisk oversikt. Året 2010",
-      suffix: " (MET-info 13/2010).",
-      href: "https://www.met.no/publikasjoner/met-info/met-info-2010/_/attachment/download/a902b7ff-e2e1-4ab1-b2f9-236ec1eb0255:3f49f82e88e4e7f6b461af43959b9a1243c62d31/MET-info-13-2010.pdf",
-    },
-    {
-      prefix: "Meteorologisk institutt. (2016). ",
-      italic: "25 år sidan den historiske nyttårsorkanen",
-      suffix: ".",
-      href: "https://www.met.no/nyhetsarkiv/25-ar-siden-den-historiske-nyttarsorkanen/",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
-      italic: "Climate variability: North Atlantic Oscillation",
-      suffix: ".",
-      href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
-    },
-    {
-      prefix:
-        "Brönnimann, S. (2007). Impact of El Niño–Southern Oscillation on European climate. ",
+      prefix: "Brönnimann, S. (2007). Impact of El Niño–Southern Oscillation on European climate. ",
       italic: "Reviews of Geophysics, 45",
-      suffix: ", RG3003.",
+      suffix: "(3), RG3003.",
       href: "https://doi.org/10.1029/2006RG000199",
     },
     {
-      prefix: "NOAA Climate Prediction Center. (u.å.). ",
-      italic: "North Atlantic Oscillation (NAO)",
+      prefix:
+        "Doblas-Reyes, F. J., Sörensson, A. A., Almazroui, M., m.fl. (2021). Linking global to regional climate change. I ",
+      italic:
+        "Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 1363–1512). Cambridge University Press. Siteres som (IPCC, 2021), Cross-Chapter Box 10.1.",
+      href: "https://doi.org/10.1017/9781009157896.012",
+    },
+    {
+      prefix: "Lindsey, R. (2021, 5. mars). ",
+      italic: "Understanding the Arctic polar vortex",
+      suffix: ". NOAA Climate.gov. Siteres som (NOAA Climate.gov, 2021).",
+      href: "https://www.climate.gov/news-features/understanding-climate/understanding-arctic-polar-vortex",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
+      italic: "Climate variability: North Atlantic Oscillation",
+      suffix: ". NOAA Climate.gov.",
+      href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-b). ",
+      italic: "Longwaves and shortwaves",
       suffix: ".",
-      href: "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/nao.shtml",
+      href: "https://www.noaa.gov/jetstream/upper-air-charts/longwaves-and-shortwaves",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
-      italic: "Oversikt over norske breer",
-      suffix: " (NVE Fakta 2/2023).",
-      href: "https://publikasjoner.nve.no/fakta/2023/fakta2023_02.pdf",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
-      italic: "Nigardsbreen",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
+      italic: "The jet stream",
       suffix: ".",
-      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/bre/bremaalinger/massebalansemaalinger/nigardsbreen/",
+      href: "https://www.noaa.gov/jetstream/global/jet-stream",
     },
     {
-      prefix: "Climatic Research Unit [CRU]. (u.å.). ",
-      italic: "North Atlantic Oscillation (NAO)",
-      suffix: ". University of East Anglia.",
-      href: "https://crudata.uea.ac.uk/cru/data/nao/",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-d). ",
+      italic: "Global atmospheric circulations",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/global/global-atmospheric-circulations",
+    },
+    {
+      prefix: "NOAA Ocean Service. (u.å.). ",
+      italic: "What is a Rossby wave?",
+      suffix: ".",
+      href: "https://oceanservice.noaa.gov/facts/rossby-wave.html",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.). ",
+      italic: "Den nord-atlantiske oscillasjonen",
+      suffix: ".",
+      href: "https://snl.no/Den_nord-atlantiske_oscillasjonen",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer – Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
   amoc: [

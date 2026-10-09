@@ -105,6 +105,12 @@ import {
   IodHavtemperaturFigur,
   IodJetstrommerFigur,
 } from "@/components/diagrams/iod-figurer";
+import {
+  NaoFaserFigur,
+  NaoKartFigur,
+  NaoOmradeFigur,
+  NaoPolarvirvelFigur,
+} from "@/components/diagrams/nao-figurer";
 import { Quiz } from "@/components/quiz";
 import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -558,6 +564,41 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
+    NaoFigurFaser: () => (
+    <NaoFaserFigur
+      heading="Figur 1. Positiv og negativ NAO"
+      caption="Ved positiv NAO er både Islandslavtrykket (L) og Asorhøytrykket (H) sterke, og stormbanen går lenger nord mot Nord-Europa. Ved negativ NAO er begge svakere, og stormbanen går lenger sør. Illustrasjon: geofag.com etter figur i Mats Amundsens notat. Kilde: NOAA (u.å.-a)."
+    />
+  ),
+    NaoFigurOmrade: () => (
+    <NaoOmradeFigur
+      heading="Figur 2. Området der NAO virker"
+      caption="Nord-Atlanteren mellom Nord-Amerika, Europa og Nord-Afrika. Islandslavtrykket ligger nær Island, Asorhøytrykket nær Asorene. Kart: geofag.com, kyster fra Natural Earth."
+    />
+  ),
+    NaoFigurPolarvirvel: () => (
+    <NaoPolarvirvelFigur
+      heading="Figur 3. Stabil og forstyrret polarvirvel"
+      caption="Stabil: en sterk polarvirvel holder den kalde lufta i Arktis, og polarjetstrømmen går lenger nord. Forstyrret: virvelen deles, kald luft går sørover, varm luft nordover, og jetstrømmen blir bølgete. Illustrasjon: geofag.com. Etter NOAA Climate.gov (2021)."
+    />
+  ),
+    NaoFigurPositiv: () => (
+    <NaoKartFigur
+      initialFase="positiv"
+      heading="Figur 4. Positiv NAO"
+      title="Kart over Nord-Atlanteren med sterkt lavtrykk og høytrykk og en jetstrøm mot Nord-Europa"
+      caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som får mildt og vått vær. Sør-Europa blir kaldere og tørrere. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+    />
+  ),
+    NaoFigurNegativ: () => (
+    <NaoKartFigur
+      initialFase="negativ"
+      heading="Figur 5. Negativ NAO"
+      title="Kart over Nord-Atlanteren med svake trykksystemer og en bølgete jetstrøm lenger sør"
+      caption="Svakt lavtrykk og svakt høytrykk. Jetstrømmen er bølgete og ligger lenger sør. Nord-Europa blir kaldt og tørt, Sør-Europa mildt og vått. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+    />
+  ),
+
 
 
     AmocForklaring: () => (

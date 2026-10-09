@@ -509,7 +509,7 @@ export const QUIZ_NAO: QuizQuestion[] = [
       "Bare høytrykket finnes.",
     ],
     answer: 0,
-    explain: "Se tabellen. Positiv fase er sterk trykkforskjell.",
+    explain: "Se «Positiv NAO». Både høytrykket og lavtrykket er sterkere enn gjennomsnittet.",
   },
   {
     prompt: "Hva merker Nord-Europa i positiv fase?",
@@ -520,7 +520,7 @@ export const QUIZ_NAO: QuizQuestion[] = [
     ],
     answer: 0,
     explain:
-      "Se tabellen. Sterkere jetstrøm og stormbane lenger nord gir mer storm og varme i Nord-Europa.",
+      "Se «Positiv NAO». Sterkere jetstrøm og stormbane lenger nord gir mer storm og mildere vintre i Nord-Europa.",
   },
   {
     prompt: "Hva merker Sør-Europa i negativ fase?",
@@ -530,7 +530,8 @@ export const QUIZ_NAO: QuizQuestion[] = [
       "Det samme som Nord-Europa i positiv fase.",
     ],
     answer: 0,
-    explain: "Se tabellen. Negativ fase gir mer storm og varme i Sør-Europa.",
+    explain:
+      "Se «Været under negativ NAO». Jetstrømmen ligger lenger sør og gir mer storm, nedbør og varme i Sør-Europa (NOAA, u.å.-a).",
   },
   {
     prompt: "Er positiv NAO det samme som oppvarmingstrenden?",
@@ -542,6 +543,16 @@ export const QUIZ_NAO: QuizQuestion[] = [
     answer: 0,
     explain:
       "Se «Vanlige misforståelser». Positiv NAO er en fase i trykkmønsteret, ikke oppvarmingstrenden.",
+  },
+  {
+    prompt: "Hvor ligger polarvirvelen?",
+    options: [
+      "I stratosfæren over Arktis om vinteren.",
+      "I troposfæren over Antarktis hele året.",
+      "Ved havoverflaten nær Island.",
+    ],
+    answer: 0,
+    explain: "Se «Polarvirvelen». Den ligger høyere enn polarjetstrømmen (NOAA Climate.gov, 2021).",
   },
 ];
 
