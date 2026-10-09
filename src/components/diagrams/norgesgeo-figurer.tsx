@@ -1061,7 +1061,7 @@ export function NorskehavetFigur({
     labels.push({ text: "Sedimentbassenger", x: map.x + map.w - 8, y: map.y + (NH_WIN[3] * map.w) / NH_WIN[2] - 12, at: sb, color: "#e6d3a8", anchor: "end", size: 14, badge: [sb[0] + 14, sb[1] + 18] });
   }
   if (t > 1.1)
-    labels.push({ text: "Spredningsrygg", x: rMid[0] - 16, y: rMid[1] + 4, at: rMid, color: "#ffb08a", anchor: "end", badge: [rMid[0] + 22, rMid[1]] });
+    labels.push({ text: "Spredningsrygg", x: rMid[0] - 16, y: rMid[1] + (t > 2.6 ? -14 : 4), at: rMid, color: "#ffb08a", anchor: "end", badge: [rMid[0] + 22, rMid[1]] });
   if (t > 2.6)
     labels.push({ text: "Jan Mayen", x: jm[0] - 12, y: jm[1] + 5, at: jm, color: C.fg, anchor: "end", size: 14, badge: [jm[0] - 18, jm[1] + 10] });
   if (t > 2.9)
@@ -1102,7 +1102,7 @@ export function NorskehavetFigur({
         heading={heading}
         caption={
           caption ??
-          "Dra i tidsskyveren for å se hvordan Norge og Grønland skilles. Kartet viser dagens kystlinjer, og snittet viser skorpa på tvers av havet. Forenklet: Grønland flyttes og dreies som én stiv blokk, spredningsryggen er tegnet midt mellom kontinentene, og tidsskyveren er ikke i målestokk. Island og Jan Mayen kom til mye senere enn bruddet og vises først mot slutten."
+          "Dra i tidsskyveren for å se hvordan Norge og Grønland skilles. Kartet viser dagens kystlinjer, og snittet viser skorpa på tvers av havet. Forenklet: Grønland flyttes og dreies som én stiv blokk, spredningsryggen er tegnet skjematisk, og tidsskyveren er ikke i målestokk. Island og Jan Mayen kom til mye senere enn bruddet og vises først mot slutten."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -1118,7 +1118,6 @@ export function NorskehavetFigur({
               onChange={set}
               valueLabel={valueLabel}
               valueText={`${valueLabel}: ${NH_STATUS[stage].split(":")[0]}`}
-              ends={["Riftfase", "I dag"]}
             />
           </>
         }
