@@ -216,20 +216,41 @@ function FramePins({ markers, fitMarkers }: { markers: GeoMapMarker[]; fitMarker
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(apply);
     };
+    let returnFocus: HTMLElement | null = null;
+    const rememberSource = (event: L.LeafletEvent) => {
+      const popup = (event as L.PopupEvent).popup as L.Popup & {
+        _source?: { getElement?: () => HTMLElement | null | undefined };
+      };
+      returnFocus = popup._source?.getElement?.() ?? null;
+    };
     // The popup node stays in the DOM for the 200 ms fade, so wait until it is gone
-    // before fitting the pins back inside the frame.
+    // before fitting the pins back inside the frame and returning focus to the pin.
     const restoreAfterPopup = () => {
       window.clearTimeout(restoreTimer);
-      restoreTimer = window.setTimeout(schedule, 280);
+      restoreTimer = window.setTimeout(() => {
+        schedule();
+        returnFocus?.focus({ preventScroll: true });
+      }, 280);
     };
+    // Escape is only wired by Leaflet while the map container itself is focused.
+    // A focused pin is inside that container, so the key still bubbles here.
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || !map.getContainer().querySelector(".leaflet-popup")) return;
+      map.closePopup();
+    };
+    const container = map.getContainer();
     map.whenReady(schedule);
+    map.on("popupopen", rememberSource);
     map.on("popupclose", restoreAfterPopup);
+    container.addEventListener("keydown", onEscape);
     const observer = new ResizeObserver(schedule);
-    observer.observe(map.getContainer());
+    observer.observe(container);
     return () => {
       cancelAnimationFrame(frame);
       window.clearTimeout(restoreTimer);
+      map.off("popupopen", rememberSource);
       map.off("popupclose", restoreAfterPopup);
+      container.removeEventListener("keydown", onEscape);
       observer.disconnect();
     };
   }, [map, markers, fitMarkers]);
@@ -277,7 +298,16 @@ export default function LeafletMap({
           alt={m.label}
           title={m.label}
         >
-          <Popup>{m.label}</Popup>
+          <Popup
+            // The close button sits on the popup's top-right corner. On a narrow
+            // map that corner lands under the zoom control unless the popup is
+            // narrower than the frame minus the controls, and autopanned clear of them.
+            maxWidth={200}
+            autoPanPaddingTopLeft={[10, 12]}
+            autoPanPaddingBottomRight={[56, 32]}
+          >
+            {m.label}
+          </Popup>
         </Marker>
       ))}
       <FramePins markers={markers} fitMarkers={fitMarkers} />
