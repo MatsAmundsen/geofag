@@ -1362,8 +1362,11 @@ def build_permafrost() -> None:
 
 
 def build_foehn() -> None:
-    width, height = 960, 560
-    left, right, top, bottom = 110, 900, 70, 430
+    width, height = 960, 580
+    left, right, top, bottom = 118, 900, 78, 418
+    peak_x = 500
+    cool = COLD
+    warm_down = "#c2410c"
 
     def y_of(metres):
         return bottom - metres / 2400 * (bottom - top)
@@ -1371,73 +1374,108 @@ def build_foehn() -> None:
     def ridge(x):
         if x <= 180 or x >= 820:
             return 0.0
-        if x <= 500:
-            t = (x - 180) / (500 - 180)
+        if x <= peak_x:
+            t = (x - 180) / (peak_x - 180)
             return math.sin(t * math.pi / 2) ** 1.05
-        t = (x - 500) / (820 - 500)
+        t = (x - peak_x) / (820 - peak_x)
         return math.cos(t * math.pi / 2) ** 1.08
+
+    def arrowhead(x, y, angle, color) -> str:
+        """Tip points along `angle` in screen space, so the flow reads left to right."""
+        dx, dy = math.cos(angle), math.sin(angle)
+        px, py = -dy, dx
+        return (
+            f'<polygon points="{x + dx:.1f},{y + dy:.1f} '
+            f'{x - 14 * dx + 5.5 * px:.1f},{y - 14 * dy + 5.5 * py:.1f} '
+            f'{x - 14 * dx - 5.5 * px:.1f},{y - 14 * dy - 5.5 * py:.1f}" fill="{color}"/>'
+        )
 
     xs = list(range(180, 821, 4))
     crest = [(x, y_of(2000 * ridge(x))) for x in xs]
     ground = f"M180 {bottom:.1f} " + " ".join(f"L{x:.1f} {y:.1f}" for x, y in crest) + f" L820 {bottom:.1f} Z"
     windward_800 = next(x for x, _ in crest if 2000 * ridge(x) >= 800)
+    y800 = y_of(800)
     parts = [rect(0, 0, width, height, PAPER)]
     parts.append(rect(left, top, right - left, bottom - top, "#f3f7fa"))
-    for metres in range(0, 2401, 400):
+    for metres in (0, 400, 1200, 1600, 2000, 2400):
         y = y_of(metres)
-        emphasis = metres in (0, 800, 2000)
-        dash = "0" if metres == 0 else "4 4"
+        emphasis = metres in (0, 2000)
+        dash = "0" if metres == 0 else "3 5"
         parts.append(
             f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" stroke="{GRID}" stroke-width="{1.15 if emphasis else 0.8}" stroke-dasharray="{dash}"/>'
         )
-        parts.append(plain(left - 10, y + 4, str(metres), size=13, anchor="end", weight=650 if emphasis else 500))
+        parts.append(plain(left - 8, y + 4, str(metres), size=13, anchor="end", weight=650 if emphasis else 500))
+    # Cloud base: one clean dashed line on the windward side, stopping at the slope.
+    parts.append(
+        f'<line x1="{left + 2:.1f}" y1="{y800:.1f}" x2="{windward_800:.1f}" y2="{y800:.1f}" stroke="{cool}" stroke-width="1.6" stroke-dasharray="7 5"/>'
+    )
     parts.append(
         f'<text x="28" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="15" fill="{INK}" transform="rotate(-90 28 {(top + bottom) / 2:.1f})">Høyde (m)</text>'
     )
     parts.append(f'<path d="{ground}" fill="{LAND}" stroke="{COAST}" stroke-width="1.6" stroke-linejoin="round"/>')
-    # Cloud on the windward slope, from the 800 m crossing up toward the summit.
-    cloud_base = [(x, y) for x, y in crest if windward_800 <= x <= 500]
+
+    # Cloud on the windward slope only, from 800 m up to the summit.
+    cloud_base = [(x, y) for x, y in crest if windward_800 <= x <= peak_x]
     cloud_top = []
+    last = max(1, len(cloud_base) - 1)
     for i, (x, y) in enumerate(cloud_base):
-        cloud_top.append((x, y - 26 - 8 * math.sin(i / 2.4)))
+        progress = i / last
+        lift = 18 + 26 * math.sin(progress * math.pi)
+        scallop = 7 * math.sin(i * 0.95)
+        cloud_top.append((x, y - lift - scallop))
     cloud_d = polyline(cloud_base) + " L" + " L".join(f"{x:.1f} {y:.1f}" for x, y in reversed(cloud_top)) + " Z"
-    parts.append(f'<path d="{cloud_d}" fill="#d5e2ec" stroke="#7f93a3" stroke-width="1.2"/>')
-    # Rain falls on the windward slope, below the cloud base.
-    for x in range(220, windward_800 - 8, 18):
+    parts.append(f'<path d="{cloud_d}" fill="#f7fbfe" stroke="#5d7282" stroke-width="1.5" stroke-linejoin="round"/>')
+    # A second, softer lobe so the shape reads as a cloud rather than a wedge.
+    lobe = []
+    for i, (x, y) in enumerate(cloud_base[2:-2]):
+        lobe.append((x, y - 34 - 8 * math.sin(i * 0.7)))
+    if len(lobe) > 4:
+        lobe_d = polyline(lobe) + " L" + " L".join(
+            f"{x:.1f} {y - 16:.1f}" for x, y in reversed(lobe[::2])
+        ) + " Z"
+        parts.append(f'<path d="{lobe_d}" fill="#e7f0f6" stroke="#5d7282" stroke-width="1.2" stroke-linejoin="round"/>')
+
+    # Rain under the cloud base, on the windward slope only. Skip stubs near the crossing.
+    for x in range(210, windward_800 - 28, 26):
         y_ground = y_of(2000 * ridge(x))
-        y_cloud = y_of(800)
-        if y_ground - y_cloud < 16:
+        if y_ground - y800 < 36:
             continue
         parts.append(
-            f'<line x1="{x}" y1="{y_cloud + 4:.1f}" x2="{x - 7}" y2="{y_ground - 6:.1f}" stroke="#1d4e89" stroke-width="1.5"/>'
+            f'<line x1="{x}" y1="{y800 + 8:.1f}" x2="{x - 8:.1f}" y2="{y_ground - 10:.1f}" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>'
         )
-    # Streamline above the ridge.
-    stream = []
-    for x in range(120, 881, 8):
-        h = 2000 * ridge(x) if 180 <= x <= 820 else 0
-        stream.append((x, y_of(h) - 28))
-    parts.append(f'<path d="{polyline(stream)}" fill="none" stroke="#9a3412" stroke-width="2.2"/>')
-    for x in (230, 500, 760):
-        i = min(range(len(stream)), key=lambda k: abs(stream[k][0] - x))
-        x0, y0 = stream[max(0, i - 2)]
-        x1, y1 = stream[min(len(stream) - 1, i + 2)]
-        angle = math.atan2(y1 - y0, x1 - x0)
-        ax_, ay_ = stream[i]
-        left_a = angle + 2.6
-        right_a = angle - 2.6
-        parts.append(
-            f'<polygon points="{ax_:.1f},{ay_:.1f} {ax_ - 12 * math.cos(left_a):.1f},{ay_ - 12 * math.sin(left_a):.1f} {ax_ - 12 * math.cos(right_a):.1f},{ay_ - 12 * math.sin(right_a):.1f}" fill="#9a3412"/>'
-        )
+
+    def flow_point(x, lift=42):
+        return x, y_of(2000 * ridge(x)) - lift
+
+    ascent = [flow_point(x) for x in range(150, peak_x + 1, 6)]
+    descent = [flow_point(x) for x in range(peak_x, 861, 6)]
+    parts.append(f'<path d="{polyline(ascent)}" fill="none" stroke="{cool}" stroke-width="2.6" stroke-linecap="round"/>')
+    parts.append(f'<path d="{polyline(descent)}" fill="none" stroke="{warm_down}" stroke-width="2.6" stroke-linecap="round"/>')
+    for path, color, marks in ((ascent, cool, (220, 390)), (descent, warm_down, (640, 800))):
+        for mark in marks:
+            i = min(range(len(path)), key=lambda k: abs(path[k][0] - mark))
+            x0, y0 = path[max(0, i - 2)]
+            x1, y1 = path[min(len(path) - 1, i + 2)]
+            angle = math.atan2(y1 - y0, x1 - x0)
+            parts.append(arrowhead(*path[i], angle, color))
+
     parts.append(f'<line x1="{left}" y1="{top}" x2="{left}" y2="{bottom}" stroke="{INK}"/>')
     parts.append(f'<line x1="{left}" y1="{bottom}" x2="{right}" y2="{bottom}" stroke="{INK}"/>')
-    parts.append(halo(windward_800 - 8, y_of(800) - 8, "Skybase 800 m", size=15, anchor="end"))
-    parts.append(halo(500, y_of(2000) - 46, "Topp 2000 m", size=16))
-    parts.append(plain(230, 470, "Loside, 0 m", size=16, anchor="middle"))
-    parts.append(plain(230, 494, "14 °C", size=16, anchor="middle"))
-    parts.append(plain(760, 470, "Leside, 0 m", size=16, anchor="middle"))
-    parts.append(plain(150, 36, "Tørradiabatisk 1 °C / 100 m", size=15, anchor="start"))
-    parts.append(plain(150, 58, "Våtadiabatisk 0,5 °C / 100 m i skyen", size=15, anchor="start", fill="#1d4e89"))
-    title = "Fønvind over et fjell på 2000 meter. Skybasen på losiden er 800 meter, og temperaturen ved havnivå der er 14 grader. Temperaturen på toppen og på lesiden er ikke regnet ut."
+    label_x = (left + windward_800) / 2
+    parts.append(halo(label_x, y800 - 10, "Skybase 800 m", size=15, fill=cool))
+    parts.append(halo(peak_x, y_of(2000) - 58, "Topp 2000 m", size=16))
+    parts.append(plain(230, 458, "Loside, 0 m", size=16, anchor="middle"))
+    parts.append(plain(230, 482, "14 °C", size=16, anchor="middle"))
+    parts.append(plain(760, 458, "Leside, 0 m", size=16, anchor="middle"))
+    parts.append(plain(150, 28, "Tørradiabatisk 1 °C / 100 m", size=15, anchor="start"))
+    parts.append(plain(150, 50, "Våtadiabatisk 0,5 °C / 100 m i skyen", size=15, anchor="start", fill=cool))
+    parts.append(f'<line x1="150" y1="514" x2="186" y2="514" stroke="{cool}" stroke-width="2.6"/>')
+    parts.append(arrowhead(188, 514, 0, cool))
+    parts.append(plain(202, 518, "Avkjøling på vei opp", size=14, anchor="start", fill=cool))
+    parts.append(f'<line x1="150" y1="540" x2="186" y2="540" stroke="{warm_down}" stroke-width="2.6"/>')
+    parts.append(arrowhead(188, 540, 0, warm_down))
+    parts.append(plain(202, 544, "Oppvarming på vei ned", size=14, anchor="start", fill=warm_down))
+    title = "Fønvind fra losiden til lesiden. Skyen og nedbøren er på losiden fra 800 meter opp til toppen. 14 grader er temperaturen ved havnivå på losiden. Topp- og lesidetemperatur er ikke regnet ut."
     write_component(
         "FoehnChart.tsx",
         "FoehnChart",

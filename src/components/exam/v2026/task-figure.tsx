@@ -441,8 +441,9 @@ function FoehnFigure() {
       scroll
       caption={
         <>
-          Egen figur av situasjonen i oppgaven. Foten ligger ved havnivå, skybasen på losiden er 800
-          m, og temperaturen der er 14 °C. Tørradiabatisk gradient er 1 °C per 100 m, og
+          Egen figur av situasjonen i oppgaven. Lufta kommer inn fra losiden. Pilen er blå på vei opp,
+          der lufta avkjøles, og oransje på vei ned, der den varmes opp. Skybasen på losiden er 800 m,
+          og temperaturen ved havnivå der er 14 °C. Tørradiabatisk gradient er 1 °C per 100 m, og
           våtadiabatisk gradient er 0,5 °C per 100 m. Temperaturen på toppen og på lesiden er ikke
           regnet ut i figuren.
         </>
