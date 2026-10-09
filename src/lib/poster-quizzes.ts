@@ -565,17 +565,17 @@ export const QUIZ_IOD: QuizQuestion[] = [
       "Kjøligere enn normalt i vest og varmere i øst.",
     ],
     answer: 0,
-    explain: "Se tabellen. Positiv fase er varmere i vest og kjøligere i øst.",
+    explain: "Se «Positiv fase». Positiv fase er varmere i vest og kjøligere i øst.",
   },
   {
-    prompt: "Hva er DMI?",
+    prompt: "Hvor stiger kaldt vann opp i positiv fase?",
     options: [
-      "Forskjellen i temperaturavvik mellom en vestlig og en østlig rute.",
-      "Havnivået ved ekvator.",
-      "Nedbøren i Australia i millimeter.",
+      "Sør for Indonesia, utenfor Sumatra og Java.",
+      "Ved vestkysten av Australia.",
+      "Utenfor Øst-Afrika.",
     ],
     answer: 0,
-    explain: "Se «Hvordan den måles». DMI er vest minus øst.",
+    explain: "Se «Positiv fase». Oppvellingen skjer nær Indonesia (BOM, u.å.).",
   },
   {
     prompt: "Er dipolen det samme som ENSO?",
@@ -596,7 +596,7 @@ export const QUIZ_IOD: QuizQuestion[] = [
     ],
     answer: 0,
     explain:
-      "Se «Tre faser». Hendelsene starter ofte i mai eller juni, topper seg mellom august og oktober, og dør ut rundt slutten av våren på den sørlige halvkule.",
+      "Se «Hva er den indiske hav-dipolen?». Hendelsene starter ofte i mai eller juni, topper seg mellom august og oktober, og dør ut rundt november–desember.",
   },
 ];
 

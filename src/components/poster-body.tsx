@@ -100,6 +100,11 @@ import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
+import {
+  IodFaseFigur,
+  IodHavtemperaturFigur,
+  IodJetstrommerFigur,
+} from "@/components/diagrams/iod-figurer";
 import { Quiz } from "@/components/quiz";
 import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -512,6 +517,35 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
+    IodFigurPositiv: () => (
+    <IodFaseFigur
+      initialFase="positiv"
+      heading="Figur 1. Positiv IOD"
+      title="Kart over Det indiske hav med varmt vann ved Øst-Afrika, kaldt vann ved Indonesia og en jetstrøm over Sør-Australia"
+      caption="I positiv fase er havet varmere enn normalt utenfor Øst-Afrika og kjøligere nær Indonesia. Der stiger kaldt vann opp. Over det kalde havet synker lufta, og det blir mindre regn i deler av Australia. Linjen viser hvor jetstrømmen kan gå over Sør-Australia. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: BOM (u.å.)."
+    />
+  ),
+    IodFigurNegativ: () => (
+    <IodFaseFigur
+      initialFase="negativ"
+      heading="Figur 2. Negativ IOD"
+      title="Kart med kjølig hav ved Øst-Afrika, varmt hav og regnskyer ved Indonesia og Australia"
+      caption="I negativ fase er havet kjøligere enn normalt i vest og varmere i øst. Lufta stiger over det varme havet ved Indonesia og gir mer regn der og i Australia. Øst-Afrika får mindre regn. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: BOM (u.å.)."
+    />
+  ),
+    IodFigurHavtemperatur: () => (
+    <IodHavtemperaturFigur
+      heading="Figur 3. Havtemperaturen i Det indiske hav"
+      caption="Havtemperaturen en dag i Det indiske hav. De svarte linjene viser grensen der det varme vannet møter det kalde havet lenger sør. Data: NOAA OISST v2.1 (24. september 2026). Påtegning: Mats Amundsen."
+    />
+  ),
+    IodFigurJetstrommer: () => (
+    <IodJetstrommerFigur
+      heading="Figur 4. Jetstrømmer over Det indiske hav"
+      caption="Vind høyt oppe i atmosfæren. Ett belte går rundt 30° nord, og ett går sør for Afrika og Australia, over grensen i figur 3. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: NOAA (u.å.)."
+    />
+  ),
+
 
 
     NaoForklaring: () => (

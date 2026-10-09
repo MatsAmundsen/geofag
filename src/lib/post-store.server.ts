@@ -619,6 +619,12 @@ const COPY_RESEEDS: CopyReseed[] = [
   }
 ,
   {
+    flag: "iod-mats-word-2026-10-10",
+    slug: "iod",
+    stale: ["## Tre faser", "Hvordan den måles"],
+  }
+,
+  {
     flag: "nao-copy-2026-10-07",
     slug: "nao",
     stale: ["Her kan du redigere", "sprengkulde"],

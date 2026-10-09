@@ -1510,10 +1510,36 @@ export const KILDER = {
   ],
   iod: [
     {
+      prefix:
+        "Ashok, K., Guan, Z., & Yamagata, T. (2001). Impact of the Indian Ocean dipole on the relationship between the Indian monsoon rainfall and ENSO. ",
+      italic: "Geophysical Research Letters, 28",
+      suffix: "(23), 4499–4502.",
+      href: "https://doi.org/10.1029/2001GL013294",
+    },
+    {
       prefix: "Australian Bureau of Meteorology [BOM]. (u.å.). ",
-      italic: "Indian Ocean climate influences",
+      italic: "Indian Ocean Dipole",
+      suffix: ". Lest 10. oktober 2026.",
+      href: "https://www.bom.gov.au/resources/learn-and-explore/climate-knowledge-centre/climate-factors/indian-ocean-dipole",
+    },
+    {
+      prefix:
+        "Cai, W., van Rensch, P., Cowan, T., & Hendon, H. H. (2011). Teleconnection pathways of ENSO and the IOD and the mechanisms for impacts on Australian rainfall. ",
+      italic: "Journal of Climate, 24",
+      suffix: "(15), 3910–3923.",
+      href: "https://doi.org/10.1175/2011JCLI4129.1",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      italic: "The jet stream",
       suffix: ".",
-      href: "https://www.bom.gov.au/climate/iod/",
+      href: "https://www.noaa.gov/jetstream/global/jet-stream",
+    },
+    {
+      prefix: "NOAA National Centers for Environmental Information. (2026). ",
+      italic: "Daily Optimum Interpolation Sea Surface Temperature (OISST), versjon 2.1",
+      suffix: " [Datasett, 24. september 2026]. Brukt i figur 3.",
+      href: "https://www.ncei.noaa.gov/products/optimum-interpolation-sst",
     },
     {
       prefix:
@@ -1533,6 +1559,12 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "World Meteorological Organization [WMO]. (2022). ",
+      italic: "East Africa seasonal outlook: short rains season",
+      suffix: ".",
+      href: "https://wmo.int/media/news/east-africa-seasonal-outlook-short-rains-season",
     },
   ],
   nao: [
