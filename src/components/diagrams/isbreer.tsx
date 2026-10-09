@@ -259,12 +259,19 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
           onChange={setB}
           ends={["mer smelting", "mer snø"]}
           valueLabel={b > 0.15 ? "positiv" : b < -0.15 ? "negativ" : "i balanse"}
+          valueText={
+            b > 0.15
+              ? "positiv: mer snø enn smelting"
+              : b < -0.15
+                ? "negativ: mer smelting enn snø"
+                : "i balanse: like mye snø som smelting"
+          }
         />
       }
       status={status}
       labels={labels}
       notes={["Lengdesnitt, skjematisk", "Isen er tegnet tykkere enn i virkeligheten"]}
-      keys={[{ text: "Sprekker i isen", color: "#7d9fb6", kind: "crevasse" }]}
+      keys={[{ text: "Sprekker i isen", color: P.crevasse, kind: "crevasse" }]}
       viewBox="0 0 960 470"
     >
       {({ d, m }) => (
@@ -332,10 +339,10 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
             ))}
           <path d={snowPath} fill={d.url.firn} />
           <path d={snowPath} fill="none" stroke="#ffffff" strokeWidth="1.2" opacity="0.8" />
-          <g opacity="0.8" data-nocheck="">
+          <g data-nocheck="">
             <path
               d={`M${BRE_X0 + 18} ${surf(BRE_X0 + 18) - 0.5} l3 10 l3.5 -9.5 Z`}
-              fill="#7d9fb6"
+              fill={P.crevasse}
             />
             {crevasses.map((x) => {
               const dd = 6 + H(x) * 0.1;
@@ -343,7 +350,7 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
                 <path
                   key={x}
                   d={`M${x - 3} ${surf(x - 3) - 0.5} L${x + 0.5} ${surf(x) + dd} L${x + 3} ${surf(x + 3) - 0.5} Z`}
-                  fill="#7d9fb6"
+                  fill={P.crevasse}
                 />
               );
             })}
@@ -403,8 +410,8 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
             <path
               d={
                 word === "fram"
-                  ? `M${xf - 26} ${breBed(xf) - 56} h46`
-                  : `M${xf + 20} ${breBed(xf) - 56} h-46`
+                  ? `M${xf + 6} ${breBed(xf) - 56} h46`
+                  : `M${xf + 52} ${breBed(xf) - 56} h-46`
               }
               stroke={C.fg}
               strokeWidth="3"
@@ -1141,6 +1148,7 @@ export function BotnEggTind({
       labels={labels}
       notes={["Terrengmodell, skjematisk", "Typeområder: Jotunheimen og Sunnmørsalpene"]}
       viewBox="0 0 960 520"
+      narrowViewBox="133 0 694 520"
     >
       {({ d }) => (
         <g
@@ -1438,8 +1446,8 @@ export function Avsetningsformer({
   if (step === 3) {
     L2({
       text: "Esker: svingete rygg av sand og grus",
-      x: 70,
-      y: 470,
+      x: 34,
+      y: 262,
       at: eskPt,
       color: C.sand,
       badge: [eskPt[0], eskPt[1] - 20],
@@ -1753,7 +1761,7 @@ export function Frostsprengning({
       y: 86,
       at: g.at(0.32, 0),
       color: C.cold,
-      badge: [g.at(0.2, 0)[0] - 30, 96],
+      badge: [g.at(0.2, 0)[0] - 92, 104],
     });
     labels.push({
       text: "Isen presser sprekken utover",
@@ -1761,7 +1769,7 @@ export function Frostsprengning({
       y: 236,
       color: C.warm,
       anchor: "middle",
-      badge: [g.at(0.45, -2.6)[0] - 34, g.at(0.45, -2.6)[1] + 4],
+      badge: [g.at(0.45, -2.6)[0] - 96, g.at(0.45, -2.6)[1] + 4],
     });
     labels.push({
       text: "Vann trekkes mot isen",
@@ -1770,7 +1778,7 @@ export function Frostsprengning({
       at: g.at(0.8, -6),
       color: C.rain,
       anchor: "middle",
-      badge: [g.at(0.8, -6)[0] - 30, g.at(0.8, -6)[1] + 14],
+      badge: [g.at(0.8, -6)[0] - 92, g.at(0.8, -6)[1] + 14],
     });
   }
   if (step === 3)
@@ -2235,7 +2243,7 @@ export function IsostasiSnitt({
             value={thick}
             onChange={setThick}
             valueLabel={thick < 0.5 ? "tynn is" : thick < 0.8 ? "middels" : "tykk is"}
-            ends={["tynn", "tykk"]}
+            valueText={thick < 0.5 ? "tynn is" : thick < 0.8 ? "middels tykk is" : "tykk is"}
           />
         </>
       }
@@ -2252,7 +2260,7 @@ export function IsostasiSnitt({
       keys={[
         {
           text: "Landoverflaten uten is",
-          color: "#6f97b8",
+          color: "#2f5f80",
           kind: "dash",
           off: !(step <= 3 && st.dep > 0.05),
         },
@@ -2308,7 +2316,7 @@ export function IsostasiSnitt({
             <path
               d={`M${pts(X.filter((x) => x >= 300).map((x) => [x, isLand(x)]))}`}
               fill="none"
-              stroke="#6f97b8"
+              stroke="#2f5f80"
               strokeWidth="2.2"
               strokeDasharray="6 6"
             />
@@ -2318,9 +2326,9 @@ export function IsostasiSnitt({
                 <path
                   key={x}
                   d={`M${x} ${isLand(x) + 3} V${Math.max(isLand(x) + 15, surf(x) - 8)}`}
-                  stroke={C.fg}
+                  stroke="#2f5f80"
                   strokeWidth="3"
-                  markerEnd={`url(#${m.fg})`}
+                  markerEnd={`url(#${m.ice})`}
                 />
               ))
             : null}
