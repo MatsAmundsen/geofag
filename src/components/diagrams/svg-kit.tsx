@@ -22,16 +22,20 @@ export function PlayPauseToggle({
   isPlaying,
   onToggle,
   label,
+  name,
 }: {
   isPlaying: boolean;
   onToggle: () => void;
   label?: string;
+  /** Navnet på figuren, tas med i aria-label så knappene kan skilles fra hverandre. */
+  name?: string;
 }) {
+  const aria = isPlaying ? "Pause animasjon" : "Start animasjon";
   return (
     <button
       type="button"
       onClick={onToggle}
-      aria-label={isPlaying ? "Pause animasjon" : "Start animasjon"}
+      aria-label={name ? `${aria}: ${name}` : aria}
       className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-muted/60 px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted hover:text-primary transition-colors active:scale-95"
     >
       <span
