@@ -9,7 +9,7 @@
  * (noen hundre punkter per bilde), og kystlinjene til kartinnfeltene er ferdig projisert i norgesgeo-kart.ts,
  * så ingenting tungt beregnes under serverrendering.
  */
-import { useId, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
@@ -848,4 +848,333 @@ function mix(a: string, b: string, t: number) {
   const x = h(a);
   const y = h(b);
   return `rgb(${x.map((v, i) => Math.round(lerp(v, y[i], clamp(t)))).join(",")})`;
+}
+
+/* =====================================================================
+ * 3. Åpningen av Norskehavet: riftfase, brudd, havbunnsspredning, i dag
+ * ===================================================================== */
+
+const NH_STAGES = ["Riftfase", "Bruddet", "Havbunnsspredning", "I dag"];
+const NH_STATUS = [
+  "Riftfase: Lenge før havet åpnet seg, ble skorpa mellom Norge og Grønland strukket og tynnet ut. Mange fjorder og daler følger i dag forkastningssoner fra denne tiden (trias–kritt, ca. 200 millioner år siden).",
+  "Bruddet: I tidlig tertiær (eocen, for ca. 55 millioner år siden) revnet litosfæren mellom Norge og Grønland helt. Smelte fra mantelen steg opp og begynte å danne ny havbunn.",
+  "Havbunnsspredning: Langs midthavsryggen lages ny havbunn, og Norge og Grønland skilles. Norge får en passiv kontinentalmargin uten subduksjon. Elver og senere isbreer fører sand og leire ut på sokkelen.",
+  "I dag: Spredningen fortsetter. Jan Mayen ligger på spredningsryggen nord for Island, med Beerenberg (2272 m o.h.), Norges eneste aktive vulkan over havnivå. Lagene på sokkelen er kilde-, reservoar- og takbergarter for olje og gass.",
+];
+/** Punkter på norsk side av riften (kartkoordinater) og de samme punktene på grønlandsk side når kontinentene er samlet. */
+const NH_NORGE: [number, number][] = [
+  [91, 140],
+  [91, 96],
+  [108, 38],
+  [123, -21],
+  [123, -68],
+  [98, -115],
+  [59, -166],
+];
+function inverseSamlet(p: [number, number]): [number, number] {
+  const a = (-KART_SAMLET.rot * Math.PI) / 180;
+  const x = p[0] - KART_SAMLET.dx - KART_PIVOT[0];
+  const y = p[1] - KART_SAMLET.dy - KART_PIVOT[1];
+  return [KART_PIVOT[0] + x * Math.cos(a) - y * Math.sin(a), KART_PIVOT[1] + x * Math.sin(a) + y * Math.cos(a)];
+}
+const NH_GRONL = NH_NORGE.map(inverseSamlet);
+const NH_WIN: [number, number, number, number] = [-330, -260, 560, 470];
+
+function nhStage(t: number) {
+  return t < 0.98 ? 0 : t < 1.6 ? 1 : t < 2.55 ? 2 : 3;
+}
+function nhKart(t: number): KartTilstand {
+  const open = smooth(clamp((t - 1) / 2));
+  return {
+    dx: lerp(KART_SAMLET.dx, 0, open),
+    dy: lerp(KART_SAMLET.dy, 0, open),
+    rot: lerp(KART_SAMLET.rot, 0, open),
+    island: clamp((t - 2.6) / 0.35),
+    britain: 1,
+    belt: 0,
+    ridge: clamp((t - 0.95) / 0.2),
+  };
+}
+
+/** Snittet (lokale koordinater 0–520 × 0–420): Grønland til venstre, Norge til høyre. */
+function NhSnitt({ t, d, m }: { t: number; d: { url: Record<string, string> }; m: { fg: string; warm: string } }) {
+  const SEA = 120;
+  const cx = 260;
+  const thin = lerp(0.35, 1, smooth(clamp(t)));
+  const half = 205 * smooth(clamp((t - 1) / 2));
+  const sedT = 6 + 30 * smooth(clamp((t - 1.2) / 1.8));
+  // avstand fra bruddet (eller midten før bruddet) inn i hvert kontinent
+  const left = cx - half;
+  const right = cx + half;
+  const uOf = (x: number) => (x <= left ? left - x : x >= right ? x - right : -1);
+  const k = (u: number) => thin * Math.exp(-u / 85);
+  const crustTop = (x: number) => {
+    const u = uOf(x);
+    return u < 0 ? 0 : 108 + 62 * k(u);
+  };
+  const moho = (x: number) => {
+    const u = uOf(x);
+    return u < 0 ? 0 : 238 - 92 * k(u);
+  };
+  const lab = (x: number) => {
+    const u = uOf(x);
+    const base = u < 0 ? 175 : 330 - 120 * k(u);
+    return base;
+  };
+  const broken = t >= 1;
+  const oceanFloor = (x: number) => 176 - 16 * gauss(x, cx, 30);
+  const xsL = Math.max(0, left);
+  const contL = band(crustTop, moho, 0, broken ? left : cx, 4);
+  const contR = band(crustTop, moho, broken ? right : cx, 520, 4);
+  const mantleL = band(moho, lab, 0, broken ? left : cx, 4);
+  const mantleR = band(moho, lab, broken ? right : cx, 520, 4);
+  const oceanLith = broken && half > 1 ? band(oceanFloor, (x) => 190 + Math.min(120, Math.abs(x - cx) * 0.9), left, right, 3) : "";
+  const oceanCrust = broken && half > 1 ? band(oceanFloor, (x) => oceanFloor(x) + 12, left, right, 3) : "";
+  // havbunnsstriper (like gamle på hver side av ryggen)
+  const stripes: string[] = [];
+  if (broken && half > 8)
+    for (let i = 1; i * 34 < half; i++) {
+      for (const sgn of [-1, 1]) {
+        const x0 = cx + sgn * i * 34;
+        const x1 = cx + sgn * Math.min(half, i * 34 + 17);
+        stripes.push(`M${fx(Math.min(x0, x1))} ${fx(oceanFloor(x0))} L${fx(Math.max(x0, x1))} ${fx(oceanFloor(x1))} L${fx(Math.max(x0, x1))} ${fx(oceanFloor(x1) + 12)} L${fx(Math.min(x0, x1))} ${fx(oceanFloor(x0) + 12)} Z`);
+      }
+    }
+  const water = band(
+    () => SEA,
+    (x) => {
+      if (broken && x > left && x < right) return oceanFloor(x);
+      return Math.max(SEA, crustTop(x));
+    },
+    Math.max(0, xsL - 160),
+    Math.min(520, right + 160),
+    3,
+  );
+  const sedL = band(
+    (x) => Math.max(SEA + 4, crustTop(x) - sedT * clamp((left - x) / 40) * clamp((x - (left - 170)) / 60)),
+    crustTop,
+    Math.max(0, left - 180),
+    broken ? left : cx,
+    3,
+  );
+  const sedR = band(
+    (x) => Math.max(SEA + 4, crustTop(x) - sedT * clamp((x - right) / 40) * clamp((right + 170 - x) / 60)),
+    crustTop,
+    broken ? right : cx,
+    Math.min(520, right + 180),
+    3,
+  );
+  // forkastninger i riftfasen
+  const faults = [-120, -70, -30, 30, 70, 120].map((o) => {
+    const x = (broken ? (o < 0 ? left : right) : cx) + o;
+    return `M${fx(x)} ${fx(crustTop(x) - 2)} L${fx(x + (o < 0 ? 14 : -14))} ${fx(crustTop(x) + 44)}`;
+  });
+  const upwell = 0.3 + 0.7 * clamp(t);
+  return (
+    <g>
+      <rect x="0" y="0" width="520" height="420" fill={d.url.sky} rx="8" />
+      <rect x="0" y="180" width="520" height="240" fill={d.url.astheno} />
+      <ellipse cx={cx} cy="300" rx="70" ry="120" fill="#f08a5d" opacity={0.35 * upwell} filter={d.url.glow} />
+      <path d={mantleL} fill={P.litho} />
+      <path d={mantleR} fill={P.litho} />
+      {oceanLith ? <path d={oceanLith} fill={P.litho} /> : null}
+      <path d={water} fill={d.url.water} />
+      <path d={contL} fill="#8a7563" />
+      <path d={contL} fill={d.url.strata} />
+      <path d={contR} fill="#8c6d68" />
+      <path d={contR} fill={d.url.strata} />
+      <path d={sedL} fill="#c8b386" />
+      <path d={sedR} fill="#c8b386" />
+      {oceanCrust ? <path d={oceanCrust} fill="#35574a" /> : null}
+      <g data-nocheck="">
+        {stripes.map((p, i) => (
+          <path key={i} d={p} fill="#5d8a72" />
+        ))}
+      </g>
+      <line x1="0" y1={SEA} x2="520" y2={SEA} stroke={C.rain} strokeWidth="1.6" opacity="0.8" />
+      <g data-nocheck="" opacity={1 - clamp((t - 1.6) / 0.6)}>
+        {faults.map((f, i) => (
+          <path key={i} d={f} stroke={C.warm} strokeWidth="2" />
+        ))}
+      </g>
+      {broken ? (
+        <path d={`M${cx} 330 L${cx} ${fx(oceanFloor(cx) + 4)}`} stroke="#f08a5d" strokeWidth="5" opacity="0.9" />
+      ) : null}
+      {/* bevegelse */}
+      <line x1="150" y1="64" x2="70" y2="64" stroke={C.fg} strokeWidth="3" markerEnd={`url(#${m.fg})`} />
+      <line x1="370" y1="64" x2="450" y2="64" stroke={C.fg} strokeWidth="3" markerEnd={`url(#${m.fg})`} />
+    </g>
+  );
+}
+
+export function NorskehavetFigur({
+  heading = "Norskehavet åpner seg: Norge og Grønland skilles",
+  caption,
+}: Omit<NorgesGeoFigurProps, "initialStep">) {
+  const motion = useAnimationPlaying();
+  const [ref, visible] = useInView<SVGSVGElement>();
+  const [wrapRef, small] = useFigurSmal();
+  const [t, setT] = useState(0);
+  const running = motion.playing && visible;
+  useNhClock(running, setT);
+  const stage = nhStage(t);
+  const k = nhKart(t);
+  const set = (v: number) => {
+    setT(v);
+    if (motion.playing) motion.toggle();
+  };
+  // oppsett: bred = kart til venstre, snitt til høyre; smal = kart over snitt
+  const map = small ? { x: 10, y: 10, w: 540 } : { x: 14, y: 14, w: 400 };
+  const sec = small ? { x: 20, y: 480 } : { x: 426, y: 40 };
+  const kp = (p: readonly [number, number]) => kartTilFigur(p, map.x, map.y, map.w, NH_WIN);
+  const ridgePts = NH_NORGE.map((p, i) => {
+    const q = laurentiaPunkt(NH_GRONL[i], k);
+    return [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2] as [number, number];
+  });
+  const ridgePath = `M${ridgePts.map((p) => `${fx(p[0])} ${fx(p[1])}`).join(" L")}`;
+  const gr = kp(laurentiaPunkt(KART_STED.gronland, k));
+  const no = kp([150, 80]);
+  const rMid = kp(ridgePts[3]);
+  const jm = kp(KART_STED.janMayen);
+  const isl = kp(KART_STED.island);
+  const S = (x: number, y: number): [number, number] => [sec.x + x, sec.y + y];
+  const labels: Lab[] = [
+    { text: "Grønland", x: gr[0], y: gr[1] + 5, color: "#f2e3c6", anchor: "middle", badge: [gr[0], gr[1]] },
+    { text: "Norge", x: no[0], y: no[1] + 5, color: "#f2e3c6", anchor: "middle", badge: [no[0], no[1]] },
+    { text: "Grønland", x: S(40, 96)[0], y: S(40, 96)[1], color: "#e3cfae", badge: S(40, 90), narrowHide: false },
+    { text: "Norge", x: S(480, 96)[0], y: S(480, 96)[1], color: "#e8c0b8", anchor: "end", badge: S(480, 90) },
+  ];
+  if (t > 1.1)
+    labels.push({ text: "Spredningsrygg", x: rMid[0] + 16, y: rMid[1] + 4, at: rMid, color: "#ffb08a", badge: [rMid[0] + 22, rMid[1]] });
+  if (t > 2.6)
+    labels.push({ text: "Jan Mayen", x: jm[0] - 12, y: jm[1] + 5, at: jm, color: C.fg, anchor: "end", size: 14, badge: [jm[0] - 18, jm[1] + 10] });
+  if (t > 2.9)
+    labels.push({ text: "Island", x: isl[0], y: isl[1] + 32, at: [isl[0], isl[1] + 8], color: C.fg, anchor: "middle", size: 14, badge: [isl[0], isl[1] + 30] });
+  if (stage === 0)
+    labels.push(
+      { text: "Skorpa strekkes og tynnes ut", x: S(260, 395)[0], y: S(260, 395)[1], at: S(260, 200), color: C.fg, anchor: "middle", badge: S(260, 380) },
+      { text: "Forkastninger", x: S(130, 40)[0], y: S(130, 40)[1] + 0, at: S(150, 150), color: C.warm, anchor: "middle", badge: S(150, 104) },
+    );
+  else {
+    labels.push(
+      { text: "Ny havbunn", x: S(260, 236)[0], y: S(260, 236)[1], at: S(260 + Math.min(60, 205 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", anchor: "middle", badge: S(300, 222) },
+      { text: "Smelte stiger opp", x: S(260, 395)[0], y: S(260, 395)[1], at: S(260, 300), color: "#ffb08a", anchor: "middle", badge: S(260, 382) },
+    );
+    if (t > 1.7)
+      labels.push({
+        text: "Passiv margin med sedimenter",
+        x: S(510, 30)[0],
+        y: S(510, 30)[1],
+        at: S(Math.min(505, 260 + 205 * smooth(clamp((t - 1) / 2)) + 60), 128),
+        color: "#e6d3a8",
+        anchor: "end",
+        badge: S(450, 150),
+      });
+  }
+  const keys: Key[] = [
+    { text: "Kontinental skorpe", color: "#8c6d68", kind: "fill" },
+    { text: "Ny havbunnsskorpe", color: "#35574a", kind: "fill", off: t < 1 },
+    { text: "Sedimenter på sokkelen", color: "#c8b386", kind: "fill" },
+    { text: "Spredningsrygg", color: "#f08a5d", kind: "dash", off: t < 1 },
+  ];
+  const valueLabel = NH_STAGES[stage];
+  return (
+    <div ref={wrapRef}>
+      <IsbreFigur
+        svgRef={ref}
+        title="Kart og snitt: Norskehavet åpner seg. Skorpa mellom Norge og Grønland strekkes, revner, og ny havbunn dannes langs spredningsryggen"
+        heading={heading}
+        caption={
+          caption ??
+          "Dra i tidsskyveren for å se hvordan Norge og Grønland skilles. Kartet viser dagens kystlinjer, og snittet viser skorpa på tvers av havet. Forenklet: Grønland flyttes og dreies som én stiv blokk, spredningsryggen er tegnet midt mellom kontinentene, og tidsskyveren er ikke i målestokk. Island og Jan Mayen kom til mye senere enn bruddet og vises først mot slutten."
+        }
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={
+          <>
+            <StegVelger labels={NH_STAGES} step={stage + 1} onStep={(n) => set(n - 1)} label="Velg tid" />
+            <Skyver
+              label="Tid"
+              min={0}
+              max={3}
+              step={0.01}
+              value={n1(t)}
+              onChange={set}
+              valueLabel={valueLabel}
+              valueText={`${valueLabel}: ${NH_STATUS[stage].split(":")[0]}`}
+              ends={["Riftfase", "I dag"]}
+            />
+          </>
+        }
+        status={NH_STATUS[stage]}
+        labels={labels}
+        keys={keys}
+        notes={["Kart: dagens kystlinjer (Natural Earth)", "Snitt: skjematisk, høyden er overdrevet"]}
+        viewBox={small ? "0 0 560 920" : "0 0 960 500"}
+        narrowViewBox="0 0 560 920"
+      >
+        {({ d, m }) => (
+          <g
+            className={motion.motionClass}
+            data-playing={motion.playing ? "yes" : "no"}
+            data-figur="norskehavet"
+            data-step={stage + 1}
+          >
+            <rect x="0" y="0" width={small ? 560 : 960} height={small ? 920 : 500} fill={d.url.sky} />
+            <KartInnfelt x={map.x} y={map.y} w={map.w} win={NH_WIN} k={k} ridgePath={ridgePath}>
+              {t > 1.6 ? (
+                <path
+                  d={`M${NH_NORGE.slice(0, 6).map((p) => `${p[0] + 18} ${p[1]}`).join(" L")}`}
+                  stroke="#c8b386"
+                  strokeWidth="22"
+                  strokeLinecap="round"
+                  fill="none"
+                  opacity={0.45 * clamp((t - 1.6) / 0.6)}
+                />
+              ) : null}
+              {t > 2.6 ? (
+                <circle cx={KART_STED.janMayen[0]} cy={KART_STED.janMayen[1]} r="7" fill="#f08a5d" stroke={P.halo} strokeWidth="2" />
+              ) : null}
+            </KartInnfelt>
+            <g transform={`translate(${sec.x} ${sec.y})`} data-nocheck="">
+              <NhSnitt t={t} d={d} m={m} />
+            </g>
+            <rect x={sec.x} y={sec.y} width="520" height="420" rx="8" fill="none" stroke="#9fb4c2" strokeWidth="1.5" data-nocheck="" />
+          </g>
+        )}
+      </IsbreFigur>
+    </div>
+  );
+}
+
+/** Spiller tiden fram (ca. 12 s fra riftfase til i dag, så en pause) mens animasjonen går. */
+function useNhClock(running: boolean, setT: (f: (t: number) => number) => void) {
+  useEffect(() => {
+    if (!running) return;
+    let raf = 0;
+    let last = performance.now();
+    let acc = 0;
+    let hold = 0;
+    const loop = (now: number) => {
+      const dt = Math.min(100, now - last);
+      last = now;
+      acc += dt;
+      if (acc >= 33) {
+        const add = acc;
+        acc = 0;
+        setT((t) => {
+          if (t >= 3) {
+            hold += add;
+            if (hold < 2200) return 3;
+            hold = 0;
+            return 0;
+          }
+          return Math.min(3, t + (add / 12000) * 3);
+        });
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [running, setT]);
 }

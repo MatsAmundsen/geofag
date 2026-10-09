@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { NorwayTectonicsHistoryDiagram, OfiolittSnittDiagram } from "@/components/diagrams";
-import { KaledonideneFigur, OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
+import { KaledonideneFigur, NorskehavetFigur, OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -225,6 +225,8 @@ function NorgesGeologiPage() {
             vulkan over havnivå, med siste utbrudd i 1985.
           </li>
         </ul>
+
+        <NorskehavetFigur />
       </section>
 
       {/* SEKSJON 5: GLASIAL ISOSTASI */}
