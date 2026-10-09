@@ -158,7 +158,7 @@ function Swatches({ items }: { items: Array<{ color: string; label: string }> })
 
 function AnalyseFigure() {
   const low = xy(ANALYSE, 2, 69);
-  const mark = xy(ANALYSE, 14.4, 67.3);
+  const mark = xy(ANALYSE, 15, 67.3);
   return (
     <FigureFrame
       heading="Analysekart, forenklet"
@@ -196,7 +196,7 @@ function AnalyseFigure() {
         <line x1={mark.x - 9} y1={mark.y - 9} x2={mark.x + 9} y2={mark.y + 9} stroke="#9f1239" strokeWidth={3} />
         <line x1={mark.x - 9} y1={mark.y + 9} x2={mark.x + 9} y2={mark.y - 9} stroke="#9f1239" strokeWidth={3} />
         <circle cx={mark.x} cy={mark.y} r={14} fill="none" stroke="#9f1239" strokeWidth={2} />
-        <SeaLabel box={ANALYSE} lon={14.4} lat={68.6} size={16} fill="#1c2830" stroke="#f4f7f8">
+        <SeaLabel box={ANALYSE} lon={15} lat={68.7} size={16} fill="#1c2830" stroke="#f4f7f8">
           X
         </SeaLabel>
         <SeaLabel box={ANALYSE} lon={-2} lat={71.2} size={14} fill="#1c2830" stroke="#f4f7f8">
@@ -569,8 +569,9 @@ function TsFigure() {
       caption={
         <>
           Egen figur. Tabellen er tallene fra oppgaven. Isopyknalene er regnet med UNESCO EOS-80 og
-          viser tetthet i kg/dm³. Frysepunktlinjen er tegnet nederst. Diagrammet sier ikke hvilken
-          vannmasse som er tyngst.
+          viser tetthet i kg/dm³. Utsnittet til høyre er det samme området rundt A og B, tegnet
+          tettere. Frysepunktlinjen er tegnet nederst. Diagrammet sier ikke hvilken vannmasse som
+          er tyngst.
         </>
       }
     >
@@ -597,9 +598,9 @@ function TsFigure() {
             </tr>
           </tbody>
         </table>
-        <svg viewBox="0 0 720 480" className="h-auto w-full" role="img" aria-labelledby="ts-title">
+        <svg viewBox="0 0 720 980" className="h-auto w-full" role="img" aria-labelledby="ts-title">
           <title id="ts-title">Temperatur-salinitetsdiagram med isopyknaler. Punkt A ligger ved 1 grad og 29,7 PSU. Punkt B ligger ved minus 0,8 grader og 29,4 PSU.</title>
-          <rect width="720" height="480" fill="#0f171c" rx="12" />
+          <rect width="720" height="980" fill="#0f171c" rx="12" />
           {levels.map((level) => {
             const d = isopycnal(level);
             if (!d) return null;
@@ -649,16 +650,79 @@ function TsFigure() {
             Temperatur (°C)
           </text>
           <circle cx={a.x} cy={a.y} r={6} fill="#e8eef2" />
-          <text x={a.x + 10} y={a.y - 8} fill="#e8eef2" fontFamily={font} fontSize={18} fontWeight={700}>
+          <text x={a.x + 12} y={a.y - 12} fill="#e8eef2" fontFamily={font} fontSize={18} fontWeight={700}>
             A
           </text>
           <circle cx={b.x} cy={b.y} r={6} fill="#e0b48a" />
-          <text x={b.x + 10} y={b.y + 16} fill="#e0b48a" fontFamily={font} fontSize={18} fontWeight={700}>
+          <text x={b.x - 16} y={b.y + 22} fill="#e0b48a" fontFamily={font} fontSize={18} fontWeight={700}>
             B
           </text>
+          <TsInset />
         </svg>
       </div>
     </FigureFrame>
+  );
+}
+
+function tempOnIsopycnal(level: number, s: number) {
+  let lo = -2;
+  let hi = 8;
+  const cold = densityKgM3(lo, s) / 1000;
+  const warm = densityKgM3(hi, s) / 1000;
+  if (level > cold || level < warm) return null;
+  for (let i = 0; i < 24; i++) {
+    const mid = (lo + hi) / 2;
+    if (densityKgM3(mid, s) / 1000 > level) lo = mid;
+    else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+function TsInset() {
+  const s0 = 29.15;
+  const s1 = 30.1;
+  const t0 = -1.4;
+  const t1 = 1.8;
+  const plot = { l: 70, r: 520, t: 48, b: 390 };
+  const sx = (s: number) => plot.l + ((s - s0) / (s1 - s0)) * (plot.r - plot.l);
+  const sy = (t: number) => plot.b - ((t - t0) / (t1 - t0)) * (plot.b - plot.t);
+  const levels = [1.0235, 1.0236, 1.0237, 1.0238, 1.0239, 1.024];
+  const a = { x: sx(29.7), y: sy(1) };
+  const b = { x: sx(29.4), y: sy(-0.8) };
+  return (
+    <g transform="translate(0 500)">
+      <text x={360} y={28} textAnchor="middle" fill="#e8eef2" fontFamily={font} fontSize={18} fontWeight={650}>
+        Utsnitt rundt A og B
+      </text>
+      {levels.map((level) => {
+        const pts: string[] = [];
+        for (let s = s0; s <= s1 + 1e-9; s += 0.05) {
+          const temp = tempOnIsopycnal(level, s);
+          if (temp == null || temp < t0 || temp > t1 || temp < freezingPoint(s)) continue;
+          pts.push(`${pts.length === 0 ? "M" : "L"}${sx(s).toFixed(1)} ${sy(temp).toFixed(1)}`);
+        }
+        const labelTemp = tempOnIsopycnal(level, s1);
+        if (pts.length < 2 || labelTemp == null) return null;
+        return (
+          <g key={level}>
+            <path d={pts.join(" ")} fill="none" stroke="#6fb3b8" strokeWidth={1.6} />
+            <text x={sx(s1) + 8} y={sy(labelTemp) + 4} fill="#c5d5df" fontFamily={font} fontSize={14}>
+              {level.toFixed(4).replace(".", ",")}
+            </text>
+          </g>
+        );
+      })}
+      <line x1={plot.l} y1={plot.t} x2={plot.l} y2={plot.b} stroke="#8b9aa6" />
+      <line x1={plot.l} y1={plot.b} x2={plot.r} y2={plot.b} stroke="#8b9aa6" />
+      <text x={sx(29.4)} y={plot.b + 28} textAnchor="middle" fill="#e8eef2" fontFamily={font} fontSize={14}>29,4</text>
+      <text x={sx(29.7)} y={plot.b + 28} textAnchor="middle" fill="#e8eef2" fontFamily={font} fontSize={14}>29,7</text>
+      <text x={plot.l - 10} y={sy(1) + 4} textAnchor="end" fill="#e8eef2" fontFamily={font} fontSize={14}>1</text>
+      <text x={plot.l - 10} y={sy(-0.8) + 4} textAnchor="end" fill="#e8eef2" fontFamily={font} fontSize={14}>−0,8</text>
+      <circle cx={a.x} cy={a.y} r={6} fill="#e8eef2" />
+      <text x={a.x + 10} y={a.y - 10} fill="#e8eef2" fontFamily={font} fontSize={18} fontWeight={700}>A</text>
+      <circle cx={b.x} cy={b.y} r={6} fill="#e0b48a" />
+      <text x={b.x + 10} y={b.y + 18} fill="#e0b48a" fontFamily={font} fontSize={18} fontWeight={700}>B</text>
+    </g>
   );
 }
 
@@ -702,9 +766,8 @@ function Profile({ x, title, axis, color, d }: { x: number; title: string; axis:
       <text x={115} y={392} textAnchor="middle" fill="#8b9aa6" fontFamily={font} fontSize={13}>
         {axis}
       </text>
-      <text x={24} y={220} fill="#8b9aa6" fontFamily={font} fontSize={13} transform="rotate(-90 24 220)">
-        0–175 m
-      </text>
+      <text x={48} y={62} fill="#8b9aa6" fontFamily={font} fontSize={13}>0 m</text>
+      <text x={48} y={378} fill="#8b9aa6" fontFamily={font} fontSize={13}>175 m</text>
       <path d={d} fill="none" stroke={color} strokeWidth={3} />
     </g>
   );
@@ -723,7 +786,7 @@ const PLACES: Array<{ name: string; lon: number; lat: number; size?: number }> =
   { name: "Shetland", lon: -1.4, lat: 60.7, size: 13 },
   { name: "Nordsjøen", lon: 3.2, lat: 57.6 },
   { name: "Doggerbank", lon: 3, lat: 55.1, size: 13 },
-  { name: "Storbritannia og Irland", lon: -6, lat: 53.2, size: 13 },
+  { name: "Storbritannia og Irland", lon: -22, lat: 54, size: 13 },
   { name: "Østersjøen", lon: 19.5, lat: 58.2, size: 14 },
   { name: "Nord-Atlanteren", lon: -28, lat: 56 },
 ];
@@ -954,9 +1017,9 @@ function FoehnFigure() {
         <line x1={40} y1={360} x2={720} y2={360} stroke="#6fb3b8" strokeWidth={2} />
         <path d="M150 250 C 190 230, 230 210, 280 188 C 320 170, 350 150, 390 120 C 360 150, 330 190, 300 210 C 250 240, 190 250, 150 262 Z" fill="#8eb4d4" opacity={0.85} />
         <path d="M180 230 C 220 214, 260 196, 300 176" fill="none" stroke="#d7e4ee" strokeWidth={6} strokeLinecap="round" />
-        <line x1={70} y1={250} x2={168} y2={250} stroke="#e0b48a" strokeWidth={3} markerEnd={`url(#${markerId})`} />
-        <line x1={430} y1={150} x2={560} y2={250} stroke="#e0b48a" strokeWidth={3} markerEnd={`url(#${markerId})`} />
-        <line x1={600} y1={300} x2={690} y2={300} stroke="#e0b48a" strokeWidth={3} markerEnd={`url(#${markerId})`} />
+        <line x1={90} y1={340} x2={250} y2={188} stroke="#e0b48a" strokeWidth={3} markerEnd={`url(#${markerId})`} />
+        <line x1={400} y1={110} x2={560} y2={250} stroke="#e0b48a" strokeWidth={3} markerEnd={`url(#${markerId})`} />
+        <line x1={590} y1={300} x2={690} y2={340} stroke="#e0b48a" strokeWidth={3} markerEnd={`url(#${markerId})`} />
         <line x1={250} y1={248} x2={430} y2={248} stroke="#8b9aa6" strokeDasharray="5 4" />
         <text x={90} y={400} fill="#e8eef2" fontFamily={font} fontSize={16}>Loside, 0 m</text>
         <text x={90} y={422} fill="#e0b48a" fontFamily={font} fontSize={16}>14 °C</text>
