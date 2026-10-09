@@ -7,9 +7,11 @@ import {
   cloneElement,
   createContext,
   isValidElement,
+  useCallback,
   useContext,
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
   useState,
   type ReactNode,
@@ -17,7 +19,7 @@ import {
 } from "react";
 import { FigureFrame } from "@/components/figure-frame";
 import { C, PlayPauseToggle, font } from "./svg-kit";
-import { P, clamp, useBoxWidth, useNarrow, type Poly } from "./isbre-kit";
+import { FigureScale, P, clamp, figureFont, useBoxWidth, useNarrow, type Poly } from "./isbre-kit";
 
 /* ---------- kontroller ---------- */
 
@@ -247,6 +249,17 @@ function estimateBox(l: Lab, size: number): Box {
   return { x, y: l.y - size * 0.95, w, h: size * 1.25 };
 }
 
+function sameBoxes(a: Box[], b: Box[]) {
+  if (a.length !== b.length) return false;
+  return a.every(
+    (box, i) =>
+      Math.abs(box.x - b[i].x) < 0.6 &&
+      Math.abs(box.y - b[i].y) < 0.6 &&
+      Math.abs(box.w - b[i].w) < 0.6 &&
+      Math.abs(box.h - b[i].h) < 0.6,
+  );
+}
+
 /** Nummermerker på smal skjerm: utenfor objektet, kort strek til punktet, ingen overlapp. */
 function placeBadges(labels: Lab[], vb: number[], r: number) {
   const [vbX, vbY, vbW, vbH] = vb;
@@ -335,15 +348,14 @@ function LabelLayer({
   const textRefs = useRef<(SVGTextElement | null)[]>([]);
   const [measured, setMeasured] = useState<{ key: string; boxes: Box[] } | null>(null);
   // minst 12 CSS-piksler, uansett hvor smal figuren er
-  const sizeOf = (l: Lab) => {
-    const size = l.size ?? 16;
-    return scale > 0 ? Math.round(Math.max(size, 12 / scale) * 10) / 10 : size;
-  };
+  const sizeOf = useCallback((l: Lab) => figureFont(l.size ?? 16, scale), [scale]);
   const key = `${narrow ? "n" : "w"}|${labels
     .map((l) => `${l.text}@${l.x},${l.y},${sizeOf(l)},${l.anchor ?? ""}`)
     .join(";")}`;
-  // Måles når etikettene endres, og en gang til når skriftene er lastet. Effekten må ha avhengigheter:
-  // uten dem kunne måling og ny tegning gå i ring («Maximum update depth exceeded» på Landformer).
+  // Måles når etikettene eller skriftstørrelsen endres, og en gang til når skriftene er lastet.
+  // Avhengighetene må være med: uten dem kjørte effekten etter hver tegning og kunne gå i ring
+  // («Maximum update depth exceeded» på Landformer). setState hopper over når boksene er like,
+  // så nye label-arrayer med samme innhold ikke starter en ny runde.
   const [fontTick, setFontTick] = useState(0);
   useEffect(() => {
     let live = true;
@@ -352,7 +364,6 @@ function LabelLayer({
       live = false;
     };
   }, []);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (narrow) return;
     const boxes = labels.map((l, i) => {
@@ -367,11 +378,9 @@ function LabelLayer({
       };
     });
     setMeasured((prev) =>
-      prev && prev.key === key && JSON.stringify(prev.boxes) === JSON.stringify(boxes)
-        ? prev
-        : { key, boxes },
+      prev && prev.key === key && sameBoxes(prev.boxes, boxes) ? prev : { key, boxes },
     );
-  }, [key, narrow, fontTick]);
+  }, [key, narrow, fontTick, labels, sizeOf]);
   const [vbX, vbY, vbW] = vb;
   if (narrow) {
     // minst ca. 23 CSS-piksler i diameter, så tallet blir minst 12 px
@@ -714,6 +723,24 @@ export type Markers = {
 /** Under denne figurbredden (CSS-piksler) brukes nummermerker og liste i stedet for etiketter. */
 export const NARROW_FIGURE_PX = 760;
 
+/**
+ * På smal skjerm skal en strek på 3 viewBox-enheter bli minst så mange CSS-piksler.
+ * Pilspisser følger strekbredden (markerUnits = strokeWidth), så de vokser med.
+ */
+const NARROW_STROKE_PX = 1.8;
+
+/**
+ * Samler streker som kan tyknes. Hopper over defs, tekst, markører og data-nocheck
+ * (høydefelt og skjøter), så tusenvis av polygoner ikke går gjennom løkken.
+ */
+function collectBoostableStrokes(el: Element, out: SVGElement[]) {
+  const tag = el.tagName.toLowerCase();
+  if (tag === "defs" || tag === "marker" || tag === "text" || tag === "title") return;
+  if (el.hasAttribute("data-nocheck")) return;
+  if (el instanceof SVGElement && el.hasAttribute("stroke-width")) out.push(el);
+  for (const child of el.children) collectBoostableStrokes(child, out);
+}
+
 export function IsbreFigur({
   title,
   heading,
@@ -728,6 +755,7 @@ export function IsbreFigur({
   keys = [],
   remark,
   narrowViewBox,
+  forceNarrow,
   svgRef,
   children,
 }: {
@@ -750,15 +778,35 @@ export function IsbreFigur({
   remark?: ReactNode;
   /** Eget utsnitt når figuren er smal (samme koordinater, bare beskåret). */
   narrowViewBox?: string;
+  /**
+   * Overstyrer smal/bred når figuren selv må vite det før den tegnes (frost stables).
+   * Uten denne brukes figurens egen bredde, og vindusbredden før første måling.
+   */
+  forceNarrow?: boolean;
   svgRef?: RefObject<SVGSVGElement | null>;
-  children: (ctx: { d: Defs; m: Markers; narrow: boolean }) => ReactNode;
+  children: (ctx: { d: Defs; m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const uid = useId().replace(/:/g, "");
   const d = defIds(uid);
   // smal/bred etter figurens egen bredde; vindusbredden brukes bare før første måling
   const [boxRef, boxWidth] = useBoxWidth<HTMLDivElement>();
   const narrowWindow = useNarrow();
-  const narrow = boxWidth > 0 ? boxWidth < NARROW_FIGURE_PX : narrowWindow;
+  const narrow =
+    forceNarrow !== undefined
+      ? forceNarrow
+      : boxWidth > 0
+        ? boxWidth < NARROW_FIGURE_PX
+        : narrowWindow;
+  const svgNode = useRef<SVGSVGElement | null>(null);
+  const strokeMemo = useRef(new WeakMap<SVGElement, { base: number; boost: number }>());
+  const strokesBoosted = useRef(false);
+  const setSvgRef = useCallback(
+    (node: SVGSVGElement | null) => {
+      svgNode.current = node;
+      if (svgRef) svgRef.current = node;
+    },
+    [svgRef],
+  );
   const labels = narrow ? allLabels.filter((l) => !l.narrowHide) : allLabels;
   const m: Markers = {
     fg: `${uid}-mfg`,
@@ -773,6 +821,33 @@ export function IsbreFigur({
   const [vbX, vbY, vbW, vbH] = vb;
   const svgWidth = boxWidth > 0 ? Math.min(boxWidth, 1024) : 0;
   const scale = svgWidth > 0 ? svgWidth / vbW : 0;
+  // Tykkere streker bare når figuren er smal og skalaen gjør 3 enheter tynnere enn 1,8 px.
+  // Basen huskes, så React kan sette attributtet tilbake til JSX-verdien uten at vi tykner dobbelt.
+  // Tykkere enn 8 enheter (elveleie, morene) får være som de er, ellers blir pilene enorme.
+  useLayoutEffect(() => {
+    const svg = svgNode.current;
+    if (!svg) return;
+    const factor = narrow && scale > 0 ? Math.max(1, NARROW_STROKE_PX / (3 * scale)) : 1;
+    if (factor === 1 && !strokesBoosted.current) return;
+    const nodes: SVGElement[] = [];
+    collectBoostableStrokes(svg, nodes);
+    const memo = strokeMemo.current;
+    let any = false;
+    for (const el of nodes) {
+      const raw = el.getAttribute("stroke-width");
+      if (raw == null || raw === "") continue;
+      const current = Number(raw);
+      if (!Number.isFinite(current)) continue;
+      const prev = memo.get(el);
+      const base = prev && Math.abs(current - prev.base * prev.boost) < 0.08 ? prev.base : current;
+      const boost = base <= 8 ? factor : 1;
+      const next = Math.round(base * boost * 100) / 100;
+      if (Math.abs(current - next) > 0.02) el.setAttribute("stroke-width", String(next));
+      memo.set(el, { base, boost });
+      if (boost !== 1) any = true;
+    }
+    strokesBoosted.current = any;
+  });
   const actionNode =
     isValidElement<{ name?: string }>(action) && action.type === PlayPauseToggle
       ? cloneElement(action, { name: heading })
@@ -797,7 +872,7 @@ export function IsbreFigur({
         ) : null}
         <div ref={boxRef}>
           <svg
-            ref={svgRef}
+            ref={setSvgRef}
             viewBox={vbStr}
             className="mx-auto h-auto w-full max-w-5xl"
             role="img"
@@ -815,8 +890,10 @@ export function IsbreFigur({
               <Marker id={m.dark} color={P.halo} />
             </defs>
             <rect x={vbX} y={vbY} width={vbW} height={vbH} fill={C.bg} rx="10" />
-            {children({ d, m, narrow })}
-            <LabelLayer labels={labels} narrow={narrow} vb={vb} scale={scale} />
+            <FigureScale.Provider value={scale}>
+              {children({ d, m, narrow, scale })}
+              <LabelLayer labels={labels} narrow={narrow} vb={vb} scale={scale} />
+            </FigureScale.Provider>
           </svg>
         </div>
         {narrow && labels.length ? (

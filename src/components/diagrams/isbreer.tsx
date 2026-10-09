@@ -11,7 +11,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
-import { IsbreFigur, Polys, Skyver, StegVelger, type Lab } from "./isbre-figur";
+import { IsbreFigur, NARROW_FIGURE_PX, Polys, Skyver, StegVelger, type Lab } from "./isbre-figur";
 import {
   P,
   clamp,
@@ -22,6 +22,7 @@ import {
   pts,
   smooth,
   smoothPath,
+  useBoxWidth,
   useInView,
   pickStep,
   useStepClock,
@@ -44,6 +45,15 @@ const ICE_FLOW = "#2f5f80";
  * ===================================================================== */
 
 const breBed = (x: number) => 405 - 285 * Math.pow(1 - x / 960, 1.5) + 5 * Math.sin(x / 47);
+/** Smal skjerm: kutt tom himmel og elva forbi morenen, men behold brehodet, fronten og et stykke smeltevann. */
+function breNarrowView(b: number) {
+  const xf = 600 + 190 * b;
+  const x0 = 4;
+  const x1 = Math.min(952, Math.max(xf + 120, 520));
+  const y0 = 4;
+  const y1 = Math.min(466, Math.max(breBed(Math.min(xf, 940)) + 62, 360));
+  return `${x0} ${y0} ${Math.round(x1 - x0)} ${Math.round(y1 - y0)}`;
+}
 const BRE_X0 = 64;
 /** Høyden på klammene som viser nærings- og tæringsområdet. */
 const BRE_ZONE_Y = 62;
@@ -273,6 +283,7 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
       notes={["Lengdesnitt, skjematisk", "Isen er tegnet tykkere enn i virkeligheten"]}
       keys={[{ text: "Sprekker i isen", color: P.crevasse, kind: "crevasse" }]}
       viewBox="0 0 960 470"
+      narrowViewBox={breNarrowView(b)}
     >
       {({ d, m }) => (
         <g
@@ -795,6 +806,7 @@ export function VdalTilUdal({
           : ["Tverrsnitt av dalen, skjematisk", "Ikke i målestokk"]
       }
       viewBox="0 0 960 520"
+      narrowViewBox={step === 4 ? "0 16 960 488" : step === 3 ? "40 0 900 512" : "60 0 800 512"}
     >
       {({ d, m }) => (
         <g
@@ -1538,6 +1550,7 @@ export function Avsetningsformer({
       labels={labels}
       notes={["Blokkdiagram, skjematisk", "Høydene er overdrevet"]}
       viewBox="0 0 960 520"
+      narrowViewBox="4 8 952 508"
     >
       {({ d, m }) => (
         <g
@@ -1656,6 +1669,9 @@ export function Frostsprengning({
 }: IsbreFigurProps) {
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  const [probeRef, probeW] = useBoxWidth<HTMLDivElement>();
+  // Samme bredde som figurens indre (px-2 / sm:px-5). false til måling, så server og hydrering er like.
+  const stack = probeW > 0 && probeW < NARROW_FIGURE_PX;
   const running = motion.playing && visible;
   const clock = useStepClock(4, running, 2600, 1300, initialStep);
   const t = useTicker(running);
@@ -1731,9 +1747,18 @@ export function Frostsprengning({
   const fbx = lerp(722, 858, fb);
   const fby = lerp(176, 372, fb * fb);
   const cold = step === 2;
+  const shift = (x: number, y: number): [number, number] => (stack ? [x - 474, y + 464] : [x, y]);
+  const fjell = shift(596, 86);
+  const fjellBadge = shift(612, 78);
   const labels: Lab[] = [
     { text: "Nærbilde", x: 36, y: 86, color: C.muted, badge: [52, 78] },
-    { text: "Fjellside med ur", x: 596, y: 86, color: C.muted, badge: [612, 78] },
+    {
+      text: "Fjellside med ur",
+      x: fjell[0],
+      y: fjell[1],
+      color: C.muted,
+      badge: fjellBadge,
+    },
   ];
   if (step === 1) {
     labels.push({
@@ -1800,162 +1825,195 @@ export function Frostsprengning({
       color: C.warm,
       badge: [500 + fall * 16, 206 + fall * fall * 260],
     });
+  const ur = shift(938, 300);
+  const urAt = shift(880, 400);
+  const urBadge = shift(905, 438);
   labels.push({
     text: "Ur: kjegle av kantet stein",
-    x: 938,
-    y: 300,
-    at: [880, 400],
+    x: ur[0],
+    y: ur[1],
+    at: urAt,
     color: C.sand,
     anchor: "end",
-    badge: [905, 438],
+    badge: urBadge,
   });
-  labels.push({ text: "Stup", x: 760, y: 220, at: [724, 222], color: C.muted, badge: [700, 250] });
+  const stup = shift(760, 220);
+  const stupAt = shift(724, 222);
+  const stupBadge = shift(700, 250);
+  labels.push({
+    text: "Stup",
+    x: stup[0],
+    y: stup[1],
+    at: stupAt,
+    color: C.muted,
+    badge: stupBadge,
+  });
   return (
-    <IsbreFigur
-      svgRef={ref}
-      title="Frostsprengning i fire steg: vann i en sprekk, vannet fryser og presser sprekken utover, sprekken vokser, og en bit løsner og faller ned i ura"
-      heading={heading}
-      caption={
-        caption ??
-        "1. Vann renner inn i en sprekk. 2. Vannet fryser og utvider seg. 3. Sprekken blir større. 4. Etter mange runder løsner en bit av berget."
-      }
-      playing={motion.playing}
-      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
-      toolbar={
-        <>
-          <StegVelger
-            labels={FR_STEPS}
-            step={step}
-            onStep={pickStep(clock, motion)}
-            label="Velg steg i frostsprengningen"
-          />
-        </>
-      }
-      status={FR_STATUS[step - 1]}
-      labels={labels}
-      notes={["Skjematisk, ikke i målestokk"]}
-      viewBox="0 0 960 500"
-    >
-      {({ d, m }) => (
-        <g
-          className={motion.motionClass}
-          data-playing={motion.playing ? "yes" : "no"}
-          data-figur="frost"
-          data-step={step}
-        >
-          <rect width="960" height="500" fill={d.url.sky} rx="10" />
-          <rect x="12" y="44" width="550" height="448" rx="10" fill="#132430" stroke={C.dim} />
-          <rect x="572" y="44" width="378" height="448" rx="10" fill="#132430" stroke={C.dim} />
-          <path d={rock} fill={d.url.rock} />
-          <path d={rock} fill={d.url.strata} />
-          <path
-            d="M120 112 L131 200 M92 424 L140 486 M60 330 L170 360"
-            stroke="#2f362d"
-            strokeWidth="1.5"
-            opacity="0.7"
-          />
-          <path d="M20 112 L470 112" stroke="#a3ab98" strokeWidth="2" />
-          {step === 4 ? <path d={blockPoly} fill="#132430" /> : null}
-          <path d={crack} fill="#0b1217" />
-          {fillPoly ? (
-            frozen ? (
-              <g>
-                <path d={fillPoly} fill="#e4f1f8" stroke="#9ec5dc" strokeWidth="1.2" />
-                {fillS
-                  .filter((_, i) => i % 3 === 1)
-                  .map((s) => {
-                    const [x, y] = g.at(s, 0);
-                    return (
-                      <path
-                        key={s}
-                        d={`M${x - 3} ${y} L${x + 3} ${y} M${x} ${y - 3} L${x} ${y + 3}`}
-                        stroke="#8fb6d0"
-                        strokeWidth="1"
-                      />
-                    );
-                  })}
-              </g>
-            ) : step !== 4 ? (
-              <path d={fillPoly} fill={P.water} />
-            ) : null
-          ) : null}
-          {drops.map(([x, y], i) => (
-            <circle key={i} cx={x} cy={y} r="3.2" fill="#7fd0f0" />
-          ))}
-          {pushArrows.map((a, i) => (
-            <path
-              key={i}
-              d={a}
-              stroke={C.warm}
-              strokeWidth="3.4"
-              fill="none"
-              markerEnd={`url(#${m.warm})`}
+    <div className="relative">
+      <div
+        ref={probeRef}
+        className="pointer-events-none absolute inset-x-2 h-0 sm:inset-x-5"
+        aria-hidden="true"
+      />
+      <IsbreFigur
+        svgRef={ref}
+        title="Frostsprengning i fire steg: vann i en sprekk, vannet fryser og presser sprekken utover, sprekken vokser, og en bit løsner og faller ned i ura"
+        heading={heading}
+        caption={
+          caption ??
+          "1. Vann renner inn i en sprekk. 2. Vannet fryser og utvider seg. 3. Sprekken blir større. 4. Etter mange runder løsner en bit av berget."
+        }
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={
+          <>
+            <StegVelger
+              labels={FR_STEPS}
+              step={step}
+              onStep={pickStep(clock, motion)}
+              label="Velg steg i frostsprengningen"
             />
-          ))}
-          {suck.map((a, i) => (
-            <path
-              key={i}
-              d={a}
-              stroke="#7fd0f0"
-              strokeWidth="2.2"
-              fill="none"
-              markerEnd={`url(#${m.cold})`}
-            />
-          ))}
-          {step === 4 ? (
-            <g transform={blockTf}>
-              <path d={blockPoly} fill={d.url.rock} />
-              <path d={blockPoly} fill={d.url.strata} />
-              <path d={blockPoly} fill="none" stroke="#a3ab98" strokeWidth="1.5" />
-            </g>
-          ) : null}
-          {/* termometer */}
-          <g transform="translate(520 64)">
-            <rect x="-6" y="0" width="12" height="70" rx="6" fill="#0b1217" stroke={C.muted} />
-            <circle cx="0" cy="78" r="11" fill={cold ? C.cold : C.low} stroke={C.muted} />
+          </>
+        }
+        status={FR_STATUS[step - 1]}
+        labels={labels}
+        notes={["Skjematisk, ikke i målestokk"]}
+        viewBox="0 0 960 500"
+        narrowViewBox="0 8 574 968"
+        forceNarrow={stack}
+      >
+        {({ d, m, narrow }) => (
+          <g
+            className={motion.motionClass}
+            data-playing={motion.playing ? "yes" : "no"}
+            data-figur="frost"
+            data-step={step}
+          >
             <rect
-              x="-3"
-              y={cold ? 46 : 20}
-              width="6"
-              height={cold ? 30 : 56}
-              fill={cold ? C.cold : C.low}
+              x="0"
+              y={narrow ? 8 : 0}
+              width={narrow ? 574 : 960}
+              height={narrow ? 960 : 500}
+              fill={d.url.sky}
+              rx="10"
             />
-            <line x1="-10" y1="40" x2="10" y2="40" stroke={C.fg} strokeWidth="1.5" />
+            <rect x="12" y="44" width="550" height="448" rx="10" fill="#132430" stroke={C.dim} />
+            <g transform={narrow ? "translate(-474 464)" : undefined}>
+              <rect x="572" y="44" width="378" height="448" rx="10" fill="#132430" stroke={C.dim} />
+            </g>
+            <path d={rock} fill={d.url.rock} />
+            <path d={rock} fill={d.url.strata} />
+            <path
+              d="M120 112 L131 200 M92 424 L140 486 M60 330 L170 360"
+              stroke="#2f362d"
+              strokeWidth="1.5"
+              opacity="0.7"
+            />
+            <path d="M20 112 L470 112" stroke="#a3ab98" strokeWidth="2" />
+            {step === 4 ? <path d={blockPoly} fill="#132430" /> : null}
+            <path d={crack} fill="#0b1217" />
+            {fillPoly ? (
+              frozen ? (
+                <g>
+                  <path d={fillPoly} fill="#e4f1f8" stroke="#9ec5dc" strokeWidth="1.2" />
+                  {fillS
+                    .filter((_, i) => i % 3 === 1)
+                    .map((s) => {
+                      const [x, y] = g.at(s, 0);
+                      return (
+                        <path
+                          key={s}
+                          d={`M${x - 3} ${y} L${x + 3} ${y} M${x} ${y - 3} L${x} ${y + 3}`}
+                          stroke="#8fb6d0"
+                          strokeWidth="1"
+                        />
+                      );
+                    })}
+                </g>
+              ) : step !== 4 ? (
+                <path d={fillPoly} fill={P.water} />
+              ) : null
+            ) : null}
+            {drops.map(([x, y], i) => (
+              <circle key={i} cx={x} cy={y} r="3.2" fill="#7fd0f0" />
+            ))}
+            {pushArrows.map((a, i) => (
+              <path
+                key={i}
+                d={a}
+                stroke={C.warm}
+                strokeWidth="3.4"
+                fill="none"
+                markerEnd={`url(#${m.warm})`}
+              />
+            ))}
+            {suck.map((a, i) => (
+              <path
+                key={i}
+                d={a}
+                stroke="#7fd0f0"
+                strokeWidth="2.2"
+                fill="none"
+                markerEnd={`url(#${m.cold})`}
+              />
+            ))}
+            {step === 4 ? (
+              <g transform={blockTf}>
+                <path d={blockPoly} fill={d.url.rock} />
+                <path d={blockPoly} fill={d.url.strata} />
+                <path d={blockPoly} fill="none" stroke="#a3ab98" strokeWidth="1.5" />
+              </g>
+            ) : null}
+            {/* termometer */}
+            <g transform="translate(520 64)">
+              <rect x="-6" y="0" width="12" height="70" rx="6" fill="#0b1217" stroke={C.muted} />
+              <circle cx="0" cy="78" r="11" fill={cold ? C.cold : C.low} stroke={C.muted} />
+              <rect
+                x="-3"
+                y={cold ? 46 : 20}
+                width="6"
+                height={cold ? 30 : 56}
+                fill={cold ? C.cold : C.low}
+              />
+              <line x1="-10" y1="40" x2="10" y2="40" stroke={C.fg} strokeWidth="1.5" />
+            </g>
+            {/* fjellside. På smal skjerm stables panelet under nærbildet, samme forskyvning som utsnittet. */}
+            <g transform={narrow ? "translate(-474 464)" : undefined}>
+              <path d={cliff} fill={d.url.rock} />
+              <path d={cliff} fill={d.url.strata} />
+              <path d={talus} fill="#8b8676" />
+              {stones.map((st, i) => (
+                <path
+                  key={i}
+                  d={st}
+                  fill={i % 3 ? "#a19b89" : "#6e695c"}
+                  stroke="#4c483f"
+                  strokeWidth="0.8"
+                />
+              ))}
+              <rect
+                x="708"
+                y="160"
+                width="26"
+                height="34"
+                fill="none"
+                stroke={C.warm}
+                strokeWidth="2"
+                strokeDasharray="4 3"
+              />
+              {step === 4 ? (
+                <path
+                  d={`M${fbx - 9} ${fby} L${fbx - 5} ${fby - 9} L${fbx + 7} ${fby - 8} L${fbx + 10} ${fby + 2} L${fbx + 1} ${fby + 8} Z`}
+                  fill="#c7c0aa"
+                  stroke="#4c483f"
+                  transform={`rotate(${fb * 220} ${fbx} ${fby})`}
+                />
+              ) : null}
+            </g>
           </g>
-          {/* fjellside */}
-          <path d={cliff} fill={d.url.rock} />
-          <path d={cliff} fill={d.url.strata} />
-          <path d={talus} fill="#8b8676" />
-          {stones.map((st, i) => (
-            <path
-              key={i}
-              d={st}
-              fill={i % 3 ? "#a19b89" : "#6e695c"}
-              stroke="#4c483f"
-              strokeWidth="0.8"
-            />
-          ))}
-          <rect
-            x="708"
-            y="160"
-            width="26"
-            height="34"
-            fill="none"
-            stroke={C.warm}
-            strokeWidth="2"
-            strokeDasharray="4 3"
-          />
-          {step === 4 ? (
-            <path
-              d={`M${fbx - 9} ${fby} L${fbx - 5} ${fby - 9} L${fbx + 7} ${fby - 8} L${fbx + 10} ${fby + 2} L${fbx + 1} ${fby + 8} Z`}
-              fill="#c7c0aa"
-              stroke="#4c483f"
-              transform={`rotate(${fb * 220} ${fbx} ${fby})`}
-            />
-          ) : null}
-        </g>
-      )}
-    </IsbreFigur>
+        )}
+      </IsbreFigur>
+    </div>
   );
 }
 

@@ -10,8 +10,25 @@
  * - `useStepClock` gir steg + framdrift innen steget (0–1), styrt av Start/Pause.
  * - `heightfield` tegner et skrått terrengblokk-utsnitt med lyssetting.
  */
-import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } from "react";
+import {
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type RefObject,
+} from "react";
 import { C } from "./svg-kit";
+
+/** CSS-piksler per viewBox-enhet. 0 før figuren er målt. IsbreFigur setter verdien. */
+export const FigureScale = createContext(0);
+
+/**
+ * Skriftstørrelse i viewBox-enheter, minst 12 CSS-piksler når skalaen er kjent.
+ * Uten dette blir 14 enheter omtrent 11,8 px når figuren er 960 enheter bred i spalten.
+ */
+export const figureFont = (size: number, scale: number) =>
+  scale > 0 ? Math.round(Math.max(size, 12 / scale) * 10) / 10 : size;
 
 /* ---------- palett ---------- */
 
