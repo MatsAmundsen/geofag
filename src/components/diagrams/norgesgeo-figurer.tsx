@@ -530,3 +530,329 @@ export function KaledonideneFigur({
     </div>
   );
 }
+
+/* =====================================================================
+ * 2. Oslograben: strekk, innsynkning, rombeporfyr og larvikitt
+ * ===================================================================== */
+
+const OG_STEPS = ["1 Skorpa strekkes", "2 Graben synker inn", "3 Lava og magma", "4 I dag"];
+const OG_STATUS = [
+  "Skorpa strekkes. Mot slutten av karbon, for ca. 310 millioner år siden, begynte jordskorpen i det sørøstlige Norge å sprekke opp, fra Langesund i sør til Mjøsa i nord.",
+  "Skorpa blir tynnere, og store forkastningsblokker synker inn langs normalforkastninger. Slik oppstår riftdalen Oslo-graben. Lagene fra kambrosilur blir liggende bevart nede i graben.",
+  "Vulkanisme i perm (250–300 millioner år siden): Sprekkevulkaner sender ut tykke lavadekker av rombeporfyr. Dypt nede størkner magmakamre langsomt til larvikitt (ca. 290 millioner år siden). Rombeporfyr og larvikitt er tvillingbergarter med ulik avkjøling.",
+  "Riften stoppet før kontinentet delte seg, så Oslofeltet er en fossil rift. Erosjon har tatt bort toppen, og larvikitt, rombeporfyr og kambrosilur ligger i dagen. Forkastningene styrer fortsatt landskapet på Østlandet, også Oslofjordens forløp.",
+];
+const OG_TOP = 200;
+const OG_CS = 40; // tykkelse på de kambrosiluriske lagene
+const OG_MOHO = 430;
+type OgState = { stretch: number; drop: number; lava: number; magma: number; erode: number };
+const OG_FRAMES: OgState[] = [
+  { stretch: 1, drop: 0.12, lava: 0, magma: 0, erode: 0 },
+  { stretch: 1, drop: 1, lava: 0, magma: 0, erode: 0 },
+  { stretch: 0.6, drop: 1, lava: 1, magma: 1, erode: 0 },
+  { stretch: 0, drop: 1, lava: 1, magma: 1, erode: 1 },
+];
+/** Blokkene (overkant x0–x1, underkant x2–x3 ved Moho) og hvor mye de synker (ved drop = 1). */
+const OG_BLOCKS: { top: [number, number]; bot: [number, number]; drop: number }[] = [
+  { top: [-40, 330], bot: [-40, 385], drop: -10 },
+  { top: [330, 410], bot: [385, 430], drop: 32 },
+  { top: [410, 550], bot: [430, 530], drop: 72 },
+  { top: [550, 630], bot: [530, 575], drop: 32 },
+  { top: [630, 1000], bot: [575, 1000], drop: -10 },
+];
+/** Forkastningene (topp og bunn) mellom blokkene. */
+const OG_FAULTS = OG_BLOCKS.slice(1).map((b) => [b.top[0], b.bot[0]] as const);
+const OG_ERODE = 238;
+const OG_PLUTON = "M420 330 C418 290 440 246 482 238 C524 232 548 268 552 300 C556 336 532 352 488 356 C450 358 422 352 420 330 Z";
+
+/** Rombeporfyr: store rombeformede feltspatkrystaller i finkornet grunnmasse (deterministisk mønster). */
+const OG_RHOMBS = Array.from({ length: 11 }, (_, i) => {
+  const a = (i * 137.5 * Math.PI) / 180;
+  const r = 14 + ((i * 29) % 37);
+  return { x: n1(Math.cos(a) * r), y: n1(Math.sin(a) * r), rot: (i * 47) % 180, s: 7 + (i % 3) * 2 };
+});
+/** Larvikitt: grove, tettpakkede korn (enkelt mønster av femkanter). */
+const OG_GRAINS = Array.from({ length: 22 }, (_, i) => {
+  const a = (i * 137.5 * Math.PI) / 180;
+  const r = 6 + 50 * Math.sqrt(i / 22);
+  const cx = Math.cos(a) * r;
+  const cy = Math.sin(a) * r;
+  const pts5 = Array.from({ length: 5 }, (_, k) => {
+    const b = a + (k * 2 * Math.PI) / 5;
+    const rr = 11 + ((i + k) % 3) * 2;
+    return `${fx(cx + Math.cos(b) * rr)} ${fx(cy + Math.sin(b) * rr)}`;
+  });
+  return { d: `M${pts5.join(" L")} Z`, sheen: i % 4 === 1 };
+});
+
+function Krystallinnfelt({ x, y, r, kind }: { x: number; y: number; r: number; kind: "rp" | "lv" }) {
+  const clip = `${useId().replace(/:/g, "")}-kr`;
+  const k = r / 60;
+  return (
+    <g data-nocheck="" data-innfelt={kind}>
+      <defs>
+        <clipPath id={clip}>
+          <circle cx={x} cy={y} r={r} />
+        </clipPath>
+      </defs>
+      <circle cx={x} cy={y} r={r + 4} fill={P.halo} />
+      <g clipPath={`url(#${clip})`}>
+        {kind === "rp" ? (
+          <>
+            <circle cx={x} cy={y} r={r} fill="#6e4440" />
+            {Array.from({ length: 40 }, (_, i) => (
+              <circle
+                key={i}
+                cx={n1(x + ((i * 37) % 120 - 60) * k)}
+                cy={n1(y + ((i * 53) % 120 - 60) * k)}
+                r={1.3}
+                fill="#8a5a52"
+              />
+            ))}
+            {OG_RHOMBS.map((q, i) => (
+              <rect
+                key={i}
+                x={n1(x + q.x * k - q.s * k)}
+                y={n1(y + q.y * k - q.s * 0.55 * k)}
+                width={n1(q.s * 2 * k)}
+                height={n1(q.s * 1.1 * k)}
+                fill="#e9dcc6"
+                stroke="#b9a68a"
+                strokeWidth="0.8"
+                transform={`rotate(${q.rot} ${n1(x + q.x * k)} ${n1(y + q.y * k)}) skewX(-28)`}
+                style={{ transformBox: "fill-box", transformOrigin: "center" }}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            <circle cx={x} cy={y} r={r} fill="#3e4b57" />
+            {OG_GRAINS.map((g, i) => (
+              <path
+                key={i}
+                d={g.d}
+                transform={`translate(${x} ${y}) scale(${k.toFixed(3)})`}
+                fill={g.sheen ? "#5f86b0" : i % 3 === 0 ? "#7d8a96" : "#5d6b78"}
+                stroke="#2a333b"
+                strokeWidth={1.2}
+              />
+            ))}
+          </>
+        )}
+      </g>
+      <circle cx={x} cy={y} r={r} fill="none" stroke="#d9e3ea" strokeWidth="2" />
+    </g>
+  );
+}
+
+const OG_WIN: [number, number, number, number] = [70, 80, 190, 132];
+/** Oslofeltet på kartet: skjematisk omriss fra Langesund til Mjøsa. */
+const OG_FELT =
+  "M150 177 L160 174 L168 166 L172 152 L170 138 L166 126 L158 122 L151 127 L150 140 L152 152 L149 165 Z";
+
+export function OslograbenFigur({
+  heading = "Oslograben: riftdal, rombeporfyr og larvikitt",
+  caption,
+  initialStep,
+}: NorgesGeoFigurProps) {
+  const motion = useAnimationPlaying();
+  const [ref, visible] = useInView<SVGSVGElement>();
+  const [wrapRef, small] = useFigurSmal();
+  const clock = useStepClock(4, motion.playing && visible, 3800, 1700, initialStep);
+  const { step, phase } = clock;
+  const s = keyframe(OG_FRAMES, step, phase);
+  const uid = useId().replace(/:/g, "");
+  const blockTop = (i: number) => OG_TOP + OG_BLOCKS[i].drop * s.drop;
+  const moho = (x: number) => OG_MOHO - 48 * s.drop * gauss(x, 480, 190);
+  const lavaTop = OG_TOP + 4;
+  const surfToday = (x: number) => OG_ERODE + 4 * Math.sin(x / 31) - 6 * gauss(x, 480, 40);
+  // landoverflaten (klipper alt): før erosjon høyt oppe, i dag den eroderte flaten
+  const surf = (x: number) => lerp(0, surfToday(x), s.erode);
+  const ground = band(surf, () => 560, 0, 960, 6);
+  const lavaBand = band(
+    (x) => lavaTop - 2 * Math.sin(x / 23),
+    (x) => {
+      const i = OG_BLOCKS.findIndex((b) => x >= b.top[0] && x < b.top[1]);
+      return blockTop(Math.max(0, i));
+    },
+    318,
+    642,
+    3,
+  );
+  const insetW = small ? 168 : 176;
+  const inset = { x: small ? 396 : 392, y: 12, w: insetW };
+  const c1 = small ? { x: 232, y: 82, r: 56 } : { x: 92, y: 96, r: 62 };
+  const c2 = small ? { x: 728, y: 82, r: 56 } : { x: 868, y: 96, r: 62 };
+  const showRocks = s.lava > 0.5;
+  const labels: Lab[] = [
+    { text: "Grunnfjell", x: 40, y: 330, color: "#f0d6d0", badge: [200, 320] },
+    { text: "Moho", x: 920, y: OG_MOHO + 28, at: [880, moho(880)], color: "#e6d3b4", anchor: "end", size: 14, badge: [900, OG_MOHO + 26] },
+  ];
+  if (s.erode < 0.5)
+    labels.push({
+      text: "Kambrosiluriske lag (kalkstein, skifer)",
+      x: 40,
+      y: small ? 190 : 186,
+      at: [250, blockTop(0) + 18],
+      color: "#d7e1e6",
+      badge: [250, blockTop(0) - 14],
+    });
+  if (step === 1)
+    labels.push({ text: "Strekk", x: 480, y: 470, color: C.fg, anchor: "middle", weight: 700, badge: [480, 470] });
+  if (step >= 2)
+    labels.push({
+      text: "Normalforkastning",
+      x: 150,
+      y: 470,
+      at: [OG_FAULTS[0][0] + 30, 330],
+      color: C.warm,
+      badge: [OG_FAULTS[0][0] + 50, 400],
+    });
+  if (step === 2)
+    labels.push({ text: "Graben (Oslo-graben)", x: 480, y: 180, at: [480, blockTop(2) + 10], color: C.fg, anchor: "middle", weight: 700, badge: [480, 240] });
+  if (step === 3)
+    labels.push(
+      { text: "Sprekkevulkaner", x: 480, y: 172, at: [345, 170], color: C.warm, anchor: "middle", badge: [300, 150] },
+      { text: "Lavadekker av rombeporfyr", x: 920, y: 268, at: [600, 220], color: "#e4b7a6", anchor: "end", badge: [600, 248] },
+      { text: "Magmakammer", x: 920, y: 318, at: [550, 300], color: "#ffc59a", anchor: "end", badge: [580, 318] },
+    );
+  if (step === 4)
+    labels.push(
+      { text: "Larvikitt i dagen", x: 480, y: 186, at: [482, surfToday(482) + 6], color: "#b9d3ee", anchor: "middle", weight: 700, badge: [482, 210] },
+      { text: "Rombeporfyr", x: 300, y: 186, at: [380, surfToday(380) + 10], color: "#e4b7a6", anchor: "middle", badge: [372, 214] },
+      { text: "Kambrosilur", x: 920, y: 290, at: [600, 262], color: "#d7e1e6", anchor: "end", badge: [640, 280] },
+      { text: "Forkastningskant mot grunnfjellet", x: 920, y: 200, at: [632, surfToday(632)], color: C.fg, anchor: "end", badge: [690, 224] },
+    );
+  if (showRocks)
+    labels.push(
+      { text: "Rombeporfyr", x: c1.x, y: c1.y + c1.r + 22, color: "#e4b7a6", anchor: "middle", size: 14, badge: [c1.x + c1.r, c1.y + c1.r] },
+      { text: "Larvikitt", x: c2.x, y: c2.y + c2.r + 22, color: "#b9d3ee", anchor: "middle", size: 14, badge: [c2.x - c2.r, c2.y + c2.r] },
+    );
+  const keys: Key[] = [
+    { text: "Grunnfjell", color: "#8c6d68", kind: "fill" },
+    { text: "Kambrosilur", color: "#8e9ba3", kind: "fill" },
+    { text: "Rombeporfyr", color: "#7b4b45", kind: "fill", off: s.lava < 0.5 },
+    { text: "Larvikitt", color: "#4f6378", kind: "fill", off: s.magma < 0.5 },
+    { text: "Normalforkastning", color: C.warm, kind: "line", off: step < 2 },
+  ];
+  const kp = (p: readonly [number, number]) => kartTilFigur(p, inset.x, inset.y, inset.w, OG_WIN);
+  const oslo = kp(KART_STED.oslo);
+  return (
+    <div ref={wrapRef}>
+      <IsbreFigur
+        svgRef={ref}
+        title="Snitt gjennom Oslograben: skorpa strekkes, blokker synker inn langs forkastninger, rombeporfyr-lava og larvikitt dannes, og erosjon blottlegger dem i dag"
+        heading={heading}
+        caption={
+          caption ??
+          "Oslofeltet er en riftdal fra karbon og perm som stoppet før kontinentet delte seg. Krystallbildene viser forskjellen: rombeporfyr har store rombeformede feltspatkrystaller i en finkornet grunnmasse, larvikitt er grovkornet fordi den størknet langsomt på dypet. Forenklet: Snittet er skjematisk uten målestokk, og vulkanismen og magmakamrene vises i ett steg, selv om de var aktive i mange millioner år."
+        }
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={<StegVelger labels={OG_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" />}
+        status={OG_STATUS[step - 1]}
+        labels={labels}
+        keys={keys}
+        notes={["Snitt vest–øst gjennom Oslofeltet", "Skjematisk, uten målestokk", "Kart: dagens kystlinjer (Natural Earth), Oslofeltet skjematisk"]}
+        viewBox="0 0 960 560"
+        narrowViewBox="160 0 640 560"
+      >
+        {({ d, m }) => (
+          <g
+            className={motion.motionClass}
+            data-playing={motion.playing ? "yes" : "no"}
+            data-figur="oslograben"
+            data-step={step}
+          >
+            <rect x="0" y="0" width="960" height="560" fill={d.url.sky} />
+            <defs>
+              <clipPath id={`${uid}-g`}>
+                <path d={ground} />
+              </clipPath>
+              {OG_BLOCKS.map((b, i) => (
+                <clipPath key={i} id={`${uid}-b${i}`}>
+                  <path d={`M${b.top[0]} 0 L${b.top[1]} 0 L${b.top[1]} ${OG_TOP} L${b.bot[1]} 600 L${b.bot[0]} 600 L${b.top[0]} ${OG_TOP} Z`} />
+                </clipPath>
+              ))}
+            </defs>
+            <path d={band(moho, () => 560, 0, 960, 8)} fill={P.litho} />
+            <g clipPath={`url(#${uid}-g)`}>
+              {OG_BLOCKS.map((b, i) => (
+                <g key={i} clipPath={`url(#${uid}-b${i})`}>
+                  <g transform={`translate(0 ${fx(b.drop * s.drop)})`}>
+                    <rect x="-40" y={OG_TOP + OG_CS} width="1040" height="400" fill="#8c6d68" />
+                    <rect x="-40" y={OG_TOP + OG_CS} width="1040" height="400" fill={d.url.strata} />
+                    <rect x="-40" y={OG_TOP} width="1040" height={OG_CS} fill="#8e9ba3" />
+                    <path d="M-40 213 H1000 M-40 226 H1000" stroke="#5f6c74" strokeWidth="1.4" />
+                  </g>
+                </g>
+              ))}
+              {s.lava > 0.01 ? (
+                <g opacity={clamp(s.lava * 1.4)}>
+                  <path d={lavaBand} fill="#7b4b45" />
+                  <path d="M318 222 H642 M318 240 H642 M318 258 H642" stroke="#5a3430" strokeWidth="1.2" />
+                </g>
+              ) : null}
+              {s.magma > 0.01 ? (
+                <path d={OG_PLUTON} fill={s.erode > 0.5 ? "#4f6378" : mix("#e0743d", "#4f6378", s.erode)} opacity={clamp(s.magma * 1.3)} />
+              ) : null}
+            </g>
+            {/* Moho */}
+            <path d={curve(moho, 0, 960, 8)} fill="none" stroke="#c9b18f" strokeWidth="1.6" strokeDasharray="7 5" />
+            {/* forkastninger */}
+            {s.drop > 0.3
+              ? OG_FAULTS.map(([t, b], i) => (
+                  <line
+                    key={i}
+                    x1={t}
+                    y1={s.erode > 0.5 ? surfToday(t) : OG_TOP - 8}
+                    x2={lerp(t, b, 0.55)}
+                    y2={lerp(OG_TOP, 600, 0.55) - 20}
+                    stroke={C.warm}
+                    strokeWidth="2.4"
+                    opacity={clamp((s.drop - 0.3) * 2)}
+                  />
+                ))
+              : null}
+            {/* vulkaner og tilførselsganger (steg 3) */}
+            {s.lava > 0.01 && s.erode < 0.99 ? (
+              <g opacity={(1 - s.erode) * clamp(s.lava * 1.4)}>
+                <path d={`M345 ${lavaTop} L333 ${lavaTop} L345 168 L357 ${lavaTop} Z`} fill="#5a3430" />
+                <path d={`M612 ${lavaTop} L600 ${lavaTop} L612 172 L624 ${lavaTop} Z`} fill="#5a3430" />
+                <path d="M345 210 L360 260 L440 280 M612 210 L600 262 L540 284" stroke="#e0743d" strokeWidth="4" fill="none" />
+                <ellipse cx="345" cy="164" rx="10" ry="6" fill="#f08a5d" filter={d.url.glow} />
+                <ellipse cx="612" cy="168" rx="10" ry="6" fill="#f08a5d" filter={d.url.glow} />
+              </g>
+            ) : null}
+            {/* strekk */}
+            {s.stretch > 0.02 ? (
+              <g opacity={s.stretch}>
+                <line x1="380" y1="500" x2="210" y2="500" stroke={C.fg} strokeWidth="3.5" markerEnd={`url(#${m.fg})`} />
+                <line x1="580" y1="500" x2="750" y2="500" stroke={C.fg} strokeWidth="3.5" markerEnd={`url(#${m.fg})`} />
+              </g>
+            ) : null}
+            {showRocks ? (
+              <>
+                <line x1={c1.x} y1={c1.y + c1.r} x2="380" y2="226" stroke="#e4b7a6" strokeWidth="1.6" strokeDasharray="5 4" />
+                <line x1={c2.x} y1={c2.y + c2.r} x2="520" y2="262" stroke="#b9d3ee" strokeWidth="1.6" strokeDasharray="5 4" />
+                <Krystallinnfelt {...c1} kind="rp" />
+                <Krystallinnfelt {...c2} kind="lv" />
+              </>
+            ) : null}
+            <KartInnfelt x={inset.x} y={inset.y} w={inset.w} win={OG_WIN} k={{ dx: 0, dy: 0, rot: 0, island: 0, britain: 0, belt: 0, ridge: 0 }}>
+              <path d={OG_FELT} fill="#e0743d" opacity="0.8" stroke="#ffd2b8" strokeWidth="1" />
+            </KartInnfelt>
+            <circle cx={oslo[0]} cy={oslo[1]} r="2.5" fill={C.fg} data-nocheck="" />
+          </g>
+        )}
+      </IsbreFigur>
+    </div>
+  );
+}
+
+function mix(a: string, b: string, t: number) {
+  const h = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+  const x = h(a);
+  const y = h(b);
+  return `rgb(${x.map((v, i) => Math.round(lerp(v, y[i], clamp(t)))).join(",")})`;
+}

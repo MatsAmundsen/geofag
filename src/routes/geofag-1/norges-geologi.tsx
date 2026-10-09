@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { NorwayTectonicsHistoryDiagram, OfiolittSnittDiagram } from "@/components/diagrams";
-import { KaledonideneFigur } from "@/components/diagrams/norgesgeo-figurer";
+import { KaledonideneFigur, OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -191,6 +191,8 @@ function NorgesGeologiPage() {
             </p>
           </div>
         </div>
+
+        <OslograbenFigur />
 
         <p className="text-sm text-muted-foreground">
           Riftingen stoppet opp før kontinentet rakk å dele seg helt; Oslofeltet forble en «fossil rift». Likevel styrer de
