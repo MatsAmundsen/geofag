@@ -293,7 +293,7 @@ export function HjulstromInteraktiv({
 
 const HJ_LAY = {
   wide: { x0: 104, x1: 604, y0: 36, y1: 416, fs: 15, inset: { x: 640, y: 36, w: 300, h: 380 } },
-  narrow: { x0: 92, x1: 580, y0: 30, y1: 430, fs: 22, inset: { x: 16, y: 560, w: 568, h: 284 } },
+  narrow: { x0: 92, x1: 580, y0: 30, y1: 430, fs: 23, inset: { x: 16, y: 560, w: 568, h: 284 } },
 };
 
 function HjPlot({ narrow, d, v, zone }: { narrow: boolean; d: number; v: number; zone: HjZone }) {
@@ -546,7 +546,7 @@ function HjBed({
   cls: string;
 }) {
   const { x, y, w, h } = (narrow ? HJ_LAY.narrow : HJ_LAY.wide).inset;
-  const fs = narrow ? 22 : 15;
+  const fs = narrow ? 23 : 15;
   const top = y + (narrow ? 64 : 58);
   const bed = y + h - (narrow ? 46 : 56);
   const r = n1(3 + 3.2 * (Math.log10(d) + 3) * (narrow ? 1.25 : 1));
@@ -853,6 +853,7 @@ export function Forvitringsformer({
         step === 4 ? "Nærbilde av mineralkorn" : "Tverrsnitt",
       ]}
       viewBox="0 0 960 500"
+      narrowViewBox={step === 2 ? "180 20 600 450" : undefined}
     >
       {({ d, m, narrow }) => (
         <g
