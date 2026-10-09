@@ -103,34 +103,27 @@ export type Lab = {
   anchor?: "start" | "middle" | "end";
   size?: number;
   weight?: number;
+  /** Farge på konturen rundt teksten, f.eks. lys kontur for mørk tekst på is. */
+  halo?: string;
 };
 
-function LabelLayer({
-  labels,
-  narrow,
-  vbW,
-  vbH,
-}: {
-  labels: Lab[];
-  narrow: boolean;
-  vbW: number;
-  vbH: number;
-}) {
+function LabelLayer({ labels, narrow, vb }: { labels: Lab[]; narrow: boolean; vb: number[] }) {
+  const [vbX, vbY, vbW, vbH] = vb;
   if (narrow) {
     const r = vbW * 0.028;
     return (
-      <g aria-hidden="true">
+      <g aria-hidden="true" data-nocheck="">
         {labels.map((l, i) => {
           const [bx, by] = l.badge ?? l.at ?? [l.x, l.y];
-          const x = clamp(bx, r + 3, vbW - r - 3);
-          const y = clamp(by, r + 3, vbH - r - 3);
+          const x = clamp(bx, vbX + r + 3, vbX + vbW - r - 3);
+          const y = clamp(by, vbY + r + 3, vbY + vbH - r - 3);
           return (
             <g key={`${l.text}-${i}`}>
               <circle
                 cx={x}
                 cy={y}
                 r={r}
-                fill={l.color ?? C.fg}
+                fill={l.halo ?? l.color ?? C.fg}
                 stroke={P.halo}
                 strokeWidth={r * 0.22}
               />
@@ -141,7 +134,7 @@ function LabelLayer({
                 fontSize={r * 1.22}
                 fontWeight={800}
                 fontFamily={font}
-                fill={P.halo}
+                fill={l.halo ? (l.color ?? P.halo) : P.halo}
               >
                 {i + 1}
               </text>
@@ -155,13 +148,18 @@ function LabelLayer({
     <g>
       {labels.map((l, i) => {
         const size = l.size ?? 16;
+        // streken starter i kanten av en anslått tekstboks, så den aldri går gjennom teksten
+        const tw = l.text.length * size * 0.56;
+        const bx0 = l.anchor === "end" ? l.x - tw : l.anchor === "middle" ? l.x - tw / 2 : l.x;
+        const sx = l.at ? clamp(l.at[0], bx0 - 5, bx0 + tw + 5) : 0;
+        const sy = l.at ? clamp(l.at[1], l.y - size * 0.95, l.y + size * 0.35) : 0;
         return (
           <g key={`${l.text}-${i}`}>
             {l.at ? (
-              <>
+              <g data-leader="">
                 <line
-                  x1={l.x + (l.anchor === "end" ? 4 : l.anchor === "middle" ? 0 : -4)}
-                  y1={l.y - size * 0.35}
+                  x1={sx}
+                  y1={sy}
                   x2={l.at[0]}
                   y2={l.at[1]}
                   stroke={l.color ?? C.fg}
@@ -169,7 +167,7 @@ function LabelLayer({
                   opacity={0.75}
                 />
                 <circle cx={l.at[0]} cy={l.at[1]} r={2.6} fill={l.color ?? C.fg} />
-              </>
+              </g>
             ) : null}
             <text
               x={l.x}
@@ -179,7 +177,7 @@ function LabelLayer({
               fontWeight={l.weight ?? 600}
               textAnchor={l.anchor ?? "start"}
               fontFamily={font}
-              stroke={P.halo}
+              stroke={l.halo ?? P.halo}
               strokeWidth={4}
               strokeLinejoin="round"
               paintOrder="stroke"
@@ -190,6 +188,46 @@ function LabelLayer({
         );
       })}
     </g>
+  );
+}
+
+/* ---------- tegnforklaring ---------- */
+
+export type Key = {
+  text: string;
+  color: string;
+  kind: "dash" | "line" | "fill" | "symbol" | "crevasse";
+  symbol?: string;
+  /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
+  off?: boolean;
+};
+
+function KeySample({ k }: { k: Key }) {
+  return (
+    <svg width="30" height="14" viewBox="0 0 30 14" aria-hidden="true" className="shrink-0">
+      {k.kind === "dash" ? (
+        <line
+          x1="1"
+          y1="7"
+          x2="29"
+          y2="7"
+          stroke={k.color}
+          strokeWidth="2.4"
+          strokeDasharray="5 4"
+        />
+      ) : k.kind === "line" ? (
+        <line x1="1" y1="7" x2="29" y2="7" stroke={k.color} strokeWidth="3" />
+      ) : k.kind === "crevasse" ? (
+        <path d="M6 3 L9 12 L12 3 Z M17 3 L20 10 L23 3 Z" fill={k.color} />
+      ) : k.kind === "fill" ? (
+        <rect x="3" y="1" width="24" height="12" rx="2" fill={k.color} />
+      ) : (
+        <g stroke={k.color} strokeWidth="1.8" fill="none">
+          <circle cx="15" cy="7" r="5.5" />
+          <path d="M11.2 3.2 L18.8 10.8 M18.8 3.2 L11.2 10.8" />
+        </g>
+      )}
+    </svg>
   );
 }
 
@@ -377,6 +415,9 @@ export function IsbreFigur({
   status,
   labels = [],
   notes = [],
+  keys = [],
+  remark,
+  narrowViewBox,
   svgRef,
   children,
 }: {
@@ -389,8 +430,14 @@ export function IsbreFigur({
   /** Kort tekst om hva som skjer nå (vises over figuren, leses opp av skjermleser). */
   status?: ReactNode;
   labels?: Lab[];
-  /** Målestokk/orientering, f.eks. «Skjematisk, høyden er overdrevet». */
+  /** Målestokk/orientering, f.eks. «Skjematisk, høyden er overdrevet». Vises som lesbar linje under figuren. */
   notes?: string[];
+  /** Tegnforklaring for linjer og felt (vises som HTML under figuren). */
+  keys?: Key[];
+  /** Merknad som skal være godt synlig under figuren. */
+  remark?: ReactNode;
+  /** Eget utsnitt på smal skjerm (samme koordinater, bare beskåret). */
+  narrowViewBox?: string;
   svgRef?: RefObject<SVGSVGElement | null>;
   children: (ctx: { d: Defs; m: Markers; narrow: boolean }) => ReactNode;
 }) {
@@ -405,7 +452,9 @@ export function IsbreFigur({
     ice: `${uid}-mice`,
     dark: `${uid}-mdark`,
   };
-  const [, , vbW, vbH] = viewBox.split(/\s+/).map(Number);
+  const vbStr = narrow && narrowViewBox ? narrowViewBox : viewBox;
+  const vb = vbStr.split(/\s+/).map(Number);
+  const [vbX, vbY, vbW, vbH] = vb;
   return (
     <FigureFrame heading={heading} caption={caption} action={action}>
       {toolbar ? (
@@ -418,7 +467,7 @@ export function IsbreFigur({
       ) : null}
       <svg
         ref={svgRef}
-        viewBox={viewBox}
+        viewBox={vbStr}
         className="mx-auto h-auto w-full max-w-5xl"
         role="img"
         aria-labelledby={`${uid}-title`}
@@ -433,29 +482,9 @@ export function IsbreFigur({
           <Marker id={m.ice} color="#2f5f80" />
           <Marker id={m.dark} color={P.halo} />
         </defs>
-        <rect width={vbW} height={vbH} fill={C.bg} rx="10" />
+        <rect x={vbX} y={vbY} width={vbW} height={vbH} fill={C.bg} rx="10" />
         {children({ d, m, narrow })}
-        <LabelLayer labels={labels} narrow={narrow} vbW={vbW} vbH={vbH} />
-        {!narrow && notes.length ? (
-          <g>
-            {notes.map((n, i) => (
-              <text
-                key={n}
-                x={vbW - 14}
-                y={vbH - 12 - (notes.length - 1 - i) * 20}
-                textAnchor="end"
-                fontSize={14}
-                fontFamily={font}
-                fill={C.muted}
-                stroke={P.halo}
-                strokeWidth={3}
-                paintOrder="stroke"
-              >
-                {n}
-              </text>
-            ))}
-          </g>
-        ) : null}
+        <LabelLayer labels={labels} narrow={narrow} vb={vb} />
       </svg>
       {narrow && labels.length ? (
         <ol
@@ -466,7 +495,10 @@ export function IsbreFigur({
             <li key={`${l.text}-${i}`} className="flex items-start gap-2">
               <span
                 className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold"
-                style={{ background: l.color ?? C.fg, color: P.halo }}
+                style={{
+                  background: l.halo ?? l.color ?? C.fg,
+                  color: l.halo ? (l.color ?? P.halo) : P.halo,
+                }}
               >
                 {i + 1}
               </span>
@@ -475,8 +507,28 @@ export function IsbreFigur({
           ))}
         </ol>
       ) : null}
-      {narrow && notes.length ? (
-        <p className="mt-2 text-xs text-muted-foreground">{notes.join(" · ")}</p>
+      {keys.length ? (
+        <ul
+          className="mt-3 flex min-h-5 flex-wrap gap-x-5 gap-y-1.5 text-sm text-foreground"
+          aria-label="Tegnforklaring"
+        >
+          {keys
+            .filter((k) => !k.off)
+            .map((k) => (
+              <li key={k.text} className="inline-flex items-center gap-2">
+                <KeySample k={k} />
+                <span>{k.text}</span>
+              </li>
+            ))}
+        </ul>
+      ) : null}
+      {notes.length ? (
+        <p className="mt-2 text-[13px] leading-snug text-muted-foreground">{notes.join(" · ")}</p>
+      ) : null}
+      {remark ? (
+        <p className="mt-2 rounded-md border border-border/80 bg-muted/40 px-3 py-2 text-sm leading-snug text-foreground">
+          {remark}
+        </p>
       ) : null}
     </FigureFrame>
   );
@@ -484,7 +536,7 @@ export function IsbreFigur({
 
 export function Polys({ polys, opacity }: { polys: Poly[]; opacity?: number }) {
   return (
-    <g opacity={opacity}>
+    <g opacity={opacity} data-nocheck="">
       {polys.map((p, i) => (
         <path
           key={i}

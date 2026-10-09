@@ -24,6 +24,7 @@ import {
   smoothPath,
   useInView,
   useStepClock,
+  useNarrow,
   useTicker,
 } from "./isbre-kit";
 
@@ -44,6 +45,8 @@ const ICE_FLOW = "#2f5f80";
 
 const breBed = (x: number) => 405 - 285 * Math.pow(1 - x / 960, 1.5) + 5 * Math.sin(x / 47);
 const BRE_X0 = 64;
+/** Høyden på klammene som viser nærings- og tæringsområdet. */
+const BRE_ZONE_Y = 62;
 
 function breWord(b: number) {
   if (b > 0.15) return "fram";
@@ -127,93 +130,84 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
       particles.push({ x, y: breBed(x) - H(x) * f, o: Math.min(1, s * 6, (1 - s) * 6) });
     }
   });
-  const flakes = Array.from({ length: 9 }, (_, i) => {
-    const x = BRE_X0 + 30 + ((ela - BRE_X0 - 40) * i) / 8 + 8 * Math.sin(i * 2.3);
-    const top = 30 + 14 * ((i * 7) % 3);
-    const y = top + ((t * 26 + i * 23) % Math.max(20, surf(x) - top - 12));
-    return { x, y };
-  });
+  // snøfall i jevne kolonner over næringsområdet, under klammen
+  const flakes: { x: number; y: number; o: number }[] = [];
+  for (let x = BRE_X0 + 26, k = 0; x < ela - 22; x += 34, k++) {
+    const top = BRE_ZONE_Y + 22;
+    const span = Math.max(16, surf(x) - 14 - top);
+    for (let r = 0; r < 2; r++) {
+      const s = ((((t * 22) / span + (k % 2) * 0.25 + r * 0.5) % 1) + 1) % 1;
+      flakes.push({ x, y: top + s * span, o: Math.min(1, s * 5, (1 - s) * 5) });
+    }
+  }
   const word = breWord(b);
   const midAcc = (BRE_X0 + ela) / 2;
-  const bedLab = (BRE_X0 + xf) / 2 + 40;
   const labels: Lab[] = [
     {
       text: "Næringsområde",
       x: midAcc,
-      y: surf(midAcc) - 62,
+      y: BRE_ZONE_Y - 12,
       color: C.cold,
       anchor: "middle",
       size: 18,
-      badge: [midAcc + 16, surf(midAcc) - 46],
+      weight: 700,
+      badge: [midAcc, BRE_ZONE_Y - 6],
     },
     {
       text: "Tæringsområde",
-      x: (xp + xf) / 2 + 70,
-      y: surf((xp + xf) / 2) - 95,
+      x: (ela + xf) / 2,
+      y: BRE_ZONE_Y - 12,
       color: C.warm,
       anchor: "middle",
       size: 18,
-      badge: [(xp + xf) / 2 + 50, surf((xp + xf) / 2) - 50],
+      weight: 700,
+      badge: [(ela + xf) / 2, BRE_ZONE_Y - 6],
     },
     {
       text: "Likevektslinje",
-      x: ela - 8,
-      y: surf(ela) - 50,
+      x: ela + 8,
+      y: clamp(surf(ela) - 64, 104, 126),
       color: C.warm,
-      anchor: "end",
-      badge: [ela, surf(ela) - 64],
+      badge: [ela + 14, clamp(surf(ela) - 70, 98, 120)],
     },
     {
       text: "Snø og firn blir presset sammen til is",
       x: 24,
-      y: 300,
-      at: [BRE_X0 + 80, surf(BRE_X0 + 80) + 5],
+      y: 372,
+      at: [BRE_X0 + 40, surf(BRE_X0 + 40) + 5],
       color: C.fg,
       badge: [BRE_X0 + 44, surf(BRE_X0 + 44) + 16],
     },
-    ...(crevasses.length
-      ? [
-          {
-            text: "Sprekker",
-            x: crevasses[0] - 14,
-            y: surf(crevasses[0]) - 22,
-            at: [crevasses[0], surf(crevasses[0]) + 6] as [number, number],
-            color: C.fg,
-            anchor: "end" as const,
-            badge: [crevasses[0] + 4, surf(crevasses[0]) - 24] as [number, number],
-          },
-        ]
-      : []),
     {
       text: "Isen siger (deformeres)",
-      x: xp - 30,
-      y: surf(xp) - 40,
-      at: [prof[3].x1, prof[3].y1 - 2],
+      x: prof[3].x1 + 34,
+      y: surf(prof[3].x1 + 34) - 56,
+      at: [prof[3].x1 + 4, prof[3].y1 - 4],
       color: C.fg,
-      anchor: "middle",
-      badge: [xp - 20, surf(xp) - 30],
+      badge: [prof[3].x1 + 18, surf(prof[3].x1 + 18) - 18],
     },
     {
       text: "Glir på underlaget",
-      x: prof[0].x1 + 20,
-      y: prof[0].y1 + 38,
-      at: [prof[0].x1, prof[0].y1],
+      x: xp + 30,
+      y: breBed(xp + 30) + 34,
+      at: [prof[0].x1, prof[0].y1 + 4],
       color: C.fg,
-      badge: [prof[0].x1 + 14, prof[0].y1 + 30],
+      anchor: "end",
+      badge: [xp + 8, breBed(xp + 8) + 22],
     },
     {
       text: "Stein i bresålen",
-      x: bedLab,
-      y: breBed(bedLab) + 30,
-      at: [bedLab, breBed(bedLab) - 4],
+      x: BRE_X0 + 180,
+      y: breBed(BRE_X0 + 180) + 32,
+      at: [BRE_X0 + 160, breBed(BRE_X0 + 160) + 2],
       color: C.sand,
-      anchor: "middle",
-      badge: [bedLab, breBed(bedLab) + 26],
+      anchor: "end",
+      badge: [BRE_X0 + 150, breBed(BRE_X0 + 150) + 20],
     },
     {
       text: `Isfronten ${word === "står" ? "står" : word === "fram" ? "rykker fram" : "trekker seg tilbake"}`,
-      x: xf > 650 ? xf - 20 : xf + 30,
-      y: breBed(xf) - (xf > 650 ? 84 : 70),
+      x: xf > 650 ? xf - 20 : xf + 40,
+      y: breBed(xf) - (xf > 650 ? 84 : 30),
       at: [xf - 4, breBed(xf) - 6],
       color: C.fg,
       anchor: xf > 650 ? "end" : "start",
@@ -230,13 +224,13 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
     },
     {
       text: "Smeltevann",
-      x: Math.min(905, xf + 150),
-      y: breBed(Math.min(905, xf + 150)) - 16,
+      x: Math.min(890, xf + 150),
+      y: breBed(Math.min(890, xf + 150)) - 26,
       color: C.rain,
       anchor: "middle",
       badge: [Math.min(910, xf + 140), breBed(Math.min(910, xf + 140)) - 22],
     },
-    { text: "Berg", x: 70, y: 440, color: C.muted, size: 17 },
+    { text: "Berg", x: 930, y: 452, color: C.muted, size: 17, anchor: "end" },
   ];
   const status =
     word === "fram"
@@ -269,6 +263,7 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
       status={status}
       labels={labels}
       notes={["Lengdesnitt, skjematisk", "Isen er tegnet tykkere enn i virkeligheten"]}
+      keys={[{ text: "Sprekker i isen", color: "#7d9fb6", kind: "crevasse" }]}
       viewBox="0 0 960 470"
     >
       {({ d, m }) => (
@@ -278,15 +273,17 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
           data-figur="bre-lengdesnitt"
         >
           <rect width="960" height="470" fill={d.url.sky} rx="10" />
-          <path
-            d="M0 210 L70 150 L140 186 L230 120 L330 176 L430 146 L540 204 L650 172 L760 232 L860 206 L960 236 L960 470 L0 470 Z"
-            fill="#1c2a32"
-          />
-          <path
-            d="M218 132 L230 120 L244 132 L236 130 L230 136 Z M420 156 L430 146 L442 156 L432 154 Z"
-            fill="#c9d7df"
-            opacity="0.5"
-          />
+          <g data-nocheck="">
+            <path
+              d="M0 210 L70 150 L140 186 L230 120 L330 176 L430 146 L540 204 L650 172 L760 232 L860 206 L960 236 L960 470 L0 470 Z"
+              fill="#1c2a32"
+            />
+            <path
+              d="M218 132 L230 120 L244 132 L236 130 L230 136 Z M420 156 L430 146 L442 156 L432 154 Z"
+              fill="#c9d7df"
+              opacity="0.5"
+            />
+          </g>
           <path d={`M${pts(terrain)} Z`} fill={d.url.rock} />
           <path d={`M${pts(terrain)} Z`} fill={d.url.strata} />
           <path
@@ -334,21 +331,36 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
             ))}
           <path d={snowPath} fill={d.url.firn} />
           <path d={snowPath} fill="none" stroke="#ffffff" strokeWidth="1.2" opacity="0.8" />
-          <path d={`M${BRE_X0 + 18} ${surf(BRE_X0 + 18) - 1} l4 16 l5 -15 Z`} fill={P.crevasse} />
-          {crevasses.map((x) => {
-            const dd = 9 + H(x) * 0.13;
-            return (
-              <path
-                key={x}
-                d={`M${x - 5} ${surf(x - 5) - 0.5} L${x + 1} ${surf(x) + dd} L${x + 5} ${surf(x + 5) - 0.5} Z`}
-                fill={P.crevasse}
-              />
-            );
-          })}
+          <g opacity="0.8" data-nocheck="">
+            <path
+              d={`M${BRE_X0 + 18} ${surf(BRE_X0 + 18) - 0.5} l3 10 l3.5 -9.5 Z`}
+              fill="#7d9fb6"
+            />
+            {crevasses.map((x) => {
+              const dd = 6 + H(x) * 0.1;
+              return (
+                <path
+                  key={x}
+                  d={`M${x - 3} ${surf(x - 3) - 0.5} L${x + 0.5} ${surf(x) + dd} L${x + 3} ${surf(x + 3) - 0.5} Z`}
+                  fill="#7d9fb6"
+                />
+              );
+            })}
+          </g>
           <path d={icePath} fill="none" stroke="#f3f8fb" strokeWidth="1.4" opacity="0.8" />
+          <g fill="none" strokeWidth="1.6" strokeLinecap="round" opacity="0.9">
+            <path
+              d={`M${BRE_X0 + 6} ${BRE_ZONE_Y + 8} V${BRE_ZONE_Y} H${ela - 6} V${BRE_ZONE_Y + 8}`}
+              stroke={C.cold}
+            />
+            <path
+              d={`M${ela + 6} ${BRE_ZONE_Y + 8} V${BRE_ZONE_Y} H${xf} V${BRE_ZONE_Y + 8}`}
+              stroke={C.warm}
+            />
+          </g>
           <line
             x1={ela}
-            y1={surf(ela) - 44}
+            y1={BRE_ZONE_Y - 2}
             x2={ela}
             y2={breBed(ela)}
             stroke={C.warm}
@@ -380,10 +392,10 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
           {flakes.map((f, i) => (
             <path
               key={i}
-              d={`M${f.x - 4} ${f.y} H${f.x + 4} M${f.x} ${f.y - 4} V${f.y + 4} M${f.x - 3} ${f.y - 3} L${f.x + 3} ${f.y + 3} M${f.x + 3} ${f.y - 3} L${f.x - 3} ${f.y + 3}`}
+              d={`M${f.x - 3.5} ${f.y} H${f.x + 3.5} M${f.x} ${f.y - 3.5} V${f.y + 3.5} M${f.x - 2.5} ${f.y - 2.5} L${f.x + 2.5} ${f.y + 2.5} M${f.x + 2.5} ${f.y - 2.5} L${f.x - 2.5} ${f.y + 2.5}`}
               stroke="#ffffff"
-              strokeWidth="1.2"
-              opacity="0.8"
+              strokeWidth="1.1"
+              opacity={0.75 * f.o}
             />
           ))}
           {word !== "står" ? (
@@ -473,7 +485,7 @@ function Extruded({
     quads.push({ d: `M${pts(q)}Z`, fill: litShade(color, x2 - x1, y2 - y1, minF) });
   }
   return (
-    <g>
+    <g data-nocheck="">
       {quads.map((q, i) => (
         <path
           key={i}
@@ -510,9 +522,9 @@ export function VdalTilUdal({
   const notch = step >= 3 ? 1 : 0;
   const k4 = step === 4 ? smooth(phase / 0.35) : 0;
   const seaK = step === 4 ? smooth((phase - 0.2) / 0.6) : 0;
-  const s = lerp(1, 0.56, k4);
-  const tx = lerp(0, 6, k4);
-  const ty = lerp(0, 150, k4);
+  const s = lerp(1, 0.66, k4);
+  const tx = lerp(0, -36, k4);
+  const ty = lerp(0, 160, k4);
   const T = (x: number, y: number): [number, number] => [tx + s * x, ty + s * y];
 
   const xs: number[] = [];
@@ -586,23 +598,27 @@ export function VdalTilUdal({
       : [];
 
   // lengdesnitt langs fjorden (steg 4)
-  const lsBottom: [number, number][] = [
-    [566, 150],
-    [588, 196],
-    [606, 232],
-    [632, 300],
-    [664, 372],
-    [706, 404],
-    [752, 410],
-    [792, 392],
-    [826, 344],
-    [852, 294],
-    [870, 270],
-    [888, 276],
-    [906, 300],
-    [930, 312],
-    [954, 316],
-  ];
+  const LS0 = 616;
+  const lsX = (x: number) => LS0 + ((x - 556) * (954 - LS0)) / 398;
+  const lsBottom: [number, number][] = (
+    [
+      [566, 150],
+      [588, 196],
+      [606, 232],
+      [632, 300],
+      [664, 372],
+      [706, 404],
+      [752, 410],
+      [792, 392],
+      [826, 344],
+      [852, 294],
+      [870, 270],
+      [888, 276],
+      [906, 300],
+      [930, 312],
+      [954, 316],
+    ] as [number, number][]
+  ).map(([x, y]) => [lsX(x), y]);
   const lsSea = 230;
   const lsWaterXs = lsBottom.filter(([, y]) => y > lsSea);
   const lsWater = `M${lsWaterXs[0][0] - 10} ${lsSea} ${lsWaterXs.map(([x, y]) => `L${x} ${y}`).join(" ")} L954 ${lsSea} Z`;
@@ -630,21 +646,24 @@ export function VdalTilUdal({
   }
   if (step === 2) {
     add({
+      // mørk tekst med lys kontur inne i isen, ikke oppå iskanten
       text: "Innlandsis",
       x: T(VU_XC - 300, 0)[0],
-      y: T(0, 82)[1],
-      color: C.cold,
+      y: T(0, 120)[1],
+      color: "#16384d",
+      halo: "#e4f0f7",
       size: 19,
-      badge: T(VU_XC - 300, 120),
+      weight: 700,
+      badge: T(VU_XC - 280, 112),
     });
     add({
       text: "Isen beveger seg langs dalen (inn i bildet)",
-      x: T(VU_XC - 10, 0)[0],
-      y: T(0, 54)[1],
-      at: T(VU_XC, 187),
-      color: C.fg,
+      x: T(VU_XC, 0)[0],
+      y: T(0, 146)[1],
+      color: "#16384d",
+      halo: "#e4f0f7",
       anchor: "middle",
-      badge: T(VU_XC + 46, 176),
+      badge: T(VU_XC + 46, 140),
     });
     add({
       text: "Skurer og plukker mest der isen er tykkest",
@@ -657,30 +676,35 @@ export function VdalTilUdal({
     });
   }
   if (step >= 3) {
-    add({
-      text: step === 4 ? "Fjord: U-dal under havnivå" : "U-dal: bratte sider og bred bunn",
-      x: T(VU_XC, 0)[0],
-      y: T(0, step === 4 ? 302 : 290)[1],
-      color: C.fg,
-      size: step === 4 ? 17 : 19,
-      anchor: "middle",
-      badge: step === 4 ? T(VU_XC + 90, 300) : T(VU_XC - 60, 290),
-    });
-    add({
-      text: "Gammel V-dal (stiplet)",
-      x: T(VU_XC - 160, 0)[0] - (step === 4 ? 16 : 0),
-      y: T(0, 190)[1],
-      at: T(VU_XC - 140, 243),
-      color: C.warm,
-      anchor: "end",
-      badge: step === 4 ? T(VU_XC - 200, 200) : T(VU_XC - 120, 260),
-    });
+    add(
+      step === 4
+        ? {
+            text: "Fjord: U-dal under havnivå",
+            x: T(VU_XC, 0)[0],
+            y: T(0, 384)[1],
+            color: "#eaf6fc",
+            size: 17,
+            weight: 700,
+            anchor: "middle",
+            badge: T(VU_XC + 90, 384),
+          }
+        : {
+            text: "U-dal: bratte sider og bred bunn",
+            x: T(VU_XC, 0)[0],
+            y: T(0, 214)[1],
+            color: C.fg,
+            size: 19,
+            anchor: "middle",
+            badge: T(VU_XC - 60, 290),
+          },
+    );
     add({
       text: "Hengende sidedal",
-      x: T(mouth + 20, 0)[0],
-      y: T(0, sideY - 70)[1],
-      at: T(mouth + VU_E[0] * 0.5, sideY + VU_E[1] * 0.5),
+      x: T(mouth - 60, 0)[0],
+      y: T(0, 132)[1],
+      at: T(mouth + VU_E[0] * 0.5 - 4, sideY + VU_E[1] * 0.5 + 2),
       color: C.sand,
+      anchor: "end",
       badge: T(mouth + 34, sideY - 46),
     });
     if (step === 3)
@@ -695,49 +719,41 @@ export function VdalTilUdal({
   }
   if (step === 4 && k4 > 0.6) {
     add({
-      text: "Havnivå",
-      x: T(18, 0)[0],
-      y: T(0, VU_SEA - 8)[1],
-      color: C.rain,
-      badge: T(40, VU_SEA),
-    });
-    add({
       text: "Lengdesnitt langs fjorden",
-      x: 760,
+      x: 779,
       y: 82,
       color: C.fg,
       anchor: "middle",
       size: 17,
-      badge: [760, 90],
+      badge: [779, 90],
     });
-    add({ text: "Innerst", x: 572, y: 118, color: C.muted, badge: [586, 112] });
+    add({ text: "Innerst", x: LS0 + 14, y: 118, color: C.muted, badge: [LS0 + 28, 112] });
     add({ text: "Havet", x: 948, y: 118, color: C.muted, anchor: "end", badge: [932, 112] });
     add({
       text: "Overfordypning",
-      x: 730,
-      y: 462,
-      at: [730, 400],
+      x: lsX(730),
+      y: 466,
+      at: [lsX(730), 404],
       color: C.warm,
       anchor: "middle",
-      badge: [730, 446],
+      badge: [lsX(730), 446],
     });
     add({
       text: "Terskel",
-      x: 878,
-      y: 254,
-      at: [870, 272],
+      x: lsX(878),
+      y: 210,
+      at: [lsX(870), 266],
       color: C.warm,
       anchor: "middle",
-      badge: [872, 244],
+      badge: [lsX(872), 244],
     });
     add({
       text: "Her ligger tverrsnittet til venstre",
-      x: 714,
-      y: 206,
-      at: [714, 230],
+      x: lsX(714),
+      y: 156,
       color: C.fg,
       anchor: "middle",
-      badge: [690, 200],
+      badge: [lsX(690), 200],
     });
   }
   return (
@@ -760,6 +776,10 @@ export function VdalTilUdal({
       }
       status={VU_STATUS[step - 1]}
       labels={labels}
+      keys={[
+        { text: "Gammel V-dal", color: C.warm, kind: "dash", off: step < 3 },
+        { text: "Havnivå", color: C.rain, kind: "dash", off: step < 4 },
+      ]}
       notes={
         step === 4
           ? ["Skjematisk, ikke i målestokk"]
@@ -780,6 +800,7 @@ export function VdalTilUdal({
               d="M0 120 L120 60 L260 96 L380 40 L520 80 L640 30 L780 76 L900 44 L1000 70 L1120 50 L1120 420 L0 420 Z"
               fill="#1b2830"
               transform={`translate(${VU_E[0] * 1.6} ${VU_E[1] * 1.6})`}
+              data-nocheck=""
             />
             <Extruded profile={ground} color="#7b8273" />
             {step >= 3 ? (
@@ -901,12 +922,20 @@ export function VdalTilUdal({
           </g>
           {k4 > 0 ? (
             <g opacity={k4}>
-              <rect x="556" y="62" width="398" height="440" rx="10" fill="#0f1c24" stroke={C.dim} />
-              <path d={`M566 500 L${pts(lsBottom)} L954 500 Z`} fill={d.url.rock} />
-              <path d={`M566 500 L${pts(lsBottom)} L954 500 Z`} fill={d.url.strata} />
+              <rect
+                x={LS0 - 10}
+                y="62"
+                width={954 - LS0 + 10}
+                height="440"
+                rx="10"
+                fill="#0f1c24"
+                stroke={C.dim}
+              />
+              <path d={`M${lsX(566)} 500 L${pts(lsBottom)} L954 500 Z`} fill={d.url.rock} />
+              <path d={`M${lsX(566)} 500 L${pts(lsBottom)} L954 500 Z`} fill={d.url.strata} />
               <path d={lsWater} fill={d.url.water} opacity="0.92" />
               <line
-                x1="566"
+                x1={lsX(566)}
                 y1={lsSea}
                 x2="954"
                 y2={lsSea}
@@ -916,9 +945,9 @@ export function VdalTilUdal({
               />
               <path d={`M${pts(lsBottom)}`} fill="none" stroke="#a3ab98" strokeWidth="1.6" />
               <line
-                x1="714"
-                y1="150"
-                x2="714"
+                x1={lsX(714)}
+                y1="168"
+                x2={lsX(714)}
                 y2="408"
                 stroke={C.fg}
                 strokeWidth="1.5"
@@ -1122,6 +1151,7 @@ export function BotnEggTind({
           <path
             d="M0 250 L90 190 L170 230 L260 170 L360 220 L470 160 L560 200 L660 150 L760 196 L860 166 L960 210 L960 330 L0 330 Z"
             fill="#1b2830"
+            data-nocheck=""
           />
           <path d={rightFace} fill="#4b5247" />
           <path d={rightFace} fill={d.url.strata} />
@@ -1334,14 +1364,17 @@ export function Avsetningsformer({
   const labels: Lab[] = [];
   const L2 = (l: Lab) => labels.push(l);
   const mPt = PG(avMoraineX(330), 330);
+  // i steg 3 peker endemorenen lenger inn, så streken ikke krysser flyttblokk-teksten
+  const mPt3 = PG(avMoraineX(348), 348);
   const eskPt = PG(250, avEskerY(250));
   const drPt = PG(...AV_DRUMLINS[2]);
   const dlPt = PG(AV_DELTA[0] + 55, AV_DELTA[1] + 10);
   if (step === 1) {
     L2({
+      // under pila, ikke oppå den
       text: "Isen beveger seg",
-      x: onIce(60, 250)[0] - 6,
-      y: onIce(60, 250)[1] - 16,
+      x: onIce(50, 250)[0],
+      y: onIce(50, 250)[1] + 30,
       color: C.cold,
       badge: onIce(40, 250),
     });
@@ -1420,20 +1453,19 @@ export function Avsetningsformer({
     });
     L2({
       text: "Flyttblokk: ofte en annen bergart",
-      x: bx + 6,
-      y: by - 46,
-      at: [bx, by - 14],
+      x: bx + 24,
+      y: by + 26,
+      at: [bx + 6, by + 2],
       color: C.fg,
-      anchor: "middle",
       badge: [bx + 26, by - 24],
     });
     L2({
       text: "Endemorene: viser hvor fronten sto",
-      x: mPt[0] + 10,
-      y: mPt[1] - 46,
-      at: mPt,
+      x: mPt3[0] + 10,
+      y: mPt3[1] - 40,
+      at: mPt3,
       color: C.sand,
-      badge: [mPt[0] + 6, mPt[1] - 20],
+      badge: [mPt3[0] + 6, mPt3[1] - 20],
     });
     const ar = AV_PROJ(14, 330, avGround(14, 330) + 4);
     L2({
@@ -1447,8 +1479,8 @@ export function Avsetningsformer({
   if (step !== 2) {
     L2({
       text: "Breelvdelta",
-      x: dlPt[0] + 30,
-      y: dlPt[1] - 40,
+      x: dlPt[0] + 36,
+      y: dlPt[1] + 34,
       at: dlPt,
       color: C.sand,
       badge: [dlPt[0] + 20, dlPt[1] - 16],
@@ -1466,8 +1498,8 @@ export function Avsetningsformer({
     const df = SP(470, AV_WATER - 2);
     L2({
       text: "Breelvmateriale: sortert i lag",
-      x: df[0] + 30,
-      y: 506,
+      x: df[0] - 40,
+      y: 492,
       at: df,
       color: C.sand,
       badge: [df[0] + 8, df[1] + 24],
@@ -1642,7 +1674,8 @@ export function Frostsprengning({
   ])} Z`;
   const fall = step === 4 ? 0.5 * smooth((phase - 0.1) / 0.6) : 0;
   const pivot: [number, number] = [490, g.tip[1] + 16];
-  const blockTf = `translate(${fall * 40} ${fall * fall * 190}) rotate(${fall * 28} ${pivot[0]} ${pivot[1]})`;
+  // faller mest rett ned, med liten vipp, så biten holder seg unna termometeret
+  const blockTf = `translate(${fall * 16} ${fall * fall * 260}) rotate(${fall * 16} ${pivot[0]} ${pivot[1]})`;
   const drops =
     step === 1 || step === 3
       ? [0, 1, 2].map((k) => {
@@ -1708,17 +1741,16 @@ export function Frostsprengning({
   if (step === 2) {
     labels.push({
       text: "Vannet fryser, og volumet øker",
-      x: 210,
-      y: 60,
+      x: 150,
+      y: 86,
       at: g.at(0.32, 0),
       color: C.cold,
       badge: [g.at(0.2, 0)[0] - 30, 96],
     });
     labels.push({
       text: "Isen presser sprekken utover",
-      x: 232,
+      x: 212,
       y: 236,
-      at: g.at(0.45, -2.6),
       color: C.warm,
       anchor: "middle",
       badge: [g.at(0.45, -2.6)[0] - 34, g.at(0.45, -2.6)[1] + 4],
@@ -1726,7 +1758,7 @@ export function Frostsprengning({
     labels.push({
       text: "Vann trekkes mot isen",
       x: 300,
-      y: 400,
+      y: 372,
       at: g.at(0.8, -6),
       color: C.rain,
       anchor: "middle",
@@ -1746,11 +1778,11 @@ export function Frostsprengning({
   if (step === 4)
     labels.push({
       text: "En bit av berget løsner",
-      x: 300,
-      y: 60,
-      at: [470 + fall * 40, 230 + fall * fall * 190],
+      x: 170,
+      y: 86,
+      at: [474 + fall * 16, 236 + fall * fall * 260],
       color: C.warm,
-      badge: [500 + fall * 40, 200 + fall * fall * 190],
+      badge: [500 + fall * 16, 206 + fall * fall * 260],
     });
   labels.push({
     text: "Ur: kjegle av kantet stein",
@@ -1780,9 +1812,6 @@ export function Frostsprengning({
             onStep={clock.setStep}
             label="Velg steg i frostsprengningen"
           />
-          <span className="rounded-full border border-border/80 px-2.5 py-1 font-mono text-xs text-muted-foreground">
-            Fryse–tine-syklus {clock.loops + 1}
-          </span>
         </>
       }
       status={FR_STATUS[step - 1]}
@@ -1803,7 +1832,7 @@ export function Frostsprengning({
           <path d={rock} fill={d.url.rock} />
           <path d={rock} fill={d.url.strata} />
           <path
-            d="M120 112 L134 230 M226 300 L300 486 M60 330 L170 360"
+            d="M120 112 L131 200 M92 424 L140 486 M60 330 L170 360"
             stroke="#2f362d"
             strokeWidth="1.5"
             opacity="0.7"
@@ -1920,19 +1949,19 @@ export const FrostsprengningDiagram = () => <Frostsprengning />;
  * ===================================================================== */
 
 const IS_SEA = 210;
-const IS_BASE = 372;
+const IS_BASE = 340;
 function isLand(x: number) {
   if (x < 290) return IS_SEA + (290 - x) * 0.22;
-  if (x < 560) return IS_SEA - 0.42 * (x - 290);
-  return (
-    96.6 -
-    10 * Math.sin((x - 560) / 38) -
-    14 * Math.exp(-(((x - 760) / 50) ** 2)) -
-    6 * Math.sin(x / 13) * clamp((x - 560) / 80)
-  );
+  // jevnt stigende land som flater ut innover: ingen småtopper under isen
+  return IS_SEA - 125 * (1 - Math.exp(-(x - 290) / 180));
 }
 const isBell = (x: number) => smooth((x + 60) / 700);
+const IS_REMARK =
+  "Forenklet: her holdes globalt havnivå fast for å vise isostatisk nedpressing. I virkeligheten var verdenshavene ca. 125–130 m lavere under siste istids maksimum.";
 const IS_FRONT0 = 300;
+// pila for astenosfæren som strømmer ut fra under isen (ligger i astenosfæren, under litosfæren)
+const ARW0 = 600;
+const ARW1 = 720;
 
 function isState(step: number, phase: number) {
   const ph = smooth(phase);
@@ -1968,11 +1997,41 @@ export function IsostasiSnitt({
   const { step, phase } = clock;
   const [thick, setThick] = useState(1);
   const st = isState(step, phase);
+  const narrow = useNarrow();
   const Wmax = 95 * thick;
   const w = (x: number) => Wmax * st.dep * isBell(x);
   const surf = (x: number) => isLand(x) + w(x);
-  const H = (x: number) =>
-    x <= st.front ? 0 : 128 * thick * st.load * Math.sqrt(clamp((x - st.front) / 320));
+  // Istykkelse som vokser jevnt innover fra fronten (parabelprofil). Overflaten blir så
+  // glattet til en konveks kuppel (øvre skrog), så den aldri følger småformer i landet.
+  const iceH = (x: number) =>
+    x <= st.front ? 0 : 175 * thick * st.load * Math.sqrt(clamp((x - st.front) / 640));
+  const domePts: [number, number][] = [];
+  if (st.load > 0.005 && st.front < 960) {
+    const raw: [number, number][] = [];
+    for (let x = st.front; x <= 960; x += 4) raw.push([x, surf(x) - iceH(x)]);
+    if (raw[raw.length - 1][0] < 960) raw.push([960, surf(960) - iceH(960)]);
+    for (const q of raw) {
+      while (domePts.length >= 2) {
+        const [ax, ay] = domePts[domePts.length - 2];
+        const [bx, by] = domePts[domePts.length - 1];
+        // fjern b hvis den ligger under linja a→q (y peker nedover)
+        if ((bx - ax) * (q[1] - ay) - (by - ay) * (q[0] - ax) <= 0) domePts.pop();
+        else break;
+      }
+      domePts.push(q);
+    }
+  }
+  const iceTop = (x: number) => {
+    if (!domePts.length || x < domePts[0][0]) return surf(x);
+    for (let i = 1; i < domePts.length; i++)
+      if (x <= domePts[i][0]) {
+        const [ax, ay] = domePts[i - 1];
+        const [bx, by] = domePts[i];
+        return lerp(ay, by, (x - ax) / Math.max(1e-6, bx - ax));
+      }
+    return domePts[domePts.length - 1][1];
+  };
+  const H = (x: number) => (iceH(x) > 0.5 ? Math.max(0, surf(x) - iceTop(x)) : 0);
   // høyeste strandlinje: der nedpresset land (full nedpressing) møter havnivået
   let xs = 300;
   for (let x = 290; x < 700; x += 1) {
@@ -1982,14 +2041,14 @@ export function IsostasiSnitt({
     }
   }
   const X: number[] = [];
-  for (let x = 0; x <= 960; x += 6) X.push(x);
+  for (let x = 0; x <= 960; x += 4) X.push(x);
   const landTop: [number, number][] = X.map((x) => [x, surf(x)]);
   const base: [number, number][] = X.map((x) => [x, IS_BASE + w(x)]);
   const litho = `M${pts(landTop)} L${pts([...base].reverse())} Z`;
-  const astheno = `M${pts(base)} L960 540 L0 540 Z`;
+  const astheno = `M${pts(base)} L960 500 L0 500 Z`;
   const iceX = X.filter((x) => H(x) > 0.5);
   const icePoly = iceX.length
-    ? `M${st.front} ${surf(st.front)} L${pts(iceX.map((x) => [x, surf(x) - H(x)]))} L960 ${surf(960) - H(960)} L960 ${surf(960)} L${pts([...iceX].reverse().map((x) => [x, surf(x)]))} Z`
+    ? `M${st.front} ${surf(st.front)} L${pts(iceX.map((x) => [x, iceTop(x)]))} L960 ${iceTop(960)} L960 ${surf(960)} L${pts([...iceX].reverse().map((x) => [x, surf(x)]))} Z`
     : "";
   const wetX = X.filter((x) => surf(x) > IS_SEA && H(x) < 0.5);
   const seaEnd = wetX.length ? wetX[wetX.length - 1] + 6 : 0;
@@ -2004,125 +2063,139 @@ export function IsostasiSnitt({
       : "";
   const mgY = surf(xs);
   const labels: Lab[] = [
-    { text: "Havnivå", x: 16, y: IS_SEA - 10, color: C.rain, badge: [30, IS_SEA - 4] },
+    { text: "Havnivå", x: 16, y: IS_SEA + 22, color: "#bfe3f5", badge: [30, IS_SEA + 14] },
     {
       text: "Litosfære",
-      x: 120,
-      y: IS_BASE - 34 + w(120),
+      x: 830,
+      y: IS_BASE - 24 + w(830),
       color: C.fg,
-      badge: [130, IS_BASE - 40],
+      anchor: "middle",
+      badge: [830, IS_BASE - 32 + w(830)],
     },
-    { text: "Seig astenosfære", x: 120, y: 500, color: C.warm, badge: [130, 494] },
+    { text: "Seig astenosfære", x: 120, y: 478, color: C.warm, badge: [110, IS_BASE + 50] },
   ];
   if (step === 1) {
+    const ix = 860;
+    // står inne i isen når den er tykk nok, ellers over isen
+    const roomy = surf(ix) - isLand(ix) > 44;
+    // under den stiplede linja (landet uten is), så teksten ikke krysser den
+    const iy = roomy ? (isLand(ix) + surf(ix)) / 2 + 7 : iceTop(ix) - 12;
     labels.push({
       text: "Innlandsis",
-      x: 860,
-      y: surf(860) - H(860) * 0.55,
-      color: C.fg,
-      size: 19,
+      x: ix,
+      y: iy,
+      color: roomy ? "#16384d" : C.fg,
+      ...(roomy ? { halo: "#e4f0f7" } : {}),
+      size: 20,
+      weight: 700,
       anchor: "middle",
-      badge: [860, surf(860) - H(860) * 0.55],
-    });
-    labels.push({
-      text: "Isen presser landet ned",
-      x: 640,
-      y: Math.max(40, surf(560) - H(560) - 18),
-      color: C.fg,
-      anchor: "middle",
-      badge: [600, Math.max(48, surf(600) - H(600) - 22)],
-    });
-    labels.push({
-      text: "Stiplet: landoverflaten uten is",
-      x: 470,
-      y: isLand(470) + 4,
-      at: [530, isLand(530)],
-      color: C.fg,
-      anchor: "end",
-      badge: [520, isLand(520) - 2],
+      badge: [ix, roomy ? (isLand(ix) + surf(ix)) / 2 : (iceTop(ix) + surf(ix)) / 2],
     });
     if (st.load > 0.3)
       labels.push({
+        text: "Isen presser landet ned",
+        x: 650,
+        y: Math.max(24, iceTop(650) - 16),
+        color: C.fg,
+        anchor: "end",
+        badge: [660, Math.max(24, iceTop(660) - 18)],
+      });
+    if (st.load > 0.3)
+      labels.push({
         text: "Astenosfæren gir sakte etter",
-        x: 400,
-        y: IS_BASE + 104,
+        x: ARW0 - 14,
+        y: IS_BASE + w(ARW1) + 39,
+        anchor: "end",
         color: C.warm,
-        badge: [450, IS_BASE + 70],
+        badge: [ARW0 - 40, IS_BASE + w(ARW1) + 34],
       });
   }
   if (step === 2) {
     labels.push({
       text: "Havet går inn over nedpresset land",
-      x: 250,
-      y: 150,
-      at: [Math.min(xs - 30, seaEnd - 30), IS_SEA + 6],
+      x: 56,
+      y: 112,
+      at: [Math.min(xs - 40, seaEnd - 40), IS_SEA + 6],
       color: C.rain,
-      badge: [Math.min(xs - 40, seaEnd - 40), IS_SEA + 12],
+      badge: [Math.min(xs - 50, seaEnd - 50), IS_SEA + 14],
     });
     if (st.clay > 0.3)
       labels.push({
         text: "Leire synker til bunns",
         x: 120,
-        y: 300,
+        y: 312,
         at: [240, surf(240) - 3],
         color: C.sand,
-        badge: [226, surf(226) + 16],
+        badge: [210, surf(210) + 18],
       });
     if (st.mark > 0.5)
       labels.push({
         text: "Høyeste strandlinje",
-        x: xs + 26,
-        y: mgY - 30,
-        at: [xs, mgY],
+        x: Math.max(xs + 40, 460),
+        y: 64,
+        at: [xs, mgY - 4],
         color: C.sand,
-        badge: [xs + 22, mgY - 22],
+        badge: [xs + 22, mgY - 26],
       });
   }
   if (step === 3) {
-    labels.push({ text: "Landet hever seg", x: 600, y: 300, color: C.fg, badge: [620, 300] });
+    labels.push({
+      text: "Landet hever seg",
+      x: 640,
+      y: 286,
+      color: C.fg,
+      anchor: "middle",
+      badge: [600, 290],
+    });
     labels.push({
       text: "Gammel strandlinje løftes opp",
-      x: xs + 30,
-      y: mgY - 40,
-      at: [xs, mgY],
+      x: 40,
+      y: 76,
+      at: [xs - 4, mgY - 4],
       color: C.sand,
-      badge: [xs + 22, mgY - 22],
+      badge: [xs + 22, mgY - 26],
     });
     labels.push({
       text: "Havbunn med leire løftes",
       x: 120,
-      y: 300,
+      y: 312,
       at: [250, surf(250) - 3],
       color: C.sand,
-      badge: [256, surf(256) + 18],
+      badge: [230, surf(230) + 20],
     });
   }
   if (step === 4) {
     labels.push({
       text: "Marin grense: 0–220 m over dagens havnivå, avhengig av sted",
-      x: xs + 26,
-      y: Math.min(mgY, 150) - 26,
-      at: [xs, mgY],
+      x: Math.max(xs - 16, 496),
+      y: mgY - 12 - Math.max(0, 496 - xs) * 0.45,
+      anchor: "end",
+      ...(xs < 470 ? { at: [xs, mgY - 6] as [number, number] } : {}),
       color: C.sand,
-      badge: [xs + 22, mgY - 22],
+      badge: [xs + 22, mgY - 26],
     });
     labels.push({
       text: "Marin leire på land under marin grense",
-      x: 120,
+      x: 150,
       y: 300,
-      at: [Math.round((xs + 300) / 2), surf(Math.round((xs + 300) / 2)) - 3],
+      at: [270, surf(270) - 3],
       color: C.sand,
-      badge: [Math.round((xs + 300) / 2) + 6, surf(Math.round((xs + 300) / 2)) + 18],
+      badge: [Math.round((xs + 290) / 2), surf(Math.round((xs + 290) / 2)) + 20],
     });
     labels.push({
       text: "Over marin grense: ingen marin leire",
-      x: xs + 130,
-      y: isLand(xs + 130) + 84,
-      at: [xs + 100, isLand(xs + 100) + 2],
-      color: C.muted,
-      badge: [xs + 110, isLand(xs + 110) + 62],
+      x: xs + 150,
+      y: isLand(xs + 150) + 70,
+      at: [xs + 110, isLand(xs + 110) + 3],
+      color: C.fg,
+      badge: [xs + 120, isLand(xs + 120) + 40],
     });
   }
+  // smal skjerm, steg 4: utsnittet viser kysten, ikke litosfæren og astenosfæren
+  const shown =
+    narrow && step === 4
+      ? labels.filter((l) => l.text !== "Litosfære" && l.text !== "Seig astenosfære")
+      : labels;
   return (
     <IsbreFigur
       svgRef={ref}
@@ -2161,9 +2234,20 @@ export function IsostasiSnitt({
             : null}
         </>
       }
-      labels={labels}
+      labels={shown}
       notes={["Skjematisk tverrsnitt", "Nedpressingen er sterkt overdrevet"]}
-      viewBox="0 0 960 540"
+      keys={[
+        {
+          text: "Landoverflaten uten is",
+          color: "#6f97b8",
+          kind: "dash",
+          off: !(step <= 3 && st.dep > 0.05),
+        },
+        { text: "Marin grense", color: C.sand, kind: "dash", off: step !== 4 },
+      ]}
+      remark={IS_REMARK}
+      viewBox="0 0 960 500"
+      narrowViewBox={step === 4 ? "30 80 540 200" : undefined}
     >
       {({ d, m }) => (
         <g
@@ -2172,7 +2256,7 @@ export function IsostasiSnitt({
           data-figur="isostasi"
           data-step={step}
         >
-          <rect width="960" height="540" fill={d.url.sky} rx="10" />
+          <rect width="960" height="500" fill={d.url.sky} rx="10" />
           <path d={astheno} fill={d.url.astheno} />
           <path d={litho} fill={d.url.litho} />
           <path d={litho} fill={d.url.strata} opacity="0.6" />
@@ -2188,7 +2272,7 @@ export function IsostasiSnitt({
           <line
             x1="0"
             y1={IS_SEA}
-            x2="960"
+            x2={step === 4 ? xs + 24 : Math.max(seaEnd, 140)}
             y2={IS_SEA}
             stroke={C.rain}
             strokeWidth="1.6"
@@ -2200,7 +2284,7 @@ export function IsostasiSnitt({
               <path d={icePoly} fill={d.url.ice} />
               <path d={icePoly} fill={d.url.iceBands} />
               <path
-                d={`M${pts(iceX.map((x) => [x, surf(x) - H(x)]))}`}
+                d={`M${pts(iceX.map((x) => [x, iceTop(x)]))}`}
                 fill="none"
                 stroke="#ffffff"
                 strokeWidth="1.5"
@@ -2211,16 +2295,16 @@ export function IsostasiSnitt({
             <path
               d={`M${pts(X.filter((x) => x >= 300).map((x) => [x, isLand(x)]))}`}
               fill="none"
-              stroke={"#33536a"}
+              stroke="#6f97b8"
               strokeWidth="2.2"
               strokeDasharray="6 6"
             />
           ) : null}
           {step === 1 && st.load > 0.3
-            ? [560, 700, 840].map((x) => (
+            ? [580, 680, 760].map((x) => (
                 <path
                   key={x}
-                  d={`M${x} ${surf(x) - H(x) + 10} v30`}
+                  d={`M${x} ${isLand(x) + 3} V${Math.max(isLand(x) + 15, surf(x) - 8)}`}
                   stroke={C.fg}
                   strokeWidth="3"
                   markerEnd={`url(#${m.fg})`}
@@ -2231,7 +2315,7 @@ export function IsostasiSnitt({
             ? [
                 <path
                   key="l"
-                  d={`M560 ${IS_BASE + 70} h-90`}
+                  d={`M${ARW1} ${IS_BASE + w(ARW1) + 34} H${ARW0}`}
                   stroke={C.warm}
                   strokeWidth="2.6"
                   strokeDasharray="7 5"
