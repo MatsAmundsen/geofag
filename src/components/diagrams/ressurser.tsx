@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { FigureFrame } from "@/components/figure-frame";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { Arrow, C, Diagram, L, font } from "./svg-kit";
 
 function Box({
@@ -236,7 +237,7 @@ export function FeltbokDiagram() {
       heading="Feltbok · eksempel"
       caption="Feltbok med GPS-punkt. Én rad: ID, tid, koordinater, måling, usikkerhet."
     >
-      <div className="overflow-x-auto">
+      <ScrollFrame label="Feltbok · eksempel" fade="var(--color-card)">
         <svg
           viewBox="0 0 800 220"
           className="mx-auto h-auto w-full min-w-[36rem] max-w-3xl"
@@ -271,7 +272,7 @@ export function FeltbokDiagram() {
             Primærkilde: feltboka. Foto og GPS supplerer.
           </text>
         </svg>
-      </div>
+      </ScrollFrame>
     </FigureFrame>
   );
 }

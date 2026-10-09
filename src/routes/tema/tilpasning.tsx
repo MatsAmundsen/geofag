@@ -9,6 +9,7 @@ import { StormwaterAdaptationModel } from "@/components/models/stormwater-adapta
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
+import { TableScroll } from "@/components/scroll-frame";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER_G2 } from "@/lib/kilder-g2";
 import { GF2_THEMES } from "@/lib/nav";
@@ -261,8 +262,12 @@ function TilpasningPage() {
             </ul>
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-border bg-card/70 p-3 pt-2 text-xs">
-            <table className="w-full text-left">
+          <TableScroll
+            caption="Den rasjonelle formelen for overvann: Q = C · I · A"
+            className="rounded-xl border border-border bg-card/70 p-3 pt-2 text-xs"
+            tableClassName="w-full text-left"
+            fade="var(--color-card)"
+          >
               <thead>
                 <tr className="border-b border-border text-muted-foreground">
                   <th className="pb-1.5 font-semibold">Overflatetype</th>
@@ -292,8 +297,7 @@ function TilpasningPage() {
                   <td className="py-2">Jordsmonn og planterøtter infiltrerer nesten all nedbør lokalt.</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+          </TableScroll>
         </div>
 
         {/* TRELEDDSSTRATEGIEN */}

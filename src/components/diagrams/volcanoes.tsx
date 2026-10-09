@@ -1,5 +1,6 @@
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { FigureFrame } from "@/components/figure-frame";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { useAnimationPlaying, useStepCycle } from "./use-motion";
 import { C, Diagram, L, PlayPauseToggle } from "./svg-kit";
 
@@ -47,7 +48,7 @@ function WideSvg({
   children: ReactNode;
 }) {
   return (
-    <div className="max-w-full overflow-x-auto">
+    <ScrollFrame label={label} fade="var(--color-card)">
       <svg
         viewBox={viewBox}
         role="img"
@@ -57,7 +58,7 @@ function WideSvg({
         <rect width="100%" height="100%" fill={C.bg} rx="10" />
         {children}
       </svg>
-    </div>
+    </ScrollFrame>
   );
 }
 

@@ -10,6 +10,7 @@ import {
 } from "@/components/diagrams";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
+import { TableScroll } from "@/components/scroll-frame";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER_G2 } from "@/lib/kilder-g2";
 import { GF2_GAP_THEMES } from "@/lib/nav-g2-gaps";
@@ -188,8 +189,11 @@ function VaerkartPage() {
         standardiserte farger og geometriske figurer:
       </p>
 
-      <div className="my-4 overflow-x-auto">
-        <table className="w-full text-left text-sm">
+      <TableScroll
+        caption="Frontenes symboler og dynamikk"
+        className="my-4"
+        tableClassName="w-full text-left text-sm"
+      >
           <thead>
             <tr className="border-b border-border font-medium text-foreground">
               <th className="py-2 pr-3">Fronttype</th>
@@ -259,8 +263,7 @@ function VaerkartPage() {
               </td>
             </tr>
           </tbody>
-        </table>
-      </div>
+      </TableScroll>
 
       <OrdBoks
         ord="Varm sektor"

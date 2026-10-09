@@ -92,7 +92,7 @@ import {
   UpwellingDiagram,
 } from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
-import { Markdown } from "@/components/markdown";
+import { lastMarkdownHeading, Markdown } from "@/components/markdown";
 import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
 import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
@@ -927,17 +927,27 @@ export function PosterBody({
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
   const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
+  let runningHeading = "";
   return (
     <div className={cn("space-y-4", className)}>
-      {parts.map((part, index) =>
-        part.type === "widget" ? (
-          <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />
-        ) : (
-          <Markdown key={`m-${index}`} scrollTables={scrollTables} wrapTables={wrapTables}>
+      {parts.map((part, index) => {
+        if (part.type === "widget") {
+          return <PosterWidget key={`w-${part.id}-${index}`} id={part.id} />;
+        }
+        const captionFallback = runningHeading;
+        const heading = lastMarkdownHeading(part.value);
+        if (heading) runningHeading = heading;
+        return (
+          <Markdown
+            key={`m-${index}`}
+            scrollTables={scrollTables}
+            wrapTables={wrapTables}
+            captionFallback={captionFallback}
+          >
             {part.value}
           </Markdown>
-        ),
-      )}
+        );
+      })}
     </div>
   );
 }
