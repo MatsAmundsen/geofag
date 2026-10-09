@@ -22,6 +22,7 @@ import {
   pts,
   smooth,
   smoothPath,
+  pickStep,
   useInView,
   useStepClock,
   useTicker,
@@ -231,6 +232,7 @@ export function HjulstromInteraktiv({
         caption ??
         "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Leire krever over 100 cm/s fordi kornene henger sammen (kohesjon)."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <>
@@ -834,12 +836,13 @@ export function Forvitringsformer({
         caption ??
         "Forvitring bryter ned berget der det ligger, uten transport. Trykkavlastning og rotsprengning sprenger berget mekanisk. Karbonsyre og hydrolyse endrer mineralene kjemisk. Frostsprengning har en egen figur nedenfor."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <StegVelger
           labels={FV_STEPS}
           step={step}
-          onStep={clock.setStep}
+          onStep={pickStep(clock, motion)}
           label="Velg forvitringsform"
         />
       }
@@ -1439,9 +1442,15 @@ export function ElvaFraKildeTilMunning({
         caption ??
         "Fra kilden til havet blir fallet stadig mindre. Øverst graver elva seg ned og lager V-dal. Lenger ned eroderer den sideveis og lager meandere. Ved munningen stanser strømmen, og kornene avsettes i et delta."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
-        <StegVelger labels={EL_STEPS} step={step} onStep={clock.setStep} label="Velg del av elva" />
+        <StegVelger
+          labels={EL_STEPS}
+          step={step}
+          onStep={pickStep(clock, motion)}
+          label="Velg del av elva"
+        />
       }
       status={EL_STATUS[step - 1]}
       labels={labels}
@@ -1834,12 +1843,13 @@ export function MeanderOgKroksjo({
         caption ??
         "Elva eroderer i yttersvingen og avsetter sand og grus i innersvingen, så svingene vandrer og blir stadig mer buktende. Under en storflom kan elva bryte gjennom den smale meanderhalsen. Svingen som blir liggende igjen, er en kroksjø."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <StegVelger
           labels={ME_STEPS}
           step={step}
-          onStep={clock.setStep}
+          onStep={pickStep(clock, motion)}
           label="Velg steg i meanderen"
         />
       }
@@ -2130,12 +2140,13 @@ export function GilbertDelta({
         caption ??
         "Der elva møter stille vann, sorteres kornene: grus og grov sand blir liggende på deltaflaten (topplag), sand raser ned fronten i skrå lag (forlag), og silt og leire legger seg lengst ute (bunnlag). Slik bygges deltaet utover."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <StegVelger
           labels={DE_STEPS}
           step={step}
-          onStep={clock.setStep}
+          onStep={pickStep(clock, motion)}
           label="Velg steg i deltaet"
         />
       }
@@ -2378,12 +2389,13 @@ export function LandskapBlokk({
         caption ??
         "Vidda er den gamle delen av landskapet. Fjordene og U-dalene ble gravd ut av breer under istidene, og strandflaten ligger som en lav brem av øyer og skjær langs kysten."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <StegVelger
           labels={LS_STEPS}
           step={step}
-          onStep={clock.setStep}
+          onStep={pickStep(clock, motion)}
           label="Velg steg i landskapet"
         />
       }

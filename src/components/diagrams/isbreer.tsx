@@ -23,8 +23,8 @@ import {
   smooth,
   smoothPath,
   useInView,
+  pickStep,
   useStepClock,
-  useNarrow,
   useTicker,
 } from "./isbre-kit";
 
@@ -247,6 +247,7 @@ export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: Isb
         caption ??
         "Isen hoper seg opp i næringsområdet, siger nedover og smelter i tæringsområdet. Der isfronten står, går isen over til smeltevann."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <Skyver
@@ -765,12 +766,13 @@ export function VdalTilUdal({
         caption ??
         "En elvedal med V-form blir gravd ut av isen til en U-dal med bratte sider og bred bunn. Sidedalen blir liggende igjen som hengende sidedal. Der bunnen ligger under havnivå, blir dalen en fjord."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <StegVelger
           labels={VU_STEPS}
           step={step}
-          onStep={clock.setStep}
+          onStep={pickStep(clock, motion)}
           label="Velg steg i dalutviklingen"
         />
       }
@@ -1125,9 +1127,15 @@ export function BotnEggTind({
         caption ??
         "Botner graves ut av små breer. Mellom to botner står det igjen en egg, og der flere botner møtes, står det igjen en tind."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
-        <StegVelger labels={BT_STEPS} step={step} onStep={clock.setStep} label="Velg steg" />
+        <StegVelger
+          labels={BT_STEPS}
+          step={step}
+          onStep={pickStep(clock, motion)}
+          label="Velg steg"
+        />
       }
       status={BT_STATUS[step - 1]}
       labels={labels}
@@ -1508,9 +1516,15 @@ export function Avsetningsformer({
         caption ??
         "Endemorenen dannes ved isfronten, eskeren i en smeltevannstunnel under isen og drumlinen under isen i bevegelsesretningen. Flyttblokken blir liggende når isen smelter, og breelvdeltaet bygges der smeltevannet møter vann."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
-        <StegVelger labels={AV_STEPS} step={step} onStep={clock.setStep} label="Velg fase" />
+        <StegVelger
+          labels={AV_STEPS}
+          step={step}
+          onStep={pickStep(clock, motion)}
+          label="Velg fase"
+        />
       }
       status={AV_STATUS[step - 1]}
       labels={labels}
@@ -1797,13 +1811,14 @@ export function Frostsprengning({
         caption ??
         "1. Vann renner inn i en sprekk. 2. Vannet fryser og utvider seg. 3. Sprekken blir større. 4. Etter mange runder løsner en bit av berget."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <>
           <StegVelger
             labels={FR_STEPS}
             step={step}
-            onStep={clock.setStep}
+            onStep={pickStep(clock, motion)}
             label="Velg steg i frostsprengningen"
           />
         </>
@@ -1993,7 +2008,6 @@ export function IsostasiSnitt({
   const { step, phase } = clock;
   const [thick, setThick] = useState(1);
   const st = isState(step, phase);
-  const narrow = useNarrow();
   const Wmax = 120 * thick;
   const w = (x: number) => Wmax * st.dep * isBell(x);
   const surf = (x: number) => isLand(x) + w(x);
@@ -2187,10 +2201,12 @@ export function IsostasiSnitt({
       badge: [xs + 120, isLand(xs + 120) + 40],
     });
   }
-  // smal skjerm, steg 4: utsnittet viser kysten, ikke litosfæren og astenosfæren
+  // smal figur, steg 4: utsnittet viser kysten, ikke litosfæren og astenosfæren
   const shown =
-    narrow && step === 4
-      ? labels.filter((l) => l.text !== "Litosfære" && l.text !== "Seig astenosfære")
+    step === 4
+      ? labels.map((l) =>
+          l.text === "Litosfære" || l.text === "Seig astenosfære" ? { ...l, narrowHide: true } : l,
+        )
       : labels;
   return (
     <IsbreFigur
@@ -2201,13 +2217,14 @@ export function IsostasiSnitt({
         caption ??
         "Isen presser landet ned. Når isen smelter, kommer havet inn, og deretter hever landet seg sakte. Marin grense er det høyeste nivået havet nådde."
       }
+      playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <>
           <StegVelger
             labels={IS_STEPS}
             step={step}
-            onStep={clock.setStep}
+            onStep={pickStep(clock, motion)}
             label="Velg steg i isostasien"
           />
           <Skyver
@@ -2217,8 +2234,8 @@ export function IsostasiSnitt({
             step={0.05}
             value={thick}
             onChange={setThick}
-            ends={["tynn", "tykk"]}
             valueLabel={thick < 0.5 ? "tynn is" : thick < 0.8 ? "middels" : "tykk is"}
+            ends={["tynn", "tykk"]}
           />
         </>
       }

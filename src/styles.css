@@ -245,3 +245,45 @@
     animation-play-state: paused !important;
   }
 }
+
+/* Skyvere i figurene: tydelig spor (kontrast > 3:1 mot kortet) og stort grep (24 px). */
+.figur-skyver {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  background: transparent;
+}
+.figur-skyver::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #8b9aa6;
+}
+.figur-skyver::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #8b9aa6;
+}
+.figur-skyver::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  margin-top: -9px;
+  border-radius: 999px;
+  background: #6fb3b8;
+  border: 3px solid #0b1014;
+  box-shadow: 0 0 0 1px #e8eef2;
+}
+.figur-skyver::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #6fb3b8;
+  border: 3px solid #0b1014;
+  box-shadow: 0 0 0 1px #e8eef2;
+}
+.figur-skyver:focus-visible {
+  outline: 2px solid #6fb3b8;
+  outline-offset: 2px;
+  border-radius: 999px;
+}

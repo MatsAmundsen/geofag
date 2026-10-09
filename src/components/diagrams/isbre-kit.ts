@@ -100,6 +100,26 @@ export function useNarrow() {
   );
 }
 
+/**
+ * Bredden (CSS-piksler) til et element, målt med ResizeObserver. 0 før første måling
+ * (og under serverrendering), slik at kallestedet kan falle tilbake på vindusbredden.
+ */
+export function useBoxWidth<T extends Element>(): [RefObject<T | null>, number] {
+  const ref = useRef<T | null>(null);
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const measure = () => setWidth(Math.round(el.getBoundingClientRect().width));
+    measure();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  return [ref, width];
+}
+
 /** Er figuren på skjermen? Animasjonen går bare da. */
 export function useInView<T extends Element>(): [RefObject<T | null>, boolean] {
   const ref = useRef<T | null>(null);
@@ -124,7 +144,8 @@ export function useInView<T extends Element>(): [RefObject<T | null>, boolean] {
 
 /**
  * Steg med framdrift. `phase` går fra 0 til 1 i løpet av et steg mens animasjonen spiller.
- * Når brukeren velger et steg mens animasjonen står stille, vises sluttbildet (phase = 1).
+ * Når brukeren velger et steg, vises sluttbildet (phase = 1); bruk `pickStep` så animasjonen
+ * samtidig settes på pause.
  */
 export function useStepClock(
   count: number,
@@ -163,9 +184,19 @@ export function useStepClock(
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
   }, [running, count, stepMs, total]);
-  const setStep = (step: number) =>
-    setState((s) => ({ step, phase: running ? 0 : 1, loops: s.loops }));
+  const setStep = (step: number) => setState((s) => ({ step, phase: 1, loops: s.loops }));
   return { step: state.step, phase: Math.min(1, state.phase), loops: state.loops, setStep };
+}
+
+/** Brukeren velger et steg: vis steget og sett animasjonen på pause hvis den spiller. */
+export function pickStep(
+  clock: { setStep: (step: number) => void },
+  motion: { playing: boolean; toggle: () => void },
+) {
+  return (step: number) => {
+    clock.setStep(step);
+    if (motion.playing) motion.toggle();
+  };
 }
 
 /** Løpende tid i sekunder mens `running` er sann (brukes til partikler og strømmer). */
