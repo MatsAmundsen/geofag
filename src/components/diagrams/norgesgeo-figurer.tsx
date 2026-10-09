@@ -35,6 +35,11 @@ export type NorgesGeoFigurProps = {
 
 /* ---------- små verktøy ---------- */
 
+/** Stegknappene med 14 px tekst på smal visning, uten å endre kitet (display: contents påvirker ikke oppsettet). */
+function StegRamme({ small, children }: { small: boolean; children: ReactNode }) {
+  return <div className={small ? "contents [&_button]:text-sm" : "contents"}>{children}</div>;
+}
+
 /** Avrunder til én desimal, så server og nettleser skriver like tall i SVG-en. */
 const n1 = (v: number) => Math.round(v * 10) / 10;
 const fx = (v: number) => n1(v).toString();
@@ -96,7 +101,7 @@ type KartTilstand = {
 /** Dreiepunkt for Grønland i kartkoordinater. */
 const KART_PIVOT = [-150, -60] as const;
 /** Kontinentene samlet (før Atlanterhavet åpnet seg). Skjematisk tilpasning, ikke en rekonstruksjon. */
-export const KART_SAMLET = { dx: 165, dy: 55, rot: -24 };
+const KART_SAMLET = { dx: 165, dy: 55, rot: -24 };
 
 /** Punkt i Laurentia-koordinater flyttet slik kartet viser det. */
 function laurentiaPunkt(p: readonly [number, number], k: KartTilstand): [number, number] {
@@ -508,7 +513,7 @@ export function KaledonideneFigur({
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
-        toolbar={<StegVelger labels={KA_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" />}
+        toolbar={<StegRamme small={small}><StegVelger labels={KA_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" /></StegRamme>}
         status={KA_STATUS[step - 1]}
         labels={labels}
         keys={keys}
@@ -744,7 +749,7 @@ export function OslograbenFigur({
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
-        toolbar={<StegVelger labels={OG_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" />}
+        toolbar={<StegRamme small={small}><StegVelger labels={OG_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" /></StegRamme>}
         status={OG_STATUS[step - 1]}
         labels={labels}
         keys={keys}
@@ -1051,18 +1056,22 @@ export function NorskehavetFigur({
   const jm = kp(KART_STED.janMayen);
   const isl = kp(KART_STED.island);
   const S = (x: number, y: number): [number, number] => [sec.x + x, sec.y + y];
+  // Kartetiketten «Grønland» glir jevnt opp (t 1,0–1,1) før «Spredningsrygg» dukker opp ved t > 1,1, så de aldri ligger oppå hverandre.
+  const grDy = n1(lerp(5, -26, smooth(clamp((t - 1) / 0.1))));
+  // «Spredningsrygg» glir jevnt fra under til over midtpunktet når Jan Mayen kommer til (t 2,5–2,7).
+  const ryDy = n1(lerp(4, -14, smooth(clamp((t - 2.5) / 0.2))));
   const labels: Lab[] = [
-    { text: "Grønland", x: gr[0], y: gr[1] + (t > 2.6 ? -14 : 5), color: "#f2e3c6", anchor: "middle", badge: [gr[0], gr[1]] },
-    { text: "Norge", x: no[0], y: no[1] + 5, color: "#f2e3c6", anchor: "middle", badge: [no[0], no[1]] },
-    { text: "Grønland", x: S(40, 96)[0], y: S(40, 96)[1], color: "#e3cfae", badge: S(40, 90), narrowHide: false },
-    { text: "Norge", x: S(480, 96)[0], y: S(480, 96)[1], color: "#e8c0b8", anchor: "end", badge: S(480, 90) },
+    { text: small ? "Grønland (kart)" : "Grønland", x: gr[0], y: gr[1] + grDy, color: "#f2e3c6", anchor: "middle", badge: [gr[0], gr[1]] },
+    { text: small ? "Norge (kart)" : "Norge", x: no[0], y: no[1] + 5, color: "#f2e3c6", anchor: "middle", badge: [no[0], no[1]] },
+    { text: small ? "Grønland (snitt)" : "Grønland", x: S(40, 96)[0], y: S(40, 96)[1], color: "#e3cfae", badge: S(40, 90), narrowHide: false },
+    { text: small ? "Norge (snitt)" : "Norge", x: S(480, 96)[0], y: S(480, 96)[1], color: "#e8c0b8", anchor: "end", badge: S(480, 90) },
   ];
   if (t > 1.8) {
     const sb = kp([NH_NORGE[2][0] - 6, NH_NORGE[2][1] + 30]);
     labels.push({ text: "Sedimentbassenger", x: map.x + map.w - 8, y: map.y + (NH_WIN[3] * map.w) / NH_WIN[2] - 12, at: sb, color: "#e6d3a8", anchor: "end", size: 14, badge: [sb[0] + 14, sb[1] + 18] });
   }
   if (t > 1.1)
-    labels.push({ text: "Spredningsrygg", x: rMid[0] - 16, y: rMid[1] + (t > 2.6 ? -14 : 4), at: rMid, color: "#ffb08a", anchor: "end", badge: [rMid[0] + 22, rMid[1]] });
+    labels.push({ text: "Spredningsrygg", x: rMid[0] - 16, y: rMid[1] + ryDy, at: rMid, color: "#ffb08a", anchor: "end", badge: [rMid[0] + 22, rMid[1]] });
   if (t > 2.6)
     labels.push({ text: "Jan Mayen", x: jm[0] - 12, y: jm[1] + 5, at: jm, color: C.fg, anchor: "end", size: 14, badge: [jm[0] - 18, jm[1] + 10] });
   if (t > 2.9)
@@ -1109,13 +1118,15 @@ export function NorskehavetFigur({
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
         toolbar={
           <>
-            <StegVelger labels={NH_STAGES} step={stage + 1} onStep={(n) => set(n - 1)} label="Velg tid" />
+            <StegRamme small={small}>
+              <StegVelger labels={NH_STAGES} step={stage + 1} onStep={(n) => set(n - 1)} label="Velg tid" />
+            </StegRamme>
             <Skyver
               label="Tid"
               min={0}
               max={3}
-              step={0.01}
-              value={n1(t)}
+              step={0.05}
+              value={Math.round(t * 20) / 20}
               onChange={set}
               valueLabel={valueLabel}
               valueText={valueLabel}
