@@ -837,13 +837,7 @@ export function VdalTilUdal({
                 opacity={step === 1 ? 1 : 1 - iceLevel}
               />
             )}
-            {seaK > 0 ? (
-              <path
-                d={`M${wa} ${seaY} L${wb} ${seaY} L${wb + VU_E[0]} ${seaY + VU_E[1]} L${wa + VU_E[0]} ${seaY + VU_E[1]} Z`}
-                fill="#3d88ad"
-                opacity="0.85"
-              />
-            ) : null}
+            {/* Ingen skrå vannflate bakover: vannflaten står i tverrsnittsplanet, på samme høyde som havnivå-linja. */}
             <path d={front} fill={d.url.rock} />
             <path d={front} fill={d.url.strata} />
             <path d={`M${pts(ground)}`} fill="none" stroke="#a3ab98" strokeWidth="1.6" />
@@ -1955,7 +1949,9 @@ function isLand(x: number) {
   // jevnt stigende land som flater ut innover: ingen småtopper under isen
   return IS_SEA - 125 * (1 - Math.exp(-(x - 290) / 180));
 }
-const isBell = (x: number) => smooth((x + 60) / 700);
+// Nedpressingen øker jevnt innover mot den tykkeste delen av isen (til høyre), så avstanden
+// mellom landet uten is (stiplet) og det nedpressede landet vokser med istykkelsen.
+const isBell = (x: number) => clamp((x + 100) / 1060);
 const IS_REMARK =
   "Forenklet: her holdes globalt havnivå fast for å vise isostatisk nedpressing. I virkeligheten var verdenshavene ca. 125–130 m lavere under siste istids maksimum.";
 const IS_FRONT0 = 300;
@@ -1998,7 +1994,7 @@ export function IsostasiSnitt({
   const [thick, setThick] = useState(1);
   const st = isState(step, phase);
   const narrow = useNarrow();
-  const Wmax = 95 * thick;
+  const Wmax = 120 * thick;
   const w = (x: number) => Wmax * st.dep * isBell(x);
   const surf = (x: number) => isLand(x) + w(x);
   // Istykkelse som vokser jevnt innover fra fronten (parabelprofil). Overflaten blir så
