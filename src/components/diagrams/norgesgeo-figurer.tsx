@@ -565,12 +565,20 @@ const OG_FAULTS = OG_BLOCKS.slice(1).map((b) => [b.top[0], b.bot[0]] as const);
 const OG_ERODE = 238;
 const OG_PLUTON = "M420 330 C418 290 440 246 482 238 C524 232 548 268 552 300 C556 336 532 352 488 356 C450 358 422 352 420 330 Z";
 
-/** Rombeporfyr: store rombeformede feltspatkrystaller i finkornet grunnmasse (deterministisk mønster). */
-const OG_RHOMBS = Array.from({ length: 11 }, (_, i) => {
+/** Rombeporfyr: store rombeformede feltspatkrystaller i finkornet grunnmasse (deterministisk mønster, enhetssirkel r = 60). */
+const OG_RHOMBS = Array.from({ length: 12 }, (_, i) => {
   const a = (i * 137.5 * Math.PI) / 180;
-  const r = 14 + ((i * 29) % 37);
-  return { x: n1(Math.cos(a) * r), y: n1(Math.sin(a) * r), rot: (i * 47) % 180, s: 7 + (i % 3) * 2 };
+  const r = 10 + 44 * Math.sqrt((i + 0.5) / 12);
+  const cx = Math.cos(a) * r;
+  const cy = Math.sin(a) * r;
+  const rot = ((i * 47) % 180) * (Math.PI / 180);
+  const L = 9 + (i % 3) * 2.5;
+  const H = L * 0.5;
+  // rombe: lang diagonal L, kort diagonal H
+  const pt = (u: number, v: number) => `${fx(cx + u * Math.cos(rot) - v * Math.sin(rot))} ${fx(cy + u * Math.sin(rot) + v * Math.cos(rot))}`;
+  return `M${pt(-L, 0)} L${pt(0, -H)} L${pt(L, 0)} L${pt(0, H)} Z`;
 });
+const OG_MATRIX = Array.from({ length: 46 }, (_, i) => [((i * 37) % 120) - 60, ((i * 53) % 120) - 60] as const);
 /** Larvikitt: grove, tettpakkede korn (enkelt mønster av femkanter). */
 const OG_GRAINS = Array.from({ length: 22 }, (_, i) => {
   const a = (i * 137.5 * Math.PI) / 180;
@@ -600,29 +608,14 @@ function Krystallinnfelt({ x, y, r, kind }: { x: number; y: number; r: number; k
         {kind === "rp" ? (
           <>
             <circle cx={x} cy={y} r={r} fill="#6e4440" />
-            {Array.from({ length: 40 }, (_, i) => (
-              <circle
-                key={i}
-                cx={n1(x + ((i * 37) % 120 - 60) * k)}
-                cy={n1(y + ((i * 53) % 120 - 60) * k)}
-                r={1.3}
-                fill="#8a5a52"
-              />
-            ))}
-            {OG_RHOMBS.map((q, i) => (
-              <rect
-                key={i}
-                x={n1(x + q.x * k - q.s * k)}
-                y={n1(y + q.y * k - q.s * 0.55 * k)}
-                width={n1(q.s * 2 * k)}
-                height={n1(q.s * 1.1 * k)}
-                fill="#e9dcc6"
-                stroke="#b9a68a"
-                strokeWidth="0.8"
-                transform={`rotate(${q.rot} ${n1(x + q.x * k)} ${n1(y + q.y * k)}) skewX(-28)`}
-                style={{ transformBox: "fill-box", transformOrigin: "center" }}
-              />
-            ))}
+            <g transform={`translate(${x} ${y}) scale(${k.toFixed(3)})`}>
+              {OG_MATRIX.map(([u, v], i) => (
+                <circle key={i} cx={u} cy={v} r={1.4} fill="#8a5a52" />
+              ))}
+              {OG_RHOMBS.map((d, i) => (
+                <path key={i} d={d} fill="#eadfca" stroke="#a8916f" strokeWidth={1} />
+              ))}
+            </g>
           </>
         ) : (
           <>
@@ -645,7 +638,7 @@ function Krystallinnfelt({ x, y, r, kind }: { x: number; y: number; r: number; k
   );
 }
 
-const OG_WIN: [number, number, number, number] = [70, 80, 190, 132];
+const OG_WIN: [number, number, number, number] = [50, 70, 230, 160];
 /** Oslofeltet på kartet: skjematisk omriss fra Langesund til Mjøsa. */
 const OG_FELT =
   "M150 177 L160 174 L168 166 L172 152 L170 138 L166 126 L158 122 L151 127 L150 140 L152 152 L149 165 Z";
@@ -688,7 +681,7 @@ export function OslograbenFigur({
     { text: "Grunnfjell", x: 40, y: 330, color: "#f0d6d0", badge: [200, 320] },
     { text: "Moho", x: 920, y: OG_MOHO + 28, at: [880, moho(880)], color: "#e6d3b4", anchor: "end", size: 14, badge: [900, OG_MOHO + 26] },
   ];
-  if (s.erode < 0.5)
+  if (step <= 2)
     labels.push({
       text: "Kambrosiluriske lag (kalkstein, skifer)",
       x: 40,
