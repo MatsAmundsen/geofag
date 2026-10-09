@@ -4,6 +4,7 @@ import { CmsGate } from "@/components/cms-gate";
 import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -263,7 +264,12 @@ function EditPost() {
                   <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Forhåndsvisning (sanntid)
                   </p>
-                  <div className="mt-3 max-h-[min(70vh,44rem)] overflow-y-auto rounded-2xl border border-border bg-card p-6">
+                  <ScrollFrame
+                    axis="y"
+                    label="Forhåndsvisning"
+                    className="mt-3"
+                    frameClassName="max-h-[min(70vh,44rem)] rounded-2xl border border-border bg-card p-6"
+                  >
                     <h2 className="font-display text-3xl font-medium tracking-tight">
                       {title || "Uten tittel"}
                     </h2>
@@ -280,7 +286,7 @@ function EditPost() {
                     <div className="mt-6">
                       <PosterBody>{previewBody}</PosterBody>
                     </div>
-                  </div>
+                  </ScrollFrame>
                 </div>
               </div>
 

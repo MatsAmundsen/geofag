@@ -191,6 +191,7 @@ function VaerkartPage() {
 
       <TableScroll
         caption="Frontenes symboler og dynamikk"
+        visuallyHiddenCaption
         className="my-4"
         tableClassName="w-full text-left text-sm"
       >

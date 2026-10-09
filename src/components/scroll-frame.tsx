@@ -13,6 +13,7 @@ export function ScrollFrame({
   className,
   frameClassName,
   fade,
+  axis = "x",
 }: {
   /** Accessible name when no external element labels the region. */
   label?: string;
@@ -23,6 +24,8 @@ export function ScrollFrame({
   frameClassName?: string;
   /** Colour used to fade the scroll-edge shadow into the surface behind the frame. */
   fade?: string;
+  /** Horizontal regions scroll sideways. Vertical regions scroll up and down. */
+  axis?: "x" | "y";
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const hintId = useId();
@@ -32,7 +35,9 @@ export function ScrollFrame({
     const el = scrollerRef.current;
     if (!el) return;
     const update = () => {
-      const next = el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 1;
+      const wide = el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 1;
+      const tall = el.clientHeight > 0 && el.scrollHeight > el.clientHeight + 1;
+      const next = axis === "y" ? tall || wide : wide;
       setOverflowing((prev) => (prev === next ? prev : next));
     };
     update();
@@ -40,7 +45,7 @@ export function ScrollFrame({
     observer.observe(el);
     for (const child of Array.from(el.children)) observer.observe(child);
     return () => observer.disconnect();
-  }, []);
+  }, [axis]);
 
   return (
     <div
@@ -49,15 +54,18 @@ export function ScrollFrame({
       data-overflow={overflowing ? "true" : "false"}
       style={fade ? ({ "--scroll-fade": fade } as React.CSSProperties) : undefined}
     >
-      <p className="scroll-frame__hint" aria-hidden="true">
-        Sveip →
-      </p>
+      {axis === "x" ? (
+        <p className="scroll-frame__hint" aria-hidden="true">
+          Sveip →
+        </p>
+      ) : null}
       <span id={hintId} className="sr-only">
-        Rull sideveis med piltastene.
+        {axis === "y" ? "Rull med piltastene." : "Rull sideveis med piltastene."}
       </span>
       <div
         ref={scrollerRef}
         className={cn("scroll-frame__scroller", frameClassName)}
+        data-axis={axis}
         tabIndex={overflowing ? 0 : undefined}
         role={overflowing ? "region" : undefined}
         aria-label={overflowing && !labelledBy ? label : undefined}

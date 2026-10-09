@@ -82,6 +82,8 @@ function labelParagraph(node: HastNode): string {
 /**
  * Give each table a caption from the heading already in the chapter, or from a
  * short bold label immediately above the table (for example «Magmatyper»).
+ * The caption stays in the accessibility tree and is visually hidden, because
+ * that heading or label is already on the page.
  */
 function rehypeTableCaptions(fallback: string) {
   return () => (tree: HastNode) => {
@@ -111,7 +113,7 @@ function rehypeTableCaptions(fallback: string) {
             kids.unshift({
               type: "element",
               tagName: "caption",
-              properties: pendingLabel ? { className: ["sr-only"] } : {},
+              properties: { className: ["sr-only"] },
               children: [{ type: "text", value: text }],
             });
             child.children = kids;

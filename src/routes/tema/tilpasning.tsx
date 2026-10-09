@@ -264,6 +264,7 @@ function TilpasningPage() {
 
           <TableScroll
             caption="Den rasjonelle formelen for overvann: Q = C · I · A"
+            visuallyHiddenCaption
             className="rounded-xl border border-border bg-card/70 p-3 pt-2 text-xs"
             tableClassName="w-full text-left"
             fade="var(--color-card)"

@@ -254,6 +254,7 @@ function CoriolisPage() {
 
       <TableScroll
         caption="Coriolisparameteren og breddegrad: f = 2Ω sin φ"
+        visuallyHiddenCaption
         className="my-4"
         tableClassName="w-full text-left text-sm"
       >

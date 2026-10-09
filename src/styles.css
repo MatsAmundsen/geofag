@@ -248,18 +248,18 @@
 
 /*
  * WCAG 1.4.1: links in running text and source lists are not colour alone.
- * Navigation, buttons and cards sit outside these elements, so they keep
- * their own treatment. The focus ring from :focus-visible stays.
+ * Button links carry .no-underline. Card links are flex containers or wrap a
+ * heading, paragraph or image, so they stay plain. The focus ring stays.
  */
-article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline) {
+article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)) {
   text-decoration-line: underline;
   text-underline-offset: 0.18em;
   text-decoration-thickness: 1px;
   text-decoration-skip-ink: auto;
 }
 
-article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):hover,
-article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):focus-visible {
+article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):hover,
+article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):focus-visible {
   text-decoration-thickness: 2px;
 }
 
@@ -280,6 +280,12 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):focu
     linear-gradient(to left, var(--scroll-fade), transparent) right center / 2rem 100% no-repeat local,
     radial-gradient(farthest-side at 0% 50%, rgba(0, 0, 0, 0.45), transparent) left center / 0.9rem 100% no-repeat scroll,
     radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.45), transparent) right center / 0.9rem 100% no-repeat scroll;
+}
+
+.scroll-frame__scroller[data-axis="y"] {
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: none;
 }
 
 .scroll-frame__scroller:focus-visible {
