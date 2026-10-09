@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { NorwayTectonicsHistoryDiagram, OfiolittSnittDiagram } from "@/components/diagrams";
+import { IsostasiSnitt } from "@/components/diagrams/isbreer";
 import { KaledonideneFigur, NorskehavetFigur, OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
@@ -271,6 +272,11 @@ function NorgesGeologiPage() {
             </p>
           </div>
         </div>
+
+        <IsostasiSnitt
+          heading="Glasial isostasi og marin grense"
+          caption="Under siste istid presset en opptil 3 km tykk innlandsis landet ned i den seige astenosfæren. Da isen smeltet, flommet havet inn over det nedtrykte landet og avsatte saltvannsleire. Etter hvert som landet hevet seg, ble den gamle havbunnen tørt land, opp til marin grense (opptil 220 m over dagens havnivå på Østlandet). Forenklet: Snittet er skjematisk, og nedpressingen er sterkt overdrevet."
+        />
 
         <OrdBoks
           ord="Isostasi (og postglasial landheving)"
