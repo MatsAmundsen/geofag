@@ -11,7 +11,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
-import { IsbreFigur, NARROW_FIGURE_PX, Polys, Skyver, StegVelger, type Lab } from "./isbre-figur";
+import { IsbreFigur, Polys, Skyver, StegVelger, type Lab } from "./isbre-figur";
 import {
   P,
   clamp,
@@ -27,6 +27,7 @@ import {
   pickStep,
   useStepClock,
   useTicker,
+  useViewportHeight,
 } from "./isbre-kit";
 
 export type IsbreFigurProps = {
@@ -1662,6 +1663,13 @@ function crackGeom(step: number, phase: number) {
   return { mouth, tip, at, n, w0 };
 }
 
+/** Bredde der portrettutsnittet fortsatt er lavere enn en vanlig telefonskjerm. */
+const FROST_STACK_MAX_W = 480;
+const FROST_STACK_W = 574;
+const FROST_STACK_H = 968;
+/** Stegknapper, statuslinje og margin, så tegning og kontroller får plass sammen. */
+const FROST_STACK_CHROME = 160;
+
 export function Frostsprengning({
   heading = "Frostsprengning",
   caption,
@@ -1670,8 +1678,17 @@ export function Frostsprengning({
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [probeRef, probeW] = useBoxWidth<HTMLDivElement>();
-  // Samme bredde som figurens indre (px-2 / sm:px-5). false til måling, så server og hydrering er like.
-  const stack = probeW > 0 && probeW < NARROW_FIGURE_PX;
+  const viewportH = useViewportHeight();
+  // Portrettstabling bare når panelet er telefonbredt og hele tegningen pluss knappene
+  // får plass i vinduet. Ved 640 px er figuren ca. 550 px bred, og utsnittet 574×968
+  // blir da ca. 930 px høyt — for høyt til at knapper og figur vises samtidig.
+  // 0 til måling, så server og hydrering er like (side om side).
+  const stackedH = probeW * (FROST_STACK_H / FROST_STACK_W);
+  const stack =
+    probeW > 0 &&
+    probeW <= FROST_STACK_MAX_W &&
+    viewportH > 0 &&
+    stackedH + FROST_STACK_CHROME <= viewportH;
   const running = motion.playing && visible;
   const clock = useStepClock(4, running, 2600, 1300, initialStep);
   const t = useTicker(running);
@@ -1879,10 +1896,9 @@ export function Frostsprengning({
         labels={labels}
         notes={["Skjematisk, ikke i målestokk"]}
         viewBox="0 0 960 500"
-        narrowViewBox="0 8 574 968"
-        forceNarrow={stack}
+        narrowViewBox={stack ? "0 8 574 968" : undefined}
       >
-        {({ d, m, narrow }) => (
+        {({ d, m }) => (
           <g
             className={motion.motionClass}
             data-playing={motion.playing ? "yes" : "no"}
@@ -1891,14 +1907,14 @@ export function Frostsprengning({
           >
             <rect
               x="0"
-              y={narrow ? 8 : 0}
-              width={narrow ? 574 : 960}
-              height={narrow ? 960 : 500}
+              y={stack ? 8 : 0}
+              width={stack ? FROST_STACK_W : 960}
+              height={stack ? 960 : 500}
               fill={d.url.sky}
               rx="10"
             />
             <rect x="12" y="44" width="550" height="448" rx="10" fill="#132430" stroke={C.dim} />
-            <g transform={narrow ? "translate(-474 464)" : undefined}>
+            <g transform={stack ? "translate(-474 464)" : undefined}>
               <rect x="572" y="44" width="378" height="448" rx="10" fill="#132430" stroke={C.dim} />
             </g>
             <path d={rock} fill={d.url.rock} />
@@ -1977,8 +1993,8 @@ export function Frostsprengning({
               />
               <line x1="-10" y1="40" x2="10" y2="40" stroke={C.fg} strokeWidth="1.5" />
             </g>
-            {/* fjellside. På smal skjerm stables panelet under nærbildet, samme forskyvning som utsnittet. */}
-            <g transform={narrow ? "translate(-474 464)" : undefined}>
+            {/* fjellside. På telefon stables panelet under nærbildet, samme forskyvning som utsnittet. */}
+            <g transform={stack ? "translate(-474 464)" : undefined}>
               <path d={cliff} fill={d.url.rock} />
               <path d={cliff} fill={d.url.strata} />
               <path d={talus} fill="#8b8676" />

@@ -123,6 +123,23 @@ export function useNarrow() {
   );
 }
 
+function subscribeViewport(onChange: () => void) {
+  window.addEventListener("resize", onChange);
+  return () => window.removeEventListener("resize", onChange);
+}
+
+/**
+ * Vindushøyde i CSS-piksler. 0 under serverrendering og hydrering, så første bilde
+ * er likt på server og klient. Brukes når et utsnitt bare skal slå inn hvis det får plass.
+ */
+export function useViewportHeight() {
+  return useSyncExternalStore(
+    subscribeViewport,
+    () => window.innerHeight,
+    () => 0,
+  );
+}
+
 /**
  * Bredden (CSS-piksler) til et element, målt med ResizeObserver. 0 før første måling
  * (og under serverrendering), slik at kallestedet kan falle tilbake på vindusbredden.

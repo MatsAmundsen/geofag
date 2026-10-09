@@ -726,7 +726,7 @@ export const NARROW_FIGURE_PX = 760;
 /**
  * På smal skjerm skal synlige streker (opptil 4 viewBox-enheter) bli minst så mange CSS-piksler.
  * Omrissene i figurene er ofte 1,2–2 enheter, ikke 3, så en felles faktor på 3-enhetsstreken
- * etterlater silhuetten tynn. Tykkere streker beholder vekten. Pilspisser følger strekbredden.
+ * etterlater silhuetten tynn. Tykkere streker beholder vekten. Pilspisser følger strekbredden og løftes til minst 12 px.
  */
 const NARROW_STROKE_PX = 1.65;
 
@@ -750,6 +750,28 @@ function boostedStroke(base: number, scale: number) {
   const tiered =
     base <= 2 ? floor : base <= 4 ? Math.max(floor, NARROW_STROKE_PX + (base - 2) * 0.28) : floor;
   return Math.round((tiered / scale) * 100) / 100;
+}
+
+/** Pilspissen fyller 11 av 12 enheter i markørens viewBox. */
+const ARROW_TIP = 11 / 12;
+/** Synlig pilspiss på smal skjerm, i CSS-piksler. */
+const ARROW_MIN_PX = 12;
+/** Øvre grense så spissene ikke blir klumpete når streken er tynn. */
+const ARROW_MARKER_CAP = 9;
+
+function markerRefId(ref: string | null) {
+  if (!ref) return null;
+  const match = /url\(\s*#([^)]+?)\s*\)/.exec(ref);
+  return match ? match[1] : null;
+}
+
+/** markerWidth slik at (11/12) × markerWidth × strekbredde i CSS-piksler er minst 12. */
+function markerUnitsFor(base: number, strokeCss: number) {
+  if (!(strokeCss > 0)) return base;
+  const need = ARROW_MIN_PX / (ARROW_TIP * strokeCss);
+  if (need <= base + 0.05) return base;
+  const rounded = Math.ceil(need * 10) / 10;
+  return Math.min(ARROW_MARKER_CAP, Math.max(base, rounded));
 }
 
 export function IsbreFigur({
@@ -790,7 +812,7 @@ export function IsbreFigur({
   /** Eget utsnitt når figuren er smal (samme koordinater, bare beskåret). */
   narrowViewBox?: string;
   /**
-   * Overstyrer smal/bred når figuren selv må vite det før den tegnes (frost stables).
+   * Overstyrer smal/bred når figuren selv må vite det før den tegnes.
    * Uten denne brukes figurens egen bredde, og vindusbredden før første måling.
    */
   forceNarrow?: boolean;
@@ -810,6 +832,7 @@ export function IsbreFigur({
         : narrowWindow;
   const svgNode = useRef<SVGSVGElement | null>(null);
   const strokeMemo = useRef(new WeakMap<SVGElement, { base: number; boost: number }>());
+  const markerMemo = useRef(new WeakMap<SVGElement, { base: number; units: number }>());
   const strokesBoosted = useRef(false);
   const setSvgRef = useCallback(
     (node: SVGSVGElement | null) => {
@@ -856,6 +879,36 @@ export function IsbreFigur({
         el.setAttribute("stroke-width", String(Math.round(next * 100) / 100));
       memo.set(el, { base, boost });
       if (Math.abs(boost - 1) > 0.02) any = true;
+    }
+    const markerMin = new Map<string, number>();
+    if (active) {
+      for (const el of nodes) {
+        const sw = Number(el.getAttribute("stroke-width"));
+        if (!Number.isFinite(sw)) continue;
+        const css = sw * scale;
+        for (const attr of ["marker-end", "marker-start", "marker-mid"]) {
+          const id = markerRefId(el.getAttribute(attr));
+          if (!id) continue;
+          const prevMin = markerMin.get(id);
+          if (prevMin == null || css < prevMin) markerMin.set(id, css);
+        }
+      }
+    }
+    for (const node of svg.querySelectorAll("marker")) {
+      if (!(node instanceof SVGElement)) continue;
+      const raw = Number(node.getAttribute("markerWidth"));
+      if (!Number.isFinite(raw)) continue;
+      const prev = markerMemo.current.get(node);
+      const base = prev && Math.abs(raw - prev.units) < 0.05 ? prev.base : raw;
+      const css = markerMin.get(node.id);
+      const units = active && css != null ? markerUnitsFor(base, css) : base;
+      if (Math.abs(raw - units) > 0.02) {
+        const text = String(units);
+        node.setAttribute("markerWidth", text);
+        node.setAttribute("markerHeight", text);
+      }
+      markerMemo.current.set(node, { base, units });
+      if (Math.abs(units - base) > 0.02) any = true;
     }
     strokesBoosted.current = any;
   });
