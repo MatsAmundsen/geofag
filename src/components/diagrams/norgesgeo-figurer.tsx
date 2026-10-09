@@ -369,7 +369,8 @@ function KaKollisjon({
         </clipPath>
       </defs>
       <path d={mantle} fill={d.url.astheno} />
-      <g clipPath={`url(#${clipId})`}>
+      {/* klippet av overflaten: konturene over overflaten er usynlige (data-nocheck) */}
+      <g clipPath={`url(#${clipId})`} data-nocheck="">
         <path d={balt} fill="#8c6d68" />
         <path d={balt} fill={d.url.strata} />
         {[0, 1, 2].map((k) => (
@@ -431,7 +432,7 @@ export function KaledonideneFigur({
       { text: "Baltika", x: Math.min(924, s.bx + 190), y: 232, color: "#e8c0b8", anchor: "middle", badge: [Math.min(900, s.bx + 190), 240] },
       { text: "Iapetushavet", x: lerp(330, s.bx, 0.55), y: 336, color: "#bfe0ef", anchor: "middle", size: 15, badge: [lerp(330, s.bx, 0.55), 330] },
       { text: "Øybue", x: 236, y: 214, at: [250, 262], color: C.fg, anchor: "middle", badge: [236, 226] },
-      { text: "Havbunnen synker ned i mantelen", x: 150, y: 520, at: [270, 420], color: C.warm, badge: [230, 460] },
+      { text: "Havbunnen synker ned i mantelen", x: 300, y: 560, at: [221, 426], color: C.warm, badge: [262, 450] },
       { text: "Grunnfjell", x: 900, y: 380, color: "#f0d6d0", anchor: "end", badge: [900, 372] },
     );
     if (s.obd > 0.4)
@@ -454,7 +455,7 @@ export function KaledonideneFigur({
         { text: "Laurentia", x: 36, y: 232, color: "#e3cfae", badge: [60, 240] },
         { text: "Kaledonidene", x: 452, y: 104, at: [452, kaMountain(452) + 6], color: C.fg, anchor: "middle", size: 17, weight: 700, badge: [452, 112] },
         { text: "Skyvedekker skyves østover", x: 920, y: 254, at: [760, 306], color: C.fg, anchor: "end", badge: [790, 286] },
-        { text: "Regional metamorfose: gneis, glimmerskifer, amfibolitt", x: 48, y: 560, at: [400, 476], color: "#f4b08f", badge: [360, 520] },
+        { text: "Metamorfose: gneis, glimmerskifer, amfibolitt", x: 940, y: 588, at: [420, 476], color: "#f4b08f", anchor: "end", badge: [360, 520] },
       );
       if (s.thrust > 0.6)
         labels.push({
@@ -470,7 +471,7 @@ export function KaledonideneFigur({
       labels.push(
         { text: "Atlanterhavet", x: 150, y: 336, color: "#bfe0ef", anchor: "middle", badge: [150, 330] },
         { text: "Erodert bort", x: 452, y: 104, at: [452, kaMountain(452)], color: C.fg, anchor: "middle", badge: [452, 112] },
-        { text: "Jotundekket (gabbro, anortositt, granulitt)", x: 300, y: 210, at: [560, 232], color: "#c8cbef", badge: [560, 200] },
+        { text: "Jotundekket (gabbro, anortositt, granulitt)", x: 940, y: 588, at: [560, 240], color: "#c8cbef", anchor: "end", badge: [560, 200] },
         { text: "Rester av skyvedekker", x: 920, y: 250, at: [745, 284], color: C.fg, anchor: "end", badge: [760, 262] },
       );
     }
@@ -713,8 +714,8 @@ export function OslograbenFigur({
     labels.push(
       { text: "Larvikitt i dagen", x: 480, y: 186, at: [482, surfToday(482) + 6], color: "#b9d3ee", anchor: "middle", weight: 700, badge: [482, 210] },
       { text: "Rombeporfyr", x: 300, y: 186, at: [380, surfToday(380) + 10], color: "#e4b7a6", anchor: "middle", badge: [372, 214] },
-      { text: "Kambrosilur", x: 920, y: 290, at: [600, 262], color: "#d7e1e6", anchor: "end", badge: [640, 280] },
-      { text: "Forkastningskant mot grunnfjellet", x: 920, y: 200, at: [632, surfToday(632)], color: C.fg, anchor: "end", badge: [690, 224] },
+      { text: "Kambrosilur", x: 920, y: 296, at: [600, 262], color: "#d7e1e6", anchor: "end", badge: [640, 280] },
+      { text: "Forkastningskant mot grunnfjellet", x: 920, y: 336, at: [632, surfToday(632) + 4], color: C.fg, anchor: "end", badge: [690, 224] },
     );
   if (showRocks)
     labels.push(
@@ -769,7 +770,8 @@ export function OslograbenFigur({
               ))}
             </defs>
             <path d={band(moho, () => 560, 0, 960, 8)} fill={P.litho} />
-            <g clipPath={`url(#${uid}-g)`}>
+            {/* klippet av blokkene og overflaten: konturene utenfor er usynlige (data-nocheck) */}
+            <g clipPath={`url(#${uid}-g)`} data-nocheck="">
               {OG_BLOCKS.map((b, i) => (
                 <g key={i} clipPath={`url(#${uid}-b${i})`}>
                   <g transform={`translate(0 ${fx(b.drop * s.drop)})`}>
@@ -1071,7 +1073,7 @@ export function NorskehavetFigur({
     );
   else {
     labels.push(
-      { text: "Ny havbunn", x: S(260, 236)[0], y: S(260, 236)[1], at: S(260 + Math.min(60, 170 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", anchor: "middle", badge: S(300, 222) },
+      { text: "Ny havbunn", x: S(300, 236)[0], y: S(300, 236)[1], at: S(260 + Math.min(60, 170 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", badge: S(300, 222) },
       { text: "Smelte stiger opp", x: S(260, 395)[0], y: S(260, 395)[1], at: S(260, 300), color: "#ffb08a", anchor: "middle", badge: S(260, 382) },
     );
     if (t > 1.7)
@@ -1150,7 +1152,7 @@ export function NorskehavetFigur({
                 <circle cx={KART_STED.janMayen[0]} cy={KART_STED.janMayen[1]} r="7" fill="#f08a5d" stroke={P.halo} strokeWidth="2" />
               ) : null}
             </KartInnfelt>
-            <g transform={`translate(${sec.x} ${sec.y})`} data-nocheck="">
+            <g transform={`translate(${sec.x} ${sec.y})`}>
               <NhSnitt t={t} d={d} m={m} />
             </g>
             <rect x={sec.x} y={sec.y} width="520" height="420" rx="8" fill="none" stroke="#9fb4c2" strokeWidth="1.5" data-nocheck="" />
