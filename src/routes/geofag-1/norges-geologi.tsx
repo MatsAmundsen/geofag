@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { NorwayTectonicsHistoryDiagram, OfiolittSnittDiagram } from "@/components/diagrams";
+import { IsostasiSnitt } from "@/components/diagrams/isbreer";
+import { KaledonideneFigur, NorskehavetFigur, OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -149,6 +151,8 @@ function NorgesGeologiPage() {
           </p>
         </div>
 
+        <KaledonideneFigur />
+
         <p className="text-sm text-muted-foreground">
           Under kollisjonen ble bergartene nede i kollisjonssonen utsatt for ekstremt trykk og høy temperatur.
           Leirskifer og sandstein ble omvandlet til glimmerskifer, amfibolitt og gneis gjennom regional metamorfose.
@@ -171,7 +175,7 @@ function NorgesGeologiPage() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-display text-base font-bold text-amber-500">Rombeporfyr (sjelden lava)</h4>
+            <h3 className="font-display text-base font-bold text-amber-500">Rombeporfyr (sjelden lava)</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Enorme sprekkevulkaner spydde ut tykke lavadekker av <strong>rombeporfyr</strong> – en lavabergart med store,
               båtlignende (rombeformede) feltspatkrystaller i en finkornet grunnmasse. Rombeporfyr er bare funnet fem steder
@@ -180,7 +184,7 @@ function NorgesGeologiPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-display text-base font-bold text-sky-400">Larvikitt (Norges nasjonalbergart)</h4>
+            <h3 className="font-display text-base font-bold text-sky-400">Larvikitt (Norges nasjonalbergart)</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Dypt nede under vulkanene størknet gigantiske magmakamre langsomt. Her krystalliserte den vakre, blåskimrende
               dypbergarten <strong>larvikitt</strong>. Larvikitt brytes i dag som eksklusiv fasadestein og eksporteres over
@@ -188,6 +192,8 @@ function NorgesGeologiPage() {
             </p>
           </div>
         </div>
+
+        <OslograbenFigur />
 
         <p className="text-sm text-muted-foreground">
           Riftingen stoppet opp før kontinentet rakk å dele seg helt; Oslofeltet forble en «fossil rift». Likevel styrer de
@@ -220,6 +226,8 @@ function NorgesGeologiPage() {
             vulkan over havnivå, med siste utbrudd i 1985.
           </li>
         </ul>
+
+        <NorskehavetFigur />
       </section>
 
       {/* SEKSJON 5: GLASIAL ISOSTASI */}
@@ -238,7 +246,7 @@ function NorgesGeologiPage() {
 
         <div className="grid gap-4 sm:grid-cols-2 pt-2">
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-semibold text-emerald-400 text-sm">Marin grense og leirbygdene</h4>
+            <h3 className="font-semibold text-emerald-400 text-sm">Marin grense og leirbygdene</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Rett etter istiden flommet havet inn over det nedtrykte landet og avsatte saltvannsleire. Etter hvert som landet
               hevet seg, ble denne gamle havbunnen løftet tørt – opptil <strong>220 meter over dagens havnivå</strong> på
@@ -252,7 +260,7 @@ function NorgesGeologiPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-4 space-y-2">
-            <h4 className="font-semibold text-sky-400 text-sm">Postglasiale intraplate-jordskjelv</h4>
+            <h3 className="font-semibold text-sky-400 text-sm">Postglasiale intraplate-jordskjelv</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Landet hever seg fremdeles med 4–9 mm per år rundt Oslofjorden og Bottenviken. Spenningene etter den asymmetriske
               landhevingen, kombinert med ryggskyv (ridge push) fra Atlanterhavsryggen, reaktiverer eldgamle forkastninger og
@@ -264,6 +272,11 @@ function NorgesGeologiPage() {
             </p>
           </div>
         </div>
+
+        <IsostasiSnitt
+          heading="Glasial isostasi og marin grense"
+          caption="Under siste istid presset en opptil ca. 3 km tykk innlandsis landet ned i den seige astenosfæren. Da isen smeltet, flommet havet inn over det nedtrykte landet og avsatte saltvannsleire. Etter hvert som landet hevet seg, ble den gamle havbunnen tørt land, opp til marin grense (opptil 220 m over dagens havnivå på Østlandet). Forenklet: Snittet er skjematisk, og nedpressingen er sterkt overdrevet."
+        />
 
         <OrdBoks
           ord="Isostasi (og postglasial landheving)"
