@@ -232,7 +232,7 @@ export function HjulstromInteraktiv({
         caption ??
         "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Leire krever over 100 cm/s fordi kornene henger sammen (kohesjon)."
       }
-      playing={motion.playing}
+      // statusen endres bare av brukeren (animasjonen flytter bare kornene), så den leses alltid opp
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       toolbar={
         <>
