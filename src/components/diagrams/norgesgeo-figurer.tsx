@@ -715,7 +715,7 @@ export function OslograbenFigur({
       { text: "Larvikitt i dagen", x: 480, y: 186, at: [482, surfToday(482) + 6], color: "#b9d3ee", anchor: "middle", weight: 700, badge: [482, 210] },
       { text: "Rombeporfyr", x: 300, y: 186, at: [380, surfToday(380) + 10], color: "#e4b7a6", anchor: "middle", badge: [372, 214] },
       { text: "Kambrosilur", x: 40, y: 296, at: [372, 262], color: "#d7e1e6", badge: [372, 284] },
-      { text: "Bevart fordi blokken sank ned i graben", x: 40, y: 320, color: "#d7e1e6", size: 13 },
+      { text: "Bevart fordi blokken sank ned i graben", x: 40, y: 320, color: "#d7e1e6", size: 13, badge: [372, 334] },
       { text: "Forkastningskant mot grunnfjellet", x: 920, y: 336, at: [632, surfToday(632) + 4], color: C.fg, anchor: "end", badge: [690, 224] },
     );
   if (showRocks)
@@ -1052,7 +1052,7 @@ export function NorskehavetFigur({
   const isl = kp(KART_STED.island);
   const S = (x: number, y: number): [number, number] => [sec.x + x, sec.y + y];
   const labels: Lab[] = [
-    { text: "Grønland", x: gr[0], y: gr[1] + 5, color: "#f2e3c6", anchor: "middle", badge: [gr[0], gr[1]] },
+    { text: "Grønland", x: gr[0], y: gr[1] + (t > 2.6 ? -14 : 5), color: "#f2e3c6", anchor: "middle", badge: [gr[0], gr[1]] },
     { text: "Norge", x: no[0], y: no[1] + 5, color: "#f2e3c6", anchor: "middle", badge: [no[0], no[1]] },
     { text: "Grønland", x: S(40, 96)[0], y: S(40, 96)[1], color: "#e3cfae", badge: S(40, 90), narrowHide: false },
     { text: "Norge", x: S(480, 96)[0], y: S(480, 96)[1], color: "#e8c0b8", anchor: "end", badge: S(480, 90) },
