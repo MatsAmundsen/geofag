@@ -724,10 +724,11 @@ export type Markers = {
 export const NARROW_FIGURE_PX = 760;
 
 /**
- * På smal skjerm skal en strek på 3 viewBox-enheter bli minst så mange CSS-piksler.
- * Pilspisser følger strekbredden (markerUnits = strokeWidth), så de vokser med.
+ * På smal skjerm skal synlige streker (opptil 4 viewBox-enheter) bli minst så mange CSS-piksler.
+ * Omrissene i figurene er ofte 1,2–2 enheter, ikke 3, så en felles faktor på 3-enhetsstreken
+ * etterlater silhuetten tynn. Tykkere streker beholder vekten. Pilspisser følger strekbredden.
  */
-const NARROW_STROKE_PX = 1.8;
+const NARROW_STROKE_PX = 1.65;
 
 /**
  * Samler streker som kan tyknes. Hopper over defs, tekst, markører og data-nocheck
@@ -739,6 +740,16 @@ function collectBoostableStrokes(el: Element, out: SVGElement[]) {
   if (el.hasAttribute("data-nocheck")) return;
   if (el instanceof SVGElement && el.hasAttribute("stroke-width")) out.push(el);
   for (const child of el.children) collectBoostableStrokes(child, out);
+}
+
+/** Brukerbredde som gjør streken minst NARROW_STROKE_PX, uten å gjøre elveleier (over 4) tykkere. */
+function boostedStroke(base: number, scale: number) {
+  if (!(scale > 0) || base > 8) return base;
+  const natural = base * scale;
+  const floor = base <= 4 ? Math.max(NARROW_STROKE_PX, natural) : natural;
+  const tiered =
+    base <= 2 ? floor : base <= 4 ? Math.max(floor, NARROW_STROKE_PX + (base - 2) * 0.28) : floor;
+  return Math.round((tiered / scale) * 100) / 100;
 }
 
 export function IsbreFigur({
@@ -821,14 +832,13 @@ export function IsbreFigur({
   const [vbX, vbY, vbW, vbH] = vb;
   const svgWidth = boxWidth > 0 ? Math.min(boxWidth, 1024) : 0;
   const scale = svgWidth > 0 ? svgWidth / vbW : 0;
-  // Tykkere streker bare når figuren er smal og skalaen gjør 3 enheter tynnere enn 1,8 px.
-  // Basen huskes, så React kan sette attributtet tilbake til JSX-verdien uten at vi tykner dobbelt.
-  // Tykkere enn 8 enheter (elveleie, morene) får være som de er, ellers blir pilene enorme.
+  // Tykkere streker bare når figuren er smal. Basen huskes, så React kan sette attributtet
+  // tilbake til JSX-verdien uten at vi tykner dobbelt. Over 8 enheter (elveleie) røres ikke.
   useLayoutEffect(() => {
     const svg = svgNode.current;
     if (!svg) return;
-    const factor = narrow && scale > 0 ? Math.max(1, NARROW_STROKE_PX / (3 * scale)) : 1;
-    if (factor === 1 && !strokesBoosted.current) return;
+    const active = narrow && scale > 0;
+    if (!active && !strokesBoosted.current) return;
     const nodes: SVGElement[] = [];
     collectBoostableStrokes(svg, nodes);
     const memo = strokeMemo.current;
@@ -840,11 +850,12 @@ export function IsbreFigur({
       if (!Number.isFinite(current)) continue;
       const prev = memo.get(el);
       const base = prev && Math.abs(current - prev.base * prev.boost) < 0.08 ? prev.base : current;
-      const boost = base <= 8 ? factor : 1;
-      const next = Math.round(base * boost * 100) / 100;
-      if (Math.abs(current - next) > 0.02) el.setAttribute("stroke-width", String(next));
+      const next = active ? boostedStroke(base, scale) : base;
+      const boost = base > 0 ? next / base : 1;
+      if (Math.abs(current - next) > 0.02)
+        el.setAttribute("stroke-width", String(Math.round(next * 100) / 100));
       memo.set(el, { base, boost });
-      if (boost !== 1) any = true;
+      if (Math.abs(boost - 1) > 0.02) any = true;
     }
     strokesBoosted.current = any;
   });

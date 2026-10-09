@@ -27,8 +27,14 @@ export const FigureScale = createContext(0);
  * Skriftstørrelse i viewBox-enheter, minst 12 CSS-piksler når skalaen er kjent.
  * Uten dette blir 14 enheter omtrent 11,8 px når figuren er 960 enheter bred i spalten.
  */
-export const figureFont = (size: number, scale: number) =>
-  scale > 0 ? Math.round(Math.max(size, 12 / scale) * 10) / 10 : size;
+export const figureFont = (size: number, scale: number) => {
+  if (!(scale > 0)) return size;
+  const raw = Math.max(size, 12 / scale);
+  let out = Math.round(raw * 10) / 10;
+  // Avrunding ned kan lande på 11,9 px. Da rundes opp, så teksten er minst 12 CSS-piksler.
+  if (out * scale < 11.95) out = Math.ceil((raw + 1e-6) * 10) / 10;
+  return out;
+};
 
 /* ---------- palett ---------- */
 
