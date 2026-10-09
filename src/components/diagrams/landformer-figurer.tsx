@@ -8,13 +8,23 @@
  * Hjulstrøm-kurvene er tegnet omtrentlig etter Hjulström (1935): kapitlet gir bare to fastpunkter
  * (ca. 20 cm/s for sand 0,2–0,5 mm og over 100 cm/s for leire), resten er en skjematisk kurveform.
  */
-import { useMemo, useState, type ReactNode } from "react";
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle, font } from "./svg-kit";
 import { IsbreFigur, Polys, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
 import {
+  FigureScale,
   P,
   clamp,
+  figureFont,
   heightfield,
   hexToRgb,
   lerp,
@@ -76,28 +86,58 @@ function T({
   weight?: number;
   rotate?: number;
 }) {
-  if (avoid) {
-    const w = String(children).length * size * 0.6;
-    const x0 = anchor === "end" ? x - w : anchor === "middle" ? x - w / 2 : x;
+  const ref = useRef<SVGTextElement>(null);
+  const scale = useContext(FigureScale);
+  const fontSize = figureFont(size, scale);
+  const [hidden, setHidden] = useState(false);
+  // Glyfene måles. 0,6 × skrift × tegn pluss 8 var bredere enn ordet, så etiketten
+  // forsvant selv om punktet bare lå ved siden av (sand ved s ≥ 2,5). Noden blir
+  // stående, skjult, så boksen kan måles igjen når punktet flyttes.
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!avoid || !el) {
+      setHidden((was) => (was ? false : was));
+      return;
+    }
     const [px, py, r] = avoid;
-    const nx = clamp(px, x0, x0 + w);
-    const ny = clamp(py, y - size, y + size * 0.3);
-    // punktet ligger oppå teksten: teksten tas bort til punktet flyttes, så de aldri krysser hverandre
-    if (Math.hypot(px - nx, py - ny) < r + 8) return null;
-  }
+    const measure = () => {
+      const node = ref.current;
+      if (!node) return;
+      const bb = node.getBBox();
+      if (bb.width < 0.5 && bb.height < 0.5) {
+        setHidden((was) => (was ? false : was));
+        return;
+      }
+      const pad = fontSize * 0.13;
+      const nx = clamp(px, bb.x - pad, bb.x + bb.width + pad);
+      const ny = clamp(py, bb.y - pad, bb.y + bb.height + pad);
+      const hit = Math.hypot(px - nx, py - ny) < r;
+      setHidden((was) => (was === hit ? was : hit));
+    };
+    measure();
+    let live = true;
+    document.fonts?.ready.then(() => {
+      if (live) measure();
+    });
+    return () => {
+      live = false;
+    };
+  }, [avoid, fontSize]);
   return (
     <text
+      ref={ref}
       x={x}
       y={y}
       fill={color}
-      fontSize={size}
+      fontSize={fontSize}
       fontWeight={weight}
       textAnchor={anchor}
       fontFamily={font}
       stroke={P.halo}
-      strokeWidth={size * 0.26}
+      strokeWidth={fontSize * 0.26}
       strokeLinejoin="round"
       paintOrder="stroke"
+      visibility={hidden ? "hidden" : undefined}
       transform={rotate ? `rotate(${rotate} ${x} ${y})` : undefined}
     >
       {children}
@@ -849,9 +889,17 @@ export function Forvitringsformer({
         step === 4 ? "Nærbilde av mineralkorn" : "Tverrsnitt",
       ]}
       viewBox="0 0 960 500"
-      narrowViewBox={step === 2 ? "180 20 600 450" : undefined}
+      narrowViewBox={
+        step === 1
+          ? "16 8 928 480"
+          : step === 2
+            ? "180 20 600 450"
+            : step === 3
+              ? "20 16 920 468"
+              : "12 24 936 464"
+      }
     >
-      {({ d, m, narrow }) => (
+      {({ d, m, narrow, scale }) => (
         <g
           className={motion.motionClass}
           data-playing={motion.playing ? "yes" : "no"}
@@ -877,7 +925,7 @@ export function Forvitringsformer({
                 x={-88}
                 y={0}
                 textAnchor="middle"
-                fontSize={14}
+                fontSize={figureFont(14, scale)}
                 fontWeight={700}
                 fontFamily={font}
                 fill={step <= 2 ? C.warm : C.rain}
@@ -1453,6 +1501,7 @@ export function ElvaFraKildeTilMunning({
       labels={labels}
       notes={["Lengdeprofil med tverrsnitt i ruta", "Skjematisk, høyden er sterkt overdrevet"]}
       viewBox="0 0 960 500"
+      narrowViewBox="8 12 944 476"
     >
       {({ d, m }) => (
         <g
@@ -1855,6 +1904,7 @@ export function MeanderOgKroksjo({
       keys={keys}
       notes={["Sett ovenfra", "Skjematisk"]}
       viewBox="0 0 960 500"
+      narrowViewBox="0 8 960 484"
     >
       {({ m }) => (
         <g
@@ -2151,6 +2201,7 @@ export function GilbertDelta({
       labels={labels}
       notes={["Tverrsnitt", "Skjematisk, høyden er overdrevet"]}
       viewBox="0 0 960 500"
+      narrowViewBox="8 28 944 460"
     >
       {({ d }) => (
         <g
@@ -2280,7 +2331,14 @@ export function LandskapBlokk({
   const q = Math.round(clock.phase * 10) / 10;
   const pU = step === 1 ? 0 : step === 2 ? smooth(q) : 1;
   const pS = step === 3 ? smooth(q) : 0;
+  // Høydefeltet er 104×40 flater og regnes om for hvert steg. Det kjøres etter montering,
+  // så Worker-en ikke bygger nettet under SSR. Første tegning (server og hydrering) er lik.
+  const [meshOn, setMeshOn] = useState(false);
+  useEffect(() => {
+    setMeshOn(true);
+  }, []);
   const polys = useMemo(() => {
+    if (!meshOn) return [];
     const rock = hexToRgb("#7b7d72");
     const heath = hexToRgb("#7f7f63");
     const green = hexToRgb("#5d6e4a");
@@ -2304,7 +2362,7 @@ export function LandskapBlokk({
         return green;
       },
     });
-  }, [pU, pS]);
+  }, [meshOn, pU, pS]);
   const xs = Array.from({ length: 105 }, (_, i) => (i / 104) * LS_W);
   const face = xs.map((x): [number, number] =>
     LS_PROJ(x, 0, Math.max(LS_BASE, lsHeight(x, 0, pU, pS))),
@@ -2400,6 +2458,7 @@ export function LandskapBlokk({
       labels={labels}
       notes={["Skjematisk, høyden er sterkt overdrevet", "Vest til venstre, øst til høyre"]}
       viewBox="0 0 960 500"
+      narrowViewBox="16 16 932 472"
     >
       {({ d }) => (
         <g

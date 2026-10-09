@@ -10,8 +10,31 @@
  * - `useStepClock` gir steg + framdrift innen steget (0–1), styrt av Start/Pause.
  * - `heightfield` tegner et skrått terrengblokk-utsnitt med lyssetting.
  */
-import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } from "react";
+import {
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type RefObject,
+} from "react";
 import { C } from "./svg-kit";
+
+/** CSS-piksler per viewBox-enhet. 0 før figuren er målt. IsbreFigur setter verdien. */
+export const FigureScale = createContext(0);
+
+/**
+ * Skriftstørrelse i viewBox-enheter, minst 12 CSS-piksler når skalaen er kjent.
+ * Uten dette blir 14 enheter omtrent 11,8 px når figuren er 960 enheter bred i spalten.
+ */
+export const figureFont = (size: number, scale: number) => {
+  if (!(scale > 0)) return size;
+  const raw = Math.max(size, 12 / scale);
+  let out = Math.round(raw * 10) / 10;
+  // Avrunding ned kan lande på 11,9 px. Da rundes opp, så teksten er minst 12 CSS-piksler.
+  if (out * scale < 11.95) out = Math.ceil((raw + 1e-6) * 10) / 10;
+  return out;
+};
 
 /* ---------- palett ---------- */
 
@@ -97,6 +120,23 @@ export function useNarrow() {
     subscribeNarrow,
     () => window.matchMedia("(max-width: 639px)").matches,
     () => false,
+  );
+}
+
+function subscribeViewport(onChange: () => void) {
+  window.addEventListener("resize", onChange);
+  return () => window.removeEventListener("resize", onChange);
+}
+
+/**
+ * Vindushøyde i CSS-piksler. 0 under serverrendering og hydrering, så første bilde
+ * er likt på server og klient. Brukes når et utsnitt bare skal slå inn hvis det får plass.
+ */
+export function useViewportHeight() {
+  return useSyncExternalStore(
+    subscribeViewport,
+    () => window.innerHeight,
+    () => 0,
   );
 }
 
