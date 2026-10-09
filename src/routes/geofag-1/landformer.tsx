@@ -1,17 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { Callout } from "@/components/callout";
+import { GrainSizeDistributionDiagram } from "@/components/diagrams/geology-extra";
 import {
-  FluvialErosionDepositionDiagram,
-  GlacialLandformsDiagram,
-  NorwegianLandscapeEvolutionDiagram,
-  ValleyCrossSectionDiagram,
-  WeatheringMechanismsDiagram,
-} from "@/components/diagrams/landformer";
+  Avsetningsformer,
+  BotnEggTind,
+  Frostsprengning,
+  VdalTilUdal,
+} from "@/components/diagrams/isbreer";
 import {
-  GrainSizeDistributionDiagram,
-  HjulstromDiagram,
-} from "@/components/diagrams/geology-extra";
-import { LandformGeomorphologyModel } from "@/components/models/landform-geomorphology-model";
+  ElvaFraKildeTilMunning,
+  Forvitringsformer,
+  GilbertDelta,
+  HjulstromInteraktiv,
+  LandskapBlokk,
+  MeanderOgKroksjo,
+} from "@/components/diagrams/landformer-figurer";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -21,6 +25,33 @@ import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("landformer")!;
+
+/**
+ * Isbrefigurene regner ut terrenget med flyttall som kan avvike i siste desimal mellom server og
+ * nettleser. På Isbreer-siden tegnes de bare i nettleseren, så her gjør vi det samme.
+ */
+function KunINettleser({ children }: { children: ReactNode }) {
+  return (
+    <ClientOnly
+      fallback={
+        <div className="my-8 min-h-[520px] rounded-xl border border-border bg-card" aria-hidden="true" />
+      }
+    >
+      {children}
+    </ClientOnly>
+  );
+}
+
+const tilIsbreer = (
+  <>
+    {" "}
+    Mer om breene i{" "}
+    <Link to="/geofag-1/isbreer-og-landformer" className="underline">
+      Isbreer og landformer
+    </Link>
+    .
+  </>
+);
 
 export const Route = createFileRoute("/geofag-1/landformer")({
   head: () =>
@@ -100,7 +131,7 @@ function LandformerPage() {
         barn="Oppsmuldring og kjemisk omdanning av fast fjell på jordoverflaten under påvirkning av temperatur, vann, gasser og organismer, uten forutgående transport."
       />
 
-      <WeatheringMechanismsDiagram />
+      <Forvitringsformer />
 
       <h3 className="pt-4 font-display text-xl font-medium tracking-tight">
         Mekanisk forvitring (fysisk oppsprekking)
@@ -135,6 +166,10 @@ function LandformerPage() {
           mekanisk sidetrykk (turgortrykk) som tvinger sprekkene fra hverandre.
         </li>
       </ul>
+
+      <KunINettleser>
+        <Frostsprengning />
+      </KunINettleser>
 
       <PhotoFigure
         src="/images/fig-forvitring.jpg"
@@ -202,7 +237,7 @@ function LandformerPage() {
         eller avsette</strong> sedimentpartikler (Hjulström, 1935):
       </p>
 
-      <HjulstromDiagram />
+      <HjulstromInteraktiv />
 
       <Callout title="Leirparadokset (Kohesjonseffekten)">
         <p>
@@ -229,7 +264,7 @@ function LandformerPage() {
         kraft endrer seg dramatisk fra fjellet til havet:
       </p>
 
-      <FluvialErosionDepositionDiagram />
+      <ElvaFraKildeTilMunning />
 
       <h3 className="pt-4 font-display text-xl font-medium tracking-tight">
         V-dal, canyon og jettegryter
@@ -276,6 +311,8 @@ function LandformerPage() {
         </li>
       </ul>
 
+      <MeanderOgKroksjo />
+
       <PhotoFigure
         src="/images/fig-ravine.jpg"
         alt="Ravinedal og elveløp erodert ned i finkornede sedimenter og leirmasser"
@@ -313,6 +350,8 @@ function LandformerPage() {
         </li>
       </ol>
 
+      <GilbertDelta />
+
       {/* ------------------------------------------------------------------ */}
       {/* 5. GLASIALE LANDFORMER                                             */}
       {/* ------------------------------------------------------------------ */}
@@ -325,7 +364,17 @@ function LandformerPage() {
         og <em>basal glidning</em> på en tynn smeltevannsfilm:
       </p>
 
-      <GlacialLandformsDiagram />
+      <KunINettleser>
+        <VdalTilUdal
+          caption={
+            <>
+              En elvedal med V-form blir gravd ut av isen til en U-dal med bratte sider og bred bunn.
+              Sidedalen blir liggende igjen som hengende sidedal. Der bunnen ligger under havnivå, blir
+              dalen en fjord.{tilIsbreer}
+            </>
+          }
+        />
+      </KunINettleser>
 
       <h3 className="pt-4 font-display text-xl font-medium tracking-tight">
         Erosjonsformer: Skuring og plukking
@@ -355,7 +404,16 @@ function LandformerPage() {
         </li>
       </ul>
 
-      <ValleyCrossSectionDiagram />
+      <KunINettleser>
+        <BotnEggTind
+          caption={
+            <>
+              Botner graves ut av små breer. Mellom to botner står det igjen en egg, og der flere botner
+              møtes, står det igjen en tind.{tilIsbreer}
+            </>
+          }
+        />
+      </KunINettleser>
 
       <h3 className="pt-4 font-display text-xl font-medium tracking-tight">
         Glasiale avsetningsformer: Morener og eskere
@@ -384,6 +442,18 @@ function LandformerPage() {
         </li>
       </ul>
 
+      <KunINettleser>
+        <Avsetningsformer
+          caption={
+            <>
+              Endemorenen dannes ved isfronten, eskeren i en smeltevannstunnel under isen og drumlinen
+              under isen i bevegelsesretningen. Flyttblokken blir liggende når isen smelter, og
+              breelvdeltaet bygges der smeltevannet møter vann.{tilIsbreer}
+            </>
+          }
+        />
+      </KunINettleser>
+
       {/* ------------------------------------------------------------------ */}
       {/* 6. NORGES LANDSKAPSHISTORIE                                        */}
       {/* ------------------------------------------------------------------ */}
@@ -395,7 +465,7 @@ function LandformerPage() {
         av landformer (Gjessing, 1978; Holtedahl, 1960):
       </p>
 
-      <NorwegianLandscapeEvolutionDiagram />
+      <LandskapBlokk />
 
       <div className="space-y-4 my-4">
         <div className="rounded-xl border border-sand/40 bg-card p-4 space-y-2">
@@ -460,11 +530,6 @@ function LandformerPage() {
           { n: "4", label: "Dyp fjord gravd ut langt under dagens havnivå." },
         ]}
       />
-
-      {/* ------------------------------------------------------------------ */}
-      {/* 7. INTERAKTIV GEOMORFOLOGISK MODELL                                */}
-      {/* ------------------------------------------------------------------ */}
-      <LandformGeomorphologyModel />
 
       {/* ------------------------------------------------------------------ */}
       {/* 8. KOMPETANSEMÅL, BEGREPER OG QUIZ                                 */}
