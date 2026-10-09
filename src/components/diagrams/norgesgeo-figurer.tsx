@@ -504,7 +504,7 @@ export function KaledonideneFigur({
         heading={heading}
         caption={
           caption ??
-          "Snittet viser hvordan Iapetushavet ble lukket og Kaledonidene ble bygd, og kartet viser hvor kontinentene lå. Forenklet: Snittet er skjematisk med overdrevet høyde, og kartet bruker dagens kystlinjer og retning for Grønland og Skandinavia. Det viser ikke den virkelige plasseringen på kloden for 400–500 millioner år siden."
+          "Snittet viser hvordan Iapetushavet ble lukket og Kaledonidene ble bygd, og kartet viser hvor kontinentene lå. Forenklet: Snittet er skjematisk med overdrevet høyde, og kartet bruker dagens kystlinjer og retning for Grønland og Skandinavia. Det viser ikke den virkelige plasseringen på kloden for 400–500 millioner år siden. Jotundekket: gamle grunnfjellsbergarter som ble skjøvet østover som et dekke under kollisjonen."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -540,7 +540,7 @@ const OG_STEPS = ["1 Skorpa strekkes", "2 Graben synker inn", "3 Lava og magma",
 const OG_STATUS = [
   "Skorpa strekkes. Mot slutten av karbon, for ca. 310 millioner år siden, begynte jordskorpen i det sørøstlige Norge å sprekke opp, fra Langesund i sør til Mjøsa i nord.",
   "Skorpa blir tynnere, og store forkastningsblokker synker inn langs normalforkastninger. Slik oppstår riftdalen Oslo-graben. Lagene fra kambrosilur blir liggende bevart nede i graben.",
-  "Vulkanisme i perm (250–300 millioner år siden): Sprekkevulkaner sender ut tykke lavadekker av rombeporfyr. Dypt nede størkner magmakamre langsomt til larvikitt (ca. 290 millioner år siden). Rombeporfyr og larvikitt er tvillingbergarter med ulik avkjøling.",
+  "Vulkanisme i perm (250–300 millioner år siden): Sprekkevulkaner sender ut tykke lavadekker av rombeporfyr. Dypt nede størkner magmakamre langsomt til larvikitt. Larvikitt, ca. 295 millioner år. Rombeporfyr og larvikitt er tvillingbergarter med ulik avkjøling.",
   "Riften stoppet før kontinentet delte seg, så Oslofeltet er en fossil rift. Erosjon har tatt bort toppen, og larvikitt, rombeporfyr og kambrosilur ligger i dagen. Forkastningene styrer fortsatt landskapet på Østlandet, også Oslofjordens forløp.",
 ];
 const OG_TOP = 200;
@@ -679,7 +679,7 @@ export function OslograbenFigur({
   const c2 = small ? { x: 728, y: 82, r: 56 } : { x: 868, y: 96, r: 62 };
   const showRocks = s.lava > 0.5;
   const labels: Lab[] = [
-    { text: "Grunnfjell", x: 40, y: 330, color: "#f0d6d0", badge: [200, 320] },
+    { text: "Grunnfjell", x: 40, y: step === 4 ? 420 : 330, color: "#f0d6d0", badge: [200, 320] },
     { text: "Moho", x: 920, y: OG_MOHO + 28, at: [880, moho(880)], color: "#e6d3b4", anchor: "end", size: 14, badge: [900, OG_MOHO + 26] },
   ];
   if (step <= 2)
@@ -715,6 +715,7 @@ export function OslograbenFigur({
       { text: "Larvikitt i dagen", x: 480, y: 186, at: [482, surfToday(482) + 6], color: "#b9d3ee", anchor: "middle", weight: 700, badge: [482, 210] },
       { text: "Rombeporfyr", x: 300, y: 186, at: [380, surfToday(380) + 10], color: "#e4b7a6", anchor: "middle", badge: [372, 214] },
       { text: "Kambrosilur", x: 40, y: 296, at: [372, 262], color: "#d7e1e6", badge: [372, 284] },
+      { text: "Bevart fordi blokken sank ned i graben", x: 40, y: 320, color: "#d7e1e6", size: 13 },
       { text: "Forkastningskant mot grunnfjellet", x: 920, y: 336, at: [632, surfToday(632) + 4], color: C.fg, anchor: "end", badge: [690, 224] },
     );
   if (showRocks)
@@ -856,9 +857,9 @@ function mix(a: string, b: string, t: number) {
  * 3. Åpningen av Norskehavet: riftfase, brudd, havbunnsspredning, i dag
  * ===================================================================== */
 
-const NH_STAGES = ["Riftfase", "Bruddet", "Havbunnsspredning", "I dag"];
+const NH_STAGES = ["Gjentatt rifting i mesozoikum (trias–kritt)", "Bruddet", "Havbunnsspredning", "I dag"];
 const NH_STATUS = [
-  "Riftfase: Lenge før havet åpnet seg, ble skorpa mellom Norge og Grønland strukket og tynnet ut. Mange fjorder og daler følger i dag forkastningssoner fra denne tiden (trias–kritt, ca. 200 millioner år siden).",
+  "Gjentatt rifting i mesozoikum (trias–kritt): Lenge før havet åpnet seg, ble skorpa mellom Norge og Grønland strukket og tynnet ut i flere omganger. Mange fjorder og daler følger i dag forkastningssoner fra denne tiden.",
   "Bruddet: I tidlig tertiær (eocen, for ca. 55 millioner år siden) revnet litosfæren mellom Norge og Grønland helt. Smelte fra mantelen steg opp og begynte å danne ny havbunn.",
   "Havbunnsspredning: Langs midthavsryggen lages ny havbunn, og Norge og Grønland skilles. Norge får en passiv kontinentalmargin uten subduksjon. Elver og senere isbreer fører sand og leire ut på sokkelen.",
   "I dag: Spredningen fortsetter. Jan Mayen ligger på spredningsryggen nord for Island, med Beerenberg (2272 m o.h.), Norges eneste aktive vulkan over havnivå. Lagene på sokkelen er kilde-, reservoar- og takbergarter for olje og gass.",
@@ -1102,7 +1103,7 @@ export function NorskehavetFigur({
         heading={heading}
         caption={
           caption ??
-          "Dra i tidsskyveren for å se hvordan Norge og Grønland skilles. Kartet viser dagens kystlinjer, og snittet viser skorpa på tvers av havet. Forenklet: Grønland flyttes og dreies som én stiv blokk, spredningsryggen er tegnet skjematisk, og tidsskyveren er ikke i målestokk. Island og Jan Mayen kom til mye senere enn bruddet og vises først mot slutten."
+          "Dra i tidsskyveren for å se hvordan Norge og Grønland skilles, fra gjentatt rifting i mesozoikum (trias–kritt) til havbunnsspredningen i dag. Kartet viser dagens kystlinjer, og snittet viser skorpa på tvers av havet. Forenklet: Grønland flyttes og dreies som én stiv blokk, spredningsryggen er tegnet skjematisk, og tidsskyveren er ikke i målestokk. Island og Jan Mayen kom til mye senere enn bruddet og vises først mot slutten."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -1117,7 +1118,7 @@ export function NorskehavetFigur({
               value={n1(t)}
               onChange={set}
               valueLabel={valueLabel}
-              valueText={`${valueLabel}: ${NH_STATUS[stage].split(":")[0]}`}
+              valueText={valueLabel}
             />
           </>
         }

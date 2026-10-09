@@ -275,7 +275,7 @@ function NorgesGeologiPage() {
 
         <IsostasiSnitt
           heading="Glasial isostasi og marin grense"
-          caption="Under siste istid presset en opptil 3 km tykk innlandsis landet ned i den seige astenosfæren. Da isen smeltet, flommet havet inn over det nedtrykte landet og avsatte saltvannsleire. Etter hvert som landet hevet seg, ble den gamle havbunnen tørt land, opp til marin grense (opptil 220 m over dagens havnivå på Østlandet). Forenklet: Snittet er skjematisk, og nedpressingen er sterkt overdrevet."
+          caption="Under siste istid presset en opptil ca. 3 km tykk innlandsis landet ned i den seige astenosfæren. Da isen smeltet, flommet havet inn over det nedtrykte landet og avsatte saltvannsleire. Etter hvert som landet hevet seg, ble den gamle havbunnen tørt land, opp til marin grense (opptil 220 m over dagens havnivå på Østlandet). Forenklet: Snittet er skjematisk, og nedpressingen er sterkt overdrevet."
         />
 
         <OrdBoks
