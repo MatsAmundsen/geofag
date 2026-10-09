@@ -14,6 +14,7 @@ import { CoriolisModel } from "@/components/models/coriolis-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
+import { TableScroll } from "@/components/scroll-frame";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { GF2_THEMES } from "@/lib/nav";
@@ -251,8 +252,12 @@ function CoriolisPage() {
         bestemmer hvor sterk Corioliseffekten er på et gitt sted på kloden:
       </p>
 
-      <div className="my-4 overflow-x-auto">
-        <table className="w-full text-left text-sm">
+      <TableScroll
+        caption="Coriolisparameteren og breddegrad: f = 2Ω sin φ"
+        visuallyHiddenCaption
+        className="my-4"
+        tableClassName="w-full text-left text-sm"
+      >
           <thead>
             <tr className="border-b border-border bg-muted/40 font-display text-xs uppercase tracking-wider text-muted-foreground">
               <th className="p-3">Sted / Sone</th>
@@ -292,8 +297,7 @@ function CoriolisPage() {
               <td className="p-3 text-xs text-muted-foreground">Maksimal avbøyningskraft. Vertikal rotasjonsakse er loddrett på bakken.</td>
             </tr>
           </tbody>
-        </table>
-      </div>
+      </TableScroll>
 
       <CoriolisLatitudeDiagram />
 

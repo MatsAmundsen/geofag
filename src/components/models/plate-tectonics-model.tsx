@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { Button } from "@/components/ui/button";
 import { useAnimationPlaying } from "@/components/diagrams/use-motion";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
@@ -1428,10 +1429,12 @@ export function PlateTectonicsModel() {
         </div>
       ) : null}
 
-      <div
-        className={`relative overflow-x-auto rounded-xl border border-border bg-[#0a1118] ${motion.motionClass}`}
-        data-playing={animating ? "yes" : "no"}
+      <ScrollFrame
+        label={current.title}
+        fade="#0a1118"
+        className={`overflow-hidden rounded-xl border border-border bg-[#0a1118] ${motion.motionClass}`}
       >
+        <div className="w-max sm:w-full" data-playing={animating ? "yes" : "no"}>
         <style>{`
           @keyframes mantle-flow-left { to { stroke-dashoffset: -40; } }
           @keyframes mantle-flow-right { to { stroke-dashoffset: 40; } }
@@ -1484,7 +1487,8 @@ export function PlateTectonicsModel() {
           {boundary === "hotspot" ? <HotspotScene {...scene} stage={stage} /> : null}
           {boundary === "paleomag" ? <PaleomagScene {...scene} /> : null}
         </svg>
-      </div>
+        </div>
+      </ScrollFrame>
       <p className="mt-2 text-xs text-muted-foreground">
         {showsDepthScale(boundary)
           ? "Dybdeskalaen er lineær fra 0 til 200 km under skorpetoppen. Fjell og havdyp over streken er overdrevet."

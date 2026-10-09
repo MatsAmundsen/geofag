@@ -23,7 +23,7 @@ export function Kildeliste({ kilder }: { kilder: readonly Kilde[] }) {
                 {" "}
                 <a
                   href={kilde.href}
-                  className="break-all text-primary underline-offset-2 hover:underline"
+                  className="break-all text-primary underline decoration-1 underline-offset-[0.18em] hover:decoration-2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

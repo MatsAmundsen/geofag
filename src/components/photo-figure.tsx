@@ -35,7 +35,7 @@ function CaptionWithLinks({ text }: { text: string }) {
           <a
             key={`${part}-${index}`}
             href={part}
-            className="inline-block max-w-full break-all text-primary underline-offset-2 hover:underline"
+            className="inline-block max-w-full break-all text-primary underline decoration-1 underline-offset-[0.18em] hover:decoration-2"
             target="_blank"
             rel="noreferrer"
           >

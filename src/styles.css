@@ -245,3 +245,87 @@
     animation-play-state: paused !important;
   }
 }
+
+/*
+ * WCAG 1.4.1: links in running text and source lists are not colour alone.
+ * Button links carry .no-underline. Card links are flex containers or wrap a
+ * heading, paragraph or image, so they stay plain. The focus ring stays.
+ */
+article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)) {
+  text-decoration-line: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: auto;
+}
+
+article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):hover,
+article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+.scroll-frame {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+  --scroll-fade: var(--color-background);
+}
+
+.scroll-frame__scroller {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  background:
+    linear-gradient(to right, var(--scroll-fade), transparent) left center / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--scroll-fade), transparent) right center / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0% 50%, rgba(0, 0, 0, 0.45), transparent) left center / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.45), transparent) right center / 0.9rem 100% no-repeat scroll;
+}
+
+.scroll-frame__scroller[data-axis="y"] {
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: none;
+}
+
+.scroll-frame__scroller:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: -2px;
+}
+
+.scroll-frame__hint {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 0.4rem;
+  right: 0.4rem;
+  margin: 0;
+  pointer-events: none;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--scroll-fade) 92%, transparent);
+  color: var(--color-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  padding: 0.15rem 0.5rem;
+}
+
+@media (max-width: 40rem) {
+  .scroll-frame[data-overflow="true"] .scroll-frame__hint {
+    display: inline-block;
+  }
+}
+
+.table-scroll__caption {
+  caption-side: top;
+  position: sticky;
+  left: 0;
+  padding: 0 0 0.5rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-foreground);
+}
