@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout } from "@/components/callout";
 import { NorwayTectonicsHistoryDiagram, OfiolittSnittDiagram } from "@/components/diagrams";
+import { KaledonideneFigur } from "@/components/diagrams/norgesgeo-figurer";
 import { GeoMap } from "@/components/geo-map";
 import { Quiz } from "@/components/quiz";
 import { OrdBoks, Term, TermGrid } from "@/components/term";
@@ -148,6 +149,8 @@ function NorgesGeologiPage() {
             Bergartene der er feltspatrik sandstein, sparagmitt (Oftedahl, 1948).
           </p>
         </div>
+
+        <KaledonideneFigur />
 
         <p className="text-sm text-muted-foreground">
           Under kollisjonen ble bergartene nede i kollisjonssonen utsatt for ekstremt trykk og høy temperatur.
