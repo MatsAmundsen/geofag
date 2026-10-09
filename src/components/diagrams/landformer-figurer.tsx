@@ -230,7 +230,7 @@ export function HjulstromInteraktiv({
       heading={heading}
       caption={
         caption ??
-        "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Leire krever over 100 cm/s fordi kornene henger sammen (kohesjon)."
+        "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Leire krever over 100 cm/s fordi kornene henger sammen (kohesjon). Skjematisk etter Hjulström (1935). Gjelder omtrent for kvartskorn i ca. 1 m dypt vann."
       }
       // statusen endres bare av brukeren (animasjonen flytter bare kornene), så den leses alltid opp
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -652,15 +652,12 @@ function HjBed({
  * 2. Forvitring: trykkavlastning, rotsprengning, karbonsyre og hydrolyse
  * ===================================================================== */
 
-const FV_STEPS = ["1 Trykkavlastning", "2 Rotsprengning", "3 Kalk løses", "4 Hydrolyse"];
+const FV_STEPS = ["1 Trykkavlastning", "2 Rotsprengning", "3 Karst i kalkstein", "4 Hydrolyse"];
 const FV_STATUS: ReactNode[] = [
   "Mekanisk: Erosjon fjerner berglagene over granitten. Trykket avtar, granitten utvider seg mot overflaten og sprekker opp i parallelle, bueformede flak (eksfoliering).",
   "Mekanisk (biologisk): Røtter kiler seg inn i sprekker i berget. Når de vokser, presser de sprekkene fra hverandre.",
-  <>
-    Kjemisk: Regnvann tar opp CO₂ og blir en svak karbonsyre som løser kalkstein: CaCO₃ + H₂O + CO₂
-    ⇌ Ca²⁺ + 2 HCO₃⁻. Det gir doliner, underjordiske elveløp og dryppsteinshuler.
-  </>,
-  "Kjemisk: Feltspat i granitten brytes ned til leirmineralet kaolinitt, og kalium og kiselsyre vaskes ut. Berget smuldrer, men kvartskornene blir igjen og kan bli sand.",
+  "Karst: i kalkstein og marmor løser karbonsyre i vannet berget opp. Det gir grotter, underjordiske elver, stalaktitter og stalagmitter. I Norge finner vi dette særlig i marmor i Nordland.",
+  "Feltspat omdannes ved hydrolyse til leirmineraler (kaolinitt). Kvarts er svært motstandsdyktig og blir liggende igjen. Kvartskornene blir sand.",
 ];
 const FV_KIND = [
   "Mekanisk forvitring",
@@ -781,14 +778,14 @@ export function Forvitringsformer({
         badge: [745, 392],
       },
       {
-        text: "Underjordisk elveløp",
+        text: "Underjordisk elv",
         x: 40,
         y: 470,
         at: [520, 408],
         color: C.rain,
         badge: [480, 440],
       },
-      { text: "Kalkstein", x: 40, y: 380, color: C.muted, badge: [70, 360] },
+      { text: "Kalkstein eller marmor", x: 40, y: 380, color: C.muted, badge: [70, 360] },
     );
   } else {
     labels.push(
@@ -801,7 +798,7 @@ export function Forvitringsformer({
         badge: [182, 128],
       },
       {
-        text: "Kvarts forblir intakt",
+        text: "Kvarts blir liggende igjen",
         x: 40,
         y: 474,
         at: [266, 420],
@@ -834,7 +831,7 @@ export function Forvitringsformer({
       heading={heading}
       caption={
         caption ??
-        "Forvitring bryter ned berget der det ligger, uten transport. Trykkavlastning og rotsprengning sprenger berget mekanisk. Karbonsyre og hydrolyse endrer mineralene kjemisk. Frostsprengning har en egen figur nedenfor."
+        "Forvitring bryter ned berget der det ligger, uten transport. Trykkavlastning og rotsprengning sprenger berget mekanisk. Hydrolyse endrer mineralene kjemisk. Steg 1, 2 og 4 viser granitt. Steg 3 er et eget snitt i kalkstein eller marmor (karst), uten granitt. Frostsprengning har en egen figur nedenfor."
       }
       playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -1306,7 +1303,7 @@ const EL_STEPS = ["1 Øvre løp", "2 Nedre løp", "3 Munning"];
 const EL_STATUS = [
   "Øvre løp: Terrenget er bratt og fallet stort. Elva graver seg rett nedover (bunnerosjon), og løsmasser raser ned fra dalsidene. Det gir en V-dal.",
   "Nedre løp: Nær havnivå avtar fallet. Elva slutter å grave nedover og eroderer sideveis: Den eroderer i yttersvingen og avsetter sand og grus i innersvingen.",
-  "Munning: Strømmen stanser brått opp i innsjøen eller havet, og transportevnen forsvinner. Kornene avsettes og bygger et delta. Havnivået er elvas erosjonsbasis.",
+  "Munning: Strømmen stanser brått opp i innsjøen eller havet, og transportevnen forsvinner. Når farten avtar ved munningen, avsettes det groveste materialet først og det fineste lengst ut. Slik bygges et delta. Havnivået er elvas erosjonsbasis.",
 ];
 const EL_SEA = 400;
 const elProf = (x: number) => {
@@ -1428,7 +1425,7 @@ export function ElvaFraKildeTilMunning({
         anchor: "end",
         badge: [front - 20, EL_SEA - 30],
       },
-      { text: "Kornene avsettes etter størrelse", ...title },
+      { text: "Grovest først, finest lengst ut", ...title },
       { text: "Grus", x: 500, y: 262, color: C.fg, anchor: "middle", badge: [500, 258] },
       { text: "Sand", x: 620, y: 262, color: C.fg, anchor: "middle", badge: [620, 258] },
       { text: "Silt", x: 740, y: 262, color: C.fg, anchor: "middle", badge: [740, 258] },
@@ -1652,7 +1649,7 @@ function ElSort({ k, t }: { k: number; t: number }) {
 const ME_STEPS = ["1 Svinger", "2 Svingene vokser", "3 Flom", "4 Kroksjø"];
 const ME_STATUS = [
   "Elva renner i svinger over en flat elveslette. Vannet går raskest i yttersvingen og eroderer der. I innersvingen går det sakte, og sand og grus avsettes som sandører.",
-  "Yttersvingen eroderes videre og innersvingen bygges ut. Svingene blir stadig mer buktende, og meanderhalsen blir smal.",
+  "Yttersvingen eroderes videre og innersvingen bygges ut. Svingene blir stadig mer buktende, og meanderhalsen blir smal. Svingene vandrer sidelengs og nedover dalen.",
   "Under en storflom tar elva den korteste veien og bryter tvers gjennom den smale meanderhalsen.",
   "Den avsnørte elvesvingen blir liggende igjen som en hesteskoformet innsjø: en kroksjø. Elva renner videre i det nye, kortere løpet.",
 ];
@@ -1842,7 +1839,7 @@ export function MeanderOgKroksjo({
       heading={heading}
       caption={
         caption ??
-        "Elva eroderer i yttersvingen og avsetter sand og grus i innersvingen, så svingene vandrer og blir stadig mer buktende. Under en storflom kan elva bryte gjennom den smale meanderhalsen. Svingen som blir liggende igjen, er en kroksjø."
+        "Elva eroderer i yttersvingen og avsetter sand og grus i innersvingen, så svingene blir stadig mer buktende. Svingene vandrer sidelengs og nedover dalen. Under en storflom kan elva bryte gjennom den smale meanderhalsen. Svingen som blir liggende igjen, er en kroksjø."
       }
       playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -2139,7 +2136,7 @@ export function GilbertDelta({
       heading={heading}
       caption={
         caption ??
-        "Der elva møter stille vann, sorteres kornene: grus og grov sand blir liggende på deltaflaten (topplag), sand raser ned fronten i skrå lag (forlag), og silt og leire legger seg lengst ute (bunnlag). Slik bygges deltaet utover."
+        "Der elva møter stille vann, sorteres kornene: grus og grov sand blir liggende på deltaflaten (topplag), sand raser ned fronten i skrå lag (forlag), og silt og leire legger seg lengst ute (bunnlag). Slik bygges deltaet utover. Forenklet: Lagene vises steg for steg. I virkeligheten bygges topplaget, forlaget og bunnlaget samtidig mens deltaet vokser utover."
       }
       playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -2228,9 +2225,9 @@ export function GilbertDelta({
 
 const LS_STEPS = ["1 Vidda", "2 Fjorden graves ut", "3 Strandflaten"];
 const LS_STATUS = [
-  "Vidda er en stor, rolig og nesten flat overflate, den eldste delen av landskapet. Før istidene rant elvene i V-formede daler.",
+  "Vidda er en stor, rolig og nesten flat overflate. Viddene regnes ofte som rester av et eldre, slakere landskap. Hvor gammelt det er, og hvordan det kom så høyt, er omdiskutert. Før istidene formet elvene dalene, ofte med V-profil.",
   "Under istidene fulgte breene dalene og gravde dem ut til dype U-daler. Der bunnen ligger under havnivå, er dalen en fjord.",
-  "Langs kysten ligger strandflaten: en lav, flat brem av tusenvis av øyer, holmer og skjær (0–50 moh), formet av frostforvitring, brenninger og kystbreer. Nøyaktig hvordan den ble dannet, er omdiskutert.",
+  "Langs kysten ligger strandflaten: en lav, flat brem av tusenvis av øyer, holmer og skjær (0–50 moh). Dannelsen er omdiskutert. Trolig har frostforvitring, brenninger og kystbreer virket sammen, kanskje i berg som var dypforvitret på forhånd.",
 ];
 const LS_W = 780;
 const LS_D = 300;
@@ -2326,7 +2323,7 @@ export function LandskapBlokk({
   const fx = 480;
   const labels: Lab[] = [
     {
-      text: "Vidda: gammel, nesten flat overflate",
+      text: "Vidda: nesten flat overflate",
       x: 940,
       y: 52,
       at: LS_PROJ(640, 250, 240),
@@ -2388,7 +2385,7 @@ export function LandskapBlokk({
       heading={heading}
       caption={
         caption ??
-        "Vidda er den gamle delen av landskapet. Fjordene og U-dalene ble gravd ut av breer under istidene, og strandflaten ligger som en lav brem av øyer og skjær langs kysten."
+        "Viddene regnes ofte som rester av et eldre, slakere landskap. Fjordene og U-dalene ble gravd ut av breer under istidene, og strandflaten ligger som en lav brem av øyer og skjær langs kysten."
       }
       playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
