@@ -224,8 +224,9 @@ function TsFigure() {
       caption={
         <>
           Egen figur. Tabellen er tallene fra oppgaven. Isopyknalene er regnet med UNESCO EOS-80 og
-          viser tetthet i kg/dm³, med et jevnt intervall på 0,0005 i hoveddiagrammet. Utsnittet
-          under er det samme området rundt A og B, med akser og isopyknaler. Frysepunktlinjen er
+          viser tetthet i kg/dm³, med et jevnt intervall på 0,0005 i hoveddiagrammet og 0,0001 i
+          utsnittet. Utsnittet under er det samme området rundt A og B, med akser og isopyknaler.
+          Frysepunktlinjen er
           regnet med UNESCOs formel. Diagrammet sier ikke hvilken vannmasse som er tyngst.
         </>
       }

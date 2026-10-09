@@ -249,13 +249,15 @@ class Placer:
 def contour_paths(lon, lat, field, levels):
     fig, ax = plt.subplots()
     cs = ax.contour(lon, lat, field, levels=levels)
-    paths = list(cs.get_paths())
-    level_of = []
-    # allsegs groups segments by level, in the same order as get_paths for line contours
+    out = []
+    # get_paths() drops segments on matplotlib 3.11. allsegs is the full set.
     for level, segs in zip(cs.levels, cs.allsegs):
-        level_of.extend([float(level)] * len(segs))
+        for seg in segs:
+            if len(seg) < 2:
+                continue
+            out.append((float(level), MPath(seg)))
     plt.close(fig)
-    return list(zip(level_of, paths))
+    return out
 
 
 def path_coords(path) -> list[tuple[float, float]]:
@@ -510,9 +512,10 @@ def build_analysis(land) -> None:
 
     placer = Placer()
     lx, ly = px(*LOW)
-    parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="13" fill="#102433"/>')
-    parts.append(halo(lx, ly + 5, "L", size=16, fill="#f7f5f2", weight=700, stroke="#102433"))
-    placer.reserve(lx, ly + 6, 40, 30)
+    parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="18" fill="#102433"/>')
+    parts.append(halo(lx, ly - 2, "L", size=15, fill="#f7f5f2", weight=700, stroke="#102433"))
+    parts.append(halo(lx, ly + 13, "968", size=11, fill="#f7f5f2", weight=650, stroke="#102433"))
+    placer.reserve(lx, ly + 4, 48, 40)
 
     xx, xy = px(*coast)
     parts.append(f'<circle cx="{xx:.1f}" cy="{xy:.1f}" r="4.5" fill="{MARK}" stroke="{PAPER}" stroke-width="1.5"/>')
@@ -576,6 +579,39 @@ def build_analysis(land) -> None:
             f'<rect x="{x - text_w / 2 - 2:.1f}" y="{y - 12:.1f}" width="{text_w + 4:.1f}" height="15" rx="2" fill="{PAPER}"/>'
         )
         parts.append(plain(x, y, text, size=12, fill=INK, anchor="middle", weight=650))
+
+    front_pts = [px(lon, lat) for line in (OCCLUDED, WARM_FRONT, COLD_FRONT) for lon, lat in line]
+    for level in levels:
+        if level in labeled:
+            continue
+        text = f"{level:.0f}"
+        text_w = placer.text_width(text, 12)
+        candidates = []
+        for item in items:
+            if item["level"] != level:
+                continue
+            for x, y in item["pts"][::4]:
+                if not frame.contains(Point(x, y)):
+                    continue
+                if math.hypot(x - lx, y - ly) < 36:
+                    continue
+                if any(math.hypot(x - fx, y - fy) < 22 for fx, fy in front_pts):
+                    continue
+                candidates.append((x, y))
+        if not candidates:
+            continue
+        # Prefer the south-west margin, away from the frontal symbols.
+        candidates.sort(key=lambda p: p[0] + p[1] * 0.15)
+        for x, y in candidates[:: max(1, len(candidates) // 12)]:
+            if placer.blocks(x, y, text_w, 14, gap=6):
+                continue
+            placer.reserve(x, y, text_w, 14)
+            labeled.add(level)
+            parts.append(
+                f'<rect x="{x - text_w / 2 - 2:.1f}" y="{y - 12:.1f}" width="{text_w + 4:.1f}" height="15" rx="2" fill="{PAPER}"/>'
+            )
+            parts.append(plain(x, y, text, size=12, fill=INK, anchor="middle", weight=650))
+            break
     print("labeled isobars", sorted(labeled), "missing", [level for level in levels if level not in labeled])
 
     parts.extend(axis_labels(px, frame, lons, lats))
@@ -812,7 +848,7 @@ def build_bathy(land) -> None:
     print("bathy window", field.shape, "min", np.nanmin(field), "max", np.nanmax(field))
 
     project = lambert(5, 66, 54, 76)
-    width, height = 1180, 1040
+    width, height = 1240, 1040
     inner = (64, 24, 1000, 980)
     px, frame = fit_projector(project, west, south, east, north, inner)
     lands = land_paths(land, px, west, south, east, north)
@@ -821,6 +857,7 @@ def build_bathy(land) -> None:
     grid = graticule(px, west, south, east, north, lons, lats)
     fills = filled_paths(lon_w, lat_w, np.ma.masked_invalid(field), BATHY_LEVELS)
     lines = contour_paths(lon_w, lat_w, np.ma.masked_invalid(field), BATHY_LINES)
+    drawn_lines: list[tuple[float, list[tuple[float, float]]]] = []
 
     parts = [rect(0, 0, width, height, PAPER), frame_rect(frame, "#102f40")]
     x0, y0, x1, y1 = frame.bounds
@@ -835,12 +872,15 @@ def build_bathy(land) -> None:
             parts.append(f'<path d="{"".join(rings)}" fill="{color}" fill-rule="evenodd"/>')
     for d in grid:
         parts.append(f'<path d="{d}" fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="0.7"/>')
-    for _, path in lines:
+    for level, path in lines:
         coords = path_coords(path)
         if len(coords) < 8:
             continue
         projected = [px(lo, la) for lo, la in coords]
         simple = LineString(projected).simplify(1.1, preserve_topology=False)
+        coords = [(float(x), float(y)) for x, y in simple.coords]
+        if len(coords) >= 4:
+            drawn_lines.append((float(level), coords))
         parts.append(
             f'<path d="{polyline(simple.coords)}" fill="none" stroke="#12313f" stroke-opacity="0.55" stroke-width="0.9"/>'
         )
@@ -880,6 +920,30 @@ def build_bathy(land) -> None:
             print("label still colliding", text)
         placer.reserve(x, y, text_w, size)
         parts.append(halo(x, y, text, size=size, fill=INK))
+    by_depth: dict[int, list[list[tuple[float, float]]]] = {}
+    for level, coords in drawn_lines:
+        by_depth.setdefault(int(round(abs(level))), []).append(coords)
+    for depth, segments in sorted(by_depth.items()):
+        text = f"{depth} m"
+        text_w = placer.text_width(text, 12)
+        placed = False
+        for coords in sorted(segments, key=len, reverse=True):
+            if placed:
+                break
+            step = max(1, len(coords) // 16)
+            for index in range(2, max(3, len(coords) - 2), step):
+                x, y = coords[index]
+                if not frame.contains(Point(x, y)) or placer.blocks(x, y, text_w, 14, gap=8):
+                    continue
+                placer.reserve(x, y, text_w, 14)
+                parts.append(
+                    f'<rect x="{x - text_w / 2 - 2:.1f}" y="{y - 11:.1f}" width="{text_w + 4:.1f}" height="14" rx="2" fill="{PAPER}" fill-opacity="0.92"/>'
+                )
+                parts.append(plain(x, y, text, size=12, fill=INK, anchor="middle", weight=650))
+                placed = True
+                break
+        if not placed:
+            print("unlabeled depth", depth, "segments", len(segments))
     parts.extend(axis_labels(px, frame, lons, lats))
     parts.append(frame_rect(frame, "none", "#9aa7ae"))
 
@@ -893,7 +957,7 @@ def build_bathy(land) -> None:
         (BATHY_COLORS[0], "dypere enn 3000 m"),
     ]
     lx, ly = 1024, 70
-    parts.append(f'<rect x="{lx - 8}" y="{ly - 28}" width="150" height="{36 + 32 * len(legend)}" rx="6" fill="{PAPER}" stroke="{GRID}"/>')
+    parts.append(f'<rect x="{lx - 8}" y="{ly - 28}" width="208" height="{36 + 32 * len(legend)}" rx="6" fill="{PAPER}" stroke="{GRID}"/>')
     parts.append(plain(lx, ly, "Dybde", size=15, anchor="start"))
     for i, (color, label) in enumerate(legend):
         y = ly + 28 + i * 32
@@ -1025,6 +1089,17 @@ def draw_ts_panel(s0, s1, t0, t1, levels, plot, s_ticks, t_ticks, points, title_
             placed = True
             break
         if not placed:
+            s, temp = pts[len(pts) // 2]
+            x = min(max(sx(s), l + 46), r - 46)
+            y = min(max(sy(temp), t + 16), b - 16)
+            if not placer.blocks(x, y, text_w, 14, gap=4):
+                placer.reserve(x, y, text_w, 14)
+                parts.append(
+                    f'<rect x="{x - text_w / 2 - 2:.1f}" y="{y - 12:.1f}" width="{text_w + 4:.1f}" height="15" rx="2" fill="#fbfcfd"/>'
+                )
+                parts.append(plain(x, y, text, size=12, fill="#1d4e89", anchor="middle", weight=650))
+                placed = True
+        if not placed:
             print("unlabeled isopycnal", level)
 
     for s in s_ticks:
@@ -1119,13 +1194,13 @@ def build_ctd() -> None:
         return deep + (surface - deep) * math.exp(-((z / scale) ** 1.15))
 
     panels = [
-        ("Temperaturprofil A", "Temperatur (°C)", -1, 6, lambda z: profile(z, 5.2, 0.4, 32), "#9a3412"),
-        ("Temperaturprofil B", "Temperatur (°C)", -2, 2, lambda z: -1.45 + 1.7 * (z / 175) ** 0.85, "#1d4e89"),
-        ("Salinitetsprofil C", "Salinitet (PSU)", 33.5, 35.0, lambda z: 34.62 + 0.12 * (z / 175), "#0f6f78"),
-        ("Salinitetsprofil D", "Salinitet (PSU)", 32.5, 35.0, lambda z: 34.85 - 2.15 * math.exp(-((z / 38) ** 1.2)), "#9a3412"),
+        ("Temperaturprofil A", "Temperatur (°C)", -1, 6, [-1, 0, 1, 2, 3, 4, 5, 6], lambda z: profile(z, 5.2, 0.4, 32), "#9a3412"),
+        ("Temperaturprofil B", "Temperatur (°C)", -2, 2, [-2, -1, 0, 1, 2], lambda z: -1.45 + 1.7 * (z / 175) ** 0.85, "#1d4e89"),
+        ("Salinitetsprofil C", "Salinitet (PSU)", 33.5, 35.0, [33.5, 34, 34.5, 35], lambda z: 34.62 + 0.12 * (z / 175), "#0f6f78"),
+        ("Salinitetsprofil D", "Salinitet (PSU)", 32.5, 35.0, [32.5, 33, 33.5, 34, 34.5, 35], lambda z: 34.85 - 2.15 * math.exp(-((z / 38) ** 1.2)), "#9a3412"),
     ]
     parts = [rect(0, 0, width, height, PAPER)]
-    for index, (title, xlabel, xmin, xmax, fn, color) in enumerate(panels):
+    for index, (title, xlabel, xmin, xmax, xticks, fn, color) in enumerate(panels):
         col, row = index % 2, index // 2
         ox, oy = 40 + col * 510, 24 + row * 420
         l, r, t, b = ox + 70, ox + 460, oy + 48, oy + 320
@@ -1136,7 +1211,6 @@ def build_ctd() -> None:
         def sy(depth, t=t, b=b):
             return t + depth / 175 * (b - t)
 
-        xticks = np.linspace(xmin, xmax, 4)
         for depth in depths:
             y = sy(depth)
             parts.append(f'<line x1="{l:.1f}" y1="{y:.1f}" x2="{r:.1f}" y2="{y:.1f}" stroke="{GRID}"/>')
@@ -1309,10 +1383,14 @@ def build_foehn() -> None:
     windward_800 = next(x for x, _ in crest if 2000 * ridge(x) >= 800)
     parts = [rect(0, 0, width, height, PAPER)]
     parts.append(rect(left, top, right - left, bottom - top, "#f3f7fa"))
-    for metres in (0, 800, 2000):
+    for metres in range(0, 2401, 400):
         y = y_of(metres)
-        parts.append(f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" stroke="{GRID}" stroke-dasharray="4 4"/>')
-        parts.append(plain(left - 10, y + 4, str(metres), size=13, anchor="end", weight=500))
+        emphasis = metres in (0, 800, 2000)
+        dash = "0" if metres == 0 else "4 4"
+        parts.append(
+            f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" stroke="{GRID}" stroke-width="{1.15 if emphasis else 0.8}" stroke-dasharray="{dash}"/>'
+        )
+        parts.append(plain(left - 10, y + 4, str(metres), size=13, anchor="end", weight=650 if emphasis else 500))
     parts.append(
         f'<text x="28" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="15" fill="{INK}" transform="rotate(-90 28 {(top + bottom) / 2:.1f})">Høyde (m)</text>'
     )
