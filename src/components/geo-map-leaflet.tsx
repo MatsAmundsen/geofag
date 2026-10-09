@@ -43,17 +43,34 @@ function boxesHit(
   return a.x - gap < b.x + b.w && a.x + a.w + gap > b.x && a.y - gap < b.y + b.h && a.y + a.h + gap > b.y;
 }
 
+type Box = { x: number; y: number; w: number; h: number };
+
 /**
- * fitBounds zooms out until every pin fits, which piles neighbouring places
- * on top of each other. Step in until the 25×41 pins no longer overlap.
+ * Lowest zoom whose 25×41 pins neither overlap nor touch the controls, with
+ * every pin fully inside the frame. Pans so that placement is the view.
+ * Returns false when the frame is too small for that zoom.
  */
-function zoomUntilPinsSeparate(map: L.Map, markers: GeoMapMarker[]) {
-  if (markers.length < 2) return;
+function layoutPins(map: L.Map, markers: GeoMapMarker[]) {
+  const size = map.getSize();
+  if (size.x < 50 || size.y < 50 || markers.length === 0) return false;
+  const container = map.getContainer();
+  const origin = container.getBoundingClientRect();
+  const obstacles: Box[] = [...container.querySelectorAll(".leaflet-control")]
+    .map((el) => {
+      const rect = el.getBoundingClientRect();
+      return { x: rect.left - origin.left, y: rect.top - origin.top, w: rect.width, h: rect.height };
+    })
+    .filter((box) => box.w > 0 && box.h > 0);
+
   const latlngs = markers.map((marker) => L.latLng(marker.lat, marker.lng));
-  let zoom = map.getZoom();
   const maxZoom = Math.min(map.getMaxZoom(), 8);
-  const separated = (candidate: number) => {
-    const boxes = latlngs.map((latlng) => pinBox(map.project(latlng, candidate)));
+  const minZoom = map.getMinZoom();
+  const margin = 4;
+
+  const boxesAt = (zoom: number): Box[] =>
+    latlngs.map((latlng) => pinBox(map.project(latlng, zoom)));
+
+  const separated = (boxes: Box[]) => {
     for (let i = 0; i < boxes.length; i += 1) {
       for (let j = i + 1; j < boxes.length; j += 1) {
         if (boxesHit(boxes[i], boxes[j], 1)) return false;
@@ -61,10 +78,84 @@ function zoomUntilPinsSeparate(map: L.Map, markers: GeoMapMarker[]) {
     }
     return true;
   };
-  while (zoom < maxZoom && !separated(zoom)) zoom += 1;
-  if (zoom !== map.getZoom()) {
-    map.setZoom(zoom, { animate: false });
+
+  const spanOf = (boxes: Box[]) => {
+    const minX = Math.min(...boxes.map((box) => box.x));
+    const minY = Math.min(...boxes.map((box) => box.y));
+    const maxX = Math.max(...boxes.map((box) => box.x + box.w));
+    const maxY = Math.max(...boxes.map((box) => box.y + box.h));
+    return { minX, minY, maxX, maxY, w: maxX - minX, h: maxY - minY };
+  };
+
+  const place = (zoom: number) => {
+    const boxes = boxesAt(zoom);
+    if (!separated(boxes)) return null;
+    const span = spanOf(boxes);
+    const minTx = margin;
+    const minTy = margin;
+    const maxTx = size.x - margin - span.w;
+    const maxTy = size.y - margin - span.h;
+    if (maxTx < minTx || maxTy < minTy) return null;
+
+    const fits = (tx: number, ty: number) => {
+      const rects = boxes.map((box) => ({
+        x: tx + (box.x - span.minX),
+        y: ty + (box.y - span.minY),
+        w: box.w,
+        h: box.h,
+      }));
+      const inside = rects.every(
+        (rect) => rect.x >= margin - 0.5 && rect.y >= margin - 0.5 && rect.x + rect.w <= size.x - margin + 0.5 && rect.y + rect.h <= size.y - margin + 0.5,
+      );
+      const clear = rects.every((rect) => obstacles.every((obstacle) => !boxesHit(rect, obstacle, 2)));
+      return inside && clear;
+    };
+
+    const cx = (minTx + maxTx) / 2;
+    const cy = (minTy + maxTy) / 2;
+    const candidates: { tx: number; ty: number }[] = [];
+    for (let iy = 0; iy <= 8; iy += 1) {
+      for (let ix = 0; ix <= 8; ix += 1) {
+        candidates.push({
+          tx: minTx + ((maxTx - minTx) * ix) / 8,
+          ty: minTy + ((maxTy - minTy) * iy) / 8,
+        });
+      }
+    }
+    candidates.sort((a, b) => (a.tx - cx) ** 2 + (a.ty - cy) ** 2 - ((b.tx - cx) ** 2 + (b.ty - cy) ** 2));
+    const found = candidates.find((candidate) => fits(candidate.tx, candidate.ty));
+    if (!found) return null;
+    return { zoom, tx: found.tx, ty: found.ty, span };
+  };
+
+  let placement: ReturnType<typeof place> = null;
+  for (let zoom = minZoom; zoom <= maxZoom; zoom += 1) {
+    placement = place(zoom);
+    if (placement) break;
   }
+  if (!placement) return false;
+
+  // Layer point that should sit at the container centre so the pin box lands on (tx, ty).
+  const layerAtCenter = L.point(
+    placement.span.minX + size.x / 2 - placement.tx,
+    placement.span.minY + size.y / 2 - placement.ty,
+  );
+  const sameView =
+    map.getZoom() === placement.zoom && map.project(map.getCenter(), placement.zoom).distanceTo(layerAtCenter) < 1;
+  if (!sameView) {
+    map.setView(map.unproject(layerAtCenter, placement.zoom), placement.zoom, { animate: false });
+  }
+  return true;
+}
+
+function nameMarkers(map: L.Map) {
+  map.getContainer().querySelectorAll<HTMLElement>(".leaflet-marker-icon").forEach((el) => {
+    const name = el.getAttribute("alt") || el.getAttribute("title") || "";
+    if (!name) return;
+    el.setAttribute("alt", name);
+    el.setAttribute("title", name);
+    el.setAttribute("aria-label", name);
+  });
 }
 
 function MapA11y({ markerCount }: { markerCount: number }) {
@@ -105,65 +196,43 @@ function MapA11y({ markerCount }: { markerCount: number }) {
   return null;
 }
 
-function rectsHit(a: DOMRect, b: DOMRect, gap: number) {
-  return a.left - gap < b.right && a.right + gap > b.left && a.top - gap < b.bottom && a.bottom + gap > b.top;
-}
-
-/**
- * A pin that is cut off by the map edge or covered by a control is not a 24×24
- * target. Keep the place name, but drop it from the tab order so it is an image.
- */
-function releaseObscuredPins(map: L.Map) {
-  const container = map.getContainer();
-  const mapRect = container.getBoundingClientRect();
-  const obstacles = [...container.querySelectorAll(".leaflet-control")].map((el) => el.getBoundingClientRect());
-  container.querySelectorAll<HTMLElement>(".leaflet-marker-icon").forEach((el) => {
-    const pin = el.getBoundingClientRect();
-    const name = el.getAttribute("alt") || el.getAttribute("title") || "";
-    el.setAttribute("alt", name);
-    el.setAttribute("title", name);
-    el.setAttribute("aria-label", name);
-    const inside =
-      pin.left >= mapRect.left - 0.5 &&
-      pin.top >= mapRect.top - 0.5 &&
-      pin.right <= mapRect.right + 0.5 &&
-      pin.bottom <= mapRect.bottom + 0.5;
-    const hitsControl = obstacles.some((obstacle) => rectsHit(pin, obstacle, 2));
-    if (inside && !hitsControl && pin.width >= 24 && pin.height >= 24) {
-      el.setAttribute("role", "button");
-      el.tabIndex = 0;
-      el.style.pointerEvents = "";
-      return;
-    }
-    el.setAttribute("role", "img");
-    el.removeAttribute("tabindex");
-    el.style.pointerEvents = "none";
-  });
-}
-
-function SeparatePins({ markers }: { markers: GeoMapMarker[] }) {
+function FramePins({ markers, fitMarkers }: { markers: GeoMapMarker[]; fitMarkers?: boolean }) {
   const map = useMap();
   useEffect(() => {
-    let zoomed = false;
     let frame = 0;
+    let restoreTimer = 0;
+    let applying = false;
     const apply = () => {
-      if (!zoomed) {
-        zoomUntilPinsSeparate(map, markers);
-        zoomed = true;
+      if (applying || map.getContainer().querySelector(".leaflet-popup")) return;
+      applying = true;
+      try {
+        if (fitMarkers && markers.length > 1) layoutPins(map, markers);
+        nameMarkers(map);
+      } finally {
+        applying = false;
       }
-      releaseObscuredPins(map);
     };
     const schedule = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(apply);
     };
+    // The popup node stays in the DOM for the 200 ms fade, so wait until it is gone
+    // before fitting the pins back inside the frame.
+    const restoreAfterPopup = () => {
+      window.clearTimeout(restoreTimer);
+      restoreTimer = window.setTimeout(schedule, 280);
+    };
     map.whenReady(schedule);
-    map.on("layeradd zoomend moveend", schedule);
+    map.on("popupclose", restoreAfterPopup);
+    const observer = new ResizeObserver(schedule);
+    observer.observe(map.getContainer());
     return () => {
       cancelAnimationFrame(frame);
-      map.off("layeradd zoomend moveend", schedule);
+      window.clearTimeout(restoreTimer);
+      map.off("popupclose", restoreAfterPopup);
+      observer.disconnect();
     };
-  }, [map, markers]);
+  }, [map, markers, fitMarkers]);
   return null;
 }
 
@@ -181,17 +250,10 @@ export default function LeafletMap({
   fitMarkers?: boolean;
 }) {
   const [reduceMotion] = useState(() => prefersReducedMotion());
-  const bounds =
-    fitMarkers && markers.length > 1 ? L.latLngBounds(markers.map((m) => [m.lat, m.lng] as [number, number])) : undefined;
   return (
-    <>
     <MapContainer
-      // react-leaflet bruker center/zoom foran bounds, så de må utelates når kartet skal tilpasses markørene.
-      center={bounds ? undefined : center}
-      zoom={bounds ? undefined : zoom}
-      bounds={bounds}
-      // Ekstra luft i toppen, så markørnålen (41 px høy) ikke kuttes.
-      boundsOptions={bounds ? { paddingTopLeft: [24, 52], paddingBottomRight: [24, 16], animate: false } : undefined}
+      center={center}
+      zoom={zoom}
       className={className}
       zoomControl={false}
       scrollWheelZoom={false}
@@ -218,15 +280,7 @@ export default function LeafletMap({
           <Popup>{m.label}</Popup>
         </Marker>
       ))}
-      <SeparatePins markers={markers} />
+      <FramePins markers={markers} fitMarkers={fitMarkers} />
     </MapContainer>
-    {markers.length > 0 ? (
-      <ol aria-hidden="true" className="m-0 list-none space-y-1 border-t border-border px-4 py-3 text-sm leading-snug text-foreground">
-        {markers.map((marker) => (
-          <li key={`${marker.lat},${marker.lng},${marker.label}`}>{marker.label}</li>
-        ))}
-      </ol>
-    ) : null}
-    </>
   );
 }
