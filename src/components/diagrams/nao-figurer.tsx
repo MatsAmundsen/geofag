@@ -27,6 +27,11 @@ const H_COL = "#7cc4ff";
 
 const r1 = (v: number) => Math.round(v * 10) / 10;
 type Proj = (lon: number, lat: number) => [number, number];
+/** Avrundet, så server og nettleser skriver like tall (Math.sin/cos kan avvike i siste siffer). */
+const na: Proj = (lon, lat) => {
+  const [x, y] = naXY(lon, lat);
+  return [r1(x), r1(y)];
+};
 
 /** Glatt kurve gjennom geografiske punkter. */
 function curveThrough(proj: Proj, pts: [number, number][]) {
@@ -127,16 +132,17 @@ const G_CX = 480;
 const G_CY = 268;
 const gp: Proj = (lon, lat) => {
   const [x, y] = globeXY(lon, lat);
-  return [G_CX + x * G_S, G_CY + y * G_S];
+  return [r1(G_CX + x * G_S), r1(G_CY + y * G_S)];
 };
 const G_ISL = gp(-22, 63);
 const G_AZ = gp(-30, 38);
 const G_STORM = {
   positiv: curveThrough(gp, [
-    [-62, 44],
-    [-42, 50],
-    [-22, 57],
-    [-2, 62],
+    [-72, 40],
+    [-52, 47],
+    [-32, 53.5],
+    [-12, 58],
+    [6, 62],
   ]),
   negativ: curveThrough(gp, [
     [-66, 38],
@@ -156,28 +162,28 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
   const labels: Lab[] = [
     {
       text: pos ? "Sterkt Islandslavtrykk" : "Svakt Islandslavtrykk",
-      x: 120,
-      y: 80,
+      x: 20,
+      y: 90,
       at: [G_ISL[0] - 30, G_ISL[1] - 20],
       color: L_COL,
       badge: [G_ISL[0] - 50, G_ISL[1] - 40],
     },
     {
       text: pos ? "Sterkt Asorhøytrykk" : "Svakt Asorhøytrykk",
-      x: 120,
-      y: 470,
+      x: 20,
+      y: pos ? 430 : 520,
       at: [G_AZ[0] - 30, G_AZ[1] + 20],
       color: H_COL,
       badge: [G_AZ[0] - 50, G_AZ[1] + 40],
     },
     {
-      text: pos ? "Stormbanen går lenger nord, mot Nord-Europa" : "Stormbanen går lenger sør, mot Sør-Europa",
-      x: 840,
+      text: pos ? "Stormbane mot Nord-Europa" : "Stormbane mot Sør-Europa",
+      x: 940,
       y: pos ? 70 : 500,
-      at: pos ? [nEu[0] - 70, nEu[1] + 10] : [sEu[0] - 60, sEu[1] + 4],
+      at: pos ? gp(4, 61.6) : [sEu[0] - 60, sEu[1] + 4],
       color: "#bff0c8",
       anchor: "end",
-      badge: pos ? [nEu[0] - 90, nEu[1] + 30] : [sEu[0] - 70, sEu[1] + 30],
+      badge: pos ? [nEu[0] - 90, nEu[1] + 30] : [sEu[0] - 40, sEu[1] - 34],
     },
     {
       text: pos ? "Mildt og vått i Nord-Europa" : "Kaldt og tørt i Nord-Europa",
@@ -189,7 +195,7 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
       badge: [nEu[0] + 20, nEu[1] - 30],
     },
     {
-      text: pos ? "Tørrere og ofte kaldere i Sør-Europa" : "Mildere og våtere i Sør-Europa",
+      text: pos ? "Tørt, ofte kaldt i Sør-Europa" : "Mildt og vått i Sør-Europa",
       x: 940,
       y: 410,
       at: [sEu[0] + 30, sEu[1] + 6],
@@ -200,9 +206,9 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
   ];
   if (!pos)
     labels.push({
-      text: "Kaldluftsutbrudd i det østlige Nord-Amerika",
-      x: 40,
-      y: 300,
+      text: "Kaldluft i østlige Nord-Amerika",
+      x: 20,
+      y: 440,
       at: [eUs[0] - 10, eUs[1]],
       color: "#a8d8f5",
       badge: [eUs[0] - 30, eUs[1] + 10],
@@ -242,7 +248,7 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
               <stop offset="100%" stopColor="#10283a" />
             </radialGradient>
           </defs>
-          <circle cx={G_CX} cy={G_CY} r={200 * G_S} fill={`url(#${uid}-sea)`} stroke="#9fb6c4" strokeOpacity={0.5} strokeWidth={1.5} />
+          <circle cx={G_CX} cy={G_CY} r={200 * G_S} fill={`url(#${uid}-sea)`} stroke="#9fb6c4" strokeOpacity={0.5} strokeWidth={1.5} data-nocheck="" />
           <g clipPath={`url(#${uid}-globe)`}>
             <path
               d={GLOBE_LAND}
@@ -268,9 +274,9 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
             <Isobarer x={G_AZ[0]} y={G_AZ[1]} n={pos ? 3 : 1} rx={30} ry={17} color={H_COL} />
           </g>
           <path d={G_STORM[fase]} fill="none" stroke="#0b1318" strokeOpacity={0.6} strokeWidth={14} strokeLinecap="round" />
-          <path d={G_STORM[fase]} fill="none" stroke="#5fd27a" strokeWidth={7} strokeLinecap="round" markerEnd={`url(#${m.teal})`} />
-          <Trykk x={G_ISL[0]} y={G_ISL[1]} kind="L" scale={scale} size={pos ? 40 : 28} strong={pos} />
-          <Trykk x={G_AZ[0]} y={G_AZ[1]} kind="H" scale={scale} size={pos ? 40 : 28} strong={pos} />
+          <path d={G_STORM[fase]} fill="none" stroke="#5fd27a" strokeWidth={5} strokeLinecap="round" markerEnd={`url(#${m.teal})`} />
+          <Trykk x={G_ISL[0]} y={G_ISL[1]} kind="L" scale={scale} size={pos ? 30 : 22} strong={pos} />
+          <Trykk x={G_AZ[0]} y={G_AZ[1]} kind="H" scale={scale} size={pos ? 30 : 22} strong={pos} />
         </g>
       )}
     </IsbreFigur>
@@ -290,17 +296,17 @@ function NaKart({ fill = LAND, edge = LAND_EDGE }: { fill?: string; edge?: strin
   );
 }
 
-const ISL = naXY(-22, 63);
-const AZ = naXY(-28, 38.5);
+const ISL = na(-22, 63);
+const AZ = na(-28, 38.5);
 
 export function NaoOmradeFigur({ heading, caption }: { heading: string; caption: ReactNode }) {
   const steder: { t: string; p: [number, number]; c?: string }[] = [
-    { t: "Nord-Atlanteren", p: naXY(-38, 48), c: "#bfe0ef" },
-    { t: "Grønland", p: naXY(-42, 74) },
-    { t: "Nord-Amerika", p: naXY(-88, 50) },
-    { t: "Europa", p: naXY(22, 50) },
-    { t: "Norge", p: naXY(10, 62.5) },
-    { t: "Nord-Afrika", p: naXY(4, 27) },
+    { t: "Nord-Atlanteren", p: na(-38, 48), c: "#bfe0ef" },
+    { t: "Grønland", p: na(-42, 74) },
+    { t: "Nord-Amerika", p: na(-88, 50) },
+    { t: "Europa", p: na(22, 50) },
+    { t: "Norge", p: na(10, 62.5) },
+    { t: "Nord-Afrika", p: na(4, 27) },
   ];
   const labels: Lab[] = [
     ...steder.map((s) => ({
@@ -313,8 +319,8 @@ export function NaoOmradeFigur({ heading, caption }: { heading: string; caption:
     })),
     { text: "Island", x: ISL[0] + 64, y: ISL[1] - 28, at: [ISL[0] + 18, ISL[1] - 12], color: "#f2e3c6", anchor: "start", badge: [ISL[0] + 44, ISL[1] - 26] },
     { text: "Islandslavtrykket", x: ISL[0] - 40, y: ISL[1] + 74, at: [ISL[0] - 8, ISL[1] + 30], color: L_COL, anchor: "end", weight: 700, badge: [ISL[0] - 40, ISL[1] + 52] },
-    { text: "Asorene", x: AZ[0] + 60, y: AZ[1] + 54, at: [AZ[0] + 6, AZ[1] + 22], color: "#f2e3c6", anchor: "start", badge: [AZ[0] + 40, AZ[1] + 42] },
-    { text: "Asorhøytrykket", x: AZ[0] - 50, y: AZ[1] - 52, at: [AZ[0] - 10, AZ[1] - 30], color: H_COL, anchor: "end", weight: 700, badge: [AZ[0] - 48, AZ[1] - 44] },
+    { text: "Asorene", x: AZ[0] + 64, y: AZ[1] + 58, at: [AZ[0] + 22, AZ[1] + 24], color: "#f2e3c6", anchor: "start", badge: [AZ[0] + 40, AZ[1] + 42] },
+    { text: "Asorhøytrykket", x: AZ[0] - 66, y: AZ[1] - 62, at: [AZ[0] - 32, AZ[1] - 30], color: H_COL, anchor: "end", weight: 700, badge: [AZ[0] - 48, AZ[1] - 44] },
   ];
   return (
     <IsbreFigur
@@ -349,7 +355,7 @@ const PV_CX = 480;
 const PV_CY = 278;
 const pvp: Proj = (lon, lat) => {
   const [x, y] = globeXY(lon, lat);
-  return [PV_CX + x * PV_S, PV_CY + y * PV_S];
+  return [r1(PV_CX + x * PV_S), r1(PV_CY + y * PV_S)];
 };
 const tr = `translate(${PV_CX} ${PV_CY}) scale(${PV_S})`;
 /** Stabil: samlet virvel rundt polen og en jevn jetstrøm lenger nord. */
@@ -404,27 +410,27 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
   const pole = pvp(0, 90);
   const labels: Lab[] = [
     {
-      text: "Polarvirvelen: stratosfæren, ca. 16–48 km over bakken",
+      text: "Polarvirvelen",
       x: 940,
-      y: 64,
+      y: 120,
       at: [pvLab[0] + 40, pvLab[1] - 14],
       color: "#a9c8ff",
       anchor: "end",
       badge: [pvLab[0] + 70, pvLab[1] - 34],
     },
     {
-      text: "Polarjetstrømmen: lavere, i troposfæren",
-      x: 30,
+      text: "Polarjetstrømmen",
+      x: 20,
       y: st ? 220 : 330,
       at: [jetLab[0], jetLab[1]],
       color: "#bfe6ff",
       badge: [jetLab[0] - 26, jetLab[1] + 16],
     },
     st
-      ? { text: "Kald luft holdes i Arktis", x: pole[0], y: pole[1] + 120, color: C.fg, anchor: "middle", halo: "#0b1318", badge: [pole[0], pole[1] + 110] }
+      ? { text: "Kald luft holdes i Arktis", x: 940, y: 300, at: [pole[0] + 14, pole[1] + 64], color: C.fg, anchor: "end", badge: [pole[0] + 36, pole[1] + 84] }
       : { text: "Kald luft går sørover", x: 940, y: 300, at: [pvp(-10, 50)[0] + 8, pvp(-10, 50)[1]], color: "#e6f3ff", anchor: "end", badge: [pvp(-10, 50)[0] + 30, pvp(-10, 50)[1] + 10] },
     st
-      ? { text: "Lenger nord, sterk strøm fra vest mot øst", x: 940, y: 470, at: [pvp(-10, 57)[0] + 10, pvp(-10, 57)[1] + 6], color: "#bfe6ff", anchor: "end", badge: [pvp(-10, 57)[0] + 30, pvp(-10, 57)[1] + 26] }
+      ? { text: "Sterk strøm fra vest mot øst", x: 940, y: 470, at: [pvp(-10, 57)[0] + 10, pvp(-10, 57)[1] + 6], color: "#bfe6ff", anchor: "end", badge: [pvp(-10, 57)[0] + 30, pvp(-10, 57)[1] + 26] }
       : { text: "Lenger sør, bølgete strøm", x: 940, y: 470, at: [pvp(-40, wavyLat(-40))[0], pvp(-40, wavyLat(-40))[1] + 8], color: "#bfe6ff", anchor: "end", badge: [pvp(-40, wavyLat(-40))[0] + 20, pvp(-40, wavyLat(-40))[1] + 30] },
   ];
   if (!st)
@@ -433,12 +439,12 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
       x: 30,
       y: 470,
       at: [pvp(-50, 38)[0] - 6, pvp(-50, 38)[1]],
-      color: "#ff9f8f",
+      color: C.warm,
       badge: [pvp(-50, 38)[0] - 26, pvp(-50, 38)[1] + 6],
     });
   const keys: Key[] = [
-    { text: "Polarvirvelen (stratosfæren)", color: "#6f8fe8", kind: "fill" },
-    { text: "Polarjetstrømmen (troposfæren)", color: "#bfe6ff", kind: "line" },
+    { text: "Polarvirvelen (stratosfæren, ca. 16–48 km over bakken)", color: "#6f8fe8", kind: "fill" },
+    { text: "Polarjetstrømmen (lavere, i troposfæren)", color: "#bfe6ff", kind: "line" },
   ];
   return (
     <IsbreFigur
@@ -473,7 +479,7 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
               <circle cx={PV_CX} cy={PV_CY} r={200 * PV_S} />
             </clipPath>
           </defs>
-          <circle cx={PV_CX} cy={PV_CY} r={200 * PV_S} fill="#2a3a46" stroke="#9fb6c4" strokeOpacity={0.5} strokeWidth={1.5} />
+          <circle cx={PV_CX} cy={PV_CY} r={200 * PV_S} fill="#2a3a46" stroke="#9fb6c4" strokeOpacity={0.5} strokeWidth={1.5} data-nocheck="" />
           <g clipPath={`url(#${uid}-g)`}>
             <path d={GLOBE_LAND} transform={tr} fill="#6b7680" stroke="#a7b1b8" strokeWidth={0.6} data-nocheck="" />
           </g>
@@ -502,7 +508,7 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
               <path d={LOBE_A} transform={tr} fill="#6f8fe8" fillOpacity={0.5} stroke="#a9c8ff" strokeWidth={2} data-nocheck="" />
               <path d={LOBE_B} transform={tr} fill="#6f8fe8" fillOpacity={0.5} stroke="#a9c8ff" strokeWidth={2} data-nocheck="" />
               {VARM_PILER.map((d) => (
-                <path key={d} d={d} fill="none" stroke="#ff7b6b" strokeWidth={4} markerEnd={`url(#${m.warm})`} />
+                <path key={d} d={d} fill="none" stroke={C.warm} strokeWidth={4} markerEnd={`url(#${m.warm})`} />
               ))}
               {KALD_PILER.map((d) => (
                 <path key={d} d={d} fill="none" stroke="#e6f3ff" strokeWidth={4} markerEnd={`url(#${m.fg})`} />
@@ -521,9 +527,9 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
 
 const JET_KART = {
   positiv: curveThrough(naXY, [
-    [-92, 34],
-    [-75, 38],
-    [-55, 44],
+    [-96, 39],
+    [-78, 40.5],
+    [-56, 45],
     [-35, 52],
     [-15, 58],
     [5, 63],
@@ -557,22 +563,26 @@ export function NaoKartFigur({
   const motion = useAnimationPlaying();
   const [fase, setFase] = useState<NaoFase>(initialFase);
   const pos = fase === "positiv";
-  const nEu = naXY(12, 61);
-  const sEu = naXY(8, 41);
-  const ca = naXY(-70, 57);
-  const eUs = naXY(-80, 36);
-  const warmSea = pos ? naXY(-62, 33) : naXY(-28, 47);
-  const coolSea = pos ? naXY(-30, 27) : naXY(-55, 37);
-  const jetLab = pos ? naXY(-55, 44) : naXY(-55, 58);
+  const nEu = na(12, 61);
+  const sEu = na(8, 41);
+  const ca = na(-82, 60);
+  const eUs = na(-79, 33.5);
+  const warmSea = pos ? na(-62, 33) : na(-28, 47);
+  const coolSea = pos ? na(-30, 27) : na(-55, 37);
+  const jetLab = pos ? na(-56, 45) : na(-47, 61.2);
   const labels: Lab[] = [
     { text: pos ? "Mildt og vått" : "Kaldt og tørt", x: nEu[0], y: nEu[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [nEu[0], nEu[1]] },
-    { text: pos ? "Kaldere og tørt" : "Mildt og vått", x: sEu[0], y: sEu[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [sEu[0], sEu[1]] },
+    { text: pos ? "Kaldere og tørt" : "Mildt og vått", x: sEu[0], y: pos ? sEu[1] + 6 : sEu[1] - 22, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [sEu[0], sEu[1]] },
     { text: pos ? "Kaldt" : "Mildt", x: ca[0], y: ca[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [ca[0], ca[1]] },
     { text: pos ? "Mildt og vått" : "Kaldt", x: eUs[0] + 26, y: eUs[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [eUs[0] + 26, eUs[1]] },
     { text: "Varmere hav", x: warmSea[0], y: warmSea[1] + 6, color: "#ffd2ae", anchor: "middle", badge: [warmSea[0], warmSea[1]] },
     { text: "Kjøligere hav", x: coolSea[0], y: coolSea[1] + 6, color: "#bfe6ff", anchor: "middle", badge: [coolSea[0], coolSea[1]] },
-    { text: "Jetstrøm", x: jetLab[0] - 30, y: jetLab[1] - 30, at: [jetLab[0], jetLab[1] - 6], color: JET, anchor: "end", weight: 700, badge: [jetLab[0] - 20, jetLab[1] - 26] },
-    { text: pos ? "Sterkt lavtrykk" : "Svakt lavtrykk", x: ISL[0] + 46, y: ISL[1] + 52, color: L_COL, anchor: "start", weight: 700, badge: [ISL[0] + 40, ISL[1] + 36] },
+    pos
+      ? { text: "Jetstrøm", x: jetLab[0] - 30, y: jetLab[1] - 30, at: [jetLab[0], jetLab[1] - 6], color: JET, anchor: "end", weight: 700, badge: [jetLab[0] - 20, jetLab[1] - 26] }
+      : { text: "Jetstrøm", x: jetLab[0] - 70, y: jetLab[1] - 30, at: [jetLab[0] - 6, jetLab[1] - 7], color: JET, anchor: "end", weight: 700, halo: "#0b1318", badge: [jetLab[0] + 20, jetLab[1] - 28] },
+    pos
+      ? { text: "Sterkt lavtrykk", x: ISL[0] - 50, y: ISL[1] + 8, color: L_COL, anchor: "end", weight: 700, halo: "#0b1318", badge: [ISL[0] - 44, ISL[1] - 20] }
+      : { text: "Svakt lavtrykk", x: ISL[0] + 40, y: ISL[1] + 8, color: L_COL, anchor: "start", weight: 700, halo: "#0b1318", badge: [ISL[0] + 36, ISL[1] - 20] },
     { text: pos ? "Sterkt høytrykk" : "Svakt høytrykk", x: AZ[0] + 46, y: AZ[1] + 10, color: H_COL, anchor: "start", weight: 700, badge: [AZ[0] + 44, AZ[1] - 6] },
   ];
   const keys: Key[] = [
