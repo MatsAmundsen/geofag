@@ -9,7 +9,7 @@
  * er NOAA OISST v2.1 for 24. september 2026. Kartgrunnlaget ligger ferdig i klima-kart.ts, så ingenting
  * tungt beregnes under serverrendering.
  */
-import { useState, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
@@ -70,7 +70,7 @@ function Gradnett({ scale, x0 = 0, x1 = 960 }: { scale: number; x0?: number; x1?
             />
             <text
               x={x1 - 8}
-              y={y - 6}
+              y={lat > 0 ? y + fs + 4 : y - 6}
               textAnchor="end"
               fontSize={fs}
               fill="#cfe3ee"
@@ -99,7 +99,7 @@ function Trykk({ at, kind, scale, size = 34, color }: { at: [number, number]; ki
   const col = color ?? (kind === "L" ? "#ff8b7a" : "#7cc4ff");
   return (
     <g aria-hidden="true">
-      <circle cx={x} cy={y} r={fs * 0.72} fill="#0b1318" fillOpacity={0.55} stroke={col} strokeWidth={2.2} />
+      <circle cx={x} cy={y} r={fs * 0.88} fill="#0b1318" fillOpacity={0.55} stroke={col} strokeWidth={2.2} />
       <text x={x} y={y + fs * 0.36} textAnchor="middle" fontSize={fs} fontWeight={800} fill={col}>
         {kind}
       </text>
@@ -144,7 +144,7 @@ const FASE_STATUS: Record<IodFase, string> = {
 /** Kartvindu for fasefigurene: 20° Ø–150° Ø, 34° N–50° S. */
 const FASE_VB = (() => {
   const top = xy(20, 34)[1];
-  const bot = xy(20, -50)[1];
+  const bot = xy(20, -54)[1];
   return `0 ${r1(top)} 960 ${r1(bot - top)}`;
 })();
 
@@ -156,19 +156,19 @@ const POOLS = {
 
 /** Mats' jetstrømlinje i figur 1: fra sør for Afrika, opp mot Sør-Australia og videre østover. */
 const JET_IOD = geoCurve([
-  [20, -46],
-  [45, -45],
-  [70, -43],
-  [95, -40],
-  [112, -35],
-  [122, -31.5],
-  [136, -32],
-  [150, -34],
+  [20, -43],
+  [45, -42.5],
+  [70, -41],
+  [95, -38.5],
+  [112, -34],
+  [122, -30],
+  [136, -30],
+  [150, -33],
 ]);
 /** Mats' L-merker langs jetstrømmen (lavtrykk i vestavindsbeltet). */
 const LAV_JET: [number, number][] = [
-  [30, -49],
-  [60, -47.5],
+  [32, -47.5],
+  [62, -46],
 ];
 
 function PoolGrad({ id, color }: { id: string; color: string }) {
@@ -262,29 +262,27 @@ export function IodFaseFigur({
   const pos = fase === "positiv";
   const [wx, wy] = xy(POOLS.vest.lon, POOLS.vest.lat);
   const [ox, oy] = xy(POOLS.ost.lon, POOLS.ost.lat);
-  const upw = xy(104, -9);
+  const upw = xy(107, -11);
   const afrika = xy(38, -2);
   const indonesia = xy(112, -1);
   const aus = xy(134, -26);
-  const sAus = xy(140, -33);
+  const sAus = xy(140, -28);
   const labels: Lab[] = [
     {
       text: pos ? "Varmere enn normalt" : "Kjøligere enn normalt",
       x: wx,
-      y: wy + 78,
-      at: [wx, wy + 22],
+      y: xy(20, -15)[1],
       color: pos ? "#ffc39a" : "#a8d8f5",
       anchor: "middle",
-      badge: [wx - 40, wy + 70],
+      badge: [wx - 70, xy(20, -9)[1]],
     },
     {
       text: pos ? "Kjøligere enn normalt" : "Varmere enn normalt",
-      x: ox - 10,
-      y: oy + 84,
-      at: [ox, oy + 30],
+      x: xy(92, 0)[0],
+      y: xy(20, -19)[1],
       color: pos ? "#a8d8f5" : "#ffc39a",
       anchor: "middle",
-      badge: [ox - 46, oy + 62],
+      badge: [xy(88, 0)[0], xy(20, -14)[1]],
     },
     {
       text: pos ? "Lufta stiger: skyer og regn (konveksjon)" : "Lufta stiger over det varme havet: mer skyer og regn",
@@ -322,9 +320,9 @@ export function IodFaseFigur({
     },
     {
       text: "Jetstrøm",
-      x: xy(70, -43)[0],
-      y: xy(70, -43)[1] - 18,
-      at: [xy(70, -43)[0], xy(70, -43)[1] - 4],
+      x: xy(70, -41)[0],
+      y: xy(70, -41)[1] - 18,
+      at: [xy(70, -41)[0], xy(70, -41)[1] - 4],
       color: JET,
       anchor: "middle",
       weight: 700,
@@ -334,22 +332,22 @@ export function IodFaseFigur({
   if (pos)
     labels.push({
       text: "Oppvelling: kaldt vann stiger opp",
-      x: upw[0] + 60,
-      y: upw[1] + 70,
-      at: [upw[0] + 6, upw[1] + 14],
+      x: upw[0] - 24,
+      y: xy(20, -27)[1],
+      at: [upw[0], upw[1] + 16],
       color: "#a8d8f5",
-      anchor: "start",
-      badge: [upw[0] + 34, upw[1] + 40],
+      anchor: "end",
+      badge: [upw[0] + 30, upw[1] + 26],
     });
   else
     labels.push({
       text: "Mindre oppvelling nær Indonesia",
-      x: upw[0] + 60,
-      y: upw[1] + 70,
-      at: [upw[0] + 6, upw[1] + 14],
+      x: upw[0] - 24,
+      y: xy(20, -27)[1],
+      at: [upw[0], upw[1] + 16],
       color: "#a8d8f5",
-      anchor: "start",
-      badge: [upw[0] + 34, upw[1] + 40],
+      anchor: "end",
+      badge: [upw[0] + 30, upw[1] + 26],
     });
   const keys: Key[] = [
     { text: "Varmere hav enn normalt", color: WARM, kind: "fill" },
@@ -358,6 +356,7 @@ export function IodFaseFigur({
     { text: "Jetstrøm (Mats' linje)", color: JET, kind: "line" },
   ];
   const flow = motion.playing;
+  const gid = useId().replace(/:/g, "");
   return (
     <IsbreFigur
       title={title}
@@ -382,12 +381,12 @@ export function IodFaseFigur({
       {({ m, scale }) => (
         <g className={motion.motionClass} data-figur="iod-fase" data-fase={fase}>
           <defs>
-            <PoolGrad id="iod-warm" color={WARM} />
-            <PoolGrad id="iod-cool" color={COOL} />
+            <PoolGrad id={`${gid}-warm`} color={WARM} />
+            <PoolGrad id={`${gid}-cool`} color={COOL} />
           </defs>
           <rect x={0} y={0} width={960} height={738} fill={OCEAN} data-nocheck="" />
-          <Pool p={POOLS.vest} fill={pos ? "url(#iod-warm)" : "url(#iod-cool)"} />
-          <Pool p={POOLS.ost} fill={pos ? "url(#iod-cool)" : "url(#iod-warm)"} />
+          <Pool p={POOLS.vest} fill={pos ? `url(#${gid}-warm)` : `url(#${gid}-cool)`} />
+          <Pool p={POOLS.ost} fill={pos ? `url(#${gid}-cool)` : `url(#${gid}-warm)`} />
           <Land />
           <Gradnett scale={scale} />
           {/* oppvelling sør for Indonesia (positiv fase), svak i negativ fase */}
@@ -397,11 +396,11 @@ export function IodFaseFigur({
           </g>
           <Walker fase={fase} m={m} flow={flow} />
           {pos ? <Sky x={afrika[0] + 40} y={afrika[1] - 70} s={0.9} /> : <Sky x={indonesia[0] - 6} y={indonesia[1] - 74} s={1.05} />}
-          {pos ? null : <Sky x={sAus[0]} y={sAus[1] - 26} s={0.55} />}
+          {pos ? null : <Sky x={sAus[0] - 20} y={sAus[1] - 60} s={0.55} />}
           <Overflatevind fase={fase} m={m} flow={flow} />
           {/* lavere trykk over det varme havet, høyere over det kalde */}
-          <Trykk at={[POOLS.vest.lon + 2, POOLS.vest.lat - 9]} kind={pos ? "L" : "H"} scale={scale} />
-          <Trykk at={[POOLS.ost.lon + 10, POOLS.ost.lat - 6]} kind={pos ? "H" : "L"} scale={scale} />
+          <Trykk at={[POOLS.vest.lon, POOLS.vest.lat - 1]} kind={pos ? "L" : "H"} scale={scale} />
+          <Trykk at={[POOLS.ost.lon - 8, POOLS.ost.lat - 4]} kind={pos ? "H" : "L"} scale={scale} />
           {/* Mats' jetstrømlinje og L-merker */}
           <path d={JET_IOD} fill="none" stroke="#0b1318" strokeOpacity={0.55} strokeWidth={12} strokeLinecap="round" data-nocheck="" />
           <path
@@ -515,14 +514,16 @@ export function IodHavtemperaturFigur({ heading, caption }: { heading: string; c
 
 /** Nordlig belte rundt 30° N (skjematisk). */
 const JET_N = geoCurve([
-  [20, 27],
-  [40, 29],
-  [60, 31],
-  [80, 31.5],
-  [100, 31],
-  [120, 32],
-  [140, 34],
-  [150, 35],
+  [20, 25],
+  [35, 28],
+  [50, 31],
+  [65, 29],
+  [80, 31],
+  [95, 30],
+  [110, 32],
+  [125, 33],
+  [140, 35],
+  [150, 36],
 ]);
 /** Sørlig belte over grensen i figur 3. */
 const JET_S = line(FRONT);
@@ -552,15 +553,22 @@ function Belte({ d, flow, w = 34 }: { d: string; flow: boolean; w?: number }) {
   );
 }
 
+const JET_VB = (() => {
+  const top = xy(20, 42)[1];
+  const bot = xy(20, -58)[1];
+  return `0 ${r1(top)} 960 ${r1(bot - top)}`;
+})();
+const RING_TOP = Math.min(...FRONT.map(([, y]) => y)) - 4.5 * (960 / 130);
+
 export function IodJetstrommerFigur({ heading, caption }: { heading: string; caption: ReactNode }) {
   const motion = useAnimationPlaying();
-  const n = xy(70, 31);
+  const n = xy(70, 30);
   const s = FRONT[Math.round(FRONT.length * 0.45)];
   const arrowTip = xy(24, -50.5);
   const labels: Lab[] = [
-    { text: "Jetstrømbelte rundt 30° N", x: n[0], y: n[1] - 34, at: [n[0], n[1] - 14], color: "#ffe2a8", anchor: "middle", weight: 700, badge: [n[0], n[1] - 30] },
-    { text: "Jetstrømbelte sør for Afrika og Australia, over grensen i figur 3", x: s[0] + 30, y: s[1] - 56, at: [s[0] + 30, s[1] - 4.5 * (960 / 130)], color: "#ffe2a8", anchor: "middle", weight: 700, badge: [s[0] + 30, s[1] - 54] },
-    { text: "Mats' markering", x: arrowTip[0] + 40, y: arrowTip[1] + 50, at: [arrowTip[0] + 6, arrowTip[1] + 8], color: MATS_RED, anchor: "start", badge: [arrowTip[0] + 26, arrowTip[1] + 34] },
+    { text: "Jetstrømbelte rundt 30° N", x: n[0], y: n[1] + 62, at: [n[0], n[1] + 16], color: "#ffe2a8", anchor: "middle", weight: 700, badge: [n[0], n[1] + 40] },
+    { text: "Jetstrømbelte sør for Afrika og Australia, over grensen i figur 3", x: s[0] + 30, y: RING_TOP - 22, at: [s[0] + 30, s[1] - 4.5 * (960 / 130)], color: "#ffe2a8", anchor: "middle", weight: 700, badge: [s[0] + 30, RING_TOP - 20] },
+    { text: "Mats' markering", x: arrowTip[0] + 30, y: arrowTip[1] + 34, at: [arrowTip[0] + 6, arrowTip[1] + 8], color: MATS_RED, anchor: "start", badge: [arrowTip[0] + 26, arrowTip[1] + 34] },
   ];
   const keys: Key[] = [
     { text: "Sterk vind høyt oppe (jetstrøm)", color: "#f08a6a", kind: "line" },
@@ -575,8 +583,8 @@ export function IodJetstrommerFigur({ heading, caption }: { heading: string; cap
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
       labels={labels}
       keys={keys}
-      notes={["Skjematisk, vinden høyt oppe én dag", "Kyster: Natural Earth"]}
-      viewBox={HT_VB}
+      notes={["Skjematisk, vinden høyt oppe", "Kyster: Natural Earth"]}
+      viewBox={JET_VB}
     >
       {({ scale }) => (
         <g className={motion.motionClass} data-figur="iod-jetstrommer">
@@ -591,6 +599,13 @@ export function IodJetstrommerFigur({ heading, caption }: { heading: string; cap
             fill="none"
             stroke={MATS_RED}
             strokeWidth={2.6}
+          />
+          <path
+            d={`M${arrowTip[0]} ${arrowTip[1]} l-11 6 l3 -12 Z`}
+            fill={MATS_RED}
+            stroke={MATS_RED}
+            strokeWidth={1}
+            strokeLinejoin="round"
           />
         </g>
       )}
