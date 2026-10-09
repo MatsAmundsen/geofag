@@ -342,7 +342,16 @@ function LabelLayer({
   const key = `${narrow ? "n" : "w"}|${labels
     .map((l) => `${l.text}@${l.x},${l.y},${sizeOf(l)},${l.anchor ?? ""}`)
     .join(";")}`;
-  // Måles etter hver tegning (skrifter kan lastes inn senere); state oppdateres bare når boksene endres.
+  // Måles når etikettene endres, og en gang til når skriftene er lastet. Effekten må ha avhengigheter:
+  // uten dem kunne måling og ny tegning gå i ring («Maximum update depth exceeded» på Landformer).
+  const [fontTick, setFontTick] = useState(0);
+  useEffect(() => {
+    let live = true;
+    document.fonts?.ready.then(() => live && setFontTick((t) => t + 1));
+    return () => {
+      live = false;
+    };
+  }, []);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (narrow) return;
@@ -362,7 +371,7 @@ function LabelLayer({
         ? prev
         : { key, boxes },
     );
-  });
+  }, [key, narrow, fontTick]);
   const [vbX, vbY, vbW] = vb;
   if (narrow) {
     // minst ca. 23 CSS-piksler i diameter, så tallet blir minst 12 px
