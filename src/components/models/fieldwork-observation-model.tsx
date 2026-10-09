@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TableScroll } from "@/components/scroll-frame";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelPanel, ModelTab, ModelNote } from "./model-chrome";
 
@@ -592,8 +593,13 @@ export function FieldworkObservationModel() {
         <h4 className="text-sm font-semibold uppercase tracking-wider text-primary">
           Generert digital feltlogg (Utdrag til feltrapporten)
         </h4>
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full text-left text-xs">
+        <TableScroll
+          caption="Generert digital feltlogg (Utdrag til feltrapporten)"
+          visuallyHiddenCaption
+          className="mt-3"
+          tableClassName="w-full text-left text-xs"
+          fade="var(--color-card)"
+        >
             <thead>
               <tr className="border-b border-border text-muted-foreground">
                 <th className="pb-2 font-semibold">Stasjon</th>
@@ -640,8 +646,7 @@ export function FieldworkObservationModel() {
                 </td>
               </tr>
             </tbody>
-          </table>
-        </div>
+        </TableScroll>
       </div>
     </ModelFrame>
   );

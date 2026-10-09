@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from "react";
 import { FigureFrame } from "@/components/figure-frame";
+import { ScrollFrame } from "@/components/scroll-frame";
 
 export const C = {
   bg: "#0f171c",
@@ -108,33 +109,42 @@ export function Diagram({
     sand: `${uid}-sand`,
     rain: `${uid}-rain`,
   };
+  const graphic = (
+    <svg
+      viewBox={viewBox}
+      className={
+        wide
+          ? `mx-auto h-auto w-full max-w-5xl${scroll ? " max-sm:min-w-[64rem] max-sm:max-w-none" : ""}`
+          : `mx-auto h-auto w-full max-w-3xl${scroll ? " max-sm:min-w-[48rem] max-sm:max-w-none" : ""}`
+      }
+      role="img"
+      aria-labelledby={`${uid}-title`}
+    >
+      <title id={`${uid}-title`}>{title}</title>
+      <defs>
+        <Marker id={m.teal} color={C.teal} />
+        <Marker id={m.warm} color={C.warm} />
+        <Marker id={m.cold} color={C.cold} />
+        <Marker id={m.muted} color={C.muted} />
+        <Marker id={m.low} color={C.low} />
+        <Marker id={m.fg} color={C.fg} />
+        <Marker id={m.sand} color={C.sand} />
+        <Marker id={m.rain} color={C.rain} />
+      </defs>
+      <rect width="100%" height="100%" fill={C.bg} rx="10" />
+      {children(m)}
+    </svg>
+  );
   return (
-    <FigureFrame heading={heading} caption={caption} action={action} scroll={scroll}>
+    <FigureFrame heading={heading} caption={caption} action={action}>
       {toolbar ? <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">{toolbar}</div> : null}
-      <svg
-        viewBox={viewBox}
-        className={
-          wide
-            ? `mx-auto h-auto w-full max-w-5xl${scroll ? " max-sm:min-w-[64rem] max-sm:max-w-none" : ""}`
-            : `mx-auto h-auto w-full max-w-3xl${scroll ? " max-sm:min-w-[48rem] max-sm:max-w-none" : ""}`
-        }
-        role="img"
-        aria-labelledby={`${uid}-title`}
-      >
-        <title id={`${uid}-title`}>{title}</title>
-        <defs>
-          <Marker id={m.teal} color={C.teal} />
-          <Marker id={m.warm} color={C.warm} />
-          <Marker id={m.cold} color={C.cold} />
-          <Marker id={m.muted} color={C.muted} />
-          <Marker id={m.low} color={C.low} />
-          <Marker id={m.fg} color={C.fg} />
-          <Marker id={m.sand} color={C.sand} />
-          <Marker id={m.rain} color={C.rain} />
-        </defs>
-        <rect width="100%" height="100%" fill={C.bg} rx="10" />
-        {children(m)}
-      </svg>
+      {scroll ? (
+        <ScrollFrame label={heading} fade="var(--color-card)">
+          {graphic}
+        </ScrollFrame>
+      ) : (
+        graphic
+      )}
     </FigureFrame>
   );
 }

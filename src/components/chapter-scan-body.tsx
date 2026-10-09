@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { PosterBody } from "@/components/poster-body";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { Button } from "@/components/ui/button";
 import { prepareChapterScan, type ChapterScanSection } from "@/lib/chapter-scan";
 import { cn } from "@/lib/utils";
@@ -121,7 +122,7 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
                 </Button>
               </div>
             </div>
-            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+            <ScrollFrame label="Innhold i kapittelet" frameClassName="mt-3 flex gap-2 pb-1">
               {doc.sections.map((section) => {
                 const isOpen = Boolean(openMap[section.id]);
                 return (
@@ -143,7 +144,7 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
                   </button>
                 );
               })}
-            </div>
+            </ScrollFrame>
           </nav>
 
           {openSections.length === 0 ? (
