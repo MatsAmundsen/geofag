@@ -16,7 +16,10 @@ import { cn } from "@/lib/utils";
 
 const LeafletMap = lazy(() => import("./geo-map-leaflet"));
 
-const mapFrameClassName = "h-80 w-full sm:h-96";
+// 26rem (416px) under sm: zoom 4 skiller de 25×41 store pinnene, og den
+// pakken er 350 px høy. h-80 (320px) klippet Oslo og la Jotunheimen ligge
+// oppå attribusjonen. Fra sm holder h-96 (384px), der bredden gir plass.
+const mapFrameClassName = "h-[26rem] w-full sm:h-96";
 
 export type GeoMapMarker = {
   lat: number;

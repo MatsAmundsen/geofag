@@ -371,3 +371,28 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   line-height: 1.4;
   color: var(--color-foreground);
 }
+
+/*
+ * Leaflet 1.9 paints tiles with mix-blend-mode: plus-lighter. Where two tiles
+ * meet on a fractional pixel the blend turns into a light hairline. A normal
+ * blend keeps the tile edge the same colour as the tile.
+ */
+.leaflet-container img.leaflet-tile {
+  mix-blend-mode: normal !important;
+}
+
+/*
+ * The site focus ring (#6fb3b8) is about 1.5:1 on sea and 2.1:1 on land.
+ * A near-black ring is above 3:1 on both OSM sea and land; the white inner
+ * edge keeps the ring visible against the marker itself.
+ */
+.leaflet-container .leaflet-marker-icon:focus,
+.leaflet-container .leaflet-marker-icon:focus-visible,
+.leaflet-container .leaflet-bar a:focus,
+.leaflet-container .leaflet-bar a:focus-visible,
+.leaflet-container a.leaflet-popup-close-button:focus,
+.leaflet-container a.leaflet-popup-close-button:focus-visible {
+  outline: 3px solid #0b1014;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #ffffff;
+}

@@ -2699,7 +2699,7 @@ export function WilsonCycleDiagram() {
  * 15. NorwayTectonicsHistoryDiagram:
  * Norges geologiske reise i et platetektonisk lys:
  * Fra grunnfjellet og Kaledonidene til Oslo-rifting, Norskehavets åpning og isostasi.
- * PC: fem kort i én SVG. Mobil: de samme kortene som lesbar liste.
+ * Kortene er HTML på alle bredder, så teksten holder minst 14 px og leses én gang.
  */
 type NorwayEpochCard = {
   key: string;
@@ -2834,118 +2834,59 @@ function NorwayEpochIcon({ k, arrowMarker }: { k: string; arrowMarker: string })
 
 export function NorwayTectonicsHistoryDiagram() {
   const uid = useId().replace(/:/g, "");
-  const marker = `${uid}-teal`;
   const caption =
     "Norge er et levende museum over platetektonikkens historie. Det prekambriske grunnfjellet (Baltika) ble dannet for opptil 2,8 milliarder år siden. For ca. 430–400 millioner år siden lukket det gamle Iapetushavet seg, og Baltika kolliderte med Grønland/Nord-Amerika (Laurentia) i den kaledonske orogenesen – en fjellkjede på størrelse med Himalaya stablet enorme skyvedekker over landet vårt. I perm (for 300 mill. år siden) holdt superkontinentet Pangea på å sprekke opp, og skapte Oslofeltets dramatiske riftdal med vulkaner og dypbergarter. For 55 millioner år siden åpnet Norskehavet seg da Atlanteren spredte seg nordover, og Norge fikk en passiv kontinentalmargin. Vulkanen Beerenberg på Jan Mayen er langt yngre og er aktiv i dag. Etter forrige istid har Norge hevet seg opptil 220 meter (isostasi), noe som hevet gammel havbunn (marin leire) opp på tørt land.";
-  const W = 182;
-  const gap = 12;
   return (
     <FigureFrame heading="Norges geologiske reise: Grunnfjell, Kaledonidene, Oslofeltet og Norskehavet" caption={caption}>
-      {/* PC og nettbrett */}
-      <svg
-        viewBox="0 0 1000 420"
-        className="mx-auto hidden h-auto w-full max-w-5xl sm:block"
-        role="img"
-        aria-labelledby={`${uid}-title`}
-      >
-        <title id={`${uid}-title`}>Norges platetektoniske reise gjennom geologisk tid</title>
-        <defs>
-          <marker id={marker} viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
-            <path d="M0 1.5 L11 6 L0 10.5 z" fill={C.teal} />
-          </marker>
-        </defs>
-        <rect width="100%" height="100%" fill={C.bg} rx="10" />
-        {NORWAY_EPOCHS.map((card, index) => {
-          const x = 13 + index * (W + gap);
-          let y = 182;
+      <ol className="grid list-none gap-3 p-0 sm:grid-cols-2" aria-label="Norges geologiske reise">
+        {NORWAY_EPOCHS.map((card) => {
+          const arrowMarker = `${uid}-${card.key}`;
           return (
-            <g key={card.key} transform={`translate(${x}, 24)`}>
-              <rect x="0" y="0" width={W} height="350" rx="8" fill="#0d1822" stroke={card.color} strokeWidth="1.5" />
-              <L x={W / 2} y="28" fill={card.color} size={13} weight={800} anchor="middle">
+            <li key={card.key} className="min-w-0 rounded-lg border bg-[#0d1822] p-3" style={{ borderColor: card.color }}>
+              <svg viewBox="0 48 185 84" className="mb-2 h-14 w-full" aria-hidden="true" focusable="false">
+                <defs>
+                  <marker id={arrowMarker} viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+                    <path d="M0 1.5 L11 6 L0 10.5 z" fill={C.teal} />
+                  </marker>
+                </defs>
+                <NorwayEpochIcon k={card.key} arrowMarker={arrowMarker} />
+              </svg>
+              <p className="text-sm font-extrabold tracking-wide" style={{ color: card.color }}>
                 {card.title}
-              </L>
-              <L x={W / 2} y="45" fill={card.ageColor} size={10.5} anchor="middle">
+              </p>
+              <p className="text-sm" style={{ color: card.ageColor }}>
                 {card.age}
-              </L>
-              <g transform={`translate(${(W - 185) / 2}, 5)`}>
-                <NorwayEpochIcon k={card.key} arrowMarker={marker} />
-              </g>
-              <L x={W / 2} y="140" fill="#f8fafc" size={11.5} weight={700} anchor="middle">
-                {card.headline}
-              </L>
-              <L x={W / 2} y="156" fill="#d1d5db" size={10.5} anchor="middle">
-                {card.sub}
-              </L>
-              {card.bullets.map((b) => {
-                const rows = (
-                  <g key={b.text}>
-                    <L x="12" y={y} fill="#cbd5e1" size={10.5}>
-                      ● {b.text}
-                    </L>
-                    {b.note ? (
-                      <L x="24" y={y + 15} fill="#94a3b8" size={10}>
-                        {b.note}
-                      </L>
-                    ) : null}
-                  </g>
-                );
-                y += b.note ? 36 : 22;
-                return rows;
-              })}
-              <rect x="10" y="276" width={W - 20} height="60" rx="4" fill="#1b2832" />
-              <L x={W / 2} y="295" fill="#38bdf8" size={11} weight={700} anchor="middle">
-                I dag i Norge:
-              </L>
-              <L x={W / 2} y="311" fill="#cbd5e1" size={10} anchor="middle">
-                {card.today[0]}
-              </L>
-              <L x={W / 2} y="325" fill="#cbd5e1" size={10} anchor="middle">
-                {card.today[1]}
-              </L>
-            </g>
+              </p>
+              <p className="mt-2 text-sm font-bold text-slate-50">{card.headline}</p>
+              <p className="text-sm text-slate-300">{card.sub}</p>
+              <ul className="mt-2 list-disc space-y-0.5 pl-5 text-sm text-slate-300">
+                {card.bullets.map((b) => (
+                  <li key={b.text}>
+                    {b.text}
+                    {b.note ? ` ${b.note}` : ""}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 rounded bg-[#1b2832] px-2 py-1.5 text-sm text-slate-300">
+                <span className="font-bold text-sky-400">I dag i Norge: </span>
+                {card.today.join(" ")}
+              </p>
+            </li>
           );
         })}
-        <L x="500" y="402" fill="#94a3b8" size={12} weight={600} anchor="middle">
-          Fra kontinentkollisjon og riftdannelse til havbunnsspredning og landheving: Norge har opplevd alle faser i platetektonikken.
-        </L>
-      </svg>
-
-      {/* Mobil: samme innhold som lesbar liste */}
-      <ol className="space-y-3 sm:hidden" aria-label="Norges geologiske reise">
-        {NORWAY_EPOCHS.map((card) => (
-          <li key={card.key} className="rounded-lg border bg-[#0d1822] p-3" style={{ borderColor: card.color }}>
-            <p className="text-sm font-extrabold tracking-wide" style={{ color: card.color }}>
-              {card.title}
-            </p>
-            <p className="text-xs" style={{ color: card.ageColor }}>
-              {card.age}
-            </p>
-            <p className="mt-2 text-sm font-bold text-slate-50">{card.headline}</p>
-            <p className="text-xs text-slate-300">{card.sub}</p>
-            <ul className="mt-2 list-disc space-y-0.5 pl-5 text-xs text-slate-300">
-              {card.bullets.map((b) => (
-                <li key={b.text}>
-                  {b.text}
-                  {b.note ? ` ${b.note}` : ""}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2 rounded bg-[#1b2832] px-2 py-1.5 text-xs text-slate-300">
-              <span className="font-bold text-sky-400">I dag i Norge: </span>
-              {card.today.join(" ")}
-            </p>
-          </li>
-        ))}
-        <li className="text-xs text-muted-foreground">
-          Fra kontinentkollisjon og riftdannelse til havbunnsspredning og landheving: Norge har opplevd alle faser i platetektonikken.
-        </li>
       </ol>
+      <p className="mt-3 text-sm text-muted-foreground">
+        Fra kontinentkollisjon og riftdannelse til havbunnsspredning og landheving: Norge har opplevd alle faser i platetektonikken.
+      </p>
     </FigureFrame>
   );
 }
 
 /** Snitt gjennom en ofiolitt slik lagene ligger på Leka (tykkelser fra teksten, midtverdier). */
 export function OfiolittSnittDiagram() {
+  const uid = useId().replace(/:/g, "");
+  const titleId = `${uid}-title`;
+  const descId = `${uid}-desc`;
   // Skjematisk og omtrentlig: putelava ~1 km, ganger ~1,5 km, gabbro ~3 km.
   const layers = [
     { y0: 50, y1: 62, ly: 48, fill: "#6b7a8a", label: "Pelagiske sedimenter", note: "tynne lag av dyphavsslam", color: C.muted },
@@ -2954,16 +2895,28 @@ export function OfiolittSnittDiagram() {
     { y0: 172, y1: 282, ly: 218, fill: "#4a4f3c", label: "Gabbro", note: "2–4 km, lagdelt nederst", color: C.sand },
     { y0: 282, y1: 372, ly: 334, fill: "#7a6a3a", label: "Mantelperidotitt", note: "dunitt og harzburgitt", color: C.warm },
   ];
+  const boundaries = [62, 112, 172, 282];
+  const title =
+    "Snitt gjennom en ofiolitt: pelagiske sedimenter, putelava, plateformede ganger, gabbro, Moho og mantelperidotitt";
+  const description =
+    "Havbunnen. Pelagiske sedimenter: tynne lag av dyphavsslam. Putelava (basalt): 0,5–1,5 km. Plateformede ganger: 1–2 km loddrette basaltganger. Gabbro: 2–4 km, lagdelt nederst. Moho: grensen skorpe–mantel. Mantelperidotitt: dunitt og harzburgitt. På Leka ligger lagene på siden, så du går bortover fra mantelperidotitt til putelava.";
   return (
-    <Diagram
-      title="Snitt gjennom en ofiolitt: pelagiske sedimenter, putelava, plateformede ganger, gabbro, Moho og mantelperidotitt"
+    <FigureFrame
       heading="Norges geologiske nasjonalmonument: Leka ofiolittkompleks"
       caption="Leka-ofiolitten er en bit av havbunnsskorpe og øvre mantel fra Iapetushavet, dannet for ca. 497 millioner år siden (Dunning & Pedersen, 1988). Den ble trolig skjøvet opp på kanten av et kontinent for ca. 470 millioner år siden og senere ført inn over Baltika under den kaledonske fjellkjededannelsen. Lagpakken ble veltet over på siden, så i dag kan man gå bortover på øya fra mantelbergarter til putelava (Titus mfl., 2002; Leka steinsenter, u.å.; Trollfjell Geopark, u.å.). Figuren viser lagene slik de lå i havbunnen, før de ble veltet. Tykkelsene er omtrentlige."
-      viewBox="0 0 460 436"
     >
-      {() => (
+      <svg
+        viewBox="0 0 460 436"
+        className="mx-auto h-auto w-full max-w-xl"
+        role="img"
+        aria-labelledby={titleId}
+        aria-describedby={descId}
+      >
+        <title id={titleId}>{title}</title>
+        <desc id={descId}>{description}</desc>
+        <rect width="100%" height="100%" fill={C.bg} rx="10" />
         <g data-figur="ofiolitt-snitt">
-          <L x="20" y="34" fill={C.cold} size={15} weight={700}>
+          <L x="20" y="34" fill={C.cold} size={20} weight={700}>
             Havbunnen
           </L>
           {layers.map((l) => {
@@ -2980,20 +2933,23 @@ export function OfiolittSnittDiagram() {
                 <L x="172" y={l.ly} fill={l.color} size={20} weight={700}>
                   {l.label}
                 </L>
-                <L x="172" y={l.ly + 19} fill={C.muted} size={16}>
+                <L x="172" y={l.ly + 24} fill={C.muted} size={20}>
                   {l.note}
                 </L>
               </g>
             );
           })}
-          {/* Puter i putelavaen */}
+          {boundaries.map((y) => (
+            <line key={y} x1="20" y1={y} x2="150" y2={y} stroke="#f4f7f8" strokeWidth="3" />
+          ))}
+          {/* Puter i putelavaen. Åttende ellipse holdes innenfor søylen, klar av ledestrøken ved x=150. */}
           {Array.from({ length: 8 }, (_, i) => (
             <ellipse
               key={i}
-              cx={36 + (i % 4) * 32 + (i > 3 ? 14 : 0)}
-              cy={i > 3 ? 98 : 76}
-              rx="14"
-              ry="9"
+              cx={34 + (i % 4) * 30 + (i > 3 ? 8 : 0)}
+              cy={i > 3 ? 96 : 76}
+              rx="11"
+              ry="8"
               fill="none"
               stroke="#7fb59a"
               strokeWidth="1.3"
@@ -3009,17 +2965,17 @@ export function OfiolittSnittDiagram() {
           ))}
           {/* Moho */}
           <line x1="12" y1="282" x2="160" y2="282" stroke={C.white} strokeWidth="2.2" strokeDasharray="8 5" />
-          <L x="172" y="288" fill={C.white} size={17} weight={700}>
+          <L x="172" y="288" fill={C.white} size={20} weight={700}>
             Moho: grensen skorpe–mantel
           </L>
-          <L x="20" y="400" fill={C.muted} size={15}>
+          <L x="20" y="400" fill={C.muted} size={20}>
             På Leka ligger lagene på siden, så du går bortover
           </L>
-          <L x="20" y="420" fill={C.muted} size={15}>
+          <L x="20" y="426" fill={C.muted} size={20}>
             fra mantelperidotitt til putelava.
           </L>
         </g>
-      )}
-    </Diagram>
+      </svg>
+    </FigureFrame>
   );
 }
