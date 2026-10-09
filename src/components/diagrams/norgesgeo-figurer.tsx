@@ -877,7 +877,17 @@ function inverseSamlet(p: [number, number]): [number, number] {
   const y = p[1] - KART_SAMLET.dy - KART_PIVOT[1];
   return [KART_PIVOT[0] + x * Math.cos(a) - y * Math.sin(a), KART_PIVOT[1] + x * Math.sin(a) + y * Math.cos(a)];
 }
-const NH_GRONL = NH_NORGE.map(inverseSamlet);
+void inverseSamlet;
+/** Spredningsryggen i dag (skjematisk: Kolbeinseyryggen, ved Jan Mayen, Mohnsryggen og Knipovichryggen). */
+const NH_RYGG: [number, number][] = [
+  [-68, 50],
+  [-44, 18],
+  [-6, -14],
+  [27, -39],
+  [60, -64],
+  [67, -105],
+  [55, -156],
+];
 const NH_WIN: [number, number, number, number] = [-330, -260, 560, 470];
 
 function nhStage(t: number) {
@@ -901,7 +911,7 @@ function NhSnitt({ t, d, m }: { t: number; d: { url: Record<string, string> }; m
   const SEA = 120;
   const cx = 260;
   const thin = lerp(0.35, 1, smooth(clamp(t)));
-  const half = 205 * smooth(clamp((t - 1) / 2));
+  const half = 170 * smooth(clamp((t - 1) / 2));
   const sedT = 6 + 30 * smooth(clamp((t - 1.2) / 1.8));
   // avstand fra bruddet (eller midten før bruddet) inn i hvert kontinent
   const left = cx - half;
@@ -1027,10 +1037,10 @@ export function NorskehavetFigur({
   const map = small ? { x: 10, y: 10, w: 540 } : { x: 14, y: 14, w: 400 };
   const sec = small ? { x: 20, y: 480 } : { x: 426, y: 40 };
   const kp = (p: readonly [number, number]) => kartTilFigur(p, map.x, map.y, map.w, NH_WIN);
-  const ridgePts = NH_NORGE.map((p, i) => {
-    const q = laurentiaPunkt(NH_GRONL[i], k);
-    return [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2] as [number, number];
-  });
+  const open = smooth(clamp((t - 1) / 2));
+  const ridgePts = NH_NORGE.map(
+    (p, i) => [lerp(p[0], NH_RYGG[i][0], open), lerp(p[1], NH_RYGG[i][1], open)] as [number, number],
+  );
   const ridgePath = `M${ridgePts.map((p) => `${fx(p[0])} ${fx(p[1])}`).join(" L")}`;
   const gr = kp(laurentiaPunkt(KART_STED.gronland, k));
   const no = kp([150, 80]);
@@ -1044,6 +1054,10 @@ export function NorskehavetFigur({
     { text: "Grønland", x: S(40, 96)[0], y: S(40, 96)[1], color: "#e3cfae", badge: S(40, 90), narrowHide: false },
     { text: "Norge", x: S(480, 96)[0], y: S(480, 96)[1], color: "#e8c0b8", anchor: "end", badge: S(480, 90) },
   ];
+  if (t > 1.8) {
+    const sb = kp([NH_NORGE[2][0] - 6, NH_NORGE[2][1] + 30]);
+    labels.push({ text: "Sedimentbassenger", x: map.x + map.w - 8, y: map.y + (NH_WIN[3] * map.w) / NH_WIN[2] - 12, at: sb, color: "#e6d3a8", anchor: "end", size: 14, badge: [sb[0] + 14, sb[1] + 18] });
+  }
   if (t > 1.1)
     labels.push({ text: "Spredningsrygg", x: rMid[0] + 16, y: rMid[1] + 4, at: rMid, color: "#ffb08a", badge: [rMid[0] + 22, rMid[1]] });
   if (t > 2.6)
@@ -1057,7 +1071,7 @@ export function NorskehavetFigur({
     );
   else {
     labels.push(
-      { text: "Ny havbunn", x: S(260, 236)[0], y: S(260, 236)[1], at: S(260 + Math.min(60, 205 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", anchor: "middle", badge: S(300, 222) },
+      { text: "Ny havbunn", x: S(260, 236)[0], y: S(260, 236)[1], at: S(260 + Math.min(60, 170 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", anchor: "middle", badge: S(300, 222) },
       { text: "Smelte stiger opp", x: S(260, 395)[0], y: S(260, 395)[1], at: S(260, 300), color: "#ffb08a", anchor: "middle", badge: S(260, 382) },
     );
     if (t > 1.7)
@@ -1065,7 +1079,7 @@ export function NorskehavetFigur({
         text: "Passiv margin med sedimenter",
         x: S(510, 30)[0],
         y: S(510, 30)[1],
-        at: S(Math.min(505, 260 + 205 * smooth(clamp((t - 1) / 2)) + 60), 128),
+        at: S(Math.min(505, 260 + 170 * smooth(clamp((t - 1) / 2)) + 60), 128),
         color: "#e6d3a8",
         anchor: "end",
         badge: S(450, 150),
@@ -1124,12 +1138,12 @@ export function NorskehavetFigur({
             <KartInnfelt x={map.x} y={map.y} w={map.w} win={NH_WIN} k={k} ridgePath={ridgePath}>
               {t > 1.6 ? (
                 <path
-                  d={`M${NH_NORGE.slice(0, 6).map((p) => `${p[0] + 18} ${p[1]}`).join(" L")}`}
+                  d={`M${NH_NORGE.slice(0, 6).map((p) => `${p[0] - 6} ${p[1]}`).join(" L")}`}
                   stroke="#c8b386"
                   strokeWidth="22"
                   strokeLinecap="round"
                   fill="none"
-                  opacity={0.45 * clamp((t - 1.6) / 0.6)}
+                  opacity={0.7 * clamp((t - 1.6) / 0.6)}
                 />
               ) : null}
               {t > 2.6 ? (
