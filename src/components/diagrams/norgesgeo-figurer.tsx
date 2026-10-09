@@ -198,7 +198,7 @@ const kaG = (x: number) => 305 + Math.max(0, 780 - x) * 0.36;
 /** Overflaten i fjellkjeden (Kaledonidene) og i dag (erodert). */
 const kaMountain = (x: number) => KA_SEA - 175 * gauss(x, 440, 190);
 const kaToday = (x: number) =>
-  x < 330 ? 420 : 292 - 72 * gauss(x, 560, 105) - 6 * Math.sin(x / 19) * gauss(x, 560, 160);
+  x < 336 ? lerp(430, 304, smooth((x - 180) / 156)) : 292 - 72 * gauss(x, 560, 105) - 6 * Math.sin(x / 19) * gauss(x, 560, 160);
 /** Skyvedekkenes fronter (lengst øst) i kollisjonen. */
 const KA_FRONT = [845, 745, 645];
 const kaFault = (k: number, x: number, fronts: number[]) => {
@@ -235,7 +235,7 @@ const KA_KART: KartTilstand[] = [
   { ...KART_SAMLET, island: 0, britain: 0, belt: 1, ridge: 0 },
   { dx: 0, dy: 0, rot: 0, island: 1, britain: 1, belt: 1, ridge: 0 },
 ];
-const KA_WIN: [number, number, number, number] = [-420, -300, 720, 500];
+const KA_WIN: [number, number, number, number] = [-410, -290, 820, 560];
 
 function kaState(step: number, phase: number): KaState {
   if (step === 3) {
@@ -255,9 +255,27 @@ function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m:
   const floor = 352;
   const lauTop = (x: number) => (x < 300 ? 286 - 4 * Math.sin(x / 40) : lerp(286, floor + 8, smooth((x - 300) / 50)));
   const balTop = (x: number) => (x > bx + 40 ? 296 : lerp(floor, 296, smooth((x - bx) / 40)));
-  // havbunnsplaten (litosfære) som bøyer ned under Laurentia
-  const slabTop = (x: number) => (x > trench ? floor : floor + ((trench - x) ** 1.55) * 0.07);
-  const ocean = band((x) => KA_SEA, (x) => (x < 350 ? lauTop(x) : x > bx ? balTop(x) : floor), 300, bx + 40, 4);
+  // havbunnsplaten (litosfære) som bøyer ned under Laurentia: midtlinje med fast tykkelse
+  const slabMid: [number, number][] = [];
+  for (let x = bx + 20; x > trench; x -= 10) slabMid.push([x, floor + 24]);
+  for (let t = 0; t <= 1.0001; t += 0.05) {
+    const a = t * 1.05;
+    slabMid.push([trench - 230 * Math.sin(a) * 0.95, floor + 24 + 260 * (1 - Math.cos(a))]);
+  }
+  const offset = (k: number) =>
+    slabMid.map((p, i) => {
+      const a = slabMid[Math.max(0, i - 1)];
+      const b = slabMid[Math.min(slabMid.length - 1, i + 1)];
+      const dx = b[0] - a[0];
+      const dy = b[1] - a[1];
+      const n = Math.hypot(dx, dy) || 1;
+      // normal som peker opp/ut fra platen
+      return `${fx(p[0] - (dy / n) * k)} ${fx(p[1] + (dx / n) * k)}`;
+    });
+  const slabD = `M${offset(-24).join(" L")} L${offset(24).reverse().join(" L")} Z`;
+  const crust = `M${offset(-24).join(" L")} L${offset(-11).reverse().join(" L")} Z`;
+  const slab = slabD;
+  const ocean = band(() => KA_SEA, (x) => (x < 350 ? lauTop(x) : x > bx ? balTop(x) : floor), 300, bx + 40, 4);
   const lau = band(lauTop, () => 410, 0, 350, 6);
   const bal = band(balTop, () => 410, bx, 960, 6);
   const sedWedge = band(
@@ -265,14 +283,6 @@ function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m:
     (x) => balTop(x) + 14 * clamp((x - bx) / 30) * (1 - clamp((x - bx - 90) / 60)) + 2,
     bx,
     bx + 150,
-    4,
-  );
-  const slab = `${curve(slabTop, 120, bx, 6)} L${bx} ${floor + 50} ${curve((x) => slabTop(x) + 50, bx, 120, 6).replace("M", "L")} Z`;
-  const crust = band(
-    slabTop,
-    (x) => slabTop(x) + 14,
-    trench - 60,
-    bx,
     4,
   );
   const obdX = 300;
@@ -336,7 +346,7 @@ function KaKollisjon({
   };
   const ground = band(surf, () => 600, 0, 960, 6);
   const moho = (x: number) => kaG(x) + 112 + 60 * s.rise * (1 - 0.6 * s.erode) * gauss(x, 470, 160);
-  const balt = band(kaG, moho, 120, 960, 6);
+  const balt = band(kaG, moho, 0, 960, 6);
   const mantle = band(moho, () => 600, 0, 960, 6);
   const nappe = (k: number) => {
     const f = fronts[k];
@@ -345,7 +355,7 @@ function KaKollisjon({
     return `${curve(lower, 0, f, 6)} L${fx(f - 90)} ${top} L0 ${top} Z`;
   };
   // Laurentias kant: forkastning som heller vestover
-  const lau = `M0 0 L405 0 L405 ${fx(kaG(405) - 92)} L330 ${fx(kaG(330) - 40)} L230 ${fx(kaG(230) - 10)} L120 ${fx(kaG(120) - 4)} L0 ${fx(kaG(0))} Z`;
+  const lau = "M0 0 L480 0 L420 120 L372 230 L300 340 L200 420 L0 452 Z";
   const lauFade = 1 - s.erode;
   const seaToday = s.erode;
   const glow = 0.85 * s.rise * (1 - s.erode);
