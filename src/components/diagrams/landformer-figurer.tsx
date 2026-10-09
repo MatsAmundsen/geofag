@@ -68,7 +68,7 @@ function T({
   x: number;
   y: number;
   children: ReactNode;
-  /** Punkt [x, y, r] som teksten viker for: teksten tones ned når punktet ligger oppå den. */
+  /** Punkt [x, y, r] som teksten viker for: teksten skjules når punktet ligger oppå den. */
   avoid?: [number, number, number];
   size?: number;
   color?: string;
@@ -76,18 +76,17 @@ function T({
   weight?: number;
   rotate?: number;
 }) {
-  let opacity: number | undefined;
   if (avoid) {
-    const w = String(children).length * size * 0.56;
+    const w = String(children).length * size * 0.6;
     const x0 = anchor === "end" ? x - w : anchor === "middle" ? x - w / 2 : x;
     const [px, py, r] = avoid;
     const nx = clamp(px, x0, x0 + w);
     const ny = clamp(py, y - size, y + size * 0.3);
-    if (Math.hypot(px - nx, py - ny) < r + 4) opacity = 0.2;
+    // punktet ligger oppå teksten: teksten tas bort til punktet flyttes, så de aldri krysser hverandre
+    if (Math.hypot(px - nx, py - ny) < r + 8) return null;
   }
   return (
     <text
-      opacity={opacity}
       x={x}
       y={y}
       fill={color}
@@ -515,7 +514,7 @@ function HjPlot({ narrow, d, v, zone }: { narrow: boolean; d: number; v: number;
         Kornstørrelse (mm)
       </T>
       <T
-        x={narrow ? 22 : 26}
+        x={narrow ? 25 : 26}
         y={(L.y0 + L.y1) / 2}
         size={fs}
         color={C.muted}
@@ -1778,7 +1777,7 @@ export function MeanderOgKroksjo({
       },
       {
         text: "Innersving: sandør (avsetning)",
-        x: 480,
+        x: 290,
         y: 470,
         at: midInner,
         color: C.sand,
