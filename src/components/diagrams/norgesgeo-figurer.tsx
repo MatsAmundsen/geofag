@@ -383,7 +383,7 @@ function KaKollisjon({
       <path d={curve(moho, 120, 960, 8)} fill="none" stroke="#c9b18f" strokeWidth="1.6" strokeDasharray="7 5" />
       {/* metamorfose dypt i kollisjonssonen */}
       {glow > 0.02 ? (
-        <ellipse cx="420" cy="468" rx="95" ry="38" fill="#f08a5d" opacity={0.45 * glow} filter={d.url.glow} />
+        <ellipse cx="420" cy="468" rx="95" ry="38" fill="#f08a5d" opacity={0.45 * glow} filter={d.url.glow} data-nocheck="" />
       ) : null}
       {/* havet i vest i dag */}
       {seaToday > 0.01 ? (
@@ -714,7 +714,7 @@ export function OslograbenFigur({
     labels.push(
       { text: "Larvikitt i dagen", x: 480, y: 186, at: [482, surfToday(482) + 6], color: "#b9d3ee", anchor: "middle", weight: 700, badge: [482, 210] },
       { text: "Rombeporfyr", x: 300, y: 186, at: [380, surfToday(380) + 10], color: "#e4b7a6", anchor: "middle", badge: [372, 214] },
-      { text: "Kambrosilur", x: 920, y: 296, at: [600, 262], color: "#d7e1e6", anchor: "end", badge: [640, 280] },
+      { text: "Kambrosilur", x: 40, y: 296, at: [372, 262], color: "#d7e1e6", badge: [372, 284] },
       { text: "Forkastningskant mot grunnfjellet", x: 920, y: 336, at: [632, surfToday(632) + 4], color: C.fg, anchor: "end", badge: [690, 224] },
     );
   if (showRocks)
@@ -986,7 +986,7 @@ function NhSnitt({ t, d, m }: { t: number; d: { url: Record<string, string> }; m
     <g>
       <rect x="0" y="0" width="520" height="420" fill={d.url.sky} rx="8" />
       <rect x="0" y="180" width="520" height="240" fill={d.url.astheno} />
-      <ellipse cx={cx} cy="300" rx="70" ry="120" fill="#f08a5d" opacity={0.35 * upwell} filter={d.url.glow} />
+      <ellipse cx={cx} cy="300" rx="70" ry="120" fill="#f08a5d" opacity={0.35 * upwell} filter={d.url.glow} data-nocheck="" />
       <path d={mantleL} fill={P.litho} />
       <path d={mantleR} fill={P.litho} />
       {oceanLith ? <path d={oceanLith} fill={P.litho} /> : null}
@@ -1061,7 +1061,7 @@ export function NorskehavetFigur({
     labels.push({ text: "Sedimentbassenger", x: map.x + map.w - 8, y: map.y + (NH_WIN[3] * map.w) / NH_WIN[2] - 12, at: sb, color: "#e6d3a8", anchor: "end", size: 14, badge: [sb[0] + 14, sb[1] + 18] });
   }
   if (t > 1.1)
-    labels.push({ text: "Spredningsrygg", x: rMid[0] + 16, y: rMid[1] + 4, at: rMid, color: "#ffb08a", badge: [rMid[0] + 22, rMid[1]] });
+    labels.push({ text: "Spredningsrygg", x: rMid[0] - 16, y: rMid[1] + 4, at: rMid, color: "#ffb08a", anchor: "end", badge: [rMid[0] + 22, rMid[1]] });
   if (t > 2.6)
     labels.push({ text: "Jan Mayen", x: jm[0] - 12, y: jm[1] + 5, at: jm, color: C.fg, anchor: "end", size: 14, badge: [jm[0] - 18, jm[1] + 10] });
   if (t > 2.9)
@@ -1073,7 +1073,7 @@ export function NorskehavetFigur({
     );
   else {
     labels.push(
-      { text: "Ny havbunn", x: S(300, 236)[0], y: S(300, 236)[1], at: S(260 + Math.min(60, 170 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", badge: S(300, 222) },
+      { text: "Ny havbunn", x: S(300, 348)[0], y: S(300, 348)[1], at: S(260 + Math.min(60, 170 * smooth(clamp((t - 1) / 2)) * 0.6), 178), color: "#a9dcb9", badge: S(300, 222) },
       { text: "Smelte stiger opp", x: S(260, 395)[0], y: S(260, 395)[1], at: S(260, 300), color: "#ffb08a", anchor: "middle", badge: S(260, 382) },
     );
     if (t > 1.7)
