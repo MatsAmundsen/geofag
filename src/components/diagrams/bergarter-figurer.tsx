@@ -669,30 +669,6 @@ export function FolgBergartFigur({
                   </g>
                 );
               })}
-              {!small
-                ? KANTER.map((k) => {
-                    const g = kantGeo(k, pos, bw, bh);
-                    const on = aktiv.has(k.id) || mulig.has(k.id);
-                    if (!on) return null;
-                    return (
-                      <text
-                        key={`t-${k.id}`}
-                        x={fx(g.lab[0])}
-                        y={fx(g.lab[1] + 5)}
-                        textAnchor="middle"
-                        fontSize={f(14)}
-                        fontWeight={on ? 700 : 500}
-                        fill={on ? "#ffd9b0" : "#c9d6df"}
-                        stroke={P.halo}
-                        strokeWidth="5"
-                        paintOrder="stroke"
-                        data-label=""
-                      >
-                        {k.navn}
-                      </text>
-                    );
-                  })
-                : null}
               {(Object.keys(ST_NAVN) as StId[]).map((id) => {
                 const [x, y] = pos[id];
                 const on = besokt.has(id);
@@ -875,7 +851,7 @@ export function AvkjolingKornFigur({
               </text>
             ) : null}
             {!small && step === 3 ? (
-              <text x={lens[0]} y={fx(lens[1] + R + 30 + figureFont(15, scale) * 1.3)} textAnchor="middle" fontSize={figureFont(15, scale)} fontWeight="700" fill={AK_RING[i]} stroke={P.halo} strokeWidth="4" paintOrder="stroke">
+              <text x={lens[0]} y={fx(lens[1] + R + 30 + figureFont(15, scale) * 1.6)} textAnchor="middle" fontSize={figureFont(15, scale)} fontWeight="700" fill={AK_RING[i]} stroke={P.halo} strokeWidth="4" paintOrder="stroke">
                 i finkornet grunnmasse
               </text>
             ) : null}
