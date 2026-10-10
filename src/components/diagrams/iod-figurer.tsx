@@ -260,8 +260,8 @@ export function IodFaseFigur({
   const motion = useAnimationPlaying();
   const [fase, setFase] = useState<IodFase>(initialFase);
   const pos = fase === "positiv";
-  const [wx, wy] = xy(POOLS.vest.lon, POOLS.vest.lat);
-  const [ox, oy] = xy(POOLS.ost.lon, POOLS.ost.lat);
+  const [wx] = xy(POOLS.vest.lon, POOLS.vest.lat);
+  const [ox] = xy(POOLS.ost.lon, POOLS.ost.lat);
   const upw = xy(107, -11);
   const afrika = xy(38, -2);
   const indonesia = xy(112, -1);

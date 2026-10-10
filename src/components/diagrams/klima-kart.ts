@@ -11,7 +11,6 @@
  * y peker nedover (SVG).
  */
 
-/* eslint-disable */
 export const IO_W = 960;
 export const IO_H = 738;
 /** Plate carrée for IO-kartet. */
