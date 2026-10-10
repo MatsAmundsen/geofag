@@ -63,9 +63,14 @@ import {
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
-  RockCycleDiagram,
   SilicateStructureDiagram,
 } from "@/components/diagrams/bergarter";
+import {
+  AvkjolingKornFigur,
+  BergartssyklusSnittFigur,
+  FolgBergartFigur,
+  SilikatgrupperFigur,
+} from "@/components/diagrams/bergarter-figurer";
 import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
@@ -691,7 +696,14 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_JORDSKJELV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   SilicateStructure: () => <SilicateStructureDiagram />,
-  RockCycle: () => <RockCycleDiagram />,
+  RockCycle: () => (
+    <>
+      <BergartssyklusSnittFigur />
+      <FolgBergartFigur />
+    </>
+  ),
+  Silikatgrupper: () => <SilikatgrupperFigur />,
+  AvkjolingKorn: () => <AvkjolingKornFigur />,
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,
