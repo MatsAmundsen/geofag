@@ -1570,44 +1570,34 @@ def build_permafrost() -> None:
 
 
 def build_foehn() -> None:
-    """One smooth airflow, a volumetric windward cloud, and an asymmetric ridge."""
+    """A smooth asymmetric ridge, a terrain-hugging arrow, and one orographic cloud deck."""
     width, height = 980, 600
     left, right, top, bottom = 118, 950, 68, 392
     cool = COLD
     warm_down = "#c2410c"
-    peak_x = 615
+    foot_w, peak_x, foot_e = 214, 628, 908
 
-    def smoothstep(t):
-        t = max(0.0, min(1.0, t))
-        return t * t * (3 - 2 * t)
-
-    def gate(x, a, b, w):
-        return smoothstep((x - a) / w) * smoothstep((b - x) / w)
-
-    def ridge(x):
-        core = math.exp(-((x - peak_x) / 240) ** 2) if x <= peak_x else math.exp(-((x - peak_x) / 168) ** 2)
-        height_m = 2000 * core
-        height_m += 160 * math.exp(-((x - 360) / 48) ** 2)
-        height_m += 110 * math.exp(-((x - 790) / 42) ** 2)
-        height_m *= gate(x, 168, 948, 36)
-        return height_m
-
-    def clearance(x):
-        rise = 980 * math.exp(-((x - 345) / 140) ** 2)
-        extra = (36 * gate(x, 210, 910, 50) + rise) * gate(x, 175, 940, 36)
-        extra *= 1 - math.exp(-((x - peak_x) / 108) ** 2)
-        return max(0.0, extra)
-
-    def flow_m(x):
-        if x < 145 or x > 965:
-            return 0.0
-        return ridge(x) + clearance(x)
-
-    def y_of(metres):
+    def y_of(metres: float) -> float:
         return bottom - metres / 2400 * (bottom - top)
 
-    def y_flow(x):
-        return y_of(flow_m(x))
+    def ridge(x: float) -> float:
+        """Cosine hill. Longer windward slope, shorter lee slope, sea level at both feet."""
+        if x <= foot_w or x >= foot_e:
+            return 0.0
+        if x <= peak_x:
+            t = (x - foot_w) / (peak_x - foot_w)
+            return 2000 * (0.5 - 0.5 * math.cos(math.pi * t))
+        t = (x - peak_x) / (foot_e - peak_x)
+        return 2000 * (0.5 + 0.5 * math.cos(math.pi * t))
+
+    def flow_m(x: float) -> float:
+        """Along the ground, then a few tens of metres above the slope, over the crest."""
+        if x <= foot_w or x >= foot_e:
+            return 0.0
+        span = (x - foot_w) / (foot_e - foot_w)
+        feet = math.sin(math.pi * span) ** 2
+        crest = 1 - math.exp(-((x - peak_x) / 46) ** 2)
+        return ridge(x) + 62 * feet * crest
 
     def arrowhead(x, y, angle, color) -> str:
         dx, dy = math.cos(angle), math.sin(angle)
@@ -1618,39 +1608,61 @@ def build_foehn() -> None:
             f'{x - 13 * dx - 5.2 * px:.1f},{y - 13 * dy - 5.2 * py:.1f}" fill="{color}"/>'
         )
 
-    x800 = next(x for x in range(220, peak_x) if ridge(x) >= 800)
-    x_end = next(x for x in range(x800, peak_x) if ridge(x) >= 1660)
-    cloud_left = 246
+    x800 = next(x for x in range(foot_w, peak_x) if ridge(x) >= 800)
+    x_end = next(x for x in range(x800, peak_x) if ridge(x) >= 1760)
+    # The deck starts on the rising slope, to the right of the sky-base label.
+    cloud_left = max(268, x800 - 150)
     y800 = y_of(800)
-    crest_pts = [(x, y_of(ridge(x))) for x in range(168, 949, 2)]
+
+    def ceiling_m(x: float) -> float:
+        u = (x - cloud_left) / (x_end - cloud_left)
+        u = min(1.0, max(0.0, u))
+        base = 800.0 if ridge(x) < 800 else ridge(x)
+        envelope = math.sin(math.pi * u) ** 1.05
+        thick = 340 * envelope
+        bump = 32 * math.sin(math.pi * u * 3) * envelope
+        return min(1968.0, base + thick + bump)
+
+    crest_pts = [(x, y_of(ridge(x))) for x in range(foot_w, foot_e + 1, 2)]
     ground = (
-        f"M{left + 4:.0f} {bottom:.1f} L168 {bottom:.1f} "
+        f"M{left + 4:.0f} {bottom:.1f} L{foot_w} {bottom:.1f} "
         + " ".join(f"L{x:.0f} {y:.1f}" for x, y in crest_pts)
         + f" L{right - 4:.0f} {bottom:.1f} Z"
     )
 
+    base_pts = []
+    x = float(cloud_left)
+    while x < x800:
+        base_pts.append((x, y800))
+        x += 2.5
+    x = float(x800)
+    while x <= x_end:
+        base_pts.append((x, y_of(ridge(x))))
+        x += 2.5
+    top_pts = []
+    x = float(x_end)
+    while x >= cloud_left:
+        top_pts.append((x, y_of(ceiling_m(x))))
+        x -= 2.5
+    top_pts[0] = base_pts[-1]
+    top_pts[-1] = base_pts[0]
+    cloud_pts = base_pts + top_pts
+
+    def path_of(pts, dx=0.0, dy=0.0) -> str:
+        head = pts[0]
+        return f"M{head[0] + dx:.1f} {head[1] + dy:.1f} " + " ".join(
+            f"L{px + dx:.1f} {py + dy:.1f}" for px, py in pts[1:]
+        ) + " Z"
+
     parts = [rect(0, 0, width, height, PAPER)]
     parts.append(
         """<defs>
-      <radialGradient id="foehn-puff" cx="36%" cy="30%" r="72%">
+      <linearGradient id="foehn-cloud" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#ffffff"/>
-        <stop offset="48%" stop-color="#f4f7f8"/>
-        <stop offset="100%" stop-color="#8ea0ab"/>
-      </radialGradient>
-      <linearGradient id="foehn-shade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
-        <stop offset="100%" stop-color="#6d7c86" stop-opacity="0.45"/>
+        <stop offset="62%" stop-color="#f7f8f6"/>
+        <stop offset="100%" stop-color="#d5dde3"/>
       </linearGradient>
-      <filter id="foehn-shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="2.2"/>
-      </filter>
-      <clipPath id="foehn-sky"><path d="__SKY__"/></clipPath>
-    </defs>""".replace(
-            "__SKY__",
-            f"M{left:.0f} {top:.0f} L{right:.0f} {top:.0f} L{right:.0f} {bottom:.0f} "
-            + " ".join(f"L{x:.0f} {y:.1f}" for x, y in reversed(crest_pts))
-            + f" L{left:.0f} {bottom:.0f} Z",
-        )
+    </defs>"""
     )
     parts.append(rect(left, top, right - left, bottom - top, "#f3f7fa"))
     for metres in range(0, 2401, 400):
@@ -1671,58 +1683,32 @@ def build_foehn() -> None:
         f'<text x="36" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="15" fill="{INK}" transform="rotate(-90 36 {(top + bottom) / 2:.1f})">Høyde (m)</text>'
     )
     parts.append(f'<path d="{ground}" fill="{LAND}" stroke="{COAST}" stroke-width="1.6" stroke-linejoin="round"/>')
+    parts.append(f'<path d="{path_of(cloud_pts, 3, 4)}" fill="#7d8b96" fill-opacity="0.2"/>')
+    parts.append(
+        f'<path d="{path_of(cloud_pts)}" fill="url(#foehn-cloud)" stroke="#5e6d78" stroke-width="1.6" stroke-linejoin="round"/>'
+    )
 
-    # Volumetric cloud: overlapping puffs clipped to the sky, from the 800 m base up the windward slope.
-    puff_n = 7
-    puffs = []
-    for i in range(puff_n):
-        u = i / (puff_n - 1)
-        cx = cloud_left + u * (x_end - cloud_left)
-        ground_m = ridge(cx)
-        base_m = 800 if ground_m < 800 else ground_m
-        ceil_m = min(1972, max(flow_m(cx) + 150, base_m + 260))
-        if i == puff_n - 1:
-            ceil_m = min(ceil_m, ground_m + 200, 1960)
-        cy = y_of((base_m + ceil_m) / 2)
-        ry = max(16, (y_of(base_m) - y_of(ceil_m)) / 2)
-        rx = (x_end - cloud_left) / (puff_n - 1) * 0.78
-        puffs.append((cx, cy + 5, rx * 1.05, ry * 0.92))
-        puffs.append((cx, cy, rx, ry))
-    parts.append('<g clip-path="url(#foehn-sky)">')
-    for index, (cx, cy, rx, ry) in enumerate(puffs):
-        if index % 2 == 0:
-            parts.append(
-                f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="#7d8b96" fill-opacity="0.28" filter="url(#foehn-shadow)"/>'
-            )
-        else:
-            parts.append(
-                f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#foehn-puff)" stroke="#5e6d78" stroke-width="1.1"/>'
-            )
-    parts.append("</g>")
-
-    scale = (bottom - top) / 2400
     rainy = []
-    for x in range(cloud_left + 8, x800 - 4, 3):
-        gap = (800 - ridge(x)) * scale
-        if gap >= 44 and flow_m(x) > 860:
+    for x in range(int(cloud_left) + 10, int(x800) - 6, 3):
+        gap_px = y_of(ridge(x)) - (y800 + 6)
+        if gap_px >= 36 and ridge(x) > 120:
             rainy.append(x)
     rain_n = 7 if len(rainy) >= 7 else len(rainy)
-    if rain_n >= 6:
-        picks = [rainy[round(i * (len(rainy) - 1) / (rain_n - 1))] for i in range(rain_n)]
-    else:
-        picks = rainy
+    picks = [rainy[round(i * (len(rainy) - 1) / (rain_n - 1))] for i in range(rain_n)] if rain_n else []
+    rain_lengths = []
     for x in picks:
-        y_top = y800 + 5
-        y_bot = y_of(ridge(x - 6)) - 7
+        y_top = y800 + 4
+        y_bot = y_of(ridge(x)) - 5
+        rain_lengths.append(y_bot - y_top)
         parts.append(
-            f'<line x1="{x:.1f}" y1="{y_top:.1f}" x2="{x - 8:.1f}" y2="{y_bot:.1f}" stroke="{cool}" stroke-width="1.9" stroke-linecap="round"/>'
+            f'<line x1="{x:.1f}" y1="{y_top:.1f}" x2="{x - 7:.1f}" y2="{y_bot:.1f}" stroke="{cool}" stroke-width="1.8" stroke-linecap="round"/>'
         )
 
-    ascent = [(x, y_flow(x)) for x in range(148, peak_x + 1, 3)]
-    descent = [(x, y_flow(x)) for x in range(peak_x, 956, 3)]
+    ascent = [(x, y_of(flow_m(x))) for x in range(156, peak_x + 1, 3)]
+    descent = [(x, y_of(flow_m(x))) for x in range(peak_x, 940, 3)]
     parts.append(f'<path d="{polyline(ascent)}" fill="none" stroke="{cool}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
     parts.append(f'<path d="{polyline(descent)}" fill="none" stroke="{warm_down}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
-    for path, color, marks in ((ascent, cool, (230, 360, 500)), (descent, warm_down, (700, 840))):
+    for path, color, marks in ((ascent, cool, (280, 420, 540)), (descent, warm_down, (720, 840))):
         for mark in marks:
             i = min(range(1, len(path) - 1), key=lambda k: abs(path[k][0] - mark))
             x0, y0 = path[i - 1]
@@ -1733,9 +1719,9 @@ def build_foehn() -> None:
     parts.append(f'<line x1="{left}" y1="{top}" x2="{left}" y2="{bottom}" stroke="{INK}"/>')
     parts.append(f'<line x1="{left}" y1="{bottom}" x2="{right}" y2="{bottom}" stroke="{INK}"/>')
     parts.append(halo(left + 8, y800 - 14, "Skybase 800 m", size=13, fill=cool, anchor="start"))
-    parts.append(halo(peak_x + 28, y_of(2000) - 16, "Topp 2000 m", size=16, anchor="start"))
-    parts.append(plain(210, 438, "Loside, 0 m", size=16, anchor="middle"))
-    parts.append(plain(210, 462, "14 °C", size=16, anchor="middle"))
+    parts.append(halo(peak_x + 22, y_of(2000) - 16, "Topp 2000 m", size=16, anchor="start"))
+    parts.append(plain(186, 438, "Loside, 0 m", size=16, anchor="middle"))
+    parts.append(plain(186, 462, "14 °C", size=16, anchor="middle"))
     parts.append(plain(860, 438, "Leside, 0 m", size=16, anchor="middle"))
     parts.append(plain(150, 28, "Tørradiabatisk 1 °C / 100 m", size=15, anchor="start"))
     parts.append(plain(150, 50, "Våtadiabatisk 0,5 °C / 100 m i skyen", size=15, anchor="start", fill=cool))
@@ -1745,21 +1731,21 @@ def build_foehn() -> None:
     parts.append(f'<line x1="150" y1="548" x2="186" y2="548" stroke="{warm_down}" stroke-width="2.6"/>')
     parts.append(arrowhead(188, 548, 0, warm_down))
     parts.append(plain(202, 552, "Oppvarming på vei ned", size=14, anchor="start", fill=warm_down))
-    parts.append(
-        '<ellipse cx="430" cy="534" rx="16" ry="9" fill="url(#foehn-puff)" stroke="#5e6d78" stroke-width="1"/>'
-    )
-    parts.append(f'<line x1="422" y1="546" x2="418" y2="562" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>')
-    parts.append(f'<line x1="434" y1="546" x2="430" y2="562" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>')
-    parts.append(plain(454, 554, "Sky og nedbør", size=14, anchor="start"))
+    legend_cloud = "M430 526 C452 512 486 510 512 520 C498 534 460 538 430 528 Z"
+    parts.append(f'<path d="{legend_cloud}" fill="url(#foehn-cloud)" stroke="#5e6d78" stroke-width="1.2"/>')
+    parts.append(f'<line x1="452" y1="532" x2="448" y2="548" stroke="{cool}" stroke-width="1.6" stroke-linecap="round"/>')
+    parts.append(f'<line x1="470" y1="532" x2="466" y2="548" stroke="{cool}" stroke-width="1.6" stroke-linecap="round"/>')
+    parts.append(plain(522, 538, "Sky og nedbør", size=14, anchor="start"))
 
-    samples = list(range(150, 955, 3))
+    samples = list(range(156, 941, 3))
     heights = [flow_m(x) for x in samples]
     turns = []
     for i in range(1, len(samples) - 1):
-        y0, y1, y2 = y_flow(samples[i - 1]), y_flow(samples[i]), y_flow(samples[i + 1])
+        y0, y1, y2 = (y_of(flow_m(samples[k])) for k in (i - 1, i, i + 1))
         a = math.atan2(y1 - y0, 3)
         b = math.atan2(y2 - y1, 3)
         turns.append(abs(math.degrees(b - a)))
+    gaps = [flow_m(x) - ridge(x) for x in range(foot_w, foot_e)]
     print(
         "foehn start",
         round(heights[0], 1),
@@ -1767,18 +1753,23 @@ def build_foehn() -> None:
         round(heights[-1], 1),
         "crest",
         round(max(heights), 1),
+        "gap_max",
+        round(max(gaps), 1),
         "x800",
         x800,
-        "x_end",
+        "cloud",
+        cloud_left,
         x_end,
         "rain",
         len(picks),
+        "rain_px",
+        [round(v) for v in rain_lengths],
         "max_turn",
         round(max(turns), 1),
-        "over2000",
-        round(max(heights) - 2000, 2),
+        "ridge_at_rain",
+        [round(ridge(x)) for x in picks],
     )
-    title = "Fønvind fra havnivå på losiden, gjennom skyen og ned til havnivå på lesiden. 14 grader er temperaturen ved havnivå på losiden. Topp- og lesidetemperatur er ikke regnet ut."
+    title = "Fønvind fra havnivå på losiden, langs skråningen gjennom skyen og ned til havnivå på lesiden. 14 grader er temperaturen ved havnivå på losiden. Topp- og lesidetemperatur er ikke regnet ut."
     write_component(
         "FoehnChart.tsx",
         "FoehnChart",
