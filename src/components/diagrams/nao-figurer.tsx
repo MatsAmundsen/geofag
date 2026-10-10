@@ -75,7 +75,7 @@ function Trykk({
   const col = kind === "L" ? L_COL : H_COL;
   return (
     <g aria-hidden="true" opacity={strong ? 1 : 0.8}>
-      <circle cx={x} cy={y} r={fs * 0.88} fill="#0b1318" fillOpacity={0.55} stroke={col} strokeWidth={strong ? 3 : 1.6} />
+      <circle cx={x} cy={y} r={fs * 0.88} fill="#0b1318" stroke={col} strokeWidth={strong ? 3 : 1.6} />
       <text x={x} y={y + fs * 0.36} textAnchor="middle" fontSize={fs} fontWeight={800} fill={col}>
         {kind}
       </text>

@@ -73,8 +73,11 @@ function Gradnett({ scale, x0 = 0, x1 = 960 }: { scale: number; x0?: number; x1?
               y={lat > 0 ? y + fs + 4 : y - 6}
               textAnchor="end"
               fontSize={fs}
-              fill="#cfe3ee"
-              fillOpacity={0.85}
+              fill="#f7fbff"
+              stroke="#0b1318"
+              strokeWidth={scale > 0 ? Math.max(3.2, 2.4 / scale) : 4}
+              strokeLinejoin="round"
+              paintOrder="stroke"
               data-gridlabel=""
             >
               {text}
@@ -99,7 +102,7 @@ function Trykk({ at, kind, scale, size = 34, color }: { at: [number, number]; ki
   const col = color ?? (kind === "L" ? "#ff8b7a" : "#7cc4ff");
   return (
     <g aria-hidden="true">
-      <circle cx={x} cy={y} r={fs * 0.88} fill="#0b1318" fillOpacity={0.55} stroke={col} strokeWidth={2.2} />
+      <circle cx={x} cy={y} r={fs * 0.88} fill="#0b1318" stroke={col} strokeWidth={2.2} />
       <text x={x} y={y + fs * 0.36} textAnchor="middle" fontSize={fs} fontWeight={800} fill={col}>
         {kind}
       </text>
