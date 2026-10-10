@@ -52,12 +52,13 @@ function Hub() {
               </video>
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#4a1608]/80 via-lava/25 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
+              {/* Headeren tar 4rem over 100dvh-feltet, så kortet må løftes for å bli helt synlig. */}
+              <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
                 <Link
                   to="/geofag-1"
-                  className="flex min-h-11 flex-col rounded-2xl border border-lava bg-lava/35 p-5 shadow-[0_16px_50px_-10px_color-mix(in_oklab,var(--color-lava)_70%,transparent)] backdrop-blur-md transition-colors hover:bg-lava/50 sm:p-6"
+                  className="flex min-h-11 flex-col rounded-2xl border border-lava bg-[#3a140c]/80 p-5 shadow-[0_16px_50px_-10px_color-mix(in_oklab,var(--color-lava)_70%,transparent)] backdrop-blur-md transition-colors hover:bg-[#3a140c]/90 sm:p-6"
                 >
-                  <p className="text-xs uppercase tracking-wider text-lava">
+                  <p className="text-xs uppercase tracking-wider text-[#f3d2b0]">
                     Geosfære og hydrosfære
                   </p>
                   <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Geofag 1</h2>
@@ -88,12 +89,12 @@ function Hub() {
               </video>
               <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/55 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background/75 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
+              <div className="absolute inset-x-0 bottom-16 p-4 sm:p-6">
                 <Link
                   to="/geofag-2"
-                  className="flex min-h-11 flex-col rounded-2xl border border-border/80 bg-background/60 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6"
+                  className="flex min-h-11 flex-col rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md transition-colors hover:border-primary/40 sm:p-6"
                 >
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                  <p className="text-xs uppercase tracking-wider text-[#c5d0d8]">
                     Atmosfære, hav og kryosfære
                   </p>
                   <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Geofag 2</h2>
