@@ -46,14 +46,16 @@ describe("injectPosterWidgets", () => {
     for (const id of POSTER_WIDGET_IDS) {
       assert.equal(ids.has(id), true, `missing widget ${id}`);
     }
-    assert.equal(ids.size, POSTER_WIDGET_IDS.length);
+    // Mats' CMS-tekst (nå i md) har «setter igang platedrift», så smeltefiguren kommer i tillegg.
+    assert.equal(ids.has("SmeltingUnderTynnPlate"), true);
+    assert.equal(ids.size, POSTER_WIDGET_IDS.length + 1);
   });
 
   it("does not duplicate widgets that are already fenced", () => {
     const once = injectPosterWidgets(chapterMarkdown);
     const twice = injectPosterWidgets(once);
     assert.deepEqual([...listedWidgetIds(twice)].sort(), [...listedWidgetIds(once)].sort());
-    assert.equal(listedWidgetIds(twice).size, POSTER_WIDGET_IDS.length);
+    assert.equal(listedWidgetIds(twice).size, POSTER_WIDGET_IDS.length + 1);
   });
 
   it("keeps an explicit widget where the author placed it", () => {
@@ -907,7 +909,13 @@ describe("smelting under tynn plate", () => {
     assert.ok(out.indexOf("```widget\nSmeltingUnderTynnPlate") > out.indexOf("setter i gang platedrift."));
   });
 
+  it("places the figure once in the chapter text from CMS", () => {
+    assert.equal(count(injectPosterWidgets(chapterMarkdown), "SmeltingUnderTynnPlate"), 1);
+  });
+
   it("does not place the figure when the sentence is missing", () => {
-    assert.equal(count(injectPosterWidgets(chapterMarkdown), "SmeltingUnderTynnPlate"), 0);
+    const withoutSentence = chapterMarkdown.replace(/^Denne prosessen er det som setter igang platedrift\.[ \t]*$/m, "");
+    assert.notEqual(withoutSentence, chapterMarkdown);
+    assert.equal(count(injectPosterWidgets(withoutSentence), "SmeltingUnderTynnPlate"), 0);
   });
 });
