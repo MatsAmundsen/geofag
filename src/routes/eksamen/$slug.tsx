@@ -6,8 +6,10 @@ import { SolutionView } from "@/components/exam/solution-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { V2026TaskFigure } from "@/components/exam/v2026/task-figure";
 import { displayPrompt, examSet, solutionFor, taskHeading } from "@/lib/eksamen";
 import type { ExamTask, Solution } from "@/lib/eksamen";
+import { v2026FigureBadge, v2026HasFigure } from "@/lib/eksamen/figures/v2026/registry";
 import { topicHead } from "@/lib/seo";
 
 type View = "oppgaver" | "losningsforslag";
@@ -25,7 +27,9 @@ export const Route = createFileRoute("/eksamen/$slug")({
     return topicHead({
       title: set ? `${set.label} · Eksamen` : "Eksamen",
       description: set
-        ? `Geofag 2 ${set.label}: oppgaver og løsningsforslag med figurer. Udirs figurer åpnes hos Udir.`
+        ? set.slug === "v2026"
+          ? "Geofag 2 vår 2026: oppgaver med originalfigurer der lisensen tillater det, og egne figurer ellers."
+          : `Geofag 2 ${set.label}: oppgaver og løsningsforslag med figurer. Udirs figurer åpnes hos Udir.`
         : "Eksamenssett for Geofag 2.",
       path: `/eksamen/${params.slug}`,
     });
@@ -104,11 +108,19 @@ function ExamSetPage() {
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           {set.officialUrl ? (
             <Callout title="Figurer og fasit">
-              <p>
-                Udirs kart, satellittbilder og grafer åpner du i det offisielle settet — bak passord
-                fra skolen. Vi kopierer dem ikke. Figurene under løsningsforslagene er våre egne
-                pedagogiske tegninger.
-              </p>
+              {set.slug === "v2026" ? (
+                <p>
+                  Figurene i dette settet er enten originalen fra kilden, når lisensen tillater
+                  gjenbruk på en offentlig nettside, eller en egen figur. Udirs skjermbilder er ikke
+                  brukt. Krediteringen står under hver original.
+                </p>
+              ) : (
+                <p>
+                  Udirs kart, satellittbilder og grafer åpner du i det offisielle settet — bak passord
+                  fra skolen. Vi kopierer dem ikke. Figurene under løsningsforslagene er våre egne
+                  pedagogiske tegninger.
+                </p>
+              )}
               <p>
                 {set.fasitSource === "udir"
                   ? "Interaktive nøkler og skrivepunkter er sjekket mot Udirs forhåndssensur og sensorveiledning. Teksten er omskrevet — last ned originalen hos Udir hvis du skal sensurere."
@@ -137,12 +149,7 @@ function ExamSetPage() {
           {view === "oppgaver" ? (
             <ol className="mt-10 space-y-8">
               {set.tasks.map((task) => (
-                <TaskCard
-                  key={task.number}
-                  slug={set.slug}
-                  officialUrl={set.officialUrl}
-                  task={task}
-                />
+                <TaskCard key={task.number} slug={set.slug} officialUrl={set.officialUrl} task={task} />
               ))}
             </ol>
           ) : (
@@ -185,11 +192,11 @@ function TaskCard({
 
   return (
     <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
-      <TaskMeta task={task} heading={heading} />
+      <TaskMeta slug={slug} task={task} heading={heading} />
       <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground/95">
         {displayPrompt(task.prompt)}
       </pre>
-      <FigureHint needsFigure={task.needsFigure} officialUrl={officialUrl} />
+      <TaskFigure slug={slug} task={task} officialUrl={officialUrl} />
       <div className="mt-5">
         <Button type="button" variant="secondary" onClick={() => setOpen((v) => !v)}>
           {open ? "Skjul løsningsforslag" : "Vis løsningsforslag"}
@@ -214,27 +221,35 @@ function SolutionCard({
 
   return (
     <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
-      <TaskMeta task={task} heading={heading} />
+      <TaskMeta slug={slug} task={task} heading={heading} />
       <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground/95">
         {displayPrompt(task.prompt)}
       </pre>
-      <FigureHint needsFigure={task.needsFigure} officialUrl={officialUrl} />
+      <TaskFigure slug={slug} task={task} officialUrl={officialUrl} />
       <SolutionBlock solution={solution} />
     </li>
   );
 }
 
-function TaskMeta({ task, heading }: { task: ExamTask; heading: string }) {
+function TaskMeta({ slug, task, heading }: { slug: string; task: ExamTask; heading: string }) {
+  const figureNote = slug === "v2026" ? v2026FigureBadge(task.number) : task.needsFigure ? " · figur hos Udir" : "";
   return (
     <>
       <p className="text-xs uppercase tracking-wider text-muted-foreground">
         Oppgave {task.number}
         {task.kind === "skrive" ? " · skrive" : " · interaktiv"}
-        {task.needsFigure ? " · figur hos Udir" : ""}
+        {figureNote}
       </p>
       <h2 className="mt-1 font-display text-2xl font-medium tracking-tight">{heading}</h2>
     </>
   );
+}
+
+function TaskFigure({ slug, task, officialUrl }: { slug: string; task: ExamTask; officialUrl: string }) {
+  if (slug === "v2026" && v2026HasFigure(task.number)) {
+    return <V2026TaskFigure number={task.number} officialUrl={officialUrl} />;
+  }
+  return <FigureHint needsFigure={task.needsFigure} officialUrl={officialUrl} />;
 }
 
 function FigureHint({ needsFigure, officialUrl }: { needsFigure: boolean; officialUrl: string }) {

@@ -20,7 +20,7 @@ export const v2026: ExamSet = {
       number: 1,
       title: "Ekstremvær i Europa",
       kind: "interaktiv",
-      needsFigure: false,
+      needsFigure: true,
       prompt: "REA3043 Geofag 2\n / Tema 1 – Ekstremvær i Europa\nOppgave 1\nOppgave 1 – Ekstremvær i Europa\n\nOppgave 1 av 6 til tema 1. \n\nDu skal svare på oppgaven nederst på siden.\n\nVærvarsling\nNedenfor er et analysekart som viser en situasjon med et sterkt lavtrykk i Norskehavet. Dette lavtrykket vil nå fastlandet i Norge i løpet av dagen. Metrologene frykter at dette kan føre til ekstremvær med veldig kraftig vind. \n \nEt sted i Nordland er merket med «X».\nAnalysekart\nKilde: Meteorologisk institutt. Hentet fra https://www.met.no/vaer-og-klima/meteorologens-analysekart.\n\n \n\nOppgave\n\nHvilken vindretning vil det sannsynligvis være på stedet merket med «X» i Nordland når senteret i dette lavtrykket treffer land?\n\nVinden vil komme fra nordøst.\nVinden vil komme fra nordvest.\nVinden vil komme fra nord.\nVinden vil komme fra sørvest.\nVinden vil komme fra øst.",
     },
     {
@@ -69,7 +69,7 @@ export const v2026: ExamSet = {
       number: 8,
       title: "Våre nære havområder og feltdata",
       kind: "interaktiv",
-      needsFigure: false,
+      needsFigure: true,
       prompt: "REA3043 Geofag 2\n / Tema 2 – Våre nære havområder og feltdata\nOppgave 8\nOppgave 8 – Våre nære havområder og feltdata\n\nOppgave 2 av 6 til tema 2. \n\nDu skal svare på oppgaven nederst på siden.\n\nTemperatur-salinitetsdiagram (T-S-diagram)\n\nHavet består av ulike vannmasser som har karakteristiske verdier for temperatur og salinitet. Disse egenskapene gir hver vannmasse et unikt «fingeravtrykk», slik at vi kan spore hvor vannet kommer fra, og hvordan det beveger seg. For å sammenligne vannmasser brukes ofte et temperatur-salinitetsdiagram (T-S-diagram), hvor salinitet plottes på x-aksen og temperatur på y-aksen. I slike diagrammer vises også linjer for konstant tetthet (isopyknaler), som hjelper oss å forstå hvordan tettheten varierer med temperatur og salinitet.\n\nEnheten for isopyknalene i diagrammet nedenfor er gitt i antall kg/dm3, altså antall kg per liter. Ferskvann veier 1,00 kg/dm3 ved 4 °C. Du ser ut fra verdiene i diagrammet at sjøvannet er litt tyngre enn ferskvann. \n\nTil venstre for diagrammet finner du en tabell med informasjon du trenger til å svare på oppgaven. \n\nTabell og diagram\n\nVannmasse A og B er typiske vannmasser man kan finne i Grønlandshavet.\n\nBruk verdiene for vannmassene sammen med T-S-diagrammet nedenfor til å svare på spørsmålet.\n\nVannmasse\tTemperatur (ºC)\tSalinitet (PSU)\nA\t1\t29,7\nB\t−0,8\t29,4\nOppgave\nHva vil sannsynligvis skje når vannmasse A og B møtes?\nVannmasse A er lettere enn vannmasse B og vil legge seg over vannmasse B.\nVannmasse A er tyngre enn vannmasse B og vil legge seg under vannmasse B.",
     },
     {
@@ -104,7 +104,7 @@ export const v2026: ExamSet = {
       number: 13,
       title: "Istider og klimaendringer",
       kind: "interaktiv",
-      needsFigure: true,
+      needsFigure: false,
       prompt: "REA3043 Geofag 2\n / Tema 3 – Istider og klimaendringer\nOppgave 13\nOppgave 13 – Istider og klimaendringer\n\nOppgave 1 av 6 til tema 3. \n\nDu skal svare på oppgaven nederst på siden.\n\nPerihelium og årstidsvariasjoner\n\nNedenfor finner du ulike påstander om hvordan jordaksens presesjon, og dermed tidspunktet for perihelium og aphelium, påvirker årstidsvariasjoner og istider. Du skal avgjøre hvilke av alternativene som er sanne.\n\nHvis jorden ligger i perihelium ved vintersolverv på den nordlige halvkule, så gir det relativt små årstidsvariasjoner på den nordlige halvkule.\nHvis jorden ligger i aphelium ved sommersolverv på den nordlige halvkule, så gir det relativt store årstidsvariasjoner på den sørlige halvkule.\nHvis jorden ligger i aphelium ved vintersolverv på den nordlige halvkule, så er det mindre sannsynlig med en istid på den nordlige halvkule.\nOppgave\nKryss av for om påstandene er sanne eller usanne. Du må ha alt riktig for å få poeng.\nKryss av for om påstandene er sanne eller usanne. Du må ha alt riktig for å få poeng.\n\tSann\tUsann\nPåstand 1\n\nPåstand 2\n\nPåstand 3",
     },
     {
