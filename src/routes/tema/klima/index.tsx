@@ -91,7 +91,7 @@ function KlimaHubPage() {
         Hvorfor egne sider for svingningene?
       </h2>
       <p>
-        Vinden dytter på havet. Havtemperaturen styrer hvor lufta stiger. Når det samspillet svinger,
+        Vinden skyver på havet. Havtemperaturen styrer hvor lufta stiger. Når det samspillet svinger,
         flyttes tørke og flom. ENSO i Stillehavet. IOD i Det indiske hav. NAO over Nord-Atlanteren inn
         mot norske vintre. AMOC som tregt belte, ikke som en bryter. Mekanikken står på sidene. Ikke
         her.

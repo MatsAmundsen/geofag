@@ -500,6 +500,8 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("Utdanningsdirektoratet, 2020"), false);
+    assert.equal(md.includes("dytter"), false);
+    assert.equal(md.includes("Vinden skyver på havet, og havtemperaturen styrer hvor lufta stiger."), true);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/klima"), true);
@@ -561,6 +563,11 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("tretti"), false);
+    assert.equal(md.includes("dytet"), false);
+    assert.equal(md.includes("dytt"), false);
+    assert.equal(md.includes("skyvet"), false);
+    assert.equal(md.includes("Den første endringen i energibalansen"), true);
+    assert.equal(md.includes("ikke den første endringen"), true);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/klima/oversikt"), true);

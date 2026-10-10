@@ -36,7 +36,7 @@ KlimaKart
 
 Oversikt, deretter ENSO, IOD, NAO og AMOC. Så videre til kryosfæren. En svingning flytter varme og nedbør. Den er ikke det samme som et ytre pådriv som endrer energibalansen (WMO, u.å.).
 
-Vinden dytter på havet, og havtemperaturen styrer hvor lufta stiger. ENSO hører til Stillehavet, IOD til Det indiske hav, NAO til Nord-Atlanteren og norske vintre, og AMOC er et tregt belte. Mekanikken står på sidene under.
+Vinden skyver på havet, og havtemperaturen styrer hvor lufta stiger. ENSO hører til Stillehavet, IOD til Det indiske hav, NAO til Nord-Atlanteren og norske vintre, og AMOC er et tregt belte. Mekanikken står på sidene under.
 
 > **Vanlige misforståelser**
 >

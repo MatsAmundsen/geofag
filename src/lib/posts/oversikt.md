@@ -54,7 +54,7 @@ Naturlige pådriv er blant annet endret solstyrke, små endringer i jordas bane 
 
 | | Pådriv | Tilbakekobling |
 | --- | --- | --- |
-| Hva det er | Det første dytet på energibalansen | Systemets svar |
+| Hva det er | Den første endringen i energibalansen | Systemets svar |
 | Eksempel | Mer karbondioksid | Vanndamp, eller tap av is ved polene |
 | Retning | Kan varme eller kjøle | Kan forsterke eller svekke endringen |
 
@@ -99,7 +99,7 @@ Menneskelig påvirkning varmer atmosfæren, havet og landoverflaten, i hovedsak 
 >
 > En kald uke er vær. Den motbeviser ikke et skifte i det langvarige gjennomsnittet (WMO, u.å.).
 >
-> Vanndamp er en drivhusgass, men den er i hovedsak en tilbakekobling, ikke det første dytet (NASA, u.å.-a).
+> Vanndamp er en drivhusgass, men den er i hovedsak en tilbakekobling, ikke den første endringen (NASA, u.å.-a).
 >
 > El Niño, IOD og NAO er ikke oppvarmingstrenden. De hører til den indre dynamikken (WMO, u.å.).
 
