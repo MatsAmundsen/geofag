@@ -1232,3 +1232,298 @@ export const OSLO_STATUS_BERGARTER = [
   "Lava og magma: Vulkanismen fortsatte inn i perm. Rombeporfyr størknet på overflaten, og rombene viser at smelten ikke var ferdig krystallisert (NGU, u.å.-l). Dypt nede størknet larvikitt, dannet for cirka 295 millioner år siden (NGU, u.å.-i).",
   "I dag: Erosjon har blottlagt bergartene. Larvikitt finnes i Vestfold og Telemark og er Norges nasjonalbergart (NGU, u.å.-i). NGU kaller rombeporfyr tvillingbroren til larvikitt (NGU, u.å.-l).",
 ] as const;
+
+/* =====================================================================
+ * 7. Steinlab: lupe, ripetest og syretest på håndprøver
+ * ===================================================================== */
+
+type Prove = {
+  navn: string;
+  farge: string;
+  /** Tekstur i lupen. */
+  korn: Krystall[];
+  base: string;
+  band?: boolean;
+  lupe: string;
+  /** Kornet som ripes, og resultatet for negl, kniv, glass og kvarts. */
+  kornNavn: string;
+  ripe: [string, string, string, string];
+  /** Riper verktøyet kornet (true), eller ingen tydelig test (null). */
+  riper: [boolean | null, boolean | null, boolean | null, boolean | null];
+  syre: "bruser" | "nei" | "kitt";
+};
+
+const KALSITT_RIPE: [string, string, string, string] = [
+  "Neglen riper ikke kalsittkornet.",
+  "Kniven riper kalsittkornet.",
+  "Kalsittkornet riper ikke glass.",
+  "Kvarts riper kalsittkornet. Kvarts er 7 og kalsitt 3 på Mohs-skalaen.",
+];
+const KVARTS_RIPE: [string, string, string, string] = [
+  "Neglen riper ikke kvartskornet.",
+  "Kniven riper ikke kvartskornet.",
+  "Kvartskornet riper glass. Kvarts er 7 på Mohs-skalaen.",
+  "Kvarts mot kvarts: like harde, ingen tydelig ripe.",
+];
+const BAS_RIPE: [string, string, string, string] = [
+  "Kornene er for små til å teste ett og ett korn.",
+  "Kornene er for små til å teste ett og ett korn.",
+  "Kornene er for små til å teste ett og ett korn.",
+  "Kornene er for små til å teste ett og ett korn.",
+];
+const KV_RIPER: Prove["riper"] = [false, false, true, null];
+const KA_RIPER: Prove["riper"] = [false, true, false, true];
+
+const PROVER: Prove[] = [
+  {
+    navn: "Granitt",
+    farge: "#b9a49a",
+    korn: krystaller(41, 60, 12, 22, ["#e3b9a6", "#f1e8de", "#9aa0a6", "#1f1d22", "#d49b84"], 92),
+    base: "#8d8580",
+    lupe: "Granitt: grovkornet med synlige korn av kvarts, feltspat og glimmer. Korn og prikker peker på magmatisk bergart, her en dypbergart.",
+    kornNavn: "kvarts",
+    ripe: KVARTS_RIPE,
+    riper: KV_RIPER,
+    syre: "nei",
+  },
+  {
+    navn: "Basalt",
+    farge: "#3d3a3c",
+    korn: krystaller(42, 420, 1.6, 3.2, ["#3a3638", "#4f4a4c", "#2a2729", "#5d5759"], 92),
+    base: "#343133",
+    lupe: "Basalt: finkornet. Krystallene er svært små fordi magmaen ble kjølt raskt ved overflaten. Dagbergart med samme sammensetning som gabbro.",
+    kornNavn: "grunnmasse",
+    ripe: BAS_RIPE,
+    riper: [null, null, null, null],
+    syre: "nei",
+  },
+  {
+    navn: "Sandstein",
+    farge: "#c9a77c",
+    korn: krystaller(43, 140, 5, 8, ["#e6d2ae", "#d4b88c", "#f0e3c8", "#b9945f"], 92),
+    base: "#a07a4d",
+    lupe: "Sandstein: sandkorn av kvarts og feltspat, kittet av kvarts, kalkspat eller jernforbindelser. Korn og lagdeling peker på sedimentær bergart.",
+    kornNavn: "kvarts",
+    ripe: KVARTS_RIPE,
+    riper: KV_RIPER,
+    syre: "kitt",
+  },
+  {
+    navn: "Kalkstein",
+    farge: "#a9a69c",
+    korn: krystaller(44, 300, 1.8, 3.4, ["#b9b6ab", "#9c998f", "#c7c4b9"], 92),
+    base: "#a3a095",
+    lupe: "Kalkstein: finkornet, ofte med fossiler. Den består av mer enn 50 prosent karbonater.",
+    kornNavn: "kalsitt",
+    ripe: KALSITT_RIPE,
+    riper: KA_RIPER,
+    syre: "bruser",
+  },
+  {
+    navn: "Marmor",
+    farge: "#e4e2dc",
+    korn: krystaller(45, 110, 7, 13, ["#f4f2ec", "#e2dfd6", "#cfcbc0", "#faf8f3"], 92),
+    base: "#d6d2c8",
+    lupe: "Marmor: omdannet kalkstein. Kornene er krystaller av kalsitt. De fleste norske kalksteiner er omdannet til marmor.",
+    kornNavn: "kalsitt",
+    ripe: KALSITT_RIPE,
+    riper: KA_RIPER,
+    syre: "bruser",
+  },
+  {
+    navn: "Kvartsitt",
+    farge: "#d8cfc4",
+    korn: krystaller(46, 120, 7, 12, ["#ece6dc", "#d9d0c4", "#f6f1ea", "#c7bcae"], 92),
+    base: "#c2b8aa",
+    lupe: "Kvartsitt: tettpakkede kvartskorn som er vokst sammen. Den er omdannet sandstein.",
+    kornNavn: "kvarts",
+    ripe: KVARTS_RIPE,
+    riper: KV_RIPER,
+    syre: "nei",
+  },
+  {
+    navn: "Gneis",
+    farge: "#8f8790",
+    korn: krystaller(47, 90, 8, 14, ["#efe8dc", "#c9b7a6", "#2a2730", "#3a3640"], 92),
+    base: "#5c5560",
+    band: true,
+    lupe: "Gneis: mellom- til grovkornet, stripet eller bølget, med lyse og mørke bånd. Striper og folder peker på metamorf bergart.",
+    kornNavn: "kvarts (lyst korn)",
+    ripe: KVARTS_RIPE,
+    riper: KV_RIPER,
+    syre: "nei",
+  },
+];
+const VERKTOY = ["Lupe", "Ripetest", "Syretest"];
+const RIPEVERKTOY = ["Negl", "Kniv", "Glass", "Kvarts"];
+
+/** Omriss av en håndprøve (fast form, skaleres). */
+const PROVE_OMRISS = "M-120 10 C-128 -40 -86 -82 -30 -88 C30 -96 96 -76 118 -34 C134 -2 124 48 86 70 C40 94 -40 92 -84 70 C-112 56 -116 36 -120 10 Z";
+const BOBLER = (() => {
+  const r = rng(51);
+  return Array.from({ length: 26 }, () => ({ x: (r() - 0.5) * 70, o: r(), s: 2 + r() * 4 }));
+})();
+
+export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { heading?: string }) {
+  const motion = useAnimationPlaying();
+  const [ref, visible] = useInView<SVGSVGElement>();
+  const [wrapRef, small] = useFigurSmal();
+  const [prove, setProve] = useState(1);
+  const [verktoy, setVerktoy] = useState(1);
+  const [ripe, setRipe] = useState(1);
+  const clock = useStepClock(1, motion.playing && visible, 2400, 0);
+  const uid = useId().replace(/:/g, "");
+  const p = PROVER[prove - 1];
+  const tick = motion.playing ? clock.phase : 0.6;
+  const ri = ripe - 1;
+  const riper = p.riper[ri];
+  const syreTekst =
+    p.syre === "bruser"
+      ? `${p.navn}: Fortynnet saltsyre bruser. Kalsitt reagerer, så prøven hører til karbonatbergartene.`
+      : p.syre === "kitt"
+        ? `${p.navn}: Bruser vanligvis ikke. Er kittet kalkspat, kan det bruse svakt der syren treffer kittet.`
+        : `${p.navn}: Bruser ikke. Prøven er ikke kalkstein eller marmor.`;
+  const status =
+    verktoy === 1
+      ? p.lupe
+      : verktoy === 2
+        ? `${RIPEVERKTOY[ri]} mot ${p.kornNavn} i ${p.navn.toLowerCase()}: ${p.ripe[ri]} Rip ett korn, ikke hele steinen.`
+        : syreTekst;
+  const vb = small ? "0 0 520 600" : "0 0 960 420";
+  const S = small ? { x: 260, y: 150, k: 1.35 } : { x: 250, y: 200, k: 1.45 };
+  const L = small ? { x: 260, y: 430, R: 120 } : { x: 690, y: 200, R: 150 };
+  const bruser = verktoy === 3 && (p.syre === "bruser" || p.syre === "kitt");
+  const sterk = p.syre === "bruser";
+  const valg = (fn: (n: number) => void) => (n: number) => {
+    fn(n);
+    if (motion.playing) motion.toggle();
+  };
+  return (
+    <div ref={wrapRef}>
+      <IsbreFigur
+        svgRef={ref}
+        title="Steinlab: velg en håndprøve og test den med lupe, ripetest etter Mohs eller fortynnet saltsyre. Resultatet står i teksten over figuren"
+        heading={heading}
+        caption="Utforsk som en geolog: velg en test, noter det du ser, og tolk hvilken stasjon i syklusen prøven sitter på. Mohs-skalaen gjelder mineralet, ikke hele bergarten, så rip ett korn. Forenklet: prøvene og kornene er skjematiske."
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={
+          <StegRamme small={small}>
+            <div className="flex w-full flex-col gap-2">
+              <StegVelger labels={PROVER.map((x) => x.navn)} step={prove} onStep={valg(setProve)} label="Velg håndprøve" />
+              <StegVelger labels={VERKTOY} step={verktoy} onStep={valg(setVerktoy)} label="Velg test" />
+              {verktoy === 2 ? (
+                <StegVelger labels={RIPEVERKTOY} step={ripe} onStep={valg(setRipe)} label="Rip med" />
+              ) : null}
+            </div>
+          </StegRamme>
+        }
+        status={status}
+        notes={["Skjematisk, uten målestokk"]}
+        viewBox={vb}
+        forceNarrow={small}
+      >
+        {({ scale }) => {
+          const f = (sz: number) => figureFont(sz, scale);
+          return (
+            <g className={motion.motionClass} data-figur="steinlab" data-step={`${prove}-${verktoy}-${ripe}`} data-playing={motion.playing ? "yes" : "no"}>
+              <defs>
+                <clipPath id={`${uid}-s`}>
+                  <path d={PROVE_OMRISS} />
+                </clipPath>
+                <radialGradient id={`${uid}-lys`} cx="0.35" cy="0.3" r="0.8">
+                  <stop offset="0" stopColor="#fff" stopOpacity="0.28" />
+                  <stop offset="1" stopColor="#000" stopOpacity="0.35" />
+                </radialGradient>
+              </defs>
+              {/* bordplate */}
+              <rect x="0" y={small ? 250 : 330} width={small ? 520 : 480} height={small ? 20 : 90} fill="#1d2a31" />
+              {/* håndprøven */}
+              <g transform={`translate(${S.x} ${S.y}) scale(${S.k})`}>
+                <ellipse cx="0" cy="84" rx="118" ry="12" fill="#000" opacity="0.4" />
+                <g clipPath={`url(#${uid}-s)`} data-nocheck="">
+                  <path d={PROVE_OMRISS} fill={p.farge} />
+                  {p.band
+                    ? [-70, -40, -10, 20, 50].map((y) => (
+                        <path key={y} d={`M-140 ${y} C-60 ${y - 14} 40 ${y + 16} 140 ${y - 4}`} stroke="#2f2b33" strokeWidth="11" fill="none" opacity="0.8" />
+                      ))
+                    : null}
+                  <g transform="scale(1.25)" opacity="0.75">
+                    {p.korn.map((k, i) => (
+                      <path key={i} d={k.d} fill={k.fill} />
+                    ))}
+                  </g>
+                  {p.navn === "Kalkstein" ? (
+                    <g stroke="#6f6c63" strokeWidth="2.2" fill="none">
+                      <path d="M-40 -20 a12 12 0 1 1 14 6" />
+                      <path d="M30 20 a10 10 0 1 0 -12 -4" />
+                    </g>
+                  ) : null}
+                  <path d={PROVE_OMRISS} fill={`url(#${uid}-lys)`} />
+                  {/* ripe */}
+                  {verktoy === 2 && riper === true ? (
+                    <path d="M-50 -10 L40 -30" stroke="#f6f2ea" strokeWidth="3" strokeDasharray={`${fx(100 * (motion.playing ? clock.phase : 1))} 200`} />
+                  ) : null}
+                  {/* syre: fukt og bobler */}
+                  {verktoy === 3 ? <ellipse cx="0" cy="-20" rx="40" ry="14" fill="#9fd3e6" opacity="0.35" /> : null}
+                  {bruser
+                    ? BOBLER.slice(0, sterk ? 26 : 6).map((b, i) => {
+                        const t = (b.o + tick) % 1;
+                        return <circle key={i} cx={fx(b.x * 0.6)} cy={fx(-20 - t * 40)} r={fx(b.s * (sterk ? 1 : 0.7))} fill="none" stroke="#e8f6fb" strokeWidth="1.4" opacity={fx(1 - t)} />;
+                      })
+                    : null}
+                </g>
+                <path d={PROVE_OMRISS} fill="none" stroke="#11181c" strokeWidth="2" />
+              </g>
+              {/* verktøyet over prøven */}
+              {verktoy === 2 ? (
+                <g transform={`translate(${S.x + 80} ${S.y - 110})`}>
+                  {ri === 0 ? <path d="M0 0 C18 -6 30 4 26 22 L16 46 L-6 40 Z" fill="#e8c4b0" stroke="#7a5a4a" strokeWidth="2" /> : null}
+                  {ri === 1 ? <path d="M-10 -30 L6 -30 L6 30 L-2 52 L-10 30 Z" fill="#c9d1d8" stroke="#56606a" strokeWidth="2" /> : null}
+                  {ri === 2 ? <rect x="-30" y="-10" width="60" height="44" rx="4" fill="#bfe3ef" fillOpacity="0.35" stroke="#9ccbe0" strokeWidth="2" /> : null}
+                  {ri === 3 ? <path d="M0 -36 L14 -18 L12 34 L-12 34 L-14 -18 Z" fill="#eef3f6" fillOpacity="0.8" stroke="#9fb0bb" strokeWidth="2" /> : null}
+                </g>
+              ) : null}
+              {verktoy === 3 ? (
+                <g transform={`translate(${S.x} ${S.y - 140})`}>
+                  <rect x="-8" y="-40" width="16" height="44" rx="5" fill="#9fb0bb" />
+                  <path d="M-4 4 L4 4 L1 22 L-1 22 Z" fill="#cfe6ee" />
+                  <circle cx="0" cy={fx(30 + 30 * tick)} r="4" fill="#9fd3e6" opacity={motion.playing ? 1 : 0} />
+                </g>
+              ) : null}
+              {/* lupe / nærbilde */}
+              <Linse
+                x={L.x}
+                y={L.y}
+                R={L.R}
+                base={p.base}
+                korn={verktoy === 1 ? p.korn : []}
+                grow={1}
+                uid={`${uid}-l`}
+                ring={verktoy === 1 ? C.warm : "#3a4852"}
+              />
+              {verktoy === 1 && p.band ? (
+                <g data-nocheck="" style={{ clipPath: `circle(${L.R}px at ${L.x}px ${L.y}px)` }} opacity="0.55">
+                  {[-60, -10, 40, 90].map((y) => (
+                    <path key={y} d={`M${L.x - L.R} ${L.y + y - 40} C${L.x - 40} ${L.y + y - 60} ${L.x + 40} ${L.y + y - 20} ${L.x + L.R} ${L.y + y - 40}`} stroke="#1f1c24" strokeWidth="18" fill="none" />
+                  ))}
+                </g>
+              ) : null}
+              {verktoy !== 1 ? (
+                <text x={L.x} y={L.y + 6} textAnchor="middle" fontSize={f(17)} fontWeight="700" fill={C.fg}>
+                  {verktoy === 2 ? (riper === true ? "Ripe" : riper === false ? "Ingen ripe" : "Ikke testbart") : bruser ? (sterk ? "Bruser" : "Kan bruse svakt") : "Ingen reaksjon"}
+                </text>
+              ) : null}
+              <text x={L.x} y={L.y + L.R + 34} textAnchor="middle" fontSize={f(16)} fontWeight="700" fill={verktoy === 1 ? C.warm : C.muted}>
+                {verktoy === 1 ? "Lupe, 6–10 ganger" : verktoy === 2 ? `Ripetest: ${RIPEVERKTOY[ri].toLowerCase()}` : "Fortynnet saltsyre"}
+              </text>
+              <text x={S.x} y={small ? 296 : 380} textAnchor="middle" fontSize={f(18)} fontWeight="700" fill={C.fg}>
+                {p.navn}
+              </text>
+            </g>
+          );
+        }}
+      </IsbreFigur>
+    </div>
+  );
+}

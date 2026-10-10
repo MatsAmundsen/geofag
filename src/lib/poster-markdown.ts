@@ -231,6 +231,11 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "lavgrads regional metamorfose",
   },
   {
+    widgets: ["Steinlab"],
+    beforeHeading: "Hva er forvitring?",
+    require: "Fortynnet saltsyre brukes",
+  },
+  {
     widgets: ["ForvitringForklaring"],
     afterHeading: "Hva er forvitring?",
   },

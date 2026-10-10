@@ -72,6 +72,7 @@ import {
   MetamorfoseFigur,
   OSLO_STATUS_BERGARTER,
   SilikatgrupperFigur,
+  SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
 import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import {
@@ -783,6 +784,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   Silikatgrupper: () => <SilikatgrupperFigur />,
   AvkjolingKorn: () => <AvkjolingKornFigur />,
   Metamorfose: () => <MetamorfoseFigur />,
+  Steinlab: () => <SteinlabFigur />,
   OsloriftBergarter: () => (
     <OslograbenFigur
       heading="Osloriften: rombeporfyr og larvikitt fra samme smeltefamilie"
