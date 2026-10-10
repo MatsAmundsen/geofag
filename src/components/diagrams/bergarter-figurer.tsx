@@ -238,9 +238,9 @@ export function BergartssyklusSnittFigur({
   const active = (i: number) => step === i;
   const labels: Lab[] = [
     { text: "Magma", x: 930, y: 520, at: [850, 486], color: "#ffc59a", anchor: "end", weight: 700, badge: [800, 506] },
-    { text: "Dypbergart (magmatisk)", x: 930, y: 360, at: [760, 400], color: "#d4c8e0", anchor: "end", badge: [742, 380] },
+    { text: "Dypbergart (magmatisk)", x: 500, y: 482, at: [700, 440], color: "#d4c8e0", badge: [742, 366] },
     { text: "Dagbergart (lava)", x: 930, y: 110, at: [866, 168], color: "#e6c9c0", anchor: "end", badge: [906, 140] },
-    { text: "Havet", x: 664, y: BS_SEA + 22, color: "#bfe0ef", anchor: "middle", size: 14, badge: [640, BS_SEA + 12] },
+    { text: "Havet", x: 700, y: 246, at: [700, BS_SEA + 8], color: "#bfe0ef", anchor: "middle", size: 14, badge: [800, BS_SEA + 14] },
   ];
   if (step >= 2)
     labels.push({ text: "Forvitring på stedet", x: 40, y: 60, at: [200, surf(200) + 8], color: C.warm, badge: [150, surf(150) - 12] });
@@ -251,7 +251,7 @@ export function BergartssyklusSnittFigur({
   if (step >= 5)
     labels.push({ text: "Metamorf bergart (striper og folder)", x: 40, y: 500, at: [190, 420], color: "#d9c8e2", badge: [120, 420] });
   if (step === 6)
-    labels.push({ text: "Berget smelter", x: 470, y: 540, at: [330, 520], color: "#ffc59a", anchor: "middle", badge: [300, 530] });
+    labels.push({ text: "Berget smelter", x: 150, y: 548, at: [300, 526], color: "#ffc59a", anchor: "middle", badge: [260, 530] });
   const keys: Key[] = [
     { text: "Magma", color: K.magma, kind: "fill" },
     { text: "Magmatisk bergart", color: K.dyp, kind: "fill" },
@@ -344,7 +344,7 @@ export function BergartssyklusSnittFigur({
               {/* lava (dagbergart) på vulkansiden */}
               <path d={band((x) => surf(x) - 1, (x) => surf(x) + 10, 846, 940, 4)} fill={K.dag} opacity={s.lava} />
               {/* smelting nederst */}
-              <rect x="0" y="500" width="600" height="60" fill={K.magma} opacity={0.18 + 0.6 * s.melt} />
+              {s.melt > 0.02 ? <rect x="0" y="500" width="600" height="60" fill={K.magma} opacity={0.5 * s.melt} /> : null}
               {s.melt > 0.05 ? (
                 <path
                   d={band((x) => 520 - 26 * s.melt * Math.exp(-(((x - 330) / 120) ** 2)), () => 560, 120, 560, 8)}
@@ -543,8 +543,8 @@ const ST_POS_SMAL: Record<StId, Pt> = {
   sedi: [260, 70],
   magm: [118, 300],
   sedb: [402, 300],
-  meta: [370, 560],
-  magma: [150, 560],
+  meta: [392, 560],
+  magma: [128, 560],
 };
 
 function kantGeo(k: Kant, pos: Record<StId, Pt>, w: number, h: number) {
@@ -569,7 +569,11 @@ function kantGeo(k: Kant, pos: Record<StId, Pt>, w: number, h: number) {
     (1 - t) ** 2 * ax + 2 * (1 - t) * t * mx + t * t * bx,
     (1 - t) ** 2 * ay + 2 * (1 - t) * t * my + t * t * by,
   ];
-  return { d, at, mid: at(0.5) };
+  // etiketten flyttes ut fra kurven, til den siden kurven bøyer mot (eller venstre ved rett linje)
+  const side = k.bend >= 0 ? 1 : -1;
+  const mid = at(0.5);
+  const lab: Pt = [mid[0] - uy * 30 * side, mid[1] + ux * 30 * side];
+  return { d, at, mid, lab };
 }
 
 export function FolgBergartFigur({
@@ -606,7 +610,7 @@ export function FolgBergartFigur({
   const knapper = ["Alle veier", ...RUTER.map((r) => r.navn)];
   const status = rute
     ? rute.tekst
-    : "Alle veier: Pilene viser prosessene mellom stasjonene. Velg en bergart for å se hvilken vei den har tatt, og hvilke veier den ikke har tatt.";
+    : "Alle veier: Pilene viser prosessene mellom stasjonene: størkning, forvitring og erosjon, forsteining, omdanning og smelting. Velg en bergart for å se hvilken vei den har tatt, og hvilke veier den ikke har tatt.";
   const keys: Key[] = [
     { text: "Veien bergarten har tatt", color: C.warm, kind: "line", off: !rute },
     { text: "Mulig vei videre", color: C.warm, kind: "dash", off: !rute?.mulig },
@@ -669,12 +673,12 @@ export function FolgBergartFigur({
                 ? KANTER.map((k) => {
                     const g = kantGeo(k, pos, bw, bh);
                     const on = aktiv.has(k.id) || mulig.has(k.id);
-                    if (rute && !on) return null;
+                    if (!on) return null;
                     return (
                       <text
                         key={`t-${k.id}`}
-                        x={fx(g.mid[0])}
-                        y={fx(g.mid[1] + 5)}
+                        x={fx(g.lab[0])}
+                        y={fx(g.lab[1] + 5)}
                         textAnchor="middle"
                         fontSize={f(14)}
                         fontWeight={on ? 700 : 500}
@@ -694,7 +698,10 @@ export function FolgBergartFigur({
                 const on = besokt.has(id);
                 const dim = rute && !on;
                 return (
-                  <g key={id} opacity={dim ? 0.5 : 1} filter="url(#bf-soft)">
+                  <g key={id} opacity={dim ? 0.5 : 1} filter="url(#bf-soft)" data-stasjon={id === slutt && rute ? "her" : undefined}>
+                    {rute && id === slutt ? (
+                      <rect x={x - bw / 2 - 7} y={y - bh / 2 - 7} width={bw + 14} height={bh + 14} rx="19" fill="none" stroke={C.warm} strokeWidth="2.5" strokeDasharray="4 5" />
+                    ) : null}
                     <rect
                       x={x - bw / 2}
                       y={y - bh / 2}
@@ -712,22 +719,6 @@ export function FolgBergartFigur({
                   </g>
                 );
               })}
-              {rute ? (
-                <text
-                  x={fx(pos[slutt][0])}
-                  y={fx(pos[slutt][1] + bh / 2 + 24)}
-                  textAnchor="middle"
-                  fontSize={f(15)}
-                  fontWeight="700"
-                  fill="#ffd9b0"
-                  stroke={P.halo}
-                  strokeWidth="4"
-                  paintOrder="stroke"
-                  data-label=""
-                >
-                  {`Her er ${rute.navn.toLowerCase()}`}
-                </text>
-              ) : null}
             </g>
           );
         }}
@@ -787,7 +778,7 @@ export function AvkjolingKornFigur({
   if (step === 1 || step === 3)
     labels.push({ text: step === 1 ? "Lava kjøles raskt" : "Lava med ferdige rombekrystaller", x: 920, y: 70, at: [AK_AT[i][0] + 20, AK_AT[i][1] - 10], color: "#e6c9c0", anchor: "end", badge: [AK_AT[i][0] + 40, AK_AT[i][1] - 40] });
   if (step === 2)
-    labels.push({ text: "Kjøles langsomt", x: 600, y: 360, at: [470, 410], color: "#b9d3ee", badge: [520, 390] });
+    labels.push({ text: "Kjøles langsomt", x: 160, y: 380, at: [380, 410], color: "#b9d3ee", badge: [520, 390] });
   if (step === 4)
     labels.push({ text: "Glass, ingen krystaller", x: 920, y: 70, at: [AK_AT[i][0] + 10, AK_AT[i][1] - 6], color: "#c6d2da", anchor: "end", badge: [AK_AT[i][0] + 40, AK_AT[i][1] - 40] });
   const lensText = ["Finkornet", "Grovkornet", "Store krystaller i finkornet grunnmasse", "Vulkansk glass"][i];
@@ -884,7 +875,7 @@ export function AvkjolingKornFigur({
               </text>
             ) : null}
             {!small && step === 3 ? (
-              <text x={lens[0]} y={lens[1] + R + 50} textAnchor="middle" fontSize={figureFont(15, scale)} fontWeight="700" fill={AK_RING[i]} stroke={P.halo} strokeWidth="4" paintOrder="stroke">
+              <text x={lens[0]} y={fx(lens[1] + R + 30 + figureFont(15, scale) * 1.3)} textAnchor="middle" fontSize={figureFont(15, scale)} fontWeight="700" fill={AK_RING[i]} stroke={P.halo} strokeWidth="4" paintOrder="stroke">
                 i finkornet grunnmasse
               </text>
             ) : null}
@@ -930,25 +921,33 @@ function Tetra({ x, y, s, dim, rot = 0 }: { x: number; y: number; s: number; dim
   );
 }
 
-/** Posisjonene til tetraedrene i hvert panel, relativt til panelets midtpunkt. */
-const SI_LAYOUT: { x: number; y: number; rot: number }[][] = (() => {
-  const s = 22;
-  const h = s * 1.5;
+/** Posisjonene til tetraedrene i hvert panel, relativt til panelets midtpunkt. Nabotetraeder deler hjørner. */
+const SI_S = 17;
+const SI_LAYOUT: { x: number; y: number; rot: number; lag?: number }[][] = (() => {
+  const s = SI_S;
+  const a = s * Math.sqrt(3);
   const neso = [
-    [-50, -50],
-    [45, -40],
-    [-30, 40],
-    [55, 55],
+    [-48, -46],
+    [46, -38],
+    [-34, 42],
+    [50, 50],
   ].map(([x, y]) => ({ x, y, rot: 0 }));
+  // enkeltkjeder: like tetraeder side om side, hvert deler to hjørner med naboene
   const ino: { x: number; y: number; rot: number }[] = [];
-  for (let k = -3; k <= 3; k++) ino.push({ x: k * s * 0.87 * 1.0 * 1.15, y: (k % 2 === 0 ? -8 : 8) - 40, rot: k % 2 === 0 ? 0 : Math.PI / 3 });
-  for (let k = -3; k <= 3; k++) ino.push({ x: k * s * 1.0, y: (k % 2 === 0 ? -8 : 8) + 40, rot: k % 2 === 0 ? 0 : Math.PI / 3 });
-  const fyl: { x: number; y: number; rot: number }[] = [];
-  for (let r = -2; r <= 2; r++)
-    for (let c = -3; c <= 3; c++) fyl.push({ x: c * s * 1.73 * 0.58 + (r % 2 ? s * 0.5 : 0), y: r * h * 0.85, rot: (r + c) % 2 ? Math.PI / 3 : 0 });
-  const tek: { x: number; y: number; rot: number }[] = [];
-  for (let r = -2; r <= 2; r++)
-    for (let c = -2; c <= 2; c++) tek.push({ x: c * 30 + r * 12, y: r * 26 - c * 6, rot: (r * 2 + c) * 0.5 });
+  for (const y0 of [-38, 46]) for (let k = -3; k <= 3; k++) ino.push({ x: k * a, y: y0, rot: 0 });
+  // sjikt: hvert tetraeder deler tre hjørner, og det blir sekskantede hull
+  const sjikt = (dx: number, dy: number, rows: number[], cols: number[], rot: number, lag?: number) => {
+    const out: { x: number; y: number; rot: number; lag?: number }[] = [];
+    for (const r of rows)
+      for (const c of cols) out.push({ x: dx + c * a + (Math.abs(r) % 2 ? a / 2 : 0), y: dy + r * 1.5 * s, rot, lag });
+    return out;
+  };
+  const fyl = sjikt(0, 0, [-2, -1, 0, 1, 2], [-3, -2, -1, 0, 1, 2, 3], 0);
+  // rammeverk: to sjikt oppå hverandre, det øverste snudd og koblet til det nederste
+  const tek = [
+    ...sjikt(0, 0, [-2, -1, 0, 1, 2], [-3, -2, -1, 0, 1, 2, 3], 0, 0),
+    ...sjikt(a / 2, s * 0.5, [-2, -1, 0, 1], [-3, -2, -1, 0, 1, 2], Math.PI, 1),
+  ];
   return [neso, ino, fyl, tek];
 })();
 
@@ -1012,7 +1011,7 @@ export function SilikatgrupperFigur({
                     </clipPath>
                     <g clipPath={`url(#si-${k})`} data-nocheck="">
                       {lay.map((t, j) => (
-                        <Tetra key={j} x={cx + t.x} y={cy + t.y} s={22} rot={t.rot} dim={!on} />
+                        <Tetra key={j} x={cx + t.x} y={cy + t.y} s={SI_S} rot={t.rot} dim={!on || t.lag === 0} />
                       ))}
                     </g>
                   </g>
