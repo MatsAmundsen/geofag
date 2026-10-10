@@ -588,6 +588,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g2-md-runde-oversikt-2026-10-08",
     slug: "oversikt",
     stale: ["svekke dytten"],
+  },
+  {
+    flag: "oversikt-dytet-2026-10-10",
+    slug: "oversikt",
+    stale: ["Det første dytet på energibalansen", "ikke det første dytet"],
   }
 ,
   {

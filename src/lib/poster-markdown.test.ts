@@ -561,6 +561,9 @@ describe("chapter posters from this pull request", () => {
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("tretti"), false);
+    assert.equal(md.includes("dytet"), false);
+    assert.equal(md.includes("Det første skyvet på energibalansen"), true);
+    assert.equal(md.includes("ikke det første skyvet"), true);
     assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("/tema/klima/oversikt"), true);
