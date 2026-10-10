@@ -1467,7 +1467,7 @@ export function ContinentalRiftDiagram() {
           </g>
 
           {/* Referanse til Oslofeltet. Gruppen skaleres så minste skrift blir 20 brukerenheter.
-              Siste etikett (tekstlinjen) er urørt. */}
+              Stedsnavn-linjen tegnes i etikettgruppen under, med samme transform. */}
           <g transform="translate(166, 430) scale(2.1053)">
           <g transform="translate(0, 0)">
             <rect x="0" y="0" width="260" height="60" rx="6" fill="#0c161f" stroke="#3b82f6" strokeWidth="1.2" opacity="0.95" />
@@ -1476,9 +1476,6 @@ export function ContinentalRiftDiagram() {
             </L>
             <L x="12" y="36" fill="#d1d5db" size={10}>
               Fossil paleorift. Vulkanisme 250–300 Ma.
-            </L>
-            <L x="12" y="50" fill="#94a3b8" size={9.5}>
-              Langesund–Mjøsa (fortsetter i Skagerrak) · Rombeporfyr
             </L>
           </g>
           </g>
@@ -1540,6 +1537,11 @@ export function ContinentalRiftDiagram() {
             <L x={xR + 95} y="92" fill={C.warm} size={20} weight={800} anchor="middle">
               Strekk →
             </L>
+            <g transform="translate(166, 430) scale(2.1053)">
+              <L x="12" y="50" fill="#94a3b8" size={9.5}>
+                Langesund–Mjøsa (fortsetter i Skagerrak) · Rombeporfyr
+              </L>
+            </g>
           </g>
           </g>
         </>
