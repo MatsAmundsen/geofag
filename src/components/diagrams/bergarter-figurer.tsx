@@ -1389,9 +1389,9 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
       : verktoy === 2
         ? `${RIPEVERKTOY[ri]} mot ${p.kornNavn} i ${p.navn.toLowerCase()}: ${p.ripe[ri]} Rip ett korn, ikke hele steinen.`
         : syreTekst;
-  const vb = small ? "0 0 520 600" : "0 0 960 420";
+  const vb = small ? "0 0 520 630" : "0 0 960 420";
   const S = small ? { x: 260, y: 150, k: 1.35 } : { x: 250, y: 200, k: 1.45 };
-  const L = small ? { x: 260, y: 430, R: 120 } : { x: 690, y: 200, R: 150 };
+  const L = small ? { x: 260, y: 460, R: 120 } : { x: 690, y: 200, R: 150 };
   const bruser = verktoy === 3 && (p.syre === "bruser" || p.syre === "kitt");
   const sterk = p.syre === "bruser";
   const valg = (fn: (n: number) => void) => (n: number) => {
@@ -1477,7 +1477,7 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
               </g>
               {/* verktøyet over prøven */}
               {verktoy === 2 ? (
-                <g transform={`translate(${S.x + 80} ${S.y - 110})`}>
+                <g transform={`translate(${fx(S.x + 54 * S.k)} ${fx(S.y - 40 * S.k - 46)})`}>
                   {ri === 0 ? <path d="M0 0 C18 -6 30 4 26 22 L16 46 L-6 40 Z" fill="#e8c4b0" stroke="#7a5a4a" strokeWidth="2" /> : null}
                   {ri === 1 ? <path d="M-10 -30 L6 -30 L6 30 L-2 52 L-10 30 Z" fill="#c9d1d8" stroke="#56606a" strokeWidth="2" /> : null}
                   {ri === 2 ? <rect x="-30" y="-10" width="60" height="44" rx="4" fill="#bfe3ef" fillOpacity="0.35" stroke="#9ccbe0" strokeWidth="2" /> : null}
@@ -1496,7 +1496,7 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
                 x={L.x}
                 y={L.y}
                 R={L.R}
-                base={p.base}
+                base={verktoy === 1 ? p.base : "#16222a"}
                 korn={verktoy === 1 ? p.korn : []}
                 grow={1}
                 uid={`${uid}-l`}
@@ -1510,14 +1510,14 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
                 </g>
               ) : null}
               {verktoy !== 1 ? (
-                <text x={L.x} y={L.y + 6} textAnchor="middle" fontSize={f(17)} fontWeight="700" fill={C.fg}>
+                <text x={L.x} y={L.y + 6} textAnchor="middle" fontSize={f(20)} fontWeight="700" fill={(verktoy === 2 && riper === true) || (verktoy === 3 && bruser) ? "#ffd9b0" : C.fg}>
                   {verktoy === 2 ? (riper === true ? "Ripe" : riper === false ? "Ingen ripe" : "Ikke testbart") : bruser ? (sterk ? "Bruser" : "Kan bruse svakt") : "Ingen reaksjon"}
                 </text>
               ) : null}
               <text x={L.x} y={L.y + L.R + 34} textAnchor="middle" fontSize={f(16)} fontWeight="700" fill={verktoy === 1 ? C.warm : C.muted}>
                 {verktoy === 1 ? "Lupe, 6–10 ganger" : verktoy === 2 ? `Ripetest: ${RIPEVERKTOY[ri].toLowerCase()}` : "Fortynnet saltsyre"}
               </text>
-              <text x={S.x} y={small ? 296 : 380} textAnchor="middle" fontSize={f(18)} fontWeight="700" fill={C.fg}>
+              <text x={S.x} y={small ? 304 : 380} textAnchor="middle" fontSize={f(18)} fontWeight="700" fill={C.fg}>
                 {p.navn}
               </text>
             </g>
