@@ -1609,19 +1609,30 @@ def build_foehn() -> None:
         )
 
     x800 = next(x for x in range(foot_w, peak_x) if ridge(x) >= 800)
-    x_end = next(x for x in range(x800, peak_x) if ridge(x) >= 1760)
-    # The deck starts on the rising slope, to the right of the sky-base label.
-    cloud_left = max(268, x800 - 150)
+    x_end = next(x for x in range(x800, peak_x) if ridge(x) >= 1930)
+    # Flat base starts to the right of the "Skybase 800 m" label (that label ends near x=206).
+    cloud_left = 246
     y800 = y_of(800)
+    deck = 320.0
+
+    def cloud_u(x: float) -> float:
+        return min(1.0, max(0.0, (x - cloud_left) / max(1.0, x_end - cloud_left)))
+
+    def thickness_m(x: float) -> float:
+        """Full depth along the deck. Only the last few pixels ease onto the slope."""
+        u = cloud_u(x)
+        tail_u = 64.0 / max(1.0, x_end - cloud_left)
+        if u > 1.0 - tail_u:
+            t = (1.0 - u) / tail_u
+            grow = 0.5 - 0.5 * math.cos(math.pi * t)
+        else:
+            grow = 1.0
+        bump = (52 * math.sin(2 * math.pi * u) + 26 * math.sin(3 * math.pi * u)) * grow
+        return deck * grow + bump
 
     def ceiling_m(x: float) -> float:
-        u = (x - cloud_left) / (x_end - cloud_left)
-        u = min(1.0, max(0.0, u))
         base = 800.0 if ridge(x) < 800 else ridge(x)
-        envelope = math.sin(math.pi * u) ** 1.05
-        thick = 340 * envelope
-        bump = 32 * math.sin(math.pi * u * 3) * envelope
-        return min(1968.0, base + thick + bump)
+        return min(1985.0, base + thickness_m(x))
 
     crest_pts = [(x, y_of(ridge(x))) for x in range(foot_w, foot_e + 1, 2)]
     ground = (
@@ -1629,6 +1640,18 @@ def build_foehn() -> None:
         + " ".join(f"L{x:.0f} {y:.1f}" for x, y in crest_pts)
         + f" L{right - 4:.0f} {bottom:.1f} Z"
     )
+
+    def left_cap() -> list[tuple[float, float]]:
+        """Round left end: full depth, bulging a little to the left, not a point."""
+        y_top = y_of(ceiling_m(cloud_left))
+        y_bot = y800
+        pts = []
+        for i in range(0, 9):
+            ang = math.pi * i / 8
+            px = cloud_left - 14 * math.sin(ang)
+            py = y_bot + (y_top - y_bot) * (0.5 - 0.5 * math.cos(ang))
+            pts.append((px, py))
+        return pts
 
     base_pts = []
     x = float(cloud_left)
@@ -1645,8 +1668,9 @@ def build_foehn() -> None:
         top_pts.append((x, y_of(ceiling_m(x))))
         x -= 2.5
     top_pts[0] = base_pts[-1]
-    top_pts[-1] = base_pts[0]
-    cloud_pts = base_pts + top_pts
+    top_pts[-1] = (cloud_left, y_of(ceiling_m(cloud_left)))
+    # Flat base, up the slope, back along the ceiling, down the rounded left end.
+    cloud_pts = base_pts + top_pts + list(reversed(left_cap()))
 
     def path_of(pts, dx=0.0, dy=0.0) -> str:
         head = pts[0]
@@ -1689,9 +1713,9 @@ def build_foehn() -> None:
     )
 
     rainy = []
-    for x in range(int(cloud_left) + 10, int(x800) - 6, 3):
+    for x in range(int(cloud_left) + 16, int(x800) - 8, 3):
         gap_px = y_of(ridge(x)) - (y800 + 6)
-        if gap_px >= 36 and ridge(x) > 120:
+        if gap_px >= 24 and ridge(x) > 120:
             rainy.append(x)
     rain_n = 7 if len(rainy) >= 7 else len(rainy)
     picks = [rainy[round(i * (len(rainy) - 1) / (rain_n - 1))] for i in range(rain_n)] if rain_n else []
