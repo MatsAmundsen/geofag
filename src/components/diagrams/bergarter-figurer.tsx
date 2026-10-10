@@ -238,8 +238,8 @@ export function BergartssyklusSnittFigur({
   const active = (i: number) => step === i;
   const labels: Lab[] = [
     { text: "Magma", x: 930, y: 520, at: [850, 486], color: "#ffc59a", anchor: "end", weight: 700, badge: [800, 506] },
-    { text: "Dypbergart (magmatisk)", x: 500, y: 482, at: [700, 440], color: "#d4c8e0", badge: [742, 366] },
-    { text: "Dagbergart (lava)", x: 930, y: 110, at: [866, 168], color: "#e6c9c0", anchor: "end", badge: [906, 140] },
+    { text: "Dypbergart, f.eks. granitt eller gabbro", x: 360, y: 482, at: [700, 440], color: "#d4c8e0", badge: [742, 366] },
+    { text: "Dagbergart, f.eks. basalt", x: 930, y: 110, at: [866, 168], color: "#e6c9c0", anchor: "end", badge: [906, 140] },
     { text: "Havet", x: 700, y: 246, at: [700, BS_SEA + 8], color: "#bfe0ef", anchor: "middle", size: 14, badge: [800, BS_SEA + 14] },
   ];
   if (step >= 2)
@@ -476,6 +476,8 @@ type Rute = {
   kanter: string[];
   /** Mulig vei videre som teksten nevner (stiplet). */
   mulig?: string[];
+  /** Navn på en stasjonsboks mens denne veien er valgt. */
+  boks?: Partial<Record<StId, string>>;
   tekst: string;
 };
 const RUTER: Rute[] = [
@@ -513,21 +515,22 @@ const RUTER: Rute[] = [
     kanter: ["forsteining"],
     mulig: ["sedb-meta"],
     tekst:
-      "Kalkstein: karbonat fra organismer er forsteinet. De fleste kalksteiner i Norge er omdannet til marmor (stiplet vei), men i Oslo-området kan kalksteinen være bare svakt omdannet (NGU, u.å.-f).",
+      "Kalkstein: karbonat fra organismer er forsteinet. De fleste norske kalksteiner er omdannet til marmor. Stiplet vei: omdanning. I Oslo-området kan kalksteinen være bare svakt omdannet (NGU, u.å.-f).",
   },
   {
     navn: "Fyllitt",
     start: "sedi",
     kanter: ["forsteining", "sedb-meta"],
+    boks: { sedb: "Leirskifer" },
     tekst:
-      "Fyllitt: protolitten er leire. Lavgrads regional omdanning gir tydelig skifrighet og silkeglans. Stasjonen er lav metamorfose (NGU, u.å.-a).",
+      "Leire → leirskifer (sedimentær) → fyllitt (metamorf). Svak regional metamorfose gjør at glimmerkornene ordnes, og berget får skifrighet.",
   },
   {
     navn: "Gneis",
     start: "meta",
     kanter: ["magm-meta", "sedb-meta"],
     tekst:
-      "Gneis: har opprinnelig vært magmatisk eller sedimentær bergart (to mulige veier). Gneisen i grunnfjellet i Sør-Norge ble dannet for mer enn 900 millioner år siden og er fortsatt metamorf (NGU, u.å.-d).",
+      "Gneis kan dannes både av magmatiske bergarter (f.eks. granitt) og av sedimentære bergarter (f.eks. leirskifer eller sandstein) ved høyt trykk og høy temperatur. Hvilken vei en bestemt gneis har tatt, kan ofte ikke avgjøres fra en håndprøve alene.",
   },
 ];
 
@@ -690,7 +693,7 @@ export function FolgBergartFigur({
                     />
                     <rect x={x - bw / 2 + 10} y={y - bh / 2 + 10} width="14" height={bh - 20} rx="4" fill={ST_FARGE[id]} />
                     <text x={x + 8} y={y + 6} textAnchor="middle" fontSize={f(small ? 19 : 18)} fontWeight="700" fill={C.fg} data-label="">
-                      {ST_NAVN[id]}
+                      {rute?.boks?.[id] ?? ST_NAVN[id]}
                     </text>
                   </g>
                 );
@@ -711,7 +714,7 @@ const AK_STEPS = ["Dagbergart", "Dypbergart", "Rombeporfyr", "Obsidian"];
 const AK_STATUS = [
   "Dagbergart: Lava kjøles raskt ved overflaten. Krystallene rekker ikke å vokse, og bergarten blir finkornet. Eksempel: basalt.",
   "Dypbergart: Magma kjøles langsomt på dypet. Krystallene vokser, og bergarten blir grovkornet. Eksempler: gabbro og larvikitt.",
-  "Rombeporfyr: Store rombeformede feltspatkrystaller ligger i en finkornet grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten.",
+  "Rombekrystallene vokste sakte i magmakammeret. Resten av smelten størknet raskt til finkornet grunnmasse da lavaen nådde overflaten.",
   "Obsidian: Vulkansk glass. Her ble det ingen krystaller.",
 ];
 const AK_FIN = krystaller(21, 420, 1.6, 3.4, ["#4a3b3c", "#5f4d4c", "#2f2627", "#776463"], 92);
@@ -869,12 +872,15 @@ export function AvkjolingKornFigur({
 const SI_STEPS = ["Nesosilikat", "Inosilikat", "Fyllosilikat", "Tektosilikat"];
 const SI_STATUS = [
   "Nesosilikat: Tetraedrene står isolert og deler ikke oksygen. Eksempel: olivin i mafisk magma.",
-  "Inosilikat: Tetraedrene danner kjeder. Eksempler: pyroksen i gabbro og amfibol i grønnstein.",
+  "Inosilikat: Tetraedrene danner kjeder. Pyroksen (enkle kjeder), amfibol (doble kjeder). Eksempler: pyroksen i gabbro og amfibol i grønnstein.",
   "Fyllosilikat: Tetraedrene danner sjikt. Derfor spalter mineralet i flak. Eksempler: glimmer i fyllitt og kloritt i grønnstein.",
   "Tektosilikat: Tetraedrene danner et rammeverk der alle hjørnene deles. Eksempler: kvarts og feltspat. De er harde og blir ofte korn i sand.",
 ];
 const SI_DESK = ["Isolert", "Kjeder", "Sjikt", "Rammeverk"];
-const SI_EKS = ["Olivin", "Pyroksen, amfibol", "Glimmer, kloritt", "Kvarts, feltspat"];
+const SI_EKS = [["Olivin"], ["Pyroksen (enkle kjeder),", "amfibol (doble kjeder)"], ["Glimmer, kloritt"], ["Kvarts, feltspat"]];
+
+/** Silisium: samme farge i tegningen og i fargeforklaringen. */
+const SI_FARGE = "#5b78e6";
 
 /** Tetraeder sett ovenfra: tre oksygen i hjørnene, silisium i midten (det fjerde oksygenet ligger over). */
 function Tetra({ x, y, s, dim, rot = 0 }: { x: number; y: number; s: number; dim?: boolean; rot?: number }) {
@@ -891,8 +897,7 @@ function Tetra({ x, y, s, dim, rot = 0 }: { x: number; y: number; s: number; dim
       {c.map((q, i) => (
         <circle key={i} cx={fx(q[0])} cy={fx(q[1])} r={fx(s * 0.28)} fill="#e86a5a" stroke="#5a1f18" strokeWidth="0.8" />
       ))}
-      <circle cx={fx(x)} cy={fx(y)} r={fx(s * 0.32)} fill="#f2f0e6" stroke="#5a1f18" strokeWidth="0.8" />
-      <circle cx={fx(x)} cy={fx(y)} r={fx(s * 0.16)} fill="#2c3b8f" />
+      <circle cx={fx(x)} cy={fx(y)} r={fx(s * 0.3)} fill={SI_FARGE} stroke="#e8eef2" strokeWidth="1" />
     </g>
   );
 }
@@ -910,7 +915,9 @@ const SI_LAYOUT: { x: number; y: number; rot: number; lag?: number }[][] = (() =
   ].map(([x, y]) => ({ x, y, rot: 0 }));
   // enkeltkjeder: like tetraeder side om side, hvert deler to hjørner med naboene
   const ino: { x: number; y: number; rot: number }[] = [];
-  for (const y0 of [-38, 46]) for (let k = -3; k <= 3; k++) ino.push({ x: k * a, y: y0, rot: 0 });
+  for (let k = -3; k <= 3; k++) ino.push({ x: k * a, y: -52, rot: 0 });
+  for (let k = -3; k <= 3; k++) ino.push({ x: k * a, y: 22, rot: 0 });
+  for (let k = -3; k <= 2; k++) ino.push({ x: k * a + a / 2, y: 22 + 1.5 * s, rot: 0 });
   // sjikt: hvert tetraeder deler tre hjørner, og det blir sekskantede hull
   const sjikt = (dx: number, dy: number, rows: number[], cols: number[], rot: number, lag?: number) => {
     const out: { x: number; y: number; rot: number; lag?: number }[] = [];
@@ -955,7 +962,7 @@ export function SilikatgrupperFigur({
         status={SI_STATUS[step - 1]}
         keys={[
           { text: "Oksygen", color: "#e86a5a", kind: "fill" },
-          { text: "Silisium", color: "#2c3b8f", kind: "fill" },
+          { text: "Silisium", color: SI_FARGE, kind: "fill" },
         ]}
         viewBox={vb}
         forceNarrow={small}
@@ -991,9 +998,18 @@ export function SilikatgrupperFigur({
                       ))}
                     </g>
                   </g>
-                  <text x={cx} y={cy + ph / 2 - 22} textAnchor="middle" fontSize={figureFont(15, scale)} fill={on ? "#ffd9b0" : C.muted}>
-                    {SI_EKS[k]}
-                  </text>
+                  {SI_EKS[k].map((line, li) => (
+                    <text
+                      key={line}
+                      x={cx}
+                      y={fx(cy + ph / 2 - 22 - (SI_EKS[k].length - 1 - li) * figureFont(15, scale) * 1.35)}
+                      textAnchor="middle"
+                      fontSize={figureFont(15, scale)}
+                      fill={on ? "#ffd9b0" : C.muted}
+                    >
+                      {line}
+                    </text>
+                  ))}
                 </g>
               );
             })}
