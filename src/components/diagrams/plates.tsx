@@ -1367,7 +1367,7 @@ export function ContinentalRiftDiagram() {
           valueLabel={extension < 35 ? "lite" : extension > 70 ? "mye" : "rift"}
         />
       }
-      viewBox="0 0 880 430"
+      viewBox="0 -110 880 700"
       wide
       scroll
     >
@@ -1423,20 +1423,30 @@ export function ContinentalRiftDiagram() {
           <path d={`M ${xL + 18} ${85 + (yFloor - 85) * 0.28} L ${xL + 32} ${85 + (yFloor - 85) * 0.45}`} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
           <path d={`M ${xR - 18} ${85 + (yFloor - 85) * 0.28} L ${xR - 32} ${85 + (yFloor - 85) * 0.45}`} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
 
-          {/* Riftskuldre og graben-tekst */}
-          <L x="160" y="70" fill="#f8fafc" size={13} weight={700} anchor="middle">
+          {/* Riftskuldre og graben-tekst. GRABEN ligger fast i toppen, med leder ned i dalen,
+              så den ikke kolliderer med vulkanetiketten når strekket endrer dalbunnen. */}
+          <L x="118" y="52" fill="#f8fafc" size={20} weight={700} anchor="middle">
             Horst (Riftskulder)
           </L>
-          <L x="720" y="70" fill="#f8fafc" size={13} weight={700} anchor="middle">
+          <L x="762" y="52" fill="#f8fafc" size={20} weight={700} anchor="middle">
             Horst (Riftskulder)
           </L>
-          <L x="440" y={yFloor - 20} fill="#f59e0b" size={14} weight={800} anchor="middle">
+          <L x="440" y="52" fill="#f59e0b" size={20} weight={800} anchor="middle">
             GRABEN (Innsunket riftdal)
           </L>
+          <polyline
+            points={`440,66 440,${yFloor - 12}`}
+            fill="none"
+            stroke="#f59e0b"
+            strokeWidth="1.5"
+          />
 
           <rect x={lakeX} y={yFloor - 7} width={lakeW} height="7" fill="#0284c7" />
-          <L x="440" y={yFloor + 15} fill="#38bdf8" size={10} weight={600} anchor="middle">
-            Riftsjø (Tanganyikasjøen 1470 m dyp)
+          <L x="440" y={yFloor + 36} fill="#38bdf8" size={20} weight={700} anchor="middle">
+            Riftsjø
+          </L>
+          <L x="440" y={yFloor + 72} fill="#38bdf8" size={20} weight={600} anchor="middle">
+            (Tanganyikasjøen 1470 m dyp)
           </L>
 
           <path
@@ -1444,10 +1454,10 @@ export function ContinentalRiftDiagram() {
             fill="#1d2c36"
             stroke="#131e25"
           />
-          <L x="170" y="210" fill="#94a3b8" size={11.5} weight={600} anchor="middle">
+          <L x="150" y="348" fill="#94a3b8" size={20} weight={600} anchor="middle">
             Stiv kontinentallitosfære
           </L>
-          <L x="710" y="210" fill="#94a3b8" size={11.5} weight={600} anchor="middle">
+          <L x="700" y="348" fill="#94a3b8" size={20} weight={600} anchor="middle">
             Stiv kontinentallitosfære
           </L>
 
@@ -1466,10 +1476,16 @@ export function ContinentalRiftDiagram() {
           <path d={`M 490 380 C 470 300, 452 ${yMelt + 20}, 444 ${yPlume + 20}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
 
           <ellipse cx="440" cy={yMelt} rx="42" ry="25" fill="#ea580c" className="rift-magma" />
-          <L x="440" y={yMelt - 5} fill="#fff" size={11} weight={800} anchor="middle">
+          <polyline
+            points={`482,${yMelt} 592,${yMelt - 10}`}
+            fill="none"
+            stroke="#fef08a"
+            strokeWidth="1.5"
+          />
+          <L x="600" y={yMelt - 4} fill="#fff" size={20} weight={800}>
             Dekompresjonssmelting
           </L>
-          <L x="440" y={yMelt + 10} fill="#fef08a" size={9.5} weight={700} anchor="middle">
+          <L x="600" y={yMelt + 32} fill="#fef08a" size={20} weight={700}>
             (P faller under tynn skorpe)
           </L>
 
@@ -1478,25 +1494,36 @@ export function ContinentalRiftDiagram() {
           <circle cx={volcanoX} cy={yFloor - 23} r="3.5" fill="#94a3b8" className="rift-smoke-puff" />
           <circle cx={volcanoX - 3} cy={yFloor - 29} r="4.5" fill="#64748b" className="rift-smoke-puff" style={{ animationDelay: "0.8s" }} />
 
-          <L x={volcanoX + 16} y={yFloor - 28} fill="#ef4444" size={9.5} weight={700}>
-            Riftvulkan (f.eks. Ol Doinyo Lengai)
+          <L x="600" y="-64" fill="#ef4444" size={20} weight={700}>
+            Riftvulkan
           </L>
+          <L x="600" y="-28" fill="#ef4444" size={20} weight={700}>
+            (f.eks. Ol Doinyo Lengai)
+          </L>
+          <polyline
+            points={`${volcanoX},${yFloor - 16} 600,${yFloor - 16} 600,-12`}
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth="1.5"
+          />
 
           <g>
             <Arrow d={`M ${xL - 50} 110 L ${xL - 140} 110`} marker={m.warm} color={C.warm} width={3.6} />
-            <L x={xL - 95} y="100" fill={C.warm} size={11} weight={800} anchor="middle">
+            <L x={xL - 95} y="92" fill={C.warm} size={20} weight={800} anchor="middle">
               ← Strekk
             </L>
           </g>
           <g>
             <Arrow d={`M ${xR + 50} 110 L ${xR + 140} 110`} marker={m.warm} color={C.warm} width={3.6} />
-            <L x={xR + 95} y="100" fill={C.warm} size={11} weight={800} anchor="middle">
+            <L x={xR + 95} y="92" fill={C.warm} size={20} weight={800} anchor="middle">
               Strekk →
             </L>
           </g>
 
-          {/* Referanse til Oslofeltet */}
-          <g transform="translate(60, 310)">
+          {/* Referanse til Oslofeltet. Gruppen skaleres så minste skrift blir 20 brukerenheter.
+              Siste etikett (tekstlinjen) er urørt. */}
+          <g transform="translate(166, 430) scale(2.1053)">
+          <g transform="translate(0, 0)">
             <rect x="0" y="0" width="260" height="60" rx="6" fill="#0c161f" stroke="#3b82f6" strokeWidth="1.2" opacity="0.95" />
             <L x="12" y="20" fill="#38bdf8" size={12} weight={800}>
               NORSK EKSEMPEL: OSLOFELTET
@@ -1507,6 +1534,7 @@ export function ContinentalRiftDiagram() {
             <L x="12" y="50" fill="#94a3b8" size={9.5}>
               Skagerrak–Østerdalen · Rombeporfyr
             </L>
+          </g>
           </g>
           </g>
         </>
@@ -2889,11 +2917,11 @@ export function OfiolittSnittDiagram() {
   const descId = `${uid}-desc`;
   // Skjematisk og omtrentlig: putelava ~1 km, ganger ~1,5 km, gabbro ~3 km.
   const layers = [
-    { y0: 50, y1: 62, ly: 48, fill: "#6b7a8a", label: "Pelagiske sedimenter", note: "tynne lag av dyphavsslam", color: C.muted },
-    { y0: 62, y1: 112, ly: 100, fill: "#3f5d4c", label: "Putelava (basalt)", note: "0,5–1,5 km", color: C.teal },
-    { y0: 112, y1: 172, ly: 152, fill: "#3b4a52", label: "Plateformede ganger", note: "1–2 km loddrette basaltganger", color: C.cold },
-    { y0: 172, y1: 282, ly: 218, fill: "#4a4f3c", label: "Gabbro", note: "2–4 km, lagdelt nederst", color: C.sand },
-    { y0: 282, y1: 372, ly: 334, fill: "#7a6a3a", label: "Mantelperidotitt", note: "dunitt og harzburgitt", color: C.warm },
+    { y0: 50, y1: 62, ly: 58, fill: "#6b7a8a", label: "Pelagiske sedimenter", note: "tynne lag av dyphavsslam", color: C.muted },
+    { y0: 62, y1: 112, ly: 130, fill: "#3f5d4c", label: "Putelava (basalt)", note: "0,5–1,5 km", color: C.teal },
+    { y0: 112, y1: 172, ly: 202, fill: "#3b4a52", label: "Plateformede ganger", note: "1–2 km loddrette basaltganger", color: C.cold },
+    { y0: 172, y1: 282, ly: 274, fill: "#4a4f3c", label: "Gabbro", note: "2–4 km, lagdelt nederst", color: C.sand },
+    { y0: 282, y1: 372, ly: 382, fill: "#7a6a3a", label: "Mantelperidotitt", note: "dunitt og harzburgitt", color: C.warm },
   ];
   const boundaries = [62, 112, 172, 282];
   const title =
@@ -2906,7 +2934,7 @@ export function OfiolittSnittDiagram() {
       caption="Leka-ofiolitten er en bit av havbunnsskorpe og øvre mantel fra Iapetushavet, dannet for ca. 497 millioner år siden (Dunning & Pedersen, 1988). Den ble trolig skjøvet opp på kanten av et kontinent for ca. 470 millioner år siden og senere ført inn over Baltika under den kaledonske fjellkjededannelsen. Lagpakken ble veltet over på siden, så i dag kan man gå bortover på øya fra mantelbergarter til putelava (Titus mfl., 2002; Leka steinsenter, u.å.; Trollfjell Geopark, u.å.). Figuren viser lagene slik de lå i havbunnen, før de ble veltet. Tykkelsene er omtrentlige."
     >
       <svg
-        viewBox="0 0 460 436"
+        viewBox="0 0 460 528"
         className="mx-auto h-auto w-full max-w-xl"
         role="img"
         aria-labelledby={titleId}
@@ -2925,7 +2953,7 @@ export function OfiolittSnittDiagram() {
               <g key={l.label}>
                 <rect x="20" y={l.y0} width="130" height={l.y1 - l.y0} fill={l.fill} />
                 <polyline
-                  points={`150,${mid} 160,${mid} 166,${l.ly - 6}`}
+                  points={`150,${mid} 164,${mid} 172,${l.ly - 24}`}
                   fill="none"
                   stroke={l.color}
                   strokeWidth="1.5"
@@ -2933,7 +2961,7 @@ export function OfiolittSnittDiagram() {
                 <L x="172" y={l.ly} fill={l.color} size={20} weight={700}>
                   {l.label}
                 </L>
-                <L x="172" y={l.ly + 24} fill={C.muted} size={20}>
+                <L x="172" y={l.ly + 36} fill={C.muted} size={20}>
                   {l.note}
                 </L>
               </g>
@@ -2965,13 +2993,14 @@ export function OfiolittSnittDiagram() {
           ))}
           {/* Moho */}
           <line x1="12" y1="282" x2="160" y2="282" stroke={C.white} strokeWidth="2.2" strokeDasharray="8 5" />
-          <L x="172" y="288" fill={C.white} size={20} weight={700}>
+          <polyline points="150,282 164,282 172,322" fill="none" stroke={C.white} strokeWidth="1.5" />
+          <L x="172" y="346" fill={C.white} size={20} weight={700}>
             Moho: grensen skorpe–mantel
           </L>
-          <L x="20" y="400" fill={C.muted} size={20}>
+          <L x="20" y="460" fill={C.muted} size={20}>
             På Leka ligger lagene på siden, så du går bortover
           </L>
-          <L x="20" y="426" fill={C.muted} size={20}>
+          <L x="20" y="496" fill={C.muted} size={20}>
             fra mantelperidotitt til putelava.
           </L>
         </g>
