@@ -216,6 +216,26 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "elastisk tilbakefjæring",
   },
   {
+    widgets: ["Silikatgrupper"],
+    beforeHeading: "Hva er en bergart?",
+    require: "Silikatmineraler bygges av silisium",
+  },
+  {
+    widgets: ["AvkjolingKorn", "OsloriftBergarter"],
+    beforeHeading: "Hva er sedimentære bergarter?",
+    require: "Avkjølingen styrer kornstørrelsen",
+  },
+  {
+    widgets: ["Metamorfose"],
+    beforeHeading: "Hva er bergartssyklusen?",
+    require: "lavgrads regional metamorfose",
+  },
+  {
+    widgets: ["Steinlab"],
+    beforeHeading: "Hva er forvitring?",
+    require: "Fortynnet saltsyre brukes",
+  },
+  {
     widgets: ["ForvitringForklaring"],
     afterHeading: "Hva er forvitring?",
   },

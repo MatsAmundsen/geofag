@@ -150,7 +150,7 @@ export {
   VolcanoMonitoringDiagram,
   VolcanoTypesDiagram,
 } from "./quakes";
-export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
+export { ValleyCrossSectionDiagram } from "./bergarter";
 export {
   AvsetningsformerDiagram,
   BotnEggTindDiagram,

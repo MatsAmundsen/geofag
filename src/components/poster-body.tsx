@@ -63,9 +63,18 @@ import {
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
-  RockCycleDiagram,
   SilicateStructureDiagram,
 } from "@/components/diagrams/bergarter";
+import {
+  AvkjolingKornFigur,
+  BergartssyklusSnittFigur,
+  FolgBergartFigur,
+  MetamorfoseFigur,
+  OSLO_STATUS_BERGARTER,
+  SilikatgrupperFigur,
+  SteinlabFigur,
+} from "@/components/diagrams/bergarter-figurer";
+import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
@@ -766,7 +775,23 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_JORDSKJELV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   SilicateStructure: () => <SilicateStructureDiagram />,
-  RockCycle: () => <RockCycleDiagram />,
+  RockCycle: () => (
+    <>
+      <BergartssyklusSnittFigur />
+      <FolgBergartFigur />
+    </>
+  ),
+  Silikatgrupper: () => <SilikatgrupperFigur />,
+  AvkjolingKorn: () => <AvkjolingKornFigur />,
+  Metamorfose: () => <MetamorfoseFigur />,
+  Steinlab: () => <SteinlabFigur />,
+  OsloriftBergarter: () => (
+    <OslograbenFigur
+      heading="Osloriften: rombeporfyr og larvikitt fra samme smeltefamilie"
+      caption="Samme smeltefamilie, to steder: dypet og overflaten. Rombeporfyr størknet på overflaten og har store rombeformede feltspatkrystaller i en finkornet grunnmasse. Larvikitt størknet ferdig under overflaten og er grovkornet. Forenklet: snittet er skjematisk uten målestokk, og vulkanismen og magmakamrene vises i ett steg. Samme figur som i Norges geologiske historie."
+      statusTexts={OSLO_STATUS_BERGARTER}
+    />
+  ),
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,

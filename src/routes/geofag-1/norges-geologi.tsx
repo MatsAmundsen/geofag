@@ -166,7 +166,8 @@ function NorgesGeologiPage() {
         </h2>
         <p>
           I karbon og perm holdt superkontinentet Pangea på å sprekke opp. En gren av denne oppsprekkingen skar rett inn
-          gjennom det sørøstlige Norge fra Langesund i sør til Brumunddal og Mjøsa i nord.
+          gjennom det sørøstlige Norge. På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter
+          ut i Skagerrak.
         </p>
         <p>
           Jordskorpen ble strukket og tynnet ut, og store forkastningsblokker sank inn som en dyp riftdal kalt en{" "}
