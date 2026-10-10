@@ -571,7 +571,7 @@ export function NaoKartFigur({
   const coolSea = pos ? na(-30, 27) : na(-55, 37);
   const jetLab = pos ? na(-56, 45) : na(-47, 61.2);
   const labels: Lab[] = [
-    { text: pos ? "Mildere og våtere" : "Kaldere og tørrere", x: nEu[0], y: nEu[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [nEu[0], nEu[1]] },
+    { text: pos ? "Mildere og våtere" : "Kaldere og tørrere", x: pos ? nEu[0] + 22 : nEu[0], y: nEu[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [nEu[0], nEu[1]] },
     { text: pos ? "Kaldere og tørrere" : "Mildere og våtere", x: sEu[0], y: pos ? sEu[1] + 6 : sEu[1] - 22, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [sEu[0], sEu[1]] },
     { text: pos ? "Kaldere" : "Mildere", x: ca[0], y: ca[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [ca[0], ca[1]] },
     { text: pos ? "Mildere og våtere" : "Kaldere", x: eUs[0] + 26, y: eUs[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [eUs[0] + 26, eUs[1]] },
