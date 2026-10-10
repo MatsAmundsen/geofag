@@ -15,7 +15,7 @@ export const Route = createFileRoute("/tema/klima/iod")({
     topicHead({
       title: "IOD: Den indiske hav-dipolen · Geofag 2",
       description:
-        "Den indiske hav-dipolen: positiv, nøytral og negativ fase, og hvordan DMI måler vest mot øst.",
+        "Den indiske hav-dipolen: positiv og negativ fase, virkninger rundt Det indiske hav og koblingen til jetstrømmene.",
       path: "/tema/klima/iod",
     }),
   component: IodPage,

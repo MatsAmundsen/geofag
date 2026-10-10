@@ -105,6 +105,17 @@ import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
+import {
+  IodFaseFigur,
+  IodHavtemperaturFigur,
+  IodJetstrommerFigur,
+} from "@/components/diagrams/iod-figurer";
+import {
+  NaoFaserFigur,
+  NaoKartFigur,
+  NaoOmradeFigur,
+  NaoPolarvirvelFigur,
+} from "@/components/diagrams/nao-figurer";
 import { Quiz } from "@/components/quiz";
 import { KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -517,6 +528,35 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
+    IodFigurPositiv: () => (
+    <IodFaseFigur
+      initialFase="positiv"
+      heading="Figur 1. Positiv IOD"
+      title="Kart over Det indiske hav med varmt vann ved Øst-Afrika, kaldt vann ved Indonesia og en jetstrøm over Sør-Australia"
+      caption="I positiv fase er havet varmere enn normalt utenfor Øst-Afrika og kjøligere nær Indonesia. Der stiger kaldt vann opp. Over det kalde havet synker lufta, og det blir mindre regn i deler av Australia. Linjen viser hvor jetstrømmen kan gå over Sør-Australia. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: BOM (u.å.)."
+    />
+  ),
+    IodFigurNegativ: () => (
+    <IodFaseFigur
+      initialFase="negativ"
+      heading="Figur 2. Negativ IOD"
+      title="Kart med kjølig hav ved Øst-Afrika, varmt hav og regnskyer ved Indonesia og Australia"
+      caption="I negativ fase er havet kjøligere enn normalt i vest og varmere i øst. Lufta stiger over det varme havet ved Indonesia og gir mer regn der og i Australia. Øst-Afrika får mindre regn. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: BOM (u.å.)."
+    />
+  ),
+    IodFigurHavtemperatur: () => (
+    <IodHavtemperaturFigur
+      heading="Figur 3. Havtemperaturen i Det indiske hav"
+      caption="Havtemperaturen én dag i Det indiske hav. De svarte linjene viser grensen der det varme vannet møter det kalde havet lenger sør. Data: NOAA NCEI, OISST v2.1. Påtegning: Mats Amundsen."
+    />
+  ),
+    IodFigurJetstrommer: () => (
+    <IodJetstrommerFigur
+      heading="Figur 4. Jetstrømmer over Det indiske hav"
+      caption="Vind høyt oppe i atmosfæren. Ett belte går rundt 30° nord, og ett går sør for Afrika og Australia, over grensen i figur 3. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: NOAA (u.å.)."
+    />
+  ),
+
 
 
     NaoForklaring: () => (
@@ -529,6 +569,41 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
+    NaoFigurFaser: () => (
+    <NaoFaserFigur
+      heading="Figur 1. Positiv og negativ NAO"
+      caption="Ved positiv NAO er både Islandslavtrykket (L) og Asorhøytrykket (H) sterke, og stormbanen går lenger nord mot Nord-Europa. Ved negativ NAO er begge svakere, og stormbanen går lenger sør. Illustrasjon: geofag.com etter figur i Mats Amundsens notat. Kilde: NOAA (u.å.-a)."
+    />
+  ),
+    NaoFigurOmrade: () => (
+    <NaoOmradeFigur
+      heading="Figur 2. Området der NAO virker"
+      caption="Nord-Atlanteren mellom Nord-Amerika, Europa og Nord-Afrika. Islandslavtrykket ligger nær Island, Asorhøytrykket nær Asorene. Kart: geofag.com, kyster fra Natural Earth."
+    />
+  ),
+    NaoFigurPolarvirvel: () => (
+    <NaoPolarvirvelFigur
+      heading="Figur 3. Stabil og forstyrret polarvirvel"
+      caption="Stabil: en sterk polarvirvel holder den kalde lufta i Arktis, og polarjetstrømmen går lenger nord. Forstyrret: virvelen deles, kald luft går sørover, varm luft nordover, og jetstrømmen blir bølgete. Illustrasjon: geofag.com. Etter NOAA Climate.gov (2021)."
+    />
+  ),
+    NaoFigurPositiv: () => (
+    <NaoKartFigur
+      initialFase="positiv"
+      heading="Figur 4. Positiv NAO"
+      title="Kart over Nord-Atlanteren med sterkt lavtrykk og høytrykk og en jetstrøm mot Nord-Europa"
+      caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som ofte får mildere og våtere vær enn normalt. Sør-Europa blir ofte tørrere og kjøligere enn normalt. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+    />
+  ),
+    NaoFigurNegativ: () => (
+    <NaoKartFigur
+      initialFase="negativ"
+      heading="Figur 5. Negativ NAO"
+      title="Kart over Nord-Atlanteren med svake trykksystemer og en bølgete jetstrøm lenger sør"
+      caption="Svakt lavtrykk og svakt høytrykk. Jetstrømmen er bølgete og ligger lenger sør. Nord-Europa får ofte kaldere og tørrere vintre enn normalt, og Sør-Europa mildere og våtere. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+    />
+  ),
+
 
 
     AmocForklaring: () => (
