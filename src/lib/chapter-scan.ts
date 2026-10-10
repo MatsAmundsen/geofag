@@ -146,12 +146,22 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /p-bølger og s-bølger/i,
     label: "Bølger",
-    subtitle: "P- og S-bølger og skyggesonen",
+    subtitle: "P-, S- og overflatebølger",
   },
   {
     match: /hvor skjer de store skjelvene/i,
     label: "Plategrenser",
     subtitle: "Rygg, synkende plate og transform",
+  },
+  {
+    match: /^hvordan måler vi jordskjelv/i,
+    label: "Måling",
+    subtitle: "Seismograf, episenter, magnitude og intensitet",
+  },
+  {
+    match: /^hva forteller bølgene om jordas indre/i,
+    label: "Jordas indre",
+    subtitle: "Moho, flytende ytre kjerne og skyggesonen",
   },
   {
     match: /hvorfor skjelver norge/i,
@@ -164,9 +174,19 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Undersjøiske skjelv og norske skredbølger",
   },
   {
+    match: /^hvilke skader gjør jordskjelv/i,
+    label: "Skader",
+    subtitle: "Bygninger, resonans, likvefaksjon og brann",
+  },
+  {
+    match: /^er det mulig å varsle jordskjelv/i,
+    label: "Varsling",
+    subtitle: "Langtidsvarsling, tidlig varsling og tsunamivarsel",
+  },
+  {
     match: /^fare og risiko/i,
     label: "Risiko",
-    subtitle: "Fare, eksponering og sikring av bygg",
+    subtitle: "Fare, eksponering, sårbarhet og en enkel modell",
   },
   {
     match: /tilbakefjæring|jordskjelvfysikk/i,
@@ -342,6 +362,11 @@ const SECTION_META: SectionMeta[] = [
     match: /presenterer vi/i,
     label: "Presentasjon",
     subtitle: "Resultatene skal vise data og tolkning",
+  },
+  {
+    match: /^sammendrag/i,
+    label: "Sammendrag",
+    subtitle: "Det viktigste i korte punkter",
   },
   {
     match: /fagvokabular|begrep/i,

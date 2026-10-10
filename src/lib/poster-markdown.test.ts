@@ -305,23 +305,45 @@ describe("jordskjelv poster", () => {
     for (const id of [
       "HyposenterForklaring",
       "ElasticRebound",
-      "EarthquakeWavePhysics",
       "Partikkelbolger",
       "JordasBolger",
       "Seismogram",
       "BoundaryQuakes",
       "IntraplateForklaring",
       "NorwayEarthquakes",
+      "SjekkJordskjelv1",
+      "SjekkJordskjelv6",
       "QuizJordskjelv",
     ]) {
       assert.equal(ids.has(id), true, `jordskjelv missing ${id}`);
     }
+    assert.equal(ids.has("EarthquakeWavePhysics"), false);
+    assert.equal(md.includes("geo-jordskjelv-bolger-3d.jpg"), false);
+    assert.equal(md.includes("Kattegat"), false);
+    assert.equal(md.includes("Wadati-Benioff-sonen"), true);
     assert.equal(md.replace(/!\[[^\]]*\]\([^)]*\)/g, "").includes("!"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("Greens"), false);
     assert.equal(md.includes("Eurokode"), false);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("## Test deg selv"), true);
+  });
+});
+
+describe("jordskjelv-naturfare poster", () => {
+  it("has its own quizzes and no figure placeholders", () => {
+    const md = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "posts/jordskjelv-naturfare.md"),
+      "utf8",
+    );
+    const ids = listedWidgetIds(injectPosterWidgets(md));
+    for (const id of ["SjekkSkjelvfare1", "SjekkSkjelvfare2", "SjekkSkjelvfare3", "QuizSkjelvfare"]) {
+      assert.equal(ids.has(id), true, `jordskjelv-naturfare missing ${id}`);
+    }
+    assert.equal(ids.has("QuizJordskjelv"), false);
+    assert.equal(md.includes("FIGUR"), false);
+    assert.equal(md.includes("[KILDE]"), false);
+    assert.equal(md.includes("](/geofag-1/jordskjelv)"), true);
   });
 });
 

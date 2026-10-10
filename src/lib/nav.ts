@@ -12,6 +12,7 @@ export const NAV_GF1 = [
   { to: "/geofag-1/platetektonikk", label: "Plater" },
   { to: "/geofag-1/vulkaner", label: "Vulkaner" },
   { to: "/geofag-1/jordskjelv", label: "Jordskjelv" },
+  { to: "/geofag-1/jordskjelv-naturfare", label: "Skjelvfare" },
   { to: "/geofag-1/bergarter", label: "Berg" },
   { to: "/geofag-1/norges-geologi", label: "Norge" },
   { to: "/geofag-1/landformer", label: "Landform" },
@@ -28,7 +29,7 @@ export const NAV_GF1 = [
  * Rad 1 er inngang og jordas indre. Rad 2 er Norge, landskap og samfunn.
  * Rekkefølgen er den samme som NAV_GF1.
  */
-export const NAV_GF1_ROWS = [NAV_GF1.slice(0, 7), NAV_GF1.slice(7)] as const;
+export const NAV_GF1_ROWS = [NAV_GF1.slice(0, 8), NAV_GF1.slice(8)] as const;
 
 export const NAV_GF2 = [
   { to: "/", label: "Forside" },
@@ -288,14 +289,26 @@ export const GF1_THEMES = [
   {
     slug: "jordskjelv",
     to: "/geofag-1/jordskjelv",
-    title: "Jordskjelv og tsunamier",
+    title: "Jordskjelv og jordas indre",
+    kicker: "Jordas indre",
+    image: "/images/geo-jordskjelv-bolger-3d.jpg",
+    alt: "3D-snitt av forkastningsbrudd, seismiske bølger og overflateskader",
+    blurb:
+      "Plutselig brudd, skjelvdybde, P-, S- og overflatebølger, magnitude og intensitet, hva bølgene forteller om jordas indre, og hvorfor Norge skjelver.",
+    status: "klar" as const,
+    maal: "Gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten.",
+  },
+  {
+    slug: "jordskjelv-naturfare",
+    to: "/geofag-1/jordskjelv-naturfare",
+    title: "Jordskjelv og tsunamier som naturfare",
     kicker: "Naturfarer i geosfæren",
     image: "/images/geo-jordskjelv-bolger-3d.jpg",
     alt: "3D-snitt av forkastningsbrudd, seismiske bølger og overflateskader",
     blurb:
-      "Plutselig brudd, P- og S-bølger, skjelv ved plategrenser og inne på platen, norsk seismisitet og hvorfor norske flodbølger kommer fra skred.",
+      "Tsunami fra skjelv og skred, skadetyper, varsling, og fare, eksponering, sårbarhet og risiko vurdert med en enkel modell.",
     status: "klar" as const,
-    maal: "Gjøre rede for hvordan jordskjelv oppstår, hvilke konsekvenser de har for skorpe og overflate, og hvordan mennesker kan forebygge og tilpasse seg faren.",
+    maal: "Gjøre rede for jordskjelv og tsunamier som naturfarer, vurdere hvordan mennesker kan forebygge og tilpasse seg dem, og vurdere risiko ved hjelp av modellering.",
   },
   {
     slug: "bergarter",

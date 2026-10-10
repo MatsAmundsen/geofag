@@ -1169,19 +1169,280 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
     ],
     answer: 0,
     explain:
-      "Se «P-bølger og S-bølger». S-bølger går bare gjennom fast stoff. De stopper i den flytende ytre kjernen, og det er derfor det blir en skyggesone.",
+      "S-bølger er skjærbølger og går ikke gjennom væske, så den ytre kjernen må være flytende.",
   },
   {
     prompt: "Hvorfor har Norge jordskjelv når landet ikke ligger på en plategrense?",
     options: [
       "Fordi Oslofeltet fortsatt er en aktiv rift.",
-      "Fordi gamle forkastninger kan gli på nytt når spredning og landheving bygger spenning.",
+      "Fordi gamle forkastninger kan gli på nytt når spredning og landheving bygger opp spenning.",
       "Fordi alle skjelv i Norge kommer fra subduksjon under Vestlandet.",
     ],
     answer: 1,
     explain:
-      "Se «Hvorfor skjelver Norge?». Norge ligger inne på Den eurasiske platen. Spenning fra havbunnsspredning og fra landheving etter siste istid kan reaktivere gamle brudd.",
+      "Spenning fra spredningen langs ryggen og fra landhevingen etter istiden får gamle forkastninger til å gli på nytt – Norge har ingen aktiv rift eller subduksjonssone.",
   },
+  {
+    prompt: "Hvor skjer de store, ødeleggende jordskjelvene oftest?",
+    options: [
+      "Langs plategrenser, der spenning bygges opp mellom platene.",
+      "Bare midt inne på platene, slik som i Oslo.",
+      "Bare der en vulkan har utbrudd.",
+    ],
+    answer: 0,
+    explain:
+      "Spenningen bygges opp der platene henger i hverandre, og de største skjelvene skjer i subduksjonssoner.",
+  },
+  {
+    prompt: "To skjelv har magnitude 5 og 7. Omtrent hvor mye mer energi frigjør det største?",
+    options: [
+      "Ca. 2 ganger så mye.",
+      "Ca. 64 ganger så mye.",
+      "Ca. 1000 ganger så mye.",
+    ],
+    answer: 2,
+    explain:
+      "Hvert trinn gir ca. 32 ganger så mye energi, så to trinn gir 32 · 32 ≈ 1000 ganger.",
+  },
+  {
+    prompt: "Hva er forskjellen på magnitude og intensitet?",
+    options: [
+      "Et skjelv har én magnitude, men mange intensiteter.",
+      "Et skjelv har mange magnituder, men én intensitet.",
+      "Magnitude og intensitet er det samme, bare målt med ulike instrumenter.",
+    ],
+    answer: 0,
+    explain:
+      "Magnituden beskriver energien i selve skjelvet, mens intensiteten beskriver virkningen på hvert sted og varierer derfor.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er forskjellen på hyposenter og episenter?",
+    options: [
+      "Hyposenteret ligger på overflaten, og episenteret ligger i dypet.",
+      "Hyposenteret er stedet i dypet der bruddet starter, og episenteret er punktet på overflaten rett over.",
+      "De er to ord for det samme stedet.",
+    ],
+    answer: 1,
+    explain:
+      "Hypo betyr «under» og epi betyr «over» på gresk.",
+  },
+  {
+    prompt: "Hva menes med elastisk tilbakefjæring?",
+    options: [
+      "Fjellet bøyes sakte langs en låst forkastning og spretter tilbake når friksjonen ryker.",
+      "Mantelen smelter og skyver skorpa opp.",
+      "Skorpa trekker seg sammen når den blir kald.",
+    ],
+    answer: 0,
+    explain:
+      "Mantelen smelter ikke – den er fast – og jordskjelv skyldes brudd i berg som har vært under spenning. Skorpa som trekker seg sammen, forklarer ikke et plutselig brudd.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_2: QuizQuestion[] = [
+  {
+    prompt: "Hvor skjer de aller største jordskjelvene?",
+    options: [
+      "Ved midthavsryggene.",
+      "I subduksjonssoner, der en plate synker under en annen.",
+      "Midt inne på platene.",
+    ],
+    answer: 1,
+    explain:
+      "Bruddflaten kan bli flere hundre kilometer lang, og alle skjelv over magnitude 9 som er målt, har skjedd der.",
+  },
+  {
+    prompt: "Hvorfor finner vi dype skjelv (300–700 km) nesten bare i subduksjonssoner?",
+    options: [
+      "Fordi bare i den kalde, synkende plata er det kaldt nok til at det kan oppstå skjelv på stort dyp.",
+      "Fordi mantelen er flytende under midthavsryggene.",
+      "Fordi jordskorpa er 700 km tykk der.",
+    ],
+    answer: 0,
+    explain:
+      "Mantelen er ikke flytende noe sted – den er fast, men så varm at den vanligvis deformeres plastisk. Bare i den kalde, synkende plata er det kaldt nok til skjelv på stort dyp, men nøyaktig hvordan de dypeste skjelvene oppstår, er ennå ikke helt forstått. Skorpa er bare noen titalls kilometer tykk.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken bølgetype kommer først fram til en målestasjon?",
+    options: [
+      "S-bølgen.",
+      "Overflatebølgen.",
+      "P-bølgen.",
+    ],
+    answer: 2,
+    explain:
+      "P står for primary (= den første).",
+  },
+  {
+    prompt: "Hvilke bølger rister husene mest?",
+    options: [
+      "P-bølgene, fordi de er raskest.",
+      "Overflatebølgene, fordi de har størst utslag.",
+      "S-bølgene, fordi de går gjennom væske.",
+    ],
+    answer: 1,
+    explain:
+      "Det er utslaget, ikke farten, som avgjør hvor mye bakken rister. Og S-bølger går ikke gjennom væske.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_4: QuizQuestion[] = [
+  {
+    prompt: "Hva er forskjellen på magnitude og intensitet?",
+    options: [
+      "Magnituden beskriver hvor mye energi skjelvet frigjorde, og intensiteten beskriver hvordan skjelvet merkes på ett bestemt sted.",
+      "Magnituden varierer fra sted til sted, mens intensiteten er den samme overalt.",
+      "Det er to navn på det samme tallet.",
+    ],
+    answer: 0,
+    explain:
+      "Et skjelv har én magnitude, men mange intensiteter – det er intensiteten som varierer fra sted til sted.",
+  },
+  {
+    prompt: "Et skjelv har magnitude 7, et annet magnitude 6. Omtrent hvor mye mer energi frigjør det første?",
+    options: [
+      "Ca. 2 ganger så mye.",
+      "Ca. 10 ganger så mye.",
+      "Ca. 32 ganger så mye.",
+    ],
+    answer: 2,
+    explain:
+      "Én magnitude mer gir omtrent 32 ganger så mye energi. «Ti ganger» gjelder hvor mange færre skjelv det blir.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kommer det ikke fram direkte S-bølger lenger ut enn ca. 103 grader fra skjelvet?",
+    options: [
+      "Fordi mantelen er flytende.",
+      "Fordi den ytre kjernen er flytende, og S-bølger ikke går gjennom væske.",
+      "Fordi den indre kjernen reflekterer alle bølger.",
+    ],
+    answer: 1,
+    explain:
+      "Mantelen er fast, og S-bølgene går gjennom den. Det er den ytre kjernen som er flytende og stopper dem.",
+  },
+  {
+    prompt: "Hva skjer med farten til P-bølgene når de går fra mantelen inn i den ytre kjernen?",
+    options: [
+      "Farten øker med ca. 40 %.",
+      "Farten faller med ca. 40 %.",
+      "Farten er uendret.",
+    ],
+    answer: 1,
+    explain:
+      "Ifølge PREM faller farten fra ca. 13,7 til ca. 8,1 km/s.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor har Norge jordskjelv, selv om landet ikke ligger ved en plategrense?",
+    options: [
+      "Fordi det er en subduksjonssone under Vestlandet.",
+      "Fordi spenning fra spredningen langs Den midtatlantiske ryggen og landhevingen etter istiden kan få gamle forkastninger til å gli på nytt.",
+      "Fordi Oslofeltet er en aktiv vulkan.",
+    ],
+    answer: 1,
+    explain:
+      "Det finnes ingen subduksjonssone under Vestlandet, og Oslofeltet er ikke aktivt i dag.",
+  },
+  {
+    prompt: "Hvilket av disse skjelvene er det største som er målt på norsk territorium?",
+    options: [
+      "Oslofjorden 1904 (5,4).",
+      "Helgeland/Lurøy 1819 (ca. 5,8).",
+      "Jan Mayen 2012 (6,6).",
+    ],
+    answer: 2,
+    explain:
+      "Lurøy 1819 er det største kjente på fastlandet i historisk tid, men Jan Mayen 2012 og Storfjorden 2008 er større.",
+  },
+];
+
+export const QUIZ_SJEKK_SKJELVFARE_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er riktig om en tsunami?",
+    options: [
+      "Den kommer alltid som én stor bølge.",
+      "Den kommer ofte som flere bølger, og den første er ikke nødvendigvis den største.",
+      "Den første bølgen er alltid den største, så faren er over når den har passert.",
+    ],
+    answer: 1,
+    explain:
+      "Derfor skal folk holde seg unna kysten til faren er offisielt over.",
+  },
+  {
+    prompt: "Hva var årsaken til flodbølgen i Tafjord i 1934?",
+    options: [
+      "Et undersjøisk jordskjelv på en plategrense.",
+      "Et fjellskred som raste ut i fjorden.",
+      "En storm.",
+    ],
+    answer: 1,
+    explain:
+      "De historiske flodbølgene i Norge kommer fra skred, ikke fra plategrenser.",
+  },
+];
+
+export const QUIZ_SJEKK_SKJELVFARE_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er likvefaksjon?",
+    options: [
+      "At vannmettet sand og silt mister bæreevnen og oppfører seg som en væske når grunnen rister.",
+      "At magma strømmer opp gjennom sprekker etter et skjelv.",
+      "At bygninger begynner å svinge i takt med bølgene.",
+    ],
+    answer: 0,
+    explain:
+      "Det andre alternativet beskriver vulkanisme, og det tredje beskriver resonans.",
+  },
+  {
+    prompt: "Hvorfor ble særlig middels høye bygninger ødelagt i Mexico by i 1985?",
+    options: [
+      "Fordi de var eldst.",
+      "Fordi bakken i de bløte sedimentene svingte i takt med bygningenes egen svingefrekvens (resonans).",
+      "Fordi episenteret lå rett under dem.",
+    ],
+    answer: 1,
+    explain:
+      "Byen lå ca. 350 km fra episenteret, så det var grunnen og resonansen som var avgjørende.",
+  },
+];
+
+export const QUIZ_SJEKK_SKJELVFARE_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er tidlig varsling av jordskjelv?",
+    options: [
+      "Et varsel om at et skjelv kommer neste uke.",
+      "Et varsel som sendes ut etter at skjelvet har startet, men før de kraftigste bølgene når fram.",
+      "Et kart over hvor det kan komme skjelv de neste 50 årene.",
+    ],
+    answer: 1,
+    explain:
+      "Det tredje alternativet er langtidsvarsling. Korttidsvarsling av den typen det første alternativet beskriver, er det ennå ingen som klarer på en pålitelig måte.",
+  },
+  {
+    prompt: "Hvorfor kan vi varsle en tsunami bedre enn et jordskjelv?",
+    options: [
+      "Fordi tsunamien går mye saktere enn jordskjelvbølgene og ofte bruker timer på å krysse havet.",
+      "Fordi tsunamier bare oppstår om dagen.",
+      "Fordi tsunamier alltid er små nær kilden.",
+    ],
+    answer: 0,
+    explain:
+      "Tsunamier kan oppstå når som helst, og nær kilden kan de være svært store og komme etter få minutter.",
+  },
+];
+
+export const QUIZ_SKJELVFARE: QuizQuestion[] = [
   {
     prompt: "Hva er forskjellen på en tsunami fra et undersjøisk skjelv og de historiske flodbølgene i Norge?",
     options: [
@@ -1191,7 +1452,7 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Se «Tsunami: skjelv eller skred?». Store undersjøiske skjelv kan lage tsunami. Storegga og Tafjord var skred, ikke en plategrense som røyk.",
+      "Et undersjøisk skjelv løfter havbunnen, mens Storegga og Tafjord var skred som traff vann.",
   },
   {
     prompt: "Hvorfor kan et skjelv som Oslofjordskjelvet i 1904 gjøre mer skade i dag?",
@@ -1202,18 +1463,40 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Se «Fare og risiko». Faren i bakken er den samme typen. Risikoen blir større når flere hus, veier og gamle murbygg ligger der bølgene treffer.",
+      "Faren er den samme som i 1904, men eksponeringen og sårbarheten har økt.",
   },
   {
-    prompt: "Hvor sitter de store, ødeleggende jordskjelvene oftest?",
+    prompt: "Hva tar oftest liv når det skjer et kraftig jordskjelv?",
     options: [
-      "Langs plategrenser, der spenning bygges opp mellom platene.",
-      "Bare midt inne på platene, slik som i Oslo.",
-      "Bare der en vulkan har utbrudd.",
+      "Selve rystelsene i bakken.",
+      "Bygninger som raser sammen, og følger som skred, brann og tsunami.",
+      "Sprekker som åpner seg i bakken.",
+    ],
+    answer: 1,
+    explain:
+      "Det er sjelden selve rystelsene som dreper – bygninger som kollapser og følgehendelser tar flest liv.",
+  },
+  {
+    prompt: "Et område har et gjentaksintervall på 100 år for et kraftig skjelv. Hva betyr det?",
+    options: [
+      "At skjelvet kommer nøyaktig hvert hundrede år.",
+      "At det i gjennomsnitt går 100 år mellom hvert skjelv, men at de kan komme ujevnt.",
+      "At det ikke kan komme et nytt skjelv før om 100 år.",
+    ],
+    answer: 1,
+    explain:
+      "Gjentaksintervallet er et gjennomsnitt, og sannsynligheten for minst ett skjelv på 100 år er bare ca. 63 prosent.",
+  },
+  {
+    prompt: "Hvilket tiltak senker risikoen selv om faren er den samme?",
+    options: [
+      "Å bygge sterkere og la være å bygge sykehus på dårlig grunn.",
+      "Å flytte forkastningen.",
+      "Å slutte å registrere jordskjelv.",
     ],
     answer: 0,
     explain:
-      "Se «Hvor skjer de store skjelvene?». De fleste skjelv, og de store, sitter der platene møtes. Norge har skjelv inne på platen, men de er sjeldnere og oftest mindre.",
+      "Vi kan ikke endre faren, men vi kan redusere sårbarheten og eksponeringen.",
   },
 ];
 

@@ -16,7 +16,7 @@ export function BoundaryQuakesDiagram() {
     <Diagram
       title="Skjelv ved rygg, transform og der en plate synker."
       heading="Skjelv ved plategrenser"
-      caption="Skjelv oppstår ved midthavsrygger. Transformforkastninger er kjent for grunne skjelv. Der en havbunnsplate synker, blir skjelvene sterke og ødeleggende. De store skjelvene sitter ved plategrenser, ikke inne på en plate slik som i Norge."
+      caption="Jordskjelv ved de tre typene plategrenser. Ved midthavsryggen og transformforkastningen er skjelvene grunne. Der en plate synker, kan skjelvene ligge helt ned mot ca. 700 km dybde og bli svært store."
       viewBox="0 0 820 400"
     >
       {(m) => (
@@ -116,7 +116,7 @@ export function SeismogramDiagram() {
     <Diagram
       title="Seismogram med P-, S- og overflatebølger, og tre stasjoner som krysser i episenteret"
       heading="P-bølger, S-bølger og lokalisering av episenter"
-      caption="P-bølgen kommer først, S-bølgen etter. Tidsforskjellen mellom dem blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret. Bølgene langs overflaten kommer sist. De har størst utslag og rister husene mest. Figuren kaller dem Rayleigh- og Love-bølger."
+      caption="Seismogrammet viser at P-bølgen kommer først, så S-bølgen og til slutt overflatebølgene med størst utslag. Tiden mellom P og S forteller hvor langt unna skjelvet var. Med avstanden fra tre stasjoner, A, B og C, kan vi tegne tre sirkler. Der de krysser, ligger episenteret."
       viewBox="0 0 840 460"
     >
       {() => (
@@ -418,7 +418,7 @@ export function NorwayEarthquakesDiagram() {
     <Diagram
       title="Norges seismiske risikobilde og historiske jordskjelv"
       heading="Hvorfor skjelver Norge når vi ikke er på en plategrense?"
-      caption="Norge ligger inne på Den eurasiske platen. Ved Svalbard kan spredning fra ryggen reaktivere forkastninger. I Nordsjøen ligger gamle rifter, med spenning fra ryggen eller fra landheving. I Nordland antas strekking fra landheving og omfordeling av sedimenter etter siste istid. Lurøy 1819 er estimert til styrke 5,9. Oslofjordskjelvet 1904 hadde styrke 5,4, med episenter i Kattegat."
+      caption="Ifølge NORSAR skyldes skjelvene i Norge spenning fra spredningen langs Den midtatlantiske ryggen, gamle rifter i Nordsjøen og landhevingen etter siste istid. Kartet viser også de to mest kjente historiske skjelvene på fastlandet: Helgeland/Lurøy 1819 (magnitude ca. 5,8) og Oslofjordskjelvet 1904 (magnitude 5,4)."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -455,15 +455,16 @@ export function NorwayEarthquakesDiagram() {
             Lurøy 1819
           </L>
           <L x="336" y="160" fill="#fca5a5" size={11}>
-            styrke 5,9
+            magnitude ca. 5,8
           </L>
 
-          <Star x={300} y={392} r={8} />
+          {/* Oslofjordskjelvet 1904: ytre Oslofjord, sør for Hvaler (Bungum mfl., 2009) */}
+          <Star x={334} y={384} r={8} />
           <L x="168" y="386" fill={C.low} size={12} weight={700}>
-            Kattegat 1904
+            Oslofjordskjelvet 1904
           </L>
           <L x="168" y="402" fill="#fca5a5" size={11}>
-            styrke 5,4
+            magnitude 5,4
           </L>
 
           <L x="168" y="300" fill={C.fg} size={12} weight={600}>
@@ -502,12 +503,12 @@ export function NorwayEarthquakesDiagram() {
             Landheving og sedimenter.
           </L>
           <L x="552" y="246" fill={C.muted} size={12}>
-            Lurøy 1819, styrke 5,9.
+            Lurøy 1819, magnitude ca. 5,8.
           </L>
 
           <rect x="540" y="320" width="300" height="72" rx="6" fill="#241a1c" />
           <L x="552" y="342" fill={C.low} size={12} weight={700}>
-            1904: styrke 5,4, Kattegat
+            1904: magnitude 5,4, ytre Oslofjord
           </L>
           <L x="552" y="362" fill={C.muted} size={12}>
             Tettere bygg kan gi mer skade.

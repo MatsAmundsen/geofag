@@ -135,7 +135,7 @@ export function ElasticReboundDiagram() {
     <Diagram
       title="Hvordan et jordskjelv blir til langs en låst forkastning"
       heading="Hvordan jordskjelvet blir til"
-      caption="Ved en plategrense kan platene bevege seg mot hverandre langs en forkastning. Friksjonen låser flaten, fjellet bøyes over lang tid, og når friksjonen ryker, spretter det tilbake. Bruddet starter i hyposenteret. Episenteret er punktet på overflaten rett over. Energien sprer seg som seismiske bølger, og bruddet kan bli stående på overflaten."
+      caption="Hvordan et jordskjelv blir til, i fem trinn: Platene møtes, flaten låses, fjellet bøyes, bruddet skjer, og fjellet spretter tilbake. Bruddet starter i hyposenteret, og episenteret ligger rett over på overflaten."
       viewBox="0 0 760 460"
       scroll
       action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} />}
@@ -348,7 +348,7 @@ export function PartikkelbolgerDiagram() {
     <Diagram
       title="Partikkelbevegelse i P-bølge, S-bølge og bølger langs overflaten"
       heading="Hvordan P- og S-bølger beveger seg"
-      caption="P-bølgen er kompresjon: stoffet skyves og trekkes i bølgens retning, og den går gjennom fast berg og væske. S-bølgen er skjær: stoffet beveger seg på tvers, og den stopper i væske. Bølgene langs overflaten, Rayleigh og Love, kommer sist og har størst utslag. De rister husene mest. Hastighetsskyveren endrer tempoet i animasjonen. Kapittelet oppgir ikke en bølgefart i kilometer i sekundet."
+      caption="P-bølgen skyver og trekker stoffet i bølgeretningen og går gjennom både fast berg og væske. S-bølgen beveger stoffet på tvers og stopper i væske. Overflatebølgene kommer sist og rister mest. Med skyveren kan du endre tempoet."
       viewBox="0 0 760 510"
       scroll
       action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} />}
@@ -726,7 +726,7 @@ export function JordasBolgerDiagram() {
     <Diagram
       title="P- og S-bølger gjennom jordas lag, skyggesoner og seismogram"
       heading="P- og S-bølger gjennom jorda"
-      caption="P-bølgen kommer først og går gjennom fast berg og væske. S-bølgen kommer etter og stopper i den flytende ytre kjernen. Farten til P-bølgen faller med om lag 40 prosent fra mantel til kjerne, tettheten øker med om lag 78 prosent, og bølgene bøyes av ved grensen. S-bølger kommer ikke fram lenger ut enn om lag 103 grader. Direkte P-bølger mangler mellom om lag 103 og 140 grader. Tidsforskjellen mellom P og S blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret. Når bølgene når overflaten, kommer overflatebølgene sist og rister bakken mest. Skorpen er tegnet tykkere enn den er, så Moho synes. Kapittelet beskriver avbøyning ved kjernen, ikke egne reflekterte bølger."
+      caption="S-bølgene stopper i den flytende ytre kjernen og kommer ikke fram lenger ut enn ca. 103 grader. P-bølgene bøyes av ved grensen mot kjernen, så direkte P-bølger mangler mellom ca. 103 og 140 grader. P-farten faller med ca. 40 % ved grensen mot kjernen. Seismogrammene viser at tidsforskjellen mellom P og S øker med avstanden, og at stasjonen i skyggesonen ikke får direkte P- eller S-bølger. Skorpa er tegnet tykkere enn den er, slik at Moho synes."
       viewBox="0 0 800 540"
       scroll
       action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} />}
@@ -879,7 +879,7 @@ export function JordasBolgerDiagram() {
             direkte P mangler 103–140°
           </L>
           <L x="36" y="472" fill={C.muted} size={11}>
-            P-farten faller med om lag 30 %
+            P-farten faller med ca. 40 %
           </L>
           <L x="36" y="492" fill={C.muted} size={11}>
             ved grensen mot kjernen.
