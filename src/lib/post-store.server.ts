@@ -571,6 +571,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g2-md-runde-klima-2026-10-08",
     slug: "klima",
     stale: ["Et dytt utenfra"],
+  },
+  {
+    flag: "klima-dytter-2026-10-10",
+    slug: "klima",
+    stale: ["Vinden dytter på havet"],
   }
 ,
   {
@@ -590,9 +595,14 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["svekke dytten"],
   },
   {
-    flag: "oversikt-dytet-2026-10-10",
+    flag: "oversikt-endring-2026-10-10",
     slug: "oversikt",
-    stale: ["Det første dytet på energibalansen", "ikke det første dytet"],
+    stale: [
+      "Det første dytet på energibalansen",
+      "ikke det første dytet",
+      "Det første skyvet på energibalansen",
+      "ikke det første skyvet",
+    ],
   }
 ,
   {
