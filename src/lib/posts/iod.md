@@ -38,7 +38,7 @@ Trykket og vinden fører til dette:
 
 - Over det varme havet utenfor Øst-Afrika stiger fuktig luft og danner skyer og regnbyger (konveksjon). Vinden fører fuktigheten inn over land, og Øst-Afrika kan få perioder med kraftig regn (Saji m.fl., 1999). Der den fuktige lufta presses opp over høylandet, kan det i tillegg bli orografisk nedbør.
 - Kraftig regn kan gi flom, fordi landskapet ikke er tilpasset så store nedbørmengder.
-- Over det kalde havet i øst synker lufta, og det dannes færre skyer (BOM, u.å.). Det gir tørke i Indonesia (Saji m.fl., 1999). Deler av Australia får ofte mindre regn og høyere temperatur enn normalt om vinteren og våren (BOM, u.å.).
+- Over det kalde havet i øst synker lufta, og det dannes færre skyer (BOM, u.å.). Det gir ofte tørrere vær enn normalt i Indonesia (Saji m.fl., 1999). Deler av Australia får ofte mindre regn og høyere temperatur enn normalt om vinteren og våren (BOM, u.å.).
 
 ### Negativ fase
 
@@ -50,8 +50,8 @@ IodFigurNegativ
 
 Negativ IOD gir:
 
-- Mer skyer og regn over Indonesia og havet nordvest for Australia, fordi skyene følger det varme vannet østover. Deler av Sør-Australia får ofte mer regn enn normalt om vinteren og våren. Når negativ IOD og La Niña er sterke samtidig, kan Australia få omfattende flom (BOM, u.å.).
-- Tørrere vær i Øst-Afrika. Sjansen for at den korte regntiden blir tørrere enn normalt, øker særlig når negativ IOD og La Niña opptrer samtidig (WMO, 2022).
+- Ofte mer skyer og regn enn normalt over Indonesia og havet nordvest for Australia, fordi skyene følger det varme vannet østover. Deler av Sør-Australia får ofte mer regn enn normalt om vinteren og våren. Når negativ IOD og La Niña er sterke samtidig, kan Australia få omfattende flom (BOM, u.å.).
+- Ofte tørrere vær enn normalt i Øst-Afrika. Sjansen for at den korte regntiden blir tørrere enn normalt, øker særlig når negativ IOD og La Niña opptrer samtidig (WMO, 2022).
 
 ## Påvirkning på jetstrømmer
 
@@ -97,9 +97,9 @@ Bølgene i atmosfæren virker nå motsatt vei. Værsystemene som krysser Sør-Au
 
 **Den indiske hav-dipolen (IOD):** Forskjellen i havtemperatur mellom vest og øst i den tropiske delen av Det indiske hav.
 
-**Positiv fase:** Varmere enn normalt i vest, kjøligere i øst. Mer regn i Øst-Afrika, tørke i Indonesia og ofte mindre regn i deler av Australia.
+**Positiv fase:** Varmere enn normalt i vest, kjøligere i øst. Ofte mer regn enn normalt i Øst-Afrika, tørrere enn normalt i Indonesia og mindre regn enn normalt i deler av Australia.
 
-**Negativ fase:** Varmere enn normalt i øst, kjøligere i vest. Mer regn mot Indonesia og Sør-Australia, tørrere i Øst-Afrika.
+**Negativ fase:** Varmere enn normalt i øst, kjøligere i vest. Ofte mer regn enn normalt mot Indonesia og Sør-Australia, og tørrere enn normalt i Øst-Afrika.
 
 **Oppvelling:** Kaldt vann fra dypet stiger opp til overflaten.
 

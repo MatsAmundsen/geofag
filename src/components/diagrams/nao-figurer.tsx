@@ -186,7 +186,7 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
       badge: pos ? [nEu[0] - 90, nEu[1] + 30] : [sEu[0] - 40, sEu[1] - 34],
     },
     {
-      text: pos ? "Mildt og vått i Nord-Europa" : "Kaldt og tørt i Nord-Europa",
+      text: pos ? "Mildere og våtere i Nord-Europa" : "Kaldere og tørrere i Nord-Europa",
       x: 940,
       y: 150,
       at: [nEu[0] + 10, nEu[1] - 10],
@@ -195,7 +195,7 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
       badge: [nEu[0] + 20, nEu[1] - 30],
     },
     {
-      text: pos ? "Tørt, ofte kaldt i Sør-Europa" : "Mildt og vått i Sør-Europa",
+      text: pos ? "Tørrere, ofte kaldere i Sør-Europa" : "Mildere og våtere i Sør-Europa",
       x: 940,
       y: 410,
       at: [sEu[0] + 30, sEu[1] + 6],
@@ -233,7 +233,7 @@ export function NaoFaserFigur({ heading, caption }: { heading: string; caption: 
       }
       labels={labels}
       keys={keys}
-      notes={["Skjematisk, vinter", "Kyster: Natural Earth"]}
+      notes={["Sammenlignet med en normal vinter.", "Skjematisk, vinter", "Kyster: Natural Earth"]}
       viewBox="0 0 960 536"
       narrowViewBox="200 0 560 536"
     >
@@ -571,10 +571,10 @@ export function NaoKartFigur({
   const coolSea = pos ? na(-30, 27) : na(-55, 37);
   const jetLab = pos ? na(-56, 45) : na(-47, 61.2);
   const labels: Lab[] = [
-    { text: pos ? "Mildt og vått" : "Kaldt og tørt", x: nEu[0], y: nEu[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [nEu[0], nEu[1]] },
-    { text: pos ? "Kaldere og tørt" : "Mildt og vått", x: sEu[0], y: pos ? sEu[1] + 6 : sEu[1] - 22, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [sEu[0], sEu[1]] },
-    { text: pos ? "Kaldt" : "Mildt", x: ca[0], y: ca[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [ca[0], ca[1]] },
-    { text: pos ? "Mildt og vått" : "Kaldt", x: eUs[0] + 26, y: eUs[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [eUs[0] + 26, eUs[1]] },
+    { text: pos ? "Mildere og våtere" : "Kaldere og tørrere", x: nEu[0], y: nEu[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [nEu[0], nEu[1]] },
+    { text: pos ? "Kaldere og tørrere" : "Mildere og våtere", x: sEu[0], y: pos ? sEu[1] + 6 : sEu[1] - 22, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [sEu[0], sEu[1]] },
+    { text: pos ? "Kaldere" : "Mildere", x: ca[0], y: ca[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [ca[0], ca[1]] },
+    { text: pos ? "Mildere og våtere" : "Kaldere", x: eUs[0] + 26, y: eUs[1] + 6, color: "#ffffff", anchor: "middle", halo: "#0b1318", badge: [eUs[0] + 26, eUs[1]] },
     { text: "Varmere hav", x: warmSea[0], y: warmSea[1] + 6, color: "#ffd2ae", anchor: "middle", badge: [warmSea[0], warmSea[1]] },
     { text: "Kjøligere hav", x: coolSea[0], y: coolSea[1] + 6, color: "#bfe6ff", anchor: "middle", badge: [coolSea[0], coolSea[1]] },
     pos
@@ -607,7 +607,7 @@ export function NaoKartFigur({
       }
       labels={labels}
       keys={keys}
-      notes={["Skjematisk, vinter. Ingen trykktall", "Kyster: Natural Earth"]}
+      notes={["Sammenlignet med en normal vinter.", "Skjematisk, vinter. Ingen trykktall", "Kyster: Natural Earth"]}
       viewBox={`0 40 960 ${NA_H - 40}`}
     >
       {({ m, scale }) => (

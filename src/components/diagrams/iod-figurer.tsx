@@ -304,7 +304,7 @@ export function IodFaseFigur({
       badge: pos ? [afrika[0] + 40, afrika[1] - 112] : [indonesia[0] - 6, indonesia[1] - 116],
     },
     {
-      text: pos ? "Lufta synker: færre skyer, tørke i Indonesia" : "Lufta synker: tørrere i Øst-Afrika",
+      text: pos ? "Lufta synker: færre skyer, tørrere i Indonesia" : "Lufta synker: tørrere i Øst-Afrika",
       x: pos ? 560 : 40,
       y: xy(20, 31)[1],
       at: pos ? [ox + 30, xy(20, 18)[1]] : [wx, xy(20, 18)[1]],

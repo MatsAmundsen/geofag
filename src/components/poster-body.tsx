@@ -587,7 +587,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       initialFase="positiv"
       heading="Figur 4. Positiv NAO"
       title="Kart over Nord-Atlanteren med sterkt lavtrykk og høytrykk og en jetstrøm mot Nord-Europa"
-      caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som får mildt og vått vær. Sør-Europa blir ofte tørrere og kjøligere enn normalt. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+      caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som ofte får mildere og våtere vær enn normalt. Sør-Europa blir ofte tørrere og kjøligere enn normalt. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
     />
   ),
     NaoFigurNegativ: () => (
@@ -595,7 +595,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       initialFase="negativ"
       heading="Figur 5. Negativ NAO"
       title="Kart over Nord-Atlanteren med svake trykksystemer og en bølgete jetstrøm lenger sør"
-      caption="Svakt lavtrykk og svakt høytrykk. Jetstrømmen er bølgete og ligger lenger sør. Nord-Europa blir kaldt og tørt, Sør-Europa mildt og vått. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+      caption="Svakt lavtrykk og svakt høytrykk. Jetstrømmen er bølgete og ligger lenger sør. Nord-Europa får ofte kaldere og tørrere vintre enn normalt, og Sør-Europa mildere og våtere. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
     />
   ),
 

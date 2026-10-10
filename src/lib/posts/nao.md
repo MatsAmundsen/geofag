@@ -119,13 +119,13 @@ NaoFigurPositiv
 Virkninger:
 
 - Den store trykkforskjellen gir kraftig vind over Nord-Atlanteren.
-- Nord-Europa får mildere og våtere vintre.
-- Sør-Europa og Middelhavsområdet får tørrere vintre, og ofte kaldere enn normalt.
-- Stormbanen flytter seg lenger nord, og Nord-Europa får mer storm (NOAA, u.å.-a).
+- Nord-Europa får ofte mildere og våtere vintre enn normalt.
+- Sør-Europa og Middelhavsområdet får ofte tørrere og kaldere vintre enn normalt.
+- Stormbanen flytter seg lenger nord, og Nord-Europa får ofte mer storm enn normalt (NOAA, u.å.-a).
 
-**Varm luft i Nord-Europa.** Figur 4 viser mild og fuktig luft over det sørøstlige USA og det varme havet utenfor. Jetstrømmen fører lavtrykk med varm og fuktig luft fra Atlanterhavet mot Nord-Europa. Det gir milde og våte vintre der (NOAA, u.å.-a).
+**Varm luft i Nord-Europa.** Figur 4 viser mild og fuktig luft over det sørøstlige USA og det varme havet utenfor. Jetstrømmen fører lavtrykk med varm og fuktig luft fra Atlanterhavet mot Nord-Europa. Det gir ofte mildere og våtere vintre enn normalt der (NOAA, u.å.-a).
 
-**Kaldere og tørrere i Sør-Europa.** Sør for jetstrømmen er havet kjøligere enn normalt, nær Sør-Europa og Middelhavet (figur 4). Det sterke Asorhøytrykket holder lavtrykkene unna. Sør-Europa får mindre storm og nedbør, og ofte kaldere vær enn normalt (NOAA, u.å.-a).
+**Ofte kaldere og tørrere i Sør-Europa.** Sør for jetstrømmen er havet kjøligere enn normalt, nær Sør-Europa og Middelhavet (figur 4). Det sterke Asorhøytrykket holder lavtrykkene unna. Sør-Europa får mindre storm og nedbør, og ofte kaldere vær enn normalt (NOAA, u.å.-a).
 
 **Virkning på jetstrømmen.** Under positiv fase er temperaturforskjellen mellom den kalde arktiske lufta og den varme subtropiske lufta stor. Jo større forskjellen er, desto sterkere blir vinden i høyden (NOAA, u.å.-c). Jetstrømmen blir sterk og ligger lenger nord, sammen med stormbanen (NOAA, u.å.-a). Den fører lavtrykk raskt over Atlanterhavet mot Nord-Europa, mens Sør-Europa ligger under høytrykk.
 
@@ -153,11 +153,11 @@ Under negativ NAO ligger jetstrømmen og stormbanen mer i retning vest–øst og
 
 ### Været under negativ NAO
 
-**Kald luft i Nord-Europa.** Når jetstrømmen bøyer seg sørover, kan kald polarluft strømme inn over Nord-Europa og det østlige Nord-Amerika. Nord-Europa får kaldere og tørrere vintre enn normalt, med mindre storm. Det østlige Nord-Amerika får sterkere kaldluftsutbrudd og mer storm (NOAA, u.å.-a).
+**Kald luft i Nord-Europa.** Når jetstrømmen bøyer seg sørover, kan kald polarluft strømme inn over Nord-Europa og det østlige Nord-Amerika. Nord-Europa får ofte kaldere og tørrere vintre enn normalt, med mindre storm. Det østlige Nord-Amerika får ofte sterkere kaldluftsutbrudd og mer storm enn normalt (NOAA, u.å.-a).
 
-**Mildere og våtere i Sør-Europa.** Jetstrømmen ligger lenger sør og fører lavtrykk inn over Sør-Europa. Det gir mer storm, mer nedbør og varmere vær enn normalt der (NOAA, u.å.-a).
+**Ofte mildere og våtere i Sør-Europa.** Jetstrømmen ligger lenger sør og fører lavtrykk inn over Sør-Europa. Det gir mer storm, mer nedbør og ofte høyere temperaturer enn normalt der (NOAA, u.å.-a).
 
-**Norsk vinter.** Høy NAO-indeks gir mer vestavind, med mild og fuktig luft over Sør-Norge og milde vintre i sør. Lav indeks gir kaldere vintervær, med luftmasser fra øst (Store norske leksikon, u.å.).
+**Norsk vinter.** Høy NAO-indeks gir mer vestavind, med mild og fuktig luft over Sør-Norge og ofte mildere vintre enn normalt i sør. Lav indeks gir ofte kaldere vintervær enn normalt, med luftmasser fra øst (Store norske leksikon, u.å.).
 
 ## Hvorfor varierer NAO?
 
@@ -179,9 +179,9 @@ NAO kan også påvirkes av tilbakekoblinger. Endringer i havtemperaturen kan for
 
 **NAO:** Den nordatlantiske oscillasjonen. Svingninger i trykkforskjellen mellom Islandslavtrykket og Asorhøytrykket.
 
-**Positiv fase:** Sterkere lavtrykk og høytrykk, sterkere jetstrøm, stormbanen lenger nord. Milde og våte vintre i Nord-Europa.
+**Positiv fase:** Sterkere lavtrykk og høytrykk, sterkere jetstrøm, stormbanen lenger nord. Ofte mildere og våtere vintre enn normalt i Nord-Europa.
 
-**Negativ fase:** Svakere trykkforskjell, svakere og mer bølgete jetstrøm, stormbanen lenger sør. Kaldere og tørrere vintre i Nord-Europa.
+**Negativ fase:** Svakere trykkforskjell, svakere og mer bølgete jetstrøm, stormbanen lenger sør. Ofte kaldere og tørrere vintre enn normalt i Nord-Europa.
 
 **Islandslavtrykket:** Det subpolare lavtrykket nær Grønland og Island.
 
@@ -191,9 +191,9 @@ NAO kan også påvirkes av tilbakekoblinger. Endringer i havtemperaturen kan for
 
 **Rossby-bølger:** Store, langsomme bølger i vestavinden som gir jetstrømmen bølgeformen.
 
-**Høy NAO-indeks:** Trykket over Island er lavere enn normalt. Mer vestavind, mild og fuktig luft over Sør-Norge, og milde vintre i sør (Store norske leksikon, u.å.).
+**Høy NAO-indeks:** Trykket over Island er lavere enn normalt. Mer vestavind, mild og fuktig luft over Sør-Norge, og ofte mildere vintre enn normalt i sør (Store norske leksikon, u.å.).
 
-**Lav NAO-indeks:** Kaldere vintervær, med luftmasser fra øst (Store norske leksikon, u.å.).
+**Lav NAO-indeks:** Ofte kaldere vintervær enn normalt, med luftmasser fra øst (Store norske leksikon, u.å.).
 
 ## Test deg selv
 
