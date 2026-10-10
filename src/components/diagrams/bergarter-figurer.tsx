@@ -1266,10 +1266,10 @@ const KVARTS_RIPE: [string, string, string, string] = [
   "Kvarts mot kvarts: like harde, ingen tydelig ripe.",
 ];
 const BAS_RIPE: [string, string, string, string] = [
-  "Kornene er for små til å teste ett og ett korn.",
-  "Kornene er for små til å teste ett og ett korn.",
-  "Kornene er for små til å teste ett og ett korn.",
-  "Kornene er for små til å teste ett og ett korn.",
+  "Kornene er for små til å teste ett og ett korn. Se heller på farge, tetthet og eventuelle gassbobler med lupe.",
+  "Kornene er for små til å teste ett og ett korn. Se heller på farge, tetthet og eventuelle gassbobler med lupe.",
+  "Kornene er for små til å teste ett og ett korn. Se heller på farge, tetthet og eventuelle gassbobler med lupe.",
+  "Kornene er for små til å teste ett og ett korn. Se heller på farge, tetthet og eventuelle gassbobler med lupe.",
 ];
 const KV_RIPER: Prove["riper"] = [false, false, true, null];
 const KA_RIPER: Prove["riper"] = [false, true, false, true];
@@ -1387,7 +1387,7 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
     verktoy === 1
       ? p.lupe
       : verktoy === 2
-        ? `${RIPEVERKTOY[ri]} mot ${p.kornNavn} i ${p.navn.toLowerCase()}: ${p.ripe[ri]} Rip ett korn, ikke hele steinen.`
+        ? `${RIPEVERKTOY[ri]} mot ${p.kornNavn} i ${p.navn.toLowerCase()}: ${p.ripe[ri]}${riper === null ? "" : " Rip ett korn, ikke hele steinen."}`
         : syreTekst;
   const vb = small ? "0 0 520 630" : "0 0 960 420";
   const S = small ? { x: 260, y: 150, k: 1.35 } : { x: 250, y: 200, k: 1.45 };

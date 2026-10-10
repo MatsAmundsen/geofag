@@ -128,7 +128,7 @@ Samme vulkan kan altså virke på to helt ulike klokker. Pinatubo-kjølingen var
 
 ## Norge: fem kjeder
 
-**Oslofeltet.** Kalkstein ble avsatt i ordovicium og silur, og ligger nå på land (NGU, u.å.-d). For om lag 310 millioner år siden sprakk skorpen opp fra Skagerrak til Østerdalen, og Osloriften fikk vulkanisme og en riftdal i perm (NGU, u.å.-b). Bergarten styrer hvordan regn og elv møter berget, og dermed vannkjemien.
+**Oslofeltet.** Kalkstein ble avsatt i ordovicium og silur, og ligger nå på land (NGU, u.å.-d). For om lag 310 millioner år siden sprakk skorpen opp, og Osloriften fikk vulkanisme og en riftdal i perm (NGU, u.å.-b). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak. Bergarten styrer hvordan regn og elv møter berget, og dermed vannkjemien.
 
 **Østlandet og Trøndelag.** Store områder har marin leire, med gamle raviner og skredgroper (NGU, u.å.-b). Elver graver ravinene. Resultatet kan bli kvikkleire: hydrosfære i geosfæren. Les mer i kapittelet [Skred](/geofag-1/skred).
 
