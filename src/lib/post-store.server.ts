@@ -790,11 +790,6 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["sprakk skorpen opp fra Skagerrak til Østerdalen", "cirka 290 millioner år"],
   },
   {
-    flag: "g1-platetektonikk-oslofeltet-2026-10-10",
-    slug: "platetektonikk",
-    stale: ["sprakk skorpen opp fra Skagerrak til Østerdalen"],
-  },
-  {
     flag: "g1-jordsystemene-oslofeltet-2026-10-10",
     slug: "jordsystemene",
     stale: ["sprakk skorpen opp fra Skagerrak til Østerdalen"],
