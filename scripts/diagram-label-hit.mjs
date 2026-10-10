@@ -43,6 +43,8 @@ export function rangeValues(min, max, step) {
  * Overlapp: skjæringsflate etter at tom em-kant (20 % av bokshøyden) er tatt vekk,
  * og restskjæringen er større enn 2 px i begge retninger.
  * Kutt: boksen stikker mer enn 1,5 px utenfor svg-elementet (viewBox).
+ * Strek: isPointInStroke på path, line og polyline i glyffbåndet.
+ * En leder som ender ved sin egen etikett, og etikettens egen bakgrunnsplate, teller ikke.
  */
 export async function scanFigureInPage(headingPrefix) {
   const fig = [...document.querySelectorAll("figure")].find((candidate) => {
@@ -125,6 +127,113 @@ export async function scanFigureInPage(headingPrefix) {
       top: rect.top + inset,
       bottom: rect.bottom - inset,
     };
+  };
+
+  const strokeName = (el) => {
+    const tag = el.tagName.toLowerCase();
+    const paint = el.getAttribute("stroke") || getComputedStyle(el).stroke;
+    return `${tag} ${paint}`;
+  };
+
+  const screenPoint = (el, x, y, ctm) => {
+    const svg = el.ownerSVGElement;
+    const point = svg.createSVGPoint();
+    point.x = x;
+    point.y = y;
+    return point.matrixTransform(ctm);
+  };
+
+  const endpointHitsLabel = (el, glyph) => {
+    const ctm = el.getScreenCTM();
+    if (!ctm) return false;
+    let ends = [];
+    if (el.tagName === "line") {
+      ends = [
+        screenPoint(el, Number(el.getAttribute("x1")), Number(el.getAttribute("y1")), ctm),
+        screenPoint(el, Number(el.getAttribute("x2")), Number(el.getAttribute("y2")), ctm),
+      ];
+    } else if (el.tagName === "polyline" && el.points && el.points.numberOfItems >= 2) {
+      const first = el.points.getItem(0);
+      const last = el.points.getItem(el.points.numberOfItems - 1);
+      ends = [screenPoint(el, first.x, first.y, ctm), screenPoint(el, last.x, last.y, ctm)];
+    } else if (typeof el.getTotalLength === "function") {
+      const length = el.getTotalLength();
+      if (!length) return false;
+      const first = el.getPointAtLength(0);
+      const last = el.getPointAtLength(length);
+      ends = [screenPoint(el, first.x, first.y, ctm), screenPoint(el, last.x, last.y, ctm)];
+    }
+    const pad = 12;
+    const near = (point) =>
+      point.x >= glyph.left - pad &&
+      point.x <= glyph.right + pad &&
+      point.y >= glyph.top - pad &&
+      point.y <= glyph.bottom + pad;
+    return ends.filter(near).length === 1;
+  };
+
+  const isOwnPlate = (el, textEl) => {
+    if (el.parentElement !== textEl.parentElement) return false;
+    const fill = getComputedStyle(el).fill;
+    if (!fill || fill === "none") return false;
+    const plate = el.getBoundingClientRect();
+    const text = textEl.getBoundingClientRect();
+    const plateArea = plate.width * plate.height;
+    const textArea = Math.max(1, text.width * text.height);
+    if (plateArea > textArea * 12 || plateArea < 4) return false;
+    return (
+      text.left >= plate.left - 3 &&
+      text.right <= plate.right + 3 &&
+      text.top >= plate.top - 3 &&
+      text.bottom <= plate.bottom + 3
+    );
+  };
+
+  const strokesThroughText = (textEl, glyph) => {
+    const svg = textEl.closest("svg");
+    if (!svg || glyph.right - glyph.left < 2 || glyph.bottom - glyph.top < 2) return [];
+    const shapes = [...svg.querySelectorAll("path, line, polyline")];
+    const hits = [];
+    for (const el of shapes) {
+      if (opacityOf(el) <= 0.05) continue;
+      const style = getComputedStyle(el);
+      if (!style.stroke || style.stroke === "none") continue;
+      const width = Number.parseFloat(style.strokeWidth);
+      if (!Number.isFinite(width) || width <= 0) continue;
+      if (isOwnPlate(el, textEl) || endpointHitsLabel(el, glyph)) continue;
+      const bounds = el.getBoundingClientRect();
+      const pad = Math.max(4, width);
+      if (
+        bounds.right < glyph.left - pad ||
+        bounds.left > glyph.right + pad ||
+        bounds.bottom < glyph.top - pad ||
+        bounds.top > glyph.bottom + pad
+      ) {
+        continue;
+      }
+      const ctm = el.getScreenCTM();
+      if (!ctm) continue;
+      let inverse;
+      try {
+        inverse = ctm.inverse();
+      } catch {
+        continue;
+      }
+      const point = svg.createSVGPoint();
+      let count = 0;
+      const step = 2;
+      const margin = 2;
+      for (let y = glyph.top + margin; y <= glyph.bottom - margin; y += step) {
+        for (let x = glyph.left + margin; x <= glyph.right - margin; x += step) {
+          point.x = x;
+          point.y = y;
+          const local = point.matrixTransform(inverse);
+          if (el.isPointInStroke(local)) count += 1;
+        }
+      }
+      if (count >= 2) hits.push({ count, name: strokeName(el) });
+    }
+    return hits;
   };
 
   const describe = (el) => {
@@ -268,6 +377,17 @@ export async function scanFigureInPage(headingPrefix) {
           kind: "unhittable",
           texts: [item.text],
           detail: `${usable.length} punkt traff ikke teksten`,
+          state,
+        });
+      }
+
+      const glyph = glyphBox(live.width >= 2 ? live : item.rect);
+      const strokeHits = strokesThroughText(item.el, glyph);
+      if (strokeHits.length) {
+        issues.push({
+          kind: "stroke",
+          texts: [item.text],
+          detail: strokeHits.map((hit) => `${hit.count} punkt på ${hit.name}`).join("; "),
           state,
         });
       }

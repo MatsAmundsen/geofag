@@ -14,7 +14,7 @@ test("rangeValues follows min, max and step", () => {
 });
 
 test(
-  "svg-etiketter er udekket, uten overlapp og innenfor viewBox",
+  "svg-etiketter er udekket, uten overlapp, uten strek gjennom teksten og innenfor viewBox",
   { skip: process.env.DIAGRAM_LABEL_HIT ? false : "sett DIAGRAM_LABEL_HIT=1 for å kjøre mot lokal server" },
   async () => {
     const report = await scanDiagramLabels({
