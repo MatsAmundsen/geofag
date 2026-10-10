@@ -175,6 +175,20 @@ export default defineConfig(({ command, isPreview }) => ({
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
             serverDir: "./server",
+            // The Worker entry may only export the fetch handler and Durable
+            // Object classes. Rolldown's default `exports-only` also re-exports
+            // plain values from this chunk (for example `POSTS_DO_NAME` as `n`)
+            // so other chunks can import them. `wrangler dev` / vite preview
+            // refuse to boot on those; `wrangler deploy` ignores them. `strict`
+            // keeps the entry signature and moves the shared modules out.
+            rolldownConfig: {
+              preserveEntrySignatures: "strict",
+            },
+            // `npx wrangler` stops on an install prompt when Wrangler is not a
+            // dependency. `--yes` only affects this preview command.
+            commands: {
+              preview: "npx --yes wrangler --cwd ./ dev",
+            },
           }),
         ]
       : []),

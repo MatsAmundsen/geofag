@@ -87,9 +87,9 @@ Avkjølingen styrer kornstørrelsen. Når magma kjøles langsomt, vanligvis på 
 
 **Gabbro og basalt** har samme sammensetning. Gabbro er dypbergarten og består hovedsakelig av plagioklas og pyroksen. I Norge finnes store mengder i Lyngen og Jotunheimen (NGU, u.å.-b). Basalt er dagbergarten med samme kjemi og raskere avkjøling. Grønnstein er gabbro eller basalt som er omdannet, med kloritt, epidot og amfibol (NGU, u.å.-e). Da har den magmatiske bergarten flyttet seg til metamorf stasjon.
 
-**Larvikitt og rombeporfyr** hører til Osloriften. For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen. Vulkanismen fortsatte inn i perm, og det ble dannet en riftdal (NGU, u.å.-c).
+**Larvikitt og rombeporfyr** hører til Osloriften. For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp. På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak. Vulkanismen fortsatte inn i perm, og det ble dannet en riftdal (NGU, u.å.-c).
 
-Larvikitt er en dypbergart med to typer feltspat, som kan gi fargespill. Den er dannet for cirka 290 millioner år siden, er oppkalt etter Larvik og finnes i Vestfold og Telemark. Den er Norges nasjonalbergart (NGU, u.å.-i).
+Larvikitt er en dypbergart med to typer feltspat, som kan gi fargespill. Den er dannet for cirka 295 millioner år siden, er oppkalt etter Larvik og finnes i Vestfold og Telemark. Den er Norges nasjonalbergart (NGU, u.å.-i).
 
 Rombeporfyr er en dagbergart, funnet fem steder på jorda, og en av Oslofeltets signaturbergarter. Store rombeformede lyse feltspatkrystaller ligger i en grålig til rødbrun grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten. NGU kaller den tvillingbroren til larvikitt, som størknet ferdig under overflaten (NGU, u.å.-l).
 
@@ -125,7 +125,7 @@ RockCycle
 
 Syklusen er en modell du bruker for å undersøke og forklare (Udir, u.å.-a). En bergart kan bli en annen. Ingen bergart må innom alle stasjonene.
 
-Gneis i grunnfjellet i Sør-Norge ble dannet for mer enn 900 millioner år siden og er fortsatt metamorf (NGU, u.å.-d). Larvikitt har vært dypbergart siden den størknet for cirka 290 millioner år siden (NGU, u.å.-i). Kalkstein i Oslo-området kan være bare svakt omdannet, ikke marmor (NGU, u.å.-f). Å tolke inn i syklusen er å peke på stasjonen og på hvilken vei som er tatt, og hvilken som ikke er det.
+Gneis i grunnfjellet i Sør-Norge ble dannet for mer enn 900 millioner år siden og er fortsatt metamorf (NGU, u.å.-d). Larvikitt har vært dypbergart siden den størknet for cirka 295 millioner år siden (NGU, u.å.-i). Kalkstein i Oslo-området kan være bare svakt omdannet, ikke marmor (NGU, u.å.-f). Å tolke inn i syklusen er å peke på stasjonen og på hvilken vei som er tatt, og hvilken som ikke er det.
 
 Forvitring og erosjon er overflateleddet, fra fast berg mot sediment. Størkning er veien fra magma til magmatisk bergart. Omdanning i fast tilstand er veien til metamorf bergart.
 

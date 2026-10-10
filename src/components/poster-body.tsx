@@ -14,7 +14,6 @@ import {
   ConvectionDiagram,
   DecompressionMeltingDiagram,
   EarthLayersDiagram,
-  EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
   JordasBolgerDiagram,
   PartikkelbolgerDiagram,
@@ -63,9 +62,18 @@ import {
 } from "@/components/diagrams";
 import {
   MetamorphicFaciesDiagram,
-  RockCycleDiagram,
   SilicateStructureDiagram,
 } from "@/components/diagrams/bergarter";
+import {
+  AvkjolingKornFigur,
+  BergartssyklusSnittFigur,
+  FolgBergartFigur,
+  MetamorfoseFigur,
+  OSLO_STATUS_BERGARTER,
+  SilikatgrupperFigur,
+  SteinlabFigur,
+} from "@/components/diagrams/bergarter-figurer";
+import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
@@ -131,6 +139,16 @@ import {
   QUIZ_VAERKART,
   QUIZ_VINDSYSTEMET,
   QUIZ_JORDSKJELV,
+  QUIZ_SJEKK_JORDSKJELV_1,
+  QUIZ_SJEKK_JORDSKJELV_2,
+  QUIZ_SJEKK_JORDSKJELV_3,
+  QUIZ_SJEKK_JORDSKJELV_4,
+  QUIZ_SJEKK_JORDSKJELV_5,
+  QUIZ_SJEKK_JORDSKJELV_6,
+  QUIZ_SJEKK_SKJELVFARE_1,
+  QUIZ_SJEKK_SKJELVFARE_2,
+  QUIZ_SJEKK_SKJELVFARE_3,
+  QUIZ_SKJELVFARE,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
@@ -739,7 +757,6 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   ElasticRebound: () => <ElasticReboundDiagram />,
   Partikkelbolger: () => <PartikkelbolgerDiagram />,
-  EarthquakeWavePhysics: () => <EarthquakeWavePhysicsDiagram />,
   JordasBolger: () => <JordasBolgerDiagram />,
   Seismogram: () => <SeismogramDiagram />,
   BoundaryQuakes: () => <BoundaryQuakesDiagram />,
@@ -747,26 +764,56 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   HyposenterForklaring: () => (
     <Callout title="Hva betyr «hyposenter»?">
       <p>
-        Hyposenteret (hypocenter), også kalt fokus, er stedet i dypet der bruddet starter. Episenteret
-        (epicenter) er punktet på overflaten rett over. Neste ord du trenger, er seismisk bølge: det
-        er energien som sprer seg ut fra hyposenteret og rister bakken.
+        <em>Hyposenteret</em> er stedet i dypet der bruddet starter (hypo betyr «under» på gresk).
+        Det kalles også <em>fokus</em>. <em>Episenteret</em> er punktet på overflaten rett over (epi
+        betyr «over»). Fra hyposenteret sprer energien seg som <em>seismiske bølger</em> (seismos =
+        rystelse på gresk), og det er de som rister bakken.
       </p>
     </Callout>
   ),
   IntraplateForklaring: () => (
     <Callout title="Hva betyr «intraplate»?">
       <p>
-        Intraplate betyr inne på en plate, ikke ved en aktiv plategrense. Norge ligger inne på Den
-        eurasiske platen. Skjelvene her kalles intraplate-jordskjelv. Neste ord du trenger, er
-        forkastning: et gammelt brudd som kan gli på nytt når spenningen blir stor nok.
+        <em>Intraplate</em> betyr inne på en plate (intra = inne i), altså ikke ved en aktiv
+        plategrense. Norge ligger inne på Den eurasiske platen, så skjelvene her kaller vi{" "}
+        <em>intraplate-jordskjelv</em>. De skjer langs gamle forkastninger som glir på nytt når
+        spenningen blir stor nok.
       </p>
     </Callout>
   ),
   QuizJordskjelv: () => (
     <Quiz questions={QUIZ_JORDSKJELV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  SjekkJordskjelv1: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_1} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv2: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_2} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv3: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_3} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv4: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_4} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv5: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_5} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv6: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_6} intro="Velg ett svar per spørsmål." />,
+  SjekkSkjelvfare1: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_1} intro="Velg ett svar per spørsmål." />,
+  SjekkSkjelvfare2: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_2} intro="Velg ett svar per spørsmål." />,
+  SjekkSkjelvfare3: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_3} intro="Velg ett svar per spørsmål." />,
+  QuizSkjelvfare: () => (
+    <Quiz questions={QUIZ_SKJELVFARE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   SilicateStructure: () => <SilicateStructureDiagram />,
-  RockCycle: () => <RockCycleDiagram />,
+  RockCycle: () => (
+    <>
+      <BergartssyklusSnittFigur />
+      <FolgBergartFigur />
+    </>
+  ),
+  Silikatgrupper: () => <SilikatgrupperFigur />,
+  AvkjolingKorn: () => <AvkjolingKornFigur />,
+  Metamorfose: () => <MetamorfoseFigur />,
+  Steinlab: () => <SteinlabFigur />,
+  OsloriftBergarter: () => (
+    <OslograbenFigur
+      heading="Osloriften: rombeporfyr og larvikitt fra samme smeltefamilie"
+      caption="Samme smeltefamilie, to steder: dypet og overflaten. Rombeporfyr størknet på overflaten og har store rombeformede feltspatkrystaller i en finkornet grunnmasse. Larvikitt størknet ferdig under overflaten og er grovkornet. Forenklet: snittet er skjematisk uten målestokk, og vulkanismen og magmakamrene vises i ett steg. Samme figur som i Norges geologiske historie."
+      statusTexts={OSLO_STATUS_BERGARTER}
+    />
+  ),
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,

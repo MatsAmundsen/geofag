@@ -1478,7 +1478,7 @@ export function ContinentalRiftDiagram() {
               Fossil paleorift. Vulkanisme 250–300 Ma.
             </L>
             <L x="12" y="50" fill="#94a3b8" size={9.5}>
-              Skagerrak–Østerdalen · Rombeporfyr
+              Langesund–Mjøsa (fortsetter i Skagerrak) · Rombeporfyr
             </L>
           </g>
           </g>

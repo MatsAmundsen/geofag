@@ -215,6 +215,7 @@ export function TopicLayout({
                   resolvedSlug === "vulkaner" ||
                   resolvedSlug === "hoytrykk-lavtrykk" ||
                   resolvedSlug === "jordskjelv" ||
+                  resolvedSlug === "jordskjelv-naturfare" ||
                   resolvedSlug === "jordsystemene" ||
                   resolvedSlug === "isbreer-og-landformer" ||
                   resolvedSlug === "vaerkart" ||

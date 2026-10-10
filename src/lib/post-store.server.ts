@@ -798,7 +798,22 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g1-fakta-landformer-2026-10-07",
     slug: "landformer",
     stale: ["kan følges fra Østfold og Vestfold"],
-  }
+  },
+  {
+    flag: "g1-bergarter-oslofeltet-2026-10-10",
+    slug: "bergarter",
+    stale: ["sprakk skorpen opp fra Skagerrak til Østerdalen", "cirka 290 millioner år"],
+  },
+  {
+    flag: "g1-jordsystemene-oslofeltet-2026-10-10",
+    slug: "jordsystemene",
+    stale: ["sprakk skorpen opp fra Skagerrak til Østerdalen"],
+  },
+  {
+    flag: "g1-jordskjelv-deling-2026-10-10",
+    slug: "jordskjelv",
+    stale: ["Episenteret er senere lagt til Kattegat", "EarthquakeWavePhysics"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

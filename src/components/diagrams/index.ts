@@ -134,7 +134,6 @@ export {
 export {
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
-  EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
   JordasBolgerDiagram,
   PartikkelbolgerDiagram,
@@ -150,7 +149,7 @@ export {
   VolcanoMonitoringDiagram,
   VolcanoTypesDiagram,
 } from "./quakes";
-export { RockCycleDiagram, ValleyCrossSectionDiagram } from "./bergarter";
+export { ValleyCrossSectionDiagram } from "./bergarter";
 export {
   AvsetningsformerDiagram,
   BotnEggTindDiagram,

@@ -16,7 +16,7 @@ export function BoundaryQuakesDiagram() {
     <Diagram
       title="Skjelv ved rygg, transform og der en plate synker."
       heading="Skjelv ved plategrenser"
-      caption="Skjelv oppstår ved midthavsrygger. Transformforkastninger er kjent for grunne skjelv. Der en havbunnsplate synker, blir skjelvene sterke og ødeleggende. De store skjelvene sitter ved plategrenser, ikke inne på en plate slik som i Norge."
+      caption="Jordskjelv ved de tre typene plategrenser. Ved midthavsryggen og transformforkastningen er skjelvene grunne. Der en plate synker, kan skjelvene ligge helt ned mot ca. 700 km dybde og bli svært store."
       viewBox="0 0 820 400"
     >
       {(m) => (
@@ -116,7 +116,7 @@ export function SeismogramDiagram() {
     <Diagram
       title="Seismogram med P-, S- og overflatebølger, og tre stasjoner som krysser i episenteret"
       heading="P-bølger, S-bølger og lokalisering av episenter"
-      caption="P-bølgen kommer først, S-bølgen etter. Tidsforskjellen mellom dem blir større jo lenger unna skjelvet er. Med tre stasjoner kan sirklene krysse i episenteret. Bølgene langs overflaten kommer sist. De har størst utslag og rister husene mest. Figuren kaller dem Rayleigh- og Love-bølger."
+      caption="Seismogrammet viser at P-bølgen kommer først, så S-bølgen og til slutt overflatebølgene med størst utslag. Tiden mellom P og S forteller hvor langt unna skjelvet var. Med avstanden fra tre stasjoner, A, B og C, kan vi tegne tre sirkler. Der de krysser, ligger episenteret."
       viewBox="0 0 840 460"
     >
       {() => (
@@ -267,146 +267,6 @@ export {
   VolcanoTypesDiagram,
 } from "./volcanoes";
 
-export function EarthquakeWavePhysicsDiagram() {
-  const globe = { cx: 0, cy: 0, r: 108 };
-  const rc = globe.r * 0.55;
-  const ri = globe.r * 0.2;
-  const rim = (deg: number, r: number) => {
-    const a = -Math.PI / 2 + (deg * Math.PI) / 180;
-    return { x: r * Math.cos(a), y: r * Math.sin(a) };
-  };
-  const s103 = rim(103, globe.r);
-  const s103b = rim(-103, globe.r);
-  const p140 = rim(140, globe.r);
-  const p140b = rim(-140, globe.r);
-  return (
-    <Diagram
-      title="P-bølger går gjennom væske, S-bølger stopper, og skyggesonene"
-      heading="Hvorfor den ytre kjernen må være flytende"
-      caption="P-bølger er kompresjon og går gjennom både fast berg og væske. S-bølger er skjær og stopper i væske. Derfor kommer ikke S-bølgene fram lenger ut enn om lag 103 grader. Direkte P-bølger mangler mellom om lag 103 og 140 grader, fordi de bøyes av ved grensen mot kjernen. R.D. Oldham så dette i jordskjelvregistreringer i 1906."
-      viewBox="0 0 880 460"
-    >
-      {() => (
-        <>
-          <rect x="20" y="16" width="400" height="428" rx="8" fill="#131c24" stroke={C.dim} strokeWidth="1.4" />
-          <L x="40" y="44" fill={C.fg} size={15} weight={700}>
-            Hvordan stoffet beveger seg
-          </L>
-
-          <rect x="36" y="60" width="368" height="160" rx="6" fill="#1a252f" />
-          <L x="52" y="84" fill={C.teal} size={14} weight={700}>
-            P-bølge: kompresjon langs bølgen
-          </L>
-          <g transform="translate(52, 100)">
-            {[0, 16, 48, 78, 110, 126, 158, 188, 220, 236].map((x, index) => (
-              <rect
-                key={x}
-                x={x}
-                y="0"
-                width="14"
-                height="40"
-                fill={C.teal}
-                opacity={index % 4 < 2 ? 0.85 : 0.28}
-              />
-            ))}
-          </g>
-          <L x="52" y="164" fill={C.fg} size={12}>
-            Stoffet skyves og trekkes langs bølgen.
-          </L>
-          <L x="52" y="184" fill={C.muted} size={12}>
-            Går gjennom fast berg og væske.
-          </L>
-          <L x="52" y="204" fill={C.teal} size={12}>
-            Tett er skyv. Glissent er trekk.
-          </L>
-
-          <rect x="36" y="236" width="368" height="188" rx="6" fill="#221b1e" />
-          <L x="52" y="260" fill={C.warm} size={14} weight={700}>
-            S-bølge: skjær, på tvers
-          </L>
-          <path
-            d="M 52 320 Q 92 286 132 320 T 212 320 T 292 320 T 372 320"
-            fill="none"
-            stroke={C.warm}
-            strokeWidth="3.2"
-          />
-          <path d="M 92 300 V 284 M 92 284 L 87 292 M 92 284 L 97 292" stroke={C.sand} strokeWidth="1.8" />
-          <path d="M 172 340 V 356 M 172 356 L 167 348 M 172 356 L 177 348" stroke={C.sand} strokeWidth="1.8" />
-          <L x="52" y="378" fill={C.fg} size={12}>
-            Stoffet beveger seg på tvers av bølgen.
-          </L>
-          <L x="52" y="398" fill={C.low} size={12} weight={700}>
-            I væske stopper S-bølgen.
-          </L>
-
-          <rect x="440" y="16" width="420" height="428" rx="8" fill="#121820" stroke={C.dim} strokeWidth="1.4" />
-          <L x="460" y="44" fill={C.fg} size={15} weight={700}>
-            Skyggesonen rundt kjernen
-          </L>
-          <g transform="translate(650, 188)">
-            <circle r={globe.r} fill="#2d251d" stroke="#524335" strokeWidth="2" />
-            <circle r={rc} fill="#4d1b1f" stroke={C.low} strokeWidth="2" />
-            <circle r={ri} fill={C.warm} />
-            <path
-              d={`M ${rim(103, globe.r + 6).x.toFixed(1)} ${rim(103, globe.r + 6).y.toFixed(1)} A ${globe.r + 6} ${globe.r + 6} 0 0 1 ${rim(257, globe.r + 6).x.toFixed(1)} ${rim(257, globe.r + 6).y.toFixed(1)}`}
-              fill="none"
-              stroke={C.warm}
-              strokeWidth="7"
-              opacity="0.9"
-            />
-            <path
-              d={`M ${rim(103, globe.r + 16).x.toFixed(1)} ${rim(103, globe.r + 16).y.toFixed(1)} A ${globe.r + 16} ${globe.r + 16} 0 0 1 ${rim(140, globe.r + 16).x.toFixed(1)} ${rim(140, globe.r + 16).y.toFixed(1)}`}
-              fill="none"
-              stroke={C.teal}
-              strokeWidth="5"
-            />
-            <path
-              d={`M ${rim(-140, globe.r + 16).x.toFixed(1)} ${rim(-140, globe.r + 16).y.toFixed(1)} A ${globe.r + 16} ${globe.r + 16} 0 0 1 ${rim(-103, globe.r + 16).x.toFixed(1)} ${rim(-103, globe.r + 16).y.toFixed(1)}`}
-              fill="none"
-              stroke={C.teal}
-              strokeWidth="5"
-            />
-            <line x1="0" y1={-globe.r + 6} x2="0" y2={-rc - 3} stroke={C.warm} strokeWidth="2" />
-            <line x1="0" y1={-globe.r + 6} x2={-46} y2={-rc + 8} stroke={C.warm} strokeWidth="1.6" />
-            <line x1="0" y1={-globe.r + 6} x2={46} y2={-rc + 8} stroke={C.warm} strokeWidth="1.6" />
-            <Star x={0} y={-globe.r + 2} r={7} />
-            <L x="0" y={-globe.r - 10} fill={C.low} size={12} weight={700} anchor="middle">
-              hyposenter
-            </L>
-            <L x={s103.x + 8} y={s103.y + 4} fill={C.warm} size={11} weight={700}>
-              103°
-            </L>
-            <L x={s103b.x - 8} y={s103b.y + 4} fill={C.warm} size={11} weight={700} anchor="end">
-              103°
-            </L>
-            <L x={p140.x + 6} y={p140.y + 12} fill={C.teal} size={11} weight={700}>
-              140°
-            </L>
-            <L x={p140b.x - 6} y={p140b.y + 12} fill={C.teal} size={11} weight={700} anchor="end">
-              140°
-            </L>
-          </g>
-          <L x="460" y="328" fill={C.low} size={12} weight={700}>
-            hyposenter øverst på globusen
-          </L>
-          <L x="460" y="350" fill={C.warm} size={12}>
-            S stopper i den flytende ytre kjernen.
-          </L>
-          <L x="460" y="370" fill={C.warm} size={12}>
-            S kommer ikke ut forbi om lag 103°.
-          </L>
-          <L x="460" y="390" fill={C.teal} size={12}>
-            Direkte P mangler mellom 103° og 140°.
-          </L>
-          <L x="460" y="414" fill={C.muted} size={12}>
-            Indre kjerne er fast. Oldham, 1906.
-          </L>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
 export {
   ElasticReboundDiagram,
   JordasBolgerDiagram,
@@ -418,7 +278,7 @@ export function NorwayEarthquakesDiagram() {
     <Diagram
       title="Norges seismiske risikobilde og historiske jordskjelv"
       heading="Hvorfor skjelver Norge når vi ikke er på en plategrense?"
-      caption="Norge ligger inne på Den eurasiske platen. Ved Svalbard kan spredning fra ryggen reaktivere forkastninger. I Nordsjøen ligger gamle rifter, med spenning fra ryggen eller fra landheving. I Nordland antas strekking fra landheving og omfordeling av sedimenter etter siste istid. Lurøy 1819 er estimert til styrke 5,9. Oslofjordskjelvet 1904 hadde styrke 5,4, med episenter i Kattegat."
+      caption="Ifølge NORSAR skyldes skjelvene i Norge spenning fra spredningen langs Den midtatlantiske ryggen, gamle rifter i Nordsjøen og landhevingen etter siste istid. Kartet viser også de to mest kjente historiske skjelvene på fastlandet: Helgeland/Lurøy 1819 (magnitude ca. 5,8) og Oslofjordskjelvet 1904 (magnitude 5,4)."
       viewBox="0 0 880 430"
     >
       {() => (
@@ -455,15 +315,16 @@ export function NorwayEarthquakesDiagram() {
             Lurøy 1819
           </L>
           <L x="336" y="160" fill="#fca5a5" size={11}>
-            styrke 5,9
+            magnitude ca. 5,8
           </L>
 
-          <Star x={300} y={392} r={8} />
+          {/* Oslofjordskjelvet 1904: ytre Oslofjord, sør for Hvaler (Bungum mfl., 2009) */}
+          <Star x={334} y={384} r={8} />
           <L x="168" y="386" fill={C.low} size={12} weight={700}>
-            Kattegat 1904
+            Oslofjordskjelvet 1904
           </L>
           <L x="168" y="402" fill="#fca5a5" size={11}>
-            styrke 5,4
+            magnitude 5,4
           </L>
 
           <L x="168" y="300" fill={C.fg} size={12} weight={600}>
@@ -502,12 +363,12 @@ export function NorwayEarthquakesDiagram() {
             Landheving og sedimenter.
           </L>
           <L x="552" y="246" fill={C.muted} size={12}>
-            Lurøy 1819, styrke 5,9.
+            Lurøy 1819, magnitude ca. 5,8.
           </L>
 
           <rect x="540" y="320" width="300" height="72" rx="6" fill="#241a1c" />
           <L x="552" y="342" fill={C.low} size={12} weight={700}>
-            1904: styrke 5,4, Kattegat
+            1904: magnitude 5,4, ytre Oslofjord
           </L>
           <L x="552" y="362" fill={C.muted} size={12}>
             Tettere bygg kan gi mer skade.
