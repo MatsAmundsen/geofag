@@ -468,7 +468,7 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
       }
       labels={labels}
       keys={keys}
-      notes={["Skjematisk, etter NOAA Climate.gov (2021)", "Kyster: Natural Earth"]}
+      notes={["Etter NOAA Climate.gov (2021), skjematisk", "Kyster: Natural Earth"]}
       viewBox="0 0 960 556"
       narrowViewBox="200 0 560 556"
     >
