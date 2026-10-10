@@ -5,8 +5,8 @@ Coastline: Natural Earth 1:10m land, public domain.
 Bathymetry: ETOPO 2022, NOAA public domain.
 Gyda: NCEP/NCAR daily fields stored in gyda.ts.
 T–S curves: UNESCO EOS-80 and the UNESCO freezing-point polynomial.
-The analysis isobars are an idealised textbook field for the situation in
-the task, not a copy of an undated MET chart.
+The analysis isobars are NCEP/NCAR 6-hourly mean sea level pressure for
+31 January 2024 at 18 UTC, when ekstremværet Ingunn was still in the Norwegian Sea.
 """
 
 from __future__ import annotations
@@ -31,6 +31,9 @@ OUT = ROOT / "src/components/exam/v2026/generated"
 NE = Path("/tmp/geo-data/ne/ne_10m_land.geojson")
 ETOPO = Path("/tmp/geo-data/etopo-nordic-5.npz")
 GYDA = ROOT / "src/lib/eksamen/figures/v2026/gyda.ts"
+INGUNN = ROOT / "src/lib/eksamen/figures/v2026/ingunn-slp-20240131.json"
+ARGO = ROOT / "src/lib/eksamen/figures/v2026/argo-greenland-2020.json"
+WILLEIT = ROOT / "src/lib/eksamen/figures/v2026/willeit2015-fig10.json"
 PREVIEW = Path("/tmp/geo-data/preview")
 
 FONT = "Source Sans 3, ui-sans-serif, system-ui, sans-serif"
@@ -424,64 +427,33 @@ def frame_rect(frame, fill, stroke=None) -> str:
 # --- analysis -----------------------------------------------------------------
 
 ANAL_W, ANAL_H = 1040, 900
-LOW = (1.5, 69.2)
-P0 = 968.0
-OCCLUDED = [(1.5, 69.2), (4.8, 67.6), (8.0, 66.0)]
-WARM_FRONT = [(8.0, 66.0), (13.5, 65.6), (20.0, 65.2)]
-COLD_FRONT = [(8.0, 66.0), (6.2, 62.5), (4.0, 58.8)]
 
 
-def km(lon, lat, lon_c, lat_c):
-    x = (lon - lon_c) * 111.32 * math.cos(math.radians((lat + lat_c) / 2))
-    y = (lat - lat_c) * 110.57
-    return x, y
-
-
-def dist_to_chain(lon, lat, chain):
-    best = 1e9
-    for i in range(len(chain) - 1):
-        ax, ay = km(chain[i][0], chain[i][1], lon, lat)
-        bx, by = km(chain[i + 1][0], chain[i + 1][1], lon, lat)
-        abx, aby = bx - ax, by - ay
-        denom = abx * abx + aby * aby
-        t = 0 if denom == 0 else max(0.0, min(1.0, -(ax * abx + ay * aby) / denom))
-        best = min(best, math.hypot(ax + t * abx, ay + t * aby))
-    return best
-
-
-def analysis_pressure(lon, lat) -> float:
-    x, y = km(lon, lat, LOW[0], LOW[1])
-    radius = math.hypot(x, y)
-    pressure = P0 + 0.038 * radius
-    d = min(
-        dist_to_chain(lon, lat, OCCLUDED),
-        dist_to_chain(lon, lat, WARM_FRONT),
-        dist_to_chain(lon, lat, COLD_FRONT),
-    )
-    trough = 7.0 * math.exp(-((d / 110.0) ** 2)) * (1.0 - math.exp(-((radius / 200.0) ** 2)))
-    return pressure - trough
+def load_ingunn():
+    payload = json.loads(INGUNN.read_text())
+    lat = np.array(payload["lat"], dtype=float)
+    lon = np.array(payload["lon"], dtype=float)
+    slp = np.array(payload["slp"], dtype=float)
+    return lat, lon, slp
 
 
 def build_analysis(land) -> None:
     project = lambert(5, 63, 50, 70)
-    west, south, east, north = -26, 49, 30, 76
+    west, south, east, north = -26, 42, 30, 76
     inner = (64, 16, 1016, 792)
     px, frame = fit_projector(project, west, south, east, north, inner)
-    coast = first_landfall(land, 12.2, 17.5, 67.28)
-    if coast is None:
-        raise SystemExit("Fant ikke kysten av Nordland")
-    print("Nordland coast", tuple(round(v, 3) for v in coast))
-
     lands = land_paths(land, px, west, south, east, north)
     lons = [-20, -10, 0, 10, 20]
-    lats = [50, 55, 60, 65, 70, 75]
+    lats = [45, 50, 55, 60, 65, 70, 75]
     grid = graticule(px, west, south, east, north, lons, lats)
 
-    glon = np.linspace(west, east, 241)
-    glat = np.linspace(south, north, 181)
-    lon_g, lat_g = np.meshgrid(glon, glat)
-    field = np.vectorize(analysis_pressure)(lon_g, lat_g)
-    levels = list(range(968, 1025, 4))
+    src_lat, src_lon, src_slp = load_ingunn()
+    interp = RegularGridInterpolator((src_lat, src_lon), src_slp, bounds_error=False, fill_value=np.nan)
+    glon = np.linspace(west, east, 281)
+    glat = np.linspace(south, north, 241)
+    pts = np.array([[lat, lon] for lat in glat for lon in glon])
+    field = interp(pts).reshape(len(glat), len(glon))
+    levels = list(range(952, 1037, 4))
     raw = contour_paths(glon, glat, field, levels)
     closed = 0
     items = []
@@ -495,7 +467,60 @@ def build_analysis(land) -> None:
         bits = clip_line(projected, frame.buffer(1))
         for d in bits:
             items.append({"d": d, "level": level, "pts": projected})
-    print("analysis contours", len(items), "closed", closed, "center", round(analysis_pressure(*LOW), 2))
+    jmin = np.unravel_index(np.nanargmin(field), field.shape)
+    low_lat, low_lon = float(glat[jmin[0]]), float(glon[jmin[1]])
+    low_p = float(field[jmin])
+    # The occlusion follows the trough east from the low until it meets land.
+    la_i, lo_i = jmin
+    occluded = [(low_lon, low_lat)]
+    land_hit = None
+    norway = [
+        poly
+        for poly in land
+        if poly.bounds[2] > 4 and poly.bounds[0] < 22 and poly.bounds[3] > 64 and poly.bounds[1] < 72
+    ]
+    for _ in range(50):
+        lo = glon[lo_i] + 0.45
+        if lo > 20:
+            break
+        window = np.where(np.abs(glat - glat[la_i]) <= 1.8)[0]
+        col = int(np.argmin(np.abs(glon - lo)))
+        k = int(window[np.argmin(field[window, col])])
+        la_i, lo_i = k, col
+        point = (float(glon[lo_i]), float(glat[la_i]))
+        occluded.append(point)
+        if any(poly.covers(Point(*point)) for poly in norway):
+            land_hit = point
+            break
+    if land_hit is None:
+        coast = first_landfall(land, low_lon, 18, low_lat)
+    else:
+        coast = first_landfall(land, land_hit[0] - 1.5, land_hit[0] + 1.2, land_hit[1])
+        if coast is None:
+            coast = first_landfall(land, 10, 18, 67.8)
+    if coast is None:
+        raise SystemExit("Fant ikke kysten av Nordland")
+    # Keep the front over the sea, ending at the coast.
+    sea_front = []
+    for lon, lat in occluded:
+        if lon >= coast[0] - 0.15 and lat > coast[1] - 1.2:
+            break
+        sea_front.append((lon, lat))
+    sea_front.append(coast)
+    print(
+        "analysis contours",
+        len(items),
+        "closed",
+        closed,
+        "low",
+        round(low_lon, 2),
+        round(low_lat, 2),
+        round(low_p, 1),
+        "coast",
+        tuple(round(v, 2) for v in coast),
+        "front",
+        len(sea_front),
+    )
 
     parts = [rect(0, 0, ANAL_W, ANAL_H, PAPER), frame_rect(frame, SEA)]
     parts.append(f'<g clip-path="url(#analyse-clip)">')
@@ -505,17 +530,38 @@ def build_analysis(land) -> None:
         parts.append(f'<path d="{d}" fill="{LAND}" stroke="{COAST}" stroke-width="0.7" stroke-linejoin="round"/>')
     for item in items:
         parts.append(f'<path d="{item["d"]}" fill="none" stroke="{INK}" stroke-width="1.15" stroke-linejoin="round"/>')
-    parts.append(front_svg(px, OCCLUDED, "occluded", (12.5, 67.4)))
-    parts.append(front_svg(px, WARM_FRONT, "warm", (16.0, 67.6)))
-    parts.append(front_svg(px, COLD_FRONT, "cold", (10.5, 61.5)))
+    # Symbols point east, the direction the trough runs toward the coast.
+    parts.append(front_svg(px, sea_front, "occluded", (coast[0] + 2, coast[1])))
     parts.append("</g>")
 
     placer = Placer()
-    lx, ly = px(*LOW)
+    lx, ly = px(low_lon, low_lat)
     parts.append(f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="18" fill="#102433"/>')
     parts.append(halo(lx, ly - 2, "L", size=15, fill="#f7f5f2", weight=700, stroke="#102433"))
-    parts.append(halo(lx, ly + 13, "968", size=11, fill="#f7f5f2", weight=650, stroke="#102433"))
+    parts.append(halo(lx, ly + 13, f"{low_p:.0f}", size=11, fill="#f7f5f2", weight=650, stroke="#102433"))
     placer.reserve(lx, ly + 4, 48, 40)
+
+    # Closed high inside the frame. The centre on this date is 1035 hPa at 45°N, 5°W.
+    highs = []
+    for i in range(1, len(src_lat) - 1):
+        for j in range(1, len(src_lon) - 1):
+            value = float(src_slp[i, j])
+            lat_v, lon_v = float(src_lat[i]), float(src_lon[j])
+            if value < 1028 or not (south + 1.2 < lat_v < north - 1 and west + 1.5 < lon_v < east - 1.5):
+                continue
+            neighbourhood = src_slp[i - 1 : i + 2, j - 1 : j + 2].copy()
+            neighbourhood[1, 1] = -np.inf
+            if value > float(neighbourhood.max()):
+                highs.append((value, lon_v, lat_v))
+    if highs:
+        high_p, high_lon, high_lat = max(highs)
+        hx, hy = px(high_lon, high_lat)
+        if frame.contains(Point(hx, hy)):
+            parts.append(f'<circle cx="{hx:.1f}" cy="{hy:.1f}" r="16" fill="#f4efe4" stroke="{INK}" stroke-width="1"/>')
+            parts.append(halo(hx, hy - 2, "H", size=15, weight=700))
+            parts.append(halo(hx, hy + 13, f"{high_p:.0f}", size=11, weight=650))
+            placer.reserve(hx, hy + 4, 48, 40)
+            print("high", round(high_lon, 2), round(high_lat, 2), round(high_p, 1))
 
     xx, xy = px(*coast)
     parts.append(f'<circle cx="{xx:.1f}" cy="{xy:.1f}" r="4.5" fill="{MARK}" stroke="{PAPER}" stroke-width="1.5"/>')
@@ -580,7 +626,7 @@ def build_analysis(land) -> None:
         )
         parts.append(plain(x, y, text, size=12, fill=INK, anchor="middle", weight=650))
 
-    front_pts = [px(lon, lat) for line in (OCCLUDED, WARM_FRONT, COLD_FRONT) for lon, lat in line]
+    front_pts = [px(lon, lat) for lon, lat in sea_front]
     for level in levels:
         if level in labeled:
             continue
@@ -619,17 +665,13 @@ def build_analysis(land) -> None:
     parts.insert(2, f'<clipPath id="analyse-clip"><rect x="{x0:.1f}" y="{y0:.1f}" width="{x1-x0:.1f}" height="{y1-y0:.1f}"/></clipPath>')
     parts.append(frame_rect(frame, "none", "#9aa7ae"))
 
-    ly0 = 836
-    parts.append(legend_symbol(48, ly0, "warm"))
-    parts.append(plain(102, ly0 + 4, "Varmfront", size=15, anchor="start"))
-    parts.append(legend_symbol(230, ly0, "cold"))
-    parts.append(plain(284, ly0 + 4, "Kaldfront", size=15, anchor="start"))
-    parts.append(legend_symbol(420, ly0, "occluded"))
-    parts.append(plain(474, ly0 + 4, "Okkludert front", size=15, anchor="start"))
-    parts.append(f'<path d="M680 {ly0:.1f} h40" fill="none" stroke="{INK}" stroke-width="1.4"/>')
-    parts.append(plain(728, ly0 + 4, "Isobar hver 4 hPa", size=15, anchor="start"))
-
-    title = "Forenklet analysekart med Lambert-projeksjon. Lavtrykk i Norskehavet, X på kysten av Nordland, isobarer hver 4 hPa og fronter. Ingen vindpil."
+    ly0 = 828
+    parts.append(legend_symbol(48, ly0, "occluded"))
+    parts.append(plain(108, ly0 + 4, "Okkludert front", size=15, anchor="start"))
+    parts.append(f'<path d="M310 {ly0:.1f} h40" fill="none" stroke="{INK}" stroke-width="1.4"/>')
+    parts.append(plain(360, ly0 + 4, "Isobar hver 4 hPa", size=15, anchor="start"))
+    parts.append(plain(560, ly0 + 4, "31. januar 2024 kl. 18 UTC · NCEP/NCAR", size=15, anchor="start"))
+    title = "Analysekart 31. januar 2024 kl. 18 UTC. Isobarer hver 4 hPa fra NCEP/NCAR-reanalysen. Lavtrykk i Norskehavet, okkludert front inn mot kysten av Nordland, X på kysten. Ingen vindpil."
     write_component(
         "AnalyseChart.tsx",
         "AnalyseChart",
@@ -1031,13 +1073,13 @@ def draw_ts_panel(s0, s1, t0, t1, levels, plot, s_ticks, t_ticks, points, title_
     parts = []
     if title_text:
         parts.append(plain((l + r) / 2, t - 18, title_text, size=16, anchor="middle"))
-    parts.append(rect(l, t, r - l, b - t, "#fbfcfd"))
+    parts.append(rect(l, t, r - l, b - t, PAPER))
     for s in s_ticks:
         x = sx(s)
-        parts.append(f'<line x1="{x:.1f}" y1="{t:.1f}" x2="{x:.1f}" y2="{b:.1f}" stroke="{GRID}" stroke-width="0.8"/>')
+        parts.append(f'<line x1="{x:.1f}" y1="{t:.1f}" x2="{x:.1f}" y2="{b:.1f}" stroke="{GRID}" stroke-width="0.6"/>')
     for temp in t_ticks:
         y = sy(temp)
-        parts.append(f'<line x1="{l:.1f}" y1="{y:.1f}" x2="{r:.1f}" y2="{y:.1f}" stroke="{GRID}" stroke-width="0.8"/>')
+        parts.append(f'<line x1="{l:.1f}" y1="{y:.1f}" x2="{r:.1f}" y2="{y:.1f}" stroke="{GRID}" stroke-width="0.6"/>')
     parts.append(f'<rect x="{l:.1f}" y="{t:.1f}" width="{r - l:.1f}" height="{b - t:.1f}" fill="none" stroke="{INK}" stroke-width="1.1"/>')
 
     curves = []
@@ -1046,7 +1088,7 @@ def draw_ts_panel(s0, s1, t0, t1, levels, plot, s_ticks, t_ticks, points, title_
         if len(pts) < 6:
             continue
         d = "M" + " L".join(f"{sx(s):.1f} {sy(temp):.1f}" for s, temp in pts)
-        parts.append(f'<path d="{d}" fill="none" stroke="#1d4e89" stroke-width="1.35"/>')
+        parts.append(f'<path d="{d}" fill="none" stroke="{COLD}" stroke-width="1.25"/>')
         curves.append((level, pts))
 
     if freeze:
@@ -1067,38 +1109,42 @@ def draw_ts_panel(s0, s1, t0, t1, levels, plot, s_ticks, t_ticks, points, title_
     if freeze and len(freeze_pts) > 2:
         anchor = freeze_pts[min(len(freeze_pts) - 1, int(len(freeze_pts) * 0.55))]
         placer.reserve(sx(anchor[0]), sy(anchor[1]) - 8, 78, 16)
+    def along(level_pts, frac):
+        i = min(max(int(frac * (len(level_pts) - 1)), 1), len(level_pts) - 2)
+        s0, t0p = level_pts[i - 1]
+        s1, t1p = level_pts[i + 1]
+        x0, y0 = sx(s0), sy(t0p)
+        x1, y1 = sx(s1), sy(t1p)
+        angle = math.degrees(math.atan2(y1 - y0, x1 - x0))
+        if angle > 90:
+            angle -= 180
+        if angle < -90:
+            angle += 180
+        s, temp = level_pts[i]
+        return sx(s), sy(temp), angle
+
     for index, (level, pts) in enumerate(curves):
         text = f"{level:.4f}".replace(".", ",")
         text_w = placer.text_width(text, 12)
         placed = False
-        start = 0.18 + (index % 6) * 0.11
-        for frac in (start, start + 0.16, start - 0.12, start + 0.28, 0.5, 0.32, 0.7):
-            if not 0.08 <= frac <= 0.92:
+        start = 0.22 + (index % 5) * 0.13
+        for frac in (start, start + 0.16, start - 0.12, start + 0.28, 0.62, 0.4):
+            if not 0.1 <= frac <= 0.9:
                 continue
-            s, temp = pts[min(int(frac * (len(pts) - 1)), len(pts) - 1)]
-            x, y = sx(s), sy(temp)
-            if x < l + 52 or x > r - 58 or y < t + 24 or y > b - 24:
+            x, y, angle = along(pts, frac)
+            if x < l + 58 or x > r - 64 or y < t + 22 or y > b - 22:
                 continue
-            if placer.blocks(x, y, text_w, 14, gap=8):
+            if placer.blocks(x, y, text_w, 16, gap=7):
                 continue
-            placer.reserve(x, y, text_w, 14)
+            placer.reserve(x, y, text_w, 16)
             parts.append(
-                f'<rect x="{x - text_w / 2 - 2:.1f}" y="{y - 12:.1f}" width="{text_w + 4:.1f}" height="15" rx="2" fill="#fbfcfd"/>'
+                f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="middle" font-family="{FONT}" '
+                f'font-size="12" font-weight="650" fill="{COLD}" stroke="{PAPER}" stroke-width="4" '
+                f'paint-order="stroke" stroke-linejoin="round" '
+                f'transform="rotate({angle:.1f} {x:.1f} {y:.1f})">{esc(text)}</text>'
             )
-            parts.append(plain(x, y, text, size=12, fill="#1d4e89", anchor="middle", weight=650))
             placed = True
             break
-        if not placed:
-            s, temp = pts[len(pts) // 2]
-            x = min(max(sx(s), l + 46), r - 46)
-            y = min(max(sy(temp), t + 16), b - 16)
-            if not placer.blocks(x, y, text_w, 14, gap=4):
-                placer.reserve(x, y, text_w, 14)
-                parts.append(
-                    f'<rect x="{x - text_w / 2 - 2:.1f}" y="{y - 12:.1f}" width="{text_w + 4:.1f}" height="15" rx="2" fill="#fbfcfd"/>'
-                )
-                parts.append(plain(x, y, text, size=12, fill="#1d4e89", anchor="middle", weight=650))
-                placed = True
         if not placed:
             print("unlabeled isopycnal", level)
 
@@ -1115,8 +1161,8 @@ def draw_ts_panel(s0, s1, t0, t1, levels, plot, s_ticks, t_ticks, points, title_
     )
     for s, temp, letter in points:
         x, y = sx(s), sy(temp)
-        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5.5" fill="{INK}" stroke="{PAPER}" stroke-width="1.5"/>')
-        parts.append(halo(x + 12, y - 10, letter, size=18, anchor="start", weight=700))
+        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6.5" fill="{INK}" stroke="{PAPER}" stroke-width="2"/>')
+        parts.append(halo(x + 14, y - 12, letter, size=18, anchor="start", weight=700))
     return "".join(parts)
 
 
@@ -1141,7 +1187,7 @@ def build_ts() -> None:
             [28, 30, 32, 34, 36],
             [-2, 0, 2, 4, 6, 8, 10, 12],
             [(29.7, 1.0, "A"), (29.4, -0.8, "B")],
-            "",
+            "Tetthet (kg/dm³)",
         )
     )
     parts.append(
@@ -1188,24 +1234,24 @@ def catmull(points: list[tuple[float, float]]) -> str:
 
 
 def build_ctd() -> None:
+    """Measured Argo casts. A and D are August, B and C are April. Months are not drawn."""
+    casts = json.loads(ARGO.read_text())
+    april = [(z, t, s) for z, t, s in casts["april"]["profile"] if z <= 175]
+    august = [(z, t, s) for z, t, s in casts["august"]["profile"] if z <= 175]
     width, height = 1040, 860
-
-    def profile(z, surface, deep, scale):
-        return deep + (surface - deep) * math.exp(-((z / scale) ** 1.15))
-
     panels = [
-        ("Temperaturprofil A", "Temperatur (°C)", -1, 6, [-1, 0, 1, 2, 3, 4, 5, 6], lambda z: profile(z, 5.2, 0.4, 32), "#9a3412"),
-        ("Temperaturprofil B", "Temperatur (°C)", -2, 2, [-2, -1, 0, 1, 2], lambda z: -1.45 + 1.7 * (z / 175) ** 0.85, "#1d4e89"),
-        ("Salinitetsprofil C", "Salinitet (PSU)", 33.5, 35.0, [33.5, 34, 34.5, 35], lambda z: 34.62 + 0.12 * (z / 175), "#0f6f78"),
-        ("Salinitetsprofil D", "Salinitet (PSU)", 32.5, 35.0, [32.5, 33, 33.5, 34, 34.5, 35], lambda z: 34.85 - 2.15 * math.exp(-((z / 38) ** 1.2)), "#9a3412"),
+        ("Temperaturprofil A", "Temperatur (°C)", 0, 8, [0, 2, 4, 6, 8], august, 1, "#9a3412"),
+        ("Temperaturprofil B", "Temperatur (°C)", -2, 2, [-2, -1, 0, 1, 2], april, 1, "#1d4e89"),
+        ("Salinitetsprofil C", "Salinitet (PSU)", 34.4, 35.0, [34.4, 34.6, 34.8, 35.0], april, 2, "#1d4e89"),
+        ("Salinitetsprofil D", "Salinitet (PSU)", 33.8, 35.0, [33.8, 34.2, 34.6, 35.0], august, 2, "#9a3412"),
     ]
     parts = [rect(0, 0, width, height, PAPER)]
-    for index, (title, xlabel, xmin, xmax, xticks, fn, color) in enumerate(panels):
+    for index, (title, xlabel, xmin, xmax, xticks, rows, column, color) in enumerate(panels):
         col, row = index % 2, index // 2
         ox, oy = 40 + col * 510, 24 + row * 420
-        l, r, t, b = ox + 70, ox + 460, oy + 48, oy + 320
+        l, r, t, b = ox + 78, ox + 470, oy + 48, oy + 320
         parts.append(plain((l + r) / 2, oy + 28, title, size=18, anchor="middle"))
-        parts.append(rect(l, t, r - l, b - t, "#fbfcfd"))
+        parts.append(rect(l, t, r - l, b - t, "#f7f5f2"))
         depths = [0, 50, 100, 150, 175]
 
         def sy(depth, t=t, b=b):
@@ -1213,27 +1259,25 @@ def build_ctd() -> None:
 
         for depth in depths:
             y = sy(depth)
-            parts.append(f'<line x1="{l:.1f}" y1="{y:.1f}" x2="{r:.1f}" y2="{y:.1f}" stroke="{GRID}"/>')
+            parts.append(f'<line x1="{l:.1f}" y1="{y:.1f}" x2="{r:.1f}" y2="{y:.1f}" stroke="{GRID}" stroke-width="0.8"/>')
             parts.append(plain(l - 8, y + 4, str(depth), size=13, anchor="end", weight=500))
         for value in xticks:
             x = l + (value - xmin) / (xmax - xmin) * (r - l)
-            parts.append(f'<line x1="{x:.1f}" y1="{t:.1f}" x2="{x:.1f}" y2="{b:.1f}" stroke="{GRID}"/>')
-            label = f"{value:.1f}".replace(".", ",")
-            if float(value).is_integer():
-                label = str(int(round(value)))
+            parts.append(f'<line x1="{x:.1f}" y1="{t:.1f}" x2="{x:.1f}" y2="{b:.1f}" stroke="{GRID}" stroke-width="0.8"/>')
+            label = str(int(value)) if float(value).is_integer() else f"{value:.1f}".replace(".", ",")
             parts.append(plain(x, b + 20, label, size=13, anchor="middle", weight=500))
         parts.append(f'<rect x="{l}" y="{t}" width="{r - l}" height="{b - t}" fill="none" stroke="{INK}"/>')
         curve = []
-        for depth in range(0, 176, 2):
-            value = fn(depth)
+        for depth, temp, sal in rows:
+            value = temp if column == 1 else sal
             x = l + (value - xmin) / (xmax - xmin) * (r - l)
             curve.append((x, sy(depth)))
-        parts.append(f'<path d="{catmull(curve)}" fill="none" stroke="{color}" stroke-width="2.4"/>')
+        parts.append(f'<path d="{polyline(curve)}" fill="none" stroke="{color}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>')
         parts.append(plain((l + r) / 2, b + 44, xlabel, size=14, anchor="middle"))
         parts.append(
-            f'<text x="{l - 46}" y="{(t + b) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="14" fill="{INK}" transform="rotate(-90 {l - 46} {(t + b) / 2:.1f})">Dyp (m)</text>'
+            f'<text x="{l - 48}" y="{(t + b) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="14" fill="{INK}" transform="rotate(-90 {l - 48} {(t + b) / 2:.1f})">Dyp (m)</text>'
         )
-    title = "Forenklet skjema av to temperaturprofiler og to salinitetsprofiler ned til 175 meter. April og august er ikke merket."
+    title = "Målte Argo-profiler fra Grønlandshavet ned til 175 meter. April og august er ikke merket på panelene."
     write_component(
         "CtdChart.tsx",
         "CtdChart",
@@ -1246,52 +1290,167 @@ def build_ctd() -> None:
 
 
 def build_dye() -> None:
-    width, height = 880, 520
+    """Illustration of the experiment. The left and right behaviour is what the task states."""
+    width, height = 1040, 700
+    dye = WARM
     parts = [rect(0, 0, width, height, PAPER)]
+    parts.append(
+        f"""<defs>
+      <linearGradient id="dye-water" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f8fbfc"/>
+        <stop offset="100%" stop-color="#d5e4ea"/>
+      </linearGradient>
+      <linearGradient id="dye-plume" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="{dye}" stop-opacity="0.02"/>
+        <stop offset="22%" stop-color="{dye}" stop-opacity="0.5"/>
+        <stop offset="68%" stop-color="#8f1d18" stop-opacity="0.78"/>
+        <stop offset="100%" stop-color="#6b1612" stop-opacity="0.92"/>
+      </linearGradient>
+      <radialGradient id="dye-pool" cx="50%" cy="45%" r="58%">
+        <stop offset="0%" stop-color="#9f2a22" stop-opacity="0.92"/>
+        <stop offset="62%" stop-color="#b42318" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#b42318" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="dye-surface" cx="46%" cy="42%" r="64%">
+        <stop offset="0%" stop-color="#d4533c" stop-opacity="0.82"/>
+        <stop offset="48%" stop-color="#b42318" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#b42318" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="dye-metal" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f7f8f8"/>
+        <stop offset="40%" stop-color="#c5ced3"/>
+        <stop offset="100%" stop-color="#6a747b"/>
+      </linearGradient>
+      <linearGradient id="dye-ice-top" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0%" stop-color="#f6d2c8"/>
+        <stop offset="55%" stop-color="#fff8f5"/>
+        <stop offset="100%" stop-color="#f0b5a6"/>
+      </linearGradient>
+      <linearGradient id="dye-ice-front" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e8b5a6"/>
+        <stop offset="100%" stop-color="#c45c4a"/>
+      </linearGradient>
+      <radialGradient id="dye-drop" cx="35%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#f0a090"/>
+        <stop offset="55%" stop-color="{dye}"/>
+        <stop offset="100%" stop-color="#7f1d16"/>
+      </radialGradient>
+      <filter id="dye-soft" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="7"/>
+      </filter>
+      <filter id="dye-softer" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="11"/>
+      </filter>
+    </defs>"""
+    )
 
-    def glass(cx, mode):
-        top, bot = 150, 400
-        rim_w, base_w = 118, 92
-        out = []
-        # water body
-        water = f"M{cx - rim_w / 2:.1f} {top} L{cx - base_w / 2:.1f} {bot} L{cx + base_w / 2:.1f} {bot} L{cx + rim_w / 2:.1f} {top} Z"
-        out.append(f'<clipPath id="glass-{mode}"><path d="{water}"/></clipPath>')
-        out.append(f'<g clip-path="url(#glass-{mode})">')
-        out.append(f'<path d="{water}" fill="#e7f2f6"/>')
-        if mode == "bottom":
-            dye_top = 318
+    def strainer(cx, water_top):
+        bowl = water_top - 34
+        bits = [
+            f'<path d="M{cx - 86:.0f} {bowl - 16:.0f} C{cx - 46:.0f} {bowl - 38:.0f} {cx + 46:.0f} {bowl - 38:.0f} {cx + 86:.0f} {bowl - 16:.0f}" fill="none" stroke="#4d585f" stroke-width="3.2" stroke-linecap="round"/>',
+            f'<path d="M{cx - 86:.0f} {bowl - 16:.0f} C{cx - 46:.0f} {bowl - 32:.0f} {cx + 46:.0f} {bowl - 32:.0f} {cx + 86:.0f} {bowl - 16:.0f}" fill="none" stroke="#ffffff" stroke-width="1.1" stroke-opacity="0.7" stroke-linecap="round"/>',
+            f'<ellipse cx="{cx}" cy="{bowl}" rx="48" ry="15" fill="url(#dye-metal)" stroke="#3e484e" stroke-width="1.5"/>',
+            f'<ellipse cx="{cx}" cy="{bowl + 3}" rx="36" ry="9" fill="#7e888f" fill-opacity="0.28"/>',
+            f'<g stroke="#445055" stroke-width="0.7" fill="none" opacity="0.75">',
+        ]
+        for i in range(-3, 4):
+            bits.append(
+                f'<path d="M{cx + i * 9:.0f} {bowl - 7:.0f} C{cx + i * 8:.0f} {bowl:.0f} {cx + i * 6:.0f} {bowl + 6:.0f} {cx + i * 4:.0f} {bowl + 11:.0f}"/>'
+            )
+        bits.append(f'<path d="M{cx - 30:.0f} {bowl:.0f} H{cx + 30:.0f}"/>')
+        bits.append(f'<path d="M{cx - 24:.0f} {bowl + 6:.0f} H{cx + 24:.0f}"/>')
+        bits.append("</g>")
+        bits.append(
+            f'<path d="M{cx - 18:.0f} {bowl - 6:.0f} L{cx - 4:.0f} {bowl - 24:.0f} L{cx + 18:.0f} {bowl - 16:.0f} L{cx + 6:.0f} {bowl - 2:.0f} Z" fill="url(#dye-ice-top)" stroke="#8d4d42" stroke-width="0.8"/>'
+        )
+        bits.append(
+            f'<path d="M{cx - 18:.0f} {bowl - 6:.0f} L{cx + 6:.0f} {bowl - 2:.0f} L{cx + 4:.0f} {bowl + 12:.0f} L{cx - 20:.0f} {bowl + 6:.0f} Z" fill="url(#dye-ice-front)" stroke="#8d4d42" stroke-width="0.8"/>'
+        )
+        bits.append(
+            f'<path d="M{cx + 6:.0f} {bowl - 2:.0f} L{cx + 18:.0f} {bowl - 16:.0f} L{cx + 16:.0f} {bowl - 2:.0f} L{cx + 4:.0f} {bowl + 12:.0f} Z" fill="#d48978" stroke="#8d4d42" stroke-width="0.7"/>'
+        )
+        bits.append(
+            f'<path d="M{cx - 8:.0f} {bowl - 18:.0f} L{cx + 2:.0f} {bowl - 20:.0f}" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.85"/>'
+        )
+        bits.append(f'<ellipse cx="{cx + 1}" cy="{bowl + 22}" rx="3.4" ry="5.4" fill="url(#dye-drop)"/>')
+        bits.append(f'<ellipse cx="{cx + 1}" cy="{water_top - 4}" rx="2.5" ry="3.8" fill="url(#dye-drop)"/>')
+        return "".join(bits)
+
+    def glass(cx, kind):
+        top, bot = 268, 548
+        rim_rx, rim_ry = 122, 18
+        base_rx = 92
+        wl, wr = cx - rim_rx + 9, cx + rim_rx - 9
+        bl, br = cx - base_rx + 8, cx + base_rx - 8
+        water = f"M{wl:.1f} {top:.1f} L{bl:.1f} {bot - 10:.1f} Q{cx:.1f} {bot + 4:.1f} {br:.1f} {bot - 10:.1f} L{wr:.1f} {top:.1f} Z"
+        owl, owr = cx - rim_rx - 3, cx + rim_rx + 3
+        obl, obr = cx - base_rx - 5, cx + base_rx + 5
+        wall = (
+            f"M{owl:.1f} {top + 8:.1f} L{obl:.1f} {bot:.1f} Q{cx:.1f} {bot + 18:.1f} {obr:.1f} {bot:.1f} L{owr:.1f} {top + 8:.1f}"
+        )
+        inner = (
+            f"M{owl + 7:.1f} {top + 14:.1f} L{obl + 8:.1f} {bot - 6:.1f} M{owr - 7:.1f} {top + 14:.1f} L{obr - 8:.1f} {bot - 6:.1f}"
+        )
+        out = [
+            f'<ellipse cx="{cx}" cy="{bot + 10:.1f}" rx="{base_rx + 24}" ry="9" fill="{INK}" fill-opacity="0.07"/>',
+            f'<clipPath id="dye-clip-{kind}"><path d="{water}"/></clipPath>',
+            f'<g clip-path="url(#dye-clip-{kind})">',
+            f'<path d="{water}" fill="url(#dye-water)"/>',
+        ]
+        if kind == "sink":
+            plume = (
+                f"M{cx - 8:.1f} {top + 6:.1f} "
+                f"C{cx - 16:.1f} {top + 80:.1f} {cx - 36:.1f} {top + 150:.1f} {cx - 46:.1f} {bot - 78:.1f} "
+                f"C{cx - 58:.1f} {bot - 18:.1f} {cx + 58:.1f} {bot - 14:.1f} {cx + 42:.1f} {bot - 72:.1f} "
+                f"C{cx + 24:.1f} {top + 160:.1f} {cx + 14:.1f} {top + 84:.1f} {cx + 8:.1f} {top + 8:.1f} Z"
+            )
+            out.append(f'<path d="{plume}" fill="url(#dye-plume)" filter="url(#dye-soft)"/>')
             out.append(
-                f'<path d="M{cx - rim_w:.1f} {dye_top} L{cx - rim_w:.1f} {bot + 4} L{cx + rim_w:.1f} {bot + 4} L{cx + rim_w:.1f} {dye_top} Z" fill="#2f6f9a"/>'
+                f'<ellipse cx="{cx}" cy="{bot - 36:.1f}" rx="{base_rx - 6}" ry="42" fill="url(#dye-pool)" filter="url(#dye-softer)"/>'
             )
         else:
             out.append(
-                f'<path d="M{cx - rim_w:.1f} {top} L{cx - rim_w:.1f} {214} L{cx + rim_w:.1f} {214} L{cx + rim_w:.1f} {top} Z" fill="#2f6f9a"/>'
+                f'<ellipse cx="{cx - 6}" cy="{top + 34}" rx="86" ry="30" fill="url(#dye-surface)" filter="url(#dye-softer)"/>'
             )
+            out.append(
+                f'<ellipse cx="{cx + 18}" cy="{top + 22}" rx="52" ry="16" fill="#c2412d" fill-opacity="0.38" filter="url(#dye-soft)"/>'
+            )
+            out.append(
+                f'<ellipse cx="{cx - 24}" cy="{top + 52}" rx="40" ry="13" fill="#b42318" fill-opacity="0.2" filter="url(#dye-softer)"/>'
+            )
+        out.append(
+            f'<ellipse cx="{cx}" cy="{top}" rx="{rim_rx - 10}" ry="{rim_ry - 3}" fill="#ffffff" fill-opacity="0.42"/>'
+        )
+        out.append(
+            f'<path d="M{wl + 8:.1f} {top:.1f} Q{cx:.1f} {top + rim_ry:.1f} {wr - 8:.1f} {top:.1f}" fill="none" stroke="#6d8490" stroke-width="1.3"/>'
+        )
         out.append("</g>")
+        out.append(f'<path d="{wall}" fill="none" stroke="#4a5960" stroke-width="2.5" stroke-linejoin="round"/>')
+        out.append(f'<path d="{inner}" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55" stroke-linecap="round"/>')
         out.append(
-            f'<path d="M{cx - rim_w / 2:.1f} {top} L{cx - base_w / 2:.1f} {bot} L{cx + base_w / 2:.1f} {bot} L{cx + rim_w / 2:.1f} {top}" fill="none" stroke="{INK}" stroke-width="2.2" stroke-linejoin="round"/>'
+            f'<path d="M{owl + 12:.1f} {top + 36:.1f} C{owl + 8:.1f} {(top + bot) / 2:.1f} {obl + 14:.1f} {bot - 36:.1f} {obl + 18:.1f} {bot - 14:.1f}" fill="none" stroke="#ffffff" stroke-width="4" stroke-opacity="0.5" stroke-linecap="round"/>'
         )
-        out.append(f'<ellipse cx="{cx}" cy="{top}" rx="{rim_w / 2}" ry="12" fill="none" stroke="{INK}" stroke-width="2.2"/>')
-        # strainer
         out.append(
-            f'<path d="M{cx - 34} 118 h68 l-8 28 h-52 z" fill="#f3efe6" stroke="{INK}" stroke-width="1.6"/>'
+            f'<ellipse cx="{cx}" cy="{top + 6}" rx="{rim_rx + 3}" ry="{rim_ry}" fill="none" stroke="#2f3c43" stroke-width="2.6"/>'
         )
-        out.append(f'<path d="M{cx - 22} 128 h44 M{cx - 18} 136 h36 M{cx - 8} 118 v28 M{cx + 10} 118 v26" fill="none" stroke="{MUTED}" stroke-width="0.8"/>')
-        out.append(f'<rect x="{cx - 16}" y="92" width="32" height="22" rx="3" fill="#d7e7f2" stroke="{INK}" stroke-width="1.4"/>')
-        out.append(f'<line x1="{cx}" y1="78" x2="{cx}" y2="92" stroke="{INK}" stroke-width="1.4"/>')
+        out.append(
+            f'<ellipse cx="{cx}" cy="{top + 5}" rx="{rim_rx - 10}" ry="{rim_ry - 7}" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.75"/>'
+        )
+        out.append(
+            f'<ellipse cx="{cx}" cy="{bot + 2}" rx="{base_rx + 6}" ry="8" fill="none" stroke="#4a5960" stroke-width="2"/>'
+        )
+        out.append(strainer(cx, top))
         return "".join(out)
 
-    parts.append(glass(230, "bottom"))
-    parts.append(glass(650, "top"))
-    parts.append(plain(230, 448, "Glass til venstre", size=20, anchor="middle"))
-    parts.append(plain(230, 474, "Fargestoff langs bunnen", size=16, fill=MUTED, anchor="middle", weight=500))
-    parts.append(plain(650, 448, "Glass til høyre", size=20, anchor="middle"))
-    parts.append(plain(650, 474, "Fargestoff nær overflaten", size=16, fill=MUTED, anchor="middle", weight=500))
-    parts.append(f'<rect x="48" y="36" width="18" height="14" fill="#2f6f9a"/>')
-    parts.append(plain(74, 48, "Farget smeltevann", size=15, anchor="start", weight=500))
-    parts.append(f'<rect x="250" y="36" width="18" height="14" fill="#d7e7f2" stroke="{INK}" stroke-width="1"/>')
-    parts.append(plain(276, 48, "Farget isbit i tesil", size=15, anchor="start", weight=500))
-    title = "To glass med tesil og farget isbit. Til venstre samler fargestoffet seg langs bunnen. Til høyre blir det liggende nær overflaten."
+    parts.append(glass(270, "sink"))
+    parts.append(glass(770, "spread"))
+    parts.append(f'<circle cx="56" cy="46" r="8" fill="{dye}"/>')
+    parts.append(plain(72, 51, "Rødlig fargestoff", size=16, anchor="start"))
+    parts.append(plain(270, 612, "Glass til venstre", size=20, anchor="middle"))
+    parts.append(plain(270, 640, "Smeltevannet synker og legger seg langs bunnen", size=16, fill=MUTED, anchor="middle", weight=500))
+    parts.append(plain(770, 612, "Glass til høyre", size=20, anchor="middle"))
+    parts.append(plain(770, 640, "Fargestoffet sprer seg nær overflaten", size=16, fill=MUTED, anchor="middle", weight=500))
+    title = "To glass med romtemperert vann, tesil og isbit med rødlig fargestoff. Til venstre synker smeltevannet. Til høyre blir fargestoffet liggende nær overflaten."
     write_component(
         "DyeChart.tsx",
         "DyeChart",
@@ -1304,52 +1463,101 @@ def build_dye() -> None:
 
 
 def build_permafrost() -> None:
-    width, height = 1040, 560
-    # Qualitative control points, ka before present -> relative magnitude.
-    # Not model output. Eurasia stays much larger. North American area dips near 20 ka.
-    eurasia_area = [(125, 0.46), (100, 0.50), (70, 0.58), (40, 0.70), (21, 0.90), (8, 0.55), (0, 0.50)]
-    na_area = [(125, 0.30), (90, 0.32), (50, 0.24), (21, 0.08), (8, 0.20), (0, 0.28)]
-    eurasia_vol = [(125, 0.42), (90, 0.48), (50, 0.66), (21, 0.88), (8, 0.52), (0, 0.46)]
-    na_vol = [(125, 0.24), (90, 0.25), (50, 0.23), (21, 0.22), (8, 0.23), (0, 0.24)]
+    """Curves traced from the vector paths in Willeit and Ganopolski 2015, figure 10."""
+    raw = json.loads(WILLEIT.read_text())
+    width, height = 1040, 760
+    styles = {
+        (0.6, 0.6, 1.0): ("#b7c6d4", "0", 1.3),
+        (1.0, 0.6, 0.6): ("#b7c6d4", "0", 1.3),
+        (0.0, 0.0, 1.0): ("#1d4e89", "0", 1.8),
+        (1.0, 0.0, 0.0): ("#1d4e89", "0", 1.8),
+        (0.0, 0.0, 0.3): ("#102433", "0", 1.8),
+        (0.3, 0.0, 0.0): ("#102433", "0", 1.8),
+    }
 
-    def panel(ox, title, eurasia, north):
-        l, r, t, b = ox + 78, ox + 470, 56, 400
+    def classify(series):
+        # The second curve with the saturated color is the Davies (2013) run.
+        seen = {}
+        out = []
+        for item in series:
+            color = tuple(item["color"])
+            key = tuple(round(c, 1) for c in color)
+            seen[key] = seen.get(key, 0) + 1
+            stroke, dash, width_px = styles.get(
+                (round(color[0], 1), round(color[1], 1), round(color[2], 1)),
+                ("#1d4e89", "0", 1.6),
+            )
+            if seen[key] > 1:
+                stroke, dash, width_px = "#9a3412", "5 4", 1.5
+            out.append((item["pts"], stroke, dash, width_px, seen[key] == 1))
+        return out
+
+    panels = [
+        ("eurasia_area", "Areal, Eurasia", "10⁶ km²", 10, 20, [10, 12, 14, 16, 18, 20]),
+        ("north_area", "Areal, Nord-Amerika", "10⁶ km²", 0, 6, [0, 2, 4, 6]),
+        ("eurasia_volume", "Volum, Eurasia", "10⁶ km³", 3, 10, [4, 6, 8, 10]),
+        ("north_volume", "Volum, Nord-Amerika", "10⁶ km³", 0.4, 2.8, [1, 2]),
+    ]
+
+    def panel(index, key, title, unit, vmin, vmax, ticks):
+        col, row = index % 2, index // 2
+        ox, oy = 16 + col * 512, 8 + row * 340
+        l, r, t, b = ox + 72, ox + 480, oy + 42, oy + 250
 
         def x_of(ka):
-            return l + (125 - ka) / 125 * (r - l)
+            return l + (120 - ka) / 120 * (r - l)
 
         def y_of(value):
-            return b - value * (b - t)
+            return b - (value - vmin) / (vmax - vmin) * (b - t)
 
-        out = [plain((l + r) / 2, 32, title, size=20, anchor="middle")]
-        out.append(rect(l, t, r - l, b - t, "#fbfcfd"))
-        for ka in (125, 100, 75, 50, 25, 0):
+        out = [plain((l + r) / 2, oy + 22, title, size=16, anchor="middle")]
+        out.append(rect(l, t, r - l, b - t, "#f7f5f2"))
+        for ka in (120, 100, 80, 60, 40, 20, 0):
             x = x_of(ka)
-            out.append(f'<line x1="{x:.1f}" y1="{t}" x2="{x:.1f}" y2="{b}" stroke="{GRID}"/>')
-            out.append(plain(x, b + 22, str(ka), size=13, anchor="middle", weight=500))
-        out.append(f'<rect x="{l}" y="{t}" width="{r - l}" height="{b - t}" fill="none" stroke="{INK}"/>')
-        out.append(f'<path d="{catmull([(x_of(k), y_of(v)) for k, v in eurasia])}" fill="none" stroke="#9a3412" stroke-width="2.6"/>')
-        out.append(f'<path d="{catmull([(x_of(k), y_of(v)) for k, v in north])}" fill="none" stroke="#1d4e89" stroke-width="2.6"/>')
-        ice = x_of(21)
-        out.append(f'<line x1="{ice:.1f}" y1="{t}" x2="{ice:.1f}" y2="{b}" stroke="#9f3a3a" stroke-dasharray="5 4" stroke-width="1.2"/>')
-        out.append(plain((l + r) / 2, b + 46, "Tusen år før nåtid", size=14, anchor="middle"))
+            out.append(f'<line x1="{x:.1f}" y1="{t}" x2="{x:.1f}" y2="{b}" stroke="{GRID}" stroke-width="0.7"/>')
+            out.append(plain(x, b + 18, str(ka), size=12, anchor="middle", weight=500))
+        for value in ticks:
+            y = y_of(value)
+            out.append(f'<line x1="{l}" y1="{y:.1f}" x2="{r}" y2="{y:.1f}" stroke="{GRID}" stroke-width="0.7"/>')
+            label = str(int(value)) if float(value).is_integer() else f"{value:.1f}".replace(".", ",")
+            out.append(plain(l - 8, y + 4, label, size=12, anchor="end", weight=500))
+        clip_id = f"pf-clip-{index}"
         out.append(
-            f'<text x="{l - 36}" y="{(t + b) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="14" fill="{INK}" transform="rotate(-90 {l - 36} {(t + b) / 2:.1f})">Større oppover</text>'
+            f'<clipPath id="{clip_id}"><rect x="{l:.1f}" y="{t:.1f}" width="{r - l:.1f}" height="{b - t:.1f}"/></clipPath>'
+        )
+        out.append(f'<g clip-path="url(#{clip_id})">')
+        for pts, stroke, dash, width_px, _solid in classify(raw[key]):
+            clipped = [(ka, val) for ka, val in pts if -2 <= ka <= 122]
+            if len(clipped) < 4:
+                continue
+            d = polyline([(x_of(ka), y_of(val)) for ka, val in clipped])
+            out.append(
+                f'<path d="{d}" fill="none" stroke="{stroke}" stroke-width="{width_px}" stroke-dasharray="{dash}" stroke-linejoin="round" stroke-linecap="round"/>'
+            )
+        out.append("</g>")
+        out.append(f'<rect x="{l}" y="{t}" width="{r - l}" height="{b - t}" fill="none" stroke="{INK}"/>')
+        ice = x_of(21)
+        out.append(f'<line x1="{ice:.1f}" y1="{t}" x2="{ice:.1f}" y2="{b}" stroke="#9f3a3a" stroke-dasharray="4 3" stroke-width="1"/>')
+        out.append(plain((l + r) / 2, b + 38, "Tusen år før nåtid", size=13, anchor="middle"))
+        out.append(
+            f'<text x="{l - 42}" y="{(t + b) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="13" fill="{INK}" transform="rotate(-90 {l - 42} {(t + b) / 2:.1f})">{unit}</text>'
         )
         return "".join(out)
 
     parts = [rect(0, 0, width, height, PAPER)]
-    parts.append(panel(20, "Areal", eurasia_area, na_area))
-    parts.append(panel(530, "Volum", eurasia_vol, na_vol))
-    # The ice-sheet tag sits in the gap of the North American area curve.
-    parts.append(halo(20 + 78 + (125 - 21) / 125 * (470 - 78) + 8, 250, "Innlandsis", size=13, fill="#9f3a3a", anchor="start"))
-    parts.append(f'<line x1="70" y1="500" x2="102" y2="500" stroke="#9a3412" stroke-width="3"/>')
-    parts.append(plain(110, 505, "Eurasia", size=16, anchor="start"))
-    parts.append(f'<line x1="230" y1="500" x2="262" y2="500" stroke="#1d4e89" stroke-width="3"/>')
-    parts.append(plain(270, 505, "Nord-Amerika", size=16, anchor="start"))
-    parts.append(f'<line x1="460" y1="492" x2="492" y2="492" stroke="#9f3a3a" stroke-dasharray="5 4" stroke-width="1.4"/>')
-    parts.append(plain(500, 505, "Om lag siste istids maksimum", size=16, anchor="start"))
-    title = "Forenklet skjema av permafrostareal og volum. Kurvene er ikke modelltall. Eurasia er størst, og arealet i Nord-Amerika er minst rundt siste istids maksimum."
+    for index, spec in enumerate(panels):
+        parts.append(panel(index, *spec))
+    y = 708
+    parts.append(f'<line x1="70" y1="{y}" x2="108" y2="{y}" stroke="#b7c6d4" stroke-width="2"/>')
+    parts.append(plain(116, y + 4, "Porøsitet 0,25", size=14, anchor="start"))
+    parts.append(f'<line x1="250" y1="{y}" x2="288" y2="{y}" stroke="#1d4e89" stroke-width="2"/>')
+    parts.append(plain(296, y + 4, "Porøsitet 0,50", size=14, anchor="start"))
+    parts.append(f'<line x1="450" y1="{y}" x2="488" y2="{y}" stroke="#102433" stroke-width="2"/>')
+    parts.append(plain(496, y + 4, "Porøsitet 0,75", size=14, anchor="start"))
+    parts.append(f'<line x1="650" y1="{y}" x2="688" y2="{y}" stroke="#9a3412" stroke-width="1.6" stroke-dasharray="5 4"/>')
+    parts.append(plain(696, y + 4, "Davies 2013", size=14, anchor="start"))
+    parts.append(plain(70, 738, "Rød stiplet loddrett linje er om lag 21 tusen år før nåtid.", size=13, anchor="start", fill=MUTED, weight=500))
+    title = "Permafrostareal og volum fra Willeit og Ganopolski 2015, figur 10. Verdiene er kurvene i artikkelen, med akser i millioner kvadratkilometer og millioner kubikkilometer."
     write_component(
         "PermafrostChart.tsx",
         "PermafrostChart",
@@ -1362,24 +1570,44 @@ def build_permafrost() -> None:
 
 
 def build_foehn() -> None:
-    width, height = 960, 580
-    left, right, top, bottom = 132, 910, 72, 400
-    foot_w, peak_x, foot_e = 158, 640, 830
+    """One smooth airflow, a volumetric windward cloud, and an asymmetric ridge."""
+    width, height = 980, 600
+    left, right, top, bottom = 118, 950, 68, 392
     cool = COLD
     warm_down = "#c2410c"
-    ground_gap = 8.0
+    peak_x = 615
 
-    def y_of(metres: float) -> float:
+    def smoothstep(t):
+        t = max(0.0, min(1.0, t))
+        return t * t * (3 - 2 * t)
+
+    def gate(x, a, b, w):
+        return smoothstep((x - a) / w) * smoothstep((b - x) / w)
+
+    def ridge(x):
+        core = math.exp(-((x - peak_x) / 240) ** 2) if x <= peak_x else math.exp(-((x - peak_x) / 168) ** 2)
+        height_m = 2000 * core
+        height_m += 160 * math.exp(-((x - 360) / 48) ** 2)
+        height_m += 110 * math.exp(-((x - 790) / 42) ** 2)
+        height_m *= gate(x, 168, 948, 36)
+        return height_m
+
+    def clearance(x):
+        rise = 980 * math.exp(-((x - 345) / 140) ** 2)
+        extra = (36 * gate(x, 210, 910, 50) + rise) * gate(x, 175, 940, 36)
+        extra *= 1 - math.exp(-((x - peak_x) / 108) ** 2)
+        return max(0.0, extra)
+
+    def flow_m(x):
+        if x < 145 or x > 965:
+            return 0.0
+        return ridge(x) + clearance(x)
+
+    def y_of(metres):
         return bottom - metres / 2400 * (bottom - top)
 
-    def ridge(x: float) -> float:
-        if x <= foot_w or x >= foot_e:
-            return 0.0
-        if x <= peak_x:
-            t = (x - foot_w) / (peak_x - foot_w)
-            return math.sin(t * math.pi / 2) ** 2.05
-        t = (x - peak_x) / (foot_e - peak_x)
-        return math.cos(t * math.pi / 2) ** 1.08
+    def y_flow(x):
+        return y_of(flow_m(x))
 
     def arrowhead(x, y, angle, color) -> str:
         dx, dy = math.cos(angle), math.sin(angle)
@@ -1390,27 +1618,40 @@ def build_foehn() -> None:
             f'{x - 13 * dx - 5.2 * px:.1f},{y - 13 * dy - 5.2 * py:.1f}" fill="{color}"/>'
         )
 
-    def smooth(pts: list[tuple[float, float]], rounds: int = 2) -> list[tuple[float, float]]:
-        for _ in range(rounds):
-            nxt = [pts[0]]
-            for a, b in zip(pts, pts[1:]):
-                nxt.append((0.75 * a[0] + 0.25 * b[0], 0.75 * a[1] + 0.25 * b[1]))
-                nxt.append((0.25 * a[0] + 0.75 * b[0], 0.25 * a[1] + 0.75 * b[1]))
-            nxt.append(pts[-1])
-            pts = nxt
-        return pts
-
+    x800 = next(x for x in range(220, peak_x) if ridge(x) >= 800)
+    x_end = next(x for x in range(x800, peak_x) if ridge(x) >= 1660)
+    cloud_left = 246
     y800 = y_of(800)
-    y2000 = y_of(2000)
-    windward_800 = next(x for x in range(foot_w, peak_x) if 2000 * ridge(x) >= 800)
-    crest = [(x, y_of(2000 * ridge(x))) for x in range(foot_w, foot_e + 1, 4)]
+    crest_pts = [(x, y_of(ridge(x))) for x in range(168, 949, 2)]
     ground = (
-        f"M{foot_w} {bottom:.1f} "
-        + " ".join(f"L{x:.1f} {y:.1f}" for x, y in crest)
-        + f" L{foot_e} {bottom:.1f} Z"
+        f"M{left + 4:.0f} {bottom:.1f} L168 {bottom:.1f} "
+        + " ".join(f"L{x:.0f} {y:.1f}" for x, y in crest_pts)
+        + f" L{right - 4:.0f} {bottom:.1f} Z"
     )
 
     parts = [rect(0, 0, width, height, PAPER)]
+    parts.append(
+        """<defs>
+      <radialGradient id="foehn-puff" cx="36%" cy="30%" r="72%">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="48%" stop-color="#f4f7f8"/>
+        <stop offset="100%" stop-color="#8ea0ab"/>
+      </radialGradient>
+      <linearGradient id="foehn-shade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="#6d7c86" stop-opacity="0.45"/>
+      </linearGradient>
+      <filter id="foehn-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.2"/>
+      </filter>
+      <clipPath id="foehn-sky"><path d="__SKY__"/></clipPath>
+    </defs>""".replace(
+            "__SKY__",
+            f"M{left:.0f} {top:.0f} L{right:.0f} {top:.0f} L{right:.0f} {bottom:.0f} "
+            + " ".join(f"L{x:.0f} {y:.1f}" for x, y in reversed(crest_pts))
+            + f" L{left:.0f} {bottom:.0f} Z",
+        )
+    )
     parts.append(rect(left, top, right - left, bottom - top, "#f3f7fa"))
     for metres in range(0, 2401, 400):
         y = y_of(metres)
@@ -1420,119 +1661,68 @@ def build_foehn() -> None:
             emphasis = metres in (0, 2000)
             dash = "0" if metres == 0 else "3 5"
             parts.append(
-                f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" stroke="{GRID}" stroke-width="{1.15 if emphasis else 0.8}" stroke-dasharray="{dash}"/>'
+                f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" stroke="{GRID}" stroke-width="{1.15 if emphasis else 0.75}" stroke-dasharray="{dash}"/>'
             )
         parts.append(plain(left - 10, y + 4, str(metres), size=13, anchor="end", weight=650 if metres in (0, 800, 2000) else 500))
-    # The cloud-base line is the 800 m tick, continued to the windward slope.
     parts.append(
-        f'<line x1="{left:.1f}" y1="{y800:.1f}" x2="{windward_800:.1f}" y2="{y800:.1f}" stroke="{cool}" stroke-width="1.7" stroke-dasharray="7 5"/>'
+        f'<line x1="{left:.1f}" y1="{y800:.1f}" x2="{x800:.1f}" y2="{y800:.1f}" stroke="{cool}" stroke-width="1.7" stroke-dasharray="7 5"/>'
     )
     parts.append(
-        f'<text x="34" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="15" fill="{INK}" transform="rotate(-90 34 {(top + bottom) / 2:.1f})">Høyde (m)</text>'
+        f'<text x="36" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-family="{FONT}" font-size="15" fill="{INK}" transform="rotate(-90 36 {(top + bottom) / 2:.1f})">Høyde (m)</text>'
     )
     parts.append(f'<path d="{ground}" fill="{LAND}" stroke="{COAST}" stroke-width="1.6" stroke-linejoin="round"/>')
 
-    # Filled cumulus on the windward side. Overlapping ellipses give rounded
-    # lobes. The cloud stops on the slope below the summit, so the top is not
-    # a flat line along 2000 m.
-    def terrain_y(x: float) -> float:
-        return y_of(2000 * ridge(x))
-
-    x_end = next(x for x in range(windward_800, peak_x) if 2000 * ridge(x) >= 1680)
-    # Leave the dashed 800 m line clear of the cloud so the label sits on it.
-    cloud_left = max(windward_800 - 150, left + 122)
-    lobe_n = 6
-    lobes = []
-    for i in range(lobe_n):
-        u = i / (lobe_n - 1)
+    # Volumetric cloud: overlapping puffs clipped to the sky, from the 800 m base up the windward slope.
+    puff_n = 7
+    puffs = []
+    for i in range(puff_n):
+        u = i / (puff_n - 1)
         cx = cloud_left + u * (x_end - cloud_left)
-        base = y800 if cx <= windward_800 else terrain_y(cx)
-        rx = (x_end - cloud_left) / (lobe_n - 1) * 0.70
-        ry = 22 + 20 * math.sin(math.pi * u)
-        cy = base - ry * 0.35
-        lobes.append((cx, cy, rx, ry))
-
-    def ceiling_at(x: float):
-        best = None
-        for cx, cy, rx, ry in lobes:
-            dx = (x - cx) / rx
-            if abs(dx) > 1:
-                continue
-            y = cy - ry * math.sqrt(max(0.0, 1 - dx * dx))
-            if best is None or y < best:
-                best = y
-        return best
-
-    top_pts = []
-    x = float(x_end)
-    while x >= cloud_left - 0.1:
-        y = ceiling_at(x)
-        if y is None:
-            y = y800
-        top_pts.append((x, y))
-        x -= 3.0
-    fade = max(8, len(top_pts) // 6)
-    for i in range(fade):
-        t = i / fade
-        px, py = top_pts[i]
-        top_pts[i] = (px, (1 - t) * terrain_y(px) + t * py)
-    top_pts[0] = (float(x_end), terrain_y(x_end))
-    top_pts[-1] = (float(cloud_left), y800)
-    # Keep every lobe below the 2000 m line.
-    capped = []
-    for i, (px, py) in enumerate(top_pts):
-        if i == 0 or i == len(top_pts) - 1:
-            capped.append((px, py))
+        ground_m = ridge(cx)
+        base_m = 800 if ground_m < 800 else ground_m
+        ceil_m = min(1972, max(flow_m(cx) + 150, base_m + 260))
+        if i == puff_n - 1:
+            ceil_m = min(ceil_m, ground_m + 200, 1960)
+        cy = y_of((base_m + ceil_m) / 2)
+        ry = max(16, (y_of(base_m) - y_of(ceil_m)) / 2)
+        rx = (x_end - cloud_left) / (puff_n - 1) * 0.78
+        puffs.append((cx, cy + 5, rx * 1.05, ry * 0.92))
+        puffs.append((cx, cy, rx, ry))
+    parts.append('<g clip-path="url(#foehn-sky)">')
+    for index, (cx, cy, rx, ry) in enumerate(puffs):
+        if index % 2 == 0:
+            parts.append(
+                f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="#7d8b96" fill-opacity="0.28" filter="url(#foehn-shadow)"/>'
+            )
         else:
-            capped.append((px, max(py, y2000 + 8)))
-    top_pts = capped
-    slope_pts = [(float(x), terrain_y(x)) for x in range(windward_800, x_end + 1, 3)]
-    cloud_pts = [(float(cloud_left), y800), (float(windward_800), y800), *slope_pts, *top_pts]
+            parts.append(
+                f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{rx:.1f}" ry="{ry:.1f}" fill="url(#foehn-puff)" stroke="#5e6d78" stroke-width="1.1"/>'
+            )
+    parts.append("</g>")
 
-    def path_from(pts, dx=0.0, dy=0.0) -> str:
-        head = pts[0]
-        return f"M{head[0] + dx:.1f} {head[1] + dy:.1f} " + " ".join(
-            f"L{px + dx:.1f} {py + dy:.1f}" for px, py in pts[1:]
-        ) + " Z"
-
-    parts.append(f'<path d="{path_from(cloud_pts, 3, 4)}" fill="#7d8b96" fill-opacity="0.22"/>')
-    parts.append(
-        f'<path d="{path_from(cloud_pts)}" fill="#ffffff" fill-opacity="0.85" stroke="#5e6d78" stroke-width="1.8" stroke-linejoin="round"/>'
-    )
-
-    # Seven slanted rain streaks in the gap between the 800 m base and the slope.
+    scale = (bottom - top) / 2400
     rainy = []
-    for x in range(int(cloud_left) + 12, windward_800 - 6, 4):
-        y_top = y800 + 6
-        y_bot = terrain_y(x - 8) - 8
-        if y_bot - y_top >= 42:
+    for x in range(cloud_left + 8, x800 - 4, 3):
+        gap = (800 - ridge(x)) * scale
+        if gap >= 44 and flow_m(x) > 860:
             rainy.append(x)
-    rain_n = 7 if len(rainy) >= 7 else max(6, len(rainy))
-    picks = [rainy[round(i * (len(rainy) - 1) / (rain_n - 1))] for i in range(rain_n)]
+    rain_n = 7 if len(rainy) >= 7 else len(rainy)
+    if rain_n >= 6:
+        picks = [rainy[round(i * (len(rainy) - 1) / (rain_n - 1))] for i in range(rain_n)]
+    else:
+        picks = rainy
     for x in picks:
-        y_top = y800 + 6
-        y_bot = terrain_y(x - 8) - 8
+        y_top = y800 + 5
+        y_bot = y_of(ridge(x - 6)) - 7
         parts.append(
             f'<line x1="{x:.1f}" y1="{y_top:.1f}" x2="{x - 8:.1f}" y2="{y_bot:.1f}" stroke="{cool}" stroke-width="1.9" stroke-linecap="round"/>'
         )
 
-    def flow_at(x: float) -> tuple[float, float]:
-        """Along the ground, through the middle of the cloud, and on the 2000 m summit."""
-        if x < foot_w or x > foot_e:
-            return x, bottom - ground_gap
-        y_ground = terrain_y(x)
-        y = max(y_ground - 9, y2000 + 2)
-        if cloud_left <= x <= x_end and 2000 * ridge(x) >= 780:
-            top = ceiling_at(x)
-            if top is not None:
-                y = max(y_ground + 0.42 * (top - y_ground), y2000 + 3)
-        return x, y
-
-    ascent = [flow_at(x) for x in range(150, peak_x + 1, 4)]
-    descent = [flow_at(x) for x in range(peak_x, 890, 4)]
+    ascent = [(x, y_flow(x)) for x in range(148, peak_x + 1, 3)]
+    descent = [(x, y_flow(x)) for x in range(peak_x, 956, 3)]
     parts.append(f'<path d="{polyline(ascent)}" fill="none" stroke="{cool}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
     parts.append(f'<path d="{polyline(descent)}" fill="none" stroke="{warm_down}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
-    for path, color, marks in ((ascent, cool, (175, 360)), (descent, warm_down, (650, 850))):
+    for path, color, marks in ((ascent, cool, (230, 360, 500)), (descent, warm_down, (700, 840))):
         for mark in marks:
             i = min(range(1, len(path) - 1), key=lambda k: abs(path[k][0] - mark))
             x0, y0 = path[i - 1]
@@ -1543,48 +1733,50 @@ def build_foehn() -> None:
     parts.append(f'<line x1="{left}" y1="{top}" x2="{left}" y2="{bottom}" stroke="{INK}"/>')
     parts.append(f'<line x1="{left}" y1="{bottom}" x2="{right}" y2="{bottom}" stroke="{INK}"/>')
     parts.append(halo(left + 8, y800 - 14, "Skybase 800 m", size=13, fill=cool, anchor="start"))
-    parts.append(halo(peak_x + 36, y2000 - 8, "Topp 2000 m", size=16, anchor="start"))
-    parts.append(plain(200, 442, "Loside, 0 m", size=16, anchor="middle"))
-    parts.append(plain(200, 466, "14 °C", size=16, anchor="middle"))
-    parts.append(plain(860, 442, "Leside, 0 m", size=16, anchor="middle"))
-    parts.append(plain(150, 26, "Tørradiabatisk 1 °C / 100 m", size=15, anchor="start"))
-    parts.append(plain(150, 48, "Våtadiabatisk 0,5 °C / 100 m i skyen", size=15, anchor="start", fill=cool))
-    parts.append(f'<line x1="150" y1="512" x2="186" y2="512" stroke="{cool}" stroke-width="2.6"/>')
-    parts.append(arrowhead(188, 512, 0, cool))
-    parts.append(plain(202, 516, "Avkjøling på vei opp", size=14, anchor="start", fill=cool))
-    parts.append(f'<line x1="150" y1="538" x2="186" y2="538" stroke="{warm_down}" stroke-width="2.6"/>')
-    parts.append(arrowhead(188, 538, 0, warm_down))
-    parts.append(plain(202, 542, "Oppvarming på vei ned", size=14, anchor="start", fill=warm_down))
+    parts.append(halo(peak_x + 28, y_of(2000) - 16, "Topp 2000 m", size=16, anchor="start"))
+    parts.append(plain(210, 438, "Loside, 0 m", size=16, anchor="middle"))
+    parts.append(plain(210, 462, "14 °C", size=16, anchor="middle"))
+    parts.append(plain(860, 438, "Leside, 0 m", size=16, anchor="middle"))
+    parts.append(plain(150, 28, "Tørradiabatisk 1 °C / 100 m", size=15, anchor="start"))
+    parts.append(plain(150, 50, "Våtadiabatisk 0,5 °C / 100 m i skyen", size=15, anchor="start", fill=cool))
+    parts.append(f'<line x1="150" y1="520" x2="186" y2="520" stroke="{cool}" stroke-width="2.6"/>')
+    parts.append(arrowhead(188, 520, 0, cool))
+    parts.append(plain(202, 524, "Avkjøling på vei opp", size=14, anchor="start", fill=cool))
+    parts.append(f'<line x1="150" y1="548" x2="186" y2="548" stroke="{warm_down}" stroke-width="2.6"/>')
+    parts.append(arrowhead(188, 548, 0, warm_down))
+    parts.append(plain(202, 552, "Oppvarming på vei ned", size=14, anchor="start", fill=warm_down))
     parts.append(
-        f'<path d="M500 522 C508 514 516 514 522 522 C530 512 542 514 546 524 C538 530 512 532 500 522 Z" fill="#ffffff" fill-opacity="0.85" stroke="#5e6d78" stroke-width="1.3"/>'
+        '<ellipse cx="430" cy="534" rx="16" ry="9" fill="url(#foehn-puff)" stroke="#5e6d78" stroke-width="1"/>'
     )
-    parts.append(f'<line x1="512" y1="534" x2="508" y2="548" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>')
-    parts.append(f'<line x1="524" y1="534" x2="520" y2="548" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>')
-    parts.append(plain(554, 540, "Sky og nedbør", size=14, anchor="start"))
+    parts.append(f'<line x1="422" y1="546" x2="418" y2="562" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>')
+    parts.append(f'<line x1="434" y1="546" x2="430" y2="562" stroke="{cool}" stroke-width="1.7" stroke-linecap="round"/>')
+    parts.append(plain(454, 554, "Sky og nedbør", size=14, anchor="start"))
 
-    start_h = (bottom - ascent[0][1]) / (bottom - top) * 2400
-    end_h = (bottom - descent[-1][1]) / (bottom - top) * 2400
-    crest_h = (bottom - min(p[1] for p in ascent + descent)) / (bottom - top) * 2400
-    flat = [
-        (a, b)
-        for a, b in zip(top_pts, top_pts[1:])
-        if abs(a[1] - b[1]) < 0.8 and abs(a[0] - b[0]) > 18 and a[1] < y_of(1800)
-    ]
+    samples = list(range(150, 955, 3))
+    heights = [flow_m(x) for x in samples]
+    turns = []
+    for i in range(1, len(samples) - 1):
+        y0, y1, y2 = y_flow(samples[i - 1]), y_flow(samples[i]), y_flow(samples[i + 1])
+        a = math.atan2(y1 - y0, 3)
+        b = math.atan2(y2 - y1, 3)
+        turns.append(abs(math.degrees(b - a)))
     print(
         "foehn start",
-        round(start_h, 1),
+        round(heights[0], 1),
         "end",
-        round(end_h, 1),
+        round(heights[-1], 1),
         "crest",
-        round(crest_h, 1),
+        round(max(heights), 1),
         "x800",
-        windward_800,
+        x800,
         "x_end",
         x_end,
         "rain",
-        rain_n,
-        "flat_near_top",
-        len(flat),
+        len(picks),
+        "max_turn",
+        round(max(turns), 1),
+        "over2000",
+        round(max(heights) - 2000, 2),
     )
     title = "Fønvind fra havnivå på losiden, gjennom skyen og ned til havnivå på lesiden. 14 grader er temperaturen ved havnivå på losiden. Topp- og lesidetemperatur er ikke regnet ut."
     write_component(
@@ -1596,7 +1788,6 @@ def build_foehn() -> None:
         "".join(parts),
         "h-auto w-full max-w-none max-sm:min-w-[42rem]",
     )
-
 
 def main() -> None:
     land = load_land()

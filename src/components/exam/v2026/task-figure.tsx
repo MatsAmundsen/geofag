@@ -62,15 +62,23 @@ function ScrollImage({
 function AnalyseFigure() {
   return (
     <FigureFrame
-      heading="Analysekart, forenklet"
+      heading="Analysekart 31. januar 2024 kl. 18 UTC"
       scroll
       caption={
         <>
-          Egen figur. Kystlinjen er Natural Earth i målestokk 1:10 millioner, tegnet i en Lambert
-          konform konisk projeksjon. Lavtrykket ligger i Norskehavet, og X ligger på kysten av
-          Nordland. Isobarene er et idealisert lærebokfelt for denne situasjonen, med en verdi for
-          hver 4 hPa, lagt slik at trauet følger frontene. Tallene er ikke hentet fra et udatert
-          analysekart hos Meteorologisk institutt. Figuren har ingen vindpil.
+          Egen figur. Isobarene er middeltrykk ved havnivå fra NCEP/NCAR-reanalysen 31. januar 2024
+          kl. 18 UTC, da ekstremværet Ingunn fortsatt lå i Norskehavet. Lavtrykket er 948 hPa.
+          Høytrykket sørvest i kartet er 1035 hPa. Isobarer hver 4 hPa. Den okkluderte fronten følger
+          trauet østover inn mot kysten av Nordland, der X står. Kystlinjen er Natural Earth i
+          målestokk 1:10 millioner, i en Lambert konform konisk projeksjon. Figuren har ingen vindpil.
+          Det udaterte analysekartet hos Meteorologisk institutt er ikke brukt som tallgrunnlag.
+          <Credit
+            who="NOAA Physical Sciences Laboratory"
+            title="NCEP/NCAR Reanalysis, 6-hourly sea level pressure"
+            href="https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.surface.html"
+            license="Offentlig eiendom (US government work)"
+            licenseHref="https://www.psl.noaa.gov/data/gridded/disclaimer.html"
+          />
           <Credit
             who="Natural Earth"
             title="1:10m land, offentlig eiendom"
@@ -204,9 +212,10 @@ function DyeFigure() {
       scroll
       caption={
         <>
-          Egen figur av oppsettet i oppgaven: en tesil med farget isbit over hvert glass. I glasset
-          til venstre samler fargestoffet seg langs bunnen. I glasset til høyre blir fargestoffet
-          liggende nær overflaten. Fotoet fra Universitetet i Bergen er ikke brukt.
+          Egen illustrasjon av forsøket i oppgaven: gjennomsiktige glass, tesil og isbit med rødlig
+          fargestoff. I glasset til venstre synker smeltevannet og legger seg langs bunnen. I glasset
+          til høyre sprer fargestoffet seg nær overflaten. Figuren sier ikke hvilket glass som er
+          ferskvann og hvilket som er saltvann. Fotoet fra Universitetet i Bergen er ikke brukt.
         </>
       }
     >
@@ -225,9 +234,9 @@ function TsFigure() {
         <>
           Egen figur. Tabellen er tallene fra oppgaven. Isopyknalene er regnet med UNESCO EOS-80 og
           viser tetthet i kg/dm³, med et jevnt intervall på 0,0005 i hoveddiagrammet og 0,0001 i
-          utsnittet. Utsnittet under er det samme området rundt A og B, med akser og isopyknaler.
-          Frysepunktlinjen er
-          regnet med UNESCOs formel. Diagrammet sier ikke hvilken vannmasse som er tyngst.
+          utsnittet. Etikettene følger isopyknalene. Utsnittet under er det samme området rundt A og
+          B, med akser og isopyknaler. Frysepunktlinjen er regnet med UNESCOs formel. Diagrammet sier
+          ikke hvilken vannmasse som er tyngst.
         </>
       }
     >
@@ -263,17 +272,22 @@ function TsFigure() {
 function CtdFigure({ officialUrl }: { officialUrl: string }) {
   return (
     <FigureFrame
-      heading="Forenklet skjema av temperatur- og salinitetsprofiler"
+      heading="Temperatur- og salinitetsprofiler fra Grønlandshavet"
       scroll
       caption={
         <>
-          Egen figur. Dette er ikke de målte CTD-profilene. Udir har laget grafene selv, og
-          rådataene hos PO.DAAC krever innlogging. Profilene er derfor et skjema av de to typene
-          oppgaven ber deg skille: ett kaldere og saltere vann med svak sjiktning, og ett vann med
-          et varmere og ferskere overflatelag. April og august er ikke merket på figuren.{" "}
-          <ExtLink href={officialUrl}>De målte profilene åpnes hos Udir</ExtLink>. Datasettet er OMG
-          CTD,{" "}
-          <ExtLink href="https://doi.org/10.5067/OMGEV-CTDS1">doi.org/10.5067/OMGEV-CTDS1</ExtLink>.
+          Egen figur av målte Argo-profiler, 0–175 m. Kastene er WMO 6903551 den 14. april 2020
+          (75,18° N, 6,00° V) og WMO 6903546 den 8. august 2020 (75,24° N, 4,29° V). Panelene sier
+          ikke hvilket kast som er april og hvilket som er august. OMG-CTD hos PO.DAAC krever
+          innlogging og er ikke brukt.{" "}
+          <ExtLink href={officialUrl}>Udirs figur åpnes her</ExtLink>.
+          <Credit
+            who="Argo og Ifremer GDAC"
+            title="Argo float data and metadata from the Global Data Assembly Centre (Argo GDAC)"
+            href="https://doi.org/10.17882/42182"
+            license="Creative Commons Attribution 4.0"
+            licenseHref="https://creativecommons.org/licenses/by/4.0/"
+          />
         </>
       }
     >
@@ -375,15 +389,15 @@ function ChandlerFigure() {
 function PermafrostFigure() {
   return (
     <FigureFrame
-      heading="Permafrost i Eurasia og Nord-Amerika, forenklet"
+      heading="Permafrost i Eurasia og Nord-Amerika"
       scroll
       caption={
         <>
-          Egen figur, et forenklet skjema. Kurvene er ikke tall fra en modell. Mønsteret følger den
-          åpne beskrivelsen hos Willeit og Ganopolski (2015): Eurasia har langt større areal og
-          volum enn Nord-Amerika, og arealet i Nord-Amerika er minst da innlandsisen er størst, rundt
-          siste istids maksimum. Dagens permafrost på den nordlige halvkule er om lag 15 millioner
-          km². Figuren hos Opel mfl. (2024) er utgitt av Elsevier og er ikke brukt.
+          Kurvene er vektorlinjene i figur 10 hos Willeit og Ganopolski (2015), tegnet på nytt med
+          akser i millioner kvadratkilometer og millioner kubikkilometer. Heltrukne linjer er
+          overflateporøsitet 0,25, 0,50 og 0,75. Stiplet linje er kjøringen med geotermisk varmefluks
+          fra Davies (2013). Artikkelens figur dekker 120 000 år. Figuren hos Opel mfl. (2024) er
+          utgitt av Elsevier og er ikke brukt.
           <Credit
             who="Willeit, M. og Ganopolski, A."
             title="Coupled Northern Hemisphere permafrost–ice-sheet evolution over the last glacial cycle. Climate of the Past 11, 1165–1180"
