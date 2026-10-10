@@ -239,7 +239,7 @@ export function BergartssyklusSnittFigur({
   const labels: Lab[] = [
     { text: "Magma", x: 930, y: 520, at: [850, 486], color: "#ffc59a", anchor: "end", weight: 700, badge: [800, 506] },
     { text: "Dypbergart, f.eks. granitt eller gabbro", x: 360, y: 482, at: [700, 440], color: "#d4c8e0", badge: [742, 366] },
-    { text: "Dagbergart, f.eks. basalt", x: 930, y: 110, at: [866, 168], color: "#e6c9c0", anchor: "end", badge: [906, 140] },
+    { text: "Dagbergart, f.eks. basalt", x: 930, y: 52, at: [866, 168], color: "#e6c9c0", anchor: "end", badge: [906, 140] },
     { text: "Havet", x: 700, y: 246, at: [700, BS_SEA + 8], color: "#bfe0ef", anchor: "middle", size: 14, badge: [800, BS_SEA + 14] },
   ];
   if (step >= 2)
@@ -1002,7 +1002,7 @@ export function SilikatgrupperFigur({
                     <text
                       key={line}
                       x={cx}
-                      y={fx(cy + ph / 2 - 22 - (SI_EKS[k].length - 1 - li) * figureFont(15, scale) * 1.35)}
+                      y={fx(cy + ph / 2 - 22 - (SI_EKS[k].length - 1 - li) * figureFont(15, scale) * 1.6)}
                       textAnchor="middle"
                       fontSize={figureFont(15, scale)}
                       fill={on ? "#ffd9b0" : C.muted}
@@ -1095,7 +1095,7 @@ export function MetamorfoseFigur({
   if (!small) labels.push({ text: "og høyere temperatur", x: col.x + col.w + 14, y: col.y + col.h - 8, color: "#ffc59a" });
   if (step === 1) labels.push({ text: "Sedimentære lag", x: box.x + 12, y: box.y + 26, color: "#e8eef2", halo: undefined, badge: [box.x + 20, box.y + 20] });
   if (step >= 2) labels.push({ text: step === 4 ? "Striper (bånd)" : "Skifrighet", x: box.x + 12, y: box.y + 26, color: "#ffe2c2", badge: [box.x + 20, box.y + 20] });
-  if (step === 2) labels.push({ text: "Lav metamorfose", x: col.x + col.w + 14, y: depthY(1) + 5, color: C.warm, badge: [col.x + col.w + 18, depthY(1)] });
+  if (step === 2) labels.push({ text: "Lav metamorfose", x: col.x + col.w + 40, y: depthY(1) - 14, color: C.warm, badge: [col.x + col.w + 18, depthY(1)] });
   const keys: Key[] = [
     { text: "Temperatur øker nedover", color: K.magma, kind: "fill" },
     { text: "Trykk fra alle kanter", color: C.fg, kind: "line" },
@@ -1178,7 +1178,18 @@ export function MetamorfoseFigur({
                   ))}
                 </g>
                 <g opacity={op(1)}>
-                  <rect width={ME_W} height={ME_H} fill="#5f6470" />
+                  <rect width={ME_W} height={ME_H} fill="#4d525d" />
+                  <g transform={`rotate(-24 ${ME_W / 2} ${ME_H / 2})`}>
+                    {Array.from({ length: 44 }, (_, k) => (
+                      <path
+                        key={k}
+                        d={`M-220 ${k * 14 - 130} C40 ${k * 14 - 133} 400 ${k * 14 - 126} 760 ${k * 14 - 130}`}
+                        stroke={k % 3 === 0 ? "#b9bfcc" : "#7d8391"}
+                        strokeWidth={k % 3 === 0 ? 2.2 : 1.2}
+                        fill="none"
+                      />
+                    ))}
+                  </g>
                   {Array.from({ length: 16 }, (_, k) => (
                     <path key={k} d={`M0 ${k * 23 + 6} C180 ${k * 23 + 3} 360 ${k * 23 + 9} ${ME_W} ${k * 23 + 5}`} stroke="#6c707c" strokeWidth="3" fill="none" opacity="0.5" />
                   ))}
