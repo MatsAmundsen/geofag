@@ -21,7 +21,7 @@ function JordskjelvPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Et jordskjelv er et plutselig brudd der spenning som har bygd seg opp i fjellet, slippes fri. Energien sprer seg som seismiske bølger. De fleste skjelv sitter ved plategrenser. Norge ligger inne på en plate, men har likevel skjelv, og et undersjøisk skjelv kan lage tsunami."
+      lead="Et jordskjelv er et plutselig brudd der spenning som har bygd seg opp i fjellet, blir utløst. Energien sprer seg som seismiske bølger, og de samme bølgene som rister husene, forteller oss hvordan jorda ser ut innvendig. Her lærer du hvordan jordskjelv oppstår og måles, hvor de skjer, hva bølgene avslører om jordas indre, og hvorfor Norge skjelver."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
@@ -29,8 +29,8 @@ function JordskjelvPage() {
         label: "Forrige: Vulkaner",
       }}
       next={{
-        to: "/geofag-1/bergarter",
-        label: "Neste: Bergarter og mineraler",
+        to: "/geofag-1/jordskjelv-naturfare",
+        label: "Neste: Jordskjelv og tsunamier som naturfare",
       }}
       kilder={KILDER.jordskjelv}
       posterSlug="jordskjelv"

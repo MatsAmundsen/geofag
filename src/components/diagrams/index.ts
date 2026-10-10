@@ -134,7 +134,6 @@ export {
 export {
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
-  EarthquakeWavePhysicsDiagram,
   ElasticReboundDiagram,
   JordasBolgerDiagram,
   PartikkelbolgerDiagram,
