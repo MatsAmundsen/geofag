@@ -486,7 +486,7 @@ const RUTER: Rute[] = [
     start: "magma",
     kanter: ["storkning"],
     tekst:
-      "Larvikitt: magma størknet på dypet til en dypbergart for cirka 290 millioner år siden, og har vært magmatisk bergart siden (NGU, u.å.-i). Veier den ikke har tatt: omdanning og smelting.",
+      "Larvikitt: magma størknet på dypet til en dypbergart for cirka 295 millioner år siden, og har vært magmatisk bergart siden (NGU, u.å.-i). Veier den ikke har tatt: omdanning og smelting.",
   },
   {
     navn: "Rombeporfyr",
@@ -1026,9 +1026,9 @@ export function SilikatgrupperFigur({
 
 const ME_STEPS = ["Leirskifer", "Fyllitt", "Glimmerskifer", "Gneis"];
 const ME_STATUS = [
-  "Leirskifer: Tett og meget finkornet sedimentær bergart av leire og slam. Lagene er sedimentære lag. Utgangspunktet (protolitten) for fyllitt er leire.",
+  "Leirskifer: sedimentær utgangsbergart, før omdanning.",
   "Fyllitt: Lavgrads regional metamorfose. Glimmerkornene ordnes, og berget får tydelig skifrighet og silkeglans på kløvflatene. Kornene er små. Stasjonen er lav metamorfose.",
-  "Glimmerskifer: Omdanningen har gått lenger. Glimmerkornene er større og synlige, og skifrigheten er tydelig.",
+  "Omdanningen har gått lenger enn i fyllitt. Glimmerkornene er store nok til å sees med det blotte øye, og skifrigheten er tydelig.",
   "Gneis: Mellom- til grovkornet, stripet eller bølget. Kornene er synlige, og båndene er grovere enn i fyllitt. Høyt trykk og høy temperatur.",
 ];
 /** Prøven tegnes i en fast boks (540 × 360) og skaleres på smal skjerm. */
@@ -1051,8 +1051,8 @@ function flak(seed: number, n: number, lMin: number, lMax: number, w: number, a0
   });
 }
 const ME_LEIR_DOTS = flak(31, 900, 1.2, 2.4, 1, 0, 0, ["#4c4a4f", "#5d5b60", "#3c3a3f"]);
-const ME_FYLL = flak(32, 1100, 4, 9, 1.4, -24, 2, ["#8f95a3", "#a7adba", "#6b7180", "#c3c8d2"]);
-const ME_GLIM = flak(33, 380, 12, 26, 3.2, -24, 14, ["#b7b39a", "#d9d3b8", "#8c8a78", "#2d2b28"]);
+const ME_FYLL = flak(32, 1100, 4, 9, 1.4, 0, 2, ["#8f95a3", "#a7adba", "#6b7180", "#c3c8d2"]);
+const ME_GLIM = flak(33, 380, 12, 26, 3.2, 0, 10, ["#b7b39a", "#d9d3b8", "#8c8a78", "#2d2b28"]);
 /** Gneisbånd: bølgete lyse og mørke bånd. */
 const ME_BAND = (() => {
   const out: { d: string; c: string }[] = [];
@@ -1075,10 +1075,10 @@ export function MetamorfoseFigur({
   const { step, phase } = clock;
   const uid = useId().replace(/:/g, "");
   const t = motion.playing ? smooth(phase) : 1;
-  const vb = small ? "0 0 520 560" : "0 0 960 460";
+  const vb = small ? "0 0 520 560" : "0 0 960 490";
   // dybdesøyle og prøve
   const col = small ? { x: 24, y: 40, w: 70, h: 470 } : { x: 60, y: 50, w: 110, h: 360 };
-  const box = small ? { x: 130, y: 120, s: 370 / ME_W } : { x: 380, y: 50, s: 1 };
+  const box = small ? { x: 130, y: 150, s: 370 / ME_W } : { x: 380, y: 64, s: 1 };
   const depthY = (k: number) => col.y + col.h * (0.14 + 0.24 * k);
   const markY = lerp(depthY(Math.max(0, step - 2)), depthY(step - 1), step === 1 ? 1 : t);
   const op = (k: number) => (k === step - 1 ? (step === 1 ? 1 : t) : k === step - 2 ? 1 - t : 0);
@@ -1098,7 +1098,7 @@ export function MetamorfoseFigur({
   if (step === 2) labels.push({ text: "Lav metamorfose", x: col.x + col.w + 40, y: depthY(1) - 14, color: C.warm, badge: [col.x + col.w + 18, depthY(1)] });
   const keys: Key[] = [
     { text: "Temperatur øker nedover", color: K.magma, kind: "fill" },
-    { text: "Trykk fra alle kanter", color: C.fg, kind: "line" },
+    { text: "Rettet trykk (sammenpressing)", color: C.fg, kind: "line" },
   ];
   return (
     <div ref={wrapRef}>
@@ -1108,7 +1108,7 @@ export function MetamorfoseFigur({
         heading={heading}
         caption={
           caption ??
-          "En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy temperatur og/eller kjemisk påvirkning omdanner den i fast tilstand, uten at den smelter. Fra leirskifer til gneis blir kornene større, og skifrigheten går over i striper. Forenklet: søylen har ingen målestokk, og prøven er skjematisk forstørret."
+          "En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy temperatur og/eller kjemisk påvirkning omdanner den i fast tilstand, uten at den smelter. Fra leirskifer til gneis blir kornene større, og skifrigheten (foliasjon) går over i striper eller bånd. Forenklet: søylen har ingen målestokk, og prøven er skjematisk forstørret."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -1120,7 +1120,7 @@ export function MetamorfoseFigur({
         status={ME_STATUS[step - 1]}
         labels={labels}
         keys={keys}
-        notes={["Skjematisk, uten målestokk"]}
+        notes={["Skifrighet dannes vinkelrett på retningen med størst trykk.", "Skjematisk, uten målestokk"]}
         viewBox={vb}
         forceNarrow={small}
       >
@@ -1143,16 +1143,6 @@ export function MetamorfoseFigur({
             </defs>
             {/* dybdesøyle */}
             <rect x={col.x} y={col.y} width={col.w} height={col.h} rx="10" fill={`url(#${uid}-t)`} />
-            {[0.35, 0.6, 0.85].map((f, i) => {
-              const y = col.y + col.h * f;
-              const len = 10 + i * 6;
-              return (
-                <g key={f}>
-                  <path d={`M${col.x - len - 6} ${fx(y)} L${col.x - 4} ${fx(y)}`} stroke={C.fg} strokeWidth={1.6 + i} markerEnd={`url(#${m.fg})`} />
-                  <path d={`M${col.x + col.w + len + 6} ${fx(y)} L${col.x + col.w + 4} ${fx(y)}`} stroke={C.fg} strokeWidth={1.6 + i} markerEnd={`url(#${m.fg})`} opacity={small ? 0 : 1} />
-                </g>
-              );
-            })}
             {ME_STEPS.map((navn, k) => (
               <circle key={navn} cx={col.x + col.w / 2} cy={fx(depthY(k))} r="5" fill={k === step - 1 ? "#ffe2c2" : "#1b2328"} stroke="#ffe2c2" strokeWidth="1.5" />
             ))}
@@ -1179,7 +1169,7 @@ export function MetamorfoseFigur({
                 </g>
                 <g opacity={op(1)}>
                   <rect width={ME_W} height={ME_H} fill="#4d525d" />
-                  <g transform={`rotate(-24 ${ME_W / 2} ${ME_H / 2})`}>
+                  <g>
                     {Array.from({ length: 44 }, (_, k) => (
                       <path
                         key={k}
@@ -1190,9 +1180,6 @@ export function MetamorfoseFigur({
                       />
                     ))}
                   </g>
-                  {Array.from({ length: 16 }, (_, k) => (
-                    <path key={k} d={`M0 ${k * 23 + 6} C180 ${k * 23 + 3} 360 ${k * 23 + 9} ${ME_W} ${k * 23 + 5}`} stroke="#6c707c" strokeWidth="3" fill="none" opacity="0.5" />
-                  ))}
                   {ME_FYLL.map((f, i) => (
                     <rect key={i} x={f.x} y={f.y} width={f.l} height={f.w} fill={f.c} transform={`rotate(${f.a} ${f.x} ${f.y})`} />
                   ))}
@@ -1219,6 +1206,18 @@ export function MetamorfoseFigur({
               </g>
               <rect x="-2" y="-2" width={ME_W + 4} height={ME_H + 4} rx="13" fill="none" stroke={C.warm} strokeWidth={3 / box.s} />
             </g>
+            {[0.25, 0.5, 0.75].map((f) => {
+              const x = box.x + ME_W * box.s * f;
+              const top = box.y - 8;
+              const bot = box.y + ME_H * box.s + 8;
+              const len = small ? 30 : 34;
+              return (
+                <g key={f} data-trykk="">
+                  <path d={`M${fx(x)} ${fx(top - len)} L${fx(x)} ${fx(top)}`} stroke={C.fg} strokeWidth="3" markerEnd={`url(#${m.fg})`} />
+                  <path d={`M${fx(x)} ${fx(bot + len)} L${fx(x)} ${fx(bot)}`} stroke={C.fg} strokeWidth="3" markerEnd={`url(#${m.fg})`} />
+                </g>
+              );
+            })}
           </g>
         )}
       </IsbreFigur>
@@ -1228,8 +1227,8 @@ export function MetamorfoseFigur({
 
 /** Statustekster for Oslograben-figuren når den vises i Bergarter, med kapittelets ordlyd og tall. */
 export const OSLO_STATUS_BERGARTER = [
-  "Skorpa strekkes: For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-c).",
+  "Skorpa strekkes: For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp (NGU, u.å.-c). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak.",
   "Graben synker inn: Blokker synker ned langs forkastninger, og det dannes en riftdal (NGU, u.å.-c).",
-  "Lava og magma: Vulkanismen fortsatte inn i perm. Rombeporfyr størknet på overflaten, og rombene viser at smelten ikke var ferdig krystallisert (NGU, u.å.-l). Dypt nede størknet larvikitt, dannet for cirka 290 millioner år siden (NGU, u.å.-i).",
+  "Lava og magma: Vulkanismen fortsatte inn i perm. Rombeporfyr størknet på overflaten, og rombene viser at smelten ikke var ferdig krystallisert (NGU, u.å.-l). Dypt nede størknet larvikitt, dannet for cirka 295 millioner år siden (NGU, u.å.-i).",
   "I dag: Erosjon har blottlagt bergartene. Larvikitt finnes i Vestfold og Telemark og er Norges nasjonalbergart (NGU, u.å.-i). NGU kaller rombeporfyr tvillingbroren til larvikitt (NGU, u.å.-l).",
 ] as const;
