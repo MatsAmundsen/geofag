@@ -153,7 +153,7 @@ Under negativ NAO ligger jetstrømmen og stormbanen mer i retning vest–øst og
 
 ### Været under negativ NAO
 
-**Kald luft i Nord-Europa.** Når jetstrømmen bøyer seg sørover, kan kald polarluft strømme inn over Nord-Europa og det østlige Nord-Amerika. Nord-Europa får ofte kaldere og tørrere vintre enn normalt, med mindre storm. Det østlige Nord-Amerika får ofte sterkere kaldluftsutbrudd og mer storm enn normalt (NOAA, u.å.-a).
+**Kald luft i Nord-Europa.** Når jetstrømmen bøyer seg sørover, kan kald polarluft strømme inn over Nord-Europa og det østlige Nord-Amerika. Nord-Europa får ofte kaldere og tørrere vintre enn normalt, med færre og svakere stormer. Det østlige Nord-Amerika får ofte sterkere kaldluftsutbrudd og mer storm enn normalt (NOAA, u.å.-a).
 
 **Ofte mildere og våtere i Sør-Europa.** Jetstrømmen ligger lenger sør og fører lavtrykk inn over Sør-Europa. Det gir mer storm, mer nedbør og ofte høyere temperaturer enn normalt der (NOAA, u.å.-a).
 

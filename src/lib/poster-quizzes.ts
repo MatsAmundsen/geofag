@@ -531,7 +531,7 @@ export const QUIZ_NAO: QuizQuestion[] = [
     ],
     answer: 0,
     explain:
-      "Se «Været under negativ NAO». Jetstrømmen ligger lenger sør og gir mer storm, nedbør og varme i Sør-Europa (NOAA, u.å.-a).",
+      "Se «Været under negativ NAO». Jetstrømmen ligger lenger sør og gir mer storm, mer nedbør og ofte høyere temperaturer enn normalt i Sør-Europa (NOAA, u.å.-a).",
   },
   {
     prompt: "Er positiv NAO det samme som oppvarmingstrenden?",
