@@ -26,7 +26,8 @@ export const NAV_GF1 = [
 
 /**
  * Geofag 1-menyen er for lang til én rad ved siden av logoen på 1024 og 768 px.
- * Rad 1 er inngang og jordas indre. Rad 2 er Norge, landskap og samfunn.
+ * Rad 1 er inngang, jordas indre og jordskjelv (begge sidene). Rad 2 er bergarter, Norge,
+ * landskap og samfunn.
  * Rekkefølgen er den samme som NAV_GF1.
  */
 export const NAV_GF1_ROWS = [NAV_GF1.slice(0, 8), NAV_GF1.slice(8)] as const;

@@ -31,7 +31,7 @@ En tsunami er ikke én bølge, men en serie bølger som kan komme med flere minu
 
 De historiske flodbølgene i Norge har likevel en annen årsak. De kommer fra skred som treffer en fjord, en innsjø eller sokkelen – ikke fra en plategrense utenfor kysten.
 
-Storeggaskredet gikk for ca. 8150 år siden i Norskehavet, og volumet er vurdert til 2400–3200 km³. En teori er at et stort jordskjelv utløste den første utglidingen. Deretter «spiste» skredet seg bakover, på samme måte som et kvikkleireskred (SNL, u.å.-a). Storegga var altså sediment som sviktet, og det er ikke noe bevis på at Norge ligger på en plategrense.
+Storeggaskredet gikk for ca. 8150 år siden i Norskehavet, og volumet er vurdert til 2400–3200 km³. En teori er at et stort jordskjelv utløste den første utglidingen. Deretter «spiste» skredet seg bakover, på samme måte som et kvikkleireskred (SNL, u.å.). Storegga var altså sediment som sviktet, og det er ikke noe bevis på at Norge ligger på en plategrense.
 
 Tafjordskredet 7. april 1934 tok 40 liv da fjell raste ut i fjorden og satte opp en flodbølge (NGU, u.å.-b). Les mer om skred og flodbølger i kapitlet [Skred](/geofag-1/skred).
 
@@ -41,7 +41,7 @@ SjekkSkjelvfare1
 
 ## Hvilke skader gjør jordskjelv?
 
-Det skjer anslagsvis ca. 500 000 jordskjelv i året som kan registreres. Ca. 100 000 av dem merkes, og ca. 100 gjør skade (USGS, u.å.-f). Det er sjelden selve rystelsene som tar liv. De fleste dør når bygninger raser sammen, eller av følgene av skjelvet: skred, brann og tsunami. Hvor store skadene blir, avhenger derfor like mye av samfunnet som av naturen.
+Det skjer anslagsvis ca. 500 000 jordskjelv i året som kan registreres. Ca. 100 000 av dem merkes, og ca. 100 gjør skade (USGS, u.å.-c). Det er sjelden selve rystelsene som tar liv. De fleste dør når bygninger raser sammen, eller av følgene av skjelvet: skred, brann og tsunami. Hvor store skadene blir, avhenger derfor like mye av samfunnet som av naturen.
 
 ### Hva avgjør hvor store skadene blir?
 
@@ -49,19 +49,19 @@ Magnituden er viktig, men den er bare én av flere faktorer. Avstanden fra epise
 
 ### Rystelser og bygninger
 
-Rystelsene ødelegger først og fremst bygninger som ikke er laget for å tåle at bakken beveger seg sidelengs. Murbygninger uten armering og tunge betongbygg med svake søyler er mest utsatt. Trehus er lette og fleksible og klarer seg ofte godt. Derfor er byggeskikk og byggeforskrifter det viktigste vernet vi har mot jordskjelv. Samme naturfare kan gi helt ulike følger: Skjelvet på Haiti 12. januar 2010 (magnitude 7,0) rammet en tettbygd hovedstad med svake bygninger og ble en av de mest dødelige katastrofene i moderne tid. Hvor mange som døde, er usikkert: Anslagene varierer mye mellom kildene, og myndighetenes tall er omstridt. Skjelv av samme størrelse i land med strenge byggeforskrifter krever ofte få eller ingen liv (USGS, u.å.-e).
+Rystelsene ødelegger først og fremst bygninger som ikke er laget for å tåle at bakken beveger seg sidelengs. Murbygninger uten armering og tunge betongbygg med svake søyler er mest utsatt. Trehus er lette og fleksible og klarer seg ofte godt. Derfor er byggeskikk og byggeforskrifter det viktigste vernet vi har mot jordskjelv. Samme naturfare kan gi helt ulike følger: Skjelvet på Haiti 12. januar 2010 (magnitude 7,0) rammet en tettbygd hovedstad med svake bygninger og ble en av de mest dødelige katastrofene i moderne tid. Hvor mange som døde, er usikkert: Anslagene varierer mye mellom kildene, og myndighetenes tall er omstridt. Skjelv av samme størrelse i land med strenge byggeforskrifter krever ofte få eller ingen liv (USGS, u.å.-b).
 
 > **Jordskjelv og resonans**
 >
-> Da et skjelv med magnitude 8,0 rammet Mexicos stillehavskyst 19. september 1985, ble store deler av sentrum i Mexico by ødelagt, selv om byen lå ca. 350 km fra episenteret. Det var særlig bygninger på ca. 6–15 etasjer som kollapset. Sentrum ligger på bløte sedimenter fra en gammel innsjøbunn. De forsterket rystelsene og fikk bakken til å svinge i takt med den naturlige svingefrekvensen til de middels høye bygningene. Når noe blir dyttet i takt med sin egen svingefrekvens, blir svingningene større og større. Det kaller vi *resonans* (USGS, u.å.-e).
+> Da et skjelv med magnitude 8,0 rammet Mexicos stillehavskyst 19. september 1985, ble store deler av sentrum i Mexico by ødelagt, selv om byen lå ca. 350 km fra episenteret. Det var særlig bygninger på ca. 6–15 etasjer som kollapset. Sentrum ligger på bløte sedimenter fra en gammel innsjøbunn. De forsterket rystelsene og fikk bakken til å svinge i takt med den naturlige svingefrekvensen til de middels høye bygningene. Når noe blir dyttet i takt med sin egen svingefrekvens, blir svingningene større og større. Det kaller vi *resonans* (USGS, u.å.-b).
 
 ### Skred og likvefaksjon
 
-I bratt terreng kan rystelsene utløse jordskred, steinsprang og fjellskred. En mer overraskende skadetype er *likvefaksjon* (fra latin liquefacere = å gjøre flytende). I vannmettet sand og silt ligger kornene løst mot hverandre, med vann i porene. Når grunnen rister, presses kornene sammen, vanntrykket i porene øker, og kornene mister kontakten med hverandre. Grunnen oppfører seg da som en tykk væske. Bygninger kan synke ned eller velte, og sand og vann kan sprute opp gjennom sprekker. Likvefaksjon ga store skader i Christchurch på New Zealand i 2011 (magnitude 6,2; GeoNet, u.å.) og i havneområdene i Kobe i Japan i 1995 (USGS, u.å.-e).
+I bratt terreng kan rystelsene utløse jordskred, steinsprang og fjellskred. En mer overraskende skadetype er *likvefaksjon* (fra latin liquefacere = å gjøre flytende). I vannmettet sand og silt ligger kornene løst mot hverandre, med vann i porene. Når grunnen rister, presses kornene sammen, vanntrykket i porene øker, og kornene mister kontakten med hverandre. Grunnen oppfører seg da som en tykk væske. Bygninger kan synke ned eller velte, og sand og vann kan sprute opp gjennom sprekker. Likvefaksjon ga store skader i Christchurch på New Zealand i 2011 (magnitude 6,2; GeoNet, u.å.) og i havneområdene i Kobe i Japan i 1995 (USGS, u.å.-b).
 
 ### Brann, tsunami og etterskjelv
 
-Når gassledninger og strømkabler ryker, kan det oppstå branner, og ødelagte vannledninger gjør det vanskelig å slokke dem. Etter skjelvet i San Francisco i 1906 brant store deler av byen i flere dager. Store skjelv under havbunnen kan dessuten sette i gang en tsunami. I Indiahavet i 2004 og i Japan i 2011 var det tsunamien, ikke rystelsene, som tok flest liv (USGS, u.å.-e). Faren er heller ikke over når rystelsene stopper. I timene, dagene og månedene etterpå kommer det ofte *etterskjelv*, som rammer bygninger som allerede er svekket. Ødelagte veier, bruer og havner gjør det dessuten vanskelig å få fram hjelp.
+Når gassledninger og strømkabler ryker, kan det oppstå branner, og ødelagte vannledninger gjør det vanskelig å slokke dem. Etter skjelvet i San Francisco i 1906 brant store deler av byen i flere dager. Store skjelv under havbunnen kan dessuten sette i gang en tsunami. I Indiahavet i 2004 og i Japan i 2011 var det tsunamien, ikke rystelsene, som tok flest liv (USGS, u.å.-b). Faren er heller ikke over når rystelsene stopper. I timene, dagene og månedene etterpå kommer det ofte *etterskjelv*, som rammer bygninger som allerede er svekket. Ødelagte veier, bruer og havner gjør det dessuten vanskelig å få fram hjelp.
 
 > **Jordskjelv i by**
 >
@@ -87,13 +87,13 @@ Det er vanskelig å varsle jordskjelv. Seismologene kan ofte si *hvor* det komme
 
 ### Korttidsvarsling
 
-*Korttidsvarsling* er å varsle at et bestemt skjelv vil komme i løpet av timer eller dager. Det har vist seg nesten umulig. Det mest kjente unntaket er Haicheng i Kina 4. februar 1975 (magnitude 7,3). Dagene før kom det mange små skjelv, myndighetene ba folk forlate husene, og selv om svært mange bygninger ble ødelagt, var antallet døde langt lavere enn det kunne ha blitt. Senere gjennomganger viser at varselet bygde på de mange små forskjelvene, og at det også var en god porsjon flaks (Wang mfl., 2006). Bare halvannet år senere, 28. juli 1976, rammet et skjelv med magnitude 7,6 byen Tangshan uten forvarsel, og ca. 250 000 mennesker døde (USGS, u.å.-g).
+*Korttidsvarsling* er å varsle at et bestemt skjelv vil komme i løpet av timer eller dager. Det har vist seg nesten umulig. Det mest kjente unntaket er Haicheng i Kina 4. februar 1975 (magnitude 7,3). Dagene før kom det mange små skjelv, myndighetene ba folk forlate husene, og selv om svært mange bygninger ble ødelagt, var antallet døde langt lavere enn det kunne ha blitt. Senere gjennomganger viser at varselet bygde på de mange små forskjelvene, og at det også var en god porsjon flaks (Wang mfl., 2006). Bare halvannet år senere, 28. juli 1976, rammet et skjelv med magnitude 7,6 byen Tangshan uten forvarsel, og ca. 250 000 mennesker døde (USGS, u.å.-d).
 
 Problemet er at de fleste store skjelv ikke har tydelige forskjelv, og at mange svermer av små skjelv aldri blir til noe stort. Et falskt varsel kan koste mye og føre til at folk slutter å stole på varslene. Skjelvet i L'Aquila i Italia i 2009 (magnitude 6,3, over 300 døde) viste dessuten hvor vanskelig det er å snakke om usikkerhet når folk spør om et skjelv er på vei. Ennå finnes det ingen metode som kan korttidsvarsle jordskjelv på en pålitelig måte.
 
 ### Tidlig varsling – noen sekunder kan redde liv
 
-Det finnes en tredje mulighet: å varsle *etter* at skjelvet har startet, men *før* de kraftigste bølgene har nådd fram. Det kaller vi *tidlig varsling*. Det er mulig fordi signalene i et datanettverk går nesten med lysets fart, mens jordskjelvbølgene går noen kilometer i sekundet. Seismografene nærmest episenteret registrerer de første P-bølgene (se [Jordskjelv og jordas indre](/geofag-1/jordskjelv)), datamaskiner anslår raskt magnitude og plassering, og varselet sendes ut til mobiltelefoner, tog og fabrikker før S-bølgene og overflatebølgene kommer. Varslingstiden er bare fra noen sekunder til et minutt, og nærmest episenteret får folk nesten ingen varsel. Likevel rekker vi å bremse tog, stoppe heiser, stenge gassventiler og søke dekning under et bord. Japan har hatt et offentlig system siden 2007, og i California, Oregon og Washington gir systemet ShakeAlert varsler til publikum (USGS, u.å.-d).
+Det finnes en tredje mulighet: å varsle *etter* at skjelvet har startet, men *før* de kraftigste bølgene har nådd fram. Det kaller vi *tidlig varsling*. Det er mulig fordi signalene i et datanettverk går nesten med lysets fart, mens jordskjelvbølgene går noen kilometer i sekundet. Seismografene nærmest episenteret registrerer de første P-bølgene (se [Jordskjelv og jordas indre](/geofag-1/jordskjelv)), datamaskiner anslår raskt magnitude og plassering, og varselet sendes ut til mobiltelefoner, tog og fabrikker før S-bølgene og overflatebølgene kommer. Varslingstiden er bare fra noen sekunder til et minutt, og nærmest episenteret får folk nesten ingen varsel. Likevel rekker vi å bremse tog, stoppe heiser, stenge gassventiler og søke dekning under et bord. Japan har hatt et offentlig system siden 2007, og i California, Oregon og Washington gir systemet ShakeAlert varsler til publikum (USGS, u.å.-a).
 
 ### Tsunamivarsling
 
@@ -143,7 +143,7 @@ Poengene ganges sammen. Hvis én bygningsgruppe forsterkes slik at sårbarheten 
 
 ### Hva modellen ikke viser
 
-Alle modeller er forenklinger, og en modell er aldri bedre enn dataene og antagelsene den bygger på: Magnituden for 1904 er usikker, og grove kategorier som «eldre murgård» skjuler store forskjeller mellom bygninger. Modellen tar heller ikke med følgehendelser som skred, brann og brudd i strøm og vann, som DSB-scenarioet for Bergen viser kan bli de mest krevende. Risikoen er dessuten ikke likt fordelt – de som bor i de eldste og billigste bygningene, eller i land med svake byggeforskrifter, er mest sårbare, slik vi så på Haiti i 2010 og i Tyrkia og Syria i 2023 (USGS, u.å.-e).
+Alle modeller er forenklinger, og en modell er aldri bedre enn dataene og antagelsene den bygger på: Magnituden for 1904 er usikker, og grove kategorier som «eldre murgård» skjuler store forskjeller mellom bygninger. Modellen tar heller ikke med følgehendelser som skred, brann og brudd i strøm og vann, som DSB-scenarioet for Bergen viser kan bli de mest krevende. Risikoen er dessuten ikke likt fordelt – de som bor i de eldste og billigste bygningene, eller i land med svake byggeforskrifter, er mest sårbare, slik vi så på Haiti i 2010 og i Tyrkia og Syria i 2023 (USGS, u.å.-b).
 
 ## Viktige begreper
 
