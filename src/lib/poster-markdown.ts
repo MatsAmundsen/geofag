@@ -221,9 +221,14 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Silikatmineraler bygges av silisium",
   },
   {
-    widgets: ["AvkjolingKorn"],
+    widgets: ["AvkjolingKorn", "OsloriftBergarter"],
     beforeHeading: "Hva er sedimentære bergarter?",
     require: "Avkjølingen styrer kornstørrelsen",
+  },
+  {
+    widgets: ["Metamorfose"],
+    beforeHeading: "Hva er bergartssyklusen?",
+    require: "lavgrads regional metamorfose",
   },
   {
     widgets: ["ForvitringForklaring"],

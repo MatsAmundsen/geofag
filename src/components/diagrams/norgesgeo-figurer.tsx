@@ -653,7 +653,11 @@ export function OslograbenFigur({
   heading = "Oslograben: riftdal, rombeporfyr og larvikitt",
   caption,
   initialStep,
-}: NorgesGeoFigurProps) {
+  statusTexts,
+}: NorgesGeoFigurProps & {
+  /** Egne statustekster per steg (4), når figuren gjenbrukes i et kapittel med egen ordlyd. */
+  statusTexts?: readonly string[];
+}) {
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
@@ -750,7 +754,7 @@ export function OslograbenFigur({
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
         toolbar={<StegRamme small={small}><StegVelger labels={OG_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" /></StegRamme>}
-        status={OG_STATUS[step - 1]}
+        status={(statusTexts ?? OG_STATUS)[step - 1]}
         labels={labels}
         keys={keys}
         notes={["Snitt vest–øst gjennom Oslofeltet", "Skjematisk, uten målestokk", "Kart: dagens kystlinjer (Natural Earth), Oslofeltet skjematisk"]}

@@ -69,8 +69,11 @@ import {
   AvkjolingKornFigur,
   BergartssyklusSnittFigur,
   FolgBergartFigur,
+  MetamorfoseFigur,
+  OSLO_STATUS_BERGARTER,
   SilikatgrupperFigur,
 } from "@/components/diagrams/bergarter-figurer";
+import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import {
   BowenReactionSeriesDiagram,
   RelativeDatingDiagram,
@@ -779,6 +782,14 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   Silikatgrupper: () => <SilikatgrupperFigur />,
   AvkjolingKorn: () => <AvkjolingKornFigur />,
+  Metamorfose: () => <MetamorfoseFigur />,
+  OsloriftBergarter: () => (
+    <OslograbenFigur
+      heading="Osloriften: rombeporfyr og larvikitt fra samme smeltefamilie"
+      caption="Samme smeltefamilie, to steder: dypet og overflaten. Rombeporfyr størknet på overflaten og har store rombeformede feltspatkrystaller i en finkornet grunnmasse. Larvikitt størknet ferdig under overflaten og er grovkornet. Forenklet: snittet er skjematisk uten målestokk, og vulkanismen og magmakamrene vises i ett steg. Samme figur som i Norges geologiske historie."
+      statusTexts={OSLO_STATUS_BERGARTER}
+    />
+  ),
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,

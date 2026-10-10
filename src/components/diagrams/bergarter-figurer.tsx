@@ -1019,3 +1019,206 @@ export function SilikatgrupperFigur({
     </div>
   );
 }
+
+/* =====================================================================
+ * 5. Metamorfose: fra leirskifer til gneis
+ * ===================================================================== */
+
+const ME_STEPS = ["Leirskifer", "Fyllitt", "Glimmerskifer", "Gneis"];
+const ME_STATUS = [
+  "Leirskifer: Tett og meget finkornet sedimentær bergart av leire og slam. Lagene er sedimentære lag. Utgangspunktet (protolitten) for fyllitt er leire.",
+  "Fyllitt: Lavgrads regional metamorfose. Glimmerkornene ordnes, og berget får tydelig skifrighet og silkeglans på kløvflatene. Kornene er små. Stasjonen er lav metamorfose.",
+  "Glimmerskifer: Omdanningen har gått lenger. Glimmerkornene er større og synlige, og skifrigheten er tydelig.",
+  "Gneis: Mellom- til grovkornet, stripet eller bølget. Kornene er synlige, og båndene er grovere enn i fyllitt. Høyt trykk og høy temperatur.",
+];
+/** Prøven tegnes i en fast boks (540 × 360) og skaleres på smal skjerm. */
+const ME_W = 540;
+const ME_H = 360;
+type Flak = { x: number; y: number; l: number; w: number; a: number; c: string };
+function flak(seed: number, n: number, lMin: number, lMax: number, w: number, a0: number, wave: number, colors: string[]): Flak[] {
+  const r = rng(seed);
+  return Array.from({ length: n }, () => {
+    const x = r() * ME_W;
+    const y = r() * ME_H;
+    return {
+      x: n1(x),
+      y: n1(y),
+      l: n1(lerp(lMin, lMax, r())),
+      w: n1(w * (0.7 + r() * 0.6)),
+      a: n1(a0 + wave * Math.sin(x / 60 + y / 90) + (r() - 0.5) * 6),
+      c: colors[Math.floor(r() * colors.length)],
+    };
+  });
+}
+const ME_LEIR_DOTS = flak(31, 900, 1.2, 2.4, 1, 0, 0, ["#4c4a4f", "#5d5b60", "#3c3a3f"]);
+const ME_FYLL = flak(32, 1100, 4, 9, 1.4, -24, 2, ["#8f95a3", "#a7adba", "#6b7180", "#c3c8d2"]);
+const ME_GLIM = flak(33, 380, 12, 26, 3.2, -24, 14, ["#b7b39a", "#d9d3b8", "#8c8a78", "#2d2b28"]);
+/** Gneisbånd: bølgete lyse og mørke bånd. */
+const ME_BAND = (() => {
+  const out: { d: string; c: string }[] = [];
+  const top = (k: number) => (x: number) => -30 + k * 34 + 14 * Math.sin(x / 70 + k * 0.6) + 8 * Math.sin(x / 23);
+  for (let k = 0; k < 14; k++)
+    out.push({ d: band(top(k), top(k + 1), -10, ME_W + 10, 10), c: k % 2 ? "#2f2c33" : k % 4 === 0 ? "#d8d0c4" : "#c9b7a6" });
+  return out;
+})();
+const ME_GNEIS_KORN = krystaller(34, 160, 7, 14, ["#e8e0d2", "#bfa996", "#f2ebe0", "#1f1d22", "#3a3640"], 330);
+
+export function MetamorfoseFigur({
+  heading = "Metamorfose: fra leirskifer til gneis",
+  caption,
+  initialStep,
+}: BergartFigurProps) {
+  const motion = useAnimationPlaying();
+  const [ref, visible] = useInView<SVGSVGElement>();
+  const [wrapRef, small] = useFigurSmal();
+  const clock = useStepClock(4, motion.playing && visible, 3000, 1800, initialStep);
+  const { step, phase } = clock;
+  const uid = useId().replace(/:/g, "");
+  const t = motion.playing ? smooth(phase) : 1;
+  const vb = small ? "0 0 520 560" : "0 0 960 460";
+  // dybdesøyle og prøve
+  const col = small ? { x: 24, y: 40, w: 70, h: 470 } : { x: 60, y: 50, w: 110, h: 360 };
+  const box = small ? { x: 130, y: 120, s: 370 / ME_W } : { x: 380, y: 50, s: 1 };
+  const depthY = (k: number) => col.y + col.h * (0.14 + 0.24 * k);
+  const markY = lerp(depthY(Math.max(0, step - 2)), depthY(step - 1), step === 1 ? 1 : t);
+  const op = (k: number) => (k === step - 1 ? (step === 1 ? 1 : t) : k === step - 2 ? 1 - t : 0);
+  const labels: Lab[] = [
+    { text: "Overflaten", x: col.x + col.w + 14, y: col.y + 6, color: C.fg, size: 14, badge: [col.x + col.w / 2, col.y - 14] },
+    {
+      text: small ? "Dypere: høyere trykk og temperatur" : "Dypere: høyere trykk",
+      x: col.x + col.w + 14,
+      y: col.y + col.h - 30,
+      color: "#ffc59a",
+      badge: [col.x + col.w / 2, col.y + col.h + 18],
+    },
+  ];
+  if (!small) labels.push({ text: "og høyere temperatur", x: col.x + col.w + 14, y: col.y + col.h - 8, color: "#ffc59a" });
+  if (step === 1) labels.push({ text: "Sedimentære lag", x: box.x + 12, y: box.y + 26, color: "#e8eef2", halo: undefined, badge: [box.x + 20, box.y + 20] });
+  if (step >= 2) labels.push({ text: step === 4 ? "Striper (bånd)" : "Skifrighet", x: box.x + 12, y: box.y + 26, color: "#ffe2c2", badge: [box.x + 20, box.y + 20] });
+  if (step === 2) labels.push({ text: "Lav metamorfose", x: col.x + col.w + 14, y: depthY(1) + 5, color: C.warm, badge: [col.x + col.w + 18, depthY(1)] });
+  const keys: Key[] = [
+    { text: "Temperatur øker nedover", color: K.magma, kind: "fill" },
+    { text: "Trykk fra alle kanter", color: C.fg, kind: "line" },
+  ];
+  return (
+    <div ref={wrapRef}>
+      <IsbreFigur
+        svgRef={ref}
+        title="Dybdesøyle der trykk og temperatur øker nedover, og en forstørret prøve som går fra leirskifer til fyllitt, glimmerskifer og gneis mens skifrighet og striper vokser fram"
+        heading={heading}
+        caption={
+          caption ??
+          "En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy temperatur og/eller kjemisk påvirkning omdanner den i fast tilstand, uten at den smelter. Fra leirskifer til gneis blir kornene større, og skifrigheten går over i striper. Forenklet: søylen har ingen målestokk, og prøven er skjematisk forstørret."
+        }
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={
+          <StegRamme small={small}>
+            <StegVelger labels={ME_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg bergart" />
+          </StegRamme>
+        }
+        status={ME_STATUS[step - 1]}
+        labels={labels}
+        keys={keys}
+        notes={["Skjematisk, uten målestokk"]}
+        viewBox={vb}
+        forceNarrow={small}
+      >
+        {({ m }) => (
+          <g className={motion.motionClass} data-figur="metamorfose" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
+            <defs>
+              <linearGradient id={`${uid}-t`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#5b6458" />
+                <stop offset="0.55" stopColor="#8a5a3c" />
+                <stop offset="1" stopColor="#c7542a" />
+              </linearGradient>
+              <clipPath id={`${uid}-p`}>
+                <rect x="0" y="0" width={ME_W} height={ME_H} rx="12" />
+              </clipPath>
+              <linearGradient id={`${uid}-glans`} x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#fff" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#fff" stopOpacity="0.16" />
+                <stop offset="1" stopColor="#fff" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* dybdesøyle */}
+            <rect x={col.x} y={col.y} width={col.w} height={col.h} rx="10" fill={`url(#${uid}-t)`} />
+            {[0.35, 0.6, 0.85].map((f, i) => {
+              const y = col.y + col.h * f;
+              const len = 10 + i * 6;
+              return (
+                <g key={f}>
+                  <path d={`M${col.x - len - 6} ${fx(y)} L${col.x - 4} ${fx(y)}`} stroke={C.fg} strokeWidth={1.6 + i} markerEnd={`url(#${m.fg})`} />
+                  <path d={`M${col.x + col.w + len + 6} ${fx(y)} L${col.x + col.w + 4} ${fx(y)}`} stroke={C.fg} strokeWidth={1.6 + i} markerEnd={`url(#${m.fg})`} opacity={small ? 0 : 1} />
+                </g>
+              );
+            })}
+            {ME_STEPS.map((navn, k) => (
+              <circle key={navn} cx={col.x + col.w / 2} cy={fx(depthY(k))} r="5" fill={k === step - 1 ? "#ffe2c2" : "#1b2328"} stroke="#ffe2c2" strokeWidth="1.5" />
+            ))}
+            <path
+              d={`M${col.x + col.w + 2} ${fx(markY)} L${box.x - 8} ${fx(box.y + (ME_H * box.s) / 2)}`}
+              stroke={C.warm}
+              strokeWidth="2"
+              strokeDasharray="5 5"
+              opacity={small ? 0 : 1}
+            />
+            <circle cx={col.x + col.w / 2} cy={fx(markY)} r="11" fill="none" stroke={C.warm} strokeWidth="3" />
+            {/* prøven */}
+            <g transform={`translate(${box.x} ${box.y}) scale(${box.s})`}>
+              <rect x="-5" y="-5" width={ME_W + 10} height={ME_H + 10} rx="15" fill="#0b1318" />
+              <g clipPath={`url(#${uid}-p)`} data-nocheck="">
+                <g opacity={op(0)}>
+                  <rect width={ME_W} height={ME_H} fill="#56535a" />
+                  {Array.from({ length: 16 }, (_, k) => (
+                    <path key={k} d={`M0 ${k * 23 + 6} C180 ${k * 23 + 3} 360 ${k * 23 + 9} ${ME_W} ${k * 23 + 5}`} stroke={k % 2 ? "#6a676e" : "#46434a"} strokeWidth={k % 3 ? 4 : 7} fill="none" />
+                  ))}
+                  {ME_LEIR_DOTS.map((f, i) => (
+                    <rect key={i} x={f.x} y={f.y} width={f.l} height={f.w} fill={f.c} />
+                  ))}
+                </g>
+                <g opacity={op(1)}>
+                  <rect width={ME_W} height={ME_H} fill="#5f6470" />
+                  {Array.from({ length: 16 }, (_, k) => (
+                    <path key={k} d={`M0 ${k * 23 + 6} C180 ${k * 23 + 3} 360 ${k * 23 + 9} ${ME_W} ${k * 23 + 5}`} stroke="#6c707c" strokeWidth="3" fill="none" opacity="0.5" />
+                  ))}
+                  {ME_FYLL.map((f, i) => (
+                    <rect key={i} x={f.x} y={f.y} width={f.l} height={f.w} fill={f.c} transform={`rotate(${f.a} ${f.x} ${f.y})`} />
+                  ))}
+                  <rect width={ME_W} height={ME_H} fill={`url(#${uid}-glans)`} />
+                </g>
+                <g opacity={op(2)}>
+                  <rect width={ME_W} height={ME_H} fill="#6f6c60" />
+                  {ME_GLIM.map((f, i) => (
+                    <ellipse key={i} cx={f.x} cy={f.y} rx={f.l / 2} ry={f.w / 2} fill={f.c} transform={`rotate(${f.a} ${f.x} ${f.y})`} />
+                  ))}
+                  <rect width={ME_W} height={ME_H} fill={`url(#${uid}-glans)`} opacity="0.7" />
+                </g>
+                <g opacity={op(3)}>
+                  {ME_BAND.map((b, i) => (
+                    <path key={i} d={b.d} fill={b.c} />
+                  ))}
+                  <g transform={`translate(${ME_W / 2} ${ME_H / 2})`} opacity="0.55">
+                    {ME_GNEIS_KORN.map((k, i) => (
+                      <path key={i} d={k.d} fill={k.fill} />
+                    ))}
+                  </g>
+                  {ME_BAND.map((b, i) => (i % 2 ? <path key={`o${i}`} d={b.d} fill="#2f2c33" opacity="0.55" /> : null))}
+                </g>
+              </g>
+              <rect x="-2" y="-2" width={ME_W + 4} height={ME_H + 4} rx="13" fill="none" stroke={C.warm} strokeWidth={3 / box.s} />
+            </g>
+          </g>
+        )}
+      </IsbreFigur>
+    </div>
+  );
+}
+
+/** Statustekster for Oslograben-figuren når den vises i Bergarter, med kapittelets ordlyd og tall. */
+export const OSLO_STATUS_BERGARTER = [
+  "Skorpa strekkes: For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-c).",
+  "Graben synker inn: Blokker synker ned langs forkastninger, og det dannes en riftdal (NGU, u.å.-c).",
+  "Lava og magma: Vulkanismen fortsatte inn i perm. Rombeporfyr størknet på overflaten, og rombene viser at smelten ikke var ferdig krystallisert (NGU, u.å.-l). Dypt nede størknet larvikitt, dannet for cirka 290 millioner år siden (NGU, u.å.-i).",
+  "I dag: Erosjon har blottlagt bergartene. Larvikitt finnes i Vestfold og Telemark og er Norges nasjonalbergart (NGU, u.å.-i). NGU kaller rombeporfyr tvillingbroren til larvikitt (NGU, u.å.-l).",
+] as const;
