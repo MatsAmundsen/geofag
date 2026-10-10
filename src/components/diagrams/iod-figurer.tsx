@@ -10,7 +10,7 @@
  * tungt beregnes under serverrendering.
  */
 import { useId, useState, type ReactNode } from "react";
-import { useAnimationPlaying } from "./use-motion";
+import { useAnimationPlaying, useChoiceAnnouncement } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { figureFont } from "./isbre-kit";
@@ -269,6 +269,7 @@ export function IodFaseFigur({
   title: string;
 }) {
   const motion = useAnimationPlaying();
+  const announce = useChoiceAnnouncement(motion.playing);
   const [fase, setFase] = useState<IodFase>(initialFase);
   const pos = fase === "positiv";
   const [wx] = xy(POOLS.vest.lon, POOLS.vest.lat);
@@ -374,13 +375,13 @@ export function IodFaseFigur({
       title={title}
       heading={heading}
       caption={caption}
-      playing={motion.playing}
-      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+      playing={announce.livePlaying}
+      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={() => announce.toggle(motion.toggle)} />}
       toolbar={
         <StegVelger
           labels={FASE_KNAPP}
           step={FASER.indexOf(fase) + 1}
-          onStep={(n) => setFase(FASER[n - 1])}
+          onStep={(n) => announce.choose(() => setFase(FASER[n - 1]))}
           label="Velg fase"
         />
       }

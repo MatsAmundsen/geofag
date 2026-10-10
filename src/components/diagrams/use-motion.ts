@@ -1,4 +1,4 @@
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 function subscribeReducedMotion(onChange: () => void) {
   const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -31,6 +31,41 @@ export function useAnimationPlaying() {
     reduced,
     toggle: () => setChoice(!playing),
     motionClass: playing ? "motion-unlocked" : "",
+  };
+}
+
+/**
+ * Status region stays `aria-live=polite` after a user choice, including while
+ * the animation is still playing. Playback turns the region off again.
+ * The choice is applied after the region has become polite, so the new text is announced.
+ */
+export function useChoiceAnnouncement(playing: boolean) {
+  const [hold, setHold] = useState(false);
+  const [tick, setTick] = useState(0);
+  const queued = useRef<(() => void) | null>(null);
+  useEffect(() => {
+    if (!hold) return;
+    const apply = queued.current;
+    queued.current = null;
+    apply?.();
+    const id = window.setTimeout(() => setHold(false), 1600);
+    return () => window.clearTimeout(id);
+  }, [hold, tick]);
+  return {
+    livePlaying: playing && !hold,
+    choose(apply: () => void) {
+      if (!playing) {
+        apply();
+        return;
+      }
+      queued.current = apply;
+      setTick((current) => current + 1);
+      setHold(true);
+    },
+    toggle(togglePlaying: () => void) {
+      if (!playing) setHold(false);
+      togglePlaying();
+    },
   };
 }
 

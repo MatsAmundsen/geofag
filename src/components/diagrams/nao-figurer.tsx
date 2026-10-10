@@ -8,7 +8,7 @@
  * når modulen lastes, så serverrenderingen bare skriver ferdige strenger.
  */
 import { useId, useState, type ReactNode } from "react";
-import { useAnimationPlaying } from "./use-motion";
+import { useAnimationPlaying, useChoiceAnnouncement } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { figureFont } from "./isbre-kit";
@@ -403,6 +403,7 @@ const KALD_PILER = [-10, -90].map((lon) => {
 export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; caption: ReactNode }) {
   const [tilstand, setTilstand] = useState<Virvel>("stabil");
   const motion = useAnimationPlaying();
+  const announce = useChoiceAnnouncement(motion.playing);
   const st = tilstand === "stabil";
   const uid = useId().replace(/:/g, "");
   const pvLab = st ? pvp(-30, 70) : pvp(-80, 66);
@@ -451,13 +452,13 @@ export function NaoPolarvirvelFigur({ heading, caption }: { heading: string; cap
       title="Globus over Arktis som viser en samlet og en oppbrutt polarvirvel med polarjetstrømmen under"
       heading={heading}
       caption={caption}
-      playing={motion.playing}
-      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+      playing={announce.livePlaying}
+      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={() => announce.toggle(motion.toggle)} />}
       toolbar={
         <StegVelger
           labels={["Stabil polarvirvel", "Forstyrret polarvirvel"]}
           step={VIRVEL.indexOf(tilstand) + 1}
-          onStep={(n) => setTilstand(VIRVEL[n - 1])}
+          onStep={(n) => announce.choose(() => setTilstand(VIRVEL[n - 1]))}
           label="Velg tilstand"
         />
       }
@@ -561,6 +562,7 @@ export function NaoKartFigur({
   title: string;
 }) {
   const motion = useAnimationPlaying();
+  const announce = useChoiceAnnouncement(motion.playing);
   const [fase, setFase] = useState<NaoFase>(initialFase);
   const pos = fase === "positiv";
   const nEu = na(12, 61);
@@ -595,10 +597,10 @@ export function NaoKartFigur({
       title={title}
       heading={heading}
       caption={caption}
-      playing={motion.playing}
-      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+      playing={announce.livePlaying}
+      action={<PlayPauseToggle isPlaying={motion.playing} onToggle={() => announce.toggle(motion.toggle)} />}
       toolbar={
-        <StegVelger labels={FASE_KNAPP} step={FASER.indexOf(fase) + 1} onStep={(n) => setFase(FASER[n - 1])} label="Velg fase" />
+        <StegVelger labels={FASE_KNAPP} step={FASER.indexOf(fase) + 1} onStep={(n) => announce.choose(() => setFase(FASER[n - 1]))} label="Velg fase" />
       }
       status={
         pos
