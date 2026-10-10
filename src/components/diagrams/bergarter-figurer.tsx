@@ -9,7 +9,7 @@
  * All geometri (korn, lag, stier) er konstanter på modulnivå, så serverrenderingen gjør nesten ingenting.
  */
 import { useId, useState, type ReactNode } from "react";
-import { useAnimationPlaying, useChoiceAnnouncement } from "./use-motion";
+import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
 import {
@@ -584,7 +584,6 @@ export function FolgBergartFigur({
   caption,
 }: Omit<BergartFigurProps, "initialStep">) {
   const motion = useAnimationPlaying();
-  const announce = useChoiceAnnouncement(motion.playing);
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
   const [valg, setValg] = useState(0);
@@ -610,6 +609,7 @@ export function FolgBergartFigur({
     : "magma";
   const velg = (i: number) => {
     setValg(i);
+    if (motion.playing) motion.toggle();
   };
   const knapper = ["Alle veier", ...RUTER.map((r) => r.navn)];
   const status = rute
@@ -630,11 +630,11 @@ export function FolgBergartFigur({
           caption ??
           "Å tolke inn i syklusen er å peke på stasjonen og på hvilken vei som er tatt, og hvilken som ikke er det. Sediment er en egen stasjon: løst materiale som ennå ikke er bergart. Forenklet: pilene viser hovedveiene, ikke alle mulige overganger."
         }
-        playing={announce.livePlaying}
-        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={() => announce.toggle(motion.toggle)} />}
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
         toolbar={
           <StegRamme small={small}>
-            <StegVelger labels={knapper} step={valg + 1} onStep={(n) => announce.choose(() => velg(n - 1))} label="Velg bergart" />
+            <StegVelger labels={knapper} step={valg + 1} onStep={(n) => velg(n - 1)} label="Velg bergart" />
           </StegRamme>
         }
         status={status}
