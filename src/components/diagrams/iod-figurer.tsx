@@ -154,22 +154,33 @@ const POOLS = {
   ost: { lon: 100, lat: -5, rx: 14, ry: 10 },
 };
 
-/** Mats' jetstrømlinje i figur 1: fra sør for Afrika, opp mot Sør-Australia og videre østover. */
+/** Jetstrømlinja i figur 1 og 2 etter Mats' grønne linje: inn fra vest på ca. 35° S, stiger inn over
+ * SV-Australia og krysser den sørlige delen av kontinentet mot sørøst. */
 const JET_IOD = geoCurve([
-  [20, -43],
-  [45, -42.5],
-  [70, -41],
-  [95, -38.5],
-  [112, -34],
-  [122, -30],
-  [136, -30],
-  [150, -33],
+  [20, -35],
+  [45, -35],
+  [70, -35],
+  [92, -34.5],
+  [108, -33],
+  [117, -30.5],
+  [128, -31],
+  [139, -34.5],
+  [150, -39],
 ]);
-/** Mats' L-merker langs jetstrømmen (lavtrykk i vestavindsbeltet). */
-const LAV_JET: [number, number][] = [
-  [32, -47.5],
-  [62, -46],
-];
+/** L-merker langs jetstrømmen (lavtrykk i vestavindsbeltet), sør for linja. */
+const LAV_JET: Record<"positiv" | "negativ", [number, number][]> = {
+  positiv: [
+    [32, -43],
+    [62, -42.5],
+    [106, -40],
+  ],
+  // L-en lengst vest står sør for Afrika
+  negativ: [
+    [25, -42],
+    [62, -42.5],
+    [124, -37.5],
+  ],
+};
 
 function PoolGrad({ id, color }: { id: string; color: string }) {
   return (
@@ -301,13 +312,14 @@ export function IodFaseFigur({
       badge: pos ? [ox + 64, xy(20, 18)[1]] : [wx + 40, xy(20, 18)[1]],
     },
     {
-      text: pos ? "Østavind: varmt vann skyves mot Afrika" : "Sterkere vestavind: varmt vann samles i øst",
-      x: 470,
-      y: xy(20, 7)[1],
+      text: pos ? "Svakere vestavind, iblant østavind: varmt vann skyves mot vest" : "Sterkere vestavind: varmt vann samles i øst",
+      // lang tekst i positiv fase: legges rett over vindpilene, under enden av Walker-søylene
+      x: pos ? 462 : 470,
+      y: pos ? xy(20, 1.7)[1] : xy(20, 7)[1],
       at: [xy(80, 0)[0], xy(20, -1)[1] - 8],
       color: "#ffe08a",
       anchor: "middle",
-      size: 15,
+      size: pos ? 14 : 15,
       badge: [xy(80, 0)[0], xy(20, 4)[1]],
     },
     {
@@ -320,13 +332,13 @@ export function IodFaseFigur({
     },
     {
       text: "Jetstrøm",
-      x: xy(70, -41)[0],
-      y: xy(70, -41)[1] - 18,
-      at: [xy(70, -41)[0], xy(70, -41)[1] - 4],
+      x: xy(70, -35)[0],
+      y: xy(70, -35)[1] - 18,
+      at: [xy(70, -35)[0], xy(70, -35)[1] - 4],
       color: JET,
       anchor: "middle",
       weight: 700,
-      badge: [xy(80, -41)[0], xy(80, -38)[1]],
+      badge: [xy(80, -35)[0], xy(80, -32)[1]],
     },
   ];
   if (pos)
@@ -353,7 +365,7 @@ export function IodFaseFigur({
     { text: "Varmere hav enn normalt", color: WARM, kind: "fill" },
     { text: "Kjøligere hav enn normalt", color: COOL, kind: "fill" },
     { text: "L = lavere trykk, H = høyere trykk", color: "#ff8b7a", kind: "symbol", symbol: "L" },
-    { text: "Jetstrøm (Mats' linje)", color: JET, kind: "line" },
+    { text: "Jetstrøm (skjematisk)", color: JET, kind: "line" },
   ];
   const flow = motion.playing;
   const gid = useId().replace(/:/g, "");
@@ -401,7 +413,7 @@ export function IodFaseFigur({
           {/* lavere trykk over det varme havet, høyere over det kalde */}
           <Trykk at={[POOLS.vest.lon, POOLS.vest.lat - 1]} kind={pos ? "L" : "H"} scale={scale} />
           <Trykk at={[POOLS.ost.lon - 8, POOLS.ost.lat - 4]} kind={pos ? "H" : "L"} scale={scale} />
-          {/* Mats' jetstrømlinje og L-merker */}
+          {/* jetstrømlinja og L-merkene fra Mats' skisse */}
           <path d={JET_IOD} fill="none" stroke="#0b1318" strokeOpacity={0.55} strokeWidth={12} strokeLinecap="round" data-nocheck="" />
           <path
             d={JET_IOD}
@@ -412,10 +424,9 @@ export function IodFaseFigur({
             strokeDasharray={flow ? "30 10" : undefined}
             style={flow ? { animation: "model-ocean-flow 1.4s linear infinite" } : undefined}
           />
-          {LAV_JET.map((p) => (
+          {LAV_JET[fase].map((p) => (
             <Trykk key={p[0]} at={p} kind="L" scale={scale} size={26} color={MATS_RED} />
           ))}
-          <Trykk at={pos ? [108, -40.5] : [124, -36.5]} kind="L" scale={scale} size={26} color={MATS_RED} />
         </g>
       )}
     </IsbreFigur>
@@ -478,7 +489,7 @@ export function IodHavtemperaturFigur({ heading, caption }: { heading: string; c
       heading={heading}
       caption={caption}
       labels={labels}
-      notes={["Data: NOAA OISST v2.1, 24. september 2026", "Kyster: Natural Earth"]}
+      notes={["Data: NOAA NCEI, OISST v2.1 (24. september 2026). Kyster: Natural Earth."]}
       remark={<Fargeskala />}
       viewBox={HT_VB}
     >
@@ -568,11 +579,11 @@ export function IodJetstrommerFigur({ heading, caption }: { heading: string; cap
   const labels: Lab[] = [
     { text: "Jetstrømbelte rundt 30° N", x: n[0], y: n[1] + 62, at: [n[0], n[1] + 16], color: "#ffe2a8", anchor: "middle", weight: 700, badge: [n[0], n[1] + 40] },
     { text: "Jetstrømbelte sør for Afrika og Australia, over grensen i figur 3", x: s[0] + 30, y: RING_TOP - 22, at: [s[0] + 30, s[1] - 4.5 * (960 / 130)], color: "#ffe2a8", anchor: "middle", weight: 700, badge: [s[0] + 30, RING_TOP - 20] },
-    { text: "Mats' markering", x: arrowTip[0] + 30, y: arrowTip[1] + 34, at: [arrowTip[0] + 6, arrowTip[1] + 8], color: MATS_RED, anchor: "start", badge: [arrowTip[0] + 26, arrowTip[1] + 34] },
+    { text: "Beltet IOD kan påvirke", x: arrowTip[0] + 30, y: arrowTip[1] + 34, at: [arrowTip[0] + 6, arrowTip[1] + 8], color: MATS_RED, anchor: "start", badge: [arrowTip[0] + 26, arrowTip[1] + 34] },
   ];
   const keys: Key[] = [
     { text: "Sterk vind høyt oppe (jetstrøm)", color: "#f08a6a", kind: "line" },
-    { text: "Mats' røde markering", color: MATS_RED, kind: "dash" },
+    { text: "Vestavindsbelte som IOD kan påvirke", color: MATS_RED, kind: "dash" },
   ];
   return (
     <IsbreFigur

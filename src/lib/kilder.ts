@@ -1536,9 +1536,9 @@ export const KILDER = {
       href: "https://www.noaa.gov/jetstream/global/jet-stream",
     },
     {
-      prefix: "NOAA National Centers for Environmental Information. (2026). ",
-      italic: "Daily Optimum Interpolation Sea Surface Temperature (OISST), versjon 2.1",
-      suffix: " [Datasett, 24. september 2026]. Brukt i figur 3.",
+      prefix: "NOAA NCEI. (u.å.). ",
+      italic: "Optimum Interpolation Sea Surface Temperature (OISST) v2.1",
+      suffix: ".",
       href: "https://www.ncei.noaa.gov/products/optimum-interpolation-sst",
     },
     {

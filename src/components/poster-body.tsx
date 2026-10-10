@@ -542,7 +542,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     IodFigurHavtemperatur: () => (
     <IodHavtemperaturFigur
       heading="Figur 3. Havtemperaturen i Det indiske hav"
-      caption="Havtemperaturen en dag i Det indiske hav. De svarte linjene viser grensen der det varme vannet møter det kalde havet lenger sør. Data: NOAA OISST v2.1 (24. september 2026). Påtegning: Mats Amundsen."
+      caption="Havtemperaturen én dag i Det indiske hav. De svarte linjene viser grensen der det varme vannet møter det kalde havet lenger sør. Data: NOAA NCEI, OISST v2.1. Påtegning: Mats Amundsen."
     />
   ),
     IodFigurJetstrommer: () => (
@@ -587,7 +587,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       initialFase="positiv"
       heading="Figur 4. Positiv NAO"
       title="Kart over Nord-Atlanteren med sterkt lavtrykk og høytrykk og en jetstrøm mot Nord-Europa"
-      caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som får mildt og vått vær. Sør-Europa blir kaldere og tørrere. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
+      caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som får mildt og vått vær. Sør-Europa blir ofte tørrere og kjøligere enn normalt. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
     />
   ),
     NaoFigurNegativ: () => (
