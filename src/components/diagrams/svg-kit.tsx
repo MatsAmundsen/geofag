@@ -158,6 +158,7 @@ export function L({
   anchor = "start",
   weight = 500,
   opacity,
+  length,
 }: {
   x: number | string;
   y: number | string;
@@ -167,6 +168,8 @@ export function L({
   anchor?: "start" | "middle" | "end";
   weight?: number;
   opacity?: number | string;
+  /** Fast SVG-bredde. Brukes når teksten ellers krysser en linje. */
+  length?: number;
 }) {
   return (
     <text
@@ -178,6 +181,8 @@ export function L({
       fontFamily={font}
       fontWeight={weight}
       opacity={opacity}
+      textLength={length}
+      lengthAdjust={length == null ? undefined : "spacingAndGlyphs"}
     >
       {children}
     </text>

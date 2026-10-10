@@ -646,11 +646,13 @@ export function PlatesMapDiagram() {
             Norge (Intraplate)
           </L>
 
-          {/* Søramerikanske plate */}
-          <g transform="translate(286, 392)">
-            <L x="0" y="0" fill={C.fg} size={12} weight={800}>SØRAMERIKANSKE</L>
+          {/* Søramerikanske plate. Ordet er strammet så det får plass mellom kysten og ryggen. */}
+          <g transform="translate(304, 330)">
+            <L x="0" y="0" fill={C.fg} size={12} weight={800} length={74}>
+              SØRAMERIKANSKE
+            </L>
             <L x="0" y="14" fill={C.fg} size={12} weight={800}>PLATE</L>
-            <Arrow d="M -10 20 L -35 20" marker={m.warm} color={C.warm} width={2.6} />
+            <Arrow d="M -16 20 L -40 20" marker={m.warm} color={C.warm} width={2.6} />
           </g>
 
           {/* Nazcaplaten */}
