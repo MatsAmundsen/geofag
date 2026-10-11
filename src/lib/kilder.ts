@@ -2493,6 +2493,12 @@ export const KILDER = {
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents3.html",
     },
     {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
+      italic: "A15) How do tropical cyclones form?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Corioliskraften",
       suffix: ".",
@@ -2521,6 +2527,12 @@ export const KILDER = {
       italic: "Oppvelling",
       suffix: ".",
       href: "https://snl.no/oppvelling",
+    },
+    {
+      prefix: "Stewart, R. H. (2008). ",
+      italic: "Introduction to physical oceanography",
+      suffix: " (kap. 9.2, tabell 9.3). Texas A&M University.",
+      href: "https://geo.libretexts.org/Bookshelves/Oceanography/Introduction_to_Physical_Oceanography_(Stewart)/09%3A_Response_of_the_Upper_Ocean_to_Winds/9.2%3A_Ekman_Layer_at_the_Sea_Surface",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",

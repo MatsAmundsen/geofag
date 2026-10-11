@@ -79,7 +79,7 @@ Coriolisparameteren brukes til å beregne den avbøyende effekten jordrotasjonen
 | Avbøyning | til høyre for bevegelsen | til venstre for bevegelsen | ingen |
 | Coriolisparameteren | positiv | negativ | null |
 
-Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 5°.
+Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 5°, om lag 500 km (NOAA AOML, u.å.).
 
 ```widget
 SyklonDiagram
@@ -111,7 +111,7 @@ SjekkCoriolis2
 
 ## Havet: ekmantransport og oppvelling
 
-Samme avbøyning virker på vann. Når vinden drar i overflaten, drar det øverste laget med seg dypere lag. Hvert dypere lag går saktere, til bevegelsen dør ut, ofte på om lag 100 meters dyp. Hvor dypt ekmanlaget går, avhenger av vinden og breddegraden. Det er typisk fra noen titalls meter til 100–200 meter. Dypere vann avbøyes også, mot høyre på den nordlige halvkule og mot venstre på den sørlige, så lagene danner en spiral. De dypeste lagene i spiralen kan gå motsatt vei av overflatestrømmen. Spiralen kalles ekmanspiralen, etter den svenske oseanografen Vagn Walfrid Ekman (1874–1954), som beskrev den i 1902 (NOAA, u.å.-b).
+Samme avbøyning virker på vann. Når vinden drar i overflaten, drar det øverste laget med seg dypere lag. Hvert dypere lag går saktere. Dypere vann avbøyes også, mot høyre på den nordlige halvkule og mot venstre på den sørlige, så lagene danner en spiral. De dypeste lagene i spiralen kan gå motsatt vei av overflatestrømmen. Spiralen kalles ekmanspiralen, etter den svenske oseanografen Vagn Walfrid Ekman (1874–1954), som beskrev den i 1902 (NOAA, u.å.-b).
 
 ```widget
 EkmanForklaring
@@ -121,7 +121,9 @@ EkmanForklaring
 EkmanSpiral
 ```
 
-Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule. Det er ekmantransporten. Det meste av transporten skjer i de øverste par titalls metrene, og den oppgis ofte som de øverste 50 meterne (Store norske leksikon, u.å.-e).
+Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule. Det er ekmantransporten.
+
+Laget som vinden setter i gang, kalles ekmanlaget. Hvor tykt det er, avhenger av vinden og breddegraden, typisk fra noen titalls meter til 100–200 meter (Stewart, 2008). Det meste av transporten skjer i de øverste par titalls meterne, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e). Bevegelsen dør ut lenger ned, ofte på omtrent 100 meters dyp (NOAA, u.å.-b).
 
 Oppvelling er at vann løftes fra dypere nivåer til overflatelaget. Overflatelaget skyves til siden, for eksempel ut fra en kyst, og vann nedenfra kommer opp. Prosessen er langsom, om lag 10 meter per dag. Vannet er rikt på næringsstoffer, og områdene har ofte rike fiskerier (Store norske leksikon, u.å.-e; NOAA, u.å.-c).
 
