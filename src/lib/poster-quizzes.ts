@@ -1605,26 +1605,82 @@ export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_SKRED_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan marin leire bli kvikk?",
+    options: [
+      "Fordi ferskt grunnvann vasker ut saltet, slik at bindingene i korthusstrukturen svekkes",
+      "Fordi leira blir varmet opp av grunnvannet",
+      "Fordi isen presset leira sammen under istida",
+    ],
+    answer: 0,
+    explain: "Saltvannet holder korthusstrukturen sammen. Synker saltinnholdet under ca. 2 g/l, svekkes bindingene (NGU).",
+  },
+  {
+    prompt: "Kan et kvikkleireskred ta med seg et nesten flatt jorde?",
+    options: [
+      "Nei, skred går bare i bratte skråninger",
+      "Ja, fordi skredet kan forplante seg bakover når kanten mister støtten",
+      "Bare hvis det regner samtidig",
+    ],
+    answer: 1,
+    explain: "Et bakoverforplantende (retrogressivt) skred sprer seg bakover til lommen er tømt. Derfor kan det nå langt inn i flatt terreng.",
+  },
+  {
+    prompt: "Hva er de vanligste utløserne av kvikkleireskred?",
+    options: [
+      "Jordskjelv og vulkanutbrudd",
+      "Snøsmelting på fjellet",
+      "Erosjon fra bekker og elver, og graving eller fylling i skråningen",
+    ],
+    answer: 2,
+    explain: "Erosjon og menneskers tiltak overbelaster leira oftest. Graving og fylling er blant de vanligste årsakene i nyere tid.",
+  },
+];
+
+export const QUIZ_SJEKK_SKRED_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er flodbølger den største faren ved fjellskred i Norge?",
+    options: [
+      "Fordi skredmassene som treffer en fjord eller innsjø, kan sende bølger langt opp på land og langt unna",
+      "Fordi steinene alltid ruller helt ned til sjøen",
+      "Fordi fjellskred bare skjer under vann",
+    ],
+    answer: 0,
+    explain: "I Tafjord 1934 nådde bølgene 61 m opp på land, og i Loen 1936 74 m. Bølgen rammer bygder som ligger langt fra selve skredet.",
+  },
+  {
+    prompt: "Hvilke fjellpartier overvåker NVE kontinuerlig?",
+    options: [
+      "Alle bratte fjellsider i Norge",
+      "Fjellpartier med høy risiko, som Åknes og Mannen",
+      "Bare fjellpartier som allerede har rast ut",
+    ],
+    answer: 1,
+    explain: "Høy risiko gir kontinuerlig overvåking med minst to uavhengige målesystemer. Moderat risiko gir periodisk overvåking.",
+  },
+];
+
 export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hva skjer når kvikkleire blir overbelastet?",
     options: [
-      "Korthusstrukturen kollapser, og leira blir flytende.",
       "All marin leire er allerede flytende fra den ble avsatt.",
+      "Korthusstrukturen kollapser, og leira blir flytende.",
       "Leira blir fastere fordi saltinnholdet øker.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hva er kvikkleire?». Overbelastning får strukturen til å kollapse. I omrørt tilstand er leira flytende.",
   },
   {
     prompt: "Hvordan kan saltet i marin leire forsvinne?",
     options: [
-      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
       "All marin leire er kvikk allerede da den ble avsatt i sjøen.",
       "Saltet forsvinner så snart det har regnet én dag.",
+      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Hva er kvikkleire?». Leira er tett, så utvaskingen tar mange hundre til flere tusen år. Ikke all marin leire blir kvikk.",
   },
@@ -1642,22 +1698,22 @@ export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hvorfor overvåkes Åknes kontinuerlig?",
     options: [
-      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
       "Åknes er et jordskred som går i en elv hvert år.",
       "Grønt jordskredvarsel dekker også fjellskred fra Åknes.",
+      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Hva er et fjellskred?». Åknes overvåkes kontinuerlig fordi et skred kan gi flodbølger, og varselet skal komme i tide.",
   },
   {
     prompt: "Hva sier et grønt jordskredvarsel om steinsprang og kvikkleire?",
     options: [
-      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
       "Grønt nivå betyr at steinsprang og kvikkleire er avblåst.",
+      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
       "Varselet gjelder bare kvikkleire.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hvordan kan vi forebygge og tilpasse oss?». Jordskredvarselet gjelder jordskred, sørpeskred og flomskred. Steinsprang og kvikkleireskred inngår ikke.",
   },

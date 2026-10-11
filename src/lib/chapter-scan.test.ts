@@ -271,7 +271,7 @@ describe("scan chips for the other geosfære chapters", () => {
     const doc = prepareChapterScan(readChapter("skred"));
     assert.deepEqual(
       doc.sections.map((section) => section.label),
-      ["Skred", "Kvikkleire", "Fjellskred", "Forebygging", "Begreper", "Quiz"],
+      ["Skred", "Kvikkleire", "Fjellskred", "Forebygging", "Begreper", "Sammendrag", "Quiz"],
     );
   });
 });
