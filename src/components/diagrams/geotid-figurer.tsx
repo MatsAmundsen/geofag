@@ -476,82 +476,75 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
 
 /* =====================================================================
  * 2. Relativ datering: snittet bygges opp hendelse for hendelse
+ *    Rekkefølgen følger kapittelteksten: lag A–D, forkastning F, gang E (yngst).
  * ===================================================================== */
 
-const RD_STEPS = ["Lag A", "Lag B", "Lag C", "Lag D", "Gang E", "Forkastning F", "Erosjon", "Øverste lag"];
+const RD_STEPS = ["Lag A", "Lag B", "Lag C", "Lag D", "Forkastning F", "Gang E"];
 const RD_STATUS = [
   "Lag A (skifer) avsettes først, nesten vannrett. Det ligger nederst og er eldst.",
   "Lag B (kalkstein med fossiler) avsettes oppå A. Etter overlagringsprinsippet er B yngre enn A.",
   "Lag C (sandstein) avsettes oppå B.",
   "Lag D (konglomerat) avsettes oppå C. Lagrekken er avsatt fra kambrium til devon: A er eldst og D yngst.",
-  "Gangen E skjærer gjennom lag A–D, så E er yngre enn lagene. Bruddstykkene av lag B i gangen er inneslutninger: B fantes før magmaen trengte opp.",
-  "Forkastningen F forskyver både lagene og gangen E, så F er yngre enn E.",
-  "Erosjon fjerner toppen av lagene, gangen og forkastningen og lager en flat erosjonsflate.",
-  "Det øverste laget avsettes på erosjonsflaten. Det ligger urørt over alt sammen og er yngst.",
+  "Forkastningen F skjærer gjennom alle fire lagene og forskyver dem. Den må derfor være yngre enn lag D.",
+  "Gangen E skjærer gjennom både lagene og forkastningen uten å være forskjøvet, så E er den yngste hendelsen. Bruddstykkene av lag B i gangen viser at lag B fantes før magmaen trengte opp.",
 ];
-const RD_LESETEKST =
-  "Les fra eldst til yngst: først lagene nedenfra og opp (superposisjon). Så gangen E, som skjærer gjennom dem. Så forkastningen F, som forskyver både lagene og gangen. Til slutt erosjon og det øverste laget, som ligger urørt over alt sammen.";
+const RD_BILDETEKST =
+  "Lagene ligger i rekkefølge, med A eldst og D yngst. Forkastningen F skjærer gjennom alle fire lagene og er yngre enn lag D. Gangen E skjærer gjennom både lagene og forkastningen og er den yngste hendelsen. Bruddstykkene av lag B i gangen viser at lag B fantes før magmaen trengte opp.";
 const RD_LAG = [
   { navn: "Lag A (kambrium)", top: 310, bunn: 380, fill: "#3a3830", farge: C.sand },
   { navn: "Lag B (ordovicium)", top: 240, bunn: 310, fill: "#24414d", farge: C.teal },
   { navn: "Lag C (silur)", top: 170, bunn: 240, fill: "#4a3b2c", farge: C.warm },
   { navn: "Lag D (devon)", top: 90, bunn: 170, fill: "#2b4637", farge: C.rain },
 ];
-/** Erosjonsflaten etter forkastningen. Alt over den fjernes i steg 7. */
-const RD_EROSJON = 125;
 const RD_SPRANG = 40;
-/** Forkastningen F går fra (420, 50) til (570, 380). */
+/** Forkastningen F går fra (420, 50) til (570, 380). Høyre blokk er senket. */
 const faultX = (y: number) => 420 + ((y - 50) * 150) / 330;
 const RD_LEFT = `M50 40 L${n1(faultX(40))} 40 L570 380 L50 380 Z`;
 const RD_RIGHT = `M${n1(faultX(40))} 40 L850 40 L850 380 L570 380 Z`;
-/** Gangen E heller motsatt vei av F og krysser den ved ca. y = 307, så forskyvningen blir synlig. */
-const RD_GANG = "M680 96 L720 96 L500 380 L460 380 Z";
-const RD_XENO = ["568,250 586,246 582,260 565,258", "552,272 572,268 567,282 549,280"];
+/**
+ * Gangen E tegnes over forkastningen og forskyves ikke: den er yngre enn F.
+ * Den heller motsatt vei av F og krysser den ved ca. y = 307, fra toppen av den senkede blokken.
+ */
+const RD_GANG = "M654 130 L694 130 L500 380 L460 380 Z";
+const RD_XENO = ["540,288 558,284 554,298 537,296", "552,262 570,258 566,272 549,270"];
 const RD_SEKVENS = [
   { kort: "A", lang: "Lag A" },
   { kort: "B", lang: "Lag B" },
   { kort: "C", lang: "Lag C" },
   { kort: "D", lang: "Lag D" },
+  { kort: "F", lang: "Forkastn. F" },
   { kort: "E", lang: "Gang E" },
-  { kort: "F", lang: "Forkast. F" },
-  { kort: "Er", lang: "Erosjon" },
-  { kort: "Øv", lang: "Øverste" },
 ];
-const RD_SEKV_FARGE = [...RD_LAG.map((l) => l.farge), "#f0a07a", C.low, C.muted, "#c9b8e6"];
+const RD_SEKV_FARGE = [...RD_LAG.map((l) => l.farge), C.low, "#f0a07a"];
 
 export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ datering steg for steg" }: { heading?: string }) {
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
-  const clock = useStepClock(8, motion.playing && visible, 2600, 1800, 8);
+  const clock = useStepClock(6, motion.playing && visible, 2600, 1800, 6);
   const { step, phase } = clock;
   const i = step - 1;
   const grow = motion.playing ? smooth(phase) : 1;
-  const off = step < 6 ? 0 : RD_SPRANG * (step === 6 ? grow : 1);
-  const eroded = step >= 7;
+  const off = step < 5 ? 0 : RD_SPRANG * (step === 5 ? grow : 1);
   const uid = "rd";
   const labels: Lab[] = [];
   RD_LAG.forEach((l, j) => {
     if (j > i) return;
     labels.push({ text: l.navn, x: 70, y: l.bunn - 22, color: l.farge, size: 15, weight: 700, badge: [90, l.bunn - 28] });
   });
-  const dy = step >= 6 ? RD_SPRANG : 0;
-  if (step >= 5) {
-    labels.push({ text: "Gang E (diabas)", x: 740, y: 180, at: [658, 150 + dy], color: "#f0a07a", weight: 700, badge: [706, 140 + dy] });
-    labels.push({ text: "Inneslutning av lag B", x: 640, y: 318, at: [576, 254 + dy], color: C.teal, weight: 700, badge: [624, 256 + dy] });
-  }
-  if (step >= 6)
+  if (step >= 5)
     labels.push({ text: "Forkastning F", x: 300, y: 64, at: [n1(faultX(200)), 200], color: C.low, weight: 700, badge: [420, 180] });
-  if (step >= 7)
-    labels.push({ text: "Erosjonsflate", x: 700, y: 64, at: [760, RD_EROSJON], color: C.muted, weight: 700, badge: [780, 100] });
-  if (step >= 8) labels.push({ text: "Øverste lag", x: 70, y: 108, color: "#c9b8e6", size: 15, weight: 700, badge: [90, 98] });
+  if (step >= 6) {
+    labels.push({ text: "Gang E (diabas)", x: 740, y: 180, at: [643, 170], color: "#f0a07a", weight: 700, badge: [700, 160] });
+    labels.push({ text: "Inneslutning av lag B", x: 640, y: 340, at: [548, 291], color: C.teal, weight: 700, badge: [600, 300] });
+  }
   return (
     <div ref={wrapRef}>
       <IsbreFigur
         svgRef={ref}
-        title="Geologisk snitt som bygges opp i åtte steg: lag A til D avsettes oppå hverandre, gangen E skjærer gjennom lagene, forkastningen F forskyver lagene og gangen, erosjon lager en flat flate, og det øverste laget avsettes urørt over alt sammen"
+        title="Geologisk snitt som bygges opp i seks steg: lag A til D avsettes oppå hverandre, forkastningen F skjærer gjennom og forskyver lagene, og til slutt skjærer gangen E gjennom både lagene og forkastningen uten å være forskjøvet og inneholder bruddstykker av lag B"
         heading={heading}
-        caption={RD_LESETEKST}
+        caption={RD_BILDETEKST}
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
         toolbar={
@@ -564,7 +557,6 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
         keys={[
           { text: "Forkastning", color: C.low, kind: "dash" },
           { text: "Gang av diabas", color: "#7a3a2c", kind: "fill" },
-          { text: "Erosjonsflate", color: C.muted, kind: "line", off: !eroded },
         ]}
         notes={["Figur 1", "Skjematisk, uten målestokk"]}
         viewBox="0 0 900 480"
@@ -578,66 +570,42 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
               <clipPath id={`${uid}-r`}>
                 <path d={RD_RIGHT} />
               </clipPath>
-              <clipPath id={`${uid}-e`}>
-                <rect x="50" y={RD_EROSJON} width="800" height={380 - RD_EROSJON} />
-              </clipPath>
             </defs>
             <rect x="50" y="40" width="800" height="340" rx="8" fill="#141d24" />
-            {step >= 8 ? (
-              <rect
-                x="50"
-                y={n1(RD_EROSJON - (RD_EROSJON - 70) * grow)}
-                width="800"
-                height={n1((RD_EROSJON - 70) * grow)}
-                fill="#3e3550"
-              />
-            ) : null}
-            <g clipPath={eroded ? `url(#${uid}-e)` : undefined}>
-              {[0, 1].map((side) => (
-                <g key={side} clipPath={step >= 6 ? `url(#${uid}-${side ? "r" : "l"})` : undefined}>
-                  <g transform={side && off ? `translate(0 ${n1(off)})` : undefined}>
-                    {RD_LAG.map((l, j) => {
-                      if (j > i) return null;
-                      const g = j === i && step <= 4 ? grow : 1;
-                      const top = l.bunn - (l.bunn - l.top) * g;
-                      return (
-                        <g key={l.navn}>
-                          <rect x="50" y={n1(top)} width="800" height={n1(l.bunn - top + (side && j === 0 ? RD_SPRANG : 0))} fill={l.fill} />
-                          {j === 1 ? (
-                            <g fill="#9fd0d2" opacity="0.55" data-nocheck="">
-                              {[90, 230, 370, 700, 790].map((x) => (
-                                <ellipse key={x} cx={x + (side ? 20 : 0)} cy={n1(l.top + 52)} rx="7" ry="3" />
-                              ))}
-                            </g>
-                          ) : null}
-                        </g>
-                      );
-                    })}
-                    {step >= 5 ? (
-                      <g opacity={step === 5 ? grow : 1}>
-                        <path d={RD_GANG} fill="#7a3a2c" />
-                        {RD_XENO.map((pts) => (
-                          <polygon key={pts} points={pts} fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
-                        ))}
+            {[0, 1].map((side) => (
+              <g key={side} clipPath={step >= 5 ? `url(#${uid}-${side ? "r" : "l"})` : undefined}>
+                <g transform={side && off ? `translate(0 ${n1(off)})` : undefined}>
+                  {RD_LAG.map((l, j) => {
+                    if (j > i) return null;
+                    const g = j === i && step <= 4 ? grow : 1;
+                    const top = l.bunn - (l.bunn - l.top) * g;
+                    return (
+                      <g key={l.navn}>
+                        <rect x="50" y={n1(top)} width="800" height={n1(l.bunn - top + (side && j === 0 ? RD_SPRANG : 0))} fill={l.fill} />
+                        {j === 1 ? (
+                          <g fill="#9fd0d2" opacity="0.55" data-nocheck="">
+                            {[90, 230, 370, 700, 790].map((x) => (
+                              <ellipse key={x} cx={x + (side ? 20 : 0)} cy={n1(l.top + 52)} rx="7" ry="3" />
+                            ))}
+                          </g>
+                        ) : null}
                       </g>
-                    ) : null}
-                  </g>
+                    );
+                  })}
                 </g>
-              ))}
-              {step >= 6 ? (
-                <line
-                  x1={n1(faultX(eroded ? RD_EROSJON : 90))}
-                  y1={eroded ? RD_EROSJON : 90}
-                  x2="570"
-                  y2="380"
-                  stroke={C.low}
-                  strokeWidth="3"
-                  strokeDasharray="6 4"
-                  opacity={step === 6 ? grow : 1}
-                />
-              ) : null}
-            </g>
-            {eroded ? <line x1="50" y1={RD_EROSJON} x2="850" y2={RD_EROSJON} stroke={C.muted} strokeWidth="3" /> : null}
+              </g>
+            ))}
+            {step >= 5 ? (
+              <line x1={n1(faultX(90))} y1="90" x2="570" y2="380" stroke={C.low} strokeWidth="3" strokeDasharray="6 4" opacity={step === 5 ? grow : 1} />
+            ) : null}
+            {step >= 6 ? (
+              <g opacity={grow}>
+                <path d={RD_GANG} fill="#7a3a2c" />
+                {RD_XENO.map((pts) => (
+                  <polygon key={pts} points={pts} fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
+                ))}
+              </g>
+            ) : null}
             {/* rekkefølgen fra eldst til yngst */}
             <T x={50} y={410} scale={scale} size={14} fill={C.muted}>
               Eldst
@@ -646,15 +614,15 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
               Yngst
             </T>
             {RD_SEKVENS.map((s, j) => {
-              const w = 92;
-              const x = 50 + j * 101.1;
+              const w = 118;
+              const x = 50 + j * 136.4;
               const on = j <= i;
               const farge = RD_SEKV_FARGE[j];
               return (
                 <g key={s.kort}>
                   <rect x={n1(x)} y={422} width={w} height={46} rx="8" fill={on ? "#1c2a33" : "#121a20"} stroke={on ? farge : C.dim} strokeWidth="2" />
                   {on ? (
-                    <T x={n1(x + w / 2)} y={451} scale={scale} anchor="middle" size={14} weight={800} fill={farge}>
+                    <T x={n1(x + w / 2)} y={451} scale={scale} anchor="middle" size={16} weight={800} fill={farge}>
                       {small ? s.kort : s.lang}
                     </T>
                   ) : null}
