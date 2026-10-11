@@ -878,6 +878,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["dannet av mikroskopiske kiselalger", "For ca. 310 millioner år siden"],
   },
   {
+    // Geo F1/F2 + tilbakemelding: malen, kjerneelementer, menneskelig aktivitet (isbreer-mal).
+    flag: "g1-isbreer-mal-2026-10-11",
+    slug: "isbreer-og-landformer",
+    stale: ["*Isen som agent* – hvordan isbreen", "Det er en beslektet mekanisme til frostsprengning"],
+  },
+  {
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],
