@@ -22,7 +22,7 @@ Jorda kan deles inn i flere lag etter sammensetning, tetthet og egenskaper. I ge
 
 #### Skorpe
 
-Det ytterste laget kalles skorpe. Skorpen er av to typer: kontinentalskorpe og havbunnsskorpe. Kontinentalskorpe er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder. Havbunnsskorpe er 5–8 km tykk. Mer om bergarter og alder står under litosfæren.
+Det ytterste laget kalles skorpe. Skorpen er av to typer: kontinentalskorpe og havbunnsskorpe. Kontinentalskorpe er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder som Himalaya. Havbunnsskorpe er 5–8 km tykk. Mer om bergarter og alder står under litosfæren.
 
 #### Øvre mantel
 
@@ -36,9 +36,11 @@ Denne delen ligger rett under jordskorpa. Den er kald og mekanisk stiv (Fowler, 
 
 #### Astenosfærisk mantel
 
-Under den stive delen ligger astenosfæren. Den strekker seg fra ca. 100 km til ca. 350 km dyp. Temperaturen er ca. 1300–1400 °C.
+Under den stive delen ligger astenosfæren. Den strekker seg fra ca. 100 km til ca. 350 km dyp og består av fast silikatbergart (peridotitt). Temperaturen er ca. 1300–1400 °C.
 
 På grunn av høy temperatur i forhold til trykket ligger bergartene nær smeltepunktet. Enkelte soner har en liten andel delvis smelte (1–2 %). Seismiske bølger går saktere der. Sonen kalles lavhastighetssonen (low velocity zone, LVZ) (Lowrie & Fichtner, 2020, s. 157).
+
+Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte svært langsomt. Bergartene kan derfor endre form, men de er fortsatt faste. Det kalles plastisk: bergarten beholder fast form, men kan deformeres over lang tid.
 
 Astenosfæren er seigtflytende over millioner av år. Den virker som et glidelag, slik at litosfæren over kan bevege seg. Samtidig fører konveksjonsstrømmer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
 
@@ -75,20 +77,18 @@ En tektonisk plate er ikke bare skorpe. Den er litosfære: jordskorpa pluss den 
 
 Samme plate kan bære både kontinentalskorpe og havbunnsskorpe.
 
-**Kontinentalskorpe** er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder som Himalaya. Den består hovedsakelig av bergarter med mye silisium og aluminium (felsiske bergarter). Tettheten er relativt lav, om lag 2,7 g/cm³. Skorpen er for lett til å synke dypt ned i mantelen. Derfor kan kontinentalskorpe bli svært gammel, flere milliarder år.
+**Kontinentalskorpe** (tykkelse, se «Skorpe» over) består hovedsakelig av bergarter med mye silisium og aluminium (felsiske bergarter). Tettheten er relativt lav, om lag 2,7 g/cm³. Skorpen er for lett til å synke dypt ned i mantelen. Derfor kan kontinentalskorpe bli svært gammel, flere milliarder år.
 
-**Havbunnsskorpe** er tynn, bare 5–8 km. Den består av mafiske magmatiske bergarter som basalt, gabbro, diabas og doleritt. Disse har mye jern og magnesium. Tettheten er høyere, om lag 3,0 g/cm³. Derfor kan havbunnslitosfære synke ned i mantelen ved konvergerende plategrenser.
+**Havbunnsskorpe** er tynn (se «Skorpe» over). Den består av mafiske magmatiske bergarter som basalt, gabbro, diabas og doleritt. Disse har mye jern og magnesium. Tettheten er høyere, om lag 3,0 g/cm³. Derfor kan havbunnslitosfære synke ned i mantelen ved konvergerende plategrenser.
 
 Ny havbunn dannes ved divergerende plategrenser, ofte midthavsrygger. Ved konvergerende grenser synker havbunnslitosfæren ned i mantelen. ***Derfor blir havbunn sjelden eldre enn ca. 180–200 millioner år.***
 
 ---
 ---
 
-#### Astenosfæren (ca. 100–350 km)
+#### Astenosfæren
 
-Astenosfæren er laget litosfæren glir på. Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte svært langsomt. Den består av fast silikatbergart (peridotitt). Temperaturen er nær smeltepunktet, ca. 1300–1400 °C. Bergartene kan derfor endre form, men de er fortsatt faste. Det kalles plastisk: bergarten beholder fast form, men kan deformeres over lang tid.
-
-Over millioner av år deformeres astenosfæren seigt. Litosfæreplatene kan gli oppå den.
+Astenosfæren er laget litosfæren glir på. Dybde, temperatur og egenskaper står under «Astenosfærisk mantel» over.
 
 ---
 ---
