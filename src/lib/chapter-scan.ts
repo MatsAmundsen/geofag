@@ -28,6 +28,14 @@ type SectionMeta = {
 };
 
 const SECTION_META: SectionMeta[] = [
+  { match: /^grunnfjellet – det eldste/i, label: "Grunnfjellet", subtitle: "Prekambrium og det subkambriske peneplanet" },
+  { match: /^leka – en havbunn/i, label: "Leka", subtitle: "Ofiolitt fra Iapetushavet" },
+  { match: /^den kaledonske fjellkjeden$/i, label: "Kaledonidene", subtitle: "Kollisjon, skyvedekker og eklogitt" },
+  { match: /^oslo-riften/i, label: "Oslo-riften", subtitle: "Sen karbon og perm, rombeporfyr og larvikitt" },
+  { match: /^norskehavet åpner seg/i, label: "Norskehavet", subtitle: "Passiv margin og Jan Mayen" },
+  { match: /^istiden presset landet ned/i, label: "Istiden", subtitle: "Isostasi, marin grense og landheving" },
+  { match: /^utforsk geologien der du bor/i, label: "Lokalt", subtitle: "Berggrunn, løsmasser og ressurser" },
+  { match: /^tidslinje og nøkkelsteder/i, label: "Tidslinje", subtitle: "Historien samlet" },
   {
     match: /^hva former jordoverflaten/i,
     label: "Krefter",

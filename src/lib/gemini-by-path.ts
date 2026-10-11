@@ -61,7 +61,7 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/geofag-1/jordskjelv-naturfare":
     "Denne siden eier tsunami fra skjelv eller skred, skader fra jordskjelv, varsling og risikovurdering med modell. Jordskjelv og jordas indre eier bølgene, målingen og jordas indre.",
   "/geofag-1/norges-geologi":
-    "Denne siden eier Norges geologiske historie fra urtid til nåtid: Leka-ofiolitten, Kaledonidene, Oslofeltets rift og landhevingen. Bergarter eier mineralklassifisering. Landformer eier kvartær erosjon.",
+    "Denne siden eier Norges geologiske historie fra grunnfjellet til i dag: grunnfjellet og det subkambriske peneplanet, Leka-ofiolitten, den kaledonske fjellkjeden med skyvedekker og eklogitt, Oslo-riften i sen karbon og perm (ikke Pangeas oppsprekking), åpningen av Norskehavet, isostasi, marin grense (havet sto opptil ca. 220 m høyere i Oslo-området) og landhevingen, og lokal utforsking av berggrunn og løsmasser. Bergarter eier mineralklassifisering. Landformer eier erosjon og landformer. Feltarbeid eier hvordan feltarbeid planlegges og gjennomføres.",
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {

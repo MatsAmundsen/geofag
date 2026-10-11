@@ -835,6 +835,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Nå skjer det i pukkverk (SNL, 2024b).\n\nIndustrimineraler"],
   },
   {
+    flag: "g1-norges-geologi-md-2026-10-11",
+    slug: "norges-geologi",
+    stale: ["Pangea på å sprekke opp", "hevet landet seg opptil 220"],
+  },
+  {
+    flag: "g1-bergarter-oslorift-305-2026-10-11",
+    slug: "bergarter",
+    stale: ["For cirka 310 millioner år siden, mot slutten av karbon"],
+  },
+  {
     flag: "g1-landformer-md-2026-10-11",
     slug: "landformer",
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],

@@ -331,7 +331,7 @@ export const GF1_THEMES = [
     image: "/images/geo-ofiolitt-leka.jpg",
     alt: "Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel",
     blurb:
-      "Fra urtid og Iapetushavets ofiolitter på Leka, til Kaledonidene, Oslofeltets riftdal, Atlanterhavets åpning og landhevingen etter istiden.",
+      "Fra grunnfjellet og ofiolitten på Leka til den kaledonske fjellkjeden, Oslo-riften, åpningen av Norskehavet, landhevingen etter istiden og hvordan du kan utforske geologien der du bor.",
     status: "klar" as const,
     maal: "Gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten. Utforske berggrunn, løsmasser og jordarter lokalt, og tolke observasjonene for å beskrive områdets geologiske historie og betydning for lokale ressurser.",
   },
