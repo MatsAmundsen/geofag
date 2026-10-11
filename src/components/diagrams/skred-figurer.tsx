@@ -233,9 +233,9 @@ export function SkredKrefterFigur({ heading = "Krefter i en skråning: helning o
   const block = [along(KR_LEN * 0.5 - 34, 0), along(KR_LEN * 0.5 + 34, 0), along(KR_LEN * 0.5 + 34, band), along(KR_LEN * 0.5 - 34, band)];
   const shift = slides ? 0 : 0;
   const labels: Lab[] = [
-    { text: "Tyngdekraft", x: 40, y: 60, at: [g[0] - 2, g[1] - 10], color: C.fg, badge: [g[0] - 24, g[1] - 10] },
-    { text: "Drivende: delen langs skråningen", x: 40, y: 96, at: [dr[0] + ux * 10, dr[1] + uy * 10], color: C.low, badge: [dr[0] - 18, dr[1] + 18] },
-    { text: "Holdende: friksjon og kohesjon", x: 40, y: 132, at: [hd[0] - ux * 10, hd[1] - uy * 10], color: C.teal, badge: [hd[0] + 4, hd[1] - 26] },
+    { text: "Tyngdekraft", x: 40, y: 484, at: [g[0] - 2, g[1] - 10], color: C.fg, badge: [g[0] - 24, g[1] - 10] },
+    { text: "Drivende kraft", x: 40, y: 132, at: [dr[0] + ux * 10, dr[1] + uy * 10], color: C.low, badge: [dr[0] - 18, dr[1] + 18] },
+    { text: "Holdende: friksjon og kohesjon", x: 40, y: 60, at: [hd[0] - ux * 10, hd[1] - uy * 10], color: C.teal, badge: [hd[0] + 4, hd[1] - 26] },
   ];
   if (w > 0)
     labels.push({ text: "Vann i porene", x: 920, y: 470, at: along(KR_LEN * 0.82, gwH * 0.5), color: "#9fe3ea", anchor: "end", badge: along(KR_LEN * 0.82, -22) });
