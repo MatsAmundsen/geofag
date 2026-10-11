@@ -1667,6 +1667,12 @@ export const KILDER = {
       href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/maalinger-og-maalenett/urbanhydrologiske-maalinger/",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-i). ",
+      italic: "DDD-modellen",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/analysemetoder-og-modeller/ddd-modellen/",
+    },
+    {
       prefix: "Norsk Naturskadepool. (2025, 5. november). ",
       italic: "Oppdaterte naturskadetall etter «Amy» og «Hans»",
       suffix: ".",
@@ -1854,6 +1860,12 @@ export const KILDER = {
       italic: "Fjellskred fra Åknes: Reviderte scenarioer, sannsynligheter og konsekvenser",
       suffix: " (NVE Rapport 16/2026).",
       href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
+    },
+    {
+      prefix: "NOU 2022: 3. (2022). ",
+      italic: "På trygg grunn: Bedre håndtering av kvikkleirerisiko",
+      suffix: ". Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/no/dokumenter/nou-2022-3/id2905694/",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",

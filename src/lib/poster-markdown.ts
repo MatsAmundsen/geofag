@@ -253,6 +253,18 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Hva er en akvifer?",
   },
   {
+    // Etter avsnittet om porøsitet og permeabilitet i «Hva er en akvifer?» (Vann og flom).
+    widgets: ["AkviferSnitt"],
+    afterParagraph: /I fjell styres permeabiliteten av sprekker/i,
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["HansNedbor"],
+    // Etter avsnittet som slutter med «MET skriver at klimaendringer kan forsterke …» (Hans).
+    afterParagraph: /MET skriver at klimaendringer kan forsterke/i,
+    require: "Hva er en akvifer?",
+  },
+  {
     widgets: ["Hydrograph"],
     afterHeading: "Hva er et hydrogram?",
     require: "Hva er en akvifer?",

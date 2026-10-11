@@ -1,3 +1,4 @@
+import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
   BoundaryOverviewDiagram,
@@ -103,15 +104,17 @@ import {
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
-import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
+import {
+  AkviferFigur,
+  HansNedborFigur,
+  HydrogramFigur,
+  KretslopFigur,
+} from "@/components/diagrams/vannflom-figurer";
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
-  KvikkleireDiagram,
-  SkredKrefterDiagram,
   SkredSonerDiagram,
-  SkredTyperDiagram,
 } from "@/components/diagrams/skred";
 import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
 import { PetroleumSnittFigur, RessurskartFigur } from "@/components/diagrams/ressurs-figurer";
@@ -974,8 +977,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizBergarter: () => (
     <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  Kretslop: () => <KretslopDiagram />,
-  Hydrograph: () => <HydrographDiagram />,
+  Kretslop: () => <KretslopFigur />,
+  Hydrograph: () => <HydrogramFigur />,
+  AkviferSnitt: () => <AkviferFigur />,
+  HansNedbor: () => <HansNedborFigur />,
   AkviferForklaring: () => (
     <Callout title="Hva betyr «akvifer»?">
       <p>
@@ -999,7 +1004,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  KvikkleireSteg: () => <KvikkleireDiagram />,
+  KvikkleireSteg: () => <KvikkleireBakoverFigur />,
   QuizSkred: () => (
     <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -1115,8 +1120,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
-  SkredTyper: () => <SkredTyperDiagram />,
-  SkredKrefter: () => <SkredKrefterDiagram />,
+  SkredTyper: () => <SkredTyperFigur />,
+  SkredKrefter: () => <SkredKrefterFigur />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
   FieldworkIllustration: () => <FieldworkIllustrationDiagram />,
