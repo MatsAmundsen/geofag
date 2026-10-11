@@ -751,52 +751,70 @@ export const QUIZ_KRYO: QuizQuestion[] = [
 
 export const QUIZ_AMOC: QuizQuestion[] = [
   {
-    prompt: "Hvor starter det trege beltet?",
+    prompt: "Hva er hovedgrunnen til at overflatevann synker i Nord-Atlanteren?",
     options: [
-      "I overflaten nær polen i Nord-Atlanteren, der kaldt og salt vann synker.",
-      "I Indiahavet, der vannet alltid synker.",
-      "Langs ekvator, der passatvinden skyver overflaten.",
+      "At overflatevannet er salt og blir kraftig avkjølt om vinteren, så det blir tyngre enn vannet under",
+      "At magnetfeltet trekker vannet mot bunnen",
+      "At ferskvann fra breene er tyngre enn sjøvann",
+      "At corioliseffekten presser vannet rett ned ved polene",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er den atlantiske omveltningen?». Beltet begynner i Nord-Atlanteren.",
+    explain: "Avkjølingen er hovedmekanismen, og saltet fra subtropene gjør vannet enda tyngre. Da synker det og danner NADW (Talley mfl., 2011).",
   },
   {
-    prompt: "Hvorfor blir vannet saltere der havisen fryser?",
+    prompt: "Hvorfor kan økt smelting fra Grønlandsisen svekke AMOC?",
     options: [
-      "Fordi elver fører mer salt ut i havet om vinteren.",
-      "Fordi saltet ikke fryser med isen, men blir liggende i vannet rundt.",
-      "Fordi varmt vann alltid er saltere enn kaldt vann.",
+      "Fordi isfjellene blokkerer Golfstrømmen som en demning",
+      "Fordi ferskvann har lavere tetthet enn sjøvann, så overflatevannet ikke blir tungt nok til å synke selv om det avkjøles",
+      "Fordi smeltevannet fordamper Norskehavet",
+      "Fordi ferskvannet bremser jordrotasjonen",
     ],
     answer: 1,
-    explain: "Se «Hva er den atlantiske omveltningen?». Saltet blir igjen når havisen fryser.",
+    explain: "Ferskvannet legger seg som et lett lokk i overflaten og gjør konveksjonen svakere (IPCC, 2021).",
   },
   {
-    prompt: "Hvor raskt går beltet, sammenlignet med vind og tidevann?",
+    prompt: "Hva er forskjellen på Golfstrømmen og AMOC?",
     options: [
-      "Noen få centimeter i sekundet. Vind og tidevann går i titalls til hundretalls.",
-      "Like raskt som de vinddrevne strømmene.",
-      "Raskere enn tidevannet.",
+      "Golfstrømmen er en vinddrevet overflatestrøm i den subtropiske havvirvelen, mens AMOC er hele det vertikale omveltningsbåndet",
+      "Det er ingen forskjell",
+      "Golfstrømmen går i Stillehavet, mens AMOC går i Atlanterhavet",
+      "AMOC finnes bare om sommeren",
     ],
     answer: 0,
-    explain: "Se tabellen. Det trege beltet er den langsomme strømmen.",
+    explain: "Golfstrømmen drives av vinden, og AMOC av tetthetsforskjeller (IPCC, 2021).",
   },
   {
-    prompt: "Hvor lang tid tar en runde for en kubikkmeter vann?",
-    options: ["Noen uker.", "Omtrent ti år.", "Omtrent 1000 år."],
-    answer: 2,
-    explain: "Se «Veien rundt jorda». En gitt kubikkmeter bruker omtrent 1000 år.",
-  },
-  {
-    prompt: "Hva kan mer regn og smeltevann gjøre med beltet?",
+    prompt: "Hva betyr hysterese i Stommels to-boks-modell?",
     options: [
-      "Gjøre beltet raskere enn de vinddrevne strømmene.",
-      "Hindre nedsynking av kaldt, salt vann, slik at beltet kan gå saktere eller stoppe.",
-      "Ingenting. Ferskvann endrer ikke tettheten.",
+      "At strømmen skifter retning to ganger i døgnet på grunn av tidevannet",
+      "At AMOC ikke starter igjen av seg selv om ferskvannstilførselen bare reduseres til nivået før vippepunktet",
+      "At saltholdigheten i havet er lik overalt",
+      "At vanntemperaturen stiger jevnt med lufttrykket",
     ],
     answer: 1,
-    explain:
-      "Se «Ferskvann kan bremse beltet». Varmt ferskvann på overflaten kan forstyrre nedsynkingen.",
+    explain: "Tilstanden avhenger av historien. Uten salt fra sør må ferskvannet ned til et mye lavere nivå før AMOC kan starte igjen (Stommel, 1961).",
+  },
+  {
+    prompt: "Hva tolker mange forskere kaldflekken sør for Grønland som et tegn på?",
+    options: [
+      "At en undersjøisk vulkan har kjølt ned havet",
+      "At AMOC har svekket seg og frakter mindre varme nordover",
+      "At Grønland har sluttet å smelte",
+      "At corioliseffekten har snudd",
+    ],
+    answer: 1,
+    explain: "Det er likevel usikkert hvor mye av avkjølingen som skyldes AMOC (Caesar mfl., 2018; IPCC, 2021).",
+  },
+  {
+    prompt: "Hva skjedde i yngre dryas, for ca. 12 800–11 700 år siden?",
+    options: [
+      "Smeltevann svekket trolig AMOC kraftig, og det ble kaldt igjen rundt Nord-Atlanteren",
+      "Golfstrømmen tørket ut på grunn av tørke i Karibia",
+      "Jorda gikk inn i en varm mellomistid uten snø",
+      "Dinosaurene døde ut",
+    ],
+    answer: 0,
+    explain: "Det ble plutselig mye kaldere i Norge, og isen rykket fram igjen. Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025b).",
   },
 ];
 
@@ -981,55 +999,70 @@ export const QUIZ_ENSO: QuizQuestion[] = [
 
 export const QUIZ_OVERSIKT: QuizQuestion[] = [
   {
-    prompt: "Hva er klima, til forskjell fra været?",
+    prompt: "Hva er forskjellen på vær og klima?",
     options: [
-      "Det langvarige mønsteret i været. Et skifte i det langvarige gjennomsnittet er klimaendring.",
-      "Temperaturen i én uke.",
-      "Bare nedbøren i tropene.",
+      "Vær er temperatur, klima er nedbør.",
+      "Vær er tilstanden nå og de nærmeste dagene. Klima er mønsteret over tiår.",
+      "Klima er bare i tropene.",
+      "De er samme ting med ulike navn.",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er klima?». Klima er mønsteret over lang tid. Været er tilstanden nå.",
+    answer: 1,
+    explain: "En kald uke er vær. At et sted er typisk kaldt i 30 år, er klima.",
   },
   {
-    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling, ikke det første pådrivet?",
     options: [
-      "Den reagerer på temperaturen og forsterker en oppvarming som noe annet har startet.",
-      "Den er ikke en drivhusgass.",
-      "Den finnes bare over hav.",
+      "Fordi vanndamp ikke er en drivhusgass.",
+      "Fordi mengden vanndamp i lufta styres av temperaturen. Endringen settes i gang av noe annet, for eksempel mer karbondioksid.",
+      "Fordi vanndamp bare finnes over hav.",
+      "Fordi den ikke påvirker stråling.",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva betyr drivhuseffekten?». NASA omtaler vanndamp som en tilbakekobling som forsterker.",
+    answer: 1,
+    explain: "Varmere luft holder mer vanndamp. Mer vanndamp holder mer varme. Den forsterker, men starter ikke endringen.",
   },
   {
-    prompt: "Hvor stor del av sollyset som treffer jorda, kastes tilbake?",
-    options: ["29 prosent.", "Hele innstrålingen.", "Ingenting. Alt tas opp ved bakken."],
-    answer: 0,
-    explain:
-      "Se tabellen. 29 prosent reflekteres. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten.",
+    prompt: "Hva beskriver ENSO best?",
+    options: [
+      "At Golfstrømmen snur.",
+      "Et naturlig samspill mellom passatvindene og varmt vann i tropisk Stillehav, som flytter regn og tørke i noen år.",
+      "At ozonlaget tynnes.",
+      "At alle orkaner kommer fra Stillehavet.",
+    ],
+    answer: 1,
+    explain: "El Niño og La Niña er ytterpunkter i samme svingning. De er ikke det samme som global oppvarming.",
   },
   {
-    prompt: "Hvor har det meste av overskuddsvarmen det siste århundret blitt av?",
+    prompt: "Omtrent hvor mye energi tar hele jordas system opp fra sola, i globalt middel?",
     options: [
-      "Omtrent 90 prosent er tatt opp i havet.",
-      "Alt er blitt værende i lufta.",
-      "Havet tar ikke opp varme.",
+      "15 W/m²",
+      "100 W/m²",
+      "340 W/m²",
+      "240 W/m²",
     ],
-    answer: 0,
-    explain:
-      "Se «Havet husker». NASA sier at omtrent 90 prosent av overskuddsvarmen er tatt opp i havet.",
+    answer: 3,
+    explain: "Av 340 W/m² inn kastes 29 prosent tilbake. Resten, omtrent 240 W/m², tas opp (NASA, 2009).",
   },
   {
-    prompt: "Hva er tap av is ved polene i energibudsjettet?",
+    prompt: "Hvilket utsagn om CO₂ er riktig?",
     options: [
-      "En tilbakekobling. Flaten blir mindre reflekterende.",
-      "Det første pådrivet som starter oppvarmingen.",
-      "En endring som bare gjelder været i én dag.",
+      "CO₂ i lufta var i snitt 425,6 ppm globalt i 2025, mot ca. 280 ppm før industrialiseringen",
+      "CO₂ har ligget på samme nivå siden 1850",
+      "CO₂ er en tilbakekobling og ikke et pådriv",
+      "CO₂ i lufta har sunket siden 1990",
     ],
     answer: 0,
-    explain:
-      "Se «Isen er et speil». NASA bruker istap ved polene som eksempel på en tilbakekobling.",
+    explain: "Mer CO₂ er et positivt strålingspådriv (NOAA GML, 2026; IPCC, 2021).",
+  },
+  {
+    prompt: "Grønlandsisen kan heve havnivået med ca. 7,4 m. Hva venter IPCC innen 2100?",
+    options: [
+      "At hele Grønlandsisen har smeltet",
+      "Ingen stigning",
+      "0,28–1,01 m stigning, avhengig av utslipp",
+      "Over 10 m stigning",
+    ],
+    answer: 2,
+    explain: "7,4 m er hvor mye isen inneholder, ikke en prognose (IPCC, 2021).",
   },
 ];
 
@@ -4679,6 +4712,282 @@ export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Da ser du lagdelingen direkte.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_1: QuizQuestion[] = [
+  {
+    prompt: "Vinteren er uvanlig kald i hele Norge. Hva sier det om klimaet?",
+    options: [
+      "At klimaet ikke blir varmere",
+      "Lite. Én vinter er vær, og klima er mønsteret over minst 30 år",
+      "At klimaet blir kaldere",
+    ],
+    answer: 1,
+    explain: "Klima er statistikken over minst 30 år. Én kald vinter er vær (WMO, u.å.).",
+  },
+  {
+    prompt: "Hvilke deler består klimasystemet av?",
+    options: [
+      "Bare atmosfæren og havet",
+      "Atmosfæren, havet og sola",
+      "Atmosfæren, havet, isen, landoverflaten og livet",
+    ],
+    answer: 2,
+    explain: "Delene bytter varme, vann og karbon. Endrer du én del, svarer de andre.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_2: QuizQuestion[] = [
+  {
+    prompt: "Omtrent hvor mye av sollyset som treffer jorda, kastes tilbake til rommet?",
+    options: [
+      "29 prosent",
+      "48 prosent",
+      "71 prosent",
+    ],
+    answer: 0,
+    explain: "29 prosent reflekteres, mest fra skyer. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten (NASA, 2009).",
+  },
+  {
+    prompt: "Hva gjør drivhusgassene med strålingen?",
+    options: [
+      "De stopper sollyset før det når bakken",
+      "De lager ny energi i atmosfæren",
+      "De slipper sollyset inn, men bremser den langbølgede varmestrålingen på vei ut",
+    ],
+    answer: 2,
+    explain: "Vanndamp, karbondioksid og metan holder igjen varme nær overflaten (NASA, u.å.-a).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    options: [
+      "Fordi vanndamp ikke er en drivhusgass",
+      "Fordi vanndamp bare finnes over havet",
+      "Fordi mengden vanndamp styres av temperaturen, og den forsterker en endring som noe annet har startet",
+    ],
+    answer: 2,
+    explain: "Varmere luft kan holde mer vanndamp, og mer vanndamp holder mer varme (NASA, u.å.-a).",
+  },
+  {
+    prompt: "Havisen i Arktis smelter. Hvorfor gir det mer oppvarming?",
+    options: [
+      "Fordi smeltevannet er varmt",
+      "Fordi mørkt hav tar opp mer sollys enn hvit is",
+      "Fordi isen sender ut drivhusgasser",
+    ],
+    answer: 1,
+    explain: "Det er is-albedo-tilbakekoblingen. Den er en av grunnene til at Arktis blir varmet opp nesten fire ganger så raskt som jorda i gjennomsnitt (Rantanen mfl., 2022).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_4: QuizQuestion[] = [
+  {
+    prompt: "Hvor har det meste av overskuddsvarmen de siste tiårene blitt av?",
+    options: [
+      "I lufta",
+      "I havet",
+      "I isen",
+    ],
+    answer: 1,
+    explain: "Omtrent 90 prosent er tatt opp i havet (NASA, u.å.-b).",
+  },
+  {
+    prompt: "Hva er riktig om ENSO, IOD og NAO?",
+    options: [
+      "De er naturlige svingninger som flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig",
+      "De er det samme som global oppvarming",
+      "De er ytre pådriv",
+    ],
+    answer: 0,
+    explain: "Svingningene hører til den indre dynamikken i klimasystemet (WMO, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor mye varmere var den globale overflatetemperaturen i 2011–2020 enn i 1850–1900?",
+    options: [
+      "Ca. 0,5 °C",
+      "Ca. 2 °C",
+      "1,09 °C",
+    ],
+    answer: 2,
+    explain: "Det beste anslaget for den menneskeskapte delen er 1,07 °C (IPCC, 2021).",
+  },
+  {
+    prompt: "2024 var 1,60 °C over førindustrielt nivå. Betyr det at Paris-grensen på 1,5 °C er nådd?",
+    options: [
+      "Nei, grensen gjelder et gjennomsnitt over 20 år",
+      "Ja, ett år over 1,5 °C er nok",
+      "Ja, men bare i Europa",
+    ],
+    answer: 0,
+    explain: "Den langsiktige oppvarmingen anslås til ca. 1,4 °C (Copernicus, 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er norskekysten mildere enn Labrador på samme bredde?",
+    options: [
+      "Fordi vestavinden og det varme havet flytter varme hit",
+      "Fordi sola står høyere over Norge",
+      "Fordi Norge ligger lenger sør",
+    ],
+    answer: 0,
+    explain: "Klima er transport, ikke bare solhøyde. Varmen kommer med Den norske atlanterhavsstrømmen og vestavinden.",
+  },
+  {
+    prompt: "Hva kan et varmere klima bety for Vestlandet?",
+    options: [
+      "Mindre nedbør, fordi lufta blir tørrere",
+      "Mer intens nedbør, fordi varmere luft kan holde mer fukt",
+      "Ingen endring, fordi fjellene stopper all luft",
+    ],
+    answer: 1,
+    explain: "Lufta tvinges opp av fjellet, og varmere luft holder mer fukt.",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_1: QuizQuestion[] = [
+  {
+    prompt: "Hva driver Golfstrømmen først og fremst?",
+    options: [
+      "Tetthetsforskjeller i dypet",
+      "Smeltevann fra Grønland",
+      "Vinden, og corioliseffekten gjør den smal og rask",
+    ],
+    answer: 2,
+    explain: "Golfstrømmen er en vinddrevet randstrøm i den subtropiske havvirvelen og ville ikke stoppe helt selv om AMOC gjorde det (IPCC, 2021).",
+  },
+  {
+    prompt: "Omtrent hvor mye vann frakter AMOC, sammenlignet med alle verdens elver?",
+    options: [
+      "Like mye",
+      "Ca. 15 ganger så mye",
+      "Ca. 1000 ganger så mye",
+    ],
+    answer: 1,
+    explain: "AMOC frakter ca. 17 Sv, og alle elver ca. 1,2 Sv (Johns mfl., 2023; Dai & Trenberth, 2002).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er hovedgrunnen til at overflatevannet i Nord-Atlanteren synker?",
+    options: [
+      "Det blir kraftig avkjølt om vinteren",
+      "Det blir varmet av sola om sommeren",
+      "Det blir ferskere av nedbør",
+    ],
+    answer: 0,
+    explain: "Avkjølingen er hovedmekanismen. Saltet fra subtropene hjelper til (Sælen mfl., 2025; Talley mfl., 2011).",
+  },
+  {
+    prompt: "Hva er salt-adveksjons-tilbakekoblingen?",
+    options: [
+      "At havis gjør vannet ferskere",
+      "At vinden presser salt vann mot land",
+      "At AMOC trekker salt vann nordover, som holder tettheten høy og gir mer omveltning",
+    ],
+    answer: 2,
+    explain: "Tilbakekoblingen virker begge veier. Blir AMOC svakere, kommer det mindre salt nordover (Stommel, 1961).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan smeltevann fra Grønland svekke AMOC?",
+    options: [
+      "Fordi isfjellene blokkerer strømmen",
+      "Fordi ferskvann er lettere enn sjøvann og legger seg som et lokk, så vannet ikke synker like lett",
+      "Fordi smeltevannet er varmere enn sjøvannet",
+    ],
+    answer: 1,
+    explain: "Ferskvannslokket gjør det vanskeligere for overflatevannet å bli tungt nok til å synke (IPCC, 2021).",
+  },
+  {
+    prompt: "Hva betyr hysterese i Stommels modell?",
+    options: [
+      "At sirkulasjonen ikke starter igjen av seg selv om ferskvannet bare reduseres til nivået før",
+      "At AMOC snur retning to ganger i døgnet",
+      "At saltholdigheten er lik overalt",
+    ],
+    answer: 0,
+    explain: "Ferskvannstilførselen må ned til et mye lavere nivå før sirkulasjonen kan starte igjen (Stommel, 1961).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_4: QuizQuestion[] = [
+  {
+    prompt: "Hva var trolig årsaken til yngre dryas?",
+    options: [
+      "Et stort vulkanutbrudd på Island",
+      "At jordbanen endret seg brått",
+      "At smeltevann svekket AMOC kraftig",
+    ],
+    answer: 2,
+    explain: "Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025b).",
+  },
+  {
+    prompt: "Hva er en Dansgaard-Oeschger-hendelse?",
+    options: [
+      "En langsom avkjøling over 100 000 år",
+      "En rask oppvarming på Grønland på 5–16,5 °C, fulgt av en langsom avkjøling",
+      "Et isfjellutbrudd fra Antarktis",
+    ],
+    answer: 1,
+    explain: "De fleste oppvarmingene var 9–13 °C. Det er vanlig å anta at hendelsene henger sammen med at AMOC ble sterkere og svakere (Kindler mfl., 2014).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_5: QuizQuestion[] = [
+  {
+    prompt: "Hva vurderer FNs klimapanel om AMOC i dette hundreåret?",
+    options: [
+      "At AMOC allerede har stoppet",
+      "At AMOC svært sannsynlig svekkes, men med middels sikkerhet ikke bryter brått sammen før 2100",
+      "At AMOC blir sterkere",
+    ],
+    answer: 1,
+    explain: "Hvor stor svekkelsen blir, er usikkert (IPCC, 2021).",
+  },
+  {
+    prompt: "Hva er kaldflekken?",
+    options: [
+      "Havet sør for Grønland, som er blitt kaldere mens resten av kloden er blitt varmere",
+      "Et høytrykk over Sibir",
+      "Isen på Svalbard",
+    ],
+    answer: 0,
+    explain: "Mange tolker den som et tegn på svekket AMOC, men det er usikkert hvor mye som skyldes AMOC (Caesar mfl., 2018; IPCC, 2021).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_6: QuizQuestion[] = [
+  {
+    prompt: "Hva ville et sammenbrudd av AMOC svært sannsynlig gi i Europa, ifølge IPCC?",
+    options: [
+      "Brå endringer i vær og nedbør, blant annet tørrere forhold",
+      "Ingen endring",
+      "Mer tropisk regn",
+    ],
+    answer: 0,
+    explain: "IPCC (2021).",
+  },
+  {
+    prompt: "Hvorfor gir en svekket AMOC ekstra havnivåstigning på østkysten av USA?",
+    options: [
+      "Fordi isen på Grønland smelter raskere",
+      "Fordi det regner mer",
+      "Fordi hellingen på havoverflaten som holder vann borte fra kysten, blir mindre",
+    ],
+    answer: 2,
+    explain: "For New York gir klimamodellene (CMIP3) 15–21 cm ekstra i 2091–2100 sammenlignet med 1981–2000, for scenariene B1, A1B og A2. Det kommer i tillegg til den globale stigningen (Yin mfl., 2009).",
   },
 ];
 

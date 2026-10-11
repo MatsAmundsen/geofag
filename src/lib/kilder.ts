@@ -2879,10 +2879,28 @@ export const KILDER = {
   ],
   oversikt: [
     {
-      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
-      italic: "Climate",
+      prefix: "AMAP. (2021). ",
+      italic: "AMAP Arctic climate change update 2021: Key trends and impacts",
+      suffix: ". Arctic Monitoring and Assessment Programme.",
+      href: "https://www.amap.no/documents/doc/amap-arctic-climate-change-update-2021-key-trends-and-impacts/3594",
+    },
+    {
+      prefix: "Copernicus. (2026, 14. januar). ",
+      italic: "Global climate highlights 2025",
+      suffix: ". Copernicus Climate Change Service.",
+      href: "https://climate.copernicus.eu/global-climate-highlights-2025",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
       suffix: ".",
-      href: "https://wmo.int/themes/climate",
+      href: "https://www.ipcc.ch/report/ar6/wg1/",
+    },
+    {
+      prefix: "Lacis, A. A., Schmidt, G. A., Rind, D. og Ruedy, R. A. (2010). Atmospheric CO₂: Principal control knob governing Earth’s temperature. ",
+      italic: "Science, 330",
+      suffix: "(6002), 356–359.",
+      href: "https://doi.org/10.1126/science.1190653",
     },
     {
       prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-a). ",
@@ -2903,8 +2921,20 @@ export const KILDER = {
       href: "https://science.nasa.gov/earth/earth-observatory/climate-and-earths-energy-budget/",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
-      italic: "Klima i Norge",
+      prefix: "NOAA Global Monitoring Laboratory [NOAA GML]. (2026). ",
+      italic: "Trends in atmospheric carbon dioxide (CO₂)",
+      suffix: ".",
+      href: "https://gml.noaa.gov/ccgg/trends/",
+    },
+    {
+      prefix: "Rantanen, M., Karpechko, A. Y., Lipponen, A., Nordling, K., Hyvärinen, O., Ruosteenoja, K., Vihma, T. og Laaksonen, A. (2022). The Arctic has warmed nearly four times faster than the globe since 1979. ",
+      italic: "Communications Earth and Environment, 3",
+      suffix: ", 168.",
+      href: "https://doi.org/10.1038/s43247-022-00498-3",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). Klima i Norge. I ",
+      italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/Klima_i_Norge",
     },
@@ -2919,6 +2949,12 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
+      italic: "Climate",
+      suffix: ".",
+      href: "https://wmo.int/topics/climate",
     },
   ],
   enso: [
@@ -3102,10 +3138,16 @@ export const KILDER = {
   ],
   amoc: [
     {
-      prefix: "Stommel, H. (1961). Thermohaline convection with two stable regimes of flow. ",
-      italic: "Tellus, 13",
-      suffix: "(2), 224–230.",
-      href: "https://doi.org/10.1111/j.2153-3490.1961.tb00079.x",
+      prefix: "Alley, R. B. (2000). The Younger Dryas cold interval as viewed from central Greenland. ",
+      italic: "Quaternary Science Reviews, 19",
+      suffix: "(1–5), 213–226.",
+      href: "https://doi.org/10.1016/S0277-3791(99)00062-1",
+    },
+    {
+      prefix: "Barthel, K. (2025, 13. oktober). Havstrøm. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/havstrøm",
     },
     {
       prefix: "Broecker, W. S. (1991). The great ocean conveyor. ",
@@ -3114,43 +3156,145 @@ export const KILDER = {
       href: "https://doi.org/10.5670/oceanog.1991.07",
     },
     {
-      prefix:
-        "Rahmstorf, S., Box, J. E., Feulner, G., Mann, M. E., Robinson, A., Rutherford, S., & Schaffernicht, E. J. (2015). Exceptional twentieth-century slowdown in Atlantic Ocean overturning circulation. ",
-      italic: "Nature Climate Change, 5",
-      suffix: "(5), 475–480.",
-      href: "https://doi.org/10.1038/nclimate2554",
-    },
-    {
-      prefix:
-        "Caesar, L., Rahmstorf, S., Robinson, A., Feulner, G., & Saba, V. (2018). Observed fingerprint of a weakening Atlantic Ocean overturning circulation. ",
+      prefix: "Caesar, L., Rahmstorf, S., Robinson, A., Feulner, G., & Saba, V. (2018). Observed fingerprint of a weakening Atlantic Ocean overturning circulation. ",
       italic: "Nature, 556",
       suffix: "(7700), 191–196.",
       href: "https://doi.org/10.1038/s41586-018-0006-5",
     },
     {
-      prefix:
-        "Ditlevsen, P., & Ditlevsen, S. (2023). Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. ",
+      prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
+      italic: "The ICS International Chronostratigraphic Chart (v2026/06)",
+      suffix: ". International Commission on Stratigraphy.",
+      href: "https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf",
+    },
+    {
+      prefix: "Dai, A., & Trenberth, K. E. (2002). Estimates of freshwater discharge from continents: Latitudinal and seasonal variations. ",
+      italic: "Journal of Hydrometeorology, 3",
+      suffix: "(6), 660–687.",
+      href: "https://doi.org/10.1175/1525-7541(2002)003<0660:EOFDFC>2.0.CO;2",
+    },
+    {
+      prefix: "Ditlevsen, P., & Ditlevsen, S. (2023). Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. ",
       italic: "Nature Communications, 14",
       suffix: "(1), 4254.",
       href: "https://doi.org/10.1038/s41467-023-39810-w",
     },
     {
-      prefix:
-        "van Westen, R. M., Kliphuis, M., & Dijkstra, H. A. (2024). Physics-based early warning signal shows that AMOC is on tipping course. ",
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2019). Summary for policymakers. I ",
+      italic: "The ocean and cryosphere in a changing climate",
+      suffix: " (s. 3–36). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157964.001",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      italic: "Climate change 2021: The physical science basis",
+      suffix: ". Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896",
+    },
+    {
+      prefix: "Johns, W. E., Elipot, S., Smeed, D. A., Moat, B., King, B., Volkov, D. L., & Smith, R. H. (2023). Towards two decades of Atlantic Ocean mass and heat transports at 26.5° N. ",
+      italic: "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 381",
+      suffix: "(2262), 20220188.",
+      href: "https://doi.org/10.1098/rsta.2022.0188",
+    },
+    {
+      prefix: "Kindler, P., Guillevic, M., Baumgartner, M., Schwander, J., Landais, A., & Leuenberger, M. (2014). Temperature reconstruction from 10 to 120 kyr b2k from the NGRIP ice core. ",
+      italic: "Climate of the Past, 10",
+      suffix: "(2), 887–902.",
+      href: "https://doi.org/10.5194/cp-10-887-2014",
+    },
+    {
+      prefix: "Lilly, J. M., Rhines, P. B., Visbeck, M., Davis, R., Lazier, J. R. N., Schott, F., & Farmer, D. (1999). Observing deep convection in the Labrador Sea during winter 1994/95. ",
+      italic: "Journal of Physical Oceanography, 29",
+      suffix: "(8), 2065–2098.",
+      href: "https://doi.org/10.1175/1520-0485(1999)029<2065:ODCITL>2.0.CO;2",
+    },
+    {
+      prefix: "Lozier, M. S., Li, F., Bacon, S., Bahr, F., Bower, A. S., Cunningham, S. A., de Jong, M. F., de Steur, L., deYoung, B., Fischer, J., Gary, S. F., Greenan, B. J. W., Holliday, N. P., Houk, A., Houpert, L., Inall, M. E., Johns, W. E., Johnson, H. L., Johnson, C., … Zhao, J. (2019). A sea change in our view of overturning in the subpolar North Atlantic. ",
+      italic: "Science, 363",
+      suffix: "(6426), 516–521.",
+      href: "https://doi.org/10.1126/science.aau6592",
+    },
+    {
+      prefix: "Mangerud, J. (2025a, 12. oktober). Siste istid. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/siste_istid",
+    },
+    {
+      prefix: "Mangerud, J. (2025b, 29. august). Yngre dryas. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/yngre_dryas",
+    },
+    {
+      prefix: "Marshall, J., & Schott, F. (1999). Open-ocean convection: Observations, theory, and models. ",
+      italic: "Reviews of Geophysics, 37",
+      suffix: "(1), 1–64.",
+      href: "https://doi.org/10.1029/98RG02739",
+    },
+    {
+      prefix: "NOAA AOML. (u.å.). ",
+      italic: "Florida Current transport",
+      suffix: ".",
+      href: "https://www.aoml.noaa.gov/phod/floridacurrent/",
+    },
+    {
+      prefix: "Rahmstorf, S., Box, J. E., Feulner, G., Mann, M. E., Robinson, A., Rutherford, S., & Schaffernicht, E. J. (2015). Exceptional twentieth-century slowdown in Atlantic Ocean overturning circulation. ",
+      italic: "Nature Climate Change, 5",
+      suffix: "(5), 475–480.",
+      href: "https://doi.org/10.1038/nclimate2554",
+    },
+    {
+      prefix: "Stommel, H. (1961). Thermohaline convection with two stable regimes of flow. ",
+      italic: "Tellus, 13",
+      suffix: "(2), 224–230.",
+      href: "https://doi.org/10.1111/j.2153-3490.1961.tb00079.x",
+    },
+    {
+      prefix: "Sælen, O. H., Barthel, K., & Spjeldnæs, N. (2025, 13. august). Norskehavet. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/Norskehavet",
+    },
+    {
+      prefix: "Talley, L. D., Pickard, G. L., Emery, W. J., & Swift, J. H. (2011). ",
+      italic: "Descriptive physical oceanography: An introduction",
+      suffix: " (6. utg.). Academic Press.",
+      href: "https://doi.org/10.1016/C2009-0-24322-4",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "van Westen, R. M., Kliphuis, M., & Dijkstra, H. A. (2024). Physics-based early warning signal shows that AMOC is on tipping course. ",
       italic: "Science Advances, 10",
       suffix: "(6), eadk1189.",
       href: "https://doi.org/10.1126/sciadv.adk1189",
     },
     {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
-      italic:
-        "Chapter 9: Ocean, cryosphere and sea level change. In Climate Change 2021: The Physical Science Basis",
-      suffix: ". Cambridge University Press.",
-      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/",
+      prefix: "Volkov, D. L., Smith, R. H., Garcia, R. F., Smeed, D. A., Moat, B. I., Johns, W. E., & Baringer, M. O. (2024). Florida Current transport observations reveal four decades of steady state. ",
+      italic: "Nature Communications, 15",
+      suffix: ", 7780.",
+      href: "https://doi.org/10.1038/s41467-024-51879-5",
     },
     {
-      prefix:
-        "Yin, J., Schlesinger, M. E., & Stouffer, R. J. (2009). Model projections of rapid sea-level rise on the northeast coast of the United States. ",
+      prefix: "Weber, J. E., & Bjørndalen, E. (2024, 25. november). Den norske atlanterhavsstrømmen. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/Den_norske_atlanterhavsstrømmen",
+    },
+    {
+      prefix: "Yin, J., Schlesinger, M. E., & Stouffer, R. J. (2009). Model projections of rapid sea-level rise on the northeast coast of the United States. ",
       italic: "Nature Geoscience, 2",
       suffix: ", 262–266.",
       href: "https://doi.org/10.1038/ngeo462",

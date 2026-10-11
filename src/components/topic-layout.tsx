@@ -34,9 +34,7 @@ type TopicLink = { to: string; label: string; params?: Record<string, string> };
 const CODED_G2_PATHS = new Set([
   "/tema/tilpasning",
   "/tema/klima",
-  "/tema/klima/oversikt",
   "/tema/klima/nao",
-  "/tema/klima/amoc",
 ]);
 
 export function TopicLayout({
