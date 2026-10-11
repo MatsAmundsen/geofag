@@ -14,7 +14,7 @@ import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { P, pickStep, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
-import { KART_EURASIA } from "./norgesgeo-kart";
+import { RESSURSKART_LAND } from "./ressurskart-kyst";
 
 type Pt = [number, number];
 const n1 = (v: number) => Math.round(v * 10) / 10;
@@ -209,7 +209,7 @@ export function PetroleumSnittFigur({
  * 2. Norgeskart: forekomstene kapitlet nevner
  * ===================================================================== */
 
-/** Lambert asimutal flatetro, 8° V 70° N, R = 1000 (samme som norgesgeo-kart.ts), skalert til figuren. */
+/** Lambert asimutal flatetro, 8° V 70° N, R = 1000 (samme som norgesgeo-kart.ts og ressurskart-kyst.ts), skalert til figuren. */
 const MAP_S = 2.7;
 const MAP_OX = 10;
 const MAP_OY = -100;
@@ -315,9 +315,7 @@ export function RessurskartFigur({
         {() => (
           <g data-figur="ressurskart" data-step={step} data-playing="no">
             <rect x="0" y="0" width="960" height="840" fill="#123247" />
-            <g transform={`scale(${MAP_S}) translate(${-MAP_OX} ${-MAP_OY})`} data-nocheck="">
-              <path d={KART_EURASIA} fill="#5f6a58" stroke="#b9c2a8" strokeWidth={1.4 / MAP_S} />
-            </g>
+            <path d={RESSURSKART_LAND} fill="#5f6a58" stroke="#b9c2a8" strokeWidth="1.4" strokeLinejoin="round" data-nocheck="" />
             {pts.map((s) => (
               <circle
                 key={s.navn}
