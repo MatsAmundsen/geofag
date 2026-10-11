@@ -36,7 +36,7 @@ Det er entydig at menneskelig påvirkning har varmet opp atmosfæren, havet og l
 
 ## Sidene om klima
 
-[Klima og klimasystemer](/tema/klima) er inngangen. Les gjerne [oversikten](/tema/klima/oversikt) først. Der står stråling, pådriv og tilbakekoblinger. Deretter kommer svingningene ENSO, IOD og NAO, og til slutt AMOC. Isen står i [kryosfæren](/tema/kryosfaeren).
+[Klima og klimasystemer](/tema/klima) er inngangen. Les gjerne [oversikten](/tema/klima/oversikt) først. Der lærer du om stråling, pådriv og tilbakekoblinger. Deretter kommer svingningene ENSO, IOD og NAO, og til slutt AMOC. I [paleoklima](/tema/paleoklima) og [istider](/tema/milankovitch) lærer du om klimaet i fortiden, og i [konsekvenser og tilpasning](/tema/tilpasning) lærer du om hva klimaendringene betyr for samfunnet. Om isen lærer du i [kryosfæren](/tema/kryosfaeren).
 
 ```widget
 KlimaKart
