@@ -129,8 +129,8 @@ export function SnowProfileModel() {
   return (
     <ModelFrame
       kicker="Interaktiv snøgrop & stabilitetstest"
-      title="Snøprofilbygger og Extended Column Test (ECT)"
-      lead="Snø er ikke en homogen masse, men en lagdelt struktur av metamorfe bergartssjikt. Utforsk hvordan temperaturgradienten (dT/dz) styrer omdanningen til farlige begerkrystaller, og simuler en utvidet kompresjonstest (ECT) for å teste skredfaren."
+      title="Snøprofilbygger og utvidet kolonnetest (ECT)"
+      lead="Snødekket er ikke en ensartet masse, men består av lag som har falt og blitt omdannet til ulik tid. Utforsk hvordan temperaturgradienten (dT/dz) styrer omdanningen til farlige begerkrystaller, og simuler en utvidet kompresjonstest (ECT) for å teste skredfaren."
     >
       <div>
         <ModelMarkers />
@@ -183,7 +183,7 @@ export function SnowProfileModel() {
                 <div className="space-y-1">
                   <div className="flex items-center gap-1 text-amber-400 font-semibold">
                     <AlertTriangle className="size-3.5 shrink-0" />
-                    <span>Bratt gradient (≥ 10 °C/m) → Kinetisk metamorfose!</span>
+                    <span>Bratt gradient (≥ 10 °C/m) → Kinetisk metamorfose</span>
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
                     Fordi temperaturforskjellen mellom overflaten ({surfaceTemp} °C) og bakken (0 °C) er
@@ -209,7 +209,7 @@ export function SnowProfileModel() {
             {/* Stabilitetstest ECT Seksjon */}
             <div className="rounded-xl border border-border bg-card/60 p-3.5 space-y-2.5">
               <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground flex items-center justify-between">
-                <span>Extended Column Test (ECT)</span>
+                <span>Utvidet kolonnetest (ECT)</span>
                 <span className="text-[10px] text-muted-foreground font-normal">Feltmetode for bruddforplantning</span>
               </h4>
 

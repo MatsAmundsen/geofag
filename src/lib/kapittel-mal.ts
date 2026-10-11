@@ -101,6 +101,12 @@ import {
   QUIZ_SJEKK_MODELLER_4,
   QUIZ_SJEKK_MODELLER_5,
   QUIZ_SJEKK_MODELLER_6,
+  QUIZ_SJEKK_FELT_HAV_1,
+  QUIZ_SJEKK_FELT_HAV_2,
+  QUIZ_SJEKK_FELT_HAV_3,
+  QUIZ_SJEKK_FELT_HAV_4,
+  QUIZ_SJEKK_FELT_HAV_5,
+  QUIZ_SJEKK_FELT_HAV_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -196,6 +202,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Modeller4: QUIZ_SJEKK_MODELLER_4,
   Modeller5: QUIZ_SJEKK_MODELLER_5,
   Modeller6: QUIZ_SJEKK_MODELLER_6,
+  FeltHav1: QUIZ_SJEKK_FELT_HAV_1,
+  FeltHav2: QUIZ_SJEKK_FELT_HAV_2,
+  FeltHav3: QUIZ_SJEKK_FELT_HAV_3,
+  FeltHav4: QUIZ_SJEKK_FELT_HAV_4,
+  FeltHav5: QUIZ_SJEKK_FELT_HAV_5,
+  FeltHav6: QUIZ_SJEKK_FELT_HAV_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -363,6 +375,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "I værvarslingen gir ECMWF randverdier og varsler for hele jorda. MEPS (2,5 km) gir de første døgnene på Yr, og AROME-Arctic (2,5 km) dekker Svalbard og nordområdene.",
     "Havmodellen Norkyst (ca. 800 meter) drives av vind og lufttrykk fra værmodellen, ferskvann fra elvene og tidevannet, og brukes til strøm, stormflo, drift i sjøen og lakselus.",
     "Klimamodeller som NorESM regner ut hvordan værstatistikken endrer seg når pådrivene endres. Modellene blir bedre med mer regnekraft, flere observasjoner og bedre parameteriseringer, og varslene har blitt omtrent én dag bedre hvert tiende år.",
+  ],
+  FeltHav: [
+    "Feltarbeid i hav, luft og is er å planlegge, samle inn georefererte data, bearbeide og tolke dem og presentere resultatene, på en måte som ivaretar helse, miljø og sikkerhet.",
+    "En risikovurdering hører med. Bruk flyteutstyr i små båter og isstav, ispigger og redningsvest på isen. Les snøskredvarselet, og ha med midler til å skremme isbjørn utenfor bebodd område på Svalbard. Hold minst 300 meter avstand til isbjørn, og 500 meter fra 1. mars til 30. juni.",
+    "En radiosonde måler temperatur, fuktighet og lufttrykk oppover i lufta, og driften viser vinden. Værstasjoner måler etter faste regler, slik at målingene kan sammenlignes.",
+    "CTD og Argo-bøyer måler ledningsevne og temperatur mot dyp, og saltholdigheten regnes ut fra dem. Kartverket måler vannstanden, og været kan gi avvik fra tidevannet.",
+    "Snøskredvarselet gjelder områder på minst 100 kvadratkilometer og erstatter ikke egne vurderinger. En snøprofil viser lagene i snødekket.",
+    "Alle målinger har usikkerhet. Gjenta målingene, regn ut gjennomsnitt og spredning, sammenlign med varsler og modeller, og vis profiler med dypet eller høyden på den loddrette aksen.",
   ],
 };
 

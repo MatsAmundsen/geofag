@@ -770,7 +770,7 @@ const COPY_RESEEDS: CopyReseed[] = [
   {
     flag: "felt-hav-luft-is-copy-2-2026-10-07",
     slug: "felt-hav-luft-is",
-    stale: ["## Tre felt, samme kjede"],
+    stale: ["| Felt | Hva du kan måle | Hvor tallene kommer fra |"],
   },
   {
     flag: "isbreer-og-landformer-copy-2026-10-07",
@@ -1081,6 +1081,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g2-numeriske-modeller-mal-2026-10-11",
     slug: "numeriske-modeller",
     stale: ["ECMWF har som kjerneoppgave", "Fra idé til regnestykke", "Observasjoner, hav og klima"],
+  },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-felt-hav-luft-is-mal-2026-10-11",
+    slug: "felt-hav-luft-is",
+    stale: ["## Tre felt i samme kjede"],
   },
 ];
 

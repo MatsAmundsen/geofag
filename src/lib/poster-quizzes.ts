@@ -2,54 +2,70 @@ import type { QuizQuestion } from "@/components/quiz";
 
 export const QUIZ_FELT_HAV: QuizQuestion[] = [
   {
-    prompt: "Hva skal du gjøre med dataene i feltarbeidet?",
-    options: [
-      "Bare samle dem inn og la dem ligge.",
-      "Bearbeide, tolke og presentere dem.",
-      "Bare lese et varsel, uten egne data.",
-    ],
-    answer: 1,
-    explain: "Se «Tre felt, samme kjede». Kjeden er planlegge, samle inn, bearbeide, tolke og presentere.",
-  },
-  {
     prompt: "Hva måler en radiosonde?",
     options: [
-      "Bare vannstanden ved kaia.",
-      "Snøskredfaregraden i ett heng.",
-      "Temperatur, fuktighet og lufttrykk fra bakken og oppover.",
+      "Bare vind ved bakken",
+      "Saltholdighet og temperatur i havet",
+      "Snødybde",
+      "Temperatur, fuktighet og lufttrykk fra bakken og oppover",
     ],
-    answer: 2,
-    explain: "Se «Luft». Sonden festes vanligvis til en værballong.",
+    answer: 3,
+    explain: "Sonden sender dataene ned mens den stiger, og driften viser vinden (Store norske leksikon, u.å.-a).",
   },
   {
-    prompt: "Hva viser Se havnivå?",
+    prompt: "Hva står CTD for?",
     options: [
-      "Observert og varslet vannstand, og tidevann.",
-      "Temperaturen oppover i atmosfæren.",
-      "Et snøskredvarsel for 24 regioner.",
-    ],
-    answer: 0,
-    explain: "Se «Hav». Vannstanden varierer på grunn av tidevannet og været.",
-  },
-  {
-    prompt: "Hva gjelder en snøskredfaregrad for?",
-    options: [
-      "Ett enkelt heng.",
-      "Bare Svalbard.",
-      "Et område på minst 100 kvadratkilometer, ikke ett heng.",
-    ],
-    answer: 2,
-    explain: "Se «Snø og is». Graden er regional.",
-  },
-  {
-    prompt: "Hva er varselet, ifølge Varsom?",
-    options: [
-      "En fasit for akkurat det henget du skal gå.",
-      "Et hjelpemiddel. Egne vurderinger hører med.",
-      "En erstatning for å presentere egne data.",
+      "Current, tide, density",
+      "Konduktivitet, temperatur og dyp",
+      "Kyst, tidevann og dybde",
+      "Klima, tetthet og drift",
     ],
     answer: 1,
-    explain: "Se «Snø og is». Varslene er regionale og kan avvike fra forholdene der du er.",
+    explain: "Saltholdigheten regnes ut fra ledningsevnen og temperaturen (NOAA, u.å.; Store norske leksikon, u.å.-d).",
+  },
+  {
+    prompt: "Hva viser Kartverkets Se havnivå?",
+    options: [
+      "Observert og varslet vannstand og tidevann",
+      "Havtemperaturen i Norskehavet",
+      "Snøskredfaren langs kysten",
+      "Saltholdigheten i fjordene",
+    ],
+    answer: 0,
+    explain: "Vannstanden varierer på grunn av tidevannet og været (Kartverket, u.å.).",
+  },
+  {
+    prompt: "Hva er riktig om snøskredvarselet?",
+    options: [
+      "Det gjelder ett enkelt heng",
+      "Det kommer bare én gang i uka",
+      "Det er et hjelpemiddel, og du må alltid gjøre egne vurderinger",
+      "Det gjelder bare Svalbard",
+    ],
+    answer: 2,
+    explain: "Faregraden gjelder minst 100 kvadratkilometer (Varsom, u.å.-a; Varsom, u.å.-b).",
+  },
+  {
+    prompt: "Hva skal du ha med deg utenfor bebodd område på Svalbard?",
+    options: [
+      "Bjørnespray",
+      "Kunnskap om sikring mot isbjørnangrep og egnede midler til å skremme isbjørn",
+      "Ingenting spesielt om sommeren",
+      "Bare en mobiltelefon med dekning",
+    ],
+    answer: 1,
+    explain: "Svalbardmiljøloven (2001) § 30 a.",
+  },
+  {
+    prompt: "Du har målt temperaturen ved kaia fem ganger på ti minutter og fått litt ulike verdier. Hva gjør du?",
+    options: [
+      "Bruker den høyeste verdien",
+      "Bruker bare den første målingen",
+      "Stryker målingene som avviker",
+      "Regner ut gjennomsnittet og oppgir spredningen som usikkerhet",
+    ],
+    answer: 3,
+    explain: "Spredningen mellom målingene viser hvor sikker du kan være.",
   },
 ];
 
@@ -4523,5 +4539,143 @@ export const QUIZ_SJEKK_MODELLER_6: QuizQuestion[] = [
     ],
     answer: 0,
     explain: "Modellene testes mot temperatur, årstider og naturlige svingninger som er målt, og mot hverandre i CMIP (Benestad & Gjengedal, 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_1: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr det at en måling er georeferert?",
+    options: [
+      "At den er tatt med et kalibrert instrument",
+      "At den er knyttet til en posisjon",
+      "At den er sammenlignet med et varsel",
+    ],
+    answer: 1,
+    explain: "Kjerneelementet krever georefererte data (Udir, u.å.-a). I hav, luft og is noterer du også tidspunktet.",
+  },
+  {
+    prompt: "Hvilket instrument passer best for å måle saltholdighet nedover i en fjord?",
+    options: [
+      "Radiosonde",
+      "Snøprofil",
+      "CTD",
+    ],
+    answer: 2,
+    explain: "CTD måler konduktivitet og temperatur mot dyp (NOAA, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er påbudt i en fritidsbåt som er kortere enn åtte meter, når båten er i fart?",
+    options: [
+      "At alle har på seg flyteutstyr når de er utendørs i båten og båten er i fart",
+      "At båten har ekkolodd",
+      "At føreren har med seg kart",
+    ],
+    answer: 0,
+    explain: "Småbåtloven (1998) § 23 a.",
+  },
+  {
+    prompt: "Hva bør du ha med deg når du skal ut på isen?",
+    options: [
+      "Bare mobiltelefon",
+      "Snøspade og søkestang",
+      "Isstav, ispigger og redningsvest, og kasteline når dere er flere",
+    ],
+    answer: 2,
+    explain: "Varsom (u.å.-c).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_3: QuizQuestion[] = [
+  {
+    prompt: "Hvordan finner man vinden med en radiosonde?",
+    options: [
+      "Sonden har en vindmåler på toppen",
+      "Ut fra lufttrykket ved bakken",
+      "Ut fra hvordan sonden driver sidelengs mens den stiger",
+    ],
+    answer: 2,
+    explain: "Store norske leksikon (u.å.-a).",
+  },
+  {
+    prompt: "Hvorfor skal lufttemperaturen måles i skygge, 1,25–2 meter over bakken?",
+    options: [
+      "Fordi det er mest praktisk",
+      "Fordi målinger fra ulike steder da kan sammenlignes",
+      "Fordi termometeret ellers fryser",
+    ],
+    answer: 1,
+    explain: "WMO har faste regler for målingene (WMO, 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_4: QuizQuestion[] = [
+  {
+    prompt: "Hvordan får man saltholdigheten fra en CTD-måling?",
+    options: [
+      "CTD-en har en egen saltmåler",
+      "Den regnes ut fra ledningsevnen og temperaturen",
+      "Den leses av på vannprøvene i laboratoriet hver gang",
+    ],
+    answer: 1,
+    explain: "Store norske leksikon (u.å.-d) og WHOI (u.å.).",
+  },
+  {
+    prompt: "Hva gjør en Argo-bøye mesteparten av tiden?",
+    options: [
+      "Den driver med strømmen på ca. 1000 meters dyp",
+      "Den ligger i overflaten og måler bølger",
+      "Den står fast på havbunnen",
+    ],
+    answer: 0,
+    explain: "Argo (u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor stort område gjelder faregraden i snøskredvarselet?",
+    options: [
+      "Det hengen du står i",
+      "Et helt fylke",
+      "Minst 100 kvadratkilometer",
+    ],
+    answer: 2,
+    explain: "Varsom (u.å.-b).",
+  },
+  {
+    prompt: "Hvor skal du grave en snøprofil?",
+    options: [
+      "På et skredtrygt sted med jevnt snødekke som er representativt for området",
+      "Midt i den bratteste hengen",
+      "Der snøen er tynnest",
+    ],
+    answer: 0,
+    explain: "NVE (2022).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor bør du gjenta målingene?",
+    options: [
+      "For å se hvor mye de varierer, og for å kunne regne ut et gjennomsnitt",
+      "For å få flere rader i feltboka",
+      "Fordi den første målingen alltid er feil",
+    ],
+    answer: 0,
+    explain: "Spredningen viser hvor sikker du kan være.",
+  },
+  {
+    prompt: "Hvordan viser du vanligvis en CTD-profil?",
+    options: [
+      "Som et kakediagram",
+      "Med dypet på den loddrette aksen og den målte verdien på den vannrette",
+      "Som en tabell uten enheter",
+    ],
+    answer: 1,
+    explain: "Da ser du lagdelingen direkte.",
   },
 ];
