@@ -914,6 +914,54 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Målet er at du skal kunne gjøre rede for det hydrologiske", "NVE kaller Hans den dyreste", "pinseflommen i 2011 og 2013", "cirka 144 000 brønner"],
   },
   {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-lokale-vaersystemer-figurer-2026-10-11",
+    slug: "lokale-vaersystemer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-jetstrommer-figurer-2026-10-11",
+    slug: "jetstrommer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-coriolis-figurer-2026-10-11",
+    slug: "coriolis",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-havstrommer-figurer-2026-10-11",
+    slug: "havstrommer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-kryosfaeren-figurer-2026-10-11",
+    slug: "kryosfaeren",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-numeriske-modeller-figurer-2026-10-11",
+    slug: "numeriske-modeller",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-vaerkatastrofer-figurer-2026-10-11",
+    slug: "vaerkatastrofer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-felt-hav-luft-is-figurer-2026-10-11",
+    slug: "felt-hav-luft-is",
+    stale: [],
+  },
+  {
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],

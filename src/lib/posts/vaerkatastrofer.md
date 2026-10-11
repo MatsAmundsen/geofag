@@ -33,6 +33,14 @@ Tropiske sykloner som dannes mellom 5 og 30 grader nord, beveger seg typisk vest
 
 Saffir-Simpson-skalaen anslår skade fra vinden. Den tar ikke med stormflo, flom fra regn eller tornadoer. Orkaner i alle kategorier kan gi dødelig stormflo, flom fra regn og tornadoer. Det krever vernetiltak, også å evakuere områder som er utsatt for stormflo. Kategori 3 og høyere kan gi ødeleggende til katastrofal vindskade (National Hurricane Center, u.å.-b).
 
+```widget
+HurricaneCrossSection
+```
+
+```widget
+HurricaneSpinModel
+```
+
 ## Tornado
 
 En tornado, også kalt trombe, er en lokal virvelvind. Den er den kraftigste av virvelvindene, som også omfatter skypumper og støvvirvler. Virvelen har tverrmål i størrelsesorden 100 meter. Det er målt vindhastigheter opp til 512 km/t, 142 m/s. Ut fra skader anslås det at vinden kanskje kan nå opptil 600 km/t (Store norske leksikon, u.å.-b).
@@ -40,6 +48,14 @@ En tornado, også kalt trombe, er en lokal virvelvind. Den er den kraftigste av 
 Tornadoer dannes oftest sammen med større systemer: kaldfronter, linjebyer og lavtrykk, og i mindre skala ved særlig kraftige bygeskyer, superceller. De flytter seg omtrent med moderskyen, typisk 40 til 50 km/t, unntaksvis opp i 100 km/t. De forekommer over land i subtropene og på midlere breddegrader. Over de sentrale delene av USA, der varm og fuktig luft fra Mexicogolfen møter kald luft fra nordvest, er det mange og kraftige tornadoer (Store norske leksikon, u.å.-b).
 
 EF-skalaen graderer en tornado fra EF0 til EF5 ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.).
+
+```widget
+SupercellAnatomy
+```
+
+```widget
+TornadoGenesis
+```
 
 ## Stormflo
 
@@ -49,6 +65,10 @@ Pålandsvind stuer vann mot kysten. På den nordlige halvkule dreies transporten
 
 Kartverket har det nasjonale ansvaret for vannstandsmåling. Tjenesten Se havnivå viser observert og varslet vannstand, tidevann, landheving og framtidig havnivå. Vannstanden varierer på grunn av tidevannet og været. De fleste steder er det to høyvann og to lavvann i døgnet. De ekstreme nivåene, stormflonivåene, er oppdatert i tjenesten. Klimaendringer gjør at havet stiger. Det meste av norskekysten vil oppleve havnivåstigning dersom den globale oppvarmingen fortsetter som i dag, og kommunene må forberede seg (Kartverket, u.å.).
 
+```widget
+StormSurge
+```
+
 ## Baroklin sirkulasjon
 
 Baroklinitet betyr at tetthetsflater og trykkflater skjærer hverandre. Baroklin massefordeling er en nødvendig betingelse for at det skal oppstå sirkulasjon i atmosfæren eller i havet. Når flatene faller sammen, kalles tilstanden barotrop (Store norske leksikon, u.å.-d). Siden bruker ikke ordet barokline lavtrykk som navn på en stormtype.
@@ -57,9 +77,17 @@ Baroklinitet betyr at tetthetsflater og trykkflater skjærer hverandre. Baroklin
 
 En bombesyklon er et lavtrykk som forsterker seg veldig raskt. Den kalles også meteorologisk bombe. Det er en ekstratropisk syklon. Ved 60 grader nord, omtrent Bergen og Oslo, må trykket synke med minst 24 hektopascal i løpet av 24 timer. Slike lavtrykk oppstår gjerne når en kald luftmasse kolliderer med en varm, ofte om høsten og vinteren, når havvannet er mye varmere enn luften over (Store norske leksikon, u.å.-e).
 
+```widget
+MeteorologicalBomb
+```
+
 ## Atmosfæriske elver
 
 Atmosfæriske elver er lange transportårer for vanndamp. De er typisk om lag 2000 kilometer lange og 300–500 kilometer brede. Tropiske luftmasser føres mot våre breddegrader, og når de kommer til Norge, blir vanndampen til regn. Fjellene er ikke høye nok til at vanndampen i disse luftmassene blir til snø, så nedbøren treffer bakken som regn. Nedbøren forsterkes når luften løftes over fjellene. Det kalles orografisk nedbør (Store norske leksikon, u.å.-f).
+
+```widget
+AtmosphericRiver
+```
 
 ## Ekstremværet Hans
 
@@ -70,6 +98,10 @@ At en ekstremværhendelse inntreffer, skyldes ikke nødvendigvis klimaendringene
 ## Polare lavtrykk
 
 Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). Meteorologisk institutt beskriver dem som små, men ganske intense lavtrykk nord for polarfronten. Siden 2000 er det registrert om lag 330 slike hendelser. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+
+```widget
+PolarLowFormation
+```
 
 ## Klima og ekstremnedbør
 
@@ -82,6 +114,10 @@ Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstre
 > Bare store orkaner er farlige, stemmer ikke. Orkaner i alle kategorier kan gi dødelig stormflo, flom fra regn og tornadoer (National Hurricane Center, u.å.-b).
 >
 > Stormflo er ikke bare tidevann. Det er særlig høy vannstand i forbindelse med storm, og den blir verst sammen med springflo (Store norske leksikon, u.å.-c).
+
+```widget
+ClimateRiskShift
+```
 
 ## Viktige begreper
 
