@@ -144,7 +144,7 @@ Varmen fra jordas kjerne varmer opp mantelbergartene til temperaturer som vanlig
 Hvordan platedriften startet, er et åpent forskningsspørsmål (Stern & Gerya, 2018). Her er én mulig forklaring.
 
 Innad i hver enkelt plate har vi varierende tykkelse. Dette betyr at noen steder er platen tynnere eller tykkere. Der platen er tynnere, er trykket litt lavere, ettersom man er nærmere overflaten.
-Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Magmaen som dannes her, vil først danne et magmakammer under platen, før den stiger opp gjennom sprekker og ganger i platen og opp til overflaten. På veien kan magmaen smelte litt av bergarten rundt seg (assimilasjon). Platen sprekker opp, og **vi har dermed fått en divergerende plategrense.**
+Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Når varm mantel stiger opp, buler platen opp og strekkes ut. Den øverste, kalde delen av skorpa, de øverste 10–20 km, er stiv og sprø, og stein tåler strekk dårlig. Derfor revner den i sprekker og normalforkastninger, og det dannes en riftdal (graben). Dypere ned er platen varm og bøyer seg i stedet for å sprekke. Smelten kan i tillegg presse sprekkene videre opp nedenfra. Magmaen samler seg først i et magmakammer under platen, før den stiger opp gjennom sprekker og ganger i platen og opp til overflaten. På veien kan magmaen smelte litt av bergarten rundt seg (assimilasjon). Slik sprekker platen opp, og **vi har dermed fått en divergerende plategrense.**
 
 Ifølge denne forklaringen var det slik platedriften kom i gang.
 
