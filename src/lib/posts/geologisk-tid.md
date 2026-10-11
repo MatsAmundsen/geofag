@@ -40,7 +40,7 @@ Tabellen viser hvordan de viktigste hendelsene i Norges geologi passer inn i tid
 |---|---|
 | Prekambrium | Grunnfjellet dannes og omdannes (ca. 3000–900) |
 | Kambrium–silur | Hav over Oslo-området, lag med fossiler avsettes |
-| Ordovicium–devon | Den kaledonske fjellkjeden (ca. 495–405) |
+| Sen kambrium–devon | Den kaledonske fjellkjeden (ca. 495–405) |
 | Sen karbon–perm | Oslo-riften (ca. 300–250) |
 | Paleogen | Norskehavet åpner seg (ca. 55) |
 | Kvartær | Istider, de siste ca. 2,6 millioner årene |
@@ -109,7 +109,7 @@ Hvilken metode vi velger, avhenger av hva som skal dateres og hvor gammelt det e
 |---|---|---|---|
 | Uran–bly | ²³⁸U → ²⁰⁶Pb | ca. 4,5 milliarder år | Zirkon og andre uranholdige mineraler, også i de eldste bergartene |
 | Kalium–argon og argon–argon | ⁴⁰K → ⁴⁰Ar | ca. 1,25 milliarder år | De fleste bergarter, fordi kalium er vanlig |
-| Rubidium–strontium | ⁸⁷Rb → ⁸⁷Sr | ca. 49 milliarder år | Bergarter eldre enn ca. 10 millioner år |
+| Rubidium–strontium | ⁸⁷Rb → ⁸⁷Sr | ca. 49 milliarder år | Gamle magmatiske og metamorfe bergarter |
 | Karbon-14 | ¹⁴C → ¹⁴N | 5730 år | Organisk materiale yngre enn ca. 50 000 år |
 
 *Kilder:* halveringstider fra Newman (1997) og, for rubidium, Villa mfl. (2015), bruksområder fra Mangerud og Spjeldnæs (2025), Lauritzen og Mangerud (2025) og Mangerud (2025a).
