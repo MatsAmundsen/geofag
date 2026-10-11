@@ -1209,7 +1209,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   KlimaForklaring: () => (
     <Callout title="Hva betyr «klimasystemet»?">
       <p>
-        Klimasystemet er atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren, og samspillet
+        Klimasystemet er atmosfæren, hydrosfæren, kryosfæren, geosfæren og biosfæren, og samspillet
         mellom dem. Utveksling av energi, vann og karbondioksid bestemmer klimamønstre og variasjon
         (WMO, u.å.).
       </p>
