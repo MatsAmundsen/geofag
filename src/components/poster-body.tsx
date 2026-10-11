@@ -92,9 +92,9 @@ import {
 import { NorgesGeodynamikkKart } from "@/components/diagrams/norges-geodynamikk-kart";
 import {
   BowenReactionSeriesDiagram,
-  FieldworkIllustrationDiagram,
   GrainSizeDistributionDiagram,
 } from "@/components/diagrams/geology-extra";
+import { FeltmetodeFigur } from "@/components/diagrams/felt-figurer";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import {
@@ -1133,7 +1133,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   SkredKrefter: () => <SkredKrefterFigur />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
-  FieldworkIllustration: () => <FieldworkIllustrationDiagram />,
+  FieldworkIllustration: () => <FeltmetodeFigur />,
   Feltbok: () => <FeltbokDiagram />,
   FraBergartTilBrudd: () => <FraBergartTilBruddDiagram />,
   PetroleumSystem: () => <PetroleumSystemDiagram />,
