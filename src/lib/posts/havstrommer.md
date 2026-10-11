@@ -24,6 +24,10 @@ DrivkrefterDiagram
 
 Vinden driver strømmene i de øvre om lag 100 meterne. Dypere strømmer drives av tetthetsforskjeller (NOAA, u.å.-e).
 
+```widget
+OceanCurrentModel
+```
+
 ## Overflaten: ekmantransport og havvirvler
 
 Når vinden drar i overflaten, drar laget med seg dypere vann. Hvert dypere lag går saktere, til bevegelsen dør ut på om lag 100 meters dyp. Lagene avbøyes mot høyre på den nordlige halvkule og mot venstre på den sørlige, og de dypeste kan gå motsatt vei av overflatestrømmen. Det er ekmanspiralen, beskrevet av Vagn Walfrid Ekman i 1902 (NOAA, u.å.-b).
@@ -48,6 +52,10 @@ GyreDiagram
 
 Vinden stuver varmt vann slik at havspeilet står relativt høyt. Øst for Newfoundland ligger havspeilet nær én meter lavere enn i Golfstrømmens kildeområde og i den tropiske delen av Atlanteren. Jordrotasjonen bøyer strømmen til høyre for den retningen skråningen alene skulle tilsi (Store norske leksikon, u.å.-a).
 
+```widget
+Ekman
+```
+
 ## Oppvelling
 
 Oppvelling er at vann løftes fra dypere nivåer når overflatelaget skyves til siden. En nordavind langs en vestkyst på den nordlige halvkule skyver overflaten utover, fordi ekmantransporten går til høyre. Vannet som kommer opp, er kaldere og rikt på næringsstoffer, og fiskefeltene er ofte gode der. Prosessen er langsom, om lag 10 meter per dag (Store norske leksikon, u.å.-b; NOAA, u.å.-d).
@@ -59,6 +67,10 @@ OppvellingDiagram
 Det er særlig tydelig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. Langs vestkysten av Afrika og Sør-Amerika holder oppvellingen fiskeriene i gang året rundt. Utenfor vestkysten av USA gir vind fra sør mot nord nedvelling om vinteren, og vind fra nord mot sør oppvelling om sommeren (Store norske leksikon, u.å.-b; NOAA, u.å.-d).
 
 Om lag halvparten av primærproduksjonen i havet skjer i oppvellingsområder. Om lag 25 prosent av det som fiskes, kommer fra områdene knyttet til Kanaristrømmen, Benguelastrømmen, Californiastrømmen, Perustrømmen og Somalistrømmen (Store norske leksikon, u.å.-b).
+
+```widget
+EkmanUpwellingModel
+```
 
 ## Golfstrømmen og Norges klima
 
@@ -78,6 +90,10 @@ Golfstrømmen er en varm overflatestrøm fra Floridastredet langs kysten av USA.
 I kildeområdet er temperaturen cirka 25 °C om vinteren, og til dels over 28 °C på ettersommeren. Etter at strømmen bøyer av, møter den den kalde Labradorstrømmen. Temperaturforskjellen kan være 10–15 °C over kort avstand (Store norske leksikon, u.å.-a).
 
 Det varme overflatevannet avgir varme til lufta. I fronten mellom varm luft over havdriften og kaldere luft lenger nord dannes lavtrykk som vandrer nordøstover og frakter varme og fuktighet til Vest-Europa. Derfor er klimaet i Norge mye mildere enn i Alaska, som ligger like langt mot nord (Store norske leksikon, u.å.-a). Norskehavet er opptil 10 °C varmere enn gjennomsnittet for 65° nord. De nord–sør-gående fjellkjedene i Nord-Amerika og på Grønland, kystlinjen og den åpne veien mot Polhavet fører også varme luft- og vannmasser mot nord (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-c).
+
+```widget
+ClimateContrast
+```
 
 ## Dypet: det globale transportbåndet
 
@@ -100,6 +116,10 @@ Mer regn i Nord-Atlanteren, og smelting av isbreer og havis, kan legge varmt fer
 > Strømmen langs norskekysten er ikke Golfstrømmen. Golfstrømmen går langs USA. Langs Norge heter den Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Store norske leksikon, u.å.-a).
 >
 > Dypstrømmene drives ikke av vinden på samme måte som overflaten. Vinden tar de øvre om lag 100 meterne. Dypet drives av tetthet (NOAA, u.å.-e).
+
+```widget
+Amoc
+```
 
 ## Viktige begreper
 

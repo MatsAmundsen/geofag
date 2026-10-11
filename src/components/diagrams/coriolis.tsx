@@ -992,60 +992,6 @@ export function EkmanSpiralDiagram() {
 
 // ─── LEGACY DIAGRAMMER (BEHOLDES FOR BAKOVERKOMPATIBILITET MED EKSAMENSFIGURER) ───
 
-export function RotationSpeedDiagram() {
-  return (
-    <Diagram
-      title="Jordas omløpshastighet avtar mot polene"
-      heading="Ekvator suser østover, polene står nesten stille"
-      caption="Hele jorda bruker ett døgn på en runde, men omkretsen er størst ved ekvator. Der er farten mot øst omtrent 1670 km/t. Ved 60° er den omtrent halvparten. Ved polen er den null. Luft som bytter bredde, tar med seg den østlige farten den hadde."
-      viewBox="0 0 820 360"
-    >
-      {(m) => (
-        <>
-          <ellipse cx="280" cy="180" rx="150" ry="150" fill="#152028" stroke={C.teal} strokeWidth="2.2" />
-          <ellipse cx="280" cy="180" rx="55" ry="150" fill="none" stroke={C.dim} />
-          <line x1="130" y1="180" x2="430" y2="180" stroke={C.dim} />
-          <Arrow d="M 300 180 L 500 180" marker={m.warm} color={C.warm} width={3.4} />
-          <Arrow d="M 310 105 L 430 105" marker={m.teal} color={C.teal} width={2.6} />
-          <Arrow d="M 318 70 L 400 70" marker={m.cold} color={C.cold} width={2.2} />
-          <circle cx="280" cy="32" r="5" fill={C.cold} />
-          <L x="560" y="78" fill={C.cold} size={15}>90° · 0 km/t</L>
-          <L x="560" y="110" fill={C.teal} size={15}>60° · ca. 840 km/t</L>
-          <L x="560" y="186" fill={C.warm} size={15}>0° · ca. 1670 km/t østover</L>
-          <L x="280" y="340" fill={C.muted} size={13} anchor="middle">
-            sett ovenfra vil østlig fart være størst der jorda er «bredest»
-          </L>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
-export function PolewardParcelDiagram() {
-  return (
-    <Diagram
-      title="Luft mot polen bøyes østover"
-      heading="Hvorfor avbøyningen går til høyre i nord"
-      caption="Luft som starter ved ekvator, har stor østlig fart. Lenger nord roterer bakken saktere. Lufta kommer derfor «foran» — øst for — det punktet den siktet mot. På nordlig halvkule oppleves det som avbøyning til høyre."
-      viewBox="0 0 820 340"
-    >
-      {(m) => (
-        <>
-          <rect x="70" y="40" width="680" height="250" fill="#122026" rx="8" />
-          <L x="90" y="70" fill={C.muted} size={13}>nord</L>
-          <L x="90" y="270" fill={C.muted} size={13}>ekvator</L>
-          <Arrow d="M 180 250 L 180 80" marker={m.muted} color={C.muted} width={2.2} dash="7 6" />
-          <L x="198" y="150" fill={C.muted} size={13}>tenkt rett linje</L>
-          <Arrow d="M 180 250 C 180 180, 280 120, 430 80" marker={m.teal} color={C.teal} width={3.2} />
-          <L x="360" y="168" fill={C.teal} size={15}>virkelig bane · mot høyre</L>
-          <L x="430" y="68" fill={C.fg} size={14}>øst for målet</L>
-          <L x="410" y="318" fill={C.muted} size={13} anchor="middle">øst →</L>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
 export function CoriolisDiagram() {
   return (
     <Diagram
@@ -1236,30 +1182,6 @@ export function ZonalMeridionalDiagram() {
         )}
       </Diagram>
     </div>
-  );
-}
-
-export function TradeDeflectionDiagram() {
-  return (
-    <Diagram
-      title="Hvorfor passaten kommer fra nordøst"
-      heading="Rett sydlig blir nordøstlig"
-      caption="Hadley-cellen vil sende luft rett mot ekvator. Coriolis bøyer den til høyre på nordlig halvkule, så vinden får en østlig komponent: nordøstpassaten. På sørlig halvkule blir det sørøstpassat. Uten coriolis ville «passatene» vært rene nord–sør-vinder."
-      viewBox="0 0 820 300"
-    >
-      {(m) => (
-        <>
-          <line x1="80" y1="70" x2="740" y2="70" stroke={C.dim} />
-          <L x="80" y="58" fill={C.muted} size={13}>30° · subtropisk høytrykk</L>
-          <line x1="80" y1="240" x2="740" y2="240" stroke={C.warm} strokeWidth="2" />
-          <L x="80" y="268" fill={C.warm} size={13}>ekvator · lavtrykk</L>
-          <Arrow d="M 250 90 L 250 220" marker={m.muted} color={C.muted} width={2} dash="7 6" />
-          <L x="266" y="150" fill={C.muted} size={13}>uten coriolis</L>
-          <Arrow d="M 480 90 L 360 220" marker={m.teal} color={C.teal} width={3.2} />
-          <L x="500" y="150" fill={C.teal} size={15}>nordøstpassat</L>
-        </>
-      )}
-    </Diagram>
   );
 }
 
