@@ -3900,3 +3900,95 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
     explain: "Når havbunn med kalkstein subduseres, frigjør oppvarmingen CO₂ fra karbonatene. Vulkanene gir gassen tilbake til atmosfæren.",
   },
 ];
+
+export const QUIZ_SJEKK_VAERKART_1: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr det når isobarene ligger tett?",
+    options: [
+      "Høyt trykk",
+      "Stor trykkforskjell over kort avstand og sterk vind",
+      "At det blir nedbør",
+    ],
+    answer: 1,
+    explain: "Tette isobarer gir sterk vind. Gisne isobarer gir svak vind.",
+  },
+  {
+    prompt: "Hva betyr 12Z på et værkart?",
+    options: [
+      "Klokka 12 UTC",
+      "Klokka 12 norsk tid om vinteren",
+      "12 timer etter varselet",
+    ],
+    answer: 0,
+    explain: "Kart, radar og satellittbilder har tidsstempel i UTC, også kalt Z-tid.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_2: QuizQuestion[] = [
+  {
+    prompt: "Hvordan tegnes en kaldfront?",
+    options: [
+      "Rød strek med halvsirkler",
+      "Blå strek med trekanter i fartsretningen",
+      "Lilla strek uten symboler",
+    ],
+    answer: 1,
+    explain: "Trekantene peker den veien fronten flytter seg.",
+  },
+  {
+    prompt: "Hva betyr det at en front er en kaldfront?",
+    options: [
+      "At det er kuldegrader bak fronten",
+      "At lufta bak er kaldere enn lufta foran",
+      "At den kommer fra nord",
+    ],
+    answer: 1,
+    explain: "Det finnes ingen fast temperaturgrense. Begge sidene kan være milde.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_3: QuizQuestion[] = [
+  {
+    prompt: "Hvordan dannes en okkludert front?",
+    options: [
+      "Kaldfronten tar igjen varmfronten",
+      "Varmfronten stopper opp",
+      "To høytrykk møtes",
+    ],
+    answer: 0,
+    explain: "Kaldfronten går raskere enn varmfronten. Varmsektoren løftes bort fra bakken, og lavtrykket svekkes.",
+  },
+  {
+    prompt: "Hvem utviklet den norske syklonmodellen?",
+    options: [
+      "Vilhelm Bjerknes alene",
+      "William Ferrel",
+      "Jacob Bjerknes og Halvor Solberg",
+    ],
+    answer: 2,
+    explain: "Jacob Bjerknes beskrev frontene i 1919, og sammen med Solberg publiserte han livsløpet i 1922.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_4: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr tallet 564 på et 500 hPa-kart?",
+    options: [
+      "Trykket er 564 hPa",
+      "500 hPa-flaten ligger 5640 meter over havet",
+      "Temperaturen er –56,4 °C",
+    ],
+    answer: 1,
+    explain: "Konturene viser høyden av 500 hPa-flaten. Den siste nullen er sløyfet.",
+  },
+  {
+    prompt: "Hvilken vei peker vindpilen i et stasjonsplott?",
+    options: [
+      "Dit vinden kommer fra",
+      "Dit vinden blåser",
+      "Alltid mot nord",
+    ],
+    answer: 0,
+    explain: "Vinden har navn etter retningen den kommer fra, og vindpilen peker dit.",
+  },
+];

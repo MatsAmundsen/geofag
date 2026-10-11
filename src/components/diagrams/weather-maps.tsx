@@ -449,7 +449,8 @@ export function FrontVerticalProfileDiagram() {
           {/* HØYDESKALA PÅ VENSTRE SIDE (0 til 12 km) */}
           <g transform="translate(65, 50)">
             {[
-              { y: 30, km: "12 km · Tropopause" },
+              { y: 30, km: "12 km" },
+              { y: 88, km: "ca. 10 km · Tropopause" },
               { y: 110, km: "9 km · Cirrus (Ci)" },
               { y: 200, km: "6 km · Altostratus (As)" },
               { y: 290, km: "3 km · Nimbostratus (Ns)" },

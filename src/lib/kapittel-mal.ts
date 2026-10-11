@@ -75,6 +75,10 @@ import {
   QUIZ_SJEKK_KATASTROFER_3,
   QUIZ_SJEKK_ENERGI_1,
   QUIZ_SJEKK_ENERGI_2,
+  QUIZ_SJEKK_VAERKART_1,
+  QUIZ_SJEKK_VAERKART_2,
+  QUIZ_SJEKK_VAERKART_3,
+  QUIZ_SJEKK_VAERKART_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -144,6 +148,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
   Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
   Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
+  Vaerkart1: QUIZ_SJEKK_VAERKART_1,
+  Vaerkart2: QUIZ_SJEKK_VAERKART_2,
+  Vaerkart3: QUIZ_SJEKK_VAERKART_3,
+  Vaerkart4: QUIZ_SJEKK_VAERKART_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -267,6 +275,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
     "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
     "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
+  ],
+  Vaerkart: [
+    "Et værkart viser lavtrykk, høytrykk, fronter og isobarer. Tette isobarer betyr sterk vind. Tidene er i UTC (Z-tid).",
+    "En front er skillet mellom to luftmasser med ulik tetthet. Varmfront, kaldfront og okkludert front har hvert sitt symbol, og symbolene peker i fartsretningen.",
+    "Den norske syklonmodellen, utviklet av Jacob Bjerknes og Halvor Solberg i 1919–1922, viser livsløpet til et lavtrykk fra bølge på en front til okklusjon.",
+    "Stasjonsplott viser temperatur, duggpunkt, trykk, vær og vind. Vindpilen peker dit vinden kommer fra.",
+    "500 hPa-kartet viser høyden av trykkflaten midt i atmosfæren. Radar og satellitt brukes til å si noe om de nærmeste timene.",
   ],
 };
 
