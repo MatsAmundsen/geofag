@@ -547,10 +547,22 @@ export const KILDER = {
   ],
   bergarter: [
     {
+      prefix: "Berg, B. I. (2026, 7. juni). ",
+      italic: "Rana Gruber",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Rana_Gruber",
+    },
+    {
       prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
       italic: "Norges geologi",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/Norges_geologi",
+    },
+    {
+      prefix: "Garmo, T. T., Raade, G., & Fossen, H. (2025, 18. august). ",
+      italic: "Pyritt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/pyritt",
     },
     {
       prefix: "National Aeronautics and Space Administration [NASA]. (2011). ",
@@ -637,10 +649,64 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/sandstein",
     },
     {
-      prefix: "Raade, G. (2025, 2. juli). ",
+      prefix: "Raade, G. (2025a, 22. februar). ",
+      italic: "Mineraler",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/mineraler",
+    },
+    {
+      prefix: "Raade, G. (2025b, 2. juli). ",
       italic: "Rombeporfyr",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/rombeporfyr",
+    },
+    {
+      prefix: "Raade, G., Christensen, N., Ryum, N., & Pedersen, B. (2025, 21. august). ",
+      italic: "Gips",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/gips",
+    },
+    {
+      prefix: "Raade, G., & Fossen, H. (2025, 24. februar). ",
+      italic: "Granitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/granitt",
+    },
+    {
+      prefix: "Raade, G., Selbekk, R. S., & Olerud, K. (2025, 13. august). ",
+      italic: "Fluoritt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/fluoritt",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025a, 17. august). ",
+      italic: "Chalkopyritt",
+      suffix: ".",
+      href: "https://snl.no/chalkopyritt",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025b, 13. august). ",
+      italic: "Halitt",
+      suffix: ".",
+      href: "https://snl.no/halitt",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025c, 27. august). ",
+      italic: "Hematitt",
+      suffix: ".",
+      href: "https://snl.no/hematitt",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025d, 13. august). ",
+      italic: "Ilmenitt",
+      suffix: ".",
+      href: "https://snl.no/ilmenitt",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2026, 29. juli). ",
+      italic: "Kalsitt",
+      suffix: ".",
+      href: "https://snl.no/kalsitt",
     },
     {
       prefix: "Store norske leksikon [SNL]. (u.å.). ",
@@ -649,16 +715,10 @@ export const KILDER = {
       href: "https://snl.no/hardhet_-_mineralogi",
     },
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
+      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
       italic: "Collecting rocks",
       suffix: ".",
       href: "https://pubs.usgs.gov/gip/collect1/collectgip.html",
-    },
-    {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-b). ",
-      italic: "Natural gemstones",
-      suffix: ".",
-      href: "https://pubs.usgs.gov/gip/gemstones/mineral.html",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -673,8 +733,7 @@ export const KILDER = {
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
     {
-      prefix:
-        "White, A. F., Blum, A. E., Schulz, M. S., Bullen, T. D., Harden, J. W., & Peterson, M. L. (1996). Chemical weathering rates of a soil chronosequence on granitic alluvium: I. Quantification of mineralogical and surface area changes and calculation of primary silicate reaction rates. ",
+      prefix: "White, A. F., Blum, A. E., Schulz, M. S., Bullen, T. D., Harden, J. W., & Peterson, M. L. (1996). Chemical weathering rates of a soil chronosequence on granitic alluvium: I. Quantification of mineralogical and surface area changes and calculation of primary silicate reaction rates. ",
       italic: "Geochimica et Cosmochimica Acta, 60",
       suffix: "(14), 2533–2550.",
       href: "https://doi.org/10.1016/0016-7037(96)00106-8",

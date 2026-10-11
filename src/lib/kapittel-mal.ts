@@ -37,6 +37,10 @@ import {
   QUIZ_SJEKK_GEOLOGISK_TID_2,
   QUIZ_SJEKK_GEOLOGISK_TID_3,
   QUIZ_SJEKK_GEOLOGISK_TID_4,
+  QUIZ_SJEKK_BERGARTER_1,
+  QUIZ_SJEKK_BERGARTER_2,
+  QUIZ_SJEKK_BERGARTER_3,
+  QUIZ_SJEKK_BERGARTER_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -68,6 +72,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   GeologiskTid2: QUIZ_SJEKK_GEOLOGISK_TID_2,
   GeologiskTid3: QUIZ_SJEKK_GEOLOGISK_TID_3,
   GeologiskTid4: QUIZ_SJEKK_GEOLOGISK_TID_4,
+  Bergarter1: QUIZ_SJEKK_BERGARTER_1,
+  Bergarter2: QUIZ_SJEKK_BERGARTER_2,
+  Bergarter3: QUIZ_SJEKK_BERGARTER_3,
+  Bergarter4: QUIZ_SJEKK_BERGARTER_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -111,6 +119,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Radiometrisk datering bygger på at radioaktive isotoper brytes ned med en fast halveringstid. Uran–bly på zirkon passer for gamle bergarter, mens C-14 bare passer for organisk materiale yngre enn ca. 50 000 år.",
     "Varv, årringer, vulkansk aske, luminescens og eksponeringsdatering brukes for å datere hendelser i kvartær, som isavsmeltingen og gamle fjellskred.",
     "Geologene kombinerer relativ og absolutt datering for å lage en tidslinje for et område.",
+  ],
+  Bergarter: [
+    "Et mineral har bestemt kjemi og krystallstruktur. En bergart består av ett eller flere mineraler, og sediment er løst materiale som ennå ikke er bergart. Granitt er en bergart, kvarts er et mineral.",
+    "Silikatene er de vanligste mineralene. Karbonater som kalsitt bygger kalkstein og marmor, og oksider og sulfider som hematitt, ilmenitt, pyritt og kobberkis er de viktigste malmmineralene.",
+    "Du utforsker et håndstykke med lupe, ripetest etter Mohs, fortynnet saltsyre og struktur: korn peker på magmatisk, lagdeling på sedimentær og striper på metamorf bergart.",
+    "Forvitring bryter ned berget på stedet, mekanisk eller kjemisk. Erosjon flytter materialet bort.",
+    "Magmatiske bergarter størkner fra magma, som gabbro, larvikitt og rombeporfyr. Sedimentære bergarter er forsteinet sediment, som sandstein og kalkstein. Metamorfe bergarter er omdannet i fast tilstand, som fyllitt, gneis og grønnstein.",
+    "Bergartssyklusen er en modell med flere veier. Gneisen i grunnfjellet har vært metamorf i over 900 millioner år og har aldri gått hele runden.",
   ],
 };
 

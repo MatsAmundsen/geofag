@@ -486,7 +486,7 @@ const RUTER: Rute[] = [
     start: "magma",
     kanter: ["storkning"],
     tekst:
-      "Larvikitt: magma størknet på dypet til en dypbergart for cirka 295 millioner år siden, og har vært magmatisk bergart siden (NGU, u.å.-i). Veier den ikke har tatt: omdanning og smelting.",
+      "Larvikitt: magma størknet på dypet til en dypbergart for cirka 295–290 millioner år siden, og har vært magmatisk bergart siden (NGU, u.å.-i). Veier den ikke har tatt: omdanning og smelting.",
   },
   {
     navn: "Rombeporfyr",
@@ -507,7 +507,7 @@ const RUTER: Rute[] = [
     start: "sedi",
     kanter: ["forsteining"],
     tekst:
-      "Sandstein: sand av kvarts og feltspat (sediment) er kittet av kvarts, kalkspat eller jernforbindelser og har blitt sedimentær bergart (NGU, u.å.-m).",
+      "Sandstein: sand av kvarts og feltspat (sediment) er kittet av kvarts, kalsitt eller jernforbindelser og har blitt sedimentær bergart (NGU, u.å.-m).",
   },
   {
     navn: "Kalkstein",
@@ -1303,7 +1303,7 @@ const PROVER: Prove[] = [
     farge: "#c9a77c",
     korn: krystaller(43, 140, 5, 8, ["#e6d2ae", "#d4b88c", "#f0e3c8", "#b9945f"], 92),
     base: "#a07a4d",
-    lupe: "Sandstein: sandkorn av kvarts og feltspat, kittet av kvarts, kalkspat eller jernforbindelser. Korn og lagdeling peker på sedimentær bergart.",
+    lupe: "Sandstein: sandkorn av kvarts og feltspat, kittet av kvarts, kalsitt eller jernforbindelser. Korn og lagdeling peker på sedimentær bergart.",
     kornNavn: "kvarts",
     ripe: KVARTS_RIPE,
     riper: KV_RIPER,
@@ -1382,7 +1382,7 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
     p.syre === "bruser"
       ? `${p.navn}: Fortynnet saltsyre bruser. Kalsitt reagerer, så prøven hører til karbonatbergartene.`
       : p.syre === "kitt"
-        ? `${p.navn}: Bruser vanligvis ikke. Er kittet kalkspat, kan det bruse svakt der syren treffer kittet.`
+        ? `${p.navn}: Bruser vanligvis ikke. Er kittet kalsitt, kan det bruse svakt der syren treffer kittet.`
         : `${p.navn}: Bruser ikke. Prøven er ikke kalkstein eller marmor.`;
   const status =
     verktoy === 1

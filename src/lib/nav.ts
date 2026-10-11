@@ -320,7 +320,7 @@ export const GF1_THEMES = [
     image: "/images/geo-geologisk-kretslop-3d.jpg",
     alt: "3D-blokkdiagram av det geologiske kretsløpet med magmakammer, sedimentasjonsbasseng og regional metamorfose",
     blurb:
-      "Mineraler, de tre bergartsgruppene, forvitring og bergartssyklusen som modell. Norske eksempler er gabbro, larvikitt, rombeporfyr, fyllitt og gneis.",
+      "Mineraler og mineralgrupper, de tre bergartsgruppene, forvitring og bergartssyklusen som modell. Norske eksempler er gabbro, larvikitt, rombeporfyr, fyllitt og gneis.",
     status: "klar" as const,
     maal: "Utforske ulike mineralgrupper, bergartsgrupper og sedimenter, og tolke hvor de passer inn i bergartssyklusen.",
   },

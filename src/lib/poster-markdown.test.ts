@@ -227,7 +227,17 @@ describe("injectPosterWidgets", () => {
     for (const id of ["ElasticRebound", "BoundaryQuakes", "QuizJordskjelv"]) {
       assert.equal(jordskjelv.has(id), true, `jordskjelv missing ${id}`);
     }
-    for (const id of ["ForvitringForklaring", "ForvitringFoto", "RockCycle", "QuizBergarter"]) {
+    for (const id of [
+      "ForvitringForklaring",
+      "ForvitringFoto",
+      "RockCycle",
+      "QuizBergarter",
+      "SjekkBergarter1",
+      "SjekkBergarter2",
+      "SjekkBergarter3",
+      "SjekkBergarter4",
+      "SammendragBergarter",
+    ]) {
       assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
     }
     const ressurser = listedWidgetIds(

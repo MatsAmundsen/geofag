@@ -855,6 +855,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["til ca. 10 000 år siden", "for ca. 10 000 år siden var det meste", "11 700 år siden (Mangerud, 2025a)"],
   },
   {
+    flag: "g1-bergarter-mal-2026-10-11",
+    slug: "bergarter",
+    stale: ["*Forvitring:* Berg brytes ned", "laget skalaen i 1822", "Protolitten er leire."],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],
