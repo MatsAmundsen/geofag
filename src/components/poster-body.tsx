@@ -79,6 +79,7 @@ import {
   GeotidTidslinjeFigur,
   HalveringstidFigur,
   LedefossilFigur,
+  VinkeldiskordansFigur,
 } from "@/components/diagrams/geotid-figurer";
 import {
   KaledonideneFigur,
@@ -871,6 +872,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeotidTidslinje: () => <GeotidTidslinjeFigur />,
   Halveringstid: () => <HalveringstidFigur />,
   Ledefossiler: () => <LedefossilFigur />,
+  Vinkeldiskordans: () => <VinkeldiskordansFigur />,
   ForvitringForklaring: () => (
     <Callout title="Hva betyr «forvitring»?">
       <p>

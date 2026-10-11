@@ -349,6 +349,11 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Ellen Gleditsch",
   },
   {
+    widgets: ["Vinkeldiskordans"],
+    beforeHeading: "Slik leser du et snitt",
+    require: "Ellen Gleditsch",
+  },
+  {
     widgets: ["Halveringstid"],
     beforeHeading: "Metoder for bergarter",
     require: "Ellen Gleditsch",

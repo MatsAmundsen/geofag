@@ -835,3 +835,105 @@ export function LedefossilFigur({ heading = "Ledefossiler: samme relative alder 
     </div>
   );
 }
+
+/* =====================================================================
+ * 5. Vinkeldiskordans: avsetning, skråstilling, erosjon og nye lag
+ * ===================================================================== */
+
+const VD_STEPS = ["Avsetning", "Skråstilling", "Erosjon", "Nye lag"];
+const VD_STATUS = [
+  "Lagene avsettes nesten vannrett, det eldste nederst (opprinnelig horisontalitet og overlagring).",
+  "Lagene blir skråstilt og hevet. Da må noe ha skjedd med dem etter at de ble avsatt.",
+  "Erosjon fjerner toppen av de skråstilte lagene. Den tiden blir ikke liggende igjen som lag.",
+  "Nye lag avsettes vannrett oppå erosjonsflaten. Grensen er en vinkeldiskordans: her mangler det tid.",
+];
+const VD_FLATE = 250;
+/** Gamle lag: nok bånd til å fylle snittet også etter skråstillingen. */
+const VD_GAMLE = Array.from({ length: 20 }, (_, k) => ["#3a3830", "#24414d", "#4a3b2c", "#2b4637"][k % 4]);
+const VD_NYE = ["#5a4a3a", "#3d5560", "#5e5240"];
+
+export function VinkeldiskordansFigur({ heading = "Vinkeldiskordans: når det mangler tid i lagrekken" }: { heading?: string }) {
+  const motion = useAnimationPlaying();
+  const [ref, visible] = useInView<SVGSVGElement>();
+  const [wrapRef, small] = useFigurSmal();
+  const clock = useStepClock(4, motion.playing && visible, 2600, 1800, 4);
+  const { step, phase } = clock;
+  const i = step - 1;
+  const grow = motion.playing ? smooth(phase) : 1;
+  const tilt = step === 1 ? 0 : step === 2 ? -18 * grow : -18;
+  const uid = "vd";
+  // toppen av de gamle lagene: åser etter skråstillingen, flat etter erosjonen
+  const aaser = "M40 440 L40 200 C160 150 240 120 360 170 C460 210 540 130 660 150 C760 166 840 190 920 210 L920 440 Z";
+  const flat = `M40 440 L40 ${VD_FLATE} L920 ${VD_FLATE} L920 440 Z`;
+  const clip = step === 1 ? flat : step === 2 ? aaser : flat;
+  const labels: Lab[] = [];
+  if (step === 1) labels.push({ text: "Eldre lag, avsatt vannrett", x: 480, y: 200, at: [480, 300], color: C.sand, anchor: "middle", badge: [520, 290] });
+  if (step === 2) labels.push({ text: "Lagene skråstilles og heves", x: 480, y: 100, at: [600, 200], color: C.warm, anchor: "middle", badge: [640, 190] });
+  if (step === 3) labels.push({ text: "Erodert bort", x: 480, y: 120, at: [560, 200], color: C.muted, anchor: "middle", badge: [600, 205] });
+  if (step === 4) {
+    labels.push({ text: "Vinkeldiskordans: her mangler tid", x: 480, y: 290, at: [300, VD_FLATE], color: C.low, anchor: "middle", size: 16, weight: 800, badge: [260, VD_FLATE + 30] });
+    labels.push({ text: "Yngre lag, avsatt vannrett", x: 480, y: 92, at: [700, 160], color: C.fg, anchor: "middle", badge: [740, 150] });
+  }
+  return (
+    <div ref={wrapRef}>
+      <IsbreFigur
+        svgRef={ref}
+        title="Vinkeldiskordans i fire steg: lag avsettes vannrett, blir skråstilt og hevet, toppen eroderes bort, og nye vannrette lag avsettes oppå erosjonsflaten"
+        heading={heading}
+        caption="En diskordans er en grense i lagrekken der det mangler tid. På norsk sokkel ligger lag fra kritt mange steder over skråstilte sandsteiner fra jura, og denne vinkeldiskordansen var viktig for å fange olje på felt som Statfjord og Gullfaks. Skjematisk snitt uten målestokk."
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={
+          <StegRamme small={small}>
+            <StegVelger labels={VD_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg steg" />
+          </StegRamme>
+        }
+        status={VD_STATUS[i]}
+        labels={labels}
+        keys={[{ text: "Diskordans (erosjonsflate)", color: C.low, kind: "line" }]}
+        notes={["Skjematisk, uten målestokk"]}
+        viewBox="0 0 960 460"
+      >
+        {() => (
+          <g className={motion.motionClass} data-figur="vinkeldiskordans" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
+            <defs>
+              <clipPath id={`${uid}-c`}>
+                <path d={clip} />
+              </clipPath>
+              <clipPath id={`${uid}-a`}>
+                <path d={aaser} />
+              </clipPath>
+            </defs>
+            <rect x="40" y="40" width="880" height="400" rx="8" fill="#141d24" />
+            {step === 3 ? (
+              <g clipPath={`url(#${uid}-a)`} opacity={0.4 + 0.6 * (1 - grow)} data-nocheck="">
+                <g transform={`rotate(${n1(tilt)} 480 360)`}>
+                  {VD_GAMLE.map((f, k) => (
+                    <rect key={k} x="-300" y={n1(VD_FLATE + (k - 8) * 34 - 40)} width="1560" height="34" fill={f} />
+                  ))}
+                </g>
+              </g>
+            ) : null}
+            <g clipPath={`url(#${uid}-c)`}>
+              <g transform={tilt ? `rotate(${n1(tilt)} 480 360)` : undefined}>
+                {VD_GAMLE.map((f, k) => (
+                  <rect key={k} x="-300" y={n1(VD_FLATE + (k - 8) * 34 - 40)} width="1560" height="34" fill={f} />
+                ))}
+              </g>
+            </g>
+            {step === 4
+              ? VD_NYE.map((f, k) => {
+                  const h = 42;
+                  const bunn = VD_FLATE - k * h;
+                  // lagene bygges opp ett for ett mens animasjonen spiller
+                  const f3 = motion.playing ? Math.max(0, Math.min(1, grow * 3 - k)) : 1;
+                  return <rect key={k} x="40" y={n1(bunn - h * f3)} width="880" height={n1(h * f3)} fill={f} />;
+                })
+              : null}
+            {step >= 3 ? <line x1="40" y1={VD_FLATE} x2="920" y2={VD_FLATE} stroke={C.low} strokeWidth="3.5" /> : null}
+          </g>
+        )}
+      </IsbreFigur>
+    </div>
+  );
+}
