@@ -81,6 +81,10 @@ import {
   QUIZ_SJEKK_CORIOLIS_1,
   QUIZ_SJEKK_CORIOLIS_2,
   QUIZ_SJEKK_CORIOLIS_3,
+  QUIZ_SJEKK_VINDSYSTEMET_1,
+  QUIZ_SJEKK_VINDSYSTEMET_2,
+  QUIZ_SJEKK_VINDSYSTEMET_3,
+  QUIZ_SJEKK_VINDSYSTEMET_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -156,6 +160,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Coriolis1: QUIZ_SJEKK_CORIOLIS_1,
   Coriolis2: QUIZ_SJEKK_CORIOLIS_2,
   Coriolis3: QUIZ_SJEKK_CORIOLIS_3,
+  Vindsystemet1: QUIZ_SJEKK_VINDSYSTEMET_1,
+  Vindsystemet2: QUIZ_SJEKK_VINDSYSTEMET_2,
+  Vindsystemet3: QUIZ_SJEKK_VINDSYSTEMET_3,
+  Vindsystemet4: QUIZ_SJEKK_VINDSYSTEMET_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -293,6 +301,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Trykkforskjellen setter vinden i gang, og corioliseffekten endrer retningen. Derfor roterer lufta mot klokka rundt et lavtrykk i nord.",
     "I havet gir avbøyningen ekmanspiralen og ekmantransporten til høyre for vinden. Langs vestkyster kan det gi oppvelling av næringsrikt dypvann.",
     "De store havvirvlene går med klokka på den nordlige halvkule og mot klokka på den sørlige.",
+  ],
+  Vindsystemet: [
+    "Sola varmer tropene mer enn polene. Atmosfæren og havet flytter varme fra overskudd i tropene mot underskudd ved polene.",
+    "Fordi jorda roterer, deler sirkulasjonen seg i tre celler på hver halvkule: Hadley-cellen, Ferrel-cellen og polarcellen.",
+    "Lufta stiger i konvergenssonen ved ekvator og gir regn. Den synker nær 30° og gir høytrykk og ørken.",
+    "Ved bakken gir cellene passatvinder, vestavindsbeltet og polare østavinder. Corioliseffekten dreier dem mot høyre på den nordlige halvkule.",
+    "Norge ligger i vestavindsbeltet ved polarfronten. Fuktige lavtrykk og fjellene gir mye nedbør i vest og regnskygge i øst.",
   ],
 };
 

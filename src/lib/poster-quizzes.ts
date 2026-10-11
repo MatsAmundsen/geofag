@@ -4038,3 +4038,95 @@ export const QUIZ_SJEKK_CORIOLIS_3: QuizQuestion[] = [
     explain: "Vannet som kommer opp, er rikt på næringsstoffer, og områdene har ofte rike fiskerier.",
   },
 ];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor får vi tre celler på hver halvkule i stedet for én?",
+    options: [
+      "Fordi jorda roterer og lufta mot polen dreies til vestavind",
+      "Fordi havet stopper lufta ved 30°",
+      "Fordi det er tre kontinenter",
+    ],
+    answer: 0,
+    explain: "Uten rotasjon kunne én celle gått helt til polen. Corioliseffekten deler sirkulasjonen i Hadley-, Ferrel- og polarcellen.",
+  },
+  {
+    prompt: "Hva holder Ferrel-cellen i gang?",
+    options: [
+      "Oppvarming ved ekvator",
+      "De vandrende lavtrykkene og høytrykkene ved midlere breddegrader",
+      "Friksjon mot bakken",
+    ],
+    answer: 1,
+    explain: "Ferrel-cellen er termisk indirekte. Friksjon bremser vinden, men skaper den ikke.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er det tørt nær 30°?",
+    options: [
+      "Fordi det ikke finnes elver der",
+      "Fordi lufta synker, varmes opp og skyene løses opp",
+      "Fordi sola skinner svakere der",
+    ],
+    answer: 1,
+    explain: "Synkende luft presses sammen og varmes. Den relative fuktigheten faller, og det blir høytrykk og tørke.",
+  },
+  {
+    prompt: "Hva er konvergenssonen (ITCZ)?",
+    options: [
+      "Et høytrykksbelte ved 30°",
+      "Grensen mellom kald og varm luft ved 60°",
+      "Beltet der passatene møtes og lufta stiger",
+    ],
+    answer: 2,
+    explain: "Passatene strømmer sammen nær ekvator. Lufta stiger, og det blir skyer, byger og regn.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_3: QuizQuestion[] = [
+  {
+    prompt: "Fra hvilken retning blåser passaten på den nordlige halvkule?",
+    options: [
+      "Nordøst",
+      "Sørvest",
+      "Vest",
+    ],
+    answer: 0,
+    explain: "Lufta strømmer fra 30° mot ekvator og dreies mot høyre, så den kommer fra nordøst.",
+  },
+  {
+    prompt: "Hvorfor flytter konvergenssonen seg gjennom året?",
+    options: [
+      "Fordi havstrømmene snur",
+      "Fordi den følger sola nordover og sørover",
+      "Fordi jetstrømmen skyver den",
+    ],
+    answer: 1,
+    explain: "Konvergenssonen følger der oppvarmingen er sterkest. Det gir regntid og tørketid i tropene.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor faller det mye mer nedbør på vestsiden av fjellene i Norge enn i Ottadalen?",
+    options: [
+      "Fordi det er kaldere i vest",
+      "Fordi vestavinden løfter fuktig luft mot fjellene, og lesiden ligger i regnskygge",
+      "Fordi lavtrykkene kommer fra øst",
+    ],
+    answer: 1,
+    explain: "Orografisk nedbør faller på luvsiden. På lesiden synker lufta, varmes og er tørrere.",
+  },
+  {
+    prompt: "Hva er polarfronten?",
+    options: [
+      "Grensen mellom kald polarluft og varm subtropisk luft",
+      "Kanten av havisen",
+      "Et høytrykk over Nordpolen",
+    ],
+    answer: 0,
+    explain: "Langs polarfronten dannes vandrende lavtrykk som gir mye av nedbøren i Norge.",
+  },
+];

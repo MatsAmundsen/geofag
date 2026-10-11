@@ -2429,6 +2429,12 @@ export const KILDER = {
       href: "https://snl.no/polarfront",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-i). ",
+      italic: "Strålingspådriv",
+      suffix: ".",
+      href: "https://snl.no/strålingspådriv",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",
