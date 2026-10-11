@@ -1228,9 +1228,9 @@ export function MetamorfoseFigur({
 
 /** Statustekster for Oslograben-figuren når den vises i Bergarter, med kapittelets ordlyd og tall. */
 export const OSLO_STATUS_BERGARTER = [
-  "Skorpa strekkes: For cirka 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp (NGU, u.å.-c). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak.",
+  "Skorpa strekkes: For cirka 300 millioner år siden, i sen karbon, ble skorpa strukket og sprakk opp (Bryhni & Fossen, 2024). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak.",
   "Graben synker inn: Blokker synker ned langs forkastninger, og det dannes en riftdal (NGU, u.å.-c).",
-  "Lava og magma: Vulkanismen fortsatte inn i perm. Rombeporfyr størknet på overflaten, og rombene viser at smelten ikke var ferdig krystallisert (NGU, u.å.-l). Dypt nede størknet larvikitt, dannet for cirka 295 millioner år siden (NGU, u.å.-i).",
+  "Lava og magma: Vulkanismen fortsatte inn i perm. Rombeporfyr størknet på overflaten, og rombene viser at smelten ikke var ferdig krystallisert (NGU, u.å.-l). Dypt nede størknet larvikitt, dannet for cirka 295–290 millioner år siden (NGU, u.å.-i).",
   "I dag: Erosjon har blottlagt bergartene. Larvikitt finnes i Vestfold og Telemark og er Norges nasjonalbergart (NGU, u.å.-i). NGU kaller rombeporfyr tvillingbroren til larvikitt (NGU, u.å.-l).",
 ] as const;
 

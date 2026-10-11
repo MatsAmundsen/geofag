@@ -2745,7 +2745,7 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
   {
     key: "grunnfjell",
     title: "0. GRUNNFJELLET",
-    age: "Opptil 2800 mill. år siden",
+    age: "Opptil ca. 3000 mill. år siden",
     color: "#a78bfa",
     ageColor: "#ddd6fe",
     headline: "Prekambrium",
@@ -2759,14 +2759,14 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
   {
     key: "kaledonidene",
     title: "1. KALEDONIDENE",
-    age: "430–400 mill. år siden (silur)",
+    age: "ca. 425–405 mill. år siden (silur–devon)",
     color: "#f59e0b",
     ageColor: "#fed7aa",
     headline: "Iapetushavet lukkes",
     sub: "Baltika kolliderer med Laurentia",
     bullets: [
-      { text: "Fjellkjede på størrelse med", note: "Himalaya (400–500 mill. år siden)" },
-      { text: "Gigantiske skyvedekker", note: "(Jotunheimen, Rondane)" },
+      { text: "Fjellkjeden kan ha vært", note: "like høy som Himalaya (usikkert)" },
+      { text: "Skyvedekker skjøvet mot øst", note: "og sørøst (f.eks. Jotundekket)" },
       { text: "Gneis og glimmerskifer" },
     ],
     today: ["Berggrunnen er den eroderte", "roten av Kaledonidene."],
@@ -2774,17 +2774,17 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
   {
     key: "oslofeltet",
     title: "2. OSLOFELTET",
-    age: "300–250 mill. år siden (perm)",
+    age: "ca. 300–250 mill. år siden (sen karbon og perm)",
     color: "#ef4444",
     ageColor: "#fca5a5",
-    headline: "Pangea revner",
+    headline: "Skorpa strekkes",
     sub: "Skorpen sprekker i en riftdal",
     bullets: [
       { text: "Graben fra Langesund til Mjøsa" },
-      { text: "Voldsomme vulkaner", note: "(Kolsås, Krokskogen)" },
+      { text: "Mange vulkaner", note: "(Kolsås, Krokskogen)" },
       { text: "Rombeporfyr og larvikitt" },
     ],
-    today: ["En død riftdal rik på", "byggeråstoff og naturstein!"],
+    today: ["En uvirksom riftdal med", "byggeråstoff og naturstein"],
   },
   {
     key: "norskehavet",
@@ -2799,7 +2799,7 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
       { text: "Ny havbunn dannes langs", note: "Den midtatlantiske ryggen" },
       { text: "Sedimenter bygger ut sokkelen" },
     ],
-    today: ["Beerenberg på Jan Mayen er", "Norges eneste aktive vulkan!"],
+    today: ["Beerenberg på Jan Mayen er", "Norges eneste aktive vulkan"],
   },
   {
     key: "isostasi",
@@ -2807,14 +2807,14 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
     age: "Siste 10 000 år til i dag",
     color: "#10b981",
     ageColor: "#a7f3d0",
-    headline: "Landet reiser seg!",
+    headline: "Landet hever seg",
     sub: "3 km innlandsis smeltet bort",
     bullets: [
-      { text: "Litosfæren spratt opp" },
-      { text: "Marin grense opptil 220 m", note: "(Marin leire på tørt land)" },
+      { text: "Litosfæren hever seg langsomt" },
+      { text: "Havet sto opptil ca. 220 m høyere", note: "(marin grense, 221 m i Skådalen)" },
       { text: "Intraplate-jordskjelv" },
     ],
-    today: ["Oslo hever seg 4 mm/år.", "Skaper kvikkleire og skjelv!"],
+    today: ["Oslo hever seg ca. 5 mm/år.", "Marin leire kan noen steder bli kvikkleire"],
   },
 ];
 
@@ -2863,7 +2863,7 @@ function NorwayEpochIcon({ k, arrowMarker }: { k: string; arrowMarker: string })
 export function NorwayTectonicsHistoryDiagram() {
   const uid = useId().replace(/:/g, "");
   const caption =
-    "Norge er et levende museum over platetektonikkens historie. Det prekambriske grunnfjellet (Baltika) ble dannet for opptil 2,8 milliarder år siden. For ca. 430–400 millioner år siden lukket det gamle Iapetushavet seg, og Baltika kolliderte med Grønland/Nord-Amerika (Laurentia) i den kaledonske orogenesen – en fjellkjede på størrelse med Himalaya stablet enorme skyvedekker over landet vårt. I perm (for 300 mill. år siden) holdt superkontinentet Pangea på å sprekke opp, og skapte Oslofeltets dramatiske riftdal med vulkaner og dypbergarter. For 55 millioner år siden åpnet Norskehavet seg da Atlanteren spredte seg nordover, og Norge fikk en passiv kontinentalmargin. Vulkanen Beerenberg på Jan Mayen er langt yngre og er aktiv i dag. Etter forrige istid har Norge hevet seg opptil 220 meter (isostasi), noe som hevet gammel havbunn (marin leire) opp på tørt land.";
+    "Det eldste grunnfjellet i Norge er opptil ca. 3000 millioner år gammelt. For ca. 425–405 millioner år siden kolliderte Baltika med Laurentia, og den kaledonske fjellkjeden ble dannet. I sen karbon og perm, for ca. 300–250 millioner år siden, ble skorpa strukket og Oslo-riften dannet. For ca. 55 millioner år siden åpnet Norskehavet seg, og norskekysten ble en passiv kontinentalmargin. Etter siste istid sto havet opptil ca. 220 m høyere enn i dag i Oslo-området. Landet har hevet seg mer enn dette, fordi havnivået steg samtidig.";
   return (
     <FigureFrame heading="Norges geologiske reise: Grunnfjell, Kaledonidene, Oslofeltet og Norskehavet" caption={caption}>
       <ol className="grid list-none gap-3 p-0 sm:grid-cols-2" aria-label="Norges geologiske reise">

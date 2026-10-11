@@ -2380,3 +2380,222 @@ export const QUIZ_LANDFORMER: QuizQuestion[] = [
     explain: "Kystsikring kan endre hvordan bølgene flytter sand og grus langs stranda.",
   },
 ];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_1: QuizQuestion[] = [
+  {
+    prompt: "Hvor finner vi de eldste bergartene i Norge?",
+    options: [
+      "I Oslofeltet",
+      "I Sør-Varanger og ved Lakselv i Finnmark",
+      "På Jan Mayen",
+    ],
+    answer: 1,
+    explain: "Gneisen i Sør-Varanger og ved Lakselv er opptil ca. 3000 millioner år gammel. Oslofeltet er fra sen karbon og perm, og Jan Mayen er en ung vulkanøy.",
+  },
+  {
+    prompt: "Hva er det subkambriske peneplanet?",
+    options: [
+      "En nesten flat slette som grunnfjellet var slitt ned til før kambrium",
+      "En lavastrøm fra Oslofeltet",
+      "En havbunn som ble skjøvet opp på land",
+    ],
+    answer: 0,
+    explain: "Etter de prekambriske fjellkjededannelsene ble landet slitt ned til en nesten flat slette. Der lagene fra kambrium ligger rett på grunnfjellet, kan vi se denne flaten i dag.",
+  },
+];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er en ofiolitt?",
+    options: [
+      "En dypbergart som størknet under en vulkan i Oslofeltet",
+      "En forsteinet morene fra prekambrium",
+      "En pakke av havbunnsskorpe og øvre mantel som er skjøvet opp på land",
+    ],
+    answer: 2,
+    explain: "En ofiolitt består av havbunnssedimenter, putelava, gangkompleks, gabbro og peridotitt fra mantelen. På Leka er denne pakken skjøvet opp på land.",
+  },
+  {
+    prompt: "Hva er radiolaritt dannet av?",
+    options: [
+      "Skjeletter av radiolarier, encellede organismer med kiselskjelett",
+      "Kiselalger (diatomeer)",
+      "Avkjølt lava",
+    ],
+    answer: 0,
+    explain: "Radiolaritt er dannet av kiselskjelettene til radiolarier. Radiolarier er encellede organismer, ikke alger. Kiselalgene er en annen gruppe.",
+  },
+];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor finner vi eldre bergarter oppå yngre bergarter i fjellkjeden?",
+    options: [
+      "Fordi lagene ble avsatt i omvendt rekkefølge",
+      "Fordi store flak av berggrunn ble skjøvet over yngre bergarter som skyvedekker",
+      "Fordi isen snudde lagene under istiden",
+    ],
+    answer: 1,
+    explain: "Under kollisjonen ble skyvedekker skjøvet flere hundre kilometer mot øst og sørøst. Da kunne gamle bergarter, for eksempel i Jotundekket, havne oppå yngre bergarter.",
+  },
+  {
+    prompt: "Hva viser eklogitten på Vestlandet?",
+    options: [
+      "At det var vulkaner på Vestlandet i perm",
+      "At Vestlandet var dekket av hav i kambrium",
+      "At kanten av Baltika ble dratt ned til mer enn 100 km dyp under kollisjonen",
+    ],
+    answer: 2,
+    explain: "Eklogitt dannes bare ved svært høyt trykk. Noen eklogitter på Vestlandet ble dannet på opptil 130 km dyp for ca. 415–400 millioner år siden.",
+  },
+];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor ble Oslo-riften dannet?",
+    options: [
+      "Fordi skorpa ble strukket i Nord-Europa i sen karbon og perm",
+      "Fordi Pangea sprakk opp i perm",
+      "Fordi Baltika kolliderte med Laurentia",
+    ],
+    answer: 0,
+    explain: "Oslo-riften ble dannet da skorpa ble strukket i sen karbon og perm, like etter at Pangea var satt sammen. Pangea begynte ikke å sprekke opp før i jura.",
+  },
+  {
+    prompt: "Hvorfor finner vi fossiler fra kambrium og silur rundt Oslo?",
+    options: [
+      "Fordi riften var et hav i perm",
+      "Fordi lagene ble skjøvet inn fra vest",
+      "Fordi blokken sank ned i riftdalen, slik at lagene ble bevart",
+    ],
+    answer: 2,
+    explain: "Da blokken sank ned mellom forkastningene, ble lagene fra kambrium og silur liggende lavere enn omgivelsene og ble ikke slitt bort.",
+  },
+];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_5: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr det at norskekysten er en passiv kontinentalmargin?",
+    options: [
+      "At det aldri har vært vulkaner langs kysten",
+      "At overgangen fra kontinent til havbunn ikke er en plategrense",
+      "At havbunnen utenfor Norge subduseres under Norge",
+    ],
+    answer: 1,
+    explain: "Norge og havbunnen utenfor ligger på samme plate. Plategrensen er spredningsryggen. Da Norskehavet åpnet seg, var det likevel mye vulkanisme langs marginen.",
+  },
+  {
+    prompt: "Hvorfor har Jan Mayen en aktiv vulkan?",
+    options: [
+      "Fordi øya ligger på den midtatlantiske spredningsryggen",
+      "Fordi øya ligger over Oslo-riften",
+      "Fordi en havplate subduseres under øya",
+    ],
+    answer: 0,
+    explain: "Jan Mayen ligger på spredningsryggen mellom Grønland og Norge, der magma stiger opp når platene glir fra hverandre.",
+  },
+];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_6: QuizQuestion[] = [
+  {
+    prompt: "Hva er marin grense?",
+    options: [
+      "Grensen mellom havbunn og kontinent",
+      "Det høyeste nivået havet nådde etter istiden",
+      "Grensen for hvor langt isen nådde",
+    ],
+    answer: 1,
+    explain: "Marin grense er det høyeste nivået havet nådde etter istiden. I Oslo-området sto havet opptil ca. 220 m høyere enn i dag.",
+  },
+  {
+    prompt: "Hvorfor har landet hevet seg mer enn høyden på marin grense?",
+    options: [
+      "Fordi marin grense er målt feil",
+      "Fordi landet sank igjen etter istiden",
+      "Fordi havnivået steg samtidig som landet hevet seg",
+    ],
+    answer: 2,
+    explain: "Da isen smeltet, steg havnivået. Landet måtte derfor heve seg mer enn høyden på marin grense for at den gamle strandlinjen skulle havne der den er i dag.",
+  },
+];
+
+export const QUIZ_SJEKK_NORGES_GEOLOGI_7: QuizQuestion[] = [
+  {
+    prompt: "Du finner sortert sand og grus i en åsrygg i dalen. Hva er den mest sannsynlige forklaringen?",
+    options: [
+      "Det er morene som isen la igjen",
+      "Det er en breelvavsetning fra smeltevannet",
+      "Det er en lavastrøm fra perm",
+    ],
+    answer: 1,
+    explain: "Smeltevann sorterer materialet etter kornstørrelse. Morene er usortert.",
+  },
+  {
+    prompt: "En gang av magma skjærer gjennom et lag av kalkstein. Hva kan du si om alderen?",
+    options: [
+      "Gangen er yngre enn kalksteinen",
+      "Gangen er eldre enn kalksteinen",
+      "Vi kan ikke si noe om alderen",
+    ],
+    answer: 0,
+    explain: "Det som skjærer gjennom en bergart, må være yngre enn bergarten det skjærer gjennom.",
+  },
+];
+
+export const QUIZ_NORGES_GEOLOGI: QuizQuestion[] = [
+  {
+    prompt: "Hvilket utsagn om Leka-ofiolitten er riktig?",
+    options: [
+      "Den er en lavastrøm fra Oslo-riften",
+      "Den er havbunn og øvre mantel fra Iapetushavet som er skjøvet opp på land",
+      "Den er en del av grunnfjellet fra prekambrium",
+      "Den ble dannet da Norskehavet åpnet seg",
+    ],
+    answer: 1,
+    explain: "Leka-ofiolitten er ca. 497 millioner år gammel havbunn fra Iapetushavet. Den ble skjøvet opp på land da havet lukket seg, lenge før Oslo-riften og Norskehavet.",
+  },
+  {
+    prompt: "Hva skjedde med bergartene da Baltika og Laurentia kolliderte?",
+    options: [
+      "Store flak ble skjøvet over hverandre som skyvedekker, og mange bergarter ble omdannet",
+      "Bergartene smeltet og ble til rombeporfyr",
+      "Det ble dannet en riftdal med vulkaner",
+      "Bergartene ble avsatt som marin leire",
+    ],
+    answer: 0,
+    explain: "Kollisjonen skjøv skyvedekker mot øst og sørøst. Høy temperatur og høyt trykk gjorde for eksempel leirskifer om til glimmerskifer og gneis, og basalt og gabbro om til amfibolitt.",
+  },
+  {
+    prompt: "Hvorfor ble Oslo-riften dannet?",
+    options: [
+      "Fordi Pangea sprakk opp i perm",
+      "Fordi Iapetushavet lukket seg",
+      "Fordi Norskehavet åpnet seg",
+      "Fordi skorpa ble strukket i Nord-Europa i sen karbon og perm",
+    ],
+    answer: 3,
+    explain: "Oslo-riften er ett av flere riftsystemer fra sen karbon og perm, like etter at Pangea var satt sammen. Pangea begynte å sprekke opp i jura.",
+  },
+  {
+    prompt: "Hvorfor ligger det marin leire høyt over havet i Oslo-området i dag?",
+    options: [
+      "Fordi leira ble skjøvet opp av skyvedekker",
+      "Fordi elvene har fraktet leira oppover",
+      "Fordi leira ble avsatt i havet mens landet var presset ned, og landet har hevet seg siden",
+      "Fordi havnivået har steget siden istiden",
+    ],
+    answer: 2,
+    explain: "Etter istiden sto havet opptil ca. 220 m høyere enn i dag i Oslo-området. Leira ble avsatt under havet og kom opp på land da landet hevet seg. Havnivået steg samtidig, så landet har hevet seg mer enn 220 m.",
+  },
+  {
+    prompt: "Hvor hever landet seg raskest i dag?",
+    options: [
+      "Ytterst på kysten av Vestlandet",
+      "Der innlandsisen var tykkest, for eksempel ved Bottenviken",
+      "På Jan Mayen",
+      "Like mye overalt i Norge",
+    ],
+    answer: 1,
+    explain: "Landhevingen er størst der isen var tykkest og presset landet mest ned. Ved Bottenviken er den opptil ca. 1 cm i året, i Oslo ca. 5 mm i året, og nær null på Sørvestlandet.",
+  },
+];

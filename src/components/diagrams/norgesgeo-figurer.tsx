@@ -4,7 +4,7 @@
  * Bygger på samme ramme som Isbreer og Landformer (IsbreFigur, StegVelger, Skyver og isbre-kit), så
  * kapitlene får samme stil: nummermerker og liste på mobil, Start/Pause, steg og redusert bevegelse.
  *
- * Alle tall og navn i figurene står i kapittelteksten (src/routes/geofag-1/norges-geologi.tsx) eller i
+ * Alle tall og navn i figurene står i kapittelteksten (src/lib/posts/norges-geologi.md) eller i
  * Geofag 1-biblioteket (NGU-tall). Alt annet er tegnet skjematisk uten tall. Geometrien er enkel
  * (noen hundre punkter per bilde), og kystlinjene til kartinnfeltene er ferdig projisert i norgesgeo-kart.ts,
  * så ingenting tungt beregnes under serverrendering.
@@ -194,7 +194,7 @@ const KA_STEPS = ["1 Iapetushavet", "2 Havet lukkes", "3 Kollisjon", "4 I dag"];
 const KA_STATUS = [
   "Mellom Baltika og Laurentia lå Iapetushavet. Havbunnen sank ned i mantelen langs kanten av havet. Leka-ofiolitten er en bit av denne havbunnen, dannet for ca. 497 millioner år siden.",
   "Havet lukkes, og Baltika og Laurentia nærmer seg. Noen biter av havbunnen ble skjøvet opp på kanten av et kontinent i stedet for å synke ned (obduksjon). Leka ble trolig skjøvet opp for ca. 470 millioner år siden.",
-  "Kontinentene kolliderer (400–500 millioner år siden). Kontinental skorpe er for lett til å synke ned i mantelen, så skorpa presses sammen. Bergflak fra havbunn, øybuer og kontinentalrender skyves østover inn over det baltiske grunnfjellet som skyvedekker, og Kaledonidene reiser seg.",
+  "Kontinentene kolliderer (ca. 425–405 millioner år siden). Kontinental skorpe er lett og synker ikke lett ned, men kanten av Baltika ble likevel dratt ned til mer enn 100 km dyp. Det viser eklogitten på Vestlandet. Bergflak fra havbunn, øybuer og kontinentalrender skyves mot øst og sørøst inn over det baltiske grunnfjellet som skyvedekker, og Kaledonidene reiser seg.",
   "I dag er fjellkjeden erodert ned til røttene. Restene av skyvedekkene ligger oppå grunnfjellet, for eksempel Jotundekket i Jotunheimen. Atlanterhavet åpnet seg mye senere, så Grønland (Laurentia) ligger nå langt mot vest.",
 ];
 const KA_SEA = 300;
@@ -459,7 +459,7 @@ export function KaledonideneFigur({
       labels.push(
         { text: "Laurentia", x: 36, y: 232, color: "#e3cfae", badge: [60, 240] },
         { text: "Kaledonidene", x: 452, y: 104, at: [452, kaMountain(452) + 6], color: C.fg, anchor: "middle", size: 17, weight: 700, badge: [452, 112] },
-        { text: "Skyvedekker skyves østover", x: 920, y: 254, at: [760, 306], color: C.fg, anchor: "end", badge: [790, 286] },
+        { text: "Skyvedekker skyves mot øst og sørøst", x: 920, y: 254, at: [760, 306], color: C.fg, anchor: "end", badge: [790, 286] },
         { text: "Metamorfose: gneis, glimmerskifer, amfibolitt", x: 940, y: 588, at: [420, 476], color: "#f4b08f", anchor: "end", badge: [360, 520] },
       );
       if (s.thrust > 0.6)
@@ -509,7 +509,7 @@ export function KaledonideneFigur({
         heading={heading}
         caption={
           caption ??
-          "Snittet viser hvordan Iapetushavet ble lukket og Kaledonidene ble bygd, og kartet viser hvor kontinentene lå. Forenklet: Snittet er skjematisk med overdrevet høyde, og kartet bruker dagens kystlinjer og retning for Grønland og Skandinavia. Det viser ikke den virkelige plasseringen på kloden for 400–500 millioner år siden. Jotundekket: gamle grunnfjellsbergarter som ble skjøvet østover som et dekke under kollisjonen."
+          "Snittet viser hvordan Iapetushavet ble lukket og Kaledonidene ble bygd, og kartet viser hvor kontinentene lå. Forenklet: Snittet er skjematisk med overdrevet høyde, og kartet bruker dagens kystlinjer og retning for Grønland og Skandinavia. Det viser ikke den virkelige plasseringen på kloden for 400–500 millioner år siden. Jotundekket: gamle grunnfjellsbergarter som ble skjøvet mot sørøst som et dekke under kollisjonen."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -543,9 +543,9 @@ export function KaledonideneFigur({
 
 const OG_STEPS = ["1 Skorpa strekkes", "2 Graben synker inn", "3 Lava og magma", "4 I dag"];
 const OG_STATUS = [
-  "Skorpa strekkes. Mot slutten av karbon, for ca. 310 millioner år siden, begynte jordskorpen i det sørøstlige Norge å sprekke opp. På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak.",
+  "Skorpa strekkes. I sen karbon, for ca. 300 millioner år siden, begynte jordskorpa i det sørøstlige Norge å sprekke opp. På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak.",
   "Skorpa blir tynnere, og store forkastningsblokker synker inn langs normalforkastninger. Slik oppstår riftdalen Oslo-graben. Lagene fra kambrosilur blir liggende bevart nede i graben.",
-  "Vulkanisme i perm (250–300 millioner år siden): Sprekkevulkaner sender ut tykke lavadekker av rombeporfyr. Dypt nede størkner magmakamre langsomt til larvikitt. Larvikitt, ca. 295 millioner år. Rombeporfyr og larvikitt er tvillingbergarter med ulik avkjøling.",
+  "Vulkanisme i sen karbon og perm (ca. 300–250 millioner år siden): Sprekkevulkaner sender ut tykke lavadekker av rombeporfyr. Dypt nede størkner magmakamre langsomt til larvikitt. Larvikitt, ca. 295–290 millioner år. Rombeporfyr og larvikitt er tvillingbergarter med ulik avkjøling.",
   "Riften stoppet før kontinentet delte seg, så Oslofeltet er en fossil rift. Erosjon har tatt bort toppen, og larvikitt, rombeporfyr og kambrosilur ligger i dagen. Forkastningene styrer fortsatt landskapet på Østlandet, også Oslofjordens forløp.",
 ];
 const OG_TOP = 200;

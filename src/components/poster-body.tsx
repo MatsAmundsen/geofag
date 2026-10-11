@@ -20,6 +20,7 @@ import {
   HotspotPlumeDiagram,
   NorwayEarthquakesDiagram,
   NorwayTectonicsHistoryDiagram,
+  OfiolittSnittDiagram,
   OceanOceanSubductionDiagram,
   PlatesMapDiagram,
   SeismogramDiagram,
@@ -73,7 +74,12 @@ import {
   SilikatgrupperFigur,
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
-import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
+import {
+  KaledonideneFigur,
+  NorskehavetFigur,
+  OslograbenFigur,
+} from "@/components/diagrams/norgesgeo-figurer";
+import { NorgesGeodynamikkKart } from "@/components/diagrams/norges-geodynamikk-kart";
 import {
   BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,
@@ -87,6 +93,7 @@ import {
   BotnEggTindDiagram,
   BreLengdesnittDiagram,
   FrostsprengningDiagram,
+  IsostasiSnitt,
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
@@ -169,6 +176,7 @@ import {
   QUIZ_SJEKK_SKJELVFARE_3,
   QUIZ_SKJELVFARE,
   QUIZ_LANDFORMER,
+  QUIZ_NORGES_GEOLOGI,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
@@ -1019,6 +1027,19 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   FieldworkIllustration: () => <FieldworkIllustrationDiagram />,
   Feltbok: () => <FeltbokDiagram />,
   FraBergartTilBrudd: () => <FraBergartTilBruddDiagram />,
+  OfiolittSnitt: () => <OfiolittSnittDiagram />,
+  Kaledonidene: () => <KaledonideneFigur />,
+  Norskehavet: () => <NorskehavetFigur />,
+  NorgesGeodynamikkKart: () => <NorgesGeodynamikkKart />,
+  IsostasiSnittNorgesGeologi: () => (
+    <IsostasiSnitt
+      heading="Glasial isostasi og marin grense"
+      caption="Under siste istid presset en opptil ca. 3 km tykk innlandsis landet ned. Astenosfæren under er fast, men gir etter plastisk over tusenvis av år. Da isen smeltet, flommet havet inn over det nedtrykte landet og avsatte marin leire. Havet sto opptil ca. 220 m høyere enn i dag i Oslo-området (marin grense). Snittet er skjematisk, og nedpressingen er sterkt overdrevet."
+    />
+  ),
+  QuizNorgesGeologi: () => (
+    <Quiz questions={QUIZ_NORGES_GEOLOGI} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
   QuizLandformer: () => (
     <Quiz questions={QUIZ_LANDFORMER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -1030,8 +1051,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   IsostasiForklaring: () => (
     <Callout title="Hva betyr «isostasi»?">
       <p>
-        Isostasi (isostasy) betyr at den stive litosfæren ligger i likevekt på den seigere
-        astenosfæren under, omtrent som en båt som flyter. Legger du tung last i båten, synker den
+        Isostasi (isostasy) betyr at den stive litosfæren ligger i likevekt på astenosfæren under.
+        Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte
+        svært langsomt, over tusenvis av år. Det er omtrent som en båt som flyter. Legger du tung last i båten, synker den
         dypere. Tar du lasten ut, flyter den høyere igjen. Mer om litosfæren og astenosfæren står i
         kapittelet{" "}
         <Link to="/geofag-1/platetektonikk" className="font-medium text-primary underline underline-offset-2">

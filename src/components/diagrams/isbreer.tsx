@@ -2073,7 +2073,7 @@ function isState(step: number, phase: number) {
 
 const IS_STEPS = ["1 Isen tynger", "2 Isen smelter", "3 Landet hever seg", "4 Marin grense"];
 const IS_STATUS = [
-  "Isen er så tung at den presser landet ned i den seige astenosfæren.",
+  "Isen er så tung at den presser landet ned. Astenosfæren under er fast, men gir etter plastisk.",
   "Isen smelter. Landet ligger fortsatt nedpresset, så havet går langt inn over det som i dag er land. Finstoff fra smeltevannet synker til bunns som leire.",
   "Vekten er borte, og landet hever seg sakte. Den gamle strandlinja og havbunnen med leire blir løftet opp.",
   "Det høyeste nivået havet nådde, er marin grense. Under marin grense kan det ligge marin leire, over kan du i praksis utelukke den.",

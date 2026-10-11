@@ -541,6 +541,12 @@ export const KILDER = {
   ],
   bergarter: [
     {
+      prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
+      italic: "Norges geologi",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Norges_geologi",
+    },
+    {
       prefix: "National Aeronautics and Space Administration [NASA]. (2011). ",
       italic: "The carbon cycle",
       suffix: ".",
@@ -625,6 +631,12 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/sandstein",
     },
     {
+      prefix: "Raade, G. (2025, 2. juli). ",
+      italic: "Rombeporfyr",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/rombeporfyr",
+    },
+    {
       prefix: "Store norske leksikon [SNL]. (u.å.). ",
       italic: "Mohs' hardhetsskala",
       suffix: ".",
@@ -664,29 +676,128 @@ export const KILDER = {
   ],
   "norges-geologi": [
     {
+      prefix: "Anonymous. (1972). Penrose field conference on ophiolites [Penrose Field Conference]. ",
+      italic: "Geotimes, 17",
+      suffix: "(12), 24–25.",
+    },
+    {
+      prefix: "Amundsen, B. (2021, 22. januar). ",
+      italic: "Fjell i Norge har vært over 8000 meter høye",
+      suffix: ". forskning.no.",
+      href: "https://www.forskning.no/geologi/fjell-i-norge-har-vaert-over-8000-meter-hoye/1799186",
+    },
+    {
+      prefix: "Askheim, S. (2024, 26. november). ",
+      italic: "Devonfeltene på Vestlandet",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Devonfeltene_på_Vestlandet",
+    },
+    {
+      prefix: "Askheim, S. (2025, 22. februar). ",
+      italic: "Pangea",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Pangea",
+    },
+    {
+      prefix: "Barr, S., & Selbekk, R. S. (2025, 3. november). ",
+      italic: "Beerenberg",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Beerenberg",
+    },
+    {
+      prefix: "Bingen, B., Nordgulen, Ø., & Viola, G. (2008). A four-phase model for the Sveconorwegian orogeny, SW Scandinavia. ",
+      italic: "Norwegian Journal of Geology, 88",
+      suffix: ", 43–72.",
+    },
+    {
+      prefix: "Bryhni, I. (2025, 24. februar). ",
+      italic: "Amfibolitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/amfibolitt",
+    },
+    {
+      prefix: "Bryhni, I. (2026, 7. juli). ",
+      italic: "Marin grense",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/marin_grense",
+    },
+    {
+      prefix: "Bryhni, I., & Askheim, S. (2024, 25. november). ",
+      italic: "Jotundekket",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Jotundekket",
+    },
+    {
+      prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
+      italic: "Norges geologi",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Norges_geologi",
+    },
+    {
+      prefix: "Bryhni, I., & Fossen, H. (2025, 22. februar). ",
+      italic: "Den kaledonske fjellkjeden",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Den_kaledonske_fjellkjeden",
+    },
+    {
+      prefix: "Dunning, G. R., & Pedersen, R. B. (1988). U/Pb ages of ophiolites and arc-related plutons of the Norwegian Caledonides: Implications for the development of Iapetus. ",
+      italic: "Contributions to Mineralogy and Petrology, 98",
+      suffix: "(1), 13–23.",
+      href: "https://doi.org/10.1007/BF00371904",
+    },
+    {
       prefix: "forskning.no. (2008, 7. februar). ",
       italic: "Larvikitt er nasjonalbergart",
       suffix: ".",
       href: "https://www.forskning.no/larvikitt-er-nasjonalbergart/980811",
     },
     {
-      prefix: "Oftedahl, C. (1948). Petrology and geology of the Rondane area. ",
-      italic: "Norsk Geologisk Tidsskrift, 28",
-      suffix: ", 199–225.",
-      href: "https://njg.geologi.no/images/NJG_articles/NGT_28_2-4_199-225.pdf",
-    },
-    {
-      prefix:
-        "Ramberg, I. B., Bryhni, I., Nøttvedt, A., & Rangnes, K. (Red.). (2008). ",
-      italic: "Landet blir til: Norges geologi",
-      suffix: " (2. utg.). Norsk Geologisk Forening.",
-    },
-    {
-      prefix:
-        "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: field characteristics and geotectonic significance. ",
+      prefix: "Furnes, H., Pedersen, R. B., & Stillman, C. J. (1988). The Leka Ophiolite Complex, central Norwegian Caledonides: Field characteristics and geotectonic significance. ",
       italic: "Journal of the Geological Society, 145",
       suffix: "(3), 401–412.",
       href: "https://doi.org/10.1144/gsjgs.145.3.0401",
+    },
+    {
+      prefix: "Kartverket. (2014). ",
+      italic: "Landheving utvalgte steder",
+      suffix: " [Tall gjengitt i «1. januar blir Oslo 37 centimeter høyere», Teknisk Ukeblad].",
+      href: "https://www.tu.no/artikler/1-januar-blir-oslo-37-centimeter-hoyere/232406",
+    },
+    {
+      prefix: "Kartverket. (2021, mai). ",
+      italic: "Ikke bare istiden som er årsak til landheving",
+      suffix: ".",
+      href: "https://kartverket.no/om-kartverket/nyheter/til-lands/2021/mai/ikke-bare-istiden-som-erarsaktillandheving",
+    },
+    {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Slik måler vi havnivået",
+      suffix: ".",
+      href: "https://www.kartverket.no/til-sjos/se-havniva/havniva/slik-maler-vi-havnivaet/",
+    },
+    {
+      prefix: "Løvø, G. (2014, 28. oktober). ",
+      italic: "For 500 millioner år siden så Midt-Norge ut som Indonesia",
+      suffix: ". forskning.no (Norges geologiske undersøkelse).",
+      href: "https://www.forskning.no/partner-norges-geologiske-undersokelse-geofag/for-500-millioner-ar-siden-sa-midt-norge-ut-som-indonesia/534066",
+    },
+    {
+      prefix: "Mangerud, J. (2025a, 9. oktober). ",
+      italic: "Weichsel",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/weichsel",
+    },
+    {
+      prefix: "Mangerud, J. (2025b, 12. oktober). ",
+      italic: "Siste istid",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/siste_istid",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (2012). ",
+      italic: "Database for registrering av marin grense (MG) i Norge",
+      suffix: " (NGU-rapport 2012.063).",
+      href: "https://static.ngu.no/upload/Publikasjoner/Rapporter/2012/2012_063.pdf",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -702,9 +813,9 @@ export const KILDER = {
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
-      italic: "Rombeporfyr",
+      italic: "Larvikitt",
       suffix: ".",
-      href: "https://www.ngu.no/om-geologi/rombeporfyr",
+      href: "https://www.ngu.no/om-geologi/larvikitt",
     },
     {
       prefix: "NORSAR. (u.å.). ",
@@ -719,21 +830,55 @@ export const KILDER = {
       href: "https://www.npolar.no/tema/jan-mayen/",
     },
     {
-      prefix: "Leka steinsenter. (u.å.). ",
-      italic: "Lekas opprinnelse",
-      suffix: ".",
-      href: "http://www.leka-steinsenter.no/geologi/lekas_opprinnelse_norsk.htm",
+      prefix: "Oftedahl, C. (1948). Petrology and geology of the Rondane area. ",
+      italic: "Norsk Geologisk Tidsskrift, 28",
+      suffix: ", 199–225.",
+      href: "https://njg.geologi.no/images/NJG_articles/NGT_28_2-4_199-225.pdf",
     },
     {
-      prefix:
-        "Dunning, G. R., & Pedersen, R. B. (1988). U/Pb ages of ophiolites and arc-related plutons of the Norwegian Caledonides: Implications for the development of Iapetus. ",
-      italic: "Contributions to Mineralogy and Petrology, 98",
-      suffix: "(1), 13–23.",
-      href: "https://doi.org/10.1007/BF00371904",
+      prefix: "Raade, G. (2025, 2. juli). ",
+      italic: "Rombeporfyr",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/rombeporfyr",
     },
     {
-      prefix:
-        "Titus, S. J., Fossen, H., Pedersen, R. B., Vigneresse, J. L., & Tikoff, B. (2002). Pull-apart formation and strike-slip partitioning in an obliquely divergent setting, Leka Ophiolite, Norway. ",
+      prefix: "Raade, G. (2026, 10. februar). ",
+      italic: "Ofiolitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/ofiolitt",
+    },
+    {
+      prefix: "Raade, G., Askheim, S., & Mæhlum, L. (2025, 1. september). ",
+      italic: "Larvikitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/larvikitt",
+    },
+    {
+      prefix: "Raade, G., Bryhni, I., & Fossen, H. (2025, 21. mars). ",
+      italic: "Eklogitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/eklogitt",
+    },
+    {
+      prefix: "SNL. (2026, 5. august). ",
+      italic: "Radiolarier",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/radiolarier",
+    },
+    {
+      prefix: "Spjeldnæs, N., & Askheim, S. (2024, 26. november). ",
+      italic: "Oslofeltet",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Oslofeltet",
+    },
+    {
+      prefix: "Throndsen, J., & Egeland, E. S. (2026, 12. september). ",
+      italic: "Kiselalger",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/kiselalger",
+    },
+    {
+      prefix: "Titus, S. J., Fossen, H., Pedersen, R. B., Vigneresse, J. L., & Tikoff, B. (2002). Pull-apart formation and strike-slip partitioning in an obliquely divergent setting, Leka Ophiolite, Norway. ",
       italic: "Tectonophysics, 354",
       suffix: "(1–2), 101–119.",
       href: "https://doi.org/10.1016/S0040-1951(02)00293-9",
@@ -745,16 +890,16 @@ export const KILDER = {
       href: "https://trollfjellgeopark.no/besok-geoparken/leka/",
     },
     {
-      prefix: "Løvø, G. (2014, 28. oktober). ",
-      italic: "For 500 millioner år siden så Midt-Norge ut som Indonesia",
-      suffix: ". forskning.no (Norges geologiske undersøkelse).",
-      href: "https://www.forskning.no/partner-norges-geologiske-undersokelse-geofag/for-500-millioner-ar-siden-sa-midt-norge-ut-som-indonesia/534066",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },
     {
-      prefix: "Amundsen, B. (2021, 22. januar). ",
-      italic: "Fjell i Norge har vært over 8000 meter høye",
-      suffix: ". forskning.no.",
-      href: "https://www.forskning.no/geologi/fjell-i-norge-har-vaert-over-8000-meter-hoye/1799186",
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 1",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
   ],
   isbre: [
