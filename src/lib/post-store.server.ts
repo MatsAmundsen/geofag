@@ -890,6 +890,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Over 1000 mennesker har mistet livet", "I vanlig sjøvann er saltinnholdet"],
   },
   {
+    // Fjell § 6 R1–R3 (KM-komma, SNL-kilder).
+    flag: "g1-jordsystemene-sjekk2-snl-2026-10-11",
+    slug: "jordsystemene",
+    stale: ["jordsystemene, og hvordan disse"],
+  },
+  {
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],
