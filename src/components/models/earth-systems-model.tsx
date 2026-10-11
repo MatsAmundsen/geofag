@@ -20,7 +20,7 @@ export function EarthSystemsModel() {
   const co2DrawdownGt = (0.28 * parseFloat(totalWeatheringRate)).toFixed(2);
 
   // --- Fane 3: Vulkansk gass og klima (Pinatubo vs Geologisk) ---
-  const [eruptionMagnitude, setEruptionMagnitude] = useState<number>(20); // Mt SO2 (0 til 100 Mt)
+  const [eruptionMagnitude, setEruptionMagnitude] = useState<number>(20); // Mt SO2 (1 til 60 Mt; Tambora ca. 55 Mt, Self mfl. 2004)
   const [plinianHeightKm, setPlinianHeightKm] = useState<number>(35); // 10 til 50 km (troposfære vs stratosfære)
 
   const reachesStratosphere = plinianHeightKm >= 18;
