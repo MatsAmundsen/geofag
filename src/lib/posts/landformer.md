@@ -1,173 +1,215 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/landformer](/geofag-1/landformer). Her kan du redigere **hele fagteksten**.
-
-## Hva former jordoverflaten? Indre og ytre krefter
-
-Geomorfologi er læren om landformenes opprinnelse, utvikling og de prosessene som skaper dem. Jordas overflate formes av to motstridende krefter:
-
-Endogene krefter
-
-#### Indre oppbyggende krefter
-
-Drives av varmeutvikling og radioaktivt henfall i jordas kappe og kjerne. Platetektonikk, fjellkjedefolding (orogenese), magmatiske vulkanutbrudd og forkastningsbevegelser løfter bergmasser opp mot tyngdekraften og skaper topografiske høydeforskjeller.
-
-Eksogene krefter
-
-#### Ytre nedbrytende krefter
-
-Drives av solenergi og tyngdekraft gjennom atmosfæren og hydrosfæren. Forvitring bryter fjellet ned på stedet, mens rennende vann, isbreer, bølger og vind eroderer, transporterer og avsetter løsmasser for å jevne ut landskapet mot havnivå (erosjonsbasis).
-
-## Forvitring — fjellets nedbrytning på stedet
-
-Det er et avgjørende faglig skille mellom forvitring og erosjon: **Forvitring bryter ned fast fjell der det ligger** (in situ) uten at partiklene transporteres vekk. Så snart materialet settes i bevegelse og fraktes bort av vann, is, vind eller tyngdekraft, kalles prosessen **erosjon**.
-
-**Forvitring:** Oppsmuldring og kjemisk omdanning av fast fjell på jordoverflaten under påvirkning av temperatur, vann, gasser og organismer, uten forutgående transport.
-
-### Mekanisk forvitring (fysisk oppsprekking)
-
-Mekanisk forvitring sprenger fjellet fysisk i mindre stykker. Kjemien og mineralgitteret forblir uendret, men den totale overflaten øker eksponentielt. Dette gjør at kjemisk forvitring kan angripe mye mer effektivt i etterkant:
-
-- **Frostsprengning (Frost wedging):** Vann trenger inn i mikroskopiske sprekker og svakhetssoner i fjellet. Når vann fryser, utvider det seg ca. **9 prosent**. I en tett, vannfylt sprekk kan det i teorien gi svært høyt trykk, men i naturen sprekker berget oftest fordi islinser vokser: Vann trekkes mot isen i sprekken, og isen vokser og presser sprekken videre ved temperaturer like under frysepunktet, ca. −3 til −6 °C. Derfor er mange fryse–tine-sykluser og tilgang på vann viktigere enn sterk kulde (Murton mfl., 2006; Matsuoka & Murton, 2008). Dette er den dominerende forvitringsformen i Norges høyfjell og skaper enorme urer, rasmarker og blokkmark.
-
-- **Trykkavlastning og eksfoliering (Sheet jointing):** Plutoniske dypbergarter (som granitt) krystalliserte under kilometerdyp med et voldsomt overliggende litostatisk trykk. Når millioner av år med erosjon fjerner de overliggende berglagene, utvider granitten seg elastisk mot den frie overflaten. Fjellet sprekker opp i parallelle bueformede flak («løkskalling»). Karakteristiske eksempler i Norge er de hvelvede granittkuplene på Helgeland (Torghatten) og i Iddefjorden.
-
-- **Rotsprengning (Biologisk forvitring):** Planterøtter og lav kiler seg inn i mikroskopiske sprekker. Når trærne vokser, utøver rotdiameteren et mekanisk sidetrykk (turgortrykk) som tvinger sprekkene fra hverandre.
-
-![Geologisk blotning i felt som viser oppsprukket, forvitret fjellvegg med frostsprengningsur](/images/fig-forvitring.jpg)
-
-*Mekanisk forvitring og oppsprekking ved blotning — En typisk norsk fjellblotning utsatt for frostforvitring langs svakhetssoner og lagdelingsflater. Vann siver inn om høsten og fryser om vinteren, noe som sprenger fjellet i kantete blokker som etter hvert raser ned og danner grovkornede urer (talus) ved skråningsfoten.*
-
-### Kjemisk forvitring (mineralforvandling)
-
-Kjemisk forvitring oppstår når atmosfærisk vann, karbondioksid og oksygen reagerer med mineralene og omdanner dem til nye kjemiske forbindelser:
-
-- **Karstoppløsning av kalkstein:** Regnvann absorberer CO₂ fra atmosfæren og jordsmonnet og danner en svak karbonsyre (H₂CO₃). Når dette sure vannet treffer kalkstein eller marmor (CaCO₃), løses kalsiumkarbonatet opp som kalsium- og hydrogenkarbonationer: CaCO₃ (s) + H₂O (l) + CO₂ (g) ⇌ Ca²⁺ (aq) + 2 HCO₃⁻ (aq) Vannet huler ut fjellet og skaper **karstlandskap** med synkehull (doliner), underjordiske elveløp og dryppsteinshuler med stalaktitter (i taket) og stalagmitter (på gulvet). I Norge finner vi spektakulære kalksteinsgrotter i Nordland, særlig Grønligrotta og Setergrotta i Rana (Gjessing, 1978).
-
-- **Hydrolyse (Feltspat → Leirmineraler):** Kalifeltspat i granitt reagerer med hydrogenioner i vannet og brytes ned til leirmineralet kaolinitt, mens kalium og kiselsyre vaskes ut i oppløsning. Fjellet mister sin indre kohesjon og forvandles til en smuldrende grusmasse (saprolitt), mens kvartskornene forblir intakte og blir til sand på strender!
-
-## Kornfordeling og Hjulstrøms diagram — vannets transportevne
-
-Når forvitring har løsnet partikler, overtar transportmediene: rennende vann, vind eller isbreer. Kornstørrelsen på et sediment avslører hvor mye energi transportmediet hadde da partiklene ble avsatt (Wentworth-skalaen):
-
-### Hjulstrøms diagram og «leirparadokset»
-
-I 1935 publiserte den svenske geografen Filip Hjulström et berømt diagram som kvantifiserer sammenhengen mellom vannets strømhastighet og dets evne til å **erodere, transportere eller avsette** sedimentpartikler (Hjulström, 1935):
-
-> **Leirparadokset (Kohesjonseffekten)**
+> **Kompetansemål i Geofag 1 (LK20)**
 >
-> Man skulle intuitivt tro at de minste partiklene (leire &lt;0,002 mm) ville la seg erodere lettest. Men Hjulstrøms diagram viser det stikk motsatte: Det krever en strømhastighet på over 100 cm/s for å rive løs avsatt leire fra en elvebunn — mer enn det som skal til for å rive løs grov grus!
+> Elevene skal kunne
 >
-> Årsaken er **elektrostatisk kohesjon**: Leirmineraler er mikroskopiske, flate sjiktsilikater med negative ladninger på overflaten. Sammenpresset leire danner en ekstremt tett, kohesiv masse der vanndraget ikke får tak i enkeltpartikler. Sandkorn (0,2–0,5 mm) mangler derimot kohesjon og eroderes derfor aller lettest, ved bare ca. 20 cm/s!
+> - sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet
+>
+> (Udir, u.å.-b)
+>
+> **Kjerneelementer som dekkes i dette kapitlet:**
+>
+> • *Jordsystemer i tid og rom:* Landformene viser hvordan geosfæren, hydrosfæren, kryosfæren og atmosfæren virker sammen over alt fra noen timer til millioner av år.
+>
+> • *Modeller og modellering:* Hjulströms diagram og de interaktive figurene er modeller som forenkler virkeligheten for å forklare og forutsi prosessene.
+>
+> • *Mennesket i jordsystemene:* Vi bruker løsmassene som ressurs, og vi endrer elver, skråninger og kyst – noen ganger slik at faren for erosjon og skred øker.
+>
+> (Udir, u.å.-a)
+>
+> **I dette kapitlet lærer du om**
+>
+> indre og ytre krefter, mekanisk og kjemisk forvitring, erosjon, transport og avsetning i Hjulströms diagram, elvas landformer fra kilde til munning, gamle og unge landformer i Norge, og hvordan mennesker endrer landformene.
 
-## Fluviale landformer — elvens arbeid fra kilde til munning
+> **Hva tror du?**
+>
+> En elv renner rolig gjennom en dal med fin leire i bunnen. Etter et kraftig regnvær øker strømfarten. Tror du det er leira, sanden eller grusen i elvebunnen som rives løs først? Tenk over svaret mens du leser – vi kommer tilbake til det i delen om Hjulströms diagram.
 
-Rennende vann er den viktigste overflateformeren på jordkloden over geologisk tid. Elvas formende kraft endrer seg dramatisk fra fjellet til havet:
+## Hva former jordoverflaten?
 
-### V-dal, canyon og jettegryter
+Landskapet rundt oss er resultatet av to grupper krefter som virker mot hverandre. Læren om landformene og prosessene som lager dem, kaller vi *geomorfologi* (fra gresk geo = jord, morphe = form og logos = lære).
 
-- **V-dal:** I øvre elveløp med bratt terreng og stort fall eroderer elva rett nedover (bunn-erosjon). Samtidig fører forvitring, regnskyll og tyngdekraft til at løsmasser raser ned fra dalsidene og havner i elva. Dette gir det karakteristiske spisse V-tverrsnittet.
+De *indre kreftene* (endogene krefter) får energien sin fra varmen i jordas indre. Platebevegelser, fjellkjededannelse, vulkanisme og bevegelser langs forkastninger løfter berggrunnen og skaper høydeforskjeller. Du kan lese mer om dette i kapitlet [Platetektonikk](/geofag-1/platetektonikk).
 
-- **Canyon / Gjel:** Dersom elva skjærer seg ned i ekstremt fast og motstandsdyktig berggrunn (som hard gneis eller basalt), holder dalsidene seg loddrette uten å rase sammen. Eksempler er Jutulhogget i Østerdalen og Grand Canyon i USA.
+De *ytre kreftene* (eksogene krefter) drives av sola og tyngdekraften. Forvitring bryter ned berget, og rennende vann, is, bølger, vind og tyngdekraften fører materialet bort og legger det fra seg et annet sted. De ytre kreftene arbeider altså for å jevne ut høydeforskjellene som de indre kreftene har bygd opp. Det laveste nivået en elv kan grave seg ned til, er havnivået. Det kaller vi elvas *erosjonsbasis*.
 
-- **Jettegryter (evorsjon):** Runde, dype sylindre boret ned i fjellet av rennende elver eller glasialt smeltevann. En stein (løper) fanges i en virvel og roterer i tusenvis av år som et naturlig bor mot berggrunnen.
+## Forvitring – berget brytes ned der det ligger
 
-### Meandere, elvesletter og kroksjøer
+*Forvitring* betyr at berget brytes ned eller omdannes der det ligger, uten at materialet blir fraktet bort. Så snart materialet settes i bevegelse av vann, is, vind eller tyngdekraft, kaller vi det *erosjon*. Skillet er viktig: Forvitring gjør berget klart til å bli fraktet bort, og erosjon flytter det.
 
-Når elva når et flatere landskap nær havnivå, avtar fallet. Elva slutter å grave vertikalt og begynner å erodere sideveis:
+Vi deler forvitringen i to typer. Ved *mekanisk forvitring* sprekker berget opp i mindre biter, men mineralene er de samme. Ved *kjemisk forvitring* reagerer mineralene med vann, oksygen og karbondioksid og blir omdannet til nye stoffer. De to typene hjelper hverandre: Når berget sprekker opp, blir overflaten større, og da får den kjemiske forvitringen flere steder å angripe.
 
-- **Yttersving (Cut bank):** Sentrifugalkraft og helikoidal strøm gjør at vannet strømmer raskest mot ytterkanten av svingen. Her foregår det kraftig erosjon som undergraver elveskrenten.
+```widget
+Forvitringsformer
+```
 
-- **Innersving (Point bar):** På innsiden av svingen avtar strømhastigheten kraftig. Her avsettes sand og grus som lagdelte sandører.
+### Mekanisk forvitring
 
-- **Kroksjø (Oxbow lake):** Svingene blir stadig mer buktende. Under en storflom kan elva ta den korteste veien og bryte tvers gjennom den smale meanderhalsen. Den avsnørte elvesvingen blir liggende igjen som en hesteskoformet innsjø (kroksjø).
+Den viktigste mekaniske forvitringen i Norge er *frostsprengning*. Vann utvider seg ca. 9 % når det fryser. I en tett, vannfylt sprekk kan det i teorien gi svært høyt trykk, men i naturen sprekker berget oftest fordi *islinser* vokser. Vann trekkes mot isen i sprekken, og isen vokser og presser sprekken videre ved temperaturer like under frysepunktet, ca. −3 til −6 °C. Derfor betyr mange fryse–tine-sykluser og tilgang på vann mer enn sterk kulde (Murton mfl., 2006; Matsuoka & Murton, 2008). Steinene som løsner, hoper seg opp som *ur* under bratte fjellsider.
 
-![Ravinedal og elveløp erodert ned i finkornede sedimenter og leirmasser](/images/fig-ravine.jpg)
+```widget
+Frostsprengning
+```
 
-*Fluvial ravinedannelse i marine leiravsetninger — En ravine er en bratt V-formet kløft gravd ut av rennende overflatevann i leire eller silt. Etter istiden hevet store leirflater seg over havnivå på Østlandet og i Trøndelag, og bekker har skåret ut et karakteristisk, forgreinet ravinelandskap (f.eks. Romerike).*
+```widget
+FrostsprekkFoto
+```
 
-### Gilbert-type elvedelta
+Dypbergarter som granitt ble dannet flere kilometer nede i jordskorpa, under stort trykk. Når erosjonen fjerner berget over, utvider granitten seg litt og sprekker opp i skall parallelt med overflaten, omtrent som en løk. Det kaller vi *trykkavlastning*, og vi ser det blant annet i granitten ved Iddefjorden. Røtter kan også kile seg inn i sprekker og presse dem fra hverandre når de vokser. Det kaller vi *rotsprengning*.
 
-Når elva munner ut i en innsjø, fjord eller et hav, stanser strømmen brått opp, og all transportevne forsvinner. Sedimentene avsettes i tre distinkte lag i et klassisk **Gilbert-delta**:
+### Kjemisk forvitring
 
-1. **Topplag (Topset beds):** Horisontale lag av grov sand og grus avsatt i elveleiene på selve deltaflaten over vannspeilet.
+Regnvann tar opp karbondioksid fra lufta og jorda og blir en svak syre, karbonsyre. Når vannet renner gjennom kalkstein eller marmor, løser det opp kalken:
 
-2. **Forlag (Foreset beds):** Skråstilte sandlag som raser ned deltafronten og bygger deltaet trinnvis utover i vannbassenget.
+CaCO₃ + H₂O + CO₂ ⇌ Ca²⁺ + 2 HCO₃⁻
 
-3. **Bunnlag (Bottomset beds):** Horisontale lag av finkornet silt og leire som svever lengst ut i bassenget før de legger seg til ro på dypet.
+Over lang tid kan vannet hule ut grotter og underjordiske elveløp. Et slikt landskap kaller vi et *karstlandskap*. I Norge finner vi kjente kalksteinsgrotter i Nordland, for eksempel Grønligrotta og Setergrotta i Rana (Gjessing, 1978).
 
-## Glasiale landformer — isbreenes mektige arkitektur
+Feltspat er det vanligste mineralet i granitt. Ved *hydrolyse* reagerer feltspaten med vann og blir omdannet til leirmineraler, mens kalium og kisel følger med vannet bort. Granitten mister da sammenhengen og smuldrer opp til grus. Kvartskornene tåler forvitringen bedre og blir igjen. Mange av dem ender til slutt som sand på en strand.
 
-Isbreer er historiens mest formidable skulptører av det norske landskapet (Benn &amp; Evans, 2010; Nesje &amp; Dahl, 1993). En isbre beveger seg under sin egen vekt gjennom *indre plastisk deformasjon* og *basal glidning* på en tynn smeltevannsfilm:
+```widget
+SjekkLandformer1
+```
 
-### Erosjonsformer: Skuring og plukking
+## Erosjon, transport og avsetning
 
-- **U-daler:** I motsetning til elva som bare graver i bunnen, fyller en bre hele dalen fra side til side. Isen eroderer med lik kraft langs både bunn og dalsider, noe som skaper en flat bunn med stupbratte vegger (U-tverrsnitt).
+Når forvitringen har løsnet kornene, kan rennende vann, is og vind frakte dem bort. Hvor store korn vannet kan rive løs og bære med seg, avhenger av hvor fort det renner. Kornstørrelsen i en avsetning forteller oss derfor hvor mye energi vannet hadde da kornene ble lagt igjen. Geologer deler kornene inn i leire, silt, sand, grus og stein etter størrelsen.
 
-- **Fjorder:** En fjord er simpelthen en U-dal som er gravd ut så dypt at bunnen ligger langt under dagens havnivå (overfordypning). Sognefjorden er hele 1308 meter dyp på sitt dypeste! Ved munningen mistet breen mottrykk og erosjonsevne, slik at det ble stående igjen en grunn **fjordterskel** (ofte bare 100–200 meter dyp).
+```widget
+GrainSizeDistribution
+```
 
-- **Hengedaler:** Dannes der en mindre sidebre munnet ut i en mye større hovedbre. Hovedbreen gravde dalbunnen langt dypere ned. Da isen forsvant, ble sidedalen hengende høyt oppe i fjellsiden, og sideelva må kaste seg ut i fossestryk (f.eks. Vøringsfossen og De syv søstre).
+### Hjulströms diagram
 
-- **Botner, tinder og egger:** En *botnbre* graver en skålformet nisje inn i fjellsiden (botn/cirque), ofte med et botntjern. Når to botnbreer spiser seg inn fra hver sin side av fjellet, dannes en knivskarp fjellrygg (*egg / arête*, f.eks. Besseggen). Når tre eller flere botner møtes, står en sylspiss pyramidetind igjen (*horn / tind*, f.eks. Stetind og Matterhorn).
+I 1935 laget den svenske geografen Filip Hjulström et diagram som viser sammenhengen mellom strømfarten i en elv og kornstørrelsen (Hjulström, 1935). Diagrammet har tre felt. I det øverste feltet rives kornene løs (erosjon). I midten holdes kornene i bevegelse (transport). I det nederste feltet synker de til bunnen (avsetning).
 
-### Glasiale avsetningsformer: Morener og eskere
+```widget
+HjulstromInteraktiv
+```
 
-Alt materiale en isbre river løs, fraktes usortert med isen og avsettes som **morenemateriale (till)**:
+Kanskje skulle man vente at de minste kornene var lettest å rive løs? Det er de ikke. Sand eroderes ved lavest fart, ca. 20 cm/s. Fast, avsatt leire kan kreve like stor strømfart for å eroderes som grus. Fin silt på 0,01 mm krever ca. 60 cm/s, tre ganger så mye som sand, og den fineste leira enda mer (Hjulström, 1935; Earle, 2019). Grunnen er at leirmineralene er små, flate og elektrisk ladde, slik at kornene henger sammen. Det kaller vi *kohesjon*. Hvor stor strømfart som trengs, avhenger av hvor fast leira er pakket. Når leira først er revet løs, synker den derimot svært sakte, og den kan holdes svevende i vannet langt nedover elva selv om strømmen er svak. Svaret på «Hva tror du?»-spørsmålet er altså sanden.
 
-- **Bunnmorene:** Løsmasser presset ut under breens såle over hele landet. Kaotisk blanding av leire, sand og kjempeblokker.
+```widget
+SjekkLandformer2
+```
 
-- **Endemorene og Raet:** Når brefronten ble liggende i ro over lengre tid (fordi snøtilvekst og smelting balanserte hverandre), fungerte breen som en gigantisk bulldoser som skjøv opp en mektig voll av stein og grus. Det mest berømte eksempelet er **Raet**, et israndtrinn fra *Yngre Dryas* (ca. 12 800–11 700 år siden). Det er ikke én rygg til Nord-Norge, men en lang sone av morene, breelvgrus og strandmateriale, særlig på begge sider av Oslofjorden. Mot vest kan sonen følges til Lysefjorden. Lenger nord har morener fra samme tid andre navn, som Halsnøymorenen og Herdlamorenen (SNL, u.å.).
+## Elva fra kilde til munning
 
-- **Esker:** En slangeformet, langstrakt grusrygg avsatt av en smeltevannselv som rant i en lukket tunnel under innlandsisen mot slutten av istiden.
+Rennende vann er den prosessen som har formet mest av overflaten på jorda som helhet. Langs en elv endrer arbeidet seg fra fjellet til havet: Øverst graver elva seg ned, lenger ned eroderer den sideveis, og ved munningen avsetter den.
 
-## Norges landskapshistorie — gamle vidder og unge fjorder
+```widget
+ElvaFraKildeTilMunning
+```
 
-Norges storslåtte natur skyldes et fascinerende samspill mellom to vidt forskjellige generasjoner av landformer (Gjessing, 1978; Holtedahl, 1960):
+### V-daler og gjel
 
-1. Gamle landformer
+Øverst i elveløpet er fallet stort, og elva graver seg rett nedover. Samtidig raser løsmasser og stein ned fra dalsidene og havner i elva. Resultatet er en dal med V-formet tverrsnitt, en *V-dal*. Graver vannet seg svært raskt ned, eller er berget så fast at dalsidene ikke raser ut, kan det bli et smalt, bratt *gjel*. Jutulhogget mellom Østerdalen og Tylldalen ble gravd ut på kort tid mot slutten av istiden, da den bredemte sjøen Nedre Glomsjø ble tappet og store mengder smeltevann strømmet over dalskillet (SNL, u.å.-a). Der en stein blir fanget i en virvel og slipes rundt og rundt, kan det bli boret ut en *jettegryte*.
 
-#### Den paleiske overflaten (Mesozoikum / Paleogen)
+### Meandere og kroksjøer
 
-De store, rolige viddene (Hardangervidda, Finnmarksvidda), avrundede heiene og de vide dalene i innlandet er over 50–100 millioner år gamle. De ble formet gjennom et uhyre langt tidsrom med subtropisk klima og dyp kjemisk forvitring, som høvlet ned den gamle kaledonske fjellkjeden til et nesten flatt slettelandskap (et *peneplan*).
+Når elva kommer ned på flatere land, avtar fallet. Elva slutter å grave seg ned og begynner å erodere sideveis. I yttersvingen renner vannet fortest og graver ut en bratt elvebakke. I innersvingen renner det saktere, og sand og grus blir lagt igjen som en banke. Svingene blir derfor stadig mer buktende. Slike elvesvinger kaller vi *meandere*, etter elva Maiandros i Tyrkia. Under en flom kan elva bryte gjennom den smale halsen mellom to svinger. Svingen som blir liggende igjen, kaller vi en *kroksjø*.
 
-2. Tertiær landheving
+```widget
+MeanderOgKroksjo
+```
 
-#### Skråstillingen av Skandinavia (Paleogen / Neogen)
+```widget
+RavineFoto
+```
 
-For ca. 55 millioner år siden åpnet Norskehavet seg ved havbunnsspredning. I tertiærtiden ble den skandinaviske landblokken hevet skjevt opp — opptil 1500–2000 meter i vest, mens østsiden forble lav og skrånet slakt ned mot Østersjøen. Dette ga elvene voldsom fart mot vest og utløste kraftig tilbakeskridende elveerosjon inn i det gamle viddeplatået.
+### Delta
 
-3. Unge landformer
+Der elva renner ut i en innsjø eller i havet, synker strømfarten brått, og transportevnen faller kraftig. Kornene blir sortert etter størrelse. Grus og grov sand blir liggende på deltaflaten som *topplag*. Sand raser ned fronten i skrå *forlag*, og silt og leire legger seg lengst ute som *bunnlag*. Et delta med denne lagdelingen kaller vi et *Gilbert-delta*, etter den amerikanske geologen G. K. Gilbert.
 
-#### Kvartære breer og strandflaten (&lt;2,6 mill. år)
+```widget
+GilbertDelta
+```
 
-I løpet av kvartærtidens mange istider ble de tertiære elvedalene invadert av mektige breer. Breene skar seg dypt ned og skapte Vestlandsfjordene, U-dalene og alpine tinder. Samtidig ble **strandflaten** erodert ut langs kysten: en lav, flat brem av tusenvis av øyer, holmer og skjær (0–50 moh) skapt av et unikt samspill mellom frostforvitring, brenninger og kystbreer (spesielt på Helgelandskysten).
+```widget
+SjekkLandformer3
+```
 
-![Dramatisk vestnorsk fjordlandskap med bratte fjellsider, U-dal og strandflate i forgrunnen](/images/fig-fjellskred-fjord.jpg)
+## Isen formet det meste av Norge
 
-*Geomorfologisk kontrast: Fra fjordbunn til alpine tinder — Et klassisk vestnorsk landskap der unge, dramatiske glasiale landformer (den overfordypede fjorden og de steile fjellsidene) skjærer seg dypt ned i den opprinnelige hevede landblokken. Langs slike bratte fjellsider er fjellet kontinuerlig utsatt for frostforvitring og storskala fjellskred.*
+Det er isen som har formet mest av landskapet i Norge. Gjennom istidene grov breene ut V-daler til U-daler og fjorder, og små breer høylte ut botner mellom skarpe egger og tinder. Da isen smeltet, la den igjen morener som Raet, grusrygger og breelvdeltaer. Mange av de største grus- og sandforekomstene våre er slike breelvavsetninger. Hvordan breene beveger seg, eroderer og avsetter, og hvordan du kjenner igjen sporene etter dem, kan du lese i kapitlet [Isbreer og landformer](/geofag-1/isbreer-og-landformer).
 
-> **Kompetansemål (LK20 Geofag 1)** – sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet (Udir, u.å.).
+## Gamle vidder og unge fjorder
+
+Norge har landformer fra svært ulike tider. Viddene, som Hardangervidda og Finnmarksvidda, er store, slake flater høyt over havet. Fjordene, U-dalene og de spisse tindene er mye yngre og ble formet av breene under de siste 2,6 millioner årene (Gjessing, 1978).
+
+```widget
+LandskapBlokk
+```
+
+Etter den klassiske modellen er viddene rester av et gammelt, lavt og nesten flatt landskap, *den paleiske flaten* (fra gresk palaios = gammel). Den ble formet over svært lang tid av elver og forvitring. Senere, da Norskehavet åpnet seg for ca. 55 millioner år siden og i tiden etterpå, ble landet hevet mest i vest. Elvene fikk mer fall og grov seg ned i den gamle flaten, og breene fortsatte arbeidet under istidene (Holtedahl, 1960; Gjessing, 1978).
+
+Modellen er omstridt. Andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden ble dannet, og at istidene slipte ned toppene til en jevn høyde omkring snøgrensen (Nielsen mfl., 2009; Egholm mfl., 2009). Begge modellene forklarer de flate viddene, men på helt ulike måter. Det viser at vi ikke alltid kan lese historien rett ut av landskapet.
+
+Langs kysten fra Ryfylke til Vest-Finnmark ligger *strandflaten*, en lav og flat brem med tusenvis av øyer, holmer og skjær. Den går fra 60–70 m over til 30–40 m under havnivå og er stedvis nesten 50 km bred. Den regnes å være dannet gjennom de siste 5–10 millioner årene ved frostforvitring, bølgeerosjon og iserosjon (SNL, u.å.-b). Nøyaktig hvordan prosessene virket sammen, er fortsatt diskutert.
+
+```widget
+FjordskredFoto
+```
+
+```widget
+SjekkLandformer4
+```
+
+## Mennesket former landskapet
+
+Kompetansemålet sier at landformer endres under påvirkning av jordsystemene og menneskelig aktivitet. Mennesket er i dag en av de viktigste kreftene som flytter løsmasser. Vi flytter dem raskt, og ofte uten å tenke på at de naturlige prosessene fortsetter rundt inngrepene.
+
+### Elver som blir forbygd
+
+For å verne bebyggelse og dyrka mark mot flom og erosjon har vi rettet ut og kanalisert mange elver og bygd voller og steinfyllinger langs breddene. Det kaller vi *elveforbygning*. En rett elv renner fortere enn en buktende elv, og kan derfor erodere mer lenger ned i vassdraget. Masseuttak og utretting av elveløp kan også sette i gang ny erosjon (NVE, u.å.-a). NVE anbefaler at mest mulig av elvas naturlige form beholdes når en elv sikres mot erosjon (NVE, u.å.-b).
+
+### Sand og grus som ressurs
+
+Sand, grus og pukk er råstoffer vi bruker i betong, veier og bygg. I Norge bruker vi om lag 60 millioner tonn hvert år, ca. 11 tonn per person (NGU, u.å.). Mye av sanden og grusen tas ut fra breelvavsetninger og deltaer. Disse forekomstene ble dannet ved slutten av istiden og blir ikke fornyet. Når en grusrygg graves bort, forsvinner landformen for godt, og grunnvannet i forekomsten kan bli påvirket. Les mer om ressursene i kapitlet [Geologiske ressurser](/geofag-1/geologiske-ressurser).
+
+### Skjæringer, fyllinger og kvikkleire
+
+Når vi bygger veier og boligfelt, sprenger vi skjæringer, legger ut fyllinger og planerer terrenget. I områder med marin leire kan slike inngrep gjøre skråningene mindre stabile. En fylling øverst i en skråning gir ekstra vekt, og graving i foten fjerner støtten. Erosjon i bekker og raviner kan også utløse kvikkleireskred. Derfor legger NVE ofte ut stein i bekkene for å hindre at vannet graver i bunnen (NVE, u.å.-a). Mer om kvikkleire står i kapitlet [Skred](/geofag-1/skred).
+
+### Byer og kyst
+
+I byene blir mye av bakken dekket av asfalt og tak. Regnvannet kan da ikke sige ned i jorda, men renner raskt av og samles i bekker og rør. Flomtoppene blir høyere, og bekker og grøfter kan erodere mer enn før (NOU 2015: 16). Langs kysten bygger vi moloer, steinfyllinger og murer for å beskytte havner og veier mot bølgene. Slik *kystsikring* hindrer erosjon der den bygges, men den kan endre hvordan bølgene flytter sand og grus, og da kan erosjonen øke et annet sted.
+
+```widget
+SjekkLandformer5
+```
 
 ## Viktige begreper
 
-**Forvitring:** Mekanisk oppsmuldring eller kjemisk omdanning av fast fjell på stedet uten transport.
+**Geomorfologi:** Læren om landformene og prosessene som danner dem.
 
-**Erosjon:** Løsrivelse og transport av forvitret bergartsmateriale med vann, is, vind eller tyngdekraft.
+**Forvitring:** Berget brytes ned eller omdannes der det ligger, uten transport.
 
-**Frostsprengning:** Mekanisk forvitring der vann i sprekker utvider seg med 9 % ved frysing og sprenger fjellet.
+**Erosjon:** Materialet rives løs og fraktes bort av vann, is, vind eller tyngdekraft.
 
-**Hjulstrøms diagram:** Graf som viser sammenhengen mellom vannets strømhastighet og erosjon, transport og avsetning.
+**Frostsprengning:** Is i sprekker presser berget fra hverandre, særlig når islinser vokser.
 
-**Kohesjonseffekt:** Elektrostatisk binding mellom leirmineraler som gjør at avsatt leire krever høy strømhastighet for å eroderes.
+**Hjulströms diagram:** Diagram som viser ved hvilken strømfart korn av ulik størrelse eroderes, transporteres og avsettes.
 
-**Meander:** Buktende elvesving på slake sletter; eroderer i yttersvingen og avsetter sand i innersvingen.
+**Kohesjon:** Leirkorn henger sammen fordi de er små, flate og elektrisk ladde.
 
-**U-dal:** Dal med flat bunn og bratte sider, utgravd av en isbre som fyller hele tverrsnittet.
+**Meander:** Buktende elvesving som eroderer i yttersvingen og avsetter i innersvingen.
 
-**Fjord:** En dyp, overfordypet U-dal som er gravd under havnivå og har en grunn terskel ved munningen.
+**Gilbert-delta:** Delta med topplag, forlag og bunnlag.
 
-**Endemorene:** Rygg av usortert morenemateriale skjøvet opp foran brefronten under et langvarig stillstand.
+**Den paleiske flaten:** Etter den klassiske modellen et gammelt, nesten flatt landskap som viddene er rester av.
 
-**Raet:** Israndtrinn fra Yngre Dryas (ca. 12 800–11 700 år siden), særlig langs begge sider av Oslofjorden. Ikke én rygg til Nord-Norge.
+**Strandflaten:** Lav, flat brem av øyer og skjær langs kysten.
 
-**Den paleiske overflaten:** Eldgamle, bølgende vidder (Hardangervidda) formet under varmt mesozoisk klima før tertiærhevingen.
+**Elveforbygning:** Tiltak som verner mot flom og erosjon langs en elv, for eksempel voller og steinfyllinger.
 
-**Strandflaten:** Lav, flat brem av øyer og skjær langs kysten (0–50 moh) formet av frost, bølger og is.
+## Sammendrag
+
+```widget
+SammendragLandformer
+```
+
+## Test deg selv
+
+```widget
+QuizLandformer
+```

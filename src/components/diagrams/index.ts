@@ -149,7 +149,6 @@ export {
   VolcanoMonitoringDiagram,
   VolcanoTypesDiagram,
 } from "./quakes";
-export { ValleyCrossSectionDiagram } from "./bergarter";
 export {
   AvsetningsformerDiagram,
   BotnEggTindDiagram,
@@ -159,7 +158,7 @@ export {
   VdalTilUdalDiagram,
 } from "./isbreer";
 export { CarbonCycleDiagram, SpheresDiagram } from "./spheres";
-export { HydrographDiagram, KretslopDiagram, MarineLimitDiagram } from "./hydrology";
+export { HydrographDiagram, KretslopDiagram } from "./hydrology";
 export { FeltbokDiagram, FraBergartTilBruddDiagram, PetroleumSystemDiagram } from "./ressurser";
 export {
   SynopticMapDiagram,
@@ -183,7 +182,6 @@ export {
   BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,
   GrainSizeDistributionDiagram,
-  HjulstromDiagram,
   RelativeDatingDiagram,
 } from "./geology-extra";
 export {

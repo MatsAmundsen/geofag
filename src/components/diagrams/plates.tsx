@@ -977,7 +977,7 @@ export function BoundaryOverviewDiagram() {
             <li>
               <strong>Jordskjelv:</strong> Langs plategrensen. Les mer om dybdefordelingen i kapittelet{" "}
               <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
-                Jordskjelv og tsunamier
+                Jordskjelv og jordas indre
               </Link>
               .
             </li>
@@ -1569,7 +1569,7 @@ export function SubductionDiagram() {
           bygger en eksplosiv vulkanbue (Andesfjellene). Les mer om jordskjelvene langs den synkende
           platen og Wadati-Benioff-sonen i kapittelet{" "}
           <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
-            Jordskjelv og tsunamier
+            Jordskjelv og jordas indre
           </Link>
           .
         </>
@@ -1766,7 +1766,7 @@ export function SubductionDiagram() {
                 Les mer om dybdefordelingen
               </L>
               <L x="12" y="66" fill="#94a3b8" size={9.5}>
-                i Jordskjelv og tsunamier.
+                i Jordskjelv og jordas indre.
               </L>
             </g>
           </g>

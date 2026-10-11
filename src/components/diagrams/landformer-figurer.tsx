@@ -4,9 +4,9 @@
  * Bygger på samme ramme som isbrefigurene (IsbreFigur, StegVelger, Skyver og isbre-kit), så de
  * to kapitlene får samme stil: nummermerker og liste på mobil, Start/Pause og steg.
  *
- * Alle tall og påstander i figurene kommer fra kapitteltekstene (src/routes/geofag-1/landformer.tsx).
- * Hjulstrøm-kurvene er tegnet omtrentlig etter Hjulström (1935): kapitlet gir bare to fastpunkter
- * (ca. 20 cm/s for sand 0,2–0,5 mm og over 100 cm/s for leire), resten er en skjematisk kurveform.
+ * Tall og påstander i figurene kommer fra kapitteltekstene (src/lib/posts/landformer.md).
+ * Hjulström-kurvene er tegnet etter Hjulström (1935), slik standardfremstillingen gjengis i Earle,
+ * Physical Geology (2. utg., 2019), kap. 13.3. Kurvene er avlest og interpolert på log-skala.
  */
 import {
   useContext,
@@ -149,42 +149,45 @@ function T({
  * 1. Hjulstrøms diagram (interaktivt)
  * ===================================================================== */
 
-/** Kritisk strømfart for erosjon (cm/s) mot kornstørrelse (mm). Skjematisk etter Hjulström (1935). */
+/**
+ * Kritisk strømfart for erosjon (cm/s) mot kornstørrelse (mm), etter Hjulström (1935) gjengitt i
+ * Earle (2019, kap. 13.3). Fastpunkter: 0,001 mm ≥ 500, 0,01 mm 60, 0,2–1 mm ca. 20, 10 mm 105 cm/s.
+ */
 const HJ_E: [number, number][] = [
-  [0.001, 150],
-  [0.002, 112],
-  [0.005, 64],
-  [0.01, 43],
-  [0.02, 31],
-  [0.05, 23.5],
-  [0.1, 21],
+  [0.001, 500],
+  [0.002, 240],
+  [0.005, 110],
+  [0.01, 60],
+  [0.02, 40],
+  [0.05, 27],
+  [0.1, 22],
   [0.2, 20],
-  [0.3, 19.8],
-  [0.5, 20.2],
-  [1, 24],
-  [2, 32],
-  [5, 52],
-  [10, 78],
-  [20, 115],
-  [50, 190],
-  [100, 270],
+  [0.3, 19.5],
+  [0.5, 19.5],
+  [1, 20],
+  [2, 30],
+  [5, 62],
+  [10, 105],
+  [20, 160],
+  [50, 270],
+  [100, 380],
 ];
-/** Strømfart (cm/s) der kornene avsettes. Skjematisk; under ca. 0,006 mm holdes kornene svevende. */
+/** Strømfart (cm/s) der kornene avsettes, etter Earle (2019): 0,01 mm 0,1, 1 mm 10, 10 mm 80 cm/s. Under ca. 0,006 mm holdes kornene svevende. */
 const HJ_D: [number, number][] = [
-  [0.006, 0.1],
-  [0.01, 0.16],
-  [0.02, 0.3],
-  [0.05, 0.62],
-  [0.1, 1],
-  [0.2, 1.9],
-  [0.5, 4.5],
-  [1, 8.5],
-  [2, 15],
-  [5, 32],
-  [10, 55],
-  [20, 88],
-  [50, 150],
-  [100, 215],
+  [0.006, 0.06],
+  [0.01, 0.1],
+  [0.02, 0.25],
+  [0.05, 0.7],
+  [0.1, 1.4],
+  [0.2, 2.7],
+  [0.5, 6],
+  [1, 10],
+  [2, 18],
+  [5, 42],
+  [10, 80],
+  [20, 130],
+  [50, 220],
+  [100, 330],
 ];
 function logInterp(tab: [number, number][], d: number) {
   const x = Math.log10(d);
@@ -242,7 +245,7 @@ const GRAIN_COLOR: Record<string, string> = {
 };
 
 export function HjulstromInteraktiv({
-  heading = "Hjulstrøms diagram: erodere, transportere eller avsette?",
+  heading = "Hjulströms diagram: erodere, transportere eller avsette?",
   caption,
 }: LandformFigurProps) {
   const motion = useAnimationPlaying();
@@ -269,7 +272,7 @@ export function HjulstromInteraktiv({
       heading={heading}
       caption={
         caption ??
-        "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Leire krever over 100 cm/s fordi kornene henger sammen (kohesjon). Skjematisk etter Hjulström (1935). Gjelder omtrent for kvartskorn i ca. 1 m dypt vann."
+        "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Fin silt (0,01 mm) krever ca. 60 cm/s, og den fineste leira (0,001 mm) 500 cm/s eller mer, fordi kornene henger sammen (kohesjon). Etter Hjulström (1935), gjengitt i Earle (2019). Gjelder omtrent for kvartskorn i ca. 1 m dypt vann."
       }
       // statusen endres bare av brukeren (animasjonen flytter bare kornene), så den leses alltid opp
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -502,7 +505,7 @@ function HjPlot({ narrow, d, v, zone }: { narrow: boolean; d: number; v: number;
         strokeWidth="2"
       />
       <T avoid={cur} x={L.x0 + 10} y={L.y0 + fs + 8} size={fs} color={C.warm}>
-        Leire: over 100 cm/s
+        Leire 0,001 mm: ≥ 500 cm/s
       </T>
       <T avoid={cur} x={L.x0 + 10} y={L.y0 + 2 * fs + 16} size={fs - 1} color={C.fg}>
         {narrow ? "(kohesjon)" : "(kohesjon: kornene henger sammen)"}

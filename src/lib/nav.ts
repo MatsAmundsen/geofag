@@ -343,7 +343,7 @@ export const GF1_THEMES = [
     image: "/images/fig-vestlandet.jpg",
     alt: "Vestlandsk fjordlandskap med dyp U-dal og bratte fjellsider",
     blurb:
-      "Mekanisk og kjemisk forvitring, Hjulstrøms kurve, glasiale og fluviale landformer, strandflaten og den paleiske overflaten i Norge.",
+      "Forvitring, erosjon og avsetning, Hjulströms diagram, elvas landformer, gamle vidder og unge fjorder, og hvordan mennesker endrer landformene.",
     status: "klar" as const,
     maal: "Sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet.",
   },

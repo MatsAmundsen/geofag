@@ -409,7 +409,7 @@ export function FjellskredBolgeDiagram() {
     <Diagram
       title="Fjellskred i fjord som lager flodbølge med stor oppskyllingshøyde på motsatt side"
       heading="Fjellskred i fjord blir flodbølge"
-      caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden i minutter, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde, og den kan bli mange ganger bølgehøyden ute i fjorden. I Tafjord 1934 nådde vannet 61 høydemeter. Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
+      caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden i minutter, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde, og den kan bli mange ganger bølgehøyden ute i fjorden. I Tafjord 1934 nådde vannet 61 høydemeter (NVE, u.å.). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
       viewBox="0 0 840 400"
     >
       {(m) => (

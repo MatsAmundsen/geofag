@@ -1524,7 +1524,7 @@ export function PlateTectonicsModel() {
           <p>
             Les mer om seismisitet og Wadati-Benioff-sonen i kapittelet{" "}
             <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
-              Jordskjelv og tsunamier
+              Jordskjelv og jordas indre
             </Link>
             . Les mer om ofiolittkomplekset på Leka i kapittelet{" "}
             <Link to="/geofag-1/norges-geologi" className="font-medium text-primary underline underline-offset-2">

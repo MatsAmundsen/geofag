@@ -29,6 +29,41 @@ type SectionMeta = {
 
 const SECTION_META: SectionMeta[] = [
   {
+    match: /^hva former jordoverflaten/i,
+    label: "Krefter",
+    subtitle: "Indre krefter løfter, ytre krefter bryter ned",
+  },
+  {
+    match: /^forvitring – berget/i,
+    label: "Forvitring",
+    subtitle: "Mekanisk og kjemisk, der berget ligger",
+  },
+  {
+    match: /^erosjon, transport og avsetning/i,
+    label: "Hjulström",
+    subtitle: "Strømfart og kornstørrelse",
+  },
+  {
+    match: /^elva fra kilde til munning/i,
+    label: "Elva",
+    subtitle: "V-dal, meander, kroksjø og delta",
+  },
+  {
+    match: /^isen formet det meste av norge/i,
+    label: "Isen",
+    subtitle: "Kort om breene, mer i Isbreer og landformer",
+  },
+  {
+    match: /^gamle vidder og unge fjorder/i,
+    label: "Landskapet",
+    subtitle: "To modeller for viddene",
+  },
+  {
+    match: /^mennesket former landskapet/i,
+    label: "Mennesket",
+    subtitle: "Forbygning, masseuttak, kvikkleire og kyst",
+  },
+  {
     match: /^platetektonikk$/i,
     label: "Jordens indre",
     subtitle: "Skorpe, mantel, kjerne, litosfære og astenosfære",

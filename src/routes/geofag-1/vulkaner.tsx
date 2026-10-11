@@ -30,7 +30,7 @@ function VulkanerPage() {
       }}
       next={{
         to: "/geofag-1/jordskjelv",
-        label: "Neste: Jordskjelv og tsunamier",
+        label: "Neste: Jordskjelv og jordas indre",
       }}
       kilder={KILDER.vulkaner}
       posterSlug="vulkaner"

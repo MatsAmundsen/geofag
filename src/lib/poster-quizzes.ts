@@ -2198,3 +2198,185 @@ export const QUIZ_CORIOLIS: QuizQuestion[] = [
       "Se «Havet: ekmantransport og oppvelling». På den nordlige halvkule går ekmantransporten til høyre for vinden.",
   },
 ];
+
+export const QUIZ_SJEKK_LANDFORMER_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er forskjellen på forvitring og erosjon?",
+    options: [
+      "Forvitring skjer bare i elver, og erosjon skjer bare under isbreer.",
+      "Forvitring bryter ned berget der det ligger, mens erosjon river løs og frakter bort materialet.",
+      "Det er to ord for samme prosess.",
+    ],
+    answer: 1,
+    explain: "Så lenge bitene ligger der berget brøt dem løs, er det forvitring. Flytter vann, is, vind eller tyngdekraften dem, er det erosjon.",
+  },
+  {
+    prompt: "Hvorfor sprekker berget oftest ved frostsprengning?",
+    options: [
+      "Fordi islinser vokser i sprekkene ved temperaturer like under frysepunktet, når det er tilgang på vann.",
+      "Fordi berget krymper når det blir svært kaldt.",
+      "Fordi isen smelter og løser opp mineralene.",
+    ],
+    answer: 0,
+    explain: "Vann trekkes mot isen, og islinsene presser sprekken videre. Mange fryse–tine-sykluser betyr mer enn sterk kulde.",
+  },
+  {
+    prompt: "Hva skjer ved hydrolyse av feltspat?",
+    options: [
+      "Feltspaten løses helt opp og blir til karbonsyre.",
+      "Feltspaten blir omdannet til leirmineraler, og granitten smuldrer opp.",
+      "Feltspaten blir til kvarts.",
+    ],
+    answer: 1,
+    explain: "Hydrolyse er kjemisk forvitring. Kvartskornene tåler forvitringen bedre og blir igjen som sand.",
+  },
+];
+
+export const QUIZ_SJEKK_LANDFORMER_2: QuizQuestion[] = [
+  {
+    prompt: "Hvilke korn eroderes ved lavest strømfart i Hjulströms diagram?",
+    options: ["Leire", "Sand", "Grov grus"],
+    answer: 1,
+    explain: "Sand eroderes ved ca. 20 cm/s. Leire henger sammen og krever høyere fart, og grus er tyngre.",
+  },
+  {
+    prompt: "Hvorfor kan fast, avsatt leire kreve like stor strømfart for å eroderes som grus?",
+    options: [
+      "Fordi leirkornene er tyngre enn grus.",
+      "Fordi de små, flate og elektrisk ladde leirkornene henger sammen (kohesjon).",
+      "Fordi leire alltid ligger dypere enn grus i elva.",
+    ],
+    answer: 1,
+    explain: "Kohesjonen holder kornene sammen. Hvor stor fart som trengs, avhenger av hvor fast leira er pakket.",
+  },
+];
+
+export const QUIZ_SJEKK_LANDFORMER_3: QuizQuestion[] = [
+  {
+    prompt: "Hvor eroderer en meandrerende elv mest?",
+    options: ["I innersvingen", "I yttersvingen", "Like mye på begge sider"],
+    answer: 1,
+    explain: "Vannet renner fortest i yttersvingen og graver ut en bratt elvebakke. I innersvingen avsettes sand og grus.",
+  },
+  {
+    prompt: "Hvordan blir en kroksjø dannet?",
+    options: [
+      "En isbre graver ut et basseng i dalbunnen.",
+      "Elva bryter gjennom halsen mellom to svinger, og svingen blir liggende igjen.",
+      "Kalkstein løses opp, og bakken synker inn.",
+    ],
+    answer: 1,
+    explain: "Det skjer ofte under en flom, når elva tar den korteste veien.",
+  },
+  {
+    prompt: "Hvilke korn legger seg lengst ute i et Gilbert-delta?",
+    options: ["Grus", "Sand", "Silt og leire"],
+    answer: 2,
+    explain: "De fineste kornene synker saktest og danner bunnlaget lengst ute.",
+  },
+];
+
+export const QUIZ_SJEKK_LANDFORMER_4: QuizQuestion[] = [
+  {
+    prompt: "Hva sier den klassiske modellen om viddene?",
+    options: [
+      "At de er rester av et gammelt, nesten flatt landskap som senere ble hevet.",
+      "At de ble gravd ut av isen under siste istid.",
+      "At de er unge lavaflater.",
+    ],
+    answer: 0,
+    explain: "Modellen er omstridt. Andre forskere mener at istidene slipte ned fjellene til en jevn høyde.",
+  },
+  {
+    prompt: "Hvilke landformer er yngst?",
+    options: ["Viddene", "Fjordene og U-dalene", "De er like gamle"],
+    answer: 1,
+    explain: "Fjordene og U-dalene ble formet av breene de siste 2,6 millioner årene.",
+  },
+];
+
+export const QUIZ_SJEKK_LANDFORMER_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan en utrettet elv gi mer erosjon lenger ned i vassdraget?",
+    options: [
+      "Fordi en rett elv renner fortere enn en buktende elv.",
+      "Fordi en rett elv har mindre vann.",
+      "Fordi utretting gjør vannet varmere.",
+    ],
+    answer: 0,
+    explain: "Større strømfart gir større transportevne, slik Hjulströms diagram viser.",
+  },
+  {
+    prompt: "Hvorfor kan en fylling øverst i en leirskråning øke faren for kvikkleireskred?",
+    options: [
+      "Fordi fyllingen gir ekstra vekt på skråningen.",
+      "Fordi fyllingen gjør leira til fjell.",
+      "Fordi fyllingen stopper all erosjon.",
+    ],
+    answer: 0,
+    explain: "Vekt øverst og graving i foten gjør skråningen mindre stabil.",
+  },
+  {
+    prompt: "Hvorfor er sand og grus fra breelvavsetninger en begrenset ressurs?",
+    options: [
+      "Fordi forekomstene ble dannet ved slutten av istiden og ikke blir fornyet.",
+      "Fordi sand og grus løses opp i regnvann.",
+      "Fordi det er forbudt å bruke grus i betong.",
+    ],
+    answer: 0,
+    explain: "Når en grusrygg graves bort, forsvinner landformen for godt.",
+  },
+];
+
+export const QUIZ_LANDFORMER: QuizQuestion[] = [
+  {
+    prompt: "Hvilken påstand om indre og ytre krefter er riktig?",
+    options: [
+      "De ytre kreftene drives av varmen i jordas indre.",
+      "De indre kreftene løfter berggrunnen, og de ytre kreftene bryter den ned og flytter materialet.",
+      "De indre kreftene jevner ut høydeforskjellene.",
+      "Bare de indre kreftene former landskapet i Norge.",
+    ],
+    answer: 1,
+    explain: "De indre kreftene får energien fra jordas indre. De ytre drives av sola og tyngdekraften.",
+  },
+  {
+    prompt: "En elv renner med 30 cm/s over en bunn av fast leire, sand og grov grus. Hva rives trolig løs?",
+    options: ["Bare den faste leira", "Sanden", "Den grove grusen", "Alt sammen"],
+    answer: 1,
+    explain: "Sand eroderes fra ca. 20 cm/s. Fast leire og grov grus krever høyere strømfart.",
+  },
+  {
+    prompt: "Hvordan ble Jutulhogget trolig dannet?",
+    options: [
+      "Av en elv som har gravd i hard gneis i millioner av år.",
+      "Av smeltevann som strømmet over dalskillet da en bredemt sjø ble tappet ved slutten av istiden.",
+      "Av en isbre som grov ut en U-dal.",
+      "Ved at kalkstein ble løst opp.",
+    ],
+    answer: 1,
+    explain: "Den bredemte sjøen Nedre Glomsjø ble tappet, og vannet grov ut gjelet på kort tid.",
+  },
+  {
+    prompt: "Hva er riktig om modellene for de norske fjellplatåene?",
+    options: [
+      "Alle forskere er enige om at viddene er en hevet, gammel flate.",
+      "Den klassiske modellen sier at en gammel flate ble hevet, mens andre mener istidene slipte ned høye fjell.",
+      "Viddene ble dannet av vulkaner.",
+      "Viddene er yngre enn fjordene.",
+    ],
+    answer: 1,
+    explain: "Begge modellene kan forklare de flate viddene. Derfor er spørsmålet fortsatt omstridt.",
+  },
+  {
+    prompt: "Hvilket inngrep kan føre til mer erosjon et annet sted langs kysten?",
+    options: [
+      "Kystsikring med moloer og steinfyllinger",
+      "Å plante trær på en vidde",
+      "Å måle strømfarten i en elv",
+      "Å kartlegge løsmasser",
+    ],
+    answer: 0,
+    explain: "Kystsikring kan endre hvordan bølgene flytter sand og grus langs stranda.",
+  },
+];
