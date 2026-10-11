@@ -587,7 +587,7 @@ export function FolgBergartFigur({
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
   const [valg, setValg] = useState(0);
-  const clock = useStepClock(2, motion.playing && visible, 2600, 400);
+  const clock = useStepClock(2, motion.playing && visible, 2600, 400, 1, false);
   const rute = valg > 0 ? RUTER[valg - 1] : null;
   const pos = small ? ST_POS_SMAL : ST_POS_BRED;
   const bw = small ? 224 : 210;
