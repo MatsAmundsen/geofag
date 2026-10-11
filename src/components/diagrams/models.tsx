@@ -47,11 +47,11 @@ export function ModelGrid3DDiagram() {
 
           {/* ØVRE STRATOSFÆRE/TOA MERKING */}
           <line x1="60" y1="65" x2="880" y2="65" stroke={C.muted} strokeWidth="1" strokeDasharray="5 4" opacity="0.5" />
-          <L x="70" y="55" fill={C.cold} size={11} weight={700}>Øvre modellrand (TOA · ~0,01 hPa / 65 km · Innkommende solstråling og utgående IR)</L>
+          <L x="70" y="55" fill={C.cold} size={11} weight={700}>Øvre modellrand (TOA · ~0,01 hPa / ca. 80 km · innkommende solstråling og utgående IR)</L>
           <L x="870" y="55" fill={C.muted} size={11} anchor="end">Horisontale isobarflater</L>
 
           {/* 3D-PERSPEKTIV: TERRENG OG RUTENETT */}
-          {/* Havnivå til venstre (0 moh), fjord og bratt fjelltopp til høyre (1800 moh) */}
+          {/* Havnivå til venstre (0 moh.), fjord og bratt fjelltopp til høyre (1800 moh.) */}
           <g transform="translate(60, 80)">
             {/* Vertikale nivåer (Sigma-flater) som buer over fjellet */}
             {/* Nivå 5 (Topp: flat) */}
@@ -218,7 +218,7 @@ export function PrimitiveEquationsDiagram() {
               <L x="12" y="38" fill="#cbd5e1" size={11} weight={800}>du/dt = -α·∇p - 2Ω×V</L>
               <L x="12" y="58" fill={C.muted} size={10}>Newtons 2. lov:</L>
               <L x="12" y="72" fill={C.muted} size={10}>• Trykkgradientkraft</L>
-              <L x="12" y="86" fill={C.muted} size={10}>• Corioliskraft & friksjon</L>
+              <L x="12" y="86" fill={C.muted} size={10}>• Corioliskraft og friksjon</L>
             </g>
 
             {/* Boks 2: Kontinuitetsligningen */}
@@ -238,13 +238,13 @@ export function PrimitiveEquationsDiagram() {
               <L x="12" y="38" fill="#cbd5e1" size={11} weight={800}>c_p dT = α dp + dQ</L>
               <L x="12" y="58" fill={C.muted} size={10}>Termodynamikk:</L>
               <L x="12" y="72" fill={C.muted} size={10}>• Adiabatisk heving</L>
-              <L x="12" y="86" fill={C.muted} size={10}>• Latent varme & stråling</L>
+              <L x="12" y="86" fill={C.muted} size={10}>• Latent varme og stråling</L>
             </g>
 
-            {/* Boks 4: Gasslov & Hydrostati */}
+            {/* Boks 4: Gasslov og Hydrostati */}
             <g transform="translate(525, 30)">
               <rect x="0" y="0" width="160" height="105" rx="8" fill="#11222f" stroke={C.sand} strokeWidth="1.4" />
-              <L x="12" y="20" fill={C.sand} size={12} weight={700}>4. Tilstand & Trykk</L>
+              <L x="12" y="20" fill={C.sand} size={12} weight={700}>4. Tilstand og Trykk</L>
               <L x="12" y="38" fill="#cbd5e1" size={11} weight={800}>p = ρRT · ∂p/∂z = -ρg</L>
               <L x="12" y="58" fill={C.muted} size={10}>Hydrostatisk balanse:</L>
               <L x="12" y="72" fill={C.muted} size={10}>• Ideell gasslov</L>
@@ -303,7 +303,7 @@ export function PrimitiveEquationsDiagram() {
             <g transform="translate(20, 18)">
               <L x="0" y="0" fill={C.warm} size={13} weight={800}>CFL-kriteriet (Courant-Friedrichs-Lewy):</L>
               <L x="0" y="22" fill="#cbd5e1" size={13} weight={700}>C = (u · Δt) / Δx ≤ 1</L>
-              <L x="0" y="42" fill={C.muted} size={11}>Tidssteget Δt må være så kort at luften ikke rekker å blåse</L>
+              <L x="0" y="42" fill={C.muted} size={11}>Tidssteget Δt må være så kort at lufta ikke rekker å blåse</L>
               <L x="0" y="58" fill={C.muted} size={11}>gjennom mer enn én gridcelle (Δx) på ett tidssteg.</L>
               <L x="0" y="74" fill={C.low} size={11} weight={600}>Dersom C &gt; 1, eksploderer feilene numerisk og modellen krasjer!</L>
             </g>
@@ -429,7 +429,7 @@ export function SubgridParametrizationDiagram() {
             {/* Turbulente virvler nær bakken */}
             <path d="M 370 315 C 360 295 380 280 395 295 C 405 305 390 325 375 320" fill="none" stroke={C.warm} strokeWidth="1.8" />
             <L x="420" y="300" fill={C.warm} size={10} weight={700}>Bakketurbulens</L>
-            <L x="420" y="312" fill={C.muted} size={9}>Friksjon mot skog & terreng</L>
+            <L x="420" y="312" fill={C.muted} size={9}>Friksjon mot skog og terreng</L>
 
             {/* Celledimensjonsmerking */}
             <line x1="15" y1="395" x2="495" y2="395" stroke={C.teal} strokeWidth="1.2" strokeDasharray="4 3" />
@@ -457,7 +457,7 @@ export function SubgridParametrizationDiagram() {
             <g transform="translate(15, 142)">
               <rect x="0" y="0" width="310" height="80" rx="6" fill="#13212d" stroke={C.sand} strokeWidth="1.2" />
               <L x="14" y="22" fill={C.sand} size={12} weight={700}>2. Strålingsskjema</L>
-              <L x="14" y="40" fill="#f8fafc" size={11}>Kortbølget solstråling & langbølget varmestråling</L>
+              <L x="14" y="40" fill="#f8fafc" size={11}>Kortbølget solstråling og langbølget varmestråling</L>
               <L x="14" y="56" fill={C.muted} size={10}>Beregner absorbsjon i CO₂, vanndamp og ozon,</L>
               <L x="14" y="70" fill={C.muted} size={10}>samt skyenes albedo og drivhuseffekt.</L>
             </g>
@@ -471,10 +471,10 @@ export function SubgridParametrizationDiagram() {
               <L x="14" y="70" fill={C.muted} size={10}>(Bergeron-prosessen) i underkjølte skyer.</L>
             </g>
 
-            {/* Skjema 4: Grenselag & turbulens */}
+            {/* Skjema 4: Grenselag og turbulens */}
             <g transform="translate(15, 322)">
               <rect x="0" y="0" width="310" height="85" rx="6" fill="#13212d" stroke={C.cold} strokeWidth="1.2" />
-              <L x="14" y="22" fill={C.cold} size={12} weight={700}>4. Planetært grenselag & overflate</L>
+              <L x="14" y="22" fill={C.cold} size={12} weight={700}>4. Planetært grenselag og overflate</L>
               <L x="14" y="40" fill="#f8fafc" size={11}>Friksjon, varme- og fuktighetsfluks mot bakken</L>
               <L x="14" y="56" fill={C.muted} size={10}>Beregner hvordan skog, snødekke, bølger og</L>
               <L x="14" y="72" fill={C.muted} size={10}>bygningsruhet bremser vinden og varmer lufta.</L>
@@ -491,14 +491,14 @@ export function SubgridParametrizationDiagram() {
 
 /**
  * 4. DataAssimilationCycleDiagram
- * Den 6-timers analysesyklusen (4D-Var) som kontinuerlig forankrer modellen i observasjoner.
+ * Analysesyklusen (ECMWF 4D-Var, 12-timers vindu; MEPS 3D-Var hver 3. time) som kontinuerlig forankrer modellen i observasjoner.
  */
 export function DataAssimilationCycleDiagram() {
   return (
     <Diagram
-      title="Dataassimilering: Den 6-timers analysesyklusen i operative værvarslingssentre"
+      title="Dataassimilering: analysesyklusen i operative værvarslingssentre"
       heading="Slik forankres modellen i virkeligheten: 4D-Var analysesyklus"
-      caption="Hvert sjette time (kl. 00, 06, 12 og 18 UTC) gjennomfører Meteorologisk institutt og ECMWF en ny dataassimilering. Superdatamaskinen henter inn millioner av ferske målinger fra satellitter, værballonger (radiosonder), rutefly og bakkestasjoner. Disse veies matematisk mot modellens forrige sekstimersprognose («bakgrunnstilstand» eller First Guess). Fordi målingene har støy og er ujevnt spredt i rommet, skaper 4D-Var en optimal og fysisk balansert «analyse» (starttilstand). Fra denne analysen starter et nytt 10- til 15-dagers værvarsel."
+      caption="ECMWF bruker 4D-Var med et tidsvindu på 12 timer. MEPS assimilerer oftere, med kortere vinduer (3D-Var hver 3. time). Superdatamaskinen henter inn millioner av ferske målinger fra satellitter, værballonger (radiosonder), rutefly og bakkestasjoner. Disse veies matematisk mot modellens forrige korttidsprognose («bakgrunnstilstand» eller First Guess). Fordi målingene har støy og er ujevnt spredt i rommet, skaper 4D-Var en optimal og fysisk balansert «analyse» (starttilstand). Fra denne analysen starter et nytt 10- til 15-dagers værvarsel."
       viewBox="0 0 940 480"
       wide
     >
@@ -509,7 +509,7 @@ export function DataAssimilationCycleDiagram() {
 
           {/* TITTEL OG TIDSVINDU */}
           <g transform="translate(45, 45)">
-            <L x="10" y="16" fill={C.teal} size={14} weight={800}>Det 6-timers assimileringsvinduet (f.eks. kl. 09 til kl. 15 UTC rundt analysesenter kl. 12)</L>
+            <L x="10" y="16" fill={C.teal} size={14} weight={800}>Assimileringsvinduet: ECMWF 12 timer (4D-Var), MEPS 3 timer (3D-Var)</L>
             <L x="850" y="16" fill={C.muted} size={11} anchor="end">4D-Var (Fire-dimensjonal variasjonell analyse)</L>
           </g>
 
@@ -522,7 +522,7 @@ export function DataAssimilationCycleDiagram() {
             <g transform="translate(30, 36)">
               <rect x="0" y="0" width="180" height="42" rx="5" fill="#182d3d" />
               <L x="12" y="18" fill="#38bdf8" size={11} weight={700}>🛰️ Værsatellitter (90 %)</L>
-              <L x="12" y="32" fill={C.muted} size={9}>Infrarøde & mikrobølgeradianse</L>
+              <L x="12" y="32" fill={C.muted} size={9}>Infrarøde og mikrobølgeradianse</L>
             </g>
 
             {/* Radiosonder */}
@@ -536,13 +536,13 @@ export function DataAssimilationCycleDiagram() {
             <g transform="translate(430, 36)">
               <rect x="0" y="0" width="180" height="42" rx="5" fill="#182d3d" />
               <L x="12" y="18" fill="#a78bfa" size={11} weight={700}>✈️ Rutefly (AMDAR)</L>
-              <L x="12" y="32" fill={C.muted} size={9}>Vind & temp i 10–12 km høyde</L>
+              <L x="12" y="32" fill={C.muted} size={9}>Vind og temp i 10–12 km høyde</L>
             </g>
 
-            {/* Bakkestasjoner & radar */}
+            {/* Bakkestasjoner og radar */}
             <g transform="translate(630, 36)">
               <rect x="0" y="0" width="190" height="42" rx="5" fill="#182d3d" />
-              <L x="12" y="18" fill="#4ade80" size={11} weight={700}>📡 Radar & Værstasjoner</L>
+              <L x="12" y="18" fill="#4ade80" size={11} weight={700}>📡 Radar og Værstasjoner</L>
               <L x="12" y="32" fill={C.muted} size={9}>Bakketrykk, nedbør og bøyer</L>
             </g>
           </g>
@@ -561,7 +561,7 @@ export function DataAssimilationCycleDiagram() {
               <rect x="0" y="0" width="230" height="70" rx="6" fill="#183144" stroke="#475569" />
               <L x="15" y="24" fill="#94a3b8" size={12} weight={700}>1. Bakgrunnstilstand</L>
               <L x="15" y="42" fill="#cbd5e1" size={11}>«First Guess» fra forrige</L>
-              <L x="15" y="58" fill="#cbd5e1" size={11}>6-timers modellprognose (x_b)</L>
+              <L x="15" y="58" fill="#cbd5e1" size={11}>Forrige korttidsprognose (x_b)</L>
             </g>
 
             {/* Pluss-symbol */}
@@ -594,7 +594,7 @@ export function DataAssimilationCycleDiagram() {
             <rect x="0" y="0" width="850" height="65" rx="8" fill="#0d1b24" stroke="#22c55e" strokeWidth="1.2" />
             <L x="25" y="26" fill="#22c55e" size={13} weight={800}>Neste modellprognose skytes ut:</L>
             <L x="25" y="46" fill="#cbd5e1" size={11}>
-              Superdatamaskinen regner nytt 66-timers MEPS-varsel for Norden og 15-dagers ECMWF-ensemble for kloden. Syklusen gjentas om 6 timer.
+              Superdatamaskinen regner nytt 66-timers MEPS-varsel for Norden og 15-dagers ECMWF-ensemble for kloden. Syklusen gjentas når neste vindu er fullt.
             </L>
             <L x="825" y="38" fill={C.sand} size={12} weight={700} anchor="end">Uten assimilering glemmer modellen virkeligheten på 3–4 døgn!</L>
           </g>
@@ -868,7 +868,7 @@ export function ModelHierarchyNorwayDiagram() {
                 <rect x="0" y="0" width="240" height="150" rx="6" fill="#09141e" stroke="#1f2d3d" />
                 <L x="12" y="20" fill={C.fg} size={11} weight={700}>Spesifikasjoner:</L>
                 <L x="12" y="40" fill={C.teal} size={11} weight={600}>• Område:</L>
-                <L x="75" y="40" fill="#cbd5e1" size={11}>Norden & Østersjøen</L>
+                <L x="75" y="40" fill="#cbd5e1" size={11}>Norden og Østersjøen</L>
                 <L x="12" y="60" fill={C.teal} size={11} weight={600}>• Oppløsning:</L>
                 <L x="85" y="60" fill="#22c55e" size={11} weight={800}>2,5 km grid</L>
                 <L x="12" y="80" fill={C.teal} size={11} weight={600}>• Ensemble:</L>
@@ -897,7 +897,7 @@ export function ModelHierarchyNorwayDiagram() {
                 <rect x="-45" y="-40" width="90" height="80" rx="4" fill="#082032" stroke={C.warm} strokeWidth="1.4" />
                 <path d="M -45 20 Q -20 10 0 30 Q 20 0 45 10 L 45 40 L -45 40 Z" fill="#1b3827" />
                 <path d="M -30 -10 C -10 10 10 -20 35 0" fill="none" stroke="#38bdf8" strokeWidth="2" className="model-wind-flow" />
-                <L x="0" y="32" fill={C.sand} size={9} anchor="middle">Norskekysten & fjorder</L>
+                <L x="0" y="32" fill={C.sand} size={9} anchor="middle">Norskekysten og fjorder</L>
               </g>
 
               {/* Spesifikasjoner */}
@@ -911,7 +911,7 @@ export function ModelHierarchyNorwayDiagram() {
                 <L x="12" y="80" fill={C.warm} size={11} weight={600}>• Fysikk:</L>
                 <L x="65" y="80" fill="#cbd5e1" size={11}>ROMS havmodell</L>
                 <L x="12" y="100" fill={C.warm} size={11} weight={600}>• Varsler:</L>
-                <L x="65" y="100" fill="#cbd5e1" size={11}>Strøm, flo, bølger, temp</L>
+                <L x="65" y="100" fill="#cbd5e1" size={11}>Strøm, tidevann, temperatur, saltholdighet</L>
                 <L x="12" y="125" fill={C.muted} size={10}>Drives av MEPS-atmosfære og</L>
                 <L x="12" y="138" fill={C.muted} size={10}>ferskvannsavrenning fra elver.</L>
               </g>
@@ -933,9 +933,4 @@ export function ModelHierarchyNorwayDiagram() {
   );
 }
 
-/**
- * Bakoverkompatibel eksport:
- * Dersom noen eldre filer importerer ModelGridDiagram, peker den nå på ModelGrid3DDiagram.
- */
-export const ModelGridDiagram = ModelGrid3DDiagram;
 

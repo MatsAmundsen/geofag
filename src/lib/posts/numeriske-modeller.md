@@ -30,6 +30,18 @@ Selve regnestykket løser de hydrodynamiske og termodynamiske ligningene tallmes
 
 Edward Lorenz viste at små utslag i begynnelsesverdien kan gi svært store utslag i sluttverdien (Store norske leksikon, u.å.-e). I et slikt system endrer en ørliten endring i starten den videre oppførselen dramatisk. Når starten kommer fra målinger, kjenner man den ikke eksakt, og da kan man ikke forutsi utviklingen langt fram (Store norske leksikon, u.å.-f).
 
+```widget
+PrimitiveEquations
+```
+
+```widget
+ModelGrid3D
+```
+
+```widget
+SubgridParametrization
+```
+
 ## Ensemblet
 
 Ett varsel alene sier ikke hvor sikkert været er. ECMWF lager operasjonelle ensemblebaserte analyser og varsler. De beskriver spennet av mulige forløp og hvor sannsynlige de er. De globale numeriske værvarslene kommer fire ganger i døgnet (ECMWF, u.å.-a). På siden om varslene står det at hvert medlem i ensemblet er en full beskrivelse av hvordan været kan utvikle seg, og at medlemmene samlet viser hvor sannsynlige ulike forløp er (ECMWF, u.å.-b).
@@ -38,6 +50,10 @@ Ett varsel alene sier ikke hvor sikkert været er. ECMWF lager operasjonelle ens
 | --- | --- | --- |
 | Hva du får | Én beskrivelse av værutviklingen | Mange fulle beskrivelser |
 | Hva det sier | Ett mulig forløp | Hvor sannsynlige ulike forløp er |
+
+```widget
+LorenzChaosEnsemble
+```
 
 ## Observasjoner, hav og klima
 
@@ -54,6 +70,14 @@ Forskningen som gjør varslene bedre, er videreutviklingen kompetansemålet ber 
 > Et numerisk varsel er ikke løsrevet fra målinger. ECMWF overvåker observasjonene som går inn i systemet (ECMWF, u.å.-b).
 >
 > Hav og klima er med i samme hus som værvarselet. ECMWF analyserer havsirkulasjon og overvåker klima, i tillegg til de daglige varslene (ECMWF, u.å.-a).
+
+```widget
+DataAssimilationCycle
+```
+
+```widget
+ModelHierarchyNorway
+```
 
 ## Viktige begreper
 

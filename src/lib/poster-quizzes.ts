@@ -4,21 +4,21 @@ export const QUIZ_FELT_HAV: QuizQuestion[] = [
   {
     prompt: "Hva skal du gjøre med dataene i feltarbeidet?",
     options: [
-      "Bearbeide, tolke og presentere dem.",
       "Bare samle dem inn og la dem ligge.",
+      "Bearbeide, tolke og presentere dem.",
       "Bare lese et varsel, uten egne data.",
     ],
-    answer: 0,
+    answer: 1,
     explain: "Se «Tre felt, samme kjede». Kjeden er planlegge, samle inn, bearbeide, tolke og presentere.",
   },
   {
     prompt: "Hva måler en radiosonde?",
     options: [
-      "Temperatur, fuktighet og lufttrykk fra bakken og oppover.",
       "Bare vannstanden ved kaia.",
       "Snøskredfaregraden i ett heng.",
+      "Temperatur, fuktighet og lufttrykk fra bakken og oppover.",
     ],
-    answer: 0,
+    answer: 2,
     explain: "Se «Luft». Sonden festes vanligvis til en værballong.",
   },
   {
@@ -34,21 +34,21 @@ export const QUIZ_FELT_HAV: QuizQuestion[] = [
   {
     prompt: "Hva gjelder en snøskredfaregrad for?",
     options: [
-      "Et område på minst 100 kvadratkilometer, ikke ett heng.",
       "Ett enkelt heng.",
       "Bare Svalbard.",
+      "Et område på minst 100 kvadratkilometer, ikke ett heng.",
     ],
-    answer: 0,
+    answer: 2,
     explain: "Se «Snø og is». Graden er regional.",
   },
   {
     prompt: "Hva er varselet, ifølge Varsom?",
     options: [
-      "Et hjelpemiddel. Egne vurderinger hører med.",
       "En fasit for akkurat det henget du skal gå.",
+      "Et hjelpemiddel. Egne vurderinger hører med.",
       "En erstatning for å presentere egne data.",
     ],
-    answer: 0,
+    answer: 1,
     explain: "Se «Snø og is». Varslene er regionale og kan avvike fra forholdene der du er.",
   },
 ];
@@ -57,21 +57,21 @@ export const QUIZ_ENERGI: QuizQuestion[] = [
   {
     prompt: "Hva er vindkraft i daglig bruk?",
     options: [
-      "Elektrisk energi fra et vindkraftverk.",
       "Tidevannet langs kysten.",
+      "Elektrisk energi fra et vindkraftverk.",
       "Varme fra havdypet.",
     ],
-    answer: 0,
+    answer: 1,
     explain: "Se «Tre ressurser». Vinden blir rotasjon, og generatoren gjør den om til elektrisitet.",
   },
   {
     prompt: "Hvorfor er vindkraft omstridt i Norge, selv om den er utslippsfri?",
     options: [
-      "Den legger beslag på store landområder og kan være et problem for reindrift.",
       "Fordi vinden tar slutt etter noen år.",
       "Fordi den bare virker i tropene.",
+      "Den legger beslag på store landområder og kan være et problem for reindrift.",
     ],
-    answer: 0,
+    answer: 2,
     explain: "Se «Vindkraft i Norge». Fosen-saken er eksemplet på siden.",
   },
   {
@@ -88,22 +88,298 @@ export const QUIZ_ENERGI: QuizQuestion[] = [
   {
     prompt: "Hva driver tidevannet?",
     options: [
-      "Månens og solas tiltrekning.",
       "Vinden langs kysten.",
       "En generator i en vindturbin.",
+      "Månens og solas tiltrekning.",
     ],
-    answer: 0,
+    answer: 2,
     explain: "Se «Tidevann». Newton viste at tidevannet følger tyngdekraften.",
   },
   {
     prompt: "Hva er springflo?",
     options: [
-      "Den største vekslingen i vannstand, omtrent ved nymåne og fullmåne.",
       "Den minste vekslingen, en uke etter fullmåne.",
+      "Den største vekslingen i vannstand, omtrent ved nymåne og fullmåne.",
       "Høy vannstand bare når det blåser storm.",
     ],
-    answer: 0,
+    answer: 1,
     explain: "Se «Tidevann». Nippflo er den minste vekslingen.",
+  },
+];
+
+export const QUIZ_SJEKK_HOYTRYKK_1: QuizQuestion[] = [
+  {
+    prompt: "Et område har 1015 hPa i sentrum og 1025 hPa rundt. Hva er det?",
+    options: [
+      "Et høytrykk, fordi trykket er over 1013 hPa",
+      "Et lavtrykk, fordi trykket er lavere enn rundt",
+      "Verken høytrykk eller lavtrykk",
+    ],
+    answer: 1,
+    explain: "Høytrykk og lavtrykk er relative. Det er trykket rundt som avgjør.",
+  },
+  {
+    prompt: "Hva betyr det at isobarene ligger tett på værkartet?",
+    options: [
+      "At trykket endrer seg mye over kort avstand, og det blåser kraftig",
+      "At det er vindstille",
+      "At det er høytrykk",
+    ],
+    answer: 0,
+    explain: "Tette isobarer betyr stor trykkgradient og sterk vind.",
+  },
+];
+
+export const QUIZ_SJEKK_HOYTRYKK_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor dannes det skyer når lufta stiger i et lavtrykk?",
+    options: [
+      "Fordi lufta får mer vanndamp i høyden",
+      "Fordi lufta varmes opp når den stiger",
+      "Fordi lufta utvider seg og avkjøles til duggpunktet",
+    ],
+    answer: 2,
+    explain: "Stigende luft avkjøles adiabatisk, om lag 1 °C per 100 m. Ved duggpunktet kondenserer vanndampen.",
+  },
+  {
+    prompt: "Hvorfor avkjøles mettet luft langsommere enn tørr luft når den stiger?",
+    options: [
+      "Fordi kondensasjon frigjør latent varme",
+      "Fordi mettet luft er tyngre",
+      "Fordi sola varmer skyene",
+    ],
+    answer: 0,
+    explain: "Når vanndamp kondenserer, frigjøres latent varme. Da faller temperaturen bare om lag 0,5 °C per 100 m.",
+  },
+];
+
+export const QUIZ_SJEKK_HOYTRYKK_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor løses skyene opp i et høytrykk?",
+    options: [
+      "Vinden blåser dem bort",
+      "Lufta synker, varmes opp, og den relative fuktigheten faller",
+      "Det kommer mer vanndamp inn fra havet",
+    ],
+    answer: 1,
+    explain: "Synkende luft varmes med om lag 1 °C per 100 m. Da fordamper skydråpene.",
+  },
+  {
+    prompt: "Hvorfor kan et vinterhøytrykk gi dårlig luft i en dal?",
+    options: [
+      "Fordi det blåser kraftig",
+      "Fordi det regner mye",
+      "Fordi kald luft legger seg i dalbunnen under et lokk av mildere luft",
+    ],
+    answer: 2,
+    explain: "Det kalles bakkeinversjon. Lufta blandes lite, og forurensning blir liggende.",
+  },
+];
+
+export const QUIZ_SJEKK_LOKALE_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor blåser sjøbrisen inn fra havet om dagen?",
+    options: [
+      "Fordi havet varmes raskere enn land",
+      "Fordi land varmes raskere enn havet, og lufta over land stiger",
+      "Fordi jetstrømmen trekker lufta inn",
+    ],
+    answer: 1,
+    explain: "Over land dannes et svakt termisk lavtrykk, og kjøligere luft fra havet strømmer inn ved bakken.",
+  },
+  {
+    prompt: "Hva er bergvind?",
+    options: [
+      "Vind ned dalen om natten, når fjellsidene avkjøles",
+      "Vind opp dalen om dagen",
+      "Varm vind på lesiden av et fjell",
+    ],
+    answer: 0,
+    explain: "Om natten avkjøles fjellsidene, og den kalde lufta renner ned mot dalbunnen.",
+  },
+];
+
+export const QUIZ_SJEKK_LOKALE_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er fønvinden varm og tørr?",
+    options: [
+      "Fordi den kommer fra Afrika",
+      "Fordi den blåser over varmt hav",
+      "Fordi lufta synker på lesiden og varmes med om lag 1 °C per 100 m",
+    ],
+    answer: 2,
+    explain: "Synkende luft varmes adiabatisk, og den relative fuktigheten faller.",
+  },
+  {
+    prompt: "Hva er en temperaturinversjon?",
+    options: [
+      "At temperaturen stiger med høyden",
+      "At temperaturen faller raskt med høyden",
+      "At det er like varmt i alle høyder",
+    ],
+    answer: 0,
+    explain: "Varmere luft over virker som et lokk, og utslipp blir liggende nær bakken.",
+  },
+];
+
+export const QUIZ_SJEKK_JET_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor blåser jetstrømmen fra vest mot øst?",
+    options: [
+      "Fordi sola står opp i øst",
+      "Fordi lufta som går mot polen, beholder den østlige farten fra jordrotasjonen",
+      "Fordi havstrømmene drar lufta med seg",
+    ],
+    answer: 1,
+    explain: "Bakken roterer saktere nær polen, så lufta beveger seg mot øst i forhold til bakken. Det er corioliseffekten.",
+  },
+  {
+    prompt: "Hvor er jetstrømmen sterkest?",
+    options: [
+      "Der temperaturforskjellen mellom kald og varm luft er stor",
+      "Over ekvator",
+      "Nær bakken",
+    ],
+    answer: 0,
+    explain: "Der kald og varm luft ligger side om side, øker vinden med høyden. Det kalles termisk vind.",
+  },
+];
+
+export const QUIZ_SJEKK_JET_2: QuizQuestion[] = [
+  {
+    prompt: "Hva skjer med stormbanen i en positiv NAO-fase?",
+    options: [
+      "Den flytter seg sørover mot Middelhavet",
+      "Den forsvinner",
+      "Den blir sterkere og flytter seg nordover",
+    ],
+    answer: 2,
+    explain: "Sterkere trykkforskjell gir sterkere jet, og Nord-Europa får mer storm og nedbør.",
+  },
+  {
+    prompt: "Hvorfor flytter polarjeten seg nordover om sommeren?",
+    options: [
+      "Den følger sola og grensen mellom varm og kald luft",
+      "Den skyves av havstrømmene",
+      "Den følger fjellkjedene",
+    ],
+    answer: 0,
+    explain: "Om våren og sommeren flytter grensen mellom varm og kald luft seg mot polen, og jetstrømmen følger den.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan ikke middelvinden i en tropisk orkan sammenlignes direkte med norsk vindstyrke?",
+    options: [
+      "Fordi den måles i en annen høyde over havet",
+      "Fordi NHC bruker middelvind over ett minutt, mens norske vindstyrker bruker ti minutter",
+      "Fordi tropiske orkaner bare måles fra satellitt",
+    ],
+    answer: 1,
+    explain: "Middelvind over ett minutt blir høyere enn over ti minutter for samme vær.",
+  },
+  {
+    prompt: "Hva tar ikke Saffir-Simpson-skalaen med?",
+    options: [
+      "Vindstyrken",
+      "Kategori 1 til 5",
+      "Stormflo, flom fra regn og tornadoer",
+    ],
+    answer: 2,
+    explain: "Skalaen anslår bare skade fra vinden. Også svake orkaner kan gi dødelig stormflo.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_2: QuizQuestion[] = [
+  {
+    prompt: "Når blir skadene fra stormflo størst?",
+    options: [
+      "Når stormfloen kommer samtidig med springflo og høye bølger",
+      "Når det er nippflo",
+      "Når vinden blåser fra land",
+    ],
+    answer: 0,
+    explain: "Pålandsvind stuer vann mot kysten, og springflo og bølger kommer i tillegg.",
+  },
+  {
+    prompt: "Hvor mye hever lavere lufttrykk vannstanden?",
+    options: [
+      "Om lag én meter per hektopascal",
+      "Om lag én centimeter per hektopascal",
+      "Ingenting",
+    ],
+    answer: 1,
+    explain: "Lavere trykk gir om lag 1 cm høyere vannstand per hPa, men vinden betyr mer.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er en bombesyklon?",
+    options: [
+      "Et lavtrykk der trykket synker svært raskt, ved 60° N minst 24 hPa på 24 timer",
+      "En tornado over havet",
+      "Et høytrykk som ligger i ro",
+    ],
+    answer: 0,
+    explain: "Bombesykloner er ekstratropiske lavtrykk som forsterker seg veldig raskt.",
+  },
+  {
+    prompt: "Når forekommer polare lavtrykk?",
+    options: [
+      "Om sommeren",
+      "Hele året like ofte",
+      "I vintersesongen, hovedsakelig fra november til april",
+    ],
+    answer: 2,
+    explain: "De dannes over havområdene i Arktis når kald luft strømmer ut over varmere hav.",
+  },
+];
+
+export const QUIZ_SJEKK_ENERGI_1: QuizQuestion[] = [
+  {
+    prompt: "Hvor mye av strømbehovet på Snorre- og Gullfaks-plattformene skal Hywind Tampen dekke?",
+    options: [
+      "Hele strømbehovet, så plattformene blir utslippsfrie",
+      "Om lag 35 prosent",
+      "Under 1 prosent",
+    ],
+    answer: 1,
+    explain: "Hywind Tampen skal dekke om lag 35 prosent og kutte om lag 200 000 tonn CO₂ i året. Resten kommer fortsatt fra gassturbiner (Equinor).",
+  },
+  {
+    prompt: "Hvilket land har mest havvind i drift?",
+    options: [
+      "USA",
+      "Norge",
+      "Kina",
+    ],
+    answer: 2,
+    explain: "Kina har over halvparten av verdens havvindkapasitet, fulgt av Storbritannia og Tyskland (GWEC).",
+  },
+];
+
+export const QUIZ_SJEKK_ENERGI_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor egner havvarmekraft (OTEC) seg best i tropiske farvann?",
+    options: [
+      "Der kan forskjellen mellom varmt overflatevann og kaldt dypvann bli 20 grader eller mer",
+      "Der er tidevannet størst",
+      "Der blåser det mest",
+    ],
+    answer: 0,
+    explain: "OTEC trenger stor temperaturforskjell. Varmt overflatevann fordamper arbeidsmediet, og kaldt dypvann kondenserer det igjen.",
+  },
+  {
+    prompt: "Hvorfor er bølgekraft vanskelig å utnytte, selv om potensialet langs kysten er stort?",
+    options: [
+      "Fordi bølgene bare finnes om sommeren",
+      "Fordi bølgene ikke inneholder energi",
+      "Fordi svingningene gjør omformingen vanskelig, og ekstreme bølger gir store påkjenninger",
+    ],
+    answer: 2,
+    explain: "Se «Bølgekraft». Energien varierer hele tiden, og anleggene må tåle storm.",
   },
 ];
 
@@ -167,54 +443,54 @@ export const QUIZ_FARER: QuizQuestion[] = [
   {
     prompt: "Når er vindstyrken orkan i Norge?",
     options: [
-      "Når middelvinden er sterkere enn 32,6 m/s, målt ti meter over bakken i ti minutter.",
       "Når et vindkast passerer 20 m/s.",
+      "Når middelvinden er sterkere enn 32,6 m/s, målt ti meter over bakken i ti minutter.",
       "Når en tropisk syklon har kategori 3.",
     ],
-    answer: 0,
+    answer: 1,
     explain: "Se «Orkan er to ulike ting». Storm ligger under denne grensen.",
   },
   {
     prompt: "Hva er en tropisk orkan?",
     options: [
-      "En tropisk syklon med middelvind på minst 74 mph.",
       "All vind over 32,6 m/s på norskekysten.",
       "En tornado med tverrmål på 100 meter.",
+      "En tropisk syklon med middelvind på minst 74 mph.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Orkan er to ulike ting». I vestlige Nord-Stillehavet kalles de tyfoner. Kategori 1 starter ved 119 km/t.",
   },
   {
     prompt: "Hvilke orkaner kan gi dødelig stormflo?",
     options: [
-      "Bare kategori 5.",
       "Orkaner i alle kategorier.",
+      "Bare kategori 5.",
       "Bare orkaner som treffer Norge.",
     ],
-    answer: 1,
+    answer: 0,
     explain:
       "Se «Norskekysten og tropene». Skalaen graderer vinden. Stormflo, regnflom og tornadoer kan komme i alle kategorier.",
   },
   {
     prompt: "Hva er stormflo?",
     options: [
-      "Særlig høy vannstand langs kysten i forbindelse med storm.",
       "Det vanlige tidevannet to ganger i døgnet.",
       "En tornado over havet.",
+      "Særlig høy vannstand langs kysten i forbindelse med storm.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Stormflo». I Oslofjorden 16. oktober 1987 sto vannet 1,5 meter over normalt høyvann.",
   },
   {
     prompt: "Hva er en tornado?",
     options: [
-      "En lokal virvelvind, den kraftigste av virvelvindene, med tverrmål i størrelsesorden 100 meter.",
       "En tropisk syklon med øye.",
+      "En lokal virvelvind, den kraftigste av virvelvindene, med tverrmål i størrelsesorden 100 meter.",
       "Et regionalt snøskredvarsel.",
     ],
-    answer: 0,
+    answer: 1,
     explain: "Se «Tornado». Skypumper og støvvirvler er svakere virvelvinder.",
   },
 ];
@@ -727,22 +1003,22 @@ export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
   {
     prompt: "Hva driver havstrømmer?",
     options: [
-      "Tidevann, vind og forskjeller i tetthet.",
       "Bare vinden, både i overflaten og i hele dyphavet.",
+      "Tidevann, vind og forskjeller i tetthet.",
       "Bare månens drag, også midt i de store havvirvlene.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hva driver en havstrøm?». Tidevann, vind og tetthet driver strømmene. Tetthetsstrømmene går mye saktere.",
   },
   {
     prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
     options: [
-      "På tvers av vinden, til høyre for vindretningen.",
       "Nøyaktig samme vei som vinden blåser.",
       "Til venstre for vinden, som på den sørlige halvkule.",
+      "På tvers av vinden, til høyre for vindretningen.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Overflaten: ekmantransport og havvirvler». Overflatelaget, om lag de øverste 50 meterne, transporteres på tvers av vinden.",
   },
@@ -760,22 +1036,22 @@ export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
   {
     prompt: "Hva heter strømmen nordover langs norskekysten?",
     options: [
-      "Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen.",
       "Selve Golfstrømmen, hele veien fra Florida.",
       "Labradorstrømmen, som kommer sørfra langs Norge.",
+      "Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Golfstrømmen og Norges klima». Navnet Golfstrømmen brukes feilaktig om strømmen langs Norge.",
   },
   {
     prompt: "Hvorfor synker vann i Nord-Atlanteren og starter transportbåndet?",
     options: [
-      "Vannet avkjøles, og salt blir igjen når havis fryser, så tettheten øker.",
       "Vinden presser overflatevannet rett ned til bunnen.",
+      "Vannet avkjøles, og salt blir igjen når havis fryser, så tettheten øker.",
       "Varmt ferskvann er tyngre enn kaldt salt vann.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Dypet: det globale transportbåndet». Kaldt og saltere vann blir tettere og synker. Overflatevann trekkes inn.",
   },
@@ -832,22 +1108,22 @@ export const QUIZ_JET: QuizQuestion[] = [
   {
     prompt: "Hvilken vei blåser vinden i en jetstrøm?",
     options: [
-      "Fra vest mot øst.",
       "Fra øst mot vest, på begge halvkuler.",
+      "Fra vest mot øst.",
       "Rett fra ekvator mot polen, uten sideveis avbøyning.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "I jetstrømmen blåser vinden fra vest mot øst. Beltet kan likevel flytte seg nordover og sørover. Se «Hva er en jetstrøm?».",
   },
   {
     prompt: "Hvor ligger polarjeten og den subtropiske jetstrømmen?",
     options: [
-      "Polarjeten mellom 50° og 60°, den subtropiske rundt 30°.",
       "Begge ligger fast over ekvator.",
       "Polarjeten rundt 30°, den subtropiske mellom 50° og 60°.",
+      "Polarjeten mellom 50° og 60°, den subtropiske rundt 30°.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Polarjeten ligger mellom 50° og 60° på begge halvkuler. Den subtropiske jetstrømmen ligger rundt 30°. Se tabellen i «Hva er en jetstrøm?».",
   },
@@ -865,22 +1141,22 @@ export const QUIZ_JET: QuizQuestion[] = [
   {
     prompt: "Hva gjør en positiv NAO med stormbanen over Atlanteren?",
     options: [
-      "Jetstrømmen blir sterkere, og stormbanen flytter seg nordover. Nord-Europa får mer storm og mildere vær.",
       "Jetstrømmen stopper, og Nord-Europa får ørkenklima.",
       "Stormbanen flytter seg til ekvator, og Island får høytrykk hele vinteren.",
+      "Jetstrømmen blir sterkere, og stormbanen flytter seg nordover. Nord-Europa får mer storm og mildere vær.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Positiv NAO er en sterkere trykkforskjell mellom Island og Asorene. Den atlantiske jetstrømmen blir sterkere, og stormbanen ligger lenger nord. Se «Slynger, årstid og stormbane».",
   },
   {
     prompt: "Hvorfor er jetstrømmen tegnet som en strek på værkartet en forenkling?",
     options: [
-      "Streken viser der vinden er sterkest. Selve beltet er bredere, og vinden øker inn mot kjernen.",
       "Streken er en front på bakken, med like sterk vind overalt.",
+      "Streken viser der vinden er sterkest. Selve beltet er bredere, og vinden øker inn mot kjernen.",
       "Streken viser bare flyruter, ikke vind.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Jetstrømmen er et belte der vinden er sterkest i kjernen, omtrent som strømmen midt i en elv. Se «Hva er en jetstrøm?».",
   },
@@ -1550,58 +1826,185 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
 
 export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
   {
-    prompt: "Hvor ligger grunnvannet i en akvifer?",
+    prompt: "Hva er drivkraften i det hydrologiske kretsløpet?",
     options: [
-      "I underjordiske elver.",
-      "I porer i sand og grus, eller i sprekker i fjell.",
-      "Bare i innsjøer over bakken.",
+      "Jordas rotasjon",
+      "Tidevannet",
+      "Sola",
+      "Varmen fra jordas indre",
     ],
-    answer: 1,
-    explain:
-      "Se «Hva er en akvifer?». Grunnvann fyller porer og sprekker. Det er ikke elver under bakken.",
+    answer: 2,
+    explain: "Sola varmer opp hav og land, slik at vann fordamper. Se «Hva er det hydrologiske kretsløpet?».",
   },
   {
     prompt: "Hvorfor har godt sortert grus og sand høyere permeabilitet enn silt og leire?",
     options: [
-      "Grus og sand som er løst pakket og godt sortert, har store hulrom. Silt og leire er tett pakket og har lav permeabilitet.",
-      "Leire har alltid høyere permeabilitet enn sand.",
-      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet.",
+      "Grus og sand har store, sammenhengende hulrom, mens silt og leire er tett pakket",
+      "Leire har ingen porer",
+      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet",
+      "Grus og sand inneholder mer salt",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er en akvifer?». NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser.",
+    explain: "NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser. Se «Hva er en akvifer?».",
   },
   {
-    prompt: "Hva skiller en regnflom fra en snøsmelteflom?",
+    prompt: "Hva betyr det at en flom er en 100-årsflom?",
     options: [
-      "Regnflom skyldes bare regn, og er ofte de største flommene på Sørlandet og Vestlandet. Snøsmelteflom skyldes snøsmelting alene, og er de største vårflommene i store vassdrag i Finnmark.",
-      "Begge skyldes bare regn på asfalt.",
-      "Snøsmelteflom er flom som bare kommer av tidevann.",
+      "Den kommer nøyaktig hvert hundrede år",
+      "Den har 10 prosent sannsynlighet hvert år",
+      "Den kan bare komme én gang i livet",
+      "Den har 1 prosent sannsynlighet for å bli overskredet hvert år",
+    ],
+    answer: 3,
+    explain: "Gjentaksintervallet er et gjennomsnitt. En 100-årsflom kan komme to år på rad (Varsom).",
+  },
+  {
+    prompt: "Hva skjer med avrenningen når et nedbørfelt bygges ut med mange tette flater?",
+    options: [
+      "Mer vann infiltrerer",
+      "Avrenningen blir raskere, og flomtoppen blir større",
+      "Fordampningen øker kraftig",
+      "Grunnvannstanden stiger alltid",
+    ],
+    answer: 1,
+    explain: "Vannet kan ikke trenge ned i asfalt og tak. NVE peker også på at grunnvannstanden kan synke. Se «Hvordan påvirker mennesket vannets kretsløp?».",
+  },
+  {
+    prompt: "Hvordan kan et reguleringsmagasin dempe en flom?",
+    options: [
+      "Ved å ha ledig plass når flommen kommer, slik at vann holdes tilbake",
+      "Ved å slippe alt vannet på en gang",
+      "Ved å øke minstevannføringen",
+      "Ved å fryse vannet om vinteren",
     ],
     answer: 0,
-    explain: "Se «Hva er en flom?». Skillet står i ordlisten til Varsom.",
+    explain: "Ledig magasinkapasitet gir lavere flomtopp nedstrøms. Effekten minker jo større flommen er (NVE).",
   },
+  {
+    prompt: "Hvilket utsagn om ferskvann i verden er riktig?",
+    options: [
+      "Det meste av ferskvannet ligger i elver og innsjøer",
+      "Grunnvann brukes nesten ikke",
+      "Omtrent halvparten av verdens befolkning har alvorlig vannmangel i minst en del av året",
+      "Industrien bruker mest ferskvann",
+    ],
+    answer: 2,
+    explain: "Ferskvannet ligger mest i is og grunnvann. Jordbruket bruker 72 prosent av uttaket (UNESCO).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan leire holde mye vann, men likevel være en dårlig akvifer?",
+    options: [
+      "Leire har ingen hulrom",
+      "Leire har høy porøsitet, men lav permeabilitet, så vannet strømmer dårlig",
+      "Leire ligger alltid over grunnvannsspeilet",
+    ],
+    answer: 1,
+    explain: "Porøsitet er hvor mye hulrom det er. Permeabilitet er om vannet kan strømme. Leire har små, tette porer og slipper lite vann gjennom.",
+  },
+  {
+    prompt: "Hvorfor renner elva fortsatt etter flere uker uten regn?",
+    options: [
+      "Fordi grunnvann siger inn i elva hele tiden",
+      "Fordi havet presser vann opp i elva",
+      "Fordi elvevann ikke fordamper",
+    ],
+    answer: 0,
+    explain: "Grunnvannet strømmer langsomt mot elva. I en tørkeperiode kan 40–100 prosent av vannet i elva være grunnvann (NGU).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_2: QuizQuestion[] = [
   {
     prompt: "Hva viser et hydrogram?",
     options: [
-      "Vannføring mot tid. Figuren sammenligner en spiss regnflom med en bred snøsmelteflom.",
-      "Hvor dypt grunnvannsspeilet ligger i fjell.",
-      "Hvor mange millimeter som falt på Geilo i 1938.",
+      "Grunnvannsspeilet mot dybde",
+      "Nedbør mot temperatur",
+      "Vannføring mot tid",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er et hydrogram?». Vannføring er volum per tidsenhet. Hydrogrammet er den kurven mot tid.",
+    answer: 2,
+    explain: "Hydrogrammet er vannføringen i en elv tegnet mot tid.",
   },
   {
-    prompt: "Hva kan du si om elva i en tørkeperiode?",
+    prompt: "Hvorfor gir en regnflom i et lite, bratt felt en spiss topp?",
     options: [
-      "Elvene kan bestå av 40–100 prosent grunnvann.",
-      "Elva får alt vannet fra havet.",
-      "Grunnvannet slutter å bidra så snart det slutter å regne.",
+      "Vannet når elva raskt fordi det er lite lagringsplass i feltet",
+      "Regnet fryser til is før det når elva",
+      "Grunnvannet stopper all avrenning",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er en akvifer?». NGU skriver at elvene i en tørkeperiode med lav vannføring kan bestå av 40–100 prosent grunnvann.",
+    explain: "I et lite, bratt felt med få innsjøer og tynne løsmasser renner vannet raskt til elva. Toppen kommer fort og forsvinner fort.",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_3: QuizQuestion[] = [
+  {
+    prompt: "En elv hadde en 100-årsflom i fjor. Hva er sannsynligheten for en like stor flom i år?",
+    options: [
+      "0 prosent, den kommer ikke før om 99 år",
+      "50 prosent",
+      "1 prosent, som alle andre år",
+    ],
+    answer: 2,
+    explain: "En 100-årsflom har 1 prosent sannsynlighet hvert år. Den kan komme to år på rad, selv om det er lite sannsynlig.",
+  },
+  {
+    prompt: "Hvilken flomtype gir ofte de største flommene på Østlandet?",
+    options: [
+      "Regn- og snøsmelteflom",
+      "Stormflo",
+      "Overvann i kjelleren",
+    ],
+    answer: 0,
+    explain: "Vesleofsen i 1995 og flommene i 2011 og 2013 kom av mye regn og sterk snøsmelting samtidig (Varsom).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_4: QuizQuestion[] = [
+  {
+    prompt: "Hvordan endrer en ny by med mye asfalt hydrogrammet i bekken nedenfor?",
+    options: [
+      "Toppen blir lavere og kommer senere",
+      "Toppen blir høyere og kommer raskere",
+      "Ingenting, for regnet er det samme",
+    ],
+    answer: 1,
+    explain: "Tette flater gir mindre infiltrasjon og raskere overflateavrenning. Da kommer mer vann raskere fram til bekken (NVE).",
+  },
+  {
+    prompt: "Hva er minstevannføring?",
+    options: [
+      "Den laveste vannføringen som er målt i en elv",
+      "Vannet som skal tappes fra magasinet før en flom",
+      "En viss mengde vann som et kraftverk alltid må slippe forbi på en elvestrekning",
+    ],
+    answer: 2,
+    explain: "NVE setter ofte vilkår om minstevannføring for å ta vare på naturmangfold og friluftsliv på strekninger som får mindre vann.",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor kommer det meste av vannforsyningen i Norge fra?",
+    options: [
+      "Grunnvann",
+      "Overflatevann fra innsjøer og elver",
+      "Avsaltet sjøvann",
+    ],
+    answer: 1,
+    explain: "Grunnvann utgjør bare ca. 15 prosent av vannforsyningen i Norge, fordi vi har mye rent overflatevann (NGU).",
+  },
+  {
+    prompt: "Hva betyr det at et grunnvannsuttak er bærekraftig?",
+    options: [
+      "At vi tar ut så mye vi trenger, uansett hvor mye som dannes",
+      "At vannet bare brukes til jordbruk",
+      "At uttaket ikke er større enn det som fornyes, og at vannet holdes rent",
+    ],
+    answer: 2,
+    explain: "Tar vi ut mer enn det som fornyes, synker grunnvannsspeilet. Ved kysten kan saltvann trenge inn (UNESCO).",
   },
 ];
 
@@ -1839,11 +2242,11 @@ export const QUIZ_LOKALE: QuizQuestion[] = [
   {
     prompt: "Hva setter i gang sjøbris om dagen?",
     options: [
-      "Land varmes raskere enn hav, varm luft stiger, og kjøligere luft fra sjøen strømmer inn.",
       "Havet varmes raskere enn land, så lufta synker over sjøen og presser vinden ut.",
+      "Land varmes raskere enn hav, varm luft stiger, og kjøligere luft fra sjøen strømmer inn.",
       "Jordrotasjonen starter vinden av seg selv, uten temperaturforskjell.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Sjøbris er pålandsvind fordi varm luft stiger over land og erstattes av kjøligere luft fra havet. Se «Solgangsvind».",
   },
@@ -1851,15 +2254,15 @@ export const QUIZ_LOKALE: QuizQuestion[] = [
     prompt: "Hvorfor dreier solgangsvinden langs norskekysten ofte fra pålandsvind til vind langs kysten?",
     options: [
       "Vinden følger tidevannet inn og ut av fjorden.",
-      "Jordrotasjonen bøyer vinden av mot høyre på den nordlige halvkule.",
       "Havet blir mye kaldere utover ettermiddagen, så vinden må snu.",
+      "Jordrotasjonen bøyer vinden av mot høyre på den nordlige halvkule.",
     ],
-    answer: 1,
+    answer: 2,
     explain:
       "På den nordlige halvkule dreier sjøbrisen mot høyre, fra pålandsvind til vind langs kysten. I en fjord kan den likevel fortsette rett inn. Se «Solgangsvind».",
   },
   {
-    prompt: "Hva sier leksikonet om hvorfor fønvind er varm?",
+    prompt: "Hvorfor er fønvind varm?",
     options: [
       "Luft som synker på lesiden varmes med omtrent én grad per hundre meter. Regn på losiden kan bidra, men betyr mindre enn man før trodde.",
       "Føn blir varm bare fordi det regner på lesiden.",
@@ -1872,22 +2275,22 @@ export const QUIZ_LOKALE: QuizQuestion[] = [
   {
     prompt: "Hva er en temperaturinversjon, og hvorfor kan lufta i en dal bli dårlig?",
     options: [
-      "Temperaturen stiger med høyden. Varmere luft over virker som et lokk, og lokale utslipp samler seg nær bakken.",
       "Temperaturen faller raskere enn vanlig, så røyken stiger høyere og forsvinner.",
       "Inversjon er et lavtrykk som roterer over byen og suger til seg all røyken.",
+      "Temperaturen stiger med høyden. Varmere luft over virker som et lokk, og lokale utslipp samler seg nær bakken.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "I en inversjon er det kaldere nær bakken enn høyere oppe. Lufta nede blandes dårlig, og utslipp kan hope seg opp. Se «Temperaturinversjon».",
   },
   {
     prompt: "Hva skjer når en polarfrontsyklon blir moden, ifølge den norske syklonmodellen?",
     options: [
-      "Kaldfronten tar igjen varmfronten, og det dannes en okkludert front.",
       "Varmfronten tar igjen kaldfronten, og lavtrykket forsvinner med en gang.",
+      "Kaldfronten tar igjen varmfronten, og det dannes en okkludert front.",
       "Fronten blir liggende i ro, og nedbøren slutter.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Kaldfronten går raskere enn varmfronten. Når den tar igjen varmfronten, løftes den varme lufta, og fronten kalles okkludert. Se «Polarfrontsyklonen».",
   },
@@ -2324,22 +2727,22 @@ export const QUIZ_CORIOLIS: QuizQuestion[] = [
   {
     prompt: "Hva er corioliseffekten?",
     options: [
-      "Avbøyningen vi ser fordi jorda roterer under en bevegelse som ellers går rett fram.",
       "En reell kraft som setter lufta i gang fra høytrykk mot lavtrykk.",
+      "Avbøyningen vi ser fordi jorda roterer under en bevegelse som ellers går rett fram.",
       "Månens drag, som styrer tidevannet.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hva er corioliseffekten?». Avbøyningen kommer av rotasjonen, ikke av en reell kraft som virker på lufta.",
   },
   {
     prompt: "Hvor er den horisontale avbøyningen null?",
     options: [
-      "Ved ekvator, der coriolisparameteren er null.",
       "Ved 60°, omtrent Oslo og Bergen, der farten østover er minst.",
       "Ved Nordpolen, der bakken står stille.",
+      "Ved ekvator, der coriolisparameteren er null.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Breddegraden bestemmer styrken». Parameteren er null ved ekvator og øker mot polene.",
   },
@@ -2357,22 +2760,22 @@ export const QUIZ_CORIOLIS: QuizQuestion[] = [
   {
     prompt: "Hvilken vinkel danner vinden med isobarene nær bakken over land?",
     options: [
-      "20–40°, fordi friksjonen er større enn over havet.",
       "Alltid 0°, parallelt med isobarene.",
       "Alltid 90°, rett inn mot lavtrykket.",
+      "20–40°, fordi friksjonen er større enn over havet.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Vind, isobarer og friksjon». Over havet er vinkelen 0–20°, over land 20–40°.",
   },
   {
     prompt: "Hva skjer ved langvarig nordavind langs en vestkyst på den nordlige halvkule?",
     options: [
-      "Ekmantransporten skyver overflaten utover, og dypere vann kommer opp.",
       "Overflatevannet presses inn mot land og synker.",
+      "Ekmantransporten skyver overflaten utover, og dypere vann kommer opp.",
       "Corioliseffekten er null langs alle vestkyster, så ingenting skjer.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Havet: ekmantransport og oppvelling». På den nordlige halvkule går ekmantransporten til høyre for vinden.",
   },

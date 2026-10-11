@@ -15,7 +15,7 @@ export const WIDTHS = [390, 640, 768, 1024, 1280];
 
 /** Figurer som er definert i plates.tsx, og siden de rendres på. */
 export const PLATE_FIGURES = [
-  { page: "/geofag-1/platetektonikk", heading: "Jordens skall:" },
+  { page: "/geofag-1/platetektonikk", heading: "Jordas skall:" },
   { page: "/geofag-1/platetektonikk", heading: "Hva beveger platene?" },
   { page: "/geofag-1/platetektonikk", heading: "Jordas tektoniske puslespill:" },
   { page: "/geofag-1/platetektonikk", heading: "Smeltefysikk i mantelen:" },
