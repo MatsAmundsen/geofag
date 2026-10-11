@@ -361,6 +361,16 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Nedbørrekorder i august 2023",
   },
   {
+    match: /^hvordan påvirker mennesket/i,
+    label: "Mennesket",
+    subtitle: "Byer, drenering, vannkraft og grunnvann",
+  },
+  {
+    match: /ferskvannet bærekraftig/i,
+    label: "Bærekraft",
+    subtitle: "Ferskvann i Norge og i verden",
+  },
+  {
     match: /^hva er et skred/i,
     label: "Skred",
     subtitle: "Fjell, løsmasse og volum",

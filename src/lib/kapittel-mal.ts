@@ -58,6 +58,11 @@ import {
   QUIZ_SJEKK_ISBRE_4,
   QUIZ_SJEKK_SKRED_1,
   QUIZ_SJEKK_SKRED_2,
+  QUIZ_SJEKK_VANN_OG_FLOM_1,
+  QUIZ_SJEKK_VANN_OG_FLOM_2,
+  QUIZ_SJEKK_VANN_OG_FLOM_3,
+  QUIZ_SJEKK_VANN_OG_FLOM_4,
+  QUIZ_SJEKK_VANN_OG_FLOM_5,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -71,6 +76,11 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Isbre4: QUIZ_SJEKK_ISBRE_4,
   Skred1: QUIZ_SJEKK_SKRED_1,
   Skred2: QUIZ_SJEKK_SKRED_2,
+  VannOgFlom1: QUIZ_SJEKK_VANN_OG_FLOM_1,
+  VannOgFlom2: QUIZ_SJEKK_VANN_OG_FLOM_2,
+  VannOgFlom3: QUIZ_SJEKK_VANN_OG_FLOM_3,
+  VannOgFlom4: QUIZ_SJEKK_VANN_OG_FLOM_4,
+  VannOgFlom5: QUIZ_SJEKK_VANN_OG_FLOM_5,
   Landformer1: QUIZ_SJEKK_LANDFORMER_1,
   Landformer2: QUIZ_SJEKK_LANDFORMER_2,
   Landformer3: QUIZ_SJEKK_LANDFORMER_3,
@@ -126,6 +136,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Kvikkleire er marin leire der saltet er vasket ut. Overbelastes den, kollapser korthusstrukturen, og skredet kan forplante seg bakover, slik det gjorde i Gjerdrum i 2020.",
     "Fjellskred som går ut i en fjord eller innsjø, kan gi flodbølger, som i Tafjord 1934 og Loen 1905 og 1936. NVE overvåker ustabile fjellpartier med høy risiko kontinuerlig.",
     "Aktsomhetskart og faresonekart bygger på utløpsmodeller, og Varsom varsler jordskred, sørpeskred og flomskred. Erosjonssikring og motfyllinger kan stabilisere leirskråninger.",
+  ],
+  VannOgFlom: [
+    "Det hydrologiske kretsløpet flytter vann fra hav og land til lufta og tilbake. Sola er drivkraften, og vannet lagres underveis i snø, mark, grunnvann, innsjøer og elver.",
+    "Grunnvann fyller porer og sprekker i akviferer. Porøsiteten sier hvor mye vann bakken kan holde, og permeabiliteten om vannet kan strømme. I en tørkeperiode kan elvene bestå av 40–100 prosent grunnvann.",
+    "Et hydrogram viser vannføringen mot tid. Regnflommer gir spisse topper, og snøsmelteflommer gir brede. En 100-årsflom har 1 prosent sannsynlighet hvert år.",
+    "Hans i august 2023 ga nedbør som tilsvarte en returverdi på 100 år over store områder, og er det dyreste ekstremværet i Norsk Naturskadepools historie målt i erstatninger.",
+    "Mennesket endrer kretsløpet. Tette flater gir raskere avrenning og høyere flomtopper, drenering fjerner myrenes svamp, og vassdragsregulering flytter vann i tid og kan dempe flom.",
+    "Bærekraftig bruk av ferskvann betyr at uttaket ikke er større enn det som fornyes, at vannet holdes rent, og at vann, land og natur forvaltes samlet. Globalt mangler 2,2 milliarder mennesker trygt forvaltet drikkevann.",
   ],
   Landformer: [
     "Landformene er resultatet av indre krefter som løfter berggrunnen, og ytre krefter som bryter den ned og flytter materialet.",

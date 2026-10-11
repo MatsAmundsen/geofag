@@ -1550,58 +1550,185 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
 
 export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
   {
-    prompt: "Hvor ligger grunnvannet i en akvifer?",
+    prompt: "Hva er drivkraften i det hydrologiske kretsløpet?",
     options: [
-      "I underjordiske elver.",
-      "I porer i sand og grus, eller i sprekker i fjell.",
-      "Bare i innsjøer over bakken.",
+      "Jordas rotasjon",
+      "Tidevannet",
+      "Sola",
+      "Varmen fra jordas indre",
     ],
-    answer: 1,
-    explain:
-      "Se «Hva er en akvifer?». Grunnvann fyller porer og sprekker. Det er ikke elver under bakken.",
+    answer: 2,
+    explain: "Sola varmer opp hav og land, slik at vann fordamper. Se «Hva er det hydrologiske kretsløpet?».",
   },
   {
     prompt: "Hvorfor har godt sortert grus og sand høyere permeabilitet enn silt og leire?",
     options: [
-      "Grus og sand som er løst pakket og godt sortert, har store hulrom. Silt og leire er tett pakket og har lav permeabilitet.",
-      "Leire har alltid høyere permeabilitet enn sand.",
-      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet.",
+      "Grus og sand har store, sammenhengende hulrom, mens silt og leire er tett pakket",
+      "Leire har ingen porer",
+      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet",
+      "Grus og sand inneholder mer salt",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er en akvifer?». NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser.",
+    explain: "NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser. Se «Hva er en akvifer?».",
   },
   {
-    prompt: "Hva skiller en regnflom fra en snøsmelteflom?",
+    prompt: "Hva betyr det at en flom er en 100-årsflom?",
     options: [
-      "Regnflom skyldes bare regn, og er ofte de største flommene på Sørlandet og Vestlandet. Snøsmelteflom skyldes snøsmelting alene, og er de største vårflommene i store vassdrag i Finnmark.",
-      "Begge skyldes bare regn på asfalt.",
-      "Snøsmelteflom er flom som bare kommer av tidevann.",
+      "Den kommer nøyaktig hvert hundrede år",
+      "Den har 10 prosent sannsynlighet hvert år",
+      "Den kan bare komme én gang i livet",
+      "Den har 1 prosent sannsynlighet for å bli overskredet hvert år",
+    ],
+    answer: 3,
+    explain: "Gjentaksintervallet er et gjennomsnitt. En 100-årsflom kan komme to år på rad (Varsom).",
+  },
+  {
+    prompt: "Hva skjer med avrenningen når et nedbørfelt bygges ut med mange tette flater?",
+    options: [
+      "Mer vann infiltrerer",
+      "Avrenningen blir raskere, og flomtoppen blir større",
+      "Fordampningen øker kraftig",
+      "Grunnvannstanden stiger alltid",
+    ],
+    answer: 1,
+    explain: "Vannet kan ikke trenge ned i asfalt og tak. NVE peker også på at grunnvannstanden kan synke. Se «Hvordan påvirker mennesket vannets kretsløp?».",
+  },
+  {
+    prompt: "Hvordan kan et reguleringsmagasin dempe en flom?",
+    options: [
+      "Ved å ha ledig plass når flommen kommer, slik at vann holdes tilbake",
+      "Ved å slippe alt vannet på en gang",
+      "Ved å øke minstevannføringen",
+      "Ved å fryse vannet om vinteren",
     ],
     answer: 0,
-    explain: "Se «Hva er en flom?». Skillet står i ordlisten til Varsom.",
+    explain: "Ledig magasinkapasitet gir lavere flomtopp nedstrøms. Effekten minker jo større flommen er (NVE).",
   },
+  {
+    prompt: "Hvilket utsagn om ferskvann i verden er riktig?",
+    options: [
+      "Det meste av ferskvannet ligger i elver og innsjøer",
+      "Grunnvann brukes nesten ikke",
+      "Omtrent halvparten av verdens befolkning har alvorlig vannmangel i minst en del av året",
+      "Industrien bruker mest ferskvann",
+    ],
+    answer: 2,
+    explain: "Ferskvannet ligger mest i is og grunnvann. Jordbruket bruker 72 prosent av uttaket (UNESCO).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan leire holde mye vann, men likevel være en dårlig akvifer?",
+    options: [
+      "Leire har ingen hulrom",
+      "Leire har høy porøsitet, men lav permeabilitet, så vannet strømmer dårlig",
+      "Leire ligger alltid over grunnvannsspeilet",
+    ],
+    answer: 1,
+    explain: "Porøsitet er hvor mye hulrom det er. Permeabilitet er om vannet kan strømme. Leire har små, tette porer og slipper lite vann gjennom.",
+  },
+  {
+    prompt: "Hvorfor renner elva fortsatt etter flere uker uten regn?",
+    options: [
+      "Fordi grunnvann siger inn i elva hele tiden",
+      "Fordi havet presser vann opp i elva",
+      "Fordi elvevann ikke fordamper",
+    ],
+    answer: 0,
+    explain: "Grunnvannet strømmer langsomt mot elva. I en tørkeperiode kan 40–100 prosent av vannet i elva være grunnvann (NGU).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_2: QuizQuestion[] = [
   {
     prompt: "Hva viser et hydrogram?",
     options: [
-      "Vannføring mot tid. Figuren sammenligner en spiss regnflom med en bred snøsmelteflom.",
-      "Hvor dypt grunnvannsspeilet ligger i fjell.",
-      "Hvor mange millimeter som falt på Geilo i 1938.",
+      "Grunnvannsspeilet mot dybde",
+      "Nedbør mot temperatur",
+      "Vannføring mot tid",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er et hydrogram?». Vannføring er volum per tidsenhet. Hydrogrammet er den kurven mot tid.",
+    answer: 2,
+    explain: "Hydrogrammet er vannføringen i en elv tegnet mot tid.",
   },
   {
-    prompt: "Hva kan du si om elva i en tørkeperiode?",
+    prompt: "Hvorfor gir en regnflom i et lite, bratt felt en spiss topp?",
     options: [
-      "Elvene kan bestå av 40–100 prosent grunnvann.",
-      "Elva får alt vannet fra havet.",
-      "Grunnvannet slutter å bidra så snart det slutter å regne.",
+      "Vannet når elva raskt fordi det er lite lagringsplass i feltet",
+      "Regnet fryser til is før det når elva",
+      "Grunnvannet stopper all avrenning",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er en akvifer?». NGU skriver at elvene i en tørkeperiode med lav vannføring kan bestå av 40–100 prosent grunnvann.",
+    explain: "I et lite, bratt felt med få innsjøer og tynne løsmasser renner vannet raskt til elva. Toppen kommer fort og forsvinner fort.",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_3: QuizQuestion[] = [
+  {
+    prompt: "En elv hadde en 100-årsflom i fjor. Hva er sannsynligheten for en like stor flom i år?",
+    options: [
+      "0 prosent, den kommer ikke før om 99 år",
+      "50 prosent",
+      "1 prosent, som alle andre år",
+    ],
+    answer: 2,
+    explain: "En 100-årsflom har 1 prosent sannsynlighet hvert år. Den kan komme to år på rad, selv om det er lite sannsynlig.",
+  },
+  {
+    prompt: "Hvilken flomtype gir ofte de største flommene på Østlandet?",
+    options: [
+      "Regn- og snøsmelteflom",
+      "Stormflo",
+      "Overvann i kjelleren",
+    ],
+    answer: 0,
+    explain: "Vesleofsen i 1995 og flommene i 2011 og 2013 kom av mye regn og sterk snøsmelting samtidig (Varsom).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_4: QuizQuestion[] = [
+  {
+    prompt: "Hvordan endrer en ny by med mye asfalt hydrogrammet i bekken nedenfor?",
+    options: [
+      "Toppen blir lavere og kommer senere",
+      "Toppen blir høyere og kommer raskere",
+      "Ingenting, for regnet er det samme",
+    ],
+    answer: 1,
+    explain: "Tette flater gir mindre infiltrasjon og raskere overflateavrenning. Da kommer mer vann raskere fram til bekken (NVE).",
+  },
+  {
+    prompt: "Hva er minstevannføring?",
+    options: [
+      "Den laveste vannføringen som er målt i en elv",
+      "Vannet som skal tappes fra magasinet før en flom",
+      "En viss mengde vann som et kraftverk alltid må slippe forbi på en elvestrekning",
+    ],
+    answer: 2,
+    explain: "NVE setter ofte vilkår om minstevannføring for å ta vare på naturmangfold og friluftsliv på strekninger som får mindre vann.",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor kommer det meste av vannforsyningen i Norge fra?",
+    options: [
+      "Grunnvann",
+      "Overflatevann fra innsjøer og elver",
+      "Avsaltet sjøvann",
+    ],
+    answer: 1,
+    explain: "Grunnvann utgjør bare ca. 15 prosent av vannforsyningen i Norge, fordi vi har mye rent overflatevann (NGU).",
+  },
+  {
+    prompt: "Hva betyr det at et grunnvannsuttak er bærekraftig?",
+    options: [
+      "At vi tar ut så mye vi trenger, uansett hvor mye som dannes",
+      "At vannet bare brukes til jordbruk",
+      "At uttaket ikke er større enn det som fornyes, og at vannet holdes rent",
+    ],
+    answer: 2,
+    explain: "Tar vi ut mer enn det som fornyes, synker grunnvannsspeilet. Ved kysten kan saltvann trenge inn (UNESCO).",
   },
 ];
 
