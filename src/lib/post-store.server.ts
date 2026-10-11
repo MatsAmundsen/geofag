@@ -754,6 +754,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "energi-hav-luft-copy-2-2026-10-07",
     slug: "energi-hav-luft",
     stale: ["Bærekraft er denne avveiningen, ikke bare at vinden kommer tilbake."],
+  },
+  {
+    // Geo (G2) må-punkter: Hywind Tampen 35 %, havvindland, Peterhead, malen.
+    flag: "g2-energi-maa-2026-10-11",
+    slug: "energi-hav-luft",
+    stale: ["slik at energiforsyningen er utslippsfri", "Sørøst-Asia, USA og Storbritannia"],
   }
 ,
   {

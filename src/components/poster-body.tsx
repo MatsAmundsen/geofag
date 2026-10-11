@@ -145,6 +145,14 @@ import { HurricaneSpinModel } from "@/components/models/hurricane-spin-model";
 import { OceanCurrentModel } from "@/components/models/ocean-current-model";
 import { SeaBreezeModel } from "@/components/models/sea-breeze-model";
 import { SnowProfileModel } from "@/components/models/snow-profile-model";
+import { WindPowerModel } from "@/components/models/wind-power-model";
+import { MarineEnergyModel } from "@/components/models/marine-energy-model";
+import {
+  EnergySourcesDiagram,
+  OffshoreWindShelfDiagram,
+  OtecRankineCycleDiagram,
+  WindPowerTradeoffDiagram,
+} from "@/components/diagrams/energy";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Sammendrag } from "@/components/sammendrag";
 import {
@@ -785,6 +793,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
+    EnergySources: () => <EnergySourcesDiagram />,
+  WindPowerModel: () => <WindPowerModel />,
+  OffshoreWindShelf: () => <OffshoreWindShelfDiagram />,
+  MarineEnergyModel: () => <MarineEnergyModel />,
+  OtecRankineCycle: () => <OtecRankineCycleDiagram />,
+  WindPowerTradeoff: () => <WindPowerTradeoffDiagram />,
     QuizEnergi: () => (
     <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
   ),
