@@ -105,7 +105,7 @@ const KS_STORE_LABELS: Lab[] = [
   { text: "Jordsmonn: ca. 1700 GtC", x: 250, y: 330, at: [420, 200], color: "#d6b98a", anchor: "start", badge: [440, 236] },
   { text: "Fossile ressurser: ca. 18 600 GtC", x: 40, y: 430, at: [120, 300], color: "#c9c2b4", anchor: "start", badge: [60, 330] },
   { text: "Overflatehav: ca. 900 GtC", x: 940, y: 240, at: [820, 274], color: "#8fd3e0", anchor: "end", badge: [880, 280] },
-  { text: "Dyphav: ca. 37 000 GtC", x: 940, y: 330, at: [880, 330], color: "#7fb2d8", anchor: "end", badge: [920, 316] },
+  { text: "Dyphav: ca. 37 000 GtC", x: 940, y: 330, at: [820, 330], color: "#7fb2d8", anchor: "end", badge: [800, 316] },
   { text: "Havutveksling: ca. 55–80 GtC/år hver vei", x: 940, y: 200, at: [700, 262], color: "#bfe4ee", anchor: "end", badge: [690, 230] },
   { text: "Atmosfæren: +5,1 GtC/år (2010–2019)", x: 480, y: 36, at: [420, 60], color: "#ffc59a", anchor: "start", badge: [430, 40] },
   { text: "Vulkaner: ca. 0,1 GtC/år", x: 20, y: 56, at: [146, 120], color: "#ffb38a", anchor: "start", badge: [100, 100] },
@@ -142,7 +142,7 @@ export function KarbonatSilikatFigur({
         { text: "Vulkan", x: 40, y: 206, at: [120, 196], color: C.fg, anchor: "start", size: 15, badge: [60, 190] },
         { text: "Fjell av silikatberg", x: 470, y: 150, at: [430, 182], color: "#c9cfc2", anchor: "start", size: 15, badge: [470, 170] },
         { text: "Hav", x: 930, y: 290, color: "#bfe4ee", anchor: "end", size: 15 },
-        { text: "Kalkstein på havbunnen", x: 940, y: 334, at: [900, 344], color: "#efe6c8", anchor: "end", size: 15, badge: [930, 320] },
+        { text: "Kalkstein på havbunnen", x: 940, y: 334, at: [820, 344], color: "#efe6c8", anchor: "end", size: 15, badge: [810, 318] },
         { text: "Havbunnen synker (subduksjon)", x: 620, y: 478, at: [520, 418], color: "#b9c6cf", anchor: "start", size: 15, badge: [560, 470] },
       ];
   const dots = motion.playing && !stores ? [0, 0.33, 0.66].map((o) => along(KS_PATH[i], phase * 0.999 + o)) : [];
@@ -180,6 +180,7 @@ export function KarbonatSilikatFigur({
         ]}
         remark="Termostaten: mer CO₂ → varmere → mer regn og raskere forvitring → mer karbon i kalkstein → mindre CO₂. Responsen demper endringen. Det er en negativ tilbakekobling."
         viewBox="0 0 960 540"
+        narrowViewBox="100 40 740 490"
       >
         {({ d, m }) => (
           <g className={motion.motionClass} data-figur="karbonat-silikat" data-step={step} data-playing={motion.playing ? "yes" : "no"}>

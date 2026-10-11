@@ -92,7 +92,7 @@ export function EarthSystemsModel() {
     >
       {tab === "silicate_weathering" && (
         <div className="space-y-6">
-          <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          <ModelPanel className="grid grid-cols-1 gap-6">
             <div className="space-y-4 lg:col-span-6">
               <h4 className="text-base font-semibold text-foreground">
                 Den trege sløyfen: jordas geologiske termostat
@@ -173,7 +173,8 @@ export function EarthSystemsModel() {
 
             {/* Skjematisk kjemisk kretsløp SVG */}
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/50 p-4 lg:col-span-6">
-              <svg viewBox="0 0 500 320" className="w-full h-auto" aria-label="Den trege karbonsløyfen">
+              <div className="overflow-x-auto" data-axis="x">
+              <svg viewBox="0 0 500 320" className="h-auto w-full min-w-[620px]" aria-label="Den trege karbonsløyfen">
                 <defs>
                   <marker id="arr-teal" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
                     <polygon points="0 0, 6 3, 0 6" fill="#14b8a6" />
@@ -204,15 +205,16 @@ export function EarthSystemsModel() {
                 {/* Hydrosfære (Hav) */}
                 <rect x="330" y="170" width="150" height="120" rx="8" fill="#0f2636" stroke="#14b8a6" strokeWidth="1.5" />
                 <text x="405" y="195" textAnchor="middle" fill="#2dd4bf" fontSize="11" fontWeight="bold">HAVET / SEDIMENTER</text>
-                <text x="405" y="215" textAnchor="middle" fill="#94a3b8" fontSize="9">Kalkutfelling:</text>
+                <text x="405" y="215" textAnchor="middle" fill="#94a3b8" fontSize="10">Kalkutfelling:</text>
                 <text x="405" y="235" textAnchor="middle" fill="#f8fafc" fontSize="10">Ca²⁺ + 2HCO₃⁻ →</text>
                 <text x="405" y="255" textAnchor="middle" fill="#38bdf8" fontSize="10" fontWeight="bold">CaCO₃(s) + CO₂ + H₂O</text>
-                <text x="405" y="275" textAnchor="middle" fill="#34d399" fontSize="9">Kalkstein lagres i geologiske eoner</text>
+                <text x="405" y="275" textAnchor="middle" fill="#34d399" fontSize="10">Kalkstein lagres i geologiske eoner</text>
 
                 {/* Returpil subduksjon */}
                 <path d="M 405 290 C 405 315, 20 315, 50 150" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
-                <text x="230" y="310" textAnchor="middle" fill="#f87171" fontSize="9">Langsom platetektonisk subduksjon og vulkansk avgassing (100–200 mill. år)</text>
+                <text x="230" y="310" textAnchor="middle" fill="#f87171" fontSize="10">Langsom platetektonisk subduksjon og vulkansk avgassing (100–200 mill. år)</text>
               </svg>
+              </div>
 
               <div className="mt-2 rounded-lg bg-card/80 p-2.5 border border-border text-xs text-muted-foreground">
                 <strong className="text-foreground">Tre steg:</strong>
@@ -234,7 +236,7 @@ export function EarthSystemsModel() {
 
       {tab === "volcanic_climate" && (
         <div className="space-y-6">
-          <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          <ModelPanel className="grid grid-cols-1 gap-6">
             <div className="space-y-4 lg:col-span-6">
               <h4 className="text-base font-semibold text-foreground">
                 Vulkanisme i klimasystemet: Akutt kulde vs. geologisk drivhus
@@ -313,7 +315,8 @@ export function EarthSystemsModel() {
             </div>
 
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/50 p-4 lg:col-span-6">
-              <svg viewBox="0 0 500 280" className="w-full h-auto" aria-label="Pinatubo vs Tambora atmosfære">
+              <div className="overflow-x-auto" data-axis="x">
+              <svg viewBox="0 0 500 280" className="h-auto w-full min-w-[620px]" aria-label="Pinatubo vs Tambora atmosfære">
                 {/* Stratosfære / Troposfære bakgrunn */}
                 <rect x="20" y="20" width="460" height="120" fill="#0f1f38" stroke="#3b82f6" strokeWidth="1" rx="6" />
                 <rect x="20" y="140" width="460" height="120" fill="#1e293b" stroke="#64748b" strokeWidth="1" rx="6" />
@@ -342,12 +345,13 @@ export function EarthSystemsModel() {
                     <text x="320" y="80" textAnchor="middle" fill="#fef08a" fontSize="11" fontWeight="bold">
                       H₂SO₄-sulfataerosoler (Optisk dybde: {aerosolOpticalDepth})
                     </text>
-                    <text x="320" y="96" textAnchor="middle" fill="#fef9c3" fontSize="9">
+                    <text x="320" y="96" textAnchor="middle" fill="#fef9c3" fontSize="10">
                       Reflekterer sollys og kan kjøle overflaten
                     </text>
                   </g>
                 )}
               </svg>
+              </div>
 
               <div className="mt-2 rounded-lg bg-card/80 p-2.5 border border-border text-xs text-muted-foreground">
                 <p>
