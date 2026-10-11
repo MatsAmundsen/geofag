@@ -81,11 +81,11 @@ FieldworkIllustration
 
 En _blotning_ er et sted der fast fjell eller løsmasser ligger synlig. Beskriv farge, kornstørrelse, mineraler og strukturer som lagdeling, folder og sprekker. Lag en skisse med målestokk og nordpil.
 
-Lagflater, sprekker og forkastninger er flater som har en retning i rommet. _Strøk_ er retningen på linjen der flaten skjærer et vannrett plan. _Fall_ er vinkelen mellom flaten og det vannrette planet, fra 0° for en vannrett flate til 90° for en loddrett flate (SNL, 2024a). Du måler strøket med kompasset og fallet med klinometeret, og du noterer hvilken retning flaten heller mot, for eksempel «fall 32° mot SØ».
+Lagflater, sprekker og forkastninger er flater som har en retning i rommet. _Strøk_ er retningen på linjen der flaten skjærer et vannrett plan. _Fall_ er vinkelen mellom flaten og det vannrette planet, fra 0° for en vannrett flate til 90° for en loddrett flate (SNL, 2024c). Du måler strøket med kompasset og fallet med klinometeret, og du noterer hvilken retning flaten heller mot, for eksempel «fall 32° mot SØ».
 
 ### Kornfordeling og rundhet i løsmasser
 
-I en løsmasseprofil, for eksempel i et grustak eller en bekkeskråning, kan du beskrive lagene fra bunn til topp. Mål tykkelsen, og se på kornstørrelsen og om kornene er sortert. Sortert materiale med runde korn er ofte transportert av vann, mens usortert materiale med kantete og runde korn om hverandre ofte er morene. Ta prøver i merkede poser hvis du skal sikte dem senere. Mer om kornstørrelser står i kapitlet [Landformer og geomorfologi](/geofag-1/landformer).
+I en løsmasseprofil, for eksempel i et grustak eller en bekkeskråning, kan du beskrive lagene fra bunn til topp. Mål tykkelsen, og se på kornstørrelsen og om kornene er sortert. Sortert materiale med runde korn er ofte transportert av vann, mens usortert materiale med alle kornstørrelser, fra leire til blokker, ofte er morene. Ta prøver i merkede poser hvis du skal sikte dem senere. Mer om kornstørrelser står i kapitlet [Landformer og geomorfologi](/geofag-1/landformer).
 
 ### Skuringsstriper
 
@@ -93,11 +93,11 @@ _Skuringsstriper_ er riper i fast fjell som steiner i bunnen av isbreen laget da
 
 ### Måle vannføring med flottørmetoden
 
-_Vannføring_ er hvor mye vann som renner forbi et sted i en elv eller bekk per tidsenhet, oppgitt for eksempel i kubikkmeter per sekund (SNL, 2024c). Velg en rett strekning. Mål bredden og dybden flere steder, og regn ut tverrsnittsarealet. Slipp en flottør, for eksempel en appelsin, og ta tiden over en kjent lengde. Vannføringen er da
+_Vannføring_ er hvor mye vann som renner forbi et sted i en elv eller bekk per tidsenhet, oppgitt for eksempel i kubikkmeter per sekund (SNL, 2024d). Velg en rett strekning. Mål bredden og dybden flere steder, og regn ut tverrsnittsarealet. Slipp en flottør, for eksempel en appelsin, og ta tiden over en kjent lengde. Vannføringen er da
 
-**vannføring = tverrsnittsareal × fart**
+**vannføring = tverrsnittsareal × middelfart**
 
-Gjenta tidtakingen flere ganger. Vannet ved overflaten midt i bekken renner fortere enn vannet langs bunnen og breddene, så flottørmetoden gir en for høy vannføring hvis du ikke korrigerer for det.
+Gjenta tidtakingen flere ganger. Vannet ved overflaten midt i bekken renner fortere enn vannet langs bunnen og breddene, så flottøren går fortere enn middelfarten i bekken. Gang flottørens fart med ca. 0,85 for å få middelfarten (Turnipseed & Sauer, 2010).
 
 ### Temperatur og pH i vann
 
@@ -117,7 +117,7 @@ SjekkFeltarbeid2
 
 Data er _georefererte_ når hver måling er knyttet til en posisjon. Da kan du legge dataene på et kart og sammenligne dem med andre data. En vanlig mobiltelefon har under åpen himmel en nøyaktighet på ca. 5 m, og den blir dårligere nær bygninger, bruer og trær (GPS.gov, u.å.). En koordinat med mange desimaler er altså ikke sikrere enn mottakeren. Skriv derfor ned usikkerheten sammen med posisjonen.
 
-Koordinater må alltid oppgis i et bestemt _referansesystem_. Norske kart bruker EUREF89, mens GPS gir posisjoner i WGS84. Forskjellen er så liten at den sjelden betyr noe i et skoleprosjekt, men du må vite hvilket system du bruker når du legger data fra ulike kilder sammen (Kartverket, u.å.).
+Koordinater må alltid oppgis i et bestemt _referansesystem_. Norske landkart bruker referanserammen EUREF89, og koordinatene vises ofte i UTM, som nord- og østverdier i meter. GPS og sjøkart bruker WGS84, og posisjonene vises som oftest i grader. Forskjellen betyr sjelden noe i et skoleprosjekt, men du må vite hvilket system og hvilket format du bruker når du legger sammen data fra ulike kilder (Kartverket, u.å.).
 
 ### Feltboka
 

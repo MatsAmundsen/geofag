@@ -2635,14 +2635,14 @@ export const QUIZ_SJEKK_FELTARBEID_2: QuizQuestion[] = [
     explain: "Fall er helningen til flaten, fra 0° for vannrett til 90° for loddrett. Strøk er retningen på skjæringslinjen med det vannrette planet.",
   },
   {
-    prompt: "Du måler tverrsnittsarealet i en bekk til 0,4 m² og farten til 0,5 m/s. Hva er vannføringen?",
+    prompt: "Du måler tverrsnittsarealet i en bekk til 0,4 m² og middelfarten til 0,5 m/s. Hva er vannføringen?",
     options: [
       "0,9 m³/s",
       "0,2 m³/s",
       "0,8 m³/s",
     ],
     answer: 1,
-    explain: "Vannføring = tverrsnittsareal × fart = 0,4 m² × 0,5 m/s = 0,2 m³/s. Flottørmetoden gir litt for høy verdi fordi overflaten renner fortest.",
+    explain: "Vannføring = tverrsnittsareal × middelfart = 0,4 m² × 0,5 m/s = 0,2 m³/s. Middelfarten finner du ved å gange flottørens fart med ca. 0,85.",
   },
 ];
 

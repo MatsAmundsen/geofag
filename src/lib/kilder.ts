@@ -1390,6 +1390,12 @@ export const KILDER = {
     },
     {
       prefix: "Store norske leksikon [SNL]. (2024c). ",
+      italic: "Strøk (geologi)",
+      suffix: ".",
+      href: "https://snl.no/strøk_-_geologi",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2024d). ",
       italic: "Vannføring",
       suffix: ".",
       href: "https://snl.no/vannføring",
@@ -1405,6 +1411,12 @@ export const KILDER = {
       italic: "Feltarbeid",
       suffix: ".",
       href: "https://snl.no/feltarbeid",
+    },
+    {
+      prefix: "Turnipseed, D. P., & Sauer, V. B. (2010). ",
+      italic: "Discharge measurements at gaging stations",
+      suffix: " (U.S. Geological Survey Techniques and Methods, bok 3, kap. A8). U.S. Geological Survey.",
+      href: "https://pubs.usgs.gov/tm/tm3-a8/",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",

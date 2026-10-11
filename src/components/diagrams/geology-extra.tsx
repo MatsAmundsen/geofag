@@ -211,7 +211,7 @@ export function FieldworkIllustrationDiagram() {
     <Diagram
       title="Feltarbeid i geofag: verktøy, observasjoner og registrering ved geologisk blotning"
       heading="Feltmetodikk: observasjon og måling ved blotning"
-      caption="Feltarbeid kobler teori til virkelighet. Ved en blotning registreres bergartsidentifikasjon, lagdeling, orientering (strøk og fall med geologkompass) og nøyaktige GPS-koordinater med usikkerhet i feltboka."
+      caption="Feltarbeid kobler teori til virkelighet. Ved en blotning registreres bergartsidentifikasjon, lagdeling, orientering (strøk og fall med geologkompass) og GPS-koordinater med usikkerhet i feltboka."
       viewBox="0 0 900 380"
       wide
     >
@@ -242,7 +242,7 @@ export function FieldworkIllustrationDiagram() {
           <circle cx="200" cy="110" r="8" fill={C.low} />
           <circle cx="200" cy="110" r="16" fill="none" stroke={C.low} strokeWidth="1.5" strokeDasharray="4 3" />
           <L x="218" y="105" fill={C.low} size={13} weight={700}>GPS Stasjon 1</L>
-          <L x="218" y="120" fill={C.muted} size={11}>61,002°N 8,511°Ø (±3 m)</L>
+          <L x="218" y="120" fill={C.muted} size={11}>61,002°N 8,511°Ø (±5 m)</L>
 
           {/* Høyre panel: Sjekkliste og dataflyt i felt */}
           <rect x="520" y="30" width="340" height="320" rx="10" fill="#141f27" stroke={C.dim} strokeWidth="1.5" />
