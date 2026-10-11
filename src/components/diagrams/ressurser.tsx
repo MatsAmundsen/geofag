@@ -282,7 +282,7 @@ export function PetroleumSystemDiagram() {
     <Diagram
       title="Petroleumssystemet: de fem geologiske forutsetningene"
       heading="Kildebergart, modning, migrasjon, reservoar, takbergart og felle"
-      caption="For at det skal dannes en olje- eller gassforekomst, må fem geologiske faktorer klaffe i tid og rom: 1) Kildebergart (organisk rik skifer, f.eks. Draupneformasjonen). 2) Modning i 'oljevinduet' (80–120 °C under dypt trykk og temperatur). 3) Migrasjon (oppdrift mot overflaten fordi olje og gass er lettere enn vann). 4) Reservoarbergart (porøs og permeabel bergart, f.eks. sandstein eller oppsprukket kalkstein). 5) Takbergart og felle (ugjennomtrengelig leirskifer som forsegler en geologisk struktur, f.eks. en antiklinal eller forkastningsblokk). I reservoaret sorteres væskene etter tetthet: gass øverst, olje i midten og vann nederst."
+      caption="For at det skal dannes en olje- eller gassforekomst, må fem geologiske faktorer klaffe i tid og rom: 1) Kildebergart (organisk rik skifer, f.eks. Draupneformasjonen). 2) Modning i oljevinduet (ca. 60–130 °C, i Nordsjøen ca. 2–4 km dyp). Ved ca. 130–180 °C dannes gass. 3) Migrasjon (oppdrift mot overflaten fordi olje og gass er lettere enn vann). 4) Reservoarbergart (porøs og permeabel bergart, f.eks. sandstein eller oppsprukket kalkstein). 5) Takbergart og felle (ugjennomtrengelig leirskifer som forsegler en geologisk struktur, f.eks. en antiklinal eller forkastningsblokk). I reservoaret sorteres væskene etter tetthet: gass øverst, olje i midten og vann nederst. Temperaturene følger SNL (oljevindu og dannelse av petroleum)."
       viewBox="0 0 880 480"
       wide
     >
@@ -365,7 +365,7 @@ export function PetroleumSystemDiagram() {
             Draupneformasjonen (opprinnelig alger/plankton på havbunn)
           </L>
           <L x="260" y="438" fill={C.fg} size={12}>
-            2. Modning i oljevinduet: 80–120 °C ved 2500–4000 m dyp
+            2. Modning i oljevinduet: ca. 60–130 °C, i Nordsjøen ca. 2–4 km dyp
           </L>
 
           {/* Migrasjonspiler fra kildebergart opp mot reservoaret */}
@@ -396,8 +396,8 @@ export function PetroleumSystemDiagram() {
           <g>
             <rect x="630" y="136" width="215" height="64" rx="5" fill="#1c2630" stroke={C.sand} strokeWidth="1" />
             <L x="640" y="155" fill={C.sand} size={12} weight={700}>2. Modning (temperatur)</L>
-            <L x="640" y="173" fill={C.fg} size={11}>Oljevindu: 80–120 °C.</L>
-            <L x="640" y="189" fill={C.muted} size={10}>Over 120 °C dannes gass.</L>
+            <L x="640" y="173" fill={C.fg} size={11}>Oljevindu: ca. 60–130 °C.</L>
+            <L x="640" y="189" fill={C.muted} size={10}>Ved ca. 130–180 °C dannes gass.</L>
           </g>
 
           {/* Punkt 3 */}
@@ -422,7 +422,7 @@ export function PetroleumSystemDiagram() {
             <L x="640" y="365" fill={C.low} size={12} weight={700}>5. Felle & Takbergart</L>
             <L x="640" y="383" fill={C.fg} size={11}>Felle: Antiklinal, forkastning.</L>
             <L x="640" y="399" fill={C.fg} size={11}>Takbergart: Tett skifer/leire.</L>
-            <L x="640" y="420" fill={C.low} size={10} weight={600}>Uten forsegling lekker oljen ut!</L>
+            <L x="640" y="420" fill={C.low} size={10} weight={600}>Uten takbergart lekker oljen ut.</L>
           </g>
         </>
       )}
