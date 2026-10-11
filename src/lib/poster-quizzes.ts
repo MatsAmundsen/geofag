@@ -1150,48 +1150,37 @@ export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
 
 export const QUIZ_KLIMA: QuizQuestion[] = [
   {
-    prompt: "Hvilke fem deler består klimasystemet av?",
+    prompt: "Hva er den viktigste forskjellen mellom en svingning som ENSO og global oppvarming?",
     options: [
-      "Atmosfæren, hydrosfæren, kryosfæren, landoverflaten og biosfæren.",
-      "Atmosfæren, hydrosfæren, kryosfæren og biosfæren.",
-      "Atmosfæren, hydrosfæren, kryosfæren, landoverflaten og magnetosfæren.",
-      "Atmosfæren, hydrosfæren, landoverflaten, biosfæren og jordkjernen.",
+      "Svingninger gjelder bare lufttrykk",
+      "Svingninger flytter varme og nedbør innenfor systemet, mens global oppvarming skyldes et ytre pådriv",
+      "Global oppvarming skjer bare i lufta",
+      "Det er ingen forskjell",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er klimasystemet?». Klimasystemet består av atmosfæren, hydrosfæren, kryosfæren, landoverflaten (litosfæren) og biosfæren.",
+    answer: 1,
+    explain: "Mer klimagasser holder igjen mer energi totalt, mens svingningene flytter energien rundt.",
   },
   {
-    prompt: "Hva skiller indre dynamikk fra ytre pådriv?",
+    prompt: "Hvilken svingning har mest å si for vinterværet i Norge?",
     options: [
-      "Indre dynamikk er variasjon i systemet selv. Ytre pådriv er en endring utenfra, som vulkan, sol, bane eller menneskelig endring.",
-      "Begge er det samme som oppvarmingstrenden.",
-      "Ytre pådriv er bare været fra dag til dag.",
+      "IOD",
+      "ENSO",
+      "NAO",
+      "Ingen av dem",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er klimasystemet?». Systemet endrer seg både av egen indre dynamikk og av ytre pådriv.",
+    answer: 2,
+    explain: "NAO styrer trykkforskjellen over Nord-Atlanteren og hvor lavtrykkene går.",
   },
   {
-    prompt: "Hvilken svingning ligger nærmest norsk vintervær?",
+    prompt: "Hva er forskjellen på et pådriv og en tilbakekobling?",
     options: [
-      "NAO, svingningen over Nord-Atlanteren.",
-      "IOD, svingningen i Det indiske hav.",
-      "ENSO, svingningen i det tropiske Stillehavet.",
+      "Et pådriv setter i gang en endring, mens en tilbakekobling forsterker eller demper den",
+      "Et pådriv er alltid naturlig",
+      "Det er to ord for det samme",
+      "En tilbakekobling virker bare i havet",
     ],
     answer: 0,
-    explain: "Se tabellen. NAO er svingningen over Nord-Atlanteren, nærmest norsk vintervær.",
-  },
-  {
-    prompt: "Er El Niño eller en positiv NAO det samme som oppvarmingstrenden?",
-    options: [
-      "Nei. De hører til den indre dynamikken. Mer drivhusgass er et ytre pådriv.",
-      "Ja. El Niño er oppvarmingstrenden.",
-      "Ja. Positiv NAO er det samme som mer drivhusgass.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Vanlige misforståelser». El Niño og positiv NAO hører til den indre dynamikken. Ytre pådriv, som mer drivhusgass, er noe annet.",
+    explain: "Mer CO₂ er et pådriv. Is-albedo-effekten er en tilbakekobling. Les mer i oversikten.",
   },
 ];
 
@@ -4725,6 +4714,29 @@ export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Da ser du lagdelingen direkte.",
+  },
+];
+
+export const QUIZ_SJEKK_KLIMA_1: QuizQuestion[] = [
+  {
+    prompt: "Hvilke fem deler består klimasystemet av?",
+    options: [
+      "Atmosfæren, hydrosfæren, kryosfæren, geosfæren og biosfæren",
+      "Sola, månen, havet, lufta og isen",
+      "Troposfæren, stratosfæren, mesosfæren, termosfæren og eksosfæren",
+    ],
+    answer: 0,
+    explain: "Samspillet mellom de fem delene bestemmer klimaet (WMO, u.å.).",
+  },
+  {
+    prompt: "Hva er forskjellen på en indre svingning og et ytre pådriv?",
+    options: [
+      "Det er det samme",
+      "En indre svingning oppstår i systemet selv, mens et ytre pådriv kommer utenfra, for eksempel fra klimagasser",
+      "Et ytre pådriv gjelder bare havet",
+    ],
+    answer: 1,
+    explain: "ENSO og NAO er indre svingninger. Mer klimagasser er et ytre pådriv.",
   },
 ];
 

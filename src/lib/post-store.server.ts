@@ -1090,6 +1090,12 @@ const COPY_RESEEDS: CopyReseed[] = [
   },
   {
     // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-hub-md-2026-10-11",
+    slug: "klima",
+    stale: ["## Leserekkefølge"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
     flag: "g2-klima-tilpasning-md-2026-10-11",
     slug: "tilpasning",
     stale: ["## To svar"],

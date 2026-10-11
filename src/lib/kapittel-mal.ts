@@ -107,6 +107,7 @@ import {
   QUIZ_SJEKK_FELT_HAV_4,
   QUIZ_SJEKK_FELT_HAV_5,
   QUIZ_SJEKK_FELT_HAV_6,
+  QUIZ_SJEKK_KLIMA_1,
   QUIZ_SJEKK_TILPASNING_1,
   QUIZ_SJEKK_TILPASNING_2,
   QUIZ_SJEKK_TILPASNING_3,
@@ -234,6 +235,7 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   FeltHav4: QUIZ_SJEKK_FELT_HAV_4,
   FeltHav5: QUIZ_SJEKK_FELT_HAV_5,
   FeltHav6: QUIZ_SJEKK_FELT_HAV_6,
+  Klima1: QUIZ_SJEKK_KLIMA_1,
   Tilpasning1: QUIZ_SJEKK_TILPASNING_1,
   Tilpasning2: QUIZ_SJEKK_TILPASNING_2,
   Tilpasning3: QUIZ_SJEKK_TILPASNING_3,
@@ -435,6 +437,12 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "CTD og Argo-bøyer måler ledningsevne og temperatur mot dyp, og saltholdigheten regnes ut fra dem. Kartverket måler vannstanden, og været kan gi avvik fra tidevannet.",
     "Snøskredvarselet gjelder områder på minst 100 kvadratkilometer og erstatter ikke egne vurderinger. En snøprofil viser lagene i snødekket.",
     "Alle målinger har usikkerhet. Gjenta målingene, regn ut gjennomsnitt og spredning, sammenlign med varsler og modeller, og vis profiler med dypet eller høyden på den loddrette aksen.",
+  ],
+  Klima: [
+    "Klimasystemet består av atmosfæren, hydrosfæren, kryosfæren, geosfæren og biosfæren og samspillet mellom dem.",
+    "Klimaet endrer seg både av indre svingninger og av ytre pådriv.",
+    "ENSO, IOD og NAO er indre svingninger som flytter varme og nedbør. AMOC endrer seg langsommere.",
+    "Det er entydig at menneskelig påvirkning har varmet opp atmosfæren, havet og landjorda.",
   ],
   Tilpasning: [
     "Å redusere klimaendringene og å tilpasse seg dem er to ulike svar, og begge trengs.",

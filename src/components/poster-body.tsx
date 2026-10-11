@@ -206,7 +206,7 @@ import {
   NaoPolarvirvelFigur,
 } from "@/components/diagrams/nao-figurer";
 import { Quiz } from "@/components/quiz";
-import { KLIMA_SUBTHEMES } from "@/lib/nav";
+import { GF2_THEMES, KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import {
   EARTH_LAYERS_PHOTO_SRC,
@@ -1411,7 +1411,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   KlimaForklaring: () => (
     <Callout title="Hva betyr «klimasystemet»?">
       <p>
-        Klimasystemet er atmosfæren, hydrosfæren, kryosfæren, litosfæren og biosfæren, og samspillet
+        Klimasystemet er atmosfæren, hydrosfæren, kryosfæren, geosfæren og biosfæren, og samspillet
         mellom dem. Utveksling av energi, vann og karbondioksid bestemmer klimamønstre og variasjon
         (WMO, u.å.).
       </p>
@@ -1419,7 +1419,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   KlimaKart: () => (
     <div className="my-8 grid gap-4 sm:grid-cols-2">
-      {KLIMA_SUBTHEMES.map((sub) => (
+      {[
+        ...KLIMA_SUBTHEMES,
+        ...GF2_THEMES.filter((t) =>
+          ["/tema/paleoklima", "/tema/milankovitch", "/tema/tilpasning"].includes(t.to),
+        ).map((t) => ({ ...t, kicker: "Klima over tid og samfunn" })),
+      ].map((sub) => (
         <Link
           key={sub.to}
           to={sub.to}

@@ -2877,6 +2877,32 @@ export const KILDER = {
       href: "https://www.climate.gov/enso",
     },
   ],
+  klimaHub: [
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      italic: "Climate change 2021: The physical science basis. Summary for policymakers",
+      suffix: ".",
+      href: "https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
+      italic: "Climate",
+      suffix: ".",
+      href: "https://wmo.int/topics/climate",
+    },
+  ],
   oversikt: [
     {
       prefix: "AMAP. (2021). ",

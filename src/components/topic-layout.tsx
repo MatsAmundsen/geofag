@@ -32,7 +32,6 @@ type TopicLink = { to: string; label: string; params?: Record<string, string> };
  * Kodede G1-sider og hoytrykk-lavtrykk beholder knappen.
  */
 const CODED_G2_PATHS = new Set([
-  "/tema/klima",
   "/tema/klima/nao",
 ]);
 
