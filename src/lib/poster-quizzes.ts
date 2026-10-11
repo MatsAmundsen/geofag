@@ -3901,6 +3901,144 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_KRYO_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er likevektslinjen (ELA) på en bre?",
+    options: [
+      "Grensen mellom bre og fjell",
+      "Høyden der akkumulasjon og ablasjon er like stor",
+      "Den nederste enden av breen",
+    ],
+    answer: 1,
+    explain: "Over likevektslinjen hoper snøen seg opp, under smelter den. Firngrensen ved slutten av sommeren ligger ofte nær ELA, men er ikke det samme.",
+  },
+  {
+    prompt: "Hvor stort er brearealet i Norge etter den siste kartleggingen (2018–2019)?",
+    options: [
+      "Om lag 2328 km², 14 prosent mindre enn i 1999–2006",
+      "Om lag 23 000 km²",
+      "Om lag 232 km²",
+    ],
+    answer: 0,
+    explain: "NVE kartla breene fra satellitt. Arealet har minket med 14 prosent siden forrige kartlegging.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er det aktive laget?",
+    options: [
+      "Den delen av breen som beveger seg",
+      "Det øverste laget over permafrosten, som tiner hver sommer",
+      "Havis som er yngre enn ett år",
+    ],
+    answer: 1,
+    explain: "Når permafrosten varmes, blir det aktive laget dypere, og bakken blir mer ustabil.",
+  },
+  {
+    prompt: "Hvorfor forsterker smeltende havis oppvarmingen i Arktis?",
+    options: [
+      "Fordi isen frigjør varme når den smelter",
+      "Fordi havis inneholder CO₂",
+      "Fordi mørkt hav tar opp mer solvarme enn hvit is",
+    ],
+    answer: 2,
+    explain: "Is har høy albedo og hav lav. Mindre is gir mer oppvarming, og det er en positiv tilbakekobling.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_3: QuizQuestion[] = [
+  {
+    prompt: "Hvor stort område gjelder en regional snøskredfaregrad for?",
+    options: [
+      "Minst 100 km²",
+      "Ett enkelt heng",
+      "Hele Norge",
+    ],
+    answer: 0,
+    explain: "Faregraden er regional. Den som ferdes i fjellet, må gjøre egne vurderinger.",
+  },
+  {
+    prompt: "Hvordan ventes snøskredfaren å endre seg med klimaendringene?",
+    options: [
+      "Flere snøskred overalt",
+      "Færre snøskred i lavlandet, men flere naturlig utløste skred høyt til fjells",
+      "Ingen endring",
+    ],
+    answer: 1,
+    explain: "Mindre snø og kortere sesong gir færre skred i lavlandet. Høyere opp ventes flere (Norsk klimaservicesenter).",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor ser ballen på karusellen ut til å svinge?",
+    options: [
+      "Fordi en kraft skyver den sidelengs",
+      "Fordi den som ser på, roterer med karusellen",
+      "Fordi ballen snurrer",
+    ],
+    answer: 1,
+    explain: "Sett utenfra går ballen rett. Avbøyningen kommer av at ståstedet roterer.",
+  },
+  {
+    prompt: "Hvilken vei avbøyes luft som blåser nordover på den nordlige halvkule?",
+    options: [
+      "Mot venstre",
+      "Den avbøyes ikke",
+      "Mot høyre",
+    ],
+    answer: 2,
+    explain: "Lufta har med seg større fart østover enn bakken lenger nord, og det blir en høyresving.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_2: QuizQuestion[] = [
+  {
+    prompt: "Hvor er corioliseffekten null?",
+    options: [
+      "Ved ekvator",
+      "Ved polene",
+      "Ved 60° bredde",
+    ],
+    answer: 0,
+    explain: "Coriolisparameteren er null ved ekvator og øker mot polene. Derfor dannes ikke orkaner helt ved ekvator.",
+  },
+  {
+    prompt: "Hvorfor blåser ikke vinden nær bakken langs isobarene?",
+    options: [
+      "Fordi corioliskraften er sterkest der",
+      "Fordi friksjonen bremser vinden, særlig over land",
+      "Fordi trykket er likt overalt",
+    ],
+    answer: 1,
+    explain: "Over havet er vinkelen 0–20° og over land 20–40°, fordi friksjonen er større over land.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
+    options: [
+      "Med vinden",
+      "Mot vinden",
+      "Til høyre for vinden",
+    ],
+    answer: 2,
+    explain: "Overflatelaget transporteres på tvers av vinden, til høyre i nord.",
+  },
+  {
+    prompt: "Hvorfor kan en nordavind langs en vestkyst gi oppvelling?",
+    options: [
+      "Ekmantransporten skyver overflatevannet ut fra kysten, og dypvann kommer opp",
+      "Nordavinden er varm",
+      "Tidevannet blir større",
+    ],
+    answer: 0,
+    explain: "Vannet som kommer opp, er rikt på næringsstoffer, og områdene har ofte rike fiskerier.",
+  },
+];
+
 export const QUIZ_SJEKK_VINDSYSTEMET_1: QuizQuestion[] = [
   {
     prompt: "Hvorfor får vi tre celler på hver halvkule i stedet for én?",

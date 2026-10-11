@@ -1048,6 +1048,18 @@ const COPY_RESEEDS: CopyReseed[] = [
   },
   {
     // Geo (G2): malen og bør-punktene.
+    flag: "g2-kryosfaeren-mal-2026-10-11",
+    slug: "kryosfaeren",
+    stale: ["De to ordene er ikke satt lik hverandre her", "om lag 5260 isbreer"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-coriolis-mal-2026-10-11",
+    slug: "coriolis",
+    stale: ["Om lag halvparten av primærproduksjonen i havet skjer i oppvellingsområder"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
     flag: "g2-vindsystemet-mal-2026-10-11",
     slug: "vindsystemet",
     stale: ["Bruk modellen i [dette kapittelet](/tema/vindsystemet)", "Jordaksen heller om lag 23 grader."],
