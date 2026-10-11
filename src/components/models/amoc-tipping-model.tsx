@@ -535,7 +535,7 @@ export function AmocTippingModel() {
                   </div>
                   <div className="rounded bg-slate-900 p-2">
                     <span className="text-muted-foreground block">3. Yngre dryas-parallell:</span>
-                    <span className="text-slate-200">Yngre dryas, for ca. 12 800–11 700 år siden: trolig utløst av at smeltevann svekket AMOC kraftig. Hvor vannet kom fra, er omdiskutert (Mangerud, 2025; Cohen mfl., 2026).</span>
+                    <span className="text-slate-200">Yngre dryas, for ca. 12 800–11 700 år siden: trolig utløst av at smeltevann svekket AMOC kraftig. Hvor vannet kom fra, er omdiskutert (Mangerud, 2025b; Cohen mfl., 2026).</span>
                   </div>
                 </div>
               </div>

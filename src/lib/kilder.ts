@@ -3162,16 +3162,16 @@ export const KILDER = {
       href: "https://doi.org/10.1098/rsta.2022.0188",
     },
     {
+      prefix: "Kindler, P., Guillevic, M., Baumgartner, M., Schwander, J., Landais, A. og Leuenberger, M. (2014). Temperature reconstruction from 10 to 120 kyr b2k from the NGRIP ice core. ",
+      italic: "Climate of the Past, 10",
+      suffix: "(2), 887–902.",
+      href: "https://doi.org/10.5194/cp-10-887-2014",
+    },
+    {
       prefix: "Lilly, J. M., Rhines, P. B., Visbeck, M., Davis, R., Lazier, J. R. N., Schott, F. og Farmer, D. (1999). Observing deep convection in the Labrador Sea during winter 1994/95. ",
       italic: "Journal of Physical Oceanography, 29",
       suffix: "(8), 2065–2098.",
       href: "https://doi.org/10.1175/1520-0485(1999)029<2065:ODCITL>2.0.CO;2",
-    },
-    {
-      prefix: "Li, C. og Born, A. (2019). Coupled atmosphere-ice-ocean dynamics in Dansgaard-Oeschger events. ",
-      italic: "Quaternary Science Reviews, 203",
-      suffix: ", 1–20.",
-      href: "https://doi.org/10.1016/j.quascirev.2018.10.031",
     },
     {
       prefix: "Lozier, M. S., Li, F., Bacon, S., Bahr, F., Bower, A. S., Cunningham, S. A., de Jong, M. F., de Steur, L., deYoung, B., Fischer, J., Gary, S. F., Greenan, B. J. W., Holliday, N. P., Houk, A., Houpert, L., Inall, M. E., Johns, W. E., Johnson, H. L., Johnson, C., … Zhao, J. (2019). A sea change in our view of overturning in the subpolar North Atlantic. ",
@@ -3180,7 +3180,13 @@ export const KILDER = {
       href: "https://doi.org/10.1126/science.aau6592",
     },
     {
-      prefix: "Mangerud, J. (2025, 29. august). Yngre dryas. I ",
+      prefix: "Mangerud, J. (2025a, 12. oktober). Siste istid. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/siste_istid",
+    },
+    {
+      prefix: "Mangerud, J. (2025b, 29. august). Yngre dryas. I ",
       italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/yngre_dryas",

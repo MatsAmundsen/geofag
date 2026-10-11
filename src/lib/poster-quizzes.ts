@@ -812,7 +812,7 @@ export const QUIZ_AMOC: QuizQuestion[] = [
       "Dinosaurene døde ut",
     ],
     answer: 0,
-    explain: "Det ble plutselig mye kaldere i Norge, og isen rykket fram igjen. Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025).",
+    explain: "Det ble plutselig mye kaldere i Norge, og isen rykket fram igjen. Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025b).",
   },
 ];
 
@@ -4776,17 +4776,17 @@ export const QUIZ_SJEKK_AMOC_4: QuizQuestion[] = [
       "At smeltevann svekket AMOC kraftig",
     ],
     answer: 2,
-    explain: "Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025).",
+    explain: "Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025b).",
   },
   {
     prompt: "Hva er en Dansgaard-Oeschger-hendelse?",
     options: [
       "En langsom avkjøling over 100 000 år",
-      "En brå oppvarming på Grønland på ca. 8–16 °C i løpet av noen tiår",
+      "En rask oppvarming på Grønland på 5–16,5 °C, fulgt av en langsom avkjøling",
       "Et isfjellutbrudd fra Antarktis",
     ],
     answer: 1,
-    explain: "Hendelsene henger sammen med at AMOC ble sterkere og svakere (Li & Born, 2019).",
+    explain: "De fleste oppvarmingene var 9–13 °C. Det er vanlig å anta at hendelsene henger sammen med at AMOC ble sterkere og svakere (Kindler mfl., 2014).",
   },
 ];
 

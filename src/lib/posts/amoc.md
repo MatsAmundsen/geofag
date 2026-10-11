@@ -46,11 +46,11 @@ I mediene brukes «Golfstrømmen» ofte om hele strømsystemet i Atlanterhavet, 
 - **Golfstrømmen** er en horisontal, vinddrevet overflatestrøm på vestsiden av den subtropiske havvirvelen i Nord-Atlanteren. Den drives av passatvindene og vestavinden, og corioliseffekten gjør den smal og rask. I Floridastredet, ved 27 grader nord, er transporten i snitt omtrent 32 Sv, og den har vært stabil i over 40 år (NOAA AOML, u.å.; Volkov mfl., 2024). Ifølge FNs klimapanel bidrar havvirvelen 2–10 ganger mer til Golfstrømmen enn AMOC gjør. Golfstrømmen ville derfor ikke stoppe helt selv om AMOC gjorde det (IPCC, 2021).
 - **AMOC** er hele det tredimensjonale omveltningsbåndet, som forbinder overflaten med dyphavet. Den drives av tetthetsforskjeller, altså temperatur og salt. Det er omveltningen og nedsynkingen i nord som kan svekkes hvis vannet i nord blir ferskere og lettere.
 
-Golfstrømmen går ikke helt til Norge. Den går over i Den nordatlantiske strømmen, og en gren av den fortsetter nordover langs Norge som *Den norske atlanterhavsstrømmen* (Weber & Bjørndalen, 2024). Strømmen langs Norge er altså ikke Golfstrømmen.
+Golfstrømmen går ikke helt til Norge. Den går over i Den nordatlantiske strømmen, og en gren av den fortsetter nordover langs Norge som *Den norske atlanterhavsstrømmen* (Weber og Bjørndalen, 2024). Strømmen langs Norge er altså ikke Golfstrømmen.
 
 ### AMOC i tall
 
-Ved 26,5 grader nord har AMOC i snitt fraktet ca. 17 Sv siden 2004 (1 Sv = 1 million kubikkmeter vann per sekund) (Johns mfl., 2023). Alle verdens elver fører til sammen ca. 1,2 Sv, og Amazonas ca. 0,2 Sv (Dai & Trenberth, 2002). AMOC fører altså ca. 15 ganger så mye vann som alle elver til sammen, og over 80 ganger så mye som Amazonas. Den frakter også ca. 1,2 petawatt (10¹⁵ W) varme nordover (Johns mfl., 2023). Det tilsvarer omtrent en million kraftverk på 1 GW.
+Ved 26,5 grader nord har AMOC i snitt fraktet ca. 17 Sv siden 2004 (1 Sv = 1 million kubikkmeter vann per sekund) (Johns mfl., 2023). Alle verdens elver fører til sammen ca. 1,2 Sv, og Amazonas ca. 0,2 Sv (Dai og Trenberth, 2002). AMOC fører altså ca. 15 ganger så mye vann som alle elver til sammen, og over 80 ganger så mye som Amazonas. Den frakter også ca. 1,2 petawatt (10¹⁵ W) varme nordover (Johns mfl., 2023). Det tilsvarer omtrent en million kraftverk på 1 GW.
 
 ```widget
 SjekkAmoc1
@@ -71,7 +71,7 @@ TetthetDiagram
 ### Tre trinn i dypvannsdannelsen
 
 1. **Salt fra subtropene:** Under høytrykket i subtropene er fordampingen stor. Derfor er overflatevannet midt i den subtropiske havvirvelen i Nord-Atlanteren svært salt (Talley mfl., 2011). Det varme og salte vannet føres nordover med Golfstrømmen og Den nordatlantiske strømmen.
-2. **Kraftig avkjøling i nord:** Om vinteren møter vannet kald og tørr luft i de nordiske hav, Irmingerhavet og Labradorhavet. I konveksjonsområdene kan havet da gi fra seg flere hundre watt per kvadratmeter til lufta. I Labradorhavet var varmetapet 200–300 W/m² i månedssnitt vinteren 1994/95 (Lilly mfl., 1999), og ved svært sterk avkjøling kan det komme opp i ca. 1000 W/m² (Marshall & Schott, 1999). Avkjølingen er hovedmekanismen. I Nord-Atlanteren blir overflatevannet tungt nok til å synke først og fremst fordi det blir kraftig avkjølt om vinteren (Sælen mfl., 2025).
+2. **Kraftig avkjøling i nord:** Om vinteren møter vannet kald og tørr luft i de nordiske hav, Irmingerhavet og Labradorhavet. I konveksjonsområdene kan havet da gi fra seg flere hundre watt per kvadratmeter til lufta. I Labradorhavet var varmetapet 200–300 W/m² i månedssnitt vinteren 1994/95 (Lilly mfl., 1999), og ved svært sterk avkjøling kan det komme opp i ca. 1000 W/m² (Marshall og Schott, 1999). Avkjølingen er hovedmekanismen. I Nord-Atlanteren blir overflatevannet tungt nok til å synke først og fremst fordi det blir kraftig avkjølt om vinteren (Sælen mfl., 2025).
 3. **Konveksjon og nedsynking:** Lav temperatur og høy saltholdighet gjør overflatevannet tyngre enn lagene under. Vannsøylen blir ustabil, og vannet synker i smale konveksjonsområder, ofte kalt skorsteiner (*chimneys*). Slik dannes *nordatlantisk dypvann* (NADW), som går sørover i dypet (Talley mfl., 2011).
 
 Når havis fryser, blir mye av saltet igjen i vannet under. Det gjør vannet tyngre, men har størst betydning rundt Antarktis, der det meste av bunnvannet dannes (Barthel, 2025).
@@ -107,7 +107,7 @@ I 1961 viste oseanografen Henry Stommel at en enkel modell av den termohaline si
 - **«På»-tilstanden (som i dag):** Sterk sirkulasjon. Salt fra sør holder tettheten høy nok til at konveksjonen fortsetter.
 - **«Av»-tilstanden:** Hvis ferskvannstilførselen blir større enn en kritisk terskel, stopper dypvannsdannelsen. Uten salt fra sør forblir overflaten i nord fersk og lagdelt, og sirkulasjonen blir værende svak.
 
-Et *vippepunkt* er terskelen der systemet går over i den andre tilstanden. *Hysterese* betyr at systemet ikke går tilbake av seg selv om ferskvannet reduseres til nivået før. Ferskvannstilførselen må ned til et mye lavere nivå før sirkulasjonen kan starte igjen, og det kan ta lang tid (Stommel, 1961). Modellen er svært forenklet, og den sier ikke når et vippepunkt eventuelt nås. Noen nyere studier finner tidlige varselsignaler som tyder på at AMOC kan nærme seg et vippepunkt allerede i dette hundreåret (Ditlevsen & Ditlevsen, 2023; van Westen mfl., 2024). Funnene er omdiskutert. FNs klimapanel mener med middels sikkerhet at AMOC ikke vil bryte sammen brått før 2100 (IPCC, 2021).
+Et *vippepunkt* er terskelen der systemet går over i den andre tilstanden. *Hysterese* betyr at systemet ikke går tilbake av seg selv om ferskvannet reduseres til nivået før. Ferskvannstilførselen må ned til et mye lavere nivå før sirkulasjonen kan starte igjen, og det kan ta lang tid (Stommel, 1961). Modellen er svært forenklet, og den sier ikke når et vippepunkt eventuelt nås. Noen nyere studier finner tidlige varselsignaler som tyder på at AMOC kan nærme seg et vippepunkt allerede i dette hundreåret (Ditlevsen og Ditlevsen, 2023; van Westen mfl., 2024). Funnene er omdiskutert. FNs klimapanel mener med middels sikkerhet at AMOC ikke vil bryte sammen brått før 2100 (IPCC, 2021).
 
 ```widget
 SjekkAmoc3
@@ -119,13 +119,13 @@ Fortidens klima viser at AMOC kan endre seg mye. Bevisene ligger i grønlandske 
 
 ### Yngre dryas
 
-Yngre dryas var den siste kalde perioden etter siste istid. Den begynte for ca. 12 800 år siden (Mangerud, 2025) og sluttet for ca. 11 700 år siden, da holocen begynte (Cohen mfl., 2026). Den var trolig utløst av at smeltevann svekket AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert. Én hypotese er at den store bresjøen Agassiz-sjøen i Nord-Amerika ble tappet. Ifølge Mangerud (2025) er det mest aktuelt at vannet gikk via Mackenzie-elva til Polhavet og trolig fløt videre, mye av det som sjøis, fram til Framstredet og ut i Norskehavet. Overgangen var brå. Klimaet skiftet på noen få tiår, og det ble plutselig mye kaldere i Norge (Mangerud, 2025). Midt på Grønland var det ca. 15 °C kaldere enn i dag, og på slutten av yngre dryas steg temperaturen der 5–10 °C på noen tiår eller mindre (Alley, 2000). I Norge rykket innlandsisen fram igjen. Ifølge Store norske leksikon ble Raet dannet da, og det er Norges største morene (Mangerud, 2025).
+Yngre dryas var den siste kalde perioden etter siste istid. Den begynte for ca. 12 800 år siden (Mangerud, 2025b) og sluttet for ca. 11 700 år siden, da holocen begynte (Cohen mfl., 2026). Den var trolig utløst av at smeltevann svekket AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert. Én hypotese er at den store bresjøen Agassiz-sjøen i Nord-Amerika ble tappet. Ifølge Mangerud (2025b) er det mest aktuelt at vannet gikk via Mackenzie-elva til Polhavet og trolig fløt videre, mye av det som sjøis, fram til Framstredet og ut i Norskehavet. Overgangen var brå. Klimaet skiftet på noen få tiår, og det ble plutselig mye kaldere i Norge (Mangerud, 2025b). Midt på Grønland var det ca. 15 °C kaldere enn i dag, og på slutten av yngre dryas steg temperaturen der 5–10 °C på noen tiår eller mindre (Alley, 2000). I Norge rykket innlandsisen fram igjen. Ifølge Store norske leksikon ble Raet dannet da, og det er Norges største morene (Mangerud, 2025b).
 
 ### Heinrich-hendelser og Dansgaard-Oeschger-hendelser
 
-Under siste istid skjedde det mer enn 20 *Dansgaard-Oeschger-hendelser*. Det var brå oppvarminger på Grønland på ca. 8–16 °C i løpet av noen tiår, fulgt av en langsom avkjøling tilbake til kalde forhold. De henger sammen med at AMOC ble sterkere og svakere (Li & Born, 2019).
+Under siste istid skjedde det 25 *Dansgaard-Oeschger-hendelser*, slik de er funnet i iskjernen NGRIP på Grønland. Hver av dem startet med en rask oppvarming og endte med en langsom avkjøling tilbake til kalde forhold. Oppvarmingen på Grønland var 5–16,5 °C, de fleste 9–13 °C, med en usikkerhet på ca. ±3 °C. Det er vanlig å anta at hendelsene henger sammen med at AMOC ble sterkere og svakere (Kindler mfl., 2014).
 
-Under *Heinrich-hendelser* løsnet store mengder isfjell fra den laurentiske innlandsisen i Nord-Amerika og drev ut i Atlanterhavet. Isfjellene la igjen stein og grus på havbunnen når de smeltet, og ferskvannet svekket AMOC kraftig. Heinrich-hendelsene skjedde i noen av de kalde periodene mellom Dansgaard-Oeschger-hendelsene (Li & Born, 2019).
+Under *Heinrich-hendelser* brakk det av store mengder isfjell fra den laurentiske innlandsisen i Nord-Amerika. Kornene isfjellene førte med seg, ligger som lag med mye sand og småstein i borekjerner fra Atlanterhavet, i en sone fra munningen av Hudsonbukta til Portugal. Hvorfor det i noen perioder brakk av så mye is, er ukjent, men isfjellene kjølte ned Nord-Atlanteren og landene rundt (Mangerud, 2025a).
 
 ```widget
 SjekkAmoc4
@@ -168,7 +168,7 @@ SjekkAmoc6
 >
 > **«Golfstrømmen snur og renner baklengs.»** Golfstrømmen drives av vinden og vil ikke stoppe helt selv om AMOC gjorde det. Det er dypvannsdannelsen i nord som kan avta (IPCC, 2021).
 >
-> **«Strømmen langs norskekysten er Golfstrømmen.»** Strømmen langs Norge er Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Weber & Bjørndalen, 2024).
+> **«Strømmen langs norskekysten er Golfstrømmen.»** Strømmen langs Norge er Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Weber og Bjørndalen, 2024).
 >
 > **«AMOC har allerede stoppet.»** Målingene siden 2004 viser at AMOC går, og serien er for kort til å vise en sikker trend (IPCC, 2021).
 
