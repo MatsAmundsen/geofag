@@ -80,10 +80,10 @@ export function PetroleumSnittFigur({
   const on = (k: number) => step === k;
   const labels: Lab[] = [
     { text: "Gass", x: 300, y: 150, at: [470, 172], color: "#ffd38a", anchor: "end", badge: [420, 150] },
-    { text: "Olje", x: 260, y: 200, at: [400, 222], color: "#e8a35a", anchor: "end", badge: [350, 196] },
+    { text: "Olje", x: 400, y: 218, at: [430, 214], color: "#e8a35a", anchor: "middle", badge: [300, 218] },
     { text: "Vann", x: 160, y: 262, at: [250, 280], color: "#8fc4e0", anchor: "end", badge: [200, 262] },
     { text: "Takbergart: tett skifer eller leirstein", x: 600, y: 150, at: [610, 192], color: "#d9a0a0", anchor: "start", badge: [640, 172] },
-    { text: "Reservoar: sandstein eller oppsprukket kritt", x: 612, y: 300, at: [700, 262], color: "#e6cf8f", anchor: "start", badge: [740, 290] },
+    { text: "Reservoar: sandstein eller oppsprukket kritt", x: 640, y: 336, at: [700, 262], color: "#e6cf8f", anchor: "start", badge: [800, 360] },
     { text: "Kildebergart: skifer (f.eks. Draupneformasjonen)", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
   ];
   if (on(2)) labels.push({ text: "Oljevinduet: ca. 60–130 °C", x: 930, y: 404, at: [900, 446], color: "#ffb36b", anchor: "end", badge: [920, 420] });
@@ -226,27 +226,38 @@ function proj(lat: number, lon: number): Pt {
 }
 
 type Kat = "metall" | "kobber" | "industri" | "stein" | "petro";
-type Sted = { navn: string; tekst: string; lat: number; lon: number; kat: Kat; lx: number; ly: number; anchor: "start" | "end" };
+type Sted = {
+  navn: string;
+  tekst: string;
+  lat: number;
+  lon: number;
+  kat: Kat;
+  lx: number;
+  ly: number;
+  anchor: "start" | "end";
+  /** Nummermerke på smal skjerm, lagt utenfor kyststreken. */
+  badge: [number, number];
+};
 
 /** Bare steder som står i kapittelteksten. Posisjon: tettsted eller gruve, rundet til 0,1°. */
 const STEDER: Sted[] = [
-  { navn: "Sokndal", tekst: "Sokndal: ilmenitt", lat: 58.3, lon: 6.4, kat: "metall", lx: 300, ly: 812, anchor: "end" },
-  { navn: "Rana", tekst: "Rana: hematitt", lat: 66.3, lon: 14.1, kat: "metall", lx: 330, ly: 362, anchor: "end" },
-  { navn: "Engebøfjellet", tekst: "Engebøfjellet: rutil og granat", lat: 61.5, lon: 5.4, kat: "metall", lx: 236, ly: 666, anchor: "end" },
-  { navn: "Råna-feltet", tekst: "Råna-feltet: nikkel, nedlagt 2002", lat: 68.3, lon: 16.8, kat: "metall", lx: 520, ly: 262, anchor: "start" },
-  { navn: "Nussir", tekst: "Nussir: kobber, under utbygging", lat: 70.5, lon: 24.3, kat: "kobber", lx: 520, ly: 108, anchor: "start" },
-  { navn: "Sulitjelma", tekst: "Sulitjelma: kismalm", lat: 67.1, lon: 16.1, kat: "kobber", lx: 520, ly: 318, anchor: "start" },
-  { navn: "Grong", tekst: "Grongfeltet: kismalm", lat: 64.5, lon: 12.3, kat: "kobber", lx: 520, ly: 462, anchor: "start" },
-  { navn: "Løkken", tekst: "Løkken: kismalm", lat: 63.1, lon: 9.7, kat: "kobber", lx: 316, ly: 520, anchor: "end" },
-  { navn: "Røros", tekst: "Røros: kismalm", lat: 62.6, lon: 11.4, kat: "kobber", lx: 520, ly: 546, anchor: "start" },
-  { navn: "Folldal", tekst: "Folldal: kismalm", lat: 62.1, lon: 10.0, kat: "kobber", lx: 520, ly: 592, anchor: "start" },
-  { navn: "Kongsberg", tekst: "Kongsberg: sølv", lat: 59.7, lon: 9.6, kat: "kobber", lx: 520, ly: 664, anchor: "start" },
-  { navn: "Akselberg", tekst: "Akselberg (Brønnøy): kalkstein", lat: 65.5, lon: 12.2, kat: "industri", lx: 330, ly: 420, anchor: "end" },
-  { navn: "Åheim", tekst: "Åheim: olivin", lat: 62.0, lon: 5.5, kat: "industri", lx: 236, ly: 606, anchor: "end" },
-  { navn: "Stjernøya", tekst: "Stjernøya: nefelinsyenitt", lat: 70.3, lon: 22.6, kat: "industri", lx: 410, ly: 160, anchor: "end" },
-  { navn: "Skaland", tekst: "Skaland (Senja): grafitt", lat: 69.4, lon: 17.3, kat: "industri", lx: 340, ly: 214, anchor: "end" },
-  { navn: "Larvik", tekst: "Larvik: larvikitt", lat: 59.1, lon: 10.0, kat: "stein", lx: 520, ly: 756, anchor: "start" },
-  { navn: "Fensfeltet", tekst: "Fensfeltet: sjeldne jordarter", lat: 59.3, lon: 9.3, kat: "stein", lx: 520, ly: 712, anchor: "start" },
+  { navn: "Sokndal", tekst: "Sokndal: ilmenitt", lat: 58.3, lon: 6.4, kat: "metall", lx: 300, ly: 812, anchor: "end", badge: [328, 743] },
+  { navn: "Rana", tekst: "Rana: hematitt", lat: 66.3, lon: 14.1, kat: "metall", lx: 330, ly: 362, anchor: "end", badge: [355, 346] },
+  { navn: "Engebøfjellet", tekst: "Engebøfjellet: rutil og granat", lat: 61.5, lon: 5.4, kat: "metall", lx: 236, ly: 666, anchor: "end", badge: [245, 614] },
+  { navn: "Råna-feltet", tekst: "Råna-feltet: nikkel, nedlagt 2002", lat: 68.3, lon: 16.8, kat: "metall", lx: 520, ly: 262, anchor: "start", badge: [405, 230] },
+  { navn: "Nussir", tekst: "Nussir: kobber, under utbygging", lat: 70.5, lon: 24.3, kat: "kobber", lx: 520, ly: 108, anchor: "start", badge: [444, 81] },
+  { navn: "Sulitjelma", tekst: "Sulitjelma: kismalm", lat: 67.1, lon: 16.1, kat: "kobber", lx: 620, ly: 318, anchor: "start", badge: [403, 285] },
+  { navn: "Grong", tekst: "Grongfeltet: kismalm", lat: 64.5, lon: 12.3, kat: "kobber", lx: 520, ly: 462, anchor: "start", badge: [384, 426] },
+  { navn: "Løkken", tekst: "Løkken: kismalm", lat: 63.1, lon: 9.7, kat: "kobber", lx: 316, ly: 520, anchor: "end", badge: [373, 518] },
+  { navn: "Røros", tekst: "Røros: kismalm", lat: 62.6, lon: 11.4, kat: "kobber", lx: 790, ly: 546, anchor: "start", badge: [411, 525] },
+  { navn: "Folldal", tekst: "Folldal: kismalm", lat: 62.1, lon: 10.0, kat: "kobber", lx: 730, ly: 592, anchor: "start", badge: [331, 572] },
+  { navn: "Kongsberg", tekst: "Kongsberg: sølv", lat: 59.7, lon: 9.6, kat: "kobber", lx: 520, ly: 664, anchor: "start", badge: [387, 659] },
+  { navn: "Akselberg", tekst: "Akselberg (Brønnøy): kalkstein", lat: 65.5, lon: 12.2, kat: "industri", lx: 330, ly: 420, anchor: "end", badge: [343, 386] },
+  { navn: "Åheim", tekst: "Åheim: olivin", lat: 62.0, lon: 5.5, kat: "industri", lx: 236, ly: 606, anchor: "end", badge: [270, 578] },
+  { navn: "Stjernøya", tekst: "Stjernøya: nefelinsyenitt", lat: 70.3, lon: 22.6, kat: "industri", lx: 410, ly: 160, anchor: "end", badge: [415, 109] },
+  { navn: "Skaland", tekst: "Skaland (Senja): grafitt", lat: 69.4, lon: 17.3, kat: "industri", lx: 340, ly: 214, anchor: "end", badge: [380, 177] },
+  { navn: "Larvik", tekst: "Larvik: larvikitt", lat: 59.1, lon: 10.0, kat: "stein", lx: 740, ly: 756, anchor: "start", badge: [422, 689] },
+  { navn: "Fensfeltet", tekst: "Fensfeltet: sjeldne jordarter", lat: 59.3, lon: 9.3, kat: "stein", lx: 720, ly: 712, anchor: "start", badge: [362, 688] },
 ];
 
 const KAT_FARGE: Record<Kat, string> = {
@@ -282,7 +293,16 @@ export function RessurskartFigur({
   const pts = STEDER.map((s) => ({ ...s, p: proj(s.lat, s.lon) }));
   const labels: Lab[] = pts
     .filter((s) => shown(s.kat))
-    .map((s) => ({ text: s.tekst, x: s.lx, y: s.ly, at: s.p, color: KAT_FARGE[s.kat], anchor: s.anchor, size: 15 }));
+    .map((s) => ({
+      text: s.tekst,
+      x: s.lx,
+      y: s.ly,
+      at: s.p,
+      color: KAT_FARGE[s.kat],
+      anchor: s.anchor,
+      size: 15,
+      badge: s.badge,
+    }));
   if (shown("petro"))
     labels.push({ text: "Sokkelen: råolje og gass", x: 40, y: 760, color: KAT_FARGE.petro, anchor: "start", size: 15 });
   const keys: Key[] = [
