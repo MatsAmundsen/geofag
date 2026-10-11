@@ -1,6 +1,8 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
+  AdaptationExamFrameworkDiagram,
+  ImpactLevelsDiagram,
   EccentricityDetailDiagram,
   FennoscandianIceSheetDiagram,
   GlacialLandformsDiagram,
@@ -181,6 +183,7 @@ import {
   WindPowerTradeoffDiagram,
 } from "@/components/diagrams/energy";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
+import { StormwaterAdaptationModel } from "@/components/models/stormwater-adaptation-model";
 import { Sammendrag } from "@/components/sammendrag";
 import {
   ElvaFraKildeTilMunning,
@@ -359,6 +362,47 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
   PolarFrontNorwayDiagram: () => <PolarFrontNorwayDiagram />,
   WindSystemModel: () => <WindSystemModel />,
+  ImpactLevels: () => <ImpactLevelsDiagram />,
+  AdaptationExamFramework: () => <AdaptationExamFrameworkDiagram />,
+  StormwaterAdaptation: () => <StormwaterAdaptationModel />,
+  TilpasningOvervannFoto: () => (
+    <PhotoFigure
+      src="/images/fig-ekstremnedbor.jpg"
+      alt="Oversvømt bygate der overvann flommer over fortau og inn mot kjellervinduer"
+      heading="Når regnet ikke finner veien ned"
+      caption="En bygate under et kraftig regnskyll. Sluk og rør under bakken er bygd for regnet slik det var før. Når regnet blir kraftigere enn rørene tåler, renner vannet på overflaten og inn i kjellere."
+      marks={[
+        { x: 18, y: 35, n: "1", text: "Tett asfalt og tak", tone: "low" },
+        { x: 52, y: 68, n: "2", text: "Fulle sluk og rør", tone: "warm" },
+        { x: 82, y: 78, n: "3", text: "Vann i kjelleren", tone: "warm" },
+        { x: 35, y: 88, n: "4", text: "Flomvei i gata", tone: "teal" },
+      ]}
+      points={[
+        { n: "1", label: "Tette flater: Det meste av regnet renner av på overflaten." },
+        { n: "2", label: "Når rørene er fulle, samler vannet seg på overflaten." },
+        { n: "3", label: "Vannet renner mot det laveste punktet og inn i kjellere." },
+        { n: "4", label: "En planlagt flomvei leder vannet trygt bort på overflaten." },
+      ]}
+    />
+  ),
+  TilpasningElvesikringFoto: () => (
+    <PhotoFigure
+      src="/images/fig-erosjonssikring.jpg"
+      alt="Elveløp der elvebredden er sikret med grov sprengstein (plastring) og bevart vegetasjon"
+      heading="Elvesikring med grå og naturbaserte løsninger"
+      caption="Et elveavsnitt sikret mot erosjon og flom. Steinsikring beskytter de mest utsatte delene, mens vegetasjon og flomslette gir elva plass og bremser vannet."
+      marks={[
+        { x: 25, y: 40, n: "1", text: "Steinsikring (grå)", tone: "teal" },
+        { x: 70, y: 30, n: "2", text: "Kantvegetasjon og flomslette", tone: "cold" },
+        { x: 45, y: 75, n: "3", text: "Flomvoll", tone: "warm" },
+      ]}
+      points={[
+        { n: "1", label: "Grov stein hindrer at elva graver ut bredden i yttersvingene." },
+        { n: "2", label: "Røttene binder jorda, og flomsletta tar imot vann under flom." },
+        { n: "3", label: "Flomvollen skjermer bebyggelsen, men bare opp til den flommen den er bygd for." },
+      ]}
+    />
+  ),
   EccentricityDetail: () => <EccentricityDetailDiagram />,
   FennoscandianIceSheet: () => <FennoscandianIceSheetDiagram />,
   GlacialLandforms: () => <GlacialLandformsDiagram />,
@@ -947,9 +991,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     TilpasningForklaring: () => (
     <Callout title="Hva betyr «klimatilpasning»?">
       <p>
-        Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak
-        som hindrer eller reduserer skade, eller som utnytter mulighetene. Å redusere
-        klimaendringene er et annet svar (Miljødirektoratet, u.å.; Udir, u.å.-b).
+        Klimatilpasning er å innrette seg etter det klimaet vi har og det klimaet vi venter, slik at
+        skadene blir mindre, eller slik at vi kan utnytte nye muligheter (IPCC, 2022). Å redusere
+        utslippene er et annet svar på klimaendringene.
       </p>
     </Callout>
   ),
