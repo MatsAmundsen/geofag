@@ -180,6 +180,8 @@ const KR_GW: Pt[] = [
   [800, 256],
   [960, 244],
 ];
+/** Smal visning: det meste av havet er skåret bort, så landskapet og teksten blir større. */
+const KR_NARROW_VB = "150 24 810 496";
 const KR_SEA = 333;
 const KR_BED = 432;
 const KR_LAKE: Pt[] = [
@@ -216,9 +218,9 @@ const KR_CRACKS: Pt[][] = [
 ];
 const KR_FLUX = {
   evapSea: [
-    [118, 318],
-    [126, 250],
-    [146, 178],
+    [196, 318],
+    [202, 250],
+    [218, 178],
   ] as Pt[],
   evapLand: [
     [350, 296],
@@ -343,7 +345,7 @@ export function KretslopFigur({
   const labels: Lab[] = [];
   if (step === 1) {
     labels.push(
-      { text: "Fordampning fra havet", x: 30, y: 52, at: [140, 222], color: C.warm, badge: [168, 236] },
+      { text: "Fordampning fra havet", x: 30, y: 52, at: [210, 222], color: C.warm, badge: [236, 236] },
       { text: "Evapotranspirasjon fra planter og innsjø", x: 236, y: 52, at: [334, 200], color: C.warm, badge: [306, 214] },
       { text: "Sola driver kretsløpet", x: 944, y: 122, at: [900, 70], color: "#ffd77a", anchor: "end", badge: [930, 96] },
     );
@@ -374,7 +376,7 @@ export function KretslopFigur({
   } else {
     labels.push(
       { text: "Elva renner ut i havet", x: 30, y: 52, at: [262, 328], color: C.rain, badge: [270, 300] },
-      { text: "Noe grunnvann renner rett ut i havet", x: 330, y: 520, at: [214, 392], color: C.teal, badge: [180, 418] },
+      { text: "Noe grunnvann renner rett ut i havet", x: 330, y: 520, at: [214, 392], color: C.teal, badge: [200, 420] },
     );
   }
   const keys: Key[] = [
@@ -386,9 +388,7 @@ export function KretslopFigur({
   ];
   const status =
     KR_STATUS[i] +
-    (tett > 0 && (step === 4 || step === 6)
-      ? " Med tette flater (asfalt og tak) siger mindre vann ned, og mer renner av som overvann."
-      : "");
+    (tett > 0 ? " Tette flater som asfalt og tak slipper lite vann ned i bakken. Vannet renner raskere av, så flomtoppen kommer tidligere og blir høyere, og mindre vann går til grunnvannet. (NVE, u.å.-i)" : "");
   return (
     <div ref={wrapRef}>
       <IsbreFigur
@@ -397,7 +397,7 @@ export function KretslopFigur({
         heading={heading}
         caption={
           caption ??
-          "Kretsløpet som et landskap: hav, kyst, skog, innsjø og fjell med snø. Pilene viser hvor vannet går mellom lagrene snø, mark, grunnvann, innsjø, elv og hav. Skyveren viser hva tette flater gjør med fordelingen mellom infiltrasjon og avrenning. Forenklet: snittet er skjematisk og uten målestokk (NGU, u.å.-e)."
+          "Kretsløpet som et landskap: hav, kyst, skog, innsjø og fjell med snø. Pilene viser hvor vannet går mellom lagrene snø, mark, grunnvann, innsjø, elv og hav. Skyveren viser hva tette flater gjør med fordelingen mellom infiltrasjon og avrenning. Forenklet: snittet er skjematisk og uten målestokk (NGU, u.å.-g)."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -423,6 +423,7 @@ export function KretslopFigur({
         keys={keys}
         notes={["Skjematisk, uten målestokk", "Høyden er overdrevet"]}
         viewBox="0 0 960 540"
+        narrowViewBox={KR_NARROW_VB}
       >
         {({ d, m }) => (
           <g className={motion.motionClass} data-figur="kretslop" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
@@ -678,7 +679,7 @@ export function AkviferFigur({
         heading={heading}
         caption={
           caption ??
-          "Grunnvann fyller porer og sprekker. Det er ingen underjordiske elver. Over grunnvannsspeilet er hulrommene bare delvis fylt (markvannssonen), under er alt fylt (mettet sone). Linsen viser hvorfor sand og grus slipper vannet lett, mens leire og usortert morene holder igjen. Forenklet: snittet er skjematisk og uten målestokk (NGU, u.å.-b; NGU, u.å.-c)."
+          "Grunnvann fyller porer og sprekker. Det er ingen underjordiske elver. Over grunnvannsspeilet er hulrommene bare delvis fylt (markvannssonen), under er alt fylt (mettet sone). Linsen viser hvorfor sand og grus slipper vannet lett, mens leire og usortert morene holder igjen. Forenklet: snittet er skjematisk og uten målestokk (NGU, u.å.-c; NGU, u.å.-d)."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -691,6 +692,7 @@ export function AkviferFigur({
         labels={labels}
         keys={keys}
         notes={["Linsen viser kornene forstørret", "Skjematisk, uten målestokk"]}
+        remark="Breelvdelta og esker er ofte gode akviferer. Gardermoen-akviferen er et typeeksempel."
         viewBox="0 0 960 560"
       >
         {({ d, m }) => (
@@ -889,6 +891,10 @@ export function HydrogramFigur({
     { text: "Grunnvannstilsig", x: rx(0.98), y: 404, at: [rx(0.9), yq(rain.base) + 10], color: C.teal, anchor: "end", badge: [rx(0.9), yq(rain.base) - 18] },
     { text: "Grunnvannstilsig", x: sx(0.98), y: 404, at: [sx(0.9), yq(HY_SNOW.base) + 10], color: C.teal, anchor: "end", badge: [sx(0.92), yq(HY_SNOW.base) - 18] },
   ];
+  labels.push(
+    { text: "Regnflom: timer til døgn", x: HY_X[0], y: 444, at: [rx(0.5), HY.base + 2], color: C.muted, size: 15, badge: [rx(0.5), HY.base + 22] },
+    { text: "Snøsmelteflom: dager til uker", x: HY_X[1], y: 444, at: [sx(0.5), HY.base + 2], color: C.muted, size: 15, badge: [sx(0.5), HY.base + 22] },
+  );
   if (step >= 3) {
     labels.push(
       { text: "Spiss flomtopp", x: rx(0.48), y: Math.max(n1(yq(rain.base + rain.amp) + 6), 190), at: [rx(rain.tp) + 4, yq(rain.base + rain.amp) + 4], color: C.warm, badge: [rx(rain.tp) + 26, yq(rain.base + rain.amp) + 6] },
@@ -903,7 +909,7 @@ export function HydrogramFigur({
   ];
   const status =
     HY_STATUS[i] +
-    (tett > 0 ? " Med tette flater i feltet renner regnet raskere til elva: toppen kommer tidligere og blir høyere." : "");
+    (tett > 0 ? " Tette flater som asfalt og tak slipper lite vann ned i bakken. Vannet renner raskere av, så flomtoppen kommer tidligere og blir høyere, og mindre vann går til grunnvannet. (NVE, u.å.-i)" : "");
   return (
     <div ref={wrapRef}>
       <IsbreFigur
@@ -936,8 +942,8 @@ export function HydrogramFigur({
         status={status}
         labels={labels}
         keys={keys}
-        notes={["Samme akse for vannføring i begge panelene", "Tiden går mot høyre", "Skjematisk, uten tall"]}
-        viewBox="0 0 960 430"
+        notes={["Samme akse for vannføring i begge panelene", "Tiden går mot høyre", "Skjematisk, uten målestokk."]}
+        viewBox="0 0 960 456"
       >
         {({ scale }) => (
           <g className={motion.motionClass} data-figur="hydrogram" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
@@ -988,6 +994,7 @@ export function HansNedborFigur({ heading = "Hans 2023: tre døgn med rekordnedb
         { text: "Hans 2023", color: C.warm, kind: "fill" },
       ]}
       notes={["Nedbør i millimeter over tre døgn", "Kilde: MET (2023)"]}
+      remark="Uværet varte 7.–9. august. METs tredagersmålinger er registrert 8.–10. august."
       viewBox="0 0 640 400"
     >
       {({ scale }) => {

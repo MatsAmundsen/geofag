@@ -1667,6 +1667,12 @@ export const KILDER = {
       href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/maalinger-og-maalenett/urbanhydrologiske-maalinger/",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-i). ",
+      italic: "DDD-modellen",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/analysemetoder-og-modeller/ddd-modellen/",
+    },
+    {
       prefix: "Norsk Naturskadepool. (2025, 5. november). ",
       italic: "Oppdaterte naturskadetall etter «Amy» og «Hans»",
       suffix: ".",

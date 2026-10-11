@@ -260,7 +260,8 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
   {
     widgets: ["HansNedbor"],
-    beforeLine: "MET skriver at klimaendringer kan forsterke",
+    // Etter avsnittet som slutter med «MET skriver at klimaendringer kan forsterke …» (Hans).
+    afterParagraph: /MET skriver at klimaendringer kan forsterke/i,
     require: "Hva er en akvifer?",
   },
   {
