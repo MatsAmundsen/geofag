@@ -43,7 +43,7 @@ Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i 
 | Omtrentlig belte | tropene og subtropene, høytrykk nær 30° | vestavind mellom 35° og 60° | fra om lag 50–60° til polen |
 | Lufta | stiger ved ekvator og synker nær 30° | synker nær 30° og stiger nær 50–60° | stiger nær 50–60° og synker over polen |
 | Ved bakken | passatvind inn mot ekvator | vestavind mot polen | polare østavinder ut fra polen |
-| Hva som driver den | oppvarming ved ekvator | friksjon, ikke varmekontrasten mellom ekvator og pol | kald luft som synker over polen |
+| Hva som driver den | oppvarming ved ekvator | vandrende lavtrykk og høytrykk, ikke oppvarming (termisk indirekte) | kald luft som synker over polen |
 
 Høytrykksbeltene ligger nær 30° og over polene. Lavtrykksbeltene ligger ved ekvator og nær 50–60° (NOAA, u.å.-a).
 
@@ -107,7 +107,7 @@ Fra høytrykket nær 30° inn mot konvergenssonen. På den nordlige halvkule er 
 
 ### Vestavindsbeltet
 
-Fra om lag 30° mot lavtrykket nær 50–60°. På den nordlige halvkule dreies lufta mot høyre, så vinden kommer fra vest og går mot øst. Norge ligger i dette beltet. Vestavinden mellom 35° og 60° skyldes friksjon, ikke varmekontrasten mellom ekvator og polene (NOAA, u.å.-a).
+Fra om lag 30° mot lavtrykket nær 50–60°. På den nordlige halvkule dreies lufta mot høyre, så vinden kommer fra vest og går mot øst. Norge ligger i dette beltet. Ferrel-cellen er termisk indirekte. Den drives ikke av oppvarming, men holdes i gang av de vandrende lavtrykkene og høytrykkene ved midlere breddegrader. Vestavinden ved bakken kommer av at corioliseffekten dreier lufta som strømmer mot polen (NOAA, u.å.-a; American Meteorological Society [AMS], u.å.).
 
 ### De polare østavindene
 

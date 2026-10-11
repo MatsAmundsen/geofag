@@ -1,16 +1,29 @@
 > **Kompetansemål i Geofag 1 (LK20)**
 >
-> Målet er at du skal kunne gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene (Udir, u.å.-b).
+> Elevene skal kunne
+>
+> - gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene
+> - utforske en naturfare knyttet til geosfæren eller hydrosfæren i et bestemt geografisk område og vurdere risiko ved hjelp av modellering
+>
+> (Udir, u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
-> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser. Figuren av et kvikkleireskred som utvikler seg bakover, er en slik modell (Udir, u.å.-a).
+> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser. Figuren av et kvikkleireskred som utvikler seg bakover, og utløpsmodellene bak aktsomhetskartene er slike modeller (Udir, u.å.-a).
 >
 > • *Mennesket i jordsystemene:* Vi kan forebygge og beskytte oss mot naturfarer gjennom forskning og forvaltning (Udir, u.å.-a).
+>
+> **I dette kapitlet lærer du om**
+>
+> skredtypene steinsprang, steinskred, fjellskred, jordskred, flomskred og kvikkleireskred, hvordan kvikkleire dannes og hvorfor den kan bli flytende, fjellskred og flodbølger, overvåking og varsling, og hvordan kart og modeller brukes til å forebygge skred.
+
+> **Hva tror du?**
+>
+> Kan et kvikkleireskred gå på et helt flatt jorde? Tenk over svaret mens du leser. Vi kommer tilbake til det i delen om kvikkleire.
 
 ## Hva er et skred?
 
-Skred, også kalt ras, er masser av fjell, stein, jord, leire og/eller snø som beveger seg ned skråninger, ofte sammen med mye vann. Over 1000 mennesker har mistet livet i skredulykker i Norge siden 1900 (NGU, u.å.-d).
+Skred, også kalt ras, er masser av fjell, stein, jord, leire og/eller snø som beveger seg ned skråninger, ofte sammen med mye vann. Om lag 1100 mennesker har mistet livet i skredulykker i Norge siden 1900. Over 600 av dem omkom i snøskred, som vi ikke tar i dette kapitlet (Meld. St. 15 (2011–2012), 2012).
 
 Vi deler skred i tre kategorier etter massen: fjell, løsmasser og snø (NGU, u.å.-d; NVE, 2020c). Snøskred tar vi ikke i dette kapitlet.
 
@@ -44,7 +57,7 @@ Kvikkleire er marin leire. Blir den overbelastet, blir den flytende, og det kan 
 
 Marin leire ble avsatt på sjøbunnen under og etter siste istid. Salt sjøvann gjorde at leirpartiklene la seg i en åpen korthusstruktur. Hulrommene inneholder mye vann, mer enn når leire avsettes i ferskvann. Strukturen er stabil så lenge det er saltvann mellom partiklene (NGU, u.å.-a). NVE beskriver det samme som fnokking: saltet binder de flate partiklene, kantene trekkes mot hverandre, og korthuset stenger inne vann (NVE, 2021b).
 
-I vanlig sjøvann er saltinnholdet 35 gram per liter. Synker saltinnholdet i porevannet under 2 gram per liter, svekkes bindingene, og kvikkleire kan dannes. Leira er tett. Det tar mange hundre til flere tusen år å bytte ut saltvannet med ferskvann (NGU, u.å.-a). NVE skriver at ferskt grunnvann kan strømme gjennom leira, og at utvaskingen skjer over flere tusen år (NVE, 2021b).
+I åpent hav er saltinnholdet ca. 35 gram per liter. Synker saltinnholdet i porevannet under 2 gram per liter, svekkes bindingene, og kvikkleire kan dannes. Leira er tett. Det tar mange hundre til flere tusen år å bytte ut saltvannet med ferskvann (NGU, u.å.-a). NVE skriver at ferskt grunnvann kan strømme gjennom leira, og at utvaskingen skjer over flere tusen år (NVE, 2021b).
 
 Ikke all marin leire er kvikk. Kvikkleire dannes i lommer eller lag. Lag av silt eller sand, eller leire som ligger nær berg, kan gjøre utvaskingen raskere (NGU, u.å.-a).
 
@@ -66,7 +79,7 @@ To forhold overbelaster leira oftest. Det ene er erosjon, altså at bekker og el
 
 Store regn utløser ofte jordskred og flomskred i bratt terreng med grove avsetninger, som morene. Leire er tett, og grunnvannet i leira svarer sent på nedbør. Langvarig og kraftig regn kan likevel gjøre at bekker og elver graver mer. Små utglidninger kan da blottlegge kvikkleire bak, og et større skred kan følge (NGU, u.å.-b).
 
-Skredet kan utvikle seg på flere måter. De vanligste er dype rotasjonsskred, bakoverforplantende skred og flakskred. Skred i leire som ikke er kvikk, har som regel begrenset omfang (NGU, u.å.-b). Et bakoverforplantende skred, også kalt retrogressivt, sprer seg bakover og sideveis til lommen er tømt, eller til skredmassene fyller gropa og det blir likevekt (NVE, 2021b).
+Skredet kan utvikle seg på flere måter. De vanligste er dype rotasjonsskred, bakoverforplantende skred og flakskred. Skred i leire som ikke er kvikk, har som regel begrenset omfang (NGU, u.å.-b). Et bakoverforplantende skred, også kalt retrogressivt, sprer seg bakover og sideveis til lommen er tømt, eller til skredmassene fyller gropa og det blir likevekt (NVE, 2021b). Derfor kan et kvikkleireskred også ta med seg et nesten flatt jorde bak skråningen.
 
 ```widget
 KvikkleireSteg
@@ -78,29 +91,37 @@ De flytende massene kan gjøre skade både der bakken glir ut, og der massene re
 
 NVE nevner blant annet Verdal i 1893, Rissa i 1978, Kattmarka i 2009, Lyngen i 2010, Byneset i 2011 og Gjerdrum i 2020 (NVE, 2021b).
 
-Tidlig om morgenen 30. desember 2020 gikk et kvikkleireskred på Ask i Gjerdrum. Over 1600 mennesker ble evakuert, og elleve omkom, blant dem et ufødt barn (Gjerdrumutvalget, 2021). NVE omtaler skredet som det mest alvorlige kvikkleireskredet i Norge i nyere tid. Skredet målte 240 × 700 meter. Massene rant så langt som 2 km, og 1,35 millioner kubikkmeter raste ut. 200 mennesker mistet hjemmet for godt (NVE, 2023).
+Tidlig om morgenen 30. desember 2020 gikk et kvikkleireskred på Ask i Gjerdrum. Over 1600 mennesker ble evakuert, og elleve omkom, blant dem et ufødt barn (Gjerdrumutvalget, 2021). NVE omtaler skredet som det mest alvorlige kvikkleireskredet i Norge i nyere tid. Skredet målte 240 × 700 meter. Massene rant så langt som 2 km, og 1,35 millioner kubikkmeter raste ut. 200 mennesker mistet hjemmet for godt (NVE, 2023a).
 
-NVE gjengir utvalgets hovedfunn slik: erosjon i Tistilbekken gjennom flere år hadde forverret en allerede dårlig stabilitet i skråningen vest for Holmen. Skråningen tålte ikke den våte høsten og førjulsvinteren i 2020 (NVE, 2023).
+NVE gjengir utvalgets hovedfunn slik: erosjon i Tistilbekken gjennom flere år hadde forverret en allerede dårlig stabilitet i skråningen vest for Holmen. Skråningen tålte ikke den våte høsten og førjulsvinteren i 2020 (NVE, 2023a).
+
+```widget
+SjekkSkred1
+```
 
 ## Hva er et fjellskred?
 
-Fjellskred er hundre tusen til flere millioner kubikkmeter stein i bevegelse (NVE, 2020c). NVE har det nasjonale ansvaret for risikoen knyttet til fjellskred. NGU kartlegger og risikoklassifiserer ustabile fjellpartier på oppdrag fra NVE. Partier med moderat risiko overvåkes periodisk. Partier med høy risiko overvåkes kontinuerlig. I dag er 10 fjellpartier under kontinuerlig overvåking, og 23 overvåkes periodisk (NVE, 2021a).
+Fjellskred er hundre tusen til flere millioner kubikkmeter stein i bevegelse (NVE, 2020c). NVE har det nasjonale ansvaret for risikoen knyttet til fjellskred. NGU kartlegger og risikoklassifiserer ustabile fjellpartier på oppdrag fra NVE. Partier med moderat risiko overvåkes periodisk. Partier med høy risiko overvåkes kontinuerlig. Per 2026 er 10 fjellpartier under kontinuerlig overvåking, og 23 overvåkes periodisk (NVE, u.å.-b).
 
 Kontinuerlig overvåking bruker minst to uavhengige målesystemer. NVE varsler endringer i farenivå til kommuner, politi og statsforvaltere, som følger opp med beredskapstiltak (NVE, 2021a).
 
 Åknes er et ustabilt fjellparti på vestsiden av Sunnylvsfjorden i Stranda kommune. Faren har vært kjent siden 1960-tallet. Et skred kan gi store flodbølger i Storfjordområdet, og fjellpartiet overvåkes kontinuerlig for å kunne varsle i tide (NVE, 2026b).
 
-Hvor høyt en slik flodbølge kan nå, viste Tafjordulykka 7. april 1934. Om lag 3 millioner kubikkmeter stein raste ut i fjorden, og bølgene nådde på det meste 61 høydemeter opp på land. 40 mennesker omkom (NVE, u.å.).
+Hvor høyt en slik flodbølge kan nå, viste Tafjordulykka 7. april 1934. Om lag 3 millioner kubikkmeter stein raste ut i fjorden, og bølgene nådde på det meste 61 høydemeter opp på land. 40 mennesker omkom (NVE, u.å.-a). I Loen raste fjellskred fra Ramnefjellet ut i Lovatnet i 1905 og 1936. Flodbølgene gikk 40 og 74 høydemeter opp på land, og 61 og 73 mennesker omkom (NVE, u.å.-a). Flodbølger fra fjellskred står bak de største enkeltulykkene med skred i Norge. Mer om flodbølger og tsunamier står i kapitlet [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare).
 
 ```widget
 FjellskredBolge
 ```
 
-Scenario C er et større og dypere område i øvre flanke, med om lag 7,4 millioner kubikkmeter og årlig sannsynlighet 1/100. Scenario D er et mindre løsneområde i samme flanke, med om lag 2,4 millioner kubikkmeter og årlig sannsynlighet 1/200 (NVE, 2026b).
+Scenario C er et større og dypere område i øvre flanke, med om lag 7,4 millioner kubikkmeter og årlig sannsynlighet 1/100. Scenario D er et mindre løsneområde i samme flanke, med om lag 2,4 millioner kubikkmeter og årlig sannsynlighet 1/200 (NVE, 2026b). Det største scenarioet NVE legger til grunn for beredskapen, scenario B, er ca. 9,7 millioner kubikkmeter, og samlet årlig sannsynlighet for skred fra Åknes er vurdert til ca. 1/60 (NVE, 2026c).
 
 Mannen ligger på vestsiden av Romsdalen i Rauma kommune. Øvre del beveger seg om lag 2 cm/år, og volumet er opptil 20 millioner kubikkmeter. Et skred kan treffe noe bebyggelse, europaveg E136 og Raumabanen, og det kan demme opp Rauma. Bryter den demningen, kan flommen nedstrøms berøre opptil 1650 mennesker. Årlig sannsynlighet for et stort skred er vurdert til mellom 1/100 og 1/1000, og risikoen er vurdert som høy. Derfor overvåkes Mannen kontinuerlig (NVE, 2026a).
 
 I 2014 ble et svært aktivt, lokalt parti påvist. Det fikk navnet Veslemannen og beveget seg mer enn 1 meter i året i 2014. Partiet raste ut 5. september 2019 (NVE, 2026a).
+
+```widget
+SjekkSkred2
+```
 
 ## Hvordan kan vi forebygge og tilpasse oss?
 
@@ -113,6 +134,8 @@ En slik utredning viser den reelle faren som nominell årlig sannsynlighet, i et
 ```widget
 SkredSoner
 ```
+
+Hvor langt et skred kan gå, beregnes med modeller. En enkel modell er α-β-modellen fra NGI, som bygger på statistikk fra rundt 200 snøskred. Vinkelen β måler hvor bratt skredbanen er fra løsneområdet ned til punktet der terrenget blir slakere enn 10°. Ut fra β gir modellen vinkelen α fra toppen av skredet ned til det lengste utløpet, og dermed hvor langt ut i dalen skredet kan nå. Det første landsdekkende aktsomhetskartet for snøskred fra 2010 brukte denne modellen. Det nye kartet fra 2023 bruker i stedet en dynamisk modell som følger terrenget og tar hensyn til skog og lokalt klima (NVE, 2023b). Figuren viser hvordan utløpsområdet som modellen gir, blir til soner på kartet.
 
 Jordskredvarselet på Varsom gjelder jordskred, sørpeskred og flomskred. Steinsprang, steinskred og kvikkleireskred inngår ikke. Ved fare for jord- og flomskred er det likevel økt fare for steinsprang som vannet utløser (Varsom, u.å.-b).
 
@@ -152,6 +175,14 @@ Varselet er et hjelpemiddel, ikke en fasit. Du skal gjøre egne vurderinger (Var
 **Aktsomhetskart:** Grovt kart over mulige løsne- og utløpsområder, i hovedsak landsdekkende.
 
 **Faresonekart:** Kart som viser nominell årlig sannsynlighet etter en nærmere utredning.
+
+**Utløpsmodell:** Modell som beregner hvor langt et skred kan gå, for eksempel α-β-modellen.
+
+## Sammendrag
+
+```widget
+SammendragSkred
+```
 
 ## Test deg selv
 

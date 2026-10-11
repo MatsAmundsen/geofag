@@ -11,7 +11,7 @@ export function HurricaneCrossSectionDiagram() {
     <Diagram
       title="Tverrsnitt av tropisk orkan: Oppbygning, trykkprofil og vindmaksimum"
       heading="Den latente varmemotoren: Øye, øyvegg og vindprofil"
-      caption="Tverrsnitt gjennom en moden tropisk orkan. Varmt hav (>26,5 °C) fordamper gigantiske vannmengder. Den fuktige luften suges inn mot sentrum, tvinges opp i den loddrette øyveggen og frigjør latent varme (2,5 MJ/kg) som driver oppdriften til 15 km høyde (tropopausen). I midten synker tørr luft i det skyfrie, vindstille øyet. Den nedre grafen viser hvordan overflatetrykket faller til et dypt minimum (<920 hPa) i sentrum, mens vindhastigheten eksploderer til sitt absolutte maksimum i øyveggen like utenfor."
+      caption="Tverrsnitt gjennom en moden tropisk orkan. Varmt hav (>26,5 °C) fordamper gigantiske vannmengder. Den fuktige lufta suges inn mot sentrum, tvinges opp i den loddrette øyveggen og frigjør latent varme (2,5 MJ/kg) som driver oppdriften til 15 km høyde (tropopausen). I midten synker tørr luft i det skyfrie, vindstille øyet. Den nedre grafen viser hvordan overflatetrykket faller til et dypt minimum (<920 hPa) i sentrum, mens vindhastigheten eksploderer til sitt absolutte maksimum i øyveggen like utenfor."
       viewBox="0 0 940 520"
       wide
     >
@@ -502,7 +502,7 @@ export function TornadoGenesisDiagram() {
     <Diagram
       title="Tornadogenese: Fra horisontal vindskjæring til tornado"
       heading="Tornadogensens tre steg: Vindskjæring, vipping og strekking"
-      caption="Hvordan dannes en tornado? 1) Vindskjæring: Sørøstlig vind nær bakken møter en sterk vestlig jetstrøm i høyden. Friksjonen og hastighetsforskjellen setter luften i horisontal rotasjon som en roterende kjevle. 2) Vipping (tilting): Den intense oppdriften i et tordenvær suger det roterende røret opp i midten og bøyer det loddrett. Den oppadstigende, roterende virvelen danner en mesosyklon. 3) Strekking (stretching) og spinnbevaring: Kald luft fra baksiden (RFD) presser virvelen mot bakken. Ved bevaring av spinn (angulært moment) eksploderer rotasjonshastigheten når virvelens radius minker, akkurat som en kunstløper som trekker inn armene."
+      caption="Hvordan dannes en tornado? 1) Vindskjæring: Sørøstlig vind nær bakken møter en sterk vestlig jetstrøm i høyden. Friksjonen og hastighetsforskjellen setter lufta i horisontal rotasjon som en roterende kjevle. 2) Vipping (tilting): Den intense oppdriften i et tordenvær suger det roterende røret opp i midten og bøyer det loddrett. Den oppadstigende, roterende virvelen danner en mesosyklon. 3) Strekking (stretching) og spinnbevaring: Kald luft fra baksiden (RFD) presser virvelen mot bakken. Ved bevaring av spinn (angulært moment) eksploderer rotasjonshastigheten når virvelens radius minker, akkurat som en kunstløper som trekker inn armene."
       viewBox="0 0 940 400"
       wide
     >
@@ -787,7 +787,7 @@ export function StormSurgeDiagram() {
           </L>
 
           {/* DE 4 KOMPONENTENE - ANNOTASJONER */}
-          {/* 1. Lavtrykk & Invers barometereffekt (øverst til venstre) */}
+          {/* 1. Lavtrykk og Invers barometereffekt (øverst til venstre) */}
           <rect
             x="50"
             y="50"
@@ -870,7 +870,7 @@ export function AtmosphericRiverDiagram() {
     <Diagram
       title="Atmosfærisk elv mot Norge: Fukttransport og orografisk ekstremnedbør"
       heading="Atmosfæriske elver: Subtropisk fukttog og Vestlandsflom"
-      caption="En atmosfærisk elv (Atmospheric River) er et smalt, flere tusen kilometer langt bånd i nedre troposfære som transporterer enorme mengder vanndamp fra subtropene mot våre breddegrader — ofte med en fukttransport som overgår vannføringen i Amazonas-elven! Når dette fukttoget treffer den vestnorske fjellveggen, tvinges luften til brå heving (orografisk løft). Fuktigheten avkjøles og kondenserer til vedvarende ekstremnedbør som utløser flommer og jordskred (f.eks. ekstremværet Hans i 2023). På østsiden synker luften tørradiabatisk og skaper en markant regnskygge."
+      caption="En atmosfærisk elv (Atmospheric River) er et smalt, flere tusen kilometer langt bånd i nedre troposfære som transporterer enorme mengder vanndamp fra subtropene mot våre breddegrader En gjennomsnittlig atmosfærisk elv frakter omtrent like mye vann som Mississippi fører ut i havet, og de sterkeste opptil 15 ganger så mye. Når dette fukttoget treffer den vestnorske fjellveggen, tvinges lufta til brå heving (orografisk løft). Fuktigheten avkjøles og kondenserer til vedvarende ekstremnedbør som utløser flommer og jordskred (f.eks. ekstremværet Hans i 2023). På østsiden synker lufta tørradiabatisk og skaper en markant regnskygge."
       viewBox="0 0 940 480"
       wide
     >
@@ -1008,7 +1008,7 @@ export function AtmosphericRiverDiagram() {
             Leside (Regnskygge)
           </L>
           <L x="810" y="210" fill="#ffffff" size={11} weight={600} anchor="middle">
-            Luften synker og varmes tørradiabatisk
+            Lufta synker og varmes tørradiabatisk
           </L>
           <L x="810" y="226" fill={C.muted} size={11} anchor="middle">
             Fønvind: Varm og knusktørr luft
@@ -1166,7 +1166,7 @@ export function MeteorologicalBombDiagram() {
             938 hPa
           </L>
 
-          {/* Sandes & Gyakum kriterium boks */}
+          {/* Sandes og Gyakum kriterium boks */}
           <rect
             x="380"
             y="145"
@@ -1292,7 +1292,7 @@ export function PolarLowFormationDiagram() {
             Iskald luft raser ut over åpent vann
           </L>
 
-          {/* Massive varmeflukspiler fra havet opp i luften */}
+          {/* Massive varmeflukspiler fra havet opp i lufta */}
           <Arrow d="M 420 350 L 420 270" marker={m.warm} color={C.warm} width={3} />
           <Arrow d="M 480 350 L 480 250" marker={m.warm} color={C.warm} width={3} />
           <Arrow d="M 540 350 L 540 230" marker={m.warm} color={C.warm} width={3} />
@@ -1315,7 +1315,7 @@ export function PolarLowFormationDiagram() {
             Polart lavtrykk (Mini-orkan)
           </L>
           <L x="760" y="93" fill={C.muted} size={11} anchor="middle">
-            Diameter: 150–300 km · Levetid: 12–36 timer
+            Diameter: oftest 200–500 km · Levetid: i snitt ca. 18 timer
           </L>
 
           {/* Roterende kommaspiral */}

@@ -15,7 +15,7 @@ export function CoriolisModel() {
   const [latitude, setLatitude] = useState<Latitude>(60);
   const [direction, setDirection] = useState<Direction>("north");
 
-  // Fane 2: Geostrofi & Friksjon
+  // Fane 2: Geostrofi og Friksjon
   const [frictionMode, setFrictionMode] = useState<"free" | "ocean" | "land">("free");
 
   // Fane 3: Rossby-kalkulator preset
@@ -37,7 +37,7 @@ export function CoriolisModel() {
       ro: 16600,
       verdict: "Coriolis er 16 000 ganger for svak til å ha betydning!",
       explanation:
-        "Hvilken vei vannet renner ut av en vask styres 100 % av kummens geometri, helning, kranens innfallsvinkel og restvirvler fra hendene dine. Å påstå at vannet spinner mot klokken i Norge og med klokken i Australia på grunn av jorden er en ren myte.",
+        "Hvilken vei vannet renner ut av en vask styres 100 % av kummens geometri, helning, kranens innfallsvinkel og restvirvler fra hendene dine. Å påstå at vannet spinner mot klokken i Norge og med klokken i Australia på grunn av jorda er en ren myte.",
       tone: "low" as const,
     },
     football: {
@@ -48,7 +48,7 @@ export function CoriolisModel() {
       ro: 4000,
       verdict: "Coriolis gir under 1 cm avvik på 50 meter!",
       explanation:
-        "Når en fotball skrus mot krysset, er det Magnus-effekten (lufttrykkforskjell pga. ballens rotasjon mot luften) og vind som bestemmer banen. Corioliseffekten er tusenvis av ganger svakere enn ballens aerodynamikk.",
+        "Når en fotball skrus mot krysset, er det Magnus-effekten (lufttrykkforskjell pga. ballens rotasjon mot lufta) og vind som bestemmer banen. Corioliseffekten er tusenvis av ganger svakere enn ballens aerodynamikk.",
       tone: "low" as const,
     },
     tornado: {
@@ -70,7 +70,7 @@ export function CoriolisModel() {
       ro: 0.65,
       verdict: "Coriolis begynner å dominere over treghet!",
       explanation:
-        "I et polart lavtrykk over Barentshavet (300–500 km diameter) er Rossby-tallet under 1. Her tvinger Corioliseffekten luften inn i et markert syklonalt spiralmønster med et tydelig øye som ligner en mini-orkan.",
+        "I et polart lavtrykk over Barentshavet (300–500 km diameter) er Rossby-tallet under 1. Her tvinger Corioliseffekten lufta inn i et markert syklonalt spiralmønster med et tydelig øye som ligner en mini-orkan.",
       tone: "teal" as const,
     },
     hurricane: {
@@ -81,7 +81,7 @@ export function CoriolisModel() {
       ro: 0.75,
       verdict: "Coriolis er strengt nødvendig for dannelsen!",
       explanation:
-        "Tropiske orkaner må ha en minste Coriolisparameter for å få rotasjon. Derfor dannes det aldri orkaner mellom 0° og 5° breddegrad, til tross for at havvannet der er på sitt aller varmeste (29–30 °C).",
+        "Tropiske orkaner må ha en minste Coriolisparameter for å få rotasjon. Derfor dannes orkaner svært sjelden nærmere ekvator enn 5°, selv om havvannet der er svært varmt (29–30 °C). Et kjent unntak er tyfonen Vamei, som ble dannet ved ca. 1,5° N i desember 2001.",
       tone: "teal" as const,
     },
     gyre: {
@@ -114,10 +114,10 @@ export function CoriolisModel() {
         {/* FANER */}
         <div className="mb-5 flex flex-wrap gap-2">
           <ModelTab active={activeTab === "globe"} onClick={() => setActiveTab("globe")}>
-            1. Klode-utskytning (Breddegrad & Retning)
+            1. Klode-utskytning (Breddegrad og Retning)
           </ModelTab>
           <ModelTab active={activeTab === "geostrophy"} onClick={() => setActiveTab("geostrophy")}>
-            2. Geostrofisk balanse & Friksjon
+            2. Geostrofisk balanse og Friksjon
           </ModelTab>
           <ModelTab active={activeTab === "rossby"} onClick={() => setActiveTab("rossby")}>
             3. Rossby-kalkulatoren (Vask vs. Orkan)
@@ -311,7 +311,7 @@ export function CoriolisModel() {
           </div>
         )}
 
-        {/* ─── FANE 2: GEOSTROFI & FRIKSJON ─── */}
+        {/* ─── FANE 2: GEOSTROFI og FRIKSJON ─── */}
         {activeTab === "geostrophy" && (
           <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
             <ModelPanel className="lg:col-span-8">
@@ -551,7 +551,7 @@ export function CoriolisModel() {
                     • <strong>Ro &gt; 10:</strong> Systemet er for lite eller raskt; Coriolis merkes overhodet ikke.
                   </li>
                   <li>
-                    • <strong>Ro &lt; 0,1:</strong> Systemet er så stort at Corioliseffekten tvinger frem full geostrofisk balanse.
+                    • <strong>Ro &lt; 0,1:</strong> Systemet er så stort at Corioliseffekten tvinger fram full geostrofisk balanse.
                   </li>
                 </ul>
               </ModelNote>

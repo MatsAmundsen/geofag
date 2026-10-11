@@ -21,7 +21,7 @@ function VannOgFlomPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Hydrologi er vannet på landjorden. Det hydrologiske kretsløpet flytter ferskvann mellom luft, mark, grunnvann og elv. En akvifer er berg eller løsmasse som kan lagre og avgi grunnvann. Du skal gjøre rede for kretsløpet, og se hvordan været og menneskelig aktivitet endrer flom."
+      lead="Vannet renner i elver og bekker, ligger lagret i snø, innsjøer og grunnvann, og gir oss nesten all strømmen vi bruker. Det samme vannet blir en fare når det kommer for mye av det på en gang, som under ekstremværet Hans i 2023. I dette kapitlet følger vi ferskvannet gjennom det hydrologiske kretsløpet, ser hvordan flom oppstår og hvordan vi mennesker endrer kretsløpet, og vurderer hvordan ferskvannet kan brukes bærekraftig, både i Norge og i verden."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

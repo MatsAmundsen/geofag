@@ -1,3 +1,4 @@
+import { scaledCycleMs } from "./motion-config";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 function subscribeReducedMotion(onChange: () => void) {
@@ -71,12 +72,13 @@ export function useChoiceAnnouncement(playing: boolean) {
 
 export function useStepCycle(count: number, playing: boolean, ms = 2800) {
   const [step, setStep] = useState(1);
+  const intervalMs = scaledCycleMs(ms);
   useEffect(() => {
     if (!playing) return;
     const id = window.setInterval(() => {
       setStep((current) => (current >= count ? 1 : current + 1));
-    }, ms);
+    }, intervalMs);
     return () => window.clearInterval(id);
-  }, [count, ms, playing]);
+  }, [count, intervalMs, playing]);
   return [step, setStep] as const;
 }

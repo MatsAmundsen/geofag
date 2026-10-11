@@ -243,7 +243,7 @@ describe("scan chips for the other geosfære chapters", () => {
     const doc = prepareChapterScan(readChapter("vann-og-flom"));
     assert.deepEqual(
       doc.sections.map((section) => section.label),
-      ["Kretsløp", "Akvifer", "Hydrogram", "Flom", "Hans", "Begreper", "Quiz"],
+      ["Kretsløp", "Akvifer", "Hydrogram", "Flom", "Hans", "Mennesket", "Bærekraft", "Begreper", "Sammendrag", "Quiz"],
     );
   });
 
@@ -271,7 +271,7 @@ describe("scan chips for the other geosfære chapters", () => {
     const doc = prepareChapterScan(readChapter("skred"));
     assert.deepEqual(
       doc.sections.map((section) => section.label),
-      ["Skred", "Kvikkleire", "Fjellskred", "Forebygging", "Begreper", "Quiz"],
+      ["Skred", "Kvikkleire", "Fjellskred", "Forebygging", "Begreper", "Sammendrag", "Quiz"],
     );
   });
 });

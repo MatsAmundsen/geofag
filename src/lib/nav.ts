@@ -262,7 +262,7 @@ export const GF1_THEMES = [
     blurb:
       "Geosfære, hydrosfære, atmosfære, kryosfære og biosfære henger sammen. Her: vekselvirkningene som former land og ferskvann.",
     status: "klar" as const,
-    maal: "Gjøre rede for vekselvirkninger mellom de ulike jordsystemene, og hvordan disse kan påvirke geosfæren og hydrosfæren.",
+    maal: "Gjøre rede for vekselvirkninger mellom de ulike jordsystemene og hvordan disse kan påvirke geosfæren og hydrosfæren.",
   },
   {
     slug: "platetektonikk",
@@ -380,9 +380,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-flom-skred.jpg",
     alt: "Flomelv ved et fjellskred i norsk landskap",
     blurb:
-      "Hydrologisk kretsløp, akvifer og grunnvann. Hydrogram, regnflom, snøsmelteflom og Hans 2023.",
+      "Kretsløp, akvifer og grunnvann, hydrogram og flom, Hans 2023, mennesket og vannet, og bærekraftig bruk av ferskvann.",
     status: "klar" as const,
-    maal: "Gjøre rede for det hydrologiske kretsløpet med vekt på ferskvann, og hvordan menneskelig aktivitet påvirker det.",
+    maal: "Gjøre rede for det hydrologiske kretsløpet med vekt på ferskvann og utforske og presentere hvordan det påvirkes av menneskelig aktivitet.",
   },
   {
     slug: "skred",
@@ -394,7 +394,7 @@ export const GF1_THEMES = [
     blurb:
       "Fjellskred, jordskred og kvikkleire. Åknes, Mannen og Gjerdrum. Kart og varsling.",
     status: "klar" as const,
-    maal: "Gjøre rede for skredfare, og vurdere forebygging og tilpasning.",
+    maal: "Gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene.",
   },
   {
     slug: "geologiske-ressurser",
