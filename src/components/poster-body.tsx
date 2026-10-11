@@ -1,3 +1,4 @@
+import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
   BoundaryOverviewDiagram,
@@ -75,6 +76,13 @@ import {
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
 import {
+  GeotidRelativFigur,
+  GeotidTidslinjeFigur,
+  HalveringstidFigur,
+  LedefossilFigur,
+  VinkeldiskordansFigur,
+} from "@/components/diagrams/geotid-figurer";
+import {
   KaledonideneFigur,
   NorskehavetFigur,
   OslograbenFigur,
@@ -84,7 +92,6 @@ import {
   BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,
   GrainSizeDistributionDiagram,
-  RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
@@ -97,15 +104,17 @@ import {
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
-import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
+import {
+  AkviferFigur,
+  HansNedborFigur,
+  HydrogramFigur,
+  KretslopFigur,
+} from "@/components/diagrams/vannflom-figurer";
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
-  KvikkleireDiagram,
-  SkredKrefterDiagram,
   SkredSonerDiagram,
-  SkredTyperDiagram,
 } from "@/components/diagrams/skred";
 import {
   FeltbokDiagram,
@@ -945,7 +954,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
-  RelativeDating: () => <RelativeDatingDiagram />,
+  // Geologisk tid: snittet bygges opp steg for steg.
+  RelativeDating: () => <GeotidRelativFigur />,
+  GeotidTidslinje: () => <GeotidTidslinjeFigur />,
+  Halveringstid: () => <HalveringstidFigur />,
+  Ledefossiler: () => <LedefossilFigur />,
+  Vinkeldiskordans: () => <VinkeldiskordansFigur />,
   ForvitringForklaring: () => (
     <Callout title="Hva betyr «forvitring»?">
       <p>
@@ -966,8 +980,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizBergarter: () => (
     <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  Kretslop: () => <KretslopDiagram />,
-  Hydrograph: () => <HydrographDiagram />,
+  Kretslop: () => <KretslopFigur />,
+  Hydrograph: () => <HydrogramFigur />,
+  AkviferSnitt: () => <AkviferFigur />,
+  HansNedbor: () => <HansNedborFigur />,
   AkviferForklaring: () => (
     <Callout title="Hva betyr «akvifer»?">
       <p>
@@ -991,7 +1007,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  KvikkleireSteg: () => <KvikkleireDiagram />,
+  KvikkleireSteg: () => <KvikkleireBakoverFigur />,
   QuizSkred: () => (
     <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -1107,8 +1123,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
-  SkredTyper: () => <SkredTyperDiagram />,
-  SkredKrefter: () => <SkredKrefterDiagram />,
+  SkredTyper: () => <SkredTyperFigur />,
+  SkredKrefter: () => <SkredKrefterFigur />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
   FieldworkIllustration: () => <FieldworkIllustrationDiagram />,

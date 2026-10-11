@@ -3901,6 +3901,75 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_KRYO_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er likevektslinjen (ELA) på en bre?",
+    options: [
+      "Grensen mellom bre og fjell",
+      "Høyden der akkumulasjon og ablasjon er like stor",
+      "Den nederste enden av breen",
+    ],
+    answer: 1,
+    explain: "Over likevektslinjen hoper snøen seg opp, under smelter den. Firngrensen ved slutten av sommeren ligger ofte nær ELA, men er ikke det samme.",
+  },
+  {
+    prompt: "Hvor stort er brearealet i Norge etter den siste kartleggingen (2018–2019)?",
+    options: [
+      "Om lag 2328 km², 14 prosent mindre enn i 1999–2006",
+      "Om lag 23 000 km²",
+      "Om lag 232 km²",
+    ],
+    answer: 0,
+    explain: "NVE kartla breene fra satellitt. Arealet har minket med 14 prosent siden forrige kartlegging.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er det aktive laget?",
+    options: [
+      "Den delen av breen som beveger seg",
+      "Det øverste laget over permafrosten, som tiner hver sommer",
+      "Havis som er yngre enn ett år",
+    ],
+    answer: 1,
+    explain: "Når permafrosten varmes, blir det aktive laget dypere, og bakken blir mer ustabil.",
+  },
+  {
+    prompt: "Hvorfor forsterker smeltende havis oppvarmingen i Arktis?",
+    options: [
+      "Fordi isen frigjør varme når den smelter",
+      "Fordi havis inneholder CO₂",
+      "Fordi mørkt hav tar opp mer solvarme enn hvit is",
+    ],
+    answer: 2,
+    explain: "Is har høy albedo og hav lav. Mindre is gir mer oppvarming, og det er en positiv tilbakekobling.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_3: QuizQuestion[] = [
+  {
+    prompt: "Hvor stort område gjelder en regional snøskredfaregrad for?",
+    options: [
+      "Minst 100 km²",
+      "Ett enkelt heng",
+      "Hele Norge",
+    ],
+    answer: 0,
+    explain: "Faregraden er regional. Den som ferdes i fjellet, må gjøre egne vurderinger.",
+  },
+  {
+    prompt: "Hvordan ventes snøskredfaren å endre seg med klimaendringene?",
+    options: [
+      "Flere snøskred overalt",
+      "Færre snøskred i lavlandet, men flere naturlig utløste skred høyt til fjells",
+      "Ingen endring",
+    ],
+    answer: 1,
+    explain: "Mindre snø og kortere sesong gir færre skred i lavlandet. Høyere opp ventes flere (Norsk klimaservicesenter).",
+  },
+];
+
 export const QUIZ_SJEKK_CORIOLIS_1: QuizQuestion[] = [
   {
     prompt: "Hvorfor ser ballen på karusellen ut til å svinge?",

@@ -1,3 +1,9 @@
+/**
+ * Trefftest for SVG-etiketter.
+ * Nettleser: CHROME_PATH, ellers PLAYWRIGHT_CHROMIUM_EXECUTABLE, hvis en av dem er satt.
+ * Uten begge brukes Playwrights egen Chromium. Mangler den: npx playwright install chromium
+ */
+import { existsSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
@@ -9,7 +15,7 @@ export const WIDTHS = [390, 640, 768, 1024, 1280];
 
 /** Figurer som er definert i plates.tsx, og siden de rendres på. */
 export const PLATE_FIGURES = [
-  { page: "/geofag-1/platetektonikk", heading: "Jordens skall:" },
+  { page: "/geofag-1/platetektonikk", heading: "Jordas skall:" },
   { page: "/geofag-1/platetektonikk", heading: "Hva beveger platene?" },
   { page: "/geofag-1/platetektonikk", heading: "Jordas tektoniske puslespill:" },
   { page: "/geofag-1/platetektonikk", heading: "Smeltefysikk i mantelen:" },
@@ -544,6 +550,38 @@ async function applyRange(page, headingPrefix, label, value) {
   );
 }
 
+const INSTALL_CHROMIUM = "npx playwright install chromium";
+
+/** CHROME_PATH vinner over PLAYWRIGHT_CHROMIUM_EXECUTABLE. Tom streng teller som usatt. */
+export function chromeExecutableFromEnv(env = process.env) {
+  const chromePath = env.CHROME_PATH?.trim();
+  const playwrightPath = env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?.trim();
+  return chromePath || playwrightPath || undefined;
+}
+
+export async function launchLabelBrowser(env = process.env) {
+  const executablePath = chromeExecutableFromEnv(env);
+  if (executablePath && !existsSync(executablePath)) {
+    throw new Error(
+      `Fant ikke nettleseren på «${executablePath}». ` +
+        `CHROME_PATH eller PLAYWRIGHT_CHROMIUM_EXECUTABLE må peke på en Chrome- eller Chromium-binær. ` +
+        `Uten variabelen brukes Playwrights Chromium. Installer den med: ${INSTALL_CHROMIUM}`,
+    );
+  }
+  try {
+    return await chromium.launch({
+      ...(executablePath ? { executablePath } : {}),
+      args: ["--no-sandbox", "--disable-dev-shm-usage"],
+    });
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    const where = executablePath
+      ? `Klarte ikke å starte nettleseren på «${executablePath}».`
+      : "Playwrights Chromium er ikke installert.";
+    throw new Error(`${where} Installer den med: ${INSTALL_CHROMIUM}\n${detail}`, { cause: error });
+  }
+}
+
 export async function scanDiagramLabels({
   baseURL = "http://127.0.0.1:8080",
   widths = WIDTHS,
@@ -551,10 +589,7 @@ export async function scanDiagramLabels({
   shots = false,
 } = {}) {
   if (outDir) await mkdir(outDir, { recursive: true });
-  const browser = await chromium.launch({
-    executablePath: "/usr/local/bin/google-chrome",
-    args: ["--no-sandbox", "--disable-dev-shm-usage"],
-  });
+  const browser = await launchLabelBrowser();
   const consoleErrors = [];
   const pageErrors = [];
   const figures = [];

@@ -21,7 +21,7 @@ export type PosterPart =
 
 export const EARTH_LAYERS_PHOTO_SRC = "/images/geo-jordens-indre-lagdeling-3d.jpg";
 
-const EARTH_LAYERS_PHOTO_MD = `![Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater](${EARTH_LAYERS_PHOTO_SRC})`;
+const EARTH_LAYERS_PHOTO_MD = `![Jordas skall: Fra fast indre kjerne til bevegelige litosfæreplater](${EARTH_LAYERS_PHOTO_SRC})`;
 
 const EARTH_LAYERS_SECTION_HEADING = /^#{3,6}[^\n]*Inndeling av jord(?:en|as) indre[^\n]*$/m;
 
@@ -253,6 +253,18 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Hva er en akvifer?",
   },
   {
+    // Etter avsnittet om porøsitet og permeabilitet i «Hva er en akvifer?» (Vann og flom).
+    widgets: ["AkviferSnitt"],
+    afterParagraph: /I fjell styres permeabiliteten av sprekker/i,
+    require: "Hva er en akvifer?",
+  },
+  {
+    widgets: ["HansNedbor"],
+    // Etter avsnittet som slutter med «MET skriver at klimaendringer kan forsterke …» (Hans).
+    afterParagraph: /MET skriver at klimaendringer kan forsterke/i,
+    require: "Hva er en akvifer?",
+  },
+  {
     widgets: ["Hydrograph"],
     afterHeading: "Hva er et hydrogram?",
     require: "Hva er en akvifer?",
@@ -336,6 +348,27 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     widgets: ["IsostasiSnitt"],
     beforeHeading: "Marin grense",
     require: "Nigardsbreen, en arm av Jostedalsbreen",
+  },
+  {
+    // Geologisk tid: etter avsnittet om grensene i tidsskalaen, før tabellen over hendelser i Norge.
+    widgets: ["GeotidTidslinje"],
+    afterParagraph: /Grensene er justert etter hvert som dateringene er blitt bedre\./,
+    require: "Ellen Gleditsch",
+  },
+  {
+    widgets: ["Ledefossiler"],
+    beforeHeading: "Diskordans",
+    require: "Ellen Gleditsch",
+  },
+  {
+    widgets: ["Vinkeldiskordans"],
+    beforeHeading: "Slik leser du et snitt",
+    require: "Ellen Gleditsch",
+  },
+  {
+    widgets: ["Halveringstid"],
+    beforeHeading: "Metoder for bergarter",
+    require: "Ellen Gleditsch",
   },
   {
     widgets: ["QuizIsbre"],
