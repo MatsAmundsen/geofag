@@ -1310,7 +1310,7 @@ export function EccentricityDetailDiagram() {
     <Diagram
       title="Eksentrisitet: banens form svinger mellom nesten sirkulær og svak ellipse"
       heading="Eksentrisitet og avstandseffekten (100 000 og 400 000 år)"
-      caption="Jordbanens form (eksentrisitet, e) varierer fra nesten helt sirkulær (e ≈ 0,0005) til svak ellipse (e ≈ 0,06) med hovedperioder på ca. 100 000 og 413 000 år. Til venstre: Ved lav eksentrisitet er jorda nesten like langt fra sola hele året; årstidene styres nesten utelukkende av aksehelningen. Til høyre: Ved høy eksentrisitet er jorda markant nærmere sola i perihel enn i aphel. Siden strålingsintensiteten avtar med kvadratet av avstanden (1/r²), forsterker høy eksentrisitet effekten av presesjonssyklusen. Eksentrisiteten i seg selv endrer total global årsinnstråling med under 0,2 %, men fungerer som en kraftig 'forsterkerskrue' for presesjonen."
+      caption="Jordbanens form (eksentrisitet, e) varierer fra nesten helt sirkulær (e ≈ 0,005) til svak ellipse (e ≈ 0,06) med hovedperioder på ca. 100 000 og 413 000 år. Til venstre: Ved lav eksentrisitet er jorda nesten like langt fra sola hele året; årstidene styres nesten utelukkende av aksehelningen. Til høyre: Ved høy eksentrisitet er jorda markant nærmere sola i perihel enn i aphel. Siden strålingsintensiteten avtar med kvadratet av avstanden (1/r²), forsterker høy eksentrisitet effekten av presesjonssyklusen. Eksentrisiteten i seg selv endrer total global årsinnstråling med under 0,2 %, men fungerer som en kraftig 'forsterkerskrue' for presesjonen."
       viewBox="0 0 880 440"
     >
       {(m) => (
@@ -1705,7 +1705,7 @@ export function Insolation65NCurveDiagram() {
     <Diagram
       title="Sommersol på 65 °N gjennom 400 000 år samholdt med istider og mellomistider"
       heading="Sommersol på 65 °N: Den sanne istidskurven (400 ka til i dag)"
-      caption="Figuren sammenligner beregnet sommersol (innstråling i W/m² ved 65 °N i juni) med de faktiske istids- og mellomistidsfasene over de siste 400 000 år (MIS 11, MIS 9, MIS 7, MIS 5e Eem og MIS 1 Holocen). Hver gang sommersolen på 65 °N stiger over en kritisk terskel (~500 W/m²), utløses en rask deglasiasjon. Legg merke til at dagens sommersol på 65 °N er svakt avtagende. Oppvarmingen etter 1850 drives derfor ikke av solinnstråling, men av menneskeskapte klimagassutslipp."
+      caption="Figuren sammenligner beregnet sommersol (innstråling i W/m² ved 65 °N i juni) med de faktiske istids- og mellomistidsfasene over de siste 400 000 år (MIS 11, MIS 9, MIS 7, MIS 5e Eem og MIS 1 Holocen). Topper i sommersola på 65 °N faller sammen med starten på mellomistidene, men ikke hver topp gir en mellomistid. Legg merke til at dagens sommersol på 65 °N er svakt avtagende. Oppvarmingen etter 1850 drives derfor ikke av solinnstråling, men av menneskeskapte klimagassutslipp."
       viewBox="0 0 920 460"
     >
       {() => {
@@ -1800,11 +1800,6 @@ export function Insolation65NCurveDiagram() {
               strokeLinejoin="round"
             />
 
-            {/* Threshold Line */}
-            <line x1={x0} y1="120" x2={x0 + w} y2="120" stroke={C.low} strokeDasharray="4 4" strokeWidth="1.4" />
-            <L x={x0 + w - 10} y="114" fill={C.low} size={10} anchor="end" weight={600}>
-              Deglasiasjons-terskel (~500 W/m²)
-            </L>
 
             {/* Lower panel: Climate Stages */}
             <rect x={x0} y="220" width={w} height="170" fill="#09131a" />

@@ -513,57 +513,48 @@ export const QUIZ_FARER: QuizQuestion[] = [
 
 export const QUIZ_ISTIDER: QuizQuestion[] = [
   {
-    prompt: "Hvilke tre svingninger er Milankovitch-syklusene?",
+    prompt: "Hva endrer Milankovitch-syklusene først og fremst?",
     options: [
-      "Eksentrisitet, skråstilling og presesjon.",
-      "Passat, monsun og jetstrøm.",
-      "El Niño, La Niña og NAO.",
-    ],
-    answer: 0,
-    explain: "Se «Tre svingninger». De tre er banens form, aksens vinkel og aksens vingling.",
-  },
-  {
-    prompt: "Hva gjør minkende skråstilling med somrene på høye breddegrader?",
-    options: [
-      "Somrene blir kjøligere, så snø og is kan bygge seg opp.",
-      "Somrene blir varmere, så all is smelter med en gang.",
-      "Årstidene forsvinner, fordi aksen slutter å helle.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Skråstilling». Mildere årstider betyr varmere vintre og kjøligere somre. Mer is kaster mer solenergi tilbake.",
-  },
-  {
-    prompt: "Forklarer Milankovitch-syklusene oppvarmingen vi ser nå?",
-    options: [
-      "Ja, fordi eksentrisiteten øker raskt.",
-      "Nei. NASA skriver at syklusene ikke forklarer den oppvarmingen.",
-      "Ja, fordi presesjonen snur hvert år.",
+      "Den samlede solstrålingen, som halveres under en istid",
+      "Hvor og når på året innstrålingen treffer, særlig sommersola på 65°N",
+      "CO₂ i atmosfæren, direkte",
+      "Retningen jorda roterer",
     ],
     answer: 1,
-    explain: "Se «Tre svingninger». Syklusene utløser istider. De forklarer ikke oppvarmingen nå.",
+    explain: "Jordbanen fordeler energien mellom årstider og breddegrader. Istidene styres av om snøen på 65°N overlever sommeren.",
   },
   {
-    prompt: "Hva kjennetegnet siste istids maksimum for 20 000 år siden?",
+    prompt: "Hvilken faktor er utløseren for en glasial i kvartær?",
     options: [
-      "Iskappen nådde det sørlige England, og havet sto 125 meter lavere enn i dag.",
-      "Havet sto høyere enn i dag, og England var en øy langt fra Frankrike.",
-      "Hele Sibir var dekket av en 3000 meter tykk iskappe.",
+      "Et vulkanutbrudd som skygger for sola i ett år",
+      "At jorda er lenger unna sola hele året",
+      "Svak sommersol på 65°N, slik at vintersnøen ikke smelter",
+      "At AMOC stopper før isen finnes",
     ],
-    answer: 0,
-    explain:
-      "Se «Siste istids maksimum». De kaldeste delene av Sibir var isfrie fordi klimaet var tørt.",
+    answer: 2,
+    explain: "Land, nedbør, albedo og CO₂ må være på plass, men utløseren er kjølige somre på høye nordlige breddegrader.",
   },
   {
-    prompt: "Når sluttet siste istid, ifølge Store norske leksikon?",
+    prompt: "Når sluttet den siste istiden, og hva kaller vi tiden etter?",
     options: [
-      "For 11 700 år siden.",
-      "For 20 000 år siden, som er siste istids maksimum.",
-      "I 1976, da havbunnsstudien ble publisert.",
+      "For ca. 21 000 år siden, og tiden etter heter Weichsel",
+      "For ca. 11 700 år siden, og tiden etter heter holocen",
+      "I 1850, da målingene startet",
+      "Den er ikke slutt, for innlandsisen dekker fortsatt Norge",
     ],
-    answer: 0,
-    explain:
-      "Se «Hvorfor istidene kommer». 20 000 år er siste istids maksimum. 11 700 år er slutten på siste istid.",
+    answer: 1,
+    explain: "Isen var størst for ca. 21 000 år siden. Holocen startet for ca. 11 700 år siden (Walker mfl., 2009).",
+  },
+  {
+    prompt: "Hvorfor forklarer ikke Milankovitch-syklusene oppvarmingen siden 1850?",
+    options: [
+      "Fordi jordbanen ikke endrer seg lenger",
+      "Fordi iskjerner ikke kan måle CO₂",
+      "Fordi holocen ikke er en mellomistid",
+      "Fordi endringene i jordbanen er for langsomme og nå går svakt mot svakere sommersol på 65°N",
+    ],
+    answer: 3,
+    explain: "Under avsmeltingene startet det med innstrålingen, og CO₂ forsterket. Nå er det CO₂ som starter (IPCC, 2021).",
   },
 ];
 
@@ -4677,5 +4668,97 @@ export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Da ser du lagdelingen direkte.",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_1: QuizQuestion[] = [
+  {
+    prompt: "Hva endrer Milankovitch-syklusene først og fremst?",
+    options: [
+      "Hvor mye energi sola sender ut",
+      "Hvor og når på året solstrålingen treffer jorda",
+      "Hvor mye CO₂ det er i lufta",
+    ],
+    answer: 1,
+    explain: "Jordbanen fordeler innstrålingen mellom årstider og breddegrader, men endrer den samlede innstrålingen lite (NASA, u.å.).",
+  },
+  {
+    prompt: "Hvorfor er sommersola på 65°N så viktig for istidene?",
+    options: [
+      "Fordi det bare snør der om sommeren",
+      "Fordi den avgjør om vintersnøen smelter eller overlever",
+      "Fordi jorda er nærmest sola der",
+    ],
+    answer: 1,
+    explain: "Overlever snøen sommeren, kan isen vokse år etter år.",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_2: QuizQuestion[] = [
+  {
+    prompt: "Hva gjør CO₂ under en avsmelting etter en istid?",
+    options: [
+      "Den starter avsmeltingen alene",
+      "Den forsterker oppvarmingen og sprer den til hele jorda",
+      "Den har ingen virkning",
+    ],
+    answer: 1,
+    explain: "CO₂ steg fra ca. 180 til 260–280 ppm og forsterket oppvarmingen (Lüthi mfl., 2008).",
+  },
+  {
+    prompt: "Hvorfor kan ikke jordbanen forklare oppvarmingen siden 1850?",
+    options: [
+      "Fordi endringene er for langsomme og går svakt mot kjøligere somre på 65°N",
+      "Fordi jordbanen sluttet å endre seg for 11 700 år siden",
+      "Fordi sola har blitt mye sterkere",
+    ],
+    answer: 0,
+    explain: "Banen endrer seg over tusenvis av år, og i dag peker den svakt mot avkjøling (IPCC, 2021).",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken av disse er utløseren for en istid i kvartær?",
+    options: [
+      "Land på høye breddegrader",
+      "Svak sommersol på 65°N",
+      "Mye nedbør over Nord-Atlanteren",
+    ],
+    answer: 1,
+    explain: "Land og nedbør må være på plass, men det er kjølige somre på høye nordlige breddegrader som utløser veksten.",
+  },
+  {
+    prompt: "Hvorfor kalles is-albedo-effekten en positiv tilbakekobling?",
+    options: [
+      "Fordi den alltid gir varmere klima",
+      "Fordi den forsterker en endring som allerede er i gang",
+      "Fordi den starter istidene",
+    ],
+    answer: 1,
+    explain: "Mer is gir høyere albedo, det blir kaldere, og isen vokser mer.",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_4: QuizQuestion[] = [
+  {
+    prompt: "Hva er marin grense?",
+    options: [
+      "Grensen mellom hav og land i dag",
+      "Det høyeste nivået havet har stått etter siste istid på et sted",
+      "Den dypeste delen av en fjord",
+    ],
+    answer: 1,
+    explain: "Marin grense ligger mellom 0 og ca. 220 moh. i Norge (NGU, u.å.-a).",
+  },
+  {
+    prompt: "Hva er Raet?",
+    options: [
+      "En stor endemorene fra yngre dryas",
+      "En fjord på Vestlandet",
+      "En flyttblokk fra Sverige",
+    ],
+    answer: 0,
+    explain: "Iskanten sto stille ved Raet i yngre dryas, for ca. 12 800–11 700 år siden.",
   },
 ];

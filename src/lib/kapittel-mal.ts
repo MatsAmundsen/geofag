@@ -107,6 +107,10 @@ import {
   QUIZ_SJEKK_FELT_HAV_4,
   QUIZ_SJEKK_FELT_HAV_5,
   QUIZ_SJEKK_FELT_HAV_6,
+  QUIZ_SJEKK_MILANKOVITCH_1,
+  QUIZ_SJEKK_MILANKOVITCH_2,
+  QUIZ_SJEKK_MILANKOVITCH_3,
+  QUIZ_SJEKK_MILANKOVITCH_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -208,6 +212,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   FeltHav4: QUIZ_SJEKK_FELT_HAV_4,
   FeltHav5: QUIZ_SJEKK_FELT_HAV_5,
   FeltHav6: QUIZ_SJEKK_FELT_HAV_6,
+  Milankovitch1: QUIZ_SJEKK_MILANKOVITCH_1,
+  Milankovitch2: QUIZ_SJEKK_MILANKOVITCH_2,
+  Milankovitch3: QUIZ_SJEKK_MILANKOVITCH_3,
+  Milankovitch4: QUIZ_SJEKK_MILANKOVITCH_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -383,6 +391,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "CTD og Argo-bøyer måler ledningsevne og temperatur mot dyp, og saltholdigheten regnes ut fra dem. Kartverket måler vannstanden, og været kan gi avvik fra tidevannet.",
     "Snøskredvarselet gjelder områder på minst 100 kvadratkilometer og erstatter ikke egne vurderinger. En snøprofil viser lagene i snødekket.",
     "Alle målinger har usikkerhet. Gjenta målingene, regn ut gjennomsnitt og spredning, sammenlign med varsler og modeller, og vis profiler med dypet eller høyden på den loddrette aksen.",
+  ],
+  Milankovitch: [
+    "Milankovitch-syklusene er tre svingninger i jordbanen og jordaksen: eksentrisitet (ca. 100 000 og 400 000 år), helning (ca. 41 000 år) og presesjon (ca. 19 000 og 23 000 år).",
+    "Svingningene fordeler innstrålingen mellom årstider og breddegrader. Sommersola på 65°N avgjør om snøen overlever og isen vokser.",
+    "Jordbanen setter i gang endringen, mens is-albedo-tilbakekoblingen og CO₂ forsterker den og gjør den global.",
+    "En istid krever et kaldt jordsystem, land på høye breddegrader, nok nedbør og svak sommersol på 65°N.",
+    "Den siste istiden, Weichsel, varte fra ca. 117 000 til 11 700 år siden. Nå er vi i mellomistiden holocen.",
+    "Istidene har formet U-daler, fjorder, morener som Raet og marin grense i Norge. Oppvarmingen siden 1850 skyldes CO₂, ikke jordbanen.",
   ],
 };
 

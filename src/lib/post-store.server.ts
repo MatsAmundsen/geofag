@@ -1088,6 +1088,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "felt-hav-luft-is",
     stale: ["## Tre felt i samme kjede"],
   },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-milankovitch-md-2026-10-11",
+    slug: "milankovitch",
+    stale: ["Isen som måles i år, eier"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

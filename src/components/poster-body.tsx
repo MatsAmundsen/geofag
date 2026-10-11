@@ -1,6 +1,15 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
+  EccentricityDetailDiagram,
+  FennoscandianIceSheetDiagram,
+  GlacialLandformsDiagram,
+  IceAgeFactorsDiagram,
+  Insolation65NCurveDiagram,
+  KvartarTimeSeriesDiagram,
+  MilankovitchCyclesDiagram,
+  ObliquityDetailDiagram,
+  PrecessionDetailDiagram,
   AssimilationDiagram,
   EnsembleRibbonDiagram,
   BoundaryOverviewDiagram,
@@ -344,6 +353,63 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
   PolarFrontNorwayDiagram: () => <PolarFrontNorwayDiagram />,
   WindSystemModel: () => <WindSystemModel />,
+  EccentricityDetail: () => <EccentricityDetailDiagram />,
+  FennoscandianIceSheet: () => <FennoscandianIceSheetDiagram />,
+  GlacialLandforms: () => <GlacialLandformsDiagram />,
+  IceAgeFactors: () => <IceAgeFactorsDiagram />,
+  Insolation65NCurve: () => <Insolation65NCurveDiagram />,
+  KvartarTimeSeries: () => <KvartarTimeSeriesDiagram />,
+  MilankovitchCycles: () => <MilankovitchCyclesDiagram />,
+  ObliquityDetail: () => <ObliquityDetailDiagram />,
+  PrecessionDetail: () => <PrecessionDetailDiagram />,
+  MilankovitchInnstraling: () => (
+    <PhotoFigure
+      src="/images/fig-innstraling.jpg"
+      alt="Jorda belyst av sola, med tydelig forskjell mellom belyste og skyggesider"
+      heading="Innstrålingen treffer skjevt"
+      caption="Sola varmer ekvator mer enn polene. Milankovitch-syklusene flytter denne skjevheten gjennom årtusener: mer eller mindre sommersol på 65°N, nesten uten å endre det samlede sollyset."
+      marks={[
+        { x: 8, y: 18, n: "1", text: "Ekvator får mest", tone: "warm" },
+        { x: 70, y: 12, n: "2", text: "65°N om sommeren", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Den globale innstrålingen over året endres lite av jordbanen." },
+        { n: "2", label: "Istidene styres av om sommeren på 65°N kan smelte isen." },
+      ]}
+    />
+  ),
+  MilankovitchAlbedo: () => (
+    <PhotoFigure
+      src="/images/fig-albedo.jpg"
+      alt="Is og snø mot mørkt fjell og vann, med tydelig kontrast i lyshet"
+      heading="Is kaster lyset tilbake"
+      caption="Høy albedo over snø og is, lav over bart fjell og åpent hav. Når innlandsisen vokser, tar jorda opp mindre solenergi. Når den smelter, tar jorda opp mer. Jordbanen setter i gang endringen, og albedoen forsterker den."
+      marks={[
+        { x: 10, y: 20, n: "1", text: "Høy albedo", tone: "cold" },
+        { x: 62, y: 70, n: "2", text: "Lav albedo", tone: "warm" },
+      ]}
+      points={[
+        { n: "1", label: "Snø og is reflekterer. Vokser isen, taper jorda energi." },
+        { n: "2", label: "Mørkt land og hav tar opp energi. Smelter isen, går det fortere." },
+      ]}
+    />
+  ),
+  MilankovitchFjord: () => (
+    <PhotoFigure
+      src="/images/gf1-bergarter.jpg"
+      alt="Lagdelt sedimentær klippe og isskurt fjordlandskap"
+      heading="Fjord er U-dal under vann"
+      caption="Isskurt kyst og dal er ikke elvas verk alene. Innlandsisen gravde tverrsnittet, og elva og havet bruker formen. De fleste norske U-dalene er formet under istidene."
+      marks={[
+        { x: 8, y: 28, n: "1", text: "Isskurt berg", tone: "cold" },
+        { x: 55, y: 62, n: "2", text: "Dyp dal og fjord", tone: "teal" },
+      ]}
+      points={[
+        { n: "1", label: "Skuring og plukking runder og river berget." },
+        { n: "2", label: "U-form og fjord er isens tverrsnitt, ikke elvas V." },
+      ]}
+    />
+  ),
   VindBelterFoto: () => (
     <PhotoFigure
       src="/images/fig-belter-globus.jpg"
@@ -761,8 +827,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «istid»?">
       <p>
         Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
-        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Store norske leksikon,
-        u.å.-a).
+        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Mangerud, 2026).
       </p>
     </Callout>
   ),
