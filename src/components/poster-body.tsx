@@ -76,6 +76,7 @@ import {
 import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import {
   BowenReactionSeriesDiagram,
+  GrainSizeDistributionDiagram,
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
 import { Link } from "@tanstack/react-router";
@@ -108,6 +109,16 @@ import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
+import { Sammendrag } from "@/components/sammendrag";
+import {
+  ElvaFraKildeTilMunning,
+  Forvitringsformer,
+  GilbertDelta,
+  HjulstromInteraktiv,
+  LandskapBlokk,
+  MeanderOgKroksjo,
+} from "@/components/diagrams/landformer-figurer";
+import { SAMMENDRAG, SJEKK_DEG_SELV } from "@/lib/kapittel-mal";
 import {
   IodFaseFigur,
   IodHavtemperaturFigur,
@@ -149,6 +160,7 @@ import {
   QUIZ_SJEKK_SKJELVFARE_2,
   QUIZ_SJEKK_SKJELVFARE_3,
   QUIZ_SKJELVFARE,
+  QUIZ_LANDFORMER,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
   QUIZ_OFIOLITT_WILSON,
@@ -179,6 +191,19 @@ import {
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  // Kapittelmalen: `Sjekk<Navn>` og `Sammendrag<Navn>` fra src/lib/kapittel-mal.ts.
+  ...Object.fromEntries(
+    Object.entries(SJEKK_DEG_SELV).map(([key, questions]) => [
+      `Sjekk${key}`,
+      () => <Quiz questions={questions} intro="Velg ett svar per spørsmål." />,
+    ]),
+  ),
+  ...Object.fromEntries(
+    Object.entries(SAMMENDRAG).map(([key, points]) => [
+      `Sammendrag${key}`,
+      () => <Sammendrag points={points} />,
+    ]),
+  ),
   EarthLayers: () => <EarthLayersDiagram />,
   Spreading: () => <SpreadingDiagram />,
   Convection: () => <ConvectionDiagram />,
@@ -919,6 +944,68 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         firnen blir presset sammen enda mer, blir den til breis (SNL, u.å.-b).
       </p>
     </Callout>
+  ),
+  GrainSizeDistribution: () => <GrainSizeDistributionDiagram />,
+  Forvitringsformer: () => <Forvitringsformer />,
+  HjulstromInteraktiv: () => <HjulstromInteraktiv />,
+  ElvaFraKildeTilMunning: () => <ElvaFraKildeTilMunning />,
+  MeanderOgKroksjo: () => <MeanderOgKroksjo />,
+  GilbertDelta: () => <GilbertDelta />,
+  LandskapBlokk: () => <LandskapBlokk />,
+  FrostsprekkFoto: () => (
+    <PhotoFigure
+      src="/images/fig-forvitring.jpg"
+      alt="Nærbilde av iskrystaller som har vokst i en sprekk i båndet gneis"
+      heading="Mekanisk forvitring: is i en sprekk"
+      caption="Is i en sprekk i berget. Isen vokser og presser sprekken videre. Etter mange fryse–tine-sykluser løsner kantete blokker som raser ned og danner ur ved foten av fjellsiden."
+      marks={[
+        { x: 39, y: 84, n: "1", text: "Sprekk", tone: "warm", align: "right" },
+        { x: 56, y: 20, n: "2", text: "Is i sprekken", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Sprekker og lagflater i berget slipper inn vann." },
+        { n: "2", label: "Isen vokser i sprekken og presser den videre." },
+      ]}
+    />
+  ),
+  RavineFoto: () => (
+    <PhotoFigure
+      src="/images/fig-ravine.jpg"
+      alt="Ravinedal og elveløp erodert ned i finkornede sedimenter og leirmasser"
+      heading="Raviner i marin leire"
+      caption="En ravine er en bratt, V-formet kløft som en bekk har gravd ut i leire eller silt. Etter istiden ble store leirflater på Østlandet og i Trøndelag hevet over havet, og bekker har skåret ut forgreinede ravinelandskap, for eksempel på Romerike. Erosjon i bunnen av ravinene kan gjøre skråningene ustabile."
+      marks={[
+        { x: 30, y: 35, n: "1", text: "Ravinedal", tone: "warm" },
+        { x: 75, y: 65, n: "2", text: "Leireskråning", tone: "teal" },
+      ]}
+      points={[
+        { n: "1", label: "Bekken skjærer seg ned i løs marin leire." },
+        { n: "2", label: "Bratte skråninger kan gli ut når bekken graver i foten." },
+      ]}
+    />
+  ),
+  FjordskredFoto: () => (
+    <PhotoFigure
+      src="/images/fig-fjellskred-fjord.jpg"
+      alt="Vestnorsk fjord med bratt fjellside, skredarr og ur ned mot fjorden"
+      heading="Unge landformer: fjord og bratte fjellsider"
+      caption="Fjorden og de bratte fjellsidene ble formet av isen. Etter at isen forsvant, har frostforvitring og skred fortsatt å bryte ned fjellsidene."
+      marks={[
+        { x: 47, y: 23, n: "1", text: "Skredarr", tone: "warm" },
+        { x: 8, y: 42, n: "2", text: "Bratt dalside", tone: "teal" },
+        { x: 40, y: 62, n: "3", text: "Ur og skredmasser", tone: "warm" },
+        { x: 45, y: 90, n: "4", text: "Fjord", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Lys, bar bergflate der fjell har løsnet." },
+        { n: "2", label: "Bratt fjellside skuret ut av isbreer." },
+        { n: "3", label: "Stein og blokker har hopet seg opp ved foten." },
+        { n: "4", label: "Fjorden er gravd ut under dagens havnivå." },
+      ]}
+    />
+  ),
+  QuizLandformer: () => (
+    <Quiz questions={QUIZ_LANDFORMER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   BreLengdesnitt: () => <BreLengdesnittDiagram />,
   VdalTilUdal: () => <VdalTilUdalDiagram />,

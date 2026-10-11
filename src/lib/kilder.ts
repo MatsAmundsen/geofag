@@ -828,10 +828,21 @@ export const KILDER = {
   ],
   landformer: [
     {
+      prefix: "Egholm, D. L., Nielsen, S. B., Pedersen, V. K., & Lesemann, J.-E. (2009). Glacial effects limiting mountain height. ",
+      italic: "Nature, 460",
+      suffix: "(7257), 884–887.",
+      href: "https://doi.org/10.1038/nature08263",
+    },
+    {
       prefix: "Gjessing, J. (1978). ",
       italic: "Norges landformer",
       suffix: ". Universitetsforlaget.",
       href: "https://urn.nb.no/URN:NBN:no-nb_digibok_2012050908064",
+    },
+    {
+      prefix: "Hjulström, F. (1935). Studies of the morphological activity of rivers as illustrated by the River Fyris. ",
+      italic: "Bulletin of the Geological Institution of the University of Uppsala, 25",
+      suffix: ", 221–527.",
     },
     {
       prefix: "Holtedahl, O. (1960). Features of the geomorphology. I O. Holtedahl (Red.), ",
@@ -840,39 +851,10 @@ export const KILDER = {
       href: "https://www.ngu.no/",
     },
     {
-      prefix: "Hjulström, F. (1935). Studies of the morphological activity of rivers as illustrated by the River Fyris. ",
-      italic: "Bulletin of the Geological Institution of the University of Uppsala, 25",
-      suffix: ", 221–527.",
-    },
-    {
-      prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
-      italic: "Glaciers and Glaciation",
-      suffix: " (2. utg.). Routledge.",
-      href: "https://doi.org/10.4324/9780203785010",
-    },
-    {
-      prefix: "Nesje, A., & Dahl, S. O. (1993). The high mountain style of landforms in southern Norway: A result of multiple quaternary glaciations. ",
-      italic: "Norsk Geologisk Tidsskrift, 73",
-      suffix: "(2), 125–135.",
-      href: "https://geologi.no/tidsskrift",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
-      italic: "Løsmasser og glasiale landformer i Norge",
-      suffix: ".",
-      href: "https://www.ngu.no/om-geologi/losmasser",
-    },
-    {
-      prefix: "Store norske leksikon [SNL]. (u.å.). ",
-      italic: "Raet",
-      suffix: ".",
-      href: "https://snl.no/Raet",
-    },
-    {
-      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
-      italic: "Kompetansemål etter geofag 1 (GFG01-03)",
-      suffix: ".",
-      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
+      prefix: "Matsuoka, N., & Murton, J. (2008). Frost weathering: Recent advances and future directions. ",
+      italic: "Permafrost and Periglacial Processes, 19",
+      suffix: "(2), 195–210.",
+      href: "https://doi.org/10.1002/ppp.620",
     },
     {
       prefix:
@@ -882,10 +864,10 @@ export const KILDER = {
       href: "https://doi.org/10.1126/science.1132127",
     },
     {
-      prefix: "Matsuoka, N., & Murton, J. (2008). Frost weathering: Recent advances and future directions. ",
-      italic: "Permafrost and Periglacial Processes, 19",
-      suffix: "(2), 195–210.",
-      href: "https://doi.org/10.1002/ppp.620",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
+      italic: "Bruk av sand, grus og pukk som byggeråstoffer",
+      suffix: ".",
+      href: "https://www.ngu.no/geologiske-ressurser/bruk-av-sand-grus-og-pukk-som-byggerastoffer",
     },
     {
       prefix: "Egholm, D. L., Nielsen, S. B., Pedersen, V. K., & Lesemann, J.-E. (2009). Glacial effects limiting mountain height. ",
@@ -894,11 +876,28 @@ export const KILDER = {
       href: "https://doi.org/10.1038/nature08263",
     },
     {
-      prefix:
-        "Nielsen, S. B., Gallagher, K., Leighton, C., Balling, N., Svenningsen, L., Jacobsen, B. H., Thomsen, E., Nielsen, O. B., Heilmann-Clausen, C., Egholm, D. L., Summerfield, M. A., Clausen, O. R., Piotrowski, J. A., Thorsen, M. R., Huuse, M., Abrahamsen, N., King, C., & Lykke-Andersen, H. (2009). The evolution of western Scandinavian topography: A review of Neogene uplift versus the ICE (isostasy–climate–erosion) hypothesis. ",
-      italic: "Journal of Geodynamics, 47",
-      suffix: "(2–3), 72–95.",
-      href: "https://doi.org/10.1016/j.jog.2008.09.001",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Sikringshåndboka: Flom og erosjon",
+      suffix: ".",
+      href: "https://veiledere.nve.no/sikringshandboka/flom-og-erosjon/",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      italic: "Nedre Glomsjø",
+      suffix: ".",
+      href: "https://snl.no/Nedre_Glomsj%C3%B8",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 1 (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
   ],
   vannFlom: [

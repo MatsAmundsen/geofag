@@ -6,7 +6,7 @@
  *
  * Alle tall og påstander i figurene kommer fra kapitteltekstene (src/routes/geofag-1/landformer.tsx).
  * Hjulstrøm-kurvene er tegnet omtrentlig etter Hjulström (1935): kapitlet gir bare to fastpunkter
- * (ca. 20 cm/s for sand 0,2–0,5 mm og over 100 cm/s for leire), resten er en skjematisk kurveform.
+ * (ca. 20 cm/s for sand 0,2–0,5 mm; fast leire omtrent som grus), resten er en skjematisk kurveform.
  */
 import {
   useContext,
@@ -242,7 +242,7 @@ const GRAIN_COLOR: Record<string, string> = {
 };
 
 export function HjulstromInteraktiv({
-  heading = "Hjulstrøms diagram: erodere, transportere eller avsette?",
+  heading = "Hjulströms diagram: erodere, transportere eller avsette?",
   caption,
 }: LandformFigurProps) {
   const motion = useAnimationPlaying();
@@ -269,7 +269,7 @@ export function HjulstromInteraktiv({
       heading={heading}
       caption={
         caption ??
-        "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Leire krever over 100 cm/s fordi kornene henger sammen (kohesjon). Skjematisk etter Hjulström (1935). Gjelder omtrent for kvartskorn i ca. 1 m dypt vann."
+        "Velg kornstørrelse og strømfart. Over den heltrukne kurven river vannet løs korn (erosjon). Mellom kurvene holdes kornene i bevegelse (transport). Under den stiplede kurven synker de til bunnen (avsetning). Sand (0,2–0,5 mm) eroderes lettest, ved ca. 20 cm/s. Fast, avsatt leire kan kreve like stor strømfart som grus fordi kornene henger sammen (kohesjon). Hvor stor, avhenger av hvor fast leira er pakket. Skjematisk etter Hjulström (1935). Gjelder omtrent for kvartskorn i ca. 1 m dypt vann."
       }
       // statusen endres bare av brukeren (animasjonen flytter bare kornene), så den leses alltid opp
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -502,7 +502,7 @@ function HjPlot({ narrow, d, v, zone }: { narrow: boolean; d: number; v: number;
         strokeWidth="2"
       />
       <T avoid={cur} x={L.x0 + 10} y={L.y0 + fs + 8} size={fs} color={C.warm}>
-        Leire: over 100 cm/s
+        Fast leire: omtrent som grus
       </T>
       <T avoid={cur} x={L.x0 + 10} y={L.y0 + 2 * fs + 16} size={fs - 1} color={C.fg}>
         {narrow ? "(kohesjon)" : "(kohesjon: kornene henger sammen)"}

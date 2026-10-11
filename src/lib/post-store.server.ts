@@ -814,6 +814,21 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv",
     stale: ["Episenteret er senere lagt til Kattegat", "EarthquakeWavePhysics"],
   },
+  {
+    flag: "g1-fakta-skred-gjerdrum-2026-10-11",
+    slug: "skred",
+    stale: ["1500 mennesker ble evakuert"],
+  },
+  {
+    flag: "g1-fakta-vulkaner-armero-2026-10-11",
+    slug: "vulkaner",
+    stale: ["Laharer gikk om lag 50 km ned dalen", "i [Jordskjelv og tsunamier](/geofag-1/jordskjelv)"],
+  },
+  {
+    flag: "g1-landformer-md-2026-10-11",
+    slug: "landformer",
+    stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

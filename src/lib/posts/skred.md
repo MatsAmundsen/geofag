@@ -70,7 +70,7 @@ De flytende massene kan gjøre skade både der bakken glir ut, og der massene re
 
 NVE nevner blant annet Verdal i 1893, Rissa i 1978, Kattmarka i 2009, Lyngen i 2010, Byneset i 2011 og Gjerdrum i 2020 (NVE, 2021b).
 
-Tidlig om morgenen 30. desember 2020 gikk et kvikkleireskred på Ask i Gjerdrum. 1500 mennesker ble evakuert, og elleve mistet livet. NVE omtaler skredet som det mest alvorlige kvikkleireskredet i Norge i nyere tid. Skredet målte 240 × 700 meter. Massene rant så langt som 2 km, og 1,35 millioner kubikkmeter raste ut. 200 mennesker mistet hjemmet for godt (NVE, 2023).
+Tidlig om morgenen 30. desember 2020 gikk et kvikkleireskred på Ask i Gjerdrum. Over 1600 mennesker ble evakuert, og elleve mistet livet. NVE omtaler skredet som det mest alvorlige kvikkleireskredet i Norge i nyere tid. Skredet målte 240 × 700 meter. Massene rant så langt som 2 km, og 1,35 millioner kubikkmeter raste ut. 200 mennesker mistet hjemmet for godt (NVE, 2023).
 
 NVE gjengir utvalgets hovedfunn slik: erosjon i Tistilbekken gjennom flere år hadde forverret en allerede dårlig stabilitet i skråningen vest for Holmen. Skråningen tålte ikke den våte høsten og førjulsvinteren i 2020 (NVE, 2023).
 

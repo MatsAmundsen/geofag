@@ -191,7 +191,7 @@ Infrarøde satellitter og varmekameraer kan se at krateret eller sprekkene blir 
 
 Målingene brukes i fargekoder for luftfart: grønn, gul, oransje og rød. Kodene administreres av ICAO. Varselet til flyselskapene kalles VONA (Volcano Observatory Notice for Aviation), slik at flygninger kan legges om før asken når luftkorridorene.
 
-Les mer om jordskjelv og tsunamier i [Jordskjelv og tsunamier](/geofag-1/jordskjelv).
+Les mer om jordskjelv i [Jordskjelv og jordas indre](/geofag-1/jordskjelv) og om tsunamier i [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare).
 
 ## Vulkanske farer og klima
 
@@ -207,7 +207,7 @@ En slik strøm er en varm blanding av gass, pimpstein og stein. Den kan bevege s
 
 En lahar er en blanding av vulkansk aske, stein og vann som følger elvedaler. Den kan starte når varm tefra smelter snø og is, eller når regn vasker løs fersk aske. Blandingen er tykk, omtrent som våt betong.
 
-I Armero i Colombia i 1985 smeltet et utbrudd på Nevado del Ruiz en del av isbreen på toppen. Laharer gikk om lag 50 km ned dalen. Over 23 000 mennesker mistet livet.
+I Armero i Colombia i 1985 smeltet et utbrudd på Nevado del Ruiz en del av isbreen på toppen. Laharene nådde Armero, ca. 45 km fra vulkanen. Over 23 000 mennesker mistet livet.
 
 ### 3. Vulkansk vinter
 

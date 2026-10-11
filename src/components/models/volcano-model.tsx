@@ -1411,7 +1411,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
           Vulkanisme er et overflateuttrykk for varme fra jordas indre. Hvor eksplosivt et utbrudd blir, styres av hvor mye
           silikat (SiO₂) magmaen inneholder, og av om gassen slipper ut.{" "}
           <Link to="/geofag-1/jordskjelv" className="underline underline-offset-2">
-            Les mer om jordskjelv og tsunamier i kapittelet Jordskjelv og tsunamier.
+            Les mer om jordskjelv i kapitlet Jordskjelv og jordas indre.
           </Link>
         </ModelNote>
       </div>

@@ -13,10 +13,13 @@
   <url><loc>https://geofag.com/eksamen/eksempel</loc><priority>0.6</priority></url>
   <url><loc>https://geofag.com/geofag-1/jordsystemene</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/platetektonikk</loc><priority>0.8</priority></url>
-  <url><loc>https://geofag.com/geofag-1/vulkaner-og-jordskjelv</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geofag-1/vulkaner</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/jordskjelv</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/jordskjelv-naturfare</loc><priority>0.8</priority></url>
-  <url><loc>https://geofag.com/geofag-1/bergarter-og-landformer</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geofag-1/bergarter</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geofag-1/norges-geologi</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geofag-1/landformer</loc><priority>0.8</priority></url>
+  <url><loc>https://geofag.com/geofag-1/isbreer-og-landformer</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/vann-og-flom</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/skred</loc><priority>0.8</priority></url>
   <url><loc>https://geofag.com/geofag-1/geologiske-ressurser</loc><priority>0.8</priority></url>

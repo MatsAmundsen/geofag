@@ -522,7 +522,7 @@ const HAZARDS: {
       "Kan starte når varm tefra smelter snø og is, eller når regn vasker løs fersk aske.",
       "Blandingen er tykk, omtrent som våt betong.",
     ],
-    example: "Armero 1985: Nevado del Ruiz. Laharer gikk om lag 50 km. Over 23 000 mennesker mistet livet.",
+    example: "Armero 1985: Nevado del Ruiz. Laharene nådde Armero, ca. 45 km fra vulkanen. Over 23 000 mennesker mistet livet.",
   },
   {
     kind: "ash",
