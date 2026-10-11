@@ -19,6 +19,7 @@ import {
   type RefObject,
 } from "react";
 import { C } from "./svg-kit";
+import { scaledStepClock } from "./motion-config";
 
 /** CSS-piksler per viewBox-enhet. 0 før figuren er målt. IsbreFigur setter verdien. */
 export const FigureScale = createContext(0);
@@ -190,10 +191,15 @@ export function useInView<T extends Element>(): [RefObject<T | null>, boolean] {
 export function useStepClock(
   count: number,
   running: boolean,
-  stepMs: number,
-  holdMs = 900,
+  baseStepMs: number,
+  baseHoldMs = 900,
   initialStep = 1,
+  /** false = bruk tidene uendret (korte løkker, ikke steg-for-steg-forklaringer). */
+  scaled = true,
 ) {
+  const { stepMs, holdMs } = scaled
+    ? scaledStepClock(baseStepMs, baseHoldMs)
+    : { stepMs: baseStepMs, holdMs: baseHoldMs };
   const [state, setState] = useState({ step: clamp(initialStep, 1, count), phase: 1, loops: 0 });
   const total = stepMs + holdMs;
   useEffect(() => {

@@ -878,6 +878,30 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["dannet av mikroskopiske kiselalger", "For ca. 310 millioner år siden"],
   },
   {
+    // Geo F1/F2 + tilbakemelding: malen, kjerneelementer, menneskelig aktivitet (isbreer-mal).
+    flag: "g1-isbreer-mal-2026-10-11",
+    slug: "isbreer-og-landformer",
+    stale: ["*Isen som agent* – hvordan isbreen", "Det er en beslektet mekanisme til frostsprengning"],
+  },
+  {
+    // Geo F1/F2 + tilbakemelding: malen, modellering, flodbølger, overvåking per 2026 (skred-mal).
+    flag: "g1-skred-mal-2026-10-11",
+    slug: "skred",
+    stale: ["Over 1000 mennesker har mistet livet", "I vanlig sjøvann er saltinnholdet"],
+  },
+  {
+    // Fjell § 6 R1–R3 (KM-komma, SNL-kilder).
+    flag: "g1-jordsystemene-sjekk2-snl-2026-10-11",
+    slug: "jordsystemene",
+    stale: ["jordsystemene, og hvordan disse"],
+  },
+  {
+    // Fjells kapittel etter malen (Geo sjekk 2 godkjent).
+    flag: "g1-vann-og-flom-mal-2026-10-11",
+    slug: "vann-og-flom",
+    stale: ["Målet er at du skal kunne gjøre rede for det hydrologiske", "NVE kaller Hans den dyreste", "pinseflommen i 2011 og 2013", "cirka 144 000 brønner"],
+  },
+  {
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],

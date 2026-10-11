@@ -1550,58 +1550,241 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
 
 export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
   {
-    prompt: "Hvor ligger grunnvannet i en akvifer?",
+    prompt: "Hva er drivkraften i det hydrologiske kretsløpet?",
     options: [
-      "I underjordiske elver.",
-      "I porer i sand og grus, eller i sprekker i fjell.",
-      "Bare i innsjøer over bakken.",
+      "Jordas rotasjon",
+      "Tidevannet",
+      "Sola",
+      "Varmen fra jordas indre",
     ],
-    answer: 1,
-    explain:
-      "Se «Hva er en akvifer?». Grunnvann fyller porer og sprekker. Det er ikke elver under bakken.",
+    answer: 2,
+    explain: "Sola varmer opp hav og land, slik at vann fordamper. Se «Hva er det hydrologiske kretsløpet?».",
   },
   {
     prompt: "Hvorfor har godt sortert grus og sand høyere permeabilitet enn silt og leire?",
     options: [
-      "Grus og sand som er løst pakket og godt sortert, har store hulrom. Silt og leire er tett pakket og har lav permeabilitet.",
-      "Leire har alltid høyere permeabilitet enn sand.",
-      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet.",
+      "Grus og sand har store, sammenhengende hulrom, mens silt og leire er tett pakket",
+      "Leire har ingen porer",
+      "Permeabiliteten i løsmasser styres bare av sprekker i fjellet",
+      "Grus og sand inneholder mer salt",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er en akvifer?». NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser.",
+    explain: "NGU beskriver sortering og pakking som det som styrer permeabiliteten i løsmasser. Se «Hva er en akvifer?».",
   },
   {
-    prompt: "Hva skiller en regnflom fra en snøsmelteflom?",
+    prompt: "Hva betyr det at en flom er en 100-årsflom?",
     options: [
-      "Regnflom skyldes bare regn, og er ofte de største flommene på Sørlandet og Vestlandet. Snøsmelteflom skyldes snøsmelting alene, og er de største vårflommene i store vassdrag i Finnmark.",
-      "Begge skyldes bare regn på asfalt.",
-      "Snøsmelteflom er flom som bare kommer av tidevann.",
+      "Den kommer nøyaktig hvert hundrede år",
+      "Den har 10 prosent sannsynlighet hvert år",
+      "Den kan bare komme én gang i livet",
+      "Den har 1 prosent sannsynlighet for å bli overskredet hvert år",
+    ],
+    answer: 3,
+    explain: "Gjentaksintervallet er et gjennomsnitt. En 100-årsflom kan komme to år på rad (Varsom).",
+  },
+  {
+    prompt: "Hva skjer med avrenningen når et nedbørfelt bygges ut med mange tette flater?",
+    options: [
+      "Mer vann infiltrerer",
+      "Avrenningen blir raskere, og flomtoppen blir større",
+      "Fordampningen øker kraftig",
+      "Grunnvannstanden stiger alltid",
+    ],
+    answer: 1,
+    explain: "Vannet kan ikke trenge ned i asfalt og tak. NVE peker også på at grunnvannstanden kan synke. Se «Hvordan påvirker mennesket vannets kretsløp?».",
+  },
+  {
+    prompt: "Hvordan kan et reguleringsmagasin dempe en flom?",
+    options: [
+      "Ved å ha ledig plass når flommen kommer, slik at vann holdes tilbake",
+      "Ved å slippe alt vannet på en gang",
+      "Ved å øke minstevannføringen",
+      "Ved å fryse vannet om vinteren",
     ],
     answer: 0,
-    explain: "Se «Hva er en flom?». Skillet står i ordlisten til Varsom.",
+    explain: "Ledig magasinkapasitet gir lavere flomtopp nedstrøms. Effekten minker jo større flommen er (NVE).",
   },
+  {
+    prompt: "Hvilket utsagn om ferskvann i verden er riktig?",
+    options: [
+      "Det meste av ferskvannet ligger i elver og innsjøer",
+      "Grunnvann brukes nesten ikke",
+      "Omtrent halvparten av verdens befolkning har alvorlig vannmangel i minst en del av året",
+      "Industrien bruker mest ferskvann",
+    ],
+    answer: 2,
+    explain: "Ferskvannet ligger mest i is og grunnvann. Jordbruket bruker 72 prosent av uttaket (UNESCO).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan leire holde mye vann, men likevel være en dårlig akvifer?",
+    options: [
+      "Leire har ingen hulrom",
+      "Leire har høy porøsitet, men lav permeabilitet, så vannet strømmer dårlig",
+      "Leire ligger alltid over grunnvannsspeilet",
+    ],
+    answer: 1,
+    explain: "Porøsitet er hvor mye hulrom det er. Permeabilitet er om vannet kan strømme. Leire har små, tette porer og slipper lite vann gjennom.",
+  },
+  {
+    prompt: "Hvorfor renner elva fortsatt etter flere uker uten regn?",
+    options: [
+      "Fordi grunnvann siger inn i elva hele tiden",
+      "Fordi havet presser vann opp i elva",
+      "Fordi elvevann ikke fordamper",
+    ],
+    answer: 0,
+    explain: "Grunnvannet strømmer langsomt mot elva. I en tørkeperiode kan 40–100 prosent av vannet i elva være grunnvann (NGU).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_2: QuizQuestion[] = [
   {
     prompt: "Hva viser et hydrogram?",
     options: [
-      "Vannføring mot tid. Figuren sammenligner en spiss regnflom med en bred snøsmelteflom.",
-      "Hvor dypt grunnvannsspeilet ligger i fjell.",
-      "Hvor mange millimeter som falt på Geilo i 1938.",
+      "Grunnvannsspeilet mot dybde",
+      "Nedbør mot temperatur",
+      "Vannføring mot tid",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er et hydrogram?». Vannføring er volum per tidsenhet. Hydrogrammet er den kurven mot tid.",
+    answer: 2,
+    explain: "Hydrogrammet er vannføringen i en elv tegnet mot tid.",
   },
   {
-    prompt: "Hva kan du si om elva i en tørkeperiode?",
+    prompt: "Hvorfor gir en regnflom i et lite, bratt felt en spiss topp?",
     options: [
-      "Elvene kan bestå av 40–100 prosent grunnvann.",
-      "Elva får alt vannet fra havet.",
-      "Grunnvannet slutter å bidra så snart det slutter å regne.",
+      "Vannet når elva raskt fordi det er lite lagringsplass i feltet",
+      "Regnet fryser til is før det når elva",
+      "Grunnvannet stopper all avrenning",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er en akvifer?». NGU skriver at elvene i en tørkeperiode med lav vannføring kan bestå av 40–100 prosent grunnvann.",
+    explain: "I et lite, bratt felt med få innsjøer og tynne løsmasser renner vannet raskt til elva. Toppen kommer fort og forsvinner fort.",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_3: QuizQuestion[] = [
+  {
+    prompt: "En elv hadde en 100-årsflom i fjor. Hva er sannsynligheten for en like stor flom i år?",
+    options: [
+      "0 prosent, den kommer ikke før om 99 år",
+      "50 prosent",
+      "1 prosent, som alle andre år",
+    ],
+    answer: 2,
+    explain: "En 100-årsflom har 1 prosent sannsynlighet hvert år. Den kan komme to år på rad, selv om det er lite sannsynlig.",
+  },
+  {
+    prompt: "Hvilken flomtype gir ofte de største flommene på Østlandet?",
+    options: [
+      "Regn- og snøsmelteflom",
+      "Stormflo",
+      "Overvann i kjelleren",
+    ],
+    answer: 0,
+    explain: "Vesleofsen i 1995 og flommene i 2011 og 2013 kom av mye regn og sterk snøsmelting samtidig (Varsom).",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_4: QuizQuestion[] = [
+  {
+    prompt: "Hvordan endrer en ny by med mye asfalt hydrogrammet i bekken nedenfor?",
+    options: [
+      "Toppen blir lavere og kommer senere",
+      "Toppen blir høyere og kommer raskere",
+      "Ingenting, for regnet er det samme",
+    ],
+    answer: 1,
+    explain: "Tette flater gir mindre infiltrasjon og raskere overflateavrenning. Da kommer mer vann raskere fram til bekken (NVE).",
+  },
+  {
+    prompt: "Hva er minstevannføring?",
+    options: [
+      "Den laveste vannføringen som er målt i en elv",
+      "Vannet som skal tappes fra magasinet før en flom",
+      "En viss mengde vann som et kraftverk alltid må slippe forbi på en elvestrekning",
+    ],
+    answer: 2,
+    explain: "NVE setter ofte vilkår om minstevannføring for å ta vare på naturmangfold og friluftsliv på strekninger som får mindre vann.",
+  },
+];
+
+export const QUIZ_SJEKK_VANN_OG_FLOM_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor kommer det meste av vannforsyningen i Norge fra?",
+    options: [
+      "Grunnvann",
+      "Overflatevann fra innsjøer og elver",
+      "Avsaltet sjøvann",
+    ],
+    answer: 1,
+    explain: "Grunnvann utgjør bare ca. 15 prosent av vannforsyningen i Norge, fordi vi har mye rent overflatevann (NGU).",
+  },
+  {
+    prompt: "Hva betyr det at et grunnvannsuttak er bærekraftig?",
+    options: [
+      "At vi tar ut så mye vi trenger, uansett hvor mye som dannes",
+      "At vannet bare brukes til jordbruk",
+      "At uttaket ikke er større enn det som fornyes, og at vannet holdes rent",
+    ],
+    answer: 2,
+    explain: "Tar vi ut mer enn det som fornyes, synker grunnvannsspeilet. Ved kysten kan saltvann trenge inn (UNESCO).",
+  },
+];
+
+export const QUIZ_SJEKK_SKRED_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan marin leire bli kvikk?",
+    options: [
+      "Fordi ferskt grunnvann vasker ut saltet, slik at bindingene i korthusstrukturen svekkes",
+      "Fordi leira blir varmet opp av grunnvannet",
+      "Fordi isen presset leira sammen under istida",
+    ],
+    answer: 0,
+    explain: "Saltvannet holder korthusstrukturen sammen. Synker saltinnholdet under ca. 2 g/l, svekkes bindingene (NGU).",
+  },
+  {
+    prompt: "Kan et kvikkleireskred ta med seg et nesten flatt jorde?",
+    options: [
+      "Nei, skred går bare i bratte skråninger",
+      "Ja, fordi skredet kan forplante seg bakover når kanten mister støtten",
+      "Bare hvis det regner samtidig",
+    ],
+    answer: 1,
+    explain: "Et bakoverforplantende (retrogressivt) skred sprer seg bakover til lommen er tømt. Derfor kan det nå langt inn i flatt terreng.",
+  },
+  {
+    prompt: "Hva er de vanligste utløserne av kvikkleireskred?",
+    options: [
+      "Jordskjelv og vulkanutbrudd",
+      "Snøsmelting på fjellet",
+      "Erosjon fra bekker og elver, og graving eller fylling i skråningen",
+    ],
+    answer: 2,
+    explain: "Erosjon og menneskers tiltak overbelaster leira oftest. Graving og fylling er blant de vanligste årsakene i nyere tid.",
+  },
+];
+
+export const QUIZ_SJEKK_SKRED_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er flodbølger den største faren ved fjellskred i Norge?",
+    options: [
+      "Fordi skredmassene som treffer en fjord eller innsjø, kan sende bølger langt opp på land og langt unna",
+      "Fordi steinene alltid ruller helt ned til sjøen",
+      "Fordi fjellskred bare skjer under vann",
+    ],
+    answer: 0,
+    explain: "I Tafjord 1934 nådde bølgene 61 m opp på land, og i Loen 1936 74 m. Bølgen rammer bygder som ligger langt fra selve skredet.",
+  },
+  {
+    prompt: "Hvilke fjellpartier overvåker NVE kontinuerlig?",
+    options: [
+      "Alle bratte fjellsider i Norge",
+      "Fjellpartier med høy risiko, som Åknes og Mannen",
+      "Bare fjellpartier som allerede har rast ut",
+    ],
+    answer: 1,
+    explain: "Høy risiko gir kontinuerlig overvåking med minst to uavhengige målesystemer. Moderat risiko gir periodisk overvåking.",
   },
 ];
 
@@ -1609,22 +1792,22 @@ export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hva skjer når kvikkleire blir overbelastet?",
     options: [
-      "Korthusstrukturen kollapser, og leira blir flytende.",
       "All marin leire er allerede flytende fra den ble avsatt.",
+      "Korthusstrukturen kollapser, og leira blir flytende.",
       "Leira blir fastere fordi saltinnholdet øker.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hva er kvikkleire?». Overbelastning får strukturen til å kollapse. I omrørt tilstand er leira flytende.",
   },
   {
     prompt: "Hvordan kan saltet i marin leire forsvinne?",
     options: [
-      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
       "All marin leire er kvikk allerede da den ble avsatt i sjøen.",
       "Saltet forsvinner så snart det har regnet én dag.",
+      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Hva er kvikkleire?». Leira er tett, så utvaskingen tar mange hundre til flere tusen år. Ikke all marin leire blir kvikk.",
   },
@@ -1642,22 +1825,22 @@ export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hvorfor overvåkes Åknes kontinuerlig?",
     options: [
-      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
       "Åknes er et jordskred som går i en elv hvert år.",
       "Grønt jordskredvarsel dekker også fjellskred fra Åknes.",
+      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Hva er et fjellskred?». Åknes overvåkes kontinuerlig fordi et skred kan gi flodbølger, og varselet skal komme i tide.",
   },
   {
     prompt: "Hva sier et grønt jordskredvarsel om steinsprang og kvikkleire?",
     options: [
-      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
       "Grønt nivå betyr at steinsprang og kvikkleire er avblåst.",
+      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
       "Varselet gjelder bare kvikkleire.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hvordan kan vi forebygge og tilpasse oss?». Jordskredvarselet gjelder jordskred, sørpeskred og flomskred. Steinsprang og kvikkleireskred inngår ikke.",
   },
@@ -2012,6 +2195,128 @@ export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_ISBRE_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er en fjord?",
+    options: [
+      "En V-dal som havet har fylt",
+      "En U-dal som isen har gravd ut under havnivå, og som ble fylt med sjø",
+      "En dal som havet selv har gravd ut",
+    ],
+    answer: 1,
+    explain: "Isen grov dalbunnen ned under havnivå. Da isen smeltet, ble dalen fylt med sjø. Fjord og U-dal er samme landform, men med ulik vannstand.",
+  },
+  {
+    prompt: "Hvorfor blir en sidedal ofte hengende høyt oppe i dalsiden?",
+    options: [
+      "Breen i sidedalen var tynnere og eroderte mindre enn breen i hoveddalen",
+      "Elva i sidedalen har bygd opp dalbunnen",
+      "Sidedalen er hevet av et jordskjelv",
+    ],
+    answer: 0,
+    explain: "Hoveddalen hadde mer og raskere is og ble gravd dypere. Sidedalen ble liggende igjen høyere oppe.",
+  },
+  {
+    prompt: "Hva forteller skuringsstriper i berget?",
+    options: [
+      "Hvor gammelt berget er",
+      "Hvor tykk isen var",
+      "Hvilken retning isen beveget seg",
+    ],
+    answer: 2,
+    explain: "Stripene er riper fra steiner i bresålen. De går i samme retning som isen beveget seg.",
+  },
+];
+
+export const QUIZ_SJEKK_ISBRE_2: QuizQuestion[] = [
+  {
+    prompt: "Hva skiller morene fra breelvmateriale?",
+    options: [
+      "Morene er sortert i lag, breelvmateriale er usortert",
+      "Morene er usortert fordi isen fraktet den, breelvmateriale er sortert av smeltevann",
+      "Det er to navn på det samme materialet",
+    ],
+    answer: 1,
+    explain: "Isen skiller ikke kornstørrelsene, så morenen blir usortert. Smeltevannet sorterer materialet slik rennende vann alltid gjør.",
+  },
+  {
+    prompt: "Hvordan ble en esker dannet?",
+    options: [
+      "Smeltevann avsatte sand og grus i en tunnel under isen",
+      "Isen dyttet morene foran seg ved brefronten",
+      "Vinden blåste sand sammen etter istida",
+    ],
+    answer: 0,
+    explain: "En esker er en lang, svingete rygg av sand og grus fra en smeltevannstunnel under isen.",
+  },
+  {
+    prompt: "Hva er Raet?",
+    options: [
+      "Én stor morenehaug ved Oslofjorden",
+      "En fjord fra siste istid",
+      "Et israndtrinn fra yngre dryas, en lang sone av morene, breelvgrus og strandmateriale",
+    ],
+    answer: 2,
+    explain: "Raet ble dannet da isfronten sto stille eller rykket fram i yngre dryas. Det er en lang sone, ikke én haug.",
+  },
+];
+
+export const QUIZ_SJEKK_ISBRE_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor hever landet i Norge seg fortsatt?",
+    options: [
+      "Fordi vekten av innlandsisen er borte, og landet er på vei tilbake mot likevekt",
+      "Fordi havet synker over hele jorda",
+      "Fordi platene kolliderer under Norge",
+    ],
+    answer: 0,
+    explain: "Isen presset landet ned. Når vekten forsvant, begynte landet å heve seg igjen. Det er isostasi i praksis.",
+  },
+  {
+    prompt: "Hva er marin grense?",
+    options: [
+      "Grensen mellom salt og ferskt vann i en fjord",
+      "Det høyeste nivået havet nådde etter siste istid",
+      "Dybden der isen sluttet å grave",
+    ],
+    answer: 1,
+    explain: "Marin grense ligger mellom 0 og 220 meter over dagens havnivå i Norge. Over den kan du i praksis utelukke marin leire.",
+  },
+  {
+    prompt: "Hvorfor kan trykkavlastning få berget til å skalle av?",
+    options: [
+      "Fordi vann fryser i sprekkene",
+      "Fordi vekten av isen forsvinner, og berget utvider seg litt",
+      "Fordi syre i regnvannet løser opp mineralene",
+    ],
+    answer: 1,
+    explain: "Trykkavlastning er, som frostsprengning, mekanisk forvitring, men mekanismen er en annen: berget utvider seg når vekten forsvinner.",
+  },
+];
+
+export const QUIZ_SJEKK_ISBRE_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er breelvdeltaet på Gardermoen viktig for mennesker?",
+    options: [
+      "Det er en stor kilde til sand og grus, og den største selvmatende grunnvannsforekomsten i Norge",
+      "Det er den eneste aktive isbreen på Østlandet",
+      "Det beskytter mot kvikkleireskred",
+    ],
+    answer: 0,
+    explain: "Den sorterte breelvsanden er en ressurs og et grunnvannsmagasin. Derfor må uttak og arealbruk tilpasses så grunnvannet ikke blir forurenset.",
+  },
+  {
+    prompt: "Hva skjer med norske breer i dag?",
+    options: [
+      "De vokser fordi det faller mer snø",
+      "De er stabile",
+      "De krymper. Arealet er 14 prosent mindre enn i 1999–2006",
+    ],
+    answer: 2,
+    explain: "Kartleggingen fra 2018–2019 viste 2328 km² bre, 14 prosent mindre enn i 1999–2006 (NVE, 2022).",
+  },
+];
+
 export const QUIZ_ISBRE: QuizQuestion[] = [
   {
     prompt: "Hvorfor er morene usortert, mens breelvmateriale er sortert?",
@@ -2038,7 +2343,7 @@ export const QUIZ_ISBRE: QuizQuestion[] = [
       "Stripene er laget av steiner i bresålen og går i samme retning som isen. Se «Rundsva og skuringsstriper».",
   },
   {
-    prompt: "Hva er forskjellen på en fjord og en U-dal som Gudbrandsdalen?",
+    prompt: "Hva er forskjellen på en fjord og en U-dal på land?",
     options: [
       "Fjorden er laget av elv, U-dalen av is",
       "Begge er gravd ut av is, men bunnen i fjorden ligger under havnivå",

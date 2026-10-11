@@ -52,6 +52,17 @@ import {
   QUIZ_SJEKK_JORDSYSTEMENE_1,
   QUIZ_SJEKK_JORDSYSTEMENE_2,
   QUIZ_SJEKK_JORDSYSTEMENE_3,
+  QUIZ_SJEKK_ISBRE_1,
+  QUIZ_SJEKK_ISBRE_2,
+  QUIZ_SJEKK_ISBRE_3,
+  QUIZ_SJEKK_ISBRE_4,
+  QUIZ_SJEKK_SKRED_1,
+  QUIZ_SJEKK_SKRED_2,
+  QUIZ_SJEKK_VANN_OG_FLOM_1,
+  QUIZ_SJEKK_VANN_OG_FLOM_2,
+  QUIZ_SJEKK_VANN_OG_FLOM_3,
+  QUIZ_SJEKK_VANN_OG_FLOM_4,
+  QUIZ_SJEKK_VANN_OG_FLOM_5,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -59,6 +70,17 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Platetektonikk1: QUIZ_MELTING,
   Platetektonikk2: QUIZ_BOUNDARIES,
   Platetektonikk3: QUIZ_OFIOLITT_WILSON,
+  Isbre1: QUIZ_SJEKK_ISBRE_1,
+  Isbre2: QUIZ_SJEKK_ISBRE_2,
+  Isbre3: QUIZ_SJEKK_ISBRE_3,
+  Isbre4: QUIZ_SJEKK_ISBRE_4,
+  Skred1: QUIZ_SJEKK_SKRED_1,
+  Skred2: QUIZ_SJEKK_SKRED_2,
+  VannOgFlom1: QUIZ_SJEKK_VANN_OG_FLOM_1,
+  VannOgFlom2: QUIZ_SJEKK_VANN_OG_FLOM_2,
+  VannOgFlom3: QUIZ_SJEKK_VANN_OG_FLOM_3,
+  VannOgFlom4: QUIZ_SJEKK_VANN_OG_FLOM_4,
+  VannOgFlom5: QUIZ_SJEKK_VANN_OG_FLOM_5,
   Landformer1: QUIZ_SJEKK_LANDFORMER_1,
   Landformer2: QUIZ_SJEKK_LANDFORMER_2,
   Landformer3: QUIZ_SJEKK_LANDFORMER_3,
@@ -102,6 +124,27 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
 export const SAMMENDRAG: Record<string, readonly string[]> = {
+  Isbre: [
+    "En isbre er is av sammenpresset snø som siger nedover under sin egen tyngde. Næringsområdet øverst og tæringsområdet nederst avgjør massebalansen.",
+    "Isen eroderer ved plukking og skuring og har gravd ut U-daler, fjorder, botner, egger og tinder. Skuringsstriper og rundsva viser hvilken vei isen gikk.",
+    "Isen avsatte usortert morene, mens smeltevannet sorterte breelvmateriale. Endemorener, Raet, esker, drumlin og breelvdeltaer forteller hvor isfronten sto.",
+    "Frostsprengning og trykkavlastning er mekanisk forvitring. Etter istida har landet hevet seg, og marin grense ligger 0–220 m over dagens havnivå.",
+    "Mennesker tar ut sand og grus og henter grunnvann fra isens avsetninger, og bygger på marin leire. Norske breer krymper i et varmere klima.",
+  ],
+  Skred: [
+    "Skred er masser av fjell, stein, jord, leire eller snø som beveger seg ned en skråning. Vi skiller steinsprang, steinskred, fjellskred, jordskred, flomskred og kvikkleireskred.",
+    "Kvikkleire er marin leire der saltet er vasket ut. Overbelastes den, kollapser korthusstrukturen, og skredet kan forplante seg bakover, slik det gjorde i Gjerdrum i 2020.",
+    "Fjellskred som går ut i en fjord eller innsjø, kan gi flodbølger, som i Tafjord 1934 og Loen 1905 og 1936. NVE overvåker ustabile fjellpartier med høy risiko kontinuerlig.",
+    "Aktsomhetskart og faresonekart bygger på utløpsmodeller, og Varsom varsler jordskred, sørpeskred og flomskred. Erosjonssikring og motfyllinger kan stabilisere leirskråninger.",
+  ],
+  VannOgFlom: [
+    "Det hydrologiske kretsløpet flytter vann fra hav og land til lufta og tilbake. Sola er drivkraften, og vannet lagres underveis i snø, mark, grunnvann, innsjøer og elver.",
+    "Grunnvann fyller porer og sprekker i akviferer. Porøsiteten sier hvor mye vann bakken kan holde, og permeabiliteten om vannet kan strømme. I en tørkeperiode kan elvene bestå av 40–100 prosent grunnvann.",
+    "Et hydrogram viser vannføringen mot tid. Regnflommer gir spisse topper, og snøsmelteflommer gir brede. En 100-årsflom har 1 prosent sannsynlighet hvert år.",
+    "Hans i august 2023 ga nedbør som tilsvarte en returverdi på 100 år over store områder, og er det dyreste ekstremværet i Norsk Naturskadepools historie målt i erstatninger.",
+    "Mennesket endrer kretsløpet. Tette flater gir raskere avrenning og høyere flomtopper, drenering fjerner myrenes svamp, og vassdragsregulering flytter vann i tid og kan dempe flom.",
+    "Bærekraftig bruk av ferskvann betyr at uttaket ikke er større enn det som fornyes, at vannet holdes rent, og at vann, land og natur forvaltes samlet. Globalt mangler 2,2 milliarder mennesker trygt forvaltet drikkevann.",
+  ],
   Landformer: [
     "Landformene er resultatet av indre krefter som løfter berggrunnen, og ytre krefter som bryter den ned og flytter materialet.",
     "Forvitring bryter ned berget der det ligger. Mekanisk forvitring, som frostsprengning, deler berget opp, og kjemisk forvitring omdanner mineralene.",

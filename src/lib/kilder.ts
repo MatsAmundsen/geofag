@@ -17,6 +17,13 @@ export const KILDER = {
       href: "https://snl.no/Norges_geologi",
     },
     {
+      prefix:
+        "Canadell, J. G., Monteiro, P. M. S., Costa, M. H., mfl. (2021). Global carbon and other biogeochemical cycles and feedbacks. I V. Masson-Delmotte mfl. (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 673–816). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.007",
+    },
+    {
       prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
       italic: "The ICS International Chronostratigraphic Chart",
       suffix: " (v2026/06). International Commission on Stratigraphy.",
@@ -101,10 +108,22 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/om-losmasser",
     },
     {
+      prefix: "Spjeldnæs, N. (2025, 5. september). ",
+      italic: "Forvitring",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/forvitring",
+    },
+    {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
       italic: "Volcanoes can affect climate",
       suffix: ".",
       href: "https://www.usgs.gov/programs/VHP/volcanoes-can-affect-climate",
+    },
+    {
+      prefix: "Vestgarden, L. S., & Aarnes, H. (2026, 27. mai). ",
+      italic: "Karbonkretsløpet",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/karbonkretsløpet",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -1284,6 +1303,24 @@ export const KILDER = {
   ],
   isbre: [
     {
+      prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
+      italic: "Glaciers and glaciation",
+      suffix: " (2. utg.). Hodder Education.",
+    },
+    {
+      prefix: "Bryhni, I., & Lilleøren, K. (2024, 25. november). ",
+      italic: "Hengende dal",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/hengende_dal",
+    },
+    {
+      prefix:
+        "Dagestad, A., Seither, A., Jæger, Ø., Tassis, G., Minde, Å., & Gundersen, P. (2021). ",
+      italic: "Gardermoen: Kartlegging og overvåking av typelokaliteter for grunnvann med antropogen belastning",
+      suffix: " (NGU-rapport 2020.026). Norges geologiske undersøkelse.",
+      href: "https://www.ngu.no/publikasjon/gardermoen-kartlegging-og-overvaking-av-typelokaliteter-grunnvann-med-antropogen",
+    },
+    {
       prefix: "Mangerud, J. (2025, 9. oktober). ",
       italic: "Weichsel",
       suffix: ". I Store norske leksikon.",
@@ -1351,7 +1388,31 @@ export const KILDER = {
       href: "https://snl.no/Raet",
     },
     {
-      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
+      prefix: "Store norske leksikon [SNL]. (u.å.-d). ",
+      italic: "Rundsva",
+      suffix: ".",
+      href: "https://snl.no/rundsva",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-e). ",
+      italic: "Gudbrandsdalen",
+      suffix: ".",
+      href: "https://snl.no/Gudbrandsdalen",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-f). ",
+      italic: "Mekanisk forvitring",
+      suffix: ".",
+      href: "https://snl.no/mekanisk_forvitring",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
       italic: "Kompetansemål etter geofag 1 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
@@ -1458,9 +1519,38 @@ export const KILDER = {
   ],
   vannFlom: [
     {
+      prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
+      italic: "The ICS International Chronostratigraphic Chart",
+      suffix: " (v2026/06). International Commission on Stratigraphy.",
+      href: "https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf",
+    },
+    {
+      prefix: "Dingman, S. L. (2015). ",
+      italic: "Physical hydrology",
+      suffix: " (3. utg.). Waveland Press.",
+    },
+    {
+      prefix: "Energidepartementet. (u.å.). ",
+      italic: "Kraftproduksjon",
+      suffix: ". Energifakta Norge.",
+      href: "https://energifaktanorge.no/norsk-energiforsyning/kraftforsyningen/",
+    },
+    {
+      prefix: "FN-sambandet. (u.å.). ",
+      italic: "Rent vann og gode sanitærforhold",
+      suffix: ".",
+      href: "https://fn.no/om-fn/fns-baerekraftsmaal/rent-vann-og-gode-sanitaerforhold",
+    },
+    {
       prefix: "Freeze, R. A., & Cherry, J. A. (1979). ",
       italic: "Groundwater",
       suffix: ". Prentice-Hall.",
+    },
+    {
+      prefix: "Granerød, M., Stabell, D., Mjelstad, H., & Tajet, H. T. T. (2023). ",
+      italic: "Ekstremværet «Hans», ekstremt mye nedbør i deler av Sør-Norge 07.–09. august 2023",
+      suffix: " (MET-info nr. 26/2023). Meteorologisk institutt.",
+      href: "https://www.met.no/publikasjoner/met-info/ekstremvaer",
     },
     {
       prefix: "Meteorologisk institutt [MET]. (2023). ",
@@ -1469,58 +1559,154 @@ export const KILDER = {
       href: "https://www.met.no/nyhetsarkiv/over-100-ar-siden-det-har-regnet-sa-mye-pa-ostlandet",
     },
     {
+      prefix: "Miljødirektoratet. (u.å.). ",
+      italic: "Våtmark – klimatilpassing",
+      suffix: ".",
+      href: "https://www.miljodirektoratet.no/ansvarsomrader/klima/for-myndigheter/klimatilpasning/dome-pa-naturbaserte-loysingar/vassdrag-og-vatmark/vatmark/",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
+      italic: "Forvaltning av grunnvann",
+      suffix: ".",
+      href: "https://www.ngu.no/geologiske-ressurser/forvaltning-av-grunnvann",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
       italic: "Grunnvann",
       suffix: ".",
       href: "https://www.ngu.no/geologiske-ressurser/grunnvann",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
       italic: "Grunnvannets bevegelse",
       suffix: ".",
       href: "https://www.ngu.no/geologiske-ressurser/grunnvannets-bevegelse",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-c). ",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-d). ",
       italic: "Grunnvannsressurser",
       suffix: ".",
       href: "https://www.ngu.no/geologiske-ressurser/grunnvannsressurser",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-d). ",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-e). ",
+      italic: "Om løsmasser",
+      suffix: ".",
+      href: "https://www.ngu.no/om-geologi/om-losmasser",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-f). ",
       italic: "Om nasjonal grunnvannsdatabase (GRANADA)",
       suffix: ".",
       href: "https://www.ngu.no/node/274",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-e). ",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-g). ",
       italic: "Vannets kretsløp",
       suffix: ".",
       href: "https://www.ngu.no/grunnvann/generelt-om-grunnvann/vannets-kretsløp",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
+      italic: "Hvor stor del av vannkraften i Norge er fleksibel?",
+      suffix: " (NVE Fakta nr. 1/2023).",
+      href: "https://publikasjoner.nve.no/fakta/2023/fakta2023_01.pdf",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2024, 4. januar). ",
+      italic: "Tørke-, flom- og jordskredåret 2023",
+      suffix: ".",
+      href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/toerke-flom-og-jordskredaaret-2023/",
+    },
+    {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
+      italic: "Fakta om vannets kretsløp",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/fakta-om-vannets-kretsloep/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
       italic: "Flom",
       suffix: ".",
       href: "https://www.nve.no/naturfare/laer-om-naturfare/flom/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-c). ",
+      italic: "Klima",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/klima/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-d). ",
+      italic: "Krav knyttet til manøvreringsreglement",
+      suffix: ".",
+      href: "https://www.nve.no/konsesjon/konsesjonsbehandling-av-vannkraft/vilkaarsrevisjoner-innkallinger-og-omgjoeringer/vilkaarsrevisjoner/krav-knyttet-til-manoevreringsreglement/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-e). ",
+      italic: "Lær om overvann",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/laer-om-naturfare/laer-om-overvann",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-f). ",
       italic: "Markvann og grunnvann",
       suffix: ".",
       href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/markvann-og-grunnvann/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-c). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-g). ",
       italic: "Regnflom",
       suffix: ".",
       href: "https://www.nve.no/naturfare/laer-om-naturfare/flom/regnflom/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2024). ",
-      italic: "Tørke-, flom- og jordskredåret 2023",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-h). ",
+      italic: "Urbanhydrologiske målinger",
       suffix: ".",
-      href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/toerke-flom-og-jordskredaaret-2023/",
+      href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/maalinger-og-maalenett/urbanhydrologiske-maalinger/",
+    },
+    {
+      prefix: "Norsk Naturskadepool. (2025, 5. november). ",
+      italic: "Oppdaterte naturskadetall etter «Amy» og «Hans»",
+      suffix: ".",
+      href: "https://www.naturskade.no/nyheter/2025/oppdaterte-naturskadetall-etter-amy-og-hans",
+    },
+    {
+      prefix: "Oslo kommune. (u.å.). ",
+      italic: "Slik bygger vi ny vannforsyning",
+      suffix: ".",
+      href: "https://www.oslo.kommune.no/vann-og-avlop/ny-vannforsyning-oslo/slik-bygger-vi-ny-vannforsyning/",
+    },
+    {
+      prefix: "Roald, L. A. (2015). ",
+      italic: "Flommen på Østlandet i mai 2013",
+      suffix: " (NVE Rapport nr. 21/2015). Norges vassdrags- og energidirektorat.",
+      href: "https://publikasjoner.nve.no/rapport/2015/rapport2015_21.pdf",
+    },
+    {
+      prefix: "UNESCO. (2022). ",
+      italic: "The United Nations World Water Development Report 2022: Groundwater – Making the invisible visible",
+      suffix: ". UNESCO på vegne av UN-Water.",
+      href: "https://www.unesco.org/reports/wwdr/2022/en",
+    },
+    {
+      prefix: "UNESCO. (2024a). ",
+      italic: "The United Nations World Water Development Report 2024: Water for prosperity and peace",
+      suffix: ". UNESCO på vegne av UN-Water.",
+      href: "https://www.unesco.org/reports/wwdr/en/2024",
+    },
+    {
+      prefix: "UNESCO. (2024b, 22. mars). ",
+      italic: "Water crises threaten world peace (report)",
+      suffix: " [Pressemelding].",
+      href: "https://www.unesco.org/en/articles/water-crises-threaten-world-peace-report",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
+      italic: "Where is Earth's water?",
+      suffix: "",
+      href: "https://www.usgs.gov/special-topics/water-science-school/science/where-earths-water",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -1546,13 +1732,26 @@ export const KILDER = {
       suffix: ".",
       href: "https://varsom.no/flom-og-jordskred/om-flom-og-jordskred/varflom/",
     },
+    {
+      prefix: "Weldon, S., Parmentier, F.-J. W., Grønlund, A., & Silvennoinen, H. (2016). ",
+      italic: "Restaurering av myr: Potensialet for karbonlagring og reduksjon av klimagassutslipp",
+      suffix: " (NIBIO Rapport 2(113)). Norsk institutt for bioøkonomi.",
+      href: "https://www.miljodirektoratet.no/globalassets/publikasjoner/m628/m628.pdf",
+    },
   ],
+
   skred: [
     {
       prefix: "Gjerdrumutvalget. (2021). ",
       italic: "Årsakene til kvikkleireskredet i Gjerdrum 2020",
       suffix: ". Delrapport, vedlegg til NOU 2022: 3. Olje- og energidepartementet.",
       href: "https://www.regjeringen.no/contentassets/3dadc8f7fad94608861163fa524023c0/no/pdfs/arsakene-til-kvikkleireskredet-i-gjerdrum-2020.pdf",
+    },
+    {
+      prefix: "Meld. St. 15 (2011–2012). (2012). ",
+      italic: "Hvordan leve med farene – om flom og skred",
+      suffix: ". Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/no/dokumenter/meld-st-15-20112012/id674204/",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -1579,10 +1778,16 @@ export const KILDER = {
       href: "https://www.ngu.no/geologi-og-risiko/skred-og-ras",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
       italic: "Historiske fjellskred i Norge",
       suffix: " [Veileder: Fjellskred].",
       href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Fjellskredovervåking",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2020a). ",
@@ -1621,10 +1826,16 @@ export const KILDER = {
       href: "https://www.nve.no/naturfare/laer-om-naturfare/om-skred/kva-er-kvikkleire-og-kvikkleireskred/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023a). ",
       italic: "Bakgrunn og historie",
       suffix: " [Gjerdrum].",
       href: "https://www.nve.no/naturfare/sikringstiltak/sikringsprosjekter/gjerdrum/bakgrunn-og-historie/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023b). ",
+      italic: "Nye aktsomhetskart for snøskred i Norge",
+      suffix: " (NVE Ekstern rapport 24/2023).",
+      href: "https://publikasjoner.nve.no/eksternrapport/2023/eksternrapport2023_24.pdf",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026a). ",
@@ -1637,6 +1848,12 @@ export const KILDER = {
       italic: "Åknes",
       suffix: ".",
       href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026c). ",
+      italic: "Fjellskred fra Åknes: Reviderte scenarioer, sannsynligheter og konsekvenser",
+      suffix: " (NVE Rapport 16/2026).",
+      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
