@@ -338,6 +338,22 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Nigardsbreen, en arm av Jostedalsbreen",
   },
   {
+    // Geologisk tid: etter avsnittet om grensene i tidsskalaen, før tabellen over hendelser i Norge.
+    widgets: ["GeotidTidslinje"],
+    afterParagraph: /Grensene er justert etter hvert som dateringene er blitt bedre\./,
+    require: "Ellen Gleditsch",
+  },
+  {
+    widgets: ["Ledefossiler"],
+    beforeHeading: "Diskordans",
+    require: "Ellen Gleditsch",
+  },
+  {
+    widgets: ["Halveringstid"],
+    beforeHeading: "Metoder for bergarter",
+    require: "Ellen Gleditsch",
+  },
+  {
     widgets: ["QuizIsbre"],
     afterHeading: "Test deg selv",
     require: "Nigardsbreen, en arm av Jostedalsbreen",

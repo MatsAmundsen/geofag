@@ -75,6 +75,12 @@ import {
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
 import {
+  GeotidRelativFigur,
+  GeotidTidslinjeFigur,
+  HalveringstidFigur,
+  LedefossilFigur,
+} from "@/components/diagrams/geotid-figurer";
+import {
   KaledonideneFigur,
   NorskehavetFigur,
   OslograbenFigur,
@@ -84,7 +90,6 @@ import {
   BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,
   GrainSizeDistributionDiagram,
-  RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
@@ -861,7 +866,11 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
-  RelativeDating: () => <RelativeDatingDiagram />,
+  // Geologisk tid: snittet bygges opp steg for steg (erstatter den statiske RelativeDatingDiagram).
+  RelativeDating: () => <GeotidRelativFigur />,
+  GeotidTidslinje: () => <GeotidTidslinjeFigur />,
+  Halveringstid: () => <HalveringstidFigur />,
+  Ledefossiler: () => <LedefossilFigur />,
   ForvitringForklaring: () => (
     <Callout title="Hva betyr «forvitring»?">
       <p>
