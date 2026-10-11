@@ -2700,6 +2700,30 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
+    {
+      prefix: "National Snow and Ice Data Center [NSIDC]. (2025). ",
+      italic: "2025 Arctic sea ice minimum squeezes into the ten lowest minimums",
+      suffix: ".",
+      href: "https://nsidc.org/sea-ice-today/analyses/2025-arctic-sea-ice-minimum-squeezes-ten-lowest-minimums",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2022). ",
+      italic: "Breer og fonner i Norge",
+      suffix: " (NVE Rapport 3-2022; L. M. Andreassen).",
+      href: "https://publikasjoner.nve.no/rapport/2022/rapport2022_03.pdf",
+    },
+    {
+      prefix: "Norsk klimaservicesenter. (2025). ",
+      italic: "Oppsummeringer fra Klima i Norge 2025",
+      suffix: ".",
+      href: "https://klimaservicesenter.no/kss/rapporter/klima-i-norge-2025/oppsummeringer-fra-klima-i-norge-2025",
+    },
+    {
+      prefix: "Humlum, O., Instanes, A., & Sollid, J. L. (2003). Permafrost in Svalbard: A review of research history, climatic background and engineering challenges. ",
+      italic: "Polar Research, 22",
+      suffix: "(2), 191–215.",
+      href: "https://doi.org/10.3402/polar.v22i2.6455",
+    },
   ],
   klima: [
     {
