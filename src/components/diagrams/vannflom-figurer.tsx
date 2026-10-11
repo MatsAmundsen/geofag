@@ -791,6 +791,8 @@ const HY_STATUS = [
 ];
 const HY = { top: 70, base: 380, w: 380 };
 const HY_X = [70, 540];
+/** Loddrett avstand mellom panelene når de stables på mobil. */
+const HY_STACK_DY = 470;
 const HY_N = 60;
 const yq = (q: number) => HY.base - q;
 type Hy = { base: number; amp: number; tp: number; sr: number; sf: number };
@@ -883,22 +885,27 @@ export function HydrogramFigur({
   const reveal = lerp(i === 0 ? 0 : HY_REVEAL[i - 1], HY_REVEAL[i], p);
   const rain = hyRain(tett);
   const tettLabel = ["Ingen", "Noe", "Mye"][tett];
-  const rx = (tt: number) => HY_X[0] + tt * HY.w;
-  const sx = (tt: number) => HY_X[1] + tt * HY.w;
+  // Smal visning (mobil): panelene stables loddrett, så hvert panel får hele bredden.
+  const x1 = small ? HY_X[0] - 20 : HY_X[0];
+  const x2 = small ? HY_X[0] - 20 : HY_X[1];
+  const oy = small ? HY_STACK_DY : 0;
+  const rx = (tt: number) => x1 + tt * HY.w;
+  const sx = (tt: number) => x2 + tt * HY.w;
+  const Y = (y: number) => y + oy;
   const labels: Lab[] = [
     { text: "Nedbør", x: rx(0.4), y: 104, at: [rx(0.2), 100], color: C.rain, badge: [rx(0.3), 104] },
-    { text: "Snøsmelting", x: sx(0.78), y: 104, at: [sx(0.7), 86], color: P.snow, badge: [sx(0.82), 100] },
+    { text: "Snøsmelting", x: sx(0.78), y: Y(104), at: [sx(0.7), Y(86)], color: P.snow, badge: [sx(0.82), Y(100)] },
     { text: "Grunnvannstilsig", x: rx(0.98), y: 404, at: [rx(0.9), yq(rain.base) + 10], color: C.teal, anchor: "end", badge: [rx(0.9), yq(rain.base) - 18] },
-    { text: "Grunnvannstilsig", x: sx(0.98), y: 404, at: [sx(0.9), yq(HY_SNOW.base) + 10], color: C.teal, anchor: "end", badge: [sx(0.92), yq(HY_SNOW.base) - 18] },
+    { text: "Grunnvannstilsig", x: sx(0.98), y: Y(404), at: [sx(0.9), Y(yq(HY_SNOW.base) + 10)], color: C.teal, anchor: "end", badge: [sx(0.92), Y(yq(HY_SNOW.base) - 18)] },
   ];
   labels.push(
-    { text: "Regnflom: timer til døgn", x: HY_X[0], y: 444, at: [rx(0.5), HY.base + 2], color: C.muted, size: 15, badge: [rx(0.5), HY.base + 22] },
-    { text: "Snøsmelteflom: dager til uker", x: HY_X[1], y: 444, at: [sx(0.5), HY.base + 2], color: C.muted, size: 15, badge: [sx(0.5), HY.base + 22] },
+    { text: "Regnflom: timer til døgn", x: x1, y: 444, at: [rx(0.5), HY.base + 2], color: C.muted, size: 15, badge: [rx(0.5), HY.base + 22] },
+    { text: "Snøsmelteflom: dager til uker", x: x2, y: Y(444), at: [sx(0.5), Y(HY.base + 2)], color: C.muted, size: 15, badge: [sx(0.5), Y(HY.base + 22)] },
   );
   if (step >= 3) {
     labels.push(
       { text: "Spiss flomtopp", x: rx(0.48), y: Math.max(n1(yq(rain.base + rain.amp) + 6), 190), at: [rx(rain.tp) + 4, yq(rain.base + rain.amp) + 4], color: C.warm, badge: [rx(rain.tp) + 26, yq(rain.base + rain.amp) + 6] },
-      { text: "Bred flomtopp", x: sx(0.8), y: n1(yq(HY_SNOW.base + HY_SNOW.amp) + 10), at: [sx(0.66), yq(hyQ(HY_SNOW, 0.66))], color: "#b9d3ee", badge: [sx(0.74), yq(hyQ(HY_SNOW, 0.66)) - 16] },
+      { text: "Bred flomtopp", x: sx(0.8), y: Y(n1(yq(HY_SNOW.base + HY_SNOW.amp) + 10)), at: [sx(0.66), Y(yq(hyQ(HY_SNOW, 0.66)))], color: "#b9d3ee", badge: [sx(0.74), Y(yq(hyQ(HY_SNOW, 0.66)) - 16)] },
       { text: "Forsinkelse", x: rx(0.38), y: 148, at: [rx(0.3), 142], color: "#ffd77a", badge: [rx(0.26), 164] },
     );
   }
@@ -943,12 +950,15 @@ export function HydrogramFigur({
         labels={labels}
         keys={keys}
         notes={["Samme akse for vannføring i begge panelene", "Tiden går mot høyre", "Skjematisk, uten målestokk."]}
-        viewBox="0 0 960 456"
+        viewBox={small ? `0 0 ${HY.w + 90} ${HY_STACK_DY + 456}` : "0 0 960 456"}
+        forceNarrow={small}
       >
         {({ scale }) => (
           <g className={motion.motionClass} data-figur="hydrogram" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
-            <HyPanel x0={HY_X[0]} h={rain} bars={HY_RAIN_BARS} barW={10} reveal={reveal} color={C.warm} barColor={C.rain} title="Regnflom" hi={step} centroid={0.18} scale={scale} />
-            <HyPanel x0={HY_X[1]} h={HY_SNOW} bars={HY_MELT_BARS} barW={13} reveal={reveal} color="#b9d3ee" barColor={P.snow} title="Snøsmelteflom" hi={step} centroid={0.41} scale={scale} />
+            <HyPanel x0={x1} h={rain} bars={HY_RAIN_BARS} barW={10} reveal={reveal} color={C.warm} barColor={C.rain} title="Regnflom" hi={step} centroid={0.18} scale={scale} />
+            <g transform={`translate(0 ${oy})`}>
+              <HyPanel x0={x2} h={HY_SNOW} bars={HY_MELT_BARS} barW={13} reveal={reveal} color="#b9d3ee" barColor={P.snow} title="Snøsmelteflom" hi={step} centroid={0.41} scale={scale} />
+            </g>
           </g>
         )}
       </IsbreFigur>
