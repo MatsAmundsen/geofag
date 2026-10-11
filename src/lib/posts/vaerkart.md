@@ -1,18 +1,26 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling (Udir, u.å.-b).
+> Elevene skal kunne
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> - gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling
 >
-> • *Jordsystemer i tid og rom:* Værsystemer er prosesser i atmosfæren. De utvikler seg over timer og døgn (Udir, u.å.-a).
+> (Udir, u.å.-b)
 >
-> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Bakkekartet, frontsnittet og den norske syklonmodellen er slike modeller.
+> **Kjerneelementer som dekkes i dette kapitlet:**
+>
+> • *Jordsystemer i tid og rom:* «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren» (Udir, u.å.-a). Værsystemer er prosesser i atmosfæren, og de utvikler seg over timer og døgn.
+>
+> • *Modeller og modellering:* «Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener» (Udir, u.å.-a). Bakkekartet, frontsnittet og den norske syklonmodellen er slike modeller.
 
 ## Hva er et værkart?
 
 Et værkart viser været over et stort område. På kartet står lavtrykk, høytrykk og fronter. Isobarene knytter sammen steder med likt lufttrykk (Store norske leksikon, u.å.-c).
 
 Kart, radar og satellittbilder er tidsstemplet i UTC, også kalt Z-tid. Det er en klokke for hele jorda, med nullpunkt ved nullmeridianen. 00Z er midnatt der (NOAA, u.å.-e).
+
+> **Hva tror du?**
+>
+> På et værkart ligger isobarene tett rundt et lavtrykk vest for Norge. Tror du det betyr sterk eller svak vind? Svar før du leser videre – vi kommer tilbake til det i delen om isobarer.
 
 ```widget
 SynoptiskForklaring
@@ -24,7 +32,7 @@ En isobar er en kurve gjennom steder med likt lufttrykk. Trykket fra stasjoner s
 
 På norske værkart tegnes isobarene vanligvis for hver femte hektopascal, for eksempel 1000 og 1005 hPa. Britiske kart bruker ofte fire hektopascal. Da ligger linjene tettere, selv om trykkfeltet er det samme (Store norske leksikon, u.å.-c).
 
-Tette isobarer betyr stor trykkforskjell over kort avstand, og vinden blir sterk. Gisne isobarer gir svak vind. Hvordan trykk og vind henger sammen, tar vi i [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk).
+Tette isobarer betyr stor trykkforskjell over kort avstand, og vinden blir sterk. Gisne isobarer gir svak vind. Svaret på «Hva tror du?» er altså sterk vind. Hvordan trykk og vind henger sammen, tar vi i [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk).
 
 ```widget
 IsobarForklaring
@@ -36,13 +44,17 @@ SynopticChart
 
 Nær bakken bremser friksjonen vinden. Da krysser vinden isobarene på skrå inn mot lavtrykket og ut fra høytrykket. Hvorfor corioliseffekten svekkes når farten faller, står i [corioliseffekten](/tema/coriolis).
 
+```widget
+SjekkVaerkart1
+```
+
 ## Luftmasser og fronter
 
 En luftmasse er et stort volum luft med ganske jevn temperatur og fuktighet. Egenskapene kommer fra området den har ligget over. Luft over land er tørrere. Luft over hav er fuktigere. Luft fra Arktis er svært kald. Polarluft er kald, men ikke like kald. Tropeluft er varm (NOAA, u.å.-a).
 
-Der luftmasser møtes, dannes en front. En front er skillet mellom to luftmasser med ulik tetthet, som oftest fordi temperaturen er ulik. Fuktighet og stabilitet kan også skille dem. Frontflaten heller svakt. Helningen er oftest mellom 1:200 og 1:100 (Store norske leksikon, u.å.-a).
+Der luftmasser møtes, dannes en front. En front er skillet mellom to luftmasser med ulik tetthet, som oftest fordi temperaturen er ulik. Fuktighet og stabilitet kan også skille dem. Frontflaten heller svakt. En varmfront heller ofte om lag 1:100–1:200, mens en kaldfront er brattere, om lag 1:50–1:100 (Store norske leksikon, u.å.-a; Ahrens & Henson, 2022).
 
-Læren om fronter ble i stor grad utformet av Vilhelm Bjerknes og Bergensskolen (Store norske leksikon, u.å.-a). Polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ble innført av Bergensskolen fra 1918 (Store norske leksikon, u.å.-b).
+Læren om fronter ble i stor grad utformet av Vilhelm Bjerknes og Bergensskolen (Store norske leksikon, u.å.-a). Begrepet polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ble tatt i bruk av Bergensskolen fra 1918 (Store norske leksikon, u.å.-b). Selve syklonmodellen kom noen år senere, i 1919–1922, og den står nedenfor.
 
 | Front | Tegn på kartet | Været |
 |---|---|---|
@@ -50,7 +62,7 @@ Læren om fronter ble i stor grad utformet av Vilhelm Bjerknes og Bergensskolen 
 | Kaldfront | blå strek med trekanter, i fartsretningen | kaldere luft fortrenger varmere. Ofte byger og skiftende skydekke |
 | Okkludert front | lilla strek med både trekanter og halvsirkler | kaldfronten har tatt igjen varmfronten. Både jevn nedbør og byger |
 | Stasjonær front | vekslende trekanter og halvsirkler, pekende mot hver sin luftmasse | fronten beveger seg lite |
-| Tråg | blå strek uten trekanter | ekstra ustabil luft, med kraftige byger og mulige vindkast |
+| Tråg | linje uten symboler, ofte stiplet | ekstra ustabil luft, med kraftige byger og mulige vindkast (National Weather Service [NWS], u.å.) |
 
 Symbolene peker den veien fronten flytter seg. Halvsirklene og trekantene gjør at frontene kan skilles også på et svart-hvitt kart (Sivle, 2009; Store norske leksikon, u.å.-a).
 
@@ -66,11 +78,15 @@ FrontForklaring
 FrontProfile
 ```
 
+```widget
+SjekkVaerkart2
+```
+
 ## Den norske syklonmodellen
 
 Den norske syklonmodellen viser hvordan et lavtrykk og frontene utvikler seg gjennom livsløpet. Den kalles også Bjerknes-modellen. Modellen ble utviklet ved Bergensskolen av Jacob Bjerknes og Halvor Solberg. Jacob Bjerknes beskrev frontene i en syklon i 1919, og sammen publiserte de livsløpet til syklonen i 1922 (Norsk biografisk leksikon, u.å.; Bjerknes & Solberg, 1922). NOAA beskriver det samme livsløpet (NOAA, u.å.-b).
 
-Ifølge modellen fører bølger i en stasjonær front til en varmfront og en kaldfront, og til syklonal sirkulasjon, mot klokken på den nordlige halvkule. Dette steget kalles syklogenese. I det modne stadiet beveger kaldfronten seg raskere enn varmfronten. Der kaldfronten har tatt igjen varmfronten, dannes en okkludert front, og varmsektoren løftes opp over bakken. Til slutt svekkes lavtrykket (Store norske leksikon, u.å.-d).
+Ifølge modellen fører bølger i en stasjonær front til en varmfront og en kaldfront, og til syklonal sirkulasjon, mot klokka på den nordlige halvkule. Dette steget kalles syklogenese. I det modne stadiet beveger kaldfronten seg raskere enn varmfronten. Der kaldfronten har tatt igjen varmfronten, dannes en okkludert front, og varmsektoren løftes opp over bakken. Til slutt svekkes lavtrykket (Store norske leksikon, u.å.-d).
 
 NOAA beskriver løpet slik:
 
@@ -83,6 +99,10 @@ Bølger på fronten går oftest mot øst. Fordi kaldfronten er raskere, tar den 
 
 ```widget
 Weather24h
+```
+
+```widget
+SjekkVaerkart3
 ```
 
 ## Stasjonsplott
@@ -99,7 +119,7 @@ Hvis meteorologen bare kunne velge ett høydekart, ville 500 hPa-kartet vært f�
 
 Konturene på kartet er høyden av denne flaten. Et tall som 564 betyr 5 640 meter, fordi den siste nullen er sløyfet (NOAA, u.å.-d).
 
-Kartet viser også virvling i lufta, kalt virvling eller vorticity. Foran et område med sterk virvling øker virvlingen. Der samles luft nede og stiger, og det kan bli nedbør. Bak et slikt område avtar virvlingen, og lufta synker (NOAA, u.å.-d).
+Kartet viser også virvling (vorticity), altså hvor mye lufta roterer. Foran et område med sterk virvling øker virvlingen. Der samles luft nede og stiger, og det kan bli nedbør. Bak et slikt område avtar virvlingen, og lufta synker (NOAA, u.å.-d).
 
 Luftmassene følger i stor grad vinden i høyden. Når jetstrømmen skifter, skifter også luftmassenes bane (NOAA, u.å.-a). Hvordan selve jetstrømmen bukter seg, tar vi i [jetstrømmer](/tema/jetstrommer).
 
@@ -113,6 +133,10 @@ Værkart, radar og satellittbilder har tidspunkt i UTC (NOAA, u.å.-e). Radar og
 
 ```widget
 RadarNowcast
+```
+
+```widget
+SjekkVaerkart4
 ```
 
 Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale værsystemer](/tema/lokale-vaersystemer).
@@ -131,7 +155,7 @@ Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale v�
 
 **Front:** Skillet mellom to luftmasser med ulik tetthet. Den viktigste er polarfronten (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
-**Den norske syklonmodellen:** Også kalt Bjerknes-modellen. Den viser livsløpet til et lavtrykk, fra bølge på en stasjonær front til okklusjon. Vilhelm Bjerknes og Halvor Solberg, Bergensskolen, 1922 (Store norske leksikon, u.å.-d).
+**Den norske syklonmodellen:** Også kalt Bjerknes-modellen. Den viser livsløpet til et lavtrykk, fra bølge på en stasjonær front til okklusjon. Utviklet av Jacob Bjerknes og Halvor Solberg ved Bergensskolen i 1919–1922 (Norsk biografisk leksikon, u.å.; Bjerknes & Solberg, 1922).
 
 **Okklusjon:** Kaldfronten har tatt igjen varmfronten, og den varme lufta er løftet bort fra bakken (NOAA, u.å.-b; Sivle, 2009).
 
@@ -139,9 +163,13 @@ Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale v�
 
 **UTC (Z-tid):** Felles klokke på værkart, radar og satellitt. 00Z er midnatt ved nullmeridianen (NOAA, u.å.-e).
 
-## Test deg selv
+## Sammendrag
 
-Teksten du nettopp leste, hører til [værkart og værutvikling](/tema/vaerkart).
+```widget
+SammendragVaerkart
+```
+
+## Test deg selv
 
 ```widget
 QuizVaerkart

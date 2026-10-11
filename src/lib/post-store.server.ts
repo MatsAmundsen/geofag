@@ -1047,6 +1047,30 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],
   },
   {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-kryosfaeren-mal-2026-10-11",
+    slug: "kryosfaeren",
+    stale: ["De to ordene er ikke satt lik hverandre her", "om lag 5260 isbreer"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-coriolis-mal-2026-10-11",
+    slug: "coriolis",
+    stale: ["Om lag halvparten av primærproduksjonen i havet skjer i oppvellingsområder"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vindsystemet-mal-2026-10-11",
+    slug: "vindsystemet",
+    stale: ["Bruk modellen i [dette kapittelet](/tema/vindsystemet)", "Jordaksen heller om lag 23 grader."],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vaerkart-mal-2026-10-11",
+    slug: "vaerkart",
+    stale: ["Vilhelm Bjerknes og Halvor Solberg, Bergensskolen, 1922"],
+  },
+  {
     // Fjells kapittel etter malen (Geo godkjent).
     flag: "g2-havstrommer-fjell-2026-10-11",
     slug: "havstrommer",
