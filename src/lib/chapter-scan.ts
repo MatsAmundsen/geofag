@@ -101,7 +101,12 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Wegener, Tharp, Hess og den magnetiske båndopptakeren",
   },
   {
-    match: /driver platene|slab pull/i,
+    match: /hvordan startet platedriften/i,
+    label: "Starten",
+    subtitle: "Konveksjon, en tynn plate og et åpent spørsmål",
+  },
+  {
+    match: /driver platene|holder platedriften i gang|slab pull/i,
     label: "Drivkrefter",
     subtitle: "Platetrekk, ryggskyv, manteldrag og gropsug",
   },

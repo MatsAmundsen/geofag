@@ -865,6 +865,19 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Jordens indre prosesser", "Frekvens globalt", "Siste utbrudd var i september 1970", "200–700 km/t"],
   },
   {
+    // Overskriver den lagrede teksten. Redaktørens nettsidetekst (11.10.2026) er synket inn i
+    // platetektonikk-post.md og rettet. Sjekk at nettsiden ikke er redigert på nytt før merge.
+    flag: "g1-platetektonikk-rettskriving-2026-10-11",
+    slug: "platetektonikk",
+    stale: ["være tilstedet for", "platedgrense"],
+  },
+  {
+    // Geo sjekk1 (#130): må- og bør-punktene. Matcher bare redaktørens tekst før sjekk1.
+    flag: "g1-platetektonikk-sjekk1-2026-10-11",
+    slug: "platetektonikk",
+    stale: ["dannet av mikroskopiske kiselalger", "For ca. 310 millioner år siden"],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],

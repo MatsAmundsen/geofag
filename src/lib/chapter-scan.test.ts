@@ -48,13 +48,14 @@ describe("splitChapterByH2", () => {
 
   it("splits the live Platetektonikk chapter into the known H2 sections", () => {
     const doc = splitChapterByH2(stripChapterEditorNotice(chapterMarkdown));
-    assert.match(doc.preamble, /Kjerneelementer som dekkes/);
+    assert.match(doc.preamble, /I kapitlet lærer du om/);
     assert.deepEqual(
       doc.sections.map((section) => section.title),
       [
         "Jordas oppbygning",
         "Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»",
-        "Hva driver platene?",
+        "Hvordan startet platedriften?",
+        "Hva holder platedriften i gang?",
         "Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer",
         "Plategrensene: Tre relative bevegelser, seks geologiske miljøer",
         "Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde",
@@ -63,17 +64,19 @@ describe("splitChapterByH2", () => {
         "Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp",
         "Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi",
         "Sentralt fagvokabular",
+        "Sammendrag",
         "Test deg selv",
       ],
     );
     assert.equal(doc.sections[0]?.label, "Jordens indre");
-    assert.equal(doc.sections[4]?.label, "Plategrenser");
-    assert.equal(doc.sections[7]?.label, "Modell");
+    assert.equal(doc.sections[5]?.label, "Plategrenser");
+    assert.equal(doc.sections[8]?.label, "Modell");
     assert.deepEqual(
       doc.sections.map((section) => section.label),
       [
         "Jordens indre",
         "Bevisene",
+        "Starten",
         "Drivkrefter",
         "Smelting",
         "Plategrenser",
@@ -83,11 +86,12 @@ describe("splitChapterByH2", () => {
         "Wilsonsyklus",
         "Norge i et platetektonisk lys",
         "Begreper",
+        "Sammendrag",
         "Quiz",
       ],
     );
     assert.match(doc.sections[0]?.markdown ?? "", /Indre fast kjerne/);
-    assert.match(doc.sections[2]?.markdown ?? "", /trench suction/i);
+    assert.match(doc.sections[3]?.markdown ?? "", /trench suction/i);
     assert.ok(doc.sections[0]?.subsections.length >= 2);
     assert.equal(doc.sections[0]?.subsections[0]?.title, "Inndeling av jordas indre");
     assert.match(doc.sections[0]?.subsections[0]?.markdown ?? "", /Indre fast kjerne/);

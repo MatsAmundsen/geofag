@@ -1,14 +1,16 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.
+Kompetansemålet i Geofag 1 er at du skal kunne «gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten» (Udir, u.å.). Du skal også kunne forklare hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
 
-I dette kapittelet skal du kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser det har for jordskorpen og jordoverflaten. Du skal også kunne forklare hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
-
-Kjerneelementer som dekkes i dette kapittelet:
+I kapitlet lærer du om:
 
 - Jordas indre krefter og prosesser: litosfære, astenosfære, konveksjon og platetrekk (slab pull) som hoveddrivkraft.
 
 - Plategrenser og landskapsutvikling: divergerende, konvergente og transforme grenser, samt Wilsonsyklusen.
 
 - Norge i platetektonisk lys: Kaledonidene, Leka-ofiolitten, Oslofeltets riftdal og landheving etter istiden.
+
+> **Hva tror du?**
+>
+> Flyter platene på et hav av smeltet magma?
 
 ## Jordas oppbygning
 
@@ -20,25 +22,27 @@ Jorda kan deles inn i flere lag etter sammensetning, tetthet og egenskaper. I ge
 
 #### Skorpe
 
-Det ytterste laget kalles skorpe. Skorpen er av to typer: kontinentalskorpe og havbunnsskorpe. Kontinentalskorpe er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder. Havbunnsskorpe er 5–8 km tykk. Mer om bergarter og alder står under litosfæren.
+Det ytterste laget kalles skorpe. Skorpen er av to typer: kontinentalskorpe og havbunnsskorpe. Kontinentalskorpe er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder som Himalaya. Havbunnsskorpe er 5–8 km tykk. Mer om bergarter og alder står under litosfæren.
 
 #### Øvre mantel
 
-Den øvre mantelen strekker seg fra bunnen av jordskorpen og ned til ca. 660–700 km (Tarbuck et al., 2020, s. 371). Den består hovedsakelig av ultramafiske bergarter, med mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44).
+Den øvre mantelen strekker seg fra bunnen av jordskorpa og ned til ca. 660–700 km (Tarbuck et al., 2020, s. 371). Den består hovedsakelig av ultramafiske bergarter, med mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44).
 
 Den øvre mantelen kan deles videre inn.
 
 #### Litosfærisk mantel (øverste faste mantel)
 
-Denne delen ligger rett under jordskorpen. Den er kald og mekanisk stiv (Fowler, 2005, s. 102). Bergartene er faste og sprø, med tetthet på om lag 3,0–3,3 g/cm³. Temperaturen ligger på rundt 1250 °C.
+Denne delen ligger rett under jordskorpa. Den er kald og mekanisk stiv (Fowler, 2005, s. 102). Bergartene er faste og stive, med tetthet på om lag 3,0–3,3 g/cm³. Temperaturen ligger på rundt 1250 °C.
 
 #### Astenosfærisk mantel
 
-Under den stive delen ligger astenosfæren. Den strekker seg fra ca. 100 km til ca. 350 km dyp. Temperaturen er ca. 1300–1400 °C.
+Under den stive delen ligger astenosfæren. Den strekker seg fra ca. 100 km til ca. 350 km dyp og består av fast silikatbergart (peridotitt). Temperaturen er ca. 1300–1400 °C.
 
 På grunn av høy temperatur i forhold til trykket ligger bergartene nær smeltepunktet. Enkelte soner har en liten andel delvis smelte (1–2 %). Seismiske bølger går saktere der. Sonen kalles lavhastighetssonen (low velocity zone, LVZ) (Lowrie & Fichtner, 2020, s. 157).
 
-Astenosfæren er seigtflytende over millioner av år. Den virker som et glidelag, slik at litosfæren over kan bevege seg. Samtidig fører konveksjonsstrømmer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
+Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte svært langsomt. Bergartene kan derfor endre form, men de er fortsatt faste. Det kalles plastisk: bergarten beholder fast form, men kan deformeres over lang tid.
+
+Astenosfæren flyter svært langsomt over millioner av år. Den virker som et glidelag, slik at litosfæren over kan bevege seg. Samtidig fører konveksjonsstrømmer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
 
 #### Nedre mantel
 
@@ -60,36 +64,41 @@ Trykket er 3,3–3,6 millioner atmosfærer (Fowler, 2005, s. 114). Det holder je
 
 Etter hvert som jorda avkjøles, vokser den faste indre kjernen. Den vokser med noen millimeter i året (Marshak, 2019, s. 50).
 
+---
+---
 ### Litosfæren og astenosfæren
 
 I tillegg til lagene etter kjemi deler vi jordas indre inn etter hvordan bergartene oppfører seg: litosfæren, astenosfæren og mesosfæren. Mesosfæren tas ikke med her.
 
+
 #### Litosfæren
 
-En tektonisk plate er ikke bare skorpe. Den er litosfære: jordskorpen pluss den øverste, kalde og stive delen av mantelen (litosfærisk mantel). Litosfæren er i snitt ca. 100 km tykk. Den er tynnest under midthavsrygger og tykkest, opptil ca. 200 km, under gamle kontinenter. Den er fast og kan brekke opp i plater.
+En tektonisk plate er ikke bare skorpe. Den er litosfære: jordskorpa pluss den øverste, kalde og stive delen av mantelen (litosfærisk mantel). Litosfæren er i snitt ca. 100 km tykk. Den er tynnest under midthavsrygger og tykkest, opptil ca. 200 km, under gamle kontinenter. Den er fast og kan brekke opp i plater.
 
 Samme plate kan bære både kontinentalskorpe og havbunnsskorpe.
 
-**Kontinentalskorpe** er vanligvis 30–50 km tykk, og opptil 70–80 km under høye fjellkjeder som Himalaya. Den består hovedsakelig av bergarter med mye silisium og aluminium (felsiske bergarter). Tettheten er relativt lav, om lag 2,7 g/cm³. Skorpen er for lett til å synke dypt ned i mantelen. Derfor kan kontinentalskorpe bli svært gammel, flere milliarder år.
+**Kontinentalskorpe** (tykkelse, se «Skorpe» over) består hovedsakelig av bergarter med mye silisium og aluminium (felsiske bergarter). Tettheten er relativt lav, om lag 2,7 g/cm³. Skorpen er for lett til å synke dypt ned i mantelen. Derfor kan kontinentalskorpe bli svært gammel, flere milliarder år.
 
-**Havbunnsskorpe** er tynn, bare 5–8 km. Den består av mafiske magmatiske bergarter som basalt, gabbro, diabas og doleritt. Disse har mye jern og magnesium. Tettheten er høyere, om lag 3,0 g/cm³. Derfor kan havbunnslitosfære synke ned i mantelen ved konvergerende plategrenser.
+**Havbunnsskorpe** er tynn (se «Skorpe» over). Den består av mafiske magmatiske bergarter som basalt, gabbro, diabas og doleritt. Disse har mye jern og magnesium. Tettheten er høyere, om lag 3,0 g/cm³. Derfor kan havbunnslitosfære synke ned i mantelen ved konvergerende plategrenser.
 
-Ny havbunn dannes ved divergerende plategrenser, ofte midthavsrygger. Ved konvergerende grenser synker havbunnslitosfæren ned i mantelen. Derfor blir havbunn sjelden eldre enn ca. 180–200 millioner år.
+Ny havbunn dannes ved divergerende plategrenser, ofte midthavsrygger. Ved konvergerende grenser synker havbunnslitosfæren ned i mantelen. ***Derfor blir havbunn sjelden eldre enn ca. 180–200 millioner år.***
 
-#### Astenosfæren (ca. 100–350 km)
+---
+---
 
-Astenosfæren er det seige laget litosfæren glir på. Den består av fast silikatbergart (peridotitt). Temperaturen er nær smeltepunktet, ca. 1300–1400 °C. Bergartene kan derfor endre form, men de er fortsatt faste. Det kalles plastisk: bergarten beholder fast form, men kan deformeres over lang tid.
+#### Astenosfæren
 
-Over millioner av år deformeres astenosfæren seigt. Litosfæreplatene kan gli oppå den.
+Astenosfæren er laget litosfæren glir på. Dybde, temperatur og egenskaper står under «Astenosfærisk mantel» over.
 
+---
+---
 ## Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
 
-I dag er platetektonikk den samlende forklaringen på hvordan jordskorpen beveger seg. Fram til midten av 1960-tallet ble ideen om bevegelige kontinenter likevel avvist av de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
+I dag er platetektonikk den samlende forklaringen på hvordan jordskorpa beveger seg. Fram til midten av 1960-tallet ble ideen om bevegelige kontinenter likevel avvist av de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
 
 ### Alfred Wegener og kontinentaldrift (1912)
 
 Den tyske meteorologen og geofysikeren Alfred Wegener la i 1912 fram teorien om kontinentaldrift (Wegener, 1912). Han observerte at kontinentene på hver side av Atlanterhavet passet sammen som brikker i et puslespill, særlig kystlinjene til Sør-Amerika og Afrika.
-
 Wegener samlet inn flere typer bevis.
 
 **Fossilfunn**
@@ -126,11 +135,39 @@ Når havbunnen sprer seg til begge sider, fryser havbunnsskorpen inn et symmetri
 
 ![Divergerende grense eksponert på tørt land: Þingvellir på Island](/images/fig-spredring.jpg)
 
-## Hva driver platene?
+## Hvordan startet platedriften?
 
-Før vi går inn på plategrensene, må vi forstå hva som driver platene.
+Før vi kan gå inn på platedrift, er det noen ting vi må få på plass først. Alt starter med konveksjonsstrømmer i jordas indre, og med at bergarter i mantelen kan smelte når trykket blir lavere.
 
-Platebevegelsene styres av et samspill mellom fire krefter. Tyngdekraft og varme virker sammen.
+Varmen fra jordas kjerne varmer opp mantelbergartene til temperaturer som vanligvis ville ha smeltet de fleste av dem. Men på grunn av det høye trykket forblir de faste bergarter. Varmen gjør at bergartene blir plastiske (kan få flytende egenskaper), og setter i gang langsomme konveksjonsstrømmer fra jordas indre og opp til øvre del av mantelen, før den synker ned igjen.
+
+Hvordan platedriften startet, er et åpent forskningsspørsmål (Stern & Gerya, 2018). Her er én mulig forklaring.
+
+Innad i hver enkelt plate har vi varierende tykkelse. Dette betyr at noen steder er platen tynnere eller tykkere. Der platen er tynnere, er trykket litt lavere, ettersom man er nærmere overflaten.
+Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Når varm mantel stiger opp, buler platen opp og strekkes ut. Den øverste, kalde delen av skorpa, de øverste 10–20 km, er stiv og sprø, og stein tåler strekk dårlig. Derfor revner den i sprekker og normalforkastninger, og det dannes en riftdal (graben). Dypere ned er platen varm og bøyer seg i stedet for å sprekke. Smelten kan i tillegg presse sprekkene videre opp nedenfra. Magmaen samler seg først i et magmakammer under platen, før den stiger opp gjennom sprekker og ganger i platen og opp til overflaten. På veien kan magmaen smelte litt av bergarten rundt seg (assimilasjon). Slik sprekker platen opp, og **vi har dermed fått en divergerende plategrense.**
+
+Ifølge denne forklaringen var det slik platedriften kom i gang.
+
+Det finnes også andre forklaringer. En mantelplym kan varme opp og svekke platen nedenfra til den brister. Eller tung, gammel havbunn kan begynne å synke ved en svakhetssone, for eksempel langs en kontinentrand eller en gammel forkastning (Stern & Gerya, 2018).
+
+---
+---
+
+## Hva holder platedriften i gang?
+
+Mantelen er fast, men så varm at den kryper langsomt og har konveksjon. Platene er den kalde, øverste delen av dette systemet. Der platene trekkes fra hverandre, stiger varm mantel passivt opp. Trykket faller, og en liten del smelter (dekompresjonssmelting, se under). Smeltingen er altså en *følge* av at platene beveger seg fra hverandre, ikke årsaken (Forsyth & Uyeda, 1975).
+
+Når platene først er i bevegelse, går prosessene i en sirkel. Ved ryggen dannes ny havbunn, som avkjøles, blir tung og til slutt synker ned i mantelen, og det gir nytt platetrekk. Smeltingen er et nødvendig ledd i sirkelen, men det er tyngdekraften som gir kraften.
+
+Platene drives av et samspill mellom fire krefter:
+- Platetrekk 
+- Ryggskyv
+- Manteldrag 
+- Trench suction (grøftesug)
+
+
+----
+----
 
 ### Platetrekk (slab pull)
 
@@ -208,15 +245,15 @@ Den tunge havbunnsplaten, for eksempel Nazcaplaten, bøyes ned under den lettere
 
 #### Hav mot hav
 
-Når to havbunnsplater møtes, synker én av dem. Det er alltid den eldste, kaldeste og dermed tetteste havbunnsplaten som presses under den andre. Slik dannes jordas dypeste groper, som Marianegropen med Challengerdypet på ca. 10 935 meter (NOAA, u.å.-b). Når platen synker, frigjøres vann, mantelen over smelter, og magma stiger. Her bygges vulkanøyer, ikke stratovulkaner på et kontinent. Klassiske eksempler er De japanske øyer, Marianene og Aleutene.
+Når to havbunnsplater møtes, synker én av dem. Det er som regel den eldste, kaldeste og dermed tetteste havbunnsplaten som presses under den andre. Slik dannes jordas dypeste groper, som Marianegropen med Challengerdypet på ca. 10 935 meter (NOAA, u.å.-b). Når platen synker, frigjøres vann, mantelen over smelter, og magma stiger. Her bygges vulkanøyer, ikke stratovulkaner på et kontinent. Klassiske eksempler er De japanske øyer, Marianene og Aleutene.
 
 #### Kontinent mot kontinent
 
-Når to kontinenter møtes, kan ingen av dem synke ned i mantelen. Kontinentalskorpen er for lett. Himalaya og Kaledonidene er eksempler. Jordskorpen foldes, presses sammen og stables i skyvedekker.
+Når to kontinenter møtes, kan ingen av dem synke ned i mantelen. Kontinentalskorpen er for lett. Himalaya og Kaledonidene er eksempler. Jordskorpa foldes, presses sammen og stables i skyvedekker.
 
 Skyvedekker er store bergflak som skyves hundrevis av kilometer innover land.
 
-Fjellkjeden vokser ikke bare oppover. Den kan også vokse nedover, opptil 70–80 km, fordi litosfæren flyter i likevekt på mantelen (isostasi). Det blir nesten ingen vulkanisme. Bergartene omdannes regionalt til gneis og glimmerskifer.
+Fjellkjeden vokser ikke bare oppover. Den kan også vokse nedover, opptil 70–80 km, fordi tykk, lett skorpe trenger en dyp rot for å stå i isostatisk likevekt (isostasi). Det blir nesten ingen vulkanisme. Bergartene omdannes regionalt til gneis og glimmerskifer.
 
 ![Anatomi av en subduksjonssone: Dehydrering, flukssmelting og akkresjonskile](/images/geo-subduksjon-3d.jpg)
 
@@ -234,7 +271,7 @@ Et tverrsnitt av en konvergerende plategrense har fem deler, fra havet og innove
 
 4. Den vulkanske buen (magmatic arc) er rekken av aktive vulkaner, enten på kontinentet eller som en øybue. Den mates av flukssmelting på 100–120 km dyp rett under buen.
 
-5. Bakbuebassenget (backarc basin) kan åpne seg hvis den synkende platen er gammel og tung. Da synker den brattere enn platen selv beveger seg framover. Det kalles tilbakerulling (slab rollback). Den overliggende platen strekkes bak vulkanbuen. Strekket kan sprekke opp jordskorpen og åpne et lite havbasseng med egen midthavsrygg. Japanhavet åpnet seg slik bak den japanske vulkanbuen for ca. 15–20 millioner år siden.
+5. Bakbuebassenget (backarc basin) kan åpne seg hvis den synkende platen er gammel og tung. Da synker den brattere enn platen selv beveger seg framover. Det kalles tilbakerulling (slab rollback). Den overliggende platen strekkes bak vulkanbuen. Strekket kan sprekke opp jordskorpa og åpne et lite havbasseng med egen midthavsrygg. Japanhavet åpnet seg slik bak den japanske vulkanbuen for ca. 15–20 millioner år siden.
 
 ### 3. Transforme plategrenser (platene glir sidelengs)
 
@@ -272,13 +309,13 @@ Under 700 km, ved overgangen til den nedre mantelen, er både trykket og tempera
 
 ## Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
 
-Tidligere i kapittelet så vi tverrsnittet av en midthavsrygg: putelava øverst, loddrette basaltganger, og et magmakammer med gabbro over mantelen. Havbunnen ligger under flere tusen meter vann. Likevel kan vi se lagene på land.
+Tidligere i kapitlet så vi tverrsnittet av en midthavsrygg: putelava øverst, loddrette basaltganger, og et magmakammer med gabbro over mantelen. Havbunnen ligger under flere tusen meter vann. Likevel kan vi se lagene på land.
 
 Ofiolitter er biter av havbunnsskorpe og øvre mantel som ikke ble subdusert, men skjøvet opp på land under en fjellkjedekollisjon. Det kalles obduksjon (Furnes et al., 1988). En ofiolitt er et fossilt stykke havbunn som er hevet og veltet, slik at man kan gå fra dyphavssedimenter ned til mantelen.
 
 Ved Penrose-konferansen i 1972 ble den klassiske ofiolitt-lagrekken definert. Den er et vertikalt tverrsnitt gjennom havbunnslitosfære.
 
-- Pelagiske sedimenter (øverst): tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt, dannet av mikroskopiske kiselalger.
+- Pelagiske sedimenter (øverst): tynne lag av dyphavsleire, kalkslam og kiselholdig radiolaritt, dannet av skall fra radiolarier (encellede dyreplankton).
 
 - Putelava (pillow basalt): 0,5–1,5 km tykt lag med glassaktige lavaputer fra utbrudd direkte under vann.
 
@@ -292,7 +329,7 @@ Ved Penrose-konferansen i 1972 ble den klassiske ofiolitt-lagrekken definert. De
 
 ![Norges geologiske nasjonalmonument: Leka ofiolittkompleks](/images/geo-ofiolitt-leka.jpg)
 
-*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.*
+*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Leka-ofiolitten ble dannet i Iapetushavet for ca. 497 millioner år siden (Dunning & Pedersen, 1988). Den ble skjøvet inn på kontinentranden tidlig i den kaledonske fjellkjededannelsen og ble senere en del av skyvedekkene. Lagene står i dag nesten på høykant, så man kan gå tørrskodd fra jordas mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.*
 
 ## Interaktiv geodynamisk modell: Utforsk plategrensene
 
@@ -334,9 +371,9 @@ Stillehavet er i et avtagende stadium. Subduksjonssoner langs randen tar opp hav
 
 Norge ligger i dag midt inne på den eurasiske platen, tusenvis av kilometer fra aktive subduksjonssoner og plategrenser. Grensen i vest er Den midtatlantiske ryggen i Norskehavet. Likevel er landskapet formet av tidligere platebevegelser (Ramberg et al., 2008).
 
-Kaledonidene ble til da landområder i dagens Europa kolliderte med Amerika og Grønland. Fjellkjededannelsen pågikk gjennom ordovicium, silur og devon, for 400–500 millioner år siden (NGU, u.å.-a). Store bergflak ble skjøvet som skyvedekker gjennom det som i dag er Skandinavia. Bergartene ble omdannet, blant annet til gneis. Fjellene vi går i, er den eroderte roten av den kjeden, ikke fjell som istiden har bygd.
+Kaledonidene ble til da Baltika kolliderte med Laurentia (Nord-Amerika og Grønland). Fjellkjededannelsen pågikk gjennom ordovicium, silur og devon, for 400–500 millioner år siden (NGU, u.å.-a). Selve kollisjonen mellom Baltika og Laurentia skjedde for ca. 425–405 millioner år siden. Store bergflak ble skjøvet som skyvedekker gjennom det som i dag er Skandinavia. Bergartene ble omdannet, blant annet til gneis. Fjellene vi går i, er den eroderte roten av den kjeden, ikke fjell som istiden har bygd.
 
-Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp (NGU, u.å.-a). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak. I perm ble det en riftdal med strekk, store forkastninger og vulkaner. I Oslofeltet har bergartene spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. De er ikke de yngste bergartene på land i Norge. På Andøya ligger sedimenter fra midtre og øvre jura og nedre kritt, de eneste bergartene av mesozoisk alder på land i landet (NGU, 2016). I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
+Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 300 millioner år siden, i overgangen mellom karbon og perm, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm ble det en riftdal med strekk, store forkastninger og vulkaner. I Oslofeltet har bergartene spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. De er ikke de yngste bergartene på land i Norge. På Andøya ligger sedimenter fra midtre og øvre jura og nedre kritt, de eneste bergartene av mesozoisk alder på land i landet (NGU, 2016). I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
 
 Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsisen presset skorpen ned. Da isen smeltet, hevet landet seg. Marin grense, det høyeste havnivået etter siste istid, ligger i dag fra 0 til 220 m over havet, avhengig av sted (NGU, u.å.-b). Mange fjorder og daler følger også om lag 200 millioner år gamle forkastningssoner fra da Atlanteren åpnet seg.
 
@@ -390,9 +427,7 @@ Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsis
 
 - **isostasi:** litosfæren i likevekt på astenosfæren. Etter istiden hever landet seg når istyngden forsvinner.
 
-## Test deg selv
-
-**Oppsummering**
+## Sammendrag
 
 - Mantelen er fast bergart. Litosfæreplatene flyter ikke på flytende magma, men på varm peridotitt i astenosfæren, som deformeres seigt over millioner av år.
 
@@ -403,3 +438,5 @@ Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsis
 - Ofiolitter er havbunn på land. På Leka i Trøndelag kan man gå gjennom havbunnsskorpen og krysse Moho.
 
 - Norges geologi er formet av platetektonikk: den kaledonske kollisjonen og Leka-ofiolitten, permisk rift i Oslofeltet, åpningen av Nord-Atlanteren, og landheving etter siste istid.
+
+## Test deg selv

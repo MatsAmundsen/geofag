@@ -131,7 +131,7 @@ const STEP_TEXT = [
   "Platene er ikke like tykke. Under en tykk plate stopper den stigende mantelen dypt nede, der trykket er høyt. Under en tynn plate kan den stige nærmere overflaten.",
   "Jo høyere mantelen stiger, jo mindre bergart ligger over, og trykket faller. Smeltepunktet (solidus) synker med trykket. Når mantelen krysser solidus, smelter en liten del mellom kornene. Dette kalles dekompresjonssmelting.",
   "Smelten er lettere enn bergarten rundt og siver oppover. Den samler seg i et magmakammer ved bunnen av platen eller inne i den.",
-  "Magmaen presser seg opp gjennom sprekker (ganger) og smelter seg delvis vei gjennom platen. Når den når overflaten, får vi et vulkanutbrudd.",
+  "Magmaen presser seg opp gjennom sprekker (ganger) i platen. Når den når overflaten, får vi et vulkanutbrudd.",
 ];
 
 const STEP_MS = 7000;

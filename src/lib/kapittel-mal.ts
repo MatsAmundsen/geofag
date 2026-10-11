@@ -46,10 +46,16 @@ import {
   QUIZ_SJEKK_VULKANER_3,
   QUIZ_SJEKK_VULKANER_4,
   QUIZ_SJEKK_VULKANER_5,
+  QUIZ_MELTING,
+  QUIZ_BOUNDARIES,
+  QUIZ_OFIOLITT_WILSON,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
 export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
+  Platetektonikk1: QUIZ_MELTING,
+  Platetektonikk2: QUIZ_BOUNDARIES,
+  Platetektonikk3: QUIZ_OFIOLITT_WILSON,
   Landformer1: QUIZ_SJEKK_LANDFORMER_1,
   Landformer2: QUIZ_SJEKK_LANDFORMER_2,
   Landformer3: QUIZ_SJEKK_LANDFORMER_3,
