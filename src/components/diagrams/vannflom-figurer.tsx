@@ -13,7 +13,7 @@ import { useId, useState, type ReactNode } from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
-import { P, clamp, lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock, useTicker } from "./isbre-kit";
+import { P, clamp, figureFont, lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock, useTicker } from "./isbre-kit";
 
 export type VannFigurProps = {
   heading?: string;
@@ -813,7 +813,9 @@ function HyPanel({
   title,
   hi,
   centroid,
+  scale,
 }: {
+  scale: number;
   x0: number;
   h: Hy;
   bars: { tt: number; h: number }[];
@@ -834,7 +836,7 @@ function HyPanel({
   const area = `${polyPath(pts)} L${n1(X(reveal))} ${HY.base} L${x0} ${HY.base} Z`;
   return (
     <g>
-      <text x={x0} y={42} fontSize="20" fontWeight="800" fill={C.fg}>
+      <text x={x0} y={42} fontSize={figureFont(20, scale)} fontWeight="800" fill={C.fg}>
         {title}
       </text>
       {/* tid- og vannføringsakse */}
@@ -937,10 +939,10 @@ export function HydrogramFigur({
         notes={["Samme akse for vannføring i begge panelene", "Tiden går mot høyre", "Skjematisk, uten tall"]}
         viewBox="0 0 960 430"
       >
-        {() => (
+        {({ scale }) => (
           <g className={motion.motionClass} data-figur="hydrogram" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
-            <HyPanel x0={HY_X[0]} h={rain} bars={HY_RAIN_BARS} barW={10} reveal={reveal} color={C.warm} barColor={C.rain} title="Regnflom" hi={step} centroid={0.18} />
-            <HyPanel x0={HY_X[1]} h={HY_SNOW} bars={HY_MELT_BARS} barW={13} reveal={reveal} color="#b9d3ee" barColor={P.snow} title="Snøsmelteflom" hi={step} centroid={0.41} />
+            <HyPanel x0={HY_X[0]} h={rain} bars={HY_RAIN_BARS} barW={10} reveal={reveal} color={C.warm} barColor={C.rain} title="Regnflom" hi={step} centroid={0.18} scale={scale} />
+            <HyPanel x0={HY_X[1]} h={HY_SNOW} bars={HY_MELT_BARS} barW={13} reveal={reveal} color="#b9d3ee" barColor={P.snow} title="Snøsmelteflom" hi={step} centroid={0.41} scale={scale} />
           </g>
         )}
       </IsbreFigur>
