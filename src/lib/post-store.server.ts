@@ -481,6 +481,18 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["følger ofte et fast løp"],
   },
   {
+    // Geo (G2) må: Jacob Bjerknes og Solberg, ikke Vilhelm.
+    flag: "g2-vaerkart-jacob-bjerknes-2026-10-11",
+    slug: "vaerkart",
+    stale: ["Vilhelm Bjerknes og Halvor Solberg utviklet den"],
+  },
+  {
+    // Geo (G2) må: Ferrel-cellen drives av virvlene, ikke friksjon.
+    flag: "g2-vindsystemet-ferrel-2026-10-11",
+    slug: "vindsystemet",
+    stale: ["Vestavinden mellom 35° og 60° skyldes friksjon"],
+  },
+  {
     flag: "vulkaner-copy-2026-10-06",
     slug: "vulkaner",
     stale: ["Henrys lov", "ventialsjonssystemet"],
@@ -742,6 +754,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "energi-hav-luft-copy-2-2026-10-07",
     slug: "energi-hav-luft",
     stale: ["Bærekraft er denne avveiningen, ikke bare at vinden kommer tilbake."],
+  },
+  {
+    // Geo (G2) må-punkter: Hywind Tampen 35 %, havvindland, Peterhead, malen.
+    flag: "g2-energi-maa-2026-10-11",
+    slug: "energi-hav-luft",
+    stale: ["slik at energiforsyningen er utslippsfri", "Sørøst-Asia, USA og Storbritannia"],
   }
 ,
   {
@@ -900,6 +918,78 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g1-vann-og-flom-mal-2026-10-11",
     slug: "vann-og-flom",
     stale: ["Målet er at du skal kunne gjøre rede for det hydrologiske", "NVE kaller Hans den dyreste", "pinseflommen i 2011 og 2013", "cirka 144 000 brønner"],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-lokale-vaersystemer-figurer-2026-10-11",
+    slug: "lokale-vaersystemer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-jetstrommer-figurer-2026-10-11",
+    slug: "jetstrommer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-coriolis-figurer-2026-10-11",
+    slug: "coriolis",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-havstrommer-figurer-2026-10-11",
+    slug: "havstrommer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-kryosfaeren-figurer-2026-10-11",
+    slug: "kryosfaeren",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-numeriske-modeller-figurer-2026-10-11",
+    slug: "numeriske-modeller",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-vaerkatastrofer-figurer-2026-10-11",
+    slug: "vaerkatastrofer",
+    stale: [],
+  },
+  {
+    // Geo F2 (G2): figurene fra den kodede ruten er flyttet inn som widgets.
+    flag: "g2-felt-hav-luft-is-figurer-2026-10-11",
+    slug: "felt-hav-luft-is",
+    stale: [],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-hoytrykk-lavtrykk-mal-2026-10-11",
+    slug: "hoytrykk-lavtrykk",
+    stale: ["Varm luft kan holde mye mer vanndamp"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-lokale-vaersystemer-mal-2026-10-11",
+    slug: "lokale-vaersystemer",
+    stale: ["NOAA beskriver det samme kretsløpet"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-jetstrommer-mal-2026-10-11",
+    slug: "jetstrommer",
+    stale: ["NOAA sammenligner jetstrømmen med en elv"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vaerkatastrofer-mal-2026-10-11",
+    slug: "vaerkatastrofer",
+    stale: ["Siden bruker ikke ordet barokline lavtrykk"],
   },
   {
     flag: "g1-jordsystemene-mal-2026-10-11",
