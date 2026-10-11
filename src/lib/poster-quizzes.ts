@@ -3248,6 +3248,9 @@ export const QUIZ_SJEKK_VULKANER_5: QuizQuestion[] = [
     ],
     answer: 0,
     explain: "Lavastrømmer går ofte sakte nok til at de kan ledes bort med voller, slik som ved Svartsengi. På Heimaey ble lava også kjølt ned med sjøvann.",
+  },
+];
+
 export const QUIZ_SJEKK_JORDSYSTEMENE_1: QuizQuestion[] = [
   {
     prompt: "Ei elv graver en V-dal i bratt fjell. Hvilken sfære er driver, og hvilken er mottaker?",

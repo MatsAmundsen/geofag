@@ -157,6 +157,7 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "De største farene er pyroklastiske strømmer, laharer og aske. Store utbrudd kan gi vulkansk vinter, slik Tambora gjorde i 1816 og Pinatubo i 1991.",
     "Overvåking av skjelv, bakkeheving, gass og varme gir varsel. Farekart, evakuering, sterke tak og lavabarrierer kan begrense skadene, men bare hvis varslene blir fulgt opp, slik Pinatubo og Armero viser.",
     "Beerenberg på Jan Mayen, 2272 meter over havet, er Norges eneste aktive vulkan. Den ligger på spredningsryggen i Norskehavet, og det siste utbruddet var i 1985.",
+  ],
   Jordsystemene: [
     "Jorda kan deles i fem sfærer som utveksler masse og energi: geosfæren, hydrosfæren, atmosfæren, kryosfæren og biosfæren. I geofag 1 er geosfæren og hydrosfæren mottakerne.",
     "Elver graver, transporterer og avsetter, og innsjøer fanger sediment. Hydrosfæren former geosfæren, og geosfæren styrer vannet tilbake.",
