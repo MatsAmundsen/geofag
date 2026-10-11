@@ -147,7 +147,7 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     alt: "Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel",
     heading: "Norges geologiske nasjonalmonument: Leka ofiolittkompleks",
     caption:
-      "På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.",
+      "På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Leka-ofiolitten ble dannet i Iapetushavet for ca. 497 millioner år siden (Dunning & Pedersen, 1988). Den ble skjøvet inn på kontinentranden tidlig i den kaledonske fjellkjededannelsen og ble senere en del av skyvedekkene. Lagene står i dag nesten på høykant, så man kan gå tørrskodd fra jordas mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.",
     marks: [
       { x: 22, y: 72, n: "1", text: "Mantelperidotitt", tone: "warm" },
       { x: 42, y: 55, n: "2", text: "Moho-grensen", tone: "cold" },
