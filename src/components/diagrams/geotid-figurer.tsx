@@ -5,7 +5,8 @@
  * nummermerker og liste på smal skjerm, aria-live ved valg, fokusring fra knappene og redusert bevegelse.
  *
  * Alle tall står i kapittelteksten (src/lib/posts/geologisk-tid.md). Klokkeslettene i døgn-analogien
- * er regnet ut fra de samme tallene (4,567 milliarder år = 24 timer). Alt er skjematisk.
+ * er regnet ut fra jordas alder, ca. 4,54 milliarder år = 24 timer (USGS). Periodegrensene i tidslinjen
+ * følger ICS-kartet v2026/06 (Cohen mfl., 2026), som står i kildelista. Alt er skjematisk.
  */
 import { useState, type ReactNode } from "react";
 import { useAnimationPlaying } from "./use-motion";
@@ -71,27 +72,51 @@ const tall = (v: number, d = 0) =>
  * 1. Den geologiske tidslinjen: zoom og døgn-analogi
  * ===================================================================== */
 
-/** Starten på tidsskalaen: solsystemet, ca. 4567 millioner år (Cohen mfl., 2026). */
-const START_MA = 4567;
+/** Jordas alder, ca. 4540 millioner år (USGS, Age of the Earth: 4,54 ± 0,05 mrd. år). Klokka og tidslinjen starter her. */
+const JORD_MA = 4540;
 
 type Hendelse = { navn: string; ma: number; til?: number; farge: string; kort: string };
 
 const H: Record<string, Hendelse> = {
-  sol: { navn: "Solsystemet dannes, ca. 4,567 mrd. år", kort: "Solsystemet", ma: 4567, farge: C.warm },
-  jord: { navn: "Jorda, ca. 4,54 mrd. år", kort: "Jorda", ma: 4540, farge: C.warm },
+  jord: { navn: "Jorda dannes, ca. 4,54 mrd. år", kort: "Jorda dannes", ma: 4540, farge: C.warm },
   zirkon: { navn: "Eldste zirkon, ca. 4,4 mrd. år", kort: "Eldste zirkon", ma: 4400, farge: "#e6c9c0" },
   grunnfjell: { navn: "Grunnfjellet i Norge, ca. 3000–900 mill. år", kort: "Grunnfjellet", ma: 3000, til: 900, farge: "#c7a9d9" },
   kambrium: { navn: "Kambrium begynner, 538,8 mill. år", kort: "Kambrium", ma: 538.8, farge: C.teal },
-  kaledon: { navn: "Den kaledonske fjellkjeden, ca. 495–405 mill. år", kort: "Kaledonidene", ma: 495, til: 405, farge: "#c7a9d9" },
-  oslo: { navn: "Oslo-riften, ca. 300–250 mill. år", kort: "Oslo-riften", ma: 300, til: 250, farge: "#e49a7a" },
+  kaledon: { navn: "Kaledonidene, ca. 495–405 mill. år", kort: "Kaledonidene", ma: 495, til: 405, farge: "#c7a9d9" },
+  oslo: { navn: "Oslofeltet (riften), ca. 300–250 mill. år", kort: "Oslo-riften", ma: 300, til: 250, farge: "#e49a7a" },
+  norskehav: { navn: "Norskehavet åpner seg, ca. 55 mill. år", kort: "Norskehavet", ma: 55, til: 55, farge: C.rain },
   kritt: { navn: "Kritt slutter, 66,0 mill. år", kort: "Slutten av kritt", ma: 66, farge: C.low },
-  norskehav: { navn: "Norskehavet åpner seg, ca. 55 mill. år", kort: "Norskehavet", ma: 55, farge: C.rain },
   kvartaer: { navn: "Kvartær begynner, 2,58 mill. år", kort: "Kvartær", ma: 2.58, farge: C.cold },
   avset: { navn: "Avsetninger i Fastlands-Norge, siste ca. 200 000 år", kort: "Avsetninger i Norge", ma: 0.2, til: 0, farge: C.sand },
   aarring: { navn: "Sammenhengende årringserie, ca. 14 000 år", kort: "Årringserien", ma: 0.014, til: 0, farge: "#9cc78a" },
   vedde: { navn: "Vedde-asken, ca. 12 000 år", kort: "Vedde-asken", ma: 0.012, farge: "#e6c9c0" },
   holocen: { navn: "Holocen begynner, ca. 11 700 år", kort: "Holocen", ma: 0.0117, farge: C.cold },
 };
+
+/**
+ * Tidsaldre og perioder i fanerozoikum, grenser i millioner år etter ICS International
+ * Chronostratigraphic Chart v2026/06 (Cohen mfl., 2026). Karbon, trias og neogen vises uten tall;
+ * grensene deres (358,9 og 23,0) brukes bare til å tegne båndene.
+ */
+type Enhet = { navn: string; fra: number; til: number; farge: string; tall?: string };
+const TIDSALDRE: Enhet[] = [
+  { navn: "Paleozoikum", fra: 538.8, til: 251.9, farge: "#3f6b6e", tall: "538,8" },
+  { navn: "Mesozoikum", fra: 251.9, til: 66.0, farge: "#4f6d3a", tall: "251,9" },
+  { navn: "Kenozoikum", fra: 66.0, til: 0, farge: "#7a6a2e", tall: "66,0" },
+];
+const PERIODER: Enhet[] = [
+  { navn: "Kambrium", fra: 538.8, til: 486.9, farge: "#5d8a73", tall: "538,8" },
+  { navn: "Ordovicium", fra: 486.9, til: 443.1, farge: "#2f8a78", tall: "486,9" },
+  { navn: "Silur", fra: 443.1, til: 419.6, farge: "#6ea890", tall: "443,1" },
+  { navn: "Devon", fra: 419.6, til: 358.9, farge: "#9a6a3a", tall: "419,6" },
+  { navn: "Karbon", fra: 358.9, til: 298.9, farge: "#4f7a7a" },
+  { navn: "Perm", fra: 298.9, til: 251.9, farge: "#a2523e", tall: "298,9" },
+  { navn: "Trias", fra: 251.9, til: 201.4, farge: "#6d4a7a" },
+  { navn: "Jura", fra: 201.4, til: 143.1, farge: "#3a7a9a", tall: "201,4" },
+  { navn: "Kritt", fra: 143.1, til: 66.0, farge: "#5e8a3a", tall: "ca. 143,1" },
+  { navn: "Paleogen", fra: 66.0, til: 23.0, farge: "#9a7a3a" },
+  { navn: "Neogen", fra: 23.0, til: 2.58, farge: "#a89a3a" },
+];
 
 type Zoom = {
   knapp: string;
@@ -106,38 +131,41 @@ type Zoom = {
   status: string;
   /** Neste zoom, markert med en ramme. */
   neste?: number;
+  /** Tidsaldre og perioder i stedet for ett bånd. */
+  perioder?: boolean;
 };
+
+/** Andelen av jordas historie som er prekambrium, regnet fra 4540 og 538,8 millioner år. */
+const PREK_PROSENT = Math.round(((JORD_MA - 538.8) / JORD_MA) * 100);
 
 const ZOOM: Zoom[] = [
   {
     knapp: "Hele jordas historie",
-    fra: START_MA,
+    fra: JORD_MA,
     band: [
-      { navn: "Prekambrium", fra: START_MA, til: 538.8, farge: "#5a4a63" },
+      { navn: "Prekambrium", fra: JORD_MA, til: 538.8, farge: "#5a4a63" },
       { navn: "Fanerozoikum", fra: 538.8, til: 0, farge: "#3f6b6e" },
     ],
-    punkt: ["sol", "zirkon", "kambrium"],
+    punkt: ["jord", "zirkon", "kambrium"],
     spenn: ["grunnfjell"],
     ticks: [4000, 3000, 2000, 1000, 0],
     tick: (ma) => (ma === 0 ? "I dag" : tall(ma / 1000)),
     enhet: "milliarder år siden",
-    status:
-      "Hele jordas historie: Prekambrium er nesten 90 prosent av tiden. Fanerozoikum, tiden med mange fossiler, begynte for 538,8 millioner år siden.",
+    status: `Hele jordas historie: Prekambrium er nesten 90 prosent av tiden (ca. ${PREK_PROSENT} %). Fanerozoikum, tiden med mange fossiler, begynte for 538,8 millioner år siden.`,
     neste: 538.8,
   },
   {
     knapp: "Fanerozoikum",
     fra: 538.8,
-    band: [
-      { navn: "Fanerozoikum", fra: 538.8, til: 0, farge: "#3f6b6e" },
-    ],
-    punkt: ["kambrium", "kritt", "norskehav"],
-    spenn: ["kaledon", "oslo"],
+    band: [],
+    perioder: true,
+    punkt: [],
+    spenn: ["kaledon", "oslo", "norskehav"],
     ticks: [500, 400, 300, 200, 100, 0],
     tick: (ma) => (ma === 0 ? "I dag" : tall(ma)),
     enhet: "millioner år siden",
     status:
-      "Fanerozoikum: Den kaledonske fjellkjeden og Oslo-riften ligger i første halvdel. Kritt sluttet for 66,0 millioner år siden, og kvartær er bare den aller siste biten.",
+      "Fanerozoikum er delt i tre tidsaldre og mange perioder. Kaledonidene og Oslofeltet hører til paleozoikum. Kritt sluttet for 66,0 millioner år siden, og kvartær er bare den aller siste biten.",
     neste: 2.58,
   },
   {
@@ -170,9 +198,9 @@ const ZOOM: Zoom[] = [
   },
 ];
 
-/** Klokkeslett når 4,567 milliarder år er ett døgn. */
+/** Klokkeslett når jordas alder (ca. 4,54 milliarder år) er ett døgn. */
 function klokke(ma: number) {
-  const s = 86400 * (1 - ma / START_MA);
+  const s = 86400 * (1 - ma / JORD_MA);
   const h = Math.floor(s / 3600);
   const m = Math.floor((s % 3600) / 60);
   const sek = Math.floor(s % 60);
@@ -186,7 +214,8 @@ const KLOKKE: { h: Hendelse; tekst: string }[] = (() => {
     return { h, tekst: `${h.kort}: ${tid}` };
   });
 })();
-const KL_HOLOCEN = (86400 * 0.0117) / START_MA;
+const KL_HOLOCEN = (86400 * 0.0117) / JORD_MA;
+const KLOKKE_START = "Klokka starter da jorda ble dannet for ca. 4,54 milliarder år siden. Midnatt er i dag.";
 
 const TL_STEPS = [...ZOOM.map((z) => z.knapp), "Som et døgn"];
 const TL_X0 = 60;
@@ -200,10 +229,12 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
   const z = ZOOM[Math.min(i, ZOOM.length - 1)];
   const xOf = (ma: number) => n1(TL_X0 + ((z.fra - ma) / z.fra) * (TL_X1 - TL_X0));
   const labels: Lab[] = [];
-  const BAR_Y = 250;
-  const BAR_H = 56;
+  // med tidsaldre og perioder ligger aksen lenger ned
+  const BAR_Y = z.perioder ? 96 : 250;
+  const BAR_H = z.perioder ? (small ? 250 : 196) : 56;
+  const SPENN_Y = z.perioder ? BAR_Y + BAR_H + 56 : 352;
+  const SPENN_DY = z.perioder ? 22 : 34;
   if (!klokkeModus) {
-    // punkthendelser over tidslinjen
     z.punkt.forEach((k, j) => {
       const h = H[k];
       const x = xOf(h.ma);
@@ -219,24 +250,33 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
         badge: [Math.min(Math.max(x, 30), 930), BAR_Y - 34 - j * 30],
       });
     });
-    // spenn under tidslinjen
     z.spenn.forEach((k, j) => {
       const h = H[k];
       const x0 = xOf(h.ma);
       const x1 = xOf(h.til ?? 0);
       const mid = (x0 + x1) / 2;
-      const yRow = 352 + j * 34;
+      const yRow = SPENN_Y + j * SPENN_DY;
       const right = mid > 620;
       labels.push({
         text: h.navn,
         x: right ? 900 : 60,
-        y: 440 + j * 34,
+        y: (z.perioder ? 440 : 440) + j * 32,
         at: [n1(mid), yRow + 6],
         color: h.farge,
         anchor: right ? "end" : "start",
-        badge: [n1(Math.min(Math.max(mid, 30), 930)), yRow + 40],
+        badge: [n1(Math.min(Math.max(mid, 30), 930)), yRow + 40 + j * 4],
       });
     });
+    if (z.perioder)
+      labels.push({
+        text: "Kvartær, 2,58",
+        x: 900,
+        y: 70,
+        at: [n1(xOf(1.3)), BAR_Y + 60],
+        color: C.cold,
+        anchor: "end",
+        badge: [920, 60],
+      });
   } else {
     const r = 200;
     const cx = 290;
@@ -253,7 +293,7 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
     });
   }
   const status = klokkeModus
-    ? `Som et døgn: Hvis hele tiden siden solsystemet ble dannet er 24 timer, begynner kambrium ${KLOKKE[3].tekst.split(": ")[1]}, og kvartær først ${KLOKKE[7].tekst.split(": ")[1]}. Holocen er bare de siste ${tall(KL_HOLOCEN, 1)} sekundene.`
+    ? `${KLOKKE_START} Kambrium begynner da ${KLOKKE[3].tekst.split(": ")[1]}, og kvartær først ${KLOKKE[7].tekst.split(": ")[1]}. Holocen er bare de siste ${tall(KL_HOLOCEN, 1)} sekundene.`
     : z.status;
   const keys: Key[] = klokkeModus
     ? [
@@ -264,12 +304,17 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
         { text: "Hendelse i tid", color: C.fg, kind: "line" },
         { text: "Utsnittet i neste zoom", color: C.warm, kind: "dash" },
       ];
+  const notes = klokkeModus
+    ? ["Jordas alder, ca. 4,54 milliarder år = 24 timer (USGS)", "Solsystemet er litt eldre, ca. 4,567 milliarder år, og ligger før midnatt kvelden før"]
+    : z.perioder
+      ? ["Tid i millioner år siden", "Grenser fra ICS-kartet v2026/06", "Karbon, trias og neogen uten tall"]
+      : [`Tid i ${z.enhet}`, "Eldst til venstre"];
   return (
     <div ref={wrapRef}>
       <IsbreFigur
-        title="Den geologiske tidsskalaen som tidslinje med fire zoomnivåer, fra hele jordas historie ned til de siste 15 000 årene, og som et døgn der 4,567 milliarder år er 24 timer"
+        title="Den geologiske tidsskalaen som tidslinje med fire zoomnivåer, fra hele jordas historie med tidsaldre og perioder ned til de siste 15 000 årene, og som et døgn der jordas alder er 24 timer"
         heading={heading}
-        caption="Velg et utsnitt for å zoome inn. Hver tidslinje er lineær, så lengden viser hvor lang tid det er. Tallene er de samme som i teksten. I døgnet tilsvarer ett sekund ca. 53 000 år."
+        caption="Velg et utsnitt for å zoome inn. Hver tidslinje er lineær, så lengden viser hvor lang tid det er. I døgnet tilsvarer ett sekund ca. 53 000 år."
         toolbar={
           <StegRamme small={small}>
             <StegVelger labels={TL_STEPS} step={step} onStep={setStep} label="Velg utsnitt" />
@@ -278,8 +323,8 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
         status={status}
         labels={labels}
         keys={keys}
-        notes={klokkeModus ? ["4,567 milliarder år = 24 timer", "Skjematisk"] : [`Tid i ${z.enhet}`, "Eldst til venstre"]}
-        viewBox="0 0 960 520"
+        notes={notes}
+        viewBox="0 0 960 540"
       >
         {({ scale }) =>
           klokkeModus ? (
@@ -287,12 +332,11 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
               <circle cx={290} cy={280} r={200} fill="#14202a" />
               {(() => {
                 const a1 = (klokke(538.8).s / 86400) * Math.PI * 2 - Math.PI / 2;
-                const big = 1;
                 const ex = n1(290 + Math.cos(a1) * 200);
                 const ey = n1(280 + Math.sin(a1) * 200);
                 return (
                   <>
-                    <path d={`M290 280 L290 80 A200 200 0 ${big} 1 ${ex} ${ey} Z`} fill="#5a4a63" />
+                    <path d={`M290 280 L290 80 A200 200 0 1 1 ${ex} ${ey} Z`} fill="#5a4a63" />
                     <path d={`M290 280 L${ex} ${ey} A200 200 0 0 1 290 80 Z`} fill="#3f6b6e" />
                   </>
                 );
@@ -333,7 +377,7 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
                 24 timer
               </T>
               <T x={290} y={302} scale={scale} anchor="middle" size={14} fill={C.muted}>
-                = 4,567 mrd. år
+                = 4,54 mrd. år
               </T>
             </g>
           ) : (
@@ -353,6 +397,39 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
                   </g>
                 );
               })}
+              {z.perioder ? (
+                <>
+                  {TIDSALDRE.map((e) => {
+                    const x0 = xOf(e.fra);
+                    const w = xOf(e.til) - x0;
+                    return (
+                      <g key={e.navn}>
+                        <rect x={x0} y={BAR_Y} width={n1(w - 1.5)} height={40} fill={e.farge} />
+                        <T x={n1(x0 + w / 2)} y={BAR_Y + 26} scale={scale} anchor="middle" size={small ? 13 : 16} weight={800}>
+                          {small && w < 160 ? e.navn.slice(0, 4) + "." : e.navn}
+                        </T>
+                      </g>
+                    );
+                  })}
+                  {PERIODER.map((p) => {
+                    const x0 = xOf(p.fra);
+                    const w = xOf(p.til) - x0;
+                    const cx = n1(x0 + w / 2);
+                    const yb = BAR_Y + BAR_H - 8;
+                    return (
+                      <g key={p.navn}>
+                        <rect x={x0} y={BAR_Y + 44} width={n1(Math.max(1, w - 1.5))} height={BAR_H - 44} fill={p.farge} />
+                        <g transform={`rotate(-90 ${cx} ${yb})`}>
+                          <T x={cx} y={n1(yb + figureFont(14, scale) * 0.35)} scale={scale} size={14} weight={700}>
+                            {small || !p.tall ? p.navn : `${p.navn} ${p.tall}`}
+                          </T>
+                        </g>
+                      </g>
+                    );
+                  })}
+                  <rect x={xOf(2.58)} y={BAR_Y + 44} width={n1(Math.max(2, TL_X1 - xOf(2.58)))} height={BAR_H - 44} fill="#3d5a73" />
+                </>
+              ) : null}
               {z.neste !== undefined ? (
                 <rect
                   x={xOf(z.neste) - 3}
@@ -372,16 +449,17 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
               {z.spenn.map((k, j) => {
                 const x0 = xOf(H[k].ma);
                 const x1 = xOf(H[k].til ?? 0);
-                const y = 352 + j * 34;
-                return <rect key={k} x={x0} y={y} width={n1(Math.max(4, x1 - x0))} height={12} rx="3" fill={H[k].farge} />;
+                const y = SPENN_Y + j * SPENN_DY;
+                return <rect key={k} x={n1(Math.min(x0, x1 - 2))} y={y} width={n1(Math.max(4, x1 - x0))} height={12} rx="3" fill={H[k].farge} />;
               })}
               {z.ticks.map((t) => {
                 const x = xOf(t);
+                const ty = BAR_Y + BAR_H;
                 return (
                   <g key={t}>
-                    <line x1={x} y1={BAR_Y + BAR_H} x2={x} y2={BAR_Y + BAR_H + 8} stroke={C.muted} strokeWidth="1.5" />
+                    <line x1={x} y1={ty} x2={x} y2={ty + 8} stroke={C.muted} strokeWidth="1.5" />
                     {small && t !== 0 && z.ticks.indexOf(t) % 2 === 1 ? null : (
-                      <T x={x} y={BAR_Y + BAR_H + 30} scale={scale} anchor={t === 0 ? "end" : "middle"} size={14} fill={C.muted}>
+                      <T x={x} y={ty + 30} scale={scale} anchor={t === 0 ? "end" : "middle"} size={14} fill={C.muted}>
                         {z.tick(t)}
                       </T>
                     )}
@@ -400,56 +478,80 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
  * 2. Relativ datering: snittet bygges opp hendelse for hendelse
  * ===================================================================== */
 
-const RD_STEPS = ["Lag A", "Lag B", "Lag C", "Lag D", "Forkastning F", "Gang E"];
+const RD_STEPS = ["Lag A", "Lag B", "Lag C", "Lag D", "Gang E", "Forkastning F", "Erosjon", "Øverste lag"];
 const RD_STATUS = [
   "Lag A (skifer) avsettes først, nesten vannrett. Det ligger nederst og er eldst.",
   "Lag B (kalkstein med fossiler) avsettes oppå A. Etter overlagringsprinsippet er B yngre enn A.",
   "Lag C (sandstein) avsettes oppå B.",
-  "Lag D (konglomerat) avsettes øverst. Lagrekken er avsatt fra kambrium til devon: A er eldst og D yngst.",
-  "Forkastningen F skjærer gjennom alle fire lagene. Etter gjennomskjæringsprinsippet er F yngre enn lag D.",
-  "Gangen E skjærer gjennom lagene og forkastningen, så E er den yngste hendelsen. Bruddstykkene av lag B i gangen er inneslutninger: B fantes før magmaen trengte opp.",
+  "Lag D (konglomerat) avsettes oppå C. Lagrekken er avsatt fra kambrium til devon: A er eldst og D yngst.",
+  "Gangen E skjærer gjennom lag A–D, så E er yngre enn lagene. Bruddstykkene av lag B i gangen er inneslutninger: B fantes før magmaen trengte opp.",
+  "Forkastningen F forskyver både lagene og gangen E, så F er yngre enn E.",
+  "Erosjon fjerner toppen av lagene, gangen og forkastningen og lager en flat erosjonsflate.",
+  "Det øverste laget avsettes på erosjonsflaten. Det ligger urørt over alt sammen og er yngst.",
 ];
+const RD_LESETEKST =
+  "Les fra eldst til yngst: først lagene nedenfra og opp (superposisjon). Så gangen E, som skjærer gjennom dem. Så forkastningen F, som forskyver både lagene og gangen. Til slutt erosjon og det øverste laget, som ligger urørt over alt sammen.";
 const RD_LAG = [
-  { navn: "Lag A (kambrium)", under: "Skifer", top: 310, bunn: 380, fill: "#3a3830", farge: C.sand },
-  { navn: "Lag B (ordovicium)", under: "Kalkstein med fossiler", top: 230, bunn: 310, fill: "#24414d", farge: C.teal },
-  { navn: "Lag C (silur)", under: "Sandstein", top: 150, bunn: 230, fill: "#4a3b2c", farge: C.warm },
-  { navn: "Lag D (devon)", under: "Konglomerat", top: 70, bunn: 150, fill: "#2b4637", farge: C.rain },
+  { navn: "Lag A (kambrium)", top: 310, bunn: 380, fill: "#3a3830", farge: C.sand },
+  { navn: "Lag B (ordovicium)", top: 240, bunn: 310, fill: "#24414d", farge: C.teal },
+  { navn: "Lag C (silur)", top: 170, bunn: 240, fill: "#4a3b2c", farge: C.warm },
+  { navn: "Lag D (devon)", top: 90, bunn: 170, fill: "#2b4637", farge: C.rain },
 ];
-/** Forkastningen F går fra (420, 50) til (570, 380), som i den gamle figuren. */
+/** Erosjonsflaten etter forkastningen. Alt over den fjernes i steg 7. */
+const RD_EROSJON = 125;
+const RD_SPRANG = 40;
+/** Forkastningen F går fra (420, 50) til (570, 380). */
 const faultX = (y: number) => 420 + ((y - 50) * 150) / 330;
 const RD_LEFT = `M50 40 L${n1(faultX(40))} 40 L570 380 L50 380 Z`;
 const RD_RIGHT = `M${n1(faultX(40))} 40 L850 40 L850 380 L570 380 Z`;
-const RD_SEKVENS = ["A", "B", "C", "D", "F", "E"];
+/** Gangen E heller motsatt vei av F og krysser den ved ca. y = 307, så forskyvningen blir synlig. */
+const RD_GANG = "M680 96 L720 96 L500 380 L460 380 Z";
+const RD_XENO = ["568,250 586,246 582,260 565,258", "552,272 572,268 567,282 549,280"];
+const RD_SEKVENS = [
+  { kort: "A", lang: "Lag A" },
+  { kort: "B", lang: "Lag B" },
+  { kort: "C", lang: "Lag C" },
+  { kort: "D", lang: "Lag D" },
+  { kort: "E", lang: "Gang E" },
+  { kort: "F", lang: "Forkast. F" },
+  { kort: "Er", lang: "Erosjon" },
+  { kort: "Øv", lang: "Øverste" },
+];
+const RD_SEKV_FARGE = [...RD_LAG.map((l) => l.farge), "#f0a07a", C.low, C.muted, "#c9b8e6"];
 
 export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ datering steg for steg" }: { heading?: string }) {
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
-  const clock = useStepClock(6, motion.playing && visible, 2600, 1800, 6);
+  const clock = useStepClock(8, motion.playing && visible, 2600, 1800, 8);
   const { step, phase } = clock;
   const i = step - 1;
   const grow = motion.playing ? smooth(phase) : 1;
-  const off = step < 5 ? 0 : 30 * (step === 5 ? grow : 1);
+  const off = step < 6 ? 0 : RD_SPRANG * (step === 6 ? grow : 1);
+  const eroded = step >= 7;
   const uid = "rd";
   const labels: Lab[] = [];
   RD_LAG.forEach((l, j) => {
     if (j > i) return;
-    labels.push({ text: l.navn, x: 70, y: l.top + 34, color: l.farge, size: 15, weight: 700, badge: [90, l.top + 40] });
+    labels.push({ text: l.navn, x: 70, y: l.bunn - 22, color: l.farge, size: 15, weight: 700, badge: [90, l.bunn - 28] });
   });
-  if (step >= 5)
-    labels.push({ text: "Forkastning F", x: 600, y: 64, at: [n1(faultX(110)), 110], color: C.low, weight: 700, badge: [470, 98] });
-  if (step >= 6) {
-    labels.push({ text: "Gang E (diabas)", x: 600, y: 300, at: [538, 330], color: "#f0a07a", weight: 700, badge: [610, 330] });
-    labels.push({ text: "Inneslutning av lag B", x: 600, y: 210, at: [516, 252], color: C.teal, weight: 700, badge: [580, 240] });
+  const dy = step >= 6 ? RD_SPRANG : 0;
+  if (step >= 5) {
+    labels.push({ text: "Gang E (diabas)", x: 740, y: 180, at: [658, 150 + dy], color: "#f0a07a", weight: 700, badge: [706, 140 + dy] });
+    labels.push({ text: "Inneslutning av lag B", x: 640, y: 318, at: [576, 254 + dy], color: C.teal, weight: 700, badge: [624, 256 + dy] });
   }
-  const sekvens = RD_SEKVENS.slice(0, step);
+  if (step >= 6)
+    labels.push({ text: "Forkastning F", x: 300, y: 64, at: [n1(faultX(200)), 200], color: C.low, weight: 700, badge: [420, 180] });
+  if (step >= 7)
+    labels.push({ text: "Erosjonsflate", x: 700, y: 64, at: [760, RD_EROSJON], color: C.muted, weight: 700, badge: [780, 100] });
+  if (step >= 8) labels.push({ text: "Øverste lag", x: 70, y: 108, color: "#c9b8e6", size: 15, weight: 700, badge: [90, 98] });
   return (
     <div ref={wrapRef}>
       <IsbreFigur
         svgRef={ref}
-        title="Geologisk snitt som bygges opp i seks steg: lag A til D avsettes oppå hverandre, forkastningen F skjærer gjennom lagene, og til slutt skjærer gangen E gjennom både lagene og forkastningen og inneholder bruddstykker av lag B"
+        title="Geologisk snitt som bygges opp i åtte steg: lag A til D avsettes oppå hverandre, gangen E skjærer gjennom lagene, forkastningen F forskyver lagene og gangen, erosjon lager en flat flate, og det øverste laget avsettes urørt over alt sammen"
         heading={heading}
-        caption="Figur 1. Begynn nederst og arbeid deg oppover, og se så etter det som skjærer gjennom lagene. Raden nederst viser rekkefølgen fra eldst til yngst. Skjematisk snitt uten målestokk."
+        caption={RD_LESETEKST}
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
         toolbar={
@@ -462,8 +564,9 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
         keys={[
           { text: "Forkastning", color: C.low, kind: "dash" },
           { text: "Gang av diabas", color: "#7a3a2c", kind: "fill" },
+          { text: "Erosjonsflate", color: C.muted, kind: "line", off: !eroded },
         ]}
-        notes={["Skjematisk, uten målestokk"]}
+        notes={["Figur 1", "Skjematisk, uten målestokk"]}
         viewBox="0 0 900 480"
       >
         {({ scale }) => (
@@ -475,50 +578,66 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
               <clipPath id={`${uid}-r`}>
                 <path d={RD_RIGHT} />
               </clipPath>
+              <clipPath id={`${uid}-e`}>
+                <rect x="50" y={RD_EROSJON} width="800" height={380 - RD_EROSJON} />
+              </clipPath>
             </defs>
             <rect x="50" y="40" width="800" height="340" rx="8" fill="#141d24" />
-            {[0, 1].map((side) => (
-              <g key={side} clipPath={step >= 5 ? `url(#${uid}-${side ? "r" : "l"})` : undefined}>
-                <g transform={side && off ? `translate(0 ${n1(off)})` : undefined}>
-                  {RD_LAG.map((l, j) => {
-                    if (j > i) return null;
-                    const g = j === i && step <= 4 ? grow : 1;
-                    const top = l.bunn - (l.bunn - l.top) * g;
-                    return (
-                      <g key={l.navn}>
-                        <rect x="50" y={n1(top)} width="800" height={n1(l.bunn - top + (side ? 30 : 0) * (j === 0 ? 1 : 0))} fill={l.fill} />
-                        {j === 1 ? (
-                          <g fill="#9fd0d2" opacity="0.55" data-nocheck="">
-                            {[90, 230, 370, 520, 660, 790].map((x) => (
-                              <ellipse key={x} cx={x + (side ? 20 : 0)} cy={n1(l.top + 62)} rx="7" ry="3" />
-                            ))}
-                          </g>
-                        ) : null}
-                      </g>
-                    );
-                  })}
-                </g>
-              </g>
-            ))}
-            {step >= 5 ? (
-              <line
-                x1="420"
-                y1="50"
-                x2="570"
-                y2="380"
-                stroke={C.low}
-                strokeWidth="3"
-                strokeDasharray="6 4"
-                opacity={step === 5 ? grow : 1}
+            {step >= 8 ? (
+              <rect
+                x="50"
+                y={n1(RD_EROSJON - (RD_EROSJON - 70) * grow)}
+                width="800"
+                height={n1((RD_EROSJON - 70) * grow)}
+                fill="#3e3550"
               />
             ) : null}
-            {step >= 6 ? (
-              <g opacity={grow}>
-                <path d="M478 100 L518 100 L560 380 L520 380 Z" fill="#7a3a2c" />
-                <polygon points="502,240 520,236 516,250 499,248" fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
-                <polygon points="507,262 528,258 522,272 505,270" fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
-              </g>
-            ) : null}
+            <g clipPath={eroded ? `url(#${uid}-e)` : undefined}>
+              {[0, 1].map((side) => (
+                <g key={side} clipPath={step >= 6 ? `url(#${uid}-${side ? "r" : "l"})` : undefined}>
+                  <g transform={side && off ? `translate(0 ${n1(off)})` : undefined}>
+                    {RD_LAG.map((l, j) => {
+                      if (j > i) return null;
+                      const g = j === i && step <= 4 ? grow : 1;
+                      const top = l.bunn - (l.bunn - l.top) * g;
+                      return (
+                        <g key={l.navn}>
+                          <rect x="50" y={n1(top)} width="800" height={n1(l.bunn - top + (side && j === 0 ? RD_SPRANG : 0))} fill={l.fill} />
+                          {j === 1 ? (
+                            <g fill="#9fd0d2" opacity="0.55" data-nocheck="">
+                              {[90, 230, 370, 700, 790].map((x) => (
+                                <ellipse key={x} cx={x + (side ? 20 : 0)} cy={n1(l.top + 52)} rx="7" ry="3" />
+                              ))}
+                            </g>
+                          ) : null}
+                        </g>
+                      );
+                    })}
+                    {step >= 5 ? (
+                      <g opacity={step === 5 ? grow : 1}>
+                        <path d={RD_GANG} fill="#7a3a2c" />
+                        {RD_XENO.map((pts) => (
+                          <polygon key={pts} points={pts} fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
+                        ))}
+                      </g>
+                    ) : null}
+                  </g>
+                </g>
+              ))}
+              {step >= 6 ? (
+                <line
+                  x1={n1(faultX(eroded ? RD_EROSJON : 90))}
+                  y1={eroded ? RD_EROSJON : 90}
+                  x2="570"
+                  y2="380"
+                  stroke={C.low}
+                  strokeWidth="3"
+                  strokeDasharray="6 4"
+                  opacity={step === 6 ? grow : 1}
+                />
+              ) : null}
+            </g>
+            {eroded ? <line x1="50" y1={RD_EROSJON} x2="850" y2={RD_EROSJON} stroke={C.muted} strokeWidth="3" /> : null}
             {/* rekkefølgen fra eldst til yngst */}
             <T x={50} y={410} scale={scale} size={14} fill={C.muted}>
               Eldst
@@ -527,16 +646,16 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
               Yngst
             </T>
             {RD_SEKVENS.map((s, j) => {
-              const w = 118;
-              const x = 50 + j * 136;
-              const on = sekvens.includes(s);
-              const farge = j < 4 ? RD_LAG[j].farge : j === 4 ? C.low : "#f0a07a";
+              const w = 92;
+              const x = 50 + j * 101.1;
+              const on = j <= i;
+              const farge = RD_SEKV_FARGE[j];
               return (
-                <g key={s}>
-                  <rect x={x} y={422} width={w} height={46} rx="8" fill={on ? "#1c2a33" : "#121a20"} stroke={on ? farge : C.dim} strokeWidth="2" />
+                <g key={s.kort}>
+                  <rect x={n1(x)} y={422} width={w} height={46} rx="8" fill={on ? "#1c2a33" : "#121a20"} stroke={on ? farge : C.dim} strokeWidth="2" />
                   {on ? (
-                    <T x={x + w / 2} y={452} scale={scale} anchor="middle" size={17} weight={800} fill={farge}>
-                      {small ? s : j < 4 ? `Lag ${s}` : j === 4 ? "Forkastn. F" : "Gang E"}
+                    <T x={n1(x + w / 2)} y={451} scale={scale} anchor="middle" size={14} weight={800} fill={farge}>
+                      {small ? s.kort : s.lang}
                     </T>
                   ) : null}
                 </g>
@@ -595,14 +714,14 @@ export function HalveringstidFigur({ heading = "Halveringstid: hvor mye er igjen
   const prosent = 100 / 2 ** n;
   const forGammel = aar > JORD_AAR;
   const status =
-    n === 0
+    m.aar === 5730 && n === 8
+      ? "Etter 8 halveringstider (ca. 46 000 år) er bare ca. 0,4 % igjen. Derfor er grensen for C-14-datering ca. 50 000 år."
+      : n === 0
       ? `Et nytt mineral med ${m.mor}: Bare morisotop, ingen datterisotop ennå. Halveringstiden for ${m.knapp.toLowerCase()} er ${m.tekst}.`
       : `Etter ${n} halveringstid${n > 1 ? "er" : ""} er ${brok(n)} av ${m.mor} igjen (${tall(prosent, prosent < 1 ? 1 : 0)} %). Med ${m.knapp.toLowerCase()} er det ${aarTekst(aar)}.` +
         (forGammel
           ? " Det er lenger enn jorda har eksistert (ca. 4,54 milliarder år). Halveringstiden må passe til alderen."
-          : m.aar === 5730 && aar > 40000
-            ? " Nå er det nesten ikke noe karbon-14 igjen å måle. Metoden brukes på materiale yngre enn ca. 50 000 år."
-            : "");
+          : "");
   // rutenett og kurve: side om side på bred skjerm, over hverandre på smal
   const grid = small ? { x: 40, y: 30, cell: 25 } : { x: 40, y: 50, cell: 25 };
   const g = small ? { x: 70, y: 500, w: 370, h: 300 } : { x: 520, y: 70, w: 390, h: 300 };
@@ -628,7 +747,7 @@ export function HalveringstidFigur({ heading = "Halveringstid: hvor mye er igjen
               value={n}
               onChange={setN}
               valueLabel={String(n)}
-              valueText={`${n} halveringstider, ${brok(n)} igjen`}
+              valueText={`${n} ${n === 1 ? "halveringstid" : "halveringstider"}, ${brok(n)} igjen`}
             />
           </>
         }
@@ -762,6 +881,21 @@ export function LedefossilFigur({ heading = "Ledefossiler: samme relative alder 
   if (step >= 3) {
     labels.push({ text: "Ledefossil: trilobittart", x: 480, y: 100, at: [LF_STED[0].x + 120, n1(triloY[0])], color: "#f3d27a", anchor: "middle", badge: [420, n1(triloY[0])] });
   }
+  // på smal skjerm tegnes ikke bergartsnavnene ved søylene, så de kommer med i nummerlisten
+  if (small)
+    LF_STED.forEach((st, si) =>
+      st.lag.forEach((l, j) => {
+        const top = lagTopp(st.lag, j);
+        const cy = n1(top + l.h / 2);
+        labels.push({
+          text: `${st.navn}: ${l.navn.toLowerCase()}`,
+          x: si === 0 ? st.x - 10 : st.x + LF_W + 10,
+          y: cy,
+          color: C.fg,
+          badge: [si === 0 ? st.x - 34 : st.x + LF_W + 34, cy],
+        });
+      }),
+    );
   if (step === 4) {
     labels.push({ text: "Yngre", x: 480, y: 170, color: C.fg, anchor: "middle", size: 15 });
     labels.push({ text: "Eldre", x: 480, y: 405, color: C.fg, anchor: "middle", size: 15 });
@@ -771,7 +905,7 @@ export function LedefossilFigur({ heading = "Ledefossiler: samme relative alder 
       <IsbreFigur
         title="To lagrekker på hvert sitt sted med ulike bergarter. En langlivet art finnes i mange lag, mens en kortlivet trilobittart finnes i bare ett lag på hvert sted. Lagene med trilobittarten har samme relative alder"
         heading={heading}
-        caption="Et ledefossil er et fossil av en art som levde i kort tid, men hadde stor utbredelse. Trilobittene levde fra tidlig kambrium til slutten av perm, så et lag med trilobitter er fra paleozoikum. Skjematisk, uten målestokk."
+        caption="Et godt ledefossil levde kort tid og spredte seg over store områder. Trilobittene levde fra tidlig kambrium til slutten av perm, så et lag med trilobitter er fra paleozoikum. Skjematisk, uten målestokk."
         toolbar={
           <StegRamme small={small}>
             <StegVelger labels={LF_STEPS} step={step} onStep={setStep} label="Velg steg" />
