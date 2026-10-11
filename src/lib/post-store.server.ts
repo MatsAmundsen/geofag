@@ -1046,6 +1046,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "landformer",
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],
   },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-havstrommer-fjell-2026-10-11",
+    slug: "havstrommer",
+    stale: ["[Havstrømmer](/tema/havstrommer) handler om disse drivkreftene"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

@@ -75,6 +75,12 @@ import {
   QUIZ_SJEKK_KATASTROFER_3,
   QUIZ_SJEKK_ENERGI_1,
   QUIZ_SJEKK_ENERGI_2,
+  QUIZ_SJEKK_HAVSTROMMER_1,
+  QUIZ_SJEKK_HAVSTROMMER_2,
+  QUIZ_SJEKK_HAVSTROMMER_3,
+  QUIZ_SJEKK_HAVSTROMMER_4,
+  QUIZ_SJEKK_HAVSTROMMER_5,
+  QUIZ_SJEKK_HAVSTROMMER_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -144,6 +150,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
   Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
   Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
+  Havstrommer1: QUIZ_SJEKK_HAVSTROMMER_1,
+  Havstrommer2: QUIZ_SJEKK_HAVSTROMMER_2,
+  Havstrommer3: QUIZ_SJEKK_HAVSTROMMER_3,
+  Havstrommer4: QUIZ_SJEKK_HAVSTROMMER_4,
+  Havstrommer5: QUIZ_SJEKK_HAVSTROMMER_5,
+  Havstrommer6: QUIZ_SJEKK_HAVSTROMMER_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -267,6 +279,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
     "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
     "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
+  ],
+  Havstrommer: [
+    "Havstrømmer drives av vind, trykkforskjeller, tetthetsforskjeller og tidevann. Jordrotasjonen bøyer strømmene mot høyre på den nordlige halvkulen. Vanntransport måles i sverdrup (1 Sv = 1 million m³ per sekund).",
+    "Vinden setter i gang ekmanlaget. Det er typisk noen titalls meter tykt, opptil 100–200 m ved sterk vind. Ekmantransporten går 90 grader til høyre for vinden på den nordlige halvkulen. Der strømmen er i geostrofisk balanse, går vannet langs hellingen på havoverflaten.",
+    "De store havvirvlene går med klokka på den nordlige halvkulen. Strømmen på vestsiden, som Golfstrømmen, er smal og rask (vestlig intensivering).",
+    "Oppvelling henter kaldt og næringsrikt vann opp når ekmantransporten fører overflatevannet bort fra kysten. Oppvellingsområdene dekker under 1 prosent av havoverflaten, men gir opptil 20 prosent av fiskefangsten i verden.",
+    "Den norske atlanterhavsstrømmen, ikke Golfstrømmen, frakter varmt atlanterhavsvann langs Norge. Nærmere land går den ferskere Den norske kyststrømmen. Det milde klimaet kommer av samspillet mellom havet og vindsystemene.",
+    "Kaldt og salt vann synker og driver den langsomme termohaline sirkulasjonen. I nord skjer det mest ved avkjøling om vinteren. IPCC venter at AMOC svekkes i dette hundreåret, men mener med middels sikkerhet at den ikke bryter brått sammen før 2100.",
   ],
 };
 

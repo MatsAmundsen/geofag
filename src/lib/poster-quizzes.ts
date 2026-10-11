@@ -1001,59 +1001,70 @@ export const QUIZ_OVERSIKT: QuizQuestion[] = [
 
 export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
   {
-    prompt: "Hva driver havstrømmer?",
+    prompt: "Hva er ekmanspiralen?",
     options: [
-      "Bare vinden, både i overflaten og i hele dyphavet.",
-      "Tidevann, vind og forskjeller i tetthet.",
-      "Bare månens drag, også midt i de store havvirvlene.",
-    ],
-    answer: 1,
-    explain:
-      "Se «Hva driver en havstrøm?». Tidevann, vind og tetthet driver strømmene. Tetthetsstrømmene går mye saktere.",
-  },
-  {
-    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
-    options: [
-      "Nøyaktig samme vei som vinden blåser.",
-      "Til venstre for vinden, som på den sørlige halvkule.",
-      "På tvers av vinden, til høyre for vindretningen.",
+      "En virvel som dannes rundt et lavtrykk på havet",
+      "Spiralen som tidevannet beveger seg i rundt et amfidromisk punkt",
+      "Mønsteret som strømretningen danner nedover i ekmanlaget, der hvert lag går litt saktere og litt mer til høyre",
+      "Bevegelsen til dypvannet rundt Antarktis",
     ],
     answer: 2,
-    explain:
-      "Se «Overflaten: ekmantransport og havvirvler». Overflatelaget, om lag de øverste 50 meterne, transporteres på tvers av vinden.",
+    explain: "Hvert lag drar i laget under, og corioliseffekten bøyer det mot høyre (Ekman, 1905; Barthel, 2021a).",
   },
   {
-    prompt: "Hva er oppvelling langs en vestkyst?",
+    prompt: "Hvorfor er strømmen på vestsiden av en havvirvel smal og rask?",
     options: [
-      "Overflatevann skyves ut, og kaldere, næringsrikt vann kommer opp fra dypet.",
-      "Overflatevannet presses inn mot land og synker.",
-      "Havisen fryser, og saltet blir igjen i overflaten.",
+      "Fordi corioliseffekten øker mot nord, noe som gir vestlig intensivering",
+      "Fordi vinden alltid er sterkest i vest",
+      "Fordi havet er dypere i vest",
+      "Fordi tidevannet er størst i vest",
     ],
     answer: 0,
-    explain:
-      "Se «Oppvelling». En nordavind langs en vestkyst på den nordlige halvkule skyver overflaten utover.",
+    explain: "Stommel (1948) forklarte det. Grunnen er at jorda er rund (Barthel, 2025).",
   },
   {
-    prompt: "Hva heter strømmen nordover langs norskekysten?",
+    prompt: "Hvor kommer det meste av atlanterhavsvannet inn i Norskehavet?",
     options: [
-      "Selve Golfstrømmen, hele veien fra Florida.",
-      "Labradorstrømmen, som kommer sørfra langs Norge.",
-      "Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen.",
+      "Gjennom Den engelske kanal",
+      "Gjennom Danmarkstredet",
+      "Gjennom Framstredet",
+      "Gjennom Færøy–Shetland-renna",
     ],
-    answer: 2,
-    explain:
-      "Se «Golfstrømmen og Norges klima». Navnet Golfstrømmen brukes feilaktig om strømmen langs Norge.",
+    answer: 3,
+    explain: "Der er vannet rundt 8 °C og har en saltholdighet på 35,4 promille (Weber & Bjørndalen, 2024).",
   },
   {
-    prompt: "Hvorfor synker vann i Nord-Atlanteren og starter transportbåndet?",
+    prompt: "Hva gir oppvelling langs en kyst?",
     options: [
-      "Vinden presser overflatevannet rett ned til bunnen.",
-      "Vannet avkjøles, og salt blir igjen når havis fryser, så tettheten øker.",
-      "Varmt ferskvann er tyngre enn kaldt salt vann.",
+      "At vinden blåser rett mot land",
+      "At ekmantransporten fører overflatevannet bort fra kysten",
+      "At tidevannet løfter bunnvannet",
+      "At havisen smelter",
     ],
     answer: 1,
-    explain:
-      "Se «Dypet: det globale transportbåndet». Kaldt og saltere vann blir tettere og synker. Overflatevann trekkes inn.",
+    explain: "Kaldt og næringsrikt vann stiger opp og erstatter overflatevannet (Barthel, 2021b).",
+  },
+  {
+    prompt: "Hvor har saltet fra havis størst betydning for dannelsen av tungt bunnvann?",
+    options: [
+      "I Nordsjøen",
+      "Langs norskekysten",
+      "Rundt Antarktis",
+      "I Sargassohavet",
+    ],
+    answer: 2,
+    explain: "Det meste av bunnvannet i verdenshavene dannes rundt Antarktis, særlig i Weddellhavet. I Nord-Atlanteren er avkjøling om vinteren viktigst (Barthel, 2025).",
+  },
+  {
+    prompt: "Hvorfor kan AMOC bli svakere når klimaet blir varmere?",
+    options: [
+      "Fordi vinden over Atlanteren slutter å blåse",
+      "Fordi havet blir saltere",
+      "Fordi jorda roterer saktere",
+      "Fordi overflatevannet i nord blir ferskere og varmere og synker ikke like lett",
+    ],
+    answer: 3,
+    explain: "IPCC (2021) vurderer det som svært sannsynlig at AMOC svekkes i dette hundreåret.",
   },
 ];
 
@@ -3898,5 +3909,143 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Når havbunn med kalkstein subduseres, frigjør oppvarmingen CO₂ fra karbonatene. Vulkanene gir gassen tilbake til atmosfæren.",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvilken av disse setter IKKE i seg selv vannet i bevegelse, men bøyer av strømmen?",
+    options: [
+      "Vinden",
+      "Tetthetsforskjeller",
+      "Jordrotasjonen",
+    ],
+    answer: 2,
+    explain: "Jordrotasjonen bøyer av alt som beveger seg, mot høyre på den nordlige halvkulen (Barthel, 2025).",
+  },
+  {
+    prompt: "Hva er 1 sverdrup (Sv)?",
+    options: [
+      "1 meter per sekund",
+      "1 million kubikkmeter vann per sekund",
+      "1000 kubikkmeter vann per døgn",
+    ],
+    answer: 1,
+    explain: "Sverdrup er enheten for vanntransport (Barthel, 2025).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_2: QuizQuestion[] = [
+  {
+    prompt: "Vinden blåser mot nord på den nordlige halvkulen. Hvilken vei går ekmantransporten?",
+    options: [
+      "Mot øst",
+      "Mot vest",
+      "Mot nord",
+    ],
+    answer: 0,
+    explain: "90 grader til høyre for vinden (Barthel, 2021a).",
+  },
+  {
+    prompt: "Hvorfor er Golfstrømmen smal og rask, mens Kanaristrømmen er bred og langsom?",
+    options: [
+      "Fordi det blåser mer på vestsiden av Atlanteren",
+      "Fordi vannet er varmere i vest",
+      "Fordi corioliseffekten øker mot nord, noe som gir vestlig intensivering",
+    ],
+    answer: 2,
+    explain: "Stommel (1948) viste at det er fordi jorda er rund (Barthel, 2025).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_3: QuizQuestion[] = [
+  {
+    prompt: "Langs en vestkyst på den nordlige halvkulen blåser vinden mot sør, parallelt med land. Hva skjer?",
+    options: [
+      "Overflatevannet presses mot land, og det blir nedvelling",
+      "Overflatevannet føres ut fra land, og det blir oppvelling",
+      "Ingenting, fordi vinden blåser langs kysten",
+    ],
+    answer: 1,
+    explain: "Ekmantransporten går 90 grader til høyre for vinden, altså vestover og ut fra land (Barthel, 2021b).",
+  },
+  {
+    prompt: "Hvorfor er oppvellingsområdene så rike på fisk?",
+    options: [
+      "Vannet fra dypet har mye næringssalter, og planteplanktonet vokser godt",
+      "Vannet er varmere enn rundt",
+      "Strømmen er svakere enn rundt",
+    ],
+    answer: 0,
+    explain: "De dekker under 1 prosent av havoverflaten, men står for opptil 20 prosent av fiskefangsten i verden (Du mfl., 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_4: QuizQuestion[] = [
+  {
+    prompt: "Hva heter strømmen som frakter varmt atlanterhavsvann langs norskekysten?",
+    options: [
+      "Golfstrømmen",
+      "Labradorstrømmen",
+      "Den norske atlanterhavsstrømmen",
+    ],
+    answer: 2,
+    explain: "Golfstrømmen går langs Nord-Amerika. Navnet brukes feil om strømmen langs Norge (Barthel, 2026; Weber & Bjørndalen, 2024).",
+  },
+  {
+    prompt: "Hvorfor er Den norske kyststrømmen ferskere enn atlanterhavsvannet?",
+    options: [
+      "Fordi den får smeltevann fra Grønland",
+      "Fordi den har med seg ferskvann fra Østersjøen og de norske elvene",
+      "Fordi det regner mer nær land",
+    ],
+    answer: 1,
+    explain: "Saltholdigheten er 30–33 promille (Havforskningsinstituttet, 2026; Sælen mfl., 2025a).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_5: QuizQuestion[] = [
+  {
+    prompt: "Hva er den beste forklaringen på at Norge er så mildt?",
+    options: [
+      "Bare varmen fra havstrømmene",
+      "Samspillet mellom varme havstrømmer og vindsystemene",
+      "At sola står høyere her enn på Grønland",
+    ],
+    answer: 1,
+    explain: "Havet gir varme til lufta, og de sørvestlige vindene fører lufta inn over land (Dannevig & Harstveit, 2026; Weber & Bjørndalen, 2024).",
+  },
+  {
+    prompt: "Hvordan har temperaturen i atlanterhavsvannet i Norskehavet utviklet seg siden 1970-tallet?",
+    options: [
+      "Den har steget",
+      "Den har sunket",
+      "Den har vært uendret",
+    ],
+    answer: 0,
+    explain: "2007 var det varmeste året i Svinøy- og Gimsøysnittet, og i 2025 var temperaturen omtrent 0,3 grader over normalen (Havforskningsinstituttet, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_6: QuizQuestion[] = [
+  {
+    prompt: "Hva gjør først og fremst at overflatevannet synker i Nord-Atlanteren?",
+    options: [
+      "At det blir kraftig avkjølt om vinteren",
+      "At det fordamper mye vann om sommeren",
+      "At det kommer mye smeltevann",
+    ],
+    answer: 0,
+    explain: "Saltet fra havis betyr mest rundt Antarktis (Barthel, 2025; Sælen mfl., 2025a).",
+  },
+  {
+    prompt: "Hva mener FNs klimapanel om AMOC i dette hundreåret?",
+    options: [
+      "Den vil sannsynligvis bryte brått sammen før 2100",
+      "Den vil bli sterkere",
+      "Den vil svært sannsynlig bli svekket, men med middels sikkerhet ikke bryte brått sammen før 2100",
+    ],
+    answer: 2,
+    explain: "IPCC (2021), SPM C.3.4.",
   },
 ];
