@@ -157,7 +157,7 @@ De siste ca. 2,6 millioner årene har det vært mange istider. Den siste istiden
 
 Tyngden av isen presset jordskorpa ned. Litosfæren ligger i en slags likevekt på astenosfæren under, og denne likevekten kaller vi _isostasi_. Astenosfæren er fast, men den er så varm at den kan deformeres plastisk og gi etter over tusenvis av år. Når isen la seg over landet, presset den litosfæren ned, og astenosfæren ble langsomt presset til side. Der isen var tykkest, innerst i Bottenviken, ble skorpa presset ned ca. 800 meter (NGU, 2012).
 
-Da klimaet ble varmere, smeltet isen raskt, og for ca. 11 700 år siden var det meste av den borte (Bryhni & Fossen, 2024). Uten tyngden fra isen begynte landet å heve seg igjen. Hevingen gikk raskt i begynnelsen og har siden gått langsommere.
+Da klimaet ble varmere, smeltet isen raskt (Bryhni & Fossen, 2024). Uten tyngden fra isen begynte landet å heve seg igjen. Hevingen gikk raskt i begynnelsen og har siden gått langsommere.
 
 ```widget
 IsostasiSnittNorgesGeologi

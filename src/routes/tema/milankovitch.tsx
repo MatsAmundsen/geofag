@@ -372,7 +372,7 @@ function MilankovitchPage() {
       </p>
       <p>
         Siste istid i snever betydning er Weichsel-istiden. Den varte i grovt fra ca.
-        115 000 til 11 700 år siden. Siste glacialmaksimum (LGM) lå rundt 21 000 år før nå: isen
+        117 000 til 11 700 år siden. Siste glacialmaksimum (LGM) lå rundt 21 000 år før nå: isen
         var da på sitt tykkeste og mest utbredt. Fennoskandisk isdekke lå over Norge. Havnivået sto
         omtrent 120 meter lavere enn i dag. CO₂ lå rundt 180–190 ppm. Deretter smeltet isen i
         rykk, med kaldere tilbakeslag. Holocen avløste weichsel for ca. 11 700 år siden. Det er
