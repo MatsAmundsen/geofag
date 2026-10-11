@@ -1064,6 +1064,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "vindsystemet",
     stale: ["Bruk modellen i [dette kapittelet](/tema/vindsystemet)", "Jordaksen heller om lag 23 grader."],
   },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vaerkart-mal-2026-10-11",
+    slug: "vaerkart",
+    stale: ["Vilhelm Bjerknes og Halvor Solberg, Bergensskolen, 1922"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

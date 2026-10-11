@@ -85,6 +85,10 @@ import {
   QUIZ_SJEKK_VINDSYSTEMET_2,
   QUIZ_SJEKK_VINDSYSTEMET_3,
   QUIZ_SJEKK_VINDSYSTEMET_4,
+  QUIZ_SJEKK_VAERKART_1,
+  QUIZ_SJEKK_VAERKART_2,
+  QUIZ_SJEKK_VAERKART_3,
+  QUIZ_SJEKK_VAERKART_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -164,6 +168,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Vindsystemet2: QUIZ_SJEKK_VINDSYSTEMET_2,
   Vindsystemet3: QUIZ_SJEKK_VINDSYSTEMET_3,
   Vindsystemet4: QUIZ_SJEKK_VINDSYSTEMET_4,
+  Vaerkart1: QUIZ_SJEKK_VAERKART_1,
+  Vaerkart2: QUIZ_SJEKK_VAERKART_2,
+  Vaerkart3: QUIZ_SJEKK_VAERKART_3,
+  Vaerkart4: QUIZ_SJEKK_VAERKART_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -308,6 +316,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Lufta stiger i konvergenssonen ved ekvator og gir regn. Den synker nær 30° og gir høytrykk og ørken.",
     "Ved bakken gir cellene passatvinder, vestavindsbeltet og polare østavinder. Corioliseffekten dreier dem mot høyre på den nordlige halvkule.",
     "Norge ligger i vestavindsbeltet ved polarfronten. Fuktige lavtrykk og fjellene gir mye nedbør i vest og regnskygge i øst.",
+  ],
+  Vaerkart: [
+    "Et værkart viser lavtrykk, høytrykk, fronter og isobarer. Tette isobarer betyr sterk vind. Tidene er i UTC (Z-tid).",
+    "En front er skillet mellom to luftmasser med ulik tetthet. Varmfront, kaldfront og okkludert front har hvert sitt symbol, og symbolene peker i fartsretningen.",
+    "Den norske syklonmodellen, utviklet av Jacob Bjerknes og Halvor Solberg i 1919–1922, viser livsløpet til et lavtrykk fra bølge på en front til okklusjon.",
+    "Stasjonsplott viser temperatur, duggpunkt, trykk, vær og vind. Vindpilen peker dit vinden kommer fra.",
+    "500 hPa-kartet viser høyden av trykkflaten midt i atmosfæren. Radar og satellitt brukes til å si noe om de nærmeste timene.",
   ],
 };
 
