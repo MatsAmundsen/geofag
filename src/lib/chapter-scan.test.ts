@@ -229,7 +229,7 @@ describe("scan chips for the other geosfære chapters", () => {
     const felt = prepareChapterScan(readChapter("feltarbeid"));
     assert.deepEqual(
       felt.sections.map((section) => section.label),
-      ["Felt", "Spørsmål", "Tolkning", "Presentasjon", "Begreper", "Quiz"],
+      ["Feltarbeid", "Planlegging", "Metoder", "Feltbok", "Resultater", "Begreper", "Sammendrag", "Quiz"],
     );
   });
 

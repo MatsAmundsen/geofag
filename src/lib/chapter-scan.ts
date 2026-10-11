@@ -28,6 +28,11 @@ type SectionMeta = {
 };
 
 const SECTION_META: SectionMeta[] = [
+  { match: /^hva er geofaglig feltarbeid/i, label: "Feltarbeid", subtitle: "Fire steg fra plan til presentasjon" },
+  { match: /^planlegging og hms$/i, label: "Planlegging", subtitle: "Problemstilling, utstyr og risiko" },
+  { match: /^metoder i felt$/i, label: "Metoder", subtitle: "Berggrunn, løsmasser og vann" },
+  { match: /^georeferering, feltbok/i, label: "Feltbok", subtitle: "Posisjon, ID og usikkerhet" },
+  { match: /^bearbeiding, tolkning og presentasjon/i, label: "Resultater", subtitle: "Fra data til konklusjon" },
   { match: /^grunnfjellet – det eldste/i, label: "Grunnfjellet", subtitle: "Prekambrium og det subkambriske peneplanet" },
   { match: /^leka – en havbunn/i, label: "Leka", subtitle: "Ofiolitt fra Iapetushavet" },
   { match: /^den kaledonske fjellkjeden$/i, label: "Kaledonidene", subtitle: "Kollisjon, skyvedekker og eklogitt" },

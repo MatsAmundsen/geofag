@@ -835,6 +835,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Nå skjer det i pukkverk (SNL, 2024b).\n\nIndustrimineraler"],
   },
   {
+    flag: "g1-feltarbeid-md-2026-10-11",
+    slug: "feltarbeid",
+    stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],
+  },
+  {
     flag: "g1-norges-geologi-md-2026-10-11",
     slug: "norges-geologi",
     stale: ["Pangea på å sprekke opp", "hevet landet seg opptil 220", "ca. 305–250", "Kilimanjaro"],

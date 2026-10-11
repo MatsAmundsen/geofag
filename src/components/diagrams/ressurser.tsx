@@ -220,10 +220,10 @@ export function FeltbokDiagram() {
   const uid = useId().replace(/:/g, "");
   const cols = [
     { label: "ID", value: "R-01", w: 88 },
-    { label: "tid", value: "12. mai 10:14", w: 168 },
-    { label: "koordinater", value: "59,248° N  10,412° Ø", w: 236 },
-    { label: "måling", value: "korn 2–4 mm", w: 150 },
-    { label: "usikkerhet", value: "± 3 m", w: 118 },
+    { label: "tid", value: "12. mai 10:14", w: 140 },
+    { label: "koordinater", value: "59,248° N  10,412° Ø", w: 216 },
+    { label: "måling", value: "korn 2–4 mm", w: 130 },
+    { label: "usikkerhet", value: "± 5 m (posisjon)", w: 186 },
   ];
   let x = 20;
   const headers = cols.map((c) => {
@@ -235,7 +235,7 @@ export function FeltbokDiagram() {
   return (
     <FigureFrame
       heading="Feltbok · eksempel"
-      caption="Feltbok med GPS-punkt. Én rad: ID, tid, koordinater, måling, usikkerhet."
+      caption="Feltbok med GPS-punkt. Én rad: ID, tid, koordinater, måling, usikkerhet i posisjonen."
     >
       <ScrollFrame label="Feltbok · eksempel" fade="var(--color-card)">
         <svg
@@ -246,7 +246,7 @@ export function FeltbokDiagram() {
         >
           <title id={`${uid}-title`}>
             Eksempel på feltbokrad: R-01, 12. mai 10:14, 59,248° N 10,412° Ø, korn 2–4
-            mm, usikkerhet ± 3 m.
+            mm, usikkerhet ± 5 m (posisjon).
           </title>
           <rect width="100%" height="100%" fill={C.bg} rx="10" />
           <L x="32" y="36" fill={C.teal} size={14} weight={600}>
