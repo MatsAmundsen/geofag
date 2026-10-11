@@ -893,7 +893,7 @@ export const QUIZ_MELTING: QuizQuestion[] = [
       "Fordi havvannet renner ned i sprekken og koker mantelen.",
       "Fordi skorpetynning reduserer overtrykket; mantelen stiger adiabatisk og krysser solidus.",
       "Fordi friksjonen mellom platene genererer voldsom varme som smelter bergartene fullstendig.",
-      "Fordi astenosfæren i utgangspunktet er et flytende magmaha som slipper fri.",
+      "Fordi astenosfæren i utgangspunktet er et flytende magmahav som slipper fri.",
     ],
     answer: 1,
     explain:
@@ -946,13 +946,13 @@ export const QUIZ_OFIOLITT_WILSON: QuizQuestion[] = [
     prompt: "Hva kjennetegner suturstadiet (orogenese) i Wilsonsyklusen?",
     options: [
       "Kontinentet sprekker opp og danner en langstrakt riftdal med innsjøer.",
-      "To kontinentalplater kolliderer etter at havbunnen er fullstendig subdusert; jordskorpen forkortes og fortykkes til en mektig fjellkjede.",
+      "To kontinentalplater kolliderer etter at havbunnen er fullstendig subdusert; jordskorpa forkortes og fortykkes til en mektig fjellkjede.",
       "Havbunnen utvider seg med 2–10 cm i året fra en sentral midthavsrygg.",
       "En mantelplym brenner hull gjennom litosfæren og bygger en rekke av vulkanske øyer.",
     ],
     answer: 1,
     explain:
-      "Riktig! I suturstadiet (som i dagens Himalaya og oldtidens Kaledonider) har havbassenget lukket seg helt. Den lette kontinentale skorpen kan ikke subdueres, og kollisjonen folder og stabler jordskorpen i mektige skyvedekker og fjellkjeder langs suturlinjen.",
+      "Riktig! I suturstadiet (som i dagens Himalaya og oldtidens Kaledonider) har havbassenget lukket seg helt. Den lette kontinentale skorpen kan ikke subdueres, og kollisjonen folder og stabler jordskorpa i mektige skyvedekker og fjellkjeder langs suturlinjen.",
   },
   {
     prompt:
@@ -1695,7 +1695,7 @@ export const QUIZ_GEOLOGISKE_RESSURSER: QuizQuestion[] = [
       "De brukes bare til petroleum",
     ],
     answer: 1,
-    explain: "Magnetometri, elektromagnetiske målinger og radiometri fra luften viser hvor det kan være forekomster. Størrelse og innhold må undersøkes med kjerneboring.",
+    explain: "Magnetometri, elektromagnetiske målinger og radiometri fra lufta viser hvor det kan være forekomster. Størrelse og innhold må undersøkes med kjerneboring.",
   },
   {
     prompt: "Hvorfor er det en forsyningsrisiko at Kina produserer det meste av verdens sjeldne jordarter?",

@@ -698,6 +698,12 @@ export const KILDER = {
       href: "https://snl.no/Norges_geologi",
     },
     {
+      prefix: "Fossen, H., & Selbekk, R. S. (u.å.). ",
+      italic: "Brudd – mineralogi",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/brudd_-_mineralogi",
+    },
+    {
       prefix: "Garmo, T. T., Raade, G., & Fossen, H. (2025, 18. august). ",
       italic: "Pyritt",
       suffix: ". I Store norske leksikon.",

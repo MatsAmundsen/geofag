@@ -134,7 +134,7 @@ Begrepet pliniansk utbrudd er oppkalt etter Plinius den yngre. I brev til Tacitu
 
 1. **Fragmenteringsnivået:** Nede i tilførselsrøret blir trykket i gassboblene så høyt at smelten rives i stykker. Blandingen består av gass, pimpstein og fin aske (Sparks, 1978).
 2. **Gass-skyvesonen:** Like over krateret drives blandingen av trykket i røret.
-3. **Oppdrift:** Søylen suger inn luft. Luften varmes opp, blandingen blir lettere enn lufta rundt, og søylen stiger inn i stratosfæren.
+3. **Oppdrift:** Søylen suger inn luft. Lufta varmes opp, blandingen blir lettere enn lufta rundt, og søylen stiger inn i stratosfæren.
 4. **Paraplysky (umbrella cloud):** Når søylen ikke stiger lenger, brer asken seg ut til siden. Vinden kan føre den langt av gårde.
 
 ```widget

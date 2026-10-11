@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for det hydrologiske kretsløpet med vekt på ferskvann, og utforske og presentere hvordan det påvirkes av menneskelig aktivitet (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser. Kretsløpet og hydrogrammet er slike modeller (Udir, u.å.-a).
 
@@ -36,7 +36,7 @@ I en tørkeperiode med lav vannføring kan elvene bestå av 40–100 prosent gru
 
 På Østlandet brukes mye grunnvann i vannforsyningen, fordi det er lett tilgang fra store akviferer i løsmasser. Store grunnvannsverk fra løsmasser finnes blant annet i Lillehammer, Hønefoss, Alta og Elverum (NGU, u.å.-c). Nasjonal grunnvannsdatabase, GRANADA, har opplysninger om cirka 144 000 brønner og kilder i Norge, boret i fjell og i løsmasser (NGU, u.å.-d).
 
-Jordskred og kvikkleire hører til kapittelet [Skred](/geofag-1/skred).
+Jordskred og kvikkleire hører til kapitlet [Skred](/geofag-1/skred).
 
 ## Hva er et hydrogram?
 

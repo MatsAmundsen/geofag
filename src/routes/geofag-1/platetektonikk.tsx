@@ -11,7 +11,7 @@ export const Route = createFileRoute("/geofag-1/platetektonikk")({
     topicHead({
       title: `${tema.title} · Geofag 1`,
       description:
-        "Platetektonikk: Jordens dynamiske skall, drivkrefter (platetrekk og ryggskyv), dekompresjons- og flukssmelting, de tre plategrensene og Wilsonsyklusen.",
+        "Platetektonikk: Jordas dynamiske skall, drivkrefter (platetrekk og ryggskyv), dekompresjons- og flukssmelting, de tre plategrensene og Wilsonsyklusen.",
       path: "/geofag-1/platetektonikk",
     }),
   component: PlatetektonikkPage,
@@ -22,7 +22,7 @@ function PlatetektonikkPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Jordskorpen er i stadig bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og ny havbunn dannes fra jordas indre. Platetektonikk er geovitenskapens samlende teori. Den forklarer hvordan fjellkjeder bygges, hvorfor jordskjelv oppstår, og hvordan magma dannes."
+      lead="Jordskorpa er i stadig bevegelse. Kontinenter kolliderer, havbassenger åpner og lukker seg, og ny havbunn dannes fra jordas indre. Platetektonikk er geovitenskapens samlende teori. Den forklarer hvordan fjellkjeder bygges, hvorfor jordskjelv oppstår, og hvordan magma dannes."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

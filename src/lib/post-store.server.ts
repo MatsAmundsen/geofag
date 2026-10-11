@@ -883,6 +883,36 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],
   },
   {
+    flag: "rettskriving-1-isbreer-og-landformer-2026-10-11",
+    slug: "isbreer-og-landformer",
+    stale: ["dette kapittelet"],
+  },
+  {
+    flag: "rettskriving-1-landformer-2026-10-11",
+    slug: "landformer",
+    stale: ["høylte ut botner"],
+  },
+  {
+    flag: "rettskriving-1-norges-geologi-2026-10-11",
+    slug: "norges-geologi",
+    stale: ["langs den midtatlantiske ryggen"],
+  },
+  {
+    flag: "rettskriving-1-skred-2026-10-11",
+    slug: "skred",
+    stale: ["dette kapittelet"],
+  },
+  {
+    flag: "rettskriving-1-vann-og-flom-2026-10-11",
+    slug: "vann-og-flom",
+    stale: ["dette kapittelet"],
+  },
+  {
+    flag: "rettskriving-1-vulkaner-2026-10-11",
+    slug: "vulkaner",
+    stale: ["Luften"],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],

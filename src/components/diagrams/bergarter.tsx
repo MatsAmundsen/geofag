@@ -5,7 +5,7 @@ export function SilicateStructureDiagram() {
     <Diagram
       title="Silikatenes krystallkjemiske oppbygning: Fra isolerte tetraedre til 3D-rammeverk"
       heading="Silikatmineralenes arkitektur — jordas dominerende mineralgruppe"
-      caption="Silikater utgjør over 90 % av jordskorpen. Byggesteinen er silisium-oksygen-tetraederet [SiO₄]⁴⁻, der ett lite Si⁴⁺-ion er omgitt av fire store O²⁻-ioner. Graden av kovalent deling av oksygenatomer mellom tetraedrene avgjør mineralets spalteretning, hardhet, tetthet og forvitringsresistens: Fra isolerte tetraedre i olivin til enkle kjeder (pyroksen), doble kjeder (amfibol), sjikt (glimmer) og tredimensjonale rammeverk (feltspat og kvarts)."
+      caption="Silikater utgjør over 90 % av jordskorpa. Byggesteinen er silisium-oksygen-tetraederet [SiO₄]⁴⁻, der ett lite Si⁴⁺-ion er omgitt av fire store O²⁻-ioner. Graden av kovalent deling av oksygenatomer mellom tetraedrene avgjør mineralets spalteretning, hardhet, tetthet og forvitringsresistens: Fra isolerte tetraedre i olivin til enkle kjeder (pyroksen), doble kjeder (amfibol), sjikt (glimmer) og tredimensjonale rammeverk (feltspat og kvarts). Olivin har muslig (skjellaktig) brudd (Fossen & Selbekk, u.å.)."
       viewBox="0 0 920 480"
       wide
     >
@@ -39,7 +39,7 @@ export function SilicateStructureDiagram() {
             <L x="65" y="290" fill={C.fg} size={9}>• Ingen felles oksygen.</L>
             <L x="65" y="306" fill={C.fg} size={9}>• Bundet via Fe²⁺/Mg²⁺.</L>
             <L x="65" y="322" fill={C.fg} size={9}>• Høy tetthet (3,3 g/cm³).</L>
-            <L x="65" y="338" fill={C.fg} size={9}>• Ingen kløv (musklete brudd).</L>
+            <L x="65" y="338" fill={C.fg} size={9}>• Ingen kløv (muslig brudd).</L>
             <L x="65" y="360" fill={C.warm} size={9}>• Svært lav forvitrings-</L>
             <L x="65" y="374" fill={C.warm} size={9}>  resistens på overflaten.</L>
           </g>
@@ -132,7 +132,7 @@ export function SilicateStructureDiagram() {
             <polygon points="780,135 795,150 795,185 780,170" fill="#233444" stroke={C.warm} strokeWidth="1" />
             <polygon points="795,150 835,150 835,185 795,185" fill="#1b2834" stroke={C.warm} strokeWidth="1" />
 
-            <L x="800" y="215" fill={C.fg} size={12} weight={700} anchor="middle">Kvarts &amp; Feltspat</L>
+            <L x="800" y="215" fill={C.fg} size={12} weight={700} anchor="middle">Kvarts og feltspat</L>
             <L x="800" y="232" fill={C.muted} size={10} anchor="middle">Plagioklas, ortoklas</L>
 
             <rect x="735" y="250" width="130" height="170" rx="6" fill="#131e27" />

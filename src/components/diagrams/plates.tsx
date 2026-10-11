@@ -115,8 +115,8 @@ export function EarthLayersDiagram() {
 
   return (
     <Diagram
-      title="Jordens oppbygning: Kjerne, mantel, astenosfære og litosfære"
-      heading="Jordens skall: Fra fast indre kjerne til bevegelige litosfæreplater"
+      title="Jordas oppbygning: Kjerne, mantel, astenosfære og litosfære"
+      heading="Jordas skall: Fra fast indre kjerne til bevegelige litosfæreplater"
       caption="Jorda er lagdelt etter tetthet og etter hvordan lagene oppfører seg. Innerst ligger den faste jern-nikkelkjernen (5150–6371 km, ca. 5000 °C), omgitt av den flytende ytre kjernen (2900–5150 km) som lager jordas magnetfelt. Mantelen består av fast silikatbergart (peridotitt). Astenosfæren (ca. 100–350 km, ca. 1300–1400 °C) er fast bergart som deformeres seigt over millioner av år. Over den hviler litosfæren: i snitt ca. 100 km, opptil ca. 200 km under gamle kontinenter. Skorpen deles i kontinentalskorpe (30–50 km, opptil 70–80 km under høye fjell) og havbunnsskorpe (5–8 km)."
       viewBox="0 0 940 520"
       wide
@@ -278,7 +278,7 @@ export function EarthLayersDiagram() {
               ASTENOSFÆREN (ca. 100–350 km dyp)
             </L>
             <L x="205" y="255" fill="#f8fafc" size={11.5} weight={600} anchor="middle">
-              Fast silikatbergart (peridotitt), IKKE et flytende magmaha!
+              Fast silikatbergart (peridotitt), IKKE et flytende magmahav!
             </L>
             <L x="205" y="272" fill="#cbd5e1" size={10.5} anchor="middle">
               Oppfører seg plastisk og duktilt (seigtflytende) over millioner av år.
@@ -513,7 +513,7 @@ export function PlatesMapDiagram() {
     <Diagram
       title="Verdenskart over litosfæreplater og relative bevegelsesvektorer"
       heading="Jordas tektoniske puslespill: De store platene og Ring of Fire"
-      caption="Litosfæren er delt i et dusin store og en rekke mindre plater. Kartet viser de største litosfæreplater med deres relative bevegelsesretninger og hastigheter (cm/år). Legg merke til Stillehavsplaten, som beveger seg hurtig (7–11 cm/år) nordvestover mot subduksjonssonene i Asia og Nord-Amerika. Dette omkranser Stillehavet med jordens mest seismisk og vulkansk aktive belte: «Ildringen» (Ring of Fire), der over 75 % av verdens aktive vulkaner og 90 % av alle jordskjelv finner sted. Norge ligger trygt plassert inne på Den eurasiske kontinentalplaten, langt fra de aktive grensene."
+      caption="Litosfæren er delt i et dusin store og en rekke mindre plater. Kartet viser de største litosfæreplater med deres relative bevegelsesretninger og hastigheter (cm/år). Legg merke til Stillehavsplaten, som beveger seg hurtig (7–11 cm/år) nordvestover mot subduksjonssonene i Asia og Nord-Amerika. Dette omkranser Stillehavet med jordas mest seismisk og vulkansk aktive belte: «Ildringen» (Ring of Fire), der over 75 % av verdens aktive vulkaner og 90 % av alle jordskjelv finner sted. Norge ligger trygt plassert inne på Den eurasiske kontinentalplaten, langt fra de aktive grensene."
       viewBox="0 0 940 500"
       wide
     >
@@ -701,7 +701,7 @@ export function SolidusDiagram() {
     <Diagram
       title="Trykk-temperatur-diagram: Dekompresjonssmelting, flukssmelting og geoterm"
       heading="Smeltefysikk i mantelen: Hvorfor fast bergart smelter på tre ulike måter"
-      caption="Bergarter smelter ikke ved én fast temperatur slik som rent isvann, men over et temperaturintervall. Solidus er kurven der den aller første dråpen smelte dannes; liquidus er kurven der alt er flytende. Fordi trykket øker innover i jorden (ca. 300 bar/km), stiger solidustemperaturen bratt med dypet. Normalt ligger jordens geoterm godt til venstre for solidus (mantelen er fast). Magma kan oppstå på tre måter: 1) Dekompresjonssmelting: mantel stiger adiabatisk (uten varmetap) under tynn skorpe og krysser tørr solidus. 2) Flukssmelting: vann fra en synkende plate forskyver solidus til venstre slik at den krysser den normale geotermen. 3) Mantelplym (hotspot): ekstraordinær varme fra dypet løfter geotermen over solidus."
+      caption="Bergarter smelter ikke ved én fast temperatur slik som rent isvann, men over et temperaturintervall. Solidus er kurven der den aller første dråpen smelte dannes; liquidus er kurven der alt er flytende. Fordi trykket øker innover i jorda (ca. 300 bar/km), stiger solidustemperaturen bratt med dypet. Normalt ligger jordas geoterm godt til venstre for solidus (mantelen er fast). Magma kan oppstå på tre måter: 1) Dekompresjonssmelting: mantel stiger adiabatisk (uten varmetap) under tynn skorpe og krysser tørr solidus. 2) Flukssmelting: vann fra en synkende plate forskyver solidus til venstre slik at den krysser den normale geotermen. 3) Mantelplym (hotspot): ekstraordinær varme fra dypet løfter geotermen over solidus."
       viewBox="0 0 880 470"
       wide
     >
@@ -829,7 +829,7 @@ export function DecompressionMeltingDiagram() {
     <Diagram
       title="Dekompresjonssmelting ved tynning av jordskorpe og litosfære"
       heading="Trykkfall som drivstoff: Hvorfor skorpetynning smelter mantelen"
-      caption="Under et stabilt kontinent kan litosfæren være opptil ca. 200 km tykk, og trykket på mantelen under er høyt. Selv om astenosfæren er 1300–1400 °C varm, hindrer trykket peridotitten i å smelte. Når jordskorpen og litosfæren strekkes og tynnes ved en rift eller midthavsrygg, minker vekten over brått. Astenosfæren stiger opp i tomrommet. Stein leder varme dårlig, så bergartene rekker ikke å avkjøles nevneverdig mens de stiger. Banen er nær adiabatisk. Ved rundt 60 kilometers dyp krysses solidus, og 10–20 % av mantelen smelter delvis. Den nydannede basaltiske magmaen har lavere tetthet og stiger til overflaten."
+      caption="Under et stabilt kontinent kan litosfæren være opptil ca. 200 km tykk, og trykket på mantelen under er høyt. Selv om astenosfæren er 1300–1400 °C varm, hindrer trykket peridotitten i å smelte. Når jordskorpa og litosfæren strekkes og tynnes ved en rift eller midthavsrygg, minker vekten over brått. Astenosfæren stiger opp i tomrommet. Stein leder varme dårlig, så bergartene rekker ikke å avkjøles nevneverdig mens de stiger. Banen er nær adiabatisk. Ved rundt 60 kilometers dyp krysses solidus, og 10–20 % av mantelen smelter delvis. Den nydannede basaltiske magmaen har lavere tetthet og stiger til overflaten."
       viewBox="0 0 880 400"
       wide
     >
@@ -975,7 +975,7 @@ export function BoundaryOverviewDiagram() {
               <strong>Kontinent mot kontinent:</strong> Ingen subduksjon pga. lav tetthet. Skorpefortykning og skyvedekker (Himalaya, Kaledonidene).
             </li>
             <li>
-              <strong>Jordskjelv:</strong> Langs plategrensen. Les mer om dybdefordelingen i kapittelet{" "}
+              <strong>Jordskjelv:</strong> Langs plategrensen. Les mer om dybdefordelingen i kapitlet{" "}
               <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
                 Jordskjelv og jordas indre
               </Link>
@@ -1055,7 +1055,7 @@ export function SpreadingDiagram() {
           Ved midthavsryggen dannes ny havbunnsskorpe kontinuerlig i et lagdelt system: 1) Dype marine
           sedimenter, 2) Putelava (pillow basalt) som bråkjøles mot sjøvannet, 3) Basaltganger (sheeted
           dykes) som tilførte magmaen, 4) Gabbro i det dype magmakammeret, og 5) Peridotitt under Moho.
-          Når den samme lagrekken skyves på land, kalles den ofiolitt. Les mer i kapittelet{" "}
+          Når den samme lagrekken skyves på land, kalles den ofiolitt. Les mer i kapitlet{" "}
           <Link
             to="/geofag-1/norges-geologi"
             className="font-medium text-primary underline underline-offset-2"
@@ -1354,7 +1354,7 @@ export function ContinentalRiftDiagram() {
     <Diagram
       title="Kontinental rifting: Fra innsynkningsdal til gryende havbasseng"
       heading="Kontinental rift: Når kontinentet rives i to av tektonisk strekk"
-      caption="Når litosfæren utsettes for tektonisk strekk, reagerer den øvre, sprø jordskorpen med å sprekke opp langs steile forkastninger (normalforkastninger). Blokkene i midten sklir nedover og danner en langstrakt innsynkningsdal kalt en graben. De hevede blokkene på sidene danner riftskuldre (horster). Mantelen under stiger opp i det avlastede området, trykket faller, og dekompresjonssmelting produserer basaltiske vulkaner. Dette er tilstanden i Den østafrikanske riftdalen i dag. Oslofeltet var en tilsvarende aktiv rift for ca. 300 millioner år siden i perm. Hvis strekket vedvarer, flommer havet inn og danner et smalt havbasseng (som Rødehavet), før en ekte midthavsrygg etableres."
+      caption="Når litosfæren utsettes for tektonisk strekk, reagerer den øvre, sprø jordskorpa med å sprekke opp langs steile forkastninger (normalforkastninger). Blokkene i midten sklir nedover og danner en langstrakt innsynkningsdal kalt en graben. De hevede blokkene på sidene danner riftskuldre (horster). Mantelen under stiger opp i det avlastede området, trykket faller, og dekompresjonssmelting produserer basaltiske vulkaner. Dette er tilstanden i Den østafrikanske riftdalen i dag. Oslofeltet var en tilsvarende aktiv rift for ca. 300 millioner år siden i perm. Hvis strekket vedvarer, flommer havet inn og danner et smalt havbasseng (som Rødehavet), før en ekte midthavsrygg etableres."
       action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
       toolbar={
         <MiniSlider
@@ -1567,7 +1567,7 @@ export function SubductionDiagram() {
           mantelkilen av peridotitt over, bryter bindingene i bergarten og senker smeltepunktet. Mantelen
           smelter (flukssmelting). Magmaen stiger og
           bygger en eksplosiv vulkanbue (Andesfjellene). Les mer om jordskjelvene langs den synkende
-          platen og Wadati-Benioff-sonen i kapittelet{" "}
+          platen og Wadati-Benioff-sonen i kapitlet{" "}
           <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
             Jordskjelv og jordas indre
           </Link>
@@ -1877,7 +1877,7 @@ export function OceanOceanSubductionDiagram() {
     <Diagram
       title="Subduksjon hav mot hav: Vulkanøybue, Marianegropen og bakbuebasseng"
       heading="Hav mot hav: Den eldste, kaldeste platen må vike"
-      caption="Når to oseaniske plater kolliderer, er det som regel den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på ca. 10 935 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
+      caption="Når to oseaniske plater kolliderer, er det som regel den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordas aller dypeste havgroper, som Marianegropen (Challengerdypet på ca. 10 935 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
       action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
       toolbar={
         <>
@@ -2086,7 +2086,7 @@ export function CollisionDiagram() {
     <Diagram
       title="Kontinentalkollisjon: Fjellkjededannelse, skyvedekker og dyp skorperot"
       heading="Kontinent mot kontinent: Himalaya i dag og Kaledonidene i Norges fortid"
-      caption="Når to kontinentale litosfæreplater møtes (som da India traff Asia for 50 mill. år siden, eller da Baltika og Laurentia kolliderte og dannet Kaledonidene for 400 mill. år siden), kan ingen av platene subdueres i dypet fordi kontinentalskorpen har for lav tetthet (~2,7 g/cm³). Resultatet er kolossal skorpeforkorting. Jordskorpen presses opp i svimlende fjellkjeder og stables i store flak som kalles skyvedekker (nappes), som ble skjøvet hundrevis av kilometer over grunnfjellet. Samtidig dannes en enorm jordskorperot som stikker 70–80 km ned i mantelen for å holde fjellene i isostatisk likevekt. Fordi det ikke lenger føres vannrik havbunn ned i mantelen, opphører vulkanismen nesten helt – men kollisjonen skaper voldsom regional metamorfose (gneis og glimmerskifer)."
+      caption="Når to kontinentale litosfæreplater møtes (som da India traff Asia for 50 mill. år siden, eller da Baltika og Laurentia kolliderte og dannet Kaledonidene for 400 mill. år siden), kan ingen av platene subdueres i dypet fordi kontinentalskorpen har for lav tetthet (~2,7 g/cm³). Resultatet er kolossal skorpeforkorting. Jordskorpa presses opp i svimlende fjellkjeder og stables i store flak som kalles skyvedekker (nappes), som ble skjøvet hundrevis av kilometer over grunnfjellet. Samtidig dannes en enorm jordskorperot som stikker 70–80 km ned i mantelen for å holde fjellene i isostatisk likevekt. Fordi det ikke lenger føres vannrik havbunn ned i mantelen, opphører vulkanismen nesten helt – men kollisjonen skaper voldsom regional metamorfose (gneis og glimmerskifer)."
       action={
         <PlayPauseToggle
           isPlaying={isPlaying}

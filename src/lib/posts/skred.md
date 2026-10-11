@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser. Figuren av et kvikkleireskred som utvikler seg bakover, er en slik modell (Udir, u.å.-a).
 >
@@ -12,7 +12,7 @@
 
 Skred, også kalt ras, er masser av fjell, stein, jord, leire og/eller snø som beveger seg ned skråninger, ofte sammen med mye vann. Over 1000 mennesker har mistet livet i skredulykker i Norge siden 1900 (NGU, u.å.-d).
 
-Vi deler skred i tre kategorier etter massen: fjell, løsmasser og snø (NGU, u.å.-d; NVE, 2020c). Snøskred tar vi ikke i dette kapittelet.
+Vi deler skred i tre kategorier etter massen: fjell, løsmasser og snø (NGU, u.å.-d; NVE, 2020c). Snøskred tar vi ikke i dette kapitlet.
 
 Steinsprang er én eller et fåtall blokker, med volum inntil noen hundre kubikkmeter. Blokkene spretter, ruller eller sklir ned skråningen (NVE, 2020c). NGU bruker «inntil noen få hundre kubikkmeter» om steinsprang, og steinskred eller fjellskred om større volum (NGU, u.å.-d).
 
@@ -22,7 +22,7 @@ Fjellskred er hundre tusen til flere millioner kubikkmeter stein i bevegelse. De
 
 Jordskred er vannmettede løsmasser, hovedsakelig jord, stein, grus og sand, som glir ut i bratte skråninger. De går utenfor bekke- og elveløp (NVE, 2020a). Flomskred er raske og flomlignende, og går i hovedsak langs elve- og bekkeløp, også der det vanligvis ikke renner vann hele tiden (NVE, 2020c). Jordskred og flomskred river med seg mer masse og vegetasjon på veien ned (NGU, u.å.-d).
 
-Jordskred kan utløses av kraftig eller vedvarende regn, av snøsmelting, av høyt vanninnhold i løsmassene, og av inngrep som veiskjæringer, skogsbilveier eller flatehogst (NVE, 2020a). Hvordan regn og snøsmelting fyller en elv, tar vi i kapittelet [Vann og flom](/geofag-1/vann-og-flom).
+Jordskred kan utløses av kraftig eller vedvarende regn, av snøsmelting, av høyt vanninnhold i løsmassene, og av inngrep som veiskjæringer, skogsbilveier eller flatehogst (NVE, 2020a). Hvordan regn og snøsmelting fyller en elv, tar vi i kapitlet [Vann og flom](/geofag-1/vann-og-flom).
 
 ```widget
 SkredKrefter
@@ -48,7 +48,7 @@ I vanlig sjøvann er saltinnholdet 35 gram per liter. Synker saltinnholdet i por
 
 Ikke all marin leire er kvikk. Kvikkleire dannes i lommer eller lag. Lag av silt eller sand, eller leire som ligger nær berg, kan gjøre utvaskingen raskere (NGU, u.å.-a).
 
-Hvorfor den gamle sjøbunnen ligger på land, og hva marin grense og isostasi er, tar vi i kapittelet Isbreer og landformer.
+Hvorfor den gamle sjøbunnen ligger på land, og hva marin grense og isostasi er, tar vi i kapitlet Isbreer og landformer.
 
 Mest kvikkleire finnes i Trøndelag og på Østlandet. Den finnes også i mindre områder i daler, fjorder og i strandsonen (NGU, u.å.-a).
 
