@@ -39,7 +39,7 @@ export function KretslopDiagram() {
     <Diagram
       title="Det hydrologiske kretsløpet: fordampning fra havet og land, nedbør, snø, markvann, grunnvann, innsjø, elv og tilbake til havet"
       heading="Hydrologisk kretsløp"
-      caption="Vannets kretsløp. Sola driver fordampningen, og mest vann fordamper fra havet. Vanndampen blir skyer og faller som nedbør. På land lagres vannet en stund som snø, markvann, grunnvann og i innsjøer. Derfra renner det via elver tilbake til havet, eller det fordamper igjen (NGU, u.å.-e)."
+      caption="Vannets kretsløp. Sola driver fordampningen, og mest vann fordamper fra havet. Vanndampen blir skyer og faller som nedbør. På land lagres vannet en stund som snø, markvann, grunnvann og i innsjøer. Derfra renner det via elver tilbake til havet, eller det fordamper igjen (NGU, u.å.-g)."
       viewBox="0 0 860 500"
       scroll
     >
