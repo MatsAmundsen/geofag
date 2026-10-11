@@ -884,6 +884,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["*Isen som agent* – hvordan isbreen", "Det er en beslektet mekanisme til frostsprengning"],
   },
   {
+    // Geo F1/F2 + tilbakemelding: malen, modellering, flodbølger, overvåking per 2026 (skred-mal).
+    flag: "g1-skred-mal-2026-10-11",
+    slug: "skred",
+    stale: ["Over 1000 mennesker har mistet livet", "I vanlig sjøvann er saltinnholdet"],
+  },
+  {
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],

@@ -56,6 +56,8 @@ import {
   QUIZ_SJEKK_ISBRE_2,
   QUIZ_SJEKK_ISBRE_3,
   QUIZ_SJEKK_ISBRE_4,
+  QUIZ_SJEKK_SKRED_1,
+  QUIZ_SJEKK_SKRED_2,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -67,6 +69,8 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Isbre2: QUIZ_SJEKK_ISBRE_2,
   Isbre3: QUIZ_SJEKK_ISBRE_3,
   Isbre4: QUIZ_SJEKK_ISBRE_4,
+  Skred1: QUIZ_SJEKK_SKRED_1,
+  Skred2: QUIZ_SJEKK_SKRED_2,
   Landformer1: QUIZ_SJEKK_LANDFORMER_1,
   Landformer2: QUIZ_SJEKK_LANDFORMER_2,
   Landformer3: QUIZ_SJEKK_LANDFORMER_3,
@@ -116,6 +120,12 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Isen avsatte usortert morene, mens smeltevannet sorterte breelvmateriale. Endemorener, Raet, esker, drumlin og breelvdeltaer forteller hvor isfronten sto.",
     "Frostsprengning og trykkavlastning er mekanisk forvitring. Etter istida har landet hevet seg, og marin grense ligger 0–220 m over dagens havnivå.",
     "Mennesker tar ut sand og grus og henter grunnvann fra isens avsetninger, og bygger på marin leire. Norske breer krymper i et varmere klima.",
+  ],
+  Skred: [
+    "Skred er masser av fjell, stein, jord, leire eller snø som beveger seg ned en skråning. Vi skiller steinsprang, steinskred, fjellskred, jordskred, flomskred og kvikkleireskred.",
+    "Kvikkleire er marin leire der saltet er vasket ut. Overbelastes den, kollapser korthusstrukturen, og skredet kan forplante seg bakover, slik det gjorde i Gjerdrum i 2020.",
+    "Fjellskred som går ut i en fjord eller innsjø, kan gi flodbølger, som i Tafjord 1934 og Loen 1905 og 1936. NVE overvåker ustabile fjellpartier med høy risiko kontinuerlig.",
+    "Aktsomhetskart og faresonekart bygger på utløpsmodeller, og Varsom varsler jordskred, sørpeskred og flomskred. Erosjonssikring og motfyllinger kan stabilisere leirskråninger.",
   ],
   Landformer: [
     "Landformene er resultatet av indre krefter som løfter berggrunnen, og ytre krefter som bryter den ned og flytter materialet.",

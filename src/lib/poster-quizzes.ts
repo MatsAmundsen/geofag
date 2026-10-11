@@ -1605,6 +1605,62 @@ export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_SKRED_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan marin leire bli kvikk?",
+    options: [
+      "Fordi ferskt grunnvann vasker ut saltet, slik at bindingene i korthusstrukturen svekkes",
+      "Fordi leira blir varmet opp av grunnvannet",
+      "Fordi isen presset leira sammen under istida",
+    ],
+    answer: 0,
+    explain: "Saltvannet holder korthusstrukturen sammen. Synker saltinnholdet under ca. 2 g/l, svekkes bindingene (NGU).",
+  },
+  {
+    prompt: "Kan et kvikkleireskred ta med seg et nesten flatt jorde?",
+    options: [
+      "Nei, skred går bare i bratte skråninger",
+      "Ja, fordi skredet kan forplante seg bakover når kanten mister støtten",
+      "Bare hvis det regner samtidig",
+    ],
+    answer: 1,
+    explain: "Et bakoverforplantende (retrogressivt) skred sprer seg bakover til lommen er tømt. Derfor kan det nå langt inn i flatt terreng.",
+  },
+  {
+    prompt: "Hva er de vanligste utløserne av kvikkleireskred?",
+    options: [
+      "Jordskjelv og vulkanutbrudd",
+      "Snøsmelting på fjellet",
+      "Erosjon fra bekker og elver, og graving eller fylling i skråningen",
+    ],
+    answer: 2,
+    explain: "Erosjon og menneskers tiltak overbelaster leira oftest. Graving og fylling er blant de vanligste årsakene i nyere tid.",
+  },
+];
+
+export const QUIZ_SJEKK_SKRED_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er flodbølger den største faren ved fjellskred i Norge?",
+    options: [
+      "Fordi skredmassene som treffer en fjord eller innsjø, kan sende bølger langt opp på land og langt unna",
+      "Fordi steinene alltid ruller helt ned til sjøen",
+      "Fordi fjellskred bare skjer under vann",
+    ],
+    answer: 0,
+    explain: "I Tafjord 1934 nådde bølgene 61 m opp på land, og i Loen 1936 74 m. Bølgen rammer bygder som ligger langt fra selve skredet.",
+  },
+  {
+    prompt: "Hvilke fjellpartier overvåker NVE kontinuerlig?",
+    options: [
+      "Alle bratte fjellsider i Norge",
+      "Fjellpartier med høy risiko, som Åknes og Mannen",
+      "Bare fjellpartier som allerede har rast ut",
+    ],
+    answer: 1,
+    explain: "Høy risiko gir kontinuerlig overvåking med minst to uavhengige målesystemer. Moderat risiko gir periodisk overvåking.",
+  },
+];
+
 export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hva skjer når kvikkleire blir overbelastet?",
