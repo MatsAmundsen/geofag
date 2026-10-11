@@ -381,9 +381,9 @@ export function AdaptationExamFrameworkDiagram() {
 export function FieldworkInquiryChainDiagram() {
   return (
     <Diagram
-      title="Den vitenskapelige forskningskjeden i geofeltarbeid: 5 ledd fra problemstilling til usikkerhetsanalyse"
-      heading="Fra problemstilling til drøfting: den vitenskapelige feltkjeden"
-      caption="Sensor og læreplanen krever en ubrutt rød tråd i feltarbeidet: en presis problemstilling, et målrettet undersøkelsesdesign med HMS, nøyaktige målinger med metadata, grundig databearbeiding, og en ærlig usikkerhetsanalyse."
+      title="Kjeden i et feltarbeid: fra problemstilling til presentasjon"
+      heading="Fra problemstilling til presentasjon"
+      caption="Et feltarbeid følger en kjede: problemstilling og hypotese, planlegging med HMS, georefererte målinger, bearbeiding og tolkning med usikkerhet, og presentasjon."
       viewBox="0 0 900 360"
       wide
     >
@@ -394,10 +394,10 @@ export function FieldworkInquiryChainDiagram() {
           {/* 5 kjedelenker */}
           {[
             { n: "1", t: "Problemstilling", d: "Avgrenset spørsmål og testbar hypotese", c: C.warm, x: 55 },
-            { n: "2", t: "Design & HMS", d: "Valg av stasjoner, utstyr og sikkerhetsvurdering", c: C.sand, x: 215 },
-            { n: "3", t: "Feltmåling", d: "Posisjon (GPS), tid, verdier og feltnotat", c: C.teal, x: 375 },
-            { n: "4", t: "Analyse", d: "Grafer, kartfesting, statistikk og mønster", c: C.cold, x: 535 },
-            { n: "5", t: "Usikkerhet", d: "Målefeil, representativitet og konklusjon", c: C.low, x: 695 },
+            { n: "2", t: "Planlegging og HMS", d: "Valg av stasjoner, utstyr og risikovurdering", c: C.sand, x: 215 },
+            { n: "3", t: "Georefererte målinger", d: "Posisjon (GPS), tid, verdier og feltnotat", c: C.teal, x: 375 },
+            { n: "4", t: "Bearbeiding og tolkning", d: "Grafer, kart, usikkerhet og mønster", c: C.cold, x: 535 },
+            { n: "5", t: "Presentasjon", d: "Resultater, usikkerhet og konklusjon", c: C.low, x: 695 },
           ].map((s, idx) => (
             <g key={s.n}>
               <rect x={s.x} y="60" width="145" height="230" rx="8" fill="#17242e" stroke={s.c} strokeWidth="1.4" />
@@ -435,7 +435,7 @@ export function RadiosondeAscentDiagram() {
     <Diagram
       title="Radiosonde og aerologisk profil: Vertikal sondering fra bakken til stratosfæren"
       heading="Radiosonde og atmosfærisk profil: Værballongens oppstigning"
-      caption="Radiosonden er meteorologiens vertikale måleverktøy. En heliumfylt latexballong stiger med ca. 5 m/s fra bakken opp til over 30 km (stratosfæren) før den sprekker. Underveis måler den nøyaktig temperatur, lufttrykk og relativ fuktighet, mens GPS-sporing gir vindstyrke og vindretning i alle høyder. Dataene plottes i et aerologisk diagram (Skew-T log-P) som avslører bakkeinversjoner, skybaser, skytop og tropopausen."
+      caption="Radiosonden er meteorologiens vertikale måleverktøy. En ballong med hydrogen eller helium stiger til den sprekker, opptil ca. 30 km over havet. Underveis måler den temperatur, lufttrykk og relativ fuktighet, og sondens drift sidelengs viser vinden. Dataene plottes i et aerologisk diagram som avslører bakkeinversjoner, skybaser, skytopper og tropopausen."
       viewBox="0 0 940 440"
       wide
     >
@@ -560,7 +560,7 @@ export function MeteorologicalStationDiagram() {
     <Diagram
       title="Automatisk meteorologisk bakkestasjon (AWS): WMO-standarder og sensorplassering"
       heading="Den automatiske værstasjonen (AWS): Standarder som sikrer nøyaktighet"
-      caption="For at værdata skal være vitenskapelig gyldige og sammenlignbare på tvers av landegrenser, har Verdens meteorologiorganisasjon (WMO) strenge krav til sensorplassering. Vind måles 10 meter over bakken for å unngå bakkefriksjon. Lufttemperatur og relativ fuktighet måles 2 meter over bakken i en hvit, ventilert lamellskjerm (Stevenson-skjerm) som beskytter sensorene mot direkte solstråling og nedbør. Nedbørsmålere utstyres med Nipher-vindskjerm for å motvirke vindturbulens."
+      caption="For at værdata skal kunne sammenlignes på tvers av landegrenser, har Verdens meteorologiorganisasjon (WMO) faste regler for sensorplassering, slik at målingene kan sammenlignes. Vind måles 10 meter over bakken for å unngå bakkefriksjon. Lufttemperatur og relativ fuktighet måles 1,25–2 meter over bakken i en hvit, ventilert lamellskjerm (strålingsskjerm) som beskytter sensorene mot direkte solstråling og nedbør. Nedbørsmålere utstyres med vindskjerm for å motvirke vindturbulens."
       viewBox="0 0 920 440"
       wide
     >
@@ -611,7 +611,7 @@ export function MeteorologicalStationDiagram() {
 
           <rect x="365" y="185" width="230" height="46" rx="6" fill="#1e293b" stroke="#38bdf8" />
           <L x="480" y="202" fill="#38bdf8" size={11} weight={700} anchor="middle">
-            Lamellskjerm (2 meter over bakken)
+            Lamellskjerm (1,25–2 meter over bakken)
           </L>
           <L x="480" y="216" fill={C.fg} size={10} anchor="middle">
             • PT100 Termistor (Temperatur)
@@ -634,7 +634,7 @@ export function MeteorologicalStationDiagram() {
             Nedbørsmåler (1,5–2 meter)
           </L>
           <L x="745" y="244" fill={C.muted} size={9} anchor="middle">
-            Nipher-vindskjerm hindrer at vind feier snø forbi
+            Vindskjerm hindrer at vind feier snø forbi
           </L>
 
           {/* --- 4. DATALOGGER & SOLCELLEPANEL --- */}

@@ -75,6 +75,12 @@ import {
   QUIZ_SJEKK_KATASTROFER_3,
   QUIZ_SJEKK_ENERGI_1,
   QUIZ_SJEKK_ENERGI_2,
+  QUIZ_SJEKK_FELT_HAV_1,
+  QUIZ_SJEKK_FELT_HAV_2,
+  QUIZ_SJEKK_FELT_HAV_3,
+  QUIZ_SJEKK_FELT_HAV_4,
+  QUIZ_SJEKK_FELT_HAV_5,
+  QUIZ_SJEKK_FELT_HAV_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -144,6 +150,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
   Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
   Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
+  FeltHav1: QUIZ_SJEKK_FELT_HAV_1,
+  FeltHav2: QUIZ_SJEKK_FELT_HAV_2,
+  FeltHav3: QUIZ_SJEKK_FELT_HAV_3,
+  FeltHav4: QUIZ_SJEKK_FELT_HAV_4,
+  FeltHav5: QUIZ_SJEKK_FELT_HAV_5,
+  FeltHav6: QUIZ_SJEKK_FELT_HAV_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -267,6 +279,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
     "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
     "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
+  ],
+  FeltHav: [
+    "Feltarbeid i hav, luft og is er å planlegge, samle inn georefererte data, bearbeide og tolke dem og presentere resultatene, på en måte som ivaretar helse, miljø og sikkerhet.",
+    "En risikovurdering hører med. Bruk flyteutstyr i små båter og isstav, ispigger og redningsvest på isen. Les snøskredvarselet, og ha med midler til å skremme isbjørn utenfor bebodd område på Svalbard. Hold minst 300 meter avstand til isbjørn, og 500 meter fra 1. mars til 30. juni.",
+    "En radiosonde måler temperatur, fuktighet og lufttrykk oppover i lufta, og driften viser vinden. Værstasjoner måler etter faste regler, slik at målingene kan sammenlignes.",
+    "CTD og Argo-bøyer måler ledningsevne og temperatur mot dyp, og saltholdigheten regnes ut fra dem. Kartverket måler vannstanden, og været kan gi avvik fra tidevannet.",
+    "Snøskredvarselet gjelder områder på minst 100 kvadratkilometer og erstatter ikke egne vurderinger. En snøprofil viser lagene i snødekket.",
+    "Alle målinger har usikkerhet. Gjenta målingene, regn ut gjennomsnitt og spredning, sammenlign med varsler og modeller, og vis profiler med dypet eller høyden på den loddrette aksen.",
   ],
 };
 

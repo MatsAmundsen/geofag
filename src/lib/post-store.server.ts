@@ -770,7 +770,7 @@ const COPY_RESEEDS: CopyReseed[] = [
   {
     flag: "felt-hav-luft-is-copy-2-2026-10-07",
     slug: "felt-hav-luft-is",
-    stale: ["## Tre felt, samme kjede"],
+    stale: ["| Felt | Hva du kan måle | Hvor tallene kommer fra |"],
   },
   {
     flag: "isbreer-og-landformer-copy-2026-10-07",
@@ -1045,6 +1045,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g1-landformer-md-2026-10-11",
     slug: "landformer",
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],
+  },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-felt-hav-luft-is-mal-2026-10-11",
+    slug: "felt-hav-luft-is",
+    stale: ["## Tre felt i samme kjede"],
   },
 ];
 
