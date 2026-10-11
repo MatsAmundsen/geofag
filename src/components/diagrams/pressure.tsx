@@ -8,8 +8,8 @@ export function AtmosphericColumnDiagram() {
   return (
     <Diagram
       title="Luftsøylen og trykkfall med høyden"
-      heading="Luftsøylen: Lufttrykk er vekten av luften over deg"
-      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Luften er tettest nær bakken, fordi de nederste lagene bærer vekten av luften over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av luften i atmosfæren ligger under denne høyden."
+      heading="Luftsøylen: Lufttrykk er vekten av lufta over deg"
+      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Lufta er tettest nær bakken, fordi de nederste lagene bærer vekten av lufta over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av lufta i atmosfæren ligger under denne høyden."
       viewBox="-140 0 1070 540"
       wide
       scroll
@@ -157,7 +157,7 @@ export function AtmosphericColumnDiagram() {
               Tyngdekraft
             </L>
             <L x="50" y="263" fill={C.fg} size={10} anchor="middle">
-              Luften har masse
+              Lufta har masse
             </L>
           </g>
 
@@ -180,7 +180,7 @@ export function AtmosphericColumnDiagram() {
             ca. 500 hPa
           </L>
           <L x="52" y="280" fill={C.muted} size={12} anchor="end">
-            Halvparten av luften ligger under
+            Halvparten av lufta ligger under
           </L>
 
           <line x1="180" y1="440" x2="200" y2="440" stroke="#38bdf8" strokeWidth="2.4" />
@@ -188,7 +188,7 @@ export function AtmosphericColumnDiagram() {
             0 moh. (Havnivå)
           </L>
           <L x="52" y="448" fill="#38bdf8" size={14} weight={800} anchor="end">
-            Luften er tettest her
+            Lufta er tettest her
           </L>
           <L x="52" y="470" fill={C.muted} size={12} anchor="end">
             Gjennomsnitt ved havnivå
@@ -233,7 +233,7 @@ export function AtmosphericColumnDiagram() {
               Luft er en gass og kan presses sammen. De
             </L>
             <L x="16" y="150" fill={C.fg} size={11.5}>
-              nederste lagene bærer luften over seg.
+              nederste lagene bærer lufta over seg.
             </L>
             <L x="16" y="168" fill={C.sand} size={11.5} weight={700}>
               Nær bakken: om lag 1 hPa per 8 meter.
@@ -250,7 +250,7 @@ export function AtmosphericColumnDiagram() {
               strokeWidth="1.5"
             />
             <L x="16" y="223" fill="#a5f3fc" size={13} weight={800}>
-              Halvparten av luften
+              Halvparten av lufta
             </L>
             <L x="16" y="242" fill={C.fg} size={11.5}>
               I om lag 5,5 km høyde er trykket
@@ -274,7 +274,7 @@ export function RelativePressureDiagram() {
     <Diagram
       title="Trykk er relativt: Samme verdi kan være lavtrykk eller høytrykk"
       heading="Trykk er relativt: 1015 hPa kan være lavtrykk eller høytrykk"
-      caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Luften strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Luften strømmer ut, synker, og det blir ofte tørt og klart."
+      caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Lufta strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Lufta strømmer ut, synker, og det blir ofte tørt og klart."
       viewBox="0 0 940 430"
       wide
       scroll
@@ -360,7 +360,7 @@ export function RelativePressureDiagram() {
               Netto bevegelse: Konvergens mot sentrum
             </L>
             <L x="242" y="360" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver luften innover.
+              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver lufta innover.
             </L>
             <L x="242" y="382" fill={C.fg} size={12} anchor="middle">
               <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler mot klokken inn.
@@ -422,7 +422,7 @@ export function RelativePressureDiagram() {
               Netto bevegelse: Divergens ut fra sentrum
             </L>
             <L x="227" y="360" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver luften utover.
+              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver lufta utover.
             </L>
             <L x="227" y="382" fill={C.fg} size={12} anchor="middle">
               <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler med klokken ut.
@@ -444,7 +444,7 @@ export function LowPressureCrossSectionDiagram() {
     <Diagram
       title="Tverrsnitt av et lavtrykk fra bakken til tropopausen"
       heading="Lavtrykk: konvergens, stigning og skydannelse"
-      caption="I et lavtrykk strømmer luft inn langs bakken (konvergens) og stiger. Før luften er mettet, avkjøles den med om lag 1 °C per 100 meter. Det er den tørradiabatiske temperaturgradienten (dry adiabatic lapse rate, DALR). Ved løftingskondensasjonsnivået (lifting condensation level, LCL) er luften mettet, og vanndampen kondenserer. Latent varme frigjøres, så mettet luft avkjøles langsommere, typisk ca. 0,5 °C per 100 meter. Det er den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR). Ved tropopausen, ca. 8–11 km over Norge, stopper stigningen. Skytoppen flater ut, og luften sprer seg ut til sidene (divergens i høyden)."
+      caption="I et lavtrykk strømmer luft inn langs bakken (konvergens) og stiger. Før lufta er mettet, avkjøles den med om lag 1 °C per 100 meter. Det er den tørradiabatiske temperaturgradienten (dry adiabatic lapse rate, DALR). Ved løftingskondensasjonsnivået (lifting condensation level, LCL) er lufta mettet, og vanndampen kondenserer. Latent varme frigjøres, så mettet luft avkjøles langsommere, typisk ca. 0,5 °C per 100 meter. Det er den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR). Ved tropopausen, ca. 8–11 km over Norge, stopper stigningen. Skytoppen flater ut, og lufta sprer seg ut til sidene (divergens i høyden)."
       viewBox="0 0 940 510"
       wide
       scroll
@@ -569,7 +569,7 @@ export function LowPressureCrossSectionDiagram() {
           <Arrow d="M 470 330 L 470 130" marker={m.warm} color={C.warm} width={4.2} />
           <rect x="395" y="195" width="150" height="42" rx="6" fill="#0f172a" opacity="0.9" />
           <L x="470" y="212" fill={C.warm} size={12} weight={800} anchor="middle">
-            Luften stiger
+            Lufta stiger
           </L>
           <L x="470" y="228" fill="#fde68a" size={10.5} weight={700} anchor="middle">
             Latent varme frigjøres
@@ -588,7 +588,7 @@ export function LowPressureCrossSectionDiagram() {
           <g transform="translate(680, 160)">
             <rect x="0" y="0" width="220" height="150" rx="8" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
             <L x="14" y="24" fill={C.warm} size={12} weight={800}>
-              Når luften stiger
+              Når lufta stiger
             </L>
             <L x="14" y="44" fill={C.fg} size={11}>
               1. Umettet luft avkjøles med
@@ -597,7 +597,7 @@ export function LowPressureCrossSectionDiagram() {
               om lag 1 °C per 100 meter (DALR).
             </L>
             <L x="14" y="78" fill={C.fg} size={11}>
-              2. Ved LCL er luften mettet.
+              2. Ved LCL er lufta mettet.
             </L>
             <L x="14" y="96" fill={C.warm} size={11} weight={700}>
               Vanndampen kondenserer.
@@ -622,7 +622,7 @@ export function LowPressureCrossSectionDiagram() {
               over Norge.
             </L>
             <L x="14" y="88" fill={C.teal} size={12}>
-              Der er luften kaldere enn
+              Der er lufta kaldere enn
             </L>
             <L x="14" y="106" fill={C.warm} size={12}>
               laget over, og stigningen stopper.
@@ -643,7 +643,7 @@ export function HighPressureCrossSectionDiagram() {
     <Diagram
       title="Tverrsnitt av et høytrykk fra tropopausen til bakken"
       heading="Høytrykk: nedsynking, oppvarming og klarvær"
-      caption="I et høytrykk strømmer luft sammen i øvre troposfære og synker mot bakken. Det kalles subsidens (nedsynking). Synkende luft varmes med om lag 1 °C per 100 meter. Den relative fuktigheten faller, skydråpene fordamper, og himmelen blir klar. Ved bakken strømmer luften ut til sidene (divergens). Om sommeren kan det gi varme og tørke. Om vinteren kan bakken bli svært kald, og det kan oppstå bakkeinversjon."
+      caption="I et høytrykk strømmer luft sammen i øvre troposfære og synker mot bakken. Det kalles subsidens (nedsynking). Synkende luft varmes med om lag 1 °C per 100 meter. Den relative fuktigheten faller, skydråpene fordamper, og himmelen blir klar. Ved bakken strømmer lufta ut til sidene (divergens). Om sommeren kan det gi varme og tørke. Om vinteren kan bakken bli svært kald, og det kan oppstå bakkeinversjon."
       viewBox="0 0 940 510"
       wide
       scroll
@@ -763,220 +763,6 @@ export function HighPressureCrossSectionDiagram() {
 }
 
 /**
- * 5. WindForcesBalanceDiagram
- * Fysisk korrekt vektorbalanse:
- * - V peker mot sørvest
- * - F_c peker mot NORDVEST (90° til høyre for V)
- * - F_f peker mot NORDØST (motsatt av V)
- * - Vektorsum F_c + F_f balanserer F_pg (rett sør)
- */
-export function WindForcesBalanceDiagram() {
-  return (
-    <Diagram
-      title="Hvorfor blåser vinden på skrå? De tre kreftene bak vinden"
-      heading="Hvorfor blåser vinden på skrå over isobarene? De tre kreftene"
-      caption="Vind er luft i bevegelse drevet av trykkforskjeller, men banen styres av tre krefter i samspill: 1) Trykkgradientkraften (F_pg, rød) trekker luften vinkelrett fra høyt mot lavt trykk. 2) Corioliskraften (F_c, blå) avbøyer alltid bevegelsen 90° til høyre på nordlig halvkule. I den frie atmosfæren (uten friksjon) balanserer F_pg og F_c hverandre nøyaktig, slik at vinden blåser parallelt med isobarene (geostrofisk vind). 3) Nær bakken bremser friksjonen (F_f, gul/oransje) vindfarten. Siden Corioliskraften er proporsjonal med farten, svekkes den: Trykkgradientkraften vinner delvis drakampen, og vinden skjærer på skrå over isobarene i ca. 25–30° vinkel inn i lavtrykket (konvergens mot klokken) og ut av høytrykket (divergens med klokken)."
-      viewBox="0 0 940 500"
-      wide
-    >
-      {(m) => (
-        <>
-          <line
-            x1="470"
-            y1="35"
-            x2="470"
-            y2="475"
-            stroke={C.dim}
-            strokeWidth="1.5"
-            strokeDasharray="5 5"
-          />
-
-          {/* DEL 1 (VENSTRE): KRAFTBALANSE */}
-          <g transform="translate(0, 0)">
-            <L x="235" y="40" size={16} weight={800} anchor="middle" fill={C.teal}>
-              Del 1: Kraftbalansen ved bakken (Nordlig halvkule)
-            </L>
-            <L x="235" y="58" size={12} fill={C.muted} anchor="middle">
-              Vektorsummen: F_pg + F_c + F_f = 0
-            </L>
-
-            <line x1="50" y1="100" x2="430" y2="100" stroke="#475569" strokeWidth="2" />
-            <rect x="360" y="88" width="65" height="18" rx="3" fill="#0f171c" />
-            <L x="392" y="102" fill={C.muted} size={11} anchor="middle">
-              1020 hPa (H)
-            </L>
-
-            <line x1="50" y1="210" x2="430" y2="210" stroke="#64748b" strokeWidth="2" />
-            <rect x="360" y="198" width="65" height="18" rx="3" fill="#0f171c" />
-            <L x="392" y="212" fill={C.muted} size={11} anchor="middle">
-              1010 hPa
-            </L>
-
-            <line x1="50" y1="320" x2="430" y2="320" stroke="#475569" strokeWidth="2" />
-            <rect x="360" y="308" width="65" height="18" rx="3" fill="#0f171c" />
-            <L x="392" y="322" fill={C.muted} size={11} anchor="middle">
-              1000 hPa (L)
-            </L>
-
-            <path
-              d="M 180 210 A 50 50 0 0 1 187 236"
-              fill="none"
-              stroke={C.sand}
-              strokeWidth="1.6"
-            />
-            <L x="160" y="228" fill={C.sand} size={11} weight={700}>
-              α ≈ 30°
-            </L>
-
-            <circle cx="230" cy="210" r="16" fill="#1e293b" stroke="#38bdf8" strokeWidth="2.5" />
-            <L x="230" y="215" fill="#bae6fd" size={11} weight={900} anchor="middle">
-              Luft
-            </L>
-
-            {/* F_pg (rett SØR mot L) */}
-            <Arrow d="M 230 210 L 230 310" marker={m.low} color={C.low} width={3.6} />
-            <L x="242" y="280" fill={C.low} size={13} weight={800}>
-              F_pg (Trykkgradientkraft)
-            </L>
-            <L x="242" y="296" fill={C.muted} size={10}>
-              Rettvinklet mot lavere trykk
-            </L>
-
-            {/* VIND (V) mot sørvest */}
-            <Arrow d="M 230 210 L 130 265" marker={m.teal} color={C.teal} width={4.2} />
-            <L x="110" y="285" fill={C.teal} size={14} weight={900} anchor="middle">
-              VIND (V)
-            </L>
-            <L x="110" y="300" fill={C.muted} size={10} anchor="middle">
-              Blåser på skrå inn i L
-            </L>
-
-            {/* CORIOLISKRAFT F_c (90° høyre for V -> NORDVEST!) */}
-            <Arrow d="M 230 210 L 180 120" marker={m.cold} color={C.cold} width={3.2} />
-            <L x="175" y="105" fill={C.cold} size={13} weight={800} anchor="end">
-              F_c (Corioliskraft)
-            </L>
-            <L x="175" y="120" fill={C.muted} size={10} anchor="end">
-              Alltid 90° til høyre for V!
-            </L>
-
-            {/* BAKKEFRIKSJON F_f (motsatt av V -> NORDØST!) */}
-            <Arrow d="M 230 210 L 280 183" marker={m.sand} color={C.sand} width={3} />
-            <L x="290" y="175" fill={C.sand} size={13} weight={800}>
-              F_f (Bakkefriksjon)
-            </L>
-            <L x="290" y="190" fill={C.muted} size={10}>
-              Bremser farten ⟹ svekker F_c
-            </L>
-
-            <line x1="180" y1="120" x2="230" y2="93" stroke="#94a3b8" strokeDasharray="3 3" strokeWidth="1.2" />
-            <line x1="280" y1="183" x2="230" y2="93" stroke="#94a3b8" strokeDasharray="3 3" strokeWidth="1.2" />
-            <Arrow d="M 230 210 L 230 110" marker={m.warm} color={C.warm} width={2} dash="4 3" />
-            <L x="235" y="135" fill={C.warm} size={10.5} weight={700}>
-              F_c + F_f opphever F_pg
-            </L>
-
-            <rect x="50" y="350" width="380" height="120" rx="8" fill="#111822" stroke="#1e293b" strokeWidth="1.4" />
-            <L x="65" y="374" fill={C.teal} size={12} weight={800}>
-              I fri troposfære (uten friksjon): Geostrofisk vind
-            </L>
-            <L x="65" y="392" fill={C.fg} size={11}>
-              F_f = 0 ⟹ F_pg = F_c. Vinden blåser <tspan fill={C.teal} fontWeight="bold">parallelt med isobarene</tspan>!
-            </L>
-            <L x="65" y="416" fill={C.sand} size={12} weight={800}>
-              Nær bakken (med friksjon):
-            </L>
-            <L x="65" y="434" fill={C.fg} size={11}>
-              Friksjon bremser farten ⟹ F_c svekkes ⟹ F_pg trekker
-            </L>
-            <L x="65" y="452" fill={C.low} size={11} weight={700}>
-              luften på skrå (25–30°) inn i lavtrykket!
-            </L>
-          </g>
-
-          {/* DEL 2 (HØYRE): SIRKULASJON */}
-          <g transform="translate(470, 0)">
-            <L x="235" y="40" size={16} weight={800} anchor="middle" fill={C.warm}>
-              Del 2: Rotasjonsmønster på bakken (Nordlig halvkule)
-            </L>
-            <L x="235" y="58" size={12} fill={C.muted} anchor="middle">
-              Lavtrykk (mot klokken) vs. Høytrykk (med klokken)
-            </L>
-
-            <g transform="translate(120, 165)">
-              <circle cx="0" cy="0" r="75" fill="none" stroke="#334155" strokeWidth="1.5" />
-              <circle cx="0" cy="0" r="45" fill="none" stroke="#475569" strokeWidth="1.8" />
-              <circle cx="0" cy="0" r="24" fill="#3b151b" stroke={C.low} strokeWidth="2.2" />
-              <L x="0" y="7" fill={C.low} size={20} weight={900} anchor="middle">
-                L
-              </L>
-
-              <Arrow d="M -75 0 Q -50 50 0 45" marker={m.low} color={C.low} width={2.4} />
-              <Arrow d="M 0 75 Q 50 50 45 0" marker={m.low} color={C.low} width={2.4} />
-              <Arrow d="M 75 0 Q 50 -50 0 -45" marker={m.low} color={C.low} width={2.4} />
-              <Arrow d="M 0 -75 Q -50 -50 -45 0" marker={m.low} color={C.low} width={2.4} />
-
-              <L x="0" y="98" fill={C.low} size={13} weight={800} anchor="middle">
-                Lavtrykk (Syklonal)
-              </L>
-              <L x="0" y="115" fill={C.fg} size={11} anchor="middle">
-                Spiral MOT KLOKKEN inn
-              </L>
-              <L x="0" y="130" fill={C.muted} size={10} anchor="middle">
-                (Konvergens $
-ightarrow$ oppdrift)
-              </L>
-            </g>
-
-            <g transform="translate(350, 165)">
-              <circle cx="0" cy="0" r="75" fill="none" stroke="#334155" strokeWidth="1.5" />
-              <circle cx="0" cy="0" r="45" fill="none" stroke="#475569" strokeWidth="1.8" />
-              <circle cx="0" cy="0" r="24" fill="#0f2b32" stroke={C.teal} strokeWidth="2.2" />
-              <L x="0" y="7" fill={C.teal} size={20} weight={900} anchor="middle">
-                H
-              </L>
-
-              <Arrow d="M -20 -20 Q -60 -40 -75 0" marker={m.teal} color={C.teal} width={2.4} />
-              <Arrow d="M 20 -20 Q 40 -60 0 -75" marker={m.teal} color={C.teal} width={2.4} />
-              <Arrow d="M 20 20 Q 60 40 75 0" marker={m.teal} color={C.teal} width={2.4} />
-              <Arrow d="M -20 20 Q -40 60 0 75" marker={m.teal} color={C.teal} width={2.4} />
-
-              <L x="0" y="98" fill={C.teal} size={13} weight={800} anchor="middle">
-                Høytrykk (Antisyklonal)
-              </L>
-              <L x="0" y="115" fill={C.fg} size={11} anchor="middle">
-                Spiral MED KLOKKEN ut
-              </L>
-              <L x="0" y="130" fill={C.muted} size={10} anchor="middle">
-                (Divergens $
-ightarrow$ nedsynking)
-              </L>
-            </g>
-
-            <rect x="35" y="350" width="400" height="120" rx="8" fill="#111822" stroke="#1e293b" strokeWidth="1.4" />
-            <L x="50" y="374" fill={C.sand} size={13} weight={800}>
-              🧭 Buys Ballots lov (1857):
-            </L>
-            <L x="50" y="396" fill={C.fg} size={12}>
-              Står du med <tspan fontWeight="bold" fill={C.teal}>vinden i ryggen</tspan> på nordlig halvkule,
-            </L>
-            <L x="50" y="415" fill={C.low} size={13} weight={800}>
-              har du alltid lavtrykket skrått foran deg til venstre!
-            </L>
-            <L x="50" y="438" fill={C.muted} size={11}>
-              (Og høytrykket skrått bak deg til høyre).
-            </L>
-            <L x="50" y="455" fill={C.sand} size={10.5}>
-              På sørlig halvkule er alle rotasjonsretninger speilvendt.
-            </L>
-          </g>
-        </>
-      )}
-    </Diagram>
-  );
-}
-
-/**
  * 6. KatabaticWindDiagram
  * Viser utstråling over isbre/høyfjell, gravitasjonsdrenasje av tung kaldluft,
  * dannelse av kaldluftssjø i dalbunnen, temperaturinversjon med røyklokk og termisk belte i lia.
@@ -986,7 +772,7 @@ export function KatabaticWindDiagram() {
     <Diagram
       title="Katabatisk fallvind og dannelse av temperaturinversjon"
       heading="Katabatisk vind: Gravitasjonsdrevet kaldluft og dype inversjoner"
-      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge luften nedover fjellsider og brefall som en fossende 'elv av kulde' (30–80 km/t). Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 16 grader mildere litt lenger oppe i åssiden (-4 °C). Røyk og forurensning stenges inne under inversjonslokket."
+      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge lufta nedover fjellsider og brefall som en fossende 'elv av kulde' (30–80 km/t). Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 16 grader mildere litt lenger oppe i åssiden (-4 °C). Røyk og forurensning stenges inne under inversjonslokket."
       viewBox="0 0 940 520"
       wide
     >
@@ -1234,7 +1020,7 @@ export function SeaBreezeDiagram() {
     <Diagram
       title="Solgangsbris: Sjøbris om dagen og landbris om natten"
       heading="Pålandsvind og fralandsvind: Lokale temperatur- og trykkforskjeller"
-      caption="Pålandsvind (sjøbris) og fralandsvind (landbris) er et klassisk lokalt termisk kretsløp drevet av at land og vann har ulik spesifikk varmekapasitet. Vann har om lag fire ganger høyere varmekapasitet enn stein og sand, og solstrålene trenger metervis ned i sjøen. Derfor varmes landjorden mye raskere opp om dagen enn havet. Luften over land stiger (termisk lavtrykk L) og danner ofte små godværsskyer (cumulus humilis) innover land, mens den kjølige luften over havet (H) suges inn som en frisk sjøbris. Om natten taper landjorden varme lynraskt ved utstråling, luften synker over land (H), og en svakere landbris blåser ut mot det lunkne havet."
+      caption="Pålandsvind (sjøbris) og fralandsvind (landbris) er et klassisk lokalt termisk kretsløp drevet av at land og vann har ulik spesifikk varmekapasitet. Vann har om lag fire ganger høyere varmekapasitet enn stein og sand, og solstrålene trenger metervis ned i sjøen. Derfor varmes landjorden mye raskere opp om dagen enn havet. Lufta over land stiger (termisk lavtrykk L) og danner ofte små godværsskyer (cumulus humilis) innover land, mens den kjølige lufta over havet (H) suges inn som en frisk sjøbris. Om natten taper landjorden varme lynraskt ved utstråling, lufta synker over land (H), og en svakere landbris blåser ut mot det lunkne havet."
       viewBox="0 0 940 430"
       wide
     >
@@ -1291,7 +1077,7 @@ export function SeaBreezeDiagram() {
               ☀️ DAG: Sjøbris (Pålandsvind)
             </L>
             <L x="242" y="73" size={11} fill="#e0f2fe" anchor="middle">
-              Land varmes raskt opp → luften stiger
+              Land varmes raskt opp → lufta stiger
             </L>
 
             <rect x="35" y="250" width="180" height="130" fill="url(#sb-sea-grad)" />

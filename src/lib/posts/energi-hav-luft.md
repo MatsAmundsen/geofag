@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte, både nasjonalt og globalt (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Mennesket i jordsystemene:* Kjerneelementet handler om hvordan vi utnytter naturressursene og endrer jordsystemene (Udir, u.å.-a). Vind, havvind, tidevann, bølger og havvarme er slike ressurser.
 >
@@ -24,6 +24,14 @@ VindkraftForklaring
 | Bølgekraft | Havbølger og dønninger | Langs kysten |
 | Havvarmekraft | Temperaturforskjell i havet | Tropiske farvann |
 
+```widget
+EnergySources
+```
+
+> **Hva tror du?**
+>
+> Hywind Tampen er en flytende havvindpark som leverer strøm til olje- og gassplattformer i Nordsjøen. Tror du plattformene er blitt utslippsfrie? Svar før du leser videre – vi kommer tilbake til det i delen om havvind.
+
 ## Vindkraft i Norge
 
 I 2023 ble det produsert 14 terawattimer vindkraft i Norge, 9,1 prosent av den samlede kraftproduksjonen. Ved starten av 2025 var utbygd kapasitet om lag 5082 megawatt. Fosen Vind, Europas hittil største landbaserte vindkraftanlegg, kom i ordinær drift fra mars 2021. Anlegget har 277 vindturbiner, 1057 megawatt og en beregnet årsproduksjon på 3,4 terawattimer, om lag forbruket til 170 000 norske husstander (Store norske leksikon, u.å.-a).
@@ -32,13 +40,25 @@ Vindkraft er utslippsfri og fornybar, og likevel omstridt i Norge. Den legger be
 
 En moderne vindturbin roterer når vinden i navhøyde er mellom 3 og 25 meter per sekund. Størst ytelse kommer normalt ved cirka 13 meter per sekund. Over det justeres bladene slik at mer vindenergi ikke fanges inn. Det gjøres for å redusere de mekaniske påkjenningene. Passerer vinden 25 meter per sekund, bremses turbinen og settes ut av drift. Vinden er sterkere og mer stabil høyt oppe, så tårnene bygges høyere (Store norske leksikon, u.å.-d).
 
+```widget
+WindPowerModel
+```
+
 ## Havvind
 
-Havvind er vind brukt til kraftproduksjon til havs. En havvindpark er vindturbiner på grunne havområder, knyttet sammen i et nett. Understellet kan stå direkte på kontinentalsokkelen, eller flyte, i betong. Står de på sokkelen, må havet ikke være for dypt. Flest parker finnes i Kina, Sørøst-Asia, USA og Storbritannia (Store norske leksikon, u.å.-b).
+Havvind er vind brukt til kraftproduksjon til havs. En havvindpark er vindturbiner på grunne havområder, knyttet sammen i et nett. Understellet kan stå direkte på kontinentalsokkelen, eller flyte, i stål eller betong. Står de på sokkelen, må havet ikke være for dypt. Kina har mest havvind, fulgt av Storbritannia og Tyskland. Ved utgangen av 2025 sto Kina for over halvparten av verdens havvindkapasitet (Global Wind Energy Council [GWEC], 2026).
 
 Ved utgangen av 2016 var det 3589 offshore vindturbiner i drift i Europa, 12 631 megawatt, i 84 parker i 11 land. Gjennomsnittlig årsproduksjon i 2017 var drøyt 40 terawattimer. I 2021 var den totale kapasiteten fra havvind økt til 26 gigawatt. Tallene hører til de årene, ikke til et senere år (Store norske leksikon, u.å.-b).
 
-Hywind, 25 kilometer utenfor nordkysten av Skottland, er en testpark på flytende understell som Equinor satte i drift i 2017, utviklet sammen med Norsk Hydro. Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den kom i drift i 2022, drives av Equinor, og erstatter gassturbiner slik at energiforsyningen er utslippsfri. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b).
+Hywind Scotland, ca. 25 km utenfor Peterhead nordøst i Skottland, er en testpark på flytende understell som Equinor satte i drift i 2017, utviklet sammen med Norsk Hydro (Equinor, u.å.-b). Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b). Hywind Tampen (88 MW) skal dekke om lag 35 prosent av strømbehovet på Snorre- og Gullfaks-plattformene og kutte om lag 200 000 tonn CO₂ i året (Equinor, u.å.-a). Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.
+
+```widget
+OffshoreWindShelf
+```
+
+```widget
+SjekkEnergi1
+```
 
 ## Tidevann
 
@@ -50,9 +70,21 @@ Isaac Newton viste at tidevannet følger tyngdekraften. Det skyldes månens og s
 
 Et bølgekraftverk omformer energi fra havbølger og dønninger til mekanisk eller elektrisk energi. Potensialet langs norskekysten er nesten av samme størrelsesorden som potensialet i alle norske vassdrag. Svingningene gjør omformingen praktisk og økonomisk vanskelig, og ekstreme bølger gir store påkjenninger. Bare én løsning har hittil levert energi til strømnettet i Norge (Store norske leksikon, u.å.-e).
 
+```widget
+MarineEnergyModel
+```
+
 ## Havvarmekraft
 
 Havvarmekraft, også kalt havtermisk kraft, er elektrisk energi fra temperaturforskjellen i havet. På engelsk heter det Ocean Thermal Energy Conversion, forkortet OTEC. Den kan brukes i tropiske farvann der forskjellen mellom varmt overflatevann og kaldt bunnvann kan bli 20 grader eller mer. I en lukket prosess fordamper et stoff med lavt kokepunkt, for eksempel ammoniakk, i overflatevann på rundt 25 grader. Dampen går gjennom en turbin og kondenseres med dypvann på rundt 5 grader. I en åpen prosess er arbeidsmediet vann, og anlegget kan også lage ferskvann. Kilden er fornybar og stabil (Store norske leksikon, u.å.-f).
+
+```widget
+OtecRankineCycle
+```
+
+```widget
+SjekkEnergi2
+```
 
 > **Vanlige misforståelser**
 >
@@ -61,6 +93,10 @@ Havvarmekraft, også kalt havtermisk kraft, er elektrisk energi fra temperaturfo
 > Havvind må ikke stå på bunnen. Den kan også flyte, og da kan havet være dypere (Store norske leksikon, u.å.-b).
 >
 > Tidevann er ikke vind. Det kommer av månen og sola (Store norske leksikon, u.å.-c).
+
+```widget
+WindPowerTradeoff
+```
 
 ## Viktige begreper
 
@@ -81,6 +117,12 @@ Havvarmekraft, også kalt havtermisk kraft, er elektrisk energi fra temperaturfo
 **Bølgekraftverk:** Omformer energi i havbølger og dønninger til mekanisk eller elektrisk energi.
 
 **Havvarmekraft:** Elektrisk energi fra temperaturforskjellen mellom varmt overflatevann og kaldt bunnvann. Også kalt OTEC.
+
+## Sammendrag
+
+```widget
+SammendragEnergi
+```
 
 ## Test deg selv
 
