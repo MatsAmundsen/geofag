@@ -401,57 +401,70 @@ export const QUIZ_SJEKK_ENERGI_2: QuizQuestion[] = [
 
 export const QUIZ_TILPASNING: QuizQuestion[] = [
   {
-    prompt: "Hva er klimatilpasning?",
+    prompt: "Hvorfor kan en høy flomvoll alene gjøre risikoen større på lang sikt?",
     options: [
-      "Å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak.",
-      "Bare å måle CO₂ på Mauna Loa.",
-      "Det samme som å redusere klimaendringene.",
+      "Fordi vollen gjør elva større",
+      "Fordi folk bygger mer bak vollen, og skadene blir store når en flom blir høyere enn vollen",
+      "Fordi vollen stopper all flom",
+      "Fordi vollen gir mer nedbør",
     ],
-    answer: 0,
-    explain:
-      "Se «To svar». Tiltakene kan hindre eller redusere skade, eller utnytte muligheter.",
+    answer: 1,
+    explain: "Dette er maltilpasning. Eksponeringen øker bak vollen.",
   },
   {
-    prompt: "Hva er Norges nasjonale mål for klimatilpasning?",
+    prompt: "Hva er forskjellen på fare og sårbarhet?",
     options: [
-      "At samfunnet og økosystemene skal forberedes på og tilpasses klimaendringene.",
-      "At bare byene skal tilpasses, ikke økosystemene.",
-      "At tilpasning erstatter alle andre svar.",
+      "Fare er hvor lett noe blir skadet, sårbarhet er naturhendelsen",
+      "Det er det samme",
+      "Fare er naturhendelsen, sårbarhet er hvor lett noe blir skadet og hvor godt det klarer å hente seg inn",
+      "Sårbarhet gjelder bare økosystemer",
     ],
-    answer: 0,
-    explain: "Se «To svar». Målet gjelder både samfunn og økosystem.",
+    answer: 2,
+    explain: "Risikoen oppstår i samspillet mellom fare, eksponering og sårbarhet (IPCC, 2022).",
   },
   {
-    prompt: "Hva ber kompetansemålet deg vurdere?",
+    prompt: "Hva skjer med avrenningen når skog blir bygd om til asfalt og tak?",
     options: [
-      "Både løsninger som reduserer klimaendringene, og løsninger for å tilpasse seg.",
-      "Bare utslippsregnskapet for ett år.",
-      "Bare værvarselet for i morgen.",
+      "Den øker kraftig, fordi mer av regnet renner av på overflaten",
+      "Den minker",
+      "Den er den samme",
+      "Den forsvinner",
     ],
     answer: 0,
-    explain: "Se «To svar». Redusere og tilpasse seg er to ulike svar.",
+    explain: "Tette flater har en høy avrenningskoeffisient C.",
   },
   {
-    prompt: "Hvilket klima har kysten fra Oslofjorden til Troms?",
+    prompt: "Hvorfor merkes havnivåstigningen mindre der landhevingen er stor?",
     options: [
-      "Varmtemperert klima med milde vintre.",
-      "Polarklima, som på Svalbard.",
-      "Kaldtemperert innlandsklima med barskog hele veien.",
+      "Fordi havet ikke stiger der",
+      "Fordi landet hever seg og tar igjen noe av stigningen",
+      "Fordi det er mindre stormflo der",
+      "Fordi isen fortsatt ligger der",
     ],
-    answer: 0,
-    explain:
-      "Se «Klimaet konsekvensene treffer i Norge». Polarklima ligger i fjellet, langs Finnmarkskysten og på Svalbard.",
+    answer: 1,
+    explain: "Landet hever seg fortsatt etter siste istid, mest der isen var tykkest.",
   },
   {
-    prompt: "Hva vurderer FNs klimapanels arbeidsgruppe II?",
+    prompt: "Hva er riktig om klimapåslaget på 40 %?",
     options: [
-      "Konsekvenser for økosystem, biologisk mangfold og samfunn, og grensene for tilpasning.",
-      "Bare banens tre svingninger.",
-      "Bare vindstyrken orkan.",
+      "Det er en prognose for 2050",
+      "Det gjelder all nedbør",
+      "Det betyr at det vil regne 40 % oftere",
+      "Det er en anbefaling om å øke dagens dimensjonerende nedbør for korte regnskyll",
     ],
-    answer: 0,
-    explain:
-      "Se «To svar». Rapporten ser på konsekvenser globalt og regionalt, og på hvor langt tilpasning kan gå.",
+    answer: 3,
+    explain: "Norsk klimaservicesenter anbefaler minst 40 % påslag for regnskyll som varer kortere enn tre timer (Dyrrdal & Førland, 2019).",
+  },
+  {
+    prompt: "Hvilken sikkerhetsklasse gjelder for sykehus i flomutsatte områder?",
+    options: [
+      "F1",
+      "F2",
+      "F3",
+      "Ingen",
+    ],
+    answer: 2,
+    explain: "F3 gjelder sårbare samfunnsfunksjoner, med største årlige sannsynlighet 1/1000 (Byggteknisk forskrift, 2017).",
   },
 ];
 
@@ -4677,5 +4690,97 @@ export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Da ser du lagdelingen direkte.",
+  },
+];
+
+export const QUIZ_SJEKK_TILPASNING_1: QuizQuestion[] = [
+  {
+    prompt: "Hvordan beskriver IPCC klimarisiko?",
+    options: [
+      "Som summen av alle naturfarer i et område",
+      "Som noe som oppstår i samspillet mellom fare, eksponering og sårbarhet",
+      "Som sannsynligheten for et styrtregn",
+    ],
+    answer: 1,
+    explain: "Risikoen oppstår i samspillet mellom de tre delene. Mangler én av dem, blir risikoen liten (IPCC, 2022).",
+  },
+  {
+    prompt: "Hva er maltilpasning?",
+    options: [
+      "Et tiltak som øker sårbarheten senere eller flytter skaden over på andre",
+      "Et tiltak som kutter utslipp",
+      "En dårlig værmelding",
+    ],
+    answer: 0,
+    explain: "Et eksempel er en flomvoll som fører til mer bygging bak vollen.",
+  },
+];
+
+export const QUIZ_SJEKK_TILPASNING_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er rekkefølgen i treleddsstrategien?",
+    options: [
+      "Lede bort, fordrøye, infiltrere",
+      "Infiltrere, fordrøye, lede trygt bort i flomveier",
+      "Bygge større rør, pumpe, lede til sjøen",
+    ],
+    answer: 1,
+    explain: "Små regnskyll infiltreres, større fordrøyes, og de største ledes bort på overflaten (NOU 2015: 16).",
+  },
+  {
+    prompt: "Hva betyr et klimapåslag på 40 %?",
+    options: [
+      "At det regner 40 % mer hver dag",
+      "At dagens dimensjonerende nedbør økes med 40 % for å ta høyde for klimaendringene",
+      "At 40 % av regnet renner av",
+    ],
+    answer: 1,
+    explain: "Påslaget gjelder korte, kraftige regnskyll fram mot slutten av århundret (Dyrrdal & Førland, 2019).",
+  },
+];
+
+export const QUIZ_SJEKK_TILPASNING_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor stiger havet når klimaet blir varmere?",
+    options: [
+      "Fordi havis smelter",
+      "Fordi havvannet utvider seg og is på land smelter",
+      "Fordi det regner mer over havet",
+    ],
+    answer: 1,
+    explain: "Havis som smelter, hever ikke havnivået, for den flyter allerede.",
+  },
+  {
+    prompt: "Hvor mye venter IPCC at havet stiger fram til 2100?",
+    options: [
+      "0,28–1,01 m, avhengig av utslippene",
+      "5–10 m",
+      "Under 1 cm",
+    ],
+    answer: 0,
+    explain: "Tallene er sammenlignet med 1995–2014 (IPCC, 2021).",
+  },
+];
+
+export const QUIZ_SJEKK_TILPASNING_4: QuizQuestion[] = [
+  {
+    prompt: "Hvilken sikkerhetsklasse i TEK17 gjelder vanlige boliger?",
+    options: [
+      "F1, med 1/20",
+      "F2, med 1/200",
+      "F3, med 1/1000",
+    ],
+    answer: 1,
+    explain: "De fleste byggverk for personopphold er i F2 (Byggteknisk forskrift, 2017).",
+  },
+  {
+    prompt: "Hva dekker naturskadeforsikringen?",
+    options: [
+      "Skader etter flom, stormflo, storm og skred på ting som er brannforsikret",
+      "Alle tiltak som hindrer skader",
+      "Bare skader på biler",
+    ],
+    answer: 0,
+    explain: "Forsikringen dekker skaden etter at den har skjedd (Naturskadeforsikringsloven, 1989).",
   },
 ];
