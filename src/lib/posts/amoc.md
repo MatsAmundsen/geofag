@@ -46,11 +46,11 @@ I mediene brukes «Golfstrømmen» ofte om hele strømsystemet i Atlanterhavet, 
 - **Golfstrømmen** er en horisontal, vinddrevet overflatestrøm på vestsiden av den subtropiske havvirvelen i Nord-Atlanteren. Den drives av passatvindene og vestavinden, og corioliseffekten gjør den smal og rask. I Floridastredet, ved 27 grader nord, er transporten i snitt omtrent 32 Sv, og den har vært stabil i over 40 år (NOAA AOML, u.å.; Volkov mfl., 2024). Ifølge FNs klimapanel bidrar havvirvelen 2–10 ganger mer til Golfstrømmen enn AMOC gjør. Golfstrømmen ville derfor ikke stoppe helt selv om AMOC gjorde det (IPCC, 2021).
 - **AMOC** er hele det tredimensjonale omveltningsbåndet, som forbinder overflaten med dyphavet. Den drives av tetthetsforskjeller, altså temperatur og salt. Det er omveltningen og nedsynkingen i nord som kan svekkes hvis vannet i nord blir ferskere og lettere.
 
-Golfstrømmen går ikke helt til Norge. Den går over i Den nordatlantiske strømmen, og en gren av den fortsetter nordover langs Norge som *Den norske atlanterhavsstrømmen* (Weber og Bjørndalen, 2024). Strømmen langs Norge er altså ikke Golfstrømmen.
+Golfstrømmen går ikke helt til Norge. Den går over i Den nordatlantiske strømmen, og en gren av den fortsetter nordover langs Norge som *Den norske atlanterhavsstrømmen* (Weber & Bjørndalen, 2024). Strømmen langs Norge er altså ikke Golfstrømmen.
 
 ### AMOC i tall
 
-Ved 26,5 grader nord har AMOC i snitt fraktet ca. 17 Sv siden 2004 (1 Sv = 1 million kubikkmeter vann per sekund) (Johns mfl., 2023). Alle verdens elver fører til sammen ca. 1,2 Sv, og Amazonas ca. 0,2 Sv (Dai og Trenberth, 2002). AMOC fører altså ca. 15 ganger så mye vann som alle elver til sammen, og over 80 ganger så mye som Amazonas. Den frakter også ca. 1,2 petawatt (10¹⁵ W) varme nordover (Johns mfl., 2023). Det tilsvarer omtrent en million kraftverk på 1 GW.
+Ved 26,5 grader nord har AMOC i snitt fraktet ca. 17 Sv siden 2004 (1 Sv = 1 million kubikkmeter vann per sekund) (Johns mfl., 2023). Alle verdens elver fører til sammen ca. 1,2 Sv, og Amazonas ca. 0,2 Sv (Dai & Trenberth, 2002). AMOC fører altså ca. 15 ganger så mye vann som alle elver til sammen, og over 80 ganger så mye som Amazonas. Den frakter også ca. 1,2 petawatt (10¹⁵ W) varme nordover (Johns mfl., 2023). Det tilsvarer omtrent en million kraftverk på 1 GW.
 
 ```widget
 SjekkAmoc1
@@ -71,7 +71,7 @@ TetthetDiagram
 ### Tre trinn i dypvannsdannelsen
 
 1. **Salt fra subtropene:** Under høytrykket i subtropene er fordampingen stor. Derfor er overflatevannet midt i den subtropiske havvirvelen i Nord-Atlanteren svært salt (Talley mfl., 2011). Det varme og salte vannet føres nordover med Golfstrømmen og Den nordatlantiske strømmen.
-2. **Kraftig avkjøling i nord:** Om vinteren møter vannet kald og tørr luft i de nordiske hav, Irmingerhavet og Labradorhavet. I konveksjonsområdene kan havet da gi fra seg flere hundre watt per kvadratmeter til lufta. I Labradorhavet var varmetapet 200–300 W/m² i månedssnitt vinteren 1994/95 (Lilly mfl., 1999), og ved svært sterk avkjøling kan det komme opp i ca. 1000 W/m² (Marshall og Schott, 1999). Avkjølingen er hovedmekanismen. I Nord-Atlanteren blir overflatevannet tungt nok til å synke først og fremst fordi det blir kraftig avkjølt om vinteren (Sælen mfl., 2025).
+2. **Kraftig avkjøling i nord:** Om vinteren møter vannet kald og tørr luft i de nordiske hav, Irmingerhavet og Labradorhavet. I konveksjonsområdene kan havet da gi fra seg flere hundre watt per kvadratmeter til lufta. I Labradorhavet var varmetapet 200–300 W/m² i månedssnitt vinteren 1994/95 (Lilly mfl., 1999), og ved svært sterk avkjøling kan det komme opp i ca. 1000 W/m² (Marshall & Schott, 1999). Avkjølingen er hovedmekanismen. I Nord-Atlanteren blir overflatevannet tungt nok til å synke først og fremst fordi det blir kraftig avkjølt om vinteren (Sælen mfl., 2025).
 3. **Konveksjon og nedsynking:** Lav temperatur og høy saltholdighet gjør overflatevannet tyngre enn lagene under. Vannsøylen blir ustabil, og vannet synker i smale konveksjonsområder, ofte kalt skorsteiner (*chimneys*). Slik dannes *nordatlantisk dypvann* (NADW), som går sørover i dypet (Talley mfl., 2011).
 
 Når havis fryser, blir mye av saltet igjen i vannet under. Det gjør vannet tyngre, men har størst betydning rundt Antarktis, der det meste av bunnvannet dannes (Barthel, 2025).
@@ -107,7 +107,7 @@ I 1961 viste oseanografen Henry Stommel at en enkel modell av den termohaline si
 - **«På»-tilstanden (som i dag):** Sterk sirkulasjon. Salt fra sør holder tettheten høy nok til at konveksjonen fortsetter.
 - **«Av»-tilstanden:** Hvis ferskvannstilførselen blir større enn en kritisk terskel, stopper dypvannsdannelsen. Uten salt fra sør forblir overflaten i nord fersk og lagdelt, og sirkulasjonen blir værende svak.
 
-Et *vippepunkt* er terskelen der systemet går over i den andre tilstanden. *Hysterese* betyr at systemet ikke går tilbake av seg selv om ferskvannet reduseres til nivået før. Ferskvannstilførselen må ned til et mye lavere nivå før sirkulasjonen kan starte igjen, og det kan ta lang tid (Stommel, 1961). Modellen er svært forenklet, og den sier ikke når et vippepunkt eventuelt nås. Noen nyere studier finner tidlige varselsignaler som tyder på at AMOC kan nærme seg et vippepunkt allerede i dette hundreåret (Ditlevsen og Ditlevsen, 2023; van Westen mfl., 2024). Funnene er omdiskutert. FNs klimapanel mener med middels sikkerhet at AMOC ikke vil bryte sammen brått før 2100 (IPCC, 2021).
+Et *vippepunkt* er terskelen der systemet går over i den andre tilstanden. *Hysterese* betyr at systemet ikke går tilbake av seg selv om ferskvannet reduseres til nivået før. Ferskvannstilførselen må ned til et mye lavere nivå før sirkulasjonen kan starte igjen, og det kan ta lang tid (Stommel, 1961). Modellen er svært forenklet, og den sier ikke når et vippepunkt eventuelt nås. Noen nyere studier finner tidlige varselsignaler som tyder på at AMOC kan nærme seg et vippepunkt allerede i dette hundreåret (Ditlevsen & Ditlevsen, 2023; van Westen mfl., 2024). Funnene er omdiskutert. FNs klimapanel mener med middels sikkerhet at AMOC ikke vil bryte sammen brått før 2100 (IPCC, 2021).
 
 ```widget
 SjekkAmoc3
@@ -168,7 +168,7 @@ SjekkAmoc6
 >
 > **«Golfstrømmen snur og renner baklengs.»** Golfstrømmen drives av vinden og vil ikke stoppe helt selv om AMOC gjorde det. Det er dypvannsdannelsen i nord som kan avta (IPCC, 2021).
 >
-> **«Strømmen langs norskekysten er Golfstrømmen.»** Strømmen langs Norge er Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Weber og Bjørndalen, 2024).
+> **«Strømmen langs norskekysten er Golfstrømmen.»** Strømmen langs Norge er Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Weber & Bjørndalen, 2024).
 >
 > **«AMOC har allerede stoppet.»** Målingene siden 2004 viser at AMOC går, og serien er for kort til å vise en sikker trend (IPCC, 2021).
 
