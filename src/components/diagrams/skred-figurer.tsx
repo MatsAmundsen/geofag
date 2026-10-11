@@ -163,6 +163,9 @@ export function KvikkleireBakoverFigur({
         {({ d }) => (
           <g className={motion.motionClass} data-figur="kvikkleire" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
             <defs>
+              <clipPath id="kv-lomme">
+                <rect x="0" y="0" width={n1(edge + 26)} height="520" />
+              </clipPath>
               <clipPath id="kv-ground">
                 <path d={groundPath} />
               </clipPath>
@@ -172,7 +175,7 @@ export function KvikkleireBakoverFigur({
               <rect x="0" y="0" width="960" height="520" fill="#6d6a5e" />
               <rect x="0" y="0" width="960" height="520" fill={d.url.strata} opacity="0.4" data-nocheck="" />
               {/* kvikkleirelommen: bare den delen som ikke har rast ut */}
-              <path d={`M${n1(Math.max(250, Math.min(edge + 26, 780)))} 262 L250 262 C236 300 250 380 300 392 L760 392 C790 370 800 330 780 300 L${n1(Math.min(780, edge + 26))} 262 Z`} fill={opened && i === 4 ? "#6d6a5e" : "#a8935a"} />
+              <path clipPath="url(#kv-lomme)" d={`M780 262 L250 262 C236 290 250 340 300 350 L760 350 C790 340 800 320 780 300 L780 262 Z`} fill={opened && i === 4 ? "#6d6a5e" : "#a8935a"} />
               <path d={`M0 ${KV_TOP} L960 ${KV_TOP} L960 ${KV_TOP + 30} L0 ${KV_TOP + 30} Z`} fill="#7d6a4f" />
               <path d="M0 440 C160 430 300 452 480 436 C640 422 800 446 960 432 L960 520 L0 520 Z" fill={d.url.rock} />
             </g>
