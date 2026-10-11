@@ -29,7 +29,7 @@ function NumeriskeModellerPage() {
       title="Numeriske modeller: Fra fysiske lover til superdatamaskiner"
       banner="/images/fig-klimasystem.jpg"
       bannerAlt="Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver"
-      prev={{ to: "/tema/kryosfare", label: "Forrige: Kryosfæren" }}
+      prev={{ to: "/tema/kryosfaeren", label: "Forrige: Kryosfæren" }}
       next={{ to: "/tema/paleoklima", label: "Neste: Paleoklima" }}
       kilder={KILDER.modeller}
       lead={CHAPTER_INGRESS["numeriske-modeller"]}

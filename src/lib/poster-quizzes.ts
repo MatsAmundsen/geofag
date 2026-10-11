@@ -2,54 +2,70 @@ import type { QuizQuestion } from "@/components/quiz";
 
 export const QUIZ_FELT_HAV: QuizQuestion[] = [
   {
-    prompt: "Hva skal du gjøre med dataene i feltarbeidet?",
-    options: [
-      "Bare samle dem inn og la dem ligge.",
-      "Bearbeide, tolke og presentere dem.",
-      "Bare lese et varsel, uten egne data.",
-    ],
-    answer: 1,
-    explain: "Se «Tre felt, samme kjede». Kjeden er planlegge, samle inn, bearbeide, tolke og presentere.",
-  },
-  {
     prompt: "Hva måler en radiosonde?",
     options: [
-      "Bare vannstanden ved kaia.",
-      "Snøskredfaregraden i ett heng.",
-      "Temperatur, fuktighet og lufttrykk fra bakken og oppover.",
+      "Bare vind ved bakken",
+      "Saltholdighet og temperatur i havet",
+      "Snødybde",
+      "Temperatur, fuktighet og lufttrykk fra bakken og oppover",
     ],
-    answer: 2,
-    explain: "Se «Luft». Sonden festes vanligvis til en værballong.",
+    answer: 3,
+    explain: "Sonden sender dataene ned mens den stiger, og driften viser vinden (Store norske leksikon, u.å.-a).",
   },
   {
-    prompt: "Hva viser Se havnivå?",
+    prompt: "Hva står CTD for?",
     options: [
-      "Observert og varslet vannstand, og tidevann.",
-      "Temperaturen oppover i atmosfæren.",
-      "Et snøskredvarsel for 24 regioner.",
-    ],
-    answer: 0,
-    explain: "Se «Hav». Vannstanden varierer på grunn av tidevannet og været.",
-  },
-  {
-    prompt: "Hva gjelder en snøskredfaregrad for?",
-    options: [
-      "Ett enkelt heng.",
-      "Bare Svalbard.",
-      "Et område på minst 100 kvadratkilometer, ikke ett heng.",
-    ],
-    answer: 2,
-    explain: "Se «Snø og is». Graden er regional.",
-  },
-  {
-    prompt: "Hva er varselet, ifølge Varsom?",
-    options: [
-      "En fasit for akkurat det henget du skal gå.",
-      "Et hjelpemiddel. Egne vurderinger hører med.",
-      "En erstatning for å presentere egne data.",
+      "Current, tide, density",
+      "Konduktivitet, temperatur og dyp",
+      "Kyst, tidevann og dybde",
+      "Klima, tetthet og drift",
     ],
     answer: 1,
-    explain: "Se «Snø og is». Varslene er regionale og kan avvike fra forholdene der du er.",
+    explain: "Saltholdigheten regnes ut fra ledningsevnen og temperaturen (NOAA, u.å.; Store norske leksikon, u.å.-d).",
+  },
+  {
+    prompt: "Hva viser Kartverkets Se havnivå?",
+    options: [
+      "Observert og varslet vannstand og tidevann",
+      "Havtemperaturen i Norskehavet",
+      "Snøskredfaren langs kysten",
+      "Saltholdigheten i fjordene",
+    ],
+    answer: 0,
+    explain: "Vannstanden varierer på grunn av tidevannet og været (Kartverket, u.å.).",
+  },
+  {
+    prompt: "Hva er riktig om snøskredvarselet?",
+    options: [
+      "Det gjelder ett enkelt heng",
+      "Det kommer bare én gang i uka",
+      "Det er et hjelpemiddel, og du må alltid gjøre egne vurderinger",
+      "Det gjelder bare Svalbard",
+    ],
+    answer: 2,
+    explain: "Faregraden gjelder minst 100 kvadratkilometer (Varsom, u.å.-a; Varsom, u.å.-b).",
+  },
+  {
+    prompt: "Hva skal du ha med deg utenfor bebodd område på Svalbard?",
+    options: [
+      "Bjørnespray",
+      "Kunnskap om sikring mot isbjørnangrep og egnede midler til å skremme isbjørn",
+      "Ingenting spesielt om sommeren",
+      "Bare en mobiltelefon med dekning",
+    ],
+    answer: 1,
+    explain: "Svalbardmiljøloven (2001) § 30 a.",
+  },
+  {
+    prompt: "Du har målt temperaturen ved kaia fem ganger på ti minutter og fått litt ulike verdier. Hva gjør du?",
+    options: [
+      "Bruker den høyeste verdien",
+      "Bruker bare den første målingen",
+      "Stryker målingene som avviker",
+      "Regner ut gjennomsnittet og oppgir spredningen som usikkerhet",
+    ],
+    answer: 3,
+    explain: "Spredningen mellom målingene viser hvor sikker du kan være.",
   },
 ];
 
@@ -611,54 +627,70 @@ export const QUIZ_PALEO: QuizQuestion[] = [
 
 export const QUIZ_MODELLER: QuizQuestion[] = [
   {
-    prompt: "Hva er et ensemble hos ECMWF?",
+    prompt: "Hva er oppløsningen i en numerisk modell?",
     options: [
-      "Mange fulle værforløp som sammen viser hvor sannsynlige ulike utfall er.",
-      "Ett endelig tall for morgendagens temperatur.",
-      "Et arkiv som bare viser været i fjor.",
+      "Hvor ofte modellen kjøres",
+      "Avstanden mellom punktene i rutenettet",
+      "Hvor mange observasjoner modellen bruker",
+      "Hvor langt fram i tid modellen regner",
+    ],
+    answer: 1,
+    explain: "MEPS har en oppløsning på 2,5 km, og ECMWF ca. 9 km. Se «Hvordan bygges en numerisk modell opp?».",
+  },
+  {
+    prompt: "Hvorfor må modellen parameterisere skyer?",
+    options: [
+      "Fordi skyer ikke kan observeres",
+      "Fordi skyer ikke påvirker temperaturen",
+      "Fordi gassloven ikke gjelder i skyer",
+      "Fordi skydråpene og prosessene i skyene er mye mindre enn rutene",
+    ],
+    answer: 3,
+    explain: "Modellen beskriver den samlede virkningen på ruten med forenklede formler. Se «Hva er parameterisering?».",
+  },
+  {
+    prompt: "Hva gjør dataassimileringen?",
+    options: [
+      "Den kombinerer et kort varsel med nye observasjoner til en analyse som varselet starter fra",
+      "Den gjør om modellresultatet til et kart på Yr",
+      "Den fjerner alle observasjoner med feil",
+      "Den regner ut været for neste uke",
     ],
     answer: 0,
-    explain: "Se «Ensemblet». Hvert medlem er et fullt forløp.",
+    explain: "MEPS lager en ny analyse hver tredje time med 3D-Var. Se «Hvordan får modellen riktig start?».",
   },
   {
-    prompt: "Hvor ofte kjører ECMWF globale numeriske værvarsler?",
+    prompt: "18 av 30 medlemmer i et ensemble gir regn i morgen. Hva er den enkleste tolkningen?",
     options: [
-      "Én gang i uken.",
-      "Fire ganger i døgnet.",
-      "Bare når det er storm.",
+      "Det regner 60 prosent av dagen",
+      "60 prosent av landet får regn",
+      "Det er ca. 60 prosent sjanse for regn",
+      "Modellen har gjort en feil",
+    ],
+    answer: 2,
+    explain: "Andelen medlemmer som gir regn, er et mål på sannsynligheten. Se «Kaos og ensembler».",
+  },
+  {
+    prompt: "Hvilken modell regner ut strøm og stormflo langs norskekysten?",
+    options: [
+      "NorESM",
+      "MEPS",
+      "AROME-Arctic",
+      "Norkyst",
+    ],
+    answer: 3,
+    explain: "Norkyst er MET sin havmodell, med ruter på ca. 800 meter. Se «Hvordan brukes modellene i havmodelleringen?».",
+  },
+  {
+    prompt: "Hvorfor kan vi regne på klimaet i 2100 når vi ikke kan varsle været om tre uker?",
+    options: [
+      "Fordi klimamodeller ikke er påvirket av kaos i det hele tatt",
+      "Fordi klimamodellen regner ut hvordan værstatistikken endrer seg når pådrivene endres, ikke været en bestemt dag",
+      "Fordi klimamodeller har finere ruter enn værmodeller",
+      "Fordi klimamodeller bruker flere observasjoner",
     ],
     answer: 1,
-    explain: "Se «Observasjoner, hav og klima». De globale varslene kjøres fire ganger i døgnet.",
-  },
-  {
-    prompt: "Hva hviler varslene på?",
-    options: [
-      "Bare på et kart noen tegner for hånd.",
-      "Et globalt observasjonssystem som ECMWF overvåker.",
-      "Bare på målinger fra én værstasjon.",
-    ],
-    answer: 1,
-    explain: "Se «Observasjoner, hav og klima». Satellitter, vanlige målinger og havobservasjoner er med.",
-  },
-  {
-    prompt: "Hva bruker ECMWF modellene til, ved siden av vær til i morgen?",
-    options: [
-      "Bare til å tegne fronter på et papirkart.",
-      "Blant annet klimaovervåking og analyse av havsirkulasjonen.",
-      "Bare til å varsle snøskred i ett heng.",
-    ],
-    answer: 1,
-    explain: "Se «Observasjoner, hav og klima». Hav og klima ligger i samme arbeid.",
-  },
-  {
-    prompt: "Hvordan videreutvikles varslene?",
-    options: [
-      "Ved forskning som skal gjøre varslene bedre.",
-      "Ved å la være å bruke nye observasjoner.",
-      "Ved å fjerne ensemblet.",
-    ],
-    answer: 0,
-    explain: "Se «Hva er en numerisk modell?». Forskning for bedre treffsikkerhet er en kjerneoppgave.",
+    explain: "Se «Hvordan brukes modellene i klimaforskningen?».",
   },
 ];
 
@@ -1001,59 +1033,70 @@ export const QUIZ_OVERSIKT: QuizQuestion[] = [
 
 export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
   {
-    prompt: "Hva driver havstrømmer?",
+    prompt: "Hva er ekmanspiralen?",
     options: [
-      "Bare vinden, både i overflaten og i hele dyphavet.",
-      "Tidevann, vind og forskjeller i tetthet.",
-      "Bare månens drag, også midt i de store havvirvlene.",
-    ],
-    answer: 1,
-    explain:
-      "Se «Hva driver en havstrøm?». Tidevann, vind og tetthet driver strømmene. Tetthetsstrømmene går mye saktere.",
-  },
-  {
-    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
-    options: [
-      "Nøyaktig samme vei som vinden blåser.",
-      "Til venstre for vinden, som på den sørlige halvkule.",
-      "På tvers av vinden, til høyre for vindretningen.",
+      "En virvel som dannes rundt et lavtrykk på havet",
+      "Spiralen som tidevannet beveger seg i rundt et amfidromisk punkt",
+      "Mønsteret som strømretningen danner nedover i ekmanlaget, der hvert lag går litt saktere og litt mer til høyre",
+      "Bevegelsen til dypvannet rundt Antarktis",
     ],
     answer: 2,
-    explain:
-      "Se «Overflaten: ekmantransport og havvirvler». Overflatelaget, om lag de øverste 50 meterne, transporteres på tvers av vinden.",
+    explain: "Hvert lag drar i laget under, og corioliseffekten bøyer det mot høyre (Ekman, 1905; Barthel, 2021a).",
   },
   {
-    prompt: "Hva er oppvelling langs en vestkyst?",
+    prompt: "Hvorfor er strømmen på vestsiden av en havvirvel smal og rask?",
     options: [
-      "Overflatevann skyves ut, og kaldere, næringsrikt vann kommer opp fra dypet.",
-      "Overflatevannet presses inn mot land og synker.",
-      "Havisen fryser, og saltet blir igjen i overflaten.",
+      "Fordi corioliseffekten øker mot nord, noe som gir vestlig intensivering",
+      "Fordi vinden alltid er sterkest i vest",
+      "Fordi havet er dypere i vest",
+      "Fordi tidevannet er størst i vest",
     ],
     answer: 0,
-    explain:
-      "Se «Oppvelling». En nordavind langs en vestkyst på den nordlige halvkule skyver overflaten utover.",
+    explain: "Stommel (1948) forklarte det. Grunnen er at jorda er rund (Barthel, 2025).",
   },
   {
-    prompt: "Hva heter strømmen nordover langs norskekysten?",
+    prompt: "Hvor kommer det meste av atlanterhavsvannet inn i Norskehavet?",
     options: [
-      "Selve Golfstrømmen, hele veien fra Florida.",
-      "Labradorstrømmen, som kommer sørfra langs Norge.",
-      "Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen.",
+      "Gjennom Den engelske kanal",
+      "Gjennom Danmarkstredet",
+      "Gjennom Framstredet",
+      "Gjennom Færøy–Shetland-renna",
     ],
-    answer: 2,
-    explain:
-      "Se «Golfstrømmen og Norges klima». Navnet Golfstrømmen brukes feilaktig om strømmen langs Norge.",
+    answer: 3,
+    explain: "Der er vannet rundt 8 °C og har en saltholdighet på 35,4 promille (Weber & Bjørndalen, 2024).",
   },
   {
-    prompt: "Hvorfor synker vann i Nord-Atlanteren og starter transportbåndet?",
+    prompt: "Hva gir oppvelling langs en kyst?",
     options: [
-      "Vinden presser overflatevannet rett ned til bunnen.",
-      "Vannet avkjøles, og salt blir igjen når havis fryser, så tettheten øker.",
-      "Varmt ferskvann er tyngre enn kaldt salt vann.",
+      "At vinden blåser rett mot land",
+      "At ekmantransporten fører overflatevannet bort fra kysten",
+      "At tidevannet løfter bunnvannet",
+      "At havisen smelter",
     ],
     answer: 1,
-    explain:
-      "Se «Dypet: det globale transportbåndet». Kaldt og saltere vann blir tettere og synker. Overflatevann trekkes inn.",
+    explain: "Kaldt og næringsrikt vann stiger opp og erstatter overflatevannet (Barthel, 2021b).",
+  },
+  {
+    prompt: "Hvor har saltet fra havis størst betydning for dannelsen av tungt bunnvann?",
+    options: [
+      "I Nordsjøen",
+      "Langs norskekysten",
+      "Rundt Antarktis",
+      "I Sargassohavet",
+    ],
+    answer: 2,
+    explain: "Det meste av bunnvannet i verdenshavene dannes rundt Antarktis, særlig i Weddellhavet. I Nord-Atlanteren er avkjøling om vinteren viktigst (Barthel, 2025).",
+  },
+  {
+    prompt: "Hvorfor kan AMOC bli svakere når klimaet blir varmere?",
+    options: [
+      "Fordi vinden over Atlanteren slutter å blåse",
+      "Fordi havet blir saltere",
+      "Fordi jorda roterer saktere",
+      "Fordi overflatevannet i nord blir ferskere og varmere og synker ikke like lett",
+    ],
+    answer: 3,
+    explain: "IPCC (2021) vurderer det som svært sannsynlig at AMOC svekkes i dette hundreåret.",
   },
 ];
 
@@ -3967,5 +4010,672 @@ export const QUIZ_SJEKK_KRYO_3: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Mindre snø og kortere sesong gir færre skred i lavlandet. Høyere opp ventes flere (Norsk klimaservicesenter).",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor ser ballen på karusellen ut til å svinge?",
+    options: [
+      "Fordi en kraft skyver den sidelengs",
+      "Fordi den som ser på, roterer med karusellen",
+      "Fordi ballen snurrer",
+    ],
+    answer: 1,
+    explain: "Sett utenfra går ballen rett. Avbøyningen kommer av at ståstedet roterer.",
+  },
+  {
+    prompt: "Hvilken vei avbøyes luft som blåser nordover på den nordlige halvkule?",
+    options: [
+      "Mot venstre",
+      "Den avbøyes ikke",
+      "Mot høyre",
+    ],
+    answer: 2,
+    explain: "Lufta har med seg større fart østover enn bakken lenger nord, og det blir en høyresving.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_2: QuizQuestion[] = [
+  {
+    prompt: "Hvor er corioliseffekten null?",
+    options: [
+      "Ved ekvator",
+      "Ved polene",
+      "Ved 60° bredde",
+    ],
+    answer: 0,
+    explain: "Coriolisparameteren er null ved ekvator og øker mot polene. Derfor dannes ikke orkaner helt ved ekvator.",
+  },
+  {
+    prompt: "Hvorfor blåser ikke vinden nær bakken langs isobarene?",
+    options: [
+      "Fordi corioliskraften er sterkest der",
+      "Fordi friksjonen bremser vinden, særlig over land",
+      "Fordi trykket er likt overalt",
+    ],
+    answer: 1,
+    explain: "Over havet er vinkelen 0–20° og over land 20–40°, fordi friksjonen er større over land.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
+    options: [
+      "Med vinden",
+      "Mot vinden",
+      "Til høyre for vinden",
+    ],
+    answer: 2,
+    explain: "Overflatelaget transporteres på tvers av vinden, til høyre i nord.",
+  },
+  {
+    prompt: "Hvorfor kan en nordavind langs en vestkyst gi oppvelling?",
+    options: [
+      "Ekmantransporten skyver overflatevannet ut fra kysten, og dypvann kommer opp",
+      "Nordavinden er varm",
+      "Tidevannet blir større",
+    ],
+    answer: 0,
+    explain: "Vannet som kommer opp, er rikt på næringsstoffer, og områdene har ofte rike fiskerier.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor får vi tre celler på hver halvkule i stedet for én?",
+    options: [
+      "Fordi jorda roterer og lufta mot polen dreies til vestavind",
+      "Fordi havet stopper lufta ved 30°",
+      "Fordi det er tre kontinenter",
+    ],
+    answer: 0,
+    explain: "Uten rotasjon kunne én celle gått helt til polen. Corioliseffekten deler sirkulasjonen i Hadley-, Ferrel- og polarcellen.",
+  },
+  {
+    prompt: "Hva holder Ferrel-cellen i gang?",
+    options: [
+      "Oppvarming ved ekvator",
+      "De vandrende lavtrykkene og høytrykkene ved midlere breddegrader",
+      "Friksjon mot bakken",
+    ],
+    answer: 1,
+    explain: "Ferrel-cellen er termisk indirekte. Friksjon bremser vinden, men skaper den ikke.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er det tørt nær 30°?",
+    options: [
+      "Fordi det ikke finnes elver der",
+      "Fordi lufta synker, varmes opp og skyene løses opp",
+      "Fordi sola skinner svakere der",
+    ],
+    answer: 1,
+    explain: "Synkende luft presses sammen og varmes. Den relative fuktigheten faller, og det blir høytrykk og tørke.",
+  },
+  {
+    prompt: "Hva er konvergenssonen (ITCZ)?",
+    options: [
+      "Et høytrykksbelte ved 30°",
+      "Grensen mellom kald og varm luft ved 60°",
+      "Beltet der passatene møtes og lufta stiger",
+    ],
+    answer: 2,
+    explain: "Passatene strømmer sammen nær ekvator. Lufta stiger, og det blir skyer, byger og regn.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_3: QuizQuestion[] = [
+  {
+    prompt: "Fra hvilken retning blåser passaten på den nordlige halvkule?",
+    options: [
+      "Nordøst",
+      "Sørvest",
+      "Vest",
+    ],
+    answer: 0,
+    explain: "Lufta strømmer fra 30° mot ekvator og dreies mot høyre, så den kommer fra nordøst.",
+  },
+  {
+    prompt: "Hvorfor flytter konvergenssonen seg gjennom året?",
+    options: [
+      "Fordi havstrømmene snur",
+      "Fordi den følger sola nordover og sørover",
+      "Fordi jetstrømmen skyver den",
+    ],
+    answer: 1,
+    explain: "Konvergenssonen følger der oppvarmingen er sterkest. Det gir regntid og tørketid i tropene.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor faller det mye mer nedbør på vestsiden av fjellene i Norge enn i Ottadalen?",
+    options: [
+      "Fordi det er kaldere i vest",
+      "Fordi vestavinden løfter fuktig luft mot fjellene, og lesiden ligger i regnskygge",
+      "Fordi lavtrykkene kommer fra øst",
+    ],
+    answer: 1,
+    explain: "Orografisk nedbør faller på luvsiden. På lesiden synker lufta, varmes og er tørrere.",
+  },
+  {
+    prompt: "Hva er polarfronten?",
+    options: [
+      "Grensen mellom kald polarluft og varm subtropisk luft",
+      "Kanten av havisen",
+      "Et høytrykk over Nordpolen",
+    ],
+    answer: 0,
+    explain: "Langs polarfronten dannes vandrende lavtrykk som gir mye av nedbøren i Norge.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_1: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr det når isobarene ligger tett?",
+    options: [
+      "Høyt trykk",
+      "Stor trykkforskjell over kort avstand og sterk vind",
+      "At det blir nedbør",
+    ],
+    answer: 1,
+    explain: "Tette isobarer gir sterk vind. Gisne isobarer gir svak vind.",
+  },
+  {
+    prompt: "Hva betyr 12Z på et værkart?",
+    options: [
+      "Klokka 12 UTC",
+      "Klokka 12 norsk tid om vinteren",
+      "12 timer etter varselet",
+    ],
+    answer: 0,
+    explain: "Kart, radar og satellittbilder har tidsstempel i UTC, også kalt Z-tid.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_2: QuizQuestion[] = [
+  {
+    prompt: "Hvordan tegnes en kaldfront?",
+    options: [
+      "Rød strek med halvsirkler",
+      "Blå strek med trekanter i fartsretningen",
+      "Lilla strek uten symboler",
+    ],
+    answer: 1,
+    explain: "Trekantene peker den veien fronten flytter seg.",
+  },
+  {
+    prompt: "Hva betyr det at en front er en kaldfront?",
+    options: [
+      "At det er kuldegrader bak fronten",
+      "At lufta bak er kaldere enn lufta foran",
+      "At den kommer fra nord",
+    ],
+    answer: 1,
+    explain: "Det finnes ingen fast temperaturgrense. Begge sidene kan være milde.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_3: QuizQuestion[] = [
+  {
+    prompt: "Hvordan dannes en okkludert front?",
+    options: [
+      "Kaldfronten tar igjen varmfronten",
+      "Varmfronten stopper opp",
+      "To høytrykk møtes",
+    ],
+    answer: 0,
+    explain: "Kaldfronten går raskere enn varmfronten. Varmsektoren løftes bort fra bakken, og lavtrykket svekkes.",
+  },
+  {
+    prompt: "Hvem utviklet den norske syklonmodellen?",
+    options: [
+      "Vilhelm Bjerknes alene",
+      "William Ferrel",
+      "Jacob Bjerknes og Halvor Solberg",
+    ],
+    answer: 2,
+    explain: "Jacob Bjerknes beskrev frontene i 1919, og sammen med Solberg publiserte han livsløpet i 1922.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_4: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr tallet 564 på et 500 hPa-kart?",
+    options: [
+      "Trykket er 564 hPa",
+      "500 hPa-flaten ligger 5640 meter over havet",
+      "Temperaturen er –56,4 °C",
+    ],
+    answer: 1,
+    explain: "Konturene viser høyden av 500 hPa-flaten. Den siste nullen er sløyfet.",
+  },
+  {
+    prompt: "Hvilken vei peker vindpilen i et stasjonsplott?",
+    options: [
+      "Dit vinden kommer fra",
+      "Dit vinden blåser",
+      "Alltid mot nord",
+    ],
+    answer: 0,
+    explain: "Vinden har navn etter retningen den kommer fra, og vindpilen peker dit.",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvilken av disse setter IKKE i seg selv vannet i bevegelse, men bøyer av strømmen?",
+    options: [
+      "Vinden",
+      "Tetthetsforskjeller",
+      "Jordrotasjonen",
+    ],
+    answer: 2,
+    explain: "Jordrotasjonen bøyer av alt som beveger seg, mot høyre på den nordlige halvkulen (Barthel, 2025).",
+  },
+  {
+    prompt: "Hva er 1 sverdrup (Sv)?",
+    options: [
+      "1 meter per sekund",
+      "1 million kubikkmeter vann per sekund",
+      "1000 kubikkmeter vann per døgn",
+    ],
+    answer: 1,
+    explain: "Sverdrup er enheten for vanntransport (Barthel, 2025).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_2: QuizQuestion[] = [
+  {
+    prompt: "Vinden blåser mot nord på den nordlige halvkulen. Hvilken vei går ekmantransporten?",
+    options: [
+      "Mot øst",
+      "Mot vest",
+      "Mot nord",
+    ],
+    answer: 0,
+    explain: "90 grader til høyre for vinden (Barthel, 2021a).",
+  },
+  {
+    prompt: "Hvorfor er Golfstrømmen smal og rask, mens Kanaristrømmen er bred og langsom?",
+    options: [
+      "Fordi det blåser mer på vestsiden av Atlanteren",
+      "Fordi vannet er varmere i vest",
+      "Fordi corioliseffekten øker mot nord, noe som gir vestlig intensivering",
+    ],
+    answer: 2,
+    explain: "Stommel (1948) viste at det er fordi jorda er rund (Barthel, 2025).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_3: QuizQuestion[] = [
+  {
+    prompt: "Langs en vestkyst på den nordlige halvkulen blåser vinden mot sør, parallelt med land. Hva skjer?",
+    options: [
+      "Overflatevannet presses mot land, og det blir nedvelling",
+      "Overflatevannet føres ut fra land, og det blir oppvelling",
+      "Ingenting, fordi vinden blåser langs kysten",
+    ],
+    answer: 1,
+    explain: "Ekmantransporten går 90 grader til høyre for vinden, altså vestover og ut fra land (Barthel, 2021b).",
+  },
+  {
+    prompt: "Hvorfor er oppvellingsområdene så rike på fisk?",
+    options: [
+      "Vannet fra dypet har mye næringssalter, og planteplanktonet vokser godt",
+      "Vannet er varmere enn rundt",
+      "Strømmen er svakere enn rundt",
+    ],
+    answer: 0,
+    explain: "De dekker under 1 prosent av havoverflaten, men står for opptil 20 prosent av fiskefangsten i verden (Du mfl., 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_4: QuizQuestion[] = [
+  {
+    prompt: "Hva heter strømmen som frakter varmt atlanterhavsvann langs norskekysten?",
+    options: [
+      "Golfstrømmen",
+      "Labradorstrømmen",
+      "Den norske atlanterhavsstrømmen",
+    ],
+    answer: 2,
+    explain: "Golfstrømmen går langs Nord-Amerika. Navnet brukes feil om strømmen langs Norge (Barthel, 2026; Weber & Bjørndalen, 2024).",
+  },
+  {
+    prompt: "Hvorfor er Den norske kyststrømmen ferskere enn atlanterhavsvannet?",
+    options: [
+      "Fordi den får smeltevann fra Grønland",
+      "Fordi den har med seg ferskvann fra Østersjøen og de norske elvene",
+      "Fordi det regner mer nær land",
+    ],
+    answer: 1,
+    explain: "Saltholdigheten er 30–33 promille (Havforskningsinstituttet, 2026; Sælen mfl., 2025a).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_5: QuizQuestion[] = [
+  {
+    prompt: "Hva er den beste forklaringen på at Norge er så mildt?",
+    options: [
+      "Bare varmen fra havstrømmene",
+      "Samspillet mellom varme havstrømmer og vindsystemene",
+      "At sola står høyere her enn på Grønland",
+    ],
+    answer: 1,
+    explain: "Havet gir varme til lufta, og de sørvestlige vindene fører lufta inn over land (Dannevig & Harstveit, 2026; Weber & Bjørndalen, 2024).",
+  },
+  {
+    prompt: "Hvordan har temperaturen i atlanterhavsvannet i Norskehavet utviklet seg siden 1970-tallet?",
+    options: [
+      "Den har steget",
+      "Den har sunket",
+      "Den har vært uendret",
+    ],
+    answer: 0,
+    explain: "2007 var det varmeste året i Svinøy- og Gimsøysnittet, og i 2025 var temperaturen omtrent 0,3 grader over normalen (Havforskningsinstituttet, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_6: QuizQuestion[] = [
+  {
+    prompt: "Hva gjør først og fremst at overflatevannet synker i Nord-Atlanteren?",
+    options: [
+      "At det blir kraftig avkjølt om vinteren",
+      "At det fordamper mye vann om sommeren",
+      "At det kommer mye smeltevann",
+    ],
+    answer: 0,
+    explain: "Saltet fra havis betyr mest rundt Antarktis (Barthel, 2025; Sælen mfl., 2025a).",
+  },
+  {
+    prompt: "Hva mener FNs klimapanel om AMOC i dette hundreåret?",
+    options: [
+      "Den vil sannsynligvis bryte brått sammen før 2100",
+      "Den vil bli sterkere",
+      "Den vil svært sannsynlig bli svekket, men med middels sikkerhet ikke bryte brått sammen før 2100",
+    ],
+    answer: 2,
+    explain: "IPCC (2021), SPM C.3.4.",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor gir en modell med ruter på 2,5 km ofte et bedre varsel i en fjord enn en modell med ruter på 9 km?",
+    options: [
+      "Fordi modeller med små ruter ikke trenger observasjoner",
+      "Fordi små ruter beskriver fjell, daler og fjorder bedre",
+      "Fordi modeller med store ruter bare regner ut temperatur",
+    ],
+    answer: 1,
+    explain: "Hver rute har én verdi. Med 9 km ruter blir en smal fjord og fjellene rundt «glattet ut». Med 2,5 km ruter kommer terrenget bedre fram (Sivle, 2025).",
+  },
+  {
+    prompt: "Hvorfor må tidssteget gjøres kortere når rutene blir mindre?",
+    options: [
+      "Fordi en bølge eller strøm ellers kan flytte seg over mer enn én rute på ett steg, og regnestykket blir ustabilt",
+      "Fordi datamaskinen regner fortere med små ruter",
+      "Fordi små ruter bare kan brukes om natta",
+    ],
+    answer: 0,
+    explain: "Dette er CFL-kriteriet. Norkyst bruker et tidssteg på 40 sekunder med ruter på ca. 800 meter (Christensen mfl., 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor må modellen parameterisere skyer og turbulens?",
+    options: [
+      "Fordi skyer og turbulens ikke påvirker været",
+      "Fordi prosessene er for raske til å måles",
+      "Fordi prosessene er mindre enn rutene, så modellen kan ikke regne dem ut direkte",
+    ],
+    answer: 2,
+    explain: "Det modellen ikke ser i rutenettet, beskrives med forenklede formler for den samlede virkningen på ruten (ECMWF, u.å.-c).",
+  },
+  {
+    prompt: "Hva betyr det at MEPS er en konveksjonstillatende modell?",
+    options: [
+      "At modellen ikke har skyer",
+      "At rutene er så små at store byger i grove trekk kan regnes ut direkte",
+      "At modellen bare brukes om sommeren",
+    ],
+    answer: 1,
+    explain: "Med ruter på 2,5 km trengs det ikke en egen parameterisering for de store bygeskyene, men skydråper og turbulens må fortsatt parameteriseres.",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er analysen i dataassimilering?",
+    options: [
+      "Et kort varsel fra forrige modellkjøring",
+      "En liste over alle observasjonene",
+      "Den beste beskrivelsen av tilstanden nå, laget ved å justere bakgrunnen mot nye observasjoner",
+    ],
+    answer: 2,
+    explain: "Bakgrunnen er det korte varselet. Analysen er bakgrunnen justert mot observasjonene, og den er startpunktet for neste varsel (ECMWF).",
+  },
+  {
+    prompt: "Hvorfor kjører MET og ECMWF ensembler i stedet for ett varsel?",
+    options: [
+      "Fordi små feil i startverdiene vokser, så vi trenger flere mulige forløp for å se hvor sikkert varselet er",
+      "Fordi én modell ikke har nok ruter",
+      "Fordi hver kommune skal ha sitt eget varsel",
+    ],
+    answer: 0,
+    explain: "Atmosfæren er kaotisk. Spredningen mellom medlemmene viser hvor usikkert varselet er (Meteorologisk institutt, 2020).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor trenger MEPS randverdier fra ECMWF?",
+    options: [
+      "Fordi MEPS bare dekker et avgrenset område og må vite hva som kommer inn langs kanten",
+      "Fordi MEPS ikke har egne observasjoner",
+      "Fordi ECMWF har finere ruter enn MEPS",
+    ],
+    answer: 0,
+    explain: "Et lavtrykk som er på vei inn fra Atlanterhavet, må komme inn i MEPS-området et sted. Det er randverdiene fra den globale modellen som sørger for det (Eresmaa, 2024).",
+  },
+  {
+    prompt: "Hvilken modell gir varslene for Svalbard på Yr?",
+    options: [
+      "NorESM",
+      "Norkyst",
+      "AROME-Arctic",
+    ],
+    answer: 2,
+    explain: "AROME-Arctic dekker Svalbard, Nord-Norge og havområdene rundt, med ruter på 2,5 km (Meteorologisk institutt, 2017).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor trenger Norkyst data fra en værmodell?",
+    options: [
+      "Fordi havmodellen ikke har noe eget rutenett",
+      "Fordi vind og lufttrykk driver strømmene og vannstanden i havet",
+      "Fordi værmodellen regner ut saltholdigheten",
+    ],
+    answer: 1,
+    explain: "Vind og lufttrykk fra MET sin værmodell gjør at Norkyst kan regne ut strøm og stormflo (Christensen mfl., 2026).",
+  },
+  {
+    prompt: "Hva brukes Norkyst-varslene til?",
+    options: [
+      "Bare til å varsle bølgehøyde for surfere",
+      "Til å varsle nedbør på Yr",
+      "Blant annet til søk og redning, oljedrift og spredning av lakselus",
+    ],
+    answer: 2,
+    explain: "Strømvarslene sier hvor noe som flyter i sjøen, vil drive (Christensen mfl., 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_6: QuizQuestion[] = [
+  {
+    prompt: "Hva er den viktigste forskjellen på en værmodell og en klimamodell?",
+    options: [
+      "Klimamodeller bruker ikke fysiske likninger",
+      "Værmodellen regner ut været framover fra været i dag, mens klimamodellen regner ut hvordan værstatistikken endrer seg når pådrivene endres",
+      "Klimamodeller har alltid finere ruter enn værmodeller",
+    ],
+    answer: 1,
+    explain: "Begge løser de samme likningene, men de svarer på ulike spørsmål (Benestad & Gjengedal, 2024).",
+  },
+  {
+    prompt: "Hvordan kan forskerne teste en klimamodell?",
+    options: [
+      "Ved å kjøre den mot klimaet vi har målt, og sammenligne med andre modeller",
+      "Ved å vente til 2100",
+      "Ved å sammenligne med værvarselet for neste uke",
+    ],
+    answer: 0,
+    explain: "Modellene testes mot temperatur, årstider og naturlige svingninger som er målt, og mot hverandre i CMIP (Benestad & Gjengedal, 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_1: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr det at en måling er georeferert?",
+    options: [
+      "At den er tatt med et kalibrert instrument",
+      "At den er knyttet til en posisjon",
+      "At den er sammenlignet med et varsel",
+    ],
+    answer: 1,
+    explain: "Kjerneelementet krever georefererte data (Udir, u.å.-a). I hav, luft og is noterer du også tidspunktet.",
+  },
+  {
+    prompt: "Hvilket instrument passer best for å måle saltholdighet nedover i en fjord?",
+    options: [
+      "Radiosonde",
+      "Snøprofil",
+      "CTD",
+    ],
+    answer: 2,
+    explain: "CTD måler konduktivitet og temperatur mot dyp (NOAA, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er påbudt i en fritidsbåt som er kortere enn åtte meter, når båten er i fart?",
+    options: [
+      "At alle har på seg flyteutstyr når de er utendørs i båten og båten er i fart",
+      "At båten har ekkolodd",
+      "At føreren har med seg kart",
+    ],
+    answer: 0,
+    explain: "Småbåtloven (1998) § 23 a.",
+  },
+  {
+    prompt: "Hva bør du ha med deg når du skal ut på isen?",
+    options: [
+      "Bare mobiltelefon",
+      "Snøspade og søkestang",
+      "Isstav, ispigger og redningsvest, og kasteline når dere er flere",
+    ],
+    answer: 2,
+    explain: "Varsom (u.å.-c).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_3: QuizQuestion[] = [
+  {
+    prompt: "Hvordan finner man vinden med en radiosonde?",
+    options: [
+      "Sonden har en vindmåler på toppen",
+      "Ut fra lufttrykket ved bakken",
+      "Ut fra hvordan sonden driver sidelengs mens den stiger",
+    ],
+    answer: 2,
+    explain: "Store norske leksikon (u.å.-a).",
+  },
+  {
+    prompt: "Hvorfor skal lufttemperaturen måles i skygge, 1,25–2 meter over bakken?",
+    options: [
+      "Fordi det er mest praktisk",
+      "Fordi målinger fra ulike steder da kan sammenlignes",
+      "Fordi termometeret ellers fryser",
+    ],
+    answer: 1,
+    explain: "WMO har faste regler for målingene (WMO, 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_4: QuizQuestion[] = [
+  {
+    prompt: "Hvordan får man saltholdigheten fra en CTD-måling?",
+    options: [
+      "CTD-en har en egen saltmåler",
+      "Den regnes ut fra ledningsevnen og temperaturen",
+      "Den leses av på vannprøvene i laboratoriet hver gang",
+    ],
+    answer: 1,
+    explain: "Store norske leksikon (u.å.-d) og WHOI (u.å.).",
+  },
+  {
+    prompt: "Hva gjør en Argo-bøye mesteparten av tiden?",
+    options: [
+      "Den driver med strømmen på ca. 1000 meters dyp",
+      "Den ligger i overflaten og måler bølger",
+      "Den står fast på havbunnen",
+    ],
+    answer: 0,
+    explain: "Argo (u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor stort område gjelder faregraden i snøskredvarselet?",
+    options: [
+      "Det hengen du står i",
+      "Et helt fylke",
+      "Minst 100 kvadratkilometer",
+    ],
+    answer: 2,
+    explain: "Varsom (u.å.-b).",
+  },
+  {
+    prompt: "Hvor skal du grave en snøprofil?",
+    options: [
+      "På et skredtrygt sted med jevnt snødekke som er representativt for området",
+      "Midt i den bratteste hengen",
+      "Der snøen er tynnest",
+    ],
+    answer: 0,
+    explain: "NVE (2022).",
+  },
+];
+
+export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor bør du gjenta målingene?",
+    options: [
+      "For å se hvor mye de varierer, og for å kunne regne ut et gjennomsnitt",
+      "For å få flere rader i feltboka",
+      "Fordi den første målingen alltid er feil",
+    ],
+    answer: 0,
+    explain: "Spredningen viser hvor sikker du kan være.",
+  },
+  {
+    prompt: "Hvordan viser du vanligvis en CTD-profil?",
+    options: [
+      "Som et kakediagram",
+      "Med dypet på den loddrette aksen og den målte verdien på den vannrette",
+      "Som en tabell uten enheter",
+    ],
+    answer: 1,
+    explain: "Da ser du lagdelingen direkte.",
   },
 ];

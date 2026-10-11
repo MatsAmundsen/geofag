@@ -60,21 +60,21 @@ export function CtdProfileModel() {
     layerName = "Brakkvannslinse (Overflatesjikt)";
     layerDesc = "Lav saltholdighet på grunn av snøsmelting og elvetilførsel fra innlandet.";
   } else if (depth > 12 && depth <= 60 && isSummer) {
-    layerName = "Sprangsjikt (Termoklin, Haloklin & Pyknoklin)";
+    layerName = "Sprangsjikt (i saltholdighet, temperatur og tetthet)";
     layerDesc = "Dramatisk økning i saltholdighet og tetthet samt temperaturfall over få meter.";
   } else if (depth <= 50 && !isSummer) {
     layerName = "Vinterblandet grensesjikt";
     layerDesc = "Konvektiv vinteravkjøling og vindblanding har homogenisert det øvre laget.";
   } else {
     layerName = "Atlantisk dypvann";
-    layerDesc = "Tungt, stabilt og næringsrikt dypvann med høy saltholdighet (~34,8–35,0 ‰).";
+    layerDesc = "Tungt, stabilt og næringsrikt dypvann med høy saltholdighet (for eksempel ca. 34,9 ‰ i Norskehavet).";
   }
 
   return (
     <ModelFrame
       kicker="Interaktiv oseanografisk sonde"
       title="CTD-profilutforsker: Fjordens vertikale lagdeling"
-      lead="CTD (Conductivity, Temperature, Depth) er oseanografens viktigste instrument. Dra dybdesonden ned gjennom fjordens vannsøyle for å se hvordan ferskvannstilførsel og årstider skaper skarpe halokliner, termokliner og pyknokliner."
+      lead="CTD (konduktivitet, temperatur og dyp) måler ledningsevne og temperatur nedover i vannet. Saltholdigheten regnes ut fra dem. Dra sonden ned gjennom fjordens vannsøyle for å se hvordan ferskvannstilførsel og årstider skaper sprangsjikt i saltholdighet, temperatur og tetthet."
       toolbar={
         <div className="flex items-center gap-2">
           <Button
