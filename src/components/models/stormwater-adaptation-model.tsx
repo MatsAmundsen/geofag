@@ -297,9 +297,13 @@ export function StormwaterAdaptationModel() {
                       className="text-[11px] h-7 px-1.5 text-amber-300"
                       onClick={() => applyRainScenario("2050extreme")}
                     >
-                      2050 (+40 %)
+                      100-år + 40 % klimapåslag
                     </Button>
                   </div>
+                  <p className="mt-1.5 text-[10px] text-muted-foreground">
+                    Klimapåslaget på 40 % er Norsk klimaservicesenters anbefaling for korte, kraftige
+                    regnskyll fram mot slutten av århundret (Dyrrdal &amp; Førland, 2019). Det er ikke en prognose.
+                  </p>
                 </div>
 
                 {/* Surface Cover Distribution */}
@@ -541,7 +545,7 @@ export function StormwaterAdaptationModel() {
                       {pipeInflowLs} / {PIPE_CAPACITY_LS} l/s
                     </p>
                     <span className="text-[10px] text-muted-foreground">
-                      {pipeOverloadLs > 0 ? "Rørene er fulle!" : "Tilstrekkelig kapasitet"}
+                      {pipeOverloadLs > 0 ? "Rørene er fulle" : "Tilstrekkelig kapasitet"}
                     </span>
                   </div>
 
@@ -552,7 +556,7 @@ export function StormwaterAdaptationModel() {
                     </p>
                     <span className="text-[10px] text-muted-foreground">
                       {retentionBasinM3 > 0 && bufferAbsorbedM3 >= retentionBasinM3
-                        ? "Magasin er fullt!"
+                        ? "Magasinet er fullt"
                         : "Demper flomtoppen"}
                     </span>
                   </div>
@@ -567,7 +571,7 @@ export function StormwaterAdaptationModel() {
                       {dangerousFloodingLs} l/s
                     </p>
                     <span className="text-[10px] text-muted-foreground">
-                      {dangerousFloodingLs > 0 ? "Fyller kjellere!" : "0 skader"}
+                      {dangerousFloodingLs > 0 ? "Fyller kjellere" : "0 skader"}
                     </span>
                   </div>
                 </div>
@@ -796,7 +800,7 @@ export function StormwaterAdaptationModel() {
                   <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
                     <span>Nåtid (2025)</span>
                     <span>2050 (Kommuneplan)</span>
-                    <span>2100 (TEK17 100-års)</span>
+                    <span>2100</span>
                   </div>
                 </div>
 
@@ -958,7 +962,7 @@ export function StormwaterAdaptationModel() {
                               fontSize="9"
                             >
                               {freeboardMarginM < 0
-                                ? "Krav i TEK17 ikke oppfylt — tiltak kreves!"
+                                ? "Krav i TEK17 er ikke oppfylt, og tiltak kreves"
                                 : "Bygget tilfredsstiller TEK17 sikkerhetskrav."}
                             </text>
                           </g>

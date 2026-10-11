@@ -194,7 +194,7 @@ export const GF2_THEMES = [
     image: "/images/fig-paleo.jpg",
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
-      "Slik leser vi fortiden: CO₂-målinger fra Mauna Loa, iskjerner, oksygenisotoper og havis fra satellitt. Jordbanen står i neste kapittel.",
+      "Slik leser vi fortiden: iskjerner, oksygenisotoper, havbunn, pollen og årringer. Jordbanen står i neste kapittel.",
     status: "klar" as const,
   },
   {

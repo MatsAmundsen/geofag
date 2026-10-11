@@ -1,6 +1,17 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
+  AdaptationExamFrameworkDiagram,
+  ImpactLevelsDiagram,
+  EccentricityDetailDiagram,
+  FennoscandianIceSheetDiagram,
+  GlacialLandformsDiagram,
+  IceAgeFactorsDiagram,
+  Insolation65NCurveDiagram,
+  KvartarTimeSeriesDiagram,
+  MilankovitchCyclesDiagram,
+  ObliquityDetailDiagram,
+  PrecessionDetailDiagram,
   AssimilationDiagram,
   EnsembleRibbonDiagram,
   BoundaryOverviewDiagram,
@@ -63,7 +74,12 @@ import {
   EarthRadiationBudgetDiagram,
   BjerknesLoopDiagram,
   EnsoComparisonDiagram,
+  AbruptClimateChangeDiagram,
+  DeglaciationFeedbackDiagram,
+  IceCoreAnatomyDiagram,
+  OxygenIsotopeDiagram,
 } from "@/components/diagrams";
+import { PaleoClimateIsotopeModel } from "@/components/models/paleo-climate-model";
 import {
   MetamorphicFaciesDiagram,
   SilicateStructureDiagram,
@@ -145,6 +161,7 @@ import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeA
 import { JetBlockingDiagram, JetFormsDiagram, JetProfileDiagram, JetSeasonDiagram, JetStreakDiagram, ThermalWindDiagram } from "@/components/diagrams/jet";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
 import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
+import { AmocTippingModel } from "@/components/models/amoc-tipping-model";
 import { KatabaticWindDiagram } from "@/components/diagrams/pressure";
 import { FoehnAdiabaticDiagram, TemperatureInversionDiagram } from "@/components/diagrams/weather";
 import { CoriolisModel } from "@/components/models/coriolis-model";
@@ -165,7 +182,8 @@ import {
   OtecRankineCycleDiagram,
   WindPowerTradeoffDiagram,
 } from "@/components/diagrams/energy";
-import { PhotoFigure } from "@/components/photo-figure";
+import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
+import { StormwaterAdaptationModel } from "@/components/models/stormwater-adaptation-model";
 import { Sammendrag } from "@/components/sammendrag";
 import {
   ElvaFraKildeTilMunning,
@@ -344,6 +362,106 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
   PolarFrontNorwayDiagram: () => <PolarFrontNorwayDiagram />,
   WindSystemModel: () => <WindSystemModel />,
+  ImpactLevels: () => <ImpactLevelsDiagram />,
+  AdaptationExamFramework: () => <AdaptationExamFrameworkDiagram />,
+  StormwaterAdaptation: () => <StormwaterAdaptationModel />,
+  TilpasningOvervannFoto: () => (
+    <PhotoFigure
+      src="/images/fig-ekstremnedbor.jpg"
+      alt="Oversvømt bygate der overvann flommer over fortau og inn mot kjellervinduer"
+      heading="Når regnet ikke finner veien ned"
+      caption="En bygate under et kraftig regnskyll. Sluk og rør under bakken er bygd for regnet slik det var før. Når regnet blir kraftigere enn rørene tåler, renner vannet på overflaten og inn i kjellere."
+      marks={[
+        { x: 18, y: 35, n: "1", text: "Tett asfalt og tak", tone: "low" },
+        { x: 52, y: 68, n: "2", text: "Fulle sluk og rør", tone: "warm" },
+        { x: 82, y: 78, n: "3", text: "Vann i kjelleren", tone: "warm" },
+        { x: 35, y: 88, n: "4", text: "Flomvei i gata", tone: "teal" },
+      ]}
+      points={[
+        { n: "1", label: "Tette flater: Det meste av regnet renner av på overflaten." },
+        { n: "2", label: "Når rørene er fulle, samler vannet seg på overflaten." },
+        { n: "3", label: "Vannet renner mot det laveste punktet og inn i kjellere." },
+        { n: "4", label: "En planlagt flomvei leder vannet trygt bort på overflaten." },
+      ]}
+    />
+  ),
+  TilpasningElvesikringFoto: () => (
+    <PhotoFigure
+      src="/images/fig-erosjonssikring.jpg"
+      alt="Elveløp der elvebredden er sikret med grov sprengstein (plastring) og bevart vegetasjon"
+      heading="Elvesikring med grå og naturbaserte løsninger"
+      caption="Et elveavsnitt sikret mot erosjon og flom. Steinsikring beskytter de mest utsatte delene, mens vegetasjon og flomslette gir elva plass og bremser vannet."
+      marks={[
+        { x: 25, y: 40, n: "1", text: "Steinsikring (grå)", tone: "teal" },
+        { x: 70, y: 30, n: "2", text: "Kantvegetasjon og flomslette", tone: "cold" },
+        { x: 45, y: 75, n: "3", text: "Flomvoll", tone: "warm" },
+      ]}
+      points={[
+        { n: "1", label: "Grov stein hindrer at elva graver ut bredden i yttersvingene." },
+        { n: "2", label: "Røttene binder jorda, og flomsletta tar imot vann under flom." },
+        { n: "3", label: "Flomvollen skjermer bebyggelsen, men bare opp til den flommen den er bygd for." },
+      ]}
+    />
+  ),
+  EccentricityDetail: () => <EccentricityDetailDiagram />,
+  FennoscandianIceSheet: () => <FennoscandianIceSheetDiagram />,
+  GlacialLandforms: () => <GlacialLandformsDiagram />,
+  IceAgeFactors: () => <IceAgeFactorsDiagram />,
+  Insolation65NCurve: () => <Insolation65NCurveDiagram />,
+  KvartarTimeSeries: () => (
+    <KvartarTimeSeriesDiagram caption="De siste 800 000 årene viser iskjernen åtte store sykluser på omtrent 100 000 år, med langsom nedkjøling og rask avsmelting (Lüthi mfl., 2008). Før ca. én million år siden fulgte istidene mest 41 000-årsrytmen til helningen (Lisiecki og Raymo, 2005). Hvordan kurven er laget fra iskjerner, står på siden om paleoklima." />
+  ),
+  MilankovitchCycles: () => <MilankovitchCyclesDiagram />,
+  ObliquityDetail: () => <ObliquityDetailDiagram />,
+  PrecessionDetail: () => <PrecessionDetailDiagram />,
+  MilankovitchInnstraling: () => (
+    <PhotoFigure
+      src="/images/fig-innstraling.jpg"
+      alt="Jorda belyst av sola, med tydelig forskjell mellom belyste og skyggesider"
+      heading="Innstrålingen treffer skjevt"
+      caption="Sola varmer ekvator mer enn polene. Milankovitch-syklusene flytter denne skjevheten gjennom årtusener: mer eller mindre sommersol på 65°N, nesten uten å endre det samlede sollyset."
+      marks={[
+        { x: 8, y: 18, n: "1", text: "Ekvator får mest", tone: "warm" },
+        { x: 70, y: 12, n: "2", text: "65°N om sommeren", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Den globale innstrålingen over året endres lite av jordbanen." },
+        { n: "2", label: "Istidene styres av om sommeren på 65°N kan smelte isen." },
+      ]}
+    />
+  ),
+  MilankovitchAlbedo: () => (
+    <PhotoFigure
+      src="/images/fig-albedo.jpg"
+      alt="Is og snø mot mørkt fjell og vann, med tydelig kontrast i lyshet"
+      heading="Is kaster lyset tilbake"
+      caption="Høy albedo over snø og is, lav over bart fjell og åpent hav. Når innlandsisen vokser, tar jorda opp mindre solenergi. Når den smelter, tar jorda opp mer. Jordbanen setter i gang endringen, og albedoen forsterker den."
+      marks={[
+        { x: 10, y: 20, n: "1", text: "Høy albedo", tone: "cold" },
+        { x: 62, y: 70, n: "2", text: "Lav albedo", tone: "warm" },
+      ]}
+      points={[
+        { n: "1", label: "Snø og is reflekterer. Vokser isen, taper jorda energi." },
+        { n: "2", label: "Mørkt land og hav tar opp energi. Smelter isen, går det fortere." },
+      ]}
+    />
+  ),
+  MilankovitchFjord: () => (
+    <PhotoFigure
+      src="/images/gf1-bergarter.jpg"
+      alt="Lagdelt berg i forgrunnen og en fjord med bratte dalsider og bre innerst"
+      heading="Fjord er U-dal under vann"
+      caption="En fjord med bratte sider og en bre innerst. Fjorden er en U-dal som isen gravde ut under istidene, og som nå ligger under havnivå."
+      marks={[
+        { x: 8, y: 28, n: "1", text: "Bratt dalside", tone: "cold" },
+        { x: 55, y: 62, n: "2", text: "Dyp dal og fjord", tone: "teal" },
+      ]}
+      points={[
+        { n: "1", label: "Isen gravde i hele tverrsnittet og ga bratte dalsider." },
+        { n: "2", label: "U-form og fjord er isens tverrsnitt, ikke elvas V." },
+      ]}
+    />
+  ),
   VindBelterFoto: () => (
     <PhotoFigure
       src="/images/fig-belter-globus.jpg"
@@ -538,10 +656,46 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     KlimaDefinisjon: () => (
     <Callout title="Hva betyr «klima»?">
       <p>
-        Klimaendring er et skifte i det langvarige gjennomsnittet av været (WMO, u.å.). En enkelt uke
-        er vær. Mønsteret over lang tid er klima.
+        Klima er gjennomsnittet og variasjonsmønsteret i været over lang tid, vanligvis 30 år eller
+        mer. Klimaet beskriver hva som er typisk, og hva som er ekstremt, på et sted (WMO, u.å.).
       </p>
     </Callout>
+  ),
+    KlimasystemFoto: () => (
+    <PhotoFigure
+      src="/images/fig-klimasystem.jpg"
+      alt="Jorda fra verdensrommet med tynn atmosfære, hav, skyer og innlandsis"
+      heading="Ett system, flere etasjer"
+      caption="Det du ser her, er klimasystemet: luft, hav, is og land i samme bilde. Ingenting av dette virker alene."
+      marks={[
+        { x: 4, y: 20, n: "1", text: "Atmosfære", tone: "teal" },
+        { x: 8, y: 52, n: "2", text: "Hav", tone: "cold" },
+        { x: 58, y: 48, n: "3", text: "Is", tone: "fg" },
+      ]}
+      points={[
+        { n: "1", label: "Tynn og rask. Flytter fukt og varme på dager." },
+        { n: "2", label: "Tregt varmelager. Demper og forskyver klimaet." },
+        { n: "3", label: "Hvit flate. Smelter den, tar planeten opp mer sol." },
+      ]}
+    />
+  ),
+    StralingFotoPar: () => (
+    <PhotoPair
+      heading="Samme jord, to ledd i energien"
+      caption="Venstre: Sola treffer mest ved ekvator, slik du har sett i vindsystemet. Høyre: Den tynne, glødende atmosfæren er teppet som bremser varmen på vei ut."
+      left={{
+        src: "/images/fig-innstraling.jpg",
+        alt: "Jorda belyst sterkest ved ekvator",
+        title: "Inn: sola treffer ujevnt",
+        marks: [{ x: 6, y: 14, n: "1", text: "Mest inn ved ekvator", tone: "warm" }],
+      }}
+      right={{
+        src: "/images/fig-drivhus.jpg",
+        alt: "Jordas atmosfære gløder langs horisonten i skumring",
+        title: "Ut: teppet bremser",
+        marks: [{ x: 6, y: 18, n: "2", text: "Atmosfæren holder igjen", tone: "teal" }],
+      }}
+    />
   ),
     StralingDiagram: () => <EarthRadiationBudgetDiagram />,
     DrivhusForklaring: () => (
@@ -566,31 +720,51 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <PhotoFigure
       src="/images/fig-albedo.jpg"
       alt="Arktisk iskant der hvit is møter mørkt åpent hav"
-      heading="Isen er et speil"
-      caption="Tap av is ved polene gjør flaten mindre reflekterende. Det er en tilbakekobling, ikke det første pådrivet (NASA, 2009)."
+      heading="To flater, to utfall"
+      caption="Samme sol. Hvit is sender mye tilbake. Mørkt vann tar det opp. Når iskanten trekker seg tilbake, vinner den mørke flaten. Det er en tilbakekobling, ikke det første pådrivet (NASA, 2009)."
       marks={[
         { x: 8, y: 16, n: "1", text: "Is kaster tilbake", tone: "fg" },
         { x: 68, y: 38, n: "2", text: "Hav tar opp", tone: "cold", align: "right" },
       ]}
       points={[
-        { n: "1", label: "Høy albedo. Mye sollys kastes tilbake." },
-        { n: "2", label: "Mørkere flate tar opp mer av sollyset." },
+        { n: "1", label: "Høy albedo. Mye sollys reflekteres." },
+        { n: "2", label: "Lav albedo. Energien blir i havet og lufta over." },
+      ]}
+    />
+  ),
+    HavMinneFoto: () => (
+    <PhotoFigure
+      src="/images/fig-amoc.jpg"
+      alt="Nord-Atlanteren med varm overflate nordover og kaldt dyp"
+      heading="Havet som klimaminne"
+      caption="Varmt nordover i lyset, kaldt sørover i mørket. Dette er tregere enn været, og derfor en del av klimaet, ikke av ukas prognose."
+      arrows={[
+        { d: "M 22 22 L 58 16", tone: "warm", width: 1.3 },
+        { d: "M 70 42 L 28 48", tone: "cold", width: 1.3 },
+      ]}
+      marks={[
+        { x: 8, y: 12, n: "1", text: "Varmt, tregt lager", tone: "warm" },
+        { x: 8, y: 50, n: "2", text: "Kaldt dyp sørover", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Overflaten flytter og lagrer varme mot nord." },
+        { n: "2", label: "Dypet er returen. Ferskvann kan gjøre det vanskeligere for vannet å synke." },
       ]}
     />
   ),
     NorgeKlimaFoto: () => (
     <PhotoFigure
       src="/images/fig-norge-labrador.jpg"
-      alt="Norsk kyst mot et kaldere landskap på samme type bredde"
-      heading="Mildere enn beliggenheten"
-      caption="Fastlands-Norge er mildere enn den nordlige beliggenheten skulle tilsi, fordi havstrømmer og vind transporterer varme hit (SNL, u.å.)."
+      alt="Norsk kyst mot isete Labrador-landskap som kontrast"
+      heading="Samme bredde, ulikt klima"
+      caption="Norge er ikke mildt fordi vi ligger lenger sør. Vi er milde fordi luft og hav flytter varme hit (SNL, u.å.). Endres det samspillet, endres det norske klimaet."
       marks={[
         { x: 6, y: 16, n: "1", text: "Norsk kyst", tone: "teal" },
-        { x: 58, y: 16, n: "2", text: "Hav og vind", tone: "cold" },
+        { x: 58, y: 16, n: "2", text: "Labrador, samme bredde", tone: "cold" },
       ]}
       points={[
-        { n: "1", label: "Kysten fra Oslofjorden til Troms har milde vintre." },
-        { n: "2", label: "Varmen kommer med havstrømmer og vind, ikke bare med solhøyden." },
+        { n: "1", label: "Vestavind og atlantisk varme. Grønt og åpent hav." },
+        { n: "2", label: "Samme breddegrad, men kald luft og is. Klima er transport, ikke bare solhøyde." },
       ]}
     />
   ),
@@ -703,6 +877,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
 
 
 
+    AmocTipping: () => <AmocTippingModel />,
     AmocForklaring: () => (
     <Callout title="Hva betyr «den atlantiske omveltningen»?">
       <p>
@@ -747,22 +922,49 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «paleoklima»?">
       <p>
         Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
-        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i
-        istidssyklusene det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
+        mars 1958. Globalt årsmiddel i 2025 var 425,6 ppm. Iskjernene viser at CO₂ de siste 800 000
+        årene lå mellom 172 og 300 ppm (NOAA GML, 2026; Lüthi mfl., 2008).
       </p>
     </Callout>
   ),
     QuizPaleo: () => (
     <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  KvartarTimeSeriesPaleo: () => (
+    <KvartarTimeSeriesDiagram caption="Iskjernen EPICA Dome C i Antarktis viser temperatur og CO₂ for de siste 800 000 årene, med åtte istidssykluser. Syklusene har form som en sag, med langsom nedkjøling og rask avsmelting. CO₂ lå hele tiden mellom 172 og 300 ppm. I 2025 var det globale snittet 425,6 ppm (Lüthi mfl., 2008; Mukhin mfl., 2019; NOAA GML, 2026)." />
+  ),
+  IskjerneFoto: () => (
+    <PhotoFigure
+      src="/images/fig-iskjerne.jpg"
+      alt="Sylinder av blå is med tynne årlige lag og innestengte luftbobler"
+      heading="Iskjernen: luftboblene er prøver av fortidens luft"
+      caption="En borekjerne fra en innlandsis. Iskjernen gir to slags data. Isotopene i selve isen er en proxy for temperaturen. Luftboblene er prøver av lufta slik den var da de ble stengt inne (Davies, 2020)."
+      marks={[
+        { x: 10, y: 18, n: "1", text: "Årlige snølag", tone: "cold" },
+        { x: 58, y: 46, n: "2", text: "Innestengte luftbobler", tone: "teal" },
+        { x: 82, y: 72, n: "3", text: "Gassalder (Δage)", tone: "warm" },
+        { x: 25, y: 82, n: "4", text: "Askelag (tefra)", tone: "low" },
+      ]}
+      points={[
+        { n: "1", label: "Årlige lag: Forskjellene mellom årstidene gir lag i snøen. Lenger ned dateres isen også med kjemi, askelag og elektrisk ledningsevne. På Grønland er lagene talt sammenhengende for de siste 60 000 årene (Davies, 2020; Svensson mfl., 2008)." },
+        { n: "2", label: "Luftbobler: prøver av fortidens luft. CO₂, metan og lystgass måles direkte i boblene (Davies, 2020)." },
+        { n: "3", label: "Gassalder (Δage): Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned. Derfor er lufta yngre enn isen rundt. Forskjellen beregnes med modeller (Davies, 2020)." },
+        { n: "4", label: "Askelag (tefra): Et askelag er avsatt samtidig over et stort område og er en tidshorisont. Vedde-asken finnes i iskjerner fra Grønland, i innsjøer i Europa og på havbunnen i Nord-Atlanteren (Mangerud, 2025c)." },
+      ]}
+    />
+  ),
+  IceCoreAnatomy: () => <IceCoreAnatomyDiagram />,
+  OxygenIsotope: () => <OxygenIsotopeDiagram />,
+  PaleoClimateIsotope: () => <PaleoClimateIsotopeModel />,
+  AbruptClimateChange: () => <AbruptClimateChangeDiagram />,
+  DeglaciationFeedback: () => <DeglaciationFeedbackDiagram />,
 
 
     IstidForklaring: () => (
     <Callout title="Hva betyr «istid»?">
       <p>
         Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
-        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Store norske leksikon,
-        u.å.-a).
+        kontinentene og grunne havområder. Mellom dem ligger mellomistider (Mangerud, 2026).
       </p>
     </Callout>
   ),
@@ -789,9 +991,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     TilpasningForklaring: () => (
     <Callout title="Hva betyr «klimatilpasning»?">
       <p>
-        Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak
-        som hindrer eller reduserer skade, eller som utnytter mulighetene. Å redusere
-        klimaendringene er et annet svar (Miljødirektoratet, u.å.; Udir, u.å.-b).
+        Klimatilpasning er å innrette seg etter det klimaet vi har og det klimaet vi venter, slik at
+        skadene blir mindre, eller slik at vi kan utnytte nye muligheter (IPCC, 2022). Å redusere
+        utslippene er et annet svar på klimaendringene.
       </p>
     </Callout>
   ),
