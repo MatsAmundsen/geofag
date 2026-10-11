@@ -2,7 +2,7 @@
 >
 > Elevene skal kunne
 >
-> - gjøre rede for vekselvirkninger mellom de ulike jordsystemene, og hvordan disse kan påvirke geosfæren og hydrosfæren
+> - gjøre rede for vekselvirkninger mellom de ulike jordsystemene og hvordan disse kan påvirke geosfæren og hydrosfæren
 >
 > (Udir, u.å.-b)
 >
@@ -102,7 +102,7 @@ På lang sikt går karbon i en langsom sløyfe mellom atmosfære, hydrosfære og
 
 Karbon bruker 100–200 millioner år på veien gjennom den trege sløyfen, mellom berg, jord, hav og atmosfære (NASA, 2011). Det raske kretsløpet går gjennom livet. Planter og plankton tar opp CO₂, og karbonet kommer tilbake når de brytes ned, blant annet ved slutten av vekstsesongen (NASA, 2011).
 
-Den trege sløyfen starter med regn. Karbonsyre løser berg og frisetter ioner: kalsium, magnesium, kalium og natrium. Elvene fører dem til havet. Der dannes kalsiumkarbonat, i dagens hav ofte av organismer med skall, og karbonet lagres i kalkstein i millioner av år (NASA, 2011). Når havbunn med kalkstein synker ned i en subduksjonssone, blir karbonatene varmet opp og delvis løst i vann fra platen, og CO₂ frigjøres (Kelemen & Manning, 2015). Gassen kommer tilbake til atmosfæren gjennom vulkaner. Utbruddene dekker samtidig landet med ferskt silikatberg som regnet kan løse (NASA, 2011).
+Den trege sløyfen starter med regn. Karbonsyre løser berg og frisetter ioner: kalsium, magnesium, kalium og natrium. Elvene fører dem til havet. Der dannes kalsiumkarbonat, i dagens hav ofte av organismer med skall, og karbonet lagres i kalkstein i millioner av år (NASA, 2011). Når havbunn med kalkstein synker ned i en subduksjonssone, blir karbonatene varmet opp og delvis løst i vann fra platen, og CO₂ frigjøres (Kelemen & Manning, 2015). Gassen kommer tilbake til atmosfæren gjennom vulkaner (Vestgarden & Aarnes, 2026). Utbruddene dekker samtidig landet med ferskt silikatberg som regnet kan løse (NASA, 2011).
 
 ```widget
 CarbonCycleDiagram
@@ -116,7 +116,7 @@ Stiger CO₂ i atmosfæren, for eksempel fordi vulkaner slipper ut mer, stiger t
 
 #### 2. Mer regn løser mer berg
 
-Varmere luft gir mer regn. Mer karbonsyre løser mer berg, og elvene fører flere ioner til havet. Forvitringen går også raskere når det er varmt, fordi kjemiske reaksjoner går fortere ved høyere temperatur (Kump mfl., 2000).
+Varmere luft gir mer regn. Mer karbonsyre løser mer berg, og elvene fører flere ioner til havet. Forvitringen går også raskere når det er varmt, fordi kjemiske reaksjoner går fortere ved høyere temperatur (Kump mfl., 2000; Spjeldnæs, 2025).
 
 #### 3. Mer karbon lagres i kalkstein
 

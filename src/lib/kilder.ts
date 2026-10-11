@@ -17,6 +17,13 @@ export const KILDER = {
       href: "https://snl.no/Norges_geologi",
     },
     {
+      prefix:
+        "Canadell, J. G., Monteiro, P. M. S., Costa, M. H., mfl. (2021). Global carbon and other biogeochemical cycles and feedbacks. I V. Masson-Delmotte mfl. (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 673–816). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.007",
+    },
+    {
       prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
       italic: "The ICS International Chronostratigraphic Chart",
       suffix: " (v2026/06). International Commission on Stratigraphy.",
@@ -101,10 +108,22 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/om-losmasser",
     },
     {
+      prefix: "Spjeldnæs, N. (2025, 5. september). ",
+      italic: "Forvitring",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/forvitring",
+    },
+    {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",
       italic: "Volcanoes can affect climate",
       suffix: ".",
       href: "https://www.usgs.gov/programs/VHP/volcanoes-can-affect-climate",
+    },
+    {
+      prefix: "Vestgarden, L. S., & Aarnes, H. (2026, 27. mai). ",
+      italic: "Karbonkretsløpet",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/karbonkretsløpet",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
