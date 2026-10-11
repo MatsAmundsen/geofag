@@ -1062,7 +1062,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte
         svært langsomt, over tusenvis av år. Det er omtrent som en båt som flyter. Legger du tung last i båten, synker den
         dypere. Tar du lasten ut, flyter den høyere igjen. Mer om litosfæren og astenosfæren står i
-        kapittelet{" "}
+        kapitlet{" "}
         <Link to="/geofag-1/platetektonikk" className="font-medium text-primary underline underline-offset-2">
           Platetektonikk
         </Link>

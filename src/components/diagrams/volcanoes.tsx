@@ -550,7 +550,7 @@ export function VolcanicHazardsDiagram() {
   return (
     <FigureFrame
       heading="Fire vulkanske farer"
-      caption="Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapittelet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapittelet."
+      caption="Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapitlet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapitlet."
     >
       <div data-figure="farer" className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {HAZARDS.map((hazard) => (
@@ -907,11 +907,11 @@ export function JanMayenDiagram() {
             <path d="M140 88 H220 V104 H140 Z" fill="#c46a3a" />
             <path d="M150 62 L180 40 L210 62 L196 70 L164 70 Z" fill="#e8eef2" />
             <path d="M168 168 Q210 150 250 168" fill="none" stroke="#e0894a" strokeWidth="4" />
-            <L x="180" y="28" anchor="middle" size={12} weight={700}>2272 m o.h.</L>
+            <L x="180" y="28" anchor="middle" size={12} weight={700}>2272 moh.</L>
             <L x="300" y="150" size={11} fill={C.warm}>Lava til havs</L>
           </svg>
           <ul className="mt-3 space-y-1.5 text-sm leading-relaxed">
-            <li>Norges eneste aktive vulkan over havet. Isdekket stratovulkan, 2272 m o.h.</li>
+            <li>Norges eneste aktive vulkan over havet. Isdekket stratovulkan, 2272 moh.</li>
             <li>Utbruddene veksler mellom lavastrømmer og tefra.</li>
             <li>Dekket av isbreer, blant annet Weyprechtbreen og Kronprins Olavs bre.</li>
             <li>Det siste utbruddet var i 1985. De mest kjente utbruddene var høsten 1970 og januar 1985. Basaltisk lava rant ut i havet. Utbruddet i 1970 la til 4 km² land.</li>

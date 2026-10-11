@@ -135,7 +135,7 @@ SjekkNorgesGeologi4
 
 Etter Oslo-riften ble skorpa vest for Norge strukket flere ganger, blant annet i perm–trias og i sen jura og kritt. Da sank store bassenger ned på det som i dag er kontinentalsokkelen, og de ble fylt med sedimenter. I noen av disse lagene ble det senere dannet olje og gass (Bryhni & Fossen, 2024). Du kan lese mer om dette i kapitlet [Geologiske ressurser](/geofag-1/geologiske-ressurser).
 
-For ca. 55 millioner år siden sprakk kontinentet helt opp mellom Grønland og Norge, og Norskehavet begynte å åpne seg (Bryhni & Fossen, 2024). Det skjedde med mye vulkanisme. Siden da har Grønland og Norge glidd fra hverandre langs den midtatlantiske ryggen.
+For ca. 55 millioner år siden sprakk kontinentet helt opp mellom Grønland og Norge, og Norskehavet begynte å åpne seg (Bryhni & Fossen, 2024). Det skjedde med mye vulkanisme. Siden da har Grønland og Norge glidd fra hverandre langs Den midtatlantiske ryggen.
 
 ```widget
 Norskehavet
@@ -175,7 +175,7 @@ Under marin grense ble det avsatt _marin leire_ på havbunnen. Da landet steg, k
 
 Landet hever seg fortsatt. Hevingen er størst der isen var tykkest. I Bottenviken hever landet seg opptil ca. 1 cm i året (Kartverket, 2021). I Norge varierer hevingen fra ca. 7 mm i året i noen østlige områder til nesten null på Sørvestlandet (Kartverket, 2021). I Oslo hever landet seg ca. 5 mm i året (Kartverket, 2014). Måler vi i forhold til havet, blir tallet 1–2 mm mindre i året, fordi havnivået også stiger (Kartverket, u.å.).
 
-Landhevingen bidrar også til spenninger i jordskorpa. Sammen med spenninger fra spredningen langs den midtatlantiske ryggen kan den forklare en del av jordskjelvene i Norge. Et av de største kjente jordskjelvene i Norge var ved Lurøy i 1819, med magnitude ca. 5,8 (NORSAR, u.å.). Du kan lese mer om dette i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv).
+Landhevingen bidrar også til spenninger i jordskorpa. Sammen med spenninger fra spredningen langs Den midtatlantiske ryggen kan den forklare en del av jordskjelvene i Norge. Et av de største kjente jordskjelvene i Norge var ved Lurøy i 1819, med magnitude ca. 5,8 (NORSAR, u.å.). Du kan lese mer om dette i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv).
 
 ```widget
 SjekkNorgesGeologi6

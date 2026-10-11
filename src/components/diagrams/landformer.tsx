@@ -32,12 +32,12 @@ export function GlacialLandformsDiagram() {
           <path d="M 260 130 C 270 200, 340 220, 380 200 C 400 160, 390 140, 380 130 Z" fill="#182730" stroke={C.teal} strokeWidth="1.4" />
           {/* Botnbre og innsjø */}
           <ellipse cx="320" cy="180" rx="45" ry="18" fill="#58c4dc" opacity="0.8" />
-          <L x="320" y="160" fill={C.teal} size={13} weight={700} anchor="middle">Botn (Cirque) &amp; tjern</L>
+          <L x="320" y="160" fill={C.teal} size={13} weight={700} anchor="middle">Botn (Cirque) og tjern</L>
 
           {/* Hengedal (Hanging Valley) med foss */}
           <path d="M 380 180 L 480 200 L 480 270 L 430 270 Z" fill="#202b33" stroke={C.dim} strokeWidth="1" />
           <line x1="480" y1="205" x2="480" y2="285" stroke="#7dd3fc" strokeWidth="2.8" strokeDasharray="4 2" />
-          <L x="495" y="240" fill="#7dd3fc" size={12} weight={700}>Hengedal &amp; foss</L>
+          <L x="495" y="240" fill="#7dd3fc" size={12} weight={700}>Hengedal og foss</L>
 
           {/* Hoved U-dal og Fjordtverrsnitt */}
           {/* Venstre dalside */}
@@ -97,7 +97,7 @@ export function GlacialLandformsDiagram() {
           </g>
           <g>
             <rect x="615" y="455" width="280" height="26" rx="4" fill="#17222a" stroke={C.cold} strokeWidth="1" />
-            <L x="625" y="472" fill={C.cold} size={11} weight={700}>Plukking &amp; skuring: Breens to erosjonsprosesser</L>
+            <L x="625" y="472" fill={C.cold} size={11} weight={700}>Plukking og skuring: Breens to erosjonsprosesser</L>
           </g>
         </>
       )}

@@ -11,10 +11,40 @@ export type Kilde = {
 export const KILDER = {
   jordsystemene: [
     {
-      prefix: "Friedlingstein, P., et al. (2025). Global Carbon Budget 2025. ",
+      prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
+      italic: "Norges geologi",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Norges_geologi",
+    },
+    {
+      prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
+      italic: "The ICS International Chronostratigraphic Chart",
+      suffix: " (v2026/06). International Commission on Stratigraphy.",
+      href: "https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf",
+    },
+    {
+      prefix: "Friedlingstein, P., O'Sullivan, M., Jones, M. W., mfl. (2026). Global Carbon Budget 2025. ",
       italic: "Earth System Science Data, 18",
       suffix: ", 3211.",
       href: "https://doi.org/10.5194/essd-18-3211-2026",
+    },
+    {
+      prefix: "Kelemen, P. B., & Manning, C. E. (2015). Reevaluating carbon fluxes in subduction zones, what goes down, mostly comes up. ",
+      italic: "Proceedings of the National Academy of Sciences, 112",
+      suffix: "(30), E3997–E4006.",
+      href: "https://doi.org/10.1073/pnas.1507889112",
+    },
+    {
+      prefix: "Kjensmo, J., & Hongve, D. (2025, 9. oktober). ",
+      italic: "Innsjø",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/innsjø",
+    },
+    {
+      prefix: "Kump, L. R., Brantley, S. L., & Arthur, M. A. (2000). Chemical weathering, atmospheric CO₂, and climate. ",
+      italic: "Annual Review of Earth and Planetary Sciences, 28",
+      suffix: ", 611–667.",
+      href: "https://doi.org/10.1146/annurev.earth.28.1.611",
     },
     {
       prefix: "Mangerud, J. (2025, 9. oktober). ",
@@ -27,6 +57,12 @@ export const KILDER = {
       italic: "The carbon cycle",
       suffix: ".",
       href: "https://science.nasa.gov/earth/earth-observatory/the-carbon-cycle/",
+    },
+    {
+      prefix: "Newhall, C. G., Hendley, J. W., II, & Stauffer, P. H. (1997). ",
+      italic: "The cataclysmic 1991 eruption of Mount Pinatubo, Philippines",
+      suffix: " (Fact Sheet 113-97). U.S. Geological Survey.",
+      href: "https://pubs.usgs.gov/fs/1997/fs113-97/",
     },
     {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
@@ -59,7 +95,7 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/om-berggrunn",
     },
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-g). ",
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-f). ",
       italic: "Om løsmasser",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/om-losmasser",
@@ -660,6 +696,12 @@ export const KILDER = {
       italic: "Norges geologi",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/Norges_geologi",
+    },
+    {
+      prefix: "Fossen, H., & Selbekk, R. S. (u.å.). ",
+      italic: "Brudd – mineralogi",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/brudd_-_mineralogi",
     },
     {
       prefix: "Garmo, T. T., Raade, G., & Fossen, H. (2025, 18. august). ",

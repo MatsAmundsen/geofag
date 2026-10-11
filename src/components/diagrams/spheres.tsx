@@ -135,7 +135,7 @@ export function CarbonCycleDiagram() {
     <Diagram
       title="Det globale karbonkretsløpet"
       heading="Raske biologiske og langsomme geologiske kretsløp"
-      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilførte om lag 10,3 GtC i 2024 (Friedlingstein et al., 2025)."
+      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilførte om lag 10,3 GtC i 2024 (Friedlingstein et al., 2025). Atmosfærelageret (ca. 870 GtC, 2010–2019) er fra IPCC (2021), AR6 WG1 kap. 5."
       viewBox="0 0 860 480"
     >
       {(m) => (
@@ -146,25 +146,25 @@ export function CarbonCycleDiagram() {
             Atmosfæren
           </L>
           <L x="430" y="74" fill={C.fg} size={14} weight={600} anchor="middle">
-            ~850 GtC (+5 GtC/år netto akkumulering)
+            ~870 GtC (+5 GtC/år netto akkumulering)
           </L>
 
           {/* Soneangivelser / bakgrunner */}
           {/* Venstre: Landbiosfære & jordsmonn */}
           <rect x="40" y="160" width="220" height="90" rx="8" fill="#182c22" stroke={C.teal} strokeWidth="1.8" />
           <L x="150" y="190" fill={C.teal} size={15} weight={700} anchor="middle">
-            Vegetasjon & Biosfære
+            Vegetasjon og biosfære
           </L>
           <L x="150" y="210" fill={C.fg} size={13} anchor="middle">
             ~550 GtC
           </L>
           <L x="150" y="232" fill={C.muted} size={12} anchor="middle">
-            Fotosyntese & respirasjon
+            Fotosyntese og respirasjon
           </L>
 
           <rect x="40" y="265" width="220" height="70" rx="8" fill="#242218" stroke={C.sand} strokeWidth="1.6" />
           <L x="150" y="292" fill={C.sand} size={14} weight={600} anchor="middle">
-            Jordsmonn & humus
+            Jordsmonn og humus
           </L>
           <L x="150" y="316" fill={C.fg} size={13} anchor="middle">
             ~1500–2000 GtC
@@ -202,7 +202,7 @@ export function CarbonCycleDiagram() {
           {/* Nederst: Litosfæren / Kalkstein */}
           <rect x="300" y="380" width="520" height="68" rx="8" fill="#1e2226" stroke={C.dim} strokeWidth="2" />
           <L x="560" y="406" fill={C.fg} size={15} weight={700} anchor="middle">
-            Sedimentære bergarter & kalkstein (CaCO₃)
+            Sedimentære bergarter og kalkstein (CaCO₃)
           </L>
           <L x="560" y="428" fill={C.sand} size={14} weight={600} anchor="middle">
             Jordas største reservoar: 60–100 millioner GtC

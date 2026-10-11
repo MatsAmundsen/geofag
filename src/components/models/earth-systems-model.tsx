@@ -49,8 +49,8 @@ export function EarthSystemsModel() {
 
   const sphereDetails = {
     geo: {
-      name: "Geosfæren (Den faste jorden)",
-      role: "Jordskorpen, mantelen og litosfæren. Hovedlager for karbon i form av kalkstein (CaCO₃) og kerogen i sedimentære bergarter.",
+      name: "Geosfæren (Den faste jorda)",
+      role: "Jordskorpa, mantelen og litosfæren. Hovedlager for karbon i form av kalkstein (CaCO₃) og kerogen i sedimentære bergarter.",
       inputs: "Vann og karbonsyre fra hydrosfære og atmosfære bryter ned mineraler; organisk materiale fra biosfæren begraves som fossilt brensel.",
       outputs: "Vulkanutbrudd frigjør CO₂, SO₂ og vanndamp til atmosfæren. Regn løser berg og sender kalsium-, magnesium- og jernioner til elver og hav.",
       timescale: "Fra sekunder (jordskjelv, vulkaner) til hundrevis av millioner år (platetektonikk og bergartskretsløp).",
@@ -64,7 +64,7 @@ export function EarthSystemsModel() {
     },
     atmo: {
       name: "Atmosfæren (Gasskappen)",
-      role: "Det tynne gasslaget som omgir jorden. Regulerer overflatetemperaturen via drivhuseffekten og transporterer fuktighet og varme.",
+      role: "Det tynne gasslaget som omgir jorda. Regulerer overflatetemperaturen via drivhuseffekten og transporterer fuktighet og varme.",
       inputs: "Vanndamp fra hydrosfæren/biosfæren, vulkanske gasser fra geosfæren, oksygen og karbondioksid fra biologiske prosesser.",
       outputs: "Nedbør til hydro- og kryosfæren, og regn med karbonsyre som løser berg i geosfæren.",
       timescale: "Timer og uker (synoptisk vær og stormer) til århundrer (klimagassakkumulering).",
@@ -112,7 +112,7 @@ export function EarthSystemsModel() {
           <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="space-y-4 lg:col-span-6">
               <h4 className="text-base font-semibold text-foreground">
-                Den trege sløyfen: jordens geologiske termostat
+                Den trege sløyfen: jordas geologiske termostat
               </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Når vulkaner slipper ut mer CO₂, stiger temperaturen og det blir mer regn.
@@ -145,7 +145,7 @@ export function EarthSystemsModel() {
 
                 <div>
                   <div className="flex justify-between text-xs font-medium">
-                    <span>Fjellkjededannelse (orogenese & blottlagt berg):</span>
+                    <span>Fjellkjededannelse (orogenese og blottlagt berg):</span>
                     <span className="font-mono text-amber-400">{orogenyExposure.toFixed(1)}× referanse</span>
                   </div>
                   <input
@@ -216,7 +216,7 @@ export function EarthSystemsModel() {
 
                 {/* Elvetransport */}
                 <path d="M 230 220 C 270 210, 300 230, 330 230" stroke="#14b8a6" strokeWidth="3" fill="none" markerEnd="url(#arr-teal)" />
-                <text x="250" y="195" fill="#14b8a6" fontSize="10">Flodtransport av Ca²⁺ & HCO₃⁻</text>
+                <text x="250" y="195" fill="#14b8a6" fontSize="10">Flodtransport av Ca²⁺ og HCO₃⁻</text>
 
                 {/* Hydrosfære (Hav) */}
                 <rect x="330" y="170" width="150" height="120" rx="8" fill="#0f2636" stroke="#14b8a6" strokeWidth="1.5" />
@@ -241,7 +241,7 @@ export function EarthSystemsModel() {
             </div>
           </ModelPanel>
 
-          <ModelNote title="Viktig eksamenspoeng i LK20" tone="teal">
+          <ModelNote title="Viktig poeng" tone="teal">
             Den trege sløyfen er en <strong>negativ tilbakekobling</strong>. Når det blir varmere og mer regn,
             løses mer berg, og mer karbon lagres i kalkstein. Det trekker CO₂ ut av atmosfæren igjen,
             men det tar noen hundre tusen år.
@@ -282,7 +282,7 @@ export function EarthSystemsModel() {
                   <div className="flex justify-between text-[10px] text-muted-foreground">
                     <span>0 % (Isfri drivhusjord)</span>
                     <span>15 % (Dagens nivå)</span>
-                    <span>75 % (Snøball-jorden)</span>
+                    <span>75 % (Snøball-jorda)</span>
                   </div>
                 </div>
 
@@ -414,7 +414,7 @@ export function EarthSystemsModel() {
                 Vulkanutbrudd påvirker atmosfæren på to vidt forskjellige tidsskalaer.
                 Vulkansk aske faller raskt ut (dager/uker). Svoveldioksid (SO₂) som slynges inn i stratosfæren
                 danner derimot reflekterende sulfataerosoler (H₂SO₄) som kan kjøle overflaten i 1–3 år (f.eks. Pinatubo 1991).
-                Vulkansk CO₂ samler seg derimot opp og varmer jorden over millioner av år.
+                Vulkansk CO₂ samler seg derimot opp og varmer jorda over millioner av år.
               </p>
 
               <div className="space-y-3 pt-2">
@@ -456,7 +456,7 @@ export function EarthSystemsModel() {
                     aria-label="Erupsjonshøyde"
                   />
                   <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>10 km (Troposfære - regnes raskt ut)</span>
+                    <span>10 km (Troposfære – regnes raskt ut)</span>
                     <span>18 km (Tropopausegrense)</span>
                     <span>45 km (Dyp stratosfære)</span>
                   </div>
@@ -475,7 +475,7 @@ export function EarthSystemsModel() {
                   <p className="font-mono text-lg font-bold text-sky-400">{peakCooling} °C</p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Levetid i luften</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Levetid i lufta</p>
                   <p className="font-mono text-lg font-bold text-amber-400">
                     {atmosphericResidenceMonths} mnd.
                   </p>
@@ -537,7 +537,7 @@ export function EarthSystemsModel() {
           <ModelPanel className="space-y-5">
             <div>
               <h4 className="text-base font-semibold text-foreground">
-                Jordens fem sammenkoblede delsystemer (Interaksjonsmatrise)
+                Jordas fem sammenkoblede delsystemer (Interaksjonsmatrise)
               </h4>
               <p className="text-xs text-muted-foreground">
                 Klikk på en sfære for å undersøke dens rolle, innputt, utputt og karakteristiske tidsskalaer i Geofag 1.

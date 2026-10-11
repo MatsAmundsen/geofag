@@ -1139,7 +1139,7 @@ const boundaryData: Record<
     title: "Subduksjon hav mot kontinent",
     kicker: "Plateneddykking og flukssmelting",
     rockTypes: "Andesitt, dasitt, granodioritt, eklogitt i den synkende platen",
-    quaketype: "Jordskjelv langs plategrensen. Dybdefordelingen ligger i kapittelet Jordskjelv.",
+    quaketype: "Jordskjelv langs plategrensen. Dybdefordelingen ligger i kapitlet Jordskjelv.",
     meltingMechanism: `Flukssmelting. Amfibol slipper vann rundt ${AMPHIBOLE_KM} km, serpentin dypere, rundt ${SERPENTINE_KM} km.`,
     realExample: "Andesfjellene og Kaskadefjellene",
     description:
@@ -1149,7 +1149,7 @@ const boundaryData: Record<
     title: "Subduksjon hav mot hav",
     kicker: "Vulkanøybue og bakbue",
     rockTypes: "Basaltisk andesitt, tefra og pelagiske sedimenter",
-    quaketype: "Jordskjelv langs subduksjonsgrensen. Dybde og tsunamifysikk ligger i kapittelet Jordskjelv.",
+    quaketype: "Jordskjelv langs subduksjonsgrensen. Dybde og tsunamifysikk ligger i kapitlet Jordskjelv.",
     meltingMechanism: "Flukssmelting i mantelkilen. Bak buen kan slab rollback åpne et bakbuebasseng.",
     realExample: "Marianene og Japanhavet som bakbue",
     description:
@@ -1194,7 +1194,7 @@ const boundaryData: Record<
       "En varm søyle fra ca. 2900 km smelter ved dekompresjon når den stiger. Figuren viser bare de øverste 200 km.",
     realExample: "Hawaii. Øyalderen øker i platens fartsretning.",
     description:
-      "Plymen står nesten stille mens platen glir over. Avstanden mellom øyene er fart ganger alder. Dette er ikke en plategrense. Magmakjemi og Hawaii-Emperor-kjeden ligger i kapittelet Vulkaner.",
+      "Plymen står nesten stille mens platen glir over. Avstanden mellom øyene er fart ganger alder. Dette er ikke en plategrense. Magmakjemi og Hawaii-Emperor-kjeden ligger i kapitlet Vulkaner.",
   },
   paleomag: {
     title: "Paleomagnetiske striper",
@@ -1522,11 +1522,11 @@ export function PlateTectonicsModel() {
       <div className="mt-4 space-y-4">
         <ModelNote title="Les mer" tone="teal">
           <p>
-            Les mer om seismisitet og Wadati-Benioff-sonen i kapittelet{" "}
+            Les mer om seismisitet og Wadati-Benioff-sonen i kapitlet{" "}
             <Link to="/geofag-1/jordskjelv" className="font-medium text-primary underline underline-offset-2">
               Jordskjelv og jordas indre
             </Link>
-            . Les mer om ofiolittkomplekset på Leka i kapittelet{" "}
+            . Les mer om ofiolittkomplekset på Leka i kapitlet{" "}
             <Link to="/geofag-1/norges-geologi" className="font-medium text-primary underline underline-offset-2">
               Norges geologiske historie
             </Link>

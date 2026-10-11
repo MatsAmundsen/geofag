@@ -86,22 +86,22 @@ export function LandformGeomorphologyModel() {
     { title: string; age: string; desc: string; processes: string; keyForms: string }
   > = {
     1: {
-      title: "1. Kaledonidene og Prekambrium",
-      age: "1800 – 400 millioner år siden",
+      title: "1. Kaledonidene og prekambrium",
+      age: "1800–400 millioner år siden",
       desc: "Kontinentene Baltika og Laurentia kolliderte og dannet den kaledonske fjellkjeden (høy som Himalaya!). Massive skyvedekker ble skjøvet hundrevis av kilometer over grunnfjellet.",
       processes: "Fjellkjedefolding, høygradig regionalmetamorfose, dannelse av båndgneis og glimmerskifer.",
       keyForms: "Roten av fjellkjeden som utgjør mesteparten av Norges faste fjellgrunn.",
     },
     2: {
       title: "2. Den paleiske flaten formes",
-      age: "Mesozoikum og tidlig Tertiær (250 – 55 mill. år siden)",
+      age: "Mesozoikum og tidlig tertiær (250–55 mill. år siden)",
       desc: "Gjennom titalls millioner år med varmt og fuktig klima ble de gigantiske kaledonske fjellene erodert ned til et bølgende slettelandskap (et peneplan).",
       processes: "Dyp kjemisk forvitring og rolige elvesystemer jevnet ut terrenget.",
       keyForms: "Den paleiske overflaten (Hardangervidda, Finnmarksvidda og viddeplatåene i Rondane).",
     },
     3: {
       title: "3. Tertiær landheving",
-      age: "Paleogen og Neogen (55 – 2,6 mill. år siden)",
+      age: "Paleogen og neogen (55–2,6 mill. år siden)",
       desc: "Norskehavet og Atlanterhavet åpnet seg ved havbunnsspredning. Den skandinaviske landblokken ble hevet asymmetrisk — opptil 1500–2000 meter i vest, mens østsiden hellet slakt mot Sverige.",
       processes: "Relativ senkning av erosjonsbasis. Elvene fikk enorm fart og skar dype, trange V-daler inn i den hevede paleiske flaten.",
       keyForms: "Vannskillet ble forskjøvet østover; dype elvegjel og canyons i vest.",
@@ -114,9 +114,9 @@ export function LandformGeomorphologyModel() {
       keyForms: "Fjorder (Sognefjorden, Geiranger), U-daler, alpine tinder (Sunnmøre, Lofoten), Ra-morenen og strandflaten.",
     },
     5: {
-      title: "5. Holocen & Postglasial tid",
+      title: "5. Holocen og postglasial tid",
       age: "De siste 11 700 år til i dag",
-      desc: "Innlandsisen smeltet bort. Vekten av den opptil 3 km tykke isen forsvant, og jordskorpen spratt opp igjen (isostatisk landheving, opptil 220 meter i Oslofjord-området).",
+      desc: "Innlandsisen smeltet bort. Vekten av den opptil 3 km tykke isen forsvant, og jordskorpa spratt opp igjen (isostatisk landheving, opptil 220 meter i Oslofjord-området).",
       processes: "Tidligere havbunn med leire hevet seg til tørt land. Elver eroderte raviner i leira og lagde små V-daler i de store U-dalene.",
       keyForms: "Marin grense, ravinelandskap på Romerike og i Trøndelag, strandvoller og flom- og skredvifter.",
     },
@@ -277,7 +277,7 @@ export function LandformGeomorphologyModel() {
                 <div className="rounded border border-border bg-card/60 p-2.5">
                   <span className="font-bold text-foreground">1. Plukking:</span>
                   <p className="text-muted-foreground mt-0.5">
-                    Smeltevann under trykk trenger inn i fjellets sprekker på lesiden av knauser, fryser fast og river løs store steinblokker i takt med at isen glir fremover.
+                    Smeltevann under trykk trenger inn i fjellets sprekker på lesiden av knauser, fryser fast og river løs store steinblokker i takt med at isen glir framover.
                   </p>
                 </div>
                 <div className="rounded border border-border bg-card/60 p-2.5">
@@ -568,7 +568,7 @@ export function LandformGeomorphologyModel() {
                 </div>
 
                 <div className="rounded border border-primary/20 bg-primary/10 p-2 text-[11px] text-foreground/90">
-                  <strong>Norge i dag vs. i Mesozoikum:</strong> I dag domineres Norge av mekanisk forvitring i fjellet. For 100 millioner år siden var klimaet subtropisk varmt, og dyp kjemisk forvitring dannet den opprinnelige paleiske flaten.
+                  <strong>Norge i dag og i mesozoikum:</strong> I dag domineres Norge av mekanisk forvitring i fjellet. For 100 millioner år siden var klimaet subtropisk varmt, og dyp kjemisk forvitring dannet den opprinnelige paleiske flaten.
                 </div>
               </div>
             </ModelPanel>

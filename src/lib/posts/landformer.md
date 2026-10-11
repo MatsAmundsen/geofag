@@ -130,7 +130,7 @@ SjekkLandformer3
 
 ## Isen formet det meste av Norge
 
-Det er isen som har formet mest av landskapet i Norge. Gjennom istidene grov breene ut V-daler til U-daler og fjorder, og små breer høylte ut botner mellom skarpe egger og tinder. Da isen smeltet, la den igjen morener som Raet, grusrygger og breelvdeltaer. Mange av de største grus- og sandforekomstene våre er slike breelvavsetninger. Hvordan breene beveger seg, eroderer og avsetter, og hvordan du kjenner igjen sporene etter dem, kan du lese i kapitlet [Isbreer og landformer](/geofag-1/isbreer-og-landformer).
+Det er isen som har formet mest av landskapet i Norge. Gjennom istidene grov breene ut V-daler til U-daler og fjorder, og små breer hulte ut botner mellom skarpe egger og tinder. Da isen smeltet, la den igjen morener som Raet, grusrygger og breelvdeltaer. Mange av de største grus- og sandforekomstene våre er slike breelvavsetninger. Hvordan breene beveger seg, eroderer og avsetter, og hvordan du kjenner igjen sporene etter dem, kan du lese i kapitlet [Isbreer og landformer](/geofag-1/isbreer-og-landformer).
 
 ## Gamle vidder og unge fjorder
 
