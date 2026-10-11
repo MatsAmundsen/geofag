@@ -1374,7 +1374,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
             <div className="space-y-2 text-xs text-muted-foreground">
               <p>
                 <strong className="text-foreground">Norsk sårbarhet (Åkneset / Tafjord):</strong> I bratte norske vestlandsfjorder
-                kan fjellskred utløse lokale kjempetsunamier. Tafjord-ulykken i 1934 krevde 40 menneskeliv (oppskylling 62 moh). Åkneset overvåkes derfor døgnkontinuerlig med radar og seismikk.
+                kan fjellskred utløse lokale kjempetsunamier. Tafjord-ulykken i 1934 krevde 40 menneskeliv (oppskylling 61 moh, NVE). Åkneset overvåkes derfor døgnkontinuerlig med radar og seismikk.
               </p>
               <p>
                 <strong className="text-foreground">Varslingssystemer (DART):</strong> I Stillehavet og Atlanteren registrerer

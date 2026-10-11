@@ -151,13 +151,13 @@ SjekkNorgesGeologi5
 
 ## Istiden presset landet ned
 
-De siste ca. 2,6 millioner årene har det vært mange istider. Den siste istiden, _weichsel_, varte fra ca. 117 000 til ca. 10 000 år siden (Mangerud, 2025a). For ca. 20 000 år siden var innlandsisen på det største. Da var den opptil ca. 3000 meter tykk over Nord-Sverige og ca. 2000 meter tykk over Oslo-området (Kartverket, 2021; Mangerud, 2025b).
+De siste ca. 2,6 millioner årene har det vært mange istider. Den siste istiden, _weichsel_, varte fra ca. 117 000 til ca. 11 700 år siden (Cohen mfl., 2026; Mangerud, 2025a). For ca. 20 000 år siden var innlandsisen på det største. Da var den opptil ca. 3000 meter tykk over Nord-Sverige og ca. 2000 meter tykk over Oslo-området (Kartverket, 2021; Mangerud, 2025b).
 
 ### Isostasi
 
 Tyngden av isen presset jordskorpa ned. Litosfæren ligger i en slags likevekt på astenosfæren under, og denne likevekten kaller vi _isostasi_. Astenosfæren er fast, men den er så varm at den kan deformeres plastisk og gi etter over tusenvis av år. Når isen la seg over landet, presset den litosfæren ned, og astenosfæren ble langsomt presset til side. Der isen var tykkest, innerst i Bottenviken, ble skorpa presset ned ca. 800 meter (NGU, 2012).
 
-Da klimaet ble varmere, smeltet isen raskt, og for ca. 10 000 år siden var det meste av den borte (Bryhni & Fossen, 2024). Uten tyngden fra isen begynte landet å heve seg igjen. Hevingen gikk raskt i begynnelsen og har siden gått langsommere.
+Da klimaet ble varmere, smeltet isen raskt (Bryhni & Fossen, 2024). Uten tyngden fra isen begynte landet å heve seg igjen. Hevingen gikk raskt i begynnelsen og har siden gått langsommere.
 
 ```widget
 IsostasiSnittNorgesGeologi

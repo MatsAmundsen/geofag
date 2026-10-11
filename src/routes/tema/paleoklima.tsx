@@ -112,7 +112,7 @@ function PaleoklimaPage() {
 
         <div className="grid gap-3 sm:grid-cols-2 pt-2 text-xs">
           <div className="rounded-xl border border-border bg-card p-3.5 space-y-1.5">
-            <span className="font-semibold text-sky-400">Siste istid (Weichsel, ca. 115 000–11 700 år før nå)</span>
+            <span className="font-semibold text-sky-400">Siste istid (Weichsel, ca. 117 000–11 700 år før nå)</span>
             <p className="text-muted-foreground leading-relaxed">
               Under <strong>Siste istidsmaksimum (LGM - Last Glacial Maximum)</strong> for ca. 21 000 år
               siden var Skandinavia begravet under en opptil 3000 meter tykk innlandsis (Det fennoskandiske

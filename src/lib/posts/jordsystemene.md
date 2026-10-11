@@ -36,7 +36,7 @@ Nær overflaten møter du tre lag som er lette å slå sammen: berggrunn, løsma
 
 Berggrunn er fast fjell. Den strekker seg fra overflaten og nedover i dypet, og er underlaget for løsmassene (NGU, u.å.-e). Bergarter har ulik motstandsdyktighet mot erosjon, så harde bergarter blir ofte stående i de høyeste områdene, mens svakere berg blir daler og lavere terreng (NGU, u.å.-b). Det er geosfæren som svarer på atmosfære og hydrosfære gjennom millioner av år.
 
-Løsmassene ligger oppå fjellet: stein, grus, sand, silt, leire og torv. Utbredelsen er i stor grad knyttet til istidene gjennom de siste 2,6 millioner år, og særlig til siste istid, fra om lag 120 000 år siden til for 11 700 år siden (NGU, u.å.-g). Morene, breelvavsetninger, hav- og fjordavsetninger og elveavsetninger er derfor både geosfære og et produkt av kryosfære og hydrosfære.
+Løsmassene ligger oppå fjellet: stein, grus, sand, silt, leire og torv. Utbredelsen er i stor grad knyttet til istidene gjennom de siste 2,6 millioner år, og særlig til siste istid, fra om lag 117 000 år siden til for 11 700 år siden (Mangerud, 2025; NGU, u.å.-g). Morene, breelvavsetninger, hav- og fjordavsetninger og elveavsetninger er derfor både geosfære og et produkt av kryosfære og hydrosfære.
 
 Jordsmonn er den øvre, omdannede delen av løsmassene, der vann, organismer og tid virker sammen. Organisk materiale binder vann. Biosfæren er her en agent i geosfæren.
 
