@@ -614,7 +614,7 @@ export function FieldworkObservationModel() {
               <tr>
                 <td className="py-2 font-bold text-amber-400">GEO-01</td>
                 <td className="py-2">E: 598210, N: 6645320, 142 moh</td>
-                <td className="py-2">Strøk & fall</td>
+                <td className="py-2">Strøk og fall</td>
                 <td className="py-2 text-primary">{String(strikeAngle).padStart(3, "0")}° / {dipAngle}° SØ</td>
                 <td className="py-2 font-sans text-xs">Foldet kambrosilursk kalkstein</td>
                 <td className="py-2 text-emerald-400 font-sans text-xs">Sikret (hjelmpåbud)</td>

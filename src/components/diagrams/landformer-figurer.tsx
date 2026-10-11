@@ -2280,7 +2280,7 @@ const LS_STEPS = ["1 Vidda", "2 Fjorden graves ut", "3 Strandflaten"];
 const LS_STATUS = [
   "Vidda er en stor, rolig og nesten flat overflate. Viddene regnes ofte som rester av et eldre, slakere landskap. Hvor gammelt det er, og hvordan det kom så høyt, er omdiskutert. Før istidene formet elvene dalene, ofte med V-profil.",
   "Under istidene fulgte breene dalene og gravde dem ut til dype U-daler. Der bunnen ligger under havnivå, er dalen en fjord.",
-  "Langs kysten ligger strandflaten: en lav, flat brem av tusenvis av øyer, holmer og skjær (0–50 moh). Dannelsen er omdiskutert. Trolig har frostforvitring, brenninger og kystbreer virket sammen, kanskje i berg som var dypforvitret på forhånd.",
+  "Langs kysten ligger strandflaten: en lav, flat brem av tusenvis av øyer, holmer og skjær (0–50 moh.). Dannelsen er omdiskutert. Trolig har frostforvitring, brenninger og kystbreer virket sammen, kanskje i berg som var dypforvitret på forhånd.",
 ];
 const LS_W = 780;
 const LS_D = 300;

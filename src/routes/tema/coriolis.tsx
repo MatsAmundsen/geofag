@@ -329,7 +329,7 @@ function CoriolisPage() {
         (en effekt som kalles <strong>Beta-effekten</strong>, $\beta = \partial f / \partial y$), oppstår
         det en naturlig gjenopprettende kraft når jetstrømmen bukter seg nord–sør. Dette skaper de
         gigantiske planetære meandrene som styrer stormbanene over Atlanteren, og som vi behandler i
-        kapittelet om{" "}
+        kapitlet om{" "}
         <Link to="/tema/jetstrommer" className={lenke}>
           jetstrømmer
         </Link>
@@ -341,7 +341,7 @@ function CoriolisPage() {
         Klassiske kraftbalanser i atmosfæren: Fra ro til geostrofisk vind
       </h2>
       <p>
-        I kapittelet om{" "}
+        I kapitlet om{" "}
         <Link to="/tema/hoytrykk-lavtrykk" className={lenke}>
           høytrykk og lavtrykk
         </Link>{" "}

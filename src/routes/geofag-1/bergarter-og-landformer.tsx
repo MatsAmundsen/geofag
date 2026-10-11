@@ -12,7 +12,7 @@ export const Route = createFileRoute("/geofag-1/bergarter-og-landformer")({
     topicHead({
       title: "Bergarter og landformer (Oppdelt) · Geofag 1",
       description:
-        "Dette kapittelet er nå delt inn i to selvstendige dybdekapitler: Bergarter og det geologiske kretsløpet, og Landformer og geomorfologiske prosesser.",
+        "Dette kapitlet er nå delt inn i to selvstendige dybdekapitler: Bergarter og det geologiske kretsløpet, og Landformer og geomorfologiske prosesser.",
       path: "/geofag-1/bergarter-og-landformer",
     }),
   component: BergarterOgLandformerBridgePage,
@@ -23,7 +23,7 @@ function BergarterOgLandformerBridgePage() {
     <TopicLayout
       kicker="Geofag 1 · Kapittoversikt"
       title="Bergarter og landformer"
-      lead="Dette emnet er nå delt inn i to selvstendige, fullverdige dybdekapitler i tråd med LK20-læreplanen for Geofag 1. Velg kapittelet du ønsker å studere nedenfor."
+      lead="Dette emnet er nå delt inn i to selvstendige, fullverdige dybdekapitler i tråd med LK20-læreplanen for Geofag 1. Velg kapitlet du ønsker å studere nedenfor."
       banner="/images/geo-geologisk-kretslop-3d.jpg"
       bannerAlt="3D-blokkdiagram av det geologiske kretsløpet og landskapsdannelsen"
       prev={{

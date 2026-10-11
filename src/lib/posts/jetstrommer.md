@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om komponenter og prosesser i dem (Udir, u.å.-a). Jetstrømmen er en slik prosess i atmosfæren, der rotasjon og temperaturforskjell virker sammen.
 >

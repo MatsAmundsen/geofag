@@ -412,14 +412,14 @@ export function PetroleumSystemDiagram() {
           <g>
             <rect x="630" y="276" width="215" height="64" rx="5" fill="#1c2630" stroke={C.rain} strokeWidth="1" />
             <L x="640" y="295" fill={C.rain} size={12} weight={700}>4. Reservoarbergart</L>
-            <L x="640" y="313" fill={C.fg} size={11}>Høy porøsitet & permeabilitet.</L>
+            <L x="640" y="313" fill={C.fg} size={11}>Høy porøsitet og permeabilitet.</L>
             <L x="640" y="329" fill={C.muted} size={10}>F.eks. sandstein eller kritt.</L>
           </g>
 
           {/* Punkt 5 */}
           <g>
             <rect x="630" y="346" width="215" height="95" rx="5" fill="#1c2630" stroke={C.low} strokeWidth="1" />
-            <L x="640" y="365" fill={C.low} size={12} weight={700}>5. Felle & Takbergart</L>
+            <L x="640" y="365" fill={C.low} size={12} weight={700}>5. Felle og takbergart</L>
             <L x="640" y="383" fill={C.fg} size={11}>Felle: Antiklinal, forkastning.</L>
             <L x="640" y="399" fill={C.fg} size={11}>Takbergart: Tett skifer/leire.</L>
             <L x="640" y="420" fill={C.low} size={10} weight={600}>Uten takbergart lekker oljen ut.</L>

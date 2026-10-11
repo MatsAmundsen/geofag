@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Værsystemer er prosesser i atmosfæren. De utvikler seg over timer og døgn (Udir, u.å.-a).
 >

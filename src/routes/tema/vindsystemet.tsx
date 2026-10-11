@@ -47,7 +47,7 @@ function VindsystemetPage() {
         Motoren: Klodens ujevne strålingsbalanse
       </h2>
       <p>
-        I kapittelet om{" "}
+        I kapitlet om{" "}
         <Link to="/tema/hoytrykk-lavtrykk" className={lenke}>
           høytrykk og lavtrykk
         </Link>{" "}
@@ -79,7 +79,7 @@ function VindsystemetPage() {
       <p>
         Uten transport ville tropene blitt for varme og polene for kalde. Atmosfæren tar om lag 60
         prosent av varmeflukten mot polene, havet resten. Fordelingen skifter med breddegrad: i
-        tropene bærer havet mer enn det globale snittet. Det tar vi opp i kapittelet om{" "}
+        tropene bærer havet mer enn det globale snittet. Det tar vi opp i kapitlet om{" "}
         <Link to="/tema/havstrommer" className={lenke}>
           havstrømmer
         </Link>
@@ -107,7 +107,7 @@ function VindsystemetPage() {
       <p>
         Det ville holdt hvis jorda sto stille. Jorda roterer. Når lufta i høyden går polover, dreier{" "}
         <em>corioliseffekten</em> den — mot høyre på nordlig halvkule, mot venstre på sørlig.
-        Hvorfor den dreier, og hvor sterk dreiningen er, står i kapittelet om{" "}
+        Hvorfor den dreier, og hvor sterk dreiningen er, står i kapitlet om{" "}
         <Link to="/tema/coriolis" className={lenke}>
           corioliseffekten
         </Link>
@@ -325,7 +325,7 @@ function VindsystemetPage() {
       <p>
         Over den ligger <strong>polarfrontjeten</strong> (NOAA, u.å.-c). Den bukter seg i{" "}
         <strong>Rossby-bølger</strong> — rygger og tråg — som styrer hvor lavtrykkene får gå. Den
-        fysikken, og hvorfor en rygg kan bli stående som blocking, står i kapittelet om{" "}
+        fysikken, og hvorfor en rygg kan bli stående som blocking, står i kapitlet om{" "}
         <Link to="/tema/jetstrommer" className={lenke}>
           jetstrømmer
         </Link>
@@ -447,7 +447,7 @@ function VindsystemetPage() {
         />
         <Term
           name="Rossby-bølger"
-          def="Store buktninger i polarfrontjeten. Rygg og tråg styrer lavtrykk og høytrykk. Mer i kapittelet om jetstrømmer."
+          def="Store buktninger i polarfrontjeten. Rygg og tråg styrer lavtrykk og høytrykk. Mer i kapitlet om jetstrømmer."
         />
         <Term
           name="Orografisk nedbør"
@@ -521,7 +521,7 @@ function VindsystemetPage() {
             ],
             answer: 1,
             explain:
-              "En omega-blokkering er et stabilt høytrykk formet som Ω. Det leder atlanterhavslavtrykkene nord eller sør for Skandinavia. Fysikken bak rygger, tråg og blocking står i kapittelet om jetstrømmer.",
+              "En omega-blokkering er et stabilt høytrykk formet som Ω. Det leder atlanterhavslavtrykkene nord eller sør for Skandinavia. Fysikken bak rygger, tråg og blocking står i kapitlet om jetstrømmer.",
           },
           {
             prompt:

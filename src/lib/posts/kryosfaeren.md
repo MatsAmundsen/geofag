@@ -4,7 +4,7 @@
 >
 > Du skal også kunne vurdere risiko ved naturfarer som følge av fenomener i atmosfæren, havet og kryosfæren og drøfte hvordan klimaendringer kan påvirke disse (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a). Her er den frosne delen, og tidsskalaen er år, ikke istid.
 >

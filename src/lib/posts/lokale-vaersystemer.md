@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om komponenter og prosesser i dem. Prosesser og vekselvirkninger foregår på ulike tidsskalaer (Udir, u.å.-a). Solgangsvind, berg- og dalvind og polarfrontsyklonen er slike prosesser i atmosfæren, på ulik skala.
 >

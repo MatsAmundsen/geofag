@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for hvordan numeriske modeller i geofag bygges opp og videreutvikles, og beskrive hvordan modellene brukes innenfor værvarsling, havmodellering og klimaforskning (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener. Modellering er å lete etter svar ved å utvikle og bruke modeller, og vurdere resultatene (Udir, u.å.-a).
 >

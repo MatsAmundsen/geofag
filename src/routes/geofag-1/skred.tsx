@@ -21,7 +21,7 @@ function SkredPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Skred er masse av fjell, stein, jord, leire eller snø som beveger seg ned en skråning. I dette kapittelet er det fjell og løsmasse. Kvikkleire er marin leire der saltet er vasket ut, og den kan bli flytende når den overbelastes. Du skal gjøre rede for skredfare, og vurdere hvordan vi kan forebygge og tilpasse oss."
+      lead="Skred er masse av fjell, stein, jord, leire eller snø som beveger seg ned en skråning. I dette kapitlet er det fjell og løsmasse. Kvikkleire er marin leire der saltet er vasket ut, og den kan bli flytende når den overbelastes. Du skal gjøre rede for skredfare, og vurdere hvordan vi kan forebygge og tilpasse oss."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

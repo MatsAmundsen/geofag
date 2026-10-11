@@ -251,7 +251,7 @@ export function FieldworkIllustrationDiagram() {
           {/* Steg 1 */}
           <g>
             <rect x="540" y="74" width="300" height="54" rx="6" fill="#1b2832" stroke={C.teal} strokeWidth="1" />
-            <L x="554" y="94" fill={C.teal} size={13} weight={700}>1. Lokalisering & bergart</L>
+            <L x="554" y="94" fill={C.teal} size={13} weight={700}>1. Lokalisering og bergart</L>
             <L x="554" y="112" fill={C.muted} size={11}>GPS-koordinat, værforhold, farge, kornstørrelse og mineraler</L>
           </g>
 
@@ -265,14 +265,14 @@ export function FieldworkIllustrationDiagram() {
           {/* Steg 3 */}
           <g>
             <rect x="540" y="198" width="300" height="54" rx="6" fill="#1b2832" stroke={C.warm} strokeWidth="1" />
-            <L x="554" y="218" fill={C.warm} size={13} weight={700}>3. Skisse & profil</L>
+            <L x="554" y="218" fill={C.warm} size={13} weight={700}>3. Skisse og profil</L>
             <L x="554" y="236" fill={C.muted} size={11}>Tegn feltprofil med målestokk, nordpil og relative lagkontakter</L>
           </g>
 
           {/* Steg 4 */}
           <g>
             <rect x="540" y="260" width="300" height="54" rx="6" fill="#1b2832" stroke={C.rain} strokeWidth="1" />
-            <L x="554" y="280" fill={C.rain} size={13} weight={700}>4. Prøvetaking & usikkerhet</L>
+            <L x="554" y="280" fill={C.rain} size={13} weight={700}>4. Prøvetaking og usikkerhet</L>
             <L x="554" y="298" fill={C.muted} size={11}>Merk prøveposer med ID; noter måleusikkerhet på GPS og kompass</L>
           </g>
 

@@ -163,7 +163,7 @@ function EditPost() {
                       });
                     }}
                   >
-                    Gå til kapittelet (Live)
+                    Gå til kapitlet (Live)
                   </Button>
                 ) : null}
                 <Button
@@ -234,7 +234,7 @@ function EditPost() {
 
               <div className="grid gap-6 lg:grid-cols-2">
                 <Field
-                  label={`Hele kapittelet (markdown) · ${body.length.toLocaleString("nb-NO")} tegn`}
+                  label={`Hele kapitlet (markdown) · ${body.length.toLocaleString("nb-NO")} tegn`}
                 >
                   <p className="text-xs text-muted-foreground">
                     Rull inne i feltet for å redigere hele fagteksten, ikke bare starten. Diagrammer,
@@ -244,7 +244,7 @@ function EditPost() {
                   {headings.length > 0 ? (
                     <details className="text-xs text-muted-foreground">
                       <summary className="cursor-pointer">
-                        {headings.length} avsnitt i kapittelet
+                        {headings.length} avsnitt i kapitlet
                       </summary>
                       <ul className="mt-1 list-disc space-y-0.5 pl-4">
                         {headings.map((heading) => (

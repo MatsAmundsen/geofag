@@ -1027,7 +1027,7 @@ export function StormwaterAdaptationModel() {
               {/* Tiltak 2: Blågrønne tak & regnbed */}
               <div className="rounded-xl border border-border bg-card/80 p-4 space-y-2.5">
                 <div className="flex justify-between items-start">
-                  <h5 className="font-semibold text-foreground text-sm">Blågrønne strukturer & LOD</h5>
+                  <h5 className="font-semibold text-foreground text-sm">Blågrønne strukturer og LOD</h5>
                   <span className="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300">
                     Bærekraftig (NBS)
                   </span>
@@ -1118,7 +1118,7 @@ export function StormwaterAdaptationModel() {
               {/* Tiltak 6: Sjømurer mot stormflo */}
               <div className="rounded-xl border border-border bg-card/80 p-4 space-y-2.5">
                 <div className="flex justify-between items-start">
-                  <h5 className="font-semibold text-foreground text-sm">Harde sjømurer & moloer</h5>
+                  <h5 className="font-semibold text-foreground text-sm">Harde sjømurer og moloer</h5>
                   <span className="rounded bg-sky-500/20 px-1.5 py-0.5 text-[10px] font-bold text-sky-300">
                     Kystvern
                   </span>

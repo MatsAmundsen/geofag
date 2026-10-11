@@ -339,7 +339,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
               className="mt-2 w-full accent-primary cursor-pointer"
             />
             <p className="mt-1 text-[11px] text-muted-foreground">
-              Hvor fort magma stiger opp fra mantelen og inn i jordskorpen.
+              Hvor fort magma stiger opp fra mantelen og inn i jordskorpa.
             </p>
           </div>
 

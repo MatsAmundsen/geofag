@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om komponenter og prosesser i dem (Udir, u.å.-a). Lufttrykk og loddrett bevegelse av luft er slike prosesser i atmosfæren.
 >
@@ -55,7 +55,7 @@ Det er trykkforskjellen mot områdene rundt som betyr noe for været, ikke hPa-t
 
 På værkart tegnes linjer som kalles **isobarer** (av gresk *isos* = lik, og *baros* = tyngde). En isobar binder sammen steder som har samme lufttrykk, regnet om til havnivå. Avstanden mellom isobarene viser trykkgradienten. Ligger isobarene tett, endrer trykket seg mye over kort avstand, og det blir sterk vind, kuling eller storm. Ligger de langt fra hverandre, er gradienten slak og vinden svak.
 
-Hvordan jordrotasjonen bøyer av vinden, kan du lese om i kapittelet [Corioliseffekten](/tema/coriolis).
+Hvordan jordrotasjonen bøyer av vinden, kan du lese om i kapitlet [Corioliseffekten](/tema/coriolis).
 
 ## Lavtrykk: konvergens, stigning og skydannelse
 
@@ -67,7 +67,7 @@ Termiske lavtrykk dannes når jordoverflaten varmes ulikt. Når sola varmer tør
 
 ### Dynamiske lavtrykk
 
-Dynamiske lavtrykk dannes langs polarfronten i Nord-Atlanteren, der kald polarluft fra nord møter mild, subtropisk luft fra sør. Bølger i jetstrømmen i øvre troposfære fører luft bort i høyden. Da faller trykket ved bakken, og det dannes et lavtrykk. Denne typen lavtrykk gir det meste av det urolige været i Norge. Les mer om jetstrømmen i kapittelet [Jetstrømmer](/tema/jetstrommer).
+Dynamiske lavtrykk dannes langs polarfronten i Nord-Atlanteren, der kald polarluft fra nord møter mild, subtropisk luft fra sør. Bølger i jetstrømmen i øvre troposfære fører luft bort i høyden. Da faller trykket ved bakken, og det dannes et lavtrykk. Denne typen lavtrykk gir det meste av det urolige været i Norge. Les mer om jetstrømmen i kapitlet [Jetstrømmer](/tema/jetstrommer).
 
 Uansett type skjer det samme i sentrum: Luften stiger, og det blir mindre luft nær bakken. Trykket faller, og luft fra omgivelsene strømmer inn mot sentrum. Dette kalles konvergens ved bakken. Luften kan ikke gå ned i bakken, så den må stige.
 

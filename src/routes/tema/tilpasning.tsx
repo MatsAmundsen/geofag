@@ -47,7 +47,7 @@ function TilpasningPage() {
           tilpasse seg klimaendringer i nåtid og framtid.
         </p>
         <div className="mt-2 text-xs text-muted-foreground space-y-1 border-t border-border/50 pt-2">
-          <p><strong>Sentrale kjerneelementer som dekkes i dette kapittelet:</strong></p>
+          <p><strong>Sentrale kjerneelementer som dekkes i dette kapitlet:</strong></p>
           <p>• <em>IPCCs risikorammeverk:</em> Samspillet mellom Fare (Hazard), Eksponering (Exposure) og Sårbarhet (Vulnerability).</p>
           <p>• <em>Urban overvannshåndtering:</em> Byhydrologi, den rasjonelle formelen (Q = C · I · A) og Treleddsstrategien (LOD).</p>
           <p>• <em>Flomvern og vassdragsforvaltning:</em> Grå vs. blågrønn infrastruktur, NVEs flomsonekart og erfaringene fra ekstremværet Hans.</p>

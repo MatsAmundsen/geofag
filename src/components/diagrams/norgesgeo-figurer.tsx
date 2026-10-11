@@ -871,7 +871,7 @@ const NH_STATUS = [
   "Gjentatt rifting i mesozoikum (trias–kritt): Lenge før havet åpnet seg, ble skorpa mellom Norge og Grønland strukket og tynnet ut i flere omganger. Mange fjorder og daler følger i dag forkastningssoner fra denne tiden.",
   "Bruddet: I tidlig tertiær (eocen, for ca. 55 millioner år siden) revnet litosfæren mellom Norge og Grønland helt. Smelte fra mantelen steg opp og begynte å danne ny havbunn.",
   "Havbunnsspredning: Langs midthavsryggen lages ny havbunn, og Norge og Grønland skilles. Norge får en passiv kontinentalmargin uten subduksjon. Elver og senere isbreer fører sand og leire ut på sokkelen.",
-  "I dag: Spredningen fortsetter. Jan Mayen ligger på spredningsryggen nord for Island, med Beerenberg (2272 m o.h.), Norges eneste aktive vulkan over havnivå. Lagene på sokkelen er kilde-, reservoar- og takbergarter for olje og gass.",
+  "I dag: Spredningen fortsetter. Jan Mayen ligger på spredningsryggen nord for Island, med Beerenberg (2272 moh.), Norges eneste aktive vulkan over havnivå. Lagene på sokkelen er kilde-, reservoar- og takbergarter for olje og gass.",
 ];
 /** Punkter på norsk side av riften (kartkoordinater) og de samme punktene på grønlandsk side når kontinentene er samlet. */
 const NH_NORGE: [number, number][] = [

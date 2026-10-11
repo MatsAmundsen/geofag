@@ -1,4 +1,4 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/isbreer-og-landformer](/geofag-1/isbreer-og-landformer). Her kan du redigere **hele fagteksten**.
+> Interaktive modeller, quizer og 3D-diagrammer ligger i kapitlet [/geofag-1/isbreer-og-landformer](/geofag-1/isbreer-og-landformer). Her kan du redigere **hele fagteksten**.
 
 > *Kompetansemål i Geofag 1 (LK20)* – sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet (Udir, u.å.).
 >
@@ -106,7 +106,7 @@ Der breelvene møtte havet eller en innsjø, mistet vannet farten, og sanden og 
 
 ## Frostforvitring
 
-Forvitring betyr at berget brytes ned der det ligger, uten at det blir fraktet bort. I dette kapittelet ser vi bare på den mekaniske forvitringen som henger sammen med is og frost. Andre typer forvitring finner du i kapittelet [Bergarter](/geofag-1/bergarter).
+Forvitring betyr at berget brytes ned der det ligger, uten at det blir fraktet bort. I dette kapitlet ser vi bare på den mekaniske forvitringen som henger sammen med is og frost. Andre typer forvitring finner du i kapitlet [Bergarter](/geofag-1/bergarter).
 
 ### Frostsprengning
 
@@ -114,7 +114,7 @@ Når vann fryser til is, øker volumet. Vann som har trengt inn i sprekker i ber
 
 ### Ur
 
-Steinene som løsner ved frostsprengning, faller ned og hoper seg opp under bratte fjellsider. En kjegle av kantet stein under et stup kalles ur (talus) (SNL, u.å.-a). Frostsprengning er også en av årsakene til steinsprang. Les mer om steinsprang i kapittelet [Skred](/geofag-1/skred).
+Steinene som løsner ved frostsprengning, faller ned og hoper seg opp under bratte fjellsider. En kjegle av kantet stein under et stup kalles ur (talus) (SNL, u.å.-a). Frostsprengning er også en av årsakene til steinsprang. Les mer om steinsprang i kapitlet [Skred](/geofag-1/skred).
 
 ![Ur av kantete stein under en bratt fjellside](/images/isbre-ur.jpg)
 
@@ -132,7 +132,7 @@ Det høyeste nivået havet nådde etter siste istid, kalles marin grense (marine
 
 ### Marin leire på land
 
-Smeltevannet fraktet finstoff ut i havet, der det sank til bunns som leire. Landhevingen har senere løftet denne gamle havbunnen opp, slik at marine avsetninger i dag ligger over havnivå (NGU, u.å.-a). Mange lavtliggende områder på Østlandet og i Trøndelag er derfor preget av tykk marin leire. Noe av denne leira kan bli til kvikkleire, og det kan du lese mer om i kapittelet [Skred](/geofag-1/skred).
+Smeltevannet fraktet finstoff ut i havet, der det sank til bunns som leire. Landhevingen har senere løftet denne gamle havbunnen opp, slik at marine avsetninger i dag ligger over havnivå (NGU, u.å.-a). Mange lavtliggende områder på Østlandet og i Trøndelag er derfor preget av tykk marin leire. Noe av denne leira kan bli til kvikkleire, og det kan du lese mer om i kapitlet [Skred](/geofag-1/skred).
 
 ## Aktive og fossile landformer
 

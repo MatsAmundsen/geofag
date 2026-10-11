@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for strålingsbalanse, strålingsfordeling og strålingspådriv og bruke disse til å forstå den globale sirkulasjonen i atmosfæren (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Atmosfæren er et av jordsystemene. Den globale sirkulasjonen er prosesser i atmosfæren, og de veksler med havet (Udir, u.å.-a).
 >
@@ -10,7 +10,7 @@
 
 ## Hva driver det globale vindsystemet?
 
-I kapittelet om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) så du at temperaturforskjeller skaper trykkforskjeller, og at trykkforskjeller setter lufta i bevegelse. Her ser vi på hele planeten.
+I kapitlet om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) så du at temperaturforskjeller skaper trykkforskjeller, og at trykkforskjeller setter lufta i bevegelse. Her ser vi på hele planeten.
 
 Sola varmer ikke jorda jevnt. Fordi jorda er en kule, varmes tropene mer enn polområdene. Atmosfæren og havet flytter varme fra ekvator mot polene. Sammen kalles den sirkulasjonen jordas varmemotor (NASA, u.å.).
 
@@ -18,7 +18,7 @@ I tropene er det et energioverskudd: mer sollys blir absorbert enn varme som str
 
 Jordaksen heller om lag 23 grader. Derfor er ikke ubalansen lik hele året, og vi får årstider (NASA, u.å.). Snø og is kaster mye av lyset tilbake. Det kalles høy albedo, og det forsterker underskuddet mot polene.
 
-Hvordan havet bærer sin del av varmen, tar vi i kapittelet om [havstrømmer](/tema/havstrommer).
+Hvordan havet bærer sin del av varmen, tar vi i kapitlet om [havstrømmer](/tema/havstrommer).
 
 ```widget
 StralingsbalanseForklaring
@@ -34,7 +34,7 @@ Figuren viser hvorfor samme solstråle varmer mer ved ekvator enn mot polene: st
 
 I 1735 foreslo George Hadley én sirkulasjon på hver halvkule: lufta stiger ved ekvator, går mot polen i høyden, synker, og vender tilbake langs bakken (NOAA, u.å.-a).
 
-Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i høyden, beholder farten mot øst og blir vestavind i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-c). Hvorfor den dreier, står i kapittelet om [corioliseffekten](/tema/coriolis).
+Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i høyden, beholder farten mot øst og blir vestavind i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-c). Hvorfor den dreier, står i kapitlet om [corioliseffekten](/tema/coriolis).
 
 Én sløyfe til polen går ikke. Vi får tre celler på hver halvkule (NOAA, u.å.-a):
 
@@ -145,7 +145,7 @@ VindBelterFoto
 
 Polarfronten er grensen mellom kald luft fra høye breddegrader og varm luft fra subtropene. På den nordlige halvkule ligger den vanligvis mellom 40° og 70°. Den bukter seg mot øst, med varmfront i forkant av bølgen og kaldfront i bakkant. Langs fronten går vandrende lavtrykk, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-h).
 
-Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mellom om lag 50° og 60° på begge halvkuler. Den bukter seg, skifter bredde og kan dele seg (NOAA, u.å.-c). Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapittelet om [jetstrømmer](/tema/jetstrommer).
+Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mellom om lag 50° og 60° på begge halvkuler. Den bukter seg, skifter bredde og kan dele seg (NOAA, u.å.-c). Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).
 
 Norge ligger i vestavindsbeltet. Lavtrykk som dannes over Atlanteren, følger den øvre vinden inn mot kysten. På veien har lufta tatt opp vanndamp. Klimaet i Norge er mildere enn breddegraden skulle tilsi, fordi havstrømmer og vind frakter varme hit (Store norske leksikon, u.å.-e).
 
@@ -170,7 +170,7 @@ Polarfronten er kollisjonssonen. Fjellene avgjør hvor den fuktige vestavinden s
 WindSystemModel
 ```
 
-Bruk modellen i [dette kapittelet](/tema/vindsystemet) til å koble breddegrad, trykk, vindretning og loddrett luftstrøm i tre-celle-systemet.
+Bruk modellen i [dette kapitlet](/tema/vindsystemet) til å koble breddegrad, trykk, vindretning og loddrett luftstrøm i tre-celle-systemet.
 
 > **Tre vanlige misforståelser**
 >

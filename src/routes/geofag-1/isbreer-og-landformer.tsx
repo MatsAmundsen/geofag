@@ -21,7 +21,7 @@ function IsbreerOgLandformerPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Det er isen som har formet mest av landskapet vi ser i Norge i dag. Gjennom istidene grov isbreene ut fjorder, daler og botner, og da isen smeltet, la den igjen morener, grusrygger og deltaer. I dette kapittelet lærer du hvordan en isbre beveger seg, hvordan den eroderer og avsetter, og hvordan du kjenner igjen sporene etter isen i landskapet."
+      lead="Det er isen som har formet mest av landskapet vi ser i Norge i dag. Gjennom istidene grov isbreene ut fjorder, daler og botner, og da isen smeltet, la den igjen morener, grusrygger og deltaer. I dette kapitlet lærer du hvordan en isbre beveger seg, hvordan den eroderer og avsetter, og hvordan du kjenner igjen sporene etter isen i landskapet."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
