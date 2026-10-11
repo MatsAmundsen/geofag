@@ -458,7 +458,7 @@ export function Sommersol65NDiagram() {
 export function OxygenIsotopeDiagram() {
   return (
     <Diagram
-      title="Oksygenisotoper (δ¹⁸O): Rayleigh-fraksjonering og to motsatte arkiver i is og havbunn"
+      title="Oksygenisotoper (δ¹⁸O): fraksjonering og to motsatte arkiver i is og havbunn"
       heading="δ¹⁸O: Samme isotop, to motsatte arkiver"
       caption="Vann med lett oksygen (¹⁶O) fordamper lettere fra havet enn vann med tung oksygen (¹⁸O). Når skyer driver mot polene, regner det tunge ¹⁸O ut først. Under en istid blir det lette ¹⁶O-vannet låst i enorme innlandsisdekker på land. Dette skaper to motsatte arkivsignaler: 1) Iskjernene i Antarktis og på Grønland får ekstra lav δ¹⁸O (mye lett ¹⁶O). 2) Havet tømmes for ¹⁶O og blir anriket på tung ¹⁸O, slik at kalkskall (foraminiferer) i havbunnen får høy δ¹⁸O. Huskeregel: Lav δ¹⁸O i is = kaldt. Høy δ¹⁸O i havbunn = kaldt."
       viewBox="0 0 900 480"
@@ -467,7 +467,7 @@ export function OxygenIsotopeDiagram() {
         <>
           {/* Evaporation & Rayleigh fractionating trajectory across top */}
           <L x="450" y="34" fill={C.fg} size={15} weight={600} anchor="middle">
-            Rayleigh-fraksjonering under en istid
+            Fraksjonering under en istid
           </L>
 
           {/* Tropical Ocean Evaporation (Left) */}
@@ -509,7 +509,7 @@ export function OxygenIsotopeDiagram() {
           <ellipse cx="580" cy="95" rx="40" ry="20" fill="#1b3240" stroke={C.cold} />
           <Arrow d="M 580 118 L 580 155" marker={m.cold} color={C.cold} width={2} />
           <L x="580" y="140" fill={C.cold} size={11} anchor="start">
-            Snøfall (nesten bare ¹⁶O)
+            Snøfall (sterkt anriket på ¹⁶O)
           </L>
 
           {/* Ice Sheet on Land */}
@@ -558,14 +558,14 @@ export function OxygenIsotopeDiagram() {
             • Måler: Nedbøren som falt direkte som snø.
           </L>
           <L x="55" y="374" fill={C.muted} size={12}>
-            • Under istid er luften kaldere → mer ¹⁸O har regnet ut underveis.
+            • Under istid er lufta kaldere → mer ¹⁸O har regnet ut underveis.
           </L>
           <L x="55" y="394" fill={C.muted} size={12}>
-            • Isen består derfor nesten utelukkende av lett ¹⁶O.
+            • Isen blir derfor sterkt anriket på lett ¹⁶O.
           </L>
           <rect x="55" y="412" width="360" height="34" rx="4" fill="#0b151c" />
           <L x="235" y="434" fill={C.cold} size={13} weight={600} anchor="middle">
-            Signal: LAV (svært negativ) δ¹⁸O = KALDT KLIMA
+            Signal: Lav δ¹⁸O = kaldt klima
           </L>
 
           {/* Archive 2: Marine sedimenter / Kalkskall (Right) */}
@@ -597,7 +597,7 @@ export function OxygenIsotopeDiagram() {
           </L>
           <rect x="485" y="412" width="360" height="34" rx="4" fill="#0b151c" />
           <L x="665" y="434" fill={C.warm} size={13} weight={600} anchor="middle">
-            Signal: HØY δ¹⁸O = MYE IS PÅ LAND (ISTID)
+            Signal: Høy δ¹⁸O = mye is på land (istid)
           </L>
         </>
       )}
@@ -614,7 +614,7 @@ export function IceCoreAnatomyDiagram() {
     <Diagram
       title="Iskjernens anatomi: dannelse av årlige islag og forsegling av luftbobler med gassalderforskjell"
       heading="Iskjernens anatomi og gassalderen (Δage)"
-      caption="Nysnø faller på breoverflaten og pakkes gradvis sammen til firn. I de øverste 50–100 meterne er porene åpne, og atmosfæreluft sirkulerer fritt inn og ut. Først på 60–100 meters dyp klemmes porene hermetisk igjen til luftbobler. Boblene inneholder ekte fortidsluft — CO₂-kurven fra iskjerner er derfor en direkte fysisk gassmåling, ikke en tolkning. Fordi boblene forsegles titalls til tusenvis av år etter at snøen falt, er luften i boblene yngre enn isen rundt den. Denne kjente aldersforskjellen kalles gassalder (Δage)."
+      caption="Nysnø pakkes gradvis sammen til firn. I firnen henger porene sammen med lufta over. Som regel 50–100 m under overflaten blir lufta stengt inne i bobler. Boblene er prøver av fortidens luft, så CO₂ i dem måles direkte. Lufta er yngre enn isen rundt. Forskjellen kalles gassalder (Δage) og beregnes med modeller (Davies, 2020)."
       viewBox="0 0 900 460"
     >
       {(m) => (
@@ -642,7 +642,7 @@ export function IceCoreAnatomyDiagram() {
           {/* Zone 1: Snow / loose firn (0 - 50m) */}
           <rect x="110" y="55" width="270" height="110" fill="#1e3846" rx="4" />
           <L x="245" y="80" fill="#e0f2fe" size={13} weight={600} anchor="middle">
-            Nysnø og åpen firn (0–50 m)
+            Nysnø og åpen firn
           </L>
           <L x="245" y="100" fill={C.muted} size={11} anchor="middle">
             Porene er åpne. Luft sirkulerer fritt.
@@ -663,13 +663,13 @@ export function IceCoreAnatomyDiagram() {
             rx="4"
           />
           <L x="245" y="195" fill={C.warm} size={13} weight={600} anchor="middle">
-            Boblelukkingssone (60–90 m)
+            Lufta stenges inne (ofte 50–100 m)
           </L>
           <L x="245" y="215" fill={C.muted} size={11} anchor="middle">
             Trykket forsegler porene hermetisk.
           </L>
           <L x="245" y="235" fill={C.warm} size={11} weight={600} anchor="middle">
-            Fortidsluften fanges nå!
+            Fortidens luft stenges inne
           </L>
 
           {/* Zone 3: Solid Ice with annual layers & enclosed bubbles (90m+) */}
@@ -735,7 +735,7 @@ export function IceCoreAnatomyDiagram() {
             1. Snøen faller på overflaten:
           </L>
           <L x="460" y="148" fill={C.fg} size={12}>
-            Isens alder starter her (f.eks. for 15 000 år siden).
+            Tenkt eksempel: Isens alder starter her (f.eks. for 15 000 år siden).
           </L>
           <L x="460" y="172" fill={C.warm} size={13} weight={600}>
             2. Boblene forsegles på 70 m dyp:
@@ -774,7 +774,7 @@ export function IceCoreAnatomyDiagram() {
             Er ekte forhistorisk atmosfære. CO₂ i isen er en
           </L>
           <L x="455" y="360" fill={C.warm} size={12} weight={600}>
-            direkte fysisk måling, ikke en indirekte tolkning!
+            direkte måling, ikke en proxy.
           </L>
           <L x="445" y="390" fill={C.muted} size={11}>
             (EPICA Dome C dekker 800 000 år og 8 istidssykluser).
@@ -860,10 +860,10 @@ export function KvartarTimeSeriesDiagram({ caption }: { caption?: string } = {})
           <>
             {/* Top Title / Legend */}
             <L x="90" y="32" fill={C.cold} size={14} weight={600}>
-              — Temperaturavvik (ΔT i °C over Antarktis)
+              Temperaturavvik (ΔT i °C over Antarktis)
             </L>
             <L x="460" y="32" fill={C.warm} size={14} weight={600}>
-              — Atmosfærisk CO₂ (ppm fra luftbobler)
+              Atmosfærisk CO₂ (ppm fra luftbobler)
             </L>
 
             {/* Background Grid & Axis */}
@@ -969,13 +969,13 @@ export function KvartarTimeSeriesDiagram({ caption }: { caption?: string } = {})
               100 000-års sagtanntakt:
             </L>
             <L x="395" y="93" fill={C.muted} size={10} anchor="middle">
-              Langsom isvekst (80–90 ka) → Rask deglasiasjon (&lt;10 ka)
+              Langsom nedkjøling → rask avsmelting
             </L>
 
             {/* LGM Marker */}
             <circle cx={toX(21)} cy={220 - 0.12 * 125} r="4" fill={C.cold} />
             <L x={toX(21) - 6} y="222" fill={C.cold} size={10} anchor="end">
-              LGM (21 ka)
+              LGM (25–19 ka)
             </L>
 
             {/* PRESENT CO2 EXPLOSION SPIKE (>425 ppm) */}
@@ -1000,7 +1000,7 @@ export function KvartarTimeSeriesDiagram({ caption }: { caption?: string } = {})
               strokeWidth="1.4"
             />
             <L x="805" y="172" fill={C.low} size={12} weight={700} anchor="middle">
-              I dag: &gt; 425 ppm!
+              2025: 425,6 ppm
             </L>
             <L x="805" y="190" fill={C.muted} size={10} anchor="middle">
               Langt over naturlig spenn
@@ -1021,7 +1021,7 @@ export function DeglaciationFeedbackDiagram() {
     <Diagram
       title="Årsakskjeden ved deglasiasjon: fra lokal orbital impuls på 65 °N til global oppvarming"
       heading="Hvorfor Milanković blir global: Forsterkende tilbakekoblinger"
-      caption="Milanković-innstråling endrer bare fordelingen av sollys og starter smelting på 65 °N. For at hele kloden skal varmes opp og gå ut av en istid, må to kraftige positive tilbakekoblinger tre i kraft: 1) Is-albedo-tilbakekobling: Mindre snø og is gjør overflaten mørkere, slik at mer sollys absorberes. 2) Hav og CO₂-tilbakekobling: Varmere hav og endrede sørlige vinder lufter ut oppløst CO₂ til atmosfæren. Den økte drivhuseffekten varmer opp begge halvkuler. Kontrast til i dag: Under deglasiasjon startet orbitalt pådriv. I dag er det våre CO₂-utslipp som starter oppvarmingen!"
+      caption="Endringene i jordbanen gir opptil 20 % mer sol på 65° N til visse årstider og kan starte en avsmelting. Forsterkningene gjør det store utslaget. Mindre snø og is gir lavere albedo, så mer sollys blir tatt opp. Under istidene er mye CO₂ lagret i dyphavet. Når mer av den kommer tilbake til lufta, forsterkes oppvarmingen (Mangerud, 2026b). I dag er det menneskenes utslipp av CO₂ som driver oppvarmingen."
       viewBox="0 0 900 460"
     >
       {(m) => (
@@ -1097,13 +1097,13 @@ export function DeglaciationFeedbackDiagram() {
             B. Havets karbonpumpe (CO₂)
           </L>
           <L x="355" y="238" fill={C.muted} size={11}>
-            Varmere hav + endret sirkulasjon
+            Mindre CO₂ lagret i dyphavet
           </L>
           <L x="355" y="256" fill={C.muted} size={11}>
             → Havet avgasser CO₂ til lufta
           </L>
           <L x="355" y="274" fill={C.warm} size={11} weight={600}>
-            → Forsterket global drivhuseffekt!
+            → Sterkere drivhuseffekt
           </L>
 
           {/* Arrow from Step 2 to Step 3 */}
@@ -1134,7 +1134,7 @@ export function DeglaciationFeedbackDiagram() {
             • Begge poler varmes.
           </L>
           <L x="715" y="170" fill={C.muted} size={11}>
-            • Havnivå stiger ~120m.
+            • Havnivået stiger 120–130 m.
           </L>
           <L x="715" y="192" fill={C.warm} size={11} weight={600}>
             Full deglasiasjon.
@@ -1168,7 +1168,7 @@ export function DeglaciationFeedbackDiagram() {
             Dagens globale oppvarming:
           </L>
           <L x="485" y="404" fill={C.fg} size={11}>
-            Menneskeskapt CO₂ starter pådrivet direkte. Orbitale baner kjøler!
+            Menneskeskapt CO₂ er selve pådrivet.
           </L>
         </>
       )}
@@ -1183,9 +1183,9 @@ export function DeglaciationFeedbackDiagram() {
 export function AbruptClimateChangeDiagram() {
   return (
     <Diagram
-      title="Terskler og brå klimaendringer: smeltevannsflom, ferskvannslokk og AMOC-kollaps"
+      title="Terskler og brå klimaendringer: smeltevannsflom, ferskvannslokk og svekket AMOC"
       heading="Når klimasystemet vipper: Smeltevann og AMOC"
-      caption="Under tilbaketrekkingen av det nordamerikanske isdekket ble gigantiske bresjøer (som Lake Agassiz) demmet opp av isrygger. Da isdemningen brast, strømmet enorme mengder ferskvann ut i Nord-Atlanteren (Yngre Dryas for 12 800 år siden og 8,2 ka-hendelsen). Det lette ferskvannet la seg som et lokk over havet og hindret overflatevannet i å synke (ingen dypvannsdannelse). Dette bremset AMOC (den atlantiske omveltningssirkulasjonen), kuttet varmetransporten nordover og kastet Skandinavia tilbake i intens kulde på få tiår."
+      caption="Smeltevann la seg som et lett lokk over Nord-Atlanteren og gjorde det vanskeligere for overflatevannet å synke. Det svekket trolig AMOC kraftig i yngre dryas, for ca. 12 800–11 700 år siden. Hvor smeltevannet kom fra, er omdiskutert. Én hypotese er tapping av Agassiz-sjøen i Nord-Amerika (Mangerud, 2025e; Cohen mfl., 2026)."
       viewBox="0 0 900 460"
     >
       {(m) => (
@@ -1198,7 +1198,7 @@ export function AbruptClimateChangeDiagram() {
             strokeWidth="2"
           />
           <L x="110" y="160" fill={C.white} size={13} weight={600} anchor="middle">
-            Laurentide-isdekket
+            Den laurentiske innlandsisen
           </L>
 
           {/* Dammed Glacial Lake (Lake Agassiz) */}
@@ -1207,7 +1207,7 @@ export function AbruptClimateChangeDiagram() {
             Bresjø
           </L>
           <L x="232" y="232" fill={C.muted} size={10} anchor="middle">
-            (Lake Agassiz)
+            (f.eks. Agassiz-sjøen)
           </L>
 
           {/* Ice Dam Bursting */}
@@ -1221,7 +1221,7 @@ export function AbruptClimateChangeDiagram() {
             strokeDasharray="4 4"
           />
           <L x="275" y="150" fill={C.low} size={11} weight={600} anchor="middle">
-            Isdam brister!
+            Smeltevann renner ut
           </L>
 
           {/* Catastrophic Freshwater Flush Arrow into Atlantic */}
@@ -1255,7 +1255,7 @@ export function AbruptClimateChangeDiagram() {
           <circle cx="750" cy="205" r="22" fill="#221316" stroke={C.low} strokeWidth="1.8" />
           <path d="M 738 193 L 762 217 M 762 193 L 738 217" stroke={C.low} strokeWidth="2.4" />
           <L x="750" y="245" fill={C.low} size={11} weight={600} anchor="middle">
-            Dypvannsdannelse stanser!
+            Mindre dypvannsdannelse
           </L>
           <L x="750" y="260" fill={C.muted} size={10} anchor="middle">
             (Vannet er for lett til å synke)
@@ -1270,7 +1270,7 @@ export function AbruptClimateChangeDiagram() {
             strokeDasharray="4 4"
           />
           <L x="560" y="278" fill={C.warm} size={11}>
-            Svekket Golfstrøm/AMOC-transport
+            Svekket AMOC
           </L>
 
           {/* European Impact / Cold Plunge Summary */}
@@ -1285,17 +1285,16 @@ export function AbruptClimateChangeDiagram() {
             strokeWidth="1.4"
           />
           <L x="60" y="348" fill={C.fg} size={14} weight={600}>
-            Konsekvenser: Yngre Dryas (12,8–11,6 ka) og 8,2 ka-hendelsen
+            Eksempel: yngre dryas (ca. 12,8–11,7 ka)
           </L>
           <L x="60" y="372" fill={C.cold} size={12}>
-            • Varmetransporten mot Nord-Europa kuttes på få tiår.
+            • Klimaet skiftet på noen få tiår.
           </L>
           <L x="60" y="392" fill={C.muted} size={12}>
-            • Skandinavia kastes tilbake i arktisk kulde mens resten av kloden fortsetter oppvarming.
+            • Det ble plutselig mye kaldere i Norge, og isen rykket fram igjen.
           </L>
           <L x="60" y="412" fill={C.warm} size={12} weight={600}>
-            • Bevis for at klimasystemet har ikke-lineære terskler (tipping points) som kan utløses
-            brått!
+            • Klimasystemet kan ha terskler der endringen blir brå.
           </L>
         </>
       )}

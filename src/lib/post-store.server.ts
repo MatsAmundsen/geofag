@@ -1106,6 +1106,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "milankovitch",
     stale: ["Isen som måles i år, eier"],
   },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-paleoklima-fjell-geo-2026-10-11",
+    slug: "paleoklima",
+    stale: ["Tre arkiv, tre klokker"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

@@ -560,59 +560,70 @@ export const QUIZ_ISTIDER: QuizQuestion[] = [
 
 export const QUIZ_PALEO: QuizQuestion[] = [
   {
-    prompt: "Når startet de direkte målingene av CO₂ på Mauna Loa?",
+    prompt: "Hvorfor regnes luftboblene i en iskjerne som en direkte måling, og ikke som en proxy?",
     options: [
-      "I mars 1958.",
-      "I 1979, da satellittene begynte å måle havis.",
-      "I mai 1974, da NOAA startet egne målinger.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Tre arkiv, tre klokker». Keeling startet serien i mars 1958. NOAA kom med egne målinger i mai 1974.",
-  },
-  {
-    prompt: "Hva viser iskjerner om CO₂ i istidssyklusene det siste millionåret?",
-    options: [
-      "At CO₂ ikke kom over 300 ppm.",
-      "At CO₂ hele tiden lå rundt 422 ppm.",
-      "At CO₂ først ble målt i 1958.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Iskjerner og det naturlige spennet». 300 ppm er taket i de syklusene. 422,8 ppm er det globale årsmiddelet i 2024.",
-  },
-  {
-    prompt: "Hvor lå CO₂ før midten av 1700-tallet?",
-    options: [
-      "På 280 ppm eller lavere.",
-      "Over 400 ppm, som i 2024.",
-      "Rett under 427 ppm, som mai-verdien på Mauna Loa.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Iskjerner og det naturlige spennet». Før den industrielle revolusjonen lå CO₂ på 280 ppm eller lavere.",
-  },
-  {
-    prompt: "Hva driver årstidssvingningen, og hva driver den langsiktige stigningen?",
-    options: [
-      "Vegetasjon driver svingningen. Menneskelig aktivitet driver stigningen.",
-      "Begge kommer av istidene.",
-      "Satellittene driver begge, fordi serien starter i 1979.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Tre arkiv, tre klokker». Sommerens plantevekst senker CO₂, og vinterens nedbryting hever den. Stigningen er menneskedrevet.",
-  },
-  {
-    prompt: "Hva er Sea Ice Index?",
-    options: [
-      "Iskjernekurven for 800 000 år.",
-      "Utbredelse og konsentrasjon av havis siden 1979.",
-      "Månedsmiddelet av CO₂ på Mauna Loa.",
+      "Fordi boblene viser temperaturen direkte",
+      "Fordi boblene er prøver av lufta slik den var, så CO₂ kan måles direkte i dem",
+      "Fordi boblene dannes på overflaten hvert år",
+      "Fordi boblene inneholder pollen",
     ],
     answer: 1,
-    explain:
-      "Se «Havis er et annet arkiv». Serien starter i 1979 og sammenlignes med medianen for 1981–2010.",
+    explain: "Isotopene i selve isen er en proxy for temperatur. Boblene er ekte prøver av fortidens luft (Davies, 2020).",
+  },
+  {
+    prompt: "Hva er årsaken til gassalderen (Δage) i en iskjerne?",
+    options: [
+      "Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned, så den er yngre enn isen rundt",
+      "Boblene vandrer oppover og blir yngre",
+      "Isen er laget av nedbør som falt etter lufta",
+      "Gassen blir gammel fordi den varmes opp",
+    ],
+    answer: 0,
+    explain: "Forskerne beregner forskjellen med modeller av hvordan firnen pakkes sammen (Davies, 2020).",
+  },
+  {
+    prompt: "Hvordan tolkes δ¹⁸O i en iskjerne og i foraminiferer fra havbunnen under en istid?",
+    options: [
+      "Høy i begge",
+      "Lav i begge",
+      "Lav i isen og høy i foraminiferene",
+      "Høy i isen og lav i foraminiferene",
+    ],
+    answer: 2,
+    explain: "Det tunge ¹⁸O regner ut på veien, så snøen får lav δ¹⁸O. Mer ¹⁶O lagres i isen på land, og havet blir anriket på ¹⁸O (Mangerud, 2026b).",
+  },
+  {
+    prompt: "Hva skjedde i yngre dryas, for ca. 12 800–11 700 år siden?",
+    options: [
+      "Jorda gikk inn i en varm mellomistid",
+      "Et stort meteornedslag kjølte ned kloden",
+      "Havnivået steg 100 m på noen tiår",
+      "Smeltevann svekket trolig AMOC kraftig, det ble plutselig mye kaldere i Norge, og isen rykket fram igjen",
+    ],
+    answer: 3,
+    explain: "Hvor smeltevannet kom fra, er omdiskutert. Raet ble avsatt i yngre dryas (Mangerud, 2025e; SNL, 2024b).",
+  },
+  {
+    prompt: "Hva kjennetegner et varv?",
+    options: [
+      "Et lag med stein og grus fra isfjell",
+      "Et lyst, grovt sommerlag og et mørkt, fint vinterlag som til sammen er avsatt i løpet av ett år",
+      "Et askelag som binder iskjerner og innsjøer sammen",
+      "En årring i et tre",
+    ],
+    answer: 1,
+    explain: "Varvene kan telles på samme måte som årringer (SNL, 2024c).",
+  },
+  {
+    prompt: "Hva kan PETM lære oss om dagens klima?",
+    options: [
+      "Et stort karbonutslipp ga ca. 5 °C global oppvarming, men dagens utslipp går ca. ti ganger så fort",
+      "At karbonutslipp ikke påvirker temperaturen",
+      "At PETM skjedde under siste istid",
+      "At klimaet ble kaldere da CO₂ steg",
+    ],
+    answer: 0,
+    explain: "PETM skjedde for ca. 56 millioner år siden. Under PETM ble det sluppet ut høyst ca. 1,1 gigatonn karbon per år, mot ca. 10 gigatonn i 2014 (Cohen mfl., 2026; Inglis mfl., 2020; Zeebe mfl., 2016).",
   },
 ];
 
@@ -5069,5 +5080,143 @@ export const QUIZ_SJEKK_MILANKOVITCH_4: QuizQuestion[] = [
     ],
     answer: 0,
     explain: "Iskanten sto stille ved Raet i yngre dryas, for ca. 12 800–11 700 år siden.",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_1: QuizQuestion[] = [
+  {
+    prompt: "Når varte siste istid?",
+    options: [
+      "Fra ca. 2,58 millioner til 117 000 år siden",
+      "Fra ca. 117 000 til ca. 11 700 år siden",
+      "Fra ca. 25 000 til 19 000 år siden",
+    ],
+    answer: 1,
+    explain: "Siste istid varte fra for ca. 117 000 til ca. 11 700 år siden. Isen var størst for ca. 25 000–19 000 år siden (Mangerud, 2025b).",
+  },
+  {
+    prompt: "Hvordan endret istidsrytmen seg i kvartær?",
+    options: [
+      "Den har vært 100 000 år hele tiden",
+      "Den gikk fra 100 000 år til 41 000 år for ca. én million år siden",
+      "Den gikk gradvis fra ca. 41 000 år til ca. 100 000 år for ca. 1,2–0,8 millioner år siden",
+    ],
+    answer: 2,
+    explain: "Skiftet kalles den midtpleistocene overgangen, og årsaken er ikke avklart (Legrain mfl., 2023; Mukhin mfl., 2019).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er lufta i en iskjerne yngre enn isen rundt?",
+    options: [
+      "Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned",
+      "Luftboblene vandrer oppover gjennom isen",
+      "Isen smelter og fryser på nytt hvert år",
+    ],
+    answer: 0,
+    explain: "Til lufta stenges inne, henger porene i firnen sammen med lufta over. Forskjellen kalles gassalder (Davies, 2020).",
+  },
+  {
+    prompt: "Hvor mye CO₂ var det i lufta de siste 800 000 årene, ifølge EPICA Dome C?",
+    options: [
+      "Mellom 280 og 425 ppm",
+      "Mellom 172 og 300 ppm",
+      "Alltid ca. 280 ppm",
+    ],
+    answer: 1,
+    explain: "I 2025 var det globale snittet 425,6 ppm (Lüthi mfl., 2008; NOAA GML, 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_3: QuizQuestion[] = [
+  {
+    prompt: "Hva skjer med isotopene når skyene beveger seg mot polene?",
+    options: [
+      "Det lette ¹⁶O regner ut først",
+      "Begge isotopene regner ut like fort",
+      "Det tunge ¹⁸O regner ut først, og skyen blir mer anriket på ¹⁶O",
+    ],
+    answer: 2,
+    explain: "Den siste snøen som faller, er sterkt anriket på ¹⁶O (Mangerud, 2026b).",
+  },
+  {
+    prompt: "Hva betyr høy δ¹⁸O i skall av foraminiferer fra havbunnen?",
+    options: [
+      "Mye is på land",
+      "Lite is på land",
+      "Varmt klima",
+    ],
+    answer: 0,
+    explain: "Under en istid lagres mer ¹⁶O i isbreene, og havvannet blir anriket på ¹⁸O (Mangerud, 2026b).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_4: QuizQuestion[] = [
+  {
+    prompt: "Hva kan δ¹⁸O i foraminiferer fra havbunnen ikke vise?",
+    options: [
+      "Hvor mye is det var på land totalt",
+      "Om isen lå over Skandinavia, Nord-Amerika eller Antarktis",
+      "Om det var istid eller mellomistid",
+    ],
+    answer: 1,
+    explain: "Metoden viser det totale isvolumet, men ikke hvor isen lå (Mangerud, 2026b).",
+  },
+  {
+    prompt: "Hva er et varv?",
+    options: [
+      "Et askelag fra et vulkanutbrudd",
+      "Et lag med stein fra isfjell",
+      "Et lyst sommerlag og et mørkt vinterlag, avsatt i løpet av ett år",
+    ],
+    answer: 2,
+    explain: "Varvene kan telles som årringer. Metoden ble utviklet av Gerard De Geer (SNL, 2024c).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor må en C-14-alder kalibreres?",
+    options: [
+      "Fordi mengden ¹⁴C i lufta har variert, blant annet med styrken på magnetfeltet",
+      "Fordi halveringstiden har endret seg",
+      "Fordi metoden bare virker på stein",
+    ],
+    answer: 0,
+    explain: "Kalibreringen gjøres med kurver som IntCal20, som bygger blant annet på årringer (Mangerud, 2025a).",
+  },
+  {
+    prompt: "Hvorfor bevares pollen i myrer i tusenvis av år?",
+    options: [
+      "Fordi pollen er laget av kvarts",
+      "Fordi ytterveggen består av sporopollenin, som er svært motstandsdyktig",
+      "Fordi myrene fryser hver vinter",
+    ],
+    answer: 1,
+    explain: "Lennart von Post presenterte pollenanalysen i 1916 (Helgheim, 2024; Manum, 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_6: QuizQuestion[] = [
+  {
+    prompt: "Hva var trolig årsaken til yngre dryas?",
+    options: [
+      "Et stort vulkanutbrudd på Island",
+      "At sola ble svakere",
+      "At smeltevann svekket AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert",
+    ],
+    answer: 2,
+    explain: "Yngre dryas varte fra ca. 12 800 til ca. 11 700 år siden (Mangerud, 2025e; Cohen mfl., 2026).",
+  },
+  {
+    prompt: "Hva er den viktigste forskjellen mellom PETM og dagens utslipp?",
+    options: [
+      "Under PETM steg temperaturen ikke",
+      "Dagens utslipp går ca. ti ganger så fort",
+      "Under PETM ble det sluppet ut mindre enn ett gigatonn karbon totalt",
+    ],
+    answer: 1,
+    explain: "Under PETM høyst ca. 1,1 gigatonn karbon per år, i 2014 ca. 10 gigatonn (Zeebe mfl., 2016).",
   },
 ];

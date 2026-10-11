@@ -786,10 +786,32 @@ describe("chapter posters from this pull request", () => {
       "utf8",
     );
     const ids = listedWidgetIds(injectPosterWidgets(md));
-    for (const id of ["PaleoForklaring", "QuizPaleo"]) {
+    for (const id of [
+      "PaleoForklaring",
+      "KvartarTimeSeriesPaleo",
+      "DeglaciationFeedback",
+      "IskjerneFoto",
+      "IceCoreAnatomy",
+      "OxygenIsotope",
+      "PaleoClimateIsotope",
+      "AbruptClimateChange",
+      "SjekkPaleo1",
+      "SjekkPaleo2",
+      "SjekkPaleo3",
+      "SjekkPaleo4",
+      "SjekkPaleo5",
+      "SjekkPaleo6",
+      "SammendragPaleo",
+      "QuizPaleo",
+    ]) {
       assert.equal(ids.has(id), true, `paleoklima missing ${id}`);
-      assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
+      assert.equal((md.match(new RegExp(`\\b${id}\\b`, "g")) ?? []).length, 1, id);
     }
+    // samme tall som AMOC og KM4, og ingen gammel påstand
+    assert.equal(md.includes("117 000"), true);
+    assert.equal(md.includes("12 800–11 700"), true);
+    assert.equal(md.includes("0,2–1 °C"), true);
+    assert.equal(/AMOC-kollaps|Golfstrøm|Rayleigh-fraksjonering|Tre arkiv, tre klokker/.test(md), false);
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
