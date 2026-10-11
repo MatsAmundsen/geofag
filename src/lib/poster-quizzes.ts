@@ -3901,6 +3901,236 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_KRYO_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er likevektslinjen (ELA) på en bre?",
+    options: [
+      "Grensen mellom bre og fjell",
+      "Høyden der akkumulasjon og ablasjon er like stor",
+      "Den nederste enden av breen",
+    ],
+    answer: 1,
+    explain: "Over likevektslinjen hoper snøen seg opp, under smelter den. Firngrensen ved slutten av sommeren ligger ofte nær ELA, men er ikke det samme.",
+  },
+  {
+    prompt: "Hvor stort er brearealet i Norge etter den siste kartleggingen (2018–2019)?",
+    options: [
+      "Om lag 2328 km², 14 prosent mindre enn i 1999–2006",
+      "Om lag 23 000 km²",
+      "Om lag 232 km²",
+    ],
+    answer: 0,
+    explain: "NVE kartla breene fra satellitt. Arealet har minket med 14 prosent siden forrige kartlegging.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er det aktive laget?",
+    options: [
+      "Den delen av breen som beveger seg",
+      "Det øverste laget over permafrosten, som tiner hver sommer",
+      "Havis som er yngre enn ett år",
+    ],
+    answer: 1,
+    explain: "Når permafrosten varmes, blir det aktive laget dypere, og bakken blir mer ustabil.",
+  },
+  {
+    prompt: "Hvorfor forsterker smeltende havis oppvarmingen i Arktis?",
+    options: [
+      "Fordi isen frigjør varme når den smelter",
+      "Fordi havis inneholder CO₂",
+      "Fordi mørkt hav tar opp mer solvarme enn hvit is",
+    ],
+    answer: 2,
+    explain: "Is har høy albedo og hav lav. Mindre is gir mer oppvarming, og det er en positiv tilbakekobling.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_3: QuizQuestion[] = [
+  {
+    prompt: "Hvor stort område gjelder en regional snøskredfaregrad for?",
+    options: [
+      "Minst 100 km²",
+      "Ett enkelt heng",
+      "Hele Norge",
+    ],
+    answer: 0,
+    explain: "Faregraden er regional. Den som ferdes i fjellet, må gjøre egne vurderinger.",
+  },
+  {
+    prompt: "Hvordan ventes snøskredfaren å endre seg med klimaendringene?",
+    options: [
+      "Flere snøskred overalt",
+      "Færre snøskred i lavlandet, men flere naturlig utløste skred høyt til fjells",
+      "Ingen endring",
+    ],
+    answer: 1,
+    explain: "Mindre snø og kortere sesong gir færre skred i lavlandet. Høyere opp ventes flere (Norsk klimaservicesenter).",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor ser ballen på karusellen ut til å svinge?",
+    options: [
+      "Fordi en kraft skyver den sidelengs",
+      "Fordi den som ser på, roterer med karusellen",
+      "Fordi ballen snurrer",
+    ],
+    answer: 1,
+    explain: "Sett utenfra går ballen rett. Avbøyningen kommer av at ståstedet roterer.",
+  },
+  {
+    prompt: "Hvilken vei avbøyes luft som blåser nordover på den nordlige halvkule?",
+    options: [
+      "Mot venstre",
+      "Den avbøyes ikke",
+      "Mot høyre",
+    ],
+    answer: 2,
+    explain: "Lufta har med seg større fart østover enn bakken lenger nord, og det blir en høyresving.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_2: QuizQuestion[] = [
+  {
+    prompt: "Hvor er corioliseffekten null?",
+    options: [
+      "Ved ekvator",
+      "Ved polene",
+      "Ved 60° bredde",
+    ],
+    answer: 0,
+    explain: "Coriolisparameteren er null ved ekvator og øker mot polene. Derfor dannes ikke orkaner helt ved ekvator.",
+  },
+  {
+    prompt: "Hvorfor blåser ikke vinden nær bakken langs isobarene?",
+    options: [
+      "Fordi corioliskraften er sterkest der",
+      "Fordi friksjonen bremser vinden, særlig over land",
+      "Fordi trykket er likt overalt",
+    ],
+    answer: 1,
+    explain: "Over havet er vinkelen 0–20° og over land 20–40°, fordi friksjonen er større over land.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
+    options: [
+      "Med vinden",
+      "Mot vinden",
+      "Til høyre for vinden",
+    ],
+    answer: 2,
+    explain: "Overflatelaget transporteres på tvers av vinden, til høyre i nord.",
+  },
+  {
+    prompt: "Hvorfor kan en nordavind langs en vestkyst gi oppvelling?",
+    options: [
+      "Ekmantransporten skyver overflatevannet ut fra kysten, og dypvann kommer opp",
+      "Nordavinden er varm",
+      "Tidevannet blir større",
+    ],
+    answer: 0,
+    explain: "Vannet som kommer opp, er rikt på næringsstoffer, og områdene har ofte rike fiskerier.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor får vi tre celler på hver halvkule i stedet for én?",
+    options: [
+      "Fordi jorda roterer og lufta mot polen dreies til vestavind",
+      "Fordi havet stopper lufta ved 30°",
+      "Fordi det er tre kontinenter",
+    ],
+    answer: 0,
+    explain: "Uten rotasjon kunne én celle gått helt til polen. Corioliseffekten deler sirkulasjonen i Hadley-, Ferrel- og polarcellen.",
+  },
+  {
+    prompt: "Hva holder Ferrel-cellen i gang?",
+    options: [
+      "Oppvarming ved ekvator",
+      "De vandrende lavtrykkene og høytrykkene ved midlere breddegrader",
+      "Friksjon mot bakken",
+    ],
+    answer: 1,
+    explain: "Ferrel-cellen er termisk indirekte. Friksjon bremser vinden, men skaper den ikke.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er det tørt nær 30°?",
+    options: [
+      "Fordi det ikke finnes elver der",
+      "Fordi lufta synker, varmes opp og skyene løses opp",
+      "Fordi sola skinner svakere der",
+    ],
+    answer: 1,
+    explain: "Synkende luft presses sammen og varmes. Den relative fuktigheten faller, og det blir høytrykk og tørke.",
+  },
+  {
+    prompt: "Hva er konvergenssonen (ITCZ)?",
+    options: [
+      "Et høytrykksbelte ved 30°",
+      "Grensen mellom kald og varm luft ved 60°",
+      "Beltet der passatene møtes og lufta stiger",
+    ],
+    answer: 2,
+    explain: "Passatene strømmer sammen nær ekvator. Lufta stiger, og det blir skyer, byger og regn.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_3: QuizQuestion[] = [
+  {
+    prompt: "Fra hvilken retning blåser passaten på den nordlige halvkule?",
+    options: [
+      "Nordøst",
+      "Sørvest",
+      "Vest",
+    ],
+    answer: 0,
+    explain: "Lufta strømmer fra 30° mot ekvator og dreies mot høyre, så den kommer fra nordøst.",
+  },
+  {
+    prompt: "Hvorfor flytter konvergenssonen seg gjennom året?",
+    options: [
+      "Fordi havstrømmene snur",
+      "Fordi den følger sola nordover og sørover",
+      "Fordi jetstrømmen skyver den",
+    ],
+    answer: 1,
+    explain: "Konvergenssonen følger der oppvarmingen er sterkest. Det gir regntid og tørketid i tropene.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor faller det mye mer nedbør på vestsiden av fjellene i Norge enn i Ottadalen?",
+    options: [
+      "Fordi det er kaldere i vest",
+      "Fordi vestavinden løfter fuktig luft mot fjellene, og lesiden ligger i regnskygge",
+      "Fordi lavtrykkene kommer fra øst",
+    ],
+    answer: 1,
+    explain: "Orografisk nedbør faller på luvsiden. På lesiden synker lufta, varmes og er tørrere.",
+  },
+  {
+    prompt: "Hva er polarfronten?",
+    options: [
+      "Grensen mellom kald polarluft og varm subtropisk luft",
+      "Kanten av havisen",
+      "Et høytrykk over Nordpolen",
+    ],
+    answer: 0,
+    explain: "Langs polarfronten dannes vandrende lavtrykk som gir mye av nedbøren i Norge.",
+  },
+];
+
 export const QUIZ_SJEKK_VAERKART_1: QuizQuestion[] = [
   {
     prompt: "Hva betyr det når isobarene ligger tett?",

@@ -1667,6 +1667,12 @@ export const KILDER = {
       href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/maalinger-og-maalenett/urbanhydrologiske-maalinger/",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-i). ",
+      italic: "DDD-modellen",
+      suffix: ".",
+      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/analysemetoder-og-modeller/ddd-modellen/",
+    },
+    {
       prefix: "Norsk Naturskadepool. (2025, 5. november). ",
       italic: "Oppdaterte naturskadetall etter «Amy» og «Hans»",
       suffix: ".",
@@ -1854,6 +1860,12 @@ export const KILDER = {
       italic: "Fjellskred fra Åknes: Reviderte scenarioer, sannsynligheter og konsekvenser",
       suffix: " (NVE Rapport 16/2026).",
       href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
+    },
+    {
+      prefix: "NOU 2022: 3. (2022). ",
+      italic: "På trygg grunn: Bedre håndtering av kvikkleirerisiko",
+      suffix: ". Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/no/dokumenter/nou-2022-3/id2905694/",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -2417,6 +2429,12 @@ export const KILDER = {
       href: "https://snl.no/polarfront",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-i). ",
+      italic: "Strålingspådriv",
+      suffix: ".",
+      href: "https://snl.no/strålingspådriv",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",
@@ -2493,6 +2511,12 @@ export const KILDER = {
       href: "https://oceanservice.noaa.gov/education/tutorial_currents/04currents3.html",
     },
     {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
+      italic: "A15) How do tropical cyclones form?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Corioliskraften",
       suffix: ".",
@@ -2521,6 +2545,12 @@ export const KILDER = {
       italic: "Oppvelling",
       suffix: ".",
       href: "https://snl.no/oppvelling",
+    },
+    {
+      prefix: "Stewart, R. H. (2008). ",
+      italic: "Introduction to physical oceanography",
+      suffix: " (kap. 9.2, tabell 9.3). Texas A&M University.",
+      href: "https://geo.libretexts.org/Bookshelves/Oceanography/Introduction_to_Physical_Oceanography_(Stewart)/09%3A_Response_of_the_Upper_Ocean_to_Winds/9.2%3A_Ekman_Layer_at_the_Sea_Surface",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -2687,6 +2717,30 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "National Snow and Ice Data Center [NSIDC]. (2025). ",
+      italic: "2025 Arctic sea ice minimum squeezes into the ten lowest minimums",
+      suffix: ".",
+      href: "https://nsidc.org/sea-ice-today/analyses/2025-arctic-sea-ice-minimum-squeezes-ten-lowest-minimums",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2022). ",
+      italic: "Breer og fonner i Norge",
+      suffix: " (NVE Rapport 3-2022; L. M. Andreassen).",
+      href: "https://publikasjoner.nve.no/rapport/2022/rapport2022_03.pdf",
+    },
+    {
+      prefix: "Norsk klimaservicesenter. (2025). ",
+      italic: "Oppsummeringer fra Klima i Norge 2025",
+      suffix: ".",
+      href: "https://klimaservicesenter.no/kss/rapporter/klima-i-norge-2025/oppsummeringer-fra-klima-i-norge-2025",
+    },
+    {
+      prefix: "Humlum, O., Instanes, A., & Sollid, J. L. (2003). Permafrost in Svalbard: A review of research history, climatic background and engineering challenges. ",
+      italic: "Polar Research, 22",
+      suffix: "(2), 191–215.",
+      href: "https://doi.org/10.3402/polar.v22i2.6455",
     },
   ],
   klima: [
