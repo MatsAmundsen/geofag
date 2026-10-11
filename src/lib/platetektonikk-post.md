@@ -146,7 +146,7 @@ Hvordan platedriften startet, er et åpent forskningsspørsmål (Stern & Gerya, 
 Innad i hver enkelt plate har vi varierende tykkelse. Dette betyr at noen steder er platen tynnere eller tykkere. Der platen er tynnere, er trykket litt lavere, ettersom man er nærmere overflaten.
 Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Magmaen som dannes her, vil først danne et magmakammer under platen, før den stiger opp gjennom sprekker og ganger i platen og opp til overflaten. På veien kan magmaen smelte litt av bergarten rundt seg (assimilasjon). Platen sprekker opp, og **vi har dermed fått en divergerende plategrense.**
 
-Etter denne forklaringen er det denne prosessen som satte i gang platedriften i starten.
+Ifølge denne forklaringen var det slik platedriften kom i gang.
 
 Det finnes også andre forklaringer. En mantelplym kan varme opp og svekke platen nedenfra til den brister. Eller tung, gammel havbunn kan begynne å synke ved en svakhetssone, for eksempel langs en kontinentrand eller en gammel forkastning (Stern & Gerya, 2018).
 
