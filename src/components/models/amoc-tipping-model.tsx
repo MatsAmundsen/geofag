@@ -5,21 +5,21 @@ export function AmocTippingModel() {
   const [tab, setTab] = useState<"circulation" | "tipping_hysteresis">("circulation");
 
   // Ferskvannspulskontroll (Sv = 10^6 m^3/s)
-  const [freshwaterFlux, setFreshwaterFlux] = useState<number>(0.05); // 0.00 til 0.35 Sv
-  const [globalWarmingLevel, setGlobalWarmingLevel] = useState<number>(1.2); // °C over førindustriell
+  const [freshwaterFlux, setFreshwaterFlux] = useState<number>(0.05); // 0,00 til 0,35 Sv
+  const [globalWarmingLevel, setGlobalWarmingLevel] = useState<number>(1.4); // °C over førindustriell
 
   // Fysikkberegninger for AMOC
-  // Normal uforstyrret AMOC-transport er ca 17.5 Sv (Smeed et al., 2018)
+  // Normal AMOC-transport ved 26,5° N er ca. 17 Sv (Johns mfl., 2023)
   // Kritisk vippepunkt terskel F_crit ~ 0.18 - 0.22 Sv ferskvann
   const fCrit = 0.20 - (globalWarmingLevel - 1.0) * 0.03; // Varmere klima senker terskelen
   const isTipped = freshwaterFlux >= fCrit;
 
   // AMOC styrke beregning (Sv)
   const amocStrength = isTipped
-    ? Math.max(3.2, 5.0 - (freshwaterFlux - fCrit) * 10) // kollapset tilstand (kun svak vinddrevet gyre)
-    : Math.max(8.0, 18.0 - Math.pow(freshwaterFlux / fCrit, 1.8) * 9.5 - (globalWarmingLevel - 1.0) * 1.5);
+    ? Math.max(3.2, 5.0 - (freshwaterFlux - fCrit) * 10) // kollapset tilstand (kun svak vinddrevet havvirvel)
+    : Math.max(8.0, 17.0 - Math.pow(freshwaterFlux / fCrit, 1.8) * 9.5 - (globalWarmingLevel - 1.0) * 1.5);
 
-  const amocPercentOfNormal = Math.round((amocStrength / 18.0) * 100);
+  const amocPercentOfNormal = Math.round((amocStrength / 17.0) * 100);
 
   // Temperaturpåvirkning på Norge / Nord-Europa
   // Hvis AMOC kollapser overvinner det global oppvarming regionalt om vinteren
@@ -27,8 +27,8 @@ export function AmocTippingModel() {
     ? -4.2 + (globalWarmingLevel - 1.0) * 0.8
     : 1.2 * globalWarmingLevel - (1 - amocPercentOfNormal / 100) * 3.5;
 
-  // Havnivåstigning USAs østkyst (cm) pga redusert geostrofisk helning
-  const usEastSeaLevelRiseCm = Math.round((1 - amocStrength / 18.0) * 32);
+  // Ekstra havnivåstigning ved New York (cm). Taket er 21 cm, det høyeste tallet i Yin mfl. (2009)
+  const usEastSeaLevelRiseCm = Math.min(21, Math.round((1 - amocStrength / 17.0) * 21));
 
   // Partikkelfart / animasjonsvarighet
   const animDur = isTipped ? "999s" : `${Math.max(6, 25 - amocStrength)}s`;
@@ -42,7 +42,7 @@ export function AmocTippingModel() {
         break;
       case "current":
         setFreshwaterFlux(0.05);
-        setGlobalWarmingLevel(1.2);
+        setGlobalWarmingLevel(1.4);
         break;
       case "ssp245":
         setFreshwaterFlux(0.12);
@@ -63,14 +63,14 @@ export function AmocTippingModel() {
     <ModelFrame
       kicker="Interaktiv klimamodell"
       title="AMOC-strømningsanimasjon, ferskvannspulser og Stommel-vippepunkt"
-      lead="Simuler hvordan økt smelting fra Grønland og arktisk elveavrenning skaper et lett ferskvannslokk i Nord-Atlanteren, bremser åpenhavskonveksjonen og utløser Stommels ikke-lineære vippepunkt."
+      lead="Simuler hvordan økt smelting fra Grønland og arktisk elveavrenning skaper et lett ferskvannslokk i Nord-Atlanteren og kan svekke AMOC. Modellen viser også Stommels vippepunkt."
       toolbar={
         <div className="flex flex-wrap gap-2">
           <ModelTab active={tab === "circulation"} onClick={() => setTab("circulation")}>
-            1. AMOC-strømning & vertikalprofil
+            1. AMOC-strømning og vertikalprofil
           </ModelTab>
           <ModelTab active={tab === "tipping_hysteresis"} onClick={() => setTab("tipping_hysteresis")}>
-            2. Stommel-hysterese & vippepunkter
+            2. Stommel-hysterese og vippepunkter
           </ModelTab>
         </div>
       }
@@ -91,7 +91,7 @@ export function AmocTippingModel() {
                       type="button"
                       onClick={() => applyPreset("current")}
                       className={`rounded border px-2 py-1 text-[11px] font-medium transition ${
-                        freshwaterFlux === 0.05 && globalWarmingLevel === 1.2
+                        freshwaterFlux === 0.05 && globalWarmingLevel === 1.4
                           ? "border-primary bg-primary/15 text-primary"
                           : "border-border bg-card text-muted-foreground hover:bg-muted"
                       }`}
@@ -129,7 +129,7 @@ export function AmocTippingModel() {
                           : "border-border bg-card text-muted-foreground hover:bg-muted"
                       }`}
                     >
-                      Kollapset tilstand (Off)
+                      Kollapset tilstand (av)
                     </button>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export function AmocTippingModel() {
                       Ferskvannspuls (F_fersk):
                     </label>
                     <span className="font-mono font-bold text-sky-400">
-                      {freshwaterFlux.toFixed(2)} Sv ({Math.round(freshwaterFlux * 1e6)} m³/s)
+                      {freshwaterFlux.toFixed(2).replace(".", ",")} Sv ({Math.round(freshwaterFlux * 1e6)} m³/s)
                     </span>
                   </div>
                   <input
@@ -155,8 +155,8 @@ export function AmocTippingModel() {
                   />
                   <div className="flex justify-between text-[10px] text-muted-foreground">
                     <span>0 Sv (Normal)</span>
-                    <span className="text-amber-400 font-semibold">Terskel (~{fCrit.toFixed(2)} Sv)</span>
-                    <span>0.35 Sv (Ekstrem)</span>
+                    <span className="text-amber-400 font-semibold">Terskel (~{fCrit.toFixed(2).replace(".", ",")} Sv)</span>
+                    <span>0,35 Sv (Ekstrem)</span>
                   </div>
                 </div>
 
@@ -165,7 +165,7 @@ export function AmocTippingModel() {
                     <label htmlFor="warming-slider" className="text-muted-foreground">
                       Global oppvarming:
                     </label>
-                    <span className="font-mono font-bold text-amber-400">+{globalWarmingLevel.toFixed(1)} °C</span>
+                    <span className="font-mono font-bold text-amber-400">+{globalWarmingLevel.toFixed(1).replace(".", ",")} °C</span>
                   </div>
                   <input
                     id="warming-slider"
@@ -192,7 +192,7 @@ export function AmocTippingModel() {
                             : "text-rose-400"
                       }`}
                     >
-                      {amocStrength.toFixed(1)} Sv ({amocPercentOfNormal} % av normalen)
+                      {amocStrength.toFixed(1).replace(".", ",")} Sv ({amocPercentOfNormal} % av normalen)
                     </span>
                   </div>
                   <div className="flex justify-between border-b border-border/50 pb-1.5">
@@ -202,11 +202,11 @@ export function AmocTippingModel() {
                         norwayTempAnomaly >= 0 ? "text-amber-400" : "text-sky-400"
                       }`}
                     >
-                      {norwayTempAnomaly >= 0 ? `+${norwayTempAnomaly.toFixed(1)}` : norwayTempAnomaly.toFixed(1)} °C
+                      {norwayTempAnomaly >= 0 ? `+${norwayTempAnomaly.toFixed(1).replace(".", ",")}` : norwayTempAnomaly.toFixed(1).replace(".", ",")} °C
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Ekstra havnivåstigning USAs østkyst:</span>
+                    <span className="text-muted-foreground">Ekstra havnivåstigning, New York:</span>
                     <span className="font-mono font-bold text-primary">+{usEastSeaLevelRiseCm} cm</span>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export function AmocTippingModel() {
               <ModelNote
                 title={
                   isTipped
-                    ? "⚠️ AMOC har krysset vippepunktet!"
+                    ? "AMOC har krysset vippepunktet i modellen"
                     : amocPercentOfNormal < 70
                       ? "Betydelig svekket dyp konveksjon"
                       : "Aktivt omveltningsbånd"
@@ -224,16 +224,14 @@ export function AmocTippingModel() {
               >
                 {isTipped ? (
                   <p>
-                    Ferskvannslokket er nå så tykt at vannet i Grønlands- og Norskehavet ikke lenger klarer
-                    å oppnå tilstrekkelig tetthet til å bryte gjennom termoklinen. Den dype nedsynkingen
-                    (NADW-dannelsen) har stoppet helt opp. Golfstrømmen eksisterer fortsatt som en
-                    grunn, vinddrevet gyre, men frakter ikke lenger tropisk overskuddsvarme helt opp til
-                    Arktis!
+                    Ferskvannslokket er så tykt at vannet i nord ikke blir tungt nok til å synke.
+                    Dypvannsdannelsen har stoppet i modellen. Golfstrømmen finnes fortsatt, fordi den
+                    drives av vinden, men mindre varme når nordover.
                   </p>
                 ) : (
                   <p>
                     Saltvann fra tropene strømmer nordover med Den nordatlantiske strømmen. I de nordiske
-                    hav og Labradorhavet avkjøles det kraftig av arktisk luft, oppnår maksimal tetthet og
+                    hav og Labradorhavet avkjøles det kraftig av arktisk luft, blir tungt nok og
                     synker ned i dypet for å returnere som NADW langs havbunnen.
                   </p>
                 )}
@@ -278,7 +276,7 @@ export function AmocTippingModel() {
                   {/* Termoklin-skillelinje */}
                   <line x1="0" y1="160" x2="540" y2="160" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="6 4" />
                   <text x="20" y="152" fill="#38bdf8" fontSize="10" fontStyle="italic">
-                    Termoklin / Haloklin (~800 m dyp)
+                    Lagdeling (pyknoklin)
                   </text>
 
                   {/* Geografiske soner langs toppen */}
@@ -336,7 +334,7 @@ export function AmocTippingModel() {
                         <line x1="-15" y1="-15" x2="15" y2="15" stroke="#ef4444" strokeWidth="3" />
                         <line x1="15" y1="-15" x2="-15" y2="15" stroke="#ef4444" strokeWidth="3" />
                         <text x="-30" y="0" textAnchor="end" fill="#f87171" fontSize="11" fontWeight="bold">
-                          Konveksjon stoppet!
+                          Konveksjonen har stoppet
                         </text>
                       </g>
                     )}
@@ -358,7 +356,7 @@ export function AmocTippingModel() {
 
                   {/* Dyp returstrøm etikett */}
                   <text x="196" y="270" fill="#93c5fd" fontSize="11" fontWeight="bold">
-                    Kaldt Nordatlantisk dypvann (NADW) sørover i dypet (2000–3500 m)
+                    Kaldt nordatlantisk dypvann (NADW) sørover i dypet
                   </text>
                 </svg>
               </div>
@@ -370,8 +368,8 @@ export function AmocTippingModel() {
                   <div className="rounded bg-background/80 p-2.5 border border-border">
                     <p className="font-semibold text-foreground">Golfstrømmen (Gulf Stream):</p>
                     <p className="mt-1 text-muted-foreground">
-                      Primært en <strong>vinddrevet overflatestrøm</strong> i den subtropiske gyren.
-                      Så lenge jorden roterer og passatene og vestavinden blåser, vil Golfstrømmen
+                      Primært en <strong>vinddrevet overflatestrøm</strong> i den subtropiske havvirvelen.
+                      Så lenge jorda roterer og passatene og vestavinden blåser, vil Golfstrømmen
                       eksistere. Den kan ikke «slås av».
                     </p>
                   </div>
@@ -400,20 +398,20 @@ export function AmocTippingModel() {
                   Stommels to-boks-modell og hysterese
                 </h4>
                 <p>
-                  I 1961 publiserte oseanografen <strong>Henry Stommel</strong> en banebrytende
-                  matematisk modell som beviste at den termohaline sirkulasjonen har to fundamentalt
-                  forskjellige stabile likevektstilstander for nøyaktig samme ferskvannspådrag:
+                  I 1961 publiserte oseanografen <strong>Henry Stommel</strong> en enkel modell
+                  som viste at sirkulasjonen kan ha to stabile tilstander ved samme ferskvannstilførsel
+                  (Stommel, 1961):
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5 pt-1">
                   <li>
-                    <strong>Aktiv tilstand (On):</strong> Sirkulasjonen transporterer salt vann
+                    <strong>Aktiv tilstand (på):</strong> Sirkulasjonen transporterer salt vann
                     nordover. Saltet holder tettheten høy, noe som driver dyp konveksjon og trekker mer
                     salt vann nordover (selvforsterkende positiv tilbakekobling).
                   </li>
                   <li>
-                    <strong>Kollapset tilstand (Off):</strong> Dypvannsdannelsen har stoppet. Uten
+                    <strong>Kollapset tilstand (av):</strong> Dypvannsdannelsen har stoppet. Uten
                     transport av tropisk salt forblir overflaten i nord fersk og lett. Systemet er låst i
-                    en stabil av-tilstand!
+                    en stabil av-tilstand.
                   </li>
                 </ul>
 
@@ -422,19 +420,21 @@ export function AmocTippingModel() {
                   <p className="mt-1">
                     Hvis en ferskvannspuls fører AMOC forbi det kritiske vippepunktet (F_crit) slik at den
                     kollapser, er det <strong>ikke nok å redusere ferskvannet tilbake til utgangspunktet</strong>.
-                    For å starte motoren igjen må ferskvannstilførselen senkes til et langt lavere nivå!
+                    For å starte motoren igjen må ferskvannstilførselen senkes til et langt lavere nivå.
                   </p>
                 </div>
               </ModelPanel>
 
-              <ModelNote title="Moderne forskning (2023–2026)" tone="warm">
+              <ModelNote title="Nyere forskning" tone="warm">
                 <p>
-                  Tidligere mente FNs klimapanel (IPCC AR6) at en full kollaps før år 2100 var lite
-                  sannsynlig. Nyere observasjonsstudier (bl.a. Ditlevsen & Ditlevsen i{" "}
-                  <em>Nature Communications</em>, 2023 og van Westen et al. i <em>Science Advances</em>,
-                  2024) finner imidlertid fysiske tidlige varselsignaler (økt varians og kritisk
-                  treghet) som tyder på at AMOC kan nå sitt vippepunkt allerede i dette århundret.
+                  Noen nyere studier finner tidlige varselsignaler som tyder på at AMOC kan nærme seg et
+                  vippepunkt i dette hundreåret (Ditlevsen og Ditlevsen, 2023; van Westen mfl., 2024).
+                  Funnene er omdiskutert. IPCC (2021) mener med middels sikkerhet at AMOC ikke bryter
+                  brått sammen før 2100.
                 </p>
+              </ModelNote>
+              <ModelNote title="Om tallene" tone="teal">
+                <p>Forenklet modell. Tallene er illustrasjoner, ikke prognoser.</p>
               </ModelNote>
             </div>
 
@@ -446,7 +446,7 @@ export function AmocTippingModel() {
                     Bifurkasjonsdiagram for AMOC (Stommel-hysterese)
                   </span>
                   <span className="font-mono text-xs text-sky-400">
-                    Nåværende F_fersk = {freshwaterFlux.toFixed(2)} Sv
+                    Nåværende F_fersk = {freshwaterFlux.toFixed(2).replace(".", ",")} Sv
                   </span>
                 </div>
 
@@ -472,7 +472,7 @@ export function AmocTippingModel() {
                     strokeWidth="3.5"
                   />
                   <text x="140" y="55" fill="#38bdf8" fontSize="11" fontWeight="bold">
-                    Stabil 'ON'-tilstand (Dagens AMOC)
+                    Stabil på-tilstand (Dagens AMOC)
                   </text>
 
                   {/* Vippepunkt-bratt stup ned */}
@@ -490,7 +490,7 @@ export function AmocTippingModel() {
                     strokeWidth="3"
                   />
                   <text x="380" y="215" fill="#94a3b8" fontSize="11" fontWeight="bold">
-                    Stabil 'OFF'-tilstand (Kollaps)
+                    Stabil av-tilstand (Kollaps)
                   </text>
 
                   {/* Gjenvinningsterskel (krever langt lavere ferskvann) */}
@@ -502,7 +502,7 @@ export function AmocTippingModel() {
 
                   {/* Aktiv markør for brukerens sliderposisjon */}
                   {(() => {
-                    let markerX = 60 + (freshwaterFlux / 0.35) * 400;
+                    const markerX = 60 + (freshwaterFlux / 0.35) * 400;
                     let markerY = 225; // default off
 
                     if (!isTipped) {
@@ -517,7 +517,7 @@ export function AmocTippingModel() {
                         <line x1={markerX} y1={markerY} x2={markerX} y2="250" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 2" />
                         <rect x={markerX - 45} y={markerY - 26} width="90" height="18" rx="4" fill="#0f172a" stroke="#fbbf24" strokeWidth="1" />
                         <text x={markerX} y={markerY - 14} textAnchor="middle" fill="#fbbf24" fontSize="10" fontWeight="bold">
-                          {amocStrength.toFixed(1)} Sv
+                          {amocStrength.toFixed(1).replace(".", ",")} Sv
                         </text>
                       </g>
                     );
@@ -535,7 +535,7 @@ export function AmocTippingModel() {
                   </div>
                   <div className="rounded bg-slate-900 p-2">
                     <span className="text-muted-foreground block">3. Yngre dryas-parallell:</span>
-                    <span className="text-slate-200">Skjedde for 12 800 år siden ved Lake Agassiz-brudd.</span>
+                    <span className="text-slate-200">Yngre dryas, for ca. 12 800–11 700 år siden: trolig utløst av at smeltevann svekket AMOC kraftig. Hvor vannet kom fra, er omdiskutert (Mangerud, 2025b; Cohen mfl., 2026).</span>
                   </div>
                 </div>
               </div>
