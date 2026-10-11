@@ -13,7 +13,6 @@ import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { P, figureFont, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
 
-type Pt = [number, number];
 const n1 = (v: number) => Math.round(v * 10) / 10;
 
 function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
@@ -247,8 +246,7 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
       labels.push({
         text: k.tekst,
         x: 560,
-        y: 74 + j * 40,
-        at: [n1(cx + Math.cos(a) * r), n1(cy + Math.sin(a) * r)],
+        y: 92 + j * 40,
         color: k.h.farge,
         badge: [n1(cx + Math.cos(a) * (r + 34)), n1(cy + Math.sin(a) * (r + 34))],
       });
@@ -313,6 +311,20 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
                     stroke={C.fg}
                     strokeOpacity="0.7"
                     strokeWidth={long ? 3 : 1.5}
+                  />
+                );
+              })}
+              {KLOKKE.map((k) => {
+                const a = (klokke(k.h.ma).s / 86400) * Math.PI * 2 - Math.PI / 2;
+                return (
+                  <line
+                    key={k.h.kort}
+                    x1={n1(290 + Math.cos(a) * 92)}
+                    y1={n1(280 + Math.sin(a) * 92)}
+                    x2={n1(290 + Math.cos(a) * 214)}
+                    y2={n1(280 + Math.sin(a) * 214)}
+                    stroke={k.h.farge}
+                    strokeWidth="3"
                   />
                 );
               })}
@@ -422,7 +434,7 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
   const labels: Lab[] = [];
   RD_LAG.forEach((l, j) => {
     if (j > i) return;
-    labels.push({ text: l.navn, x: 70, y: l.top + 34, color: l.farge, size: 15, weight: 700, at: [300, l.top + 40], badge: [90, l.top + 40] });
+    labels.push({ text: l.navn, x: 70, y: l.top + 34, color: l.farge, size: 15, weight: 700, badge: [90, l.top + 40] });
   });
   if (step >= 5)
     labels.push({ text: "Forkastning F", x: 600, y: 64, at: [n1(faultX(110)), 110], color: C.low, weight: 700, badge: [470, 98] });
@@ -502,7 +514,7 @@ export function GeotidRelativFigur({ heading = "Slik leser du et snitt: relativ 
             ) : null}
             {step >= 6 ? (
               <g opacity={grow}>
-                <path d="M470 50 L510 50 L560 380 L520 380 Z" fill="#7a3a2c" />
+                <path d="M478 100 L518 100 L560 380 L520 380 Z" fill="#7a3a2c" />
                 <polygon points="502,240 520,236 516,250 499,248" fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
                 <polygon points="507,262 528,258 522,272 505,270" fill="#24414d" stroke={C.teal} strokeWidth="1.5" />
               </g>
@@ -597,10 +609,6 @@ export function HalveringstidFigur({ heading = "Halveringstid: hvor mye er igjen
   const gx = (k: number) => n1(g.x + (k / 8) * g.w);
   const gy = (f: number) => n1(g.y + g.h - f * g.h);
   const kurve = Array.from({ length: 81 }, (_, k) => `${gx(k / 10)} ${gy(2 ** -(k / 10))}`).join(" L");
-  const labels: Lab[] = [
-    { text: `Morisotop ${m.mor}`, x: small ? 40 : 40, y: small ? 466 : 476, color: "#f0b27a", weight: 700 },
-    { text: `Datterisotop ${m.datter}`, x: small ? 250 : 250, y: small ? 466 : 476, color: C.teal, weight: 700 },
-  ];
   return (
     <div ref={wrapRef}>
       <IsbreFigur
@@ -625,13 +633,12 @@ export function HalveringstidFigur({ heading = "Halveringstid: hvor mye er igjen
           </>
         }
         status={status}
-        labels={labels}
         keys={[
-          { text: "Morisotop", color: "#f0b27a", kind: "fill" },
-          { text: "Datterisotop", color: C.teal, kind: "fill" },
+          { text: `Morisotop ${m.mor}`, color: "#f0b27a", kind: "fill" },
+          { text: `Datterisotop ${m.datter}`, color: C.teal, kind: "fill" },
         ]}
         notes={["Modell med 256 atomer", "Et lukket system: ingen isotoper inn eller ut"]}
-        viewBox="0 0 960 500"
+        viewBox="0 0 960 470"
         narrowViewBox="0 0 480 860"
       >
         {({ scale }) => (
