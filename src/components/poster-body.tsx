@@ -165,7 +165,7 @@ import {
   OtecRankineCycleDiagram,
   WindPowerTradeoffDiagram,
 } from "@/components/diagrams/energy";
-import { PhotoFigure } from "@/components/photo-figure";
+import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { Sammendrag } from "@/components/sammendrag";
 import {
   ElvaFraKildeTilMunning,
@@ -538,10 +538,46 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     KlimaDefinisjon: () => (
     <Callout title="Hva betyr «klima»?">
       <p>
-        Klimaendring er et skifte i det langvarige gjennomsnittet av været (WMO, u.å.). En enkelt uke
-        er vær. Mønsteret over lang tid er klima.
+        Klima er gjennomsnittet og variasjonsmønsteret i været over lang tid, vanligvis 30 år eller
+        mer. Klimaet beskriver hva som er typisk, og hva som er ekstremt, på et sted (WMO, u.å.).
       </p>
     </Callout>
+  ),
+    KlimasystemFoto: () => (
+    <PhotoFigure
+      src="/images/fig-klimasystem.jpg"
+      alt="Jorda fra verdensrommet med tynn atmosfære, hav, skyer og innlandsis"
+      heading="Ett system, flere etasjer"
+      caption="Det du ser her, er klimasystemet: luft, hav, is og land i samme bilde. Ingenting av dette virker alene."
+      marks={[
+        { x: 4, y: 20, n: "1", text: "Atmosfære", tone: "teal" },
+        { x: 8, y: 52, n: "2", text: "Hav", tone: "cold" },
+        { x: 58, y: 48, n: "3", text: "Is", tone: "fg" },
+      ]}
+      points={[
+        { n: "1", label: "Tynn og rask. Flytter fukt og varme på dager." },
+        { n: "2", label: "Tregt varmelager. Demper og forskyver klimaet." },
+        { n: "3", label: "Hvit flate. Smelter den, tar planeten opp mer sol." },
+      ]}
+    />
+  ),
+    StralingFotoPar: () => (
+    <PhotoPair
+      heading="Samme jord, to ledd i energien"
+      caption="Venstre: Sola treffer mest ved ekvator, slik du har sett i vindsystemet. Høyre: Den tynne, glødende atmosfæren er teppet som bremser varmen på vei ut."
+      left={{
+        src: "/images/fig-innstraling.jpg",
+        alt: "Jorda belyst sterkest ved ekvator",
+        title: "Inn: sola treffer ujevnt",
+        marks: [{ x: 6, y: 14, n: "1", text: "Mest inn ved ekvator", tone: "warm" }],
+      }}
+      right={{
+        src: "/images/fig-drivhus.jpg",
+        alt: "Jordas atmosfære gløder langs horisonten i skumring",
+        title: "Ut: teppet bremser",
+        marks: [{ x: 6, y: 18, n: "2", text: "Atmosfæren holder igjen", tone: "teal" }],
+      }}
+    />
   ),
     StralingDiagram: () => <EarthRadiationBudgetDiagram />,
     DrivhusForklaring: () => (
@@ -566,31 +602,51 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <PhotoFigure
       src="/images/fig-albedo.jpg"
       alt="Arktisk iskant der hvit is møter mørkt åpent hav"
-      heading="Isen er et speil"
-      caption="Tap av is ved polene gjør flaten mindre reflekterende. Det er en tilbakekobling, ikke det første pådrivet (NASA, 2009)."
+      heading="To flater, to utfall"
+      caption="Samme sol. Hvit is sender mye tilbake. Mørkt vann tar det opp. Når iskanten trekker seg tilbake, vinner den mørke flaten. Det er en tilbakekobling, ikke det første pådrivet (NASA, 2009)."
       marks={[
         { x: 8, y: 16, n: "1", text: "Is kaster tilbake", tone: "fg" },
         { x: 68, y: 38, n: "2", text: "Hav tar opp", tone: "cold", align: "right" },
       ]}
       points={[
-        { n: "1", label: "Høy albedo. Mye sollys kastes tilbake." },
-        { n: "2", label: "Mørkere flate tar opp mer av sollyset." },
+        { n: "1", label: "Høy albedo. Mye sollys reflekteres." },
+        { n: "2", label: "Lav albedo. Energien blir i havet og lufta over." },
+      ]}
+    />
+  ),
+    HavMinneFoto: () => (
+    <PhotoFigure
+      src="/images/fig-amoc.jpg"
+      alt="Nord-Atlanteren med varm overflate nordover og kaldt dyp"
+      heading="Havet som klimaminne"
+      caption="Varmt nordover i lyset, kaldt sørover i mørket. Dette er tregere enn været, og derfor en del av klimaet, ikke av ukas prognose."
+      arrows={[
+        { d: "M 22 22 L 58 16", tone: "warm", width: 1.3 },
+        { d: "M 70 42 L 28 48", tone: "cold", width: 1.3 },
+      ]}
+      marks={[
+        { x: 8, y: 12, n: "1", text: "Varmt, tregt lager", tone: "warm" },
+        { x: 8, y: 50, n: "2", text: "Kaldt dyp sørover", tone: "cold" },
+      ]}
+      points={[
+        { n: "1", label: "Overflaten flytter og lagrer varme mot nord." },
+        { n: "2", label: "Dypet er returen. Ferskvann kan gjøre det vanskeligere for vannet å synke." },
       ]}
     />
   ),
     NorgeKlimaFoto: () => (
     <PhotoFigure
       src="/images/fig-norge-labrador.jpg"
-      alt="Norsk kyst mot et kaldere landskap på samme type bredde"
-      heading="Mildere enn beliggenheten"
-      caption="Fastlands-Norge er mildere enn den nordlige beliggenheten skulle tilsi, fordi havstrømmer og vind transporterer varme hit (SNL, u.å.)."
+      alt="Norsk kyst mot isete Labrador-landskap som kontrast"
+      heading="Samme bredde, ulikt klima"
+      caption="Norge er ikke mildt fordi vi ligger lenger sør. Vi er milde fordi luft og hav flytter varme hit (SNL, u.å.). Endres det samspillet, endres det norske klimaet."
       marks={[
         { x: 6, y: 16, n: "1", text: "Norsk kyst", tone: "teal" },
-        { x: 58, y: 16, n: "2", text: "Hav og vind", tone: "cold" },
+        { x: 58, y: 16, n: "2", text: "Labrador, samme bredde", tone: "cold" },
       ]}
       points={[
-        { n: "1", label: "Kysten fra Oslofjorden til Troms har milde vintre." },
-        { n: "2", label: "Varmen kommer med havstrømmer og vind, ikke bare med solhøyden." },
+        { n: "1", label: "Vestavind og atlantisk varme. Grønt og åpent hav." },
+        { n: "2", label: "Samme breddegrad, men kald luft og is. Klima er transport, ikke bare solhøyde." },
       ]}
     />
   ),

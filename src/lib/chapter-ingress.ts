@@ -30,7 +30,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "tilpasning": "Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak som reduserer skade. Å redusere klimaendringene og å tilpasse seg dem er to ulike svar.",
   "energi-hav-luft": "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola, ikke av vinden.",
   "felt-hav-luft-is": "Feltarbeid i geofag 2 er å planlegge, samle inn, bearbeide, tolke og presentere data fra hav, luft eller is. Varselet er et hjelpemiddel, og egne vurderinger hører med.",
-  "oversikt": "Klima er det langvarige mønsteret i været. Denne siden eier stråling, pådriv og tilbakekobling. Svingningene har egne sider.",
+  "oversikt": "Vær er det som skjer i dag. Klima er mønsteret over tiår. Atmosfæren, havet, isen, landoverflaten og livet henger sammen, og mennesket har varmet jorda med ca. 1,1 °C (2011–2020 mot 1850–1900).",
   "enso": "ENSO er den naturlige svingningen i det tropiske Stillehavet. El Niño er den varme fasen og La Niña den kalde. Den flytter vind og regn, også langt utenfor Stillehavet.",
   "iod": "IOD er den vedvarende forskjellen i havtemperatur mellom vest og øst i det tropiske Indiahavet. I positiv fase er vest varmere og øst kjøligere.",
   "nao": "Den nordatlantiske oscillasjon er trykkforskjellen mellom lavtrykket ved Island og høytrykket ved Asorene. Positiv fase gir sterkere jetstrøm og mer storm og varme i Nord-Europa.",

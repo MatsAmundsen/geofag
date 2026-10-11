@@ -979,55 +979,70 @@ export const QUIZ_ENSO: QuizQuestion[] = [
 
 export const QUIZ_OVERSIKT: QuizQuestion[] = [
   {
-    prompt: "Hva er klima, til forskjell fra været?",
+    prompt: "Hva er forskjellen på vær og klima?",
     options: [
-      "Det langvarige mønsteret i været. Et skifte i det langvarige gjennomsnittet er klimaendring.",
-      "Temperaturen i én uke.",
-      "Bare nedbøren i tropene.",
+      "Vær er temperatur, klima er nedbør.",
+      "Vær er tilstanden nå og de nærmeste dagene. Klima er mønsteret over tiår.",
+      "Klima er bare i tropene.",
+      "De er samme ting med ulike navn.",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er klima?». Klima er mønsteret over lang tid. Været er tilstanden nå.",
+    answer: 1,
+    explain: "En kald uke er vær. At et sted er typisk kaldt i 30 år, er klima.",
   },
   {
-    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling, ikke det første pådrivet?",
     options: [
-      "Den reagerer på temperaturen og forsterker en oppvarming som noe annet har startet.",
-      "Den er ikke en drivhusgass.",
-      "Den finnes bare over hav.",
+      "Fordi vanndamp ikke er en drivhusgass.",
+      "Fordi mengden vanndamp i lufta styres av temperaturen. Endringen settes i gang av noe annet, for eksempel mer karbondioksid.",
+      "Fordi vanndamp bare finnes over hav.",
+      "Fordi den ikke påvirker stråling.",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva betyr drivhuseffekten?». NASA omtaler vanndamp som en tilbakekobling som forsterker.",
+    answer: 1,
+    explain: "Varmere luft holder mer vanndamp. Mer vanndamp holder mer varme. Den forsterker, men starter ikke endringen.",
   },
   {
-    prompt: "Hvor stor del av sollyset som treffer jorda, kastes tilbake?",
-    options: ["29 prosent.", "Hele innstrålingen.", "Ingenting. Alt tas opp ved bakken."],
-    answer: 0,
-    explain:
-      "Se tabellen. 29 prosent reflekteres. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten.",
+    prompt: "Hva beskriver ENSO best?",
+    options: [
+      "At Golfstrømmen snur.",
+      "Et naturlig samspill mellom passatvindene og varmt vann i tropisk Stillehav, som flytter regn og tørke i noen år.",
+      "At ozonlaget tynnes.",
+      "At alle orkaner kommer fra Stillehavet.",
+    ],
+    answer: 1,
+    explain: "El Niño og La Niña er ytterpunkter i samme svingning. De er ikke det samme som global oppvarming.",
   },
   {
-    prompt: "Hvor har det meste av overskuddsvarmen det siste århundret blitt av?",
+    prompt: "Omtrent hvor mye energi tar hele jordas system opp fra sola, i globalt middel?",
     options: [
-      "Omtrent 90 prosent er tatt opp i havet.",
-      "Alt er blitt værende i lufta.",
-      "Havet tar ikke opp varme.",
+      "15 W/m²",
+      "100 W/m²",
+      "340 W/m²",
+      "240 W/m²",
     ],
-    answer: 0,
-    explain:
-      "Se «Havet husker». NASA sier at omtrent 90 prosent av overskuddsvarmen er tatt opp i havet.",
+    answer: 3,
+    explain: "Av 340 W/m² inn kastes 29 prosent tilbake. Resten, omtrent 240 W/m², tas opp (NASA, 2009).",
   },
   {
-    prompt: "Hva er tap av is ved polene i energibudsjettet?",
+    prompt: "Hvilket utsagn om CO₂ er riktig?",
     options: [
-      "En tilbakekobling. Flaten blir mindre reflekterende.",
-      "Det første pådrivet som starter oppvarmingen.",
-      "En endring som bare gjelder været i én dag.",
+      "CO₂ i lufta var i snitt 425,6 ppm globalt i 2025, mot ca. 280 ppm før industrialiseringen",
+      "CO₂ har ligget på samme nivå siden 1850",
+      "CO₂ er en tilbakekobling og ikke et pådriv",
+      "CO₂ i lufta har sunket siden 1990",
     ],
     answer: 0,
-    explain:
-      "Se «Isen er et speil». NASA bruker istap ved polene som eksempel på en tilbakekobling.",
+    explain: "Mer CO₂ er et positivt strålingspådriv (NOAA GML, 2026; IPCC, 2021).",
+  },
+  {
+    prompt: "Grønlandsisen kan heve havnivået med ca. 7,4 m. Hva venter IPCC innen 2100?",
+    options: [
+      "At hele Grønlandsisen har smeltet",
+      "Ingen stigning",
+      "0,28–1,01 m stigning, avhengig av utslipp",
+      "Over 10 m stigning",
+    ],
+    answer: 2,
+    explain: "7,4 m er hvor mye isen inneholder, ikke en prognose (IPCC, 2021).",
   },
 ];
 
@@ -4677,5 +4692,143 @@ export const QUIZ_SJEKK_FELT_HAV_6: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Da ser du lagdelingen direkte.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_1: QuizQuestion[] = [
+  {
+    prompt: "Vinteren er uvanlig kald i hele Norge. Hva sier det om klimaet?",
+    options: [
+      "At klimaet ikke blir varmere",
+      "Lite. Én vinter er vær, og klima er mønsteret over minst 30 år",
+      "At klimaet blir kaldere",
+    ],
+    answer: 1,
+    explain: "Klima er statistikken over minst 30 år. Én kald vinter er vær (WMO, u.å.).",
+  },
+  {
+    prompt: "Hvilke deler består klimasystemet av?",
+    options: [
+      "Bare atmosfæren og havet",
+      "Atmosfæren, havet og sola",
+      "Atmosfæren, havet, isen, landoverflaten og livet",
+    ],
+    answer: 2,
+    explain: "Delene bytter varme, vann og karbon. Endrer du én del, svarer de andre.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_2: QuizQuestion[] = [
+  {
+    prompt: "Omtrent hvor mye av sollyset som treffer jorda, kastes tilbake til rommet?",
+    options: [
+      "29 prosent",
+      "48 prosent",
+      "71 prosent",
+    ],
+    answer: 0,
+    explain: "29 prosent reflekteres, mest fra skyer. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten (NASA, 2009).",
+  },
+  {
+    prompt: "Hva gjør drivhusgassene med strålingen?",
+    options: [
+      "De stopper sollyset før det når bakken",
+      "De lager ny energi i atmosfæren",
+      "De slipper sollyset inn, men bremser den langbølgede varmestrålingen på vei ut",
+    ],
+    answer: 2,
+    explain: "Vanndamp, karbondioksid og metan holder igjen varme nær overflaten (NASA, u.å.-a).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    options: [
+      "Fordi vanndamp ikke er en drivhusgass",
+      "Fordi vanndamp bare finnes over havet",
+      "Fordi mengden vanndamp styres av temperaturen, og den forsterker en endring som noe annet har startet",
+    ],
+    answer: 2,
+    explain: "Varmere luft kan holde mer vanndamp, og mer vanndamp holder mer varme (NASA, u.å.-a).",
+  },
+  {
+    prompt: "Havisen i Arktis smelter. Hvorfor gir det mer oppvarming?",
+    options: [
+      "Fordi smeltevannet er varmt",
+      "Fordi mørkt hav tar opp mer sollys enn hvit is",
+      "Fordi isen sender ut drivhusgasser",
+    ],
+    answer: 1,
+    explain: "Det er is-albedo-tilbakekoblingen. Den er en av grunnene til at Arktis blir varmet opp nesten fire ganger så raskt som jorda i gjennomsnitt (Rantanen mfl., 2022).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_4: QuizQuestion[] = [
+  {
+    prompt: "Hvor har det meste av overskuddsvarmen de siste tiårene blitt av?",
+    options: [
+      "I lufta",
+      "I havet",
+      "I isen",
+    ],
+    answer: 1,
+    explain: "Omtrent 90 prosent er tatt opp i havet (NASA, u.å.-b).",
+  },
+  {
+    prompt: "Hva er riktig om ENSO, IOD og NAO?",
+    options: [
+      "De er naturlige svingninger som flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig",
+      "De er det samme som global oppvarming",
+      "De er ytre pådriv",
+    ],
+    answer: 0,
+    explain: "Svingningene hører til den indre dynamikken i klimasystemet (WMO, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor mye varmere var den globale overflatetemperaturen i 2011–2020 enn i 1850–1900?",
+    options: [
+      "Ca. 0,5 °C",
+      "Ca. 2 °C",
+      "1,09 °C",
+    ],
+    answer: 2,
+    explain: "Det beste anslaget for den menneskeskapte delen er 1,07 °C (IPCC, 2021).",
+  },
+  {
+    prompt: "2024 var 1,60 °C over førindustrielt nivå. Betyr det at Paris-grensen på 1,5 °C er nådd?",
+    options: [
+      "Nei, grensen gjelder et gjennomsnitt over 20 år",
+      "Ja, ett år over 1,5 °C er nok",
+      "Ja, men bare i Europa",
+    ],
+    answer: 0,
+    explain: "Den langsiktige oppvarmingen anslås til ca. 1,4 °C (Copernicus, 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er norskekysten mildere enn Labrador på samme bredde?",
+    options: [
+      "Fordi vestavinden og det varme havet flytter varme hit",
+      "Fordi sola står høyere over Norge",
+      "Fordi Norge ligger lenger sør",
+    ],
+    answer: 0,
+    explain: "Klima er transport, ikke bare solhøyde. Varmen kommer med Den norske atlanterhavsstrømmen og vestavinden.",
+  },
+  {
+    prompt: "Hva kan et varmere klima bety for Vestlandet?",
+    options: [
+      "Mindre nedbør, fordi lufta blir tørrere",
+      "Mer intens nedbør, fordi varmere luft kan holde mer fukt",
+      "Ingen endring, fordi fjellene stopper all luft",
+    ],
+    answer: 1,
+    explain: "Lufta tvinges opp av fjellet, og varmere luft holder mer fukt.",
   },
 ];
