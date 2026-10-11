@@ -419,7 +419,7 @@ export function FjellskredBolgeDiagram() {
           <path d="M 40 300 L 40 90 L 220 300 Z" fill="#2a3d34" stroke={C.dim} />
           <path d="M 118 196 L 160 196 L 196 262 L 148 262 Z" fill={C.low} opacity="0.8" />
           <path d="M 112 190 L 166 190" stroke={C.low} strokeWidth="3.4" />
-          <L x="80" y="176" fill={C.low} size={13}>
+          <L x="124" y="168" fill={C.low} size={13}>
             sprekk
           </L>
           <Arrow d="M 176 236 L 236 292" marker={m.low} color={C.low} width={3.2} />
