@@ -95,6 +95,12 @@ import {
   QUIZ_SJEKK_HAVSTROMMER_4,
   QUIZ_SJEKK_HAVSTROMMER_5,
   QUIZ_SJEKK_HAVSTROMMER_6,
+  QUIZ_SJEKK_MODELLER_1,
+  QUIZ_SJEKK_MODELLER_2,
+  QUIZ_SJEKK_MODELLER_3,
+  QUIZ_SJEKK_MODELLER_4,
+  QUIZ_SJEKK_MODELLER_5,
+  QUIZ_SJEKK_MODELLER_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -184,6 +190,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Havstrommer4: QUIZ_SJEKK_HAVSTROMMER_4,
   Havstrommer5: QUIZ_SJEKK_HAVSTROMMER_5,
   Havstrommer6: QUIZ_SJEKK_HAVSTROMMER_6,
+  Modeller1: QUIZ_SJEKK_MODELLER_1,
+  Modeller2: QUIZ_SJEKK_MODELLER_2,
+  Modeller3: QUIZ_SJEKK_MODELLER_3,
+  Modeller4: QUIZ_SJEKK_MODELLER_4,
+  Modeller5: QUIZ_SJEKK_MODELLER_5,
+  Modeller6: QUIZ_SJEKK_MODELLER_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -343,6 +355,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Oppvelling henter kaldt og næringsrikt vann opp når ekmantransporten fører overflatevannet bort fra kysten. Oppvellingsområdene dekker under 1 prosent av havoverflaten, men gir opptil 20 prosent av fiskefangsten i verden.",
     "Den norske atlanterhavsstrømmen, ikke Golfstrømmen, frakter varmt atlanterhavsvann langs Norge. Nærmere land går den ferskere Den norske kyststrømmen. Det milde klimaet kommer av samspillet mellom havet og vindsystemene.",
     "Kaldt og salt vann synker og driver den langsomme termohaline sirkulasjonen. I nord skjer det mest ved avkjøling om vinteren. IPCC venter at AMOC svekkes i dette hundreåret, men mener med middels sikkerhet at den ikke bryter brått sammen før 2100.",
+  ],
+  Modeller: [
+    "En numerisk modell løser grunnlikningene for atmosfæren eller havet med tall, steg for steg i tid, i et tredimensjonalt rutenett.",
+    "Oppløsningen er rutestørrelsen. Små ruter gir bedre terreng, men krever kortere tidssteg og mye mer regnekraft. Prosesser som er mindre enn rutene, som skyer, turbulens og stråling, må parameteriseres.",
+    "Dataassimilering kombinerer et kort varsel med nye observasjoner til en analyse. Fordi atmosfæren er kaotisk, kjøres ensembler som viser hvor sikkert varselet er.",
+    "I værvarslingen gir ECMWF randverdier og varsler for hele jorda. MEPS (2,5 km) gir de første døgnene på Yr, og AROME-Arctic (2,5 km) dekker Svalbard og nordområdene.",
+    "Havmodellen Norkyst (ca. 800 meter) drives av vind og lufttrykk fra værmodellen, ferskvann fra elvene og tidevannet, og brukes til strøm, stormflo, drift i sjøen og lakselus.",
+    "Klimamodeller som NorESM regner ut hvordan værstatistikken endrer seg når pådrivene endres. Modellene blir bedre med mer regnekraft, flere observasjoner og bedre parameteriseringer, og varslene har blitt omtrent én dag bedre hvert tiende år.",
   ],
 };
 

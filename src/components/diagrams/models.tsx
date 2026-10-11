@@ -11,7 +11,7 @@ export function ModelGrid3DDiagram() {
     <Diagram
       title="3D-rutenett og vertikale koordinater i en numerisk modell over norsk topografi"
       heading="Atmosfæren delt i et tredimensjonalt rutenett"
-      caption="En numerisk værmodell deler atmosfæren i et tredimensjonalt nettverk av beregningsceller. Horisontalt bestemmes oppløsningen av cellebredden Δx og celledybden Δy (for eksempel 2,5 km i MEPS og 9 km i ECMWF). Vertikalt deles luftsøylen i 65–137 lag fra bakken til mesosfæren. Nær bakken benyttes terrengfølgende koordinater (sigma-flater) som buer seg mykt over norske fjell og fjorder, før de høyere oppe går over i plane isobarflater. For hver eneste celle beregner superdatamaskinen de seks fundamentale meteorologiske tilstandsvariablene: horisontal vind (u, v), vertikal vind (w), temperatur (T), lufttrykk (p), vanndamp (q) og skymengde."
+      caption="En numerisk værmodell deler atmosfæren i et tredimensjonalt nettverk av beregningsceller. Horisontalt bestemmes oppløsningen av cellebredden Δx og celledybden Δy (for eksempel 2,5 km i MEPS og 9 km i ECMWF). Vertikalt deles luftsøylen i lag: 65 lag opp til 10 hPa i MEPS, og 137 lag opp til ca. 80 km i ECMWF. Bare ECMWF når mesosfæren (Eresmaa, 2024; ECMWF, u.å.-b). Nær bakken benyttes terrengfølgende koordinater (sigma-flater) som buer seg mykt over norske fjell og fjorder, før de høyere oppe går over i plane isobarflater. For hver eneste celle beregner superdatamaskinen tilstandsvariablene: horisontal vind (u, v), vertikal vind (w), temperatur (T), lufttrykk (p), vanndamp (q) og skymengde."
       viewBox="0 0 940 540"
       wide
     >
@@ -195,9 +195,9 @@ export function ModelGrid3DDiagram() {
 export function PrimitiveEquationsDiagram() {
   return (
     <Diagram
-      title="De fysiske primitivligningene, tidsstegintegrasjon og CFL-kriteriet"
-      heading="Primitivligningene: Fysikken bak hvert eneste tidssteg"
-      caption="Numeriske værmodeller bygger ikke på statistisk synsing, men på eksakt klassisk fysikk. Seks koblede partielle differensialligninger (primitivligningene) beskriver atmosfærens utvikling: 1) Newtons 2. lov for væsker (Navier-Stokes) styrer akselerasjon fra trykkgradient, Coriolis, tyngdekraft og friksjon. 2) Kontinuitetsligningen sikrer massebevaring. 3) Termodynamikkens 1. lov håndterer adiabatisk oppvarming og latent varme. 4) Ideell gasslov kobler trykk, tetthet og temperatur. 5) Fuktighetsligninger sporer vanndamp og faseskifter. Superdatamaskinen regner ut tendensene ∂/∂t og oppdaterer tilstanden for neste tidssteg t + Δt. For numerisk stabilitet krever Courant-Friedrichs-Lewy (CFL)-kriteriet at tidssteget Δt er kortere enn tiden det tar for vinden å krysse én rutenettcelle (C = u·Δt / Δx ≤ 1)."
+      title="Grunnlikningene, tidssteg og CFL-kriteriet"
+      heading="Grunnlikningene: fysikken bak hvert tidssteg"
+      caption="Numeriske værmodeller bygger på grunnlikningene (primitivlikningene), som beskriver atmosfærens utvikling: 1) Newtons 2. lov for væsker (Navier-Stokes) styrer akselerasjon fra trykkgradient, Coriolis, tyngdekraft og friksjon. 2) Kontinuitetslikningen sikrer massebevaring. 3) Termodynamikkens 1. lov håndterer adiabatisk oppvarming og latent varme. 4) Ideell gasslov kobler trykk, tetthet og temperatur. 5) Fuktighetslikninger sporer vanndamp og faseskifter. Superdatamaskinen regner ut tendensene ∂/∂t og oppdaterer tilstanden for neste tidssteg t + Δt. For numerisk stabilitet krever Courant-Friedrichs-Lewy (CFL)-kriteriet at tidssteget Δt er kortere enn tiden det tar for vinden å krysse én rutenettcelle (C = u·Δt / Δx ≤ 1)."
       viewBox="0 0 940 520"
       wide
     >
@@ -208,7 +208,7 @@ export function PrimitiveEquationsDiagram() {
 
           {/* TOPP: DE FEM GRUNNLIGNINGENE SOM MODULER */}
           <g transform="translate(45, 45)">
-            <L x="10" y="16" fill={C.teal} size={14} weight={800}>De 5 fysiske bevaringslovene (Primitivligningene)</L>
+            <L x="10" y="16" fill={C.teal} size={14} weight={800}>Grunnlikningene (primitivlikningene)</L>
             <L x="850" y="16" fill={C.muted} size={11} anchor="end">Løses samtidig i alle gridceller</L>
 
             {/* Boks 1: Bevegelsesligningen (Navier-Stokes) */}
@@ -244,7 +244,7 @@ export function PrimitiveEquationsDiagram() {
             {/* Boks 4: Gasslov og Hydrostati */}
             <g transform="translate(525, 30)">
               <rect x="0" y="0" width="160" height="105" rx="8" fill="#11222f" stroke={C.sand} strokeWidth="1.4" />
-              <L x="12" y="20" fill={C.sand} size={12} weight={700}>4. Tilstand og Trykk</L>
+              <L x="12" y="20" fill={C.sand} size={12} weight={700}>4. Tilstandslikningen (gassloven)</L>
               <L x="12" y="38" fill="#cbd5e1" size={11} weight={800}>p = ρRT · ∂p/∂z = -ρg</L>
               <L x="12" y="58" fill={C.muted} size={10}>Hydrostatisk balanse:</L>
               <L x="12" y="72" fill={C.muted} size={10}>• Ideell gasslov</L>
@@ -280,7 +280,7 @@ export function PrimitiveEquationsDiagram() {
             {/* Trinn 2: Beregn tendenser ∂/∂t */}
             <g transform="translate(285, 40)">
               <rect x="0" y="0" width="260" height="60" rx="6" fill="#162b3a" stroke={C.warm} strokeWidth="1.2" />
-              <L x="130" y="25" fill={C.warm} size={12} weight={700} anchor="middle">Løs differensialligninger</L>
+              <L x="130" y="25" fill={C.warm} size={12} weight={700} anchor="middle">Løs differensiallikninger</L>
               <L x="130" y="45" fill="#f8fafc" size={11} anchor="middle">Tendens: ∂u/∂t, ∂T/∂t, ∂p/∂t</L>
             </g>
 
@@ -305,7 +305,7 @@ export function PrimitiveEquationsDiagram() {
               <L x="0" y="22" fill="#cbd5e1" size={13} weight={700}>C = (u · Δt) / Δx ≤ 1</L>
               <L x="0" y="42" fill={C.muted} size={11}>Tidssteget Δt må være så kort at lufta ikke rekker å blåse</L>
               <L x="0" y="58" fill={C.muted} size={11}>gjennom mer enn én gridcelle (Δx) på ett tidssteg.</L>
-              <L x="0" y="74" fill={C.low} size={11} weight={600}>Dersom C &gt; 1, eksploderer feilene numerisk og modellen krasjer!</L>
+              <L x="0" y="74" fill={C.low} size={11} weight={600}>Er C større enn 1, blir regnestykket ustabilt.</L>
             </g>
 
             {/* Midt: Skisse av partikkel i gridcelle */}
@@ -326,7 +326,7 @@ export function PrimitiveEquationsDiagram() {
               <L x="0" y="40" fill={C.muted} size={11}>• 2× celler i x-retning · 2× celler i y-retning</L>
               <L x="0" y="56" fill={C.muted} size={11}>• 2× celler i z-retning = 8× flere 3D-celler</L>
               <L x="0" y="72" fill={C.warm} size={11} weight={700}>• Pluss halvert tidssteg (Δt/2) pga. CFL</L>
-              <L x="0" y="90" fill="#f59e0b" size={12} weight={800}>= 16× mer regnekraft per døgn!</L>
+              <L x="0" y="90" fill="#f59e0b" size={12} weight={800}>Halvert rute: 4 ganger så mange ruter langs bakken, pluss kortere tidssteg</L>
             </g>
           </g>
         </>
@@ -344,9 +344,9 @@ export function PrimitiveEquationsDiagram() {
 export function SubgridParametrizationDiagram() {
   return (
     <Diagram
-      title="Parametrisering av sub-grid prosesser i numeriske modeller"
-      heading="Parametrisering: Fysikken som gjemmer seg under rutenettet"
-      caption="En numerisk værmodell kan kun beregne én gjennomsnittlig verdi for temperatur, fuktighet og vind per rutenettcelle (venstre panel). Prosesser som er mindre enn cellen — som tordenskyer (konveksjon), turbulente virvler i terrenget, dråpedannelse og strålingsrefleksjon — kalles sub-grid prosesser. Siden de ikke kan løses direkte, må de representeres gjennom parametrisering (høyre panel): statistiske og fysiske formler som beregner hvordan de småskalige prosessene samlet påvirker cellens gjennomsnittstilstand."
+      title="Parameterisering av sub-grid prosesser i numeriske modeller"
+      heading="Parameterisering: Fysikken som gjemmer seg under rutenettet"
+      caption="En numerisk værmodell kan kun beregne én gjennomsnittlig verdi for temperatur, fuktighet og vind per rutenettcelle (venstre panel). Prosesser som er mindre enn cellen — som tordenskyer (konveksjon), turbulente virvler i terrenget, dråpedannelse og strålingsrefleksjon — kalles sub-grid prosesser. Siden de ikke kan løses direkte, må de representeres gjennom parameterisering (høyre panel): statistiske og fysiske formler som beregner hvordan de småskalige prosessene samlet påvirker cellens gjennomsnittstilstand."
       viewBox="0 0 940 520"
       wide
     >
@@ -416,7 +416,7 @@ export function SubgridParametrizationDiagram() {
               />
             ))}
             <L x="220" y="295" fill={C.rain} size={11} weight={800}>Lokal styrtregnskur</L>
-            <L x="220" y="310" fill={C.muted} size={10}>Treffer kun 20 % av cellens areal!</L>
+            <L x="220" y="310" fill={C.muted} size={10}>Treffer bare en liten del av ruten</L>
 
             {/* Terrenget nederst inni cellen (Åskam og dal) */}
             <path
@@ -433,7 +433,7 @@ export function SubgridParametrizationDiagram() {
 
             {/* Celledimensjonsmerking */}
             <line x1="15" y1="395" x2="495" y2="395" stroke={C.teal} strokeWidth="1.2" strokeDasharray="4 3" />
-            <L x="255" y="390" fill={C.teal} size={11} weight={700} anchor="middle">Modellens oppløsning: Alt over er usynlig for primærligningene!</L>
+            <L x="255" y="390" fill={C.teal} size={11} weight={700} anchor="middle">Modellens oppløsning: alt mindre enn ruten må parameteriseres</L>
           </g>
 
           {/* HØYRE PANEL: DE FIRE HOVEDPARAMETRISERINGENE */}
@@ -442,7 +442,7 @@ export function SubgridParametrizationDiagram() {
 
             {/* Tittel høyre panel */}
             <rect x="0" y="0" width="340" height="38" rx="8" fill="#24190c" />
-            <L x="18" y="24" fill={C.warm} size={13} weight={800}>4 Nøkkelparametriseringer i modellen</L>
+            <L x="18" y="24" fill={C.warm} size={13} weight={800}>4 viktige parameteriseringer i modellen</L>
 
             {/* Skjema 1: Konveksjon */}
             <g transform="translate(15, 52)">
@@ -497,7 +497,7 @@ export function DataAssimilationCycleDiagram() {
   return (
     <Diagram
       title="Dataassimilering: analysesyklusen i operative værvarslingssentre"
-      heading="Slik forankres modellen i virkeligheten: 4D-Var analysesyklus"
+      heading="Slik forankres modellen i virkeligheten: analysesyklusen"
       caption="ECMWF bruker 4D-Var med et tidsvindu på 12 timer. MEPS assimilerer oftere, med kortere vinduer (3D-Var hver 3. time). Superdatamaskinen henter inn millioner av ferske målinger fra satellitter, værballonger (radiosonder), rutefly og bakkestasjoner. Disse veies matematisk mot modellens forrige korttidsprognose («bakgrunnstilstand» eller First Guess). Fordi målingene har støy og er ujevnt spredt i rommet, skaper 4D-Var en optimal og fysisk balansert «analyse» (starttilstand). Fra denne analysen starter et nytt 10- til 15-dagers værvarsel."
       viewBox="0 0 940 480"
       wide
@@ -521,7 +521,7 @@ export function DataAssimilationCycleDiagram() {
             {/* Satellitter */}
             <g transform="translate(30, 36)">
               <rect x="0" y="0" width="180" height="42" rx="5" fill="#182d3d" />
-              <L x="12" y="18" fill="#38bdf8" size={11} weight={700}>🛰️ Værsatellitter (90 %)</L>
+              <L x="12" y="18" fill="#38bdf8" size={11} weight={700}>🛰️ Værsatellitter</L>
               <L x="12" y="32" fill={C.muted} size={9}>Infrarøde og mikrobølgeradianse</L>
             </g>
 
@@ -594,9 +594,8 @@ export function DataAssimilationCycleDiagram() {
             <rect x="0" y="0" width="850" height="65" rx="8" fill="#0d1b24" stroke="#22c55e" strokeWidth="1.2" />
             <L x="25" y="26" fill="#22c55e" size={13} weight={800}>Neste modellprognose skytes ut:</L>
             <L x="25" y="46" fill="#cbd5e1" size={11}>
-              Superdatamaskinen regner nytt 66-timers MEPS-varsel for Norden og 15-dagers ECMWF-ensemble for kloden. Syklusen gjentas når neste vindu er fullt.
+              Superdatamaskinen regner nytt 66-timers MEPS-varsel for Skandinavia, Finland og Baltikum og 15-dagers ECMWF-ensemble for kloden. Syklusen gjentas når neste vindu er fullt.
             </L>
-            <L x="825" y="38" fill={C.sand} size={12} weight={700} anchor="end">Uten assimilering glemmer modellen virkeligheten på 3–4 døgn!</L>
           </g>
         </>
       )}
@@ -615,7 +614,7 @@ export function LorenzChaosEnsembleDiagram() {
     <Diagram
       title="Kaos, Lorenz-attraktoren og ensemblevarsling (EPS) fra dag 0 til 14"
       heading="Fra deterministisk kaos til probabilistisk ensemble"
-      caption="Venstre panel: Lorenz-attraktoren (1963) viser atmosfærens ikke-lineære dynamikk («sommerfugleffekten»). To modellberegninger som starter nesten nøyaktig likt (avvik på 0,001) følger hverandre tett de første omløpene (cyan og oransje kurve), men skiller plutselig lag og havner på helt motsatte vinger av attraktoren. Høyre panel: Moderne værvarsling løser dette gjennom ensemblevarsling (EPS). De første 1–3 døgnene er spredningen minimal (høy varslingstillit). Rundt dag 5–8 begynner banene å sprike dramatisk. Utover dag 10 gir ikke et enkelt tall mening lenger; varselet må tolkes probabilistisk via spredningsvifter og boksplot."
+      caption="Venstre panel: Lorenz-attraktoren (1963) viser atmosfærens ikke-lineære dynamikk («sommerfugleffekten»). To modellberegninger som starter nesten nøyaktig likt (avvik på 0,001, en illustrasjon) følger hverandre tett de første omløpene (cyan og oransje kurve), men skiller plutselig lag og havner på helt motsatte vinger av attraktoren. Høyre panel: Moderne værvarsling løser dette gjennom ensemblevarsling (EPS). Først er spredningen liten (høy varslingstillit). Etter hvert begynner banene å sprike, og når de spriker mye, gir ikke et enkelt tall mening lenger. Da må varselet tolkes som sannsynligheter."
       viewBox="0 0 940 500"
       wide
     >
@@ -688,7 +687,7 @@ export function LorenzChaosEnsembleDiagram() {
               <rect x="0" y="0" width="330" height="75" rx="6" fill="#111c26" stroke="#253545" />
               <L x="12" y="20" fill={C.fg} size={11} weight={700}>To simuleringer med 0,001 startavvik:</L>
               <L x="12" y="38" fill="#38bdf8" size={10} weight={600}>• Bane A (cyan): Følger venstre vinge (Høytrykk)</L>
-              <L x="12" y="54" fill="#f59e0b" size={10} weight={600}>• Bane B (oransje): Kastes til høyre vinge (Dyp storm!)</L>
+              <L x="12" y="54" fill="#f59e0b" size={10} weight={600}>• Bane B (oransje): Kastes til høyre vinge (annen vinge)</L>
               <L x="12" y="68" fill={C.muted} size={9}>Ekstrem følsomhet for startbetingelser gjør determinisme umulig.</L>
             </g>
           </g>
@@ -697,7 +696,7 @@ export function LorenzChaosEnsembleDiagram() {
           <g transform="translate(435, 45)">
             <rect x="0" y="0" width="460" height="410" rx="8" fill="#081018" stroke={C.teal} strokeWidth="1.4" />
             <rect x="0" y="0" width="460" height="36" rx="8" fill="#0f232f" />
-            <L x="15" y="24" fill={C.teal} size={13} weight={800}>Ensemblevarsel: 50 parallelle kjøringer (EPS)</L>
+            <L x="15" y="24" fill={C.teal} size={13} weight={800}>Ensemblevarsel: 51 medlemmer i ECMWF (ett kontrollvarsel og 50 med små endringer), 30 i MEPS</L>
             <L x="445" y="24" fill={C.muted} size={10} anchor="end">ECMWF / MEPS</L>
 
             {/* Koordinatsystem for EPS */}
@@ -769,7 +768,7 @@ export function LorenzChaosEnsembleDiagram() {
               <rect x="0" y="0" width="420" height="68" rx="6" fill="#101f2b" stroke="#1e3244" />
               <L x="12" y="18" fill={C.fg} size={11} weight={700}>Slik leser du Yr-varselet ved stor spredning:</L>
               <L x="12" y="34" fill={C.muted} size={10}>Når Yr hopper mellom sol og 20 mm på dag 8, er det ikke modellen</L>
-              <L x="12" y="48" fill={C.muted} size={10}>som er ødelagt. Det er ensemblets spredning du ser!</L>
+              <L x="12" y="48" fill={C.muted} size={10}>som er ødelagt. Det er ensemblets spredning du ser.</L>
               <L x="12" y="62" fill={C.teal} size={10} weight={600}>Bruk sannsynlighetsvarsel («40 % sjanse for regn»), ikke enkelttall.</L>
             </g>
           </g>
@@ -782,15 +781,15 @@ export function LorenzChaosEnsembleDiagram() {
 /**
  * 6. ModelHierarchyNorwayDiagram
  * Det operative modellhierarkiet (Nesting) for Norge:
- * Fra global ECMWF IFS (9 km) til regional MEPS (2,5 km konveksjonsløsende over Norden)
- * og lokal Norkyst-800 i kyst- og fjordstrøk.
+ * Fra global ECMWF IFS (9 km) til regional MEPS (2,5 km konveksjonstillatende over Skandinavia, Finland og Baltikum)
+ * og lokal Norkyst (versjon 3, ca. 800 m) i kyst- og fjordstrøk.
  */
 export function ModelHierarchyNorwayDiagram() {
   return (
     <Diagram
-      title="Det operative modellhierarkiet i Norge: Fra global ECMWF til MEPS og Norkyst"
+      title="Det operative modellhierarkiet i Norge: Fra global ECMWF til MEPS, AROME-Arctic og Norkyst"
       heading="Nesting: Fra storskala global atmosfære til lokale fjorder"
-      caption="Ingen superdatamaskin i verden har nok regnekraft til å kjøre hele kloden med 800 meters oppløsning. Derfor bruker Meteorologisk institutt et hierarki av modeller med ulik oppløsning (nesting): 1) Den globale modellen ECMWF IFS dekker hele planeten med 9 km oppløsning og 51 ensemblemedlemmer. Den beregner de store stormbanene og jetstrømmene. 2) På randen mater ECMWF inn data til den regionale modellen MEPS (MetCoOp Ensemble Prediction System). MEPS dekker Norden med 2,5 km oppløsning og 30 medlemmer. Med 2,5 km løser modellen dype bygeskyer og norsk fjordtopografi direkte. 3) AROME-Arctic ivaretar havis og polare lavtrykk. 4) Havmodellen Norkyst-800 drives av MEPS-vinder og simulerer kyststrømmer, tidevann og stormflo med 800 meters oppløsning."
+      caption="Ingen superdatamaskin i verden har nok regnekraft til å kjøre hele kloden med 800 meters oppløsning. Derfor bruker Meteorologisk institutt et hierarki av modeller med ulik oppløsning (nesting): 1) Den globale modellen ECMWF IFS dekker hele planeten med 9 km oppløsning og 51 ensemblemedlemmer. Den beregner de store stormbanene og jetstrømmene. 2) På randen mater ECMWF inn data til den regionale modellen MEPS (MetCoOp Ensemble Prediction System). MEPS dekker Skandinavia, Finland og Baltikum med 2,5 km oppløsning og 30 medlemmer. Med 2,5 km regner modellen store byger i grove trekk direkte (konveksjonstillatende) og får med norsk fjordtopografi. 3) AROME-Arctic ivaretar havis og polare lavtrykk. 4) Havmodellen Norkyst (versjon 3, ca. 800 m) drives av vind og lufttrykk fra AROME-MetCoOp (2,5 km), med ECMWF der det mangler data, og simulerer kyststrømmer, tidevann og stormflo med 800 meters oppløsning."
       viewBox="0 0 940 520"
       wide
     >
@@ -868,15 +867,15 @@ export function ModelHierarchyNorwayDiagram() {
                 <rect x="0" y="0" width="240" height="150" rx="6" fill="#09141e" stroke="#1f2d3d" />
                 <L x="12" y="20" fill={C.fg} size={11} weight={700}>Spesifikasjoner:</L>
                 <L x="12" y="40" fill={C.teal} size={11} weight={600}>• Område:</L>
-                <L x="75" y="40" fill="#cbd5e1" size={11}>Norden og Østersjøen</L>
+                <L x="75" y="40" fill="#cbd5e1" size={11}>Skandinavia, Finland og Baltikum</L>
                 <L x="12" y="60" fill={C.teal} size={11} weight={600}>• Oppløsning:</L>
                 <L x="85" y="60" fill="#22c55e" size={11} weight={800}>2,5 km grid</L>
                 <L x="12" y="80" fill={C.teal} size={11} weight={600}>• Ensemble:</L>
                 <L x="80" y="80" fill="#cbd5e1" size={11}>30 medlemmer</L>
                 <L x="12" y="100" fill={C.teal} size={11} weight={600}>• Tidshorisont:</L>
                 <L x="95" y="100" fill="#cbd5e1" size={11}>66 timer (Yr time-for-time)</L>
-                <L x="12" y="125" fill="#22c55e" size={10} weight={700}>Konveksjonsløsende!</L>
-                <L x="12" y="138" fill={C.muted} size={10}>Løser dype bygeskyer og fjellbølger direkte.</L>
+                <L x="12" y="125" fill="#22c55e" size={10} weight={700}>Konveksjonstillatende:</L>
+                <L x="12" y="138" fill={C.muted} size={10}>store byger regnes i grove trekk direkte.</L>
               </g>
             </g>
 
@@ -890,7 +889,7 @@ export function ModelHierarchyNorwayDiagram() {
             <g transform="translate(600, 0)">
               <rect x="0" y="0" width="250" height="340" rx="8" fill="#101e2b" stroke={C.warm} strokeWidth="1.6" />
               <rect x="0" y="0" width="250" height="40" rx="8" fill="#2c2214" />
-              <L x="15" y="25" fill={C.warm} size={13} weight={800}>3. Havmodell: Norkyst-800</L>
+              <L x="15" y="25" fill={C.warm} size={13} weight={800}>3. Havmodell: Norkyst (versjon 3, ca. 800 m)</L>
 
               {/* Illustrasjon: Kyst og fjord */}
               <g transform="translate(125, 105)">
@@ -925,7 +924,7 @@ export function ModelHierarchyNorwayDiagram() {
             <L x="20" y="40" fill={C.muted} size={11}>
               Dekker Barentshavet, Svalbard og Nord-Atlanteren. Spesialtilpasset sjøisdekke, ekstrem kulde, polare lavtrykk og arktiske grenselag.
             </L>
-            <L x="830" y="32" fill={C.teal} size={11} weight={600} anchor="end">Kilde: Meteorologisk institutt (MET, u.å.-a)</L>
+            <L x="830" y="32" fill={C.teal} size={11} weight={600} anchor="end">Kilde: Meteorologisk institutt (MET, 2017)</L>
           </g>
         </>
       )}
@@ -934,3 +933,9 @@ export function ModelHierarchyNorwayDiagram() {
 }
 
 
+
+/**
+ * Bakoverkompatibel eksport:
+ * Dersom noen eldre filer importerer ModelGridDiagram, peker den nå på ModelGrid3DDiagram.
+ */
+export const ModelGridDiagram = ModelGrid3DDiagram;

@@ -274,4 +274,12 @@ describe("scan chips for the other geosfære chapters", () => {
       ["Skred", "Kvikkleire", "Fjellskred", "Forebygging", "Begreper", "Sammendrag", "Quiz"],
     );
   });
+
+  it("labels Numeriske modeller with short topic chips", () => {
+    const doc = prepareChapterScan(readChapter("numeriske-modeller"));
+    assert.deepEqual(
+      doc.sections.map((section) => section.label),
+      ["Oppbygging", "Parameterisering", "Start", "Vær", "Hav", "Klima", "Utvikling", "Begreper", "Sammendrag", "Quiz"],
+    );
+  });
 });

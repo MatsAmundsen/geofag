@@ -1076,6 +1076,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "havstrommer",
     stale: ["[Havstrømmer](/tema/havstrommer) handler om disse drivkreftene"],
   },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-numeriske-modeller-mal-2026-10-11",
+    slug: "numeriske-modeller",
+    stale: ["ECMWF har som kjerneoppgave", "Fra idé til regnestykke", "Observasjoner, hav og klima"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
