@@ -48,7 +48,7 @@ Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i 
 
 | | Hadley-cellen | Ferrel-cellen | Polarcellen |
 |---|---|---|---|
-| Omtrentlig belte | tropene og subtropene, høytrykk nær 30° | vestavind mellom 35° og 60° | fra om lag 50–60° til polen |
+| Omtrentlig belte | tropene og subtropene, høytrykk nær 30° | om lag 30°–60°, med vestavind ved bakken | fra om lag 60° til polen |
 | Lufta | stiger ved ekvator og synker nær 30° | synker nær 30° og stiger nær 50–60° | stiger nær 50–60° og synker over polen |
 | Ved bakken | passatvind inn mot ekvator | vestavind mot polen | polare østavinder ut fra polen |
 | Hva som driver den | oppvarming ved ekvator | vandrende lavtrykk og høytrykk, ikke oppvarming (termisk indirekte) | kald luft som synker over polen |
@@ -81,7 +81,7 @@ Den sterkeste motoren sitter i tropene. Der møtes passatene i den intertropiske
 
 Navnet sier hva som skjer. Intertropisk betyr i det varme beltet rundt ekvator. Konvergens betyr at nordøstpassaten og sørøstpassaten strømmer sammen. Sone betyr et belte, ikke en strek. Beltet vises som et bånd av skyer, byger og av og til torden rundt jorda (NOAA, u.å.-b; Store norske leksikon, u.å.-b).
 
-Når de to passatene møtes, har lufta én vei: opp. Er lufta fuktig, kondenserer vanndampen, og det dannes skyer (Store norske leksikon, u.å.-b). Kondensasjonen frigjør latent varme, så lufta i skyen holder seg lettere enn lufta rundt. Nede ved havflaten er bevegelsen mest loddrett. Hadley-cellen lager også et stillebelte, som har vært vanskelig for seilskutene (Store norske leksikon, u.å.-a).
+Når de to passatene møtes, har lufta én vei: opp. Er lufta fuktig, kondenserer vanndampen, og det dannes skyer (Store norske leksikon, u.å.-b). Kondensasjonen frigjør latent varme, så lufta i skyen holder seg lettere enn lufta rundt. Ved havflaten blir vinden svak og skiftende, fordi lufta stiger i stedet for å strømme sidelengs. Dette stillebeltet i Hadley-cellen har vært vanskelig for seilskutene (Store norske leksikon, u.å.-a).
 
 ```widget
 HadleyCloseupDiagram
@@ -169,7 +169,7 @@ Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mel
 
 Norge ligger i vestavindsbeltet. Lavtrykk som dannes over Atlanteren, følger den øvre vinden inn mot kysten. På veien har lufta tatt opp vanndamp. Klimaet i Norge er mildere enn breddegraden skulle tilsi, fordi havstrømmer og vind frakter varme hit (Store norske leksikon, u.å.-e).
 
-Nedbøren følger vinden og terrenget. Innenfor vestkysten forsterkes bygene når lufta heves mot fjellene. Der er det soner med over 2000 mm i året, stedvis over 3000 mm. I regnskyggen øst for Breheimen faller det til dels under 300 mm (Store norske leksikon, u.å.-e). I Ottadalen er årsnedbøren ned mot 200 mm, mens det på Jostedalsbreen, få kilometer unna, faller omkring 3000 mm (Store norske leksikon, u.å.-f).
+Nedbøren følger vinden og terrenget. Innenfor vestkysten forsterkes bygene når lufta heves mot fjellene. Der er det soner med over 2000 mm i året, stedvis over 3000 mm. I regnskyggen øst for Breheimen faller det til dels under 300 mm (Store norske leksikon, u.å.-e). I Ottadalen faller det under 300 mm i året, mens det på Jostedalsbreen, få mil unna, faller omkring 3000 mm (Store norske leksikon, u.å.-e; u.å.-f).
 
 Orografisk nedbør er nedbør som løses ut fordi terrenget tvinger fuktig luft til å stige. Lufta avkjøles. Når den blir mettet, kondenserer vanndampen, og det kan falle nedbør på luvsiden. På lesiden synker lufta, varmes opp og er tørrere, fordi mye av vannet er lagt igjen i fjellet. Skyene løses opp (Store norske leksikon, u.å.-g). Regningen for hvor mange grader lufta varmes eller avkjøles per 100 meter, står i kapitlene om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) og [lokale værsystemer](/tema/lokale-vaersystemer).
 
@@ -212,7 +212,7 @@ Bruk modellen til å koble breddegrad, trykk, vindretning og loddrett luftstrøm
 
 **Passatvinder:** Stødige overflatevinder mot konvergenssonen. Nordøstpassat i nord og sørøstpassat i sør (Store norske leksikon, u.å.-c).
 
-**Vestavindsbeltet:** Vindbeltet der coriolis dreier lufta slik at den kommer fra vest, mellom om lag 35° og 60°. Her ligger Norge (NOAA, u.å.-a).
+**Vestavindsbeltet:** Vindbeltet der coriolis dreier lufta slik at den kommer fra vest, mellom om lag 30° og 60°. Her ligger Norge (NOAA, u.å.-a).
 
 **Polarfronten:** Grenseflaten mellom kald polarluft og varm subtropisk luft, vanligvis mellom 40° og 70°. Her dannes lavtrykk (Store norske leksikon, u.å.-h).
 

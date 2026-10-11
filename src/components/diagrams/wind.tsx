@@ -951,7 +951,7 @@ export function PolarFrontNorwayDiagram() {
     <Diagram
       title="Polarfronten og været i Norge"
       heading="Polarfronten: Der kald arktisk luft møter fuktig atlanterhavsluft"
-      caption="Ved ca. 60°N kolliderer to fundamentalt forskjellige luftmasser: Den kalde, tunge polarlufta fra Arktis og den milde, fuktige lufta fra Atlanterhavet. Grenseflaten kalles polarfronten. Temperatur- og tetthetskontrasten gjør fronten ustabil, og det oppstår bølger der ekstratropiske lavtrykk (sykloner) fødes på løpende bånd. Vestavindsbeltet styrer disse lavtrykkene rett mot Norge. Når den fuktige vestavinden treffer kysten, tvinges den til værs over Langfjella: Vestlandet får voldsom orografisk nedbør (loside), mens Østlandet og indre daler havner i dyp regnskygge (leside)."
+      caption="Ved ca. 60°N kolliderer to fundamentalt forskjellige luftmasser: Den kalde, tunge polarlufta fra Arktis og den milde, fuktige lufta fra Atlanterhavet. Grenseflaten kalles polarfronten. Temperatur- og tetthetskontrasten gjør fronten ustabil, og det oppstår bølger der ekstratropiske lavtrykk (sykloner) fødes på løpende bånd. Vestavindsbeltet styrer disse lavtrykkene rett mot Norge. Når den fuktige vestavinden treffer kysten, tvinges den til værs over Langfjella: Vestlandet får mye orografisk nedbør (luvside), mens indre dalfører som Ottadalen og Gudbrandsdalen havner i regnskygge (leside), stedvis under 400 mm i året."
       viewBox="0 0 940 430"
       wide
     >
@@ -1045,12 +1045,12 @@ export function PolarFrontNorwayDiagram() {
             <line x1="40" y1="135" x2="35" y2="155" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 2" />
             <line x1="55" y1="135" x2="50" y2="155" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 2" />
 
-            {/* Leside (Østlandet - øst for Langfjella) */}
+            {/* Leside (indre dalfører øst for Langfjella) */}
             <L x="100" y="110" fill={C.warm} size={13} weight={800}>
-              Østlandet: Leside ☀️
+              Indre dalfører: Leside ☀️
             </L>
             <L x="100" y="128" fill={C.muted} size={10.5}>
-              Regnskygge og føn (&lt; 400 mm)
+              Regnskygge, stedvis &lt; 400 mm
             </L>
           </g>
 
