@@ -18,6 +18,7 @@ import {
   navForTopicPath,
 } from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
+import { posterPlaceholderText } from "@/lib/poster-placeholder";
 import { posterNeedsRefresh } from "@/lib/poster-fresh";
 import { getPost, type Post } from "@/lib/posts";
 
@@ -193,8 +194,8 @@ export function TopicLayout({
             {useScan ? (
               <ChapterScanBody markdown={markdown} />
             ) : usePoster && !markdown ? (
-              <p className="text-sm text-muted-foreground">
-                {posterStatus === "error" ? "Teksten kunne ikke lastes." : "Laster teksten…"}
+              <p className="text-sm text-muted-foreground" role="status">
+                {posterPlaceholderText(posterStatus)}
               </p>
             ) : usePoster ? (
               <PosterBody

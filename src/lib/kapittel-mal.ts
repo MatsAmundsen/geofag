@@ -75,6 +75,9 @@ import {
   QUIZ_SJEKK_KATASTROFER_3,
   QUIZ_SJEKK_ENERGI_1,
   QUIZ_SJEKK_ENERGI_2,
+  QUIZ_SJEKK_KRYO_1,
+  QUIZ_SJEKK_KRYO_2,
+  QUIZ_SJEKK_KRYO_3,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -144,6 +147,9 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
   Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
   Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
+  Kryo1: QUIZ_SJEKK_KRYO_1,
+  Kryo2: QUIZ_SJEKK_KRYO_2,
+  Kryo3: QUIZ_SJEKK_KRYO_3,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -267,6 +273,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
     "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
     "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
+  ],
+  Kryo: [
+    "Kryosfæren er den frosne delen av jordoverflaten: breer, permafrost, havis og snødekke. Is og snø har høy albedo og kaster mye av sollyset tilbake.",
+    "En bre har et akkumulasjonsområde og et ablasjonsområde. Breene i Norge dekker om lag 2328 km², og de fleste har smeltet mye tilbake siden 2000.",
+    "Permafrost er bakke som holder 0 °C eller kaldere i to sammenhengende år. Når det aktive laget blir dypere, blir bakken mer ustabil.",
+    "Septemberminimum for arktisk havis har krympet med ca. 12 prosent per tiår siden 1979. Mindre is gir mer mørkt hav og forsterker oppvarmingen.",
+    "NVE varsler snøskredfare for 24 regioner. Med klimaendringene ventes færre snøskred i lavlandet og flere høyt til fjells.",
   ],
 };
 
