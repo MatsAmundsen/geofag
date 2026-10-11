@@ -265,7 +265,7 @@ describe("injectPosterWidgets", () => {
     const vann = listedWidgetIds(
       injectPosterWidgets(readFileSync(join(lib, "posts/vann-og-flom.md"), "utf8")),
     );
-    for (const id of ["Kretslop", "AkviferForklaring", "Hydrograph", "QuizVannOgFlom"]) {
+    for (const id of ["Kretslop", "AkviferForklaring", "AkviferSnitt", "Hydrograph", "HansNedbor", "QuizVannOgFlom"]) {
       assert.equal(vann.has(id), true, `vann-og-flom missing ${id}`);
     }
     assert.equal(bergarter.has("QuizVannOgFlom"), false);

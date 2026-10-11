@@ -104,7 +104,12 @@ import {
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
-import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
+import {
+  AkviferFigur,
+  HansNedborFigur,
+  HydrogramFigur,
+  KretslopFigur,
+} from "@/components/diagrams/vannflom-figurer";
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import {
@@ -975,8 +980,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizBergarter: () => (
     <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  Kretslop: () => <KretslopDiagram />,
-  Hydrograph: () => <HydrographDiagram />,
+  Kretslop: () => <KretslopFigur />,
+  Hydrograph: () => <HydrogramFigur />,
+  AkviferSnitt: () => <AkviferFigur />,
+  HansNedbor: () => <HansNedborFigur />,
   AkviferForklaring: () => (
     <Callout title="Hva betyr «akvifer»?">
       <p>
