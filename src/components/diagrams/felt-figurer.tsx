@@ -124,22 +124,23 @@ export function FeltmetodeFigur({
     [M, M, 0],
     [-M, M, 0],
   ];
-  const arcR = 120;
-  const arc: Pt[] = [];
-  for (let k = 0; k <= 16; k++) {
-    const t = ((dip * Math.PI) / 180) * (k / 16);
-    arc.push(toPt([H[0] * Math.cos(t) * arcR, H[1] * Math.cos(t) * arcR, -Math.sin(t) * arcR]));
-  }
   const dipEnd = toPt(add(O, D, W * 0.92));
-  const hEnd = toPt(add(O, H, arcR + 50));
-  /** Vinkeltallet står i vinkelåpningen, utenfor buen, så det ikke krysser streker. */
-  const tMid = (dip * Math.PI) / 180 / 2;
-  const angPt = toPt([
-    H[0] * Math.cos(tMid) * (arcR + 45),
-    H[1] * Math.cos(tMid) * (arcR + 45),
-    -Math.sin(tMid) * (arcR + 45),
-  ]);
-  const wedge = `M${n1(toPt(O)[0])} ${n1(toPt(O)[1])} L${arc.map((q) => `${n1(q[0])} ${n1(q[1])}`).join(" L")} Z`;
+  const hEnd = toPt(add(O, H, 170));
+  /**
+   * Vinkelen i sann størrelse i et lite snitt på tvers av strøket: i den skrå projeksjonen
+   * blir det vannrette benet forkortet, så buen i blokken ville vist feil vinkel.
+   */
+  const rad = (dip * Math.PI) / 180;
+  const IN = { x: 650, y: 392, w: 280, h: 122, ox: 680, oy: 420 };
+  const inEnd: Pt = [IN.ox + 88 * Math.cos(rad), IN.oy + 88 * Math.sin(rad)];
+  const inNorm: Pt = [-Math.sin(rad) * 16, Math.cos(rad) * 16];
+  const inArc: Pt[] = [];
+  for (let k = 0; k <= 16; k++) {
+    const t = rad * (k / 16);
+    inArc.push([IN.ox + 52 * Math.cos(t), IN.oy + 52 * Math.sin(t)]);
+  }
+  const tTxt = dip < 24 ? (-14 * Math.PI) / 180 : rad / 2;
+  const inTxt: Pt = [IN.ox + 74 * Math.cos(tTxt), IN.oy + 74 * Math.sin(tTxt) + 6];
   const north = [toPt([-190, 120, 0]), toPt([-190, 200, 0])];
   const labels: Lab[] = rock
     ? [
@@ -213,10 +214,10 @@ export function FeltmetodeFigur({
     labels.push({
       text: `Fall ${dip}° mot SØ (klinometer)`,
       x: 920,
-      y: 470,
+      y: 380,
       color: FALL,
       anchor: "end",
-      badge: [700, 420],
+      badge: [600, 470],
     });
   if (step === 4)
     labels.push({
@@ -379,21 +380,6 @@ export function FeltmetodeFigur({
                         <path d="M0 0 L10 5 L0 10 Z" fill={FALL} stroke={P.halo} strokeWidth="1" />
                       </marker>
                     </defs>
-                    <path d={wedge} fill={FALL} fillOpacity="0.28" stroke="none" />
-                    <path
-                      d={`M${arc.map((q) => `${n1(q[0])} ${n1(q[1])}`).join(" L")}`}
-                      stroke={P.halo}
-                      strokeWidth="8"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d={`M${arc.map((q) => `${n1(q[0])} ${n1(q[1])}`).join(" L")}`}
-                      stroke={FALL}
-                      strokeWidth="4.5"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
                     <path
                       d={`M${n1(toPt(O)[0])} ${n1(toPt(O)[1])} L${n1(dipEnd[0])} ${n1(dipEnd[1])}`}
                       stroke={P.halo}
@@ -406,23 +392,76 @@ export function FeltmetodeFigur({
                       strokeWidth="5.5"
                       markerEnd={`url(#${m.warm}-fall)`}
                     />
-                    {/* På smal skjerm blir 18 enheter under 12 px; da står vinkelen i statusteksten og badge-lista. */}
-                    {small ? null : (
-                      <text
-                        x={n1(angPt[0])}
-                        y={n1(angPt[1] + 6)}
-                        textAnchor="middle"
-                        fontSize="18"
-                        fontWeight="700"
+                    {/* snitt på tvers av strøket: fallvinkelen i sann størrelse */}
+                    <g data-figur-del="fallsnitt">
+                      <rect
+                        x={IN.x}
+                        y={IN.y}
+                        width={IN.w}
+                        height={IN.h}
+                        rx="8"
+                        fill={P.halo}
+                        fillOpacity="0.72"
+                        stroke="#bfe4ee"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d={`M${IN.ox} ${IN.oy} L${n1(inEnd[0])} ${n1(inEnd[1])} L${n1(inEnd[0] + inNorm[0])} ${n1(inEnd[1] + inNorm[1])} L${n1(IN.ox + inNorm[0])} ${n1(IN.oy + inNorm[1])} Z`}
+                        fill="#c9b27a"
+                        stroke="#e6cf8f"
+                        strokeWidth="1.5"
+                      />
+                      <path
+                        d={`M${IN.ox} ${IN.oy} H${IN.x + IN.w - 14}`}
+                        stroke="#bfe4ee"
+                        strokeWidth="2.5"
+                        strokeDasharray="7 5"
+                      />
+                      <path
+                        d={`M${IN.ox} ${IN.oy} L${inArc.map((q) => `${n1(q[0])} ${n1(q[1])}`).join(" L")} Z`}
                         fill={FALL}
-                        stroke={P.halo}
-                        strokeWidth="4"
-                        paintOrder="stroke"
-                        fontFamily={font}
-                      >
-                        {`${dip}°`}
-                      </text>
-                    )}
+                        fillOpacity="0.35"
+                      />
+                      <path
+                        d={`M${inArc.map((q) => `${n1(q[0])} ${n1(q[1])}`).join(" L")}`}
+                        stroke={FALL}
+                        strokeWidth="4.5"
+                        fill="none"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d={`M${IN.ox} ${IN.oy} L${n1(inEnd[0])} ${n1(inEnd[1])}`}
+                        stroke={FALL}
+                        strokeWidth="5"
+                        strokeLinecap="round"
+                      />
+                      {/* På smal skjerm blir teksten under 12 px; da står vinkelen i statusteksten og badge-lista. */}
+                      {small ? null : (
+                        <>
+                          <text
+                            x={n1(inTxt[0])}
+                            y={n1(inTxt[1])}
+                            textAnchor="middle"
+                            fontSize="19"
+                            fontWeight="700"
+                            fill={FALL}
+                            fontFamily={font}
+                          >
+                            {`${dip}°`}
+                          </text>
+                          <text
+                            x={IN.x + IN.w - 12}
+                            y={IN.y + IN.h - 12}
+                            textAnchor="end"
+                            fontSize="15"
+                            fill="#bfe4ee"
+                            fontFamily={font}
+                          >
+                            Snitt på tvers av strøket
+                          </text>
+                        </>
+                      )}
+                    </g>
                   </g>
                 ) : null}
                 {/* kompass og klinometer som små symboler */}
