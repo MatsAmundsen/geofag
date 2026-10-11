@@ -46,6 +46,10 @@ Uten rotasjon ville atmosfæren sirkulert i et enkelt mønster mellom polene og 
 
 Også i loddrett retning virker avbøyningen. Et legeme som beveger seg østover langs overflaten, har en tendens til å løfte seg litt. I vestgående retning er det omvendt. Effekten er svært liten, og den avtar fra ekvator til null ved polene (Store norske leksikon, u.å.-a).
 
+```widget
+CoriolisModel
+```
+
 ## Breddegraden bestemmer styrken
 
 Coriolisparameteren brukes til å beregne den avbøyende effekten jordrotasjonen har på havstrømmer og vind. Den varierer med breddegraden. På ekvator er den null, så der skjer det ingen avbøyning. Effekten øker mot polene. På den nordlige halvkule er parameteren positiv, og en strøm bøyes til høyre for strømretningen. På den sørlige er den negativ, og strømmen bøyes til venstre. Grunnen er at referansesystemet roterer (Store norske leksikon, u.å.-b).
@@ -61,6 +65,18 @@ Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen 
 SyklonDiagram
 ```
 
+```widget
+CoriolisLatitude
+```
+
+```widget
+ZonalCentrifugal
+```
+
+```widget
+PressureSpin
+```
+
 ## Vind, isobarer og friksjon
 
 All vind skyldes horisontale temperaturforskjeller. Den mer direkte årsaken er forskjeller i lufttrykk. Vinden blåser fra høytrykk mot lavtrykk, og jo sterkere trykkforskjellen er, desto sterkere blir vinden. Uten jordrotasjonen ville den gått rett fra høyt til lavt trykk. Corioliskraften avbøyer den mot høyre på den nordlige halvkule og mot venstre på den sørlige (Store norske leksikon, u.å.-d).
@@ -72,6 +88,10 @@ GeostrofiskDiagram
 Figuren viser balansen uten friksjon, der vinden til slutt går langs isobarene. Nær bakken danner vinden en vinkel med isobarene på 0–20° over havet og 20–40° over land, fordi friksjonen er større over land (Store norske leksikon, u.å.-d). Corioliskraften setter ikke lufta i gang. Den endrer retningen.
 
 På den nordlige halvkule blir rotasjonen rundt et lavtrykk mot klokken, og rundt et høytrykk med klokken. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
+
+```widget
+GeostrophicAdjustment
+```
 
 ## Havet: ekmantransport og oppvelling
 
@@ -104,6 +124,14 @@ SkalaDiagram
 > Vannet i vasken styres ikke av corioliseffekten. Jordrotasjonen merkes i hverdagen nesten ikke, unntatt i havstrømmer og vind (Store norske leksikon, u.å.-c).
 >
 > Vinden ved bakken går ikke nødvendigvis langs isobarene. Vinkelen er 0–20° over havet og 20–40° over land (Store norske leksikon, u.å.-d).
+
+```widget
+EkmanSpiral
+```
+
+```widget
+RossbyScale
+```
 
 ## Viktige begreper
 
