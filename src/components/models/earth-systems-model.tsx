@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ScrollFrame } from "@/components/scroll-frame";
 import { ModelFrame, ModelPanel, ModelTab, ModelNote } from "./model-chrome";
 
 type SystemTab = "silicate_weathering" | "volcanic_climate" | "sphere_matrix";
 
 export function EarthSystemsModel() {
+  const slowTitleId = useId();
+  const slowDescId = useId();
+  const volcanoTitleId = useId();
+  const volcanoDescId = useId();
   const [tab, setTab] = useState<SystemTab>("silicate_weathering");
 
   // --- Fane 1: Silikatforvitring & Geologisk termostat ---
@@ -119,7 +124,7 @@ export function EarthSystemsModel() {
                     className="w-full accent-primary"
                     aria-label="CO2-konsentrasjon"
                   />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
+                  <div className="flex justify-between text-xs text-muted-foreground">
                     <span>Istid (180 ppm)</span>
                     <span>Pre-industriell (280 ppm)</span>
                     <span>Drivhusverden (1800 ppm)</span>
@@ -141,7 +146,7 @@ export function EarthSystemsModel() {
                     className="w-full accent-amber-500"
                     aria-label="Fjellkjededannelse"
                   />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
+                  <div className="flex justify-between text-xs text-muted-foreground">
                     <span>Peneplan (Lite erosjon)</span>
                     <span>Normal kontinentalflate</span>
                     <span>Himalaya-kollisjon (Høy)</span>
@@ -151,19 +156,19 @@ export function EarthSystemsModel() {
 
               <div className="grid grid-cols-3 gap-2 pt-2 text-center">
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">T-endring (likevekt, skjematisk)</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">T-endring (likevekt, skjematisk)</p>
                   <p className={`font-mono text-lg font-bold ${Number(tempAnomaly) >= 0 ? "text-rose-400" : "text-sky-400"}`}>
                     {Number(tempAnomaly) > 0 ? `+${tempAnomaly}` : tempAnomaly} °C
                   </p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Ioner til havet</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Ioner til havet</p>
                   <p className="font-mono text-lg font-bold text-amber-400">
                     {totalWeatheringRate}×
                   </p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">CO₂-opptak (kalkstein)</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">CO₂-opptak (kalkstein)</p>
                   <p className="font-mono text-lg font-bold text-teal-400">
                     {co2DrawdownGt} Gt/år
                   </p>
@@ -173,8 +178,9 @@ export function EarthSystemsModel() {
 
             {/* Skjematisk kjemisk kretsløp SVG */}
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/50 p-4 lg:col-span-6">
-              <div className="overflow-x-auto" data-axis="x">
-              <svg viewBox="0 0 500 320" className="h-auto w-full min-w-[620px]" aria-label="Den trege karbonsløyfen">
+              <ScrollFrame label="Den trege karbonsløyfen">
+              <svg viewBox="0 0 500 320" className="h-auto w-full min-w-[620px]" role="img" aria-labelledby={slowTitleId} aria-describedby={slowDescId}>
+                <title id={slowTitleId}>Den trege karbonsløyfen</title>
                 <defs>
                   <marker id="arr-teal" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
                     <polygon points="0 0, 6 3, 0 6" fill="#14b8a6" />
@@ -200,7 +206,7 @@ export function EarthSystemsModel() {
 
                 {/* Elvetransport */}
                 <path d="M 230 220 C 270 210, 300 230, 330 230" stroke="#14b8a6" strokeWidth="3" fill="none" markerEnd="url(#arr-teal)" />
-                <text x="250" y="195" fill="#14b8a6" fontSize="10">Elvetransport av Ca²⁺ og HCO₃⁻</text>
+                <text x="250" y="155" fill="#14b8a6" fontSize="10">Elvetransport av Ca²⁺ og HCO₃⁻</text>
 
                 {/* Hydrosfære (Hav) */}
                 <rect x="330" y="170" width="150" height="120" rx="8" fill="#0f2636" stroke="#14b8a6" strokeWidth="1.5" />
@@ -214,11 +220,11 @@ export function EarthSystemsModel() {
                 <path d="M 405 290 C 405 315, 20 315, 50 150" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
                 <text x="230" y="310" textAnchor="middle" fill="#f87171" fontSize="10">Langsom platetektonisk subduksjon og vulkansk avgassing (100–200 mill. år)</text>
               </svg>
-              </div>
+              </ScrollFrame>
 
               <div className="mt-2 rounded-lg bg-card/80 p-2.5 border border-border text-xs text-muted-foreground">
                 <strong className="text-foreground">Tre steg:</strong>
-                <p className="mt-1">
+                <p id={slowDescId} className="mt-1">
                   Mer CO₂ gir mer regn. Regnet løser mer berg, og elvene fører ionene til havet.
                   Der lagres karbon i kalkstein, og vulkaner gir CO₂ tilbake på den trege klokken.
                 </p>
@@ -264,7 +270,7 @@ export function EarthSystemsModel() {
                     className="w-full accent-rose-500"
                     aria-label="Svoveldioksid"
                   />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
+                  <div className="flex justify-between text-xs text-muted-foreground">
                     <span>1 Mt</span>
                     <span>Pinatubo 1991 (20 Mt)</span>
                     <span>Tambora 1815 (ca. 55 Mt)</span>
@@ -286,7 +292,7 @@ export function EarthSystemsModel() {
                     className="w-full accent-sky-500"
                     aria-label="Erupsjonshøyde"
                   />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
+                  <div className="flex justify-between text-xs text-muted-foreground">
                     <span>10 km (Troposfære – regnes raskt ut)</span>
                     <span>18 km (Tropopausegrense)</span>
                     <span>45 km (Dyp stratosfære)</span>
@@ -296,17 +302,17 @@ export function EarthSystemsModel() {
 
               <div className="grid grid-cols-3 gap-2 pt-2 text-center">
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Stratosfærisk injeksjon?</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Stratosfærisk injeksjon?</p>
                   <p className={`font-mono text-sm font-bold ${reachesStratosphere ? "text-emerald-400" : "text-amber-400"}`}>
                     {reachesStratosphere ? "JA (Stratosfære)" : "NEI (Troposfære)"}
                   </p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Maks global kjøling</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Maks global kjøling</p>
                   <p className="font-mono text-lg font-bold text-sky-400">{peakCooling} °C</p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Levetid i lufta</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Levetid i lufta</p>
                   <p className="font-mono text-lg font-bold text-amber-400">
                     {atmosphericResidenceMonths} mnd.
                   </p>
@@ -315,8 +321,9 @@ export function EarthSystemsModel() {
             </div>
 
             <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/50 p-4 lg:col-span-6">
-              <div className="overflow-x-auto" data-axis="x">
-              <svg viewBox="0 0 500 280" className="h-auto w-full min-w-[620px]" aria-label="Pinatubo vs Tambora atmosfære">
+              <ScrollFrame label="Pinatubo vs Tambora atmosfære">
+              <svg viewBox="0 0 500 280" className="h-auto w-full min-w-[620px]" role="img" aria-labelledby={volcanoTitleId} aria-describedby={volcanoDescId}>
+                <title id={volcanoTitleId}>Pinatubo vs Tambora atmosfære</title>
                 {/* Stratosfære / Troposfære bakgrunn */}
                 <rect x="20" y="20" width="460" height="120" fill="#0f1f38" stroke="#3b82f6" strokeWidth="1" rx="6" />
                 <rect x="20" y="140" width="460" height="120" fill="#1e293b" stroke="#64748b" strokeWidth="1" rx="6" />
@@ -324,8 +331,12 @@ export function EarthSystemsModel() {
                 <line x1="20" y1="140" x2="480" y2="140" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 2" />
                 <text x="470" y="132" textAnchor="end" fill="#f59e0b" fontSize="10">Tropopause (~12–18 km)</text>
 
-                <text x="35" y="45" fill="#93c5fd" fontSize="11" fontWeight="bold">STRATOSFÆRE (Ingen vær/nedbør – lang levetid for aerosoler)</text>
-                <text x="35" y="165" fill="#cbd5e1" fontSize="11" fontWeight="bold">TROPOSFÆRE (Skyer og regn vasker ut aske på dager)</text>
+                <text x="35" y="42" fill="#93c5fd" fontSize="11" fontWeight="bold">STRATOSFÆRE</text>
+                <text x="200" y="60" fill="#93c5fd" fontSize="11" fontWeight="bold">Ingen vær/nedbør – lang levetid for aerosoler</text>
+                <text fill="#cbd5e1" fontSize="11" fontWeight="bold">
+                  <tspan x="230" y="158">TROPOSFÆRE</tspan>
+                  <tspan x="230" y="176">Skyer og regn vasker ut aske på dager</tspan>
+                </text>
 
                 {/* Vulkan */}
                 <polygon points="120,260 170,180 220,260" fill="#475569" stroke="#94a3b8" />
@@ -351,10 +362,10 @@ export function EarthSystemsModel() {
                   </g>
                 )}
               </svg>
-              </div>
+              </ScrollFrame>
 
               <div className="mt-2 rounded-lg bg-card/80 p-2.5 border border-border text-xs text-muted-foreground">
-                <p>
+                <p id={volcanoDescId}>
                   <strong>Til sammenligning:</strong> Tambora 1815: ca. 55 Mt SO₂ (53–58 Mt) (Self mfl., 2004).
                   Pinatubo 1991: 20 millioner tonn SO₂ (Newhall mfl., 1997). Eyjafjallajökull 2010: ca. 0,1–0,4 Mt SO₂
                   (Flemming &amp; Inness, 2013). Kjølingen og levetiden over er regnet ut av en enkel formel i modellen, ikke målt.

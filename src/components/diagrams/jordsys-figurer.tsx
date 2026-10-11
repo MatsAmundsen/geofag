@@ -92,7 +92,7 @@ const KS_STATUS = [
 ];
 
 const KS_STEP_LABELS: Lab[][] = [
-  [{ text: "CO₂ fra vulkanen", x: 250, y: 36, at: [200, 70], color: "#ffc59a", anchor: "start", badge: [214, 40] }],
+  [{ text: "CO₂ fra vulkanen", x: 250, y: 36, at: [200, 70], color: "#ffc59a", anchor: "start", badge: [400, 110] }],
   [{ text: "Regn med karbonsyre løser berget", x: 470, y: 112, at: [362, 150], color: C.rain, anchor: "start", badge: [410, 128] }],
   [{ text: "Elva fører Ca²⁺, Mg²⁺, K⁺ og Na⁺", x: 560, y: 206, at: [536, 250], color: "#8fd3e0", anchor: "start", badge: [540, 222] }],
   [{ text: "Skall av CaCO₃ synker", x: 700, y: 238, at: [760, 306], color: "#efe6c8", anchor: "start", badge: [740, 280] }],
@@ -103,7 +103,7 @@ const KS_STEP_LABELS: Lab[][] = [
 const KS_STORE_LABELS: Lab[] = [
   { text: "Vegetasjon: ca. 450 GtC", x: 250, y: 300, at: [300, 212], color: "#9fd08a", anchor: "start", badge: [290, 270] },
   { text: "Jordsmonn: ca. 1700 GtC", x: 250, y: 330, at: [420, 200], color: "#d6b98a", anchor: "start", badge: [440, 236] },
-  { text: "Fossile ressurser: ca. 18 600 GtC", x: 40, y: 430, at: [120, 300], color: "#c9c2b4", anchor: "start", badge: [60, 330] },
+  { text: "Fossile ressurser: ca. 18 600 GtC", x: 300, y: 520, at: [120, 300], color: "#c9c2b4", anchor: "start", badge: [60, 330] },
   { text: "Overflatehav: ca. 900 GtC", x: 940, y: 240, at: [820, 274], color: "#8fd3e0", anchor: "end", badge: [880, 280] },
   { text: "Dyphav: ca. 37 000 GtC", x: 940, y: 330, at: [820, 330], color: "#7fb2d8", anchor: "end", badge: [800, 316] },
   { text: "Havutveksling: ca. 55–80 GtC/år hver vei", x: 940, y: 200, at: [700, 262], color: "#bfe4ee", anchor: "end", badge: [690, 230] },
@@ -142,7 +142,7 @@ export function KarbonatSilikatFigur({
         { text: "Vulkan", x: 40, y: 206, at: [120, 196], color: C.fg, anchor: "start", size: 15, badge: [60, 190] },
         { text: "Fjell av silikatberg", x: 470, y: 150, at: [430, 182], color: "#c9cfc2", anchor: "start", size: 15, badge: [470, 170] },
         { text: "Hav", x: 930, y: 290, color: "#bfe4ee", anchor: "end", size: 15 },
-        { text: "Kalkstein på havbunnen", x: 940, y: 334, at: [820, 344], color: "#efe6c8", anchor: "end", size: 15, badge: [810, 318] },
+        { text: "Kalkstein på havbunnen", x: 940, y: 380, at: [820, 344], color: "#efe6c8", anchor: "end", size: 15, badge: [620, 400] },
         { text: "Havbunnen synker (subduksjon)", x: 620, y: 478, at: [520, 418], color: "#b9c6cf", anchor: "start", size: 15, badge: [560, 470] },
       ];
   const dots = motion.playing && !stores ? [0, 0.33, 0.66].map((o) => along(KS_PATH[i], phase * 0.999 + o)) : [];
