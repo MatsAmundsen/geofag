@@ -631,6 +631,12 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/sandstein",
     },
     {
+      prefix: "Raade, G. (2025, 2. juli). ",
+      italic: "Rombeporfyr",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/rombeporfyr",
+    },
+    {
       prefix: "Store norske leksikon [SNL]. (u.å.). ",
       italic: "Mohs' hardhetsskala",
       suffix: ".",

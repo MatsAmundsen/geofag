@@ -842,7 +842,7 @@ const COPY_RESEEDS: CopyReseed[] = [
   {
     flag: "g1-bergarter-oslorift-300-2026-10-11",
     slug: "bergarter",
-    stale: ["For cirka 310 millioner år siden, mot slutten av karbon", "For cirka 305 millioner år siden"],
+    stale: ["For cirka 310 millioner år siden, mot slutten av karbon", "For cirka 305 millioner år siden", "funnet fem steder på jorda"],
   },
   {
     flag: "g1-landformer-md-2026-10-11",

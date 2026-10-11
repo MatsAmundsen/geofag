@@ -316,10 +316,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       points={[
         { n: "1", label: "Ved ekvator stiger lufta. Det gir skyer og tropisk regnskog." },
         { n: "2", label: "Nær 30° synker lufta. Skyene løses opp, og ørkenene ligger her." },
-        {
-          n: "3",
-          label: "Mellom om lag 50° og 60° treffer lavtrykkene fra polarfronten Vest-Europa.",
-        },
+        { n: "3", label: "Mellom om lag 50° og 60° treffer lavtrykkene fra polarfronten Vest-Europa." },
         { n: "4", label: "Over polen synker kald luft, og det er lite fuktighet." },
       ]}
     />
@@ -328,8 +325,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «strålingsbalanse»?">
       <p>
         Strålingsbalanse er forskjellen mellom innkommende solstråling og utgående varmestråling.
-        Globalt, over et år, er netto om lag null. Regionalt er det overskudd i tropene og
-        underskudd mot polene. Den ubalansen setter atmosfæren og havet i bevegelse (NASA, u.å.).
+        Globalt, over et år, er netto om lag null. Regionalt er det overskudd i tropene og underskudd
+        mot polene. Den ubalansen setter atmosfæren og havet i bevegelse (NASA, u.å.).
       </p>
     </Callout>
   ),
@@ -389,33 +386,33 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
 
-  QuizLokale: () => (
+    QuizLokale: () => (
     <Quiz questions={QUIZ_LOKALE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  SolgangsbrisForklaring: () => (
+    SolgangsbrisForklaring: () => (
     <Callout title="Hva betyr «solgangsvind»?">
       <p>
         Solgangsvind er pålandsvind om dagen og fralandsvind om natten langs kysten. Dagvinden
         kalles sjøbris: varm luft stiger over land, og kjøligere luft fra havet strømmer inn.
-        Nattvinden kalles landbris, og den er som regel svakere. Neste ord du trenger, er termisk
-        lavtrykk: lavtrykket som oppstår fordi lufta over det varme landet blir lettere.
+        Nattvinden kalles landbris, og den er som regel svakere. Neste ord du trenger, er
+        termisk lavtrykk: lavtrykket som oppstår fordi lufta over det varme landet blir lettere.
       </p>
     </Callout>
   ),
-  SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
-  ValleyWind: () => <ValleyWindDiagram />,
-  PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
-  FonForklaring: () => (
+    SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
+    ValleyWind: () => <ValleyWindDiagram />,
+    PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
+    FonForklaring: () => (
     <Callout title="Hva betyr «føn»?">
       <p>
         Føn er en forholdsvis varm og tørr vind som slår ned i lavlandet etter å ha passert et
-        fjell. Lufta synker på lesiden og varmes fordi trykket øker. Luvsiden, også kalt losiden, er
-        siden vinden kommer fra. Der kan det falle orografisk nedbør. Lesiden er siden vinden går
-        ned på.
+        fjell. Lufta synker på lesiden og varmes fordi trykket øker. Luvsiden, også kalt losiden,
+        er siden vinden kommer fra. Der kan det falle orografisk nedbør. Lesiden er siden vinden
+        går ned på.
       </p>
     </Callout>
   ),
-  InversjonForklaring: () => (
+    InversjonForklaring: () => (
     <Callout title="Hva betyr «inversjon»?">
       <p>
         En inversjon er et lag der temperaturen stiger med høyden. Vanligvis er det kaldere jo
@@ -425,8 +422,11 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
 
-  QuizJet: () => <Quiz questions={QUIZ_JET} heading={null} intro="Velg ett svar per spørsmål." />,
-  JetForklaring: () => (
+
+    QuizJet: () => (
+    <Quiz questions={QUIZ_JET} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+    JetForklaring: () => (
     <Callout title="Hva betyr «jetstrøm»?">
       <p>
         En jetstrøm er et smalt belte med sterk vind høyt oppe i atmosfæren. Vinden blåser fra vest
@@ -436,7 +436,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
 
-  CoriolisForklaring: () => (
+
+    CoriolisForklaring: () => (
     <Callout title="Hva betyr «corioliseffekten»?">
       <p>
         Corioliseffekten er avbøyningen av en bevegelse sett fra den roterende jorda. Den er ikke en
@@ -445,11 +446,11 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  KarusellDiagram: () => <CarouselFrameDiagram />,
-  AvboyningDiagram: () => <GlobalDeflectionDiagram />,
-  SyklonDiagram: () => <CycloneSpinDiagram />,
-  GeostrofiskDiagram: () => <CoriolisDiagram />,
-  EkmanForklaring: () => (
+    KarusellDiagram: () => <CarouselFrameDiagram />,
+    AvboyningDiagram: () => <GlobalDeflectionDiagram />,
+    SyklonDiagram: () => <CycloneSpinDiagram />,
+    GeostrofiskDiagram: () => <CoriolisDiagram />,
+    EkmanForklaring: () => (
     <Callout title="Hva betyr «ekmantransport»?">
       <p>
         Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
@@ -458,12 +459,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  SkalaDiagram: () => <CoriolisScaleDiagram />,
-  QuizCoriolis: () => (
+    SkalaDiagram: () => <CoriolisScaleDiagram />,
+    QuizCoriolis: () => (
     <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  HavstromForklaring: () => (
+
+    HavstromForklaring: () => (
     <Callout title="Hva betyr «havstrøm»?">
       <p>
         En havstrøm er vann i bevegelse. Den kan drives av tidevann nær land, av vind i overflaten,
@@ -471,8 +473,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  DrivkrefterDiagram: () => <OceanDriversDiagram />,
-  EkmanHavForklaring: () => (
+    DrivkrefterDiagram: () => <OceanDriversDiagram />,
+    EkmanHavForklaring: () => (
     <Callout title="Hva betyr «ekmantransport»?">
       <p>
         Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
@@ -481,24 +483,25 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  GyreDiagram: () => <GyreDiagram />,
-  OppvellingDiagram: () => <UpwellingDiagram />,
-  GolfDiagram: () => <GulfVsNacDiagram />,
-  TetthetDiagram: () => <DensityDiagram />,
-  QuizHavstrommer: () => (
+    GyreDiagram: () => <GyreDiagram />,
+    OppvellingDiagram: () => <UpwellingDiagram />,
+    GolfDiagram: () => <GulfVsNacDiagram />,
+    TetthetDiagram: () => <DensityDiagram />,
+    QuizHavstrommer: () => (
     <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  KlimaDefinisjon: () => (
+
+    KlimaDefinisjon: () => (
     <Callout title="Hva betyr «klima»?">
       <p>
-        Klimaendring er et skifte i det langvarige gjennomsnittet av været (WMO, u.å.). En enkelt
-        uke er vær. Mønsteret over lang tid er klima.
+        Klimaendring er et skifte i det langvarige gjennomsnittet av været (WMO, u.å.). En enkelt uke
+        er vær. Mønsteret over lang tid er klima.
       </p>
     </Callout>
   ),
-  StralingDiagram: () => <EarthRadiationBudgetDiagram />,
-  DrivhusForklaring: () => (
+    StralingDiagram: () => <EarthRadiationBudgetDiagram />,
+    DrivhusForklaring: () => (
     <Callout title="Hva betyr «drivhuseffekt»?">
       <p>
         Drivhuseffekten er at gasser holder igjen varme nær jordoverflaten, omtrent som et teppe.
@@ -507,7 +510,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  PaadrivForklaring: () => (
+    PaadrivForklaring: () => (
     <Callout title="Hva betyr «pådriv»?">
       <p>
         Et pådriv er en endring som påvirker hvor mye energi som kommer inn eller går ut. Da kan
@@ -516,7 +519,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  AlbedoFoto: () => (
+    AlbedoFoto: () => (
     <PhotoFigure
       src="/images/fig-albedo.jpg"
       alt="Arktisk iskant der hvit is møter mørkt åpent hav"
@@ -532,7 +535,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
-  NorgeKlimaFoto: () => (
+    NorgeKlimaFoto: () => (
     <PhotoFigure
       src="/images/fig-norge-labrador.jpg"
       alt="Norsk kyst mot et kaldere landskap på samme type bredde"
@@ -548,11 +551,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
-  QuizOversikt: () => (
+    QuizOversikt: () => (
     <Quiz questions={QUIZ_OVERSIKT} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  EnsoForklaring: () => (
+
+    EnsoForklaring: () => (
     <Callout title="Hva betyr «ENSO»?">
       <p>
         ENSO er El Niño–sørlig oscillasjon. El Niño er den varme fasen og La Niña den kalde fasen av
@@ -561,11 +565,14 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  FaseDiagram: () => <EnsoComparisonDiagram />,
-  BjerknesLoop: () => <BjerknesLoopDiagram />,
-  QuizEnso: () => <Quiz questions={QUIZ_ENSO} heading={null} intro="Velg ett svar per spørsmål." />,
+    FaseDiagram: () => <EnsoComparisonDiagram />,
+    BjerknesLoop: () => <BjerknesLoopDiagram />,
+    QuizEnso: () => (
+    <Quiz questions={QUIZ_ENSO} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
 
-  IodForklaring: () => (
+
+    IodForklaring: () => (
     <Callout title="Hva betyr «indisk hav-dipol»?">
       <p>
         Den indiske hav-dipolen er vedvarende endring i forskjellen mellom havtemperaturen vest og
@@ -574,8 +581,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
-  IodFigurPositiv: () => (
+    QuizIod: () => <Quiz questions={QUIZ_IOD} heading={null} intro="Velg ett svar per spørsmål." />,
+    IodFigurPositiv: () => (
     <IodFaseFigur
       initialFase="positiv"
       heading="Figur 1. Positiv IOD"
@@ -583,7 +590,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       caption="I positiv fase er havet varmere enn normalt utenfor Øst-Afrika og kjøligere nær Indonesia. Der stiger kaldt vann opp. Over det kalde havet synker lufta, og det blir mindre regn i deler av Australia. Linjen viser hvor jetstrømmen kan gå over Sør-Australia. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: BOM (u.å.)."
     />
   ),
-  IodFigurNegativ: () => (
+    IodFigurNegativ: () => (
     <IodFaseFigur
       initialFase="negativ"
       heading="Figur 2. Negativ IOD"
@@ -591,20 +598,22 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       caption="I negativ fase er havet kjøligere enn normalt i vest og varmere i øst. Lufta stiger over det varme havet ved Indonesia og gir mer regn der og i Australia. Øst-Afrika får mindre regn. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: BOM (u.å.)."
     />
   ),
-  IodFigurHavtemperatur: () => (
+    IodFigurHavtemperatur: () => (
     <IodHavtemperaturFigur
       heading="Figur 3. Havtemperaturen i Det indiske hav"
       caption="Havtemperaturen én dag i Det indiske hav. De svarte linjene viser grensen der det varme vannet møter det kalde havet lenger sør. Data: NOAA NCEI, OISST v2.1. Påtegning: Mats Amundsen."
     />
   ),
-  IodFigurJetstrommer: () => (
+    IodFigurJetstrommer: () => (
     <IodJetstrommerFigur
       heading="Figur 4. Jetstrømmer over Det indiske hav"
       caption="Vind høyt oppe i atmosfæren. Ett belte går rundt 30° nord, og ett går sør for Afrika og Australia, over grensen i figur 3. Illustrasjon: geofag.com etter skisse av Mats Amundsen. Kilde: NOAA (u.å.)."
     />
   ),
 
-  NaoForklaring: () => (
+
+
+    NaoForklaring: () => (
     <Callout title="Hva betyr «NAO»?">
       <p>
         NAO er den nordatlantiske oscillasjonen. Den beskriver styrken på lavtrykket nær Island og
@@ -613,26 +622,26 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
-  NaoFigurFaser: () => (
+    QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
+    NaoFigurFaser: () => (
     <NaoFaserFigur
       heading="Figur 1. Positiv og negativ NAO"
       caption="Ved positiv NAO er både Islandslavtrykket (L) og Asorhøytrykket (H) sterke, og stormbanen går lenger nord mot Nord-Europa. Ved negativ NAO er begge svakere, og stormbanen går lenger sør. Illustrasjon: geofag.com etter figur i Mats Amundsens notat. Kilde: NOAA (u.å.-a)."
     />
   ),
-  NaoFigurOmrade: () => (
+    NaoFigurOmrade: () => (
     <NaoOmradeFigur
       heading="Figur 2. Området der NAO virker"
       caption="Nord-Atlanteren mellom Nord-Amerika, Europa og Nord-Afrika. Islandslavtrykket ligger nær Island, Asorhøytrykket nær Asorene. Kart: geofag.com, kyster fra Natural Earth."
     />
   ),
-  NaoFigurPolarvirvel: () => (
+    NaoFigurPolarvirvel: () => (
     <NaoPolarvirvelFigur
       heading="Figur 3. Stabil og forstyrret polarvirvel"
       caption="Stabil: en sterk polarvirvel holder den kalde lufta i Arktis, og polarjetstrømmen går lenger nord. Forstyrret: virvelen deles, kald luft går sørover, varm luft nordover, og jetstrømmen blir bølgete. Illustrasjon: geofag.com. Etter NOAA Climate.gov (2021)."
     />
   ),
-  NaoFigurPositiv: () => (
+    NaoFigurPositiv: () => (
     <NaoKartFigur
       initialFase="positiv"
       heading="Figur 4. Positiv NAO"
@@ -640,7 +649,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       caption="Sterkt lavtrykk ved Island og sterkt høytrykk ved Asorene. Jetstrømmen går mot Nord-Europa, som ofte får mildere og våtere vær enn normalt. Sør-Europa blir ofte tørrere og kjøligere enn normalt. Illustrasjon: geofag.com. Kilde: NOAA (u.å.-a)."
     />
   ),
-  NaoFigurNegativ: () => (
+    NaoFigurNegativ: () => (
     <NaoKartFigur
       initialFase="negativ"
       heading="Figur 5. Negativ NAO"
@@ -649,7 +658,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     />
   ),
 
-  AmocForklaring: () => (
+
+
+    AmocForklaring: () => (
     <Callout title="Hva betyr «den atlantiske omveltningen»?">
       <p>
         Den atlantiske omveltningen, AMOC, er starten på det trege beltet. Kaldt og salt vann synker
@@ -657,9 +668,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizAmoc: () => <Quiz questions={QUIZ_AMOC} heading={null} intro="Velg ett svar per spørsmål." />,
+    QuizAmoc: () => <Quiz questions={QUIZ_AMOC} heading={null} intro="Velg ett svar per spørsmål." />,
 
-  KryoForklaring: () => (
+
+    KryoForklaring: () => (
     <Callout title="Hva betyr «kryosfæren»?">
       <p>
         Kryosfæren er den frosne delen av jordoverflaten: breer, havis, snødekke og permafrost.
@@ -668,35 +680,38 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizKryo: () => <Quiz questions={QUIZ_KRYO} heading={null} intro="Velg ett svar per spørsmål." />,
+    QuizKryo: () => <Quiz questions={QUIZ_KRYO} heading={null} intro="Velg ett svar per spørsmål." />,
 
-  ModellForklaring: () => (
+
+    ModellForklaring: () => (
     <Callout title="Hva betyr «numerisk modell»?">
       <p>
-        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin. ECMWF
-        lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og sammen
-        viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
+        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin.
+        ECMWF lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og
+        sammen viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
       </p>
     </Callout>
   ),
-  QuizModeller: () => (
+    QuizModeller: () => (
     <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  PaleoForklaring: () => (
+
+    PaleoForklaring: () => (
     <Callout title="Hva betyr «paleoklima»?">
       <p>
         Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
-        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i istidssyklusene
-        det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
+        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i
+        istidssyklusene det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
       </p>
     </Callout>
   ),
-  QuizPaleo: () => (
+    QuizPaleo: () => (
     <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  IstidForklaring: () => (
+
+    IstidForklaring: () => (
     <Callout title="Hva betyr «istid»?">
       <p>
         Istid er klimaperioder der opptil 3000 meter tykke iskapper dekket store deler av
@@ -705,11 +720,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizIstider: () => (
+    QuizIstider: () => (
     <Quiz questions={QUIZ_ISTIDER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  OrkanForklaring: () => (
+
+    OrkanForklaring: () => (
     <Callout title="Hva betyr «orkan»?">
       <p>
         Orkan er den sterkeste av alle vinder: sterkere enn 32,6 m/s, målt ti meter over bakken i ti
@@ -719,11 +735,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizFarer: () => (
+    QuizFarer: () => (
     <Quiz questions={QUIZ_FARER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  TilpasningForklaring: () => (
+
+    TilpasningForklaring: () => (
     <Callout title="Hva betyr «klimatilpasning»?">
       <p>
         Klimatilpasning er å forstå konsekvensene av at klimaet endrer seg, og å sette inn tiltak
@@ -732,11 +749,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizTilpasning: () => (
+    QuizTilpasning: () => (
     <Quiz questions={QUIZ_TILPASNING} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  VindkraftForklaring: () => (
+
+    VindkraftForklaring: () => (
     <Callout title="Hva betyr «vindkraft»?">
       <p>
         Vindkraft er vindenergi gjort om til nyttig energi, mekanisk eller elektrisk. I dag brukes
@@ -744,11 +762,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizEnergi: () => (
+    QuizEnergi: () => (
     <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
-  FeltHavForklaring: () => (
+
+    FeltHavForklaring: () => (
     <Callout title="Hva betyr «feltarbeid» her?">
       <p>
         Feltarbeid i geofag 2 er å planlegge, samle inn georefererte data fra hav, luft eller is,
@@ -757,7 +776,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  QuizFeltHav: () => (
+    QuizFeltHav: () => (
     <Quiz questions={QUIZ_FELT_HAV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
@@ -769,11 +788,11 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «mettet»?">
       <p>
         Luft kan bare inneholde en viss mengde vanndamp, og hvor mye avhenger av temperaturen. Varm
-        luft kan holde mer vanndamp enn kald luft. Når luften inneholder så mye vanndamp som den kan
-        ved den temperaturen den har, er den <strong>mettet</strong>. Den relative fuktigheten er da
-        100 %. Temperaturen der luften blir mettet, kalles <strong>duggpunktet</strong>. Avkjøles
-        mettet luft enda mer, kondenserer vanndampen til små vanndråper, og det dannes skyer, tåke
-        eller dugg.
+        luft kan holde mer vanndamp enn kald luft. Når luften inneholder så mye vanndamp som den
+        kan ved den temperaturen den har, er den <strong>mettet</strong>. Den relative fuktigheten
+        er da 100 %. Temperaturen der luften blir mettet, kalles <strong>duggpunktet</strong>.
+        Avkjøles mettet luft enda mer, kondenserer vanndampen til små vanndråper, og det dannes
+        skyer, tåke eller dugg.
       </p>
     </Callout>
   ),
@@ -806,33 +825,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizJordskjelv: () => (
     <Quiz questions={QUIZ_JORDSKJELV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  SjekkJordskjelv1: () => (
-    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_1} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkJordskjelv2: () => (
-    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_2} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkJordskjelv3: () => (
-    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_3} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkJordskjelv4: () => (
-    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_4} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkJordskjelv5: () => (
-    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_5} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkJordskjelv6: () => (
-    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_6} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkSkjelvfare1: () => (
-    <Quiz questions={QUIZ_SJEKK_SKJELVFARE_1} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkSkjelvfare2: () => (
-    <Quiz questions={QUIZ_SJEKK_SKJELVFARE_2} intro="Velg ett svar per spørsmål." />
-  ),
-  SjekkSkjelvfare3: () => (
-    <Quiz questions={QUIZ_SJEKK_SKJELVFARE_3} intro="Velg ett svar per spørsmål." />
-  ),
+  SjekkJordskjelv1: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_1} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv2: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_2} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv3: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_3} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv4: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_4} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv5: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_5} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelv6: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_6} intro="Velg ett svar per spørsmål." />,
+  SjekkSkjelvfare1: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_1} intro="Velg ett svar per spørsmål." />,
+  SjekkSkjelvfare2: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_2} intro="Velg ett svar per spørsmål." />,
+  SjekkSkjelvfare3: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_3} intro="Velg ett svar per spørsmål." />,
   QuizSkjelvfare: () => (
     <Quiz questions={QUIZ_SKJELVFARE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -942,9 +943,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   VekselvirkningForklaring: () => (
     <Callout title="Hva betyr «vekselvirkning»?">
       <p>
-        En vekselvirkning er en endring i ett delsystem som utløser respons i ett eller flere andre.
-        Elva som graver en dal, er hydrosfære som endrer geosfæren. Breen som sliper berget, er
-        kryosfære som svarer. Neste ord du trenger, er tidsskala: hvor lang tid responsen tar.
+        En vekselvirkning er en endring i ett delsystem som utløser respons i ett eller flere
+        andre. Elva som graver en dal, er hydrosfære som endrer geosfæren. Breen som sliper berget,
+        er kryosfære som svarer. Neste ord du trenger, er tidsskala: hvor lang tid responsen tar.
       </p>
     </Callout>
   ),
@@ -1052,13 +1053,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       <p>
         Isostasi (isostasy) betyr at den stive litosfæren ligger i likevekt på astenosfæren under.
         Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte
-        svært langsomt, over tusenvis av år. Det er omtrent som en båt som flyter. Legger du tung
-        last i båten, synker den dypere. Tar du lasten ut, flyter den høyere igjen. Mer om
-        litosfæren og astenosfæren står i kapittelet{" "}
-        <Link
-          to="/geofag-1/platetektonikk"
-          className="font-medium text-primary underline underline-offset-2"
-        >
+        svært langsomt, over tusenvis av år. Det er omtrent som en båt som flyter. Legger du tung last i båten, synker den
+        dypere. Tar du lasten ut, flyter den høyere igjen. Mer om litosfæren og astenosfæren står i
+        kapittelet{" "}
+        <Link to="/geofag-1/platetektonikk" className="font-medium text-primary underline underline-offset-2">
           Platetektonikk
         </Link>
         .
@@ -1113,9 +1111,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
           className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/50 hover:shadow-md"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-              {sub.kicker}
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">{sub.kicker}</p>
             <h3 className="mt-1 font-display text-xl font-medium tracking-tight group-hover:text-primary">
               {sub.title}
             </h3>

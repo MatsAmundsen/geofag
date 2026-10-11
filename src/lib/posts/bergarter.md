@@ -91,7 +91,7 @@ Avkjølingen styrer kornstørrelsen. Når magma kjøles langsomt, vanligvis på 
 
 Larvikitt er en dypbergart med to typer feltspat, som kan gi fargespill. Den er dannet for cirka 295–290 millioner år siden, er oppkalt etter Larvik og finnes i Vestfold og Telemark. Den er Norges nasjonalbergart (NGU, u.å.-i).
 
-Rombeporfyr er en dagbergart, funnet fem steder på jorda, og en av Oslofeltets signaturbergarter. Store rombeformede lyse feltspatkrystaller ligger i en grålig til rødbrun grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten. NGU kaller den tvillingbroren til larvikitt, som størknet ferdig under overflaten (NGU, u.å.-l).
+Rombeporfyr er en dagbergart og en av Oslofeltets signaturbergarter. Den er vanlig i Oslofeltet, og lignende bergarter finnes bare noen få andre steder, i Øst-Afrika og Antarktis (Raade, 2025). Store rombeformede lyse feltspatkrystaller ligger i en grålig til rødbrun grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten. NGU kaller den tvillingbroren til larvikitt, som størknet ferdig under overflaten (NGU, u.å.-l).
 
 Samme smeltefamilie, to steder: dypet og overflaten.
 

@@ -176,7 +176,7 @@ export function RockPetrologyModel() {
       desc: "Ekstremt sjelden lavabergart på verdensbasis. Karakteriseres av båtformede/rombiske feltspat-fenokrystaller i en finkornet grunnmasse.",
       mineralsPPL: "Store, lyse rombeformede krystaller (plagioklas/anortoklas) omsluttet av rødbrun mikrokrystallinsk grunnmasse.",
       mineralsXPL: "Sammensatte tvillinger i rombene. Grunnmasse viser mikro-strømlinjer (trakyttisk tekstur).",
-      norwaySignificance: "Verdenskjent signaturbergart for Oslofeltet. Finnes ellers kun på Mount Erebus (Antarktis) og Riftdalen (Kenya).",
+      norwaySignificance: "Signaturbergart for Oslofeltet, der den er vanlig. Lignende bergarter finnes bare noen få andre steder, i Øst-Afrika og Antarktis.",
     },
     sandstein: {
       title: "Kvarts-sandstein (Klastisk)",
