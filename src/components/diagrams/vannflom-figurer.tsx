@@ -199,19 +199,19 @@ const KR_TREES: Pt[] = [
 ];
 const KR_CRACKS: Pt[][] = [
   [
-    [300, 452],
-    [330, 482],
-    [322, 520],
+    [270, 452],
+    [292, 482],
+    [282, 520],
   ],
   [
-    [620, 446],
-    [650, 474],
-    [640, 520],
+    [700, 446],
+    [724, 474],
+    [714, 520],
   ],
   [
-    [820, 440],
-    [804, 470],
-    [826, 512],
+    [880, 440],
+    [864, 470],
+    [886, 512],
   ],
 ];
 const KR_FLUX = {
@@ -345,7 +345,7 @@ export function KretslopFigur({
     labels.push(
       { text: "Fordampning fra havet", x: 30, y: 52, at: [140, 222], color: C.warm, badge: [168, 236] },
       { text: "Evapotranspirasjon fra planter og innsjø", x: 236, y: 52, at: [334, 200], color: C.warm, badge: [306, 214] },
-      { text: "Sola driver kretsløpet", x: 846, y: 52, at: [880, 52], color: "#ffd77a", anchor: "end", badge: [870, 96] },
+      { text: "Sola driver kretsløpet", x: 944, y: 122, at: [900, 70], color: "#ffd77a", anchor: "end", badge: [930, 96] },
     );
   } else if (step === 2) {
     labels.push(
@@ -367,14 +367,14 @@ export function KretslopFigur({
       labels.push({ text: "Tette flater: mer overvann", x: 30, y: 52, at: [292, 312], color: "#d7dde2", badge: [272, 296] });
   } else if (step === 5) {
     labels.push(
-      { text: "Markvannssone: hulrom delvis fylt", x: 944, y: 300, at: [830, 214], color: "#d9c39a", anchor: "end", badge: [856, 236] },
+      { text: "Markvannssone: hulrom delvis fylt", x: 700, y: 150, at: [830, 214], color: "#d9c39a", anchor: "end", badge: [856, 236] },
       { text: "Grunnvannsspeil", x: 944, y: 492, at: [880, 252], color: "#9fe3ea", anchor: "end", badge: [906, 272] },
       { text: "Mettet sone: grunnvann", x: 380, y: 494, at: [540, 380], color: C.teal, badge: [560, 404] },
     );
   } else {
     labels.push(
       { text: "Elva renner ut i havet", x: 30, y: 52, at: [262, 328], color: C.rain, badge: [270, 300] },
-      { text: "Noe grunnvann renner rett ut i havet", x: 24, y: 520, at: [214, 392], color: C.teal, badge: [180, 418] },
+      { text: "Noe grunnvann renner rett ut i havet", x: 330, y: 520, at: [214, 392], color: C.teal, badge: [180, 418] },
     );
   }
   const keys: Key[] = [
@@ -643,12 +643,12 @@ export function AkviferFigur({
     { text: "Markvannssone: hulrom delvis fylt", x: 24, y: 48, at: [240, 262], color: "#d9c39a", badge: [250, 210] },
     { text: "Grunnvannsspeil", x: 24, y: 84, at: [190, 283], color: "#9fe3ea", badge: [168, 316] },
     { text: "Brønn", x: 380, y: 160, at: [341, 214], color: C.fg, badge: [372, 196] },
-    { text: "Grunnvann renner ut i elva", x: 24, y: 120, at: [94, 276], color: C.teal, badge: [60, 236] },
+    { text: "Grunnvann renner ut i elva", x: 24, y: 466, at: [94, 280], color: C.teal, badge: [60, 236] },
   ];
   labels.push(
     [
-      { text: "Sand og grus: akvifer", x: 24, y: 500, at: AQ_AT[0], color: "#e7d29f", badge: [470, 372] },
-      { text: "Leire: tett lag", x: 24, y: 500, at: AQ_AT[1], color: "#d3cbb6", badge: [262, 446] },
+      { text: "Sand og grus: akvifer", x: 24, y: 512, at: AQ_AT[0], color: "#e7d29f", badge: [470, 372] },
+      { text: "Leire: tett lag", x: 24, y: 512, at: AQ_AT[1], color: "#d3cbb6", badge: [262, 446] },
       { text: "Usortert morene", x: 944, y: 254, at: AQ_AT[2], color: "#e0cfaa", anchor: "end", badge: [690, 250] },
       { text: "Vann i sprekker i fjellet", x: 560, y: 528, at: [744, 400], color: "#9fe3ea", badge: [720, 470] },
     ][i] as Lab,
@@ -705,6 +705,7 @@ export function AkviferFigur({
             </defs>
             <rect x="0" y="0" width="960" height="560" fill={d.url.sky} />
             <g clipPath={`url(#${uid}-ground)`}>
+              <rect x="0" y="0" width="960" height="560" fill={i === 2 ? "#8d7d66" : "#7a6c57"} />
               {/* sand og grus (venstre), morene (høyre) */}
               <path d={`M0 0 L580 0 L540 ${AQ_CLAY_TOP} L0 ${AQ_CLAY_TOP} Z`} fill={i === 0 ? "#b39d6e" : "#9c8962"} />
               <path d={`M580 0 L960 0 L960 340 L556 340 Z`} fill={i === 2 ? "#8d7d66" : "#7a6c57"} />
@@ -890,7 +891,7 @@ export function HydrogramFigur({
     labels.push(
       { text: "Spiss flomtopp", x: rx(0.48), y: n1(yq(rain.base + rain.amp) + 6), at: [rx(rain.tp) + 4, yq(rain.base + rain.amp) + 4], color: C.warm, badge: [rx(rain.tp) + 26, yq(rain.base + rain.amp) + 6] },
       { text: "Bred flomtopp", x: sx(0.8), y: n1(yq(HY_SNOW.base + HY_SNOW.amp) + 10), at: [sx(0.66), yq(hyQ(HY_SNOW, 0.66))], color: "#b9d3ee", badge: [sx(0.74), yq(hyQ(HY_SNOW, 0.66)) - 16] },
-      { text: "Forsinkelse", x: rx(0.33), y: 170, at: [rx(0.25), 142], color: "#ffd77a", badge: [rx(0.26), 164] },
+      { text: "Forsinkelse", x: rx(0.38), y: 148, at: [rx(0.3), 142], color: "#ffd77a", badge: [rx(0.26), 164] },
     );
   }
   const keys: Key[] = [
@@ -938,7 +939,7 @@ export function HydrogramFigur({
       >
         {() => (
           <g className={motion.motionClass} data-figur="hydrogram" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
-            <HyPanel x0={HY_X[0]} h={rain} bars={HY_RAIN_BARS} barW={14} reveal={reveal} color={C.warm} barColor={C.rain} title="Regnflom" hi={step} centroid={0.18} />
+            <HyPanel x0={HY_X[0]} h={rain} bars={HY_RAIN_BARS} barW={10} reveal={reveal} color={C.warm} barColor={C.rain} title="Regnflom" hi={step} centroid={0.18} />
             <HyPanel x0={HY_X[1]} h={HY_SNOW} bars={HY_MELT_BARS} barW={13} reveal={reveal} color="#b9d3ee" barColor={P.snow} title="Snøsmelteflom" hi={step} centroid={0.41} />
           </g>
         )}
