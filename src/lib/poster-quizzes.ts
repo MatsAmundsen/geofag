@@ -2852,3 +2852,193 @@ export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_7: QuizQuestion[] = [
     explain: "Ifølge IEA trenger en elbil seks ganger så mye mineraler som en vanlig bil, og et vindkraftverk på land ni ganger så mye som et gasskraftverk.",
   },
 ];
+
+export const QUIZ_GEOLOGISK_TID: QuizQuestion[] = [
+  {
+    prompt: "Hva skiller relativ og absolutt datering?",
+    options: [
+      "Relativ datering gir alderen i år, absolutt datering bare rekkefølgen",
+      "Relativ datering gir rekkefølgen, absolutt datering gir alderen i år",
+      "Begge gir alderen i år, men med ulik nøyaktighet",
+      "Relativ datering brukes bare på fossiler",
+    ],
+    answer: 1,
+    explain: "Relativ datering plasserer hendelser i forhold til hverandre. Absolutt datering, for eksempel med radioaktive isotoper, gir alderen i år.",
+  },
+  {
+    prompt: "Når gjelder ikke overlagringsprinsippet?",
+    options: [
+      "Når lagene er snudd, foldet eller skjøvet over hverandre",
+      "Når lagene inneholder fossiler",
+      "Når lagene er av sandstein",
+      "Det gjelder alltid",
+    ],
+    answer: 0,
+    explain: "Prinsippet gjelder uforstyrrede lag. I skyvedekkene i den kaledonske fjellkjeden kan eldre bergarter ligge oppå yngre.",
+  },
+  {
+    prompt: "Et organisk materiale har en åttendedel igjen av sitt opprinnelige innhold av karbon-14. Omtrent hvor gammelt er det, før kalibrering?",
+    options: [
+      "Ca. 5700 år",
+      "Ca. 11 500 år",
+      "Ca. 46 000 år",
+      "Ca. 17 200 år",
+    ],
+    answer: 3,
+    explain: "En åttendedel betyr tre halveringstider. 3 × 5730 år er ca. 17 200 år. Alderen må kalibreres for å bli kalenderår.",
+  },
+  {
+    prompt: "Hvilken metode passer best for å datere en granitt som er ca. 1 milliard år gammel?",
+    options: [
+      "C-14",
+      "Varvtelling",
+      "Uran–bly på zirkon",
+      "Luminescens",
+    ],
+    answer: 2,
+    explain: "Uran–bly-metoden har en halveringstid på ca. 4,5 milliarder år og brukes på zirkon i magmatiske bergarter. De andre metodene rekker bare noen titusener eller hundretusener av år tilbake.",
+  },
+  {
+    prompt: "Hvorfor kan to bøker oppgi ulike tall for når en geologisk periode begynte?",
+    options: [
+      "Fordi geologene ikke bruker tall",
+      "Fordi bedre dateringer gjør at ICS justerer grensene",
+      "Fordi hvert land har sin egen tidsskala",
+      "Fordi periodene flytter seg med platedriften",
+    ],
+    answer: 1,
+    explain: "Tidsskalaen revideres når det kommer nye dateringer. Grensen til kambrium er for eksempel justert fra 542 og 541 til 538,8 millioner år.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISK_TID_1: QuizQuestion[] = [
+  {
+    prompt: "Hvilken rekkefølge går fra det lengste til det korteste tidsavsnittet?",
+    options: [
+      "Periode, eon, epoke, æra",
+      "Eon, æra, periode, epoke",
+      "Æra, eon, epoke, periode",
+    ],
+    answer: 1,
+    explain: "En eon er delt i æraer, en æra i perioder og en periode i epoker. Jura er en periode i æraen mesozoikum.",
+  },
+  {
+    prompt: "En bok fra 1990 sier at kvartær begynte for 1,8 millioner år siden. Hva er det beste svaret?",
+    options: [
+      "Boka har rett, tidsskalaen endres aldri",
+      "Tallet er justert. I dag regner vi med at kvartær begynte for 2,58 millioner år siden",
+      "Kvartær er ikke en periode",
+    ],
+    answer: 1,
+    explain: "ICS reviderer tidsskalaen. Grensen for kvartær ble flyttet til 2,58 millioner år, og grensen for kambrium er i dag 538,8 millioner år.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISK_TID_2: QuizQuestion[] = [
+  {
+    prompt: "En gang av diabas skjærer gjennom et lag med kalkstein. Hva kan du si om alderen?",
+    options: [
+      "Gangen er eldre enn kalksteinen",
+      "Gangen og kalksteinen er like gamle",
+      "Gangen er yngre enn kalksteinen",
+    ],
+    answer: 2,
+    explain: "Det som skjærer gjennom en bergart, må være yngre enn bergarten. Kalksteinen fantes allerede da magmaen trengte inn.",
+  },
+  {
+    prompt: "I et snitt ligger skifer nederst, kalkstein over og sandstein øverst. En forkastning bryter skiferen og kalksteinen, men ikke sandsteinen. Hva skjedde først og sist?",
+    options: [
+      "Sandsteinen ble avsatt først, forkastningen sist",
+      "Skifer og kalkstein ble avsatt, så kom forkastningen, og sandsteinen ble avsatt sist",
+      "Forkastningen kom først, så ble alle tre lagene avsatt",
+    ],
+    answer: 1,
+    explain: "Forkastningen er yngre enn lagene den bryter, men eldre enn sandsteinen som ligger uforstyrret over den.",
+  },
+  {
+    prompt: "Granitt inneholder bruddstykker av basalt. Hva er eldst?",
+    options: [
+      "Basalten",
+      "Granitten",
+      "Det går ikke an å si",
+    ],
+    answer: 0,
+    explain: "Inneslutninger er eldre enn bergarten de sitter i. Basalten fantes før granittmagmaen størknet rundt bruddstykkene.",
+  },
+  {
+    prompt: "Hvorfor er trilobitter gode ledefossiler?",
+    options: [
+      "Fordi de levde i alle perioder",
+      "Fordi hver art levde i kort tid, men var vidt utbredt",
+      "Fordi de bare finnes i Norge",
+    ],
+    answer: 1,
+    explain: "Et godt ledefossil har kort tidsmessig og stor geografisk utbredelse. Da kan det vise at lag på ulike steder har samme alder.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISK_TID_3: QuizQuestion[] = [
+  {
+    prompt: "Et mineral har en fjerdedel igjen av morisotopen. Hvor mange halveringstider har gått?",
+    options: [
+      "Én",
+      "To",
+      "Fire",
+    ],
+    answer: 1,
+    explain: "Etter én halveringstid er halvparten igjen, og etter to er halvparten av halvparten, altså en fjerdedel, igjen.",
+  },
+  {
+    prompt: "Hvorfor kan vi ikke bruke C-14 til å datere en dinosaurknokkel?",
+    options: [
+      "Fordi dinosaurer ikke inneholdt karbon",
+      "Fordi knokkelen er mer enn 66 millioner år gammel, og det er ikke noe målbart karbon-14 igjen",
+      "Fordi C-14 bare virker på bergarter",
+    ],
+    answer: 1,
+    explain: "C-14 kan bare brukes på organisk materiale som er yngre enn ca. 50 000 år. Dinosaurene døde ut for 66 millioner år siden.",
+  },
+  {
+    prompt: "Hvorfor er zirkon et viktig mineral for datering av gamle bergarter?",
+    options: [
+      "Det inneholder mye karbon-14",
+      "Det dannes bare i sedimenter",
+      "Det inneholder radioaktive grunnstoffer som uran",
+    ],
+    answer: 2,
+    explain: "Zirkon inneholder uran, og uran–bly-metoden har så lang halveringstid at den passer for gamle bergarter.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISK_TID_4: QuizQuestion[] = [
+  {
+    prompt: "Du vil finne ut når et fjellskred gikk for flere tusen år siden. Hvilken metode passer best?",
+    options: [
+      "Uran–bly på zirkon",
+      "Eksponeringsdatering med beryllium-10 på store blokker",
+      "Varvtelling i skredmassen",
+    ],
+    answer: 1,
+    explain: "Eksponeringsdatering viser hvor lenge steinen har vært utsatt for kosmisk stråling. For et fjellskred begynte det da skredet gikk.",
+  },
+  {
+    prompt: "Hvorfor kan Vedde-asken brukes til å datere avsetninger over hele Europa?",
+    options: [
+      "Fordi asken ble avsatt samtidig over et stort område og er datert",
+      "Fordi asken inneholder mye uran",
+      "Fordi asken er like gammel som jorda",
+    ],
+    answer: 0,
+    explain: "Alle avsetninger med samme askelag er like gamle. Når asken er datert ett sted, kan den brukes til å datere alle andre steder der den finnes.",
+  },
+  {
+    prompt: "Et sandsteinslag ligger mellom to lavalag. Det nederste lavalaget er datert til 300 millioner år, og det øverste til 290 millioner år. Hva vet du om sandsteinen?",
+    options: [
+      "Den er eldre enn 300 millioner år",
+      "Den er mellom 300 og 290 millioner år gammel",
+      "Den er yngre enn 290 millioner år",
+    ],
+    answer: 1,
+    explain: "Sandsteinen ble avsatt etter det nederste lavalaget og før det øverste. Alderen ligger mellom de to daterte nivåene.",
+  },
+];

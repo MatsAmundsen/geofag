@@ -180,6 +180,7 @@ import {
   QUIZ_SJEKK_SKJELVFARE_3,
   QUIZ_SKJELVFARE,
   QUIZ_LANDFORMER,
+  QUIZ_GEOLOGISK_TID,
   QUIZ_NORGES_GEOLOGI,
   QUIZ_JORDSYSTEMENE,
   QUIZ_MELTING,
@@ -1041,6 +1042,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       heading="Glasial isostasi og marin grense"
       caption="Under siste istid presset en opptil ca. 3 km tykk innlandsis landet ned. Astenosfæren under er fast, men gir etter plastisk over tusenvis av år. Da isen smeltet, flommet havet inn over det nedtrykte landet og avsatte marin leire. Havet sto opptil ca. 220 m høyere enn i dag i Oslo-området (marin grense). Snittet er skjematisk, og nedpressingen er sterkt overdrevet."
     />
+  ),
+  QuizGeologiskTid: () => (
+    <Quiz questions={QUIZ_GEOLOGISK_TID} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   QuizNorgesGeologi: () => (
     <Quiz questions={QUIZ_NORGES_GEOLOGI} heading={null} intro="Velg ett svar per spørsmål." />

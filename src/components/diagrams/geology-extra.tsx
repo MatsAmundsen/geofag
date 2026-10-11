@@ -3,9 +3,9 @@ import { Arrow, C, Diagram, L } from "./svg-kit";
 export function RelativeDatingDiagram() {
   return (
     <Diagram
-      title="Prinsipper for relativ datering: superposisjon, krysskjæring og inklusjoner"
+      title="Prinsipper for relativ datering: overlagring, gjennomskjæring og inneslutninger"
       heading="Relativ datering: tre geologiske prinsipper"
-      caption="Superposisjon: Eldste sedimentlag ligger nederst. Krysskjæring: En intrusjon eller forkastning er alltid yngre enn bergartene den skjærer gjennom. Inklusjon: Fragmenter (xenolitter) inni en bergart er eldre enn vertsbjergarten."
+      caption="Superposisjon: Eldste sedimentlag ligger nederst. Gjennomskjæring: En gang eller forkastning er yngre enn bergartene den skjærer gjennom. Inneslutning: Bruddstykker (xenolitter) inne i en bergart er eldre enn vertsbergarten."
       viewBox="0 0 900 480"
       wide
     >
@@ -15,67 +15,67 @@ export function RelativeDatingDiagram() {
           <rect x="50" y="40" width="800" height="340" rx="10" fill="#141d24" stroke={C.dim} strokeWidth="1.5" />
 
           {/* Sedimentlag A - eldst (nederst) */}
-          <path d="M 50 310 L 480 310 L 510 380 L 50 380 Z" fill="#252420" />
-          <path d="M 570 340 L 850 340 L 850 380 L 530 380 Z" fill="#252420" />
-          <L x="120" y="352" fill={C.sand} size={15} weight={700}>Lag A (Kambrium)</L>
+          <path d="M 50 310 L 538 310 L 570 380 L 50 380 Z" fill="#252420" />
+          <path d="M 552 340 L 850 340 L 850 380 L 570 380 Z" fill="#252420" />
+          <L x="120" y="352" fill={C.sand} size={15} weight={700}>Lag A (kambrium)</L>
           <L x="120" y="370" fill={C.muted} size={12}>Skifer · Eldst i lagrekken</L>
 
           {/* Sedimentlag B */}
-          <path d="M 50 230 L 440 230 L 480 310 L 50 310 Z" fill="#1b2a32" />
-          <path d="M 610 260 L 850 260 L 850 340 L 570 340 Z" fill="#1b2a32" />
-          <L x="120" y="272" fill={C.teal} size={15} weight={700}>Lag B (Ordovicium)</L>
+          <path d="M 50 230 L 502 230 L 538 310 L 50 310 Z" fill="#1b2a32" />
+          <path d="M 515 260 L 850 260 L 850 340 L 552 340 Z" fill="#1b2a32" />
+          <L x="120" y="272" fill={C.teal} size={15} weight={700}>Lag B (ordovicium)</L>
           <L x="120" y="290" fill={C.muted} size={12}>Kalkstein med fossiler</L>
 
           {/* Sedimentlag C */}
-          <path d="M 50 150 L 400 150 L 440 230 L 50 230 Z" fill="#28221d" />
-          <path d="M 650 180 L 850 180 L 850 260 L 610 260 Z" fill="#28221d" />
-          <L x="120" y="192" fill={C.warm} size={15} weight={700}>Lag C (Silur)</L>
+          <path d="M 50 150 L 465 150 L 502 230 L 50 230 Z" fill="#28221d" />
+          <path d="M 479 180 L 850 180 L 850 260 L 515 260 Z" fill="#28221d" />
+          <L x="120" y="192" fill={C.warm} size={15} weight={700}>Lag C (silur)</L>
           <L x="120" y="210" fill={C.muted} size={12}>Sandstein</L>
 
           {/* Sedimentlag D - yngst (øverst) */}
-          <path d="M 50 70 L 360 70 L 400 150 L 50 150 Z" fill="#1e2d27" />
-          <path d="M 690 100 L 850 100 L 850 180 L 650 180 Z" fill="#1e2d27" />
-          <L x="120" y="112" fill={C.rain} size={15} weight={700}>Lag D (Devon)</L>
+          <path d="M 50 70 L 429 70 L 465 150 L 50 150 Z" fill="#1e2d27" />
+          <path d="M 443 100 L 850 100 L 850 180 L 479 180 Z" fill="#1e2d27" />
+          <L x="120" y="112" fill={C.rain} size={15} weight={700}>Lag D (devon)</L>
           <L x="120" y="130" fill={C.muted} size={12}>Konglomerat · Yngst i sedimentene</L>
 
           {/* Normalforkastning F (skråner og forskyver høyre blokk ned) */}
           <line x1="420" y1="50" x2="570" y2="380" stroke={C.low} strokeWidth="3" strokeDasharray="6 4" />
-          <L x="490" y="75" fill={C.low} size={13} weight={700}>Forkastningssone F</L>
-          <L x="490" y="92" fill={C.muted} size={11}>Kutter A, B, C, D → yngre enn sedimentene</L>
+          <L x="600" y="75" fill={C.low} size={13} weight={700}>Forkastningssone F</L>
+          <L x="600" y="92" fill={C.muted} size={11}>Skjærer A, B, C, D → yngre enn sedimentene</L>
           {/* Forkastningsbevegelse piler */}
-          <Arrow d="M 400 240 L 420 280" marker={m.low} color={C.low} width={2.4} />
+          <Arrow d="M 420 280 L 400 240" marker={m.low} color={C.low} width={2.4} />
           <Arrow d="M 590 270 L 610 310" marker={m.low} color={C.low} width={2.4} />
 
-          {/* Magmatisk gang / intrusjon E som skjærer gjennom forkastningen og lagene */}
-          <path d="M 720 50 L 760 50 L 740 380 L 700 380 Z" fill="#3d1e1e" stroke={C.warm} strokeWidth="1.8" />
-          <L x="730" y="75" fill={C.warm} size={14} weight={700} anchor="middle">Intrusjon E</L>
-          <L x="730" y="93" fill={C.fg} size={11} anchor="middle">Diabasgang</L>
-          <L x="730" y="110" fill={C.muted} size={10} anchor="middle">Kutter lag og forkastning</L>
+          {/* Gang E krysser forkastningen F uten å være forskjøvet, så E er yngre enn F (R4) */}
+          <path d="M 470 50 L 510 50 L 560 380 L 520 380 Z" fill="#3d1e1e" stroke={C.warm} strokeWidth="1.8" />
+          <L x="400" y="75" fill={C.warm} size={14} weight={700} anchor="end">Gang E</L>
+          <L x="400" y="93" fill={C.fg} size={11} anchor="end">Diabasgang</L>
+          <L x="400" y="110" fill={C.muted} size={10} anchor="end">Skjærer lag og forkastning</L>
 
           {/* Inklusjoner / xenolitter av Lag B inni intrusjon E */}
-          <polygon points="715,220 735,215 730,230 710,228" fill="#1b2a32" stroke={C.teal} strokeWidth="1.2" />
-          <polygon points="720,245 745,240 738,255 718,252" fill="#1b2a32" stroke={C.teal} strokeWidth="1.2" />
-          <L x="750" y="235" fill={C.teal} size={12} weight={600}>Xenolitt (fra lag B)</L>
-          <L x="750" y="250" fill={C.muted} size={10}>Inklusjon er eldre enn magmaet</L>
+          <polygon points="502,240 520,236 516,250 499,248" fill="#1b2a32" stroke={C.teal} strokeWidth="1.2" />
+          <polygon points="507,262 528,258 522,272 505,270" fill="#1b2a32" stroke={C.teal} strokeWidth="1.2" />
+          <L x="640" y="300" fill={C.teal} size={12} weight={600}>Xenolitt (fra lag B) i gang E</L>
+          <L x="640" y="315" fill={C.muted} size={10}>Inneslutningen er eldre enn gangen</L>
 
           {/* Pedagogiske forklarende prinsipp-bokser nederst */}
           <g>
             <rect x="50" y="395" width="250" height="70" rx="8" fill="#16232c" stroke={C.sand} strokeWidth="1.2" />
             <L x="64" y="418" fill={C.sand} size={13} weight={700}>1. Superposisjonsprinsippet</L>
             <L x="64" y="438" fill={C.fg} size={12}>Lag A er eldst, deretter B, C og D.</L>
-            <L x="64" y="454" fill={C.muted} size={11}>Uforstyrrede lag avsettes alltid oppå hverandre.</L>
+            <L x="64" y="454" fill={C.muted} size={11}>I uforstyrrede lag er det nederste laget eldst.</L>
           </g>
 
           <g>
             <rect x="325" y="395" width="250" height="70" rx="8" fill="#16232c" stroke={C.low} strokeWidth="1.2" />
-            <L x="339" y="418" fill={C.low} size={13} weight={700}>2. Krysskjæringsprinsippet</L>
+            <L x="339" y="418" fill={C.low} size={13} weight={700}>2. Gjennomskjæringsprinsippet</L>
             <L x="339" y="438" fill={C.fg} size={12}>Forkastning F er yngre enn lagene den bryter.</L>
-            <L x="339" y="454" fill={C.muted} size={11}>Gangen E kutter forkastningen → E er yngst.</L>
+            <L x="339" y="454" fill={C.muted} size={11}>Gangen E skjærer forkastningen → E er yngst.</L>
           </g>
 
           <g>
             <rect x="600" y="395" width="250" height="70" rx="8" fill="#16232c" stroke={C.teal} strokeWidth="1.2" />
-            <L x="614" y="418" fill={C.teal} size={13} weight={700}>3. Inklusjonsprinsippet</L>
+            <L x="614" y="418" fill={C.teal} size={13} weight={700}>3. Inneslutningsprinsippet</L>
             <L x="614" y="438" fill={C.fg} size={12}>Bruddstykkene av lag B inni gang E</L>
             <L x="614" y="454" fill={C.muted} size={11}>måtte eksistere før gangen størknet rundt dem.</L>
           </g>

@@ -29,8 +29,8 @@ function BergarterPage() {
         label: "Forrige: Jordskjelv og tsunamier som naturfare",
       }}
       next={{
-        to: "/geofag-1/norges-geologi",
-        label: "Neste: Norges geologiske historie",
+        to: "/geofag-1/geologisk-tid",
+        label: "Neste: Geologisk tid og datering",
       }}
       kilder={KILDER.bergarter}
       posterSlug="bergarter"

@@ -25,8 +25,8 @@ function NorgesGeologiPage() {
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
-        to: "/geofag-1/bergarter",
-        label: "Forrige: Bergarter og mineraler",
+        to: "/geofag-1/geologisk-tid",
+        label: "Forrige: Geologisk tid og datering",
       }}
       next={{
         to: "/geofag-1/landformer",
