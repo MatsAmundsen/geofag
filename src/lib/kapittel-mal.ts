@@ -113,6 +113,12 @@ import {
   QUIZ_SJEKK_OVERSIKT_4,
   QUIZ_SJEKK_OVERSIKT_5,
   QUIZ_SJEKK_OVERSIKT_6,
+  QUIZ_SJEKK_AMOC_1,
+  QUIZ_SJEKK_AMOC_2,
+  QUIZ_SJEKK_AMOC_3,
+  QUIZ_SJEKK_AMOC_4,
+  QUIZ_SJEKK_AMOC_5,
+  QUIZ_SJEKK_AMOC_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -220,6 +226,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Oversikt4: QUIZ_SJEKK_OVERSIKT_4,
   Oversikt5: QUIZ_SJEKK_OVERSIKT_5,
   Oversikt6: QUIZ_SJEKK_OVERSIKT_6,
+  Amoc1: QUIZ_SJEKK_AMOC_1,
+  Amoc2: QUIZ_SJEKK_AMOC_2,
+  Amoc3: QUIZ_SJEKK_AMOC_3,
+  Amoc4: QUIZ_SJEKK_AMOC_4,
+  Amoc5: QUIZ_SJEKK_AMOC_5,
+  Amoc6: QUIZ_SJEKK_AMOC_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -403,6 +415,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et pådriv, som mer karbondioksid, setter i gang en endring. En tilbakekobling, som vanndamp eller is-albedo, forsterker eller demper den. Arktis blir varmet opp mye raskere enn jorda i gjennomsnitt.",
     "Havet har tatt opp det meste av overskuddsvarmen. ENSO, IOD, NAO og AMOC er svingninger i klimasystemet, ikke det samme som global oppvarming.",
     "Jorda var 1,09 °C varmere i 2011–2020 enn i 1850–1900, og menneskelig påvirkning er årsaken. CO₂ har steget fra ca. 280 til ca. 426 ppm, og havnivået steg ca. 0,20 m fra 1901 til 2018.",
+  ],
+  Amoc: [
+    "AMOC er den atlantiske omveltningssirkulasjonen. Varmt vann går nordover nær overflaten, avkjøles, synker og går sørover i dypet. Den frakter ca. 17 Sv og 1,2 PW varme, ca. 15 ganger så mye vann som alle verdens elver.",
+    "Golfstrømmen er en vinddrevet randstrøm, med ca. 32 Sv i Floridastredet. Den ville ikke stoppe helt selv om AMOC gjorde det. Strømmen langs Norge er Den norske atlanterhavsstrømmen.",
+    "Overflatevannet i Nord-Atlanteren synker først og fremst fordi det blir kraftig avkjølt om vinteren. Saltet fra subtropene gjør det tyngre, og salt-adveksjons-tilbakekoblingen holder AMOC i gang.",
+    "Oppvarming og mer ferskvann fra Grønland, nedbør og elver gjør overflaten lettere og kan svekke AMOC. Stommels modell viser at AMOC kan ha to stabile tilstander, med vippepunkt og hysterese. Modellen sier ikke når et vippepunkt kan nås.",
+    "Yngre dryas og Dansgaard-Oeschger-hendelsene viser at AMOC har endret seg brått før. RAPID har målt AMOC siden 2004, men serien er for kort til å vise en sikker trend.",
+    "IPCC venter at AMOC svært sannsynlig svekkes i dette hundreåret, men mener med middels sikkerhet at den ikke bryter brått sammen før 2100. En svekket AMOC demper oppvarmingen i Nord-Atlanteren og kan gi tørrere Europa, høyere havnivå i USA og et regnbelte som flytter seg sørover.",
   ],
 };
 
