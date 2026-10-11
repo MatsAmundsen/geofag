@@ -305,7 +305,7 @@ export function GeotidTidslinjeFigur({ heading = "Den geologiske tidsskalaen: zo
         { text: "Utsnittet i neste zoom", color: C.warm, kind: "dash" },
       ];
   const notes = klokkeModus
-    ? ["Jordas alder, ca. 4,54 milliarder år = 24 timer (USGS)", "Solsystemet er litt eldre, ca. 4,567 milliarder år, og ligger før midnatt kvelden før"]
+    ? ["Jordas alder, ca. 4,54 milliarder år = 24 timer (USGS)", "Solsystemet er litt eldre, ca. 4,567 milliarder år, og ligger før klokka starter"]
     : z.perioder
       ? ["Tid i millioner år siden", "Grenser fra ICS-kartet v2026/06", "Karbon, trias og neogen uten tall"]
       : [`Tid i ${z.enhet}`, "Eldst til venstre"];
