@@ -394,7 +394,7 @@ export const GF1_THEMES = [
     blurb:
       "Fjellskred, jordskred og kvikkleire. Åknes, Mannen og Gjerdrum. Kart og varsling.",
     status: "klar" as const,
-    maal: "Gjøre rede for skredfare, og vurdere forebygging og tilpasning.",
+    maal: "Gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene.",
   },
   {
     slug: "geologiske-ressurser",

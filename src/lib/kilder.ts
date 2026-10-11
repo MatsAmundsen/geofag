@@ -1597,6 +1597,12 @@ export const KILDER = {
       href: "https://www.regjeringen.no/contentassets/3dadc8f7fad94608861163fa524023c0/no/pdfs/arsakene-til-kvikkleireskredet-i-gjerdrum-2020.pdf",
     },
     {
+      prefix: "Meld. St. 15 (2011–2012). (2012). ",
+      italic: "Hvordan leve med farene – om flom og skred",
+      suffix: ". Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/no/dokumenter/meld-st-15-20112012/id674204/",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
       italic: "Hva er kvikkleire og hvor finnes den i Norge?",
       suffix: ".",
@@ -1621,10 +1627,16 @@ export const KILDER = {
       href: "https://www.ngu.no/geologi-og-risiko/skred-og-ras",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
       italic: "Historiske fjellskred i Norge",
       suffix: " [Veileder: Fjellskred].",
       href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Fjellskredovervåking",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2020a). ",
@@ -1663,10 +1675,16 @@ export const KILDER = {
       href: "https://www.nve.no/naturfare/laer-om-naturfare/om-skred/kva-er-kvikkleire-og-kvikkleireskred/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023a). ",
       italic: "Bakgrunn og historie",
       suffix: " [Gjerdrum].",
       href: "https://www.nve.no/naturfare/sikringstiltak/sikringsprosjekter/gjerdrum/bakgrunn-og-historie/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023b). ",
+      italic: "Nye aktsomhetskart for snøskred i Norge",
+      suffix: " (NVE Ekstern rapport 24/2023).",
+      href: "https://publikasjoner.nve.no/eksternrapport/2023/eksternrapport2023_24.pdf",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026a). ",
@@ -1679,6 +1697,12 @@ export const KILDER = {
       italic: "Åknes",
       suffix: ".",
       href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026c). ",
+      italic: "Fjellskred fra Åknes: Reviderte scenarioer, sannsynligheter og konsekvenser",
+      suffix: " (NVE Rapport 16/2026).",
+      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
