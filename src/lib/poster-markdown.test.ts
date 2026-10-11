@@ -380,6 +380,10 @@ describe("jordsystemene poster", () => {
       "CarbonCycleDiagram",
       "EarthSystemsModel",
       "QuizJordsystemene",
+      "SjekkJordsystemene1",
+      "SjekkJordsystemene2",
+      "SjekkJordsystemene3",
+      "SammendragJordsystemene",
     ]) {
       assert.equal(ids.has(id), true, `jordsystemene missing ${id}`);
       assert.equal((injected.match(new RegExp(id, "g")) ?? []).length, 1, id);
@@ -392,7 +396,7 @@ describe("jordsystemene poster", () => {
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("## Test deg selv"), true);
     assert.equal(md.includes("## Kilder"), false);
-    assert.equal(ids.size, 6);
+    assert.equal(ids.size, 10);
     assert.equal(ids.has("QuizVulkaner"), false);
     assert.equal(ids.has("QuizHoytrykk"), false);
   });

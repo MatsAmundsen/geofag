@@ -2077,57 +2077,68 @@ export const QUIZ_JORDSYSTEMENE: QuizQuestion[] = [
   {
     prompt: "Hvilke sfærer er mottakerne i geofag 1?",
     options: [
-      "Geosfæren og hydrosfæren. Atmosfæren, kryosfæren og biosfæren er med som drivere.",
-      "Alle fem sfærene er mottakere, og ingen er drivere.",
-      "Bare atmosfæren, fordi regn og CO₂ kommer derfra.",
+      "Atmosfæren og biosfæren",
+      "Geosfæren og hydrosfæren",
+      "Kryosfæren og atmosfæren",
+      "Biosfæren og kryosfæren",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er et jordsystem?». I geofag 1 følger du hvordan berg og ferskvann svarer. Atmosfæren, kryosfæren og biosfæren er med fordi de driver endringen.",
+    answer: 1,
+    explain: "I geofag 1 følger vi hvordan atmosfæren, kryosfæren og biosfæren endrer berg, løsmasser, jord, elver, innsjøer og grunnvann.",
   },
   {
     prompt: "Hvorfor kan et stort eksplosivt utbrudd kjøle jorda i noen år?",
     options: [
-      "Fordi asken blir liggende i stratosfæren i mange år og stenger sola ute.",
-      "Fordi SO₂ i stratosfæren blir til sulfataerosoler som reflekterer sollys.",
-      "Fordi lavaen tar varme fra lufta når den størkner.",
+      "Asken blokkerer sollyset i mange år",
+      "Vulkanen tar opp CO₂ fra lufta",
+      "Utbruddet senker temperaturen i havet direkte",
+      "SO₂ i stratosfæren blir til sulfataerosoler som reflekterer sollys",
     ],
-    answer: 1,
-    explain:
-      "Se «Vulkaner på kort sikt». Aske faller ut i løpet av dager til uker. Det er sulfataerosolene fra SO₂ som kan kjøle troposfæren i noen år, som etter Pinatubo i 1991.",
+    answer: 3,
+    explain: "Asken faller ut i løpet av dager til uker. Sulfataerosolene blir værende lenger. Pinatubo kjølte jordoverflaten i om lag tre år.",
   },
   {
     prompt: "Hva skiller det raske karbonkretsløpet fra det trege?",
     options: [
-      "I det raske kommer karbonet tilbake når planter og plankton brytes ned. I det trege bruker karbon 100–200 millioner år.",
-      "Begge kretsløpene tar noen år.",
-      "Det trege går bare gjennom livet, det raske bare gjennom vulkaner.",
+      "Det raske går gjennom livet på måneder til år, det trege gjennom berg, hav og vulkaner på 100–200 millioner år",
+      "Det raske går gjennom vulkaner, det trege gjennom planter",
+      "Det finnes bare ett karbonkretsløp",
+      "Det trege går raskere når det er kaldt",
     ],
     answer: 0,
-    explain:
-      "Se «Karbonat–silikat-syklusen». Det raske kretsløpet går gjennom livet og gir karbonet tilbake når organismene brytes ned. Det trege går mellom berg, jord, hav og atmosfære og tar 100–200 millioner år.",
+    explain: "Fotosyntese og nedbrytning flytter karbon raskt. Forvitring, kalkstein og vulkaner flytter det langsomt.",
   },
   {
-    prompt: "Hva skjer i den trege karbonsløyfen når CO₂ i atmosfæren stiger?",
+    prompt: "Hva er riktig om termostaten i den trege karbonsløyfen?",
     options: [
-      "Det blir varmere og mer regn, mer berg løses, og mer karbon lagres i kalkstein.",
-      "Sløyfen stopper, så CO₂ blir værende i lufta for alltid.",
-      "Karbonet lagres i kalkstein i løpet av noen år, samme klokke som et vulkanutbrudd.",
+      "Varmere klima gir mindre forvitring",
+      "Den virker i løpet av noen tiår",
+      "Varmere klima gir mer regn og raskere forvitring, så mer karbon lagres i kalkstein",
+      "Den forsterker oppvarmingen",
+    ],
+    answer: 2,
+    explain: "Mer forvitring fjerner CO₂ fra lufta og trekker temperaturen tilbake. Det er en negativ tilbakekobling, men den tar noen hundre tusen år.",
+  },
+  {
+    prompt: "Hva viser hevingen på Jan Mayen etter utbruddet i 1732?",
+    options: [
+      "At kryosfæren hevet landet",
+      "At havet steg rundt Jan Mayen",
+      "At hevingen tok millioner av år",
+      "At geosfæren kan flytte hydrosfæren på menneskelig tidsskala",
+    ],
+    answer: 3,
+    explain: "Magma hevet bakken om lag 14 meter, og Nordlaguna ble stengt fra havet. Det skjedde i løpet av et utbrudd.",
+  },
+  {
+    prompt: "Hvorfor er Pinatubo-kjølingen og den trege karbonsløyfen ikke samme vulkan–klima?",
+    options: [
+      "De virker på helt ulike tidsskalaer: år mot hundre tusener av år",
+      "Pinatubo slapp ikke ut gass",
+      "Den trege sløyfen har ingenting med vulkaner å gjøre",
+      "Begge varer like lenge",
     ],
     answer: 0,
-    explain:
-      "Se «Karbonat–silikat-syklusen». Mer CO₂ gir høyere temperatur og mer regn. Da løses mer berg, og mer karbon avsettes på havbunnen. Det demper endringen, men det tar noen hundre tusen år.",
-  },
-  {
-    prompt: "Hvorfor er Pinatubo-kjøling og den trege karbonsløyfen ikke samme vulkan–klima?",
-    options: [
-      "Begge virker på samme tidsskala, noen år.",
-      "Pinatubo-kjølingen varte i år. Den trege sløyfen bruker noen hundre tusen år.",
-      "Den trege sløyfen kjøler jorda i tre år, akkurat som SO₂.",
-    ],
-    answer: 1,
-    explain:
-      "Se «Hvilken tidsskala?». SO₂ fra et stort utbrudd virker i år. Karbonat–silikat-syklusen er den trege sløyfen, fra noen hundre tusen år til 100–200 millioner år.",
+    explain: "SO₂ fra Pinatubo kjølte i om lag tre år. Den trege sløyfen bruker noen hundre tusen år på å komme i balanse.",
   },
 ];
 
@@ -3237,5 +3248,71 @@ export const QUIZ_SJEKK_VULKANER_5: QuizQuestion[] = [
     ],
     answer: 0,
     explain: "Lavastrømmer går ofte sakte nok til at de kan ledes bort med voller, slik som ved Svartsengi. På Heimaey ble lava også kjølt ned med sjøvann.",
+export const QUIZ_SJEKK_JORDSYSTEMENE_1: QuizQuestion[] = [
+  {
+    prompt: "Ei elv graver en V-dal i bratt fjell. Hvilken sfære er driver, og hvilken er mottaker?",
+    options: [
+      "Hydrosfæren er driver, og geosfæren er mottaker",
+      "Geosfæren er driver, og hydrosfæren er mottaker",
+      "Atmosfæren er både driver og mottaker",
+    ],
+    answer: 0,
+    explain: "Elva er hydrosfære som graver i berg og løsmasser, altså geosfæren. Geosfæren svarer tilbake ved å styre fall og løp.",
+  },
+  {
+    prompt: "Hvilket av disse hører til kryosfæren, ikke hydrosfæren, i dette kapitlet?",
+    options: [
+      "Grunnvann",
+      "Isbreen",
+      "Ei innsjø",
+    ],
+    answer: 1,
+    explain: "Hydrosfæren er vannet på og under jordoverflaten. Is regner vi til kryosfæren.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSYSTEMENE_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan et stort eksplosivt utbrudd kjøle jorda i noen år?",
+    options: [
+      "Asken blir liggende i stratosfæren i mange år",
+      "CO₂ fra vulkanen kjøler lufta",
+      "SO₂ i stratosfæren blir til sulfataerosoler som reflekterer sollys",
+    ],
+    answer: 2,
+    explain: "Asken faller ut i løpet av dager til uker. Det er SO₂ som blir til sulfataerosoler i stratosfæren, og de reflekterer sollys i noen år.",
+  },
+  {
+    prompt: "Hvorfor forklarer ikke vulkanene dagens oppvarming?",
+    options: [
+      "Vulkaner slipper ikke ut CO₂",
+      "Vulkanenes CO₂-utslipp er under 0,5 gigatonn i året, mot ca. 38 gigatonn fra fossilt brensel",
+      "Vulkansk CO₂ forsvinner i løpet av noen uker",
+    ],
+    answer: 1,
+    explain: "Vulkaner slipper ut 0,13–0,44 gigatonn CO₂ i året (USGS), mens fossilt brensel ga 37,8 gigatonn i 2024. De menneskeskapte utslippene er nesten hundre ganger større.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
+  {
+    prompt: "Hva skjer i den trege karbonsløyfen når CO₂ i atmosfæren stiger?",
+    options: [
+      "Det blir varmere, mer berg forvitrer, og mer karbon lagres i kalkstein, så temperaturen trekkes tilbake",
+      "Det blir kaldere, og isen løser opp kalksteinen",
+      "Ingenting, for sløyfen er for treg til å svare",
+    ],
+    answer: 0,
+    explain: "Varmere klima gir mer regn og raskere forvitring. Flere ioner når havet og lagres som kalkstein. Det er en negativ tilbakekobling.",
+  },
+  {
+    prompt: "Hvordan kommer karbonet i kalkstein tilbake til atmosfæren?",
+    options: [
+      "Regnet løser kalksteinen og sender CO₂ rett opp i lufta",
+      "Kalksteinen synker ned i en subduksjonssone, karbonatene varmes opp og frigjør CO₂, og gassen kommer ut gjennom vulkaner",
+      "Plankton puster det ut",
+    ],
+    answer: 1,
+    explain: "Når havbunn med kalkstein subduseres, frigjør oppvarmingen CO₂ fra karbonatene. Vulkanene gir gassen tilbake til atmosfæren.",
   },
 ];

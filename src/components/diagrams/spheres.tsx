@@ -135,7 +135,7 @@ export function CarbonCycleDiagram() {
     <Diagram
       title="Det globale karbonkretsløpet"
       heading="Raske biologiske og langsomme geologiske kretsløp"
-      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilførte om lag 10,3 GtC i 2024 (Friedlingstein et al., 2025)."
+      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilførte om lag 10,3 GtC i 2024 (Friedlingstein et al., 2025). Atmosfærelageret (ca. 870 GtC, 2010–2019) er fra IPCC (2021), AR6 WG1 kap. 5."
       viewBox="0 0 860 480"
     >
       {(m) => (
@@ -146,7 +146,7 @@ export function CarbonCycleDiagram() {
             Atmosfæren
           </L>
           <L x="430" y="74" fill={C.fg} size={14} weight={600} anchor="middle">
-            ~850 GtC (+5 GtC/år netto akkumulering)
+            ~870 GtC (+5 GtC/år netto akkumulering)
           </L>
 
           {/* Soneangivelser / bakgrunner */}

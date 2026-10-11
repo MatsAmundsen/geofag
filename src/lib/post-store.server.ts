@@ -876,6 +876,9 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g1-platetektonikk-sjekk1-2026-10-11",
     slug: "platetektonikk",
     stale: ["dannet av mikroskopiske kiselalger", "For ca. 310 millioner år siden"],
+    flag: "g1-jordsystemene-mal-2026-10-11",
+    slug: "jordsystemene",
+    stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],
   },
   {
     flag: "g1-feltarbeid-md-2026-10-11",
