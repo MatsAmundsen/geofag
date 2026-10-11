@@ -26,7 +26,7 @@ function GeologiskTidPage() {
       bannerAlt={tema.alt}
       prev={{
         to: "/geofag-1/bergarter",
-        label: "Forrige: Bergarter og mineraler",
+        label: "Forrige: Bergarter og det geologiske kretsløpet",
       }}
       next={{
         to: "/geofag-1/norges-geologi",
