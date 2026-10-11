@@ -17,10 +17,22 @@ export const KILDER = {
       href: "https://snl.no/Norges_geologi",
     },
     {
+      prefix: "Canadell, J. G., Monteiro, P. M. S., Costa, M. H., mfl. (2021). Global carbon and other biogeochemical cycles and feedbacks. I Intergovernmental Panel on Climate Change [IPCC], ",
+      italic: "Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 673–816). Cambridge University Press. Figur 5.12 brukes i figuren om karbonat–silikat-syklusen.",
+      href: "https://doi.org/10.1017/9781009157896.007",
+    },
+    {
       prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
       italic: "The ICS International Chronostratigraphic Chart",
       suffix: " (v2026/06). International Commission on Stratigraphy.",
       href: "https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf",
+    },
+    {
+      prefix: "Flemming, J., & Inness, A. (2013). Volcanic sulfur dioxide plume forecasts based on UV satellite retrievals for the 2011 Grímsvötn and the 2010 Eyjafjallajökull eruption. ",
+      italic: "Journal of Geophysical Research: Atmospheres, 118",
+      suffix: "(17), 10172–10189.",
+      href: "https://doi.org/10.1002/jgrd.50753",
     },
     {
       prefix: "Friedlingstein, P., O'Sullivan, M., Jones, M. W., mfl. (2026). Global Carbon Budget 2025. ",
@@ -99,6 +111,12 @@ export const KILDER = {
       italic: "Om løsmasser",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/om-losmasser",
+    },
+    {
+      prefix: "Self, S., Gertisser, R., Thordarson, T., Rampino, M. R., & Wolff, J. A. (2004). Magma volume, volatile emissions, and stratospheric aerosols from the 1815 eruption of Tambora. ",
+      italic: "Geophysical Research Letters, 31",
+      suffix: ", L20608.",
+      href: "https://doi.org/10.1029/2004GL020925",
     },
     {
       prefix: "U.S. Geological Survey [USGS]. (u.å.). ",

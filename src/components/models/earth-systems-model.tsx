@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelPanel, ModelTab, ModelNote } from "./model-chrome";
 
-type SystemTab = "silicate_weathering" | "albedo_feedback" | "volcanic_climate" | "sphere_matrix";
+type SystemTab = "silicate_weathering" | "volcanic_climate" | "sphere_matrix";
 
 export function EarthSystemsModel() {
   const [tab, setTab] = useState<SystemTab>("silicate_weathering");
@@ -18,20 +18,6 @@ export function EarthSystemsModel() {
   const totalWeatheringRate = (baseWeatheringRate * orogenyExposure).toFixed(2);
   // Årlig CO2-fjerning via forvitring (Gt CO2/år, relativ skala)
   const co2DrawdownGt = (0.28 * parseFloat(totalWeatheringRate)).toFixed(2);
-
-  // --- Fane 2: Is-albedo-tilbakekobling ---
-  const [solarConstant, setSolarConstant] = useState<number>(1361); // W/m2 (1300 til 1420)
-  const [greenhouseIndex, setGreenhouseIndex] = useState<number>(32); // 10 til 60 °C naturlig drivhuseffekt
-  const [manualIceCover, setManualIceCover] = useState<number>(20); // 0 til 80 % isdekke
-
-  // Albedo beregnet fra isdekke: hav/land albedo ~ 0.15, is albedo ~ 0.70
-  const globalAlbedo = (0.15 + (manualIceCover / 100) * 0.55).toFixed(2);
-  // Absorbert solstråling: S0/4 * (1 - albedo)
-  const absorbedSolar = ((solarConstant / 4) * (1 - parseFloat(globalAlbedo))).toFixed(1);
-  // Likevektstemperatur T_eff = (absorbed / sigma)^0.25 - 273.15 + drivhuseffekt
-  // sigma = 5.67e-8 W/m2 K4
-  const tKelvinPure = Math.pow((parseFloat(absorbedSolar) / 5.67037e-8), 0.25);
-  const surfaceTempC = (tKelvinPure - 273.15 + greenhouseIndex).toFixed(1);
 
   // --- Fane 3: Vulkansk gass og klima (Pinatubo vs Geologisk) ---
   const [eruptionMagnitude, setEruptionMagnitude] = useState<number>(20); // Mt SO2 (0 til 100 Mt)
@@ -50,7 +36,7 @@ export function EarthSystemsModel() {
   const sphereDetails = {
     geo: {
       name: "Geosfæren (Den faste jorda)",
-      role: "Jordskorpa, mantelen og litosfæren. Hovedlager for karbon i form av kalkstein (CaCO₃) og kerogen i sedimentære bergarter.",
+      role: "Skorpe, mantel og kjerne. Hovedlager for karbon i form av kalkstein (CaCO₃) og kerogen i sedimentære bergarter.",
       inputs: "Vann og karbonsyre fra hydrosfære og atmosfære bryter ned mineraler; organisk materiale fra biosfæren begraves som fossilt brensel.",
       outputs: "Vulkanutbrudd frigjør CO₂, SO₂ og vanndamp til atmosfæren. Regn løser berg og sender kalsium-, magnesium- og jernioner til elver og hav.",
       timescale: "Fra sekunder (jordskjelv, vulkaner) til hundrevis av millioner år (platetektonikk og bergartskretsløp).",
@@ -71,7 +57,7 @@ export function EarthSystemsModel() {
     },
     kryo: {
       name: "Kryosfæren (Is og snø)",
-      role: "Isbreer, innlandsis, permafrost, tele og sesongsnø. Regulerer klodens overflatealbedo og fungerer som geologisk gravemaskin.",
+      role: "Isbreer, innlandsis, permafrost, tele og sesongsnø. Isbreen graver og avsetter. Is og snø reflekterer sollys. Hvordan det påvirker klimaet, lærer du i geofag 2.",
       inputs: "Fast nedbør (snø) fra atmosfæren i akkumulasjonsområder.",
       outputs: "Smeltevann som mater elver og grunnvann i hydrosfæren, breslam og erodert morenemateriale til geosfæren.",
       timescale: "Årstider (snødekke) til titusener av år (istidssykluser).",
@@ -89,14 +75,11 @@ export function EarthSystemsModel() {
     <ModelFrame
       kicker="Interaktiv jordsystem-modell"
       title="Dynamiske koblinger og tilbakekoblinger i jordsystemene"
-      lead="Utforsk hvordan masse og energi sirkulerer mellom geosfæren, hydrosfæren, atmosfæren og kryosfæren. Endre parametere og observer hvordan negative og positive tilbakekoblingssløyfer opprettholder planetens likevekt eller utløser store klimaendringer."
+      lead="Utforsk hvordan karbon, vann og gass flytter seg mellom geosfæren, hydrosfæren og atmosfæren. Endre bryterne og se hvordan den trege sløyfen demper en endring. Tallene er skjematiske og regnet ut av enkle formler i modellen, ikke målinger."
       toolbar={
         <>
           <ModelTab active={tab === "silicate_weathering"} onClick={() => setTab("silicate_weathering")}>
             Den trege karbonsløyfen
-          </ModelTab>
-          <ModelTab active={tab === "albedo_feedback"} onClick={() => setTab("albedo_feedback")}>
-            Is-albedo-tilbakekobling
           </ModelTab>
           <ModelTab active={tab === "volcanic_climate"} onClick={() => setTab("volcanic_climate")}>
             Vulkaner: SO₂ vs. CO₂
@@ -168,7 +151,7 @@ export function EarthSystemsModel() {
 
               <div className="grid grid-cols-3 gap-2 pt-2 text-center">
                 <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Global T-anomali</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">T-endring (likevekt, skjematisk)</p>
                   <p className={`font-mono text-lg font-bold ${Number(tempAnomaly) >= 0 ? "text-rose-400" : "text-sky-400"}`}>
                     {Number(tempAnomaly) > 0 ? `+${tempAnomaly}` : tempAnomaly} °C
                   </p>
@@ -216,7 +199,7 @@ export function EarthSystemsModel() {
 
                 {/* Elvetransport */}
                 <path d="M 230 220 C 270 210, 300 230, 330 230" stroke="#14b8a6" strokeWidth="3" fill="none" markerEnd="url(#arr-teal)" />
-                <text x="250" y="195" fill="#14b8a6" fontSize="10">Flodtransport av Ca²⁺ og HCO₃⁻</text>
+                <text x="250" y="195" fill="#14b8a6" fontSize="10">Elvetransport av Ca²⁺ og HCO₃⁻</text>
 
                 {/* Hydrosfære (Hav) */}
                 <rect x="330" y="170" width="150" height="120" rx="8" fill="#0f2636" stroke="#14b8a6" strokeWidth="1.5" />
@@ -249,160 +232,6 @@ export function EarthSystemsModel() {
         </div>
       )}
 
-      {tab === "albedo_feedback" && (
-        <div className="space-y-6">
-          <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="space-y-4 lg:col-span-6">
-              <h4 className="text-base font-semibold text-foreground">
-                Is-albedo-tilbakekobling: Positiv (forsterkende) sløyfe
-              </h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Albedo er et mål på overflatens refleksjonsevne for sollys (0 = absorberer alt, 1 = reflekterer alt).
-                Åpent hav absorberer nesten 90 % av solstrålingen (albedo ~0.08–0.15), mens snø og havis reflekterer opptil
-                70–80 % (albedo ~0.70–0.85). Når temperaturen faller, øker isdekket, mer solenergi spretter rett ut i verdensrommet,
-                og avkjølingen forsterkes.
-              </p>
-
-              <div className="space-y-3 pt-2">
-                <div>
-                  <div className="flex justify-between text-xs font-medium">
-                    <span>Globalt is- og snødekke:</span>
-                    <span className="font-mono text-sky-400">{manualIceCover} %</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={0}
-                    max={75}
-                    step={1}
-                    value={manualIceCover}
-                    onChange={(e) => setManualIceCover(Number(e.target.value))}
-                    className="w-full accent-sky-500"
-                    aria-label="Isdekke"
-                  />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>0 % (Isfri drivhusjord)</span>
-                    <span>15 % (Dagens nivå)</span>
-                    <span>75 % (Snøball-jorda)</span>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs font-medium">
-                    <span>Solarkonstant (S₀):</span>
-                    <span className="font-mono text-amber-400">{solarConstant} W/m²</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={1320}
-                    max={1400}
-                    step={5}
-                    value={solarConstant}
-                    onChange={(e) => setSolarConstant(Number(e.target.value))}
-                    className="w-full accent-amber-500"
-                    aria-label="Solarkonstant"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs font-medium">
-                    <span>Naturlig drivhuseffekt (ΔT_ghg):</span>
-                    <span className="font-mono text-rose-400">+{greenhouseIndex} °C</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={15}
-                    max={45}
-                    step={1}
-                    value={greenhouseIndex}
-                    onChange={(e) => setGreenhouseIndex(Number(e.target.value))}
-                    className="w-full accent-rose-500"
-                    aria-label="Drivhuseffekt"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-2 pt-2 text-center">
-                <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Planetens albedo (α)</p>
-                  <p className="font-mono text-lg font-bold text-sky-300">{globalAlbedo}</p>
-                </div>
-                <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Absorbert sol (S)</p>
-                  <p className="font-mono text-lg font-bold text-amber-400">{absorbedSolar} W/m²</p>
-                </div>
-                <div className="rounded-lg border border-border bg-card p-2.5">
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Overflatetemperatur</p>
-                  <p className={`font-mono text-lg font-bold ${Number(surfaceTempC) <= 0 ? "text-sky-400" : "text-emerald-400"}`}>
-                    {surfaceTempC} °C
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Is-albedo SVG visualiserer */}
-            <div className="flex flex-col justify-center rounded-xl border border-border/80 bg-background/50 p-4 lg:col-span-6">
-              <svg viewBox="0 0 500 300" className="w-full h-auto" aria-label="Is-albedo simulering">
-                {/* Hav vs Isbakgrunn */}
-                <rect x="20" y="160" width="460" height="110" rx="8" fill="#0f2b3c" />
-                <rect
-                  x="20"
-                  y="160"
-                  width={(460 * manualIceCover) / 100}
-                  height="110"
-                  rx="6"
-                  fill="#e0f2fe"
-                  stroke="#7dd3fc"
-                  strokeWidth="1.5"
-                />
-
-                <text x="40" y="185" fill="#0369a1" fontSize="12" fontWeight="bold">
-                  Kryosfære (Is/snødekke: {manualIceCover} %)
-                </text>
-                <text x="40" y="202" fill="#0284c7" fontSize="10">
-                  Albedo ~ 0.70–0.85 (Reflekterer nesten alt)
-                </text>
-
-                <text x="460" y="185" textAnchor="end" fill="#38bdf8" fontSize="12" fontWeight="bold">
-                  Hydrosfære (Åpent hav)
-                </text>
-                <text x="460" y="202" textAnchor="end" fill="#94a3b8" fontSize="10">
-                  Albedo ~ 0.08–0.15 (Absorberer varme)
-                </text>
-
-                {/* Solinnstråling piler */}
-                {/* Innstråling mot is */}
-                <path d="M 100 40 L 140 160" stroke="#facc15" strokeWidth="2.5" markerEnd="url(#arr-amber)" />
-                <path d="M 140 160 L 180 50" stroke="#facc15" strokeWidth="2.5" strokeDasharray="3 2" />
-                <text x="165" y="70" fill="#facc15" fontSize="10" fontWeight="bold">75 % reflektert til rommet</text>
-
-                {/* Innstråling mot hav */}
-                <path d="M 360 40 L 390 160" stroke="#facc15" strokeWidth="2.5" markerEnd="url(#arr-amber)" />
-                <path d="M 390 160 L 410 110" stroke="#facc15" strokeWidth="1" opacity="0.4" />
-                <text x="400" y="140" fill="#38bdf8" fontSize="10" fontWeight="bold">88 % absorbert i havet</text>
-
-                {/* Termisk balanse tekst */}
-                <rect x="80" y="235" width="340" height="26" rx="4" fill="#09141c" stroke="#334e68" />
-                <text x="250" y="252" textAnchor="middle" fill="#e2e8f0" fontSize="11">
-                  Klodens gjennomsnittlige likevektstemperatur: <tspan fill="#38bdf8" fontWeight="bold">{surfaceTempC} °C</tspan>
-                </text>
-              </svg>
-
-              <div className="mt-2 text-xs text-muted-foreground">
-                {Number(surfaceTempC) <= 0 ? (
-                  <p className="text-sky-300">
-                    ❄️ <strong>Advarsel om «Snowball Earth»:</strong> Med dette isdekket overstiger albedoen en kritisk terskelverdi. Havet fryser til helt ned til tropene, slik jorden opplevde i Neoproterozoikum for ca. 717–635 millioner år siden.
-                  </p>
-                ) : (
-                  <p>
-                    ☀️ <strong>Likevekt:</strong> Is-albedo er en <em>positiv (selvforsterkende) tilbakekobling</em>. Når havisen i Arktis smelter om sommeren, blottlegges mørkt havvann som absorberer mer solvarme, noe som igjen fører til ytterligere issmelting.
-                  </p>
-                )}
-              </div>
-            </div>
-          </ModelPanel>
-        </div>
-      )}
-
       {tab === "volcanic_climate" && (
         <div className="space-y-6">
           <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -413,7 +242,7 @@ export function EarthSystemsModel() {
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Vulkanutbrudd påvirker atmosfæren på to vidt forskjellige tidsskalaer.
                 Vulkansk aske faller raskt ut (dager/uker). Svoveldioksid (SO₂) som slynges inn i stratosfæren
-                danner derimot reflekterende sulfataerosoler (H₂SO₄) som kan kjøle overflaten i 1–3 år (f.eks. Pinatubo 1991).
+                danner derimot reflekterende sulfataerosoler (H₂SO₄) som kan kjøle overflaten i noen år (Pinatubo 1991: om lag tre år).
                 Vulkansk CO₂ samler seg derimot opp og varmer jorda over millioner av år.
               </p>
 
@@ -426,7 +255,7 @@ export function EarthSystemsModel() {
                   <input
                     type="range"
                     min={1}
-                    max={100}
+                    max={60}
                     step={1}
                     value={eruptionMagnitude}
                     onChange={(e) => setEruptionMagnitude(Number(e.target.value))}
@@ -434,9 +263,9 @@ export function EarthSystemsModel() {
                     aria-label="Svoveldioksid"
                   />
                   <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>Eyjafjallajökull 2010 (~0.2 Mt)</span>
+                    <span>1 Mt</span>
                     <span>Pinatubo 1991 (20 Mt)</span>
-                    <span>Tambora 1815 (100 Mt)</span>
+                    <span>Tambora 1815 (ca. 55 Mt)</span>
                   </div>
                 </div>
 
@@ -499,12 +328,12 @@ export function EarthSystemsModel() {
                 <polygon points="120,260 170,180 220,260" fill="#475569" stroke="#94a3b8" />
                 {/* Magmasøyle */}
                 <path
-                  d={`M 170 180 L 170 ${Math.max(30, 260 - plinianHeightKm * 5.2)}`}
+                  d={`M 170 180 L 170 ${Math.max(30, 260 - plinianHeightKm * (120 / 18))}`}
                   stroke="#ef4444"
                   strokeWidth="8"
                   strokeLinecap="round"
                 />
-                <circle cx="170" cy={Math.max(30, 260 - plinianHeightKm * 5.2)} r="14" fill="#fbbf24" opacity="0.8" />
+                <circle cx="170" cy={Math.max(30, 260 - plinianHeightKm * (120 / 18))} r="14" fill="#fbbf24" opacity="0.8" />
 
                 {/* Sulfatslør i stratosfæren */}
                 {reachesStratosphere && (
@@ -514,7 +343,7 @@ export function EarthSystemsModel() {
                       H₂SO₄-sulfataerosoler (Optisk dybde: {aerosolOpticalDepth})
                     </text>
                     <text x="320" y="96" textAnchor="middle" fill="#fef9c3" fontSize="9">
-                      Reflekterer solinnstråling → Global vulkansk vinter
+                      Reflekterer sollys og kan kjøle overflaten
                     </text>
                   </g>
                 )}
@@ -522,9 +351,9 @@ export function EarthSystemsModel() {
 
               <div className="mt-2 rounded-lg bg-card/80 p-2.5 border border-border text-xs text-muted-foreground">
                 <p>
-                  <strong>Historisk referanse (Tambora 1815):</strong> Utslippet på ~100 Mt SO₂ førte til
-                  «året uten sommer» i 1816 med frost i juli i Nord-Amerika og Europa, feilslåtte avlinger og hungersnød.
-                  Men etter 3 år var aerosolene vasket ut, og temperaturen normaliserte seg.
+                  <strong>Til sammenligning:</strong> Tambora 1815: ca. 55 Mt SO₂ (53–58 Mt) (Self mfl., 2004).
+                  Pinatubo 1991: 20 millioner tonn SO₂ (Newhall mfl., 1997). Eyjafjallajökull 2010: ca. 0,1–0,4 Mt SO₂
+                  (Flemming &amp; Inness, 2013). Kjølingen og levetiden over er regnet ut av en enkel formel i modellen, ikke målt.
                 </p>
               </div>
             </div>
@@ -613,7 +442,7 @@ export function EarthSystemsModel() {
                       <p>Vannmettet leirjord under marin grense mister saltioner til grunnvannet, noe som kan utløse kvikkleireskred i geosfæren.</p>
                     )}
                     {selectedSphere === "atmo" && (
-                      <p>Orografisk nedbør fra vestavindsbeltet over Vestlandet driver intens fluvial erosjon og dype V-daler mot fjordene.</p>
+                      <p>Vestlandsdalene er U-daler gravd ut av isbreer. Der dalbunnen ligger under havnivå, er dalen blitt en fjord. Den store nedbøren gir elver som graver små V-formede gjel i bunnen av U-dalene.</p>
                     )}
                     {selectedSphere === "kryo" && (
                       <p>Innlandsisen grov ut daler og fjorder. Da isen smeltet, fylte havet mange av dalene.</p>
