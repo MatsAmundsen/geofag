@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
 export function SkredKrefterDiagram() {
@@ -95,12 +96,14 @@ export function SkredKrefterDiagram() {
 }
 
 export function SkredSonerDiagram() {
+  const descId = useId();
   return (
     <Diagram
       title="Løsneområde, transportsone og utløpsområde i en skråning med hus i utløpet"
       heading="Tre soner: der det løsner, der det går, der det stopper"
       caption="Et skred har tre deler. Løsneområdet er der massen bryter løs, høyest i skråningen. Transportsonen er sporet nedover, ofte et bekkeløp eller en renne. Utløpsområdet er der massen legger seg, som regel der terrenget flater ut — og det er der folk bygger. Faren sitter oppe i skråningen. Skaden skjer nede i utløpet. Derfor må et faresonekart vise hvor langt massen kan rekke, ikke bare hvor den kan løsne."
       viewBox="0 0 840 400"
+      describedBy={descId}
     >
       {(m) => (
         <>
@@ -405,12 +408,14 @@ export function KvikkleireDiagram() {
 }
 
 export function FjellskredBolgeDiagram() {
+  const descId = useId();
   return (
     <Diagram
       title="Fjellskred i fjord som lager flodbølge med stor oppskyllingshøyde på motsatt side"
       heading="Fjellskred i fjord blir flodbølge"
       caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden i minutter, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde, og den kan bli mange ganger bølgehøyden ute i fjorden. I Tafjord 1934 nådde vannet 61 høydemeter (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
       viewBox="0 0 840 400"
+      describedBy={descId}
     >
       {(m) => (
         <>
