@@ -835,6 +835,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Nå skjer det i pukkverk (SNL, 2024b).\n\nIndustrimineraler"],
   },
   {
+    flag: "g1-ressurser-md-2026-10-11",
+    slug: "geologiske-ressurser",
+    stale: ["## Hva er naturstein og pukk?", "## Hva utvinnes i Norge i dag?"],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],

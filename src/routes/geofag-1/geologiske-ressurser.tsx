@@ -21,7 +21,7 @@ function GeologiskeRessurserPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="En forekomst blir en geologisk ressurs når den kan kartlegges og tas i bruk. Kapittelet handler om hvordan malm, naturstein og petroleum dannes og utvinnes, og om hvilke konsekvenser bruken kan ha. Grunnvann er også en geologisk ressurs. Hvordan det lagres og strømmer, tar vi i kapittelet Vann og flom."
+      lead="En forekomst blir en geologisk ressurs når den kan kartlegges og tas i bruk. Kapitlet handler om hvordan malm, naturstein, pukk, industrimineraler og petroleum dannes, hvordan vi finner dem, og hva som utvinnes i Norge og i verden. Til slutt ser vi på konsekvensene av å utvinne og bruke ressursene i et bærekraftsperspektiv. Grunnvann er også en geologisk ressurs. Hvordan det lagres og strømmer, tar vi i kapitlet Vann og flom."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

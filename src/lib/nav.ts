@@ -391,9 +391,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-ressurser.jpg",
     alt: "Dagbrudd i fjellandskap i kveldslys",
     blurb:
-      "Malm, naturstein, pukk og petroleum. Danning, kartlegging, utvinning og konsekvenser. Grunnvann nevnes og tas i Vann og flom.",
+      "Malm, naturstein, pukk, industrimineraler og petroleum: hvordan de dannes, hvordan vi finner dem, hva som utvinnes i Norge og i verden, og konsekvensene i et bærekraftsperspektiv.",
     status: "klar" as const,
-    maal: "Danning, kartlegging og utvinning av geologiske ressurser, og konsekvenser i et bærekraftsperspektiv.",
+    maal: "Gjøre rede for danning, kartlegging og utvinning av geologiske ressurser nasjonalt og globalt og drøfte konsekvenser av å utvinne og utnytte disse i et bærekraftsperspektiv.",
   },
   {
     slug: "feltarbeid",

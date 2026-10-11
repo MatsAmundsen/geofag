@@ -224,7 +224,7 @@ describe("scan chips for the other geosfære chapters", () => {
     const ressurser = prepareChapterScan(readChapter("geologiske-ressurser"));
     assert.deepEqual(
       ressurser.sections.map((section) => section.label),
-      ["Ressurs", "Malm", "Stein", "Norge", "Konsekvenser", "Begreper", "Quiz"],
+      ["Ressurs", "Malm", "Stein", "Petroleum", "Kartlegging", "Norge og verden", "Konsekvenser", "Begreper", "Sammendrag", "Quiz"],
     );
     const felt = prepareChapterScan(readChapter("feltarbeid"));
     assert.deepEqual(

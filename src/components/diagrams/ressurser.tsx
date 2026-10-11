@@ -306,7 +306,7 @@ export function PetroleumSystemDiagram() {
 
           {/* Overliggende tette sedimentlag (kappbergart / overdekning) */}
           <path d="M 40 65 H 600 V 170 Q 390 120 40 170 Z" fill="#1d262d" stroke={C.dim} strokeWidth="1" />
-          <L x="120" y="120" fill={C.muted} size={13}>Ugjennomtrengelige tertiære leirlag</L>
+          <L x="120" y="120" fill={C.muted} size={13}>Tette leirlag fra paleogen og neogen</L>
 
           {/* TAKBERGART (Cap rock) - forsegler antiklinalen */}
           <path
@@ -389,7 +389,7 @@ export function PetroleumSystemDiagram() {
             <rect x="630" y="66" width="215" height="64" rx="5" fill="#1c2630" stroke={C.warm} strokeWidth="1" />
             <L x="640" y="85" fill={C.warm} size={12} weight={700}>1. Kildebergart</L>
             <L x="640" y="103" fill={C.fg} size={11}>Organisk rik leirskifer.</L>
-            <L x="640" y="119" fill={C.muted} size={10}>Marint plankton (kerogen).</L>
+            <L x="640" y="119" fill={C.muted} size={10}>Organisk materiale fra plankton → kerogen.</L>
           </g>
 
           {/* Punkt 2 */}

@@ -26,6 +26,13 @@ import {
   QUIZ_SJEKK_FELTARBEID_2,
   QUIZ_SJEKK_FELTARBEID_3,
   QUIZ_SJEKK_FELTARBEID_4,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_1,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_2,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_3,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_4,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_5,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_6,
+  QUIZ_SJEKK_GEOLOGISKE_RESSURSER_7,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -46,6 +53,13 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Feltarbeid2: QUIZ_SJEKK_FELTARBEID_2,
   Feltarbeid3: QUIZ_SJEKK_FELTARBEID_3,
   Feltarbeid4: QUIZ_SJEKK_FELTARBEID_4,
+  GeologiskeRessurser1: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_1,
+  GeologiskeRessurser2: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_2,
+  GeologiskeRessurser3: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_3,
+  GeologiskeRessurser4: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_4,
+  GeologiskeRessurser5: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_5,
+  GeologiskeRessurser6: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_6,
+  GeologiskeRessurser7: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_7,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -73,6 +87,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Georefererte data er knyttet til en posisjon i et referansesystem. En mobil-GPS har en usikkerhet på ca. 5 m, og feltboka skal ha ID, tid, koordinater, måling og usikkerhet.",
     "Alle målinger har usikkerhet, så målingene bør gjentas.",
     "I tolkningen vurderer du om dataene støtter hypotesen, og i presentasjonen skiller du mellom det du observerte og det du tolker.",
+  ],
+  GeologiskeRessurser: [
+    "Malm er en bergart med drivverdige mengder av et mineral eller grunnstoff. Den kan være magmatisk, hydrotermal eller sedimentær, og kismalmene i Løkken og Røros ble avsatt fra varme løsninger på havbunnen.",
+    "Naturstein, pukk, sand, grus og industrimineraler er viktige ressurser i Norge. Vi bruker ca. 11 tonn sand, grus og pukk per person i året, og larvikitten fra Oslo-riften er landets viktigste naturstein.",
+    "Olje og gass dannes av organisk materiale i en kildebergart. Det meste av oljen dannes ved ca. 60–130 °C (i Nordsjøen ca. 2–4 km dyp) og gassen ved ca. 130–180 °C, og petroleumen må fanges i et reservoar under en tett takbergart.",
+    "Geologer finner ressursene med kartlegging i felt, geokjemiske prøver, geofysikk fra fly og helikopter, kjerneboring og, for petroleum, seismikk.",
+    "Kritiske råvarer utvinnes ofte i få land, for eksempel kobolt i DR Kongo og sjeldne jordarter i Kina. Norge har ingen kobberdrift per oktober 2026, men Nussir er under utbygging.",
+    "Utvinning gir avveininger mellom behovet for råvarer og konsekvenser som sjødeponi, tap av reinbeite, arealbeslag og klimautslipp.",
   ],
 };
 
