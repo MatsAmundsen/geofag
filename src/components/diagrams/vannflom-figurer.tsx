@@ -994,13 +994,13 @@ export function HansNedborFigur({ heading = "Hans 2023: tre døgn med rekordnedb
           <g data-figur="hans" data-step={vis}>
             {[50, 100].map((v) => (
               <g key={v}>
-                <path d={`M80 ${HANS_Y0 - v * HANS_K} L620 ${HANS_Y0 - v * HANS_K}`} stroke={C.dim} strokeWidth="1.2" />
-                <text x="72" y={HANS_Y0 - v * HANS_K + 5} textAnchor="end" fontSize={n1(fs)} fill={C.muted}>
+                <path d={`M20 ${HANS_Y0 - v * HANS_K} L620 ${HANS_Y0 - v * HANS_K}`} stroke={C.dim} strokeWidth="1.2" />
+                <text x="20" y={HANS_Y0 - v * HANS_K - 6} fontSize={n1(fs)} fill={C.muted}>
                   {v} mm
                 </text>
               </g>
             ))}
-            <path d={`M80 ${HANS_Y0} L620 ${HANS_Y0}`} stroke={C.muted} strokeWidth="1.6" />
+            <path d={`M20 ${HANS_Y0} L620 ${HANS_Y0}`} stroke={C.muted} strokeWidth="1.6" />
             {HANS.map((s, k) => {
               const gx = 150 + k * 250;
               const bars = [
