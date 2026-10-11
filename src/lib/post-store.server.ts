@@ -881,69 +881,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],
-    flag: "rettskriving-1-platetektonikk-2026-10-11",
-    slug: "platetektonikk",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-amoc-2026-10-11",
-    slug: "amoc",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-coriolis-2026-10-11",
-    slug: "coriolis",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-energi-hav-luft-2026-10-11",
-    slug: "energi-hav-luft",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-enso-2026-10-11",
-    slug: "enso",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-felt-hav-luft-is-2026-10-11",
-    slug: "felt-hav-luft-is",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-havstrommer-2026-10-11",
-    slug: "havstrommer",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-hoytrykk-lavtrykk-2026-10-11",
-    slug: "hoytrykk-lavtrykk",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-iod-2026-10-11",
-    slug: "iod",
-    stale: ["kapittelet"],
   },
   {
     flag: "rettskriving-1-isbreer-og-landformer-2026-10-11",
     slug: "isbreer-og-landformer",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-jetstrommer-2026-10-11",
-    slug: "jetstrommer",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-klima-2026-10-11",
-    slug: "klima",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-kryosfaeren-2026-10-11",
-    slug: "kryosfaeren",
-    stale: ["kapittelet"],
+    stale: ["dette kapittelet"],
   },
   {
     flag: "rettskriving-1-landformer-2026-10-11",
@@ -951,69 +893,19 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["høylte ut botner"],
   },
   {
-    flag: "rettskriving-1-lokale-vaersystemer-2026-10-11",
-    slug: "lokale-vaersystemer",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-milankovitch-2026-10-11",
-    slug: "milankovitch",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-nao-2026-10-11",
-    slug: "nao",
-    stale: ["kapittelet"],
-  },
-  {
     flag: "rettskriving-1-norges-geologi-2026-10-11",
     slug: "norges-geologi",
     stale: ["langs den midtatlantiske ryggen"],
   },
   {
-    flag: "rettskriving-1-numeriske-modeller-2026-10-11",
-    slug: "numeriske-modeller",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-oversikt-2026-10-11",
-    slug: "oversikt",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-paleoklima-2026-10-11",
-    slug: "paleoklima",
-    stale: ["kapittelet"],
-  },
-  {
     flag: "rettskriving-1-skred-2026-10-11",
     slug: "skred",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-tilpasning-2026-10-11",
-    slug: "tilpasning",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-vaerkart-2026-10-11",
-    slug: "vaerkart",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-vaerkatastrofer-2026-10-11",
-    slug: "vaerkatastrofer",
-    stale: ["kapittelet"],
+    stale: ["dette kapittelet"],
   },
   {
     flag: "rettskriving-1-vann-og-flom-2026-10-11",
     slug: "vann-og-flom",
-    stale: ["kapittelet"],
-  },
-  {
-    flag: "rettskriving-1-vindsystemet-2026-10-11",
-    slug: "vindsystemet",
-    stale: ["kapittelet"],
+    stale: ["dette kapittelet"],
   },
   {
     flag: "rettskriving-1-vulkaner-2026-10-11",

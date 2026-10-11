@@ -49,7 +49,7 @@ function PaleoklimaPage() {
           framtidens klima.
         </p>
         <div className="mt-2 text-xs text-muted-foreground space-y-1 border-t border-border/50 pt-2">
-          <p><strong>Sentrale kjerneelementer som dekkes i dette kapitlet:</strong></p>
+          <p><strong>Sentrale kjerneelementer som dekkes i dette kapittelet:</strong></p>
           <p>• <em>Paleoklimatiske arkiver og metoder:</em> Iskjerner, havbunnssedimenter, innsjøvarver, pollenanalyse og dendrokronologi.</p>
           <p>• <em>Isotopgeokjemi:</em> Oksygenisotopen δ¹⁸O, Rayleigh-fraksjonering, isotoptermometer i is vs. foraminiferkalk på havbunnen.</p>
           <p>• <em>Istidskronologi og terskler:</em> Kvartær, Eem, Siste istidsmaksimum (LGM), Yngre Dryas, Holocen og PETM (56 mill. år).</p>

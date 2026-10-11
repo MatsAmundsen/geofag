@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte, både nasjonalt og globalt (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapitlet:**
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Mennesket i jordsystemene:* Kjerneelementet handler om hvordan vi utnytter naturressursene og endrer jordsystemene (Udir, u.å.-a). Vind, havvind, tidevann, bølger og havvarme er slike ressurser.
 >

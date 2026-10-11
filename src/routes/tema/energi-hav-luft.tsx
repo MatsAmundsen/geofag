@@ -45,7 +45,7 @@ function EnergiPage() {
     >
       <Callout title="Kompetansemål i LK20 (Geofag 2)">
         <p>
-          Målet for kapitlet er at eleven skal kunne{" "}
+          Målet for kapittelet er at eleven skal kunne{" "}
           <em>
             drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte,
             både nasjonalt og globalt

@@ -1,4 +1,4 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapitlet [/geofag-1/isbreer-og-landformer](/geofag-1/isbreer-og-landformer). Her kan du redigere **hele fagteksten**.
+> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/isbreer-og-landformer](/geofag-1/isbreer-og-landformer). Her kan du redigere **hele fagteksten**.
 
 > *Kompetansemål i Geofag 1 (LK20)* – sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet (Udir, u.å.).
 >

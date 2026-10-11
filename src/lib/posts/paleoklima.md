@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for forskning på forhistorisk klima, og hvordan det bidrar til å lage prognoser for framtidens klima (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapitlet:**
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Jordsystemer i tid og rom:* Tidsperspektivet er sentralt, fordi prosesser og vekselvirkninger foregår på ulike tidsskalaer (Udir, u.å.-a). Her er skalaen fra årstid til istid.
 >

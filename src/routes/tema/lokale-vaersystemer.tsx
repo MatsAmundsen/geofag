@@ -46,7 +46,7 @@ function LokalePage() {
     >
       <Callout title="Kompetansemål i LK20 (Geofag 2)">
         <p>
-          Målet for kapitlet er at eleven skal kunne{" "}
+          Målet for kapittelet er at eleven skal kunne{" "}
           <em>
             gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og
             lokal skala, og tolke ulike værkart og værutvikling

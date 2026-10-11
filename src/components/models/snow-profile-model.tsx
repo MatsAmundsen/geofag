@@ -42,17 +42,17 @@ export function SnowProfileModel() {
       depthRange: "0–20 cm",
       topCm: 0,
       bottomCm: 20,
-      grainType: "Nysnøkrystaller (stjerner og dendritter)",
+      grainType: "Nysnøkrystaller (Stjerner & dendritter)",
       grainSymbol: "✦",
       grainSize: "1–2 mm",
       hardness: "F",
-      hardnessName: "Neve (Fist – Veldig myk)",
+      hardnessName: "Neve (Fist - Veldig myk)",
       hardnessScore: 1,
       color: "#38bdf8",
       description:
         "Uomdannet nysnø som har falt under rolige vindforhold. Lett, luftig og med lav tetthet (~80–120 kg/m³).",
       metamorphism:
-        "I overflaten er snøen i direkte kontakt med atmosfæren og opplever døgnvise temperatursvingninger.",
+        "I overflaten er snøen i direkte kontakt med atmosfæren og opplever døgnlige temperatursvingninger.",
     },
     wind_slab: {
       id: "wind_slab",
@@ -64,7 +64,7 @@ export function SnowProfileModel() {
       grainSymbol: "•",
       grainSize: "0,3–0,5 mm",
       hardness: "1F",
-      hardnessName: "Én finger (1-Finger – Moderat hardt)",
+      hardnessName: "Én finger (1-Finger - Moderat hardt)",
       hardnessScore: 3,
       color: "#94a3b8",
       description:
@@ -82,7 +82,7 @@ export function SnowProfileModel() {
       grainSymbol: "⬡",
       grainSize: "2–4 mm",
       hardness: "4F",
-      hardnessName: "Fire fingre (4-Finger – Svakt og løst)",
+      hardnessName: "Fire fingre (4-Finger - Svakt & løst)",
       hardnessScore: 1.5,
       color: "#f87171",
       description:
@@ -100,7 +100,7 @@ export function SnowProfileModel() {
       grainSymbol: "○",
       grainSize: "1–1,5 mm",
       hardness: "K",
-      hardnessName: "Kniv (Knife – Svært hard og kompakt)",
+      hardnessName: "Kniv (Knife - Svært hard & kompakt)",
       hardnessScore: 5,
       color: "#475569",
       description:
@@ -128,7 +128,7 @@ export function SnowProfileModel() {
 
   return (
     <ModelFrame
-      kicker="Interaktiv snøgrop og stabilitetstest"
+      kicker="Interaktiv snøgrop & stabilitetstest"
       title="Snøprofilbygger og Extended Column Test (ECT)"
       lead="Snø er ikke en homogen masse, men en lagdelt struktur av metamorfe bergartssjikt. Utforsk hvordan temperaturgradienten (dT/dz) styrer omdanningen til farlige begerkrystaller, og simuler en utvidet kompresjonstest (ECT) for å teste skredfaren."
     >

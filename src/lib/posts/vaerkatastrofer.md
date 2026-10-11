@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne vurdere risiko ved naturfarer som følge av fenomener i atmosfæren, havet og kryosfæren og drøfte hvordan klimaendringer kan påvirke disse (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapitlet:**
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Mennesket i jordsystemene:* Kjerneelementet handler også om hvordan vi kan forebygge og beskytte oss mot klimaendringer og naturfarer gjennom forskning og forvaltning (Udir, u.å.-a). Varselet og vannstandsmålingen er slike verktøy.
 >

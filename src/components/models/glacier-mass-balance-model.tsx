@@ -67,7 +67,7 @@ export function GlacierMassBalanceModel() {
   // Status for breen
   const glacierStatus =
     netBalanceBn > 0.6
-      ? { text: "Kraftig vekst (positiv massebalanse)", tone: "teal" as const, desc: "Breen legger på seg is. Brefall og bretunge vil rykke fram de neste årene." }
+      ? { text: "Kraftig vekst (positiv massebalanse)", tone: "teal" as const, desc: "Breen legger på seg is. Brefall og bretunge vil rykke frem de neste årene." }
       : netBalanceBn > -0.2
         ? { text: "Nær likevekt (stabil massebalanse)", tone: "teal" as const, desc: "Inn (akkumulasjon) og ut (ablasjon) balanserer hverandre. Breen har stabil front." }
         : netBalanceBn > -1.0
@@ -111,7 +111,7 @@ export function GlacierMassBalanceModel() {
                       }`}
                     >
                       <span className="block font-bold">Maritim kystbre</span>
-                      <span className="text-[10px] text-muted-foreground">Nigardsbreen / Ålfotbreen (store snømengder og kraftig smelting)</span>
+                      <span className="text-[10px] text-muted-foreground">Nigardsbreen / Ålfotbreen (store snømengder & kraftig smelting)</span>
                     </button>
                     <button
                       type="button"
@@ -148,9 +148,9 @@ export function GlacierMassBalanceModel() {
                     className="mt-2 w-full accent-primary"
                   />
                   <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>Tørr vinter (−50 %)</span>
-                    <span>Normalår (0 %)</span>
-                    <span>Snørik vinter (+50 %)</span>
+                    <span>Tørr vinter (-50%)</span>
+                    <span>Normalår (0%)</span>
+                    <span>Snørik vinter (+50%)</span>
                   </div>
                 </div>
 
@@ -230,7 +230,7 @@ export function GlacierMassBalanceModel() {
                 <div className="rounded-xl border border-border/70 bg-card/60 p-3 space-y-2 text-xs">
                   <div className="flex justify-between border-b border-border/50 pb-1.5">
                     <span className="text-muted-foreground">Likevektslinje (ELA):</span>
-                    <span className="font-mono font-bold text-sky-400">{calculatedEla} moh.</span>
+                    <span className="font-mono font-bold text-sky-400">{calculatedEla} m o.h.</span>
                   </div>
                   <div className="flex justify-between border-b border-border/50 pb-1.5">
                     <span className="text-muted-foreground">Akkumulasjonsareal (AAR):</span>
@@ -268,7 +268,7 @@ export function GlacierMassBalanceModel() {
                     Bretverrsnitt og balansegradient: {glacierType === "maritime" ? "Nigardsbreen" : "Storbreen"}
                   </span>
                   <span className="font-mono text-xs text-sky-400">
-                    ELA = {calculatedEla} moh.
+                    ELA = {calculatedEla} m o.h.
                   </span>
                 </div>
 
@@ -338,7 +338,7 @@ export function GlacierMassBalanceModel() {
                           fontSize="10"
                           fontWeight="bold"
                         >
-                          ELA: {calculatedEla} moh.
+                          ELA: {calculatedEla} m o.h.
                         </text>
 
                         {/* Akkumulasjonsareal (blå markør over ELA) */}
@@ -460,7 +460,7 @@ export function GlacierMassBalanceModel() {
                   <ul className="list-disc pl-5 space-y-1">
                     <li>
                       <strong>Tap av mekanisk bæreevne:</strong> Når is i løsmasser smelter, mettes
-                      jorda med vann. Veier bryter sammen, rørledninger vrir seg og bygninger i
+                      jorden med vann. Veier bryter sammen, rørledninger vrir seg og bygninger i
                       Longyearbyen setter seg i grunnen.
                     </li>
                     <li>

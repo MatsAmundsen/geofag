@@ -51,7 +51,7 @@ function VaerkartPage() {
           (Utdanningsdirektoratet, 2020).
         </p>
         <p className="mt-2 text-sm text-foreground/80">
-          Dette kapitlet gir deg den faglige verktøykassen som kreves for å lese profesjonelle
+          Dette kapittelet gir deg den faglige verktøykassen som kreves for å lese profesjonelle
           analyser fra Meteorologisk institutt (MET Norway) og Yr, tolke WMO-stasjonsmodeller,
           forstå styrestrømmer i høyden og gjennomføre en fullverdig 24-timers prognose på
           eksamensnivå.
@@ -86,7 +86,7 @@ function VaerkartPage() {
         Reduksjon til havnivå (MSLP)
       </h3>
       <p>
-        Som vi lærte i kapitlet om trykk, faller lufttrykket med høyden – om lag 1 hPa for hver 8.
+        Som vi lærte i kapittelet om trykk, faller lufttrykket med høyden – om lag 1 hPa for hver 8.
         meter nær bakken. Dersom vi tegnet råtrykket direkte på kartet, ville fjellbygda Geilo
         (ca. 800 moh.) alltid framstå som et ekstremt kraftig orkanlavtrykk på rundt 920 hPa, mens
         Bergen ved kysten ville ha 1013 hPa.

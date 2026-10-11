@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapitlet:**
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a). NAO er et samspill mellom trykk i lufta og været under.
 >

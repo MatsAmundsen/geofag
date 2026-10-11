@@ -479,7 +479,7 @@ function escapeRegExp(value: string): string {
 
 export function stripChapterEditorNotice(markdown: string): string {
   return markdown.replace(
-    /^>\s*Interaktive modeller, quizer og 3D-diagrammer ligger i kapit(?:te)?let[^\r\n]*\r?\n+/i,
+    /^>\s*Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet[^\r\n]*\r?\n+/i,
     "",
   );
 }

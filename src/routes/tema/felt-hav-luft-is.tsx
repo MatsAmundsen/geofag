@@ -43,7 +43,7 @@ function FeltG2Page() {
     >
       <Callout title="Kompetansemål i LK20 (Geofag 2)">
         <p>
-          Målet for kapitlet er at eleven skal kunne{" "}
+          Målet for kapittelet er at eleven skal kunne{" "}
           <em>
             gjennomføre geofaglig feltarbeid knyttet til havet, atmosfæren eller kryosfæren,
             bearbeide og tolke de innsamlede dataene og presentere resultatene

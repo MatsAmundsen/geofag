@@ -101,7 +101,7 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="text-xs font-medium uppercase tracking-wider text-primary">
-                  Innhold i kapitlet
+                  Innhold i kapittelet
                 </p>
                 <p className="mt-0.5 text-xs text-muted-foreground">
                   Trykk på en knapp for å vise teksten. Trykk en gang til for å skjule den.
@@ -122,7 +122,7 @@ export function ChapterScanBody({ markdown }: { markdown: string }) {
                 </Button>
               </div>
             </div>
-            <ScrollFrame label="Innhold i kapitlet" frameClassName="mt-3 flex gap-2 pb-1">
+            <ScrollFrame label="Innhold i kapittelet" frameClassName="mt-3 flex gap-2 pb-1">
               {doc.sections.map((section) => {
                 const isOpen = Boolean(openMap[section.id]);
                 return (

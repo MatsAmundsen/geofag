@@ -417,7 +417,7 @@ function HavstrommerPage() {
               <strong>3. AMOC:</strong> Hele den 3D-vertikale omveltningssløyfen, inkludert dypvannsdannelsen
               i nord og det kalde returløpet mot sør i dyphavet. Les fordypningen under{" "}
               <Link to="/tema/klima/amoc" className="text-primary underline font-medium">
-                AMOC-kapitlet
+                AMOC-kapittelet
               </Link>
               .
             </li>

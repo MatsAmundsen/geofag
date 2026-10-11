@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne drøfte konsekvenser av klimaendringer for enkeltmennesker, samfunn og økosystem, og vurdere bærekraftige løsninger for hvordan enkeltmennesker og samfunn kan redusere og tilpasse seg klimaendringer i nåtid og framtid (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapitlet:**
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Mennesket i jordsystemene:* Kjerneelementet handler om hvordan vi utnytter naturressursene og endrer jordsystemene, og hvordan vi kan forebygge og beskytte oss mot klimaendringer og naturfarer (Udir, u.å.-a).
 >

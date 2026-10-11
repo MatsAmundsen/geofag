@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjennomføre geofaglig feltarbeid knyttet til havet, atmosfæren eller kryosfæren, bearbeide og tolke de innsamlede dataene og presentere resultatene (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapitlet:**
+> **Kjerneelementer som dekkes i dette kapittelet:**
 >
 > • *Geofaglig feltarbeid:* Kjerneelementet handler om planlegging, innsamling av georefererte data i felt og bearbeiding. Det skal skje på en faglig forsvarlig måte som også ivaretar helse, miljø og sikkerhet (Udir, u.å.-a).
 >
