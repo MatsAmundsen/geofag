@@ -42,11 +42,11 @@ export function NorgesGeodynamikkKart() {
           lat: 66.4,
           lng: 13.0,
           label:
-            "Lurøy/Rana – jordskjelvet ved Lurøy i 1819 (magnitude ca. 5,8). Landhevingen kan bidra til spenningene i skorpa",
+            "Lurøy/Rana (omtrentlig plassering) – jordskjelvet ved Lurøy i 1819 (magnitude ca. 5,8). Landhevingen kan bidra til spenningene i skorpa",
         },
       ]}
       heading="Norges geodynamiske nøkkelsteder"
-      caption="Kartet viser stedene i kapitlet: det eldste grunnfjellet i Sør-Varanger, ofiolitten på Leka, skyvedekkene i Jotunheimen, riftdalen i Oslofeltet, vulkanen Beerenberg på Jan Mayen og jordskjelvområdet ved Lurøy og Rana."
+      caption="Kartet viser stedene i kapitlet: det eldste grunnfjellet i Sør-Varanger, ofiolitten på Leka, skyvedekkene i Jotunheimen, riftdalen i Oslofeltet, vulkanen Beerenberg på Jan Mayen og jordskjelvområdet ved Lurøy og Rana. Punktet for Lurøy er omtrentlig."
     />
   );
 }
