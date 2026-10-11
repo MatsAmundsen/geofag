@@ -906,7 +906,7 @@ export function HydrogramFigur({
     labels.push(
       { text: "Spiss flomtopp", x: rx(0.48), y: Math.max(n1(yq(rain.base + rain.amp) + 6), 190), at: [rx(rain.tp) + 4, yq(rain.base + rain.amp) + 4], color: C.warm, badge: [rx(rain.tp) + 26, yq(rain.base + rain.amp) + 6] },
       { text: "Bred flomtopp", x: sx(0.8), y: Y(n1(yq(HY_SNOW.base + HY_SNOW.amp) + 10)), at: [sx(0.66), Y(yq(hyQ(HY_SNOW, 0.66)))], color: "#b9d3ee", badge: [sx(0.74), Y(yq(hyQ(HY_SNOW, 0.66)) - 16)] },
-      { text: "Forsinkelse", x: rx(0.38), y: 148, at: [rx(0.3), 142], color: "#ffd77a", badge: [rx(0.26), 164] },
+      { text: "Forsinkelse", x: rx(0.38), y: 148, at: [rx(0.3), 142], color: "#ffd77a", badge: [rx(0.08), 200] },
     );
   }
   const keys: Key[] = [
