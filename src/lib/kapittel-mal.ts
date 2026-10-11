@@ -73,6 +73,8 @@ import {
   QUIZ_SJEKK_KATASTROFER_1,
   QUIZ_SJEKK_KATASTROFER_2,
   QUIZ_SJEKK_KATASTROFER_3,
+  QUIZ_SJEKK_ENERGI_1,
+  QUIZ_SJEKK_ENERGI_2,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -101,6 +103,8 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   VannOgFlom3: QUIZ_SJEKK_VANN_OG_FLOM_3,
   VannOgFlom4: QUIZ_SJEKK_VANN_OG_FLOM_4,
   VannOgFlom5: QUIZ_SJEKK_VANN_OG_FLOM_5,
+  Energi1: QUIZ_SJEKK_ENERGI_1,
+  Energi2: QUIZ_SJEKK_ENERGI_2,
   Landformer1: QUIZ_SJEKK_LANDFORMER_1,
   Landformer2: QUIZ_SJEKK_LANDFORMER_2,
   Landformer3: QUIZ_SJEKK_LANDFORMER_3,
@@ -171,6 +175,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Stormflo kommer av at vinden stuer vann mot kysten og at trykket er lavt. Den blir verst sammen med springflo.",
     "Bombesykloner, atmosfæriske elver og polare lavtrykk er farlige værsystemer på våre breddegrader.",
     "Klimaendringene har gjort kraftig nedbør hyppigere og mer intens på global skala, slik ekstremværet Hans er et eksempel på.",
+  ],
+  Energi: [
+    "Vind, tidevann, bølger og temperaturforskjeller i havet er energiressurser fra hav og atmosfære. Vindkraft gjør vind om til elektrisitet i et vindkraftverk.",
+    "Vindkraft på land er fornybar, men omstridt fordi den legger beslag på store områder og kan ramme reindrift, slik Fosen-saken viser.",
+    "Havvind kan stå på sokkelen eller flyte. Kina har mest havvind, fulgt av Storbritannia og Tyskland.",
+    "Hywind Tampen dekker om lag 35 prosent av strømbehovet på Snorre og Gullfaks og kutter om lag 200 000 tonn CO₂ i året, men plattformene er ikke utslippsfrie.",
+    "Tidevann kommer av månens og solas tiltrekning. Bølgekraft har stort potensial, men er teknisk krevende, og havvarmekraft passer best i tropene.",
   ],
   Isbre: [
     "En isbre er is av sammenpresset snø som siger nedover under sin egen tyngde. Næringsområdet øverst og tæringsområdet nederst avgjør massebalansen.",

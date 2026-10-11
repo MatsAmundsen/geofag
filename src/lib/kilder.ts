@@ -2219,6 +2219,74 @@ export const KILDER = {
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
   ],
+  energiHavLuft: [
+    {
+      prefix: "Equinor. (u.å.-a). ",
+      italic: "Hywind Tampen",
+      suffix: ".",
+      href: "https://www.equinor.com/no/energi/hywind-tampen",
+    },
+    {
+      prefix: "Equinor. (u.å.-b). ",
+      italic: "Hywind Scotland",
+      suffix: ".",
+      href: "https://www.equinor.com/energy/hywind-scotland",
+    },
+    {
+      prefix: "Global Wind Energy Council [GWEC]. (2026). ",
+      italic: "Global offshore wind report 2026",
+      suffix: ".",
+      href: "https://www.gwec.net/reports/globaloffshorewindreport",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-a). ",
+      italic: "Vindkraft",
+      suffix: ".",
+      href: "https://snl.no/vindkraft",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Havvind",
+      suffix: ".",
+      href: "https://snl.no/havvind",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-c). ",
+      italic: "Tidevann",
+      suffix: ".",
+      href: "https://snl.no/tidevann",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Vindturbin",
+      suffix: ".",
+      href: "https://snl.no/vindturbin",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-e). ",
+      italic: "Bølgekraftverk",
+      suffix: ".",
+      href: "https://snl.no/b%C3%B8lgekraftverk",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Havvarmekraft",
+      suffix: ".",
+      href: "https://snl.no/havvarmekraft",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+  ],
   trykk: [
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",

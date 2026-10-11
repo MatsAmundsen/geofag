@@ -337,6 +337,52 @@ export const QUIZ_SJEKK_KATASTROFER_3: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_ENERGI_1: QuizQuestion[] = [
+  {
+    prompt: "Hvor mye av strømbehovet på Snorre- og Gullfaks-plattformene skal Hywind Tampen dekke?",
+    options: [
+      "Hele strømbehovet, så plattformene blir utslippsfrie",
+      "Om lag 35 prosent",
+      "Under 1 prosent",
+    ],
+    answer: 1,
+    explain: "Hywind Tampen skal dekke om lag 35 prosent og kutte om lag 200 000 tonn CO₂ i året. Resten kommer fortsatt fra gassturbiner (Equinor).",
+  },
+  {
+    prompt: "Hvilket land har mest havvind i drift?",
+    options: [
+      "USA",
+      "Norge",
+      "Kina",
+    ],
+    answer: 2,
+    explain: "Kina har over halvparten av verdens havvindkapasitet, fulgt av Storbritannia og Tyskland (GWEC).",
+  },
+];
+
+export const QUIZ_SJEKK_ENERGI_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor egner havvarmekraft (OTEC) seg best i tropiske farvann?",
+    options: [
+      "Der kan forskjellen mellom varmt overflatevann og kaldt dypvann bli 20 grader eller mer",
+      "Der er tidevannet størst",
+      "Der blåser det mest",
+    ],
+    answer: 0,
+    explain: "OTEC trenger stor temperaturforskjell. Varmt overflatevann fordamper arbeidsmediet, og kaldt dypvann kondenserer det igjen.",
+  },
+  {
+    prompt: "Hvorfor er bølgekraft vanskelig å utnytte, selv om potensialet langs kysten er stort?",
+    options: [
+      "Fordi bølgene bare finnes om sommeren",
+      "Fordi bølgene ikke inneholder energi",
+      "Fordi svingningene gjør omformingen vanskelig, og ekstreme bølger gir store påkjenninger",
+    ],
+    answer: 2,
+    explain: "Se «Bølgekraft». Energien varierer hele tiden, og anleggene må tåle storm.",
+  },
+];
+
 export const QUIZ_TILPASNING: QuizQuestion[] = [
   {
     prompt: "Hva er klimatilpasning?",
