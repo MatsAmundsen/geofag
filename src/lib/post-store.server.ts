@@ -840,9 +840,19 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["## Hva er naturstein og pukk?", "## Hva utvinnes i Norge i dag?"],
   },
   {
+    flag: "g1-isbreer-weichsel-117000-2026-10-11",
+    slug: "isbreer-og-landformer",
+    stale: ["fra om lag 120 000 til 11 700 år siden"],
+  },
+  {
+    flag: "g1-jordsystemene-weichsel-117000-2026-10-11",
+    slug: "jordsystemene",
+    stale: ["fra om lag 120 000 år siden til for 11 700"],
+  },
+  {
     flag: "g1-norges-geologi-11700-2026-10-11",
     slug: "norges-geologi",
-    stale: ["til ca. 10 000 år siden", "for ca. 10 000 år siden var det meste"],
+    stale: ["til ca. 10 000 år siden", "for ca. 10 000 år siden var det meste", "11 700 år siden (Mangerud, 2025a)"],
   },
   {
     flag: "g1-feltarbeid-md-2026-10-11",

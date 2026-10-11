@@ -124,7 +124,7 @@ Når en tykk isbre smelter bort, forsvinner vekten som presset på berget. Berge
 
 ## Isostasi: landet som hever seg etter isen
 
-Under siste istid, som varte fra om lag 120 000 til 11 700 år siden, lå en tykk innlandsis over Norge (NGU, u.å.-c). Isen var så tung at den presset landet ned. Da isen smeltet, lå mange kystnære områder under havnivå, og havet gikk langt inn over det som i dag er land. Etter hvert som vekten forsvant, begynte landet å heve seg igjen. Denne landhevingen er isostasi i praksis (NGU, u.å.-a).
+Under siste istid, som varte fra om lag 117 000 til 11 700 år siden, lå en tykk innlandsis over Norge (Mangerud, 2025; NGU, u.å.-c). Isen var så tung at den presset landet ned. Da isen smeltet, lå mange kystnære områder under havnivå, og havet gikk langt inn over det som i dag er land. Etter hvert som vekten forsvant, begynte landet å heve seg igjen. Denne landhevingen er isostasi i praksis (NGU, u.å.-a).
 
 ### Marin grense
 

@@ -18,7 +18,6 @@ function shouldSkipTag(name) {
     name === "VideoPlaceholder" ||
     name === "PlateTectonicsModel" ||
     name === "VolcanoModel" ||
-    name === "RockPetrologyModel" ||
     name === "LandformGeomorphologyModel" ||
     name === "WindSystemModel" ||
     name === "OceanCurrentModel" ||

@@ -17,6 +17,12 @@ export const KILDER = {
       href: "https://doi.org/10.5194/essd-18-3211-2026",
     },
     {
+      prefix: "Mangerud, J. (2025, 9. oktober). ",
+      italic: "Weichsel",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/weichsel",
+    },
+    {
       prefix: "National Aeronautics and Space Administration [NASA]. (2011). ",
       italic: "The carbon cycle",
       suffix: ".",
@@ -904,6 +910,12 @@ export const KILDER = {
       href: "https://snl.no/Den_kaledonske_fjellkjeden",
     },
     {
+      prefix: "Cohen, K. M., Finney, S. C., Gibbard, P. L., & Fan, J.-X. (2026). ",
+      italic: "The ICS International Chronostratigraphic Chart (v2026/06)",
+      suffix: ". International Commission on Stratigraphy.",
+      href: "https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf",
+    },
+    {
       prefix: "Dunning, G. R., & Pedersen, R. B. (1988). U/Pb ages of ophiolites and arc-related plutons of the Norwegian Caledonides: Implications for the development of Iapetus. ",
       italic: "Contributions to Mineralogy and Petrology, 98",
       suffix: "(1), 13–23.",
@@ -1067,6 +1079,12 @@ export const KILDER = {
     },
   ],
   isbre: [
+    {
+      prefix: "Mangerud, J. (2025, 9. oktober). ",
+      italic: "Weichsel",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/weichsel",
+    },
     {
       prefix: "NDLA. (u.å.). ",
       italic: "Slik arbeider isbreen",

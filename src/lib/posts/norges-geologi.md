@@ -151,7 +151,7 @@ SjekkNorgesGeologi5
 
 ## Istiden presset landet ned
 
-De siste ca. 2,6 millioner årene har det vært mange istider. Den siste istiden, _weichsel_, varte fra ca. 117 000 til ca. 11 700 år siden (Mangerud, 2025a). For ca. 20 000 år siden var innlandsisen på det største. Da var den opptil ca. 3000 meter tykk over Nord-Sverige og ca. 2000 meter tykk over Oslo-området (Kartverket, 2021; Mangerud, 2025b).
+De siste ca. 2,6 millioner årene har det vært mange istider. Den siste istiden, _weichsel_, varte fra ca. 117 000 til ca. 11 700 år siden (Cohen mfl., 2026; Mangerud, 2025a). For ca. 20 000 år siden var innlandsisen på det største. Da var den opptil ca. 3000 meter tykk over Nord-Sverige og ca. 2000 meter tykk over Oslo-området (Kartverket, 2021; Mangerud, 2025b).
 
 ### Isostasi
 
