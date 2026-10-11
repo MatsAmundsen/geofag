@@ -85,6 +85,13 @@ export const KILDER = {
   ],
   platetektonikk: [
     {
+      prefix:
+        "Dunning, G. R., & Pedersen, R. B. (1988). U/Pb ages of ophiolites and arc-related plutons of the Norwegian Caledonides: Implications for the development of Iapetus. ",
+      italic: "Contributions to Mineralogy and Petrology, 98",
+      suffix: "(1), 13–23.",
+      href: "https://doi.org/10.1007/BF00371904",
+    },
+    {
       prefix: "Forsyth, D., & Uyeda, S. (1975). On the relative importance of the driving forces of plate motion. ",
       italic: "Geophysical Journal International, 43",
       suffix: "(1), 163–200.",
@@ -170,6 +177,12 @@ export const KILDER = {
       italic: "Volcanoes: Plate-Tectonics Theory",
       suffix: ".",
       href: "https://pubs.usgs.gov/gip/volc/tectonics.html",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
+      italic: "Kompetansemål etter geofag 1",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
     {
       prefix: "Vine, F. J., & Matthews, D. H. (1963). Magnetic anomalies over oceanic ridges. ",

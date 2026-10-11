@@ -973,24 +973,24 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
   {
     prompt: "Hva er den mekaniske forskjellen på litosfæren og astenosfæren?",
     options: [
+      "Litosfæren er det kalde, stive ytterste skallet (skorpe + stiv mantel), mens astenosfæren er varm, fast peridotitt som oppfører seg duktilt og seigtflytende over millioner av år.",
       "Litosfæren er flytende magma, mens astenosfæren er fast granitt.",
-      "Litosfæren er det kalde, sprø ytterste skallet (skorpe + stiv mantel), mens astenosfæren er varm, fast peridotitt som oppfører seg duktilt og seigtflytende over millioner av år.",
       "Litosfæren finnes bare under kontinentene, mens astenosfæren er havbunn.",
       "Litosfæren og astenosfæren er identiske, men har ulik kjemisk sammensetning av silisium.",
     ],
-    answer: 1,
+    answer: 0,
     explain:
-      "Riktig. Begge består av fast bergart, men litosfæren er kald og sprø (brekker i plater), mens astenosfæren er så varm (ca. 1300–1400 °C) at den deformeres plastisk og lar platene gli over seg.",
+      "Riktig. Begge består av fast bergart, men litosfæren er kald og stiv (deler seg i plater), mens astenosfæren er så varm (ca. 1300–1400 °C) at den deformeres plastisk og lar platene gli over seg.",
   },
   {
     prompt: "Hva er den viktigste drivkraften bak litosfæreplates bevegelse?",
     options: [
       "Tidevannskrefter fra månen som trekker kontinentene vestover.",
-      "Platetrekk (slab pull): Kald og gammel havbunnsskorpe omdannes til tung eklogitt og synker under egen vekt i subduksjonssonen.",
       "Friksjonsdrag fra vinder i troposfæren som skyver på fjellkjedene.",
+      "Platetrekk (slab pull): Kald og gammel havbunnsskorpe omdannes til tung eklogitt og synker under egen vekt i subduksjonssonen.",
       "Sentrifugalkraft fra jordas rotasjon som kaster platene mot ekvator.",
     ],
-    answer: 1,
+    answer: 2,
     explain:
       "Riktig! Platetrekk (slab pull) er den viktigste drivkraften. Tetthetsøkningen ved faseovergang til eklogitt trekker hele platen etter seg.",
   },
@@ -998,11 +998,11 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
     prompt: "Hva er den grunnleggende forskjellen mellom dekompresjonssmelting og flukssmelting?",
     options: [
       "Dekompresjonssmelting skjer bare i kjernen, mens flukssmelting skjer i atmosfæren.",
-      "Dekompresjonssmelting skjer ved trykkfall når varm mantel stiger (ved midthavsrygger), mens flukssmelting skjer når vann fra en subdusert plate senker smeltetemperaturen i mantelkilen.",
       "Dekompresjonssmelting krever ekstern oppvarming fra meteorittnedslag, mens flukssmelting skjer spontant i granitt.",
       "Det er ingen forskjell; begge prosessene krever at temperaturen stiger til over 5000 °C.",
+      "Dekompresjonssmelting skjer ved trykkfall når varm mantel stiger (ved midthavsrygger), mens flukssmelting skjer når vann fra en subdusert plate senker smeltetemperaturen i mantelkilen.",
     ],
-    answer: 1,
+    answer: 3,
     explain:
       "Riktig! Dekompresjonssmelting drives av trykkavlastning under midthavsrygger og rifter uten tilførsel av ny varme. Flukssmelting drives av vann og flyktige stoffer som frigjøres fra den synkende havbunnsplaten og senker peridotittens solidus.",
   },
@@ -1020,26 +1020,26 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
       "Riktig! Som J. Tuzo Wilson viste i 1965: Kun mellom ryggsegmentene glir platene i motsatt retning. Utenfor ryggene beveger skorpen seg unisont i samme retning; bruddsonene er derfor aseismiske arr.",
   },
   {
-    prompt: "Hvordan beviste Vine og Matthews havbunnsspredning i 1963?",
+    prompt: "Hvilken hypotese la Vine og Matthews fram i 1963?",
     options: [
-      "Ved å finne fossiler av dinosaurer på havbunnen.",
-      "Ved å oppdage symmetriske striper med normal og reversert magnetisering i havbunnsskorpen på hver side av midthavsryggen.",
-      "Ved å måle tidevannsbølger over Den midtatlantiske rygg.",
-      "Ved å bore helt ned til jordens flytende ytre kjerne.",
+      "At havbunnen har fossiler av dinosaurer som viser alderen.",
+      "At tidevannsbølger over Den midtatlantiske rygg skyver platene.",
+      "At havbunnen på hver side av midthavsryggen skulle ha symmetriske striper med normal og reversert magnetisering, fordi ny skorpe dannes ved ryggen mens magnetfeltet snur.",
+      "At havbunnen ligger direkte på jordas flytende ytre kjerne.",
     ],
-    answer: 1,
+    answer: 2,
     explain:
-      "Riktig! Da havbunnen spredte seg og størknet, frøs magnetittmineralene inn jordas vekslende magnetfelt som et gigantisk symmetrisk båndopptak.",
+      "Riktig! Hypotesen kunne testes, og den ble bekreftet i 1966. Da havbunnen spredte seg og størknet, frøs magnetittmineralene inn jordas vekslende magnetfelt som et gigantisk symmetrisk båndopptak.",
   },
   {
     prompt: "Hva oppstår når to oseaniske plater konvergerer (kolliderer)?",
     options: [
+      "Som regel subduerer den eldste og tetteste havbunnsplaten, og det dannes en dyphavsgrop og en vulkansk øybue (f.eks. Marianene eller Japan).",
       "En enorm kontinental riftdal med ferskvannsinnsjøer.",
-      "Den eldste og tetteste havbunnsplaten subduerer, og det dannes en dyphavsgrop og en vulkansk øybue (f.eks. Marianene eller Japan).",
       "Det dannes en passiv margin uten noen form for seismisk aktivitet.",
       "Begge platene smelter momentant og danner en ny kontinental kraton.",
     ],
-    answer: 1,
+    answer: 0,
     explain:
       "Riktig! Ved oseanisk-oseanisk konvergens vil den eldste, kaldeste og dermed tetteste litosfæreplaten presses ned i subduksjon. Resultatet er en dyp grop og en buet kjede av vulkanske øyer (øybue).",
   },
@@ -1047,11 +1047,11 @@ export const QUIZ_TEST_DEG_SELV: QuizQuestion[] = [
     prompt: "Hvorfor begynner gammel havbunnsskorpe til slutt å subduere av seg selv i Wilsonsyklusen?",
     options: [
       "Fordi havvannet gjør skorpen magnetisk frastøtende.",
-      "Fordi litosfæren avkjøles og tykner over titalls millioner år, slik at den til slutt blir tettere enn den underliggende astenosfæren.",
       "Fordi månen drar i sedimentene på havbunnen.",
       "Fordi midthavsryggene slutter å eksistere etter 10 millioner år.",
+      "Fordi litosfæren avkjøles og tykner over titalls millioner år, slik at den til slutt blir tettere enn den underliggende astenosfæren.",
     ],
-    answer: 1,
+    answer: 3,
     explain:
       "Riktig! Mens litosfæren beveger seg bort fra midthavsryggen, avkjøles den fra toppen og underfra. Litosfæren tykner og tettheten øker. Etter ca. 20–30 millioner år er oseanisk litosfære tettere enn astenosfæren den hviler på, og blir ustabil overfor subduksjon.",
   },

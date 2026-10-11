@@ -48,7 +48,7 @@ describe("splitChapterByH2", () => {
 
   it("splits the live Platetektonikk chapter into the known H2 sections", () => {
     const doc = splitChapterByH2(stripChapterEditorNotice(chapterMarkdown));
-    assert.match(doc.preamble, /Kjerneelementer som dekkes/);
+    assert.match(doc.preamble, /I kapitlet lærer du om/);
     assert.deepEqual(
       doc.sections.map((section) => section.title),
       [
@@ -63,6 +63,7 @@ describe("splitChapterByH2", () => {
         "Hotspots og Wilsonsyklusen: Superkontinentenes evige kretsløp",
         "Norge i et platetektonisk lys: Kaledonidene, Oslofeltet og isostasi",
         "Sentralt fagvokabular",
+        "Sammendrag",
         "Test deg selv",
       ],
     );
@@ -83,6 +84,7 @@ describe("splitChapterByH2", () => {
         "Wilsonsyklus",
         "Norge i et platetektonisk lys",
         "Begreper",
+        "Sammendrag",
         "Quiz",
       ],
     );

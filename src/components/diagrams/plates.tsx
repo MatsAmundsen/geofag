@@ -257,7 +257,7 @@ export function EarthLayersDiagram() {
               Stiv litosfærisk mantel
             </L>
             <L x="110" y="162" fill="#94a3b8" size={10} anchor="middle">
-              Fast peridotitt · kald og sprø
+              Fast peridotitt · kald og stiv
             </L>
             <L x="300" y="135" fill={C.cold} size={12} weight={700} anchor="middle">
               Stiv litosfærisk mantel
@@ -1877,7 +1877,7 @@ export function OceanOceanSubductionDiagram() {
     <Diagram
       title="Subduksjon hav mot hav: Vulkanøybue, Marianegropen og bakbuebasseng"
       heading="Hav mot hav: Den eldste, kaldeste platen må vike"
-      caption="Når to oseaniske plater kolliderer, er det alltid den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på ca. 10 935 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
+      caption="Når to oseaniske plater kolliderer, er det som regel den eldste, mest avkjølte og tetteste platen som tvinges ned i mantelen. Dette skaper jordens aller dypeste havgroper, som Marianegropen (Challengerdypet på ca. 10 935 m). På samme måte som ved Andesfjellene frigjør den synkende platen vann ved 100 km dyp, og flukssmelting i mantelkilen bygger opp en kjede av vulkanske øyer (en vulkanøybue) som Japan, Marianene eller De små antiller. Bak buen kan det oppstå et eget spredningssenter kalt et bakbuebasseng (back-arc basin)."
       action={<PlayPauseToggle isPlaying={isPlaying} onToggle={motion.toggle} />}
       toolbar={
         <>
@@ -2086,7 +2086,7 @@ export function CollisionDiagram() {
     <Diagram
       title="Kontinentalkollisjon: Fjellkjededannelse, skyvedekker og dyp skorperot"
       heading="Kontinent mot kontinent: Himalaya i dag og Kaledonidene i Norges fortid"
-      caption="Når to kontinentale litosfæreplater møtes (som da India traff Asia for 50 mill. år siden, eller da Baltika og Laurentia kolliderte og dannet Kaledonidene for 400 mill. år siden), kan ingen av platene subdueres i dypet fordi kontinentalskorpen har for lav tetthet (~2,7 g/cm³). Resultatet er kolossal skorpeforkorting. Jordskorpen presses opp i svimlende fjellkjeder og stables i store flak som kalles skyvedekker (nappes), som ble skjøvet hundrevis av kilometer over grunnfjellet. Samtidig dannes en enorm jordskorperot som stikker 70–80 km ned i mantelen for å holde fjellene flytende isostatisk. Fordi det ikke lenger føres vannrik havbunn ned i mantelen, opphører vulkanismen nesten helt – men kollisjonen skaper voldsom regional metamorfose (gneis og glimmerskifer)."
+      caption="Når to kontinentale litosfæreplater møtes (som da India traff Asia for 50 mill. år siden, eller da Baltika og Laurentia kolliderte og dannet Kaledonidene for 400 mill. år siden), kan ingen av platene subdueres i dypet fordi kontinentalskorpen har for lav tetthet (~2,7 g/cm³). Resultatet er kolossal skorpeforkorting. Jordskorpen presses opp i svimlende fjellkjeder og stables i store flak som kalles skyvedekker (nappes), som ble skjøvet hundrevis av kilometer over grunnfjellet. Samtidig dannes en enorm jordskorperot som stikker 70–80 km ned i mantelen for å holde fjellene i isostatisk likevekt. Fordi det ikke lenger føres vannrik havbunn ned i mantelen, opphører vulkanismen nesten helt – men kollisjonen skaper voldsom regional metamorfose (gneis og glimmerskifer)."
       action={
         <PlayPauseToggle
           isPlaying={isPlaying}

@@ -274,7 +274,7 @@ export const GF1_THEMES = [
     blurb:
       "Bevegelser i mantelen driver platene. Konsekvensene skriver seg i jordskorpa: spredning, kollisjon, forkastning.",
     status: "klar" as const,
-    maal: "Bevegelser i jordas indre og konsekvenser for jordskorpe og overflate.",
+    maal: "Gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten.",
   },
   {
     slug: "vulkaner",

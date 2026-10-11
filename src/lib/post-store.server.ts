@@ -872,6 +872,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["være tilstedet for", "platedgrense"],
   },
   {
+    // Geo sjekk1 (#130): må- og bør-punktene. Matcher bare redaktørens tekst før sjekk1.
+    flag: "g1-platetektonikk-sjekk1-2026-10-11",
+    slug: "platetektonikk",
+    stale: ["dannet av mikroskopiske kiselalger", "For ca. 310 millioner år siden"],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],

@@ -886,17 +886,14 @@ describe("chapter posters from this pull request", () => {
 
 describe("smelting under tynn plate", () => {
   const liveSnippet = [
-    "## Platedrift - hva er det som driver platene?",
+    "## Platedrift – hva er det som driver platene?",
     "",
-    "Innad i hver enkelt plate, har vi varierende tykkelse.",
-    "Dette fører til at trykket blir akkurat lavt nok. **Vi har dermed fått en divergerende plategrense**",
-    "",
-    "Denne prosessen er det som setter igang platedrift. ",
+    "Der platene trekkes fra hverandre, stiger varm mantel passivt opp. Trykket faller, og en liten del smelter (dekompresjonssmelting, se under). Smeltingen er altså en *følge*.",
     "",
     "---",
     "---",
     "",
-    "Etter at smelteprosessen av mantelbergarter har funnet sted.",
+    "Platene drives av et samspill mellom fire krefter:",
     "",
     "## Hvorfor mantelberg smelter: Dekompresjon",
     "",
@@ -909,24 +906,22 @@ describe("smelting under tynn plate", () => {
   const count = (md: string, id: string) =>
     md.split(`\`\`\`widget\n${id}\n\`\`\``).length - 1;
 
-  it("places the figure once, right after «setter igang platedrift.»", () => {
+  it("places the figure once, right after «(dekompresjonssmelting, se under)»", () => {
     const out = injectPosterWidgets(liveSnippet);
     assert.equal(count(out, "SmeltingUnderTynnPlate"), 1);
-    const sentence = out.indexOf("setter igang platedrift.");
+    const sentence = out.indexOf("dekompresjonssmelting, se under");
     const fig = out.indexOf("```widget\nSmeltingUnderTynnPlate");
     const rule = out.indexOf("---", sentence);
     assert.ok(sentence > 0 && fig > sentence && fig < rule, "figure sits between the sentence and the rule");
     assert.ok(fig < out.indexOf("Hvorfor mantelberg smelter"), "not in the old melting section");
   });
 
-  it("accepts the spelling «i gang»", () => {
-    const out = injectPosterWidgets(liveSnippet.replace("igang", "i gang"));
-    assert.equal(count(out, "SmeltingUnderTynnPlate"), 1);
-    assert.ok(out.indexOf("```widget\nSmeltingUnderTynnPlate") > out.indexOf("setter i gang platedrift."));
+  it("places the figure once in the chapter markdown", () => {
+    assert.equal(count(injectPosterWidgets(chapterMarkdown), "SmeltingUnderTynnPlate"), 1);
   });
 
   it("does not place the figure when the sentence is missing", () => {
-    const withoutSentence = chapterMarkdown.replace(/setter i ?gang platedrift\./g, "");
+    const withoutSentence = chapterMarkdown.replace(/dekompresjonssmelting, se under/g, "");
     assert.equal(count(injectPosterWidgets(withoutSentence), "SmeltingUnderTynnPlate"), 0);
   });
 });

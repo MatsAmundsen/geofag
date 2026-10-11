@@ -61,7 +61,7 @@ const PLATE_INJECT_RULES: InjectRule[] = [
   },
   { widgets: ["PlatesMap"], beforeHeading: "Hvorfor mantelberg smelter" },
   {
-    widgets: ["Solidus", "DecompressionMelting", "QuizMelting"],
+    widgets: ["Solidus", "DecompressionMelting", "SjekkPlatetektonikk1"],
     beforeHeading: "Plategrensene: Tre relative bevegelser",
   },
   { widgets: ["BoundaryOverview"], beforeHeading: "1. Divergerende" },
@@ -75,7 +75,7 @@ const PLATE_INJECT_RULES: InjectRule[] = [
   },
   { widgets: ["Transform"], beforeHeading: "Geometrisk finesse" },
   {
-    widgets: ["QuizBoundaries"],
+    widgets: ["SjekkPlatetektonikk2"],
     beforeHeading: "Interaktiv geodynamisk modell",
   },
   {
@@ -84,7 +84,7 @@ const PLATE_INJECT_RULES: InjectRule[] = [
   },
   { widgets: ["WilsonCycle"], beforeImage: "/images/geo-wilsonsyklus-3d.jpg" },
   {
-    widgets: ["QuizOfiolittWilson"],
+    widgets: ["SjekkPlatetektonikk3"],
     beforeHeading: "Sentralt fagvokabular",
   },
   {
@@ -96,11 +96,9 @@ const PLATE_INJECT_RULES: InjectRule[] = [
 
 const CHAPTER_INJECT_RULES: InjectRule[] = [
   {
-    // Etter «… Vi har dermed fått en divergerende plategrense» / «Denne prosessen er det som
-    // setter igang platedrift.» i Platetektonikk-
-    // teksten i CMS (ikke i md-seeden). Skrivemåten «i gang» godtas også.
+    // Etter avsnittet som ender med «(dekompresjonssmelting, se under)» i Platetektonikk (Geo sjekk1, må 1).
     widgets: ["SmeltingUnderTynnPlate"],
-    afterParagraph: /setter i ?gang platedrift/i,
+    afterParagraph: /dekompresjonssmelting, se under/i,
   },
   {
     widgets: ["MagmaViscosity"],
