@@ -1375,6 +1375,18 @@ export const KILDER = {
       href: "https://snl.no/rundsva",
     },
     {
+      prefix: "Store norske leksikon [SNL]. (u.å.-e). ",
+      italic: "Gudbrandsdalen",
+      suffix: ".",
+      href: "https://snl.no/Gudbrandsdalen",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-f). ",
+      italic: "Mekanisk forvitring",
+      suffix: ".",
+      href: "https://snl.no/mekanisk_forvitring",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer — Geofag (GFG01-03)",
       suffix: ".",

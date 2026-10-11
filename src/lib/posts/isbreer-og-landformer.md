@@ -8,11 +8,11 @@
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
-> • *Jordsystemer i tid og rom:* Kryosfæren former geosfæren. Isbreene har gravd ut daler og fjorder og lagt igjen løsmassene vi bor på.
+> • *Jordsystemer i tid og rom:* «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren.» I dette kapitlet former kryosfæren geosfæren: isbreene har gravd ut daler og fjorder og lagt igjen løsmassene vi bor på.
 >
-> • *Modeller og modellering:* Lengdesnittet av en isbre og snittet av landhevingen er modeller som forenkler virkeligheten for å forklare prosessene.
+> • *Modeller og modellering:* «Kjerneelementet modeller og modellering handler om å bruke modeller og modellering i geofag.» Lengdesnittet av en isbre og snittet av landhevingen er modeller som forenkler virkeligheten for å forklare prosessene.
 >
-> • *Mennesket i jordsystemene:* Vi tar ut sand og grus fra isens avsetninger, henter grunnvann fra dem og bygger på marin leire som kan bli kvikk.
+> • *Mennesket i jordsystemene:* «Kjerneelementet mennesket i jordsystemene handler om hvordan vi som mennesker utnytter naturressursene og endrer jordsystemene, og hvordan vi er avhengige av og påvirkes av de samme systemene og deres endringer.» Vi tar ut sand og grus fra isens avsetninger, henter grunnvann fra dem og bygger på marin leire som kan bli kvikk.
 >
 > (Udir, u.å.-a)
 >
@@ -68,7 +68,7 @@ Erosjonsformer er landformer der isen har fjernet berg. Mange av dem er så stor
 
 ### U-dal og hengende sidedal
 
-Før istidene rant elvene i V-formede daler. Innlandsisen fulgte disse dalene og skurte og plukket mest der isen var tykkest og tyngst. Over tid fikk dalene bratte sider og en bred bunn, altså en U-form (NDLA, u.å.). Store deler av Gudbrandsdalen er et eksempel på en U-dal over havnivå med elv i bunnen. Hvor bred U-dalen blir, avhenger også av berget. I hard gneis blir dalen dyp og trang, som i Nærøydalen, mens den blir bredere i svakere berg.
+Før istidene rant elvene i V-formede daler. Innlandsisen fulgte disse dalene og skurte og plukket mest der isen var tykkest og tyngst. Over tid fikk dalene bratte sider og en bred bunn, altså en U-form (NDLA, u.å.). Store deler av Gudbrandsdalen er et eksempel på en U-dal over havnivå med elv i bunnen (SNL, u.å.-e). Hvor bred U-dalen blir, avhenger også av berget. I hard gneis blir dalen dyp og trang, som i Nærøydalen, mens den blir bredere i svakere berg.
 
 Sidedalene hadde mindre is og ble ikke gravd like dypt som hoveddalen. Når isen smeltet, ble de liggende igjen høyt oppe i dalsiden som hengende sidedaler (Bryhni & Lilleøren, 2024).
 
@@ -146,7 +146,7 @@ Steinene som løsner ved frostsprengning, faller ned og hoper seg opp under brat
 
 ### Trykkavlastning
 
-Når en tykk isbre smelter bort, forsvinner vekten som presset på berget. Berget utvider seg litt, og det kan løsne skall av berg (avskalling). Dette kalles trykkavlastning (pressure release). Trykkavlastning er, som frostsprengning, en form for mekanisk forvitring.
+Når en tykk isbre smelter bort, forsvinner vekten som presset på berget. Berget utvider seg litt, og det kan løsne skall av berg (avskalling). Dette kalles trykkavlastning (pressure release). Trykkavlastning er, som frostsprengning, en form for mekanisk forvitring (SNL, u.å.-f).
 
 ## Isostasi: landet som hever seg etter isen
 
@@ -186,7 +186,7 @@ Isens avsetninger er en ressurs. Sand og grus fra breelvdeltaer og eskere brukes
 
 Den marine leira som landhevingen har løftet opp på land, er godt jordbruksland, og mange byer og veier ligger på den. Graving og fylling i slik leire kan utløse kvikkleireskred, se kapitlet [Skred](/geofag-1/skred).
 
-Mennesket påvirker også isbreene selv. Norske breer er blitt 14 prosent mindre siden 1999–2006 (NVE, 2022), og klimaendringene gjør at de fortsetter å krympe (NVE, u.å.). Når en bre trekker seg tilbake, blir det liggende ferske morener og breelvavsetninger foran den, og det kan dannes nye bresjøer.
+Mennesket påvirker også isbreene selv. Norske breer er blitt 14 prosent mindre siden 1999–2006 (NVE, 2022), og NVE venter at alle breer vil minke kraftig, og at mange kan bli helt borte (NVE, u.å.). Når en bre trekker seg tilbake, blir det liggende ferske morener og breelvavsetninger foran den, og det kan dannes nye bresjøer.
 
 ```widget
 SjekkIsbre4
