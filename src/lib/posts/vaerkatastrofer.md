@@ -2,11 +2,11 @@
 >
 > Målet er at du skal kunne vurdere risiko ved naturfarer som følge av fenomener i atmosfæren, havet og kryosfæren og drøfte hvordan klimaendringer kan påvirke disse (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
-> • *Mennesket i jordsystemene:* Kjerneelementet handler også om hvordan vi kan forebygge og beskytte oss mot klimaendringer og naturfarer gjennom forskning og forvaltning (Udir, u.å.-a). Varselet og vannstandsmålingen er slike verktøy.
+> • *Mennesket i jordsystemene:* «Mennesket i jordsystemene handler også om hvordan vi kan forebygge og beskytte oss mot klimaendringer og naturfarer gjennom forskning og forvaltning» (Udir, u.å.-a). Farevarsler og vannstandsmåling er slike verktøy.
 >
-> • *Jordsystemer i tid og rom:* Kjerneelementet handler om hvordan delsystemene vekselvirker (Udir, u.å.-a). Her møtes vind, lavtrykk og hav.
+> • *Jordsystemer i tid og rom:* «Videre handler kjerneelementet om komponenter og prosesser i disse delsystemene og hvordan delsystemene vekselvirker med hverandre» (Udir, u.å.-a). I en værkatastrofe møtes vind, lavtrykk og hav.
 
 ## Orkan er to ulike ting
 
@@ -14,9 +14,13 @@
 OrkanForklaring
 ```
 
-[Værkatastrofer](/tema/vaerkatastrofer) samler farer fra vind og hav. Ordet orkan brukes både om selve vinden og om det intense lavtrykket som gir vinden. Vindstyrken er orkan når vinden er sterkere enn 32,6 m/s, som er 63 knop eller 118 km/t. Den måles ti meter over bakken i ti minutter. På Beauforts skala er det styrke 12, det høyeste trinnet. Storm ligger under orkan (Store norske leksikon, u.å.-a).
+> **Hva tror du?**
+>
+> En høststorm gir orkan på Kråkenes fyr ved Stad. Er det det samme som en orkan i Karibia? Svar før du leser videre – vi kommer tilbake til det i tabellen under.
 
-En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind på 74 mph, 64 knop, eller mer. På Saffir-Simpson-skalaen starter kategori 1 ved 119 km/t. I det vestlige Nord-Stillehavet kalles de tyfoner. I Det indiske hav og Sør-Stillehavet kalles de sykloner. En stor orkan har middelvind på minst 111 mph, 96 knop, og er kategori 3, 4 eller 5 (National Hurricane Center, u.å.-a; u.å.-b).
+[Værkatastrofer](/tema/vaerkatastrofer) samler farer fra vind og hav. Ordet orkan brukes både om selve vinden og om det intense lavtrykket som gir vinden. Vindstyrken er orkan når vinden er over 32,6 m/s (64 knop eller mer, ca. 118 km/t). Den måles ti meter over bakken i ti minutter. På Beauforts skala er det styrke 12, det høyeste trinnet. Storm ligger under orkan (Store norske leksikon, u.å.-a).
+
+En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind på 74 mph, 64 knop, eller mer. På Saffir-Simpson-skalaen starter kategori 1 ved 119 km/t. I det vestlige Nord-Stillehavet kalles de tyfoner. I Det indiske hav og Sør-Stillehavet kalles de sykloner. En stor orkan har middelvind på minst 111 mph, 96 knop, og er kategori 3, 4 eller 5. National Hurricane Center bruker middelvinden over ett minutt, mens norske vindstyrker bruker middelvinden over ti minutter. Derfor kan ikke tallene sammenlignes direkte (National Hurricane Center, u.å.-a; u.å.-b).
 
 | Begrep | Hva det er |
 | --- | --- |
@@ -24,6 +28,8 @@ En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind 
 | Tropisk orkan | Tropisk syklon med middelvind på minst 74 mph, 119 km/t |
 | Stor orkan | Kategori 3, 4 eller 5, middelvind på minst 111 mph |
 | Stormflo | Særlig høy vannstand langs kysten i forbindelse med storm |
+
+Svaret på «Hva tror du?» er nei. Orkan på Stad er en vindstyrke, mens orkanene i Karibia er tropiske sykloner.
 
 ## Norskekysten og tropene
 
@@ -33,6 +39,18 @@ Tropiske sykloner som dannes mellom 5 og 30 grader nord, beveger seg typisk vest
 
 Saffir-Simpson-skalaen anslår skade fra vinden. Den tar ikke med stormflo, flom fra regn eller tornadoer. Orkaner i alle kategorier kan gi dødelig stormflo, flom fra regn og tornadoer. Det krever vernetiltak, også å evakuere områder som er utsatt for stormflo. Kategori 3 og høyere kan gi ødeleggende til katastrofal vindskade (National Hurricane Center, u.å.-b).
 
+```widget
+HurricaneCrossSection
+```
+
+```widget
+HurricaneSpinModel
+```
+
+```widget
+SjekkKatastrofer1
+```
+
 ## Tornado
 
 En tornado, også kalt trombe, er en lokal virvelvind. Den er den kraftigste av virvelvindene, som også omfatter skypumper og støvvirvler. Virvelen har tverrmål i størrelsesorden 100 meter. Det er målt vindhastigheter opp til 512 km/t, 142 m/s. Ut fra skader anslås det at vinden kanskje kan nå opptil 600 km/t (Store norske leksikon, u.å.-b).
@@ -40,6 +58,14 @@ En tornado, også kalt trombe, er en lokal virvelvind. Den er den kraftigste av 
 Tornadoer dannes oftest sammen med større systemer: kaldfronter, linjebyer og lavtrykk, og i mindre skala ved særlig kraftige bygeskyer, superceller. De flytter seg omtrent med moderskyen, typisk 40 til 50 km/t, unntaksvis opp i 100 km/t. De forekommer over land i subtropene og på midlere breddegrader. Over de sentrale delene av USA, der varm og fuktig luft fra Mexicogolfen møter kald luft fra nordvest, er det mange og kraftige tornadoer (Store norske leksikon, u.å.-b).
 
 EF-skalaen graderer en tornado fra EF0 til EF5 ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.).
+
+```widget
+SupercellAnatomy
+```
+
+```widget
+TornadoGenesis
+```
 
 ## Stormflo
 
@@ -49,17 +75,29 @@ Pålandsvind stuer vann mot kysten. På den nordlige halvkule dreies transporten
 
 Kartverket har det nasjonale ansvaret for vannstandsmåling. Tjenesten Se havnivå viser observert og varslet vannstand, tidevann, landheving og framtidig havnivå. Vannstanden varierer på grunn av tidevannet og været. De fleste steder er det to høyvann og to lavvann i døgnet. De ekstreme nivåene, stormflonivåene, er oppdatert i tjenesten. Klimaendringer gjør at havet stiger. Det meste av norskekysten vil oppleve havnivåstigning dersom den globale oppvarmingen fortsetter som i dag, og kommunene må forberede seg (Kartverket, u.å.).
 
-## Baroklin sirkulasjon
+```widget
+StormSurge
+```
 
-Baroklinitet betyr at tetthetsflater og trykkflater skjærer hverandre. Baroklin massefordeling er en nødvendig betingelse for at det skal oppstå sirkulasjon i atmosfæren eller i havet. Når flatene faller sammen, kalles tilstanden barotrop (Store norske leksikon, u.å.-d). Siden bruker ikke ordet barokline lavtrykk som navn på en stormtype.
+```widget
+SjekkKatastrofer2
+```
 
 ## Bombesyklon
 
-En bombesyklon er et lavtrykk som forsterker seg veldig raskt. Den kalles også meteorologisk bombe. Det er en ekstratropisk syklon. Ved 60 grader nord, omtrent Bergen og Oslo, må trykket synke med minst 24 hektopascal i løpet av 24 timer. Slike lavtrykk oppstår gjerne når en kald luftmasse kolliderer med en varm, ofte om høsten og vinteren, når havvannet er mye varmere enn luften over (Store norske leksikon, u.å.-e).
+En bombesyklon er et lavtrykk som forsterker seg veldig raskt. Den kalles også meteorologisk bombe. Det er en ekstratropisk syklon. Ved 60 grader nord, omtrent Bergen og Oslo, må trykket synke med minst 24 hektopascal i løpet av 24 timer. Slike lavtrykk oppstår gjerne når en kald luftmasse kolliderer med en varm, ofte om høsten og vinteren, når havvannet er mye varmere enn lufta over (Store norske leksikon, u.å.-e). Slike lavtrykk trenger at atmosfæren er baroklin. Det betyr at tetthetsflater og trykkflater skjærer hverandre, slik de gjør der kald og varm luft møtes. Baroklin massefordeling er en nødvendig betingelse for at det skal oppstå sirkulasjon i atmosfæren eller i havet (Store norske leksikon, u.å.-d).
+
+```widget
+MeteorologicalBomb
+```
 
 ## Atmosfæriske elver
 
-Atmosfæriske elver er lange transportårer for vanndamp. De er typisk om lag 2000 kilometer lange og 300–500 kilometer brede. Tropiske luftmasser føres mot våre breddegrader, og når de kommer til Norge, blir vanndampen til regn. Fjellene er ikke høye nok til at vanndampen i disse luftmassene blir til snø, så nedbøren treffer bakken som regn. Nedbøren forsterkes når luften løftes over fjellene. Det kalles orografisk nedbør (Store norske leksikon, u.å.-f).
+Atmosfæriske elver er lange transportårer for vanndamp. De er typisk om lag 2000 kilometer lange og 300–500 kilometer brede. Tropiske luftmasser føres mot våre breddegrader, og når de kommer til Norge, blir vanndampen til regn. Lufta er så varm at nedbøren ofte faller som regn helt til fjells. Nedbøren forsterkes når lufta løftes over fjellene. Det kalles orografisk nedbør (Store norske leksikon, u.å.-f).
+
+```widget
+AtmosphericRiver
+```
 
 ## Ekstremværet Hans
 
@@ -69,7 +107,15 @@ At en ekstremværhendelse inntreffer, skyldes ikke nødvendigvis klimaendringene
 
 ## Polare lavtrykk
 
-Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). Meteorologisk institutt beskriver dem som små, men ganske intense lavtrykk nord for polarfronten. Siden 2000 er det registrert om lag 330 slike hendelser. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 og fram til i dag (oktober 2026) har Meteorologisk institutt i Tromsø registrert om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+
+```widget
+PolarLowFormation
+```
+
+```widget
+SjekkKatastrofer3
+```
 
 ## Klima og ekstremnedbør
 
@@ -83,9 +129,13 @@ Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstre
 >
 > Stormflo er ikke bare tidevann. Det er særlig høy vannstand i forbindelse med storm, og den blir verst sammen med springflo (Store norske leksikon, u.å.-c).
 
+```widget
+ClimateRiskShift
+```
+
 ## Viktige begreper
 
-**Orkan:** Vind sterkere enn 32,6 m/s, målt ti meter over bakken i ti minutter. Ordet brukes også om lavtrykket.
+**Orkan:** Vind over 32,6 m/s, målt ti meter over bakken i ti minutter. Ordet brukes også om lavtrykket.
 
 **Tropisk orkan:** Tropisk syklon med middelvind på minst 74 mph. Kategori 3 og høyere er en stor orkan.
 
@@ -104,6 +154,12 @@ Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstre
 **Springflo:** Det høyeste tidevannet. Stormflo oppå springflo gir de største skadene.
 
 **Se havnivå:** Kartverkets tjeneste for observert og varslet vannstand, tidevann og framtidig havnivå.
+
+## Sammendrag
+
+```widget
+SammendragKatastrofer
+```
 
 ## Test deg selv
 

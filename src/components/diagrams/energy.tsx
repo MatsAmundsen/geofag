@@ -297,7 +297,7 @@ export function OtecRankineCycleDiagram() {
     <Diagram
       title="Havvarmekraft (OTEC): Termodynamisk Rankine-syklus og vertikal temperaturgradient"
       heading="OTEC: Hvordan havets termiske lagdeling gir kontinuerlig grunnlast"
-      caption="OTEC utnytter temperaturforskjellen (ΔT ≥ 20 °C) mellom solvarmet overflatevann (25–28 °C) og arktisk bunnvann (4–5 °C) pumpet opp fra 1000 meters dyp i tropene. I en lukket Rankine-syklus fordamper overflatevarmen flytende ammoniakk (NH₃, kokepunkt under 0 °C ved normalt trykk). Gassen driver en turbin og generator for å produsere strøm, før det kalde dyphavsvannet kondenserer gassen tilbake til væske. Fordi Carnot-virkningsgraden er teoretisk begrenset til under 7 %, kreves det enorme vannvolumer for å generere kommersielle effekter."
+      caption="OTEC utnytter temperaturforskjellen (ΔT ≥ 20 °C) mellom solvarmet overflatevann (25–28 °C) og kaldt dypvann (4–5 °C) pumpet opp fra ca. 1000 meters dyp i tropene. I en lukket Rankine-syklus fordamper overflatevarmen flytende ammoniakk (NH₃, kokepunkt under 0 °C ved normalt trykk). Gassen driver en turbin og generator for å produsere strøm, før det kalde dyphavsvannet kondenserer gassen tilbake til væske. Fordi Carnot-virkningsgraden er teoretisk begrenset til under 7 %, kreves det enorme vannvolumer for å generere kommersielle effekter."
       viewBox="0 0 920 440"
       wide
     >

@@ -39,6 +39,14 @@ I Norge er det om lag 5260 isbreer som er større enn 0,01 kvadratkilometer, med
 
 De fleste breene på jorda minker i utbredelse og volum. Det bidrar til at det globale havnivået stiger, for tiden med vel 4 millimeter i året i gjennomsnitt (Store norske leksikon, u.å.-a).
 
+```widget
+GlacierMassBalance
+```
+
+```widget
+GlacierMassBalanceModel
+```
+
 ## Permafrost og det aktive laget
 
 Permafrost er bakke, både løsmasser og berggrunn, der temperaturen i løpet av to sammenhengende år ikke overstiger 0 °C. Det er en temperaturdefinert størrelse. Det må bakkemålinger til for å vite at permafrosten er der (Store norske leksikon, u.å.-b).
@@ -47,6 +55,10 @@ Permafrost påvirker litt mer enn 20 prosent av landarealet på den nordlige hal
 
 Selv om bakken er permafrost, tiner det øverste laget hver sommer. Det kalles det aktive laget. De fleste steder varmes permafrosten nå. Det aktive laget blir gradvis dypere. Permafrosten virker som et lim. Når det aktive laget blir dypere, blir bakken mer ustabil, og varme somre har gitt flere fjellskred. Tining kan også gi setninger, utglidninger og utslipp av drivhusgasser fra organisk materiale i bakken. Det siste er en positiv tilbakekobling (Store norske leksikon, u.å.-b).
 
+```widget
+Permafrost
+```
+
 ## Havis og snø
 
 Havis er frossent havvann som flyter på overflaten. Utbredelsen vokser og minker med årstidene. Sent på vinteren dekker arktisk havis i gjennomsnitt 15,5 millioner kvadratkilometer, og antarktisk havis om lag 18,5 millioner. Siden 2007 har september-minimum i Arktis ligget på 3,5 til 5 millioner kvadratkilometer, om lag 13 prosent mindre per tiår siden satellittmålingene startet. Satellittrekken for havis går tilbake til 1979 (National Snow and Ice Data Center, u.å.-a; u.å.-c).
@@ -54,6 +66,10 @@ Havis er frossent havvann som flyter på overflaten. Utbredelsen vokser og minke
 Arktis er et hav nesten omsluttet av land, så mye av isen blir liggende gjennom sommeren og kan vokse videre neste høst. Antarktis er et kontinent omsluttet av hav, og isen driver friere og blir sjeldnere like tykk. Antarktisk havis er typisk 1 til 2 meter tykk (National Snow and Ice Data Center, u.å.-a).
 
 Snø kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer, særlig over Nord-Amerika, Grønland, Europa og Russland (National Snow and Ice Data Center, u.å.-b).
+
+```widget
+SeaIceAlbedoFeedback
+```
 
 ## Snøskredvarsel
 
@@ -66,6 +82,10 @@ NVE publiserer snøskredvarsel for 24 regioner på fastlandet og Svalbard hver d
 > Havis er frossent havvann som flyter. En bre er snø og is på land som siger (National Snow and Ice Data Center, u.å.-a; Store norske leksikon, u.å.-a).
 >
 > En regional faregrad er ikke en karakter for ett heng. Varselet gjelder minst 100 kvadratkilometer (Varsom, u.å.).
+
+```widget
+SlabAvalanche
+```
 
 ## Viktige begreper
 

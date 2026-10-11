@@ -25,26 +25,16 @@ import { getPost, type Post } from "@/lib/posts";
 type TopicLink = { to: string; label: string; params?: Record<string, string> };
 
 /**
- * G2-kapitler som er rullet tilbake til kodet TSX-tekst (c3ca0d9). Plakaten på
+ * G2-kapitler som fortsatt viser kodet TSX-tekst (klimakapitlene). De andre
+ * G2-kapitlene viser md-teksten (Geo F2, 11.10.2026). Plakaten på
  * /poster/<slug> viser fortsatt den nye md-teksten, så Poster-knappen og
  * admin-lenken skjules her for å unngå to ulike versjoner av samme kapittel.
  * Kodede G1-sider og hoytrykk-lavtrykk beholder knappen.
  */
 const CODED_G2_PATHS = new Set([
-  "/tema/vindsystemet",
-  "/tema/vaerkart",
-  "/tema/lokale-vaersystemer",
-  "/tema/jetstrommer",
-  "/tema/coriolis",
-  "/tema/havstrommer",
-  "/tema/kryosfaeren",
-  "/tema/numeriske-modeller",
   "/tema/paleoklima",
   "/tema/milankovitch",
-  "/tema/vaerkatastrofer",
   "/tema/tilpasning",
-  "/tema/energi-hav-luft",
-  "/tema/felt-hav-luft-is",
   "/tema/klima",
   "/tema/klima/oversikt",
   "/tema/klima/nao",
