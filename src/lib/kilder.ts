@@ -670,6 +670,11 @@ export const KILDER = {
   ],
   "norges-geologi": [
     {
+      prefix: "Anonymous. (1972). Penrose field conference on ophiolites [Penrose Field Conference]. ",
+      italic: "Geotimes, 17",
+      suffix: "(12), 24–25.",
+    },
+    {
       prefix: "Amundsen, B. (2021, 22. januar). ",
       italic: "Fjell i Norge har vært over 8000 meter høye",
       suffix: ". forskning.no.",
@@ -823,11 +828,6 @@ export const KILDER = {
       italic: "Norsk Geologisk Tidsskrift, 28",
       suffix: ", 199–225.",
       href: "https://njg.geologi.no/images/NJG_articles/NGT_28_2-4_199-225.pdf",
-    },
-    {
-      prefix: "Penrose Field Conference. (1972). Penrose field conference on ophiolites. ",
-      italic: "Geotimes, 17",
-      suffix: "(12), 24–25.",
     },
     {
       prefix: "Raade, G. (2025, 2. juli). ",

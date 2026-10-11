@@ -87,7 +87,7 @@ Avkjølingen styrer kornstørrelsen. Når magma kjøles langsomt, vanligvis på 
 
 **Gabbro og basalt** har samme sammensetning. Gabbro er dypbergarten og består hovedsakelig av plagioklas og pyroksen. I Norge finnes store mengder i Lyngen og Jotunheimen (NGU, u.å.-b). Basalt er dagbergarten med samme kjemi og raskere avkjøling. Grønnstein er gabbro eller basalt som er omdannet, med kloritt, epidot og amfibol (NGU, u.å.-e). Da har den magmatiske bergarten flyttet seg til metamorf stasjon.
 
-**Larvikitt og rombeporfyr** hører til Osloriften. For cirka 305 millioner år siden, i sen karbon, ble skorpa strukket og sprakk opp, og riften var aktiv til for cirka 250 millioner år siden (Bryhni & Fossen, 2024). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak. Vulkanismen fortsatte inn i perm, og det ble dannet en riftdal (NGU, u.å.-c).
+**Larvikitt og rombeporfyr** hører til Osloriften. For cirka 300 millioner år siden, i sen karbon, ble skorpa strukket og sprakk opp, og riften var aktiv gjennom perm (Bryhni & Fossen, 2024). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak. Vulkanismen fortsatte inn i perm, og det ble dannet en riftdal (NGU, u.å.-c).
 
 Larvikitt er en dypbergart med to typer feltspat, som kan gi fargespill. Den er dannet for cirka 295–290 millioner år siden, er oppkalt etter Larvik og finnes i Vestfold og Telemark. Den er Norges nasjonalbergart (NGU, u.å.-i).
 

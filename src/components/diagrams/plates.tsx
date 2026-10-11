@@ -2774,7 +2774,7 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
   {
     key: "oslofeltet",
     title: "2. OSLOFELTET",
-    age: "ca. 305–250 mill. år siden (sen karbon og perm)",
+    age: "ca. 300–250 mill. år siden (sen karbon og perm)",
     color: "#ef4444",
     ageColor: "#fca5a5",
     headline: "Skorpa strekkes",
@@ -2814,7 +2814,7 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
       { text: "Havet sto opptil ca. 220 m høyere", note: "(marin grense, 221 m i Skådalen)" },
       { text: "Intraplate-jordskjelv" },
     ],
-    today: ["Oslo hever seg ca. 5 mm/år (GNSS).", "Marin leire på land kan bli kvikkleire"],
+    today: ["Oslo hever seg ca. 5 mm/år.", "Marin leire kan noen steder bli kvikkleire"],
   },
 ];
 
@@ -2863,7 +2863,7 @@ function NorwayEpochIcon({ k, arrowMarker }: { k: string; arrowMarker: string })
 export function NorwayTectonicsHistoryDiagram() {
   const uid = useId().replace(/:/g, "");
   const caption =
-    "Det eldste grunnfjellet i Norge er opptil ca. 3000 millioner år gammelt. For ca. 425–405 millioner år siden kolliderte Baltika med Laurentia, og den kaledonske fjellkjeden ble dannet. I sen karbon og perm, for ca. 305–250 millioner år siden, ble skorpa strukket og Oslo-riften dannet. For ca. 55 millioner år siden åpnet Norskehavet seg, og norskekysten ble en passiv kontinentalmargin. Etter siste istid sto havet opptil ca. 220 m høyere enn i dag i Oslo-området. Landet har hevet seg mer enn dette, fordi havnivået steg samtidig.";
+    "Det eldste grunnfjellet i Norge er opptil ca. 3000 millioner år gammelt. For ca. 425–405 millioner år siden kolliderte Baltika med Laurentia, og den kaledonske fjellkjeden ble dannet. I sen karbon og perm, for ca. 300–250 millioner år siden, ble skorpa strukket og Oslo-riften dannet. For ca. 55 millioner år siden åpnet Norskehavet seg, og norskekysten ble en passiv kontinentalmargin. Etter siste istid sto havet opptil ca. 220 m høyere enn i dag i Oslo-området. Landet har hevet seg mer enn dette, fordi havnivået steg samtidig.";
   return (
     <FigureFrame heading="Norges geologiske reise: Grunnfjell, Kaledonidene, Oslofeltet og Norskehavet" caption={caption}>
       <ol className="grid list-none gap-3 p-0 sm:grid-cols-2" aria-label="Norges geologiske reise">

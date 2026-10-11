@@ -9,9 +9,11 @@
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
-> • _Jordsystemer i tid og rom:_ «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren. Videre handler kjerneelementet om komponenter og prosesser i disse delsystemene og hvordan delsystemene vekselvirker med hverandre. Tidsperspektivet er sentralt i dette kjerneelementet, ettersom prosesser og vekselvirkninger foregår på ulike tidsskalaer.»
+> • _Jordsystemer i tid og rom:_ «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren.»
 >
-> • _Geofaglig feltarbeid:_ «Kjerneelementet geofaglig feltarbeid handler om planlegging, innsamling av georefererte data i felt og bearbeiding av disse. Dette innebærer å bruke geofaglig kompetanse og naturvitenskapelig tenkemåte til å samle og registrere data på en faglig forsvarlig måte som også ivaretar helse, miljø og sikkerhet.»
+> • _Geofaglig feltarbeid:_ «Kjerneelementet geofaglig feltarbeid handler om planlegging, innsamling av georefererte data i felt og bearbeiding av disse.»
+>
+> • _Modeller og modellering:_ «Kjerneelementet modeller og modellering handler om å bruke modeller og modellering i geofag.»
 >
 > • _Mennesket i jordsystemene:_ «Kjerneelementet mennesket i jordsystemene handler om hvordan vi som mennesker utnytter naturressursene og endrer jordsystemene, og hvordan vi er avhengige av og påvirkes av de samme systemene og deres endringer.»
 >
@@ -29,7 +31,7 @@
 
 Under de yngre bergartene ligger _grunnfjellet_. Det er de eldste bergartene vi har, og de består for det meste av gneis og granitt. Grunnfjellet er dannet og omdannet gjennom flere fjellkjededannelser lenge før den kaledonske fjellkjeden, og det er en del av Det baltiske skjoldet, som også omfatter store deler av Sverige og Finland (Bryhni & Fossen, 2024).
 
-De eldste bergartene finner vi i Finnmark. Gneis i Sør-Varanger og ved Lakselv er opptil ca. 3000 millioner år gamle, og i dette området ligger også jernmalmen i Bjørnevatn. I Lofoten og Vesterålen er det gneis og dypbergarter som er ca. 2200–1700 millioner år gamle. Grunnfjellet i Sør-Norge er yngre, de fleste bergartene er mindre enn 1800 millioner år gamle (Bryhni & Fossen, 2024).
+De eldste bergartene finner vi i Finnmark. Gneis i Sør-Varanger og ved Lakselv er opptil ca. 3000 millioner år gamle, og i dette området ligger også jernmalmen i Bjørnevatn. I Lofoten og Vesterålen er det dypbergarter som er ca. 2200–1700 millioner år gamle og har trengt inn i eldre gneis. Grunnfjellet i Sør-Norge er yngre, de fleste bergartene er mindre enn 1800 millioner år gamle (Bryhni & Fossen, 2024).
 
 Sør-Norge ble formet av flere fjellkjededannelser for ca. 1750–900 millioner år siden. Den siste og best kjente er den _svekonorvegiske_ fjellkjededannelsen for ca. 1140–900 millioner år siden. Da ble bergartene foldet og omdannet, og mot slutten trengte store mengder granitt opp i skorpa (Bingen mfl., 2008). Mange av granittene i Sør-Norge er ca. 1100–900 millioner år gamle. Iddefjordsgranitten ved svenskegrensen er en av dem, og den er brukt i skulpturene i Vigelandsparken (Bryhni & Fossen, 2024).
 
@@ -43,17 +45,17 @@ SjekkNorgesGeologi1
 
 ## Leka – en havbunn på land
 
-Kartlegg du berggrunnen på øya Leka, finner du bergarter som ikke ble dannet på et kontinent. Sammen med restene av en havbunn er de skjøvet opp på land. En slik pakke av havbunnsskorpe og øvre mantel kaller vi en _ofiolitt_ (av gresk _ophis_, slange, etter de grønne, slangeskinnsaktige bergartene) (Raade, 2026). Leka-ofiolitten er ca. 497 millioner år gammel, datert med uran–bly-metoden på zirkon (Dunning & Pedersen, 1988). Havbunnen ble dannet i Iapetushavet, et hav som lå mellom kontinentene Baltika og Laurentia (Grønland og Nord-Amerika).
+Kartlegg du berggrunnen på øya Leka, finner du bergarter som ikke ble dannet på et kontinent. Sammen med restene av en havbunn er de skjøvet opp på land. En slik pakke av havbunnsskorpe og øvre mantel kaller vi en _ofiolitt_ (av gresk _ophis_, slange, etter de grønne, slangeskinnsaktige bergartene) (Raade, 2026). Leka-ofiolitten er ca. 497 millioner år gammel, datert med uran–bly-metoden på zirkon (Dunning & Pedersen, 1988). Havbunnen ble dannet i Iapetushavet, et hav som lå mellom kontinentene Baltika og Laurentia (Grønland og Nord-Amerika), der skorpa ble trukket fra hverandre (Titus mfl., 2002).
 
-En fullstendig ofiolitt har en fast rekkefølge av lag fra havbunnen og ned i mantelen. Geologer ble enige om denne lagdelingen på en konferanse i 1972 (Penrose Field Conference, 1972):
+En fullstendig ofiolitt har en fast rekkefølge av lag fra havbunnen og ned i mantelen. Ofte mangler noen av lagene. Geologer ble enige om denne lagdelingen på en konferanse i 1972 (Anonymous, 1972):
 
-| Lag (ovenfra og ned) | Hva det er                                                | Omtrentlig tykkelse |
-| -------------------- | --------------------------------------------------------- | ------------------- |
-| Havbunnssedimenter   | Leire og radiolaritt                                      | under 1 km          |
-| Putelava             | Basalt som størknet i kaldt havvann og fikk puteform      | ca. 1 km            |
-| Gangkompleks         | Tettstilte, loddrette ganger av diabas der magma steg opp | ca. 1–2 km          |
-| Gabbro               | Magma som størknet langsomt i et magmakammer              | ca. 2–5 km          |
-| Peridotitt           | Bergart fra den øvre mantelen                             | flere kilometer     |
+| Lag (ovenfra og ned) | Hva det er                                                |
+| -------------------- | --------------------------------------------------------- |
+| Havbunnssedimenter   | Leire og radiolaritt                                      |
+| Putelava             | Basalt som størknet i kaldt havvann og fikk puteform      |
+| Gangkompleks         | Tettstilte, loddrette ganger av diabas der magma steg opp |
+| Gabbro               | Magma som størknet langsomt i et magmakammer              |
+| Peridotitt           | Bergart fra den øvre mantelen                             |
 
 _Radiolaritt_ er en hard, kiselrik sedimentær bergart. Den er dannet av skjelettene til _radiolarier_ (stråledyr), som er encellede organismer med skjelett av kisel. De lever som plankton i havet. Når de dør, synker skjelettene til bunns og danner et kiselslam på dyphavsbunnen (SNL, 2026). Radiolarier er ikke alger. Kiselalgene (diatomeene) er en annen gruppe encellede organismer (Throndsen & Egeland, 2026).
 
@@ -61,7 +63,7 @@ _Radiolaritt_ er en hard, kiselrik sedimentær bergart. Den er dannet av skjelet
 OfiolittSnitt
 ```
 
-På Leka er peridotitten fra mantelen forvitret til en gulbrun til rustbrun farge, og det er lite vegetasjon på den. Det gjør landskapet lett å kjenne igjen (Trollfjell Geopark, u.å.). Ofiolitten ble skjøvet opp på kanten av et kontinent da Iapetushavet ble mindre (Furnes mfl., 1988; Titus mfl., 2002). For ca. 500 millioner år siden kan Midt-Norge ha sett ut som Indonesia i dag, med øybuer, vulkaner og smale havområder (Løvø, 2014). Leka-ofiolitten er derfor et bevis på at Iapetushavet fantes, og at det lukket seg.
+På Leka er peridotitten fra mantelen forvitret til en gulbrun til rustbrun farge, og det er lite vegetasjon på den. Det gjør landskapet lett å kjenne igjen (Trollfjell Geopark, u.å.). Ofiolitten ble skjøvet opp på kanten av et kontinent da Iapetushavet ble mindre (Furnes mfl., 1988). For ca. 500 millioner år siden kan Midt-Norge ha sett ut som Indonesia i dag, med øybuer, vulkaner og smale havområder (Løvø, 2014). Leka-ofiolitten er derfor et bevis på at Iapetushavet fantes, og at det lukket seg.
 
 Ofiolitter finnes også flere andre steder i den kaledonske fjellkjeden i Norge, for eksempel på Karmøy, i Gullfjellet ved Bergen, sør i Trøndelag og i Lyngsalpene (Raade, 2026).
 
@@ -71,7 +73,7 @@ SjekkNorgesGeologi2
 
 ## Den kaledonske fjellkjeden
 
-Den kaledonske fjellkjeden strekker seg i Norge fra Jæren til Varangerhalvøya, og fortsetter i Skottland, Irland, Grønland og Nord-Amerika (Bryhni & Fossen, 2025). Historien bak den varte fra sen kambrium til devon, altså i mer enn 100 millioner år.
+Den kaledonske fjellkjeden strekker seg i Norge fra Jæren til Varangerhalvøya (Bryhni & Fossen, 2024), og fortsetter i Skottland, Irland, Grønland og Nord-Amerika (Bryhni & Fossen, 2025). Historien bak den varte fra sen kambrium til devon, altså i mer enn 100 millioner år.
 
 ### Iapetushavet lukker seg
 
@@ -83,7 +85,7 @@ Kontinental skorpe er lettere enn mantelen og synker ikke lett ned i en subduksj
 
 Under kollisjonen ble store flak av berggrunn revet løs og skjøvet over hverandre. Slike flak kaller vi _skyvedekker_. Skyvedekkene i Norge ble flyttet flere hundre kilometer mot øst og sørøst, inn over kanten av Baltika (Bryhni & Fossen, 2025). Derfor kan vi finne eldre bergarter som ligger _oppå_ yngre bergarter. Det ser ut som om rekkefølgen er snudd, men forklaringen er at bergartene er skjøvet dit.
 
-_Jotundekket_ er et av de største skyvedekkene. Det består av gabbro, anortositt og beslektede dypbergarter som jotunitt og mangeritt. Bergartene ble dannet for ca. 1690–1250 millioner år siden, og de ble skjøvet flere hundre kilometer mot sørøst for ca. 425 millioner år siden. I dag danner Jotundekket de høyeste fjellene i Norge, i Jotunheimen (Bryhni & Askheim, 2024). Rondane består derimot for en stor del av sparagmitt, en feltspatrik sandstein som ble avsatt før fjellkjededannelsen og senere skjøvet inn som en del av de lavere skyvedekkene (Oftedahl, 1948; Bryhni & Fossen, 2024).
+_Jotundekket_ er et av de største skyvedekkene. Det består av gabbro, anortositt og beslektede dypbergarter som jotunitt og mangeritt. Bergartene ble dannet for ca. 1690–1250 millioner år siden, og de ble skjøvet flere hundre kilometer mot sørøst for ca. 425 millioner år siden. I dag danner Jotundekket de høyeste fjellene i Norge, i Jotunheimen (Bryhni & Askheim, 2024). Rondane består derimot for en stor del av kvartsitt og omdannet feltspatrik sandstein (sparagmitt). De hardeste partiene med kvartsitt danner de høye fjellene der (Oftedahl, 1948; Bryhni & Fossen, 2024).
 
 ```widget
 Kaledonidene
@@ -97,7 +99,7 @@ Dypt nede i fjellkjeden ble bergartene utsatt for høy temperatur og høyt trykk
 
 Den kaledonske fjellkjeden kan ha vært like høy som Himalaya er i dag, men det er usikkert (Bryhni & Fossen, 2024). Noen forskere har beregnet at enkelte fjell kan ha vært over 8000 meter høye (Amundsen, 2021). Slike beregninger bygger på hvor dypt bergartene har ligget, og ikke på direkte målinger av fjellene.
 
-Allerede i devon, for ca. 405–390 millioner år siden, begynte fjellkjeden å falle sammen under sin egen tyngde. Skorpa ble strukket, og det ble dannet bassenger som ble fylt med grus og sand fra fjellene rundt. Slike devonbassenger finner vi blant annet på Vestlandet, for eksempel Hornelen (Askheim, 2024; Bryhni & Fossen, 2024).
+Allerede i devon, fra ca. 405 millioner år siden, begynte fjellkjeden å falle sammen under sin egen tyngde. Skorpa ble strukket, og det ble dannet bassenger som ble fylt med grus og sand fra fjellene rundt. Slike devonbassenger finner vi blant annet på Vestlandet, for eksempel Hornelen (Askheim, 2024; Bryhni & Fossen, 2024).
 
 ### Er dagens fjell rester av den kaledonske fjellkjeden?
 
@@ -109,9 +111,9 @@ SjekkNorgesGeologi3
 
 ## Oslo-riften – en riftdal i sen karbon og perm
 
-I sen karbon og perm, like etter at Pangea var satt sammen, ble skorpa strukket over et område i Nord-Europa. Oslo-riften er ett av flere riftsystemer fra denne tiden. Oppsprekkingen av Pangea begynte først senere, i trias og jura (Askheim, 2025).
+I sen karbon og perm, like etter at Pangea var satt sammen, ble skorpa strukket over et område i Nord-Europa. Oslo-riften er ett av flere riftsystemer fra denne tiden. Oppsprekkingen av Pangea begynte først senere, i jura (Askheim, 2025).
 
-Oslo-riften var aktiv for ca. 305–250 millioner år siden, i sen karbon og perm (Bryhni & Fossen, 2024). Den strekker seg fra Langesund i sør til Brumunddal i nord og fortsetter ut i Skagerrak. Da skorpa ble strukket, sank en lang blokk ned mellom forkastninger, og det ble dannet en _riftdal_ (graben) (Spjeldnæs & Askheim, 2024). Oslofeltet er altså ikke én vulkan, men restene av en riftdal med mange vulkaner.
+Oslo-riften ble dannet for ca. 300 millioner år siden, i sen karbon, og var aktiv gjennom perm (Bryhni & Fossen, 2024). Den strekker seg fra Langesund i sør til Brumunddal i nord og fortsetter ut i Skagerrak. Da skorpa ble strukket, sank en lang blokk ned mellom forkastninger, og det ble dannet en _riftdal_ (graben) (Spjeldnæs & Askheim, 2024). Oslofeltet er altså ikke én vulkan, men restene av en riftdal med mange vulkaner.
 
 ```widget
 OsloriftBergarter
@@ -119,7 +121,7 @@ OsloriftBergarter
 
 Fordi blokken sank ned, ble lagene fra kambrium og silur bevart i Oslofeltet. Andre steder ble de slitt bort. Derfor finner vi mange fossiler, for eksempel trilobitter, i skifer og kalkstein rundt Oslo.
 
-Da skorpa ble tynnere, steg magma opp. Først kom basalt, og senere store lavastrømmer av _rombeporfyr_. Rombeporfyr har store, lyse feltspatkrystaller formet som romber i en finkornet grunnmasse (Raade, 2025). Bergarten er svært sjelden og bare kjent fra noen få steder i verden, blant annet Kilimanjaro i Øst-Afrika og Mount Erebus i Antarktis (Raade, 2025). Noen steder kollapset vulkanene og dannet store kalderaer. Dypbergartene i Oslofeltet dekker ca. 60 % av området (Bryhni & Fossen, 2024).
+Da skorpa ble tynnere, steg magma opp. Først kom basalt, og senere store lavastrømmer av _rombeporfyr_. Rombeporfyr har store, lyse feltspatkrystaller formet som romber i en finkornet grunnmasse (Raade, 2025). Rombeporfyr er vanlig i Oslofeltet, særlig på Krokskogen og i Vestfold, men tilsvarende bergarter er bare funnet noen få andre steder i verden, i Øst-Afrika og i Antarktis (Raade, 2025). Noen steder kollapset vulkanene og dannet store kalderaer. Dypbergartene i Oslofeltet dekker ca. 60 % av området (Bryhni & Fossen, 2024).
 
 Den mest kjente dypbergarten er _larvikitt_. Den ble dannet for ca. 295–290 millioner år siden (NGU, u.å.-c). Feltspaten i larvikitt har et blått eller grønt fargespill som kalles labradorisering, og bergarten brukes som fasadestein og i monumenter over hele verden (Raade, Askheim mfl., 2025). Larvikitt ble kåret til Norges nasjonalbergart i 2008 (forskning.no, 2008). Du kan lese mer om larvikitt og naturstein i kapitlet [Geologiske ressurser](/geofag-1/geologiske-ressurser).
 
@@ -171,7 +173,7 @@ Under marin grense ble det avsatt _marin leire_ på havbunnen. Da landet steg, k
 
 ### Landhevingen i dag
 
-Landet hever seg fortsatt. Hevingen er størst der isen var tykkest. I Bottenviken hever landet seg opptil ca. 1 cm i året (Kartverket, 2021). I Norge varierer hevingen fra ca. 7 mm i året i noen østlige områder til nesten null på Sørvestlandet (Kartverket, 2021). I Oslo hever landet seg ca. 5 mm i året målt med satellitter (Kartverket, 2014). Måler vi i forhold til havet, blir tallet 1–2 mm mindre i året, fordi havnivået også stiger (Kartverket, u.å.).
+Landet hever seg fortsatt. Hevingen er størst der isen var tykkest. I Bottenviken hever landet seg opptil ca. 1 cm i året (Kartverket, 2021). I Norge varierer hevingen fra ca. 7 mm i året i noen østlige områder til nesten null på Sørvestlandet (Kartverket, 2021). I Oslo hever landet seg ca. 5 mm i året (Kartverket, 2014). Måler vi i forhold til havet, blir tallet 1–2 mm mindre i året, fordi havnivået også stiger (Kartverket, u.å.).
 
 Landhevingen bidrar også til spenninger i jordskorpa. Sammen med spenninger fra spredningen langs den midtatlantiske ryggen kan den forklare en del av jordskjelvene i Norge. Et av de største kjente jordskjelvene i Norge var ved Lurøy i 1819, med magnitude ca. 5,8 (NORSAR, u.å.). Du kan lese mer om dette i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv).
 
@@ -181,7 +183,7 @@ SjekkNorgesGeologi6
 
 ## Utforsk geologien der du bor
 
-Historien i dette kapitlet kan du finne igjen i ditt eget nærområde. Geologer tolker et område ved å se på tre ting: berggrunnen, løsmassene over berggrunnen og jordsmonnet øverst.
+Historien i dette kapitlet kan du finne igjen i ditt eget nærområde. Geologer tolker et område ved å se på tre ting: berggrunnen, løsmassene over berggrunnen og jordsmonnet øverst. Jordsmonnet dannes når berggrunn og løsmasser forvitrer og blandes med organisk materiale fra planter og dyr. Derfor blir jordsmonnet forskjellig fra sted til sted. På marin leire blir det tett og næringsrikt, mens det på morene ofte er steinrikt og mer porøst.
 
 _Berggrunnen_ forteller om de eldste delene av historien. Er det gneis eller granitt, er det trolig grunnfjell. Er det glimmerskifer, fyllitt eller grønnstein, kan det være skyvedekker fra den kaledonske fjellkjeden. I Oslo-området kan det være kalkstein og skifer med fossiler eller lavabergarter fra perm. Geologer ser også etter strukturer, for eksempel lagdeling, folder, sprekker og forkastninger, og etter hvilke bergarter som skjærer gjennom andre. En gang av magma som skjærer gjennom et lag, må være yngre enn laget.
 
@@ -205,8 +207,8 @@ Tidslinjen og kartet under samler historien i dette kapitlet.
 | ca. 650–630              | Istider i sen prekambrium                                   | Tillitt i Finnmark                       |
 | ca. 497                  | Havbunn dannes i Iapetushavet                               | Ofiolitten på Leka                       |
 | ca. 495–405              | Iapetushavet lukker seg, Baltika kolliderer med Laurentia   | Skyvedekker, eklogitt på Vestlandet      |
-| ca. 405–350              | Fjellkjeden faller sammen                                   | Devonbassenger på Vestlandet             |
-| ca. 305–250              | Oslo-riften                                                 | Rombeporfyr og larvikitt i Oslofeltet    |
+| fra ca. 405              | Fjellkjeden faller sammen                                   | Devonbassenger på Vestlandet             |
+| ca. 300–250              | Oslo-riften                                                 | Rombeporfyr og larvikitt i Oslofeltet    |
 | ca. 55                   | Norskehavet åpner seg                                       | Spredningsryggen og Jan Mayen            |
 | ca. 0,02–0               | Siste istid slutter, landet hever seg                       | Marin grense, marin leire, landheving    |
 

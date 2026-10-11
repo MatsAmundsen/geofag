@@ -2459,7 +2459,7 @@ export const QUIZ_SJEKK_NORGES_GEOLOGI_4: QuizQuestion[] = [
       "Fordi Baltika kolliderte med Laurentia",
     ],
     answer: 0,
-    explain: "Oslo-riften ble dannet da skorpa ble strukket i sen karbon og perm, like etter at Pangea var satt sammen. Pangea begynte ikke å sprekke opp før i trias og jura.",
+    explain: "Oslo-riften ble dannet da skorpa ble strukket i sen karbon og perm, like etter at Pangea var satt sammen. Pangea begynte ikke å sprekke opp før i jura.",
   },
   {
     prompt: "Hvorfor finner vi fossiler fra kambrium og silur rundt Oslo?",
@@ -2574,7 +2574,7 @@ export const QUIZ_NORGES_GEOLOGI: QuizQuestion[] = [
       "Fordi skorpa ble strukket i Nord-Europa i sen karbon og perm",
     ],
     answer: 3,
-    explain: "Oslo-riften er ett av flere riftsystemer fra sen karbon og perm, like etter at Pangea var satt sammen. Pangea begynte å sprekke opp i trias og jura.",
+    explain: "Oslo-riften er ett av flere riftsystemer fra sen karbon og perm, like etter at Pangea var satt sammen. Pangea begynte å sprekke opp i jura.",
   },
   {
     prompt: "Hvorfor ligger det marin leire høyt over havet i Oslo-området i dag?",
@@ -2596,6 +2596,6 @@ export const QUIZ_NORGES_GEOLOGI: QuizQuestion[] = [
       "Like mye overalt i Norge",
     ],
     answer: 1,
-    explain: "Landhevingen er størst der isen var tykkest og presset landet mest ned. Ved Bottenviken er den opptil ca. 1 cm i året, i Oslo ca. 5 mm i året målt med satellitter, og nær null på Sørvestlandet.",
+    explain: "Landhevingen er størst der isen var tykkest og presset landet mest ned. Ved Bottenviken er den opptil ca. 1 cm i året, i Oslo ca. 5 mm i året, og nær null på Sørvestlandet.",
   },
 ];

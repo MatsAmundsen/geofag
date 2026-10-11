@@ -30,7 +30,7 @@ export function NorgesGeodynamikkKart() {
           lat: 59.91,
           lng: 10.75,
           label:
-            "Oslofeltet – riftdal fra sen karbon og perm (ca. 305–250 millioner år siden) med rombeporfyr og larvikitt",
+            "Oslofeltet – riftdal fra sen karbon og perm (ca. 300–250 millioner år siden) med rombeporfyr og larvikitt",
         },
         {
           lat: 71.0,

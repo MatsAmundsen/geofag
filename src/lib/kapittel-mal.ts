@@ -54,7 +54,7 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Grunnfjellet er de eldste bergartene i Norge. De eldste er opptil ca. 3000 millioner år gamle og finnes i Finnmark, og grunnfjellet i Sør-Norge ble formet i den svekonorvegiske fjellkjededannelsen for ca. 1140–900 millioner år siden.",
     "Ofiolitten på Leka er ca. 497 millioner år gammel havbunn og øvre mantel fra Iapetushavet som er skjøvet opp på land.",
     "Den kaledonske fjellkjeden ble dannet da Iapetushavet lukket seg og Baltika kolliderte med Laurentia for ca. 425–405 millioner år siden. Skyvedekker ble skjøvet flere hundre kilometer mot øst og sørøst, og eklogitt viser at kanten av Baltika ble dratt ned til mer enn 100 km dyp.",
-    "Oslo-riften var aktiv for ca. 305–250 millioner år siden, da skorpa ble strukket i Nord-Europa like etter at Pangea var satt sammen. Riften ga rombeporfyr, larvikitt og bevarte lag med fossiler fra kambrium og silur.",
+    "Oslo-riften ble dannet for ca. 300 millioner år siden og var aktiv gjennom perm. Den ble dannet da skorpa ble strukket i Nord-Europa like etter at Pangea var satt sammen. Riften ga rombeporfyr, larvikitt og bevarte lag med fossiler fra kambrium og silur.",
     "Norskehavet åpnet seg for ca. 55 millioner år siden. Norskekysten er en passiv kontinentalmargin, og Jan Mayen med Beerenberg ligger på spredningsryggen.",
     "Innlandsisen presset landet ned. Etter istiden sto havet opptil ca. 220 m høyere enn i dag i Oslo-området, og landet hever seg fortsatt, mest der isen var tykkest.",
   ],
