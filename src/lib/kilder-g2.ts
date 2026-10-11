@@ -9,6 +9,12 @@ export const KILDER_G2 = {
       href: "https://doi.org/10.1002/qj.49704920608",
     },
     {
+      prefix: "Norsk biografisk leksikon. (u.å.). ",
+      italic: "Jacob Bjerknes",
+      suffix: ". Store norske leksikon.",
+      href: "https://nbl.snl.no/Jacob_Bjerknes",
+    },
+    {
       prefix: "Meteorologisk institutt [MET Norway]. (u.å.). ",
       italic: "Værvarsling, observasjoner og synoptiske kart",
       suffix: ". Yr / Meteorologisk institutt.",

@@ -481,6 +481,18 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["følger ofte et fast løp"],
   },
   {
+    // Geo (G2) må: Jacob Bjerknes og Solberg, ikke Vilhelm.
+    flag: "g2-vaerkart-jacob-bjerknes-2026-10-11",
+    slug: "vaerkart",
+    stale: ["Vilhelm Bjerknes og Halvor Solberg utviklet den"],
+  },
+  {
+    // Geo (G2) må: Ferrel-cellen drives av virvlene, ikke friksjon.
+    flag: "g2-vindsystemet-ferrel-2026-10-11",
+    slug: "vindsystemet",
+    stale: ["Vestavinden mellom 35° og 60° skyldes friksjon"],
+  },
+  {
     flag: "vulkaner-copy-2026-10-06",
     slug: "vulkaner",
     stale: ["Henrys lov", "ventialsjonssystemet"],
