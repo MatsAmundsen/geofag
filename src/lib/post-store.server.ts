@@ -962,6 +962,30 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: [],
   },
   {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-hoytrykk-lavtrykk-mal-2026-10-11",
+    slug: "hoytrykk-lavtrykk",
+    stale: ["Varm luft kan holde mye mer vanndamp"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-lokale-vaersystemer-mal-2026-10-11",
+    slug: "lokale-vaersystemer",
+    stale: ["NOAA beskriver det samme kretsløpet"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-jetstrommer-mal-2026-10-11",
+    slug: "jetstrommer",
+    stale: ["NOAA sammenligner jetstrømmen med en elv"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vaerkatastrofer-mal-2026-10-11",
+    slug: "vaerkatastrofer",
+    stale: ["Siden bruker ikke ordet barokline lavtrykk"],
+  },
+  {
     flag: "g1-jordsystemene-mal-2026-10-11",
     slug: "jordsystemene",
     stale: ["Mottakere og drivere", "For om lag 310 millioner år siden", "På eksamen er spørsmålet", "Hydrosfæren** er alt flytende vann", "fra om lag 120 000 år siden"],

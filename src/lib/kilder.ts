@@ -2245,6 +2245,18 @@ export const KILDER = {
       href: "https://snl.no/lavtrykk",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-c). ",
+      italic: "Adiabatisk",
+      suffix: ".",
+      href: "https://snl.no/adiabatisk",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Inversjon – meteorologi",
+      suffix: ".",
+      href: "https://snl.no/inversjon_-_meteorologi",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",
@@ -2350,6 +2362,12 @@ export const KILDER = {
     },
   ],
   jetstrommer: [
+    {
+      prefix: "American Meteorological Society [AMS]. (u.å.). ",
+      italic: "Thermal wind",
+      suffix: ". Glossary of Meteorology.",
+      href: "https://glossary.ametsoc.org/wiki/Thermal_wind",
+    },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
       italic: "The jet stream",

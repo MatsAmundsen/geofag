@@ -8,8 +8,8 @@ export function AtmosphericColumnDiagram() {
   return (
     <Diagram
       title="Luftsøylen og trykkfall med høyden"
-      heading="Luftsøylen: Lufttrykk er vekten av luften over deg"
-      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Luften er tettest nær bakken, fordi de nederste lagene bærer vekten av luften over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av luften i atmosfæren ligger under denne høyden."
+      heading="Luftsøylen: Lufttrykk er vekten av lufta over deg"
+      caption="Lufttrykket er vekten av hele luftsøylen over et sted. Lufta er tettest nær bakken, fordi de nederste lagene bærer vekten av lufta over. Nær bakken faller trykket med om lag 1 hPa for hver 8. meter. I om lag 5,5 km høyde er trykket ca. 500 hPa, og halvparten av lufta i atmosfæren ligger under denne høyden."
       viewBox="-140 0 1070 540"
       wide
       scroll
@@ -157,7 +157,7 @@ export function AtmosphericColumnDiagram() {
               Tyngdekraft
             </L>
             <L x="50" y="263" fill={C.fg} size={10} anchor="middle">
-              Luften har masse
+              Lufta har masse
             </L>
           </g>
 
@@ -180,7 +180,7 @@ export function AtmosphericColumnDiagram() {
             ca. 500 hPa
           </L>
           <L x="52" y="280" fill={C.muted} size={12} anchor="end">
-            Halvparten av luften ligger under
+            Halvparten av lufta ligger under
           </L>
 
           <line x1="180" y1="440" x2="200" y2="440" stroke="#38bdf8" strokeWidth="2.4" />
@@ -188,7 +188,7 @@ export function AtmosphericColumnDiagram() {
             0 moh. (Havnivå)
           </L>
           <L x="52" y="448" fill="#38bdf8" size={14} weight={800} anchor="end">
-            Luften er tettest her
+            Lufta er tettest her
           </L>
           <L x="52" y="470" fill={C.muted} size={12} anchor="end">
             Gjennomsnitt ved havnivå
@@ -233,7 +233,7 @@ export function AtmosphericColumnDiagram() {
               Luft er en gass og kan presses sammen. De
             </L>
             <L x="16" y="150" fill={C.fg} size={11.5}>
-              nederste lagene bærer luften over seg.
+              nederste lagene bærer lufta over seg.
             </L>
             <L x="16" y="168" fill={C.sand} size={11.5} weight={700}>
               Nær bakken: om lag 1 hPa per 8 meter.
@@ -250,7 +250,7 @@ export function AtmosphericColumnDiagram() {
               strokeWidth="1.5"
             />
             <L x="16" y="223" fill="#a5f3fc" size={13} weight={800}>
-              Halvparten av luften
+              Halvparten av lufta
             </L>
             <L x="16" y="242" fill={C.fg} size={11.5}>
               I om lag 5,5 km høyde er trykket
@@ -274,7 +274,7 @@ export function RelativePressureDiagram() {
     <Diagram
       title="Trykk er relativt: Samme verdi kan være lavtrykk eller høytrykk"
       heading="Trykk er relativt: 1015 hPa kan være lavtrykk eller høytrykk"
-      caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Luften strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Luften strømmer ut, synker, og det blir ofte tørt og klart."
+      caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Lufta strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Lufta strømmer ut, synker, og det blir ofte tørt og klart."
       viewBox="0 0 940 430"
       wide
       scroll
@@ -360,7 +360,7 @@ export function RelativePressureDiagram() {
               Netto bevegelse: Konvergens mot sentrum
             </L>
             <L x="242" y="360" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver luften innover.
+              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver lufta innover.
             </L>
             <L x="242" y="382" fill={C.fg} size={12} anchor="middle">
               <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler mot klokken inn.
@@ -422,7 +422,7 @@ export function RelativePressureDiagram() {
               Netto bevegelse: Divergens ut fra sentrum
             </L>
             <L x="227" y="360" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver luften utover.
+              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver lufta utover.
             </L>
             <L x="227" y="382" fill={C.fg} size={12} anchor="middle">
               <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler med klokken ut.
@@ -444,7 +444,7 @@ export function LowPressureCrossSectionDiagram() {
     <Diagram
       title="Tverrsnitt av et lavtrykk fra bakken til tropopausen"
       heading="Lavtrykk: konvergens, stigning og skydannelse"
-      caption="I et lavtrykk strømmer luft inn langs bakken (konvergens) og stiger. Før luften er mettet, avkjøles den med om lag 1 °C per 100 meter. Det er den tørradiabatiske temperaturgradienten (dry adiabatic lapse rate, DALR). Ved løftingskondensasjonsnivået (lifting condensation level, LCL) er luften mettet, og vanndampen kondenserer. Latent varme frigjøres, så mettet luft avkjøles langsommere, typisk ca. 0,5 °C per 100 meter. Det er den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR). Ved tropopausen, ca. 8–11 km over Norge, stopper stigningen. Skytoppen flater ut, og luften sprer seg ut til sidene (divergens i høyden)."
+      caption="I et lavtrykk strømmer luft inn langs bakken (konvergens) og stiger. Før lufta er mettet, avkjøles den med om lag 1 °C per 100 meter. Det er den tørradiabatiske temperaturgradienten (dry adiabatic lapse rate, DALR). Ved løftingskondensasjonsnivået (lifting condensation level, LCL) er lufta mettet, og vanndampen kondenserer. Latent varme frigjøres, så mettet luft avkjøles langsommere, typisk ca. 0,5 °C per 100 meter. Det er den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR). Ved tropopausen, ca. 8–11 km over Norge, stopper stigningen. Skytoppen flater ut, og lufta sprer seg ut til sidene (divergens i høyden)."
       viewBox="0 0 940 510"
       wide
       scroll
@@ -569,7 +569,7 @@ export function LowPressureCrossSectionDiagram() {
           <Arrow d="M 470 330 L 470 130" marker={m.warm} color={C.warm} width={4.2} />
           <rect x="395" y="195" width="150" height="42" rx="6" fill="#0f172a" opacity="0.9" />
           <L x="470" y="212" fill={C.warm} size={12} weight={800} anchor="middle">
-            Luften stiger
+            Lufta stiger
           </L>
           <L x="470" y="228" fill="#fde68a" size={10.5} weight={700} anchor="middle">
             Latent varme frigjøres
@@ -588,7 +588,7 @@ export function LowPressureCrossSectionDiagram() {
           <g transform="translate(680, 160)">
             <rect x="0" y="0" width="220" height="150" rx="8" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
             <L x="14" y="24" fill={C.warm} size={12} weight={800}>
-              Når luften stiger
+              Når lufta stiger
             </L>
             <L x="14" y="44" fill={C.fg} size={11}>
               1. Umettet luft avkjøles med
@@ -597,7 +597,7 @@ export function LowPressureCrossSectionDiagram() {
               om lag 1 °C per 100 meter (DALR).
             </L>
             <L x="14" y="78" fill={C.fg} size={11}>
-              2. Ved LCL er luften mettet.
+              2. Ved LCL er lufta mettet.
             </L>
             <L x="14" y="96" fill={C.warm} size={11} weight={700}>
               Vanndampen kondenserer.
@@ -622,7 +622,7 @@ export function LowPressureCrossSectionDiagram() {
               over Norge.
             </L>
             <L x="14" y="88" fill={C.teal} size={12}>
-              Der er luften kaldere enn
+              Der er lufta kaldere enn
             </L>
             <L x="14" y="106" fill={C.warm} size={12}>
               laget over, og stigningen stopper.
@@ -643,7 +643,7 @@ export function HighPressureCrossSectionDiagram() {
     <Diagram
       title="Tverrsnitt av et høytrykk fra tropopausen til bakken"
       heading="Høytrykk: nedsynking, oppvarming og klarvær"
-      caption="I et høytrykk strømmer luft sammen i øvre troposfære og synker mot bakken. Det kalles subsidens (nedsynking). Synkende luft varmes med om lag 1 °C per 100 meter. Den relative fuktigheten faller, skydråpene fordamper, og himmelen blir klar. Ved bakken strømmer luften ut til sidene (divergens). Om sommeren kan det gi varme og tørke. Om vinteren kan bakken bli svært kald, og det kan oppstå bakkeinversjon."
+      caption="I et høytrykk strømmer luft sammen i øvre troposfære og synker mot bakken. Det kalles subsidens (nedsynking). Synkende luft varmes med om lag 1 °C per 100 meter. Den relative fuktigheten faller, skydråpene fordamper, og himmelen blir klar. Ved bakken strømmer lufta ut til sidene (divergens). Om sommeren kan det gi varme og tørke. Om vinteren kan bakken bli svært kald, og det kan oppstå bakkeinversjon."
       viewBox="0 0 940 510"
       wide
       scroll
@@ -772,7 +772,7 @@ export function KatabaticWindDiagram() {
     <Diagram
       title="Katabatisk fallvind og dannelse av temperaturinversjon"
       heading="Katabatisk vind: Gravitasjonsdrevet kaldluft og dype inversjoner"
-      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge luften nedover fjellsider og brefall som en fossende 'elv av kulde' (30–80 km/t). Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 16 grader mildere litt lenger oppe i åssiden (-4 °C). Røyk og forurensning stenges inne under inversjonslokket."
+      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge lufta nedover fjellsider og brefall som en fossende 'elv av kulde' (30–80 km/t). Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 16 grader mildere litt lenger oppe i åssiden (-4 °C). Røyk og forurensning stenges inne under inversjonslokket."
       viewBox="0 0 940 520"
       wide
     >
@@ -1020,7 +1020,7 @@ export function SeaBreezeDiagram() {
     <Diagram
       title="Solgangsbris: Sjøbris om dagen og landbris om natten"
       heading="Pålandsvind og fralandsvind: Lokale temperatur- og trykkforskjeller"
-      caption="Pålandsvind (sjøbris) og fralandsvind (landbris) er et klassisk lokalt termisk kretsløp drevet av at land og vann har ulik spesifikk varmekapasitet. Vann har om lag fire ganger høyere varmekapasitet enn stein og sand, og solstrålene trenger metervis ned i sjøen. Derfor varmes landjorden mye raskere opp om dagen enn havet. Luften over land stiger (termisk lavtrykk L) og danner ofte små godværsskyer (cumulus humilis) innover land, mens den kjølige luften over havet (H) suges inn som en frisk sjøbris. Om natten taper landjorden varme lynraskt ved utstråling, luften synker over land (H), og en svakere landbris blåser ut mot det lunkne havet."
+      caption="Pålandsvind (sjøbris) og fralandsvind (landbris) er et klassisk lokalt termisk kretsløp drevet av at land og vann har ulik spesifikk varmekapasitet. Vann har om lag fire ganger høyere varmekapasitet enn stein og sand, og solstrålene trenger metervis ned i sjøen. Derfor varmes landjorden mye raskere opp om dagen enn havet. Lufta over land stiger (termisk lavtrykk L) og danner ofte små godværsskyer (cumulus humilis) innover land, mens den kjølige lufta over havet (H) suges inn som en frisk sjøbris. Om natten taper landjorden varme lynraskt ved utstråling, lufta synker over land (H), og en svakere landbris blåser ut mot det lunkne havet."
       viewBox="0 0 940 430"
       wide
     >
@@ -1077,7 +1077,7 @@ export function SeaBreezeDiagram() {
               ☀️ DAG: Sjøbris (Pålandsvind)
             </L>
             <L x="242" y="73" size={11} fill="#e0f2fe" anchor="middle">
-              Land varmes raskt opp → luften stiger
+              Land varmes raskt opp → lufta stiger
             </L>
 
             <rect x="35" y="250" width="180" height="130" fill="url(#sb-sea-grad)" />

@@ -2,11 +2,11 @@
 >
 > Målet er at du skal kunne gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren (Udir, u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
-> • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om komponenter og prosesser i dem (Udir, u.å.-a). Jetstrømmen er en slik prosess i atmosfæren, der rotasjon og temperaturforskjell virker sammen.
+> • *Jordsystemer i tid og rom:* «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren» (Udir, u.å.-a). Jetstrømmen er en prosess i atmosfæren der rotasjon og temperaturforskjell virker sammen.
 >
-> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Beskrivelsen av polarjet og subtropisk jet, og av positiv og negativ NAO, er slike modeller.
+> • *Modeller og modellering:* «Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener» (Udir, u.å.-a). Beskrivelsen av polarjet og subtropisk jet, og av positiv og negativ NAO, er slike modeller.
 
 ## Hva er en jetstrøm?
 
@@ -14,11 +14,15 @@
 JetForklaring
 ```
 
+> **Hva tror du?**
+>
+> Et fly fra New York til Oslo bruker ofte kortere tid enn et fly samme vei tilbake. Hvorfor tror du det er slik? Svar før du leser videre – vi kommer tilbake til det i delen om retningen fra vest mot øst.
+
 En jetstrøm er et relativt smalt belte med sterk vind i de øvre lagene av atmosfæren, typisk rundt 9100 meter over bakken. Vinden blåser fra vest mot øst, men beltet flytter seg nordover og sørover fordi det følger grensen mellom varm og kald luft. Grensen er tydeligst om vinteren, og jetstrømmene er sterkest da, både på den nordlige og den sørlige halvkule. Vinden kan komme over 442 kilometer i timen (NOAA, u.å.-a).
 
 [Jetstrømmer og stormbaner](/tema/jetstrommer) handler om dette beltet og om hvor stormene går. De tre cellene i den globale sirkulasjonen tar vi i [vindsystemet](/tema/vindsystemet). Å lese lavtrykk og fronter på et kart tar vi i [værkart](/tema/vaerkart).
 
-NOAA sammenligner jetstrømmen med en elv. Strømmen er sterkest inn mot kjernen og svakere ut mot kantene. På et værkart tegnes den ofte som en strek der vinden er sterkest, men beltet er bredere enn streken (NOAA, u.å.-a).
+Jetstrømmen ligner en elv. Strømmen er sterkest inn mot kjernen og svakere ut mot kantene. På et værkart tegnes den ofte som en strek der vinden er sterkest, men beltet er bredere enn streken (NOAA, u.å.-a).
 
 | | Polarjeten | Den subtropiske jetstrømmen |
 | --- | --- | --- |
@@ -26,7 +30,7 @@ NOAA sammenligner jetstrømmen med en elv. Strømmen er sterkest inn mot kjernen
 | Retning | Fra vest mot øst | Fra vest mot øst |
 | Når den er sterkest | Om vinteren, når skillet mellom varm og kald luft er tydeligst | Om vinteren, av samme grunn |
 
-Begge ligger der temperaturen endrer seg mye fra sted til sted, og der vinden i høyden derfor blir sterkest (NOAA, u.å.-a). Polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ligger vanligvis mellom 40° og 70°. De store temperaturforskjellene gir et konsentrert og sterkt, oftest vestlig vindfelt i høyden. Det kalles polarfrontjetstrømmen (Store norske leksikon, u.å.).
+Begge ligger der temperaturen endrer seg mye fra sted til sted, og der vinden i høyden derfor blir sterkest (NOAA, u.å.-a). Den fysiske årsaken er temperaturforskjellen: Der kald og varm luft ligger side om side, øker vestavinden med høyden, og jo større temperaturforskjellen er, desto raskere øker den. Dette kalles termisk vind (American Meteorological Society [AMS], u.å.). Polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ligger vanligvis mellom 40° og 70°. De store temperaturforskjellene gir et konsentrert og sterkt, oftest vestlig vindfelt i høyden. Det kalles polarfrontjetstrømmen (Store norske leksikon, u.å.).
 
 ```widget
 JetProfile
@@ -38,12 +42,16 @@ ThermalWind
 
 ## Hvorfor fra vest mot øst?
 
-Jorda bruker ett døgn på en omdreining. Ved ekvator er omkretsen størst, så bakken beveger seg østover med over 1600 kilometer i timen. Ved polene er farten null. Luft som beveger seg bort fra ekvator, beholder den østlige farten. Bakken under den roterer saktere jo nærmere polen den kommer, så lufta beveger seg fra vest mot øst i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-a). Hvordan den virker mer generelt, tar vi i [corioliseffekten](/tema/coriolis).
+Jorda bruker ett døgn på en omdreining. Ved ekvator er omkretsen størst, så bakken beveger seg østover med over 1600 kilometer i timen. Ved polene er farten null. Luft som beveger seg bort fra ekvator, beholder den østlige farten. Bakken under den roterer saktere jo nærmere polen den kommer, så lufta beveger seg fra vest mot øst i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-a). Hvordan den virker mer generelt, tar vi i [corioliseffekten](/tema/coriolis). Svaret på «Hva tror du?» er at flyene mot øst får medvind fra jetstrømmen, mens flyene mot vest har den imot eller må fly utenom den.
 
 Uten rotasjon ville varm luft fra ekvator gått rett mot polene. Rotasjonen deler sirkulasjonen i tre celler, og den er også grunnen til at jetstrømmen finnes (NOAA, u.å.-a).
 
 ```widget
 JetStreak
+```
+
+```widget
+SjekkJet1
 ```
 
 ## Slynger, årstid og stormbane
@@ -68,13 +76,9 @@ I en negativ fase er trykkforskjellen svakere. Jetstrømmen og stormbanen ligger
 | Jet og stormbane | Sterkere atlantisk jet, stormbanen lenger nord | Mer rett vest–øst |
 | Nord-Europa | Mer storm og nedbør, mildere enn gjennomsnittet | Mindre storm og nedbør, kaldere enn gjennomsnittet |
 
-> **Vanlige misforståelser**
->
-> Jetstrømmen er ikke én tynn strek. Vinden øker inn mot en kjerne, og beltet er bredere enn streken på kartet (NOAA, u.å.-a).
->
-> Det finnes ikke bare én jetstrøm. Polarjeten ligger mellom 50° og 60°, og den subtropiske jetstrømmen ligger rundt 30° (NOAA, u.å.-a).
->
-> Den ligger ikke fast over Norge. Den slynger seg, følger sola gjennom året, og kan flytte stormbanen nordover eller la den gå mer rett vest–øst (NOAA, u.å.-a; NOAA, u.å.-b).
+```widget
+Nao
+```
 
 ```widget
 JetForms
@@ -88,8 +92,16 @@ JetSeason
 JetBlocking
 ```
 
+> **Vanlige misforståelser**
+>
+> Jetstrømmen er ikke én tynn strek. Vinden øker inn mot en kjerne, og beltet er bredere enn streken på kartet (NOAA, u.å.-a).
+>
+> Det finnes ikke bare én jetstrøm. Polarjeten ligger mellom 50° og 60°, og den subtropiske jetstrømmen ligger rundt 30° (NOAA, u.å.-a).
+>
+> Den ligger ikke fast over Norge. Den slynger seg, følger sola gjennom året, og kan flytte stormbanen nordover eller la den gå mer rett vest–øst (NOAA, u.å.-a; NOAA, u.å.-b).
+
 ```widget
-Nao
+SjekkJet2
 ```
 
 ## Viktige begreper
@@ -105,6 +117,12 @@ Nao
 **Stormbane:** Banen lavtrykkene følger. Langs polarfronten går de oftest mot øst, med vinden i høyden.
 
 **NAO:** Svingningen i trykkforskjellen mellom Island og Asorene. Den endrer styrken og beliggenheten til jetstrømmen over Atlanteren.
+
+## Sammendrag
+
+```widget
+SammendragJet
+```
 
 ## Test deg selv
 

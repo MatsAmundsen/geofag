@@ -107,12 +107,6 @@ export const KILDER_G2 = {
       href: "https://www.noaa.gov/jetstream/synoptic/norwegian-cyclone-model",
     },
     {
-      prefix: "Sivle, A. (2009, 31. august). ",
-      italic: "Værkart og fronter",
-      suffix: ". Yr.",
-      href: "https://www.yr.no/artikkel/vaerkart-og-fronter-1.6750800",
-    },
-    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Polarfront",
       suffix: ".",
