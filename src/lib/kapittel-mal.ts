@@ -107,6 +107,12 @@ import {
   QUIZ_SJEKK_FELT_HAV_4,
   QUIZ_SJEKK_FELT_HAV_5,
   QUIZ_SJEKK_FELT_HAV_6,
+  QUIZ_SJEKK_AMOC_1,
+  QUIZ_SJEKK_AMOC_2,
+  QUIZ_SJEKK_AMOC_3,
+  QUIZ_SJEKK_AMOC_4,
+  QUIZ_SJEKK_AMOC_5,
+  QUIZ_SJEKK_AMOC_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -208,6 +214,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   FeltHav4: QUIZ_SJEKK_FELT_HAV_4,
   FeltHav5: QUIZ_SJEKK_FELT_HAV_5,
   FeltHav6: QUIZ_SJEKK_FELT_HAV_6,
+  Amoc1: QUIZ_SJEKK_AMOC_1,
+  Amoc2: QUIZ_SJEKK_AMOC_2,
+  Amoc3: QUIZ_SJEKK_AMOC_3,
+  Amoc4: QUIZ_SJEKK_AMOC_4,
+  Amoc5: QUIZ_SJEKK_AMOC_5,
+  Amoc6: QUIZ_SJEKK_AMOC_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -383,6 +395,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "CTD og Argo-bøyer måler ledningsevne og temperatur mot dyp, og saltholdigheten regnes ut fra dem. Kartverket måler vannstanden, og været kan gi avvik fra tidevannet.",
     "Snøskredvarselet gjelder områder på minst 100 kvadratkilometer og erstatter ikke egne vurderinger. En snøprofil viser lagene i snødekket.",
     "Alle målinger har usikkerhet. Gjenta målingene, regn ut gjennomsnitt og spredning, sammenlign med varsler og modeller, og vis profiler med dypet eller høyden på den loddrette aksen.",
+  ],
+  Amoc: [
+    "AMOC er den atlantiske omveltningssirkulasjonen. Varmt vann går nordover nær overflaten, avkjøles, synker og går sørover i dypet. Den frakter ca. 17 Sv og 1,2 PW varme, ca. 15 ganger så mye vann som alle verdens elver.",
+    "Golfstrømmen er en vinddrevet randstrøm, med ca. 32 Sv i Floridastredet. Den ville ikke stoppe helt selv om AMOC gjorde det. Strømmen langs Norge er Den norske atlanterhavsstrømmen.",
+    "Overflatevannet i Nord-Atlanteren synker først og fremst fordi det blir kraftig avkjølt om vinteren. Saltet fra subtropene gjør det tyngre, og salt-adveksjons-tilbakekoblingen holder AMOC i gang.",
+    "Oppvarming og mer ferskvann fra Grønland, nedbør og elver gjør overflaten lettere og kan svekke AMOC. Stommels modell viser at AMOC kan ha to stabile tilstander, med vippepunkt og hysterese. Modellen sier ikke når et vippepunkt kan nås.",
+    "Yngre dryas og Dansgaard-Oeschger-hendelsene viser at AMOC har endret seg brått før. RAPID har målt AMOC siden 2004, men serien er for kort til å vise en sikker trend.",
+    "IPCC venter at AMOC svært sannsynlig svekkes i dette hundreåret, men mener med middels sikkerhet at den ikke bryter brått sammen før 2100. En svekket AMOC demper oppvarmingen i Nord-Atlanteren og kan gi tørrere Europa, høyere havnivå i USA og et regnbelte som flytter seg sørover.",
   ],
 };
 

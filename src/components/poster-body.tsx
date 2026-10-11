@@ -145,6 +145,7 @@ import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeA
 import { JetBlockingDiagram, JetFormsDiagram, JetProfileDiagram, JetSeasonDiagram, JetStreakDiagram, ThermalWindDiagram } from "@/components/diagrams/jet";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
 import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
+import { AmocTippingModel } from "@/components/models/amoc-tipping-model";
 import { KatabaticWindDiagram } from "@/components/diagrams/pressure";
 import { FoehnAdiabaticDiagram, TemperatureInversionDiagram } from "@/components/diagrams/weather";
 import { CoriolisModel } from "@/components/models/coriolis-model";
@@ -703,6 +704,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
 
 
 
+    AmocTipping: () => <AmocTippingModel />,
     AmocForklaring: () => (
     <Callout title="Hva betyr «den atlantiske omveltningen»?">
       <p>

@@ -38,7 +38,6 @@ const CODED_G2_PATHS = new Set([
   "/tema/klima",
   "/tema/klima/oversikt",
   "/tema/klima/nao",
-  "/tema/klima/amoc",
 ]);
 
 export function TopicLayout({
