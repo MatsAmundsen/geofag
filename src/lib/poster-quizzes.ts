@@ -2885,7 +2885,7 @@ export const QUIZ_GEOLOGISK_TID: QuizQuestion[] = [
       "Ca. 17 200 år",
     ],
     answer: 3,
-    explain: "En åttendedel betyr tre halveringstider. 3 × 5730 år er ca. 17 200 år. Alderen må kalibreres for å bli kalenderår.",
+    explain: "En åttendedel betyr tre halveringstider. 3 × 5730 år er ca. 17 200 år. (Laboratoriene regner med en litt annen halveringstid og kalibrerer alltid alderen til kalenderår.)",
   },
   {
     prompt: "Hvilken metode passer best for å datere en granitt som er ca. 1 milliard år gammel?",
