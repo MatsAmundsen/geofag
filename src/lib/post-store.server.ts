@@ -1090,6 +1090,12 @@ const COPY_RESEEDS: CopyReseed[] = [
   },
   {
     // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-oversikt-fjell-2026-10-11",
+    slug: "oversikt",
+    stale: ["eier stråling, pådriv og tilbakekobling. Kartet ligger på"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
     flag: "g2-klima-amoc-fjell-2026-10-11",
     slug: "amoc",
     stale: ["NOAA kaller hele beltet the global conveyor belt"],

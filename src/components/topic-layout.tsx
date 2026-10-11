@@ -36,7 +36,6 @@ const CODED_G2_PATHS = new Set([
   "/tema/milankovitch",
   "/tema/tilpasning",
   "/tema/klima",
-  "/tema/klima/oversikt",
   "/tema/klima/nao",
 ]);
 

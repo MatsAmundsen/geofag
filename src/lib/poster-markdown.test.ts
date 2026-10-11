@@ -593,16 +593,29 @@ describe("chapter posters from this pull request", () => {
     const ids = listedWidgetIds(injectPosterWidgets(md));
     for (const id of [
       "KlimaDefinisjon",
-      "StralingDiagram",
+      "KlimasystemFoto",
       "DrivhusForklaring",
+      "StralingDiagram",
+      "StralingFotoPar",
       "PaadrivForklaring",
       "AlbedoFoto",
+      "HavMinneFoto",
       "NorgeKlimaFoto",
+      "SjekkOversikt1",
+      "SjekkOversikt2",
+      "SjekkOversikt3",
+      "SjekkOversikt4",
+      "SjekkOversikt5",
+      "SjekkOversikt6",
+      "SammendragOversikt",
       "QuizOversikt",
     ]) {
       assert.equal(ids.has(id), true, `oversikt missing ${id}`);
       assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
     }
+    assert.equal(md.includes("1,09 °C"), true);
+    assert.equal(md.includes("Utdanningsdirektoratet, 2020"), false);
+    assert.equal(md.includes("Illustrasjon"), false);
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);

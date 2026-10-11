@@ -2879,10 +2879,28 @@ export const KILDER = {
   ],
   oversikt: [
     {
-      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
-      italic: "Climate",
+      prefix: "AMAP. (2021). ",
+      italic: "AMAP Arctic climate change update 2021: Key trends and impacts",
+      suffix: ". Arctic Monitoring and Assessment Programme.",
+      href: "https://www.amap.no/documents/doc/amap-arctic-climate-change-update-2021-key-trends-and-impacts/3594",
+    },
+    {
+      prefix: "Copernicus. (2026, 14. januar). ",
+      italic: "Global climate highlights 2025",
+      suffix: ". Copernicus Climate Change Service.",
+      href: "https://climate.copernicus.eu/global-climate-highlights-2025",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
       suffix: ".",
-      href: "https://wmo.int/themes/climate",
+      href: "https://www.ipcc.ch/report/ar6/wg1/",
+    },
+    {
+      prefix: "Lacis, A. A., Schmidt, G. A., Rind, D. og Ruedy, R. A. (2010). Atmospheric CO₂: Principal control knob governing Earth’s temperature. ",
+      italic: "Science, 330",
+      suffix: "(6002), 356–359.",
+      href: "https://doi.org/10.1126/science.1190653",
     },
     {
       prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-a). ",
@@ -2903,8 +2921,20 @@ export const KILDER = {
       href: "https://science.nasa.gov/earth/earth-observatory/climate-and-earths-energy-budget/",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
-      italic: "Klima i Norge",
+      prefix: "NOAA Global Monitoring Laboratory [NOAA GML]. (2026). ",
+      italic: "Trends in atmospheric carbon dioxide (CO₂)",
+      suffix: ".",
+      href: "https://gml.noaa.gov/ccgg/trends/",
+    },
+    {
+      prefix: "Rantanen, M., Karpechko, A. Y., Lipponen, A., Nordling, K., Hyvärinen, O., Ruosteenoja, K., Vihma, T. og Laaksonen, A. (2022). The Arctic has warmed nearly four times faster than the globe since 1979. ",
+      italic: "Communications Earth and Environment, 3",
+      suffix: ", 168.",
+      href: "https://doi.org/10.1038/s43247-022-00498-3",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). Klima i Norge. I ",
+      italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/Klima_i_Norge",
     },
@@ -2919,6 +2949,12 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
+      italic: "Climate",
+      suffix: ".",
+      href: "https://wmo.int/topics/climate",
     },
   ],
   enso: [
