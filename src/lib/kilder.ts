@@ -30,6 +30,12 @@ export const KILDER = {
       href: "https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf",
     },
     {
+      prefix: "Flemming, J., & Inness, A. (2013). Volcanic sulfur dioxide plume forecasts based on UV satellite retrievals for the 2011 Grímsvötn and the 2010 Eyjafjallajökull eruption. ",
+      italic: "Journal of Geophysical Research: Atmospheres, 118",
+      suffix: "(17), 10172–10189.",
+      href: "https://doi.org/10.1002/jgrd.50753",
+    },
+    {
       prefix: "Friedlingstein, P., O'Sullivan, M., Jones, M. W., mfl. (2026). Global Carbon Budget 2025. ",
       italic: "Earth System Science Data, 18",
       suffix: ", 3211.",
@@ -106,6 +112,12 @@ export const KILDER = {
       italic: "Om løsmasser",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/om-losmasser",
+    },
+    {
+      prefix: "Self, S., Gertisser, R., Thordarson, T., Rampino, M. R., & Wolff, J. A. (2004). Magma volume, volatile emissions, and stratospheric aerosols from the 1815 eruption of Tambora. ",
+      italic: "Geophysical Research Letters, 31",
+      suffix: ", L20608.",
+      href: "https://doi.org/10.1029/2004GL020925",
     },
     {
       prefix: "Spjeldnæs, N. (2025, 5. september). ",

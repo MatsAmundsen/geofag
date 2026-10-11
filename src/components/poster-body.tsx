@@ -132,7 +132,8 @@ import {
 } from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
-import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
+import { SpheresDiagram } from "@/components/diagrams/spheres";
+import { KarbonatSilikatFigur } from "@/components/diagrams/jordsys-figurer";
 import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
@@ -1017,7 +1018,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   SpheresDiagram: () => <SpheresDiagram />,
-  CarbonCycleDiagram: () => <CarbonCycleDiagram />,
+  CarbonCycleDiagram: () => <KarbonatSilikatFigur />,
   EarthSystemsModel: () => <EarthSystemsModel />,
   FjordFoto: () => (
     <PhotoFigure

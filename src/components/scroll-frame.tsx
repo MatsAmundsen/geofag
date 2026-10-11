@@ -71,6 +71,24 @@ export function ScrollFrame({
         aria-label={overflowing && !labelledBy ? label : undefined}
         aria-labelledby={overflowing && labelledBy ? labelledBy : undefined}
         aria-describedby={overflowing ? hintId : undefined}
+        onKeyDown={(event) => {
+          if (event.target !== event.currentTarget) return;
+          const el = scrollerRef.current;
+          if (!el) return;
+          const distance = Math.max(48, Math.round(el.clientWidth * 0.6));
+          if (axis === "x" && (event.key === "ArrowRight" || event.key === "ArrowLeft" || event.key === "End" || event.key === "Home")) {
+            if (event.key === "End") el.scrollLeft = el.scrollWidth;
+            else if (event.key === "Home") el.scrollLeft = 0;
+            else el.scrollLeft += event.key === "ArrowRight" ? distance : -distance;
+            event.preventDefault();
+          }
+          if (axis === "y" && (event.key === "ArrowDown" || event.key === "ArrowUp" || event.key === "End" || event.key === "Home")) {
+            if (event.key === "End") el.scrollTop = el.scrollHeight;
+            else if (event.key === "Home") el.scrollTop = 0;
+            else el.scrollTop += event.key === "ArrowDown" ? distance : -distance;
+            event.preventDefault();
+          }
+        }}
       >
         {children}
       </div>
