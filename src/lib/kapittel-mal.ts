@@ -33,6 +33,10 @@ import {
   QUIZ_SJEKK_GEOLOGISKE_RESSURSER_5,
   QUIZ_SJEKK_GEOLOGISKE_RESSURSER_6,
   QUIZ_SJEKK_GEOLOGISKE_RESSURSER_7,
+  QUIZ_SJEKK_GEOLOGISK_TID_1,
+  QUIZ_SJEKK_GEOLOGISK_TID_2,
+  QUIZ_SJEKK_GEOLOGISK_TID_3,
+  QUIZ_SJEKK_GEOLOGISK_TID_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -60,6 +64,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   GeologiskeRessurser5: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_5,
   GeologiskeRessurser6: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_6,
   GeologiskeRessurser7: QUIZ_SJEKK_GEOLOGISKE_RESSURSER_7,
+  GeologiskTid1: QUIZ_SJEKK_GEOLOGISK_TID_1,
+  GeologiskTid2: QUIZ_SJEKK_GEOLOGISK_TID_2,
+  GeologiskTid3: QUIZ_SJEKK_GEOLOGISK_TID_3,
+  GeologiskTid4: QUIZ_SJEKK_GEOLOGISK_TID_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -95,6 +103,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Geologer finner ressursene med kartlegging i felt, geokjemiske prøver, geofysikk fra fly og helikopter, kjerneboring og, for petroleum, seismikk.",
     "Kritiske råvarer utvinnes ofte i få land, for eksempel kobolt i DR Kongo og sjeldne jordarter i Kina. Norge har ingen kobberdrift per oktober 2026, men Nussir er under utbygging.",
     "Utvinning gir avveininger mellom behovet for råvarer og konsekvenser som sjødeponi, tap av reinbeite, arealbeslag og klimautslipp.",
+  ],
+  GeologiskTid: [
+    "Jorda er ca. 4,54 milliarder år gammel. Tiden er delt i eon, æra, periode og epoke, og ICS bestemmer grensene, for eksempel kambrium 538,8 millioner år og kvartær 2,58 millioner år.",
+    "Relativ datering setter hendelser i rekkefølge. Det nederste laget er eldst, det som skjærer gjennom en bergart, er yngre, og inneslutninger er eldre enn bergarten de sitter i.",
+    "Ledefossiler, som trilobitter, viser at lag på ulike steder har samme relative alder, og en diskordans viser at det mangler tid i lagrekken.",
+    "Radiometrisk datering bygger på at radioaktive isotoper brytes ned med en fast halveringstid. Uran–bly på zirkon passer for gamle bergarter, mens C-14 bare passer for organisk materiale yngre enn ca. 50 000 år.",
+    "Varv, årringer, vulkansk aske, luminescens og eksponeringsdatering brukes for å datere hendelser i kvartær, som isavsmeltingen og gamle fjellskred.",
+    "Geologene kombinerer relativ og absolutt datering for å lage en tidslinje for et område.",
   ],
 };
 

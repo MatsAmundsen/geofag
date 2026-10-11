@@ -54,6 +54,8 @@ export const NAV_BY_PATH: Record<string, { prev?: NavLink; next?: NavLink }> = {
 
 /** Eierskap øverst på sidene som ellers ville krevd 50 kB-redigering. */
 export const EIERSKAP_BY_PATH: Record<string, string> = {
+  "/geofag-1/geologisk-tid":
+    "Denne siden eier geologisk tid (eon, æra, periode og epoke, ICS-grenser), relativ datering (overlagring, opprinnelig horisontalitet, gjennomskjæring, inneslutninger, ledefossiler og diskordans), radiometrisk datering og halveringstid (U–Pb, K–Ar, Rb–Sr og C-14) og kvartære metoder (varv, årringer, tefra, OSL og eksponeringsdatering). Norges geologi eier hendelsene og alderen deres. Bergarter eier bergartene.",
   "/geofag-1/feltarbeid":
     "Denne siden eier hvordan feltarbeid gjøres: planlegging og HMS, metoder i felt, georeferering, feltbok og usikkerhet, og bearbeiding, tolkning og presentasjon. Norges geologi eier hva du ser etter lokalt og hva det betyr.",
   "/geofag-1/platetektonikk":
@@ -63,7 +65,7 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/geofag-1/jordskjelv-naturfare":
     "Denne siden eier tsunami fra skjelv eller skred, skader fra jordskjelv, varsling og risikovurdering med modell. Jordskjelv og jordas indre eier bølgene, målingen og jordas indre.",
   "/geofag-1/norges-geologi":
-    "Denne siden eier Norges geologiske historie fra grunnfjellet til i dag: grunnfjellet og det subkambriske peneplanet, Leka-ofiolitten, den kaledonske fjellkjeden med skyvedekker og eklogitt, Oslo-riften i sen karbon og perm (ikke Pangeas oppsprekking), åpningen av Norskehavet, isostasi, marin grense (havet sto opptil ca. 220 m høyere i Oslo-området) og landhevingen, og lokal utforsking av berggrunn og løsmasser. Bergarter eier mineralklassifisering. Landformer eier erosjon og landformer. Feltarbeid eier hvordan feltarbeid planlegges og gjennomføres.",
+    "Denne siden eier Norges geologiske historie fra grunnfjellet til i dag: grunnfjellet og det subkambriske peneplanet, Leka-ofiolitten, den kaledonske fjellkjeden med skyvedekker og eklogitt, Oslo-riften i sen karbon og perm (ikke Pangeas oppsprekking), åpningen av Norskehavet, isostasi, marin grense (havet sto opptil ca. 220 m høyere i Oslo-området) og landhevingen, og lokal utforsking av berggrunn og løsmasser. Bergarter eier mineralklassifisering. Geologisk tid eier dateringsmetodene. Landformer eier erosjon og landformer. Feltarbeid eier hvordan feltarbeid planlegges og gjennomføres.",
 };
 
 const SLOTS: Record<string, GeminiSlot[]> = {

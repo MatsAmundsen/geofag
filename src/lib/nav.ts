@@ -14,6 +14,7 @@ export const NAV_GF1 = [
   { to: "/geofag-1/jordskjelv", label: "Jordskjelv" },
   { to: "/geofag-1/jordskjelv-naturfare", label: "Skjelvfare" },
   { to: "/geofag-1/bergarter", label: "Berg" },
+  { to: "/geofag-1/geologisk-tid", label: "Tid" },
   { to: "/geofag-1/norges-geologi", label: "Norge" },
   { to: "/geofag-1/landformer", label: "Landform" },
   { to: "/geofag-1/isbreer-og-landformer", label: "Isbre" },
@@ -322,6 +323,18 @@ export const GF1_THEMES = [
       "Mineraler, de tre bergartsgruppene, forvitring og bergartssyklusen som modell. Norske eksempler er gabbro, larvikitt, rombeporfyr, fyllitt og gneis.",
     status: "klar" as const,
     maal: "Utforske ulike mineralgrupper, bergartsgrupper og sedimenter, og tolke hvor de passer inn i bergartssyklusen.",
+  },
+  {
+    slug: "geologisk-tid",
+    to: "/geofag-1/geologisk-tid",
+    title: "Geologisk tid og datering",
+    kicker: "Jordas historie i tall",
+    image: "/images/fig-iskjerne.jpg",
+    alt: "Årslag i en iskjerne. Lag på lag viser tid.",
+    blurb:
+      "Geologisk tidsskala, relativ alder med overlagring, gjennomskjæring og ledefossiler, radiometrisk datering og halveringstid, og kvartære metoder som varv, vulkansk aske og ¹⁰Be.",
+    status: "klar" as const,
+    maal: "Gjøre rede for ulike metoder som brukes for å datere bergarter, og bruke metoder for å identifisere relativ alder.",
   },
   {
     slug: "norges-geologi",

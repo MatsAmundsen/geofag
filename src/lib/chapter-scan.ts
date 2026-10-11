@@ -32,6 +32,10 @@ const SECTION_META: SectionMeta[] = [
   { match: /^petroleum – fra plankton/i, label: "Petroleum", subtitle: "Kildebergart, oljevindu og felle" },
   { match: /^hvordan finner vi ressursene/i, label: "Kartlegging", subtitle: "Fra kart til borekjerne" },
   { match: /^hva utvinnes i norge og i verden/i, label: "Norge og verden", subtitle: "Utvinning nasjonalt og globalt" },
+  { match: /^hvor gammel er jorda/i, label: "Tid", subtitle: "Eon, æra, periode og epoke" },
+  { match: /^relativ alder/i, label: "Relativ alder", subtitle: "Overlagring, gjennomskjæring, fossiler" },
+  { match: /^absolutt alder/i, label: "Absolutt alder", subtitle: "Halveringstid og radiometriske metoder" },
+  { match: /^andre dateringsmetoder/i, label: "Andre metoder", subtitle: "Varv, tefra, OSL og ¹⁰Be" },
   { match: /^hva er geofaglig feltarbeid/i, label: "Feltarbeid", subtitle: "Fire steg fra plan til presentasjon" },
   { match: /^planlegging og hms$/i, label: "Planlegging", subtitle: "Problemstilling, utstyr og risiko" },
   { match: /^metoder i felt$/i, label: "Metoder", subtitle: "Berggrunn, løsmasser og vann" },
@@ -323,7 +327,7 @@ const SECTION_META: SectionMeta[] = [
   {
     match: /geologisk tid|datering/i,
     label: "Datering",
-    subtitle: "Superposisjon, krysskjæring og isotopur",
+    subtitle: "Superposisjon, gjennomskjæring og isotopur",
   },
   {
     match: /hydrologiske kretsløpet/i,
