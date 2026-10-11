@@ -1194,8 +1194,8 @@ export const KILDER = {
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
-      italic: "Fjellskred: Historiske fjellskred i Norge",
-      suffix: ".",
+      italic: "Historiske fjellskred i Norge",
+      suffix: " [Veileder: Fjellskred].",
       href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
     },
     {
@@ -1353,10 +1353,52 @@ export const KILDER = {
   ],
   feltarbeid: [
     {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
-      italic: "Mineraler og metaller",
+      prefix: "Friluftsloven. (1957). ",
+      italic: "Lov om friluftslivet (LOV-1957-06-28-16)",
+      suffix: ". Lovdata.",
+      href: "https://lovdata.no/dokument/NL/lov/1957-06-28-16",
+    },
+    {
+      prefix: "GPS.gov. (u.å.). ",
+      italic: "GPS accuracy",
       suffix: ".",
-      href: "https://www.ngu.no/geologiske-ressurser/mineraler-og-metaller",
+      href: "https://www.gps.gov/gps-accuracy",
+    },
+    {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Referanserammer for Noreg",
+      suffix: ".",
+      href: "https://kartverket.no/til-lands/posisjon/referanserammer-for-noreg",
+    },
+    {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
+      italic: "Min kommune – geologiske kart",
+      suffix: ".",
+      href: "https://geo.ngu.no/kart/minkommune/",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2024a). ",
+      italic: "Feltundersøkelser (geologi)",
+      suffix: ".",
+      href: "https://snl.no/feltundersøkelser_-_geologi",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2024b). ",
+      italic: "Skuringsstripe",
+      suffix: ".",
+      href: "https://snl.no/skuringsstripe",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2024c). ",
+      italic: "Vannføring",
+      suffix: ".",
+      href: "https://snl.no/vannføring",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025). ",
+      italic: "Allemannsretten",
+      suffix: ".",
+      href: "https://snl.no/allemannsretten",
     },
     {
       prefix: "Store norske leksikon [SNL]. (2026). ",
@@ -1366,7 +1408,7 @@ export const KILDER = {
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
-      italic: "Kjerneelementer",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
     },

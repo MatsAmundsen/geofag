@@ -54,6 +54,8 @@ export const NAV_BY_PATH: Record<string, { prev?: NavLink; next?: NavLink }> = {
 
 /** Eierskap øverst på sidene som ellers ville krevd 50 kB-redigering. */
 export const EIERSKAP_BY_PATH: Record<string, string> = {
+  "/geofag-1/feltarbeid":
+    "Denne siden eier hvordan feltarbeid gjøres: planlegging og HMS, metoder i felt, georeferering, feltbok og usikkerhet, og bearbeiding, tolkning og presentasjon. Norges geologi eier hva du ser etter lokalt og hva det betyr.",
   "/geofag-1/platetektonikk":
     "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier seismisitet, bølger og Wadati-Benioff. Norges geologi eier Leka-ofiolitten, Kaledonidene og Oslofeltet.",
   "/geofag-1/jordskjelv":

@@ -1733,59 +1733,59 @@ export const QUIZ_GEOLOGISKE_RESSURSER: QuizQuestion[] = [
 
 export const QUIZ_FELTARBEID: QuizQuestion[] = [
   {
-    prompt: "Hva er feltarbeid?",
+    prompt: "Hva handler kjerneelementet geofaglig feltarbeid om?",
     options: [
-      "Innsamling av data i en undersøkelse. I geologi kan det være steinprøver.",
-      "En tur der klassen bare ser på landskapet.",
-      "Et begrep som bare brukes i samfunnsfag.",
+      "Bare å ta steinprøver",
+      "Å lese om geologi i lærebøker",
+      "Planlegging, innsamling av georefererte data og bearbeiding, med ivaretakelse av helse, miljø og sikkerhet",
+      "Å lage modeller på datamaskin",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er geofaglig feltarbeid?». Feltarbeid er innsamling av data. I geologi kan det være steinprøver.",
+    answer: 2,
+    explain: "Udir beskriver kjerneelementet som planlegging, innsamling av georefererte data i felt og bearbeiding av dem, på en faglig forsvarlig måte som ivaretar HMS.",
   },
   {
-    prompt: "Hvilke deler av jordsystemet gjelder feltarbeidet i geofag 1?",
+    prompt: "Hvilken fare bør stå i risikovurderingen før du undersøker en grustak-vegg?",
     options: [
-      "Geosfæren eller hydrosfæren.",
-      "Bare atmosfæren.",
-      "Bare kryosfæren.",
+      "At det kan regne",
+      "Ras og steinsprang fra veggen",
+      "At GPS-en viser for mange desimaler",
+      "At prøvene blir tunge",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er geofaglig feltarbeid?». Feltarbeidet er knyttet til geosfæren eller hydrosfæren.",
+    answer: 1,
+    explain: "Bratte vegger i grustak og ved bergskjæringer kan rase. Hold avstand og avtal hvem som har ansvar.",
   },
   {
-    prompt: "Hva skal du gjøre med dataene etter at de er samlet inn?",
+    prompt: "Hvilken metode bruker du for å finne retningen isen beveget seg?",
     options: [
-      "Bearbeide og tolke dem.",
-      "Kaste dem når prøvene er merket.",
-      "La dem ligge uten å knytte dem til spørsmålet.",
+      "Måle retningen på skuringsstriper med kompass",
+      "Måle pH i en bekk",
+      "Måle vannføring",
+      "Telle steinblokker under en bergvegg",
     ],
     answer: 0,
-    explain:
-      "Se «Hvordan bearbeider og tolker vi?». De innsamlede dataene skal bearbeides og tolkes.",
+    explain: "Skuringsstriper er riper laget av steiner i bunnen av breen. Retningen viser hvordan isen beveget seg.",
   },
   {
-    prompt: "Hva skal lokale observasjoner kunne si noe om?",
+    prompt: "Hva skal stå på en rad i feltboka?",
     options: [
-      "Områdets geologiske historie og betydningen for lokale ressurser.",
-      "Bare hvor langt det er til nærmeste vei.",
-      "Bare navnet på kommunen.",
+      "Bare målingen",
+      "Navnet ditt og været",
+      "ID, tidspunkt, koordinater, måling og usikkerhet",
+      "Bare koordinatene",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva kan observasjonene svare på?». Observasjonene tolkes for å beskrive historien og betydningen for lokale ressurser.",
+    answer: 2,
+    explain: "Med ID, tid, koordinater, måling og usikkerhet kan du finne igjen prøven og bildet og legge dataene på et kart.",
   },
   {
-    prompt: "Hva skal presentasjonen av feltarbeidet gjøre mulig?",
+    prompt: "Hvorfor gjentar du en måling flere ganger?",
     options: [
-      "Å se hvilke data som ble samlet inn, og hvordan de ble tolket.",
-      "Å erstatte dataene med et inntrykk fra turen.",
-      "Å sløyfe tolkningen når prøvene er tatt.",
+      "For å se hvor mye målingen varierer og regne ut et gjennomsnitt",
+      "Fordi første måling alltid er feil",
+      "For å bruke opp tiden",
+      "Fordi læreren sier det",
     ],
     answer: 0,
-    explain:
-      "Se «Hvordan presenterer vi resultatene?». Presentasjonen skal vise dataene og tolkningen.",
+    explain: "Alle målinger har usikkerhet. Spredningen mellom gjentatte målinger viser hvor sikker du kan være.",
   },
 ];
 
@@ -2597,5 +2597,97 @@ export const QUIZ_NORGES_GEOLOGI: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Landhevingen er størst der isen var tykkest og presset landet mest ned. Ved Bottenviken er den opptil ca. 1 cm i året, i Oslo ca. 5 mm i året, og nær null på Sørvestlandet.",
+  },
+];
+
+export const QUIZ_SJEKK_FELTARBEID_1: QuizQuestion[] = [
+  {
+    prompt: "Hvilken problemstilling egner seg best for et feltarbeid?",
+    options: [
+      "Hvordan er geologien i Norge?",
+      "Er materialet i åsryggen ved skolen sortert slik en breelvavsetning er?",
+      "Hva er den beste bergarten?",
+    ],
+    answer: 1,
+    explain: "Problemstillingen må kunne besvares med data du kan samle inn på ett sted. De to andre er for vide eller ikke mulige å måle.",
+  },
+  {
+    prompt: "Hva gir allemannsretten deg rett til?",
+    options: [
+      "Å ta prøver med hammer hvor du vil",
+      "Å gå over åker og eng",
+      "Å ferdes i utmark når du tar hensyn",
+    ],
+    answer: 2,
+    explain: "Allemannsretten gjelder i utmark, ikke på innmark. Spør grunneieren før du tar prøver eller går inn i et grustak.",
+  },
+];
+
+export const QUIZ_SJEKK_FELTARBEID_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er fall?",
+    options: [
+      "Vinkelen mellom en flate i berget og det vannrette planet",
+      "Retningen isen beveget seg",
+      "Hvor fort vannet renner",
+    ],
+    answer: 0,
+    explain: "Fall er helningen til flaten, fra 0° for vannrett til 90° for loddrett. Strøk er retningen på skjæringslinjen med det vannrette planet.",
+  },
+  {
+    prompt: "Du måler tverrsnittsarealet i en bekk til 0,4 m² og farten til 0,5 m/s. Hva er vannføringen?",
+    options: [
+      "0,9 m³/s",
+      "0,2 m³/s",
+      "0,8 m³/s",
+    ],
+    answer: 1,
+    explain: "Vannføring = tverrsnittsareal × fart = 0,4 m² × 0,5 m/s = 0,2 m³/s. Flottørmetoden gir litt for høy verdi fordi overflaten renner fortest.",
+  },
+];
+
+export const QUIZ_SJEKK_FELTARBEID_3: QuizQuestion[] = [
+  {
+    prompt: "Hvor nøyaktig er en vanlig mobil-GPS under åpen himmel?",
+    options: [
+      "Ca. 5 m",
+      "Noen centimeter",
+      "Ca. 500 m",
+    ],
+    answer: 0,
+    explain: "En mobil har en nøyaktighet på ca. 5 m under åpen himmel og blir dårligere nær bygninger og trær. Skriv usikkerheten i feltboka.",
+  },
+  {
+    prompt: "Hvorfor tar du bilde med en hammer eller tommestokk ved siden av?",
+    options: [
+      "For å vise hvem som tok bildet",
+      "Fordi det er pent",
+      "For å vise målestokken",
+    ],
+    answer: 2,
+    explain: "Uten noe å sammenligne med kan ikke leseren se om lagene er en centimeter eller en meter tykke.",
+  },
+];
+
+export const QUIZ_SJEKK_FELTARBEID_4: QuizQuestion[] = [
+  {
+    prompt: "Du finner usortert materiale med store, kantete blokker i åsryggen. Hva betyr det for hypotesen om en breelvavsetning?",
+    options: [
+      "Det svekker hypotesen og peker mot morene",
+      "Det støtter hypotesen",
+      "Det sier ingenting",
+    ],
+    answer: 0,
+    explain: "Breelvavsetninger er sortert av vann. Usortert materiale med blokker er typisk for morene.",
+  },
+  {
+    prompt: "Hva bør skilles tydelig i en presentasjon av et feltarbeid?",
+    options: [
+      "Bilder og tabeller",
+      "Det du observerte og det du tolker",
+      "Hypotese og problemstilling",
+    ],
+    answer: 1,
+    explain: "Leseren skal kunne se hvilke data du samlet inn, og hvordan du kom fram til tolkningen og konklusjonen.",
   },
 ];

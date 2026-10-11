@@ -1085,8 +1085,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   FeltarbeidForklaring: () => (
     <Callout title="Hva betyr «feltarbeid»?">
       <p>
-        Feltarbeid er innsamling av data i en undersøkelse. I geologi kan det være å samle
-        steinprøver.
+        Feltarbeid er innsamling av data ute, der fenomenene finnes. Arbeidet har fire steg:
+        planlegging, innsamling i felt, bearbeiding og tolkning, og presentasjon.
       </p>
     </Callout>
   ),

@@ -403,9 +403,9 @@ export const GF1_THEMES = [
     image: "/images/fig-forvitring.jpg",
     alt: "Blotning i fjell. Felt i geosfæren.",
     blurb:
-      "Samle data i geosfæren eller hydrosfæren, bearbeide, tolke og presentere. Lokale observasjoner av berggrunn, løsmasser og jordarter.",
+      "Planlegging og HMS, metoder i felt, georeferering og feltbok, og bearbeiding, tolkning og presentasjon av data fra geosfæren og hydrosfæren.",
     status: "klar" as const,
-    maal: "Geofaglig feltarbeid i geosfæren eller hydrosfæren.",
+    maal: "Gjennomføre geofaglig feltarbeid knyttet til geosfæren eller hydrosfæren, bearbeide og tolke de innsamlede dataene og presentere resultatene.",
   },
 ] as const;
 

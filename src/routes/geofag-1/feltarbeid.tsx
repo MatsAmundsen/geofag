@@ -21,7 +21,7 @@ function FeltarbeidPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Geofaglig feltarbeid er å samle inn data i geosfæren eller hydrosfæren, og deretter bearbeide, tolke og presentere dem. Observasjonene kan brukes til å beskrive den lokale geologiske historien og hva berggrunn, løsmasser og jordarter betyr for ressursene på stedet."
+      lead="Geofaglig feltarbeid er å planlegge, samle inn georefererte data i felt, bearbeide og tolke dem og presentere resultatene. Her lærer du hvordan du gjør det trygt og faglig forsvarlig, med eksempler fra berggrunn, løsmasser og vann."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

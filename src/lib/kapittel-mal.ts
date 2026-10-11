@@ -22,6 +22,10 @@ import {
   QUIZ_SJEKK_NORGES_GEOLOGI_5,
   QUIZ_SJEKK_NORGES_GEOLOGI_6,
   QUIZ_SJEKK_NORGES_GEOLOGI_7,
+  QUIZ_SJEKK_FELTARBEID_1,
+  QUIZ_SJEKK_FELTARBEID_2,
+  QUIZ_SJEKK_FELTARBEID_3,
+  QUIZ_SJEKK_FELTARBEID_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -38,6 +42,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   NorgesGeologi5: QUIZ_SJEKK_NORGES_GEOLOGI_5,
   NorgesGeologi6: QUIZ_SJEKK_NORGES_GEOLOGI_6,
   NorgesGeologi7: QUIZ_SJEKK_NORGES_GEOLOGI_7,
+  Feltarbeid1: QUIZ_SJEKK_FELTARBEID_1,
+  Feltarbeid2: QUIZ_SJEKK_FELTARBEID_2,
+  Feltarbeid3: QUIZ_SJEKK_FELTARBEID_3,
+  Feltarbeid4: QUIZ_SJEKK_FELTARBEID_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -57,6 +65,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Oslo-riften ble dannet for ca. 300 millioner år siden og var aktiv gjennom perm. Den ble dannet da skorpa ble strukket i Nord-Europa like etter at Pangea var satt sammen. Riften ga rombeporfyr, larvikitt og bevarte lag med fossiler fra kambrium og silur.",
     "Norskehavet åpnet seg for ca. 55 millioner år siden. Norskekysten er en passiv kontinentalmargin, og Jan Mayen med Beerenberg ligger på spredningsryggen.",
     "Innlandsisen presset landet ned. Etter istiden sto havet opptil ca. 220 m høyere enn i dag i Oslo-området, og landet hever seg fortsatt, mest der isen var tykkest.",
+  ],
+  Feltarbeid: [
+    "Geofaglig feltarbeid har fire steg: planlegging, innsamling av data i felt, bearbeiding og tolkning, og presentasjon.",
+    "Planleggingen starter med en problemstilling og en hypotese som kan testes med data, og den omfatter valg av lokalitet, utstyr, risikovurdering og tillatelser.",
+    "I felt kan du blant annet beskrive blotninger, måle strøk og fall, undersøke kornfordeling, måle skuringsstriper, vannføring, temperatur og pH og registrere skredspor.",
+    "Georefererte data er knyttet til en posisjon i et referansesystem. En mobil-GPS har en usikkerhet på ca. 5 m, og feltboka skal ha ID, tid, koordinater, måling og usikkerhet.",
+    "Alle målinger har usikkerhet, så målingene bør gjentas.",
+    "I tolkningen vurderer du om dataene støtter hypotesen, og i presentasjonen skiller du mellom det du observerte og det du tolker.",
   ],
 };
 
