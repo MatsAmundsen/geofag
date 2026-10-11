@@ -1,4 +1,4 @@
-> **Hva sier læreplanen i geofag?**
+> **Kompetansemål i Geofag 1 (LK20)**
 >
 > Elevene skal kunne
 >
@@ -9,6 +9,8 @@
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Landformene viser hvordan geosfæren, hydrosfæren, kryosfæren og atmosfæren virker sammen over alt fra noen timer til millioner av år.
+>
+> • *Modeller og modellering:* Hjulströms diagram og de interaktive figurene er modeller som forenkler virkeligheten for å forklare og forutsi prosessene.
 >
 > • *Mennesket i jordsystemene:* Vi bruker løsmassene som ressurs, og vi endrer elver, skråninger og kyst – noen ganger slik at faren for erosjon og skred øker.
 >
@@ -84,7 +86,7 @@ I 1935 laget den svenske geografen Filip Hjulström et diagram som viser sammenh
 HjulstromInteraktiv
 ```
 
-Kanskje skulle man vente at de minste kornene var lettest å rive løs? Det er de ikke. Sand eroderes ved lavest fart, ca. 20 cm/s. Fast, avsatt leire kan kreve like stor strømfart for å eroderes som grus (Hjulström, 1935). Grunnen er at leirmineralene er små, flate og elektrisk ladde, slik at kornene henger sammen. Det kaller vi *kohesjon*. Hvor stor strømfart som trengs, avhenger av hvor fast leira er pakket. Når leira først er revet løs, synker den derimot svært sakte, og den kan holdes svevende i vannet langt nedover elva selv om strømmen er svak. Svaret på «Hva tror du?»-spørsmålet er altså sanden.
+Kanskje skulle man vente at de minste kornene var lettest å rive løs? Det er de ikke. Sand eroderes ved lavest fart, ca. 20 cm/s. Fast, avsatt leire kan kreve like stor strømfart for å eroderes som grus. Fin silt på 0,01 mm krever ca. 60 cm/s, tre ganger så mye som sand, og den fineste leira enda mer (Hjulström, 1935; Earle, 2019). Grunnen er at leirmineralene er små, flate og elektrisk ladde, slik at kornene henger sammen. Det kaller vi *kohesjon*. Hvor stor strømfart som trengs, avhenger av hvor fast leira er pakket. Når leira først er revet løs, synker den derimot svært sakte, og den kan holdes svevende i vannet langt nedover elva selv om strømmen er svak. Svaret på «Hva tror du?»-spørsmålet er altså sanden.
 
 ```widget
 SjekkLandformer2
@@ -92,7 +94,7 @@ SjekkLandformer2
 
 ## Elva fra kilde til munning
 
-Rennende vann er den prosessen som har formet mest av jordoverflaten. Langs en elv endrer arbeidet seg fra fjellet til havet: Øverst graver elva seg ned, lenger ned eroderer den sideveis, og ved munningen avsetter den.
+Rennende vann er den prosessen som har formet mest av overflaten på jorda som helhet. Langs en elv endrer arbeidet seg fra fjellet til havet: Øverst graver elva seg ned, lenger ned eroderer den sideveis, og ved munningen avsetter den.
 
 ```widget
 ElvaFraKildeTilMunning
@@ -100,7 +102,7 @@ ElvaFraKildeTilMunning
 
 ### V-daler og gjel
 
-Øverst i elveløpet er fallet stort, og elva graver seg rett nedover. Samtidig raser løsmasser og stein ned fra dalsidene og havner i elva. Resultatet er en dal med V-formet tverrsnitt, en *V-dal*. Graver vannet seg svært raskt ned, eller er berget så fast at dalsidene ikke raser ut, kan det bli et smalt, bratt *gjel*. Jutulhogget mellom Østerdalen og Tylldalen ble trolig gravd ut på kort tid mot slutten av istiden, da den bredemte sjøen Nedre Glomsjø ble tappet og store mengder smeltevann strømmet over dalskillet (SNL, u.å.). Der en stein blir fanget i en virvel og slipes rundt og rundt, kan det bli boret ut en *jettegryte*.
+Øverst i elveløpet er fallet stort, og elva graver seg rett nedover. Samtidig raser løsmasser og stein ned fra dalsidene og havner i elva. Resultatet er en dal med V-formet tverrsnitt, en *V-dal*. Graver vannet seg svært raskt ned, eller er berget så fast at dalsidene ikke raser ut, kan det bli et smalt, bratt *gjel*. Jutulhogget mellom Østerdalen og Tylldalen ble gravd ut på kort tid mot slutten av istiden, da den bredemte sjøen Nedre Glomsjø ble tappet og store mengder smeltevann strømmet over dalskillet (SNL, u.å.-a). Der en stein blir fanget i en virvel og slipes rundt og rundt, kan det bli boret ut en *jettegryte*.
 
 ### Meandere og kroksjøer
 
@@ -142,7 +144,7 @@ Etter den klassiske modellen er viddene rester av et gammelt, lavt og nesten fla
 
 Modellen er omstridt. Andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden ble dannet, og at istidene slipte ned toppene til en jevn høyde omkring snøgrensen (Nielsen mfl., 2009; Egholm mfl., 2009). Begge modellene forklarer de flate viddene, men på helt ulike måter. Det viser at vi ikke alltid kan lese historien rett ut av landskapet.
 
-Langs store deler av kysten ligger *strandflaten*, en lav og flat brem med tusenvis av øyer, holmer og skjær. Den ble trolig formet av frostforvitring, bølger og is i samspill, men nøyaktig hvordan er fortsatt diskutert.
+Langs kysten fra Ryfylke til Vest-Finnmark ligger *strandflaten*, en lav og flat brem med tusenvis av øyer, holmer og skjær. Den går fra 60–70 m over til 30–40 m under havnivå og er stedvis nesten 50 km bred. Den regnes å være dannet gjennom de siste 5–10 millioner årene ved frostforvitring, bølgeerosjon og iserosjon (SNL, u.å.-b). Nøyaktig hvordan prosessene virket sammen, er fortsatt diskutert.
 
 ```widget
 FjordskredFoto
@@ -158,7 +160,7 @@ Kompetansemålet sier at landformer endres under påvirkning av jordsystemene og
 
 ### Elver som blir forbygd
 
-For å verne bebyggelse og dyrka mark mot flom og erosjon har vi rettet ut og kanalisert mange elver og bygd voller og steinfyllinger langs breddene. Det kaller vi *elveforbygning*. En rett elv renner fortere enn en buktende elv, og kan derfor erodere mer lenger ned i vassdraget. Masseuttak og utretting av elveløp kan også sette i gang ny erosjon (NVE, u.å.). I dag prøver NVE derfor å beholde mest mulig av elvas naturlige form når de sikrer mot erosjon.
+For å verne bebyggelse og dyrka mark mot flom og erosjon har vi rettet ut og kanalisert mange elver og bygd voller og steinfyllinger langs breddene. Det kaller vi *elveforbygning*. En rett elv renner fortere enn en buktende elv, og kan derfor erodere mer lenger ned i vassdraget. Masseuttak og utretting av elveløp kan også sette i gang ny erosjon (NVE, u.å.-a). NVE anbefaler at mest mulig av elvas naturlige form beholdes når en elv sikres mot erosjon (NVE, u.å.-b).
 
 ### Sand og grus som ressurs
 
@@ -166,11 +168,11 @@ Sand, grus og pukk er råstoffer vi bruker i betong, veier og bygg. I Norge bruk
 
 ### Skjæringer, fyllinger og kvikkleire
 
-Når vi bygger veier og boligfelt, sprenger vi skjæringer, legger ut fyllinger og planerer terrenget. I områder med marin leire kan slike inngrep gjøre skråningene mindre stabile. En fylling øverst i en skråning gir ekstra vekt, og graving i foten fjerner støtten. Erosjon i bekker og raviner kan også utløse kvikkleireskred. Derfor legger NVE ofte ut stein i bekkene for å hindre at vannet graver i bunnen (NVE, u.å.). Mer om kvikkleire står i kapitlet [Skred](/geofag-1/skred).
+Når vi bygger veier og boligfelt, sprenger vi skjæringer, legger ut fyllinger og planerer terrenget. I områder med marin leire kan slike inngrep gjøre skråningene mindre stabile. En fylling øverst i en skråning gir ekstra vekt, og graving i foten fjerner støtten. Erosjon i bekker og raviner kan også utløse kvikkleireskred. Derfor legger NVE ofte ut stein i bekkene for å hindre at vannet graver i bunnen (NVE, u.å.-a). Mer om kvikkleire står i kapitlet [Skred](/geofag-1/skred).
 
 ### Byer og kyst
 
-I byene blir mye av bakken dekket av asfalt og tak. Regnvannet kan da ikke sige ned i jorda, men renner raskt av og samles i bekker og rør. Flomtoppene blir høyere, og bekker og grøfter kan erodere mer enn før. Langs kysten bygger vi moloer, steinfyllinger og murer for å beskytte havner og veier mot bølgene. Slik *kystsikring* hindrer erosjon der den bygges, men den kan endre hvordan bølgene flytter sand og grus langs stranda, slik at erosjonen øker et annet sted.
+I byene blir mye av bakken dekket av asfalt og tak. Regnvannet kan da ikke sige ned i jorda, men renner raskt av og samles i bekker og rør. Flomtoppene blir høyere, og bekker og grøfter kan erodere mer enn før (NOU 2015: 16). Langs kysten bygger vi moloer, steinfyllinger og murer for å beskytte havner og veier mot bølgene. Slik *kystsikring* hindrer erosjon der den bygges, men den kan endre hvordan bølgene flytter sand og grus, og da kan erosjonen øke et annet sted.
 
 ```widget
 SjekkLandformer5

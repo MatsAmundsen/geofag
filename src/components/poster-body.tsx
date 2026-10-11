@@ -76,6 +76,7 @@ import {
 import { OslograbenFigur } from "@/components/diagrams/norgesgeo-figurer";
 import {
   BowenReactionSeriesDiagram,
+  FieldworkIllustrationDiagram,
   GrainSizeDistributionDiagram,
   RelativeDatingDiagram,
 } from "@/components/diagrams/geology-extra";
@@ -92,7 +93,14 @@ import {
 import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
-import { KvikkleireDiagram } from "@/components/diagrams/skred";
+import {
+  FjellskredBolgeDiagram,
+  KvikkleireDiagram,
+  SkredKrefterDiagram,
+  SkredSonerDiagram,
+  SkredTyperDiagram,
+} from "@/components/diagrams/skred";
+import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
 import {
   DensityDiagram,
   GulfVsNacDiagram,
@@ -1004,6 +1012,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
+  SkredTyper: () => <SkredTyperDiagram />,
+  SkredKrefter: () => <SkredKrefterDiagram />,
+  SkredSoner: () => <SkredSonerDiagram />,
+  FjellskredBolge: () => <FjellskredBolgeDiagram />,
+  FieldworkIllustration: () => <FieldworkIllustrationDiagram />,
+  Feltbok: () => <FeltbokDiagram />,
+  FraBergartTilBrudd: () => <FraBergartTilBruddDiagram />,
   QuizLandformer: () => (
     <Quiz questions={QUIZ_LANDFORMER} heading={null} intro="Velg ett svar per spørsmål." />
   ),

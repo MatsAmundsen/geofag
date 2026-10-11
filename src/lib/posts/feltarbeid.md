@@ -18,6 +18,10 @@ Feltarbeid er arbeid med innsamling av data i en empirisk undersøkelse. Ordet b
 
 I geofag 1 er feltarbeidet knyttet til geosfæren eller hydrosfæren. Du skal gjennomføre det, bearbeide og tolke de innsamlede dataene, og presentere resultatene (Udir, u.å.-b).
 
+```widget
+FieldworkIllustration
+```
+
 ## Hva kan observasjonene svare på?
 
 Et mål i faget er å utforske berggrunn, løsmasser og jordarter lokalt. Observasjonene skal tolkes slik at du kan beskrive områdets geologiske historie, og si hva den betyr for lokale ressurser (Udir, u.å.-b).
@@ -29,6 +33,10 @@ Når spørsmålet gjelder mineraler, arbeider NGU både på laboratoriet og ute 
 Målet sier at de innsamlede dataene skal bearbeides og tolkes (Udir, u.å.-b). Bearbeiding vil si å ordne observasjonene slik at de kan leses mot spørsmålet du stilte. Tolkning vil si å si hva de kan bety for berggrunn, løsmasser, jordarter eller ressursene på stedet.
 
 Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Når du skal forklare tolkningen, kan en modell være oversikten som viser hva du observerte.
+
+```widget
+Feltbok
+```
 
 ## Hvordan presenterer vi resultatene?
 

@@ -57,9 +57,9 @@ export function FraBergartTilBruddDiagram() {
   return (
     <div className="mx-auto w-full max-w-lg">
       <Diagram
-        title="Tre spor: magma til magmatisk malm og naturstein, sprekk til hydrotermal malm, løsmasse til sedimentær malm, pukk og grus."
+        title="Tre spor: magma til magmatisk malm, og fast fjell (dypbergart) til naturstein og pukk; sprekk til hydrotermal malm; løsmasse til sedimentær malm, grus og sand."
         heading="Fra bergart til brudd"
-        caption="Magma, sprekk og løsmasse til malm, naturstein og pukk."
+        caption="Magma, sprekk og løsmasse til malm, naturstein, pukk, grus og sand. Pukk er fast fjell som er sprengt og knust. Grus og sand tas ut fra løsmasser."
         viewBox="0 0 440 560"
       >
         {(m) => (
@@ -106,8 +106,8 @@ export function FraBergartTilBruddDiagram() {
               w={168}
               stroke={C.sand}
               fill="#2a3428"
-              title="naturstein"
-              sub="sages · spaltes"
+              title="naturstein · pukk"
+              sub="sages · knuses"
             />
             <Arrow d="M 204 172 L 236 172" marker={m.muted} color={C.sand} width={2.2} />
 
@@ -163,7 +163,7 @@ export function FraBergartTilBruddDiagram() {
               w={168}
               stroke={C.muted}
               fill="#1a2832"
-              title="pukk og grus"
+              title="grus og sand"
             />
             <Arrow d="M 204 430 L 236 430" marker={m.muted} color={C.sand} width={2.2} />
             <Arrow d="M 204 458 L 236 510" marker={m.muted} color={C.muted} width={2.2} />

@@ -24,7 +24,15 @@ Jordskred er vannmettede løsmasser, hovedsakelig jord, stein, grus og sand, som
 
 Jordskred kan utløses av kraftig eller vedvarende regn, av snøsmelting, av høyt vanninnhold i løsmassene, og av inngrep som veiskjæringer, skogsbilveier eller flatehogst (NVE, 2020a). Hvordan regn og snøsmelting fyller en elv, tar vi i kapittelet [Vann og flom](/geofag-1/vann-og-flom).
 
+```widget
+SkredKrefter
+```
+
 Kvikkleireskred er en egen kategori. De løses ut i en leire som kan bli flytende (NVE, 2020c). Den leira tar vi i neste avsnitt.
+
+```widget
+SkredTyper
+```
 
 ## Hva er kvikkleire?
 
@@ -70,7 +78,7 @@ De flytende massene kan gjøre skade både der bakken glir ut, og der massene re
 
 NVE nevner blant annet Verdal i 1893, Rissa i 1978, Kattmarka i 2009, Lyngen i 2010, Byneset i 2011 og Gjerdrum i 2020 (NVE, 2021b).
 
-Tidlig om morgenen 30. desember 2020 gikk et kvikkleireskred på Ask i Gjerdrum. Over 1600 mennesker ble evakuert, og elleve mistet livet. NVE omtaler skredet som det mest alvorlige kvikkleireskredet i Norge i nyere tid. Skredet målte 240 × 700 meter. Massene rant så langt som 2 km, og 1,35 millioner kubikkmeter raste ut. 200 mennesker mistet hjemmet for godt (NVE, 2023).
+Tidlig om morgenen 30. desember 2020 gikk et kvikkleireskred på Ask i Gjerdrum. Over 1600 mennesker ble evakuert, og elleve omkom, blant dem et ufødt barn (Gjerdrumutvalget, 2021). NVE omtaler skredet som det mest alvorlige kvikkleireskredet i Norge i nyere tid. Skredet målte 240 × 700 meter. Massene rant så langt som 2 km, og 1,35 millioner kubikkmeter raste ut. 200 mennesker mistet hjemmet for godt (NVE, 2023).
 
 NVE gjengir utvalgets hovedfunn slik: erosjon i Tistilbekken gjennom flere år hadde forverret en allerede dårlig stabilitet i skråningen vest for Holmen. Skråningen tålte ikke den våte høsten og førjulsvinteren i 2020 (NVE, 2023).
 
@@ -81,6 +89,12 @@ Fjellskred er hundre tusen til flere millioner kubikkmeter stein i bevegelse (NV
 Kontinuerlig overvåking bruker minst to uavhengige målesystemer. NVE varsler endringer i farenivå til kommuner, politi og statsforvaltere, som følger opp med beredskapstiltak (NVE, 2021a).
 
 Åknes er et ustabilt fjellparti på vestsiden av Sunnylvsfjorden i Stranda kommune. Faren har vært kjent siden 1960-tallet. Et skred kan gi store flodbølger i Storfjordområdet, og fjellpartiet overvåkes kontinuerlig for å kunne varsle i tide (NVE, 2026b).
+
+Hvor høyt en slik flodbølge kan nå, viste Tafjordulykka 7. april 1934. Om lag 3 millioner kubikkmeter stein raste ut i fjorden, og bølgene nådde på det meste 61 høydemeter opp på land. 40 mennesker omkom (NVE, u.å.).
+
+```widget
+FjellskredBolge
+```
 
 Scenario C er et større og dypere område i øvre flanke, med om lag 7,4 millioner kubikkmeter og årlig sannsynlighet 1/100. Scenario D er et mindre løsneområde i samme flanke, med om lag 2,4 millioner kubikkmeter og årlig sannsynlighet 1/200 (NVE, 2026b).
 
@@ -95,6 +109,10 @@ Tre tiltak kan bedre stabiliteten i en leirskråning. Vi kan fjerne masse og sen
 For skred i bratt terreng finnes det to slags kart. Aktsomhetskart er grove og i hovedsak landsdekkende. De er laget med GIS ut fra generelle regler for hvor skred kan løsne og hvor de kan havne. Typene er snøskred, sørpeskred, flomskred, jordskred, steinsprang og steinskred. Kvikkleire er ikke med i den listen. Kartene brukes i overordnet arealplanlegging. Skal det bygges innenfor et aktsomhetsområde, må faren utredes nærmere (NVE, 2020b).
 
 En slik utredning viser den reelle faren som nominell årlig sannsynlighet, i et faresonekart (NVE, 2020b). For kvikkleire har NGU et kart over mulighet for marin leire. Det inngår i NVEs aktsomhetskart for kvikkleireskred (NGU, u.å.-c).
+
+```widget
+SkredSoner
+```
 
 Jordskredvarselet på Varsom gjelder jordskred, sørpeskred og flomskred. Steinsprang, steinskred og kvikkleireskred inngår ikke. Ved fare for jord- og flomskred er det likevel økt fare for steinsprang som vannet utløser (Varsom, u.å.-b).
 

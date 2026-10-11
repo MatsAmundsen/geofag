@@ -828,6 +828,12 @@ export const KILDER = {
   ],
   landformer: [
     {
+      prefix: "Earle, S. (2019). ",
+      italic: "Physical geology",
+      suffix: " (2. utg.), kap. 13.3. BCcampus.",
+      href: "https://opentextbc.ca/physicalgeology2ed/chapter/13-3-stream-erosion-and-deposition/",
+    },
+    {
       prefix: "Egholm, D. L., Nielsen, S. B., Pedersen, V. K., & Lesemann, J.-E. (2009). Glacial effects limiting mountain height. ",
       italic: "Nature, 460",
       suffix: "(7257), 884–887.",
@@ -864,28 +870,47 @@ export const KILDER = {
       href: "https://doi.org/10.1126/science.1132127",
     },
     {
+      prefix:
+        "Nielsen, S. B., Gallagher, K., Leighton, C., Balling, N., Svenningsen, L., Jacobsen, B. H., Thomsen, E., Nielsen, O. B., Heilmann-Clausen, C., Egholm, D. L., Summerfield, M. A., Clausen, O. R., Piotrowski, J. A., Thorsen, M. R., Huuse, M., Abrahamsen, N., King, C., & Lykke-Andersen, H. (2009). The evolution of western Scandinavian topography: A review of Neogene uplift versus the ICE (isostasy–climate–erosion) hypothesis. ",
+      italic: "Journal of Geodynamics, 47",
+      suffix: "(2–3), 72–95.",
+      href: "https://doi.org/10.1016/j.jog.2008.09.001",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
       italic: "Bruk av sand, grus og pukk som byggeråstoffer",
       suffix: ".",
       href: "https://www.ngu.no/geologiske-ressurser/bruk-av-sand-grus-og-pukk-som-byggerastoffer",
     },
     {
-      prefix: "Egholm, D. L., Nielsen, S. B., Pedersen, V. K., & Lesemann, J.-E. (2009). Glacial effects limiting mountain height. ",
-      italic: "Nature, 460",
-      suffix: "(7257), 884–887.",
-      href: "https://doi.org/10.1038/nature08263",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
-      italic: "Sikringshåndboka: Flom og erosjon",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
+      italic: "Sikringshåndboka: Modul K2.302: Erosjonssikring i kvikkleireområder – Prosjektering",
       suffix: ".",
-      href: "https://veiledere.nve.no/sikringshandboka/flom-og-erosjon/",
+      href: "https://veiledere.nve.no/sikringshandboka/moduler/modul-k2-302-erosjonssikring-i-kvikkleireomrader-prosjektering/",
     },
     {
-      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Sikringshåndboka: Modul F1.200: Mulige tiltak mot erosjon",
+      suffix: ".",
+      href: "https://veiledere.nve.no/sikringshandboka/moduler/modul-f1-200-mulige-tiltak-mot-erosjon/",
+    },
+    {
+      prefix: "NOU 2015: 16. (2015). ",
+      italic: "Overvann i byer og tettsteder — Som problem og ressurs",
+      suffix: ".",
+      href: "https://www.regjeringen.no/no/dokumenter/nou-2015-16/id2465332/",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-a). ",
       italic: "Nedre Glomsjø",
       suffix: ".",
       href: "https://snl.no/Nedre_Glomsj%C3%B8",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-b). ",
+      italic: "Strandflate",
+      suffix: ".",
+      href: "https://snl.no/strandflate",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -993,6 +1018,12 @@ export const KILDER = {
   ],
   skred: [
     {
+      prefix: "Gjerdrumutvalget. (2021). ",
+      italic: "Årsakene til kvikkleireskredet i Gjerdrum 2020",
+      suffix: ". Delrapport, vedlegg til NOU 2022: 3. Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/contentassets/3dadc8f7fad94608861163fa524023c0/no/pdfs/arsakene-til-kvikkleireskredet-i-gjerdrum-2020.pdf",
+    },
+    {
       prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
       italic: "Hva er kvikkleire og hvor finnes den i Norge?",
       suffix: ".",
@@ -1015,6 +1046,12 @@ export const KILDER = {
       italic: "Skred og ras",
       suffix: ".",
       href: "https://www.ngu.no/geologi-og-risiko/skred-og-ras",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Fjellskred: Historiske fjellskred i Norge",
+      suffix: ".",
+      href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2020a). ",

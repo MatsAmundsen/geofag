@@ -825,6 +825,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["Laharer gikk om lag 50 km ned dalen", "i [Jordskjelv og tsunamier](/geofag-1/jordskjelv)"],
   },
   {
+    flag: "g1-feltarbeid-figurer-2026-10-11",
+    slug: "feltarbeid",
+    stale: ["kan en modell være oversikten som viser hva du observerte.\n\n## Hvordan presenterer"],
+  },
+  {
+    flag: "g1-ressurser-figur-2026-10-11",
+    slug: "geologiske-ressurser",
+    stale: ["Nå skjer det i pukkverk (SNL, 2024b).\n\nIndustrimineraler"],
+  },
+  {
     flag: "g1-landformer-md-2026-10-11",
     slug: "landformer",
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],

@@ -44,6 +44,10 @@ Larvikitt er en dypbergart. En blanding av to typer feltspat kan gi et fargespil
 
 Pukk er knust stein av hard og seig naturstein, som granitt, gabbro og gneis. Kornene er uregelmessige og har skarpe kanter. Diameteren er 4–120 mm eller større, og pukken selges i fraksjoner, for eksempel 8–16 mm. Den brukes i veidekker, veifundamenter, ballast under jernbane og som tilslag i betong. Tidligere ble steinen knust for hånd. Nå skjer det i pukkverk (SNL, 2024b).
 
+```widget
+FraBergartTilBrudd
+```
+
 Industrimineraler er mineraler og bergarter som ikke brukes som råstoff til metall, og heller ikke direkte som byggematerialer. De har mange bruksområder, og Norge produserer en rekke av dem. På Akselberg i Nordland ligger Norges største kalkbrudd (NGU, u.å.-b).
 
 ## Hva utvinnes i Norge i dag?
