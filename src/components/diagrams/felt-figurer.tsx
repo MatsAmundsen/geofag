@@ -151,7 +151,7 @@ export function FeltmetodeFigur({
           at: toPt([-170, -40, 0]),
           color: "#bfe4ee",
           anchor: "start",
-          badge: toPt([-150, -120, 0]),
+          badge: [90, 70],
         },
         {
           text: "Lagflate",
@@ -165,7 +165,7 @@ export function FeltmetodeFigur({
         {
           text: "N",
           x: n1(north[1][0]),
-          y: n1(north[1][1] - 10),
+          y: n1(north[1][1] - 32),
           color: C.fg,
           anchor: "middle",
           size: 15,
