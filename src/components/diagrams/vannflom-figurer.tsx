@@ -648,7 +648,7 @@ export function AkviferFigur({
   labels.push(
     [
       { text: "Sand og grus: akvifer", x: 24, y: 512, at: AQ_AT[0], color: "#e7d29f", badge: [470, 372] },
-      { text: "Leire: tett lag", x: 24, y: 512, at: AQ_AT[1], color: "#d3cbb6", badge: [262, 446] },
+      { text: "Leire: tett lag", x: 330, y: 512, at: AQ_AT[1], color: "#d3cbb6", badge: [262, 446] },
       { text: "Usortert morene", x: 944, y: 254, at: AQ_AT[2], color: "#e0cfaa", anchor: "end", badge: [690, 250] },
       { text: "Vann i sprekker i fjellet", x: 560, y: 528, at: [744, 400], color: "#9fe3ea", badge: [720, 470] },
     ][i] as Lab,
@@ -889,7 +889,7 @@ export function HydrogramFigur({
   ];
   if (step >= 3) {
     labels.push(
-      { text: "Spiss flomtopp", x: rx(0.48), y: n1(yq(rain.base + rain.amp) + 6), at: [rx(rain.tp) + 4, yq(rain.base + rain.amp) + 4], color: C.warm, badge: [rx(rain.tp) + 26, yq(rain.base + rain.amp) + 6] },
+      { text: "Spiss flomtopp", x: rx(0.48), y: Math.max(n1(yq(rain.base + rain.amp) + 6), 190), at: [rx(rain.tp) + 4, yq(rain.base + rain.amp) + 4], color: C.warm, badge: [rx(rain.tp) + 26, yq(rain.base + rain.amp) + 6] },
       { text: "Bred flomtopp", x: sx(0.8), y: n1(yq(HY_SNOW.base + HY_SNOW.amp) + 10), at: [sx(0.66), yq(hyQ(HY_SNOW, 0.66))], color: "#b9d3ee", badge: [sx(0.74), yq(hyQ(HY_SNOW, 0.66)) - 16] },
       { text: "Forsinkelse", x: rx(0.38), y: 148, at: [rx(0.3), 142], color: "#ffd77a", badge: [rx(0.26), 164] },
     );
