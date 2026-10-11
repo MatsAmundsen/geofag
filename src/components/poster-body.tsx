@@ -508,8 +508,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     HavstromForklaring: () => (
     <Callout title="Hva betyr «havstrøm»?">
       <p>
-        En havstrøm er vann i bevegelse. Den kan drives av tidevann nær land, av vind i overflaten,
-        eller av tetthetsforskjeller som får kaldt og salt vann til å synke.
+        En havstrøm er vann som flytter seg i en bestemt retning over tid. Den drives av vind,
+        trykkforskjeller når havoverflaten heller, tetthetsforskjeller og tidevann.
       </p>
     </Callout>
   ),
@@ -518,8 +518,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «ekmantransport»?">
       <p>
         Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
-        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
-        dypere vann komme opp.
+        halvkulen går den 90 grader til høyre for vindretningen. Når den skyver vann vekk fra en
+        kyst, kan dypere vann komme opp.
       </p>
     </Callout>
   ),

@@ -20,7 +20,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "lokale-vaersystemer": "Polarfrontsyklonen setter været over store områder. Nærmere kysten og i dalene kommer solgangsvind, berg- og dalvind og føn, fordi land, hav og fjellside ikke varmes likt.",
   "jetstrommer": "Jetstrømmen er et smalt belte med sterk vestavind høyt oppe, der varm og kald luft møtes. Den slynger seg, er sterkest om vinteren, og flytter på stormbanen.",
   "coriolis": "Corioliseffekten er avbøyningen vi ser fordi jorda roterer under luft og vann som ellers går rett fram. På nordlig halvkule bøyer bevegelsen av mot høyre, på sørlig mot venstre, og ved ekvator er den null.",
-  "havstrommer": "Havstrømmer drives av tidevann, vind og tetthetsforskjeller. Overflaten samles i store havvirvler. I dypet synker kaldt og salt vann og inngår i et langsomt transportbånd.",
+  "havstrommer": "Havstrømmer drives av vind, trykkforskjeller, tetthetsforskjeller og tidevann, og jordrotasjonen bøyer dem av. Den norske atlanterhavsstrømmen frakter varmt vann langs Norge, og i dypet går en langsom sirkulasjon drevet av kaldt og salt vann.",
   "klima": "Denne siden er kartet. Oversikten eier stråling, pådriv og tilbakekobling. ENSO, IOD, NAO og AMOC eier hver sin svingning. Kryosfæren eier isen som jobber i år.",
   "kryosfaeren": "Kryosfæren er jordas frosne vann: breer, havis, snødekke og permafrost. De fleste breene i Norge har smeltet tilbake siden starten av 2000-tallet, mest på grunn av varme somre.",
   "numeriske-modeller": "En numerisk modell regner været fram fra observasjoner. ECMWF lager globale varsler fire ganger i døgnet, og et ensemble viser hvor sannsynlige ulike værforløp er.",
