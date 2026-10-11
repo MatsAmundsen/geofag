@@ -154,7 +154,7 @@ export const GF2_THEMES = [
     image: "/images/tema-strommer.jpg",
     alt: "Nord-Atlanteren med fargekontrast som minner om en vestlig randstrøm",
     blurb:
-      "Vind, tetthet og jordrotasjon flytter varme i havet. Golfstrømmen og AMOC er grunnen til at Norge er mildt på 60°N.",
+      "Vind, jordrotasjon og tetthet driver havstrømmene. Den norske atlanterhavsstrømmen og vinden gir Norge et mildt klima.",
     status: "klar" as const,
   },
   {

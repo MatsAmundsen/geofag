@@ -1017,59 +1017,70 @@ export const QUIZ_OVERSIKT: QuizQuestion[] = [
 
 export const QUIZ_HAVSTROMMER: QuizQuestion[] = [
   {
-    prompt: "Hva driver havstrømmer?",
+    prompt: "Hva er ekmanspiralen?",
     options: [
-      "Bare vinden, både i overflaten og i hele dyphavet.",
-      "Tidevann, vind og forskjeller i tetthet.",
-      "Bare månens drag, også midt i de store havvirvlene.",
-    ],
-    answer: 1,
-    explain:
-      "Se «Hva driver en havstrøm?». Tidevann, vind og tetthet driver strømmene. Tetthetsstrømmene går mye saktere.",
-  },
-  {
-    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
-    options: [
-      "Nøyaktig samme vei som vinden blåser.",
-      "Til venstre for vinden, som på den sørlige halvkule.",
-      "På tvers av vinden, til høyre for vindretningen.",
+      "En virvel som dannes rundt et lavtrykk på havet",
+      "Spiralen som tidevannet beveger seg i rundt et amfidromisk punkt",
+      "Mønsteret som strømretningen danner nedover i ekmanlaget, der hvert lag går litt saktere og litt mer til høyre",
+      "Bevegelsen til dypvannet rundt Antarktis",
     ],
     answer: 2,
-    explain:
-      "Se «Overflaten: ekmantransport og havvirvler». Overflatelaget, om lag de øverste 50 meterne, transporteres på tvers av vinden.",
+    explain: "Hvert lag drar i laget under, og corioliseffekten bøyer det mot høyre (Ekman, 1905; Barthel, 2021a).",
   },
   {
-    prompt: "Hva er oppvelling langs en vestkyst?",
+    prompt: "Hvorfor er strømmen på vestsiden av en havvirvel smal og rask?",
     options: [
-      "Overflatevann skyves ut, og kaldere, næringsrikt vann kommer opp fra dypet.",
-      "Overflatevannet presses inn mot land og synker.",
-      "Havisen fryser, og saltet blir igjen i overflaten.",
+      "Fordi corioliseffekten øker mot nord, noe som gir vestlig intensivering",
+      "Fordi vinden alltid er sterkest i vest",
+      "Fordi havet er dypere i vest",
+      "Fordi tidevannet er størst i vest",
     ],
     answer: 0,
-    explain:
-      "Se «Oppvelling». En nordavind langs en vestkyst på den nordlige halvkule skyver overflaten utover.",
+    explain: "Stommel (1948) forklarte det. Grunnen er at jorda er rund (Barthel, 2025).",
   },
   {
-    prompt: "Hva heter strømmen nordover langs norskekysten?",
+    prompt: "Hvor kommer det meste av atlanterhavsvannet inn i Norskehavet?",
     options: [
-      "Selve Golfstrømmen, hele veien fra Florida.",
-      "Labradorstrømmen, som kommer sørfra langs Norge.",
-      "Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen.",
+      "Gjennom Den engelske kanal",
+      "Gjennom Danmarkstredet",
+      "Gjennom Framstredet",
+      "Gjennom Færøy–Shetland-renna",
     ],
-    answer: 2,
-    explain:
-      "Se «Golfstrømmen og Norges klima». Navnet Golfstrømmen brukes feilaktig om strømmen langs Norge.",
+    answer: 3,
+    explain: "Der er vannet rundt 8 °C og har en saltholdighet på 35,4 promille (Weber & Bjørndalen, 2024).",
   },
   {
-    prompt: "Hvorfor synker vann i Nord-Atlanteren og starter transportbåndet?",
+    prompt: "Hva gir oppvelling langs en kyst?",
     options: [
-      "Vinden presser overflatevannet rett ned til bunnen.",
-      "Vannet avkjøles, og salt blir igjen når havis fryser, så tettheten øker.",
-      "Varmt ferskvann er tyngre enn kaldt salt vann.",
+      "At vinden blåser rett mot land",
+      "At ekmantransporten fører overflatevannet bort fra kysten",
+      "At tidevannet løfter bunnvannet",
+      "At havisen smelter",
     ],
     answer: 1,
-    explain:
-      "Se «Dypet: det globale transportbåndet». Kaldt og saltere vann blir tettere og synker. Overflatevann trekkes inn.",
+    explain: "Kaldt og næringsrikt vann stiger opp og erstatter overflatevannet (Barthel, 2021b).",
+  },
+  {
+    prompt: "Hvor har saltet fra havis størst betydning for dannelsen av tungt bunnvann?",
+    options: [
+      "I Nordsjøen",
+      "Langs norskekysten",
+      "Rundt Antarktis",
+      "I Sargassohavet",
+    ],
+    answer: 2,
+    explain: "Det meste av bunnvannet i verdenshavene dannes rundt Antarktis, særlig i Weddellhavet. I Nord-Atlanteren er avkjøling om vinteren viktigst (Barthel, 2025).",
+  },
+  {
+    prompt: "Hvorfor kan AMOC bli svakere når klimaet blir varmere?",
+    options: [
+      "Fordi vinden over Atlanteren slutter å blåse",
+      "Fordi havet blir saltere",
+      "Fordi jorda roterer saktere",
+      "Fordi overflatevannet i nord blir ferskere og varmere og synker ikke like lett",
+    ],
+    answer: 3,
+    explain: "IPCC (2021) vurderer det som svært sannsynlig at AMOC svekkes i dette hundreåret.",
   },
 ];
 
@@ -3914,6 +3925,466 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Når havbunn med kalkstein subduseres, frigjør oppvarmingen CO₂ fra karbonatene. Vulkanene gir gassen tilbake til atmosfæren.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er likevektslinjen (ELA) på en bre?",
+    options: [
+      "Grensen mellom bre og fjell",
+      "Høyden der akkumulasjon og ablasjon er like stor",
+      "Den nederste enden av breen",
+    ],
+    answer: 1,
+    explain: "Over likevektslinjen hoper snøen seg opp, under smelter den. Firngrensen ved slutten av sommeren ligger ofte nær ELA, men er ikke det samme.",
+  },
+  {
+    prompt: "Hvor stort er brearealet i Norge etter den siste kartleggingen (2018–2019)?",
+    options: [
+      "Om lag 2328 km², 14 prosent mindre enn i 1999–2006",
+      "Om lag 23 000 km²",
+      "Om lag 232 km²",
+    ],
+    answer: 0,
+    explain: "NVE kartla breene fra satellitt. Arealet har minket med 14 prosent siden forrige kartlegging.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er det aktive laget?",
+    options: [
+      "Den delen av breen som beveger seg",
+      "Det øverste laget over permafrosten, som tiner hver sommer",
+      "Havis som er yngre enn ett år",
+    ],
+    answer: 1,
+    explain: "Når permafrosten varmes, blir det aktive laget dypere, og bakken blir mer ustabil.",
+  },
+  {
+    prompt: "Hvorfor forsterker smeltende havis oppvarmingen i Arktis?",
+    options: [
+      "Fordi isen frigjør varme når den smelter",
+      "Fordi havis inneholder CO₂",
+      "Fordi mørkt hav tar opp mer solvarme enn hvit is",
+    ],
+    answer: 2,
+    explain: "Is har høy albedo og hav lav. Mindre is gir mer oppvarming, og det er en positiv tilbakekobling.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_3: QuizQuestion[] = [
+  {
+    prompt: "Hvor stort område gjelder en regional snøskredfaregrad for?",
+    options: [
+      "Minst 100 km²",
+      "Ett enkelt heng",
+      "Hele Norge",
+    ],
+    answer: 0,
+    explain: "Faregraden er regional. Den som ferdes i fjellet, må gjøre egne vurderinger.",
+  },
+  {
+    prompt: "Hvordan ventes snøskredfaren å endre seg med klimaendringene?",
+    options: [
+      "Flere snøskred overalt",
+      "Færre snøskred i lavlandet, men flere naturlig utløste skred høyt til fjells",
+      "Ingen endring",
+    ],
+    answer: 1,
+    explain: "Mindre snø og kortere sesong gir færre skred i lavlandet. Høyere opp ventes flere (Norsk klimaservicesenter).",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor ser ballen på karusellen ut til å svinge?",
+    options: [
+      "Fordi en kraft skyver den sidelengs",
+      "Fordi den som ser på, roterer med karusellen",
+      "Fordi ballen snurrer",
+    ],
+    answer: 1,
+    explain: "Sett utenfra går ballen rett. Avbøyningen kommer av at ståstedet roterer.",
+  },
+  {
+    prompt: "Hvilken vei avbøyes luft som blåser nordover på den nordlige halvkule?",
+    options: [
+      "Mot venstre",
+      "Den avbøyes ikke",
+      "Mot høyre",
+    ],
+    answer: 2,
+    explain: "Lufta har med seg større fart østover enn bakken lenger nord, og det blir en høyresving.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_2: QuizQuestion[] = [
+  {
+    prompt: "Hvor er corioliseffekten null?",
+    options: [
+      "Ved ekvator",
+      "Ved polene",
+      "Ved 60° bredde",
+    ],
+    answer: 0,
+    explain: "Coriolisparameteren er null ved ekvator og øker mot polene. Derfor dannes ikke orkaner helt ved ekvator.",
+  },
+  {
+    prompt: "Hvorfor blåser ikke vinden nær bakken langs isobarene?",
+    options: [
+      "Fordi corioliskraften er sterkest der",
+      "Fordi friksjonen bremser vinden, særlig over land",
+      "Fordi trykket er likt overalt",
+    ],
+    answer: 1,
+    explain: "Over havet er vinkelen 0–20° og over land 20–40°, fordi friksjonen er større over land.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
+    options: [
+      "Med vinden",
+      "Mot vinden",
+      "Til høyre for vinden",
+    ],
+    answer: 2,
+    explain: "Overflatelaget transporteres på tvers av vinden, til høyre i nord.",
+  },
+  {
+    prompt: "Hvorfor kan en nordavind langs en vestkyst gi oppvelling?",
+    options: [
+      "Ekmantransporten skyver overflatevannet ut fra kysten, og dypvann kommer opp",
+      "Nordavinden er varm",
+      "Tidevannet blir større",
+    ],
+    answer: 0,
+    explain: "Vannet som kommer opp, er rikt på næringsstoffer, og områdene har ofte rike fiskerier.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor får vi tre celler på hver halvkule i stedet for én?",
+    options: [
+      "Fordi jorda roterer og lufta mot polen dreies til vestavind",
+      "Fordi havet stopper lufta ved 30°",
+      "Fordi det er tre kontinenter",
+    ],
+    answer: 0,
+    explain: "Uten rotasjon kunne én celle gått helt til polen. Corioliseffekten deler sirkulasjonen i Hadley-, Ferrel- og polarcellen.",
+  },
+  {
+    prompt: "Hva holder Ferrel-cellen i gang?",
+    options: [
+      "Oppvarming ved ekvator",
+      "De vandrende lavtrykkene og høytrykkene ved midlere breddegrader",
+      "Friksjon mot bakken",
+    ],
+    answer: 1,
+    explain: "Ferrel-cellen er termisk indirekte. Friksjon bremser vinden, men skaper den ikke.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er det tørt nær 30°?",
+    options: [
+      "Fordi det ikke finnes elver der",
+      "Fordi lufta synker, varmes opp og skyene løses opp",
+      "Fordi sola skinner svakere der",
+    ],
+    answer: 1,
+    explain: "Synkende luft presses sammen og varmes. Den relative fuktigheten faller, og det blir høytrykk og tørke.",
+  },
+  {
+    prompt: "Hva er konvergenssonen (ITCZ)?",
+    options: [
+      "Et høytrykksbelte ved 30°",
+      "Grensen mellom kald og varm luft ved 60°",
+      "Beltet der passatene møtes og lufta stiger",
+    ],
+    answer: 2,
+    explain: "Passatene strømmer sammen nær ekvator. Lufta stiger, og det blir skyer, byger og regn.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_3: QuizQuestion[] = [
+  {
+    prompt: "Fra hvilken retning blåser passaten på den nordlige halvkule?",
+    options: [
+      "Nordøst",
+      "Sørvest",
+      "Vest",
+    ],
+    answer: 0,
+    explain: "Lufta strømmer fra 30° mot ekvator og dreies mot høyre, så den kommer fra nordøst.",
+  },
+  {
+    prompt: "Hvorfor flytter konvergenssonen seg gjennom året?",
+    options: [
+      "Fordi havstrømmene snur",
+      "Fordi den følger sola nordover og sørover",
+      "Fordi jetstrømmen skyver den",
+    ],
+    answer: 1,
+    explain: "Konvergenssonen følger der oppvarmingen er sterkest. Det gir regntid og tørketid i tropene.",
+  },
+];
+
+export const QUIZ_SJEKK_VINDSYSTEMET_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor faller det mye mer nedbør på vestsiden av fjellene i Norge enn i Ottadalen?",
+    options: [
+      "Fordi det er kaldere i vest",
+      "Fordi vestavinden løfter fuktig luft mot fjellene, og lesiden ligger i regnskygge",
+      "Fordi lavtrykkene kommer fra øst",
+    ],
+    answer: 1,
+    explain: "Orografisk nedbør faller på luvsiden. På lesiden synker lufta, varmes og er tørrere.",
+  },
+  {
+    prompt: "Hva er polarfronten?",
+    options: [
+      "Grensen mellom kald polarluft og varm subtropisk luft",
+      "Kanten av havisen",
+      "Et høytrykk over Nordpolen",
+    ],
+    answer: 0,
+    explain: "Langs polarfronten dannes vandrende lavtrykk som gir mye av nedbøren i Norge.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_1: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr det når isobarene ligger tett?",
+    options: [
+      "Høyt trykk",
+      "Stor trykkforskjell over kort avstand og sterk vind",
+      "At det blir nedbør",
+    ],
+    answer: 1,
+    explain: "Tette isobarer gir sterk vind. Gisne isobarer gir svak vind.",
+  },
+  {
+    prompt: "Hva betyr 12Z på et værkart?",
+    options: [
+      "Klokka 12 UTC",
+      "Klokka 12 norsk tid om vinteren",
+      "12 timer etter varselet",
+    ],
+    answer: 0,
+    explain: "Kart, radar og satellittbilder har tidsstempel i UTC, også kalt Z-tid.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_2: QuizQuestion[] = [
+  {
+    prompt: "Hvordan tegnes en kaldfront?",
+    options: [
+      "Rød strek med halvsirkler",
+      "Blå strek med trekanter i fartsretningen",
+      "Lilla strek uten symboler",
+    ],
+    answer: 1,
+    explain: "Trekantene peker den veien fronten flytter seg.",
+  },
+  {
+    prompt: "Hva betyr det at en front er en kaldfront?",
+    options: [
+      "At det er kuldegrader bak fronten",
+      "At lufta bak er kaldere enn lufta foran",
+      "At den kommer fra nord",
+    ],
+    answer: 1,
+    explain: "Det finnes ingen fast temperaturgrense. Begge sidene kan være milde.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_3: QuizQuestion[] = [
+  {
+    prompt: "Hvordan dannes en okkludert front?",
+    options: [
+      "Kaldfronten tar igjen varmfronten",
+      "Varmfronten stopper opp",
+      "To høytrykk møtes",
+    ],
+    answer: 0,
+    explain: "Kaldfronten går raskere enn varmfronten. Varmsektoren løftes bort fra bakken, og lavtrykket svekkes.",
+  },
+  {
+    prompt: "Hvem utviklet den norske syklonmodellen?",
+    options: [
+      "Vilhelm Bjerknes alene",
+      "William Ferrel",
+      "Jacob Bjerknes og Halvor Solberg",
+    ],
+    answer: 2,
+    explain: "Jacob Bjerknes beskrev frontene i 1919, og sammen med Solberg publiserte han livsløpet i 1922.",
+  },
+];
+
+export const QUIZ_SJEKK_VAERKART_4: QuizQuestion[] = [
+  {
+    prompt: "Hva betyr tallet 564 på et 500 hPa-kart?",
+    options: [
+      "Trykket er 564 hPa",
+      "500 hPa-flaten ligger 5640 meter over havet",
+      "Temperaturen er –56,4 °C",
+    ],
+    answer: 1,
+    explain: "Konturene viser høyden av 500 hPa-flaten. Den siste nullen er sløyfet.",
+  },
+  {
+    prompt: "Hvilken vei peker vindpilen i et stasjonsplott?",
+    options: [
+      "Dit vinden kommer fra",
+      "Dit vinden blåser",
+      "Alltid mot nord",
+    ],
+    answer: 0,
+    explain: "Vinden har navn etter retningen den kommer fra, og vindpilen peker dit.",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvilken av disse setter IKKE i seg selv vannet i bevegelse, men bøyer av strømmen?",
+    options: [
+      "Vinden",
+      "Tetthetsforskjeller",
+      "Jordrotasjonen",
+    ],
+    answer: 2,
+    explain: "Jordrotasjonen bøyer av alt som beveger seg, mot høyre på den nordlige halvkulen (Barthel, 2025).",
+  },
+  {
+    prompt: "Hva er 1 sverdrup (Sv)?",
+    options: [
+      "1 meter per sekund",
+      "1 million kubikkmeter vann per sekund",
+      "1000 kubikkmeter vann per døgn",
+    ],
+    answer: 1,
+    explain: "Sverdrup er enheten for vanntransport (Barthel, 2025).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_2: QuizQuestion[] = [
+  {
+    prompt: "Vinden blåser mot nord på den nordlige halvkulen. Hvilken vei går ekmantransporten?",
+    options: [
+      "Mot øst",
+      "Mot vest",
+      "Mot nord",
+    ],
+    answer: 0,
+    explain: "90 grader til høyre for vinden (Barthel, 2021a).",
+  },
+  {
+    prompt: "Hvorfor er Golfstrømmen smal og rask, mens Kanaristrømmen er bred og langsom?",
+    options: [
+      "Fordi det blåser mer på vestsiden av Atlanteren",
+      "Fordi vannet er varmere i vest",
+      "Fordi corioliseffekten øker mot nord, noe som gir vestlig intensivering",
+    ],
+    answer: 2,
+    explain: "Stommel (1948) viste at det er fordi jorda er rund (Barthel, 2025).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_3: QuizQuestion[] = [
+  {
+    prompt: "Langs en vestkyst på den nordlige halvkulen blåser vinden mot sør, parallelt med land. Hva skjer?",
+    options: [
+      "Overflatevannet presses mot land, og det blir nedvelling",
+      "Overflatevannet føres ut fra land, og det blir oppvelling",
+      "Ingenting, fordi vinden blåser langs kysten",
+    ],
+    answer: 1,
+    explain: "Ekmantransporten går 90 grader til høyre for vinden, altså vestover og ut fra land (Barthel, 2021b).",
+  },
+  {
+    prompt: "Hvorfor er oppvellingsområdene så rike på fisk?",
+    options: [
+      "Vannet fra dypet har mye næringssalter, og planteplanktonet vokser godt",
+      "Vannet er varmere enn rundt",
+      "Strømmen er svakere enn rundt",
+    ],
+    answer: 0,
+    explain: "De dekker under 1 prosent av havoverflaten, men står for opptil 20 prosent av fiskefangsten i verden (Du mfl., 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_4: QuizQuestion[] = [
+  {
+    prompt: "Hva heter strømmen som frakter varmt atlanterhavsvann langs norskekysten?",
+    options: [
+      "Golfstrømmen",
+      "Labradorstrømmen",
+      "Den norske atlanterhavsstrømmen",
+    ],
+    answer: 2,
+    explain: "Golfstrømmen går langs Nord-Amerika. Navnet brukes feil om strømmen langs Norge (Barthel, 2026; Weber & Bjørndalen, 2024).",
+  },
+  {
+    prompt: "Hvorfor er Den norske kyststrømmen ferskere enn atlanterhavsvannet?",
+    options: [
+      "Fordi den får smeltevann fra Grønland",
+      "Fordi den har med seg ferskvann fra Østersjøen og de norske elvene",
+      "Fordi det regner mer nær land",
+    ],
+    answer: 1,
+    explain: "Saltholdigheten er 30–33 promille (Havforskningsinstituttet, 2026; Sælen mfl., 2025a).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_5: QuizQuestion[] = [
+  {
+    prompt: "Hva er den beste forklaringen på at Norge er så mildt?",
+    options: [
+      "Bare varmen fra havstrømmene",
+      "Samspillet mellom varme havstrømmer og vindsystemene",
+      "At sola står høyere her enn på Grønland",
+    ],
+    answer: 1,
+    explain: "Havet gir varme til lufta, og de sørvestlige vindene fører lufta inn over land (Dannevig & Harstveit, 2026; Weber & Bjørndalen, 2024).",
+  },
+  {
+    prompt: "Hvordan har temperaturen i atlanterhavsvannet i Norskehavet utviklet seg siden 1970-tallet?",
+    options: [
+      "Den har steget",
+      "Den har sunket",
+      "Den har vært uendret",
+    ],
+    answer: 0,
+    explain: "2007 var det varmeste året i Svinøy- og Gimsøysnittet, og i 2025 var temperaturen omtrent 0,3 grader over normalen (Havforskningsinstituttet, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_6: QuizQuestion[] = [
+  {
+    prompt: "Hva gjør først og fremst at overflatevannet synker i Nord-Atlanteren?",
+    options: [
+      "At det blir kraftig avkjølt om vinteren",
+      "At det fordamper mye vann om sommeren",
+      "At det kommer mye smeltevann",
+    ],
+    answer: 0,
+    explain: "Saltet fra havis betyr mest rundt Antarktis (Barthel, 2025; Sælen mfl., 2025a).",
+  },
+  {
+    prompt: "Hva mener FNs klimapanel om AMOC i dette hundreåret?",
+    options: [
+      "Den vil sannsynligvis bryte brått sammen før 2100",
+      "Den vil bli sterkere",
+      "Den vil svært sannsynlig bli svekket, men med middels sikkerhet ikke bryte brått sammen før 2100",
+    ],
+    answer: 2,
+    explain: "IPCC (2021), SPM C.3.4.",
   },
 ];
 

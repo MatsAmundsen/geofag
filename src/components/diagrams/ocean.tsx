@@ -5,7 +5,7 @@ export function OceanDriversDiagram() {
   return (
     <FigureFrame
       heading="Vind, rotasjon og tetthet"
-      caption="Overflaten skyves av vinden og bøyes av coriolis. I dypet er det tetthet som gjelder: kaldt og salt vann synker, varmt og ferskere vann blir liggende oppå. Tidevann rører kysten, men driver ikke de store gyrene."
+      caption="Overflaten skyves av vinden og bøyes av corioliseffekten. Der havoverflaten heller, gir trykkforskjeller strøm. I dypet er det tetthet som gjelder: kaldt og salt vann synker. Tidevannet gir strømmer som skifter retning, men driver ikke de store havvirvlene."
     >
       <div className="grid gap-3 sm:grid-cols-3">
         {[
@@ -31,9 +31,9 @@ export function OceanDriversDiagram() {
 export function EkmanDiagram() {
   return (
     <Diagram
-      title="Ekman-transport og Ekman-spiralen"
+      title="Ekmantransport og ekmanspiralen"
       heading="Vinden peker én vei, vannet flytter seg 90° til høyre"
-      caption="Vinden driver det øverste vannlaget, som bøyes ca. 45° til høyre av corioliseffekten på nordlig halvkule. Hvert underliggende lag trekkes med av friksjon, men bremses og bøyes enda lenger til høyre (Ekman-spiralen). Summeres bevegelsen ned gjennom hele laget (ca. 50–100 m dyp), blir nettotransporten nøyaktig 90° til høyre for vindretningen."
+      caption="Vinden driver det øverste vannlaget, som bøyes ca. 45° til høyre av corioliseffekten på den nordlige halvkulen. Hvert underliggende lag trekkes med av friksjon, men bremses og bøyes enda lenger til høyre (ekmanspiralen). Summeres bevegelsen ned gjennom hele laget (typisk noen titalls meter, opptil 100–200 m ved sterk vind), blir nettotransporten 90° til høyre for vindretningen."
       viewBox="0 0 840 370"
     >
       {(m) => (
@@ -116,7 +116,7 @@ export function EkmanDiagram() {
             (90° til venstre på sørlig halvkule)
           </L>
           <L x="605" y="262" fill={C.muted} size={11}>
-            Stabler opp vann inne i gyrene → forhøyet havflate
+            Stabler opp vann inne i havvirvlene → forhøyet havflate
           </L>
         </>
       )}
@@ -127,9 +127,9 @@ export function EkmanDiagram() {
 export function GyreDiagram() {
   return (
     <Diagram
-      title="Den nordatlantiske gyren"
-      heading="Med klokken, sterk i vest, slapp i øst"
-      caption="Havvirvelen går med klokken på den nordlige halvkule. Den vestlige randstrømmen er sterk og smal, den østlige er svak og bred. Havspeilet står relativt høyt der vinden stuver vann, og jordrotasjonen bøyer strømmen til høyre for skråningen."
+      title="Havvirvelen i Nord-Atlanteren"
+      heading="Med klokka, sterk i vest, slapp i øst"
+      caption="Havvirvelen går med klokka på den nordlige halvkulen. Den vestlige randstrømmen er sterk og smal, den østlige er svak og bred. Havspeilet står relativt høyt der vinden stuver vann, og jordrotasjonen bøyer strømmen til høyre for skråningen."
       viewBox="0 0 840 400"
     >
       {(m) => (
@@ -179,7 +179,7 @@ export function GyreDiagram() {
             nordlige ekvatorialstrøm
           </L>
           <L x="420" y="378" fill={C.fg} size={14} anchor="middle">
-            gyre med klokken på nordlig halvkule
+            havvirvel med klokka på den nordlige halvkulen
           </L>
         </>
       )}
@@ -231,7 +231,7 @@ export function DensityDiagram() {
     <Diagram
       title="Hva som gjør vann tettere"
       heading="Kaldt og salt synker, varmt og ferskt flyter"
-      caption="Tetthet øker når temperaturen synker og når saltholdigheten stiger. I de nordiske hav mister overflatevannet varme til lufta. Når det dannes havis, blir saltet igjen i vannet. Da blir vannet tungt nok til å synke og mate dyphavet."
+      caption="Tettheten øker når temperaturen synker og når saltholdigheten stiger. I Nord-Atlanteren blir overflatevannet tungt nok til å synke først og fremst fordi det blir kraftig avkjølt om vinteren. Saltet som blir igjen når havis fryser, betyr mest rundt Antarktis, der det meste av bunnvannet dannes."
       viewBox="0 0 820 300"
     >
       {() => (
@@ -267,9 +267,9 @@ export function DensityDiagram() {
 export function AmocDiagram() {
   return (
     <Diagram
-      title="AMOC — havets belte i Atlanteren"
+      title="AMOC: omveltningen i Atlanterhavet"
       heading="Varmt nordover i toppen, kaldt sørover i dypet"
-      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Norskehavet, Grønlandshavet og Labradorhavet synker det som North Atlantic Deep Water og returnerer sørover på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme."
+      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Grønlandshavet, Irmingerhavet og Labradorhavet synker det som nordatlantisk dypvann og returnerer sørover på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme. IPCC (2021): svært sannsynlig svekket i dette hundreåret, ikke brå kollaps før 2100 (middels sikkerhet)."
       viewBox="0 0 840 360"
     >
       {(m) => (
@@ -304,7 +304,7 @@ export function AmocDiagram() {
             kaldt dyphavsvann sørover
           </L>
           <L x="420" y="340" fill={C.muted} size={13} anchor="middle">
-            Norskehavet · Grønlandshavet · Labradorhavet
+            Grønlandshavet · Irmingerhavet · Labradorhavet
           </L>
         </>
       )}
@@ -315,9 +315,9 @@ export function AmocDiagram() {
 export function UpwellingDiagram() {
   return (
     <Diagram
-      title="Kystnær oppwelling"
+      title="Oppvelling langs kysten"
       heading="Vind langs kysten trekker overflatevannet ut — dypvannet fyller igjen"
-      caption="Blåser vinden langs kysten slik at Ekman-transporten peker ut fra land, skyves det varme overflatevannet vekk. Kaldt, næringsrikt dypvann stiger opp for å fylle tomrommet. Det er oppwelling — mekanismen bak noen av verdens rikeste fiskefelt, blant annet utenfor Peru og Vest-Afrika."
+      caption="Blåser vinden langs kysten slik at ekmantransporten peker ut fra land, skyves det varme overflatevannet vekk. Kaldt, næringsrikt dypvann stiger opp for å fylle tomrommet. Det er oppvelling — mekanismen bak noen av verdens rikeste fiskefelt, blant annet utenfor Peru og Vest-Afrika."
       viewBox="0 0 820 380"
     >
       {(m) => (
@@ -383,7 +383,7 @@ export function ClimateContrastDiagram() {
   return (
     <FigureFrame
       heading="Hvorfor Norge ikke er Labrador"
-      caption="Bergen og kysten av Labrador ligger nær 60°N. Den nordatlantiske strømmen, AMOC og vestavindsbeltet gir Norge milde vintre og isfrie fjorder. På vestsiden av Atlanteren treffer samme bredde kald luft og kaldt kystvann. Havet er en del av forklaringen — ikke hele."
+      caption="Bergen og kysten av Labrador ligger nær 60°N. Den norske atlanterhavsstrømmen og de sørvestlige vindene gir Norge milde vintre og isfrie fjorder. På vestsiden av Atlanteren treffer samme bredde kald luft og kaldt kystvann. Havet er en del av forklaringen, men ikke hele."
     >
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-lg border border-primary/40 bg-background px-4 py-5 text-center">

@@ -98,8 +98,8 @@ export function SkredSonerDiagram() {
   return (
     <Diagram
       title="Løsneområde, transportsone og utløpsområde i en skråning med hus i utløpet"
-      heading="Tre soner: der det løsner, der det går, der det stopper"
-      caption="Et skred har tre deler. Løsneområdet er der massen bryter løs, høyest i skråningen. Transportsonen er sporet nedover, ofte et bekkeløp eller en renne. Utløpsområdet er der massen legger seg, som regel der terrenget flater ut — og det er der folk bygger. Faren sitter oppe i skråningen. Skaden skjer nede i utløpet. Derfor må et faresonekart vise hvor langt massen kan rekke, ikke bare hvor den kan løsne."
+      heading="Der skredet løsner, går og stopper"
+      caption="Et skred løsner høyt i skråningen, går nedover og stopper i et utløpsområde der terrenget blir slakere. Aktsomhetskartene bygger på regler for hvor skred kan løsne og hvor de kan havne. Hvor langt et skred kan gå, beregnes med utløpsmodeller (NVE, 2020b; NVE, 2023b)."
       viewBox="0 0 840 400"
     >
       {(m) => (
@@ -132,9 +132,6 @@ export function SkredSonerDiagram() {
           <Arrow d="M 230 200 L 330 264" marker={m.warm} color={C.sand} width={3} />
           <L x="238" y="188" fill={C.sand} size={14}>
             2 · transportsone
-          </L>
-          <L x="348" y="266" fill={C.muted} size={12}>
-            renne eller bekkeløp
           </L>
 
           <L x="592" y="250" fill={C.teal} size={14}>
@@ -409,7 +406,7 @@ export function FjellskredBolgeDiagram() {
     <Diagram
       title="Fjellskred i fjord som lager flodbølge med stor oppskyllingshøyde på motsatt side"
       heading="Fjellskred i fjord blir flodbølge"
-      caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden i minutter, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde, og den kan bli mange ganger bølgehøyden ute i fjorden. I Tafjord 1934 nådde vannet 61 høydemeter (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
+      caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde. Når bølgen når land, kan den skylle høyere opp enn bølgen var ute på fjorden. I Tafjord i 1934 nådde oppskyllingen ca. 60 m over havet (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
       viewBox="0 0 840 400"
     >
       {(m) => (
@@ -422,7 +419,7 @@ export function FjellskredBolgeDiagram() {
           <path d="M 40 300 L 40 90 L 220 300 Z" fill="#2a3d34" stroke={C.dim} />
           <path d="M 118 196 L 160 196 L 196 262 L 148 262 Z" fill={C.low} opacity="0.8" />
           <path d="M 112 190 L 166 190" stroke={C.low} strokeWidth="3.4" />
-          <L x="80" y="176" fill={C.low} size={13}>
+          <L x="124" y="168" fill={C.low} size={13}>
             sprekk
           </L>
           <Arrow d="M 176 236 L 236 292" marker={m.low} color={C.low} width={3.2} />
@@ -441,7 +438,7 @@ export function FjellskredBolgeDiagram() {
             bølgen krysser fjorden
           </L>
 
-          <path d="M 700 300 L 800 300 L 800 120 Z" fill="#2a3d34" stroke={C.dim} />
+          <path d="M 700 300 L 750 300 L 800 120 L 800 300 Z" fill="#2a3d34" stroke={C.dim} />
           <line
             x1="688"
             y1="192"
@@ -451,17 +448,17 @@ export function FjellskredBolgeDiagram() {
             strokeWidth="2.4"
             strokeDasharray="7 5"
           />
-          <Arrow d="M 712 296 L 712 198" marker={m.warm} color={C.warm} width={2.6} />
+          <Arrow d="M 704 296 L 704 198" marker={m.warm} color={C.warm} width={2.6} />
           <L x="676" y="186" fill={C.warm} size={13} anchor="end">
             oppskyllingshøyde
           </L>
           <L x="676" y="206" fill={C.muted} size={12} anchor="end">
-            Tafjord 1934: 61 m
+            Tafjord 1934: ca. 60 m
           </L>
 
           <g>
-            <rect x="742" y="272" width="26" height="20" fill="#c9ccc8" />
-            <path d="M 738 272 L 755 260 L 772 272 Z" fill={C.low} />
+            <rect x="716" y="280" width="24" height="20" fill="#c9ccc8" />
+            <path d="M 712 280 L 728 268 L 744 280 Z" fill={C.low} />
           </g>
           <L x="792" y="330" fill={C.fg} size={12} anchor="end">
             bygd på motsatt side

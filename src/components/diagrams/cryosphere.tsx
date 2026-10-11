@@ -104,7 +104,7 @@ export function PermafrostDiagram() {
           />
           <L x="120" y="170" fill={C.teal} size={17} weight={700}>Permafrost (T &lt; 0 °C i &gt; 2 år)</L>
           <L x="120" y="195" fill={C.fg} size={13}>Fastfrosset porevann danner iskiler og sementerer løsmassene.</L>
-          <L x="120" y="215" fill={C.muted} size={12}>Tykkelse i Norge: opptil 500 m på Svalbard, flekkvis i høyfjellet (Jotunheimen, Dovre).</L>
+          <L x="120" y="215" fill={C.muted} size={12}>Tykkelse: ca. 100–150 m nær kysten på Svalbard, opptil 400–500 m i fjellet. Flekkvis i høyfjellet i Sør-Norge (Jotunheimen, Dovre).</L>
 
           {/* Talik (ufrosset lomme under innsjøen) */}
           <path d="M 420 110 C 450 160, 470 240, 540 240 C 610 240, 630 160, 660 110 Z" fill="#2d2218" stroke={C.warm} strokeWidth="1.6" />
@@ -124,7 +124,7 @@ export function PermafrostDiagram() {
 export function SeaIceAlbedoFeedbackDiagram() {
   return (
     <Diagram
-      title="Havis og albedo-tilbakekobling: 80 % refleksjon fra is vs 90 % absorpsjon i åpent hav"
+      title="Havis og albedo-tilbakekobling: snødekt is reflekterer ca. 80 %, bar havis 50–70 %, åpent hav bare ca. 10 %"
       heading="Havis og den positive albedo-tilbakekoblingen"
       caption="Når kloden varmes opp, smelter havisen. Den hvite, reflekterende overflaten (høy albedo) erstattes av mørkt, åpent hav (lav albedo) som absorberer langt mer solvarme. Dette fører til ytterligere oppvarming og mer smelting."
       viewBox="0 0 900 420"
@@ -150,7 +150,7 @@ export function SeaIceAlbedoFeedbackDiagram() {
 
             {/* Sterk reflektert stråle (80%) */}
             <Arrow d="M 170 155 L 220 90" marker={m.teal} color={C.teal} width={3.6} />
-            <L x="210" y="115" fill={C.teal} size={14} weight={700}>~80 % reflekteres</L>
+            <L x="210" y="115" fill={C.teal} size={14} weight={700}>~80 % reflekteres (snødekt is)</L>
             <L x="210" y="132" fill={C.muted} size={11}>Lite varme tas opp i systemet</L>
           </g>
 

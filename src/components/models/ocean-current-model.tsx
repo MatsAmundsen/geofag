@@ -11,7 +11,7 @@ export function OceanCurrentModel() {
   const meltLensOpacity = !isFreezing ? (meltPercent - 30) / 70 : 0;
 
   const status = isMelting
-    ? "Dypvannsdannelsen stopper"
+    ? "Dypvannsdannelsen avtar"
     : isFreezing
       ? "Aktiv dypvannsdannelse"
       : "Sirkulasjonen svekket";
@@ -19,8 +19,8 @@ export function OceanCurrentModel() {
   return (
     <ModelFrame
       kicker="Interaktiv modell"
-      title="Dyphavsdannelse og termoklinen"
-      lead="Kald polarvind og havis driver det tunge vannet ned. Smeltevann kan legge et lett lokk over, så omveltningen bremser."
+      title="Dypvannsdannelse i Nord-Atlanteren"
+      lead="Kald vind om vinteren avkjøler overflatevannet, så det blir tungt og synker. Smeltevann og mer nedbør kan legge et lett lokk over, så omveltningen bremser."
     >
       <ModelMarkers />
 
@@ -30,7 +30,7 @@ export function OceanCurrentModel() {
             <label className="flex justify-between gap-3 text-sm font-medium">
               <span>Klima ved polene</span>
               <span className={isFreezing ? "text-primary" : isMelting ? "text-lava" : "text-muted-foreground"}>
-                {isFreezing ? "Frysing" : isMelting ? "Smelting" : "Mildt"}
+                {isFreezing ? "Kraftig avkjøling" : isMelting ? "Smelting" : "Mildt"}
               </span>
             </label>
             <input
@@ -43,7 +43,7 @@ export function OceanCurrentModel() {
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={meltPercent}
-              aria-label="Klima ved polene, fra frysing til smelting"
+              aria-label="Klima ved polene, fra kraftig avkjøling til smelting"
             />
             <div className="mt-2 flex justify-between text-xs text-muted-foreground">
               <span>Kald polarvind</span>
@@ -54,10 +54,10 @@ export function OceanCurrentModel() {
           <ModelNote title={status} tone={isFreezing ? "teal" : "warm"}>
             <p>
               {isMelting
-                ? "Ferskvannet fra smeltingen er lett. Det legger seg som et lokk, og vannet under klarer ikke å bryte gjennom termoklinen. Dypvannsdannelsen stopper. Det er en svekkelse over tid — ikke en bryter som slår av Golfstrømmen på en dag."
+                ? "Ferskvannet fra smeltingen er lett og legger seg som et lokk. Vannet synker ikke like lett, og dypvannsdannelsen avtar. Det kan svekke AMOC over tid, men det er ikke en bryter som slås av på en dag (IPCC, 2021)."
                 : isFreezing
-                  ? "Kald polarvind fryser havvannet. Saltet blir igjen i vannet (brine rejection). Vannet blir tyngre og synker gjennom termoklinen."
-                  : "Polarvinden har avtatt. Isdannelsen stopper opp, og saltet skilles ikke ut. Strømmen bremses."}
+                  ? "Kald polarluft avkjøler overflatevannet kraftig om vinteren. Kaldt vann er tyngre og synker. (Saltet som blir igjen når havis fryser, betyr mest rundt Antarktis.)"
+                  : "Avkjølingen avtar, og overflatevannet blir ikke tungt nok til å synke like mye. Strømmen bremses."}
             </p>
           </ModelNote>
         </div>
@@ -130,7 +130,7 @@ export function OceanCurrentModel() {
             <rect x="0" y="275" width="800" height="225" fill="#1e3a8a" opacity="0.8" />
             <path d="M 0,275 Q 100,285 200,275 T 400,275 T 600,275 T 800,275" fill="none" stroke="#38bdf8" strokeWidth="3" strokeDasharray="10 5" />
             <text x="20" y="295" fill="#7dd3fc" fontSize="14" fontStyle="italic">
-              Termoklinen (sperre for lett vann)
+              Lagdelingen (sperre for lett vann)
             </text>
 
             <g style={{ transform: `translate(650px, 105px) scale(${iceScale})` }}>

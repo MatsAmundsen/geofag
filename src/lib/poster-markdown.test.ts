@@ -182,7 +182,7 @@ describe("injectPosterWidgets", () => {
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
-    assert.equal(md.includes("/tema/vaerkart"), true);
+    assert.equal(md.includes("/tema/hoytrykk-lavtrykk"), true);
     assert.equal(md.includes("Bjerknes-modellen"), true);
     assert.equal(md.includes("følger ofte et fast løp"), false);
   });
@@ -265,7 +265,7 @@ describe("injectPosterWidgets", () => {
     const vann = listedWidgetIds(
       injectPosterWidgets(readFileSync(join(lib, "posts/vann-og-flom.md"), "utf8")),
     );
-    for (const id of ["Kretslop", "AkviferForklaring", "Hydrograph", "QuizVannOgFlom"]) {
+    for (const id of ["Kretslop", "AkviferForklaring", "AkviferSnitt", "Hydrograph", "HansNedbor", "QuizVannOgFlom"]) {
       assert.equal(vann.has(id), true, `vann-og-flom missing ${id}`);
     }
     assert.equal(bergarter.has("QuizVannOgFlom"), false);

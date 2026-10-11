@@ -3,6 +3,11 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_G2 = {
   vaerkart: [
     {
+      prefix: "Ahrens, C. D., & Henson, R. (2022). ",
+      italic: "Meteorology today: An introduction to weather, climate, and the environment",
+      suffix: " (13. utg., kap. 11). Cengage.",
+    },
+    {
       prefix: "Bjerknes, J., & Solberg, H. (1922). ",
       italic: "Life cycle of cyclones and the polar front theory of atmospheric circulation",
       suffix: ". Geofysiske Publikasjoner, 3(1), 1–18.",
@@ -43,6 +48,12 @@ export const KILDER_G2 = {
       italic: "Surface weather plot symbols",
       suffix: ".",
       href: "https://www.noaa.gov/jetstream/wxmaps-max/jetstream-max-surface-weather-plot-symbols",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.). ",
+      italic: "Unified surface analysis manual",
+      suffix: ".",
+      href: "https://www.wpc.ncep.noaa.gov/sfc/UASfcManualVersion1.pdf",
     },
     {
       prefix: "Sivle, A. (2009, 31. august). ",
