@@ -14,6 +14,7 @@ import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { P, clamp, lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
+import { NH_DURATION_MS, NH_END_HOLD_MS } from "./motion-config";
 import {
   KART_BELTGR,
   KART_BELTNO,
@@ -1178,7 +1179,7 @@ export function NorskehavetFigur({
   );
 }
 
-/** Spiller tiden fram (ca. 12 s fra riftfase til i dag, så en pause) mens animasjonen går. */
+/** Spiller tiden fram (ca. 18 s fra riftfase til i dag, så en pause) mens animasjonen går. */
 function useNhClock(running: boolean, setT: (f: (t: number) => number) => void) {
   useEffect(() => {
     if (!running) return;
@@ -1196,11 +1197,11 @@ function useNhClock(running: boolean, setT: (f: (t: number) => number) => void) 
         setT((t) => {
           if (t >= 3) {
             hold += add;
-            if (hold < 2200) return 3;
+            if (hold < NH_END_HOLD_MS) return 3;
             hold = 0;
             return 0;
           }
-          return Math.min(3, t + (add / 12000) * 3);
+          return Math.min(3, t + (add / NH_DURATION_MS) * 3);
         });
       }
       raf = requestAnimationFrame(loop);

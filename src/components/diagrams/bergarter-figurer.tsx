@@ -587,7 +587,7 @@ export function FolgBergartFigur({
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
   const [valg, setValg] = useState(0);
-  const clock = useStepClock(2, motion.playing && visible, 2600, 400);
+  const clock = useStepClock(2, motion.playing && visible, 2600, 400, 1, false);
   const rute = valg > 0 ? RUTER[valg - 1] : null;
   const pos = small ? ST_POS_SMAL : ST_POS_BRED;
   const bw = small ? 224 : 210;
@@ -1372,7 +1372,7 @@ export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { h
   const [prove, setProve] = useState(1);
   const [verktoy, setVerktoy] = useState(1);
   const [ripe, setRipe] = useState(1);
-  const clock = useStepClock(1, motion.playing && visible, 2400, 0);
+  const clock = useStepClock(1, motion.playing && visible, 2400, 0, 1, false);
   const uid = useId().replace(/:/g, "");
   const p = PROVER[prove - 1];
   const tick = motion.playing ? clock.phase : 0.6;
