@@ -1,12 +1,9 @@
 export {
-  ClimateBeltsDiagram,
   GlobalClimateZonesDiagram,
   HadleyCloseupDiagram,
   InsolationDiagram,
-  JetStreamDiagram,
   OneVsThreeCellsDiagram,
   PolarFrontNorwayDiagram,
-  RossbyWavesDiagram,
   SurfaceWindsDiagram,
   WindCellsDiagram,
 } from "./wind";
@@ -20,11 +17,8 @@ export {
   GeostrophicAdjustmentDiagram,
   GlobalDeflectionDiagram,
   NaoDiagram,
-  PolewardParcelDiagram,
   PressureSpinDiagram,
   RossbyScaleDiagram,
-  RotationSpeedDiagram,
-  TradeDeflectionDiagram,
   ZonalCentrifugalDiagram,
   ZonalMeridionalDiagram,
 } from "./coriolis";
@@ -103,13 +97,11 @@ export {
   LowPressureCrossSectionDiagram,
   RelativePressureDiagram,
   SeaBreezeDiagram,
-  WindForcesBalanceDiagram,
 } from "./pressure";
 export {
   DataAssimilationCycleDiagram,
   LorenzChaosEnsembleDiagram,
   ModelGrid3DDiagram,
-  ModelGridDiagram,
   ModelHierarchyNorwayDiagram,
   PrimitiveEquationsDiagram,
   SubgridParametrizationDiagram,
@@ -161,14 +153,9 @@ export { CarbonCycleDiagram, SpheresDiagram } from "./spheres";
 export { HydrographDiagram, KretslopDiagram } from "./hydrology";
 export { FeltbokDiagram, FraBergartTilBruddDiagram, PetroleumSystemDiagram } from "./ressurser";
 export {
-  SynopticMapDiagram,
-  TwentyFourHourDiagram,
   PolarFrontCycloneSteps,
   ValleyWindDiagram,
   FoehnAdiabaticDiagram,
-  FrontCrossSectionDiagram,
-  HurricaneStructureDiagram,
-  PolarLowDiagram,
   TemperatureInversionDiagram,
 } from "./weather";
 export {
@@ -177,7 +164,6 @@ export {
   OffshoreWindShelfDiagram,
   OtecRankineCycleDiagram,
 } from "./energy";
-export { AssimilationDiagram, EnsembleRibbonDiagram } from "./models-extra";
 export {
   BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,

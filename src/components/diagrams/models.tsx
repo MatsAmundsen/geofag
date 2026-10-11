@@ -933,9 +933,4 @@ export function ModelHierarchyNorwayDiagram() {
   );
 }
 
-/**
- * Bakoverkompatibel eksport:
- * Dersom noen eldre filer importerer ModelGridDiagram, peker den nå på ModelGrid3DDiagram.
- */
-export const ModelGridDiagram = ModelGrid3DDiagram;
 

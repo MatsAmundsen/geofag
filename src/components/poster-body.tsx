@@ -126,6 +126,25 @@ import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
+import { CoriolisLatitudeDiagram, EkmanSpiralDiagram, GeostrophicAdjustmentDiagram, NaoDiagram, PressureSpinDiagram, RossbyScaleDiagram, ZonalCentrifugalDiagram } from "@/components/diagrams/coriolis";
+import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
+import { AtmosphericRiverDiagram, ClimateRiskShiftDiagram, HurricaneCrossSectionDiagram, MeteorologicalBombDiagram, PolarLowFormationDiagram, StormSurgeDiagram, SupercellAnatomyDiagram, TornadoGenesisDiagram } from "@/components/diagrams/disasters";
+import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
+import { JetBlockingDiagram, JetFormsDiagram, JetProfileDiagram, JetSeasonDiagram, JetStreakDiagram, ThermalWindDiagram } from "@/components/diagrams/jet";
+import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
+import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
+import { KatabaticWindDiagram } from "@/components/diagrams/pressure";
+import { FoehnAdiabaticDiagram, TemperatureInversionDiagram } from "@/components/diagrams/weather";
+import { CoriolisModel } from "@/components/models/coriolis-model";
+import { CtdProfileModel } from "@/components/models/ctd-profile-model";
+import { EkmanUpwellingModel } from "@/components/models/ekman-upwelling-model";
+import { FieldworkObservationModel } from "@/components/models/fieldwork-observation-model";
+import { FoehnModel } from "@/components/models/foehn-model";
+import { GlacierMassBalanceModel } from "@/components/models/glacier-mass-balance-model";
+import { HurricaneSpinModel } from "@/components/models/hurricane-spin-model";
+import { OceanCurrentModel } from "@/components/models/ocean-current-model";
+import { SeaBreezeModel } from "@/components/models/sea-breeze-model";
+import { SnowProfileModel } from "@/components/models/snow-profile-model";
 import { PhotoFigure } from "@/components/photo-figure";
 import { Sammendrag } from "@/components/sammendrag";
 import {
@@ -784,6 +803,57 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_FELT_HAV} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
+  // G2 (F2): figurer flyttet fra de kodede /tema-rutene.
+  FoehnAdiabatic: () => <FoehnAdiabaticDiagram />,
+  FoehnModel: () => <FoehnModel />,
+  SeaBreezeModel: () => <SeaBreezeModel />,
+  TemperatureInversion: () => <TemperatureInversionDiagram />,
+  KatabaticWind: () => <KatabaticWindDiagram />,
+  JetProfile: () => <JetProfileDiagram />,
+  ThermalWind: () => <ThermalWindDiagram />,
+  JetStreak: () => <JetStreakDiagram />,
+  JetForms: () => <JetFormsDiagram />,
+  JetSeason: () => <JetSeasonDiagram />,
+  JetBlocking: () => <JetBlockingDiagram />,
+  Nao: () => <NaoDiagram />,
+  CoriolisLatitude: () => <CoriolisLatitudeDiagram />,
+  ZonalCentrifugal: () => <ZonalCentrifugalDiagram />,
+  PressureSpin: () => <PressureSpinDiagram />,
+  GeostrophicAdjustment: () => <GeostrophicAdjustmentDiagram />,
+  EkmanSpiral: () => <EkmanSpiralDiagram />,
+  RossbyScale: () => <RossbyScaleDiagram />,
+  CoriolisModel: () => <CoriolisModel />,
+  OceanCurrentModel: () => <OceanCurrentModel />,
+  Ekman: () => <EkmanDiagram />,
+  EkmanUpwellingModel: () => <EkmanUpwellingModel />,
+  ClimateContrast: () => <ClimateContrastDiagram />,
+  Amoc: () => <AmocDiagram />,
+  GlacierMassBalance: () => <GlacierMassBalanceDiagram />,
+  GlacierMassBalanceModel: () => <GlacierMassBalanceModel />,
+  Permafrost: () => <PermafrostDiagram />,
+  SeaIceAlbedoFeedback: () => <SeaIceAlbedoFeedbackDiagram />,
+  SlabAvalanche: () => <SlabAvalancheDiagram />,
+  PrimitiveEquations: () => <PrimitiveEquationsDiagram />,
+  ModelGrid3D: () => <ModelGrid3DDiagram />,
+  SubgridParametrization: () => <SubgridParametrizationDiagram />,
+  LorenzChaosEnsemble: () => <LorenzChaosEnsembleDiagram />,
+  DataAssimilationCycle: () => <DataAssimilationCycleDiagram />,
+  ModelHierarchyNorway: () => <ModelHierarchyNorwayDiagram />,
+  HurricaneCrossSection: () => <HurricaneCrossSectionDiagram />,
+  HurricaneSpinModel: () => <HurricaneSpinModel />,
+  SupercellAnatomy: () => <SupercellAnatomyDiagram />,
+  TornadoGenesis: () => <TornadoGenesisDiagram />,
+  StormSurge: () => <StormSurgeDiagram />,
+  MeteorologicalBomb: () => <MeteorologicalBombDiagram />,
+  AtmosphericRiver: () => <AtmosphericRiverDiagram />,
+  PolarLowFormation: () => <PolarLowFormationDiagram />,
+  ClimateRiskShift: () => <ClimateRiskShiftDiagram />,
+  FieldworkInquiryChain: () => <FieldworkInquiryChainDiagram />,
+  MeteorologicalStation: () => <MeteorologicalStationDiagram />,
+  RadiosondeAscent: () => <RadiosondeAscentDiagram />,
+  CtdProfileModel: () => <CtdProfileModel />,
+  SnowProfileModel: () => <SnowProfileModel />,
+  FieldworkObservationModel: () => <FieldworkObservationModel />,
   AtmosphericColumn: () => <AtmosphericColumnDiagram />,
   RelativePressure: () => <RelativePressureDiagram />,
   LowPressureCrossSection: () => <LowPressureCrossSectionDiagram />,

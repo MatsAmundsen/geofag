@@ -28,11 +28,23 @@ NOAA sammenligner jetstrømmen med en elv. Strømmen er sterkest inn mot kjernen
 
 Begge ligger der temperaturen endrer seg mye fra sted til sted, og der vinden i høyden derfor blir sterkest (NOAA, u.å.-a). Polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ligger vanligvis mellom 40° og 70°. De store temperaturforskjellene gir et konsentrert og sterkt, oftest vestlig vindfelt i høyden. Det kalles polarfrontjetstrømmen (Store norske leksikon, u.å.).
 
+```widget
+JetProfile
+```
+
+```widget
+ThermalWind
+```
+
 ## Hvorfor fra vest mot øst?
 
 Jorda bruker ett døgn på en omdreining. Ved ekvator er omkretsen størst, så bakken beveger seg østover med over 1600 kilometer i timen. Ved polene er farten null. Luft som beveger seg bort fra ekvator, beholder den østlige farten. Bakken under den roterer saktere jo nærmere polen den kommer, så lufta beveger seg fra vest mot øst i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-a). Hvordan den virker mer generelt, tar vi i [corioliseffekten](/tema/coriolis).
 
 Uten rotasjon ville varm luft fra ekvator gått rett mot polene. Rotasjonen deler sirkulasjonen i tre celler, og den er også grunnen til at jetstrømmen finnes (NOAA, u.å.-a).
+
+```widget
+JetStreak
+```
 
 ## Slynger, årstid og stormbane
 
@@ -63,6 +75,22 @@ I en negativ fase er trykkforskjellen svakere. Jetstrømmen og stormbanen ligger
 > Det finnes ikke bare én jetstrøm. Polarjeten ligger mellom 50° og 60°, og den subtropiske jetstrømmen ligger rundt 30° (NOAA, u.å.-a).
 >
 > Den ligger ikke fast over Norge. Den slynger seg, følger sola gjennom året, og kan flytte stormbanen nordover eller la den gå mer rett vest–øst (NOAA, u.å.-a; NOAA, u.å.-b).
+
+```widget
+JetForms
+```
+
+```widget
+JetSeason
+```
+
+```widget
+JetBlocking
+```
+
+```widget
+Nao
+```
 
 ## Viktige begreper
 

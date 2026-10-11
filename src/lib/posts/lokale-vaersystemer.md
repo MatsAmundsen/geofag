@@ -45,6 +45,10 @@ Om natten kjøles landet raskere enn havet. Når havet er varmest, blåser det f
 
 NOAA skriver at landbrisen er svakere, men ikke fordi oppvarming om dagen og avkjøling om natten skjer med ulik takt. Om natten hemmer den kalde bakken den loddrette bevegelsen, kretsløpet blir grunnere, og terreng, vegetasjon og bygninger bremser lufta på vei ut mot vannet (NOAA, u.å.-a).
 
+```widget
+SeaBreezeModel
+```
+
 ## Berg- og dalvind
 
 Berg- og dalvind er et vindsystem med svingning gjennom døgnet, typisk i fjellstrøk i sommerhalvåret, og mest tydelig i klarvær med svak vind ellers. Om dagen blåser dalvinden fra lavlandet, opp dalene og mot fjellet. Om natten blåser det motsatt vei, fra fjellene ned mot dalbunnen og videre ned dalene. Det kalles bergvind (Store norske leksikon, u.å.-h; Store norske leksikon, u.å.-i).
@@ -59,6 +63,10 @@ Om vinteren kan bergvind ha stor betydning for temperaturen lokalt, blant annet 
 
 Katabatisk vind er vind som blåser nedover en helling på grunn av tyngdekraften. Kald luft er tyngre enn varm luft og har en tendens til å synke. I Norge er variantene relativt milde. De kalles sno eller brevind. Den kraftigste vinden kommer der kald luft dreneres ut fjorder og daler, men den når sjelden mer enn frisk bris (Store norske leksikon, u.å.-k).
 
+```widget
+KatabaticWind
+```
+
 ## Orografisk nedbør og føn
 
 ```widget
@@ -72,6 +80,14 @@ Regnskygge er et nedbørfattig område på lesiden. Den stigende bevegelsen, som
 Føn er en forholdsvis varm, tørr vind som slår ned i lavlandet etter å ha passert et fjellområde. Luft som synker på lesiden, kommer under høyere lufttrykk og varmes med omtrent én grad celsius per hundre meter. Det kalles adiabatisk oppvarming. Når lufta varmes uten at det tilføres fuktighet, synker den relative fuktigheten. Kondensasjon og regn på losiden kan spille en rolle, men har mindre betydning enn det som tidligere var antatt. Selve synkingen kan komme av fjellbølger, hydrauliske sprang eller le-virvler (Store norske leksikon, u.å.-g).
 
 I Norge forekommer føn på begge sider av fjellkjedene. Effekten er størst ved vind fra sør og sørøst over de høyere delene av Langfjella, og ned i fjordstrøkene i indre deler av Møre og Romsdal. I Tafjord ble det målt 21,8 °C i november 2003 på grunn av fønvind. Fjellbølger gav da nedslag av varm luft fra høyden (Store norske leksikon, u.å.-g).
+
+```widget
+FoehnAdiabatic
+```
+
+```widget
+FoehnModel
+```
 
 ## Temperaturinversjon
 
@@ -91,6 +107,10 @@ En inversjon er det motsatte: temperaturen stiger med høyden. Det skjer typisk 
 Tallene er målinger gjengitt av Store norske leksikon (u.å.-m). Forskjellen behøver ikke være så stor som mellom Blindern og Tryvann.
 
 Når den kalde lufta har lagt seg nede, skal det kraftig vind til for å blande inn varmere luft ovenfra. Inversjonen gjør at lufta nær bakken blandes dårlig med lufta over. Utslipp fra skip, veitrafikk og vedfyring kan samle seg. Den varmere lufta i høyden virker som et lokk. Samme dag som Bergens-målingen varslet yr periodevis høy luftforurensning for Danmarksplass (Store norske leksikon, u.å.-m).
+
+```widget
+TemperatureInversion
+```
 
 ## Polarfrontsyklonen
 
