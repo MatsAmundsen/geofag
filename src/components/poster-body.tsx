@@ -358,7 +358,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GlacialLandforms: () => <GlacialLandformsDiagram />,
   IceAgeFactors: () => <IceAgeFactorsDiagram />,
   Insolation65NCurve: () => <Insolation65NCurveDiagram />,
-  KvartarTimeSeries: () => <KvartarTimeSeriesDiagram />,
+  KvartarTimeSeries: () => (
+    <KvartarTimeSeriesDiagram caption="De siste 800 000 årene viser iskjernen åtte store sykluser på omtrent 100 000 år, med langsom nedkjøling og rask avsmelting (Lüthi mfl., 2008). Før ca. én million år siden fulgte istidene mest 41 000-årsrytmen til helningen (Lisiecki og Raymo, 2005). Hvordan kurven er laget fra iskjerner, står på siden om paleoklima." />
+  ),
   MilankovitchCycles: () => <MilankovitchCyclesDiagram />,
   ObliquityDetail: () => <ObliquityDetailDiagram />,
   PrecessionDetail: () => <PrecessionDetailDiagram />,
@@ -397,15 +399,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   MilankovitchFjord: () => (
     <PhotoFigure
       src="/images/gf1-bergarter.jpg"
-      alt="Lagdelt sedimentær klippe og isskurt fjordlandskap"
+      alt="Lagdelt berg i forgrunnen og en fjord med bratte dalsider og bre innerst"
       heading="Fjord er U-dal under vann"
-      caption="Isskurt kyst og dal er ikke elvas verk alene. Innlandsisen gravde tverrsnittet, og elva og havet bruker formen. De fleste norske U-dalene er formet under istidene."
+      caption="En fjord med bratte sider og en bre innerst. Fjorden er en U-dal som isen gravde ut under istidene, og som nå ligger under havnivå."
       marks={[
-        { x: 8, y: 28, n: "1", text: "Isskurt berg", tone: "cold" },
+        { x: 8, y: 28, n: "1", text: "Bratt dalside", tone: "cold" },
         { x: 55, y: 62, n: "2", text: "Dyp dal og fjord", tone: "teal" },
       ]}
       points={[
-        { n: "1", label: "Skuring og plukking runder og river berget." },
+        { n: "1", label: "Isen gravde i hele tverrsnittet og ga bratte dalsider." },
         { n: "2", label: "U-form og fjord er isens tverrsnitt, ikke elvas V." },
       ]}
     />

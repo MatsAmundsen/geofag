@@ -50,7 +50,7 @@ MilankovitchCycles
 
 ### Eksentrisitet
 
-Jordbanen er en ellipse, ikke en sirkel. Eksentrisiteten er et tall mellom 0 og 1 som sier hvor avlang ellipsen er. I dag er den ca. 0,017, altså nesten en sirkel (NASA, u.å.). Over tid svinger den mellom ca. 0,005 og 0,06, med hovedperioder på ca. 100 000 og 400 000 år (Laskar mfl., 2004).
+Jordbanen er en ellipse, ikke en sirkel. Eksentrisiteten er et tall mellom 0 og 1 som sier hvor avlang ellipsen er. I dag er den ca. 0,017, altså nesten en sirkel (NASA, u.å.). Over tid svinger den fra nesten sirkel (ca. 0,003) til svak ellipse (ca. 0,06), med hovedperioder på ca. 100 000 og 400 000 år (NASA, u.å.; Laskar mfl., 2004).
 
 Når banen er mer avlang, varierer avstanden til sola mer gjennom året. Det forsterker virkningen av presesjonen. Når banen er nesten en sirkel, spiller det liten rolle hvilken årstid som faller når jorda er nærmest sola. Eksentrisiteten virker derfor mest som en forsterker for presesjonen. Den endrer den samlede innstrålingen over året for lite til å forklare istidene alene.
 
@@ -79,6 +79,8 @@ PrecessionDetail
 ### Sommersola på 65°N
 
 De tre svingningene summeres i innstrålingen ved ca. 65°N i juni og juli. Der lå de store isdekkene over Nord-Amerika og Fennoskandia. Er sommersola for svak, smelter ikke fjorårets snø. Neste vinter kommer det mer snø oppå, og etter tusenvis av år er isen flere kilometer tykk. Blir sommersola sterkere, smelter iskanten. Da blir albedoen lavere, og smeltingen kan gå av seg selv. Jordbanen setter i gang endringen, men CO₂ og albedo gjør den global.
+
+Likevel avslutter ikke hver topp i sommersola en istid. Jo lenger det er siden forrige mellomistid, og jo større isdekkene har blitt, jo mindre skal til før isen smelter bort. Derfor kan en svak topp avslutte en lang istid, mens en sterkere topp tidlig i en istid bare gir en kort mildere periode (Tzedakis mfl., 2017).
 
 ```widget
 Insolation65NCurve
@@ -140,7 +142,9 @@ Ordet istid brukes på to måter. I vid betydning er en istid en lang periode de
 
 I kvartær viser bunnvannskurven LR04 omtrent 50 sykluser med istid og mellomistid (Lisiecki & Raymo, 2005). De siste 800 000 årene har det vært åtte store sykluser på omtrent 100 000 år hver (Lüthi mfl., 2008).
 
-Den siste istiden kalles Weichsel. Den varte fra ca. 117 000 til 11 700 år siden. Isen var størst for ca. 21 000 år siden. Da lå havnivået ca. 120 meter lavere enn i dag. En ny istid ligger etter jordbanen titusener av år fram i tid, og høy CO₂ kan skyve den enda lenger fram (Berger & Loutre, 2002).
+Den siste istiden kalles Weichsel. Den varte fra ca. 117 000 til 11 700 år siden. Isen var størst for ca. 21 000 år siden. Isdekkene var da opptil ca. 3 km tykke (Mangerud, 2026), og havnivået lå ca. 120 meter lavere enn i dag. Store deler av det som i dag er den sørlige Nordsjøen, var tørt land. Dette landområdet kalles Doggerland eller Nordsjøfastlandet (Stylegar, 2024). Den globale middeltemperaturen var da ca. 6 °C lavere enn i nyere tid (Tierney mfl., 2020). En ny istid ligger etter jordbanen titusener av år fram i tid, og høy CO₂ kan skyve den enda lenger fram (Berger & Loutre, 2002).
+
+Kurven fra iskjernen under viser rytmen i istidene. Hvordan den er laget, kan du lese om i [paleoklima](/tema/paleoklima).
 
 ```widget
 KvartarTimeSeries

@@ -790,12 +790,15 @@ export function IceCoreAnatomyDiagram() {
  * 800 000 år med temperatur og CO2 fra iskjerner.
  * Viser sagtanntakt, naturlig spenn 172-300 ppm og dagens 425+ ppm hopp.
  */
-export function KvartarTimeSeriesDiagram() {
+export function KvartarTimeSeriesDiagram({ caption }: { caption?: string } = {}) {
   return (
     <Diagram
       title="800 000 år med temperatur og CO₂ fra EPICA Dome C-iskjernen: sagtanntakt og dagens avvik"
       heading="800 000 år med istider og dagens CO₂-sprang"
-      caption="Iskjernedata fra EPICA Dome C i Antarktis viser åtte 100 000-års istidssykluser over de siste 800 000 år. Mønsteret har en karakteristisk sagtannform: En langsom nedkjøling og isoppbygging over 80 000–90 000 år, etterfulgt av en lynrask deglasiasjon på under 10 000 år. Temperatur og CO₂ svinger i tett samspill. Gjennom hele senkvartær har CO₂ aldri vært under 172 ppm eller over 300 ppm. Dagens nivå (>425 ppm) skyter loddrett til værs, fullstendig utenfor det naturlige spennet."
+      caption={
+        caption ??
+        "Iskjernedata fra EPICA Dome C i Antarktis viser åtte 100 000-års istidssykluser over de siste 800 000 år. Mønsteret har en karakteristisk sagtannform: En langsom nedkjøling og isoppbygging over 80 000–90 000 år, etterfulgt av en lynrask deglasiasjon på under 10 000 år. Temperatur og CO₂ svinger i tett samspill. Gjennom hele senkvartær har CO₂ aldri vært under 172 ppm eller over 300 ppm. Dagens nivå (>425 ppm) skyter loddrett til værs, fullstendig utenfor det naturlige spennet."
+      }
       viewBox="0 0 920 480"
     >
       {() => {
@@ -1310,7 +1313,7 @@ export function EccentricityDetailDiagram() {
     <Diagram
       title="Eksentrisitet: banens form svinger mellom nesten sirkulær og svak ellipse"
       heading="Eksentrisitet og avstandseffekten (100 000 og 400 000 år)"
-      caption="Jordbanens form (eksentrisitet, e) varierer fra nesten helt sirkulær (e ≈ 0,005) til svak ellipse (e ≈ 0,06) med hovedperioder på ca. 100 000 og 413 000 år. Til venstre: Ved lav eksentrisitet er jorda nesten like langt fra sola hele året; årstidene styres nesten utelukkende av aksehelningen. Til høyre: Ved høy eksentrisitet er jorda markant nærmere sola i perihel enn i aphel. Siden strålingsintensiteten avtar med kvadratet av avstanden (1/r²), forsterker høy eksentrisitet effekten av presesjonssyklusen. Eksentrisiteten i seg selv endrer total global årsinnstråling med under 0,2 %, men fungerer som en kraftig 'forsterkerskrue' for presesjonen."
+      caption="Jordbanens form (eksentrisitet, e) varierer fra nesten helt sirkulær (e ≈ 0,003) til svak ellipse (e ≈ 0,06) med hovedperioder på ca. 100 000 og 413 000 år. Til venstre: Ved lav eksentrisitet er jorda nesten like langt fra sola hele året; årstidene styres nesten utelukkende av aksehelningen. Til høyre: Ved høy eksentrisitet er jorda markant nærmere sola i perihel enn i aphel. Siden strålingsintensiteten avtar med kvadratet av avstanden (1/r²), forsterker høy eksentrisitet effekten av presesjonssyklusen. Eksentrisiteten i seg selv endrer total global årsinnstråling med under 0,2 %, men fungerer som en kraftig 'forsterkerskrue' for presesjonen."
       viewBox="0 0 880 440"
     >
       {(m) => (

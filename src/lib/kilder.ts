@@ -3516,6 +3516,26 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
+    {
+      prefix: "Stylegar, F.-A. H. (2024, 26. november). Nordsjøfastlandet. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/Nordsjøfastlandet",
+    },
+    {
+      prefix:
+        "Tierney, J. E., Zhu, J., King, J., Malevich, S. B., Hakim, G. J., & Poulsen, C. J. (2020). Glacial cooling and climate sensitivity revisited. ",
+      italic: "Nature, 584",
+      suffix: "(7822), 569–573.",
+      href: "https://doi.org/10.1038/s41586-020-2617-x",
+    },
+    {
+      prefix:
+        "Tzedakis, P. C., Crucifix, M., Mitsui, T., & Wolff, E. W. (2017). A simple rule to determine which insolation cycles lead to interglacials. ",
+      italic: "Nature, 542",
+      suffix: "(7642), 427–432.",
+      href: "https://doi.org/10.1038/nature21364",
+    },
   ],
   vaerkatastrofer: [
     {
