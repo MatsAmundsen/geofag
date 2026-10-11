@@ -3290,7 +3290,7 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_2: QuizQuestion[] = [
       "Vulkansk CO₂ forsvinner i løpet av noen uker",
     ],
     answer: 1,
-    explain: "Vulkaner slipper ut 0,13–0,44 gigatonn CO₂ i året (USGS), mens fossilt brensel ga 37,8 gigatonn i 2024. De menneskeskapte utslippene er nesten hundre ganger større.",
+    explain: "Vulkaner slipper ut 0,13–0,44 gigatonn CO₂ i året (USGS), mens fossilt brensel ga 37,8 gigatonn i 2024. De menneskeskapte utslippene er ca. 80–270 ganger større (USGS).",
   },
 ];
 
@@ -3309,7 +3309,7 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
     prompt: "Hvordan kommer karbonet i kalkstein tilbake til atmosfæren?",
     options: [
       "Regnet løser kalksteinen og sender CO₂ rett opp i lufta",
-      "Kalksteinen synker ned i en subduksjonssone, karbonatene varmes opp og frigjør CO₂, og gassen kommer ut gjennom vulkaner",
+      "Kalksteinen synker ned i en subduksjonssone, karbonatene blir varmet opp og delvis løst i vann fra platen, og CO₂ frigjøres og kommer ut gjennom vulkaner",
       "Plankton puster det ut",
     ],
     answer: 1,

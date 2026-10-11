@@ -102,7 +102,7 @@ På lang sikt går karbon i en langsom sløyfe mellom atmosfære, hydrosfære og
 
 Karbon bruker 100–200 millioner år på veien gjennom den trege sløyfen, mellom berg, jord, hav og atmosfære (NASA, 2011). Det raske kretsløpet går gjennom livet. Planter og plankton tar opp CO₂, og karbonet kommer tilbake når de brytes ned, blant annet ved slutten av vekstsesongen (NASA, 2011).
 
-Den trege sløyfen starter med regn. Karbonsyre løser berg og frisetter ioner: kalsium, magnesium, kalium og natrium. Elvene fører dem til havet. Der dannes kalsiumkarbonat, i dagens hav ofte av organismer med skall, og karbonet lagres i kalkstein i millioner av år (NASA, 2011). Når havbunn med kalkstein synker ned i en subduksjonssone, varmes karbonatene opp og frigjør CO₂. Gassen kommer tilbake til atmosfæren gjennom vulkaner (Kelemen & Manning, 2015). Utbruddene dekker samtidig landet med ferskt silikatberg som regnet kan løse (NASA, 2011).
+Den trege sløyfen starter med regn. Karbonsyre løser berg og frisetter ioner: kalsium, magnesium, kalium og natrium. Elvene fører dem til havet. Der dannes kalsiumkarbonat, i dagens hav ofte av organismer med skall, og karbonet lagres i kalkstein i millioner av år (NASA, 2011). Når havbunn med kalkstein synker ned i en subduksjonssone, blir karbonatene varmet opp og delvis løst i vann fra platen, og CO₂ frigjøres (Kelemen & Manning, 2015). Gassen kommer tilbake til atmosfæren gjennom vulkaner. Utbruddene dekker samtidig landet med ferskt silikatberg som regnet kan løse (NASA, 2011).
 
 ```widget
 CarbonCycleDiagram
@@ -120,7 +120,7 @@ Varmere luft gir mer regn. Mer karbonsyre løser mer berg, og elvene fører fler
 
 #### 3. Mer karbon lagres i kalkstein
 
-Ionene avsettes som kalsiumkarbonat på havbunnen. Da fjernes karbon fra lufta, og temperaturen trekkes tilbake. Det tar noen hundre tusen år før den trege sløyfen er i balanse igjen.
+Ionene avsettes som kalsiumkarbonat på havbunnen. Da fjernes karbon fra lufta, og temperaturen trekkes tilbake. Det tar noen hundre tusen år før den trege sløyfen er i balanse igjen (Kump mfl., 2000).
 
 Responsen demper den opprinnelige endringen. Det kalles en negativ tilbakekobling (negative feedback). Fjellkjededannelse leverer ferskt silikatberg til overflaten, så mer berg blir tilgjengelig for regnet.
 

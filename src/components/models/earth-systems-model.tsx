@@ -241,7 +241,7 @@ export function EarthSystemsModel() {
             </div>
           </ModelPanel>
 
-          <ModelNote title="Viktig eksamenspoeng i LK20" tone="teal">
+          <ModelNote title="Viktig poeng" tone="teal">
             Den trege sløyfen er en <strong>negativ tilbakekobling</strong>. Når det blir varmere og mer regn,
             løses mer berg, og mer karbon lagres i kalkstein. Det trekker CO₂ ut av atmosfæren igjen,
             men det tar noen hundre tusen år.
