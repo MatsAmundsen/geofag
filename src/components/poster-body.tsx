@@ -1,3 +1,4 @@
+import { KvikkleireBakoverFigur, SkredKrefterFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
   BoundaryOverviewDiagram,
@@ -102,8 +103,6 @@ import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melt
 import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
-  KvikkleireDiagram,
-  SkredKrefterDiagram,
   SkredSonerDiagram,
   SkredTyperDiagram,
 } from "@/components/diagrams/skred";
@@ -907,7 +906,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  KvikkleireSteg: () => <KvikkleireDiagram />,
+  KvikkleireSteg: () => <KvikkleireBakoverFigur />,
   QuizSkred: () => (
     <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -1024,7 +1023,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     />
   ),
   SkredTyper: () => <SkredTyperDiagram />,
-  SkredKrefter: () => <SkredKrefterDiagram />,
+  SkredKrefter: () => <SkredKrefterFigur />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
   FieldworkIllustration: () => <FieldworkIllustrationDiagram />,
