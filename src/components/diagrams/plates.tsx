@@ -2804,7 +2804,7 @@ const NORWAY_EPOCHS: NorwayEpochCard[] = [
   {
     key: "isostasi",
     title: "4. GLASIAL ISOSTASI",
-    age: "Siste 10 000 år til i dag",
+    age: "Siste ca. 11 700 år til i dag",
     color: "#10b981",
     ageColor: "#a7f3d0",
     headline: "Landet hever seg",

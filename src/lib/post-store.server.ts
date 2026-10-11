@@ -840,6 +840,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["## Hva er naturstein og pukk?", "## Hva utvinnes i Norge i dag?"],
   },
   {
+    flag: "g1-norges-geologi-11700-2026-10-11",
+    slug: "norges-geologi",
+    stale: ["til ca. 10 000 år siden", "for ca. 10 000 år siden var det meste"],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],

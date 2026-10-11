@@ -506,7 +506,7 @@ function TilpasningPage() {
           <p className="text-xs text-muted-foreground leading-relaxed">
             Under siste istid (Weichsel) var innlandsisen på sitt tykkeste over Bottenviken og
             Østlandet. Jordskorpen ble presset hundrevis av meter ned i den seige mantelen. Da isen
-            smeltet for om lag 10 000 år siden, begynte landet å sprette tilbake:
+            smeltet for om lag 11 700 år siden, begynte landet å sprette tilbake:
           </p>
           <div className="grid gap-3 sm:grid-cols-2 text-xs">
             <div className="rounded-lg bg-card p-3 border border-border">

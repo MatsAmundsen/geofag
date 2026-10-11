@@ -124,7 +124,6 @@ import { lastMarkdownHeading, Markdown } from "@/components/markdown";
 import { CarbonCycleDiagram, SpheresDiagram } from "@/components/diagrams/spheres";
 import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
-import { RockPetrologyModel } from "@/components/models/rock-petrology-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { PhotoFigure } from "@/components/photo-figure";
@@ -863,7 +862,6 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
   RelativeDating: () => <RelativeDatingDiagram />,
-  RockPetrologyModel: () => <RockPetrologyModel />,
   ForvitringForklaring: () => (
     <Callout title="Hva betyr «forvitring»?">
       <p>
