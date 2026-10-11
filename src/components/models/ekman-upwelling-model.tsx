@@ -29,9 +29,9 @@ export function EkmanUpwellingModel() {
   const meMass = absF > 0 ? tau / absF : 0; // kg/(m*s)
   const qeVolume = meMass / rhoWater; // m^2/s
 
-  // Ekman depth De ~ pi * sqrt(2 * Az / |f|), approx 30-70m
+  // Ekman depth De ~ pi * sqrt(2 * Az / |f|): depth where the current has reversed (capped at 200 m)
   const az = 0.015; // m^2/s eddy viscosity
-  const de = Math.min(80, Math.max(25, Math.PI * Math.sqrt((2 * az) / absF)));
+  const de = Math.min(200, Math.max(25, Math.PI * Math.sqrt((2 * az) / absF)));
 
   // Surface speed v0 = tau / (rhoWater * sqrt(Az * |f|))
   const v0 = Math.min(1.2, tau / (rhoWater * Math.sqrt(az * absF)));
@@ -39,8 +39,8 @@ export function EkmanUpwellingModel() {
   // Spiral layers (0, 10, 20, 30, 40, 50, 60m)
   const depths = [0, 10, 20, 30, 45, 60];
   const spiralVectors = depths.map((z) => {
-    const decay = Math.exp(-z / de);
-    const angle = (z / de) * (hemisphere === "north" ? 1 : -1); // in radians
+    const decay = Math.exp((-Math.PI * z) / de);
+    const angle = ((Math.PI * z) / de) * (hemisphere === "north" ? 1 : -1); // in radians
     const surfaceAngle = (45 * Math.PI) / 180 * (hemisphere === "north" ? 1 : -1);
     const totalAngle = surfaceAngle + angle;
     const speed = v0 * decay;
@@ -67,18 +67,18 @@ export function EkmanUpwellingModel() {
   return (
     <ModelFrame
       kicker="Interaktiv geofysisk modell"
-      title="Ekman-spiral, kystoppvelling og geostrofisk balanse"
-      lead="Utforsk hvordan vindstress, Corioliskraft og friksjon mellom vannlagene skaper 45° overflateavbøyning, 90° nettotransport, oppvelling av næringsrikt bunnvann og geostrofiske gyrer."
+      title="Ekmanspiral, oppvelling langs kysten og geostrofisk balanse"
+      lead="Utforsk hvordan vindstress, corioliseffekten og friksjon mellom vannlagene skaper 45° overflateavbøyning, 90° nettotransport, oppvelling av næringsrikt bunnvann og geostrofiske havvirvler."
       toolbar={
         <div className="flex flex-wrap gap-2">
           <ModelTab active={tab === "ekman_spiral"} onClick={() => setTab("ekman_spiral")}>
-            1. Ekman-spiral & nettotransport
+            1. Ekmanspiral og nettotransport
           </ModelTab>
           <ModelTab active={tab === "upwelling"} onClick={() => setTab("upwelling")}>
-            2. Kystoppvelling & nedvelling
+            2. Oppvelling og nedvelling
           </ModelTab>
           <ModelTab active={tab === "geostrophic"} onClick={() => setTab("geostrophic")}>
-            3. Geostrofisk strøm & gyredynamikk
+            3. Geostrofisk strøm og havvirvler
           </ModelTab>
         </div>
       }
@@ -182,7 +182,7 @@ export function EkmanUpwellingModel() {
                     </span>
                   </div>
                   <div className="flex justify-between border-b border-border/50 pb-1.5">
-                    <span className="text-muted-foreground">Ekman-dyp (D_E):</span>
+                    <span className="text-muted-foreground">Ekmandyp (der strømmen har snudd):</span>
                     <span className="font-mono font-semibold text-teal-400">
                       {de.toFixed(1)} meter
                     </span>
@@ -198,9 +198,10 @@ export function EkmanUpwellingModel() {
 
               <ModelNote title="Hvordan spiralen oppstår" tone="teal">
                 <p>
-                  Vinden drar i overflatevannet. På grunn av Corioliskraften avbøyes det øverste
+                  Vinden drar i overflatevannet. På grunn av corioliseffekten avbøyes det øverste
                   vannlaget <strong>45°</strong> i forhold til vinden (til høyre i nord, til venstre
-                  i sør).
+                  i sør). 45° gjelder i Ekmans idealiserte teori. I virkeligheten er vinkelen ofte
+                  mindre (Ekman, 1905; Talley mfl., 2011).
                 </p>
                 <p className="mt-1">
                   Dette overflatelaget drar i sin tur på laget under via indre væskefriksjon (virvelviskositet).
@@ -208,8 +209,8 @@ export function EkmanUpwellingModel() {
                   strømvektorene en elegant <strong>spiral</strong>.
                 </p>
                 <p className="mt-1">
-                  Når vi integrerer (summerer) alle vektorene fra overflaten ned til Ekman-dypet, står
-                  den totale vanntransporten nøyaktig <strong>90°</strong> på vindretningen!
+                  Når vi integrerer (summerer) alle vektorene fra overflaten ned til ekmandypet, står
+                  den totale vanntransporten <strong>90°</strong> på vindretningen.
                 </p>
               </ModelNote>
             </div>
@@ -357,7 +358,7 @@ export function EkmanUpwellingModel() {
                           fontSize="13"
                           fontWeight="bold"
                         >
-                          Netto Ekman-transport
+                          Netto ekmantransport
                         </text>
                         <text
                           x={netX + (hemisphere === "north" ? 10 : -10)}
@@ -399,7 +400,7 @@ export function EkmanUpwellingModel() {
                     <p className="text-amber-400 font-bold mt-0.5">τ = ρ_luft · C_D · (U₁₀)²</p>
                   </div>
                   <div className="rounded bg-background/80 p-2.5 border border-border">
-                    <p className="text-muted-foreground text-[10px]">Integrert Ekman-transport:</p>
+                    <p className="text-muted-foreground text-[10px]">Integrert ekmantransport:</p>
                     <p className="text-primary font-bold mt-0.5">M_E = τ / |f| = τ / (2Ω sin φ)</p>
                   </div>
                 </div>
@@ -484,12 +485,12 @@ export function EkmanUpwellingModel() {
                   }`}
                 >
                   <p className="font-display font-semibold text-sm">
-                    {isUpwelling ? "🌊 Aktiv Kystoppvelling (Upwelling)" : "⬇️ Kystnedvelling (Downwelling)"}
+                    {isUpwelling ? "Oppvelling langs kysten" : "Nedvelling langs kysten"}
                   </p>
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                     {isUpwelling
-                      ? "Ekman-transporten skyver overflatevannet rett bort fra kysten. For å opprettholde massekonservering tvinges iskaldt, næringsrikt dypvann opp fra 100–300 meters dyp."
-                      : "Ekman-transporten skyver overflatevannet inn mot land. Vannet stuves opp mot kystlinjen og tvinges ned i dypet. Termoklinen presses dypere."}
+                      ? "Ekmantransporten skyver overflatevannet rett bort fra kysten. Vannet må erstattes, så kaldt, næringsrikt vann kommer opp fra noen hundre meters dyp."
+                      : "Ekmantransporten skyver overflatevannet inn mot land. Vannet stuves opp mot kystlinjen og tvinges ned i dypet. Lagdelingen presses dypere."}
                   </p>
                 </div>
               </ModelPanel>
@@ -502,8 +503,8 @@ export function EkmanUpwellingModel() {
                   <p>
                     Oppvelling tilfører den solbelyste (eufotiske) sonen enorme mengder nitrat, fosfat
                     og silikat. Dette utløser eksplosiv vekst av fytoplankton og danner grunnlaget for
-                    verdens rikeste fiskerier (Humboldt-strømmen utenfor Peru produserer opptil 10 %
-                    av verdens villfangede fisk på under 0,1 % av havets areal!).
+                    verdens rikeste fiskerier. De store oppvellingsområdene gir opptil ca. 20 % av
+                    fiskefangsten fra under 1 % av havflaten (Du mfl., 2024).
                   </p>
                 ) : (
                   <p>
@@ -583,7 +584,7 @@ export function EkmanUpwellingModel() {
                           {/* Ekman til venstre (bort fra kysten) */}
                           <line x1="330" y1="65" x2="160" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
                           <text x="240" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Ekman-transport bort fra kysten
+                            Ekmantransport bort fra kysten
                           </text>
 
                           {/* Oppvelling-piler fra dypet */}
@@ -611,7 +612,7 @@ export function EkmanUpwellingModel() {
                           {/* Ekman mot kysten (til høyre) */}
                           <line x1="160" y1="65" x2="330" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
                           <text x="240" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Ekman-transport inn mot land
+                            Ekmantransport inn mot land
                           </text>
 
                           {/* Nedvelling-piler */}
@@ -662,7 +663,7 @@ export function EkmanUpwellingModel() {
                         <g>
                           <line x1="190" y1="65" x2="360" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
                           <text x="280" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Ekman-transport ut i havet
+                            Ekmantransport ut i havet
                           </text>
                           <path
                             d="M 260 250 Q 190 220 175 85"
@@ -716,23 +717,23 @@ export function EkmanUpwellingModel() {
             <div className="space-y-4 lg:col-span-5">
               <ModelPanel className="space-y-3 text-xs leading-relaxed text-muted-foreground">
                 <h4 className="font-display font-semibold text-sm text-foreground">
-                  Hvordan oppstår en subtropisk gyre?
+                  Hvordan oppstår en subtropisk havvirvel?
                 </h4>
                 <p>
                   I Nord-Atlanteren blåser <strong>passatvindene</strong> mot vest i sør (15°–30°N),
                   mens <strong>vestavindsbeltet</strong> blåser mot øst i nord (40°–60°N).
                 </p>
                 <p>
-                  Ekman-transporten bøyer av 90° til høyre for vinden. Resultatet er at begge
+                  Ekmantransporten bøyer av 90° til høyre for vinden. Resultatet er at begge
                   vindsystemene pumper overflatevann inn mot <strong>midten av havbassenget</strong>{" "}
-                  (Ekman-konvergens).
+                  (ekmankonvergens).
                 </p>
                 <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
                   <p className="font-semibold text-primary">Dynamisk havhaug:</p>
                   <p className="mt-1">
                     Vannet som samles i sentrum (Sargassohavet) danner en vid, svakt buet «haug»
                     av overflatevann som rager <strong>1–2 meter høyere</strong> enn kystområdene
-                    rundt!
+                    rundt.
                   </p>
                 </div>
               </ModelPanel>
@@ -741,12 +742,12 @@ export function EkmanUpwellingModel() {
                 <p>
                   Tyngdekraften forsøker å jevne ut haugen ved å skyve vann nedover trykkgradienten
                   (utover fra sentrum). Men så snart vannet settes i bevegelse nedover bakken, bøyer
-                  Corioliskraften det til høyre!
+                  corioliseffekten det til høyre.
                 </p>
                 <p className="mt-1">
-                  Når <strong>trykkgradientkraften</strong> og <strong>Corioliskraften</strong> er like
+                  Når <strong>trykkgradientkraften</strong> og <strong>corioliseffekten</strong> er like
                   store og motsatt rettede, er strømmen i geostrofisk balanse: den flyter
-                  nøyaktig <em>langs høydekonturene</em>, med klokken rundt haugen!
+                  nøyaktig <em>langs høydekonturene</em>, med klokka rundt haugen.
                 </p>
                 <div className="mt-2 font-mono text-center text-xs font-bold text-sky-400 bg-background/80 p-2 rounded">
                   v_g = (g / f) · (∂η / ∂x)
@@ -759,7 +760,7 @@ export function EkmanUpwellingModel() {
               <div className="relative overflow-hidden rounded-xl border border-border bg-slate-950 p-4">
                 <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
                   <span className="font-semibold text-slate-300">
-                    Tverrsnitt av subtropisk gyre (Nord-Atlanteren)
+                    Tverrsnitt av subtropisk havvirvel (Nord-Atlanteren)
                   </span>
                   <span className="rounded bg-slate-900 px-2 py-0.5 font-mono text-[11px] text-amber-300">
                     Vestlig randintensivering (Stommel, 1948)
@@ -845,10 +846,10 @@ export function EkmanUpwellingModel() {
                       Trykkgradient (F_pg): Nedover haugen
                     </text>
                     <text x="25" y="58" fill="#38bdf8" fontSize="10">
-                      Corioliskraft (F_c): Oppover mot sentrum
+                      Corioliseffekten (F_c): Oppover mot sentrum
                     </text>
                     <text x="130" y="70" textAnchor="middle" fill="#fbbf24" fontSize="10" fontStyle="italic">
-                      F_pg + F_c = 0 ⟹ Strømmen følger konturene!
+                      F_pg + F_c = 0 ⟹ Strømmen følger konturene
                     </text>
                   </g>
                 </svg>
@@ -858,11 +859,11 @@ export function EkmanUpwellingModel() {
                 <strong className="text-foreground">Hvorfor er Golfstrømmen så mye kraftigere enn Kanaristrømmen?</strong>
                 <p className="mt-1">
                   Årsaken kalles <strong>vestlig randintensivering</strong> og ble løst matematisk av
-                  oceanografen Henry Stommel i 1948. Fordi Corioliskraften øker med breddegraden
-                  (β-effekten, β = df/dy), forskyves hele gyren mot vest. Det tvinger
+                  oceanografen Henry Stommel i 1948. Fordi corioliseffekten øker med breddegraden
+                  (β-effekten, β = df/dy), forskyves hele havvirvelen mot vest. Det tvinger
                   vannmassene som skal nordover gjennom en smal «flaskehals» langs USAs østkyst.
                   Farten må mangedobles for å transportere samme vannvolum som den brede, slake
-                  strømmen sørover i øst!
+                  strømmen sørover i øst.
                 </p>
               </div>
             </div>

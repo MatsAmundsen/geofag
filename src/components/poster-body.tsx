@@ -1,5 +1,8 @@
+import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
+  AssimilationDiagram,
+  EnsembleRibbonDiagram,
   BoundaryOverviewDiagram,
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
@@ -103,15 +106,17 @@ import {
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
-import { HydrographDiagram, KretslopDiagram } from "@/components/diagrams/hydrology";
+import {
+  AkviferFigur,
+  HansNedborFigur,
+  HydrogramFigur,
+  KretslopFigur,
+} from "@/components/diagrams/vannflom-figurer";
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
-  KvikkleireDiagram,
-  SkredKrefterDiagram,
   SkredSonerDiagram,
-  SkredTyperDiagram,
 } from "@/components/diagrams/skred";
 import {
   FeltbokDiagram,
@@ -505,8 +510,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     HavstromForklaring: () => (
     <Callout title="Hva betyr «havstrøm»?">
       <p>
-        En havstrøm er vann i bevegelse. Den kan drives av tidevann nær land, av vind i overflaten,
-        eller av tetthetsforskjeller som får kaldt og salt vann til å synke.
+        En havstrøm er vann som flytter seg i en bestemt retning over tid. Den drives av vind,
+        trykkforskjeller når havoverflaten heller, tetthetsforskjeller og tidevann.
       </p>
     </Callout>
   ),
@@ -515,8 +520,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «ekmantransport»?">
       <p>
         Ekmantransport er transporten av havets overflatelag på tvers av vinden. På den nordlige
-        halvkule går den til høyre for vindretningen. Når den skyver vann vekk fra en kyst, kan
-        dypere vann komme opp.
+        halvkulen går den 90 grader til høyre for vindretningen. Når den skyver vann vekk fra en
+        kyst, kan dypere vann komme opp.
       </p>
     </Callout>
   ),
@@ -723,12 +728,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     ModellForklaring: () => (
     <Callout title="Hva betyr «numerisk modell»?">
       <p>
-        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin.
-        ECMWF lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og
-        sammen viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
+        En numerisk modell regner ut grunnlikningene for lufta eller havet med tall, steg for steg
+        i tid, i et rutenett. Værmodellen MEPS har ruter på 2,5 km, havmodellen Norkyst ca. 800
+        meter, og klimamodellen NorESM2 ca. 1–2 grader (MET, u.å.-a; Christensen mfl., 2026;
+        NorESM-konsortiet, u.å.).
       </p>
     </Callout>
   ),
+    ModellAssimilering: () => <AssimilationDiagram />,
+    ModellEnsemble: () => <EnsembleRibbonDiagram />,
     QuizModeller: () => (
     <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -977,8 +985,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   QuizBergarter: () => (
     <Quiz questions={QUIZ_BERGARTER} heading={null} intro="Velg ett svar per spørsmål." />
   ),
-  Kretslop: () => <KretslopDiagram />,
-  Hydrograph: () => <HydrographDiagram />,
+  Kretslop: () => <KretslopFigur />,
+  Hydrograph: () => <HydrogramFigur />,
+  AkviferSnitt: () => <AkviferFigur />,
+  HansNedbor: () => <HansNedborFigur />,
   AkviferForklaring: () => (
     <Callout title="Hva betyr «akvifer»?">
       <p>
@@ -1002,7 +1012,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-  KvikkleireSteg: () => <KvikkleireDiagram />,
+  KvikkleireSteg: () => <KvikkleireBakoverFigur />,
   QuizSkred: () => (
     <Quiz questions={QUIZ_SKRED} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -1118,8 +1128,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
-  SkredTyper: () => <SkredTyperDiagram />,
-  SkredKrefter: () => <SkredKrefterDiagram />,
+  SkredTyper: () => <SkredTyperFigur />,
+  SkredKrefter: () => <SkredKrefterFigur />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
   FieldworkIllustration: () => <FieldworkIllustrationDiagram />,

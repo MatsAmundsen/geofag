@@ -154,7 +154,7 @@ export const GF2_THEMES = [
     image: "/images/tema-strommer.jpg",
     alt: "Nord-Atlanteren med fargekontrast som minner om en vestlig randstrøm",
     blurb:
-      "Vind, tetthet og jordrotasjon flytter varme i havet. Golfstrømmen og AMOC er grunnen til at Norge er mildt på 60°N.",
+      "Vind, jordrotasjon og tetthet driver havstrømmene. Den norske atlanterhavsstrømmen og vinden gir Norge et mildt klima.",
     status: "klar" as const,
   },
   {
@@ -184,7 +184,7 @@ export const GF2_THEMES = [
     image: "/images/fig-klimasystem.jpg",
     alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver",
     blurb:
-      "En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett.",
+      "Rutenett, parameterisering, dataassimilering og ensembler, og de norske modellene MEPS, AROME-Arctic, Norkyst og NorESM.",
     status: "klar" as const,
   },
   {
