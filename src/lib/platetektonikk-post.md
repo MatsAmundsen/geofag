@@ -42,7 +42,7 @@ På grunn av høy temperatur i forhold til trykket ligger bergartene nær smelte
 
 Astenosfæren er fast, men svakere og mer plastisk enn litosfæren og kan gi etter og flyte svært langsomt. Bergartene kan derfor endre form, men de er fortsatt faste. Det kalles plastisk: bergarten beholder fast form, men kan deformeres over lang tid.
 
-Astenosfæren er seigtflytende over millioner av år. Den virker som et glidelag, slik at litosfæren over kan bevege seg. Samtidig fører konveksjonsstrømmer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
+Astenosfæren flyter svært langsomt over millioner av år. Den virker som et glidelag, slik at litosfæren over kan bevege seg. Samtidig fører konveksjonsstrømmer varme fra jordas dyp mot overflaten (Marshak, 2019, s. 46).
 
 #### Nedre mantel
 
