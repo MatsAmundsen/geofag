@@ -284,9 +284,9 @@ export const GF1_THEMES = [
     image: "/images/gf1-vulkan-jordskjelv.jpg",
     alt: "Snødekt stratovulkan med aske og gassutblåsning",
     blurb:
-      "Noen vulkaner har rolige lavastrømmer, andre har eksplosive utbrudd. Forskjellen henger sammen med silikat (SiO₂), viskositet og gass. Magmatyper, tre hovedtyper vulkaner og kalderaer, utbruddstyper, overvåking og Beerenberg.",
+      "Noen vulkaner har rolige lavastrømmer, andre har eksplosive utbrudd. Forskjellen henger sammen med silikat (SiO₂), viskositet og gass. Magmatyper, tre hovedtyper vulkaner og kalderaer, utbruddstyper, farer, overvåking, forebygging og Beerenberg.",
     status: "klar" as const,
-    maal: "Gjøre rede for årsakene til vulkanisme, forklare sammenhengen mellom magmakjemi og utbruddsstil, og vurdere geofarer, overvåking og samfunnssikkerhet.",
+    maal: "Gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene.",
   },
   {
     slug: "jordskjelv",

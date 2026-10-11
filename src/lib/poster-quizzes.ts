@@ -1073,89 +1073,68 @@ export const QUIZ_VULKANER: QuizQuestion[] = [
   {
     prompt: "Hvorfor blir Hawaii-øyene eldre mot nordvest?",
     options: [
-      "En meteoritt traff øyene, og alderen øker ut fra krateret.",
-      "Stillehavsplaten glir over en langvarig, varm sone (hotspot), så nye vulkaner dannes over hotspoten mens de gamle flyttes bort med platen.",
-      "En hotspot oppstår bare langs subduksjonssoner når en plate brekker i to.",
-      "Øyene blir eldre mot nordvest fordi jordens magnetfelt byttet polaritet.",
+      "Hotspoten flytter seg mot sørøst",
+      "Platen glir mot nordvest over en hotspot som ligger i ro",
+      "Øyene i nordvest har hatt flere utbrudd",
+      "Havbunnen er eldst i sørøst",
     ],
     answer: 1,
-    explain:
-      "Riktig! J. Tuzo Wilson (1963) beskrev en langvarig, varm sone under platen. Nye vulkaner dannes over hotspoten, og de eldre følger med platen mot nordvest. Kauai er ca. 5,5 millioner år. Big Island er yngre enn 0,7 millioner år og fortsatt aktiv (USGS, u.å.-d).",
+    explain: "Nye vulkaner dannes over hotspoten, og de eldre følger med platen mot nordvest. Kauai er ca. 5,5 millioner år, mens Big Island er yngre enn 0,7 millioner år og fortsatt aktiv.",
   },
   {
-    prompt:
-      "Hvorfor er et utbrudd fra en ryolittisk stratovulkan mer eksplosivt enn et utbrudd fra en basaltisk skjoldvulkan på Hawaii?",
+    prompt: "Hvorfor er ryolittisk magma mer eksplosiv enn basaltisk magma?",
     options: [
-      "Ryolittisk magma er mye varmere enn basaltisk magma, noe som skaper høyere damptrykk.",
-      "Ryolittisk magma har høyt SiO₂-innhold. Silikattetraedrene kobles sammen i kjeder og nettverk, magmaen blir seig, og gassboblene slipper ikke ut.",
-      "Basaltisk magma inneholder mer uran og thorium, som forhindrer gassdannelse.",
-      "Hawaii har ingen magmakammer under overflaten, og lavaen presses ut av gravitasjonsbølger.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Ryolittisk magma har mye SiO₂ (over 63 % i tabellen). Silikattetraedrene kobles sammen i kjeder og nettverk, og magmaen blir seig. Gassboblene slipper ikke ut, og utbruddet kan bli eksplosivt.",
-  },
-  {
-    prompt:
-      "Hvorfor forårsaket Eyjafjallajökull-utbruddet i 2010 en så omfattende flystans i hele Europa, til tross for at utbruddet bare var VEI 4?",
-    options: [
-      "Fordi utbruddet slynget ut radioaktiv lava som ødela satellittnavigasjonen.",
-      "Fordi magmaen eksploderte i kontakt med smeltevann fra isbreen (freatomagmatisme) og dannet ekstremt finkornet silikatglassaske som smelter inne i varme jetmotorer.",
-      "Fordi røyken fra vulkanen reagerte med ozonlaget og dannet kvelende giftgasser.",
-      "Fordi flyselskapenes radarer ble blendet av lyset fra lavafontenene.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Freatomagmatisme: Magmaens møte med isbreen knuste smelten i ørsmå, mikroskopiske glasskår som smelter ved 1100 °C inne i jetmotorers forbrenningskamre og forårsaker motorstans.",
-  },
-  {
-    prompt:
-      "Hva er den viktigste årsaken til at vulkaner på subduksjonssoner er mer eksplosive enn vulkaner på midthavsrygger?",
-    options: [
-      "Subduksjonssoner er nærmere jordens kjerne og har høyere temperatur.",
-      "Vann fra den synkende platen senker smeltepunktet i mantelen over (flukssmelting). Magmaen her er oftere andesittisk eller ryolittisk, seigere og mer gassrik enn basalten ved midthavsrygger.",
-      "Midthavsrygg-vulkaner har ingen magmakammer og kan ikke eksplodere.",
-      "Subduksjonsvulkaner bruker kald havbunnsskorpe som drivstoff, noe som gir mer energi.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Ved subduksjon senker vann fra den synkende platen smeltepunktet i mantelen (flukssmelting). Ved midthavsrygger smelter mantelen fordi trykket faller (dekompresjon). Subduksjonsvulkaner gir oftere andesittisk og ryolittisk magma. Den er seig og holder på gassen, så utbruddene blir eksplosive.",
-  },
-  {
-    prompt: "Hva er 'vulkansk vinter', og hvilket historisk utbrudd forårsaket det tydeligste eksempelet?",
-    options: [
-      "En lokalt kald periode rundt en vulkan etter lavastrømmer — Kilauea på Hawaii 2018.",
-      "En global nedkjøling forårsaket av svovelsyreaerosoler i stratosfæren etter store eksplosive utbrudd — tydeligst etter Tambora 1815, som skapte 'året uten sommer' i 1816.",
-      "En flerårig nedbørsøkning i tropene etter kaldera-utbrudd.",
-      "En regional vinter der askefallet blokkerer solstrålingen lokalt i opptil én uke.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Etter Tambora i 1815 ble 1816 kalt «året uten sommer». Svovel i stratosfæren kan danne aerosoler som sprer sollys. Pinatubo i 1991 kjølte jordoverflaten i om lag tre år, med inntil ca. 0,7 °C på det meste (USGS, u.å.-c).",
-  },
-  {
-    prompt: "Hva er en kaldera, og hva skiller den fra et vanlig vulkankrater?",
-    options: [
-      "En kaldera er et vanlig eksplosjonskrater i toppen av en vulkan.",
-      "En kaldera er en stor innsynkning som oppstår når taket over et delvis tømt magmakammer synker inn.",
-      "En kaldera er et underjordisk magmakammer under en skjoldvulkan.",
-      "En kaldera er et lahar-fyllt dalstrøk etter et vulkanutbrudd.",
-    ],
-    answer: 1,
-    explain:
-      "Riktig! Et vulkankrater er åpningen over tilførselsrøret. En kaldera oppstår når taket over magmakammeret synker inn. Senkningen kan være flere kilometer bred.",
-  },
-  {
-    prompt: "Hvorfor er Beerenberg på Jan Mayen klassifisert som stratovulkan til tross for basaltisk magma?",
-    options: [
-      "Fordi alle vulkaner over 2000 m o.h. kalles stratovulkaner.",
-      "Fordi Jan Mayen ligger på en rift der magmaen er ryolittisk.",
-      "Fordi utbruddsstilen veksler mellom strombolsk og hawaiisk, noe som over tid har bygd opp lagdelte avsettinger av lava og tefra til en klassisk kjegleform.",
-      "Fordi Beerenberg aldri har hatt ekte lavastrømmer.",
+      "Den er varmere",
+      "Den inneholder mindre gass",
+      "Den har mye SiO₂, er seig og holder på gassen",
+      "Den dannes ved midthavsrygger",
     ],
     answer: 2,
-    explain:
-      "Riktig! Selv basaltisk magma kan danne stratovulkaner dersom utbruddene veksler mellom lavastrømmer og tefrafall. Beerenbergs lagdelte oppbygning, bratte flanker og isbrekledde topp er karakteristisk for denne vulkantypen (Norsk Polarinstitutt, u.å.).",
+    explain: "Ryolittisk magma har over 63 % SiO₂. Silikattetraedrene kobles sammen, magmaen blir seig, og gassboblene slipper ikke ut før trykket blir svært høyt.",
+  },
+  {
+    prompt: "Hva var hovedgrunnen til at asken fra Eyjafjallajökull i 2010 var så farlig for flytrafikken?",
+    options: [
+      "Magma møtte isbreen og ble sprengt i svært fine glasspartikler som smelter i jetmotorer",
+      "Utbruddet var det største på Island i moderne tid",
+      "Asken inneholdt mye CO₂",
+      "Lavaen rant ut i havet",
+    ],
+    answer: 0,
+    explain: "Møtet med vannet gjorde asken svært finkornet. Glasset smelter ved om lag 1100 °C, mens forbrenningskamrene i jetmotorer kan bli 1400–1700 °C.",
+  },
+  {
+    prompt: "Hvilket utbrudd ga «året uten sommer» i 1816?",
+    options: [
+      "Krakatau",
+      "Vesuv",
+      "Pinatubo",
+      "Tambora",
+    ],
+    answer: 3,
+    explain: "Tambora hadde utbrudd i april 1815 (VEI 7). Svovelsyredråper i stratosfæren sprer sollys, og året etter ble det frost og snø om sommeren i Europa og Nord-Amerika.",
+  },
+  {
+    prompt: "Hva viser sammenligningen av Armero 1985 og Pinatubo 1991?",
+    options: [
+      "At laharer er mindre farlige enn pyroklastiske strømmer",
+      "At farekart og varsler redder liv bare når de blir fulgt opp med evakuering",
+      "At det ikke går an å varsle vulkanutbrudd",
+      "At store utbrudd alltid gir flere dødsfall enn små",
+    ],
+    answer: 1,
+    explain: "I Armero fantes et farekart, men varselet kom sent og ble ikke fulgt opp, og over 23 000 omkom. Ved Pinatubo ble folk evakuert i tide, og minst 5000 liv ble reddet.",
+  },
+  {
+    prompt: "Hvorfor regnes Beerenberg som en stratovulkan, selv om lavaen er basaltisk?",
+    options: [
+      "Fordi den er dekket av is",
+      "Fordi den er Norges høyeste fjell",
+      "Fordi den ligger på en plategrense",
+      "Fordi utbruddene veksler mellom lavastrømmer og tefra og bygger en bratt, lagdelt kjegle",
+    ],
+    answer: 3,
+    explain: "Typen bestemmes av oppbygningen. Beerenberg er bygd av vekslende lag av lava og tefra, og den har bratte sider.",
   },
 ];
 
@@ -3143,5 +3122,120 @@ export const QUIZ_SJEKK_BERGARTER_4: QuizQuestion[] = [
     ],
     answer: 2,
     explain: "Ingen bergart må innom alle stasjonene. Gneisen i grunnfjellet har vært metamorf i over 900 millioner år, og larvikitten har vært magmatisk siden den størknet.",
+  },
+];
+
+export const QUIZ_SJEKK_VULKANER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor blir magma med mye SiO₂ seigere enn magma med lite SiO₂?",
+    options: [
+      "Fordi den er varmere",
+      "Fordi silikattetraedrene kobles sammen i kjeder og nettverk",
+      "Fordi den inneholder mer jern og magnesium",
+    ],
+    answer: 1,
+    explain: "Med mye SiO₂ kobles silikattetraedrene sammen i kjeder og nettverk, og smelten flyter tregere. Ryolittisk magma er dessuten kaldere enn basaltisk, og det gjør den enda seigere.",
+  },
+  {
+    prompt: "Hvorfor gir seig magma oftere eksplosive utbrudd?",
+    options: [
+      "Gassboblene slipper ikke ut, og trykket bygger seg opp",
+      "Seig magma inneholder ikke gass",
+      "Seig magma stiger raskere enn tyntflytende magma",
+    ],
+    answer: 0,
+    explain: "I seig magma blir gassboblene holdt igjen. Trykket i dem stiger mens magmaen stiger, og til slutt kan smelten rives i stykker.",
+  },
+];
+
+export const QUIZ_SJEKK_VULKANER_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor har skjoldvulkaner slakere sider enn stratovulkaner?",
+    options: [
+      "De er eldre og mer erodert",
+      "De består mest av aske",
+      "Den tyntflytende basaltlavaen renner langt før den størkner",
+    ],
+    answer: 2,
+    explain: "Basaltisk lava har lav viskositet og renner langt. Vulkanen bygges av mange tynne lavadekker og får slake sider.",
+  },
+  {
+    prompt: "Hva skiller en kaldera fra et krater?",
+    options: [
+      "En kaldera er en innsynkning som oppstår når taket over et tømt magmakammer faller ned",
+      "En kaldera er et krater fylt med vann",
+      "Det er ingen forskjell, ordene betyr det samme",
+    ],
+    answer: 0,
+    explain: "Krateret er åpningen der materialet kommer ut. En kaldera er en mye større innsynkning, ofte flere kilometer bred.",
+  },
+];
+
+export const QUIZ_SJEKK_VULKANER_3: QuizQuestion[] = [
+  {
+    prompt: "Et utbrudd har VEI 5. Omtrent hvor mye mer tefra kaster det ut enn et utbrudd med VEI 4?",
+    options: [
+      "Dobbelt så mye",
+      "Omtrent ti ganger så mye",
+      "Omtrent hundre ganger så mye",
+    ],
+    answer: 1,
+    explain: "Over VEI 1 betyr hvert trinn omtrent ti ganger mer tefra.",
+  },
+  {
+    prompt: "Hvorfor har Fagradalsfjall VEI 0, mens Eyjafjallajökull 2010 hadde VEI 4?",
+    options: [
+      "Fagradalsfjall hadde tyntflytende basalt på tørt land, og lavaen rant ut uten å eksplodere",
+      "Fagradalsfjall ligger lenger fra Europa",
+      "Eyjafjallajökull hadde mer lava",
+    ],
+    answer: 0,
+    explain: "VEI måler hvor mye tefra som kastes ut, og hvor høyt søylen når. Lavastrømmer uten eksplosjoner gir lav VEI selv om utbruddet varer lenge.",
+  },
+];
+
+export const QUIZ_SJEKK_VULKANER_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan en lahar være farlig langt fra selve vulkanen?",
+    options: [
+      "Den følger elvedalene og kan gå mange mil nedover dalen",
+      "Den sprer seg i lufta som aske",
+      "Den beveger seg alltid raskere enn en pyroklastisk strøm",
+    ],
+    answer: 0,
+    explain: "En lahar er en tykk blanding av aske, stein og vann som følger elvedalene. Laharene fra Nevado del Ruiz nådde Armero ca. 45 km fra vulkanen.",
+  },
+  {
+    prompt: "Hva er det som gir vulkansk vinter?",
+    options: [
+      "Aske som blir liggende på bakken",
+      "CO₂ fra vulkanen",
+      "Svovelsyredråper i stratosfæren som sprer sollys",
+    ],
+    answer: 2,
+    explain: "Grov aske faller ut i løpet av dager og uker. Det er SO₂ som danner svovelsyredråper i stratosfæren og gir kjøling i noen år.",
+  },
+];
+
+export const QUIZ_SJEKK_VULKANER_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor omkom så mange i Armero, selv om det fantes et farekart?",
+    options: [
+      "Kartet viste ikke Armero",
+      "Varselet kom sent og ble ikke fulgt opp med evakuering",
+      "Laharen kom uten noe forvarsel fra vulkanen",
+    ],
+    answer: 1,
+    explain: "Farekartet viste at Armero var utsatt. Varselet om evakuering kom mindre enn to timer før laharen, og det ble ikke fulgt opp. Ved Pinatubo seks år senere ble folk evakuert i tide.",
+  },
+  {
+    prompt: "Hvilket tiltak passer best mot en tyntflytende lavastrøm som beveger seg mot et kraftverk?",
+    options: [
+      "Å bygge en voll som leder lavaen bort",
+      "Å stenge luftrommet",
+      "Å vente på at lavaen blir til aske",
+    ],
+    answer: 0,
+    explain: "Lavastrømmer går ofte sakte nok til at de kan ledes bort med voller, slik som ved Svartsengi. På Heimaey ble lava også kjølt ned med sjøvann.",
   },
 ];

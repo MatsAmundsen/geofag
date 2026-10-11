@@ -188,10 +188,12 @@ describe("scan chips for the other geosfære chapters", () => {
         "Pliniansk",
         "Island",
         "VEI",
-        "Overvåking",
         "Farer",
+        "Overvåking",
+        "Forebygging",
         "Jan Mayen",
         "Begreper",
+        "Sammendrag",
         "Quiz",
       ],
     );

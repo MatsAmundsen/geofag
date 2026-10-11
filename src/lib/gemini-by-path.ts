@@ -58,6 +58,8 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
     "Denne siden eier geologisk tid (eon, æra, periode og epoke, ICS-grenser), relativ datering (overlagring, opprinnelig horisontalitet, gjennomskjæring, inneslutninger, ledefossiler og diskordans), radiometrisk datering og halveringstid (U–Pb, K–Ar, Rb–Sr og C-14) og kvartære metoder (varv, årringer, tefra, OSL og eksponeringsdatering). Norges geologi eier hendelsene og alderen deres. Bergarter eier bergartene.",
   "/geofag-1/bergarter":
     "Denne siden eier mineraler og mineralgrupper, de tre bergartsgruppene, håndstykke-tester, forvitring og bergartssyklusen. Norges geologi eier Osloriften og den kaledonske fjellkjeden, Geologisk tid eier dateringen og Geologiske ressurser eier malmene.",
+  "/geofag-1/vulkaner":
+    "Denne siden eier magma og viskositet, vulkantyper, utbruddstyper, VEI, vulkanske farer, overvåking og forebygging av vulkanfarer, og Beerenberg. Platetektonikk eier smelting og plategrenser, og Norges geologi eier Oslo-riften.",
   "/geofag-1/feltarbeid":
     "Denne siden eier hvordan feltarbeid gjøres: planlegging og HMS, metoder i felt, georeferering, feltbok og usikkerhet, og bearbeiding, tolkning og presentasjon. Norges geologi eier hva du ser etter lokalt og hva det betyr.",
   "/geofag-1/platetektonikk":

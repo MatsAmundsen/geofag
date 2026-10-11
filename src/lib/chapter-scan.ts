@@ -36,6 +36,7 @@ const SECTION_META: SectionMeta[] = [
   { match: /^relativ alder/i, label: "Relativ alder", subtitle: "Overlagring, gjennomskjæring, fossiler" },
   { match: /^absolutt alder/i, label: "Absolutt alder", subtitle: "Halveringstid og radiometriske metoder" },
   { match: /^andre dateringsmetoder/i, label: "Andre metoder", subtitle: "Varv, tefra, OSL og ¹⁰Be" },
+  { match: /^forebygging og tilpasning/i, label: "Forebygging", subtitle: "Farekart, evakuering og lavabarrierer" },
   { match: /^hva er geofaglig feltarbeid/i, label: "Feltarbeid", subtitle: "Fire steg fra plan til presentasjon" },
   { match: /^planlegging og hms$/i, label: "Planlegging", subtitle: "Problemstilling, utstyr og risiko" },
   { match: /^metoder i felt$/i, label: "Metoder", subtitle: "Berggrunn, løsmasser og vann" },

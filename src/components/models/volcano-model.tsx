@@ -81,7 +81,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
         type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens, Eyjafjallajökull)",
         vei: "VEI 4–5",
         desc: "Vedvarende gassutblåsning med konvektiv askesøyle inn i stratosfæren. Seig magma fragmenteres til pimpstein og fin aske.",
-        hazards: "Pyroklastiske tetthetsstrømmer i 200–700 km/t, askenedfall og laharer.",
+        hazards: "Pyroklastiske tetthetsstrømmer, ofte raskere enn 80 km/t, askenedfall og laharer.",
         color: "#ef4444",
       };
     } else {

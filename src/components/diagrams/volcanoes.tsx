@@ -440,7 +440,7 @@ export function VolcanoEruptionAnatomyDiagram() {
               Pyroklastisk tetthetsstrøm
             </L>
             <L x="36" y="198" size={11} fill={C.muted}>
-              200–700 km/t
+              ofte over 80 km/t
             </L>
 
             <path d="M510 258 Q600 310 720 372 L780 372 Q640 300 524 252 Z" fill="#64748b" opacity="0.82" />
@@ -509,10 +509,10 @@ const HAZARDS: {
     title: "1. Pyroklastisk strøm",
     points: [
       "Varm blanding av gass, pimpstein og stein, også kalt en glødende askesky.",
-      "Fart 200–700 km/t. Temperatur 300–800 °C.",
+      "Fart vanligvis over 80 km/t. Temperatur vanligvis 200–700 °C.",
       "Oppstår når deler av askesøylen blir for tung og faller ned langs siden.",
     ],
-    example: "Mont Pelée, Saint-Pierre 1902: om lag 29 000 døde, to overlevde. Pompeii i år 79 e.Kr.",
+    example: "Mont Pelée, Saint-Pierre 1902: ca. 26 000–28 000 døde. Bare to inne i byen overlevde. Pompeii i år 79 e.Kr.",
   },
   {
     kind: "lahar",
@@ -528,7 +528,7 @@ const HAZARDS: {
     kind: "ash",
     title: "3. Askenedfall og luftfart",
     points: [
-      "Finkornet aske kan sveve langt. Partikler mindre enn 10 mikrometer.",
+      "Finkornet aske kan sveve langt. Mye av den kan være mindre enn 10 mikrometer.",
       "Silikatglass smelter ved om lag 1100 °C. Forbrenningskamre kan bli 1400–1700 °C.",
       "Glasset kan størkne på turbinbladene, slik at motoren stanser.",
     ],
@@ -542,7 +542,7 @@ const HAZARDS: {
       "SO₂ reagerer med vanndamp og danner dråper av svovelsyre (H₂SO₄).",
       "Dråpene sprer sollys, og mindre sol når bakken.",
     ],
-    example: "Tambora 1815 (VEI 7): 1816 kalles «året uten sommer». Pinatubo 1991: kjøling i om lag tre år, inntil ca. 0,7 °C.",
+    example: "Tambora 1815 (VEI 7): 1816 kalles «året uten sommer». Pinatubo 1991: kjøling i om lag tre år, ca. 0,5 °C i snitt og inntil ca. 0,7 °C på det meste.",
   },
 ];
 
@@ -735,15 +735,15 @@ export function MagmaViscosityDiagram() {
 }
 
 const VEI_STEPS = [
-  { vei: 0, volume: "< 10 000 m³", height: "< 100 m", klass: "Hawaiisk (effusiv)", freq: "Konstant", examples: "Kilauea, Fagradalsfjall (Island)", bar: 8 },
-  { vei: 1, volume: "> 10 000 m³", height: "0,1–1 km", klass: "Hawaiisk / strombolsk", freq: "Daglig", examples: "Stromboli (Italia)", bar: 16 },
-  { vei: 2, volume: "> 1 mill. m³", height: "1–5 km", klass: "Strombolsk / vulkansk", freq: "Ukentlig", examples: "Galeras (Colombia)", bar: 28 },
-  { vei: 3, volume: "> 10 mill. m³", height: "3–15 km", klass: "Vulkansk / subpliniansk", freq: "Månedlig", examples: "Nevado del Ruiz (1985)", bar: 42 },
-  { vei: 4, volume: "> 0,1 km³", height: "10–25 km", klass: "Subpliniansk / pliniansk", freq: "Om lag 1 per år", examples: "Eyjafjallajökull (2010)", bar: 56 },
+  { vei: 0, volume: "< 10 000 m³", height: "< 100 m", klass: "Hawaiisk (effusiv)", freq: "–", examples: "Kilauea, Fagradalsfjall (Island)", bar: 8 },
+  { vei: 1, volume: "> 10 000 m³", height: "0,1–1 km", klass: "Hawaiisk / strombolsk", freq: "–", examples: "Stromboli (Italia)", bar: 16 },
+  { vei: 2, volume: "> 1 mill. m³", height: "1–5 km", klass: "Strombolsk / vulkansk", freq: "–", examples: "Galeras (Colombia)", bar: 28 },
+  { vei: 3, volume: "> 10 mill. m³", height: "3–15 km", klass: "Vulkansk / subpliniansk", freq: "Noen ganger i året", examples: "Nevado del Ruiz (1985)", bar: 42 },
+  { vei: 4, volume: "> 0,1 km³", height: "10–25 km", klass: "Subpliniansk / pliniansk", freq: "Ca. hvert 1.–2. år", examples: "Eyjafjallajökull (2010)", bar: 56 },
   { vei: 5, volume: "> 1 km³", height: "20–35 km", klass: "Pliniansk", freq: "Om lag 1 per 12 år", examples: "Mount St. Helens (1980), Vesuv (79)", bar: 70 },
   { vei: 6, volume: "> 10 km³", height: "> 30 km", klass: "Ultrapliniansk / kaldera", freq: "Om lag 1 per 100 år", examples: "Pinatubo (1991), Krakatau (1883)", bar: 82 },
-  { vei: 7, volume: "> 100 km³", height: "> 35 km", klass: "Kaldera", freq: "Om lag 1 per 1000 år", examples: "Tambora (1815), Santorini (ca. 1600 f.Kr.)", bar: 92 },
-  { vei: 8, volume: "> 1000 km³", height: "> 45 km", klass: "Supervulkan", freq: "Om lag 1 per 50 000 år", examples: "Toba (74 000 år siden), Yellowstone", bar: 100 },
+  { vei: 7, volume: "> 100 km³", height: "> 35 km", klass: "Kaldera", freq: "Svært sjelden (siste: Tambora 1815)", examples: "Tambora (1815), Santorini (ca. 1600 f.Kr.)", bar: 92 },
+  { vei: 8, volume: "> 1000 km³", height: "> 45 km", klass: "Supervulkan", freq: "Ingen i historisk tid", examples: "Toba (74 000 år siden), Yellowstone", bar: 100 },
 ];
 
 export function VeiScaleDiagram() {
@@ -752,7 +752,7 @@ export function VeiScaleDiagram() {
   return (
     <FigureFrame
       heading="Vulkansk eksplosivitetsindeks"
-      caption="Chris Newhall og Steve Self innførte skalaen i 1982. Hvert trinn over VEI 1 betyr omtrent ti ganger mer utkastet tefra. Søylehøyden i stolpene følger intervallene i tabellen, ikke en påfunnet nøyaktig verdi."
+      caption="Chris Newhall og Steve Self innførte skalaen i 1982. Hvert trinn over VEI 1 betyr omtrent ti ganger mer utkastet tefra. Søylehøyden i stolpene følger intervallene i tabellen, ikke en påfunnet nøyaktig verdi. Hvor ofte: VEI 3–4 etter Global Volcanism Program, VEI 5 etter Newhall og Hoblitt (2002) og VEI 6–7 etter USGS (ett VEI 7- og fire VEI 6-utbrudd siden år 1500)."
     >
       <div data-figure="vei">
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="VEI-trinn">
@@ -801,7 +801,7 @@ export function VeiScaleDiagram() {
             <div><dt className="text-muted-foreground">Tefravolum</dt><dd className="font-medium">{row.volume}</dd></div>
             <div><dt className="text-muted-foreground">Søylehøyde</dt><dd className="font-medium">{row.height}</dd></div>
             <div><dt className="text-muted-foreground">Klassifisering</dt><dd className="font-medium">{row.klass}</dd></div>
-            <div><dt className="text-muted-foreground">Frekvens globalt</dt><dd className="font-medium">{row.freq}</dd></div>
+            <div><dt className="text-muted-foreground">Hvor ofte globalt</dt><dd className="font-medium">{row.freq}</dd></div>
             <div className="sm:col-span-2"><dt className="text-muted-foreground">Eksempler</dt><dd className="font-medium">{row.examples}</dd></div>
           </dl>
         </div>
@@ -831,7 +831,7 @@ export function IcelandContrastDiagram() {
           </svg>
           <ul className="mt-3 space-y-1.5 text-sm leading-relaxed">
             <li>Intermediær magma, SiO₂ ca. 58 %, under en isbre.</li>
-            <li>Freatomagmatisme: magmaen traff en 200 meter tykk isbre. Smelten ble sprengt i glasspartikler mindre enn 10 mikrometer.</li>
+            <li>Freatomagmatisme: magmaen traff en 200 meter tykk isbre. Smelten ble sprengt i svært små glasspartikler. Minst en femdel av asken var mindre enn 10 mikrometer.</li>
             <li>Over 100 000 flygninger ble kansellert. 10 millioner reisende ble stående igjen.</li>
             <li>Et stabilt høytrykk over Nord-Atlanteren førte asken mot Norge og Nord-Europa.</li>
           </ul>
@@ -914,7 +914,7 @@ export function JanMayenDiagram() {
             <li>Norges eneste aktive vulkan over havet. Isdekket stratovulkan, 2272 m o.h.</li>
             <li>Utbruddene veksler mellom lavastrømmer og tefra.</li>
             <li>Dekket av isbreer, blant annet Weyprechtbreen og Kronprins Olavs bre.</li>
-            <li>Siste utbrudd var i september 1970 og januar 1985. Basaltisk lava rant ut i havet. Utbruddet i 1970 la til 4 km² land.</li>
+            <li>Det siste utbruddet var i 1985. De mest kjente utbruddene var høsten 1970 og januar 1985. Basaltisk lava rant ut i havet. Utbruddet i 1970 la til 4 km² land.</li>
           </ul>
         </article>
       </div>
@@ -976,7 +976,7 @@ export function VolcanicWinterDiagram() {
             Tambora, april 1815 (VEI 7). Svovel kom opp i stratosfæren. 1816 kalles «året uten sommer». Frost og snø i juli og august ødela avlinger i Europa og Nord-Amerika.
           </p>
           <p className="rounded-lg border border-border p-3 text-sm leading-relaxed">
-            Pinatubo 1991. Jordoverflaten kjølte i om lag tre år, med inntil ca. 0,7 °C på det meste.
+            Pinatubo 1991. Jordoverflaten kjølte i om lag tre år, ca. 0,5 °C i snitt og inntil ca. 0,7 °C på det meste.
           </p>
         </div>
       </div>

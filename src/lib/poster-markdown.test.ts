@@ -219,6 +219,12 @@ describe("injectPosterWidgets", () => {
       "HotspotPlume",
       "VolcanoModel",
       "QuizVulkaner",
+      "SjekkVulkaner1",
+      "SjekkVulkaner2",
+      "SjekkVulkaner3",
+      "SjekkVulkaner4",
+      "SjekkVulkaner5",
+      "SammendragVulkaner",
     ]) {
       assert.equal(vulkaner.has(id), true, `vulkaner missing ${id}`);
       assert.equal((vulkanInjected.match(new RegExp(`\\b${id}\\b`, "g")) ?? []).length, 1, id);

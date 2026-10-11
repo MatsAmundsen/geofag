@@ -860,6 +860,11 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["*Forvitring:* Berg brytes ned", "laget skalaen i 1822", "Protolitten er leire."],
   },
   {
+    flag: "g1-vulkaner-mal-2026-10-11",
+    slug: "vulkaner",
+    stale: ["Jordens indre prosesser", "Frekvens globalt", "Siste utbrudd var i september 1970", "200–700 km/t"],
+  },
+  {
     flag: "g1-feltarbeid-md-2026-10-11",
     slug: "feltarbeid",
     stale: ["Feltarbeid er bare et samfunnsfaglig begrep", "Målet sier at resultatene skal presenteres"],
