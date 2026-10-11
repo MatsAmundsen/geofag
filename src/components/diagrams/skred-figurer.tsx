@@ -49,10 +49,10 @@ const KV_STATUS = [
   "Første utglidning: Foten svikter. Kvikkleira kollapser, blir omrørt og flyter unna som en væske.",
   "Kanten mister støtten: Leira bak har ikke lenger noe som holder den. Den svikter også, og mer omrørt leire renner ut.",
   "Sprer seg bakover: Skredet sprer seg bakover og sideveis. Derfor kan det ta med seg et nesten flatt jorde bak skråningen.",
-  "Likevekt: Skredet stopper når lommen er tømt, eller når skredmassene fyller gropa og det blir likevekt.",
+  "Likevekt: Skredet stopper der det ikke lenger er kvikkleire, eller der terrenget blir for flatt. I figuren er grensen forenklet.",
 ];
 /** Bakkanten av skredgropa (x) i hvert steg. */
-const KV_EDGE = [842, 724, 590, 352, 352];
+const KV_EDGE = [842, 724, 590, 380, 268];
 const KV_TOP = 210;
 const KV_FLOOR = 352;
 const KV_HOUSES: Pt[] = [
@@ -84,7 +84,13 @@ export function KvikkleireBakoverFigur({
   const ground: Pt[] = opened
     ? [
         [0, KV_TOP],
+        // ujevn bakkant: skalker som har glidd ut i trinn, ikke en rett vegg
         [edge, KV_TOP],
+        [edge + 9, KV_TOP + 22],
+        [edge + 5, KV_TOP + 44],
+        [edge + 15, KV_TOP + 70],
+        [edge + 11, KV_TOP + 96],
+        [edge + 21, KV_TOP + 118],
         [edge + 26, KV_FLOOR],
         [826, KV_FLOOR - 16],
         [846, 346],
@@ -126,8 +132,8 @@ export function KvikkleireBakoverFigur({
     );
   } else {
     labels.push(
-      { text: "Skredmassene fyller gropa", x: 560, y: 110, at: [560, n1(pitTop + 20)], color: "#e4d6b0", badge: [600, 290] },
-      { text: "Lommen er tømt", x: 920, y: 60, at: [edge + 18, KV_FLOOR - 40], color: C.low, anchor: "end", badge: [edge + 50, 250] },
+      { text: "Skredmasser i gropa", x: 560, y: 110, at: [560, n1(pitTop + 20)], color: "#e4d6b0", badge: [600, 290] },
+      { text: "Her slutter kvikkleira (forenklet)", x: 920, y: 60, at: [edge + 20, KV_FLOOR - 30], color: C.low, anchor: "end", badge: [edge + 60, 250] },
     );
   }
   const keys: Key[] = [
@@ -140,11 +146,11 @@ export function KvikkleireBakoverFigur({
     <div ref={wrapRef}>
       <IsbreFigur
         svgRef={ref}
-        title="Snitt gjennom et nesten flatt jorde, en skråning og en bekk. Under tørrskorpa ligger marin leire med en lomme kvikkleire. I fem steg graver bekken i foten, foten svikter, leira flyter unna, kanten bak mister støtten, og skredet sprer seg bakover til lommen er tømt og massene fyller gropa"
+        title="Snitt gjennom et nesten flatt jorde, en skråning og en bekk. Under tørrskorpa ligger marin leire med en lomme kvikkleire. I fem steg graver bekken i foten, foten svikter, leira flyter unna, kanten bak mister støtten, og skredet sprer seg bakover til det ikke lenger er kvikkleire. Bakkanten er ujevn, og grensen er forenklet"
         heading={heading}
         caption={
           caption ??
-          "Bekken graver i foten, leira flyter unna, og kanten bak mister støtten. Skredet sprer seg bakover og sideveis til lommen er tømt, eller til skredmassene fyller gropa og det blir likevekt. Forenklet: snittet er skjematisk og uten målestokk (NVE, 2021b; NGU, u.å.-b)."
+          "Bekken graver i foten, leira flyter unna, og kanten bak mister støtten. Skredet sprer seg bakover og sideveis. Det stopper der det ikke lenger er kvikkleire, eller der terrenget blir for flatt. Forenklet: snittet er skjematisk og uten målestokk (NVE, 2021b; NGU, u.å.-b)."
         }
         playing={motion.playing}
         action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
@@ -157,7 +163,7 @@ export function KvikkleireBakoverFigur({
         labels={labels}
         keys={keys}
         notes={["Skjematisk, uten målestokk", "Høyden er overdrevet"]}
-        remark="Eksempel fra teksten: Kvikkleireskredet på Ask i Gjerdrum 30. desember 2020 målte 240 × 700 meter, og 1,35 millioner kubikkmeter raste ut (NVE, 2023a)."
+        remark="Gjerdrum 2020: Skredet startet i skråningen mot Tistilbekken og forplantet seg bakover i flere trinn inn i kvikkleira (retrogressivt skred). (Gjerdrumutvalget, 2021; NOU 2022: 3, 2022)"
         viewBox="0 0 960 520"
       >
         {({ d }) => (
@@ -175,7 +181,7 @@ export function KvikkleireBakoverFigur({
               <rect x="0" y="0" width="960" height="520" fill="#6d6a5e" />
               <rect x="0" y="0" width="960" height="520" fill={d.url.strata} opacity="0.4" data-nocheck="" />
               {/* kvikkleirelommen: bare den delen som ikke har rast ut */}
-              <path clipPath="url(#kv-lomme)" d={`M780 262 L250 262 C236 290 250 340 300 350 L760 350 C790 340 800 320 780 300 L780 262 Z`} fill={opened && i === 4 ? "#6d6a5e" : "#a8935a"} />
+              <path clipPath="url(#kv-lomme)" d={`M780 262 L250 262 C236 290 250 340 300 350 L760 350 C790 340 800 320 780 300 L780 262 Z`} fill="#a8935a" />
               <path d={`M0 ${KV_TOP} L960 ${KV_TOP} L960 ${KV_TOP + 30} L0 ${KV_TOP + 30} Z`} fill="#7d6a4f" />
               <path d="M0 440 C160 430 300 452 480 436 C640 422 800 446 960 432 L960 520 L0 520 Z" fill={d.url.rock} />
             </g>
@@ -251,7 +257,7 @@ export function SkredKrefterFigur({ heading = "Krefter i en skråning: helning o
     slides
       ? "De drivende kreftene er større enn de holdende. Massen glir ut."
       : "De holdende kreftene er større enn de drivende. Skråningen står."
-  }${w === 2 ? " Vann i porene presser kornene fra hverandre, så friksjonen blir mindre." : ""}`;
+  }`;
   return (
     <IsbreFigur
       title="Skråning med et lag løsmasse og en blokk. Tyngdekraften er delt i en drivende del langs skråningen og en del inn i skråningen. Den holdende kraften er friksjon og kohesjon. Skyverne endrer helningen og vanninnholdet, og søylene viser om de drivende eller holdende kreftene er størst"
@@ -267,6 +273,7 @@ export function SkredKrefterFigur({ heading = "Krefter i en skråning: helning o
         </>
       }
       status={status}
+      remark="Tyngdekraften drar massen nedover skråningen. Friksjon og kohesjon holder igjen. Vann i porene øker poretrykket, slik at kornene presses mindre mot hverandre (lavere effektivspenning). Da blir friksjonen mindre."
       labels={labels}
       keys={keys}
       notes={["Forenklet modell", "Skjematisk, uten målestokk"]}
@@ -302,5 +309,221 @@ export function SkredKrefterFigur({ heading = "Krefter i en skråning: helning o
         </g>
       )}
     </IsbreFigur>
+  );
+}
+
+/* =====================================================================
+ * 3. Skredtyper: hvor i landskapet går de?
+ * ===================================================================== */
+
+const ST_STEPS = ["Steinsprang", "Jordskred", "Flomskred", "Kvikkleireskred", "Snøskred", "Havbunnsskred"];
+const ST_STATUS = [
+  "Steinsprang: Én eller et fåtall blokker, med volum inntil noen hundre kubikkmeter, løsner fra fjellet. Blokkene spretter, ruller eller sklir ned skråningen. I foten kan det ligge en ur.",
+  "Jordskred: Vannmettede løsmasser, hovedsakelig jord, stein, grus og sand, glir ut i en bratt skråning. Jordskred går utenfor bekke- og elveløp.",
+  "Flomskred: Raske, flomlignende skred som går i hovedsak langs elve- og bekkeløp, også der det vanligvis ikke renner vann hele tiden.",
+  "Kvikkleireskred: Kvikkleire er marin leire. Blir den overbelastet, blir den flytende, og det kan gå et kvikkleireskred.",
+  "Snøskred: Snø som raser ned en fjellside. Over 600 av de om lag 1100 som har omkommet i skredulykker i Norge siden 1900, omkom i snøskred. Snøskred tar vi ikke i dette kapitlet.",
+  "Havbunnsskred: Løsmasser på havbunnen glir ut, f.eks. Storeggaraset, ca. 8150 år siden.",
+];
+/** Terrenget fra fjellet til havet. */
+const ST_GROUND: Pt[] = [
+  [0, 80],
+  [170, 150],
+  [184, 160],
+  [196, 250],
+  [262, 292],
+  [470, 388],
+  [480, 394],
+  [504, 394],
+  [514, 388],
+  [540, 362],
+  [730, 362],
+  [752, 394],
+  [800, 404],
+  [850, 420],
+  [960, 500],
+];
+const ST_SEA = 392;
+/** Punkt på en rett strekning a→b, t langs, h ut av bakken (positiv = opp). */
+function langs(a: Pt, b: Pt, t: number, h = 0): Pt {
+  const dx = b[0] - a[0];
+  const dy = b[1] - a[1];
+  const l = Math.hypot(dx, dy) || 1;
+  return [a[0] + dx * t + (dy / l) * h, a[1] + dy * t - (dx / l) * h];
+}
+const ST_HILL: [Pt, Pt] = [
+  [262, 292],
+  [470, 388],
+];
+const ST_SNOW: [Pt, Pt] = [
+  [0, 80],
+  [170, 150],
+];
+const ST_SEABED: [Pt, Pt] = [
+  [850, 420],
+  [960, 500],
+];
+const ST_FALL: Pt[] = [
+  [184, 162],
+  [194, 196],
+  [204, 230],
+  [222, 258],
+  [246, 280],
+];
+
+export function SkredTyperFigur({
+  heading = "Skredtyper: hvor i landskapet går de?",
+  caption,
+  initialStep,
+}: {
+  heading?: string;
+  caption?: ReactNode;
+  initialStep?: number;
+}) {
+  const motion = useAnimationPlaying();
+  const [ref, visible] = useInView<SVGSVGElement>();
+  const [wrapRef, small] = useFigurSmal();
+  const clock = useStepClock(6, motion.playing && visible, 3600, 1600, initialStep);
+  const { step, phase } = clock;
+  const i = step - 1;
+  const p = motion.playing ? smooth(phase) : 1;
+  const groundPath = `${poly(ST_GROUND)} L960 520 L0 520 Z`;
+  const hill = (t: number, h = 0) => langs(ST_HILL[0], ST_HILL[1], t, h);
+  // bekkeløpet ligger litt inne i dalsida (sett skrått forfra)
+  const creek = Array.from({ length: 11 }, (_, k) => hill(k / 10, -7));
+  const fallAt = (t: number): Pt => {
+    const s = Math.min(0.999, Math.max(0, t)) * (ST_FALL.length - 1);
+    const k = Math.floor(s);
+    const f = s - k;
+    return [lerp(ST_FALL[k][0], ST_FALL[k + 1][0], f), lerp(ST_FALL[k][1], ST_FALL[k + 1][1], f)];
+  };
+  const pitW = 34 + 66 * p;
+  const labels: Lab[] = [];
+  const main = (text: string, x: number, y: number, at: Pt, color: string, badge: Pt, anchor?: "start" | "end") =>
+    labels.push({ text, x, y, at, color, badge, anchor, weight: 700 });
+  const sub = (text: string, x: number, y: number, anchor?: "start" | "end", narrowHide = true) =>
+    labels.push({ text, x, y, color: C.muted, anchor, narrowHide });
+  if (i === 0) {
+    main("Steinsprang", 300, 170, [216, 246], C.low, [236, 214]);
+    sub("blokker spretter, ruller eller sklir", 300, 194);
+  } else if (i === 1) {
+    main("Jordskred", 420, 250, hill(0.3, 6), C.low, [330, 286]);
+    sub("utenfor bekkeløpet", 420, 274);
+  } else if (i === 2) {
+    main("Flomskred", 560, 290, [456, 386], C.low, [452, 352]);
+    sub("langs bekkeløpet", 560, 314);
+  } else if (i === 3) {
+    main("Kvikkleireskred", 640, 250, [560, 378], C.low, [600, 334]);
+    sub("marin leire blir flytende", 640, 274);
+  } else if (i === 4) {
+    main("Snøskred", 230, 60, langs(ST_SNOW[0], ST_SNOW[1], 0.45 + 0.25 * p, 14), P.snow, [120, 70]);
+    sub("ikke tema i dette kapitlet", 230, 84);
+  } else {
+    main("Havbunnsskred", 840, 230, langs(ST_SEABED[0], ST_SEABED[1], 0.5, 6), C.low, [900, 380], "end");
+    sub("f.eks. Storeggaraset, ca. 8150 år siden", 840, 254, "end", false);
+  }
+  labels.push({ text: "Hav", x: 920, y: 380, color: "#9fd3e6", anchor: "end", size: 13, narrowHide: true });
+  const keys: Key[] = [
+    { text: "Fast fjell", color: P.rock, kind: "fill" },
+    { text: "Løsmasser", color: P.moraine, kind: "fill" },
+    { text: "Marin leire", color: "#6d6a5e", kind: "fill" },
+    { text: "Skredmasser", color: "#b0745e", kind: "fill" },
+  ];
+  const slab = (t0: number, t1: number, h: number, a: Pt, b: Pt) =>
+    `${poly([langs(a, b, t0, 0), langs(a, b, t1, 0), langs(a, b, t1, h), langs(a, b, t0, h)])} Z`;
+  return (
+    <div ref={wrapRef}>
+      <IsbreFigur
+        svgRef={ref}
+        title="Snitt fra et fjell med stup og snødekt fjellside, ned en bratt dalside med bekk, over en terrasse av marin leire og ut i havet. I seks steg vises hvor steinsprang, jordskred, flomskred, kvikkleireskred, snøskred og havbunnsskred går"
+        heading={heading}
+        caption={
+          caption ??
+          "Skred deles etter massen i fjell, løsmasser og snø (NGU, u.å.-d; NVE, 2020c). Steinsprang løsner fra stup. Jordskred går i bratte skråninger utenfor bekkeløpet, flomskred langs det. Kvikkleireskred går i marin leire. Løsmasseskred utløses ofte av intens nedbør eller snøsmelting. Forenklet: snittet er skjematisk og uten målestokk."
+        }
+        playing={motion.playing}
+        action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
+        toolbar={
+          <StegRamme small={small}>
+            <StegVelger labels={ST_STEPS} step={step} onStep={pickStep(clock, motion)} label="Velg skredtype" />
+          </StegRamme>
+        }
+        status={ST_STATUS[i]}
+        labels={labels}
+        keys={keys}
+        notes={["Skjematisk, uten målestokk", "Høyden er overdrevet"]}
+        viewBox="0 0 960 520"
+      >
+        {({ d }) => (
+          <g className={motion.motionClass} data-figur="skredtyper" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
+            <defs>
+              <clipPath id="st-ground">
+                <path d={groundPath} />
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="960" height="520" fill={d.url.sky} />
+            {/* havet */}
+            <path d={`M744 ${ST_SEA} L960 ${ST_SEA} L960 500 L850 420 L800 404 L752 394 Z`} fill={P.waterDeep} />
+            <path d={`M744 ${ST_SEA} L960 ${ST_SEA}`} stroke={P.water} strokeWidth="3" data-nocheck="" />
+            <g clipPath="url(#st-ground)">
+              <rect x="0" y="0" width="960" height="520" fill={d.url.rock} />
+              {/* løsmasser (morene) på dalsida og ura under stupet */}
+              <path d={`${poly([[196, 250], [262, 292], [470, 388], [480, 394], [470, 410], [262, 310], [204, 268]])} Z`} fill={P.moraine} />
+              <path d="M196 250 L262 292 L214 294 Z" fill={P.rockLight} />
+              {/* marin leire i terrassen og sediment på havbunnen */}
+              <path d={`${poly([[504, 394], [540, 362], [730, 362], [752, 394], [770, 440], [500, 440]])} Z`} fill="#6d6a5e" />
+              <path d={`${poly([[752, 394], [800, 404], [850, 420], [960, 500], [960, 520], [850, 444], [800, 424], [752, 412]])} Z`} fill={P.clay} />
+            </g>
+            <path d={poly(ST_GROUND)} stroke="#2e3a26" strokeWidth="2" fill="none" data-nocheck="" />
+            {/* snø på fjellsida */}
+            <path d={poly([langs(ST_SNOW[0], ST_SNOW[1], 0, 3), langs(ST_SNOW[0], ST_SNOW[1], 1, 3)])} stroke={P.snow} strokeWidth="6" opacity={i === 4 ? 0.5 : 0.85} data-nocheck="" />
+            {/* bekkeløpet og elva */}
+            <path d={poly(creek)} stroke={P.water} strokeWidth="3" strokeDasharray="8 5" fill="none" data-nocheck="" />
+            <path d="M478 391 L506 391 L504 395 L480 395 Z" fill={P.water} />
+            <path d={`M540 362 L730 362`} stroke={P.grass} strokeWidth="4" data-nocheck="" />
+
+            {i === 0 ? (
+              <g>
+                <path d="M170 150 L184 160 L196 250" stroke={C.low} strokeWidth="3" fill="none" data-nocheck="" />
+                {[0, 0.33, 0.66].map((o) => {
+                  const [x, y] = fallAt(motion.playing ? (p + o) % 1 : 0.3 + o);
+                  return <path key={o} d={`M${n1(x - 7)} ${n1(y - 3)} L${n1(x)} ${n1(y - 8)} L${n1(x + 8)} ${n1(y - 2)} L${n1(x + 4)} ${n1(y + 6)} L${n1(x - 5)} ${n1(y + 5)} Z`} fill="#b0745e" stroke="#3b2a22" strokeWidth="1.2" />;
+                })}
+              </g>
+            ) : null}
+            {i === 1 ? (
+              <g>
+                <path d={slab(0.18, 0.3, -9, ST_HILL[0], ST_HILL[1])} fill="#3b4239" />
+                <path d={slab(0.3, 0.3 + 0.22 * p, 9, ST_HILL[0], ST_HILL[1])} fill="#b0745e" stroke="#3b2a22" strokeWidth="1.2" />
+              </g>
+            ) : null}
+            {i === 2 ? (
+              <g>
+                <path d={poly(creek)} stroke="#b0745e" strokeWidth="9" strokeLinecap="round" fill="none" pathLength={1} strokeDasharray={`${n1(p)} 1`} data-nocheck="" />
+                <path d={`M${n1(470 - 30 * p)} 390 Q470 ${n1(390 - 10 * p)} ${n1(500 + 6 * p)} 393 L480 395 Z`} fill="#b0745e" />
+              </g>
+            ) : null}
+            {i === 3 ? (
+              <g>
+                <path d={`M514 388 L540 362 L${n1(540 + pitW)} 362 L${n1(546 + pitW)} 372 L${n1(540 + pitW)} 380 L${n1(548 + pitW)} 390 L514 392 Z`} fill={d.url.sky} />
+                <path d={`M480 395 L514 389 L${n1(540 + pitW)} 391 L${n1(530 + pitW * 0.6)} 384 L520 386 Z`} fill="#c9b98e" />
+              </g>
+            ) : null}
+            {i === 4 ? (
+              <g>
+                <path d={slab(0.2 + 0.25 * p, 0.45 + 0.25 * p, 10, ST_SNOW[0], ST_SNOW[1])} fill={P.snow} stroke={P.iceLine} strokeWidth="1.5" />
+                <ellipse cx={n1(langs(ST_SNOW[0], ST_SNOW[1], 0.5 + 0.25 * p, 22)[0])} cy={n1(langs(ST_SNOW[0], ST_SNOW[1], 0.5 + 0.25 * p, 22)[1])} rx="26" ry="14" fill={P.snow} opacity={n1(0.25 + 0.35 * p)} />
+              </g>
+            ) : null}
+            {i === 5 ? (
+              <g>
+                <path d={slab(0.15, 0.4, -8, ST_SEABED[0], ST_SEABED[1])} fill={P.waterDeep} />
+                <path d={slab(0.4, 0.4 + 0.35 * p, 8, ST_SEABED[0], ST_SEABED[1])} fill="#b0745e" stroke="#3b2a22" strokeWidth="1.2" />
+              </g>
+            ) : null}
+          </g>
+        )}
+      </IsbreFigur>
+    </div>
   );
 }

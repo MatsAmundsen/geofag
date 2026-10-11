@@ -1856,6 +1856,12 @@ export const KILDER = {
       href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
     },
     {
+      prefix: "NOU 2022: 3. (2022). ",
+      italic: "På trygg grunn: Bedre håndtering av kvikkleirerisiko",
+      suffix: ". Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/no/dokumenter/nou-2022-3/id2905694/",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",

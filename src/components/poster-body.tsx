@@ -1,4 +1,4 @@
-import { KvikkleireBakoverFigur, SkredKrefterFigur } from "@/components/diagrams/skred-figurer";
+import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import type { JSX } from "react";
 import {
   BoundaryOverviewDiagram,
@@ -104,7 +104,6 @@ import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
   SkredSonerDiagram,
-  SkredTyperDiagram,
 } from "@/components/diagrams/skred";
 import {
   FeltbokDiagram,
@@ -1022,7 +1021,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       ]}
     />
   ),
-  SkredTyper: () => <SkredTyperDiagram />,
+  SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
