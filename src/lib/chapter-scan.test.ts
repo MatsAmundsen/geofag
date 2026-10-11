@@ -255,6 +255,7 @@ describe("scan chips for the other geosfære chapters", () => {
         "Metamorfe",
         "Kretsløpet",
         "Begreper",
+        "Sammendrag",
         "Quiz",
       ],
     );

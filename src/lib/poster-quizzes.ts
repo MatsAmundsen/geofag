@@ -1504,57 +1504,68 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
   {
     prompt: "Hvorfor tester du Mohs på ett mineralkorn, ikke på hele bergarten?",
     options: [
-      "En bergart er alltid like hard overalt, så ett tall holder.",
-      "En bergart kan bestå av flere mineraler, og hvert korn har sin egen hardhet.",
-      "Mohs-skalaen gjelder bare for kalkstein.",
+      "En bergart er like hard overalt, så ett tall holder",
+      "En bergart kan bestå av flere mineraler, og hvert korn har sin egen hardhet",
+      "Mohs-skalaen gjelder bare kalkstein",
+      "En bergart har ingen hardhet",
     ],
     answer: 1,
-    explain:
-      "Se «Hvordan undersøker du et håndstykke?». Mohs er en skala for mineraler. Kvarts er 7 og ortoklas er 6. Rip ett korn.",
+    explain: "Mohs er en skala for mineraler. Kvarts er 7 og ortoklas er 6, og en granitt har korn av begge.",
   },
   {
-    prompt: "Hvordan viser larvikitt og rombeporfyr forskjellen på dypbergart og dagbergart?",
+    prompt: "Hvilket par består av en dypbergart og en dagbergart fra samme smeltefamilie i Osloriften?",
     options: [
-      "De kommer fra to ulike magmaer, dannet i hver sin tidsalder.",
-      "Larvikitt størknet ferdig på dypet. Rombeporfyr har store feltspatkrystaller i en grunnmasse, fordi smelten nådde overflaten før den var ferdig krystallisert.",
-      "Begge er sedimentære bergarter, kittet av kalk.",
+      "Gneis og fyllitt",
+      "Sandstein og leirstein",
+      "Kalkstein og marmor",
+      "Larvikitt og rombeporfyr",
     ],
-    answer: 1,
-    explain:
-      "Se «Hva er magmatiske bergarter?». NGU kaller rombeporfyr tvillingbroren til larvikitt. Forskjellen er hvor smelten størknet.",
+    answer: 3,
+    explain: "Larvikitt størknet ferdig på dypet. Rombeporfyr nådde overflaten før smelten var ferdig krystallisert, og har derfor store feltspatkrystaller i en finkornet grunnmasse.",
   },
   {
     prompt: "Hva er forskjellen på forvitring og erosjon?",
     options: [
-      "Forvitring bryter ned berg på stedet. Erosjon er nedsliting pluss transport.",
-      "Begge betyr at vann frakter sand til havet.",
-      "Forvitring er transport. Erosjon er oppløsning på stedet.",
+      "Forvitring bryter ned berg på stedet, mens erosjon er nedsliting pluss transport",
+      "Begge betyr at vann frakter sand til havet",
+      "Forvitring er transport, og erosjon er oppløsning på stedet",
+      "Forvitring skjer bare i varmt klima",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er forvitring?». Ved forvitring blir fragmentene liggende. Først når vann, is eller tyngdekraft flytter dem, er det erosjon.",
+    explain: "Ved forvitring blir fragmentene liggende. Først når vann, is eller tyngdekraft flytter dem, er det erosjon.",
+  },
+  {
+    prompt: "Hvilket mineral hører til gruppen sulfider?",
+    options: [
+      "Kalsitt",
+      "Hematitt",
+      "Pyritt",
+      "Kvarts",
+    ],
+    answer: 2,
+    explain: "Pyritt (FeS₂) er bygd rundt svovel og er et sulfid. Kalsitt er et karbonat, hematitt et oksid og kvarts et silikat.",
+  },
+  {
+    prompt: "I granittisk sand, hvilket mineral forsvinner først ved kjemisk forvitring?",
+    options: [
+      "Kvarts",
+      "Kalifeltspat",
+      "Kaolinitt",
+      "Hornblende",
+    ],
+    answer: 3,
+    explain: "Hornblende forsvinner fortere enn plagioklas, og plagioklas fortere enn kalifeltspat. Til slutt blir kaolinitt og kvarts igjen (White mfl., 1996).",
   },
   {
     prompt: "Hvorfor viser gneis eldre enn 900 millioner år at en bergart ikke må gjennom hele syklusen?",
     options: [
-      "Gneis må smelte før den kan bli så gammel.",
-      "Gneis i grunnfjellet i Sør-Norge er fortsatt metamorf. Syklusen er en modell med flere veier.",
-      "Alle bergarter blir sedimentære etter 900 millioner år.",
+      "Gneisen i grunnfjellet i Sør-Norge er fortsatt metamorf. Syklusen er en modell med flere veier",
+      "Gneis må smelte før den kan bli så gammel",
+      "Alle bergarter blir sedimentære etter 900 millioner år",
+      "Gneis er en sedimentær bergart",
     ],
-    answer: 1,
-    explain:
-      "Se «Hva er bergartssyklusen?». Gneis ble dannet for mer enn 900 millioner år siden og er fortsatt en metamorf bergart.",
-  },
-  {
-    prompt: "I granittisk sand, hvilket mineral forsvinner først?",
-    options: [
-      "Kvarts, fordi det løses før de andre.",
-      "Hornblende fortere enn plagioklas, og plagioklas fortere enn kalifeltspat. Kaolinitt og kvarts blir igjen.",
-      "Kalifeltspat forsvinner før hornblende.",
-    ],
-    answer: 1,
-    explain:
-      "Se «Hva er forvitring?». White et al. (1996) fant denne rekkefølgen i granittisk sand. Resten er kaolinitt og kvarts.",
+    answer: 0,
+    explain: "Gneisen ble dannet for mer enn 900 millioner år siden og er fortsatt en metamorf bergart. Den har ikke smeltet eller blitt til sediment.",
   },
 ];
 
@@ -3040,5 +3051,97 @@ export const QUIZ_SJEKK_GEOLOGISK_TID_4: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Sandsteinen ble avsatt etter det nederste lavalaget og før det øverste. Alderen ligger mellom de to daterte nivåene.",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er kvarts et mineral, mens granitt er en bergart?",
+    options: [
+      "Kvarts er hardere enn granitt",
+      "Kvarts har en bestemt kjemi og krystallstruktur, mens granitt består av flere mineraler",
+      "Granitt er dannet av magma, og det er ikke kvarts",
+    ],
+    answer: 1,
+    explain: "Et mineral har bestemt kjemi (kvarts er SiO₂) og en ordnet krystallstruktur. Granitt består av flere mineraler, blant annet kvarts og feltspat, og er derfor en bergart.",
+  },
+  {
+    prompt: "Hvilken mineralgruppe hører hematitt og ilmenitt til?",
+    options: [
+      "Silikater",
+      "Sulfider",
+      "Oksider",
+    ],
+    answer: 2,
+    explain: "Hematitt (Fe₂O₃) og ilmenitt (FeTiO₃) er oksider. De er bygd rundt oksygen og er viktige malmmineraler, hematitt i Rana og ilmenitt i Sokndal.",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_2: QuizQuestion[] = [
+  {
+    prompt: "Frost sprenger en granittblokk i mindre biter, men bitene blir liggende. Hva er dette?",
+    options: [
+      "Mekanisk forvitring",
+      "Kjemisk forvitring",
+      "Erosjon",
+    ],
+    answer: 0,
+    explain: "Berget sprekker, men mineralene er de samme, og bitene blir liggende på stedet. Det er mekanisk forvitring. Erosjon er det først når vann, is eller tyngdekraft flytter bitene.",
+  },
+  {
+    prompt: "Hvorfor løses kalkstein lettere enn granitt av regnvann?",
+    options: [
+      "Kalkstein er alltid porøs",
+      "Kalkstein består mest av karbonater, som løses av svak karbonsyre",
+      "Granitt inneholder ikke mineraler",
+    ],
+    answer: 1,
+    explain: "Regn tar opp CO₂ og blir en svak karbonsyre. Kalkstein består av mer enn 50 prosent karbonater, og de løses av syren.",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_3: QuizQuestion[] = [
+  {
+    prompt: "Du finner en grovkornet bergart med synlige, ikke-orienterte korn av feltspat og pyroksen. Hvilken gruppe hører den trolig til?",
+    options: [
+      "Sedimentær",
+      "Metamorf",
+      "Magmatisk",
+    ],
+    answer: 2,
+    explain: "Korn og prikker uten lagdeling og striper peker på magmatisk bergart. Store korn betyr langsom avkjøling på dypet, som i gabbro.",
+  },
+  {
+    prompt: "Hva er protolitten til grønnstein?",
+    options: [
+      "Gabbro eller basalt",
+      "Leirstein",
+      "Kalkstein",
+    ],
+    answer: 0,
+    explain: "Grønnstein er omdannet gabbro eller basalt. Protolitten er magmatisk, og bergarten er nå metamorf.",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_4: QuizQuestion[] = [
+  {
+    prompt: "En sandstein blir varmet opp og presset dypt nede i en fjellkjede, uten å smelte. Hvilken vei i syklusen tar den?",
+    options: [
+      "Størkning",
+      "Omdanning i fast tilstand, til metamorf bergart",
+      "Forvitring og erosjon",
+    ],
+    answer: 1,
+    explain: "Trykk og temperatur uten smelting gir omdanning i fast tilstand. Sandsteinen blir en metamorf bergart.",
+  },
+  {
+    prompt: "Hvorfor sier vi at bergartssyklusen er en modell med flere veier?",
+    options: [
+      "Fordi alle bergarter blir sedimentære til slutt",
+      "Fordi en bergart alltid smelter før den blir en ny bergart",
+      "Fordi en bergart kan hoppe over stasjoner, slik gneisen i grunnfjellet har vært metamorf i over 900 millioner år",
+    ],
+    answer: 2,
+    explain: "Ingen bergart må innom alle stasjonene. Gneisen i grunnfjellet har vært metamorf i over 900 millioner år, og larvikitten har vært magmatisk siden den størknet.",
   },
 ];
