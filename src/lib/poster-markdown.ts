@@ -96,9 +96,9 @@ const PLATE_INJECT_RULES: InjectRule[] = [
 
 const CHAPTER_INJECT_RULES: InjectRule[] = [
   {
-    // Etter avsnittet som ender med «(dekompresjonssmelting, se under)» i Platetektonikk (Geo sjekk1, må 1).
+    // Etter «… vi har dermed fått en divergerende plategrense» i «Hvordan startet platedriften?» (Platetektonikk).
     widgets: ["SmeltingUnderTynnPlate"],
-    afterParagraph: /dekompresjonssmelting, se under/i,
+    afterParagraph: /vi har dermed fått en divergerende plategrense/i,
   },
   {
     widgets: ["MagmaViscosity"],

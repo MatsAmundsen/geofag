@@ -135,14 +135,29 @@ Når havbunnen sprer seg til begge sider, fryser havbunnsskorpen inn et symmetri
 
 ![Divergerende grense eksponert på tørt land: Þingvellir på Island](/images/fig-spredring.jpg)
 
-## Platedrift – hva er det som driver platene?
+## Hvordan startet platedriften?
 
-Mantelen er fast, men så varm at den kryper langsomt og har konveksjon. Platene er den kalde, øverste delen av dette systemet. Der platene trekkes fra hverandre, stiger varm mantel passivt opp. Trykket faller, og en liten del smelter (dekompresjonssmelting, se under). Smeltingen er altså en *følge* av at platene beveger seg fra hverandre, ikke årsaken (Forsyth & Uyeda, 1975). 
+Før vi kan gå inn på platedrift, er det noen ting vi må få på plass først. Alt starter med konveksjonsstrømmer i jordas indre, og med at bergarter i mantelen kan smelte når trykket blir lavere.
 
+Varmen fra jordas kjerne varmer opp mantelbergartene til temperaturer som vanligvis ville ha smeltet de fleste av dem. Men på grunn av det høye trykket forblir de faste bergarter. Varmen gjør at bergartene blir plastiske (kan få flytende egenskaper), og setter i gang langsomme konveksjonsstrømmer fra jordas indre og opp til øvre del av mantelen, før den synker ned igjen.
 
+Hvordan platedriften startet, er et åpent forskningsspørsmål (Stern & Gerya, 2018). Her er én mulig forklaring.
+
+Innad i hver enkelt plate har vi varierende tykkelse. Dette betyr at noen steder er platen tynnere eller tykkere. Der platen er tynnere, er trykket litt lavere, ettersom man er nærmere overflaten.
+Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Magmaen som dannes her, vil først danne et magmakammer under platen, før den stiger opp gjennom sprekker og ganger i platen og opp til overflaten. På veien kan magmaen smelte litt av bergarten rundt seg (assimilasjon). Platen sprekker opp, og **vi har dermed fått en divergerende plategrense.**
+
+Etter denne forklaringen er det denne prosessen som satte i gang platedriften i starten.
+
+Det finnes også andre forklaringer. En mantelplym kan varme opp og svekke platen nedenfra til den brister. Eller tung, gammel havbunn kan begynne å synke ved en svakhetssone, for eksempel langs en kontinentrand eller en gammel forkastning (Stern & Gerya, 2018).
 
 ---
 ---
+
+## Hva holder platedriften i gang?
+
+Mantelen er fast, men så varm at den kryper langsomt og har konveksjon. Platene er den kalde, øverste delen av dette systemet. Der platene trekkes fra hverandre, stiger varm mantel passivt opp. Trykket faller, og en liten del smelter (dekompresjonssmelting, se under). Smeltingen er altså en *følge* av at platene beveger seg fra hverandre, ikke årsaken (Forsyth & Uyeda, 1975).
+
+Når platene først er i bevegelse, går prosessene i en sirkel. Ved ryggen dannes ny havbunn, som avkjøles, blir tung og til slutt synker ned i mantelen, og det gir nytt platetrekk. Smeltingen er et nødvendig ledd i sirkelen, men det er tyngdekraften som gir kraften.
 
 Platene drives av et samspill mellom fire krefter:
 - Platetrekk 

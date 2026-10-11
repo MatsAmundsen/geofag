@@ -168,6 +168,12 @@ export const KILDER = {
       suffix: " (2. utg.). Norsk Geologisk Forening.",
     },
     {
+      prefix: "Stern, R. J., & Gerya, T. (2018). Subduction initiation in nature and models: A review. ",
+      italic: "Tectonophysics, 746",
+      suffix: ", 173–198.",
+      href: "https://doi.org/10.1016/j.tecto.2017.10.014",
+    },
+    {
       prefix: "Tarbuck, E. J., Lutgens, F. K., & Tasa, D. G. (2020). ",
       italic: "Earth: An introduction to physical geology",
       suffix: " (13. utg.). Pearson.",

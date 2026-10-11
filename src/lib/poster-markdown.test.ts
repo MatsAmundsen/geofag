@@ -886,9 +886,9 @@ describe("chapter posters from this pull request", () => {
 
 describe("smelting under tynn plate", () => {
   const liveSnippet = [
-    "## Platedrift – hva er det som driver platene?",
+    "## Hvordan startet platedriften?",
     "",
-    "Der platene trekkes fra hverandre, stiger varm mantel passivt opp. Trykket faller, og en liten del smelter (dekompresjonssmelting, se under). Smeltingen er altså en *følge*.",
+    "Magmaen stiger opp gjennom sprekker og ganger. Platen sprekker opp, og **vi har dermed fått en divergerende plategrense.**",
     "",
     "---",
     "---",
@@ -906,10 +906,10 @@ describe("smelting under tynn plate", () => {
   const count = (md: string, id: string) =>
     md.split(`\`\`\`widget\n${id}\n\`\`\``).length - 1;
 
-  it("places the figure once, right after «(dekompresjonssmelting, se under)»", () => {
+  it("places the figure once, right after «vi har dermed fått en divergerende plategrense»", () => {
     const out = injectPosterWidgets(liveSnippet);
     assert.equal(count(out, "SmeltingUnderTynnPlate"), 1);
-    const sentence = out.indexOf("dekompresjonssmelting, se under");
+    const sentence = out.indexOf("divergerende plategrense");
     const fig = out.indexOf("```widget\nSmeltingUnderTynnPlate");
     const rule = out.indexOf("---", sentence);
     assert.ok(sentence > 0 && fig > sentence && fig < rule, "figure sits between the sentence and the rule");
@@ -921,7 +921,7 @@ describe("smelting under tynn plate", () => {
   });
 
   it("does not place the figure when the sentence is missing", () => {
-    const withoutSentence = chapterMarkdown.replace(/dekompresjonssmelting, se under/g, "");
+    const withoutSentence = chapterMarkdown.replace(/vi har dermed fått en divergerende plategrense/gi, "");
     assert.equal(count(injectPosterWidgets(withoutSentence), "SmeltingUnderTynnPlate"), 0);
   });
 });
