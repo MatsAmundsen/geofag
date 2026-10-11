@@ -1675,59 +1675,59 @@ export const QUIZ_SKRED: QuizQuestion[] = [
 
 export const QUIZ_GEOLOGISKE_RESSURSER: QuizQuestion[] = [
   {
-    prompt: "Hva må til for at en bergart kalles malm?",
+    prompt: "Hva skiller de to typene hydrotermale malmer?",
     options: [
-      "Den inneholder mineraler eller grunnstoffer i økonomisk drivverdige mengder.",
-      "Den inneholder et hvilket som helst spor av metall.",
-      "Den er knust til pukk.",
+      "Den ene er avsatt fra gasser som koker ut av magma, den andre fra varme løsninger på havbunnen",
+      "Den ene inneholder jern, den andre aluminium",
+      "Den ene er magmatisk, den andre sedimentær",
+      "Det er ingen forskjell",
     ],
     answer: 0,
-    explain:
-      "Se «Hvordan dannes malm?». Malm er en bergart med mineraler eller grunnstoffer i økonomisk drivverdige mengder.",
+    explain: "Gasser fra magma avsetter malmårer og ganger, som i Oslofeltet. Varme løsninger ved undersjøiske vulkaner avsetter kismalmer på havbunnen, som i Løkken og Røros.",
   },
   {
-    prompt: "Hvilke metallmalmer er det hovedsakelig drift på i Norge i dag?",
+    prompt: "I hvilken rekkefølge skjer det som trengs for at det skal dannes en oljeforekomst?",
     options: [
-      "Ilmenitt i Sokndal og hematitt i Rana.",
-      "Kobber i Røros og Løkken.",
-      "Sølv på Kongsberg.",
+      "Felle, migrasjon, kildebergart, modning",
+      "Modning, kildebergart, felle, migrasjon",
+      "Kildebergart, modning, migrasjon, reservoar og felle",
+      "Reservoar, kildebergart, felle, modning",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva utvinnes i Norge i dag?». I dag er det hovedsakelig drift på ilmenitt i Sokndal og hematitt i Rana.",
+    answer: 2,
+    explain: "Organisk materiale må først avsettes i en kildebergart. Det modnes til olje og gass ved høy temperatur, migrerer oppover og fanges i et reservoar under en tett takbergart.",
   },
   {
-    prompt: "Hvorfor prioriterer NGU kartlegging av kritiske og strategiske mineraler?",
+    prompt: "Hva gjør geofysiske målinger fra helikopter nyttige i malmleting?",
     options: [
-      "Behovet for mineraler og metaller øker, og kartleggingen skal tjene både næring og forvaltning.",
-      "Fordi all malm i Norge allerede er drevet ut.",
-      "Fordi pukk ikke kan brukes i vei.",
+      "De viser nøyaktig hvor mye malm det er",
+      "De dekker store områder raskt og viser for eksempel magnetiske og ledende bergarter",
+      "De erstatter all kjerneboring",
+      "De brukes bare til petroleum",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er en geologisk ressurs?». Behovet øker, og NGU kartlegger både for næringsutvikling og for miljø-, natur- og ressursforvaltning.",
+    answer: 1,
+    explain: "Magnetometri, elektromagnetiske målinger og radiometri fra luften viser hvor det kan være forekomster. Størrelse og innhold må undersøkes med kjerneboring.",
   },
   {
-    prompt: "Hva sier NGU om kobberutvinning i Norge i 2024?",
+    prompt: "Hvorfor er det en forsyningsrisiko at Kina produserer det meste av verdens sjeldne jordarter?",
     options: [
-      "Det er ingen utvinning. Drift planlegges på Nussir i Finnmark.",
-      "Kobber utvinnes i Sokndal sammen med ilmenitt.",
-      "Nussir ble lagt ned i 2002.",
+      "Fordi sjeldne jordarter er svært sjeldne i jordskorpa",
+      "Fordi Kina ikke bruker sjeldne jordarter selv",
+      "Fordi sjeldne jordarter ikke kan resirkuleres",
+      "Fordi forsyningen kan svikte når produksjonen er samlet i få land",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva utvinnes i Norge i dag?». Oppdateringen i 2024 sier at det ikke er kobberutvinning. Drift planlegges på Nussir.",
+    answer: 3,
+    explain: "Forsyningsrisikoen er størst når produksjonen er samlet i få land. I 2025 sto Kina for ca. 69 % av gruveproduksjonen av sjeldne jordarter.",
   },
   {
-    prompt: "Hvor tar vi hvordan grunnvann lagres og strømmer?",
+    prompt: "Hvilket argument brukes for å tillate gruvedrift med sjødeponi i Førdefjorden?",
     options: [
-      "I kapittelet Vann og flom. Her nevnes grunnvann bare som en ressurs.",
-      "I dette kapittelet, som en del av malmdannelsen.",
-      "Grunnvann er ikke en geologisk ressurs.",
+      "At deponiet ikke påvirker livet på fjordbunnen",
+      "At titan er en kritisk råvare, og at forsyningssikkerhet kan være et tvingende allment hensyn",
+      "At Høyesterett har godkjent tillatelsen",
+      "At avgangen kan selges som drivstoff",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er en geologisk ressurs?». Grunnvann er en geologisk ressurs. Lagring og strømning tas i Vann og flom.",
+    answer: 1,
+    explain: "Høyesterett fant tillatelsene ugyldige fordi begrunnelsen fra 2016 handlet om inntekter og arbeidsplasser. Departementet vurderer nå om forsyningssikkerhet for titan kan begrunne en ny, langvarig tillatelse.",
   },
 ];
 
@@ -2689,5 +2689,166 @@ export const QUIZ_SJEKK_FELTARBEID_4: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Leseren skal kunne se hvilke data du samlet inn, og hvordan du kom fram til tolkningen og konklusjonen.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kalles noen råvarer kritiske?",
+    options: [
+      "Fordi de er giftige",
+      "Fordi de er viktige for økonomien, og forsyningen lett kan svikte",
+      "Fordi de bare finnes i Norge",
+    ],
+    answer: 1,
+    explain: "Kritiske råvarer er viktige for økonomien og har høy forsyningsrisiko. Risikoen er størst når produksjonen er samlet i få land.",
+  },
+  {
+    prompt: "Hvilken liste bruker NGU når de omtaler en råvare som kritisk?",
+    options: [
+      "EUs liste over kritiske råvarer",
+      "En egen norsk liste",
+      "FNs liste over truede arter",
+    ],
+    answer: 0,
+    explain: "NGU viser alltid til EUs liste. Den har 34 kritiske råvarer, og 17 av dem er også strategiske.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_2: QuizQuestion[] = [
+  {
+    prompt: "Hvordan ble kismalmene i Løkken og Røros dannet?",
+    options: [
+      "Av gasser som kokte ut av en granitt",
+      "Av varme løsninger som nådde havbunnen ved undersjøiske vulkaner",
+      "Ved forvitring i tropisk klima",
+    ],
+    answer: 1,
+    explain: "Kismalmene ble avsatt fra varme løsninger på havbunnen i Iapetushavet og ble senere skjøvet inn i fjellkjeden. Gasser fra magma gir malmårer og malmganger, som i Oslofeltet.",
+  },
+  {
+    prompt: "Hvorfor kan en forekomst være malm i dag, men ikke for 50 år siden?",
+    options: [
+      "Fordi malm er et økonomisk begrep, og pris og teknologi endrer seg",
+      "Fordi bergarten har endret seg",
+      "Fordi malm bare dannes i perm",
+    ],
+    answer: 0,
+    explain: "Malm er en bergart med drivverdige mengder av et mineral eller grunnstoff. Når prisen stiger eller teknologien blir bedre, kan en forekomst bli drivverdig.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er forskjellen på pukk og grus?",
+    options: [
+      "Det er ingen forskjell",
+      "Grus er knust fast fjell, pukk tas fra løsmasser",
+      "Pukk er knust fast fjell, grus tas fra løsmasser",
+    ],
+    answer: 2,
+    explain: "Pukk lages ved å sprenge og knuse fast fjell, og kornene har skarpe kanter. Sand og grus tas ut fra løsmasser, for eksempel breelvavsetninger.",
+  },
+  {
+    prompt: "Hvor mye sand, grus og pukk bruker vi i Norge per person i året?",
+    options: [
+      "Ca. 11 kg",
+      "Ca. 1 tonn",
+      "Ca. 11 tonn",
+    ],
+    answer: 2,
+    explain: "Vi bruker om lag 60 millioner tonn i året, ca. 11 tonn per person. Det er omtrent like mye som en full lastebil.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_4: QuizQuestion[] = [
+  {
+    prompt: "Hva er oljevinduet?",
+    options: [
+      "Temperaturområdet ca. 60–130 °C, der det for det meste dannes olje",
+      "Den delen av reservoaret der oljen ligger",
+      "Temperaturområdet over 180 °C",
+    ],
+    answer: 0,
+    explain: "I oljevinduet, ca. 60–130 °C, blir kerogen for det meste til olje. Ved ca. 130–180 °C dannes det gass. I Nordsjøen ligger oljevinduet på ca. 2–4 km dyp.",
+  },
+  {
+    prompt: "Hvorfor ligger gassen øverst i en felle?",
+    options: [
+      "Fordi gassen dannes først",
+      "Fordi takbergarten slipper gjennom olje",
+      "Fordi gass har lavest tetthet, olje litt høyere og vann høyest",
+    ],
+    answer: 2,
+    explain: "Væskene sorteres etter tetthet. Gassen legger seg øverst, oljen under og vannet nederst.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_5: QuizQuestion[] = [
+  {
+    prompt: "Hvilken metode brukes mest for å kartlegge mulige olje- og gassfeller under havbunnen?",
+    options: [
+      "Geokjemiske prøver av bekkesand",
+      "Refleksjonsseismikk",
+      "Radiometri fra helikopter",
+    ],
+    answer: 1,
+    explain: "Refleksjonsseismikk viser lagene og strukturene i undergrunnen. Om det er petroleum i en felle, vet man først etter boring.",
+  },
+  {
+    prompt: "Hvorfor ender malmleting nesten alltid med kjerneboring?",
+    options: [
+      "Fordi borekjernene viser hvor stor forekomsten er og hvor mye den inneholder",
+      "Fordi det er den billigste metoden",
+      "Fordi geofysikk ikke kan brukes i Norge",
+    ],
+    answer: 0,
+    explain: "Geokjemi og geofysikk viser hvor det kan ligge en forekomst. Borekjernene viser om den er stor og rik nok til å være drivverdig.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_6: QuizQuestion[] = [
+  {
+    prompt: "Hvilket land sto for omtrent tre fjerdedeler av verdens koboltproduksjon i 2025?",
+    options: [
+      "Kina",
+      "Chile",
+      "DR Kongo",
+    ],
+    answer: 2,
+    explain: "DR Kongo produserte ca. 230 000 av 310 000 tonn kobolt, ca. 73 % ifølge USGS. Kina produserte ca. 69 % av de sjeldne jordartene.",
+  },
+  {
+    prompt: "Hva er status for kobberutvinning i Norge per oktober 2026?",
+    options: [
+      "Røros og Løkken er fortsatt i drift",
+      "Ingen drift, men Nussir er under utbygging",
+      "Norge er Europas største kobberprodusent",
+    ],
+    answer: 1,
+    explain: "Det er ingen kobbergruver i drift i Norge. Nussir i Finnmark bygges ut, og produksjonen skal etter planen starte i 2027.",
+  },
+];
+
+export const QUIZ_SJEKK_GEOLOGISKE_RESSURSER_7: QuizQuestion[] = [
+  {
+    prompt: "Hva er et sjødeponi?",
+    options: [
+      "Et lager for olje på havbunnen",
+      "Et område på fjordbunnen der finkornet gruveavfall legges",
+      "En type felle for gass",
+    ],
+    answer: 1,
+    explain: "Avgangen fra gruva føres i rør ned til fjordbunnen. I Førdefjorden går bunnfaunaen i deponiområdet tapt i driftsperioden og en lang tid etterpå.",
+  },
+  {
+    prompt: "Hvorfor er fornybar energi ikke uten konsekvenser for geologiske ressurser?",
+    options: [
+      "Fordi vindturbiner og elbiler trenger mye kobber og andre mineraler",
+      "Fordi vindturbiner trenger olje som drivstoff",
+      "Fordi solceller lages av kull",
+    ],
+    answer: 0,
+    explain: "Ifølge IEA trenger en elbil seks ganger så mye mineraler som en vanlig bil, og et vindkraftverk på land ni ganger så mye som et gasskraftverk.",
   },
 ];

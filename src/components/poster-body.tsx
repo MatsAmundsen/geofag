@@ -107,7 +107,11 @@ import {
   SkredSonerDiagram,
   SkredTyperDiagram,
 } from "@/components/diagrams/skred";
-import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
+import {
+  FeltbokDiagram,
+  FraBergartTilBruddDiagram,
+  PetroleumSystemDiagram,
+} from "@/components/diagrams/ressurser";
 import {
   DensityDiagram,
   GulfVsNacDiagram,
@@ -1027,6 +1031,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   FieldworkIllustration: () => <FieldworkIllustrationDiagram />,
   Feltbok: () => <FeltbokDiagram />,
   FraBergartTilBrudd: () => <FraBergartTilBruddDiagram />,
+  PetroleumSystem: () => <PetroleumSystemDiagram />,
   OfiolittSnitt: () => <OfiolittSnittDiagram />,
   Kaledonidene: () => <KaledonideneFigur />,
   Norskehavet: () => <NorskehavetFigur />,
