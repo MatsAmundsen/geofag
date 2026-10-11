@@ -68,7 +68,7 @@ FrontProfile
 
 ## Den norske syklonmodellen
 
-Den norske syklonmodellen viser hvordan et lavtrykk og frontene utvikler seg gjennom livsløpet. Den kalles også Bjerknes-modellen. Vilhelm Bjerknes og Halvor Solberg utviklet den ved Bergensskolen for meteorologi i 1922 (Store norske leksikon, u.å.-d). NOAA beskriver det samme løpet og plasserer arbeidet hos norske meteorologer i 1910- og 1920-årene (NOAA, u.å.-b). Kildene oppgir ulike årstall, og begge står.
+Den norske syklonmodellen viser hvordan et lavtrykk og frontene utvikler seg gjennom livsløpet. Den kalles også Bjerknes-modellen. Modellen ble utviklet ved Bergensskolen av Jacob Bjerknes og Halvor Solberg. Jacob Bjerknes beskrev frontene i en syklon i 1919, og sammen publiserte de livsløpet til syklonen i 1922 (Norsk biografisk leksikon, u.å.; Bjerknes & Solberg, 1922). NOAA beskriver det samme livsløpet (NOAA, u.å.-b).
 
 Ifølge modellen fører bølger i en stasjonær front til en varmfront og en kaldfront, og til syklonal sirkulasjon, mot klokken på den nordlige halvkule. Dette steget kalles syklogenese. I det modne stadiet beveger kaldfronten seg raskere enn varmfronten. Der kaldfronten har tatt igjen varmfronten, dannes en okkludert front, og varmsektoren løftes opp over bakken. Til slutt svekkes lavtrykket (Store norske leksikon, u.å.-d).
 

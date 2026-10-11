@@ -25,9 +25,25 @@ FeltHavForklaring
 | Havdyp | Konduktivitet og temperatur mot dyp | CTD |
 | Snødekke | Lag, hardhet, korn og fukt | Snøprofil |
 
+```widget
+FieldworkInquiryChain
+```
+
+```widget
+FieldworkObservationModel
+```
+
 ## Luft
 
 En radiosonde måler atmosfærens temperatur, fuktighet og lufttrykk fra bakken og oppover. Dataene gir et vertikalt bilde av atmosfærens tilstand. Sonden festes vanligvis til en værballong med hydrogen eller helium, så den stiger. En radiosender sender måledata ned til bakken etter hvert som sonden stiger (Store norske leksikon, u.å.-a).
+
+```widget
+MeteorologicalStation
+```
+
+```widget
+RadiosondeAscent
+```
 
 ## Hav
 
@@ -36,6 +52,10 @@ Kartverket har det nasjonale ansvaret for vannstandsmåling. Se havnivå viser o
 Et enkelt havoppdrag er å sammenligne den observerte vannstanden med det du ser på kaia, og å skille tidevannet fra været. Stormflo er særlig høy vannstand langs kysten i forbindelse med storm, ikke den vanlige floa (Store norske leksikon, u.å.-b; Kartverket, u.å.).
 
 CTD står for konduktivitet, temperatur og dyp. Det er en pakke med elektroniske instrumenter som registrerer hvordan konduktivitet og temperatur endrer seg med dypet. På skip er den ofte festet til en rosett som senkes med en kabel. Niskin-flasker på rosetten kan lukkes i bestemte dyp (NOAA, u.å.). Et opplegg er å senke en CTD og lese av hvordan konduktivitet og temperatur endrer seg nedover, med georeferert posisjon (Udir, u.å.-a).
+
+```widget
+CtdProfileModel
+```
 
 ## Sjøbris
 
@@ -58,6 +78,10 @@ En snøprofil viser lagdelingen, eventuelle svake lag og temperaturforskjeller i
 > Observert vannstand er ikke bare tidevann. Været påvirker også vannstanden (Kartverket, u.å.).
 >
 > En radiosonde er ikke en måling ved bakken alene. Den måler temperatur, fuktighet og lufttrykk oppover (Store norske leksikon, u.å.-a).
+
+```widget
+SnowProfileModel
+```
 
 ## Viktige begreper
 
