@@ -526,115 +526,117 @@ export const QUIZ_FARER: QuizQuestion[] = [
 
 export const QUIZ_ISTIDER: QuizQuestion[] = [
   {
-    prompt: "Hvilke tre svingninger er Milankovitch-syklusene?",
+    prompt: "Hva endrer Milankovitch-syklusene først og fremst?",
     options: [
-      "Eksentrisitet, skråstilling og presesjon.",
-      "Passat, monsun og jetstrøm.",
-      "El Niño, La Niña og NAO.",
-    ],
-    answer: 0,
-    explain: "Se «Tre svingninger». De tre er banens form, aksens vinkel og aksens vingling.",
-  },
-  {
-    prompt: "Hva gjør minkende skråstilling med somrene på høye breddegrader?",
-    options: [
-      "Somrene blir kjøligere, så snø og is kan bygge seg opp.",
-      "Somrene blir varmere, så all is smelter med en gang.",
-      "Årstidene forsvinner, fordi aksen slutter å helle.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Skråstilling». Mildere årstider betyr varmere vintre og kjøligere somre. Mer is kaster mer solenergi tilbake.",
-  },
-  {
-    prompt: "Forklarer Milankovitch-syklusene oppvarmingen vi ser nå?",
-    options: [
-      "Ja, fordi eksentrisiteten øker raskt.",
-      "Nei. NASA skriver at syklusene ikke forklarer den oppvarmingen.",
-      "Ja, fordi presesjonen snur hvert år.",
+      "Den samlede solstrålingen, som halveres under en istid",
+      "Hvor og når på året innstrålingen treffer, særlig sommersola på 65°N",
+      "CO₂ i atmosfæren, direkte",
+      "Retningen jorda roterer",
     ],
     answer: 1,
-    explain: "Se «Tre svingninger». Syklusene utløser istider. De forklarer ikke oppvarmingen nå.",
+    explain: "Jordbanen fordeler energien mellom årstider og breddegrader. Istidene styres av om snøen på 65°N overlever sommeren.",
   },
   {
-    prompt: "Hva kjennetegnet siste istids maksimum for 20 000 år siden?",
+    prompt: "Hvilken faktor er utløseren for en glasial i kvartær?",
     options: [
-      "Iskappen nådde det sørlige England, og havet sto 125 meter lavere enn i dag.",
-      "Havet sto høyere enn i dag, og England var en øy langt fra Frankrike.",
-      "Hele Sibir var dekket av en 3000 meter tykk iskappe.",
+      "Et vulkanutbrudd som skygger for sola i ett år",
+      "At jorda er lenger unna sola hele året",
+      "Svak sommersol på 65°N, slik at vintersnøen ikke smelter",
+      "At AMOC stopper før isen finnes",
     ],
-    answer: 0,
-    explain:
-      "Se «Siste istids maksimum». De kaldeste delene av Sibir var isfrie fordi klimaet var tørt.",
+    answer: 2,
+    explain: "Land, nedbør, albedo og CO₂ må være på plass, men utløseren er kjølige somre på høye nordlige breddegrader.",
   },
   {
-    prompt: "Når sluttet siste istid, ifølge Store norske leksikon?",
+    prompt: "Når sluttet den siste istiden, og hva kaller vi tiden etter?",
     options: [
-      "For 11 700 år siden.",
-      "For 20 000 år siden, som er siste istids maksimum.",
-      "I 1976, da havbunnsstudien ble publisert.",
+      "For ca. 21 000 år siden, og tiden etter heter Weichsel",
+      "For ca. 11 700 år siden, og tiden etter heter holocen",
+      "I 1850, da målingene startet",
+      "Den er ikke slutt, for innlandsisen dekker fortsatt Norge",
     ],
-    answer: 0,
-    explain:
-      "Se «Hvorfor istidene kommer». 20 000 år er siste istids maksimum. 11 700 år er slutten på siste istid.",
+    answer: 1,
+    explain: "Isen var størst for ca. 21 000 år siden. Holocen startet for ca. 11 700 år siden (Walker mfl., 2009).",
+  },
+  {
+    prompt: "Hvorfor forklarer ikke Milankovitch-syklusene oppvarmingen siden 1850?",
+    options: [
+      "Fordi jordbanen ikke endrer seg lenger",
+      "Fordi iskjerner ikke kan måle CO₂",
+      "Fordi holocen ikke er en mellomistid",
+      "Fordi endringene i jordbanen er for langsomme og nå går svakt mot svakere sommersol på 65°N",
+    ],
+    answer: 3,
+    explain: "Under avsmeltingene startet det med innstrålingen, og CO₂ forsterket. Nå er det CO₂ som starter (IPCC, 2021).",
   },
 ];
 
 export const QUIZ_PALEO: QuizQuestion[] = [
   {
-    prompt: "Når startet de direkte målingene av CO₂ på Mauna Loa?",
+    prompt: "Hvorfor regnes luftboblene i en iskjerne som en direkte måling, og ikke som en proxy?",
     options: [
-      "I mars 1958.",
-      "I 1979, da satellittene begynte å måle havis.",
-      "I mai 1974, da NOAA startet egne målinger.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Tre arkiv, tre klokker». Keeling startet serien i mars 1958. NOAA kom med egne målinger i mai 1974.",
-  },
-  {
-    prompt: "Hva viser iskjerner om CO₂ i istidssyklusene det siste millionåret?",
-    options: [
-      "At CO₂ ikke kom over 300 ppm.",
-      "At CO₂ hele tiden lå rundt 422 ppm.",
-      "At CO₂ først ble målt i 1958.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Iskjerner og det naturlige spennet». 300 ppm er taket i de syklusene. 422,8 ppm er det globale årsmiddelet i 2024.",
-  },
-  {
-    prompt: "Hvor lå CO₂ før midten av 1700-tallet?",
-    options: [
-      "På 280 ppm eller lavere.",
-      "Over 400 ppm, som i 2024.",
-      "Rett under 427 ppm, som mai-verdien på Mauna Loa.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Iskjerner og det naturlige spennet». Før den industrielle revolusjonen lå CO₂ på 280 ppm eller lavere.",
-  },
-  {
-    prompt: "Hva driver årstidssvingningen, og hva driver den langsiktige stigningen?",
-    options: [
-      "Vegetasjon driver svingningen. Menneskelig aktivitet driver stigningen.",
-      "Begge kommer av istidene.",
-      "Satellittene driver begge, fordi serien starter i 1979.",
-    ],
-    answer: 0,
-    explain:
-      "Se «Tre arkiv, tre klokker». Sommerens plantevekst senker CO₂, og vinterens nedbryting hever den. Stigningen er menneskedrevet.",
-  },
-  {
-    prompt: "Hva er Sea Ice Index?",
-    options: [
-      "Iskjernekurven for 800 000 år.",
-      "Utbredelse og konsentrasjon av havis siden 1979.",
-      "Månedsmiddelet av CO₂ på Mauna Loa.",
+      "Fordi boblene viser temperaturen direkte",
+      "Fordi boblene er prøver av lufta slik den var, så CO₂ kan måles direkte i dem",
+      "Fordi boblene dannes på overflaten hvert år",
+      "Fordi boblene inneholder pollen",
     ],
     answer: 1,
-    explain:
-      "Se «Havis er et annet arkiv». Serien starter i 1979 og sammenlignes med medianen for 1981–2010.",
+    explain: "Isotopene i selve isen er en proxy for temperatur. Boblene er ekte prøver av fortidens luft (Davies, 2020).",
+  },
+  {
+    prompt: "Hva er årsaken til gassalderen (Δage) i en iskjerne?",
+    options: [
+      "Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned, så den er yngre enn isen rundt",
+      "Boblene vandrer oppover og blir yngre",
+      "Isen er laget av nedbør som falt etter lufta",
+      "Gassen blir gammel fordi den varmes opp",
+    ],
+    answer: 0,
+    explain: "Forskerne beregner forskjellen med modeller av hvordan firnen pakkes sammen (Davies, 2020).",
+  },
+  {
+    prompt: "Hvordan tolkes δ¹⁸O i en iskjerne og i foraminiferer fra havbunnen under en istid?",
+    options: [
+      "Høy i begge",
+      "Lav i begge",
+      "Lav i isen og høy i foraminiferene",
+      "Høy i isen og lav i foraminiferene",
+    ],
+    answer: 2,
+    explain: "Det tunge ¹⁸O regner ut på veien, så snøen får lav δ¹⁸O. Mer ¹⁶O lagres i isen på land, og havet blir anriket på ¹⁸O (Mangerud, 2026b).",
+  },
+  {
+    prompt: "Hva skjedde i yngre dryas, for ca. 12 800–11 700 år siden?",
+    options: [
+      "Jorda gikk inn i en varm mellomistid",
+      "Et stort meteornedslag kjølte ned kloden",
+      "Havnivået steg 100 m på noen tiår",
+      "Smeltevann svekket trolig AMOC kraftig, det ble plutselig mye kaldere i Norge, og isen rykket fram igjen",
+    ],
+    answer: 3,
+    explain: "Hvor smeltevannet kom fra, er omdiskutert. Raet ble avsatt i yngre dryas (Mangerud, 2025e; SNL, 2024b).",
+  },
+  {
+    prompt: "Hva kjennetegner et varv?",
+    options: [
+      "Et lag med stein og grus fra isfjell",
+      "Et lyst, grovt sommerlag og et mørkt, fint vinterlag som til sammen er avsatt i løpet av ett år",
+      "Et askelag som binder iskjerner og innsjøer sammen",
+      "En årring i et tre",
+    ],
+    answer: 1,
+    explain: "Varvene kan telles på samme måte som årringer (SNL, 2024c).",
+  },
+  {
+    prompt: "Hva kan PETM lære oss om dagens klima?",
+    options: [
+      "Et stort karbonutslipp ga ca. 5 °C global oppvarming, men dagens utslipp går ca. ti ganger så fort",
+      "At karbonutslipp ikke påvirker temperaturen",
+      "At PETM skjedde under siste istid",
+      "At klimaet ble kaldere da CO₂ steg",
+    ],
+    answer: 0,
+    explain: "PETM skjedde for ca. 56 millioner år siden. Under PETM ble det sluppet ut høyst ca. 1,1 gigatonn karbon per år, mot ca. 10 gigatonn i 2014 (Cohen mfl., 2026; Inglis mfl., 2020; Zeebe mfl., 2016).",
   },
 ];
 
@@ -762,52 +764,70 @@ export const QUIZ_KRYO: QuizQuestion[] = [
 
 export const QUIZ_AMOC: QuizQuestion[] = [
   {
-    prompt: "Hvor starter det trege beltet?",
+    prompt: "Hva er hovedgrunnen til at overflatevann synker i Nord-Atlanteren?",
     options: [
-      "I overflaten nær polen i Nord-Atlanteren, der kaldt og salt vann synker.",
-      "I Indiahavet, der vannet alltid synker.",
-      "Langs ekvator, der passatvinden skyver overflaten.",
+      "At overflatevannet er salt og blir kraftig avkjølt om vinteren, så det blir tyngre enn vannet under",
+      "At magnetfeltet trekker vannet mot bunnen",
+      "At ferskvann fra breene er tyngre enn sjøvann",
+      "At corioliseffekten presser vannet rett ned ved polene",
     ],
     answer: 0,
-    explain:
-      "Se «Hva er den atlantiske omveltningen?». Beltet begynner i Nord-Atlanteren.",
+    explain: "Avkjølingen er hovedmekanismen, og saltet fra subtropene gjør vannet enda tyngre. Da synker det og danner NADW (Talley mfl., 2011).",
   },
   {
-    prompt: "Hvorfor blir vannet saltere der havisen fryser?",
+    prompt: "Hvorfor kan økt smelting fra Grønlandsisen svekke AMOC?",
     options: [
-      "Fordi elver fører mer salt ut i havet om vinteren.",
-      "Fordi saltet ikke fryser med isen, men blir liggende i vannet rundt.",
-      "Fordi varmt vann alltid er saltere enn kaldt vann.",
+      "Fordi isfjellene blokkerer Golfstrømmen som en demning",
+      "Fordi ferskvann har lavere tetthet enn sjøvann, så overflatevannet ikke blir tungt nok til å synke selv om det avkjøles",
+      "Fordi smeltevannet fordamper Norskehavet",
+      "Fordi ferskvannet bremser jordrotasjonen",
     ],
     answer: 1,
-    explain: "Se «Hva er den atlantiske omveltningen?». Saltet blir igjen når havisen fryser.",
+    explain: "Ferskvannet legger seg som et lett lokk i overflaten og gjør konveksjonen svakere (IPCC, 2021).",
   },
   {
-    prompt: "Hvor raskt går beltet, sammenlignet med vind og tidevann?",
+    prompt: "Hva er forskjellen på Golfstrømmen og AMOC?",
     options: [
-      "Noen få centimeter i sekundet. Vind og tidevann går i titalls til hundretalls.",
-      "Like raskt som de vinddrevne strømmene.",
-      "Raskere enn tidevannet.",
+      "Golfstrømmen er en vinddrevet overflatestrøm i den subtropiske havvirvelen, mens AMOC er hele det vertikale omveltningsbåndet",
+      "Det er ingen forskjell",
+      "Golfstrømmen går i Stillehavet, mens AMOC går i Atlanterhavet",
+      "AMOC finnes bare om sommeren",
     ],
     answer: 0,
-    explain: "Se tabellen. Det trege beltet er den langsomme strømmen.",
+    explain: "Golfstrømmen drives av vinden, og AMOC av tetthetsforskjeller (IPCC, 2021).",
   },
   {
-    prompt: "Hvor lang tid tar en runde for en kubikkmeter vann?",
-    options: ["Noen uker.", "Omtrent ti år.", "Omtrent 1000 år."],
-    answer: 2,
-    explain: "Se «Veien rundt jorda». En gitt kubikkmeter bruker omtrent 1000 år.",
-  },
-  {
-    prompt: "Hva kan mer regn og smeltevann gjøre med beltet?",
+    prompt: "Hva betyr hysterese i Stommels to-boks-modell?",
     options: [
-      "Gjøre beltet raskere enn de vinddrevne strømmene.",
-      "Hindre nedsynking av kaldt, salt vann, slik at beltet kan gå saktere eller stoppe.",
-      "Ingenting. Ferskvann endrer ikke tettheten.",
+      "At strømmen skifter retning to ganger i døgnet på grunn av tidevannet",
+      "At AMOC ikke starter igjen av seg selv om ferskvannstilførselen bare reduseres til nivået før vippepunktet",
+      "At saltholdigheten i havet er lik overalt",
+      "At vanntemperaturen stiger jevnt med lufttrykket",
     ],
     answer: 1,
-    explain:
-      "Se «Ferskvann kan bremse beltet». Varmt ferskvann på overflaten kan forstyrre nedsynkingen.",
+    explain: "Tilstanden avhenger av historien. Uten salt fra sør må ferskvannet ned til et mye lavere nivå før AMOC kan starte igjen (Stommel, 1961).",
+  },
+  {
+    prompt: "Hva tolker mange forskere kaldflekken sør for Grønland som et tegn på?",
+    options: [
+      "At en undersjøisk vulkan har kjølt ned havet",
+      "At AMOC har svekket seg og frakter mindre varme nordover",
+      "At Grønland har sluttet å smelte",
+      "At corioliseffekten har snudd",
+    ],
+    answer: 1,
+    explain: "Det er likevel usikkert hvor mye av avkjølingen som skyldes AMOC (Caesar mfl., 2018; IPCC, 2021).",
+  },
+  {
+    prompt: "Hva skjedde i yngre dryas, for ca. 12 800–11 700 år siden?",
+    options: [
+      "Smeltevann svekket trolig AMOC kraftig, og det ble kaldt igjen rundt Nord-Atlanteren",
+      "Golfstrømmen tørket ut på grunn av tørke i Karibia",
+      "Jorda gikk inn i en varm mellomistid uten snø",
+      "Dinosaurene døde ut",
+    ],
+    answer: 0,
+    explain: "Det ble plutselig mye kaldere i Norge, og isen rykket fram igjen. Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025b).",
   },
 ];
 
@@ -992,55 +1012,70 @@ export const QUIZ_ENSO: QuizQuestion[] = [
 
 export const QUIZ_OVERSIKT: QuizQuestion[] = [
   {
-    prompt: "Hva er klima, til forskjell fra været?",
+    prompt: "Hva er forskjellen på vær og klima?",
     options: [
-      "Det langvarige mønsteret i været. Et skifte i det langvarige gjennomsnittet er klimaendring.",
-      "Temperaturen i én uke.",
-      "Bare nedbøren i tropene.",
+      "Vær er temperatur, klima er nedbør.",
+      "Vær er tilstanden nå og de nærmeste dagene. Klima er mønsteret over tiår.",
+      "Klima er bare i tropene.",
+      "De er samme ting med ulike navn.",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva er klima?». Klima er mønsteret over lang tid. Været er tilstanden nå.",
+    answer: 1,
+    explain: "En kald uke er vær. At et sted er typisk kaldt i 30 år, er klima.",
   },
   {
-    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling, ikke det første pådrivet?",
     options: [
-      "Den reagerer på temperaturen og forsterker en oppvarming som noe annet har startet.",
-      "Den er ikke en drivhusgass.",
-      "Den finnes bare over hav.",
+      "Fordi vanndamp ikke er en drivhusgass.",
+      "Fordi mengden vanndamp i lufta styres av temperaturen. Endringen settes i gang av noe annet, for eksempel mer karbondioksid.",
+      "Fordi vanndamp bare finnes over hav.",
+      "Fordi den ikke påvirker stråling.",
     ],
-    answer: 0,
-    explain:
-      "Se «Hva betyr drivhuseffekten?». NASA omtaler vanndamp som en tilbakekobling som forsterker.",
+    answer: 1,
+    explain: "Varmere luft holder mer vanndamp. Mer vanndamp holder mer varme. Den forsterker, men starter ikke endringen.",
   },
   {
-    prompt: "Hvor stor del av sollyset som treffer jorda, kastes tilbake?",
-    options: ["29 prosent.", "Hele innstrålingen.", "Ingenting. Alt tas opp ved bakken."],
-    answer: 0,
-    explain:
-      "Se tabellen. 29 prosent reflekteres. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten.",
+    prompt: "Hva beskriver ENSO best?",
+    options: [
+      "At Golfstrømmen snur.",
+      "Et naturlig samspill mellom passatvindene og varmt vann i tropisk Stillehav, som flytter regn og tørke i noen år.",
+      "At ozonlaget tynnes.",
+      "At alle orkaner kommer fra Stillehavet.",
+    ],
+    answer: 1,
+    explain: "El Niño og La Niña er ytterpunkter i samme svingning. De er ikke det samme som global oppvarming.",
   },
   {
-    prompt: "Hvor har det meste av overskuddsvarmen det siste århundret blitt av?",
+    prompt: "Omtrent hvor mye energi tar hele jordas system opp fra sola, i globalt middel?",
     options: [
-      "Omtrent 90 prosent er tatt opp i havet.",
-      "Alt er blitt værende i lufta.",
-      "Havet tar ikke opp varme.",
+      "15 W/m²",
+      "100 W/m²",
+      "340 W/m²",
+      "240 W/m²",
     ],
-    answer: 0,
-    explain:
-      "Se «Havet husker». NASA sier at omtrent 90 prosent av overskuddsvarmen er tatt opp i havet.",
+    answer: 3,
+    explain: "Av 340 W/m² inn kastes 29 prosent tilbake. Resten, omtrent 240 W/m², tas opp (NASA, 2009).",
   },
   {
-    prompt: "Hva er tap av is ved polene i energibudsjettet?",
+    prompt: "Hvilket utsagn om CO₂ er riktig?",
     options: [
-      "En tilbakekobling. Flaten blir mindre reflekterende.",
-      "Det første pådrivet som starter oppvarmingen.",
-      "En endring som bare gjelder været i én dag.",
+      "CO₂ i lufta var i snitt 425,6 ppm globalt i 2025, mot ca. 280 ppm før industrialiseringen",
+      "CO₂ har ligget på samme nivå siden 1850",
+      "CO₂ er en tilbakekobling og ikke et pådriv",
+      "CO₂ i lufta har sunket siden 1990",
     ],
     answer: 0,
-    explain:
-      "Se «Isen er et speil». NASA bruker istap ved polene som eksempel på en tilbakekobling.",
+    explain: "Mer CO₂ er et positivt strålingspådriv (NOAA GML, 2026; IPCC, 2021).",
+  },
+  {
+    prompt: "Grønlandsisen kan heve havnivået med ca. 7,4 m. Hva venter IPCC innen 2100?",
+    options: [
+      "At hele Grønlandsisen har smeltet",
+      "Ingen stigning",
+      "0,28–1,01 m stigning, avhengig av utslipp",
+      "Over 10 m stigning",
+    ],
+    answer: 2,
+    explain: "7,4 m er hvor mye isen inneholder, ikke en prognose (IPCC, 2021).",
   },
 ];
 
@@ -4782,5 +4817,511 @@ export const QUIZ_SJEKK_TILPASNING_4: QuizQuestion[] = [
     ],
     answer: 0,
     explain: "Forsikringen dekker skaden etter at den har skjedd (Naturskadeforsikringsloven, 1989).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_1: QuizQuestion[] = [
+  {
+    prompt: "Vinteren er uvanlig kald i hele Norge. Hva sier det om klimaet?",
+    options: [
+      "At klimaet ikke blir varmere",
+      "Lite. Én vinter er vær, og klima er mønsteret over minst 30 år",
+      "At klimaet blir kaldere",
+    ],
+    answer: 1,
+    explain: "Klima er statistikken over minst 30 år. Én kald vinter er vær (WMO, u.å.).",
+  },
+  {
+    prompt: "Hvilke deler består klimasystemet av?",
+    options: [
+      "Bare atmosfæren og havet",
+      "Atmosfæren, havet og sola",
+      "Atmosfæren, havet, isen, landoverflaten og livet",
+    ],
+    answer: 2,
+    explain: "Delene bytter varme, vann og karbon. Endrer du én del, svarer de andre.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_2: QuizQuestion[] = [
+  {
+    prompt: "Omtrent hvor mye av sollyset som treffer jorda, kastes tilbake til rommet?",
+    options: [
+      "29 prosent",
+      "48 prosent",
+      "71 prosent",
+    ],
+    answer: 0,
+    explain: "29 prosent reflekteres, mest fra skyer. 23 prosent tas opp i atmosfæren og 48 prosent ved overflaten (NASA, 2009).",
+  },
+  {
+    prompt: "Hva gjør drivhusgassene med strålingen?",
+    options: [
+      "De stopper sollyset før det når bakken",
+      "De lager ny energi i atmosfæren",
+      "De slipper sollyset inn, men bremser den langbølgede varmestrålingen på vei ut",
+    ],
+    answer: 2,
+    explain: "Vanndamp, karbondioksid og metan holder igjen varme nær overflaten (NASA, u.å.-a).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er vanndamp mest en tilbakekobling?",
+    options: [
+      "Fordi vanndamp ikke er en drivhusgass",
+      "Fordi vanndamp bare finnes over havet",
+      "Fordi mengden vanndamp styres av temperaturen, og den forsterker en endring som noe annet har startet",
+    ],
+    answer: 2,
+    explain: "Varmere luft kan holde mer vanndamp, og mer vanndamp holder mer varme (NASA, u.å.-a).",
+  },
+  {
+    prompt: "Havisen i Arktis smelter. Hvorfor gir det mer oppvarming?",
+    options: [
+      "Fordi smeltevannet er varmt",
+      "Fordi mørkt hav tar opp mer sollys enn hvit is",
+      "Fordi isen sender ut drivhusgasser",
+    ],
+    answer: 1,
+    explain: "Det er is-albedo-tilbakekoblingen. Den er en av grunnene til at Arktis blir varmet opp nesten fire ganger så raskt som jorda i gjennomsnitt (Rantanen mfl., 2022).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_4: QuizQuestion[] = [
+  {
+    prompt: "Hvor har det meste av overskuddsvarmen de siste tiårene blitt av?",
+    options: [
+      "I lufta",
+      "I havet",
+      "I isen",
+    ],
+    answer: 1,
+    explain: "Omtrent 90 prosent er tatt opp i havet (NASA, u.å.-b).",
+  },
+  {
+    prompt: "Hva er riktig om ENSO, IOD og NAO?",
+    options: [
+      "De er naturlige svingninger som flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig",
+      "De er det samme som global oppvarming",
+      "De er ytre pådriv",
+    ],
+    answer: 0,
+    explain: "Svingningene hører til den indre dynamikken i klimasystemet (WMO, u.å.).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_5: QuizQuestion[] = [
+  {
+    prompt: "Hvor mye varmere var den globale overflatetemperaturen i 2011–2020 enn i 1850–1900?",
+    options: [
+      "Ca. 0,5 °C",
+      "Ca. 2 °C",
+      "1,09 °C",
+    ],
+    answer: 2,
+    explain: "Det beste anslaget for den menneskeskapte delen er 1,07 °C (IPCC, 2021).",
+  },
+  {
+    prompt: "2024 var 1,60 °C over førindustrielt nivå. Betyr det at Paris-grensen på 1,5 °C er nådd?",
+    options: [
+      "Nei, grensen gjelder et gjennomsnitt over 20 år",
+      "Ja, ett år over 1,5 °C er nok",
+      "Ja, men bare i Europa",
+    ],
+    answer: 0,
+    explain: "Den langsiktige oppvarmingen anslås til ca. 1,4 °C (Copernicus, 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er norskekysten mildere enn Labrador på samme bredde?",
+    options: [
+      "Fordi vestavinden og det varme havet flytter varme hit",
+      "Fordi sola står høyere over Norge",
+      "Fordi Norge ligger lenger sør",
+    ],
+    answer: 0,
+    explain: "Klima er transport, ikke bare solhøyde. Varmen kommer med Den norske atlanterhavsstrømmen og vestavinden.",
+  },
+  {
+    prompt: "Hva kan et varmere klima bety for Vestlandet?",
+    options: [
+      "Mindre nedbør, fordi lufta blir tørrere",
+      "Mer intens nedbør, fordi varmere luft kan holde mer fukt",
+      "Ingen endring, fordi fjellene stopper all luft",
+    ],
+    answer: 1,
+    explain: "Lufta tvinges opp av fjellet, og varmere luft holder mer fukt.",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_1: QuizQuestion[] = [
+  {
+    prompt: "Hva driver Golfstrømmen først og fremst?",
+    options: [
+      "Tetthetsforskjeller i dypet",
+      "Smeltevann fra Grønland",
+      "Vinden, og corioliseffekten gjør den smal og rask",
+    ],
+    answer: 2,
+    explain: "Golfstrømmen er en vinddrevet randstrøm i den subtropiske havvirvelen og ville ikke stoppe helt selv om AMOC gjorde det (IPCC, 2021).",
+  },
+  {
+    prompt: "Omtrent hvor mye vann frakter AMOC, sammenlignet med alle verdens elver?",
+    options: [
+      "Like mye",
+      "Ca. 15 ganger så mye",
+      "Ca. 1000 ganger så mye",
+    ],
+    answer: 1,
+    explain: "AMOC frakter ca. 17 Sv, og alle elver ca. 1,2 Sv (Johns mfl., 2023; Dai & Trenberth, 2002).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_2: QuizQuestion[] = [
+  {
+    prompt: "Hva er hovedgrunnen til at overflatevannet i Nord-Atlanteren synker?",
+    options: [
+      "Det blir kraftig avkjølt om vinteren",
+      "Det blir varmet av sola om sommeren",
+      "Det blir ferskere av nedbør",
+    ],
+    answer: 0,
+    explain: "Avkjølingen er hovedmekanismen. Saltet fra subtropene hjelper til (Sælen mfl., 2025; Talley mfl., 2011).",
+  },
+  {
+    prompt: "Hva er salt-adveksjons-tilbakekoblingen?",
+    options: [
+      "At havis gjør vannet ferskere",
+      "At vinden presser salt vann mot land",
+      "At AMOC trekker salt vann nordover, som holder tettheten høy og gir mer omveltning",
+    ],
+    answer: 2,
+    explain: "Tilbakekoblingen virker begge veier. Blir AMOC svakere, kommer det mindre salt nordover (Stommel, 1961).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan smeltevann fra Grønland svekke AMOC?",
+    options: [
+      "Fordi isfjellene blokkerer strømmen",
+      "Fordi ferskvann er lettere enn sjøvann og legger seg som et lokk, så vannet ikke synker like lett",
+      "Fordi smeltevannet er varmere enn sjøvannet",
+    ],
+    answer: 1,
+    explain: "Ferskvannslokket gjør det vanskeligere for overflatevannet å bli tungt nok til å synke (IPCC, 2021).",
+  },
+  {
+    prompt: "Hva betyr hysterese i Stommels modell?",
+    options: [
+      "At sirkulasjonen ikke starter igjen av seg selv om ferskvannet bare reduseres til nivået før",
+      "At AMOC snur retning to ganger i døgnet",
+      "At saltholdigheten er lik overalt",
+    ],
+    answer: 0,
+    explain: "Ferskvannstilførselen må ned til et mye lavere nivå før sirkulasjonen kan starte igjen (Stommel, 1961).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_4: QuizQuestion[] = [
+  {
+    prompt: "Hva var trolig årsaken til yngre dryas?",
+    options: [
+      "Et stort vulkanutbrudd på Island",
+      "At jordbanen endret seg brått",
+      "At smeltevann svekket AMOC kraftig",
+    ],
+    answer: 2,
+    explain: "Hvor smeltevannet kom fra, er omdiskutert (Mangerud, 2025b).",
+  },
+  {
+    prompt: "Hva er en Dansgaard-Oeschger-hendelse?",
+    options: [
+      "En langsom avkjøling over 100 000 år",
+      "En rask oppvarming på Grønland på 5–16,5 °C, fulgt av en langsom avkjøling",
+      "Et isfjellutbrudd fra Antarktis",
+    ],
+    answer: 1,
+    explain: "De fleste oppvarmingene var 9–13 °C. Det er vanlig å anta at hendelsene henger sammen med at AMOC ble sterkere og svakere (Kindler mfl., 2014).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_5: QuizQuestion[] = [
+  {
+    prompt: "Hva vurderer FNs klimapanel om AMOC i dette hundreåret?",
+    options: [
+      "At AMOC allerede har stoppet",
+      "At AMOC svært sannsynlig svekkes, men med middels sikkerhet ikke bryter brått sammen før 2100",
+      "At AMOC blir sterkere",
+    ],
+    answer: 1,
+    explain: "Hvor stor svekkelsen blir, er usikkert (IPCC, 2021).",
+  },
+  {
+    prompt: "Hva er kaldflekken?",
+    options: [
+      "Havet sør for Grønland, som er blitt kaldere mens resten av kloden er blitt varmere",
+      "Et høytrykk over Sibir",
+      "Isen på Svalbard",
+    ],
+    answer: 0,
+    explain: "Mange tolker den som et tegn på svekket AMOC, men det er usikkert hvor mye som skyldes AMOC (Caesar mfl., 2018; IPCC, 2021).",
+  },
+];
+
+export const QUIZ_SJEKK_AMOC_6: QuizQuestion[] = [
+  {
+    prompt: "Hva ville et sammenbrudd av AMOC svært sannsynlig gi i Europa, ifølge IPCC?",
+    options: [
+      "Brå endringer i vær og nedbør, blant annet tørrere forhold",
+      "Ingen endring",
+      "Mer tropisk regn",
+    ],
+    answer: 0,
+    explain: "IPCC (2021).",
+  },
+  {
+    prompt: "Hvorfor gir en svekket AMOC ekstra havnivåstigning på østkysten av USA?",
+    options: [
+      "Fordi isen på Grønland smelter raskere",
+      "Fordi det regner mer",
+      "Fordi hellingen på havoverflaten som holder vann borte fra kysten, blir mindre",
+    ],
+    answer: 2,
+    explain: "For New York gir klimamodellene (CMIP3) 15–21 cm ekstra i 2091–2100 sammenlignet med 1981–2000, for scenariene B1, A1B og A2. Det kommer i tillegg til den globale stigningen (Yin mfl., 2009).",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_1: QuizQuestion[] = [
+  {
+    prompt: "Hva endrer Milankovitch-syklusene først og fremst?",
+    options: [
+      "Hvor mye energi sola sender ut",
+      "Hvor og når på året solstrålingen treffer jorda",
+      "Hvor mye CO₂ det er i lufta",
+    ],
+    answer: 1,
+    explain: "Jordbanen fordeler innstrålingen mellom årstider og breddegrader, men endrer den samlede innstrålingen lite (NASA, u.å.).",
+  },
+  {
+    prompt: "Hvorfor er sommersola på 65°N så viktig for istidene?",
+    options: [
+      "Fordi det bare snør der om sommeren",
+      "Fordi den avgjør om vintersnøen smelter eller overlever",
+      "Fordi jorda er nærmest sola der",
+    ],
+    answer: 1,
+    explain: "Overlever snøen sommeren, kan isen vokse år etter år.",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_2: QuizQuestion[] = [
+  {
+    prompt: "Hva gjør CO₂ under en avsmelting etter en istid?",
+    options: [
+      "Den starter avsmeltingen alene",
+      "Den forsterker oppvarmingen og sprer den til hele jorda",
+      "Den har ingen virkning",
+    ],
+    answer: 1,
+    explain: "CO₂ steg fra ca. 180 til 260–280 ppm og forsterket oppvarmingen (Lüthi mfl., 2008).",
+  },
+  {
+    prompt: "Hvorfor kan ikke jordbanen forklare oppvarmingen siden 1850?",
+    options: [
+      "Fordi endringene er for langsomme og går svakt mot kjøligere somre på 65°N",
+      "Fordi jordbanen sluttet å endre seg for 11 700 år siden",
+      "Fordi sola har blitt mye sterkere",
+    ],
+    answer: 0,
+    explain: "Banen endrer seg over tusenvis av år, og i dag peker den svakt mot avkjøling (IPCC, 2021).",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken av disse er utløseren for en istid i kvartær?",
+    options: [
+      "Land på høye breddegrader",
+      "Svak sommersol på 65°N",
+      "Mye nedbør over Nord-Atlanteren",
+    ],
+    answer: 1,
+    explain: "Land og nedbør må være på plass, men det er kjølige somre på høye nordlige breddegrader som utløser veksten.",
+  },
+  {
+    prompt: "Hvorfor kalles is-albedo-effekten en positiv tilbakekobling?",
+    options: [
+      "Fordi den alltid gir varmere klima",
+      "Fordi den forsterker en endring som allerede er i gang",
+      "Fordi den starter istidene",
+    ],
+    answer: 1,
+    explain: "Mer is gir høyere albedo, det blir kaldere, og isen vokser mer.",
+  },
+];
+
+export const QUIZ_SJEKK_MILANKOVITCH_4: QuizQuestion[] = [
+  {
+    prompt: "Hva er marin grense?",
+    options: [
+      "Grensen mellom hav og land i dag",
+      "Det høyeste nivået havet har stått etter siste istid på et sted",
+      "Den dypeste delen av en fjord",
+    ],
+    answer: 1,
+    explain: "Marin grense ligger mellom 0 og ca. 220 moh. i Norge (NGU, u.å.-a).",
+  },
+  {
+    prompt: "Hva er Raet?",
+    options: [
+      "En stor endemorene fra yngre dryas",
+      "En fjord på Vestlandet",
+      "En flyttblokk fra Sverige",
+    ],
+    answer: 0,
+    explain: "Iskanten sto stille ved Raet i yngre dryas, for ca. 12 800–11 700 år siden.",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_1: QuizQuestion[] = [
+  {
+    prompt: "Når varte siste istid?",
+    options: [
+      "Fra ca. 2,58 millioner til 117 000 år siden",
+      "Fra ca. 117 000 til ca. 11 700 år siden",
+      "Fra ca. 25 000 til 19 000 år siden",
+    ],
+    answer: 1,
+    explain: "Siste istid varte fra for ca. 117 000 til ca. 11 700 år siden. Isen var størst for ca. 25 000–19 000 år siden (Mangerud, 2025b).",
+  },
+  {
+    prompt: "Hvordan endret istidsrytmen seg i kvartær?",
+    options: [
+      "Den har vært 100 000 år hele tiden",
+      "Den gikk fra 100 000 år til 41 000 år for ca. én million år siden",
+      "Den gikk gradvis fra ca. 41 000 år til ca. 100 000 år for ca. 1,2–0,8 millioner år siden",
+    ],
+    answer: 2,
+    explain: "Skiftet kalles den midtpleistocene overgangen, og årsaken er ikke avklart (Legrain mfl., 2023; Mukhin mfl., 2019).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er lufta i en iskjerne yngre enn isen rundt?",
+    options: [
+      "Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned",
+      "Luftboblene vandrer oppover gjennom isen",
+      "Isen smelter og fryser på nytt hvert år",
+    ],
+    answer: 0,
+    explain: "Til lufta stenges inne, henger porene i firnen sammen med lufta over. Forskjellen kalles gassalder (Davies, 2020).",
+  },
+  {
+    prompt: "Hvor mye CO₂ var det i lufta de siste 800 000 årene, ifølge EPICA Dome C?",
+    options: [
+      "Mellom 280 og 425 ppm",
+      "Mellom 172 og 300 ppm",
+      "Alltid ca. 280 ppm",
+    ],
+    answer: 1,
+    explain: "I 2025 var det globale snittet 425,6 ppm (Lüthi mfl., 2008; NOAA GML, 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_3: QuizQuestion[] = [
+  {
+    prompt: "Hva skjer med isotopene når skyene beveger seg mot polene?",
+    options: [
+      "Det lette ¹⁶O regner ut først",
+      "Begge isotopene regner ut like fort",
+      "Det tunge ¹⁸O regner ut først, og skyen blir mer anriket på ¹⁶O",
+    ],
+    answer: 2,
+    explain: "Den siste snøen som faller, er sterkt anriket på ¹⁶O (Mangerud, 2026b).",
+  },
+  {
+    prompt: "Hva betyr høy δ¹⁸O i skall av foraminiferer fra havbunnen?",
+    options: [
+      "Mye is på land",
+      "Lite is på land",
+      "Varmt klima",
+    ],
+    answer: 0,
+    explain: "Under en istid lagres mer ¹⁶O i isbreene, og havvannet blir anriket på ¹⁸O (Mangerud, 2026b).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_4: QuizQuestion[] = [
+  {
+    prompt: "Hva kan δ¹⁸O i foraminiferer fra havbunnen ikke vise?",
+    options: [
+      "Hvor mye is det var på land totalt",
+      "Om isen lå over Skandinavia, Nord-Amerika eller Antarktis",
+      "Om det var istid eller mellomistid",
+    ],
+    answer: 1,
+    explain: "Metoden viser det totale isvolumet, men ikke hvor isen lå (Mangerud, 2026b).",
+  },
+  {
+    prompt: "Hva er et varv?",
+    options: [
+      "Et askelag fra et vulkanutbrudd",
+      "Et lag med stein fra isfjell",
+      "Et lyst sommerlag og et mørkt vinterlag, avsatt i løpet av ett år",
+    ],
+    answer: 2,
+    explain: "Varvene kan telles som årringer. Metoden ble utviklet av Gerard De Geer (SNL, 2024c).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor må en C-14-alder kalibreres?",
+    options: [
+      "Fordi mengden ¹⁴C i lufta har variert, blant annet med styrken på magnetfeltet",
+      "Fordi halveringstiden har endret seg",
+      "Fordi metoden bare virker på stein",
+    ],
+    answer: 0,
+    explain: "Kalibreringen gjøres med kurver som IntCal20, som bygger blant annet på årringer (Mangerud, 2025a).",
+  },
+  {
+    prompt: "Hvorfor bevares pollen i myrer i tusenvis av år?",
+    options: [
+      "Fordi pollen er laget av kvarts",
+      "Fordi ytterveggen består av sporopollenin, som er svært motstandsdyktig",
+      "Fordi myrene fryser hver vinter",
+    ],
+    answer: 1,
+    explain: "Lennart von Post presenterte pollenanalysen i 1916 (Helgheim, 2024; Manum, 2024).",
+  },
+];
+
+export const QUIZ_SJEKK_PALEO_6: QuizQuestion[] = [
+  {
+    prompt: "Hva var trolig årsaken til yngre dryas?",
+    options: [
+      "Et stort vulkanutbrudd på Island",
+      "At sola ble svakere",
+      "At smeltevann svekket AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert",
+    ],
+    answer: 2,
+    explain: "Yngre dryas varte fra ca. 12 800 til ca. 11 700 år siden (Mangerud, 2025e; Cohen mfl., 2026).",
+  },
+  {
+    prompt: "Hva er den viktigste forskjellen mellom PETM og dagens utslipp?",
+    options: [
+      "Under PETM steg temperaturen ikke",
+      "Dagens utslipp går ca. ti ganger så fort",
+      "Under PETM ble det sluppet ut mindre enn ett gigatonn karbon totalt",
+    ],
+    answer: 1,
+    explain: "Under PETM høyst ca. 1,1 gigatonn karbon per år, i 2014 ca. 10 gigatonn (Zeebe mfl., 2016).",
   },
 ];
