@@ -2012,6 +2012,128 @@ export const QUIZ_VINDSYSTEMET: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_ISBRE_1: QuizQuestion[] = [
+  {
+    prompt: "Hva er en fjord?",
+    options: [
+      "En V-dal som havet har fylt",
+      "En U-dal som isen har gravd ut under havnivå, og som ble fylt med sjø",
+      "En dal som havet selv har gravd ut",
+    ],
+    answer: 1,
+    explain: "Isen grov dalbunnen ned under havnivå. Da isen smeltet, ble dalen fylt med sjø. Fjord og U-dal er samme landform, men med ulik vannstand.",
+  },
+  {
+    prompt: "Hvorfor blir en sidedal ofte hengende høyt oppe i dalsiden?",
+    options: [
+      "Breen i sidedalen var tynnere og eroderte mindre enn breen i hoveddalen",
+      "Elva i sidedalen har bygd opp dalbunnen",
+      "Sidedalen er hevet av et jordskjelv",
+    ],
+    answer: 0,
+    explain: "Hoveddalen hadde mer og raskere is og ble gravd dypere. Sidedalen ble liggende igjen høyere oppe.",
+  },
+  {
+    prompt: "Hva forteller skuringsstriper i berget?",
+    options: [
+      "Hvor gammelt berget er",
+      "Hvor tykk isen var",
+      "Hvilken retning isen beveget seg",
+    ],
+    answer: 2,
+    explain: "Stripene er riper fra steiner i bresålen. De går i samme retning som isen beveget seg.",
+  },
+];
+
+export const QUIZ_SJEKK_ISBRE_2: QuizQuestion[] = [
+  {
+    prompt: "Hva skiller morene fra breelvmateriale?",
+    options: [
+      "Morene er sortert i lag, breelvmateriale er usortert",
+      "Morene er usortert fordi isen fraktet den, breelvmateriale er sortert av smeltevann",
+      "Det er to navn på det samme materialet",
+    ],
+    answer: 1,
+    explain: "Isen skiller ikke kornstørrelsene, så morenen blir usortert. Smeltevannet sorterer materialet slik rennende vann alltid gjør.",
+  },
+  {
+    prompt: "Hvordan ble en esker dannet?",
+    options: [
+      "Smeltevann avsatte sand og grus i en tunnel under isen",
+      "Isen dyttet morene foran seg ved brefronten",
+      "Vinden blåste sand sammen etter istida",
+    ],
+    answer: 0,
+    explain: "En esker er en lang, svingete rygg av sand og grus fra en smeltevannstunnel under isen.",
+  },
+  {
+    prompt: "Hva er Raet?",
+    options: [
+      "Én stor morenehaug ved Oslofjorden",
+      "En fjord fra siste istid",
+      "Et israndtrinn fra yngre dryas, en lang sone av morene, breelvgrus og strandmateriale",
+    ],
+    answer: 2,
+    explain: "Raet ble dannet da isfronten sto stille eller rykket fram i yngre dryas. Det er en lang sone, ikke én haug.",
+  },
+];
+
+export const QUIZ_SJEKK_ISBRE_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor hever landet i Norge seg fortsatt?",
+    options: [
+      "Fordi vekten av innlandsisen er borte, og landet er på vei tilbake mot likevekt",
+      "Fordi havet synker over hele jorda",
+      "Fordi platene kolliderer under Norge",
+    ],
+    answer: 0,
+    explain: "Isen presset landet ned. Når vekten forsvant, begynte landet å heve seg igjen. Det er isostasi i praksis.",
+  },
+  {
+    prompt: "Hva er marin grense?",
+    options: [
+      "Grensen mellom salt og ferskt vann i en fjord",
+      "Det høyeste nivået havet nådde etter siste istid",
+      "Dybden der isen sluttet å grave",
+    ],
+    answer: 1,
+    explain: "Marin grense ligger mellom 0 og 220 meter over dagens havnivå i Norge. Over den kan du i praksis utelukke marin leire.",
+  },
+  {
+    prompt: "Hvorfor kan trykkavlastning få berget til å skalle av?",
+    options: [
+      "Fordi vann fryser i sprekkene",
+      "Fordi vekten av isen forsvinner, og berget utvider seg litt",
+      "Fordi syre i regnvannet løser opp mineralene",
+    ],
+    answer: 1,
+    explain: "Trykkavlastning er, som frostsprengning, mekanisk forvitring, men mekanismen er en annen: berget utvider seg når vekten forsvinner.",
+  },
+];
+
+export const QUIZ_SJEKK_ISBRE_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er breelvdeltaet på Gardermoen viktig for mennesker?",
+    options: [
+      "Det er en stor kilde til sand og grus, og den største selvmatende grunnvannsforekomsten i Norge",
+      "Det er den eneste aktive isbreen på Østlandet",
+      "Det beskytter mot kvikkleireskred",
+    ],
+    answer: 0,
+    explain: "Den sorterte breelvsanden er en ressurs og et grunnvannsmagasin. Derfor må uttak og arealbruk tilpasses så grunnvannet ikke blir forurenset.",
+  },
+  {
+    prompt: "Hva skjer med norske breer i dag?",
+    options: [
+      "De vokser fordi det faller mer snø",
+      "De er stabile",
+      "De krymper. Arealet er 14 prosent mindre enn i 1999–2006",
+    ],
+    answer: 2,
+    explain: "Kartleggingen fra 2018–2019 viste 2328 km² bre, 14 prosent mindre enn i 1999–2006 (NVE, 2022).",
+  },
+];
+
 export const QUIZ_ISBRE: QuizQuestion[] = [
   {
     prompt: "Hvorfor er morene usortert, mens breelvmateriale er sortert?",
@@ -2038,7 +2160,7 @@ export const QUIZ_ISBRE: QuizQuestion[] = [
       "Stripene er laget av steiner i bresålen og går i samme retning som isen. Se «Rundsva og skuringsstriper».",
   },
   {
-    prompt: "Hva er forskjellen på en fjord og en U-dal som Gudbrandsdalen?",
+    prompt: "Hva er forskjellen på en fjord og en U-dal på land?",
     options: [
       "Fjorden er laget av elv, U-dalen av is",
       "Begge er gravd ut av is, men bunnen i fjorden ligger under havnivå",

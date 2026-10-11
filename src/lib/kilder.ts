@@ -1284,6 +1284,24 @@ export const KILDER = {
   ],
   isbre: [
     {
+      prefix: "Benn, D. I., & Evans, D. J. A. (2010). ",
+      italic: "Glaciers and glaciation",
+      suffix: " (2. utg.). Hodder Education.",
+    },
+    {
+      prefix: "Bryhni, I., & Lilleøren, K. (2024, 25. november). ",
+      italic: "Hengende dal",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/hengende_dal",
+    },
+    {
+      prefix:
+        "Dagestad, A., Seither, A., Jæger, Ø., Tassis, G., Minde, Å., & Gundersen, P. (2021). ",
+      italic: "Gardermoen: Kartlegging og overvåking av typelokaliteter for grunnvann med antropogen belastning",
+      suffix: " (NGU-rapport 2020.026). Norges geologiske undersøkelse.",
+      href: "https://www.ngu.no/publikasjon/gardermoen-kartlegging-og-overvaking-av-typelokaliteter-grunnvann-med-antropogen",
+    },
+    {
       prefix: "Mangerud, J. (2025, 9. oktober). ",
       italic: "Weichsel",
       suffix: ". I Store norske leksikon.",
@@ -1351,7 +1369,31 @@ export const KILDER = {
       href: "https://snl.no/Raet",
     },
     {
-      prefix: "Utdanningsdirektoratet [Udir]. (u.å.). ",
+      prefix: "Store norske leksikon [SNL]. (u.å.-d). ",
+      italic: "Rundsva",
+      suffix: ".",
+      href: "https://snl.no/rundsva",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-e). ",
+      italic: "Gudbrandsdalen",
+      suffix: ".",
+      href: "https://snl.no/Gudbrandsdalen",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.-f). ",
+      italic: "Mekanisk forvitring",
+      suffix: ".",
+      href: "https://snl.no/mekanisk_forvitring",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer — Geofag (GFG01-03)",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
       italic: "Kompetansemål etter geofag 1 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",

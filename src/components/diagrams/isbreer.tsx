@@ -524,7 +524,7 @@ const VU_STEPS = ["1 V-dal", "2 Isen graver", "3 U-dal", "4 Fjord"];
 const VU_STATUS = [
   "Før istidene rant elvene i V-formede daler.",
   "Innlandsisen følger dalen og skurer og plukker mest der isen er tykkest og tyngst.",
-  "Dalen har fått bratte sider og bred bunn: en U-dal. Sidedalen ble gravd mindre og henger igjen høyt oppe. Eksempel: Gudbrandsdalen.",
+  "Dalen har fått bratte sider og bred bunn: en U-dal. Sidedalen ble gravd mindre og henger igjen høyt oppe. Eksempel: store deler av Gudbrandsdalen.",
   "Der bunnen ligger under havnivå, fylles dalen med sjø: en fjord. Fjord og dal er samme landform med ulik vannstand. Eksempel: Sognefjorden.",
 ];
 
