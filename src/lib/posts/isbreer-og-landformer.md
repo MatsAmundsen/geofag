@@ -1,12 +1,30 @@
-> Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/isbreer-og-landformer](/geofag-1/isbreer-og-landformer). Her kan du redigere **hele fagteksten**.
+> **Kompetansemål i Geofag 1 (LK20)**
+>
+> Elevene skal kunne
+>
+> - sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet
+>
+> (Udir, u.å.-b)
+>
+> **Kjerneelementer som dekkes i dette kapitlet:**
+>
+> • *Jordsystemer i tid og rom:* Kryosfæren former geosfæren. Isbreene har gravd ut daler og fjorder og lagt igjen løsmassene vi bor på.
+>
+> • *Modeller og modellering:* Lengdesnittet av en isbre og snittet av landhevingen er modeller som forenkler virkeligheten for å forklare prosessene.
+>
+> • *Mennesket i jordsystemene:* Vi tar ut sand og grus fra isens avsetninger, henter grunnvann fra dem og bygger på marin leire som kan bli kvikk.
+>
+> (Udir, u.å.-a)
+>
+> **I dette kapitlet lærer du om**
+>
+> hvordan isbreen beveger seg, eroderer ved plukking og skuring og avsetter morene og breelvmateriale, erosjonsformer som U-dal, fjord, botn, egg og tind, avsetningsformer som endemorene, esker, drumlin og breelvdelta, frostforvitring, landheving etter istida, forskjellen på aktive og fossile landformer, og hvordan mennesker bruker og påvirker isens landformer.
+>
+> Isbreer hører ikke bare til Geofag 2. Som del av klimasystemet er de Geofag 2-stoff, men som agent som former landskapet hører de hjemme her.
 
-> *Kompetansemål i Geofag 1 (LK20)* – sammenligne ulike landformer og gjøre rede for hvordan de dannes og endres under påvirkning av jordsystemene og menneskelig aktivitet (Udir, u.å.).
+> **Hva tror du?**
 >
-> *Isen som agent* – hvordan isbreen beveger seg, eroderer ved plukking og skuring og avsetter morene og breelvmateriale.
->
-> *Former og spor* – erosjonsformer som U-dal, fjord, botn, egg og tind, og avsetningsformer som endemorene, esker, drumlin og breelvdelta.
->
-> *Etter isen* – frostforvitring, landheving etter istida og forskjellen på aktive og fossile landformer.
+> Er fjorden en dal som havet har fylt, eller er den gravd ut av havet? Tenk over svaret mens du leser. Vi kommer tilbake til det i delen om erosjonsformer.
 
 ## Hva er en isbre?
 
@@ -28,7 +46,7 @@ En isbre er ikke bare is. Den inneholder store og små steiner som er frosset fa
 
 ### Plukking
 
-Når breen glir over en forhøyning i terrenget, øker trykket, og noe av isen smelter. Vannet renner inn i sprekker i berget og fryser igjen når trykket synker. Da sitter berget fast i isen, og breen river med seg steiner og blokker når den beveger seg videre. Dette kalles plukking (plucking) (NDLA, u.å.).
+Isen fryser fast i sprekker og løsner blokker, og breen river dem med seg når den beveger seg videre. I tillegg brytes berget opp av trykkforskjellene under isen der den passerer en forhøyning (Benn & Evans, 2010). Dette kalles plukking (plucking) (NDLA, u.å.).
 
 ### Skuring
 
@@ -50,9 +68,9 @@ Erosjonsformer er landformer der isen har fjernet berg. Mange av dem er så stor
 
 ### U-dal og hengende sidedal
 
-Før istidene rant elvene i V-formede daler. Innlandsisen fulgte disse dalene og skurte og plukket mest der isen var tykkest og tyngst. Over tid fikk dalene bratte sider og en bred bunn, altså en U-form (NDLA, u.å.). Gudbrandsdalen er et eksempel på en U-dal over havnivå med elv i bunnen. Hvor bred U-dalen blir, avhenger også av berget. I hard gneis blir dalen dyp og trang, som i Nærøydalen, mens den blir bredere i svakere berg.
+Før istidene rant elvene i V-formede daler. Innlandsisen fulgte disse dalene og skurte og plukket mest der isen var tykkest og tyngst. Over tid fikk dalene bratte sider og en bred bunn, altså en U-form (NDLA, u.å.). Store deler av Gudbrandsdalen er et eksempel på en U-dal over havnivå med elv i bunnen. Hvor bred U-dalen blir, avhenger også av berget. I hard gneis blir dalen dyp og trang, som i Nærøydalen, mens den blir bredere i svakere berg.
 
-Sidedalene hadde mindre is og ble ikke gravd like dypt som hoveddalen. Når isen smeltet, ble de liggende igjen høyt oppe i dalsiden som hengende sidedaler.
+Sidedalene hadde mindre is og ble ikke gravd like dypt som hoveddalen. Når isen smeltet, ble de liggende igjen høyt oppe i dalsiden som hengende sidedaler (Bryhni & Lilleøren, 2024).
 
 ### Fjord
 
@@ -68,7 +86,11 @@ I høyfjellet har mindre, lokale breer arbeidet seg inn i fjellsidene. En liten 
 
 ### Rundsva og skuringsstriper
 
-På berg som isen har gått over, finner du ofte små spor. Skuringsstriper (glacial striations) er tynne riper som steiner i bresålen har laget i berget. De går i samme retning som isen beveget seg, og derfor kan de fortelle hvilken vei isen gikk (NDLA, u.å.). Et rundsva (roche moutonnée) er en bergknaus som er slipt glatt og avrundet på siden isen kom fra, og ru og brattere på siden der isen plukket løs berg.
+På berg som isen har gått over, finner du ofte små spor. Skuringsstriper (glacial striations) er tynne riper som steiner i bresålen har laget i berget. De går i samme retning som isen beveget seg, og derfor kan de fortelle hvilken vei isen gikk (NDLA, u.å.). Et rundsva (roche moutonnée) er en bergknaus som er slipt glatt og avrundet på siden isen kom fra, og ru og brattere på siden der isen plukket løs berg (SNL, u.å.-d).
+
+```widget
+SjekkIsbre1
+```
 
 ## Avsetningsformer
 
@@ -104,6 +126,10 @@ Der breelvene møtte havet eller en innsjø, mistet vannet farten, og sanden og 
 | Materiale | Fast berg | Morene (usortert) eller breelvmateriale (sortert) |
 | Hva de forteller | Hvor isen gikk og hvor tykk den var | Hvor isfronten sto og hvordan smeltevannet rant |
 
+```widget
+SjekkIsbre2
+```
+
 ## Frostforvitring
 
 Forvitring betyr at berget brytes ned der det ligger, uten at det blir fraktet bort. I dette kapitlet ser vi bare på den mekaniske forvitringen som henger sammen med is og frost. Andre typer forvitring finner du i kapitlet [Bergarter](/geofag-1/bergarter).
@@ -120,7 +146,7 @@ Steinene som løsner ved frostsprengning, faller ned og hoper seg opp under brat
 
 ### Trykkavlastning
 
-Når en tykk isbre smelter bort, forsvinner vekten som presset på berget. Berget utvider seg litt, og det kan løsne skall av berg (avskalling). Dette kalles trykkavlastning (pressure release). Det er en beslektet mekanisme til frostsprengning, fordi også den bryter ned berget uten at noe fraktes bort.
+Når en tykk isbre smelter bort, forsvinner vekten som presset på berget. Berget utvider seg litt, og det kan løsne skall av berg (avskalling). Dette kalles trykkavlastning (pressure release). Trykkavlastning er, som frostsprengning, en form for mekanisk forvitring.
 
 ## Isostasi: landet som hever seg etter isen
 
@@ -133,6 +159,10 @@ Det høyeste nivået havet nådde etter siste istid, kalles marin grense (marine
 ### Marin leire på land
 
 Smeltevannet fraktet finstoff ut i havet, der det sank til bunns som leire. Landhevingen har senere løftet denne gamle havbunnen opp, slik at marine avsetninger i dag ligger over havnivå (NGU, u.å.-a). Mange lavtliggende områder på Østlandet og i Trøndelag er derfor preget av tykk marin leire. Noe av denne leira kan bli til kvikkleire, og det kan du lese mer om i kapitlet [Skred](/geofag-1/skred).
+
+```widget
+SjekkIsbre3
+```
 
 ## Aktive og fossile landformer
 
@@ -150,7 +180,17 @@ Fossil betyr ikke at formen er død. I en fossil U-dal kan det renne ei aktiv el
 >
 > *«Raet er én morenehaug.»* Raet er et israndtrinn, en lang sone med morene, breelvgrus og strandmateriale, ikke én haug.
 
-Isbreer hører heller ikke bare til Geofag 2. Som del av klimasystemet er de Geofag 2-stoff, men som agent som former landskapet hører de hjemme her.
+## Mennesket og isens landformer
+
+Isens avsetninger er en ressurs. Sand og grus fra breelvdeltaer og eskere brukes i betong og veier. Hauerseterdeltaet på Gardermoen er også den største selvmatende grunnvannsforekomsten i Norge, om lag 70 km². Breelvsanden der ble avsatt for ca. 9500 år siden, og flyplass, jordbruk og uttak av masse må tilpasses slik at grunnvannet ikke blir forurenset (Dagestad mfl., 2021).
+
+Den marine leira som landhevingen har løftet opp på land, er godt jordbruksland, og mange byer og veier ligger på den. Graving og fylling i slik leire kan utløse kvikkleireskred, se kapitlet [Skred](/geofag-1/skred).
+
+Mennesket påvirker også isbreene selv. Norske breer er blitt 14 prosent mindre siden 1999–2006 (NVE, 2022), og klimaendringene gjør at de fortsetter å krympe (NVE, u.å.). Når en bre trekker seg tilbake, blir det liggende ferske morener og breelvavsetninger foran den, og det kan dannes nye bresjøer.
+
+```widget
+SjekkIsbre4
+```
 
 ## Viktige begreper
 
@@ -190,7 +230,7 @@ Isbreer hører heller ikke bare til Geofag 2. Som del av klimasystemet er de Geo
 
 **Morene:** Usortert materiale som isen har fraktet og lagt igjen.
 
-**Plukking:** Erosjon der vann fryser fast i sprekker under breen, og isen river løs biter av berget.
+**Plukking:** Erosjon der isen fryser fast i sprekker og løsner biter av berget, hjulpet av trykkforskjeller under isen.
 
 **Raet:** Israndtrinn fra yngre dryas, en lang sone av morene og breelvmateriale.
 
@@ -207,5 +247,11 @@ Isbreer hører heller ikke bare til Geofag 2. Som del av klimasystemet er de Geo
 **U-dal:** Dal med bratte sider og bred bunn, gravd ut av en isbre.
 
 **Ur:** Kjegle av kantet stein under et stup, bygd opp av frostsprengning og steinsprang.
+
+## Sammendrag
+
+```widget
+SammendragIsbre
+```
 
 ## Test deg selv

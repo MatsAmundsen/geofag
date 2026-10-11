@@ -52,6 +52,10 @@ import {
   QUIZ_SJEKK_JORDSYSTEMENE_1,
   QUIZ_SJEKK_JORDSYSTEMENE_2,
   QUIZ_SJEKK_JORDSYSTEMENE_3,
+  QUIZ_SJEKK_ISBRE_1,
+  QUIZ_SJEKK_ISBRE_2,
+  QUIZ_SJEKK_ISBRE_3,
+  QUIZ_SJEKK_ISBRE_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -59,6 +63,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Platetektonikk1: QUIZ_MELTING,
   Platetektonikk2: QUIZ_BOUNDARIES,
   Platetektonikk3: QUIZ_OFIOLITT_WILSON,
+  Isbre1: QUIZ_SJEKK_ISBRE_1,
+  Isbre2: QUIZ_SJEKK_ISBRE_2,
+  Isbre3: QUIZ_SJEKK_ISBRE_3,
+  Isbre4: QUIZ_SJEKK_ISBRE_4,
   Landformer1: QUIZ_SJEKK_LANDFORMER_1,
   Landformer2: QUIZ_SJEKK_LANDFORMER_2,
   Landformer3: QUIZ_SJEKK_LANDFORMER_3,
@@ -102,6 +110,13 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
 export const SAMMENDRAG: Record<string, readonly string[]> = {
+  Isbre: [
+    "En isbre er is av sammenpresset snø som siger nedover under sin egen tyngde. Næringsområdet øverst og tæringsområdet nederst avgjør massebalansen.",
+    "Isen eroderer ved plukking og skuring og har gravd ut U-daler, fjorder, botner, egger og tinder. Skuringsstriper og rundsva viser hvilken vei isen gikk.",
+    "Isen avsatte usortert morene, mens smeltevannet sorterte breelvmateriale. Endemorener, Raet, esker, drumlin og breelvdeltaer forteller hvor isfronten sto.",
+    "Frostsprengning og trykkavlastning er mekanisk forvitring. Etter istida har landet hevet seg, og marin grense ligger 0–220 m over dagens havnivå.",
+    "Mennesker tar ut sand og grus og henter grunnvann fra isens avsetninger, og bygger på marin leire. Norske breer krymper i et varmere klima.",
+  ],
   Landformer: [
     "Landformene er resultatet av indre krefter som løfter berggrunnen, og ytre krefter som bryter den ned og flytter materialet.",
     "Forvitring bryter ned berget der det ligger. Mekanisk forvitring, som frostsprengning, deler berget opp, og kjemisk forvitring omdanner mineralene.",
