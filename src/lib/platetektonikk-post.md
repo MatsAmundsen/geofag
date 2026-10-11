@@ -1,8 +1,8 @@
 > Interaktive modeller, quizer og 3D-diagrammer ligger i kapittelet [/geofag-1/platetektonikk](/geofag-1/platetektonikk). Her kan du redigere **hele fagteksten**.
 
-I dette kapittelet skal du kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser det har for jordskorpen og jordoverflaten. Du skal også kunne forklare hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
+I dette kapitlet skal du kunne gjøre rede for indre krefter og prosesser, platetektonikk og hvilke konsekvenser det har for jordskorpa og jordoverflaten. Du skal også kunne forklare hvordan norsk natur og geologi er et resultat av denne globale platedynamikken.
 
-Kjerneelementer som dekkes i dette kapittelet:
+Kjerneelementer som dekkes i dette kapitlet:
 
 - Jordas indre krefter og prosesser: litosfære, astenosfære, konveksjon og platetrekk (slab pull) som hoveddrivkraft.
 
@@ -24,13 +24,13 @@ Det ytterste laget kalles skorpe. Skorpen er av to typer: kontinentalskorpe og h
 
 #### Øvre mantel
 
-Den øvre mantelen strekker seg fra bunnen av jordskorpen og ned til ca. 660–700 km (Tarbuck et al., 2020, s. 371). Den består hovedsakelig av ultramafiske bergarter, med mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44).
+Den øvre mantelen strekker seg fra bunnen av jordskorpa og ned til ca. 660–700 km (Tarbuck et al., 2020, s. 371). Den består hovedsakelig av ultramafiske bergarter, med mineralene olivin, ortopyroksen, klinopyroksen og granat (Marshak, 2019, s. 44).
 
 Den øvre mantelen kan deles videre inn.
 
 #### Litosfærisk mantel (øverste faste mantel)
 
-Denne delen ligger rett under jordskorpen. Den er kald og mekanisk stiv (Fowler, 2005, s. 102). Bergartene er faste og sprø, med tetthet på om lag 3,0–3,3 g/cm³. Temperaturen ligger på rundt 1250 °C.
+Denne delen ligger rett under jordskorpa. Den er kald og mekanisk stiv (Fowler, 2005, s. 102). Bergartene er faste og sprø, med tetthet på om lag 3,0–3,3 g/cm³. Temperaturen ligger på rundt 1250 °C.
 
 #### Astenosfærisk mantel
 
@@ -69,7 +69,7 @@ I tillegg til lagene etter kjemi deler vi jordas indre inn etter hvordan bergart
 
 #### Litosfæren
 
-En tektonisk plate er ikke bare skorpe. Den er litosfære: jordskorpen pluss den øverste, kalde og stive delen av mantelen (litosfærisk mantel). Litosfæren er i snitt ca. 100 km tykk. Den er tynnest under midthavsrygger og tykkest, opptil ca. 200 km, under gamle kontinenter. Den er fast og kan brekke opp i plater.
+En tektonisk plate er ikke bare skorpe. Den er litosfære: jordskorpa pluss den øverste, kalde og stive delen av mantelen (litosfærisk mantel). Litosfæren er i snitt ca. 100 km tykk. Den er tynnest under midthavsrygger og tykkest, opptil ca. 200 km, under gamle kontinenter. Den er fast og kan brekke opp i plater.
 
 Samme plate kan bære både kontinentalskorpe og havbunnsskorpe.
 
@@ -92,7 +92,7 @@ Over millioner av år deformeres astenosfæren seigt. Litosfæreplatene kan gli 
 ---
 ## Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
 
-I dag er platetektonikk den samlende forklaringen på hvordan jordskorpen beveger seg. Fram til midten av 1960-tallet ble ideen om bevegelige kontinenter likevel avvist av de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
+I dag er platetektonikk den samlende forklaringen på hvordan jordskorpa beveger seg. Fram til midten av 1960-tallet ble ideen om bevegelige kontinenter likevel avvist av de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
 
 ### Alfred Wegener og kontinentaldrift (1912)
 
@@ -133,36 +133,36 @@ Når havbunnen sprer seg til begge sider, fryser havbunnsskorpen inn et symmetri
 
 ![Divergerende grense eksponert på tørt land: Þingvellir på Island](/images/fig-spredring.jpg)
 
-## Platedrift - hva er det som driver platene?
+## Platedrift – hva er det som driver platene?
 
 Før vi kan gå inn på platedrift, er det noen ting vi må få på plass først. 
 
-1. Alt starter med konveksjonsstrømmer i jordens indre
+1. Alt starter med konveksjonsstrømmer i jordas indre
 2.	Bergarter smelter i mantelen på grunn av redusert trykk 
 
-Disse prosessene må være tilstedet for å få platedrift. 
+Disse prosessene må være til stede for å få platedrift. 
 
 
-**Forstadiet til platedrift og dannelsen av divergerende platedgrense** 
+**Forstadiet til platedrift og dannelsen av divergerende plategrense** 
 
-Varmen fra jorden kjerne, varmer opp mantelbergartene til temperaturer som ville vanligvis ha smeltet de fleste av de. Men på grunn av det høye trykket, så forblir de faste bergarter. Varmen gjør at bergartene blir plastiske (kan får flytende egenskaper) og setter igang langsomme konveksjonsstrømmer fra jordens indre og opp til øvre del av mantelen, før den synker ned igjen. 
+Varmen fra jordas kjerne, varmer opp mantelbergartene til temperaturer som ville vanligvis ha smeltet de fleste av dem. Men på grunn av det høye trykket, så forblir de faste bergarter. Varmen gjør at bergartene blir plastiske (kan får flytende egenskaper) og setter i gang langsomme konveksjonsstrømmer fra jordas indre og opp til øvre del av mantelen, før den synker ned igjen. 
 
-Innad i hver enkelt plate, har vi varierende tykkelse. Dette betyr at noen steder, er platen tynner eller tykkere. Der platen er tynnere er trykket litt lavere, ettersom at man er nærmere overflaten. 
+Innad i hver enkelt plate, har vi varierende tykkelse. Dette betyr at noen steder, er platen tynnere eller tykkere. Der platen er tynnere er trykket litt lavere, ettersom at man er nærmere overflaten. 
 Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Magmaen som dannes her vil først danne et magmakammer under platen, før den gradvis smelter seg opp gjennom platen og opp til ovefalten. **Vi har dermed fått en divergerende plategrense**
 
-Denne prosessen er det som setter igang platedrift. 
+Denne prosessen er det som setter i gang platedrift. 
 
 
 
 ---
 ---
 
-Etter at smelteprosessen av mantelbergarter og oppsprekning av platen har funnet sted, så oppstår det det nye krefter som beveger platene. 
+Etter at smelteprosessen av mantelbergarter og oppsprekning av platen har funnet sted, så oppstår det nye krefter som beveger platene. 
 Platebevegelsene styres av et samspill mellom fire krefter:
 - Platetrekk 
 - Ryggskyv
 - Manteldrag 
-- Trench suction (Grøfte sug)
+- Trench suction (grøftesug)
 
 
 ----
@@ -248,7 +248,7 @@ Når to havbunnsplater møtes, synker én av dem. Det er alltid den eldste, kald
 
 #### Kontinent mot kontinent
 
-Når to kontinenter møtes, kan ingen av dem synke ned i mantelen. Kontinentalskorpen er for lett. Himalaya og Kaledonidene er eksempler. Jordskorpen foldes, presses sammen og stables i skyvedekker.
+Når to kontinenter møtes, kan ingen av dem synke ned i mantelen. Kontinentalskorpen er for lett. Himalaya og Kaledonidene er eksempler. Jordskorpa foldes, presses sammen og stables i skyvedekker.
 
 Skyvedekker er store bergflak som skyves hundrevis av kilometer innover land.
 
@@ -270,7 +270,7 @@ Et tverrsnitt av en konvergerende plategrense har fem deler, fra havet og innove
 
 4. Den vulkanske buen (magmatic arc) er rekken av aktive vulkaner, enten på kontinentet eller som en øybue. Den mates av flukssmelting på 100–120 km dyp rett under buen.
 
-5. Bakbuebassenget (backarc basin) kan åpne seg hvis den synkende platen er gammel og tung. Da synker den brattere enn platen selv beveger seg framover. Det kalles tilbakerulling (slab rollback). Den overliggende platen strekkes bak vulkanbuen. Strekket kan sprekke opp jordskorpen og åpne et lite havbasseng med egen midthavsrygg. Japanhavet åpnet seg slik bak den japanske vulkanbuen for ca. 15–20 millioner år siden.
+5. Bakbuebassenget (backarc basin) kan åpne seg hvis den synkende platen er gammel og tung. Da synker den brattere enn platen selv beveger seg framover. Det kalles tilbakerulling (slab rollback). Den overliggende platen strekkes bak vulkanbuen. Strekket kan sprekke opp jordskorpa og åpne et lite havbasseng med egen midthavsrygg. Japanhavet åpnet seg slik bak den japanske vulkanbuen for ca. 15–20 millioner år siden.
 
 ### 3. Transforme plategrenser (platene glir sidelengs)
 
@@ -308,7 +308,7 @@ Under 700 km, ved overgangen til den nedre mantelen, er både trykket og tempera
 
 ## Ofiolittkomplekset: Havbunnens anatomi og Leka i Trøndelag
 
-Tidligere i kapittelet så vi tverrsnittet av en midthavsrygg: putelava øverst, loddrette basaltganger, og et magmakammer med gabbro over mantelen. Havbunnen ligger under flere tusen meter vann. Likevel kan vi se lagene på land.
+Tidligere i kapitlet så vi tverrsnittet av en midthavsrygg: putelava øverst, loddrette basaltganger, og et magmakammer med gabbro over mantelen. Havbunnen ligger under flere tusen meter vann. Likevel kan vi se lagene på land.
 
 Ofiolitter er biter av havbunnsskorpe og øvre mantel som ikke ble subdusert, men skjøvet opp på land under en fjellkjedekollisjon. Det kalles obduksjon (Furnes et al., 1988). En ofiolitt er et fossilt stykke havbunn som er hevet og veltet, slik at man kan gå fra dyphavssedimenter ned til mantelen.
 
@@ -328,7 +328,7 @@ Ved Penrose-konferansen i 1972 ble den klassiske ofiolitt-lagrekken definert. De
 
 ![Norges geologiske nasjonalmonument: Leka ofiolittkompleks](/images/geo-ofiolitt-leka.jpg)
 
-*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.*
+*På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordas mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.*
 
 ## Interaktiv geodynamisk modell: Utforsk plategrensene
 
