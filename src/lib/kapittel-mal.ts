@@ -49,6 +49,9 @@ import {
   QUIZ_MELTING,
   QUIZ_BOUNDARIES,
   QUIZ_OFIOLITT_WILSON,
+  QUIZ_SJEKK_JORDSYSTEMENE_1,
+  QUIZ_SJEKK_JORDSYSTEMENE_2,
+  QUIZ_SJEKK_JORDSYSTEMENE_3,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -92,6 +95,9 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Vulkaner3: QUIZ_SJEKK_VULKANER_3,
   Vulkaner4: QUIZ_SJEKK_VULKANER_4,
   Vulkaner5: QUIZ_SJEKK_VULKANER_5,
+  Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
+  Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
+  Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -151,6 +157,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "De største farene er pyroklastiske strømmer, laharer og aske. Store utbrudd kan gi vulkansk vinter, slik Tambora gjorde i 1816 og Pinatubo i 1991.",
     "Overvåking av skjelv, bakkeheving, gass og varme gir varsel. Farekart, evakuering, sterke tak og lavabarrierer kan begrense skadene, men bare hvis varslene blir fulgt opp, slik Pinatubo og Armero viser.",
     "Beerenberg på Jan Mayen, 2272 meter over havet, er Norges eneste aktive vulkan. Den ligger på spredningsryggen i Norskehavet, og det siste utbruddet var i 1985.",
+  ],
+  Jordsystemene: [
+    "Jorda kan deles i fem sfærer som utveksler masse og energi: geosfæren, hydrosfæren, atmosfæren, kryosfæren og biosfæren. I geofag 1 er geosfæren og hydrosfæren mottakerne.",
+    "Elver graver, transporterer og avsetter, og innsjøer fanger sediment. Hydrosfæren former geosfæren, og geosfæren styrer vannet tilbake.",
+    "Isbreer grov ut U-daler, botner og fjorder og la igjen morener og breelvavsetninger. Løsmassene i Norge er særlig fra siste istid, ca. 117 000–11 700 år siden.",
+    "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
+    "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
+    "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
   ],
 };
 

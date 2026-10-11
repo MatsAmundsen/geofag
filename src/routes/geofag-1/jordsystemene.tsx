@@ -21,7 +21,7 @@ function JordsystemenePage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Jorda er fem delsystemer som utveksler masse og energi. I geofag 1 er geosfæren og hydrosfæren mottakerne: berg, løsmasser, jord, elver, innsjøer og grunnvann. Atmosfæren, kryosfæren og biosfæren er med som drivere. Her lærer du å følge hvilken sfære som endres først, på hvilken tidsskala, og hvordan berg og ferskvann svarer."
+      lead="Regn, elver, isbreer og vulkaner endrer berg og vann hele tiden. I dette kapitlet ser vi på jorda som fem delsystemer, sfærer, som utveksler masse og energi. Vi følger særlig hvordan atmosfæren, kryosfæren og biosfæren påvirker geosfæren og hydrosfæren: elva som graver, isbreen som sliper, vulkanen som sender gass og aske til atmosfæren, og den langsomme karbonat–silikat-syklusen."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{

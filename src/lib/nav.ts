@@ -262,7 +262,7 @@ export const GF1_THEMES = [
     blurb:
       "Geosfære, hydrosfære, atmosfære, kryosfære og biosfære henger sammen. Her: vekselvirkningene som former land og ferskvann.",
     status: "klar" as const,
-    maal: "Vekselvirkninger mellom jordsystemene og hvordan de påvirker geosfæren og hydrosfæren.",
+    maal: "Gjøre rede for vekselvirkninger mellom de ulike jordsystemene, og hvordan disse kan påvirke geosfæren og hydrosfæren.",
   },
   {
     slug: "platetektonikk",
