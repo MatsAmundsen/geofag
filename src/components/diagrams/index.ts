@@ -182,7 +182,6 @@ export {
   BowenReactionSeriesDiagram,
   FieldworkIllustrationDiagram,
   GrainSizeDistributionDiagram,
-  RelativeDatingDiagram,
 } from "./geology-extra";
 export {
   GlacierMassBalanceDiagram,

@@ -867,7 +867,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   BowenReactionSeries: () => <BowenReactionSeriesDiagram />,
   MetamorphicFacies: () => <MetamorphicFaciesDiagram />,
-  // Geologisk tid: snittet bygges opp steg for steg (erstatter den statiske RelativeDatingDiagram).
+  // Geologisk tid: snittet bygges opp steg for steg.
   RelativeDating: () => <GeotidRelativFigur />,
   GeotidTidslinje: () => <GeotidTidslinjeFigur />,
   Halveringstid: () => <HalveringstidFigur />,
