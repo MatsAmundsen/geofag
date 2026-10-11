@@ -56,7 +56,7 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     alt: "Sprekk i basalt og vulkansk rifting på Island der to plater glir fra hverandre",
     heading: "Divergerende grense eksponert på tørt land: Þingvellir på Island",
     caption:
-      "Island er et av de få stedene på jorden der en midthavsrygg rager opp over havoverflaten. Her ved Þingvellir kan du fysisk gå i sprekken mellom Den eurasiske platen (til venstre) og Den nordamerikanske platen (til høyre). Sprekken vider seg ut med om lag 2–2,5 cm hvert eneste år.",
+      "Island er et av de få stedene på jorda der en midthavsrygg rager opp over havoverflaten. Her ved Þingvellir kan du fysisk gå i sprekken mellom Den eurasiske platen (til venstre) og Den nordamerikanske platen (til høyre). Sprekken vider seg ut med om lag 2–2,5 cm hvert eneste år.",
     marks: [
       { x: 30, y: 48, n: "1", text: "Eurasiske plate", tone: "cold" },
       { x: 70, y: 45, n: "2", text: "Nordamerikanske plate", tone: "warm" },
@@ -147,7 +147,7 @@ export const POSTER_PHOTO_FIGURES: Record<string, PosterPhotoFigure> = {
     alt: "Leka ofiolittkompleks med karakteristisk gulbrun dunitt og peridotitt fra jordens mantel",
     heading: "Norges geologiske nasjonalmonument: Leka ofiolittkompleks",
     caption:
-      "På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under Den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava!",
+      "På øya Leka i Trøndelag ligger et av verdens best bevarte ofiolittkomplekser (Furnes et al., 1988; NGU). Da Iapetushavet lukket seg for 420 millioner år siden under den kaledonske fjellkjedefoldingen, ble et helt stykke havbunn vippet 90 grader på høykant og skjøvet opp på land. Her på Leka kan man gå tørrskodd fra jordens mantel (karakteristisk gulbrun dunitt og harzburgitt), krysse Moho-grensen til fots, og fortsette opp gjennom lagdelt gabbro, basaltganger og putelava.",
     marks: [
       { x: 22, y: 72, n: "1", text: "Mantelperidotitt", tone: "warm" },
       { x: 42, y: 55, n: "2", text: "Moho-grensen", tone: "cold" },
