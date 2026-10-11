@@ -87,17 +87,23 @@ SjekkTilpasning2
 
 ## Hvordan sikrer vi oss mot flom og havnivåstigning?
 
-Flom er en av de største naturfarene i Norge. Det kan være vårflom fra snøsmelting eller regnflom om sommeren og høsten. NVE anbefaler et klimapåslag på 0, 20 eller 40 % på flomvannføringen for hver elvestrekning (NVE, 2025).
+Flom er en av de største naturfarene i Norge. Det kan være vårflom fra snøsmelting eller regnflom om sommeren og høsten. Her spiller også kryosfæren inn: Når mindre nedbør kommer som snø, blir snøsmelteflommene mindre og kommer tidligere, mens regnflommene blir større (NVE, u.å.).
+
+NVE lager flomsonekart som viser hvilke områder som blir oversvømt ved for eksempel en 20-, 200- og 1000-årsflom. Kartene brukes når kommunene planlegger hvor det kan bygges (NVE, 2014). NVE anbefaler et klimapåslag på 0, 20 eller 40 % på flomvannføringen for hver elvestrekning (NVE, 2025).
+
+Under ekstremværet Hans 7.–9. august 2023 ble det registrert over 700 skred (NVE, 2024). DSB fant i evalueringen at alle de berørte kommunene hadde flomscenarier i sine ROS-analyser, men ikke i det omfanget Hans førte med seg (DSB, 2024).
 
 ```widget
 TilpasningElvesikringFoto
 ```
 
-Tidligere ble mange elver rettet ut og lagt i rør eller betongkanaler. Det kalles *grå infrastruktur*. Rør har en fast kapasitet, og rettede elver kan sende flommen raskere nedover vassdraget. *Blågrønne* eller *naturbaserte løsninger* gir vannet plass, for eksempel ved å åpne bekker som har ligget i rør, og ved å ta vare på myrer og flomsletter. Ofte kombineres de to.
+Tidligere ble mange elver rettet ut og lagt i rør eller betongkanaler. Det kalles *grå infrastruktur*. Rør har en fast kapasitet, og rettede elver kan sende flommen raskere nedover vassdraget. *Blågrønne* eller *naturbaserte løsninger* gir vannet plass, for eksempel ved å åpne bekker som har ligget i rør, og ved å ta vare på myrer og flomsletter. Ofte kombineres de to. I Oslo er Hovinbekken åpnet igjen fra Hasle gjennom Ensjø, etter å ha ligget i rør i mange år (Oslo kommune, 2022). Den åpne strekningen er ca. 1,5 km lang og har dammer langs bekken (Norske landskapsarkitekters forening, u.å.).
 
 Havet stiger fordi havvannet utvider seg når det blir varmere, og fordi smeltende is på land tilfører vann. Havis som smelter, hever ikke havnivået. Det globale havnivået steg ca. 0,20 m fra 1901 til 2018 (IPCC, 2021). Fram til 2100 venter IPCC en stigning på 0,28–1,01 m sammenlignet med 1995–2014, avhengig av utslippene (IPCC, 2021).
 
-I Norge hever landet seg fortsatt etter siste istid, mest der isen var tykkest. Langs kysten der landhevingen er liten, merkes havnivåstigningen derfor mer enn i områder der landet hever seg mye.
+Om all isen på Grønland smeltet, ville havet stige ca. 7,4 m (Morlighem mfl., 2017). For Antarktis er tallet ca. 58 m (Morlighem mfl., 2020). Dette er ikke prognoser, men viser hvor mye vann som er bundet i isen.
+
+I Norge hever landet seg fortsatt etter siste istid, mest der isen var tykkest. Innerst i Oslofjorden hever landet seg ca. 5 mm i året, mens landhevingen er liten på Vestlandet og Sørlandet. Der merkes havnivåstigningen derfor mest (Kartverket, u.å.).
 
 ```widget
 SjekkTilpasning3
