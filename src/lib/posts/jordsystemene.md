@@ -30,7 +30,7 @@ VekselvirkningForklaring
 
 Regnet som faller på fjellet, elva som graver i dalen, og isen som sliper berget, er ikke tre atskilte historier. De er masse og energi som flytter seg mellom deler av jorda. Et jordsystem er jorda sett som sammenkoblede delsystemer, ofte kalt sfærer, som utveksler masse og energi.
 
-De fem sfærene er analytiske kategorier, ikke vanntette rom. Vann finnes i elver, i is og i bakken. Karbon går mellom luft, vann, liv og berg. Poenget med inndelingen er å følge hvor masse og energi flytter seg, og hvilken prosess som styrer flytten.
+De fem sfærene er analytiske kategorier, ikke vanntette rom. Vann finnes i elver, i is og i bakken. Karbon går mellom luft, vann, liv og berg. Poenget med inndelingen er å følge hvor masse og energi flytter seg, og hvilken prosess som styrer flyten.
 
 Spørsmålet du må kunne svare på, er derfor ikke en liste over sfærenavn. Det er hvilken sfære som endres først, på hvilken tidsskala, og hvordan geosfæren og hydrosfæren svarer.
 
@@ -159,7 +159,7 @@ Samme vulkan kan altså virke på to helt ulike klokker. Pinatubo-kjølingen var
 
 > **To vanlige misforståelser**
 >
-> 1. **De fem sfærene er vanntette rom.** Vann og karbon går mellom dem. Inndelingen er til for å følge flytten, ikke for å stenge sfærene fra hverandre.
+> 1. **De fem sfærene er vanntette rom.** Vann og karbon går mellom dem. Inndelingen er til for å følge flyten, ikke for å stenge sfærene fra hverandre.
 > 2. **Vulkaner forklarer dagens oppvarming.** Store utbrudd gir kortvarig avkjøling via SO₂. Vulkansk CO₂ i dag er lite mot fossile utslipp. Den trege karbonsløyfen er en annen klokke, på hundre tusen år og lenger.
 
 ## Viktige begreper
