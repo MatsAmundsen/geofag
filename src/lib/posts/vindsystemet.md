@@ -1,24 +1,28 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne gjøre rede for strålingsbalanse, strålingsfordeling og strålingspådriv og bruke disse til å forstå den globale sirkulasjonen i atmosfæren (Udir, u.å.-b).
+> Elevene skal kunne
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> - gjøre rede for strålingsbalanse, strålingsfordeling og strålingspådriv og bruke disse til å forstå den globale sirkulasjonen i atmosfæren
 >
-> • *Jordsystemer i tid og rom:* Atmosfæren er et av jordsystemene. Den globale sirkulasjonen er prosesser i atmosfæren, og de veksler med havet (Udir, u.å.-a).
+> (Udir, u.å.-b)
 >
-> • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). Tre-celle-modellen og figuren av innstrålingen er slike modeller.
+> **Kjerneelementer som dekkes i dette kapitlet:**
+>
+> • *Jordsystemer i tid og rom:* «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren» (Udir, u.å.-a). Den globale sirkulasjonen er prosesser i atmosfæren, og de veksler med havet.
+>
+> • *Modeller og modellering:* «Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener» (Udir, u.å.-a). Tre-celle-modellen og figuren av innstrålingen er slike modeller.
 
 ## Hva driver det globale vindsystemet?
 
-I kapittelet om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) så du at temperaturforskjeller skaper trykkforskjeller, og at trykkforskjeller setter lufta i bevegelse. Her ser vi på hele planeten.
+I kapitlet om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) så du at temperaturforskjeller skaper trykkforskjeller, og at trykkforskjeller setter lufta i bevegelse. Her ser vi på hele planeten.
 
 Sola varmer ikke jorda jevnt. Fordi jorda er en kule, varmes tropene mer enn polområdene. Atmosfæren og havet flytter varme fra ekvator mot polene. Sammen kalles den sirkulasjonen jordas varmemotor (NASA, u.å.).
 
-I tropene er det et energioverskudd: mer sollys blir absorbert enn varme som stråles ut. I polområdene er det et energiunderskudd: mer varme stråles ut enn sollys som blir absorbert. På midlere breddegrader er det om lag balanse (NASA, u.å.). Uten transport ville tropene blitt for varme og polene for kalde.
+I tropene er det et energioverskudd: mer sollys blir absorbert enn varme som stråles ut. I polområdene er det et energiunderskudd: mer varme stråles ut enn sollys som blir absorbert. På midlere breddegrader er det om lag balanse (NASA, u.å.). Uten transport ville tropene blitt for varme og polene for kalde. Når selve balansen endres, for eksempel fordi det blir mer CO₂ i lufta, kalles endringen et strålingspådriv (Store norske leksikon, u.å.-i). Hva det betyr for klimaet, tar vi i [klimakapitlet](/tema/klima).
 
-Jordaksen heller om lag 23 grader. Derfor er ikke ubalansen lik hele året, og vi får årstider (NASA, u.å.). Snø og is kaster mye av lyset tilbake. Det kalles høy albedo, og det forsterker underskuddet mot polene.
+Jordaksen heller om lag 23,4 grader. Derfor er ikke ubalansen lik hele året, og vi får årstider (NASA, u.å.). Snø og is kaster mye av lyset tilbake. Det kalles høy albedo, og det forsterker underskuddet mot polene.
 
-Hvordan havet bærer sin del av varmen, tar vi i kapittelet om [havstrømmer](/tema/havstrommer).
+Hvordan havet bærer sin del av varmen, tar vi i kapitlet om [havstrømmer](/tema/havstrommer).
 
 ```widget
 StralingsbalanseForklaring
@@ -30,11 +34,15 @@ InsolationDiagram
 
 Figuren viser hvorfor samme solstråle varmer mer ved ekvator enn mot polene: strålen treffer et større areal når vinkelen slakner.
 
+> **Hva tror du?**
+>
+> Sahara ligger nesten på samme breddegrad som deler av Florida og Sør-Kina, som er grønne og fuktige. Hvorfor tror du det er så tørt akkurat rundt 30°? Svar før du leser videre – vi kommer tilbake til det i delen om tørken rundt 30°.
+
 ## Fra én celle til tre
 
 I 1735 foreslo George Hadley én sirkulasjon på hver halvkule: lufta stiger ved ekvator, går mot polen i høyden, synker, og vender tilbake langs bakken (NOAA, u.å.-a).
 
-Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i høyden, beholder farten mot øst og blir vestavind i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-c). Hvorfor den dreier, står i kapittelet om [corioliseffekten](/tema/coriolis).
+Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i høyden, beholder farten mot øst og blir vestavind i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-c). Hvorfor den dreier, står i kapitlet om [corioliseffekten](/tema/coriolis).
 
 Én sløyfe til polen går ikke. Vi får tre celler på hver halvkule (NOAA, u.å.-a):
 
@@ -63,6 +71,10 @@ WindCellsDiagram
 
 Tverrsnittet viser det samme fra siden: lufta stiger ved ekvator og nær 50–60°, og synker nær 30° og over polen.
 
+```widget
+SjekkVindsystemet1
+```
+
 ## Den intertropiske konvergenssonen
 
 Den sterkeste motoren sitter i tropene. Der møtes passatene i den intertropiske konvergenssonen, ofte forkortet ITCZ (NOAA, u.å.-b).
@@ -83,10 +95,14 @@ I høyden over konvergenssonen er lufta tørr. Den har sluppet nedbøren. Den st
 
 Når lufta synker, presses den sammen og varmes opp. Den relative fuktigheten faller, og skyene løses opp. Ved bakken ligger høytrykk, med klarvær og tørke (NOAA, u.å.-a).
 
-Derfor ligger mange ørkener langs 30°, blant annet i Nord-Afrika, sørvest i Nord-Amerika og i Australia (NOAA, u.å.-a). Hadley-cellen gjør subtropene tørre, som i Nord-Afrika, mens regnskogen ligger nær ekvator, som i Amazonas, Indonesia og Kongo (Store norske leksikon, u.å.-a). Sahara er tørr fordi lufta synker, ikke fordi det «mangler elver».
+Derfor ligger mange ørkener langs 30°, blant annet i Nord-Afrika, sørvest i Nord-Amerika og i Australia (NOAA, u.å.-a). Hadley-cellen gjør subtropene tørre, som i Nord-Afrika, mens regnskogen ligger nær ekvator, som i Amazonas, Indonesia og Kongo (Store norske leksikon, u.å.-a). Sahara er tørr fordi lufta synker, ikke fordi det «mangler elver». Det er svaret på «Hva tror du?».
 
 ```widget
 SubsidensForklaring
+```
+
+```widget
+SjekkVindsystemet2
 ```
 
 ## Konvergenssonen flytter seg
@@ -103,7 +119,7 @@ Lufta som sank nær 30°, må strømme bort langs bakken. Noe går mot ekvator, 
 
 ### Passatvindene
 
-Fra høytrykket nær 30° inn mot konvergenssonen. På den nordlige halvkule er den fremherskende retningen nordøst. På den sørlige halvkule er den sørøst (Store norske leksikon, u.å.-c; NOAA, u.å.-a). I januar dekker nordøstpassaten mesteparten av beltet fra om lag 0° til 30° nord. I juli ligger beltet lenger nord (Store norske leksikon, u.å.-c).
+Fra høytrykket nær 30° inn mot konvergenssonen. På den nordlige halvkule er den framherskende retningen nordøst. På den sørlige halvkule er den sørøst (Store norske leksikon, u.å.-c; NOAA, u.å.-a). I januar dekker nordøstpassaten mesteparten av beltet fra om lag 0° til 30° nord. I juli ligger beltet lenger nord (Store norske leksikon, u.å.-c).
 
 ### Vestavindsbeltet
 
@@ -118,6 +134,10 @@ SurfaceWindsDiagram
 ```
 
 Fra 30° trekkes lufta både mot ekvator og mot 60°. Coriolis dreier begge mot høyre på den nordlige halvkule, så passaten og vestavinden får motsatt retning.
+
+```widget
+SjekkVindsystemet3
+```
 
 ## Klimabeltene
 
@@ -145,7 +165,7 @@ VindBelterFoto
 
 Polarfronten er grensen mellom kald luft fra høye breddegrader og varm luft fra subtropene. På den nordlige halvkule ligger den vanligvis mellom 40° og 70°. Den bukter seg mot øst, med varmfront i forkant av bølgen og kaldfront i bakkant. Langs fronten går vandrende lavtrykk, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-h).
 
-Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mellom om lag 50° og 60° på begge halvkuler. Den bukter seg, skifter bredde og kan dele seg (NOAA, u.å.-c). Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapittelet om [jetstrømmer](/tema/jetstrommer).
+Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mellom om lag 50° og 60° på begge halvkuler. Den bukter seg, skifter bredde og kan dele seg (NOAA, u.å.-c). Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).
 
 Norge ligger i vestavindsbeltet. Lavtrykk som dannes over Atlanteren, følger den øvre vinden inn mot kysten. På veien har lufta tatt opp vanndamp. Klimaet i Norge er mildere enn breddegraden skulle tilsi, fordi havstrømmer og vind frakter varme hit (Store norske leksikon, u.å.-e).
 
@@ -159,6 +179,10 @@ PolarFrontNorwayDiagram
 
 Polarfronten er kollisjonssonen. Fjellene avgjør hvor den fuktige vestavinden slipper regnet.
 
+```widget
+SjekkVindsystemet4
+```
+
 ## Slik henger det sammen
 
 1. **Energikilden.** Ujevn innstråling gir overskudd i tropene og underskudd ved polene (NASA, u.å.).
@@ -170,7 +194,7 @@ Polarfronten er kollisjonssonen. Fjellene avgjør hvor den fuktige vestavinden s
 WindSystemModel
 ```
 
-Bruk modellen i [dette kapittelet](/tema/vindsystemet) til å koble breddegrad, trykk, vindretning og loddrett luftstrøm i tre-celle-systemet.
+Bruk modellen til å koble breddegrad, trykk, vindretning og loddrett luftstrøm i tre-celle-systemet.
 
 > **Tre vanlige misforståelser**
 >
@@ -193,6 +217,12 @@ Bruk modellen i [dette kapittelet](/tema/vindsystemet) til å koble breddegrad, 
 **Polarfronten:** Grenseflaten mellom kald polarluft og varm subtropisk luft, vanligvis mellom 40° og 70°. Her dannes lavtrykk (Store norske leksikon, u.å.-h).
 
 **Orografisk nedbør:** Nedbør når fuktig vind tvinges opp av fjell på luvsiden. På lesiden: regnskygge (Store norske leksikon, u.å.-f; Store norske leksikon, u.å.-g).
+
+## Sammendrag
+
+```widget
+SammendragVindsystemet
+```
 
 ## Test deg selv
 

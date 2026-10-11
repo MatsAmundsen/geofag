@@ -1046,6 +1046,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "landformer",
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],
   },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vindsystemet-mal-2026-10-11",
+    slug: "vindsystemet",
+    stale: ["Bruk modellen i [dette kapittelet](/tema/vindsystemet)", "Jordaksen heller om lag 23 grader."],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

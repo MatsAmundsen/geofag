@@ -75,6 +75,10 @@ import {
   QUIZ_SJEKK_KATASTROFER_3,
   QUIZ_SJEKK_ENERGI_1,
   QUIZ_SJEKK_ENERGI_2,
+  QUIZ_SJEKK_VINDSYSTEMET_1,
+  QUIZ_SJEKK_VINDSYSTEMET_2,
+  QUIZ_SJEKK_VINDSYSTEMET_3,
+  QUIZ_SJEKK_VINDSYSTEMET_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -144,6 +148,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
   Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
   Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
+  Vindsystemet1: QUIZ_SJEKK_VINDSYSTEMET_1,
+  Vindsystemet2: QUIZ_SJEKK_VINDSYSTEMET_2,
+  Vindsystemet3: QUIZ_SJEKK_VINDSYSTEMET_3,
+  Vindsystemet4: QUIZ_SJEKK_VINDSYSTEMET_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -267,6 +275,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
     "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
     "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
+  ],
+  Vindsystemet: [
+    "Sola varmer tropene mer enn polene. Atmosfæren og havet flytter varme fra overskudd i tropene mot underskudd ved polene.",
+    "Fordi jorda roterer, deler sirkulasjonen seg i tre celler på hver halvkule: Hadley-cellen, Ferrel-cellen og polarcellen.",
+    "Lufta stiger i konvergenssonen ved ekvator og gir regn. Den synker nær 30° og gir høytrykk og ørken.",
+    "Ved bakken gir cellene passatvinder, vestavindsbeltet og polare østavinder. Corioliseffekten dreier dem mot høyre på den nordlige halvkule.",
+    "Norge ligger i vestavindsbeltet ved polarfronten. Fuktige lavtrykk og fjellene gir mye nedbør i vest og regnskygge i øst.",
   ],
 };
 

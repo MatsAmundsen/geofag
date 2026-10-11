@@ -8,9 +8,9 @@ import { Arrow, C, Diagram, L } from "./svg-kit";
 export function InsolationDiagram() {
   return (
     <Diagram
-      title="Ujevn solinnstråling og jordens strålingsbalanse"
+      title="Ujevn solinnstråling og jordas strålingsbalanse"
       heading="Sola treffer jorda med ulik vinkel: Motoren i det globale vindsystemet"
-      caption="Solstrålene ankommer jorden i parallelle bunter fra rommet. Fordi jorden er krum, treffer strålene med vidt forskjellig innfallsvinkel: Ved ekvator står solen nesten rett over hodet (90° vinkel), slik at energien konsentreres på et minimalt flateareal (A = 1,0). Mot polene treffer nøyaktig samme strålebunt på skrå og smøres utover et mer enn 2,5 ganger så stort areal (A ≈ 2,5). I tillegg må strålene ved polene passere gjennom en mer enn dobbelt så lang atmosfære-vei, der skyer og luftmolekyler reflekterer og sprer strålingen. Resultatet er et permanent strålingsoverskudd i tropene og et underskudd mot polene. Det globale vindsystemet og havstrømmene drives av naturens behov for å transportere denne overskuddsvarmen mot polene."
+      caption="Solstrålene ankommer jorda i parallelle bunter fra rommet. Fordi jorda er krum, treffer strålene med vidt forskjellig innfallsvinkel: Ved ekvator står solen nesten rett over hodet (90° vinkel), slik at energien konsentreres på et minimalt flateareal (A = 1,0). Mot polene treffer nøyaktig samme strålebunt på skrå og smøres utover et mer enn 2,5 ganger så stort areal (A ≈ 2,5). I tillegg må strålene ved polene passere gjennom en mer enn dobbelt så lang atmosfære-vei, der skyer og luftmolekyler reflekterer og sprer strålingen. Resultatet er et permanent strålingsoverskudd i tropene og et underskudd mot polene. Det globale vindsystemet og havstrømmene drives av naturens behov for å transportere denne overskuddsvarmen mot polene."
       viewBox="0 0 940 460"
       wide
     >
@@ -25,7 +25,7 @@ export function InsolationDiagram() {
               <stop offset="100%" stopColor="#081522" />
             </radialGradient>
 
-            {/* Atmosfæreglød rundt jorden */}
+            {/* Atmosfæreglød rundt jorda */}
             <radialGradient id="inso-atmo-glow" cx="420" cy="200" r="145" gradientUnits="userSpaceOnUse">
               <stop offset="82%" stopColor="#38bdf8" stopOpacity="0" />
               <stop offset="92%" stopColor="#38bdf8" stopOpacity="0.35" />
@@ -166,14 +166,14 @@ export function InsolationDiagram() {
  * 2. OneVsThreeCellsDiagram
  * Viser to glober side om side:
  * - Venstre: "En tenkt jord UTEN rotasjon (George Hadley 1735)" med 1 gigantisk celle
- * - Høyre: "Den virkelige roterende jorden (William Ferrel 1856)" med Coriolis-oppsplitting i 3 celler
+ * - Høyre: "Den virkelige roterende jorda (William Ferrel 1856)" med Coriolis-oppsplitting i 3 celler
  */
 export function OneVsThreeCellsDiagram() {
   return (
     <Diagram
       title="Én celle uten rotasjon, tre celler med rotasjon"
       heading="Hvorfor tre celler og ikke én? Corioliskraftens oppsplitting"
-      caption="I 1735 foreslo George Hadley at jorden hadde én gigantisk sirkulasjonscelle på hver halvkule: Varm luft stiger ved ekvator, strømmer helt til polen i høyden, synker over polisen og returnerer langs bakken (venstre globus). Men jorden roterer. Idet luften i høyden beveger seg nordover, avbøyes den kraftig mot høyre av Corioliskraften. Allerede ved 30° breddegrad er den blitt til en ren vestavind som ikke klarer å trenge lenger nord. Den hoper seg opp og tvinges ned til bakken. Dermed brytes den enkle termiske sløyfen opp i de tre cellene vi kjenner i dag (høyre globus): Hadleycellen, Ferrelcellen og Polarcellen."
+      caption="I 1735 foreslo George Hadley at jorda hadde én gigantisk sirkulasjonscelle på hver halvkule: Varm luft stiger ved ekvator, strømmer helt til polen i høyden, synker over polisen og returnerer langs bakken (venstre globus). Men jorda roterer. Idet lufta i høyden beveger seg nordover, avbøyes den kraftig mot høyre av Corioliskraften. Allerede ved 30° breddegrad er den blitt til en ren vestavind som ikke klarer å trenge lenger nord. Den hoper seg opp og tvinges ned til bakken. Dermed brytes den enkle termiske sløyfen opp i de tre cellene vi kjenner i dag (høyre globus): Hadleycellen, Ferrelcellen og Polarcellen."
       viewBox="0 0 940 400"
       wide
     >
@@ -561,7 +561,7 @@ export function HadleyCloseupDiagram() {
     <Diagram
       title="Hadley-cellen i nærbilde: Fra ITCZ til 30° breddegrad"
       heading="Hadley-cellen: Konveksjon ved ITCZ og ørkendannelse ved 30°"
-      caption="Hadleycellen er den mektigste termiske varmemotoren på jorden. Ved den intertropiske konvergenssonen (ITCZ) møtes nordøstpassaten og sørøstpassaten over oppvarmet tropisk hav. Fuktig luft tvinges voldsomt til værs i gigantiske Cumulonimbus-tårn. Kondensasjonen frigjør svære mengder latent varme, som løfter luften helt til den 16 km høye tropopausen. I høyden strømmer den tørre luften nordover, avkjøles og synker ned over 30° breddegrad (subtropiske høytrykk). Her varmes den adiabatisk, skyer fordamper, og vi finner jordens største varme ørkener. Langs havoverflaten trekkes luften tilbake mot ITCZ som de stødige passatvindene."
+      caption="Hadleycellen er den mektigste termiske varmemotoren på jorda. Ved den intertropiske konvergenssonen (ITCZ) møtes nordøstpassaten og sørøstpassaten over oppvarmet tropisk hav. Fuktig luft tvinges voldsomt til værs i gigantiske Cumulonimbus-tårn. Kondensasjonen frigjør svære mengder latent varme, som løfter lufta helt til den 16 km høye tropopausen. I høyden strømmer den tørre lufta nordover, avkjøles og synker ned over 30° breddegrad (subtropiske høytrykk). Her varmes den adiabatisk, skyer fordamper, og vi finner jordas største varme ørkener. Langs havoverflaten trekkes lufta tilbake mot ITCZ som de stødige passatvindene."
       viewBox="0 0 940 420"
       wide
     >
@@ -690,7 +690,7 @@ export function SurfaceWindsDiagram() {
     <Diagram
       title="De globale overflatevindene på nordlig halvkule"
       heading="De tre vindbeltene ved bakken: Passater, vestavinder og polare østavinder"
-      caption="Vindene ved bakken drives av trykkgradienten mellom de globale trykkbeltene, men avbøyes til høyre av Corioliskraften på den roterende jorden: 1) Nordøstpassaten (0°–30°N): Luften trekkes sørover fra høytrykket ved 30° mot ITCZ, men avbøyes mot høyre og blåser jevnt fra nordøst mot sørvest. 2) Vestavindsbeltet (30°–60°N): Luften trekkes nordover mot lavtrykkene ved polarfronten og avbøyes kraftig mot høyre, slik at den blåser fra sørvest mot nordøst (dette beltet treffer Norge og bringer mild atlanterhavsluft). 3) Polare østavinder (60°–90°N): Iskald arktisk luft strømmer sørover fra polarhøytrykket og avbøyes mot vest (blåser fra øst mot vest). Husk den gylne meteorologiske regelen: Vinden har alltid navn etter retningen den kommer fra."
+      caption="Vindene ved bakken drives av trykkgradienten mellom de globale trykkbeltene, men avbøyes til høyre av Corioliskraften på den roterende jorda: 1) Nordøstpassaten (0°–30°N): Lufta trekkes sørover fra høytrykket ved 30° mot ITCZ, men avbøyes mot høyre og blåser jevnt fra nordøst mot sørvest. 2) Vestavindsbeltet (30°–60°N): Lufta trekkes nordover mot lavtrykkene ved polarfronten og avbøyes kraftig mot høyre, slik at den blåser fra sørvest mot nordøst (dette beltet treffer Norge og bringer mild atlanterhavsluft). 3) Polare østavinder (60°–90°N): Iskald arktisk luft strømmer sørover fra polarhøytrykket og avbøyes mot vest (blåser fra øst mot vest). Husk den gylne meteorologiske regelen: Vinden har alltid navn etter retningen den kommer fra."
       viewBox="0 0 940 480"
       wide
     >
@@ -819,7 +819,7 @@ export function SurfaceWindsDiagram() {
           {/* OPPGAVESAMMENDRAG NEDERST */}
           <rect x="45" y="405" width="850" height="36" rx="6" fill="#0d1822" stroke="#1e293b" strokeWidth="1.2" />
           <L x="470" y="427" fill={C.sand} size={12} weight={700} anchor="middle">
-            Globusperspektiv: Fra 30°N trekkes luften mot både 0° og 60°N. Coriolis avbøyer begge til høyre, og skaper motsatte vindretninger.
+            Globusperspektiv: Fra 30°N trekkes lufta mot både 0° og 60°N. Coriolis avbøyer begge til høyre, og skaper motsatte vindretninger.
           </L>
         </>
       )}
@@ -836,7 +836,7 @@ export function GlobalClimateZonesDiagram() {
     <Diagram
       title="Globale klimasoner og vegetasjonsbelter"
       heading="Klimabeltene: Cellenes opp- og nedsynking skrevet på jordoverflaten"
-      caption="De globale klimabeltene og økosystemene er en direkte konsekvens av hvor i cellene luften stiger eller synker: 1) Ved ITCZ (0°) tvinges luften opp: Voldsom nedbør året rundt gir grobunn for de frodige tropiske regnskogene (Amazonas, Kongo, Indonesia). 2) På 10°–20° breddegrad skifter årstidene mellom tørke og regn i takt med ITCZs vandring, noe som skaper savannen. 3) Ved 30° breddegrad synker luften: Skyer fordamper, og vi får jordens mektigste ørkener (Sahara, Kalahari). 4) På 45°–60° ligger vestavindsbeltet med hyppige lavtrykk og frontnedbør, som gir tempererte løvskoger og boreal barskog (taiga). 5) Over polene synker iskald luft i polarhøytrykket og danner tørr, frossen tundra og polarørken."
+      caption="De globale klimabeltene og økosystemene er en direkte konsekvens av hvor i cellene lufta stiger eller synker: 1) Ved ITCZ (0°) tvinges lufta opp: Voldsom nedbør året rundt gir grobunn for de frodige tropiske regnskogene (Amazonas, Kongo, Indonesia). 2) På 10°–20° breddegrad skifter årstidene mellom tørke og regn i takt med ITCZs vandring, noe som skaper savannen. 3) Ved 30° breddegrad synker lufta: Skyer fordamper, og vi får jordas mektigste ørkener (Sahara, Kalahari). 4) På 45°–60° ligger vestavindsbeltet med hyppige lavtrykk og frontnedbør, som gir tempererte løvskoger og boreal barskog (taiga). 5) Over polene synker iskald luft i polarhøytrykket og danner tørr, frossen tundra og polarørken."
       viewBox="0 0 940 460"
       wide
     >
@@ -859,8 +859,8 @@ export function GlobalClimateZonesDiagram() {
               h: 60,
               bg: "#142820",
               border: "#22c55e",
-              zone: "Boreal barskog (Taiga) & Temperert lauvskog (45°–65°N)",
-              mech: "Stigende luft ved polarfronten & fuktig vestavindsbelte (mye regn)",
+              zone: "Boreal barskog (Taiga) og Temperert lauvskog (45°–65°N)",
+              mech: "Stigende luft ved polarfronten og fuktig vestavindsbelte (mye regn)",
               veg: "Gran, furu, bjørk, eik · Rik skog (Norge, Canada, Sibir)",
               icon: "🌲",
             },
@@ -870,7 +870,7 @@ export function GlobalClimateZonesDiagram() {
               bg: "#2d1d0c",
               border: C.sand,
               zone: "Subtropisk ørkenbelte (20°–35°N)",
-              mech: "Synkende tørr luft ved 30° (Hadley-subsidens) · Skyfritt & hett",
+              mech: "Synkende tørr luft ved 30° (Hadley-subsidens) · Skyfritt og hett",
               veg: "Knusktørt, sanddyner, oaser, kaktus (Sahara, Arabia)",
               icon: "🏜️",
             },
@@ -933,7 +933,7 @@ export function GlobalClimateZonesDiagram() {
             Den gylne huskeregelen for geofagelever:
           </L>
           <L x="470" y="426" fill={C.sand} size={12} weight={800} anchor="middle">
-            Der luften i gjennomsnitt stiger (0° og 60°N), blir det skyer og frodig liv. Der den synker (30° og 90°N), tørker landskapet ut.
+            Der lufta i gjennomsnitt stiger (0° og 60°N), blir det skyer og frodig liv. Der den synker (30° og 90°N), tørker landskapet ut.
           </L>
         </>
       )}
@@ -951,7 +951,7 @@ export function PolarFrontNorwayDiagram() {
     <Diagram
       title="Polarfronten og været i Norge"
       heading="Polarfronten: Der kald arktisk luft møter fuktig atlanterhavsluft"
-      caption="Ved ca. 60°N kolliderer to fundamentalt forskjellige luftmasser: Den kalde, tunge polarluften fra Arktis og den milde, fuktige luften fra Atlanterhavet. Grenseflaten kalles polarfronten. Temperatur- og tetthetskontrasten gjør fronten ustabil, og det oppstår bølger der ekstratropiske lavtrykk (sykloner) fødes på løpende bånd. Vestavindsbeltet styrer disse lavtrykkene rett mot Norge. Når den fuktige vestavinden treffer kysten, tvinges den til værs over Langfjella: Vestlandet får voldsom orografisk nedbør (loside), mens Østlandet og indre daler havner i dyp regnskygge (leside)."
+      caption="Ved ca. 60°N kolliderer to fundamentalt forskjellige luftmasser: Den kalde, tunge polarlufta fra Arktis og den milde, fuktige lufta fra Atlanterhavet. Grenseflaten kalles polarfronten. Temperatur- og tetthetskontrasten gjør fronten ustabil, og det oppstår bølger der ekstratropiske lavtrykk (sykloner) fødes på løpende bånd. Vestavindsbeltet styrer disse lavtrykkene rett mot Norge. Når den fuktige vestavinden treffer kysten, tvinges den til værs over Langfjella: Vestlandet får voldsom orografisk nedbør (loside), mens Østlandet og indre daler havner i dyp regnskygge (leside)."
       viewBox="0 0 940 430"
       wide
     >
@@ -1050,7 +1050,7 @@ export function PolarFrontNorwayDiagram() {
               Østlandet: Leside ☀️
             </L>
             <L x="100" y="128" fill={C.muted} size={10.5}>
-              Regnskygge & føn (&lt; 400 mm)
+              Regnskygge og føn (&lt; 400 mm)
             </L>
           </g>
 
