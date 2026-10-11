@@ -1046,6 +1046,18 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "landformer",
     stale: ["isbreenes mektige arkitektur", "Leirparadokset", "Her kan du redigere **hele fagteksten**"],
   },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-kryosfaeren-mal-2026-10-11",
+    slug: "kryosfaeren",
+    stale: ["De to ordene er ikke satt lik hverandre her", "om lag 5260 isbreer"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-coriolis-mal-2026-10-11",
+    slug: "coriolis",
+    stale: ["Om lag halvparten av primærproduksjonen i havet skjer i oppvellingsområder"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
