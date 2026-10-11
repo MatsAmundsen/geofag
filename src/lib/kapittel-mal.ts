@@ -75,6 +75,9 @@ import {
   QUIZ_SJEKK_KATASTROFER_3,
   QUIZ_SJEKK_ENERGI_1,
   QUIZ_SJEKK_ENERGI_2,
+  QUIZ_SJEKK_CORIOLIS_1,
+  QUIZ_SJEKK_CORIOLIS_2,
+  QUIZ_SJEKK_CORIOLIS_3,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -144,6 +147,9 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Jordsystemene1: QUIZ_SJEKK_JORDSYSTEMENE_1,
   Jordsystemene2: QUIZ_SJEKK_JORDSYSTEMENE_2,
   Jordsystemene3: QUIZ_SJEKK_JORDSYSTEMENE_3,
+  Coriolis1: QUIZ_SJEKK_CORIOLIS_1,
+  Coriolis2: QUIZ_SJEKK_CORIOLIS_2,
+  Coriolis3: QUIZ_SJEKK_CORIOLIS_3,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -267,6 +273,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Et stort utbrudd kan kjøle jorda i noen år fordi SO₂ blir til sulfataerosoler i stratosfæren, slik Pinatubo gjorde i 1991. Vulkansk CO₂ i dag er lite mot de menneskeskapte utslippene.",
     "I karbonat–silikat-syklusen løser karbonsyre berg, karbonet lagres i kalkstein, og vulkaner gir CO₂ tilbake. Den virker som en termostat med negativ tilbakekobling over noen hundre tusen år.",
     "Samme prosess kan virke på ulike tidsskalaer, fra minutter (skred) til 100–200 millioner år (den trege karbonsløyfen).",
+  ],
+  Coriolis: [
+    "Corioliseffekten er avbøyningen vi ser fordi jorda roterer. Den er ingen kraft som setter noe i gang, men en virkning av at vi står på en roterende klode.",
+    "På den nordlige halvkule avbøyes bevegelser mot høyre og på den sørlige mot venstre. Ved ekvator er det ingen avbøyning.",
+    "Trykkforskjellen setter vinden i gang, og corioliseffekten endrer retningen. Derfor roterer lufta mot klokka rundt et lavtrykk i nord.",
+    "I havet gir avbøyningen ekmanspiralen og ekmantransporten til høyre for vinden. Langs vestkyster kan det gi oppvelling av næringsrikt dypvann.",
+    "De store havvirvlene går med klokka på den nordlige halvkule og mot klokka på den sørlige.",
   ],
 };
 
