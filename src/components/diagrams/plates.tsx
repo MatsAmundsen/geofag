@@ -417,7 +417,7 @@ export function ConvectionDiagram() {
               d="M 230 380 C 248 310, 240 210, 220 170 C 140 170, 60 180, 70 260 C 80 360, 140 400, 230 380"
             />
           </g>
-          <L x="450" y="270" fill="#f97316" size={13} weight={700} anchor="middle">
+          <L x="468" y="252" fill="#f97316" size={13} weight={700} anchor="middle">
             Mantelkonveksjon (seig, duktil peridotittflyt)
           </L>
 
@@ -609,7 +609,7 @@ export function PlatesMapDiagram() {
             strokeDasharray="6 2"
           />
           {/* Ring of Fire merking */}
-          <g transform="translate(110, 160)">
+          <g transform="translate(48, 198)">
             <rect x="0" y="0" width="125" height="38" rx="4" fill="#080f14" stroke="#ef4444" strokeWidth="1.2" opacity="0.9" />
             <L x="62" y="16" fill="#ef4444" size={11} weight={800} anchor="middle">RING OF FIRE</L>
             <L x="62" y="30" fill="#fca5a5" size={9} anchor="middle">75 % av verdens vulkaner</L>
@@ -620,14 +620,14 @@ export function PlatesMapDiagram() {
 
           {/* STORE PLATENAVN OG HASTIGHETSVEKTORER */}
           {/* Stillehavsplaten (Pacific Plate) */}
-          <g transform="translate(100, 310)">
+          <g transform="translate(52, 286)">
             <L x="0" y="0" fill={C.fg} size={13} weight={800}>STILLEHAVSPLATEN</L>
-            <Arrow d="M 40 10 L -15 -15" marker={m.teal} color={C.teal} width={3.2} />
+            <Arrow d="M 6 40 L -18 22" marker={m.teal} color={C.teal} width={3.2} />
             <L x="45" y="24" fill={C.teal} size={11} weight={700}>8–11 cm/år</L>
           </g>
 
           {/* Nordamerikanske plate */}
-          <g transform="translate(170, 110)">
+          <g transform="translate(168, 108)">
             <L x="0" y="0" fill={C.fg} size={12.5} weight={800}>NORDAMERIKANSKE PLATE</L>
             <Arrow d="M 50 15 L 10 20" marker={m.warm} color={C.warm} width={2.6} />
             <L x="55" y="32" fill={C.warm} size={10}>~2,3 cm/år</L>
@@ -646,32 +646,34 @@ export function PlatesMapDiagram() {
             Norge (Intraplate)
           </L>
 
-          {/* Søramerikanske plate */}
-          <g transform="translate(300, 330)">
-            <L x="0" y="0" fill={C.fg} size={12} weight={800}>SØRAMERIKANSKE</L>
+          {/* Søramerikanske plate. Ordet er strammet så det får plass mellom kysten og ryggen. */}
+          <g transform="translate(304, 330)">
+            <L x="0" y="0" fill={C.fg} size={12} weight={800} length={74}>
+              SØRAMERIKANSKE
+            </L>
             <L x="0" y="14" fill={C.fg} size={12} weight={800}>PLATE</L>
-            <Arrow d="M -10 20 L -35 20" marker={m.warm} color={C.warm} width={2.6} />
+            <Arrow d="M -16 20 L -40 20" marker={m.warm} color={C.warm} width={2.6} />
           </g>
 
           {/* Nazcaplaten */}
-          <g transform="translate(190, 330)">
+          <g transform="translate(192, 312)">
             <L x="0" y="0" fill={C.teal} size={11} weight={800}>NAZCA</L>
-            <Arrow d="M 15 10 L 45 10" marker={m.teal} color={C.teal} width={3} />
-            <L x="25" y="24" fill={C.teal} size={10} weight={700}>~7 cm/år</L>
+            <Arrow d="M 4 10 L 24 10" marker={m.teal} color={C.teal} width={3} />
+            <L x="-48" y="22" fill={C.teal} size={10} weight={700}>~7 cm/år</L>
           </g>
 
           {/* Afrikanske plate */}
-          <g transform="translate(470, 270)">
+          <g transform="translate(560, 300)">
             <L x="0" y="0" fill={C.fg} size={12.5} weight={800}>AFRIKANSKE PLATE</L>
-            <Arrow d="M 40 -10 L 40 -30" marker={m.warm} color={C.warm} width={2.4} />
-            <L x="45" y="-15" fill={C.warm} size={10}>~2 cm/år</L>
+            <Arrow d="M 40 -8 L 40 -28" marker={m.warm} color={C.warm} width={2.4} />
+            <L x="48" y="-16" fill={C.warm} size={10}>~2 cm/år</L>
           </g>
 
           {/* Indo-Australske plate og kollisjon med Asia */}
           <g transform="translate(680, 260)">
             <L x="0" y="0" fill={C.fg} size={12} weight={800}>INDO-AUSTRALSK</L>
             <Arrow d="M 20 -10 L 10 -45" marker={m.low} color={C.low} width={3.2} />
-            <L x="25" y="-25" fill={C.low} size={11} weight={700}>Himalaya-kollisjon (~5 cm/år)</L>
+            <L x="-48" y="-92" fill={C.low} size={11} weight={700}>Himalaya-kollisjon (~5 cm/år)</L>
           </g>
 
           {/* Kartforklaring nederst */}
@@ -763,7 +765,7 @@ export function SolidusDiagram() {
           <L x="180" y="240" fill={C.cold} size={16} weight={800}>
             FAST BERGART
           </L>
-          <L x="180" y="260" fill="#94a3b8" size={12}>
+          <L x="120" y="268" fill="#94a3b8" size={12}>
             Peridotitt i litosfære og astenosfære
           </L>
 
@@ -789,13 +791,13 @@ export function SolidusDiagram() {
           <g>
             <Arrow d="M 600 340 L 530 80" marker={m.warm} color={C.warm} width={4} />
             <circle cx="560" cy="192" r="7" fill="#f59e0b" stroke="#fff" strokeWidth="2" />
-            <L x="575" y="188" fill="#f59e0b" size={13} weight={800}>
+            <L x="630" y="188" fill="#f59e0b" size={13} weight={800}>
               1. Dekompresjon (Midthavsrygg / Rift)
             </L>
-            <L x="575" y="204" fill="#fed7aa" size={11}>
+            <L x="630" y="204" fill="#fed7aa" size={11}>
               Mantel stiger nesten adiabatisk (uten varmetap).
             </L>
-            <L x="575" y="218" fill="#cbd5e1" size={10}>
+            <L x="630" y="218" fill="#cbd5e1" size={10}>
               Krysser solidus ved ca. 60 km dyp uten tilført varme!
             </L>
           </g>
@@ -804,13 +806,13 @@ export function SolidusDiagram() {
           <g>
             <Arrow d="M 520 250 L 420 250" marker={m.teal} color={C.teal} width={3.6} />
             <circle cx="430" cy="250" r="7" fill="#38bdf8" stroke="#fff" strokeWidth="2" />
-            <L x="410" y="275" fill="#38bdf8" size={12.5} weight={800} anchor="end">
+            <L x="340" y="332" fill="#38bdf8" size={12.5} weight={800} anchor="end">
               2. Flukssmelting (Subduksjonssone)
             </L>
-            <L x="410" y="291" fill="#bae6fd" size={11} anchor="end">
+            <L x="340" y="348" fill="#bae6fd" size={11} anchor="end">
               Vann fra slab senker solidus mot venstre.
             </L>
-            <L x="410" y="305" fill="#cbd5e1" size={10} anchor="end">
+            <L x="340" y="362" fill="#cbd5e1" size={10} anchor="end">
               Mantelen smelter ved uendret temperatur.
             </L>
           </g>
@@ -1045,6 +1047,11 @@ export function SpreadingDiagram() {
     });
   });
   const halfLabel = nbNum(rate / 2, 2);
+  const showBandLabel = (x: number, w: number, side: "left" | "right") => {
+    const center = x + w / 2;
+    if (w < 84) return false;
+    return side === "left" ? center >= 96 && center <= 340 : center >= 520 && center <= 760;
+  };
 
   return (
     <Diagram
@@ -1174,10 +1181,11 @@ export function SpreadingDiagram() {
             stroke="#202c25"
             strokeWidth="1.2"
           />
-          <L x="220" y="125" fill="#a7f3d0" size={11} weight={700}>
+          <L x="712" y="48" fill="#a7f3d0" size={11} weight={700}>
             Lag 2A: Putelava (pillow basalt, bråkjølt)
           </L>
-          <L x="720" y="125" fill="#a7f3d0" size={11} weight={700}>
+          <polyline points="690,50 690,124" fill="none" stroke="#a7f3d0" strokeWidth="1.2" />
+          <L x="720" y="136" fill="#a7f3d0" size={11} weight={700}>
             Putelava
           </L>
 
@@ -1187,9 +1195,10 @@ export function SpreadingDiagram() {
             fill="#2c3a33"
             stroke="#1d2722"
           />
-          <L x="220" y="155" fill="#cbd5e1" size={10.5}>
+          <L x="712" y="70" fill="#cbd5e1" size={10.5}>
             Lag 2B: Tette basaltganger (sheeted dykes)
           </L>
+          <polyline points="708,88 668,162" fill="none" stroke="#cbd5e1" strokeWidth="1.2" />
 
           {/* Lag 3: Gabbro (dyp magmakammerbergart) */}
           <path
@@ -1203,15 +1212,15 @@ export function SpreadingDiagram() {
 
           {/* Moho-diskontinuiteten */}
           <path d="M 40 245 L 380 205 L 445 190 L 495 190 L 560 205 L 900 245" stroke="#ef4444" strokeWidth="1.8" strokeDasharray="4 2" fill="none" />
-          <L x="860" y="240" fill="#ef4444" size={10} weight={700} anchor="end">
-            MOHO (~6–7 km dyp)
-          </L>
 
           {/* Lag 4: Mantelperidotitt under skorpen */}
           <path
             d="M 40 245 L 380 205 L 445 190 L 495 190 L 560 205 L 900 245 L 900 370 L 40 370 Z"
             fill="#172730"
           />
+          <L x="890" y="268" fill="#ef4444" size={10} weight={700} anchor="end">
+            MOHO (~6–7 km dyp)
+          </L>
           <L x="180" y="280" fill={C.teal} size={12} weight={700}>
             Litosfærisk mantel (harzburgitt / serpentinisert peridotitt)
           </L>
@@ -1269,7 +1278,7 @@ export function SpreadingDiagram() {
                   <g key={band.key}>
                     <rect x={band.x} y="32" width={band.w} height="30" fill={band.fill} />
                     <line x1={band.x + band.w / 2} y1="62" x2={band.x + band.w / 2} y2="72" stroke="#94a3b8" strokeWidth="1" />
-                    {band.w > 48 ? (
+                    {showBandLabel(band.x, band.w, "left") ? (
                       <>
                         <L x={band.x + band.w / 2} y="51" fill={band.ink} size={9} weight={700} anchor="middle">{band.name}</L>
                         <L x={band.x + band.w / 2} y="84" fill="#94a3b8" size={9} anchor="middle">{band.age}</L>
@@ -1286,7 +1295,7 @@ export function SpreadingDiagram() {
                   <g key={band.key}>
                     <rect x={band.x} y="32" width={band.w} height="30" fill={band.fill} />
                     <line x1={band.x + band.w / 2} y1="62" x2={band.x + band.w / 2} y2="72" stroke="#94a3b8" strokeWidth="1" />
-                    {band.w > 48 ? (
+                    {showBandLabel(band.x, band.w, "right") ? (
                       <>
                         <L x={band.x + band.w / 2} y="51" fill={band.ink} size={9} weight={700} anchor="middle">{band.name}</L>
                         <L x={band.x + band.w / 2} y="84" fill="#94a3b8" size={9} anchor="middle">{band.age}</L>
@@ -1346,7 +1355,7 @@ export function ContinentalRiftDiagram() {
   const xInR = 570 + spread;
   const xMohoL = 370 - spread * 0.35;
   const xMohoR = 510 + spread * 0.35;
-  const volcanoX = 420 - spread * 0.15;
+  const volcanoX = xLf + 24;
   const lakeW = 120 + spread * 0.5;
   const lakeX = 440 - lakeW / 2;
 
@@ -1423,43 +1432,15 @@ export function ContinentalRiftDiagram() {
           <path d={`M ${xL + 18} ${85 + (yFloor - 85) * 0.28} L ${xL + 32} ${85 + (yFloor - 85) * 0.45}`} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
           <path d={`M ${xR - 18} ${85 + (yFloor - 85) * 0.28} L ${xR - 32} ${85 + (yFloor - 85) * 0.45}`} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
 
-          {/* Riftskuldre og graben-tekst. GRABEN ligger fast i toppen, med leder ned i dalen,
-              så den ikke kolliderer med vulkanetiketten når strekket endrer dalbunnen. */}
-          <L x="118" y="52" fill="#f8fafc" size={20} weight={700} anchor="middle">
-            Horst (Riftskulder)
-          </L>
-          <L x="762" y="52" fill="#f8fafc" size={20} weight={700} anchor="middle">
-            Horst (Riftskulder)
-          </L>
-          <L x="440" y="52" fill="#f59e0b" size={20} weight={800} anchor="middle">
-            GRABEN (Innsunket riftdal)
-          </L>
-          <polyline
-            points={`440,66 440,${yFloor - 12}`}
-            fill="none"
-            stroke="#f59e0b"
-            strokeWidth="1.5"
-          />
+          {/* Riftskuldre, graben, sjø og vulkan. Tekst og ledere tegnes etter lagene. */}
 
           <rect x={lakeX} y={yFloor - 7} width={lakeW} height="7" fill="#0284c7" />
-          <L x="440" y={yFloor + 36} fill="#38bdf8" size={20} weight={700} anchor="middle">
-            Riftsjø
-          </L>
-          <L x="440" y={yFloor + 72} fill="#38bdf8" size={20} weight={600} anchor="middle">
-            (Tanganyikasjøen 1470 m dyp)
-          </L>
 
           <path
             d={`M 40 ${ySide} L ${xInL} ${175 + drop * 0.2} L ${xMohoL} ${yLith} L ${xMohoR} ${yLith} L ${xInR} ${175 + drop * 0.2} L 840 ${ySide} L 840 240 L ${590 + spread * 0.2} ${yAsth + 25} L ${530 + spread * 0.15} ${yAsth} L ${350 - spread * 0.15} ${yAsth} L ${290 - spread * 0.2} ${yAsth + 25} L 40 240 Z`}
             fill="#1d2c36"
             stroke="#131e25"
           />
-          <L x="150" y="348" fill="#94a3b8" size={20} weight={600} anchor="middle">
-            Stiv kontinentallitosfære
-          </L>
-          <L x="700" y="348" fill="#94a3b8" size={20} weight={600} anchor="middle">
-            Stiv kontinentallitosfære
-          </L>
 
           {/* Varm astenosfære som velter opp under den tynnede skorpen */}
           <path
@@ -1472,56 +1453,25 @@ export function ContinentalRiftDiagram() {
             opacity="0.8"
           />
 
-          <path d={`M 390 380 C 410 300, 428 ${yMelt + 20}, 436 ${yPlume + 20}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
-          <path d={`M 490 380 C 470 300, 452 ${yMelt + 20}, 444 ${yPlume + 20}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
+          <path d={`M 360 380 C 372 300, 360 ${yMelt + 36}, 348 ${yMelt}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
+          <path d={`M 500 380 C 470 300, 430 ${yMelt + 24}, 408 ${yMelt}`} fill="none" stroke="#f97316" strokeWidth="2.2" className="rift-mantle-flow" />
 
           <ellipse cx="440" cy={yMelt} rx="42" ry="25" fill="#ea580c" className="rift-magma" />
-          <polyline
-            points={`482,${yMelt} 592,${yMelt - 10}`}
-            fill="none"
-            stroke="#fef08a"
-            strokeWidth="1.5"
-          />
-          <L x="600" y={yMelt - 4} fill="#fff" size={20} weight={800}>
-            Dekompresjonssmelting
-          </L>
-          <L x="600" y={yMelt + 32} fill="#fef08a" size={20} weight={700}>
-            (P faller under tynn skorpe)
-          </L>
 
-          <path d={`M 440 ${yMelt - 25} L ${volcanoX} ${yFloor}`} stroke="#ef4444" strokeWidth="3" />
+          <path d={`M ${volcanoX} ${yMelt - 16} L ${volcanoX} ${yFloor}`} stroke="#ef4444" strokeWidth="3" />
           <polygon points={`${volcanoX - 10},${yFloor} ${volcanoX},${yFloor - 15} ${volcanoX + 10},${yFloor}`} fill="#dc2626" />
           <circle cx={volcanoX} cy={yFloor - 23} r="3.5" fill="#94a3b8" className="rift-smoke-puff" />
           <circle cx={volcanoX - 3} cy={yFloor - 29} r="4.5" fill="#64748b" className="rift-smoke-puff" style={{ animationDelay: "0.8s" }} />
 
-          <L x="600" y="-64" fill="#ef4444" size={20} weight={700}>
-            Riftvulkan
-          </L>
-          <L x="600" y="-28" fill="#ef4444" size={20} weight={700}>
-            (f.eks. Ol Doinyo Lengai)
-          </L>
-          <polyline
-            points={`${volcanoX},${yFloor - 16} 600,${yFloor - 16} 600,-12`}
-            fill="none"
-            stroke="#ef4444"
-            strokeWidth="1.5"
-          />
-
           <g>
             <Arrow d={`M ${xL - 50} 110 L ${xL - 140} 110`} marker={m.warm} color={C.warm} width={3.6} />
-            <L x={xL - 95} y="92" fill={C.warm} size={20} weight={800} anchor="middle">
-              ← Strekk
-            </L>
           </g>
           <g>
             <Arrow d={`M ${xR + 50} 110 L ${xR + 140} 110`} marker={m.warm} color={C.warm} width={3.6} />
-            <L x={xR + 95} y="92" fill={C.warm} size={20} weight={800} anchor="middle">
-              Strekk →
-            </L>
           </g>
 
           {/* Referanse til Oslofeltet. Gruppen skaleres så minste skrift blir 20 brukerenheter.
-              Siste etikett (tekstlinjen) er urørt. */}
+              Stedsnavn-linjen tegnes i etikettgruppen under, med samme transform. */}
           <g transform="translate(166, 430) scale(2.1053)">
           <g transform="translate(0, 0)">
             <rect x="0" y="0" width="260" height="60" rx="6" fill="#0c161f" stroke="#3b82f6" strokeWidth="1.2" opacity="0.95" />
@@ -1531,10 +1481,79 @@ export function ContinentalRiftDiagram() {
             <L x="12" y="36" fill="#d1d5db" size={10}>
               Fossil paleorift. Vulkanisme 250–300 Ma.
             </L>
-            <L x="12" y="50" fill="#94a3b8" size={9.5}>
-              Langesund–Mjøsa (fortsetter i Skagerrak) · Rombeporfyr
-            </L>
           </g>
+          </g>
+          <g data-etiketter="kontinental-rift">
+            <L x="118" y="22" fill="#f8fafc" size={20} weight={700} anchor="middle">
+              Horst (Riftskulder)
+            </L>
+            <L x="762" y="22" fill="#f8fafc" size={20} weight={700} anchor="middle">
+              Horst (Riftskulder)
+            </L>
+            <L x="440" y="36" fill="#f59e0b" size={20} weight={800} anchor="middle">
+              GRABEN (Innsunket riftdal)
+            </L>
+            <polyline
+              points={`440,46 440,${yFloor - 12}`}
+              fill="none"
+              stroke="#f59e0b"
+              strokeWidth="1.5"
+            />
+            <L x={lakeX + 28} y={yFloor - 14} fill="#38bdf8" size={20} weight={700} anchor="middle">
+              Riftsjø
+            </L>
+            <L x="500" y="74" fill="#38bdf8" size={20} weight={600}>
+              (Tanganyikasjøen 1470 m dyp)
+            </L>
+            <polyline
+              points={`500,83 470,83 470,${yFloor - 8}`}
+              fill="none"
+              stroke="#38bdf8"
+              strokeWidth="1.4"
+            />
+            <L x="150" y="348" fill="#94a3b8" size={20} weight={600} anchor="middle">
+              Stiv kontinentallitosfære
+            </L>
+            <L x="700" y="348" fill="#94a3b8" size={20} weight={600} anchor="middle">
+              Stiv kontinentallitosfære
+            </L>
+            <polyline
+              points={`478,${yMelt} 500,268`}
+              fill="none"
+              stroke="#fef08a"
+              strokeWidth="1.5"
+            />
+            <L x="508" y="282" fill="#fff" size={20} weight={800}>
+              Dekompresjonssmelting
+            </L>
+            <L x="508" y="316" fill="#fef08a" size={20} weight={700}>
+              (P faller under tynn skorpe)
+            </L>
+            <L x="600" y="-64" fill="#ef4444" size={20} weight={700}>
+              Riftvulkan
+            </L>
+            <L x="600" y="-28" fill="#ef4444" size={20} weight={700}>
+              (f.eks. Ol Doinyo Lengai)
+            </L>
+            <polyline
+              points={`${volcanoX},${yFloor - 16} ${volcanoX},92 292,92 292,-8 612,-8 612,-16`}
+              fill="none"
+              stroke="#ef4444"
+              strokeWidth="1.5"
+            />
+            <rect x={xL - 146} y="118" width="102" height="34" rx="4" fill="#0c161f" />
+            <L x={xL - 95} y="142" fill={C.warm} size={20} weight={800} anchor="middle">
+              ← Strekk
+            </L>
+            <rect x={xR + 44} y="118" width="102" height="34" rx="4" fill="#0c161f" />
+            <L x={xR + 95} y="142" fill={C.warm} size={20} weight={800} anchor="middle">
+              Strekk →
+            </L>
+            <g transform="translate(166, 430) scale(2.1053)">
+              <L x="12" y="50" fill="#94a3b8" size={9.5}>
+                Langesund–Mjøsa (fortsetter i Skagerrak) · Rombeporfyr
+              </L>
+            </g>
           </g>
           </g>
         </>
@@ -1671,7 +1690,7 @@ export function SubductionDiagram() {
           <L x="610" y="14" fill="#f8fafc" size={13} weight={800} anchor="middle">
             Andesfjellene (Stratovulkaner)
           </L>
-          <L x="750" y="125" fill="#d1d5db" size={12} weight={700}>
+          <L x="890" y="125" fill="#d1d5db" size={12} weight={700} anchor="end">
             Kontinentalskorpe (granittisk, 40–60 km)
           </L>
 
@@ -1695,16 +1714,16 @@ export function SubductionDiagram() {
             fill="#162732"
             stroke="#0e1a22"
           />
-          <L x="180" y="155" fill="#94a3b8" size={12} weight={700}>
+          <L x="180" y="174" fill="#94a3b8" size={12} weight={700}>
             Nazcaplaten (Oseanisk litosfære) →
           </L>
 
           {/* Mantelkilen (wedge) mellom subduksjonsplaten og kontinentet */}
           <polygon points="430,140 520,245 665,430 460,260" fill="#16261d" opacity="0.4" />
-          <L x="540" y="295" fill="#4ade80" size={12} weight={700} anchor="middle">
+          <L x="540" y="256" fill="#4ade80" size={12} weight={700} anchor="middle">
             MANTELKILEN
           </L>
-          <L x="540" y="310" fill="#a7f3d0" size={10} anchor="middle">
+          <L x="540" y="270" fill="#a7f3d0" size={10} anchor="middle">
             (Fast peridotitt)
           </L>
 
@@ -1779,10 +1798,11 @@ export function SubductionDiagram() {
           </g>
 
           <g opacity={stepOpacity(step, 2, isPlaying)} data-label="h2o-release">
-            <rect x="408" y="168" width="214" height="26" rx="4" fill="#071018" stroke="#38bdf8" strokeWidth="1" />
-            <L x="418" y="186" fill="#38bdf8" size={12} weight={800}>
+            <rect x="496" y="168" width="168" height="24" rx="4" fill="#071018" stroke="#38bdf8" strokeWidth="1" />
+            <L x="506" y="184" fill="#38bdf8" size={12} weight={800}>
               H₂O frigjøres (dehydrering)
             </L>
+            <polyline points="540,193 514,210" fill="none" stroke="#38bdf8" strokeWidth="1.2" />
           </g>
           </g>
         </>
@@ -2003,13 +2023,13 @@ export function OceanOceanSubductionDiagram() {
             <L x={arc.x + 18} y={30} fill="#f8fafc" size={12} weight={800}>
               Vulkanøybue (Japan / Marianene)
             </L>
-            <L x="78" y={plainY + 36} fill={C.cold} size={11} weight={700}>
+            <L x="78" y={plainY + 64} fill={C.cold} size={11} weight={700}>
               {oldCold ? "Eldste, kaldeste havbunn synker →" : "Yngre, varmere plate synker slakere →"}
             </L>
             <L x={Math.min(760, backarcX + 70)} y={plainY - 6} fill="#94a3b8" size={11} weight={600} anchor="middle">
               Bakbuebasseng
             </L>
-            <L x={(trenchX + arc.x) / 2 - 10} y={(floorY + arc.y) / 2 - 8} fill="#fdba74" size={12} weight={800} anchor="middle">
+            <L x={(trenchX + arc.x) / 2 - 10} y={(floorY + arc.y) / 2 - 36} fill="#fdba74" size={12} weight={800} anchor="middle">
               Mantelkile
             </L>
             <L x={trenchX + 28} y={plainY - 26} fill="#e7d7b8" size={10} weight={700} anchor="start">
@@ -2035,7 +2055,7 @@ export function OceanOceanSubductionDiagram() {
           <g opacity={stepOpacity(step, 3, isPlaying)}>
             <ellipse cx={melt.x} cy={melt.y} rx="28" ry="14" fill="#f97316" className="oos-magma" />
             <Arrow d={`M ${melt.x} ${melt.y - 12} L ${arc.x} ${seaTop - 8}`} marker={m.low} color={C.low} width={3} />
-            <L x={melt.x - 36} y={melt.y + 4} fill="#fff" size={10} weight={800} anchor="end">
+            <L x={melt.x - 58} y={melt.y + 4} fill="#fff" size={10} weight={800} anchor="end">
               Flukssmelting
             </L>
           </g>
@@ -2160,12 +2180,13 @@ export function CollisionDiagram() {
           {t > 0.82 ? (
             <path d={`M 280 ${mix(230, 188, t)} C 380 ${mix(200, 155, t)}, 470 ${mix(175, 120, t)}, 560 ${mix(160, 102, t)}`} stroke="#f59e0b" strokeWidth="3" fill="none" className="nappe-thrust" />
           ) : null}
-          <L x="320" y="130" fill="#f59e0b" size={12} weight={800}>
+          <L x="48" y="52" fill="#f59e0b" size={12} weight={800}>
             Skyvedekker (Nappes, f.eks. Jotundekket i Norge)
           </L>
-          <L x="320" y="146" fill="#fef08a" size={10}>
+          <L x="48" y="72" fill="#fef08a" size={10}>
             Overskjøvet 100–400 km inn over Baltika
           </L>
+          <polyline points="300,78 368,112" fill="none" stroke="#f59e0b" strokeWidth="1.4" />
 
           {/* KJEMPEROT (MOHO NEDTRYKT TIL 75 KM DYP) */}
           <path
@@ -2178,12 +2199,12 @@ export function CollisionDiagram() {
           <L x="470" y={mix(228, 340, t)} fill="#38bdf8" size={13} weight={800} anchor="middle">
             SKORPEROT: Moho nedtrykt til ca. {rootKm} km dyp
           </L>
-          <L x="470" y={mix(246, 358, t)} fill="#d1d5db" size={10.5} anchor="middle">
+          <L x="470" y={deep + 22} fill="#d1d5db" size={10.5} anchor="middle">
             Isostasi (Airys modell): For hver 1000 meter fjell over havet, trengs ca. 8000 meter rot under!
           </L>
 
           {/* Regional metamorfose i dypet */}
-          <g transform="translate(380, 230)">
+          <g transform="translate(708, 40)">
             <rect x="0" y="0" width="180" height="35" rx="4" fill="#1b261e" stroke="#10b981" strokeWidth="1" />
             <L x="90" y="16" fill="#6ee7b7" size={10.5} weight={700} anchor="middle">
               Intens regional metamorfose
@@ -2304,37 +2325,37 @@ export function TransformDiagram() {
           <path d="M 80 120 L 430 120 L 430 320 L 80 320 Z" fill="#2d4237" stroke="#1d2d25" strokeWidth="2" />
           <g clipPath="url(#td-clip-a)">
             <g className="td-slip-north">
-              {Array.from({ length: 16 }, (_, i) => (
-                <line key={`a-${i}`} x1="90" x2="420" y1={100 + i * 24} y2={100 + i * 24} stroke="#5eead4" strokeWidth="2" opacity="0.55" />
+              {Array.from({ length: 9 }, (_, i) => (
+                <line key={`a-${i}`} x1="90" x2="420" y1={124 + i * 24} y2={124 + i * 24} stroke="#5eead4" strokeWidth="2" opacity="0.55" />
               ))}
             </g>
           </g>
-          <L x="255" y="155" fill="#38bdf8" size={14} weight={800} anchor="middle">
+          <L x="255" y="164" fill="#38bdf8" size={14} weight={800} anchor="middle">
             PLATE A (f.eks. Stillehavsplaten)
           </L>
-          <Arrow d="M 255 270 L 255 180" marker={m.teal} color={C.teal} width={4.5} />
-          <L x="240" y="225" fill="#38bdf8" size={12} weight={700} anchor="end">
+          <Arrow d="M 255 300 L 255 188" marker={m.teal} color={C.teal} width={4.5} />
+          <L x="240" y="232" fill="#38bdf8" size={12} weight={700} anchor="end">
             Nordover ~5 cm/år ↑
           </L>
 
           <path d="M 450 80 L 800 80 L 800 280 L 450 280 Z" fill="#3d372e" stroke="#28241e" strokeWidth="2" />
           <g clipPath="url(#td-clip-b)">
             <g className="td-slip-south">
-              {Array.from({ length: 16 }, (_, i) => (
-                <line key={`b-${i}`} x1="460" x2="790" y1={60 + i * 24} y2={60 + i * 24} stroke="#fbbf24" strokeWidth="2" opacity="0.55" />
+              {Array.from({ length: 9 }, (_, i) => (
+                <line key={`b-${i}`} x1="460" x2="790" y1={84 + i * 24} y2={84 + i * 24} stroke="#fbbf24" strokeWidth="2" opacity="0.55" />
               ))}
             </g>
           </g>
-          <L x="625" y="115" fill={C.warm} size={14} weight={800} anchor="middle">
+          <L x="625" y="98" fill={C.warm} size={14} weight={800} anchor="middle">
             PLATE B (f.eks. Nordamerikanske plate)
           </L>
           <Arrow d="M 625 140 L 625 230" marker={m.warm} color={C.warm} width={4.5} />
-          <L x="640" y="185" fill={C.warm} size={12} weight={700}>
+          <L x="640" y="192" fill={C.warm} size={12} weight={700}>
             ↓ Sørover (relativt)
           </L>
 
           {/* Selve forkastningssprekken i midten (San Andreas-sporet) */}
-          <line x1="440" y1="35" x2="440" y2="355" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" />
+          <line x1="440" y1="35" x2="440" y2="318" stroke="#ef4444" strokeWidth="4" strokeDasharray="8 4" />
           <L x="440" y="24" fill="#ef4444" size={13} weight={800} anchor="middle">
             TRANSFORMFORKASTNING (San Andreas / Jan Mayen bruddsone)
           </L>
@@ -2355,10 +2376,10 @@ export function TransformDiagram() {
           <circle cx="440" cy="220" r="18" fill="#ef4444" className="td-anim-strain" />
           <circle cx="440" cy="220" r="10" fill="none" stroke="#ef4444" strokeWidth="2" className="td-anim-burst" />
           <circle cx="440" cy="220" r="6" fill="#ef4444" stroke="#fff" strokeWidth="2" />
-          <L x="465" y="215" fill="#ef4444" size={12} weight={800}>
+          <L x="465" y="300" fill="#ef4444" size={12} weight={800}>
             Friksjonslås: Spenning bygges over 100–250 år!
           </L>
-          <L x="465" y="230" fill="#fca5a5" size={10} weight={600}>
+          <L x="465" y="316" fill="#fca5a5" size={10} weight={600}>
             Plutselig bruddutløsning (jordskjelv)
           </L>
 
@@ -2519,9 +2540,6 @@ export function HotspotPlumeDiagram() {
               ))}
             </g>
           </g>
-          <L x="160" y="152" fill="#d1d5db" size={12} weight={700}>
-            Stillehavsplaten glir mot nordvest ←
-          </L>
           <Arrow d="M 450 148 L 360 148" marker={m.teal} color={C.teal} width={3.6} />
 
           {/* Aktiv vulkan blir stående over den faste plymen */}
@@ -2542,7 +2560,14 @@ export function HotspotPlumeDiagram() {
                   fill={island.fill}
                   stroke="#1f1f1a"
                 />
-                <L x={x} y={120 - island.peak - 8} fill="#cbd5e1" size={island.id === "kauai" ? 10 : 11} weight={600} anchor="middle">
+                <L
+                  x={x > plumeX - 88 ? plumeX - 74 : x}
+                  y={120 - island.peak - 8}
+                  fill="#cbd5e1"
+                  size={island.id === "kauai" ? 10 : 11}
+                  weight={600}
+                  anchor={x > plumeX - 88 ? "end" : "middle"}
+                >
                   {island.label}
                 </L>
               </g>
@@ -2560,6 +2585,9 @@ export function HotspotPlumeDiagram() {
 
           {/* Astenosfære og mantel under litosfæren */}
           <rect x="40" y="175" width="860" height="255" fill="#1b2832" />
+          <L x="360" y="204" fill="#d1d5db" size={12} weight={700}>
+            Stillehavsplaten glir mot nordvest ←
+          </L>
 
           {/* MANTELPLYM (SØYLE FRA DYPET VED x=700) */}
           <path
@@ -2602,13 +2630,13 @@ export function HotspotPlumeDiagram() {
           />
 
           <ellipse cx="700" cy="145" rx="35" ry="18" fill="#f97316" className="hp-head-glow" />
-          <L x="700" y="270" fill="#fff" size={13} weight={800} anchor="middle">
+          <L x="648" y="348" fill="#fff" size={13} weight={800} anchor="end">
             MANTELPLYM (HOTSPOT)
           </L>
-          <L x="700" y="288" fill="#fed7aa" size={11} weight={600} anchor="middle">
+          <L x="648" y="366" fill="#fed7aa" size={11} weight={600} anchor="end">
             Stasjonær termisk oppstrøm
           </L>
-          <L x="700" y="304" fill="#cbd5e1" size={10} anchor="middle">
+          <L x="648" y="382" fill="#cbd5e1" size={10} anchor="end">
             Varm oppstrøm under platen
           </L>
 
