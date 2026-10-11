@@ -107,6 +107,236 @@ export const QUIZ_ENERGI: QuizQuestion[] = [
   },
 ];
 
+export const QUIZ_SJEKK_HOYTRYKK_1: QuizQuestion[] = [
+  {
+    prompt: "Et område har 1015 hPa i sentrum og 1025 hPa rundt. Hva er det?",
+    options: [
+      "Et høytrykk, fordi trykket er over 1013 hPa",
+      "Et lavtrykk, fordi trykket er lavere enn rundt",
+      "Verken høytrykk eller lavtrykk",
+    ],
+    answer: 1,
+    explain: "Høytrykk og lavtrykk er relative. Det er trykket rundt som avgjør.",
+  },
+  {
+    prompt: "Hva betyr det at isobarene ligger tett på værkartet?",
+    options: [
+      "At trykket endrer seg mye over kort avstand, og det blåser kraftig",
+      "At det er vindstille",
+      "At det er høytrykk",
+    ],
+    answer: 0,
+    explain: "Tette isobarer betyr stor trykkgradient og sterk vind.",
+  },
+];
+
+export const QUIZ_SJEKK_HOYTRYKK_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor dannes det skyer når lufta stiger i et lavtrykk?",
+    options: [
+      "Fordi lufta får mer vanndamp i høyden",
+      "Fordi lufta varmes opp når den stiger",
+      "Fordi lufta utvider seg og avkjøles til duggpunktet",
+    ],
+    answer: 2,
+    explain: "Stigende luft avkjøles adiabatisk, om lag 1 °C per 100 m. Ved duggpunktet kondenserer vanndampen.",
+  },
+  {
+    prompt: "Hvorfor avkjøles mettet luft langsommere enn tørr luft når den stiger?",
+    options: [
+      "Fordi kondensasjon frigjør latent varme",
+      "Fordi mettet luft er tyngre",
+      "Fordi sola varmer skyene",
+    ],
+    answer: 0,
+    explain: "Når vanndamp kondenserer, frigjøres latent varme. Da faller temperaturen bare om lag 0,5 °C per 100 m.",
+  },
+];
+
+export const QUIZ_SJEKK_HOYTRYKK_3: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor løses skyene opp i et høytrykk?",
+    options: [
+      "Vinden blåser dem bort",
+      "Lufta synker, varmes opp, og den relative fuktigheten faller",
+      "Det kommer mer vanndamp inn fra havet",
+    ],
+    answer: 1,
+    explain: "Synkende luft varmes med om lag 1 °C per 100 m. Da fordamper skydråpene.",
+  },
+  {
+    prompt: "Hvorfor kan et vinterhøytrykk gi dårlig luft i en dal?",
+    options: [
+      "Fordi det blåser kraftig",
+      "Fordi det regner mye",
+      "Fordi kald luft legger seg i dalbunnen under et lokk av mildere luft",
+    ],
+    answer: 2,
+    explain: "Det kalles bakkeinversjon. Lufta blandes lite, og forurensning blir liggende.",
+  },
+];
+
+export const QUIZ_SJEKK_LOKALE_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor blåser sjøbrisen inn fra havet om dagen?",
+    options: [
+      "Fordi havet varmes raskere enn land",
+      "Fordi land varmes raskere enn havet, og lufta over land stiger",
+      "Fordi jetstrømmen trekker lufta inn",
+    ],
+    answer: 1,
+    explain: "Over land dannes et svakt termisk lavtrykk, og kjøligere luft fra havet strømmer inn ved bakken.",
+  },
+  {
+    prompt: "Hva er bergvind?",
+    options: [
+      "Vind ned dalen om natten, når fjellsidene avkjøles",
+      "Vind opp dalen om dagen",
+      "Varm vind på lesiden av et fjell",
+    ],
+    answer: 0,
+    explain: "Om natten avkjøles fjellsidene, og den kalde lufta renner ned mot dalbunnen.",
+  },
+];
+
+export const QUIZ_SJEKK_LOKALE_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor er fønvinden varm og tørr?",
+    options: [
+      "Fordi den kommer fra Afrika",
+      "Fordi den blåser over varmt hav",
+      "Fordi lufta synker på lesiden og varmes med om lag 1 °C per 100 m",
+    ],
+    answer: 2,
+    explain: "Synkende luft varmes adiabatisk, og den relative fuktigheten faller.",
+  },
+  {
+    prompt: "Hva er en temperaturinversjon?",
+    options: [
+      "At temperaturen stiger med høyden",
+      "At temperaturen faller raskt med høyden",
+      "At det er like varmt i alle høyder",
+    ],
+    answer: 0,
+    explain: "Varmere luft over virker som et lokk, og utslipp blir liggende nær bakken.",
+  },
+];
+
+export const QUIZ_SJEKK_JET_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor blåser jetstrømmen fra vest mot øst?",
+    options: [
+      "Fordi sola står opp i øst",
+      "Fordi lufta som går mot polen, beholder den østlige farten fra jordrotasjonen",
+      "Fordi havstrømmene drar lufta med seg",
+    ],
+    answer: 1,
+    explain: "Bakken roterer saktere nær polen, så lufta beveger seg mot øst i forhold til bakken. Det er corioliseffekten.",
+  },
+  {
+    prompt: "Hvor er jetstrømmen sterkest?",
+    options: [
+      "Der temperaturforskjellen mellom kald og varm luft er stor",
+      "Over ekvator",
+      "Nær bakken",
+    ],
+    answer: 0,
+    explain: "Der kald og varm luft ligger side om side, øker vinden med høyden. Det kalles termisk vind.",
+  },
+];
+
+export const QUIZ_SJEKK_JET_2: QuizQuestion[] = [
+  {
+    prompt: "Hva skjer med stormbanen i en positiv NAO-fase?",
+    options: [
+      "Den flytter seg sørover mot Middelhavet",
+      "Den forsvinner",
+      "Den blir sterkere og flytter seg nordover",
+    ],
+    answer: 2,
+    explain: "Sterkere trykkforskjell gir sterkere jet, og Nord-Europa får mer storm og nedbør.",
+  },
+  {
+    prompt: "Hvorfor flytter polarjeten seg nordover om sommeren?",
+    options: [
+      "Den følger sola og grensen mellom varm og kald luft",
+      "Den skyves av havstrømmene",
+      "Den følger fjellkjedene",
+    ],
+    answer: 0,
+    explain: "Om våren og sommeren flytter grensen mellom varm og kald luft seg mot polen, og jetstrømmen følger den.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan ikke middelvinden i en tropisk orkan sammenlignes direkte med norsk vindstyrke?",
+    options: [
+      "Fordi den måles i en annen høyde over havet",
+      "Fordi NHC bruker middelvind over ett minutt, mens norske vindstyrker bruker ti minutter",
+      "Fordi tropiske orkaner bare måles fra satellitt",
+    ],
+    answer: 1,
+    explain: "Middelvind over ett minutt blir høyere enn over ti minutter for samme vær.",
+  },
+  {
+    prompt: "Hva tar ikke Saffir-Simpson-skalaen med?",
+    options: [
+      "Vindstyrken",
+      "Kategori 1 til 5",
+      "Stormflo, flom fra regn og tornadoer",
+    ],
+    answer: 2,
+    explain: "Skalaen anslår bare skade fra vinden. Også svake orkaner kan gi dødelig stormflo.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_2: QuizQuestion[] = [
+  {
+    prompt: "Når blir skadene fra stormflo størst?",
+    options: [
+      "Når stormfloen kommer samtidig med springflo og høye bølger",
+      "Når det er nippflo",
+      "Når vinden blåser fra land",
+    ],
+    answer: 0,
+    explain: "Pålandsvind stuer vann mot kysten, og springflo og bølger kommer i tillegg.",
+  },
+  {
+    prompt: "Hvor mye hever lavere lufttrykk vannstanden?",
+    options: [
+      "Om lag én meter per hektopascal",
+      "Om lag én centimeter per hektopascal",
+      "Ingenting",
+    ],
+    answer: 1,
+    explain: "Lavere trykk gir om lag 1 cm høyere vannstand per hPa, men vinden betyr mer.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er en bombesyklon?",
+    options: [
+      "Et lavtrykk der trykket synker svært raskt, ved 60° N minst 24 hPa på 24 timer",
+      "En tornado over havet",
+      "Et høytrykk som ligger i ro",
+    ],
+    answer: 0,
+    explain: "Bombesykloner er ekstratropiske lavtrykk som forsterker seg veldig raskt.",
+  },
+  {
+    prompt: "Når forekommer polare lavtrykk?",
+    options: [
+      "Om sommeren",
+      "Hele året like ofte",
+      "I vintersesongen, hovedsakelig fra november til april",
+    ],
+    answer: 2,
+    explain: "De dannes over havområdene i Arktis når kald luft strømmer ut over varmere hav.",
+  },
+];
+
 export const QUIZ_TILPASNING: QuizQuestion[] = [
   {
     prompt: "Hva er klimatilpasning?",
@@ -1986,7 +2216,7 @@ export const QUIZ_LOKALE: QuizQuestion[] = [
       "På den nordlige halvkule dreier sjøbrisen mot høyre, fra pålandsvind til vind langs kysten. I en fjord kan den likevel fortsette rett inn. Se «Solgangsvind».",
   },
   {
-    prompt: "Hva sier leksikonet om hvorfor fønvind er varm?",
+    prompt: "Hvorfor er fønvind varm?",
     options: [
       "Luft som synker på lesiden varmes med omtrent én grad per hundre meter. Regn på losiden kan bidra, men betyr mindre enn man før trodde.",
       "Føn blir varm bare fordi det regner på lesiden.",

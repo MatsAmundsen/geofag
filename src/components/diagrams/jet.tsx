@@ -3,7 +3,7 @@ import { Arrow, C, Diagram, L } from "./svg-kit";
 /**
  * 1. JetProfileDiagram
  * Realistisk globalt tverrsnitt fra ekvator (0°) til Nordpolen (90°N).
- * Viser jordens krumning, Hadley-, Ferrel- og Polarcellen med animert sirkulasjon,
+ * Viser jordas krumning, Hadley-, Ferrel- og Polarcellen med animert sirkulasjon,
  * det dramatiske tropopausetrinnet (16 km -> 11 km -> 8 km), den skråstilte polarfrontkilen,
  * og de to jetkjernene (Subtropisk jet ved 30° og Polarfrontjet ved 60°) med
  * lysende isotak-konturer og animert vind inn i planet (vestavind).
@@ -319,7 +319,7 @@ export function ThermalWindDiagram() {
     <Diagram
       title="Fysikken bak jetstrømmen: Termisk vind og trykkflaters helling"
       heading="Termisk vind: Hvorfor temperaturforskjell ved bakken gir jetstrøm i høyden"
-      caption="Sammenhengen mellom horisontal temperaturgradient og vindøkning med høyden kalles termisk vind. Til venstre ser vi to luftsøyler: Den varme subtropiske søylen utvider seg og er tykk, mens den kalde polare søylen er komprimert og lav. Selv om trykket ved bakken er identisk (1013 hPa), faller trykket mye saktere med høyden i den varme søylen enn i den kalde. Derfor begynner isobarflatene (f.eks. 850 hPa, 500 hPa, 250 hPa) å helle brattere og brattere nedover mot polen jo høyere vi stiger. Dette setter opp en stadig kraftigere trykkgradientkraft (oransje piler) rettet mot polen. I fri atmosfære avbøyer Corioliskraften luften 90° til høyre til geostrofisk balanse: En voldsom vestavind som kulminerer nøyaktig ved tropopausen (jetkjernen)."
+      caption="Sammenhengen mellom horisontal temperaturgradient og vindøkning med høyden kalles termisk vind. Til venstre ser vi to luftsøyler: Den varme subtropiske søylen utvider seg og er tykk, mens den kalde polare søylen er komprimert og lav. Selv om trykket ved bakken er identisk (1013 hPa), faller trykket mye saktere med høyden i den varme søylen enn i den kalde. Derfor begynner isobarflatene (f.eks. 850 hPa, 500 hPa, 250 hPa) å helle brattere og brattere nedover mot polen jo høyere vi stiger. Dette setter opp en stadig kraftigere trykkgradientkraft (oransje piler) rettet mot polen. I fri atmosfære avbøyer Corioliskraften lufta 90° til høyre til geostrofisk balanse: En voldsom vestavind som kulminerer nøyaktig ved tropopausen (jetkjernen)."
       viewBox="0 0 940 480"
       wide
     >
@@ -513,7 +513,7 @@ export function JetFormsDiagram() {
     <Diagram
       title="Zonal vs. meridional jetstrøm: Rossby-bølger og norsk vær"
       heading="Zonal vs. meridional strøm: Hvorfor jetens form avgjør ukens vær"
-      caption="Formen på jetstrømmen avgjør om Norge får uker med mildt vestlandsregn eller langvarige ekstremperioder. Kart A (venstre) viser en zonal strøm: Jetstrømmen blåser i en stram, rettlinjet korridor fra vest mot øst. De atlantiske lavtrykkene raser hurtig forbi, og været skifter raskt med mild, fuktig luft. Kart B (høyre) viser en meridional strøm med store Rossby-bølger. I en bølgedal (tråg) strømmer kald arktisk luft sørover over Norge, og det blir kaldere enn normalt. I en bølgetopp (rygg) pumpes varm luft nordover, luften synker og danner stabilt klarvær eller hetebølger. Rossby-bølgene beveger seg svært langsomt, og været kan 'låse seg' i ukevis."
+      caption="Formen på jetstrømmen avgjør om Norge får uker med mildt vestlandsregn eller langvarige ekstremperioder. Kart A (venstre) viser en zonal strøm: Jetstrømmen blåser i en stram, rettlinjet korridor fra vest mot øst. De atlantiske lavtrykkene raser hurtig forbi, og været skifter raskt med mild, fuktig luft. Kart B (høyre) viser en meridional strøm med store Rossby-bølger. I en bølgedal (tråg) strømmer kald arktisk luft sørover over Norge, og det blir kaldere enn normalt. I en bølgetopp (rygg) pumpes varm luft nordover, lufta synker og danner stabilt klarvær eller hetebølger. Rossby-bølgene beveger seg svært langsomt, og været kan 'låse seg' i ukevis."
       viewBox="0 0 940 460"
       wide
     >
@@ -739,7 +739,7 @@ export function JetStreakDiagram() {
     <Diagram
       title="Jetkjernen og 4-kvadrant-modellen: Slik skaper jetstrømmen lavtrykk"
       heading="4-kvadrant-modellen: Hvorfor venstre utløp suger opp luft og lager storm"
-      caption="Inne i jetstrømmen finnes lokale soner med ekstra sterk vind, kalt jetkjerner (jet streaks). Når luften raser inn i kjernen (innløpet), må den akselerere, og når den forlater den (utløpet), må den bremse opp. Denne fartsforandringen skaper ubalanse mellom trykkgradientkraften og Corioliskraften, slik at luften tvinges på tvers av jeten (aldersofisk vind). Resultatet er 4 distinkte kvadranter: I venstre utløp (nord for kjernens utløp) og høyre innløp oppstår kraftig divergens i høyden (luften spres fra hverandre). Dette fjerner luftmasse fra toppen av søylen! For å kompensere må luft suges opp fra bakken, lufttrykket faller, og det dannes et roterende lavtrykk (syklon) med skydannelse og kraftig nedbør."
+      caption="Inne i jetstrømmen finnes lokale soner med ekstra sterk vind, kalt jetkjerner (jet streaks). Når lufta raser inn i kjernen (innløpet), må den akselerere, og når den forlater den (utløpet), må den bremse opp. Denne fartsforandringen skaper ubalanse mellom trykkgradientkraften og Corioliskraften, slik at lufta tvinges på tvers av jeten (aldersofisk vind). Resultatet er 4 distinkte kvadranter: I venstre utløp (nord for kjernens utløp) og høyre innløp oppstår kraftig divergens i høyden (lufta spres fra hverandre). Dette fjerner luftmasse fra toppen av søylen! For å kompensere må luft suges opp fra bakken, lufttrykket faller, og det dannes et roterende lavtrykk (syklon) med skydannelse og kraftig nedbør."
       viewBox="0 0 940 520"
       wide
     >
@@ -926,7 +926,7 @@ export function JetBlockingDiagram() {
     <Diagram
       title="Atmosfærisk blokkering: Omega-blokk over Skandinavia"
       heading="Når været låser seg: Omega-blokkering over Skandinavia"
-      caption="En mektig høytrykksrygg har vokst seg så kraftig over Skandinavia at den bryter opp det vanlige vestavindsbeltet. Jetstrømmen tvinges til å dele seg i to adskilte grener rundt høytrykket, i et mønster som ligner den greske bokstaven Omega (Ω). Under det massive blokkeringshøytrykket (H) synker luften (subsidens), skyene fordamper, og været står bom fast i ukevis: Om sommeren fører dette til brennende hetebølger, ekstrem tørke og skogbrannfare (som i 2018). Om vinteren gir det klarvær, massiv utstråling og bitende kuldeinversjon i innlandet. Samtidig blir lavtrykkene tvunget utenom eller avsnørt på flankene (cut-off lows), noe som skaper uker med sammenhengende flomregn i Sør-Europa eller over Atlanteren."
+      caption="En mektig høytrykksrygg har vokst seg så kraftig over Skandinavia at den bryter opp det vanlige vestavindsbeltet. Jetstrømmen tvinges til å dele seg i to adskilte grener rundt høytrykket, i et mønster som ligner den greske bokstaven Omega (Ω). Under det massive blokkeringshøytrykket (H) synker lufta (subsidens), skyene fordamper, og været står bom fast i ukevis: Om sommeren fører dette til brennende hetebølger, ekstrem tørke og skogbrannfare (som i 2018). Om vinteren gir det klarvær, massiv utstråling og bitende kuldeinversjon i innlandet. Samtidig blir lavtrykkene tvunget utenom eller avsnørt på flankene (cut-off lows), noe som skaper uker med sammenhengende flomregn i Sør-Europa eller over Atlanteren."
       viewBox="0 0 940 460"
       wide
     >
