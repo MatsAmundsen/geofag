@@ -338,9 +338,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «termisk direkte»?">
       <p>
         Termisk direkte vil si at varm luft stiger og kald luft synker. Slik er Hadley-cellen og
-        polarcellen. Ferrel-cellen er termisk indirekte: den drives av friksjon mellom de to andre,
-        ikke av varmekontrasten mellom ekvator og polene. Kjøligere luft tvinges opp nær 50–60°, og
-        varmere luft synker nær 30° (NOAA, u.å.-a).
+        polarcellen. Ferrel-cellen er termisk indirekte: den drives ikke av oppvarming, men holdes i gang av de
+        vandrende lavtrykkene og høytrykkene ved midlere breddegrader. Kjøligere luft tvinges opp nær 50–60°, og
+        varmere luft synker nær 30° (NOAA, u.å.-a; AMS, u.å.).
       </p>
     </Callout>
   ),
