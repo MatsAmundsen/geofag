@@ -54,7 +54,7 @@ describe("splitChapterByH2", () => {
       [
         "Jordas oppbygning",
         "Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»",
-        "Hva driver platene?",
+        "Platedrift - hva er det som driver platene?",
         "Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer",
         "Plategrensene: Tre relative bevegelser, seks geologiske miljøer",
         "Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde",

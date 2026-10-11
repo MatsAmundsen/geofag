@@ -46,14 +46,16 @@ describe("injectPosterWidgets", () => {
     for (const id of POSTER_WIDGET_IDS) {
       assert.equal(ids.has(id), true, `missing widget ${id}`);
     }
-    assert.equal(ids.size, POSTER_WIDGET_IDS.length);
+    // Redaktørens tekst har «setter igang platedrift», så SmeltingUnderTynnPlate kommer i tillegg.
+    assert.equal(ids.has("SmeltingUnderTynnPlate"), true);
+    assert.equal(ids.size, POSTER_WIDGET_IDS.length + 1);
   });
 
   it("does not duplicate widgets that are already fenced", () => {
     const once = injectPosterWidgets(chapterMarkdown);
     const twice = injectPosterWidgets(once);
     assert.deepEqual([...listedWidgetIds(twice)].sort(), [...listedWidgetIds(once)].sort());
-    assert.equal(listedWidgetIds(twice).size, POSTER_WIDGET_IDS.length);
+    assert.equal(listedWidgetIds(twice).size, POSTER_WIDGET_IDS.length + 1);
   });
 
   it("keeps an explicit widget where the author placed it", () => {
@@ -924,6 +926,7 @@ describe("smelting under tynn plate", () => {
   });
 
   it("does not place the figure when the sentence is missing", () => {
-    assert.equal(count(injectPosterWidgets(chapterMarkdown), "SmeltingUnderTynnPlate"), 0);
+    const withoutSentence = chapterMarkdown.replace(/setter i ?gang platedrift\./g, "");
+    assert.equal(count(injectPosterWidgets(withoutSentence), "SmeltingUnderTynnPlate"), 0);
   });
 });

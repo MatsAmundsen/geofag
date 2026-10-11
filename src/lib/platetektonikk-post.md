@@ -60,9 +60,12 @@ Trykket er 3,3–3,6 millioner atmosfærer (Fowler, 2005, s. 114). Det holder je
 
 Etter hvert som jorda avkjøles, vokser den faste indre kjernen. Den vokser med noen millimeter i året (Marshak, 2019, s. 50).
 
+---
+---
 ### Litosfæren og astenosfæren
 
 I tillegg til lagene etter kjemi deler vi jordas indre inn etter hvordan bergartene oppfører seg: litosfæren, astenosfæren og mesosfæren. Mesosfæren tas ikke med her.
+
 
 #### Litosfæren
 
@@ -74,7 +77,10 @@ Samme plate kan bære både kontinentalskorpe og havbunnsskorpe.
 
 **Havbunnsskorpe** er tynn, bare 5–8 km. Den består av mafiske magmatiske bergarter som basalt, gabbro, diabas og doleritt. Disse har mye jern og magnesium. Tettheten er høyere, om lag 3,0 g/cm³. Derfor kan havbunnslitosfære synke ned i mantelen ved konvergerende plategrenser.
 
-Ny havbunn dannes ved divergerende plategrenser, ofte midthavsrygger. Ved konvergerende grenser synker havbunnslitosfæren ned i mantelen. Derfor blir havbunn sjelden eldre enn ca. 180–200 millioner år.
+Ny havbunn dannes ved divergerende plategrenser, ofte midthavsrygger. Ved konvergerende grenser synker havbunnslitosfæren ned i mantelen. ***Derfor blir havbunn sjelden eldre enn ca. 180–200 millioner år.***
+
+---
+---
 
 #### Astenosfæren (ca. 100–350 km)
 
@@ -82,6 +88,8 @@ Astenosfæren er det seige laget litosfæren glir på. Den består av fast silik
 
 Over millioner av år deformeres astenosfæren seigt. Litosfæreplatene kan gli oppå den.
 
+---
+---
 ## Oppdagelsen og bevisene for platedrift: Fra Wegeners puslespill til den magnetiske «båndopptakeren»
 
 I dag er platetektonikk den samlende forklaringen på hvordan jordskorpen beveger seg. Fram til midten av 1960-tallet ble ideen om bevegelige kontinenter likevel avvist av de fleste etablerte geologer (Hess, 1962; Wegener, 1912).
@@ -89,7 +97,6 @@ I dag er platetektonikk den samlende forklaringen på hvordan jordskorpen bevege
 ### Alfred Wegener og kontinentaldrift (1912)
 
 Den tyske meteorologen og geofysikeren Alfred Wegener la i 1912 fram teorien om kontinentaldrift (Wegener, 1912). Han observerte at kontinentene på hver side av Atlanterhavet passet sammen som brikker i et puslespill, særlig kystlinjene til Sør-Amerika og Afrika.
-
 Wegener samlet inn flere typer bevis.
 
 **Fossilfunn**
@@ -126,11 +133,40 @@ Når havbunnen sprer seg til begge sider, fryser havbunnsskorpen inn et symmetri
 
 ![Divergerende grense eksponert på tørt land: Þingvellir på Island](/images/fig-spredring.jpg)
 
-## Hva driver platene?
+## Platedrift - hva er det som driver platene?
 
-Før vi går inn på plategrensene, må vi forstå hva som driver platene.
+Før vi kan gå inn på platedrift, er det noen ting vi må få på plass først. 
 
-Platebevegelsene styres av et samspill mellom fire krefter. Tyngdekraft og varme virker sammen.
+1. Alt starter med konveksjonsstrømmer i jordens indre
+2.	Bergarter smelter i mantelen på grunn av redusert trykk 
+
+Disse prosessene må være tilstedet for å få platedrift. 
+
+
+**Forstadiet til platedrift og dannelsen av divergerende platedgrense** 
+
+Varmen fra jorden kjerne, varmer opp mantelbergartene til temperaturer som ville vanligvis ha smeltet de fleste av de. Men på grunn av det høye trykket, så forblir de faste bergarter. Varmen gjør at bergartene blir plastiske (kan får flytende egenskaper) og setter igang langsomme konveksjonsstrømmer fra jordens indre og opp til øvre del av mantelen, før den synker ned igjen. 
+
+Innad i hver enkelt plate, har vi varierende tykkelse. Dette betyr at noen steder, er platen tynner eller tykkere. Der platen er tynnere er trykket litt lavere, ettersom at man er nærmere overflaten. 
+Dette fører til at trykket blir akkurat lavt nok til at mantelbergartene kan begynne å smelte. Magmaen som dannes her vil først danne et magmakammer under platen, før den gradvis smelter seg opp gjennom platen og opp til ovefalten. **Vi har dermed fått en divergerende plategrense**
+
+Denne prosessen er det som setter igang platedrift. 
+
+
+
+---
+---
+
+Etter at smelteprosessen av mantelbergarter og oppsprekning av platen har funnet sted, så oppstår det det nye krefter som beveger platene. 
+Platebevegelsene styres av et samspill mellom fire krefter:
+- Platetrekk 
+- Ryggskyv
+- Manteldrag 
+- Trench suction (Grøfte sug)
+
+
+----
+----
 
 ### Platetrekk (slab pull)
 
@@ -336,7 +372,7 @@ Norge ligger i dag midt inne på den eurasiske platen, tusenvis av kilometer fra
 
 Kaledonidene ble til da landområder i dagens Europa kolliderte med Amerika og Grønland. Fjellkjededannelsen pågikk gjennom ordovicium, silur og devon, for 400–500 millioner år siden (NGU, u.å.-a). Store bergflak ble skjøvet som skyvedekker gjennom det som i dag er Skandinavia. Bergartene ble omdannet, blant annet til gneis. Fjellene vi går i, er den eroderte roten av den kjeden, ikke fjell som istiden har bygd.
 
-Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp (NGU, u.å.-a). På land strekker Oslofeltet seg fra Langesund til Mjøsa. Riftsystemet fortsetter ut i Skagerrak. I perm ble det en riftdal med strekk, store forkastninger og vulkaner. I Oslofeltet har bergartene spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. De er ikke de yngste bergartene på land i Norge. På Andøya ligger sedimenter fra midtre og øvre jura og nedre kritt, de eneste bergartene av mesozoisk alder på land i landet (NGU, 2016). I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
+Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 310 millioner år siden, mot slutten av karbon, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm ble det en riftdal med strekk, store forkastninger og vulkaner. I Oslofeltet har bergartene spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. De er ikke de yngste bergartene på land i Norge. På Andøya ligger sedimenter fra midtre og øvre jura og nedre kritt, de eneste bergartene av mesozoisk alder på land i landet (NGU, 2016). I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
 
 Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsisen presset skorpen ned. Da isen smeltet, hevet landet seg. Marin grense, det høyeste havnivået etter siste istid, ligger i dag fra 0 til 220 m over havet, avhengig av sted (NGU, u.å.-b). Mange fjorder og daler følger også om lag 200 millioner år gamle forkastningssoner fra da Atlanteren åpnet seg.
 
