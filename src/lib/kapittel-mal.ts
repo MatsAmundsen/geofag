@@ -41,6 +41,11 @@ import {
   QUIZ_SJEKK_BERGARTER_2,
   QUIZ_SJEKK_BERGARTER_3,
   QUIZ_SJEKK_BERGARTER_4,
+  QUIZ_SJEKK_VULKANER_1,
+  QUIZ_SJEKK_VULKANER_2,
+  QUIZ_SJEKK_VULKANER_3,
+  QUIZ_SJEKK_VULKANER_4,
+  QUIZ_SJEKK_VULKANER_5,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -76,6 +81,11 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Bergarter2: QUIZ_SJEKK_BERGARTER_2,
   Bergarter3: QUIZ_SJEKK_BERGARTER_3,
   Bergarter4: QUIZ_SJEKK_BERGARTER_4,
+  Vulkaner1: QUIZ_SJEKK_VULKANER_1,
+  Vulkaner2: QUIZ_SJEKK_VULKANER_2,
+  Vulkaner3: QUIZ_SJEKK_VULKANER_3,
+  Vulkaner4: QUIZ_SJEKK_VULKANER_4,
+  Vulkaner5: QUIZ_SJEKK_VULKANER_5,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -127,6 +137,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Forvitring bryter ned berget på stedet, mekanisk eller kjemisk. Erosjon flytter materialet bort.",
     "Magmatiske bergarter størkner fra magma, som gabbro, larvikitt og rombeporfyr. Sedimentære bergarter er forsteinet sediment, som sandstein og kalkstein. Metamorfe bergarter er omdannet i fast tilstand, som fyllitt, gneis og grønnstein.",
     "Bergartssyklusen er en modell med flere veier. Gneisen i grunnfjellet har vært metamorf i over 900 millioner år og har aldri gått hele runden.",
+  ],
+  Vulkaner: [
+    "Magma dannes når mantelberg smelter delvis, ved dekompresjon under midthavsrygger og ved flukssmelting over subduksjonssoner. Mer SiO₂ gir seigere magma som holder på gassen og gir mer eksplosive utbrudd.",
+    "Skjoldvulkaner bygges av tyntflytende basalt, stratovulkaner av vekslende lag av seig lava og tefra, og sinderkjegler av slagg fra korte utbrudd. En kaldera er en innsynkning over et tømt magmakammer.",
+    "VEI-skalaen går fra 0 til 8, og hvert trinn over VEI 1 betyr omtrent ti ganger mer tefra. Eyjafjallajökull 2010 (VEI 4) ble eksplosivt fordi magma møtte en isbre, mens Fagradalsfjall har rolige basaltutbrudd.",
+    "De største farene er pyroklastiske strømmer, laharer og aske. Store utbrudd kan gi vulkansk vinter, slik Tambora gjorde i 1816 og Pinatubo i 1991.",
+    "Overvåking av skjelv, bakkeheving, gass og varme gir varsel. Farekart, evakuering, sterke tak og lavabarrierer kan begrense skadene, men bare hvis varslene blir fulgt opp, slik Pinatubo og Armero viser.",
+    "Beerenberg på Jan Mayen, 2272 meter over havet, er Norges eneste aktive vulkan. Den ligger på spredningsryggen i Norskehavet, og det siste utbruddet var i 1985.",
   ],
 };
 

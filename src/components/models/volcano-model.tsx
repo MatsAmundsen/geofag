@@ -48,7 +48,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
     if (sio2 < 57) return { label: "Lav til moderat", class: "text-teal-400", val: 100 };
     if (sio2 < 63) return { label: "Moderat til høy (andesittisk)", class: "text-amber-400", val: 10000 };
     if (sio2 < 70) return { label: "Høy (dasittisk, seig)", class: "text-orange-400", val: 1000000 };
-    return { label: "Ekstremt høy (ryolittisk, propeldannende)", class: "text-rose-400", val: 100000000 };
+    return { label: "Ekstremt høy (ryolittisk, seig)", class: "text-rose-400", val: 100000000 };
   };
 
   const viscosityInfo = calcViscosity();
@@ -81,7 +81,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
         type: "Sub-pliniansk / Pliniansk (f.eks. Vesuv, St. Helens, Eyjafjallajökull)",
         vei: "VEI 4–5",
         desc: "Vedvarende gassutblåsning med konvektiv askesøyle inn i stratosfæren. Seig magma fragmenteres til pimpstein og fin aske.",
-        hazards: "Pyroklastiske tetthetsstrømmer i 200–700 km/t, askenedfall og laharer.",
+        hazards: "Pyroklastiske tetthetsstrømmer, ofte raskere enn 80 km/t, askenedfall og laharer.",
         color: "#ef4444",
       };
     } else {
@@ -1367,7 +1367,7 @@ export function VolcanoModel({ showSeismicModes = false }: { showSeismicModes?: 
               </p>
               <p>
                 <strong className="text-foreground">Evakuering og livredning:</strong> Ved Pinatubo (1991) reddet tidlig varsling basert på
-                seismikk og SO₂ titusenvis av menneskeliv. Ved Reykjanes på Island (2021–2024) ga bakkedeformasjon tid til å evakuere Grindavík og bygge beskyttelsesvoller.
+                seismikk og SO₂ minst 5000 menneskeliv (USGS). Ved Reykjanes på Island (2021–2025) ga bakkedeformasjon tid til å evakuere Grindavík og bygge beskyttelsesvoller.
               </p>
             </div>
           ) : scenario === "tsunami_sim" ? (
