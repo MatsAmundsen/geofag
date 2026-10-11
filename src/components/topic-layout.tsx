@@ -33,7 +33,6 @@ type TopicLink = { to: string; label: string; params?: Record<string, string> };
  */
 const CODED_G2_PATHS = new Set([
   "/tema/paleoklima",
-  "/tema/milankovitch",
   "/tema/tilpasning",
   "/tema/klima",
   "/tema/klima/nao",

@@ -3576,12 +3576,6 @@ export const KILDER = {
       href: "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
     },
     {
-      prefix: "National Aeronautics and Space Administration. (2000). ",
-      italic: "Milankovitch cycles and glaciation",
-      suffix: ".",
-      href: "https://earthobservatory.nasa.gov/features/Milankovitch",
-    },
-    {
       prefix:
         "Hays, J. D., Imbrie, J., & Shackleton, N. J. (1976). Variations in the Earth’s orbit: Pacemaker of the ice ages. ",
       italic: "Science, 194",
@@ -3636,10 +3630,55 @@ export const KILDER = {
     },
     {
       prefix:
-        "Parrenin, F. mfl. (2013). Synchronous change of atmospheric CO₂ and Antarctic temperature during the last deglacial warming. ",
+        "Parrenin, F., Masson-Delmotte, V., Köhler, P., Raynaud, D., Paillard, D., Schwander, J., Barbante, C., Landais, A., Wegner, A., & Jouzel, J. (2013). Synchronous change of atmospheric CO₂ and Antarctic temperature during the last deglacial warming. ",
       italic: "Science, 339",
-      suffix: ", 1060–1063.",
+      suffix: "(6123), 1060–1063.",
       href: "https://doi.org/10.1126/science.1226368",
+    },
+    {
+      prefix:
+        "Laskar, J., Robutel, P., Joutel, F., Gastineau, M., Correia, A. C. M., & Levrard, B. (2004). A long-term numerical solution for the insolation quantities of the Earth. ",
+      italic: "Astronomy & Astrophysics, 428",
+      suffix: "(1), 261–285.",
+      href: "https://doi.org/10.1051/0004-6361:20041335",
+    },
+    {
+      prefix: "Mangerud, J. (2026, 14. april). Istid. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/istid",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
+      italic: "Kjerneelementer",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/om-faget/kjerneelementer",
+    },
+    {
+      prefix: "Utdanningsdirektoratet [Udir]. (u.å.-b). ",
+      italic: "Kompetansemål etter geofag 2",
+      suffix: ".",
+      href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "Stylegar, F.-A. H. (2024, 26. november). Nordsjøfastlandet. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/Nordsjøfastlandet",
+    },
+    {
+      prefix:
+        "Tierney, J. E., Zhu, J., King, J., Malevich, S. B., Hakim, G. J., & Poulsen, C. J. (2020). Glacial cooling and climate sensitivity revisited. ",
+      italic: "Nature, 584",
+      suffix: "(7822), 569–573.",
+      href: "https://doi.org/10.1038/s41586-020-2617-x",
+    },
+    {
+      prefix:
+        "Tzedakis, P. C., Crucifix, M., Mitsui, T., & Wolff, E. W. (2017). A simple rule to determine which insolation cycles lead to interglacials. ",
+      italic: "Nature, 542",
+      suffix: "(7642), 427–432.",
+      href: "https://doi.org/10.1038/nature21364",
     },
   ],
   vaerkatastrofer: [

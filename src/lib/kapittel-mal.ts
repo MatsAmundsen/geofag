@@ -119,6 +119,10 @@ import {
   QUIZ_SJEKK_AMOC_4,
   QUIZ_SJEKK_AMOC_5,
   QUIZ_SJEKK_AMOC_6,
+  QUIZ_SJEKK_MILANKOVITCH_1,
+  QUIZ_SJEKK_MILANKOVITCH_2,
+  QUIZ_SJEKK_MILANKOVITCH_3,
+  QUIZ_SJEKK_MILANKOVITCH_4,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -232,6 +236,10 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Amoc4: QUIZ_SJEKK_AMOC_4,
   Amoc5: QUIZ_SJEKK_AMOC_5,
   Amoc6: QUIZ_SJEKK_AMOC_6,
+  Milankovitch1: QUIZ_SJEKK_MILANKOVITCH_1,
+  Milankovitch2: QUIZ_SJEKK_MILANKOVITCH_2,
+  Milankovitch3: QUIZ_SJEKK_MILANKOVITCH_3,
+  Milankovitch4: QUIZ_SJEKK_MILANKOVITCH_4,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -423,6 +431,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Oppvarming og mer ferskvann fra Grønland, nedbør og elver gjør overflaten lettere og kan svekke AMOC. Stommels modell viser at AMOC kan ha to stabile tilstander, med vippepunkt og hysterese. Modellen sier ikke når et vippepunkt kan nås.",
     "Yngre dryas og Dansgaard-Oeschger-hendelsene viser at AMOC har endret seg brått før. RAPID har målt AMOC siden 2004, men serien er for kort til å vise en sikker trend.",
     "IPCC venter at AMOC svært sannsynlig svekkes i dette hundreåret, men mener med middels sikkerhet at den ikke bryter brått sammen før 2100. En svekket AMOC demper oppvarmingen i Nord-Atlanteren og kan gi tørrere Europa, høyere havnivå i USA og et regnbelte som flytter seg sørover.",
+  ],
+  Milankovitch: [
+    "Milankovitch-syklusene er tre svingninger i jordbanen og jordaksen: eksentrisitet (ca. 100 000 og 400 000 år), helning (ca. 41 000 år) og presesjon (ca. 19 000 og 23 000 år).",
+    "Svingningene fordeler innstrålingen mellom årstider og breddegrader. Sommersola på 65°N avgjør om snøen overlever og isen vokser.",
+    "Jordbanen setter i gang endringen, mens is-albedo-tilbakekoblingen og CO₂ forsterker den og gjør den global.",
+    "En istid krever et kaldt jordsystem, land på høye breddegrader, nok nedbør og svak sommersol på 65°N.",
+    "Den siste istiden, Weichsel, varte fra ca. 117 000 til 11 700 år siden. Nå er vi i mellomistiden holocen.",
+    "Istidene har formet U-daler, fjorder, morener som Raet og marin grense i Norge. Oppvarmingen siden 1850 skyldes CO₂, ikke jordbanen.",
   ],
 };
 
