@@ -107,7 +107,7 @@ export function FeltmetodeFigur({
         { text: "N", x: n1(north[1][0]), y: n1(north[1][1] - 10), color: C.fg, anchor: "middle", size: 15 },
       ]
     : [
-        { text: "Kjent lengde", x: 320, y: 120, at: [320, BANK_TOP - 6], color: C.fg, anchor: "middle", badge: [320, 128] },
+        { text: "Kjent lengde", x: 320, y: 92, at: [320, BANK_TOP - 18], color: C.fg, anchor: "middle", badge: [320, 96] },
         { text: "Bredde", x: 820, y: 120, at: [800, 162], color: "#bfe4ee", anchor: "middle", badge: [800, 136] },
         { text: "Dybde", x: 930, y: 300, at: [860, 250], color: "#bfe4ee", anchor: "end", badge: [900, 270] },
       ];
