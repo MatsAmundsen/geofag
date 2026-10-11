@@ -3969,3 +3969,72 @@ export const QUIZ_SJEKK_KRYO_3: QuizQuestion[] = [
     explain: "Mindre snø og kortere sesong gir færre skred i lavlandet. Høyere opp ventes flere (Norsk klimaservicesenter).",
   },
 ];
+
+export const QUIZ_SJEKK_CORIOLIS_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor ser ballen på karusellen ut til å svinge?",
+    options: [
+      "Fordi en kraft skyver den sidelengs",
+      "Fordi den som ser på, roterer med karusellen",
+      "Fordi ballen snurrer",
+    ],
+    answer: 1,
+    explain: "Sett utenfra går ballen rett. Avbøyningen kommer av at ståstedet roterer.",
+  },
+  {
+    prompt: "Hvilken vei avbøyes luft som blåser nordover på den nordlige halvkule?",
+    options: [
+      "Mot venstre",
+      "Den avbøyes ikke",
+      "Mot høyre",
+    ],
+    answer: 2,
+    explain: "Lufta har med seg større fart østover enn bakken lenger nord, og det blir en høyresving.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_2: QuizQuestion[] = [
+  {
+    prompt: "Hvor er corioliseffekten null?",
+    options: [
+      "Ved ekvator",
+      "Ved polene",
+      "Ved 60° bredde",
+    ],
+    answer: 0,
+    explain: "Coriolisparameteren er null ved ekvator og øker mot polene. Derfor dannes ikke orkaner helt ved ekvator.",
+  },
+  {
+    prompt: "Hvorfor blåser ikke vinden nær bakken langs isobarene?",
+    options: [
+      "Fordi corioliskraften er sterkest der",
+      "Fordi friksjonen bremser vinden, særlig over land",
+      "Fordi trykket er likt overalt",
+    ],
+    answer: 1,
+    explain: "Over havet er vinkelen 0–20° og over land 20–40°, fordi friksjonen er større over land.",
+  },
+];
+
+export const QUIZ_SJEKK_CORIOLIS_3: QuizQuestion[] = [
+  {
+    prompt: "Hvilken vei går ekmantransporten på den nordlige halvkule?",
+    options: [
+      "Med vinden",
+      "Mot vinden",
+      "Til høyre for vinden",
+    ],
+    answer: 2,
+    explain: "Overflatelaget transporteres på tvers av vinden, til høyre i nord.",
+  },
+  {
+    prompt: "Hvorfor kan en nordavind langs en vestkyst gi oppvelling?",
+    options: [
+      "Ekmantransporten skyver overflatevannet ut fra kysten, og dypvann kommer opp",
+      "Nordavinden er varm",
+      "Tidevannet blir større",
+    ],
+    answer: 0,
+    explain: "Vannet som kommer opp, er rikt på næringsstoffer, og områdene har ofte rike fiskerier.",
+  },
+];

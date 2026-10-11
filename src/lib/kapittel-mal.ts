@@ -78,6 +78,9 @@ import {
   QUIZ_SJEKK_KRYO_1,
   QUIZ_SJEKK_KRYO_2,
   QUIZ_SJEKK_KRYO_3,
+  QUIZ_SJEKK_CORIOLIS_1,
+  QUIZ_SJEKK_CORIOLIS_2,
+  QUIZ_SJEKK_CORIOLIS_3,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -150,6 +153,9 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Kryo1: QUIZ_SJEKK_KRYO_1,
   Kryo2: QUIZ_SJEKK_KRYO_2,
   Kryo3: QUIZ_SJEKK_KRYO_3,
+  Coriolis1: QUIZ_SJEKK_CORIOLIS_1,
+  Coriolis2: QUIZ_SJEKK_CORIOLIS_2,
+  Coriolis3: QUIZ_SJEKK_CORIOLIS_3,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -280,6 +286,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Permafrost er bakke som holder 0 °C eller kaldere i to sammenhengende år. Når det aktive laget blir dypere, blir bakken mer ustabil.",
     "Septemberminimum for arktisk havis har krympet med ca. 12 prosent per tiår siden 1979. Mindre is gir mer mørkt hav og forsterker oppvarmingen.",
     "NVE varsler snøskredfare for 24 regioner. Med klimaendringene ventes færre snøskred i lavlandet og flere høyt til fjells.",
+  ],
+  Coriolis: [
+    "Corioliseffekten er avbøyningen vi ser fordi jorda roterer. Den er ingen kraft som setter noe i gang, men en virkning av at vi står på en roterende klode.",
+    "På den nordlige halvkule avbøyes bevegelser mot høyre og på den sørlige mot venstre. Ved ekvator er det ingen avbøyning.",
+    "Trykkforskjellen setter vinden i gang, og corioliseffekten endrer retningen. Derfor roterer lufta mot klokka rundt et lavtrykk i nord.",
+    "I havet gir avbøyningen ekmanspiralen og ekmantransporten til høyre for vinden. Langs vestkyster kan det gi oppvelling av næringsrikt dypvann.",
+    "De store havvirvlene går med klokka på den nordlige halvkule og mot klokka på den sørlige.",
   ],
 };
 
