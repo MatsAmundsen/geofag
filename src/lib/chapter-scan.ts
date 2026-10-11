@@ -435,6 +435,13 @@ const SECTION_META: SectionMeta[] = [
     label: "Presentasjon",
     subtitle: "Resultatene skal vise data og tolkning",
   },
+  { match: /^hvordan bygges en numerisk modell/i, label: "Oppbygging", subtitle: "Likninger, rutenett og tidssteg" },
+  { match: /^hva er parameterisering/i, label: "Parameterisering", subtitle: "Skyer, stråling og turbulens" },
+  { match: /^hvordan får modellen riktig start/i, label: "Start", subtitle: "Dataassimilering og ensembler" },
+  { match: /i værvarslingen\??$/i, label: "Vær", subtitle: "ECMWF, MEPS og AROME-Arctic" },
+  { match: /i havmodelleringen\??$/i, label: "Hav", subtitle: "Norkyst" },
+  { match: /i klimaforskningen\??$/i, label: "Klima", subtitle: "NorESM" },
+  { match: /^hvordan videreutvikles/i, label: "Utvikling", subtitle: "Fra Bjerknes til AIFS" },
   {
     match: /^sammendrag/i,
     label: "Sammendrag",

@@ -1,5 +1,7 @@
 import type { JSX } from "react";
 import {
+  AssimilationDiagram,
+  EnsembleRibbonDiagram,
   BoundaryOverviewDiagram,
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
@@ -723,12 +725,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     ModellForklaring: () => (
     <Callout title="Hva betyr «numerisk modell»?">
       <p>
-        En numerisk modell er et vær- eller jordsystemvarsel som regnes fram på en datamaskin.
-        ECMWF lager globale varsler fire ganger i døgnet. Et ensemble er mange slike forløp, og
-        sammen viser de hvor sannsynlige ulike utfall er (ECMWF, u.å.-a; u.å.-b).
+        En numerisk modell regner ut grunnlikningene for lufta eller havet med tall, steg for steg
+        i tid, i et rutenett. Værmodellen MEPS har ruter på 2,5 km, havmodellen Norkyst ca. 800
+        meter, og klimamodellen NorESM2 ca. 1–2 grader (MET, u.å.-a; Christensen mfl., 2026;
+        NorESM-konsortiet, u.å.).
       </p>
     </Callout>
   ),
+    ModellAssimilering: () => <AssimilationDiagram />,
+    ModellEnsemble: () => <EnsembleRibbonDiagram />,
     QuizModeller: () => (
     <Quiz questions={QUIZ_MODELLER} heading={null} intro="Velg ett svar per spørsmål." />
   ),

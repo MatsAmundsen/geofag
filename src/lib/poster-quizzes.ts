@@ -611,54 +611,70 @@ export const QUIZ_PALEO: QuizQuestion[] = [
 
 export const QUIZ_MODELLER: QuizQuestion[] = [
   {
-    prompt: "Hva er et ensemble hos ECMWF?",
+    prompt: "Hva er oppløsningen i en numerisk modell?",
     options: [
-      "Mange fulle værforløp som sammen viser hvor sannsynlige ulike utfall er.",
-      "Ett endelig tall for morgendagens temperatur.",
-      "Et arkiv som bare viser været i fjor.",
+      "Hvor ofte modellen kjøres",
+      "Avstanden mellom punktene i rutenettet",
+      "Hvor mange observasjoner modellen bruker",
+      "Hvor langt fram i tid modellen regner",
+    ],
+    answer: 1,
+    explain: "MEPS har en oppløsning på 2,5 km, og ECMWF ca. 9 km. Se «Hvordan bygges en numerisk modell opp?».",
+  },
+  {
+    prompt: "Hvorfor må modellen parameterisere skyer?",
+    options: [
+      "Fordi skyer ikke kan observeres",
+      "Fordi skyer ikke påvirker temperaturen",
+      "Fordi gassloven ikke gjelder i skyer",
+      "Fordi skydråpene og prosessene i skyene er mye mindre enn rutene",
+    ],
+    answer: 3,
+    explain: "Modellen beskriver den samlede virkningen på ruten med forenklede formler. Se «Hva er parameterisering?».",
+  },
+  {
+    prompt: "Hva gjør dataassimileringen?",
+    options: [
+      "Den kombinerer et kort varsel med nye observasjoner til en analyse som varselet starter fra",
+      "Den gjør om modellresultatet til et kart på Yr",
+      "Den fjerner alle observasjoner med feil",
+      "Den regner ut været for neste uke",
     ],
     answer: 0,
-    explain: "Se «Ensemblet». Hvert medlem er et fullt forløp.",
+    explain: "MEPS lager en ny analyse hver tredje time med 3D-Var. Se «Hvordan får modellen riktig start?».",
   },
   {
-    prompt: "Hvor ofte kjører ECMWF globale numeriske værvarsler?",
+    prompt: "18 av 30 medlemmer i et ensemble gir regn i morgen. Hva er den enkleste tolkningen?",
     options: [
-      "Én gang i uken.",
-      "Fire ganger i døgnet.",
-      "Bare når det er storm.",
+      "Det regner 60 prosent av dagen",
+      "60 prosent av landet får regn",
+      "Det er ca. 60 prosent sjanse for regn",
+      "Modellen har gjort en feil",
+    ],
+    answer: 2,
+    explain: "Andelen medlemmer som gir regn, er et mål på sannsynligheten. Se «Kaos og ensembler».",
+  },
+  {
+    prompt: "Hvilken modell regner ut strøm og stormflo langs norskekysten?",
+    options: [
+      "NorESM",
+      "MEPS",
+      "AROME-Arctic",
+      "Norkyst",
+    ],
+    answer: 3,
+    explain: "Norkyst er MET sin havmodell, med ruter på ca. 800 meter. Se «Hvordan brukes modellene i havmodelleringen?».",
+  },
+  {
+    prompt: "Hvorfor kan vi regne på klimaet i 2100 når vi ikke kan varsle været om tre uker?",
+    options: [
+      "Fordi klimamodeller ikke er påvirket av kaos i det hele tatt",
+      "Fordi klimamodellen regner ut hvordan værstatistikken endrer seg når pådrivene endres, ikke været en bestemt dag",
+      "Fordi klimamodeller har finere ruter enn værmodeller",
+      "Fordi klimamodeller bruker flere observasjoner",
     ],
     answer: 1,
-    explain: "Se «Observasjoner, hav og klima». De globale varslene kjøres fire ganger i døgnet.",
-  },
-  {
-    prompt: "Hva hviler varslene på?",
-    options: [
-      "Bare på et kart noen tegner for hånd.",
-      "Et globalt observasjonssystem som ECMWF overvåker.",
-      "Bare på målinger fra én værstasjon.",
-    ],
-    answer: 1,
-    explain: "Se «Observasjoner, hav og klima». Satellitter, vanlige målinger og havobservasjoner er med.",
-  },
-  {
-    prompt: "Hva bruker ECMWF modellene til, ved siden av vær til i morgen?",
-    options: [
-      "Bare til å tegne fronter på et papirkart.",
-      "Blant annet klimaovervåking og analyse av havsirkulasjonen.",
-      "Bare til å varsle snøskred i ett heng.",
-    ],
-    answer: 1,
-    explain: "Se «Observasjoner, hav og klima». Hav og klima ligger i samme arbeid.",
-  },
-  {
-    prompt: "Hvordan videreutvikles varslene?",
-    options: [
-      "Ved forskning som skal gjøre varslene bedre.",
-      "Ved å la være å bruke nye observasjoner.",
-      "Ved å fjerne ensemblet.",
-    ],
-    answer: 0,
-    explain: "Se «Hva er en numerisk modell?». Forskning for bedre treffsikkerhet er en kjerneoppgave.",
+    explain: "Se «Hvordan brukes modellene i klimaforskningen?».",
   },
 ];
 
@@ -3898,5 +3914,143 @@ export const QUIZ_SJEKK_JORDSYSTEMENE_3: QuizQuestion[] = [
     ],
     answer: 1,
     explain: "Når havbunn med kalkstein subduseres, frigjør oppvarmingen CO₂ fra karbonatene. Vulkanene gir gassen tilbake til atmosfæren.",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_1: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor gir en modell med ruter på 2,5 km ofte et bedre varsel i en fjord enn en modell med ruter på 9 km?",
+    options: [
+      "Fordi modeller med små ruter ikke trenger observasjoner",
+      "Fordi små ruter beskriver fjell, daler og fjorder bedre",
+      "Fordi modeller med store ruter bare regner ut temperatur",
+    ],
+    answer: 1,
+    explain: "Hver rute har én verdi. Med 9 km ruter blir en smal fjord og fjellene rundt «glattet ut». Med 2,5 km ruter kommer terrenget bedre fram (Sivle, 2025).",
+  },
+  {
+    prompt: "Hvorfor må tidssteget gjøres kortere når rutene blir mindre?",
+    options: [
+      "Fordi en bølge eller strøm ellers kan flytte seg over mer enn én rute på ett steg, og regnestykket blir ustabilt",
+      "Fordi datamaskinen regner fortere med små ruter",
+      "Fordi små ruter bare kan brukes om natta",
+    ],
+    answer: 0,
+    explain: "Dette er CFL-kriteriet. Norkyst bruker et tidssteg på 40 sekunder med ruter på ca. 800 meter (Christensen mfl., 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_2: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor må modellen parameterisere skyer og turbulens?",
+    options: [
+      "Fordi skyer og turbulens ikke påvirker været",
+      "Fordi prosessene er for raske til å måles",
+      "Fordi prosessene er mindre enn rutene, så modellen kan ikke regne dem ut direkte",
+    ],
+    answer: 2,
+    explain: "Det modellen ikke ser i rutenettet, beskrives med forenklede formler for den samlede virkningen på ruten (ECMWF, u.å.-c).",
+  },
+  {
+    prompt: "Hva betyr det at MEPS er en konveksjonstillatende modell?",
+    options: [
+      "At modellen ikke har skyer",
+      "At rutene er så små at store byger i grove trekk kan regnes ut direkte",
+      "At modellen bare brukes om sommeren",
+    ],
+    answer: 1,
+    explain: "Med ruter på 2,5 km trengs det ikke en egen parameterisering for de store bygeskyene, men skydråper og turbulens må fortsatt parameteriseres.",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er analysen i dataassimilering?",
+    options: [
+      "Et kort varsel fra forrige modellkjøring",
+      "En liste over alle observasjonene",
+      "Den beste beskrivelsen av tilstanden nå, laget ved å justere bakgrunnen mot nye observasjoner",
+    ],
+    answer: 2,
+    explain: "Bakgrunnen er det korte varselet. Analysen er bakgrunnen justert mot observasjonene, og den er startpunktet for neste varsel (ECMWF).",
+  },
+  {
+    prompt: "Hvorfor kjører MET og ECMWF ensembler i stedet for ett varsel?",
+    options: [
+      "Fordi små feil i startverdiene vokser, så vi trenger flere mulige forløp for å se hvor sikkert varselet er",
+      "Fordi én modell ikke har nok ruter",
+      "Fordi hver kommune skal ha sitt eget varsel",
+    ],
+    answer: 0,
+    explain: "Atmosfæren er kaotisk. Spredningen mellom medlemmene viser hvor usikkert varselet er (Meteorologisk institutt, 2020).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_4: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor trenger MEPS randverdier fra ECMWF?",
+    options: [
+      "Fordi MEPS bare dekker et avgrenset område og må vite hva som kommer inn langs kanten",
+      "Fordi MEPS ikke har egne observasjoner",
+      "Fordi ECMWF har finere ruter enn MEPS",
+    ],
+    answer: 0,
+    explain: "Et lavtrykk som er på vei inn fra Atlanterhavet, må komme inn i MEPS-området et sted. Det er randverdiene fra den globale modellen som sørger for det (Eresmaa, 2024).",
+  },
+  {
+    prompt: "Hvilken modell gir varslene for Svalbard på Yr?",
+    options: [
+      "NorESM",
+      "Norkyst",
+      "AROME-Arctic",
+    ],
+    answer: 2,
+    explain: "AROME-Arctic dekker Svalbard, Nord-Norge og havområdene rundt, med ruter på 2,5 km (Meteorologisk institutt, 2017).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor trenger Norkyst data fra en værmodell?",
+    options: [
+      "Fordi havmodellen ikke har noe eget rutenett",
+      "Fordi vind og lufttrykk driver strømmene og vannstanden i havet",
+      "Fordi værmodellen regner ut saltholdigheten",
+    ],
+    answer: 1,
+    explain: "Vind og lufttrykk fra MET sin værmodell gjør at Norkyst kan regne ut strøm og stormflo (Christensen mfl., 2026).",
+  },
+  {
+    prompt: "Hva brukes Norkyst-varslene til?",
+    options: [
+      "Bare til å varsle bølgehøyde for surfere",
+      "Til å varsle nedbør på Yr",
+      "Blant annet til søk og redning, oljedrift og spredning av lakselus",
+    ],
+    answer: 2,
+    explain: "Strømvarslene sier hvor noe som flyter i sjøen, vil drive (Christensen mfl., 2026).",
+  },
+];
+
+export const QUIZ_SJEKK_MODELLER_6: QuizQuestion[] = [
+  {
+    prompt: "Hva er den viktigste forskjellen på en værmodell og en klimamodell?",
+    options: [
+      "Klimamodeller bruker ikke fysiske likninger",
+      "Værmodellen regner ut været framover fra været i dag, mens klimamodellen regner ut hvordan værstatistikken endrer seg når pådrivene endres",
+      "Klimamodeller har alltid finere ruter enn værmodeller",
+    ],
+    answer: 1,
+    explain: "Begge løser de samme likningene, men de svarer på ulike spørsmål (Benestad & Gjengedal, 2024).",
+  },
+  {
+    prompt: "Hvordan kan forskerne teste en klimamodell?",
+    options: [
+      "Ved å kjøre den mot klimaet vi har målt, og sammenligne med andre modeller",
+      "Ved å vente til 2100",
+      "Ved å sammenligne med værvarselet for neste uke",
+    ],
+    answer: 0,
+    explain: "Modellene testes mot temperatur, årstider og naturlige svingninger som er målt, og mot hverandre i CMIP (Benestad & Gjengedal, 2024).",
   },
 ];

@@ -184,7 +184,7 @@ export const GF2_THEMES = [
     image: "/images/fig-klimasystem.jpg",
     alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver",
     blurb:
-      "En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett.",
+      "Rutenett, parameterisering, dataassimilering og ensembler, og de norske modellene MEPS, AROME-Arctic, Norkyst og NorESM.",
     status: "klar" as const,
   },
   {
