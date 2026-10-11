@@ -72,7 +72,12 @@ import {
   EarthRadiationBudgetDiagram,
   BjerknesLoopDiagram,
   EnsoComparisonDiagram,
+  AbruptClimateChangeDiagram,
+  DeglaciationFeedbackDiagram,
+  IceCoreAnatomyDiagram,
+  OxygenIsotopeDiagram,
 } from "@/components/diagrams";
+import { PaleoClimateIsotopeModel } from "@/components/models/paleo-climate-model";
 import {
   MetamorphicFaciesDiagram,
   SilicateStructureDiagram,
@@ -815,14 +820,42 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Callout title="Hva betyr «paleoklima»?">
       <p>
         Paleoklima er klimaet før de direkte målingene. På Mauna Loa startet måleserien for CO₂ i
-        mars 1958. Globalt årsmiddel i 2024 var 422,8 ppm. Iskjernene viser at CO₂ i
-        istidssyklusene det siste millionåret ikke kom over 300 ppm (NOAA, u.å.-a; u.å.-b).
+        mars 1958. Globalt årsmiddel i 2025 var 425,6 ppm. Iskjernene viser at CO₂ de siste 800 000
+        årene lå mellom 172 og 300 ppm (NOAA GML, 2026; Lüthi mfl., 2008).
       </p>
     </Callout>
   ),
     QuizPaleo: () => (
     <Quiz questions={QUIZ_PALEO} heading={null} intro="Velg ett svar per spørsmål." />
   ),
+  KvartarTimeSeriesPaleo: () => (
+    <KvartarTimeSeriesDiagram caption="Iskjernen EPICA Dome C i Antarktis viser temperatur og CO₂ for de siste 800 000 årene, med åtte istidssykluser. Syklusene har form som en sag, med langsom nedkjøling og rask avsmelting. CO₂ lå hele tiden mellom 172 og 300 ppm. I 2025 var det globale snittet 425,6 ppm (Lüthi mfl., 2008; Mukhin mfl., 2019; NOAA GML, 2026)." />
+  ),
+  IskjerneFoto: () => (
+    <PhotoFigure
+      src="/images/fig-iskjerne.jpg"
+      alt="Sylinder av blå is med tynne årlige lag og innestengte luftbobler"
+      heading="Iskjernen: luftboblene er prøver av fortidens luft"
+      caption="En borekjerne fra en innlandsis. Iskjernen gir to slags data. Isotopene i selve isen er en proxy for temperaturen. Luftboblene er prøver av lufta slik den var da de ble stengt inne (Davies, 2020)."
+      marks={[
+        { x: 10, y: 18, n: "1", text: "Årlige snølag", tone: "cold" },
+        { x: 58, y: 46, n: "2", text: "Innestengte luftbobler", tone: "teal" },
+        { x: 82, y: 72, n: "3", text: "Gassalder (Δage)", tone: "warm" },
+        { x: 25, y: 82, n: "4", text: "Askelag (tefra)", tone: "low" },
+      ]}
+      points={[
+        { n: "1", label: "Årlige lag: Forskjellene mellom årstidene gir lag i snøen. Lenger ned dateres isen også med kjemi, askelag og elektrisk ledningsevne. På Grønland er lagene talt sammenhengende for de siste 60 000 årene (Davies, 2020; Svensson mfl., 2008)." },
+        { n: "2", label: "Luftbobler: prøver av fortidens luft. CO₂, metan og lystgass måles direkte i boblene (Davies, 2020)." },
+        { n: "3", label: "Gassalder (Δage): Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned. Derfor er lufta yngre enn isen rundt. Forskjellen beregnes med modeller (Davies, 2020)." },
+        { n: "4", label: "Askelag (tefra): Et askelag er avsatt samtidig over et stort område og er en tidshorisont. Vedde-asken finnes i iskjerner fra Grønland, i innsjøer i Europa og på havbunnen i Nord-Atlanteren (Mangerud, 2025c)." },
+      ]}
+    />
+  ),
+  IceCoreAnatomy: () => <IceCoreAnatomyDiagram />,
+  OxygenIsotope: () => <OxygenIsotopeDiagram />,
+  PaleoClimateIsotope: () => <PaleoClimateIsotopeModel />,
+  AbruptClimateChange: () => <AbruptClimateChangeDiagram />,
+  DeglaciationFeedback: () => <DeglaciationFeedbackDiagram />,
 
 
     IstidForklaring: () => (

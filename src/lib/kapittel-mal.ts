@@ -111,6 +111,12 @@ import {
   QUIZ_SJEKK_MILANKOVITCH_2,
   QUIZ_SJEKK_MILANKOVITCH_3,
   QUIZ_SJEKK_MILANKOVITCH_4,
+  QUIZ_SJEKK_PALEO_1,
+  QUIZ_SJEKK_PALEO_2,
+  QUIZ_SJEKK_PALEO_3,
+  QUIZ_SJEKK_PALEO_4,
+  QUIZ_SJEKK_PALEO_5,
+  QUIZ_SJEKK_PALEO_6,
 } from "./poster-quizzes.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
@@ -216,6 +222,12 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Milankovitch2: QUIZ_SJEKK_MILANKOVITCH_2,
   Milankovitch3: QUIZ_SJEKK_MILANKOVITCH_3,
   Milankovitch4: QUIZ_SJEKK_MILANKOVITCH_4,
+  Paleo1: QUIZ_SJEKK_PALEO_1,
+  Paleo2: QUIZ_SJEKK_PALEO_2,
+  Paleo3: QUIZ_SJEKK_PALEO_3,
+  Paleo4: QUIZ_SJEKK_PALEO_4,
+  Paleo5: QUIZ_SJEKK_PALEO_5,
+  Paleo6: QUIZ_SJEKK_PALEO_6,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -399,6 +411,14 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "En istid krever et kaldt jordsystem, land på høye breddegrader, nok nedbør og svak sommersol på 65°N.",
     "Den siste istiden, Weichsel, varte fra ca. 117 000 til 11 700 år siden. Nå er vi i mellomistiden holocen.",
     "Istidene har formet U-daler, fjorder, morener som Raet og marin grense i Norge. Oppvarmingen siden 1850 skyldes CO₂, ikke jordbanen.",
+  ],
+  Paleo: [
+    "Paleoklima er klimaet før de direkte målingene. Forskerne bruker proxyer, spor i is, havbunn, innsjøer, myrer og trær som henger sammen med klimaet.",
+    "Kvartær begynte for 2,58 millioner år siden. Siste istid varte fra ca. 117 000 til ca. 11 700 år siden, og holocen begynte for ca. 11 700 år siden. For ca. én million år siden gikk istidsrytmen fra ca. 41 000 til ca. 100 000 år.",
+    "Iskjerner har årlige lag, og luftboblene er prøver av fortidens luft. De siste 800 000 årene lå CO₂ mellom 172 og 300 ppm. Lufta er yngre enn isen fordi den stenges inne først i bunnen av firnen.",
+    "De tunge oksygenisotopene regner ut først. Lav δ¹⁸O i is betyr kaldt, og høy δ¹⁸O i foraminiferer fra havbunnen betyr mye is på land.",
+    "Varv, pollen, C-14 og årringer gir alder og vegetasjon etter istiden. En C-14-alder må kalibreres til kalenderår.",
+    "Yngre dryas, for ca. 12 800–11 700 år siden, var trolig utløst av at smeltevann svekket AMOC kraftig. PETM viser hva et stort karbonutslipp gjør, men dagens utslipp går ca. ti ganger så fort. Paleoklima er ett av grunnlagene for at FNs klimapanel anslår klimafølsomheten til ca. 3 °C.",
   ],
 };
 

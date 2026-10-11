@@ -64,74 +64,74 @@ export function PaleoClimateIsotopeModel() {
   // Timeline events for the 20k window
   const timeline20k = [
     {
-      age: "21 000 år før nå",
+      age: "ca. 25 000–19 000 år før nå",
       name: "Siste istidsmaksimum (LGM)",
-      dt: -6.5,
+      dt: -6.0,
       co2: 185,
       d18O_ice: -42.5,
       d18O_sea: +5.1,
       seaLevel: -125,
-      desc: "Skandinavia og Nord-Amerika dekket av 3 km tykk is. Havnivået var 125 meter lavere, og Nordsjøen var tørt land (Nordsjøfastlandet / Doggerland).",
+      desc: "Globalt ca. 6 °C kaldere enn førindustrielt (Tierney mfl., 2020). Den skandinaviske innlandsisen var antagelig ca. 3000 m tykk over Nord-Sverige. Havnivået var 120–130 m lavere, og den sørlige delen av Nordsjøen var tørt land (Doggerland) (Mangerud, 2025b; Sælen mfl., 2025).",
     },
     {
-      age: "14 500 år før nå",
+      age: "14 700–12 800 år før 1950",
       name: "Bølling-Allerød varmeperiode",
       dt: -1.5,
       co2: 240,
       d18O_ice: -36.2,
       d18O_sea: +4.2,
       seaLevel: -80,
-      desc: "Rask smelting av isdekket. Bjørk og reinrose etablerte seg langs kysten av Norge. Smeltevannet begynte å fylle forsenkninger.",
+      desc: "Milde perioder (bølling og allerød) med mye isavsmelting, avbrutt av den kalde eldre dryas (Harstveit og Fuglestvedt, 2025).",
     },
     {
       age: "12 800–11 700 år før nå",
-      name: "Yngre Dryas (kuldehopp)",
+      name: "Yngre dryas, Grønland (illustrasjon)",
       dt: -4.5,
       co2: 235,
       d18O_ice: -40.1,
       d18O_sea: +4.8,
       seaLevel: -65,
-      desc: "Lake Agassiz tømte enorme ferskvannsmasser i Nord-Atlanteren. AMOC bremset opp. Temperaturen stupte 8–10 °C i Norge på få tiår, og isbreene rykket fram til Raet.",
+      desc: "Smeltevann svekket trolig AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert. Klimaet skiftet på noen få tiår, det ble plutselig mye kaldere i Norge, og isen rykket fram til Raet (Mangerud, 2025e). Globalt var avkjølingen under 1 °C, fordi den sørlige halvkula samtidig ble varmere (Shakun og Carlson, 2010). Midt på Grønland var det ca. 15 °C kaldere enn i dag (Alley, 2000).",
     },
     {
       age: "8 200 år før nå",
-      name: "8,2 ka-kuldehendelsen",
-      dt: -1.8,
+      name: "8,2 ka-hendelsen, Grønland (illustrasjon)",
+      dt: -3.0,
       co2: 260,
       d18O_ice: -36.8,
       d18O_sea: +3.7,
       seaLevel: -15,
-      desc: "Siste rest av bresjøene i Nord-Amerika tømte seg. Rask, men kortvarig kuldeperiode registrert i Grønlandsisen og norske innsjøsedimenter.",
+      desc: "For ca. 8200 år siden ble det ca. 3 °C kaldere midt på Grønland i løpet av mindre enn 20 år. Hele hendelsen varte i ca. 150 år (Kobashi mfl., 2007).",
     },
     {
-      age: "7 000–5 000 år før nå",
-      name: "Holocens klimaoptimum",
-      dt: +1.2,
+      age: "ca. 6500 år før nå",
+      name: "Holocent varmeoptimum",
+      dt: +0.5,
       co2: 275,
       d18O_ice: -33.9,
       d18O_sea: +3.2,
       seaLevel: 0,
-      desc: "Jordens aksehelning ga sterk sommersol på 65 °N. Varmekjære løvtrær (alm, lind, eik) vokste høyt til fjells i Norge, og Hardangerjøkulen var nesten smeltet bort.",
+      desc: "Globalt ca. 0,2–1 °C over 1850–1900 (IPCC, 2021). I Norge var det minst 2 °C varmere enn i dag i siste del av atlantisk tid, med alm, lind og svartor (SNL, 2025). Hardangerjøkulen var borte i lange perioder (Dahl og Nesje, 1994).",
     },
     {
-      age: "1400–1850 e.Kr.",
+      age: "ca. 1550–1900 e.Kr.",
       name: "Den lille istid (LIA)",
       dt: -0.8,
       co2: 280,
       d18O_ice: -35.5,
       d18O_sea: +3.4,
       seaLevel: 0,
-      desc: "Svakere solinnstråling og vulkanutbrudd ga kalde somre. Norske isbreer rykket fram til sine historiske maksimum (Nigardsbreen knuste gårder i 1743).",
+      desc: "Kalde somre. Norske breer var størst rundt 1740-årene, da Nigardsbreen hadde sin største utbredelse (Harstveit, 2024).",
     },
     {
       age: "1850–i dag",
       name: "Moderne industriell oppvarming",
-      dt: +1.3,
+      dt: +1.1,
       co2: 425,
       d18O_ice: -33.8,
       d18O_sea: +3.1,
       seaLevel: +0.2,
-      desc: "Menneskeskapt $CO_2$ har steget fra 280 til over 425 ppm på 170 år. Oppvarmingsfarten overgår alle naturlige svingninger de siste 2000 årene.",
+      desc: "I 2025 var det globale snittet 425,6 ppm (NOAA GML, 2026). 2011–2020 var 1,09 °C varmere enn 1850–1900, og siden 1970 har temperaturen steget raskere enn i noen annen 50-årsperiode på minst 2000 år (IPCC, 2021).",
     },
   ];
 
@@ -141,49 +141,25 @@ export function PaleoClimateIsotopeModel() {
       mis: "MIS 1 (Holocen, nå)",
       age: "0–11,7 ka",
       co2: "280 → 425 ppm",
-      temp: "+0 °C til +1,3 °C",
+      temp: "0 til ca. +1,1 °C",
       state: "Mellomistid",
       desc: "Dagens mellomistid med stabilt havnivå og framvekst av jordbruk og sivilisasjon.",
     },
     {
       mis: "MIS 2 (Weichsel LGM)",
-      age: "18–24 ka",
+      age: "25–19 ka",
       co2: "185 ppm",
-      temp: "-6 °C til -8 °C",
+      temp: "ca. −6 °C (globalt)",
       state: "Maksimal istid",
-      desc: "Maksimalt isdekke over Skandinavia og Nord-Amerika. Havnivå -125 meter.",
+      desc: "Maksimalt isdekke over Skandinavia og Nord-Amerika. Havnivået var 120–130 m lavere.",
     },
     {
       mis: "MIS 5e (Eem-mellomistiden)",
-      age: "115–130 ka",
+      age: "130–117 ka",
       co2: "290 ppm",
-      temp: "+1,5 °C til +2,5 °C",
+      temp: "+0,5 °C til +1,5 °C",
       state: "Varm mellomistid",
-      desc: "Arktis var delvis isfritt om sommeren, Grønlandsisen krympet, havnivået var 4–6 meter høyere enn i dag.",
-    },
-    {
-      mis: "MIS 6 (Saale-istiden)",
-      age: "135–190 ka",
-      co2: "190 ppm",
-      temp: "-7 °C",
-      state: "Svært streng istid",
-      desc: "Massivt isdekke som strakte seg helt ned til Berlin og Moskva.",
-    },
-    {
-      mis: "MIS 11 (Holstein)",
-      age: "390–425 ka",
-      co2: "285 ppm",
-      temp: "+1,0 °C",
-      state: "Langvarig mellomistid",
-      desc: "En uvanlig lang og stabil mellomistid med svak eksentrisitet, en viktig analogi til Holocens fremtid uten menneskeskapte pådriv.",
-    },
-    {
-      mis: "MIS 19 (Matuyama-Brunhes)",
-      age: "760–790 ka",
-      co2: "260 ppm",
-      temp: "Mellomistid",
-      state: "Magnetisk polreversering",
-      desc: "Jordens magnetfelt reverserte polaritet (Brunhes/Matuyama-grensen), synkronisert med sediment- og iskjernedatering.",
+      desc: "Skandinavia var trolig isfritt. Havnivået var trolig 5–10 m høyere enn i dag (IPCC, 2021).",
     },
   ];
 
@@ -192,13 +168,13 @@ export function PaleoClimateIsotopeModel() {
       name: "Luftbobler i iskjerner (CO₂, CH₄, N₂O)",
       category: "Kryosfære · Direkte gassprøve",
       archive: "Innlandsisen i Antarktis (EPICA, Vostok) og Grønland (NGRIP)",
-      span: "Opptil 800 000 år i Antarktis (123 000 år på Grønland)",
+      span: "Minst 800 000 år i Antarktis. På Grønland er lagene talt for de siste 60 000 årene",
       resolution: "Måneder til tiår i toppen; århundrer i dybden",
       isDirect: true,
       whatItMeasures:
-        "Faktisk atmosfærisk sammensetning. Dette er IKKE en proxy, men en fysisk innelukket gassprøve som måles direkte med massespektrometri og lasergasskromatografi.",
+        "Faktisk atmosfærisk sammensetning. Dette er ikke en proxy, men en prøve av lufta som måles direkte.",
       limitation:
-        "Gassalder (Δage): Snøen komprimeres langsomt over 50–100 meter før porene forsegles hermetisk. Gassen i boblene er derfor 500 til 5000 år yngre enn den omkringliggende isen.",
+        "Gassalder (Δage): Lufta stenges inne først i bunnen av firnen, som regel 50–100 m ned. Den er derfor yngre enn isen rundt. Forskjellen beregnes med modeller (Davies, 2020).",
       examPoint:
         "Eksamen krever at du skiller mellom gassen (direkte måling av atmosfæren) og selve isen (isotop-proxy for vanntemperatur da snøen falt).",
     },
@@ -210,7 +186,7 @@ export function PaleoClimateIsotopeModel() {
       resolution: "Årlig lagvis telling i øvre halvdel; tiårsgjennomsnitt nederst",
       isDirect: false,
       whatItMeasures:
-        "Lokal kondensasjonstemperatur da snøen falt over breen. Jo kaldere klima, desto mer negativ blir δ¹⁸O (Rayleigh-fraksjonering).",
+        "Lokal kondensasjonstemperatur da snøen falt over breen. Jo kaldere klima, desto mer negativ blir δ¹⁸O (fraksjonering).",
       limitation:
         "Avhenger også av fuktighetskildens beliggenhet, fordampningstemperatur i subtropene og sesongfordeling av snøfall.",
       examPoint:
@@ -226,15 +202,15 @@ export function PaleoClimateIsotopeModel() {
       whatItMeasures:
         "Kombinasjon av globalt kontinentalt isvolum (havets isotopsammensetning) og bunnvannstemperatur da kalsittskallet krystalliserte.",
       limitation:
-        "Bioturbasjon (ormer og krepsdyr som rører rundt i havbunnen) visker ut brå hopp på under 500–1000 år. Krever artsspesifikk plukking (f.eks. Cibicidoides wuellerstorfi).",
+        "Bioturbasjon (ormer og krepsdyr som rører rundt i havbunnen) Viser det totale isvolumet, men ikke hvor isen lå (Mangerud, 2026b).",
       examPoint:
-        "SPEILVENDING: I havbunnen betyr HØY (positiv) δ¹⁸O MYE IS PÅ LAND (istid) fordi lett ¹⁶O er låst inne i innlandsisen!",
+        "Speilvendt: I havbunnen betyr høy δ¹⁸O mye is på land (istid), fordi mer ¹⁶O er lagret i isen.",
     },
     varves: {
       name: "Innsjøvarver (lagdelte årssedimenter)",
       category: "Lakustrine sedimenter · Årssedimenter",
       archive: "Brevannspåvirkede innsjøer og dype fjorder",
-      span: "Opptil 15 000–20 000 år",
+      span: "Tiden etter siste istid",
       resolution: "Nøyaktig 1 år (som årringer)",
       isDirect: false,
       whatItMeasures:
@@ -242,13 +218,13 @@ export function PaleoClimateIsotopeModel() {
       limitation:
         "Krever oksygenfattig bunnvann uten gravende bunndyr som forstyrrer lagene. Erosjonshendelser kan noen ganger avsette doble flomlag i ett og samme år.",
       examPoint:
-        "Brukes til å gi presis absolutt kalibrering for C-14 dateringskurver og fange raske klimarykk som Yngre Dryas.",
+        "Brukes til å gi presis absolutt kalibrering for C-14 dateringskurver og fange raske klimarykk som yngre dryas.",
     },
     pollen: {
       name: "Pollenanalyse (Palynologi)",
       category: "Biologiske arkiver · Vegetasjonshistorie",
       archive: "Oksygenfattige torvmyrer, myrhull og innsjøbunn",
-      span: "Holocen og senglasial tid (15 000 år i Norge)",
+      span: "Tiden etter siste istid",
       resolution: "50–200 år avhengig av torvvekst",
       isDirect: false,
       whatItMeasures:
@@ -256,14 +232,14 @@ export function PaleoClimateIsotopeModel() {
       limitation:
         "Planter produserer svært ulike mengder pollen (furu produserer enorme mengder vindspredt pollen, mens urter produserer lite). Innvandringsforsinkelser (treslag må spre seg geografisk).",
       examPoint:
-        "Lennart von Post (1916). Norges suksesjon: Reinrose (Dryas) → Bjørk/furu → Edelløvskog (varmetid) → Gran (innvandret østfra for ca. 1500–2500 år siden).",
+        "Lennart von Post (1916). Norges suksesjon: Reinrose (Dryas) → Bjørk/furu → Edelløvskog (varmetid) → Gran (kom østfra til Norge for ca. 2000 år siden).",
     },
     tree_rings: {
       name: "Dendrokronologi (Årringer i trær)",
       category: "Biologiske arkiver · Årlig temperatur/nedbør",
       archive: "Fossil furu i myrer (subfossilt tømmer), gamle furuer og eik",
-      span: "Kontinuerlige kurver dekker de siste 12 000–14 000 årene",
-      resolution: "Eksakt 1 år (sesong: tidligved vs. seinved)",
+      span: "Sammenhengende serie 14 000 år tilbake",
+      resolution: "Eksakt 1 år",
       isDirect: false,
       whatItMeasures:
         "Vekstsesongens sommertemperatur (ved den alpine eller polare tregrensen) eller tørkestress/nedbør (i tørre strøk). Densitometri måler vedtetthet.",
@@ -350,7 +326,7 @@ export function PaleoClimateIsotopeModel() {
                   <div className="mt-1 flex justify-between text-[10px] text-muted-foreground">
                     <span>-8 °C (Dyp istid)</span>
                     <span>0 °C (1850)</span>
-                    <span>+6 °C (PETM / superdrivhus)</span>
+                    <span>+6 °C</span>
                   </div>
                 </div>
 
@@ -365,10 +341,10 @@ export function PaleoClimateIsotopeModel() {
                       size="sm"
                       variant="secondary"
                       className="text-xs h-7 px-2"
-                      onClick={() => applyPreset(-6.5)}
+                      onClick={() => applyPreset(-6)}
                     >
                       <Snowflake className="mr-1 size-3 text-sky-400" />
-                      LGM (-6,5 °C)
+                      LGM (ca. −6 °C, globalt)
                     </Button>
                     <Button
                       type="button"
@@ -377,7 +353,7 @@ export function PaleoClimateIsotopeModel() {
                       className="text-xs h-7 px-2"
                       onClick={() => applyPreset(-4.5)}
                     >
-                      Yngre Dryas (-4,5 °C)
+                      Yngre dryas, Grønland (illustrasjon)
                     </Button>
                     <Button
                       type="button"
@@ -393,28 +369,29 @@ export function PaleoClimateIsotopeModel() {
                       size="sm"
                       variant="secondary"
                       className="text-xs h-7 px-2"
-                      onClick={() => applyPreset(1.2)}
+                      onClick={() => applyPreset(0.5)}
                     >
-                      Holocen (+1,2 °C)
+                      Holocent varmeoptimum (ca. +0,5 °C, spenn 0,2–1 °C)
                     </Button>
                     <Button
                       type="button"
                       size="sm"
                       variant="secondary"
                       className="text-xs h-7 px-2"
-                      onClick={() => applyPreset(1.3)}
+                      onClick={() => applyPreset(1.1)}
                     >
-                      I dag (+1,3 °C)
+                      2011–2020 (+1,1 °C)
                     </Button>
                     <Button
                       type="button"
                       size="sm"
                       variant="secondary"
                       className="text-xs h-7 px-2"
-                      onClick={() => applyPreset(6.0)}
+                      onClick={() => applyPreset(5.0)}
+                      title="Under PETM var global middeltemperatur ca. 31,6 °C, ca. 5 °C mer enn sent i paleocen (Inglis mfl., 2020). Knappen er en illustrasjon og ikke et avvik fra 1850–1900."
                     >
                       <Flame className="mr-1 size-3 text-rose-400" />
-                      PETM (+6,0 °C)
+                      PETM (illustrasjon): ca. +5 °C oppvarming
                     </Button>
                   </div>
                 </div>
@@ -438,7 +415,7 @@ export function PaleoClimateIsotopeModel() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Rayleigh-utarming:</span>
+                    <span className="text-muted-foreground">Utarming (fraksjonering):</span>
                     <span className="font-semibold text-primary">
                       {tempAnomaly < -3 ? "Ekstremt sterk" : tempAnomaly < 0 ? "Moderat" : "Svak"}
                     </span>
@@ -458,7 +435,7 @@ export function PaleoClimateIsotopeModel() {
                 <p>
                   <strong>Resultat:</strong> Resthavet og foraminiferenes skall blir beriket med
                   tungt ¹⁸O (høy δ¹⁸O). Samtidig mister skyene nesten alt tungt ¹⁸O før de når
-                  polene, slik at isen får svært lav δ¹⁸O!
+                  polene, slik at isen får svært lav δ¹⁸O.
                 </p>
               </ModelNote>
             </div>
@@ -584,7 +561,7 @@ export function PaleoClimateIsotopeModel() {
                       {/* Tolkning under */}
                       <rect x="15" y="178" width="130" height="48" rx="6" fill="#1e293b" opacity="0.8" />
                       <text x="80" y="196" textAnchor="middle" fill={tempAnomaly < 0 ? "#38bdf8" : "#fbbf24"} fontSize="11" fontWeight="bold">
-                        {tempAnomaly < -2 ? "HØY δ¹⁸O = Istid!" : tempAnomaly < 1 ? "Middels δ¹⁸O = Mellomistid" : "LAV δ¹⁸O = Lite is på land"}
+                        {tempAnomaly < -2 ? "Høy δ¹⁸O = istid" : tempAnomaly < 1 ? "Middels δ¹⁸O = Mellomistid" : "LAV δ¹⁸O = Lite is på land"}
                       </text>
                       <text x="80" y="214" textAnchor="middle" fill="#94a3b8" fontSize="10">
                         Havet anrikes på tungt ¹⁸O
@@ -611,13 +588,12 @@ export function PaleoClimateIsotopeModel() {
                   </svg>
                 </div>
 
-                {/* Forklaring av Rayleigh-fraksjonering */}
+                {/* Forklaring av fraksjonering */}
                 <div className="rounded-xl border border-border/80 bg-card p-3 text-xs leading-relaxed text-muted-foreground">
-                  <strong className="text-foreground">Fysisk mekanisme (Rayleigh-fraksjonering):</strong>{" "}
-                  Når fuktighet fordamper ved ekvator (ca. 25 °C), fordamper det lette vannet (H₂¹⁶O) raskest. Skyen
-                  starter med ca. -10 ‰ δ¹⁸O. På vei mot polene kjøles luften ned og kondenserer. Det tunge vannet
-                  (H₂¹⁸O) regner ut først. Jo lenger og kaldere reisen er mot Grønland eller Antarktis, desto mer
-                  utarmet blir skyen — ved -40 °C på polplatået er nedbøren tappet ned til mellom -35 ‰ og -55 ‰!
+                  <strong className="text-foreground">Fysisk mekanisme (fraksjonering):</strong>{" "}
+                  Når fuktighet fordamper fra havet, fordamper det lette vannet (H₂¹⁶O) lettest. På vei mot polene
+                  blir lufta kaldere, og det tunge vannet (H₂¹⁸O) regner ut først. Jo lenger og kaldere veien er,
+                  desto lavere blir δ¹⁸O i snøen (Mangerud, 2026b).
                 </div>
               </ModelPanel>
             </div>
@@ -672,7 +648,7 @@ export function PaleoClimateIsotopeModel() {
               <div className="space-y-4">
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   De siste 20 000 årene spenner fra maksimal istid (LGM) via brå terskelhopp
-                  (Yngre Dryas) til det usedvanlig stabile Holocen og dagens industrielle oppvarming.
+                  (yngre dryas) til det usedvanlig stabile holocen og dagens industrielle oppvarming.
                 </p>
 
                 {/* Interactive timeline selector */}
@@ -796,10 +772,9 @@ export function PaleoClimateIsotopeModel() {
                 </div>
 
                 <div className="rounded-xl border border-border bg-card p-3 text-xs text-muted-foreground">
-                  <strong>Det store sagtanmønsteret:</strong> Istidene bygger seg opp langsomt over
-                  80 000 til 90 000 år etter hvert som innlandsisene vokser og reflekterer mer sollys
-                  (is-albedo). Avsmeltingen (terminasjonen) skjer derimot eksplosivt på bare 5000–10 000 år
-                  når sommersola på 65 °N når sitt maksimum.
+                  <strong>Det store sagtannmønsteret:</strong> Syklusene på ca. 100 000 år har form som en sag:
+                  langsom nedkjøling og rask avsmelting (Mukhin mfl., 2019). Avsmeltingen starter når sommersola
+                  på 65° N øker, og albedo og CO₂ forsterker den (Mangerud, 2026b).
                 </div>
               </div>
             )}
@@ -816,35 +791,32 @@ export function PaleoClimateIsotopeModel() {
                   </div>
                   <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed">
                     PETM er den beste geologiske analogen vi har for en massiv drivhusgassinjeksjon i
-                    atmosfæren. På ca. 5000 år ble 3000–7000 gigatonn karbon frigjort (trolig fra
-                    vulkansk oppvarming av organiske sedimenter i Norskehavet og smelting av metanhydrater).
+                    atmosfæren. Flere tusen gigatonn karbon ble sluppet ut i løpet av mindre enn 20 000 år
+                    (McInerney og Wing, 2011). Antagelig var vulkanisme en viktig årsak, blant annet magma som
+                    trengte inn i karbonrike sedimenter i Norskehavet (Delsett, 2025; Svensen mfl., 2004).
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
                     <div className="rounded-lg bg-card/80 p-3 border border-border">
                       <span className="text-muted-foreground">Global oppvarming:</span>
                       <p className="font-mono text-base font-bold text-rose-400 mt-0.5">+5 til +8 °C</p>
-                      <p className="text-[10px] text-muted-foreground mt-1">Palmetrær og krokodiller levde i Arktis.</p>
                     </div>
                     <div className="rounded-lg bg-card/80 p-3 border border-border">
-                      <span className="text-muted-foreground">Havforsuring:</span>
-                      <p className="font-mono text-base font-bold text-amber-400 mt-0.5">Kalsittkollaps</p>
-                      <p className="text-[10px] text-muted-foreground mt-1">Stort artsutdøing blant bentiske foraminiferer.</p>
+                      <span className="text-muted-foreground">Livet i havet:</span>
+                      <p className="text-[10px] text-muted-foreground mt-1">Mange bunnlevende foraminiferer døde ut (McInerney og Wing, 2011).</p>
                     </div>
                     <div className="rounded-lg bg-card/80 p-3 border border-border">
-                      <span className="text-muted-foreground">Varighet til gjenoppretting:</span>
-                      <p className="font-mono text-base font-bold text-emerald-400 mt-0.5">~150 000 år</p>
-                      <p className="text-[10px] text-muted-foreground mt-1">Silikatforvitring trakk langsomt CO₂ ut av havet.</p>
+                      <span className="text-muted-foreground">Varighet:</span>
+                      <p className="font-mono text-base font-bold text-emerald-400 mt-0.5">ca. 200 000 år</p>
                     </div>
                   </div>
 
                   <div className="rounded-lg bg-card p-3 border border-rose-500/20 text-xs">
-                    <strong className="text-rose-300">Viktigste forskjell til i dag (Utslippsfart):</strong>
+                    <strong className="text-rose-300">Viktigste forskjell fra i dag (utslippsfart):</strong>
                     <p className="mt-1 text-muted-foreground">
-                      Under PETM var den årlige karbonutslippstakten omtrent <strong>0,3–1,0 Gt C per år</strong>.
-                      I dag slipper menneskeheten ut over <strong>10 Gt C per år</strong>. Dagens utslippshastighet
-                      er altså mer enn <strong>ti ganger raskere</strong> enn under en av jordens mest dramatiske
-                      naturlige klimakatastrofer!
+                      Under PETM ble det sluppet ut høyst ca. <strong>1,1 Gt C per år</strong>. I 2014 slapp
+                      menneskene ut ca. <strong>10 Gt C</strong>. Dagens utslipp går altså ca.{" "}
+                      <strong>ti ganger så fort</strong> (Zeebe mfl., 2016).
                     </p>
                   </div>
                 </div>
