@@ -1699,6 +1699,12 @@ export const KILDER = {
       href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026c). ",
+      italic: "Fjellskred fra Åknes: Reviderte scenarioer, sannsynligheter og konsekvenser",
+      suffix: " (NVE Rapport 16/2026).",
+      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",

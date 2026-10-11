@@ -113,7 +113,7 @@ Hvor høyt en slik flodbølge kan nå, viste Tafjordulykka 7. april 1934. Om lag
 FjellskredBolge
 ```
 
-Scenario C er et større og dypere område i øvre flanke, med om lag 7,4 millioner kubikkmeter og årlig sannsynlighet 1/100. Scenario D er et mindre løsneområde i samme flanke, med om lag 2,4 millioner kubikkmeter og årlig sannsynlighet 1/200 (NVE, 2026b).
+Scenario C er et større og dypere område i øvre flanke, med om lag 7,4 millioner kubikkmeter og årlig sannsynlighet 1/100. Scenario D er et mindre løsneområde i samme flanke, med om lag 2,4 millioner kubikkmeter og årlig sannsynlighet 1/200 (NVE, 2026b). Det største scenarioet NVE legger til grunn for beredskapen, scenario B, er ca. 9,7 millioner kubikkmeter, og samlet årlig sannsynlighet for skred fra Åknes er vurdert til ca. 1/60 (NVE, 2026c).
 
 Mannen ligger på vestsiden av Romsdalen i Rauma kommune. Øvre del beveger seg om lag 2 cm/år, og volumet er opptil 20 millioner kubikkmeter. Et skred kan treffe noe bebyggelse, europaveg E136 og Raumabanen, og det kan demme opp Rauma. Bryter den demningen, kan flommen nedstrøms berøre opptil 1650 mennesker. Årlig sannsynlighet for et stort skred er vurdert til mellom 1/100 og 1/1000, og risikoen er vurdert som høy. Derfor overvåkes Mannen kontinuerlig (NVE, 2026a).
 

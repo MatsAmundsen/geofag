@@ -1665,22 +1665,22 @@ export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hva skjer når kvikkleire blir overbelastet?",
     options: [
-      "Korthusstrukturen kollapser, og leira blir flytende.",
       "All marin leire er allerede flytende fra den ble avsatt.",
+      "Korthusstrukturen kollapser, og leira blir flytende.",
       "Leira blir fastere fordi saltinnholdet øker.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hva er kvikkleire?». Overbelastning får strukturen til å kollapse. I omrørt tilstand er leira flytende.",
   },
   {
     prompt: "Hvordan kan saltet i marin leire forsvinne?",
     options: [
-      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
       "All marin leire er kvikk allerede da den ble avsatt i sjøen.",
       "Saltet forsvinner så snart det har regnet én dag.",
+      "Ferskt grunnvann vasker det ut over mange hundre til flere tusen år. Under 2 gram salt per liter kan bindingene svekkes.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Hva er kvikkleire?». Leira er tett, så utvaskingen tar mange hundre til flere tusen år. Ikke all marin leire blir kvikk.",
   },
@@ -1698,22 +1698,22 @@ export const QUIZ_SKRED: QuizQuestion[] = [
   {
     prompt: "Hvorfor overvåkes Åknes kontinuerlig?",
     options: [
-      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
       "Åknes er et jordskred som går i en elv hvert år.",
       "Grønt jordskredvarsel dekker også fjellskred fra Åknes.",
+      "Et skred kan gi store flodbølger i Storfjordområdet, og overvåkingen skal gi tid til å varsle.",
     ],
-    answer: 0,
+    answer: 2,
     explain:
       "Se «Hva er et fjellskred?». Åknes overvåkes kontinuerlig fordi et skred kan gi flodbølger, og varselet skal komme i tide.",
   },
   {
     prompt: "Hva sier et grønt jordskredvarsel om steinsprang og kvikkleire?",
     options: [
-      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
       "Grønt nivå betyr at steinsprang og kvikkleire er avblåst.",
+      "De inngår ikke i jordskredvarslingen. Grønt nivå sier ikke at de er trygge.",
       "Varselet gjelder bare kvikkleire.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
       "Se «Hvordan kan vi forebygge og tilpasse oss?». Jordskredvarselet gjelder jordskred, sørpeskred og flomskred. Steinsprang og kvikkleireskred inngår ikke.",
   },
