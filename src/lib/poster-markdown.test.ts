@@ -182,7 +182,7 @@ describe("injectPosterWidgets", () => {
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("Kompetansemål i Geofag 2 (LK20)"), true);
     assert.equal(md.includes("## Viktige begreper"), true);
-    assert.equal(md.includes("/tema/vaerkart"), true);
+    assert.equal(md.includes("/tema/hoytrykk-lavtrykk"), true);
     assert.equal(md.includes("Bjerknes-modellen"), true);
     assert.equal(md.includes("følger ofte et fast løp"), false);
   });

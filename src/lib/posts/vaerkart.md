@@ -52,7 +52,7 @@ SjekkVaerkart1
 
 En luftmasse er et stort volum luft med ganske jevn temperatur og fuktighet. Egenskapene kommer fra området den har ligget over. Luft over land er tørrere. Luft over hav er fuktigere. Luft fra Arktis er svært kald. Polarluft er kald, men ikke like kald. Tropeluft er varm (NOAA, u.å.-a).
 
-Der luftmasser møtes, dannes en front. En front er skillet mellom to luftmasser med ulik tetthet, som oftest fordi temperaturen er ulik. Fuktighet og stabilitet kan også skille dem. Frontflaten heller svakt. Helningen er oftest mellom 1:200 og 1:100 (Store norske leksikon, u.å.-a).
+Der luftmasser møtes, dannes en front. En front er skillet mellom to luftmasser med ulik tetthet, som oftest fordi temperaturen er ulik. Fuktighet og stabilitet kan også skille dem. Frontflaten heller svakt. En varmfront heller ofte om lag 1:100–1:200, mens en kaldfront er brattere, om lag 1:50–1:100 (Store norske leksikon, u.å.-a; Ahrens & Henson, 2022).
 
 Læren om fronter ble i stor grad utformet av Vilhelm Bjerknes og Bergensskolen (Store norske leksikon, u.å.-a). Begrepet polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ble tatt i bruk av Bergensskolen fra 1918 (Store norske leksikon, u.å.-b). Selve syklonmodellen kom noen år senere, i 1919–1922, og den står nedenfor.
 
@@ -62,7 +62,7 @@ Læren om fronter ble i stor grad utformet av Vilhelm Bjerknes og Bergensskolen 
 | Kaldfront | blå strek med trekanter, i fartsretningen | kaldere luft fortrenger varmere. Ofte byger og skiftende skydekke |
 | Okkludert front | lilla strek med både trekanter og halvsirkler | kaldfronten har tatt igjen varmfronten. Både jevn nedbør og byger |
 | Stasjonær front | vekslende trekanter og halvsirkler, pekende mot hver sin luftmasse | fronten beveger seg lite |
-| Tråg | blå strek uten trekanter | ekstra ustabil luft, med kraftige byger og mulige vindkast |
+| Tråg | linje uten symboler, ofte stiplet | ekstra ustabil luft, med kraftige byger og mulige vindkast (National Weather Service [NWS], u.å.) |
 
 Symbolene peker den veien fronten flytter seg. Halvsirklene og trekantene gjør at frontene kan skilles også på et svart-hvitt kart (Sivle, 2009; Store norske leksikon, u.å.-a).
 
@@ -119,7 +119,7 @@ Hvis meteorologen bare kunne velge ett høydekart, ville 500 hPa-kartet vært f�
 
 Konturene på kartet er høyden av denne flaten. Et tall som 564 betyr 5 640 meter, fordi den siste nullen er sløyfet (NOAA, u.å.-d).
 
-Kartet viser også virvling i lufta, kalt virvling eller vorticity. Foran et område med sterk virvling øker virvlingen. Der samles luft nede og stiger, og det kan bli nedbør. Bak et slikt område avtar virvlingen, og lufta synker (NOAA, u.å.-d).
+Kartet viser også virvling (vorticity), altså hvor mye lufta roterer. Foran et område med sterk virvling øker virvlingen. Der samles luft nede og stiger, og det kan bli nedbør. Bak et slikt område avtar virvlingen, og lufta synker (NOAA, u.å.-d).
 
 Luftmassene følger i stor grad vinden i høyden. Når jetstrømmen skifter, skifter også luftmassenes bane (NOAA, u.å.-a). Hvordan selve jetstrømmen bukter seg, tar vi i [jetstrømmer](/tema/jetstrommer).
 
@@ -170,8 +170,6 @@ SammendragVaerkart
 ```
 
 ## Test deg selv
-
-Teksten du nettopp leste, hører til [værkart og værutvikling](/tema/vaerkart).
 
 ```widget
 QuizVaerkart
