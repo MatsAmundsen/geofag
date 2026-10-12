@@ -3,7 +3,8 @@ import { CrossSection, sectionHem } from "@/components/meteo/cross-section";
 import { DispersionChart } from "@/components/meteo/dispersion-chart";
 import { ControlSlider } from "@/components/meteo/control-slider";
 import { jetLabel, reportAt, focusSites, placeWeather } from "@/lib/meteo/diagnose";
-import { EXPLAIN } from "@/lib/meteo/fagtekst";
+import { EXPLAIN, rainLevel, tempLevel, windLevel } from "@/lib/meteo/fagtekst";
+import { RelScale } from "@/components/meteo/rel-scale";
 import { PRESETS } from "@/lib/meteo/presets";
 import {
   baseSpeed,
@@ -59,19 +60,13 @@ export function SidePanel() {
         <p className="text-sm text-muted-foreground">
           {info.title} · {info.coords}
         </p>
-        <p className="font-display text-4xl text-foreground tabular-nums">
-          {nb(info.temp, 0)}°
-          <span className="ml-3 font-sans text-base text-muted-foreground">{info.weather}</span>
-        </p>
-        <p className="text-sm text-foreground">
-          Avvik mot rett jet:{" "}
-          <span className="tabular-nums text-primary">
-            {info.anomaly > 0 ? "+" : ""}
-            {nb(info.anomaly, 1)}°
-          </span>
-          {" · "}
-          nedbør om lag <span className="tabular-nums">{nb(info.precip, 0)} mm/døgn</span>
-        </p>
+        <p className="font-display text-2xl text-foreground">{info.weather}</p>
+        <div className="flex flex-col gap-1.5" data-testid="dette-stedet-skala">
+          <RelScale kind="Temperatur" level={tempLevel(info.anomaly)} />
+          <RelScale kind="Nedbør" level={rainLevel(info.precip, info.normalPrecip)} />
+          <RelScale kind="Vind nær bakken" level={{ ...windLevel(info.windSurface, "bakke"), label: `${windLevel(info.windSurface, "bakke").label} vind` }} />
+        </div>
+        <p className="text-xs text-muted-foreground">Sammenlignet med en rett, klimatologisk jetstrøm og nøytral ENSO og IOD.</p>
         <div className="grid grid-cols-2 gap-2">
           {(
             [
@@ -84,10 +79,11 @@ export function SidePanel() {
             <div key={title} className="rounded-lg border border-border bg-card px-3 py-2">
               <p className="text-sm font-medium text-foreground">{title}</p>
               <p className="text-xs text-muted-foreground">{note}</p>
-              <p className="mt-1 text-sm tabular-nums text-foreground">
-                {nb(report.temp, 0)}° · {report.weather}
-              </p>
-              <p className="text-xs tabular-nums text-muted-foreground">{nb(report.precip, 0)} mm/døgn</p>
+              <p className="mt-1 text-sm text-foreground">{report.weather}</p>
+              <div className="mt-1 flex flex-col gap-1">
+                <RelScale compact kind="Temperatur" level={tempLevel(report.anomaly)} />
+                <RelScale compact kind="Nedbør" level={rainLevel(report.precip, report.normalPrecip)} />
+              </div>
             </div>
           ))}
         </div>
@@ -105,9 +101,7 @@ export function SidePanel() {
               <span className="block">
                 {index + 1} {site.name}
               </span>
-              <span className="block text-xs text-muted-foreground tabular-nums">
-                {nb(site.temp, 0)}° · {site.tag}
-              </span>
+              <span className="block text-xs text-muted-foreground">{site.tag}</span>
             </button>
           ))}
         </div>
@@ -182,15 +176,18 @@ export function SidePanel() {
           max={1.45}
           step={0.05}
           value={jet.speedMul}
-          display={`${nb(speed, 0)} m/s · ${nb(speed * 3.6, 0)} km/t`}
+          display={`${windLevel(speed, "jet").label} vind`}
           low="Svakere enn årstiden"
           high="Sterkere"
           onChange={(speedMul) => patchJet(selected, { speedMul })}
         />
         <p className="text-sm text-muted-foreground">
           Klimatologisk kjerne i {monthNameOnly(month)} ligger nær {nb(Math.abs(climLat(selected, month)), 0)}°
-          {climLat(selected, month) >= 0 ? " N" : " S"}, med typisk fart {nb(baseSpeed(selected, month), 0)} m/s.
-          Fasefart nå {nb(c, 0)} m/s. Fri bøy opp til {nb(bend, 0)}°.
+          {climLat(selected, month) >= 0 ? " N" : " S"}, med {windLevel(baseSpeed(selected, month), "jet").label} vind som typisk.
+          {" "}
+          {Math.abs(c) < 3 ? "Bølgemønsteret står nesten stille." : c > 0 ? "Bølgemønsteret driver østover." : "Bølgemønsteret driver vestover."}
+          {" "}
+          {bend > 0.5 ? "Banen er bøyd for hånd." : ""}
         </p>
         <button
           type="button"

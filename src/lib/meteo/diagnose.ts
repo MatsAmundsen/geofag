@@ -1,9 +1,10 @@
-import { CLIMATE_NOTE, CLIMATE_SUMMARY, STORY } from "@/lib/meteo/fagtekst";
+import { CLIMATE_NOTE, CLIMATE_SUMMARY, PHASE_TEXT, STORY, WIND_TEXT, tempLevel, windLevel } from "@/lib/meteo/fagtekst";
 import { continentalityAt } from "@/lib/meteo/land";
 import {
   anomalyAt,
   couplings,
   evaluate,
+  referenceJets,
   formatLat,
   formatLon,
   jetHem,
@@ -47,6 +48,10 @@ export type Report = {
   temp: number;
   anomaly: number;
   precip: number;
+  /** Nedbør på samme sted med rett jetstrøm og nøytral ENSO/IOD (relativ referanse). */
+  normalPrecip: number;
+  windSurface: number;
+  windJet?: number;
   weather: string;
   windLine: string;
   story: string;
@@ -218,10 +223,10 @@ export function reportAt(
   const where = STORY.where(jetCardinal, side);
   const story = `${where} ${pattern} ${anomalyLine}${block}${hill}${meet}${plume}${climateNote(lat, lon, sky.modes, month)}`;
 
-  const jetBit = wind.jet
-    ? ` I ${wind.jetName} over deg er det om lag ${nb(wind.jet, 0)} m/s (${nb(wind.jet * 3.6, 0)} km/t).`
-    : "";
-  const windLine = `${wind.from.charAt(0).toUpperCase()}${wind.from.slice(1)}lig vind, ${nb(wind.surface, 0)} m/s nær bakken.${jetBit}`;
+  const jetBit = wind.jet && wind.jetName ? WIND_TEXT.jet(wind.jetName, windLevel(wind.jet, "jet").label) : "";
+  const windLine = `${WIND_TEXT.surface(wind.from, windLevel(wind.surface, "bakke").label)}${jetBit}`;
+  const flat = evaluate(referenceJets(jets), month, CLIMATE_OFF);
+  const normalPrecip = precipAt(lat, lon, flat, month, cont).rate;
 
   return {
     title: regionName(lat, lon),
@@ -229,6 +234,9 @@ export function reportAt(
     temp,
     anomaly,
     precip: rain.rate,
+    normalPrecip,
+    windSurface: wind.surface,
+    windJet: wind.jet,
     weather: weatherWord(temp, rain.rate),
     windLine,
     story,
@@ -273,8 +281,8 @@ export function worldHeadline(jets: Jets, month: number, modes: ClimateModes = C
     Math.abs(c) < 4
       ? "mønsteret ligger nesten i ro"
       : c > 0
-        ? `mønsteret driver østover med ${nb(c, 0)} m/s`
-        : `mønsteret driver vestover med ${nb(Math.abs(c), 0)} m/s`;
+        ? "mønsteret driver østover"
+        : "mønsteret driver vestover";
   const blocking = jet.amp >= 12 && jet.wave <= 4 && Math.abs(c) < 12;
   const south = month >= 5 && month <= 7 ? " Sør for ekvator er det vinter, og polarjeten der er på det sterkeste." : "";
   const meet = couplings(evaluate(jets, month, modes));
@@ -295,12 +303,11 @@ export function phaseCaption(jets: Jets, id: JetId, month: number): string {
   const nStar = stationaryWave(jets[id], id, month);
   const lat = jetHem(id) === "N" ? 50 : -50;
   const circ = 2 * Math.PI * 6_371_000 * Math.cos((Math.abs(lat) * Math.PI) / 180);
-  if (Math.abs(c) < 3) {
-    return `Fasefarten er nesten null. En bølge med bølgetall nær ${nb(nStar, 1)} blir stående, og været låser seg.`;
-  }
-  const days = circ / Math.abs(c) / 86_400;
+  void circ;
+  void nStar;
+  if (Math.abs(c) < 3) return PHASE_TEXT.still;
   const way = c > 0 ? "østover" : "vestover";
-  return `Fasefart ${nb(c, 0)} m/s ${way}. Mønsteret bruker om lag ${nb(days, 0)} døgn på en runde. Stående bølge ved bølgetall ${nb(nStar, 1)}.`;
+  return PHASE_TEXT.moving(way, windLevel(Math.abs(c) * 3, "jet").label);
 }
 
 export function jetLabel(id: JetId): string {
@@ -369,7 +376,7 @@ export function focusSites(
           ? "Polarjeten ligger over området"
           : subOver
             ? "Den subtropiske jetstrømmen ligger over området"
-            : `Nærmeste jetstrøm er om lag ${nb(Math.min(polarDist, subDist) * 111, 0)} km unna`;
+            : PHASE_TEXT.nearest(Math.min(polarDist, subDist) < 15 ? PHASE_TEXT.near : PHASE_TEXT.far);
     return { ...area, role, kind: weatherKind(temp, rain, wind), temp, tag };
   });
 }
@@ -407,8 +414,9 @@ export function placeWeather(
   const extra = meet.precip - alone;
   const rainBit =
     extra > 2
-      ? `${nb(extra, 0)} mm mer nedbør i døgnet enn den våteste av dem alene`
-      : "nedbøren omtrent som når den våteste av dem ligger alene over stedet";
-  const line = `Banen du tegnet: ${nb(now.temp, 0)}° og ${now.weather}. Hvis banen bøyes slik at polarjeten ligger over: ${nb(polar.temp, 0)}° og ${polar.weather}. Hvis den subtropiske ligger over: ${nb(sub.temp, 0)}° og ${sub.weather}. Hvis begge møtes over stedet: ${nb(meet.temp, 0)}° og ${meet.weather}, med ${rainBit}. ${site.role}`;
+      ? PHASE_TEXT.rainMeet
+      : PHASE_TEXT.rainSame;
+  const t = (r: Report) => tempLevel(r.anomaly).label;
+  const line = `Banen du tegnet: ${t(now)}, ${now.weather}. Hvis banen bøyes slik at polarjeten ligger over: ${t(polar)}, ${polar.weather}. Hvis den subtropiske ligger over: ${t(sub)}, ${sub.weather}. Hvis begge møtes over stedet: ${t(meet)}, ${meet.weather}, med ${rainBit}. ${site.role}`;
   return { now, polar, sub, meet, line };
 }

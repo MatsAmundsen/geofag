@@ -25,7 +25,7 @@ export const SLIDER_TEXT = {
   iodAria: "IOD-fase, DMI",
   iodTicks: ["negativ IOD", "nøytral", "positiv IOD"],
   ensoScale:
-    "ONI er havtemperaturavviket i det sentrale ekvatoriale Stillehavet. El Niño fra +0,5, La Niña fra −0,5, nøytral mellom. Effekten øker gradvis jo lenger fra null.",
+    "ONI er havtemperaturavviket i det sentrale og østlige ekvatoriale Stillehavet (Niño 3.4-området). El Niño fra +0,5, La Niña fra −0,5, nøytral mellom. Effekten øker gradvis jo lenger fra null.",
   iodScale:
     "DMI er forskjellen i havtemperatur mellom vestlige og østlige tropiske Indiahav. Positiv fra +0,4, negativ fra −0,4, nøytral mellom. Effekten øker gradvis.",
   iodDjfNote:
@@ -65,7 +65,7 @@ export const PATTERN_TEXT: Record<PatternId | "custom", { title: string; body: s
   },
   nina: {
     title: "La Niña (desember–februar)",
-    body: "Havet i det østlige og sentrale ekvatoriale Stillehavet er kaldere enn normalt, og passatvinden er sterkere. Stillehavsjeten trekker seg vestover og bukter seg mot nord, og sørvest i USA blir det ofte tørrere enn normalt. Indonesia og Australia får ofte mer regn enn normalt.",
+    body: "Havet i det østlige og sentrale ekvatoriale Stillehavet er kaldere enn normalt, og passatvinden er sterkere. Stillehavsjeten trekker seg vestover og bukter seg mot nord, og sørvest i USA blir det ofte tørrere enn normalt. Indonesia og store deler av Australia, særlig i nord og øst, får ofte mer regn enn normalt.",
   },
   iodPos: {
     title: "Positiv IOD (september–november)",
@@ -73,7 +73,7 @@ export const PATTERN_TEXT: Record<PatternId | "custom", { title: string; body: s
   },
   iodNeg: {
     title: "Negativ IOD (september–november)",
-    body: "Varmt vann samler seg nær Indonesia og Nordvest-Australia. Det gir mer fukt til værsystemene, og Sør-Australia får ofte mer regn enn normalt om vinteren og våren. Øst-Afrika får ofte mindre regn enn normalt.",
+    body: "Varmt vann samler seg nær Indonesia og Nordvest-Australia. Det gir mer fukt til værsystemene, og Sør-Australia får ofte mer regn enn normalt om vinteren og våren på sørlig halvkule. Øst-Afrika får ofte mindre regn enn normalt.",
   },
   custom: {
     title: "Egen kombinasjon",
@@ -85,11 +85,11 @@ export const PATTERN_TEXT: Record<PatternId | "custom", { title: string; body: s
 
 export const CLIMATE_SUMMARY = {
   nino: "El Niño: varmere enn normalt i det østlige og sentrale ekvatoriale Stillehavet. Stillehavsjeten strekker seg lenger øst og ligger lenger sør, og lavtrykk når oftere den sørlige delen av USA. Indonesia og Nord-Australia blir ofte tørrere enn normalt. Virkningen er størst om vinteren på nordlig halvkule.",
-  nina: "La Niña: kaldere enn normalt i det østlige og sentrale ekvatoriale Stillehavet. Stillehavsjeten trekker seg vestover og bukter seg mot nord, og sørvest i USA blir det ofte tørrere enn normalt. Indonesia og Australia får ofte mer regn enn normalt.",
+  nina: "La Niña: kaldere enn normalt i det østlige og sentrale ekvatoriale Stillehavet. Stillehavsjeten trekker seg vestover og bukter seg mot nord, og sørvest i USA blir det ofte tørrere enn normalt. Indonesia og store deler av Australia, særlig i nord og øst, får ofte mer regn enn normalt.",
   iodPositive:
     "Positiv IOD: varmere enn normalt i det vestlige Indiahavet og kaldere i det østlige. Øst-Afrika får ofte mer regn i den korte regntiden, Indonesia og Sør-Australia ofte mindre. Lavtrykksbanen over Sør-Australia forskyves litt.",
   iodNegative:
-    "Negativ IOD: varmt vann samler seg nær Indonesia og Nordvest-Australia. Sør-Australia får ofte mer regn enn normalt om vinteren og våren, Øst-Afrika ofte mindre. Lavtrykksbanen over Sør-Australia forskyves litt.",
+    "Negativ IOD: varmt vann samler seg nær Indonesia og Nordvest-Australia. Sør-Australia får ofte mer regn enn normalt om vinteren og våren på sørlig halvkule, Øst-Afrika ofte mindre. Lavtrykksbanen over Sør-Australia forskyves litt.",
   neutral: "ENSO og IOD er nøytrale. Havet følger årstiden, uten ekstra El Niño, La Niña eller dipol i Indiahavet.",
   iodOffSeason: "IOD har lite å si nå, fordi hendelsene vanligvis er over i november–desember.",
 } as const;
@@ -113,6 +113,56 @@ export const STORY = {
   plume: " En atmosfærisk elv treffer stedet: en smal korridor med fuktig luft foran en kaldfront. Der den møter kystfjell, blir nedbøren ofte kraftig.",
 } as const;
 
+/* ---------- Relative skalaer (ingen absolutte tall med enheter i modellen) ---------- */
+
+export type RelLevel = { label: string; step: number; steps: number; tone: "cold" | "warm" | "neutral" | "wet" | "dry" | "wind" };
+
+/** Temperatur mot en rett, klimatologisk jetstrøm samme måned (modellens «normal»). */
+export function tempLevel(anomaly: number): RelLevel {
+  const steps = 5;
+  if (anomaly <= -6) return { label: "mye kaldere enn normalt", step: 0, steps, tone: "cold" };
+  if (anomaly <= -2) return { label: "kaldere enn normalt", step: 1, steps, tone: "cold" };
+  if (anomaly < 2) return { label: "nær normalt", step: 2, steps, tone: "neutral" };
+  if (anomaly < 6) return { label: "mildere enn normalt", step: 3, steps, tone: "warm" };
+  return { label: "mye mildere enn normalt", step: 4, steps, tone: "warm" };
+}
+
+/** Nedbør mot samme sted med rett jetstrøm og nøytral ENSO/IOD. */
+export function rainLevel(precip: number, normal: number): RelLevel {
+  const steps = 3;
+  const diff = precip - normal;
+  const rel = diff / Math.max(1.5, normal);
+  if (rel > 0.3 && diff > 0.8) return { label: "mer nedbør enn normalt", step: 2, steps, tone: "wet" };
+  if (rel < -0.3 && diff < -0.8) return { label: "mindre nedbør enn normalt", step: 0, steps, tone: "dry" };
+  return { label: "nedbør som normalt", step: 1, steps, tone: "neutral" };
+}
+
+/** Vind nær bakken eller i jetkjernen, relativt. */
+export function windLevel(speed: number, where: "bakke" | "jet"): RelLevel {
+  const steps = 3;
+  const [weak, strong] = where === "bakke" ? [4, 9] : [30, 50];
+  if (speed < weak) return { label: "svak", step: 0, steps, tone: "wind" };
+  if (speed < strong) return { label: "middels", step: 1, steps, tone: "wind" };
+  return { label: "sterk", step: 2, steps, tone: "wind" };
+}
+
+export const WIND_TEXT = {
+  surface: (from: string, level: string) => `${from.charAt(0).toUpperCase()}${from.slice(1)}lig vind, ${level} nær bakken.`,
+  jet: (name: string, level: string) => ` ${name.charAt(0).toUpperCase()}${name.slice(1)} over deg er ${level}.`,
+  jetCore: (level: string) => `Jetkjernen: ${level} vind`,
+} as const;
+
+export const PHASE_TEXT = {
+  still: "Bølgemønsteret står nesten stille, og været låser seg lett.",
+  moving: (way: string, level: string) =>
+    `Bølgemønsteret driver ${way}, ${level === "sterk" ? "raskt" : level === "middels" ? "moderat" : "sakte"}. Lange bølger driver saktere enn korte.`,
+  nearest: (level: string) => `Nærmeste jetstrøm ligger ${level} unna`,
+  near: "nær",
+  far: "langt",
+  rainMeet: "mer nedbør enn når den våteste av dem ligger alene over stedet",
+  rainSame: "nedbøren omtrent som når den våteste av dem ligger alene over stedet",
+} as const;
+
 /* ---------- Fuktpiler og legende ---------- */
 
 export const FLOW_TEXT = {
@@ -131,12 +181,12 @@ export const LEGEND_TEXT = {
 
 /** Eksempler på jetbaner (presets.ts). */
 export const JET_PRESET_BLURB: Record<string, string> = {
-  "vinter": "Januar med fem bølger. Polarjeten og den subtropiske jetstrømmen ligger nær hverandre i trågene.",
+  "vinter": "Eksempel: januar med fem bølger. Polarjeten og den subtropiske jetstrømmen ligger nær hverandre i trågene.",
   "rett": "Sonal vinter. Fronten ligger jevnt, og lavtrykkene går raskt østover.",
   "nao-pluss": "Sterk, nordlig atlanterhavsjet. Ofte mildere og våtere enn normalt i Norge og på De britiske øyer.",
   "nao-minus": "Rygg ved Grønland, tråg ned mot Middelhavet. Ofte kaldere enn normalt i Nord-Europa.",
   "usa": "Dypt tråg over det østlige Nord-Amerika. Mild rygg i vest.",
-  "juli": "Polarjeten ligger langt nord og er svak. Den subtropiske jetstrømmen i nord er nesten borte.",
+  "juli": "Polarjeten ligger langt nord og er svak. Den subtropiske jetstrømmen i nord er svak og ligger lenger nord enn om vinteren.",
   "sor": "Juli sør for ekvator. Sterk og ganske rett polarjet rundt Sørishavet.",
 };
 
@@ -147,7 +197,7 @@ export const EXPLAIN = {
   why: [
     "Solen varmer ekvator mer enn polene. Varm luft er tykkere, så trykkflatene heller. Corioliskraften bøyer høydevinden til den blir vestlig. Skiftet er sterkest der temperaturen faller raskest, langs polarfronten, og det summerer seg opp mot tropopausen. Det er jetstrømmen.",
     "En luftpakke som skyves mot polen møter mer av jordens egen virvling. For å bevare den totale virvlingen må den spinne motsatt vei, og svinger tilbake mot ekvator. Det blir en Rossby-bølge. Temperaturkontrasten gir energi, så bølgene vokser lett, og en rett jet holder sjelden lenge.",
-    "Fasefarten er c = U − β/k². Lange bølger kan stå stille. Korte bølger beveger seg østover med vinden. Derfor gir få, dype svinger oftere blokkering, mens en rett jet sender lavtrykkene raskere videre. Regnet kommer av løft i lavtrykk og fronter, av konveksjon og av fjell. Jeten styrer hvor lavtrykkene går, den lager ikke regnet selv.",
+    "Fasefarten er c = U − β/k², der U er vestavinden, β er hvor raskt jordens virvling øker mot nord, og k er bølgetallet. Lange bølger kan stå stille. Korte bølger beveger seg østover med vinden. Derfor gir få, dype svinger oftere blokkering, mens en rett jet sender lavtrykkene raskere videre. Regnet kommer av løft i lavtrykk og fronter, av konveksjon og av fjell. Jeten styrer hvor lavtrykkene går, den lager ikke regnet selv.",
   ],
   arTitle: "Atmosfæriske elver",
   ar: [

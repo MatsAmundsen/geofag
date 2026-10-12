@@ -1,3 +1,4 @@
+import { windLevel } from "@/lib/meteo/fagtekst";
 import { continentalityAt } from "@/lib/meteo/land";
 import {
   clamp,
@@ -110,15 +111,13 @@ export function CrossSection({ jets, month, lon, hem, modes = CLIMATE_OFF }: Pro
           opacity="0.85"
         />
         <text x={xOf(ribbonLat(polar, lon))} y={yOf(10.4) + 3} textAnchor="middle" fill="var(--color-primary-foreground)" fontSize="9">
-          {nb(polar.speed, 0)} m/s
+          {windLevel(polar.speed, "jet").label}
         </text>
-        {[0, 5, 10, 15].map((z) => (
-          <text key={z} x="4" y={yOf(z) + 3} fill="var(--color-muted-foreground)" fontSize="9">
-            {z}
-          </text>
-        ))}
+        <text x="4" y={yOf(0) - 3} fill="var(--color-muted-foreground)" fontSize="9">
+          bakken
+        </text>
         <text x="4" y="12" fill="var(--color-muted-foreground)" fontSize="9">
-          km
+          høyde ↑
         </text>
         <text x={left} y="204" fill="var(--color-muted-foreground)" fontSize="10">
           mot ekvator

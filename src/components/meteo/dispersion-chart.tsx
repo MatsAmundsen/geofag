@@ -37,7 +37,8 @@ export function DispersionChart({ jets, id, month }: Props) {
                 label={{ value: "bølgetall", position: "insideBottom", offset: -2, fill: "var(--color-muted-foreground)", fontSize: 11 }}
               />
               <YAxis
-                tick={{ fill: "var(--color-muted-foreground)", fontSize: 12 }}
+                tick={false}
+                label={{ value: "↑ østover · vestover ↓", angle: -90, position: "insideLeft", fill: "var(--color-muted-foreground)", fontSize: 11 }}
                 stroke="var(--color-border)"
                 tickLine={false}
                 width={36}
@@ -52,7 +53,7 @@ export function DispersionChart({ jets, id, month }: Props) {
                   borderRadius: 8,
                   color: "var(--color-foreground)",
                 }}
-                formatter={(value) => [`${value} m/s`, "fasefart"]}
+                formatter={(value) => [Number(value) > 0 ? "østover" : Number(value) < 0 ? "vestover" : "står stille", "bølgemønsteret driver"]}
                 labelFormatter={(label) => `Bølgetall ${label}`}
               />
               <Line type="monotone" dataKey="c" stroke="currentColor" strokeWidth={2} dot={false} />

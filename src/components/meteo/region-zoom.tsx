@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { RelScale } from "@/components/meteo/rel-scale";
+import { rainLevel, tempLevel } from "@/lib/meteo/fagtekst";
 import { activeFlows } from "@/lib/meteo/moisture-flows";
 import { ensoAmp, iodAmp } from "@/lib/meteo/physics";
 
@@ -132,15 +134,11 @@ function Pane({
       <h3 className="font-display text-lg text-foreground">{title}</h3>
       <p className="text-xs text-muted-foreground">{note}</p>
       <canvas ref={ref} className="h-40 w-full rounded-lg bg-[#0c2433] sm:h-48" aria-label={title} />
-      <p className="font-display text-3xl text-foreground tabular-nums">
-        {nb(report.temp, 0)}° <span className="font-sans text-base text-muted-foreground">{report.weather}</span>
-      </p>
-      <p className="text-sm text-foreground">
-        Nedbør {nb(report.precip, 0)} mm/døgn
-        {report.anomaly >= 1 || report.anomaly <= -1
-          ? ` · avvik ${report.anomaly > 0 ? "+" : "−"}${nb(Math.abs(report.anomaly), 0)}°`
-          : ""}
-      </p>
+      <p className="font-display text-xl text-foreground">{report.weather}</p>
+      <div className="flex flex-col gap-1" data-testid="zoom-skala">
+        <RelScale kind="Temperatur" level={tempLevel(report.anomaly)} />
+        <RelScale kind="Nedbør" level={rainLevel(report.precip, report.normalPrecip)} />
+      </div>
       <p className="text-sm text-muted-foreground">{report.windLine}</p>
     </section>
   );
@@ -339,7 +337,6 @@ function drawRegion(
   ctx.font = "500 12px Outfit, sans-serif";
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
-  ctx.fillText(`${nb(temp, 0)}° · ${nb(rain, 0)} mm`, 14, h - 16);
   if (meet) ctx.fillText(meet.crossed ? "Jetstrømmene krysser" : "Jetstrømmer nær hverandre", 14, 22);
 }
 
