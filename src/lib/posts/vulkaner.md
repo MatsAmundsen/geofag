@@ -58,7 +58,7 @@ MagmaViscosity
 | --- | --- | --- | --- | --- | --- |
 | Basaltisk (mafisk) | 45–52 % | 1050–1200 °C | Lav | Rolig (effusiv) | Midthavsrygg, Island, Hawaii (hotspot) |
 | Andesittisk (intermediær) | 52–63 % | 850–1050 °C | Middels | Eksplosiv til sammensatt | Subduksjonssoner |
-| Ryolittisk/dasittisk (felsisk) | &gt;63 % (opptil 75 %) | 700–850 °C | Høy | Svært eksplosiv | Kontinentalskorpe, store kalderaer |
+| Ryolittisk/dasittisk (felsisk) | >63 % (opptil 75 %) | 700–850 °C | Høy | Svært eksplosiv | Kontinentalskorpe, store kalderaer |
 
 ### Gass i magma
 
@@ -78,9 +78,9 @@ Magmaens egenskaper styrer både utbruddet og formen på vulkanen. Vi skiller me
 VolcanoTypes
 ```
 
-![3D-sammenligning av skjoldvulkan, stratovulkan, sinderkjegle og kaldera](/images/geo-vulkantyper-3d.jpg)
+![3D-sammenligning av skjoldvulkan, stratovulkan, sinderkjegle og kaldera. Eksempler: Mauna Loa (Hawaii), Fuji (Japan), Parícutin (Mexico) og Crater Lake (Oregon, USA)](/images/geo-vulkantyper-3d.jpg)
 
-*Tre hovedtyper vulkaner (skjoldvulkan, stratovulkan og sinderkjegle) og kalderaer. Formen følger hvor seig magmaen er.*
+*Tre hovedtyper vulkaner (skjoldvulkan, stratovulkan og sinderkjegle) og kalderaer. Formen følger hvor seig magmaen er. Illustrasjon med norske etiketter.*
 
 ### Skjoldvulkaner
 
@@ -141,17 +141,17 @@ Begrepet pliniansk utbrudd er oppkalt etter Plinius den yngre. I brev til Tacitu
 VolcanoEruptionAnatomy
 ```
 
-![3D-tverrsnitt av et pliniansk utbrudd med askesøyle, paraplysky, pyroklastisk strøm og lahar](/images/geo-pliniansk-anatomi.jpg)
+![3D-tverrsnitt av et pliniansk utbrudd med askesøyle, paraplysky, pyroklastisk strøm og lahar. Eksempel fra Vesuv (Italia) og lignende utbrudd](/images/geo-pliniansk-anatomi.jpg)
 
-*Paraplysky (umbrella cloud) og pyroklastisk strøm (pyroclastic density current, PDC) er to måter asken beveger seg på etter at søylen har steget.*
+*Paraplysky og pyroklastisk strøm (PDC) er to måter asken beveger seg på etter at søylen har steget. Illustrasjon med norske etiketter.*
 
 ## To utbrudd på Island: Eyjafjallajökull og Fagradalsfjall
 
 Våren 2010 stanset et utbrudd på Island (VEI 4) store deler av flytrafikken i Europa. Over 100 000 flygninger ble kansellert, og 10 millioner reisende ble stående igjen (Gíslason mfl., 2011).
 
-![Eyjafjallajökulls utbrudd i 2010, med askesky over isbreen](/images/geo-eyjafjallajokull-aske.jpg)
+![Eyjafjallajökulls utbrudd i 2010 på Island, med askesky over isbreen](/images/geo-eyjafjallajokull-aske.jpg)
 
-*Eyjafjallajökull 2010. Magma møtte smeltevann fra isbreen og ga finkornet aske (Gíslason mfl., 2011).*
+*Eyjafjallajökull 2010, Island. Magma møtte smeltevann fra isbreen og ga finkornet aske (Gíslason mfl., 2011).*
 
 Tre forhold virket sammen:
 
@@ -179,15 +179,15 @@ VeiScale
 
 | VEI | Tefravolum | Søylehøyde | Klassifisering | Hvor ofte globalt | Kjente eksempler |
 | --- | --- | --- | --- | --- | --- |
-| 0 | &lt; 10 000 m³ | &lt; 100 m | Hawaiisk (effusiv) | – | Kilauea, Fagradalsfjall (Island) |
-| 1 | &gt; 10 000 m³ | 0,1–1 km | Hawaiisk / strombolsk | – | Stromboli (Italia) |
-| 2 | &gt; 1 mill. m³ | 1–5 km | Strombolsk / vulkansk | – | Galeras (Colombia) |
-| 3 | &gt; 10 mill. m³ | 3–15 km | Vulkansk / subpliniansk | Noen ganger i året | Nevado del Ruiz (1985) |
-| 4 | &gt; 0,1 km³ | 10–25 km | Subpliniansk / pliniansk | Ca. hvert 1.–2. år | Eyjafjallajökull (2010) |
-| 5 | &gt; 1 km³ | 20–35 km | Pliniansk | ~1 per 12 år | Mount St. Helens (1980), Vesuv (79) |
-| 6 | &gt; 10 km³ | &gt; 30 km | Ultrapliniansk / kaldera | ~1 per 100 år | Pinatubo (1991), Krakatau (1883) |
-| 7 | &gt; 100 km³ | &gt; 35 km | Kaldera | Svært sjelden (siste: Tambora 1815) | Tambora (1815), Santorini (~1600 f.Kr.) |
-| 8 | &gt; 1000 km³ | &gt; 45 km | Supervulkan | Ingen i historisk tid | Toba (74 000 år siden), Yellowstone |
+| 0 | < 10 000 m³ | < 100 m | Hawaiisk (effusiv) | – | Kilauea, Fagradalsfjall (Island) |
+| 1 | > 10 000 m³ | 0,1–1 km | Hawaiisk / strombolsk | – | Stromboli (Italia) |
+| 2 | > 1 mill. m³ | 1–5 km | Strombolsk / vulkansk | – | Galeras (Colombia) |
+| 3 | > 10 mill. m³ | 3–15 km | Vulkansk / subpliniansk | Noen ganger i året | Nevado del Ruiz (1985) |
+| 4 | > 0,1 km³ | 10–25 km | Subpliniansk / pliniansk | Ca. hvert 1.–2. år | Eyjafjallajökull (2010) |
+| 5 | > 1 km³ | 20–35 km | Pliniansk | ~1 per 12 år | Mount St. Helens (1980), Vesuv (79) |
+| 6 | > 10 km³ | > 30 km | Ultrapliniansk / kaldera | ~1 per 100 år | Pinatubo (1991), Krakatau (1883) |
+| 7 | > 100 km³ | > 35 km | Kaldera | Svært sjelden (siste: Tambora 1815) | Tambora (1815), Santorini (~1600 f.Kr.) |
+| 8 | > 1000 km³ | > 45 km | Supervulkan | Ingen i historisk tid | Toba (74 000 år siden), Yellowstone |
 
 *Kilder:* skalaen fra Newhall og Self (1982). Hvor ofte VEI 3–4 forekommer, bygger på Global Volcanism Program (u.å.-a), som har registrert ca. 4 VEI 3-utbrudd og 1 VEI 4-utbrudd i året i 2023–2025, og på Hoblitt og Scott (2011). VEI 5 bygger på Newhall og Hoblitt (2002, sitert i Hoblitt & Scott, 2011), og VEI 6–7 på Tilling mfl. (1990), som har registrert ett VEI 7- og fire VEI 6-utbrudd siden år 1500. For VEI 0–2 oppgir vi ingen hyppighet.
 
@@ -289,60 +289,6 @@ Norge har én aktiv vulkan: **Beerenberg på Jan Mayen**, 2272 meter over havet.
 ### Beerenberg
 
 - Høyde: 2272 meter over havet
-- Type: Stratovulkan. Utbruddene veksler mellom lavastrømmer og tefra.
+- Type: Stratovulkan, isdekket
 - Siste utbrudd: 1985
-- Dekket av isbreer, blant annet Weyprechtbreen og Kronprins Olavs bre
-
-### Tektonisk sammenheng
-
-Norskehavet begynte å åpne seg for ca. 55 millioner år siden (Bryhni & Fossen, 2024). Jan Mayen ligger på et lite mikrokontinent som først ble skilt fra Norge da havbunnsspredningen langs Aegirryggen begynte for ca. 54 millioner år siden, og som senere ble isolert da Kolbeinseyryggen åpnet seg for ca. 23–20 millioner år siden (NGU, 2015). Øya ligger i ryggsystemet i Norskehavet, mellom Kolbeinseyryggen og Mohnsryggen (Norsk Polarinstitutt, u.å.).
-
-```widget
-JanMayen
-```
-
-## Viktige faglige begreper
-
-**Viskositet:** En væskes motstand mot å flyte. Den øker med silikatinnholdet (SiO₂) og synker med temperaturen.
-
-**Eksolusjon:** Utskilling av oppløst gass som bobler når trykket faller.
-
-**Skjoldvulkan:** Stor, slak vulkan bygd av tyntflytende basaltisk lava.
-
-**Stratovulkan:** Bratt, lagdelt vulkankjegle bygd opp av vekslende lag av seig lava og tefra.
-
-**Sinderkjegle (scoria cone):** Liten, bratt haug av slagg og sinder rundt åpningen.
-
-**Kaldera:** Stor, sirkulær innsynkning, ofte 5–50 km bred, som oppstår når taket over et delvis tømt magmakammer faller ned.
-
-**Hotspot:** Langvarig, varm sone under platen som leverer magma mens platen glir over.
-
-**Freatomagmatisme:** Eksplosivt utbrudd når magma møter vann eller is, som ved Eyjafjallajökull.
-
-**Paraplysky (umbrella cloud):** Askeskyen som brer seg ut til siden når søylen ikke stiger lenger.
-
-**VEI:** Vulkansk eksplosivitetsindeks (Volcanic Explosivity Index), en skala fra 0 til 8 for hvor mye tefra som kastes ut, og hvor høyt søylen når.
-
-**Pyroklastisk strøm (pyroclastic density current, PDC):** Varm strøm av gass, aske og stein (vanligvis 200–700 °C) som beveger seg raskt nedover vulkanen, vanligvis raskere enn 80 km/t.
-
-**Lahar:** Vulkansk slamstrøm av aske, stein og vann som følger elvedaler.
-
-**Vulkansk vinter:** Kjøligere klima etter store utbrudd, fordi svovelsyredråper i stratosfæren sprer sollys.
-
-**Harmonisk tremor:** Jevn, lavfrekvent risting fra magma og gass som strømmer i sprekker.
-
-**Farekart:** Kart som viser hvilke områder som kan bli rammet av lava, aske, pyroklastiske strømmer og laharer.
-
-**Lavabarriere:** Voll av stein og løsmasser som skal lede en lavastrøm bort fra hus og infrastruktur.
-
-## Sammendrag
-
-```widget
-SammendragVulkaner
-```
-
-## Test deg selv
-
-```widget
-QuizVulkaner
-```
+- Kjente utbrudd: 1970 og 1985
