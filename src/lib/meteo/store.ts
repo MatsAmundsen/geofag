@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { DEFAULT_PRESET, type Preset } from "@/lib/meteo/presets";
 import {
   cloneJets,
-  type EnsoPhase,
-  type IodPhase,
+  climateModes,
+  type ClimateModes,
   type JetId,
   type JetParams,
   type Jets,
@@ -39,8 +39,10 @@ type JetStore = {
   mapZoom: number;
   mapCenter: { lon: number; lat: number };
   mapLarge: boolean;
-  enso: EnsoPhase;
-  iod: IodPhase;
+  /** ONI, −2 … +2. */
+  oni: number;
+  /** DMI, −1,5 … +1,5. */
+  dmi: number;
   setMonth: (month: number) => void;
   setSelected: (id: JetId) => void;
   patchJet: (id: JetId, partial: Partial<JetParams>) => void;
@@ -57,8 +59,9 @@ type JetStore = {
   toggleMapLarge: () => void;
   resetMap: () => void;
   markLand: () => void;
-  setEnso: (enso: EnsoPhase) => void;
-  setIod: (iod: IodPhase) => void;
+  setOni: (oni: number) => void;
+  setDmi: (dmi: number) => void;
+  setClimate: (oni: number, dmi: number, month: number | null) => void;
 };
 
 const cleared = (jet: JetParams): JetParams => ({ ...jet, offsets: jet.offsets.map(() => 0) });
@@ -75,8 +78,8 @@ export const useJetStore = create<JetStore>((set) => ({
   mapZoom: 1,
   mapCenter: { lon: 10, lat: 20 },
   mapLarge: false,
-  enso: "off",
-  iod: "off",
+  oni: 0,
+  dmi: 0,
   setMonth: (month) => set({ month }),
   setSelected: (selected) => set({ selected }),
   patchJet: (id, partial) =>
@@ -107,6 +110,26 @@ export const useJetStore = create<JetStore>((set) => ({
   toggleMapLarge: () => set((state) => ({ mapLarge: !state.mapLarge })),
   resetMap: () => set({ mapZoom: 1, mapCenter: { lon: 10, lat: 20 } }),
   markLand: () => set((state) => ({ landTick: state.landTick + 1 })),
-  setEnso: (enso) => set({ enso }),
-  setIod: (iod) => set({ iod }),
+  setOni: (oni) => set({ oni: round1(oni) }),
+  setDmi: (dmi) => set({ dmi: round1(dmi) }),
+  setClimate: (oni, dmi, month) => set(month === null ? { oni, dmi } : { oni, dmi, month }),
 }));
+
+const round1 = (v: number) => Math.round(v * 10) / 10;
+
+const modeCache = { oni: Number.NaN, dmi: Number.NaN, modes: climateModes(0, 0) };
+/** Stabil ClimateModes for gitt ONI/DMI (samme objekt så lenge verdiene er like). */
+export function modesFor(oni: number, dmi: number): ClimateModes {
+  if (modeCache.oni !== oni || modeCache.dmi !== dmi) {
+    modeCache.oni = oni;
+    modeCache.dmi = dmi;
+    modeCache.modes = climateModes(oni, dmi);
+  }
+  return modeCache.modes;
+}
+
+export function useClimateModes(): ClimateModes {
+  const oni = useJetStore((s) => s.oni);
+  const dmi = useJetStore((s) => s.dmi);
+  return modesFor(oni, dmi);
+}

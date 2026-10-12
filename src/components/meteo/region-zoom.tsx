@@ -1,4 +1,10 @@
 import { useEffect, useRef } from "react";
+import { activeFlows } from "@/lib/meteo/moisture-flows";
+import { ensoAmp, iodAmp } from "@/lib/meteo/physics";
+
+/** Samme farger som world-map.tsx. */
+const MOIST = "#cba6f7";
+const TROP = "#5fd4a8";
 import { geoEquirectangular, geoGraticule, geoPath } from "d3-geo";
 import { drawSky } from "@/components/meteo/glyphs";
 import { borderGeometry, continentalityAt, landGeometry } from "@/lib/meteo/land";
@@ -19,9 +25,10 @@ import {
   weatherKind,
   windAt,
   JET_ORDER,
+  type ClimateModes,
   type JetId,
 } from "@/lib/meteo/physics";
-import { useJetStore, type Focus } from "@/lib/meteo/store";
+import { useClimateModes, useJetStore, type Focus } from "@/lib/meteo/store";
 
 export function RegionZoom() {
   const focus = useJetStore((s) => s.focus);
@@ -30,9 +37,7 @@ export function RegionZoom() {
   const month = useJetStore((s) => s.month);
   const showHighs = useJetStore((s) => s.layers.highs);
   const showLows = useJetStore((s) => s.layers.systems);
-  const enso = useJetStore((s) => s.enso);
-  const iod = useJetStore((s) => s.iod);
-  const modes = { enso, iod };
+  const modes = useClimateModes();
   useEffect(() => {
     if (!focus) return;
     const onKey = (event: KeyboardEvent) => {
@@ -100,7 +105,7 @@ function Pane({
   focus: Focus;
   jets: ReturnType<typeof useJetStore.getState>["jets"];
   month: number;
-  modes: { enso: "off" | "nino" | "nina"; iod: "off" | "positive" | "negative" };
+  modes: ClimateModes;
   showHighs: boolean;
   showLows: boolean;
   report: PlaceWeather["now"];
@@ -147,7 +152,7 @@ function drawRegion(
   jets: ReturnType<typeof useJetStore.getState>["jets"],
   month: number,
   mode: PassMode,
-  modes: { enso: "off" | "nino" | "nina"; iod: "off" | "positive" | "negative" },
+  modes: ClimateModes,
   showHighs: boolean,
   showLows: boolean,
 ) {
@@ -206,6 +211,28 @@ function drawRegion(
 
   const shaped = scenarioJets(jets, month, focus, mode);
   const sky = evaluate(shaped, month, modes);
+  // Fuktpiler (samme data og farger som verdenskartet), under jetene.
+  for (const { flow, s: strength, path: line } of activeFlows(ensoAmp(modes), iodAmp(modes), month)) {
+    ctx.beginPath();
+    line.forEach(([lon, lat], i) => {
+      const p = projection([lon, lat]);
+      if (!p) return;
+      if (i) ctx.lineTo(p[0], p[1]);
+      else ctx.moveTo(p[0], p[1]);
+    });
+    ctx.lineCap = "round";
+    ctx.strokeStyle = flow.kind === "ar" ? MOIST : TROP;
+    ctx.globalAlpha = 0.25 + 0.35 * strength;
+    ctx.lineWidth = flow.kind === "ar" ? 10 : 22;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    if (flow.kind === "ar") {
+      ctx.setLineDash([3, 3]);
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
   for (let iy = 0; iy < 18; iy++) {
     for (let ix = 0; ix < 24; ix++) {
       const lon = focus.lon - spanLon + ((ix + 0.5) / 24) * spanLon * 2;

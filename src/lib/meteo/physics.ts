@@ -253,10 +253,19 @@ export function ensoSeasonWeight(month: number): number {
   return 0.25 + 0.75 * Math.max(winterIndex(month), 0);
 }
 
+/**
+ * IOD virker fra mai til desember, sterkest i august–oktober, og dør ut i november–desember.
+ * Januar–april: ingen effekt. Indeks: 0 = januar.
+ */
+const IOD_SEASON = [0, 0, 0, 0, 0.25, 0.5, 0.75, 1, 1, 1, 0.5, 0.15];
 export function iodSeasonWeight(month: number): number {
-  const raw = Math.abs(month - 9);
-  const d = Math.min(raw, 12 - raw);
-  return Math.exp(-((d / 2.2) ** 2));
+  return IOD_SEASON[((Math.round(month) % 12) + 12) % 12] ?? 0;
+}
+
+/** Desember–februar: IOD-hendelser er vanligvis over. */
+export function isDjf(month: number): boolean {
+  const m = ((Math.round(month) % 12) + 12) % 12;
+  return m === 11 || m === 0 || m === 1;
 }
 
 export type Ribbon = {
@@ -272,12 +281,52 @@ export type Ribbon = {
 export type EnsoPhase = "off" | "nino" | "nina";
 export type IodPhase = "off" | "positive" | "negative";
 
+/** ONI-skala (°C) og terskel for El Niño / La Niña. */
+export const ONI_MIN = -2;
+export const ONI_MAX = 2;
+export const ONI_THRESHOLD = 0.5;
+/** DMI-skala (°C) og terskel for positiv / negativ IOD. */
+export const DMI_MIN = -1.5;
+export const DMI_MAX = 1.5;
+export const DMI_THRESHOLD = 0.4;
+
 export type ClimateModes = {
+  /** Fase utledet fra ONI med terskel ±0,5. */
   enso: EnsoPhase;
+  /** Fase utledet fra DMI med terskel ±0,4. */
   iod: IodPhase;
+  oni: number;
+  dmi: number;
 };
 
-export const CLIMATE_OFF: ClimateModes = { enso: "off", iod: "off" };
+export function ensoPhaseOf(oni: number): EnsoPhase {
+  return oni >= ONI_THRESHOLD ? "nino" : oni <= -ONI_THRESHOLD ? "nina" : "off";
+}
+export function iodPhaseOf(dmi: number): IodPhase {
+  return dmi >= DMI_THRESHOLD ? "positive" : dmi <= -DMI_THRESHOLD ? "negative" : "off";
+}
+export function climateModes(oni: number, dmi: number): ClimateModes {
+  return { enso: ensoPhaseOf(oni), iod: iodPhaseOf(dmi), oni, dmi };
+}
+
+/**
+ * Gradvis styrke (ikke sprang): starter svakt halvveis til terskelen og er 1 ved referanseverdien
+ * (ONI ±1,5 / DMI ±1,0, de kjente mønstrene). Tak 1,4.
+ */
+function ramp(x: number, threshold: number, reference: number): number {
+  const a = Math.abs(x);
+  const start = threshold / 2;
+  if (a <= start) return 0;
+  return Math.sign(x) * Math.min(1.4, (a - start) / (reference - start));
+}
+export function ensoAmp(modes: ClimateModes): number {
+  return ramp(modes.oni, ONI_THRESHOLD, 1.5);
+}
+export function iodAmp(modes: ClimateModes): number {
+  return ramp(modes.dmi, DMI_THRESHOLD, 1);
+}
+
+export const CLIMATE_OFF: ClimateModes = climateModes(0, 0);
 
 export type Atmosphere = {
   ribbons: Record<JetId, Ribbon>;
@@ -336,8 +385,8 @@ function buildRibbon(jet: JetParams, id: JetId, month: number, modes: ClimateMod
  * equator. The Pacific sector moves most, but the whole jet relocates.
  */
 function modeJetShift(id: JetId, lon: number, modes: ClimateModes, month: number): number {
-  const enso = modes.enso === "nino" ? 1 : modes.enso === "nina" ? -1 : 0;
-  const iod = modes.iod === "positive" ? 1 : modes.iod === "negative" ? -1 : 0;
+  const enso = ensoAmp(modes);
+  const iod = iodAmp(modes);
   const season = ensoSeasonWeight(month);
   const iodW = iodSeasonWeight(month);
   let shift = 0;
@@ -346,23 +395,23 @@ function modeJetShift(id: JetId, lon: number, modes: ClimateModes, month: number
     const eastPac = Math.exp(-((wrapLon(lon - -130) / 32) ** 2));
     if (id === "nstj") shift += enso * season * (-7 * pacific - 6 * eastPac);
     if (id === "npj") shift += enso * season * (-4 * pacific - 2 * eastPac);
-    if (id === "sstj") shift += enso * season * (5 * pacific + 3 * eastPac);
-    if (id === "spj") shift += enso * season * 3 * pacific;
+    // Sørlig halvkule: ENSO-effekten på jetene der er [USIKKER] i grunnlaget og tegnes ikke.
   }
-  if (iod && (id === "nstj" || id === "sstj")) {
-    const indian = Math.exp(-((wrapLon(lon - 70) / 32) ** 2));
-    const equatorward = id === "nstj" ? -1 : 1;
-    shift += iod * iodW * equatorward * 4 * indian;
+  if (iod && id === "spj") {
+    // IOD: bare en liten forskyvning av lavtrykksbanen over Sør-Australia. Ingen egen jet.
+    // Positiv IOD: banen litt mot polen (færre fronter). Negativ: litt mot ekvator.
+    const southAus = Math.exp(-((wrapLon(lon - 135) / 25) ** 2));
+    shift += -iod * iodW * 1.5 * southAus;
   }
   return shift;
 }
 
 function modeSpeedFactor(id: JetId, modes: ClimateModes, month: number): number {
-  if (id !== "nstj" && id !== "sstj") return 1;
+  // Bare nordlig subtropisk jet. Sterkere sørlig subtropisk jet ved El Niño er [USIKKER] og tegnes ikke.
+  if (id !== "nstj") return 1;
   const season = ensoSeasonWeight(month);
-  if (modes.enso === "nino") return 1 + 0.35 * season;
-  if (modes.enso === "nina") return 1 - 0.18 * season;
-  return 1;
+  const enso = ensoAmp(modes);
+  return 1 + (enso > 0 ? 0.35 : 0.18) * enso * season;
 }
 
 function climateBlob(lat: number, lon: number, cLat: number, cLon: number, latW: number, lonW: number): number {
@@ -371,8 +420,7 @@ function climateBlob(lat: number, lon: number, cLat: number, cLon: number, latW:
   return Math.exp(-(dLat * dLat + dLon * dLon));
 }
 
-export function ensoTemperature(lat: number, lon: number, phase: EnsoPhase): number {
-  const sign = phase === "nino" ? 1 : phase === "nina" ? -1 : 0;
+export function ensoTemperature(lat: number, lon: number, sign: number): number {
   if (!sign) return 0;
   return (
     sign * 2.4 * climateBlob(lat, lon, 0, -140, 10, 38) +
@@ -381,22 +429,21 @@ export function ensoTemperature(lat: number, lon: number, phase: EnsoPhase): num
   );
 }
 
-export function iodTemperature(lat: number, lon: number, phase: IodPhase): number {
-  const sign = phase === "positive" ? 1 : phase === "negative" ? -1 : 0;
+export function iodTemperature(lat: number, lon: number, sign: number): number {
   if (!sign) return 0;
   return sign * 1.5 * climateBlob(lat, lon, -6, 55, 12, 18) + sign * -1.3 * climateBlob(lat, lon, -8, 105, 11, 16);
 }
 
 export function modeTemperature(lat: number, lon: number, modes: ClimateModes, month: number): number {
   return (
-    ensoSeasonWeight(month) * ensoTemperature(lat, lon, modes.enso) +
-    iodSeasonWeight(month) * iodTemperature(lat, lon, modes.iod)
+    ensoSeasonWeight(month) * ensoTemperature(lat, lon, ensoAmp(modes)) +
+    iodSeasonWeight(month) * iodTemperature(lat, lon, iodAmp(modes))
   );
 }
 
 export function modePrecip(lat: number, lon: number, modes: ClimateModes, month: number): number {
-  const enso = modes.enso === "nino" ? 1 : modes.enso === "nina" ? -1 : 0;
-  const iod = modes.iod === "positive" ? 1 : modes.iod === "negative" ? -1 : 0;
+  const enso = ensoAmp(modes);
+  const iod = iodAmp(modes);
   let rain = 0;
   const ensoW = ensoSeasonWeight(month);
   const iodW = iodSeasonWeight(month);
@@ -410,7 +457,8 @@ export function modePrecip(lat: number, lon: number, modes: ClimateModes, month:
   if (iod) {
     rain += iod * iodW * 7 * climateBlob(lat, lon, 2, 40, 10, 12);
     rain += iod * iodW * -6 * climateBlob(lat, lon, -10, 120, 12, 18);
-    rain += iod * iodW * -3 * climateBlob(lat, lon, 20, 78, 8, 10);
+    // Sør-Australia: positiv IOD ofte tørrere, negativ ofte våtere (vinter og vår).
+    rain += iod * iodW * -3 * climateBlob(lat, lon, -33, 140, 6, 14);
   }
   return rain;
 }

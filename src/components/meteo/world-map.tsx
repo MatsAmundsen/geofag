@@ -30,7 +30,10 @@ import {
   type Jets,
 } from "@/lib/meteo/physics";
 import { focusSites, type FocusSite } from "@/lib/meteo/diagnose";
-import { useJetStore, type Layers } from "@/lib/meteo/store";
+import { ensoAmp as ensoAmpOf, iodAmp as iodAmpOf } from "@/lib/meteo/physics";
+import { activeFlows } from "@/lib/meteo/moisture-flows";
+import { FLOW_TEXT, EXPLAIN } from "@/lib/meteo/fagtekst";
+import { modesFor, useJetStore, type Layers } from "@/lib/meteo/store";
 
 const OCEAN = "#0c2433";
 const LAND = "#1a2c2a";
@@ -40,6 +43,14 @@ const GRID = "rgba(232, 226, 214, 0.16)";
 const AMBER = "#e4a23c";
 const STEEL = "#7eb6cc";
 const PAPER = "#e8e2d6";
+/** Atmosfærisk elv (smalt bånd, stiplet kant). */
+export const MOIST = "#cba6f7";
+const MOIST_DOT = "#f3e8ff";
+/** Tropisk fukttransport / monsunstrøm (bred, kort pil, uten front). */
+export const TROP = "#5fd4a8";
+
+/** Settes per frame: tid (s) og om fuktpartikler skal bevege seg. */
+const flowClock = { t: 0, animate: false };
 const INK = "#07141c";
 
 type HandleHit = { index: number; x: number; y: number };
@@ -65,7 +76,7 @@ const live = {
   mapCenter: { ...initial.mapCenter },
   mapLarge: initial.mapLarge,
   landTick: initial.landTick,
-  modes: { enso: initial.enso, iod: initial.iod },
+  modes: modesFor(initial.oni, initial.dmi),
   revision: 1,
   lock: false,
   dragging: false,
@@ -90,7 +101,7 @@ useJetStore.subscribe((state) => {
   live.mapCenter = state.mapCenter;
   live.mapLarge = state.mapLarge;
   live.landTick = state.landTick;
-  live.modes = { enso: state.enso, iod: state.iod };
+  live.modes = modesFor(state.oni, state.dmi);
   live.revision += 1;
 });
 
@@ -232,9 +243,17 @@ export function WorldMap() {
       weatherKey = layerKey(layers);
     };
 
+    const reduce = typeof window.matchMedia === "function" ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    let onScreen = true;
     const frame = (now: number) => {
+      if (!onScreen || document.hidden) {
+        raf = 0;
+        return;
+      }
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
+      flowClock.t = now / 1000;
+      flowClock.animate = live.playing && !(reduce?.matches ?? false);
       if (live.playing && !live.dragging) {
         for (const id of JET_ORDER) {
           const jet = live.jets[id];
@@ -255,7 +274,7 @@ export function WorldMap() {
       const pattern = `${JET_ORDER.map((id) => {
         const jet = live.jets[id];
         return `${jet.amp}:${jet.wave}:${jet.latShift}:${jet.offsets.join(",")}`;
-      }).join("|")}:${live.modes.enso}:${live.modes.iod}`;
+      }).join("|")}:${live.modes.oni}:${live.modes.dmi}`;
       if (pattern !== riverPattern) {
         riverPattern = pattern;
         riverLon.N = Number.NaN;
@@ -318,6 +337,21 @@ export function WorldMap() {
     ro.observe(canvas);
     resize();
     raf = requestAnimationFrame(frame);
+    const resume = () => {
+      if (!raf && onScreen && !document.hidden) {
+        last = performance.now();
+        raf = requestAnimationFrame(frame);
+      }
+    };
+    const io =
+      typeof IntersectionObserver === "function"
+        ? new IntersectionObserver((entries) => {
+            onScreen = entries.some((e) => e.isIntersecting);
+            resume();
+          })
+        : null;
+    io?.observe(canvas);
+    document.addEventListener("visibilitychange", resume);
 
     const pointOf = (event: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -443,6 +477,8 @@ export function WorldMap() {
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      io?.disconnect();
+      document.removeEventListener("visibilitychange", resume);
       canvas.removeEventListener("pointerdown", onDown);
       canvas.removeEventListener("pointermove", onMove);
       canvas.removeEventListener("pointerup", onUp);
@@ -455,8 +491,10 @@ export function WorldMap() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 h-full w-full touch-none"
-      role="application"
-      aria-label="Verdenskart. Trykk et merket område for zoomet vær. Dra punktene på jetstrømmen for å endre banen."
+      role="img"
+      aria-label={EXPLAIN.mapAria}
+      aria-describedby="jet-map-desc"
+      data-testid="jet-map"
     />
   );
 }
@@ -706,6 +744,11 @@ function draw(
   drawLatitudes(ctx, locate);
   if (field && live.layers.anomaly) drawFreezing(ctx, locate, field);
   drawCoupling(ctx, locate, sky);
+  // Lag: fukt under jetene, slik at jetlinjene alltid er lesbare.
+  if (live.layers.rivers) {
+    drawRivers(ctx, locate, sky);
+    drawFlows(ctx, locate, w);
+  }
 
   hits.length = 0;
   siteHits.length = 0;
@@ -756,7 +799,6 @@ function draw(
     }
   }
 
-  if (live.layers.rivers) drawRivers(ctx, locate, sky);
 
   const sites = focusSites(live.jets, live.month, sky);
   const sitePts = sites
@@ -854,30 +896,185 @@ function drawRivers(
     for (const pts of runs) {
       if (pts.length < 2) continue;
       trace(ctx, pts);
-      ctx.strokeStyle = "#8fd4d4";
-      ctx.globalAlpha = 0.28;
-      ctx.lineWidth = 14;
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
+      ctx.strokeStyle = MOIST;
+      ctx.globalAlpha = 0.3;
+      ctx.lineWidth = 12;
       ctx.stroke();
-      ctx.globalAlpha = 0.9;
+      ctx.globalAlpha = 0.85;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 1;
+      drawChevrons(ctx, pts, MOIST, 3);
+    }
+  }
+}
+
+type Pt = { x: number; y: number };
+
+function densify(path: [number, number][], locate: (lon: number, lat: number) => [number, number] | null): Pt[] {
+  const out: Pt[] = [];
+  for (let i = 0; i < path.length - 1; i++) {
+    const [lon0, lat0] = path[i]!;
+    const [lon1, lat1] = path[i + 1]!;
+    for (let k = 0; k < 8; k++) {
+      const t = k / 8;
+      const p = locate(lon0 + (lon1 - lon0) * t, lat0 + (lat1 - lat0) * t);
+      if (p) out.push({ x: p[0], y: p[1] });
+    }
+  }
+  const end = path[path.length - 1]!;
+  const p = locate(end[0], end[1]);
+  if (p) out.push({ x: p[0], y: p[1] });
+  return out;
+}
+
+function cumulative(pts: Pt[]): number[] {
+  const d = [0];
+  for (let i = 1; i < pts.length; i++) d.push(d[i - 1]! + Math.hypot(pts[i]!.x - pts[i - 1]!.x, pts[i]!.y - pts[i - 1]!.y));
+  return d;
+}
+
+function pointAt(pts: Pt[], dist: number[], s: number): { x: number; y: number; a: number } {
+  let i = 1;
+  while (i < dist.length - 1 && dist[i]! < s) i++;
+  const a = pts[i - 1]!;
+  const b = pts[i]!;
+  const seg = dist[i]! - dist[i - 1]! || 1;
+  const t = Math.max(0, Math.min(1, (s - dist[i - 1]!) / seg));
+  return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, a: Math.atan2(b.y - a.y, b.x - a.x) };
+}
+
+/** Polygon langs senterlinjen med bredde width(u), u = 0 … 1. */
+function bandPath(pts: Pt[], dist: number[], width: (u: number) => number): Path2D {
+  const total = dist[dist.length - 1] || 1;
+  const left: Pt[] = [];
+  const right: Pt[] = [];
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[Math.max(0, i - 1)]!;
+    const b = pts[Math.min(pts.length - 1, i + 1)]!;
+    const ang = Math.atan2(b.y - a.y, b.x - a.x);
+    const half = width(dist[i]! / total) / 2;
+    const nx = -Math.sin(ang) * half;
+    const ny = Math.cos(ang) * half;
+    left.push({ x: pts[i]!.x + nx, y: pts[i]!.y + ny });
+    right.push({ x: pts[i]!.x - nx, y: pts[i]!.y - ny });
+  }
+  const path = new Path2D();
+  left.forEach((p, i) => (i ? path.lineTo(p.x, p.y) : path.moveTo(p.x, p.y)));
+  for (let i = right.length - 1; i >= 0; i--) path.lineTo(right[i]!.x, right[i]!.y);
+  path.closePath();
+  return path;
+}
+
+function drawChevrons(ctx: CanvasRenderingContext2D, pts: Pt[], color: string, count: number) {
+  if (pts.length < 2) return;
+  const dist = cumulative(pts);
+  const total = dist[dist.length - 1]!;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.6;
+  ctx.globalAlpha = 0.95;
+  for (let k = 1; k <= count; k++) {
+    const p = pointAt(pts, dist, (total * k) / (count + 1));
+    chevron(ctx, p.x, p.y, p.a, 4);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function chevron(ctx: CanvasRenderingContext2D, x: number, y: number, a: number, size: number) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(a);
+  ctx.beginPath();
+  ctx.moveTo(-size, -size);
+  ctx.lineTo(size, 0);
+  ctx.lineTo(-size, size);
+  ctx.stroke();
+  ctx.restore();
+}
+
+type FlowGeom = { kind: "ar" | "tropisk"; band: Path2D; pts: Pt[]; dist: number[]; s: number; label: string; start: Pt; end: Pt };
+const flowCache: { key: string; geoms: FlowGeom[] } = { key: "", geoms: [] };
+
+function flowGeoms(locate: (lon: number, lat: number) => [number, number] | null, w: number): FlowGeom[] {
+  const o = locate(0, 0);
+  const key = `${live.modes.oni}:${live.modes.dmi}:${live.month}:${live.mapZoom}:${live.mapCenter.lon}:${live.mapCenter.lat}:${w}:${o?.[0]}:${o?.[1]}`;
+  if (key === flowCache.key) return flowCache.geoms;
+  const scale = Math.max(0.55, Math.min(1.6, (w / 1232) * Math.sqrt(live.mapZoom)));
+  const geoms: FlowGeom[] = [];
+  for (const { flow, s: strength, path } of activeFlows(ensoAmpOf(live.modes), iodAmpOf(live.modes), live.month)) {
+    const pts = densify(path, locate);
+    if (pts.length < 2) continue;
+    const dist = cumulative(pts);
+    const band =
+      flow.kind === "ar"
+        ? bandPath(pts, dist, (u) => scale * (0.6 + 0.4 * strength) * (u < 0.5 ? 4 + 28 * u : 18 - 20 * (u - 0.5)))
+        : bandPath(pts, dist, (u) => scale * (0.7 + 0.5 * strength) * (u < 0.68 ? 24 : Math.max(0, 46 * (1 - (u - 0.68) / 0.32))));
+    geoms.push({ kind: flow.kind, band, pts, dist, s: strength, label: FLOW_TEXT[flow.id].short, start: pts[0]!, end: pts[pts.length - 1]! });
+  }
+  flowCache.key = key;
+  flowCache.geoms = geoms;
+  return geoms;
+}
+
+function drawFlows(ctx: CanvasRenderingContext2D, locate: (lon: number, lat: number) => [number, number] | null, w: number) {
+  for (const g of flowGeoms(locate, w)) {
+    const grad = ctx.createLinearGradient(g.start.x, g.start.y, g.end.x, g.end.y);
+    if (g.kind === "ar") {
+      grad.addColorStop(0, `rgba(203,166,247,${0.15 * (0.5 + g.s)})`);
+      grad.addColorStop(1, `rgba(203,166,247,${Math.min(0.75, 0.55 * (0.5 + g.s))})`);
+      ctx.fillStyle = grad;
+      ctx.fill(g.band);
+      ctx.setLineDash([3, 3]);
+      ctx.strokeStyle = MOIST;
+      ctx.globalAlpha = 0.8;
+      ctx.lineWidth = 1;
+      ctx.stroke(g.band);
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 1;
+      const total = g.dist[g.dist.length - 1]!;
+      const endP = pointAt(g.pts, g.dist, total);
+      ctx.strokeStyle = MOIST;
       ctx.lineWidth = 2;
-      ctx.stroke();
+      chevron(ctx, endP.x, endP.y, endP.a, 8);
+      if (flowClock.animate) {
+        ctx.fillStyle = MOIST_DOT;
+        const n = 8;
+        for (let k = 0; k < n; k++) {
+          const s = (flowClock.t * 40 + (total * k) / n) % total;
+          const p = pointAt(g.pts, g.dist, s);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else {
+        drawChevrons(ctx, g.pts, MOIST_DOT, 3);
+      }
+    } else {
+      grad.addColorStop(0, `rgba(95,212,168,${0.2 + 0.25 * g.s})`);
+      grad.addColorStop(1, `rgba(95,212,168,${0.45 + 0.4 * g.s})`);
+      ctx.fillStyle = grad;
+      ctx.fill(g.band);
+      ctx.strokeStyle = TROP;
+      ctx.globalAlpha = 0.9;
+      ctx.lineWidth = 1.2;
+      ctx.stroke(g.band);
       ctx.globalAlpha = 1;
     }
-    const labelAt = river.points[Math.floor(river.points.length * 0.62)];
-    if (!labelAt) continue;
-    const mid = locate(labelAt.lon, labelAt.lat);
-    if (!mid) continue;
-    ctx.font = "600 11px Outfit, sans-serif";
-    const text = river.name;
-    const width = Math.min(168, ctx.measureText(text).width + 10);
-    ctx.fillStyle = "rgba(7, 20, 28, 0.9)";
-    ctx.fillRect(mid[0] - width / 2, mid[1] - 20, width, 16);
-    ctx.fillStyle = "#d7f3f3";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(text, mid[0], mid[1] - 12);
+    if (w >= 520) {
+      const mid = pointAt(g.pts, g.dist, (g.dist[g.dist.length - 1]! * 0.45));
+      ctx.font = "600 11px Outfit, sans-serif";
+      const width = ctx.measureText(g.label).width + 10;
+      ctx.fillStyle = "rgba(7, 20, 28, 0.88)";
+      ctx.fillRect(mid.x - width / 2, mid.y - 26, width, 16);
+      ctx.fillStyle = g.kind === "ar" ? MOIST : TROP;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(g.label, mid.x, mid.y - 18);
+    }
   }
 }
 
@@ -1053,12 +1250,6 @@ export function MapChrome() {
         <button type="button" className="h-11 rounded-full border border-border bg-card px-3 text-sm text-foreground" onClick={resetMap}>
           Hele verden
         </button>
-      </div>
-      <div className="pointer-events-none absolute inset-x-2 bottom-2 flex flex-wrap items-end justify-between gap-2">
-        <p className="rounded-md bg-card px-2 py-1 text-xs text-muted-foreground">
-          Gult polarjet · blå subtropisk jet · 0°, 30° og 60° · L er lavtrykk
-          {mapZoom > 1.2 ? " · navn vises når kartet er zoomet" : " · nummer er faste steder"}
-        </p>
       </div>
     </>
   );

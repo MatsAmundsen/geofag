@@ -1,3 +1,4 @@
+import { CLIMATE_NOTE, CLIMATE_SUMMARY, STORY } from "@/lib/meteo/fagtekst";
 import { continentalityAt } from "@/lib/meteo/land";
 import {
   anomalyAt,
@@ -8,6 +9,9 @@ import {
   jetHem,
   jetKind,
   ensoSeasonWeight,
+  ensoAmp,
+  iodAmp,
+  isDjf,
   ensoTemperature,
   iodSeasonWeight,
   iodTemperature,
@@ -185,33 +189,33 @@ export function reportAt(
 
   const anomalyLine =
     anomaly <= -4
-      ? `Det er om lag ${nb(Math.abs(anomaly), 0)} grader kaldere enn en rett jetstrøm denne måneden. Kaldluften er skjøvet mot ekvator.`
+      ? STORY.colder
       : anomaly >= 4
-        ? `Det er om lag ${nb(anomaly, 0)} grader mildere enn en rett jetstrøm denne måneden. Varmluften når lenger mot polen.`
-        : "Temperaturen ligger nær det en rett, klimatologisk jetstrøm ville gitt denne måneden.";
+        ? STORY.milder
+        : STORY.near;
 
   const block =
     jet.amp >= 12 && jet.wave <= 4 && Math.abs(rb.phaseMs) < 12 && curv < -0.01
-      ? " Bølgen er lang og nesten stående, så ryggen kan bli en blokkering: det samme været blir liggende."
+      ? STORY.block
       : "";
 
   const hill = rain.range
-    ? ` Vinden står på mot ${rain.range}, og fjellene presser fuktig luft opp. Det forsterker nedbøren.`
+    ? STORY.hill(rain.range)
     : "";
 
   const sub = sky.ribbons[subId(hem)];
   const gap = Math.abs(jLat - ribbonLat(sub, lon));
   const meet =
     gap < 8
-      ? ` Polarjeten og den subtropiske jetstrømmen ligger bare ${nb(gap, 0)} grader fra hverandre her. Sammenkoblingen gir sterkere løft, mer nedbør og både lavtrykk og høytrykk rundt jetstreaken.`
+      ? STORY.meet
       : "";
   const river = riverHit(lat, lon, sky);
   const plume =
     river > 0.35
-      ? " En atmosfærisk elv treffer stedet: smal, varm og fuktig luft fra subtropene, styrt av jetstrømmen. Der den møter kystfjell, blir nedbøren kraftig."
+      ? STORY.plume
       : "";
 
-  const where = `Polarjeten går om lag ${nb(distKm, 0)} km ${jetCardinal} for stedet, så du er ${side}.`;
+  const where = STORY.where(jetCardinal, side);
   const story = `${where} ${pattern} ${anomalyLine}${block}${hill}${meet}${plume}${climateNote(lat, lon, sky.modes, month)}`;
 
   const jetBit = wind.jet
@@ -234,51 +238,28 @@ export function reportAt(
 
 function climateNote(lat: number, lon: number, modes: ClimateModes, month: number): string {
   const bits: string[] = [];
-  const ensoT = ensoSeasonWeight(month) * ensoTemperature(lat, lon, modes.enso);
-  if (Math.abs(ensoT) >= 0.35) {
+  const ensoT = ensoSeasonWeight(month) * ensoTemperature(lat, lon, ensoAmp(modes));
+  if (Math.abs(ensoT) >= 0.35 && modes.enso !== "off") {
     const name = modes.enso === "nino" ? "El Niño" : "La Niña";
-    bits.push(
-      ensoT > 0
-        ? `${name} gjør stedet om lag ${nb(ensoT, 0)} grader varmere.`
-        : `${name} gjør stedet om lag ${nb(Math.abs(ensoT), 0)} grader kjøligere.`,
-    );
+    bits.push(ensoT > 0 ? CLIMATE_NOTE.warmer(name) : CLIMATE_NOTE.colder(name));
   }
-  const iodT = iodSeasonWeight(month) * iodTemperature(lat, lon, modes.iod);
-  if (Math.abs(iodT) >= 0.35) {
+  const iodT = iodSeasonWeight(month) * iodTemperature(lat, lon, iodAmp(modes));
+  if (Math.abs(iodT) >= 0.35 && modes.iod !== "off") {
     const name = modes.iod === "positive" ? "Positiv IOD" : "Negativ IOD";
-    bits.push(
-      iodT > 0
-        ? `${name} gjør stedet om lag ${nb(iodT, 0)} grader varmere.`
-        : `${name} gjør stedet om lag ${nb(Math.abs(iodT), 0)} grader kjøligere.`,
-    );
+    bits.push(iodT > 0 ? CLIMATE_NOTE.warmer(name) : CLIMATE_NOTE.colder(name));
   }
   const rain = modePrecip(lat, lon, modes, month);
-  if (Math.abs(rain) >= 2) {
-    bits.push(rain > 0 ? "Nedbøren øker også av det samme mønsteret." : "Nedbøren dempes også av det samme mønsteret.");
-  }
+  if (Math.abs(rain) >= 2) bits.push(rain > 0 ? CLIMATE_NOTE.wetter : CLIMATE_NOTE.drier);
   return bits.length ? ` ${bits.join(" ")}` : "";
 }
 
-export function climateSummary(modes: ClimateModes): string {
+export function climateSummary(modes: ClimateModes, month?: number): string {
   const bits: string[] = [];
-  if (modes.enso === "nino") {
-    bits.push(
-      "El Niño er på, sterkest om vinteren på den nordlige halvkule: varmere vann øst og midt i Stillehavet, mer regn der og i det sørlige USA, tørrere ved Indonesia og Australia. Den nordlige subtropiske jetstrømmen blir sterkere, flytter seg sørover og strekker seg lenger øst over Stillehavet.",
-    );
-  } else if (modes.enso === "nina") {
-    bits.push(
-      "La Niña er på, sterkest om vinteren: kjøligere vann øst i Stillehavet, mer regn ved Indonesia og Australia, tørrere i det sørlige USA. Den nordlige subtropiske jetstrømmen blir svakere, ligger lenger nord og er kortere over det østlige Stillehavet.",
-    );
-  }
-  if (modes.iod === "positive") {
-    bits.push(
-      "Positiv IOD er på, sterkest i september–november: varmere vann vest i Indiahavet og kjøligere ved Indonesia. Mer regn i Øst-Afrika, tørrere i Indonesia og Australia.",
-    );
-  } else if (modes.iod === "negative") {
-    bits.push(
-      "Negativ IOD er på, sterkest i september–november: varmere vann ved Indonesia og kjøligere vest i Indiahavet. Mer regn i Indonesia, tørrere i Øst-Afrika.",
-    );
-  }
+  if (modes.enso === "nino") bits.push(CLIMATE_SUMMARY.nino);
+  else if (modes.enso === "nina") bits.push(CLIMATE_SUMMARY.nina);
+  if (modes.iod === "positive") bits.push(CLIMATE_SUMMARY.iodPositive);
+  else if (modes.iod === "negative") bits.push(CLIMATE_SUMMARY.iodNegative);
+  if (modes.iod !== "off" && month !== undefined && isDjf(month)) bits.push(CLIMATE_SUMMARY.iodOffSeason);
   return bits.join(" ");
 }
 
@@ -297,7 +278,7 @@ export function worldHeadline(jets: Jets, month: number, modes: ClimateModes = C
   const blocking = jet.amp >= 12 && jet.wave <= 4 && Math.abs(c) < 12;
   const south = month >= 5 && month <= 7 ? " Sør for ekvator er det vinter, og polarjeten der er på det sterkeste." : "";
   const meet = couplings(evaluate(jets, month, modes));
-  const climate = climateSummary(modes);
+  const climate = climateSummary(modes, month);
   const cross = meet.length
     ? ` ${meet.map((item) => (item.crossed ? "Jetstrømmene krysser" : "Jetstrømmene nærmer seg") + (item.hem === "N" ? " på den nordlige halvkule" : " på den sørlige halvkule")).join(". ")}. Der de møtes blir løftet sterkere, og lavtrykkene samler seg i venstre utgang.`
     : "";

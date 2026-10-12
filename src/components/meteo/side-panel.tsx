@@ -2,7 +2,8 @@ import { RotateCcw } from "lucide-react";
 import { CrossSection, sectionHem } from "@/components/meteo/cross-section";
 import { DispersionChart } from "@/components/meteo/dispersion-chart";
 import { ControlSlider } from "@/components/meteo/control-slider";
-import { climateSummary, jetLabel, reportAt, focusSites, placeWeather } from "@/lib/meteo/diagnose";
+import { jetLabel, reportAt, focusSites, placeWeather } from "@/lib/meteo/diagnose";
+import { EXPLAIN } from "@/lib/meteo/fagtekst";
 import { PRESETS } from "@/lib/meteo/presets";
 import {
   baseSpeed,
@@ -12,7 +13,7 @@ import {
   phaseSpeed,
   type JetId,
 } from "@/lib/meteo/physics";
-import { useJetStore } from "@/lib/meteo/store";
+import { useClimateModes, useJetStore } from "@/lib/meteo/store";
 
 const JETS: JetId[] = ["npj", "nstj", "spj", "sstj"];
 
@@ -40,11 +41,7 @@ export function SidePanel() {
   const toggleLayer = useJetStore((s) => s.toggleLayer);
   const setProbe = useJetStore((s) => s.setProbe);
   const setFocus = useJetStore((s) => s.setFocus);
-  const enso = useJetStore((s) => s.enso);
-  const iod = useJetStore((s) => s.iod);
-  const setEnso = useJetStore((s) => s.setEnso);
-  const setIod = useJetStore((s) => s.setIod);
-  const modes = { enso, iod };
+  const modes = useClimateModes();
   const areas = focusSites(jets, month, undefined, modes);
 
   const jet = jets[selected];
@@ -206,7 +203,7 @@ export function SidePanel() {
       </section>
 
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
-        <h2 className="font-display text-xl text-foreground">Kjente mønstre</h2>
+        <h2 className="font-display text-xl text-foreground">{EXPLAIN.jetPresetsTitle}</h2>
         <div className="flex flex-col gap-2">
           {PRESETS.map((preset) => (
             <button
@@ -243,98 +240,28 @@ export function SidePanel() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
-        <h2 className="font-display text-xl text-foreground">ENSO og IOD</h2>
-        <p className="text-sm text-pretty text-foreground">
-          Slå effektene av og på. De endrer havtemperatur, nedbør og hvor jetstrømmen ligger over Stillehavet og
-          Indiahavet.
-        </p>
-        <p className="text-sm text-muted-foreground">ENSO</p>
-        <div className="flex flex-wrap gap-2">
-          {(
-            [
-              ["off", "Av"],
-              ["nino", "El Niño"],
-              ["nina", "La Niña"],
-            ] as const
-          ).map(([phase, label]) => (
-            <button
-              key={phase}
-              type="button"
-              aria-pressed={enso === phase}
-              className={
-                enso === phase
-                  ? "h-10 rounded-full bg-primary px-3 text-sm text-primary-foreground"
-                  : "h-10 rounded-full border border-border px-3 text-sm text-foreground"
-              }
-              onClick={() => setEnso(phase)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <p className="text-sm text-muted-foreground">IOD</p>
-        <div className="flex flex-wrap gap-2">
-          {(
-            [
-              ["off", "Av"],
-              ["positive", "Positiv"],
-              ["negative", "Negativ"],
-            ] as const
-          ).map(([phase, label]) => (
-            <button
-              key={phase}
-              type="button"
-              aria-pressed={iod === phase}
-              className={
-                iod === phase
-                  ? "h-10 rounded-full bg-primary px-3 text-sm text-primary-foreground"
-                  : "h-10 rounded-full border border-border px-3 text-sm text-foreground"
-              }
-              onClick={() => setIod(phase)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <p className="text-sm text-pretty text-foreground">
-          {climateSummary(modes) || "Begge er av. Havet følger årstiden, uten ekstra El Niño, La Niña eller dipol i Indiahavet."}
-        </p>
-      </section>
 
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
-        <h2 className="font-display text-xl text-foreground">Hvorfor den bølger</h2>
-        <p className="text-sm text-pretty text-foreground">
-          Solen varmer ekvator mer enn polene. Varm luft er tykkere, så trykkflatene heller. Corioliskraften bøyer
-          høydevinden til den blir vestlig. Skiftet er sterkest der temperaturen faller raskest, langs polarfronten, og
-          det summerer seg opp mot tropopausen. Det er jetstrømmen.
-        </p>
-        <p className="text-sm text-pretty text-foreground">
-          En luftpakke som skyves mot polen møter mer av jordens egen virvling. For å bevare den totale virvlingen må
-          den spinne motsatt vei, og svinger tilbake mot ekvator. Det blir en Rossby-bølge. Selve temperaturkontrasten
-          er drivstoff: bølger på noen tusen kilometer vokser av seg selv, så en rett jet holder sjelden lenge.
-        </p>
-        <p className="text-sm text-pretty text-foreground">
-          Fasefarten er c = U − β/k². Lange bølger kan stå stille. Korte bølger fyker østover med vinden. Derfor gir
-          få, dype svinger blokkering, mens en rett jet sender lavtrykkene raskt videre. Når polarjeten og den
-          subtropiske jetstrømmen nærmer seg eller krysser, stables kontrastene. Venstre utgang løfter luften og gir
-          lavtrykk. Høyre utgang og ryggene gir høytrykk, som kan slås på som eget lag. Mild luft ligger noen grader
-          på ekvatorsiden av fronten. Kald luft ligger på polsiden. Selve kjernen er skillet, ikke en varmekilde.
-        </p>
+        <h2 className="font-display text-xl text-foreground">{EXPLAIN.whyTitle}</h2>
+        {EXPLAIN.why.map((text) => (
+          <p key={text} className="text-sm text-pretty text-foreground">
+            {text}
+          </p>
+        ))}
         <DispersionChart jets={jets} id={selected} month={month} />
       </section>
 
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
-        <h2 className="font-display text-xl text-foreground">Atmosfæriske elver</h2>
-        <p className="text-sm text-pretty text-foreground">
-          En atmosfærisk elv er en lang, smal korridor av vanndamp. Den dannes når et tråg i polarjeten når ned mot
-          subtropene og trekker fuktig luft nordover foran kaldfronten. Ryggen vest for tråget gjør vinden sørvestlig,
-          så elven blir liggende på den varme siden av jetstrømmen.
-        </p>
+        <h2 className="font-display text-xl text-foreground">{EXPLAIN.arTitle}</h2>
+        {EXPLAIN.ar.map((text) => (
+          <p key={text} className="text-sm text-pretty text-foreground">
+            {text}
+          </p>
+        ))}
       </section>
 
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
-        <h2 className="font-display text-xl text-foreground">Høydesnitt</h2>
+        <h2 className="font-display text-xl text-foreground">{EXPLAIN.sectionTitle}</h2>
         <CrossSection jets={jets} month={month} lon={probe.lon} hem={sectionHem(probe.lat, selected)} modes={modes} />
       </section>
     </div>

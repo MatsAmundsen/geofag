@@ -1,3 +1,4 @@
+import { JET_PRESET_BLURB } from "@/lib/meteo/fagtekst";
 import {
   emptyOffsets,
   neutralJet,
@@ -32,7 +33,7 @@ export const PRESETS: Preset[] = [
   {
     id: "vinter",
     name: "Vinterbølger",
-    blurb: "Januar med fem bølger. Polarjeten og den subtropiske jetstrømmen møtes i trågene.",
+    blurb: JET_PRESET_BLURB["vinter"],
     month: 0,
     select: "npj",
     jets: jets({
@@ -45,7 +46,7 @@ export const PRESETS: Preset[] = [
   {
     id: "rett",
     name: "Rett jet",
-    blurb: "Sonal vinter. Fronten ligger jevnt, og lavtrykkene fyker østover.",
+    blurb: JET_PRESET_BLURB["rett"],
     month: 0,
     select: "npj",
     jets: jets({
@@ -56,7 +57,7 @@ export const PRESETS: Preset[] = [
   {
     id: "nao-pluss",
     name: "NAO+",
-    blurb: "Sterk, nordlig atlanterhavsjet. Mildt og vått i Norge og på De britiske øyer.",
+    blurb: JET_PRESET_BLURB["nao-pluss"],
     month: 0,
     select: "npj",
     jets: jets({
@@ -67,7 +68,7 @@ export const PRESETS: Preset[] = [
   {
     id: "nao-minus",
     name: "NAO−",
-    blurb: "Rygg ved Grønland, tråg ned mot Middelhavet. Kaldt i Nord-Europa.",
+    blurb: JET_PRESET_BLURB["nao-minus"],
     month: 0,
     select: "npj",
     jets: jets({
@@ -78,7 +79,7 @@ export const PRESETS: Preset[] = [
   {
     id: "usa",
     name: "Kulde i USA",
-    blurb: "Dypt tråg over det østlige Nord-Amerika. Mild rygg i vest.",
+    blurb: JET_PRESET_BLURB["usa"],
     month: 0,
     select: "npj",
     jets: jets({
@@ -88,7 +89,7 @@ export const PRESETS: Preset[] = [
   {
     id: "juli",
     name: "Juli i nord",
-    blurb: "Polarjeten ligger langt nord og er svak. Den subtropiske jetstrømmen i nord er nesten borte.",
+    blurb: JET_PRESET_BLURB["juli"],
     month: 6,
     select: "npj",
     jets: jets({
@@ -101,7 +102,7 @@ export const PRESETS: Preset[] = [
   {
     id: "sor",
     name: "Sørvinter",
-    blurb: "Juli sør for ekvator. Sterk og ganske rett polarjet rundt Sørishavet.",
+    blurb: JET_PRESET_BLURB["sor"],
     month: 6,
     select: "spj",
     jets: jets({

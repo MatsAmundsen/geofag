@@ -1,6 +1,7 @@
 import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { TopicLayout } from "@/components/topic-layout";
+import { PAGE_LEAD } from "@/lib/meteo/fagtekst";
 import { topicHead } from "@/lib/seo";
 
 const JetModel = lazy(() =>
@@ -8,8 +9,6 @@ const JetModel = lazy(() =>
 );
 
 const PATH = "/tema/klima/jetstrommer-atmosfaeriske-elver";
-const LEAD =
-  "En interaktiv undervisningsmodell av polarjeten og den subtropiske jeten på begge halvkuler, Rossby-bølger og atmosfæriske elver. Skru på ENSO og IOD og se hvordan jetstrømmen, nedbøren og fukt-elvene flytter seg. Modellen er forenklet. Den er ikke en prognose.";
 
 export const Route = createFileRoute("/tema/klima/jetstrommer-atmosfaeriske-elver")({
   head: () =>
@@ -24,11 +23,9 @@ export const Route = createFileRoute("/tema/klima/jetstrommer-atmosfaeriske-elve
 
 function ModelPlaceholder() {
   return (
-    <div
-      className="flex h-[70vw] min-h-[260px] items-center justify-center rounded-xl border border-border bg-card text-sm text-muted-foreground lg:h-[48rem]"
-      role="status"
-    >
-      Laster modellen …
+    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
+      <div className="h-48 border-b border-border" />
+      <div className="jet-map-stage flex items-center justify-center text-sm text-muted-foreground">Laster modellen …</div>
     </div>
   );
 }
@@ -38,18 +35,20 @@ function JetModelPage() {
     <TopicLayout
       kicker="Geofag 2 · Klima · Interaktiv modell"
       title="Jetstrømmer og atmosfæriske elver"
-      lead={LEAD}
+      lead={PAGE_LEAD}
       banner="/images/jetstrommer-modell.jpg"
       bannerAlt="Verdenskart med jetstrømmer og atmosfæriske elver fra modellen"
       prev={{ to: "/tema/klima/amoc", label: "Forrige: AMOC" }}
       next={{ to: "/tema/klima", label: "Tilbake til Klima" }}
       bodyMode="coded"
     >
-      <ClientOnly fallback={<ModelPlaceholder />}>
-        <Suspense fallback={<ModelPlaceholder />}>
-          <JetModel />
-        </Suspense>
-      </ClientOnly>
+      <div className="jet-breakout">
+        <ClientOnly fallback={<ModelPlaceholder />}>
+          <Suspense fallback={<ModelPlaceholder />}>
+            <JetModel />
+          </Suspense>
+        </ClientOnly>
+      </div>
     </TopicLayout>
   );
 }

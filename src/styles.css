@@ -398,6 +398,16 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 }
 
 /* Jetstrømmer og atmosfæriske elver (undervisningsmodell, /tema/klima/jetstrommer-atmosfaeriske-elver) */
+.jet-breakout {
+  width: min(100vw - 2rem, 80rem);
+  margin-inline: calc(50% - min(50vw - 1rem, 40rem));
+}
+@media (min-width: 64rem) {
+  .jet-breakout {
+    width: min(100vw - 3rem, 80rem);
+    margin-inline: calc(50% - min(50vw - 1.5rem, 40rem));
+  }
+}
 .jet-map-stage {
   position: relative;
   width: 100%;
@@ -405,10 +415,16 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   min-height: 260px;
   background: #0c2433;
 }
-@media (min-width: 64rem) {
+@media (min-width: 48rem) {
   .jet-map-stage {
     height: auto;
     min-height: 0;
+    aspect-ratio: 2 / 1;
+  }
+}
+@media (min-width: 64rem) {
+  .jet-map-stage {
+    aspect-ratio: 2.2 / 1;
   }
 }
 .jet-map-stage.is-large {
@@ -418,4 +434,5 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   width: 100vw;
   height: 100dvh;
   min-height: 100dvh;
+  aspect-ratio: auto;
 }
