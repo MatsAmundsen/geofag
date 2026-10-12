@@ -1,0 +1,359 @@
+import { RotateCcw } from "lucide-react";
+import { CrossSection, sectionHem } from "@/components/meteo/cross-section";
+import { DispersionChart } from "@/components/meteo/dispersion-chart";
+import { ControlSlider } from "@/components/meteo/control-slider";
+import { climateSummary, jetLabel, reportAt, focusSites, placeWeather } from "@/lib/meteo/diagnose";
+import { PRESETS } from "@/lib/meteo/presets";
+import {
+  baseSpeed,
+  climLat,
+  jetSpeed,
+  nb,
+  phaseSpeed,
+  type JetId,
+} from "@/lib/meteo/physics";
+import { useJetStore } from "@/lib/meteo/store";
+
+const JETS: JetId[] = ["npj", "nstj", "spj", "sstj"];
+
+const LAYERS = [
+  ["anomaly", "Temperaturavvik"],
+  ["precip", "Nedbør"],
+  ["systems", "Lavtrykk"],
+  ["highs", "Høytrykk og blokkering"],
+  ["rivers", "Atmosfæriske elver"],
+  ["normal", "Normalbane"],
+  ["arrows", "Vindpiler"],
+] as const;
+
+export function SidePanel() {
+  const month = useJetStore((s) => s.month);
+  const jets = useJetStore((s) => s.jets);
+  const selected = useJetStore((s) => s.selected);
+  const layers = useJetStore((s) => s.layers);
+  const probe = useJetStore((s) => s.probe);
+  const landTick = useJetStore((s) => s.landTick);
+  const setSelected = useJetStore((s) => s.setSelected);
+  const patchJet = useJetStore((s) => s.patchJet);
+  const clearBend = useJetStore((s) => s.clearBend);
+  const applyPreset = useJetStore((s) => s.applyPreset);
+  const toggleLayer = useJetStore((s) => s.toggleLayer);
+  const setProbe = useJetStore((s) => s.setProbe);
+  const setFocus = useJetStore((s) => s.setFocus);
+  const enso = useJetStore((s) => s.enso);
+  const iod = useJetStore((s) => s.iod);
+  const setEnso = useJetStore((s) => s.setEnso);
+  const setIod = useJetStore((s) => s.setIod);
+  const modes = { enso, iod };
+  const areas = focusSites(jets, month, undefined, modes);
+
+  const jet = jets[selected];
+  const info = reportAt(probe.lat, probe.lon, jets, month, undefined, modes);
+  const cards = placeWeather({ lat: probe.lat, lon: probe.lon, name: info.title, role: "" }, jets, month, modes);
+  const speed = jetSpeed(jet, selected, month);
+  const c = phaseSpeed(jet, selected, month);
+  const bend = Math.max(...jet.offsets.map((value) => Math.abs(value)));
+  void landTick;
+
+  return (
+    <div className="flex flex-col">
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Dette stedet</h2>
+        <p className="text-sm text-muted-foreground">
+          {info.title} · {info.coords}
+        </p>
+        <p className="font-display text-4xl text-foreground tabular-nums">
+          {nb(info.temp, 0)}°
+          <span className="ml-3 font-sans text-base text-muted-foreground">{info.weather}</span>
+        </p>
+        <p className="text-sm text-foreground">
+          Avvik mot rett jet:{" "}
+          <span className="tabular-nums text-primary">
+            {info.anomaly > 0 ? "+" : ""}
+            {nb(info.anomaly, 1)}°
+          </span>
+          {" · "}
+          nedbør om lag <span className="tabular-nums">{nb(info.precip, 0)} mm/døgn</span>
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          {(
+            [
+              ["Banen du tegnet", "Slik strekene ligger nå", cards.now],
+              ["Polarjeten over", "Hvis banen bøyes hit", cards.polar],
+              ["Subtropisk jet over", "Hvis banen bøyes hit", cards.sub],
+              ["Begge møtes her", "Hvis banen bøyes hit", cards.meet],
+            ] as const
+          ).map(([title, note, report]) => (
+            <div key={title} className="rounded-lg border border-border bg-card px-3 py-2">
+              <p className="text-sm font-medium text-foreground">{title}</p>
+              <p className="text-xs text-muted-foreground">{note}</p>
+              <p className="mt-1 text-sm tabular-nums text-foreground">
+                {nb(report.temp, 0)}° · {report.weather}
+              </p>
+              <p className="text-xs tabular-nums text-muted-foreground">{nb(report.precip, 0)} mm/døgn</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {areas.map((site, index) => (
+            <button
+              key={site.id}
+              type="button"
+              className="rounded-2xl border border-border bg-card px-3 py-2 text-left text-sm text-foreground"
+              onClick={() => {
+                setProbe({ lat: site.lat, lon: site.lon });
+                setFocus({ name: site.name, lat: site.lat, lon: site.lon, jet: site.jet, role: site.role });
+              }}
+            >
+              <span className="block">
+                {index + 1} {site.name}
+              </span>
+              <span className="block text-xs text-muted-foreground tabular-nums">
+                {nb(site.temp, 0)}° · {site.tag}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-4 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Styr banen</h2>
+        <div className="grid grid-cols-2 gap-2">
+          {JETS.map((id) => (
+            <button
+              key={id}
+              type="button"
+              aria-pressed={selected === id}
+              className={
+                selected === id
+                  ? "h-11 rounded-lg bg-primary px-2 text-sm text-primary-foreground"
+                  : "h-11 rounded-lg border border-border bg-card px-2 text-sm text-foreground"
+              }
+              onClick={() => setSelected(id)}
+            >
+              {jetLabel(id)}
+            </button>
+          ))}
+        </div>
+        <ControlSlider
+          label="Rett til bølgete"
+          min={0}
+          max={18}
+          step={0.5}
+          value={jet.amp}
+          display={jet.amp < 0.5 ? "rett" : `${nb(jet.amp, 1)}°`}
+          low="Rett, sonal"
+          high="Dype tråg og rygger"
+          onChange={(amp) => patchJet(selected, { amp })}
+        />
+        <ControlSlider
+          label="Bølgetall"
+          min={3}
+          max={7}
+          step={1}
+          value={jet.wave}
+          display={`${jet.wave} rundt jorden`}
+          low="Lange, trege bølger"
+          high="Korte, raske bølger"
+          onChange={(wave) => patchJet(selected, { wave })}
+        />
+        <ControlSlider
+          label="Flytt mønsteret"
+          min={0}
+          max={360}
+          step={1}
+          value={(jet.phase * 180) / Math.PI}
+          display={`${nb((jet.phase * 180) / Math.PI, 0)}°`}
+          low="Vest"
+          high="Øst"
+          onChange={(deg) => patchJet(selected, { phase: (deg * Math.PI) / 180 })}
+        />
+        <ControlSlider
+          label="Hele banen nord eller sør"
+          min={-14}
+          max={14}
+          step={0.5}
+          value={jet.latShift}
+          display={`${jet.latShift > 0 ? "+" : ""}${nb(jet.latShift, 1)}°`}
+          low="Mot ekvator"
+          high="Mot polen"
+          onChange={(latShift) => patchJet(selected, { latShift })}
+        />
+        <ControlSlider
+          label="Styrke"
+          min={0.65}
+          max={1.45}
+          step={0.05}
+          value={jet.speedMul}
+          display={`${nb(speed, 0)} m/s · ${nb(speed * 3.6, 0)} km/t`}
+          low="Svakere enn årstiden"
+          high="Sterkere"
+          onChange={(speedMul) => patchJet(selected, { speedMul })}
+        />
+        <p className="text-sm text-muted-foreground">
+          Klimatologisk kjerne i {monthNameOnly(month)} ligger nær {nb(Math.abs(climLat(selected, month)), 0)}°
+          {climLat(selected, month) >= 0 ? " N" : " S"}, med typisk fart {nb(baseSpeed(selected, month), 0)} m/s.
+          Fasefart nå {nb(c, 0)} m/s. Fri bøy opp til {nb(bend, 0)}°.
+        </p>
+        <button
+          type="button"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border text-sm text-foreground"
+          onClick={() => clearBend(selected)}
+        >
+          <RotateCcw className="size-4" />
+          Fjern fri bane
+        </button>
+      </section>
+
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Kjente mønstre</h2>
+        <div className="flex flex-col gap-2">
+          {PRESETS.map((preset) => (
+            <button
+              key={preset.id}
+              type="button"
+              className="rounded-lg border border-border bg-card px-3 py-3 text-left"
+              onClick={() => applyPreset(preset)}
+            >
+              <span className="block text-sm font-medium text-foreground">{preset.name}</span>
+              <span className="mt-1 block text-sm text-muted-foreground">{preset.blurb}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Lag på kartet</h2>
+        <div className="flex flex-wrap gap-2">
+          {LAYERS.map(([key, label]) => (
+            <button
+              key={key}
+              type="button"
+              aria-pressed={layers[key]}
+              className={
+                layers[key]
+                  ? "h-10 rounded-full bg-primary px-3 text-sm text-primary-foreground"
+                  : "h-10 rounded-full border border-border px-3 text-sm text-foreground"
+              }
+              onClick={() => toggleLayer(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">ENSO og IOD</h2>
+        <p className="text-sm text-pretty text-foreground">
+          Slå effektene av og på. De endrer havtemperatur, nedbør og hvor jetstrømmen ligger over Stillehavet og
+          Indiahavet.
+        </p>
+        <p className="text-sm text-muted-foreground">ENSO</p>
+        <div className="flex flex-wrap gap-2">
+          {(
+            [
+              ["off", "Av"],
+              ["nino", "El Niño"],
+              ["nina", "La Niña"],
+            ] as const
+          ).map(([phase, label]) => (
+            <button
+              key={phase}
+              type="button"
+              aria-pressed={enso === phase}
+              className={
+                enso === phase
+                  ? "h-10 rounded-full bg-primary px-3 text-sm text-primary-foreground"
+                  : "h-10 rounded-full border border-border px-3 text-sm text-foreground"
+              }
+              onClick={() => setEnso(phase)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <p className="text-sm text-muted-foreground">IOD</p>
+        <div className="flex flex-wrap gap-2">
+          {(
+            [
+              ["off", "Av"],
+              ["positive", "Positiv"],
+              ["negative", "Negativ"],
+            ] as const
+          ).map(([phase, label]) => (
+            <button
+              key={phase}
+              type="button"
+              aria-pressed={iod === phase}
+              className={
+                iod === phase
+                  ? "h-10 rounded-full bg-primary px-3 text-sm text-primary-foreground"
+                  : "h-10 rounded-full border border-border px-3 text-sm text-foreground"
+              }
+              onClick={() => setIod(phase)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <p className="text-sm text-pretty text-foreground">
+          {climateSummary(modes) || "Begge er av. Havet følger årstiden, uten ekstra El Niño, La Niña eller dipol i Indiahavet."}
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Hvorfor den bølger</h2>
+        <p className="text-sm text-pretty text-foreground">
+          Solen varmer ekvator mer enn polene. Varm luft er tykkere, så trykkflatene heller. Corioliskraften bøyer
+          høydevinden til den blir vestlig. Skiftet er sterkest der temperaturen faller raskest, langs polarfronten, og
+          det summerer seg opp mot tropopausen. Det er jetstrømmen.
+        </p>
+        <p className="text-sm text-pretty text-foreground">
+          En luftpakke som skyves mot polen møter mer av jordens egen virvling. For å bevare den totale virvlingen må
+          den spinne motsatt vei, og svinger tilbake mot ekvator. Det blir en Rossby-bølge. Selve temperaturkontrasten
+          er drivstoff: bølger på noen tusen kilometer vokser av seg selv, så en rett jet holder sjelden lenge.
+        </p>
+        <p className="text-sm text-pretty text-foreground">
+          Fasefarten er c = U − β/k². Lange bølger kan stå stille. Korte bølger fyker østover med vinden. Derfor gir
+          få, dype svinger blokkering, mens en rett jet sender lavtrykkene raskt videre. Når polarjeten og den
+          subtropiske jetstrømmen nærmer seg eller krysser, stables kontrastene. Venstre utgang løfter luften og gir
+          lavtrykk. Høyre utgang og ryggene gir høytrykk, som kan slås på som eget lag. Mild luft ligger noen grader
+          på ekvatorsiden av fronten. Kald luft ligger på polsiden. Selve kjernen er skillet, ikke en varmekilde.
+        </p>
+        <DispersionChart jets={jets} id={selected} month={month} />
+      </section>
+
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Atmosfæriske elver</h2>
+        <p className="text-sm text-pretty text-foreground">
+          En atmosfærisk elv er en lang, smal korridor av vanndamp. Den dannes når et tråg i polarjeten når ned mot
+          subtropene og trekker fuktig luft nordover foran kaldfronten. Ryggen vest for tråget gjør vinden sørvestlig,
+          så elven blir liggende på den varme siden av jetstrømmen.
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+        <h2 className="font-display text-xl text-foreground">Høydesnitt</h2>
+        <CrossSection jets={jets} month={month} lon={probe.lon} hem={sectionHem(probe.lat, selected)} modes={modes} />
+      </section>
+    </div>
+  );
+}
+
+function monthNameOnly(month: number): string {
+  return [
+    "januar",
+    "februar",
+    "mars",
+    "april",
+    "mai",
+    "juni",
+    "juli",
+    "august",
+    "september",
+    "oktober",
+    "november",
+    "desember",
+  ][month] ?? "januar";
+}

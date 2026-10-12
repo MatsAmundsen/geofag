@@ -56,6 +56,7 @@ import { Route as TemaKlimaIndexRouteImport } from './routes/tema/klima/index'
 import { Route as TemaKlimaAmocRouteImport } from './routes/tema/klima/amoc'
 import { Route as TemaKlimaEnsoRouteImport } from './routes/tema/klima/enso'
 import { Route as TemaKlimaIodRouteImport } from './routes/tema/klima/iod'
+import { Route as TemaKlimaJetstrommerAtmosfaeriskeElverRouteImport } from './routes/tema/klima/jetstrommer-atmosfaeriske-elver'
 import { Route as TemaKlimaNaoRouteImport } from './routes/tema/klima/nao'
 import { Route as TemaKlimaOversiktRouteImport } from './routes/tema/klima/oversikt'
 
@@ -299,6 +300,12 @@ const TemaKlimaIodRoute = TemaKlimaIodRouteImport.update({
   path: '/tema/klima/iod',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaKlimaJetstrommerAtmosfaeriskeElverRoute =
+  TemaKlimaJetstrommerAtmosfaeriskeElverRouteImport.update({
+    id: '/tema/klima/jetstrommer-atmosfaeriske-elver',
+    path: '/tema/klima/jetstrommer-atmosfaeriske-elver',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TemaKlimaNaoRoute = TemaKlimaNaoRouteImport.update({
   id: '/tema/klima/nao',
   path: '/tema/klima/nao',
@@ -356,6 +363,7 @@ export interface FileRoutesByFullPath {
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/jetstrommer-atmosfaeriske-elver': typeof TemaKlimaJetstrommerAtmosfaeriskeElverRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
   '/poster/$slug/': typeof PosterSlugIndexRoute
@@ -407,6 +415,7 @@ export interface FileRoutesByTo {
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/jetstrommer-atmosfaeriske-elver': typeof TemaKlimaJetstrommerAtmosfaeriskeElverRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
   '/poster/$slug': typeof PosterSlugIndexRoute
@@ -459,6 +468,7 @@ export interface FileRoutesById {
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
   '/tema/klima/iod': typeof TemaKlimaIodRoute
+  '/tema/klima/jetstrommer-atmosfaeriske-elver': typeof TemaKlimaJetstrommerAtmosfaeriskeElverRoute
   '/tema/klima/nao': typeof TemaKlimaNaoRoute
   '/tema/klima/oversikt': typeof TemaKlimaOversiktRoute
   '/poster/$slug/': typeof PosterSlugIndexRoute
@@ -512,6 +522,7 @@ export interface FileRouteTypes {
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
+    | '/tema/klima/jetstrommer-atmosfaeriske-elver'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
     | '/poster/$slug/'
@@ -563,6 +574,7 @@ export interface FileRouteTypes {
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
+    | '/tema/klima/jetstrommer-atmosfaeriske-elver'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
     | '/poster/$slug'
@@ -614,6 +626,7 @@ export interface FileRouteTypes {
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
     | '/tema/klima/iod'
+    | '/tema/klima/jetstrommer-atmosfaeriske-elver'
     | '/tema/klima/nao'
     | '/tema/klima/oversikt'
     | '/poster/$slug/'
@@ -666,6 +679,7 @@ export interface RootRouteChildren {
   TemaKlimaAmocRoute: typeof TemaKlimaAmocRoute
   TemaKlimaEnsoRoute: typeof TemaKlimaEnsoRoute
   TemaKlimaIodRoute: typeof TemaKlimaIodRoute
+  TemaKlimaJetstrommerAtmosfaeriskeElverRoute: typeof TemaKlimaJetstrommerAtmosfaeriskeElverRoute
   TemaKlimaNaoRoute: typeof TemaKlimaNaoRoute
   TemaKlimaOversiktRoute: typeof TemaKlimaOversiktRoute
   PosterSlugIndexRoute: typeof PosterSlugIndexRoute
@@ -1003,6 +1017,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaKlimaIodRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/klima/jetstrommer-atmosfaeriske-elver': {
+      id: '/tema/klima/jetstrommer-atmosfaeriske-elver'
+      path: '/tema/klima/jetstrommer-atmosfaeriske-elver'
+      fullPath: '/tema/klima/jetstrommer-atmosfaeriske-elver'
+      preLoaderRoute: typeof TemaKlimaJetstrommerAtmosfaeriskeElverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/klima/nao': {
       id: '/tema/klima/nao'
       path: '/tema/klima/nao'
@@ -1066,6 +1087,8 @@ const rootRouteChildren: RootRouteChildren = {
   TemaKlimaAmocRoute: TemaKlimaAmocRoute,
   TemaKlimaEnsoRoute: TemaKlimaEnsoRoute,
   TemaKlimaIodRoute: TemaKlimaIodRoute,
+  TemaKlimaJetstrommerAtmosfaeriskeElverRoute:
+    TemaKlimaJetstrommerAtmosfaeriskeElverRoute,
   TemaKlimaNaoRoute: TemaKlimaNaoRoute,
   TemaKlimaOversiktRoute: TemaKlimaOversiktRoute,
   PosterSlugIndexRoute: PosterSlugIndexRoute,

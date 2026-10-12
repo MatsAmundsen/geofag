@@ -396,3 +396,26 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   outline-offset: 2px;
   box-shadow: 0 0 0 2px #ffffff;
 }
+
+/* Jetstrømmer og atmosfæriske elver (undervisningsmodell, /tema/klima/jetstrommer-atmosfaeriske-elver) */
+.jet-map-stage {
+  position: relative;
+  width: 100%;
+  height: 70vw;
+  min-height: 260px;
+  background: #0c2433;
+}
+@media (min-width: 64rem) {
+  .jet-map-stage {
+    height: auto;
+    min-height: 0;
+  }
+}
+.jet-map-stage.is-large {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+}
