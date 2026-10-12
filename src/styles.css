@@ -427,6 +427,51 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
     aspect-ratio: 2.2 / 1;
   }
 }
+/* Modellens egne ankre/overskrifter havner under nettstedets sticky header.
+   --jet-header-h settes av JetModel (målt med ResizeObserver) bare på .jet-root. */
+.jet-root :is(h2, h3, section, [id], summary, button, [role="slider"], [role="radio"]) {
+  scroll-margin-top: calc(var(--jet-header-h, 160px) + 0.75rem);
+}
+.jet-more__summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--color-foreground);
+}
+.jet-more__summary::-webkit-details-marker {
+  display: none;
+}
+.jet-more__summary:hover {
+  background: color-mix(in oklab, var(--color-muted) 60%, transparent);
+}
+.jet-more__summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+.jet-more__chev {
+  margin-left: auto;
+  transition: transform 160ms ease;
+}
+.jet-more[open] .jet-more__chev {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .jet-more__chev {
+    transition: none;
+  }
+}
+@media (min-width: 64rem) {
+  .jet-more__summary {
+    padding-inline: 1.5rem;
+  }
+}
 .jet-map-stage.is-large {
   position: fixed;
   inset: 0;

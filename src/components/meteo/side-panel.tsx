@@ -28,7 +28,12 @@ const LAYERS = [
   ["arrows", "Vindpiler"],
 ] as const;
 
-export function SidePanel() {
+export type PanelPart = "summary" | "details" | "steer" | "presets" | "layers" | "explain";
+const ALL_PARTS: PanelPart[] = ["summary", "details", "steer", "presets", "layers", "explain"];
+
+/** Delene kan vises hver for seg (primærflate, «Flere kontroller», forklaringer). */
+export function SidePanel({ parts = ALL_PARTS, className = "flex flex-col" }: { parts?: PanelPart[]; className?: string }) {
+  const show = (part: PanelPart) => parts.includes(part);
   const month = useJetStore((s) => s.month);
   const jets = useJetStore((s) => s.jets);
   const selected = useJetStore((s) => s.selected);
@@ -54,8 +59,9 @@ export function SidePanel() {
   void landTick;
 
   return (
-    <div className="flex flex-col">
-      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+    <div className={className}>
+      {show("summary") ? (
+      <section id="jet-sted" className="flex flex-col gap-3 border-b border-border px-4 py-4">
         <h2 className="font-display text-xl text-foreground">Dette stedet</h2>
         <p className="text-sm text-muted-foreground">
           {info.title} · {info.coords}
@@ -67,6 +73,10 @@ export function SidePanel() {
           <RelScale kind="Vind nær bakken" level={{ ...windLevel(info.windSurface, "bakke"), label: `${windLevel(info.windSurface, "bakke").label} vind` }} />
         </div>
         <p className="text-xs text-muted-foreground">Sammenlignet med en rett, klimatologisk jetstrøm og nøytral ENSO og IOD.</p>
+      </section>
+      ) : null}
+      {show("details") ? (
+      <section className="flex flex-col gap-3 border-b border-border px-4 py-4" aria-label="Steder og scenarier">
         <div className="grid grid-cols-2 gap-2">
           {(
             [
@@ -106,7 +116,8 @@ export function SidePanel() {
           ))}
         </div>
       </section>
-
+      ) : null}
+      {show("steer") ? (
       <section className="flex flex-col gap-4 border-b border-border px-4 py-4">
         <h2 className="font-display text-xl text-foreground">Styr banen</h2>
         <div className="grid grid-cols-2 gap-2">
@@ -198,7 +209,8 @@ export function SidePanel() {
           Fjern fri bane
         </button>
       </section>
-
+      ) : null}
+      {show("presets") ? (
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
         <h2 className="font-display text-xl text-foreground">{EXPLAIN.jetPresetsTitle}</h2>
         <div className="flex flex-col gap-2">
@@ -215,7 +227,8 @@ export function SidePanel() {
           ))}
         </div>
       </section>
-
+      ) : null}
+      {show("layers") ? (
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
         <h2 className="font-display text-xl text-foreground">Lag på kartet</h2>
         <div className="flex flex-wrap gap-2">
@@ -236,8 +249,9 @@ export function SidePanel() {
           ))}
         </div>
       </section>
-
-
+      ) : null}
+      {show("explain") ? (
+      <>
       <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
         <h2 className="font-display text-xl text-foreground">{EXPLAIN.whyTitle}</h2>
         {EXPLAIN.why.map((text) => (
@@ -261,6 +275,8 @@ export function SidePanel() {
         <h2 className="font-display text-xl text-foreground">{EXPLAIN.sectionTitle}</h2>
         <CrossSection jets={jets} month={month} lon={probe.lon} hem={sectionHem(probe.lat, selected)} modes={modes} />
       </section>
+      </>
+      ) : null}
     </div>
   );
 }

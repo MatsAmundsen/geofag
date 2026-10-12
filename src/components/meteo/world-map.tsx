@@ -48,6 +48,7 @@ export const MOIST = "#cba6f7";
 const MOIST_DOT = "#f3e8ff";
 /** Tropisk fukttransport / monsunstrøm (bred, kort pil, uten front). */
 export const TROP = "#5fd4a8";
+const TROP_TIP = "#8ff0c8";
 
 /** Settes per frame: tid (s) og om fuktpartikler skal bevege seg. */
 const flowClock = { t: 0, animate: false };
@@ -385,11 +386,13 @@ export function WorldMap() {
         live.dragging = true;
         canvas.setPointerCapture(event.pointerId);
         dragIndex = handle.index;
+        if (!useJetStore.getState().moreOpen) useJetStore.getState().setMoreOpen(true);
         return;
       }
       const site = nearestSite(siteHits, p.x, p.y, viewW < 720 ? 28 : 20);
       if (site && live.mapZoom < 1.2) {
         useJetStore.getState().setSelected(site.jet);
+        if (!useJetStore.getState().moreOpen) useJetStore.getState().setMoreOpen(true);
         useJetStore.getState().setProbe({ lat: site.lat, lon: site.lon });
         useJetStore.getState().setFocus({
           name: site.name,
@@ -788,6 +791,10 @@ function draw(
         const point = locate(lon, ribbonLat(sky.ribbons[id], lon));
         if (!point) continue;
         hits.push({ index: i, x: point[0], y: point[1] });
+        if (hits.length === 1) {
+          const tag = `${Math.round(point[0])},${Math.round(point[1])}`;
+          if (canvas.dataset.handle !== tag) canvas.dataset.handle = tag; // brukes av test
+        }
         ctx.beginPath();
         ctx.arc(point[0], point[1], w < 720 ? 8 : 6.5, 0, Math.PI * 2);
         ctx.fillStyle = INK;
@@ -996,7 +1003,7 @@ function chevron(ctx: CanvasRenderingContext2D, x: number, y: number, a: number,
   ctx.restore();
 }
 
-type FlowGeom = { kind: "ar" | "tropisk"; band: Path2D; pts: Pt[]; dist: number[]; s: number; label: string; start: Pt; end: Pt };
+type FlowGeom = { kind: "ar" | "tropisk"; scale: number; band: Path2D; pts: Pt[]; dist: number[]; s: number; label: string; start: Pt; end: Pt };
 const flowCache: { key: string; geoms: FlowGeom[] } = { key: "", geoms: [] };
 
 function flowGeoms(locate: (lon: number, lat: number) => [number, number] | null, w: number): FlowGeom[] {
@@ -1012,8 +1019,8 @@ function flowGeoms(locate: (lon: number, lat: number) => [number, number] | null
     const band =
       flow.kind === "ar"
         ? bandPath(pts, dist, (u) => scale * (0.6 + 0.4 * strength) * (u < 0.5 ? 4 + 28 * u : 18 - 20 * (u - 0.5)))
-        : bandPath(pts, dist, (u) => scale * (0.7 + 0.5 * strength) * (u < 0.68 ? 24 : Math.max(0, 46 * (1 - (u - 0.68) / 0.32))));
-    geoms.push({ kind: flow.kind, band, pts, dist, s: strength, label: FLOW_TEXT[flow.id].short, start: pts[0]!, end: pts[pts.length - 1]! });
+        : bandPath(pts, dist, () => scale * (0.7 + 0.5 * strength) * 22);
+    geoms.push({ kind: flow.kind, scale, band, pts, dist, s: strength, label: FLOW_TEXT[flow.id].short, start: pts[0]!, end: pts[pts.length - 1]! });
   }
   flowCache.key = key;
   flowCache.geoms = geoms;
@@ -1054,15 +1061,43 @@ function drawFlows(ctx: CanvasRenderingContext2D, locate: (lon: number, lat: num
         drawChevrons(ctx, g.pts, MOIST_DOT, 3);
       }
     } else {
-      grad.addColorStop(0, `rgba(95,212,168,${0.2 + 0.25 * g.s})`);
-      grad.addColorStop(1, `rgba(95,212,168,${0.45 + 0.4 * g.s})`);
+      // Monsun / fuktig luft fra havet: helt bånd + mørk halo + fylt pilspiss (form, ikke bare farge).
+      grad.addColorStop(0, `rgba(95,212,168,${0.35 + 0.25 * g.s})`);
+      grad.addColorStop(1, `rgba(95,212,168,${Math.min(0.95, 0.6 + 0.3 * g.s)})`);
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = INK;
+      ctx.globalAlpha = 0.85;
+      ctx.lineWidth = Math.max(3, 4 * g.scale);
+      ctx.stroke(g.band);
+      ctx.globalAlpha = 1;
       ctx.fillStyle = grad;
       ctx.fill(g.band);
       ctx.strokeStyle = TROP;
-      ctx.globalAlpha = 0.9;
-      ctx.lineWidth = 1.2;
+      ctx.lineWidth = Math.max(1.5, 1.75 * g.scale);
       ctx.stroke(g.band);
-      ctx.globalAlpha = 1;
+      const total = g.dist[g.dist.length - 1]!;
+      const tip = pointAt(g.pts, g.dist, total);
+      const len = Math.max(14, 18 * g.scale);
+      const half = Math.max(16, 22 * g.scale) / 2;
+      ctx.save();
+      ctx.translate(tip.x, tip.y);
+      ctx.rotate(tip.a);
+      ctx.beginPath();
+      ctx.moveTo(len * 0.6, 0);
+      ctx.lineTo(-len * 0.4, -half);
+      ctx.lineTo(-len * 0.4, half);
+      ctx.closePath();
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = INK;
+      ctx.lineWidth = 4;
+      ctx.stroke();
+      ctx.fillStyle = TROP_TIP;
+      ctx.fill();
+      ctx.strokeStyle = "#e8fff5";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.restore();
+      if (!flowClock.animate) drawChevrons(ctx, g.pts.slice(0, Math.max(2, Math.floor(g.pts.length * 0.8))), "#e8fff5", 2);
     }
     if (w >= 520) {
       const mid = pointAt(g.pts, g.dist, (g.dist[g.dist.length - 1]! * 0.45));

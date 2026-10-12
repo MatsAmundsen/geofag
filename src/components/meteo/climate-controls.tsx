@@ -51,7 +51,7 @@ export const ClimateControls = memo(function ClimateControls() {
 
   return (
     <div className="flex flex-col">
-      <section className="flex flex-col gap-4 border-b border-border px-4 py-4" aria-labelledby={`${ensoId}-h`}>
+      <section id="jet-enso" className="flex flex-col gap-4 border-b border-border px-4 py-4" aria-labelledby={`${ensoId}-h`}>
         <h2 id={`${ensoId}-h`} className="font-display text-xl text-foreground">
           ENSO og IOD
         </h2>
@@ -98,7 +98,7 @@ export const ClimateControls = memo(function ClimateControls() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-3 border-b border-border px-4 py-4">
+      <section id="jet-monstre" className="flex flex-col gap-3 border-b border-border px-4 py-4">
         <h2 className="font-display text-xl text-foreground">Kjente mønstre</h2>
         <div role="radiogroup" aria-label="Kjente mønstre" className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
           {PATTERNS.map((p, index) => {

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Info, Pause, Play } from "lucide-react";
 import { ClimateControls } from "@/components/meteo/climate-controls";
 import { ControlSlider } from "@/components/meteo/control-slider";
 import { MapChrome, MOIST, TROP, WorldMap } from "@/components/meteo/world-map";
@@ -9,7 +9,11 @@ import { worldHeadline } from "@/lib/meteo/diagnose";
 import { FLOW_TEXT, LEGEND_TEXT, MODEL_DISCLAIMER } from "@/lib/meteo/fagtekst";
 import { activeFlows } from "@/lib/meteo/moisture-flows";
 import { ensoAmp, iodAmp, monthName } from "@/lib/meteo/physics";
-import { useClimateModes, useJetStore } from "@/lib/meteo/store";
+import { readMoreOpen, useClimateModes, useJetStore } from "@/lib/meteo/store";
+
+/** UI-tekst (ikke fagtekst), fra DesignBOT spes. v2. */
+const HOW_TO =
+  "Dra ENSO og IOD, eller velg et kjent mønster, og se hvordan jetstrømmene og fuktstrømmene flytter seg. Trykk på et sted i kartet for å se været der.";
 
 const AMBER = "#e4a23c";
 const STEEL = "#7eb6cc";
@@ -36,7 +40,7 @@ function Legend({ overlay }: { overlay: boolean }) {
     ],
     [
       LEGEND_TEXT.tropical,
-      <path key="t" d="M1 2.5 H18 V0.5 L27 5 L18 9.5 V7.5 H1 Z" fill={TROP} fillOpacity="0.7" stroke={TROP} strokeWidth="1" />,
+      <path key="t" d="M1 3 H17 V0.5 L27 5 L17 9.5 V7 H1 Z" fill="#8ff0c8" stroke="#07141c" strokeWidth="1" />,
     ],
   ];
   return (
@@ -71,9 +75,30 @@ export function JetModel() {
   const headline = worldHeadline(jets, month, modes);
   const live = useDebounced(`${headline.title}. ${headline.detail}`, 300);
   const flows = activeFlows(ensoAmp(modes), iodAmp(modes), month);
+  const moreOpen = useJetStore((s) => s.moreOpen);
+  const setMoreOpen = useJetStore((s) => s.setMoreOpen);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Gjenopprett «Flere kontroller» i samme fane.
+  useEffect(() => {
+    if (readMoreOpen()) useJetStore.setState({ moreOpen: true });
+  }, []);
+
+  // Mål nettstedets sticky header lokalt (ingen endring i SiteHeader eller global html-CSS).
+  // Høyden settes som CSS-variabel bare på modellens rot og brukes til scroll-margin-top.
+  useEffect(() => {
+    const root = rootRef.current;
+    const header = document.querySelector<HTMLElement>("body header.sticky, body header[class*='sticky']");
+    if (!root || !header) return;
+    const apply = () => root.style.setProperty("--jet-header-h", `${Math.ceil(header.getBoundingClientRect().height)}px`);
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(header);
+    return () => ro.disconnect();
+  }, []);
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card text-foreground" data-testid="jet-model">
+    <div ref={rootRef} className="jet-root flex flex-col overflow-hidden rounded-xl border border-border bg-card text-foreground" data-testid="jet-model">
       <header className="flex shrink-0 flex-col gap-3 border-b border-border px-4 py-3 lg:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -121,13 +146,41 @@ export function JetModel() {
           <li key={flow.id}>{FLOW_TEXT[flow.id].name}.</li>
         ))}
       </ul>
-      <div className={mapLarge ? "hidden" : "grid md:grid-cols-2 md:gap-x-6 lg:grid-cols-[2fr_1fr] lg:gap-x-0"}>
-        <div className="min-w-0 lg:border-r lg:border-border">
-          <ClimateControls />
+      <div className={mapLarge ? "hidden" : "flex flex-col"}>
+        <p className="flex items-start gap-2 px-4 pt-4 text-sm text-pretty text-muted-foreground lg:px-6" data-testid="how-to">
+          <Info className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          <span>{HOW_TO}</span>
+        </p>
+        <div className="grid md:grid-cols-2 md:gap-x-6 lg:grid-cols-[2fr_1fr] lg:gap-x-0">
+          <div className="min-w-0 lg:border-r lg:border-border">
+            <ClimateControls />
+          </div>
+          <aside className="min-w-0">
+            <SidePanel parts={["summary"]} />
+          </aside>
         </div>
-        <aside className="min-w-0">
-          <SidePanel />
-        </aside>
+        <details
+          id="jet-more"
+          className="jet-more border-t border-border"
+          open={moreOpen}
+          onToggle={(e) => {
+            const open = e.currentTarget.open;
+            if (open !== useJetStore.getState().moreOpen) setMoreOpen(open);
+          }}
+          data-testid="jet-more"
+        >
+          <summary className="jet-more__summary">
+            <span>Flere kontroller</span>
+            <span className="font-sans text-xs text-muted-foreground">Steder, styr banen, eksempler på jetbaner, lag på kartet</span>
+            <ChevronDown className="jet-more__chev size-4" aria-hidden="true" />
+          </summary>
+          <div id="jet-more-controls">
+            <SidePanel parts={["details", "steer", "presets", "layers"]} className="grid md:grid-cols-2 lg:grid-cols-3" />
+          </div>
+        </details>
+        <div className="border-t border-border">
+          <SidePanel parts={["explain"]} className="grid lg:grid-cols-3" />
+        </div>
       </div>
       <RegionZoom />
     </div>

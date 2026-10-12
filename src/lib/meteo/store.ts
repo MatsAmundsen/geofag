@@ -39,6 +39,8 @@ type JetStore = {
   mapZoom: number;
   mapCenter: { lon: number; lat: number };
   mapLarge: boolean;
+  /** «Flere kontroller» åpent. Lagres i sessionStorage (geofag:jet:moreOpen). */
+  moreOpen: boolean;
   /** ONI, −2 … +2. */
   oni: number;
   /** DMI, −1,5 … +1,5. */
@@ -57,12 +59,23 @@ type JetStore = {
   setMapZoom: (zoom: number) => void;
   setMapCenter: (center: { lon: number; lat: number }) => void;
   toggleMapLarge: () => void;
+  setMoreOpen: (open: boolean) => void;
   resetMap: () => void;
   markLand: () => void;
   setOni: (oni: number) => void;
   setDmi: (dmi: number) => void;
   setClimate: (oni: number, dmi: number, month: number | null) => void;
 };
+
+export const MORE_KEY = "geofag:jet:moreOpen";
+
+export function readMoreOpen(): boolean {
+  try {
+    return window.sessionStorage.getItem(MORE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
 
 const cleared = (jet: JetParams): JetParams => ({ ...jet, offsets: jet.offsets.map(() => 0) });
 
@@ -78,6 +91,7 @@ export const useJetStore = create<JetStore>((set) => ({
   mapZoom: 1,
   mapCenter: { lon: 10, lat: 20 },
   mapLarge: false,
+  moreOpen: false,
   oni: 0,
   dmi: 0,
   setMonth: (month) => set({ month }),
@@ -108,6 +122,14 @@ export const useJetStore = create<JetStore>((set) => ({
   setMapZoom: (mapZoom) => set({ mapZoom: Math.max(1, Math.min(8, mapZoom)) }),
   setMapCenter: (mapCenter) => set({ mapCenter }),
   toggleMapLarge: () => set((state) => ({ mapLarge: !state.mapLarge })),
+  setMoreOpen: (moreOpen) => {
+    try {
+      window.sessionStorage.setItem(MORE_KEY, moreOpen ? "1" : "0");
+    } catch {
+      /* privat modus e.l. */
+    }
+    set({ moreOpen });
+  },
   resetMap: () => set({ mapZoom: 1, mapCenter: { lon: 10, lat: 20 } }),
   markLand: () => set((state) => ({ landTick: state.landTick + 1 })),
   setOni: (oni) => set({ oni: round1(oni) }),
