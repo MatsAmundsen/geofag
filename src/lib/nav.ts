@@ -45,6 +45,7 @@ export const NAV_GF2 = [
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
+  { to: "/tema/klima/jetstrommer-atmosfaeriske-elver", label: "Jetstrømmer og atmosfæriske elver" },
   { to: "/tema/kryosfaeren", label: "Is" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
@@ -154,7 +155,7 @@ export const GF2_THEMES = [
     image: "/images/tema-strommer.jpg",
     alt: "Nord-Atlanteren med fargekontrast som minner om en vestlig randstrøm",
     blurb:
-      "Vind, tetthet og jordrotasjon flytter varme i havet. Golfstrømmen og AMOC er grunnen til at Norge er mildt på 60°N.",
+      "Vind, jordrotasjon og tetthet driver havstrømmene. Den norske atlanterhavsstrømmen og vinden gir Norge et mildt klima.",
     status: "klar" as const,
   },
   {
@@ -184,7 +185,7 @@ export const GF2_THEMES = [
     image: "/images/fig-klimasystem.jpg",
     alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is — det modellene beskriver",
     blurb:
-      "En numerisk modell i geofag er ikke et værkart på en datamaskin. Den er fysikk regnet på et rutenett.",
+      "Rutenett, parameterisering, dataassimilering og ensembler, og de norske modellene MEPS, AROME-Arctic, Norkyst og NorESM.",
     status: "klar" as const,
   },
   {
@@ -194,7 +195,7 @@ export const GF2_THEMES = [
     image: "/images/fig-paleo.jpg",
     alt: "Lagdelt blå breis med bølgende bånd av gammel is",
     blurb:
-      "Slik leser vi fortiden: CO₂-målinger fra Mauna Loa, iskjerner, oksygenisotoper og havis fra satellitt. Jordbanen står i neste kapittel.",
+      "Slik leser vi fortiden: iskjerner, oksygenisotoper, havbunn, pollen og årringer. Jordbanen står i neste kapittel.",
     status: "klar" as const,
   },
   {
@@ -475,6 +476,21 @@ export const KLIMA_SUBTHEMES = [
     alt: "Nord-Atlanteren med varm overflatestrøm nordover og kald dypstrøm sørover",
     blurb:
       "Havets store transportbånd: veien rundt jorda, hvorfor ferskvann kan bremse det, og hva IPCC sier om svekkelse.",
+    status: "klar" as const,
+  },
+] as const;
+
+/** Interaktive klimamodeller. Ingen CMS-post (står derfor ikke i KLIMA_SUBTHEMES). */
+export const KLIMA_MODELS = [
+  {
+    to: "/tema/klima/jetstrommer-atmosfaeriske-elver",
+    title: "Jetstrømmer og atmosfæriske elver",
+    subtitle: "Interaktiv undervisningsmodell",
+    kicker: "Interaktiv modell",
+    image: "/images/jetstrommer-modell.jpg",
+    alt: "Verdenskart med jetstrømmer og atmosfæriske elver",
+    blurb:
+      "Polarjet og subtropisk jet, Rossby-bølger og atmosfæriske elver. Skru på ENSO og IOD og se hvordan jetstrøm og nedbør endres.",
     status: "klar" as const,
   },
 ] as const;

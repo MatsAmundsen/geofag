@@ -36,7 +36,7 @@ export function FieldworkObservationModel() {
     <ModelFrame
       kicker="Interaktiv vitenskapelig feltmetodikk"
       title="Georeferert feltlogg og observasjonskjede"
-      lead="Feltarbeid er ikke en tilfeldig skoletur – det er en streng vitenskapelig datainnsamlingsprosess. Utforsk de fire klassiske feltstasjonene: måling av bergartens romlige orientering med geologkompass, sedimentologisk kornanalyse, hydrologisk vannføring og faglig HMS-risikovurdering."
+      lead="Utforsk fire feltstasjoner og se hvordan hver måling blir en rad i en georeferert feltlogg."
       toolbar={
         <>
           <ModelTab active={activeStation === "strike_dip"} onClick={() => setActiveStation("strike_dip")}>

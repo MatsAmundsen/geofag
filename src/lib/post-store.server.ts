@@ -770,7 +770,7 @@ const COPY_RESEEDS: CopyReseed[] = [
   {
     flag: "felt-hav-luft-is-copy-2-2026-10-07",
     slug: "felt-hav-luft-is",
-    stale: ["## Tre felt, samme kjede"],
+    stale: ["| Felt | Hva du kan måle | Hvor tallene kommer fra |"],
   },
   {
     flag: "isbreer-og-landformer-copy-2026-10-07",
@@ -1057,6 +1057,72 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g2-coriolis-mal-2026-10-11",
     slug: "coriolis",
     stale: ["Om lag halvparten av primærproduksjonen i havet skjer i oppvellingsområder"],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vindsystemet-mal-2026-10-11",
+    slug: "vindsystemet",
+    stale: ["Bruk modellen i [dette kapittelet](/tema/vindsystemet)", "Jordaksen heller om lag 23 grader."],
+  },
+  {
+    // Geo (G2): malen og bør-punktene.
+    flag: "g2-vaerkart-mal-2026-10-11",
+    slug: "vaerkart",
+    stale: ["Vilhelm Bjerknes og Halvor Solberg, Bergensskolen, 1922"],
+  },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-havstrommer-fjell-2026-10-11",
+    slug: "havstrommer",
+    stale: ["[Havstrømmer](/tema/havstrommer) handler om disse drivkreftene"],
+  },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-numeriske-modeller-mal-2026-10-11",
+    slug: "numeriske-modeller",
+    stale: ["ECMWF har som kjerneoppgave", "Fra idé til regnestykke", "Observasjoner, hav og klima"],
+  },
+  {
+    // Fjells kapittel etter malen (Geo godkjent).
+    flag: "g2-felt-hav-luft-is-mal-2026-10-11",
+    slug: "felt-hav-luft-is",
+    stale: ["## Tre felt i samme kjede"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-hub-md-2026-10-11",
+    slug: "klima",
+    stale: ["## Leserekkefølge"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-tilpasning-md-2026-10-11",
+    slug: "tilpasning",
+    stale: ["## To svar"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-oversikt-fjell-2026-10-11",
+    slug: "oversikt",
+    stale: ["eier stråling, pådriv og tilbakekobling. Kartet ligger på"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-amoc-fjell-2026-10-11",
+    slug: "amoc",
+    stale: ["NOAA kaller hele beltet the global conveyor belt"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-klima-milankovitch-md-2026-10-11",
+    slug: "milankovitch",
+    stale: ["Isen som måles i år, eier"],
+  },
+  {
+    // Klima (Geo): kodet tekst flyttet til markdown etter malen.
+    flag: "g2-paleoklima-fjell-geo-2026-10-11",
+    slug: "paleoklima",
+    stale: ["Tre arkiv, tre klokker"],
   },
 ];
 

@@ -5,7 +5,7 @@ export function AssimilationDiagram() {
     <Diagram
       title="Dataassimilering: modellgjetning pluss observasjoner gir ny starttilstand"
       heading="Slik bygges starttilstanden"
-      caption="Modellen har en gjetning. Observasjoner kommer inn med sine feil. Assimilering veier dem sammen. Resultatet er starttilstanden for neste varsel. Uten dette steget driver modellen vekk fra virkeligheten."
+      caption="Modellen har en gjetning. Observasjoner kommer inn med sine feil. Assimilering veier dem sammen. Resultatet er starttilstanden for neste varsel. Uten dette steget blir starten dårligere for hvert varsel."
       viewBox="0 0 900 240"
       wide
     >
@@ -50,7 +50,7 @@ export function EnsembleRibbonDiagram() {
     <Diagram
       title="Ensemble: mange nesten like baner. Tett bunt er høy tillit, sprik er lav tillit"
       heading="Slik leser du et ensemble"
-      caption="Hvert medlem er en lovlig starttilstand gitt observasjonene. Ligger kurvene tett: høy tillit. Spriker de etter dag 5: lavtrykkets bane er usikker. «40 % sjanse for regn» er andelen medlemmer over en terskel."
+      caption="Hvert medlem er en lovlig starttilstand gitt observasjonene. Ligger kurvene tett: høy tillit. Spriker de: lavtrykkets bane er usikker. «40 % sjanse for regn» er, i den enkleste tolkningen, andelen medlemmer over en terskel."
       viewBox="0 0 900 280"
       wide
     >

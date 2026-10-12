@@ -102,6 +102,7 @@ export {
   DataAssimilationCycleDiagram,
   LorenzChaosEnsembleDiagram,
   ModelGrid3DDiagram,
+  ModelGridDiagram,
   ModelHierarchyNorwayDiagram,
   PrimitiveEquationsDiagram,
   SubgridParametrizationDiagram,
