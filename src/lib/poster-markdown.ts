@@ -295,6 +295,11 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "Hva er en geologisk ressurs?",
   },
   {
+    widgets: ["Ressurskart"],
+    afterParagraph: "I Fensfeltet i Telemark ligger",
+    require: "Hva er en geologisk ressurs?",
+  },
+  {
     widgets: ["QuizGeologiskeRessurser"],
     afterHeading: "Test deg selv",
     require: "Hva er en geologisk ressurs?",

@@ -134,11 +134,8 @@ import {
   FjellskredBolgeDiagram,
   SkredSonerDiagram,
 } from "@/components/diagrams/skred";
-import {
-  FeltbokDiagram,
-  FraBergartTilBruddDiagram,
-  PetroleumSystemDiagram,
-} from "@/components/diagrams/ressurser";
+import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
+import { PetroleumSnittFigur, RessurskartFigur } from "@/components/diagrams/ressurs-figurer";
 import {
   DensityDiagram,
   GulfVsNacDiagram,
@@ -1338,7 +1335,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   FieldworkIllustration: () => <FeltmetodeFigur />,
   Feltbok: () => <FeltbokDiagram />,
   FraBergartTilBrudd: () => <FraBergartTilBruddDiagram />,
-  PetroleumSystem: () => <PetroleumSystemDiagram />,
+  PetroleumSystem: () => <PetroleumSnittFigur />,
+  Ressurskart: () => <RessurskartFigur />,
   OfiolittSnitt: () => <OfiolittSnittDiagram />,
   Kaledonidene: () => <KaledonideneFigur />,
   Norskehavet: () => <NorskehavetFigur />,
