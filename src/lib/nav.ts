@@ -45,6 +45,7 @@ export const NAV_GF2 = [
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
+  { to: "/tema/klima/jetstrommer-atmosfaeriske-elver", label: "Jetstrømmer og atmosfæriske elver" },
   { to: "/tema/kryosfaeren", label: "Is" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
@@ -475,6 +476,21 @@ export const KLIMA_SUBTHEMES = [
     alt: "Nord-Atlanteren med varm overflatestrøm nordover og kald dypstrøm sørover",
     blurb:
       "Havets store transportbånd: veien rundt jorda, hvorfor ferskvann kan bremse det, og hva IPCC sier om svekkelse.",
+    status: "klar" as const,
+  },
+] as const;
+
+/** Interaktive klimamodeller. Ingen CMS-post (står derfor ikke i KLIMA_SUBTHEMES). */
+export const KLIMA_MODELS = [
+  {
+    to: "/tema/klima/jetstrommer-atmosfaeriske-elver",
+    title: "Jetstrømmer og atmosfæriske elver",
+    subtitle: "Interaktiv undervisningsmodell",
+    kicker: "Interaktiv modell",
+    image: "/images/jetstrommer-modell.jpg",
+    alt: "Verdenskart med jetstrømmer og atmosfæriske elver",
+    blurb:
+      "Polarjet og subtropisk jet, Rossby-bølger og atmosfæriske elver. Skru på ENSO og IOD og se hvordan jetstrøm og nedbør endres.",
     status: "klar" as const,
   },
 ] as const;
