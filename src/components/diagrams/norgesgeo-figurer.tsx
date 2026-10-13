@@ -193,8 +193,8 @@ function kartTilFigur(p: readonly [number, number], x: number, y: number, w: num
 
 const KA_STEPS = ["1 Iapetushavet", "2 Havet lukkes", "3 Kollisjon", "4 I dag"];
 const KA_STATUS = [
-  "Mellom Baltika og Laurentia lå Iapetushavet. Havbunnen sank ned i mantelen langs kanten av havet. Leka-ofiolitten er en bit av denne havbunnen, dannet for ca. 497 millioner år siden.",
-  "Havet lukkes, og Baltika og Laurentia nærmer seg. Noen biter av havbunnen ble skjøvet opp på kanten av et kontinent i stedet for å synke ned (obduksjon). Leka ble trolig skjøvet opp for ca. 470 millioner år siden.",
+  "Mellom Baltika og Laurentia lå det åpne Iapetushavet med kontinental skorpe på begge sider og oseanisk skorpe (havbunn) mellom dem. En spredningsrygg lå et sted i havet. Leka-ofiolitten er en bit av denne havbunnen, dannet for ca. 497 millioner år siden.",
+  "Havet lukkes: subduksjon starter langs kanten, øybuer dannes, og Baltika og Laurentia nærmer seg. Noen biter av havbunnen ble skjøvet opp på kanten av et kontinent i stedet for å synke ned (obduksjon). Leka ble trolig skjøvet opp for ca. 470 millioner år siden.",
   "Kontinentene kolliderer (ca. 425–405 millioner år siden). Kontinental skorpe er lett og synker ikke lett ned, men kanten av Baltika ble likevel dratt ned til mer enn 100 km dyp. Det viser eklogitten på Vestlandet. Bergflak fra havbunn, øybuer og kontinentalrender skyves mot øst og sørøst inn over det baltiske grunnfjellet som skyvedekker, og Kaledonidene reiser seg.",
   "I dag er fjellkjeden erodert ned til røttene. Restene av skyvedekkene ligger oppå grunnfjellet, for eksempel Jotundekket i Jotunheimen. Atlanterhavet åpnet seg mye senere, så Grønland (Laurentia) ligger nå langt mot vest.",
 ];
@@ -254,19 +254,41 @@ function kaState(step: number, phase: number): KaState {
   return keyframe(KA_FRAMES, step, phase);
 }
 
-/** Havbildet (steg 1–2): Laurentia, subduksjon, øybue, Iapetushavet og Baltika. */
+/** Havbildet (steg 1–2): Laurentia, åpent hav eller subduksjon, øybue, Iapetushavet og Baltika. */
 function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m: { fg: string; warm: string } }) {
   const bx = s.bx;
   const trench = 352;
   const floor = 352;
   const lauTop = (x: number) => (x < 300 ? 286 - 4 * Math.sin(x / 40) : lerp(286, floor + 8, smooth((x - 300) / 50)));
   const balTop = (x: number) => (x > bx + 40 ? 296 : lerp(floor, 296, smooth((x - bx) / 40)));
-  // havbunnsplaten (litosfære) som bøyer ned under Laurentia: midtlinje med fast tykkelse
+
+  // Subduksjonsmengde: 0 i åpent hav (steg 1), øker mot 1 når havet lukkes (steg 2)
+  const subduct = clamp((650 - bx) / (650 - 470));
+
+  // Flat oseanisk litosfære mellom kontinentene når havet er åpent
+  const oceanLitho = band(
+    () => floor + 8,
+    () => floor + 48,
+    320,
+    bx - 10,
+    4,
+  );
+  const oceanCrust = band(
+    () => floor + 8,
+    () => floor + 22,
+    320,
+    bx - 10,
+    4,
+  );
+
+  // Subduserende slab (bare når subduct > 0)
   const slabMid: [number, number][] = [];
-  for (let x = bx + 20; x > trench; x -= 10) slabMid.push([x, floor + 24]);
-  for (let t = 0; t <= 1.0001; t += 0.05) {
-    const a = t * 1.05;
-    slabMid.push([trench - 230 * Math.sin(a) * 0.95, floor + 24 + 260 * (1 - Math.cos(a))]);
+  if (subduct > 0.05) {
+    for (let x = bx + 20; x > trench; x -= 10) slabMid.push([x, floor + 24]);
+    for (let t = 0; t <= subduct; t += 0.05) {
+      const a = t * 1.05;
+      slabMid.push([trench - 230 * Math.sin(a) * 0.95, floor + 24 + 260 * (1 - Math.cos(a))]);
+    }
   }
   const offset = (k: number) =>
     slabMid.map((p, i) => {
@@ -275,12 +297,11 @@ function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m:
       const dx = b[0] - a[0];
       const dy = b[1] - a[1];
       const n = Math.hypot(dx, dy) || 1;
-      // normal som peker opp/ut fra platen
       return `${fx(p[0] - (dy / n) * k)} ${fx(p[1] + (dx / n) * k)}`;
     });
-  const slabD = `M${offset(-24).join(" L")} L${offset(24).reverse().join(" L")} Z`;
-  const crust = `M${offset(-24).join(" L")} L${offset(-11).reverse().join(" L")} Z`;
-  const slab = slabD;
+  const slabD = slabMid.length > 2 ? `M${offset(-24).join(" L")} L${offset(24).reverse().join(" L")} Z` : "";
+  const crust = slabMid.length > 2 ? `M${offset(-24).join(" L")} L${offset(-11).reverse().join(" L")} Z` : "";
+
   const ocean = band(() => KA_SEA, (x) => (x < 350 ? lauTop(x) : x > bx ? balTop(x) : floor), 300, bx + 40, 4);
   const lau = band(lauTop, () => 410, 0, 350, 6);
   const bal = band(balTop, () => 410, bx, 960, 6);
@@ -296,8 +317,14 @@ function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m:
     <g data-scene="hav">
       <rect x="0" y="0" width="960" height="600" fill={d.url.sky} />
       <rect x="0" y="410" width="960" height="190" fill={d.url.astheno} />
-      <path d={slab} fill={P.litho} opacity="0.95" />
-      <path d={crust} fill="#35574a" />
+      {subduct < 0.9 ? (
+        <>
+          <path d={oceanLitho} fill={P.litho} opacity="0.9" />
+          <path d={oceanCrust} fill="#35574a" />
+        </>
+      ) : null}
+      {slabD ? <path d={slabD} fill={P.litho} opacity={0.95 * subduct} /> : null}
+      {crust ? <path d={crust} fill="#35574a" opacity={subduct} /> : null}
       <path d={lau} fill="#8a7563" />
       <path d={lau} fill={d.url.strata} />
       <path d={bal} fill="#8c6d68" />
@@ -305,9 +332,13 @@ function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m:
       <path d={sedWedge} fill="#a39a6a" />
       <path d={ocean} fill={d.url.water} opacity="0.9" />
       <line x1="300" y1={KA_SEA} x2={bx + 40} y2={KA_SEA} stroke={C.rain} strokeWidth="2" />
-      {/* øybue: vulkaner over der havbunnen synker ned */}
-      <path d="M232 290 L252 258 L262 252 L272 258 L292 290 Z" fill="#6a5c50" stroke={P.halo} strokeWidth="1" />
-      <path d="M180 288 L196 266 L204 262 L212 266 L228 288 Z" fill="#6a5c50" stroke={P.halo} strokeWidth="1" />
+      {/* øybue: bare når subduksjon er i gang */}
+      {subduct > 0.4 ? (
+        <>
+          <path d="M232 290 L252 258 L262 252 L272 258 L292 290 Z" fill="#6a5c50" stroke={P.halo} strokeWidth="1" opacity={subduct} />
+          <path d="M180 288 L196 266 L204 262 L212 266 L228 288 Z" fill="#6a5c50" stroke={P.halo} strokeWidth="1" opacity={subduct} />
+        </>
+      ) : null}
       {/* havbunn skjøvet opp på kanten av kontinentet (obduksjon) */}
       {s.obd > 0.01 ? (
         <path
@@ -321,13 +352,16 @@ function KaHav({ s, d, m }: { s: KaState; d: { url: Record<string, string> }; m:
       {/* bevegelse */}
       <line x1={bx + 150} y1="250" x2={bx + 70} y2="250" stroke={C.fg} strokeWidth="3" markerEnd={`url(#${m.fg})`} />
       <line x1="140" y1="250" x2="170" y2="250" stroke={C.fg} strokeWidth="3" markerEnd={`url(#${m.fg})`} />
-      <path
-        d={`M${Math.min(bx - 30, 520)} ${floor + 30} L${trench + 10} ${floor + 30} Q${trench - 30} ${floor + 34} ${trench - 70} ${floor + 75}`}
-        fill="none"
-        stroke={C.warm}
-        strokeWidth="2.6"
-        markerEnd={`url(#${m.warm})`}
-      />
+      {subduct > 0.3 ? (
+        <path
+          d={`M${Math.min(bx - 30, 520)} ${floor + 30} L${trench + 10} ${floor + 30} Q${trench - 30} ${floor + 34} ${trench - 70} ${floor + 75}`}
+          fill="none"
+          stroke={C.warm}
+          strokeWidth="2.6"
+          markerEnd={`url(#${m.warm})`}
+          opacity={subduct}
+        />
+      ) : null}
     </g>
   );
 }
@@ -437,10 +471,14 @@ export function KaledonideneFigur({
       { text: "Laurentia", x: 36, y: 232, color: "#e3cfae", badge: [60, 240] },
       { text: "Baltika", x: Math.min(924, s.bx + 190), y: 232, color: "#e8c0b8", anchor: "middle", badge: [Math.min(900, s.bx + 190), 240] },
       { text: "Iapetushavet", x: lerp(330, s.bx, 0.55), y: 336, color: "#bfe0ef", anchor: "middle", size: 15, badge: [lerp(330, s.bx, 0.55), 330] },
-      { text: "Øybue", x: 236, y: 214, at: [250, 262], color: C.fg, anchor: "middle", badge: [236, 226] },
-      { text: "Havbunnen synker ned i mantelen", x: 300, y: 560, at: [221, 426], color: C.warm, badge: [262, 450] },
-      { text: "Grunnfjell", x: 900, y: 380, color: "#f0d6d0", anchor: "end", badge: [900, 372] },
     );
+    if (clamp((650 - s.bx) / (650 - 470)) > 0.4) {
+      labels.push(
+        { text: "Øybue", x: 236, y: 214, at: [250, 262], color: C.fg, anchor: "middle", badge: [236, 226] },
+        { text: "Havbunnen synker ned i mantelen", x: 300, y: 560, at: [221, 426], color: C.warm, badge: [262, 450] },
+      );
+    }
+    labels.push({ text: "Grunnfjell", x: 900, y: 380, color: "#f0d6d0", anchor: "end", badge: [900, 372] });
     if (s.obd > 0.4)
       labels.push({
         text: "Havbunn skjøvet opp på land (obduksjon)",
