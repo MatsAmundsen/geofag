@@ -5,7 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border bg-card">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-muted-foreground sm:px-6 sm:flex-row sm:items-center sm:justify-between">
-        <p>Geofag — læringsstoff etter LK20, VG-nivå med utblikk mot førsteårs universitet.</p>
+        <p>Geofag — læringsstoff etter LK20, VG-nivå.</p>
         <p>
           Kompetansemål fra{" "}
           <a
@@ -30,6 +30,15 @@ export function SiteFooter() {
             Til forsiden
           </Link>
           .
+        </p>
+        <p className="text-right sm:text-left">
+          Mats Amundsen ·{" "}
+          <a
+            href="mailto:kontakt@geofag.com"
+            className="text-foreground underline-offset-4 hover:underline"
+          >
+            kontakt@geofag.com
+          </a>
         </p>
       </div>
     </footer>
