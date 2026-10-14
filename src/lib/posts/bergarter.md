@@ -113,6 +113,14 @@ I granittisk sand skjer tapet i en bestemt rekkefølge. Hornblende forsvinner fo
 
 Kalkstein i Oslofeltet ble avsatt i ordovicium og silur (NGU, u.å.-g). Kalkstein består av mer enn 50 prosent karbonater (NGU, u.å.-f). Karbonsyren løser også slikt berg. Hvordan ionene inngår i den trege karbonsløyfen, tar vi i [Jordsystemene](/geofag-1/jordsystemene).
 
+### Biologisk forvitring
+
+Biologisk forvitring skyldes levende organismer. Den virker ofte sammen med mekanisk og kjemisk forvitring.
+
+Røtter kan vokse inn i sprekker og kile berget (rotsprengning). Lav og alger skiller ut organiske syrer som løser mineraler kjemisk. Gravende dyr og røtter åpner også veier for vann og frost.
+
+Biologisk forvitring er ikke en ren mekanisk eller ren kjemisk prosess, men en kombinasjon der organismer bidrar.
+
 | | Forvitring | Erosjon |
 | --- | --- | --- |
 | Hva som skjer | Berg brytes ned | Materialet slites og flyttes |
@@ -155,6 +163,16 @@ OsloriftBergarter
 
 Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbonat fra organismer.
 
+### Diagenese
+
+Diagenese er prosessene som gjør løst sediment til fast sedimentær bergart (SNL, diagenese).
+
+Først presses sedimentet sammen under vekten av nye lag (kompaksjon). Porevann presses ut, og porøsiteten avtar.
+
+Samtidig øker temperaturen med dypet. Varmt vann sirkulerer gjennom porene og løser og feller ut mineraler.
+
+Cementering skjer når mineraler som kvarts, kalsitt eller jernoksider felles ut mellom kornene og binder dem sammen. Da blir sand til sandstein, leire til leirstein og kalkslam til kalkstein.
+
 **Sandstein** består hovedsakelig av kvarts og feltspat, kittet av kvarts, kalsitt eller jernforbindelser. Fargen går ofte fra gråhvit til rødbrun. Den er ikke svært vanlig på land i Norge, men finnes i Oslofeltet, på Vestlandet og i Trøndelag (NGU, u.å.-m).
 
 **Leirstein** er tett og meget finkornet. Leirskifer kan kløves i tynne flak. Den er dannet av leire og slam i innsjø eller hav. På land finnes den i Oslofeltet, Trøndelag og på Svalbard (NGU, u.å.-j).
@@ -165,6 +183,12 @@ Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbona
 
 En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy temperatur og/eller kjemisk påvirkning omdanner den til en ny bergart i fast tilstand, uten at den smelter. Kjennetegn er striper og folder (NGU, u.å.-k).
 
+### Kontaktmetamorfose og regional metamorfose
+
+**Kontaktmetamorfose** skjer når magma trenger inn og varmer opp sidebergartene lokalt. Varmen er viktigst, trykket er lavt, og det blir lite deformasjon. Sedimentære bergarter kan bli til tette, flintaktige hornfelser i en kontaktaureole rundt intrusjonen. Oslofeltet er et klassisk område for kontaktmetamorfe bergarter (SNL).
+
+**Regional metamorfose** skjer over store områder når bergarter presses dypt ned under fjellkjededannelse. Både høyt trykk og høy temperatur virker. Bergartene foldes, og mineralene orienteres slik at det dannes foliasjon og skifrighet. Fyllitt og gneis er typiske produkter.
+
 Mange av de metamorfe bergartene i fjellene våre ble omdannet i den kaledonske fjellkjededannelsen. Den varte fra sen kambrium til devon, og for ca. 425–405 millioner år siden kolliderte Baltika med Laurentia. Store bergflak ble skjøvet over hverandre (Bryhni & Fossen, 2024). Les mer om fjellkjeden i [Norges geologiske historie](/geofag-1/norges-geologi) og om platekollisjon i [Platetektonikk](/geofag-1/platetektonikk).
 
 **Fyllitt** har tydelig skifrighet og silkeglans på kløvflatene, og kornene er små. Den dannes ved lavgrads regional metamorfose og er meget vanlig i Norge (NGU, u.å.-a). Protolitten er leirskifer eller leirstein. Stasjonen er lav metamorfose.
@@ -172,6 +196,10 @@ Mange av de metamorfe bergartene i fjellene våre ble omdannet i den kaledonske 
 **Gneis** er mellom- til grovkornet, stripet eller bølget. Den har opprinnelig vært magmatisk eller sedimentær bergart. Den dominerer grunnfjellet i Sør-Norge og er dannet for mer enn 900 millioner år siden (NGU, u.å.-d). Kornene er synlige, og båndene er grovere enn i fyllitt.
 
 **Grønnstein** er omdannet gabbro eller basalt (NGU, u.å.-e). Protolitten er magmatisk. Stasjonen er metamorf.
+
+```widget
+KontaktRegional
+```
 
 ```widget
 Metamorfose
