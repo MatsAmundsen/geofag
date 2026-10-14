@@ -16,7 +16,7 @@
 >
 > **I dette kapitlet lærer du om**
 >
-> mineraler og mineralgrupper, bergarter og sediment, hvordan du undersøker et håndstykke, forvitring, magmatiske, sedimentære og metamorfe bergarter, og bergartssyklusen som modell.
+> mineraler og mineralgrupper, bergarter og sediment, hvordan du undersøker et håndstykke, forvitring, magmatiske bergarter og differensiering, sedimentære bergarter og diagenese, metamorfe bergarter og metasomatose, og bergartssyklusen som modell.
 
 > **Hva tror du?**
 >
@@ -159,6 +159,18 @@ Samme smeltefamilie, to steder: dypet og overflaten.
 OsloriftBergarter
 ```
 
+### Magmatisk differensiering
+
+En smelte krystalliserer ikke alt på en gang. De første mineralene tar utvalgte grunnstoffer med seg. Restsmelten får derfor en annen sammensetning. Det kalles magmatisk differensiering.
+
+Olivin og pyroksen krystalliserer først. De er rike på jern og magnesium, og de er tyngre enn smelten. Synker de til bunnen, tar de jern og magnesium ut av smelten. Restsmelten blir fattigere på jern og rikere på silisium. Nederst kan det bli en mørk kumulasjon. Restsmelten over kan størkne som en lysere bergart.
+
+Dette er en forenklet modell av fraksjonert krystallisasjon. Ikke all granitt dannes slik. Samme smeltefamilie kan likevel gi både en mørk og en lysere bergart, slik du så med gabbro og basalt, og med larvikitt og rombeporfyr.
+
+```widget
+Differensiering
+```
+
 ## Hva er sedimentære bergarter?
 
 Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbonat fra organismer.
@@ -167,11 +179,15 @@ Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbona
 
 Diagenese er prosessene som gjør løst sediment til fast sedimentær bergart (SNL, diagenese).
 
-Først presses sedimentet sammen under vekten av nye lag (kompaksjon). Porevann presses ut, og porøsiteten avtar.
+Først presses sedimentet sammen under vekten av nye lag (kompaksjon). Porevann presses ut, og porøsiteten avtar. En del væske blir likevel igjen mellom kornene. Porene er fulle av væske, ikke luft.
 
-Samtidig øker temperaturen med dypet. Varmt vann sirkulerer gjennom porene og løser og feller ut mineraler.
+Samtidig øker temperaturen med dypet. Den varme væsken som er igjen, sirkulerer gjennom porene og løser ioner fra kornene.
 
-Cementering skjer når mineraler som kvarts, kalsitt eller jernoksider felles ut mellom kornene og binder dem sammen. Da blir sand til sandstein, leire til leirstein og kalkslam til kalkstein.
+Cementering skjer når ionene felles ut som kitt av kvarts, kalsitt eller jernoksid mellom kornene. Da blir sand til sandstein, leire til leirstein og kalkslam til kalkstein. Uten porevæske blir det nesten ikke kitt. Trykk alene pakker bare kornene.
+
+```widget
+DiagenesePore
+```
 
 **Sandstein** består hovedsakelig av kvarts og feltspat, kittet av kvarts, kalsitt eller jernforbindelser. Fargen går ofte fra gråhvit til rødbrun. Den er ikke svært vanlig på land i Norge, men finnes i Oslofeltet, på Vestlandet og i Trøndelag (NGU, u.å.-m).
 
@@ -185,9 +201,9 @@ En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy tem
 
 ### Kontaktmetamorfose og regional metamorfose
 
-**Kontaktmetamorfose** skjer når magma trenger inn og varmer opp sidebergartene lokalt. Varmen er viktigst, trykket er lavt, og det blir lite deformasjon. Sedimentære bergarter kan bli til tette, flintaktige hornfelser i en kontaktaureole rundt intrusjonen. Oslofeltet er et klassisk område for kontaktmetamorfe bergarter (SNL).
+**Kontaktmetamorfose** skjer når magma trenger inn og varmer opp sidebergartene lokalt. Varmen er viktigst, trykket er ikke rettet, og lagene blir liggende flate. Sedimentære bergarter kan bli til tette, flintaktige hornfelser i en kontaktaureole rundt intrusjonen. Kornene i hornfels har ingen felles retning. Oslofeltet er et klassisk område for kontaktmetamorfe bergarter (SNL).
 
-**Regional metamorfose** skjer over store områder når bergarter presses dypt ned under fjellkjededannelse. Både høyt trykk og høy temperatur virker. Bergartene foldes, og mineralene orienteres slik at det dannes foliasjon og skifrighet. Fyllitt og gneis er typiske produkter.
+**Regional metamorfose** skjer over store områder når bergarter presses dypt ned under fjellkjededannelse. Både høyt trykk og høy temperatur virker, og trykket er rettet. Bergartene foldes, og mineraler som glimmer legger seg på tvers av trykkretningen. Det dannes foliasjon og skifrighet. Fyllitt og gneis er typiske produkter.
 
 Mange av de metamorfe bergartene i fjellene våre ble omdannet i den kaledonske fjellkjededannelsen. Den varte fra sen kambrium til devon, og for ca. 425–405 millioner år siden kolliderte Baltika med Laurentia. Store bergflak ble skjøvet over hverandre (Bryhni & Fossen, 2024). Les mer om fjellkjeden i [Norges geologiske historie](/geofag-1/norges-geologi) og om platekollisjon i [Platetektonikk](/geofag-1/platetektonikk).
 
@@ -199,6 +215,16 @@ Mange av de metamorfe bergartene i fjellene våre ble omdannet i den kaledonske 
 
 ```widget
 KontaktRegional
+```
+
+### Metasomatose
+
+I metamorfe bergarter kan varm væske føre ioner inn og ut av mineralene mens berget er fast. Et ion hopper ut av gitteret, og et annet tar plassen. Bergarten kan skifte sammensetning uten å smelte. Det kalles metasomatose.
+
+Væsken er transportbåndet. Den ligger som en tynn film langs korngrensene. Uten den flytter ionene seg nesten ikke. Dette er ikke smelting. Berget er fortsatt fast.
+
+```widget
+IonBytte
 ```
 
 ```widget
@@ -258,7 +284,15 @@ SjekkBergarter4
 
 **Erosjon:** Nedsliting pluss transport med vann, is eller tyngdekraft.
 
-**Skifrighet:** Plan struktur der bergarten spalter langs flak, som i fyllitt.
+**Diagenese:** Prosessene som gjør løst sediment til fast sedimentær bergart. Cementering krever porevæske.
+
+**Magmatisk differensiering:** At en smelte skifter sammensetning fordi de første mineralene tar utvalgte grunnstoffer med seg.
+
+**Kontaktaureole:** Sonen rundt en intrusjon der sidebergarten er omdannet av varmen. Der kan det bli hornfels.
+
+**Metasomatose:** Utbytting av grunnstoff i fast berg via varm væske, uten smelting.
+
+**Skifrighet:** Plan struktur der bergarten spalter langs flak, som i fyllitt. En form for foliasjon.
 
 **Protolitt:** Bergarten som ble omdannet. For fyllitt er det leirskifer eller leirstein. For grønnstein er det gabbro eller basalt.
 
