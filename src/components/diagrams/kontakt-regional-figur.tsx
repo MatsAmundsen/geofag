@@ -2,10 +2,15 @@ import { useId } from "react";
 import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
-import { keyframe, pickStep, smooth, useInView, useFigurSmal, StegRamme } from "./isbre-kit";
-import { K } from "./bergarter-figurer"; // re-export or copy colors if needed
-
-// Note: colors and helpers are assumed available; in practice copy the needed constants or import properly.
+import {
+  keyframe,
+  pickStep,
+  smooth,
+  useInView,
+  useFigurSmal,
+  StegRamme,
+  useStepClock,
+} from "./isbre-kit";
 
 export function KontaktRegionalMetamorfoseFigur({
   heading = "Kontakt- og regional metamorfose",
