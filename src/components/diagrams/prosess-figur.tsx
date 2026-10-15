@@ -68,19 +68,20 @@ export function Zoomlinse({
   cx: number;
   cy: number;
   r: number;
-  /** Utsnittet linsen forstørrer: [x, y, halv høyde]. Det tegnes ramme og to koblingslinjer. */
-  fra?: [number, number, number];
+  /** Utsnittet linsen forstørrer: [x, y, halv høyde, halv bredde = 6]. Det tegnes ramme og to koblingslinjer. */
+  fra?: [number, number, number, number?];
   bakgrunn: string;
   children: ReactNode;
 }) {
   const clip = `${useId().replace(/:/g, "")}-linse`;
+  const hb = fra?.[3] ?? 6;
   return (
     <g>
       {fra ? (
         <g data-nocheck="" opacity="0.8">
-          <rect x={fra[0] - 6} y={fra[1] - fra[2]} width="12" height={fra[2] * 2} fill="none" stroke="#e8eef2" strokeWidth="1.5" rx="2" />
-          <line x1={fra[0] + 6} y1={fra[1] - fra[2]} x2={cx} y2={cy - r} stroke="#e8eef2" strokeWidth="1" strokeDasharray="4 4" />
-          <line x1={fra[0] + 6} y1={fra[1] + fra[2]} x2={cx} y2={cy + r} stroke="#e8eef2" strokeWidth="1" strokeDasharray="4 4" />
+          <rect x={fra[0] - hb} y={fra[1] - fra[2]} width={hb * 2} height={fra[2] * 2} fill="none" stroke="#e8eef2" strokeWidth="1.5" rx="2" />
+          <line x1={fra[0] + hb} y1={fra[1] - fra[2]} x2={cx} y2={cy - r} stroke="#e8eef2" strokeWidth="1" strokeDasharray="4 4" />
+          <line x1={fra[0] + hb} y1={fra[1] + fra[2]} x2={cx} y2={cy + r} stroke="#e8eef2" strokeWidth="1" strokeDasharray="4 4" />
         </g>
       ) : null}
       <defs>
@@ -108,8 +109,8 @@ export function KornLag({
 }: {
   korn: Korn[];
   skala: number;
-  /** Posisjon i SVG-koordinater for korn i. */
-  pos: (k: Korn, i: number) => [number, number, number?];
+  /** Posisjon i SVG-koordinater for korn i: [x, y, opasitet?, rotasjon i grader?, skala?]. */
+  pos: (k: Korn, i: number) => [number, number, number?, number?, number?];
   fyll: (k: Korn) => string;
   strek?: string;
   /** Skalerer omrisset, f.eks. for kitt-kant rundt kornet. */
@@ -119,13 +120,14 @@ export function KornLag({
   return (
     <g data-nocheck="">
       {korn.map((k, i) => {
-        const [x, y, opacity = 1] = pos(k, i);
+        const [x, y, opacity = 1, rot = 0, egen = 1] = pos(k, i);
         if (opacity <= 0.01) return null;
+        const skal = forstorr * egen;
         return (
           <path
             key={i}
             d={stier[i]}
-            transform={`translate(${x.toFixed(1)} ${y.toFixed(1)})${forstorr !== 1 ? ` scale(${forstorr.toFixed(3)})` : ""}`}
+            transform={`translate(${x.toFixed(1)} ${y.toFixed(1)})${rot ? ` rotate(${rot.toFixed(1)})` : ""}${skal !== 1 ? ` scale(${skal.toFixed(3)})` : ""}`}
             fill={fyll(k)}
             stroke={strek}
             strokeWidth="1"

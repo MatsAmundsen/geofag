@@ -93,7 +93,7 @@ import {
   SilikatgrupperFigur,
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
-import { KontaktRegionalMetamorfoseFigur } from "@/components/diagrams/kontakt-regional-figur";
+import { KontaktRegionalV2Figur } from "@/components/diagrams/kontakt-regional-v2";
 import { DifferensieringFigur, IonBytteFigur } from "@/components/diagrams/bergarter-nye-figurer";
 import { DiageneseFigur } from "@/components/diagrams/diagenese-figur";
 import {
@@ -1152,7 +1152,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   Silikatgrupper: () => <SilikatgrupperFigur />,
   AvkjolingKorn: () => <AvkjolingKornFigur />,
   Metamorfose: () => <MetamorfoseFigur />,
-  KontaktRegional: () => <KontaktRegionalMetamorfoseFigur />,
+  KontaktRegional: () => <KontaktRegionalV2Figur />,
   Differensiering: () => <DifferensieringFigur />,
   DiagenesePore: () => <DiageneseFigur />,
   IonBytte: () => <IonBytteFigur />,

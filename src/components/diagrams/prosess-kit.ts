@@ -179,9 +179,16 @@ export type Korn = {
 
 const teksturCache = new Map<string, Korn[]>();
 
-function kornForm(rnd: () => number, r: number, kanter: number): [number, number][] {
-  const vri = rnd() * Math.PI * 2;
-  const strekk = 0.8 + rnd() * 0.3;
+function kornForm(
+  rnd: () => number,
+  r: number,
+  kanter: number,
+  strekkSpenn: [number, number] = [0.8, 1.1],
+  roter = true,
+): [number, number][] {
+  const vriTall = rnd() * Math.PI * 2;
+  const vri = roter ? vriTall : 0;
+  const strekk = lerp(strekkSpenn[0], strekkSpenn[1], rnd());
   const form: [number, number][] = [];
   for (let i = 0; i < kanter; i++) {
     const a = (i / kanter) * Math.PI * 2;
@@ -212,6 +219,8 @@ export function lagKornTekstur({
   kanter = 9,
   inni,
   nokkel = "",
+  strekk = [0.8, 1.1],
+  roter = true,
 }: {
   seed: number;
   /** Gitteravstand mellom kornsentre. Største korn får radius ≈ avstand/2. */
@@ -227,8 +236,12 @@ export function lagKornTekstur({
   inni?: (x: number, y: number, r: number) => boolean;
   /** Skiller cache-oppføringer når `inni` varierer. */
   nokkel?: string;
+  /** Forhold mellom kort og lang akse: [min, maks]. Lave verdier gir avlange korn. */
+  strekk?: [number, number];
+  /** Tilfeldig retning per korn. Av: lang akse langs x, så figuren kan rotere kornet selv. */
+  roter?: boolean;
 }): Korn[] {
-  const key = [seed, avstand, bredde, hoyde, storrelse.join(","), fyllHull, typer, kanter, nokkel].join("|");
+  const key = [seed, avstand, bredde, hoyde, storrelse.join(","), fyllHull, typer, kanter, nokkel, strekk.join(","), roter].join("|");
   const hit = teksturCache.get(key);
   if (hit) return hit;
   const rnd = prng(seed);
@@ -248,7 +261,7 @@ export function lagKornTekstur({
       const a = rnd() * Math.PI * 2;
       const x = bx + Math.cos(a) * slakk * rnd();
       const y = by + Math.sin(a) * slakk * rnd();
-      const k: Korn = { x, y, r, form: kornForm(rnd, r, kanter), type: Math.floor(rnd() * typer), frø: rnd() };
+      const k: Korn = { x, y, r, form: kornForm(rnd, r, kanter, strekk, roter), type: Math.floor(rnd() * typer), frø: rnd() };
       rad.push(k);
       alle.push(k);
     }
@@ -266,7 +279,7 @@ export function lagKornTekstur({
       const plass = Math.min(...[a, b, c].map((n) => Math.hypot(n.x - mx, n.y - my) - n.r)) - d * 0.02;
       if (plass < d * 0.12) continue;
       const r = plass * 0.85;
-      alle.push({ x: mx, y: my, r, form: kornForm(rnd, r, kanter), type: Math.floor(rnd() * typer), frø: rnd() });
+      alle.push({ x: mx, y: my, r, form: kornForm(rnd, r, kanter, strekk, roter), type: Math.floor(rnd() * typer), frø: rnd() });
     }
   }
   const korn = inni ? alle.filter((k) => inni(k.x, k.y, k.r)) : alle;
