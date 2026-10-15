@@ -9,9 +9,9 @@
  * All geometri (korn, lag, stier) er konstanter på modulnivå, så serverrenderingen gjør nesten ingenting.
  */
 import { useId, useState, type ReactNode } from "react";
-import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
+import { useFellesAvspilling } from "./avspilling";
 import {
   P,
   clamp,
@@ -225,8 +225,9 @@ export function BergartssyklusSnittFigur({
   caption,
   initialStep,
 }: BergartFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // deler rAF-løkken og «én spiller om gangen» med prosess-kit-figurene
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const clock = useStepClock(6, motion.playing && visible, 3600, 1600, initialStep);
   const { step, phase } = clock;
@@ -583,8 +584,9 @@ export function FolgBergartFigur({
   heading = "Følg en norsk bergart gjennom syklusen",
   caption,
 }: Omit<BergartFigurProps, "initialStep">) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // deler rAF-løkken og «én spiller om gangen» med prosess-kit-figurene
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const [valg, setValg] = useState(0);
   const clock = useStepClock(2, motion.playing && visible, 2600, 400, 1, false);
@@ -741,8 +743,9 @@ export function AvkjolingKornFigur({
   caption,
   initialStep,
 }: BergartFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // deler rAF-løkken og «én spiller om gangen» med prosess-kit-figurene
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const clock = useStepClock(4, motion.playing && visible, 3200, 1600, initialStep);
   const { step, phase } = clock;
@@ -1069,8 +1072,9 @@ export function MetamorfoseFigur({
   caption,
   initialStep,
 }: BergartFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // deler rAF-løkken og «én spiller om gangen» med prosess-kit-figurene
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const clock = useStepClock(4, motion.playing && visible, 3000, 1800, initialStep);
   const { step, phase } = clock;
@@ -1366,8 +1370,9 @@ const BOBLER = (() => {
 })();
 
 export function SteinlabFigur({ heading = "Steinlab: test en håndprøve" }: { heading?: string }) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // deler rAF-løkken og «én spiller om gangen» med prosess-kit-figurene
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const [prove, setProve] = useState(1);
   const [verktoy, setVerktoy] = useState(1);

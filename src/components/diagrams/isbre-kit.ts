@@ -19,6 +19,7 @@ import {
   useSyncExternalStore,
   type RefObject,
 } from "react";
+import { settTick, useDeltaker } from "./avspilling";
 import { C } from "./svg-kit";
 import { scaledStepClock } from "./motion-config";
 
@@ -206,9 +207,10 @@ export function useStepClock(
     : { stepMs: baseStepMs, holdMs: baseHoldMs };
   const [state, setState] = useState({ step: clamp(initialStep, 1, count), phase: 1, loops: 0 });
   const total = stepMs + holdMs;
+  // tikker i den felles rAF-løkken (avspilling.ts), ikke i en egen løkke per figur
+  const { id } = useDeltaker({ konkurrerer: false, vilSpille: running });
   useEffect(() => {
     if (!running) return;
-    let raf = 0;
     let last = performance.now();
     let acc = 0;
     const loop = (now: number) => {
@@ -229,11 +231,10 @@ export function useStepClock(
           return { step: s.step, phase: Math.min(ms / stepMs, total / stepMs), loops: s.loops };
         });
       }
-      raf = requestAnimationFrame(loop);
     };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [running, count, stepMs, total]);
+    settTick(id, loop);
+    return () => settTick(id, null);
+  }, [running, count, stepMs, total, id]);
   const setStep = (step: number) => setState((s) => ({ step, phase: 1, loops: s.loops }));
   return { step: state.step, phase: Math.min(1, state.phase), loops: state.loops, setStep };
 }
