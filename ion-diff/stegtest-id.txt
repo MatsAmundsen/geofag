@@ -1,0 +1,8 @@
+Stegtest (kriterier fra #173) for nye figurer:
+
+differensiering (ny)           reduced: bestått   vanlig: bestått
+ionbytte (ny)                  reduced: bestått   vanlig: bestått
+ionbytte uten væske            reduced: bestått   vanlig: bestått
+kontakt-regional / kontakt     reduced: bestått   vanlig: bestått
+kontakt-regional / regional    reduced: bestått   vanlig: bestått
+diagenese (#174)               reduced: bestått   vanlig: bestått

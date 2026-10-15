@@ -1,0 +1,21 @@
+
+prefers-reduced-motion
+  avvik 0
+
+uten reduced motion
+  avvik 0
+
+Steg mot bilde: http://127.0.0.1:8094/geofag-1/bergarter
+Modeller med stegknapper. Bilde = synlige SVG-lag/tekster for valgt steg. Avspilling der figuren har Start/Pause.
+
+modell               reduced          vanlig
+silikater            bestått          bestått (ingen avspilling)
+steinlab             bestått          bestått
+avkjoling            bestått          bestått
+oslograben           bestått          bestått
+metamorfose          bestått          bestått
+bergartssyklus       bestått          bestått
+folg-bergart         bestått          bestått
+
+Kjent feil som skal fjernes når PR #170 er merget: ionbytte
+

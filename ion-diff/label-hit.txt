@@ -1,0 +1,10 @@
+390px Magmatisk differensiering: 31 tilstander, maks 3 etiketter, ingen feil
+390px Ioner byttes i fast berg: 61 tilstander, maks 4 etiketter, ingen feil
+640px Magmatisk differensiering: 31 tilstander, maks 3 etiketter, ingen feil
+640px Ioner byttes i fast berg: 61 tilstander, maks 4 etiketter, ingen feil
+768px Magmatisk differensiering: 31 tilstander, maks 3 etiketter, ingen feil
+768px Ioner byttes i fast berg: 61 tilstander, maks 4 etiketter, ingen feil
+1024px Magmatisk differensiering: 31 tilstander, maks 3 etiketter, ingen feil
+1024px Ioner byttes i fast berg: 61 tilstander, maks 4 etiketter, ingen feil
+1280px Magmatisk differensiering: 31 tilstander, maks 3 etiketter, ingen feil
+1280px Ioner byttes i fast berg: 61 tilstander, maks 4 etiketter, ingen feil

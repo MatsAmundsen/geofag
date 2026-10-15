@@ -1,0 +1,74 @@
+[
+ {
+  "tag": "390-redusert",
+  "fig": "diff",
+  "toggleLabel": "Start animasjon: Magmatisk differensiering",
+  "minFont": 6.8,
+  "small": [
+   [
+    "Homogen smelte",
+    "7.8"
+   ],
+   [
+    "Sidebergart",
+    "6.8"
+   ],
+   [
+    "Homogen smelte",
+    "7.8"
+   ],
+   [
+    "Sidebergart",
+    "6.8"
+   ]
+  ]
+ },
+ {
+  "tag": "390-redusert",
+  "fig": "ion",
+  "toggleLabel": "Start animasjon: Ioner byttes i fast berg",
+  "minFont": 6.3,
+  "small": [
+   [
+    "Mineralgitter",
+    "7.3"
+   ],
+   [
+    "Opprinnelig sammensetning",
+    "6.3"
+   ],
+   [
+    "Varm porevæske langs korngrens",
+    "6.3"
+   ],
+   [
+    "Oransje ion forlater plassen",
+    "6.8"
+   ]
+  ]
+ },
+ {
+  "tag": "390-redusert",
+  "errors": [],
+  "overflow": 0
+ },
+ {
+  "tag": "1280-redusert",
+  "fig": "diff",
+  "toggleLabel": "Start animasjon: Magmatisk differensiering",
+  "minFont": 16.1,
+  "small": []
+ },
+ {
+  "tag": "1280-redusert",
+  "fig": "ion",
+  "toggleLabel": "Start animasjon: Ioner byttes i fast berg",
+  "minFont": 15,
+  "small": []
+ },
+ {
+  "tag": "1280-redusert",
+  "errors": [],
+  "overflow": 0
+ }
+]
