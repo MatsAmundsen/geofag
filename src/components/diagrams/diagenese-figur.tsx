@@ -419,12 +419,21 @@ export function DiageneseFigur({
                 <rect x={linse.cx - R} y={linse.cy - R} width={R * 2} height={R * 2} fill="#d9772f" opacity={s.T * 0.22} />
               ) : null}
               {/* ioner og dråper bak kornene: de ses bare i porene */}
-              {ut > 0.02 &&
-                draper.map(([x, y], i) => <circle key={`d${i}`} cx={x} cy={y} r={R * 0.022} fill={FARGE.dråpe} opacity={ut} />)}
-              {Math.max(ion, flow * 0.6) > 0.02 &&
-                partikler.map(([x, y], i) => (
-                  <circle key={`p${i}`} cx={x} cy={y} r={R * 0.026} fill={FARGE.ion} stroke="#7a5b12" strokeWidth="1" opacity={Math.max(ion, flow * 0.6)} />
-                ))}
+              {/* opasitet på gruppen, ikke på hver prikk: færre malelag per bilde */}
+              {ut > 0.02 && (
+                <g opacity={ut < 0.99 ? ut : undefined}>
+                  {draper.map(([x, y], i) => (
+                    <circle key={`d${i}`} cx={x} cy={y} r={R * 0.022} fill={FARGE.dråpe} />
+                  ))}
+                </g>
+              )}
+              {Math.max(ion, flow * 0.6) > 0.02 && (
+                <g opacity={Math.max(ion, flow * 0.6) < 0.99 ? Math.max(ion, flow * 0.6) : undefined}>
+                  {partikler.map(([x, y], i) => (
+                    <circle key={`p${i}`} cx={x} cy={y} r={R * 0.026} fill={FARGE.ion} stroke="#7a5b12" strokeWidth="1" />
+                  ))}
+                </g>
+              )}
               {cem > 0.01 ? (
                 <KornLag korn={KORN} skala={R} pos={kornPos} fyll={() => FARGE.kitt} strek="none" forstorr={1 + 0.3 * cem} noekkel={kornNoekkel} />
               ) : null}
