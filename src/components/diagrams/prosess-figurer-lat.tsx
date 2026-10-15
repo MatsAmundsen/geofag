@@ -19,3 +19,7 @@ function lat<P extends object>(last: () => Promise<ComponentType<P>>) {
 export const DiageneseFigurLat = lat<ComponentProps<typeof import("./diagenese-figur").DiageneseFigur>>(() =>
   import("./diagenese-figur").then((m) => m.DiageneseFigur),
 );
+
+export const KontaktRegionalV2FigurLat = lat<ComponentProps<typeof import("./kontakt-regional-v2").KontaktRegionalV2Figur>>(() =>
+  import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
+);
