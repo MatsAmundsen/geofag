@@ -402,9 +402,9 @@ export function IonBytteV2Figur({
               {/* væskefilmen langs korngrensen */}
               <path d={film} fill={medVaeske ? FARGE.vaeske : FARGE.tørr} opacity={medVaeske ? 0.92 : 1} />
               {medVaeske ? (
-                <g data-nocheck="">
+                <g data-nocheck="" opacity="0.85">
                   {driv.map((d, k) => (
-                    <circle key={k} cx={d.pos[0]} cy={d.pos[1]} r={rKation * 0.85} fill={d.ut ? FARGE.ut : FARGE.inn} opacity="0.85" />
+                    <circle key={k} cx={d.pos[0]} cy={d.pos[1]} r={rKation * 0.85} fill={d.ut ? FARGE.ut : FARGE.inn} />
                   ))}
                 </g>
               ) : null}
