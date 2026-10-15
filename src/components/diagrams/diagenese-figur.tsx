@@ -200,6 +200,9 @@ export function DiageneseFigur({
     return [x, y - (1 - lokalSettle) * R * 2.4, lokalSettle > 0 ? 1 : 0];
   };
 
+  // kornene står stille det meste av tiden; nøkkelen avgjør når de må tegnes på nytt
+  const kornNoekkel = `${linse.cx}|${linse.cy}|${R}|${s.settle.toFixed(3)}|${s.c.toFixed(3)}`;
+
   const sek = tl.sek;
   const partikler = PARTIKLER.map((pt) => {
     const x = (((pt.x + 1.2 + sek * 0.11 * pt.v) % 2.4) + 2.4) % 2.4 - 1.2;
@@ -422,9 +425,9 @@ export function DiageneseFigur({
                   <circle key={`p${i}`} cx={x} cy={y} r={R * 0.026} fill={FARGE.ion} stroke="#7a5b12" strokeWidth="1" opacity={Math.max(ion, flow * 0.6)} />
                 ))}
               {cem > 0.01 ? (
-                <KornLag korn={KORN} skala={R} pos={kornPos} fyll={() => FARGE.kitt} strek="none" forstorr={1 + 0.3 * cem} />
+                <KornLag korn={KORN} skala={R} pos={kornPos} fyll={() => FARGE.kitt} strek="none" forstorr={1 + 0.3 * cem} noekkel={kornNoekkel} />
               ) : null}
-              <KornLag korn={KORN} skala={R} pos={kornPos} fyll={fyll} />
+              <KornLag korn={KORN} skala={R} pos={kornPos} fyll={fyll} noekkel={kornNoekkel} />
             </Zoomlinse>
           </g>
         )}
