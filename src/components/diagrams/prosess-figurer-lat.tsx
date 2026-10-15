@@ -9,6 +9,7 @@
 import { lazy, Suspense, useEffect, useRef, useState, type ComponentType, type CSSProperties, type JSX } from "react";
 import { FigureFrame } from "@/components/figure-frame";
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
+import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 
 type Plass = {
   heading: string;
@@ -113,6 +114,7 @@ export const DiageneseFigurLat = lat<FigurProps>(
   () => import("./diagenese-figur").then((m) => m.DiageneseFigur),
 );
 
-export const KontaktRegionalV2FigurLat = lat<ComponentProps<typeof import("./kontakt-regional-v2").KontaktRegionalV2Figur>>(() =>
-  import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
+export const KontaktRegionalV2FigurLat = lat<FigurProps>(
+  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [190, 90], faner: [44, 44] },
+  () => import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
 );

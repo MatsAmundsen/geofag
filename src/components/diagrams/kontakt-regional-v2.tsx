@@ -12,6 +12,7 @@ import { Faner, IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } f
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
+import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 import { lagKornTekstur, lat, tidslinjeVerdi, useTidslinje, type Korn, type Maaler } from "./prosess-kit";
 
 type Fane = "kontakt" | "regional";
@@ -264,7 +265,7 @@ function pil(fra: number, til: number, y: number, t: number) {
 }
 
 export function KontaktRegionalV2Figur({
-  heading = "Kontakt- og regional metamorfose",
+  heading = KONTAKT_REGIONAL_TEKST.heading,
   caption,
 }: {
   heading?: string;
@@ -275,8 +276,8 @@ export function KontaktRegionalV2Figur({
   const { SEDIMENT, HORNFELS, LYSE, GLIMMER, FYLLITT, GNEIS, PEK } = teksturer();
   const [fane, setFane] = useState<Fane>("kontakt");
   const [inne, setInne] = useState(true);
-  const tlK = useTidslinje({ antall: K_FASER.length, synlig: visible && fane === "kontakt", faseMs: 3400, holdMs: 1700 });
-  const tlR = useTidslinje({ antall: R_FASER.length, synlig: visible && fane === "regional", faseMs: 3400, holdMs: 1700 });
+  const tlK = useTidslinje({ antall: K_FASER.length, synlig: visible && fane === "kontakt", faseMs: 3400, holdMs: 1700, element: ref });
+  const tlR = useTidslinje({ antall: R_FASER.length, synlig: visible && fane === "regional", faseMs: 3400, holdMs: 1700, element: ref });
   const tl = fane === "kontakt" ? tlK : tlR;
   const uid = useId().replace(/:/g, "");
   /** Fanebytte er et brukervalg, som et stegvalg: begge tidslinjene settes på pause, og ny status leses opp. */
@@ -330,7 +331,7 @@ export function KontaktRegionalV2Figur({
     const lagH = (sek.y1 - sek.flate) / 6;
     status = (inne ? K_STATUS : K_STATUS_UTE)[tl.fase - 1];
     tittel =
-      "Snitt der magma trenger inn i flate sedimentære lag og varmer opp en kontaktaureole rundt seg. Linsen viser kornene i sidebergarten som omdannes til hornfels uten felles retning.";
+      KONTAKT_REGIONAL_TEKST.title;
     tilstand = `mag=${s.mag.toFixed(2)} aur=${s.aur.toFixed(2)} rc=${rc.toFixed(2)} hf=${s.hf.toFixed(2)}`;
     maalere = [
       { navn: "Temperatur i linsen", verdi: varmeLinse, ender: ["lav", "høy"], farge: "#e0874a" },
@@ -744,7 +745,7 @@ export function KontaktRegionalV2Figur({
         heading={heading}
         caption={
           caption ??
-          "Kontaktmetamorfose: varme fra magma omdanner sidebergarten lokalt, uten rettet trykk. Regional metamorfose: rettet trykk og høy temperatur over store områder gir folder, foliasjon og skifrighet. Skjematisk, uten målestokk."
+          KONTAKT_REGIONAL_TEKST.caption
         }
         playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
