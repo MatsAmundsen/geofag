@@ -1,7 +1,7 @@
 /**
  * Prosess-kit (komponenter): kontroller, zoomlinse, kornlag og målere. Logikken ligger i prosess-kit.ts.
  */
-import { useId, useMemo, type ReactNode } from "react";
+import { memo, useId, useMemo, type ReactNode } from "react";
 import { StegVelger } from "./isbre-figur";
 import { clamp } from "./isbre-kit";
 import { kornSti, nivaa, type Korn, type Maaler, type Tidslinje } from "./prosess-kit";
@@ -110,7 +110,18 @@ export function Zoomlinse({
 }
 
 /** Tegner kornene ved gitte posisjoner. Stiene regnes ut én gang; bare transform endres. */
-export function KornLag({
+export const KornLag = memo(KornLagInnhold, (a, b) =>
+  // Med `noekkel` hoppes ny tegning over så lenge nøkkelen (og formen) er uendret,
+  // selv om pos/fyll er nye funksjoner hver bilderute.
+  a.noekkel !== undefined &&
+  a.noekkel === b.noekkel &&
+  a.korn === b.korn &&
+  a.skala === b.skala &&
+  a.strek === b.strek &&
+  a.forstorr === b.forstorr,
+);
+
+function KornLagInnhold({
   korn,
   skala,
   pos,
@@ -126,6 +137,8 @@ export function KornLag({
   strek?: string;
   /** Skalerer omrisset, f.eks. for kitt-kant rundt kornet. */
   forstorr?: number;
+  /** Alt pos og fyll avhenger av, samlet i én verdi. Uendret nøkkel = ingen ny tegning. */
+  noekkel?: string | number;
 }) {
   const stier = useMemo(() => korn.map((k) => kornSti(k, skala)), [korn, skala]);
   return (
