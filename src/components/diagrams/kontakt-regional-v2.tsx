@@ -7,8 +7,8 @@
  * Erstatter KontaktRegionalMetamorfoseFigur i widgeten KontaktRegional. Den gamle filen
  * (kontakt-regional-figur.tsx) er ikke endret, så åpne PR-er som retter den, ikke får konflikt.
  */
-import { useMemo, useState } from "react";
-import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
+import { useId, useMemo, useState } from "react";
+import { Faner, IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
@@ -278,6 +278,14 @@ export function KontaktRegionalV2Figur({
   const tlK = useTidslinje({ antall: K_FASER.length, synlig: visible && fane === "kontakt", faseMs: 3400, holdMs: 1700 });
   const tlR = useTidslinje({ antall: R_FASER.length, synlig: visible && fane === "regional", faseMs: 3400, holdMs: 1700 });
   const tl = fane === "kontakt" ? tlK : tlR;
+  const uid = useId().replace(/:/g, "");
+  /** Fanebytte er et brukervalg, som et stegvalg: begge tidslinjene settes på pause, og ny status leses opp. */
+  const velgFane = (n: number) => {
+    const ny: Fane = n === 1 ? "kontakt" : "regional";
+    if (ny === fane) return;
+    (fane === "kontakt" ? tlR : tlK).valg(() => {});
+    tl.valg(() => setFane(ny));
+  };
   const L = small ? SMAL : BRED;
   const { sek, linse } = L;
   const R = linse.r;
@@ -737,13 +745,21 @@ export function KontaktRegionalV2Figur({
         }
         playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
+        faner={
+          <div className={small ? "[&_button]:text-sm" : undefined}>
+            <Faner
+              labels={FANER}
+              valgt={fane === "kontakt" ? 1 : 2}
+              onVelg={velgFane}
+              label="Velg prosess"
+              idPrefix={uid}
+              panelId={`${uid}-panel`}
+            />
+          </div>
+        }
+        fanepanel={{ id: `${uid}-panel`, labelledBy: `${uid}-fane-${fane === "kontakt" ? 1 : 2}` }}
         toolbar={
           <div className={small ? "flex w-full flex-col gap-2 [&_button]:text-sm" : "flex w-full flex-col gap-2"}>
-            <StegVelger labels={FANER} step={fane === "kontakt" ? 1 : 2} onStep={(n) => {
-                // fanebytte er et brukervalg: begge tidslinjene settes på pause
-                (fane === "kontakt" ? tlR : tlK).valg(() => {});
-                tl.valg(() => setFane(n === 1 ? "kontakt" : "regional"));
-              }} label="Velg prosess" />
             <TidslinjeKontroller tl={tl} faser={fane === "kontakt" ? K_FASER : R_FASER} />
             {fane === "kontakt" ? (
               <StegVelger
