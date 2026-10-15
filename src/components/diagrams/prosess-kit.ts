@@ -1,8 +1,10 @@
 /**
  * Prosess-kit (logikk): felles byggeklosser for animerte prosessmodeller (Bergarter og senere andre kapitler).
  *
- * - `useTidslinje`: kontinuerlig tidslinje (requestAnimationFrame) over N faser, med pause på
- *   slutten av hver fase, scrubbing og stegvalg. Respekterer prefers-reduced-motion via
+ * - `useTidslinje`: kontinuerlig tidslinje over N faser, med pause på slutten av hver fase,
+ *   scrubbing og stegvalg. Alle tidslinjer deler én requestAnimationFrame-løkke, og bare én modell
+ *   spiller om gangen: den brukeren sist startet, ellers den som er mest synlig. De andre venter
+ *   (vises som pauset) til de får tur. Respekterer prefers-reduced-motion via
  *   `useAnimationPlaying` (starter pauset, steg viser sluttbilde).
  * Komponentene ligger i prosess-figur.tsx.
  * - `TidslinjeKontroller`: stegknapper (synkronisert med statusteksten) + scrubber (native range,
@@ -12,7 +14,7 @@
  * - `lagKornTekstur` / `KornLag`: deterministisk (seedet) korntekstur, SSR-trygg og billig.
  * - `Maalere`: HTML-målere (dyp, temperatur, trykk, tid, porøsitet), relative eller med tekst.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } from "react";
 import { clamp, lerp, smooth, smoothPath } from "./isbre-kit";
 import { scaledStepClock } from "./motion-config";
 import { useAnimationPlaying, useChoiceAnnouncement } from "./use-motion";
@@ -66,6 +68,81 @@ export function lat<T>(lag: () => T): () => T {
   };
 }
 
+/* ---------- felles avspilling: én rAF-løkke, én modell spiller om gangen ---------- */
+
+type Deltaker = {
+  vilSpille: boolean;
+  element?: RefObject<Element | null>;
+  /** Kalles hver bilderute når deltakeren er den aktive. Null når løkken ikke er satt opp ennå. */
+  tick: ((now: number) => void) | null;
+};
+
+const deltakere = new Map<number, Deltaker>();
+const lyttere = new Set<() => void>();
+let nesteId = 1;
+let aktivId = 0;
+/** Den brukeren sist startet. Får spille så lenge den er på skjermen. */
+let foretrukket = 0;
+let raf = 0;
+let sistVurdert = 0;
+
+/** Andel av figuren som er innenfor vinduet (0 … 1), med avstand fra midten som tie-break. */
+function synligAndel(d: Deltaker) {
+  const el = d.element?.current;
+  if (!el || typeof window === "undefined") return 0;
+  const r = el.getBoundingClientRect();
+  const vh = window.innerHeight || 1;
+  const over = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+  const andel = over / Math.max(1, Math.min(r.height, vh));
+  const midt = Math.abs((r.top + r.bottom) / 2 - vh / 2) / vh;
+  return andel - midt * 0.01;
+}
+
+function vurder() {
+  let best = 0;
+  if (foretrukket && deltakere.get(foretrukket)?.vilSpille) best = foretrukket;
+  else {
+    let score = -Infinity;
+    for (const [id, d] of deltakere) {
+      if (!d.vilSpille) continue;
+      const s = synligAndel(d);
+      if (s > score) {
+        score = s;
+        best = id;
+      }
+    }
+  }
+  if (best !== aktivId) {
+    aktivId = best;
+    for (const l of lyttere) l();
+  }
+  if (aktivId && !raf && typeof requestAnimationFrame !== "undefined") raf = requestAnimationFrame(loop);
+}
+
+function loop(now: number) {
+  raf = 0;
+  // hvem som er mest synlig, vurderes et par ganger i sekundet, ikke hver bilderute
+  if (now - sistVurdert > 400) {
+    sistVurdert = now;
+    vurder();
+  }
+  if (!aktivId) return;
+  deltakere.get(aktivId)?.tick?.(now);
+  if (!raf) raf = requestAnimationFrame(loop);
+}
+
+function lytt(l: () => void) {
+  lyttere.add(l);
+  return () => {
+    lyttere.delete(l);
+  };
+}
+
+/** Til tester og feilsøking: hvor mange tidslinjer som er registrert, og hvilken som spiller. */
+export function prosessAvspilling() {
+  return { deltakere: deltakere.size, aktiv: aktivId };
+}
+
 /**
  * Kontinuerlig tidslinje. Hver fase spilles på `faseMs` og står så stille i `holdMs`
  * (begge skaleres med felles tempo i motion-config). Etter siste fase starter den på nytt fra 0.
@@ -77,19 +154,50 @@ export function useTidslinje({
   synlig,
   faseMs = 3400,
   holdMs = 1600,
+  element,
 }: {
   antall: number;
   /** Figuren er på skjermen. Utenfor skjermen går det ingen requestAnimationFrame. */
   synlig: boolean;
   faseMs?: number;
   holdMs?: number;
+  /** Figurens element. Brukes til å velge den mest synlige modellen når flere er på skjermen. */
+  element?: RefObject<Element | null>;
 }): Tidslinje {
   const motion = useAnimationPlaying();
   const announce = useChoiceAnnouncement(motion.playing);
   const { stepMs, holdMs: hold } = scaledStepClock(faseMs, holdMs);
   const [state, setState] = useState({ p: 1, sek: 0 });
   const live = useRef({ p: 1, sek: 0, holdLeft: 0, fresh: true, kjor: false });
-  const running = motion.playing && synlig;
+
+  // registrering i den felles avspillingen
+  const idRef = useRef(0);
+  if (!idRef.current) idRef.current = nesteId++;
+  const id = idRef.current;
+  const vilSpille = motion.playing && synlig;
+  useEffect(() => {
+    deltakere.set(id, { vilSpille: false, element, tick: null });
+    return () => {
+      deltakere.delete(id);
+      if (foretrukket === id) foretrukket = 0;
+      vurder();
+    };
+  }, [id, element]);
+  useEffect(() => {
+    const d = deltakere.get(id);
+    if (!d) return;
+    d.vilSpille = vilSpille;
+    if (!vilSpille && foretrukket === id && !motion.playing) foretrukket = 0;
+    vurder();
+  }, [id, vilSpille, motion.playing]);
+  const aktiv = useSyncExternalStore(
+    lytt,
+    () => aktivId === id,
+    () => false,
+  );
+  // spiller, men en annen modell er valgt: står stille og vises som pauset til den får tur
+  const venter = vilSpille && !aktiv;
+  const running = vilSpille && aktiv;
 
   useEffect(() => {
     if (!running) return;
@@ -103,9 +211,9 @@ export function useTidslinje({
       r.p = 0;
       r.holdLeft = 0;
     }
-    let raf = 0;
     let last = performance.now();
     let acc = 0;
+    const d = deltakere.get(id);
     const loop = (now: number) => {
       if (!r.kjor) return;
       const dt = Math.min(100, now - last);
@@ -128,21 +236,22 @@ export function useTidslinje({
         acc = 0;
         setState({ p: r.p, sek: r.sek });
       }
-      raf = requestAnimationFrame(loop);
     };
-    raf = requestAnimationFrame(loop);
+    if (d) d.tick = loop;
+    vurder();
     return () => {
       r.kjor = false;
-      cancelAnimationFrame(raf);
+      if (d && d.tick === loop) d.tick = null;
     };
-  }, [running, antall, stepMs, hold]);
+  }, [running, antall, stepMs, hold, id]);
 
-  const playing = motion.playing;
+  const playing = motion.playing && !venter;
   const pause = () => {
     // stopp løkken med en gang, så den ikke flytter p før pausen er rendret
     live.current.kjor = false;
     live.current.fresh = false;
-    if (playing) motion.toggle();
+    if (foretrukket === id) foretrukket = 0;
+    if (motion.playing) motion.toggle();
   };
   const valg = (apply: () => void) =>
     announce.choose(() => {
@@ -158,7 +267,8 @@ export function useTidslinje({
     });
 
   const p = state.p;
-  const fase = faseAv(p, antall, !playing);
+  // en ventende modell står midt i en fase og vises som under avspilling (ikke avrundet)
+  const fase = faseAv(p, antall, !motion.playing);
   return {
     p,
     fase,
@@ -166,10 +276,19 @@ export function useTidslinje({
     sek: state.sek,
     antall,
     playing,
-    livePlaying: announce.livePlaying,
+    livePlaying: announce.livePlaying && !venter,
     reduced: motion.reduced,
     toggle: () => {
       live.current.fresh = false;
+      if (venter) {
+        // «Spill av» på en ventende modell: den tar over, de andre venter
+        foretrukket = id;
+        vurder();
+        return;
+      }
+      if (motion.playing) {
+        if (foretrukket === id) foretrukket = 0;
+      } else foretrukket = id;
       announce.toggle(motion.toggle);
     },
     valg,
