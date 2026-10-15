@@ -8,7 +8,7 @@ import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
-import { lagKornTekstur, prng, tidslinjeVerdi, useTidslinje, type Korn } from "./prosess-kit";
+import { lagKornTekstur, lat, prng, tidslinjeVerdi, useTidslinje, type Korn } from "./prosess-kit";
 
 const FASER = ["Løs sand", "Nye lag oppå", "Kompaksjon", "Varm væske sirkulerer", "Cementering"];
 
@@ -29,14 +29,17 @@ const STATUS_UTEN = [
   "Tankeeksperiment: uten porevæske blir det nesten ikke kitt. Trykk alene pakker bare kornene.",
 ];
 
-/** Tilstand ved slutten av hver fase (indeks = p). */
+/**
+ * Tilstand ved slutten av hver fase (indeks = p).
+ * Temperaturen (T) stiger først i steg 4: teksten tar den opp der («Samtidig øker temperaturen med dypet»).
+ */
 const BILDER = [
-  { settle: 0, b: 0, c: 0, flow: 0, ion: 0, cem: 0 },
-  { settle: 1, b: 0, c: 0, flow: 0, ion: 0, cem: 0 },
-  { settle: 1, b: 0.55, c: 0.3, flow: 0, ion: 0, cem: 0 },
-  { settle: 1, b: 0.8, c: 1, flow: 0, ion: 0, cem: 0 },
-  { settle: 1, b: 1, c: 1, flow: 1, ion: 1, cem: 0 },
-  { settle: 1, b: 1, c: 1, flow: 0.5, ion: 0.2, cem: 1 },
+  { settle: 0, b: 0, c: 0, flow: 0, ion: 0, cem: 0, T: 0.1 },
+  { settle: 1, b: 0, c: 0, flow: 0, ion: 0, cem: 0, T: 0.1 },
+  { settle: 1, b: 0.55, c: 0.3, flow: 0, ion: 0, cem: 0, T: 0.1 },
+  { settle: 1, b: 0.8, c: 1, flow: 0, ion: 0, cem: 0, T: 0.1 },
+  { settle: 1, b: 1, c: 1, flow: 1, ion: 1, cem: 0, T: 0.85 },
+  { settle: 1, b: 1, c: 1, flow: 0.5, ion: 0.2, cem: 1, T: 0.9 },
 ];
 
 const FARGE = {
@@ -80,25 +83,29 @@ const SMAL: Layout = {
 };
 
 /** Bare korn som kan bli synlige i linsen (også i løs, utstrakt tilstand), så ingen skjulte stier ligger under etikettene. */
-const KORN = lagKornTekstur({
+const hentKorn = lat(() => lagKornTekstur({
   seed: 20261015,
   avstand: 0.2,
   storrelse: [0.62, 1],
   typer: 3,
   inni: (x, y, r) => Math.hypot(x * 1.05, y * 1.17) - r < 1.0,
   nokkel: "diagenese-linse",
-});
+}));
 /** To av tre korn er kvarts, ett av tre feltspat (teksten: sand av kvarts og feltspat). */
 const erFeltspat = (k: Korn) => k.type === 2;
 
 /** Ioner og dråper som driver gjennom porene. Faste startverdier (SSR-trygt). */
-const PARTIKLER = (() => {
+const hentPartikler = lat(() => {
   const rnd = prng(77);
   return Array.from({ length: 30 }, () => ({ x: rnd() * 2.4 - 1.2, y: rnd() * 2 - 1, v: 0.6 + rnd() * 0.8, f: rnd() * 6.28 }));
-})();
+});
 
-/** Et punkt i en pore og et kontaktpunkt mellom to korn, i pakket tilstand. Regnes ut én gang. */
-const PUNKTER = (() => {
+/**
+ * Et punkt i en pore og et kontaktpunkt mellom to korn, i pakket tilstand.
+ * Regnes ut lat ved første bruk (ikke når modulen lastes, så andre sider ikke betaler for det).
+ */
+const hentPunkter = lat(() => {
+  const KORN = hentKorn();
   let pore: [number, number] = [0, 0];
   let best = -1;
   for (let gx = -0.45; gx <= 0.45; gx += 0.03) {
@@ -129,7 +136,7 @@ const PUNKTER = (() => {
   let midt = KORN[0];
   for (const k of KORN) if (Math.hypot(k.x + 0.3, k.y + 0.2) - k.r * 0.5 < Math.hypot(midt.x + 0.3, midt.y + 0.2) - midt.r * 0.5) midt = k;
   return { pore, kontakt, midt };
-})();
+});
 
 function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
   const [ref, width] = useBoxWidth<HTMLDivElement>();
@@ -148,6 +155,9 @@ export function DiageneseFigur({
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
   const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3400, holdMs: 1600 });
+  const KORN = hentKorn();
+  const PARTIKLER = hentPartikler();
+  const PUNKTER = hentPunkter();
   const [medVaeske, setMedVaeske] = useState(true);
   const L = small ? SMAL : BRED;
   const s = tidslinjeVerdi(BILDER, tl.p);
@@ -205,7 +215,8 @@ export function DiageneseFigur({
     { text: "Kvartskorn", color: FARGE.kvarts, kind: "fill" },
     { text: "Feltspatkorn", color: FARGE.feltspat, kind: "fill" },
     { text: medVaeske ? "Porevæske" : "Tomme porer (tankeeksperiment)", color: medVaeske ? FARGE.vaeske : FARGE.tom, kind: "fill" },
-    { text: "Kitt", color: FARGE.kitt, kind: "fill", off: cem < 0.05 },
+    // uten porevæske blir det nesten ikke kitt (teksten); da sier tegnforklaringen det
+    { text: medVaeske ? "Kitt" : "Nesten ikke kitt", color: FARGE.kitt, kind: "fill", off: cem < 0.05 },
   ];
 
   // ---- etiketter (nummererte merker på smal skjerm) ----
@@ -331,7 +342,7 @@ export function DiageneseFigur({
           caption ??
           "Diagenese gjør løst sediment til fast sedimentær bergart. Trykk pakker kornene. Det er porevæsken som løser ioner og feller dem ut som kitt. Skjematisk, uten målestokk."
         }
-        playing={tl.playing}
+        playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
         toolbar={
           <div className={small ? "flex w-full flex-col gap-2 [&_button]:text-sm" : "flex w-full flex-col gap-2"}>
@@ -339,7 +350,7 @@ export function DiageneseFigur({
             <StegVelger
               labels={["Med porevæske", "Uten porevæske (tankeeksperiment)"]}
               step={medVaeske ? 1 : 2}
-              onStep={(n) => setMedVaeske(n === 1)}
+              onStep={(n) => tl.valg(() => setMedVaeske(n === 1))}
               label="Porevæske"
             />
           </div>
@@ -353,7 +364,7 @@ export function DiageneseFigur({
           <Maalere
             maalere={[
               { navn: "Dyp", verdi: s.b, ender: ["grunt", "dypt"], farge: "#8eb4d4" },
-              { navn: "Temperatur", verdi: s.b, ender: ["lav", "høy"], farge: "#e0874a" },
+              { navn: "Temperatur", verdi: s.T, ender: ["lav", "høy"], farge: "#e0874a" },
               { navn: "Porøsitet", verdi: porositet, ender: ["lav", "høy"], farge: "#6fb3b8" },
             ]}
           />
@@ -401,7 +412,7 @@ export function DiageneseFigur({
               bakgrunn={medVaeske ? FARGE.vaeske : FARGE.tom}
             >
               {medVaeske ? (
-                <rect x={linse.cx - R} y={linse.cy - R} width={R * 2} height={R * 2} fill="#d9772f" opacity={s.b * 0.22} />
+                <rect x={linse.cx - R} y={linse.cy - R} width={R * 2} height={R * 2} fill="#d9772f" opacity={s.T * 0.22} />
               ) : null}
               {/* ioner og dråper bak kornene: de ses bare i porene */}
               {ut > 0.02 &&
