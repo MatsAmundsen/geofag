@@ -93,10 +93,12 @@ import {
   SilikatgrupperFigur,
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
-import { KontaktRegionalV2Figur } from "@/components/diagrams/kontakt-regional-v2";
 import { DifferensieringV2Figur } from "@/components/diagrams/differensiering-figur";
 import { IonBytteV2Figur } from "@/components/diagrams/ionbytte-figur";
-import { DiageneseFigur } from "@/components/diagrams/diagenese-figur";
+import {
+  DiageneseFigurLat as DiageneseFigur,
+  KontaktRegionalV2FigurLat as KontaktRegionalV2Figur,
+} from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
   GeotidTidslinjeFigur,

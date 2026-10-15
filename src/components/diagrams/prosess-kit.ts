@@ -16,14 +16,17 @@ import { useEffect, useRef, useState } from "react";
 import { NARROW_FIGURE_PX } from "./isbre-figur";
 import { clamp, lerp, smooth, smoothPath, useBoxWidth, useNarrow } from "./isbre-kit";
 import { scaledStepClock } from "./motion-config";
-import { useAnimationPlaying } from "./use-motion";
+import { useAnimationPlaying, useChoiceAnnouncement } from "./use-motion";
 
 /* ---------- tidslinje ---------- */
 
 export type Tidslinje = {
   /** Posisjon på tidslinjen, 0 … antall faser. Fase k går fra k−1 til k. */
   p: number;
-  /** Aktiv fase, 1-basert. p = 0 regnes som fase 1. */
+  /**
+   * Aktiv fase, 1-basert. Under avspilling er det fasen som spilles (p i (k−1, k] gir k).
+   * Står tidslinjen stille, er det nærmeste sluttbilde, så et lite skyv fra et parkert steg ikke bytter steg.
+   */
   fase: number;
   /** Fremdrift i aktiv fase, 0 … 1 (lineær). */
   lokal: number;
@@ -31,16 +34,37 @@ export type Tidslinje = {
   sek: number;
   antall: number;
   playing: boolean;
+  /** Til IsbreFigur `playing`: av under avspilling, men polite i opplesingsholdet etter et valg. */
+  livePlaying: boolean;
   reduced: boolean;
   toggle: () => void;
+  /**
+   * Brukervalg som endrer bildet (f.eks. en bryter): pauser avspillingen og leser opp ny status.
+   * Under avspilling settes statusfeltet til polite først, og valget brukes i neste rendering.
+   */
+  valg: (apply: () => void) => void;
   /** Hopp til slutten av fase n (sluttbildet) og pause. */
   velgFase: (n: number) => void;
   /** Sett posisjon (scrubber) og pause. */
   settP: (p: number) => void;
 };
 
-export function faseAv(p: number, antall: number) {
+export function faseAv(p: number, antall: number, parkert = false) {
+  if (parkert) return clamp(Math.round(p), 1, antall);
   return clamp(p <= 0 ? 1 : Math.ceil(p - 1e-9), 1, antall);
+}
+
+/** Regnes ut ved første bruk (ikke når modulen lastes), og bare én gang. */
+export function lat<T>(lag: () => T): () => T {
+  let verdi: T | undefined;
+  let ferdig = false;
+  return () => {
+    if (!ferdig) {
+      verdi = lag();
+      ferdig = true;
+    }
+    return verdi as T;
+  };
 }
 
 /**
@@ -62,14 +86,16 @@ export function useTidslinje({
   holdMs?: number;
 }): Tidslinje {
   const motion = useAnimationPlaying();
+  const announce = useChoiceAnnouncement(motion.playing);
   const { stepMs, holdMs: hold } = scaledStepClock(faseMs, holdMs);
   const [state, setState] = useState({ p: 1, sek: 0 });
-  const live = useRef({ p: 1, sek: 0, holdLeft: 0, fresh: true });
+  const live = useRef({ p: 1, sek: 0, holdLeft: 0, fresh: true, kjor: false });
   const running = motion.playing && synlig;
 
   useEffect(() => {
     if (!running) return;
     const r = live.current;
+    r.kjor = true;
     if (r.fresh) {
       r.fresh = false;
       r.p = 0;
@@ -82,6 +108,7 @@ export function useTidslinje({
     let last = performance.now();
     let acc = 0;
     const loop = (now: number) => {
+      if (!r.kjor) return;
       const dt = Math.min(100, now - last);
       last = now;
       r.sek += dt / 1000;
@@ -105,32 +132,48 @@ export function useTidslinje({
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      r.kjor = false;
+      cancelAnimationFrame(raf);
+    };
   }, [running, antall, stepMs, hold]);
 
-  const sett = (p: number) => {
-    const r = live.current;
-    r.fresh = false;
-    r.p = clamp(p, 0, antall);
-    r.holdLeft = Number.isInteger(r.p) ? hold : 0;
-    setState({ p: r.p, sek: r.sek });
-    if (motion.playing) motion.toggle();
+  const playing = motion.playing;
+  const pause = () => {
+    // stopp løkken med en gang, så den ikke flytter p før pausen er rendret
+    live.current.kjor = false;
+    live.current.fresh = false;
+    if (playing) motion.toggle();
   };
+  const valg = (apply: () => void) =>
+    announce.choose(() => {
+      apply();
+      pause();
+    });
+  const sett = (p: number) =>
+    valg(() => {
+      const r = live.current;
+      r.p = clamp(p, 0, antall);
+      r.holdLeft = Number.isInteger(r.p) ? hold : 0;
+      setState({ p: r.p, sek: r.sek });
+    });
 
   const p = state.p;
-  const fase = faseAv(p, antall);
+  const fase = faseAv(p, antall, !playing);
   return {
     p,
     fase,
-    lokal: clamp(p - (fase - 1)),
+    lokal: clamp(p - (faseAv(p, antall) - 1)),
     sek: state.sek,
     antall,
-    playing: motion.playing,
+    playing,
+    livePlaying: announce.livePlaying,
     reduced: motion.reduced,
     toggle: () => {
       live.current.fresh = false;
-      motion.toggle();
+      announce.toggle(motion.toggle);
     },
+    valg,
     velgFase: (n: number) => sett(n),
     settP: sett,
   };

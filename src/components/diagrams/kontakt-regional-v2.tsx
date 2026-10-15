@@ -12,7 +12,7 @@ import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
-import { lagKornTekstur, tidslinjeVerdi, useTidslinje, type Korn, type Maaler } from "./prosess-kit";
+import { lagKornTekstur, lat, tidslinjeVerdi, useTidslinje, type Korn, type Maaler } from "./prosess-kit";
 
 type Fane = "kontakt" | "regional";
 const FANER = ["Kontaktmetamorfose", "Regional metamorfose"];
@@ -145,49 +145,26 @@ const SMAL: Layout = {
 /* ---------- teksturer (seedet, regnes ut én gang per isolat) ---------- */
 
 const iLinse = (x: number, y: number, r: number) => Math.hypot(x, y) - r < 1.0;
-const SEDIMENT = lagKornTekstur({ seed: 1357, avstand: 0.15, typer: 2, inni: iLinse, nokkel: "kr-sediment" });
-const HORNFELS = lagKornTekstur({
-  seed: 2468,
-  avstand: 0.12,
-  storrelse: [0.85, 1],
-  fyllHull: 0.9,
-  strekk: [0.4, 0.7],
-  inni: iLinse,
-  nokkel: "kr-hornfels",
-});
-const REG = { seed: 4242, avstand: 0.2, typer: 3, inni: iLinse, nokkel: "kr-regional" };
-const REG_KORN = lagKornTekstur(REG);
-/** Samme posisjoner, men avlange, uroterte former: glimmerflak som figuren roterer selv. */
-const REG_FLAK = lagKornTekstur({ ...REG, strekk: [0.24, 0.32], roter: false });
 const erGlimmer = (k: Korn) => k.type === 0;
-const LYSE = REG_KORN.filter((k) => !erGlimmer(k));
-const GLIMMER = REG_FLAK.filter(erGlimmer);
 /** Glimmerflakene starter i tilfeldig retning og dreier mot nærmeste loddrette stilling. */
 const vinkel0 = (k: Korn) => k.frø * 160 - 80;
 
-const FYLLITT = lagKornTekstur({
-  seed: 77,
-  avstand: 0.09,
-  strekk: [0.24, 0.34],
-  roter: false,
-  fyllHull: 0.3,
-  inni: (x, y, r) => x < -0.02 && Math.hypot(x, y) - r < 1.0,
-  nokkel: "kr-fyllitt",
-});
-const GNEIS = lagKornTekstur({
-  seed: 99,
-  avstand: 0.22,
-  strekk: [0.55, 0.8],
-  roter: false,
-  inni: (x, y, r) => x > 0.02 && Math.hypot(x, y) - r < 1.0,
-  nokkel: "kr-gneis",
-});
 /** Gneis: loddrette, bølgete bånd av mørke og lyse korn. */
 const gneisBolge = (x: number, y: number) => Math.sin((x + 0.08 * Math.sin(y * 5)) * 5.2);
 const gneisMork = (k: Korn) => gneisBolge(k.x, k.y) > 0.25;
 
 /** Mørke gneisbånd som flater (bakgrunn bak kornene), i SVG-koordinater. */
+const baandCache = new Map<string, string>();
+/** Mørke gneisbånd, memoisert per linse (regnes ikke på nytt hver bilderute). */
 function GNEIS_BAAND(cx: number, cy: number, R: number) {
+  const nokkel = `${cx}|${cy}|${R}`;
+  const hit = baandCache.get(nokkel);
+  if (hit !== undefined) return hit;
+  const d = lagGneisBaand(cx, cy, R);
+  baandCache.set(nokkel, d);
+  return d;
+}
+function lagGneisBaand(cx: number, cy: number, R: number) {
   const deler: string[] = [];
   const ys: number[] = [];
   for (let y = -1; y <= 1.0001; y += 0.05) ys.push(y);
@@ -220,13 +197,51 @@ function naermest(korn: Korn[], tx: number, ty: number, filter: (k: Korn) => boo
   }
   return best;
 }
-const PEK = {
-  sediment: naermest(SEDIMENT, -0.35, 0.35, sedimentLag),
-  hornfels: naermest(HORNFELS, 0.3, 0.3),
-  glimmer: naermest(GLIMMER, -0.25, -0.4),
-  fyllitt: naermest(FYLLITT, -0.45, -0.35),
-  gneis: naermest(GNEIS, 0.45, -0.35),
-};
+
+/** Teksturer og pekepunkter regnes ut lat ved første bruk (ikke når modulen lastes). */
+const teksturer = lat(() => {
+  const SEDIMENT = lagKornTekstur({ seed: 1357, avstand: 0.15, typer: 2, inni: iLinse, nokkel: "kr-sediment" });
+  const HORNFELS = lagKornTekstur({
+    seed: 2468,
+    avstand: 0.12,
+    storrelse: [0.85, 1],
+    fyllHull: 0.9,
+    strekk: [0.4, 0.7],
+    inni: iLinse,
+    nokkel: "kr-hornfels",
+  });
+  const REG = { seed: 4242, avstand: 0.2, typer: 3, inni: iLinse, nokkel: "kr-regional" };
+  const REG_KORN = lagKornTekstur(REG);
+  /** Samme posisjoner, men avlange, uroterte former: glimmerflak som figuren roterer selv. */
+  const REG_FLAK = lagKornTekstur({ ...REG, strekk: [0.24, 0.32], roter: false });
+  const LYSE = REG_KORN.filter((k) => !erGlimmer(k));
+  const GLIMMER = REG_FLAK.filter(erGlimmer);
+  const FYLLITT = lagKornTekstur({
+    seed: 77,
+    avstand: 0.09,
+    strekk: [0.24, 0.34],
+    roter: false,
+    fyllHull: 0.3,
+    inni: (x, y, r) => x < -0.02 && Math.hypot(x, y) - r < 1.0,
+    nokkel: "kr-fyllitt",
+  });
+  const GNEIS = lagKornTekstur({
+    seed: 99,
+    avstand: 0.22,
+    strekk: [0.55, 0.8],
+    roter: false,
+    inni: (x, y, r) => x > 0.02 && Math.hypot(x, y) - r < 1.0,
+    nokkel: "kr-gneis",
+  });
+  const PEK = {
+    sediment: naermest(SEDIMENT, -0.35, 0.35, sedimentLag),
+    hornfels: naermest(HORNFELS, 0.3, 0.3),
+    glimmer: naermest(GLIMMER, -0.25, -0.4),
+    fyllitt: naermest(FYLLITT, -0.45, -0.35),
+    gneis: naermest(GNEIS, 0.45, -0.35),
+  };
+  return { SEDIMENT, HORNFELS, LYSE, GLIMMER, FYLLITT, GNEIS, PEK };
+});
 
 function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
   const [ref, width] = useBoxWidth<HTMLDivElement>();
@@ -257,6 +272,7 @@ export function KontaktRegionalV2Figur({
 }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
+  const { SEDIMENT, HORNFELS, LYSE, GLIMMER, FYLLITT, GNEIS, PEK } = teksturer();
   const [fane, setFane] = useState<Fane>("kontakt");
   const [inne, setInne] = useState(true);
   const tlK = useTidslinje({ antall: K_FASER.length, synlig: visible && fane === "kontakt", faseMs: 3400, holdMs: 1700 });
@@ -719,17 +735,21 @@ export function KontaktRegionalV2Figur({
           caption ??
           "Kontaktmetamorfose: varme fra magma omdanner sidebergarten lokalt, uten rettet trykk. Regional metamorfose: rettet trykk og høy temperatur over store områder gir folder, foliasjon og skifrighet. Skjematisk, uten målestokk."
         }
-        playing={tl.playing}
+        playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
         toolbar={
           <div className={small ? "flex w-full flex-col gap-2 [&_button]:text-sm" : "flex w-full flex-col gap-2"}>
-            <StegVelger labels={FANER} step={fane === "kontakt" ? 1 : 2} onStep={(n) => setFane(n === 1 ? "kontakt" : "regional")} label="Velg prosess" />
+            <StegVelger labels={FANER} step={fane === "kontakt" ? 1 : 2} onStep={(n) => {
+                // fanebytte er et brukervalg: begge tidslinjene settes på pause
+                (fane === "kontakt" ? tlR : tlK).valg(() => {});
+                tl.valg(() => setFane(n === 1 ? "kontakt" : "regional"));
+              }} label="Velg prosess" />
             <TidslinjeKontroller tl={tl} faser={fane === "kontakt" ? K_FASER : R_FASER} />
             {fane === "kontakt" ? (
               <StegVelger
                 labels={["Linse i aureolen", "Linse utenfor aureolen"]}
                 step={inne ? 1 : 2}
-                onStep={(n) => setInne(n === 1)}
+                onStep={(n) => tl.valg(() => setInne(n === 1))}
                 label="Linse"
               />
             ) : null}
