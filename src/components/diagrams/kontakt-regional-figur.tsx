@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key } from "./isbre-figur";
+import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
 
 function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
@@ -79,6 +79,8 @@ export function KontaktRegionalMetamorfoseFigur({
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
+  // Nummermerker bare under sm (390). Fra 768 px beholdes SVG-teksten uendret.
+  const mobil = useNarrow();
   const clock = useStepClock(6, motion.playing && visible, 3600, 1200, initialStep);
   const { step, phase } = clock;
   const s = keyframe(
@@ -100,6 +102,32 @@ export function KontaktRegionalMetamorfoseFigur({
     { text: "Rettet trykk", color: "#5fa6c8", kind: "line" },
     { text: "Foliasjon", color: "#9b8aa0", kind: "line" },
   ];
+  const regionalTekst =
+    s.folio > 0.5 ? "Foliasjon følger foldene" : s.stress > 0 ? "Rettet trykk fra kollisjonen" : "Før kollisjonen";
+  const labels: Lab[] = [];
+  if (mobil) {
+    labels.push(
+      { text: "Kontaktmetamorfose", x: 16, y: 28, color: C.fg, weight: 700, badge: [64, 72] },
+      { text: "Leirskifer", x: 8, y: 72, color: C.fg, badge: [180, 84] },
+      { text: "Sandstein", x: 8, y: 92, color: C.fg, badge: [320, 84] },
+      { text: "Kalkstein", x: 8, y: 110, color: C.fg, badge: [460, 84] },
+      { text: "Uendret lag", x: 420, y: 72, color: C.fg, badge: [520, 175] },
+      { text: "Magma", x: 290, y: 290, color: C.fg, weight: 700, anchor: "middle", badge: [300, 340] },
+      { text: "Zoom: hornfels", x: 398, y: 266, color: C.fg, weight: 700, badge: [455, 300] },
+      { text: "Regional metamorfose", x: 556, y: 28, color: C.fg, weight: 700, badge: [720, 72] },
+      { text: regionalTekst, x: 556, y: 400, color: C.fg, weight: 700, badge: [700, 355] },
+      { text: "Zoom: glimmerflak", x: 908, y: 266, color: C.fg, weight: 700, badge: [980, 295] },
+    );
+    if (s.aureole > 0.4)
+      labels.push({
+        text: "Hornfels · ingen foliasjon",
+        x: 16,
+        y: 400,
+        color: C.fg,
+        weight: 700,
+        badge: [64, 340],
+      });
+  }
 
   return (
     <div ref={wrapRef}>
@@ -119,6 +147,7 @@ export function KontaktRegionalMetamorfoseFigur({
           </StegRamme>
         }
         status={STATUS[step - 1]}
+        labels={labels}
         keys={keys}
         notes={["Venstre: kontaktmetamorfose", "Høyre: regional metamorfose", "Skjematisk, uten målestokk"]}
         viewBox="0 0 1080 420"
@@ -148,30 +177,39 @@ export function KontaktRegionalMetamorfoseFigur({
                 ["M290 185 L290 125", "M245 225 L175 190", "M345 225 L415 190"].map((d) => (
                   <path key={d} d={d} stroke={C.warm} strokeWidth="2.5" fill="none" markerEnd={`url(#${m.warm})`} opacity={s.heat} />
                 ))}
-              <text x="16" y="28" fontSize="16" fontWeight="700" fill={C.fg}>
-                Kontaktmetamorfose
-              </text>
-              {LAG.filter((b) => b.name).map((b) => (
-                <text key={b.name} x="8" y={b.y + 14} fontSize="12" fill={C.fg}>
-                  {b.name}
+              {!mobil && (
+                <text x="16" y="28" fontSize="16" fontWeight="700" fill={C.fg}>
+                  Kontaktmetamorfose
                 </text>
-              ))}
-              <text x="290" y="290" textAnchor="middle" fontSize="13" fontWeight="700" fill={C.fg}>
-                Magma
-              </text>
-              <text x="420" y="72" fontSize="12" fill={C.fg}>
-                Uendret lag
-              </text>
-              {s.aureole > 0.4 && (
+              )}
+              {!mobil &&
+                LAG.filter((b) => b.name).map((b) => (
+                  <text key={b.name} x="8" y={b.y + 14} fontSize="12" fill={C.fg}>
+                    {b.name}
+                  </text>
+                ))}
+              {!mobil && (
+                <text x="290" y="290" textAnchor="middle" fontSize="13" fontWeight="700" fill={C.fg}>
+                  Magma
+                </text>
+              )}
+              {!mobil && (
+                <text x="420" y="72" fontSize="12" fill={C.fg}>
+                  Uendret lag
+                </text>
+              )}
+              {!mobil && s.aureole > 0.4 && (
                 <text x="16" y="400" fontSize="13" fontWeight="700" fill={C.fg}>
                   Hornfels · ingen foliasjon
                 </text>
               )}
               <g transform="translate(390 250)">
                 <rect width="130" height="90" rx="8" fill="#0f171c" stroke="#2a3943" />
-                <text x="8" y="16" fontSize="11" fontWeight="700" fill={C.fg}>
-                  Zoom: hornfels
-                </text>
+                {!mobil && (
+                  <text x="8" y="16" fontSize="11" fontWeight="700" fill={C.fg}>
+                    Zoom: hornfels
+                  </text>
+                )}
                 {[0, 1, 2, 3, 4, 5].map((i) => (
                   <circle key={i} cx={28 + (i % 3) * 34} cy={42 + Math.floor(i / 3) * 26} r="9" fill="#a35a32" />
                 ))}
@@ -209,17 +247,23 @@ export function KontaktRegionalMetamorfoseFigur({
                   <path d="M470 220 L516 220" stroke="#5fa6c8" strokeWidth="4" markerEnd={`url(#${m.teal})`} />
                 </>
               )}
-              <text x="16" y="28" fontSize="16" fontWeight="700" fill={C.fg}>
-                Regional metamorfose
-              </text>
-              <text x="16" y="400" fontSize="13" fontWeight="700" fill={C.fg}>
-                {s.folio > 0.5 ? "Foliasjon følger foldene" : s.stress > 0 ? "Rettet trykk fra kollisjonen" : "Før kollisjonen"}
-              </text>
+              {!mobil && (
+                <text x="16" y="28" fontSize="16" fontWeight="700" fill={C.fg}>
+                  Regional metamorfose
+                </text>
+              )}
+              {!mobil && (
+                <text x="16" y="400" fontSize="13" fontWeight="700" fill={C.fg}>
+                  {regionalTekst}
+                </text>
+              )}
               <g transform="translate(360 250)" opacity={s.folio > 0.2 ? 1 : 0.4}>
                 <rect width="155" height="88" rx="8" fill="#0f171c" stroke="#2a3943" />
-                <text x="8" y="16" fontSize="11" fontWeight="700" fill={C.fg}>
-                  Zoom: glimmerflak
-                </text>
+                {!mobil && (
+                  <text x="8" y="16" fontSize="11" fontWeight="700" fill={C.fg}>
+                    Zoom: glimmerflak
+                  </text>
+                )}
                 {[0, 1, 2, 3].map((i) => (
                   <ellipse
                     key={i}
