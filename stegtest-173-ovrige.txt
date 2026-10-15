@@ -1,0 +1,31 @@
+
+prefers-reduced-motion
+  avvik 3
+
+uten reduced motion
+  avvik 3
+
+Steg mot bilde: http://127.0.0.1:8093/geofag-1/bergarter
+Modeller med stegknapper. Bilde = synlige SVG-lag/tekster for valgt steg. Avspilling der figuren har Start/Pause.
+
+modell               reduced          vanlig
+silikater            bestått          bestått (ingen avspilling)
+steinlab             bestått          bestått
+avkjoling            bestått          bestått
+oslograben           bestått          bestått
+differensiering      bestått          bestått
+ionbytte             kjent feil       kjent feil
+metamorfose          bestått          bestått
+bergartssyklus       bestått          bestått
+folg-bergart         bestått          bestått
+
+Detaljer
+- [kjent feil] ionbytte / reduced / bilde: Fast gitter og væske: oransje ion har forlatt gitteret
+- [kjent feil] ionbytte / reduced / bilde: Ion hopper ut: hullet etter ionet som hoppet ut mangler
+- [kjent feil] ionbytte / reduced / bilde: Fast gitter og væske under avspilling: oransje ion har forlatt gitteret
+- [kjent feil] ionbytte / vanlig / bilde: Fast gitter og væske: oransje ion har forlatt gitteret
+- [kjent feil] ionbytte / vanlig / bilde: Ion hopper ut: hullet etter ionet som hoppet ut mangler
+- [kjent feil] ionbytte / vanlig / bilde: Fast gitter og væske under avspilling: oransje ion har forlatt gitteret
+
+Kjent feil som skal fjernes når PR #170 er merget: ionbytte
+

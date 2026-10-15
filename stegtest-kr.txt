@@ -1,0 +1,5 @@
+Stegtest (kriterier fra #173) for nye figurer:
+
+kontakt-regional / kontakt     reduced: bestått   vanlig: bestått
+kontakt-regional / regional    reduced: bestått   vanlig: bestått
+diagenese (#174)               reduced: bestått   vanlig: bestått
