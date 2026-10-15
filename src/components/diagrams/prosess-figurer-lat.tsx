@@ -109,6 +109,6 @@ function lat<P extends FigurProps>(plass: Plass, last: () => Promise<ComponentTy
 }
 
 export const DiageneseFigurLat = lat<FigurProps>(
-  { ...DIAGENESE_TEKST, smal: [520, 600], bred: [960, 540], over: [150, 110], under: [190, 90] },
+  { ...DIAGENESE_TEKST, smal: [520, 600], bred: [960, 540], over: [150, 110], under: [437, 106] },
   () => import("./diagenese-figur").then((m) => m.DiageneseFigur),
 );
