@@ -67,6 +67,81 @@ export function StegVelger({
   );
 }
 
+/**
+ * Ekte faner (WAI-ARIA tabs): role=tablist/tab, aria-selected, aria-controls, roving tabindex.
+ * Venstre/høyre pil flytter og velger fane (valget følger fokus), Home/End går til første/siste.
+ * Samme utseende og fokusring som StegVelger.
+ */
+export function Faner({
+  labels,
+  valgt,
+  onVelg,
+  label,
+  idPrefix,
+  panelId,
+}: {
+  labels: string[];
+  /** Valgt fane, 1-basert. */
+  valgt: number;
+  onVelg: (n: number) => void;
+  label: string;
+  /** Prefiks for fane-id-ene: `${idPrefix}-fane-${n}`. */
+  idPrefix: string;
+  panelId: string;
+}) {
+  const navn = useContext(FigurNavn);
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const ga = (n: number) => {
+    onVelg(n);
+    refs.current[n - 1]?.focus();
+  };
+  return (
+    <div
+      className="flex flex-wrap gap-1.5"
+      role="tablist"
+      aria-label={navn ? `${label}: ${navn}` : label}
+      onKeyDown={(event) => {
+        const antall = labels.length;
+        let n: number | null = null;
+        if (event.key === "ArrowRight") n = valgt >= antall ? 1 : valgt + 1;
+        else if (event.key === "ArrowLeft") n = valgt <= 1 ? antall : valgt - 1;
+        else if (event.key === "Home") n = 1;
+        else if (event.key === "End") n = antall;
+        if (n === null) return;
+        event.preventDefault();
+        ga(n);
+      }}
+    >
+      {labels.map((item, index) => {
+        const n = index + 1;
+        const active = valgt === n;
+        return (
+          <button
+            key={item}
+            ref={(el) => {
+              refs.current[index] = el;
+            }}
+            type="button"
+            role="tab"
+            id={`${idPrefix}-fane-${n}`}
+            aria-selected={active}
+            aria-controls={panelId}
+            tabIndex={active ? 0 : -1}
+            onClick={() => onVelg(n)}
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+              active
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
+            }`}
+          >
+            {item}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Skyver({
   label,
   min,
@@ -791,6 +866,8 @@ export function IsbreFigur({
   narrowViewBox,
   forceNarrow,
   svgRef,
+  faner,
+  fanepanel,
   children,
 }: {
   title: string;
@@ -820,6 +897,10 @@ export function IsbreFigur({
    */
   forceNarrow?: boolean;
   svgRef?: RefObject<SVGSVGElement | null>;
+  /** Faner (role=tablist) over resten av figuren. Resten pakkes da i et tabpanel. */
+  faner?: ReactNode;
+  /** id til tabpanelet og id til valgt fane (aria-labelledby). Brukes sammen med `faner`. */
+  fanepanel?: { id: string; labelledBy: string };
   children: (ctx: { d: Defs; m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const uid = useId().replace(/:/g, "");
@@ -925,96 +1006,99 @@ export function IsbreFigur({
   return (
     <FigurNavn.Provider value={heading}>
       <FigureFrame heading={heading} caption={caption} action={actionNode}>
-        {toolbar ? (
-          <div className="mb-2 flex flex-wrap items-center gap-x-4 gap-y-2">{toolbar}</div>
-        ) : null}
-        {status ? (
-          <p
-            id={`${uid}-status`}
-            className="mb-2 min-h-[1.25rem] text-sm font-medium text-foreground"
-            aria-live={playing ? "off" : "polite"}
-          >
-            {status}
-          </p>
-        ) : null}
-        <div ref={boxRef}>
-          <svg
-            ref={setSvgRef}
-            viewBox={vbStr}
-            className="mx-auto h-auto w-full max-w-5xl"
-            role="img"
-            aria-labelledby={`${uid}-title`}
-            aria-describedby={describedBy || undefined}
-          >
-            <title id={`${uid}-title`}>{title}</title>
-            <defs>
-              <SceneDefs d={d} />
-              <Marker id={m.fg} color={C.fg} />
-              <Marker id={m.cold} color={C.cold} />
-              <Marker id={m.warm} color={C.warm} />
-              <Marker id={m.teal} color={C.teal} />
-              <Marker id={m.ice} color="#2f5f80" />
-              <Marker id={m.dark} color={P.halo} />
-            </defs>
-            <rect x={vbX} y={vbY} width={vbW} height={vbH} fill={C.bg} rx="10" />
-            <FigureScale.Provider value={scale}>
-              {children({ d, m, narrow, scale })}
-              <LabelLayer labels={labels} narrow={narrow} vb={vb} scale={scale} />
-            </FigureScale.Provider>
-          </svg>
-        </div>
-        {below}
-        {narrow && labels.length ? (
-          <ol
-            id={`${uid}-labels`}
-            className="mt-3 grid gap-1.5 text-sm leading-snug text-foreground"
-            aria-label="Forklaring til tallene i figuren"
-          >
-            {labels.map((l, i) => (
-              <li key={`${l.text}-${i}`} className="flex items-start gap-2">
-                <span
-                  className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full text-xs font-extrabold"
-                  style={{
-                    background: l.halo ?? l.color ?? C.fg,
-                    color: l.halo ? (l.color ?? P.halo) : P.halo,
-                  }}
-                >
-                  {i + 1}
-                </span>
-                <span>{l.text}</span>
-              </li>
-            ))}
-          </ol>
-        ) : labels.length ? (
-          <ul id={`${uid}-labels`} className="sr-only" aria-label="Etiketter i figuren">
-            {labels.map((l, i) => (
-              <li key={`${l.text}-${i}`}>{l.text}</li>
-            ))}
-          </ul>
-        ) : null}
-        {keys.length ? (
-          <ul
-            className="mt-3 flex min-h-5 flex-wrap gap-x-5 gap-y-1.5 text-sm text-foreground"
-            aria-label="Tegnforklaring"
-          >
-            {keys
-              .filter((k) => !k.off)
-              .map((k) => (
-                <li key={k.text} className="inline-flex items-center gap-2">
-                  <KeySample k={k} />
-                  <span>{k.text}</span>
+        {faner ? <div className="mb-2">{faner}</div> : null}
+        <div role={fanepanel ? "tabpanel" : undefined} id={fanepanel?.id} aria-labelledby={fanepanel?.labelledBy}>
+          {toolbar ? (
+            <div className="mb-2 flex flex-wrap items-center gap-x-4 gap-y-2">{toolbar}</div>
+          ) : null}
+          {status ? (
+            <p
+              id={`${uid}-status`}
+              className="mb-2 min-h-[1.25rem] text-sm font-medium text-foreground"
+              aria-live={playing ? "off" : "polite"}
+            >
+              {status}
+            </p>
+          ) : null}
+          <div ref={boxRef}>
+            <svg
+              ref={setSvgRef}
+              viewBox={vbStr}
+              className="mx-auto h-auto w-full max-w-5xl"
+              role="img"
+              aria-labelledby={`${uid}-title`}
+              aria-describedby={describedBy || undefined}
+            >
+              <title id={`${uid}-title`}>{title}</title>
+              <defs>
+                <SceneDefs d={d} />
+                <Marker id={m.fg} color={C.fg} />
+                <Marker id={m.cold} color={C.cold} />
+                <Marker id={m.warm} color={C.warm} />
+                <Marker id={m.teal} color={C.teal} />
+                <Marker id={m.ice} color="#2f5f80" />
+                <Marker id={m.dark} color={P.halo} />
+              </defs>
+              <rect x={vbX} y={vbY} width={vbW} height={vbH} fill={C.bg} rx="10" />
+              <FigureScale.Provider value={scale}>
+                {children({ d, m, narrow, scale })}
+                <LabelLayer labels={labels} narrow={narrow} vb={vb} scale={scale} />
+              </FigureScale.Provider>
+            </svg>
+          </div>
+          {below}
+          {narrow && labels.length ? (
+            <ol
+              id={`${uid}-labels`}
+              className="mt-3 grid gap-1.5 text-sm leading-snug text-foreground"
+              aria-label="Forklaring til tallene i figuren"
+            >
+              {labels.map((l, i) => (
+                <li key={`${l.text}-${i}`} className="flex items-start gap-2">
+                  <span
+                    className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full text-xs font-extrabold"
+                    style={{
+                      background: l.halo ?? l.color ?? C.fg,
+                      color: l.halo ? (l.color ?? P.halo) : P.halo,
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span>{l.text}</span>
                 </li>
               ))}
-          </ul>
-        ) : null}
-        {notes.length ? (
-          <p className="mt-2 text-[13px] leading-snug text-muted-foreground">{notes.join(" · ")}</p>
-        ) : null}
-        {remark ? (
-          <p className="mt-2 rounded-md border border-border/80 bg-muted/40 px-3 py-2 text-sm leading-snug text-foreground">
-            {remark}
-          </p>
-        ) : null}
+            </ol>
+          ) : labels.length ? (
+            <ul id={`${uid}-labels`} className="sr-only" aria-label="Etiketter i figuren">
+              {labels.map((l, i) => (
+                <li key={`${l.text}-${i}`}>{l.text}</li>
+              ))}
+            </ul>
+          ) : null}
+          {keys.length ? (
+            <ul
+              className="mt-3 flex min-h-5 flex-wrap gap-x-5 gap-y-1.5 text-sm text-foreground"
+              aria-label="Tegnforklaring"
+            >
+              {keys
+                .filter((k) => !k.off)
+                .map((k) => (
+                  <li key={k.text} className="inline-flex items-center gap-2">
+                    <KeySample k={k} />
+                    <span>{k.text}</span>
+                  </li>
+                ))}
+            </ul>
+          ) : null}
+          {notes.length ? (
+            <p className="mt-2 text-[13px] leading-snug text-muted-foreground">{notes.join(" · ")}</p>
+          ) : null}
+          {remark ? (
+            <p className="mt-2 rounded-md border border-border/80 bg-muted/40 px-3 py-2 text-sm leading-snug text-foreground">
+              {remark}
+            </p>
+          ) : null}
+        </div>
       </FigureFrame>
     </FigurNavn.Provider>
   );
