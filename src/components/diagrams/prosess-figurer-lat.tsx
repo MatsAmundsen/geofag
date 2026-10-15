@@ -115,6 +115,6 @@ export const DiageneseFigurLat = lat<FigurProps>(
 );
 
 export const KontaktRegionalV2FigurLat = lat<FigurProps>(
-  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [190, 90], faner: [44, 44] },
+  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [290, 100], faner: [44, 44] },
   () => import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
 );
