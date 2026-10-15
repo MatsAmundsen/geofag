@@ -8,6 +8,7 @@ import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
+import { DIAGENESE_TEKST } from "./diagenese-tekst";
 import { lagKornTekstur, lat, prng, tidslinjeVerdi, useTidslinje, type Korn } from "./prosess-kit";
 
 const FASER = ["Løs sand", "Nye lag oppå", "Kompaksjon", "Varm væske sirkulerer", "Cementering"];
@@ -146,7 +147,7 @@ function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boo
 }
 
 export function DiageneseFigur({
-  heading = "Diagenese: fra løs sand til sandstein",
+  heading = DIAGENESE_TEKST.heading,
   caption,
 }: {
   heading?: string;
@@ -154,7 +155,7 @@ export function DiageneseFigur({
 }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
-  const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3400, holdMs: 1600 });
+  const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3400, holdMs: 1600, element: ref });
   const KORN = hentKorn();
   const PARTIKLER = hentPartikler();
   const PUNKTER = hentPunkter();
@@ -339,11 +340,11 @@ export function DiageneseFigur({
     <div ref={wrapRef}>
       <IsbreFigur
         svgRef={ref}
-        title="Sandlag som begraves under nye lag. Linsen viser korn, porevæske, kompaksjon og kitt som vokser mellom kornene."
+        title={DIAGENESE_TEKST.title}
         heading={heading}
         caption={
           caption ??
-          "Diagenese gjør løst sediment til fast sedimentær bergart. Trykk pakker kornene. Det er porevæsken som løser ioner og feller dem ut som kitt. Skjematisk, uten målestokk."
+          DIAGENESE_TEKST.caption
         }
         playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}

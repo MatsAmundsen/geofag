@@ -10,6 +10,7 @@ import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { clamp, lerp, smooth, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
+import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { prng, tidslinjeVerdi, useFigurSmal, useTidslinje } from "./prosess-kit";
 
 const FASER = ["Fast gitter og væskefilm", "Ion hopper ut", "Nytt ion tar plassen", "Væsken frakter ionet bort", "Ny sammensetning"];
@@ -160,7 +161,7 @@ const SMAL: Layout = {
 const sti = (pts: Pt[], lukk = true) => `M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(" L")}${lukk ? " Z" : ""}`;
 
 export function IonBytteV2Figur({
-  heading = "Ioner byttes i fast berg",
+  heading = IONBYTTE_TEKST.heading,
   caption,
 }: {
   heading?: string;
@@ -168,7 +169,7 @@ export function IonBytteV2Figur({
 }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
-  const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3200, holdMs: 1700 });
+  const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3200, holdMs: 1700, element: ref });
   const [medVaeske, setMedVaeske] = useState(true);
   const L = small ? SMAL : BRED;
   const { linse } = L;
@@ -313,11 +314,11 @@ export function IonBytteV2Figur({
     <div ref={wrapRef}>
       <IsbreFigur
         svgRef={ref}
-        title="Korn med korngrenser og en tynn væskefilm. Linsen viser gitteret ved korngrensen: et ion hopper ut i væsken, et annet tar plassen, og væsken frakter ionene. Berget er fast hele tiden."
+        title={IONBYTTE_TEKST.title}
         heading={heading}
         caption={
           caption ??
-          "Metasomatose: varm væske langs korngrensene fører ioner inn og ut av mineralene mens berget er fast. Bergarten skifter sammensetning uten å smelte. Skjematisk, uten målestokk."
+          IONBYTTE_TEKST.caption
         }
         playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}

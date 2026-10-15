@@ -11,6 +11,7 @@ import { IsbreFigur, type Key, type Lab } from "./isbre-figur";
 import { clamp, lerp, smooth, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
+import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { lagKornTekstur, lat, prng, tidslinjeVerdi, useFigurSmal, useTidslinje, type Korn } from "./prosess-kit";
 
 const FASER = ["Smelte", "Første krystaller", "Krystallene synker", "Mørkt bunnlag", "Lysere restsmelte"];
@@ -142,7 +143,7 @@ function kammerSti(k: Layout["kammer"]) {
 }
 
 export function DifferensieringV2Figur({
-  heading = "Magmatisk differensiering",
+  heading = DIFFERENSIERING_TEKST.heading,
   caption,
 }: {
   heading?: string;
@@ -150,7 +151,7 @@ export function DifferensieringV2Figur({
 }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
-  const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3400, holdMs: 1700 });
+  const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3400, holdMs: 1700, element: ref });
   const KUMULAT = hentKumulat();
   const L = small ? SMAL : BRED;
   const { kammer: K, linse } = L;
@@ -268,11 +269,11 @@ export function DifferensieringV2Figur({
     <div ref={wrapRef}>
       <IsbreFigur
         svgRef={ref}
-        title="Magmakammer som kjøles. Mørke krystaller av olivin og pyroksen vokser langs veggene, synker og bygger et mørkt bunnlag. Restsmelten over blir lysere."
+        title={DIFFERENSIERING_TEKST.title}
         heading={heading}
         caption={
           caption ??
-          "De første mineralene tar jern og magnesium med seg. Restsmelten blir fattigere på jern og rikere på silisium. Dette er en forenklet modell av fraksjonert krystallisasjon. Ikke all granitt dannes slik. Skjematisk, uten målestokk."
+          DIFFERENSIERING_TEKST.caption
         }
         playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
