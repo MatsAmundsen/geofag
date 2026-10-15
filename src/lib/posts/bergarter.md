@@ -59,7 +59,9 @@ Silikatgrupper
 
 ## Hva er en bergart?
 
-En bergart består av ett eller flere mineraler. Farge, kornstørrelse og kornform gir utseendet. Etter opprinnelse er det tre hovedtyper: sedimentære, metamorfe og magmatiske. Magmatiske og metamorfe bergarter utgjør 90–95 prosent av jordskorpa (NGU, u.å.-k).
+En bergart består i hovedsak av ett eller flere mineraler. Når vi sier at en bergart består av ett mineral, så mener vi ca 95% av bergarten består av ett mineral. Resterende 5% er andre mineraler.
+
+Farge, kornstørrelse og kornform gir utseendet. Etter opprinnelse er det tre hovedtyper: sedimentære, metamorfe og magmatiske. Magmatiske og metamorfe bergarter utgjør 90–95 prosent av jordskorpa (NGU, u.å.-k).
 
 Granitt er altså ikke et mineral. Det er en bergart, en grovkornet dypbergart som hovedsakelig består av mineralene kvarts, kalifeltspat og plagioklas (Raade & Fossen, 2025).
 
