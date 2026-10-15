@@ -13,6 +13,7 @@
 import {
   createContext,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useSyncExternalStore,
@@ -145,10 +146,13 @@ export function useViewportHeight() {
  * Bredden (CSS-piksler) til et element, målt med ResizeObserver. 0 før første måling
  * (og under serverrendering), slik at kallestedet kan falle tilbake på vindusbredden.
  */
+// Måles før første bilde på klienten, så en figur som bygges etter hydrering ikke tegnes i feil layout først.
+const useMaalEffekt = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 export function useBoxWidth<T extends Element>(): [RefObject<T | null>, number] {
   const ref = useRef<T | null>(null);
   const [width, setWidth] = useState(0);
-  useEffect(() => {
+  useMaalEffekt(() => {
     const el = ref.current;
     if (!el) return;
     const measure = () => setWidth(Math.round(el.getBoundingClientRect().width));
