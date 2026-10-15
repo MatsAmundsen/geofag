@@ -501,6 +501,7 @@ export function KontaktRegionalV2Figur({
                 return [linse.cx + k.x * R, linse.cy + k.y * R, 1 - ut, 0, 1 - 0.35 * ut];
               }}
               fyll={fyllSed}
+              noekkel={`${linse.cx}|${linse.cy}|${R}|${rc.toFixed(3)}`}
             />
           ) : null}
           {rc > 0.001 ? (
@@ -512,6 +513,7 @@ export function KontaktRegionalV2Figur({
                 return [linse.cx + k.x * R, linse.cy + k.y * R, inn > 0 ? 1 : 0, 0, Math.max(0.02, inn)];
               }}
               fyll={fyllHf}
+              noekkel={`${linse.cx}|${linse.cy}|${R}|${rc.toFixed(3)}`}
             />
           ) : null}
           <rect x={linse.cx - R} y={linse.cy - R} width={R * 2} height={R * 2} fill={FARGE.varme} opacity={varmeLinse * 0.2} />
@@ -705,7 +707,7 @@ export function KontaktRegionalV2Figur({
         <Zoomlinse cx={linse.cx} cy={linse.cy} r={R} fra={[sekMidt, boksY, L.boks[0], L.boks[1]]} bakgrunn="#8d8576">
           {prodSkjul > 0.01 ? (
             <g opacity={prodSkjul < 1 ? prodSkjul : undefined}>
-              <KornLag korn={LYSE} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R]} fyll={fyllLys} />
+              <KornLag korn={LYSE} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R]} fyll={fyllLys} noekkel={`${linse.cx}|${linse.cy}|${R}`} />
               <KornLag
                 korn={GLIMMER}
                 skala={R}
@@ -715,6 +717,7 @@ export function KontaktRegionalV2Figur({
                 }}
                 fyll={fyllGlimmer}
                 strek={FARGE.glimmerKant}
+                noekkel={`${linse.cx}|${linse.cy}|${R}|${fol.toFixed(3)}`}
               />
             </g>
           ) : null}
@@ -723,8 +726,8 @@ export function KontaktRegionalV2Figur({
               <rect x={linse.cx - R} y={linse.cy - R} width={R} height={R * 2} fill="#717a6e" />
               <rect x={linse.cx} y={linse.cy - R} width={R} height={R * 2} fill="#b9ad98" />
               <path d={GNEIS_BAAND(linse.cx, linse.cy, R)} fill="#4a413a" />
-              <KornLag korn={FYLLITT} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R, 1, 90]} fyll={fyllFyllitt} strek="rgba(20,24,20,0.45)" />
-              <KornLag korn={GNEIS} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R, 1, 90]} fyll={fyllGneis} />
+              <KornLag korn={FYLLITT} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R, 1, 90]} fyll={fyllFyllitt} strek="rgba(20,24,20,0.45)" noekkel={`${linse.cx}|${linse.cy}|${R}`} />
+              <KornLag korn={GNEIS} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R, 1, 90]} fyll={fyllGneis} noekkel={`${linse.cx}|${linse.cy}|${R}`} />
               <line x1={linse.cx} y1={linse.cy - R} x2={linse.cx} y2={linse.cy + R} stroke="#e8eef2" strokeWidth="3" />
             </g>
           ) : null}
