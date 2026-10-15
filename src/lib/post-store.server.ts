@@ -1124,6 +1124,15 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "paleoklima",
     stale: ["Tre arkiv, tre klokker"],
   },
+  {
+    // Bergarter: differensiering, diagenese med porevæske, metasomatose (a6f3f57) og Mats' avsnitt om én-mineral-bergarter.
+    flag: "g1-bergarter-differensiering-2026-10-15",
+    slug: "bergarter",
+    stale: [
+      "forvitring, magmatiske, sedimentære og metamorfe bergarter, og bergartssyklusen",
+      "**Skifrighet:** Plan struktur der bergarten spalter langs flak, som i fyllitt.\n\n**Protolitt:**",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
