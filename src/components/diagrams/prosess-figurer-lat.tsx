@@ -20,8 +20,13 @@ type Plass = {
   /** Tegneflatens viewBox-størrelse, smal (< 760 px) og bred. */
   smal: [number, number];
   bred: [number, number];
-  /** Reservert høyde (px) over og under tegneflaten: verktøylinje, status, målere, forklaring. */
+  /** Reservert høyde (px) over tegneflaten (verktøylinje, status), smal og bred layout. */
   over: [number, number];
+  /**
+   * Reservert høyde (px) under tegneflaten (målere, nummerert forklaring, tegnforklaring), målt mot
+   * ferdig figur ved 340 og 678 px bredde. Teksten brytes sjeldnere jo bredere figuren er, så høyden
+   * interpoleres lineært med containerbredden.
+   */
   under: [number, number];
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
@@ -32,7 +37,7 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
   const stil = {
     "--over-s": `${plass.over[0] + (plass.faner?.[0] ?? 0)}px`,
     "--over-b": `${plass.over[1] + (plass.faner?.[1] ?? 0)}px`,
-    "--under-s": `${plass.under[0]}px`,
+    "--under-s": `clamp(${Math.min(...plass.under)}px, calc(${plass.under[0]}px + (100cqw - 340px) * ${((plass.under[1] - plass.under[0]) / 338).toFixed(4)}), ${Math.max(...plass.under)}px)`,
     "--under-b": `${plass.under[1]}px`,
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,
@@ -112,12 +117,12 @@ function lat<P extends FigurProps>(plass: Plass, last: () => Promise<ComponentTy
 }
 
 export const DiageneseFigurLat = lat<FigurProps>(
-  { ...DIAGENESE_TEKST, smal: [520, 600], bred: [960, 540], over: [150, 110], under: [437, 106] },
+  { ...DIAGENESE_TEKST, smal: [520, 600], bred: [960, 540], over: [150, 110], under: [437, 206] },
   () => import("./diagenese-figur").then((m) => m.DiageneseFigur),
 );
 
 export const KontaktRegionalV2FigurLat = lat<FigurProps>(
-  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [290, 100], faner: [44, 44] },
+  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [290, 200], faner: [44, 44] },
   () => import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
 );
 
