@@ -94,7 +94,8 @@ import {
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
 import { KontaktRegionalMetamorfoseFigur } from "@/components/diagrams/kontakt-regional-figur";
-import { DifferensieringFigur, DiagenesePoreFigur, IonBytteFigur } from "@/components/diagrams/bergarter-nye-figurer";
+import { DifferensieringFigur, IonBytteFigur } from "@/components/diagrams/bergarter-nye-figurer";
+import { DiageneseFigur } from "@/components/diagrams/diagenese-figur";
 import {
   GeotidRelativFigur,
   GeotidTidslinjeFigur,
@@ -1153,7 +1154,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   Metamorfose: () => <MetamorfoseFigur />,
   KontaktRegional: () => <KontaktRegionalMetamorfoseFigur />,
   Differensiering: () => <DifferensieringFigur />,
-  DiagenesePore: () => <DiagenesePoreFigur />,
+  DiagenesePore: () => <DiageneseFigur />,
   IonBytte: () => <IonBytteFigur />,
   Steinlab: () => <SteinlabFigur />,
   OsloriftBergarter: () => (
