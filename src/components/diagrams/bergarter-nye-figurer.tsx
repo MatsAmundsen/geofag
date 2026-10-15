@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key } from "./isbre-figur";
+import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
 
 function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
@@ -62,6 +62,8 @@ export function DifferensieringFigur({
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
+  // Nummermerker bare under sm (390). Fra 768 px beholdes SVG-teksten uendret.
+  const mobil = useNarrow();
   const clock = useStepClock(4, motion.playing && visible, 3400, 1200, initialStep);
   const { step, phase } = clock;
   const s = keyframe(
@@ -80,6 +82,24 @@ export function DifferensieringFigur({
     { text: "Mørke krystaller (olivin, pyroksen)", color: "#3e4a43", kind: "fill" },
     { text: "Restsmelte, mer silisium", color: "#f3d7c4", kind: "fill" },
   ];
+  const smelteTekst = s.felsic > 0.6 ? "Restsmelte, mer silisium" : "Homogen smelte";
+  const labels: Lab[] = [];
+  if (mobil) {
+    labels.push(
+      { text: "Sidebergart", x: 20, y: 28, color: C.fg, weight: 700, badge: [90, 130] },
+      { text: smelteTekst, x: 320, y: 210, color: C.fg, weight: 700, anchor: "middle", badge: [340, 90] },
+    );
+    if (s.sink > 0.5)
+      labels.push({
+        text: "Mørke krystaller (olivin, pyroksen)",
+        x: 330,
+        y: 375,
+        color: C.fg,
+        weight: 700,
+        anchor: "middle",
+        badge: [470, 355],
+      });
+  }
 
   return (
     <div ref={wrapRef}>
@@ -99,6 +119,7 @@ export function DifferensieringFigur({
           </StegRamme>
         }
         status={STATUS[step - 1]}
+        labels={labels}
         keys={keys}
         notes={["Skjematisk, uten målestokk", "Fraksjonert krystallisasjon"]}
         viewBox="0 0 700 400"
@@ -135,17 +156,21 @@ export function DifferensieringFigur({
                 />
               );
             })}
-            <text x="320" y="210" textAnchor="middle" fontSize="16" fontWeight="700" fill={C.fg}>
-              {s.felsic > 0.6 ? "Restsmelte, mer silisium" : "Homogen smelte"}
-            </text>
-            {s.sink > 0.5 && (
-              <text x="330" y="375" textAnchor="middle" fontSize="14" fontWeight="700" fill={C.fg}>
-                Mørke krystaller (olivin, pyroksen)
-              </text>
+            {!mobil && (
+              <>
+                <text x="320" y="210" textAnchor="middle" fontSize="16" fontWeight="700" fill={C.fg}>
+                  {smelteTekst}
+                </text>
+                {s.sink > 0.5 && (
+                  <text x="330" y="375" textAnchor="middle" fontSize="14" fontWeight="700" fill={C.fg}>
+                    Mørke krystaller (olivin, pyroksen)
+                  </text>
+                )}
+                <text x="20" y="28" fontSize="14" fontWeight="700" fill={C.fg}>
+                  Sidebergart
+                </text>
+              </>
             )}
-            <text x="20" y="28" fontSize="14" fontWeight="700" fill={C.fg}>
-              Sidebergart
-            </text>
             <defs>
               <marker id={m.warm} markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
                 <path d="M0 0 L8 4 L0 8 Z" fill={C.warm} />
@@ -192,6 +217,8 @@ export function DiagenesePoreFigur({
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
+  // Nummermerker bare under sm (390). Fra 768 px beholdes SVG-teksten uendret.
+  const mobil = useNarrow();
   const clock = useStepClock(4, motion.playing && visible, 3400, 1200, initialStep);
   const { step, phase } = clock;
   const s = keyframe(
@@ -212,6 +239,14 @@ export function DiagenesePoreFigur({
     { text: "Sandkorn", color: "#e4d2ae", kind: "fill" },
     { text: "Kitt (kvarts, kalsitt)", color: "#b8862f", kind: "fill" },
   ];
+  const bunnTekst = s.cement > 0.5 ? "Kitt fra porevæsken limer kornene" : "Blått mellom kornene er porevæske";
+  const labels: Lab[] = [];
+  if (mobil) {
+    labels.push({ text: "Hav", x: 176, y: 68, color: C.fg, weight: 700, badge: [70, 70] });
+    if (pack > 0.4)
+      labels.push({ text: "Nye lag presser ned", x: 176, y: 110, color: C.fg, weight: 700, badge: [70, 175] });
+    labels.push({ text: bunnTekst, x: 176, y: 385, color: C.fg, weight: 700, badge: [70, 300] });
+  }
 
   return (
     <div ref={wrapRef}>
@@ -231,6 +266,7 @@ export function DiagenesePoreFigur({
           </StegRamme>
         }
         status={DIA_STATUS[step - 1]}
+        labels={labels}
         keys={keys}
         notes={["Blått mellom kornene er porevæske", "Skjematisk, uten målestokk"]}
         viewBox="0 0 760 400"
@@ -238,13 +274,17 @@ export function DiagenesePoreFigur({
         {() => (
           <g data-figur="diagenese" data-step={step}>
             <rect x="160" y="48" width="540" height="30" fill="#6ea4bc" opacity="0.45" />
-            <text x="176" y="68" fontSize="14" fontWeight="700" fill={C.fg}>
-              Hav
-            </text>
+            {!mobil && (
+              <text x="176" y="68" fontSize="14" fontWeight="700" fill={C.fg}>
+                Hav
+              </text>
+            )}
             <rect x="160" y={78} width="540" height={burden} fill="#5d6a5c" opacity={pack} />
-            <text x="176" y={78 + burden * 0.6} fontSize="13" fontWeight="700" fill={C.fg} opacity={pack > 0.4 ? 1 : 0}>
-              Nye lag presser ned
-            </text>
+            {!mobil && (
+              <text x="176" y={78 + burden * 0.6} fontSize="13" fontWeight="700" fill={C.fg} opacity={pack > 0.4 ? 1 : 0}>
+                Nye lag presser ned
+              </text>
+            )}
             <rect x="160" y={78 + burden} width="540" height={280 - burden} fill="#6ea4bc" opacity={0.55 - s.cement * 0.25} />
             {KORN.map((g, i) => {
               const x = g.lx + (g.tx - g.lx) * pack;
@@ -281,9 +321,11 @@ export function DiagenesePoreFigur({
                 opacity={s.flow}
               />
             )}
-            <text x="176" y="385" fontSize="14" fontWeight="700" fill={C.fg}>
-              {s.cement > 0.5 ? "Kitt fra porevæsken limer kornene" : "Blått mellom kornene er porevæske"}
-            </text>
+            {!mobil && (
+              <text x="176" y="385" fontSize="14" fontWeight="700" fill={C.fg}>
+                {bunnTekst}
+              </text>
+            )}
           </g>
         )}
       </IsbreFigur>
@@ -317,6 +359,8 @@ export function IonBytteFigur({
   const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
+  // Nummermerker bare under sm (390). Fra 768 px beholdes SVG-teksten uendret.
+  const mobil = useNarrow();
   const clock = useStepClock(4, motion.playing && visible, 3200, 1000, initialStep);
   const { step, phase } = clock;
   const uid = useId().replace(/:/g, "");
@@ -332,6 +376,17 @@ export function IonBytteFigur({
     { text: "Ion fra væsken", color: "#6ea4bc", kind: "fill" },
     { text: "Porevæske", color: "#1d5c82", kind: "fill" },
   ];
+  const sammensetning = swapped ? "Ny sammensetning" : "Opprinnelig sammensetning";
+  const ionTekst = swapped ? "Blått ion sitter nå i gitteret" : "Oransje ion forlater plassen";
+  const labels: Lab[] = [];
+  if (mobil) {
+    labels.push(
+      { text: "Mineralgitter", x: 24, y: 32, color: C.fg, weight: 700, badge: [80, 40] },
+      { text: sammensetning, x: 24, y: 52, color: C.muted, badge: [300, 40] },
+      { text: ionTekst, x: 24, y: 210, color: C.fg, badge: [520, 110] },
+      { text: "Varm porevæske langs korngrensen", x: 40, y: 252, color: C.fg, weight: 700, badge: [630, 275] },
+    );
+  }
 
   return (
     <div ref={wrapRef}>
@@ -351,22 +406,29 @@ export function IonBytteFigur({
           </StegRamme>
         }
         status={ION_STATUS[step - 1]}
+        labels={labels}
         keys={keys}
         notes={["Metasomatose: grunnstoff byttes uten smelting", "Skjematisk, uten målestokk"]}
         viewBox="0 0 700 360"
       >
         {() => (
           <g data-figur="ionbytte" data-step={step}>
-            <text x="24" y="32" fontSize="15" fontWeight="700" fill={C.fg}>
-              Mineralgitter
-            </text>
-            <text x="24" y="52" fontSize="13" fill={C.muted}>
-              {swapped ? "Ny sammensetning" : "Opprinnelig sammensetning"}
-            </text>
+            {!mobil && (
+              <text x="24" y="32" fontSize="15" fontWeight="700" fill={C.fg}>
+                Mineralgitter
+              </text>
+            )}
+            {!mobil && (
+              <text x="24" y="52" fontSize="13" fill={C.muted}>
+                {sammensetning}
+              </text>
+            )}
             <rect x="24" y="230" width="652" height="72" rx="16" fill="#1d5c82" opacity="0.35" />
-            <text x="40" y="252" fontSize="13" fontWeight="700" fill={C.fg}>
-              Varm porevæske langs korngrensen
-            </text>
+            {!mobil && (
+              <text x="40" y="252" fontSize="13" fontWeight="700" fill={C.fg}>
+                Varm porevæske langs korngrensen
+              </text>
+            )}
             {[80, 150, 480, 560, 630].map((x, i) => (
               <circle key={x} cx={x + (i % 2 ? 8 : -8)} cy={278} r="9" fill="#6ea4bc" opacity="0.8" />
             ))}
@@ -397,9 +459,11 @@ export function IonBytteFigur({
             )}
             <circle cx={outX} cy={outY} r="16" fill="#e8a04a" stroke={C.fg} strokeOpacity="0.3" />
             <circle cx={innX} cy={innY} r="16" fill="#6ea4bc" stroke={C.fg} strokeOpacity="0.3" />
-            <text x="24" y="210" fontSize="14" fill={C.fg}>
-              {swapped ? "Blått ion sitter nå i gitteret" : "Oransje ion forlater plassen"}
-            </text>
+            {!mobil && (
+              <text x="24" y="210" fontSize="14" fill={C.fg}>
+                {ionTekst}
+              </text>
+            )}
             <defs>
               <marker id={`${uid}-ut`} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
                 <path d="M0 0 L7 3.5 L0 7 Z" fill="#e8a04a" />
