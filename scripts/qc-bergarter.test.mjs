@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { encodePng, diffPng } from "./qc-bergarter-png.mjs";
+import { encodePng, diffPng, isEdgeSlop } from "./qc-bergarter-png.mjs";
 import {
   fontsUnderLimit,
   isKnownAxe,
@@ -10,6 +10,7 @@ import {
   overBudget,
   parseArgs,
   percentile,
+  resolveChromeExecutable,
   proposeBudget,
   renderedFontPx,
   slug,
@@ -19,6 +20,17 @@ import {
 test("slug folds norwegian letters", () => {
   assert.equal(slug("Avkjøling styrer kornstørrelsen"), "avkjoling-styrer-kornstorrelsen");
   assert.equal(slug("Følg en norsk bergart"), "folg-en-norsk-bergart");
+});
+
+test("system Chrome is used when CHROME_PATH is unset", () => {
+  assert.equal(
+    resolveChromeExecutable({}, (candidate) => candidate === "/usr/bin/google-chrome-stable"),
+    "/usr/bin/google-chrome-stable",
+  );
+  assert.equal(
+    resolveChromeExecutable({ CHROME_PATH: "/opt/chrome" }, () => false),
+    "/opt/chrome",
+  );
 });
 
 test("parseArgs defaults to compare and rejects unknown flags", () => {
@@ -52,8 +64,15 @@ test("png diff is zero for the same pixels and counts changes", () => {
   const diff = diffPng(png, other);
   assert.equal(diff.changed, 1);
   assert.ok(diff.png.length > 8);
+  const faint = Buffer.from(solid);
+  faint[4] = 18;
+  assert.equal(diffPng(png, encodePng({ width: 2, height: 2, data: faint })).changed, 0);
   const resized = encodePng({ width: 1, height: 1, data: solid.subarray(0, 4) });
   assert.equal(diffPng(png, resized).reason, "ulik størrelse");
+  assert.equal(isEdgeSlop({ changed: 8, maxDelta: 25 }), true);
+  assert.equal(isEdgeSlop({ changed: 8, maxDelta: 200 }), false);
+  assert.equal(isEdgeSlop({ changed: 400, maxDelta: 20 }), false);
+  assert.equal(isEdgeSlop({ changed: null }), false);
 });
 
 test("label regression ignores known issues and flags new text or smaller type", () => {
@@ -117,6 +136,18 @@ test("known axe findings are only the logo mismatch and quiz list items", () => 
     isKnownAxe({
       id: "listitem",
       nodes: [{ html: '<li><button role="radio">Basalt</button></li>', target: ["li"] }],
+    }),
+    true,
+  );
+  assert.equal(
+    isKnownAxe({
+      id: "listitem",
+      nodes: [
+        {
+          html: "<li>",
+          target: ['ul[aria-labelledby="_r_6_-q0-prompt"] > li:nth-child(2)'],
+        },
+      ],
     }),
     true,
   );

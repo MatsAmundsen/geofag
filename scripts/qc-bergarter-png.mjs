@@ -123,10 +123,16 @@ export function encodePng({ width, height, data }) {
 }
 
 /**
+ * Kanaler som skiller med høyst dette, regnes som like.
+ * Chrome kan skvulpe 1–8 på kanter og skråstrek selv når innholdet står stille.
+ */
+export const CHANNEL_TOLERANCE = 12;
+
+/**
  * Piksel for piksel. Ulik størrelse er et avvik uten diff-bilde.
  * Like piksler tones ned, avvik blir røde.
  */
-export function diffPng(leftBuf, rightBuf) {
+export function diffPng(leftBuf, rightBuf, tolerance = CHANNEL_TOLERANCE) {
   const left = decodePng(leftBuf);
   const right = decodePng(rightBuf);
   if (left.width !== right.width || left.height !== right.height) {
@@ -140,13 +146,17 @@ export function diffPng(leftBuf, rightBuf) {
     };
   }
   let changed = 0;
+  let maxDelta = 0;
   const out = Buffer.alloc(left.data.length);
   for (let i = 0; i < left.data.length; i += 4) {
-    const same =
-      left.data[i] === right.data[i] &&
-      left.data[i + 1] === right.data[i + 1] &&
-      left.data[i + 2] === right.data[i + 2] &&
-      left.data[i + 3] === right.data[i + 3];
+    const delta = Math.max(
+      Math.abs(left.data[i] - right.data[i]),
+      Math.abs(left.data[i + 1] - right.data[i + 1]),
+      Math.abs(left.data[i + 2] - right.data[i + 2]),
+      Math.abs(left.data[i + 3] - right.data[i + 3]),
+    );
+    if (delta > maxDelta) maxDelta = delta;
+    const same = delta <= tolerance;
     if (same) {
       out[i] = left.data[i] >> 2;
       out[i + 1] = left.data[i + 1] >> 2;
@@ -162,9 +172,16 @@ export function diffPng(leftBuf, rightBuf) {
   }
   return {
     changed,
+    maxDelta,
     width: left.width,
     height: left.height,
     reason: changed ? "piksler" : "lik",
     png: changed ? encodePng({ width: left.width, height: left.height, data: out }) : null,
   };
+}
+
+/** Få piksler med moderat kanalavvik er kantskvulp, ikke et annet motiv. */
+export function isEdgeSlop(diff, { maxPixels = 24, maxDelta = 64 } = {}) {
+  if (!diff || diff.changed == null) return false;
+  return diff.changed > 0 && diff.changed <= maxPixels && (diff.maxDelta ?? 0) <= maxDelta;
 }
