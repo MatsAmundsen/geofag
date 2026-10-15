@@ -23,3 +23,11 @@ export const DiageneseFigurLat = lat<ComponentProps<typeof import("./diagenese-f
 export const KontaktRegionalV2FigurLat = lat<ComponentProps<typeof import("./kontakt-regional-v2").KontaktRegionalV2Figur>>(() =>
   import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
 );
+
+export const DifferensieringV2FigurLat = lat<ComponentProps<typeof import("./differensiering-figur").DifferensieringV2Figur>>(() =>
+  import("./differensiering-figur").then((m) => m.DifferensieringV2Figur),
+);
+
+export const IonBytteV2FigurLat = lat<ComponentProps<typeof import("./ionbytte-figur").IonBytteV2Figur>>(() =>
+  import("./ionbytte-figur").then((m) => m.IonBytteV2Figur),
+);

@@ -11,7 +11,7 @@ import { IsbreFigur, type Key, type Lab } from "./isbre-figur";
 import { clamp, lerp, smooth, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
-import { lagKornTekstur, prng, tidslinjeVerdi, useFigurSmal, useTidslinje, type Korn } from "./prosess-kit";
+import { lagKornTekstur, lat, prng, tidslinjeVerdi, useFigurSmal, useTidslinje, type Korn } from "./prosess-kit";
 
 const FASER = ["Smelte", "Første krystaller", "Krystallene synker", "Mørkt bunnlag", "Lysere restsmelte"];
 
@@ -121,7 +121,7 @@ const KRYSTALLER = (() => {
 })();
 
 /** Bunnlaget i linsen: tett pakkede mørke krystaller. */
-const KUMULAT = lagKornTekstur({
+const hentKumulat = lat(() => lagKornTekstur({
   seed: 31,
   avstand: 0.13,
   storrelse: [0.8, 1],
@@ -129,6 +129,11 @@ const KUMULAT = lagKornTekstur({
   typer: 2,
   inni: (x, y, r) => y > -0.2 && Math.hypot(x, y) - r < 1.0,
   nokkel: "diff-kumulat",
+}));
+/** Pekepunktet for etiketten i bunnlaget. */
+const hentPekKum = lat(() => {
+  const k = hentKumulat();
+  return k.reduce((a, b) => (Math.hypot(b.x - 0.35, b.y - 0.6) < Math.hypot(a.x - 0.35, a.y - 0.6) ? b : a), k[0]);
 });
 
 function kammerSti(k: Layout["kammer"]) {
@@ -146,6 +151,7 @@ export function DifferensieringV2Figur({
   const [ref, visible] = useInView<SVGSVGElement>();
   const [wrapRef, small] = useFigurSmal();
   const tl = useTidslinje({ antall: FASER.length, synlig: visible, faseMs: 3400, holdMs: 1700 });
+  const KUMULAT = hentKumulat();
   const L = small ? SMAL : BRED;
   const { kammer: K, linse } = L;
   const R = linse.r;
@@ -234,7 +240,7 @@ export function DifferensieringV2Figur({
     });
   }
   const lp = (k: Korn): [number, number] => [linse.cx + k.x * R, linse.cy + k.y * R];
-  const pekKum = KUMULAT.reduce((a, b) => (Math.hypot(b.x - 0.35, b.y - 0.6) < Math.hypot(a.x - 0.35, a.y - 0.6) ? b : a), KUMULAT[0]);
+  const pekKum = hentPekKum();
   if (s.cum > 0.6) {
     labels.push({
       text: "Mørke krystaller i bunnlaget",
@@ -268,7 +274,7 @@ export function DifferensieringV2Figur({
           caption ??
           "De første mineralene tar jern og magnesium med seg. Restsmelten blir fattigere på jern og rikere på silisium. Dette er en forenklet modell av fraksjonert krystallisasjon. Ikke all granitt dannes slik. Skjematisk, uten målestokk."
         }
-        playing={tl.playing}
+        playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
         toolbar={
           <div className={small ? "flex w-full flex-col gap-2 [&_button]:text-sm" : "flex w-full flex-col gap-2"}>

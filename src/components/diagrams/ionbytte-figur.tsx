@@ -319,7 +319,7 @@ export function IonBytteV2Figur({
           caption ??
           "Metasomatose: varm væske langs korngrensene fører ioner inn og ut av mineralene mens berget er fast. Bergarten skifter sammensetning uten å smelte. Skjematisk, uten målestokk."
         }
-        playing={tl.playing}
+        playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
         toolbar={
           <div className={small ? "flex w-full flex-col gap-2 [&_button]:text-sm" : "flex w-full flex-col gap-2"}>
@@ -327,7 +327,7 @@ export function IonBytteV2Figur({
             <StegVelger
               labels={["Med væske", "Uten væske (tankeeksperiment)"]}
               step={medVaeske ? 1 : 2}
-              onStep={(n) => setMedVaeske(n === 1)}
+              onStep={(n) => tl.valg(() => setMedVaeske(n === 1))}
               label="Væske"
             />
           </div>
