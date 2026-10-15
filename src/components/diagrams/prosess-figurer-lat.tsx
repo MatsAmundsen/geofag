@@ -112,12 +112,12 @@ function lat<P extends FigurProps>(plass: Plass, last: () => Promise<ComponentTy
 }
 
 export const DiageneseFigurLat = lat<FigurProps>(
-  { ...DIAGENESE_TEKST, smal: [520, 600], bred: [960, 540], over: [150, 110], under: [190, 90] },
+  { ...DIAGENESE_TEKST, smal: [520, 600], bred: [960, 540], over: [150, 110], under: [437, 106] },
   () => import("./diagenese-figur").then((m) => m.DiageneseFigur),
 );
 
 export const KontaktRegionalV2FigurLat = lat<FigurProps>(
-  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [190, 90], faner: [44, 44] },
+  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [290, 100], faner: [44, 44] },
   () => import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
 );
 
