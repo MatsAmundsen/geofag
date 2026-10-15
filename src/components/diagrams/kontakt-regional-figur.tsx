@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key } from "./isbre-figur";
 import { lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
 
@@ -42,6 +42,9 @@ const STATUS = [
   "Skorpa fortykkes. Lagene foldes. Både trykk og temperatur er høye.",
   "Glimmer legger seg på tvers av trykkretningen. Det blir foliasjon og skifrighet, som i fyllitt og gneis.",
 ];
+
+/** Startvinkler for glimmerflakene i zoom før foliasjon (grader fra loddrett). */
+const GLIMMER_START = [70, -40, 15, -75, 50, -20];
 
 const LAG = [
   { y: 58, h: 20, fill: "#6d7468", name: "Leirskifer" },
@@ -191,10 +194,10 @@ export function KontaktRegionalMetamorfoseFigur({
                     return (
                       <line
                         key={`${x}-${i}`}
-                        x1={x - 6}
-                        y1={y - 8}
-                        x2={x + 6}
-                        y2={y + 8}
+                        x1={x}
+                        y1={y - 9}
+                        x2={x}
+                        y2={y + 9}
                         stroke="#9b8aa0"
                         strokeWidth="2.5"
                         opacity={s.folio}
@@ -205,29 +208,34 @@ export function KontaktRegionalMetamorfoseFigur({
               <path d={`M ${foldPath(0, s.amp).join(" L ")}`} fill="none" stroke={C.fg} strokeWidth="2" />
               {s.stress > 0 && (
                 <>
-                  <path d="M70 220 L24 220" stroke="#5fa6c8" strokeWidth="4" markerEnd={`url(#${m.teal})`} />
-                  <path d="M470 220 L516 220" stroke="#5fa6c8" strokeWidth="4" markerEnd={`url(#${m.teal})`} />
+                  {/* Rettet trykk: pilene peker innover mot kollisjonen */}
+                  <path d="M16 220 L66 220" stroke="#5fa6c8" strokeWidth="4" markerEnd={`url(#${m.teal})`} />
+                  <path d="M524 220 L474 220" stroke="#5fa6c8" strokeWidth="4" markerEnd={`url(#${m.teal})`} />
                 </>
               )}
               <text x="16" y="28" fontSize="16" fontWeight="700" fill={C.fg}>
                 Regional metamorfose
               </text>
               <text x="16" y="400" fontSize="13" fontWeight="700" fill={C.fg}>
-                {s.folio > 0.5 ? "Foliasjon følger foldene" : s.stress > 0 ? "Rettet trykk fra kollisjonen" : "Før kollisjonen"}
+                {s.folio > 0.5 ? "Foliasjon på tvers av trykket" : s.stress > 0 ? "Rettet trykk fra kollisjonen" : "Før kollisjonen"}
               </text>
               <g transform="translate(360 250)" opacity={s.folio > 0.2 ? 1 : 0.4}>
                 <rect width="155" height="88" rx="8" fill="#0f171c" stroke="#2a3943" />
                 <text x="8" y="16" fontSize="11" fontWeight="700" fill={C.fg}>
                   Zoom: glimmerflak
                 </text>
-                {[0, 1, 2, 3].map((i) => (
+                {/* Glimmerflak: tilfeldig orientert før, loddrett (på tvers av det vannrette trykket) etter */}
+                <path d="M6 56 L22 56" stroke="#5fa6c8" strokeWidth="3" markerEnd={`url(#${m.teal})`} />
+                <path d="M149 56 L133 56" stroke="#5fa6c8" strokeWidth="3" markerEnd={`url(#${m.teal})`} />
+                {GLIMMER_START.map((a, i) => (
                   <ellipse
                     key={i}
-                    cx="78"
-                    cy={34 + i * 13}
-                    rx={s.folio > 0.4 ? 50 : 26}
-                    ry="4"
+                    cx={36 + i * 17}
+                    cy="56"
+                    rx="4"
+                    ry={s.folio > 0.4 ? 24 : 14}
                     fill="#9b8aa0"
+                    transform={`rotate(${lerp(a, 0, Math.min(1, s.folio / 0.6))} ${36 + i * 17} 56)`}
                   />
                 ))}
               </g>

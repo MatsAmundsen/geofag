@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key } from "./isbre-figur";
 import { lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
 
@@ -35,19 +35,23 @@ const STATUS = [
   "Nederst ligger en mørk kumulasjon. Restsmelten over er fattigere på jern og rikere på silisium. Den kan størkne som en lysere bergart.",
 ];
 
+/**
+ * Krystallene kimdannes langs den kalde veggen og taket i kammeret (startpunkt),
+ * og synker til bunnen (sluttpunkt).
+ */
 const KRYST = [
-  [220, 155],
-  [265, 145],
-  [315, 165],
-  [365, 150],
-  [415, 160],
-  [240, 195],
-  [295, 188],
-  [355, 200],
-  [415, 185],
-  [270, 225],
-  [330, 218],
-  [390, 230],
+  [192, 345],
+  [184, 295],
+  [192, 228],
+  [226, 172],
+  [265, 150],
+  [310, 140],
+  [355, 148],
+  [398, 165],
+  [430, 195],
+  [455, 240],
+  [465, 298],
+  [458, 345],
 ].map(([x, y], i) => ({ x, y0: y, y1: 340 + (i % 3) * 10, x1: 240 + (i % 6) * 28 }));
 
 export function DifferensieringFigur({
@@ -66,10 +70,11 @@ export function DifferensieringFigur({
   const { step, phase } = clock;
   const s = keyframe(
     [
-      { sink: 0, felsic: 0, show: 0 },
-      { sink: 0.15, felsic: 0, show: 1 },
-      { sink: 0.72, felsic: 0.45, show: 1 },
-      { sink: 1, felsic: 0.88, show: 1 },
+      // sink: krystallene på vei ned. cum: bunnlaget (kumulat), først når krystallene er nede.
+      { sink: 0, felsic: 0, show: 0, cum: 0 },
+      { sink: 0, felsic: 0, show: 1, cum: 0 },
+      { sink: 1, felsic: 0.35, show: 1, cum: 0.3 },
+      { sink: 1, felsic: 0.88, show: 1, cum: 1 },
     ],
     step,
     phase,
@@ -119,17 +124,19 @@ export function DifferensieringFigur({
             <path
               d="M198 395 L210 325 Q255 292 335 298 Q425 304 452 335 L455 395 Z"
               fill="#3e4a43"
-              opacity={s.sink}
+              opacity={step === 3 ? s.cum * smooth(Math.max(0, phase - 0.6) / 0.4) : s.cum}
             />
             {KRYST.map((c, i) => {
               const x = c.x + (c.x1 - c.x) * s.sink;
               const y = c.y0 + (c.y1 - c.y0) * s.sink;
+              // Ved ny runde (tilbake til steg 1) skjules krystallene med en gang.
+              const op = step === 1 ? 0 : s.show;
               return (
                 <polygon
                   key={i}
                   points={`${x},${y - 12} ${x + 10},${y} ${x},${y + 12} ${x - 10},${y}`}
                   fill="#2a3330"
-                  opacity={s.show}
+                  opacity={op}
                   stroke={C.fg}
                   strokeOpacity="0.35"
                 />
@@ -138,7 +145,7 @@ export function DifferensieringFigur({
             <text x="320" y="210" textAnchor="middle" fontSize="16" fontWeight="700" fill={C.fg}>
               {s.felsic > 0.6 ? "Restsmelte, mer silisium" : "Homogen smelte"}
             </text>
-            {s.sink > 0.5 && (
+            {s.cum > 0.5 && (
               <text x="330" y="375" textAnchor="middle" fontSize="14" fontWeight="700" fill={C.fg}>
                 Mørke krystaller (olivin, pyroksen)
               </text>
@@ -320,12 +327,22 @@ export function IonBytteFigur({
   const clock = useStepClock(4, motion.playing && visible, 3200, 1000, initialStep);
   const { step, phase } = clock;
   const uid = useId().replace(/:/g, "");
-  const outX = step === 1 ? 200 + (410 - 200) * phase : step === 0 ? 200 : 410;
-  const outY = step === 1 ? 150 + (255 - 150) * phase : step === 0 ? 150 : 255;
-  const innX = step === 2 ? 500 + (200 - 500) * phase : step < 2 ? 500 : 200;
-  const innY = step === 2 ? 268 + (150 - 268) * phase : step < 2 ? 268 : 150;
-  const hole = step === 1 || (step === 2 && phase < 0.7);
-  const swapped = step >= 3 || (step === 2 && phase > 0.85);
+  // Steg 1: ionet sitter i gitteret. Steg 2: det hopper ut. Steg 3: nytt ion går inn. Steg 4: ny sammensetning.
+  const t = smooth(phase);
+  const outX = step === 2 ? lerp(200, 410, t) : step >= 3 ? 410 : 200;
+  const outY = step === 2 ? lerp(150, 255, t) : step >= 3 ? 255 : 150;
+  const innX = step === 3 ? lerp(500, 200, t) : step >= 4 ? 200 : 500;
+  const innY = step === 3 ? lerp(268, 150, t) : step >= 4 ? 150 : 268;
+  // Når løkka starter på nytt, tones ionene inn på startplassen i stedet for å hoppe.
+  const ionOpacity = step === 1 ? t : 1;
+  const hole = (step === 2 && phase > 0.2) || (step === 3 && phase < 0.85);
+  const swapped = step >= 4 || (step === 3 && phase > 0.85);
+  const ionText = [
+    "Oransje ion sitter i gitteret",
+    "Oransje ion forlater plassen",
+    "Blått ion tar den ledige plassen",
+    "Blått ion sitter nå i gitteret",
+  ][step - 1];
 
   const keys: Key[] = [
     { text: "Ion som forlater gitteret", color: "#e8a04a", kind: "fill" },
@@ -376,7 +393,7 @@ export function IonBytteFigur({
               stroke="#e8a04a"
               strokeWidth="2.5"
               strokeDasharray="6 6"
-              opacity={step === 1 ? 0.9 : 0.25}
+              opacity={step === 2 ? 0.9 : 0.25}
             />
             <path
               d="M500 268 C 420 200 300 160 200 150"
@@ -384,7 +401,7 @@ export function IonBytteFigur({
               stroke="#6ea4bc"
               strokeWidth="2.5"
               strokeDasharray="6 6"
-              opacity={step >= 2 ? 0.9 : 0.25}
+              opacity={step === 3 ? 0.9 : 0.25}
             />
             {RING.map((p, i) => (
               <g key={i}>
@@ -395,10 +412,10 @@ export function IonBytteFigur({
             {hole && (
               <circle cx="200" cy="150" r="17" fill="none" stroke="#e8a04a" strokeWidth="3" strokeDasharray="5 4" />
             )}
-            <circle cx={outX} cy={outY} r="16" fill="#e8a04a" stroke={C.fg} strokeOpacity="0.3" />
-            <circle cx={innX} cy={innY} r="16" fill="#6ea4bc" stroke={C.fg} strokeOpacity="0.3" />
-            <text x="24" y="210" fontSize="14" fill={C.fg}>
-              {swapped ? "Blått ion sitter nå i gitteret" : "Oransje ion forlater plassen"}
+            <circle cx={outX} cy={outY} r="16" fill="#e8a04a" stroke={C.fg} strokeOpacity="0.3" opacity={ionOpacity} />
+            <circle cx={innX} cy={innY} r="16" fill="#6ea4bc" stroke={C.fg} strokeOpacity="0.3" opacity={ionOpacity} />
+            <text x="676" y="32" textAnchor="end" fontSize="14" fontWeight="700" fill={C.fg}>
+              {ionText}
             </text>
             <defs>
               <marker id={`${uid}-ut`} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
