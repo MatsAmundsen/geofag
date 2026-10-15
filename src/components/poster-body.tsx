@@ -95,7 +95,7 @@ import {
 } from "@/components/diagrams/bergarter-figurer";
 import { KontaktRegionalMetamorfoseFigur } from "@/components/diagrams/kontakt-regional-figur";
 import { DifferensieringFigur, IonBytteFigur } from "@/components/diagrams/bergarter-nye-figurer";
-import { DiageneseFigur } from "@/components/diagrams/diagenese-figur";
+import { DiageneseFigurLat as DiageneseFigur } from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
   GeotidTidslinjeFigur,

@@ -38,6 +38,18 @@ export function TidslinjeKontroller({
             value={tl.p}
             aria-valuetext={valueText}
             onChange={(event) => tl.settP(Number(event.target.value))}
+            onKeyDown={(event) => {
+              // piltaster og Page Up/Down går til forrige/neste steg (sluttbildet), Home/End til første/siste
+              const eps = 1e-6;
+              let mal: number | null = null;
+              if (event.key === "ArrowRight" || event.key === "ArrowUp" || event.key === "PageUp") mal = Math.floor(tl.p + eps) + 1;
+              else if (event.key === "ArrowLeft" || event.key === "ArrowDown" || event.key === "PageDown") mal = Math.ceil(tl.p - eps) - 1;
+              else if (event.key === "Home") mal = 1;
+              else if (event.key === "End") mal = tl.antall;
+              if (mal === null) return;
+              event.preventDefault();
+              tl.velgFase(clamp(mal, 1, tl.antall));
+            }}
             className="figur-skyver w-full cursor-pointer"
           />
           <div className="pointer-events-none relative h-2" aria-hidden="true">
