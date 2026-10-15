@@ -2278,9 +2278,9 @@ export function GilbertDelta({
 
 const LS_STEPS = ["1 Vidda", "2 Fjorden graves ut", "3 Strandflaten"];
 const LS_STATUS = [
-  "Vidda er en stor, rolig og nesten flat overflate. Viddene regnes ofte som rester av et eldre, slakere landskap. Hvor gammelt det er, og hvordan det kom så høyt, er omdiskutert. Før istidene formet elvene dalene, ofte med V-profil.",
-  "Under istidene fulgte breene dalene og gravde dem ut til dype U-daler. Der bunnen ligger under havnivå, er dalen en fjord.",
-  "Langs kysten ligger strandflaten: en lav, flat brem av tusenvis av øyer, holmer og skjær (0–50 moh.). Dannelsen er omdiskutert. Trolig har frostforvitring, brenninger og kystbreer virket sammen, kanskje i berg som var dypforvitret på forhånd.",
+  "Viddene er store, slake flater høyt over havet. Etter den klassiske modellen er de rester av et gammelt, nesten flatt landskap som elvene senere grov seg ned i. Modellen er omstridt.",
+  "Under istidene fortsatte breene arbeidet og grov ut V-dalene til U-daler og fjorder. En fjord er en U-dal under havnivå. Fjordene og U-dalene er mye yngre enn viddene.",
+  "Langs kysten ligger strandflaten, en lav og flat brem med tusenvis av øyer, holmer og skjær. Den går fra 60–70 m over til 30–40 m under havnivå. Den regnes å være dannet ved frostforvitring, bølgeerosjon og iserosjon, men nøyaktig hvordan prosessene virket sammen, er fortsatt diskutert.",
 ];
 const LS_W = 780;
 const LS_D = 300;
@@ -2445,7 +2445,7 @@ export function LandskapBlokk({
       heading={heading}
       caption={
         caption ??
-        "Viddene regnes ofte som rester av et eldre, slakere landskap. Fjordene og U-dalene ble gravd ut av breer under istidene, og strandflaten ligger som en lav brem av øyer og skjær langs kysten."
+        "Etter den klassiske modellen er viddene rester av et gammelt, nesten flatt landskap, men modellen er omstridt. Fjordene og U-dalene ble formet av breene under istidene, og strandflaten ligger som en lav, flat brem av øyer og skjær langs kysten."
       }
       playing={motion.playing}
       action={<PlayPauseToggle isPlaying={motion.playing} onToggle={motion.toggle} />}
