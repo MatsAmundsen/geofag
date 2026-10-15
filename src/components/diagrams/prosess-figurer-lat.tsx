@@ -122,11 +122,11 @@ export const KontaktRegionalV2FigurLat = lat<FigurProps>(
 );
 
 export const DifferensieringV2FigurLat = lat<FigurProps>(
-  { ...DIFFERENSIERING_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [190, 90] },
+  { ...DIFFERENSIERING_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [270, 12] },
   () => import("./differensiering-figur").then((m) => m.DifferensieringV2Figur),
 );
 
 export const IonBytteV2FigurLat = lat<FigurProps>(
-  { ...IONBYTTE_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [190, 90] },
+  { ...IONBYTTE_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [434, 170] },
   () => import("./ionbytte-figur").then((m) => m.IonBytteV2Figur),
 );
