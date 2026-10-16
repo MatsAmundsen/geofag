@@ -385,6 +385,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
   const bredde = useFlateBredde(ref);
   const [ruteNr, setRuteNr] = useState(0);
   const [fokus, setFokus] = useState<Fokus>(null);
+  const [valgNr, setValgNr] = useState(0);
   const rute = RUTER[ruteNr];
   const antall = Math.max(1, rute.kanter.length);
   const tl = useTidslinje({ antall, synlig: visible, faseMs: 2600, holdMs: 1500, element: ref });
@@ -416,15 +417,16 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
     tl.valg(() => {
       setFokus(null);
       setRuteNr(n);
+      setValgNr((v) => v + 1);
     });
   // en valgt vei vises ferdig (alle steg); «Start» spiller den fra begynnelsen
   const settP = tl.settP;
   const spiller = tl.playing;
   useEffect(() => {
-    if (!spiller) settP(antall);
-    // bare når veien byttes
+    if (valgNr > 0 && !spiller) settP(antall);
+    // bare når en vei velges (også samme vei på nytt)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ruteNr]);
+  }, [valgNr]);
   const velgFokus = (f: Fokus) =>
     tl.valg(() => setFokus((gammel) => (gammel && f && gammel.type === f.type && gammel.id === f.id ? null : f)));
 
