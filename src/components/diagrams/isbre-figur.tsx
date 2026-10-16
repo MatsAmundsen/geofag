@@ -787,6 +787,7 @@ export function IsbreFigur({
   notes = [],
   keys = [],
   remark,
+  below,
   narrowViewBox,
   forceNarrow,
   svgRef,
@@ -809,6 +810,8 @@ export function IsbreFigur({
   keys?: Key[];
   /** Merknad som skal være godt synlig under figuren. */
   remark?: ReactNode;
+  /** Innhold rett under tegningen (før tallforklaring og tegnforklaring), f.eks. målere. */
+  below?: ReactNode;
   /** Eget utsnitt når figuren er smal (samme koordinater, bare beskåret). */
   narrowViewBox?: string;
   /**
@@ -960,6 +963,7 @@ export function IsbreFigur({
             </FigureScale.Provider>
           </svg>
         </div>
+        {below}
         {narrow && labels.length ? (
           <ol
             id={`${uid}-labels`}

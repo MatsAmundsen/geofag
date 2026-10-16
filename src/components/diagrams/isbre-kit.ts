@@ -13,11 +13,13 @@
 import {
   createContext,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useSyncExternalStore,
   type RefObject,
 } from "react";
+import { settTick, useDeltaker } from "./avspilling";
 import { C } from "./svg-kit";
 import { scaledStepClock } from "./motion-config";
 
@@ -145,10 +147,13 @@ export function useViewportHeight() {
  * Bredden (CSS-piksler) til et element, målt med ResizeObserver. 0 før første måling
  * (og under serverrendering), slik at kallestedet kan falle tilbake på vindusbredden.
  */
+// Måles før første bilde på klienten, så en figur som bygges etter hydrering ikke tegnes i feil layout først.
+const useMaalEffekt = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 export function useBoxWidth<T extends Element>(): [RefObject<T | null>, number] {
   const ref = useRef<T | null>(null);
   const [width, setWidth] = useState(0);
-  useEffect(() => {
+  useMaalEffekt(() => {
     const el = ref.current;
     if (!el) return;
     const measure = () => setWidth(Math.round(el.getBoundingClientRect().width));
@@ -202,9 +207,10 @@ export function useStepClock(
     : { stepMs: baseStepMs, holdMs: baseHoldMs };
   const [state, setState] = useState({ step: clamp(initialStep, 1, count), phase: 1, loops: 0 });
   const total = stepMs + holdMs;
+  // tikker i den felles rAF-løkken (avspilling.ts), ikke i en egen løkke per figur
+  const { id } = useDeltaker({ konkurrerer: false, vilSpille: running });
   useEffect(() => {
     if (!running) return;
-    let raf = 0;
     let last = performance.now();
     let acc = 0;
     const loop = (now: number) => {
@@ -225,11 +231,10 @@ export function useStepClock(
           return { step: s.step, phase: Math.min(ms / stepMs, total / stepMs), loops: s.loops };
         });
       }
-      raf = requestAnimationFrame(loop);
     };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [running, count, stepMs, total]);
+    settTick(id, loop);
+    return () => settTick(id, null);
+  }, [running, count, stepMs, total, id]);
   const setStep = (step: number) => setState((s) => ({ step, phase: 1, loops: s.loops }));
   return { step: state.step, phase: Math.min(1, state.phase), loops: state.loops, setStep };
 }
