@@ -11,6 +11,7 @@ import { FigureFrame } from "@/components/figure-frame";
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
 import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
+import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 
 type Plass = {
@@ -134,4 +135,9 @@ export const DifferensieringV2FigurLat = lat<FigurProps>(
 export const IonBytteV2FigurLat = lat<FigurProps>(
   { ...IONBYTTE_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [434, 270] },
   () => import("./ionbytte-figur").then((m) => m.IonBytteV2Figur),
+);
+
+export const BergartssyklusFigurLat = lat<FigurProps>(
+  { ...SYKLUS_TEKST, smal: [400, 680], bred: [680, 680], over: [150, 150], under: [200, 150] },
+  () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
 );

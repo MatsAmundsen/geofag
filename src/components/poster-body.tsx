@@ -86,14 +86,13 @@ import {
 } from "@/components/diagrams/bergarter";
 import {
   AvkjolingKornFigur,
-  BergartssyklusSnittFigur,
-  FolgBergartFigur,
   MetamorfoseFigur,
   OSLO_STATUS_BERGARTER,
   SilikatgrupperFigur,
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
 import {
+  BergartssyklusFigurLat,
   DiageneseFigurLat as DiageneseFigur,
   DifferensieringV2FigurLat as DifferensieringV2Figur,
   IonBytteV2FigurLat as IonBytteV2Figur,
@@ -1146,12 +1145,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_SKJELVFARE} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   SilicateStructure: () => <SilicateStructureDiagram />,
-  RockCycle: () => (
-    <>
-      <BergartssyklusSnittFigur />
-      <FolgBergartFigur />
-    </>
-  ),
+  // syklus og «følg en norsk bergart» er slått sammen i én figur (bergartssyklus-figur.tsx)
+  RockCycle: () => <BergartssyklusFigurLat />,
   Silikatgrupper: () => <SilikatgrupperFigur />,
   AvkjolingKorn: () => <AvkjolingKornFigur />,
   Metamorfose: () => <MetamorfoseFigur />,
