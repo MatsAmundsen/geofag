@@ -32,14 +32,14 @@ const STATUS_UTEN = [
 
 /**
  * Tilstand ved slutten av hver fase (indeks = p).
- * Temperaturen (T) stiger først i steg 4: teksten tar den opp der («Samtidig øker temperaturen med dypet»).
+ * Temperaturen (T) følger dypet fra steg 2 (GeoBot1, 16.10): 0,1 / 0,5 / 0,75 / 0,9 / 0,9. Etiketten om temperatur står i steg 4.
  */
 const BILDER = [
   { settle: 0, b: 0, c: 0, flow: 0, ion: 0, cem: 0, T: 0.1 },
   { settle: 1, b: 0, c: 0, flow: 0, ion: 0, cem: 0, T: 0.1 },
-  { settle: 1, b: 0.55, c: 0.3, flow: 0, ion: 0, cem: 0, T: 0.1 },
-  { settle: 1, b: 0.8, c: 1, flow: 0, ion: 0, cem: 0, T: 0.1 },
-  { settle: 1, b: 1, c: 1, flow: 1, ion: 1, cem: 0, T: 0.85 },
+  { settle: 1, b: 0.55, c: 0.3, flow: 0, ion: 0, cem: 0, T: 0.5 },
+  { settle: 1, b: 0.8, c: 1, flow: 0, ion: 0, cem: 0, T: 0.75 },
+  { settle: 1, b: 1, c: 1, flow: 1, ion: 1, cem: 0, T: 0.9 },
   { settle: 1, b: 1, c: 1, flow: 0.5, ion: 0.2, cem: 1, T: 0.9 },
 ];
 
