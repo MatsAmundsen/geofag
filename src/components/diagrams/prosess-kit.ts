@@ -16,7 +16,8 @@
  */
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { settTick, slipp, taOver, useDeltaker } from "./avspilling";
-import { clamp, lerp, smooth, smoothPath } from "./isbre-kit";
+import { NARROW_FIGURE_PX } from "./isbre-figur";
+import { clamp, lerp, smooth, smoothPath, useBoxWidth, useNarrow } from "./isbre-kit";
 import { scaledStepClock } from "./motion-config";
 import { useAnimationPlaying, useChoiceAnnouncement } from "./use-motion";
 
@@ -376,3 +377,16 @@ export function nivaa(v: number, [lav, hoy]: [string, string]) {
   return "middels";
 }
 
+
+/* ---------- oppsett ---------- */
+
+/**
+ * Smal figur? Måler bredden på omslaget (ikke vinduet), så figuren bytter til mobiloppsett
+ * (nummererte merker, stablet layout) når selve figuren er smalere enn NARROW_FIGURE_PX.
+ */
+export function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
+  const [ref, width] = useBoxWidth<HTMLDivElement>();
+  const smallWindow = useNarrow();
+  const inner = width - (smallWindow ? 18 : 42);
+  return [ref, width > 0 ? inner < NARROW_FIGURE_PX : smallWindow];
+}

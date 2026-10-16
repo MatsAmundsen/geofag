@@ -9,6 +9,8 @@
 import { lazy, Suspense, useEffect, useRef, useState, type ComponentType, type CSSProperties, type JSX } from "react";
 import { FigureFrame } from "@/components/figure-frame";
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
+import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
+import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 
 type Plass = {
@@ -122,4 +124,14 @@ export const DiageneseFigurLat = lat<FigurProps>(
 export const KontaktRegionalV2FigurLat = lat<FigurProps>(
   { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [290, 200], faner: [44, 44] },
   () => import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
+);
+
+export const DifferensieringV2FigurLat = lat<FigurProps>(
+  { ...DIFFERENSIERING_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [270, 112] },
+  () => import("./differensiering-figur").then((m) => m.DifferensieringV2Figur),
+);
+
+export const IonBytteV2FigurLat = lat<FigurProps>(
+  { ...IONBYTTE_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [434, 270] },
+  () => import("./ionbytte-figur").then((m) => m.IonBytteV2Figur),
 );
