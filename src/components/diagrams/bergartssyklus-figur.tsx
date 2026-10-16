@@ -10,10 +10,12 @@
  * Alle tekster bygger på kapitlet (src/lib/posts/bergarter.md). Kildesetningen står ved hver
  * stasjon og pil (`kilde`) og vises i forklaringen. Utelatt (⚑):
  * Heving (lagt inn i kapitlet 16.10.2026) er én pil fra dypbergart og metamorf bergart opp til
- * overflaten ved dagbergart, der forvitring starter. Veiene bruker den ikke: teksten sier ikke at
- * larvikitten eller gneisen er hevet, og hovedløpet starter forvitringen i dagbergart.
+ * overflaten, ved starten av forvitringsbuen. Den ender ikke i stasjonen dagbergart: en hevet
+ * dypbergart er fortsatt en dypbergart (GeoBot1, 16.10). Veiene bruker den ikke: teksten sier ikke
+ * at larvikitten eller gneisen er hevet, og hovedløpet starter forvitringen i dagbergart.
  * - Gangbergart (i sprekker) er nevnt i forklaringen til størkning, men ikke tegnet som egen stasjon.
- * - «Smelter en bergart» gjelder alle bergarter; som pil er bare smelting av metamorf bergart tegnet.
+ * - «Smelter en bergart» gjelder alle bergarter: smelting av metamorf bergart er en heltrukket pil,
+ *   smelting av dypbergart en stiplet, dempet pil (l. 250 og l. 257 i bergarter.md).
  * - Ingen dybder, temperaturer eller tall: teksten gir ingen.
  */
 import { useEffect, useLayoutEffect, useState, type KeyboardEvent, type RefObject } from "react";
@@ -26,7 +28,7 @@ import { SYKLUS_TEKST } from "./syklus-tekst";
 
 type Pt = [number, number];
 type StId = "magma" | "dag" | "dyp" | "sediment" | "sedb" | "meta";
-type KantId = "ute" | "inni" | "forvitring" | "forsteining" | "omdanning" | "smelting" | "omdanningMagm" | "heving";
+type KantId = "ute" | "inni" | "forvitring" | "forsteining" | "omdanning" | "smelting" | "smeltingDyp" | "omdanningMagm" | "heving";
 
 type Stasjon = {
   id: StId;
@@ -47,7 +49,8 @@ type Stasjon = {
 type Kant = {
   id: KantId;
   fra: StId;
-  til: StId;
+  /** Stasjonen pilen ender i. Heving ender i overflaten, ikke i en stasjon (null). */
+  til: StId | null;
   /** Kvadratisk kurve: start, kontrollpunkt, slutt (slutt = pilspiss). */
   p: [Pt, Pt, Pt];
   etikett: string[];
@@ -55,6 +58,10 @@ type Kant = {
   lab: Pt;
   anchor: "start" | "middle" | "end";
   snarvei?: boolean;
+  /** Stiplet og dempet som snarveien, men ikke en snarvei (f.eks. smelting av dypbergart). */
+  dempet?: boolean;
+  /** Etiketten roteres (grader) rundt `lab`. */
+  rot?: number;
   /** Andre start (heving: fra metamorf bergart), en hale uten pilspiss som møter hovedkurven. */
   fra2?: StId;
   hale?: [Pt, Pt, Pt];
@@ -233,12 +240,27 @@ const KANTER: Kant[] = [
     kilde: "«Smelter en bergart, blir den til magma …»",
   },
   {
+    id: "smeltingDyp",
+    fra: "dyp",
+    til: "magma",
+    p: [[106, 427], [110, 500], [116, 566]],
+    etikett: ["Smelting"],
+    lab: [96, 497],
+    anchor: "middle",
+    rot: -90,
+    dempet: true,
+    tittel: "Smelting av dypbergart",
+    forklaring: "Smelter en bergart, blir den til magma. Modellen har flere veier.",
+    kilde: "«Smelter en bergart, blir den til magma …» «Modellen har flere veier.»",
+  },
+  {
     id: "heving",
     fra: "dyp",
     fra2: "meta",
-    til: "dag",
-    p: [[178, 374], [194, 262], [170, 152]],
-    hale: [[242, 414], [206, 388], [184, 318]],
+    // ender i overflaten ved starten av forvitringsbuen, ikke i stasjonen dagbergart
+    til: null,
+    p: [[178, 374], [200, 262], [198, 152]],
+    hale: [[242, 414], [208, 388], [187, 318]],
     etikett: ["Heving"],
     lab: [172, 322],
     anchor: "end",
@@ -423,7 +445,10 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
   const aktivKant = rute.kanter[fase - 1];
   // stasjoner på veien til og med aktivt steg
   const besokt = new Set<StId>([rute.start]);
-  rute.kanter.slice(0, fase).forEach((id) => besokt.add(kant(id).til));
+  rute.kanter.slice(0, fase).forEach((id) => {
+    const til = kant(id).til;
+    if (til) besokt.add(til);
+  });
   const fokusKanter = new Set<KantId>();
   const fokusStasjoner = new Set<StId>();
   if (fokus?.type === "stasjon") {
@@ -432,7 +457,8 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
   } else if (fokus?.type === "kant") {
     const k = kant(fokus.id);
     fokusKanter.add(k.id);
-    fokusStasjoner.add(k.fra).add(k.til);
+    fokusStasjoner.add(k.fra);
+    if (k.til) fokusStasjoner.add(k.til);
     if (k.fra2) fokusStasjoner.add(k.fra2);
   }
   const fremhevStasjon = (id: StId) => (fokus ? fokusStasjoner.has(id) : besokt.has(id));
@@ -543,20 +569,21 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
             <ellipse cx={175} cy={604} rx={100} ry={42} fill={FARGE.magma} opacity={fremhevStasjon("magma") ? 0.95 : 0.4} />
 
             {/* piler (snarvei først, så den ligger under) */}
-            {[...KANTER].sort((a, b) => Number(!!b.snarvei) - Number(!!a.snarvei)).map((k) => {
+            {[...KANTER].sort((a, b) => Number(!!(b.snarvei || b.dempet)) - Number(!!(a.snarvei || a.dempet))).map((k) => {
               const paa = fremhevKant(k.id);
               const mulig = !fokus && muligKanter.has(k.id);
               const valgt = fokus?.type === "kant" && fokus.id === k.id;
-              const farge = k.snarvei ? FARGE.snarvei : FARGE.pil;
-              const opasitet = paa ? 1 : mulig ? 0.85 : k.snarvei ? 0.45 : 0.35;
-              const bredde = valgt ? 6 : k.snarvei ? 3 : paa ? 5 : 3.5;
+              const dempet = k.snarvei || k.dempet;
+              const farge = dempet ? FARGE.snarvei : FARGE.pil;
+              const opasitet = paa ? 1 : mulig ? 0.85 : dempet ? 0.45 : 0.35;
+              const bredde = valgt ? 6 : dempet ? 3 : paa ? 5 : 3.5;
               return (
                 <g
                   key={k.id}
                   role="button"
                   tabIndex={0}
                   aria-pressed={valgt}
-                  aria-label={k.snarvei ? k.tittel : k.etikett.join(" ")}
+                  aria-label={dempet ? k.tittel : k.etikett.join(" ")}
                   className="group cursor-pointer outline-none"
                   onClick={() => velgFokus({ type: "kant", id: k.id })}
                   onKeyDown={tastKlikk(() => velgFokus({ type: "kant", id: k.id }))}
@@ -576,9 +603,9 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                     fill="none"
                     stroke={farge}
                     strokeWidth={bredde}
-                    strokeDasharray={k.snarvei || mulig ? "7 6" : undefined}
+                    strokeDasharray={dempet || mulig ? "7 6" : undefined}
                     strokeLinecap="round"
-                    markerEnd={`url(#${m.fg}-${k.snarvei ? "snar" : "pil"})`}
+                    markerEnd={`url(#${m.fg}-${dempet ? "snar" : "pil"})`}
                   />
                   {k.etikett.map((linje, i) => (
                     <text
@@ -586,10 +613,11 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                       x={k.lab[0]}
                       y={k.lab[1] + i * (FS + 2)}
                       textAnchor={k.anchor}
-                      fontSize={k.snarvei ? FS_LITEN : FS}
-                      fontWeight={k.snarvei ? 600 : 700}
-                      fontStyle={k.snarvei ? "italic" : undefined}
-                      fill={k.snarvei ? "#d6dde2" : "#fff6df"}
+                      transform={k.rot ? `rotate(${k.rot} ${k.lab[0]} ${k.lab[1]})` : undefined}
+                      fontSize={dempet ? FS_LITEN : FS}
+                      fontWeight={dempet ? 600 : 700}
+                      fontStyle={dempet ? "italic" : undefined}
+                      fill={dempet ? "#d6dde2" : "#fff6df"}
                       stroke="#14202a"
                       strokeWidth="3.5"
                       paintOrder="stroke"
