@@ -2457,7 +2457,21 @@ export function LandskapBlokk({
           label="Velg steg i landskapet"
         />
       }
-      status={LS_STATUS[step - 1]}
+      status={
+        // alle stegtekstene i samme rutenettcelle: feltet er alltid så høyt som den lengste ved
+        // gjeldende bredde, så figuren ikke hopper mellom steg. Bare gjeldende tekst er synlig og lest opp.
+        <span className="grid">
+          {LS_STATUS.map((tekst, i) => (
+            <span
+              key={i}
+              className={`[grid-area:1/1] ${i === step - 1 ? "" : "invisible"}`}
+              aria-hidden={i === step - 1 ? undefined : true}
+            >
+              {tekst}
+            </span>
+          ))}
+        </span>
+      }
       labels={labels}
       notes={["Skjematisk, høyden er sterkt overdrevet", "Vest til venstre, øst til høyre"]}
       viewBox="0 0 960 500"
