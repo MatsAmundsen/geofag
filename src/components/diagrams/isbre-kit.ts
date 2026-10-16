@@ -292,6 +292,29 @@ export function obliqueProj(
 export type Poly = { d: string; fill: string };
 
 /**
+ * Ferdig utregnede høydefelt, så samme nett ikke regnes ut på nytt for hver serverforespørsel
+ * (useMemo husker bare innenfor én montering). Nøkkelen må beskrive alt som påvirker nettet.
+ * Få plasser: på serveren trengs bare startbildet til hver figur.
+ */
+const NETT_PLASSER = 8;
+const nettLager = new Map<string, Poly[]>();
+export function husketNett(nokkel: string, lag: () => Poly[]): Poly[] {
+  const funnet = nettLager.get(nokkel);
+  if (funnet) {
+    nettLager.delete(nokkel);
+    nettLager.set(nokkel, funnet);
+    return funnet;
+  }
+  const nytt = lag();
+  nettLager.set(nokkel, nytt);
+  if (nettLager.size > NETT_PLASSER) {
+    const eldst = nettLager.keys().next().value;
+    if (eldst !== undefined) nettLager.delete(eldst);
+  }
+  return nytt;
+}
+
+/**
  * Tegner et høydefelt h(x, y) som fargede firkanter, bakerst først.
  * `colorAt` får posisjon, høyde og helning og returnerer en grunnfarge [r, g, b], eller null for å hoppe over.
  */

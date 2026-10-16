@@ -1007,7 +1007,11 @@ export function IsbreFigur({
     <FigurNavn.Provider value={heading}>
       <FigureFrame heading={heading} caption={caption} action={actionNode}>
         {faner ? <div className="mb-2">{faner}</div> : null}
-        <div role={fanepanel ? "tabpanel" : undefined} id={fanepanel?.id} aria-labelledby={fanepanel?.labelledBy}>
+        <div
+          role={fanepanel ? "tabpanel" : undefined}
+          id={fanepanel?.id}
+          aria-labelledby={fanepanel?.labelledBy}
+        >
           {toolbar ? (
             <div className="mb-2 flex flex-wrap items-center gap-x-4 gap-y-2">{toolbar}</div>
           ) : null}
@@ -1091,7 +1095,9 @@ export function IsbreFigur({
             </ul>
           ) : null}
           {notes.length ? (
-            <p className="mt-2 text-[13px] leading-snug text-muted-foreground">{notes.join(" · ")}</p>
+            <p className="mt-2 text-[13px] leading-snug text-muted-foreground">
+              {notes.join(" · ")}
+            </p>
           ) : null}
           {remark ? (
             <p className="mt-2 rounded-md border border-border/80 bg-muted/40 px-3 py-2 text-sm leading-snug text-foreground">
@@ -1104,19 +1110,25 @@ export function IsbreFigur({
   );
 }
 
+/**
+ * Flatene i et høydefelt (tusenvis av <path>) som én ferdig HTML-streng, husket per nett.
+ * React trenger da ikke lage og serialisere ett element per flate, verken på serveren eller ved
+ * hvert steg i animasjonen. Strengen er lik det React selv skriver ut, så tegningen er den samme.
+ */
+const polysHtml = new WeakMap<Poly[], string>();
+function polysMarkup(polys: Poly[]) {
+  let html = polysHtml.get(polys);
+  if (html === undefined) {
+    html = "";
+    for (const p of polys)
+      html += `<path d="${p.d}" fill="${p.fill}" stroke="${p.fill}" stroke-width="0.7" stroke-linejoin="round"></path>`;
+    polysHtml.set(polys, html);
+  }
+  return html;
+}
+
 export function Polys({ polys, opacity }: { polys: Poly[]; opacity?: number }) {
   return (
-    <g opacity={opacity} data-nocheck="">
-      {polys.map((p, i) => (
-        <path
-          key={i}
-          d={p.d}
-          fill={p.fill}
-          stroke={p.fill}
-          strokeWidth={0.7}
-          strokeLinejoin="round"
-        />
-      ))}
-    </g>
+    <g opacity={opacity} data-nocheck="" dangerouslySetInnerHTML={{ __html: polysMarkup(polys) }} />
   );
 }

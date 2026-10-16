@@ -25,6 +25,7 @@ import {
   useBoxWidth,
   useInView,
   pickStep,
+  husketNett,
   useStepClock,
   useTicker,
   useViewportHeight,
@@ -1046,32 +1047,36 @@ export function BotnEggTind({
     step === 3 ? q : 0,
   ];
   const key = amounts.join(",");
-  const polys = useMemo(() => {
-    const am = key.split(",").map(Number);
-    const rock = hexToRgb("#7d8476");
-    const low = hexToRgb("#5f6f55");
-    const snow = hexToRgb("#eef4f8");
-    const ice = hexToRgb("#cfe4f1");
-    return heightfield({
-      nx: 76,
-      ny: 54,
-      W: BT_W,
-      D: BT_D,
-      h: (x, y) => btHeight(x, y, am),
-      proj: BT_PROJ,
-      colorAt: (x, y, z, slope) => {
-        for (let k = 0; k < BT_CIRQUES.length; k++) {
-          if (am[k] < 0.5) continue;
-          const { mask } = btMask(x, y, BT_CIRQUES[k]);
-          if (mask > 0.72 && slope < 0.75) return ice;
-        }
-        if (z > 215 && slope < 1.1) return snow;
-        if (z < 60) return low;
-        const t = clamp((z - 60) / 60);
-        return [lerp(low[0], rock[0], t), lerp(low[1], rock[1], t), lerp(low[2], rock[2], t)];
-      },
-    });
-  }, [key]);
+  const polys = useMemo(
+    () =>
+      husketNett(`botn-egg-tind:${key}`, () => {
+        const am = key.split(",").map(Number);
+        const rock = hexToRgb("#7d8476");
+        const low = hexToRgb("#5f6f55");
+        const snow = hexToRgb("#eef4f8");
+        const ice = hexToRgb("#cfe4f1");
+        return heightfield({
+          nx: 76,
+          ny: 54,
+          W: BT_W,
+          D: BT_D,
+          h: (x, y) => btHeight(x, y, am),
+          proj: BT_PROJ,
+          colorAt: (x, y, z, slope) => {
+            for (let k = 0; k < BT_CIRQUES.length; k++) {
+              if (am[k] < 0.5) continue;
+              const { mask } = btMask(x, y, BT_CIRQUES[k]);
+              if (mask > 0.72 && slope < 0.75) return ice;
+            }
+            if (z > 215 && slope < 1.1) return snow;
+            if (z < 60) return low;
+            const t = clamp((z - 60) / 60);
+            return [lerp(low[0], rock[0], t), lerp(low[1], rock[1], t), lerp(low[2], rock[2], t)];
+          },
+        });
+      }),
+    [key],
+  );
   const am = amounts;
   const frontProfile: [number, number][] = [];
   const rightProfile: [number, number][] = [];
@@ -1270,41 +1275,47 @@ export function Avsetningsformer({
   const { step } = clock;
   const qPhase = Math.round(clock.phase * 14) / 14;
   const front = step === 1 ? 396 : step === 2 ? lerp(396, 150, smooth(qPhase)) : -40;
-  const terrain = useMemo(() => {
-    const ground = hexToRgb("#7f8a6c");
-    const mor = hexToRgb("#9a8a6e");
-    const sand = hexToRgb("#cdb98c");
-    const water = hexToRgb("#3a86ab");
-    return heightfield({
-      nx: 110,
-      ny: 70,
-      W: AV_W,
-      D: AV_D,
-      h: (x, y) => Math.max(avGround(x, y), AV_WATER),
-      proj: AV_PROJ,
-      colorAt: (x, y, z) => {
-        const g = avGround(x, y);
-        if (g < AV_WATER) return water;
-        const q = avParts(x, y);
-        if (q.deltaMask > 0.4 || q.esk > 4) return sand;
-        if (q.mor > 5 || q.drum > 5) return mor;
-        return z > 40 ? ground : ground;
-      },
-    });
-  }, []);
+  const terrain = useMemo(
+    () =>
+      husketNett("avsetning:terreng", () => {
+        const ground = hexToRgb("#7f8a6c");
+        const mor = hexToRgb("#9a8a6e");
+        const sand = hexToRgb("#cdb98c");
+        const water = hexToRgb("#3a86ab");
+        return heightfield({
+          nx: 110,
+          ny: 70,
+          W: AV_W,
+          D: AV_D,
+          h: (x, y) => Math.max(avGround(x, y), AV_WATER),
+          proj: AV_PROJ,
+          colorAt: (x, y, z) => {
+            const g = avGround(x, y);
+            if (g < AV_WATER) return water;
+            const q = avParts(x, y);
+            if (q.deltaMask > 0.4 || q.esk > 4) return sand;
+            if (q.mor > 5 || q.drum > 5) return mor;
+            return z > 40 ? ground : ground;
+          },
+        });
+      }),
+    [],
+  );
   const fq = Math.round(front);
   const ice = useMemo(() => {
     if (fq <= 0) return [];
-    const ic = hexToRgb("#dcebf5");
-    return heightfield({
-      nx: 64,
-      ny: 36,
-      W: AV_W,
-      D: AV_D,
-      h: (x, y) => avGround(x, y) + avIce(x, fq),
-      proj: AV_PROJ,
-      colorAt: (x) => (avIce(x + 3, fq) > 1.5 ? ic : null),
-      ambient: 0.62,
+    return husketNett(`avsetning:is:${fq}`, () => {
+      const ic = hexToRgb("#dcebf5");
+      return heightfield({
+        nx: 64,
+        ny: 36,
+        W: AV_W,
+        D: AV_D,
+        h: (x, y) => avGround(x, y) + avIce(x, fq),
+        proj: AV_PROJ,
+        colorAt: (x) => (avIce(x + 3, fq) > 1.5 ? ic : null),
+        ambient: 0.62,
+      });
     });
   }, [fq]);
   // snitt i forkanten (y = 0)

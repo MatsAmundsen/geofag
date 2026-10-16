@@ -15,6 +15,7 @@ import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { P, clamp, lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
 import { NH_DURATION_MS, NH_END_HOLD_MS } from "./motion-config";
+import { useFellesAvspilling } from "./avspilling";
 import {
   KART_BELTGR,
   KART_BELTNO,
@@ -697,8 +698,9 @@ export function OslograbenFigur({
   /** Egne statustekster per steg (4), når figuren gjenbrukes i et kapittel med egen ordlyd. */
   statusTexts?: readonly string[];
 }) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // deler rAF-løkken og «én spiller om gangen» med prosess-kit-figurene
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const clock = useStepClock(4, motion.playing && visible, 3800, 1700, initialStep);
   const { step, phase } = clock;

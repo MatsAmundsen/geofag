@@ -5,6 +5,8 @@
  *   `useStepClock`), i stedet for én løkke per figur.
  * - Bare én «konkurrerende» figur spiller om gangen: den brukeren sist startet, ellers den som er
  *   mest synlig. De andre venter (vises som pauset) til de får tur.
+ * - Pause betyr pause (WCAG 2.2.2): når brukeren pauser en figur, starter ingen annen figur av seg
+ *   selv før brukeren starter en figur igjen.
  *
  * Modulen har ingen avhengigheter til figurkoden, så både isbre-kit og prosess-kit kan bruke den.
  */
@@ -25,6 +27,8 @@ let nesteId = 1;
 let aktivId = 0;
 /** Den brukeren sist startet. Får spille så lenge den vil og er på skjermen. */
 let foretrukket = 0;
+/** Brukeren har pauset: ingen figur får spille før brukeren starter en igjen. */
+let brukerPauset = false;
 let raf = 0;
 let sistVurdert = 0;
 
@@ -44,7 +48,7 @@ function vurder() {
   let best = 0;
   const fav = foretrukket ? deltakere.get(foretrukket) : undefined;
   if (fav?.konkurrerer && fav.vilSpille) best = foretrukket;
-  else {
+  else if (!brukerPauset) {
     let score = -Infinity;
     for (const [id, d] of deltakere) {
       if (!d.konkurrerer || !d.vilSpille) continue;
@@ -91,7 +95,13 @@ function lytt(l: () => void) {
 
 /** Til tester og feilsøking. */
 export function avspillingStatus() {
-  return { deltakere: deltakere.size, aktiv: aktivId, foretrukket, loepende: raf !== 0 };
+  return {
+    deltakere: deltakere.size,
+    aktiv: aktivId,
+    foretrukket,
+    brukerPauset,
+    loepende: raf !== 0,
+  };
 }
 
 /** Registrerer en deltaker. `aktiv` er alltid sann for deltakere som ikke konkurrerer. */
@@ -141,12 +151,19 @@ export function settTick(id: number, tick: ((now: number) => void) | null) {
 /** Brukeren startet denne: den spiller, de andre venter. */
 export function taOver(id: number) {
   foretrukket = id;
+  brukerPauset = false;
   vurder();
 }
 
-/** Brukeren pauset denne: den mister forrangen. */
+/**
+ * Brukeren pauset denne: ingen figur spiller videre av seg selv, heller ikke en figur brukeren startet
+ * tidligere. Neste avspilling starter når brukeren trykker «Start» på en figur.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- id beholdes i signaturen for kallestedene
 export function slipp(id: number) {
-  if (foretrukket === id) foretrukket = 0;
+  foretrukket = 0;
+  brukerPauset = true;
+  vurder();
 }
 
 /**
