@@ -15,9 +15,9 @@
  * - «Smelter en bergart» gjelder alle bergarter; som pil er bare smelting av metamorf bergart tegnet.
  * - Ingen dybder, temperaturer eller tall: teksten gir ingen.
  */
-import { useEffect, useState, type KeyboardEvent } from "react";
+import { useEffect, useLayoutEffect, useState, type KeyboardEvent, type RefObject } from "react";
 import { IsbreFigur, StegVelger, type Key } from "./isbre-figur";
-import { smooth, useBoxWidth, useInView } from "./isbre-kit";
+import { smooth, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { TidslinjeKontroller } from "./prosess-figur";
 import { useTidslinje } from "./prosess-kit";
@@ -359,9 +359,30 @@ function tastKlikk(fn: () => void) {
   };
 }
 
+const useMaalEffekt = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+/**
+ * Bredden på tegneflatens beholder (forelderen til SVG-en). Samme element som plassholderens
+ * @container, så figur og plassholder bytter til bred layout ved samme bredde (560 px).
+ */
+function useFlateBredde(svgRef: RefObject<SVGSVGElement | null>) {
+  const [bredde, setBredde] = useState(0);
+  useMaalEffekt(() => {
+    const el = svgRef.current?.parentElement;
+    if (!el) return;
+    const maal = () => setBredde(Math.round(el.getBoundingClientRect().width));
+    maal();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(maal);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [svgRef]);
+  return bredde;
+}
+
 export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }: { heading?: string; caption?: React.ReactNode }) {
   const [ref, visible] = useInView<SVGSVGElement>();
-  const [wrapRef, bredde] = useBoxWidth<HTMLDivElement>();
+  const bredde = useFlateBredde(ref);
   const [ruteNr, setRuteNr] = useState(0);
   const [fokus, setFokus] = useState<Fokus>(null);
   const rute = RUTER[ruteNr];
@@ -430,7 +451,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
   ];
 
   return (
-    <div ref={wrapRef}>
+    <div>
       <IsbreFigur
         svgRef={ref}
         title={SYKLUS_TEKST.title}

@@ -31,7 +31,21 @@ type Plass = {
   under: [number, number];
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
+  /**
+   * For figurer som selv bytter til bred layout ved 560 px tegneflate (Bergartssyklusen): høyden
+   * over og under tegneflaten interpoleres lineært innenfor hver layout, [høyde ved w0, høyde ved w1].
+   */
+  skala?: {
+    smal: { w: [number, number]; over: [number, number]; under: [number, number] };
+    bred: { w: [number, number]; over: [number, number]; under: [number, number] };
+  };
 };
+
+/** CSS-lengde som går lineært fra h[0] ved containerbredde w[0] til h[1] ved w[1]. */
+function lineaer(w: [number, number], h: [number, number]) {
+  const k = ((h[1] - h[0]) / (w[1] - w[0])).toFixed(4);
+  return `clamp(${Math.min(...h)}px, calc(${h[0]}px + (100cqw - ${w[0]}px) * ${k}), ${Math.max(...h)}px)`;
+}
 
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
 export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; heading?: string; caption?: React.ReactNode }) {
@@ -43,6 +57,19 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,
   } as CSSProperties;
+  const sk = plass.skala;
+  if (sk) {
+    Object.assign(stil, {
+      "--over-s": lineaer(sk.smal.w, sk.smal.over),
+      "--over-b": lineaer(sk.bred.w, sk.bred.over),
+      "--under-s": lineaer(sk.smal.w, sk.smal.under),
+      "--under-b": lineaer(sk.bred.w, sk.bred.under),
+    });
+  }
+  // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
+  const over = sk ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  const flate = sk ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
+  const under = sk ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
     <FigureFrame
       heading={heading ?? plass.heading}
@@ -59,13 +86,9 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       }
     >
       <div className="@container" style={stil} data-plassholder="">
-        <div className="h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]" />
-        <div
-          role="img"
-          aria-label={plass.title}
-          className="mx-auto aspect-[var(--ar-s)] w-full max-w-5xl rounded-[10px] bg-muted/50 @min-[760px]:aspect-[var(--ar-b)]"
-        />
-        <div className="h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]" />
+        <div className={over} />
+        <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
+        <div className={under} />
       </div>
     </FigureFrame>
   );
@@ -138,6 +161,16 @@ export const IonBytteV2FigurLat = lat<FigurProps>(
 );
 
 export const BergartssyklusFigurLat = lat<FigurProps>(
-  { ...SYKLUS_TEKST, smal: [400, 680], bred: [680, 680], over: [150, 150], under: [200, 150] },
+  {
+    ...SYKLUS_TEKST,
+    smal: [400, 680],
+    bred: [680, 680],
+    over: [258, 148],
+    under: [240, 165],
+    skala: {
+      smal: { w: [340, 550], over: [258, 240], under: [240, 184] },
+      bred: { w: [560, 678], over: [240, 148], under: [184, 165] },
+    },
+  },
   () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
 );
