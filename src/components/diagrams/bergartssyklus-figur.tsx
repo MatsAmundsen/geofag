@@ -31,8 +31,10 @@ type KantId = "ute" | "inni" | "forvitring" | "forsteining" | "omdanning" | "sme
 type Stasjon = {
   id: StId;
   navn: string[];
-  /** Kort navn til skjermleser og forklaring. */
+  /** Kort navn til forklaringen. */
   tittel: string;
+  /** Tillegg til det tilgjengelige navnet (etter den synlige teksten), f.eks. «på overflaten». */
+  sted?: string;
   x: number;
   y: number;
   w: number;
@@ -78,6 +80,7 @@ const STASJONER: Stasjon[] = [
     id: "dag",
     navn: ["Magmatisk bergart", "dagbergart"],
     tittel: "Magmatisk bergart på overflaten (dagbergart)",
+    sted: "på overflaten",
     x: 112,
     y: 120,
     w: 146,
@@ -129,6 +132,7 @@ const STASJONER: Stasjon[] = [
     id: "dyp",
     navn: ["Magmatisk bergart", "dypbergart"],
     tittel: "Magmatisk bergart i jordskorpa (dypbergart)",
+    sted: "i jordskorpa",
     x: 132,
     y: 400,
     w: 146,
@@ -477,6 +481,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
     <div>
       <IsbreFigur
         svgRef={ref}
+        svgGruppe={`${heading}: stasjoner og piler du kan trykke på`}
         title={SYKLUS_TEKST.title}
         heading={heading}
         caption={caption ?? SYKLUS_TEKST.caption}
@@ -551,7 +556,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                   role="button"
                   tabIndex={0}
                   aria-pressed={valgt}
-                  aria-label={k.tittel}
+                  aria-label={k.snarvei ? k.tittel : k.etikett.join(" ")}
                   className="group cursor-pointer outline-none"
                   onClick={() => velgFokus({ type: "kant", id: k.id })}
                   onKeyDown={tastKlikk(() => velgFokus({ type: "kant", id: k.id }))}
@@ -589,7 +594,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                       strokeWidth="3.5"
                       paintOrder="stroke"
                     >
-                      {linje}
+                      {i < k.etikett.length - 1 ? `${linje} ` : linje}
                     </text>
                   ))}
                   <path d={dAv(k.p)} fill="none" stroke="#7fd0ff" strokeWidth="2" className="opacity-0 group-focus-visible:opacity-100" />
@@ -608,7 +613,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                   role="button"
                   tabIndex={0}
                   aria-pressed={valgt}
-                  aria-label={s.tittel}
+                  aria-label={s.navn.join(" ") + (s.sted ? `, ${s.sted}` : "")}
                   className="group cursor-pointer outline-none"
                   onClick={() => velgFokus({ type: "stasjon", id: s.id })}
                   onKeyDown={tastKlikk(() => velgFokus({ type: "stasjon", id: s.id }))}
@@ -633,7 +638,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                       fontWeight={i === 0 ? 700 : 500}
                       fill={erMagma ? "#2a1208" : FARGE.tekst}
                     >
-                      {linje}
+                      {i < s.navn.length - 1 ? `${linje} ` : linje}
                     </text>
                   ))}
                   {erMagma ? (
