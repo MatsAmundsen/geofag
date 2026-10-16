@@ -33,18 +33,30 @@ type Plass = {
   faner?: [number, number];
   /**
    * For figurer som selv bytter til bred layout ved 560 px tegneflate (Bergartssyklusen): høyden
-   * over og under tegneflaten interpoleres lineært innenfor hver layout, [høyde ved w0, høyde ved w1].
+   * over og under tegneflaten som målte punkter [containerbredde, høyde] per layout, stykkevis lineært
+   * mellom punktene og flatt utenfor.
    */
   skala?: {
-    smal: { w: [number, number]; over: [number, number]; under: [number, number] };
-    bred: { w: [number, number]; over: [number, number]; under: [number, number] };
+    smal: { over: [number, number][]; under: [number, number][] };
+    bred: { over: [number, number][]; under: [number, number][] };
   };
 };
 
-/** CSS-lengde som går lineært fra h[0] ved containerbredde w[0] til h[1] ved w[1]. */
-function lineaer(w: [number, number], h: [number, number]) {
-  const k = ((h[1] - h[0]) / (w[1] - w[0])).toFixed(4);
-  return `clamp(${Math.min(...h)}px, calc(${h[0]}px + (100cqw - ${w[0]}px) * ${k}), ${Math.max(...h)}px)`;
+/**
+ * CSS-lengde som går stykkevis lineært gjennom punktene [containerbredde, høyde] og er flat utenfor:
+ * h0 + Σ (stigningsendring ved wi) · max(0, 100cqw − wi).
+ */
+function stykkevis(punkter: [number, number][]) {
+  const p = [...punkter].sort((a, b) => a[0] - b[0]);
+  const ledd: string[] = [`${p[0][1]}px`];
+  let forrige = 0;
+  for (let i = 0; i < p.length; i++) {
+    const neste = i < p.length - 1 ? (p[i + 1][1] - p[i][1]) / (p[i + 1][0] - p[i][0]) : 0;
+    const endring = neste - forrige;
+    if (Math.abs(endring) > 1e-6) ledd.push(`max(0px, 100cqw - ${p[i][0]}px) * ${endring.toFixed(4)}`);
+    forrige = neste;
+  }
+  return `calc(${ledd.join(" + ")})`;
 }
 
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
@@ -60,10 +72,10 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
   const sk = plass.skala;
   if (sk) {
     Object.assign(stil, {
-      "--over-s": lineaer(sk.smal.w, sk.smal.over),
-      "--over-b": lineaer(sk.bred.w, sk.bred.over),
-      "--under-s": lineaer(sk.smal.w, sk.smal.under),
-      "--under-b": lineaer(sk.bred.w, sk.bred.under),
+      "--over-s": stykkevis(sk.smal.over),
+      "--over-b": stykkevis(sk.bred.over),
+      "--under-s": stykkevis(sk.smal.under),
+      "--under-b": stykkevis(sk.bred.under),
     });
   }
   // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
@@ -167,9 +179,16 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
     bred: [680, 680],
     over: [258, 148],
     under: [240, 165],
+    // målt mot ferdig figur (Hovedløpet, redusert bevegelse) ved 340–768 px vindusbredde
     skala: {
-      smal: { w: [340, 550], over: [258, 240], under: [240, 184] },
-      bred: { w: [560, 678], over: [240, 148], under: [184, 165] },
+      smal: {
+        over: [[290, 350], [340, 258], [400, 242], [450, 230], [510, 241], [550, 240]],
+        under: [[290, 259], [340, 240], [400, 180], [450, 184], [550, 184]],
+      },
+      bred: {
+        over: [[570, 220], [610, 184], [678, 148]],
+        under: [[570, 183], [610, 167], [678, 165]],
+      },
     },
   },
   () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),

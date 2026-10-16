@@ -9,8 +9,9 @@
  *
  * Alle tekster bygger på kapitlet (src/lib/posts/bergarter.md). Kildesetningen står ved hver
  * stasjon og pil (`kilde`) og vises i forklaringen. Utelatt (⚑):
- * - Heving: står ikke i teksten. Derfor er det ingen pil som fører dype bergarter opp til overflaten,
- *   og forvitring er tegnet bare fra bergart som ligger i overflaten (dagbergart).
+ * Heving (lagt inn i kapitlet 16.10.2026) er én pil fra dypbergart og metamorf bergart opp til
+ * overflaten ved dagbergart, der forvitring starter. Veiene bruker den ikke: teksten sier ikke at
+ * larvikitten eller gneisen er hevet, og hovedløpet starter forvitringen i dagbergart.
  * - Gangbergart (i sprekker) er nevnt i forklaringen til størkning, men ikke tegnet som egen stasjon.
  * - «Smelter en bergart» gjelder alle bergarter; som pil er bare smelting av metamorf bergart tegnet.
  * - Ingen dybder, temperaturer eller tall: teksten gir ingen.
@@ -25,7 +26,7 @@ import { SYKLUS_TEKST } from "./syklus-tekst";
 
 type Pt = [number, number];
 type StId = "magma" | "dag" | "dyp" | "sediment" | "sedb" | "meta";
-type KantId = "ute" | "inni" | "forvitring" | "forsteining" | "omdanning" | "smelting" | "omdanningMagm";
+type KantId = "ute" | "inni" | "forvitring" | "forsteining" | "omdanning" | "smelting" | "omdanningMagm" | "heving";
 
 type Stasjon = {
   id: StId;
@@ -52,6 +53,9 @@ type Kant = {
   lab: Pt;
   anchor: "start" | "middle" | "end";
   snarvei?: boolean;
+  /** Andre start (heving: fra metamorf bergart), en hale uten pilspiss som møter hovedkurven. */
+  fra2?: StId;
+  hale?: [Pt, Pt, Pt];
   tittel: string;
   forklaring: string;
   kilde: string;
@@ -76,7 +80,7 @@ const STASJONER: Stasjon[] = [
     tittel: "Magmatisk bergart på overflaten (dagbergart)",
     x: 112,
     y: 120,
-    w: 128,
+    w: 146,
     h: 48,
     farge: FARGE.magmatisk,
     forklaring: "Magmatisk bergart dannes når magma størkner. Størkner magmaen på overflaten, blir det en dagbergart.",
@@ -125,9 +129,9 @@ const STASJONER: Stasjon[] = [
     id: "dyp",
     navn: ["Magmatisk bergart", "dypbergart"],
     tittel: "Magmatisk bergart i jordskorpa (dypbergart)",
-    x: 122,
+    x: 132,
     y: 400,
-    w: 128,
+    w: 146,
     h: 48,
     farge: FARGE.magmatisk,
     forklaring: "Størkner magmaen i jordskorpa, blir det en dypbergart. Den kjøles langsomt, og bergarten blir grovkornet.",
@@ -178,7 +182,7 @@ const KANTER: Kant[] = [
     id: "forvitring",
     fra: "dag",
     til: "sediment",
-    p: [[178, 110], [252, 58], [298, 175]],
+    p: [[190, 112], [256, 58], [298, 175]],
     etikett: ["Forvitring og erosjon"],
     lab: [236, 54],
     anchor: "middle",
@@ -206,7 +210,7 @@ const KANTER: Kant[] = [
     til: "meta",
     p: [[316, 326], [312, 370], [304, 412]],
     etikett: ["Omdanning"],
-    lab: [296, 374],
+    lab: [302, 356],
     anchor: "end",
     tittel: "Omdanning",
     forklaring: "Omdanning i fast tilstand er veien til metamorf bergart. Bergarten smelter ikke.",
@@ -225,10 +229,26 @@ const KANTER: Kant[] = [
     kilde: "«Smelter en bergart, blir den til magma …»",
   },
   {
+    id: "heving",
+    fra: "dyp",
+    fra2: "meta",
+    til: "dag",
+    p: [[178, 374], [194, 262], [170, 152]],
+    hale: [[242, 414], [206, 388], [184, 318]],
+    etikett: ["Heving"],
+    lab: [172, 322],
+    anchor: "end",
+    tittel: "Heving",
+    forklaring:
+      "Heving er veien tilbake til overflaten. Når jordskorpa løftes og lagene over eroderes bort, kommer dypbergart og metamorf bergart fram i dagen, der de kan forvitre.",
+    kilde:
+      "«Heving er veien tilbake til overflaten: Når jordskorpa løftes og lagene over eroderes bort, kommer dypbergart og metamorf bergart fram i dagen, der de kan forvitre (Corner, u.å.; Fossen, 2024).»",
+  },
+  {
     id: "omdanningMagm",
     fra: "dyp",
     til: "meta",
-    p: [[188, 408], [212, 422], [234, 434]],
+    p: [[207, 414], [220, 425], [234, 434]],
     etikett: ["Omdanning"],
     lab: [194, 454],
     anchor: "middle",
@@ -404,11 +424,12 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
   const fokusStasjoner = new Set<StId>();
   if (fokus?.type === "stasjon") {
     fokusStasjoner.add(fokus.id);
-    for (const k of KANTER) if (k.fra === fokus.id || k.til === fokus.id) fokusKanter.add(k.id);
+    for (const k of KANTER) if (k.fra === fokus.id || k.til === fokus.id || k.fra2 === fokus.id) fokusKanter.add(k.id);
   } else if (fokus?.type === "kant") {
     const k = kant(fokus.id);
     fokusKanter.add(k.id);
     fokusStasjoner.add(k.fra).add(k.til);
+    if (k.fra2) fokusStasjoner.add(k.fra2);
   }
   const fremhevStasjon = (id: StId) => (fokus ? fokusStasjoner.has(id) : besokt.has(id));
   const fremhevKant = (id: KantId) => (fokus ? fokusKanter.has(id) : ruteKanter.has(id));
@@ -538,6 +559,13 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
                   opacity={opasitet}
                 >
                   <path d={dAv(k.p)} stroke="transparent" strokeWidth="22" fill="none" />
+                  {k.hale ? (
+                    <>
+                      <path d={dAv(k.hale)} stroke="transparent" strokeWidth="22" fill="none" />
+                      <path d={dAv(k.hale)} fill="none" stroke={farge} strokeWidth={bredde} strokeLinecap="round" />
+                      <path d={dAv(k.hale)} fill="none" stroke="#7fd0ff" strokeWidth="2" className="opacity-0 group-focus-visible:opacity-100" />
+                    </>
+                  ) : null}
                   <path
                     d={dAv(k.p)}
                     fill="none"

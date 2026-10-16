@@ -247,7 +247,7 @@ Syklusen er en modell du bruker for å undersøke og forklare (Udir, u.å.-a). E
 
 Gneis i grunnfjellet i Sør-Norge ble dannet for mer enn 900 millioner år siden og er fortsatt metamorf (NGU, u.å.-d). Larvikitt har vært dypbergart siden den størknet for cirka 295–290 millioner år siden (NGU, u.å.-i). Kalkstein i Oslo-området kan være bare svakt omdannet, ikke marmor (NGU, u.å.-f). Å tolke inn i syklusen er å peke på stasjonen og på hvilken vei som er tatt, og hvilken som ikke er det.
 
-Forvitring og erosjon er overflateleddet, fra fast berg mot sediment. Forsteining er veien fra sediment til sedimentær bergart. Omdanning i fast tilstand er veien til metamorf bergart. Smelter en bergart, blir den til magma, og størkning er veien fra magma til magmatisk bergart.
+Forvitring og erosjon er overflateleddet, fra fast berg mot sediment. Forsteining er veien fra sediment til sedimentær bergart. Omdanning i fast tilstand er veien til metamorf bergart. Smelter en bergart, blir den til magma, og størkning er veien fra magma til magmatisk bergart. Heving er veien tilbake til overflaten: Når jordskorpa løftes og lagene over eroderes bort, kommer dypbergart og metamorf bergart fram i dagen, der de kan forvitre (Corner, u.å.; Fossen, 2024).
 
 Hvordan geologene vet at gneisen er over 900 millioner år og larvikitten ca. 295–290 millioner år, lærer du i neste kapittel, [Geologisk tid og datering](/geofag-1/geologisk-tid).
 
