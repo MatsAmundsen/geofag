@@ -417,7 +417,10 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
       : fokus?.type === "kant"
         ? { tittel: kant(fokus.id).tittel, tekst: kant(fokus.id).forklaring, kilde: kant(fokus.id).kilde }
         : null;
-  const status = fokusTekst ? `${fokusTekst.tittel}: ${fokusTekst.tekst}` : `${rute.navn}: ${rute.steg[Math.min(fase, rute.steg.length) - 1]}`;
+  const medNavn = (navn: string, tekst: string) => (tekst.startsWith(navn) ? tekst : `${navn}: ${tekst}`);
+  const status = fokusTekst
+    ? medNavn(fokusTekst.tittel, fokusTekst.tekst)
+    : medNavn(rute.navn, rute.steg[Math.min(fase, rute.steg.length) - 1]);
   const kilde = fokusTekst ? fokusTekst.kilde : RUTE_KILDE[rute.navn];
 
   const keys: Key[] = [
