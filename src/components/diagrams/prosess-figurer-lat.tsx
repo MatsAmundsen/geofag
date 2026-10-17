@@ -14,7 +14,7 @@ import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
-import { SJOBRIS_TEKST } from "./lokale-tekst";
+import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST } from "./lokale-tekst";
 
 type Plass = {
   heading: string;
@@ -210,4 +210,9 @@ const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as 
 export const SjobrisFigurLat = lat<FigurProps>(
   { ...SJOBRIS_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
   () => import("./lokale-sjobris").then((m) => m.SjobrisFigur),
+);
+
+export const SolgangsvindFigurLat = lat<FigurProps>(
+  { ...SOLGANGSVIND_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
+  () => import("./lokale-solgangsvind").then((m) => m.SolgangsvindFigur),
 );
