@@ -561,7 +561,7 @@ export function UpperAir500hPaMapDiagram() {
           <line x1="380" y1="150" x2="425" y2="330" stroke="#38bdf8" strokeWidth="1.5" opacity="0.3" />
 
           {/* LUFTMASSENE FØLGER VINDEN I HØYDEN */}
-          <L x="70" y="262" fill="#f8fafc" size={11} weight={800}>Hvit stiplet linje: vinden i høyden</L>
+          <L x="440" y="104" fill="#f8fafc" size={11} weight={800}>Hvit stiplet linje: vinden i høyden</L>
 
           {/* Etikett for Norge over linjene */}
           <rect x="566" y="350" width="52" height="18" rx="4" fill="#0a1520" opacity="0.9" />
