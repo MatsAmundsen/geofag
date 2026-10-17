@@ -189,7 +189,7 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
 
   const labels: Lab[] = [];
   const lab = (text: string, x: number, y: number, at: [number, number], color: string, anchor: Lab["anchor"] = "middle") =>
-    labels.push({ text, x, y, at, color, anchor, size: 16, weight: 700, halo: F.halo });
+    labels.push({ text, x, y, at, color, anchor, size: 16, weight: 700, halo: F.halo, badge: [x, y - 5] });
   if (fase === 1) {
     lab("Vindstille om morgenen", 240, 350, [240, 384], F.tekst);
     lab("Hav", 200, 470, [200, 440], F.kald);

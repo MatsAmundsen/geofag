@@ -96,7 +96,7 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   const labels: Lab[] = [];
   const fs = 16;
   const lab = (text: string, x: number, y: number, at: [number, number], color: string, anchor: Lab["anchor"] = "middle") =>
-    labels.push({ text, x, y, at, color, anchor, size: fs, weight: 700, halo: F.halo });
+    labels.push({ text, x, y, at, color, anchor, size: fs, weight: 700, halo: F.halo, badge: [x, y - 5] });
   if (fase <= 5) {
     lab("Kjølig hav", 190, 470, [190, 440], F.kald);
     lab("Varmt land", 520, 470, [520, 410], F.varm);
@@ -171,16 +171,6 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
           />
           <Strom punkter={[[630, 140], [400, 138], [110, 142]]} sek={sek} farge={F.retur} marker={m.fg} bredde={3.5} opacity={s.retur * dag} />
           <Strom punkter={[[80, 168], [80, 270], [80, 360]]} sek={sek} farge={F.retur} marker={m.fg} bredde={3} opacity={s.retur * dag * 0.9} />
-          {s.stig * dag > 0.02 ? (
-            <text x="650" y="384" textAnchor="middle" fontSize="30" fontWeight="800" fill={F.varmSterk} opacity={s.stig * dag} paintOrder="stroke" stroke={F.halo} strokeWidth="4">
-              L
-            </text>
-          ) : null}
-          {s.retur * dag > 0.02 ? (
-            <text x="650" y="140" textAnchor="middle" fontSize="26" fontWeight="800" fill={F.kald} opacity={s.retur * dag} paintOrder="stroke" stroke={F.halo} strokeWidth="4">
-              H
-            </text>
-          ) : null}
           {/* sjøbrisfronten */}
           {frontOp > 0.02 ? (
             <g opacity={frontOp}>

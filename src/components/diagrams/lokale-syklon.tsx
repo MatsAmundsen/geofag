@@ -215,24 +215,24 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
 
   const labels: Lab[] = [];
   const lab = (text: string, x: number, y: number, at: [number, number], color: string, anchor: Lab["anchor"] = "middle") =>
-    labels.push({ text, x, y, at, color, anchor, size: 16, weight: 700, halo: F.halo });
+    labels.push({ text, x, y, at, color, anchor, size: 16, weight: 700, halo: F.halo, badge: [x, y - 5] });
   lab("Polsiden: kald luft", 140, 50, [140, 70], F.kald);
   lab("Ekvatorsiden: varm luft", 160, 500, [160, 480], F.varm);
   if (fase === 1) {
     lab("Polarfronten", 120, 220, [120, FRONT_Y + 26], F.tekst);
-    lab("Bølge", g.C[0], g.C[1] - 70, [g.C[0], g.C[1] - 10], F.tekst);
+    lab("Bølge", g.C[0], g.C[1] - 70, [g.C[0], g.C[1] - 30], F.tekst);
   } else if (fase === 2) {
     lab("Varmfront", 660, 250, [g.W[12][0], g.W[12][1] - 12], F.varmfront);
     lab("Kaldfront", 300, 440, [g.K[16][0] - 12, g.K[16][1]], F.kaldfront);
     lab("Kaldfronten tar igjen varmfronten", 330, 140, [g.K[6][0] - 10, g.K[6][1] - 6], F.kaldfront);
   } else if (fase === OKKL_FASE) {
     lab("Okkludert front", g.C[0] + 30, g.C[1] - 70, [g.O[Math.floor(g.O.length / 2)][0], g.O[Math.floor(g.O.length / 2)][1] - 10], F.okkludert);
-    lab("Starter ved sentrum", 380, 150, [g.C[0] - 14, g.C[1] - 12], F.tekst);
+    lab("Starter ved sentrum", 380, 150, [g.C[0] - 30, g.C[1] - 28], F.tekst);
   } else if (fase === OKKL_FASE + 1 && !SLAA_SAMMEN_STEG_3_OG_4) {
     lab("Varm luft løftet bort fra sentrum", 820, 170, [g.T[0] + 20, g.T[1] - 14], F.varm, "end");
-    lab("Lavtrykket svekkes", g.C[0] - 120, g.C[1] - 80, [g.C[0] - 16, g.C[1] - 10], F.tekst);
+    lab("Lavtrykket svekkes", g.C[0] - 120, g.C[1] - 80, [g.C[0] - 30, g.C[1] - 28], F.tekst);
   } else {
-    lab("Lavtrykket fylles ut", g.C[0], g.C[1] - 90, [g.C[0], g.C[1] - 14], F.tekst);
+    lab("Lavtrykket fylles ut", g.C[0], g.C[1] - 90, [g.C[0], g.C[1] - 30], F.tekst);
   }
   if (fase === 1 || fase === FASER.length) lab("Vandrer mot øst", 860, 60, [900, 92], F.tekst, "end");
 
