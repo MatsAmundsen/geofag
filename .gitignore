@@ -7,3 +7,5 @@ dist
 .wrangler
 venv
 .idea
+docs/qc/bergarter-current/
+docs/qc/bergarter-diff/
