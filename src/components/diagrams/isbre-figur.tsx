@@ -868,6 +868,7 @@ export function IsbreFigur({
   svgRef,
   faner,
   fanepanel,
+  svgGruppe,
   children,
 }: {
   title: string;
@@ -901,6 +902,11 @@ export function IsbreFigur({
   faner?: ReactNode;
   /** id til tabpanelet og id til valgt fane (aria-labelledby). Brukes sammen med `faner`. */
   fanepanel?: { id: string; labelledBy: string };
+  /**
+   * For figurer med klikkbare deler inne i SVG-en: role=group med dette navnet i stedet for role=img
+   * (img kan ikke ha fokuserbare barn, WCAG 4.1.2). Tittelen leses da som beskrivelse.
+   */
+  svgGruppe?: string;
   children: (ctx: { d: Defs; m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const uid = useId().replace(/:/g, "");
@@ -1025,9 +1031,10 @@ export function IsbreFigur({
               ref={setSvgRef}
               viewBox={vbStr}
               className="mx-auto h-auto w-full max-w-5xl"
-              role="img"
-              aria-labelledby={`${uid}-title`}
-              aria-describedby={describedBy || undefined}
+              role={svgGruppe ? "group" : "img"}
+              aria-label={svgGruppe}
+              aria-labelledby={svgGruppe ? undefined : `${uid}-title`}
+              aria-describedby={(svgGruppe ? [`${uid}-title`, describedBy].filter(Boolean).join(" ") : describedBy) || undefined}
             >
               <title id={`${uid}-title`}>{title}</title>
               <defs>
