@@ -80,7 +80,11 @@ Der isen grov dalbunnen ned under havnivå, ble dalen fylt med sjø da isen smel
 
 ### Botn, egg og tind
 
-I høyfjellet har mindre, lokale breer arbeidet seg inn i fjellsidene. En liten bre i en forsenkning skurer ut en skålform med bratt bakvegg. Denne formen kalles en botn (cirque) (NDLA, u.å.; NGU, u.å.-a). Når to breer sliper på hver sin side av et fjell, blir det igjen en skarp rygg som kalles egg (arête). Når isen har gravd fra flere sider, blir det stående igjen en spiss topp som minner om en pyramide. Den kalles tind (horn) (NDLA, u.å.). Jotunheimen og Sunnmørsalpene er typeområder for slike alpine former.
+I høyfjellet har mindre, lokale breer arbeidet seg inn i fjellsidene. Det begynner i en forsenkning der snøen blir liggende år etter år. Snøen presses sammen og blir til is, og det dannes en liten bre. Breen beveger seg sakte, og steinene i bresålen skurer berget under den. Over tid sliper breen ut en skålform med bratt bakvegg. Den bratte bakveggen brytes stadig ned av frost og steinsprang. Steinene havner på breen, og breen frakter dem bort (Lilleøren, 2025). Denne formen kalles en botn (cirque) (NDLA, u.å.; NGU, u.å.-a).
+
+Når to breer sliper på hver sin side av et fjell, blir det igjen en skarp rygg mellom de to botnene. Den kalles egg (arête). Når isen har gravd fra flere sider, blir det stående igjen en spiss topp som minner om en pyramide. Den kalles tind (horn) (NDLA, u.å.). Jotunheimen og Sunnmørsalpene er typeområder for slike alpine former.
+
+Der isen har smeltet bort, står botnene, eggene og tindene igjen. Da er de fossile former, slik du kan lese om under aktive og fossile landformer lenger ned. Når breen er borte, kan det samle seg vann i bunnen av botnen, slik at det blir et lite vann der (Lilleøren, 2025).
 
 ![Romsdalseggen, en smal fjellrygg mellom to daler](/images/isbre-romsdalseggen.jpg)
 

@@ -97,6 +97,7 @@ import {
   DifferensieringV2FigurLat as DifferensieringV2Figur,
   IonBytteV2FigurLat as IonBytteV2Figur,
   KontaktRegionalV2FigurLat as KontaktRegionalV2Figur,
+  BotnEggTindFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
@@ -120,7 +121,6 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import {
   AvsetningsformerDiagram,
-  BotnEggTindDiagram,
   BreLengdesnittDiagram,
   FrostsprengningDiagram,
   IsostasiSnitt,
@@ -1363,7 +1363,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   BreLengdesnitt: () => <BreLengdesnittDiagram />,
   VdalTilUdal: () => <VdalTilUdalDiagram />,
-  BotnEggTind: () => <BotnEggTindDiagram />,
+  // ny terrengmodell (botn-egg-tind-figur.tsx), lastes lat; den gamle BotnEggTind i isbreer.tsx brukes ikke lenger her
+  BotnEggTind: () => <BotnEggTindFigurLat />,
   Avsetningsformer: () => <AvsetningsformerDiagram />,
   Frostsprengning: () => <FrostsprengningDiagram />,
   IsostasiForklaring: () => (
