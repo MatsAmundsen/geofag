@@ -14,6 +14,7 @@ import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
+import { SJOBRIS_TEKST } from "./lokale-tekst";
 
 type Plass = {
   heading: string;
@@ -199,4 +200,14 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
     },
   },
   () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
+);
+
+/* ---------- Lokale og regionale værsystemer (Geofag 2) ---------- */
+
+/** Felles mål for kapitlets figurer (viewBox 960 × 540). Høydene er målt mot ferdig figur. */
+const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as [number, number] };
+
+export const SjobrisFigurLat = lat<FigurProps>(
+  { ...SJOBRIS_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
+  () => import("./lokale-sjobris").then((m) => m.SjobrisFigur),
 );

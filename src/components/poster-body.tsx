@@ -64,7 +64,6 @@ import {
   WeatherProgression24hDiagram,
   WindCellsDiagram,
   PolarFrontCycloneSteps,
-  SeaBreezeLandBreezeDiagram,
   ValleyWindDiagram,
   CarouselFrameDiagram,
   CoriolisDiagram,
@@ -98,6 +97,7 @@ import {
   IonBytteV2FigurLat as IonBytteV2Figur,
   KontaktRegionalV2FigurLat as KontaktRegionalV2Figur,
   BotnEggTindFigurLat,
+  SjobrisFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
@@ -562,7 +562,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-    SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
+    SeaBreezeLandBreeze: () => <SjobrisFigurLat />,
     ValleyWind: () => <ValleyWindDiagram />,
     PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
     FonForklaring: () => (
