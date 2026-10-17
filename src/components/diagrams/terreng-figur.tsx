@@ -106,8 +106,8 @@ export function Hoydeprofil({
       <text x={ramme.x + ramme.w - 8} y={ramme.y + fs + 2} fontSize={fs} fontWeight={700} fill="#e8eef2" textAnchor="end">
         {ender[1]}
       </text>
-      {etiketter.map((e) => (
-        <g key={e.tekst}>
+      {etiketter.map((e, i) => (
+        <g key={i}>
           <line x1={e.x} y1={e.y} x2={e.x} y2={e.ty + (e.ty > e.y ? -fs : 4)} stroke={e.farge} strokeWidth="1.2" />
           <text x={e.x} y={e.ty} fontSize={fs} fontWeight={700} fill={e.farge} textAnchor={e.anker ?? "middle"} paintOrder="stroke" stroke="#101b22" strokeWidth="3">
             {e.tekst}

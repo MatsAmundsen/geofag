@@ -18,10 +18,10 @@ export const TOPP: [number, number] = [300, 248];
 /** Breene, i rekkefølgen de begynner å grave: sørvest (foran til venstre), sørøst, nordøst, nordvest. */
 export type BreId = "sv" | "so" | "no" | "nv";
 export const BREER: { id: BreId; vinkel: number }[] = [
-  { id: "sv", vinkel: 220 },
-  { id: "so", vinkel: 320 },
-  { id: "no", vinkel: 40 },
-  { id: "nv", vinkel: 122 },
+  { id: "sv", vinkel: 225 },
+  { id: "so", vinkel: 290 },
+  { id: "no", vinkel: 350 },
+  { id: "nv", vinkel: 135 },
 ];
 const RETNING = BREER.map((b) => {
   const a = (b.vinkel * Math.PI) / 180;

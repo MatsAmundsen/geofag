@@ -51,7 +51,7 @@ type Oppsett = {
 const BRED: Oppsett = {
   vb: [960, 600],
   blokk: { x: 0, y: 0, w: 700, h: 492 },
-  proj: { ox: 26, oy: 464, skala: 0.92 },
+  proj: { ox: 46, oy: 466, skala: 0.86 },
   nett: [88, 64],
   profil: { y: 500, h: 92 },
   linse: { cx: 836, cy: 176, r: 108 },
@@ -60,13 +60,13 @@ const BRED: Oppsett = {
 const SMAL: Oppsett = {
   vb: [520, 790],
   blokk: { x: 0, y: 0, w: 520, h: 414 },
-  proj: { ox: 12, oy: 392, skala: 0.71 },
+  proj: { ox: 26, oy: 394, skala: 0.66 },
   nett: [64, 46],
   profil: { y: 424, h: 104 },
   linse: { cx: 260, cy: 664, r: 112 },
 };
 
-const KAMERA = { kx: 0.26, hevning: 40, overdriv: 1.05 };
+const KAMERA = { kx: 0.26, hevning: 52, overdriv: 1.4 };
 
 /** Profillinjen A–B går vest–øst gjennom bunnen av de to fremste botnene. */
 const AB_Y = 163;
@@ -201,9 +201,9 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     labels.push({ text: fase === 2 ? "Botn: skålform" : "Botn", x: 20, y: 258, at: gulvS, size: fs, weight: 700, color: "#f3eee2", badge: vb(gulvS[0] - 50, gulvS[1] + 62) });
   }
   if (fase === 2) {
-    labels.push({ text: "Bratt bakvegg: brytes ned av frost og steinsprang", x: 20, y: 150, at: bakS, size: fs, weight: 700, color: "#f0b27a", badge: vb(bakS[0] - 70, bakS[1] - 22) });
+    labels.push({ text: "Bratt bakvegg: brytes ned av frost og steinsprang", x: 20, y: 104, at: bakS, size: fs, weight: 700, color: "#f0b27a", badge: vb(bakS[0] - 30, bakS[1] - 46) });
     const steinPkt = P3(...brePunkt(0, midtVed(g0) + 0.25 * botnForm(g0).rUt, -0.18 * botnForm(g0).B), 1);
-    labels.push({ text: "Steinene havner på breen, og breen frakter dem bort", x: 20, y: 316, at: steinPkt, size: fs, weight: 700, color: "#e6d3b8", badge: vb(steinPkt[0] - 40, steinPkt[1] + 40) });
+    labels.push({ text: "Steinene havner på breen, og breen frakter dem bort", x: 20, y: 316, at: steinPkt, size: fs, weight: 700, color: "#e6d3b8", badge: vb(steinPkt[0] + 38, steinPkt[1] + 36) });
   }
   if (fase === 5) {
     const vannPkt = P3(...brePunkt(0, midtVed(g0) + 4), 0);
@@ -213,7 +213,7 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     labels.push({
       text: fase === 3 ? "Egg: skarp rygg mellom to botner" : "Egg",
       x: small ? eggS[0] : 470,
-      y: small ? eggS[1] : 232,
+      y: small ? eggS[1] : 196,
       at: eggS,
       anchor: "start",
       size: fs,
@@ -290,7 +290,7 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
   const xVed = (wx: number) => lerp(pr.x, pr.x + pr.w, (wx - AB_X[0]) / (AB_X[1] - AB_X[0]));
   const svX = brePunkt(0, midtVed(g0))[0];
   const soX = brePunkt(1, midtVed(g1))[0];
-  const profEtiketter: { tekst: string; x: number; y: number; ty: number; farge: string }[] = [];
+  const profEtiketter: { tekst: string; x: number; y: number; ty: number; farge: string; anker?: "start" | "middle" | "end" }[] = [];
   const zVed = (wx: number) => zTilY(bergHoyde(wx, AB_Y, t.grav));
   if (g0 > 0.25) profEtiketter.push({ tekst: "botn", x: xVed(svX), y: zVed(svX) - 2, ty: pr.y + fsP + 4, farge: "#f3eee2" });
   if (Math.min(g0, g1) > 0.35) {
@@ -306,6 +306,9 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     profEtiketter.push({ tekst: "egg", x: xVed(ex), y: zTilY(best) - 2, ty: pr.y + fsP + 4, farge: "#f3d27a" });
   }
   if (g1 > 0.25) profEtiketter.push({ tekst: "botn", x: xVed(soX), y: zVed(soX) - 2, ty: pr.y + fsP + 4, farge: "#f3eee2" });
+  // smal profil: «botn» skyves ut til hver side når den ellers ville ligge oppå «egg»
+  const eggE = profEtiketter.find((e) => e.tekst === "egg");
+  if (eggE) for (const e of profEtiketter) if (e !== eggE && Math.abs(e.x - eggE.x) < fsP * 2.4) e.anker = e.x < eggE.x ? "end" : "start";
 
   /* ---- linsen ---- */
   const { linse } = L;
