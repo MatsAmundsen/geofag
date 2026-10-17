@@ -38,7 +38,7 @@ export const FON_DIAGRAM_TEKST = {
 export const SYKLON_TEKST = {
   heading: "Polarfrontsyklonens livsløp",
   title:
-    "Kart sett ovenfra med kald luft mot polsiden og varm luft mot ekvatorsiden. En bølge på polarfronten blir et lavtrykk med varmfront og kaldfront. Kaldfronten tar igjen varmfronten fra sentrum, og lavtrykket fylles ut mens det vandrer mot øst.",
+    "Kart sett ovenfra med kald luft fra høye breddegrader i nord og varm luft fra subtropene i sør. En bølge på polarfronten blir et lavtrykk med varmfront og kaldfront. Kaldfronten tar igjen varmfronten, og lavtrykket fylles ut mens det vandrer mot øst.",
   caption:
     "Et lavtrykk på polarfronten har et fast livsløp: bølge, varmfront og kaldfront, okklusjon og utfylling. Hvordan du leser frontene på et værkart, lærer du i kapitlet Værkart og værutvikling. Skjematisk.",
 };

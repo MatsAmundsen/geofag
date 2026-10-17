@@ -3,7 +3,7 @@
  * Følger «Polarfrontsyklonen» i lokale-vaersystemer.md (SNL, u.å.-a; NOAA, u.å.-b).
  *
  * Fagsjekk (Geo): kaldfronten tar igjen varmfronten, okklusjonen starter ved sentrum, kald luft på
- * polsiden og varm luft på ekvatorsiden. Steg 4 viser at den varme lufta er løftet bort fra sentrum og
+ * polsiden og varm luft på ekvatorsiden. Steg 4 viser at den varme lufta løftes fra bakken (bort fra sentrum) og
  * at lavtrykket svekkes og fylles ut. At okklusjonen vokser, vises bare i animasjonen, ikke i en etikett.
  * Steg 4 kan slås sammen med steg 3 med SLAA_SAMMEN_STEG_3_OG_4.
  */
@@ -30,17 +30,17 @@ const STEG_ALLE: Steg[] = [
   },
   {
     fase: "Varmfront og kaldfront",
-    status: medKilde("Lavtrykket får en varmfront og en kaldfront. Mellom dem ligger den varme lufta.", "NOAA, u.å.-b"),
+    status: medKilde("Lavtrykket får en varmfront og en kaldfront.", "NOAA, u.å.-b"),
     bilde: { bolge: 1, fronter: 1, okkl: 0, loft: 0, fyll: 0, x: 0.3 },
   },
   {
     fase: "Okklusjonen starter",
-    status: medKilde("Kaldfronten tar igjen varmfronten, først ved sentrum, og danner en okkludert front.", "NOAA, u.å.-b"),
+    status: medKilde("Kaldfronten tar igjen varmfronten og danner en okkludert front.", "NOAA, u.å.-b"),
     bilde: { bolge: 1, fronter: 1, okkl: 0.3, loft: 0.35, fyll: 0, x: 0.5 },
   },
   {
-    fase: "Varm luft løftet bort",
-    status: medKilde("Den varme lufta er løftet bort fra sentrum, og lavtrykket svekkes og fylles ut.", "NOAA, u.å.-b"),
+    fase: "Varm luft løftes fra bakken",
+    status: medKilde("Den varme lufta løftes fra bakken og bort fra sentrum, og lavtrykket svekkes og fylles ut.", "NOAA, u.å.-b"),
     bilde: { bolge: 1, fronter: 1, okkl: 0.55, loft: 1, fyll: 0.45, x: 0.7 },
   },
   {
@@ -60,7 +60,7 @@ const STEG: Steg[] = SLAA_SAMMEN_STEG_3_OG_4
       {
         fase: "Okklusjon",
         status: medKilde(
-          "Kaldfronten tar igjen varmfronten fra sentrum. Den varme lufta løftes bort fra sentrum, og lavtrykket svekkes og fylles ut.",
+          "Kaldfronten tar igjen varmfronten og danner en okkludert front. Den varme lufta løftes fra bakken, og lavtrykket fylles ut.",
           "NOAA, u.å.-b",
         ),
         bilde: STEG_ALLE[3].bilde,
@@ -133,7 +133,7 @@ function symboler(p: Pkt[], type: "kald" | "varm" | "okkl", side: (nx: number, n
       }
       const a = [x - dx * r, y - dy * r];
       const b = [x + dx * r, y + dy * r];
-      const sweep = nx * dy - ny * dx > 0 ? 0 : 1;
+      const sweep = nx * dy - ny * dx > 0 ? 1 : 0; // halvsirkelen på normalsiden: i fartsretningen, mot den kalde lufta
       return `M${a[0].toFixed(1)} ${a[1].toFixed(1)} A${r} ${r} 0 0 ${sweep} ${b[0].toFixed(1)} ${b[1].toFixed(1)} Z`;
     })
     .join(" ");
@@ -163,6 +163,31 @@ function polarfront(g: ReturnType<typeof geometri>, bolge: number): { vest: Pkt[
   const vest = bezier([-20, FRONT_Y + 30], [k[0] - 120, FRONT_Y + 30 + 10 * bolge], k, 12);
   const ost = bezier(w, [w[0] + 120, FRONT_Y + 10], [980, FRONT_Y - 10], 12);
   return { vest, ost };
+}
+
+/** Stiplet bue mot klokka rundt sentrum, med pilspiss nederst (der lufta går mot øst). */
+function sirkulasjon(C: Pkt) {
+  const rx = 70;
+  const ry = 52;
+  const p = (gr: number): Pkt => {
+    const t = (gr * Math.PI) / 180;
+    return [C[0] + rx * Math.cos(t), C[1] - ry * Math.sin(t)];
+  };
+  const a = p(-30);
+  const b = p(262);
+  const d = `M${a[0].toFixed(1)} ${a[1].toFixed(1)} A${rx} ${ry} 0 1 0 ${b[0].toFixed(1)} ${b[1].toFixed(1)}`;
+  const [x, y] = p(270);
+  const pil = `M${(x + 9).toFixed(1)} ${y.toFixed(1)} L${(x - 5).toFixed(1)} ${(y - 7).toFixed(1)} L${(x - 5).toFixed(1)} ${(y + 7).toFixed(1)} Z`;
+  return { d, pil };
+}
+
+function Bevegelse({ fra, vinkel, lengde, farge }: { fra: Pkt; vinkel: number; lengde: number; farge: string }) {
+  return (
+    <g transform={`translate(${fra[0].toFixed(1)} ${fra[1].toFixed(1)}) rotate(${vinkel})`}>
+      <line x1="0" y1="0" x2={lengde - 10} y2="0" stroke={farge} strokeWidth="4" strokeLinecap="round" />
+      <path d={`M${lengde} 0 L${lengde - 13} -7 L${lengde - 13} 7 Z`} fill={farge} />
+    </g>
+  );
 }
 
 /* ---------- snitt (steg 2–4) ---------- */
@@ -212,12 +237,15 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   const dybde = smooth(s.bolge) * (1 - 0.8 * smooth(s.fyll));
   const snittOp = fase >= 2 && fase <= (SLAA_SAMMEN_STEG_3_OG_4 ? 3 : 4) ? 1 : 0;
   const varmSektor = [...g.W, ...[...g.K].reverse()];
+  const sirk = sirkulasjon(g.C);
+  const sirkOp = clamp(dybde * 1.4) * 0.8;
+  const bevOp = fase >= 2 && fase <= (SLAA_SAMMEN_STEG_3_OG_4 ? 3 : 4) ? fr : 0;
 
   const labels: Lab[] = [];
   const lab = (text: string, x: number, y: number, at: [number, number], color: string, anchor: Lab["anchor"] = "middle") =>
     labels.push({ text, x, y, at, color, anchor, size: 16, weight: 700, halo: F.halo, badge: [x, y - 5] });
-  lab("Polsiden: kald luft", 140, 50, [140, 70], F.kald);
-  lab("Ekvatorsiden: varm luft", 160, 500, [160, 480], F.varm);
+  lab("Kald luft fra høye breddegrader", 160, 50, [160, 70], F.kald);
+  lab("Varm luft fra subtropene", 150, 500, [150, 480], F.varm);
   if (fase === 1) {
     lab("Polarfronten", 120, 220, [120, FRONT_Y + 26], F.tekst);
     lab("Bølge", g.C[0], g.C[1] - 70, [g.C[0], g.C[1] - 30], F.tekst);
@@ -227,9 +255,8 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
     lab("Kaldfronten tar igjen varmfronten", 330, 140, [g.K[6][0] - 10, g.K[6][1] - 6], F.kaldfront);
   } else if (fase === OKKL_FASE) {
     lab("Okkludert front", g.C[0] + 30, g.C[1] - 70, [g.O[Math.floor(g.O.length / 2)][0], g.O[Math.floor(g.O.length / 2)][1] - 10], F.okkludert);
-    lab("Starter ved sentrum", 380, 150, [g.C[0] - 30, g.C[1] - 28], F.tekst);
   } else if (fase === OKKL_FASE + 1 && !SLAA_SAMMEN_STEG_3_OG_4) {
-    lab("Varm luft løftet bort fra sentrum", 820, 170, [g.T[0] + 20, g.T[1] - 14], F.varm, "end");
+    lab("Varm luft løftes fra bakken", 820, 170, [g.T[0] + 20, g.T[1] - 14], F.varm, "end");
     lab("Lavtrykket svekkes", g.C[0] - 120, g.C[1] - 80, [g.C[0] - 30, g.C[1] - 28], F.tekst);
   } else {
     lab("Lavtrykket fylles ut", g.C[0], g.C[1] - 90, [g.C[0], g.C[1] - 30], F.tekst);
@@ -287,9 +314,17 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
               />
             ))}
           </g>
+          {/* sirkulasjon mot klokka rundt lavtrykket (uten etikett). Negativ dashoffset flytter strekene
+              framover langs buen, altså mot klokka. sek kommer fra felles avspilling, så pause stopper den. */}
+          {sirkOp > 0.02 ? (
+            <g opacity={sirkOp} data-nocheck="">
+              <path d={sirk.d} fill="none" stroke={F.tekst} strokeWidth="2.5" strokeDasharray="9 7" strokeDashoffset={-((tl.sek * 22) % 16)} strokeLinecap="round" />
+              <path d={sirk.pil} fill={F.tekst} />
+            </g>
+          ) : null}
           {/* polarfronten utenfor lavtrykket */}
-          <path d={smoothPath(pf.vest)} fill="none" stroke={F.kaldfront} strokeWidth="3" strokeDasharray="10 8" opacity={0.6 * (1 - fr) + 0.25} data-nocheck="" />
-          <path d={smoothPath(pf.ost)} fill="none" stroke={F.varmfront} strokeWidth="3" strokeDasharray="10 8" opacity={0.6 * (1 - fr) + 0.25} data-nocheck="" />
+          <path d={smoothPath(pf.vest)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={0.5 * (1 - fr) + 0.2} data-nocheck="" />
+          <path d={smoothPath(pf.ost)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={0.5 * (1 - fr) + 0.2} data-nocheck="" />
           {/* frontene */}
           <g opacity={clamp(0.25 + fr)} data-nocheck="">
             <path d={stiAv(g.W)} fill="none" stroke={F.varmfront} strokeWidth="4" />
@@ -324,6 +359,13 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
             <path d="M800 92 L900 92" stroke={F.tekst} strokeWidth="3" data-nocheck="" />
           ) : null}
           {fase === 1 || fase === FASER.length ? <path d="M900 92 L886 84 L886 100 Z" fill={F.tekst} data-nocheck="" /> : null}
+          {/* bevegelsespiler uten tekst: kaldfronten går raskere enn varmfronten */}
+          {bevOp > 0.02 ? (
+            <g opacity={bevOp} data-nocheck="">
+              <Bevegelse fra={add(g.K[12], [22, -4])} vinkel={12} lengde={78} farge={F.kaldfront} />
+              <Bevegelse fra={add(g.W[Math.min(g.W.length - 1, 8)], [6, -26])} vinkel={-28} lengde={34} farge={F.varmfront} />
+            </g>
+          ) : null}
           <Snitt loft={s.loft} op={snittOp} />
         </>
       )}
