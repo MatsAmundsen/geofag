@@ -24,7 +24,7 @@ const STEG_ALLE: Steg[] = [
     fase: "Bølge på fronten",
     status: medKilde(
       "Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, vanligvis mellom 40° og 70° bredde. Lavtrykket starter som en bølge på fronten.",
-      "SNL, u.å.-a; NOAA, u.å.-b",
+      "Store norske leksikon, u.å.-a; NOAA, u.å.-b",
     ),
     bilde: { bolge: 1, fronter: 0.3, okkl: 0, loft: 0, fyll: 0, x: 0.1 },
   },
@@ -47,7 +47,7 @@ const STEG_ALLE: Steg[] = [
     fase: "Fylles ut",
     status: medKilde(
       "Lavtrykket er fylt ut. Langs polarfronten vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen.",
-      "SNL, u.å.-a; NOAA, u.å.-b",
+      "Store norske leksikon, u.å.-a; NOAA, u.å.-b",
     ),
     bilde: { bolge: 1, fronter: 0.25, okkl: 0.6, loft: 1, fyll: 1, x: 1 },
   },

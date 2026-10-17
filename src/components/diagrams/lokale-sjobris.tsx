@@ -32,9 +32,9 @@ import {
 const FASER = ["Land varmes", "Termisk lavtrykk", "Sjøbris", "Returstrøm", "Sjøbrisfronten", "Natt: landbris"];
 
 const STATUS = [
-  medKilde("Havet har stor varmekapasitet og tar lang tid å varme opp. På solrike dager varmes land raskere.", "SNL, u.å.-e"),
-  medKilde("Den varme lufta over land stiger, og det dannes et termisk lavtrykk.", "SNL, u.å.-b; SNL, u.å.-e"),
-  medKilde("Kjøligere luft fra havet strømmer inn ved bakken. Det er sjøbris.", "SNL, u.å.-b; SNL, u.å.-e"),
+  medKilde("Havet har stor varmekapasitet og tar lang tid å varme opp. På solrike dager varmes land raskere.", "Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-e"),
+  medKilde("Den varme lufta over land stiger, og det dannes et termisk lavtrykk.", "Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-e"),
+  medKilde("Kjøligere luft fra havet strømmer inn ved bakken. Det er sjøbris.", "Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-e"),
   medKilde("I høyden, ofte mellom 1000 og 1500 meter, dannes et lite høytrykk, og lufta strømmer tilbake mot havet.", "NOAA, u.å.-a"),
   medKilde(
     "Forkanten kalles en sjøbrisfront og virker omtrent som en kaldfront: temperaturen kan falle 8–11 °C når den passerer, himmelen klarner, og fuktigheten øker. Det kan dannes byger langs fronten.",
@@ -42,7 +42,7 @@ const STATUS = [
   ),
   medKilde(
     "Om natten kjøles landet raskere enn havet, og det blåser fra land. Landbrisen er som regel vesentlig svakere enn sjøbrisen. I høyden er det pålandsvind.",
-    "SNL, u.å.-e; SNL, u.å.-f",
+    "Store norske leksikon, u.å.-e; Store norske leksikon, u.å.-f",
   ),
 ];
 

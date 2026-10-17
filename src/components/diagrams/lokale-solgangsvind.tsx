@@ -31,21 +31,21 @@ const FASER = ["Morgen", "Pålandsvind", "Dreier langs kysten", "I fjorden", "Kv
 const STATUS = [
   medKilde(
     "Solgangsvind er et vindsystem i kyststrøk med pålandsvind om dagen og fralandsvind utover natten. Den er mest tydelig når det ellers er rolig vær.",
-    "SNL, u.å.-e",
+    "Store norske leksikon, u.å.-e",
   ),
-  medKilde("Sjøbrisen starter gjerne tidlig på ettermiddagen som pålandsvind.", "SNL, u.å.-e"),
+  medKilde("Sjøbrisen starter gjerne tidlig på ettermiddagen som pålandsvind.", "Store norske leksikon, u.å.-e"),
   medKilde(
     "På den nordlige halvkule bøyer jordrotasjonen vinden av mot høyre. Vinden dreier etter hvert til vind langs kysten og kan da øke til mellom 15 og 25 knop.",
-    "SNL, u.å.-e",
+    "Store norske leksikon, u.å.-e",
   ),
   medKilde(
     "I en fjord fortsetter vinden innover fjorden og bøyer ikke av, blant annet i Vestfjorden, Trondheimsfjorden og Oslofjorden.",
-    "SNL, u.å.-e",
+    "Store norske leksikon, u.å.-e",
   ),
-  medKilde("Utpå kvelden, når sola står lavt, løyer vinden.", "SNL, u.å.-e"),
+  medKilde("Utpå kvelden, når sola står lavt, løyer vinden.", "Store norske leksikon, u.å.-e"),
   medKilde(
     "Om natten blåser det fra land. Landbrisen er som regel vesentlig svakere enn sjøbrisen, og i høyden er det da pålandsvind.",
-    "SNL, u.å.-e; SNL, u.å.-f",
+    "Store norske leksikon, u.å.-e; Store norske leksikon, u.å.-f",
   ),
 ];
 
