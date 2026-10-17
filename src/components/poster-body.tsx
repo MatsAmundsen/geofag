@@ -63,7 +63,6 @@ import {
   UpperAir500hPaMapDiagram,
   WeatherProgression24hDiagram,
   WindCellsDiagram,
-  PolarFrontCycloneSteps,
   ValleyWindDiagram,
   CarouselFrameDiagram,
   CoriolisDiagram,
@@ -99,6 +98,7 @@ import {
   BotnEggTindFigurLat,
   SjobrisFigurLat,
   SolgangsvindFigurLat,
+  SyklonFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
@@ -564,7 +564,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     SeaBreezeLandBreeze: () => <SjobrisFigurLat />,
     ValleyWind: () => <ValleyWindDiagram />,
-    PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
+    PolarFrontCyclone: () => <SyklonFigurLat />,
     FonForklaring: () => (
     <Callout title="Hva betyr «føn»?">
       <p>
