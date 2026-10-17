@@ -98,6 +98,7 @@ import {
   IonBytteV2FigurLat as IonBytteV2Figur,
   KontaktRegionalV2FigurLat as KontaktRegionalV2Figur,
   BotnEggTindFigurLat,
+  LandskapBlokkFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
@@ -192,7 +193,6 @@ import {
   Forvitringsformer,
   GilbertDelta,
   HjulstromInteraktiv,
-  LandskapBlokk,
   MeanderOgKroksjo,
 } from "@/components/diagrams/landformer-figurer";
 import { SAMMENDRAG, SJEKK_DEG_SELV } from "@/lib/kapittel-mal";
@@ -1280,7 +1280,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ElvaFraKildeTilMunning: () => <ElvaFraKildeTilMunning />,
   MeanderOgKroksjo: () => <MeanderOgKroksjo />,
   GilbertDelta: () => <GilbertDelta />,
-  LandskapBlokk: () => <LandskapBlokk />,
+  LandskapBlokk: () => <LandskapBlokkFigurLat />,
   FrostsprekkFoto: () => (
     <PhotoFigure
       src="/images/fig-forvitring.jpg"

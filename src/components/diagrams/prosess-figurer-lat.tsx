@@ -14,6 +14,7 @@ import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
+import { LANDSKAP_TEKST } from "./landskap-tekst";
 
 type Plass = {
   heading: string;
@@ -41,6 +42,8 @@ type Plass = {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
   };
+  /** Containerbredden der figuren bytter til bred layout, når den har `skala`. Standard 560. */
+  bredFra?: 560 | 760;
 };
 
 /**
@@ -79,10 +82,11 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       "--under-b": stykkevis(sk.bred.under),
     });
   }
-  // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
-  const over = sk ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
-  const flate = sk ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
-  const under = sk ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
+  // bytte til bred layout: ved 560 px for figurer med egen skala (med mindre bredFra sier 760), ellers ved NARROW_FIGURE_PX (760)
+  const ved560 = sk && (plass.bredFra ?? 560) === 560;
+  const over = ved560 ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  const flate = ved560 ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
+  const under = ved560 ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
     <FigureFrame
       heading={heading ?? plass.heading}
@@ -177,6 +181,27 @@ export const IonBytteV2FigurLat = lat<FigurProps>(
 export const BotnEggTindFigurLat = lat<FigurProps>(
   { ...BOTN_EGG_TIND_TEKST, smal: [520, 790], bred: [960, 600], over: [194.5, 14], under: [493, 265] },
   () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
+);
+
+/** Gamle vidder, unge fjorder og strandflaten (landformer): terrenget tegnes i canvas på klienten, serveren viser bare plassholderen. */
+export const LandskapBlokkFigurLat = lat<FigurProps>(
+  {
+    ...LANDSKAP_TEKST,
+    smal: [520, 610],
+    bred: [960, 636],
+    over: [200, 120],
+    under: [400, 260],
+    // målt mot ferdig figur (redusert bevegelse) ved 320–1280 px vindusbredde; faner, verktøylinje og status er med i «over»
+    skala: {
+      smal: {
+        over: [[270, 309], [290, 289.7], [300, 289.7], [310, 309], [320, 273], [330, 273], [340, 249], [400, 249], [410, 238.5], [420, 249], [550, 249], [570, 189]],
+        under: [[290, 578.8], [295, 578.8], [300, 552.8], [470, 553], [500, 526.8], [510, 509.1], [590, 509], [610, 413]],
+      },
+      bred: { over: [[806, 181]], under: [[806, 261]] },
+    },
+    bredFra: 760,
+  },
+  () => import("./landskap-figur").then((m) => m.LandskapBlokkFigur),
 );
 
 export const BergartssyklusFigurLat = lat<FigurProps>(
