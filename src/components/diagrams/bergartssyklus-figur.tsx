@@ -243,9 +243,11 @@ const KANTER: Kant[] = [
     id: "smeltingDyp",
     fra: "dyp",
     til: "magma",
-    p: [[106, 427], [110, 500], [116, 566]],
+    // litt mot høyre og etiketten høyt i båndet mellom «Størkning på overflaten» og denne pila,
+    // så den loddrette etiketten ikke ligger oppå noen av pilene (label-hit)
+    p: [[112, 427], [117, 500], [121, 566]],
     etikett: ["Smelting"],
-    lab: [96, 497],
+    lab: [93, 453],
     anchor: "middle",
     rot: -90,
     dempet: true,
@@ -461,6 +463,9 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
     if (k.til) fokusStasjoner.add(k.til);
     if (k.fra2) fokusStasjoner.add(k.fra2);
   }
+  // en valgt pil markerer sitt eget steg; en pil som ikke er med på veien (f.eks. Heving) hører ikke
+  // til noe steg, og da er ingen stegknapp markert
+  const fokusSteg = fokus?.type === "kant" ? rute.kanter.indexOf(fokus.id) + 1 : undefined;
   const fremhevStasjon = (id: StId) => (fokus ? fokusStasjoner.has(id) : besokt.has(id));
   const fremhevKant = (id: KantId) => (fokus ? fokusKanter.has(id) : ruteKanter.has(id));
 
@@ -517,7 +522,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
           <div className="flex w-full flex-col gap-2 [&_button]:text-sm">
             <StegVelger labels={RUTER.map((r) => r.navn)} step={ruteNr + 1} onStep={(n) => velgRute(n - 1)} label="Følg en vei" />
             {rute.kanter.length > 1 ? (
-              <TidslinjeKontroller tl={tl} faser={rute.kanter.map((id) => kant(id).tittel)} />
+              <TidslinjeKontroller tl={tl} faser={rute.kanter.map((id) => kant(id).tittel)} aktivFase={fokusSteg} />
             ) : null}
           </div>
         }

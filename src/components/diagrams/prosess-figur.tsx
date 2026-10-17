@@ -12,18 +12,21 @@ export function TidslinjeKontroller({
   tl,
   faser,
   verdiTekst,
+  aktivFase,
 }: {
   tl: Tidslinje;
   /** Kort navn per fase (stegknapper og stegmerker). */
   faser: string[];
   /** Fyldigere verditekst for skjermleser, f.eks. «Steg 3 av 5: Kompaksjon». */
   verdiTekst?: string;
+  /** Overstyrer hvilken stegknapp som er markert; 0 = ingen (f.eks. når en pil utenfor veien er valgt). */
+  aktivFase?: number;
 }) {
   const id = useId();
   const valueText = verdiTekst ?? `Steg ${tl.fase} av ${tl.antall}: ${faser[tl.fase - 1]}`;
   return (
     <div className="flex w-full flex-col gap-2">
-      <StegVelger labels={faser} step={tl.fase} onStep={tl.velgFase} label="Velg steg" />
+      <StegVelger labels={faser} step={aktivFase ?? tl.fase} onStep={tl.velgFase} label="Velg steg" />
       <div className="flex w-full items-center gap-2 text-xs font-medium text-foreground">
         <label htmlFor={id} className="whitespace-nowrap">
           Tidslinje

@@ -491,7 +491,8 @@ export function KontaktRegionalV2Figur({
         weight: 700,
         color: "#d8cce6",
       });
-      if (!small) labels[labels.length - 1].x = linse.cx + R + 30;
+      // høyreforankret, men med luft til høyre kant av viewBox (960)
+      if (!small) labels[labels.length - 1].x = Math.min(linse.cx + R + 10, 960 - 18);
     }
 
     const lagFarger = [FARGE.sand, FARGE.leire, FARGE.sand2, FARGE.leire2, FARGE.sand, FARGE.leire];
