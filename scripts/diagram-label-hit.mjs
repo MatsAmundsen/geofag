@@ -418,7 +418,7 @@ export async function scanFigureInPage(headingPrefix) {
       button,
       name: button.textContent.trim().replace(/\s+/g, " "),
     })),
-  }));
+  })).filter((group) => group.buttons.length > 0); // en SVG med role=group har ingen HTML-knapper
   const phases = [...fig.querySelectorAll("button")].filter((button) => /^Fase \d/.test(button.textContent.trim()));
   const rangeCombos = ranges.length
     ? product(ranges.map((range) => range.values.map((value) => ({ label: range.label, input: range.input, value }))))

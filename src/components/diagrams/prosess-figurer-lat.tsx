@@ -12,6 +12,7 @@ import { BOTN_EGG_TIND_TEKST } from "./botn-egg-tind-tekst";
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
 import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
+import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 
 type Plass = {
@@ -31,7 +32,33 @@ type Plass = {
   under: [number, number];
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
+  /**
+   * For figurer som selv bytter til bred layout ved 560 px tegneflate (Bergartssyklusen): høyden
+   * over og under tegneflaten som målte punkter [containerbredde, høyde] per layout, stykkevis lineært
+   * mellom punktene og flatt utenfor.
+   */
+  skala?: {
+    smal: { over: [number, number][]; under: [number, number][] };
+    bred: { over: [number, number][]; under: [number, number][] };
+  };
 };
+
+/**
+ * CSS-lengde som går stykkevis lineært gjennom punktene [containerbredde, høyde] og er flat utenfor:
+ * h0 + Σ (stigningsendring ved wi) · max(0, 100cqw − wi).
+ */
+function stykkevis(punkter: [number, number][]) {
+  const p = [...punkter].sort((a, b) => a[0] - b[0]);
+  const ledd: string[] = [`${p[0][1]}px`];
+  let forrige = 0;
+  for (let i = 0; i < p.length; i++) {
+    const neste = i < p.length - 1 ? (p[i + 1][1] - p[i][1]) / (p[i + 1][0] - p[i][0]) : 0;
+    const endring = neste - forrige;
+    if (Math.abs(endring) > 1e-6) ledd.push(`max(0px, 100cqw - ${p[i][0]}px) * ${endring.toFixed(4)}`);
+    forrige = neste;
+  }
+  return `calc(${ledd.join(" + ")})`;
+}
 
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
 export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; heading?: string; caption?: React.ReactNode }) {
@@ -43,6 +70,19 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,
   } as CSSProperties;
+  const sk = plass.skala;
+  if (sk) {
+    Object.assign(stil, {
+      "--over-s": stykkevis(sk.smal.over),
+      "--over-b": stykkevis(sk.bred.over),
+      "--under-s": stykkevis(sk.smal.under),
+      "--under-b": stykkevis(sk.bred.under),
+    });
+  }
+  // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
+  const over = sk ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  const flate = sk ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
+  const under = sk ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
     <FigureFrame
       heading={heading ?? plass.heading}
@@ -59,13 +99,9 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       }
     >
       <div className="@container" style={stil} data-plassholder="">
-        <div className="h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]" />
-        <div
-          role="img"
-          aria-label={plass.title}
-          className="mx-auto aspect-[var(--ar-s)] w-full max-w-5xl rounded-[10px] bg-muted/50 @min-[760px]:aspect-[var(--ar-b)]"
-        />
-        <div className="h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]" />
+        <div className={over} />
+        <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
+        <div className={under} />
       </div>
     </FigureFrame>
   );
@@ -141,4 +177,26 @@ export const IonBytteV2FigurLat = lat<FigurProps>(
 export const BotnEggTindFigurLat = lat<FigurProps>(
   { ...BOTN_EGG_TIND_TEKST, smal: [520, 790], bred: [960, 600], over: [194.5, 14], under: [493, 265] },
   () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
+);
+
+export const BergartssyklusFigurLat = lat<FigurProps>(
+  {
+    ...SYKLUS_TEKST,
+    smal: [400, 680],
+    bred: [680, 680],
+    over: [258, 148],
+    under: [240, 165],
+    // målt mot ferdig figur (Hovedløpet, redusert bevegelse) ved 340–768 px vindusbredde
+    skala: {
+      smal: {
+        over: [[290, 350], [340, 258], [400, 242], [450, 230], [510, 241], [550, 240]],
+        under: [[290, 259], [340, 240], [400, 180], [450, 184], [550, 184]],
+      },
+      bred: {
+        over: [[570, 220], [610, 184], [678, 148]],
+        under: [[570, 183], [610, 167], [678, 165]],
+      },
+    },
+  },
+  () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
 );

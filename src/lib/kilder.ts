@@ -729,6 +729,18 @@ export const KILDER = {
       href: "https://snl.no/Norges_geologi",
     },
     {
+      prefix: "Corner, G. D. (u.å.). ",
+      italic: "Dypbergarter",
+      suffix: ". Geologiskolen, UiT.",
+      href: "https://geologiskolen.uit.no/generellGeologiskolen/generell/materiale/magma-dypbergarter.html",
+    },
+    {
+      prefix: "Fossen, H. (2024, 25. november). ",
+      italic: "Fjellkjededannelse",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/fjellkjededannelse",
+    },
+    {
       prefix: "Fossen, H., & Selbekk, R. S. (u.å.). ",
       italic: "Brudd – mineralogi",
       suffix: ". I Store norske leksikon.",

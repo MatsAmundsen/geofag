@@ -3,7 +3,7 @@
  * Alle faglige poeng og etiketter følger Mats' tekst i bergarter.md (avsnittene «Magmatisk differensiering»
  * og avkjølingsavsnittet under «Hva er magmatiske bergarter?»). Målerne er relative og har ingen tall.
  *
- * Krystallene dannes langs veggene (åpent spørsmål til GeoBot1: også langs taket?).
+ * Krystallene dannes langs veggene og taket (GeoBot1, 16.10), og de fra taket synker rett ned. Ingen krystaller på bunnen før de har sunket.
  * Erstatter DifferensieringFigur (bergarter-nye-figurer.tsx) i widgeten Differensiering. Den gamle filen er ikke endret.
  */
 import { useMemo } from "react";
@@ -94,16 +94,21 @@ const SMAL: Layout = {
   merke: { luft: 22, mellom: 356, side: [64, 456] },
 };
 
-/** Krystallene i enhetskoordinater: start ved veggen (u = 0 venstre, 1 høyre), og plass i bunnlaget. */
+/**
+ * Krystallene i enhetskoordinater: start langs venstre vegg, høyre vegg eller taket, og plass i bunnlaget.
+ * Startpunktene holder seg unna de avrundede hjørnene og den nederste delen av veggene, så ingen krystall
+ * ser ut til å ligge på bunnen før den har sunket.
+ */
 const KRYSTALLER = (() => {
   const rnd = prng(911);
-  const n = 34;
+  const n = 36;
   const ut = [];
   for (let k = 0; k < n; k++) {
-    const venstre = k % 2 === 0;
-    const vy = 0.15 + rnd() * 0.72;
-    const vx = venstre ? 0.02 + rnd() * 0.05 : 0.93 + rnd() * 0.05;
-    const bunnX = 0.12 + ((k * 0.618) % 1) * 0.76;
+    const sted = k % 3; // 0 venstre vegg, 1 høyre vegg, 2 taket
+    const vy = sted === 2 ? 0.05 + rnd() * 0.04 : 0.22 + rnd() * 0.4;
+    const vx = sted === 0 ? 0.02 + rnd() * 0.05 : sted === 1 ? 0.93 + rnd() * 0.05 : 0.22 + rnd() * 0.56;
+    // krystaller fra taket synker nesten rett ned
+    const bunnX = sted === 2 ? Math.min(0.88, Math.max(0.12, vx + (rnd() - 0.5) * 0.06)) : 0.12 + ((k * 0.618) % 1) * 0.76;
     const bunnY = 0.25 + rnd() * 0.55;
     const kanter = 6;
     const strekk = 1.4 + rnd() * 0.5;

@@ -7,7 +7,7 @@
  * Erstatter KontaktRegionalMetamorfoseFigur i widgeten KontaktRegional. Den gamle filen
  * (kontakt-regional-figur.tsx) er ikke endret, så åpne PR-er som retter den, ikke får konflikt.
  */
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Faner, IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
@@ -55,7 +55,8 @@ const K_BILDER = [
 
 const R_BILDER = [
   { pr: 0, d: 0, f: 0, fol: 0, prod: 0, P: 0.08, T: 0.08 },
-  { pr: 1, d: 0, f: 0.12, fol: 0, prod: 0, P: 0.35, T: 0.12 },
+  // lagene er flate i steg 1, svakt bøyd i steg 2 og fullt foldet i steg 3 (GeoBot1, 16.10)
+  { pr: 1, d: 0, f: 0, fol: 0, prod: 0, P: 0.35, T: 0.12 },
   { pr: 1, d: 1, f: 0.25, fol: 0, prod: 0, P: 0.8, T: 0.75 },
   { pr: 1, d: 1, f: 1, fol: 0, prod: 0, P: 0.9, T: 0.85 },
   { pr: 1, d: 1, f: 1, fol: 1, prod: 0, P: 0.95, T: 0.9 },
@@ -154,7 +155,7 @@ const vinkel0 = (k: Korn) => k.frø * 160 - 80;
 const gneisBolge = (x: number, y: number) => Math.sin((x + 0.08 * Math.sin(y * 5)) * 5.2);
 const gneisMork = (k: Korn) => gneisBolge(k.x, k.y) > 0.25;
 
-/** Mørke gneisbånd som flater (bakgrunn bak kornene), i SVG-koordinater. */
+/** Mørke gneisbånd som flater (bakgrunn bak kornene) over hele linsen, i SVG-koordinater. */
 const baandCache = new Map<string, string>();
 /** Mørke gneisbånd, memoisert per linse (regnes ikke på nytt hver bilderute). */
 function GNEIS_BAAND(cx: number, cy: number, R: number) {
@@ -170,15 +171,41 @@ function lagGneisBaand(cx: number, cy: number, R: number) {
   const ys: number[] = [];
   for (let y = -1; y <= 1.0001; y += 0.05) ys.push(y);
   // finn x-intervaller der gneisBolge > 0.25, ved å følge hver bølgetopp
-  for (let n = -2; n <= 3; n++) {
+  for (let n = -3; n <= 3; n++) {
     const midt = (Math.PI / 2 + 2 * Math.PI * n) / 5.2;
     const halv = Math.acos(0.25) / 5.2;
-    if (midt + halv < 0 || midt - halv > 1.05) continue;
-    const venstre = ys.map((y) => [cx + Math.max(0, midt - halv - 0.08 * Math.sin(y * 5)) * R, cy + y * R]);
-    const hoyre = ys.map((y) => [cx + Math.max(0, midt + halv - 0.08 * Math.sin(y * 5)) * R, cy + y * R]).reverse();
+    if (midt + halv < -1.05 || midt - halv > 1.05) continue;
+    const venstre = ys.map((y) => [cx + Math.max(-1.05, midt - halv - 0.08 * Math.sin(y * 5)) * R, cy + y * R]);
+    const hoyre = ys.map((y) => [cx + Math.min(1.05, midt + halv - 0.08 * Math.sin(y * 5)) * R, cy + y * R]).reverse();
     deler.push(`M${[...venstre, ...hoyre].map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(" L")} Z`);
   }
   return deler.join(" ");
+}
+
+/**
+ * Kløvflater i fyllitt: tynne, tette, parallelle streker i foliasjonsretningen (loddrett, som
+ * foliasjonen i snittet). Gjør «tydelig skifrighet» synlig også på smal skjerm (ordlisten: skifrighet).
+ */
+function kloevFlater(cx: number, cy: number, r: number) {
+  const steg = Math.max(5, r * 0.075);
+  const deler: string[] = [];
+  for (let x = cx - r + steg / 2; x < cx + r; x += steg) deler.push(`M${x.toFixed(1)} ${(cy - r).toFixed(1)} V${(cy + r).toFixed(1)}`);
+  return deler.join(" ");
+}
+
+/**
+ * Steg 5 på smal skjerm: fyllitt og gneis får plassen målerne hadde. De to linsene legges diagonalt
+ * i området under snittet, så store som plassen tillater, uten å overlappe.
+ */
+function diagonaleLinser(topp: number, bunn: number, bredde: number) {
+  const marg = 16;
+  for (let r = 160; r > 60; r -= 2) {
+    const a: [number, number] = [marg + r, topp + r];
+    const b: [number, number] = [bredde - marg - r, bunn - r];
+    if (b[1] - r < topp) continue;
+    if (Math.hypot(b[0] - a[0], b[1] - a[1]) >= 2 * r + 14) return { r, fyllitt: a, gneis: b };
+  }
+  return null;
 }
 
 /** Lagdeling i sedimentet: annenhver stripe sand og leire. */
@@ -202,12 +229,14 @@ function naermest(korn: Korn[], tx: number, ty: number, filter: (k: Korn) => boo
 /** Teksturer og pekepunkter regnes ut lat ved første bruk (ikke når modulen lastes). */
 const teksturer = lat(() => {
   const SEDIMENT = lagKornTekstur({ seed: 1357, avstand: 0.15, typer: 2, inni: iLinse, nokkel: "kr-sediment" });
+  // Hornfels: små, tettpakkede korn i tilfeldig retning, finere enn sedimentet (GeoBot1, 16.10).
+  // Varierende størrelse bryter opp gitteret, og svakt kantete korn (strekk 0,6–0,85) viser at retningen er tilfeldig.
   const HORNFELS = lagKornTekstur({
     seed: 2468,
-    avstand: 0.12,
-    storrelse: [0.85, 1],
-    fyllHull: 0.9,
-    strekk: [0.4, 0.7],
+    avstand: 0.1,
+    storrelse: [0.55, 1],
+    fyllHull: 0.95,
+    strekk: [0.6, 0.85],
     inni: iLinse,
     nokkel: "kr-hornfels",
   });
@@ -219,27 +248,27 @@ const teksturer = lat(() => {
   const GLIMMER = REG_FLAK.filter(erGlimmer);
   const FYLLITT = lagKornTekstur({
     seed: 77,
-    avstand: 0.09,
+    avstand: 0.13,
     strekk: [0.24, 0.34],
     roter: false,
     fyllHull: 0.3,
-    inni: (x, y, r) => x < -0.02 && Math.hypot(x, y) - r < 1.0,
-    nokkel: "kr-fyllitt",
+    inni: iLinse,
+    nokkel: "kr-fyllitt-hel",
   });
   const GNEIS = lagKornTekstur({
     seed: 99,
-    avstand: 0.22,
+    avstand: 0.3,
     strekk: [0.55, 0.8],
     roter: false,
-    inni: (x, y, r) => x > 0.02 && Math.hypot(x, y) - r < 1.0,
-    nokkel: "kr-gneis",
+    inni: iLinse,
+    nokkel: "kr-gneis-hel",
   });
   const PEK = {
     sediment: naermest(SEDIMENT, -0.35, 0.35, sedimentLag),
     hornfels: naermest(HORNFELS, 0.3, 0.3),
     glimmer: naermest(GLIMMER, -0.25, -0.4),
-    fyllitt: naermest(FYLLITT, -0.45, -0.35),
-    gneis: naermest(GNEIS, 0.45, -0.35),
+    fyllitt: naermest(FYLLITT, 0.1, -0.35),
+    gneis: naermest(GNEIS, 0.1, 0.35, gneisMork),
   };
   return { SEDIMENT, HORNFELS, LYSE, GLIMMER, FYLLITT, GNEIS, PEK };
 });
@@ -288,6 +317,28 @@ export function KontaktRegionalV2Figur({
     tl.valg(() => setFane(ny));
   };
   const L = small ? SMAL : BRED;
+  /** Målerhøyde (CSS-px, med marg) og SVG-bredde: brukes til å gi målernes plass til linsene i steg 5 på smal skjerm. */
+  const maalRef = useRef<HTMLDivElement | null>(null);
+  const [plass, setPlass] = useState({ maal: 0, svg: 0 });
+  useEffect(() => {
+    const m = maalRef.current;
+    const svg = ref.current;
+    if (!m || !svg) return;
+    const maal = () => {
+      const hm = m.getBoundingClientRect().height;
+      const ws = svg.getBoundingClientRect().width;
+      setPlass((p) => (Math.abs(p.maal - hm) < 0.25 && Math.abs(p.svg - ws) < 0.25 ? p : { maal: hm, svg: ws }));
+    };
+    maal();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(maal);
+    ro.observe(m);
+    ro.observe(svg);
+    return () => ro.disconnect();
+  }, [ref]);
+  const [, , vbB, vbH] = L.vb.split(" ").map(Number);
+  /** Ekstra viewBox-høyde som tilsvarer målerne nøyaktig, så figuren har samme høyde i alle steg. */
+  const ekstra = small && plass.maal > 0 && plass.svg > 0 ? (plass.maal * vbB) / plass.svg : 0;
   const { sek, linse } = L;
   const R = linse.r;
   const fs = 15;
@@ -316,6 +367,10 @@ export function KontaktRegionalV2Figur({
   let status: string;
   let tittel: string;
   let tilstand: string;
+  /** Målerne skjules (men beholder plassen) når de ikke gjelder bildet, f.eks. produktene i steg 5. */
+  let skjulMaalere = false;
+  /** Steg 5 på smal skjerm: målerne tas ut av flyten, og SVG-en blir like mye høyere. */
+  let gisBort = false;
 
   if (fane === "kontakt") {
     const s = tidslinjeVerdi(K_BILDER, tl.p);
@@ -614,6 +669,16 @@ export function KontaktRegionalV2Figur({
       });
     }
     const lp = (k: Korn): [number, number] => [linse.cx + k.x * R, linse.cy + k.y * R];
+    // Fyllitt og gneis i to separate, små linser med mellomrom. De er eksempler på produkter, ikke utsnitt av snittet.
+    // målerne gjelder snittet, ikke de to produktene: de skjules i steg 5
+    skjulMaalere = s.prod > 0.5;
+    const diag = skjulMaalere && ekstra > 100 ? diagonaleLinser(L.under + 8, vbH + ekstra - 10, vbB) : null;
+    gisBort = diag !== null;
+    const produkt = diag
+      ? { r: diag.r, fyllitt: diag.fyllitt, gneis: diag.gneis }
+      : { r: R * 0.47, fyllitt: [linse.cx - R * 0.53, linse.cy] as [number, number], gneis: [linse.cx + R * 0.53, linse.cy] as [number, number] };
+    const [fx0, fy0] = produkt.fyllitt;
+    const [gx0, gy0] = produkt.gneis;
     if (s.prod < 0.5) {
       labels.push({
         text: fol > 0.5 ? "Glimmer på tvers av trykket" : "Glimmer",
@@ -628,23 +693,23 @@ export function KontaktRegionalV2Figur({
       });
     } else {
       labels.push({
-        text: "Fyllitt: små korn, tydelig skifrighet",
-        x: small ? linse.cx - R * 0.5 : linse.cx + 40,
-        y: small ? L.linseUnder : L.linseOver - 22,
-        at: lp(PEK.fyllitt),
-        badge: small ? [L.merke.side[0], linse.cy - R * 0.55] : undefined,
-        anchor: "middle",
+        text: "Fyllitt (lavgrads): små korn, tydelig skifrighet",
+        x: small ? fx0 : linse.cx - R,
+        y: small ? L.linseUnder : L.linseOver,
+        at: [fx0 + PEK.fyllitt.x * produkt.r, fy0 + PEK.fyllitt.y * produkt.r],
+        badge: small ? (diag ? [vbB - 56, fy0 - produkt.r * 0.55] : [L.merke.side[0], linse.cy - R * 0.55]) : undefined,
+        anchor: small ? "middle" : "start",
         size: fs,
         weight: 700,
         color: "#c9d1c4",
       });
       labels.push({
         text: "Gneis: synlige korn, grovere bånd",
-        x: small ? linse.cx + R * 0.5 : linse.cx + 40,
+        x: small ? gx0 : linse.cx + R,
         y: L.linseUnder,
-        at: lp(PEK.gneis),
-        badge: small ? [L.merke.side[1], linse.cy - R * 0.55] : undefined,
-        anchor: "middle",
+        at: [gx0 + PEK.gneis.x * produkt.r, gy0 + PEK.gneis.y * produkt.r],
+        badge: small ? (diag ? [56, gy0 + produkt.r * 0.55] : [L.merke.side[1], linse.cy - R * 0.55]) : undefined,
+        anchor: small ? "middle" : "end",
         size: fs,
         weight: 700,
         color: "#eadfcb",
@@ -705,9 +770,9 @@ export function KontaktRegionalV2Figur({
             <path d={pil(L.pil.h[0], L.pil.h[1], L.pil.y, L.pil.tykk)} fill={FARGE.trykk} />
           </g>
         ) : null}
-        <Zoomlinse cx={linse.cx} cy={linse.cy} r={R} fra={[sekMidt, boksY, L.boks[0], L.boks[1]]} bakgrunn="#8d8576">
-          {prodSkjul > 0.01 ? (
-            <g opacity={prodSkjul < 1 ? prodSkjul : undefined}>
+        {prodSkjul > 0.01 ? (
+          <g opacity={prodSkjul < 1 ? prodSkjul : undefined}>
+            <Zoomlinse cx={linse.cx} cy={linse.cy} r={R} fra={[sekMidt, boksY, L.boks[0], L.boks[1]]} bakgrunn="#8d8576">
               <KornLag korn={LYSE} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R]} fyll={fyllLys} noekkel={`${linse.cx}|${linse.cy}|${R}`} />
               <KornLag
                 korn={GLIMMER}
@@ -720,25 +785,46 @@ export function KontaktRegionalV2Figur({
                 strek={FARGE.glimmerKant}
                 noekkel={`${linse.cx}|${linse.cy}|${R}|${fol.toFixed(3)}`}
               />
-            </g>
-          ) : null}
-          {s.prod > 0.01 ? (
-            <g opacity={s.prod < 1 ? s.prod : undefined}>
-              <rect x={linse.cx - R} y={linse.cy - R} width={R} height={R * 2} fill="#717a6e" />
-              <rect x={linse.cx} y={linse.cy - R} width={R} height={R * 2} fill="#b9ad98" />
-              <path d={GNEIS_BAAND(linse.cx, linse.cy, R)} fill="#4a413a" />
-              <KornLag korn={FYLLITT} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R, 1, 90]} fyll={fyllFyllitt} strek="rgba(20,24,20,0.45)" noekkel={`${linse.cx}|${linse.cy}|${R}`} />
-              <KornLag korn={GNEIS} skala={R} pos={(k) => [linse.cx + k.x * R, linse.cy + k.y * R, 1, 90]} fyll={fyllGneis} noekkel={`${linse.cx}|${linse.cy}|${R}`} />
-              <line x1={linse.cx} y1={linse.cy - R} x2={linse.cx} y2={linse.cy + R} stroke="#e8eef2" strokeWidth="3" />
-            </g>
-          ) : null}
-        </Zoomlinse>
+            </Zoomlinse>
+          </g>
+        ) : null}
+        {s.prod > 0.01 ? (
+          <g opacity={s.prod < 1 ? s.prod : undefined}>
+            <Zoomlinse cx={fx0} cy={fy0} r={produkt.r} bakgrunn="#717a6e">
+              <KornLag
+                korn={FYLLITT}
+                skala={produkt.r}
+                pos={(k) => [fx0 + k.x * produkt.r, fy0 + k.y * produkt.r, 1, 90]}
+                fyll={fyllFyllitt}
+                strek="rgba(20,24,20,0.45)"
+                noekkel={`${fx0}|${fy0}|${produkt.r}`}
+              />
+              {/* kløvflater: tette, parallelle, i foliasjonsretningen */}
+              <path data-nocheck="" d={kloevFlater(fx0, fy0, produkt.r)} stroke="#e4eadf" strokeOpacity="0.6" strokeWidth="1.3" fill="none" />
+            </Zoomlinse>
+            <Zoomlinse cx={gx0} cy={gy0} r={produkt.r} bakgrunn="#b9ad98">
+              <path d={GNEIS_BAAND(gx0, gy0, produkt.r)} fill="#4a413a" />
+              <KornLag
+                korn={GNEIS}
+                skala={produkt.r}
+                pos={(k) => [gx0 + k.x * produkt.r, gy0 + k.y * produkt.r, 1, 90]}
+                fyll={fyllGneis}
+                noekkel={`${gx0}|${gy0}|${produkt.r}`}
+              />
+            </Zoomlinse>
+          </g>
+        ) : null}
       </>
     );
   }
 
   return (
-    <div ref={wrapRef}>
+    // Fast figurhøyde i alle steg (CLS 0): statuslinjen, nummerlisten (smal skjerm, maks 6 merker) og tegnforklaringen får reservert høyde.
+    // Under 360 px brytes lengste status (4 linjer), et listepunkt og tegnforklaringen i regional steg 5 over flere linjer, så de får mer plass der.
+    <div
+      ref={wrapRef}
+      className="[&_ol]:min-h-[10.125rem] [&_ol]:content-start [&_p[aria-live]]:min-h-[3.75rem] sm:[&_p[aria-live]]:min-h-[2.5rem] max-sm:[&_ul[class*=min-h-5]]:min-h-[2.875rem] max-sm:[&_ul[class*=min-h-5]]:content-start max-[360px]:[&_p[aria-live]]:min-h-[5rem] max-[360px]:[&_ol]:min-h-[178.5px] max-[360px]:[&_ul[class*=min-h-5]]:min-h-[4.5rem]!"
+    >
       <IsbreFigur
         svgRef={ref}
         title={tittel}
@@ -779,8 +865,18 @@ export function KontaktRegionalV2Figur({
         keys={keys}
         labels={labels}
         notes={["Skjematisk, uten målestokk", "Målerne viser retning, ikke tall"]}
-        viewBox={L.vb}
-        below={<Maalere maalere={maalere} />}
+        viewBox={gisBort ? `0 0 ${vbB} ${(vbH + ekstra).toFixed(2)}` : L.vb}
+        below={
+          <div
+            className={skjulMaalere ? "invisible" : undefined}
+            style={gisBort ? { height: 0, overflow: "hidden" } : undefined}
+            aria-hidden={skjulMaalere || undefined}
+          >
+            <div ref={maalRef} className="flow-root">
+              <Maalere maalere={maalere} />
+            </div>
+          </div>
+        }
       >
         {() => (
           <g data-figur="kontakt-regional" data-fane={fane} data-step={tl.fase} data-p={tl.p.toFixed(2)} data-tilstand={tilstand}>

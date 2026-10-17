@@ -1133,6 +1133,12 @@ const COPY_RESEEDS: CopyReseed[] = [
       "**Skifrighet:** Plan struktur der bergarten spalter langs flak, som i fyllitt.\n\n**Protolitt:**",
     ],
   },
+  {
+    // Bergarter: Heving-setningen i syklus-avsnittet (#178), godkjent av Mats 16.10 og 17.10.
+    flag: "g1-bergarter-heving-2026-10-17",
+    slug: "bergarter",
+    stale: ["og størkning er veien fra magma til magmatisk bergart.\n\nHvordan geologene vet"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
