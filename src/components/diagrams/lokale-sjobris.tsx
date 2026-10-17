@@ -80,6 +80,7 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   const s = tidslinjeVerdi(BILDER, tl.p);
   const LAND = hentLand();
   const PYNT = hentPynt();
+  const NATT_LAND_Y = hoydeVed(LAND, 600);
   const sek = tl.sek;
   const dag = 1 - s.natt;
   const fase = tl.fase;
@@ -108,16 +109,16 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   if (fase >= 3 && fase <= 4) lab("Sjøbris", 220, 360, [220, 382], F.sjobris);
   if (fase === 4) {
     lab("Returstrøm i høyden", 330, 118, [330, 140], F.retur);
-    lab("Lite høytrykk i høyden", 720, 110, [655, 132], F.kald, "start");
+    lab("Lite høytrykk i høyden", 560, 92, [560, 126], F.kald);
   }
   if (fase === 5) {
-    lab("Sjøbrisfront", 720, 96, [744, 150], F.tekst);
+    lab("Sjøbrisfront", 720, 96, [fx - 6, 196], F.tekst);
     lab("Sjøbris", 220, 360, [220, 382], F.sjobris);
-    lab("Byger kan dannes", 560, 220, [600, 240], F.regn, "end");
+    lab("Byger kan dannes", 560, 220, [fx - 34, 240], F.regn, "end");
   }
   if (fase === 6) {
     lab("Landbris, som regel svakere", 270, 360, [270, 384], F.kald);
-    lab("Pålandsvind i høyden", 330, 150, [330, 172], F.retur);
+    lab("Pålandsvind i høyden", 330, 248, [330, 276], F.retur);
     lab("Land kjøles raskere", 650, 470, [650, 420], F.kald);
   }
 
@@ -185,8 +186,12 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
             </g>
           ) : null}
           {/* natt: landbris og pålandsvind i høyden */}
-          <Strom punkter={[[600, 388], [400, 392], [120, 392]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.6} opacity={s.natt} fart={12} />
-          <Strom punkter={[[110, 172], [360, 170], [600, 172]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+          {/* natt: et grunnere, lukket kretsløp (NOAA, u.å.-a): synker over land, landbris ut, stiger over havet,
+              pålandsvind i høyden på ca. y 280 (om dagen går returstrømmen på ca. y 140) */}
+          <Strom punkter={[[590, NATT_LAND_Y - 8], [400, 390], [130, 392]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.6} opacity={s.natt} fart={12} />
+          <Strom punkter={[[108, 386], [108, 336], [108, 292]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+          <Strom punkter={[[128, 280], [360, 278], [596, 280]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+          <Strom punkter={[[612, 290], [612, 320], [612, NATT_LAND_Y - 20]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
         </>
       )}
     </LokaleRamme>
