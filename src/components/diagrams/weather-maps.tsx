@@ -269,7 +269,8 @@ export function StationModelExplainedDiagram() {
             <L x="24" y="196" fill="#4ade80" size={12} weight={700}>Været nå: moderat regn</L>
             <L x="436" y="250" fill="#f8fafc" size={12} weight={700} anchor="end">Skydekke: 7/8</L>
             <L x="436" y="266" fill={C.muted} size={11} anchor="end">Fyllingen av sirkelen viser</L>
-            <L x="436" y="281" fill={C.muted} size={11} anchor="end">skydekket i åttedeler.</L>
+            <L x="436" y="281" fill={C.muted} size={11} anchor="end">skydekket i åttedeler, fra skyfri</L>
+            <L x="436" y="296" fill={C.muted} size={11} anchor="end">(0/8) til helt overskyet (8/8).</L>
 
             <L x="230" y="330" fill="#f8fafc" size={13} weight={700} anchor="middle">Vind fra sør</L>
             <L x="230" y="350" fill={C.muted} size={11} anchor="middle">Pila peker dit vinden kommer fra.</L>
