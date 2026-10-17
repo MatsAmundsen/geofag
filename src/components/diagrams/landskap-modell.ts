@@ -128,12 +128,12 @@ function klassiskBerg(x: number, y: number, t: LandskapTilstand) {
 }
 
 /** Strandflatens indre kant (mot fjellsiden). */
-const bremIndre = (y: number) => 214 + 10 * Math.sin(y / 47);
+export const bremIndre = (y: number) => 214 + 10 * Math.sin(y / 47);
 /** Strandflatens ytre kant, der bremmen går over i havbunnen. */
 const BREM_YTRE = 52;
-/** Bremmen uten øyer: nesten flat, skrår svakt mot havet og krysser havnivå midt på. */
+/** Bremmen uten øyer: nesten flat, stiger jevnt og rett innover og krysser havnivå midt på. */
 const bremSkraa = (x: number, y: number) =>
-  lerp(-13, 13, smooth((x - BREM_YTRE) / (bremIndre(y) - BREM_YTRE)));
+  lerp(-13, 13, clamp((x - BREM_YTRE) / (bremIndre(y) - BREM_YTRE)));
 
 /** Strandflaten: kystlandet slites ned til en lav brem som skrår svakt utover, med øyer og holmer. */
 function strandflate(x: number, y: number, h: number, s: number) {
@@ -153,7 +153,8 @@ export function bremISnitt(x: number, y: number, h: number, s: number) {
   if (s <= 0.001) return h;
   const skraa = bremSkraa(x, y);
   const mal = x < BREM_YTRE ? Math.min(skraa, lerp(-44, -13, smooth((x + 30) / 60))) : skraa;
-  const maske = 1 - smooth((x - bremIndre(y) + 8) / 30);
+  // skarp knekk ved fjordkanten: bremmen stiger rett helt inn, så går snittet bratt ned i fjorden
+  const maske = 1 - clamp((x - bremIndre(y)) / 4);
   return lerp(h, mal, s * maske);
 }
 

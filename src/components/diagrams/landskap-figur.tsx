@@ -31,6 +31,7 @@ import {
   fargeFraFelt,
   felt,
   bremISnitt,
+  bremIndre,
   bremKryss,
   fjordY,
   hevAndel,
@@ -498,8 +499,17 @@ export function LandskapBlokkFigur({
   const isP: [number, number][] = [];
   const havP: [number, number][] = [];
   const viddeP: [number, number][] = [];
-  for (let k = 0; k <= N; k++) {
-    const wx = lerp(X_START, xMaks, k / N);
+  // ekstra punkter rett ved fjordkanten, så knekken fra brem til fjord blir skarp i snittet
+  let kantX = 214;
+  for (let i = 0; i < 4; i++) kantX = bremIndre(fjordY(kantX));
+  const snittX = [
+    ...Array.from({ length: N + 1 }, (_, k) => lerp(X_START, xMaks, k / N)),
+    kantX,
+    kantX + 4,
+  ]
+    .filter((wx) => wx <= xMaks)
+    .sort((p, q) => p - q);
+  for (const wx of snittX) {
     const f = felt(wx, fjordY(wx), t, b);
     // i A5 og B3 viser snittet strandflaten som en nesten flat brem ytterst i vest
     const zb = bremISnitt(wx, fjordY(wx), f.berg, b ? t.slutt : t.strand);
