@@ -8,6 +8,7 @@
  */
 import { lazy, Suspense, useEffect, useRef, useState, type ComponentType, type CSSProperties, type JSX } from "react";
 import { FigureFrame } from "@/components/figure-frame";
+import { BOTN_EGG_TIND_TEKST } from "./botn-egg-tind-tekst";
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
 import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
@@ -134,4 +135,10 @@ export const DifferensieringV2FigurLat = lat<FigurProps>(
 export const IonBytteV2FigurLat = lat<FigurProps>(
   { ...IONBYTTE_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [434, 270] },
   () => import("./ionbytte-figur").then((m) => m.IonBytteV2Figur),
+);
+
+/** Botn, egg og tind (isbreer-og-landformer): terrenget tegnes i canvas på klienten, serveren viser bare plassholderen. */
+export const BotnEggTindFigurLat = lat<FigurProps>(
+  { ...BOTN_EGG_TIND_TEKST, smal: [520, 790], bred: [960, 600], over: [170, 14], under: [493, 265] },
+  () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
 );
