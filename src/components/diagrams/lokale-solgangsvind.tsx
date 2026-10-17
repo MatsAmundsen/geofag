@@ -126,12 +126,12 @@ const hentKart = lat(() => {
   return { land, fjordMidt };
 });
 
-function Pil({ x, y, vinkel, lengde, farge, op }: { x: number; y: number; vinkel: number; lengde: number; farge: string; op: number }) {
+function Pil({ x, y, vinkel, lengde, farge, op, bredde = 5 }: { x: number; y: number; vinkel: number; lengde: number; farge: string; op: number; bredde?: number }) {
   if (op < 0.02) return null;
   return (
     <g transform={`translate(${x} ${y}) rotate(${vinkel})`} opacity={op}>
-      <line x1={-lengde / 2} y1="0" x2={lengde / 2 - 10} y2="0" stroke="#0b1418" strokeWidth="9" strokeLinecap="round" strokeOpacity="0.45" />
-      <line x1={-lengde / 2} y1="0" x2={lengde / 2 - 10} y2="0" stroke={farge} strokeWidth="5" strokeLinecap="round" />
+      <line x1={-lengde / 2} y1="0" x2={lengde / 2 - 10} y2="0" stroke="#0b1418" strokeWidth={bredde + 4} strokeLinecap="round" strokeOpacity="0.45" />
+      <line x1={-lengde / 2} y1="0" x2={lengde / 2 - 10} y2="0" stroke={farge} strokeWidth={bredde} strokeLinecap="round" />
       <path d={`M${lengde / 2} 0 L${lengde / 2 - 16} -9 L${lengde / 2 - 16} 9 Z`} fill={farge} />
     </g>
   );
@@ -141,10 +141,10 @@ function Ovenfra({ s, op, fase }: { s: (typeof BILDER)[number]; op: number; fase
   const K = hentKart();
   const vinkel = 82 * smooth(s.dreie);
   const kystPiler: [number, number][] = [
-    [300, 110],
-    [300, 200],
-    [300, 400],
-    [300, 480],
+    [300, 90],
+    [300, 215],
+    [300, 390],
+    [300, 500],
     [190, 150],
     [190, 440],
   ];
@@ -162,7 +162,8 @@ function Ovenfra({ s, op, fase }: { s: (typeof BILDER)[number]; op: number; fase
         </text>
       </g>
       {kystPiler.map(([x, y], i) => (
-        <Pil key={i} x={x} y={y} vinkel={vinkel} lengde={86} farge={F.sjobris} op={1} />
+        // vinden øker langs kysten (15–25 knop i status, Store norske leksikon, u.å.-e): pilene blir lengre og tykkere
+        <Pil key={i} x={x} y={y} vinkel={vinkel} lengde={86 + 32 * smooth(s.dreie)} bredde={5 + 2.5 * smooth(s.dreie)} farge={F.sjobris} op={1} />
       ))}
       {fjordIdx.map((i, n) => {
         const p = K.fjordMidt[i];
@@ -211,7 +212,7 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
     lab("Sola står lavt", 230, 190, [150, 214], F.varm, "start");
   } else {
     lab("Landbris, svakere", 250, 350, [250, 388], F.kald);
-    lab("Pålandsvind i høyden", 300, 150, [300, 172], F.retur);
+    lab("Pålandsvind i høyden", 320, 248, [320, 276], F.retur);
   }
 
   return (
@@ -253,8 +254,11 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
                 bredde={2 + 4 * s.inn}
                 opacity={clamp(s.inn * 3) * (1 - s.natt)}
               />
-              <Strom punkter={[[620, 388], [420, 392], [140, 392]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.6} opacity={s.natt} fart={12} />
-              <Strom punkter={[[140, 172], [380, 170], [620, 172]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+              {/* natt: et grunnere, lukket kretsløp (NOAA, u.å.-a), pålandsvind i høyden på ca. y 280 */}
+              <Strom punkter={[[610, hoydeVed(LAND, 610) - 8], [420, 390], [150, 392]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.6} opacity={s.natt} fart={12} />
+              <Strom punkter={[[128, 386], [128, 336], [128, 292]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+              <Strom punkter={[[148, 280], [380, 278], [616, 280]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+              <Strom punkter={[[632, 290], [632, 320], [632, hoydeVed(LAND, 632) - 20]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
             </g>
           ) : null}
           {ov > 0.01 ? <Ovenfra s={s} op={ov} fase={fase} /> : null}
