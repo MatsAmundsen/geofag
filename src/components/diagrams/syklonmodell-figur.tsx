@@ -32,7 +32,7 @@ const STATUS = [
  */
 const BILDER = [
   { a: 0, o: 0, svak: 0, dx: 0, hu: 0, hv: 0, regn: 0, vis: 0.35 },
-  { a: 0, o: 0, svak: 0, dx: 0, hu: 0.12, hv: 0.35, regn: 0, vis: 1 },
+  { a: 0, o: 0, svak: 0, dx: 0, hu: 0.12, hv: 0.15, regn: 0, vis: 1 },
   { a: 1, o: 0, svak: 0, dx: 60, hu: 0.5, hv: 1, regn: 1, vis: 1 },
   { a: 1, o: 1, svak: 0, dx: 110, hu: 0.82, hv: 0.45, regn: 1, vis: 1 },
   { a: 1, o: 1.5, svak: 1, dx: 150, hu: 1, hv: 0, regn: 0.45, vis: 1 },
@@ -229,7 +229,7 @@ function etiketter(fase: number): Lab[] {
   if (fase === 2) {
     const hx = lerp(g.c - 260, g.c + 260, s.hu);
     out.push({
-      text: "Lavtrykk i høyden (jetstrømmen)",
+      text: "Lavtrykk i høyden, i jetstrømmen",
       x: hx + 70,
       y: 40,
       at: [hx + 36, 88],
@@ -297,6 +297,23 @@ const KEYS: Key[] = [
 ];
 
 const NOTES = ["Skjematisk, sett ovenfra, nord opp", "Nordlige halvkule"];
+
+/** Fartspil i retningen fronten flytter seg. Lengden viser hvor fort. */
+function Fartspil({ fra, retning, lengde, farge }: { fra: P; retning: P; lengde: number; farge: string }) {
+  const [ux, uy] = retning;
+  const [x, y] = [fra[0] + 16 * ux - 12 * uy, fra[1] + 16 * uy + 12 * ux];
+  const x2 = x + ux * lengde;
+  const y2 = y + uy * lengde;
+  const h = 10;
+  const spiss = `${(x2 + ux * h).toFixed(1)},${(y2 + uy * h).toFixed(1)} ${(x2 - uy * 6).toFixed(1)},${(y2 + ux * 6).toFixed(1)} ${(x2 + uy * 6).toFixed(1)},${(y2 - ux * 6).toFixed(1)}`;
+  return (
+    <g>
+      <line x1={x} y1={y} x2={x2} y2={y2} stroke="#0f171c" strokeWidth="7" strokeLinecap="round" />
+      <line x1={x} y1={y} x2={x2} y2={y2} stroke={farge} strokeWidth="3.5" strokeLinecap="round" />
+      <polygon points={spiss} fill={farge} stroke="#0f171c" strokeWidth="1" />
+    </g>
+  );
+}
 
 export function SyklonmodellFigur({
   heading = SYKLONMODELL_TEKST.heading,
@@ -475,7 +492,7 @@ export function SyklonmodellFigur({
                   stroke="#e8eef2"
                   strokeWidth="2.5"
                   strokeDasharray="8 6"
-                  strokeDashoffset={tl.reduced ? 0 : (tl.sek * 14) % 14}
+                  strokeDashoffset={tl.reduced ? 0 : -(tl.sek * 14) % 14}
                   markerEnd={`url(#${m.fg})`}
                 />
                 <text
@@ -491,6 +508,14 @@ export function SyklonmodellFigur({
                 >
                   L
                 </text>
+              </g>
+            ) : null}
+
+            {/* kaldfronten går raskere enn varmfronten: lang og kort fartspil (steg 3–4) */}
+            {s.o > 0.05 ? (
+              <g opacity={clamp(s.o * 2) * (1 - 0.5 * s.svak)} aria-hidden="true">
+                <Fartspil fra={bez(...g.kald, 0.55)} retning={[0.96, -0.28]} lengde={78} farge={FARGE.kaldFront} />
+                <Fartspil fra={bez(...g.varm, 0.86)} retning={[0.6, -0.8]} lengde={30} farge={FARGE.varmFront} />
               </g>
             ) : null}
 
