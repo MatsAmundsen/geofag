@@ -9,8 +9,8 @@
  * Figurene er skjematiske: høyder og tykkelser er overdrevet, og det står i figuren.
  */
 import { useMemo, useState, type ReactNode } from "react";
-import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
+import { useFellesAvspilling } from "./avspilling";
 import { IsbreFigur, Polys, Skyver, StegVelger, type Lab } from "./isbre-figur";
 import {
   P,
@@ -67,8 +67,9 @@ function breWord(b: number) {
 }
 
 export function BreLengdesnitt({ heading = "Breen i lengdesnitt", caption }: IsbreFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const t = useTicker(motion.playing && visible);
   const [b, setB] = useState(0);
   const xf = 600 + 190 * b;
@@ -534,8 +535,9 @@ export function VdalTilUdal({
   caption,
   initialStep,
 }: IsbreFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const clock = useStepClock(4, motion.playing && visible, 3200, 1400, initialStep);
   const { step, phase } = clock;
   const p = step === 1 ? 0 : step === 2 ? smooth((phase - 0.22) / 0.78) : 1;
@@ -1035,8 +1037,9 @@ export function BotnEggTind({
   caption,
   initialStep,
 }: IsbreFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const clock = useStepClock(3, motion.playing && visible, 2600, 1800, initialStep);
   const { step } = clock;
   const q = Math.round(clock.phase * 8) / 8;
@@ -1269,8 +1272,9 @@ export function Avsetningsformer({
   caption,
   initialStep,
 }: IsbreFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const clock = useStepClock(3, motion.playing && visible, 3400, 1800, initialStep);
   const { step } = clock;
   const qPhase = Math.round(clock.phase * 14) / 14;
@@ -1686,8 +1690,9 @@ export function Frostsprengning({
   caption,
   initialStep,
 }: IsbreFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const [probeRef, probeW] = useBoxWidth<HTMLDivElement>();
   const viewportH = useViewportHeight();
   // Portrettstabling bare når panelet er telefonbredt og hele tegningen pluss knappene
@@ -2095,8 +2100,9 @@ export function IsostasiSnitt({
   caption,
   initialStep,
 }: IsbreFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const clock = useStepClock(4, motion.playing && visible, 3000, 1600, initialStep);
   const { step, phase } = clock;
   const [thick, setThick] = useState(1);

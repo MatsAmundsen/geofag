@@ -10,7 +10,6 @@
  * så ingenting tungt beregnes under serverrendering.
  */
 import { useEffect, useId, useState, type ReactNode } from "react";
-import { useAnimationPlaying } from "./use-motion";
 import { C, PlayPauseToggle } from "./svg-kit";
 import { IsbreFigur, NARROW_FIGURE_PX, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
 import { P, clamp, lerp, pickStep, smooth, useBoxWidth, useInView, useNarrow, useStepClock } from "./isbre-kit";
@@ -453,8 +452,9 @@ export function KaledonideneFigur({
   caption,
   initialStep,
 }: NorgesGeoFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const clock = useStepClock(4, motion.playing && visible, 4200, 1800, initialStep);
   const { step, phase } = clock;
@@ -1074,8 +1074,9 @@ export function NorskehavetFigur({
   heading = "Norskehavet åpner seg: Norge og Grønland skilles",
   caption,
 }: Omit<NorgesGeoFigurProps, "initialStep">) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const [wrapRef, small] = useFigurSmal();
   const [t, setT] = useState(0);
   const running = motion.playing && visible;

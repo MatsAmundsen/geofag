@@ -7,6 +7,7 @@ import {
   cloneElement,
   createContext,
   isValidElement,
+  memo,
   useCallback,
   useContext,
   useEffect,
@@ -1112,23 +1113,64 @@ export function IsbreFigur({
 
 /**
  * Flatene i et høydefelt (tusenvis av <path>) som én ferdig HTML-streng, husket per nett.
- * React trenger da ikke lage og serialisere ett element per flate, verken på serveren eller ved
- * hvert steg i animasjonen. Strengen er lik det React selv skriver ut, så tegningen er den samme.
+ * Brukes på serveren og i det første (statiske) bildet hos klienten, så React slipper å lage og
+ * serialisere ett element per flate. Strengen er lik det React selv skriver ut, så tegningen er den samme.
  */
-const polysHtml = new WeakMap<Poly[], string>();
+const polysHtml = new WeakMap<Poly[], { __html: string }>();
 function polysMarkup(polys: Poly[]) {
+  // Samme objekt for samme nett: React 19 skriver innerHTML på nytt når objektet er nytt, selv om
+  // strengen er lik, og da ble tusenvis av <path> byttet ut ved hvert animasjonsbilde.
   let html = polysHtml.get(polys);
   if (html === undefined) {
-    html = "";
+    let s = "";
     for (const p of polys)
-      html += `<path d="${p.d}" fill="${p.fill}" stroke="${p.fill}" stroke-width="0.7" stroke-linejoin="round"></path>`;
+      s += `<path d="${p.d}" fill="${p.fill}" stroke="${p.fill}" stroke-width="0.7" stroke-linejoin="round"></path>`;
+    html = { __html: s };
     polysHtml.set(polys, html);
   }
   return html;
 }
 
-export function Polys({ polys, opacity }: { polys: Poly[]; opacity?: number }) {
+/**
+ * Flatene skrives én gang som ferdig markup (rask SSR og hydrering, og React lager ikke ett element
+ * per flate). Når nettet endrer seg (animasjon eller steg), oppdateres `d` og `fill` direkte på de
+ * <path>-ene som finnes, og bare der de er endret. Det er det samme React ville gjort, men uten å
+ * bygge tusenvis av React-elementer først (det ga et kutt på 240–260 ms i Botn ved 4x CPU).
+ * memo og det stabile markup-objektet gjør at React aldri skriver innerHTML på nytt.
+ */
+export const Polys = memo(function Polys({ polys, opacity }: { polys: Poly[]; opacity?: number }) {
+  const ref = useRef<SVGGElement>(null);
+  const [forste] = useState(polys);
+  const tegnet = useRef(polys);
+  useLayoutEffect(() => {
+    const g = ref.current;
+    if (!g || tegnet.current === polys) return;
+    oppdaterFlater(g, tegnet.current, polys);
+    tegnet.current = polys;
+  }, [polys]);
   return (
-    <g opacity={opacity} data-nocheck="" dangerouslySetInnerHTML={{ __html: polysMarkup(polys) }} />
+    <g ref={ref} opacity={opacity} data-nocheck="" dangerouslySetInnerHTML={polysMarkup(forste)} />
   );
+});
+
+/** Gjør barna i `g` (som nå tilsvarer `gamle`) lik `nye`: endrer bare det som er ulikt. */
+function oppdaterFlater(g: SVGGElement, gamle: Poly[], nye: Poly[]) {
+  const barn = g.children;
+  for (let i = 0; i < nye.length; i++) {
+    const p = nye[i];
+    let el = barn[i] as Element | undefined;
+    const o = el ? gamle[i] : undefined;
+    if (!el) {
+      el = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      el.setAttribute("stroke-width", "0.7");
+      el.setAttribute("stroke-linejoin", "round");
+      g.appendChild(el);
+    }
+    if (o?.d !== p.d) el.setAttribute("d", p.d);
+    if (o?.fill !== p.fill) {
+      el.setAttribute("fill", p.fill);
+      el.setAttribute("stroke", p.fill);
+    }
+  }
+  while (barn.length > nye.length) barn[barn.length - 1].remove();
 }

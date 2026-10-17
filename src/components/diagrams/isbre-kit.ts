@@ -294,22 +294,30 @@ export type Poly = { d: string; fill: string };
 /**
  * Ferdig utregnede høydefelt, så samme nett ikke regnes ut på nytt for hver serverforespørsel
  * (useMemo husker bare innenfor én montering). Nøkkelen må beskrive alt som påvirker nettet.
- * Få plasser: på serveren trengs bare startbildet til hver figur.
+ * Hver figur (delen av nøkkelen før første «:») har sitt eget lager med få plasser, så en figur
+ * med mange animasjonsbilder (Avsetningsformer) ikke presser ut de andre figurenes nett.
+ * 16 plasser rommer alle 15 isbildene i Avsetningsformer, så en ny runde i animasjonen gjenbruker dem.
  */
-const NETT_PLASSER = 8;
-const nettLager = new Map<string, Poly[]>();
+const NETT_PLASSER_PER_FIGUR = 16;
+const nettLager = new Map<string, Map<string, Poly[]>>();
 export function husketNett(nokkel: string, lag: () => Poly[]): Poly[] {
-  const funnet = nettLager.get(nokkel);
+  const figur = nokkel.split(":", 1)[0];
+  let lager = nettLager.get(figur);
+  if (!lager) {
+    lager = new Map();
+    nettLager.set(figur, lager);
+  }
+  const funnet = lager.get(nokkel);
   if (funnet) {
-    nettLager.delete(nokkel);
-    nettLager.set(nokkel, funnet);
+    lager.delete(nokkel);
+    lager.set(nokkel, funnet);
     return funnet;
   }
   const nytt = lag();
-  nettLager.set(nokkel, nytt);
-  if (nettLager.size > NETT_PLASSER) {
-    const eldst = nettLager.keys().next().value;
-    if (eldst !== undefined) nettLager.delete(eldst);
+  lager.set(nokkel, nytt);
+  if (lager.size > NETT_PLASSER_PER_FIGUR) {
+    const eldst = lager.keys().next().value;
+    if (eldst !== undefined) lager.delete(eldst);
   }
   return nytt;
 }
