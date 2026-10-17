@@ -1139,6 +1139,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "bergarter",
     stale: ["og størkning er veien fra magma til magmatisk bergart.\n\nHvordan geologene vet"],
   },
+  {
+    // Isbreer: nytt botn-avsnitt (#181, GeoBot1-tekst), godkjent av Mats 17.10.
+    flag: "g1-isbreer-botn-2026-10-17",
+    slug: "isbreer-og-landformer",
+    stale: ["En liten bre i en forsenkning skurer ut en skålform med bratt bakvegg."],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
