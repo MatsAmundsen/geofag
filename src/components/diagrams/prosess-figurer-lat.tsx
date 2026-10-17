@@ -216,4 +216,8 @@ export const SolgangsvindFigurLat = lat<FigurProps>(
   { ...SOLGANGSVIND_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
   () => import("./lokale-solgangsvind").then((m) => m.SolgangsvindFigur),
 );
-import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
+
+export const SyklonFigurLat = lat<FigurProps>(
+  { ...SYKLON_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
+  () => import("./lokale-syklon").then((m) => m.SyklonFigur),
+);
