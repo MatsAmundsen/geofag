@@ -270,7 +270,8 @@ export function StationModelExplainedDiagram() {
             <L x="24" y="196" fill="#4ade80" size={12} weight={700}>Været nå: moderat regn</L>
             <L x="436" y="250" fill="#f8fafc" size={12} weight={700} anchor="end">Skydekke: 7/8</L>
             <L x="436" y="266" fill={C.muted} size={11} anchor="end">Fyllingen av sirkelen viser</L>
-            <L x="436" y="281" fill={C.muted} size={11} anchor="end">skydekket i åttedeler.</L>
+            <L x="436" y="281" fill={C.muted} size={11} anchor="end">skydekket i åttedeler, fra skyfri</L>
+            <L x="436" y="296" fill={C.muted} size={11} anchor="end">(0/8) til helt overskyet (8/8).</L>
 
             <L x="230" y="330" fill="#f8fafc" size={13} weight={700} anchor="middle">Vind fra sør</L>
             <L x="230" y="350" fill={C.muted} size={11} anchor="middle">Pila peker dit vinden kommer fra.</L>
@@ -328,7 +329,7 @@ export function FrontVerticalProfileDiagram() {
   return (
     <Diagram
       title="Vertikalt tverrsnitt gjennom en kaldfront og en varmfront med skyer og nedbør"
-      heading="Vertikalt tverrsnitt: Skyer, temperatur og nedbør gjennom frontene"
+      heading="Vertikalt tverrsnitt: skyer, temperatur og nedbør gjennom frontene"
       caption="Frontflaten heller svakt mot bakken. En varmfront heller ofte om lag 1:100–1:200, mens en kaldfront er brattere, om lag 1:50–1:100. Varm luft løftes over kald luft, og det dannes skyer og frontnedbør. En varmfront gir skyet vær og jevn nedbør. En kaldfront fortrenger varmere luft og gir oftere byger."
       viewBox="-95 0 1035 520"
       wide
