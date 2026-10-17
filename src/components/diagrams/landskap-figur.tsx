@@ -30,6 +30,8 @@ import {
   bergHoyde,
   fargeFraFelt,
   felt,
+  bremISnitt,
+  bremKryss,
   fjordY,
   hevAndel,
   klassiskVed,
@@ -499,7 +501,8 @@ export function LandskapBlokkFigur({
   for (let k = 0; k <= N; k++) {
     const wx = lerp(X_START, xMaks, k / N);
     const f = felt(wx, fjordY(wx), t, b);
-    const zb = f.berg;
+    // i A5 og B3 viser snittet strandflaten som en nesten flat brem ytterst i vest
+    const zb = bremISnitt(wx, fjordY(wx), f.berg, b ? t.slutt : t.strand);
     bergP.push([xTil(wx), zTilY(zb)]);
     isP.push([xTil(wx), zTilY(zb + f.is + f.topp)]);
     havP.push([xTil(wx), zTilY(Math.max(0, zb + f.is))]);
@@ -517,6 +520,8 @@ export function LandskapBlokkFigur({
     anker?: "start" | "middle" | "end";
   }[] = [];
   const toppTy = pr.y + fsP + 4;
+  // der bremmen krysser havnivå langs snittlinjen (fjordaksen varierer lite her)
+  const xKryss = xTil(bremKryss(fjordY(bremKryss(fjordY(133)))));
   if (!b && fase === 3) {
     const wx = 330;
     profEtiketter.push({
@@ -532,11 +537,12 @@ export function LandskapBlokkFigur({
     profEtiketter.push({ tekst: "fjord", x: xTil(wx), y: havY - 2, ty: toppTy, farge: "#9fd0ee" });
   }
   if ((!b && fase === 5) || (b && fase === 3)) {
-    // md l. 147: «går fra 60–70 m over til 30–40 m under havnivå» (bare i klassisk modell, steg 5)
+    // md l. 147: «går fra 60–70 m over til 30–40 m under havnivå» (bare i klassisk modell, steg 5).
+    // Etiketten peker dit bremmen krysser havnivå.
     profEtiketter.push({
       tekst: !b ? "strandflaten: fra 60–70 m over" : "strandflaten",
-      x: xTil(58),
-      y: havY - 4,
+      x: xKryss,
+      y: havY - 1,
       ty: toppTy + fsP + 6,
       farge: "#e6e1c8",
       anker: "start",
@@ -559,7 +565,7 @@ export function LandskapBlokkFigur({
       ref={wrapRef}
       // Statuslinjen og tidssporene følger bredden på tabpanelet (containerspørring), som er like bred som
       // plassholderens container, så plassholderen kan ha nøyaktig samme høyde.
-      className="[&_ol]:min-h-[8.75rem] [&_ol]:content-start [&_[role=tabpanel]]:[container-type:inline-size] [&_p[aria-live]]:min-h-[6.75rem] @min-[340px]:[&_p[aria-live]]:min-h-[5.25rem] @min-[560px]:[&_p[aria-live]]:min-h-[3.75rem]"
+      className="[&_ol]:min-h-[8.75rem] [&_ol]:content-start [&_[role=tabpanel]]:[container-type:inline-size] [&_p[aria-live]]:min-h-[7.5rem] @min-[340px]:[&_p[aria-live]]:min-h-[6.25rem] @min-[380px]:[&_p[aria-live]]:min-h-[5.25rem] @min-[560px]:[&_p[aria-live]]:min-h-[3.75rem]"
     >
       <IsbreFigur
         svgRef={ref}
@@ -808,7 +814,7 @@ export function LandskapBlokkFigur({
             </text>
             {!b && fase === 5 ? (
               <text
-                x={xTil(58) + 8}
+                x={xKryss + 8}
                 y={toppTy + 2 * (fsP + 6)}
                 fontSize={fsP}
                 fontWeight={700}
@@ -864,8 +870,19 @@ function Tidsspor({ spor, fase }: { spor: Spor[]; fase: number }) {
               </div>
               <div className="relative mt-0.5 h-2 w-full rounded-full bg-muted" aria-hidden="true">
                 <div
-                  className={`absolute top-0 h-2 rounded-full ${aktiv ? "bg-[#e3d9a6]" : "bg-[#e3d9a6]/35"}`}
-                  style={{ left: `${s.fra * 100}%`, width: `${(s.til - s.fra) * 100}%` }}
+                  className={
+                    s.toner
+                      ? "absolute top-0 h-2 rounded-l-full"
+                      : `absolute top-0 h-2 rounded-full ${aktiv ? "bg-[#e3d9a6]" : "bg-[#e3d9a6]/35"}`
+                  }
+                  style={{
+                    left: `${s.fra * 100}%`,
+                    width: `${(s.til - s.fra) * 100}%`,
+                    // tones ut mot høyre («og i tiden etterpå»), uten hard slutt ved «nå»
+                    backgroundImage: s.toner
+                      ? `linear-gradient(to right, rgb(227 217 166 / ${aktiv ? 1 : 0.35}) 45%, rgb(227 217 166 / 0))`
+                      : undefined,
+                  }}
                 />
               </div>
             </li>

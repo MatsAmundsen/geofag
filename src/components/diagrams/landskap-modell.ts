@@ -101,7 +101,7 @@ const dalMaske = (x: number, hode = HODE) => 1 - smooth((x - hode + 30) / 70);
 
 /** V-dalens bunn når elva har gravd ferdig: lav ved kysten, stigende innover (mer fall nær kysten). */
 const vBunn = (x: number) => 3 + 0.3 * Math.max(0, x - 96);
-/** U-dalens bunn: terskel ved munningen, dypest et stykke inne, over havnivå innerst (U-dal på land). */
+/** U-dalens bunn: grunnere ved munningen, dypest et stykke inne, over havnivå innerst (U-dal på land). */
 function uBunn(x: number) {
   const inn = smooth((x - 92) / 70);
   const dyp = lerp(-22, -78, inn);
@@ -127,16 +127,38 @@ function klassiskBerg(x: number, y: number, t: LandskapTilstand) {
   return h;
 }
 
+/** Strandflatens indre kant (mot fjellsiden). */
+const bremIndre = (y: number) => 214 + 10 * Math.sin(y / 47);
+/** Strandflatens ytre kant, der bremmen går over i havbunnen. */
+const BREM_YTRE = 52;
+/** Bremmen uten øyer: nesten flat, skrår svakt mot havet og krysser havnivå midt på. */
+const bremSkraa = (x: number, y: number) =>
+  lerp(-13, 13, smooth((x - BREM_YTRE) / (bremIndre(y) - BREM_YTRE)));
+
 /** Strandflaten: kystlandet slites ned til en lav brem som skrår svakt utover, med øyer og holmer. */
 function strandflate(x: number, y: number, h: number, s: number) {
   const { fbm } = stoy();
-  const indre = 214 + 10 * Math.sin(y / 47);
-  const skraa = lerp(-13, 13, smooth((x - 52) / (indre - 52)));
   const oyer = 24 * Math.max(0, fbm(x / 30 + 3.1, y / 26 - 1.7, 3) + 0.12) - 5;
-  const mal = skraa + oyer * (0.75 + 0.25 * smooth((x - 70) / 90));
-  const maske = 1 - smooth((x - indre + 8) / 30);
+  // øyene og skjærene ligger mest ytterst; innerst er bremmen jevnere, så den flate bremmen synes
+  const mal = bremSkraa(x, y) + oyer * (1 - 0.6 * smooth((x - 90) / 100));
+  const maske = 1 - smooth((x - bremIndre(y) + 8) / 30);
   return Math.min(h, lerp(h, mal, s * maske));
 }
+
+/**
+ * Strandflaten i snittet (uten øyer): bremmen skrår svakt fra litt over til litt under havnivå og går
+ * ytterst over i havbunnen. `s` = hvor langt strandflaten er dannet; `h` gis uendret utenfor bremmen.
+ */
+export function bremISnitt(x: number, y: number, h: number, s: number) {
+  if (s <= 0.001) return h;
+  const skraa = bremSkraa(x, y);
+  const mal = x < BREM_YTRE ? Math.min(skraa, lerp(-44, -13, smooth((x + 30) / 60))) : skraa;
+  const maske = 1 - smooth((x - bremIndre(y) + 8) / 30);
+  return lerp(h, mal, s * maske);
+}
+
+/** Der bremmen krysser havnivå (x), langs linjen y. */
+export const bremKryss = (y: number) => (BREM_YTRE + bremIndre(y)) / 2;
 
 /** Annen modell: høye, taggete fjell over samme grunnform, nedslipt mot snøgrensen. */
 function annenBerg(x: number, y: number, t: LandskapTilstand) {
@@ -214,7 +236,7 @@ const IS: Rgb = [206, 226, 238];
 const IS_KANT: Rgb = [160, 192, 212];
 const HAV_GRUNT: Rgb = [70, 140, 168];
 const HAV_DYPT: Rgb = [30, 74, 102];
-const STRAND: Rgb = [112, 118, 96];
+const STRAND: Rgb = [178, 168, 120];
 
 export function farge(
   x: number,
@@ -249,7 +271,9 @@ export function fargeFraFelt(
     smooth((helning - 0.75) / 0.6),
   );
   // strandflaten: lav, slitt brem (litt grå)
-  if (!b && t.strand > 0.05 && f.berg < 22) c = blandRgb(c, STRAND, t.strand * 0.5);
+  const strand = b ? t.slutt : t.strand;
+  if (strand > 0.05 && f.berg < 24 && x < 250)
+    c = blandRgb(c, STRAND, strand * 0.75 * (1 - smooth((f.berg - 14) / 10)));
   if (f.is > 0.3) c = blandRgb(blandRgb(IS_KANT, IS, smooth(f.is / 30)), c, 1 - smooth(f.is / 4));
   if (f.topp > 0.05) c = blandRgb(c, IS, clamp(f.topp / 4) * 0.9);
   return c;
