@@ -1,5 +1,6 @@
 import { Arrow, C, Diagram, L } from "./svg-kit";
 import { SkydekkeN, Vindpil, WwSymbol, type WwKode } from "./wmo-symboler";
+import { SyklonmodellFigurLat } from "./prosess-figurer-lat";
 
 /**
  * 1. RealisticSynopticChartDiagram
@@ -572,187 +573,12 @@ export function UpperAir500hPaMapDiagram() {
 }
 
 /**
- * 5. WeatherProgression24hDiagram
- * 3-trinns sekvens (Nå = 0t, +12 timer, +24 timer) som viser en atlantisk syklons
- * forflytning mot Norge, frontenes passasje, og hvordan vindretningen dreier («veering») på Vestlandet.
+ * 5. WeatherProgression24hDiagram (widget Weather24h)
+ * Den norske syklonmodellen i fire steg (NOAA, u.å.-b), som én animasjon med felles avspilling.
+ * Navnet beholdes, så registreringen i poster-body virker. Figuren lastes lat (syklonmodell-figur.tsx).
  */
 export function WeatherProgression24hDiagram() {
-  return (
-    <Diagram
-      title="Værutvikling og adveksjon over 24 timer (0t, +12t, +24t) med vinddreining på Vestlandet"
-      heading="Værutvikling i 3 trinn: Slik forutsier du været 24 timer fram"
-      caption="Illustrasjon av den norske syklonmodellen. Først en bølge på en front som nesten ligger i ro. Så en moden syklon med varmfront og kaldfront. Til slutt tar kaldfronten igjen varmfronten, og det blir en okkludert front. Uten den varme lufta i sentrum svekkes lavtrykket."
-      viewBox="0 0 940 520"
-      wide
-    >
-      {(m) => (
-        <>
-          <rect x="25" y="25" width="890" height="470" rx="10" fill="#09131c" stroke="#1d2e3f" strokeWidth="1.2" />
-
-          {/* TITTEL */}
-          <g transform="translate(45, 45)">
-            <L x="10" y="16" fill={C.teal} size={14} weight={800}>Værutvikling og adveksjon over 24 timer (framrykning med vestavinden)</L>
-            <L x="850" y="16" fill={C.muted} size={11} anchor="end">Fokus: Hva opplever en stasjon på Vestlandet (Bergen)?</L>
-          </g>
-
-          {/* DE TRE TIDSSTILBILDENE (0t, +12t, +24t) */}
-          <g transform="translate(45, 75)">
-            {/* PANEL 1: NÅ (T = 0 timer) */}
-            <g transform="translate(0, 0)">
-              <rect x="0" y="0" width="270" height="340" rx="8" fill="#101e2b" stroke={C.teal} strokeWidth="1.6" />
-              <rect x="0" y="0" width="270" height="38" rx="8" fill="#142838" />
-              <L x="15" y="24" fill={C.teal} size={13} weight={800}>Trinn 1: Nå (T = 0 timer)</L>
-
-              {/* Kartskisse panel 1 */}
-              <g transform="translate(15, 50)">
-                <rect x="0" y="0" width="240" height="150" rx="6" fill="#0a151f" />
-                {/* Norgeskyst kontur */}
-                <path d="M 160 140 C 170 100 180 60 210 20" fill="none" stroke="#2e543e" strokeWidth="2.5" />
-                <L x="180" y="130" fill="#4ade80" size={10} weight={700}>Vestlandet</L>
-
-                {/* Lavtrykk L1 vest i havet */}
-                <circle cx="80" cy="80" r="28" fill="none" stroke={C.low} strokeWidth="1.8" />
-                <L x="80" y="85" fill={C.low} size={14} weight={900} anchor="middle">L</L>
-                <L x="80" y="98" fill={C.muted} size={8} anchor="middle">975 hPa</L>
-
-                {/* Fronter */}
-                <path d="M 80 80 C 110 95 140 115 165 140" fill="none" stroke={C.low} strokeWidth="2.8" />
-                <path d="M 115 98 A 5 5 0 0 0 125 104 Z" fill={C.low} />
-                <path d="M 80 80 C 75 110 65 130 50 150" fill="none" stroke={C.cold} strokeWidth="2.8" />
-                <polygon points="76,105 84,108 77,115" fill={C.cold} />
-
-                {/* Nedbørsfelt over Vestlandet */}
-                <ellipse cx="150" cy="110" rx="30" ry="18" fill="#38bdf8" opacity="0.3" />
-                <L x="150" y="108" fill="#38bdf8" size={8} weight={700} anchor="middle">Silregn</L>
-              </g>
-
-              {/* Værkort Vestlandet Panel 1 */}
-              <g transform="translate(15, 210)">
-                <rect x="0" y="0" width="240" height="115" rx="6" fill="#0a131b" stroke="#1e2c3a" />
-                <L x="12" y="18" fill="#f8fafc" size={11} weight={800}>Væropplevelse på Vestlandet:</L>
-                <L x="12" y="36" fill={C.warm} size={10} weight={700}>• Vind:</L>
-                <L x="50" y="36" fill="#cbd5e1" size={10}>Sørøstlig stiv kuling (16 m/s)</L>
-                <L x="12" y="54" fill={C.low} size={10} weight={700}>• Trykk:</L>
-                <L x="55" y="54" fill="#cbd5e1" size={10}>1002 hPa (Raskt fallende)</L>
-                <L x="12" y="72" fill="#38bdf8" size={10} weight={700}>• Vær:</L>
-                <L x="45" y="72" fill="#cbd5e1" size={10}>Tett regn fra Nimbostratus</L>
-                <L x="12" y="90" fill={C.muted} size={10} weight={700}>• Temp:</L>
-                <L x="52" y="90" fill="#cbd5e1" size={10}>4 °C (Kald forluft)</L>
-                <L x="12" y="106" fill={C.teal} size={9}>Status: Foran varmfronten</L>
-              </g>
-            </g>
-
-            {/* PIL MELLOM TRINN 1 OG 2 */}
-            <g transform="translate(275, 120)">
-              <Arrow d="M 0 35 L 20 35" marker={m.teal} color={C.teal} width={3.2} />
-              <L x="10" y="20" fill={C.teal} size={10} weight={700} anchor="middle">+12 t</L>
-            </g>
-
-            {/* PANEL 2: +12 TIMER */}
-            <g transform="translate(300, 0)">
-              <rect x="0" y="0" width="270" height="340" rx="8" fill="#101e2b" stroke={C.warm} strokeWidth="1.6" />
-              <rect x="0" y="0" width="270" height="38" rx="8" fill="#291e0e" />
-              <L x="15" y="24" fill={C.warm} size={13} weight={800}>Trinn 2: +12 timer</L>
-
-              {/* Kartskisse panel 2 */}
-              <g transform="translate(15, 50)">
-                <rect x="0" y="0" width="240" height="150" rx="6" fill="#0a151f" />
-                <path d="M 160 140 C 170 100 180 60 210 20" fill="none" stroke="#2e543e" strokeWidth="2.5" />
-                <L x="180" y="130" fill="#4ade80" size={10} weight={700}>Vestlandet</L>
-
-                {/* Lavtrykk L1 har flyttet seg mot kysten av Trøndelag */}
-                <circle cx="150" cy="50" r="28" fill="none" stroke={C.low} strokeWidth="1.8" />
-                <L x="150" y="55" fill={C.low} size={14} weight={900} anchor="middle">L</L>
-                <L x="150" y="68" fill={C.muted} size={8} anchor="middle">970 hPa</L>
-
-                {/* Varmfront har passert over fjellet mot Østlandet */}
-                <path d="M 150 50 C 190 70 215 100 230 140" fill="none" stroke={C.low} strokeWidth="2.8" />
-                {/* Kaldfront ligger nå rett vest for kysten */}
-                <path d="M 150 50 C 140 90 125 120 100 150" fill="none" stroke={C.cold} strokeWidth="2.8" />
-                <polygon points="135,95 143,98 136,105" fill={C.cold} />
-
-                {/* Vestlandet er i varm sektor */}
-                <polygon points="150,50 200,95 140,115" fill="#f59e0b" opacity="0.25" />
-              </g>
-
-              {/* Værkort Vestlandet Panel 2 */}
-              <g transform="translate(15, 210)">
-                <rect x="0" y="0" width="240" height="115" rx="6" fill="#0a131b" stroke="#1e2c3a" />
-                <L x="12" y="18" fill="#f8fafc" size={11} weight={800}>Væropplevelse på Vestlandet:</L>
-                <L x="12" y="36" fill={C.warm} size={10} weight={700}>• Vind:</L>
-                <L x="50" y="36" fill={C.warm} size={10} weight={800}>Dreid til SØRVEST (12 m/s)</L>
-                <L x="12" y="54" fill={C.low} size={10} weight={700}>• Trykk:</L>
-                <L x="55" y="54" fill="#cbd5e1" size={10}>982 hPa (Bunnpunkt)</L>
-                <L x="12" y="72" fill="#38bdf8" size={10} weight={700}>• Vær:</L>
-                <L x="45" y="72" fill="#cbd5e1" size={10}>Regnet avtar. Yr og tåke.</L>
-                <L x="12" y="90" fill={C.warm} size={10} weight={700}>• Temp:</L>
-                <L x="52" y="90" fill={C.warm} size={10} weight={800}>Mildere luft bak varmfronten.</L>
-                <L x="12" y="106" fill={C.warm} size={9}>Status: I VARM SEKTOR</L>
-              </g>
-            </g>
-
-            {/* PIL MELLOM TRINN 2 OG 3 */}
-            <g transform="translate(575, 120)">
-              <Arrow d="M 0 35 L 20 35" marker={m.teal} color={C.teal} width={3.2} />
-              <L x="10" y="20" fill={C.teal} size={10} weight={700} anchor="middle">+24 t</L>
-            </g>
-
-            {/* PANEL 3: +24 TIMER */}
-            <g transform="translate(600, 0)">
-              <rect x="0" y="0" width="270" height="340" rx="8" fill="#101e2b" stroke={C.cold} strokeWidth="1.6" />
-              <rect x="0" y="0" width="270" height="38" rx="8" fill="#0d2438" />
-              <L x="15" y="24" fill={C.cold} size={13} weight={800}>Trinn 3: +24 timer</L>
-
-              {/* Kartskisse panel 3 */}
-              <g transform="translate(15, 50)">
-                <rect x="0" y="0" width="240" height="150" rx="6" fill="#0a151f" />
-                <path d="M 160 140 C 170 100 180 60 210 20" fill="none" stroke="#2e543e" strokeWidth="2.5" />
-                <L x="180" y="130" fill="#4ade80" size={10} weight={700}>Vestlandet</L>
-
-                {/* Lavtrykk L1 har okkludert over Sverige */}
-                <circle cx="210" cy="50" r="28" fill="none" stroke="#a855f7" strokeWidth="1.8" />
-                <L x="210" y="55" fill="#a855f7" size={14} weight={900} anchor="middle">L</L>
-                <L x="210" y="68" fill={C.muted} size={8} anchor="middle">978 hPa</L>
-
-                {/* Okklusjonsstilk over Midt-Norge */}
-                <path d="M 210 50 C 190 70 170 90 150 110" fill="none" stroke="#a855f7" strokeWidth="2.8" />
-                {/* Kaldfronten har rast langt inn i Sverige/Østlandet */}
-                <path d="M 150 110 C 180 125 210 140 235 150" fill="none" stroke={C.cold} strokeWidth="2.8" />
-
-                {/* Nordvestlig vind og bygeskyer bak fronten */}
-                <line x1="80" y1="60" x2="140" y2="100" stroke="#38bdf8" strokeWidth="2" strokeDasharray="3 3" />
-                <circle cx="110" cy="80" r="5" fill="#38bdf8" />
-              </g>
-
-              {/* Værkort Vestlandet Panel 3 */}
-              <g transform="translate(15, 210)">
-                <rect x="0" y="0" width="240" height="115" rx="6" fill="#0a131b" stroke="#1e2c3a" />
-                <L x="12" y="18" fill="#f8fafc" size={11} weight={800}>Væropplevelse på Vestlandet:</L>
-                <L x="12" y="36" fill={C.cold} size={10} weight={700}>• Vind:</L>
-                <L x="50" y="36" fill={C.cold} size={10} weight={800}>Dreid til NORDVEST (18 m/s)</L>
-                <L x="12" y="54" fill="#22c55e" size={10} weight={700}>• Trykk:</L>
-                <L x="55" y="54" fill="#22c55e" size={10}>Trykket stiger.</L>
-                <L x="12" y="72" fill="#60a5fa" size={10} weight={700}>• Vær:</L>
-                <L x="45" y="72" fill="#cbd5e1" size={10}>Kraftige haglbyger og oppklarning</L>
-                <L x="12" y="90" fill={C.cold} size={10} weight={700}>• Temp:</L>
-                <L x="52" y="90" fill={C.cold} size={10} weight={800}>Kaldere luft bak kaldfronten.</L>
-                <L x="12" y="106" fill={C.cold} size={9}>Status: BAK KALDFRONTEN</L>
-              </g>
-            </g>
-          </g>
-
-          {/* BUNNSTRIPE: VINDDREINING («VEERING») BEGREP */}
-          <g transform="translate(45, 435)">
-            <rect x="0" y="0" width="850" height="34" rx="6" fill="#0d1b26" stroke="#23384a" />
-            <L x="20" y="21" fill={C.sand} size={11} weight={800}>Vinddreining med klokka («Veering»):</L>
-            <L x="240" y="21" fill="#cbd5e1" size={11}>
-              Når et lavtrykk passerer nord for en observatør på den nordlige halvkule, dreier vinden med klokka: Sørøst → Sørvest → Nordvest.
-            </L>
-          </g>
-        </>
-      )}
-    </Diagram>
-  );
+  return <SyklonmodellFigurLat />;
 }
 
 /**

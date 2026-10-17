@@ -14,6 +14,7 @@ import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
+import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 
 type Plass = {
   heading: string;
@@ -30,6 +31,11 @@ type Plass = {
    * interpoleres lineært med containerbredden.
    */
   under: [number, number];
+  /**
+   * Egne endepunkter for smal layout (340 og 678 px), når høyden under tegneflaten i smal layout
+   * avviker mye fra bred (f.eks. nummerert forklaring som bare vises smalt). Uten denne brukes `under`.
+   */
+  underSmal?: [number, number];
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
   /**
@@ -62,10 +68,11 @@ function stykkevis(punkter: [number, number][]) {
 
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
 export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; heading?: string; caption?: React.ReactNode }) {
+  const us = plass.underSmal ?? plass.under;
   const stil = {
     "--over-s": `${plass.over[0] + (plass.faner?.[0] ?? 0)}px`,
     "--over-b": `${plass.over[1] + (plass.faner?.[1] ?? 0)}px`,
-    "--under-s": `clamp(${Math.min(...plass.under)}px, calc(${plass.under[0]}px + (100cqw - 340px) * ${((plass.under[1] - plass.under[0]) / 338).toFixed(4)}), ${Math.max(...plass.under)}px)`,
+    "--under-s": `clamp(${Math.min(...us)}px, calc(${us[0]}px + (100cqw - 340px) * ${((us[1] - us[0]) / 338).toFixed(4)}), ${Math.max(...us)}px)`,
     "--under-b": `${plass.under[1]}px`,
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,
@@ -199,4 +206,10 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
     },
   },
   () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
+);
+
+/** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */
+export const SyklonmodellFigurLat = lat<FigurProps>(
+  { ...SYKLONMODELL_TEKST, smal: [960, 540], bred: [960, 540], over: [180, 150], under: [81, 81], underSmal: [455, 331] },
+  () => import("./syklonmodell-figur").then((m) => m.SyklonmodellFigur),
 );
