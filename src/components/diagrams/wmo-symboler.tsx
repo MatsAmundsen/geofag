@@ -62,10 +62,10 @@ export function WwSymbol({ code, x, y, s = 1, color = "#e6edf3" }: { code: WwKod
     case 45:
       return <path d={`M ${x - d(17.5)} ${y - d(9.5)} h ${d(35)} M ${x - d(17.5)} ${y} h ${d(35)} M ${x - d(17.5)} ${y + d(9.5)} h ${d(35)}`} fill="none" stroke={color} strokeWidth={d(3)} />;
     case 95:
-      // Tordenvær med regn: tordensymbolet med en regndråpe over.
+      // Tordenvær med regn (95a): tordensymbolet med regnprikken midt over.
       return (
         <g fill="none" stroke={color} strokeWidth={d(3)}>
-          <circle cx={x - d(6.5)} cy={y - d(18.6)} r={d(4)} fill={color} stroke="none" />
+          <circle cx={x} cy={y - d(19)} r={d(4.5)} fill={color} stroke="none" />
           <path d={`M ${x - d(10.5)} ${y - d(10)} h ${d(20)} L ${x - d(2)} ${y + d(6.5)} l ${d(12)} ${d(12)}`} />
           <path d={`M ${x - d(6.5)} ${y - d(10)} V ${y + d(21.5)}`} />
           <path d={`M ${x + d(4)} ${y + d(18.5)} h ${d(6)} v ${d(-6)} z`} fill={color} />

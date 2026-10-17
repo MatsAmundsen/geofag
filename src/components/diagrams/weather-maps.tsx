@@ -13,7 +13,7 @@ export function RealisticSynopticChartDiagram() {
   return (
     <Diagram
       title="Synoptisk bakkekart over Nord-Atlanteren og Skandinavia med isobarer, fronter og stasjonsplott"
-      heading="Det synoptiske bakkekartet: Værets anatomiske kart"
+      heading="Bakkekartet: lavtrykk, høytrykk og fronter"
       caption="Illustrasjon av et bakkekart. Isobarene binder sammen steder med likt lufttrykk redusert til havnivå. På norske kart er intervallet vanligvis 5 hPa. Tette isobarer betyr stor trykkforskjell og sterk vind. Varmfront tegnes rød med halvsirkler, kaldfront blå med trekanter, og en okkludert front lilla med begge symbolene."
       viewBox="0 0 940 560"
       wide
@@ -198,8 +198,9 @@ export function RealisticSynopticChartDiagram() {
             <L x="11" y="-4" fill="#f8fafc" size={10} weight={700}>997</L>
           </g>
 
-          {/* Plott 3: i varm sektor, mellom 995 og 1000 hPa. Skydekke 7/8. */}
+          {/* Plott 3: i varm sektor, mellom 995 og 1000 hPa. Skydekke 7/8, vind fra sørvest. */}
           <g transform="translate(470, 445)">
+            <Vindpil cx={0} cy={0} fraGrader={225} r={7} len={26} hele={2} width={1.6} fjaer={10} />
             <SkydekkeN n={7} cx={0} cy={0} r={7} />
             <L x="-11" y="-4" fill={C.warm} size={10} weight={700} anchor="end">13</L>
             <L x="-11" y="11" fill={C.cold} size={10} weight={700} anchor="end">13</L>
@@ -230,16 +231,16 @@ export function StationModelExplainedDiagram() {
   const ww: { code: WwKode; label: string }[] = [
     { code: 61, label: "Lett regn" },
     { code: 63, label: "Moderat regn" },
-    { code: 51, label: "Yr" },
-    { code: 71, label: "Snø" },
+    { code: 51, label: "Lett yr" },
+    { code: 71, label: "Lett snø" },
     { code: 45, label: "Tåke" },
-    { code: 95, label: "Torden" },
+    { code: 95, label: "Tordenvær med regn" },
   ];
   return (
     <Diagram
       title="Stasjonsplott med temperatur, duggpunkt, trykk, symbol for været nå og vindpil"
       heading="Slik leser du et stasjonsplott"
-      caption="Et stasjonsplott samler været på ett sted: temperatur, duggpunkt, trykk, et symbol for været nå, og en vindpil som peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f)."
+      caption="Et stasjonsplott samler været på ett sted: temperatur, duggpunkt, trykk, et symbol for været nå, og en vindpil som peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f). Symboler: WMO/OGC WorldWeatherSymbols (CC BY 4.0)."
       viewBox="0 0 940 520"
       wide
     >
@@ -267,6 +268,9 @@ export function StationModelExplainedDiagram() {
             <L x="24" y="250" fill={C.cold} size={12} weight={700}>Duggpunkt: 11 °C</L>
             <L x="436" y="72" fill="#f8fafc" size={12} weight={700} anchor="end">Trykk: 1008,4 hPa</L>
             <L x="24" y="196" fill="#4ade80" size={12} weight={700}>Været nå: moderat regn</L>
+            <L x="436" y="250" fill="#f8fafc" size={12} weight={700} anchor="end">Skydekke: 7/8</L>
+            <L x="436" y="266" fill={C.muted} size={11} anchor="end">Fyllingen av sirkelen viser</L>
+            <L x="436" y="281" fill={C.muted} size={11} anchor="end">skydekket i åttedeler.</L>
 
             <L x="230" y="330" fill="#f8fafc" size={13} weight={700} anchor="middle">Vind fra sør</L>
             <L x="230" y="350" fill={C.muted} size={11} anchor="middle">Pila peker dit vinden kommer fra.</L>
@@ -375,8 +379,8 @@ export function FrontVerticalProfileDiagram() {
           {/* Varmfrontflaten starter på bakken ved x=620 og stiger slakt til x=880 ved y=160 (10 km) */}
           <polygon points="620,430 885,430 885,160" fill="url(#vp-cold-east)" />
           <line x1="620" y1="430" x2="885" y2="160" stroke={C.low} strokeWidth="3.5" />
-          <L x="740" y="398" fill={C.cold} size={14} weight={800}>Kaldere luft</L>
-          <L x="740" y="416" fill={C.muted} size={11}>foran varmfronten</L>
+          <L x="826" y="398" fill={C.cold} size={14} weight={800} anchor="middle">Kaldere luft</L>
+          <L x="826" y="416" fill={C.muted} size={11} anchor="middle">foran varmfronten</L>
           <L x="830" y="300" fill={C.low} size={12} weight={800} anchor="middle">Varmfront</L>
           <L x="830" y="315" fill={C.low} size={10} anchor="middle">om lag 1:100–1:200</L>
 
@@ -405,28 +409,27 @@ export function FrontVerticalProfileDiagram() {
           {/* Altostratus (As) ved 5 km (x=660, y=240) */}
           <rect x="620" y="230" width="90" height="28" rx="6" fill="#94a3b8" opacity="0.8" />
 
-          {/* Nimbostratus (Ns) og silregn ved bakken (x=570 til 640) */}
+          {/* Tett sky over varmfrontflaten, og jevn nedbør som faller foran fronten i den kalde lufta (x 630–760) */}
           <path
-            d="M 560 370 C 550 330 580 300 620 300 C 660 300 680 330 670 370 Z"
+            d="M 632 418 L 760 288 C 772 252 742 228 716 242 C 690 256 664 300 646 338 C 632 368 620 398 632 418 Z"
             fill="#475569"
             stroke="#64748b"
             strokeWidth="1.2"
           />
-          {/* Silregnstriper under Ns */}
-          {[570, 585, 600, 615, 630, 645, 660].map((rx, idx) => (
+          {[652, 668, 684, 700, 716, 732, 748].map((rx, idx) => (
             <line
               key={`vp-ns-rain-${idx}`}
               x1={rx}
-              y1={370}
-              x2={rx - 15}
-              y2={430}
+              y1={430 - 1.02 * (rx - 620) + 6}
+              x2={rx - 8}
+              y2={428}
               stroke="#38bdf8"
               strokeWidth="2"
               strokeDasharray="4 4"
               className="model-wind-flow"
             />
           ))}
-          <L x="560" y="420" fill="#38bdf8" size={11} weight={700} anchor="end">Jevn nedbør</L>
+          <L x="700" y="452" fill="#38bdf8" size={11} weight={700} anchor="middle">Jevn nedbør</L>
 
           {/* B. Skyer i den varmere lufta */}
           <ellipse cx="460" cy="395" rx="40" ry="12" fill="#64748b" opacity="0.7" />
@@ -509,7 +512,16 @@ export function UpperAir500hPaMapDiagram() {
           
 
           {/* ISOHYPSER (BØLGENDE KONTURLINJER FOR 500 hPa GEOPOTENSIELL HØYDE) */}
-          {/* Kontur 552 (lavest, i nord) */}
+          {/* Kontur 546: tråget er dypt, så den laveste linja når ned i tråget (Geo, fagsjekk #186) */}
+          <path
+            d="M 60 104 C 220 124 315 228 412 250 C 512 250 592 118 880 70"
+            fill="none"
+            stroke="#a5b4fc"
+            strokeWidth="2.6"
+          />
+          <L x="180" y="114" fill="#a5b4fc" size={11} weight={700}>546</L>
+
+          {/* Kontur 552 */}
           <path
             d="M 60 160 C 220 180 320 280 420 300 C 520 300 600 160 880 110"
             fill="none"
@@ -546,10 +558,10 @@ export function UpperAir500hPaMapDiagram() {
           <L x="180" y="350" fill="#ea580c" size={11} weight={700}>570</L>
 
           {/* TRÅGET SOM FORM (uten etikett, fagsjekk F6) */}
-          <line x1="380" y1="170" x2="425" y2="330" stroke="#38bdf8" strokeWidth="2" strokeDasharray="5 4" opacity="0.7" />
+          <line x1="380" y1="150" x2="425" y2="330" stroke="#38bdf8" strokeWidth="1.5" opacity="0.3" />
 
           {/* LUFTMASSENE FØLGER VINDEN I HØYDEN */}
-          <L x="70" y="262" fill="#f8fafc" size={11} weight={800}>Stiplet: vinden i høyden</L>
+          <L x="70" y="262" fill="#f8fafc" size={11} weight={800}>Hvit stiplet linje: vinden i høyden</L>
 
           {/* Etikett for Norge over linjene */}
           <rect x="566" y="350" width="52" height="18" rx="4" fill="#0a1520" opacity="0.9" />
