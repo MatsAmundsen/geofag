@@ -328,7 +328,7 @@ export function FrontVerticalProfileDiagram() {
   return (
     <Diagram
       title="Vertikalt tverrsnitt gjennom en kaldfront og en varmfront med skyer og nedbør"
-      heading="Vertikalt tverrsnitt: Skyer, temperatur og nedbør gjennom frontene"
+      heading="Vertikalt tverrsnitt: skyer, temperatur og nedbør gjennom frontene"
       caption="Frontflaten heller svakt mot bakken. En varmfront heller ofte om lag 1:100–1:200, mens en kaldfront er brattere, om lag 1:50–1:100. Varm luft løftes over kald luft, og det dannes skyer og frontnedbør. En varmfront gir skyet vær og jevn nedbør. En kaldfront fortrenger varmere luft og gir oftere byger."
       viewBox="-95 0 1035 520"
       wide
