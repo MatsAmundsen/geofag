@@ -139,6 +139,6 @@ export const IonBytteV2FigurLat = lat<FigurProps>(
 
 /** Botn, egg og tind (isbreer-og-landformer): terrenget tegnes i canvas på klienten, serveren viser bare plassholderen. */
 export const BotnEggTindFigurLat = lat<FigurProps>(
-  { ...BOTN_EGG_TIND_TEKST, smal: [520, 790], bred: [960, 600], over: [170, 14], under: [493, 265] },
+  { ...BOTN_EGG_TIND_TEKST, smal: [520, 790], bred: [960, 600], over: [194.5, 14], under: [493, 265] },
   () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
 );

@@ -18,17 +18,18 @@ export const TOPP: [number, number] = [300, 248];
 /** Breene, i rekkefølgen de begynner å grave: sørvest (foran til venstre), sørøst, nordøst, nordvest. */
 export type BreId = "sv" | "so" | "no" | "nv";
 export const BREER: { id: BreId; vinkel: number }[] = [
-  { id: "sv", vinkel: 225 },
-  { id: "so", vinkel: 315 },
-  { id: "no", vinkel: 45 },
-  { id: "nv", vinkel: 135 },
+  { id: "sv", vinkel: 220 },
+  { id: "so", vinkel: 320 },
+  { id: "no", vinkel: 40 },
+  { id: "nv", vinkel: 122 },
 ];
 const RETNING = BREER.map((b) => {
   const a = (b.vinkel * Math.PI) / 180;
   return [Math.cos(a), Math.sin(a)] as [number, number];
 });
 
-export type BotnTilstand = { grav: number[]; is: number[]; sno: number };
+/** `vann` (0 … 1): et lite vann i bunnen av botnene når isen er borte (fase 5). */
+export type BotnTilstand = { grav: number[]; is: number[]; sno: number; vann: number };
 
 const stoy = lat(() => lagStoy(7151));
 
@@ -59,84 +60,83 @@ function lokal(k: number, x: number, y: number) {
   return { langs: rx * ux + ry * uy, tvers: -rx * uy + ry * ux };
 }
 
+/** Den glatte fjellsiden (uten støy) i avstand r fra toppen; brukes til botnbunnens høyde. */
+function grunnform(r: number) {
+  return 26 + 300 / (1 + (r / 188) ** 2.3) - 24 * Math.exp(-(((r - 175) / 70) ** 2));
+}
+
 /**
- * Skålen til bre k ved fremdrift a. Bakveggen arbeider seg innover mot toppen, og skålen er åpen
- * nedover (ingen vegg på utsiden). e < 1 er inne i skålen.
+ * Formen på botn k ved fremdrift a: midten (`midt`) flytter seg innover mot toppen og skålen vokser.
+ * `bak` er bakkanten (ρ = 1 inn mot toppen), `B` halv bredde.
+ */
+export function botnForm(a: number) {
+  const sa = smooth(a);
+  const midt = lerp(190, 116, sa);
+  const rInn = lerp(52, 84, sa);
+  const rUt = lerp(56, 74, sa);
+  const B = lerp(50, 80, sa);
+  return { sa, midt, rInn, rUt, B, bak: midt - rInn, gulv: grunnform(midt) - lerp(8, 92, sa) };
+}
+
+/**
+ * Skålen til bre k: en glatt flate T = gulv + H·ρ², der ρ er normalisert avstand fra skålmidten.
+ * H er stor inn mot toppen (bakveggen krummer bratt bakover og oppover), middels mot sidene og liten
+ * mot munningen, så skålen får en lav terskel og går mykt over i fjellsiden nedenfor (der T blir
+ * høyere enn fjellsiden). Gulvet heller svakt utover.
  */
 function skaal(k: number, x: number, y: number, a: number) {
   const { langs, tvers } = lokal(k, x, y);
-  const sa = smooth(a);
-  const bak = lerp(136, 56, sa);
-  const midt = bak + 64;
-  const B = lerp(54, 70, sa);
-  const Lin = midt - bak;
-  const Lut = 84;
-  const u = (langs - midt) / (langs < midt ? Lin : Lut);
-  const e = u * u + (tvers / B) ** 2;
-  return { e, langs, tvers, bak, midt, B };
+  const f = botnForm(a);
+  const dl = (langs - f.midt) / (langs < f.midt ? f.rInn : f.rUt);
+  const dt = tvers / f.B;
+  const rho2 = dl * dl + dt * dt;
+  const andel = rho2 > 1e-6 ? (dl * dl) / rho2 : 0;
+  const Hside = lerp(46, 84, f.sa);
+  const H = dl < 0 ? lerp(Hside, lerp(70, 140, f.sa), andel) : lerp(Hside, lerp(22, 44, f.sa), andel);
+  const gulv = f.gulv - 0.16 * (langs - f.midt);
+  return { e: rho2, dl, langs, tvers, bak: f.bak, midt: f.midt, B: f.B, gulv, flate: gulv + H * rho2 };
 }
-
-/** Skålbunnen: heller svakt utover, og stiger mot sidene (skålform). */
-function bunnHoyde(langs: number, tvers: number, bak: number, B: number) {
-  return 150 - 0.42 * (langs - bak) + 34 * (tvers / B) ** 2;
-}
-
-const TOPP_HOYDE = 316;
 
 /** Myk minimum (k = rundingsbredde). */
 function smin(a: number, b: number, k: number) {
   return Math.min(a, b) - k * Math.log1p(Math.exp(-Math.abs(a - b) / k));
 }
 
-/** Bergoverflaten (uten is). */
+/**
+ * Bergoverflaten (uten is). Skålene skjærer inn i høydefeltet: først hard minimum mellom skålene (der
+ * to skåler møtes blir ryggen skarp: egg, og der flere møtes blir toppen spiss: tind), så myk minimum
+ * mot fjellsiden, så kanten mot det urørte fjellet blir avrundet.
+ */
 export function bergHoyde(x: number, y: number, grav: number[]) {
-  let h = massiv(x, y);
+  const h = massiv(x, y);
+  let skaaler = Infinity;
   for (let k = 0; k < 4; k++) {
     const a = grav[k];
     if (a <= 0.001) continue;
-    const { e, langs, tvers, bak, midt, B } = skaal(k, x, y, a);
-    if (e > 2.2) continue;
-    const bunn = bunnHoyde(langs, tvers, bak, B);
-    // bratt vegg rundt skålen, brattest inn mot toppen (bakveggen)
-    let mal = e < 1 ? bunn : bunn + (e - 1) * (langs < midt ? 135 : 85);
-    // utenfor terskelen blir skålen grunnere, så den åpner seg nedover fjellsiden (ingen renne)
-    const dybde = 120 * (1 - smooth((langs - bak - 110) / 60));
-    mal = Math.max(mal, h - dybde);
-    if (mal >= h + 8) continue;
-    // myk minimum: kanten blir skarp, men uten trappetrinn i rutenettet
-    h = lerp(h, smin(h, mal, 7), smooth(a * 1.2));
+    const s = skaal(k, x, y, a);
+    // en ny bre begynner med en grunn forsenkning; skålen tones inn
+    skaaler = Math.min(skaaler, s.flate + (1 - smooth(a / 0.25)) * 260);
   }
-  // Bakveggen når opp mot toppen: hver bre som har gravd langt inn, flater ut fjellsiden mot toppen.
-  // Fra fire sider står toppen igjen som en spiss med fire flater og skarpe rygger mellom dem (tind).
-  for (let k = 0; k < 4; k++) {
-    const a = smooth((grav[k] - 0.55) / 0.45);
-    if (a <= 0.001) continue;
-    const { langs, tvers } = lokal(k, x, y);
-    if (langs < -30 || langs > 55 || Math.abs(tvers) > langs + 60) continue;
-    const flate = TOPP_HOYDE - 1.55 * langs;
-    if (flate >= h + 8) continue;
-    // bare øverst mot toppen; lenger ned er det bakveggen til skålen som gjelder
-    const nar = 1 - smooth((langs - 22) / 30);
-    h = lerp(h, smin(h, flate, 5), a * nar);
-  }
-  return h;
+  if (skaaler >= h + 40) return h;
+  return smin(h, skaaler, 9);
 }
 
 /**
- * Istykkelse fra bre k. Isen fyller skålen med en jevn, svakt hvelvet overflate (som en ekte botnbre),
- * så kanten følger en høydekote langs veggene. Overflaten stiger litt opp mot bakveggen.
+ * Istykkelse fra bre k. Isen følger skålbunnen med en jevn, svakt hvelvet overflate som stiger litt
+ * opp mot bakveggen, og flyter ut over terskelen som en kort tunge nedover fjellsiden.
  */
 function isTykkelse(k: number, x: number, y: number, tilstand: BotnTilstand, berg: number) {
   const g = tilstand.is[k];
   if (g <= 0.001) return 0;
-  const { e, langs, tvers, bak, midt, B } = skaal(k, x, y, tilstand.grav[k]);
-  if (e > 1.3) return 0;
-  const ut = 1 - smooth((langs - midt - 20) / 90);
+  const s = skaal(k, x, y, tilstand.grav[k]);
+  const dt = s.tvers / s.B;
+  if (s.dl < -1.2 || s.dl > 2.2 || Math.abs(dt) > 1.25) return 0;
+  // overflaten: litt over gulvet, høyere mot bakveggen, og den faller raskere utenfor terskelen
   const niva =
-    bunnHoyde(langs, 0, bak, B) + g * (10 + 22 * ut) + 26 * g * (1 - smooth((langs - bak) / 55)) - 5 * (tvers / B) ** 2;
-  const maske = 1 - smooth((e - 0.95) / 0.3);
+    s.gulv + g * (12 + 22 * Math.max(0, -s.dl) ** 1.5) - 6 * dt * dt - 60 * Math.max(0, s.dl - 0.55) ** 2 * (1 + dt * dt);
+  const maske = (1 - smooth((Math.abs(dt) - 0.9) / 0.35)) * (1 - smooth((s.dl - 1.3) / 0.4)) * (1 - smooth((-s.dl - 0.95) / 0.3));
   // en ny, liten bre ligger som et tynt lag i forsenkningen før den har gravd ut en skål
-  const tynn = g * 15 * (1 - smooth((e - 0.25) / 0.65)) * smooth((langs - bak + 6) / 46);
+  const tynn = g * 15 * (1 - smooth((s.e - 0.25) / 0.65));
   return Math.max(Math.max(0, niva - berg) * maske, tynn);
 }
 
@@ -161,15 +161,32 @@ function breerVed(x: number, y: number, t: BotnTilstand, T: number) {
   let sn = 0;
   for (let k = 0; k < 4; k++) {
     if (t.is[k] <= 0.001) continue;
-    if (skaal(k, x, y, t.grav[k]).e < 1.3) sn = Math.max(sn, 1 - smooth(t.is[k] * 2.2));
+    if (skaal(k, x, y, t.grav[k]).e < 1.6) sn = Math.max(sn, 1 - smooth(t.is[k] * 2.2));
   }
   return sn;
 }
 
-/** Overflaten som tegnes: berg + is. */
+/**
+ * Vannflaten i bunnen av en botn (eller −∞): når isen er borte, kan det samle seg vann i forsenkningen
+ * bak terskelen. Flaten ligger litt over det laveste punktet i skålbunnen.
+ */
+function vannNiva(x: number, y: number, t: BotnTilstand, berg: number) {
+  if (t.vann <= 0.001) return -Infinity;
+  for (let k = 0; k < 4; k++) {
+    if (t.grav[k] < 0.6) continue;
+    const s = skaal(k, x, y, t.grav[k]);
+    if (s.e > 0.7 || s.dl < -0.7 || s.dl > 0.45) continue;
+    const f = botnForm(t.grav[k]);
+    const niva = f.gulv + 5 * t.vann;
+    if (berg < niva) return niva;
+  }
+  return -Infinity;
+}
+
+/** Overflaten som tegnes: berg + is (eller vann). */
 export function overflate(x: number, y: number, t: BotnTilstand) {
   const b = bergHoyde(x, y, t.grav);
-  return b + isHoyde(x, y, t, b);
+  return Math.max(b + isHoyde(x, y, t, b), vannNiva(x, y, t, b));
 }
 
 /* ---------- farger ---------- */
@@ -181,8 +198,14 @@ const SNO: Rgb = [236, 242, 246];
 const IS: Rgb = [188, 216, 232];
 const IS_KANT: Rgb = [150, 186, 208];
 
+const VANN: Rgb = [58, 104, 132];
+
 export function farge(x: number, y: number, z: number, helning: number, t: BotnTilstand): Rgb {
   const { fbm } = stoy();
+  if (t.vann > 0.001) {
+    const b = bergHoyde(x, y, t.grav);
+    if (vannNiva(x, y, t, b) > b + 0.4) return blandRgb(VANN, [92, 140, 168], smooth((z - b) / 6) * 0.3);
+  }
   const T = isHoyde(x, y, t);
   const v = fbm(x / 18, y / 18, 2);
   let c = blandRgb(BERG, BERG_MORK, smooth((helning - 0.9) / 1.2) * 0.85 + v * 0.12);
@@ -213,19 +236,20 @@ export function tilstandVed(p: number, frys = Infinity): BotnTilstand {
     smooth(steg(1, 2.4, pg)) * 0.8 + smooth(steg(2.4, 4, pg)) * 0.2,
     smooth(steg(2, 3.3, pg)) * 0.85 + smooth(steg(3.3, 4, pg)) * 0.15,
     smooth(steg(3, 4, pg)),
-    smooth(steg(3.25, 4, pg)),
+    smooth(steg(3.1, 4, pg)),
   ];
-  const smelt = 1 - smooth(steg(4.05, 4.85, p));
+  const smelt = 1 - smooth(steg(4.0, 4.35, p));
   const is = [
     smooth(steg(0.05, 0.9, p)) * smelt,
-    smooth(steg(2, 2.45, p)) * smelt,
-    smooth(steg(3, 3.35, p)) * smelt,
-    smooth(steg(3.2, 3.55, p)) * smelt,
+    smooth(steg(2.0, 2.35, p)) * smelt,
+    smooth(steg(3.0, 3.3, p)) * smelt,
+    smooth(steg(3.05, 3.35, p)) * smelt,
   ];
-  return { grav, is, sno: 1 };
+  const vann = smooth(steg(4.3, 4.8, p));
+  return { grav, is, sno: 1, vann };
 }
 
 /** Hvor skarp ryggen mellom sv og so er (0 = bred, 1 = skarp), til måleren. */
 export function ryggSkarphet(grav: number[]) {
-  return clamp(Math.min(grav[0], grav[1]) * 1.05);
+  return clamp(Math.min(grav[0], grav[1]) * 1.25);
 }

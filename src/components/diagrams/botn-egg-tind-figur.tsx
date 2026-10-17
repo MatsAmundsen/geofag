@@ -12,7 +12,7 @@
  */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
-import { clamp, figureFont, lerp, smooth, useInView } from "./isbre-kit";
+import { clamp, figureFont, lerp, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figur";
 import { lagKornTekstur, lat, prng, useFigurSmal, useTidslinje, type Korn } from "./prosess-kit";
@@ -23,7 +23,9 @@ import {
   BT_D,
   BT_W,
   TOPP,
+  BREER,
   bergHoyde,
+  botnForm,
   farge,
   isHoyde,
   overflate,
@@ -64,7 +66,7 @@ const SMAL: Oppsett = {
   linse: { cx: 260, cy: 664, r: 112 },
 };
 
-const KAMERA = { kx: 0.26, hevning: 36, overdriv: 1.05 };
+const KAMERA = { kx: 0.26, hevning: 40, overdriv: 1.05 };
 
 /** Profillinjen A–B går vest–øst gjennom bunnen av de to fremste botnene. */
 const AB_Y = 163;
@@ -81,14 +83,15 @@ const FARGE = {
 };
 
 /** Retningsvektorer for de fire breene (som i modellen). */
-const RETN: [number, number][] = [225, 315, 45, 135].map((v) => [Math.cos((v * Math.PI) / 180), Math.sin((v * Math.PI) / 180)]);
+const RETN: [number, number][] = BREER.map(({ vinkel: v }) => [Math.cos((v * Math.PI) / 180), Math.sin((v * Math.PI) / 180)]);
 /** Punkt i verden for bre k: `langs` ut fra toppen, `tvers` på tvers. */
 const brePunkt = (k: number, langs: number, tvers = 0): [number, number] => {
   const [ux, uy] = RETN[k];
   return [TOPP[0] + ux * langs - uy * tvers, TOPP[1] + uy * langs + ux * tvers];
 };
-/** Bakveggens og skålmidtens avstand fra toppen ved fremdrift a (som i modellen). */
-const bakVed = (a: number) => lerp(136, 56, smooth(a));
+/** Bakkanten til skålen (avstand fra toppen) ved fremdrift a, fra modellen. */
+const bakVed = (a: number) => botnForm(a).bak;
+const midtVed = (a: number) => botnForm(a).midt;
 
 function tilstandNokkel(t: BotnTilstand) {
   return [...t.grav, ...t.is].map((v) => v.toFixed(3)).join(",");
@@ -179,8 +182,8 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
   const P3 = (x: number, y: number, dz = 0) => proj(x, y, overflate(x, y, t) + dz);
   const g0 = t.grav[0];
   const g1 = t.grav[1];
-  const botnGulv = brePunkt(0, bakVed(g0) + 66);
-  const bakvegg = brePunkt(0, bakVed(g0) + 4);
+  const botnGulv = brePunkt(0, midtVed(g0));
+  const bakvegg = brePunkt(0, midtVed(g0) - 0.85 * botnForm(g0).rInn);
   // eggen mellom sv og so ligger rett sør for toppen, der skålene møtes
   const eggPkt: [number, number] = [TOPP[0], TOPP[1] - 56];
   const toppPkt = P3(TOPP[0], TOPP[1], 2);
@@ -189,16 +192,22 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
   const gulvS = P3(...botnGulv);
   const bakS = P3(...bakvegg);
   const eggS = P3(...eggPkt, 1);
-  const iceS = P3(...brePunkt(0, bakVed(g0) + 56), 2);
+  const iceS = P3(...brePunkt(0, midtVed(g0) - 8), 2);
   const vb = (x: number, y: number) => [x, y] as [number, number];
   if (fase === 1) {
-    labels.push({ text: "Liten bre i en forsenkning", x: 20, y: 192, at: iceS, size: fs, weight: 700, color: "#cfe9f8", badge: vb(gulvS[0] - 70, gulvS[1] + 36) });
+    labels.push({ text: "Liten bre i en forsenkning", x: 20, y: 192, at: iceS, size: fs, weight: 700, color: "#cfe9f8", badge: vb(gulvS[0] - 50, gulvS[1] + 62) });
   }
   if (fase >= 2) {
-    labels.push({ text: fase === 2 ? "Botn: skålform" : "Botn", x: 20, y: 258, at: gulvS, size: fs, weight: 700, color: "#f3eee2", badge: vb(gulvS[0] - 72, gulvS[1] + 30) });
+    labels.push({ text: fase === 2 ? "Botn: skålform" : "Botn", x: 20, y: 258, at: gulvS, size: fs, weight: 700, color: "#f3eee2", badge: vb(gulvS[0] - 50, gulvS[1] + 62) });
   }
-  if (fase === 2 || fase === 5) {
-    labels.push({ text: "Bratt bakvegg", x: 20, y: 150, at: bakS, size: fs, weight: 700, color: "#f0b27a", badge: vb(bakS[0] - 70, bakS[1] - 22) });
+  if (fase === 2) {
+    labels.push({ text: "Bratt bakvegg: brytes ned av frost og steinsprang", x: 20, y: 150, at: bakS, size: fs, weight: 700, color: "#f0b27a", badge: vb(bakS[0] - 70, bakS[1] - 22) });
+    const steinPkt = P3(...brePunkt(0, midtVed(g0) + 0.25 * botnForm(g0).rUt, -0.18 * botnForm(g0).B), 1);
+    labels.push({ text: "Steinene havner på breen, og breen frakter dem bort", x: 20, y: 316, at: steinPkt, size: fs, weight: 700, color: "#e6d3b8", badge: vb(steinPkt[0] - 40, steinPkt[1] + 40) });
+  }
+  if (fase === 5) {
+    const vannPkt = P3(...brePunkt(0, midtVed(g0) + 4), 0);
+    labels.push({ text: "Vann i bunnen av botnen", x: 20, y: 316, at: vannPkt, size: fs, weight: 700, color: "#9fd0ee", badge: vb(vannPkt[0] - 46, vannPkt[1] + 36) });
   }
   if (fase >= 3) {
     labels.push({
@@ -210,11 +219,33 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
       size: fs,
       weight: 700,
       color: "#f3d27a",
-      badge: vb(eggS[0] + 40, eggS[1] + 46),
+      badge: vb(eggS[0] + 44, eggS[1] - 26),
     });
   }
   if (fase >= 4) {
     labels.push({ text: fase === 4 ? "Tind: spiss topp" : "Tind", x: toppPkt[0] + 70, y: Math.max(26, toppPkt[1] - 22), at: toppPkt, anchor: "start", size: fs, weight: 700, color: "#ffffff", badge: vb(toppPkt[0] + 42, toppPkt[1] + 6) });
+  }
+
+  /* ---- steinsprang: steiner faller fra bakveggen ned på breen og fraktes bort med isen (fase 2–4) ---- */
+  const sprang: { x: number; y: number; r: number; op: number }[] = [];
+  if (fase >= 2 && fase <= 4) {
+    for (const k of [0, 1, 2]) {
+      if (t.is[k] < 0.4 || t.grav[k] < 0.15) continue;
+      const f = botnForm(t.grav[k]);
+      for (let j = 0; j < 4; j++) {
+        const periode = 7 + j * 1.3;
+        const u = ((((beveger ? tl.sek : 0) + j * 2.3 + k * 1.7) / periode) % 1 + 1) % 1;
+        const tv = (j - 1.5) * 0.26 * f.B;
+        const fra = f.midt - 1.18 * f.rInn;
+        const ned = f.midt - 0.72 * f.rInn;
+        const ut = f.midt + 1.05 * f.rUt;
+        // fall nedover bakveggen (raskt, økende fart), så med isen ut mot terskelen
+        const langs = u < 0.18 ? lerp(fra, ned, (u / 0.18) ** 2) : lerp(ned, ut, (u - 0.18) / 0.82);
+        const [x, y] = brePunkt(k, langs, tv * (u < 0.18 ? 1 : 1 - 0.2 * ((u - 0.18) / 0.82)));
+        const [sx, sy] = P3(x, y, 1.5);
+        sprang.push({ x: sx, y: sy, r: (small ? 3.4 : 2.7) * (0.8 + 0.12 * j), op: clamp((1 - u) / 0.12) * clamp(u / 0.03) * clamp((t.is[k] - 0.4) * 3) });
+      }
+    }
   }
 
   /* ---- flytstrøk på isen (sv og so) ---- */
@@ -223,7 +254,7 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     const g = t.is[k];
     if (g < 0.2) continue;
     const bak = bakVed(t.grav[k]);
-    const B = lerp(54, 70, smooth(t.grav[k]));
+    const B = botnForm(t.grav[k]).B;
     const baner: [number, number][][] = [];
     for (const tv of [-0.42, 0, 0.42]) {
       const bane: [number, number][] = [];
@@ -257,8 +288,8 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     abLinje.push(P3(x, AB_Y, 1.2));
   }
   const xVed = (wx: number) => lerp(pr.x, pr.x + pr.w, (wx - AB_X[0]) / (AB_X[1] - AB_X[0]));
-  const svX = brePunkt(0, bakVed(g0) + 64)[0];
-  const soX = brePunkt(1, bakVed(g1) + 64)[0];
+  const svX = brePunkt(0, midtVed(g0))[0];
+  const soX = brePunkt(1, midtVed(g1))[0];
   const profEtiketter: { tekst: string; x: number; y: number; ty: number; farge: string }[] = [];
   const zVed = (wx: number) => zTilY(bergHoyde(wx, AB_Y, t.grav));
   if (g0 > 0.25) profEtiketter.push({ tekst: "botn", x: xVed(svX), y: zVed(svX) - 2, ty: pr.y + fsP + 4, farge: "#f3eee2" });
@@ -301,10 +332,11 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
   if (linseTekst)
     labels.push({
       text: linseTekst,
-      x: linse.cx,
+      // høyrejustert mot figurens høyrekant, så lange etiketter ikke kuttes
+      x: Math.min(linse.cx + R, vbW - 8),
       y: linse.cy + R + 30,
       at: [linse.cx, linse.cy + R * (linseModus === "sno" ? -0.1 : grunn - 0.12)],
-      anchor: "middle",
+      anchor: "end",
       size: fs,
       weight: 700,
       color: "#cfe9f8",
@@ -312,8 +344,10 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
     });
 
   /* ---- målere og tekst ---- */
-  const graver = [0, 1, 2, 3].filter((k) => t.is[k] > 0.3 && t.grav[k] > 0.02 && t.grav[k] < 0.995 && beveger).length;
-  const isFinnes = Math.max(...t.is) > 0.3;
+  // Målerne følger steget (og statusteksten), også ved slutten av hvert steg: steg 1 ingen graver ennå,
+  // steg 2 én, steg 3 to, steg 4 flere; i steg 5 er isen borte. Står isen stille, graver ingen.
+  const graver = beveger ? [0, 1, 2, 4, 0][fase - 1] : 0;
+  const isFinnes = fase < 5 && Math.max(...t.is) > 0.15;
   const graverTekst = graver === 0 ? "ingen" : graver === 1 ? "én" : graver === 2 ? "to" : "flere";
   const status = stille && fase >= 2 && fase <= 4 ? BOTN_STATUS_STILLE : BOTN_STATUS[fase - 1];
   const keys: Key[] = [
@@ -327,7 +361,7 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
   return (
     <div
       ref={wrapRef}
-      className="[&_ol]:min-h-[8.5rem] [&_ol]:content-start [&_p[aria-live]]:min-h-[3.75rem] min-[370px]:[&_p[aria-live]]:min-h-[2.5rem]"
+      className="[&_ol]:min-h-[8.75rem] [&_ol]:content-start [&_p[aria-live]]:min-h-[5.25rem] min-[370px]:[&_p[aria-live]]:min-h-[3.75rem] lg:[&_p[aria-live]]:min-h-[2.5rem]"
     >
       <IsbreFigur
         svgRef={ref}
@@ -393,6 +427,12 @@ export function BotnEggTindFigur({ heading = BOTN_EGG_TIND_TEKST.heading, captio
               {beveger
                 ? flyt.map((f, i) => <Flytstrok key={i} baner={f.baner} sek={sek} fart={12} farge={FARGE.flyt} bredde={small ? 2.2 : 1.8} opasitet={f.op * 0.85} />)
                 : null}
+              {/* steinsprang fra bakveggen, som breen frakter bort */}
+              <g data-nocheck="" aria-hidden="true">
+                {sprang.map((st, i) =>
+                  st.op > 0.02 ? <circle key={i} cx={st.x.toFixed(1)} cy={st.y.toFixed(1)} r={st.r} fill="#5f5953" stroke="#2a2622" strokeWidth="0.8" opacity={st.op} /> : null,
+                )}
+              </g>
               {/* profillinjen A–B på terrenget */}
               <path d={`M${abLinje.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(" L")}`} fill="none" stroke={FARGE.profil} strokeWidth="1.6" strokeDasharray="6 5" opacity="0.9" />
               <text x={abLinje[0][0] - 6} y={abLinje[0][1] + 5} fontSize={fsP} fontWeight={700} fill={FARGE.profil} textAnchor="end" paintOrder="stroke" stroke="#101b22" strokeWidth="3">

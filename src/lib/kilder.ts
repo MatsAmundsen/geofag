@@ -1333,6 +1333,12 @@ export const KILDER = {
       href: "https://www.ngu.no/publikasjon/gardermoen-kartlegging-og-overvaking-av-typelokaliteter-grunnvann-med-antropogen",
     },
     {
+      prefix: "Lilleøren, K. (2025, 12. februar). ",
+      italic: "Botn",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/botn",
+    },
+    {
       prefix: "Mangerud, J. (2025, 9. oktober). ",
       italic: "Weichsel",
       suffix: ". I Store norske leksikon.",
