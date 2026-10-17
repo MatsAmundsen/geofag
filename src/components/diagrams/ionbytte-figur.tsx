@@ -198,6 +198,8 @@ export function IonBytteV2Figur({
   });
   const byttet = (s.inn > 0.5 ? 1 : 0) + andre.filter((a) => a.t > 0.5).length;
   const andel = byttet / (ANDRE.length + 1);
+  // sonen i oversikten følger bare de mange byttene (steg 4–5), ikke det første byttet i linsen
+  const sone = clamp(s.fler);
 
   const status = (medVaeske ? STATUS_MED : STATUS_UTEN)[tl.fase - 1];
 
@@ -358,9 +360,9 @@ export function IonBytteV2Figur({
             {KORN_OVERSIKT.map((k) => (
               <path key={k.navn} d={sti(k.pts.map(t))} fill={k.fyll} />
             ))}
-            {/* ny sammensetning langs korngrensen i korn A */}
-            {andel > 0.01 ? (
-              <g opacity={andel}>
+            {/* ny sammensetning langs korngrensen i korn A: bare i linsen i steg 3, sonen kommer i steg 4 og er full i steg 5 */}
+            {sone > 0.01 ? (
+              <g opacity={sone}>
                 <clipPath id="ib-kornA">
                   <path d={sti(KORN_OVERSIKT[0].pts.map(t))} />
                 </clipPath>
