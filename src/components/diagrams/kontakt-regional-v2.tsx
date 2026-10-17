@@ -229,13 +229,14 @@ function naermest(korn: Korn[], tx: number, ty: number, filter: (k: Korn) => boo
 /** Teksturer og pekepunkter regnes ut lat ved første bruk (ikke når modulen lastes). */
 const teksturer = lat(() => {
   const SEDIMENT = lagKornTekstur({ seed: 1357, avstand: 0.15, typer: 2, inni: iLinse, nokkel: "kr-sediment" });
-  // Hornfels: små, likesidete, tettpakkede korn i tilfeldig retning, finere enn sedimentet (GeoBot1, 16.10)
+  // Hornfels: små, tettpakkede korn i tilfeldig retning, finere enn sedimentet (GeoBot1, 16.10).
+  // Varierende størrelse bryter opp gitteret, og svakt kantete korn (strekk 0,6–0,85) viser at retningen er tilfeldig.
   const HORNFELS = lagKornTekstur({
     seed: 2468,
     avstand: 0.1,
-    storrelse: [0.85, 1],
-    fyllHull: 0.9,
-    strekk: [0.85, 1],
+    storrelse: [0.55, 1],
+    fyllHull: 0.95,
+    strekk: [0.6, 0.85],
     inni: iLinse,
     nokkel: "kr-hornfels",
   });
@@ -819,9 +820,10 @@ export function KontaktRegionalV2Figur({
 
   return (
     // Fast figurhøyde i alle steg (CLS 0): statuslinjen, nummerlisten (smal skjerm, maks 6 merker) og tegnforklaringen får reservert høyde.
+    // Under 360 px brytes lengste status (4 linjer), et listepunkt og tegnforklaringen i regional steg 5 over flere linjer, så de får mer plass der.
     <div
       ref={wrapRef}
-      className="[&_ol]:min-h-[10.125rem] [&_ol]:content-start [&_p[aria-live]]:min-h-[3.75rem] sm:[&_p[aria-live]]:min-h-[2.5rem] max-sm:[&_ul[class*=min-h-5]]:min-h-[2.875rem] max-sm:[&_ul[class*=min-h-5]]:content-start"
+      className="[&_ol]:min-h-[10.125rem] [&_ol]:content-start [&_p[aria-live]]:min-h-[3.75rem] sm:[&_p[aria-live]]:min-h-[2.5rem] max-sm:[&_ul[class*=min-h-5]]:min-h-[2.875rem] max-sm:[&_ul[class*=min-h-5]]:content-start max-[360px]:[&_p[aria-live]]:min-h-[5rem] max-[360px]:[&_ol]:min-h-[178.5px] max-[360px]:[&_ul[class*=min-h-5]]:min-h-[4.5rem]!"
     >
       <IsbreFigur
         svgRef={ref}
