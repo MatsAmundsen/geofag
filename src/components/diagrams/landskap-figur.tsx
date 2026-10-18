@@ -499,24 +499,24 @@ export function LandskapBlokkFigur({
   const isP: [number, number][] = [];
   const havP: [number, number][] = [];
   const viddeP: [number, number][] = [];
-  // ekstra punkter rett ved fjordkanten, så knekken fra brem til fjord blir skarp i snittet
-  let kantX = 214;
-  for (let i = 0; i < 4; i++) kantX = bremIndre(fjordY(kantX));
-  const snittX = [
-    ...Array.from({ length: N + 1 }, (_, k) => lerp(X_START, xMaks, k / N)),
-    kantX,
-    kantX + 4,
-  ]
-    .filter((wx) => wx <= xMaks)
-    .sort((p, q) => p - q);
+  const strandP: [number, number][] = [];
+  // Strandflaten (A5 og B3) ligger ved siden av fjorden, ikke tvers over den. Snittet langs fjordaksen viser
+  // derfor fjordbunnen dyp, som i blokken, og bremmen tegnes som en egen stiplet profil 60 enheter nord for
+  // fjordaksen (der blokken har bremmen), på samme måte som vidda i snittet.
+  const STRAND_AVSTAND = 60;
+  const strandS = b ? t.slutt : t.strand;
+  const snittX = Array.from({ length: N + 1 }, (_, k) => lerp(X_START, xMaks, k / N));
   for (const wx of snittX) {
     const f = felt(wx, fjordY(wx), t, b);
-    // i A5 og B3 viser snittet strandflaten som en nesten flat brem ytterst i vest
-    const zb = bremISnitt(wx, fjordY(wx), f.berg, b ? t.slutt : t.strand);
+    const zb = f.berg;
     bergP.push([xTil(wx), zTilY(zb)]);
     isP.push([xTil(wx), zTilY(zb + f.is + f.topp)]);
     havP.push([xTil(wx), zTilY(Math.max(0, zb + f.is))]);
     viddeP.push([xTil(wx), zTilY(Math.max(0, bergHoyde(wx, fjordY(wx) + 112, t, b)))]);
+    const yS = fjordY(wx) + STRAND_AVSTAND;
+    if (strandS > 0.02 && wx <= bremIndre(yS)) {
+      strandP.push([xTil(wx), zTilY(bremISnitt(wx, yS, bergHoyde(wx, yS, t, b), strandS))]);
+    }
   }
   const havY = zTilY(0);
   const sti = (p: [number, number][]) =>
@@ -530,8 +530,8 @@ export function LandskapBlokkFigur({
     anker?: "start" | "middle" | "end";
   }[] = [];
   const toppTy = pr.y + fsP + 4;
-  // der bremmen krysser havnivå langs snittlinjen (fjordaksen varierer lite her)
-  const xKryss = xTil(bremKryss(fjordY(bremKryss(fjordY(133)))));
+  // der den stiplede strandflaten (ved siden av fjorden) krysser havnivå
+  const xKryss = xTil(bremKryss(fjordY(bremKryss(fjordY(133) + STRAND_AVSTAND)) + STRAND_AVSTAND));
   if (!b && fase === 3) {
     const wx = 330;
     profEtiketter.push({
@@ -548,7 +548,7 @@ export function LandskapBlokkFigur({
   }
   if ((!b && fase === 5) || (b && fase === 3)) {
     // md l. 147: «går fra 60–70 m over til 30–40 m under havnivå» (bare i klassisk modell, steg 5).
-    // Etiketten peker dit bremmen krysser havnivå.
+    // Etiketten peker dit den stiplede strandflaten krysser havnivå.
     profEtiketter.push({
       tekst: !b ? "strandflaten: fra 60–70 m over" : "strandflaten",
       x: xKryss,
@@ -787,6 +787,16 @@ export function LandskapBlokkFigur({
                 strokeDasharray="5 4"
                 opacity="0.85"
               />
+              {strandP.length > 1 ? (
+                <path
+                  d={sti(strandP)}
+                  fill="none"
+                  stroke="#e6e1c8"
+                  strokeWidth="2"
+                  strokeDasharray="2 3"
+                  opacity={Math.round(Math.min(1, strandS) * 100) / 100}
+                />
+              ) : null}
               <line
                 x1={pr.x}
                 x2={pr.x + pr.w}
