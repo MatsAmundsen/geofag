@@ -33,6 +33,11 @@ type Plass = {
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
   /**
+   * Fast tillegg (px) i smal layout fra 640 px vindusbredde (Tailwinds sm), for figurer der verktøylinje og
+   * forklaring endres etter vinduet og ikke etter containeren (KontaktRegional).
+   */
+  smTrinn?: { over: number; under: number };
+  /**
    * For figurer som selv bytter til bred layout ved 560 px tegneflate (Bergartssyklusen): høyden
    * over og under tegneflaten som målte punkter [containerbredde, høyde] per layout, stykkevis lineært
    * mellom punktene og flatt utenfor.
@@ -43,11 +48,6 @@ type Plass = {
   };
   /** Containerbredden der figuren bytter til bred layout, når den har `skala`. Standard 560. */
   bredFra?: 560 | 760;
-  /**
-   * Fast tillegg (px) i smal layout fra 640 px vindusbredde (Tailwinds sm), for figurer der verktøylinje og
-   * forklaring endres etter vinduet og ikke etter containeren (KontaktRegional).
-   */
-  smTrinn?: { over: number; under: number };
 };
 
 /**
