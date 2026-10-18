@@ -142,9 +142,15 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
     lab("Lite høytrykk i høyden", 560, 92, [560, 126], F.kald);
   }
   if (fase === 5) {
-    lab("Sjøbrisfront", 720, 96, [fx - 6, 196], F.tekst);
     lab("Sjøbris", 220, 360, [220, 382], F.sjobris);
-    lab("Byger kan dannes", 560, 220, [fx - 34, 240], F.regn, "end");
+    // Fronten og bygeskya flytter seg innover land gjennom hele steget. Merkelappene følger skya og står
+    // rett over den, uten leder, så ingen strek krysser skya eller termometeret underveis. De vises
+    // først når bygeskya er tegnet opp, så de aldri peker mot tom himmel.
+    if (frontOp >= 0.6) {
+      const sx = Math.min(fx - 4, 885);
+      labels.push({ text: "Byger kan dannes", x: sx, y: 48, color: F.regn, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 43] });
+      labels.push({ text: "Sjøbrisfront", x: sx, y: 72, color: F.tekst, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 67] });
+    }
   }
   if (fase === 6) {
     lab("Landbris, som regel svakere", 270, 360, [270, 384], F.kald);
