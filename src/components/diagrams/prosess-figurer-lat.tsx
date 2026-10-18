@@ -25,6 +25,7 @@ import {
   TERMISK_VIND_TEKST,
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
+import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 
@@ -342,6 +343,60 @@ export const StormbaneFigurLat = jetLat(
   STORMBANE_TEKST,
   { smal: [740, 540], steg: { over: [[250, 119], [311, 119], [312, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 55.75], [416, 55.75], [417, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
   "StormbaneFigur",
+);
+
+/* ---------- Lokale og regionale værsystemer (Geofag 2) ---------- */
+
+/**
+ * Felles mål for kapitlets figurer (viewBox 960 × 540). Høyden over og under tegneflaten er målt mot
+ * ferdig figur (redusert bevegelse, alle steg) ved 320–1280 px vindusbredde, som [containerbredde, px].
+ * Over tegneflaten avhenger litt av vindusbredden (statusfeltet); ved 900 px er den 20 px høyere enn målt her.
+ */
+const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as [number, number], over: [0, 0] as [number, number], under: [0, 0] as [number, number], bredFra: 760 as const };
+
+export const SjobrisFigurLat = lat<FigurProps>(
+  {
+    ...SJOBRIS_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[270, 271], [310, 239], [340, 239], [380, 219], [550, 219], [590, 147]],
+        under: [[270, 312], [310, 286], [550, 286], [590, 260]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
+  () => import("./lokale-sjobris").then((m) => m.SjobrisFigur),
+);
+
+export const SolgangsvindFigurLat = lat<FigurProps>(
+  {
+    ...SOLGANGSVIND_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[270, 271], [310, 239], [340, 239], [380, 219], [430, 219], [490, 187], [550, 187], [590, 147]],
+        under: [[340, 148], [380, 122]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 32]] },
+    },
+  },
+  () => import("./lokale-solgangsvind").then((m) => m.SolgangsvindFigur),
+);
+
+export const SyklonFigurLat = lat<FigurProps>(
+  {
+    ...SYKLON_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[340, 271], [380, 219], [550, 219], [590, 179], [678, 147]],
+        under: [[430, 389], [490, 363]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 32]] },
+    },
+  },
+  () => import("./lokale-syklon").then((m) => m.SyklonFigur),
 );
 
 /** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */
