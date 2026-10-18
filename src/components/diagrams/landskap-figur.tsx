@@ -505,7 +505,9 @@ export function LandskapBlokkFigur({
   const bergP: [number, number][] = [];
   const isP: [number, number][] = [];
   const havP: [number, number][] = [];
-  const viddeP: [number, number][] = [];
+  // vidda i snittet: bare der den ligger over havnivå; der profilen går under havet, slutter linja ved havnivå
+  const viddeDeler: [number, number][][] = [];
+  let viddeForrige: [number, number] | null = null;
   const strandP: [number, number][] = [];
   // Strandflaten (A5 og B3) ligger ved siden av fjorden, ikke tvers over den. Snittet langs fjordaksen viser
   // derfor fjordbunnen dyp, som i blokken, og bremmen tegnes som en egen stiplet profil 60 enheter nord for
@@ -519,7 +521,16 @@ export function LandskapBlokkFigur({
     bergP.push([xTil(wx), zTilY(zb)]);
     isP.push([xTil(wx), zTilY(zb + f.is + f.topp)]);
     havP.push([xTil(wx), zTilY(Math.max(0, zb + f.is))]);
-    viddeP.push([xTil(wx), zTilY(Math.max(0, bergHoyde(wx, fjordY(wx) + 112, t, b)))]);
+    const hV = bergHoyde(wx, fjordY(wx) + 112, t, b);
+    if (viddeForrige && viddeForrige[1] > 0 !== hV > 0) {
+      // krysningen med havnivå, lineært mellom to snittpunkter
+      const [x0, h0] = viddeForrige;
+      const kx = lerp(x0, wx, h0 / (h0 - hV));
+      if (hV > 0) viddeDeler.push([[xTil(kx), zTilY(0)]]);
+      else viddeDeler[viddeDeler.length - 1]?.push([xTil(kx), zTilY(0)]);
+    } else if (hV > 0 && !viddeForrige) viddeDeler.push([]);
+    if (hV > 0) viddeDeler[viddeDeler.length - 1].push([xTil(wx), zTilY(hV)]);
+    viddeForrige = [wx, hV];
     const yS = fjordY(wx) + STRAND_AVSTAND;
     if (strandS > 0.02 && wx <= bremIndre(yS)) {
       strandP.push([xTil(wx), zTilY(bremISnitt(wx, yS, bergHoyde(wx, yS, t, b), strandS))]);
@@ -798,7 +809,10 @@ export function LandskapBlokkFigur({
             />
             <g data-nocheck="" aria-hidden="true">
               <path
-                d={sti(viddeP)}
+                d={viddeDeler
+                  .filter((d) => d.length > 1)
+                  .map(sti)
+                  .join(" ")}
                 fill="none"
                 stroke={FARGE.viddeSnitt}
                 strokeWidth={VIDDE_STREK.bredde}
