@@ -90,6 +90,7 @@ const FARGE = {
   hev: "#f3d27a",
   bolge: "#e9f6fb",
   vidde: "#e3d9a6",
+  strand: "#b2a878",
 };
 
 /** Punkt på vidda (nord for fjorden), brukt til etikett og måler. */
@@ -788,14 +789,27 @@ export function LandskapBlokkFigur({
                 opacity="0.85"
               />
               {strandP.length > 1 ? (
-                <path
-                  d={sti(strandP)}
-                  fill="none"
-                  stroke="#e6e1c8"
-                  strokeWidth="2"
-                  strokeDasharray="2 3"
-                  opacity={Math.round(Math.min(1, strandS) * 100) / 100}
-                />
+                // strandflaten: samme farge som i blokken (STRAND i landskap-modell), tykk og langstiplet, med mørk
+                // kant under så den skiller seg fra den tynne, kortstiplede havnivå-linja også over hav og berg.
+                // Kontrast #b2a878 mot bakgrunnen #0f1a21: 7,4:1; mot den mørke kanten #101b22: 7,3:1.
+                <g opacity={Math.round(Math.min(1, strandS) * 100) / 100}>
+                  <path
+                    d={sti(strandP)}
+                    fill="none"
+                    stroke="#101b22"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d={sti(strandP)}
+                    fill="none"
+                    stroke={FARGE.strand}
+                    strokeWidth="3"
+                    strokeDasharray="10 4"
+                    strokeLinejoin="round"
+                  />
+                </g>
               ) : null}
               <line
                 x1={pr.x}
