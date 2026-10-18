@@ -89,6 +89,18 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
 
   // sjøbrisfronten: fra kysten og innover land i steg 5
   const fx = lerp(470, 900, s.front);
+  // Bygeskya følger fronten og ligger hele veien en fast avstand over terrenget under seg (skjematisk
+  // cumulusbunn ved kondensasjonsnivået). Terrenget stiger mot høyre, så skybunnen måles mot
+  // høyeste punkt under skya (høyre kant). Regnet går fra skybunnen helt ned til bakken.
+  const SKY_S = 0.85;
+  const SKY_LUFT = 45;
+  const skyX = fx - 10;
+  const skyBunn = hoydeVed(LAND, Math.min(skyX + 51, 958)) - SKY_LUFT;
+  const skyY = skyBunn - 28 * SKY_S;
+  const frontBunn = hoydeVed(LAND, fx);
+  const frontH = frontBunn - skyBunn;
+  // regnet faller til venstre for frontfoten (bak fronten), så foten selv er fri
+  const regnStriper = Array.from({ length: 7 }, (_, i) => fx - 58 + i * 7.5);
   const frontOp = fase === 5 ? clamp(s.front * 4) : fase === 6 ? 1 - s.natt : 0;
   const yStasjon = hoydeVed(LAND, STASJON);
   const passert = clamp((fx - STASJON + 20) / 40);
@@ -124,7 +136,10 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   // sola (Sol: kjerne r 24, glød r ≈ 46) som fylt flate
   if (dag > 0.1) hinder.push({ punkt: [150, 80], r: 46 });
   if (fase >= 5 && dag > 0.02) hinder.push({ boks: [STASJON - 8, yStasjon - 136, STASJON + 42, yStasjon] });
-  if (frontOp > 0.1) hinder.push({ boks: [fx - 60, 210, fx + 20, hoydeVed(LAND, fx)] });
+  if (frontOp > 0.1) {
+    hinder.push({ boks: [fx - 70, skyBunn, fx - 4, frontBunn] });
+    hinder.push({ boks: [skyX - 50, skyY - 57, skyX + 52, skyBunn] });
+  }
 
   const labels: Lab[] = [];
   const fs = 16;
@@ -145,15 +160,20 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   }
   if (fase === 5) {
     lab("Sjøbris", 220, 360, [220, 382], F.sjobris);
-    // Fronten og bygeskya flytter seg innover land gjennom hele steget. Merkelappene følger skya og står
-    // rett over den, uten leder, så ingen strek krysser skya eller termometeret underveis. De vises
-    // først når bygeskya er tegnet opp, og tones da inn (frontOp 0,6 → 0,9) i stedet for å poppe opp.
-    // frontOp følger felles avspilling, og ved redusert bevegelse vises sluttbildet direkte.
+    // «Sjøbrisfront» peker på foten av fronten ved bakken (grensen mellom sjøluft og landluft) og følger
+    // den gjennom hele steget. Teksten står i landet like til høyre for og under foten, med kort leder, så
+    // den ikke dekker sky, regn eller termometer. Ved høyre kant stopper teksten, og lederen peker opp til
+    // foten. «Byger kan dannes» står til venstre for bygeskya, uten leder.
+    // Begge vises først når skya og fronten er tegnet opp, og tones inn (frontOp 0,6 → 0,9) i stedet for å
+    // poppe opp. frontOp følger felles avspilling, og ved redusert bevegelse vises sluttbildet direkte.
     if (frontOp >= 0.6) {
-      const sx = Math.min(fx - 4, 885);
       const op = clamp((frontOp - 0.6) / 0.3);
-      labels.push({ text: "Byger kan dannes", x: sx, y: 48, color: F.regn, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 43], opacity: op });
-      labels.push({ text: "Sjøbrisfront", x: sx, y: 72, color: F.tekst, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 67], opacity: op });
+      const bx = skyX - 49 * SKY_S - 12;
+      const by = skyY - 8;
+      labels.push({ text: "Byger kan dannes", x: bx, y: by, color: F.regn, anchor: "end", size: fs, weight: 700, halo: F.halo, badge: [bx - 20, by - 5], opacity: op });
+      const tx = Math.min(fx + 16, 860);
+      const ty = hoydeVed(LAND, tx) + 36;
+      labels.push({ text: "Sjøbrisfront", x: tx, y: ty, at: [fx, frontBunn], color: F.tekst, anchor: "start", size: fs, weight: 700, halo: F.halo, badge: [tx + 40, ty - 5], opacity: op });
     }
   }
   if (fase === 6) {
@@ -210,13 +230,15 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
           {frontOp > 0.02 ? (
             <g opacity={frontOp}>
               <path
-                d={`M${fx - 120} ${hoydeVed(LAND, fx - 120)} L${fx} ${hoydeVed(LAND, fx)} C${fx + 10} 300 ${fx + 4} 230 ${fx - 6} 190 C${fx - 40} 230 ${fx - 90} 300 ${fx - 120} ${hoydeVed(LAND, fx - 120) - 20} Z`}
+                d={`M${fx - 120} ${hoydeVed(LAND, fx - 120)} L${fx} ${frontBunn} C${fx + 10} ${frontBunn - 0.3 * frontH} ${fx + 4} ${frontBunn - 0.7 * frontH} ${fx - 6} ${skyBunn} C${fx - 40} ${skyBunn + 0.3 * frontH} ${fx - 90} ${skyBunn + 0.75 * frontH} ${fx - 120} ${hoydeVed(LAND, fx - 120) - 20} Z`}
                 fill="#cfe8f5"
                 opacity="0.25"
                 data-nocheck=""
               />
-              <Sky x={fx - 10} y={180} s={1.05} byge mork />
-              <Regn x={fx - 50} y={210} w={70} h={Math.max(40, hoydeVed(LAND, fx) - 220)} sek={sek} />
+              <Sky x={skyX} y={skyY} s={SKY_S} byge mork />
+              {regnStriper.map((rx) => (
+                <Regn key={rx} x={rx - 3} y={skyBunn + 2} w={6} n={1} h={hoydeVed(LAND, rx - 10) - skyBunn - 2} sek={sek} />
+              ))}
             </g>
           ) : null}
           {/* natt: landbris og pålandsvind i høyden */}
