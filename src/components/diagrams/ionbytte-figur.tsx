@@ -3,7 +3,7 @@
  * Alle faglige poeng og etiketter følger Mats' tekst i bergarter.md (avsnittet «Metasomatose»).
  * Ingen grunnstoffpar eller mineralnavn, fordi teksten ikke nevner noen. Målerne er relative.
  *
- * Erstatter IonBytteFigur (bergarter-nye-figurer.tsx) i widgeten IonBytte. Den gamle filen er ikke endret.
+ * Brukes i widgeten IonBytte.
  */
 import { useState } from "react";
 import { IsbreFigur, StegVelger, type Key, type Lab } from "./isbre-figur";
