@@ -18,6 +18,7 @@ import {
   type ReactNode,
 } from "react";
 import { useAnimationPlaying } from "./use-motion";
+import { useFellesAvspilling } from "./avspilling";
 import { C, PlayPauseToggle, font } from "./svg-kit";
 import { IsbreFigur, Polys, Skyver, StegVelger, type Key, type Lab } from "./isbre-figur";
 import {
@@ -248,8 +249,9 @@ export function HjulstromInteraktiv({
   heading = "Hjulströms diagram: erodere, transportere eller avsette?",
   caption,
 }: LandformFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const running = motion.playing && visible;
   const t = useTicker(running);
   const [g, setG] = useState(-0.5);
@@ -717,8 +719,9 @@ export function Forvitringsformer({
   caption,
   initialStep,
 }: LandformFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const running = motion.playing && visible;
   const clock = useStepClock(4, running, 3600, 1600, initialStep);
   const t = useTicker(running);
@@ -1373,8 +1376,9 @@ export function ElvaFraKildeTilMunning({
   caption,
   initialStep,
 }: LandformFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const running = motion.playing && visible;
   const clock = useStepClock(3, running, 3400, 1600, initialStep);
   const t = useTicker(running);
@@ -1763,8 +1767,9 @@ export function MeanderOgKroksjo({
   caption,
   initialStep,
 }: LandformFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const running = motion.playing && visible;
   const clock = useStepClock(4, running, 3400, 1600, initialStep);
   const t = useTicker(running);
@@ -2105,8 +2110,9 @@ export function GilbertDelta({
   caption,
   initialStep,
 }: LandformFigurProps) {
-  const motion = useAnimationPlaying();
   const [ref, visible] = useInView<SVGSVGElement>();
+  // felles avspilling: én spiller om gangen, og pause gjelder hele siden
+  const motion = useFellesAvspilling(visible, ref);
   const running = motion.playing && visible;
   const clock = useStepClock(3, running, 3600, 1600, initialStep);
   const t = useTicker(running);
