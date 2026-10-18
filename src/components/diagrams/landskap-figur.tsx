@@ -616,11 +616,24 @@ export function LandskapBlokkFigur({
       skjult: strandP.length < 2,
     },
   ];
+  // «snøgrensen» (B2): over snøgrenselinja, men løftet over det høyeste punktet på berg, is og den prikkede
+  // vidde-linja innenfor etikettens bredde (med runde ender), så linjene ikke krysser teksten (DS1, 320–1280 px).
+  // Ikke høyere enn at den går fri av «Øst» øverst til høyre i snittet.
+  const fsLite = figureFont(12, skala);
+  const snoX = pr.x + pr.w - 8;
+  const snoB = 0.56 * fsLite * "snøgrensen".length + 6;
+  let snoTopp = Infinity;
+  for (const [px, py] of [...bergP, ...isP, ...viddeDeler.flat()])
+    // ett snittpunkt ekstra på hver side, så segmentene som går inn i etikettens bredde også telles
+    if (px >= snoX - snoB - pr.w / N && px <= snoX + 6 + pr.w / N) snoTopp = Math.min(snoTopp, py);
+  const snoY = Math.max(
+    pr.y + fsP + 2 + 4 + 0.75 * fsLite,
+    Math.min(zTilY(SNOGRENSE) - 4, snoTopp - VIDDE_STREK.bredde / 2 - 3),
+  );
   const status = (b ? ANNEN_STATUS : KLASSISK_STATUS)[fase - 1];
   const spor = b ? ANNEN_SPOR : KLASSISK_SPOR;
   const hoyde = viddeHoyde(t, b);
   const himmelId = `${uid}-himmel`;
-  const fsLite = figureFont(12, skala);
 
   return (
     <div
@@ -918,8 +931,8 @@ export function LandskapBlokkFigur({
             ) : null}
             {snoOp > 0.5 ? (
               <text
-                x={pr.x + pr.w - 8}
-                y={zTilY(SNOGRENSE) - 4}
+                x={snoX}
+                y={snoY}
                 fontSize={fsLite}
                 fill={FARGE.sno}
                 textAnchor="end"
