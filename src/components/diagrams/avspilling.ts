@@ -10,7 +10,7 @@
  *
  * Modulen har ingen avhengigheter til figurkoden, så både isbre-kit og prosess-kit kan bruke den.
  */
-import { useEffect, useRef, useSyncExternalStore, type RefObject } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } from "react";
 import { useAnimationPlaying } from "./use-motion";
 
 type Deltaker = {
@@ -125,12 +125,13 @@ export function useDeltaker({
       vurder();
     };
   }, [id, konkurrerer, element]);
+  // uten avhengigheter: retter også opp en «vil spille» som taOver satte på forhånd, men som ikke ble sann
   useEffect(() => {
     const d = deltakere.get(id);
-    if (!d) return;
+    if (!d || d.vilSpille === vilSpille) return;
     d.vilSpille = vilSpille;
     vurder();
-  }, [id, vilSpille]);
+  });
   const aktiv = useSyncExternalStore(
     lytt,
     () => aktivId === id,
@@ -148,11 +149,38 @@ export function settTick(id: number, tick: ((now: number) => void) | null) {
   if (tick) start();
 }
 
-/** Brukeren startet denne: den spiller, de andre venter. */
+/**
+ * Brukeren startet denne: den spiller, de andre venter. Figuren regnes som «vil spille» med en gang,
+ * før den har rendret på nytt; ellers kunne en annen figur få tur i mellomtiden og spille et øyeblikk.
+ * useDeltaker retter verdien etter neste render hvis figuren likevel ikke kan spille.
+ */
 export function taOver(id: number) {
   foretrukket = id;
   brukerPauset = false;
+  const d = deltakere.get(id);
+  if (d?.konkurrerer) d.vilSpille = true;
   vurder();
+}
+
+/**
+ * «Start» trykket mens figuren selv (verktøylinjen med knappen) er på skjermen, men tegningen er
+ * utenfor (for eksempel rett under vinduet): figuren skal likevel spille. Gjelder til brukeren pauser
+ * eller figuren forlater skjermen helt.
+ */
+export function useBrukerStart(element?: RefObject<Element | null>) {
+  const [startet, setStartet] = useState(false);
+  useEffect(() => {
+    if (!startet) return;
+    const el = element?.current;
+    const figur = el?.closest("figure") ?? el;
+    if (!figur || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) setStartet(false);
+    });
+    io.observe(figur);
+    return () => io.disconnect();
+  }, [startet, element]);
+  return [startet, setStartet] as const;
 }
 
 /**

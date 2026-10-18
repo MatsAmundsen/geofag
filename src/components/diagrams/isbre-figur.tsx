@@ -54,7 +54,7 @@ export function StegVelger({
             type="button"
             aria-pressed={active}
             onClick={() => onStep(n)}
-            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
               active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
@@ -129,7 +129,7 @@ export function Faner({
             aria-controls={panelId}
             tabIndex={active ? 0 : -1}
             onClick={() => onVelg(n)}
-            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
               active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
@@ -218,6 +218,8 @@ export type Lab = {
   halo?: string;
   /** Skjules på smal skjerm (f.eks. når utsnittet ikke viser det etiketten peker på). */
   narrowHide?: boolean;
+  /** Opasitet for tekst, leder og nummermerke (f.eks. inntoning i en animasjon). Standard 1. */
+  opacity?: number;
 };
 
 type Box = { x: number; y: number; w: number; h: number };
@@ -472,7 +474,7 @@ function LabelLayer({
           const ux = at && far > 0 ? (at[0] - x) / far : 0;
           const uy = at && far > 0 ? (at[1] - y) / far : 0;
           return (
-            <g key={`${l.text}-${i}`} data-badge={i + 1}>
+            <g key={`${l.text}-${i}`} data-badge={i + 1} opacity={l.opacity !== undefined && l.opacity < 1 ? l.opacity : undefined}>
               {at && far > r + 4 ? (
                 <g data-badge-leader="">
                   <line
@@ -527,7 +529,7 @@ function LabelLayer({
         const seg = leaders[i];
         const color = l.color ?? C.fg;
         return seg && l.at ? (
-          <g key={`leader-${l.text}-${i}`} data-leader="" data-for={l.text}>
+          <g key={`leader-${l.text}-${i}`} data-leader="" data-for={l.text} opacity={l.opacity !== undefined && l.opacity < 1 ? l.opacity : undefined}>
             <line
               x1={seg[0]}
               y1={seg[1]}
@@ -574,6 +576,7 @@ function LabelLayer({
           strokeWidth={4}
           strokeLinejoin="round"
           paintOrder="stroke"
+          opacity={l.opacity !== undefined && l.opacity < 1 ? l.opacity : undefined}
         >
           {l.text}
         </text>
@@ -587,8 +590,10 @@ function LabelLayer({
 export type Key = {
   text: string;
   color: string;
-  kind: "dash" | "line" | "fill" | "symbol" | "crevasse";
+  kind: "dash" | "dot" | "line" | "fill" | "symbol" | "crevasse" | "front";
   symbol?: string;
+  /** Frontsymbol for kind «front»: strek med halvsirkler, trekanter, begge (okkludert) eller vekslende (i ro). */
+  front?: "varm" | "kald" | "okkl" | "ro";
   /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
   off?: boolean;
 };
@@ -606,8 +611,33 @@ function KeySample({ k }: { k: Key }) {
           strokeWidth="2.4"
           strokeDasharray="5 4"
         />
+      ) : k.kind === "dot" ? (
+        <line x1="3" y1="7" x2="28" y2="7" stroke={k.color} strokeWidth="3.6" strokeLinecap="round" strokeDasharray="0.1 6.2" />
       ) : k.kind === "line" ? (
         <line x1="1" y1="7" x2="29" y2="7" stroke={k.color} strokeWidth="3" />
+      ) : k.kind === "front" ? (
+        <g>
+          {k.front === "ro" ? (
+            <>
+              <line x1="1" y1="9" x2="15" y2="9" stroke="#8eb4d4" strokeWidth="2.6" />
+              <line x1="15" y1="9" x2="29" y2="9" stroke="#d07a7a" strokeWidth="2.6" />
+              <path d="M4 9 L8 3 L12 9 Z" fill="#8eb4d4" />
+              {/* halvsirkelen på motsatt side av trekanten, som på kartet */}
+              <path d="M18 9 A4 4 0 0 0 26 9 Z" fill="#d07a7a" />
+            </>
+          ) : (
+            <>
+              <line x1="1" y1="9" x2="29" y2="9" stroke={k.color} strokeWidth="2.6" />
+              {k.front === "varm" ? (
+                <path d="M5 9 A4 4 0 0 1 13 9 Z M17 9 A4 4 0 0 1 25 9 Z" fill={k.color} />
+              ) : k.front === "kald" ? (
+                <path d="M5 9 L9 2.5 L13 9 Z M17 9 L21 2.5 L25 9 Z" fill={k.color} />
+              ) : (
+                <path d="M5 9 L9 2.5 L13 9 Z M17 9 A4 4 0 0 1 25 9 Z" fill={k.color} />
+              )}
+            </>
+          )}
+        </g>
       ) : k.kind === "crevasse" ? (
         <path d="M6 3 L9 12 L12 3 Z M17 3 L20 10 L23 3 Z" fill={k.color} />
       ) : k.kind === "fill" ? (

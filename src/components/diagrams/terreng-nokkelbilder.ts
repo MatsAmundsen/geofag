@@ -20,6 +20,19 @@ function vedLedig(fn: (d: Ledig) => void) {
   return () => clearTimeout(id);
 }
 
+/** Hvor lenge én omgang i ledig tid eller i et bilde får tegne (ms), så ingen oppgave blir lang ved 4x CPU. */
+const BUDSJETT = 8;
+
+/** Neste bilde (rask): brukes når figuren står stille og venter på et bilde. */
+function vedNesteBilde(fn: (d: Ledig) => void) {
+  if (typeof requestAnimationFrame === "undefined") return vedLedig(fn);
+  const id = requestAnimationFrame(() => {
+    const slutt = performance.now() + BUDSJETT;
+    fn({ timeRemaining: () => Math.max(0, slutt - performance.now()) });
+  });
+  return () => cancelAnimationFrame(id);
+}
+
 /* ---------- nøkkelbilder ---------- */
 
 export type BildeJobb = (ctx: CanvasRenderingContext2D) => Generator<void, unknown, void>;
@@ -36,6 +49,8 @@ export class NokkelbildeLager {
   private ko: string[] = [];
   private stopp: (() => void) | null = null;
   private teller = 0;
+  /** Køen haster (figuren står stille uten bilde): tegnes i biter i hvert bilde, ikke bare i ledig tid. */
+  private haster = false;
   constructor(
     private lag: (nokkel: string) => BildeJobb,
     private bredde: number,
@@ -87,14 +102,34 @@ export class NokkelbildeLager {
   /** Ønskede bilder, viktigst først. Lages i ledige øyeblikk. */
   bestill(nokler: string[]) {
     this.ko = nokler.filter((n) => !this.hent(n));
+    this.haster = false;
     if (this.ko.length && !this.stopp) this.kjor();
   }
 
+  /**
+   * Som `tving`, men i biter over flere bilder i stedet for i én lang oppgave: bildene legges først i
+   * køen og tegnes i hvert bilde (maks BUDSJETT ms) til de er ferdige. `varsle` sier fra når de er klare.
+   */
+  hast(nokler: string[]) {
+    const mangler = nokler.filter((n) => !this.hent(n));
+    if (!mangler.length) return;
+    this.ko = [...mangler, ...this.ko.filter((n) => !mangler.includes(n))];
+    if (!this.haster) {
+      this.haster = true;
+      this.stopp?.();
+      this.stopp = null;
+    }
+    if (!this.stopp) this.kjor();
+  }
+
   private kjor() {
-    this.stopp = vedLedig((frist) => {
+    const planlegg = this.haster ? vedNesteBilde : vedLedig;
+    this.stopp = planlegg((frist) => {
       this.stopp = null;
       let ferdige = 0;
-      while (this.ko.length && frist.timeRemaining() > 3) {
+      // ledig tid kan vare opptil 50 ms; tegn likevel bare BUDSJETT ms per omgang
+      const slutt = performance.now() + BUDSJETT;
+      while (this.ko.length && frist.timeRemaining() > 3 && performance.now() < slutt) {
         const n = this.ko[0];
         const b = this.bilder.get(n) ?? this.nytt(n);
         if (!b.jobb || b.jobb.next().done) {
@@ -104,6 +139,7 @@ export class NokkelbildeLager {
         }
       }
       if (ferdige) this.varsle();
+      if (!this.ko.length) this.haster = false;
       if (this.ko.length) this.kjor();
     });
   }

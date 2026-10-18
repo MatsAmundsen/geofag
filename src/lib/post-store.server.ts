@@ -1145,6 +1145,21 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "isbreer-og-landformer",
     stale: ["En liten bre i en forsenkning skurer ut en skålform med bratt bakvegg."],
   },
+  {
+    // Jetstrømmer: tropopausen, Rossby-bølger, blokkering (med Arktis-setningen 1b) og jetstreak-avsnittet
+    // (del 4) fra Fagredaktør Geo, nye kildebokstaver og widget-linjene JetVestOst og JetStormbane,
+    // godkjent av Mats 18.10. Flagget er byttet da jetstreak-avsnittet kom inn, så en base som allerede
+    // fikk den første versjonen (uten avsnittet) også blir overskrevet.
+    flag: "jetstrommer-tekster-jetstreak-2026-10-18",
+    slug: "jetstrommer",
+    stale: ["polarfrontjetstrømmen (Store norske leksikon, u.å.).", "JetVestOst\n```\n\n```widget\nJetStreak"],
+  },
+  {
+    // Værkart: setning om skydekket i stasjonsplottet (åttedeler), godkjent av Mats 18.10.
+    flag: "vaerkart-skydekke-2026-10-18",
+    slug: "vaerkart",
+    stale: ["standardiserte (NOAA, u.å.-f).\n\n```widget\nStationModel"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
