@@ -52,6 +52,20 @@ type Plass = {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
   };
+  /**
+   * Jetstrømmer-figurene (StegFigur): målte punkter [containerbredde, høyde], stykkevis lineært og flatt
+   * utenfor, for begge layoutene (bytter ved 760 px tegneflate). Statuslinja og minstehøyden på den
+   * nummererte forklaringen følger vindusbredden i figuren (STATUS_H og [&_ol]:min-h), så de reserveres
+   * med de samme mediespørringene her.
+   */
+  steg?: {
+    /** Over tegneflaten, uten statuslinja. */
+    over: [number, number][];
+    /** Den nummererte forklaringen (naturlig høyde, 0 i bred layout). */
+    liste: [number, number][];
+    /** Resten under tegneflaten (tegnforklaring, notater). */
+    under: [number, number][];
+  };
 };
 
 /**
@@ -109,11 +123,21 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
         </span>
       }
     >
-      <div className="@container" style={stil} data-plassholder="">
-        <div className={over} />
-        <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
-        <div className={under} />
-      </div>
+      {plass.steg ? (
+        <div className="@container" style={stil} data-plassholder="">
+          <div style={{ height: stykkevis(plass.steg.over) }} />
+          <div className="h-[7.5rem] min-[480px]:h-[5rem] min-[900px]:h-[3.75rem]" />
+          <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
+          <div className="min-h-[5.5rem] min-[760px]:min-h-0" style={{ height: stykkevis(plass.steg.liste) }} />
+          <div style={{ height: stykkevis(plass.steg.under) }} />
+        </div>
+      ) : (
+        <div className="@container" style={stil} data-plassholder="">
+          <div className={over} />
+          <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
+          <div className={under} />
+        </div>
+      )}
     </FigureFrame>
   );
 }
@@ -213,17 +237,54 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
 );
 
 /* Jetstrømmer: alle figurene ligger i jetstrommer-figurer.tsx og lastes først når de nærmer seg skjermen. */
-// Mål 18.10: smal = narrowViewBox; under målt mot ferdig figur ved containerbredde 340 og 678 px (poster-spalten ved 390 og 1280 px vindu).
+// Mål 18.10: smal = narrowViewBox. steg = målt mot ferdig figur (produksjonsbuild) på /tema/jetstrommer for hver containerbredde
+// 250–806 px (vindu 300–1100 px, plass-sveip2.mjs), med stykkevis lineære overganger på 1 px der teksten brytes om.
 const JET_MAAL = { smal: [560, 540] as [number, number], bred: [960, 540] as [number, number], over: [190, 150] as [number, number], under: [120, 90] as [number, number] };
-const jetLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL>, navn: keyof typeof import("./jetstrommer-figurer")) =>
+const jetLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL> & Pick<Plass, "steg">, navn: keyof typeof import("./jetstrommer-figurer")) =>
   lat<FigurProps>({ ...tekst, ...JET_MAAL, ...maal }, () => import("./jetstrommer-figurer").then((m) => m[navn] as ComponentType<FigurProps>));
 
-export const JetProfilFigurLat = jetLat(JET_PROFIL_TEKST, { smal: [960, 540], under: [210.75, 100.88] }, "JetProfilFigur");
-export const TermiskVindFigurLat = jetLat(TERMISK_VIND_TEKST, { smal: [960, 540], under: [210.75, 100.88] }, "TermiskVindFigur");
-export const VestOstFigurLat = jetLat(VEST_OST_TEKST, { smal: [960, 540], under: [142.88, 16.87] }, "VestOstFigur");
-export const JetStreakFigurLat = jetLat(JETSTREAK_TEKST, { smal: [960, 540], under: [242.63, 122.75] }, "JetStreakFigur");
-export const JetSlyngerFigurLat = jetLat(JET_SLYNGER_TEKST, { smal: [740, 540], under: [192.75, 72.87] }, "JetSlyngerFigur");
-export const JetSesongFigurLat = jetLat(JET_SESONG_TEKST, { smal: [740, 540], under: [160.75, 44.87] }, "JetSesongFigur");
-export const JetNaoFigurLat = jetLat(JET_NAO_TEKST, { smal: [740, 540], under: [206.75, 128.87] }, "JetNaoFigur");
-export const JetOmegaFigurLat = jetLat(JET_OMEGA_TEKST, { smal: [640, 540], under: [142.88, 16.87] }, "JetOmegaFigur");
-export const StormbaneFigurLat = jetLat(STORMBANE_TEKST, { smal: [740, 540], under: [178.75, 100.87] }, "StormbaneFigur");
+export const JetProfilFigurLat = jetLat(
+  JET_PROFIL_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 119], [466, 119], [467, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 73.62], [318, 73.62], [319, 55.75], [584, 55.75], [585, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetProfilFigur",
+);
+export const TermiskVindFigurLat = jetLat(
+  TERMISK_VIND_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 151], [259, 151], [260, 119], [363, 119], [364, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 73.62], [261, 73.62], [262, 55.75], [524, 55.75], [525, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "TermiskVindFigur",
+);
+export const VestOstFigurLat = jetLat(
+  VEST_OST_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 119], [337, 119], [338, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[250, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "VestOstFigur",
+);
+export const JetStreakFigurLat = jetLat(
+  JETSTREAK_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 119], [380, 119], [381, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[250, 149.5], [298, 149.5], [299, 131.62], [328, 131.62], [329, 105.62], [427, 105.62], [428, 87.75], [759, 87.75], [760, 75.75], [806, 75.75]] } },
+  "JetStreakFigur",
+);
+export const JetSlyngerFigurLat = jetLat(
+  JET_SLYNGER_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 151], [261, 151], [262, 119], [433, 119], [434, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[250, 55.75], [423, 55.75], [424, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetSlyngerFigur",
+);
+export const JetSesongFigurLat = jetLat(
+  JET_SESONG_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[250, 73.62], [286, 73.62], [287, 55.75], [556, 55.75], [557, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetSesongFigur",
+);
+export const JetNaoFigurLat = jetLat(
+  JET_NAO_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 87], [806, 87]], liste: [[250, 150.5], [283, 150.5], [284, 134], [759, 134], [760, 0], [806, 0]], under: [[250, 55.75], [391, 55.75], [392, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetNaoFigur",
+);
+export const JetOmegaFigurLat = jetLat(
+  JET_OMEGA_TEKST,
+  { smal: [640, 540], steg: { over: [[250, 119], [254, 119], [255, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[250, 55.75], [320, 55.75], [321, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetOmegaFigur",
+);
+export const StormbaneFigurLat = jetLat(
+  STORMBANE_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 119], [311, 119], [312, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 55.75], [416, 55.75], [417, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "StormbaneFigur",
+);
