@@ -41,6 +41,13 @@ type Plass = {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
   };
+  /** Containerbredden der figuren bytter til bred layout, når den har `skala`. Standard 560. */
+  bredFra?: 560 | 760;
+  /**
+   * Fast tillegg (px) i smal layout fra 640 px vindusbredde (Tailwinds sm), for figurer der verktøylinje og
+   * forklaring endres etter vinduet og ikke etter containeren (KontaktRegional).
+   */
+  smTrinn?: { over: number; under: number };
 };
 
 /**
@@ -78,11 +85,19 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       "--under-s": stykkevis(sk.smal.under),
       "--under-b": stykkevis(sk.bred.under),
     });
+    const t = plass.smTrinn;
+    if (t) {
+      Object.assign(stil, {
+        "--over-s": `calc(${stykkevis(sk.smal.over)} + var(--sm, 0) * ${t.over}px)`,
+        "--under-s": `calc(${stykkevis(sk.smal.under)} + var(--sm, 0) * ${t.under}px)`,
+      });
+    }
   }
-  // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
-  const over = sk ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
-  const flate = sk ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
-  const under = sk ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
+  // bytte til bred layout: ved 560 px for figurer med egen skala (med mindre bredFra sier 760), ellers ved NARROW_FIGURE_PX (760)
+  const ved560 = sk && (plass.bredFra ?? 560) === 560;
+  const over = ved560 ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  const flate = ved560 ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
+  const under = ved560 ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
     <FigureFrame
       heading={heading ?? plass.heading}
@@ -98,7 +113,7 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
         </span>
       }
     >
-      <div className="@container" style={stil} data-plassholder="">
+      <div className={plass.smTrinn ? "@container sm:[--sm:1]" : "@container"} style={stil} data-plassholder="">
         <div className={over} />
         <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
         <div className={under} />
@@ -159,7 +174,25 @@ export const DiageneseFigurLat = lat<FigurProps>(
 );
 
 export const KontaktRegionalV2FigurLat = lat<FigurProps>(
-  { ...KONTAKT_REGIONAL_TEKST, smal: [520, 700], bred: [960, 540], over: [150, 110], under: [290, 200], faner: [44, 44] },
+  {
+    ...KONTAKT_REGIONAL_TEKST,
+    smal: [520, 700],
+    bred: [960, 540],
+    over: [150, 110],
+    under: [290, 200],
+    faner: [44, 44],
+    // målt mot ferdig figur (redusert bevegelse) ved hver px fra 320 til 1280 px vindusbredde; faner, verktøylinje
+    // og status er med i «over». Fra 640 px vindu blir verktøylinjen og forklaringen lavere (sm), se smTrinn.
+    skala: {
+      smal: {
+        over: [[270, 355], [275.5, 355], [276, 335.7], [282.5, 335.7], [283, 299.7], [288.5, 299.7], [289, 319], [309.5, 319], [310, 299], [315.5, 299], [316, 263], [359.5, 263], [360, 252.5], [372.5, 252.5], [373, 263], [526.5, 263], [527, 227]],
+        under: [[309.5, 434.8], [310, 392.3], [314.5, 392.3], [315, 374.4]],
+      },
+      bred: { over: [[760.5, 207], [761, 195]], under: [[760, 118.1]] },
+    },
+    bredFra: 760,
+    smTrinn: { over: -20, under: -82.2 },
+  },
   () => import("./kontakt-regional-v2").then((m) => m.KontaktRegionalV2Figur),
 );
 

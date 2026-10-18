@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { brandForPath, NAV_GF1, NAV_GF1_ROWS, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,27 @@ function isItemActive(pathname: string, to: string) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  // Den klebrige toppmenyen må ikke skjule fokus eller ankermål (WCAG 2.4.11). Høyden måles og gis til
+  // html som --site-header-h, som scroll-padding-top i styles.css bruker (CSS-reserven gjelder før dette).
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header || typeof ResizeObserver === "undefined") return;
+    const root = document.documentElement;
+    const apply = () =>
+      root.style.setProperty(
+        "--site-header-h",
+        `${Math.ceil(header.getBoundingClientRect().height)}px`,
+      );
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(header);
+    return () => {
+      ro.disconnect();
+      root.style.removeProperty("--site-header-h");
+    };
+  }, []);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const items = navForPath(pathname);
   const brand = brandForPath(pathname);
@@ -25,7 +46,10 @@ export function SiteHeader() {
   const menuRows = items === NAV_GF2 ? NAV_GF2_ROWS : items === NAV_GF1 ? NAV_GF1_ROWS : null;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md"
+    >
       {menuRows ? (
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex min-h-14 items-center justify-between gap-3 py-2">

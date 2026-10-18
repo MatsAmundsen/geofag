@@ -40,6 +40,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    /* Fokus og ankermål havner under den klebrige toppmenyen (WCAG 2.4.11). SiteHeader måler høyden og
+       setter --site-header-h; reserven gjelder før målingen (61 px mobil, 156 px med menyrader fra md). */
+    scroll-padding-top: calc(var(--site-header-h, 4rem) + 0.75rem);
+  }
+
+  @media (min-width: 48rem) {
+    html {
+      scroll-padding-top: calc(var(--site-header-h, 10rem) + 0.75rem);
+    }
   }
 
   body {
@@ -427,11 +436,8 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
     aspect-ratio: 2.2 / 1;
   }
 }
-/* Modellens egne ankre/overskrifter havner under nettstedets sticky header.
-   --jet-header-h settes av JetModel (målt med ResizeObserver) bare på .jet-root. */
-.jet-root :is(h2, h3, section, [id], summary, button, [role="slider"], [role="radio"]) {
-  scroll-margin-top: calc(var(--jet-header-h, 160px) + 0.75rem);
-}
+/* Modellens egne ankre og kontroller havner ikke lenger under den klebrige toppmenyen: html har
+   scroll-padding-top etter den målte menyhøyden (--site-header-h), så JetModel trenger ikke egen scroll-margin. */
 .jet-more__summary {
   display: flex;
   align-items: center;
