@@ -30,7 +30,9 @@ Jetstrømmen ligner en elv. Strømmen er sterkest inn mot kjernen og svakere ut 
 | Retning | Fra vest mot øst | Fra vest mot øst |
 | Når den er sterkest | Om vinteren, når skillet mellom varm og kald luft er tydeligst | Om vinteren, av samme grunn |
 
-Begge ligger der temperaturen endrer seg mye fra sted til sted, og der vinden i høyden derfor blir sterkest (NOAA, u.å.-a). Den fysiske årsaken er temperaturforskjellen: Der kald og varm luft ligger side om side, øker vestavinden med høyden, og jo større temperaturforskjellen er, desto raskere øker den. Dette kalles termisk vind (American Meteorological Society [AMS], u.å.). Polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ligger vanligvis mellom 40° og 70°. De store temperaturforskjellene gir et konsentrert og sterkt, oftest vestlig vindfelt i høyden. Det kalles polarfrontjetstrømmen (Store norske leksikon, u.å.).
+Begge ligger der temperaturen endrer seg mye fra sted til sted, og der vinden i høyden derfor blir sterkest (NOAA, u.å.-a). Den fysiske årsaken er temperaturforskjellen: Der kald og varm luft ligger side om side, øker vestavinden med høyden, og jo større temperaturforskjellen er, desto raskere øker den. Dette kalles termisk vind (American Meteorological Society [AMS], u.å.-a). Polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ligger vanligvis mellom 40° og 70°. De store temperaturforskjellene gir et konsentrert og sterkt, oftest vestlig vindfelt i høyden. Det kalles polarfrontjetstrømmen (Store norske leksikon, u.å.-a).
+
+Tropopausen er grensen mellom troposfæren og stratosfæren. Den ligger på omtrent 17 kilometers høyde i tropene og rundt 8 kilometer i polare strøk, og den har et tydelig brudd ved den subtropiske jetstrømmen og mindre brudd ved jetene lenger mot polen (Store norske leksikon, u.å.-b; American Meteorological Society [AMS], u.å.-b).
 
 ```widget
 JetProfile
@@ -47,6 +49,12 @@ Jorda bruker ett døgn på en omdreining. Ved ekvator er omkretsen størst, så 
 Uten rotasjon ville varm luft fra ekvator gått rett mot polene. Rotasjonen deler sirkulasjonen i tre celler, og den er også grunnen til at jetstrømmen finnes (NOAA, u.å.-a).
 
 ```widget
+JetVestOst
+```
+
+Inne i jetstrømmen finnes det områder der vinden er ekstra sterk. Et slikt område kalles en jetstreak (National Weather Service [NWS], u.å.-a). Lufta øker farten når den strømmer inn i området, i inngangen, og senker farten når den strømmer ut, i utgangen. Mens farten endres, oppstår en vind på tvers av jetstrømmen som kalles ageostrofisk vind (Rose mfl., 2004). For en rett jetstreak på den nordlige halvkule gir det divergens i høyden på høyre side av inngangen og på venstre side av utgangen, sett i strømretningen, og under disse områdene stiger lufta. På venstre side av inngangen og høyre side av utgangen blir det konvergens, og der synker lufta (Rose mfl., 2004). Divergensen i høyden kan få trykket ved bakken til å falle (NWS, u.å.-b).
+
+```widget
 JetStreak
 ```
 
@@ -58,9 +66,15 @@ SjekkJet1
 
 Jetstrømmen ligger ikke stille. Den slynger seg rundt jorda, stiger og synker i høyde og bredde, kan dele seg og danne virvler, og kan forsvinne ett sted og dukke opp et annet. Formen kommer av høytrykk og lavtrykk, varm og kald luft, og årstiden (NOAA, u.å.-a).
 
+De store buktningene i jetstrømmen kan beskrives som Rossby-bølger, og de er flere tusen kilometer lange (Store norske leksikon, u.å.-c). Bølgene flytter seg vanligvis sakte østover, de lengste kan gå vestover, og i forhold til strømmen går de alltid vestover (Store norske leksikon, u.å.-c; AMS, u.å.-c). Du kan lese mer om dem i [NAO](/tema/klima/nao).
+
 Den følger også sola. Om våren, når sola står høyere, flytter gjennomsnittsbanen seg mot polen. Om sommeren på den nordlige halvkule ligger polarjeten typisk nær grensen mellom USA og Canada. Utover høsten flytter den seg mot ekvator igjen (NOAA, u.å.-a).
 
-Langs polarfronten vandrer lavtrykk, oftest mot øst, omtrent med vinden i høyden. De gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.).
+Langs polarfronten vandrer lavtrykk, oftest mot øst, omtrent med vinden i høyden. De gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-a).
+
+```widget
+JetStormbane
+```
 
 ```widget
 NaoForklaring
@@ -87,6 +101,8 @@ JetForms
 ```widget
 JetSeason
 ```
+
+Et blokkerende høytrykk ligger omtrent i ro i flere dager, slik at lavtrykk og værfronter ikke kommer forbi eller må ta en annen vei rundt det (Store norske leksikon, u.å.-d). Ved en omegablokkering har strømmen i høyden form som den greske bokstaven omega (Ω), med en rygg i midten og et tråg på hver side, og ved bakken ligger et stabilt høytrykk mellom to lavtrykk (Store norske leksikon, u.å.-e). Fordi høytrykket flytter seg lite og varer lenge, blir været det samme over tid: Om sommeren kan sola varme opp bakken kraftig, og om vinteren kan det bli svært kaldt, særlig i innlandet (Store norske leksikon, u.å.-e). Noen forskere mener at oppvarmingen av Arktis kan endre jetstrømmen og de store bølgene i den, men FNs klimapanel har lav tillit til at oppvarmingen i Arktis påvirker klimaet på midlere breddegrader, fordi forskningen peker i ulike retninger (Doblas-Reyes mfl., 2021).
 
 ```widget
 JetBlocking
