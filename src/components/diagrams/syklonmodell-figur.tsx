@@ -301,10 +301,11 @@ function etiketter(s: Tilstand): Lab[] {
     });
     out.push({
       text: "Lavtrykket svekkes",
-      x: g.L[0] - 165,
-      y: g.L[1] + 98,
+      // sør for L og under «Mot klokka», så pekelinja går øst for den teksten
+      x: g.L[0] - 60,
+      y: g.L[1] + 140,
       anchor: "end",
-      at: [g.L[0] - 20, g.L[1] + 20],
+      at: [g.L[0] - 6, g.L[1] + 24],
       badge: [g.L[0] - 10, g.L[1] + 95],
       color: FARGE.lav,
     });
