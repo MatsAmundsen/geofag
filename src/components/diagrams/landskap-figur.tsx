@@ -564,6 +564,11 @@ export function LandskapBlokkFigur({
     const wx = 200;
     profEtiketter.push({ tekst: "fjord", x: xTil(wx), y: havY - 2, ty: toppTy, farge: "#9fd0ee" });
   }
+  // Klassisk steg 5 har to linjer. De står én linje høyere enn B3 når linje 1 har plass til venstre for «Øst»
+  // (anslått med 0,58 fs per tegn i halvfet skrift), så linje 2 er fri av den prikkede vidde-linja der den stiger
+  // fra fjorden (DS1, 1024 og 1280 px). I de smaleste figurene står de som før. Tallene er de samme.
+  const hoyt = !b && xKryss + 0.58 * fsP * 30 + 8 < pr.x + pr.w - 8 - 2 * fsP;
+  const ty5 = hoyt ? toppTy : toppTy + fsP + 6;
   if ((!b && fase === 5) || (b && fase === 3)) {
     // md l. 147: «går fra 60–70 m over til 30–40 m under havnivå» (bare i klassisk modell, steg 5).
     // Etiketten peker dit den stiplede strandflaten krysser havnivå.
@@ -571,9 +576,7 @@ export function LandskapBlokkFigur({
       tekst: !b ? "strandflaten: fra 60–70 m over" : "strandflaten",
       x: xKryss,
       y: havY - 1,
-      // Klassisk steg 5 har to linjer. De står én linje høyere enn B3, så linje 2 er fri av den prikkede
-      // vidde-linja der den stiger fra fjorden (DS1, 1024 og 1280 px). Tallene er de samme.
-      ty: !b ? toppTy : toppTy + fsP + 6,
+      ty: ty5,
       farge: "#e6e1c8",
       anker: "start",
     });
@@ -883,7 +886,7 @@ export function LandskapBlokkFigur({
             {!b && fase === 5 ? (
               <text
                 x={xKryss + 8}
-                y={toppTy + fsP + 6}
+                y={ty5 + fsP + 6}
                 fontSize={fsP}
                 fontWeight={700}
                 fill="#e6e1c8"
