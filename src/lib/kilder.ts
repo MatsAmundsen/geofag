@@ -2515,6 +2515,24 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
     },
     {
+      prefix: "National Weather Service [NWS]. (u.å.-a). ",
+      italic: "Jet streak",
+      suffix: ". NWS Glossary.",
+      href: "https://forecast.weather.gov/glossary.php?word=jet+streak",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-b). ",
+      italic: "The 300/200 mb chart",
+      suffix: ". NWS Training.",
+      href: "https://www.weather.gov/source/zhu/ZHU_Training_Page/winds/JetStream_Stuff/300_200_chart.htm",
+    },
+    {
+      prefix: "Rose, S. F., Hobbs, P. V., Locatelli, J. D. & Stoelinga, M. T. (2004). A 10-yr climatology relating the locations of reported tornadoes to the quadrants of upper-level jet streaks. ",
+      italic: "Weather and Forecasting, 19",
+      suffix: "(2), 301–309.",
+      href: "https://doi.org/10.1175/1520-0434(2004)019<0301:AYCRTL>2.0.CO;2",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Polarfront",
       suffix: ".",

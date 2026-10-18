@@ -1144,12 +1144,15 @@ const COPY_RESEEDS: CopyReseed[] = [
     flag: "g1-isbreer-botn-2026-10-17",
     slug: "isbreer-og-landformer",
     stale: ["En liten bre i en forsenkning skurer ut en skålform med bratt bakvegg."],
-  },  {
-    // Jetstrømmer: tropopausen, Rossby-bølger, blokkering (med Arktis-setningen 1b) fra Fagredaktør Geo,
-    // nye kildebokstaver og widget-linjene JetVestOst og JetStormbane, godkjent av Mats 18.10.
-    flag: "jetstrommer-tekster-2026-10-18",
+  },
+  {
+    // Jetstrømmer: tropopausen, Rossby-bølger, blokkering (med Arktis-setningen 1b) og jetstreak-avsnittet
+    // (del 4) fra Fagredaktør Geo, nye kildebokstaver og widget-linjene JetVestOst og JetStormbane,
+    // godkjent av Mats 18.10. Flagget er byttet da jetstreak-avsnittet kom inn, så en base som allerede
+    // fikk den første versjonen (uten avsnittet) også blir overskrevet.
+    flag: "jetstrommer-tekster-jetstreak-2026-10-18",
     slug: "jetstrommer",
-    stale: ["polarfrontjetstrømmen (Store norske leksikon, u.å.)."],
+    stale: ["polarfrontjetstrømmen (Store norske leksikon, u.å.).", "JetVestOst\n```\n\n```widget\nJetStreak"],
   },
 ];
 

@@ -52,6 +52,8 @@ Uten rotasjon ville varm luft fra ekvator gått rett mot polene. Rotasjonen dele
 JetVestOst
 ```
 
+Inne i jetstrømmen finnes det områder der vinden er ekstra sterk. Et slikt område kalles en jetstreak (National Weather Service [NWS], u.å.-a). Lufta øker farten når den strømmer inn i området, i inngangen, og senker farten når den strømmer ut, i utgangen. Mens farten endres, oppstår en vind på tvers av jetstrømmen som kalles ageostrofisk vind (Rose mfl., 2004). For en rett jetstreak på den nordlige halvkule gir det divergens i høyden på høyre side av inngangen og på venstre side av utgangen, sett i strømretningen, og under disse områdene stiger lufta. På venstre side av inngangen og høyre side av utgangen blir det konvergens, og der synker lufta (Rose mfl., 2004). Divergensen i høyden kan få trykket ved bakken til å falle (NWS, u.å.-b).
+
 ```widget
 JetStreak
 ```

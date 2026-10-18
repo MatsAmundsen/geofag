@@ -1,7 +1,6 @@
 /**
  * Tekstene til Jetstrømmer-figurene. Deles med plassholderne, så serveren ikke trenger figurmodulen.
  * Alt bygger på jetstrommer.md: NOAA (u.å.-a; u.å.-b), AMS (u.å.-a) og Store norske leksikon (u.å.-a; u.å.-e). Bokstavene er definert i kilder.ts på jetstrommer-reseed.
- * JetStreak (firekvadrantmodellen) trenger et tekstavsnitt med kilde før merge (venter på Mats).
  */
 export const JET_PROFIL_TEKST = {
   heading: "To jetstrømmer i høyden",
