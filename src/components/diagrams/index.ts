@@ -144,7 +144,6 @@ export {
 } from "./quakes";
 export {
   AvsetningsformerDiagram,
-  BotnEggTindDiagram,
   BreLengdesnittDiagram,
   FrostsprengningDiagram,
   IsostasiSnittDiagram,

@@ -4,8 +4,7 @@
  * (avsnittene «Hva er metamorfe bergarter?», «Kontaktmetamorfose og regional metamorfose», «Fyllitt»,
  * «Gneis» og ordlisten). Målerne er relative og har ingen tall.
  *
- * Erstatter KontaktRegionalMetamorfoseFigur i widgeten KontaktRegional. Den gamle filen
- * (kontakt-regional-figur.tsx) er ikke endret, så åpne PR-er som retter den, ikke får konflikt.
+ * Brukes i widgeten KontaktRegional.
  */
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Faner, IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab } from "./isbre-figur";
