@@ -267,6 +267,10 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
     { p: pf.ost, b: 3 },
   ];
   if (g.O.length > 1) hinder.push({ p: g.O, b: 30 });
+  // skybåndene langs frontene og «L» i sentrum
+  if (0.12 * fr > 0.02) hinder.push({ p: g.W.map(([x, y]) => [x, y - 18] as Pkt), b: 46 }, { p: g.K, b: 22 });
+  if (g.O.length > 1 && 0.14 * fr > 0.02) hinder.push({ p: g.O, b: 40 });
+  hinder.push({ boks: [g.C[0] - 22 - 18, g.C[1] - 40, g.C[0] - 22 + 18, g.C[1]] });
   if (sirkOp > 0.1) hinder.push({ p: sirk.punkter, b: 4 });
   for (const iso of isobarer) if (iso.op > 0.15) hinder.push({ ellipse: [g.C[0], g.C[1], iso.rx, iso.ry], b: 1.6 });
   if (bevOp > 0.1)
@@ -287,7 +291,7 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   } else if (fase === 2) {
     lab("Varmfront", 730, 236, [g.W[12][0], g.W[12][1] - 12], F.varmfront);
     lab("Kaldfront", 420, 456, [g.K[16][0] - 12, g.K[16][1]], F.kaldfront);
-    lab("Kaldfronten tar igjen varmfronten", 290, 372, [g.K[12][0] - 8, g.K[12][1]], F.kaldfront, "end");
+    lab("Kaldfronten tar igjen varmfronten", 290, 296, [g.K[12][0] - 8, g.K[12][1]], F.kaldfront, "end");
   } else if (fase === OKKL_FASE) {
     lab("Okkludert front", g.C[0] + 30, g.C[1] - 70, [g.O[Math.floor(g.O.length / 2)][0], g.O[Math.floor(g.O.length / 2)][1] - 10], F.okkludert);
   } else if (fase === OKKL_FASE + 1 && !SLAA_SAMMEN_STEG_3_OG_4) {

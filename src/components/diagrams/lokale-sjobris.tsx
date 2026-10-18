@@ -116,6 +116,9 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   const hinder: Hinder[] = [...stromer, ...nattStromer]
     .filter((h) => h.opacity > 0.1)
     .map((h) => ({ p: h.punkter, b: h.bredde ?? 4, pil: true }));
+  // terrengkanten og bølgestripene i havet (Hav: y + 12 + k · 18)
+  hinder.push({ p: LAND, b: 1.5 });
+  for (let k = 0; k < 4; k++) hinder.push({ p: [[4, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]], b: 1.4 });
   if (fase >= 5 && dag > 0.02) hinder.push({ boks: [STASJON - 8, yStasjon - 136, STASJON + 42, yStasjon] });
   if (frontOp > 0.1) hinder.push({ boks: [fx - 60, 210, fx + 20, hoydeVed(LAND, fx)] });
 

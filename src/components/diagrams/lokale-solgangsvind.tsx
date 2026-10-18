@@ -211,6 +211,9 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
   const innOp = clamp(s.inn * 3) * (1 - s.natt);
   const hinder: Hinder[] = [];
   if (snitt > 0.1) {
+    // terrengkanten og bølgestripene i havet (Hav: y + 12 + k · 18)
+    hinder.push({ p: LAND, b: 1.5 });
+    for (let k = 0; k < 4; k++) hinder.push({ p: [[4, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]], b: 1.4 });
     if (innOp > 0.1) hinder.push({ p: innPunkter, b: 2 + 4 * s.inn, pil: true });
     for (const h of nattStromer) if (h.opacity > 0.1) hinder.push({ p: h.punkter, b: h.bredde, pil: true });
   }
