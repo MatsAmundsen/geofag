@@ -84,10 +84,11 @@ export type Sporring = {
 
 /**
  * Korteste søkeord (i bokstaver) som også gir treff inne i ord. Kortere ord
- * treffer bare hele ord og starten av ord. 2 = treff inne i ord alltid
- * (dagens valg). Sett til 4 for at «is» og «elv» bare skal treffe ordstart.
+ * treffer bare hele ord og starten av ord. Mats valgte 3 (18.10): «is» treffer
+ * bare helt ord og ordstart, mens «bre» og «elv» også treffer inne i ord
+ * («isbreen», «dalbre», «jordskjelv»). 2 = treff inne i ord alltid.
  */
-export const MIN_INNI_ORD_LENGDE = 2;
+export const MIN_INNI_ORD_LENGDE = 3;
 
 /** Hvor godt et treff passer: 0 = helt ord, 1 = starten av et ord, 2 = inne i et ord. */
 export type Kvalitet = 0 | 1 | 2;

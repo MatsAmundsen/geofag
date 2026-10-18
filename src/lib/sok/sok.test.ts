@@ -40,7 +40,7 @@ test("søket treffer hele ord, ordstart, bøyde former og inne i sammensatte ord
   );
 });
 
-test("«bre» finner «dalbre» og «isbreer», og ett ord gir bare ett treff", () => {
+test("«bre» (3+ bokstaver) finner «dalbre» og «isbreer», og ett ord gir bare ett treff", () => {
   const q = lagSporring("bre")!;
   const t = normaliser("En dalbre og flere isbreer. Bre! Breelva. Brebre.");
   assert.deepEqual(
@@ -53,14 +53,14 @@ test("«bre» finner «dalbre» og «isbreer», og ett ord gir bare ett treff", 
       ["brebre", 1],
     ],
   );
-  // æøå teller som bokstaver: «ør» inne i «fjørå» er ett treff i hele ordet.
-  const q2 = lagSporring("ØR")!;
-  const t2 = normaliser("Fjørå og Ørsta.");
+  // æøå teller som bokstaver: «fjø» inne i «strandfjøra» er ett treff i hele ordet.
+  const q2 = lagSporring("FJØ")!;
+  const t2 = normaliser("Strandfjøra og Fjøra.");
   assert.deepEqual(
     finnTreff(t2, q2).map(([a, b, k]) => [t2.slice(a, b), k]),
     [
-      ["fjørå", 2],
-      ["ørsta", 1],
+      ["strandfjøra", 2],
+      ["fjøra", 1],
     ],
   );
 });
@@ -82,12 +82,18 @@ test("CO2 finner CO₂ og km2 finner km² (senket/hevet skrift), lengden er lik"
   );
 });
 
-test("MIN_INNI_ORD_LENGDE styrer treff inne i ord (standard 2 = alltid)", () => {
-  assert.equal(MIN_INNI_ORD_LENGDE, 2);
-  const t = normaliser("Gradvis is og isbre.");
+test("MIN_INNI_ORD_LENGDE = 3: ord på 2 bokstaver treffer bare helt ord og ordstart", () => {
+  assert.equal(MIN_INNI_ORD_LENGDE, 3);
+  const t = normaliser("Gradvis is og isbre i et mineral.");
   assert.deepEqual(
     finnTreff(t, lagSporring("is")!).map(([a, b]) => t.slice(a, b)),
-    ["gradvis", "is", "isbre"],
+    ["is", "isbre"],
+  );
+  // «bre» (3 bokstaver) finner fortsatt «dalbre» og «isbreen».
+  const t2 = normaliser("En dalbre, isbreen og breen.");
+  assert.deepEqual(
+    finnTreff(t2, lagSporring("bre")!).map(([a, b]) => t2.slice(a, b)),
+    ["dalbre", "isbreen", "breen"],
   );
 });
 
