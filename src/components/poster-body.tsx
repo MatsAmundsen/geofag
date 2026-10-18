@@ -1526,6 +1526,7 @@ export function PosterBody({
             scrollTables={scrollTables}
             wrapTables={wrapTables}
             captionFallback={captionFallback}
+            searchable
           >
             {part.value}
           </Markdown>

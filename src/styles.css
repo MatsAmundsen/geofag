@@ -494,3 +494,51 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   min-height: 100dvh;
   aspect-ratio: auto;
 }
+
+/* Søk: treffet du hoppet til. Farger selve teksten (CSS Custom Highlight API)
+   og tegner en ring i et eget lag, så React-DOM-en ikke endres. */
+::highlight(sok-treff) {
+  background-color: var(--color-lava);
+  color: var(--color-lava-foreground);
+}
+
+::highlight(sok-treff-svak) {
+  background-color: color-mix(in srgb, var(--color-lava) 35%, transparent);
+}
+
+.sok-markering-lag {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+  z-index: 30;
+  pointer-events: none;
+  transition: opacity 0.9s ease-out;
+}
+
+.sok-markering-lag--borte {
+  opacity: 0;
+}
+
+.sok-markering {
+  position: absolute;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--color-lava);
+}
+
+.sok-markering--puls {
+  animation: sok-puls 1.2s ease-out 2;
+}
+
+@keyframes sok-puls {
+  0% {
+    box-shadow:
+      0 0 0 2px var(--color-lava),
+      0 0 0 0 color-mix(in srgb, var(--color-lava) 60%, transparent);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px var(--color-lava),
+      0 0 0 12px transparent;
+  }
+}

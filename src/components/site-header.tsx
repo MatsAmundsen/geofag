@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { brandForPath, NAV_GF1, NAV_GF1_ROWS, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { SiteSearch } from "@/components/sok/site-search";
 
 function isItemActive(pathname: string, to: string) {
   if (to === "/") return pathname === "/";
@@ -133,7 +134,10 @@ export function SiteHeader() {
               isGf2={isGf2}
               onNavigate={() => setOpen(false)}
             />
-            <MenuButton open={open} onClick={() => setOpen((v) => !v)} />
+            <div className="flex shrink-0 items-center gap-2">
+              <SiteSearch />
+              <MenuButton open={open} onClick={() => setOpen((v) => !v)} />
+            </div>
           </div>
           <nav
             className="hidden w-full min-w-0 gap-0.5 border-t border-border/70 py-1.5 md:flex md:flex-col"
@@ -207,7 +211,7 @@ export function SiteHeader() {
             )}
           </div>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Hovedmeny">
+          <nav className="hidden items-center gap-1 md:ml-auto md:flex" aria-label="Hovedmeny">
             {items.map((item) => {
               const active =
                 item.to === "/"
@@ -251,17 +255,20 @@ export function SiteHeader() {
             )}
           </nav>
 
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            aria-expanded={open}
-            aria-controls="mobilmeny"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-            <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
-          </Button>
+          <div className="flex shrink-0 items-center gap-2">
+            <SiteSearch />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              aria-expanded={open}
+              aria-controls="mobilmeny"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+              <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
+            </Button>
+          </div>
         </div>
       )}
 
