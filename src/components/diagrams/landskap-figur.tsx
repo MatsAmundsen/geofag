@@ -571,7 +571,9 @@ export function LandskapBlokkFigur({
       tekst: !b ? "strandflaten: fra 60–70 m over" : "strandflaten",
       x: xKryss,
       y: havY - 1,
-      ty: toppTy + fsP + 6,
+      // Klassisk steg 5 har to linjer. De står én linje høyere enn B3, så linje 2 er fri av den prikkede
+      // vidde-linja der den stiger fra fjorden (DS1, 1024 og 1280 px). Tallene er de samme.
+      ty: !b ? toppTy : toppTy + fsP + 6,
       farge: "#e6e1c8",
       anker: "start",
     });
@@ -581,7 +583,7 @@ export function LandskapBlokkFigur({
     { text: "Hav", color: FARGE.hav, kind: "fill" },
     { text: "Elv og bølger", color: FARGE.elv, kind: "line" },
     {
-      text: "Vidde i snittet (stiplet)",
+      text: "Vidde i snittet (prikket)",
       color: FARGE.viddeSnitt,
       kind: "line",
       strek: VIDDE_STREK,
@@ -881,7 +883,7 @@ export function LandskapBlokkFigur({
             {!b && fase === 5 ? (
               <text
                 x={xKryss + 8}
-                y={toppTy + 2 * (fsP + 6)}
+                y={toppTy + fsP + 6}
                 fontSize={fsP}
                 fontWeight={700}
                 fill="#e6e1c8"
