@@ -959,14 +959,20 @@ const omega: Def<{ a: number }> = {
   notes: ["Sett ovenfra, nord opp", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 40 960 540",
   narrowViewBox: "180 40 640 540",
+  merker: { fra: OM_H, d: 60 },
   tegn: (s, { sek }) => {
     const pts = OMEGA.map(([lo, la]): P => [lo, lerp(54, la, s.a)]);
     return (
       <>
         <NaKart />
-        <Trykk x={OM_H[0]} y={OM_H[1]} kind="H" size={30} opacity={s.a} />
-        <Trykk x={OM_L1[0]} y={OM_L1[1]} kind="L" size={24} opacity={s.a} />
-        <Trykk x={OM_L2[0]} y={OM_L2[1]} kind="L" size={24} opacity={s.a} />
+        {/* H og L vises først når omegaen er formet, så jetlinja ikke går gjennom bokstavene underveis */}
+        {s.a > 0.75 ? (
+          <>
+            <Trykk x={OM_H[0]} y={OM_H[1]} kind="H" size={30} opacity={r1(clamp((s.a - 0.75) / 0.25) * 100) / 100} />
+            <Trykk x={OM_L1[0]} y={OM_L1[1]} kind="L" size={24} opacity={r1(clamp((s.a - 0.75) / 0.25) * 100) / 100} />
+            <Trykk x={OM_L2[0]} y={OM_L2[1]} kind="L" size={24} opacity={r1(clamp((s.a - 0.75) / 0.25) * 100) / 100} />
+          </>
+        ) : null}
         <JetBaand d={naSti(pts)} w={6} sek={sek} />
       </>
     );
