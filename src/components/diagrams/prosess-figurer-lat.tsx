@@ -16,6 +16,7 @@ import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
+import { LANDSKAP_TEKST } from "./landskap-tekst";
 
 type Plass = {
   heading: string;
@@ -54,8 +55,8 @@ type Plass = {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
   };
-  /** Figuren bytter selv til bred layout ved 760 px (IsbreFigur), ikke ved 560 px. Gjelder sammen med `skala`. */
-  brudd760?: boolean;
+  /** Containerbredden der figuren bytter til bred layout, når den har `skala`. Standard 560. */
+  bredFra?: 560 | 760;
 };
 
 /**
@@ -112,8 +113,8 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       "--under-b": stykkevis(sk.bred.under),
     });
   }
-  // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
-  const ved560 = sk && !plass.brudd760;
+  // bytte til bred layout: ved 560 px for figurer med egen skala (med mindre bredFra sier 760), ellers ved NARROW_FIGURE_PX (760)
+  const ved560 = sk && (plass.bredFra ?? 560) === 560;
   const over = ved560 ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
   const flate = ved560 ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
   const under = ved560 ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
@@ -213,6 +214,27 @@ export const BotnEggTindFigurLat = lat<FigurProps>(
   () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
 );
 
+/** Gamle vidder, unge fjorder og strandflaten (landformer): terrenget tegnes i canvas på klienten, serveren viser bare plassholderen. */
+export const LandskapBlokkFigurLat = lat<FigurProps>(
+  {
+    ...LANDSKAP_TEKST,
+    smal: [520, 610],
+    bred: [960, 636],
+    over: [200, 120],
+    under: [400, 260],
+    // målt mot ferdig figur (redusert bevegelse) ved 320–1280 px vindusbredde; faner, verktøylinje og status er med i «over»
+    skala: {
+      smal: {
+        over: [[270, 321], [289, 321], [290, 301.7], [300, 301.7], [310, 321], [320, 285], [339, 285], [340, 265], [379, 265], [380, 249], [400, 249], [410, 238.5], [420, 249], [550, 249], [570, 189]],
+        under: [[290, 578.8], [295, 578.8], [300, 552.8], [470, 553], [500, 526.8], [510, 509.1], [590, 509], [610, 413]],
+      },
+      bred: { over: [[806, 181]], under: [[806, 261]] },
+    },
+    bredFra: 760,
+  },
+  () => import("./landskap-figur").then((m) => m.LandskapBlokkFigur),
+);
+
 export const BergartssyklusFigurLat = lat<FigurProps>(
   {
     ...SYKLUS_TEKST,
@@ -242,7 +264,7 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
  * ferdig figur (redusert bevegelse, alle steg) ved 320–1280 px vindusbredde, som [containerbredde, px].
  * Over tegneflaten avhenger litt av vindusbredden (statusfeltet); ved 900 px er den 20 px høyere enn målt her.
  */
-const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as [number, number], over: [0, 0] as [number, number], under: [0, 0] as [number, number], brudd760: true };
+const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as [number, number], over: [0, 0] as [number, number], under: [0, 0] as [number, number], bredFra: 760 as const };
 
 export const SjobrisFigurLat = lat<FigurProps>(
   {
