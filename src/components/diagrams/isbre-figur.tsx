@@ -218,6 +218,8 @@ export type Lab = {
   halo?: string;
   /** Skjules på smal skjerm (f.eks. når utsnittet ikke viser det etiketten peker på). */
   narrowHide?: boolean;
+  /** Opasitet for tekst, leder og nummermerke (f.eks. inntoning i en animasjon). Standard 1. */
+  opacity?: number;
 };
 
 type Box = { x: number; y: number; w: number; h: number };
@@ -472,7 +474,7 @@ function LabelLayer({
           const ux = at && far > 0 ? (at[0] - x) / far : 0;
           const uy = at && far > 0 ? (at[1] - y) / far : 0;
           return (
-            <g key={`${l.text}-${i}`} data-badge={i + 1}>
+            <g key={`${l.text}-${i}`} data-badge={i + 1} opacity={l.opacity !== undefined && l.opacity < 1 ? l.opacity : undefined}>
               {at && far > r + 4 ? (
                 <g data-badge-leader="">
                   <line
@@ -527,7 +529,7 @@ function LabelLayer({
         const seg = leaders[i];
         const color = l.color ?? C.fg;
         return seg && l.at ? (
-          <g key={`leader-${l.text}-${i}`} data-leader="" data-for={l.text}>
+          <g key={`leader-${l.text}-${i}`} data-leader="" data-for={l.text} opacity={l.opacity !== undefined && l.opacity < 1 ? l.opacity : undefined}>
             <line
               x1={seg[0]}
               y1={seg[1]}
@@ -574,6 +576,7 @@ function LabelLayer({
           strokeWidth={4}
           strokeLinejoin="round"
           paintOrder="stroke"
+          opacity={l.opacity !== undefined && l.opacity < 1 ? l.opacity : undefined}
         >
           {l.text}
         </text>

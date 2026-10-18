@@ -121,6 +121,8 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   // terrengkanten og bølgestripene i havet (Hav: y + 12 + k · 18)
   hinder.push({ p: LAND, b: 1.5 });
   for (let k = 0; k < 4; k++) hinder.push({ p: [[4, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]], b: 1.4 });
+  // sola (Sol: kjerne r 24, glød r ≈ 46) som fylt flate
+  if (dag > 0.1) hinder.push({ punkt: [150, 80], r: 46 });
   if (fase >= 5 && dag > 0.02) hinder.push({ boks: [STASJON - 8, yStasjon - 136, STASJON + 42, yStasjon] });
   if (frontOp > 0.1) hinder.push({ boks: [fx - 60, 210, fx + 20, hoydeVed(LAND, fx)] });
 
@@ -145,11 +147,13 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
     lab("Sjøbris", 220, 360, [220, 382], F.sjobris);
     // Fronten og bygeskya flytter seg innover land gjennom hele steget. Merkelappene følger skya og står
     // rett over den, uten leder, så ingen strek krysser skya eller termometeret underveis. De vises
-    // først når bygeskya er tegnet opp, så de aldri peker mot tom himmel.
+    // først når bygeskya er tegnet opp, og tones da inn (frontOp 0,6 → 0,9) i stedet for å poppe opp.
+    // frontOp følger felles avspilling, og ved redusert bevegelse vises sluttbildet direkte.
     if (frontOp >= 0.6) {
       const sx = Math.min(fx - 4, 885);
-      labels.push({ text: "Byger kan dannes", x: sx, y: 48, color: F.regn, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 43] });
-      labels.push({ text: "Sjøbrisfront", x: sx, y: 72, color: F.tekst, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 67] });
+      const op = clamp((frontOp - 0.6) / 0.3);
+      labels.push({ text: "Byger kan dannes", x: sx, y: 48, color: F.regn, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 43], opacity: op });
+      labels.push({ text: "Sjøbrisfront", x: sx, y: 72, color: F.tekst, anchor: "middle", size: fs, weight: 700, halo: F.halo, badge: [sx, 67], opacity: op });
     }
   }
   if (fase === 6) {
