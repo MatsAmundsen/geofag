@@ -14,6 +14,17 @@ import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
+import {
+  JETSTREAK_TEKST,
+  JET_NAO_TEKST,
+  JET_OMEGA_TEKST,
+  JET_PROFIL_TEKST,
+  JET_SESONG_TEKST,
+  JET_SLYNGER_TEKST,
+  STORMBANE_TEKST,
+  TERMISK_VIND_TEKST,
+  VEST_OST_TEKST,
+} from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
@@ -54,6 +65,20 @@ type Plass = {
   skala?: {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
+  };
+  /**
+   * Jetstrømmer-figurene (StegFigur): målte punkter [containerbredde, høyde], stykkevis lineært og flatt
+   * utenfor, for begge layoutene (bytter ved 760 px tegneflate). Statuslinja og minstehøyden på den
+   * nummererte forklaringen følger vindusbredden i figuren (STATUS_H og [&_ol]:min-h), så de reserveres
+   * med de samme mediespørringene her.
+   */
+  steg?: {
+    /** Over tegneflaten, uten statuslinja. */
+    over: [number, number][];
+    /** Den nummererte forklaringen (naturlig høyde, 0 i bred layout). */
+    liste: [number, number][];
+    /** Resten under tegneflaten (tegnforklaring, notater). */
+    under: [number, number][];
   };
   /** Containerbredden der figuren bytter til bred layout, når den har `skala`. Standard 560. */
   bredFra?: 560 | 760;
@@ -133,11 +158,21 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
         </span>
       }
     >
-      <div className="@container" style={stil} data-plassholder="">
-        <div className={over} />
-        <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
-        <div className={under} />
-      </div>
+      {plass.steg ? (
+        <div className="@container" style={stil} data-plassholder="">
+          <div style={{ height: stykkevis(plass.steg.over) }} />
+          <div className="h-[7.5rem] min-[480px]:h-[5rem] min-[900px]:h-[3.75rem]" />
+          <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
+          <div className="min-h-[5.5rem] min-[760px]:min-h-0" style={{ height: stykkevis(plass.steg.liste) }} />
+          <div style={{ height: stykkevis(plass.steg.under) }} />
+        </div>
+      ) : (
+        <div className="@container" style={stil} data-plassholder="">
+          <div className={over} />
+          <div role="img" aria-label={plass.title} className={`mx-auto w-full max-w-5xl rounded-[10px] bg-muted/50 ${flate}`} />
+          <div className={under} />
+        </div>
+      )}
     </FigureFrame>
   );
 }
@@ -222,15 +257,16 @@ export const LandskapBlokkFigurLat = lat<FigurProps>(
     bred: [960, 636],
     over: [200, 120],
     under: [400, 260],
-    // målt mot ferdig figur (redusert bevegelse) ved 320–1280 px vindusbredde; faner, verktøylinje og status er med i «over»
+    // målt mot ferdig figur (redusert bevegelse) med 1 px steg ved 280–1290 px vindusbredde (Chrome 155); faner, verktøylinje og status er med i «over»
+    // (statusfeltet har ca. 12 px luft under den lengste statusen)
     skala: {
       smal: {
-        over: [[270, 321], [289, 321], [290, 301.7], [300, 301.7], [310, 321], [320, 285], [339, 285], [340, 265], [379, 265], [380, 249], [400, 249], [410, 238.5], [420, 249], [550, 249], [570, 189]],
-        // Forklaringsradene «Vidde i snittet (prikket)» og «Strandflaten i snittet (stiplet)» bryter på nytt ved enkelte
-        // containerbredder. Punktene 280–310, 392–410, 468–491 og 696–715 er målt per piksel (18.10, redusert bevegelse).
-        under: [[280, 604.88], [284, 604.88], [285, 585.63], [289, 585.63], [290, 604.94], [292, 604.94], [293, 578.94], [298, 578.95], [299, 598.19], [300, 598.19], [310, 578.89], [390, 578.91], [391, 552.91], [392, 578.88], [395, 578.88], [396, 552.89], [400, 552.89], [401, 553.95], [402, 544.5], [410, 552.88], [491, 552.89], [500, 552.8], [510, 535.1], [590, 535], [610, 439], [707, 439.02], [708, 413.02], [715, 413.02]],
+        over: [[229, 333.8], [238, 333.8], [239, 353], [243, 353], [244, 333.8], [251, 333.8], [252, 313.8], [255, 313.8], [256, 333], [286, 333], [287, 313.7], [298, 313.7], [299, 333], [318, 333], [319, 297], [339, 297], [340, 277], [379, 277], [380, 261], [403, 261], [404, 250.5], [414, 250.5], [415, 261], [559, 261], [560, 237], [568, 237], [569, 201]],
+        // + forklaringsradene «Vidde i snittet (prikket)» og «Strandflaten i snittet (stiplet)» (#195): målt med 1 px steg
+        // ved 280–870 px vindusbredde på main ddcc691 + #195 (18.10, redusert bevegelse)
+        under: [[230, 622.71], [241, 622.75], [242, 603.5], [243, 603.5], [244, 622.71], [255, 622.71], [256, 604.88], [284, 604.88], [285, 585.63], [286, 585.63], [287, 604.95], [292, 604.95], [293, 578.95], [395, 578.88], [396, 552.88], [401, 552.88], [402, 542.38], [403, 542.38], [404, 552.88], [507, 552.88], [508, 535.01], [599, 535.01], [600, 439], [707, 439], [708, 413], [759, 413]],
       },
-      bred: { over: [[806, 181]], under: [[806, 261]] },
+      bred: { over: [[806, 193]], under: [[806, 261]] },
     },
     bredFra: 760,
   },
@@ -257,6 +293,59 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
     },
   },
   () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
+);
+
+/* Jetstrømmer: alle figurene ligger i jetstrommer-figurer.tsx og lastes først når de nærmer seg skjermen. */
+// Mål 18.10: smal = narrowViewBox. steg = målt mot ferdig figur (produksjonsbuild) på /tema/jetstrommer for hver containerbredde
+// 250–806 px (vindu 300–1100 px, plass-sveip2.mjs), med stykkevis lineære overganger på 1 px der teksten brytes om.
+const JET_MAAL = { smal: [560, 540] as [number, number], bred: [960, 540] as [number, number], over: [190, 150] as [number, number], under: [120, 90] as [number, number] };
+const jetLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL> & Pick<Plass, "steg">, navn: keyof typeof import("./jetstrommer-figurer")) =>
+  lat<FigurProps>({ ...tekst, ...JET_MAAL, ...maal }, () => import("./jetstrommer-figurer").then((m) => m[navn] as ComponentType<FigurProps>));
+
+export const JetProfilFigurLat = jetLat(
+  JET_PROFIL_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 119], [466, 119], [467, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 73.62], [318, 73.62], [319, 55.75], [584, 55.75], [585, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetProfilFigur",
+);
+export const TermiskVindFigurLat = jetLat(
+  TERMISK_VIND_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 151], [259, 151], [260, 119], [363, 119], [364, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 73.62], [261, 73.62], [262, 55.75], [524, 55.75], [525, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "TermiskVindFigur",
+);
+export const VestOstFigurLat = jetLat(
+  VEST_OST_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 119], [337, 119], [338, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[250, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "VestOstFigur",
+);
+export const JetStreakFigurLat = jetLat(
+  JETSTREAK_TEKST,
+  { smal: [960, 540], steg: { over: [[250, 119], [380, 119], [381, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[250, 149.5], [298, 149.5], [299, 131.62], [328, 131.62], [329, 105.62], [427, 105.62], [428, 87.75], [759, 87.75], [760, 75.75], [806, 75.75]] } },
+  "JetStreakFigur",
+);
+export const JetSlyngerFigurLat = jetLat(
+  JET_SLYNGER_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 151], [261, 151], [262, 119], [433, 119], [434, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[250, 55.75], [423, 55.75], [424, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetSlyngerFigur",
+);
+export const JetSesongFigurLat = jetLat(
+  JET_SESONG_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[250, 73.62], [286, 73.62], [287, 55.75], [556, 55.75], [557, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetSesongFigur",
+);
+export const JetNaoFigurLat = jetLat(
+  JET_NAO_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 87], [806, 87]], liste: [[250, 150.5], [283, 150.5], [284, 134], [759, 134], [760, 0], [806, 0]], under: [[250, 55.75], [391, 55.75], [392, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetNaoFigur",
+);
+export const JetOmegaFigurLat = jetLat(
+  JET_OMEGA_TEKST,
+  { smal: [640, 540], steg: { over: [[250, 119], [254, 119], [255, 87], [806, 87]], liste: [[250, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[250, 55.75], [320, 55.75], [321, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "JetOmegaFigur",
+);
+export const StormbaneFigurLat = jetLat(
+  STORMBANE_TEKST,
+  { smal: [740, 540], steg: { over: [[250, 119], [311, 119], [312, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 55.75], [416, 55.75], [417, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
+  "StormbaneFigur",
 );
 
 /* ---------- Lokale og regionale værsystemer (Geofag 2) ---------- */

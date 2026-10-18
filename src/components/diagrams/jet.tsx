@@ -739,7 +739,7 @@ export function JetStreakDiagram() {
     <Diagram
       title="Jetkjernen og 4-kvadrant-modellen: Slik skaper jetstrømmen lavtrykk"
       heading="4-kvadrant-modellen: Hvorfor venstre utløp suger opp luft og lager storm"
-      caption="Inne i jetstrømmen finnes lokale soner med ekstra sterk vind, kalt jetkjerner (jet streaks). Når lufta raser inn i kjernen (innløpet), må den akselerere, og når den forlater den (utløpet), må den bremse opp. Denne fartsforandringen skaper ubalanse mellom trykkgradientkraften og Corioliskraften, slik at lufta tvinges på tvers av jeten (aldersofisk vind). Resultatet er 4 distinkte kvadranter: I venstre utløp (nord for kjernens utløp) og høyre innløp oppstår kraftig divergens i høyden (lufta spres fra hverandre). Dette fjerner luftmasse fra toppen av søylen! For å kompensere må luft suges opp fra bakken, lufttrykket faller, og det dannes et roterende lavtrykk (syklon) med skydannelse og kraftig nedbør."
+      caption="Inne i jetstrømmen finnes lokale soner med ekstra sterk vind, kalt jetkjerner (jet streaks). Når lufta raser inn i kjernen (innløpet), må den akselerere, og når den forlater den (utløpet), må den bremse opp. Denne fartsforandringen skaper ubalanse mellom trykkgradientkraften og Corioliskraften, slik at lufta tvinges på tvers av jeten (ageostrofisk vind). Resultatet er 4 distinkte kvadranter: I venstre utløp (nord for kjernens utløp) og høyre innløp oppstår kraftig divergens i høyden (lufta spres fra hverandre). Dette fjerner luftmasse fra toppen av søylen! For å kompensere må luft suges opp fra bakken, lufttrykket faller, og det dannes et roterende lavtrykk (syklon) med skydannelse og kraftig nedbør."
       viewBox="0 0 940 520"
       wide
     >

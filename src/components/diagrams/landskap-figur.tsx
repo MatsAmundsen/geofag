@@ -13,7 +13,7 @@
  * Terrenget tegnes i canvas som nøkkelbilder (terreng-kit), bare på klienten. Serveren viser en
  * plassholder (prosess-figurer-lat.tsx).
  */
-import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Faner, IsbreFigur, type Key, type Lab } from "./isbre-figur";
 import { clamp, figureFont, lerp, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
@@ -238,11 +238,27 @@ export function LandskapBlokkFigur({
     const forran = [na, nb];
     if (tl.playing) for (let d = 2; d <= 4; d++) forran.push(nokkelFor((qa + d) % (antallQ + 1)));
     lager.bestill(forran);
+    // står stille uten ferdig bilde: tegnes i biter over noen få bilder (ingen lang oppgave), og
+    // til da vises forrige bilde i samme fane
     if (!tl.playing) {
-      if (!bildeA) bildeA = lager.tving(na);
-      if (!bildeB && vekt > 0.005) bildeB = lager.tving(nb);
+      const mangler: string[] = [];
+      if (!bildeA) mangler.push(na);
+      if (!bildeB && vekt > 0.005) mangler.push(nb);
+      if (mangler.length) lager.hast(mangler);
     }
   }
+  const vist = useRef<{ fane: FaneId; a: HTMLCanvasElement | null; b: HTMLCanvasElement | null; vekt: number }>({
+    fane,
+    a: null,
+    b: null,
+    vekt: 0,
+  });
+  let visVekt = vekt;
+  if (!bildeA && !bildeB && vist.current.fane === fane) {
+    bildeA = vist.current.a;
+    bildeB = vist.current.b;
+    visVekt = vist.current.vekt;
+  } else if (bildeA || bildeB) vist.current = { fane, a: bildeA, b: bildeB, vekt };
 
   /* ---- 3D-punkter ---- */
   const H = (x: number, y: number) => overflate(x, y, t, b);
@@ -609,7 +625,8 @@ export function LandskapBlokkFigur({
       ref={wrapRef}
       // Statuslinjen og tidssporene følger bredden på tabpanelet (containerspørring), som er like bred som
       // plassholderens container, så plassholderen kan ha nøyaktig samme høyde.
-      className="[&_ol]:min-h-[8.75rem] [&_ol]:content-start [&_[role=tabpanel]]:[container-type:inline-size] [&_p[aria-live]]:min-h-[7.5rem] @min-[340px]:[&_p[aria-live]]:min-h-[6.25rem] @min-[380px]:[&_p[aria-live]]:min-h-[5.25rem] @min-[560px]:[&_p[aria-live]]:min-h-[3.75rem]"
+      // Statuslinjen har ca. 12 px luft under den lengste statusen ved alle bredder, så den aldri vokser.
+      className="[&_ol]:min-h-[8.75rem] [&_ol]:content-start [&_[role=tabpanel]]:[container-type:inline-size] [&_p[aria-live]]:min-h-[9.5rem] @min-[252px]:[&_p[aria-live]]:min-h-[8.25rem] @min-[340px]:[&_p[aria-live]]:min-h-[7rem] @min-[380px]:[&_p[aria-live]]:min-h-[6rem] @min-[560px]:[&_p[aria-live]]:min-h-[4.5rem]"
     >
       <IsbreFigur
         svgRef={ref}
@@ -721,7 +738,7 @@ export function LandskapBlokkFigur({
               skala={skala}
               a={bildeA}
               b={bildeB}
-              vekt={vekt}
+              vekt={visVekt}
             />
             {elvOp > 0.02 ? (
               <Flytstrok
