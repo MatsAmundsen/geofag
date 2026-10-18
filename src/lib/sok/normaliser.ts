@@ -77,7 +77,15 @@ export type Sporring = {
   ord: string[];
   /** Regex med flagg g som finner treff i normalisert tekst. */
   regex: RegExp;
+  /** Hvor mange tegn stammen kuttet av siste ord (for å kjenne igjen helt ord). */
+  kuttet: number;
 };
+
+/** Hvor godt et treff passer: 0 = helt ord, 1 = starten av et ord, 2 = inne i et ord. */
+export type Kvalitet = 0 | 1 | 2;
+
+/** Vekt per kvalitet når kapitler og setninger rangeres. */
+export const KVALITET_VEKT: Record<Kvalitet, number> = { 0: 3, 1: 2, 2: 1 };
 
 const ORD = /[\p{L}\p{N}][\p{L}\p{N}'-]*/gu;
 
@@ -86,9 +94,10 @@ function escapeRegExp(value: string): string {
 }
 
 /**
- * Lager søket. Treff må starte ved begynnelsen av et ord. Siste ord treffer
- * også lengre ord (prefiks) og bøyde former via `stamme`: «magma» finner
- * «magmaen» og «magmatisk». Flere ord må stå etter hverandre i samme setning.
+ * Lager søket. Treffet kan stå hvor som helst i et ord, så «bre» finner
+ * både «breen», «isbreer» og «dalbre». Siste ord treffer også bøyde former
+ * via `stamme`. Flere ord må stå etter hverandre i samme setning; ord i
+ * midten må være hele ord, og første ord må slutte der ordet slutter.
  * Returnerer null når søket er for kort.
  */
 export function lagSporring(input: string, minLengde = 2): Sporring | null {
@@ -97,37 +106,55 @@ export function lagSporring(input: string, minLengde = 2): Sporring | null {
   if (ord.length === 0) return null;
   const samlet = ord.join(" ");
   if (samlet.length < minLengde) return null;
+  const siste = ord[ord.length - 1]!;
+  const stammet = stamme(siste);
   const deler = ord.map((o, i) => {
     const last = i === ord.length - 1;
-    const kjerne = last ? stamme(o) : o;
-    // Ikke-siste ord må være hele ord.
-    return escapeRegExp(kjerne) + (last ? "" : "(?![\\p{L}\\p{N}])");
+    const kjerne = last ? stammet : o;
+    // Ord før det siste må slutte ved ordgrensen, ord i midten må også starte der.
+    const foran = i > 0 ? "(?<![\\p{L}\\p{N}])" : "";
+    return foran + escapeRegExp(kjerne) + (last ? "" : "(?![\\p{L}\\p{N}])");
   });
-  const kilde = `(?<![\\p{L}\\p{N}])${deler.join("[ ]+")}`;
   return {
     visning: input.trim().replace(/\s+/g, " "),
     ord,
-    regex: new RegExp(kilde, "gu"),
+    regex: new RegExp(deler.join("[ ]+"), "gu"),
+    kuttet: siste.length - stammet.length,
   };
 }
 
-/** Lengden på treffet utvides til slutten av ordet, så hele «magmatisk» markeres. */
-function ordSlutt(norm: string, fra: number): number {
-  let i = fra;
-  while (i < norm.length && /[\p{L}\p{N}]/u.test(norm[i]!)) i++;
-  return i;
+const ORDTEGN = /[\p{L}\p{N}]/u;
+
+function erOrdtegn(ch: string | undefined): boolean {
+  if (ch === undefined) return false;
+  const c = ch.charCodeAt(0);
+  // Rask vei for a–z og 0–9.
+  if ((c >= 97 && c <= 122) || (c >= 48 && c <= 57)) return true;
+  if (c < 128) return false;
+  return ORDTEGN.test(ch);
 }
 
-/** Alle treff i en normalisert tekst, som [start, slutt) med hele siste ord tatt med. */
-export function finnTreff(norm: string, sporring: Sporring): Array<[number, number]> {
-  const out: Array<[number, number]> = [];
+/**
+ * Alle treff i en normalisert tekst, som [start, slutt, kvalitet). Treffet
+ * utvides til hele ordet det står i, så «dalbre» og «magmatisk» markeres
+ * som hele ord. Ett ord gir høyst ett treff, slik at nummereringen er lik i
+ * indeksen og på siden.
+ */
+export function finnTreff(norm: string, sporring: Sporring): Array<[number, number, Kvalitet]> {
+  const out: Array<[number, number, Kvalitet]> = [];
   const re = new RegExp(sporring.regex.source, "gu");
   let m: RegExpExecArray | null;
   while ((m = re.exec(norm))) {
-    const start = m.index;
-    const end = ordSlutt(norm, start + m[0].length);
-    out.push([start, end]);
-    if (re.lastIndex <= start) re.lastIndex = start + 1;
+    const mStart = m.index;
+    const mSlutt = mStart + m[0].length;
+    let start = mStart;
+    while (start > 0 && erOrdtegn(norm[start - 1])) start--;
+    let slutt = mSlutt;
+    while (slutt < norm.length && erOrdtegn(norm[slutt])) slutt++;
+    const kvalitet: Kvalitet =
+      start !== mStart ? 2 : slutt === mSlutt || slutt === mSlutt + sporring.kuttet ? 0 : 1;
+    out.push([start, slutt, kvalitet]);
+    re.lastIndex = Math.max(slutt, mStart + 1);
   }
   return out;
 }

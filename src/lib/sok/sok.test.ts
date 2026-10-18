@@ -20,18 +20,48 @@ test("stamme fjerner vanlige endelser, men ikke for korte ord", () => {
   assert.equal(stamme("breer"), "breer");
 });
 
-test("søket treffer ordstart, prefiks og bøyde former, ikke midt i ord", () => {
+test("søket treffer hele ord, ordstart, bøyde former og inne i sammensatte ord", () => {
   const q = lagSporring("Magma")!;
-  const tekst = normaliser("Magmaen stiger. Magmatisk bergart. Ikke primagma.");
+  const tekst = normaliser("Magmaen stiger. Magmatisk bergart. Også primagma. Magma.");
   assert.deepEqual(
-    finnTreff(tekst, q).map(([a, b]) => tekst.slice(a, b)),
-    ["magmaen", "magmatisk"],
+    finnTreff(tekst, q).map(([a, b, k]) => [tekst.slice(a, b), k]),
+    [
+      ["magmaen", 1],
+      ["magmatisk", 1],
+      ["primagma", 2],
+      ["magma", 0],
+    ],
   );
   const q2 = lagSporring("isbreer")!;
-  const t2 = normaliser("Isbreen og isbreene, men ikke dalisbre.");
+  const t2 = normaliser("Isbreen og isbreene, og dalisbre.");
   assert.deepEqual(
     finnTreff(t2, q2).map(([a, b]) => t2.slice(a, b)),
-    ["isbreen", "isbreene"],
+    ["isbreen", "isbreene", "dalisbre"],
+  );
+});
+
+test("«bre» finner «dalbre» og «isbreer», og ett ord gir bare ett treff", () => {
+  const q = lagSporring("bre")!;
+  const t = normaliser("En dalbre og flere isbreer. Bre! Breelva. Brebre.");
+  assert.deepEqual(
+    finnTreff(t, q).map(([a, b, k]) => [t.slice(a, b), k]),
+    [
+      ["dalbre", 2],
+      ["isbreer", 2],
+      ["bre", 0],
+      ["breelva", 1],
+      ["brebre", 1],
+    ],
+  );
+  // æøå teller som bokstaver: «ør» inne i «fjørå» er ett treff i hele ordet.
+  const q2 = lagSporring("ØR")!;
+  const t2 = normaliser("Fjørå og Ørsta.");
+  assert.deepEqual(
+    finnTreff(t2, q2).map(([a, b, k]) => [t2.slice(a, b), k]),
+    [
+      ["fjørå", 2],
+      ["ørsta", 1],
+    ],
   );
 });
 

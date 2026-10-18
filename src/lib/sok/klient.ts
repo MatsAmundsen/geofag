@@ -3,7 +3,14 @@
  * åpnes) og holdes i minnet for resten av besøket.
  */
 import type { SokIndeks, SokKapittel } from "./indeks.ts";
-import { finnTreff, lagSporring, normaliser, type Sporring } from "./normaliser.ts";
+import {
+  finnTreff,
+  KVALITET_VEKT,
+  lagSporring,
+  normaliser,
+  type Kvalitet,
+  type Sporring,
+} from "./normaliser.ts";
 
 export type ForberedtKapittel = SokKapittel & {
   /** normalisert tekst per setning, samme lengde som originalen */
@@ -48,6 +55,8 @@ export type TreffIOrd = {
   nr: number;
   start: number;
   slutt: number;
+  /** 0 = helt ord, 1 = starten av et ord, 2 = inne i et ord */
+  kvalitet: Kvalitet;
 };
 
 export type TreffRad = {
@@ -56,11 +65,15 @@ export type TreffRad = {
   overskrift: string;
   erOverskrift: boolean;
   treff: TreffIOrd[];
+  /** beste (laveste) kvalitet i setningen */
+  beste: Kvalitet;
 };
 
 export type KapittelTreff = {
   kapittel: ForberedtKapittel;
   antall: number;
+  /** vektet poengsum: helt ord teller mest, treff inne i et ord minst */
+  poeng: number;
   rader: TreffRad[];
 };
 
@@ -74,10 +87,15 @@ export type SokResultat = {
   ms: number;
 };
 
-/** Alle treff i ett kapittel, nummerert i dokumentrekkefølge. */
+/**
+ * Alle treff i ett kapittel, nummerert i dokumentrekkefølge (nr brukes i
+ * lenken og må stemme med siden). Setningene sorteres etter beste treff,
+ * så hele ord kommer før treff inne i lengre ord; ellers dokumentrekkefølge.
+ */
 export function treffIKapittel(kap: ForberedtKapittel, sporring: Sporring): KapittelTreff | null {
   const rader: TreffRad[] = [];
   let nr = 0;
+  let poeng = 0;
   let overskrift = "";
   const erOverskrift = new Set(kap.o);
   for (let i = 0; i < kap.n.length; i++) {
@@ -85,14 +103,24 @@ export function treffIKapittel(kap: ForberedtKapittel, sporring: Sporring): Kapi
     if (heading) overskrift = kap.x[i]!;
     const funn = finnTreff(kap.n[i]!, sporring);
     if (funn.length === 0) continue;
+    let beste: Kvalitet = 2;
+    const treff = funn.map(([start, slutt, kvalitet]) => {
+      poeng += KVALITET_VEKT[kvalitet];
+      if (kvalitet < beste) beste = kvalitet;
+      return { nr: ++nr, start, slutt, kvalitet };
+    });
     rader.push({
       setning: kap.x[i]!,
       overskrift: heading ? "" : overskrift,
       erOverskrift: heading,
-      treff: funn.map(([start, slutt]) => ({ nr: ++nr, start, slutt })),
+      treff,
+      beste,
     });
   }
-  return nr ? { kapittel: kap, antall: nr, rader } : null;
+  if (!nr) return null;
+  // Stabil sortering: beste kvalitet først, ellers rekkefølgen i kapitlet.
+  rader.sort((a, b) => a.beste - b.beste);
+  return { kapittel: kap, antall: nr, poeng, rader };
 }
 
 export function sok(
@@ -118,8 +146,8 @@ export function sok(
     if (erGjeldende) gjeldende = t;
     else (kap.g === 1 ? g1 : g2).push(t);
   }
-  // Flest treff først, ellers rekkefølgen i læreplanen.
-  const sorter = (a: KapittelTreff, b: KapittelTreff) => b.antall - a.antall;
+  // Høyest poengsum først (helt ord > ordstart > inne i ord), ellers rekkefølgen i læreplanen.
+  const sorter = (a: KapittelTreff, b: KapittelTreff) => b.poeng - a.poeng;
   g1.sort(sorter);
   g2.sort(sorter);
   return { sporring, gjeldende, g1, g2, antall, kapitler, ms: performance.now() - t0 };
