@@ -63,8 +63,6 @@ import {
   UpperAir500hPaMapDiagram,
   WeatherProgression24hDiagram,
   WindCellsDiagram,
-  PolarFrontCycloneSteps,
-  SeaBreezeLandBreezeDiagram,
   ValleyWindDiagram,
   CarouselFrameDiagram,
   CoriolisDiagram,
@@ -98,6 +96,9 @@ import {
   IonBytteV2FigurLat as IonBytteV2Figur,
   KontaktRegionalV2FigurLat as KontaktRegionalV2Figur,
   BotnEggTindFigurLat,
+  SjobrisFigurLat,
+  SolgangsvindFigurLat,
+  SyklonFigurLat,
   LandskapBlokkFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
@@ -175,7 +176,6 @@ import { FoehnModel } from "@/components/models/foehn-model";
 import { GlacierMassBalanceModel } from "@/components/models/glacier-mass-balance-model";
 import { HurricaneSpinModel } from "@/components/models/hurricane-spin-model";
 import { OceanCurrentModel } from "@/components/models/ocean-current-model";
-import { SeaBreezeModel } from "@/components/models/sea-breeze-model";
 import { SnowProfileModel } from "@/components/models/snow-profile-model";
 import { WindPowerModel } from "@/components/models/wind-power-model";
 import { MarineEnergyModel } from "@/components/models/marine-energy-model";
@@ -562,9 +562,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-    SeaBreezeLandBreeze: () => <SeaBreezeLandBreezeDiagram />,
+    SeaBreezeLandBreeze: () => <SjobrisFigurLat />,
     ValleyWind: () => <ValleyWindDiagram />,
-    PolarFrontCyclone: () => <PolarFrontCycloneSteps />,
+    PolarFrontCyclone: () => <SyklonFigurLat />,
     FonForklaring: () => (
     <Callout title="Hva betyr «føn»?">
       <p>
@@ -1039,7 +1039,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   // G2 (F2): figurer flyttet fra de kodede /tema-rutene.
   FoehnAdiabatic: () => <FoehnAdiabaticDiagram />,
   FoehnModel: () => <FoehnModel />,
-  SeaBreezeModel: () => <SeaBreezeModel />,
+  SeaBreezeModel: () => <SolgangsvindFigurLat />,
   TemperatureInversion: () => <TemperatureInversionDiagram />,
   KatabaticWind: () => <KatabaticWindDiagram />,
   JetProfile: () => <JetProfileDiagram />,
