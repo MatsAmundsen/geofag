@@ -212,7 +212,9 @@ function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
 export type Hinder =
   | { p: [number, number][]; b?: number; pil?: boolean }
   | { ellipse: [number, number, number, number]; b?: number }
-  | { boks: [number, number, number, number] };
+  | { boks: [number, number, number, number] }
+  /** Punkt (radius r) som verken skiltet eller lederen fra skiltet til målet skal krysse. */
+  | { punkt: [number, number]; r: number };
 
 type Seg = { x0: number; y0: number; x1: number; y1: number; halv: number };
 
@@ -225,14 +227,19 @@ function segAvstand(x: number, y: number, s: Seg) {
 }
 
 /** Linjene som korte segmenter med halv strekbredde (tykkere på smal skjerm, slik IsbreFigur gjør dem). */
-function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [number, number, number, number][] } {
+function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [number, number, number, number][]; punkter: [number, number, number][] } {
   const seg: Seg[] = [];
   const bokser: [number, number, number, number][] = [];
+  const punkter: [number, number, number][] = [];
   // IsbreFigur gjør tynne streker minst ca. 1,65 CSS-piksler og pilspisser minst 12 px
   const halvAv = (b = 3) => Math.max(b + 3, 2.4 / skala) / 2;
   for (const h of hinder) {
     if ("boks" in h) {
       bokser.push(h.boks);
+      continue;
+    }
+    if ("punkt" in h) {
+      punkter.push([h.punkt[0], h.punkt[1], h.r]);
       continue;
     }
     const pts: [number, number][] = [];
@@ -255,7 +262,7 @@ function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [numb
       seg.push({ x0: bx, y0: by, x1: bx + ((bx - ax) / l) * lang * 0.6, y1: by + ((by - ay) / l) * lang * 0.6, halv: Math.max(halv, 6.5 / skala) });
     }
   }
-  return { seg, bokser };
+  return { seg, bokser, punkter };
 }
 
 /**
@@ -264,7 +271,7 @@ function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [numb
  * Finnes ingen ledig plass, velges plassen med minst overlapp.
  */
 export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: number): ([number, number] | null)[] {
-  const { seg, bokser } = segmenter(hinder, skala);
+  const { seg, bokser, punkter } = segmenter(hinder, skala);
   const luft = 3 / skala;
   const steg = Math.max(8, r / 2.5);
   const kand: [number, number][] = [];
@@ -288,6 +295,17 @@ export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: 
         const dy = Math.max(y0 - y, 0, y - y1);
         const d = Math.hypot(dx, dy) - r - luft;
         if (d < 0) sum -= d;
+      }
+      for (const [px, py, pr] of punkter) {
+        // skiltet selv, og lederen fra skiltet til målet (bare når etiketten peker på noe)
+        const d = Math.hypot(px - x, py - y) - r - pr - luft;
+        if (d < 0) sum -= d;
+        if (l.at) {
+          // kravet kan ikke være strengere enn avstanden fra punktet til selve målet
+          const krav = Math.min(pr + luft, Math.hypot(px - tx, py - ty) - 2);
+          const dl = segAvstand(px, py, { x0: x, y0: y, x1: tx, y1: ty, halv: 0 }) - krav;
+          if (dl < 0) sum -= dl * 2;
+        }
       }
       for (const q of plassert) {
         const d = Math.hypot(q[0] - x, q[1] - y) - 2 * r - 8;
