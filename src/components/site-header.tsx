@@ -10,40 +10,70 @@ function isItemActive(pathname: string, to: string) {
   return pathname === to || (to !== "/geofag-2" && pathname.startsWith(`${to}/`));
 }
 
+// Lastet med #anker: ruterens første scrollIntoView skal ikke arve scroll-behavior: smooth fra styles.css
+// (da glir siden forbi målet før rettingen). Settes før hydreringen og fjernes i stopp() nedenfor, så
+// klikk på ankre på samme side glir som før.
+if (typeof window !== "undefined" && window.location.hash.length > 1) {
+  document.documentElement.style.scrollBehavior = "auto";
+}
+
 function rullTilHashEtterMaaling(header: HTMLElement) {
+  const root = document.documentElement;
   let id = "";
   try {
     id = decodeURIComponent(window.location.hash.slice(1));
   } catch {
     id = "";
   }
-  if (!id) return () => {};
+  if (!id) {
+    root.style.removeProperty("scroll-behavior");
+    return () => {};
+  }
   const hendelser = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
   let forrigeY = Number.NaN;
+  // Posisjonen siden sist ble godtatt eller rettet til. Flytter siden seg bort derfra uten at denne logikken
+  // rullet (skjermleserens bla-modus, «finn på siden», skript), overtar brukeren: stopp, ikke rull tilbake.
+  let egenY = Number.NaN;
   let ganger = 0;
+  let stoppet = false;
+  const flyttetAvAndre = () => !Number.isNaN(egenY) && Math.abs(window.scrollY - egenY) > 2;
   const sjekk = () => {
-    const mal = document.getElementById(id);
     const y = window.scrollY;
+    if (flyttetAvAndre()) return stopp();
     const stille = y === forrigeY;
     forrigeY = y;
-    if (!mal || !stille) return;
+    if (!stille) return;
+    const mal = document.getElementById(id);
+    if (!mal) {
+      egenY = y;
+      return;
+    }
     const bunn = header.getBoundingClientRect().bottom;
     const top = mal.getBoundingClientRect().top;
-    const nederst = y >= document.documentElement.scrollHeight - window.innerHeight - 1;
+    const nederst = y >= root.scrollHeight - window.innerHeight - 1;
     if ((top < bunn || top > bunn + 24) && !(nederst && top > bunn)) {
       mal.scrollIntoView({ block: "start", behavior: "instant" });
       forrigeY = Number.NaN;
     }
+    egenY = window.scrollY;
+  };
+  const vedRulling = () => {
+    if (flyttetAvAndre()) stopp();
   };
   const tidtaker = window.setInterval(() => {
     sjekk();
     if (++ganger >= 20) stopp();
   }, 150);
   function stopp() {
+    if (stoppet) return;
+    stoppet = true;
     window.clearInterval(tidtaker);
     for (const h of hendelser) window.removeEventListener(h, stopp);
+    window.removeEventListener("scroll", vedRulling);
+    root.style.removeProperty("scroll-behavior");
   }
   for (const h of hendelser) window.addEventListener(h, stopp, { passive: true });
+  window.addEventListener("scroll", vedRulling, { passive: true });
   return stopp;
 }
 
@@ -66,7 +96,7 @@ export function SiteHeader() {
     // Lastet med #anker: nettleseren ruller før målingen (med CSS-reserven), myk rulling kan avbrytes
     // under hydreringen, og målet kan dukke opp først etter hydreringen. I opptil 3 s etter innlasting:
     // når rullingen står stille og målet ikke står rett under menyen, rull dit med målt høyde. Stopper
-    // ved første brukerinndata.
+    // ved første brukerinndata, og når noe annet enn denne logikken flytter siden.
     const stopp = rullTilHashEtterMaaling(header);
     const ro = new ResizeObserver(apply);
     ro.observe(header);
