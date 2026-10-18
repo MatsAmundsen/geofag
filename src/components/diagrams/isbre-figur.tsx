@@ -593,6 +593,8 @@ export type Key = {
   front?: "varm" | "kald" | "okkl" | "ro";
   /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
   off?: boolean;
+  /** Bare for kind «line»: samme strek som i figuren (strekmønster, tykkelse, mørk kant under, runde ender). */
+  strek?: { dash?: string; bredde?: number; kant?: string; rund?: boolean };
 };
 
 function KeySample({ k }: { k: Key }) {
@@ -608,6 +610,30 @@ function KeySample({ k }: { k: Key }) {
           strokeWidth="2.4"
           strokeDasharray="5 4"
         />
+      ) : k.kind === "line" && k.strek ? (
+        <g>
+          {k.strek.kant ? (
+            <line
+              x1="1"
+              y1="7"
+              x2="29"
+              y2="7"
+              stroke={k.strek.kant}
+              strokeWidth={(k.strek.bredde ?? 3) + 3}
+              strokeLinecap="round"
+            />
+          ) : null}
+          <line
+            x1={k.strek.rund ? 2 : 1}
+            y1="7"
+            x2="29"
+            y2="7"
+            stroke={k.color}
+            strokeWidth={k.strek.bredde ?? 3}
+            strokeDasharray={k.strek.dash}
+            strokeLinecap={k.strek.rund ? "round" : undefined}
+          />
+        </g>
       ) : k.kind === "line" ? (
         <line x1="1" y1="7" x2="29" y2="7" stroke={k.color} strokeWidth="3" />
       ) : k.kind === "front" ? (

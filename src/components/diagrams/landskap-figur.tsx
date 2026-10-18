@@ -91,7 +91,13 @@ const FARGE = {
   bolge: "#e9f6fb",
   vidde: "#e3d9a6",
   strand: "#b2a878",
+  /** Vidda i snittet: egen nyanse, så den skiller seg fra strandflaten (ΔE2000 38 mot #b2a878). */
+  viddeSnitt: "#e8b4d8",
 };
+
+/** Strekene i snittet; forklaringen bruker de samme. */
+const STRAND_STREK = { dash: "10 4", bredde: 3, kant: "#101b22" };
+const VIDDE_STREK = { dash: "0.1 4", bredde: 2.2, rund: true };
 
 /** Punkt på vidda (nord for fjorden), brukt til etikett og måler. */
 const VIDDE: [number, number] = [470, 300];
@@ -563,7 +569,18 @@ export function LandskapBlokkFigur({
     { text: "Is (bre)", color: FARGE.is, kind: "fill" },
     { text: "Hav", color: FARGE.hav, kind: "fill" },
     { text: "Elv og bølger", color: FARGE.elv, kind: "line" },
-    { text: "Vidde i snittet (stiplet)", color: FARGE.vidde, kind: "line" },
+    {
+      text: "Vidde i snittet (stiplet)",
+      color: FARGE.viddeSnitt,
+      kind: "line",
+      strek: VIDDE_STREK,
+    },
+    {
+      text: "Strandflaten i snittet (stiplet)",
+      color: FARGE.strand,
+      kind: "line",
+      strek: STRAND_STREK,
+    },
   ];
   const status = (b ? ANNEN_STATUS : KLASSISK_STATUS)[fase - 1];
   const spor = b ? ANNEN_SPOR : KLASSISK_SPOR;
@@ -783,21 +800,22 @@ export function LandskapBlokkFigur({
               <path
                 d={sti(viddeP)}
                 fill="none"
-                stroke={FARGE.vidde}
-                strokeWidth="1.4"
-                strokeDasharray="5 4"
-                opacity="0.85"
+                stroke={FARGE.viddeSnitt}
+                strokeWidth={VIDDE_STREK.bredde}
+                strokeDasharray={VIDDE_STREK.dash}
+                strokeLinecap="round"
               />
               {strandP.length > 1 ? (
                 // strandflaten: samme farge som i blokken (STRAND i landskap-modell), tykk og langstiplet, med mørk
                 // kant under så den skiller seg fra den tynne, kortstiplede havnivå-linja også over hav og berg.
-                // Kontrast #b2a878 mot bakgrunnen #0f1a21: 7,4:1; mot den mørke kanten #101b22: 7,3:1.
+                // Kontrast #b2a878 mot snittets bakgrunn #101b22 (terreng-figur.tsx, Hoydeprofil): 7,3:1.
+                // Vidde-linja (#e8b4d8, prikket): 9,9:1 mot #101b22; ΔE2000 38 / ΔE76 48 mot strandflaten.
                 <g opacity={Math.round(Math.min(1, strandS) * 100) / 100}>
                   <path
                     d={sti(strandP)}
                     fill="none"
-                    stroke="#101b22"
-                    strokeWidth="6"
+                    stroke={STRAND_STREK.kant}
+                    strokeWidth={STRAND_STREK.bredde + 3}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
@@ -805,8 +823,8 @@ export function LandskapBlokkFigur({
                     d={sti(strandP)}
                     fill="none"
                     stroke={FARGE.strand}
-                    strokeWidth="3"
-                    strokeDasharray="10 4"
+                    strokeWidth={STRAND_STREK.bredde}
+                    strokeDasharray={STRAND_STREK.dash}
                     strokeLinejoin="round"
                   />
                 </g>
