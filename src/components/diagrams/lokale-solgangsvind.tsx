@@ -23,6 +23,7 @@ import {
   lagProfil,
   medKilde,
   useLokaleTidslinje,
+  type Hinder,
   type Lab,
 } from "./lokale-kit";
 
@@ -137,40 +138,50 @@ function Pil({ x, y, vinkel, lengde, farge, op, bredde = 5 }: { x: number; y: nu
   );
 }
 
-function Ovenfra({ s, op, fase }: { s: (typeof BILDER)[number]; op: number; fase: number }) {
+const KYST_PILER: [number, number][] = [
+  [300, 90],
+  [300, 215],
+  [300, 390],
+  [300, 500],
+  [190, 150],
+  [190, 440],
+];
+const FJORD_IDX = [6, 20, 34, 48];
+
+/** Pilene sett ovenfra (sentrum, vinkel, lengde, bredde, synlighet), felles for tegning og skiltplass. */
+function ovenfraPiler(s: (typeof BILDER)[number], fase: number) {
   const K = hentKart();
   const vinkel = 82 * smooth(s.dreie);
-  const kystPiler: [number, number][] = [
-    [300, 90],
-    [300, 215],
-    [300, 390],
-    [300, 500],
-    [190, 150],
-    [190, 440],
-  ];
-  const fjordIdx = [6, 20, 34, 48];
+  // vinden øker langs kysten (15–25 knop i status, Store norske leksikon, u.å.-e): pilene blir lengre og tykkere
+  const kyst = KYST_PILER.map(([x, y]) => ({ x, y, vinkel, lengde: 86 + 32 * smooth(s.dreie), bredde: 5 + 2.5 * smooth(s.dreie), op: 1 }));
+  const fjord = FJORD_IDX.map((i, n) => {
+    const p = K.fjordMidt[i];
+    const q = K.fjordMidt[Math.min(K.fjordMidt.length - 1, i + 3)];
+    const v = (Math.atan2(q[1] - p[1], q[0] - p[0]) * 180) / Math.PI;
+    return { x: p[0] + 10, y: p[1], vinkel: v, lengde: 64, bredde: 5, op: fase >= 4 ? clamp(s.fjord * 4 - n * 0.6) : 0 };
+  });
+  return [...kyst, ...fjord];
+}
+
+function Ovenfra({ s, op, fase, narrow }: { s: (typeof BILDER)[number]; op: number; fase: number; narrow: boolean }) {
+  const K = hentKart();
+  const piler = ovenfraPiler(s, fase);
   return (
     <g opacity={op}>
       <rect x="0" y="0" width="960" height="540" fill={F.havBunn} data-nocheck="" />
       <rect x="0" y="0" width="960" height="540" fill={F.havTopp} opacity="0.55" data-nocheck="" />
       <path d={K.land} fill={F.land} stroke="#cfd8c2" strokeWidth="1.5" data-nocheck="" />
       {/* nordpil */}
-      <g transform="translate(880 92)" aria-hidden="true">
+      {/* større på smal skjerm, så «N» blir minst ca. 11 px */}
+      <g transform={narrow ? "translate(890 70) scale(2.7)" : "translate(880 92)"} aria-hidden="true">
         <path d="M0 -26 L9 6 L0 0 L-9 6 Z" fill={F.tekst} />
         <text x="0" y="26" textAnchor="middle" fontSize="16" fontWeight="800" fill={F.tekst}>
           N
         </text>
       </g>
-      {kystPiler.map(([x, y], i) => (
-        // vinden øker langs kysten (15–25 knop i status, Store norske leksikon, u.å.-e): pilene blir lengre og tykkere
-        <Pil key={i} x={x} y={y} vinkel={vinkel} lengde={86 + 32 * smooth(s.dreie)} bredde={5 + 2.5 * smooth(s.dreie)} farge={F.sjobris} op={1} />
+      {piler.map((p, i) => (
+        <Pil key={i} x={p.x} y={p.y} vinkel={p.vinkel} lengde={p.lengde} bredde={p.bredde} farge={F.sjobris} op={p.op} />
       ))}
-      {fjordIdx.map((i, n) => {
-        const p = K.fjordMidt[i];
-        const q = K.fjordMidt[Math.min(K.fjordMidt.length - 1, i + 3)];
-        const v = (Math.atan2(q[1] - p[1], q[0] - p[0]) * 180) / Math.PI;
-        return <Pil key={`f${n}`} x={p[0] + 10} y={p[1]} vinkel={v} lengde={64} farge={F.sjobris} op={fase >= 4 ? clamp(s.fjord * 4 - n * 0.6) : 0} />;
-      })}
     </g>
   );
 }
@@ -187,6 +198,32 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
   const solOp = clamp(2.6 - s.t) * (s.t < 2.6 ? 1 : 0);
   const ov = smooth(s.ovenfra);
   const snitt = 1 - ov;
+
+  // natt: et grunnere, lukket kretsløp (NOAA, u.å.-a), pålandsvind i høyden på ca. y 280.
+  // Strek skiller dem også uten farge: vind fra havet heltrukket, landbris prikket, vind i høyden stiplet.
+  const nattStromer = [
+    { punkter: [[610, hoydeVed(LAND, 610) - 8], [420, 390], [150, 392]] as [number, number][], farge: F.kald, marker: "cold" as const, bredde: 2.6, opacity: s.natt, fart: 12, strek: "prikket" as const },
+    { punkter: [[128, 386], [128, 336], [128, 292]] as [number, number][], farge: F.kald, marker: "cold" as const, bredde: 2.2, opacity: s.natt * 0.85, fart: 10, strek: "prikket" as const },
+    { punkter: [[148, 280], [380, 278], [616, 280]] as [number, number][], farge: F.retur, marker: "fg" as const, bredde: 2.2, opacity: s.natt * 0.85, fart: 10, strek: "stiplet" as const },
+    { punkter: [[632, 290], [632, 320], [632, hoydeVed(LAND, 632) - 20]] as [number, number][], farge: F.retur, marker: "fg" as const, bredde: 2.2, opacity: s.natt * 0.85, fart: 10, strek: "stiplet" as const },
+  ];
+  const innPunkter: [number, number][] = [[60, 382], [300, 382], [lerp(300, 640, s.inn), 378 - lerp(0, 10, s.inn)]];
+  const innOp = clamp(s.inn * 3) * (1 - s.natt);
+  const hinder: Hinder[] = [];
+  if (snitt > 0.1) {
+    if (innOp > 0.1) hinder.push({ p: innPunkter, b: 2 + 4 * s.inn, pil: true });
+    for (const h of nattStromer) if (h.opacity > 0.1) hinder.push({ p: h.punkter, b: h.bredde, pil: true });
+  }
+  if (ov > 0.1) {
+    for (const p of ovenfraPiler(s, fase)) {
+      if (p.op < 0.1) continue;
+      const t = (p.vinkel * Math.PI) / 180;
+      const ux = Math.cos(t);
+      const uy = Math.sin(t);
+      hinder.push({ p: [[p.x - (ux * p.lengde) / 2, p.y - (uy * p.lengde) / 2], [p.x + (ux * p.lengde) / 2, p.y + (uy * p.lengde) / 2]], b: p.bredde + 4 });
+    }
+    hinder.push({ boks: [850, 0, 930, 150] });
+  }
 
   const labels: Lab[] = [];
   const lab = (text: string, x: number, y: number, at: [number, number], color: string, anchor: Lab["anchor"] = "middle") =>
@@ -228,13 +265,15 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
       data="solgangsvind"
       etikettRader={3}
       notes={[]}
+      hinder={hinder}
+      skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
       keys={[
         { text: "Vind fra havet", color: F.sjobris, kind: "line" },
-        { text: "Landbris", color: F.kald, kind: "line" },
-        { text: "Vind i høyden", color: F.retur, kind: "line" },
+        { text: "Landbris", color: F.kald, kind: "dot" },
+        { text: "Vind i høyden", color: F.retur, kind: "dash" },
       ]}
     >
-      {({ m }) => (
+      {({ m, narrow }) => (
         <>
           {snitt > 0.01 ? (
             <g opacity={snitt < 0.99 ? snitt : undefined}>
@@ -246,22 +285,13 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
               <Terreng id={`${uid}-land`} profil={LAND} snoUnder={220} />
               <Traer punkter={PYNT.traer} />
               <Hus punkter={PYNT.hus} />
-              <Strom
-                punkter={[[60, 382], [300, 382], [lerp(300, 640, s.inn), 378 - lerp(0, 10, s.inn)]]}
-                sek={sek}
-                farge={F.sjobris}
-                marker={m.teal}
-                bredde={2 + 4 * s.inn}
-                opacity={clamp(s.inn * 3) * (1 - s.natt)}
-              />
-              {/* natt: et grunnere, lukket kretsløp (NOAA, u.å.-a), pålandsvind i høyden på ca. y 280 */}
-              <Strom punkter={[[610, hoydeVed(LAND, 610) - 8], [420, 390], [150, 392]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.6} opacity={s.natt} fart={12} />
-              <Strom punkter={[[128, 386], [128, 336], [128, 292]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
-              <Strom punkter={[[148, 280], [380, 278], [616, 280]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
-              <Strom punkter={[[632, 290], [632, 320], [632, hoydeVed(LAND, 632) - 20]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+              <Strom punkter={innPunkter} sek={sek} farge={F.sjobris} marker={m.teal} bredde={2 + 4 * s.inn} opacity={innOp} />
+              {nattStromer.map((h, i) => (
+                <Strom key={i} punkter={h.punkter} sek={sek} farge={h.farge} marker={m[h.marker]} bredde={h.bredde} opacity={h.opacity} fart={h.fart} strek={h.strek} />
+              ))}
             </g>
           ) : null}
-          {ov > 0.01 ? <Ovenfra s={s} op={ov} fase={fase} /> : null}
+          {ov > 0.01 ? <Ovenfra s={s} op={ov} fase={fase} narrow={narrow} /> : null}
         </>
       )}
     </LokaleRamme>

@@ -26,7 +26,9 @@ import {
   lagProfil,
   medKilde,
   useLokaleTidslinje,
+  type Hinder,
   type Lab,
+  type Strek,
 } from "./lokale-kit";
 
 const FASER = ["Land varmes", "Termisk lavtrykk", "Sjøbris", "Returstrøm", "Sjøbrisfronten", "Natt: landbris"];
@@ -94,6 +96,29 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   const innTil = fase >= 5 ? Math.max(560, fx - 10) : 560;
   const cumulusOp = s.stig * dag * (fase >= 5 ? 1 - passert : 1);
 
+  // Strømmene i kretsløpet. Strek skiller dem også uten farge: sjøbris og varm luft heltrukket,
+  // strøm i høyden stiplet, landbris prikket (samme i tegnforklaringen).
+  type StromData = { punkter: [number, number][]; farge: string; marker: "warm" | "teal" | "fg" | "cold"; bredde?: number; opacity: number; fart?: number; strek?: Strek };
+  const stromer: StromData[] = [
+    { punkter: [[650, 372], [650, 260], [650, 175]], farge: F.varm, marker: "warm", opacity: s.stig * dag },
+    { punkter: [[40, 382], [260, 382], [innTil, 380 - (innTil - 400) * 0.03]], farge: F.sjobris, marker: "teal", bredde: 5, opacity: s.inn * dag },
+    { punkter: [[630, 140], [400, 138], [110, 142]], farge: F.retur, marker: "fg", bredde: 3.5, opacity: s.retur * dag, strek: "stiplet" },
+    { punkter: [[80, 168], [80, 270], [80, 360]], farge: F.retur, marker: "fg", bredde: 3, opacity: s.retur * dag * 0.9, strek: "stiplet" },
+  ];
+  // natt: et grunnere, lukket kretsløp (NOAA, u.å.-a): synker over land, landbris ut, stiger over havet,
+  // pålandsvind i høyden på ca. y 280 (om dagen går returstrømmen på ca. y 140)
+  const nattStromer: StromData[] = [
+    { punkter: [[590, NATT_LAND_Y - 8], [400, 390], [130, 392]], farge: F.kald, marker: "cold", bredde: 2.6, opacity: s.natt, fart: 12, strek: "prikket" },
+    { punkter: [[108, 386], [108, 336], [108, 292]], farge: F.kald, marker: "cold", bredde: 2.2, opacity: s.natt * 0.85, fart: 10, strek: "prikket" },
+    { punkter: [[128, 280], [360, 278], [596, 280]], farge: F.retur, marker: "fg", bredde: 2.2, opacity: s.natt * 0.85, fart: 10, strek: "stiplet" },
+    { punkter: [[612, 290], [612, 320], [612, NATT_LAND_Y - 20]], farge: F.retur, marker: "fg", bredde: 2.2, opacity: s.natt * 0.85, fart: 10, strek: "stiplet" },
+  ];
+  const hinder: Hinder[] = [...stromer, ...nattStromer]
+    .filter((h) => h.opacity > 0.1)
+    .map((h) => ({ p: h.punkter, b: h.bredde ?? 4, pil: true }));
+  if (fase >= 5 && dag > 0.02) hinder.push({ boks: [STASJON - 8, yStasjon - 136, STASJON + 42, yStasjon] });
+  if (frontOp > 0.1) hinder.push({ boks: [fx - 60, 210, fx + 20, hoydeVed(LAND, fx)] });
+
   const labels: Lab[] = [];
   const fs = 16;
   const lab = (text: string, x: number, y: number, at: [number, number], color: string, anchor: Lab["anchor"] = "middle") =>
@@ -134,11 +159,13 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
       labels={labels}
       data="sjobris"
       etikettRader={7}
+      hinder={hinder}
+      skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
       keys={[
         { text: "Sjøbris ved bakken", color: F.sjobris, kind: "line" },
-        { text: "Strøm i høyden", color: F.retur, kind: "line" },
+        { text: "Strøm i høyden", color: F.retur, kind: "dash" },
         { text: "Varm luft som stiger", color: F.varm, kind: "line" },
-        { text: "Landbris", color: F.kald, kind: "line" },
+        { text: "Landbris", color: F.kald, kind: "dot" },
       ]}
     >
       {({ m }) => (
@@ -161,17 +188,9 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
           ) : null}
           <Sky x={650} y={150} s={0.9} opacity={cumulusOp} byge />
           {/* kretsløpet */}
-          <Strom punkter={[[650, 372], [650, 260], [650, 175]]} sek={sek} farge={F.varm} marker={m.warm} opacity={s.stig * dag} />
-          <Strom
-            punkter={[[40, 382], [260, 382], [innTil, 380 - (innTil - 400) * 0.03]]}
-            sek={sek}
-            farge={F.sjobris}
-            marker={m.teal}
-            bredde={5}
-            opacity={s.inn * dag}
-          />
-          <Strom punkter={[[630, 140], [400, 138], [110, 142]]} sek={sek} farge={F.retur} marker={m.fg} bredde={3.5} opacity={s.retur * dag} />
-          <Strom punkter={[[80, 168], [80, 270], [80, 360]]} sek={sek} farge={F.retur} marker={m.fg} bredde={3} opacity={s.retur * dag * 0.9} />
+          {stromer.map((h, i) => (
+            <Strom key={`d${i}`} punkter={h.punkter} sek={sek} farge={h.farge} marker={m[h.marker]} bredde={h.bredde} opacity={h.opacity} fart={h.fart} strek={h.strek} />
+          ))}
           {/* sjøbrisfronten */}
           {frontOp > 0.02 ? (
             <g opacity={frontOp}>
@@ -186,12 +205,9 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
             </g>
           ) : null}
           {/* natt: landbris og pålandsvind i høyden */}
-          {/* natt: et grunnere, lukket kretsløp (NOAA, u.å.-a): synker over land, landbris ut, stiger over havet,
-              pålandsvind i høyden på ca. y 280 (om dagen går returstrømmen på ca. y 140) */}
-          <Strom punkter={[[590, NATT_LAND_Y - 8], [400, 390], [130, 392]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.6} opacity={s.natt} fart={12} />
-          <Strom punkter={[[108, 386], [108, 336], [108, 292]]} sek={sek} farge={F.kald} marker={m.cold} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
-          <Strom punkter={[[128, 280], [360, 278], [596, 280]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
-          <Strom punkter={[[612, 290], [612, 320], [612, NATT_LAND_Y - 20]]} sek={sek} farge={F.retur} marker={m.fg} bredde={2.2} opacity={s.natt * 0.85} fart={10} />
+          {nattStromer.map((h, i) => (
+            <Strom key={`n${i}`} punkter={h.punkter} sek={sek} farge={h.farge} marker={m[h.marker]} bredde={h.bredde} opacity={h.opacity} fart={h.fart} strek={h.strek} />
+          ))}
         </>
       )}
     </LokaleRamme>

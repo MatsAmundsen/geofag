@@ -8,9 +8,9 @@
  *   stroke-dashoffset eller transform. Ingen {__html}-objekter.
  * - Terrengprofiler lages med støyen i terreng-kit (`lagStoy`), regnet ut én gang (lat).
  */
-import { memo, type CSSProperties, type ReactNode, type RefObject } from "react";
-import { IsbreFigur, StegVelger, type Key, type Lab, type Markers } from "./isbre-figur";
-import { clamp, lerp, mixHex, smoothPath, useInView } from "./isbre-kit";
+import { memo, useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
+import { IsbreFigur, NARROW_FIGURE_PX, StegVelger, type Key, type Lab, type Markers } from "./isbre-figur";
+import { FigureScale, clamp, lerp, mixHex, smoothPath, useInView } from "./isbre-kit";
 import { TidslinjeKontroller } from "./prosess-figur";
 import { useTidslinje, type Tidslinje } from "./prosess-kit";
 import { PlayPauseToggle } from "./svg-kit";
@@ -49,9 +49,11 @@ export const F = {
   skyMork: "#9aa7b2",
   tekst: "#e8eef2",
   halo: "#0f171c",
-  kaldfront: "#4f8fe0",
-  varmfront: "#e0574f",
-  okkludert: "#b07ad8",
+  // samme frontfarger og «L» som syklonmodellen i Værkart (PR #187)
+  kaldfront: "#8eb4d4",
+  varmfront: "#d07a7a",
+  okkludert: "#b98be0",
+  lavtrykk: "#e8a0a0",
 };
 
 /** Himmelfarger gjennom døgnet: 0 morgen, 1 dag, 2 kveld, 3 natt (interpoleres). */
@@ -104,6 +106,8 @@ export function LokaleRamme({
   below,
   data,
   etikettRader,
+  hinder,
+  skiltNokkel,
   children,
 }: {
   tekst: { heading: string; title: string; caption: string };
@@ -117,14 +121,37 @@ export function LokaleRamme({
   keys?: Key[];
   notes?: string[];
   ekstra?: ReactNode;
-  below?: ReactNode;
+  /** Innhold under tegningen; som funksjon får det vite om figuren er smal. */
+  below?: ReactNode | ((narrow: boolean) => ReactNode);
   /** data-figur-navnet på tegnegruppen (til tester og skjermbilder). */
   data: string;
   /** Flest etiketter i noe steg. Holder nummerlista på smal skjerm like høy i alle steg. */
   etikettRader: number;
-  children: (ctx: { m: Markers; narrow: boolean }) => ReactNode;
+  /**
+   * Piler og linjer (viewBox-enheter) som nummerskiltene på smal skjerm ikke skal ligge oppå.
+   * Uten denne plasseres skiltene som før (fra `badge` eller over punktet).
+   */
+  hinder?: Hinder[];
+  /** Skiltene regnes ut på nytt bare når denne endres (f.eks. steg og avrundet framdrift). */
+  skiltNokkel?: string;
+  children: (ctx: { m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const h = heading ?? tekst.heading;
+  const bredde = useSvgBredde(svgRef);
+  const smal = bredde > 0 && bredde < NARROW_FIGURE_PX;
+  const skala = bredde > 0 ? Math.min(bredde, 1024) / VB.w : 0;
+  const skiltCache = useRef<{ key: string; pos: ([number, number] | null)[] } | null>(null);
+  let merket = labels;
+  if (smal && hinder && skala > 0) {
+    // samme radius som nummerskiltene i IsbreFigur (minst ca. 23 CSS-piksler i diameter)
+    const r = Math.max(11.5 / skala, VB.w * 0.02);
+    const key = `${skiltNokkel ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
+    if (!skiltCache.current || skiltCache.current.key !== key) {
+      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala) };
+    }
+    const pos = skiltCache.current.pos;
+    merket = labels.map((l, i) => (pos[i] ? { ...l, badge: pos[i] } : l));
+  }
   return (
     <div
       style={{ "--lok-ol": `${etikettRader * 28 - 6}px` } as CSSProperties}
@@ -144,20 +171,152 @@ export function LokaleRamme({
           </div>
         }
         status={status}
-        labels={labels}
+        labels={merket}
         keys={keys}
         notes={notes ?? ["Skjematisk, høyden er overdrevet"]}
         viewBox={`0 0 ${VB.w} ${VB.h}`}
-        below={below}
+        below={typeof below === "function" ? below(smal) : below}
       >
-        {({ m, narrow }) => (
+        {({ m, narrow, scale }) => (
           <g data-figur={data} data-step={tl.fase} data-p={tl.p.toFixed(2)}>
-            {children({ m, narrow })}
+            {children({ m, narrow, scale })}
           </g>
         )}
       </IsbreFigur>
     </div>
   );
+}
+
+/** Bredden til tegneflaten (CSS-piksler), 0 før første måling. */
+function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const maal = () => setW(Math.round(el.getBoundingClientRect().width));
+    maal();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(maal);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [ref]);
+  return w;
+}
+
+/* ---------- nummerskilt utenfor piler og linjer ---------- */
+
+/**
+ * Noe nummerskiltene ikke skal dekke: en linje (punkter, strekbredde i viewBox-enheter, `pil` gir plass
+ * til pilspissen i enden), en ellipse eller en boks (f.eks. tekst i figuren).
+ */
+export type Hinder =
+  | { p: [number, number][]; b?: number; pil?: boolean }
+  | { ellipse: [number, number, number, number]; b?: number }
+  | { boks: [number, number, number, number] };
+
+type Seg = { x0: number; y0: number; x1: number; y1: number; halv: number };
+
+function segAvstand(x: number, y: number, s: Seg) {
+  const vx = s.x1 - s.x0;
+  const vy = s.y1 - s.y0;
+  const l2 = vx * vx + vy * vy || 1;
+  const t = clamp(((x - s.x0) * vx + (y - s.y0) * vy) / l2);
+  return Math.hypot(x - (s.x0 + t * vx), y - (s.y0 + t * vy)) - s.halv;
+}
+
+/** Linjene som korte segmenter med halv strekbredde (tykkere på smal skjerm, slik IsbreFigur gjør dem). */
+function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [number, number, number, number][] } {
+  const seg: Seg[] = [];
+  const bokser: [number, number, number, number][] = [];
+  // IsbreFigur gjør tynne streker minst ca. 1,65 CSS-piksler og pilspisser minst 12 px
+  const halvAv = (b = 3) => Math.max(b + 3, 2.4 / skala) / 2;
+  for (const h of hinder) {
+    if ("boks" in h) {
+      bokser.push(h.boks);
+      continue;
+    }
+    const pts: [number, number][] = [];
+    if ("ellipse" in h) {
+      const [cx, cy, rx, ry] = h.ellipse;
+      for (let k = 0; k <= 48; k++) {
+        const t = (k / 48) * Math.PI * 2;
+        pts.push([cx + rx * Math.cos(t), cy + ry * Math.sin(t)]);
+      }
+    } else pts.push(...h.p);
+    const halv = halvAv(h.b);
+    for (let i = 1; i < pts.length; i++) {
+      seg.push({ x0: pts[i - 1][0], y0: pts[i - 1][1], x1: pts[i][0], y1: pts[i][1], halv });
+    }
+    if ("p" in h && h.pil && pts.length > 1) {
+      const [ax, ay] = pts[pts.length - 2];
+      const [bx, by] = pts[pts.length - 1];
+      const l = Math.hypot(bx - ax, by - ay) || 1;
+      const lang = Math.max(14, 13 / skala);
+      seg.push({ x0: bx, y0: by, x1: bx + ((bx - ax) / l) * lang * 0.6, y1: by + ((by - ay) / l) * lang * 0.6, halv: Math.max(halv, 6.5 / skala) });
+    }
+  }
+  return { seg, bokser };
+}
+
+/**
+ * Plasserer nummerskiltene (radius r) for smal skjerm: nærmest mulig punktet etiketten peker på, men
+ * utenfor alle piler og linjer, utenfor andre skilt og andre punkter, og inne i tegneflaten.
+ * Finnes ingen ledig plass, velges plassen med minst overlapp.
+ */
+export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: number): ([number, number] | null)[] {
+  const { seg, bokser } = segmenter(hinder, skala);
+  const luft = 3 / skala;
+  const steg = Math.max(8, r / 2.5);
+  const kand: [number, number][] = [];
+  for (let y = r + 4; y <= VB.h - r - 4; y += steg) for (let x = r + 4; x <= VB.w - r - 4; x += steg) kand.push([x, y]);
+  const plassert: [number, number][] = [];
+  const maal = labels.map((l) => l.at ?? l.badge ?? [l.x, l.y]);
+  return labels.map((l, i) => {
+    const [tx, ty] = maal[i];
+    const sortert = kand
+      .map((c) => ({ c, d: Math.hypot(c[0] - tx, c[1] - ty) }))
+      .filter((k) => k.d >= (l.at ? r * 1.25 : 0))
+      .sort((a, b) => a.d - b.d);
+    const brudd = (x: number, y: number) => {
+      let sum = 0;
+      for (const s of seg) {
+        const d = segAvstand(x, y, s) - r - luft;
+        if (d < 0) sum -= d;
+      }
+      for (const [x0, y0, x1, y1] of bokser) {
+        const dx = Math.max(x0 - x, 0, x - x1);
+        const dy = Math.max(y0 - y, 0, y - y1);
+        const d = Math.hypot(dx, dy) - r - luft;
+        if (d < 0) sum -= d;
+      }
+      for (const q of plassert) {
+        const d = Math.hypot(q[0] - x, q[1] - y) - 2 * r - 8;
+        if (d < 0) sum -= d * 4;
+      }
+      maal.forEach((t, j) => {
+        if (j === i || !labels[j].at) return;
+        const d = Math.hypot(t[0] - x, t[1] - y) - r - 7;
+        if (d < 0) sum -= d * 4;
+      });
+      return sum;
+    };
+    let best: [number, number] | null = null;
+    let bestKost = Infinity;
+    for (const { c, d } of sortert) {
+      const b = brudd(c[0], c[1]);
+      if (b === 0) {
+        best = c;
+        break;
+      }
+      const kost = b * 50 + d;
+      if (kost < bestKost) {
+        bestKost = kost;
+        best = c;
+      }
+    }
+    if (best) plassert.push(best);
+    return best ? [Math.round(best[0] * 10) / 10, Math.round(best[1] * 10) / 10] : null;
+  });
 }
 
 /* ---------- himmel, hav, sol og måne ---------- */
@@ -308,7 +467,29 @@ export function Regn({ x, y, w, h, sek, opacity = 1, n = 9 }: { x: number; y: nu
 
 /* ---------- piler og strømmer ---------- */
 
-/** Strømlinje: glidende strøk langs banen og en fast pil på slutten. */
+/** Strekmønster, så linjene skilles også uten farge: heltrukket, stiplet eller prikket. */
+export type Strek = "hel" | "stiplet" | "prikket";
+
+/**
+ * Stiplingen i viewBox-enheter. Målene er i CSS-piksler på smal skjerm (skala = px per enhet),
+ * så mønsteret ikke krymper til grått på mobil.
+ */
+export function strekMonster(strek: Strek, bredde: number, skala: number): { dash?: string; bredde: number; periode: number } {
+  const px = (v: number, min: number) => Math.max(min, skala > 0 ? v / skala : min);
+  if (strek === "stiplet") {
+    const a = px(11, 18);
+    const b = px(7, 11);
+    return { dash: `${a.toFixed(1)} ${b.toFixed(1)}`, bredde, periode: a + b };
+  }
+  if (strek === "prikket") {
+    const w = Math.max(bredde + 1.5, skala > 0 ? 4.2 / skala : 0);
+    const gap = w * 2.1;
+    return { dash: `0.1 ${gap.toFixed(1)}`, bredde: w, periode: gap + 0.1 };
+  }
+  return { bredde, periode: 0 };
+}
+
+/** Strømlinje: glidende strøk langs banen og en fast pil på slutten. Stiplet og prikket strek glir selv. */
 export function Strom({
   punkter,
   sek,
@@ -317,6 +498,7 @@ export function Strom({
   bredde = 4,
   opacity = 1,
   fart = 24,
+  strek = "hel",
 }: {
   punkter: [number, number][];
   sek: number;
@@ -325,9 +507,23 @@ export function Strom({
   bredde?: number;
   opacity?: number;
   fart?: number;
+  strek?: Strek;
 }) {
+  const skala = useContext(FigureScale);
   if (opacity <= 0.01 || punkter.length < 2) return null;
   const d = smoothPath(punkter);
+  if (strek !== "hel") {
+    const mo = strekMonster(strek, bredde, skala < 0.76 ? skala : 0);
+    const off = (-(sek * fart) % mo.periode).toFixed(1);
+    return (
+      <g opacity={opacity < 0.99 ? opacity : undefined} data-strek={strek}>
+        <path d={d} fill="none" stroke="#0b1418" strokeWidth={mo.bredde + 3} strokeOpacity="0.45" strokeLinecap="round" strokeDasharray={mo.dash} strokeDashoffset={off} data-nocheck="" />
+        <path d={d} fill="none" stroke={farge} strokeWidth={mo.bredde} strokeLinecap="round" strokeDasharray={mo.dash} strokeDashoffset={off} />
+        {/* pilspissen på en kort, heltrukket stump i enden */}
+        <path d={smoothPath(punkter.slice(-2))} fill="none" stroke={farge} strokeWidth={bredde} strokeOpacity="0" markerEnd={`url(#${marker})`} />
+      </g>
+    );
+  }
   return (
     <g opacity={opacity < 0.99 ? opacity : undefined}>
       <path d={d} fill="none" stroke="#0b1418" strokeWidth={bredde + 3} strokeOpacity="0.45" strokeLinecap="round" data-nocheck="" />

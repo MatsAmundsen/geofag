@@ -587,7 +587,7 @@ function LabelLayer({
 export type Key = {
   text: string;
   color: string;
-  kind: "dash" | "line" | "fill" | "symbol" | "crevasse";
+  kind: "dash" | "dot" | "line" | "fill" | "symbol" | "crevasse";
   symbol?: string;
   /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
   off?: boolean;
@@ -606,6 +606,8 @@ function KeySample({ k }: { k: Key }) {
           strokeWidth="2.4"
           strokeDasharray="5 4"
         />
+      ) : k.kind === "dot" ? (
+        <line x1="3" y1="7" x2="28" y2="7" stroke={k.color} strokeWidth="3.6" strokeLinecap="round" strokeDasharray="0.1 6.2" />
       ) : k.kind === "line" ? (
         <line x1="1" y1="7" x2="29" y2="7" stroke={k.color} strokeWidth="3" />
       ) : k.kind === "crevasse" ? (
