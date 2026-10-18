@@ -98,6 +98,15 @@ import {
   IonBytteV2FigurLat as IonBytteV2Figur,
   KontaktRegionalV2FigurLat as KontaktRegionalV2Figur,
   BotnEggTindFigurLat,
+  JetNaoFigurLat,
+  JetOmegaFigurLat,
+  JetProfilFigurLat,
+  JetSesongFigurLat,
+  JetSlyngerFigurLat,
+  JetStreakFigurLat,
+  StormbaneFigurLat,
+  TermiskVindFigurLat,
+  VestOstFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
   GeotidRelativFigur,
@@ -156,11 +165,10 @@ import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
-import { CoriolisLatitudeDiagram, EkmanSpiralDiagram, GeostrophicAdjustmentDiagram, NaoDiagram, PressureSpinDiagram, RossbyScaleDiagram, ZonalCentrifugalDiagram } from "@/components/diagrams/coriolis";
+import { CoriolisLatitudeDiagram, EkmanSpiralDiagram, GeostrophicAdjustmentDiagram, PressureSpinDiagram, RossbyScaleDiagram, ZonalCentrifugalDiagram } from "@/components/diagrams/coriolis";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
 import { AtmosphericRiverDiagram, ClimateRiskShiftDiagram, HurricaneCrossSectionDiagram, MeteorologicalBombDiagram, PolarLowFormationDiagram, StormSurgeDiagram, SupercellAnatomyDiagram, TornadoGenesisDiagram } from "@/components/diagrams/disasters";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
-import { JetBlockingDiagram, JetFormsDiagram, JetProfileDiagram, JetSeasonDiagram, JetStreakDiagram, ThermalWindDiagram } from "@/components/diagrams/jet";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
 import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
 import { AmocTippingModel } from "@/components/models/amoc-tipping-model";
@@ -1042,13 +1050,17 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   SeaBreezeModel: () => <SeaBreezeModel />,
   TemperatureInversion: () => <TemperatureInversionDiagram />,
   KatabaticWind: () => <KatabaticWindDiagram />,
-  JetProfile: () => <JetProfileDiagram />,
-  ThermalWind: () => <ThermalWindDiagram />,
-  JetStreak: () => <JetStreakDiagram />,
-  JetForms: () => <JetFormsDiagram />,
-  JetSeason: () => <JetSeasonDiagram />,
-  JetBlocking: () => <JetBlockingDiagram />,
-  Nao: () => <NaoDiagram />,
+  // Jetstrømmer (figurplan og fagsjekk 17.10.2026): de gamle komponentene i jet.tsx og NaoDiagram står urørt
+  // (NaoDiagram brukes i eksamen). JetVestOst og JetStormbane er nye og får widget-linjer i en egen reseed-PR.
+  JetProfile: () => <JetProfilFigurLat />,
+  ThermalWind: () => <TermiskVindFigurLat />,
+  JetStreak: () => <JetStreakFigurLat />,
+  JetVestOst: () => <VestOstFigurLat />,
+  JetForms: () => <JetSlyngerFigurLat />,
+  JetSeason: () => <JetSesongFigurLat />,
+  JetBlocking: () => <JetOmegaFigurLat />,
+  Nao: () => <JetNaoFigurLat />,
+  JetStormbane: () => <StormbaneFigurLat />,
   CoriolisLatitude: () => <CoriolisLatitudeDiagram />,
   ZonalCentrifugal: () => <ZonalCentrifugalDiagram />,
   PressureSpin: () => <PressureSpinDiagram />,

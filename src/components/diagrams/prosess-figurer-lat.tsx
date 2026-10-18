@@ -14,6 +14,17 @@ import { DIFFERENSIERING_TEKST } from "./differensiering-tekst";
 import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
+import {
+  JETSTREAK_TEKST,
+  JET_NAO_TEKST,
+  JET_OMEGA_TEKST,
+  JET_PROFIL_TEKST,
+  JET_SESONG_TEKST,
+  JET_SLYNGER_TEKST,
+  STORMBANE_TEKST,
+  TERMISK_VIND_TEKST,
+  VEST_OST_TEKST,
+} from "./jetstrommer-tekst";
 
 type Plass = {
   heading: string;
@@ -200,3 +211,18 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
   },
   () => import("./bergartssyklus-figur").then((m) => m.BergartssyklusFigur),
 );
+
+/* Jetstrømmer: alle figurene ligger i jetstrommer-figurer.tsx og lastes først når de nærmer seg skjermen. */
+const JET_MAAL = { smal: [560, 540] as [number, number], bred: [960, 540] as [number, number], over: [190, 150] as [number, number], under: [120, 90] as [number, number] };
+const jetLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL>, navn: keyof typeof import("./jetstrommer-figurer")) =>
+  lat<FigurProps>({ ...tekst, ...JET_MAAL, ...maal }, () => import("./jetstrommer-figurer").then((m) => m[navn] as ComponentType<FigurProps>));
+
+export const JetProfilFigurLat = jetLat(JET_PROFIL_TEKST, { smal: [960, 540] }, "JetProfilFigur");
+export const TermiskVindFigurLat = jetLat(TERMISK_VIND_TEKST, { smal: [960, 540] }, "TermiskVindFigur");
+export const VestOstFigurLat = jetLat(VEST_OST_TEKST, { smal: [960, 540] }, "VestOstFigur");
+export const JetStreakFigurLat = jetLat(JETSTREAK_TEKST, { smal: [960, 540] }, "JetStreakFigur");
+export const JetSlyngerFigurLat = jetLat(JET_SLYNGER_TEKST, {}, "JetSlyngerFigur");
+export const JetSesongFigurLat = jetLat(JET_SESONG_TEKST, {}, "JetSesongFigur");
+export const JetNaoFigurLat = jetLat(JET_NAO_TEKST, {}, "JetNaoFigur");
+export const JetOmegaFigurLat = jetLat(JET_OMEGA_TEKST, { smal: [640, 540] }, "JetOmegaFigur");
+export const StormbaneFigurLat = jetLat(STORMBANE_TEKST, {}, "StormbaneFigur");
