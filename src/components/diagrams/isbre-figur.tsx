@@ -54,7 +54,7 @@ export function StegVelger({
             type="button"
             aria-pressed={active}
             onClick={() => onStep(n)}
-            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
               active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
@@ -129,7 +129,7 @@ export function Faner({
             aria-controls={panelId}
             tabIndex={active ? 0 : -1}
             onClick={() => onVelg(n)}
-            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
               active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
