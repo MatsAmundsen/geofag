@@ -25,6 +25,8 @@ import {
   TERMISK_VIND_TEKST,
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
+import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
+import { LANDSKAP_TEKST } from "./landskap-tekst";
 
 type Plass = {
   heading: string;
@@ -41,6 +43,17 @@ type Plass = {
    * interpoleres lineært med containerbredden.
    */
   under: [number, number];
+  /**
+   * Egne endepunkter for smal layout (340 og 678 px), når høyden under tegneflaten i smal layout
+   * avviker mye fra bred (f.eks. nummerert forklaring som bare vises smalt). Uten denne brukes `under`.
+   */
+  underSmal?: [number, number];
+  /**
+   * Høyden under tegneflaten i smal layout som trapp, når den endrer seg i hopp fordi tekst brytes på nytt
+   * (f.eks. nummerert forklaring). `fra` gjelder for de smaleste containerne, og hvert trinn [containerbredde,
+   * høyde] gjelder fra og med den bredden. Målt i nettleseren. Brukes i stedet for `underSmal`/`under` i smal layout.
+   */
+  underTrinn?: { fra: number; trinn: [number, number][] };
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
   /**
@@ -66,6 +79,8 @@ type Plass = {
     /** Resten under tegneflaten (tegnforklaring, notater). */
     under: [number, number][];
   };
+  /** Containerbredden der figuren bytter til bred layout, når den har `skala`. Standard 560. */
+  bredFra?: 560 | 760;
 };
 
 /**
@@ -85,12 +100,30 @@ function stykkevis(punkter: [number, number][]) {
   return `calc(${ledd.join(" + ")})`;
 }
 
+/**
+ * CSS-lengde som går i trinn med containerbredden: hvert hopp er en clamp med en rampe på under 0,1 px,
+ * så høyden er lik den målte på begge sider av hoppet.
+ */
+function trapp({ fra, trinn }: { fra: number; trinn: [number, number][] }) {
+  const ledd: string[] = [`${fra}px`];
+  let forrige = fra;
+  for (const [b, h] of [...trinn].sort((x, y) => x[0] - y[0])) {
+    const d = h - forrige;
+    if (Math.abs(d) > 1e-6)
+      ledd.push(`${d < 0 ? "-" : "+"} clamp(0px, (100cqw - ${b}px) * 1000, ${Math.abs(d).toFixed(2)}px)`);
+    forrige = h;
+  }
+  return `calc(${ledd.join(" ")})`;
+}
+
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
 export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; heading?: string; caption?: React.ReactNode }) {
+  const us = plass.underSmal ?? plass.under;
   const stil = {
     "--over-s": `${plass.over[0] + (plass.faner?.[0] ?? 0)}px`,
     "--over-b": `${plass.over[1] + (plass.faner?.[1] ?? 0)}px`,
-    "--under-s": `clamp(${Math.min(...plass.under)}px, calc(${plass.under[0]}px + (100cqw - 340px) * ${((plass.under[1] - plass.under[0]) / 338).toFixed(4)}), ${Math.max(...plass.under)}px)`,
+    "--under-s": `clamp(${Math.min(...us)}px, calc(${us[0]}px + (100cqw - 340px) * ${((us[1] - us[0]) / 338).toFixed(4)}), ${Math.max(...us)}px)`,
+    ...(plass.underTrinn ? { "--under-s": trapp(plass.underTrinn) } : {}),
     "--under-b": `${plass.under[1]}px`,
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,
@@ -104,10 +137,11 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       "--under-b": stykkevis(sk.bred.under),
     });
   }
-  // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
-  const over = sk ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
-  const flate = sk ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
-  const under = sk ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
+  // bytte til bred layout: ved 560 px for figurer med egen skala (med mindre bredFra sier 760), ellers ved NARROW_FIGURE_PX (760)
+  const ved560 = sk && (plass.bredFra ?? 560) === 560;
+  const over = ved560 ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  const flate = ved560 ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
+  const under = ved560 ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
     <FigureFrame
       heading={heading ?? plass.heading}
@@ -214,6 +248,27 @@ export const BotnEggTindFigurLat = lat<FigurProps>(
   () => import("./botn-egg-tind-figur").then((m) => m.BotnEggTindFigur),
 );
 
+/** Gamle vidder, unge fjorder og strandflaten (landformer): terrenget tegnes i canvas på klienten, serveren viser bare plassholderen. */
+export const LandskapBlokkFigurLat = lat<FigurProps>(
+  {
+    ...LANDSKAP_TEKST,
+    smal: [520, 610],
+    bred: [960, 636],
+    over: [200, 120],
+    under: [400, 260],
+    // målt mot ferdig figur (redusert bevegelse) ved 320–1280 px vindusbredde; faner, verktøylinje og status er med i «over»
+    skala: {
+      smal: {
+        over: [[270, 321], [289, 321], [290, 301.7], [300, 301.7], [310, 321], [320, 285], [339, 285], [340, 265], [379, 265], [380, 249], [400, 249], [410, 238.5], [420, 249], [550, 249], [570, 189]],
+        under: [[290, 578.8], [295, 578.8], [300, 552.8], [470, 553], [500, 526.8], [510, 509.1], [590, 509], [610, 413]],
+      },
+      bred: { over: [[806, 181]], under: [[806, 261]] },
+    },
+    bredFra: 760,
+  },
+  () => import("./landskap-figur").then((m) => m.LandskapBlokkFigur),
+);
+
 export const BergartssyklusFigurLat = lat<FigurProps>(
   {
     ...SYKLUS_TEKST,
@@ -287,4 +342,12 @@ export const StormbaneFigurLat = jetLat(
   STORMBANE_TEKST,
   { smal: [740, 540], steg: { over: [[250, 119], [311, 119], [312, 87], [806, 87]], liste: [[250, 106], [759, 106], [760, 0], [806, 0]], under: [[250, 55.75], [416, 55.75], [417, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } },
   "StormbaneFigur",
+);
+
+/** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */
+export const SyklonmodellFigurLat = lat<FigurProps>(
+  { ...SYKLONMODELL_TEKST, smal: [960, 540], bred: [960, 540], over: [180, 150], under: [81, 81],
+    // målt 18.10 ved containerbredde 270–678 px (vindu 320–768): høyden hopper når forklaringslista brytes på nytt
+    underTrinn: { fra: 472.75, trinn: [[286, 454.88], [348.5, 428.88], [413.5, 396.88], [429.5, 356.88], [510.5, 330.88]] } },
+  () => import("./syklonmodell-figur").then((m) => m.SyklonmodellFigur),
 );
