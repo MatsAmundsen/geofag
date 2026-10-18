@@ -951,7 +951,7 @@ const omega: Def<{ a: number }> = {
   status: [
     "1. Jetstrømmen går fra vest mot øst.",
     "2. Jetstrømmen slynger seg mer, rundt høytrykk og lavtrykk.",
-    "3. Den går sør for høytrykket i vest, nord over det og sør igjen i øst, som bokstaven omega (Ω), med et lavtrykk på hver side.",
+    "3. Vest for høytrykket bøyer den mot sør, så går den nord over høytrykket og mot sør igjen øst for det, som bokstaven omega (Ω), med et lavtrykk på hver side.",
   ],
   bilder: [{ a: 0 }, { a: 0 }, { a: 0.5 }, { a: 1 }],
   etiketter: [0, 0.5, 1].map((a) => {
