@@ -1,0 +1,90 @@
+{
+  "commit": "f38ac708f3913edcdcaf023512c887ed97b3e312",
+  "throttle": 4,
+  "viewport": 390,
+  "windowMs": 8000,
+  "headroom": 1.5,
+  "note": "Grenser er den høyeste av to målinger på f38ac70, ganger 1,5 og rundet opp. longTaskCount har gulv 4 og longTaskMaxMs gulv 120, så ett GC-stopp ikke feiler en figur som målte null. script/frame inkluderer målesløyfen. taskMs nær 8000 betyr at hovedtråden var mettet i vinduet.",
+  "figures": {
+    "Steinlab: test en håndprøve": {
+      "taskMs": 11650,
+      "scriptMs": 11300,
+      "longTaskCount": 67,
+      "longTaskMaxMs": 350,
+      "frameP95Ms": 180,
+      "scriptPerFrameMs": 47.6
+    },
+    "Avkjøling styrer kornstørrelsen": {
+      "taskMs": 10400,
+      "scriptMs": 8750,
+      "longTaskCount": 51,
+      "longTaskMaxMs": 175,
+      "frameP95Ms": 130,
+      "scriptPerFrameMs": 27
+    },
+    "Osloriften: rombeporfyr og larvikitt fra samme smeltefamilie": {
+      "taskMs": 9500,
+      "scriptMs": 8650,
+      "longTaskCount": 21,
+      "longTaskMaxMs": 120,
+      "frameP95Ms": 50,
+      "scriptPerFrameMs": 19.7
+    },
+    "Magmatisk differensiering": {
+      "taskMs": 9300,
+      "scriptMs": 6950,
+      "longTaskCount": 4,
+      "longTaskMaxMs": 120,
+      "frameP95Ms": 50,
+      "scriptPerFrameMs": 16.1
+    },
+    "Diagenese: fra løs sand til sandstein": {
+      "taskMs": 10200,
+      "scriptMs": 6550,
+      "longTaskCount": 4,
+      "longTaskMaxMs": 150,
+      "frameP95Ms": 100,
+      "scriptPerFrameMs": 20.3
+    },
+    "Kontakt- og regional metamorfose": {
+      "taskMs": 10450,
+      "scriptMs": 7150,
+      "longTaskCount": 4,
+      "longTaskMaxMs": 120,
+      "frameP95Ms": 55,
+      "scriptPerFrameMs": 17.1
+    },
+    "Ioner byttes i fast berg": {
+      "taskMs": 8050,
+      "scriptMs": 7550,
+      "longTaskCount": 4,
+      "longTaskMaxMs": 120,
+      "frameP95Ms": 30,
+      "scriptPerFrameMs": 15.8
+    },
+    "Metamorfose: fra leirskifer til gneis": {
+      "taskMs": 12000,
+      "scriptMs": 11450,
+      "longTaskCount": 70,
+      "longTaskMaxMs": 875,
+      "frameP95Ms": 1325,
+      "scriptPerFrameMs": 372.3
+    },
+    "Bergartssyklusen i et snitt gjennom jordskorpa": {
+      "taskMs": 11200,
+      "scriptMs": 8250,
+      "longTaskCount": 12,
+      "longTaskMaxMs": 120,
+      "frameP95Ms": 105,
+      "scriptPerFrameMs": 31.1
+    },
+    "Følg en norsk bergart gjennom syklusen": {
+      "taskMs": 11500,
+      "scriptMs": 6350,
+      "longTaskCount": 4,
+      "longTaskMaxMs": 120,
+      "frameP95Ms": 80,
+      "scriptPerFrameMs": 20.6
+    }
+  }
+}
