@@ -216,6 +216,9 @@ export function SolgangsvindFigur({ heading, caption }: { heading?: string; capt
     for (let k = 0; k < 4; k++) hinder.push({ p: [[4, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]], b: 1.4 });
     if (innOp > 0.1) hinder.push({ p: innPunkter, b: 2 + 4 * s.inn, pil: true });
     for (const h of nattStromer) if (h.opacity > 0.1) hinder.push({ p: h.punkter, b: h.bredde, pil: true });
+    // sola (Sol: kjerne r 24, glød r ≈ 46) som fylt flate, ikke bare som ring: skiltet «Sola står lavt»
+    // skal stå ved siden av sola med en kort leder, ikke oppå den
+    if (solOp > 0.1) hinder.push({ boks: [sx - 46, sy - 46, sx + 46, sy + 46] });
   }
   if (ov > 0.1) {
     for (const p of ovenfraPiler(s, fase)) {
