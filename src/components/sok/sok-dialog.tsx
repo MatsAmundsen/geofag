@@ -22,6 +22,20 @@ import {
   type TreffRad,
 } from "@/lib/sok/klient";
 import { cn } from "@/lib/utils";
+import {
+  SOK_FELT,
+  SOK_IKON,
+  SOK_INNHOLD,
+  SOK_INTRO,
+  SOK_LUKK,
+  SOK_OVERLAY,
+  SOK_PLASSHOLDER,
+  SOK_RESULTATER,
+  SOK_STATUS,
+  SOK_TITTEL,
+  SOK_TOPP,
+  type SokUtkast,
+} from "./sok-stil";
 
 /*
  * Selve søkedialogen. Lastes lat (React.lazy i site-search.tsx), så Radix
@@ -41,22 +55,53 @@ function gjeldendeSlug(pathname: string): string | undefined {
 export default function SokDialog({
   onClose,
   knappRef,
+  inputId,
+  utkastRef,
 }: {
   onClose: () => void;
   /** søkeknappen, som får fokus tilbake når dialogen lukkes uten hopp */
   knappRef: RefObject<HTMLButtonElement | null>;
+  /** id på søkefeltet (samme som i skallet som vises mens dialogen lastes) */
+  inputId: string;
+  /** det som ble skrevet i skallet før dialogen var klar */
+  utkastRef?: RefObject<SokUtkast>;
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const slug = gjeldendeSlug(pathname);
-  const [tekst, setTekst] = useState("");
-  const [utsatt, setUtsatt] = useState("");
+  // Leses ved første tegning: det som er skrevet i skallet fram til nå.
+  const [utkast] = useState<SokUtkast | undefined>(() => utkastRef?.current);
+  const [tekst, setTekst] = useState(() => utkast?.verdi ?? "");
+  const [utsatt, setUtsatt] = useState(() => utkast?.verdi ?? "");
   const [indeks, setIndeks] = useState<ForberedtIndeks | null>(() => lastetIndeks());
   const [feil, setFeil] = useState<string | null>(null);
   const [bareKapittel, setBareKapittel] = useState(false);
   const navigertRef = useRef(false);
   const resultaterRef = useRef<HTMLDivElement>(null);
-  const inputId = useId();
   const statusId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Fokus i feltet i det øyeblikket det kommer i DOM-en, med teksten og
+  // markøren fra skallet. Radix tegner portalen i en ekstra omgang, så dette
+  // gjøres i ref-callbacken og ikke i en effekt (ellers kan tastetrykk gå tapt).
+  const overfortRef = useRef(false);
+  const settInput = useCallback(
+    (el: HTMLInputElement | null) => {
+      inputRef.current = el;
+      if (!el || overfortRef.current) return;
+      overfortRef.current = true;
+      // Skallet kan ha fått flere tastetrykk mens dialogen ble tegnet: bruk det nyeste.
+      const siste = utkastRef?.current ?? utkast;
+      if (siste && siste.verdi !== el.value) {
+        el.value = siste.verdi;
+        setTekst(siste.verdi);
+        setUtsatt(siste.verdi);
+      }
+      el.focus({ preventScroll: true });
+      if (siste && siste.start !== null)
+        el.setSelectionRange(siste.start, siste.slutt ?? siste.start);
+    },
+    [utkastRef, utkast],
+  );
 
   const last = useCallback(() => {
     setFeil(null);
@@ -67,6 +112,11 @@ export default function SokDialog({
         setFeil("Søket kunne ikke lastes. Sjekk nettet og prøv igjen.");
       });
   }, []);
+
+  // Hent indeksen med en gang (den er som regel allerede på vei fra knappen).
+  useEffect(() => {
+    if (!lastetIndeks()) last();
+  }, [last]);
 
   useEffect(() => {
     const t = window.setTimeout(() => setUtsatt(tekst), DEBOUNCE_MS);
@@ -142,12 +192,13 @@ export default function SokDialog({
       }}
     >
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm" />
+        <Dialog.Overlay className={SOK_OVERLAY} />
         <Dialog.Content
-          className="fixed inset-x-0 top-0 z-50 flex h-dvh flex-col overflow-y-auto overscroll-contain border-border bg-card text-card-foreground shadow-2xl sm:inset-x-auto sm:left-1/2 sm:top-[8vh] sm:h-auto sm:max-h-[84vh] sm:w-[min(42rem,calc(100vw-2rem))] sm:-translate-x-1/2 sm:rounded-xl sm:border"
+          className={SOK_INNHOLD}
           onOpenAutoFocus={(e) => {
+            // Feltet har allerede fokus (ref-callbacken); ikke flytt markøren.
             e.preventDefault();
-            document.getElementById(inputId)?.focus();
+            if (document.activeElement !== inputRef.current) inputRef.current?.focus();
           }}
           onCloseAutoFocus={(e) => {
             // Etter et hopp får avsnittet i kapitlet fokus, ikke søkeknappen.
@@ -155,15 +206,10 @@ export default function SokDialog({
             if (!navigertRef.current) knappRef.current?.focus();
           }}
         >
-          <div className="border-b border-border px-4 pb-3 pt-4 sm:px-5 [@media(max-height:34rem)]:pb-2 [@media(max-height:34rem)]:pt-2">
+          <div className={SOK_TOPP}>
             <div className="flex items-center justify-between gap-3">
-              <Dialog.Title className="font-display text-lg font-medium tracking-tight">
-                Søk i Geofag 1 og 2
-              </Dialog.Title>
-              <Dialog.Close
-                className="inline-flex size-11 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground"
-                aria-label="Lukk søket"
-              >
+              <Dialog.Title className={SOK_TITTEL}>Søk i Geofag 1 og 2</Dialog.Title>
+              <Dialog.Close className={SOK_LUKK} aria-label="Lukk søket">
                 <X className="size-5" aria-hidden="true" />
               </Dialog.Close>
             </div>
@@ -172,14 +218,12 @@ export default function SokDialog({
               ordet for å gå rett dit i kapitlet. Bruk piltastene for å flytte mellom treffene.
             </Dialog.Description>
             <div className="relative mt-2">
-              <Search
-                className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                aria-hidden="true"
-              />
+              <Search className={SOK_IKON} aria-hidden="true" />
               <label htmlFor={inputId} className="sr-only">
                 Søkeord
               </label>
               <input
+                ref={settInput}
                 id={inputId}
                 type="search"
                 inputMode="search"
@@ -193,10 +237,10 @@ export default function SokDialog({
                   if (!indeks) last();
                 }}
                 onKeyDown={onInputKey}
-                placeholder="Skriv et ord, for eksempel isbre"
+                placeholder={SOK_PLASSHOLDER}
                 aria-describedby={statusId}
                 aria-controls={`${inputId}-res`}
-                className="flex h-12 w-full rounded-md border border-border bg-background pl-9 pr-3 text-base text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                className={SOK_FELT}
               />
             </div>
             {harKapittel ? (
@@ -219,18 +263,17 @@ export default function SokDialog({
                 </div>
               </fieldset>
             ) : null}
-            <p
-              id={statusId}
-              role="status"
-              aria-live="polite"
-              className="mt-2 min-h-5 text-sm text-muted-foreground"
-            >
+            <p id={statusId} role="status" aria-live="polite" className={SOK_STATUS}>
               {status}
             </p>
             {feil ? (
               <button
                 type="button"
-                onClick={last}
+                onClick={() => {
+                  last();
+                  // Knappen forsvinner når vi prøver igjen; fokus tilbake til feltet.
+                  inputRef.current?.focus();
+                }}
                 className="inline-flex min-h-11 items-center text-sm font-medium text-primary underline underline-offset-2"
               >
                 Prøv igjen
@@ -242,13 +285,13 @@ export default function SokDialog({
             id={`${inputId}-res`}
             ref={resultaterRef}
             onKeyDown={onResultKey}
-            className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3 sm:px-5 [@media(max-height:34rem)]:flex-none [@media(max-height:34rem)]:overflow-visible"
+            className={SOK_RESULTATER}
           >
             {resultat && resultat.antall > 0 ? (
               <Resultater resultat={resultat} sokTekst={utsatt.trim()} onValgt={valgtTreff} />
             ) : !utsatt.trim() ? (
               <p className="py-2 text-sm text-muted-foreground">
-                Søket går gjennom teksten i alle kapitlene i Geofag 1 og Geofag 2.
+                {SOK_INTRO}
                 {harKapittel ? " Treff i kapitlet du står i, vises først." : ""}
               </p>
             ) : null}
