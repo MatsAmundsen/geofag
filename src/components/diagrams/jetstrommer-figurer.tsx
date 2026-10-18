@@ -12,7 +12,7 @@
  */
 import { memo, type ReactNode } from "react";
 import { IsbreFigur, type Key, type Lab, type Markers } from "./isbre-figur";
-import { clamp, lerp, useInView } from "./isbre-kit";
+import { clamp, lerp, smooth, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { TidslinjeKontroller } from "./prosess-figur";
 import { tidslinjeVerdi, useTidslinje } from "./prosess-kit";
@@ -72,11 +72,76 @@ type Def<S extends Bilde> = {
   notes?: string[];
   viewBox: string;
   narrowViewBox?: string;
+  /**
+   * Smal skjerm: nummermerket legges avstand `d` ut fra punktet `fra` gjennom punktet etiketten peker på,
+   * i stedet for rett over. På globusen er `fra` Nordpolen, så merket står på tvers av breddesirklene
+   * og jetlinjene, ikke oppå dem.
+   */
+  merker?: { fra: P; d: number };
   tegn: Tegn<S>;
 };
 
+type Pkt = [number, number] | undefined;
+const blandP = (a: Pkt, b: Pkt, t: number): Pkt =>
+  a && b ? [r1(lerp(a[0], b[0], t)), r1(lerp(a[1], b[1], t))] : (t < 0.5 ? a : b);
+
+/**
+ * Etikettene følger det som faktisk tegnes: mellom to steg flyttes de med samme myke overgang som tegningen
+ * (tidslinjeVerdi). Etiketter som bare finnes i det ene steget, vises først mot slutten av overgangen (eller
+ * forsvinner tidlig), så de ikke peker på noe som ikke er tegnet ennå. Lagres per tiendedel av tidslinjen,
+ * så det ikke lages nye objekter hvert bilde.
+ */
+function etiketterVed(
+  etiketter: Lab[][],
+  lager: Map<number, Lab[]>,
+  p: number,
+  merker?: { fra: P; d: number },
+): Lab[] {
+  const q = Math.round(p * 10);
+  const hit = lager.get(q);
+  if (hit) return hit;
+  const pp = q / 10;
+  const n = etiketter.length;
+  const ved = (k: number) => etiketter[clamp(k - 1, 0, n - 1)];
+  const k = Math.min(n - 1, Math.floor(clamp(pp, 0, n)));
+  const t = smooth(clamp(pp, 0, n) - k);
+  const A = ved(k);
+  const B = ved(k + 1);
+  const out: Lab[] = [];
+  const brukt = new Set<number>();
+  A.forEach((a) => {
+    const j = B.findIndex((b, i) => !brukt.has(i) && b.text === a.text);
+    if (j < 0) {
+      if (t < 0.15) out.push(a);
+      return;
+    }
+    brukt.add(j);
+    const b = B[j];
+    out.push({ ...b, x: r1(lerp(a.x, b.x, t)), y: r1(lerp(a.y, b.y, t)), at: blandP(a.at, b.at, t), badge: blandP(a.badge, b.badge, t) });
+  });
+  if (t > 0.85) B.forEach((b, i) => !brukt.has(i) && out.push(b));
+  if (merker)
+    out.forEach((l, i) => {
+      if (!l.at || l.badge) return;
+      const dx = l.at[0] - merker.fra[0];
+      const dy = l.at[1] - merker.fra[1];
+      const len = Math.hypot(dx, dy);
+      const [ux, uy] = len > 1 ? [dx / len, dy / len] : [0, -1];
+      out[i] = { ...l, badge: [r1(l.at[0] + ux * merker.d), r1(l.at[1] + uy * merker.d)] };
+    });
+  lager.set(q, out);
+  return out;
+}
+
 /** Fast høyde på statusfeltet (lengste statustekst), så figuren ikke hopper mellom stegene. */
 const STATUS_H = "block h-[7.5rem] min-[480px]:h-[5rem] min-[900px]:h-[3.75rem]";
+
+const LAGER = new WeakMap<object, Map<number, Lab[]>>();
+function lagerFor(def: object) {
+  let l = LAGER.get(def);
+  if (!l) LAGER.set(def, (l = new Map()));
+  return l;
+}
 
 function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def<S>; heading?: string; caption?: ReactNode }) {
   const [ref, visible] = useInView<SVGSVGElement>();
@@ -96,7 +161,7 @@ function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def<S>; he
         toolbar={<TidslinjeKontroller tl={tl} faser={def.faser} />}
         status={<span className={STATUS_H}>{def.status[fase - 1]}</span>}
         keys={def.keys}
-        labels={def.etiketter[fase - 1]}
+        labels={etiketterVed(def.etiketter, lagerFor(def), tl.p, def.merker)}
         notes={def.notes}
         viewBox={def.viewBox}
         narrowViewBox={def.narrowViewBox}
@@ -199,6 +264,9 @@ const kp = (lon: number, lat: number): P => {
   const [x, y] = klode(lon, lat);
   return [x, y];
 };
+
+/** Nordpolen på globusen: breddesirklene og jetlinjene går rundt dette punktet. */
+const POLEN: P = kp(0, 90);
 
 /** Sti gjennom punktene, bare den synlige delen (forsiden av globusen). */
 function klodeSti(pts: P[]): string {
@@ -675,6 +743,7 @@ const slynger: Def<{ a: number; stig: number; del: number; gap: number }> = {
   notes: ["Nordlige halvkule sett fra verdensrommet", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
   narrowViewBox: "200 0 560 540",
+  merker: { fra: POLEN, d: 58 },
   tegn: (s, { sek }) => {
     // mønsteret går sakte mot øst, lufta strømmer mye raskere langs stien (fagsjekk F4)
     const drift = sek * 1.2;
@@ -742,6 +811,7 @@ const sesong: Def<{ lat: number; w: number }> = {
   notes: ["Nordlige halvkule sett fra verdensrommet", "Tykkelsen viser styrken", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
   narrowViewBox: "200 0 560 540",
+  merker: { fra: POLEN, d: 58 },
   tegn: (s, { sek, fase }) => {
     const d = klodeSti(rundt((lon) => s.lat + 3 * Math.sin(3 * (lon + 60) * R)));
     const pil = fase === 2 ? [kp(-25, 44), kp(-25, 52)] : fase === 4 ? [kp(-25, 50), kp(-25, 42)] : null;
@@ -787,6 +857,7 @@ const nao: Def<{ pos: number }> = {
   notes: ["Sammenlignet med gjennomsnittet", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
   narrowViewBox: "200 0 560 540",
+  merker: { fra: POLEN, d: 58 },
   tegn: (s, { sek }) => {
     const pts = NAO_POS.map((p, i): P => [p[0], lerp(NAO_NEG[i][1], p[1], s.pos)]);
     const d = klodeSti(rundt((lon) => {
@@ -940,6 +1011,7 @@ const stormbane: Def<{ front: number; lav: number; vandre: number }> = {
   notes: ["Nord-Atlanteren sett fra verdensrommet", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
   narrowViewBox: "200 0 560 540",
+  merker: { fra: POLEN, d: 58 },
   tegn: (s, { sek }) => {
     const lav = [0, 1, 2].map((k) => {
       const start = -60 + k * 30;
