@@ -11,7 +11,7 @@ import { useId, type ReactNode } from "react";
 import { clamp, lerp, smooth, smoothPath } from "./isbre-kit";
 import { tidslinjeVerdi } from "./prosess-kit";
 import { SYKLON_TEKST } from "./lokale-tekst";
-import { F, LokaleRamme, medKilde, strekMonster, useLokaleTidslinje, type Hinder, type Lab } from "./lokale-kit";
+import { F, LokaleRamme, medKilde, useLokaleTidslinje, type Hinder, type Lab } from "./lokale-kit";
 
 /** Sett til true for å slå sammen steg 3 og 4 (okklusjonen starter + varm luft løftet bort). */
 const SLAA_SAMMEN_STEG_3_OG_4: boolean = false;
@@ -318,9 +318,9 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
       keys={[
-        { text: "Kaldfront", color: F.kaldfront, kind: "line" },
-        { text: "Varmfront", color: F.varmfront, kind: "line" },
-        { text: "Okkludert front", color: F.okkludert, kind: "dash" },
+        { text: "Kaldfront", color: F.kaldfront, kind: "front", front: "kald" },
+        { text: "Varmfront", color: F.varmfront, kind: "front", front: "varm" },
+        { text: "Okkludert front", color: F.okkludert, kind: "front", front: "okkl" },
         { text: "Isobarer", color: F.retur, kind: "line" },
       ]}
       below={(smal) =>
@@ -338,7 +338,7 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
         ) : null
       }
     >
-      {({ narrow, scale }) => (
+      {({ narrow }) => (
         <>
           <defs>
             <linearGradient id={`${uid}-luft`} x1="0" y1="0" x2="0" y2="1">
@@ -373,7 +373,8 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
           {/* polarfronten utenfor lavtrykket */}
           <path d={smoothPath(pf.vest)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
           <path d={smoothPath(pf.ost)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
-          {/* frontene; den okkluderte er stiplet, så den skilles fra kaldfronten også uten farge */}
+          {/* frontene, heltrukne som i Værkart (PR #187). Uten farge skilles den okkluderte fronten fra
+              kaldfronten på de vekslende trekantene og halvsirklene, også i tegnforklaringen. */}
           <g opacity={frontOp}>
             <path d={stiAv(g.W)} fill="none" stroke={F.varmfront} strokeWidth="4" />
             <path d={symboler(g.W, "varm", (nx, ny) => ny < 0)} fill={F.varmfront} />
@@ -381,7 +382,7 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
             <path d={symboler(g.K, "kald", (nx) => nx > 0)} fill={F.kaldfront} />
             {g.O.length > 1 ? (
               <>
-                <path d={stiAv(g.O)} fill="none" stroke={F.okkludert} strokeWidth="4" strokeDasharray={strekMonster("stiplet", 4, narrow ? scale : 0).dash} />
+                <path d={stiAv(g.O)} fill="none" stroke={F.okkludert} strokeWidth="4" />
                 <path d={symboler(g.O, "okkl", (nx, ny) => ny < 0)} fill={F.okkludert} />
               </>
             ) : null}
