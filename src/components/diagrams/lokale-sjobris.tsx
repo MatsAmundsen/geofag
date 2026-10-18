@@ -94,13 +94,15 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   const passert = clamp((fx - STASJON + 20) / 40);
   const temp = fase >= 5 ? lerp(0.85, 0.35, passert) : 0.4 + 0.45 * s.varme;
   const innTil = fase >= 5 ? Math.max(560, fx - 10) : 560;
-  const cumulusOp = s.stig * dag * (fase >= 5 ? 1 - passert : 1);
+  // søylen med varm luft (x = 650) tones ned når sjøbrisfronten passerer den i steg 5, slik som skyen over
+  const soyleOp = fase >= 5 ? 1 - clamp((fx - 630) / 60) : 1;
+  const cumulusOp = s.stig * dag * soyleOp;
 
   // Strømmene i kretsløpet. Strek skiller dem også uten farge: sjøbris og varm luft heltrukket,
   // strøm i høyden stiplet, landbris prikket (samme i tegnforklaringen).
   type StromData = { punkter: [number, number][]; farge: string; marker: "warm" | "teal" | "fg" | "cold"; bredde?: number; opacity: number; fart?: number; strek?: Strek };
   const stromer: StromData[] = [
-    { punkter: [[650, 372], [650, 260], [650, 175]], farge: F.varm, marker: "warm", opacity: s.stig * dag },
+    { punkter: [[650, 372], [650, 260], [650, 175]], farge: F.varm, marker: "warm", opacity: s.stig * dag * soyleOp },
     { punkter: [[40, 382], [260, 382], [innTil, 380 - (innTil - 400) * 0.03]], farge: F.sjobris, marker: "teal", bredde: 5, opacity: s.inn * dag },
     { punkter: [[630, 140], [400, 138], [110, 142]], farge: F.retur, marker: "fg", bredde: 3.5, opacity: s.retur * dag, strek: "stiplet" },
     { punkter: [[80, 168], [80, 270], [80, 360]], farge: F.retur, marker: "fg", bredde: 3, opacity: s.retur * dag * 0.9, strek: "stiplet" },
