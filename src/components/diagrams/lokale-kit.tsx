@@ -108,6 +108,7 @@ export function LokaleRamme({
   etikettRader,
   hinder,
   skiltNokkel,
+  skiltLuft,
   children,
 }: {
   tekst: { heading: string; title: string; caption: string };
@@ -134,6 +135,11 @@ export function LokaleRamme({
   hinder?: Hinder[];
   /** Skiltene regnes ut på nytt bare når denne endres (f.eks. steg og avrundet framdrift). */
   skiltNokkel?: string;
+  /**
+   * Minste luft (CSS-piksler) fra ytterkanten av skiltet, med halo, til hinder og til andre skilt.
+   * Uten denne brukes den gamle avstanden (ca. 3 px til hinder og 8 viewBox-enheter mellom skiltene).
+   */
+  skiltLuft?: number;
   children: (ctx: { m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const h = heading ?? tekst.heading;
@@ -145,9 +151,9 @@ export function LokaleRamme({
   if (smal && hinder && skala > 0) {
     // samme radius som nummerskiltene i IsbreFigur (minst ca. 23 CSS-piksler i diameter)
     const r = Math.max(11.5 / skala, VB.w * 0.02);
-    const key = `${skiltNokkel ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
+    const key = `${skiltNokkel ?? ""}|${skiltLuft ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
     if (!skiltCache.current || skiltCache.current.key !== key) {
-      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala) };
+      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, skiltLuft) };
     }
     const pos = skiltCache.current.pos;
     merket = labels.map((l, i) => (pos[i] ? { ...l, badge: pos[i] } : l));
@@ -268,11 +274,13 @@ function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [numb
 /**
  * Plasserer nummerskiltene (radius r) for smal skjerm: nærmest mulig punktet etiketten peker på, men
  * utenfor alle piler og linjer, utenfor andre skilt og andre punkter, og inne i tegneflaten.
- * Finnes ingen ledig plass, velges plassen med minst overlapp.
+ * Finnes ingen ledig plass, velges plassen med minst overlapp. Med `luftPx` regnes avstanden fra
+ * ytterkanten av skiltet med halo (strek r · 0,22, altså r · 1,11), og den gjelder også mellom skiltene.
  */
-export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: number): ([number, number] | null)[] {
+export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: number, luftPx?: number): ([number, number] | null)[] {
   const { seg, bokser, punkter } = segmenter(hinder, skala);
-  const luft = 3 / skala;
+  const luft = luftPx !== undefined ? luftPx / skala + r * 0.11 : 3 / skala;
+  const mellom = luftPx !== undefined ? 2 * r * 1.11 + luftPx / skala : 2 * r + 8;
   const steg = Math.max(8, r / 2.5);
   const kand: [number, number][] = [];
   for (let y = r + 4; y <= VB.h - r - 4; y += steg) for (let x = r + 4; x <= VB.w - r - 4; x += steg) kand.push([x, y]);
@@ -308,7 +316,7 @@ export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: 
         }
       }
       for (const q of plassert) {
-        const d = Math.hypot(q[0] - x, q[1] - y) - 2 * r - 8;
+        const d = Math.hypot(q[0] - x, q[1] - y) - mellom;
         if (d < 0) sum -= d * 4;
       }
       maal.forEach((t, j) => {
