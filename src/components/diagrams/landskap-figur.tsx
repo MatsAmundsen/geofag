@@ -618,6 +618,7 @@ export function LandskapBlokkFigur({
   ];
   // «snøgrensen» (B2): over snøgrenselinja, men løftet over det høyeste punktet på berg, is og den prikkede
   // vidde-linja innenfor etikettens bredde (med runde ender), så linjene ikke krysser teksten (DS1, 320–1280 px).
+  // Luften (0,35 em, ca. 4 px på skjermen) følger skriftstørrelsen, så den holder også i de smaleste figurene.
   // Ikke høyere enn at den går fri av «Øst» øverst til høyre i snittet.
   const fsLite = figureFont(12, skala);
   const snoX = pr.x + pr.w - 8;
@@ -628,7 +629,7 @@ export function LandskapBlokkFigur({
     if (px >= snoX - snoB - pr.w / N && px <= snoX + 6 + pr.w / N) snoTopp = Math.min(snoTopp, py);
   const snoY = Math.max(
     pr.y + fsP + 2 + 4 + 0.75 * fsLite,
-    Math.min(zTilY(SNOGRENSE) - 4, snoTopp - VIDDE_STREK.bredde / 2 - 3),
+    Math.min(zTilY(SNOGRENSE) - 4, snoTopp - VIDDE_STREK.bredde / 2 - 0.35 * fsLite),
   );
   const status = (b ? ANNEN_STATUS : KLASSISK_STATUS)[fase - 1];
   const spor = b ? ANNEN_SPOR : KLASSISK_SPOR;
