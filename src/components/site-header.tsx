@@ -51,7 +51,7 @@ function rullTilHashEtterMaaling(header: HTMLElement) {
     const bunn = header.getBoundingClientRect().bottom;
     const top = mal.getBoundingClientRect().top;
     const nederst = y >= root.scrollHeight - window.innerHeight - 1;
-    if ((top < bunn || top > bunn + 24) && !(nederst && top > bunn)) {
+    if ((top < bunn + 8 || top > bunn + 24) && !(nederst && top > bunn)) {
       mal.scrollIntoView({ block: "start", behavior: "instant" });
       forrigeY = Number.NaN;
     }
