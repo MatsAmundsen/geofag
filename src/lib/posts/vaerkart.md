@@ -109,6 +109,8 @@ SjekkVaerkart3
 
 På et bakkekart kan hver stasjon tegnes som et lite plott: temperatur, duggpunkt, trykk, et symbol for været nå, og en vindpil. Vindpilen peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f).
 
+Sirkelen i midten fylles etter hvor stor del av himmelen som er dekket av skyer, målt i åttedeler, fra skyfri himmel til helt overskyet ved 8/8 (NOAA, u.å.-f).
+
 ```widget
 StationModel
 ```
