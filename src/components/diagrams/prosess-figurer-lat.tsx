@@ -32,8 +32,9 @@ type Plass = {
    */
   under: [number, number];
   /**
-   * Egne endepunkter for smal layout (340 og 678 px), når høyden under tegneflaten i smal layout
-   * avviker mye fra bred (f.eks. nummerert forklaring som bare vises smalt). Uten denne brukes `under`.
+   * Egne endepunkter for smal layout, målt ved containerbredde 288 px (320 px vindu) og 678 px, når høyden
+   * under tegneflaten i smal layout avviker mye fra bred (f.eks. nummerert forklaring som bare vises smalt).
+   * Uten denne brukes `under` (340 og 678 px).
    */
   underSmal?: [number, number];
   /** Faner over verktøylinjen (KontaktRegional). */
@@ -69,10 +70,11 @@ function stykkevis(punkter: [number, number][]) {
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
 export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; heading?: string; caption?: React.ReactNode }) {
   const us = plass.underSmal ?? plass.under;
+  const usFra = plass.underSmal ? 288 : 340;
   const stil = {
     "--over-s": `${plass.over[0] + (plass.faner?.[0] ?? 0)}px`,
     "--over-b": `${plass.over[1] + (plass.faner?.[1] ?? 0)}px`,
-    "--under-s": `clamp(${Math.min(...us)}px, calc(${us[0]}px + (100cqw - 340px) * ${((us[1] - us[0]) / 338).toFixed(4)}), ${Math.max(...us)}px)`,
+    "--under-s": `clamp(${Math.min(...us)}px, calc(${us[0]}px + (100cqw - ${usFra}px) * ${((us[1] - us[0]) / (678 - usFra)).toFixed(4)}), ${Math.max(...us)}px)`,
     "--under-b": `${plass.under[1]}px`,
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,

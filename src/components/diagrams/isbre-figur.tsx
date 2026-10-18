@@ -587,8 +587,10 @@ function LabelLayer({
 export type Key = {
   text: string;
   color: string;
-  kind: "dash" | "line" | "fill" | "symbol" | "crevasse";
+  kind: "dash" | "line" | "fill" | "symbol" | "crevasse" | "front";
   symbol?: string;
+  /** Frontsymbol for kind «front»: strek med halvsirkler, trekanter, begge (okkludert) eller vekslende (i ro). */
+  front?: "varm" | "kald" | "okkl" | "ro";
   /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
   off?: boolean;
 };
@@ -608,6 +610,28 @@ function KeySample({ k }: { k: Key }) {
         />
       ) : k.kind === "line" ? (
         <line x1="1" y1="7" x2="29" y2="7" stroke={k.color} strokeWidth="3" />
+      ) : k.kind === "front" ? (
+        <g>
+          {k.front === "ro" ? (
+            <>
+              <line x1="1" y1="9" x2="15" y2="9" stroke="#8eb4d4" strokeWidth="2.6" />
+              <line x1="15" y1="9" x2="29" y2="9" stroke="#d07a7a" strokeWidth="2.6" />
+              <path d="M4 9 L8 3 L12 9 Z" fill="#8eb4d4" />
+              <path d="M18 9 A4 4 0 0 1 26 9 Z" fill="#d07a7a" />
+            </>
+          ) : (
+            <>
+              <line x1="1" y1="9" x2="29" y2="9" stroke={k.color} strokeWidth="2.6" />
+              {k.front === "varm" ? (
+                <path d="M5 9 A4 4 0 0 1 13 9 Z M17 9 A4 4 0 0 1 25 9 Z" fill={k.color} />
+              ) : k.front === "kald" ? (
+                <path d="M5 9 L9 2.5 L13 9 Z M17 9 L21 2.5 L25 9 Z" fill={k.color} />
+              ) : (
+                <path d="M5 9 L9 2.5 L13 9 Z M17 9 A4 4 0 0 1 25 9 Z" fill={k.color} />
+              )}
+            </>
+          )}
+        </g>
       ) : k.kind === "crevasse" ? (
         <path d="M6 3 L9 12 L12 3 Z M17 3 L20 10 L23 3 Z" fill={k.color} />
       ) : k.kind === "fill" ? (
