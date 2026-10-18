@@ -42,6 +42,8 @@ type Plass = {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
   };
+  /** Figuren bytter selv til bred layout ved 760 px (IsbreFigur), ikke ved 560 px. Gjelder sammen med `skala`. */
+  brudd760?: boolean;
 };
 
 /**
@@ -81,9 +83,10 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
     });
   }
   // bytte til bred layout: ved 560 px for figurer med egen skala, ellers ved NARROW_FIGURE_PX (760)
-  const over = sk ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
-  const flate = sk ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
-  const under = sk ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
+  const ved560 = sk && !plass.brudd760;
+  const over = ved560 ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  const flate = ved560 ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
+  const under = ved560 ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
     <FigureFrame
       heading={heading ?? plass.heading}
@@ -204,20 +207,54 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
 
 /* ---------- Lokale og regionale værsystemer (Geofag 2) ---------- */
 
-/** Felles mål for kapitlets figurer (viewBox 960 × 540). Høydene er målt mot ferdig figur. */
-const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as [number, number] };
+/**
+ * Felles mål for kapitlets figurer (viewBox 960 × 540). Høyden over og under tegneflaten er målt mot
+ * ferdig figur (redusert bevegelse, alle steg) ved 320–1280 px vindusbredde, som [containerbredde, px].
+ * Over tegneflaten avhenger litt av vindusbredden (statusfeltet); ved 900 px er den 20 px høyere enn målt her.
+ */
+const LOKALE_MAAL = { smal: [960, 540] as [number, number], bred: [960, 540] as [number, number], over: [0, 0] as [number, number], under: [0, 0] as [number, number], brudd760: true };
 
 export const SjobrisFigurLat = lat<FigurProps>(
-  { ...SJOBRIS_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
+  {
+    ...SJOBRIS_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[270, 271], [310, 239], [340, 239], [380, 219], [550, 219], [590, 147]],
+        under: [[270, 312], [310, 286], [550, 286], [590, 260]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
   () => import("./lokale-sjobris").then((m) => m.SjobrisFigur),
 );
 
 export const SolgangsvindFigurLat = lat<FigurProps>(
-  { ...SOLGANGSVIND_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
+  {
+    ...SOLGANGSVIND_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[270, 271], [310, 239], [340, 239], [380, 219], [430, 219], [490, 187], [550, 187], [590, 147]],
+        under: [[340, 148], [380, 122]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 32]] },
+    },
+  },
   () => import("./lokale-solgangsvind").then((m) => m.SolgangsvindFigur),
 );
 
 export const SyklonFigurLat = lat<FigurProps>(
-  { ...SYKLON_TEKST, ...LOKALE_MAAL, over: [300, 170], under: [300, 120] },
+  {
+    ...SYKLON_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[340, 271], [380, 219], [550, 219], [590, 179], [678, 147]],
+        under: [[430, 389], [490, 363]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 32]] },
+    },
+  },
   () => import("./lokale-syklon").then((m) => m.SyklonFigur),
 );
