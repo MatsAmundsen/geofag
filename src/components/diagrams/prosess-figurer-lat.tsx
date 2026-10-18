@@ -15,6 +15,7 @@ import { IONBYTTE_TEKST } from "./ionbytte-tekst";
 import { SYKLUS_TEKST } from "./syklus-tekst";
 import { KONTAKT_REGIONAL_TEKST } from "./kontakt-regional-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
+import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 
 type Plass = {
   heading: string;
@@ -31,6 +32,17 @@ type Plass = {
    * interpoleres lineært med containerbredden.
    */
   under: [number, number];
+  /**
+   * Egne endepunkter for smal layout (340 og 678 px), når høyden under tegneflaten i smal layout
+   * avviker mye fra bred (f.eks. nummerert forklaring som bare vises smalt). Uten denne brukes `under`.
+   */
+  underSmal?: [number, number];
+  /**
+   * Høyden under tegneflaten i smal layout som trapp, når den endrer seg i hopp fordi tekst brytes på nytt
+   * (f.eks. nummerert forklaring). `fra` gjelder for de smaleste containerne, og hvert trinn [containerbredde,
+   * høyde] gjelder fra og med den bredden. Målt i nettleseren. Brukes i stedet for `underSmal`/`under` i smal layout.
+   */
+  underTrinn?: { fra: number; trinn: [number, number][] };
   /** Faner over verktøylinjen (KontaktRegional). */
   faner?: [number, number];
   /**
@@ -63,12 +75,30 @@ function stykkevis(punkter: [number, number][]) {
   return `calc(${ledd.join(" + ")})`;
 }
 
+/**
+ * CSS-lengde som går i trinn med containerbredden: hvert hopp er en clamp med en rampe på under 0,1 px,
+ * så høyden er lik den målte på begge sider av hoppet.
+ */
+function trapp({ fra, trinn }: { fra: number; trinn: [number, number][] }) {
+  const ledd: string[] = [`${fra}px`];
+  let forrige = fra;
+  for (const [b, h] of [...trinn].sort((x, y) => x[0] - y[0])) {
+    const d = h - forrige;
+    if (Math.abs(d) > 1e-6)
+      ledd.push(`${d < 0 ? "-" : "+"} clamp(0px, (100cqw - ${b}px) * 1000, ${Math.abs(d).toFixed(2)}px)`);
+    forrige = h;
+  }
+  return `calc(${ledd.join(" ")})`;
+}
+
 /** Statisk plassholder. Samme ramme som figuren, uten JavaScript-tung SVG. */
 export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; heading?: string; caption?: React.ReactNode }) {
+  const us = plass.underSmal ?? plass.under;
   const stil = {
     "--over-s": `${plass.over[0] + (plass.faner?.[0] ?? 0)}px`,
     "--over-b": `${plass.over[1] + (plass.faner?.[1] ?? 0)}px`,
-    "--under-s": `clamp(${Math.min(...plass.under)}px, calc(${plass.under[0]}px + (100cqw - 340px) * ${((plass.under[1] - plass.under[0]) / 338).toFixed(4)}), ${Math.max(...plass.under)}px)`,
+    "--under-s": `clamp(${Math.min(...us)}px, calc(${us[0]}px + (100cqw - 340px) * ${((us[1] - us[0]) / 338).toFixed(4)}), ${Math.max(...us)}px)`,
+    ...(plass.underTrinn ? { "--under-s": trapp(plass.underTrinn) } : {}),
     "--under-b": `${plass.under[1]}px`,
     "--ar-s": `${plass.smal[0]} / ${plass.smal[1]}`,
     "--ar-b": `${plass.bred[0]} / ${plass.bred[1]}`,
@@ -257,4 +287,12 @@ export const SyklonFigurLat = lat<FigurProps>(
     },
   },
   () => import("./lokale-syklon").then((m) => m.SyklonFigur),
+);
+
+/** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */
+export const SyklonmodellFigurLat = lat<FigurProps>(
+  { ...SYKLONMODELL_TEKST, smal: [960, 540], bred: [960, 540], over: [180, 150], under: [81, 81],
+    // målt 18.10 ved containerbredde 270–678 px (vindu 320–768): høyden hopper når forklaringslista brytes på nytt
+    underTrinn: { fra: 472.75, trinn: [[286, 454.88], [348.5, 428.88], [413.5, 396.88], [429.5, 356.88], [510.5, 330.88]] } },
+  () => import("./syklonmodell-figur").then((m) => m.SyklonmodellFigur),
 );

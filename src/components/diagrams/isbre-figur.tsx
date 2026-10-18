@@ -619,7 +619,8 @@ function KeySample({ k }: { k: Key }) {
               <line x1="1" y1="9" x2="15" y2="9" stroke="#8eb4d4" strokeWidth="2.6" />
               <line x1="15" y1="9" x2="29" y2="9" stroke="#d07a7a" strokeWidth="2.6" />
               <path d="M4 9 L8 3 L12 9 Z" fill="#8eb4d4" />
-              <path d="M18 9 A4 4 0 0 1 26 9 Z" fill="#d07a7a" />
+              {/* halvsirkelen på motsatt side av trekanten, som på kartet */}
+              <path d="M18 9 A4 4 0 0 0 26 9 Z" fill="#d07a7a" />
             </>
           ) : (
             <>

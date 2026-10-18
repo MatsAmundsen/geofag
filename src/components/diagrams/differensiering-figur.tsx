@@ -4,7 +4,7 @@
  * og avkjølingsavsnittet under «Hva er magmatiske bergarter?»). Målerne er relative og har ingen tall.
  *
  * Krystallene dannes langs veggene og taket (GeoBot1, 16.10), og de fra taket synker rett ned. Ingen krystaller på bunnen før de har sunket.
- * Erstatter DifferensieringFigur (bergarter-nye-figurer.tsx) i widgeten Differensiering. Den gamle filen er ikke endret.
+ * Brukes i widgeten Differensiering.
  */
 import { useMemo } from "react";
 import { IsbreFigur, type Key, type Lab } from "./isbre-figur";
