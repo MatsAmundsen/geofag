@@ -302,11 +302,12 @@ const karusell: Def<{ b: number; kar: number; ingen: number }> = {
       { text: "Sett utenfra, uten rotasjon (treghetssystem)", x: K_V[0], y: 64, anchor: "middle", color: F.tekst, weight: 800, size: 15, badge: [250, 70] },
       { text: "Sett fra karusellen", x: K_H[0], y: 64, anchor: "middle", color: F.tekst, weight: 800, size: 15, badge: [710, 70] },
       { text: "mot klokken", x: K_V[0] + 150, y: 152, anchor: "start", color: F.teal, at: polar(K_V, K_R + 16, 35), badge: [480, 170] },
-      { text: "kaster", x: K_V[0] - 40, y: K_V[1] + 46, anchor: "end", color: F.dempet, at: [K_V[0] - 8, K_V[1] + 6], badge: [480, 330] },
+      { text: "kaster", x: 440, y: 350, anchor: "start", color: F.dempet, at: [K_V[0] + 10, K_V[1] + 6], badge: [480, 330] },
       { text: "venn", x: vennV[0] - 30, y: vennV[1] - 18, anchor: "end", color: F.teal, at: vennV, badge: [60, 110] },
       { text: "venn", x: K_H[0] + 40, y: K_H[1] - K_R - 6, anchor: "start", color: F.teal, at: [K_H[0] + 6, K_H[1] - K_R], badge: [850, 90] },
     ];
-    if (f >= 2) l.push({ text: "rett linje", x: K_V[0] + 20, y: K_V[1] - 90, anchor: "start", color: F.ball, at: [K_V[0] + 2, K_V[1] - 90], badge: [480, 250] });
+    // utenfor skiva: eikene roterer under etiketten
+    if (f >= 2) l.push({ text: "rett linje", x: 440, y: 236, anchor: "start", color: F.ball, at: [K_V[0] + 2, K_V[1] - 90], badge: [480, 250] });
     if (f >= 3) {
       const m = polar(K_H, K_R * 0.95 * 0.65, 90 - K_TH * 0.65);
       l.push({ text: "krummer mot høyre", x: m[0] + 34, y: m[1] + 30, anchor: "start", color: F.ball, at: m, badge: [910, 210] });
