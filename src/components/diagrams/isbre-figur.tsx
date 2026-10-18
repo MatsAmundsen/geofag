@@ -596,6 +596,8 @@ export type Key = {
   front?: "varm" | "kald" | "okkl" | "ro";
   /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
   off?: boolean;
+  /** Usynlig i dette steget (visibility: hidden), men raden står og beholder plassen, så forklaringen bryter likt i alle steg. */
+  skjult?: boolean;
   /** Bare for kind «line»: samme strek som i figuren (strekmønster, tykkelse, mørk kant under, runde ender). */
   strek?: { dash?: string; bredde?: number; kant?: string; rund?: boolean };
 };
@@ -1151,7 +1153,11 @@ export function IsbreFigur({
               {keys
                 .filter((k) => !k.off)
                 .map((k) => (
-                  <li key={k.text} className="inline-flex items-center gap-2">
+                  <li
+                    key={k.text}
+                    className={`inline-flex items-center gap-2${k.skjult ? " invisible" : ""}`}
+                    aria-hidden={k.skjult || undefined}
+                  >
                     <KeySample k={k} />
                     <span>{k.text}</span>
                   </li>

@@ -612,6 +612,8 @@ export function LandskapBlokkFigur({
       color: FARGE.strand,
       kind: "line",
       strek: STRAND_STREK,
+      // bare i stegene der den stiplede strandflaten er tegnet (A5 og B3); ellers usynlig, men raden beholder høyden
+      skjult: strandP.length < 2,
     },
   ];
   const status = (b ? ANNEN_STATUS : KLASSISK_STATUS)[fase - 1];
@@ -695,7 +697,7 @@ export function LandskapBlokkFigur({
               <Maalere
                 maalere={[
                   {
-                    navn: "Vidda: høyde over havet",
+                    navn: "Vidden: høyde over havet",
                     verdi: hoyde,
                     ender: ["lav", "høy"],
                     farge: FARGE.vidde,
