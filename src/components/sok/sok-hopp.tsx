@@ -18,6 +18,10 @@ function highlights(): { reg: CssHighlights; Ctor: new (...r: Range[]) => unknow
 const VISES_MS = 3500;
 const FADE_MS = 900;
 const VENT_MAKS_MS = 10_000;
+/** Når teksten er tegnet, men ordet ikke finnes: vis «Fant ikke» etter så lang tid (og fortsett å lete i bakgrunnen). */
+const IKKE_FUNNET_MS = 1500;
+/** Vis «Leter etter …» hvis hoppet tar lengre tid enn dette. */
+const LETER_MS = 600;
 
 let ryddForrige: (() => void) | null = null;
 
@@ -100,6 +104,8 @@ export function SokHopp({ slug }: { slug?: string }) {
   const search = useRouterState({ select: (s) => s.location.search });
   const href = useRouterState({ select: (s) => s.location.href });
   const [melding, setMelding] = useState("");
+  /** synlig melding når hoppet ikke finner ordet (eller leter fortsatt) */
+  const [synlig, setSynlig] = useState<string | null>(null);
   const params = lesSok(search);
 
   useEffect(() => {
@@ -108,7 +114,9 @@ export function SokHopp({ slug }: { slug?: string }) {
     if (!sporring) return;
     const redusert = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    setSynlig(null);
     let avbrutt = false;
+    let ferdig = false;
     let brukerHarScrollet = false;
     const start = performance.now();
     const stoppVed = () => {
@@ -130,9 +138,16 @@ export function SokHopp({ slug }: { slug?: string }) {
       const treff = domTreff(dom, sporring);
       if (!treff.length) {
         // Teksten kan fortsatt være på vei (kapitlet hentes etter første visning).
-        if (performance.now() - start < VENT_MAKS_MS) return false;
-        setMelding(`Fant ikke «${params.sok}» i teksten.`);
-        return true;
+        // Vis meldingen tidlig, men let videre til VENT_MAKS_MS i tilfelle teksten kommer.
+        const gatt = performance.now() - start;
+        const kapIndeks = lastetIndeks()?.k.find((k) => k.s === slug);
+        const indeksSierNei = kapIndeks ? !treffIKapittel(kapIndeks, sporring) : false;
+        if (indeksSierNei || gatt >= IKKE_FUNNET_MS) {
+          const tekst = `Fant ikke «${params.sok}» i dette kapitlet.`;
+          setMelding(tekst);
+          setSynlig(tekst);
+        }
+        return gatt >= VENT_MAKS_MS;
       }
       // Kontroller mot setningen i indeksen når den er i minnet.
       let forventet: string | undefined;
@@ -148,6 +163,8 @@ export function SokHopp({ slug }: { slug?: string }) {
       if (!range) return false;
       sentrer(range);
       rydd = visMarkering(range, redusert);
+      ferdig = true;
+      setSynlig(null);
       const nr = treff.indexOf(valgt) + 1;
       setMelding(`Treff ${nr} av ${treff.length} for «${params.sok}».`);
       performance.mark("sok-markert");
@@ -191,6 +208,14 @@ export function SokHopp({ slug }: { slug?: string }) {
       }
     };
 
+    sjekkTimers.push(
+      window.setTimeout(() => {
+        if (!avbrutt && !ferdig) setSynlig((v) => v ?? `Leter etter «${params.sok}» …`);
+      }, LETER_MS),
+    );
+    // «Fant ikke» etter IKKE_FUNNET_MS selv om siden ikke endrer seg (ingen mutasjoner).
+    sjekkTimers.push(window.setTimeout(() => !avbrutt && !ferdig && kjor(), IKKE_FUNNET_MS + 50));
+
     // Første forsøk etter neste tegning.
     const raf = requestAnimationFrame(() => {
       if (forsok()) return;
@@ -227,8 +252,29 @@ export function SokHopp({ slug }: { slug?: string }) {
   }, [href, slug]);
 
   return (
-    <p className="sr-only" role="status" aria-live="polite">
-      {melding}
-    </p>
+    <>
+      <p className="sr-only" role="status" aria-live="polite">
+        {melding}
+      </p>
+      {synlig ? (
+        <div
+          data-sok-melding=""
+          className="fixed inset-x-3 bottom-4 z-40 mx-auto flex max-w-md items-center gap-2 rounded-lg border border-border bg-card py-1 pl-4 pr-1 text-sm text-foreground shadow-lg"
+        >
+          {/* Teksten leses opp via statusen over; denne er bare den synlige utgaven. */}
+          <p className="min-w-0 flex-1" aria-hidden="true">
+            {synlig}
+          </p>
+          <button
+            type="button"
+            onClick={() => setSynlig(null)}
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground"
+            aria-label="Lukk meldingen"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        </div>
+      ) : null}
+    </>
   );
 }

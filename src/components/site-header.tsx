@@ -114,7 +114,7 @@ export function SiteHeader() {
             )}
           </div>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Hovedmeny">
+          <nav className="hidden items-center gap-1 md:ml-auto md:flex" aria-label="Hovedmeny">
             {items.map((item) => {
               const active =
                 item.to === "/"

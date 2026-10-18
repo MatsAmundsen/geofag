@@ -25,7 +25,8 @@ function normChar(ch: string): string {
     const lower = ch.toLowerCase();
     if (KEEP.has(lower)) out = lower;
     else {
-      const base = lower.normalize("NFD").replace(/\p{M}+/gu, "");
+      // NFKD gjør også senket/hevet skrift om til vanlige tegn: CO₂ → co2, km² → km2.
+      const base = lower.normalize("NFKD").replace(/\p{M}+/gu, "");
       out = base.length === 1 ? base : lower.length === 1 ? lower : ch;
     }
   }
@@ -33,7 +34,7 @@ function normChar(ch: string): string {
   return out;
 }
 
-/** Små bokstaver, bort med aksenter (men ikke æ, ø, å), like bindestreker og mellomrom. Samme lengde inn og ut. */
+/** Små bokstaver, bort med aksenter (men ikke æ, ø, å), senket/hevet skrift til vanlige tegn, like bindestreker og mellomrom. Samme lengde inn og ut. */
 export function normaliser(text: string): string {
   let out = "";
   for (let i = 0; i < text.length; i++) {
@@ -81,6 +82,13 @@ export type Sporring = {
   kuttet: number;
 };
 
+/**
+ * Korteste søkeord (i bokstaver) som også gir treff inne i ord. Kortere ord
+ * treffer bare hele ord og starten av ord. 2 = treff inne i ord alltid
+ * (dagens valg). Sett til 4 for at «is» og «elv» bare skal treffe ordstart.
+ */
+export const MIN_INNI_ORD_LENGDE = 2;
+
 /** Hvor godt et treff passer: 0 = helt ord, 1 = starten av et ord, 2 = inne i et ord. */
 export type Kvalitet = 0 | 1 | 2;
 
@@ -112,7 +120,9 @@ export function lagSporring(input: string, minLengde = 2): Sporring | null {
     const last = i === ord.length - 1;
     const kjerne = last ? stammet : o;
     // Ord før det siste må slutte ved ordgrensen, ord i midten må også starte der.
-    const foran = i > 0 ? "(?<![\\p{L}\\p{N}])" : "";
+    // Første ord kan stå inne i et ord når det er langt nok (MIN_INNI_ORD_LENGDE).
+    const inni = i === 0 && o.length >= MIN_INNI_ORD_LENGDE;
+    const foran = inni ? "" : "(?<![\\p{L}\\p{N}])";
     return foran + escapeRegExp(kjerne) + (last ? "" : "(?![\\p{L}\\p{N}])");
   });
   return {

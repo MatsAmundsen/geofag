@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { byggSokIndeks, kapittelTekst, sokIndeksVersjon } from "./indeks.ts";
 import { delISetninger, inlineTilTekst, markdownTilBlokker } from "./markdown-tekst.ts";
-import { finnTreff, lagSporring, normaliser, stamme } from "./normaliser.ts";
+import { finnTreff, lagSporring, MIN_INNI_ORD_LENGDE, normaliser, stamme } from "./normaliser.ts";
 
 test("normaliser beholder lengden og æøå, fjerner aksenter", () => {
   const inn = "Isbreen ÆØÅ idé — Þ\u00a0x\nX";
@@ -62,6 +62,32 @@ test("«bre» finner «dalbre» og «isbreer», og ett ord gir bare ett treff", 
       ["fjørå", 2],
       ["ørsta", 1],
     ],
+  );
+});
+
+test("CO2 finner CO₂ og km2 finner km² (senket/hevet skrift), lengden er lik", () => {
+  const t = normaliser("Utslipp av CO₂ per km².");
+  assert.equal(t.length, "Utslipp av CO₂ per km².".length);
+  assert.deepEqual(
+    finnTreff(t, lagSporring("CO2")!).map(([a, b]) => t.slice(a, b)),
+    ["co2"],
+  );
+  assert.deepEqual(
+    finnTreff(t, lagSporring("co₂")!).map(([a, b]) => t.slice(a, b)),
+    ["co2"],
+  );
+  assert.deepEqual(
+    finnTreff(t, lagSporring("km2")!).map(([a, b]) => t.slice(a, b)),
+    ["km2"],
+  );
+});
+
+test("MIN_INNI_ORD_LENGDE styrer treff inne i ord (standard 2 = alltid)", () => {
+  assert.equal(MIN_INNI_ORD_LENGDE, 2);
+  const t = normaliser("Gradvis is og isbre.");
+  assert.deepEqual(
+    finnTreff(t, lagSporring("is")!).map(([a, b]) => t.slice(a, b)),
+    ["gradvis", "is", "isbre"],
   );
 });
 
