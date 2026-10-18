@@ -41,11 +41,18 @@
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     /* Fokus og ankermål havner under den klebrige toppmenyen (WCAG 2.4.11). SiteHeader måler høyden og
-       setter --site-header-h; reserven gjelder før målingen (61 px mobil, 156 px med menyrader fra md). */
-    scroll-padding-top: calc(var(--site-header-h, 4rem) + 0.75rem);
+       setter --site-header-h. Reserven før målingen dekker høyeste meny per bruddpunkt: 61–65 px under md,
+       opptil 200 px fra md (menyradene brytes til tre linjer ved 768–839 px) og 156 px fra lg. */
+    scroll-padding-top: calc(var(--site-header-h, 4.25rem) + 0.75rem);
   }
 
   @media (min-width: 48rem) {
+    html {
+      scroll-padding-top: calc(var(--site-header-h, 12.5rem) + 0.75rem);
+    }
+  }
+
+  @media (min-width: 64rem) {
     html {
       scroll-padding-top: calc(var(--site-header-h, 10rem) + 0.75rem);
     }

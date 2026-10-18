@@ -10,6 +10,43 @@ function isItemActive(pathname: string, to: string) {
   return pathname === to || (to !== "/geofag-2" && pathname.startsWith(`${to}/`));
 }
 
+function rullTilHashEtterMaaling(header: HTMLElement) {
+  let id = "";
+  try {
+    id = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    id = "";
+  }
+  if (!id) return () => {};
+  const hendelser = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+  let forrigeY = Number.NaN;
+  let ganger = 0;
+  const sjekk = () => {
+    const mal = document.getElementById(id);
+    const y = window.scrollY;
+    const stille = y === forrigeY;
+    forrigeY = y;
+    if (!mal || !stille) return;
+    const bunn = header.getBoundingClientRect().bottom;
+    const top = mal.getBoundingClientRect().top;
+    const nederst = y >= document.documentElement.scrollHeight - window.innerHeight - 1;
+    if ((top < bunn || top > bunn + 24) && !(nederst && top > bunn)) {
+      mal.scrollIntoView({ block: "start", behavior: "instant" });
+      forrigeY = Number.NaN;
+    }
+  };
+  const tidtaker = window.setInterval(() => {
+    sjekk();
+    if (++ganger >= 20) stopp();
+  }, 150);
+  function stopp() {
+    window.clearInterval(tidtaker);
+    for (const h of hendelser) window.removeEventListener(h, stopp);
+  }
+  for (const h of hendelser) window.addEventListener(h, stopp, { passive: true });
+  return stopp;
+}
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
@@ -26,9 +63,15 @@ export function SiteHeader() {
         `${Math.ceil(header.getBoundingClientRect().height)}px`,
       );
     apply();
+    // Lastet med #anker: nettleseren ruller før målingen (med CSS-reserven), myk rulling kan avbrytes
+    // under hydreringen, og målet kan dukke opp først etter hydreringen. I opptil 3 s etter innlasting:
+    // når rullingen står stille og målet ikke står rett under menyen, rull dit med målt høyde. Stopper
+    // ved første brukerinndata.
+    const stopp = rullTilHashEtterMaaling(header);
     const ro = new ResizeObserver(apply);
     ro.observe(header);
     return () => {
+      stopp();
       ro.disconnect();
       root.style.removeProperty("--site-header-h");
     };
