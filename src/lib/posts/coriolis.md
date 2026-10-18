@@ -28,7 +28,7 @@ Jorda er strengt tatt ikke et treghetssystem, fordi den roterer. Virkningene er 
 KarusellDiagram
 ```
 
-Tenk deg en karusell som roterer mot klokka, slik den nordlige halvkula gjør sett ovenfra. Du kaster en ball rett mot en venn på kanten. Sett utenfra går ballen i en rett linje, mens vennen roterer videre. Sett fra karusellen ser ballen ut til å krumme mot høyre. Ingen skyver på ballen. Det er ståstedet som roterer.
+Tenk deg en karusell som roterer mot klokken, slik den nordlige halvkulen gjør sett ovenfra. Du kaster en ball rett mot en venn på kanten. Sett utenfra går ballen i en rett linje, mens vennen roterer videre. Sett fra karusellen ser ballen ut til å krumme mot høyre. Ingen skyver på ballen. Det er ståstedet som roterer.
 
 ```widget
 CoriolisModel
@@ -85,10 +85,6 @@ Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen 
 SyklonDiagram
 ```
 
-```widget
-PressureSpin
-```
-
 ## Vind, isobarer og friksjon
 
 Vind skyldes i bunn og grunn ujevn oppvarming, som gir forskjeller i lufttrykk. Vinden blåser fra høytrykk mot lavtrykk, og jo sterkere trykkforskjellen er, desto sterkere blir vinden. Uten jordrotasjonen ville den gått rett fra høyt til lavt trykk. Corioliskraften avbøyer den mot høyre på den nordlige halvkule og mot venstre på den sørlige (Store norske leksikon, u.å.-d).
@@ -106,12 +102,16 @@ Figuren viser balansen uten friksjon, der vinden til slutt går langs isobarene.
 På den nordlige halvkule blir rotasjonen rundt et lavtrykk mot klokka, og rundt et høytrykk med klokka. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
 ```widget
+PressureSpin
+```
+
+```widget
 SjekkCoriolis2
 ```
 
 ## Havet: ekmantransport og oppvelling
 
-Samme avbøyning virker på vann. Når vinden drar i overflaten, drar det øverste laget med seg dypere lag. Hvert dypere lag går saktere. Dypere vann avbøyes også, mot høyre på den nordlige halvkule og mot venstre på den sørlige, så lagene danner en spiral. De dypeste lagene i spiralen kan gå motsatt vei av overflatestrømmen. Spiralen kalles ekmanspiralen, etter den svenske oseanografen Vagn Walfrid Ekman (1874–1954), som beskrev den i 1902 (NOAA, u.å.-b).
+Samme avbøyning virker på vann. Når vinden drar i overflaten, drar det øverste laget med seg dypere lag. Hvert dypere lag går saktere. Overflatestrømmen går om lag 45° til høyre for vinden på den nordlige halvkule (Stewart, 2008). Dypere vann avbøyes også, mot høyre på den nordlige halvkule og mot venstre på den sørlige, så lagene danner en spiral. De dypeste lagene i spiralen kan gå motsatt vei av overflatestrømmen. Spiralen kalles ekmanspiralen, etter den svenske oseanografen Vagn Walfrid Ekman (1874–1954), som beskrev den i 1902 (NOAA, u.å.-b).
 
 ```widget
 EkmanForklaring
@@ -121,24 +121,28 @@ EkmanForklaring
 EkmanSpiral
 ```
 
-Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule. Det er ekmantransporten.
+Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule (Stewart, 2008). Det er ekmantransporten.
 
-Laget som vinden setter i gang, kalles ekmanlaget. Hvor tykt det er, avhenger av vinden og breddegraden: typisk noen titalls meter, opptil 100–200 m ved sterk vind (Stewart, 2008). Det meste av transporten skjer i de øverste par titalls meterne, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e). Bevegelsen dør ut lenger ned, ofte på omtrent 100 meters dyp (NOAA, u.å.-b).
+Laget som vinden setter i gang, kalles ekmanlaget. Tykkelsen varierer fra om lag 45 til 300 m, avhengig av vind og breddegrad (Stewart, 2008). Det meste av transporten skjer i de øverste par titalls meterne, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e). Bevegelsen dør ut lenger ned, ofte på omtrent 100 meters dyp (NOAA, u.å.-b).
 
 Oppvelling er at vann løftes fra dypere nivåer til overflatelaget. Overflatelaget skyves til siden, for eksempel ut fra en kyst, og vann nedenfra kommer opp. Prosessen er langsom, om lag 10 meter per dag. Vannet er rikt på næringsstoffer, og områdene har ofte rike fiskerier (Store norske leksikon, u.å.-e; NOAA, u.å.-c).
 
 En nordavind langs en vestkyst på den nordlige halvkule skyver overflatelaget utover, fordi ekmantransporten går til høyre. Da får vann fra dypere nivåer plass. Det skjer særlig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. I monsuntiden også ved Somalia, Oman og Vietnam. På norskekysten kommer episoder med oppvelling ved langvarig og sterk nordavind, og de har betydning for utskifting av dypvannet i fjordene (Store norske leksikon, u.å.-e).
+
+```widget
+Oppvelling
+```
 
 Oppvellingsområdene dekker en liten del av havet, men gir en stor del av fiskefangsten. Om lag 25 prosent av det som fiskes, kommer fra de fem store oppvellingsområdene knyttet til Kanaristrømmen, Benguelastrømmen, Californiastrømmen, Perustrømmen og Somalistrømmen. Ved El Niño svekkes eller opphører oppvellingen i Perustrømmen (Store norske leksikon, u.å.-e). Langs vestkysten av Afrika og Sør-Amerika holder kystoppvelling fiskeriene i gang året rundt (NOAA, u.å.-c).
 
 De store overflatestrømmene drives av vindsystemene og avbøyes av jordrotasjonen. De danner havvirvler med klokka på den nordlige halvkule og mot klokka på den sørlige, nord og sør for ekvator. Ved ekvator, der corioliseffekten ikke virker, dannes ikke slike virvler. Det er fem store havvirvler: Nord-Atlanteren, Sør-Atlanteren, Nord-Stillehavet, Sør-Stillehavet og Det indiske hav. Hver har en sterk og smal vestlig randstrøm og en svak og bred østlig randstrøm (NOAA, u.å.-d). Selve strømmene tar vi i [havstrømmer](/tema/havstrommer).
 
 ```widget
-SkalaDiagram
+RossbyScale
 ```
 
 ```widget
-RossbyScale
+SkalaDiagram
 ```
 
 ```widget
