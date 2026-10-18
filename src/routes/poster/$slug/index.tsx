@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SokHopp } from "@/components/sok/sok-hopp";
 import { Button } from "@/components/ui/button";
 import { GUEST_CMS, getCmsStatus } from "@/lib/cms";
 import { getPost } from "@/lib/posts";
@@ -56,6 +57,7 @@ function PostView() {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
+      <SokHopp slug={post.slug} />
       <main className="flex-1">
         <header className="border-b border-border bg-card">
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
