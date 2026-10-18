@@ -28,6 +28,20 @@ import {
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
+import {
+  AVBOYNING_TEKST,
+  EKMANSPIRAL_TEKST,
+  FART_OSTOVER_TEKST,
+  GEOSTROFISK_TEKST,
+  HAVVIRVLER_TEKST,
+  KARUSELL_TEKST,
+  OPPVELLING_TEKST,
+  SKALA_TEKST_CORIOLIS,
+  SYKLON_TEKST_CORIOLIS,
+  TILPASNING_TEKST,
+  TRYKK_ROTASJON_TEKST,
+  ZONAL_VERTIKAL_TEKST,
+} from "./coriolis-tekst";
 
 type Plass = {
   heading: string;
@@ -407,3 +421,23 @@ export const SyklonmodellFigurLat = lat<FigurProps>(
     underTrinn: { fra: 472.75, trinn: [[286, 454.88], [348.5, 428.88], [413.5, 396.88], [429.5, 356.88], [510.5, 330.88]] } },
   () => import("./syklonmodell-figur").then((m) => m.SyklonmodellFigur),
 );
+
+/* Coriolis-figurene (Geofag 2, fagsjekk Geo 18.10): samme StegFigur-mønster som jetstrømmer, målte punkter. */
+type CoriolisNavn = keyof typeof import("./coriolis-figurer");
+const coriolisLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL> & Pick<Plass, "steg">, navn: CoriolisNavn) =>
+  lat<FigurProps>({ ...tekst, ...JET_MAAL, smal: [960, 540], ...maal }, () => import("./coriolis-figurer").then((m) => m[navn] as ComponentType<FigurProps>));
+// MAAL-START (målt med coriolis/pr/arbeid/plass-sveip.mjs)
+const C_STEG = { over: [[250, 119], [466, 119], [467, 87], [806, 87]] as [number, number][], liste: [[250, 106], [759, 106], [760, 0], [806, 0]] as [number, number][], under: [[250, 73.62], [806, 25.88]] as [number, number][] };
+export const KarusellFigurLat = coriolisLat(KARUSELL_TEKST, { steg: C_STEG }, "KarusellFigur");
+export const AvboyningFigurLat = coriolisLat(AVBOYNING_TEKST, { steg: C_STEG }, "AvboyningFigur");
+export const FartOstoverFigurLat = coriolisLat(FART_OSTOVER_TEKST, { steg: C_STEG }, "FartOstoverFigur");
+export const ZonalVertikalFigurLat = coriolisLat(ZONAL_VERTIKAL_TEKST, { steg: C_STEG }, "ZonalVertikalFigur");
+export const SyklonRotasjonFigurLat = coriolisLat(SYKLON_TEKST_CORIOLIS, { steg: C_STEG }, "SyklonRotasjonFigur");
+export const TrykkRotasjonFigurLat = coriolisLat(TRYKK_ROTASJON_TEKST, { steg: C_STEG }, "TrykkRotasjonFigur");
+export const GeostrofiskFigurLat = coriolisLat(GEOSTROFISK_TEKST, { steg: C_STEG }, "GeostrofiskFigur");
+export const TilpasningFigurLat = coriolisLat(TILPASNING_TEKST, { steg: C_STEG }, "TilpasningFigur");
+export const EkmanSpiralFigurLat = coriolisLat(EKMANSPIRAL_TEKST, { steg: C_STEG }, "EkmanSpiralFigur");
+export const OppvellingFigurLat = coriolisLat(OPPVELLING_TEKST, { steg: C_STEG }, "OppvellingFigur");
+export const SkalaFigurLat = coriolisLat(SKALA_TEKST_CORIOLIS, { smal: [960, 480], bred: [960, 480], steg: C_STEG }, "SkalaFigur");
+export const HavvirvlerFigurLat = coriolisLat(HAVVIRVLER_TEKST, { steg: C_STEG }, "HavvirvlerFigur");
+// MAAL-SLUTT
