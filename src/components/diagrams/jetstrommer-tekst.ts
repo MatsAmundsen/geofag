@@ -64,7 +64,7 @@ export const JET_OMEGA_TEKST = {
   title:
     "Kart sett ovenfra, nord opp. Først går jetstrømmen fra vest mot øst. Så slynger den seg mer. Vest for høytrykket bøyer den mot sør, så går den nord over høytrykket og mot sør igjen øst for det, som bokstaven omega (Ω), med et lavtrykk på hver side.",
   caption:
-    "Jetstrømmen kan slynge seg rundt et høytrykk med et lavtrykk på hver side, slik at den ligner den greske bokstaven omega (Ω) (Store norske leksikon, u.å.-e). Skjematisk, sett ovenfra. Kartdata: Natural Earth.",
+    "Jetstrømmen kan slynge seg rundt et høytrykk som bokstaven omega (Ω), med et lavtrykk på hver side (Store norske leksikon, u.å.-e). Skjematisk, sett ovenfra. Kartdata: Natural Earth.",
 };
 
 export const STORMBANE_TEKST = {
