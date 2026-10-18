@@ -299,19 +299,19 @@ const karusell: Def<{ b: number; kar: number; ingen: number }> = {
   etiketter: [1, 2, 3, 4].map((f) => {
     const vennV = polar(K_V, K_R, 90 + (f >= 2 ? K_TH : 0));
     const l: Lab[] = [
-      { text: "Sett utenfra, uten rotasjon (treghetssystem)", x: K_V[0], y: 64, anchor: "middle", color: F.tekst, weight: 800, size: 15 },
-      { text: "Sett fra karusellen", x: K_H[0], y: 64, anchor: "middle", color: F.tekst, weight: 800, size: 15 },
-      { text: "mot klokken", x: K_V[0] + 150, y: 152, anchor: "start", color: F.teal, at: polar(K_V, K_R + 16, 35) },
-      { text: "kaster", x: K_V[0] - 40, y: K_V[1] + 46, anchor: "end", color: F.dempet, at: [K_V[0] - 8, K_V[1] + 6] },
-      { text: "venn", x: vennV[0] - 30, y: vennV[1] - 18, anchor: "end", color: F.teal, at: vennV },
-      { text: "venn", x: K_H[0] + 40, y: K_H[1] - K_R - 6, anchor: "start", color: F.teal, at: [K_H[0] + 6, K_H[1] - K_R] },
+      { text: "Sett utenfra, uten rotasjon (treghetssystem)", x: K_V[0], y: 64, anchor: "middle", color: F.tekst, weight: 800, size: 15, badge: [250, 70] },
+      { text: "Sett fra karusellen", x: K_H[0], y: 64, anchor: "middle", color: F.tekst, weight: 800, size: 15, badge: [710, 70] },
+      { text: "mot klokken", x: K_V[0] + 150, y: 152, anchor: "start", color: F.teal, at: polar(K_V, K_R + 16, 35), badge: [480, 170] },
+      { text: "kaster", x: K_V[0] - 40, y: K_V[1] + 46, anchor: "end", color: F.dempet, at: [K_V[0] - 8, K_V[1] + 6], badge: [480, 330] },
+      { text: "venn", x: vennV[0] - 30, y: vennV[1] - 18, anchor: "end", color: F.teal, at: vennV, badge: [60, 110] },
+      { text: "venn", x: K_H[0] + 40, y: K_H[1] - K_R - 6, anchor: "start", color: F.teal, at: [K_H[0] + 6, K_H[1] - K_R], badge: [850, 90] },
     ];
-    if (f >= 2) l.push({ text: "rett linje", x: K_V[0] + 20, y: K_V[1] - 90, anchor: "start", color: F.ball, at: [K_V[0] + 2, K_V[1] - 90] });
+    if (f >= 2) l.push({ text: "rett linje", x: K_V[0] + 20, y: K_V[1] - 90, anchor: "start", color: F.ball, at: [K_V[0] + 2, K_V[1] - 90], badge: [480, 250] });
     if (f >= 3) {
       const m = polar(K_H, K_R * 0.95 * 0.65, 90 - K_TH * 0.65);
-      l.push({ text: "krummer mot høyre", x: m[0] + 34, y: m[1] + 30, anchor: "start", color: F.ball, at: m });
+      l.push({ text: "krummer mot høyre", x: m[0] + 34, y: m[1] + 30, anchor: "start", color: F.ball, at: m, badge: [910, 210] });
     }
-    if (f === 4) l.push({ text: "Ingen skyver på ballen: ståstedet roterer", x: 480, y: 516, anchor: "middle", color: F.hoyre, weight: 700 });
+    if (f === 4) l.push({ text: "Ingen skyver på ballen: ståstedet roterer", x: 480, y: 516, anchor: "middle", color: F.hoyre, weight: 700, badge: [480, 495] });
     return l;
   }),
   notes: ["Sett ovenfra", "Kasteren står i midten (forenkling)", "Skjematisk"],
@@ -402,10 +402,10 @@ const avboyning: Def<{ nh: number; sh: number; eq: number; alle: number }> = {
     { nh: 1, sh: 1, eq: 1, alle: 1 },
   ],
   etiketter: [1, 2, 3, 4].map((f) => {
-    const l: Lab[] = [{ text: "nordlige halvkule: til høyre for bevegelsen", x: 600, y: A_NH[1] + 6, color: F.hoyre, weight: 700, at: [A_NH[0] + 98, A_NH[1] + 10] }];
-    if (f >= 2) l.push({ text: "sørlige halvkule: til venstre for bevegelsen", x: 600, y: A_SH[1] + 6, color: F.venstre, weight: 700, at: [A_SH[0] + 98, A_SH[1] - 10] });
-    if (f >= 3) l.push({ text: "ekvator: ingen avbøyning", x: 600, y: A_EQ[1] + 6, color: F.ball, weight: 700, at: [A_EQ[0] + 74, A_EQ[1]] });
-    if (f === 4) l.push({ text: "alle retninger, ikke bare nord–sør", x: 600, y: 500, color: F.tekst, weight: 700 });
+    const l: Lab[] = [{ text: "nordlige halvkule: til høyre for bevegelsen", x: 600, y: A_NH[1] + 6, color: F.hoyre, weight: 700, at: [A_NH[0] + 98, A_NH[1] + 10], badge: [640, 135] }];
+    if (f >= 2) l.push({ text: "sørlige halvkule: til venstre for bevegelsen", x: 600, y: A_SH[1] + 6, color: F.venstre, weight: 700, at: [A_SH[0] + 98, A_SH[1] - 10], badge: [640, 415] });
+    if (f >= 3) l.push({ text: "ekvator: ingen avbøyning", x: 600, y: A_EQ[1] + 6, color: F.ball, weight: 700, at: [A_EQ[0] + 74, A_EQ[1]], badge: [640, 275] });
+    if (f === 4) l.push({ text: "alle retninger, ikke bare nord–sør", x: 600, y: 500, color: F.tekst, weight: 700, badge: [760, 495] });
     return l;
   }),
   keys: [{ text: "Uten avbøyning (rett fram)", color: F.dempet, kind: "dash" }],
@@ -459,13 +459,13 @@ const fartOstover: Def<{ fart: number; sor: number; nord: number; sving: number 
   ],
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [
-      { text: "ekvator: mer enn 400 m/s østover", x: 560, y: FO_C[1] + 44, color: F.teal, at: [FO_C[0] + 150, FO_C[1] + 6] },
-      { text: "60°: mer enn 200 m/s østover", x: 560, y: foY(60) - 10, color: F.teal, at: [FO_C[0] + 76, foY(60) + 6] },
-      { text: "Nordpolen: null", x: FO_C[0] + 40, y: 48, color: F.teal, at: [FO_C[0] + 2, FO_C[1] - FO_R + 6] },
+      { text: "ekvator: mer enn 400 m/s østover", x: 560, y: FO_C[1] + 44, color: F.teal, at: [FO_C[0] + 150, FO_C[1] + 6], badge: [600, 300] },
+      { text: "60°: mer enn 200 m/s østover", x: 560, y: foY(60) - 10, color: F.teal, at: [FO_C[0] + 76, foY(60) + 6], badge: [600, 120] },
+      { text: "Nordpolen: null", x: FO_C[0] + 40, y: 48, color: F.teal, at: [FO_C[0] + 2, FO_C[1] - FO_R + 6], badge: [430, 45] },
     ];
-    if (f >= 2) l.push({ text: "luft rett sørover dreier mot vest", x: 560, y: 196, color: F.kald, at: FO_SOR[16] });
-    if (f >= 3) l.push({ text: "luft rett nordover dreier mot øst", x: 560, y: 252, color: F.luft, at: FO_NORD[16] });
-    if (f === 4) l.push({ text: "begge er en høyresving på kartet", x: 560, y: 470, color: F.hoyre, weight: 700 });
+    if (f >= 2) l.push({ text: "luft rett sørover dreier mot vest", x: 560, y: 196, color: F.kald, at: FO_SOR[16], badge: [600, 205] });
+    if (f >= 3) l.push({ text: "luft rett nordover dreier mot øst", x: 560, y: 252, color: F.luft, at: FO_NORD[16], badge: [600, 385] });
+    if (f === 4) l.push({ text: "begge er en høyresving på kartet", x: 560, y: 470, color: F.hoyre, weight: 700, badge: [600, 475] });
     return l;
   }),
   keys: [
@@ -543,13 +543,13 @@ const zonalVertikal: Def<{ ost: number; vest: number; liten: number; pol: number
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [
       { text: "overflaten", x: 80, y: ZV_BAKKE + 34, color: F.dempet },
-      { text: "østover: tendens til å løfte seg litt", x: 60, y: 170, color: F.hoyre, weight: 700, at: [190, 300] },
+      { text: "østover: tendens til å løfte seg litt", x: 60, y: 170, color: F.hoyre, weight: 700, at: [190, 300], badge: [120, 228] },
     ];
-    if (f >= 2) l.push({ text: "vestover: omvendt", x: 560, y: 236, anchor: "end", color: F.venstre, weight: 700, at: [450, 300] });
+    if (f >= 2) l.push({ text: "vestover: omvendt", x: 560, y: 236, anchor: "end", color: F.venstre, weight: 700, at: [450, 300], badge: [530, 228] });
     if (f >= 3) l.push({ text: "overdrevet: i virkeligheten svært liten", x: 320, y: 492, anchor: "middle", color: F.ball });
     if (f === 4) {
-      l.push({ text: "størst ved ekvator", x: 760, y: 486, anchor: "middle", color: F.hoyre, at: [ZV_G[0] + ZV_GR + 20, ZV_G[1]] });
-      l.push({ text: "null ved polene", x: ZV_G[0], y: 106, anchor: "middle", color: F.hoyre, at: [ZV_G[0], ZV_G[1] - ZV_GR - 4] });
+      l.push({ text: "størst ved ekvator", x: 760, y: 486, anchor: "middle", color: F.hoyre, at: [ZV_G[0] + ZV_GR + 20, ZV_G[1]], badge: [870, 480] });
+      l.push({ text: "null ved polene", x: ZV_G[0], y: 106, anchor: "middle", color: F.hoyre, at: [ZV_G[0], ZV_G[1] - ZV_GR - 4], badge: [700, 80] });
     }
     return l;
   }),
@@ -627,9 +627,9 @@ const syklon: Def<{ rot: number; fylles: number; ekv: number }> = {
     if (f === 1) l.push({ text: "uten rotasjon: lavtrykket fylles raskt igjen", x: SY_L[0], y: 506, anchor: "middle", color: F.dempet, weight: 700 });
     if (f >= 2) l.push({ text: "avbøyningen gir en virvel", x: SY_L[0], y: 506, anchor: "middle", color: F.hoyre, weight: 700 });
     if (f === 3) {
-      l.push({ text: "ekvator: ingen avbøyning", x: 760, y: 272, anchor: "middle", color: F.ball, weight: 700 });
-      l.push({ text: "ca. 5°, om lag 500 km", x: 760, y: 214, anchor: "middle", color: F.ball, at: [880, 236] });
-      l.push({ text: "tropiske sykloner dannes sjelden her", x: 760, y: 340, anchor: "middle", color: F.dempet, at: [760, 310] });
+      l.push({ text: "ekvator: ingen avbøyning", x: 760, y: 262, anchor: "middle", color: F.ball, weight: 700, at: [700, 280], badge: [840, 440] });
+      l.push({ text: "ca. 5°, om lag 500 km", x: 760, y: 214, anchor: "middle", color: F.ball, at: [880, 236], badge: [880, 150] });
+      l.push({ text: "tropiske sykloner dannes sjelden her", x: 760, y: 350, anchor: "middle", color: F.dempet, at: [760, 300], badge: [690, 440] });
     }
     return l;
   }),
@@ -709,15 +709,15 @@ const trykkRotasjon: Def<{ l: number; h: number; sor: number; naer: number; land
     const l: Lab[] = [];
     if (f <= 3) {
       const halv = f === 3 ? "sørlige halvkule: speilvendt" : "nordlige halvkule";
-      l.push({ text: halv, x: 480, y: 64, anchor: "middle", color: f === 3 ? F.venstre : F.tekst, weight: 800 });
-      l.push({ text: f === 3 ? "med klokken" : "mot klokken", x: TR_L[0], y: 486, anchor: "middle", color: F.lav, weight: 700 });
-      if (f >= 2) l.push({ text: f === 3 ? "mot klokken" : "med klokken", x: TR_H[0], y: 486, anchor: "middle", color: F.hoy, weight: 700 });
+      l.push({ text: halv, x: 480, y: 64, anchor: "middle", color: f === 3 ? F.venstre : F.tekst, weight: 800, badge: [480, 70] });
+      l.push({ text: f === 3 ? "lavtrykk: med klokken" : "lavtrykk: mot klokken", x: TR_L[0], y: 486, anchor: "middle", color: F.lav, weight: 700, badge: [250, 488] });
+      if (f >= 2) l.push({ text: f === 3 ? "høytrykk: mot klokken" : "høytrykk: med klokken", x: TR_H[0], y: 486, anchor: "middle", color: F.hoy, weight: 700, badge: [710, 488] });
     } else {
-      l.push({ text: "lavere trykk", x: 80, y: 118, color: F.lav, weight: 700 });
-      l.push({ text: "høyere trykk", x: 80, y: 446, color: F.hoy, weight: 700 });
-      l.push({ text: "isobar", x: 880, y: 262, anchor: "end", color: F.dempet });
-      l.push({ text: f === 4 ? "over havet: 0–20°" : "over land: 20–40°", x: 620, y: 200, color: f === 4 ? F.kald : F.luft, weight: 800, at: [560, 260] });
-      if (f === 5) l.push({ text: "friksjonen er større over land", x: 620, y: 348, color: F.luft });
+      l.push({ text: "lavere trykk", x: 80, y: 118, color: F.lav, weight: 700, badge: [80, 88] });
+      l.push({ text: "høyere trykk", x: 80, y: 446, color: F.hoy, weight: 700, badge: [80, 478] });
+      l.push({ text: "isobar", x: 880, y: 262, anchor: "end", color: F.dempet, badge: [880, 340] });
+      l.push({ text: f === 4 ? "over havet: 0–20°" : "over land: 20–40°", x: 620, y: 200, color: f === 4 ? F.kald : F.luft, weight: 800, at: [560, 260], badge: [720, 200] });
+      if (f === 5) l.push({ text: "friksjonen er større over land", x: 620, y: 348, color: F.luft, badge: [720, 360] });
     }
     return l;
   }),
@@ -727,7 +727,9 @@ const trykkRotasjon: Def<{ l: number; h: number; sor: number; naer: number; land
     const speil = s.sor > 0.5 ? -1 : 1;
     // pilene dempes mens mønsteret speilvendes
     const demp = 0.25 + 0.75 * clamp(Math.abs(s.sor - 0.5) * 2);
-    const opPanel = 1 - s.naer;
+    // det gamle panelet er borte før det nye kommer, så ingenting ligger oppå hverandre i overgangen
+    const opPanel = clamp(1 - 2.2 * s.naer);
+    const opNaer = clamp(2.2 * s.naer - 1.2);
     const vinkel = lerp(10, 30, s.land);
     const fra = lerp(0, 20, s.land);
     const til = lerp(20, 40, s.land);
@@ -746,8 +748,8 @@ const trykkRotasjon: Def<{ l: number; h: number; sor: number; naer: number; land
             <Trykk x={TR_H[0]} y={TR_H[1]} kind="H" />
           </g>
         ) : null}
-        {s.naer > 0.02 ? (
-          <g opacity={op(s.naer)}>
+        {opNaer > 0.02 ? (
+          <g opacity={op(opNaer)}>
             <rect x="40" y="140" width="880" height="280" fill={s.land > 0.5 ? "#3a3f2c" : F.hav} opacity={0.6} data-nocheck="" />
             <Strek pts={[[40, 140], [920, 140]]} farge={F.lav} w={2.5} />
             <Strek pts={[[40, 280], [920, 280]]} farge={F.dempet} w={2} />
@@ -793,10 +795,10 @@ const geostrofisk: Def<{ nh: number; sh: number }> = {
     const l: Lab[] = [
       { text: "nordlige halvkule", x: 60, y: 62, color: F.tekst, weight: 800 },
       { text: "sørlige halvkule", x: 60, y: 312, color: F.tekst, weight: 800 },
-      { text: "uten rotasjon: rett fra høyt til lavt trykk", x: 470, y: GE_Y[0] - 22, anchor: "middle", color: F.dempet },
+      { text: "uten rotasjon: rett fra høyt til lavt trykk", x: 470, y: GE_Y[0] - 22, anchor: "middle", color: F.dempet, badge: [470, 88] },
     ];
-    if (f >= 2) l.push({ text: "avbøyd mot høyre", x: 520, y: GE_Y[0] + 104, anchor: "middle", color: F.hoyre, weight: 700, at: [560, GE_Y[0] + 58] });
-    if (f === 3) l.push({ text: "avbøyd mot venstre", x: 520, y: GE_Y[1] - 82, anchor: "middle", color: F.venstre, weight: 700, at: [560, GE_Y[1] - 58] });
+    if (f >= 2) l.push({ text: "avbøyd mot høyre", x: 520, y: GE_Y[0] + 104, anchor: "middle", color: F.hoyre, weight: 700, at: [560, GE_Y[0] + 58], badge: [420, 232] });
+    if (f === 3) l.push({ text: "avbøyd mot venstre", x: 520, y: GE_Y[1] - 82, anchor: "middle", color: F.venstre, weight: 700, at: [560, GE_Y[1] - 58], badge: [420, 318] });
     return l;
   }),
   notes: ["Sett ovenfra, nord opp", "Skjematisk"],
@@ -872,14 +874,14 @@ const tilpasning: Def<{ u: number; vis: number }> = {
   ],
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [
-      { text: "lavere trykk", x: 60, y: TP_ISO[0] - 14, color: F.lav, weight: 700 },
-      { text: "høyere trykk", x: 60, y: TP_ISO[2] + 32, color: F.hoy, weight: 700 },
-      { text: "isobar", x: 900, y: TP_ISO[1] - 12, anchor: "end", color: F.dempet },
+      { text: "lavere trykk", x: 60, y: TP_ISO[0] - 14, color: F.lav, weight: 700, badge: [60, 62] },
+      { text: "høyere trykk", x: 60, y: TP_ISO[2] + 32, color: F.hoy, weight: 700, badge: [60, 472] },
+      { text: "isobar", x: 900, y: TP_ISO[1] - 12, anchor: "end", color: F.dempet, badge: [900, 340] },
     ];
-    if (f === 1) l.push({ text: "i ro", x: TP_START[0] + 40, y: TP_START[1] + 8, color: F.tekst, at: [TP_START[0] + 10, TP_START[1]] });
-    if (f >= 2) l.push({ text: "trykkforskjellen setter lufta i gang", x: 420, y: 340, color: F.lav, at: [196, 300] });
-    if (f >= 3) l.push({ text: "corioliskraften endrer retningen", x: 420, y: 250, color: F.hoyre, at: [250, 214] });
-    if (f === 4) l.push({ text: "langs isobarene, uten friksjon", x: 640, y: 176, anchor: "middle", color: F.ball, weight: 700, at: [700, 200] });
+    if (f === 1) l.push({ text: "i ro", x: TP_START[0] + 40, y: TP_START[1] + 8, color: F.tekst, at: [TP_START[0] + 10, TP_START[1]], badge: [300, 440] });
+    if (f >= 2) l.push({ text: "trykkforskjellen setter lufta i gang", x: 420, y: 340, color: F.lav, at: [196, 300], badge: [300, 340] });
+    if (f >= 3) l.push({ text: "corioliskraften endrer retningen", x: 420, y: 250, color: F.hoyre, at: [250, 214], badge: [440, 340] });
+    if (f === 4) l.push({ text: "langs isobarene, uten friksjon", x: 640, y: 176, anchor: "middle", color: F.ball, weight: 700, at: [700, 200], badge: [640, 96] });
     return l;
   }),
   keys: [
@@ -947,12 +949,12 @@ const ekmanSpiral: Def<{ lag: number; dyp: number; netto: number }> = {
   ],
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [
-      { text: "vind", x: 140, y: 120, anchor: "middle", color: F.luft, weight: 800, at: [150, 150] },
-      { text: "overflatestrømmen: til høyre for vinden", x: 600, y: 96, color: F.teal, weight: 700, at: ekTupp(45, 200) },
+      { text: "vind", x: 140, y: 120, anchor: "middle", color: F.luft, weight: 800, at: [150, 150], badge: [150, 80] },
+      { text: "overflatestrømmen: til høyre for vinden", x: 590, y: 96, color: F.teal, weight: 700, at: ekTupp(45, 200), badge: [700, 130] },
     ];
-    if (f >= 2) l.push({ text: "hvert dypere lag: saktere, avbøyd mot høyre", x: 700, y: 250, color: F.kald, at: ekTupp(115, 112) });
-    if (f >= 3) l.push({ text: "dypest: motsatt vei av overflatestrømmen, om lag 100 m", x: 160, y: 470, color: F.venstre, at: ekTupp(225, 42) });
-    if (f === 4) l.push({ text: "netto transport: 90° til høyre for vinden", x: 700, y: 360, color: F.netto, weight: 800, at: [EK_C[0] + 190, EK_C[1]] });
+    if (f >= 2) l.push({ text: "dypere lag: saktere, mot høyre", x: 660, y: 250, color: F.kald, at: ekTupp(115, 112), badge: [640, 450] });
+    if (f >= 3) l.push({ text: "dypest: motsatt vei av overflatestrømmen, om lag 100 m", x: 160, y: 470, color: F.venstre, at: ekTupp(225, 42), badge: [300, 470] });
+    if (f === 4) l.push({ text: "netto: 90° til høyre for vinden", x: 660, y: 370, color: F.netto, weight: 800, at: [EK_C[0] + 190, EK_C[1]], badge: [760, 330] });
     return l;
   }),
   notes: ["Havet sett ovenfra, nordlige halvkule", "Pilene viser strømmen i hvert lag, lengden viser farten", "Skjematisk"],
@@ -1040,10 +1042,10 @@ const oppvelling: Def<{ ut: number; opp: number; sakte: number }> = {
       { text: "hav", x: 90, y: 250, color: F.dempet },
     ];
     if (f >= 2) l.push({ text: "overflatelaget skyves utover", x: 300, y: 172, anchor: "middle", color: F.teal, weight: 700, at: [380, 222] });
-    if (f >= 3) l.push({ text: "vann fra dypere nivåer får plass", x: 360, y: 380, anchor: "end", color: F.kald, weight: 700, at: [548, 380] });
+    if (f >= 3) l.push({ text: "vann fra dypere nivåer får plass", x: 360, y: 380, anchor: "end", color: F.kald, weight: 700, at: [548, 380], badge: [420, 380] });
     if (f === 4) {
-      l.push({ text: "om lag 10 meter per dag", x: 360, y: 430, anchor: "end", color: F.ball, at: [602, 420] });
-      l.push({ text: "rikt på næringsstoffer", x: 360, y: 476, anchor: "end", color: F.hoyre, at: [570, 300] });
+      l.push({ text: "om lag 10 meter per dag", x: 360, y: 430, anchor: "end", color: F.ball, at: [602, 420], badge: [420, 465] });
+      l.push({ text: "rikt på næringsstoffer", x: 360, y: 476, anchor: "end", color: F.hoyre, at: [570, 300], badge: [300, 300] });
     }
     return l;
   }),
@@ -1186,7 +1188,7 @@ function Virvel({ c, rx, ry, retning, sek, rand, farge }: { c: P; rx: number; ry
   );
 }
 
-const HV_BASS = { x: 220, w: 520, y: 40, h: 460 };
+const HV_BASS = { x: 300, w: 400, y: 40, h: 460 };
 const HV_HAV = [
   { navn: "Stillehavet", x: 50, w: 360, n: true, s: true },
   { navn: "Atlanteren", x: 450, w: 230, n: true, s: true },
@@ -1215,15 +1217,15 @@ const havvirvler: Def<{ virv: number; retn: number; ekv: number; rand: number; v
   etiketter: [1, 2, 3, 4, 5].map((f) => {
     const l: Lab[] = [];
     if (f <= 4) {
-      l.push({ text: "vindsystemene driver, jordrotasjonen avbøyer", x: 480, y: 524, anchor: "middle", color: F.dempet });
+      l.push({ text: "vindsystemene driver, jordrotasjonen avbøyer", x: 480, y: 524, anchor: "middle", color: F.dempet, badge: [480, 520] });
       if (f >= 2) {
-        l.push({ text: "nord: med klokken", x: 900, y: 150, anchor: "end", color: F.hoyre, weight: 700, at: [735, 150] });
-        l.push({ text: "sør: mot klokken", x: 900, y: 400, anchor: "end", color: F.venstre, weight: 700, at: [735, 400] });
+        l.push({ text: "nord: med klokken", x: 712, y: 120, color: F.hoyre, weight: 700, at: [670, 150], badge: [820, 110] });
+        l.push({ text: "sør: mot klokken", x: 712, y: 380, color: F.venstre, weight: 700, at: [670, 400], badge: [820, 380] });
       }
-      if (f >= 3) l.push({ text: "ekvator: ingen virvler", x: 900, y: HV_EKV + 6, anchor: "end", color: F.ball, weight: 700, at: [742, HV_EKV] });
+      if (f >= 3) l.push({ text: "ekvator: ingen virvler", x: 712, y: HV_EKV + 6, color: F.ball, weight: 700, at: [700, HV_EKV], badge: [820, 262] });
       if (f >= 4) {
-        l.push({ text: "vestlig randstrøm: sterk og smal", x: 60, y: 150, color: F.tekst, weight: 700, at: [246, 150] });
-        l.push({ text: "østlig randstrøm: svak og bred", x: 60, y: 400, color: F.dempet, at: [680, 400] });
+        l.push({ text: "vestlig randstrøm: sterk og smal", x: 288, y: 150, anchor: "end", color: F.tekst, weight: 700, at: [322, 150], badge: [150, 150] });
+        l.push({ text: "østlig randstrøm: svak og bred", x: 712, y: 470, color: F.dempet, at: [664, 420], badge: [820, 470] });
       }
     } else {
       l.push({ text: "Nord-Stillehavet", x: 230, y: 70, anchor: "middle", color: F.hoyre, weight: 700 });
@@ -1231,14 +1233,16 @@ const havvirvler: Def<{ virv: number; retn: number; ekv: number; rand: number; v
       l.push({ text: "Nord-Atlanteren", x: 565, y: 70, anchor: "middle", color: F.hoyre, weight: 700 });
       l.push({ text: "Sør-Atlanteren", x: 565, y: 492, anchor: "middle", color: F.venstre, weight: 700 });
       l.push({ text: "Det indiske hav", x: 820, y: 492, anchor: "middle", color: F.venstre, weight: 700 });
-      l.push({ text: "ekvator", x: 820, y: HV_EKV - 14, anchor: "middle", color: F.ball });
+      l.push({ text: "ekvator", x: 820, y: HV_EKV - 14, anchor: "middle", color: F.ball, badge: [820, 226] });
     }
     return l;
   }),
   notes: ["Sett ovenfra, nord opp", "Skjematiske havbassenger, ikke kart"],
   viewBox: "0 0 960 540",
   tegn: (s, { sek }) => {
-    const enkelt = 1 - s.verden;
+    // bassenget er borte før verdensskissen kommer, så etikettene fra steg 4 ikke ligger over den nye tegningen
+    const enkelt = clamp(1 - 2.2 * s.verden);
+    const verden = clamp(2.2 * s.verden - 1.2);
     const B = HV_BASS;
     return (
       <>
@@ -1256,8 +1260,8 @@ const havvirvler: Def<{ virv: number; retn: number; ekv: number; rand: number; v
             ) : null}
           </g>
         ) : null}
-        {s.verden > 0.02 ? (
-          <g opacity={op(s.verden)}>
+        {verden > 0.02 ? (
+          <g opacity={op(verden)}>
             {HV_HAV.map((h) => (
               <g key={h.navn}>
                 <rect x={h.x} y={90} width={h.w} height={380} rx={12} fill={F.hav} stroke={F.landKant} strokeWidth={2} data-nocheck="" />

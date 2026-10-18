@@ -6,7 +6,7 @@ import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./mod
  * Coriolis-laboratoriet. Etter fagsjekken til Fagredaktør Geo (F6, 18.10.2026) viser modellen bare det
  * coriolis.md sier: avbøyningen etter halvkule og breddegrad (null ved ekvator, øker mot polene, uten tall
  * og formel), vinkelen mot isobarene ved bakken (0–20° over havet, 20–40° over land) og en kort fane 3 med
- * vaskemyten og tropiske sykloner (ca. 5°, om lag 500 km). Tekst i SVG er minst 17 enheter (≥ 9 px ved 390).
+ * vaskemyten og tropiske sykloner (ca. 5°, om lag 500 km). Tekst i SVG er minst 21 enheter (≥ 9 px ved 390).
  */
 
 type Tab = "globe" | "friction" | "myth";
@@ -14,7 +14,7 @@ type Hemisphere = "north" | "south";
 type Latitude = 0 | 30 | 60 | 90;
 type Direction = "north" | "south" | "east" | "west";
 
-const FS = 17;
+const FS = 21;
 
 export function CoriolisModel() {
   const [activeTab, setActiveTab] = useState<Tab>("globe");
