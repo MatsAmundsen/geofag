@@ -77,7 +77,7 @@ type Def<S extends Bilde> = {
    * i stedet for rett over. På globusen er `fra` Nordpolen, så merket står på tvers av breddesirklene
    * og jetlinjene, ikke oppå dem.
    */
-  merker?: { fra: P; d: number };
+  merker?: { fra: P; d: number } | { kolonne: [number, number]; midt: number };
   tegn: Tegn<S>;
 };
 
@@ -95,7 +95,7 @@ function etiketterVed(
   etiketter: Lab[][],
   lager: Map<number, Lab[]>,
   p: number,
-  merker?: { fra: P; d: number },
+  merker?: { fra: P; d: number } | { kolonne: [number, number]; midt: number },
 ): Lab[] {
   const q = Math.round(p * 10);
   const hit = lager.get(q);
@@ -120,7 +120,14 @@ function etiketterVed(
     out.push({ ...b, x: r1(lerp(a.x, b.x, t)), y: r1(lerp(a.y, b.y, t)), at: blandP(a.at, b.at, t), badge: blandP(a.badge, b.badge, t) });
   });
   if (t > 0.85) B.forEach((b, i) => !brukt.has(i) && out.push(b));
-  if (merker)
+  if (merker && "kolonne" in merker)
+    // smal skjerm: merkene i en kolonne på hver side av globusen, på samme høyde som punktet
+    out.forEach((l, i) => {
+      if (!l.at || l.badge) return;
+      const x = l.at[0] < merker.midt ? merker.kolonne[0] : merker.kolonne[1];
+      out[i] = { ...l, badge: [x, l.at[1]] };
+    });
+  else if (merker)
     out.forEach((l, i) => {
       if (!l.at || l.badge) return;
       const dx = l.at[0] - merker.fra[0];
@@ -449,8 +456,8 @@ const termisk: Def<{ d: number }> = {
     const l: Lab[] = [
       { text: d > 0 ? "varm luft" : "lik temperatur", x: 210, y: top.yW - 22, anchor: "middle", color: d > 0 ? F.varm : F.dempet, weight: 800 },
       { text: "samme trykk ved bakken", x: 480, y: 500, anchor: "middle", color: F.dempet, size: 13 },
-      { text: "trykkflate", x: 862, y: r1(tvFlate(2, d).yC - 12), anchor: "end", color: F.dempet, size: 13 },
-      { text: "vestavind ut av arket", x: 560, y: 86, color: "#9be7ff", weight: 700, at: [500, r1(TV_BAKKE - (2.5 * (110 + lerp(110, 72, d))) / 2) - 10] },
+      { text: "trykkflate", x: 862, y: r1(tvFlate(2, d).yC - 12), anchor: "end", color: F.dempet, size: 13, at: [880, r1(tvFlate(2, d).yC)], badge: [880, r1(tvFlate(2, d).yC - 52)] },
+      { text: "vestavind ut av arket", x: 560, y: 86, color: "#9be7ff", weight: 700, at: [500, r1(TV_BAKKE - (2.5 * (110 + lerp(110, 72, d))) / 2) - 10], badge: [250, TV_BAKKE - 275] },
     ];
     if (d > 0) l.push({ text: "kald luft", x: 750, y: r1(top.yC - 22), anchor: "middle", color: F.kald, weight: 800 });
     return l;
@@ -625,9 +632,9 @@ const streak: Def<{ ageo: number; kvad: number; under: number }> = {
     const l: Lab[] = [
       { text: "Inngang: lufta øker farten", x: JS_INN, y: 52, anchor: "middle", color: F.dempet, weight: 700 },
       { text: "Utgang: lufta senker farten", x: JS_UT, y: 52, anchor: "middle", color: F.dempet, weight: 700 },
-      { text: "ekstra sterk vind", x: 480, y: 108, anchor: "middle", color: "#fde68a", weight: 700, at: [480, JS_Y - 18] },
+      { text: "ekstra sterk vind", x: 480, y: 108, anchor: "middle", color: "#fde68a", weight: 700, at: [480, JS_Y - 18], badge: [420, 100] },
     ];
-    if (f >= 2) l.push({ text: "ageostrofisk vind", x: JS_INN - 30, y: 226, anchor: "end", color: "#fbbf24", at: [JS_INN - 8, 200] });
+    if (f >= 2) l.push({ text: "ageostrofisk vind", x: JS_INN - 30, y: 226, anchor: "end", color: "#fbbf24", at: [JS_INN - 8, 200], badge: [JS_INN - 70, 246] });
     if (f >= 3) {
       l.push({ text: "venstre inngang: konvergens", x: 150, y: 96, anchor: "middle", color: F.kald, size: 13 });
       l.push({ text: "høyre inngang: divergens", x: 150, y: 236, anchor: "middle", color: F.varm, size: 13 });
@@ -635,8 +642,8 @@ const streak: Def<{ ageo: number; kvad: number; under: number }> = {
       l.push({ text: "høyre utgang: konvergens", x: 810, y: 236, anchor: "middle", color: F.kald, size: 13 });
     }
     if (f === 4) {
-      l.push({ text: "lufta stiger, trykket faller", x: 770, y: 470, anchor: "middle", color: F.lav, at: [JS_UT + 20, 440] });
-      l.push({ text: "lufta synker", x: 190, y: 470, anchor: "middle", color: F.hoy, at: [JS_INN - 10, 440] });
+      l.push({ text: "lufta stiger, trykket faller", x: 770, y: 470, anchor: "middle", color: F.lav, at: [JS_UT + 20, 440], badge: [JS_UT + 90, 440] });
+      l.push({ text: "lufta synker", x: 190, y: 470, anchor: "middle", color: F.hoy, at: [JS_INN - 10, 440], badge: [JS_INN - 90, 440] });
     }
     return l;
   }),
@@ -742,8 +749,8 @@ const slynger: Def<{ a: number; stig: number; del: number; gap: number }> = {
   }),
   notes: ["Nordlige halvkule sett fra verdensrommet", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
-  narrowViewBox: "200 0 560 540",
-  merker: { fra: POLEN, d: 58 },
+  narrowViewBox: "110 0 740 540",
+  merker: { kolonne: [150, 810], midt: GCX },
   tegn: (s, { sek }) => {
     // mønsteret går sakte mot øst, lufta strømmer mye raskere langs stien (fagsjekk F4)
     const drift = sek * 1.2;
@@ -810,8 +817,8 @@ const sesong: Def<{ lat: number; w: number }> = {
   }),
   notes: ["Nordlige halvkule sett fra verdensrommet", "Tykkelsen viser styrken", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
-  narrowViewBox: "200 0 560 540",
-  merker: { fra: POLEN, d: 58 },
+  narrowViewBox: "110 0 740 540",
+  merker: { kolonne: [150, 810], midt: GCX },
   tegn: (s, { sek, fase }) => {
     const d = klodeSti(rundt((lon) => s.lat + 3 * Math.sin(3 * (lon + 60) * R)));
     const pil = fase === 2 ? [kp(-25, 44), kp(-25, 52)] : fase === 4 ? [kp(-25, 50), kp(-25, 42)] : null;
@@ -831,7 +838,8 @@ export const JetSesongFigur = lagFigur(sesong);
  * P6 Nao: positiv og negativ fase (globus)
  * ===================================================================== */
 
-const ISLAND = kp(-22, 64);
+// Islandslavtrykket: midlere sentrum ligger over havet sørvest for Island, så L-en står fri av kystlinja
+const ISLAND = kp(-30, 61);
 const ASORENE = kp(-28, 38);
 const NAO_POS: P[] = [[-75, 41], [-55, 46], [-35, 52], [-15, 57], [5, 61], [20, 63]];
 const NAO_NEG: P[] = [[-75, 40], [-55, 41], [-35, 42], [-15, 42.5], [5, 43], [20, 43.5]];
@@ -856,8 +864,8 @@ const nao: Def<{ pos: number }> = {
   ] as Lab[]),
   notes: ["Sammenlignet med gjennomsnittet", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
-  narrowViewBox: "200 0 560 540",
-  merker: { fra: POLEN, d: 58 },
+  narrowViewBox: "110 0 740 540",
+  merker: { kolonne: [150, 810], midt: GCX },
   tegn: (s, { sek }) => {
     const pts = NAO_POS.map((p, i): P => [p[0], lerp(NAO_NEG[i][1], p[1], s.pos)]);
     const d = klodeSti(rundt((lon) => {
@@ -949,9 +957,9 @@ const omega: Def<{ a: number }> = {
   etiketter: [0, 0.5, 1].map((a) => {
     const l: Lab[] = [{ text: "jetstrømmen", x: 60, y: 120, color: F.jet, weight: 700, at: nap(-70, 53.6) }];
     if (a > 0) {
-      l.push({ text: "høytrykk", x: 520, y: 70, anchor: "middle", color: F.hoy, weight: 700, at: [OM_H[0], OM_H[1] - 26] });
+      l.push({ text: "høytrykk", x: OM_H[0], y: OM_H[1] + 112, anchor: "middle", color: F.hoy, weight: 700, at: [OM_H[0], OM_H[1] + 22], badge: [OM_H[0], OM_H[1] + 82] });
       l.push({ text: "lavtrykk", x: 300, y: 470, anchor: "middle", color: F.lav, weight: 700, at: [OM_L1[0], OM_L1[1] + 24] });
-      l.push({ text: "lavtrykk", x: 860, y: 420, anchor: "middle", color: F.lav, weight: 700, at: [OM_L2[0], OM_L2[1] + 24] });
+      l.push({ text: "lavtrykk", x: 860, y: 420, anchor: "middle", color: F.lav, weight: 700, at: [OM_L2[0], OM_L2[1] + 24], badge: [OM_L2[0] - 80, OM_L2[1] + 48] });
     }
     if (a === 1) l.push({ text: "Ω", x: 760, y: 120, anchor: "middle", color: "#fde68a", weight: 800, size: 30, at: [OM_H[0] + 40, OM_H[1] - 40] });
     return l;
@@ -1008,7 +1016,7 @@ const stormbane: Def<{ front: number; lav: number; vandre: number }> = {
       { text: "kald luft", x: 60, y: 70, color: F.kald, weight: 800, at: kp(-45, 66) },
       { text: "varm luft", x: 60, y: 480, color: F.varm, weight: 800, at: kp(-50, 34) },
       { text: "polarfronten", x: 900, y: 480, anchor: "end", color: F.front, weight: 700, at: kp(5, pfBredde(5) - 1) },
-      { text: "jetstrømmen i høyden", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(10, pfBredde(10) + 5), badge: kp(-2, 72) },
+      { text: "jetstrømmen i høyden", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(10, pfBredde(10) + 5) },
     ];
     if (f >= 2) l.push({ text: "lavtrykk", x: 60, y: 300, color: F.lav, weight: 700, at: kp(-62, pfBredde(-62) - 2) });
     if (f === 3) l.push({ text: "mot øst", x: 900, y: 300, anchor: "end", color: "#5eead4", weight: 700, at: kp(-8, 40) });
@@ -1016,12 +1024,13 @@ const stormbane: Def<{ front: number; lav: number; vandre: number }> = {
   }),
   notes: ["Nord-Atlanteren sett fra verdensrommet", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 0 960 540",
-  narrowViewBox: "200 0 560 540",
-  merker: { fra: POLEN, d: 58 },
+  narrowViewBox: "110 0 740 540",
+  merker: { kolonne: [150, 810], midt: GCX },
   tegn: (s, { sek }) => {
     const lav = [0, 1, 2].map((k) => {
       const start = -60 + k * 30;
-      const lon = s.vandre > 0.5 ? -70 + ((sek * 5 + k * 33) % 95) : start;
+      // lavtrykkene vandrer øst for punktet etiketten peker på, så pekelinja ikke krysser dem
+      const lon = s.vandre > 0.5 ? -52 + ((sek * 5 + k * 26) % 77) : start;
       const synlig = k === 0 ? s.lav : s.lav * s.vandre;
       // L-en litt sør for frontlinja, så verken fronten eller jetbåndet (nord for fronten) går gjennom bokstaven
       const c = kp(lon, pfBredde(lon) - 3.5);

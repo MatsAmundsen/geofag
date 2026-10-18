@@ -213,16 +213,17 @@ export const BergartssyklusFigurLat = lat<FigurProps>(
 );
 
 /* Jetstrømmer: alle figurene ligger i jetstrommer-figurer.tsx og lastes først når de nærmer seg skjermen. */
+// Mål 18.10: smal = narrowViewBox; under målt mot ferdig figur ved containerbredde 340 og 678 px (poster-spalten ved 390 og 1280 px vindu).
 const JET_MAAL = { smal: [560, 540] as [number, number], bred: [960, 540] as [number, number], over: [190, 150] as [number, number], under: [120, 90] as [number, number] };
 const jetLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL>, navn: keyof typeof import("./jetstrommer-figurer")) =>
   lat<FigurProps>({ ...tekst, ...JET_MAAL, ...maal }, () => import("./jetstrommer-figurer").then((m) => m[navn] as ComponentType<FigurProps>));
 
-export const JetProfilFigurLat = jetLat(JET_PROFIL_TEKST, { smal: [960, 540] }, "JetProfilFigur");
-export const TermiskVindFigurLat = jetLat(TERMISK_VIND_TEKST, { smal: [960, 540] }, "TermiskVindFigur");
-export const VestOstFigurLat = jetLat(VEST_OST_TEKST, { smal: [960, 540] }, "VestOstFigur");
-export const JetStreakFigurLat = jetLat(JETSTREAK_TEKST, { smal: [960, 540] }, "JetStreakFigur");
-export const JetSlyngerFigurLat = jetLat(JET_SLYNGER_TEKST, {}, "JetSlyngerFigur");
-export const JetSesongFigurLat = jetLat(JET_SESONG_TEKST, {}, "JetSesongFigur");
-export const JetNaoFigurLat = jetLat(JET_NAO_TEKST, {}, "JetNaoFigur");
-export const JetOmegaFigurLat = jetLat(JET_OMEGA_TEKST, { smal: [640, 540] }, "JetOmegaFigur");
-export const StormbaneFigurLat = jetLat(STORMBANE_TEKST, {}, "StormbaneFigur");
+export const JetProfilFigurLat = jetLat(JET_PROFIL_TEKST, { smal: [960, 540], under: [210.75, 100.88] }, "JetProfilFigur");
+export const TermiskVindFigurLat = jetLat(TERMISK_VIND_TEKST, { smal: [960, 540], under: [210.75, 100.88] }, "TermiskVindFigur");
+export const VestOstFigurLat = jetLat(VEST_OST_TEKST, { smal: [960, 540], under: [142.88, 16.87] }, "VestOstFigur");
+export const JetStreakFigurLat = jetLat(JETSTREAK_TEKST, { smal: [960, 540], under: [242.63, 122.75] }, "JetStreakFigur");
+export const JetSlyngerFigurLat = jetLat(JET_SLYNGER_TEKST, { smal: [740, 540], under: [192.75, 72.87] }, "JetSlyngerFigur");
+export const JetSesongFigurLat = jetLat(JET_SESONG_TEKST, { smal: [740, 540], under: [160.75, 44.87] }, "JetSesongFigur");
+export const JetNaoFigurLat = jetLat(JET_NAO_TEKST, { smal: [740, 540], under: [206.75, 128.87] }, "JetNaoFigur");
+export const JetOmegaFigurLat = jetLat(JET_OMEGA_TEKST, { smal: [640, 540], under: [142.88, 16.87] }, "JetOmegaFigur");
+export const StormbaneFigurLat = jetLat(STORMBANE_TEKST, { smal: [740, 540], under: [178.75, 100.87] }, "StormbaneFigur");
