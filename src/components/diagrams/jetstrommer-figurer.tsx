@@ -959,14 +959,20 @@ const omega: Def<{ a: number }> = {
   notes: ["Sett ovenfra, nord opp", "Skjematisk. Kartdata: Natural Earth"],
   viewBox: "0 40 960 540",
   narrowViewBox: "180 40 640 540",
+  merker: { fra: OM_H, d: 60 },
   tegn: (s, { sek }) => {
     const pts = OMEGA.map(([lo, la]): P => [lo, lerp(54, la, s.a)]);
     return (
       <>
         <NaKart />
-        <Trykk x={OM_H[0]} y={OM_H[1]} kind="H" size={30} opacity={s.a} />
-        <Trykk x={OM_L1[0]} y={OM_L1[1]} kind="L" size={24} opacity={s.a} />
-        <Trykk x={OM_L2[0]} y={OM_L2[1]} kind="L" size={24} opacity={s.a} />
+        {/* H og L vises først når omegaen er formet, så jetlinja ikke går gjennom bokstavene underveis */}
+        {s.a > 0.75 ? (
+          <>
+            <Trykk x={OM_H[0]} y={OM_H[1]} kind="H" size={30} opacity={r1(clamp((s.a - 0.75) / 0.25) * 100) / 100} />
+            <Trykk x={OM_L1[0]} y={OM_L1[1]} kind="L" size={24} opacity={r1(clamp((s.a - 0.75) / 0.25) * 100) / 100} />
+            <Trykk x={OM_L2[0]} y={OM_L2[1]} kind="L" size={24} opacity={r1(clamp((s.a - 0.75) / 0.25) * 100) / 100} />
+          </>
+        ) : null}
         <JetBaand d={naSti(pts)} w={6} sek={sek} />
       </>
     );
@@ -1002,7 +1008,7 @@ const stormbane: Def<{ front: number; lav: number; vandre: number }> = {
       { text: "kald luft", x: 60, y: 70, color: F.kald, weight: 800, at: kp(-45, 66) },
       { text: "varm luft", x: 60, y: 480, color: F.varm, weight: 800, at: kp(-50, 34) },
       { text: "polarfronten", x: 900, y: 480, anchor: "end", color: F.front, weight: 700, at: kp(5, pfBredde(5) - 1) },
-      { text: "jetstrømmen i høyden", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(10, pfBredde(10) + 5) },
+      { text: "jetstrømmen i høyden", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(10, pfBredde(10) + 5), badge: kp(-2, 72) },
     ];
     if (f >= 2) l.push({ text: "lavtrykk", x: 60, y: 300, color: F.lav, weight: 700, at: kp(-62, pfBredde(-62) - 2) });
     if (f === 3) l.push({ text: "mot øst", x: 900, y: 300, anchor: "end", color: "#5eead4", weight: 700, at: kp(-8, 40) });
@@ -1017,7 +1023,8 @@ const stormbane: Def<{ front: number; lav: number; vandre: number }> = {
       const start = -60 + k * 30;
       const lon = s.vandre > 0.5 ? -70 + ((sek * 5 + k * 33) % 95) : start;
       const synlig = k === 0 ? s.lav : s.lav * s.vandre;
-      const c = kp(lon, pfBredde(lon));
+      // L-en litt sør for frontlinja, så verken fronten eller jetbåndet (nord for fronten) går gjennom bokstaven
+      const c = kp(lon, pfBredde(lon) - 3.5);
       return { c, o: synlig };
     });
     return (
