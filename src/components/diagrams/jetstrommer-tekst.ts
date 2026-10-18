@@ -1,7 +1,7 @@
 /**
  * Tekstene til Jetstrømmer-figurene. Deles med plassholderne, så serveren ikke trenger figurmodulen.
- * Alt bygger på jetstrommer.md: NOAA (u.å.-a; u.å.-b), AMS (u.å.) og Store norske leksikon (u.å.).
- * JetStreak (firekvadrantmodellen) og JetBlocking (omega) trenger et tekstavsnitt med kilde før merge.
+ * Alt bygger på jetstrommer.md: NOAA (u.å.-a; u.å.-b), AMS (u.å.-a) og Store norske leksikon (u.å.-a; u.å.-e). Bokstavene er definert i kilder.ts på jetstrommer-reseed.
+ * JetStreak (firekvadrantmodellen) trenger et tekstavsnitt med kilde før merge (venter på Mats).
  */
 export const JET_PROFIL_TEKST = {
   heading: "To jetstrømmer i høyden",
@@ -16,7 +16,7 @@ export const TERMISK_VIND_TEKST = {
   title:
     "Snitt fra sør til nord med varm luft til venstre og kald luft til høyre. Ved bakken er trykket det samme. Med lik temperatur er trykkflatene vannrette. Når varm og kald luft ligger side om side, heller trykkflatene mot den kalde siden, og vestavinden øker med høyden. Vinden blåser ut av arket, mot øst, langs isotermene. Jo større temperaturforskjellen er, desto raskere øker vinden med høyden.",
   caption:
-    "Der kald og varm luft ligger side om side, øker vestavinden med høyden, og jo større temperaturforskjellen er, desto raskere øker den. Dette kalles termisk vind (AMS, u.å.). Skjematisk, nordlige halvkule.",
+    "Der kald og varm luft ligger side om side, øker vestavinden med høyden, og jo større temperaturforskjellen er, desto raskere øker den. Dette kalles termisk vind (AMS, u.å.-a). Skjematisk, nordlige halvkule.",
 };
 
 export const VEST_OST_TEKST = {
@@ -62,9 +62,9 @@ export const JET_NAO_TEKST = {
 export const JET_OMEGA_TEKST = {
   heading: "Omega: når jetstrømmen slynger seg rundt et høytrykk",
   title:
-    "Kart sett ovenfra, nord opp. Først går jetstrømmen fra vest mot øst. Så slynger den seg mer. Til slutt går den sør for et høytrykk i vest, nord over høytrykket og sør igjen i øst, som den greske bokstaven omega (Ω), med et lavtrykk på hver side.",
+    "Kart sett ovenfra, nord opp. Først går jetstrømmen fra vest mot øst. Så slynger den seg mer. Vest for høytrykket bøyer den mot sør, så går den nord over høytrykket og mot sør igjen øst for det, som bokstaven omega (Ω), med et lavtrykk på hver side.",
   caption:
-    "Jetstrømmen kan slynge seg rundt et høytrykk med et lavtrykk på hver side, slik at den ligner den greske bokstaven omega (Ω). Skjematisk, sett ovenfra. Kartdata: Natural Earth.",
+    "Jetstrømmen kan slynge seg rundt et høytrykk med et lavtrykk på hver side, slik at den ligner den greske bokstaven omega (Ω) (Store norske leksikon, u.å.-e). Skjematisk, sett ovenfra. Kartdata: Natural Earth.",
 };
 
 export const STORMBANE_TEKST = {
@@ -72,5 +72,5 @@ export const STORMBANE_TEKST = {
   title:
     "Nord-Atlanteren sett fra verdensrommet. Polarfronten skiller kald luft i nord fra varm luft i sør, med jetstrømmen i høyden like over. Langs polarfronten dannes lavtrykk som vandrer mot øst, omtrent med vinden i høyden.",
   caption:
-    "Langs polarfronten vandrer lavtrykk, oftest mot øst, omtrent med vinden i høyden. De gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.). Skjematisk. Kartdata: Natural Earth.",
+    "Langs polarfronten vandrer lavtrykk, oftest mot øst, omtrent med vinden i høyden. De gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-a). Skjematisk. Kartdata: Natural Earth.",
 };
