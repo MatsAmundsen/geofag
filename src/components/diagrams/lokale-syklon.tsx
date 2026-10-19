@@ -113,10 +113,14 @@ function langs(p: Pkt[], avstand: number) {
   return out;
 }
 
+/** Radius på frontsymbolene: 9 på bred skjerm, større på smal skjerm så de blir minst ca. 4 CSS-piksler. */
+function symbolRadius(narrow: boolean, scale: number) {
+  return narrow ? 9 * Math.max(1, 0.45 / scale) : 9;
+}
+
 /** Frontsymboler: trekanter (kald), halvsirkler (varm) eller vekselvis (okkludert), på siden `side`. */
-function symboler(p: Pkt[], type: "kald" | "varm" | "okkl", side: (nx: number, ny: number) => boolean) {
-  const r = 9;
-  return langs(p, 34)
+function symboler(p: Pkt[], type: "kald" | "varm" | "okkl", side: (nx: number, ny: number) => boolean, r = 9) {
+  return langs(p, Math.max(34, r * 2.7))
     .map(({ x, y, dx, dy }, i) => {
       let nx = -dy;
       let ny = dx;
@@ -262,11 +266,14 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   // nummerskiltene på smal skjerm skal ligge utenfor frontene (med symboler), buen, isobarene og pilene
   const hinder: Hinder[] = [
     { p: g.W, b: 30 },
-    { p: g.K, b: 30 },
+    { p: g.K, b: 44 },
     { p: pf.vest, b: 3 },
     { p: pf.ost, b: 3 },
   ];
-  if (g.O.length > 1) hinder.push({ p: g.O, b: 30 });
+  // b dekker også de større frontsymbolene på smal skjerm (r ≈ 14 ved 320 px, høyde ≈ 20)
+  if (g.O.length > 1) hinder.push({ p: g.O, b: 44 });
+  // okklusjonspunktet (trippelpunktet): heller ikke lederne fra skiltene skal krysse det
+  if (g.O.length > 1) hinder.push({ punkt: g.T, r: 14 });
   // skybåndene langs frontene og «L» i sentrum
   if (0.12 * fr > 0.02) hinder.push({ p: g.W.map(([x, y]) => [x, y - 18] as Pkt), b: 46 }, { p: g.K, b: 22 });
   if (g.O.length > 1 && 0.14 * fr > 0.02) hinder.push({ p: g.O, b: 40 });
@@ -295,7 +302,9 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   } else if (fase === OKKL_FASE) {
     lab("Okkludert front", g.C[0] + 30, g.C[1] - 70, [g.O[Math.floor(g.O.length / 2)][0], g.O[Math.floor(g.O.length / 2)][1] - 10], F.okkludert);
   } else if (fase === OKKL_FASE + 1 && !SLAA_SAMMEN_STEG_3_OG_4) {
-    lab("Varm luft løftes fra bakken", 820, 170, [g.T[0] + 20, g.T[1] - 14], F.varm, "end");
+    // målet ligger over fronten litt øst for okklusjonspunktet (den løftede varme lufta), ikke på selve
+    // punktet, så verken prikken eller lederen dekker trippelpunktet på smal skjerm
+    lab("Varm luft løftes fra bakken", 820, 170, [g.T[0] + 16, g.T[1] - 34], F.varm, "end");
     lab("Lavtrykket svekkes", g.C[0] - 120, g.C[1] - 80, [g.C[0] - 12, g.C[1] - 44], F.tekst);
   } else {
     lab("Lavtrykket fylles ut", g.C[0], g.C[1] - 90, [g.C[0], g.C[1] - 30], F.tekst);
@@ -338,7 +347,7 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
         ) : null
       }
     >
-      {({ narrow }) => (
+      {({ narrow, scale }) => (
         <>
           <defs>
             <linearGradient id={`${uid}-luft`} x1="0" y1="0" x2="0" y2="1">
@@ -377,13 +386,13 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
               kaldfronten på de vekslende trekantene og halvsirklene, også i tegnforklaringen. */}
           <g opacity={frontOp}>
             <path d={stiAv(g.W)} fill="none" stroke={F.varmfront} strokeWidth="4" />
-            <path d={symboler(g.W, "varm", (nx, ny) => ny < 0)} fill={F.varmfront} />
+            <path d={symboler(g.W, "varm", (nx, ny) => ny < 0, symbolRadius(narrow, scale))} fill={F.varmfront} />
             <path d={stiAv(g.K)} fill="none" stroke={F.kaldfront} strokeWidth="4" />
-            <path d={symboler(g.K, "kald", (nx) => nx > 0)} fill={F.kaldfront} />
+            <path d={symboler(g.K, "kald", (nx) => nx > 0, symbolRadius(narrow, scale))} fill={F.kaldfront} />
             {g.O.length > 1 ? (
               <>
                 <path d={stiAv(g.O)} fill="none" stroke={F.okkludert} strokeWidth="4" />
-                <path d={symboler(g.O, "okkl", (nx, ny) => ny < 0)} fill={F.okkludert} />
+                <path d={symboler(g.O, "okkl", (nx, ny) => ny < 0, symbolRadius(narrow, scale))} fill={F.okkludert} />
               </>
             ) : null}
           </g>
