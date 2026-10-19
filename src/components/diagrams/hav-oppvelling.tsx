@@ -74,6 +74,9 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
     { p: LAND_KANT, b: 1.5 },
     { p: g, b: 2 },
     { ellipse: [VIND_X, VIND_Y, 26, 26] as [number, number, number, number] },
+    // bølgestripene i Hav og klammen over oppvellingssonen
+    ...[0, 1, 2, 3].map((k) => ({ p: [[0, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]] as [number, number][], b: 1 })),
+    { p: [[520, HAV_Y - 8], [520, HAV_Y - 2], [KYST - 10, HAV_Y - 2], [KYST - 10, HAV_Y - 8]], b: 2 },
   ];
 
   const labels: Lab[] = [];
@@ -87,7 +90,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   lab("Land", 880, 300, undefined, F.tekst);
   labels[labels.length - 1].narrowHide = true;
   if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - 28, VIND_Y], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
-  if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 110, HAV_Y + 64, [300, HAV_Y + 24], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
+  if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 24, HAV_Y - 18, [300, HAV_Y + 20], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
   if (s.opp > 0.3) {
     const op = clamp((s.opp - 0.3) / 0.4);
     lab("Kaldere vann nedenfra", 420, 470, [600, 440], F.kald, "middle", op);
@@ -97,7 +100,8 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   if (s.plankton > 0.3) {
     const op = clamp((s.plankton - 0.3) / 0.4);
     lab("Oppvellingssonen, 15–150 km bred", 640, HAV_Y - 26, [640, HAV_Y - 6], "#a8e08f", "middle", op);
-    lab("Næringssaltene kommer opp i lyset, og planteplanktonet vokser godt", 110, HAV_Y + 108, [560, HAV_Y + 26], "#a8e08f", "start", op);
+    lab("Næringssaltene kommer opp i lyset,", 110, HAV_Y + 84, [540, HAV_Y + 30], "#a8e08f", "start", op);
+    lab("og planteplanktonet vokser godt", 110, HAV_Y + 108, undefined, "#a8e08f", "start", op);
   }
 
   return (
@@ -118,7 +122,6 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
       keys={[
         { text: "Ekmantransport", color: F.sjobris, kind: "line" },
         { text: "Kaldere vann nedenfra", color: F.kald, kind: "line" },
-        { text: "Vind som blåser mot deg", color: F.tekst, kind: "symbol", symbol: "⊙" },
       ]}
     >
       {({ m }) => (
@@ -126,7 +129,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
           <Himmel id={`${uid}-h`} t={1} h={HAV_Y + 2} />
           <Hav x0={0} x1={KYST + 2} y={HAV_Y} sek={sek} id={`${uid}-hav`} />
           {/* dypere, kaldere vann under grensen */}
-          <path d={`${gSti} L740 540 L0 540 Z`} fill="#0a2333" opacity="0.85" data-nocheck="" />
+          <path d={`${gSti} L800 ${g[g.length - 1][1].toFixed(1)} L800 540 L0 540 Z`} fill="#0a2333" opacity="0.85" data-nocheck="" />
           <path d={gSti} fill="none" stroke="#8ec5e8" strokeWidth="2.2" strokeDasharray="10 7" opacity="0.8" data-nocheck="" />
           <path d={LAND} fill={F.land} stroke={F.landMork} strokeWidth="1.5" data-nocheck="" />
           {/* planteplankton i overflaten nær kysten */}

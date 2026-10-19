@@ -10,9 +10,9 @@
  */
 import { useId, useState, type ReactNode } from "react";
 import { Faner } from "@/components/diagrams/isbre-figur";
-import { clamp, lerp, useInView } from "@/components/diagrams/isbre-kit";
 import { TidslinjeKontroller } from "@/components/diagrams/prosess-figur";
-import { tidslinjeVerdi, useFigurSmal, useTidslinje } from "@/components/diagrams/prosess-kit";
+import { tidslinjeVerdi, useTidslinje } from "@/components/diagrams/prosess-kit";
+import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "@/components/diagrams/isbre-kit";
 import { PlayPauseToggle } from "@/components/diagrams/svg-kit";
 import { ModelFrame } from "./model-chrome";
 
@@ -36,6 +36,14 @@ const C = {
 };
 
 const KILDE = "text-muted-foreground";
+
+/** Modellpanelet er smalere enn figurene (rundt 620 px på bred skjerm), så det bytter oppsett ved 600 px panelbredde. */
+const MODELL_SMAL_PX = 600;
+function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
+  const [ref, width] = useBoxWidth<HTMLDivElement>();
+  const smallWindow = useNarrow();
+  return [ref, width > 0 ? width < MODELL_SMAL_PX : smallWindow];
+}
 
 /* ---------- små byggeklosser ---------- */
 
@@ -91,7 +99,7 @@ function T({ x, y, children, farge = C.tekst, size = 16, anchor = "start", vekt 
 function Skilt({ x, y, n, opacity = 1 }: { x: number; y: number; n: number; opacity?: number }) {
   if (opacity <= 0.01) return null;
   return (
-    <g opacity={opacity < 0.99 ? opacity : undefined} aria-hidden="true">
+    <g opacity={opacity < 0.99 ? opacity : undefined} aria-hidden="true" data-badge={n}>
       <circle cx={x} cy={y} r="13" fill="#1e3a4a" stroke={C.tekst} strokeWidth="1.5" />
       <text x={x} y={y + 5.5} fill={C.tekst} fontSize="16" fontWeight="700" textAnchor="middle">
         {n}
@@ -256,16 +264,16 @@ function SpiralFane() {
             <Skilt x={ox - 22} y={oy - L0 * 1.05} n={1} opacity={s.vind} />
             <Skilt x={fx + sgn * 20} y={fy - 14} n={2} opacity={s.flate} />
             <Skilt x={lx + sgn * 26} y={ly + 22} n={3} opacity={s.lag} />
-            <Skilt x={ox + sgn * L0 * 0.95 + sgn * 24} y={oy - 4} n={4} opacity={s.netto} />
+            <Skilt x={ox + sgn * (L0 * 0.95 + 36)} y={oy} n={4} opacity={s.netto} />
           </>
         ) : (
           <>
             <T x={ox + 12} y={oy - L0 * 1.15 + 14} farge={C.vind} opacity={s.vind}>vind</T>
             <T x={fx + sgn * 14} y={fy - 12} farge={C.lag} anchor={nord ? "start" : "end"} opacity={s.flate}>overflaten: 45° (Ekmans enkle teori)</T>
             <T x={ox - sgn * 30} y={oy + L0 * 0.75} farge={C.lag} anchor={nord ? "end" : "start"} opacity={s.lag}>hvert lag lenger ned:</T>
-            <T x={ox - sgn * 30} y={oy + L0 * 0.75 + 22} farge={C.lag} anchor={nord ? "end" : "start"} vekt={400} opacity={s.lag}>{`litt saktere og litt mer til ${side}`}</T>
+            <T x={ox - sgn * 30} y={oy + L0 * 0.75 + 25} farge={C.lag} anchor={nord ? "end" : "start"} vekt={400} opacity={s.lag}>{`litt saktere og litt mer til ${side}`}</T>
             <T x={ox + sgn * (L0 * 0.95 + 16)} y={oy + 6} farge={C.netto} anchor={nord ? "start" : "end"} opacity={s.netto}>ekmantransporten:</T>
-            <T x={ox + sgn * (L0 * 0.95 + 16)} y={oy + 28} farge={C.netto} anchor={nord ? "start" : "end"} vekt={400} opacity={s.netto}>{`90° til ${side} for vinden`}</T>
+            <T x={ox + sgn * (L0 * 0.95 + 16)} y={oy + 31} farge={C.netto} anchor={nord ? "start" : "end"} vekt={400} opacity={s.netto}>{`90° til ${side} for vinden`}</T>
           </>
         )}
       </svg>
@@ -313,7 +321,7 @@ function KystFane() {
   const pilFjern = kystX + ut * (smal ? 230 : 560);
   const [px1, px2] = transportVest ? [Math.max(pilNaer, pilFjern), Math.min(pilNaer, pilFjern)] : [Math.min(pilNaer, pilFjern), Math.max(pilNaer, pilFjern)];
   const vindX = kystX + ut * (smal ? 46 : 70);
-  const vertX = [kystX + ut * (smal ? 30 : 46), kystX + ut * (smal ? 58 : 90)];
+  const vertX = [kystX + ut * (smal ? 54 : 100), kystX + ut * (smal ? 82 : 146)];
   const vNed = bunn - 16;
   const vOpp = havY + 46;
 
@@ -375,7 +383,7 @@ function KystFane() {
           </>
         ) : (
           <>
-            <T x={landOst ? 16 : W - 16} y={26} anchor={landOst ? "start" : "end"} farge={C.dempet} size={15}>{landOst ? "Vest" : "Øst"}</T>
+            <T x={landOst ? 16 : W - 16} y={26} anchor={landOst ? "start" : "end"} farge={C.dempet} size={16}>{landOst ? "Vest" : "Øst"}</T>
             <T x={landX0 + landB / 2} y={havY + 120} anchor="middle" farge={C.tekst}>land</T>
             <T x={vindX + ut * 30} y={havY / 2 + 9} anchor={tAnchor} farge={C.vind}>{vindTekst}</T>
             <T x={kystX + ut * 300} y={pilY + 32} anchor={tAnchor} farge={C.lag}>{ekmanTekst}</T>
@@ -425,11 +433,11 @@ function VirvelFane() {
   const toppX = W * 0.3; // haugen ligger mot vest: brattere på vestsiden
   const hy = (t: number) => lerp(base, topp, t * s.haug);
   const flate = `M0 ${base} C ${W * 0.08} ${base}, ${W * 0.15} ${hy(1)}, ${toppX} ${hy(1)} C ${W * 0.5} ${hy(1)}, ${W * 0.75} ${hy(0.55)}, ${W} ${base}`;
-  const gx = W * (smal ? 0.17 : 0.13);
+  const gx = W * (smal ? 0.2 : 0.13);
   const kx = W * (smal ? 0.8 : 0.82);
-  const yy = smal ? 200 : 250;
+  const yy = smal ? 214 : 250;
   const pl = smal ? 38 : 60; // pillengde for kreftene
-  const strY = yy - (smal ? 42 : 52);
+  const strY = smal ? 158 : yy - 52;
 
   const status = [
     <>Når ekmantransporten flytter vann sammen, hever havoverflaten seg litt. <span className={KILDE}>(Barthel, 2025)</span></>,
@@ -488,22 +496,23 @@ function VirvelFane() {
         {smal ? (
           <>
             <Skilt x={toppX + 34} y={hy(1) - 22} n={1} opacity={s.haug} />
-            <Skilt x={gx - 18} y={strY - 26} n={2} opacity={s.trykk} />
-            <Skilt x={gx + 30} y={strY - 26} n={3} opacity={s.cor} />
+            <Skilt x={gx - 25} y={strY + 28} n={2} opacity={s.trykk} />
+            <Skilt x={gx + 25} y={strY + 28} n={3} opacity={s.cor} />
             <Skilt x={gx} y={yy + 36} n={4} opacity={s.strom} />
             <Skilt x={kx} y={yy + 36} n={5} opacity={s.strom} />
           </>
         ) : (
           <>
-            <T x={14} y={24} farge={C.dempet} size={15}>Vest</T>
-            <T x={W - 14} y={24} anchor="end" farge={C.dempet} size={15}>Øst</T>
+            <T x={14} y={24} farge={C.dempet} size={16}>Vest</T>
+            <T x={W - 14} y={24} anchor="end" farge={C.dempet} size={16}>Øst</T>
             <T x={toppX + 24} y={hy(1) - 16} farge={C.dempet} vekt={400} opacity={s.haug}>høyere havflate (overdrevet)</T>
+            <T x={W * 0.8} y={base + 52} anchor="middle" farge={C.lag} opacity={1 - s.trykk}>ekmantransporten samler vann</T>
             <T x={W * 0.5} y={strY - 8} anchor="middle" farge={C.trykk} opacity={s.trykk}>blå pil: trykkforskjellen presser vannet ut fra høyden</T>
             <T x={W * 0.5} y={strY + 18} anchor="middle" farge={C.coriolis} opacity={s.cor}>grå pil: corioliseffekten bøyer det mot høyre</T>
             <T x={gx - 30} y={yy + 48} farge={C.golf} opacity={s.strom}>Golfstrømmen</T>
-            <T x={gx - 30} y={yy + 70} farge={C.golf} vekt={400} opacity={s.strom}>smal og rask, nordover</T>
+            <T x={gx - 30} y={yy + 73} farge={C.golf} vekt={400} opacity={s.strom}>smal og rask, nordover</T>
             <T x={kx + 60} y={yy + 48} anchor="end" farge={C.kanari} opacity={s.strom}>Kanaristrømmen</T>
-            <T x={kx + 60} y={yy + 70} anchor="end" farge={C.kanari} vekt={400} opacity={s.strom}>bred og langsom, sørover</T>
+            <T x={kx + 60} y={yy + 73} anchor="end" farge={C.kanari} vekt={400} opacity={s.strom}>bred og langsom, sørover</T>
             <T x={W * 0.5} y={H - 20} anchor="middle" farge={C.tekst} opacity={s.strom}>I balanse: langs hellingen, med klokken rundt H</T>
           </>
         )}

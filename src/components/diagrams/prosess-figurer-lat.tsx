@@ -439,10 +439,12 @@ export const OppvellingFigurLat = lat<FigurProps>(
   {
     ...OPPVELLING_TEKST,
     ...LOKALE_MAAL,
+    // målt 19.10 mot ferdig figur (redusert bevegelse) ved 320–1280 px; statusfeltet blir 40 px lavere fra 640 px vindu
+    smTrinn: { over: -40, under: 0 },
     skala: {
       smal: {
-        over: [[270, 271], [310, 239], [340, 239], [380, 219], [550, 219], [590, 147]],
-        under: [[270, 312], [310, 286], [550, 286], [590, 260]],
+        over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
+        under: [[325, 274], [340, 248], [470, 248], [510, 230], [550, 204]],
       },
       bred: { over: [[806, 127]], under: [[806, 58]] },
     },
