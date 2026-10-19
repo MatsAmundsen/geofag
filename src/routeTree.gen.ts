@@ -51,6 +51,7 @@ import { Route as TemaTilpasningRouteImport } from './routes/tema/tilpasning'
 import { Route as TemaVaerkartRouteImport } from './routes/tema/vaerkart'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
 import { Route as TemaVindsystemetRouteImport } from './routes/tema/vindsystemet'
+import { Route as EksamenDataSlugRouteImport } from './routes/eksamen/data/$slug'
 import { Route as PosterSlugIndexRouteImport } from './routes/poster/$slug/index'
 import { Route as PosterSlugRedigerRouteImport } from './routes/poster/$slug/rediger'
 import { Route as TemaKlimaIndexRouteImport } from './routes/tema/klima/index'
@@ -276,6 +277,11 @@ const TemaVindsystemetRoute = TemaVindsystemetRouteImport.update({
   path: '/tema/vindsystemet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EksamenDataSlugRoute = EksamenDataSlugRouteImport.update({
+  id: '/eksamen/data/$slug',
+  path: '/eksamen/data/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PosterSlugIndexRoute = PosterSlugIndexRouteImport.update({
   id: '/poster/$slug/',
   path: '/poster/$slug/',
@@ -366,6 +372,7 @@ export interface FileRoutesByFullPath {
   '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
   '/poster/': typeof PosterIndexRoute
+  '/eksamen/data/$slug': typeof EksamenDataSlugRoute
   '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
@@ -419,6 +426,7 @@ export interface FileRoutesByTo {
   '/eksamen': typeof EksamenIndexRoute
   '/geofag-1': typeof Geofag1IndexRoute
   '/poster': typeof PosterIndexRoute
+  '/eksamen/data/$slug': typeof EksamenDataSlugRoute
   '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
@@ -473,6 +481,7 @@ export interface FileRoutesById {
   '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
   '/poster/': typeof PosterIndexRoute
+  '/eksamen/data/$slug': typeof EksamenDataSlugRoute
   '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
   '/tema/klima/amoc': typeof TemaKlimaAmocRoute
   '/tema/klima/enso': typeof TemaKlimaEnsoRoute
@@ -528,6 +537,7 @@ export interface FileRouteTypes {
     | '/eksamen/'
     | '/geofag-1/'
     | '/poster/'
+    | '/eksamen/data/$slug'
     | '/poster/$slug/rediger'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
@@ -581,6 +591,7 @@ export interface FileRouteTypes {
     | '/eksamen'
     | '/geofag-1'
     | '/poster'
+    | '/eksamen/data/$slug'
     | '/poster/$slug/rediger'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
@@ -634,6 +645,7 @@ export interface FileRouteTypes {
     | '/eksamen/'
     | '/geofag-1/'
     | '/poster/'
+    | '/eksamen/data/$slug'
     | '/poster/$slug/rediger'
     | '/tema/klima/amoc'
     | '/tema/klima/enso'
@@ -688,6 +700,7 @@ export interface RootRouteChildren {
   EksamenIndexRoute: typeof EksamenIndexRoute
   Geofag1IndexRoute: typeof Geofag1IndexRoute
   PosterIndexRoute: typeof PosterIndexRoute
+  EksamenDataSlugRoute: typeof EksamenDataSlugRoute
   PosterSlugRedigerRoute: typeof PosterSlugRedigerRoute
   TemaKlimaAmocRoute: typeof TemaKlimaAmocRoute
   TemaKlimaEnsoRoute: typeof TemaKlimaEnsoRoute
@@ -995,6 +1008,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaVindsystemetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/eksamen/data/$slug': {
+      id: '/eksamen/data/$slug'
+      path: '/eksamen/data/$slug'
+      fullPath: '/eksamen/data/$slug'
+      preLoaderRoute: typeof EksamenDataSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/poster/$slug/': {
       id: '/poster/$slug/'
       path: '/poster/$slug'
@@ -1104,6 +1124,7 @@ const rootRouteChildren: RootRouteChildren = {
   EksamenIndexRoute: EksamenIndexRoute,
   Geofag1IndexRoute: Geofag1IndexRoute,
   PosterIndexRoute: PosterIndexRoute,
+  EksamenDataSlugRoute: EksamenDataSlugRoute,
   PosterSlugRedigerRoute: PosterSlugRedigerRoute,
   TemaKlimaAmocRoute: TemaKlimaAmocRoute,
   TemaKlimaEnsoRoute: TemaKlimaEnsoRoute,
