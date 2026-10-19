@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ChevronDown, ExternalLink, Lock } from "lucide-react";
+import { useState } from "react";
 import { Callout } from "@/components/callout";
 import { MaalKart } from "@/components/exam/maal-kart";
 import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { EXAM_SETS, SOLUTIONS } from "@/lib/eksamen";
+import { listExamMeta } from "@/lib/eksamen/load";
 import { KILDER } from "@/lib/kilder";
 import { topicHead } from "@/lib/seo";
 
@@ -18,10 +19,13 @@ export const Route = createFileRoute("/eksamen/")({
         "Geofag 2 (REA3043) per 2026: gjennomføring i sikker nettleser, regler, hjelpemidler, kildeføring og løsningsforslag til tidligere sett.",
       path: "/eksamen",
     }),
+  loader: () => listExamMeta(),
   component: EksamenIndex,
 });
 
 function EksamenIndex() {
+  const sets = Route.useLoaderData();
+  const [visSett, setVisSett] = useState(false);
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
@@ -41,7 +45,9 @@ function EksamenIndex() {
             </p>
             <div className="mt-6">
               <Button asChild variant="secondary">
-                <a href="#sett">Til eksamenssettene</a>
+                <a href="#sett" onClick={() => setVisSett(true)}>
+                  Til eksamenssettene
+                </a>
               </Button>
             </div>
           </div>
@@ -196,16 +202,34 @@ function EksamenIndex() {
               åpner du i det offisielle settet.
             </p>
 
-            <ul className="mt-8 space-y-4">
-              {EXAM_SETS.map((set) => {
-                const n = Object.keys(SOLUTIONS[set.slug] ?? {}).length;
+            <p className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
+              <Lock className="size-4" />
+              Settene krever innlogging med skole-e-post (engangskode på e-post).
+            </p>
+            <div className="mt-5">
+              <Button
+                type="button"
+                variant="secondary"
+                aria-expanded={visSett}
+                aria-controls="eksamenssett-liste"
+                onClick={() => setVisSett((v) => !v)}
+              >
+                {visSett ? "Skjul eksamenssett" : "Vis eksamenssett"}
+                <ChevronDown className={`size-4 transition-transform ${visSett ? "rotate-180" : ""}`} />
+              </Button>
+            </div>
+
+            {visSett ? (
+            <ul id="eksamenssett-liste" className="mt-8 space-y-4">
+              {sets.map((set) => {
+                const n = set.solutionCount;
                 return (
                   <li
                     key={set.slug}
                     className="rounded-2xl border border-border bg-card p-5 sm:p-6"
                   >
                     <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                      {set.kind === "eksempel" ? "Eksempel" : "Eksamen"} · {set.tasks.length}{" "}
+                      {set.kind === "eksempel" ? "Eksempel" : "Eksamen"} · {set.taskCount}{" "}
                       oppgaver · {n} løsningsforslag
                       {set.complete ? "" : " · ufullstendig uttrekk"}
                       {set.fasitSource === "udir" ? " · sjekket mot Udir-fasit" : " · eget forslag"}
@@ -216,7 +240,7 @@ function EksamenIndex() {
                     <p className="mt-2 text-sm text-muted-foreground">{set.themes.join(" · ")}</p>
                     <div className="mt-5 flex flex-wrap gap-3">
                       <Button asChild>
-                        <Link to="/eksamen/$slug" params={{ slug: set.slug }}>
+                        <Link to="/eksamen/$slug" params={{ slug: set.slug }} reloadDocument preload={false}>
                           Oppgaver
                           <ArrowRight className="size-4" />
                         </Link>
@@ -226,6 +250,8 @@ function EksamenIndex() {
                           to="/eksamen/$slug"
                           params={{ slug: set.slug }}
                           search={{ vis: "losningsforslag" }}
+                          reloadDocument
+                          preload={false}
                         >
                           Løsningsforslag
                         </Link>
@@ -235,6 +261,7 @@ function EksamenIndex() {
                 );
               })}
             </ul>
+            ) : null}
           </section>
 
           <p className="mt-10 text-sm text-muted-foreground">
