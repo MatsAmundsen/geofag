@@ -40,6 +40,22 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    /* Fokus og ankermål havner under den klebrige toppmenyen (WCAG 2.4.11). SiteHeader måler høyden og
+       setter --site-header-h. Reserven før målingen dekker høyeste meny per bruddpunkt: 61–65 px under md,
+       opptil 200 px fra md (menyradene brytes til tre linjer ved 768–839 px) og 156 px fra lg. */
+    scroll-padding-top: calc(var(--site-header-h, 4.25rem) + 0.75rem);
+  }
+
+  @media (min-width: 48rem) {
+    html {
+      scroll-padding-top: calc(var(--site-header-h, 12.5rem) + 0.75rem);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    html {
+      scroll-padding-top: calc(var(--site-header-h, 10rem) + 0.75rem);
+    }
   }
 
   body {
@@ -427,11 +443,8 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
     aspect-ratio: 2.2 / 1;
   }
 }
-/* Modellens egne ankre/overskrifter havner under nettstedets sticky header.
-   --jet-header-h settes av JetModel (målt med ResizeObserver) bare på .jet-root. */
-.jet-root :is(h2, h3, section, [id], summary, button, [role="slider"], [role="radio"]) {
-  scroll-margin-top: calc(var(--jet-header-h, 160px) + 0.75rem);
-}
+/* Modellens egne ankre og kontroller havner ikke lenger under den klebrige toppmenyen: html har
+   scroll-padding-top etter den målte menyhøyden (--site-header-h), så JetModel trenger ikke egen scroll-margin. */
 .jet-more__summary {
   display: flex;
   align-items: center;
@@ -480,4 +493,52 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   height: 100dvh;
   min-height: 100dvh;
   aspect-ratio: auto;
+}
+
+/* Søk: treffet du hoppet til. Farger selve teksten (CSS Custom Highlight API)
+   og tegner en ring i et eget lag, så React-DOM-en ikke endres. */
+::highlight(sok-treff) {
+  background-color: var(--color-lava);
+  color: var(--color-lava-foreground);
+}
+
+::highlight(sok-treff-svak) {
+  background-color: color-mix(in srgb, var(--color-lava) 35%, transparent);
+}
+
+.sok-markering-lag {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+  z-index: 30;
+  pointer-events: none;
+  transition: opacity 0.9s ease-out;
+}
+
+.sok-markering-lag--borte {
+  opacity: 0;
+}
+
+.sok-markering {
+  position: absolute;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--color-lava);
+}
+
+.sok-markering--puls {
+  animation: sok-puls 1.2s ease-out 2;
+}
+
+@keyframes sok-puls {
+  0% {
+    box-shadow:
+      0 0 0 2px var(--color-lava),
+      0 0 0 0 color-mix(in srgb, var(--color-lava) 60%, transparent);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px var(--color-lava),
+      0 0 0 12px transparent;
+  }
 }

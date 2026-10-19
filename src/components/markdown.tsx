@@ -170,6 +170,7 @@ export function Markdown({
   scrollTables = false,
   wrapTables = false,
   captionFallback = "",
+  searchable = false,
 }: {
   children: string;
   className?: string;
@@ -179,10 +180,15 @@ export function Markdown({
   wrapTables?: boolean;
   /** Heading from the previous markdown chunk, when a widget sits between heading and table. */
   captionFallback?: string;
+  /** Marker teksten som brødtekst for søket (treffene i søkeindeksen ligger her). */
+  searchable?: boolean;
 }) {
   const nowrap = scrollTables && !wrapTables;
   return (
-    <div className={cn("space-y-4 text-base leading-relaxed text-foreground/90", className)}>
+    <div
+      className={cn("space-y-4 text-base leading-relaxed text-foreground/90", className)}
+      data-sok-tekst={searchable ? "" : undefined}
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeTableCaptions(captionFallback)]}
