@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Geofag2RouteImport } from './routes/geofag-2'
+import { Route as ApiSokIndeksRouteImport } from './routes/api/sok-indeks'
 import { Route as EksamenIndexRouteImport } from './routes/eksamen/index'
 import { Route as EksamenSlugRouteImport } from './routes/eksamen/$slug'
 import { Route as Geofag1IndexRouteImport } from './routes/geofag-1/index'
@@ -68,6 +69,11 @@ const IndexRoute = IndexRouteImport.update({
 const Geofag2Route = Geofag2RouteImport.update({
   id: '/geofag-2',
   path: '/geofag-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSokIndeksRoute = ApiSokIndeksRouteImport.update({
+  id: '/api/sok-indeks',
+  path: '/api/sok-indeks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EksamenIndexRoute = EksamenIndexRouteImport.update({
@@ -320,6 +326,7 @@ const TemaKlimaOversiktRoute = TemaKlimaOversiktRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
+  '/api/sok-indeks': typeof ApiSokIndeksRoute
   '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter': typeof Geofag1BergarterRoute
@@ -372,6 +379,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
+  '/api/sok-indeks': typeof ApiSokIndeksRoute
   '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter': typeof Geofag1BergarterRoute
@@ -425,6 +433,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/geofag-2': typeof Geofag2Route
+  '/api/sok-indeks': typeof ApiSokIndeksRoute
   '/eksamen/$slug': typeof EksamenSlugRoute
   '/geofag-1/$slug': typeof Geofag1SlugRoute
   '/geofag-1/bergarter': typeof Geofag1BergarterRoute
@@ -479,6 +488,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/geofag-2'
+    | '/api/sok-indeks'
     | '/eksamen/$slug'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter'
@@ -531,6 +541,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/geofag-2'
+    | '/api/sok-indeks'
     | '/eksamen/$slug'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter'
@@ -583,6 +594,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/geofag-2'
+    | '/api/sok-indeks'
     | '/eksamen/$slug'
     | '/geofag-1/$slug'
     | '/geofag-1/bergarter'
@@ -636,6 +648,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Geofag2Route: typeof Geofag2Route
+  ApiSokIndeksRoute: typeof ApiSokIndeksRoute
   EksamenSlugRoute: typeof EksamenSlugRoute
   Geofag1SlugRoute: typeof Geofag1SlugRoute
   Geofag1BergarterRoute: typeof Geofag1BergarterRoute
@@ -700,6 +713,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-2'
       fullPath: '/geofag-2'
       preLoaderRoute: typeof Geofag2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/sok-indeks': {
+      id: '/api/sok-indeks'
+      path: '/api/sok-indeks'
+      fullPath: '/api/sok-indeks'
+      preLoaderRoute: typeof ApiSokIndeksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/eksamen/': {
@@ -1044,6 +1064,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Geofag2Route: Geofag2Route,
+  ApiSokIndeksRoute: ApiSokIndeksRoute,
   EksamenSlugRoute: EksamenSlugRoute,
   Geofag1SlugRoute: Geofag1SlugRoute,
   Geofag1BergarterRoute: Geofag1BergarterRoute,

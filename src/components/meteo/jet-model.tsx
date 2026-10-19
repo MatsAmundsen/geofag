@@ -84,19 +84,6 @@ export function JetModel() {
     if (readMoreOpen()) useJetStore.setState({ moreOpen: true });
   }, []);
 
-  // Mål nettstedets sticky header lokalt (ingen endring i SiteHeader eller global html-CSS).
-  // Høyden settes som CSS-variabel bare på modellens rot og brukes til scroll-margin-top.
-  useEffect(() => {
-    const root = rootRef.current;
-    const header = document.querySelector<HTMLElement>("body header.sticky, body header[class*='sticky']");
-    if (!root || !header) return;
-    const apply = () => root.style.setProperty("--jet-header-h", `${Math.ceil(header.getBoundingClientRect().height)}px`);
-    apply();
-    const ro = new ResizeObserver(apply);
-    ro.observe(header);
-    return () => ro.disconnect();
-  }, []);
-
   return (
     <div ref={rootRef} className="jet-root flex flex-col overflow-hidden rounded-xl border border-border bg-card text-foreground" data-testid="jet-model">
       <header className="flex shrink-0 flex-col gap-3 border-b border-border px-4 py-3 lg:px-6">
