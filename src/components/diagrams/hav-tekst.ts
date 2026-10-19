@@ -10,3 +10,11 @@ export const OPPVELLING_TEKST = {
   caption:
     "Når vinden blåser langs kysten, kan ekmantransporten føre overflatevannet ut fra land. Vannet som forsvinner, erstattes av kaldere og næringsrikt vann nedenfra. Skjematisk snitt.",
 };
+
+export const EKMAN_TEKST = {
+  heading: "Ekmanspiralen: hvert lag litt mer til høyre",
+  title:
+    "Ekmanspiralen sett ovenfra på den nordlige halvkulen, med nord opp. Vinden blåser mot nord. Overflatestrømmen går 45 grader til høyre for vinden. Hvert lag lenger ned er en kortere pil som dreier litt mer til høyre, og en stiplet spiral går gjennom pilspissene. Ekmantransporten går 90 grader til høyre for vinden, mot øst.",
+  caption:
+    "Vinden drar i det øverste laget, og hvert lag lenger ned beveger seg litt saktere og litt mer til høyre. Summen av alle lagene, ekmantransporten, går 90 grader til høyre for vinden på den nordlige halvkulen.",
+};

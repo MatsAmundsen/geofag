@@ -26,7 +26,7 @@ import {
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
-import { OPPVELLING_TEKST } from "./hav-tekst";
+import { EKMAN_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 
@@ -450,6 +450,26 @@ export const OppvellingFigurLat = lat<FigurProps>(
     },
   },
   () => import("./hav-oppvelling").then((m) => m.OppvellingFigur),
+);
+
+/**
+ * Ekmanspiralen i fire steg (Havstrømmer, widget Ekman). Kvadratisk tegneflate på smal skjerm (360 × 360),
+ * 960 × 540 fra 760 px. Høydene over og under tegneflaten er målt mot ferdig figur (redusert bevegelse).
+ */
+export const EkmanSpiralFigurLat = lat<FigurProps>(
+  {
+    ...EKMAN_TEKST,
+    smal: [360, 360],
+    bred: [960, 540],
+    over: [0, 0],
+    under: [0, 0],
+    bredFra: 760,
+    skala: {
+      smal: { over: [[270, 240]], under: [[270, 160]] },
+      bred: { over: [[806, 130]], under: [[806, 30]] },
+    },
+  },
+  () => import("./hav-ekman").then((m) => m.EkmanSpiralFigur),
 );
 
 /** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */

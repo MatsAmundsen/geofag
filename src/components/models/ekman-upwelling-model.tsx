@@ -37,8 +37,11 @@ const C = {
 
 const KILDE = "text-muted-foreground";
 
-/** Modellpanelet er smalere enn figurene (rundt 620 px på bred skjerm), så det bytter oppsett ved 600 px panelbredde. */
-const MODELL_SMAL_PX = 600;
+/**
+ * Modellpanelet er smalere enn figurene (rundt 620–800 px på bred skjerm), så det bytter oppsett ved 640 px
+ * panelbredde. Da blir minste skrift i bred tegning (16 i viewBox 900) minst 11,4 px.
+ */
+const MODELL_SMAL_PX = 640;
 function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
   const [ref, width] = useBoxWidth<HTMLDivElement>();
   const smallWindow = useNarrow();
@@ -100,8 +103,9 @@ function Skilt({ x, y, n, opacity = 1 }: { x: number; y: number; n: number; opac
   if (opacity <= 0.01) return null;
   return (
     <g opacity={opacity < 0.99 ? opacity : undefined} aria-hidden="true" data-badge={n}>
-      <circle cx={x} cy={y} r="13" fill="#1e3a4a" stroke={C.tekst} strokeWidth="1.5" />
-      <text x={x} y={y + 5.5} fill={C.tekst} fontSize="16" fontWeight="700" textAnchor="middle">
+      {/* samme minstemål som skiltene i lokale-kit: ca. 23 px i diameter og sifre på minst 12 px ved 320 */}
+      <circle cx={x} cy={y} r="17" fill="#1e3a4a" stroke={C.tekst} strokeWidth="1.5" />
+      <text x={x} y={y + 6} fill={C.tekst} fontSize="17" fontWeight="700" textAnchor="middle">
         {n}
       </text>
     </g>
@@ -170,7 +174,6 @@ function SpiralFane() {
   const [svgRef, synlig] = useInView<SVGSVGElement>();
   const tl = useTidslinje({ antall: SPIRAL_FASER.length, synlig, element: svgRef });
   const [nord, setNord] = useState(true);
-  const [vind, setVind] = useState(0.5);
   const s = tidslinjeVerdi(SPIRAL_BILDER, tl.p);
   const side = nord ? "høyre" : "venstre";
   const sgn = nord ? 1 : -1;
@@ -179,7 +182,7 @@ function SpiralFane() {
   const H = smal ? 360 : 440;
   const ox = smal ? 180 : 420;
   const oy = smal ? 210 : 260;
-  const L0 = (smal ? 92 : 150) * (0.8 + 0.35 * vind);
+  const L0 = smal ? 90 : 146;
   const tips = VINKLER.map((a, k) => {
     const r = (sgn * a * Math.PI) / 180;
     const l = L0 * 0.8 ** k;
@@ -225,19 +228,6 @@ function SpiralFane() {
         <PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name="Ekmanspiralen" />
       </div>
       <TidslinjeKontroller tl={tl} faser={SPIRAL_FASER} />
-      <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-        <span>Vind: svak</span>
-        <input
-          type="range"
-          min={0}
-          max={100}
-          value={Math.round(vind * 100)}
-          onChange={(e) => setVind(Number(e.target.value) / 100)}
-          aria-valuetext={vind < 0.34 ? "svak vind" : vind > 0.66 ? "sterk vind" : "middels vind"}
-          className="figur-skyver min-w-0 flex-1 cursor-pointer"
-        />
-        <span>sterk</span>
-      </label>
       <Status>{status}</Status>
       <p className="text-xs text-muted-foreground">Sett ovenfra, nord opp. {nord ? "Nordlig" : "Sørlig"} halvkule.</p>
       <svg
@@ -279,7 +269,7 @@ function SpiralFane() {
       </svg>
       {smal ? <Forklaring punkter={forklaring} /> : null}
       <p className="text-xs text-muted-foreground">
-        Hvor tykt ekmanlaget er, avhenger av vinden og breddegraden: typisk noen titalls meter. <span className={KILDE}>(Stewart, 2008)</span> Skjematisk.
+        Skjematisk.
       </p>
     </div>
   );
@@ -323,6 +313,7 @@ function KystFane() {
   const vOpp = havY + 46;
 
   const vindTekst = motDeg ? "blåser mot deg" : "blåser bort fra deg";
+  const vindEtikett = `vind fra ${vindFra === "nord" ? "nord" : "sør"}, ${vindTekst}`;
   const ekmanTekst = opp ? "ekmantransport ut fra kysten" : "ekmantransport mot kysten";
   const vertTekst = opp ? "kaldere vann nedenfra" : "vannet hoper seg opp og presses nedover";
   const tAnchor = "end";
@@ -380,23 +371,24 @@ function KystFane() {
             <T x={16} y={26} farge={C.dempet} size={16}>Vest</T>
             <T x={W - 16} y={26} anchor="end" farge={C.dempet} size={16}>Øst</T>
             <T x={landX0 + landB / 2} y={havY + 120} anchor="middle" farge={C.tekst}>land</T>
-            <T x={vindX + ut * 30} y={havY / 2 + 9} anchor={tAnchor} farge={C.vind}>{vindTekst}</T>
+            <T x={vindX + ut * 30} y={havY / 2 + 9} anchor={tAnchor} farge={C.vind}>{vindEtikett}</T>
             <T x={kystX + ut * 300} y={pilY + 32} anchor={tAnchor} farge={C.lag}>{ekmanTekst}</T>
-            <T x={vertX[1] + ut * 26} y={opp ? bunn - 40 : havY + 84} anchor={tAnchor} farge={C.kald}>{vertTekst}</T>
+            <T x={vertX[1] + ut * 26} y={opp ? bunn - 40 : havY + 150} anchor={tAnchor} farge={C.kald}>{vertTekst}</T>
           </>
         )}
       </svg>
       {smal ? (
         <Forklaring
           punkter={[
-            { tekst: `Vind fra ${vindFra === "nord" ? "nord" : "sør"}, ${vindTekst}`, farge: C.vind },
+            { tekst: vindEtikett.replace(/^./, (c) => c.toUpperCase()), farge: C.vind },
             { tekst: ekmanTekst.replace("ekmantransport", "Ekmantransport"), farge: C.lag },
             { tekst: vertTekst.replace(/^./, (c) => c.toUpperCase()), farge: C.kald },
           ]}
         />
       ) : null}
+      <p className="text-xs text-muted-foreground">⊙ blåser mot deg, ⊗ blåser bort fra deg. Skjematisk.</p>
       <div className="rounded-xl border border-primary/30 bg-primary/10 p-3 text-sm text-foreground">
-        <span className="font-semibold">Norge: vestkyst og nordavind gir oppvelling.</span> Da kan nytt vann strømme inn i fjordene og fornye det oksygenfattige dypvannet der.{" "}
+        <span className="font-semibold">Norge: sterk nordavind langs vestkysten gir oppvelling.</span> Da kan nytt vann strømme inn i fjordene og fornye det oksygenfattige dypvannet der.{" "}
         <span className={KILDE}>(Barthel, 2021b)</span>
       </div>
     </div>
@@ -520,7 +512,7 @@ function VirvelFane() {
 
 /* ---------- modellen ---------- */
 
-const FANER = ["1 Ekmanspiralen", "2 Oppvelling og nedvelling", "3 Havvirvel og geostrofi"];
+const FANER = ["1 Ekmanspiralen", "2 Oppvelling og nedvelling", "3 Havvirvel og geostrofisk strøm"];
 
 export function EkmanUpwellingModel() {
   const uid = useId().replace(/:/g, "");

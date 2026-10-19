@@ -107,6 +107,7 @@ import {
   VestOstFigurLat,
   SjobrisFigurLat,
   OppvellingFigurLat,
+  EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
   LandskapBlokkFigurLat,
@@ -172,7 +173,7 @@ import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagr
 import { AtmosphericRiverDiagram, ClimateRiskShiftDiagram, HurricaneCrossSectionDiagram, MeteorologicalBombDiagram, PolarLowFormationDiagram, StormSurgeDiagram, SupercellAnatomyDiagram, TornadoGenesisDiagram } from "@/components/diagrams/disasters";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
-import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
+import { AmocDiagram, ClimateContrastDiagram } from "@/components/diagrams/ocean";
 import { AmocTippingModel } from "@/components/models/amoc-tipping-model";
 import { KatabaticWindDiagram } from "@/components/diagrams/pressure";
 import { FoehnAdiabaticDiagram, TemperatureInversionDiagram } from "@/components/diagrams/weather";
@@ -1069,7 +1070,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   RossbyScale: () => <RossbyScaleDiagram />,
   CoriolisModel: () => <CoriolisModel />,
   OceanCurrentModel: () => <OceanCurrentModel />,
-  Ekman: () => <EkmanDiagram />,
+  Ekman: () => <EkmanSpiralFigurLat />,
   EkmanUpwellingModel: () => <EkmanUpwellingModel />,
   ClimateContrast: () => <ClimateContrastDiagram />,
   Amoc: () => <AmocDiagram />,

@@ -14,7 +14,7 @@ import { F, Hav, Himmel, LokaleRamme, Strom, medKilde, useLokaleTidslinje, useSv
 const FASER = ["Vind langs kysten", "Ekmantransport", "Vann nedenfra", "Næring i lyset"];
 
 const STATUS = [
-  medKilde("Nordavind blåser lenge langs en vestkyst på den nordlige halvkulen. I snittet blåser den mot deg.", "Barthel, 2021b"),
+  medKilde("Sterk nordavind blåser lenge langs en vestkyst på den nordlige halvkulen. I snittet blåser den mot deg.", "Barthel, 2021b"),
   medKilde("Ekmantransporten går 90 grader til høyre for vinden på den nordlige halvkulen. Her fører den overflatevannet ut fra kysten.", "Barthel, 2021a"),
   medKilde("Vannet som forsvinner, erstattes av kaldere vann nedenfra. Vannet stiger typisk omtrent 10 meter per døgn.", "Barthel, 2021b"),
   medKilde("Oppvellingssonen er 15–150 km bred. Vannet fra dypet er rikt på næringssalter, og når det kommer opp i lyset, vokser planteplanktonet godt.", "Barthel, 2021b"),
@@ -45,7 +45,8 @@ function grense(opp: number): [number, number][] {
     const x = (i / 12) * 740;
     const t = clamp((x - 220) / 520);
     const flat = 360;
-    const loftet = 380 - 170 * t * t * (3 - 2 * t);
+    // bare løftet inn mot kysten; langt ute ligger grensen der den lå
+    const loftet = flat - 150 * t * t * (3 - 2 * t);
     pts.push([x, lerp(flat, loftet, opp)]);
   }
   return pts;
@@ -127,7 +128,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
       etikettRader={5}
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
-      notes={["Snitt sett fra sør: vest til venstre, øst til høyre. Nordlig halvkule. Skjematisk, ikke i målestokk."]}
+      notes={["⊙ blåser mot deg. Snitt sett fra sør: vest til venstre, øst til høyre. Nordlig halvkule. Skjematisk, ikke i målestokk."]}
       keys={[
         { text: "Ekmantransport", color: F.sjobris, kind: "line" },
         { text: "Kaldere vann nedenfra", color: F.kald, kind: "line" },
