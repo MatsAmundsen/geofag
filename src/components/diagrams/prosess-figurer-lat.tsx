@@ -444,7 +444,7 @@ export const OppvellingFigurLat = lat<FigurProps>(
     skala: {
       smal: {
         over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
-        under: [[325, 248], [340, 222], [470, 222], [510, 204]],
+        under: [[299, 266], [300, 248], [332, 248], [333, 222], [590, 222], [591, 204]],
       },
       bred: { over: [[806, 127]], under: [[806, 58]] },
     },
@@ -464,9 +464,14 @@ export const EkmanSpiralFigurLat = lat<FigurProps>(
     over: [0, 0],
     under: [0, 0],
     bredFra: 760,
+    // målt 19.10 ved 320–1280 px vindu; statusfeltet blir 28 px lavere fra 640 px vindu
+    smTrinn: { over: -28, under: 0 },
     skala: {
-      smal: { over: [[270, 240]], under: [[270, 160]] },
-      bred: { over: [[806, 130]], under: [[806, 30]] },
+      smal: {
+        over: [[289, 247], [290, 228], [309, 228], [310, 247], [340, 247], [364, 215], [380, 195]],
+        under: [[289, 182], [290, 164], [339, 164], [340, 146]],
+      },
+      bred: { over: [[806, 143]], under: [[806, 28]] },
     },
   },
   () => import("./hav-ekman").then((m) => m.EkmanSpiralFigur),

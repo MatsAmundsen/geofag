@@ -251,8 +251,8 @@ function SpiralFane() {
         <Pil x1={ox} y1={oy} x2={nettoX} y2={oy} farge={C.netto} marker={`${uid}-netto`} b={6} opacity={s.netto > 0.02 ? 1 : 0} />
         {smal ? (
           <>
-            <Skilt x={ox - 22} y={oy - L0 * 1.05} n={1} opacity={s.vind} />
-            <Skilt x={fx + sgn * 20} y={fy - 14} n={2} opacity={s.flate} />
+            <Skilt x={ox - sgn * 30} y={oy - L0 * 0.6} n={1} opacity={s.vind} />
+            <Skilt x={fx - sgn * 28} y={fy - 28} n={2} opacity={s.flate} />
             <Skilt x={lx + sgn * 26} y={ly + 22} n={3} opacity={s.lag} />
             <Skilt x={ox + sgn * (L0 * 0.95 + 36)} y={oy} n={4} opacity={s.netto} />
           </>
