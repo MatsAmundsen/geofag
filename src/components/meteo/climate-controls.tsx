@@ -75,7 +75,8 @@ export const ClimateControls = memo(function ClimateControls() {
               {SLIDER_TEXT.ensoScale}
             </p>
           </div>
-          <div className={djf ? "flex flex-col gap-1 opacity-60" : "flex flex-col gap-1"} data-testid="iod-slider">
+          {/* Dempes litt i desember–februar (IOD har liten effekt da), men tekst og tall skal fortsatt ha minst 4,5:1 kontrast. */}
+          <div className={djf ? "flex flex-col gap-1 opacity-90" : "flex flex-col gap-1"} data-testid="iod-slider">
             <ControlSlider
               label={SLIDER_TEXT.iodLabel}
               ariaLabel={SLIDER_TEXT.iodAria}
