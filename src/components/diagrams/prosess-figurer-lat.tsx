@@ -26,6 +26,7 @@ import {
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
+import { OPPVELLING_TEKST } from "./hav-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 
@@ -431,6 +432,22 @@ export const SyklonFigurLat = lat<FigurProps>(
     },
   },
   () => import("./lokale-syklon").then((m) => m.SyklonFigur),
+);
+
+/** Oppvelling langs en vestkyst i fire steg (Havstrømmer, widget OppvellingDiagram). Samme ramme og mål som lokale vinder. */
+export const OppvellingFigurLat = lat<FigurProps>(
+  {
+    ...OPPVELLING_TEKST,
+    ...LOKALE_MAAL,
+    skala: {
+      smal: {
+        over: [[270, 271], [310, 239], [340, 239], [380, 219], [550, 219], [590, 147]],
+        under: [[270, 312], [310, 286], [550, 286], [590, 260]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
+  () => import("./hav-oppvelling").then((m) => m.OppvellingFigur),
 );
 
 /** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */

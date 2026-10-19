@@ -106,6 +106,7 @@ import {
   TermiskVindFigurLat,
   VestOstFigurLat,
   SjobrisFigurLat,
+  OppvellingFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
   LandskapBlokkFigurLat,
@@ -157,7 +158,6 @@ import {
   GulfVsNacDiagram,
   GyreDiagram,
   OceanDriversDiagram,
-  UpwellingDiagram,
 } from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
@@ -655,7 +655,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     GyreDiagram: () => <GyreDiagram />,
-    OppvellingDiagram: () => <UpwellingDiagram />,
+    OppvellingDiagram: () => <OppvellingFigurLat />,
     GolfDiagram: () => <GulfVsNacDiagram />,
     TetthetDiagram: () => <DensityDiagram />,
     QuizHavstrommer: () => (
