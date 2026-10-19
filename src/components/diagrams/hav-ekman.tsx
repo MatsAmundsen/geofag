@@ -13,36 +13,11 @@ import { TidslinjeKontroller } from "./prosess-figur";
 import { tidslinjeVerdi, useTidslinje } from "./prosess-kit";
 import { PlayPauseToggle } from "./svg-kit";
 import { EKMAN_TEKST } from "./hav-tekst";
+import { EKMAN_BILDER, EKMAN_FASER, EKMAN_VINKLER, ekmanStatus } from "./hav-ekman-felles";
 
 const C = { hav: "#14405a", ring: "#2e5a72", vind: "#e8eef2", lag: "#6fd0c4", netto: "#f2c94c", tekst: "#e8eef2", halo: "#0f171c" };
-const KILDE = "text-muted-foreground";
 
-const FASER = ["Vinden", "Overflaten", "Lagene under", "Ekmantransporten"];
-const BILDER = [
-  { vind: 0, flate: 0, lag: 0, netto: 0 },
-  { vind: 1, flate: 0, lag: 0, netto: 0 },
-  { vind: 1, flate: 1, lag: 0, netto: 0 },
-  { vind: 1, flate: 1, lag: 1, netto: 0 },
-  { vind: 1, flate: 1, lag: 1, netto: 1 },
-];
-/** Vinkel fra vinden for overflaten og lagene under, i grader. Stopper før 180°. */
-const VINKLER = [45, 72, 98, 122, 144, 162];
-
-const STATUS = [
-  <>Vinden drar i det øverste laget. <span className={KILDE}>(Ekman, 1905)</span></>,
-  <>
-    Corioliseffekten bøyer laget mot høyre. I Ekmans enkle teori går overflatestrømmen 45 grader til høyre for vinden. I virkeligheten blir vinkelen en annen, ofte mindre.{" "}
-    <span className={KILDE}>(Ekman, 1905; Talley mfl., 2011)</span>
-  </>,
-  <>
-    Det øverste laget drar i laget under. Hvert lag lenger ned beveger seg litt saktere og litt mer til høyre. Tegner du strømretningen nedover i dypet, får du ekmanspiralen.{" "}
-    <span className={KILDE}>(Ekman, 1905)</span>
-  </>,
-  <>
-    Summerer du alle lagene, går ekmantransporten 90 grader til høyre for vinden på den nordlige halvkulen og 90 grader til venstre på den sørlige.{" "}
-    <span className={KILDE}>(Barthel, 2021a)</span>
-  </>,
-];
+const STATUS = ekmanStatus("høyre");
 
 function Pil({ x1, y1, x2, y2, farge, marker, b }: { x1: number; y1: number; x2: number; y2: number; farge: string; marker: string; b: number }) {
   if (Math.hypot(x2 - x1, y2 - y1) < 2) return null;
@@ -81,20 +56,20 @@ export function EkmanSpiralFigur({ heading, caption }: { heading?: string; capti
   const [boksRef, bredde] = useBoxWidth<HTMLDivElement>();
   const smal = bredde > 0 ? bredde < NARROW_FIGURE_PX : true;
   const [svgRef, synlig] = useInView<SVGSVGElement>();
-  const tl = useTidslinje({ antall: FASER.length, synlig, element: svgRef });
-  const s = tidslinjeVerdi(BILDER, tl.p);
+  const tl = useTidslinje({ antall: EKMAN_FASER.length, synlig, element: svgRef });
+  const s = tidslinjeVerdi(EKMAN_BILDER, tl.p);
 
   const W = smal ? 360 : 960;
   const H = smal ? 360 : 540;
   const ox = smal ? 160 : 420;
   const oy = smal ? 200 : 330;
   const L0 = smal ? 100 : 190;
-  const tips = VINKLER.map((a, k) => {
+  const tips = EKMAN_VINKLER.map((a, k) => {
     const r = (a * Math.PI) / 180;
     const l = L0 * 0.8 ** k;
     return [ox + l * Math.sin(r), oy - l * Math.cos(r)] as [number, number];
   });
-  const lagSynlig = (k: number) => (k === 0 ? s.flate : clamp(s.lag * (VINKLER.length - 1) - (k - 1)));
+  const lagSynlig = (k: number) => (k === 0 ? s.flate : clamp(s.lag * (EKMAN_VINKLER.length - 1) - (k - 1)));
   const spiral = tips
     .filter((_, k) => lagSynlig(k) > 0.5)
     .map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`)
@@ -122,7 +97,7 @@ export function EkmanSpiralFigur({ heading, caption }: { heading?: string; capti
       action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name="Ekmanspiralen" />}
     >
       <div ref={boksRef} className="space-y-3">
-        <TidslinjeKontroller tl={tl} faser={FASER} />
+        <TidslinjeKontroller tl={tl} faser={EKMAN_FASER} />
         <p aria-live="polite" className="min-h-[7.5rem] text-sm leading-relaxed text-foreground min-[420px]:min-h-[6.25rem] sm:min-h-[4.5rem] lg:min-h-[3rem]">
           {STATUS[tl.fase - 1]}
         </p>

@@ -108,6 +108,7 @@ export function LokaleRamme({
   etikettRader,
   hinder,
   skiltNokkel,
+  narrowViewBox,
   children,
 }: {
   tekst: { heading: string; title: string; caption: string };
@@ -134,12 +135,18 @@ export function LokaleRamme({
   hinder?: Hinder[];
   /** Skiltene regnes ut på nytt bare når denne endres (f.eks. steg og avrundet framdrift). */
   skiltNokkel?: string;
+  /**
+   * Eget utsnitt på smal skjerm («x y b h», samme koordinater som VB), f.eks. en høyere flate nær kysten.
+   * Uten denne vises hele tegneflaten som før.
+   */
+  narrowViewBox?: string;
   children: (ctx: { m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const h = heading ?? tekst.heading;
   const bredde = useSvgBredde(svgRef);
   const smal = bredde > 0 && bredde < NARROW_FIGURE_PX;
-  const skala = bredde > 0 ? Math.min(bredde, 1024) / VB.w : 0;
+  const utsnitt = smal && narrowViewBox ? (narrowViewBox.split(/\s+/).map(Number) as [number, number, number, number]) : null;
+  const skala = bredde > 0 ? Math.min(bredde, 1024) / (utsnitt ? utsnitt[2] : VB.w) : 0;
   const skiltCache = useRef<{ key: string; pos: ([number, number] | null)[] } | null>(null);
   let merket = labels;
   if (smal && hinder && skala > 0) {
@@ -147,7 +154,7 @@ export function LokaleRamme({
     const r = Math.max(11.5 / skala, VB.w * 0.02);
     const key = `${skiltNokkel ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
     if (!skiltCache.current || skiltCache.current.key !== key) {
-      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala) };
+      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, utsnitt ?? undefined) };
     }
     const pos = skiltCache.current.pos;
     merket = labels.map((l, i) => (pos[i] ? { ...l, badge: pos[i] } : l));
@@ -175,6 +182,7 @@ export function LokaleRamme({
         keys={keys}
         notes={notes ?? ["Skjematisk, høyden er overdrevet"]}
         viewBox={`0 0 ${VB.w} ${VB.h}`}
+        narrowViewBox={narrowViewBox}
         below={typeof below === "function" ? below(smal) : below}
       >
         {({ m, narrow, scale }) => (
@@ -263,12 +271,20 @@ function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [numb
  * utenfor alle piler og linjer, utenfor andre skilt og andre punkter, og inne i tegneflaten.
  * Finnes ingen ledig plass, velges plassen med minst overlapp.
  */
-export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: number): ([number, number] | null)[] {
+export function plasserSkilt(
+  labels: Lab[],
+  hinder: Hinder[],
+  r: number,
+  skala: number,
+  /** Utsnittet skiltene skal ligge inne i, [x, y, b, h] i viewBox-enheter. Standard hele tegneflaten. */
+  flate: [number, number, number, number] = [0, 0, VB.w, VB.h],
+): ([number, number] | null)[] {
   const { seg, bokser } = segmenter(hinder, skala);
   const luft = 3 / skala;
   const steg = Math.max(8, r / 2.5);
   const kand: [number, number][] = [];
-  for (let y = r + 4; y <= VB.h - r - 4; y += steg) for (let x = r + 4; x <= VB.w - r - 4; x += steg) kand.push([x, y]);
+  const [fx, fy, fw, fh] = flate;
+  for (let y = fy + r + 4; y <= fy + fh - r - 4; y += steg) for (let x = fx + r + 4; x <= fx + fw - r - 4; x += steg) kand.push([x, y]);
   const plassert: [number, number][] = [];
   const maal = labels.map((l) => l.at ?? l.badge ?? [l.x, l.y]);
   return labels.map((l, i) => {

@@ -14,6 +14,7 @@ import { TidslinjeKontroller } from "@/components/diagrams/prosess-figur";
 import { tidslinjeVerdi, useTidslinje } from "@/components/diagrams/prosess-kit";
 import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "@/components/diagrams/isbre-kit";
 import { PlayPauseToggle } from "@/components/diagrams/svg-kit";
+import { EKMAN_BILDER, EKMAN_FASER, EKMAN_VINKLER, ekmanStatus } from "@/components/diagrams/hav-ekman-felles";
 import { ModelFrame } from "./model-chrome";
 
 const C = {
@@ -157,24 +158,14 @@ function Status({ children }: { children: ReactNode }) {
 
 /* ---------- fane 1: ekmanspiralen ---------- */
 
-const SPIRAL_FASER = ["Vinden", "Overflaten", "Lagene under", "Ekmantransporten"];
-const SPIRAL_BILDER = [
-  { vind: 0, flate: 0, lag: 0, netto: 0 },
-  { vind: 1, flate: 0, lag: 0, netto: 0 },
-  { vind: 1, flate: 1, lag: 0, netto: 0 },
-  { vind: 1, flate: 1, lag: 1, netto: 0 },
-  { vind: 1, flate: 1, lag: 1, netto: 1 },
-];
-/** Vinkel fra vinden for overflaten og lagene under, i grader (stopper før lagene snur). */
-const VINKLER = [45, 72, 98, 122, 144, 162];
 
 function SpiralFane() {
   const uid = useId().replace(/:/g, "");
   const [boksRef, smal] = useFigurSmal();
   const [svgRef, synlig] = useInView<SVGSVGElement>();
-  const tl = useTidslinje({ antall: SPIRAL_FASER.length, synlig, element: svgRef });
+  const tl = useTidslinje({ antall: EKMAN_FASER.length, synlig, element: svgRef });
   const [nord, setNord] = useState(true);
-  const s = tidslinjeVerdi(SPIRAL_BILDER, tl.p);
+  const s = tidslinjeVerdi(EKMAN_BILDER, tl.p);
   const side = nord ? "høyre" : "venstre";
   const sgn = nord ? 1 : -1;
 
@@ -183,12 +174,12 @@ function SpiralFane() {
   const ox = smal ? 180 : 420;
   const oy = smal ? 210 : 260;
   const L0 = smal ? 90 : 146;
-  const tips = VINKLER.map((a, k) => {
+  const tips = EKMAN_VINKLER.map((a, k) => {
     const r = (sgn * a * Math.PI) / 180;
     const l = L0 * 0.8 ** k;
     return [ox + l * Math.sin(r), oy - l * Math.cos(r)] as [number, number];
   });
-  const lagSynlig = (k: number) => (k === 0 ? s.flate : clamp(s.lag * (VINKLER.length - 1) - (k - 1)));
+  const lagSynlig = (k: number) => (k === 0 ? s.flate : clamp(s.lag * (EKMAN_VINKLER.length - 1) - (k - 1)));
   const spiral = tips
     .filter((_, k) => lagSynlig(k) > 0.5)
     .map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`)
@@ -196,21 +187,7 @@ function SpiralFane() {
   const vindTopp = oy - L0 * 1.15 * s.vind;
   const nettoX = ox + sgn * L0 * 0.95 * s.netto;
 
-  const status = [
-    <>Vinden drar i det øverste laget. <span className={KILDE}>(Ekman, 1905)</span></>,
-    <>
-      Corioliseffekten bøyer laget mot {side}. I Ekmans enkle teori går overflatestrømmen 45 grader til {side} for vinden. I virkeligheten blir vinkelen en annen, ofte mindre.{" "}
-      <span className={KILDE}>(Ekman, 1905; Talley mfl., 2011)</span>
-    </>,
-    <>
-      Det øverste laget drar i laget under. Hvert lag lenger ned beveger seg litt saktere og litt mer til {side}. Tegner du strømretningen nedover i dypet, får du ekmanspiralen.{" "}
-      <span className={KILDE}>(Ekman, 1905)</span>
-    </>,
-    <>
-      Summerer du alle lagene, går ekmantransporten 90 grader til høyre for vinden på den nordlige halvkulen og 90 grader til venstre på den sørlige.{" "}
-      <span className={KILDE}>(Barthel, 2021a)</span>
-    </>,
-  ][tl.fase - 1];
+  const status = ekmanStatus(side)[tl.fase - 1];
 
   const forklaring = [
     { tekst: "Vinden", farge: C.vind, vis: s.vind > 0.3 },
@@ -227,7 +204,7 @@ function SpiralFane() {
         <Valg navn="Halvkule" verdi={nord ? "nord" : "sor"} valg={[["nord", "Nordlig"], ["sor", "Sørlig"]]} onVelg={(v) => tl.valg(() => setNord(v === "nord"))} />
         <PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name="Ekmanspiralen" />
       </div>
-      <TidslinjeKontroller tl={tl} faser={SPIRAL_FASER} />
+      <TidslinjeKontroller tl={tl} faser={EKMAN_FASER} />
       <Status>{status}</Status>
       <p className="text-xs text-muted-foreground">Sett ovenfra, nord opp. {nord ? "Nordlig" : "Sørlig"} halvkule.</p>
       <svg
@@ -252,7 +229,7 @@ function SpiralFane() {
         {smal ? (
           <>
             <Skilt x={ox - sgn * 30} y={oy - L0 * 0.6} n={1} opacity={s.vind} />
-            <Skilt x={fx - sgn * 28} y={fy - 28} n={2} opacity={s.flate} />
+            <Skilt x={fx + sgn * 26} y={fy - 18} n={2} opacity={s.flate} />
             <Skilt x={lx + sgn * 26} y={ly + 22} n={3} opacity={s.lag} />
             <Skilt x={ox + sgn * (L0 * 0.95 + 36)} y={oy} n={4} opacity={s.netto} />
           </>

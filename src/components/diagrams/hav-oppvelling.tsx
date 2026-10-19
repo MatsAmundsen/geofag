@@ -33,6 +33,8 @@ const HAV_Y = 170; // havoverflaten
 const KYST = 780; // kystlinja i overflaten
 const VIND_X = 700;
 const VIND_Y = 92;
+/** Utsnitt på smal skjerm: høyere flate nær kysten, som skisse 1b (x 390–930, y 40–540). */
+const SMAL_UTSNITT = "390 40 540 500";
 
 /** Land i øst: kyst, kontinentalsokkel og havbunn som stiger mot land (fast sti). */
 const LAND = `M${KYST} ${HAV_Y} L${KYST + 10} ${HAV_Y - 26} L960 ${HAV_Y - 40} L960 540 L560 540 C 640 520, 700 470, 740 380 C 760 320, 772 240, ${KYST} ${HAV_Y} Z`;
@@ -68,7 +70,10 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   // ⊙: vinden kommer mot leseren. Ringen pulserer svakt under avspilling (står stille når pauset).
   const puls = tl.playing ? 1 + 0.08 * Math.sin(sek * 3) : 1;
 
-  const ekmanBane: [number, number][] = [[KYST - 30, HAV_Y + 22], [520, HAV_Y + 22], [300, HAV_Y + 24], [150, HAV_Y + 26]];
+  // på smal skjerm slutter pilen inne i utsnittet
+  const ekmanBane: [number, number][] = smal
+    ? [[KYST - 30, HAV_Y + 22], [600, HAV_Y + 22], [430, HAV_Y + 24]]
+    : [[KYST - 30, HAV_Y + 22], [520, HAV_Y + 22], [300, HAV_Y + 24], [150, HAV_Y + 26]];
   const oppBaner: [number, number][][] = [
     [[600, 520], [660, 430], [720, 300], [742, HAV_Y + 44]],
     [[520, 520], [600, 440], [680, 330], [704, HAV_Y + 50]],
@@ -78,7 +83,8 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
     ...oppBaner.map((p) => ({ p, b: 4, pil: true })),
     { p: LAND_KANT, b: 1.5 },
     { p: g, b: 2 },
-    { ellipse: [VIND_X, VIND_Y, 26, 26] as [number, number, number, number] },
+    // ⊙ har r 22; på smal skjerm holdes skiltene minst ca. 6 px unna
+    { ellipse: (smal ? [VIND_X, VIND_Y, 40, 40] : [VIND_X, VIND_Y, 26, 26]) as [number, number, number, number] },
     // bølgestripene i Hav og klammen over oppvellingssonen
     ...[0, 1, 2, 3].map((k) => ({ p: [[0, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]] as [number, number][], b: 1 })),
     { p: [[520, HAV_Y - 8], [520, HAV_Y - 2], [KYST - 10, HAV_Y - 2], [KYST - 10, HAV_Y - 8]], b: 2 },
@@ -95,7 +101,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   lab("Land", 880, 300, undefined, F.tekst);
   labels[labels.length - 1].narrowHide = true;
   if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - 28, VIND_Y], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
-  if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 24, HAV_Y - 18, [300, HAV_Y + 20], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
+  if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 24, HAV_Y - 18, smal ? [500, HAV_Y + 22] : [300, HAV_Y + 20], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
   if (s.opp > 0.3) {
     const op = clamp((s.opp - 0.3) / 0.4);
     lab("Kaldere vann nedenfra", 420, 470, [600, 440], F.kald, "middle", op);
@@ -125,6 +131,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
       svgRef={ref}
       labels={labels}
       data="oppvelling"
+      narrowViewBox={SMAL_UTSNITT}
       etikettRader={5}
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}

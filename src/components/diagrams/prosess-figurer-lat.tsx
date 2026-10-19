@@ -439,6 +439,8 @@ export const OppvellingFigurLat = lat<FigurProps>(
   {
     ...OPPVELLING_TEKST,
     ...LOKALE_MAAL,
+    // smal skjerm viser et høyere utsnitt nær kysten (540 × 500), se hav-oppvelling.tsx
+    smal: [540, 500],
     // målt 19.10 mot ferdig figur (redusert bevegelse) ved 320–1280 px; statusfeltet blir 40 px lavere fra 640 px vindu
     smTrinn: { over: -40, under: 0 },
     skala: {
