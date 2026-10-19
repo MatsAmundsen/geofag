@@ -462,8 +462,8 @@ function VirvelFane() {
             <Skilt x={toppX + 34} y={hy(1) - 28} n={1} opacity={s.haug} />
             <Skilt x={gx - 25} y={strY + 34} n={2} opacity={s.trykk} />
             <Skilt x={gx + 25} y={strY + 34} n={3} opacity={s.cor} />
-            <Skilt x={gx} y={yy + 42} n={4} opacity={s.strom} />
-            <Skilt x={kx} y={yy + 42} n={5} opacity={s.strom} />
+            <Skilt x={gx} y={yy + 46} n={4} opacity={s.strom} />
+            <Skilt x={kx} y={yy + 46} n={5} opacity={s.strom} />
           </>
         ) : (
           <>
