@@ -69,7 +69,7 @@ const STEPS = [
   {
     label: "2 Brudd",
     title: "Hyposenter og episenter",
-    body: "Når friksjonen ryker, spretter fjellet tilbake. Det kalles elastisk tilbakefjæring. Bruddet starter i hyposenteret. Episenteret er punktet på overflaten rett over. Energien som lå i det bøyde fjellet, frigjøres der.",
+    body: "Når friksjonen ryker, spretter fjellet tilbake. Det kalles elastisk tilbakefjæring. Bruddet starter i hyposenteret. Episenteret er punktet på overflaten rett over. Energien som lå i det bøyde fjellet, frigjøres i bruddet.",
   },
   {
     label: "3 P og S ut",
@@ -79,22 +79,22 @@ const STEPS = [
   {
     label: "4 P-bølge",
     title: "Kompresjon langs strålen",
-    body: "Se langs én stråle ut fra hyposenteret. P-bølgen skyver partiklene fram og tilbake i samme retning som bølgen går. Der de ligger tett, er fjellet presset sammen. Der de ligger glissent, er det trukket ut. P-bølgen går gjennom både fast berg og væske. Den stiplede S-fronten er allerede på vei lenger bak, for den ble sendt ut i samme øyeblikk.",
+    body: "Se langs én stråle ut fra hyposenteret. P-bølgen skyver partiklene fram og tilbake i samme retning som bølgen går. Der de ligger tett, er fjellet presset sammen. Der de ligger glissent, er det trukket ut. P-bølgen går gjennom både fast berg og væske. Den stiplede S-fronten ble sendt ut i samme øyeblikk, men ligger lenger bak fordi den er tregere.",
   },
   {
     label: "5 S-bølge",
     title: "Skjær på tvers",
-    body: "S-bølgen får partiklene til å svinge på tvers av retningen bølgen går. Den kommer senere fram fordi den er tregere, ca. 3,5 km/s i skorpa, ikke fordi den ble sendt ut senere. S-bølger går bare gjennom fast stoff. Væske kan ikke overføre et skjær, og derfor stopper de i den flytende ytre kjernen. P-fronten har allerede løpt foran.",
+    body: "S-bølgen får partiklene til å svinge på tvers av retningen bølgen går. Den kommer senere fram fordi den er tregere, ca. 3,5 km/s i jordskorpa, ikke fordi den ble sendt ut senere. S-bølger går bare gjennom fast stoff. Væske kan ikke overføre et skjær, og derfor stopper de i den flytende ytre kjernen. P-fronten har allerede løpt foran.",
   },
   {
     label: "6 Overflate",
     title: "Slik blir overflatebølgene til",
-    body: "Følg treffet med bakken. Luft tar nesten ikke imot bølgene, så når P-fronten møter den frie overflaten, kastes den tilbake ned i fjellet. Det er den lysere buen under bakken. Så kommer S og setter bakken i bevegelse. Den bevegelsen blir ikke med de reflekterte bølgene ned. Den fanges langs overflaten og løper av gårde saktere enn S. Rayleigh-bølgen ruller: partiklene går i ellipser, størst ved bakken og nesten borte lenger nede. Love-bølgen fanges i det løse topplaget og rister sideveis. Det ser du i ruten sett ovenfra.",
+    body: "Følg treffet med bakken. Luft tar nesten ikke imot bølgene, så når P-fronten møter den frie overflaten, kastes den tilbake ned i fjellet. Det er den lysere buen under bakken. Så kommer S. Sammen setter P og S bakken i bevegelse, og en del av denne bevegelsen blir ikke med de reflekterte bølgene ned. Den fanges langs overflaten og løper av gårde saktere enn S. Rayleigh-bølgen ruller: partiklene går i ellipser, størst ved bakken og nesten borte lenger nede. Love-bølgen fanges i det løse topplaget og rister sideveis. Det ser du i ruten sett ovenfra.",
   },
   {
-    label: "7 Rystning",
+    label: "7 Rystelse",
     title: "Det som rister huset",
-    body: "Overflatebølgene kommer sist fram, men de har størst utslag. Rayleigh-bølgen ruller selve bakken under huset. Love-bølgen rister sideveis. Det folk kjenner som jordskjelvet, er denne rystningen. På seismogrammet ligger bølgene i den rekkefølgen de kommer fram, ikke i den rekkefølgen de ble sendt ut: først en liten P, så en større S, og til slutt overflatebølgene med de tregeste og største svingningene.",
+    body: "Overflatebølgene kommer sist fram, men de har størst utslag. Rayleigh-bølgen ruller selve bakken under huset. Love-bølgen rister sideveis. Det er overflatebølgene som rister husene mest. På seismogrammet ligger bølgene i den rekkefølgen de kommer fram, ikke i den rekkefølgen de ble sendt ut: først en liten P, så en større S, og til slutt overflatebølgene med de tregeste og største svingningene.",
   },
 ] as const;
 
@@ -176,8 +176,9 @@ function rayleigh(x: number, depth: number, t: number, gain: number) {
     const env = Math.exp(-Math.max(0, since - 0.22) * 0.78) * (1 - Math.exp(-since * 4.2));
     const a = 27 * gain * decay * env;
     const phase = since * 7.5;
-    dx += -dir * a * Math.sin(phase);
-    dy += -a * 0.74 * Math.cos(phase);
+    // Rayleigh ved overflaten: retrograd ellipse som er høyere enn den er bred
+    dx += -dir * a * 0.74 * Math.sin(phase);
+    dy += -a * Math.cos(phase);
     amp = Math.max(amp, a);
   }
   return { dx, dy, amp };
@@ -463,7 +464,7 @@ export function BolgegenereringDiagram() {
         heading="Fra brudd til rystelse"
         wide
         scroll
-        caption="Bruddet sender ut P og S i samme øyeblikk. Heltrukken front er P, ca. 6 km/s, og den skyver fjellet langs strålen. Stiplet front er S, ca. 3,5 km/s, og den skjærer på tvers. Når frontene treffer den frie overflaten, kastes de tilbake. Bevegelsen som blir igjen, løper langs bakken: Rayleigh ruller i ellipser som dør ut nedover, Love rister sideveis i det løse topplaget. Overflatebølgene kommer sist og har størst utslag. Tiden er bremset, men fartsforholdet er beholdt. Skorpa er uten målestokk."
+        caption="Bruddet sender ut P og S i samme øyeblikk. Heltrukken front er P, ca. 6 km/s, og den skyver fjellet langs strålen. Stiplet front er S, ca. 3,5 km/s, og den skjærer på tvers. Når bølgene når overflaten, oppstår det overflatebølger som går langs bakken: Rayleigh ruller i ellipser som dør ut nedover, Love rister sideveis i det løse topplaget. Overflatebølgene kommer sist og har størst utslag. Tiden er bremset, men fartsforholdet er beholdt. Jordskorpa er tegnet uten målestokk."
         viewBox="0 0 960 640"
         action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} name="fra brudd til rystelse" />}
         toolbar={
@@ -587,8 +588,9 @@ export function BolgegenereringDiagram() {
 
             {step === 1 ? (
               <g>
-                <Arrow d="M 118 196 H 214" marker={m.warm} color={C.warm} width={2.6} />
-                <Arrow d="M 390 206 H 292" marker={m.warm} color={C.warm} width={2.6} />
+                {/* skjær langs forkastningen, samme retning som glidningen i steg 2: venstre blokk opp, høyre ned */}
+                <Arrow d="M 170 232 V 168" marker={m.warm} color={C.warm} width={2.6} />
+                <Arrow d="M 420 168 V 232" marker={m.warm} color={C.warm} width={2.6} />
                 <rect x={FAULT - 11} y={176} width="22" height="24" rx="3" fill={C.low} />
                 <L x={FAULT + 16} y={192} fill={C.low} size={13} weight={700}>
                   friksjon låser
@@ -825,8 +827,8 @@ export function BolgegenereringDiagram() {
                           <ellipse
                             cx={x}
                             cy={y0}
-                            rx={Math.max(3, wave.amp)}
-                            ry={Math.max(2.4, wave.amp * 0.74)}
+                            rx={Math.max(2.4, wave.amp * 0.74)}
+                            ry={Math.max(3, wave.amp)}
                             fill="none"
                             stroke={C.low}
                             strokeWidth="1.15"
@@ -948,7 +950,7 @@ export function BolgegenereringDiagram() {
                   Love, sett ovenfra
                 </L>
                 <L x="60" y="380" fill={C.muted} size={11}>
-                  sideveis, bare i topplaget
+                  sideveis, mest i topplaget
                 </L>
                 <line x1="62" y1="402" x2="246" y2="402" stroke={C.dim} strokeWidth="1" />
                 {Array.from({ length: 11 }, (_, index) => {
@@ -1040,7 +1042,8 @@ export function BolgegenereringDiagram() {
             <path
               d={Array.from({ length: 160 }, (_, index) => {
                 const u = (index / 159) * traceHead;
-                const x = 40 + (index / 159) * 860;
+                // tidsaksen er fast, så P og S ligger under merkene sine mens kurven skrives
+                const x = 40 + u * 860;
                 const y = 548 - traceAmp(u, step);
                 return `${index === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
               }).join(" ")}
