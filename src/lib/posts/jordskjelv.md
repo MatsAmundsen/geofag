@@ -103,6 +103,10 @@ Partikkelbolger
 Når bølgene når overflaten, oppstår det *overflatebølger*, som går langs bakken. Vi skiller mellom *Rayleigh-bølger* og *Love-bølger*, oppkalt etter fysikerne som beskrev dem. Overflatebølgene kommer sist fram, men de har størst utslag. Derfor er det de som rister husene mest.
 
 ```widget
+Bolgegenerering
+```
+
+```widget
 SjekkJordskjelv3
 ```
 

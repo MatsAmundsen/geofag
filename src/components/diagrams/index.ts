@@ -206,3 +206,4 @@ export {
 
 export { SmeltingUnderTynnPlateDiagram } from "./mantle-melting";
 export { AssimilationDiagram, EnsembleRibbonDiagram } from "./models-extra";
+export { BolgegenereringDiagram } from "./bolgegenerering";
