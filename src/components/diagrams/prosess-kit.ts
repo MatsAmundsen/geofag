@@ -15,7 +15,7 @@
  * - `Maalere`: HTML-målere (dyp, temperatur, trykk, tid, porøsitet), relative eller med tekst.
  */
 import { useEffect, useRef, useState, type RefObject } from "react";
-import { settTick, slipp, taOver, useBrukerStart, useDeltaker } from "./avspilling";
+import { settTick, slipp, taOver, useBrukerStart, useDeltaker, useSidePauset } from "./avspilling";
 import { NARROW_FIGURE_PX } from "./isbre-figur";
 import { clamp, lerp, smooth, smoothPath, useBoxWidth, useNarrow } from "./isbre-kit";
 import { scaledStepClock } from "./motion-config";
@@ -150,7 +150,8 @@ export function useTidslinje({
     };
   }, [running, antall, stepMs, hold, id]);
 
-  const playing = motion.playing && !venter;
+  const sidePauset = useSidePauset();
+  const playing = motion.playing && !venter && !sidePauset;
   const pause = () => {
     // stopp løkken med en gang, så den ikke flytter p før pausen er rendret
     live.current.kjor = false;
@@ -182,12 +183,13 @@ export function useTidslinje({
     sek: state.sek,
     antall,
     playing,
-    livePlaying: announce.livePlaying && !venter,
+    livePlaying: announce.livePlaying && !venter && !sidePauset,
     reduced: motion.reduced,
     toggle: () => {
       live.current.fresh = false;
-      if (venter) {
-        // «Spill av» på en ventende modell: den tar over, de andre venter
+      if (venter || (motion.playing && sidePauset)) {
+        // «Spill av» på en ventende modell (eller en modell utenfor skjermen mens siden er pauset):
+        // den tar over, de andre venter
         setStartet(true);
         taOver(id);
         return;

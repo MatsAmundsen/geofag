@@ -448,7 +448,8 @@ function HjPlot({ narrow, d, v, zone }: { narrow: boolean; d: number; v: number;
       <T
         avoid={cur}
         x={X(1)}
-        y={Y(narrow ? 330 : 420)}
+        // under leire-/kohesjonsetiketten øverst til venstre (de traff hverandre ved alle bredder)
+        y={Y(narrow ? 120 : 150)}
         size={fs + 8}
         weight={800}
         color={C.warm}
@@ -457,7 +458,7 @@ function HjPlot({ narrow, d, v, zone }: { narrow: boolean; d: number; v: number;
         Erosjon
       </T>
       {narrow ? null : (
-        <T avoid={cur} x={X(1)} y={Y(420) + 27} size={fs - 1} color={C.fg} anchor="middle">
+        <T avoid={cur} x={X(1)} y={Y(150) + 27} size={fs - 1} color={C.fg} anchor="middle">
           Vannet river løs korn
         </T>
       )}
@@ -631,7 +632,7 @@ function HjBed({
       <T x={x + 14} y={y + fs + 10} size={fs} color={C.muted}>
         Elvebunnen:
       </T>
-      <T x={x + 14 + fs * 5.6} y={y + fs + 10} size={fs + 4} weight={800} color={ZONE_COLOR[zone]}>
+      <T x={x + 14 + fs * 6.6} y={y + fs + 10} size={fs + 4} weight={800} color={ZONE_COLOR[zone]}>
         {ZONE_WORD[zone]}
       </T>
       <rect x={x + 6} y={top} width={w - 12} height={bed - top} fill={P.water} opacity="0.55" />

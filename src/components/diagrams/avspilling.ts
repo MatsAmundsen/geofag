@@ -29,6 +29,7 @@ let aktivId = 0;
 let foretrukket = 0;
 /** Brukeren har pauset: ingen figur får spille før brukeren starter en igjen. */
 let brukerPauset = false;
+let sistVarsletPause = false;
 let raf = 0;
 let sistVurdert = 0;
 
@@ -59,8 +60,9 @@ function vurder() {
       }
     }
   }
-  if (best !== aktivId) {
+  if (best !== aktivId || brukerPauset !== sistVarsletPause) {
     aktivId = best;
+    sistVarsletPause = brukerPauset;
     for (const l of lyttere) l();
   }
   start();
@@ -140,6 +142,18 @@ export function useDeltaker({
   return { id, aktiv: konkurrerer ? aktiv : true };
 }
 
+/**
+ * Siden er pauset av brukeren. Figurer utenfor skjermen (som ikke «vil spille») må også vise «Start»,
+ * ellers må brukeren trykke to ganger (først «Pause», så «Start»).
+ */
+export function useSidePauset() {
+  return useSyncExternalStore(
+    lytt,
+    () => brukerPauset,
+    () => false,
+  );
+}
+
 /** Kobler en tick-funksjon til den felles løkken (null kobler fra). */
 export function settTick(id: number, tick: ((now: number) => void) | null) {
   const d = deltakere.get(id);
@@ -204,13 +218,14 @@ export function useFellesAvspilling(synlig: boolean, element?: RefObject<Element
   const vil = motion.playing && synlig;
   const { id, aktiv } = useDeltaker({ konkurrerer: true, vilSpille: vil, element });
   const venter = vil && !aktiv;
-  const playing = motion.playing && !venter;
+  const sidePauset = useSidePauset();
+  const playing = motion.playing && !venter && !sidePauset;
   return {
     playing,
     reduced: motion.reduced,
     motionClass: playing ? motion.motionClass : "",
     toggle: () => {
-      if (venter) {
+      if (venter || (motion.playing && sidePauset)) {
         taOver(id);
         return;
       }
