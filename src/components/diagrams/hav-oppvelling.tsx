@@ -62,6 +62,8 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   // samme grense som LokaleRamme: på smal skjerm blir hver etikett ett nummerskilt
   const bredde = useSvgBredde(ref);
   const smal = bredde > 0 && bredde < NARROW_FIGURE_PX;
+  // ⊙ er større på smal skjerm, så symbolet blir ca. 15 px bredt ved 320
+  const VIND_R = smal ? 30 : 22;
   const s = tidslinjeVerdi(BILDER, tl.p);
   const fase = tl.fase;
   const sek = tl.sek;
@@ -84,7 +86,9 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
     { p: LAND_KANT, b: 1.5 },
     { p: g, b: 2 },
     // ⊙ har r 22; på smal skjerm holdes skiltene minst ca. 6 px unna
-    { ellipse: (smal ? [VIND_X, VIND_Y, 40, 40] : [VIND_X, VIND_Y, 26, 26]) as [number, number, number, number] },
+    { ellipse: (smal ? [VIND_X, VIND_Y, VIND_R + 4, VIND_R + 4] : [VIND_X, VIND_Y, 26, 26]) as [number, number, number, number] },
+    // næringsprikkene i steg 4 (små sirkler) skal heller ikke ligge under et skilt
+    ...(s.plankton > 0.02 ? PLANKTON.map(([x, y]) => ({ ellipse: [x, y, 5, 5] as [number, number, number, number] })) : []),
     // bølgestripene i Hav og klammen over oppvellingssonen
     ...[0, 1, 2, 3].map((k) => ({ p: [[0, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]] as [number, number][], b: 1 })),
     { p: [[520, HAV_Y - 8], [520, HAV_Y - 2], [KYST - 10, HAV_Y - 2], [KYST - 10, HAV_Y - 8]], b: 2 },
@@ -132,6 +136,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
       labels={labels}
       data="oppvelling"
       narrowViewBox={SMAL_UTSNITT}
+      skiltLuft={7}
       etikettRader={5}
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
@@ -161,8 +166,8 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
           {/* vinden: ⊙ i lufta over kysten */}
           {s.vind > 0.02 ? (
             <g opacity={s.vind} transform={`translate(${VIND_X} ${VIND_Y}) scale(${puls})`}>
-              <circle r="22" fill="#0f171c" fillOpacity="0.35" stroke={F.tekst} strokeWidth="3.5" />
-              <circle r="6" fill={F.tekst} />
+              <circle r={VIND_R} fill="#0f171c" fillOpacity="0.35" stroke={F.tekst} strokeWidth="3.5" />
+              <circle r={VIND_R * 0.27} fill={F.tekst} />
             </g>
           ) : null}
           <Strom punkter={ekmanBane} sek={sek} farge={F.sjobris} marker={m.teal} bredde={6} opacity={s.ekman} />

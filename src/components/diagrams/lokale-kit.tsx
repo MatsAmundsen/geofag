@@ -109,6 +109,7 @@ export function LokaleRamme({
   hinder,
   skiltNokkel,
   narrowViewBox,
+  skiltLuft,
   children,
 }: {
   tekst: { heading: string; title: string; caption: string };
@@ -140,6 +141,8 @@ export function LokaleRamme({
    * Uten denne vises hele tegneflaten som før.
    */
   narrowViewBox?: string;
+  /** Minste luft (CSS-piksler) rundt nummerskiltene på smal skjerm. Uten denne 3 px som før. */
+  skiltLuft?: number;
   children: (ctx: { m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const h = heading ?? tekst.heading;
@@ -154,7 +157,7 @@ export function LokaleRamme({
     const r = Math.max(11.5 / skala, VB.w * 0.02);
     const key = `${skiltNokkel ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
     if (!skiltCache.current || skiltCache.current.key !== key) {
-      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, utsnitt ?? undefined) };
+      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, utsnitt ?? undefined, skiltLuft) };
     }
     const pos = skiltCache.current.pos;
     merket = labels.map((l, i) => (pos[i] ? { ...l, badge: pos[i] } : l));
@@ -278,9 +281,12 @@ export function plasserSkilt(
   skala: number,
   /** Utsnittet skiltene skal ligge inne i, [x, y, b, h] i viewBox-enheter. Standard hele tegneflaten. */
   flate: [number, number, number, number] = [0, 0, VB.w, VB.h],
+  /** Minste luft (CSS-piksler) fra skilt til strek og mellom skilt. Uten denne som før: 3 px til strek og 8 enheter mellom skilt. */
+  luftPx?: number,
 ): ([number, number] | null)[] {
   const { seg, bokser } = segmenter(hinder, skala);
-  const luft = 3 / skala;
+  const luft = (luftPx ?? 3) / skala;
+  const skiltAvstand = luftPx === undefined ? 8 : Math.max(8, (2 * luftPx) / skala);
   const steg = Math.max(8, r / 2.5);
   const kand: [number, number][] = [];
   const [fx, fy, fw, fh] = flate;
@@ -306,7 +312,7 @@ export function plasserSkilt(
         if (d < 0) sum -= d;
       }
       for (const q of plassert) {
-        const d = Math.hypot(q[0] - x, q[1] - y) - 2 * r - 8;
+        const d = Math.hypot(q[0] - x, q[1] - y) - 2 * r - skiltAvstand;
         if (d < 0) sum -= d * 4;
       }
       maal.forEach((t, j) => {

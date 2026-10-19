@@ -339,9 +339,9 @@ function KystFane() {
         )}
         {smal ? (
           <>
-            <Skilt x={vindX + ut * 34} y={havY / 2 + 6} n={1} />
+            <Skilt x={vindX + ut * 46} y={havY / 2 + 6} n={1} />
             <Skilt x={(px1 + px2) / 2} y={pilY + 30} n={2} />
-            <Skilt x={vertX[1] + ut * 30} y={(vNed + vOpp) / 2 + 30} n={3} />
+            <Skilt x={vertX[1] + ut * 44} y={(vNed + vOpp) / 2 + 30} n={3} />
           </>
         ) : (
           <>
@@ -399,7 +399,7 @@ function VirvelFane() {
   const flate = `M0 ${base} C ${W * 0.08} ${base}, ${W * 0.15} ${hy(1)}, ${toppX} ${hy(1)} C ${W * 0.5} ${hy(1)}, ${W * 0.75} ${hy(0.55)}, ${W} ${base}`;
   const gx = W * (smal ? 0.2 : 0.13);
   const kx = W * (smal ? 0.8 : 0.82);
-  const yy = smal ? 214 : 250;
+  const yy = smal ? 244 : 250;
   const pl = smal ? 38 : 60; // pillengde for kreftene
   const strY = smal ? 158 : yy - 52;
 
@@ -459,11 +459,11 @@ function VirvelFane() {
         ) : null}
         {smal ? (
           <>
-            <Skilt x={toppX + 34} y={hy(1) - 22} n={1} opacity={s.haug} />
-            <Skilt x={gx - 25} y={strY + 28} n={2} opacity={s.trykk} />
-            <Skilt x={gx + 25} y={strY + 28} n={3} opacity={s.cor} />
-            <Skilt x={gx} y={yy + 36} n={4} opacity={s.strom} />
-            <Skilt x={kx} y={yy + 36} n={5} opacity={s.strom} />
+            <Skilt x={toppX + 34} y={hy(1) - 28} n={1} opacity={s.haug} />
+            <Skilt x={gx - 25} y={strY + 34} n={2} opacity={s.trykk} />
+            <Skilt x={gx + 25} y={strY + 34} n={3} opacity={s.cor} />
+            <Skilt x={gx} y={yy + 42} n={4} opacity={s.strom} />
+            <Skilt x={kx} y={yy + 42} n={5} opacity={s.strom} />
           </>
         ) : (
           <>
