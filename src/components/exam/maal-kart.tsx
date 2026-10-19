@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MAAL_KART } from "@/lib/eksamen";
+import { MAAL_KART } from "@/lib/eksamen/baklengs-kart";
 
 export function MaalKart() {
   return (
@@ -32,6 +32,8 @@ export function MaalKart() {
                   <Link
                     to="/eksamen/$slug"
                     params={{ slug: e.slug }}
+                    reloadDocument
+                    preload={false}
                     className="text-primary underline-offset-4 hover:underline"
                   >
                     {e.label}

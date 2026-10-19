@@ -7,8 +7,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { V2026TaskFigure } from "@/components/exam/v2026/task-figure";
-import { displayPrompt, examSet, solutionFor, taskHeading } from "@/lib/eksamen";
-import type { ExamTask, Solution } from "@/lib/eksamen";
+import { displayPrompt, taskHeading } from "@/lib/eksamen/display";
+import { loadExamSet } from "@/lib/eksamen/load";
+import type { ExamTask } from "@/lib/eksamen/types";
+import type { Solution } from "@/lib/eksamen/solution-types";
 import { v2026FigureBadge, v2026HasFigure } from "@/lib/eksamen/figures/v2026/registry";
 import { topicHead } from "@/lib/seo";
 
@@ -22,8 +24,14 @@ export const Route = createFileRoute("/eksamen/$slug")({
   validateSearch: (search: Record<string, unknown>): ExamSearch => ({
     vis: search.vis === "losningsforslag" ? "losningsforslag" : undefined,
   }),
-  head: ({ params }) => {
-    const set = examSet(params.slug);
+  loader: async ({ params }) => {
+    const data = await loadExamSet(params.slug);
+    if (!data) throw notFound();
+    return data;
+  },
+  staleTime: Infinity,
+  head: ({ loaderData, params }) => {
+    const set = loaderData?.set;
     return topicHead({
       title: set ? `${set.label} · Eksamen` : "Eksamen",
       description: set
@@ -32,17 +40,16 @@ export const Route = createFileRoute("/eksamen/$slug")({
           : `Geofag 2 ${set.label}: oppgaver og løsningsforslag med figurer. Udirs figurer åpnes hos Udir.`
         : "Eksamenssett for Geofag 2.",
       path: `/eksamen/${params.slug}`,
+      robots: "noindex, nofollow",
     });
   },
   component: ExamSetPage,
 });
 
 function ExamSetPage() {
-  const { slug } = Route.useParams();
-  const { vis } = Route.useSearch();
+    const { vis } = Route.useSearch();
   const navigate = Route.useNavigate();
-  const set = examSet(slug);
-  if (!set) throw notFound();
+  const { set, solutions } = Route.useLoaderData();
   const view: View = vis === "losningsforslag" ? "losningsforslag" : "oppgaver";
 
   function setView(next: View) {
@@ -59,7 +66,7 @@ function ExamSetPage() {
         <header className="border-b border-border bg-card">
           <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
             <p className="text-xs font-medium uppercase tracking-wider text-primary">
-              <Link to="/eksamen" className="hover:underline">
+              <Link to="/eksamen" reloadDocument className="hover:underline">
                 Eksamen
               </Link>
               {" · "}
@@ -81,7 +88,7 @@ function ExamSetPage() {
                 </Button>
               ) : null}
               <Button asChild variant="secondary">
-                <Link to="/eksamen">Alle sett</Link>
+                <Link to="/eksamen" reloadDocument>Alle sett</Link>
               </Button>
             </div>
             <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Visning">
@@ -149,7 +156,13 @@ function ExamSetPage() {
           {view === "oppgaver" ? (
             <ol className="mt-10 space-y-8">
               {set.tasks.map((task) => (
-                <TaskCard key={task.number} slug={set.slug} officialUrl={set.officialUrl} task={task} />
+                <TaskCard
+                  key={task.number}
+                  slug={set.slug}
+                  officialUrl={set.officialUrl}
+                  task={task}
+                  solution={solutions[task.number]}
+                />
               ))}
             </ol>
           ) : (
@@ -165,6 +178,7 @@ function ExamSetPage() {
                     slug={set.slug}
                     officialUrl={set.officialUrl}
                     task={task}
+                    solution={solutions[task.number]}
                   />
                 ))}
               </ol>
@@ -181,14 +195,15 @@ function TaskCard({
   slug,
   officialUrl,
   task,
+  solution,
 }: {
   slug: string;
   officialUrl: string;
   task: ExamTask;
+  solution: Solution | undefined;
 }) {
   const [open, setOpen] = useState(false);
   const heading = taskHeading(task.prompt, task.title);
-  const solution = solutionFor(slug, task.number);
 
   return (
     <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
@@ -211,13 +226,14 @@ function SolutionCard({
   slug,
   officialUrl,
   task,
+  solution,
 }: {
   slug: string;
   officialUrl: string;
   task: ExamTask;
+  solution: Solution | undefined;
 }) {
   const heading = taskHeading(task.prompt, task.title);
-  const solution = solutionFor(slug, task.number);
 
   return (
     <li className="rounded-2xl border border-border bg-card p-5 sm:p-6">
