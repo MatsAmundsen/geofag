@@ -1160,6 +1160,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "vaerkart",
     stale: ["standardiserte (NOAA, u.å.-f).\n\n```widget\nStationModel"],
   },
+  {
+    // Jordskjelv: ny figur Bolgegenerering under «Overflatebølger» (bare widget-fencen er ny), fagsjekket av Geo 19.10.
+    flag: "jordskjelv-bolgegenerering-2026-10-19",
+    slug: "jordskjelv",
+    stale: ["rister husene mest.\n\n```widget\nSjekkJordskjelv3"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
