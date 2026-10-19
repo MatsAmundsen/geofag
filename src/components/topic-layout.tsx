@@ -9,6 +9,7 @@ import { Kildeliste } from "@/components/kildeliste";
 import { PosterBody } from "@/components/poster-body";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SokHopp } from "@/components/sok/sok-hopp";
 import { Button } from "@/components/ui/button";
 import { posterSlugForPath } from "@/lib/chapter-posts";
 import {
@@ -149,6 +150,7 @@ export function TopicLayout({
         Hopp til innhold
       </a>
       <SiteHeader />
+      {resolvedSlug && bodyMode !== "coded" ? <SokHopp slug={resolvedSlug} /> : null}
       <main id="innhold" className="flex-1">
         <header className="relative isolate min-h-72 overflow-hidden">
           <img

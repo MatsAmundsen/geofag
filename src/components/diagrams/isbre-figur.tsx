@@ -54,7 +54,7 @@ export function StegVelger({
             type="button"
             aria-pressed={active}
             onClick={() => onStep(n)}
-            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
               active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
@@ -129,7 +129,7 @@ export function Faner({
             aria-controls={panelId}
             tabIndex={active ? 0 : -1}
             onClick={() => onVelg(n)}
-            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
               active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
@@ -596,6 +596,10 @@ export type Key = {
   front?: "varm" | "kald" | "okkl" | "ro";
   /** Vises ikke i dette steget (raden beholder høyden, så figuren ikke hopper). */
   off?: boolean;
+  /** Usynlig i dette steget (visibility: hidden), men raden står og beholder plassen, så forklaringen bryter likt i alle steg. */
+  skjult?: boolean;
+  /** Bare for kind «line»: samme strek som i figuren (strekmønster, tykkelse, mørk kant under, runde ender). */
+  strek?: { dash?: string; bredde?: number; kant?: string; rund?: boolean };
 };
 
 function KeySample({ k }: { k: Key }) {
@@ -611,6 +615,30 @@ function KeySample({ k }: { k: Key }) {
           strokeWidth="2.4"
           strokeDasharray="5 4"
         />
+      ) : k.kind === "line" && k.strek ? (
+        <g>
+          {k.strek.kant ? (
+            <line
+              x1="1"
+              y1="7"
+              x2="29"
+              y2="7"
+              stroke={k.strek.kant}
+              strokeWidth={(k.strek.bredde ?? 3) + 3}
+              strokeLinecap="round"
+            />
+          ) : null}
+          <line
+            x1={k.strek.rund ? 2 : 1}
+            y1="7"
+            x2="29"
+            y2="7"
+            stroke={k.color}
+            strokeWidth={k.strek.bredde ?? 3}
+            strokeDasharray={k.strek.dash}
+            strokeLinecap={k.strek.rund ? "round" : undefined}
+          />
+        </g>
       ) : k.kind === "dot" ? (
         <line x1="3" y1="7" x2="28" y2="7" stroke={k.color} strokeWidth="3.6" strokeLinecap="round" strokeDasharray="0.1 6.2" />
       ) : k.kind === "line" ? (
@@ -1125,7 +1153,11 @@ export function IsbreFigur({
               {keys
                 .filter((k) => !k.off)
                 .map((k) => (
-                  <li key={k.text} className="inline-flex items-center gap-2">
+                  <li
+                    key={k.text}
+                    className={`inline-flex items-center gap-2${k.skjult ? " invisible" : ""}`}
+                    aria-hidden={k.skjult || undefined}
+                  >
                     <KeySample k={k} />
                     <span>{k.text}</span>
                   </li>

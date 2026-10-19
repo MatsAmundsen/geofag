@@ -187,7 +187,7 @@ function EksamenIndex() {
 
           <MaalKart />
 
-          <section id="sett" className="mt-14 scroll-mt-24">
+          <section id="sett" className="mt-14">
             <h2 className="font-display text-3xl font-medium tracking-tight">
               Eksamenssett og løsningsforslag
             </h2>

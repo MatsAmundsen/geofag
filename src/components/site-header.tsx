@@ -1,17 +1,112 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { brandForPath, NAV_GF1, NAV_GF1_ROWS, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { SiteSearch } from "@/components/sok/site-search";
 
 function isItemActive(pathname: string, to: string) {
   if (to === "/") return pathname === "/";
   return pathname === to || (to !== "/geofag-2" && pathname.startsWith(`${to}/`));
 }
 
+// Lastet med #anker: ruterens første scrollIntoView skal ikke arve scroll-behavior: smooth fra styles.css
+// (da glir siden forbi målet før rettingen). Settes før hydreringen og fjernes i stopp() nedenfor, så
+// klikk på ankre på samme side glir som før.
+if (typeof window !== "undefined" && window.location.hash.length > 1) {
+  document.documentElement.style.scrollBehavior = "auto";
+}
+
+function rullTilHashEtterMaaling(header: HTMLElement) {
+  const root = document.documentElement;
+  let id = "";
+  try {
+    id = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    id = "";
+  }
+  if (!id) {
+    root.style.removeProperty("scroll-behavior");
+    return () => {};
+  }
+  const hendelser = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+  let forrigeY = Number.NaN;
+  // Posisjonen siden sist ble godtatt eller rettet til. Flytter siden seg bort derfra uten at denne logikken
+  // rullet (skjermleserens bla-modus, «finn på siden», skript), overtar brukeren: stopp, ikke rull tilbake.
+  let egenY = Number.NaN;
+  let ganger = 0;
+  let stoppet = false;
+  const flyttetAvAndre = () => !Number.isNaN(egenY) && Math.abs(window.scrollY - egenY) > 2;
+  const sjekk = () => {
+    const y = window.scrollY;
+    if (flyttetAvAndre()) return stopp();
+    const stille = y === forrigeY;
+    forrigeY = y;
+    if (!stille) return;
+    const mal = document.getElementById(id);
+    if (!mal) {
+      egenY = y;
+      return;
+    }
+    const bunn = header.getBoundingClientRect().bottom;
+    const top = mal.getBoundingClientRect().top;
+    const nederst = y >= root.scrollHeight - window.innerHeight - 1;
+    if ((top < bunn + 8 || top > bunn + 24) && !(nederst && top > bunn)) {
+      mal.scrollIntoView({ block: "start", behavior: "instant" });
+      forrigeY = Number.NaN;
+    }
+    egenY = window.scrollY;
+  };
+  const vedRulling = () => {
+    if (flyttetAvAndre()) stopp();
+  };
+  const tidtaker = window.setInterval(() => {
+    sjekk();
+    if (++ganger >= 20) stopp();
+  }, 150);
+  function stopp() {
+    if (stoppet) return;
+    stoppet = true;
+    window.clearInterval(tidtaker);
+    for (const h of hendelser) window.removeEventListener(h, stopp);
+    window.removeEventListener("scroll", vedRulling);
+    root.style.removeProperty("scroll-behavior");
+  }
+  for (const h of hendelser) window.addEventListener(h, stopp, { passive: true });
+  window.addEventListener("scroll", vedRulling, { passive: true });
+  return stopp;
+}
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  // Den klebrige toppmenyen må ikke skjule fokus eller ankermål (WCAG 2.4.11). Høyden måles og gis til
+  // html som --site-header-h, som scroll-padding-top i styles.css bruker (CSS-reserven gjelder før dette).
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header || typeof ResizeObserver === "undefined") return;
+    const root = document.documentElement;
+    const apply = () =>
+      root.style.setProperty(
+        "--site-header-h",
+        `${Math.ceil(header.getBoundingClientRect().height)}px`,
+      );
+    apply();
+    // Lastet med #anker: nettleseren ruller før målingen (med CSS-reserven), myk rulling kan avbrytes
+    // under hydreringen, og målet kan dukke opp først etter hydreringen. I opptil 3 s etter innlasting:
+    // når rullingen står stille og målet ikke står rett under menyen, rull dit med målt høyde. Stopper
+    // ved første brukerinndata, og når noe annet enn denne logikken flytter siden.
+    const stopp = rullTilHashEtterMaaling(header);
+    const ro = new ResizeObserver(apply);
+    ro.observe(header);
+    return () => {
+      stopp();
+      ro.disconnect();
+      root.style.removeProperty("--site-header-h");
+    };
+  }, []);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const items = navForPath(pathname);
   const brand = brandForPath(pathname);
@@ -25,7 +120,10 @@ export function SiteHeader() {
   const menuRows = items === NAV_GF2 ? NAV_GF2_ROWS : items === NAV_GF1 ? NAV_GF1_ROWS : null;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md"
+    >
       {menuRows ? (
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex min-h-14 items-center justify-between gap-3 py-2">
@@ -36,7 +134,10 @@ export function SiteHeader() {
               isGf2={isGf2}
               onNavigate={() => setOpen(false)}
             />
-            <MenuButton open={open} onClick={() => setOpen((v) => !v)} />
+            <div className="flex shrink-0 items-center gap-2">
+              <SiteSearch />
+              <MenuButton open={open} onClick={() => setOpen((v) => !v)} />
+            </div>
           </div>
           <nav
             className="hidden w-full min-w-0 gap-0.5 border-t border-border/70 py-1.5 md:flex md:flex-col"
@@ -110,7 +211,7 @@ export function SiteHeader() {
             )}
           </div>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Hovedmeny">
+          <nav className="hidden items-center gap-1 md:ml-auto md:flex" aria-label="Hovedmeny">
             {items.map((item) => {
               const active =
                 item.to === "/"
@@ -154,17 +255,20 @@ export function SiteHeader() {
             )}
           </nav>
 
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            aria-expanded={open}
-            aria-controls="mobilmeny"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-            <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
-          </Button>
+          <div className="flex shrink-0 items-center gap-2">
+            <SiteSearch />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              aria-expanded={open}
+              aria-controls="mobilmeny"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+              <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
+            </Button>
+          </div>
         </div>
       )}
 

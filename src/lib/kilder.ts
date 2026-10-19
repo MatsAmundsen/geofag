@@ -2479,10 +2479,28 @@ export const KILDER = {
   ],
   jetstrommer: [
     {
-      prefix: "American Meteorological Society [AMS]. (u.å.). ",
+      prefix: "American Meteorological Society [AMS]. (u.å.-a). ",
       italic: "Thermal wind",
       suffix: ". Glossary of Meteorology.",
       href: "https://glossary.ametsoc.org/wiki/Thermal_wind",
+    },
+    {
+      prefix: "American Meteorological Society [AMS]. (u.å.-b). ",
+      italic: "Tropopause",
+      suffix: ". Glossary of Meteorology.",
+      href: "https://glossary.ametsoc.org/wiki/Tropopause",
+    },
+    {
+      prefix: "American Meteorological Society [AMS]. (u.å.-c). ",
+      italic: "Rossby wave",
+      suffix: ". Glossary of Meteorology.",
+      href: "https://glossary.ametsoc.org/wiki/Rossby_wave",
+    },
+    {
+      prefix: "Doblas-Reyes, F. J., Sörensson, A. A., Almazroui, M., mfl. (2021). Linking global to regional climate change. I V. Masson-Delmotte mfl. (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 1363–1512). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.012",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
@@ -2497,10 +2515,52 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/climate-variability-north-atlantic-oscillation",
     },
     {
-      prefix: "Store norske leksikon. (u.å.). ",
+      prefix: "National Weather Service [NWS]. (u.å.-a). ",
+      italic: "Jet streak",
+      suffix: ". NWS Glossary.",
+      href: "https://forecast.weather.gov/glossary.php?word=jet+streak",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-b). ",
+      italic: "The 300/200 mb chart",
+      suffix: ". NWS Training.",
+      href: "https://www.weather.gov/source/zhu/ZHU_Training_Page/winds/JetStream_Stuff/300_200_chart.htm",
+    },
+    {
+      prefix: "Rose, S. F., Hobbs, P. V., Locatelli, J. D. & Stoelinga, M. T. (2004). A 10-yr climatology relating the locations of reported tornadoes to the quadrants of upper-level jet streaks. ",
+      italic: "Weather and Forecasting, 19",
+      suffix: "(2), 301–309.",
+      href: "https://doi.org/10.1175/1520-0434(2004)019<0301:AYCRTL>2.0.CO;2",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Polarfront",
       suffix: ".",
       href: "https://snl.no/polarfront",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Tropopausen",
+      suffix: ".",
+      href: "https://snl.no/tropopausen",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-c). ",
+      italic: "Rossbybølger",
+      suffix: ".",
+      href: "https://snl.no/rossbybølger",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-d). ",
+      italic: "Blokkerende høytrykk",
+      suffix: ".",
+      href: "https://snl.no/blokkerende_høytrykk",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-e). ",
+      italic: "Omegablokkering",
+      suffix: ".",
+      href: "https://snl.no/omegablokkering",
     },
     {
       prefix: "Utdanningsdirektoratet. (u.å.-a). ",

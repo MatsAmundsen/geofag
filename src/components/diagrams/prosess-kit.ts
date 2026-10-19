@@ -15,7 +15,7 @@
  * - `Maalere`: HTML-målere (dyp, temperatur, trykk, tid, porøsitet), relative eller med tekst.
  */
 import { useEffect, useRef, useState, type RefObject } from "react";
-import { settTick, slipp, taOver, useDeltaker } from "./avspilling";
+import { settTick, slipp, taOver, useBrukerStart, useDeltaker } from "./avspilling";
 import { NARROW_FIGURE_PX } from "./isbre-figur";
 import { clamp, lerp, smooth, smoothPath, useBoxWidth, useNarrow } from "./isbre-kit";
 import { scaledStepClock } from "./motion-config";
@@ -98,7 +98,9 @@ export function useTidslinje({
   const live = useRef({ p: 1, sek: 0, holdLeft: 0, fresh: true, kjor: false });
 
   // registrering i den felles avspillingen
-  const vilSpille = motion.playing && synlig;
+  // «Start» gjelder også når bare verktøylinjen er på skjermen (se useBrukerStart)
+  const [startet, setStartet] = useBrukerStart(element);
+  const vilSpille = motion.playing && (synlig || startet);
   const { id, aktiv } = useDeltaker({ konkurrerer: true, vilSpille, element });
   // spiller, men en annen modell er valgt: står stille og vises som pauset til den får tur
   const venter = vilSpille && !aktiv;
@@ -153,6 +155,7 @@ export function useTidslinje({
     // stopp løkken med en gang, så den ikke flytter p før pausen er rendret
     live.current.kjor = false;
     live.current.fresh = false;
+    setStartet(false);
     slipp(id);
     if (motion.playing) motion.toggle();
   };
@@ -185,11 +188,17 @@ export function useTidslinje({
       live.current.fresh = false;
       if (venter) {
         // «Spill av» på en ventende modell: den tar over, de andre venter
+        setStartet(true);
         taOver(id);
         return;
       }
-      if (motion.playing) slipp(id);
-      else taOver(id);
+      if (motion.playing) {
+        setStartet(false);
+        slipp(id);
+      } else {
+        setStartet(true);
+        taOver(id);
+      }
       announce.toggle(motion.toggle);
     },
     valg,
