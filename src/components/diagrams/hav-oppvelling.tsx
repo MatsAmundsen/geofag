@@ -8,7 +8,8 @@ import { useId } from "react";
 import { clamp, lerp } from "./isbre-kit";
 import { tidslinjeVerdi } from "./prosess-kit";
 import { OPPVELLING_TEKST } from "./hav-tekst";
-import { F, Hav, Himmel, LokaleRamme, Strom, medKilde, useLokaleTidslinje, type Hinder, type Lab } from "./lokale-kit";
+import { NARROW_FIGURE_PX } from "./isbre-figur";
+import { F, Hav, Himmel, LokaleRamme, Strom, medKilde, useLokaleTidslinje, useSvgBredde, type Hinder, type Lab } from "./lokale-kit";
 
 const FASER = ["Vind langs kysten", "Ekmantransport", "Vann nedenfra", "Næring i lyset"];
 
@@ -55,6 +56,9 @@ const PLANKTON: [number, number][] = Array.from({ length: 22 }, (_, i) => [530 +
 export function OppvellingFigur({ heading, caption }: { heading?: string; caption?: React.ReactNode }) {
   const uid = useId().replace(/:/g, "");
   const { ref, tl } = useLokaleTidslinje(FASER.length);
+  // samme grense som LokaleRamme: på smal skjerm blir hver etikett ett nummerskilt
+  const bredde = useSvgBredde(ref);
+  const smal = bredde > 0 && bredde < NARROW_FIGURE_PX;
   const s = tidslinjeVerdi(BILDER, tl.p);
   const fase = tl.fase;
   const sek = tl.sek;
@@ -100,8 +104,13 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   if (s.plankton > 0.3) {
     const op = clamp((s.plankton - 0.3) / 0.4);
     lab("Oppvellingssonen, 15–150 km bred", 640, HAV_Y - 26, [640, HAV_Y - 6], "#a8e08f", "middle", op);
-    lab("Næringssaltene kommer opp i lyset,", 110, HAV_Y + 84, [540, HAV_Y + 30], "#a8e08f", "start", op);
-    lab("og planteplanktonet vokser godt", 110, HAV_Y + 108, undefined, "#a8e08f", "start", op);
+    if (smal) {
+      // ett skilt med hele setningen; lista under figuren bryter den selv
+      lab("Næringssaltene kommer opp i lyset, og planteplanktonet vokser godt", 110, HAV_Y + 84, [600, HAV_Y + 26], "#a8e08f", "start", op);
+    } else {
+      lab("Næringssaltene kommer opp i lyset,", 110, HAV_Y + 84, [540, HAV_Y + 30], "#a8e08f", "start", op);
+      lab("og planteplanktonet vokser godt", 110, HAV_Y + 108, undefined, "#a8e08f", "start", op);
+    }
   }
 
   return (

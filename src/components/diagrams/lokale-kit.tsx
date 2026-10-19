@@ -188,7 +188,7 @@ export function LokaleRamme({
 }
 
 /** Bredden til tegneflaten (CSS-piksler), 0 før første måling. */
-function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
+export function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
   const [w, setW] = useState(0);
   useEffect(() => {
     const el = ref.current;

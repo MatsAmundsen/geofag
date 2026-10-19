@@ -290,36 +290,33 @@ function SpiralFane() {
 function KystFane() {
   const uid = useId().replace(/:/g, "");
   const [boksRef, smal] = useFigurSmal();
-  const [kyst, setKyst] = useState<"vest" | "ost">("vest");
   const [vindFra, setVindFra] = useState<"nord" | "sor">("nord");
   // Sett fra sør: vind fra nord blåser mot sør, altså mot deg (⊙). 90° til høyre for den er vest.
   const motDeg = vindFra === "nord";
-  const transportVest = vindFra === "nord";
-  const landOst = kyst === "vest";
-  const opp = transportVest === landOst;
+  // Bare vestkyst med land i øst, slik skissen Geo godkjente. Ekmantransporten går mot vest (ut fra kysten)
+  // når vinden kommer fra nord: oppvelling. Vind fra sør gir transport mot kysten: nedvelling.
+  const opp = vindFra === "nord";
 
   const W = smal ? 360 : 900;
   const H = smal ? 330 : 400;
   const luft = smal ? 70 : 90;
   const landB = smal ? 80 : 170;
-  const landX0 = landOst ? W - landB : 0; // land-blokkens venstre kant
-  const kystX = landOst ? W - landB : landB; // kystlinja i overflaten
-  const ut = landOst ? -1 : 1; // retning ut fra kysten
+  const landX0 = W - landB; // land-blokkens venstre kant
+  const kystX = W - landB; // kystlinja i overflaten
+  const ut = -1; // retning ut fra kysten (mot vest)
   const havY = luft;
   const bunn = H;
   // grensen mot dypere vann: løftet mot kysten ved oppvelling, senket ved nedvelling
-  const fjern = landOst ? 0 : W;
+  const fjern = 0;
   const gFjern = havY + (H - havY) * 0.48;
   const gKyst = opp ? havY + 34 : bunn - 22;
   const gMidt = (fjern + kystX) / 2;
   const grense = `M${fjern} ${gFjern} C ${gMidt} ${gFjern + (opp ? 4 : -4)}, ${kystX + ut * (W * 0.12)} ${lerp(gFjern, gKyst, 0.4)}, ${kystX + ut * 6} ${gKyst}`;
-  const skraning = landOst
-    ? `M${kystX} ${havY} L${W} ${havY} L${W} ${bunn} L${kystX - (smal ? 40 : 70)} ${bunn} C ${kystX - 30} ${bunn - 60}, ${kystX - 8} ${havY + 80}, ${kystX} ${havY} Z`
-    : `M${kystX} ${havY} L0 ${havY} L0 ${bunn} L${kystX + (smal ? 40 : 70)} ${bunn} C ${kystX + 30} ${bunn - 60}, ${kystX + 8} ${havY + 80}, ${kystX} ${havY} Z`;
+  const skraning = `M${kystX} ${havY} L${W} ${havY} L${W} ${bunn} L${kystX - (smal ? 40 : 70)} ${bunn} C ${kystX - 30} ${bunn - 60}, ${kystX - 8} ${havY + 80}, ${kystX} ${havY} Z`;
   const pilY = havY + (smal ? 22 : 28);
   const pilNaer = kystX + ut * 26;
   const pilFjern = kystX + ut * (smal ? 230 : 560);
-  const [px1, px2] = transportVest ? [Math.max(pilNaer, pilFjern), Math.min(pilNaer, pilFjern)] : [Math.min(pilNaer, pilFjern), Math.max(pilNaer, pilFjern)];
+  const [px1, px2] = opp ? [pilNaer, pilFjern] : [pilFjern, pilNaer];
   const vindX = kystX + ut * (smal ? 46 : 70);
   const vertX = [kystX + ut * (smal ? 54 : 100), kystX + ut * (smal ? 82 : 146)];
   const vNed = bunn - 16;
@@ -328,14 +325,11 @@ function KystFane() {
   const vindTekst = motDeg ? "blåser mot deg" : "blåser bort fra deg";
   const ekmanTekst = opp ? "ekmantransport ut fra kysten" : "ekmantransport mot kysten";
   const vertTekst = opp ? "kaldere vann nedenfra" : "vannet hoper seg opp og presses nedover";
-  const tAnchor = landOst ? "end" : "start";
+  const tAnchor = "end";
 
   return (
     <div ref={boksRef} className="space-y-3">
-      <div className="flex flex-col gap-2">
-        <Valg navn="Kyst" verdi={kyst} valg={[["vest", "Vestkyst (land i øst)"], ["ost", "Østkyst (land i vest)"]]} onVelg={setKyst} />
-        <Valg navn="Vind" verdi={vindFra} valg={[["nord", "Vind fra nord"], ["sor", "Vind fra sør"]]} onVelg={setVindFra} />
-      </div>
+      <Valg navn="Vind" verdi={vindFra} valg={[["nord", "Vind fra nord"], ["sor", "Vind fra sør"]]} onVelg={setVindFra} />
       <div aria-live="polite" className="min-h-[7rem] rounded-xl border border-border bg-background p-3 text-sm sm:min-h-[5rem]">
         <p className="font-semibold text-foreground">{opp ? "Oppvelling" : "Nedvelling"}</p>
         <p className="mt-1 text-foreground">
@@ -350,12 +344,12 @@ function KystFane() {
           )}
         </p>
       </div>
-      <p className="text-xs text-muted-foreground">Snitt sett fra sør: vest til venstre, øst til høyre. Nordlig halvkule.</p>
+      <p className="text-xs text-muted-foreground">Vestkyst med land i øst. Snitt sett fra sør: vest til venstre, øst til høyre. Nordlig halvkule.</p>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="w-full rounded-[10px]"
         role="img"
-        aria-label={`Snitt sett fra sør av en ${kyst === "vest" ? "vestkyst med land i øst" : "østkyst med land i vest"}. Vind fra ${vindFra === "nord" ? "nord" : "sør"} langs kysten ${vindTekst}. Ekmantransporten går ${opp ? "ut fra kysten, og kaldere vann kommer opp nedenfra" : "mot kysten, og vannet presses nedover"}.`}
+        aria-label={`Snitt sett fra sør av en vestkyst med land i øst. Vind fra ${vindFra === "nord" ? "nord" : "sør"} langs kysten ${vindTekst}. Ekmantransporten går ${opp ? "ut fra kysten, og kaldere vann kommer opp nedenfra" : "mot kysten, og vannet presses nedover"}.`}
         data-figur="ekman-kyst"
         data-opp={opp ? "1" : "0"}
       >
@@ -383,7 +377,8 @@ function KystFane() {
           </>
         ) : (
           <>
-            <T x={landOst ? 16 : W - 16} y={26} anchor={landOst ? "start" : "end"} farge={C.dempet} size={16}>{landOst ? "Vest" : "Øst"}</T>
+            <T x={16} y={26} farge={C.dempet} size={16}>Vest</T>
+            <T x={W - 16} y={26} anchor="end" farge={C.dempet} size={16}>Øst</T>
             <T x={landX0 + landB / 2} y={havY + 120} anchor="middle" farge={C.tekst}>land</T>
             <T x={vindX + ut * 30} y={havY / 2 + 9} anchor={tAnchor} farge={C.vind}>{vindTekst}</T>
             <T x={kystX + ut * 300} y={pilY + 32} anchor={tAnchor} farge={C.lag}>{ekmanTekst}</T>
