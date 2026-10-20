@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useCallback, useEffect, useId, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { C } from "../diagrams/svg-kit";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
 export function HurricaneSvg({ hemisphere }: { hemisphere: "north" | "south" }) {
@@ -368,6 +370,9 @@ const FUJITA_DATA = [
   },
 ];
 
+// Startverdier for stormflokalkulatoren (brukes også av «Tilbakestill»).
+const SURGE_DEFAULTS = { pressure: 960, windSpeed: 35, isSpringTide: true } as const;
+
 export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState<"rotation" | "saffir" | "fujita" | "surge">(
     "rotation",
@@ -376,9 +381,18 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
   const [selectedEf, setSelectedEf] = useState<string>("EF2");
 
   // Stormflo kalkulator-tilstand
-  const [pressure, setPressure] = useState<number>(960); // hPa
-  const [windSpeed, setWindSpeed] = useState<number>(35); // m/s
-  const [isSpringTide, setIsSpringTide] = useState<boolean>(true);
+  const [pressure, setPressure] = useState<number>(SURGE_DEFAULTS.pressure); // hPa
+  const [windSpeed, setWindSpeed] = useState<number>(SURGE_DEFAULTS.windSpeed); // m/s
+  const [isSpringTide, setIsSpringTide] = useState<boolean>(SURGE_DEFAULTS.isSpringTide);
+  const pressureId = useId();
+  const windId = useId();
+  const tideId = useId();
+  const resetSurge = useCallback(() => {
+    setPressure(SURGE_DEFAULTS.pressure);
+    setWindSpeed(SURGE_DEFAULTS.windSpeed);
+    setIsSpringTide(SURGE_DEFAULTS.isSpringTide);
+  }, []);
+  const windKmt = Math.round(windSpeed * 3.6);
 
   // Fysisk beregning av stormflo:
   // Invers barometereffekt: ~ 1 cm per 1 hPa trykkfall under 1013 hPa
@@ -392,13 +406,24 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
   // Tidevannsbidrag (springflo gir ekstra +80 cm, middelvann +30 cm)
   const tideCm = isSpringTide ? 80 : 30;
 
-  // Samlet stormflo over sjøkartnull i meter
-  const totalSurgeCm = surgeBaroCm + surgeWindCm + tideCm;
+  // Stormflo (værbidrag) = trykk + vind. Vannstand = stormflo + tidevann.
+  const weatherCm = surgeBaroCm + surgeWindCm;
+
+  // Samlet vannstand over sjøkartnull
+  const totalSurgeCm = weatherCm + tideCm;
   const totalSurgeM = (totalSurgeCm / 100).toLocaleString("nb-NO", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
   const isQuayFlooded = totalSurgeCm > 220; // Bryggehøyde er 220 cm
+
+  // Én rolig live-region: totalen leses opp først når verdien har ligget i ro en stund.
+  const totalText = `Samlet vannstand over sjøkartnull: ${totalSurgeM} m.`;
+  const [announcedTotal, setAnnouncedTotal] = useState(totalText);
+  useEffect(() => {
+    const t = window.setTimeout(() => setAnnouncedTotal(totalText), 700);
+    return () => window.clearTimeout(t);
+  }, [totalText]);
 
   const catData = SAFFIR_DATA.find((d) => d.cat === selectedCat)!;
   const efData = FUJITA_DATA.find((d) => d.ef === selectedEf)!;
@@ -615,22 +640,28 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Kontroller */}
             <ModelPanel className="space-y-4">
-              <h4 className="font-display text-base font-semibold text-foreground">
+              <h3 className="font-display text-base font-semibold text-foreground">
                 Juster meteorologiske og oseanografiske faktorer
-              </h4>
+              </h3>
 
               {/* 1. Barometrisk trykkfall */}
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="text-muted-foreground">Lufttrykk i sentrum:</span>
-                  <span className="font-mono font-bold text-foreground">{pressure} hPa</span>
+                  <label htmlFor={pressureId} className="text-muted-foreground">
+                    Lufttrykk i sentrum:
+                  </label>
+                  <span className="font-mono font-bold text-foreground" aria-hidden="true">
+                    {pressure} hPa
+                  </span>
                 </div>
                 <input
+                  id={pressureId}
                   type="range"
                   min={910}
                   max={1013}
                   step={1}
                   value={pressure}
+                  aria-valuetext={`${pressure} hPa`}
                   onChange={(e) => setPressure(Number(e.target.value))}
                   className="w-full accent-primary cursor-pointer"
                 />
@@ -643,17 +674,21 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               {/* 2. Vindstyrke */}
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="text-muted-foreground">Vindhastighet ved kysten:</span>
-                  <span className="font-mono font-bold text-foreground">
-                    {windSpeed} m/s ({Math.round(windSpeed * 3.6)} km/t)
+                  <label htmlFor={windId} className="text-muted-foreground">
+                    Vindhastighet ved kysten:
+                  </label>
+                  <span className="font-mono font-bold text-foreground" aria-hidden="true">
+                    {windSpeed} m/s ({windKmt} km/t)
                   </span>
                 </div>
                 <input
+                  id={windId}
                   type="range"
                   min={10}
                   max={65}
                   step={1}
                   value={windSpeed}
+                  aria-valuetext={`${windSpeed} m/s (${windKmt} km/t)`}
                   onChange={(e) => setWindSpeed(Number(e.target.value))}
                   className="w-full accent-primary cursor-pointer"
                 />
@@ -662,14 +697,15 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                 </p>
               </div>
 
-              {/* 3. Tidevann */}
-              <div>
-                <span className="text-xs text-muted-foreground block mb-2">
-                  Astronomisk tidevannsfase:
+              {/* 3. Tidevann (eksempelverdier) */}
+              <div role="group" aria-labelledby={tideId}>
+                <span id={tideId} className="text-xs text-muted-foreground block mb-2">
+                  Astronomisk tidevannsfase (eksempelverdier):
                 </span>
                 <div className="flex gap-2">
                   <button
                     type="button"
+                    aria-pressed={isSpringTide}
                     onClick={() => setIsSpringTide(true)}
                     className={`flex-1 rounded-lg py-1.5 text-xs font-semibold border ${
                       isSpringTide
@@ -681,6 +717,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   </button>
                   <button
                     type="button"
+                    aria-pressed={!isSpringTide}
                     onClick={() => setIsSpringTide(false)}
                     className={`flex-1 rounded-lg py-1.5 text-xs font-semibold border ${
                       !isSpringTide
@@ -692,55 +729,93 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   </button>
                 </div>
               </div>
+
+              <div className="flex justify-end">
+                <Button type="button" size="sm" variant="secondary" onClick={resetSurge}>
+                  Tilbakestill
+                </Button>
+              </div>
             </ModelPanel>
 
-            {/* Beregningsresultat & Live Visualisering */}
+            {/* Beregningsresultat: stormflo (værbidrag) og vannstand */}
             <ModelPanel className="flex flex-col justify-between">
               <div>
-                <h4 className="font-display text-base font-semibold text-foreground mb-3">
-                  Beregnet stormflo-resultat
-                </h4>
+                <h3 className="font-display text-base font-semibold text-foreground mb-3">
+                  Beregnet stormflo og vannstand
+                </h3>
 
                 <div className="space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-border/50">
+                  <div className="flex justify-between gap-3 py-1 border-b border-border/50">
                     <span className="text-muted-foreground">
                       Invers barometereffekt (+1 cm/hPa):
                     </span>
-                    <span className="font-mono font-semibold text-sky-400">
+                    <span
+                      className="shrink-0 whitespace-nowrap font-mono font-semibold"
+                      style={{ color: C.rain }}
+                    >
                       +{surgeBaroCm.toFixed(0)} cm
                     </span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-border/50">
+                  <div className="flex justify-between gap-3 py-1 border-b border-border/50">
                     <span className="text-muted-foreground">
                       Vindstuv (vindstress på kyst/fjord):
                     </span>
-                    <span className="font-mono font-semibold text-amber-400">
+                    <span
+                      className="shrink-0 whitespace-nowrap font-mono font-semibold"
+                      style={{ color: C.warm }}
+                    >
                       +{surgeWindCm} cm
                     </span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">
-                      Astronomisk tidevann ({isSpringTide ? "Springflo" : "Middelvann"}):
+                  <div className="flex justify-between gap-3 py-1 border-b border-border font-semibold">
+                    <span className="text-foreground">Stormflo (værbidrag = trykk + vind):</span>
+                    <span className="shrink-0 whitespace-nowrap font-mono text-foreground">
+                      +{weatherCm} cm
                     </span>
-                    <span className="font-mono font-semibold text-emerald-400">+{tideCm} cm</span>
+                  </div>
+                  <div className="flex justify-between gap-3 py-1 border-b border-border/50">
+                    <span className="text-muted-foreground">
+                      Astronomisk tidevann ({isSpringTide ? "Springflo" : "Middelvann"},
+                      eksempelverdi):
+                    </span>
+                    <span
+                      className="shrink-0 whitespace-nowrap font-mono font-semibold"
+                      style={{ color: C.teal }}
+                    >
+                      +{tideCm} cm
+                    </span>
                   </div>
 
-                  <div className="flex justify-between py-2 border-t-2 border-border font-bold text-sm">
-                    <span className="text-foreground">Samlet vannstand over sjøkartnull:</span>
+                  <div className="flex justify-between gap-3 py-2 border-t-2 border-border font-bold text-sm">
+                    <span className="text-foreground">
+                      Samlet vannstand over sjøkartnull:
+                      <span className="block text-xs font-normal text-muted-foreground">
+                        stormflo + tidevann
+                      </span>
+                    </span>
                     <span
-                      className={`font-mono text-base ${isQuayFlooded ? "text-red-500" : "text-primary"}`}
+                      className={`shrink-0 whitespace-nowrap font-mono text-base ${isQuayFlooded ? "" : "text-primary"}`}
+                      style={isQuayFlooded ? { color: C.low } : undefined}
                     >
                       +{totalSurgeM} m ({totalSurgeCm} cm)
                     </span>
                   </div>
+                  <p className="sr-only" aria-live="polite">
+                    {announcedTotal}
+                  </p>
                 </div>
 
                 <div
-                  className={`mt-4 rounded-lg p-3 text-xs border ${
+                  className="mt-4 rounded-lg p-3 text-xs border"
+                  style={
                     isQuayFlooded
-                      ? "border-red-500/40 bg-red-950/20 text-red-300"
-                      : "border-emerald-500/40 bg-emerald-950/20 text-emerald-300"
-                  }`}
+                      ? { color: C.low, borderColor: `${C.low}66`, backgroundColor: `${C.low}1a` }
+                      : {
+                          color: C.teal,
+                          borderColor: `${C.teal}66`,
+                          backgroundColor: `${C.teal}1a`,
+                        }
+                  }
                 >
                   {isQuayFlooded ? (
                     <p className="font-bold flex items-center gap-1.5">
@@ -762,8 +837,10 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
             <p>
               Kalkulatoren legger sammen tre ledd: om lag 1 cm per hPa trykkfall, vindstuv som øker
               med kvadratet av vindfarten, og et tillegg for tidevann (springflo eller middelvann).
-              Kystform, sokkelbredde og bølger er ikke med. Vannstanden der du bor, finner du i
-              Kartverkets tjeneste{" "}
+              Trykk og vind er værbidraget. Er værbidraget ekstra stort, kalles det stormflo. Med
+              tidevannet får du vannstanden. Tallet for vindstuv er en illustrasjon, ikke målt, og
+              tidevannstallene er eksempelverdier. Kystform, sokkelbredde og bølger er ikke med.
+              Vannstanden der du bor, finner du i Kartverkets tjeneste{" "}
               <a
                 href="https://www.kartverket.no/til-sjos/se-havniva"
                 target="_blank"
