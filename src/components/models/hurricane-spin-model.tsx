@@ -667,7 +667,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   value={pressure}
                   aria-valuetext={`${pressure} hPa`}
                   onChange={(e) => setPressure(Number(e.target.value))}
-                  className="w-full accent-primary cursor-pointer"
+                  className="h-6 w-full accent-primary cursor-pointer"
                 />
                 <p className="text-[11px] text-muted-foreground mt-0.5">
                   Trykkfall: {deltaPressure} hPa → Invers barometereffekt: +{surgeBaroCm.toFixed(0)}{" "}
@@ -697,7 +697,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   value={windSpeed}
                   aria-valuetext={`${windSpeed} m/s (${windKmt} km/t)`}
                   onChange={(e) => setWindSpeed(Number(e.target.value))}
-                  className="w-full accent-primary cursor-pointer"
+                  className="h-6 w-full accent-primary cursor-pointer"
                 />
                 <p className="text-[11px] text-muted-foreground mt-0.5">
                   Vindstress (τ ∝ U²) stuver vann inn mot kysten: +{surgeWindCm} cm
@@ -717,7 +717,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     className={`flex-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold border ${
                       isSpringTide
                         ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background text-muted-foreground border-border"
+                        : "bg-background text-muted-foreground border-muted-foreground"
                     }`}
                   >
                     Middel spring høyvann (157 cm)
@@ -729,7 +729,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     className={`flex-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold border ${
                       !isSpringTide
                         ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background text-muted-foreground border-border"
+                        : "bg-background text-muted-foreground border-muted-foreground"
                     }`}
                   >
                     Middel høyvann (141 cm)
@@ -738,7 +738,13 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               </div>
 
               <div className="flex justify-end">
-                <Button type="button" size="sm" variant="secondary" onClick={resetSurge}>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="secondary"
+                  className="border-muted-foreground"
+                  onClick={resetSurge}
+                >
                   Tilbakestill
                 </Button>
               </div>
@@ -790,15 +796,15 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     </span>
                   </div>
 
-                  <div className="flex justify-between gap-3 py-2 border-t-2 border-border font-bold text-sm">
-                    <span className="text-foreground">
+                  <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 py-2 border-t-2 border-border font-bold text-sm">
+                    <span className="min-w-[11rem] flex-1 text-foreground">
                       Samlet vannstand over sjøkartnull:
                       <span className="block text-xs font-normal text-muted-foreground">
                         tidevann + værbidrag
                       </span>
                     </span>
                     <span
-                      className={`shrink-0 whitespace-nowrap font-mono text-base ${isQuayFlooded ? "" : "text-primary"}`}
+                      className={`ml-auto whitespace-nowrap font-mono text-base ${isQuayFlooded ? "" : "text-primary"}`}
                       style={isQuayFlooded ? { color: C.low } : undefined}
                     >
                       +{totalSurgeM} m ({totalSurgeCm} cm)
