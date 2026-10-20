@@ -312,7 +312,7 @@ const SAFFIR_DATA = [
     pressure: "< 920 hPa",
     surge: "> 5,5 m",
     damage:
-      "Total utslettelse. Bygninger pulveriseres, biler og industribrakker slynges gjennom lufta. Kysten oversvømmes av en massiv mur av vann. Eksempler: Katrina (2005), Dorian (2019).",
+      "Total utslettelse. Bygninger pulveriseres, biler og industribrakker slynges gjennom lufta. Kysten oversvømmes av en massiv mur av vann. Eksempler: Andrew (1992) i Sør-Florida, Dorian (2019) på Bahamas.",
     color: "text-red-500 border-red-500/40 bg-red-950/30",
   },
 ];
@@ -533,8 +533,11 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               <strong className="text-foreground block mb-1">Stormflo er dødsårsak nr. 1:</strong>I
               USA i perioden 1963–2012 var om lag 90 % av dødsfallene fra atlantiske tropiske
               sykloner knyttet til vann, og de fleste druknet. Stormflo alene sto for om lag
-              halvparten (Rappaport, 2014). Når Kategori 4/5 treffer langgrunne kyster, kan hele
-              øysamfunn og kystbyer utslettes.
+              halvparten (Rappaport, 2014). Kategorien alene avgjør ikke hvor høy stormfloen blir.
+              Hvor stor orkanen er, hvor grunt havet er nær kysten, og hvor fort og i hvilken vinkel
+              den treffer land, betyr også mye. Den store orkanen Ike (kategori 2) ga om lag 6 m
+              stormflo i Texas i 2008, mens den lille orkanen Charley (kategori 4) ga om lag 2 m i
+              Florida i 2004 (NHC, 2021).
             </div>
           </div>
         </div>
