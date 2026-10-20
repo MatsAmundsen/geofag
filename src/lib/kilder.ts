@@ -602,6 +602,12 @@ export const KILDER = {
   ],
   "jordskjelv-naturfare": [
     {
+      prefix: "Baker, J. W. (2008). ",
+      italic: "An introduction to probabilistic seismic hazard analysis (PSHA)",
+      suffix: " (versjon 1.3, s. 44–45).",
+      href: "https://web.stanford.edu/~bakerjw/Publications/Baker_(2008)_Intro_to_PSHA_v1_3.pdf",
+    },
+    {
       prefix: "Direktoratet for samfunnssikkerhet og beredskap [DSB]. (2019). ",
       italic: "Analyser av krisescenarioer 2019",
       suffix: " (kap. 9.1 Jordskjelv i by).",
@@ -696,6 +702,12 @@ export const KILDER = {
       italic: "Earthquake prediction",
       suffix: " (Haicheng 1975 og Tangshan 1976).",
       href: "https://earthquake.usgs.gov/learn/parkfield/eq_predict.php",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (2019, 6. august). ",
+      italic: "Earthquake hazards 101 – the basics",
+      suffix: ".",
+      href: "https://www.usgs.gov/programs/earthquake-hazards/science/earthquake-hazards-101-basics",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
