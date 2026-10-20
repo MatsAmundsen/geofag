@@ -406,7 +406,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
   // Tidevannsbidrag (springflo gir ekstra +80 cm, middelvann +30 cm)
   const tideCm = isSpringTide ? 80 : 30;
 
-  // Stormflo (værbidrag) = trykk + vind. Vannstand = stormflo + tidevann.
+  // Værbidrag = trykk + vind. Vannstand = tidevann + værbidrag.
   const weatherCm = surgeBaroCm + surgeWindCm;
 
   // Samlet vannstand over sjøkartnull
@@ -646,11 +646,14 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
 
               {/* 1. Barometrisk trykkfall */}
               <div>
-                <div className="flex justify-between text-xs mb-1">
+                <div className="flex justify-between gap-2 text-xs mb-1">
                   <label htmlFor={pressureId} className="text-muted-foreground">
                     Lufttrykk i sentrum:
                   </label>
-                  <span className="font-mono font-bold text-foreground" aria-hidden="true">
+                  <span
+                    className="shrink-0 whitespace-nowrap font-mono font-bold text-foreground"
+                    aria-hidden="true"
+                  >
                     {pressure} hPa
                   </span>
                 </div>
@@ -673,11 +676,14 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
 
               {/* 2. Vindstyrke */}
               <div>
-                <div className="flex justify-between text-xs mb-1">
+                <div className="flex justify-between gap-2 text-xs mb-1">
                   <label htmlFor={windId} className="text-muted-foreground">
                     Vindhastighet ved kysten:
                   </label>
-                  <span className="font-mono font-bold text-foreground" aria-hidden="true">
+                  <span
+                    className="shrink-0 whitespace-nowrap font-mono font-bold text-foreground"
+                    aria-hidden="true"
+                  >
                     {windSpeed} m/s ({windKmt} km/t)
                   </span>
                 </div>
@@ -702,12 +708,12 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                 <span id={tideId} className="text-xs text-muted-foreground block mb-2">
                   Astronomisk tidevannsfase (eksempelverdier):
                 </span>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
                     aria-pressed={isSpringTide}
                     onClick={() => setIsSpringTide(true)}
-                    className={`flex-1 rounded-lg py-1.5 text-xs font-semibold border ${
+                    className={`flex-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold border ${
                       isSpringTide
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-background text-muted-foreground border-border"
@@ -719,7 +725,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     type="button"
                     aria-pressed={!isSpringTide}
                     onClick={() => setIsSpringTide(false)}
-                    className={`flex-1 rounded-lg py-1.5 text-xs font-semibold border ${
+                    className={`flex-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold border ${
                       !isSpringTide
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-background text-muted-foreground border-border"
@@ -741,7 +747,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
             <ModelPanel className="flex flex-col justify-between">
               <div>
                 <h3 className="font-display text-base font-semibold text-foreground mb-3">
-                  Beregnet stormflo og vannstand
+                  Beregnet værbidrag og vannstand
                 </h3>
 
                 <div className="space-y-2 text-xs">
@@ -768,14 +774,14 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     </span>
                   </div>
                   <div className="flex justify-between gap-3 py-1 border-b border-border font-semibold">
-                    <span className="text-foreground">Stormflo (værbidrag = trykk + vind):</span>
+                    <span className="text-foreground">Værbidrag (trykk + vind):</span>
                     <span className="shrink-0 whitespace-nowrap font-mono text-foreground">
                       +{weatherCm} cm
                     </span>
                   </div>
                   <div className="flex justify-between gap-3 py-1 border-b border-border/50">
                     <span className="text-muted-foreground">
-                      Astronomisk tidevann ({isSpringTide ? "Springflo" : "Middelvann"},
+                      Astronomisk tidevann ({isSpringTide ? "springflo" : "middelvann"},
                       eksempelverdi):
                     </span>
                     <span
@@ -790,7 +796,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     <span className="text-foreground">
                       Samlet vannstand over sjøkartnull:
                       <span className="block text-xs font-normal text-muted-foreground">
-                        stormflo + tidevann
+                        tidevann + værbidrag
                       </span>
                     </span>
                     <span
@@ -818,14 +824,14 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   }
                 >
                   {isQuayFlooded ? (
-                    <p className="font-bold flex items-center gap-1.5">
-                      ⚠️ KRITISK OVERSVØMMELSE: Vannstanden ({totalSurgeM} m) overskrider
-                      bryggekanten (2,20 m)! Kai, sjøboder og kjellere settes under vann.
+                    <p>
+                      <strong>Over bryggekanten.</strong> Vannstanden ({totalSurgeM} m) er høyere
+                      enn bryggekanten (2,20 m). Brygga og sjøbodene står under vann.
                     </p>
                   ) : (
-                    <p className="font-bold flex items-center gap-1.5">
-                      ✅ Trygg margin: Vannstanden ({totalSurgeM} m) er under bryggekanten (2,20 m).
-                      Kaien forblir tørr, men pass på bølgeoppskyll!
+                    <p>
+                      <strong>Under bryggekanten.</strong> Vannstanden ({totalSurgeM} m) er lavere
+                      enn bryggekanten (2,20 m). Bølger kommer i tillegg og kan likevel nå opp.
                     </p>
                   )}
                 </div>
@@ -837,10 +843,11 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
             <p>
               Kalkulatoren legger sammen tre ledd: om lag 1 cm per hPa trykkfall, vindstuv som øker
               med kvadratet av vindfarten, og et tillegg for tidevann (springflo eller middelvann).
-              Trykk og vind er værbidraget. Er værbidraget ekstra stort, kalles det stormflo. Med
-              tidevannet får du vannstanden. Tallet for vindstuv er en illustrasjon, ikke målt, og
-              tidevannstallene er eksempelverdier. Kystform, sokkelbredde og bølger er ikke med.
-              Vannstanden der du bor, finner du i Kartverkets tjeneste{" "}
+              I modellen består værbidraget av trykk og vind. Er værbidraget ekstra stort, kalles
+              det stormflo (Kartverket, 2021). Tidevann og værbidrag til sammen gir vannstanden.
+              Tallet for vindstuv er en illustrasjon, ikke målt, og tidevannstallene er
+              eksempelverdier. Kystform, sokkelbredde og bølger er ikke med. Vannstanden der du bor,
+              finner du i Kartverkets tjeneste{" "}
               <a
                 href="https://www.kartverket.no/til-sjos/se-havniva"
                 target="_blank"

@@ -4092,6 +4092,12 @@ export const KILDER = {
       href: "https://www.kartverket.no/til-sjos/se-havniva",
     },
     {
+      prefix: "Kartverket. (2021, 30. november). ",
+      italic: "Hva er forskjellen på tidevann og vannstand?",
+      suffix: "",
+      href: "https://www.kartverket.no/til-sjos/se-havniva/lar-om-tidevann-og-vannstand/hva-er-forskjellen-pa-tidevann-og-vannstand",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-d). ",
       italic: "Baroklinitet",
       suffix: ".",
