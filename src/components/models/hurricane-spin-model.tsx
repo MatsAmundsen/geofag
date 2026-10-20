@@ -661,7 +661,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                 <input
                   id={pressureId}
                   type="range"
-                  min={910}
+                  min={940}
                   max={1013}
                   step={1}
                   value={pressure}
@@ -692,7 +692,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   id={windId}
                   type="range"
                   min={10}
-                  max={65}
+                  max={25}
                   step={1}
                   value={windSpeed}
                   aria-valuetext={`${windSpeed} m/s (${windKmt} km/t)`}
@@ -764,9 +764,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     </span>
                   </div>
                   <div className="flex justify-between gap-3 py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">
-                      Vindstuv (vindstress på kyst/fjord):
-                    </span>
+                    <span className="text-muted-foreground">Vindstuv (illustrasjon):</span>
                     <span
                       className="shrink-0 whitespace-nowrap font-mono font-semibold"
                       style={{ color: C.warm }}
@@ -845,9 +843,12 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               med kvadratet av vindfarten, og tidevannet i Bergen. I modellen består værbidraget av
               trykk og vind. Er værbidraget ekstra stort, kalles det stormflo (Kartverket, 2021).
               Tidevann og værbidrag til sammen gir vannstanden. Tidevannstallene er middel høyvann
-              og middel spring høyvann i Bergen, i cm over sjøkartnull (Kartverket, u.å.). Tallet
-              for vindstuv er en illustrasjon, ikke målt. Kystform, sokkelbredde og bølger er ikke
-              med. Vannstanden der du bor, finner du i Kartverkets tjeneste{" "}
+              og middel spring høyvann i Bergen, i cm over sjøkartnull (Kartverket, u.å.). Den
+              høyeste vannstanden som er målt i Bergen, er 244,9 cm over sjøkartnull (27. februar
+              1990). Kartverket regner 246,4 cm som 1000-års høyvann (Kartverket, u.å.). Under
+              ekstremværet Elsa i februar 2020 var værets virkning i Bergen 79 cm (Selberg mfl.,
+              2020). Tallet for vindstuv er en illustrasjon, ikke målt. Kystform, sokkelbredde og
+              bølger er ikke med. Vannstanden der du bor, finner du i Kartverkets tjeneste{" "}
               <a
                 href="https://www.kartverket.no/til-sjos/se-havniva"
                 target="_blank"
