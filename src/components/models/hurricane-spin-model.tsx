@@ -403,8 +403,9 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
   // Enkel empirisk formel for kyst/sokkel: ~ 0.08 * (U^2) / 100 meter -> i cm
   const surgeWindCm = Math.round(0.08 * Math.pow(windSpeed, 2));
 
-  // Tidevannsbidrag (springflo gir ekstra +80 cm, middelvann +30 cm)
-  const tideCm = isSpringTide ? 80 : 30;
+  // Tidevann i Bergen, cm over sjøkartnull (Kartverket, Se havnivå, stasjon BGO):
+  // middel spring høyvann 156,9 cm og middel høyvann 140,6 cm, avrundet.
+  const tideCm = isSpringTide ? 157 : 141;
 
   // Værbidrag = trykk + vind. Vannstand = tidevann + værbidrag.
   const weatherCm = surgeBaroCm + surgeWindCm;
@@ -703,10 +704,10 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                 </p>
               </div>
 
-              {/* 3. Tidevann (eksempelverdier) */}
+              {/* 3. Tidevann i Bergen (Kartverket, Se havnivå) */}
               <div role="group" aria-labelledby={tideId}>
                 <span id={tideId} className="text-xs text-muted-foreground block mb-2">
-                  Astronomisk tidevannsfase (eksempelverdier):
+                  Tidevann i Bergen (cm over sjøkartnull):
                 </span>
                 <div className="flex flex-wrap gap-2">
                   <button
@@ -719,7 +720,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                         : "bg-background text-muted-foreground border-border"
                     }`}
                   >
-                    Springflo (+80 cm)
+                    Middel spring høyvann (157 cm)
                   </button>
                   <button
                     type="button"
@@ -731,7 +732,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                         : "bg-background text-muted-foreground border-border"
                     }`}
                   >
-                    Middelvann (+30 cm)
+                    Middel høyvann (141 cm)
                   </button>
                 </div>
               </div>
@@ -781,8 +782,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   </div>
                   <div className="flex justify-between gap-3 py-1 border-b border-border/50">
                     <span className="text-muted-foreground">
-                      Astronomisk tidevann ({isSpringTide ? "springflo" : "middelvann"},
-                      eksempelverdi):
+                      {`Tidevann i Bergen (${isSpringTide ? "middel spring høyvann" : "middel høyvann"}):`}
                     </span>
                     <span
                       className="shrink-0 whitespace-nowrap font-mono font-semibold"
@@ -842,12 +842,12 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
           <ModelNote title="Forenklet modell">
             <p>
               Kalkulatoren legger sammen tre ledd: om lag 1 cm per hPa trykkfall, vindstuv som øker
-              med kvadratet av vindfarten, og et tillegg for tidevann (springflo eller middelvann).
-              I modellen består værbidraget av trykk og vind. Er værbidraget ekstra stort, kalles
-              det stormflo (Kartverket, 2021). Tidevann og værbidrag til sammen gir vannstanden.
-              Tallet for vindstuv er en illustrasjon, ikke målt, og tidevannstallene er
-              eksempelverdier. Kystform, sokkelbredde og bølger er ikke med. Vannstanden der du bor,
-              finner du i Kartverkets tjeneste{" "}
+              med kvadratet av vindfarten, og tidevannet i Bergen. I modellen består værbidraget av
+              trykk og vind. Er værbidraget ekstra stort, kalles det stormflo (Kartverket, 2021).
+              Tidevann og værbidrag til sammen gir vannstanden. Tidevannstallene er middel høyvann
+              og middel spring høyvann i Bergen, i cm over sjøkartnull (Kartverket, u.å.). Tallet
+              for vindstuv er en illustrasjon, ikke målt. Kystform, sokkelbredde og bølger er ikke
+              med. Vannstanden der du bor, finner du i Kartverkets tjeneste{" "}
               <a
                 href="https://www.kartverket.no/til-sjos/se-havniva"
                 target="_blank"
