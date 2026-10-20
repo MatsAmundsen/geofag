@@ -4062,6 +4062,12 @@ export const KILDER = {
       href: "https://snl.no/stormflo",
     },
     {
+      prefix: "National Hurricane Center [NHC]. (2021). ",
+      italic: "The Saffir-Simpson Hurricane Wind Scale",
+      suffix: " [PDF].",
+      href: "https://www.nhc.noaa.gov/pdf/sshws.pdf",
+    },
+    {
       prefix: "National Hurricane Center [NHC]. (u.å.-a). ",
       italic: "Tropical cyclone climatology",
       suffix: ".",
@@ -4072,6 +4078,12 @@ export const KILDER = {
       italic: "The Saffir-Simpson Hurricane Wind Scale",
       suffix: ".",
       href: "https://www.nhc.noaa.gov/aboutsshws.php",
+    },
+    {
+      prefix: "Rappaport, E. N. (2014). Fatalities in the United States from Atlantic tropical cyclones: New data and interpretation. ",
+      italic: "Bulletin of the American Meteorological Society, 95",
+      suffix: "(3), 341–346.",
+      href: "https://doi.org/10.1175/BAMS-D-12-00074.1",
     },
     {
       prefix: "Kartverket. (u.å.). ",
