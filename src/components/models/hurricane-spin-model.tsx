@@ -371,7 +371,7 @@ const FUJITA_DATA = [
 ];
 
 // Startverdier for stormflokalkulatoren (brukes også av «Tilbakestill»).
-const SURGE_DEFAULTS = { pressure: 960, windSpeed: 35, isSpringTide: true } as const;
+const SURGE_DEFAULTS = { pressure: 960, windSpeed: 20, isSpringTide: true } as const;
 
 export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState<"rotation" | "saffir" | "fujita" | "surge">(
