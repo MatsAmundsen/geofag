@@ -1166,6 +1166,13 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv",
     stale: ["rister husene mest.\n\n```widget\nSjekkJordskjelv3"],
   },
+  {
+    // Jordskjelv som naturfare: gjentak med Poisson-formel P = 1 − e^(−T/R) i l. 118 og tabellen
+    // 1,0 / 39,3 / 63,2 % i l. 122 (Baker, 2008; USGS, 2019). Fagsjekket av Geo 20.10, PR godkjent av Mats 20.10.
+    flag: "g1-jordskjelv-naturfare-poisson-2026-10-20",
+    slug: "jordskjelv-naturfare",
+    stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
