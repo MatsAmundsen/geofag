@@ -312,7 +312,7 @@ const SAFFIR_DATA = [
     pressure: "< 920 hPa",
     surge: "> 5,5 m",
     damage:
-      "Total utslettelse. Bygninger pulveriseres, biler og industribrakker slynges gjennom luften. Kysten oversvømmes av en massiv mur av vann. Eksempler: Katrina (2005), Dorian (2019).",
+      "Total utslettelse. Bygninger pulveriseres, biler og industribrakker slynges gjennom lufta. Kysten oversvømmes av en massiv mur av vann. Eksempler: Katrina (2005), Dorian (2019).",
     color: "text-red-500 border-red-500/40 bg-red-950/30",
   },
 ];
@@ -355,7 +355,7 @@ const FUJITA_DATA = [
     name: "Ødeleggende tornado",
     windKm: "267–322 km/t",
     damage:
-      "Ekstreme skader. Godt konstruerte hus jevnes med jorden. Biler kastes som prosjektiler. Store gjenstander flyr som missiler.",
+      "Ekstreme skader. Godt konstruerte hus jevnes med jorda. Biler kastes som prosjektiler. Store gjenstander flyr som missiler.",
     color: "text-rose-500 border-rose-500/40",
   },
   {
@@ -394,7 +394,10 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
 
   // Samlet stormflo over sjøkartnull i meter
   const totalSurgeCm = surgeBaroCm + surgeWindCm + tideCm;
-  const totalSurgeM = (totalSurgeCm / 100).toFixed(2);
+  const totalSurgeM = (totalSurgeCm / 100).toLocaleString("nb-NO", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
   const isQuayFlooded = totalSurgeCm > 220; // Bryggehøyde er 220 cm
 
   const catData = SAFFIR_DATA.find((d) => d.cat === selectedCat)!;
@@ -408,7 +411,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
       {!embedded && (
         <div className="mb-6 flex flex-wrap gap-2 border-b border-border pb-4">
           <ModelTab active={activeTab === "rotation"} onClick={() => setActiveTab("rotation")}>
-            1. Coriolis &amp; Rotasjon
+            1. Coriolis og rotasjon
           </ModelTab>
           <ModelTab active={activeTab === "saffir"} onClick={() => setActiveTab("saffir")}>
             2. Saffir-Simpson (Orkaner)
@@ -427,22 +430,23 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
         <>
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">
-              Innstrømmende luft avbøyes av Corioliskraften (f = 2Ω sin φ). Mot klokken i nord, med
-              klokken i sør.
+              Innstrømmende luft avbøyes av Corioliskraften (f&nbsp;=&nbsp;2Ω&nbsp;sin&nbsp;φ). Mot
+              klokken i nord, med klokken i sør.
             </p>
             <span className="shrink-0 rounded-md border border-[#e08a8a]/35 bg-[#e08a8a]/10 px-3 py-1 text-xs text-[#e08a8a]">
-              Sentripetal akselerasjon &amp; trykkfall mot L
+              Sentripetal akselerasjon og trykkfall mot L
             </span>
           </div>
           <HurricaneBody />
           <div className="mt-5">
             <ModelNote title="Hvorfor orkaner aldri dannes på ekvator" tone="low">
               <p>
-                Ved ekvator er breddegraden φ = 0°. Siden sin(0°) = 0, er Corioliskraften lik null
-                (f = 0). Selv om havtemperaturen ved ekvator ofte overstiger 28–30 °C, kan ikke
-                innstrømmende luft settes i rotasjon. Luften strømmer rett inn i lavtrykket og
-                fyller det opp umiddelbart. Tropiske sykloner trenger minst 5° breddegrad (ca. 500
-                km fra ekvator) for å fødes.
+                Ved ekvator er breddegraden φ&nbsp;=&nbsp;0°. Siden sin(0°)&nbsp;=&nbsp;0, blir
+                Coriolisparameteren null (f&nbsp;=&nbsp;0), og dermed også Corioliskraften. Selv om
+                havtemperaturen ved ekvator ofte overstiger 28–30 °C, kan ikke innstrømmende luft
+                settes i rotasjon. Lufta strømmer rett inn i lavtrykket og fyller det opp
+                umiddelbart. Tropiske sykloner trenger minst 5° breddegrad (ca. 500 km fra ekvator)
+                for å fødes.
               </p>
             </ModelNote>
           </div>
@@ -527,9 +531,10 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
             </div>
             <div className="rounded-lg border border-border bg-card p-4">
               <strong className="text-foreground block mb-1">Stormflo er dødsårsak nr. 1:</strong>I
-              USA i 1963–2012 skjedde om lag 90 % av dødsfallene fra tropiske sykloner i vann, de
-              fleste ved drukning. Stormflo alene sto for om lag halvparten (Rappaport, 2014). Når
-              Kategori 4/5 treffer langgrunne kyster, kan hele øysamfunn og kystbyer utslettes.
+              USA i perioden 1963–2012 var om lag 90 % av dødsfallene fra atlantiske tropiske
+              sykloner knyttet til vann, og de fleste druknet. Stormflo alene sto for om lag
+              halvparten (Rappaport, 2014). Når Kategori 4/5 treffer langgrunne kyster, kan hele
+              øysamfunn og kystbyer utslettes.
             </div>
           </div>
         </div>
@@ -753,8 +758,9 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
           <ModelNote title="Forenklet modell">
             <p>
               Kalkulatoren legger sammen tre ledd: om lag 1 cm per hPa trykkfall, vindstuv som øker
-              med kvadratet av vindfarten, og et fast tillegg for tidevann. Kystform, sokkelbredde
-              og bølger er ikke med. Vannstanden der du bor finner du i Kartverkets tjeneste{" "}
+              med kvadratet av vindfarten, og et tillegg for tidevann (springflo eller middelvann).
+              Kystform, sokkelbredde og bølger er ikke med. Vannstanden der du bor, finner du i
+              Kartverkets tjeneste{" "}
               <a
                 href="https://www.kartverket.no/til-sjos/se-havniva"
                 target="_blank"
