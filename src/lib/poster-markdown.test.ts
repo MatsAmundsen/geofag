@@ -517,7 +517,7 @@ describe("chapter posters from this pull request", () => {
       "utf8",
     );
     const ids = listedWidgetIds(injectPosterWidgets(md));
-    for (const id of ["JetForklaring", "NaoForklaring", "QuizJet"]) {
+    for (const id of ["JetForklaring", "NaoForklaringJet", "QuizJet"]) {
       assert.equal(ids.has(id), true, `jet missing ${id}`);
       assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
     }

@@ -77,7 +77,7 @@ JetStormbane
 ```
 
 ```widget
-NaoForklaring
+NaoForklaringJet
 ```
 
 Den nordatlantiske oscillasjonen (NAO) sier noe om hvor sterk og hvor langt nord den atlantiske jetstrømmen ligger. I en positiv fase er både lavtrykket ved Island og høytrykket ved Asorene sterkere enn vanlig. Da blir jetstrømmen over Atlanteren sterkere, og stormbanen flytter seg nordover. Nord-Europa får mer storm, mer nedbør og høyere temperatur enn gjennomsnittet, fordi lufta kommer fra lavere breddegrader. Sør-Europa får mindre storm og mindre nedbør (NOAA, u.å.-b).
