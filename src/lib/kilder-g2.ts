@@ -11,7 +11,6 @@ export const KILDER_G2 = {
       prefix: "Bjerknes, J., & Solberg, H. (1922). ",
       italic: "Life cycle of cyclones and the polar front theory of atmospheric circulation",
       suffix: ". Geofysiske Publikasjoner, 3(1), 1–18.",
-      href: "https://doi.org/10.1002/qj.49704920608",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",

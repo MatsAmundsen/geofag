@@ -143,15 +143,15 @@ export function RealisticSynopticChartDiagram() {
           {/* 1. Okklusjon fra L1 (340, 210) til trippelpunkt (380, 250) */}
           <path d="M 340 210 C 355 220 370 235 380 250" fill="none" stroke="#a855f7" strokeWidth="4" />
           <polygon points="352,221 359,212 363,225" fill="#a855f7" />
-          <path d="M 368 234 A 6 6 0 0 0 377 241 Z" fill="#a855f7" />
+          <path d="M 364 232 A 7 7 0 0 1 375 243 Z" fill="#a855f7" />
           <L x="325" y="245" fill="#a855f7" size={11} weight={800}>Okklusjon</L>
 
           {/* 2. Varmfront fra trippelpunktet (380, 250) mot Norge (560, 360) */}
           <path d="M 380 250 C 430 280 490 320 560 360" fill="none" stroke={C.low} strokeWidth="4" />
-          {/* Halvsirkler på varmfronten pekende mot nordøst (i fartsretningen) */}
-          <path d="M 420 274 A 8 8 0 0 0 434 283 Z" fill={C.low} />
-          <path d="M 480 312 A 8 8 0 0 0 494 321 Z" fill={C.low} />
-          <path d="M 535 344 A 8 8 0 0 0 549 353 Z" fill={C.low} />
+          {/* Halvsirkler på varmfronten pekende mot nordøst (i fartsretningen, mot den kalde lufta). sweep=1 gir bulen på nordøstsiden. */}
+          <path d="M 420 274 A 8 8 0 0 1 434 283 Z" fill={C.low} />
+          <path d="M 480 312 A 8 8 0 0 1 494 321 Z" fill={C.low} />
+          <path d="M 535 344 A 8 8 0 0 1 549 353 Z" fill={C.low} />
 
           {/* Jevnt nedbørsfelt foran varmfronten */}
           <ellipse cx="530" cy="310" rx="55" ry="35" fill="url(#syn-rain-zone)" opacity="0.8" />
@@ -175,9 +175,9 @@ export function RealisticSynopticChartDiagram() {
           <path d="M 230 220 C 235 280 270 320 330 310" fill="none" stroke="#38bdf8" strokeWidth="2.2" className="model-wind-flow" />
           <path d="M 460 230 C 400 200 370 210 350 230" fill="none" stroke="#38bdf8" strokeWidth="2.5" className="model-wind-fast" />
 
-          {/* STERK VIND DER ISOBARENE LIGGER TETT */}
-          <Arrow d="M 430 270 L 480 260" marker={m.warm} color={C.warm} width={3.2} />
-          <L x="486" y="252" fill={C.warm} size={11} weight={800}>Sterk vind</L>
+          {/* STERK VIND DER ISOBARENE LIGGER TETT. Pila følger isobarene mot klokka rundt L, litt avbøyd inn mot lavtrykket (friksjon ved bakken). */}
+          <Arrow d="M 458 274 L 452 230" marker={m.warm} color={C.warm} width={3.2} />
+          <L x="462" y="236" fill={C.warm} size={11} weight={800}>Sterk vind</L>
 
           {/* STASJONSPLOTT UTEN NAVN: temperatur, duggpunkt, trykk og vind (WMO-symboler) */}
           {/* Plott 1: i varm sektor, mellom 990 og 995 hPa. Skydekke 6/8, vind fra sør. */}
