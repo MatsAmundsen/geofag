@@ -1173,6 +1173,7 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv-naturfare",
     stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
   },
+  { flag: "g2-coriolis-ekman-2026-10-22", slug: "coriolis", stale: ["opptil 100–200 m ved sterk vind"] },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
