@@ -303,8 +303,8 @@ export function TemperatureInversionDiagram() {
   return (
     <Diagram
       title="Temperaturinversjon: Normal atmosfærisk temperaturprofil kontra bakkeinversjon"
-      heading="Temperaturinversjon: Atmosfærens giftige lokk"
-      caption="Normalt synker temperaturen med høyden (venstre, ca. 0,65 °C / 100 m), slik at varmere luft ved bakken kan stige og tynne ut forurensning via konveksjon. Ved en temperaturinversjon (høyre) fører sterk langbølget strålingsavkjøling på klare, stille vinternetter til at bakken og luften nærmest bakken blir mye kaldere enn luften lenger oppe (dT/dz > 0). Det varme sjiktet danner et ugjennomtrengelig termisk lokk. I bygryter og dalfører (som Bergen, Oslo og Lillehammer) stenges vedrøyk, eksos (NO₂) og svevestøv (PM₁₀) inne i bunnen og når akutt helsefarlige nivåer."
+      heading="Temperaturinversjon: et lokk av varmere luft"
+      caption="Vanligvis avtar temperaturen oppover, fordi atmosfæren varmes nedenfra og konveksjon blander lufta (venstre). I en inversjon stiger temperaturen med høyden (høyre). En klar vinternatt mister bakken varme ved utstråling, og kald, tung luft legger seg i daler og fjorder. Lufta nær bakken blandes dårlig med lufta over, og utslipp fra skip, veitrafikk og vedfyring kan samle seg og gi dårlig luftkvalitet (Store norske leksikon, u.å.-m). Temperaturene er tenkte eksempler."
       viewBox="0 0 920 440"
       wide
     >
@@ -332,7 +332,7 @@ export function TemperatureInversionDiagram() {
           <line x1="90" y1="350" x2="90" y2="120" stroke={C.dim} strokeWidth="1.5" />
           <L x="85" y="115" fill={C.muted} size={10} anchor="end">Høyde (z)</L>
           <L x="85" y="150" fill={C.muted} size={9} anchor="end">1000 m (-5 °C)</L>
-          <L x="85" y="250" fill={C.muted} size={9} anchor="end">500 m (-2 °C)</L>
+          <L x="85" y="250" fill={C.muted} size={9} anchor="end">500 m (-1 °C)</L>
           <L x="85" y="340" fill={C.muted} size={9} anchor="end">0 m (+2 °C)</L>
 
           {/* Normal temperaturprofil-kurve (går skrått mot venstre oppover: blir kaldere) */}
@@ -351,7 +351,7 @@ export function TemperatureInversionDiagram() {
           {/* Oppdrifts-piler */}
           <Arrow d="M 270 310 L 270 170" marker={m.warm} color={C.warm} width={2.4} />
           <L x="280" y="240" fill={C.warm} size={11} weight={600}>Termisk oppdrift</L>
-          <L x="280" y="256" fill={C.muted} size={10}>Ren og trygg byluft</L>
+          <L x="280" y="256" fill={C.muted} size={10}>Utslipp tynnes ut</L>
 
           {/* --- HØYRE: TEMPERATURINVERSJON (STERKT STABIL) --- */}
           <rect x="480" y="30" width="410" height="380" rx="8" fill="#141923" stroke="#f87171" strokeWidth="1.5" />
@@ -365,7 +365,7 @@ export function TemperatureInversionDiagram() {
           {/* Kald dalbunn */}
           <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1" />
           <L x="685" y="375" fill="#7dd3fc" size={11} weight={600} anchor="middle">
-            Kald dalbunn: -15 °C (Kraftig nattlig strålingstap)
+            Kald dalbunn: -15 °C (bakken mister varme ved utstråling)
           </L>
 
           {/* Vertikal akse for høyde */}
@@ -391,7 +391,7 @@ export function TemperatureInversionDiagram() {
             INVERSJONSLAG (TERMISK LOKK, ~300 m)
           </L>
           <L x="710" y="249" fill="#fde68a" size={9} anchor="middle">
-            dT/dz &gt; 0 · Oppdrift er strengt forbudt!
+            dT/dz &gt; 0 · lufta under blandes dårlig med lufta over
           </L>
 
           {/* Fanget forurensning i bunnen (Smog / Giftlokk) */}
@@ -407,10 +407,10 @@ export function TemperatureInversionDiagram() {
 
           {/* Tekst om faren */}
           <L x="700" y="300" fill="#fef08a" size={11} weight={700} anchor="middle">
-            ⚠️ Akutt opphopning: PM₁₀, PM₂,₅ og NO₂
+            Utslipp samler seg under lokket
           </L>
           <L x="700" y="318" fill="#fde68a" size={10} anchor="middle">
-            Lokalforurensning i Danmarks plass (Bergen) / Oslo-gryta
+            Fra skip, veitrafikk og vedfyring
           </L>
         </>
       )}
