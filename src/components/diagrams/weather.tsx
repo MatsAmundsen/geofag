@@ -147,151 +147,77 @@ export function ValleyWindDiagram() {
 export function FoehnAdiabaticDiagram() {
   return (
     <Diagram
-      title="Føhneffekten: tørradiabatisk og fuktadiabatisk heving og nedsynkning"
-      heading="Hvorfor blir luften varmere og tørrere på lesiden?"
-      caption="Når en luftpakke tvinges over en fjellkjede, avkjøles den først tørradiabatisk (DALR = 1,0 °C / 100 m) inntil den når kondensasjonsnivået (LCL). Derfra avkjøles den saktere med fuktadiabatisk temperaturendring (SALR ≈ 0,6 °C / 100 m) fordi kondensasjon frigjør latent varme. Regnet faller ut på losiden. På lesiden synker den uttørkede luften og varmes tørradiabatisk (1,0 °C / 100 m) hele veien ned. Resultatet er at luften lander mye varmere og knusktørr i dalen på lesiden."
+      title="Føn: lufta varmes når den synker på lesiden"
+      heading="Hvorfor blir lufta varmere og tørrere på lesiden?"
+      caption="Lufta som passerer fjellet, synker på lesiden. Der kommer den under høyere lufttrykk og varmes med omtrent 1 °C per 100 m (tørradiabatisk). Den relative fuktigheten synker fordi det ikke tilføres fuktighet. Lufta kan bli særlig varm hvis den kommer ned fra høye luftlag. Kondensasjon og regn på losiden kan bidra litt, men betyr mindre enn man tidligere trodde (Store norske leksikon, u.å.-g). Alle tall i figuren er et forenklet regneeksempel, ikke målinger."
       viewBox="0 0 900 480"
       wide
     >
       {(m) => (
         <>
-          {/* Fjellprofil: Lo-side (venstre, bratt/slak heving) til toppen 2500m, Le-side (høyre) ned til dalen */}
-          <path
-            d="M 50 410 L 450 120 L 850 410 Z"
-            fill="#17222a"
-            stroke={C.dim}
-            strokeWidth="2"
-          />
-          <path d="M 50 410 L 450 120 L 450 410 Z" fill="#1b2832" />
-
-          {/* Bakkenivå / havoverflate */}
+          {/* Fjellprofil: 0 m ved y=410, 1000 m ved y=294 (0,116 px/m), topp 2000 m ved y=178 */}
+          <path d="M 50 410 L 450 178 L 850 410 Z" fill="#17222a" stroke={C.dim} strokeWidth="2" />
+          <path d="M 50 410 L 450 178 L 450 410 Z" fill="#1b2832" />
           <line x1="30" y1="410" x2="870" y2="410" stroke={C.dim} strokeWidth="1.6" />
-
-          {/* Høydeangivelser på fjellet */}
-          {/* 0 m */}
-          <line x1="40" y1="410" x2="860" y2="410" stroke={C.dim} strokeDasharray="3 3" />
           <L x="35" y="405" fill={C.muted} size={11} anchor="end">0 m</L>
 
-          {/* 1000 m (Kondensasjonsnivå LCL) */}
-          <line x1="40" y1="294" x2="860" y2="294" stroke={C.teal} strokeDasharray="4 4" strokeWidth="1.2" />
-          <L x="44" y="308" fill={C.teal} size={11}>1000 m (LCL)</L>
-          <L x="120" y="284" fill={C.teal} size={12} weight={700}>
-            Kondensasjonsnivå (LCL)
-          </L>
-          <L x="120" y="300" fill={C.muted} size={10}>
-            100 % relativ fuktighet · Skyer dannes
-          </L>
+          {/* Skybase */}
+          <line x1="40" y1="294" x2="450" y2="294" stroke={C.teal} strokeDasharray="4 4" strokeWidth="1.2" />
+          <L x="44" y="310" fill={C.teal} size={11}>1000 m</L>
+          <L x="60" y="284" fill={C.teal} size={12} weight={700}>Skybase (lufta blir metta)</L>
 
-          {/* 2500 m (Fjelltopp) */}
-          <line x1="40" y1="120" x2="860" y2="120" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.2" />
-          <L x="35" y="116" fill={C.warm} size={11} anchor="end">2500 m</L>
-          <L x="450" y="98" fill={C.fg} size={14} weight={800} anchor="middle">
-            Fjelltopp: 2500 m
-          </L>
+          {/* Topp */}
+          <line x1="40" y1="178" x2="860" y2="178" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.2" />
+          <L x="35" y="174" fill={C.warm} size={11} anchor="end">2000 m</L>
 
-          {/* LOSIDE (Venstre - f.eks. Vestlandet) */}
-          <L x="180" y="60" fill={C.rain} size={16} weight={800} anchor="middle">
-            LOSIDE (Vestlandet)
-          </L>
-          <L x="180" y="80" fill={C.muted} size={12} anchor="middle">
-            Fuktig luft fra havet tvinges til værs
-          </L>
+          {/* LOSIDE */}
+          <L x="180" y="40" fill={C.rain} size={16} weight={800} anchor="middle">LOSIDE</L>
+          <L x="180" y="60" fill={C.muted} size={12} anchor="middle">Fuktig luft tvinges opp</L>
 
-          {/* Starttilstand på losiden (0 m) */}
-          <rect x="50" y="340" width="130" height="60" rx="6" fill="#142633" stroke={C.rain} strokeWidth="1.5" />
-          <L x="115" y="362" fill={C.rain} size={15} weight={800} anchor="middle">
-            +12 °C
-          </L>
-          <L x="115" y="382" fill={C.fg} size={11} anchor="middle">
-            RF: 75 % (Umettet)
-          </L>
+          <rect x="50" y="340" width="130" height="50" rx="6" fill="#142633" stroke={C.rain} strokeWidth="1.5" />
+          <L x="115" y="362" fill={C.rain} size={15} weight={800} anchor="middle">+12 °C</L>
+          <L x="115" y="380" fill={C.fg} size={11} anchor="middle">Umetta luft</L>
 
-          {/* Trinn 1: Tørradiabatisk heving 0 m -> 1000 m */}
-          <Arrow d="M 120 340 L 190 290" marker={m.teal} color={C.teal} width={3} />
-          <L x="115" y="320" fill={C.teal} size={11} weight={700}>
-            DALR: -1,0 °C / 100 m
-          </L>
-
-          {/* Tilstand ved LCL (1000 m) */}
+          {/* Heving under skybasen */}
+          <Arrow d="M 150 340 L 205 300" marker={m.teal} color={C.teal} width={3} />
+          <L x="200" y="335" fill={C.teal} size={11} weight={700}>-1,0 °C / 100 m</L>
           <circle cx="210" cy="294" r="5" fill={C.teal} />
-          <L x="220" y="275" fill={C.teal} size={14} weight={800}>
-            +2 °C
-          </L>
-          <L x="220" y="290" fill={C.fg} size={10}>
-            100 % RF
-          </L>
+          <L x="218" y="312" fill={C.teal} size={14} weight={800}>+2 °C</L>
 
-          {/* Trinn 2: Fuktadiabatisk heving med skyer og regn 1000 m -> 2500 m */}
-          {/* Orografiske skyer og regn */}
-          <path
-            d="M 210 280 Q 280 180 430 130 L 410 170 Q 290 220 230 290 Z"
-            fill="#38bdf8"
-            opacity="0.35"
-          />
-          {/* Regndråper */}
-          <Arrow d="M 260 250 L 250 320" marker={m.rain} color={C.rain} width={2.2} />
-          <Arrow d="M 320 210 L 310 300" marker={m.rain} color={C.rain} width={2.2} />
-          <Arrow d="M 370 180 L 360 270" marker={m.rain} color={C.rain} width={2.2} />
-          <L x="290" y="345" fill={C.rain} size={12} weight={700}>
-            Orografisk regn 🌧️
-          </L>
-          <L x="290" y="360" fill={C.muted} size={10}>
-            Latent varme frigjøres til luften!
-          </L>
+          {/* Sky og regn på losiden */}
+          <path d="M 215 285 Q 300 215 435 182 L 420 205 Q 310 240 240 292 Z" fill="#38bdf8" opacity="0.35" />
+          <Arrow d="M 290 255 L 282 300" marker={m.rain} color={C.rain} width={2} />
+          <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={2} />
+          <Arrow d="M 225 280 L 430 182" marker={m.rain} color={C.rain} width={3} />
+          <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. -0,6 °C / 100 m</L>
+          <L x="150" y="246" fill={C.muted} size={10}>Regn faller på losiden</L>
 
-          <Arrow d="M 230 260 L 430 130" marker={m.rain} color={C.rain} width={3} />
-          <L x="290" y="160" fill={C.rain} size={11} weight={700}>
-            SALR: -0,6 °C / 100 m
-          </L>
+          <rect x="395" y="118" width="110" height="46" rx="6" fill="#1b242e" stroke={C.fg} strokeWidth="1.5" />
+          <L x="450" y="138" fill={C.fg} size={15} weight={800} anchor="middle">-4 °C</L>
+          <L x="450" y="155" fill={C.sand} size={10} anchor="middle">på toppen</L>
 
-          {/* Tilstand på toppen (2500 m) */}
-          <rect x="390" y="130" width="120" height="50" rx="6" fill="#1b242e" stroke={C.fg} strokeWidth="1.5" />
-          <L x="450" y="152" fill={C.fg} size={15} weight={800} anchor="middle">
-            -7 °C
-          </L>
-          <L x="450" y="170" fill={C.sand} size={10} weight={700} anchor="middle">
-            Vannet er regnet ut!
-          </L>
+          {/* LESIDE */}
+          <L x="700" y="40" fill={C.warm} size={16} weight={800} anchor="middle">LESIDE</L>
+          <L x="700" y="60" fill={C.sand} size={12} anchor="middle">Lufta synker og blir presset sammen</L>
+          <Arrow d="M 790 95 L 700 180" marker={m.warm} color={C.warm} width={2.4} />
+          <L x="610" y="100" fill={C.muted} size={10}>Lufta kan også komme</L>
+          <L x="610" y="114" fill={C.muted} size={10}>ned fra høyere luftlag</L>
 
-          {/* LESIDE (Høyre - f.eks. Østlandet / Innlandet) */}
-          <L x="700" y="60" fill={C.warm} size={16} weight={800} anchor="middle">
-            LESIDE (Østlandet)
-          </L>
-          <L x="700" y="80" fill={C.sand} size={12} anchor="middle">
-            Fønvind: Tørr luft synker og komprimeres
-          </L>
+          <Arrow d="M 470 190 L 730 350" marker={m.warm} color={C.warm} width={3.6} />
+          <L x="630" y="240" fill={C.warm} size={13} weight={800}>+1,0 °C / 100 m</L>
+          <L x="630" y="258" fill={C.muted} size={11}>Hovedgrunnen til fønvarmen</L>
 
-          {/* Trinn 3: Tørradiabatisk nedsynkning hele veien ned 2500 m -> 0 m */}
-          <Arrow d="M 470 140 L 730 360" marker={m.warm} color={C.warm} width={3.6} />
-          <L x="640" y="210" fill={C.warm} size={13} weight={800}>
-            DALR: +1,0 °C / 100 m
-          </L>
-          <L x="640" y="230" fill={C.muted} size={11}>
-            Ingen dråper å fordampe!
-          </L>
-          <L x="640" y="248" fill={C.fg} size={11}>
-            Oppvarmingen blir stående.
-          </L>
+          <rect x="710" y="340" width="150" height="50" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2" />
+          <L x="785" y="362" fill={C.warm} size={18} weight={900} anchor="middle">+16 °C</L>
+          <L x="785" y="380" fill={C.sand} size={10} anchor="middle">Lavere relativ fuktighet</L>
 
-          {/* Sluttilstand på lesiden (0 m i dalen) */}
-          <rect x="710" y="335" width="150" height="65" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2" />
-          <L x="785" y="360" fill={C.warm} size={18} weight={900} anchor="middle">
-            +18 °C 🔥
-          </L>
-          <L x="785" y="380" fill="#fff" size={11} weight={700} anchor="middle">
-            FØNVIND (+6 °C varmere!)
-          </L>
-          <L x="785" y="394" fill={C.sand} size={10} anchor="middle">
-            RF: under 30 % (Knusktørr)
-          </L>
-
-          {/* Forklaring i boks nederst */}
+          {/* Regneeksempel */}
           <rect x="50" y="425" width="800" height="46" rx="6" fill="#141c22" stroke={C.dim} strokeWidth="1.2" />
           <L x="450" y="445" fill={C.fg} size={12} weight={700} anchor="middle">
-            Fysikken bak regnestykket:
+            Regneeksempel (tenkte tall, ikke målinger)
           </L>
           <L x="450" y="462" fill={C.muted} size={11} anchor="middle">
-            Avkjøling i lo: (10 × 1,0) + (15 × 0,6) = -19 °C fall (fra +12 til -7 °C) | Oppvarming i le: 25 × 1,0 = +25 °C stigning (fra -7 til +18 °C). Netto gevinst = +6 °C!
+            Lo: 12 - 10 × 1,0 - 10 × 0,6 = -4 °C på toppen · Le: -4 + 20 × 1,0 = +16 °C i dalen
           </L>
         </>
       )}
@@ -331,13 +257,14 @@ export function TemperatureInversionDiagram() {
           {/* Vertikal akse for høyde */}
           <line x1="90" y1="350" x2="90" y2="120" stroke={C.dim} strokeWidth="1.5" />
           <L x="85" y="115" fill={C.muted} size={10} anchor="end">Høyde (z)</L>
+          <L x="420" y="115" fill={C.muted} size={10} anchor="end">Eksempeltall</L>
           <L x="85" y="150" fill={C.muted} size={9} anchor="end">1000 m (-5 °C)</L>
           <L x="85" y="250" fill={C.muted} size={9} anchor="end">500 m (-1 °C)</L>
           <L x="85" y="340" fill={C.muted} size={9} anchor="end">0 m (+2 °C)</L>
 
           {/* Normal temperaturprofil-kurve (går skrått mot venstre oppover: blir kaldere) */}
           <line x1="300" y1="345" x2="160" y2="135" stroke="#38bdf8" strokeWidth="3" />
-          <L x="260" y="225" fill="#38bdf8" size={12} weight={600}>
+          <L x="306" y="335" fill="#38bdf8" size={12} weight={600}>
             Temperaturprofil T(z)
           </L>
 
@@ -365,12 +292,13 @@ export function TemperatureInversionDiagram() {
           {/* Kald dalbunn */}
           <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1" />
           <L x="685" y="375" fill="#7dd3fc" size={11} weight={600} anchor="middle">
-            Kald dalbunn: -15 °C (bakken mister varme ved utstråling)
+            Kald dalbunn: bakken mister varme ved utstråling
           </L>
 
           {/* Vertikal akse for høyde */}
           <line x1="540" y1="350" x2="540" y2="120" stroke={C.dim} strokeWidth="1.5" />
           <L x="535" y="115" fill={C.muted} size={10} anchor="end">Høyde (z)</L>
+          <L x="870" y="115" fill={C.muted} size={10} anchor="end">Eksempeltall</L>
           <L x="535" y="160" fill={C.muted} size={9} anchor="end">600 m (-5 °C)</L>
           <L x="535" y="240" fill={C.muted} size={9} anchor="end">300 m (-2 °C)</L>
           <L x="535" y="340" fill={C.muted} size={9} anchor="end">0 m (-15 °C)</L>
@@ -387,11 +315,11 @@ export function TemperatureInversionDiagram() {
           {/* Inversjonslaget skravert som "Termisk lokk" */}
           <rect x="550" y="225" width="320" height="30" fill="#ea580c" opacity="0.25" rx="4" />
           <line x1="550" y1="240" x2="870" y2="240" stroke="#f97316" strokeDasharray="4 2" strokeWidth="1.5" />
-          <L x="710" y="235" fill="#fdba74" size={11} weight={800} anchor="middle">
-            INVERSJONSLAG (TERMISK LOKK, ~300 m)
+          <L x="745" y="236" fill="#fdba74" size={11} weight={800}>
+            INVERSJONSLAG (LOKK)
           </L>
-          <L x="710" y="249" fill="#fde68a" size={9} anchor="middle">
-            dT/dz &gt; 0 · lufta under blandes dårlig med lufta over
+          <L x="745" y="250" fill="#fde68a" size={9}>
+            Varmere oppover
           </L>
 
           {/* Fanget forurensning i bunnen (Smog / Giftlokk) */}

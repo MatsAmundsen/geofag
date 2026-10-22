@@ -28,14 +28,12 @@ export function FoehnModel() {
   const tLoEquivalent = t0 - (zLee / 100) * gammaD;
   const netHeating = tLee - tLoEquivalent;
 
-  // Beregnet latent varme og fuktighetsfall
-  const rhLee = Math.max(18, Math.round(100 * Math.pow(0.5, (tLee - tLcl) / 5)));
 
   return (
     <ModelFrame
       kicker="Interaktiv kalkulator"
       title="Fønvindens termodynamikk: Adiabatisk beregner"
-      lead="Se trinn for trinn hvordan orografisk sky- og nedbørsdannelse på losiden frigjør latent varme, slik at luften blir vesentlig varmere og knusktørr når den synker ned i dalen på lesiden."
+      lead="Et forenklet regneeksempel: lufta avkjøles når den heves på losiden, og varmes med omtrent 1 °C per 100 m når den synker på lesiden. Det er synkingen som gir det meste av fønvarmen. Lufta kan komme fra høyere luftlag enn fjelltoppen, og regn på losiden betyr mindre enn man tidligere trodde (Store norske leksikon, u.å.-g)."
     >
       <div>
         <ModelMarkers />
@@ -98,7 +96,7 @@ export function FoehnModel() {
               <input
                 type="range"
                 min="1000"
-                max="2600"
+                max="2400"
                 step="100"
                 value={zTop}
                 onChange={(e) => {
@@ -130,19 +128,16 @@ export function FoehnModel() {
             {/* Sammenfatningsboks */}
             <div className="mt-4 rounded-xl border border-primary/30 bg-primary/10 p-3.5 text-xs space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-primary">Netto fønoppvarming:</span>
+                <span className="font-semibold text-primary">Forskjell i dette regneeksempelet:</span>
                 <span className="text-base font-bold text-amber-400">
                   +{netHeating.toFixed(1)} °C
                 </span>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                Fordi luftpakken regnet fra seg vanndamp (skytykkelse: {cloudThickness} m), frigjorde
-                kondensasjonen latent varme. Formel:{" "}
-                <strong className="text-foreground font-mono">
-                  ΔT = (Γ_d - Γ_m) · (Δz_sky / 100) = (1,0 - 0,6) · {cloudThickness / 100} = +
-                  {netHeating.toFixed(1)} °C
-                </strong>
-                .
+                I denne forenklede modellen kommer forskjellen bare av at lufta avkjøles saktere i skyen
+                (skytykkelse: {cloudThickness} m). I virkeligheten betyr dette mindre enn man tidligere
+                trodde. Viktigere er at lufta synker og blir presset sammen, ofte fra høyere luftlag enn
+                fjelltoppen (Store norske leksikon, u.å.-g).
               </p>
             </div>
           </ModelPanel>
@@ -252,7 +247,7 @@ export function FoehnModel() {
                           markerEnd="url(#mdl-red)"
                         />
                         <text x="486" y={(yTop + yLee) / 2 - 15} fill="#f59e0b" fontSize="11" fontWeight="600">
-                          Trinn 3: Tørr kompresjonsoppvarming (1,0 °C / 100m)
+                          Trinn 3: Lufta synker og varmes (1,0 °C / 100m)
                         </text>
 
                         {/* Markører ved nøkkelpunkter */}
@@ -262,7 +257,7 @@ export function FoehnModel() {
                           <rect x="10" y="-18" width="95" height="34" rx="4" fill="#0f172a" stroke="#334155" />
                           <text x="18" y="-4" fill="#cbd5e1" fontSize="10">Loside (0 m):</text>
                           <text x="18" y="10" fill="#38bdf8" fontSize="12" fontWeight="bold">
-                            {t0.toFixed(1)} °C · 75% RH
+                            {t0.toFixed(1)} °C
                           </text>
                         </g>
 
@@ -272,7 +267,7 @@ export function FoehnModel() {
                           <rect x="10" y="-18" width="105" height="34" rx="4" fill="#0f172a" stroke="#334155" />
                           <text x="18" y="-4" fill="#cbd5e1" fontSize="10">Skybase ({zLcl} m):</text>
                           <text x="18" y="10" fill="#38bdf8" fontSize="12" fontWeight="bold">
-                            {tLcl.toFixed(1)} °C · 100% RH
+                            {tLcl.toFixed(1)} °C · metta
                           </text>
                         </g>
 
@@ -299,7 +294,7 @@ export function FoehnModel() {
                             {tLee.toFixed(1)} °C
                           </text>
                           <text x="-75" y="-6" fill="#fde68a" fontSize="10">
-                            RH: ~{rhLee} % (Knusktørr!)
+                            Lavere relativ fuktighet
                           </text>
                         </g>
                       </>
@@ -330,7 +325,7 @@ export function FoehnModel() {
                   2. Fuktigadiabatisk sky
                 </span>
                 <p className="text-muted-foreground">
-                  Fra {zLcl} til {zTop} m frigjør kondensasjon latent varme (0,6 °C/100m).
+                  Fra {zLcl} til {zTop} m avkjøles lufta saktere (ca. 0,6 °C/100m) fordi kondensasjon frigjør varme.
                 </p>
                 <p className="font-mono text-foreground">
                   {tLcl.toFixed(1)} °C - {((cloudThickness / 100) * 0.6).toFixed(1)} °C ={" "}
@@ -344,7 +339,7 @@ export function FoehnModel() {
                   3. Tørr nedsynkning
                 </span>
                 <p className="text-muted-foreground">
-                  Fra {zTop} til {zLee} m varmes tørr luft adiabatisk med 1,0 °C/100m!
+                  Fra {zTop} til {zLee} m synker lufta og varmes med omtrent 1,0 °C/100m.
                 </p>
                 <p className="font-mono text-amber-300 font-bold">
                   {tTop.toFixed(1)} °C + {((descentHeight / 100) * 1.0).toFixed(1)} °C = {tLee.toFixed(1)} °C
