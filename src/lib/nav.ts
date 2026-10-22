@@ -135,7 +135,7 @@ export const GF2_THEMES = [
     image: "/images/fig-jet.jpg",
     alt: "Tynn, rask skyelv høyt over havet mot jordas krumning",
     blurb:
-      "Et smalt belte med sterk vestavind høyt oppe, typisk rundt 9 km. Det påvirker hvor lavtrykkene går, og dermed været i Norge.",
+      "Et smalt belte med sterk vestavind i 8–12 km høyde. Det påvirker hvor lavtrykkene går, og dermed været i Norge.",
     status: "klar" as const,
   },
   {

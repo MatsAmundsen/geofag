@@ -278,6 +278,19 @@ import {
 
 const PLATE_QUIZ_INTRO = "Velg ett svar per spørsmål.";
 
+/** «Hva betyr NAO?» med kildehenvisning per kapittel (bokstaven følger kapittelets kildeliste). */
+function NaoForklaringBoks({ kilde }: { kilde: string }) {
+  return (
+    <Callout title="Hva betyr «NAO»?">
+      <p>
+        NAO er den nordatlantiske oscillasjonen. Den beskriver styrken på lavtrykket nær Island og
+        høytrykket nær Asorene. Stor trykkforskjell er positiv fase. Liten forskjell er negativ fase
+        ({kilde}).
+      </p>
+    </Callout>
+  );
+}
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   // Kapittelmalen: `Sjekk<Navn>` og `Sammendrag<Navn>` fra src/lib/kapittel-mal.ts.
   ...Object.fromEntries(
@@ -841,15 +854,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
 
 
 
-    NaoForklaring: () => (
-    <Callout title="Hva betyr «NAO»?">
-      <p>
-        NAO er den nordatlantiske oscillasjonen. Den beskriver styrken på lavtrykket nær Island og
-        høytrykket nær Asorene. Stor trykkforskjell er positiv fase. Liten forskjell er negativ fase
-        (NOAA, u.å.).
-      </p>
-    </Callout>
-  ),
+    NaoForklaring: () => <NaoForklaringBoks kilde="NOAA, u.å.-a" />,
+    NaoForklaringJet: () => <NaoForklaringBoks kilde="NOAA, u.å.-b" />,
     QuizNao: () => <Quiz questions={QUIZ_NAO} heading={null} intro="Velg ett svar per spørsmål." />,
     NaoFigurFaser: () => (
     <NaoFaserFigur

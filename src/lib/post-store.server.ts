@@ -1173,6 +1173,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv-naturfare",
     stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
   },
+  {
+    // Jetstrømmer: NAO-boksen henviser til kapittelets egen kildebokstav (NOAA, u.å.-b), godkjent av Mats 22.10.
+    flag: "g2-jetstrommer-nao-kilde-2026-10-22",
+    slug: "jetstrommer",
+    stale: ["```widget\nNaoForklaring\n```"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

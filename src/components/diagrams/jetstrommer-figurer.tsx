@@ -810,18 +810,18 @@ const sesong: Def<{ lat: number; w: number }> = {
     "4. Utover høsten flytter polarjeten seg mot ekvator igjen.",
   ],
   bilder: [
-    { lat: 44, w: 9 },
-    { lat: 41, w: 13 },
-    { lat: 46, w: 9 },
-    { lat: 51, w: 6 },
-    { lat: 45, w: 9 },
+    { lat: 50, w: 9 },
+    { lat: 47.5, w: 13 },
+    { lat: 52, w: 9 },
+    { lat: 56, w: 6 },
+    { lat: 51.5, w: 9 },
   ],
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [{ text: "grensen USA–Canada", x: 60, y: 70, color: "#fde68a", at: kp(-110, 49.5) }];
-    if (f === 1) l.push({ text: "sterkest om vinteren", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(0, 44) });
-    if (f === 2) l.push({ text: "mot polen", x: 900, y: 70, anchor: "end", color: "#9be7ff", weight: 700, at: kp(-20, 50) });
-    if (f === 3) l.push({ text: "svakere om sommeren", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(0, 52) });
-    if (f === 4) l.push({ text: "mot ekvator", x: 900, y: 480, anchor: "end", color: "#9be7ff", weight: 700, at: kp(-20, 42) });
+    if (f === 1) l.push({ text: "sterkest om vinteren", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(0, 50.5) });
+    if (f === 2) l.push({ text: "mot polen", x: 900, y: 70, anchor: "end", color: "#9be7ff", weight: 700, at: kp(-20, 56) });
+    if (f === 3) l.push({ text: "svakere om sommeren", x: 900, y: 70, anchor: "end", color: F.jet, weight: 700, at: kp(0, 58.5) });
+    if (f === 4) l.push({ text: "mot ekvator", x: 900, y: 480, anchor: "end", color: "#9be7ff", weight: 700, at: kp(-20, 48) });
     return l;
   }),
   notes: ["Nordlige halvkule sett fra verdensrommet", "Tykkelsen viser styrken", "Skjematisk. Kartdata: Natural Earth"],
@@ -830,7 +830,7 @@ const sesong: Def<{ lat: number; w: number }> = {
   merker: { kolonne: [150, 810], midt: GCX },
   tegn: (s, { sek, fase }) => {
     const d = klodeSti(rundt((lon) => s.lat + 3 * Math.sin(3 * (lon + 60) * R)));
-    const pil = fase === 2 ? [kp(-25, 44), kp(-25, 52)] : fase === 4 ? [kp(-25, 50), kp(-25, 42)] : null;
+    const pil = fase === 2 ? [kp(-25, 49), kp(-25, 57)] : fase === 4 ? [kp(-25, 56), kp(-25, 48)] : null;
     return (
       <>
         <Klode id="jet-sesong" />
