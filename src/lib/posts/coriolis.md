@@ -79,7 +79,7 @@ Coriolisparameteren brukes til å beregne den avbøyende effekten jordrotasjonen
 | Avbøyning | til høyre for bevegelsen | til venstre for bevegelsen | ingen |
 | Coriolisparameteren | positiv | negativ | null |
 
-Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 5°, om lag 500 km (NOAA AOML, u.å.).
+Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 500 km (om lag 4–5°) (NOAA AOML, u.å.).
 
 ```widget
 SyklonDiagram
