@@ -1179,6 +1179,13 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "vaerkart",
     stale: ["om lag 1:50–1:100 (Store norske leksikon", "ekstra ustabil luft, med kraftige byger", "helt overskyet ved 8/8 (NOAA, u.å.-f).\n\n```widget\nStationModel"],
   },
+  {
+    // Jetstrømmer: NAO-boksen henviser til kapittelets egen kildebokstav (NOAA, u.å.-b), godkjent av Mats 22.10.
+    flag: "g2-jetstrommer-nao-kilde-2026-10-22",
+    slug: "jetstrommer",
+    stale: ["```widget\nNaoForklaring\n```"],
+  },
+  { flag: "g2-coriolis-ekman-2026-10-22", slug: "coriolis", stale: ["opptil 100–200 m ved sterk vind", "ca. 5°, om lag 500 km"] },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

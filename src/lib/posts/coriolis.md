@@ -79,7 +79,7 @@ Coriolisparameteren brukes til å beregne den avbøyende effekten jordrotasjonen
 | Avbøyning | til høyre for bevegelsen | til venstre for bevegelsen | ingen |
 | Coriolisparameteren | positiv | negativ | null |
 
-Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 5°, om lag 500 km (NOAA AOML, u.å.).
+Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 500 km (om lag 4–5°) (NOAA AOML, u.å.).
 
 ```widget
 SyklonDiagram
@@ -121,9 +121,9 @@ EkmanForklaring
 EkmanSpiral
 ```
 
-Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule. Det er ekmantransporten.
+Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule (Stewart, 2008). Det er ekmantransporten.
 
-Laget som vinden setter i gang, kalles ekmanlaget. Hvor tykt det er, avhenger av vinden og breddegraden: typisk noen titalls meter, opptil 100–200 m ved sterk vind (Stewart, 2008). Det meste av transporten skjer i de øverste par titalls meterne, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e). Bevegelsen dør ut lenger ned, ofte på omtrent 100 meters dyp (NOAA, u.å.-b).
+Laget som vinden setter i gang, kalles ekmanlaget. Hvor tykt det er, avhenger av vinden og breddegraden: typisk fra noen titalls meter til noen hundre meter; med vanlige vindstyrker gir Ekmans beregning om lag 45–300 m, tykkest ved sterk vind og lav breddegrad (Stewart, 2008). Det meste av transporten skjer i de øverste par titalls meterne, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e). Bevegelsen dør ut lenger ned, ofte på omtrent 100 meters dyp (NOAA, u.å.-b).
 
 Oppvelling er at vann løftes fra dypere nivåer til overflatelaget. Overflatelaget skyves til siden, for eksempel ut fra en kyst, og vann nedenfra kommer opp. Prosessen er langsom, om lag 10 meter per dag. Vannet er rikt på næringsstoffer, og områdene har ofte rike fiskerier (Store norske leksikon, u.å.-e; NOAA, u.å.-c).
 
