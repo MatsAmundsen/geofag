@@ -145,7 +145,7 @@ export const GF2_THEMES = [
     image: "/images/banner-coriolis.jpg",
     alt: "Jorda med spiralformede syklonskyer",
     blurb:
-      "Trykk setter lufta i gang. Rotasjonen dreier den. Derfor spinner lavtrykk, og vasken lyver.",
+      "Trykk setter lufta i gang. Rotasjonen dreier den. Derfor spinner lavtrykk, og vasken er et dårlig bevis.",
     status: "klar" as const,
   },
   {

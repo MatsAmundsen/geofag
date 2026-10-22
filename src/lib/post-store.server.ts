@@ -1179,6 +1179,7 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jetstrommer",
     stale: ["```widget\nNaoForklaring\n```"],
   },
+  { flag: "g2-coriolis-ekman-2026-10-22", slug: "coriolis", stale: ["opptil 100–200 m ved sterk vind", "ca. 5°, om lag 500 km"] },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
