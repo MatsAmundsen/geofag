@@ -436,7 +436,7 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                 havtemperaturen ved ekvator ofte overstiger 28–30 °C, kan ikke innstrømmende luft
                 settes i rotasjon. Lufta strømmer rett inn i lavtrykket og fyller det opp
                 umiddelbart. Tropiske sykloner dannes nesten aldri nærmere ekvator enn ca. 500 km (om lag 4–5°)
-                (NOAA AOML, u.å.).
+                (NOAA AOML, {embedded ? "u.å." : "u.å.-b"}).
               </p>
             </ModelNote>
           </div>

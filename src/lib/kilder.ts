@@ -2423,6 +2423,12 @@ export const KILDER = {
       href: "https://www.noaa.gov/jetstream/global/jet-stream",
     },
     {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
+      italic: "A15) How do tropical cyclones form?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Hadleycellen",
       suffix: ".",
@@ -4080,7 +4086,13 @@ export const KILDER = {
       href: "https://www.nhc.noaa.gov/aboutsshws.php",
     },
     {
-      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.-a). ",
+      italic: "A11) What is the 'eye'? How is it formed and maintained?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A11.html",
+    },
+    {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.-b). ",
       italic: "A15) How do tropical cyclones form?",
       suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
       href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
@@ -4138,6 +4150,24 @@ export const KILDER = {
       italic: "Tørke-, flom- og jordskredåret 2023",
       suffix: ".",
       href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/toerke-flom-og-jordskredaaret-2023/",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      italic: "Thunderstorm hazards – tornadoes",
+      suffix: ". JetStream.",
+      href: "https://www.noaa.gov/jetstream/thunderstorms/thunderstorm-hazards-tornadoes",
+    },
+    {
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-a). ",
+      italic: "Severe weather 101: Tornado basics",
+      suffix: ".",
+      href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/",
+    },
+    {
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-b). ",
+      italic: "Severe weather 101: Tornado types",
+      suffix: ".",
+      href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/",
     },
     {
       prefix: "National Weather Service. (u.å.). ",

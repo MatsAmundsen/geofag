@@ -170,7 +170,8 @@ import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { CoriolisLatitudeDiagram, EkmanSpiralDiagram, GeostrophicAdjustmentDiagram, PressureSpinDiagram, RossbyScaleDiagram, ZonalCentrifugalDiagram } from "@/components/diagrams/coriolis";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
-import { AtmosphericRiverDiagram, ClimateRiskShiftDiagram, HurricaneCrossSectionDiagram, MeteorologicalBombDiagram, PolarLowFormationDiagram, StormSurgeDiagram, SupercellAnatomyDiagram, TornadoGenesisDiagram } from "@/components/diagrams/disasters";
+import { AtmosphericRiverDiagram, MeteorologicalBombDiagram, SupercellAnatomyDiagram } from "@/components/diagrams/disasters";
+import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
 import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
@@ -1085,15 +1086,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   LorenzChaosEnsemble: () => <LorenzChaosEnsembleDiagram />,
   DataAssimilationCycle: () => <DataAssimilationCycleDiagram />,
   ModelHierarchyNorway: () => <ModelHierarchyNorwayDiagram />,
-  HurricaneCrossSection: () => <HurricaneCrossSectionDiagram />,
+  HurricaneCrossSection: () => <OrkanSnittFigur />,
   HurricaneSpinModel: () => <HurricaneSpinModel />,
   SupercellAnatomy: () => <SupercellAnatomyDiagram />,
-  TornadoGenesis: () => <TornadoGenesisDiagram />,
-  StormSurge: () => <StormSurgeDiagram />,
+  TornadoGenesis: () => <TornadoFigur />,
+  StormSurge: () => <StormfloFigur />,
   MeteorologicalBomb: () => <MeteorologicalBombDiagram />,
   AtmosphericRiver: () => <AtmosphericRiverDiagram />,
-  PolarLowFormation: () => <PolarLowFormationDiagram />,
-  ClimateRiskShift: () => <ClimateRiskShiftDiagram />,
+  PolarLowFormation: () => <PolartLavtrykkFigur />,
+  ClimateRiskShift: () => <KlimaFordelingFigur />,
   FieldworkInquiryChain: () => <FieldworkInquiryChainDiagram />,
   MeteorologicalStation: () => <MeteorologicalStationDiagram />,
   RadiosondeAscent: () => <RadiosondeAscentDiagram />,
