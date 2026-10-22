@@ -771,8 +771,8 @@ export function KatabaticWindDiagram() {
   return (
     <Diagram
       title="Katabatisk fallvind og dannelse av temperaturinversjon"
-      heading="Katabatisk vind: Gravitasjonsdrevet kaldluft og dype inversjoner"
-      caption="Katabatisk vind (fra gresk katabatikos: 'gående nedover') oppstår når snø- og isflater mister store mengder varme gjennom langbølget infrarød utstråling under en stjerneklar vinternatt. Luftlaget nærmest snøen blir ekstremt kaldt, tett og tungt. Tyngdekraften trekker denne tunge lufta nedover fjellsider og brefall som en fossende 'elv av kulde' (30–80 km/t). Nede i dalbunnen eller fjorden samler kaldluften seg i en dyp kaldluftssjø (-20 °C). Dette skaper en markert temperaturinversjon, der det er bitende kaldt i dalen, men opptil 16 grader mildere litt lenger oppe i åssiden (-4 °C). Røyk og forurensning stenges inne under inversjonslokket."
+      heading="Katabatisk vind: kald luft renner ned og samles i dalen"
+      caption="Katabatisk vind blåser nedover en helling fordi kald luft er tyngre enn varm luft. En klar vinternatt mister snøen varme ved utstråling, og lufta nærmest snøen blir kald. Den kalde lufta følger senkninger i terrenget, omtrent som vann, og kan hope seg opp i dalbunnen. Da blir det kaldere nede i dalen enn litt lenger opp, altså en inversjon. I Norge er katabatisk vind relativt mild og når sjelden mer enn frisk bris. Under inversjonen kan lokale utslipp bli liggende nær bakken (Store norske leksikon, u.å.-j; u.å.-k; u.å.-m). Skjematisk, uten målte verdier."
       viewBox="0 0 940 520"
       wide
     >
@@ -850,7 +850,7 @@ export function KatabaticWindDiagram() {
             fill="url(#kata-glacier-grad)"
           />
           <L x="135" y="125" fill="#e0f2fe" size={13} weight={800} anchor="middle">
-            Platåbre (1 500 moh. · f.eks. Folgefonna)
+            Snødekt fjellplatå eller bre
           </L>
 
           {/* Langbølget infrarød utstråling (I_ut) fra snøen ut i rommet */}
@@ -858,13 +858,13 @@ export function KatabaticWindDiagram() {
           <Arrow d="M 140 115 L 140 50" marker={m.sand} color={C.sand} width={2.2} />
           <Arrow d="M 210 115 L 210 50" marker={m.sand} color={C.sand} width={2.2} />
           <L x="140" y="42" fill={C.sand} size={11} weight={700} anchor="middle">
-            Maksimal infrarød utstråling (I_ut) tapes til rommet
+            Utstråling mot verdensrommet (klar natt)
           </L>
 
           {/* Iskald luftpute på platået */}
           <rect x="40" y="160" width="190" height="24" rx="4" fill="#0c2333" stroke={C.cold} strokeWidth="1.2" />
           <L x="135" y="176" fill="#7dd3fc" size={11} weight={800} anchor="middle">
-            Iskald, ultrakomprimert luft (-25 °C)
+            Kald, tung luft nær snøen
           </L>
 
           {/* Horisontal drenasjepil mot kanten */}
@@ -887,10 +887,10 @@ export function KatabaticWindDiagram() {
             Katabatisk fallvind
           </L>
           <L x="365" y="228" fill={C.fg} size={11}>
-            Tyngdekraften trekker den tunge
+            Tyngdekraften trekker den kalde
           </L>
           <L x="365" y="244" fill={C.fg} size={11}>
-            kaldluften ned som en elv (30–80 km/t)
+            lufta ned lia. I Norge sjelden over frisk bris
           </L>
 
           {/* KALDLUFTSSJØ I DALBUNNEN (MELLOM DE TO FJELLESIDENE) */}
@@ -901,19 +901,19 @@ export function KatabaticWindDiagram() {
           />
           {/* Inversjonsgrense (vannspeil-lignende lokk) */}
           <line x1="385" y1="290" x2="740" y2="290" stroke="#38bdf8" strokeWidth="2.2" strokeDasharray="5 3" />
-          <L x="562" y="282" fill="#7dd3fc" size={11.5} weight={800} anchor="middle">
-            Inversjonsgrense / Inversjonslokk (~350 moh.)
+          <L x="575" y="282" fill="#7dd3fc" size={11} weight={800} anchor="middle">
+            Inversjonslokk: røyk og eksos blir liggende under
           </L>
 
-          <L x="560" y="325" fill="#f0f9ff" size={15} weight={900} anchor="middle">
-            KALDLUFTSSJØ I DALBUNNEN (-20 °C)
+          <L x="585" y="325" fill="#f0f9ff" size={13} weight={900} anchor="middle">
+            KALD LUFT SAMLES I DALBUNNEN
           </L>
-          <L x="560" y="342" fill="#bae6fd" size={10.5} anchor="middle">
-            Tung kaldluft samles som vann i et badekar
+          <L x="585" y="342" fill="#bae6fd" size={10.5} anchor="middle">
+            Følger terrenget, omtrent som vann
           </L>
 
           {/* HUS I DALBUNNEN MED RØYKLOKK */}
-          <g transform="translate(500, 380)">
+          <g transform="translate(440, 380)">
             {/* Hus i dalen */}
             <polygon points="12,-15 24,-26 36,-15" fill="#991b1b" />
             <rect x="12" y="-15" width="24" height="15" fill="#78350f" />
@@ -933,9 +933,6 @@ export function KatabaticWindDiagram() {
               strokeWidth="3.2"
               opacity="0.85"
             />
-            <L x="30" y="-98" fill="#fde047" size={10.5} weight={800} anchor="middle">
-              Røyklokk: Eksos og vedrøyk stenges inne!
-            </L>
           </g>
 
           {/* TERMISK BELTE OPPE I DEN MOTGÅENDE LIA (HØYRE SIDE) */}
@@ -951,13 +948,13 @@ export function KatabaticWindDiagram() {
               Termisk belte i lia
             </L>
             <L x="45" y="4" fill="#fde047" size={13} weight={800}>
-              -4 °C (Mildt!)
+              Mildere enn i dalen
             </L>
             <L x="45" y="20" fill={C.fg} size={9.5}>
-              16 °C mildere enn i dalen!
+              Ligger over den kalde
             </L>
             <L x="45" y="34" fill={C.sand} size={9.5}>
-              Gårder legges her i lia.
+              lufta i dalbunnen
             </L>
           </g>
 
@@ -970,9 +967,9 @@ export function KatabaticWindDiagram() {
             {/* Akser */}
             <line x1="25" y1="120" x2="25" y2="25" stroke="#64748b" strokeWidth="1" />
             <line x1="25" y1="120" x2="115" y2="120" stroke="#64748b" strokeWidth="1" />
-            <L x="22" y="32" fill={C.muted} size={8.5} anchor="end">1500m</L>
-            <L x="22" y="75" fill={C.muted} size={8.5} anchor="end">350m</L>
-            <L x="22" y="118" fill={C.muted} size={8.5} anchor="end">100m</L>
+            <L x="22" y="32" fill={C.muted} size={8.5} anchor="end">Platå</L>
+            <L x="22" y="75" fill={C.muted} size={8.5} anchor="end">Lokk</L>
+            <L x="22" y="118" fill={C.muted} size={8.5} anchor="end">Dal</L>
 
             {/* Temperatur-kurve: -20 C ved 100m, øker til -4 C ved 350m, synker til -25 C ved 1500m */}
             <path
@@ -987,22 +984,22 @@ export function KatabaticWindDiagram() {
             <circle cx="85" cy="75" r="3" fill="#facc15" />
             <circle cx="30" cy="35" r="3" fill="#38bdf8" />
 
-            <L x="42" y="116" fill="#38bdf8" size={8.5}>-20°</L>
-            <L x="90" y="77" fill="#facc15" size={9} weight={700}>-4°</L>
-            <L x="36" y="34" fill="#38bdf8" size={8.5}>-25°</L>
-            <L x="62" y="130" fill="#facc15" size={8.5} weight={700} anchor="middle">dT/dz &gt; 0 (Inversjon)</L>
+            <L x="42" y="116" fill="#38bdf8" size={8.5}>kald</L>
+            <L x="90" y="77" fill="#facc15" size={9} weight={700}>mild</L>
+            <L x="36" y="34" fill="#38bdf8" size={8.5}>kald</L>
+            <L x="62" y="130" fill="#facc15" size={8.5} weight={700} anchor="middle">Temperatur →</L>
           </g>
 
           {/* SAMMENLIGNINGSBOKS NEDERST */}
           <rect x="40" y="425" width="860" height="55" rx="6" fill="#0d1620" stroke="#1e293b" strokeWidth="1.3" />
           <L x="55" y="445" fill={C.warm} size={12} weight={800}>
-            Eksamensskille: Fønvind vs. Katabatisk fallvind
+            Ikke bland sammen: føn og katabatisk vind
           </L>
           <L x="55" y="465" fill={C.fg} size={11}>
-            • <tspan fill={C.warm} fontWeight="bold">Fønvind:</tspan> Drevet av storskalavind over fjell. Mister fuktighet ved regn på losiden → lander <tspan fill={C.warm} fontWeight="bold">varm og tørr</tspan> i le. <tspan fill={C.warm}>Bryter opp inversjoner.</tspan>
+            • <tspan fill={C.warm} fontWeight="bold">Føn:</tspan> lufta synker på lesiden, varmes og blir tørr.
           </L>
           <L x="490" y="465" fill={C.fg} size={11}>
-            • <tspan fill={C.cold} fontWeight="bold">Katabatisk vind:</tspan> Drevet av tyngdekraft fra kald overflate. Ingen regn → lander <tspan fill={C.cold} fontWeight="bold">iskald og tung</tspan> i dalen. <tspan fill={C.cold}>Bygger opp dype inversjoner.</tspan>
+            • <tspan fill={C.cold} fontWeight="bold">Katabatisk vind:</tspan> kald, tung luft renner ned og samles.
           </L>
         </>
       )}

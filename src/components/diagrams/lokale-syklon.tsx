@@ -16,32 +16,32 @@ import { F, LokaleRamme, medKilde, useLokaleTidslinje, type Hinder, type Lab } f
 /** Sett til true for å slå sammen steg 3 og 4 (okklusjonen starter + varm luft løftet bort). */
 const SLAA_SAMMEN_STEG_3_OG_4: boolean = false;
 
-type Bilde = { bolge: number; fronter: number; okkl: number; loft: number; fyll: number; x: number };
+type Bilde = { bolge: number; iso: number; fronter: number; okkl: number; loft: number; fyll: number; x: number };
 type Steg = { fase: string; status: ReactNode; bilde: Bilde };
 
 const STEG_ALLE: Steg[] = [
   {
     fase: "Bølge på fronten",
     status: medKilde(
-      "Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, vanligvis mellom 40° og 70° bredde. Lavtrykket starter som en bølge på fronten.",
+      "Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, vanligvis mellom 40° og 70° bredde. Lavtrykket starter som en svak bølge på fronten.",
       "Store norske leksikon, u.å.-a; NOAA, u.å.-b",
     ),
-    bilde: { bolge: 1, fronter: 0.3, okkl: 0, loft: 0, fyll: 0, x: 0.1 },
+    bilde: { bolge: 0.4, iso: 0, fronter: 0, okkl: 0, loft: 0, fyll: 0, x: 0.1 },
   },
   {
     fase: "Varmfront og kaldfront",
     status: medKilde("Lavtrykket får en varmfront og en kaldfront.", "NOAA, u.å.-b"),
-    bilde: { bolge: 1, fronter: 1, okkl: 0, loft: 0, fyll: 0, x: 0.3 },
+    bilde: { bolge: 1, iso: 1, fronter: 1, okkl: 0, loft: 0, fyll: 0, x: 0.3 },
   },
   {
     fase: "Okklusjonen starter",
     status: medKilde("Kaldfronten tar igjen varmfronten og danner en okkludert front.", "NOAA, u.å.-b"),
-    bilde: { bolge: 1, fronter: 1, okkl: 0.3, loft: 0.35, fyll: 0, x: 0.5 },
+    bilde: { bolge: 1, iso: 1, fronter: 1, okkl: 0.3, loft: 0.35, fyll: 0, x: 0.5 },
   },
   {
     fase: "Varm luft løftes fra bakken",
     status: medKilde("Den varme lufta løftes fra bakken og bort fra sentrum, og lavtrykket svekkes og fylles ut.", "NOAA, u.å.-b"),
-    bilde: { bolge: 1, fronter: 1, okkl: 0.55, loft: 1, fyll: 0.45, x: 0.7 },
+    bilde: { bolge: 1, iso: 1, fronter: 1, okkl: 0.55, loft: 1, fyll: 0.45, x: 0.7 },
   },
   {
     fase: "Fylles ut",
@@ -49,7 +49,7 @@ const STEG_ALLE: Steg[] = [
       "Lavtrykket er fylt ut. Langs polarfronten vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen.",
       "Store norske leksikon, u.å.-a; NOAA, u.å.-b",
     ),
-    bilde: { bolge: 1, fronter: 0.25, okkl: 0.6, loft: 1, fyll: 1, x: 1 },
+    bilde: { bolge: 1, iso: 1, fronter: 0.25, okkl: 0.6, loft: 1, fyll: 1, x: 1 },
   },
 ];
 
@@ -70,7 +70,7 @@ const STEG: Steg[] = SLAA_SAMMEN_STEG_3_OG_4
   : STEG_ALLE;
 
 const FASER = STEG.map((s) => s.fase);
-const START: Bilde = { bolge: 0, fronter: 0, okkl: 0, loft: 0, fyll: 0, x: 0 };
+const START: Bilde = { bolge: 0, iso: 0, fronter: 0, okkl: 0, loft: 0, fyll: 0, x: 0 };
 const BILDER: Bilde[] = [START, ...STEG.map((s) => s.bilde)];
 /** Fasen der okklusjonen starter (1-basert). */
 const OKKL_FASE = 3;
@@ -169,6 +169,21 @@ function polarfront(g: ReturnType<typeof geometri>, bolge: number): { vest: Pkt[
   return { vest, ost };
 }
 
+/** Steg 1: bølgetoppen fra polarfronten vest (k) via sentrum (C) til polarfronten øst (w), med samme tangent som polarfronten i k og w (ingen knekk). */
+function bolgeTopp(pf: { vest: Pkt[]; ost: Pkt[] }, C: Pkt): string {
+  const k = pf.vest[pf.vest.length - 1];
+  const kf = pf.vest[pf.vest.length - 2];
+  const w = pf.ost[0];
+  const wb = pf.ost[1];
+  const a = 0.35 * Math.hypot(C[0] - k[0], C[1] - k[1]) / Math.hypot(k[0] - kf[0], k[1] - kf[1]);
+  const b = 0.35 * Math.hypot(w[0] - C[0], w[1] - C[1]) / Math.hypot(wb[0] - w[0], wb[1] - w[1]);
+  const c1: Pkt = [k[0] + (k[0] - kf[0]) * a, k[1] + (k[1] - kf[1]) * a];
+  const c4: Pkt = [w[0] - (wb[0] - w[0]) * b, w[1] - (wb[1] - w[1]) * b];
+  const h = 0.3 * (w[0] - k[0]);
+  const f = (p: Pkt) => `${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
+  return `M${f(k)} C${f(c1)} ${f([C[0] - h, C[1]])} ${f(C)} C${f([C[0] + h, C[1]])} ${f(c4)} ${f(w)}`;
+}
+
 /** Stiplet bue mot klokka rundt sentrum, med pilspiss nederst (der lufta går mot øst). */
 const SIRK_RX = 84;
 const SIRK_RY = 62;
@@ -248,15 +263,16 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   const snittOp = fase >= 2 && fase <= (SLAA_SAMMEN_STEG_3_OG_4 ? 3 : 4) ? 1 : 0;
   const varmSektor = [...g.W, ...[...g.K].reverse()];
   const sirk = sirkulasjon(g.C);
-  const sirkOp = clamp(dybde * 1.4) * 0.8;
+  const sirkOp = clamp(dybde * 1.4) * 0.8 * smooth(s.iso);
   const bevOp = fase >= 2 && fase <= (SLAA_SAMMEN_STEG_3_OG_4 ? 3 : 4) ? fr : 0;
-  const frontOp = clamp(0.25 + fr);
+  // steg 1 (svak bølge): ingen modne fronter og ingen lukkede isobarer
+  const frontOp = clamp(0.25 + fr) * smooth(s.iso);
   const pfOp = 0.5 * (1 - fr) + 0.2;
   // isobarene har sentrum i lavtrykket; den innerste går innenfor sirkulasjonsbuen
   const isobarer = [50, 104, 150, 204].map((r, i) => ({
     rx: r * 1.25 * (1 + 0.4 * s.fyll),
     ry: r * (1 + 0.4 * s.fyll),
-    op: clamp(dybde * 1.6 - i * 0.3) * 0.75,
+    op: clamp(dybde * 1.6 - i * 0.3) * 0.75 * smooth(s.iso),
   }));
   const bevegelse = [
     { fra: add(g.K[12], [22, -4]), vinkel: 12, lengde: 78, farge: F.kaldfront },
@@ -382,6 +398,10 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
           {/* polarfronten utenfor lavtrykket */}
           <path d={smoothPath(pf.vest)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
           <path d={smoothPath(pf.ost)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
+          {/* steg 1: polarfronten går sammenhengende gjennom bølgetoppen */}
+          {s.iso < 0.98 ? (
+            <path d={bolgeTopp(pf, g.C)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp * (1 - smooth(s.iso))} data-nocheck="" />
+          ) : null}
           {/* frontene, heltrukne som i Værkart (PR #187). Uten farge skilles den okkluderte fronten fra
               kaldfronten på de vekslende trekantene og halvsirklene, også i tegnforklaringen. */}
           <g opacity={frontOp}>
