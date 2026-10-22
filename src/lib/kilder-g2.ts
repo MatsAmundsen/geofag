@@ -49,6 +49,12 @@ export const KILDER_G2 = {
       href: "https://www.noaa.gov/jetstream/wxmaps-max/jetstream-max-surface-weather-plot-symbols",
     },
     {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-g). ",
+      italic: "Surface weather plots",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/wxmaps-max",
+    },
+    {
       prefix: "National Weather Service [NWS]. (u.å.). ",
       italic: "Unified surface analysis manual",
       suffix: ".",
