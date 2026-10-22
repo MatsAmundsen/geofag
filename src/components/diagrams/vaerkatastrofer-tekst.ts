@@ -79,15 +79,15 @@ export const KLIMA_FORDELING_STATUS = [
 export const SUPERCELLE_TEKST = {
   heading: "Supercellen sett ovenfra: fra vindskjæring til tornado",
   title:
-    "Supercelle sett ovenfra, med nord opp. Steg 1: vinden dreier og øker med høyden, og varm, fuktig luft strømmer inn mot skyen. Steg 2: den skrå, roterende oppdriften kalles mesosyklon. Steg 3: framre nedsynk (FFD) er det regnkjølte området med mest nedbør nedstrøms for oppdriften. Bakre nedsynk (RFD) er tørrere og varmere og lager en klar glipe som en hestesko rundt oppdriften. Steg 4: veggskya under den sterkeste oppdriften er stedet der tornadoer oftest dannes, mest sannsynlig på nordsiden av hesteskoen.",
+    "Supercelle sett ovenfra, med nord opp. Steg 1: vinden dreier og øker med høyden, og varm, fuktig luft strømmer inn mot skyen. Steg 2: den skrå, roterende oppdriften kalles mesosyklon. Steg 3: framre nedsynk (FFD) er det regnkjølte området med mest nedbør nedstrøms for oppdriften. Bakre nedsynk (RFD) er tørrere og varmere og lager en klar glipe som en hestesko rundt oppdriften. Steg 4: veggskya henger under den sterkeste oppdriften. Like bak den, mot sørvest, slynger bakre nedsynk seg rundt oppdriften. Det er dette som gir krokekkoet på radar. Tornadoen dannes oftest ved veggskya, på nordsiden av hesteskoen der bakre nedsynk møter oppdriften.",
   caption:
-    "En supercelle er en langlivet bygesky med en skrå, roterende oppdrift, en mesosyklon. Rotasjonen kan finnes 20–60 minutter før en tornado dannes (National Severe Storms Laboratory [NSSL], u.å.-c). Framre nedsynk (FFD) er regnkjølt og har mest nedbør. Bakre nedsynk (RFD) er tørrere og varmere. Tornadoer dannes oftest ved veggskya, på nordsiden av den hesteskoformede glipa (National Weather Service [NWS], u.å.-b). Skjematisk, ikke i skala.",
+    "En supercelle er en langlivet bygesky med en skrå, roterende oppdrift, en mesosyklon. Rotasjonen kan finnes 20–60 minutter før en tornado dannes (National Severe Storms Laboratory [NSSL], u.å.-c). Framre nedsynk (FFD) er regnkjølt og har mest nedbør. Bakre nedsynk (RFD) er tørrere og varmere. Bakre nedsynk ligger like bak veggskya, mot sørvest, og gir krokekkoet på radar (NSSL, u.å.-a). Tornadoer dannes oftest ved veggskya, på nordsiden av den hesteskoformede glipa (National Weather Service [NWS], u.å.-b). Skjematisk, ikke i skala.",
 };
 export const SUPERCELLE_STATUS = [
   "Vinden dreier og blir sterkere med høyden. Varm, fuktig luft strømmer inn mot skyen nær bakken.",
   "Oppdriften blir skrå og begynner å rotere. Den roterende oppdriften kalles en mesosyklon.",
   "Framre nedsynk (FFD) gir regnkjølt luft og mest nedbør. Bakre nedsynk (RFD) er tørrere og varmere og lager en glipe som en hestesko.",
-  "Under den sterkeste oppdriften henger veggskya. Der dannes tornadoer oftest, særlig på nordsiden av hesteskoen.",
+  "Bakre nedsynk slynger seg rundt oppdriften og gir krokekkoet. Tornadoen dannes oftest ved veggskya, på nordsiden av hesteskoen.",
 ];
 
 export const BOMBE_TEKST = {

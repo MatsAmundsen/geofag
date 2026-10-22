@@ -60,11 +60,11 @@ const supercelle: Def<CBilde> = {
     if (f >= 2) l.push({ text: "mesosyklon: roterende oppdrift", x: 230, y: 110, anchor: "middle", color: F.varm, weight: 800, at: [410, 260], badge: [380, 200] });
     if (f >= 3) {
       l.push({ text: "framre nedsynk (FFD): regnkjølt, mest nedbør", x: 920, y: 80, anchor: "end", color: F.kald, weight: 800, at: [690, 160], badge: [700, 120] });
-      l.push({ text: "bakre nedsynk (RFD): tørrere og varmere", x: 200, y: 486, anchor: "middle", color: F.vind, weight: 800, at: [330, 392], badge: [300, 430] });
+      l.push({ text: "bakre nedsynk (RFD): gir krokekkoet", x: 200, y: 486, anchor: "middle", color: F.vind, weight: 800, at: [330, 392], badge: [300, 430] });
     }
     if (f >= 4) {
       l.push({ text: "veggsky: sterkest oppdrift", x: 700, y: 320, color: F.sky, weight: 800, at: [470, 300], badge: [520, 300] });
-      l.push({ text: "tornado: nordsiden av hesteskoen", x: 920, y: 380, anchor: "end", color: "#ffd0c8", weight: 800, at: [404, 238], badge: [452, 222] });
+      l.push({ text: "tornado: ved veggskya, nord i hesteskoen", x: 920, y: 380, anchor: "end", color: "#ffd0c8", weight: 800, at: [404, 238], badge: [452, 222] });
     }
     return l;
   }),
@@ -294,7 +294,7 @@ const hans: Def<JBilde> = {
   ],
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [];
-    const tittel = ["1 Ekstremt mye regn", "2 Flom- og skredvarsel", "3 Bekker og skråninger", "4 Store vassdrag"];
+    const tittel = ["Ekstremt mye regn", "Flom- og skredvarsel", "Bekker og skråninger", "Store vassdrag"];
     const linje2 = ["MET: rødt nivå", "NVE: fra oransje til rødt", "over 750 løsmasseskred", "flomtopp i Drammenselva 30. august"];
     for (let i = 0; i < f; i++) {
       const [x, y] = J_BOKS[i];
