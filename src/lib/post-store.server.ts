@@ -1174,6 +1174,7 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
   },
   { flag: "g2-vaerkatastrofer-polarlavtrykk-2026-10-22", slug: "vaerkatastrofer", stale: ["Fra 2000 og fram til i dag (oktober 2026)"] },
+  { flag: "g2-vaerkatastrofer-bolk2-2026-10-22", slug: "vaerkatastrofer", stale: ["EF5 er over 200 mph (National Weather Service, u.å.)."] },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

@@ -170,7 +170,7 @@ import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { CoriolisLatitudeDiagram, EkmanSpiralDiagram, GeostrophicAdjustmentDiagram, PressureSpinDiagram, RossbyScaleDiagram, ZonalCentrifugalDiagram } from "@/components/diagrams/coriolis";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
-import { AtmosphericRiverDiagram, MeteorologicalBombDiagram, SupercellAnatomyDiagram } from "@/components/diagrams/disasters";
+import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselFigur, SupercelleFigur } from "@/components/diagrams/vaerkatastrofer-figurer-2";
 import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
@@ -1088,11 +1088,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ModelHierarchyNorway: () => <ModelHierarchyNorwayDiagram />,
   HurricaneCrossSection: () => <OrkanSnittFigur />,
   HurricaneSpinModel: () => <HurricaneSpinModel />,
-  SupercellAnatomy: () => <SupercellAnatomyDiagram />,
+  SupercellAnatomy: () => <SupercelleFigur />,
   TornadoGenesis: () => <TornadoFigur />,
   StormSurge: () => <StormfloFigur />,
-  MeteorologicalBomb: () => <MeteorologicalBombDiagram />,
-  AtmosphericRiver: () => <AtmosphericRiverDiagram />,
+  MeteorologicalBomb: () => <BombesyklonFigur />,
+  AtmosphericRiver: () => <AtmosfaeriskElvFigur />,
+  HansVarselkjede: () => <HansVarselFigur />,
+  BeaufortTrapp: () => <BeaufortTrappFigur />,
   PolarLowFormation: () => <PolartLavtrykkFigur />,
   ClimateRiskShift: () => <KlimaFordelingFigur />,
   FieldworkInquiryChain: () => <FieldworkInquiryChainDiagram />,

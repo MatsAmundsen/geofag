@@ -4134,6 +4134,12 @@ export const KILDER = {
       href: "https://snl.no/polart_lavtrykk",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-h). ",
+      italic: "Beauforts vindskala",
+      suffix: ".",
+      href: "https://snl.no/Beauforts_vindskala",
+    },
+    {
       prefix: "Meteorologisk institutt. (2023). ",
       italic: "Over 100 år siden det har regnet så mye på Østlandet",
       suffix: ".",
@@ -4144,6 +4150,12 @@ export const KILDER = {
       italic: "Polare lavtrykk",
       suffix: ".",
       href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/polare-lavtrykk",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023, 7. august). ",
+      italic: "Ekstremværet Hans – flom- og jordskredfare på rødt nivå",
+      suffix: ".",
+      href: "https://www.varsom.no/nyheter/nyheter-flom-og-jordskred/ekstremvaeret-hans-flom-og-jordskredfare-pa-rodt-niva/",
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2024). ",
@@ -4170,10 +4182,28 @@ export const KILDER = {
       href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/",
     },
     {
-      prefix: "National Weather Service. (u.å.). ",
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-c). ",
+      italic: "Types of thunderstorms",
+      suffix: ".",
+      href: "https://www.nssl.noaa.gov/education/svrwx101/thunderstorms/types/",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-a). ",
       italic: "The Enhanced Fujita Scale (EF Scale)",
       suffix: ".",
       href: "https://www.weather.gov/oun/efscale",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-b). ",
+      italic: "Supercell structure and dynamics (Spotter's Field Guide, part 2)",
+      suffix: ".",
+      href: "https://www.weather.gov/spotterguide/supercell2",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-c). ",
+      italic: "Exit region (Glossary)",
+      suffix: ".",
+      href: "https://forecast.weather.gov/glossary.php?word=exit+region",
     },
     {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",

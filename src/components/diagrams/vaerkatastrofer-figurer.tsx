@@ -19,7 +19,7 @@ import {
   TORNADO_TEKST,
 } from "./vaerkatastrofer-tekst";
 
-const F = {
+export const F = {
   himmel: "#0f1d29",
   linje: "#4b6275",
   tekst: "#e8eef2",
@@ -38,14 +38,14 @@ const F = {
   landKant: "#8e9784",
 };
 
-const VB = "0 0 960 540";
+export const VB = "0 0 960 540";
 
 /* ---------- hjelpere ---------- */
 
-const linje = (pts: P[]) => pts.map((p, i) => `${i ? "L" : "M"}${r1(p[0])} ${r1(p[1])}`).join(" ");
+export const linje = (pts: P[]) => pts.map((p, i) => `${i ? "L" : "M"}${r1(p[0])} ${r1(p[1])}`).join(" ");
 
 /** Punkt en andel t (0–1) langs en brutt linje. */
-function langs(pts: P[], t: number): P {
+export function langs(pts: P[], t: number): P {
   const len: number[] = [];
   let tot = 0;
   for (let i = 1; i < pts.length; i++) {
@@ -65,7 +65,7 @@ function langs(pts: P[], t: number): P {
 }
 
 /** Strømlinje med pil og prikker som beveger seg langs den (står stille ved redusert bevegelse). */
-function Strom({ pts, farge, mk, synlig, sek, fart = 0.12, n = 4, w = 3 }: { pts: P[]; farge: string; mk: string; synlig: number; sek: number; fart?: number; n?: number; w?: number }) {
+export function Strom({ pts, farge, mk, synlig, sek, fart = 0.12, n = 4, w = 3 }: { pts: P[]; farge: string; mk: string; synlig: number; sek: number; fart?: number; n?: number; w?: number }) {
   if (synlig < 0.02) return null;
   return (
     <g opacity={r1(synlig * 10) / 10}>
@@ -555,7 +555,7 @@ const klimaFordeling: Def<IBilde> = {
     { text: "fremtidig klima", color: F.varm, kind: "line" },
   ],
   viewBox: VB,
-  tegn: (s) => {
+  tegn: (s, { m }) => {
     const mu = I_MU + I_SKIFT * s.skift;
     return (
       <g>
@@ -569,7 +569,8 @@ const klimaFordeling: Def<IBilde> = {
         <line x1={I_VARM} x2={I_VARM} y1={80} y2={I_BUNN} stroke={F.vind} strokeDasharray="5 5" />
         <line x1={I_KALD} x2={I_KALD} y1={80} y2={I_BUNN} stroke={F.kald} strokeDasharray="5 5" />
         {s.rekord > 0.02 && <line x1={I_REKORD} x2={I_REKORD} y1={300} y2={I_BUNN} stroke="#ffd0c8" strokeWidth={2} opacity={s.rekord} />}
-        <text x={36} y={260} transform="rotate(-90 36 260)" textAnchor="middle" fontSize={13} fill={F.dempet}>hvor ofte</text>
+        <line x1={70} x2={70} y1={I_BUNN} y2={120} stroke={F.dempet} strokeWidth={5} markerEnd={`url(#${m.fg})`} />
+        <text x={40} y={280} transform="rotate(-90 40 280)" textAnchor="middle" fontSize={30} fontWeight={700} fill={F.dempet}>hvor ofte</text>
       </g>
     );
   },

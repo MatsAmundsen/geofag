@@ -73,3 +73,76 @@ export const KLIMA_FORDELING_STATUS = [
   "Arealet over grensen for ekstrem varme vokser mye. Arealet for ekstrem kulde krymper.",
   "Noen hendelser blir varmere enn noe som er målt før: ekstremer uten sidestykke.",
 ];
+
+/* ---------- bolk 2 (C, F, G, J, K i figurplanen) ---------- */
+
+export const SUPERCELLE_TEKST = {
+  heading: "Supercellen sett ovenfra: fra vindskjæring til tornado",
+  title:
+    "Supercelle sett ovenfra, med nord opp. Steg 1: vinden dreier og øker med høyden, og varm, fuktig luft strømmer inn mot skyen. Steg 2: den skrå, roterende oppdriften kalles mesosyklon. Steg 3: framre nedsynk (FFD) er det regnkjølte området med mest nedbør nedstrøms for oppdriften. Bakre nedsynk (RFD) er tørrere og varmere og lager en klar glipe som en hestesko rundt oppdriften. Steg 4: veggskya under den sterkeste oppdriften er stedet der tornadoer oftest dannes, mest sannsynlig på nordsiden av hesteskoen.",
+  caption:
+    "En supercelle er en langlivet bygesky med en skrå, roterende oppdrift, en mesosyklon. Rotasjonen kan finnes 20–60 minutter før en tornado dannes (National Severe Storms Laboratory [NSSL], u.å.-c). Framre nedsynk (FFD) er regnkjølt og har mest nedbør. Bakre nedsynk (RFD) er tørrere og varmere. Tornadoer dannes oftest ved veggskya, på nordsiden av den hesteskoformede glipa (National Weather Service [NWS], u.å.-b). Skjematisk, ikke i skala.",
+};
+export const SUPERCELLE_STATUS = [
+  "Vinden dreier og blir sterkere med høyden. Varm, fuktig luft strømmer inn mot skyen nær bakken.",
+  "Oppdriften blir skrå og begynner å rotere. Den roterende oppdriften kalles en mesosyklon.",
+  "Framre nedsynk (FFD) gir regnkjølt luft og mest nedbør. Bakre nedsynk (RFD) er tørrere og varmere og lager en glipe som en hestesko.",
+  "Under den sterkeste oppdriften henger veggskya. Der dannes tornadoer oftest, særlig på nordsiden av hesteskoen.",
+];
+
+export const BOMBE_TEKST = {
+  heading: "Bombesyklonen: et døgn med rask utdyping",
+  title:
+    "Værkart over 24 timer med nord opp. Steg 1: kald og varm luft møtes langs en front, og et svakt lavtrykk dannes. Steg 2: en jetstrøm ligger høyt over, og lavtrykket ligger under venstre utgang av det sterkeste vindfeltet. Der sprer lufta seg i høyden, og lufta under stiger. Steg 3: trykket i sentrum faller, og isobarene kommer tettere. Steg 4: etter 24 timer har trykket ved 60 grader nord falt minst 24 hektopascal. Da kalles lavtrykket en bombesyklon.",
+  caption:
+    "Ved 60° N må trykket i sentrum falle minst 24 hPa på 24 timer for at lavtrykket skal kalles en bombesyklon. Kravet er større nær polene og mindre lenger sør (Store norske leksikon, u.å.-e). I venstre utgang av det sterkeste vindfeltet i jetstrømmen sprer lufta seg i høyden, og det gir stigende luft under (National Weather Service [NWS], u.å.-c). Tettere isobarer betyr sterkere vind. Skjematisk, ikke i skala.",
+};
+export const BOMBE_STATUS = [
+  "Kald og varm luft møtes langs en front. Et svakt lavtrykk begynner å dannes.",
+  "Jetstrømmen ligger høyt over. I venstre utgang av det sterkeste vindfeltet sprer lufta seg i høyden, og lufta under stiger.",
+  "Trykket i sentrum faller raskt. Isobarene kommer tettere, og vinden blir sterkere.",
+  "Etter 24 timer har trykket falt minst 24 hPa (ved 60° N). Lavtrykket er en bombesyklon.",
+];
+
+export const ELV_TEKST = {
+  heading: "Atmosfærisk elv: fuktig luft fra sør møter fjellene",
+  title:
+    "Øverst et lite kart med et fuktbånd fra subtropene til Vestlandet, under et snitt fra havet inn over fjellene. Steg 1: et langt, smalt bånd med varm og fuktig luft blir fraktet nordover. Steg 2: ved kysten tvinges lufta opp over fjellene og avkjøles. Steg 3: vanndampen kondenserer, og det blir orografisk nedbør. Lufta er så varm at det regner helt til fjells. Steg 4: mye regn over lang tid gir flom i elvene og fare for skred.",
+  caption:
+    "En atmosfærisk elv er typisk om lag 2000 km lang og 300–500 km bred. Den frakter tropisk, fuktig luft mot Norge. Når lufta presses opp over fjellene, blir den avkjølt, og vanndampen blir til regn. Det kalles orografisk nedbør. Lufta er så varm at nedbøren ofte faller som regn helt til fjells (Store norske leksikon, u.å.-f). I midten av desember 2023 traff en atmosfærisk elv Vestlandet og ga flom og skred (Norges vassdrags- og energidirektorat [NVE], 2024). Skjematisk, ikke i skala.",
+};
+export const ELV_STATUS = [
+  "Et langt, smalt bånd med varm og fuktig luft føres fra subtropene mot Norge.",
+  "Ved kysten tvinges lufta opp over fjellene. Den avkjøles når den stiger.",
+  "Vanndampen kondenserer til skyer og regn: orografisk nedbør. Det regner helt til fjells.",
+  "Regn over lang tid fyller bekker og elver. Det kan gi flom og skred.",
+];
+
+export const HANS_TEKST = {
+  heading: "Hans 2023: fra regnvarsel til flom og skred",
+  title:
+    "En kjede av fire felt fra venstre mot høyre. Steg 1: Meteorologisk institutt varslet ekstremt mye regn på rødt nivå. Steg 2: NVE oppgraderte farevarselet for flom, jord- og flomskred fra oransje til rødt nivå. Steg 3: bratte skråninger og bekker reagerte raskt, og det gikk over 750 løsmasseskred. Steg 4: i de store vassdragene varte flommen lenge. Flomtoppen i Drammenselva kom først 30. august.",
+  caption:
+    "Under ekstremværet Hans i august 2023 varslet Meteorologisk institutt ekstremt mye regn på rødt nivå, og NVE oppgraderte varselet for flom, jord- og flomskred fra oransje til rødt (Norges vassdrags- og energidirektorat [NVE], 2023). Det kom over 100 mm på to–tre dager over store områder. Det utløste over 750 løsmasseskred, og flomtoppen i Drammenselva kom først 30. august (NVE, 2024). Bekker og skråninger reagerer fort, store elver sent.",
+};
+export const HANS_STATUS = [
+  "Meteorologisk institutt varslet ekstremt mye regn på rødt nivå, det høyeste nivået.",
+  "NVE oppgraderte farevarselet for flom, jord- og flomskred fra oransje til rødt nivå.",
+  "Bekker og bratte skråninger reagerte raskt. Det gikk over 750 løsmasseskred.",
+  "Store vassdrag reagerte sakte. Flomtoppen i Drammenselva kom først 30. august.",
+];
+
+export const BEAUFORT_TEKST = {
+  heading: "Fra storm til orkan på Beauforts skala",
+  title:
+    "En trapp med fire trinn i Beauforts skala, der høyden viser middelvinden i meter per sekund. Steg 1: liten storm, 20,8–24,4 m/s. Steg 2: full storm, 24,5–28,4 m/s. Steg 3: sterk storm, 28,5–32,6 m/s. Steg 4: orkan, over 32,6 m/s. Norske tall er middelvind over ti minutter. Steg 5: en tropisk orkan i kategori 1 på Saffir-Simpson-skalaen starter ved om lag 33 m/s, men da er vinden middel over ett minutt. Tallene kan derfor ikke sammenlignes direkte.",
+  caption:
+    "Beauforts skala: liten storm 20,8–24,4 m/s, full storm 24,5–28,4 m/s, sterk storm 28,5–32,6 m/s og orkan over 32,6 m/s, målt som middelvind over ti minutter (Store norske leksikon, u.å.-h). Kategori 1 på Saffir-Simpson-skalaen er 64–82 knop, om lag 33–42 m/s, målt som høyeste middelvind over ett minutt (National Hurricane Center [NHC], 2021; u.å.-b). Fordi middelet tas over ulik tid, kan tallene ikke sammenlignes direkte.",
+};
+export const BEAUFORT_STATUS = [
+  "Liten storm (styrke 9): 20,8–24,4 m/s. Store trær svaier, og takstein kan blåse ned.",
+  "Full storm (styrke 10): 24,5–28,4 m/s. Trær kan rykkes opp med roten, og hus får store skader.",
+  "Sterk storm (styrke 11): 28,5–32,6 m/s. Svært sjelden, med store ødeleggelser.",
+  "Orkan (styrke 12): over 32,6 m/s. Ytterst sjelden, med uvanlig store ødeleggelser.",
+  "Tropisk orkan, kategori 1: om lag 33–42 m/s, men målt over ett minutt. Ikke direkte sammenlignbart med timinutters middelvind.",
+];
