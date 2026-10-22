@@ -1174,6 +1174,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
   },
   {
+    // Værkart: tråg-raden relativt formulert, helningstallet for kaldfronten fjernet og avsnitt om forkortet trykk (084 = 1008,4 hPa), godkjent av Mats 22.10.
+    flag: "g2-vaerkart-trag-helning-2026-10-22",
+    slug: "vaerkart",
+    stale: ["om lag 1:50–1:100 (Store norske leksikon", "ekstra ustabil luft, med kraftige byger", "helt overskyet ved 8/8 (NOAA, u.å.-f).\n\n```widget\nStationModel"],
+  },
+  {
     // Jetstrømmer: NAO-boksen henviser til kapittelets egen kildebokstav (NOAA, u.å.-b), godkjent av Mats 22.10.
     flag: "g2-jetstrommer-nao-kilde-2026-10-22",
     slug: "jetstrommer",

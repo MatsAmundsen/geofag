@@ -15,8 +15,9 @@ export function RealisticSynopticChartDiagram() {
       title="Synoptisk bakkekart over Nord-Atlanteren og Skandinavia med isobarer, fronter og stasjonsplott"
       heading="Bakkekartet: lavtrykk, høytrykk og fronter"
       caption="Illustrasjon av et bakkekart. Isobarene binder sammen steder med likt lufttrykk redusert til havnivå. På norske kart er intervallet vanligvis 5 hPa. Tette isobarer betyr stor trykkforskjell og sterk vind. Varmfront tegnes rød med halvsirkler, kaldfront blå med trekanter, og en okkludert front lilla med begge symbolene."
-      viewBox="0 0 940 560"
+      viewBox="0 0 940 600"
       wide
+      scroll
     >
       {(m) => (
         <>
@@ -42,7 +43,7 @@ export function RealisticSynopticChartDiagram() {
           </defs>
 
           {/* Bakgrunnsflate */}
-          <rect x="25" y="25" width="890" height="510" rx="10" fill="url(#syn-ocean)" stroke="#1a2d3d" strokeWidth="1.2" />
+          <rect x="25" y="25" width="890" height="550" rx="10" fill="url(#syn-ocean)" stroke="#1a2d3d" strokeWidth="1.2" />
 
           {/* GEOGRAFISKE KYSTKONTURER */}
           {/* Storbritannia og Irland */}
@@ -87,7 +88,7 @@ export function RealisticSynopticChartDiagram() {
             d="M 380 250 C 440 280 500 320 560 360 C 520 400 480 430 440 480 C 410 430 390 340 380 250 Z"
             fill="url(#syn-warm-sector)"
           />
-          <L x="470" y="400" fill={C.warm} size={13} weight={800}>Varmere luft</L>
+          <L x="480" y="382" fill={C.warm} size={13} weight={800} anchor="middle">Varmere luft</L>
 
           {/* ISOBARFELT RUNDT LAVTRYKKET (sentrum ved x=340, y=210) */}
           {/* 970 hPa */}
@@ -143,19 +144,20 @@ export function RealisticSynopticChartDiagram() {
           {/* 1. Okklusjon fra L1 (340, 210) til trippelpunkt (380, 250) */}
           <path d="M 340 210 C 355 220 370 235 380 250" fill="none" stroke="#a855f7" strokeWidth="4" />
           <polygon points="352,221 359,212 363,225" fill="#a855f7" />
-          <path d="M 368 234 A 6 6 0 0 0 377 241 Z" fill="#a855f7" />
-          <L x="325" y="245" fill="#a855f7" size={11} weight={800}>Okklusjon</L>
+          <path d="M 364 232 A 7 7 0 0 1 375 243 Z" fill="#a855f7" />
+          <rect x="244" y="235" width="82" height="21" rx="4" fill="#0b1620" opacity="0.85" />
+          <L x="320" y="250" fill="#a855f7" size={12} weight={800} anchor="end">Okklusjon</L>
 
           {/* 2. Varmfront fra trippelpunktet (380, 250) mot Norge (560, 360) */}
           <path d="M 380 250 C 430 280 490 320 560 360" fill="none" stroke={C.low} strokeWidth="4" />
-          {/* Halvsirkler på varmfronten pekende mot nordøst (i fartsretningen) */}
-          <path d="M 420 274 A 8 8 0 0 0 434 283 Z" fill={C.low} />
-          <path d="M 480 312 A 8 8 0 0 0 494 321 Z" fill={C.low} />
-          <path d="M 535 344 A 8 8 0 0 0 549 353 Z" fill={C.low} />
+          {/* Halvsirkler på varmfronten pekende mot nordøst (i fartsretningen, mot den kalde lufta). sweep=1 gir bulen på nordøstsiden. */}
+          <path d="M 420 274 A 8 8 0 0 1 434 283 Z" fill={C.low} />
+          <path d="M 480 312 A 8 8 0 0 1 494 321 Z" fill={C.low} />
+          <path d="M 535 344 A 8 8 0 0 1 549 353 Z" fill={C.low} />
 
           {/* Jevnt nedbørsfelt foran varmfronten */}
           <ellipse cx="530" cy="310" rx="55" ry="35" fill="url(#syn-rain-zone)" opacity="0.8" />
-          <L x="510" y="314" fill="#38bdf8" size={10} weight={700} anchor="middle">Jevn nedbør</L>
+          <L x="545" y="300" fill="#38bdf8" size={10} weight={700} anchor="middle">Jevn nedbør</L>
           <L x="566" y="350" fill={C.low} size={12} weight={800}>Varmfront</L>
 
           {/* 3. Kaldfront fra trippelpunktet (380, 250) sørover (440, 480) */}
@@ -175,9 +177,9 @@ export function RealisticSynopticChartDiagram() {
           <path d="M 230 220 C 235 280 270 320 330 310" fill="none" stroke="#38bdf8" strokeWidth="2.2" className="model-wind-flow" />
           <path d="M 460 230 C 400 200 370 210 350 230" fill="none" stroke="#38bdf8" strokeWidth="2.5" className="model-wind-fast" />
 
-          {/* STERK VIND DER ISOBARENE LIGGER TETT */}
-          <Arrow d="M 430 270 L 480 260" marker={m.warm} color={C.warm} width={3.2} />
-          <L x="486" y="252" fill={C.warm} size={11} weight={800}>Sterk vind</L>
+          {/* STERK VIND DER ISOBARENE LIGGER TETT. Pila følger isobarene mot klokka rundt L, litt avbøyd inn mot lavtrykket (friksjon ved bakken). */}
+          <Arrow d="M 458 274 L 452 230" marker={m.warm} color={C.warm} width={3.2} />
+          <L x="466" y="262" fill={C.warm} size={11} weight={800}>Sterk vind</L>
 
           {/* STASJONSPLOTT UTEN NAVN: temperatur, duggpunkt, trykk og vind (WMO-symboler) */}
           {/* Plott 1: i varm sektor, mellom 990 og 995 hPa. Skydekke 6/8, vind fra sør. */}
@@ -207,6 +209,34 @@ export function RealisticSynopticChartDiagram() {
             <L x="11" y="-4" fill="#f8fafc" size={10} weight={700}>996</L>
           </g>
 
+          {/* TEGNFORKLARING FOR FRONTER, med stasjonær front (vekslende blå trekanter og røde halvsirkler på hver sin side) */}
+          <g transform="translate(45, 545)">
+            <L x="20" y="4" fill={C.teal} size={11} weight={700}>Fronter:</L>
+            {/* Varmfront */}
+            <line x1="90" y1="0" x2="140" y2="0" stroke={C.low} strokeWidth="3" />
+            <path d="M 104 0 A 6 6 0 0 1 116 0 Z" fill={C.low} />
+            <L x="148" y="4" fill="#cbd5e1" size={10}>Varmfront</L>
+            {/* Kaldfront */}
+            <line x1="215" y1="0" x2="265" y2="0" stroke={C.cold} strokeWidth="3" />
+            <polygon points="229,0 241,0 235,-9" fill={C.cold} />
+            <L x="273" y="4" fill="#cbd5e1" size={10}>Kaldfront</L>
+            {/* Okkludert front */}
+            <line x1="338" y1="0" x2="398" y2="0" stroke="#a855f7" strokeWidth="3" />
+            <polygon points="346,0 358,0 352,-9" fill="#a855f7" />
+            <path d="M 374 0 A 6 6 0 0 1 386 0 Z" fill="#a855f7" />
+            <L x="406" y="4" fill="#cbd5e1" size={10}>Okkludert front</L>
+            {/* Stasjonær front: halvsirkler opp mot kald luft, trekanter ned mot varm luft */}
+            <line x1="500" y1="0" x2="530" y2="0" stroke={C.low} strokeWidth="3" />
+            <line x1="530" y1="0" x2="560" y2="0" stroke={C.cold} strokeWidth="3" />
+            <line x1="560" y1="0" x2="590" y2="0" stroke={C.low} strokeWidth="3" />
+            <line x1="590" y1="0" x2="620" y2="0" stroke={C.cold} strokeWidth="3" />
+            <path d="M 509 0 A 6 6 0 0 1 521 0 Z" fill={C.low} />
+            <polygon points="539,0 551,0 545,9" fill={C.cold} />
+            <path d="M 569 0 A 6 6 0 0 1 581 0 Z" fill={C.low} />
+            <polygon points="599,0 611,0 605,9" fill={C.cold} />
+            <L x="628" y="4" fill="#cbd5e1" size={10}>Stasjonær front (beveger seg lite)</L>
+          </g>
+
           {/* FORKLARENDE BUNNSTRIPE */}
           <g transform="translate(45, 495)">
             <rect x="0" y="0" width="850" height="34" rx="6" fill="#0d1b26" stroke="#23384a" />
@@ -225,7 +255,7 @@ export function RealisticSynopticChartDiagram() {
  * 2. StationModelExplainedDiagram
  * Stasjonsplottet slik teksten beskriver det: temperatur, duggpunkt, trykk, symbol for været nå
  * og vindpil som peker dit vinden kommer fra. Symbolene er tegnet etter WMO-No. 306
- * (kodetabell 4677 og 2700), se wmo-symboler.tsx. Trykket står som fullt trykk.
+ * (kodetabell 4677 og 2700), se wmo-symboler.tsx. Trykket står forkortet (084 = 1008,4 hPa, NOAA JetStream).
  */
 export function StationModelExplainedDiagram() {
   const ww: { code: WwKode; label: string }[] = [
@@ -240,7 +270,7 @@ export function StationModelExplainedDiagram() {
     <Diagram
       title="Stasjonsplott med temperatur, duggpunkt, trykk, symbol for været nå og vindpil"
       heading="Slik leser du et stasjonsplott"
-      caption="Et stasjonsplott samler været på ett sted: temperatur, duggpunkt, trykk, et symbol for været nå, og en vindpil som peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f). Symboler: WMO/OGC WorldWeatherSymbols (CC BY 4.0)."
+      caption="Et stasjonsplott samler været på ett sted: temperatur, duggpunkt, trykk (forkortet: 084 betyr 1008,4 hPa), et symbol for været nå, og en vindpil som peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f). Symboler: WMO/OGC WorldWeatherSymbols (CC BY 4.0)."
       viewBox="0 0 940 520"
       wide
     >
@@ -260,13 +290,14 @@ export function StationModelExplainedDiagram() {
 
               <L x="-34" y="-12" fill={C.warm} size={22} weight={800} anchor="end">12</L>
               <L x="-34" y="42" fill={C.cold} size={22} weight={800} anchor="end">11</L>
-              <L x="34" y="-12" fill="#f8fafc" size={22} weight={800}>1008,4</L>
+              <L x="34" y="-12" fill="#f8fafc" size={22} weight={800}>084</L>
               <WwSymbol code={63} x={-46} y={14} s={0.62} color="#4ade80" />
             </g>
 
             <L x="24" y="72" fill={C.warm} size={12} weight={700}>Temperatur: 12 °C</L>
             <L x="24" y="250" fill={C.cold} size={12} weight={700}>Duggpunkt: 11 °C</L>
-            <L x="436" y="72" fill="#f8fafc" size={12} weight={700} anchor="end">Trykk: 1008,4 hPa</L>
+            <L x="436" y="72" fill="#f8fafc" size={12} weight={700} anchor="end">Trykk: 084 = 1008,4 hPa</L>
+            <L x="436" y="87" fill={C.muted} size={11} anchor="end">Tideler av hPa, 9 eller 10 foran er sløyfet</L>
             <L x="24" y="196" fill="#4ade80" size={12} weight={700}>Været nå: moderat regn</L>
             <L x="436" y="250" fill="#f8fafc" size={12} weight={700} anchor="end">Skydekke: 7/8</L>
             <L x="436" y="266" fill={C.muted} size={11} anchor="end">Fyllingen av sirkelen viser</L>
@@ -321,8 +352,8 @@ export function StationModelExplainedDiagram() {
 /**
  * 3. FrontVerticalProfileDiagram
  * Tverrsnitt gjennom en kaldfront og en varmfront. Høyden er sterkt overdrevet.
- * Varmfronten heller slakt (om lag 1:100–1:200) og gir skyet vær og jevn nedbør.
- * Kaldfronten er brattere (om lag 1:50–1:100) og gir oftere byger. Skyene har ikke navn,
+ * Varmfronten heller slakt og gir skyet vær og jevn nedbør.
+ * Kaldfronten er brattere enn varmfronten og gir oftere byger (ingen helningstall, godkjent av Mats 22.10). Skyene har ikke navn,
  * fordi skytypene ikke står i teksten (fagsjekk F4).
  */
 export function FrontVerticalProfileDiagram() {
@@ -330,7 +361,7 @@ export function FrontVerticalProfileDiagram() {
     <Diagram
       title="Vertikalt tverrsnitt gjennom en kaldfront og en varmfront med skyer og nedbør"
       heading="Vertikalt tverrsnitt: skyer, temperatur og nedbør gjennom frontene"
-      caption="Frontflaten heller svakt mot bakken. En varmfront heller ofte om lag 1:100–1:200, mens en kaldfront er brattere, om lag 1:50–1:100. Varm luft løftes over kald luft, og det dannes skyer og frontnedbør. En varmfront gir skyet vær og jevn nedbør. En kaldfront fortrenger varmere luft og gir oftere byger."
+      caption="Frontflaten heller svakt mot bakken. Kaldfronten er brattere enn varmfronten. Varm luft løftes over kald luft, og det dannes skyer og frontnedbør. En varmfront gir skyet vær og jevn nedbør. En kaldfront fortrenger varmere luft og gir oftere byger."
       viewBox="-95 0 1035 520"
       wide
     >
@@ -383,7 +414,7 @@ export function FrontVerticalProfileDiagram() {
           <L x="826" y="398" fill={C.cold} size={14} weight={800} anchor="middle">Kaldere luft</L>
           <L x="826" y="416" fill={C.muted} size={11} anchor="middle">foran varmfronten</L>
           <L x="830" y="300" fill={C.low} size={12} weight={800} anchor="middle">Varmfront</L>
-          <L x="830" y="315" fill={C.low} size={10} anchor="middle">om lag 1:100–1:200</L>
+          <L x="830" y="315" fill={C.low} size={10} anchor="middle">slakere flate</L>
 
           {/* 3. Kaldluftkilen bak kaldfronten (Vest / Venstre side) */}
           {/* Kaldfrontflaten starter på bakken ved x=320 og stiger bratt til x=180 ved y=160 */}
@@ -392,7 +423,7 @@ export function FrontVerticalProfileDiagram() {
           <L x="90" y="380" fill={C.cold} size={14} weight={800}>Kaldere luft</L>
           <L x="90" y="398" fill={C.muted} size={11}>skyver seg under den varme</L>
           <L x="150" y="230" fill={C.cold} size={12} weight={800} anchor="middle">Kaldfront</L>
-          <L x="150" y="245" fill={C.cold} size={10} anchor="middle">om lag 1:50–1:100</L>
+          <L x="150" y="245" fill={C.cold} size={10} anchor="middle">brattere flate</L>
 
           {/* 4. Varmere luft i midten */}
           <polygon points="320,430 620,430 885,160 180,160" fill="url(#vp-warm-air)" />
