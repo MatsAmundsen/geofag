@@ -87,7 +87,7 @@ export function RealisticSynopticChartDiagram() {
             d="M 380 250 C 440 280 500 320 560 360 C 520 400 480 430 440 480 C 410 430 390 340 380 250 Z"
             fill="url(#syn-warm-sector)"
           />
-          <L x="470" y="400" fill={C.warm} size={13} weight={800}>Varmere luft</L>
+          <L x="440" y="440" fill={C.warm} size={13} weight={800}>Varmere luft</L>
 
           {/* ISOBARFELT RUNDT LAVTRYKKET (sentrum ved x=340, y=210) */}
           {/* 970 hPa */}
@@ -144,7 +144,8 @@ export function RealisticSynopticChartDiagram() {
           <path d="M 340 210 C 355 220 370 235 380 250" fill="none" stroke="#a855f7" strokeWidth="4" />
           <polygon points="352,221 359,212 363,225" fill="#a855f7" />
           <path d="M 364 232 A 7 7 0 0 1 375 243 Z" fill="#a855f7" />
-          <L x="325" y="245" fill="#a855f7" size={11} weight={800}>Okklusjon</L>
+          <rect x="258" y="237" width="64" height="18" rx="4" fill="#0b1620" opacity="0.85" />
+          <L x="318" y="250" fill="#a855f7" size={11} weight={800} anchor="end">Okklusjon</L>
 
           {/* 2. Varmfront fra trippelpunktet (380, 250) mot Norge (560, 360) */}
           <path d="M 380 250 C 430 280 490 320 560 360" fill="none" stroke={C.low} strokeWidth="4" />
