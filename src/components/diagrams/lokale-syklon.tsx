@@ -169,6 +169,21 @@ function polarfront(g: ReturnType<typeof geometri>, bolge: number): { vest: Pkt[
   return { vest, ost };
 }
 
+/** Steg 1: bølgetoppen fra polarfronten vest (k) via sentrum (C) til polarfronten øst (w), med samme tangent som polarfronten i k og w (ingen knekk). */
+function bolgeTopp(pf: { vest: Pkt[]; ost: Pkt[] }, C: Pkt): string {
+  const k = pf.vest[pf.vest.length - 1];
+  const kf = pf.vest[pf.vest.length - 2];
+  const w = pf.ost[0];
+  const wb = pf.ost[1];
+  const a = 0.35 * Math.hypot(C[0] - k[0], C[1] - k[1]) / Math.hypot(k[0] - kf[0], k[1] - kf[1]);
+  const b = 0.35 * Math.hypot(w[0] - C[0], w[1] - C[1]) / Math.hypot(wb[0] - w[0], wb[1] - w[1]);
+  const c1: Pkt = [k[0] + (k[0] - kf[0]) * a, k[1] + (k[1] - kf[1]) * a];
+  const c4: Pkt = [w[0] - (wb[0] - w[0]) * b, w[1] - (wb[1] - w[1]) * b];
+  const h = 0.3 * (w[0] - k[0]);
+  const f = (p: Pkt) => `${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
+  return `M${f(k)} C${f(c1)} ${f([C[0] - h, C[1]])} ${f(C)} C${f([C[0] + h, C[1]])} ${f(c4)} ${f(w)}`;
+}
+
 /** Stiplet bue mot klokka rundt sentrum, med pilspiss nederst (der lufta går mot øst). */
 const SIRK_RX = 84;
 const SIRK_RY = 62;
@@ -385,7 +400,7 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
           <path d={smoothPath(pf.ost)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
           {/* steg 1: polarfronten går sammenhengende gjennom bølgetoppen */}
           {s.iso < 0.98 ? (
-            <path d={smoothPath([g.K[g.K.length - 1], g.C, g.W[g.W.length - 1]])} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp * (1 - smooth(s.iso))} data-nocheck="" />
+            <path d={bolgeTopp(pf, g.C)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp * (1 - smooth(s.iso))} data-nocheck="" />
           ) : null}
           {/* frontene, heltrukne som i Værkart (PR #187). Uten farge skilles den okkluderte fronten fra
               kaldfronten på de vekslende trekantene og halvsirklene, også i tegnforklaringen. */}

@@ -180,7 +180,7 @@ export function FoehnModel() {
                   {/* Nivålinjer */}
                   {/* Havnivå */}
                   <line x1="30" y1="340" x2="710" y2="340" stroke="#334155" strokeDasharray="3 3" />
-                  <text x="35" y="355" fill="#64748b" fontSize="10">0 m (Havnivå)</text>
+                  <text x="705" y="355" textAnchor="end" fill="#64748b" fontSize="10">0 m (Havnivå)</text>
 
                   {/* LCL Kondensasjonsnivå linje */}
                   {/* Skalerer høyde: 0m = y340, 2600m = y90 -> 250px / 2600m ~ 0.096 px/m */}
@@ -193,7 +193,7 @@ export function FoehnModel() {
                       <>
                         {/* LCL stiplelinje */}
                         <line x1="40" y1={yLcl} x2="360" y2={yLcl} stroke="#38bdf8" strokeDasharray="4 3" opacity="0.7" />
-                        <text x="50" y={yLcl - 6} fill="#38bdf8" fontSize="10" fontWeight="600">
+                        <text x="358" y={yLcl + 14} textAnchor="end" fill="#38bdf8" fontSize="10" fontWeight="600">
                           Kondensasjonsnivå (LCL: {zLcl} m) · Skybase
                         </text>
 
@@ -204,12 +204,12 @@ export function FoehnModel() {
                         />
                         {/* Regndråper under skyen på losiden */}
                         <g stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="2 4" opacity="0.7">
-                          <line x1="200" y1={yLcl + 15} x2="190" y2={yLcl + 55} />
-                          <line x1="230" y1={yLcl + 20} x2="220" y2={yLcl + 60} />
-                          <line x1="260" y1={yLcl + 15} x2="250" y2={yLcl + 55} />
-                          <line x1="290" y1={yLcl + 10} x2="280" y2={yLcl + 50} />
+                          <line x1="200" y1={yLcl + 23} x2="190" y2={yLcl + 63} />
+                          <line x1="230" y1={yLcl + 28} x2="220" y2={yLcl + 68} />
+                          <line x1="260" y1={yLcl + 23} x2="250" y2={yLcl + 63} />
+                          <line x1="290" y1={yLcl + 18} x2="280" y2={yLcl + 58} />
                         </g>
-                        <text x="235" y={yLcl + 75} fill="#7dd3fc" fontSize="11" fontWeight="600" textAnchor="middle">
+                        <text x="250" y={Math.min(yLcl + 83, 372)} fill="#7dd3fc" fontSize="11" fontWeight="600" textAnchor="middle">
                           Orografisk nedbør (Regn faller ut)
                         </text>
 
@@ -222,7 +222,7 @@ export function FoehnModel() {
                           strokeWidth="2.5"
                           markerEnd="url(#mdl-teal)"
                         />
-                        <text x="100" y="290" fill="#94a3b8" fontSize="10">
+                        <text x="20" y="24" fill="#94a3b8" fontSize="10">
                           Trinn 1: Tørradiabatisk (1,0 °C / 100m)
                         </text>
 
@@ -234,7 +234,7 @@ export function FoehnModel() {
                           strokeWidth="2.5"
                           markerEnd="url(#mdl-teal)"
                         />
-                        <text x="210" y={(yLcl + yTop) / 2 - 10} fill="#7dd3fc" fontSize="10">
+                        <text x="20" y="40" fill="#7dd3fc" fontSize="10">
                           Trinn 2: Fuktigadiabatisk (0,6 °C / 100m)
                         </text>
 
@@ -246,7 +246,7 @@ export function FoehnModel() {
                           strokeWidth="3.5"
                           markerEnd="url(#mdl-red)"
                         />
-                        <text x="486" y={(yTop + yLee) / 2 - 15} fill="#f59e0b" fontSize="11" fontWeight="600">
+                        <text x="20" y="57" fill="#f59e0b" fontSize="11" fontWeight="600">
                           Trinn 3: Lufta synker og varmes (1,0 °C / 100m)
                         </text>
 
@@ -264,9 +264,9 @@ export function FoehnModel() {
                         {/* Punkt B: LCL */}
                         <g transform={`translate(160, ${yLcl})`}>
                           <circle cx="0" cy="0" r="5" fill="#38bdf8" />
-                          <rect x="10" y="-18" width="105" height="34" rx="4" fill="#0f172a" stroke="#334155" />
-                          <text x="18" y="-4" fill="#cbd5e1" fontSize="10">Skybase ({zLcl} m):</text>
-                          <text x="18" y="10" fill="#38bdf8" fontSize="12" fontWeight="bold">
+                          <rect x="-115" y="-52" width="105" height="34" rx="4" fill="#0f172a" stroke="#334155" />
+                          <text x="-107" y="-38" fill="#cbd5e1" fontSize="10">Skybase ({zLcl} m):</text>
+                          <text x="-107" y="-24" fill="#38bdf8" fontSize="12" fontWeight="bold">
                             {tLcl.toFixed(1)} °C · metta
                           </text>
                         </g>

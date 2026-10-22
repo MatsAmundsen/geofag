@@ -334,10 +334,10 @@ export function TemperatureInversionDiagram() {
           <ellipse cx="768" cy="305" rx="40" ry="14" fill="#d97706" opacity="0.6" />
 
           {/* Tekst om faren */}
-          <L x="700" y="300" fill="#fef08a" size={11} weight={700} anchor="middle">
+          <L x="862" y="300" fill="#fef08a" size={11} weight={700} anchor="end">
             Utslipp samler seg under lokket
           </L>
-          <L x="700" y="318" fill="#fde68a" size={10} anchor="middle">
+          <L x="862" y="318" fill="#fde68a" size={10} anchor="end">
             Fra skip, veitrafikk og vedfyring
           </L>
         </>
