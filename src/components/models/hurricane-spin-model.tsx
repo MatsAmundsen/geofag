@@ -265,8 +265,6 @@ const SAFFIR_DATA = [
     name: "Kategori 1",
     windKm: "119–153 km/t",
     windMs: "33–42 m/s",
-    pressure: "≥ 980 hPa",
-    surge: "1,2–1,5 m",
     damage:
       "Farlige vinder gir skader på takstein, kledning og trær. Strømbrudd i noen dager. Båter rives fra fortøyning.",
     color: "text-sky-400 border-sky-500/30 bg-sky-950/20",
@@ -276,8 +274,6 @@ const SAFFIR_DATA = [
     name: "Kategori 2",
     windKm: "154–177 km/t",
     windMs: "43–49 m/s",
-    pressure: "965–979 hPa",
-    surge: "1,8–2,4 m",
     damage:
       "Ekstremt farlige vinder. Betydelige tak- og fasadeskader. Mange trær knekker og blokkerer veier. Omfattende strømbrudd i opptil uker.",
     color: "text-amber-400 border-amber-500/30 bg-amber-950/20",
@@ -287,8 +283,6 @@ const SAFFIR_DATA = [
     name: "Kategori 3 (Major)",
     windKm: "178–208 km/t",
     windMs: "50–58 m/s",
-    pressure: "945–964 hPa",
-    surge: "2,7–3,6 m",
     damage:
       "Ødeleggende krefter. Tak rives av solide tre- og murhus. Strøm og vannforsyning slås ut i uker. Kystflommer trenger langt inn over land.",
     color: "text-orange-400 border-orange-500/30 bg-orange-950/20",
@@ -298,8 +292,6 @@ const SAFFIR_DATA = [
     name: "Kategori 4 (Major)",
     windKm: "209–251 km/t",
     windMs: "59–69 m/s",
-    pressure: "920–944 hPa",
-    surge: "4,0–5,5 m",
     damage:
       "Katastrofale skader. Yttervegger og tak kollapser. Flesteparten av trær knekkes eller rykkes opp med roten. Store boligområder blir ubeboelige i måneder.",
     color: "text-rose-400 border-rose-500/30 bg-rose-950/20",
@@ -309,8 +301,6 @@ const SAFFIR_DATA = [
     name: "Kategori 5 (Major)",
     windKm: "≥ 252 km/t",
     windMs: "≥ 70 m/s",
-    pressure: "< 920 hPa",
-    surge: "> 5,5 m",
     damage:
       "Total utslettelse. Bygninger pulveriseres, biler og industribrakker slynges gjennom lufta. Kysten oversvømmes av en massiv mur av vann. Eksempler: Andrew (1992) i Sør-Florida, Dorian (2019) på Bahamas.",
     color: "text-red-500 border-red-500/40 bg-red-950/30",
@@ -445,8 +435,8 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                 Coriolisparameteren null (f&nbsp;=&nbsp;0), og dermed også Corioliskraften. Selv om
                 havtemperaturen ved ekvator ofte overstiger 28–30 °C, kan ikke innstrømmende luft
                 settes i rotasjon. Lufta strømmer rett inn i lavtrykket og fyller det opp
-                umiddelbart. Tropiske sykloner trenger minst 5° breddegrad (ca. 500 km fra ekvator)
-                for å fødes.
+                umiddelbart. Tropiske sykloner dannes nesten aldri nærmere ekvator enn ca. 500 km (om lag 4–5°)
+                (NOAA AOML, u.å.).
               </p>
             </ModelNote>
           </div>
@@ -491,18 +481,6 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                     {catData.windKm}
                   </span>{" "}
                   ({catData.windMs})
-                </div>
-                <div>
-                  <span className="text-muted-foreground block text-xs">Sentraltrykk:</span>
-                  <span className="font-mono font-bold text-foreground text-base">
-                    {catData.pressure}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-muted-foreground block text-xs">Typisk stormflo:</span>
-                  <span className="font-mono font-bold text-foreground text-base">
-                    {catData.surge}
-                  </span>
                 </div>
               </div>
             </div>

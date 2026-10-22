@@ -107,7 +107,7 @@ At en ekstremværhendelse inntreffer, skyldes ikke nødvendigvis klimaendringene
 
 ## Polare lavtrykk
 
-Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 og fram til i dag (oktober 2026) har Meteorologisk institutt i Tromsø registrert om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 til 2024 registrerte Meteorologisk institutt i Tromsø om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
 
 ```widget
 PolarLowFormation

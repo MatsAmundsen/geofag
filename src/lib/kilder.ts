@@ -4080,6 +4080,12 @@ export const KILDER = {
       href: "https://www.nhc.noaa.gov/aboutsshws.php",
     },
     {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
+      italic: "A15) How do tropical cyclones form?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
+    },
+    {
       prefix: "Rappaport, E. N. (2014). Fatalities in the United States from Atlantic tropical cyclones: New data and interpretation. ",
       italic: "Bulletin of the American Meteorological Society, 95",
       suffix: "(3), 341–346.",

@@ -210,10 +210,10 @@ export function HurricaneCrossSectionDiagram() {
             Vindhastighet
           </L>
           <L x="830" y="415" fill={C.warm} size={11} weight={700}>
-            250 km/t (kat. 5)
+            252 km/t (kat. 5)
           </L>
           <L x="830" y="450" fill={C.muted} size={10}>
-            120 km/t (orkan)
+            119 km/t (kat. 1)
           </L>
           <L x="830" y="485" fill={C.muted} size={10}>
             0 km/t
