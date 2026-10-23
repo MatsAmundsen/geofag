@@ -1589,6 +1589,12 @@ export const KILDER = {
       suffix: ". Prentice-Hall.",
     },
     {
+      prefix: "Svensson, T. (2023, 5. september). ",
+      italic: "Overraskende årsak til flom på Østlandet",
+      suffix: ". Bjerknessenteret for klimaforskning.",
+      href: "https://bjerknes.uib.no/aktuelt/overraskende-arsak-til-flom-pa-ostlandet",
+    },
+    {
       prefix: "Granerød, M., Stabell, D., Mjelstad, H., & Tajet, H. T. T. (2023). ",
       italic: "Ekstremværet «Hans», ekstremt mye nedbør i deler av Sør-Norge 07.–09. august 2023",
       suffix: " (MET-info nr. 26/2023). Meteorologisk institutt.",

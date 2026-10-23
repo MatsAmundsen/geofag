@@ -111,6 +111,8 @@ AtmosphericRiver
 
 Ekstremværet Hans kom i august 2023 med nedbørmengder Meteorologisk institutt ikke hadde sett på over 100 år på Østlandet. Innlandet fikk de største mengdene. I gjennomsnitt går det mer enn 100 år mellom hver gang det kommer så store mengder på så kort tid, og området var uvanlig stort (Meteorologisk institutt, 2023). NVE kaller Hans den dyreste naturkatastrofen som noen gang har rammet Norge (Norges vassdrags- og energidirektorat, 2024).
 
+Bjerknessenteret beskriver at deler av lavtrykket fungerte som en atmosfærisk elv, et transportbånd for vanndamp. Vanligvis kommer slike elver fra Atlanterhavet, men under Hans kom den uvanlig nok fra øst, med fuktighet fra Øst-Europa der en stor del var fordampet over land (Svensson, 2023).
+
 Meteorologisk institutt varslet ekstremt mye regn på rødt nivå, og NVE oppgraderte farevarselet for flom, jord- og flomskred fra oransje til rødt nivå (Norges vassdrags- og energidirektorat, 2023). Det gikk over 750 løsmasseskred. Flomtoppen i Drammenselva kom først 30. august (Norges vassdrags- og energidirektorat, 2024).
 
 ```widget
