@@ -3,44 +3,15 @@
  * oversikt med bare kildefestede tall. f = 2Ω sin φ, minst om lag 500 km fra ekvator (NOAA AOML, u.å.-b),
  * banene fra NHC (u.å.-a), 1 cm per hPa og «vinden betyr mer» fra SNL (u.å.-c). Alt annet er relativt.
  */
-import { useEffect, useState } from "react";
-
-export function useRedusertBevegelse() {
-  const [r, setR] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return;
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setR(mq.matches);
-    const f = () => setR(mq.matches);
-    mq.addEventListener?.("change", f);
-    return () => mq.removeEventListener?.("change", f);
-  }, []);
-  return r;
-}
-
-function useKlokke(kjor: boolean) {
-  const [t, setT] = useState(0);
-  useEffect(() => {
-    if (!kjor) return;
-    let id = 0;
-    let forrige = performance.now();
-    const steg = (n: number) => {
-      setT((v) => v + (n - forrige) / 1000);
-      forrige = n;
-      id = requestAnimationFrame(steg);
-    };
-    id = requestAnimationFrame(steg);
-    return () => cancelAnimationFrame(id);
-  }, [kjor]);
-  return t;
-}
+import { useState } from "react";
+import { useOrkanKlokke } from "./hurricane-klokke";
 
 const knapp = (aktiv: boolean) =>
   `rounded-lg border px-3 py-1.5 text-sm font-semibold ${aktiv ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:bg-muted"}`;
 
-function Pause({ paa, sett }: { paa: boolean; sett: (v: boolean) => void }) {
+function Pause({ paa, sett }: { paa: boolean; sett: () => void }) {
   return (
-    <button type="button" className={knapp(false)} onClick={() => sett(!paa)} aria-pressed={!paa}>
+    <button type="button" className={knapp(false)} onClick={sett} aria-pressed={!paa}>
       {paa ? "❚❚ Pause" : "▶ Spill av"}
     </button>
   );
@@ -49,17 +20,15 @@ function Pause({ paa, sett }: { paa: boolean; sett: (v: boolean) => void }) {
 /* ---------- breddegrad og rotasjon ---------- */
 
 export function RotasjonOgBreddegrad() {
-  const redusert = useRedusertBevegelse();
+  const { ref, t, spiller, toggle, redusert } = useOrkanKlokke<HTMLDivElement>();
   const [phi, setPhi] = useState(20);
-  const [spiller, setSpiller] = useState(true);
-  const t = useKlokke(spiller && !redusert);
   const sin = Math.sin((phi * Math.PI) / 180);
   const vinkel = (-t * 60 * sin) % 360; // negativ = mot klokken i SVG når sin > 0
   const armer = [0, 120, 240];
   const retning = Math.abs(phi) < 1 ? "ingen rotasjon" : phi > 0 ? "mot klokken (nordlig halvkule)" : "med klokken (sørlig halvkule)";
   const krumning = 60 * sin;
   return (
-    <div className="rounded-xl border border-border bg-card p-4" data-modell="rotasjon-bredde">
+    <div ref={ref} className="rounded-xl border border-border bg-card p-4" data-modell="rotasjon-bredde">
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         <svg viewBox="0 0 360 360" className="mx-auto h-auto w-full max-w-[300px]" role="img" aria-label={`Lavtrykk sett ovenfra ved ${phi} graders bredde. Innstrømmende luft avbøyes ${retning}.`}>
           <rect x={0} y={0} width={360} height={360} rx={16} fill="#0f172a" />
@@ -97,7 +66,7 @@ export function RotasjonOgBreddegrad() {
             <strong className="text-foreground">{retning}</strong>.
           </p>
           <p>Jo lenger fra ekvator, jo sterkere avbøyning. Ved ekvator er sin&nbsp;0°&nbsp;=&nbsp;0, og lufta fyller lavtrykket uten å begynne å rotere.</p>
-          {!redusert && <Pause paa={spiller} sett={setSpiller} />}
+          {!redusert && <Pause paa={spiller} sett={toggle} />}
         </div>
       </div>
     </div>
@@ -122,10 +91,8 @@ function delBane(n: number) {
 }
 
 export function OrkanBane() {
-  const redusert = useRedusertBevegelse();
+  const { ref, t, spiller, toggle, redusert } = useOrkanKlokke<HTMLDivElement>();
   const [steg, setSteg] = useState(3);
-  const [spiller, setSpiller] = useState(true);
-  const t = useKlokke(spiller && !redusert);
   const til = BANE_STEG[steg].til;
   const pos = (() => {
     if (redusert || til === 0) return BANE[til];
@@ -135,14 +102,14 @@ export function OrkanBane() {
     return [BANE[i][0] + (BANE[i + 1][0] - BANE[i][0]) * f, BANE[i][1] + (BANE[i + 1][1] - BANE[i][1]) * f];
   })();
   return (
-    <div className="rounded-xl border border-border bg-card p-4" data-modell="orkanbane">
+    <div ref={ref} className="rounded-xl border border-border bg-card p-4" data-modell="orkanbane">
       <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Steg i banen">
         {BANE_STEG.map((b, i) => (
           <button key={b.navn} type="button" className={knapp(i === steg)} aria-pressed={i === steg} onClick={() => setSteg(i)}>
             {b.navn}
           </button>
         ))}
-        {!redusert && <Pause paa={spiller} sett={setSpiller} />}
+        {!redusert && <Pause paa={spiller} sett={toggle} />}
       </div>
       <figure>
         <svg viewBox="0 0 700 330" className="h-auto w-full" role="img" aria-label="Skjematisk kart over Atlanterhavet med breddegradene 0, 5 og 30 grader nord. En typisk bane starter mellom 5 og 30 grader nord, går vestover, svinger mot nord og går mot nordøst nær 30 grader nord.">

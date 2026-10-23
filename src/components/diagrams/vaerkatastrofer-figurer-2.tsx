@@ -3,8 +3,10 @@
  * G atmosfærisk elv, J varselkjeden under Hans, K Beauforts trapp fra storm til orkan.
  * Egne SVG-tegninger. Tallene og kildene står i vaerkatastrofer-tekst.ts. Alt annet er relativt.
  */
-import { lagFigur, r1, type Def, type Lab, type P } from "./steg-figur";
-import { F, Strom, VB, linje } from "./vaerkatastrofer-figurer";
+import { type Def, type Lab, type P } from "./steg-figur";
+import { lagFigur, r1 } from "./steg-kit";
+import { Strom } from "./vaerkatastrofer-figurer";
+import { F, VB } from "./vaerkatastrofer-kit";
 import {
   BEAUFORT_STATUS,
   BEAUFORT_TEKST,
@@ -155,7 +157,7 @@ const bombe: Def<FBilde> = {
       l.push({ text: "venstre utgang: lufta sprer seg i høyden", x: 920, y: 60, anchor: "end", color: F.lilla, weight: 800, at: [640, 230], badge: [690, 200] });
     }
     if (f >= 3) l.push({ text: "trykket faller, isobarene blir tettere", x: 300, y: 450, anchor: "middle", color: F.trykk, weight: 800, at: [540, 300], badge: [500, 380] });
-    if (f >= 4) l.push({ text: "minst 24 hPa på 24 timer (ved 60° N)", x: 920, y: 120, anchor: "end", color: F.tekst, weight: 800, at: [F_L[0], F_L[1]], badge: [640, 262] });
+    if (f >= 4) l.push({ text: "minst 24 hPa på 24 timer (ved 60° N)", x: 920, y: 120, anchor: "end", color: F.tekst, weight: 800, at: [590, 244], badge: [520, 150] });
     return l;
   }),
   keys: [
@@ -230,7 +232,7 @@ const elv: Def<GBilde> = {
   etiketter: [1, 2, 3, 4].map((f) => {
     const l: Lab[] = [
       { text: "subtropene", x: 50, y: 214, color: F.varm, weight: 700, size: 14 },
-      { text: "Vestlandet", x: 420, y: 40, color: F.tekst, weight: 700, size: 14 },
+      { text: "Vestlandet", x: 458, y: 40, color: F.tekst, weight: 700, size: 14 },
       { text: "om lag 2000 km lang, 300–500 km bred", x: 480, y: 130, color: F.teal, weight: 800, size: 14 },
       { text: "hav", x: 120, y: 500, color: F.dempet, size: 14 },
       { text: "fjell", x: 860, y: 420, color: F.dempet, size: 14 },
@@ -377,12 +379,14 @@ const beaufort: Def<KBilde> = {
     const l: Lab[] = [{ text: "middelvind over 10 minutter (Beaufort)", x: 40, y: 40, color: F.teal, weight: 800, size: 14 }];
     for (let i = 0; i < Math.min(f, 4); i++) {
       const t = K_TRINN[i];
-      l.push({ text: t.navn, x: K_X(i) + K_W / 2, y: K_Y(t.til) - 34, anchor: "middle", color: i === 3 ? F.vind : F.tekst, weight: 800 });
-      l.push({ text: t.tekst, x: K_X(i) + K_W / 2, y: K_Y(t.til) - 12, anchor: "middle", color: F.dempet, weight: 700, size: 13 });
+      const bx = K_X(i) + K_W / 2;
+      const by = r1(K_Y(t.til) - 40);
+      l.push({ text: t.navn, x: bx, y: K_Y(t.til) - 34, anchor: "middle", color: i === 3 ? F.vind : F.tekst, weight: 800, badge: [bx - 40, by] });
+      l.push({ text: t.tekst, x: bx, y: K_Y(t.til) - 12, anchor: "middle", color: F.dempet, weight: 700, size: 13, badge: [bx + 40, by] });
     }
     if (f >= 5) {
-      l.push({ text: "kategori 1: om lag 33–42 m/s", x: 830, y: 70, anchor: "middle", color: F.varm, weight: 800, size: 14 });
-      l.push({ text: "middel over 1 minutt", x: 830, y: 92, anchor: "middle", color: F.varm, weight: 700, size: 13 });
+      l.push({ text: "kategori 1: om lag 33–42 m/s", x: 830, y: 70, anchor: "middle", color: F.varm, weight: 800, size: 14, badge: [790, 60] });
+      l.push({ text: "middel over 1 minutt", x: 830, y: 92, anchor: "middle", color: F.varm, weight: 700, size: 13, badge: [870, 60] });
     }
     return l;
   }),
@@ -414,7 +418,7 @@ const beaufort: Def<KBilde> = {
           const aktiv = t.filter((v) => v > 0.5).length - 1;
           if (aktiv < 0) return null;
           const x0 = K_X(aktiv);
-          const y0 = K_Y(K_TRINN[aktiv].til) - 70;
+          const y0 = K_Y(K_TRINN[aktiv].til) - 110;
           return [0, 1, 2].map((i) => {
             const d = (sek * (60 + aktiv * 40) + i * 50) % K_W;
             return <line key={i} x1={r1(x0 + d)} x2={r1(x0 + d + 30)} y1={y0 + i * 8} y2={y0 + i * 8} stroke={F.dempet} strokeWidth={2} opacity={0.6} />;

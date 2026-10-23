@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { OrkanBane, RotasjonOgBreddegrad, StormfloOversikt, useRedusertBevegelse } from "./hurricane-deler";
+import { OrkanBane, RotasjonOgBreddegrad, StormfloOversikt } from "./hurricane-deler";
+import { useRedusertBevegelse } from "./hurricane-klokke";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
 export function HurricaneSvg({ hemisphere }: { hemisphere: "north" | "south" }) {

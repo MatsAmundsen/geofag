@@ -7,10 +7,10 @@ import { useState, type ReactNode } from "react";
 import { IsbreFigur, type Key, type Lab, type Markers } from "./isbre-figur";
 import { clamp, lerp, smooth, useInView } from "./isbre-kit";
 import { PlayPauseToggle } from "./svg-kit";
+import { r1 } from "./steg-kit";
 import { TidslinjeKontroller } from "./prosess-figur";
 import { tidslinjeVerdi, useTidslinje } from "./prosess-kit";
 
-export const r1 = (v: number) => Math.round(v * 10) / 10;
 export type P = [number, number];
 export type Bilde = Record<string, number>;
 
@@ -108,7 +108,7 @@ function lagerFor(def: object) {
   return l;
 }
 
-function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def<S>; heading?: string; caption?: ReactNode }) {
+export function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def<S>; heading?: string; caption?: ReactNode }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const tl = useTidslinje({ antall: def.faser.length, synlig: visible, faseMs: 3600, holdMs: 1800, element: ref });
   const s = tidslinjeVerdi(def.bilder, tl.p);
@@ -134,7 +134,7 @@ function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def<S>; he
               <span>⏸ Pause animasjon</span>
             </span>
             <span className="col-start-1 row-start-1 [&>button]:w-full [&>button]:justify-start">
-              <PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={navn} />
+              <PlayPauseToggle isPlaying={tl.playing} pulserer={tl.livePlaying && visible} onToggle={tl.toggle} name={navn} />
             </span>
           </span>
         }
@@ -169,12 +169,6 @@ function StegFigur<S extends Bilde>({ def, heading, caption }: { def: Def<S>; he
       </IsbreFigur>
     </div>
   );
-}
-
-export function lagFigur<S extends Bilde>(def: Def<S>) {
-  return function Figur({ heading, caption }: { heading?: string; caption?: ReactNode }) {
-    return <StegFigur def={def} heading={heading} caption={caption} />;
-  };
 }
 
 export type { Key, Lab, Markers };

@@ -4,7 +4,9 @@
  * Kildene og tallene står i vaerkatastrofer-tekst.ts. Alt annet er relativt (sterkere, høyere, varmere).
  */
 import { type ReactNode } from "react";
-import { lagFigur, r1, type Def, type Lab, type P } from "./steg-figur";
+import { type Def, type Lab, type P } from "./steg-figur";
+import { lagFigur, r1 } from "./steg-kit";
+import { F, VB, langs, linje } from "./vaerkatastrofer-kit";
 import {
   KLIMA_FORDELING_STATUS,
   KLIMA_FORDELING_TEKST,
@@ -18,51 +20,6 @@ import {
   TORNADO_STATUS,
   TORNADO_TEKST,
 } from "./vaerkatastrofer-tekst";
-
-export const F = {
-  himmel: "#0f1d29",
-  linje: "#4b6275",
-  tekst: "#e8eef2",
-  dempet: "#9fb0bd",
-  varm: "#e8a46a",
-  kald: "#7cb8e8",
-  hav: "#173a4f",
-  havVarm: "#7a4a2a",
-  sky: "#cfd8e0",
-  teal: "#5eead4",
-  trykk: "#7cc4ff",
-  vind: "#fca5a5",
-  lilla: "#c4a5f0",
-  is: "#e6f2fa",
-  land: "#55604f",
-  landKant: "#8e9784",
-};
-
-export const VB = "0 0 960 540";
-
-/* ---------- hjelpere ---------- */
-
-export const linje = (pts: P[]) => pts.map((p, i) => `${i ? "L" : "M"}${r1(p[0])} ${r1(p[1])}`).join(" ");
-
-/** Punkt en andel t (0–1) langs en brutt linje. */
-export function langs(pts: P[], t: number): P {
-  const len: number[] = [];
-  let tot = 0;
-  for (let i = 1; i < pts.length; i++) {
-    const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
-    len.push(d);
-    tot += d;
-  }
-  let rest = ((t % 1) + 1) % 1 * tot;
-  for (let i = 0; i < len.length; i++) {
-    if (rest <= len[i]) {
-      const u = len[i] ? rest / len[i] : 0;
-      return [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * u, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * u];
-    }
-    rest -= len[i];
-  }
-  return pts[pts.length - 1];
-}
 
 /** Strømlinje med pil og prikker som beveger seg langs den (står stille ved redusert bevegelse). */
 export function Strom({ pts, farge, mk, synlig, sek, fart = 0.12, n = 4, w = 3 }: { pts: P[]; farge: string; mk: string; synlig: number; sek: number; fart?: number; n?: number; w?: number }) {
@@ -216,18 +173,18 @@ const stormflo: Def<EBilde> = {
     const l: Lab[] = [
       { text: "middels vannstand", x: 30, y: E_NULL + 22, color: F.dempet, size: 13 },
       { text: "kai", x: 900, y: E_KAI + 30, anchor: "end", color: F.tekst, weight: 800 },
-      { text: "tidevann (springflo)", x: 560, y: r1(y1 + 6), anchor: "end", color: F.trykk, weight: 700, at: [E_STAV - 2, r1(y1)], badge: [E_STAV - 40, r1(y1 + 20)] },
+      { text: "tidevann (springflo)", x: 656, y: 482, color: F.trykk, weight: 700, at: [E_STAV + 8, r1(y1)], badge: [690, 382] },
     ];
     if (f >= 2) {
-      l.push({ text: "lavt lufttrykk: om lag 1 cm per hPa", x: 560, y: r1(y2 - 2), anchor: "end", color: F.lilla, weight: 700, at: [E_STAV - 2, r1(y2)], badge: [E_STAV - 40, r1(y2)] });
-      l.push({ text: "lavtrykk", x: 180, y: 30, anchor: "middle", color: F.vind, weight: 800 });
+      l.push({ text: "lavt lufttrykk: om lag 1 cm per hPa", x: 656, y: 456, color: F.lilla, weight: 700, at: [E_STAV + 8, r1(y2)], badge: [780, 382] });
+      l.push({ text: "lavtrykk", x: 180, y: 30, anchor: "middle", color: F.vind, weight: 800, at: [214, 58], badge: [262, 44] });
     }
     if (f >= 3) {
-      l.push({ text: "vind stuer vann mot land", x: 560, y: r1(y3 - 4), anchor: "end", color: F.teal, weight: 700, at: [E_STAV - 2, r1(y3)], badge: [E_STAV - 40, r1(y3 - 16)] });
+      l.push({ text: "vind stuer vann mot land", x: 656, y: 430, color: F.teal, weight: 700, at: [E_STAV + 8, r1(y3)], badge: [690, 470] });
       l.push({ text: "pålandsvind", x: 120, y: 150, color: F.teal, weight: 800 });
     }
     if (f >= 4) {
-      l.push({ text: "bølger på toppen", x: 560, y: r1(y4 - 16), anchor: "end", color: F.tekst, weight: 700, at: [E_STAV - 2, r1(y4)], badge: [E_STAV - 40, r1(y4 - 34)] });
+      l.push({ text: "bølger på toppen", x: 656, y: 404, color: F.tekst, weight: 700, at: [E_STAV + 8, r1(y4)], badge: [780, 470] });
       l.push({ text: "vannet går over kaia", x: 900, y: 200, anchor: "end", color: F.vind, weight: 800, at: [700, 262], badge: [700, 222] });
     }
     return l;
@@ -331,7 +288,7 @@ const polartLavtrykk: Def<HBilde> = {
     if (f === 2) l.push({ text: "bygeskyene blir høyere utover havet", x: 520, y: 150, anchor: "middle", color: F.tekst, weight: 700, at: [700, skyTopp(700, 1, 0) - 4], badge: [740, 200] });
     if (f === 3) {
       l.push({ text: "bygesenter", x: 520, y: 110, anchor: "end", color: F.tekst, weight: 700, at: [680, 160], badge: [600, 130] });
-      l.push({ text: "lavtrykk dannes", x: 860, y: 370, anchor: "middle", color: F.vind, weight: 800, at: [720, 402], badge: [780, 360] });
+      l.push({ text: "lavtrykk dannes", x: 860, y: 370, anchor: "middle", color: F.vind, weight: 800, at: [830, 450], badge: [740, 350] });
     }
     if (f === 4) {
       l.push({ text: "sett ovenfra", x: 60, y: 60, color: F.dempet, weight: 700 });
@@ -378,9 +335,9 @@ const polartLavtrykk: Def<HBilde> = {
           </g>
           {/* lavtrykk */}
           <g opacity={s.lav}>
-            <text x={720} y={420} textAnchor="middle" fontSize={34} fontWeight={800} fill={F.vind}>L</text>
-            <Strom pts={[[560, 412], [690, 412]]} farge={F.teal} mk={m.teal} synlig={s.lav} sek={sek} n={2} fart={0.3} />
-            <Strom pts={[[880, 412], [752, 412]]} farge={F.teal} mk={m.teal} synlig={s.lav} sek={sek} n={2} fart={0.3} />
+            <text x={850} y={488} textAnchor="middle" fontSize={34} fontWeight={800} fill={F.vind}>L</text>
+            <Strom pts={[[750, 474], [812, 474]]} farge={F.teal} mk={m.teal} synlig={s.lav} sek={sek} n={2} fart={0.3} />
+            <Strom pts={[[940, 474], [888, 474]]} farge={F.teal} mk={m.teal} synlig={s.lav} sek={sek} n={2} fart={0.3} />
           </g>
         </g>
         {s.topp > 0.02 && (
@@ -436,7 +393,7 @@ const tornado: Def<DBilde> = {
     }
     if (f === 2) l.push({ text: "mot klokka", x: 780, y: 210, color: F.vind, weight: 700, at: [690, 240], badge: [720, 200] });
     if (f >= 3) {
-      l.push({ text: "mesosyklon: roterende oppdrift", x: 920, y: 250, anchor: "end", color: F.vind, weight: 800, at: [668, 220], badge: [720, 250] });
+      l.push({ text: "mesosyklon: roterende oppdrift", x: 940, y: 200, anchor: "end", color: F.vind, weight: 800, at: [668, 220], badge: [800, 190] });
       l.push({ text: "tornado kan dannes, men hvordan er ikke fullt forstått", x: 920, y: 440, anchor: "end", color: F.dempet, size: 13, at: [748, 420], narrowHide: true });
     }
     return l;
@@ -540,14 +497,14 @@ const klimaFordeling: Def<IBilde> = {
       { text: "temperatur →", x: 495, y: I_BUNN + 34, anchor: "middle", color: F.dempet, size: 13 },
       { text: "grense for ekstrem varme", x: I_VARM + 8, y: 70, color: F.vind, weight: 700, size: 13 },
       { text: "ekstrem kulde", x: I_KALD - 8, y: 70, anchor: "end", color: F.kald, weight: 700, size: 13 },
-      { text: f >= 2 ? "fremtidig klima" : "dagens klima", x: mu, y: 112, anchor: "middle", color: f >= 2 ? F.varm : F.tekst, weight: 800 },
+      { text: f >= 2 ? "fremtidig klima" : "dagens klima", x: mu, y: 112, anchor: "middle", color: f >= 2 ? F.varm : F.tekst, weight: 800, badge: [mu, 72] },
     ];
-    if (f >= 2) l.push({ text: "dagens klima", x: I_MU - 150, y: 210, anchor: "end", color: F.dempet, size: 13, at: [I_MU - 110, kurveY(I_MU - 110, I_MU)], narrowHide: true });
+    if (f >= 2) l.push({ text: "dagens klima", x: I_MU - 120, y: 210, anchor: "end", color: F.dempet, size: 13, at: [I_MU - 110, kurveY(I_MU - 110, I_MU)], narrowHide: true });
     if (f >= 3) {
-      l.push({ text: "mye mer ekstrem varme", x: 900, y: 200, anchor: "end", color: F.vind, weight: 800, at: [I_VARM + 40, 400], badge: [I_VARM + 60, 330] });
-      l.push({ text: "mindre ekstrem kulde", x: 180, y: 300, anchor: "middle", color: F.kald, weight: 700, at: [I_KALD - 20, 424], badge: [I_KALD - 40, 380] });
+      l.push({ text: "mye mer ekstrem varme", x: 900, y: 200, anchor: "end", color: F.vind, weight: 800, at: [I_VARM + 40, 400], badge: [790, 250] });
+      l.push({ text: "mindre ekstrem kulde", x: I_KALD + 10, y: 120, color: F.kald, weight: 700, at: [I_KALD - 20, 424], badge: [I_KALD - 40, 380] });
     }
-    if (f >= 4) l.push({ text: "varmere enn noen gang målt", x: 900, y: 300, anchor: "end", color: "#ffd0c8", weight: 800, at: [I_REKORD + 25, 418], badge: [I_REKORD + 30, 380] });
+    if (f >= 4) l.push({ text: "varmere enn noen gang målt", x: 900, y: 300, anchor: "end", color: "#ffd0c8", weight: 800, at: [I_REKORD + 25, 418], badge: [850, 330] });
     return l;
   }),
   keys: [
