@@ -441,12 +441,12 @@ export const OppvellingFigurLat = lat<FigurProps>(
     ...LOKALE_MAAL,
     // smal skjerm viser et høyere utsnitt nær kysten (540 × 500), se hav-oppvelling.tsx
     smal: [540, 500],
-    // målt 19.10 mot ferdig figur (redusert bevegelse) ved 320–1280 px; statusfeltet blir 40 px lavere fra 640 px vindu
+    // målt 24.10 mot ferdig figur (redusert bevegelse) ved 320–1280 px; statusfeltet blir 40 px lavere fra 640 px vindu
     smTrinn: { over: -40, under: 0 },
     skala: {
       smal: {
         over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
-        under: [[299, 266], [300, 248], [332, 248], [333, 222], [590, 222], [591, 204]],
+        under: [[290, 266], [310, 248], [325, 248], [340, 222], [550, 222], [610, 204]],
       },
       bred: { over: [[806, 127]], under: [[806, 58]] },
     },
@@ -466,7 +466,7 @@ export const EkmanSpiralFigurLat = lat<FigurProps>(
     over: [0, 0],
     under: [0, 0],
     bredFra: 760,
-    // målt 19.10 ved 320–1280 px vindu; statusfeltet blir 28 px lavere fra 640 px vindu
+    // målt 24.10 ved 320–1280 px vindu (uendret mot 19.10); statusfeltet blir 28 px lavere fra 640 px vindu
     smTrinn: { over: -28, under: 0 },
     skala: {
       smal: {
