@@ -1589,6 +1589,12 @@ export const KILDER = {
       suffix: ". Prentice-Hall.",
     },
     {
+      prefix: "Svensson, T. (2023, 5. september). ",
+      italic: "Overraskende årsak til flom på Østlandet",
+      suffix: ". Bjerknessenteret for klimaforskning.",
+      href: "https://bjerknes.uib.no/aktuelt/overraskende-arsak-til-flom-pa-ostlandet",
+    },
+    {
       prefix: "Granerød, M., Stabell, D., Mjelstad, H., & Tajet, H. T. T. (2023). ",
       italic: "Ekstremværet «Hans», ekstremt mye nedbør i deler av Sør-Norge 07.–09. august 2023",
       suffix: " (MET-info nr. 26/2023). Meteorologisk institutt.",
@@ -2421,6 +2427,12 @@ export const KILDER = {
       italic: "The jet stream",
       suffix: ".",
       href: "https://www.noaa.gov/jetstream/global/jet-stream",
+    },
+    {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
+      italic: "A15) How do tropical cyclones form?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
     },
     {
       prefix: "Store norske leksikon. (u.å.-a). ",
@@ -4080,6 +4092,18 @@ export const KILDER = {
       href: "https://www.nhc.noaa.gov/aboutsshws.php",
     },
     {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.-a). ",
+      italic: "A11) What is the 'eye'? How is it formed and maintained?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A11.html",
+    },
+    {
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.-b). ",
+      italic: "A15) How do tropical cyclones form?",
+      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
+      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
+    },
+    {
       prefix: "Rappaport, E. N. (2014). Fatalities in the United States from Atlantic tropical cyclones: New data and interpretation. ",
       italic: "Bulletin of the American Meteorological Society, 95",
       suffix: "(3), 341–346.",
@@ -4116,6 +4140,12 @@ export const KILDER = {
       href: "https://snl.no/polart_lavtrykk",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-h). ",
+      italic: "Beauforts vindskala",
+      suffix: ".",
+      href: "https://snl.no/Beauforts_vindskala",
+    },
+    {
       prefix: "Meteorologisk institutt. (2023). ",
       italic: "Over 100 år siden det har regnet så mye på Østlandet",
       suffix: ".",
@@ -4128,16 +4158,58 @@ export const KILDER = {
       href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/polare-lavtrykk",
     },
     {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2023, 7. august). ",
+      italic: "Ekstremværet Hans – flom- og jordskredfare på rødt nivå",
+      suffix: ".",
+      href: "https://www.varsom.no/nyheter/nyheter-flom-og-jordskred/ekstremvaeret-hans-flom-og-jordskredfare-pa-rodt-niva/",
+    },
+    {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (2024). ",
       italic: "Tørke-, flom- og jordskredåret 2023",
       suffix: ".",
       href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/toerke-flom-og-jordskredaaret-2023/",
     },
     {
-      prefix: "National Weather Service. (u.å.). ",
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
+      italic: "Thunderstorm hazards – tornadoes",
+      suffix: ". JetStream.",
+      href: "https://www.noaa.gov/jetstream/thunderstorms/thunderstorm-hazards-tornadoes",
+    },
+    {
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-a). ",
+      italic: "Severe weather 101: Tornado basics",
+      suffix: ".",
+      href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/",
+    },
+    {
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-b). ",
+      italic: "Severe weather 101: Tornado types",
+      suffix: ".",
+      href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/",
+    },
+    {
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-c). ",
+      italic: "Types of thunderstorms",
+      suffix: ".",
+      href: "https://www.nssl.noaa.gov/education/svrwx101/thunderstorms/types/",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-a). ",
       italic: "The Enhanced Fujita Scale (EF Scale)",
       suffix: ".",
       href: "https://www.weather.gov/oun/efscale",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-b). ",
+      italic: "Supercell structure and dynamics (Spotter's Field Guide, part 2)",
+      suffix: ".",
+      href: "https://www.weather.gov/spotterguide/supercell2",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-c). ",
+      italic: "Exit region (Glossary)",
+      suffix: ".",
+      href: "https://forecast.weather.gov/glossary.php?word=exit+region",
     },
     {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",

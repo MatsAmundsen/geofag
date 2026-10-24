@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { OrkanBane, RotasjonOgBreddegrad, StormfloOversikt } from "./hurricane-deler";
+import { useRedusertBevegelse } from "./hurricane-klokke";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
 export function HurricaneSvg({ hemisphere }: { hemisphere: "north" | "south" }) {
   const ccw = hemisphere === "north";
+  const stille = useRedusertBevegelse();
   return (
     <svg viewBox="0 0 360 360" className="mx-auto my-2 h-auto w-full max-w-[320px] select-none">
       <circle cx="180" cy="180" r="160" fill="#0f172a" stroke="#334155" strokeWidth="1" />
@@ -37,16 +40,6 @@ export function HurricaneSvg({ hemisphere }: { hemisphere: "north" | "south" }) 
         opacity="0.5"
       />
 
-      <text x="180" y="32" fill="#94a3b8" fontSize="9" textAnchor="middle">
-        1008 hPa rundt
-      </text>
-      <text x="180" y="72" fill="#94a3b8" fontSize="9" textAnchor="middle">
-        980 hPa
-      </text>
-      <text x="180" y="112" fill="#94a3b8" fontSize="9" textAnchor="middle">
-        940 hPa
-      </text>
-
       {ccw ? (
         <>
           <path
@@ -78,14 +71,14 @@ export function HurricaneSvg({ hemisphere }: { hemisphere: "north" | "south" }) 
             markerEnd="url(#mdl-yellow)"
           />
           <g>
-            <animateTransform
+            {!stille && <animateTransform
               attributeName="transform"
               type="rotate"
               from="0 180 180"
               to="-360 180 180"
               dur="8s"
               repeatCount="indefinite"
-            />
+            />}
             <path
               d="M 180 180 C 220 120, 280 110, 310 140 C 270 140, 230 160, 180 180"
               fill="#ef4444"
@@ -153,14 +146,14 @@ export function HurricaneSvg({ hemisphere }: { hemisphere: "north" | "south" }) 
             markerEnd="url(#mdl-yellow)"
           />
           <g>
-            <animateTransform
+            {!stille && <animateTransform
               attributeName="transform"
               type="rotate"
               from="0 180 180"
               to="360 180 180"
               dur="8s"
               repeatCount="indefinite"
-            />
+            />}
             <path
               d="M 180 180 C 140 120, 80 110, 50 140 C 90 140, 130 160, 180 180"
               fill="#ef4444"
@@ -265,10 +258,8 @@ const SAFFIR_DATA = [
     name: "Kategori 1",
     windKm: "119–153 km/t",
     windMs: "33–42 m/s",
-    pressure: "≥ 980 hPa",
-    surge: "1,2–1,5 m",
     damage:
-      "Farlige vinder gir skader på takstein, kledning og trær. Strømbrudd i noen dager. Båter rives fra fortøyning.",
+      "Svært farlig vind gir noen skader: tak, kledning og takrenner på godt bygde trehus kan skades. Store greiner knekker, og trær med grunne røtter kan velte. Strømbrudd kan vare fra noen få til flere dager.",
     color: "text-sky-400 border-sky-500/30 bg-sky-950/20",
   },
   {
@@ -276,43 +267,35 @@ const SAFFIR_DATA = [
     name: "Kategori 2",
     windKm: "154–177 km/t",
     windMs: "43–49 m/s",
-    pressure: "965–979 hPa",
-    surge: "1,8–2,4 m",
     damage:
-      "Ekstremt farlige vinder. Betydelige tak- og fasadeskader. Mange trær knekker og blokkerer veier. Omfattende strømbrudd i opptil uker.",
+      "Ekstremt farlig vind gir omfattende skader: godt bygde trehus kan få store skader på tak og kledning. Mange trær knekker eller rykkes opp og sperrer veier. Nesten fullstendig strømbrudd kan vare fra flere dager til uker.",
     color: "text-amber-400 border-amber-500/30 bg-amber-950/20",
   },
   {
     cat: 3,
-    name: "Kategori 3 (Major)",
+    name: "Kategori 3 (stor orkan)",
     windKm: "178–208 km/t",
     windMs: "50–58 m/s",
-    pressure: "945–964 hPa",
-    surge: "2,7–3,6 m",
     damage:
-      "Ødeleggende krefter. Tak rives av solide tre- og murhus. Strøm og vannforsyning slås ut i uker. Kystflommer trenger langt inn over land.",
+      "Ødeleggende skader: godt bygde trehus kan miste deler av taket. Mange trær knekker eller rykkes opp og sperrer veier. Strøm og vann kan mangle i flere dager til uker etter at stormen har passert.",
     color: "text-orange-400 border-orange-500/30 bg-orange-950/20",
   },
   {
     cat: 4,
-    name: "Kategori 4 (Major)",
+    name: "Kategori 4 (stor orkan)",
     windKm: "209–251 km/t",
     windMs: "59–69 m/s",
-    pressure: "920–944 hPa",
-    surge: "4,0–5,5 m",
     damage:
-      "Katastrofale skader. Yttervegger og tak kollapser. Flesteparten av trær knekkes eller rykkes opp med roten. Store boligområder blir ubeboelige i måneder.",
+      "Katastrofale skader: godt bygde trehus kan miste det meste av taket og noen yttervegger. De fleste trær knekker eller rykkes opp, og strømstolper faller. Strømbrudd kan vare i uker, kanskje måneder, og det meste av området kan bli ubeboelig i uker eller måneder.",
     color: "text-rose-400 border-rose-500/30 bg-rose-950/20",
   },
   {
     cat: 5,
-    name: "Kategori 5 (Major)",
+    name: "Kategori 5 (stor orkan)",
     windKm: "≥ 252 km/t",
     windMs: "≥ 70 m/s",
-    pressure: "< 920 hPa",
-    surge: "> 5,5 m",
     damage:
-      "Total utslettelse. Bygninger pulveriseres, biler og industribrakker slynges gjennom lufta. Kysten oversvømmes av en massiv mur av vann. Eksempler: Andrew (1992) i Sør-Florida, Dorian (2019) på Bahamas.",
+      "Katastrofale skader: en stor andel av trehusene blir ødelagt, med tak og vegger som faller sammen. Boligområder kan bli isolert. Strømbrudd kan vare i uker, kanskje måneder, og det meste av området kan bli ubeboelig i uker eller måneder.",
     color: "text-red-500 border-red-500/40 bg-red-950/30",
   },
 ];
@@ -322,83 +305,46 @@ const FUJITA_DATA = [
     ef: "EF0",
     name: "Svak tornado",
     windKm: "105–137 km/t",
-    damage:
-      "Lette skader. Takstein blåser av, skorsteiner skades, greiner knekker. Vanligste type i Europa og Norge (skypumper).",
     color: "text-sky-400 border-sky-500/30",
   },
   {
     ef: "EF1",
     name: "Moderat tornado",
     windKm: "138–177 km/t",
-    damage:
-      "Moderate skader. Takplater rives av, campingvogner veltes, biler skyves av veien. Trær knekker.",
     color: "text-teal-400 border-teal-500/30",
   },
   {
     ef: "EF2",
     name: "Betydelig tornado",
     windKm: "178–217 km/t",
-    damage:
-      "Betydelige ødeleggelser. Tak rives fullstendig av hus, store trær rykkes opp med rot, biler løftes fra bakken.",
     color: "text-amber-400 border-amber-500/30",
   },
   {
     ef: "EF3",
     name: "Alvorlig tornado",
     windKm: "218–266 km/t",
-    damage:
-      "Alvorlige skader. Solide trehus mister yttervegger og tak. Togspor kan vris. Tunge kjøretøy slynges 100 meter.",
     color: "text-orange-400 border-orange-500/30",
   },
   {
     ef: "EF4",
     name: "Ødeleggende tornado",
     windKm: "267–322 km/t",
-    damage:
-      "Ekstreme skader. Godt konstruerte hus jevnes med jorda. Biler kastes som prosjektiler. Store gjenstander flyr som missiler.",
     color: "text-rose-500 border-rose-500/40",
   },
   {
     ef: "EF5",
     name: "Utrolig voldsom",
     windKm: "> 322 km/t",
-    damage:
-      "Total utslettelse. Betong- og murhus feies fullstendig av grunnmuren. Asfalt rives opp fra veiene. Bark skrelles av trærne. F.eks. Moore, Oklahoma (2013).",
     color: "text-red-500 border-red-500/50",
   },
 ];
 
 export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean }) {
-  const [activeTab, setActiveTab] = useState<"rotation" | "saffir" | "fujita" | "surge">(
+  const [activeTab, setActiveTab] = useState<"rotation" | "bane" | "saffir" | "fujita" | "surge">(
     "rotation",
   );
   const [selectedCat, setSelectedCat] = useState<number>(3);
   const [selectedEf, setSelectedEf] = useState<string>("EF2");
-
-  // Stormflo kalkulator-tilstand
-  const [pressure, setPressure] = useState<number>(960); // hPa
-  const [windSpeed, setWindSpeed] = useState<number>(35); // m/s
-  const [isSpringTide, setIsSpringTide] = useState<boolean>(true);
-
-  // Fysisk beregning av stormflo:
-  // Invers barometereffekt: ~ 1 cm per 1 hPa trykkfall under 1013 hPa
-  const deltaPressure = Math.max(0, 1013 - pressure);
-  const surgeBaroCm = deltaPressure * 1.0;
-
-  // Vindstuv (vindstress): proporsjonal med U^2
-  // Enkel empirisk formel for kyst/sokkel: ~ 0.08 * (U^2) / 100 meter -> i cm
-  const surgeWindCm = Math.round(0.08 * Math.pow(windSpeed, 2));
-
-  // Tidevannsbidrag (springflo gir ekstra +80 cm, middelvann +30 cm)
-  const tideCm = isSpringTide ? 80 : 30;
-
-  // Samlet stormflo over sjøkartnull i meter
-  const totalSurgeCm = surgeBaroCm + surgeWindCm + tideCm;
-  const totalSurgeM = (totalSurgeCm / 100).toLocaleString("nb-NO", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-  const isQuayFlooded = totalSurgeCm > 220; // Bryggehøyde er 220 cm
 
   const catData = SAFFIR_DATA.find((d) => d.cat === selectedCat)!;
   const efData = FUJITA_DATA.find((d) => d.ef === selectedEf)!;
@@ -413,14 +359,17 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
           <ModelTab active={activeTab === "rotation"} onClick={() => setActiveTab("rotation")}>
             1. Coriolis og rotasjon
           </ModelTab>
+          <ModelTab active={activeTab === "bane"} onClick={() => setActiveTab("bane")}>
+            2. Banen
+          </ModelTab>
           <ModelTab active={activeTab === "saffir"} onClick={() => setActiveTab("saffir")}>
-            2. Saffir-Simpson (Orkaner)
+            3. Saffir-Simpson (orkaner)
           </ModelTab>
           <ModelTab active={activeTab === "fujita"} onClick={() => setActiveTab("fujita")}>
-            3. Enhanced Fujita (Tornadoer)
+            4. EF-skalaen (tornadoer)
           </ModelTab>
           <ModelTab active={activeTab === "surge"} onClick={() => setActiveTab("surge")}>
-            4. Stormflo-kalkulator
+            5. Stormflo
           </ModelTab>
         </div>
       )}
@@ -437,21 +386,28 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               Sentripetal akselerasjon og trykkfall mot L
             </span>
           </div>
+          {!embedded && (
+            <div className="mb-5">
+              <RotasjonOgBreddegrad />
+            </div>
+          )}
           <HurricaneBody />
           <div className="mt-5">
             <ModelNote title="Hvorfor orkaner aldri dannes på ekvator" tone="low">
               <p>
                 Ved ekvator er breddegraden φ&nbsp;=&nbsp;0°. Siden sin(0°)&nbsp;=&nbsp;0, blir
                 Coriolisparameteren null (f&nbsp;=&nbsp;0), og dermed også Corioliskraften. Selv om
-                havtemperaturen ved ekvator ofte overstiger 28–30 °C, kan ikke innstrømmende luft
-                settes i rotasjon. Lufta strømmer rett inn i lavtrykket og fyller det opp
-                umiddelbart. Tropiske sykloner trenger minst 5° breddegrad (ca. 500 km fra ekvator)
-                for å fødes.
+                havet er varmt nok, blir ikke innstrømmende luft avbøyd og satt i rotasjon. Lufta
+                strømmer rett inn i lavtrykket og fyller det opp. Tropiske sykloner dannes nesten
+                aldri nærmere ekvator enn om lag 500 km
+                (NOAA AOML, {embedded ? "u.å." : "u.å.-b"}).
               </p>
             </ModelNote>
           </div>
         </>
       )}
+
+      {!embedded && activeTab === "bane" && <OrkanBane />}
 
       {/* FANE 2: SAFFIR-SIMPSON SKALAEN */}
       {!embedded && activeTab === "saffir" && (
@@ -492,24 +448,12 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
                   </span>{" "}
                   ({catData.windMs})
                 </div>
-                <div>
-                  <span className="text-muted-foreground block text-xs">Sentraltrykk:</span>
-                  <span className="font-mono font-bold text-foreground text-base">
-                    {catData.pressure}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-muted-foreground block text-xs">Typisk stormflo:</span>
-                  <span className="font-mono font-bold text-foreground text-base">
-                    {catData.surge}
-                  </span>
-                </div>
               </div>
             </div>
 
             <div className="mt-4">
               <h4 className="text-sm font-semibold text-foreground">Forventet skadebilde:</h4>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{catData.damage}</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{catData.damage} (NHC, u.å.-b)</p>
             </div>
           </div>
 
@@ -523,10 +467,8 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
             <div className="rounded-lg border border-border bg-card p-4">
-              <strong className="text-foreground block mb-1">Destruktiv vindenergi ∝ v³:</strong>
-              Vindens trykk mot bygninger øker med kvadratet av farten (v²), mens den kinetiske
-              energien som overføres øker med kuben av farten (v³). Skadene øker derfor mye raskere
-              enn vindfarten. Som regel blir skadene om lag fire ganger større for hvert trinn opp
+              <strong className="text-foreground block mb-1">Skadene vokser raskt:</strong>
+              Skadene øker mye raskere enn vindfarten. Som regel blir skadene om lag fire ganger større for hvert trinn opp
               på skalaen (NHC, 2021).
             </div>
             <div className="rounded-lg border border-border bg-card p-4">
@@ -582,10 +524,9 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               </div>
             </div>
 
-            <div className="mt-4">
-              <h4 className="text-sm font-semibold text-foreground">Empirisk skadebeskrivelse:</h4>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{efData.damage}</p>
-            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Tallene er omregnet fra mph og er anslag ut fra skadene, ikke målinger (NWS, u.å.-a).
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
@@ -593,190 +534,24 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
               <strong className="text-foreground block mb-1">
                 Hvorfor måles EF etter skadene?
               </strong>
-              Fordi en tornado er så kompakt og voldelig at vanlige anemometre (vindmålere) blåser
-              bort eller knuses. EF-skalaen baserer seg på 28 skademarkører (Degree of Damage, DoD)
-              på trær, bygninger og infrastruktur for å beregne vindfarten i etterkant.
+              Vindtallene i EF-skalaen er anslag, ikke målinger. Etter en tornado sammenligner
+              NWS skadene med 28 skadeindikatorer, for eksempel ulike bygningstyper og trær, og
+              åtte skadegrader. Ut fra dette anslås vindkastene over tre sekunder (NWS, u.å.-a).
             </div>
             <div className="rounded-lg border border-border bg-card p-4">
               <strong className="text-foreground block mb-1">
-                Konservering av spinn (Angulært moment):
+                Hvorfor spinner tornadoen så fort?
               </strong>
-              Når supercellens mesosyklon (3–10 km bred) strekkes ned mot bakken av RFD og snurpes
-              sammen til en trakt på bare 100 meter, må vinkelmomentet L = m · v · r bevares. Når r
-              minker med en faktor på 50, akselererer rotasjonshastigheten v tilsvarende voldsomt!
+              Når roterende luft strekkes og blir smalere, roterer den fortere, slik en kunstløper
+              snurrer fortere når armene trekkes inn. En tornado er mye smalere enn mesosyklonen den
+              kommer fra.
             </div>
           </div>
         </div>
       )}
 
-      {/* FANE 4: STORMFLO-KALKULATOR */}
-      {!embedded && activeTab === "surge" && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Kontroller */}
-            <ModelPanel className="space-y-4">
-              <h4 className="font-display text-base font-semibold text-foreground">
-                Juster meteorologiske og oseanografiske faktorer
-              </h4>
-
-              {/* 1. Barometrisk trykkfall */}
-              <div>
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="text-muted-foreground">Lufttrykk i sentrum:</span>
-                  <span className="font-mono font-bold text-foreground">{pressure} hPa</span>
-                </div>
-                <input
-                  type="range"
-                  min={910}
-                  max={1013}
-                  step={1}
-                  value={pressure}
-                  onChange={(e) => setPressure(Number(e.target.value))}
-                  className="w-full accent-primary cursor-pointer"
-                />
-                <p className="text-[11px] text-muted-foreground mt-0.5">
-                  Trykkfall: {deltaPressure} hPa → Invers barometereffekt: +{surgeBaroCm.toFixed(0)}{" "}
-                  cm
-                </p>
-              </div>
-
-              {/* 2. Vindstyrke */}
-              <div>
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="text-muted-foreground">Vindhastighet ved kysten:</span>
-                  <span className="font-mono font-bold text-foreground">
-                    {windSpeed} m/s ({Math.round(windSpeed * 3.6)} km/t)
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min={10}
-                  max={65}
-                  step={1}
-                  value={windSpeed}
-                  onChange={(e) => setWindSpeed(Number(e.target.value))}
-                  className="w-full accent-primary cursor-pointer"
-                />
-                <p className="text-[11px] text-muted-foreground mt-0.5">
-                  Vindstress (τ ∝ U²) stuver vann inn mot kysten: +{surgeWindCm} cm
-                </p>
-              </div>
-
-              {/* 3. Tidevann */}
-              <div>
-                <span className="text-xs text-muted-foreground block mb-2">
-                  Astronomisk tidevannsfase:
-                </span>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsSpringTide(true)}
-                    className={`flex-1 rounded-lg py-1.5 text-xs font-semibold border ${
-                      isSpringTide
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background text-muted-foreground border-border"
-                    }`}
-                  >
-                    Springflo (+80 cm)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsSpringTide(false)}
-                    className={`flex-1 rounded-lg py-1.5 text-xs font-semibold border ${
-                      !isSpringTide
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background text-muted-foreground border-border"
-                    }`}
-                  >
-                    Middelvann (+30 cm)
-                  </button>
-                </div>
-              </div>
-            </ModelPanel>
-
-            {/* Beregningsresultat & Live Visualisering */}
-            <ModelPanel className="flex flex-col justify-between">
-              <div>
-                <h4 className="font-display text-base font-semibold text-foreground mb-3">
-                  Beregnet stormflo-resultat
-                </h4>
-
-                <div className="space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">
-                      Invers barometereffekt (+1 cm/hPa):
-                    </span>
-                    <span className="font-mono font-semibold text-sky-400">
-                      +{surgeBaroCm.toFixed(0)} cm
-                    </span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">
-                      Vindstuv (vindstress på kyst/fjord):
-                    </span>
-                    <span className="font-mono font-semibold text-amber-400">
-                      +{surgeWindCm} cm
-                    </span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">
-                      Astronomisk tidevann ({isSpringTide ? "Springflo" : "Middelvann"}):
-                    </span>
-                    <span className="font-mono font-semibold text-emerald-400">+{tideCm} cm</span>
-                  </div>
-
-                  <div className="flex justify-between py-2 border-t-2 border-border font-bold text-sm">
-                    <span className="text-foreground">Samlet vannstand over sjøkartnull:</span>
-                    <span
-                      className={`font-mono text-base ${isQuayFlooded ? "text-red-500" : "text-primary"}`}
-                    >
-                      +{totalSurgeM} m ({totalSurgeCm} cm)
-                    </span>
-                  </div>
-                </div>
-
-                <div
-                  className={`mt-4 rounded-lg p-3 text-xs border ${
-                    isQuayFlooded
-                      ? "border-red-500/40 bg-red-950/20 text-red-300"
-                      : "border-emerald-500/40 bg-emerald-950/20 text-emerald-300"
-                  }`}
-                >
-                  {isQuayFlooded ? (
-                    <p className="font-bold flex items-center gap-1.5">
-                      ⚠️ KRITISK OVERSVØMMELSE: Vannstanden ({totalSurgeM} m) overskrider
-                      bryggekanten (2,20 m)! Kai, sjøboder og kjellere settes under vann.
-                    </p>
-                  ) : (
-                    <p className="font-bold flex items-center gap-1.5">
-                      ✅ Trygg margin: Vannstanden ({totalSurgeM} m) er under bryggekanten (2,20 m).
-                      Kaien forblir tørr, men pass på bølgeoppskyll!
-                    </p>
-                  )}
-                </div>
-              </div>
-            </ModelPanel>
-          </div>
-
-          <ModelNote title="Forenklet modell">
-            <p>
-              Kalkulatoren legger sammen tre ledd: om lag 1 cm per hPa trykkfall, vindstuv som øker
-              med kvadratet av vindfarten, og et tillegg for tidevann (springflo eller middelvann).
-              Kystform, sokkelbredde og bølger er ikke med. Vannstanden der du bor, finner du i
-              Kartverkets tjeneste{" "}
-              <a
-                href="https://www.kartverket.no/til-sjos/se-havniva"
-                target="_blank"
-                rel="noopener"
-                className="text-primary underline decoration-1 underline-offset-[0.18em] hover:decoration-2 focus-visible:decoration-2"
-              >
-                Se havnivå
-              </a>
-              .
-            </p>
-          </ModelNote>
-        </div>
-      )}
+      {/* FANE 5: STORMFLO */}
+      {!embedded && activeTab === "surge" && <StormfloOversikt />}
     </>
   );
 
@@ -785,8 +560,8 @@ export function HurricaneSpinModel({ embedded = false }: { embedded?: boolean })
   return (
     <ModelFrame
       kicker="Interaktiv geofagmodell"
-      title="Værkatastrofer: Rotasjon, klassifisering og stormflo"
-      lead="Utforsk mekanismene bak orkanrotasjon, Saffir-Simpson- og Fujita-skalaene, og simuler hvordan trykkfall og vindstuv skaper ekstrem stormflo."
+      title="Værkatastrofer: rotasjon, bane, skalaer og stormflo"
+      lead="Se hvordan breddegraden styrer rotasjonen, hvordan en typisk orkan beveger seg, hva skalaene måler, og hva som løfter vannstanden ved stormflo."
     >
       {body}
     </ModelFrame>

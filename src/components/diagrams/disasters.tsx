@@ -210,10 +210,10 @@ export function HurricaneCrossSectionDiagram() {
             Vindhastighet
           </L>
           <L x="830" y="415" fill={C.warm} size={11} weight={700}>
-            250 km/t (kat. 5)
+            252 km/t (kat. 5)
           </L>
           <L x="830" y="450" fill={C.muted} size={10}>
-            120 km/t (orkan)
+            119 km/t (kat. 1)
           </L>
           <L x="830" y="485" fill={C.muted} size={10}>
             0 km/t
@@ -870,7 +870,7 @@ export function AtmosphericRiverDiagram() {
     <Diagram
       title="Atmosfærisk elv mot Norge: Fukttransport og orografisk ekstremnedbør"
       heading="Atmosfæriske elver: Subtropisk fukttog og Vestlandsflom"
-      caption="En atmosfærisk elv (Atmospheric River) er et smalt, flere tusen kilometer langt bånd i nedre troposfære som transporterer enorme mengder vanndamp fra subtropene mot våre breddegrader En gjennomsnittlig atmosfærisk elv frakter omtrent like mye vann som Mississippi fører ut i havet, og de sterkeste opptil 15 ganger så mye. Når dette fukttoget treffer den vestnorske fjellveggen, tvinges lufta til brå heving (orografisk løft). Fuktigheten avkjøles og kondenserer til vedvarende ekstremnedbør som utløser flommer og jordskred (f.eks. ekstremværet Hans i 2023). På østsiden synker lufta tørradiabatisk og skaper en markant regnskygge."
+      caption="En atmosfærisk elv (Atmospheric River) er et smalt, flere tusen kilometer langt bånd i nedre troposfære som transporterer enorme mengder vanndamp fra subtropene mot våre breddegrader En gjennomsnittlig atmosfærisk elv frakter omtrent like mye vann som Mississippi fører ut i havet, og de sterkeste opptil 15 ganger så mye. Når dette fukttoget treffer den vestnorske fjellveggen, tvinges lufta til brå heving (orografisk løft). Fuktigheten avkjøles og kondenserer til vedvarende ekstremnedbør som utløser flommer og jordskred. På østsiden synker lufta tørradiabatisk og skaper en markant regnskygge."
       viewBox="0 0 940 480"
       wide
     >
