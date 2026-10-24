@@ -99,7 +99,7 @@ GeostrophicAdjustment
 
 Figuren viser balansen uten friksjon, der vinden til slutt går langs isobarene. Nær bakken danner vinden en vinkel med isobarene på 0–20° over havet og 20–40° over land, fordi friksjonen er større over land (Store norske leksikon, u.å.-d). Corioliskraften setter ikke lufta i gang. Den endrer retningen.
 
-På den nordlige halvkule blir rotasjonen rundt et lavtrykk mot klokka, og rundt et høytrykk med klokka. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
+På den nordlige halvkule blir rotasjonen rundt et lavtrykk mot klokken, og rundt et høytrykk med klokken. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
 ```widget
 PressureSpin
@@ -135,7 +135,7 @@ Oppvelling
 
 Oppvellingsområdene dekker en liten del av havet, men gir en stor del av fiskefangsten. Om lag 25 prosent av det som fiskes, kommer fra de fem store oppvellingsområdene knyttet til Kanaristrømmen, Benguelastrømmen, Californiastrømmen, Perustrømmen og Somalistrømmen. Ved El Niño svekkes eller opphører oppvellingen i Perustrømmen (Store norske leksikon, u.å.-e). Langs vestkysten av Afrika og Sør-Amerika holder kystoppvelling fiskeriene i gang året rundt (NOAA, u.å.-c).
 
-De store overflatestrømmene drives av vindsystemene og avbøyes av jordrotasjonen. De danner havvirvler med klokka på den nordlige halvkule og mot klokka på den sørlige, nord og sør for ekvator. Ved ekvator, der corioliseffekten ikke virker, dannes ikke slike virvler. Det er fem store havvirvler: Nord-Atlanteren, Sør-Atlanteren, Nord-Stillehavet, Sør-Stillehavet og Det indiske hav. Hver har en sterk og smal vestlig randstrøm og en svak og bred østlig randstrøm (NOAA, u.å.-d). Selve strømmene tar vi i [havstrømmer](/tema/havstrommer).
+De store overflatestrømmene drives av vindsystemene og avbøyes av jordrotasjonen. De danner havvirvler med klokken på den nordlige halvkule og mot klokken på den sørlige, nord og sør for ekvator. Ved ekvator, der corioliseffekten ikke virker, dannes ikke slike virvler. Det er fem store havvirvler: Nord-Atlanteren, Sør-Atlanteren, Nord-Stillehavet, Sør-Stillehavet og Det indiske hav. Hver har en sterk og smal vestlig randstrøm og en svak og bred østlig randstrøm (NOAA, u.å.-d). Selve strømmene tar vi i [havstrømmer](/tema/havstrommer).
 
 ```widget
 RossbyScale
@@ -175,7 +175,7 @@ SjekkCoriolis3
 
 **Oppvelling:** At vann løftes fra dypere nivåer til overflaten når overflatelaget skyves til siden.
 
-**Havvirvel:** Stor sirkulasjon i overflatehavet, med klokka på den nordlige halvkule og mot klokka på den sørlige.
+**Havvirvel:** Stor sirkulasjon i overflatehavet, med klokken på den nordlige halvkule og mot klokken på den sørlige.
 
 ## Sammendrag
 
