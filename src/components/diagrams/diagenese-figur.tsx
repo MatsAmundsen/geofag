@@ -11,7 +11,7 @@ import { KornLag, Maalere, TidslinjeKontroller, Zoomlinse } from "./prosess-figu
 import { DIAGENESE_TEKST } from "./diagenese-tekst";
 import { lagKornTekstur, lat, prng, tidslinjeVerdi, useTidslinje, type Korn } from "./prosess-kit";
 
-const FASER = ["Løs sand", "Nye lag oppå", "Kompaksjon", "Varm væske sirkulerer", "Cementering"];
+const FASER = ["Løs sand", "Nye lag oppå", "Kompaksjon", "Varm væske sirkulerer", "Sementering"];
 
 /** Statustekst per fase. Kilde: Mats' tekst (se PR-beskrivelsen for setning per steg). */
 const STATUS_MED = [
@@ -19,7 +19,7 @@ const STATUS_MED = [
   "Nye lag legger seg oppå, og sandlaget kommer dypere ned. Vekten av de nye lagene presser sedimentet sammen.",
   "Kompaksjon: porevann presses ut, og porøsiteten avtar. En del væske blir likevel igjen mellom kornene.",
   "Samtidig øker temperaturen med dypet. Den varme væsken som er igjen, sirkulerer gjennom porene og løser ioner fra kornene.",
-  "Cementering: ionene felles ut som kitt av kvarts, kalsitt eller jernoksid mellom kornene. Da blir sand til sandstein, en fast sedimentær bergart.",
+  "Sementering: ionene felles ut som kitt av kvarts, kalsitt eller jernforbindelser mellom kornene. Da blir sand til sandstein, en fast sedimentær bergart.",
 ];
 
 const STATUS_UTEN = [

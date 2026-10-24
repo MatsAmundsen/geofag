@@ -1198,6 +1198,18 @@ const COPY_RESEEDS: CopyReseed[] = [
   { flag: "g2-vaerkatastrofer-bolk2-2026-10-22", slug: "vaerkatastrofer", stale: ["EF5 er over 200 mph (National Weather Service, u.å.)."] },
   // Værkatastrofer: Hans-nyansen om atmosfærisk elv fra øst (Svensson, 2023), godkjent av Mats 23.10.
   { flag: "g2-vaerkatastrofer-hans-ar-2026-10-23", slug: "vaerkatastrofer", stale: ["(Norges vassdrags- og energidirektorat, 2024).\n\nMeteorologisk institutt varslet"] },
+  {
+    // Bergarter (Geo/Fjell): smelting, diagenese og metamorfose slått sammen med Mats' differensiering,
+    // diagenese med porevæske og metasomatose; «Cementering»/«jernoksid» -> sementering/jernforbindelser.
+    flag: "g1-bergarter-dannelse-2026-10-24",
+    slug: "bergarter",
+    stale: [
+      "magmatiske bergarter og differensiering, sedimentære bergarter og diagenese",
+      "Cementering skjer når ionene felles ut",
+      "(SNL, diagenese)",
+      "så mener vi ca 95% av bergarten",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

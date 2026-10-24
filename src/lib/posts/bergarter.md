@@ -16,7 +16,7 @@
 >
 > **I dette kapitlet lærer du om**
 >
-> mineraler og mineralgrupper, bergarter og sediment, hvordan du undersøker et håndstykke, forvitring, magmatiske bergarter og differensiering, sedimentære bergarter og diagenese, metamorfe bergarter og metasomatose, og bergartssyklusen som modell.
+> mineraler og mineralgrupper, bergarter og sediment, hvordan du undersøker et håndstykke, forvitring, magmatiske bergarter, hvordan magma dannes og krystalliserer, sedimentære bergarter og diagenese, metamorfe bergarter, metamorfose i fast fase og metasomatose, og bergartssyklusen som modell.
 
 > **Hva tror du?**
 >
@@ -41,7 +41,7 @@ Fyllosilikater spalter i flak. Det ser du som skifrighet når flakene er oriente
 
 ### Andre mineralgrupper
 
-Silikatene er de vanligste mineralene, og feltspat og kvarts er de to vanligste mineralene i jordskorpa. Oksider og sulfider er likevel de viktigste malmmineralene (Raade, 2025a). Mineralgruppene utenom silikatene får navn etter det negative ionet mineralet er bygd rundt.
+Silikatene er de vanligste mineralene, og feltspat og kvarts er de to vanligste mineralene i jordskorpa. Oksider og sulfider er likevel de viktigste malmmineralene (Raade, 2025b). Mineralgruppene utenom silikatene får navn etter det negative ionet mineralet er bygd rundt.
 
 | Gruppe | Bygd rundt | Eksempel du møter |
 | --- | --- | --- |
@@ -59,11 +59,11 @@ Silikatgrupper
 
 ## Hva er en bergart?
 
-En bergart består i hovedsak av ett eller flere mineraler. Når vi sier at en bergart består av ett mineral, så mener vi ca 95% av bergarten består av ett mineral. Resterende 5% er andre mineraler.
+En bergart består i hovedsak av ett eller flere mineraler. Når vi sier at en bergart består av ett mineral, så mener vi at ca. 95 prosent av bergarten består av ett mineral. Resterende 5 prosent er andre mineraler.
 
 Farge, kornstørrelse og kornform gir utseendet. Etter opprinnelse er det tre hovedtyper: sedimentære, metamorfe og magmatiske. Magmatiske og metamorfe bergarter utgjør 90–95 prosent av jordskorpa (NGU, u.å.-k).
 
-Granitt er altså ikke et mineral. Det er en bergart, en grovkornet dypbergart som hovedsakelig består av mineralene kvarts, kalifeltspat og plagioklas (Raade & Fossen, 2025).
+Granitt er altså ikke et mineral. Det er en bergart, en grovkornet dypbergart som hovedsakelig består av mineralene kvarts, kalifeltspat og plagioklas (Raade & Fossen, 2025a).
 
 ![Tre håndstykker: grovkornet magmatisk bergart, lagdelt sedimentær bergart og stripet metamorf bergart](/images/fig-tre-bergarter.jpg)
 
@@ -153,7 +153,7 @@ AvkjolingKorn
 
 Larvikitt er en dypbergart med to typer feltspat, som kan gi fargespill. Den er dannet for cirka 295–290 millioner år siden, er oppkalt etter Larvik og finnes i Vestfold og Telemark. Den er Norges nasjonalbergart (NGU, u.å.-i).
 
-Rombeporfyr er en dagbergart og en av Oslofeltets signaturbergarter. Den er vanlig i Oslofeltet, og lignende bergarter finnes bare noen få andre steder, i Øst-Afrika og Antarktis (Raade, 2025b). Store rombeformede lyse feltspatkrystaller ligger i en grålig til rødbrun grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten. NGU kaller den tvillingbroren til larvikitt, som størknet ferdig under overflaten (NGU, u.å.-l).
+Rombeporfyr er en dagbergart og en av Oslofeltets signaturbergarter. Den er vanlig i Oslofeltet, og lignende bergarter finnes bare noen få andre steder, i Øst-Afrika og Antarktis (Raade, 2025c). Store rombeformede lyse feltspatkrystaller ligger i en grålig til rødbrun grunnmasse. Rombene viser at smelten ikke var ferdig krystallisert da magmaen nådde overflaten. NGU kaller den tvillingbroren til larvikitt, som størknet ferdig under overflaten (NGU, u.å.-l).
 
 Samme smeltefamilie, to steder: dypet og overflaten.
 
@@ -161,35 +161,61 @@ Samme smeltefamilie, to steder: dypet og overflaten.
 OsloriftBergarter
 ```
 
+## Hvordan smelter og størkner magma?
+
+Magma kommer ikke fra et hav av smelte under jordskorpa. Mantelen er stort sett fast. Magma dannes der berget smelter delvis. Når magmaen kjøles, krystalliserer mineralene i en bestemt rekkefølge, og smelten skifter sammensetning underveis. I denne delen ser vi på begge prosessene.
+
+### Hvorfor smelter mantelen bare delvis?
+
+Temperaturen øker innover i jorda, men skorpa og mantelen er likevel stort sett ikke smeltet. Årsaken er at trykket også øker innover, og høyere trykk gir høyere smeltepunkt (Bryhni & Fossen, 2025). Under vanlige forhold når mantelen altså ikke smeltepunktet. Skal berget smelte, må temperaturen stige, trykket synke eller sammensetningen endre seg (Winter, 2014, s. 195).
+
+- *Lavere trykk.* Når varm mantel strømmer oppover mot lavere trykk, synker smeltepunktet, og berget begynner å smelte. Dette kalles *dekompresjonssmelting*. Det skjer under midthavsrygger, over varme søyler (hotspots) og langs kontinentale rifter, der litosfæren tynnes ut (Bryhni & Fossen, 2025).
+- *Tilført vann.* Vannrike væsker senker smeltepunktet. Ved subduksjonssoner frigjøres vann fra sedimenter som trekkes ned i dypet, og mantelen over begynner å smelte (Bryhni & Fossen, 2025). I kapitlet [Vulkaner](/geofag-1/vulkaner) heter dette *flukssmelting*.
+- *Tilført varme.* I roten av fjellkjeder har den granittiske skorpa lavt smeltepunkt. Den inneholder radioaktive grunnstoffer som gir fra seg varme over tid. Da kan det dannes små lommer av smelte (Bryhni & Fossen, 2025).
+
+Et berg med flere mineraler smelter over et temperaturintervall, ikke ved én bestemt temperatur (Winter, 2014, s. 108). Når mantelen stiger, smelter bare en begrenset del av den (Winter, 2014, s. 196). For å lage basalt ved en midthavsrygg smelter ca. 20–25 prosent av mantelberget. Resten, 75–80 prosent, blir igjen som et fast restberg som er rikere på olivin (Winter, 2014, s. 193).
+
+Smelten blir rikere på SiO₂ enn berget den kom fra. Mantelberget har ca. 45 prosent SiO₂ (Winter, 2014, s. 195). Basalt er en basisk bergart med 45–52 prosent SiO₂ (Bryhni & Fossen, 2025; Raade & Fossen, 2025b). Smelter granittisk skorpe, blir smelten granittisk og sur, med mer enn 66 prosent SiO₂ (Bryhni & Fossen, 2025; Raade & Fossen, 2025b).
+
+### Hvordan vokser krystallene fram?
+
+Når magma kjøles, begynner mineraler å krystallisere. Det skjer i to trinn: først *kimdannelse*, så *kornvekst* (Årtun & Nesse, 2025). En kim er en liten klynge av ioner. Svært små klynger har mange ioner i overflaten og er ustabile. Først når klyngen er stor nok, holder den seg. Deretter vokser krystallen ved at nye ioner legger seg på overflaten. Ionene må vandre gjennom smelten for å komme dit. Det kalles *diffusjon* (Winter, 2014, s. 39).
+
+Over så du at avkjølingen styrer kornstørrelsen. Nå kan vi forklare hvorfor. Når magma kjøles langsomt, dannes det få kim, men de vokser lenge. Det gir få og store krystaller, som i dypbergarter. Når magma kjøles raskt, dannes det mange kim som ikke rekker å vokse. Det gir mange små krystaller, som i dagbergarter. Kjøles smelten svært raskt, blir det nesten ingen kim, og smelten størkner til glass (Winter, 2014, s. 40).
+
+Noen bergarter har store krystaller i en finkornet grunnmasse. Det kalles *porfyrisk tekstur*. De store krystallene kalles *fenokrystaller* eller strøkorn (Selbekk, 2025b). Fenokrystallene vokste langsomt i dypet. Grunnmassen størknet raskt etter at magmaen var presset opp i en sprekk eller kom ut på overflaten (Selbekk, 2025b; Winter, 2014, s. 40). Rombeporfyr er et norsk eksempel. NGU kaller teksturen med store rombeformede feltspatkrystaller i en finkornet grunnmasse «såkalt porfyrisk tekstur» (NGU, u.å.-l).
+
 ### Magmatisk differensiering
 
 En smelte krystalliserer ikke alt på en gang. De første mineralene tar utvalgte grunnstoffer med seg. Restsmelten får derfor en annen sammensetning. Det kalles magmatisk differensiering.
 
-Olivin og pyroksen krystalliserer først. De er rike på jern og magnesium, og de er tyngre enn smelten. Synker de til bunnen, tar de jern og magnesium ut av smelten. Restsmelten blir fattigere på jern og rikere på silisium. Nederst kan det bli en mørk kumulasjon. Restsmelten over kan størkne som en lysere bergart.
+Hvilke mineraler kommer først? Geologen Norman L. Bowen satte i 1928 opp en rekkefølge som kalles *Bowens reaksjonsrekke* (Winter, 2014, s. 130).
 
-Dette er en forenklet modell av fraksjonert krystallisasjon. Ikke all granitt dannes slik. Samme smeltefamilie kan likevel gi både en mørk og en lysere bergart, slik du så med gabbro og basalt, og med larvikitt og rombeporfyr.
+| Grein | Rekkefølge når smelten kjøles |
+| --- | --- |
+| Mørke mineraler | olivin → pyroksen → amfibol → biotitt |
+| Plagioklas | kalsiumrik plagioklas → natriumrik plagioklas |
+| Til slutt | kalifeltspat, muskovitt og kvarts |
+
+På den første greina dannes hvert nytt mineral ved at smelten reagerer med krystallene som allerede finnes. På den andre greina endrer plagioklasen sammensetning litt etter litt. Rekka viser hovedtrenden, men ikke detaljene for en bestemt smelte (Winter, 2014, s. 130–131).
+
+Olivin og pyroksen krystalliserer altså først. De er rike på jern og magnesium, og de er tyngre enn smelten. Synker de til bunnen, kan de ikke lenger reagere med smelten, og de tar jern og magnesium ut av den. Restsmelten blir fattigere på jern og rikere på silisium. Når krystallene som dannes først, skilles fra smelten på denne måten, kalles det *fraksjonert krystallisasjon* (Winter, 2014, s. 115). I [Vulkaner](/geofag-1/vulkaner) heter dette *fraksjonering*.
+
+Nederst kan det bli en mørk kumulasjon av olivin og pyroksen. Restsmelten over kan størkne som en lysere bergart, rikere på kalifeltspat og kvarts (Bryhni & Fossen, 2025). Dette er en forenklet modell av fraksjonert krystallisasjon. Ikke all granitt dannes slik. At samme smeltefamilie kan gi ulike bergarter, så du også tidligere: gabbro og basalt har samme sammensetning, men ulik kornstørrelse fordi den ene størknet i dypet og den andre på overflaten; larvikitt og rombeporfyr er et tilsvarende par fra Osloriften.
+
+Smelten blir altså rikere på SiO₂ på to måter: når berget smelter delvis, og når de første krystallene skilles ut.
 
 ```widget
 Differensiering
 ```
 
+```widget
+SjekkBergarter5
+```
+
 ## Hva er sedimentære bergarter?
 
 Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbonat fra organismer.
-
-### Diagenese
-
-Diagenese er prosessene som gjør løst sediment til fast sedimentær bergart (SNL, diagenese).
-
-Først presses sedimentet sammen under vekten av nye lag (kompaksjon). Porevann presses ut, og porøsiteten avtar. En del væske blir likevel igjen mellom kornene. Porene er fulle av væske, ikke luft.
-
-Samtidig øker temperaturen med dypet. Den varme væsken som er igjen, sirkulerer gjennom porene og løser ioner fra kornene.
-
-Cementering skjer når ionene felles ut som kitt av kvarts, kalsitt eller jernoksid mellom kornene. Da blir sand til sandstein, leire til leirstein og kalkslam til kalkstein. Uten porevæske blir det nesten ikke kitt. Trykk alene pakker bare kornene.
-
-```widget
-DiagenesePore
-```
 
 **Sandstein** består hovedsakelig av kvarts og feltspat, kittet av kvarts, kalsitt eller jernforbindelser. Fargen går ofte fra gråhvit til rødbrun. Den er ikke svært vanlig på land i Norge, men finnes i Oslofeltet, på Vestlandet og i Trøndelag (NGU, u.å.-m).
 
@@ -197,13 +223,51 @@ DiagenesePore
 
 **Kalkstein** består av mer enn 50 prosent karbonater. Den er dannet ved forsteining og opphopning av organismer som skiller ut kalk, som koraller og alger, og inneholder ofte fossiler. De fleste kalksteiner i Norge er omdannet til marmor. Helt sedimentær kalkstein finnes i bassengene utenfor kysten. Svakt omdannet kalkstein finnes i Oslo-området og i Trøndelag (NGU, u.å.-f). I Oslofeltet ble kalkstein avsatt i ordovicium og silur (NGU, u.å.-g).
 
+## Hvordan blir sand til sandstein?
+
+Løs sand blir ikke fast stein over natta. Prosessene som gjør løst sediment til fast sedimentær bergart, kalles *diagenese*. Da blir sand til sandstein, leire til leirstein og kalkslam til kalkstein. Diagenesen skjer ved lav temperatur, under ca. 200 °C (Askheim, 2025). Trykk, temperatur og væsken i porene virker sammen.
+
+### Trykk og kompaksjon
+
+Når nye sedimenter legger seg oppå, blir de eldre lagene begravd dypere. Kornene presses sammen under vekten av de nye lagene, porevannet presses ut, og porøsiteten avtar (Askheim, 2025). Dette kalles *kompaksjon*. *Porøsitet* er hvor stor del av volumet som er hulrom. Nyavsatt slam kan ha mer enn 50 prosent porøsitet. Kompaksjon, sementering og rekrystallisasjon gjør den mindre jo dypere sedimentene havner (Winter, 2014, s. 685). Der kornene presses hardt mot hverandre, kan mineralet løses opp og felles ut igjen i porene ved siden av (Winter, 2014, s. 472).
+
+En del væske blir likevel igjen mellom kornene. Porene er fulle av væske, ikke luft.
+
+### Temperatur og geotermisk gradient
+
+Jo dypere sedimentene havner, jo varmere blir det. Hvor mye temperaturen øker per kilometer, kalles *geotermisk gradient*. I den øverste delen av jordskorpa er gradienten vanligvis om lag 20–40 °C/km. For jorda som helhet er gjennomsnittet 24 °C/km. Gradienten er størst ved midthavsrygger og rifter og minst ved subduksjonssoner (Bryhni, 2025a). Med ca. 25 °C/km er det ca. 200 °C omtrent 8 km nede.
+
+Ved høyere temperatur skjer det kjemiske endringer i sedimentene og i porene. Leirmineraler omdannes, og organisk materiale blir til kerogen og bitumen (Askheim, 2025). Ved enda større dyp og høyere temperatur går diagenesen over i metamorfose (Askheim, 2025). Grensen er ikke skarp. Ofte settes den ved 200 °C (Rüther, 2025), men noen bergarter begynner å omdannes allerede ved 100–150 °C (Winter, 2014, s. 467).
+
+### Vann i porene og sementering
+
+Væsken som er igjen i porene, er nøkkelen. Den blir varmere med dypet og sirkulerer gjennom porene og langs sprekker (Winter, 2014, s. 688). På veien løser den ioner fra kornene. Når trykket øker, felles de oppløste stoffene ut igjen og *sementerer* kornene sammen (Øien, 2025). Mineralene som felles ut i hulrommene, kalles *sement* eller bindemiddel. De binder kornene sammen omtrent som sement i betong (Rüther, 2025).
+
+*Sementering* skjer altså når ionene felles ut som kitt av kvarts, kalsitt eller jernforbindelser mellom kornene (NGU, u.å.-m). De vanligste sandsteinene har kvarts som sement (Gunnarsjaa & Eide, 2025). Uten porevæske blir det nesten ikke kitt. Trykk alene pakker bare kornene.
+
+```widget
+DiagenesePore
+```
+
+### Eksempel: fra sand til sandstein
+
+1. *Avsetning.* Sanden avsettes for eksempel i en elv, langs en kyst eller i en ørken (Gunnarsjaa & Eide, 2025).
+2. *Begravning og kompaksjon.* Tykke lag med nye sedimenter legger seg over, ofte mer enn en kilometer. Kornene presses sammen, og vann presses ut (Askheim, 2025; Gunnarsjaa & Eide, 2025).
+3. *Sementering.* Kvarts og leirmineraler feller ut mellom kornene. Jo tykkere lagene over blir, jo mer feller ut, helt til porene er fylt av sement. Det skjer gjerne ved ca. 120 °C. I Nordsjøen svarer det til fem til seks kilometers dyp (Gunnarsjaa & Eide, 2025).
+
+Sandstein som fortsatt har porer, kan holde vann, olje eller gass. Derfor er sandstein en viktig reservoarbergart. De fleste petroleumsfeltene i Norge har reservoar i sandstein (Gunnarsjaa & Eide, 2025). Blir sandsteinen omdannet videre, blir den til kvartsitt (Gunnarsjaa & Eide, 2025).
+
+```widget
+SjekkBergarter6
+```
+
 ## Hva er metamorfe bergarter?
 
 En metamorf bergart har vært sedimentær eller magmatisk. Høyt trykk, høy temperatur og/eller kjemisk påvirkning omdanner den til en ny bergart i fast tilstand, uten at den smelter. Kjennetegn er striper og folder (NGU, u.å.-k).
 
 ### Kontaktmetamorfose og regional metamorfose
 
-**Kontaktmetamorfose** skjer når magma trenger inn og varmer opp sidebergartene lokalt. Varmen er viktigst, trykket er ikke rettet, og lagene blir liggende flate. Sedimentære bergarter kan bli til tette, flintaktige hornfelser i en kontaktaureole rundt intrusjonen. Kornene i hornfels har ingen felles retning. Oslofeltet er et klassisk område for kontaktmetamorfe bergarter (SNL).
+**Kontaktmetamorfose** skjer når magma trenger inn og varmer opp sidebergartene lokalt. Varmen er viktigst, trykket er ikke rettet, og lagene blir liggende flate. Sedimentære bergarter kan bli til tette, flintaktige hornfelser i en kontaktaureole rundt intrusjonen. Kornene i hornfels har ingen felles retning. Oslofeltet er et klassisk område for kontaktmetamorfe bergarter (Bryhni, 2025b).
 
 **Regional metamorfose** skjer over store områder når bergarter presses dypt ned under fjellkjededannelse. Både høyt trykk og høy temperatur virker, og trykket er rettet. Bergartene foldes, og mineraler som glimmer legger seg på tvers av trykkretningen. Det dannes foliasjon og skifrighet. Fyllitt og gneis er typiske produkter.
 
@@ -219,22 +283,69 @@ Mange av de metamorfe bergartene i fjellene våre ble omdannet i den kaledonske 
 KontaktRegional
 ```
 
-### Metasomatose
-
-I metamorfe bergarter kan varm væske føre ioner inn og ut av mineralene mens berget er fast. Et ion hopper ut av gitteret, og et annet tar plassen. Bergarten kan skifte sammensetning uten å smelte. Det kalles metasomatose.
-
-Væsken er transportbåndet. Den ligger som en tynn film langs korngrensene. Uten den flytter ionene seg nesten ikke. Dette er ikke smelting. Berget er fortsatt fast.
-
-```widget
-IonBytte
-```
-
 ```widget
 Metamorfose
 ```
 
 ```widget
 SjekkBergarter3
+```
+
+## Hvordan skjer metamorfose?
+
+Metamorfose skjer fordi mineraler blir ustabile når temperaturen og trykket endrer seg. Da endrer de krystallstruktur eller danner nye mineraler. Kjemisk aktive væsker i berget hjelper til (Raade & Fossen, 2025c). Metamorfosen ligger mellom diagenesen og smeltingen. Den øvre grensen går der berget begynner å smelte (Raade & Fossen, 2025c).
+
+### Rekrystallisasjon i fast fase
+
+Metamorfose skjer for det meste i fast fase, uten smelte (Winter, 2014, s. 467). Ionene i et mineral sitter i et krystallgitter. Ved høyere temperatur går diffusjon og kjemiske reaksjoner raskere (Winter, 2014, s. 469). Ionene kan da vandre gjennom gitteret og langs grensene mellom kornene (Winter, 2014, s. 689). For at et mineral skal endre seg varig, må kjemiske bindinger brytes (Winter, 2014, s. 500).
+
+Når et mineral ikke lenger er stabilt ved den nye temperaturen og det nye trykket, reagerer det. Det ustabile mineralet brytes ned, og det dannes nye mineraler som er stabile under de nye forholdene (Winter, 2014, s. 469). Ionene binder seg da på nytt i et nytt gitter. Nye korn vokser på samme måte som i en smelte, ved kimdannelse, vekst og diffusjon (Winter, 2014, s. 39). Små korn vokser også sammen til større, så kornstørrelsen øker ofte (Winter, 2014, s. 468). Kjemien i bergarten som helhet endrer seg lite. Unntaket er vann og CO₂, som ofte forsvinner (Winter, 2014, s. 473).
+
+```widget
+Rekrystallisasjon
+```
+
+### Metasomatose
+
+Noen ganger endrer kjemien seg likevel. I metamorfe bergarter kan varm væske føre ioner inn og ut av mineralene mens berget er fast. Et ion hopper ut av gitteret, og et annet tar plassen. Bergarten kan skifte sammensetning uten å smelte. Det kalles metasomatose.
+
+Væsken er transportbåndet. Den ligger som en tynn film langs korngrensene. Uten den flytter ionene seg nesten ikke. Dette er ikke smelting. Berget er fortsatt fast. Forskjellen fra rekrystallisasjon er at ioner kommer utenfra og forsvinner ut, så sammensetningen av bergarten endres.
+
+```widget
+IonBytte
+```
+
+### Regional metamorfose
+
+Over så du at regional metamorfose skjer over store områder, ofte ved fjellkjedefolding (Raade & Fossen, 2025c). Her ser vi nærmere på hva trykket gjør med mineralene, og hvordan geologene leser hvor sterkt berget er omdannet.
+
+Når berget presses sammen, vokser glimmer og andre plateformede mineraler parallelt med hverandre, vinkelrett på retningen berget ble presset sammen mest i (Winter, 2014, s. 472). En slik plan struktur kalles *foliasjon*. *Skifrighet* er foliasjon der berget spalter langs tette, parallelle flater (Winter, 2014, s. 493).
+
+*Metamorf grad* sier hvor sterkt berget er omdannet (Winter, 2014, s. 469). Leirskifer kan bli til fyllitt ved lav grad og til gneis ved høy grad (Raade & Fossen, 2025c). Med økende grad går rekka leirskifer → fyllitt → glimmerskifer → gneis, og kornene blir større (Winter, 2014, s. 468, 493):
+
+| Grad | Bergart | Kjennetegn |
+| --- | --- | --- |
+| Ingen (sedimentær) | leirskifer | kløves i tynne flak (NGU, u.å.-j) |
+| Lav | fyllitt | små korn, silkeglans på kløvflatene (NGU, u.å.-a) |
+| Middels | glimmerskifer | grove korn av glimmer og kvarts, ofte granat (SNL, 2024a) |
+| Høy | gneis | mellom- til grovkornet og stripet (NGU, u.å.-d) |
+
+Et *indeksmineral* er et mineral som er typisk for en bestemt metamorf grad (SNL, 2024b). George Barrow kartla slike soner i omdannet leirskifer i den kaledonske fjellkjeden i Skottland. Med økende grad kom mineralene i denne rekkefølgen: kloritt, biotitt, granat, staurolitt, kyanitt og sillimanitt (Winter, 2014, s. 479).
+
+Andalusitt, kyanitt og sillimanitt har samme kjemi, Al₂SiO₅, men ulikt krystallgitter (Winter, 2014, s. 479). Hvilket av dem som dannes, avhenger av trykk og temperatur. Andalusitt dannes ved lavt trykk, grunnere enn ca. 10 km (Winter, 2014, s. 480). Kyanitt dannes ved høyere trykk, og sillimanitt ved høy grad (Winter, 2014, s. 480, 655). Finner geologene ett av disse mineralene, vet de noe om trykket og temperaturen da berget ble omdannet (Winter, 2014, s. 585). Kyanitt finnes i regionalt omdannede bergarter og er ganske utbredt i Norge (Selbekk, 2025a). Sillimanitt finnes blant annet i Bamble og i området Søndeled–Songe på Sørlandet (Danielsen, 2025).
+
+### Kontaktmetamorfose
+
+Ved kontaktmetamorfose er varmen fra magmaen det viktigste. Væsker og gasser som strømmer ut fra magmaen, kan også endre kjemien i sidesteinen (Bryhni, 2025b). Det er en form for metasomatose. Kontaktaureolen, sonen med omdannet berg rundt magmaen, kalles også kontaktsone. Rundt en liten gang kan sonen være noen millimeter bred. Rundt et stort dypbergartslegeme kan den være flere kilometer bred. Berget blir lite deformert, så strukturer fra utgangsbergarten blir ofte bevart (Winter, 2014, s. 474).
+
+*Hornfels* er omkrystallisert av varmen fra magmaen. Mørk hornfels er dannet av leirskifer og inneholder biotitt og plagioklas, noen ganger også andalusitt. Lys hornfels er dannet av uren kalkstein. Hornfels dannes på grunt dyp, under 10 km, ved 400–800 °C, avhengig av avstanden til magmaen (Raade, 2024). *Marmor* er omkrystallisert kalkstein og består oftest av kalsitt. Kornene er vanligvis 0,2–5 mm (Raade, 2025a).
+
+I Oslofeltet ser du hvordan det skjedde. Da Osloriften var aktiv, trengte smeltemasser fram i dypet. De omdannet berggrunnen rundt til hornfels og størknet selv til dypbergarter som larvikitt og drammensgranitt (Spjeldnæs & Askheim, 2024). Hornfelsene ligger i en krans rundt de permiske dypbergartene (Bryhni, 2025b). Det var de kambrosiluriske sedimentene, skifer, kalkstein og sandstein, som ble omdannet (Raade, 2024; Spjeldnæs & Askheim, 2024). Kalksteinen ble flere steder til marmor (Raade, 2025a). Ved Gjellebekk i Lier ble det på 1700-tallet brutt marmor til Marmorkirken i København. Marmoren derfra er løs og av dårlig kvalitet, noe som er vanlig for sterkt kontaktomvandlet marmor (Raade, 2025a).
+
+Victor Moritz Goldschmidt ved Universitetet i Oslo gjorde et banebrytende studium av disse bergartene i 1911 (Bryhni, 2025b). Han viste at mineralene i hornfelsen henger sammen med den kjemiske sammensetningen til utgangsbergarten (Winter, 2014, s. 561).
+
+```widget
+SjekkBergarter7
 ```
 
 ## Hva er bergartssyklusen?
@@ -247,7 +358,7 @@ Syklusen er en modell du bruker for å undersøke og forklare (Udir, u.å.-a). E
 
 Gneis i grunnfjellet i Sør-Norge ble dannet for mer enn 900 millioner år siden og er fortsatt metamorf (NGU, u.å.-d). Larvikitt har vært dypbergart siden den størknet for cirka 295–290 millioner år siden (NGU, u.å.-i). Kalkstein i Oslo-området kan være bare svakt omdannet, ikke marmor (NGU, u.å.-f). Å tolke inn i syklusen er å peke på stasjonen og på hvilken vei som er tatt, og hvilken som ikke er det.
 
-Forvitring og erosjon er overflateleddet, fra fast berg mot sediment. Forsteining er veien fra sediment til sedimentær bergart. Omdanning i fast tilstand er veien til metamorf bergart. Smelter en bergart, blir den til magma, og størkning er veien fra magma til magmatisk bergart. Heving er veien tilbake til overflaten: Når jordskorpa løftes og lagene over eroderes bort, kommer dypbergart og metamorf bergart fram i dagen, der de kan forvitre (Corner, u.å.; Fossen, 2024).
+Forvitring og erosjon er overflateleddet, fra fast berg mot sediment. Forsteining (diagenese) er veien fra sediment til sedimentær bergart. Omdanning i fast tilstand er veien til metamorf bergart. Smelter en bergart, blir den til magma, og størkning er veien fra magma til magmatisk bergart. Heving er veien tilbake til overflaten: Når jordskorpa løftes og lagene over eroderes bort, kommer dypbergart og metamorf bergart fram i dagen, der de kan forvitre (Corner, u.å.; Fossen, 2024).
 
 Hvordan geologene vet at gneisen er over 900 millioner år og larvikitten ca. 295–290 millioner år, lærer du i neste kapittel, [Geologisk tid og datering](/geofag-1/geologisk-tid).
 
@@ -282,19 +393,53 @@ SjekkBergarter4
 
 **Metamorf bergart:** Eldre bergart omdannet av trykk, temperatur og/eller kjemisk påvirkning. Kjennetegn er striper og folder.
 
-**Forvitring:** Nedbrytning av berg på stedet, mekanisk eller kjemisk. Berget flyttes ikke.
+**Forvitring:** Nedbrytning av berg på stedet, mekanisk, kjemisk eller biologisk. Berget flyttes ikke.
 
 **Erosjon:** Nedsliting pluss transport med vann, is eller tyngdekraft.
 
-**Diagenese:** Prosessene som gjør løst sediment til fast sedimentær bergart. Cementering krever porevæske.
+**Delvis smelting:** Bare en del av berget smelter. Smelten blir rikere på SiO₂ enn berget den kom fra.
+
+**Dekompresjonssmelting:** Smelting når varmt berg stiger og trykket synker, slik at smeltepunktet blir lavere.
+
+**Kimdannelse:** Første trinn når en krystall dannes. En liten klynge av ioner blir stor nok til å være stabil og kan vokse videre.
+
+**Porfyrisk tekstur:** Store krystaller (fenokrystaller) i en finkornet grunnmasse, som i rombeporfyr.
+
+**Bowens reaksjonsrekke:** Rekkefølgen mineralene krystalliserer i når en smelte kjøles, fra olivin og kalsiumrik plagioklas til kalifeltspat, muskovitt og kvarts.
 
 **Magmatisk differensiering:** At en smelte skifter sammensetning fordi de første mineralene tar utvalgte grunnstoffer med seg.
 
-**Kontaktaureole:** Sonen rundt en intrusjon der sidebergarten er omdannet av varmen. Der kan det bli hornfels.
+**Fraksjonert krystallisasjon:** De første krystallene skilles fra smelten, for eksempel ved at de synker, slik at sammensetningen av smelten endrer seg.
+
+**Diagenese:** Prosessene som gjør løst sediment til fast sedimentær bergart ved lav temperatur, under ca. 200 °C: kompaksjon, rekrystallisasjon og sementering. Sementering krever porevæske.
+
+**Kompaksjon:** Sammenpressing av sedimenter under vekten av lagene over. Vann presses ut, og porøsiteten avtar.
+
+**Porøsitet:** Hvor stor del av volumet i et sediment eller en bergart som er hulrom.
+
+**Sementering:** Mineraler som kvarts, kalsitt eller jernforbindelser felles ut fra porevæsken og binder kornene sammen.
+
+**Geotermisk gradient:** Hvor mye temperaturen øker per kilometer nedover. I den øverste delen av jordskorpa vanligvis 20–40 °C/km.
+
+**Rekrystallisasjon:** Mineralkorn vokser eller dannes på nytt i fast fase. Ioner diffunderer, og bindinger brytes og dannes på nytt.
 
 **Metasomatose:** Utbytting av grunnstoff i fast berg via varm væske, uten smelting.
 
+**Foliasjon:** Plan struktur i en metamorf bergart, der plateformede mineraler ligger parallelt.
+
 **Skifrighet:** Plan struktur der bergarten spalter langs flak, som i fyllitt. En form for foliasjon.
+
+**Metamorf grad:** Hvor sterkt en bergart er omdannet, fra lav grad (fyllitt) til høy grad (gneis).
+
+**Indeksmineral:** Mineral som er typisk for en bestemt metamorf grad, som granat, kyanitt og sillimanitt.
+
+**Kontaktmetamorfose:** Omdanning av berget rundt varm magma som størkner i dypet. Varmen er viktigst.
+
+**Kontaktaureole:** Sonen rundt en intrusjon der sidebergarten er omdannet av varmen. Der kan det bli hornfels.
+
+**Hornfels:** Tett, finkornet kontaktmetamorf bergart der kornene ikke har felles retning. Vanlig i Oslofeltet.
+
+**Marmor:** Omkrystallisert kalkstein, oftest av kalsitt.
 
 **Protolitt:** Bergarten som ble omdannet. For fyllitt er det leirskifer eller leirstein. For grønnstein er det gabbro eller basalt.
 

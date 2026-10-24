@@ -1902,6 +1902,39 @@ export const QUIZ_BERGARTER: QuizQuestion[] = [
     answer: 0,
     explain: "Gneisen ble dannet for mer enn 900 millioner år siden og er fortsatt en metamorf bergart. Den har ikke smeltet eller blitt til sediment.",
   },
+  {
+    prompt: "Hvilken rekke viser en leirskifer som blir sterkere og sterkere omdannet?",
+    options: [
+      "Gneis → glimmerskifer → fyllitt → leirskifer",
+      "Leirskifer → marmor → hornfels → gneis",
+      "Leirskifer → fyllitt → glimmerskifer → gneis",
+      "Fyllitt → leirskifer → gneis → glimmerskifer",
+    ],
+    answer: 2,
+    explain: "Med økende metamorf grad blir kornene større, og foliasjonen går fra skifrighet til bånd. Fyllitt er lav grad og gneis høy grad. Se «Regional metamorfose».",
+  },
+  {
+    prompt: "Hvorfor blir smelten fra mantelen rikere på SiO₂ enn mantelberget den kom fra?",
+    options: [
+      "Fordi smelten tar opp kvarts fra havbunnen",
+      "Fordi bare en del av berget smelter, og et olivinrikt restberg blir igjen",
+      "Fordi trykket øker når smelten stiger",
+      "Fordi mantelen består av granitt",
+    ],
+    answer: 1,
+    explain: "Ved delvis smelting smelter ca. 20–25 prosent av mantelberget. Smelten blir basalt med 45–52 prosent SiO₂, mens restberget blir rikere på olivin. Se «Hvorfor smelter mantelen bare delvis?».",
+  },
+  {
+    prompt: "Hvilket mineral er vanligst som sement i sandstein?",
+    options: [
+      "Halitt",
+      "Gips",
+      "Glimmer",
+      "Kvarts",
+    ],
+    answer: 3,
+    explain: "De vanligste sandsteinene har kvarts som sement. Kalsitt og jernforbindelser forekommer også. Se «Vann i porene og sementering».",
+  },
 ];
 
 export const QUIZ_VANN_OG_FLOM: QuizQuestion[] = [
@@ -3794,6 +3827,75 @@ export const QUIZ_SJEKK_BERGARTER_4: QuizQuestion[] = [
     ],
     answer: 2,
     explain: "Ingen bergart må innom alle stasjonene. Gneisen i grunnfjellet har vært metamorf i over 900 millioner år, og larvikitten har vært magmatisk siden den størknet.",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_5: QuizQuestion[] = [
+  {
+    prompt: "Det er svært varmt i mantelen. Hvorfor er den likevel stort sett fast?",
+    options: [
+      "Fordi temperaturen synker innover i jorda",
+      "Fordi trykket øker innover og gir høyere smeltepunkt",
+      "Fordi mantelen består av kvarts, som ikke kan smelte",
+    ],
+    answer: 1,
+    explain: "Trykket øker innover, og da stiger smeltepunktet. Mantelen smelter bare delvis når trykket synker, når det kommer til vann eller når det blir tilført varme. Se «Hvorfor smelter mantelen bare delvis?».",
+  },
+  {
+    prompt: "Olivin og pyroksen krystalliserer først og synker til bunnen av et magmakammer. Hva skjer med restsmelten?",
+    options: [
+      "Den blir rikere på jern og magnesium",
+      "Den får samme sammensetning som før",
+      "Den blir fattigere på jern og rikere på silisium",
+    ],
+    answer: 2,
+    explain: "Olivin og pyroksen tar jern og magnesium med seg ut av smelten. Det kalles fraksjonert krystallisasjon, en form for magmatisk differensiering. Se «Magmatisk differensiering».",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_6: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor blir det nesten ikke sement mellom kornene hvis porene er tomme for væske?",
+    options: [
+      "Fordi sement bare dannes over 200 °C",
+      "Fordi trykket alene bare pakker kornene, og det er porevæsken som løser ioner og feller dem ut som kitt",
+      "Fordi sand ikke kan bli til sandstein i Norge",
+    ],
+    answer: 1,
+    explain: "Kompaksjon presser kornene sammen og vannet ut, men en del væske blir igjen. Den varme porevæsken løser ioner, og kvarts, kalsitt eller jernforbindelser felles ut og sementerer kornene. Se «Vann i porene og sementering».",
+  },
+  {
+    prompt: "Ved omtrent hvilken temperatur settes grensen mellom diagenese og metamorfose ofte?",
+    options: [
+      "Ca. 200 °C",
+      "Ca. 700 °C",
+      "Ca. 1200 °C",
+    ],
+    answer: 0,
+    explain: "Diagenese skjer under ca. 200 °C. Grensen er ikke skarp, og noen bergarter begynner å omdannes allerede ved 100–150 °C. Se «Temperatur og geotermisk gradient».",
+  },
+];
+
+export const QUIZ_SJEKK_BERGARTER_7: QuizQuestion[] = [
+  {
+    prompt: "Hva er forskjellen på rekrystallisasjon og metasomatose?",
+    options: [
+      "Ved rekrystallisasjon smelter berget, ved metasomatose gjør det ikke det",
+      "Det er ingen forskjell",
+      "Ved rekrystallisasjon dannes nye mineraler av de ionene som allerede er der. Ved metasomatose fører varm væske ioner inn og ut, så sammensetningen endres",
+    ],
+    answer: 2,
+    explain: "Begge skjer i fast fase, uten smelte. Ved rekrystallisasjon endrer kjemien i bergarten seg lite. Ved metasomatose er væsken et transportbånd som bytter ut grunnstoff. Se «Rekrystallisasjon i fast fase» og «Metasomatose».",
+  },
+  {
+    prompt: "Rundt de permiske dypbergartene i Oslofeltet ligger tett, finkornet hornfels. Hvilken type omdanning er det?",
+    options: [
+      "Regional metamorfose i en fjellkjede",
+      "Kontaktmetamorfose",
+      "Diagenese",
+    ],
+    answer: 1,
+    explain: "Varmen fra magmaen som størknet i dypet, omdannet de kambrosiluriske sedimentene rundt til hornfels og kalkstein til marmor. Se «Kontaktmetamorfose».",
   },
 ];
 
