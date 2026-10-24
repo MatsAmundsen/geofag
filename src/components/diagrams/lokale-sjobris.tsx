@@ -133,6 +133,11 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
   // terrengkanten og bølgestripene i havet (Hav: y + 12 + k · 18)
   hinder.push({ p: LAND, b: 1.5 });
   for (let k = 0; k < 4; k++) hinder.push({ p: [[4, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]], b: 1.4 });
+  // sola (Sol: kjerne r 24, glød r ≈ 46) som fylt flate
+  if (dag > 0.1) hinder.push({ punkt: [150, 80], r: 46 });
+  // husene og trærne på strandflaten (Hus: 20 × 21 med tak, Traer: 12 × 18)
+  for (const [x, y] of PYNT.hus) hinder.push({ boks: [x - 10, y - 21, x + 10, y] });
+  for (const [x, y] of PYNT.traer) hinder.push({ boks: [x - 6, y - 18, x + 6, y] });
   if (fase >= 5 && dag > 0.02) hinder.push({ boks: [STASJON - 8, yStasjon - 136, STASJON + 42, yStasjon] });
   if (frontOp > 0.1) {
     hinder.push({ boks: [fx - 70, skyBunn, fx - 4, frontBunn] });
@@ -194,6 +199,7 @@ export function SjobrisFigur({ heading, caption }: { heading?: string; caption?:
       etikettRader={7}
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
+      skiltLuft={5}
       keys={[
         { text: "Sjøbris ved bakken", color: F.sjobris, kind: "line" },
         { text: "Strøm i høyden", color: F.retur, kind: "dash" },

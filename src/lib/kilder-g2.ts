@@ -11,7 +11,6 @@ export const KILDER_G2 = {
       prefix: "Bjerknes, J., & Solberg, H. (1922). ",
       italic: "Life cycle of cyclones and the polar front theory of atmospheric circulation",
       suffix: ". Geofysiske Publikasjoner, 3(1), 1–18.",
-      href: "https://doi.org/10.1002/qj.49704920608",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-a). ",
@@ -48,6 +47,12 @@ export const KILDER_G2 = {
       italic: "Surface weather plot symbols",
       suffix: ".",
       href: "https://www.noaa.gov/jetstream/wxmaps-max/jetstream-max-surface-weather-plot-symbols",
+    },
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-g). ",
+      italic: "Surface weather plots",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/wxmaps-max",
     },
     {
       prefix: "National Weather Service [NWS]. (u.å.). ",

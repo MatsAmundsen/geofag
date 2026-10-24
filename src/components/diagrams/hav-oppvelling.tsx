@@ -85,10 +85,10 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
     ...oppBaner.map((p) => ({ p, b: 4, pil: true })),
     { p: LAND_KANT, b: 1.5 },
     { p: g, b: 2 },
-    // ⊙ har r 22; på smal skjerm holdes skiltene minst ca. 6 px unna
-    { ellipse: (smal ? [VIND_X, VIND_Y, VIND_R + 4, VIND_R + 4] : [VIND_X, VIND_Y, 26, 26]) as [number, number, number, number] },
-    // næringsprikkene i steg 4 (små sirkler) skal heller ikke ligge under et skilt
-    ...(s.plankton > 0.02 ? PLANKTON.map(([x, y]) => ({ ellipse: [x, y, 5, 5] as [number, number, number, number] })) : []),
+    // ⊙: punkt-hinder (fylt skive), så skiltene ikke kan lande inne i symbolet
+    { punkt: [VIND_X, VIND_Y], r: VIND_R + 4 },
+    // næringsprikkene i steg 4
+    ...(s.plankton > 0.02 ? PLANKTON.map(([x, y]) => ({ punkt: [x, y] as [number, number], r: 5 })) : []),
     // bølgestripene i Hav og klammen over oppvellingssonen
     ...[0, 1, 2, 3].map((k) => ({ p: [[0, HAV_Y + 12 + k * 18], [KYST, HAV_Y + 12 + k * 18]] as [number, number][], b: 1 })),
     { p: [[520, HAV_Y - 8], [520, HAV_Y - 2], [KYST - 10, HAV_Y - 2], [KYST - 10, HAV_Y - 8]], b: 2 },
@@ -104,7 +104,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   labels[labels.length - 1].narrowHide = true;
   lab("Land", 880, 300, undefined, F.tekst);
   labels[labels.length - 1].narrowHide = true;
-  if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - 28, VIND_Y], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
+  if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - (VIND_R + 10), VIND_Y], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
   if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 24, HAV_Y - 18, smal ? [500, HAV_Y + 22] : [300, HAV_Y + 20], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
   if (s.opp > 0.3) {
     const op = clamp((s.opp - 0.3) / 0.4);

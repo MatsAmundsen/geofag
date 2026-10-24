@@ -141,7 +141,10 @@ export function LokaleRamme({
    * Uten denne vises hele tegneflaten som før.
    */
   narrowViewBox?: string;
-  /** Minste luft (CSS-piksler) rundt nummerskiltene på smal skjerm. Uten denne 3 px som før. */
+  /**
+   * Minste luft (CSS-piksler) fra ytterkanten av skiltet, med halo, til hinder og til andre skilt.
+   * Uten denne brukes den gamle avstanden (ca. 3 px til hinder og 8 viewBox-enheter mellom skiltene).
+   */
   skiltLuft?: number;
   children: (ctx: { m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
@@ -155,7 +158,7 @@ export function LokaleRamme({
   if (smal && hinder && skala > 0) {
     // samme radius som nummerskiltene i IsbreFigur (minst ca. 23 CSS-piksler i diameter)
     const r = Math.max(11.5 / skala, VB.w * 0.02);
-    const key = `${skiltNokkel ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
+    const key = `${skiltNokkel ?? ""}|${skiltLuft ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
     if (!skiltCache.current || skiltCache.current.key !== key) {
       skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, utsnitt ?? undefined, skiltLuft) };
     }
@@ -223,7 +226,9 @@ export function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
 export type Hinder =
   | { p: [number, number][]; b?: number; pil?: boolean }
   | { ellipse: [number, number, number, number]; b?: number }
-  | { boks: [number, number, number, number] };
+  | { boks: [number, number, number, number] }
+  /** Punkt (radius r) som verken skiltet eller lederen fra skiltet til målet skal krysse. */
+  | { punkt: [number, number]; r: number };
 
 type Seg = { x0: number; y0: number; x1: number; y1: number; halv: number };
 
@@ -236,14 +241,19 @@ function segAvstand(x: number, y: number, s: Seg) {
 }
 
 /** Linjene som korte segmenter med halv strekbredde (tykkere på smal skjerm, slik IsbreFigur gjør dem). */
-function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [number, number, number, number][] } {
+function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [number, number, number, number][]; punkter: [number, number, number][] } {
   const seg: Seg[] = [];
   const bokser: [number, number, number, number][] = [];
+  const punkter: [number, number, number][] = [];
   // IsbreFigur gjør tynne streker minst ca. 1,65 CSS-piksler og pilspisser minst 12 px
   const halvAv = (b = 3) => Math.max(b + 3, 2.4 / skala) / 2;
   for (const h of hinder) {
     if ("boks" in h) {
       bokser.push(h.boks);
+      continue;
+    }
+    if ("punkt" in h) {
+      punkter.push([h.punkt[0], h.punkt[1], h.r]);
       continue;
     }
     const pts: [number, number][] = [];
@@ -266,13 +276,14 @@ function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [numb
       seg.push({ x0: bx, y0: by, x1: bx + ((bx - ax) / l) * lang * 0.6, y1: by + ((by - ay) / l) * lang * 0.6, halv: Math.max(halv, 6.5 / skala) });
     }
   }
-  return { seg, bokser };
+  return { seg, bokser, punkter };
 }
 
 /**
  * Plasserer nummerskiltene (radius r) for smal skjerm: nærmest mulig punktet etiketten peker på, men
  * utenfor alle piler og linjer, utenfor andre skilt og andre punkter, og inne i tegneflaten.
- * Finnes ingen ledig plass, velges plassen med minst overlapp.
+ * Finnes ingen ledig plass, velges plassen med minst overlapp. Med `luftPx` regnes avstanden fra
+ * ytterkanten av skiltet med halo (strek r · 0,22, altså r · 1,11), og den gjelder også mellom skiltene.
  */
 export function plasserSkilt(
   labels: Lab[],
@@ -281,12 +292,12 @@ export function plasserSkilt(
   skala: number,
   /** Utsnittet skiltene skal ligge inne i, [x, y, b, h] i viewBox-enheter. Standard hele tegneflaten. */
   flate: [number, number, number, number] = [0, 0, VB.w, VB.h],
-  /** Minste luft (CSS-piksler) fra skilt til strek og mellom skilt. Uten denne som før: 3 px til strek og 8 enheter mellom skilt. */
+  /** Minste luft (CSS-piksler) fra ytterkanten av skiltet, med halo, til hinder og til andre skilt. */
   luftPx?: number,
 ): ([number, number] | null)[] {
-  const { seg, bokser } = segmenter(hinder, skala);
-  const luft = (luftPx ?? 3) / skala;
-  const skiltAvstand = luftPx === undefined ? 8 : Math.max(8, (2 * luftPx) / skala);
+  const { seg, bokser, punkter } = segmenter(hinder, skala);
+  const luft = luftPx !== undefined ? luftPx / skala + r * 0.11 : 3 / skala;
+  const mellom = luftPx !== undefined ? 2 * r * 1.11 + luftPx / skala : 2 * r + 8;
   const steg = Math.max(8, r / 2.5);
   const kand: [number, number][] = [];
   const [fx, fy, fw, fh] = flate;
@@ -311,8 +322,19 @@ export function plasserSkilt(
         const d = Math.hypot(dx, dy) - r - luft;
         if (d < 0) sum -= d;
       }
+      for (const [px, py, pr] of punkter) {
+        // skiltet selv, og lederen fra skiltet til målet (bare når etiketten peker på noe)
+        const d = Math.hypot(px - x, py - y) - r - pr - luft;
+        if (d < 0) sum -= d;
+        if (l.at) {
+          // kravet kan ikke være strengere enn avstanden fra punktet til selve målet
+          const krav = Math.min(pr + luft, Math.hypot(px - tx, py - ty) - 2);
+          const dl = segAvstand(px, py, { x0: x, y0: y, x1: tx, y1: ty, halv: 0 }) - krav;
+          if (dl < 0) sum -= dl * 2;
+        }
+      }
       for (const q of plassert) {
-        const d = Math.hypot(q[0] - x, q[1] - y) - 2 * r - skiltAvstand;
+        const d = Math.hypot(q[0] - x, q[1] - y) - mellom;
         if (d < 0) sum -= d * 4;
       }
       maal.forEach((t, j) => {

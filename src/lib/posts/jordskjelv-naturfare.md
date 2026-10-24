@@ -115,11 +115,11 @@ En *modell* er en forenklet beskrivelse av virkeligheten som hjelper oss å fors
 
 Seismologer beskriver faren med et *gjentaksintervall*: hvor mange år det i gjennomsnitt går mellom hvert skjelv av en viss størrelse i et område. NORSAR har anslått at Norge og nærområdene får et skjelv med magnitude 6 omtrent hvert hundrede år, og et med magnitude 7 omtrent hvert tusende år (NORSAR, u.å.-b). Det passer med regelen om at det blir omtrent ti ganger færre skjelv for hvert magnitudetrinn.
 
-Et gjentaksintervall på 100 år betyr likevel ikke at skjelvet kommer hvert hundrede år, som et tog etter rutetabellen. Det er et gjennomsnitt. Hvis gjentaksintervallet er R år, er sannsynligheten for et skjelv i et bestemt år ca. 1/R, og sannsynligheten for minst ett skjelv i løpet av T år er P = 1 − (1 − 1/R)^T.
+Et gjentaksintervall på 100 år betyr likevel ikke at skjelvet kommer hvert hundrede år, som et tog etter rutetabellen. Det er et gjennomsnitt. Hvis gjentaksintervallet er R år, er sannsynligheten for et skjelv i et bestemt år ca. 1/R. Hvis vi regner med at skjelvene kommer tilfeldig og uavhengig av hverandre, er sannsynligheten for minst ett skjelv i løpet av T år P = 1 − e^(−T/R), der e ≈ 2,718. Tabellen under er regnet ut med denne formelen (Baker, 2008; USGS, 2019).
 
 | Gjentaksintervall R | 1 år | 50 år | 100 år |
 | --- | --- | --- | --- |
-| 100 år | 1 % | 39,5 % | 63,4 % |
+| 100 år | 1,0 % | 39,3 % | 63,2 % |
 
 Selv med et gjentaksintervall på 100 år er sjansen for minst ett skjelv i løpet av 100 år altså bare ca. 63 prosent, ikke 100. Byggeforskriftene (Eurokode 8) dimensjonerer vanlige bygg for rystelser med ca. 10 % sannsynlighet for å bli overskredet i løpet av 50 år, altså et gjentaksintervall på ca. 475 år. Norge fikk slike krav første gang med standarden NS 3491-12 i desember 2004, og den ble i 2010 erstattet av Eurokode 8 med et norsk nasjonalt tillegg (Standard Norge, 2004; Standard Norge, 2021).
 
