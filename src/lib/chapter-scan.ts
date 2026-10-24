@@ -301,6 +301,21 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "På stedet, mekanisk og kjemisk, før erosjon",
   },
   {
+    match: /smelter og størkner magma/i,
+    label: "Smelting",
+    subtitle: "Delvis smelting, krystaller og differensiering",
+  },
+  {
+    match: /sand til sandstein/i,
+    label: "Diagenese",
+    subtitle: "Kompaksjon, porevæske og sementering",
+  },
+  {
+    match: /hvordan skjer metamorfose/i,
+    label: "Omdanning",
+    subtitle: "Fast fase, metasomatose, regional og kontakt",
+  },
+  {
     match: /^mineraler/i,
     label: "Mineraler",
     subtitle: "Silikater, Mohs, kløv, strekfarge og syretest",

@@ -729,10 +729,28 @@ export const KILDER = {
   ],
   bergarter: [
     {
+      prefix: "Askheim, S. (2025, 9. august). ",
+      italic: "Diagenese",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/diagenese",
+    },
+    {
       prefix: "Berg, B. I. (2026, 7. juni). ",
       italic: "Rana Gruber",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/Rana_Gruber",
+    },
+    {
+      prefix: "Bryhni, I. (2025a, 24. februar). ",
+      italic: "Geotermisk gradient",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/geotermisk_gradient",
+    },
+    {
+      prefix: "Bryhni, I. (2025b, 22. februar). ",
+      italic: "Kontaktmetamorfose",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/kontaktmetamorfose",
     },
     {
       prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
@@ -741,10 +759,22 @@ export const KILDER = {
       href: "https://snl.no/Norges_geologi",
     },
     {
+      prefix: "Bryhni, I., & Fossen, H. (2025, 19. november). ",
+      italic: "Magma",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/magma",
+    },
+    {
       prefix: "Corner, G. D. (u.å.). ",
       italic: "Dypbergarter",
       suffix: ". Geologiskolen, UiT.",
       href: "https://geologiskolen.uit.no/generellGeologiskolen/generell/materiale/magma-dypbergarter.html",
+    },
+    {
+      prefix: "Danielsen, V. (2025, 28. august). ",
+      italic: "Sillimanitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/sillimanitt",
     },
     {
       prefix: "Fossen, H. (2024, 25. november). ",
@@ -763,6 +793,12 @@ export const KILDER = {
       italic: "Pyritt",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/pyritt",
+    },
+    {
+      prefix: "Gunnarsjaa, A., & Eide, C. H. (2025, 21. februar). ",
+      italic: "Sandstein",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/sandstein",
     },
     {
       prefix: "National Aeronautics and Space Administration [NASA]. (2011). ",
@@ -849,13 +885,25 @@ export const KILDER = {
       href: "https://www.ngu.no/om-geologi/sandstein",
     },
     {
-      prefix: "Raade, G. (2025a, 22. februar). ",
+      prefix: "Raade, G. (2024, 25. november). ",
+      italic: "Hornfels",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/hornfels",
+    },
+    {
+      prefix: "Raade, G. (2025a, 12. desember). ",
+      italic: "Marmor",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/marmor",
+    },
+    {
+      prefix: "Raade, G. (2025b, 22. februar). ",
       italic: "Mineraler",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/mineraler",
     },
     {
-      prefix: "Raade, G. (2025b, 2. juli). ",
+      prefix: "Raade, G. (2025c, 2. juli). ",
       italic: "Rombeporfyr",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/rombeporfyr",
@@ -867,16 +915,64 @@ export const KILDER = {
       href: "https://snl.no/gips",
     },
     {
-      prefix: "Raade, G., & Fossen, H. (2025, 24. februar). ",
+      prefix: "Raade, G., & Fossen, H. (2025a, 24. februar). ",
       italic: "Granitt",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/granitt",
+    },
+    {
+      prefix: "Raade, G., & Fossen, H. (2025b, 22. februar). ",
+      italic: "Magmatiske bergarter",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/magmatiske_bergarter",
+    },
+    {
+      prefix: "Raade, G., & Fossen, H. (2025c, 22. februar). ",
+      italic: "Metamorfose – geologi",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/metamorfose_-_geologi",
     },
     {
       prefix: "Raade, G., Selbekk, R. S., & Olerud, K. (2025, 13. august). ",
       italic: "Fluoritt",
       suffix: ". I Store norske leksikon.",
       href: "https://snl.no/fluoritt",
+    },
+    {
+      prefix: "Rüther, D. C. (2025, 28. oktober). ",
+      italic: "Sedimentære bergarter",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/sediment%C3%A6re_bergarter",
+    },
+    {
+      prefix: "Selbekk, R. S. (2025a, 28. august). ",
+      italic: "Kyanitt",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/kyanitt",
+    },
+    {
+      prefix: "Selbekk, R. S. (2025b, 29. august). ",
+      italic: "Porfyr",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/porfyr",
+    },
+    {
+      prefix: "Spjeldnæs, N., & Askheim, S. (2024, 26. november). ",
+      italic: "Oslofeltet",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/Oslofeltet",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2024a, 25. november). ",
+      italic: "Glimmerskifer",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/glimmerskifer",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2024b, 25. november). ",
+      italic: "Indeksmineral",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/indeksmineral",
     },
     {
       prefix: "Store norske leksikon [SNL]. (2025a, 17. august). ",
@@ -937,6 +1033,23 @@ export const KILDER = {
       italic: "Geochimica et Cosmochimica Acta, 60",
       suffix: "(14), 2533–2550.",
       href: "https://doi.org/10.1016/0016-7037(96)00106-8",
+    },
+    {
+      prefix: "Winter, J. D. (2014). ",
+      italic: "Principles of igneous and metamorphic petrology",
+      suffix: " (2. utg., Pearson New International Edition). Pearson Education.",
+    },
+    {
+      prefix: "Øien, B. (2025, 10. november). ",
+      italic: "Litifisering",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/litifisering",
+    },
+    {
+      prefix: "Årtun, T., & Nesse, N. (2025, 22. februar). ",
+      italic: "Krystallisasjon",
+      suffix: ". I Store norske leksikon.",
+      href: "https://snl.no/krystallisasjon",
     },
   ],
   "geologisk-tid": [

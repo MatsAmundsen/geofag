@@ -85,6 +85,7 @@ import {
   SilikatgrupperFigur,
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
+import { RekrystallisasjonFigur } from "@/components/diagrams/rekrystallisasjon-figur";
 import {
   BergartssyklusFigurLat,
   DiageneseFigurLat as DiageneseFigur,
@@ -1182,6 +1183,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   Silikatgrupper: () => <SilikatgrupperFigur />,
   AvkjolingKorn: () => <AvkjolingKornFigur />,
   Metamorfose: () => <MetamorfoseFigur />,
+  Rekrystallisasjon: () => <RekrystallisasjonFigur />,
   KontaktRegional: () => <KontaktRegionalV2Figur />,
   Differensiering: () => <DifferensieringV2Figur />,
   DiagenesePore: () => <DiageneseFigur />,

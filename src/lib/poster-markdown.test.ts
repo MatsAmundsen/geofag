@@ -244,6 +244,15 @@ describe("injectPosterWidgets", () => {
       "SjekkBergarter2",
       "SjekkBergarter3",
       "SjekkBergarter4",
+      "SjekkBergarter5",
+      "SjekkBergarter6",
+      "SjekkBergarter7",
+      "Differensiering",
+      "DiagenesePore",
+      "KontaktRegional",
+      "IonBytte",
+      "Metamorfose",
+      "Rekrystallisasjon",
       "SammendragBergarter",
     ]) {
       assert.equal(bergarter.has(id), true, `bergarter missing ${id}`);
