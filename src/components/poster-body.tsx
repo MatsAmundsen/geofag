@@ -102,15 +102,17 @@ import {
   TermiskVindFigurLat,
   VestOstFigurLat,
   SjobrisFigurLat,
+  OppvellingFigurLat,
+  EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
   AvboyningFigurLat,
-  EkmanSpiralFigurLat,
+  CoriolisEkmanSpiralFigurLat,
   FartOstoverFigurLat,
   GeostrofiskFigurLat,
   HavvirvlerFigurLat,
   KarusellFigurLat,
-  OppvellingFigurLat,
+  CoriolisOppvellingFigurLat,
   SkalaFigurLat,
   SyklonRotasjonFigurLat,
   TilpasningFigurLat,
@@ -165,7 +167,6 @@ import {
   GulfVsNacDiagram,
   GyreDiagram,
   OceanDriversDiagram,
-  UpwellingDiagram,
 } from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
@@ -180,7 +181,7 @@ import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselF
 import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
-import { AmocDiagram, ClimateContrastDiagram, EkmanDiagram } from "@/components/diagrams/ocean";
+import { AmocDiagram, ClimateContrastDiagram } from "@/components/diagrams/ocean";
 import { AmocTippingModel } from "@/components/models/amoc-tipping-model";
 import { KatabaticWindDiagram } from "@/components/diagrams/pressure";
 import { FoehnAdiabaticDiagram, TemperatureInversionDiagram } from "@/components/diagrams/weather";
@@ -676,7 +677,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     </Callout>
   ),
     GyreDiagram: () => <GyreDiagram />,
-    OppvellingDiagram: () => <UpwellingDiagram />,
+    OppvellingDiagram: () => <OppvellingFigurLat />,
     GolfDiagram: () => <GulfVsNacDiagram />,
     TetthetDiagram: () => <DensityDiagram />,
     QuizHavstrommer: () => (
@@ -1079,13 +1080,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ZonalCentrifugal: () => <ZonalVertikalFigurLat />,
   PressureSpin: () => <TrykkRotasjonFigurLat />,
   GeostrophicAdjustment: () => <TilpasningFigurLat />,
-  EkmanSpiral: () => <EkmanSpiralFigurLat />,
+  EkmanSpiral: () => <CoriolisEkmanSpiralFigurLat />,
   RossbyScale: () => <HavvirvlerFigurLat />,
   // Coriolis (Geo N1): egen oppvellingsfigur; widgetlinja kommer i reseed-PR-en
-  Oppvelling: () => <OppvellingFigurLat />,
+  Oppvelling: () => <CoriolisOppvellingFigurLat />,
   CoriolisModel: () => <CoriolisModel />,
   OceanCurrentModel: () => <OceanCurrentModel />,
-  Ekman: () => <EkmanDiagram />,
+  Ekman: () => <EkmanSpiralFigurLat />,
   EkmanUpwellingModel: () => <EkmanUpwellingModel />,
   ClimateContrast: () => <ClimateContrastDiagram />,
   Amoc: () => <AmocDiagram />,

@@ -26,6 +26,7 @@ import {
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
+import { EKMAN_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 import {
@@ -35,7 +36,7 @@ import {
   GEOSTROFISK_TEKST,
   HAVVIRVLER_TEKST,
   KARUSELL_TEKST,
-  OPPVELLING_TEKST,
+  OPPVELLING_TEKST as CORIOLIS_OPPVELLING_TEKST,
   SKALA_TEKST_CORIOLIS,
   SYKLON_TEKST_CORIOLIS,
   TILPASNING_TEKST,
@@ -462,6 +463,51 @@ export const SyklonFigurLat = lat<FigurProps>(
   () => import("./lokale-syklon").then((m) => m.SyklonFigur),
 );
 
+/** Oppvelling langs en vestkyst i fire steg (Havstrømmer, widget OppvellingDiagram). Samme ramme og mål som lokale vinder. */
+export const OppvellingFigurLat = lat<FigurProps>(
+  {
+    ...OPPVELLING_TEKST,
+    ...LOKALE_MAAL,
+    // smal skjerm viser et høyere utsnitt nær kysten (540 × 500), se hav-oppvelling.tsx
+    smal: [540, 500],
+    // målt 24.10 mot ferdig figur (redusert bevegelse) ved 320–1280 px; statusfeltet blir 40 px lavere fra 640 px vindu
+    smTrinn: { over: -40, under: 0 },
+    skala: {
+      smal: {
+        over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
+        under: [[290, 266], [310, 248], [325, 248], [340, 222], [550, 222], [610, 204]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
+  () => import("./hav-oppvelling").then((m) => m.OppvellingFigur),
+);
+
+/**
+ * Ekmanspiralen i fire steg (Havstrømmer, widget Ekman). Kvadratisk tegneflate på smal skjerm (360 × 360),
+ * 960 × 540 fra 760 px. Høydene over og under tegneflaten er målt mot ferdig figur (redusert bevegelse).
+ */
+export const EkmanSpiralFigurLat = lat<FigurProps>(
+  {
+    ...EKMAN_TEKST,
+    smal: [360, 360],
+    bred: [960, 540],
+    over: [0, 0],
+    under: [0, 0],
+    bredFra: 760,
+    // målt 24.10 ved 320–1280 px vindu (uendret mot 19.10); statusfeltet blir 28 px lavere fra 640 px vindu
+    smTrinn: { over: -28, under: 0 },
+    skala: {
+      smal: {
+        over: [[289, 247], [290, 228], [309, 228], [310, 247], [340, 247], [364, 215], [380, 195]],
+        under: [[289, 182], [290, 164], [339, 164], [340, 146]],
+      },
+      bred: { over: [[806, 143]], under: [[806, 28]] },
+    },
+  },
+  () => import("./hav-ekman").then((m) => m.EkmanSpiralFigur),
+);
+
 /** Den norske syklonmodellen i fire steg (Værkart, widget Weather24h). */
 export const SyklonmodellFigurLat = lat<FigurProps>(
   { ...SYKLONMODELL_TEKST, smal: [960, 540], bred: [960, 540], over: [180, 150], under: [81, 81],
@@ -483,8 +529,8 @@ export const SyklonRotasjonFigurLat = coriolisLat(SYKLON_TEKST_CORIOLIS, { steg:
 export const TrykkRotasjonFigurLat = coriolisLat(TRYKK_ROTASJON_TEKST, { steg: { over: [[270, 119], [410, 119], [411, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[270, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "TrykkRotasjonFigur");
 export const GeostrofiskFigurLat = coriolisLat(GEOSTROFISK_TEKST, { steg: { over: [[270, 119], [319, 119], [320, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[270, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "GeostrofiskFigur");
 export const TilpasningFigurLat = coriolisLat(TILPASNING_TEKST, { steg: { over: [[270, 119], [376, 119], [377, 87], [806, 87]], liste: [[270, 106], [759, 106], [760, 0], [806, 0]], under: [[270, 113.75], [278, 113.75], [279, 95.88], [379, 95.88], [380, 69.88], [759, 69.88], [760, 57.88], [806, 57.88]] } }, "TilpasningFigur");
-export const EkmanSpiralFigurLat = coriolisLat(EKMANSPIRAL_TEKST, { steg: { over: [[270, 119], [388, 119], [389, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[270, 73.62], [292, 73.62], [293, 55.75], [561, 55.75], [562, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "EkmanSpiralFigur");
-export const OppvellingFigurLat = coriolisLat(OPPVELLING_TEKST, { steg: { over: [[270, 119], [468, 119], [469, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[270, 55.75], [457, 55.75], [458, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "OppvellingFigur");
+export const CoriolisEkmanSpiralFigurLat = coriolisLat(EKMANSPIRAL_TEKST, { steg: { over: [[270, 119], [388, 119], [389, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[270, 73.62], [292, 73.62], [293, 55.75], [561, 55.75], [562, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "EkmanSpiralFigur");
+export const CoriolisOppvellingFigurLat = coriolisLat(CORIOLIS_OPPVELLING_TEKST, { steg: { over: [[270, 119], [468, 119], [469, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[270, 55.75], [457, 55.75], [458, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "OppvellingFigur");
 export const SkalaFigurLat = coriolisLat(SKALA_TEKST_CORIOLIS, { smal: [960, 480], bred: [960, 480], steg: { over: [[270, 119], [279, 119], [280, 87], [806, 87]], liste: [[270, 106], [759, 106], [760, 0], [806, 0]], under: [[270, 12], [759, 12], [760, 0], [806, 0]] } }, "SkalaFigur");
 export const HavvirvlerFigurLat = coriolisLat(HAVVIRVLER_TEKST, { steg: { over: [[270, 151], [321, 151], [322, 119], [563, 119], [564, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[270, 55.75], [323, 55.75], [324, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "HavvirvlerFigur");
 // MAAL-SLUTT

@@ -1,875 +1,511 @@
-import { useState } from "react";
-import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
+/**
+ * EkmanUpwellingModel: tre faner som følger havstrommer.md.
+ * 1 Ekmanspiralen sett ovenfra (l. 62–64): overflaten 45° (Ekmans enkle teori), hvert lag litt saktere og
+ *   litt mer til høyre (venstre i sør), ekmantransporten 90° til høyre (venstre i sør). Ingen gradtall på lagene.
+ * 2 Oppvelling og nedvelling i et snitt sett fra sør (l. 98, 110). Åpnes først. Vind langs kysten vises med
+ *   ⊙ (blåser mot deg) eller ⊗ (blåser bort fra deg).
+ * 3 Havvirvel og geostrofisk strøm i et vest–øst-snitt sett fra sør (l. 72, 76, 82–90).
+ * Ingen formler og ingen tall utover teksten. Fane 1 og 3 bruker felles avspilling (useTidslinje), og bare
+ * fanen som vises, er montert, så det går aldri mer enn én tidslinje her.
+ */
+import { useId, useState, type ReactNode } from "react";
+import { Faner } from "@/components/diagrams/isbre-figur";
+import { TidslinjeKontroller } from "@/components/diagrams/prosess-figur";
+import { tidslinjeVerdi, useTidslinje } from "@/components/diagrams/prosess-kit";
+import { clamp, lerp, useBoxWidth, useInView, useNarrow } from "@/components/diagrams/isbre-kit";
+import { PlayPauseToggle } from "@/components/diagrams/svg-kit";
+import { EKMAN_BILDER, EKMAN_FASER, EKMAN_VINKLER, ekmanStatus } from "@/components/diagrams/hav-ekman-felles";
+import { ModelFrame } from "./model-chrome";
 
-export function EkmanUpwellingModel() {
-  const [tab, setTab] = useState<"ekman_spiral" | "upwelling" | "geostrophic">("ekman_spiral");
+const C = {
+  hav: "#14405a",
+  havDyp: "#0a2333",
+  luft: "#1a2c3a",
+  land: "#5f6e45",
+  landKant: "#384329",
+  tekst: "#e8eef2",
+  dempet: "#a9b8c2",
+  vind: "#e8eef2",
+  lag: "#6fd0c4",
+  netto: "#f2c94c",
+  kald: "#8ec5e8",
+  trykk: "#8ec5e8",
+  coriolis: "#d6dde2",
+  golf: "#f0a35e",
+  kanari: "#8ec5e8",
+  halo: "#0f171c",
+};
 
-  // Tab 1 state: Ekman-spiral
-  const [windSpeed, setWindSpeed] = useState<number>(12); // m/s
-  const [latitude, setLatitude] = useState<number>(45); // degrees
-  const [hemisphere, setHemisphere] = useState<"north" | "south">("north");
+const KILDE = "text-muted-foreground";
 
-  // Tab 2 state: Coastal upwelling
-  const [coastType, setCoastType] = useState<"west_coast" | "east_coast">("west_coast");
-  const [windDirection, setWindDirection] = useState<"equatorward" | "poleward">("equatorward");
+/**
+ * Modellpanelet er smalere enn figurene (rundt 620–800 px på bred skjerm), så det bytter oppsett ved 640 px
+ * panelbredde. Da blir minste skrift i bred tegning (16 i viewBox 900) minst 11,4 px.
+ */
+const MODELL_SMAL_PX = 640;
+function useFigurSmal(): [ReturnType<typeof useBoxWidth<HTMLDivElement>>[0], boolean] {
+  const [ref, width] = useBoxWidth<HTMLDivElement>();
+  const smallWindow = useNarrow();
+  return [ref, width > 0 ? width < MODELL_SMAL_PX : smallWindow];
+}
 
-  // Calculations for Ekman-spiral
-  const omega = 7.2921e-5; // rad/s
-  const phiRad = (Math.max(10, Math.abs(latitude)) * Math.PI) / 180;
-  const f = 2 * omega * Math.sin(phiRad) * (hemisphere === "north" ? 1 : -1);
-  const absF = Math.abs(f);
+/* ---------- små byggeklosser ---------- */
 
-  // Wind stress tau = rho_air * Cd * U^2
-  const rhoAir = 1.225; // kg/m^3
-  const cd = 0.0013;
-  const tau = rhoAir * cd * Math.pow(windSpeed, 2); // N/m^2
+function Piler({ id }: { id: string }) {
+  const farger: [string, string][] = [
+    ["vind", C.vind],
+    ["lag", C.lag],
+    ["netto", C.netto],
+    ["kald", C.kald],
+    ["coriolis", C.coriolis],
+  ];
+  return (
+    <defs>
+      {farger.map(([n, f]) => (
+        <marker key={n} id={`${id}-${n}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" fill={f} />
+        </marker>
+      ))}
+    </defs>
+  );
+}
 
-  // Total Ekman transport magnitude Me = tau / |f| (kg/(m*s))
-  const rhoWater = 1025; // kg/m^3
-  const meMass = absF > 0 ? tau / absF : 0; // kg/(m*s)
-  const qeVolume = meMass / rhoWater; // m^2/s
+function Pil({ x1, y1, x2, y2, farge, marker, b = 4, opacity = 1 }: { x1: number; y1: number; x2: number; y2: number; farge: string; marker: string; b?: number; opacity?: number }) {
+  if (opacity <= 0.01 || Math.hypot(x2 - x1, y2 - y1) < 2) return null;
+  return (
+    <g opacity={opacity < 0.99 ? opacity : undefined}>
+      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={C.halo} strokeOpacity="0.5" strokeWidth={b + 3} strokeLinecap="round" />
+      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={farge} strokeWidth={b} strokeLinecap="round" markerEnd={`url(#${marker})`} />
+    </g>
+  );
+}
 
-  // Ekman depth De ~ pi * sqrt(2 * Az / |f|): depth where the current has reversed (capped at 200 m)
-  const az = 0.015; // m^2/s eddy viscosity
-  const de = Math.min(200, Math.max(25, Math.PI * Math.sqrt((2 * az) / absF)));
+/** ⊙: kommer mot deg. ⊗: går bort fra deg. */
+function Retning({ x, y, mot, farge, r = 18 }: { x: number; y: number; mot: boolean; farge: string; r?: number }) {
+  const k = r * 0.6;
+  return (
+    <g aria-hidden="true">
+      <circle cx={x} cy={y} r={r} fill={C.halo} fillOpacity="0.45" stroke={farge} strokeWidth="3" />
+      {mot ? <circle cx={x} cy={y} r={r * 0.28} fill={farge} /> : <path d={`M${x - k} ${y - k}L${x + k} ${y + k}M${x + k} ${y - k}L${x - k} ${y + k}`} stroke={farge} strokeWidth="3" />}
+    </g>
+  );
+}
 
-  // Surface speed v0 = tau / (rhoWater * sqrt(Az * |f|))
-  const v0 = Math.min(1.2, tau / (rhoWater * Math.sqrt(az * absF)));
+function T({ x, y, children, farge = C.tekst, size = 16, anchor = "start", vekt = 600, opacity = 1 }: { x: number; y: number; children: ReactNode; farge?: string; size?: number; anchor?: "start" | "middle" | "end"; vekt?: number; opacity?: number }) {
+  if (opacity <= 0.01) return null;
+  return (
+    <text x={x} y={y} fill={farge} fontSize={size} fontWeight={vekt} textAnchor={anchor} paintOrder="stroke" stroke={C.halo} strokeWidth="4" strokeLinejoin="round" opacity={opacity < 0.99 ? opacity : undefined}>
+      {children}
+    </text>
+  );
+}
 
-  // Spiral layers (0, 10, 20, 30, 40, 50, 60m)
-  const depths = [0, 10, 20, 30, 45, 60];
-  const spiralVectors = depths.map((z) => {
-    const decay = Math.exp((-Math.PI * z) / de);
-    const angle = ((Math.PI * z) / de) * (hemisphere === "north" ? 1 : -1); // in radians
-    const surfaceAngle = (45 * Math.PI) / 180 * (hemisphere === "north" ? 1 : -1);
-    const totalAngle = surfaceAngle + angle;
-    const speed = v0 * decay;
-    return {
-      z,
-      decay,
-      angleDeg: Math.round((totalAngle * 180) / Math.PI),
-      speed: Number(speed.toFixed(3)),
-      vx: speed * Math.cos(totalAngle),
-      vy: speed * Math.sin(totalAngle),
-    };
+function Skilt({ x, y, n, opacity = 1 }: { x: number; y: number; n: number; opacity?: number }) {
+  if (opacity <= 0.01) return null;
+  return (
+    <g opacity={opacity < 0.99 ? opacity : undefined} aria-hidden="true" data-badge={n}>
+      {/* samme minstemål som skiltene i lokale-kit: ca. 23 px i diameter og sifre på minst 12 px ved 320 */}
+      <circle cx={x} cy={y} r="17" fill="#1e3a4a" stroke={C.tekst} strokeWidth="1.5" />
+      <text x={x} y={y + 6} fill={C.tekst} fontSize="17" fontWeight="700" textAnchor="middle">
+        {n}
+      </text>
+    </g>
+  );
+}
+
+/** Nummerert forklaring under tegningen på smal skjerm (HTML, lesbar ved 320 px). */
+function Forklaring({ punkter }: { punkter: { tekst: string; farge: string; vis?: boolean }[] }) {
+  return (
+    <ol aria-label="Forklaring til figuren" className="mt-3 space-y-1.5 text-sm">
+      {punkter.map((p, i) => (
+        <li key={i} className="flex items-start gap-2" style={{ visibility: p.vis === false ? "hidden" : undefined }}>
+          <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full border border-foreground/60 bg-[#1e3a4a] text-xs font-bold text-foreground">{i + 1}</span>
+          <span style={{ color: p.farge }}>{p.tekst}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function Valg<T extends string>({ navn, verdi, valg, onVelg }: { navn: string; verdi: T; valg: [T, string][]; onVelg: (v: T) => void }) {
+  return (
+    <div role="group" aria-label={navn} className="flex flex-wrap items-center gap-1.5">
+      <span className="mr-1 text-xs font-medium text-muted-foreground">{navn}</span>
+      {valg.map(([v, tekst]) => (
+        <button
+          key={v}
+          type="button"
+          aria-pressed={verdi === v}
+          onClick={() => onVelg(v)}
+          className={`rounded-full border px-2.5 py-1 text-xs font-semibold motion-reduce:transition-none ${
+            verdi === v ? "border-primary bg-primary text-primary-foreground" : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
+          }`}
+        >
+          {tekst}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Status({ children }: { children: ReactNode }) {
+  return (
+    <p aria-live="polite" className="min-h-[7.5rem] text-sm leading-relaxed text-foreground min-[420px]:min-h-[6.25rem] sm:min-h-[4.5rem] lg:min-h-[3rem]">
+      {children}
+    </p>
+  );
+}
+
+/* ---------- fane 1: ekmanspiralen ---------- */
+
+
+function SpiralFane() {
+  const uid = useId().replace(/:/g, "");
+  const [boksRef, smal] = useFigurSmal();
+  const [svgRef, synlig] = useInView<SVGSVGElement>();
+  const tl = useTidslinje({ antall: EKMAN_FASER.length, synlig, element: svgRef });
+  const [nord, setNord] = useState(true);
+  const s = tidslinjeVerdi(EKMAN_BILDER, tl.p);
+  const side = nord ? "høyre" : "venstre";
+  const sgn = nord ? 1 : -1;
+
+  const W = smal ? 360 : 900;
+  const H = smal ? 360 : 440;
+  const ox = smal ? 180 : 420;
+  const oy = smal ? 210 : 260;
+  const L0 = smal ? 90 : 146;
+  const tips = EKMAN_VINKLER.map((a, k) => {
+    const r = (sgn * a * Math.PI) / 180;
+    const l = L0 * 0.8 ** k;
+    return [ox + l * Math.sin(r), oy - l * Math.cos(r)] as [number, number];
   });
+  const lagSynlig = (k: number) => (k === 0 ? s.flate : clamp(s.lag * (EKMAN_VINKLER.length - 1) - (k - 1)));
+  const spiral = tips
+    .filter((_, k) => lagSynlig(k) > 0.5)
+    .map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`)
+    .join(" L");
+  const vindTopp = oy - L0 * 1.15 * s.vind;
+  const nettoX = ox + sgn * L0 * 0.95 * s.netto;
 
-  // Upwelling calculation
-  // For North Hemisphere:
-  // West coast + wind southward (equatorward) -> Ekman transport to the right (west, offshore) -> UPWELLING!
-  // West coast + wind northward (poleward) -> Ekman transport to the right (east, onshore) -> DOWNWELLING!
-  // East coast + wind southward -> Ekman transport to the right (west, onshore) -> DOWNWELLING!
-  // East coast + wind northward -> Ekman transport to the right (east, offshore) -> UPWELLING!
-  const isUpwelling =
-    (coastType === "west_coast" && windDirection === "equatorward") ||
-    (coastType === "east_coast" && windDirection === "poleward");
+  const status = ekmanStatus(side)[tl.fase - 1];
+
+  const forklaring = [
+    { tekst: "Vinden", farge: C.vind, vis: s.vind > 0.3 },
+    { tekst: "Overflaten: 45° (Ekmans enkle teori)", farge: C.lag, vis: s.flate > 0.3 },
+    { tekst: `Hvert lag lenger ned: litt saktere og litt mer til ${side}`, farge: C.lag, vis: s.lag > 0.3 },
+    { tekst: `Ekmantransporten: 90° til ${side} for vinden`, farge: C.netto, vis: s.netto > 0.3 },
+  ];
+  const [fx, fy] = tips[0];
+  const [lx, ly] = tips[3];
 
   return (
+    <div ref={boksRef} className="space-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <Valg navn="Halvkule" verdi={nord ? "nord" : "sor"} valg={[["nord", "Nordlig"], ["sor", "Sørlig"]]} onVelg={(v) => tl.valg(() => setNord(v === "nord"))} />
+        <PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name="Ekmanspiralen" />
+      </div>
+      <TidslinjeKontroller tl={tl} faser={EKMAN_FASER} />
+      <Status>{status}</Status>
+      <p className="text-xs text-muted-foreground">Sett ovenfra, nord opp. {nord ? "Nordlig" : "Sørlig"} halvkule.</p>
+      <svg
+        ref={svgRef}
+        viewBox={`0 0 ${W} ${H}`}
+        className="w-full rounded-[10px]"
+        role="img"
+        aria-label={`Ekmanspiralen sett ovenfra på den ${nord ? "nordlige" : "sørlige"} halvkulen. Vinden blåser mot nord. Overflaten går 45 grader til ${side}, lagene under blir kortere og dreier mer til ${side}, og ekmantransporten går 90 grader til ${side} for vinden.`}
+        data-figur="ekman-spiral"
+        data-step={tl.fase}
+      >
+        <Piler id={uid} />
+        <rect width={W} height={H} fill={C.hav} rx="10" />
+        <circle cx={ox} cy={oy} r={L0 * 1.05} fill="none" stroke="#2e5a72" strokeDasharray="4 6" />
+        <Pil x1={ox} y1={oy} x2={ox} y2={vindTopp} farge={C.vind} marker={`${uid}-vind`} b={5} opacity={s.vind > 0.02 ? 1 : 0} />
+        {tips.map(([x, y], k) => {
+          const v = lagSynlig(k);
+          return <Pil key={k} x1={ox} y1={oy} x2={lerp(ox, x, v)} y2={lerp(oy, y, v)} farge={C.lag} marker={`${uid}-lag`} b={Math.max(2, 4.5 - k * 0.5)} opacity={v > 0.02 ? (k === 0 ? 1 : 0.9) : 0} />;
+        })}
+        {spiral.includes("L") ? <path d={`M${spiral}`} fill="none" stroke={C.lag} strokeWidth="2" strokeDasharray="5 5" opacity="0.8" /> : null}
+        <Pil x1={ox} y1={oy} x2={nettoX} y2={oy} farge={C.netto} marker={`${uid}-netto`} b={6} opacity={s.netto > 0.02 ? 1 : 0} />
+        {smal ? (
+          <>
+            <Skilt x={ox - sgn * 30} y={oy - L0 * 0.6} n={1} opacity={s.vind} />
+            <Skilt x={fx + sgn * 26} y={fy - 18} n={2} opacity={s.flate} />
+            <Skilt x={lx + sgn * 26} y={ly + 22} n={3} opacity={s.lag} />
+            <Skilt x={ox + sgn * (L0 * 0.95 + 36)} y={oy} n={4} opacity={s.netto} />
+          </>
+        ) : (
+          <>
+            <T x={ox + 12} y={oy - L0 * 1.15 + 14} farge={C.vind} opacity={s.vind}>vind</T>
+            <T x={fx + sgn * 14} y={fy - 12} farge={C.lag} anchor={nord ? "start" : "end"} opacity={s.flate}>overflaten: 45° (Ekmans enkle teori)</T>
+            <T x={ox - sgn * 30} y={oy + L0 * 0.75} farge={C.lag} anchor={nord ? "end" : "start"} opacity={s.lag}>hvert lag lenger ned:</T>
+            <T x={ox - sgn * 30} y={oy + L0 * 0.75 + 25} farge={C.lag} anchor={nord ? "end" : "start"} vekt={400} opacity={s.lag}>{`litt saktere og litt mer til ${side}`}</T>
+            <T x={ox + sgn * (L0 * 0.95 + 16)} y={oy + 6} farge={C.netto} anchor={nord ? "start" : "end"} opacity={s.netto}>ekmantransporten:</T>
+            <T x={ox + sgn * (L0 * 0.95 + 16)} y={oy + 31} farge={C.netto} anchor={nord ? "start" : "end"} vekt={400} opacity={s.netto}>{`90° til ${side} for vinden`}</T>
+          </>
+        )}
+      </svg>
+      {smal ? <Forklaring punkter={forklaring} /> : null}
+      <p className="text-xs text-muted-foreground">
+        Skjematisk.
+      </p>
+    </div>
+  );
+}
+
+/* ---------- fane 2: oppvelling og nedvelling ---------- */
+
+function KystFane() {
+  const uid = useId().replace(/:/g, "");
+  const [boksRef, smal] = useFigurSmal();
+  const [vindFra, setVindFra] = useState<"nord" | "sor">("nord");
+  // Sett fra sør: vind fra nord blåser mot sør, altså mot deg (⊙). 90° til høyre for den er vest.
+  const motDeg = vindFra === "nord";
+  // Bare vestkyst med land i øst, slik skissen Geo godkjente. Ekmantransporten går mot vest (ut fra kysten)
+  // når vinden kommer fra nord: oppvelling. Vind fra sør gir transport mot kysten: nedvelling.
+  const opp = vindFra === "nord";
+
+  const W = smal ? 360 : 900;
+  const H = smal ? 330 : 400;
+  const luft = smal ? 70 : 90;
+  const landB = smal ? 80 : 170;
+  const landX0 = W - landB; // land-blokkens venstre kant
+  const kystX = W - landB; // kystlinja i overflaten
+  const ut = -1; // retning ut fra kysten (mot vest)
+  const havY = luft;
+  const bunn = H;
+  // grensen mot dypere vann: løftet mot kysten ved oppvelling, senket ved nedvelling
+  const fjern = 0;
+  const gFjern = havY + (H - havY) * 0.48;
+  const gKyst = opp ? havY + 34 : bunn - 22;
+  const gMidt = (fjern + kystX) / 2;
+  const grense = `M${fjern} ${gFjern} C ${gMidt} ${gFjern + (opp ? 4 : -4)}, ${kystX + ut * (W * 0.12)} ${lerp(gFjern, gKyst, 0.4)}, ${kystX + ut * 6} ${gKyst}`;
+  const skraning = `M${kystX} ${havY} L${W} ${havY} L${W} ${bunn} L${kystX - (smal ? 40 : 70)} ${bunn} C ${kystX - 30} ${bunn - 60}, ${kystX - 8} ${havY + 80}, ${kystX} ${havY} Z`;
+  const pilY = havY + (smal ? 22 : 28);
+  const pilNaer = kystX + ut * 26;
+  const pilFjern = kystX + ut * (smal ? 230 : 560);
+  const [px1, px2] = opp ? [pilNaer, pilFjern] : [pilFjern, pilNaer];
+  const vindX = kystX + ut * (smal ? 46 : 70);
+  const vertX = [kystX + ut * (smal ? 54 : 100), kystX + ut * (smal ? 82 : 146)];
+  const vNed = bunn - 16;
+  const vOpp = havY + 46;
+
+  const vindTekst = motDeg ? "blåser mot deg" : "blåser bort fra deg";
+  const vindEtikett = `vind fra ${vindFra === "nord" ? "nord" : "sør"}, ${vindTekst}`;
+  const ekmanTekst = opp ? "ekmantransport ut fra kysten" : "ekmantransport mot kysten";
+  const vertTekst = opp ? "kaldere vann nedenfra" : "vannet hoper seg opp og presses nedover";
+  const tAnchor = "end";
+
+  return (
+    <div ref={boksRef} className="space-y-3">
+      <Valg navn="Vind" verdi={vindFra} valg={[["nord", "Vind fra nord"], ["sor", "Vind fra sør"]]} onVelg={setVindFra} />
+      <div aria-live="polite" className="min-h-[7rem] rounded-xl border border-border bg-background p-3 text-sm sm:min-h-[5rem]">
+        <p className="font-semibold text-foreground">{opp ? "Oppvelling" : "Nedvelling"}</p>
+        <p className="mt-1 text-foreground">
+          {opp ? (
+            <>
+              Ekmantransporten fører overflatevannet ut fra kysten. Vannet som forsvinner, erstattes av kaldere vann nedenfra. <span className={KILDE}>(Barthel, 2021b)</span>
+            </>
+          ) : (
+            <>
+              Ekmantransporten fører vannet mot kysten. Det hoper seg opp og presses nedover. Det kan også gi stormflo. <span className={KILDE}>(Barthel, 2021a)</span>
+            </>
+          )}
+        </p>
+      </div>
+      <p className="text-xs text-muted-foreground">Vestkyst med land i øst. Snitt sett fra sør: vest til venstre, øst til høyre. Nordlig halvkule.</p>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className="w-full rounded-[10px]"
+        role="img"
+        aria-label={`Snitt sett fra sør av en vestkyst med land i øst. Vind fra ${vindFra === "nord" ? "nord" : "sør"} langs kysten ${vindTekst}. Ekmantransporten går ${opp ? "ut fra kysten, og kaldere vann kommer opp nedenfra" : "mot kysten, og vannet presses nedover"}.`}
+        data-figur="ekman-kyst"
+        data-opp={opp ? "1" : "0"}
+      >
+        <Piler id={uid} />
+        <rect width={W} height={havY} fill={C.luft} />
+        <rect y={havY} width={W} height={H - havY} fill={C.hav} />
+        <path d={`${grense} L${kystX + ut * 6} ${bunn} L${fjern} ${bunn} Z`} fill={C.havDyp} opacity="0.85" />
+        <path d={grense} fill="none" stroke={C.kald} strokeWidth="2.2" strokeDasharray="9 6" opacity="0.8" />
+        <path d={skraning} fill={C.land} stroke={C.landKant} strokeWidth="1.5" />
+        <rect x={landX0} y={havY - (smal ? 24 : 34)} width={landB} height={smal ? 24 : 34} fill={C.land} />
+        <Retning x={vindX} y={havY / 2 + (smal ? 6 : 4)} mot={motDeg} farge={C.vind} r={smal ? 15 : 18} />
+        <Pil x1={px1} y1={pilY} x2={px2} y2={pilY} farge={C.lag} marker={`${uid}-lag`} b={5} />
+        {vertX.map((x, i) =>
+          opp ? (
+            <Pil key={i} x1={x} y1={vNed} x2={x + ut * -6} y2={vOpp} farge={C.kald} marker={`${uid}-kald`} b={3.5} />
+          ) : (
+            <Pil key={i} x1={x + ut * -6} y1={vOpp} x2={x} y2={vNed} farge={C.kald} marker={`${uid}-kald`} b={3.5} />
+          ),
+        )}
+        {smal ? (
+          <>
+            <Skilt x={vindX + ut * 46} y={havY / 2 + 6} n={1} />
+            <Skilt x={(px1 + px2) / 2} y={pilY + 30} n={2} />
+            <Skilt x={vertX[1] + ut * 44} y={(vNed + vOpp) / 2 + 30} n={3} />
+          </>
+        ) : (
+          <>
+            <T x={16} y={26} farge={C.dempet} size={16}>Vest</T>
+            <T x={W - 16} y={26} anchor="end" farge={C.dempet} size={16}>Øst</T>
+            <T x={landX0 + landB / 2} y={havY + 120} anchor="middle" farge={C.tekst}>land</T>
+            <T x={vindX + ut * 30} y={havY / 2 + 9} anchor={tAnchor} farge={C.vind}>{vindEtikett}</T>
+            <T x={kystX + ut * 300} y={pilY + 32} anchor={tAnchor} farge={C.lag}>{ekmanTekst}</T>
+            <T x={vertX[1] + ut * 26} y={opp ? bunn - 40 : havY + 150} anchor={tAnchor} farge={C.kald}>{vertTekst}</T>
+          </>
+        )}
+      </svg>
+      {smal ? (
+        <Forklaring
+          punkter={[
+            { tekst: vindEtikett.replace(/^./, (c) => c.toUpperCase()), farge: C.vind },
+            { tekst: ekmanTekst.replace("ekmantransport", "Ekmantransport"), farge: C.lag },
+            { tekst: vertTekst.replace(/^./, (c) => c.toUpperCase()), farge: C.kald },
+          ]}
+        />
+      ) : null}
+      <p className="text-xs text-muted-foreground">⊙ blåser mot deg, ⊗ blåser bort fra deg. Skjematisk.</p>
+      <div className="rounded-xl border border-primary/30 bg-primary/10 p-3 text-sm text-foreground">
+        <span className="font-semibold">Norge: sterk nordavind langs vestkysten gir oppvelling.</span> Da kan nytt vann strømme inn i fjordene og fornye det oksygenfattige dypvannet der.{" "}
+        <span className={KILDE}>(Barthel, 2021b)</span>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- fane 3: havvirvel og geostrofisk strøm ---------- */
+
+const VIRVEL_FASER = ["Havflaten hever seg", "Trykkforskjell", "Corioliseffekten", "Langs hellingen"];
+const VIRVEL_BILDER = [
+  { haug: 0.15, trykk: 0, cor: 0, strom: 0 },
+  { haug: 1, trykk: 0, cor: 0, strom: 0 },
+  { haug: 1, trykk: 1, cor: 0, strom: 0 },
+  { haug: 1, trykk: 1, cor: 1, strom: 0 },
+  { haug: 1, trykk: 1, cor: 1, strom: 1 },
+];
+
+function VirvelFane() {
+  const uid = useId().replace(/:/g, "");
+  const [boksRef, smal] = useFigurSmal();
+  const [svgRef, synlig] = useInView<SVGSVGElement>();
+  const tl = useTidslinje({ antall: VIRVEL_FASER.length, synlig, element: svgRef });
+  const s = tidslinjeVerdi(VIRVEL_BILDER, tl.p);
+
+  const W = smal ? 360 : 900;
+  const H = smal ? 320 : 400;
+  const base = smal ? 120 : 150; // havflaten uten haug
+  const topp = smal ? 62 : 70; // toppen av haugen
+  const toppX = W * 0.3; // haugen ligger mot vest: brattere på vestsiden
+  const hy = (t: number) => lerp(base, topp, t * s.haug);
+  const flate = `M0 ${base} C ${W * 0.08} ${base}, ${W * 0.15} ${hy(1)}, ${toppX} ${hy(1)} C ${W * 0.5} ${hy(1)}, ${W * 0.75} ${hy(0.55)}, ${W} ${base}`;
+  const gx = W * (smal ? 0.2 : 0.13);
+  const kx = W * (smal ? 0.8 : 0.82);
+  const yy = smal ? 244 : 250;
+  const pl = smal ? 38 : 60; // pillengde for kreftene
+  const strY = smal ? 158 : yy - 52;
+
+  const status = [
+    <>Når ekmantransporten flytter vann sammen, hever havoverflaten seg litt. <span className={KILDE}>(Barthel, 2025)</span></>,
+    <>Da oppstår en trykkforskjell som presser vannet ut fra høyden. <span className={KILDE}>(Barthel, 2025)</span></>,
+    <>Corioliseffekten bøyer det samme vannet mot høyre. <span className={KILDE}>(Barthel, 2025)</span></>,
+    <>
+      Etter en stund er kreftene i balanse, og vannet strømmer langs hellingen i stedet for nedover den: med klokken rundt havvirvelen. Strømmen på vestsiden er smal og rask, og
+      strømmen på østsiden er bred og langsom. <span className={KILDE}>(Barthel, 2025; NOAA, u.å.-b)</span>
+    </>,
+  ][tl.fase - 1];
+
+  const forklaring = [
+    { tekst: "Høyere havflate (høyden er overdrevet)", farge: C.tekst, vis: s.haug > 0.5 },
+    { tekst: "Blå pil: trykkforskjellen presser vannet ut fra høyden", farge: C.trykk, vis: s.trykk > 0.3 },
+    { tekst: "Grå pil: corioliseffekten bøyer det mot høyre", farge: C.coriolis, vis: s.cor > 0.3 },
+    { tekst: "Golfstrømmen: smal og rask, nordover, går bort fra deg (⊗)", farge: C.golf, vis: s.strom > 0.3 },
+    { tekst: "Kanaristrømmen: bred og langsom, sørover, kommer mot deg (⊙)", farge: C.kanari, vis: s.strom > 0.3 },
+  ];
+
+  return (
+    <div ref={boksRef} className="space-y-3">
+      <div className="flex justify-end">
+        <PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name="Havvirvel og geostrofisk strøm" />
+      </div>
+      <TidslinjeKontroller tl={tl} faser={VIRVEL_FASER} />
+      <Status>{status}</Status>
+      <p className="text-xs text-muted-foreground">Snitt vest–øst sett fra sør. Nordlig halvkule.</p>
+      <svg
+        ref={svgRef}
+        viewBox={`0 0 ${W} ${H}`}
+        className="w-full rounded-[10px]"
+        role="img"
+        aria-label="Snitt vest–øst gjennom en havvirvel på den nordlige halvkulen, sett fra sør. Havflaten er høyest i midten og brattest mot vest. Trykkforskjellen presser vannet ut fra høyden, og corioliseffekten bøyer det mot høyre. I balanse går Golfstrømmen nordover på vestsiden, bort fra deg, og Kanaristrømmen sørover på østsiden, mot deg: med klokken rundt havvirvelen."
+        data-figur="ekman-virvel"
+        data-step={tl.fase}
+      >
+        <Piler id={uid} />
+        <rect width={W} height={H} fill={C.luft} />
+        <path d={`${flate} L${W} ${H} L0 ${H} Z`} fill={C.hav} />
+        <path d={flate} fill="none" stroke="#bfe3f5" strokeWidth="2" opacity="0.7" />
+        {/* ekmantransporten samler vann inn mot midten */}
+        <Pil x1={8} y1={base + 18} x2={W * 0.2} y2={base + 6} farge={C.lag} marker={`${uid}-lag`} b={3} opacity={1 - s.trykk * 0.6} />
+        <Pil x1={W - 8} y1={base + 18} x2={W * 0.6} y2={hy(0.55) + 22} farge={C.lag} marker={`${uid}-lag`} b={3} opacity={1 - s.trykk * 0.6} />
+        <T x={toppX} y={hy(1) - 14} anchor="middle" size={smal ? 20 : 24} vekt={700} opacity={s.haug}>H</T>
+        {/* kreftene ved hver randstrøm: trykk ut fra høyden, corioliseffekten inn mot den */}
+        <Pil x1={gx - 6} y1={strY} x2={gx - 6 - pl * s.trykk} y2={strY} farge={C.trykk} marker={`${uid}-kald`} b={4} opacity={s.trykk > 0.02 ? 1 : 0} />
+        <Pil x1={gx + 6} y1={strY} x2={gx + 6 + pl * s.cor} y2={strY} farge={C.coriolis} marker={`${uid}-coriolis`} b={4} opacity={s.cor > 0.02 ? 1 : 0} />
+        <Pil x1={kx + 6} y1={strY} x2={kx + 6 + pl * s.trykk} y2={strY} farge={C.trykk} marker={`${uid}-kald`} b={4} opacity={s.trykk > 0.02 ? 1 : 0} />
+        <Pil x1={kx - 6} y1={strY} x2={kx - 6 - pl * s.cor} y2={strY} farge={C.coriolis} marker={`${uid}-coriolis`} b={4} opacity={s.cor > 0.02 ? 1 : 0} />
+        {s.strom > 0.02 ? (
+          <g opacity={s.strom}>
+            <Retning x={gx} y={yy} mot={false} farge={C.golf} r={smal ? 15 : 20} />
+            <Retning x={kx} y={yy} mot farge={C.kanari} r={smal ? 15 : 20} />
+          </g>
+        ) : null}
+        {smal ? (
+          <>
+            <Skilt x={toppX + 34} y={hy(1) - 28} n={1} opacity={s.haug} />
+            <Skilt x={gx - 25} y={strY + 34} n={2} opacity={s.trykk} />
+            <Skilt x={gx + 25} y={strY + 34} n={3} opacity={s.cor} />
+            <Skilt x={gx} y={yy + 46} n={4} opacity={s.strom} />
+            <Skilt x={kx} y={yy + 46} n={5} opacity={s.strom} />
+          </>
+        ) : (
+          <>
+            <T x={14} y={24} farge={C.dempet} size={16}>Vest</T>
+            <T x={W - 14} y={24} anchor="end" farge={C.dempet} size={16}>Øst</T>
+            <T x={toppX + 24} y={hy(1) - 16} farge={C.dempet} vekt={400} opacity={s.haug}>høyere havflate (overdrevet)</T>
+            <T x={W * 0.8} y={base + 52} anchor="middle" farge={C.lag} opacity={1 - s.trykk}>ekmantransporten samler vann</T>
+            <T x={W * 0.5} y={strY - 8} anchor="middle" farge={C.trykk} opacity={s.trykk}>blå pil: trykkforskjellen presser vannet ut fra høyden</T>
+            <T x={W * 0.5} y={strY + 18} anchor="middle" farge={C.coriolis} opacity={s.cor}>grå pil: corioliseffekten bøyer det mot høyre</T>
+            <T x={gx - 30} y={yy + 48} farge={C.golf} opacity={s.strom}>Golfstrømmen</T>
+            <T x={gx - 30} y={yy + 73} farge={C.golf} vekt={400} opacity={s.strom}>smal og rask, nordover</T>
+            <T x={kx + 60} y={yy + 48} anchor="end" farge={C.kanari} opacity={s.strom}>Kanaristrømmen</T>
+            <T x={kx + 60} y={yy + 73} anchor="end" farge={C.kanari} vekt={400} opacity={s.strom}>bred og langsom, sørover</T>
+            <T x={W * 0.5} y={H - 20} anchor="middle" farge={C.tekst} opacity={s.strom}>I balanse: langs hellingen, med klokken rundt H</T>
+          </>
+        )}
+      </svg>
+      {smal ? <Forklaring punkter={forklaring} /> : null}
+      <p className="text-xs text-muted-foreground">⊗ går bort fra deg (nordover), ⊙ kommer mot deg (sørover). Skjematisk, høyden er overdrevet.</p>
+    </div>
+  );
+}
+
+/* ---------- modellen ---------- */
+
+const FANER = ["1 Ekmanspiralen", "2 Oppvelling og nedvelling", "3 Havvirvel og geostrofisk strøm"];
+
+export function EkmanUpwellingModel() {
+  const uid = useId().replace(/:/g, "");
+  // fane 2 åpnes først: modellen står i oppvellingsdelen av kapitlet
+  const [fane, setFane] = useState(2);
+  return (
     <ModelFrame
-      kicker="Interaktiv geofysisk modell"
-      title="Ekmanspiral, oppvelling langs kysten og geostrofisk balanse"
-      lead="Utforsk hvordan vindstress, corioliseffekten og friksjon mellom vannlagene skaper 45° overflateavbøyning, 90° nettotransport, oppvelling av næringsrikt bunnvann og geostrofiske havvirvler."
-      toolbar={
-        <div className="flex flex-wrap gap-2">
-          <ModelTab active={tab === "ekman_spiral"} onClick={() => setTab("ekman_spiral")}>
-            1. Ekmanspiral og nettotransport
-          </ModelTab>
-          <ModelTab active={tab === "upwelling"} onClick={() => setTab("upwelling")}>
-            2. Oppvelling og nedvelling
-          </ModelTab>
-          <ModelTab active={tab === "geostrophic"} onClick={() => setTab("geostrophic")}>
-            3. Geostrofisk strøm og havvirvler
-          </ModelTab>
-        </div>
-      }
+      kicker="Interaktiv modell"
+      title="Ekmanspiral, oppvelling og havvirvel"
+      lead="Velg en fane: ekmanspiralen sett ovenfra, oppvelling og nedvelling i et snitt langs kysten, eller hvordan vannet strømmer langs hellingen rundt en havvirvel."
+      stackHeader
+      toolbar={<Faner labels={FANER} valgt={fane} onVelg={setFane} label="Velg fane" idPrefix={uid} panelId={`${uid}-panel`} />}
     >
-      <ModelMarkers />
-
-      {/* ── FANE 1: EKMAN-SPIRAL ────────────────────────────────────── */}
-      {tab === "ekman_spiral" && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="space-y-4 lg:col-span-5">
-              <ModelPanel className="space-y-4">
-                <div>
-                  <div className="flex justify-between text-xs font-medium">
-                    <label htmlFor="wind-speed" className="text-muted-foreground">
-                      Vindhastighet 10 m over havet (U₁₀):
-                    </label>
-                    <span className="font-mono font-bold text-primary">{windSpeed} m/s</span>
-                  </div>
-                  <input
-                    id="wind-speed"
-                    type="range"
-                    min="2"
-                    max="25"
-                    step="1"
-                    value={windSpeed}
-                    onChange={(e) => setWindSpeed(Number(e.target.value))}
-                    className="mt-2 w-full accent-primary"
-                  />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>Bris (2 m/s)</span>
-                    <span>Stiv kuling (15 m/s)</span>
-                    <span>Storm (25 m/s)</span>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs font-medium">
-                    <label htmlFor="latitude" className="text-muted-foreground">
-                      Breddegrad (|φ|):
-                    </label>
-                    <span className="font-mono font-bold text-primary">{latitude}°</span>
-                  </div>
-                  <input
-                    id="latitude"
-                    type="range"
-                    min="10"
-                    max="80"
-                    step="1"
-                    value={latitude}
-                    onChange={(e) => setLatitude(Number(e.target.value))}
-                    className="mt-2 w-full accent-primary"
-                  />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>Tropene (10°)</span>
-                    <span>Norge (60°)</span>
-                    <span>Arktis (80°)</span>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs font-medium text-muted-foreground">Halvkule:</label>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setHemisphere("north")}
-                      className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
-                        hemisphere === "north"
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-card text-muted-foreground hover:bg-muted"
-                      }`}
-                    >
-                      Nordlig (90° høyre)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setHemisphere("south")}
-                      className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
-                        hemisphere === "south"
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-card text-muted-foreground hover:bg-muted"
-                      }`}
-                    >
-                      Sørlig (90° venstre)
-                    </button>
-                  </div>
-                </div>
-
-                {/* Sanntidsberegninger */}
-                <div className="rounded-xl border border-border/70 bg-card/60 p-3 space-y-2 text-xs">
-                  <div className="flex justify-between border-b border-border/50 pb-1.5">
-                    <span className="text-muted-foreground">Coriolisparameter (f):</span>
-                    <span className="font-mono font-semibold text-sky-400">
-                      {(f * 1e4).toFixed(3)} × 10⁻⁴ s⁻¹
-                    </span>
-                  </div>
-                  <div className="flex justify-between border-b border-border/50 pb-1.5">
-                    <span className="text-muted-foreground">Vindstress (τ):</span>
-                    <span className="font-mono font-semibold text-amber-400">
-                      {tau.toFixed(3)} N/m²
-                    </span>
-                  </div>
-                  <div className="flex justify-between border-b border-border/50 pb-1.5">
-                    <span className="text-muted-foreground">Ekmandyp (der strømmen har snudd):</span>
-                    <span className="font-mono font-semibold text-teal-400">
-                      {de.toFixed(1)} meter
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Volumtransport (Q_E):</span>
-                    <span className="font-mono font-semibold text-primary">
-                      {qeVolume.toFixed(2)} m²/s
-                    </span>
-                  </div>
-                </div>
-              </ModelPanel>
-
-              <ModelNote title="Hvordan spiralen oppstår" tone="teal">
-                <p>
-                  Vinden drar i overflatevannet. På grunn av corioliseffekten avbøyes det øverste
-                  vannlaget <strong>45°</strong> i forhold til vinden (til høyre i nord, til venstre
-                  i sør). 45° gjelder i Ekmans idealiserte teori. I virkeligheten er vinkelen ofte
-                  mindre (Ekman, 1905; Talley mfl., 2011).
-                </p>
-                <p className="mt-1">
-                  Dette overflatelaget drar i sin tur på laget under via indre væskefriksjon (virvelviskositet).
-                  Det neste laget avbøyes enda mer, men med lavere hastighet. Nedover i dypet danner
-                  strømvektorene en elegant <strong>spiral</strong>.
-                </p>
-                <p className="mt-1">
-                  Når vi integrerer (summerer) alle vektorene fra overflaten ned til ekmandypet, står
-                  den totale vanntransporten <strong>90°</strong> på vindretningen.
-                </p>
-              </ModelNote>
-            </div>
-
-            {/* Vektorvisualisering: Topp-perspektiv og 3D spiral */}
-            <div className="space-y-4 lg:col-span-7">
-              <div className="relative overflow-hidden rounded-xl border border-border bg-slate-950 p-4">
-                <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="font-semibold text-slate-300">
-                    Fugleperspektiv: Vektordiagram fra overflaten til dypet
-                  </span>
-                  <span className="rounded bg-slate-900 px-2 py-0.5 font-mono text-[11px] text-primary">
-                    Vind retning: 0° (mot nord)
-                  </span>
-                </div>
-
-                <svg viewBox="0 0 520 380" className="w-full">
-                  {/* Bakgrunnsrutenett og kompass-sirkler */}
-                  <defs>
-                    <radialGradient id="ocean-radial" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#0f172a" />
-                      <stop offset="100%" stopColor="#020617" />
-                    </radialGradient>
-                  </defs>
-                  <rect width="520" height="380" fill="url(#ocean-radial)" rx="8" />
-
-                  {/* Konsentriske sirkler */}
-                  <circle cx="260" cy="200" r="40" fill="none" stroke="#334155" strokeDasharray="3 3" />
-                  <circle cx="260" cy="200" r="90" fill="none" stroke="#334155" strokeDasharray="3 3" />
-                  <circle cx="260" cy="200" r="140" fill="none" stroke="#334155" strokeDasharray="3 3" />
-
-                  {/* Akser */}
-                  <line x1="260" y1="40" x2="260" y2="360" stroke="#1e293b" strokeWidth="1.5" />
-                  <line x1="100" y1="200" x2="420" y2="200" stroke="#1e293b" strokeWidth="1.5" />
-                  <text x="260" y="32" textAnchor="middle" fill="#64748b" fontSize="11" fontWeight="bold">
-                    NORD (Vindretning)
-                  </text>
-                  <text x="430" y="204" textAnchor="start" fill="#64748b" fontSize="11" fontWeight="bold">
-                    ØST
-                  </text>
-                  <text x="90" y="204" textAnchor="end" fill="#64748b" fontSize="11" fontWeight="bold">
-                    VEST
-                  </text>
-
-                  {/* 1. Vindvektor: Rett nordover (lengde proporsjonal med vindhastighet) */}
-                  {(() => {
-                    const windLen = Math.min(140, 40 + windSpeed * 4);
-                    return (
-                      <g>
-                        <line
-                          x1="260"
-                          y1="200"
-                          x2="260"
-                          y2={200 - windLen}
-                          stroke="#e2e8f0"
-                          strokeWidth="3.5"
-                          markerEnd="url(#mdl-wind)"
-                        />
-                        <text
-                          x="270"
-                          y={200 - windLen + 15}
-                          fill="#f8fafc"
-                          fontSize="12"
-                          fontWeight="bold"
-                        >
-                          Vind ({windSpeed} m/s)
-                        </text>
-                      </g>
-                    );
-                  })()}
-
-                  {/* 2. Dybdevektorer for Ekman-spiral */}
-                  {spiralVectors.map((layer, idx) => {
-                    const scaleFactor = 150;
-                    const endX = 260 + layer.vx * scaleFactor;
-                    const endY = 200 - layer.vy * scaleFactor; // minus because SVG y goes down
-                    const isSurface = layer.z === 0;
-
-                    return (
-                      <g key={layer.z}>
-                        <line
-                          x1="260"
-                          y1="200"
-                          x2={endX}
-                          y2={endY}
-                          stroke={isSurface ? "#38bdf8" : "#0284c7"}
-                          strokeWidth={isSurface ? 3 : 1.8}
-                          opacity={Math.max(0.4, layer.decay)}
-                          markerEnd={isSurface ? "url(#mdl-cyan)" : "url(#mdl-blue)"}
-                        />
-                        <circle cx={endX} cy={endY} r="3" fill={isSurface ? "#38bdf8" : "#0284c7"} />
-                        <text
-                          x={endX + (layer.vx >= 0 ? 8 : -8)}
-                          y={endY + (layer.vy >= 0 ? -4 : 8)}
-                          textAnchor={layer.vx >= 0 ? "start" : "end"}
-                          fill={isSurface ? "#38bdf8" : "#94a3b8"}
-                          fontSize={isSurface ? "11" : "9"}
-                          fontWeight={isSurface ? "bold" : "normal"}
-                        >
-                          {layer.z}m ({layer.angleDeg}°)
-                        </text>
-                      </g>
-                    );
-                  })}
-
-                  {/* Kurve som binder spiral-spissene sammen */}
-                  {(() => {
-                    const points = spiralVectors.map((layer) => {
-                      const scaleFactor = 150;
-                      return `${260 + layer.vx * scaleFactor},${200 - layer.vy * scaleFactor}`;
-                    });
-                    return (
-                      <polyline
-                        points={points.join(" ")}
-                        fill="none"
-                        stroke="#38bdf8"
-                        strokeWidth="1.2"
-                        strokeDasharray="3 3"
-                        opacity="0.6"
-                      />
-                    );
-                  })()}
-
-                  {/* 3. Nettotransport M_E: Nøyaktig 90° til høyre (NH) eller venstre (SH) */}
-                  {(() => {
-                    const netAngle = hemisphere === "north" ? 0 : Math.PI; // East is 0, West is PI
-                    const transportLen = Math.min(130, 45 + qeVolume * 7);
-                    const netX = 260 + (hemisphere === "north" ? transportLen : -transportLen);
-                    return (
-                      <g>
-                        <line
-                          x1="260"
-                          y1="200"
-                          x2={netX}
-                          y2="200"
-                          stroke="#fbbf24"
-                          strokeWidth="5"
-                          markerEnd="url(#mdl-amber)"
-                        />
-                        <text
-                          x={netX + (hemisphere === "north" ? 10 : -10)}
-                          y="190"
-                          textAnchor={hemisphere === "north" ? "start" : "end"}
-                          fill="#fbbf24"
-                          fontSize="13"
-                          fontWeight="bold"
-                        >
-                          Netto ekmantransport
-                        </text>
-                        <text
-                          x={netX + (hemisphere === "north" ? 10 : -10)}
-                          y="208"
-                          textAnchor={hemisphere === "north" ? "start" : "end"}
-                          fill="#fef08a"
-                          fontSize="11"
-                        >
-                          {hemisphere === "north" ? "90° til høyre" : "90° til venstre"} ({qeVolume.toFixed(1)} m²/s)
-                        </text>
-                      </g>
-                    );
-                  })()}
-                </svg>
-
-                {/* Tegnforklaring */}
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 pt-3 text-[11px]">
-                  <div className="flex items-center gap-1.5">
-                    <span className="inline-block h-2.5 w-5 rounded bg-slate-300" />
-                    <span className="text-slate-300">Vindretning (0°)</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="inline-block h-2.5 w-5 rounded bg-sky-400" />
-                    <span className="text-sky-300">Overflatestrøm (45° avbøyd)</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="inline-block h-2.5 w-5 rounded bg-amber-400" />
-                    <span className="text-amber-300">Netto vanntransport (90°)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Formel-boks */}
-              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4 text-xs space-y-2">
-                <div className="font-semibold text-primary">Matematisk formulering:</div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono">
-                  <div className="rounded bg-background/80 p-2.5 border border-border">
-                    <p className="text-muted-foreground text-[10px]">Vindskjærspenning på overflaten:</p>
-                    <p className="text-amber-400 font-bold mt-0.5">τ = ρ_luft · C_D · (U₁₀)²</p>
-                  </div>
-                  <div className="rounded bg-background/80 p-2.5 border border-border">
-                    <p className="text-muted-foreground text-[10px]">Integrert ekmantransport:</p>
-                    <p className="text-primary font-bold mt-0.5">M_E = τ / |f| = τ / (2Ω sin φ)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── FANE 2: KYSTOPPVELLING & NEDVELLING ─────────────────────── */}
-      {tab === "upwelling" && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="space-y-4 lg:col-span-5">
-              <ModelPanel className="space-y-4">
-                <div>
-                  <label className="text-xs font-medium text-muted-foreground">Kystens orientering:</label>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setCoastType("west_coast")}
-                      className={`rounded-lg border px-3 py-2 text-xs font-semibold text-left transition ${
-                        coastType === "west_coast"
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-card text-muted-foreground hover:bg-muted"
-                      }`}
-                    >
-                      <span className="block font-bold">Vestkyst</span>
-                      <span className="text-[10px] text-muted-foreground">Land til høyre, hav til venstre (California, Peru)</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setCoastType("east_coast")}
-                      className={`rounded-lg border px-3 py-2 text-xs font-semibold text-left transition ${
-                        coastType === "east_coast"
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-card text-muted-foreground hover:bg-muted"
-                      }`}
-                    >
-                      <span className="block font-bold">Østkyst</span>
-                      <span className="text-[10px] text-muted-foreground">Land til venstre, hav til høyre (Norge vestvendt kyst)</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs font-medium text-muted-foreground">Vindretning langs kysten:</label>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setWindDirection("equatorward")}
-                      className={`rounded-lg border px-3 py-2 text-xs font-semibold text-left transition ${
-                        windDirection === "equatorward"
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-card text-muted-foreground hover:bg-muted"
-                      }`}
-                    >
-                      <span className="block font-bold">Mot ekvator (sørover)</span>
-                      <span className="text-[10px] text-muted-foreground">Kald nordavind langs norskekysten/California</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setWindDirection("poleward")}
-                      className={`rounded-lg border px-3 py-2 text-xs font-semibold text-left transition ${
-                        windDirection === "poleward"
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-card text-muted-foreground hover:bg-muted"
-                      }`}
-                    >
-                      <span className="block font-bold">Mot polen (nordover)</span>
-                      <span className="text-[10px] text-muted-foreground">Mild sønnavind langs norskekysten</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Status-oppsummering */}
-                <div
-                  className={`rounded-xl border p-4 ${
-                    isUpwelling
-                      ? "border-emerald-500/30 bg-emerald-950/20 text-emerald-300"
-                      : "border-amber-500/30 bg-amber-950/20 text-amber-300"
-                  }`}
-                >
-                  <p className="font-display font-semibold text-sm">
-                    {isUpwelling ? "Oppvelling langs kysten" : "Nedvelling langs kysten"}
-                  </p>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                    {isUpwelling
-                      ? "Ekmantransporten skyver overflatevannet rett bort fra kysten. Vannet må erstattes, så kaldt, næringsrikt vann kommer opp fra noen hundre meters dyp."
-                      : "Ekmantransporten skyver overflatevannet inn mot land. Vannet stuves opp mot kystlinjen og tvinges ned i dypet. Lagdelingen presses dypere."}
-                  </p>
-                </div>
-              </ModelPanel>
-
-              <ModelNote
-                title={isUpwelling ? "Økologiske superområder" : "Marine hetebølger"}
-                tone={isUpwelling ? "teal" : "warm"}
-              >
-                {isUpwelling ? (
-                  <p>
-                    Oppvelling tilfører den solbelyste (eufotiske) sonen enorme mengder nitrat, fosfat
-                    og silikat. Dette utløser eksplosiv vekst av fytoplankton og danner grunnlaget for
-                    verdens rikeste fiskerier. De store oppvellingsområdene gir opptil ca. 20 % av
-                    fiskefangsten fra under 1 % av havflaten (Du mfl., 2024).
-                  </p>
-                ) : (
-                  <p>
-                    Når vinden tvinger overflatevannet mot land og nedover, blokkeres tilførselen av
-                    kaldt dypvann. Det varme overflatelaget isoleres og overopphetes av solen. Dette er
-                    en nøkkelfaktor bak alvorlige marine hetebølger som truer tareskoger og koraller.
-                  </p>
-                )}
-              </ModelNote>
-            </div>
-
-            {/* Kystprofil og vertikalsnitt */}
-            <div className="space-y-4 lg:col-span-7">
-              <div className="relative overflow-hidden rounded-xl border border-border bg-slate-950 p-4">
-                <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="font-semibold text-slate-300">
-                    Vertikalt kystprofil: {coastType === "west_coast" ? "Vestkyst" : "Østkyst"}
-                  </span>
-                  <span className="font-mono text-xs text-primary">
-                    {isUpwelling ? "Oppadgående vertikalhastighet w > 0" : "Nedadgående vertikalhastighet w < 0"}
-                  </span>
-                </div>
-
-                <svg viewBox="0 0 520 320" className="w-full">
-                  <defs>
-                    <linearGradient id="deep-water-grad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#0284c7" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#0c4a6e" stopOpacity="0.9" />
-                    </linearGradient>
-                    <linearGradient id="warm-surface-grad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.7" />
-                      <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.2" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Kyst og kontinentalskråning */}
-                  {coastType === "west_coast" ? (
-                    // Land på høyre side (øst)
-                    <g>
-                      {/* Vannmasse dyp */}
-                      <path d="M 0 50 L 360 50 L 380 90 L 410 180 L 430 300 L 0 300 Z" fill="url(#deep-water-grad)" />
-
-                      {/* Termoklin */}
-                      <path
-                        d={
-                          isUpwelling
-                            ? "M 0 130 Q 200 130 360 55" // Løftes helt opp til overflaten ved kysten
-                            : "M 0 100 Q 200 120 400 210" // Presses ned ved kysten
-                        }
-                        fill="none"
-                        stroke="#38bdf8"
-                        strokeWidth="3"
-                        strokeDasharray="6 4"
-                      />
-
-                      {/* Landprofil */}
-                      <path
-                        d="M 360 50 L 380 90 L 410 180 L 430 300 L 520 300 L 520 0 L 360 0 Z"
-                        fill="#334155"
-                        stroke="#475569"
-                        strokeWidth="2"
-                      />
-                      <path d="M 360 50 Q 380 20 420 15 L 520 15 L 520 50 Z" fill="#1e293b" />
-                      <text x="440" y="40" fill="#f8fafc" fontSize="13" fontWeight="bold">
-                        LAND
-                      </text>
-
-                      {/* Piler for vind */}
-                      <line x1="380" y1="70" x2="380" y2="120" stroke="#f8fafc" strokeWidth="3" markerEnd="url(#mdl-wind)" />
-                      <text x="390" y="95" fill="#f8fafc" fontSize="10">
-                        Vind {windDirection === "equatorward" ? "sørover" : "nordover"}
-                      </text>
-
-                      {/* Piler for Ekman-transport */}
-                      {isUpwelling ? (
-                        <g>
-                          {/* Ekman til venstre (bort fra kysten) */}
-                          <line x1="330" y1="65" x2="160" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
-                          <text x="240" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Ekmantransport bort fra kysten
-                          </text>
-
-                          {/* Oppvelling-piler fra dypet */}
-                          <path
-                            d="M 260 250 Q 330 220 345 85"
-                            fill="none"
-                            stroke="#34d399"
-                            strokeWidth="3.5"
-                            strokeDasharray="8 4"
-                            markerEnd="url(#mdl-green)"
-                          />
-                          <text x="310" y="160" fill="#34d399" fontSize="12" fontWeight="bold">
-                            Kaldt, næringsrikt dypvann stiger
-                          </text>
-
-                          {/* Næringssopp / klorofyllblomstring */}
-                          <circle cx="340" cy="70" r="16" fill="#34d399" opacity="0.4" />
-                          <circle cx="320" cy="75" r="12" fill="#34d399" opacity="0.3" />
-                          <text x="290" y="95" fill="#a7f3d0" fontSize="10" fontStyle="italic">
-                            Planktonoppblomstring
-                          </text>
-                        </g>
-                      ) : (
-                        <g>
-                          {/* Ekman mot kysten (til høyre) */}
-                          <line x1="160" y1="65" x2="330" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
-                          <text x="240" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Ekmantransport inn mot land
-                          </text>
-
-                          {/* Nedvelling-piler */}
-                          <path
-                            d="M 345 75 Q 360 140 380 230"
-                            fill="none"
-                            stroke="#f59e0b"
-                            strokeWidth="3.5"
-                            strokeDasharray="8 4"
-                            markerEnd="url(#mdl-amber)"
-                          />
-                          <text x="310" y="150" fill="#f59e0b" fontSize="12" fontWeight="bold">
-                            Vann presses ned (Downwelling)
-                          </text>
-                        </g>
-                      )}
-                    </g>
-                  ) : (
-                    // Land på venstre side (vest)
-                    <g>
-                      <path d="M 160 50 L 520 50 L 520 300 L 90 300 L 110 180 L 140 90 Z" fill="url(#deep-water-grad)" />
-
-                      {/* Termoklin */}
-                      <path
-                        d={
-                          isUpwelling
-                            ? "M 520 130 Q 320 130 160 55"
-                            : "M 520 100 Q 320 120 120 210"
-                        }
-                        fill="none"
-                        stroke="#38bdf8"
-                        strokeWidth="3"
-                        strokeDasharray="6 4"
-                      />
-
-                      {/* Landprofil */}
-                      <path
-                        d="M 160 50 L 140 90 L 110 180 L 90 300 L 0 300 L 0 0 L 160 0 Z"
-                        fill="#334155"
-                        stroke="#475569"
-                        strokeWidth="2"
-                      />
-                      <text x="50" y="40" fill="#f8fafc" fontSize="13" fontWeight="bold">
-                        LAND
-                      </text>
-
-                      {isUpwelling ? (
-                        <g>
-                          <line x1="190" y1="65" x2="360" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
-                          <text x="280" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Ekmantransport ut i havet
-                          </text>
-                          <path
-                            d="M 260 250 Q 190 220 175 85"
-                            fill="none"
-                            stroke="#34d399"
-                            strokeWidth="3.5"
-                            strokeDasharray="8 4"
-                            markerEnd="url(#mdl-green)"
-                          />
-                          <text x="210" y="160" fill="#34d399" fontSize="12" fontWeight="bold">
-                            Kystoppvelling
-                          </text>
-                        </g>
-                      ) : (
-                        <g>
-                          <line x1="360" y1="65" x2="190" y2="65" stroke="#fbbf24" strokeWidth="4" markerEnd="url(#mdl-amber)" />
-                          <text x="280" y="58" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                            Vann stuves inn mot land
-                          </text>
-                          <path
-                            d="M 175 75 Q 160 140 140 230"
-                            fill="none"
-                            stroke="#f59e0b"
-                            strokeWidth="3.5"
-                            strokeDasharray="8 4"
-                            markerEnd="url(#mdl-amber)"
-                          />
-                          <text x="210" y="150" fill="#f59e0b" fontSize="12" fontWeight="bold">
-                            Nedvelling
-                          </text>
-                        </g>
-                      )}
-                    </g>
-                  )}
-
-                  {/* Overflatemerke for termoklinen */}
-                  <text x="20" y="280" fill="#38bdf8" fontSize="11" fontStyle="italic">
-                    Termoklin (skille mellom varmt overflatevann og kaldt dypvann)
-                  </text>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── FANE 3: GEOSTROFISK STRØM & GYREDYNAMIKK ──────────────── */}
-      {tab === "geostrophic" && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="space-y-4 lg:col-span-5">
-              <ModelPanel className="space-y-3 text-xs leading-relaxed text-muted-foreground">
-                <h4 className="font-display font-semibold text-sm text-foreground">
-                  Hvordan oppstår en subtropisk havvirvel?
-                </h4>
-                <p>
-                  I Nord-Atlanteren blåser <strong>passatvindene</strong> mot vest i sør (15°–30°N),
-                  mens <strong>vestavindsbeltet</strong> blåser mot øst i nord (40°–60°N).
-                </p>
-                <p>
-                  Ekmantransporten bøyer av 90° til høyre for vinden. Resultatet er at begge
-                  vindsystemene pumper overflatevann inn mot <strong>midten av havbassenget</strong>{" "}
-                  (ekmankonvergens).
-                </p>
-                <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
-                  <p className="font-semibold text-primary">Dynamisk havhaug:</p>
-                  <p className="mt-1">
-                    Vannet som samles i sentrum (Sargassohavet) danner en vid, svakt buet «haug»
-                    av overflatevann som rager <strong>1–2 meter høyere</strong> enn kystområdene
-                    rundt.
-                  </p>
-                </div>
-              </ModelPanel>
-
-              <ModelNote title="Geostrofisk balanse: F_pg = F_c" tone="teal">
-                <p>
-                  Tyngdekraften forsøker å jevne ut haugen ved å skyve vann nedover trykkgradienten
-                  (utover fra sentrum). Men så snart vannet settes i bevegelse nedover bakken, bøyer
-                  corioliseffekten det til høyre.
-                </p>
-                <p className="mt-1">
-                  Når <strong>trykkgradientkraften</strong> og <strong>corioliseffekten</strong> er like
-                  store og motsatt rettede, er strømmen i geostrofisk balanse: den flyter
-                  nøyaktig <em>langs høydekonturene</em>, med klokka rundt haugen.
-                </p>
-                <div className="mt-2 font-mono text-center text-xs font-bold text-sky-400 bg-background/80 p-2 rounded">
-                  v_g = (g / f) · (∂η / ∂x)
-                </div>
-              </ModelNote>
-            </div>
-
-            {/* Skisse av haug, trykkgradient, Coriolis og vestlig randintensivering */}
-            <div className="space-y-4 lg:col-span-7">
-              <div className="relative overflow-hidden rounded-xl border border-border bg-slate-950 p-4">
-                <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="font-semibold text-slate-300">
-                    Tverrsnitt av subtropisk havvirvel (Nord-Atlanteren)
-                  </span>
-                  <span className="rounded bg-slate-900 px-2 py-0.5 font-mono text-[11px] text-amber-300">
-                    Vestlig randintensivering (Stommel, 1948)
-                  </span>
-                </div>
-
-                <svg viewBox="0 0 520 300" className="w-full">
-                  {/* Bakgrunn */}
-                  <rect width="520" height="300" fill="#020617" rx="8" />
-
-                  {/* Kyst vest (Amerika) og øst (Europa/Afrika) */}
-                  <rect x="0" y="40" width="40" height="260" fill="#1e293b" />
-                  <text x="20" y="160" textAnchor="middle" fill="#94a3b8" fontSize="11" transform="rotate(-90 20 160)">
-                    NORD-AMERIKA (Vest)
-                  </text>
-
-                  <rect x="480" y="40" width="40" height="260" fill="#1e293b" />
-                  <text x="500" y="160" textAnchor="middle" fill="#94a3b8" fontSize="11" transform="rotate(90 500 160)">
-                    EUROPA / AFRIKA (Øst)
-                  </text>
-
-                  {/* Asymmetrisk haug (presset mot vest pga beta-effekt) */}
-                  <path
-                    d="M 40 100 Q 150 40 180 40 Q 320 40 480 100 L 480 290 L 40 290 Z"
-                    fill="#0369a1"
-                    opacity="0.3"
-                  />
-                  {/* Havoverflate-linje */}
-                  <path
-                    d="M 40 100 Q 150 40 180 40 Q 320 40 480 100"
-                    fill="none"
-                    stroke="#38bdf8"
-                    strokeWidth="3.5"
-                  />
-
-                  {/* Kuppel-topp-indikator */}
-                  <line x1="180" y1="25" x2="180" y2="40" stroke="#fbbf24" strokeWidth="2" strokeDasharray="3 3" />
-                  <text x="180" y="20" textAnchor="middle" fill="#fbbf24" fontSize="11" fontWeight="bold">
-                    Dynamisk haug (+1,5 m)
-                  </text>
-
-                  {/* Golfstrømmen: Smal, bratt bakke mot vest */}
-                  <g>
-                    <path
-                      d="M 50 110 L 150 50"
-                      fill="none"
-                      stroke="#ef4444"
-                      strokeWidth="6"
-                      markerEnd="url(#mdl-red)"
-                    />
-                    <text x="100" y="130" textAnchor="middle" fill="#f87171" fontSize="12" fontWeight="bold">
-                      Golfstrømmen
-                    </text>
-                    <text x="100" y="145" textAnchor="middle" fill="#cbd5e1" fontSize="10">
-                      Bratt helning → Ekstrem fart (2 m/s)
-                    </text>
-                  </g>
-
-                  {/* Kanaristrømmen: Slak bakke mot øst */}
-                  <g>
-                    <path
-                      d="M 240 45 L 460 95"
-                      fill="none"
-                      stroke="#38bdf8"
-                      strokeWidth="3"
-                      markerEnd="url(#mdl-cyan)"
-                    />
-                    <text x="360" y="125" textAnchor="middle" fill="#7dd3fc" fontSize="12" fontWeight="bold">
-                      Kanaristrømmen
-                    </text>
-                    <text x="360" y="140" textAnchor="middle" fill="#cbd5e1" fontSize="10">
-                      Slak helning → Bred og langsom (0,2 m/s)
-                    </text>
-                  </g>
-
-                  {/* Krefter i balanse */}
-                  <g transform="translate(130, 200)">
-                    <rect width="260" height="75" rx="6" fill="#0f172a" stroke="#334155" strokeWidth="1" />
-                    <text x="130" y="20" textAnchor="middle" fill="#f8fafc" fontSize="11" fontWeight="bold">
-                      Kjernen i geostrofisk strøm:
-                    </text>
-                    <text x="25" y="42" fill="#f87171" fontSize="10">
-                      Trykkgradient (F_pg): Nedover haugen
-                    </text>
-                    <text x="25" y="58" fill="#38bdf8" fontSize="10">
-                      Corioliseffekten (F_c): Oppover mot sentrum
-                    </text>
-                    <text x="130" y="70" textAnchor="middle" fill="#fbbf24" fontSize="10" fontStyle="italic">
-                      F_pg + F_c = 0 ⟹ Strømmen følger konturene
-                    </text>
-                  </g>
-                </svg>
-              </div>
-
-              <div className="rounded-xl border border-border/70 bg-card p-3 text-xs leading-relaxed text-muted-foreground">
-                <strong className="text-foreground">Hvorfor er Golfstrømmen så mye kraftigere enn Kanaristrømmen?</strong>
-                <p className="mt-1">
-                  Årsaken kalles <strong>vestlig randintensivering</strong> og ble løst matematisk av
-                  oceanografen Henry Stommel i 1948. Fordi corioliseffekten øker med breddegraden
-                  (β-effekten, β = df/dy), forskyves hele havvirvelen mot vest. Det tvinger
-                  vannmassene som skal nordover gjennom en smal «flaskehals» langs USAs østkyst.
-                  Farten må mangedobles for å transportere samme vannvolum som den brede, slake
-                  strømmen sørover i øst.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <div role="tabpanel" id={`${uid}-panel`} aria-labelledby={`${uid}-fane-${fane}`} data-fane={fane}>
+        {fane === 1 ? <SpiralFane /> : fane === 2 ? <KystFane /> : <VirvelFane />}
+      </div>
     </ModelFrame>
   );
 }

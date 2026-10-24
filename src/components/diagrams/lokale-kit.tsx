@@ -108,6 +108,7 @@ export function LokaleRamme({
   etikettRader,
   hinder,
   skiltNokkel,
+  narrowViewBox,
   skiltLuft,
   children,
 }: {
@@ -136,6 +137,11 @@ export function LokaleRamme({
   /** Skiltene regnes ut på nytt bare når denne endres (f.eks. steg og avrundet framdrift). */
   skiltNokkel?: string;
   /**
+   * Eget utsnitt på smal skjerm («x y b h», samme koordinater som VB), f.eks. en høyere flate nær kysten.
+   * Uten denne vises hele tegneflaten som før.
+   */
+  narrowViewBox?: string;
+  /**
    * Minste luft (CSS-piksler) fra ytterkanten av skiltet, med halo, til hinder og til andre skilt.
    * Uten denne brukes den gamle avstanden (ca. 3 px til hinder og 8 viewBox-enheter mellom skiltene).
    */
@@ -145,7 +151,8 @@ export function LokaleRamme({
   const h = heading ?? tekst.heading;
   const bredde = useSvgBredde(svgRef);
   const smal = bredde > 0 && bredde < NARROW_FIGURE_PX;
-  const skala = bredde > 0 ? Math.min(bredde, 1024) / VB.w : 0;
+  const utsnitt = smal && narrowViewBox ? (narrowViewBox.split(/\s+/).map(Number) as [number, number, number, number]) : null;
+  const skala = bredde > 0 ? Math.min(bredde, 1024) / (utsnitt ? utsnitt[2] : VB.w) : 0;
   const skiltCache = useRef<{ key: string; pos: ([number, number] | null)[] } | null>(null);
   let merket = labels;
   if (smal && hinder && skala > 0) {
@@ -153,7 +160,7 @@ export function LokaleRamme({
     const r = Math.max(11.5 / skala, VB.w * 0.02);
     const key = `${skiltNokkel ?? ""}|${skiltLuft ?? ""}|${r.toFixed(1)}|${labels.map((l) => `${l.text}@${l.at?.map(Math.round).join(",")}`).join(";")}`;
     if (!skiltCache.current || skiltCache.current.key !== key) {
-      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, skiltLuft) };
+      skiltCache.current = { key, pos: plasserSkilt(labels, hinder, r, skala, utsnitt ?? undefined, skiltLuft) };
     }
     const pos = skiltCache.current.pos;
     merket = labels.map((l, i) => (pos[i] ? { ...l, badge: pos[i] } : l));
@@ -164,6 +171,7 @@ export function LokaleRamme({
       className="[&_ol[aria-label^=Forklaring]]:min-h-[var(--lok-ol)] [&_ol[aria-label^=Forklaring]]:content-start [&_p[aria-live]]:min-h-[7.5rem] min-[420px]:[&_p[aria-live]]:min-h-[6.25rem] sm:[&_p[aria-live]]:min-h-[3.75rem] lg:[&_p[aria-live]]:min-h-[2.5rem]"
     >
       <IsbreFigur
+        holdListe
         svgRef={svgRef}
         title={tekst.title}
         heading={h}
@@ -181,6 +189,7 @@ export function LokaleRamme({
         keys={keys}
         notes={notes ?? ["Skjematisk, høyden er overdrevet"]}
         viewBox={`0 0 ${VB.w} ${VB.h}`}
+        narrowViewBox={narrowViewBox}
         below={typeof below === "function" ? below(smal) : below}
       >
         {({ m, narrow, scale }) => (
@@ -194,7 +203,7 @@ export function LokaleRamme({
 }
 
 /** Bredden til tegneflaten (CSS-piksler), 0 før første måling. */
-function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
+export function useSvgBredde(ref: RefObject<SVGSVGElement | null>) {
   const [w, setW] = useState(0);
   useEffect(() => {
     const el = ref.current;
@@ -277,13 +286,23 @@ function segmenter(hinder: Hinder[], skala: number): { seg: Seg[]; bokser: [numb
  * Finnes ingen ledig plass, velges plassen med minst overlapp. Med `luftPx` regnes avstanden fra
  * ytterkanten av skiltet med halo (strek r · 0,22, altså r · 1,11), og den gjelder også mellom skiltene.
  */
-export function plasserSkilt(labels: Lab[], hinder: Hinder[], r: number, skala: number, luftPx?: number): ([number, number] | null)[] {
+export function plasserSkilt(
+  labels: Lab[],
+  hinder: Hinder[],
+  r: number,
+  skala: number,
+  /** Utsnittet skiltene skal ligge inne i, [x, y, b, h] i viewBox-enheter. Standard hele tegneflaten. */
+  flate: [number, number, number, number] = [0, 0, VB.w, VB.h],
+  /** Minste luft (CSS-piksler) fra ytterkanten av skiltet, med halo, til hinder og til andre skilt. */
+  luftPx?: number,
+): ([number, number] | null)[] {
   const { seg, bokser, punkter } = segmenter(hinder, skala);
   const luft = luftPx !== undefined ? luftPx / skala + r * 0.11 : 3 / skala;
   const mellom = luftPx !== undefined ? 2 * r * 1.11 + luftPx / skala : 2 * r + 8;
   const steg = Math.max(8, r / 2.5);
   const kand: [number, number][] = [];
-  for (let y = r + 4; y <= VB.h - r - 4; y += steg) for (let x = r + 4; x <= VB.w - r - 4; x += steg) kand.push([x, y]);
+  const [fx, fy, fw, fh] = flate;
+  for (let y = fy + r + 4; y <= fy + fh - r - 4; y += steg) for (let x = fx + r + 4; x <= fx + fw - r - 4; x += steg) kand.push([x, y]);
   const plassert: [number, number][] = [];
   const maal = labels.map((l) => l.at ?? l.badge ?? [l.x, l.y]);
   return labels.map((l, i) => {
