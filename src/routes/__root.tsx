@@ -34,6 +34,12 @@ export const Route = createRootRoute({
     <html lang="nb" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Cloudflare Web Analytics (cookiefri, offentlig site-token) */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "804b97e355e3471f8e367a838ef245f8"}'
+        ></script>
       </head>
       <body>
         <PreviewHostBridge />
