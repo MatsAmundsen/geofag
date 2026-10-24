@@ -9,10 +9,10 @@ import { useOrkanKlokke } from "./hurricane-klokke";
 const knapp = (aktiv: boolean) =>
   `rounded-lg border px-3 py-1.5 text-sm font-semibold ${aktiv ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-muted-foreground hover:bg-muted"}`;
 
-function Pause({ paa, sett }: { paa: boolean; sett: () => void }) {
+function Pause({ paa, sett, navn }: { paa: boolean; sett: () => void; navn: string }) {
   return (
-    <button type="button" className={knapp(false)} onClick={sett} aria-pressed={!paa}>
-      {paa ? "❚❚ Pause" : "▶ Spill av"}
+    <button type="button" className={knapp(false)} onClick={sett} aria-label={`${paa ? "Pause" : "Spill av"} animasjonen: ${navn}`}>
+      <span aria-hidden="true">{paa ? "❚❚ " : "▶ "}</span>{paa ? "Pause" : "Spill av"}
     </button>
   );
 }
@@ -66,7 +66,7 @@ export function RotasjonOgBreddegrad() {
             <strong className="text-foreground">{retning}</strong>.
           </p>
           <p>Jo lenger fra ekvator, jo sterkere avbøyning. Ved ekvator er sin&nbsp;0°&nbsp;=&nbsp;0, og lufta fyller lavtrykket uten å begynne å rotere.</p>
-          {!redusert && <Pause paa={spiller} sett={toggle} />}
+          {!redusert && <Pause paa={spiller} sett={toggle} navn="rotasjon og breddegrad" />}
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@ export function OrkanBane() {
             {b.navn}
           </button>
         ))}
-        {!redusert && <Pause paa={spiller} sett={toggle} />}
+        {!redusert && <Pause paa={spiller} sett={toggle} navn="orkanens bane" />}
       </div>
       <figure>
         <svg viewBox="0 0 700 330" className="h-auto w-full" role="img" aria-label="Skjematisk kart over Atlanterhavet med breddegradene 0, 5 og 30 grader nord. En typisk bane starter mellom 5 og 30 grader nord, går vestover, svinger mot nord og går mot nordøst nær 30 grader nord.">
