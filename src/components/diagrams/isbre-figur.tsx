@@ -1117,11 +1117,14 @@ export function IsbreFigur({
             </svg>
           </div>
           {below}
-          {narrow && labels.length ? (
+          {narrow ? (
+            // Tom liste beholdes montert: LokaleRamme setter --lok-ol, så høyden ikke kollapser
+            // når avspillingen starter på p=0 (ingen etiketter ennå). Ellers CLS ≈ 146 px.
             <ol
               id={`${uid}-labels`}
               className="mt-3 grid gap-1.5 text-sm leading-snug text-foreground"
               aria-label="Forklaring til tallene i figuren"
+              aria-hidden={labels.length ? undefined : true}
             >
               {labels.map((l, i) => (
                 <li key={`${l.text}-${i}`} className="flex items-start gap-2">

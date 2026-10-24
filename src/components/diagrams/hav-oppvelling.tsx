@@ -86,7 +86,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
     { p: LAND_KANT, b: 1.5 },
     { p: g, b: 2 },
     // ⊙: punkt-hinder (fylt skive), så skiltene ikke kan lande inne i symbolet
-    { punkt: [VIND_X, VIND_Y], r: VIND_R + 4 },
+    { punkt: [VIND_X, VIND_Y], r: VIND_R + 10 },
     // næringsprikkene i steg 4
     ...(s.plankton > 0.02 ? PLANKTON.map(([x, y]) => ({ punkt: [x, y] as [number, number], r: 5 })) : []),
     // bølgestripene i Hav og klammen over oppvellingssonen
@@ -104,7 +104,7 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   labels[labels.length - 1].narrowHide = true;
   lab("Land", 880, 300, undefined, F.tekst);
   labels[labels.length - 1].narrowHide = true;
-  if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - (VIND_R + 10), VIND_Y], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
+  if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - (VIND_R + 40), VIND_Y - 6], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
   if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 24, HAV_Y - 18, smal ? [500, HAV_Y + 22] : [300, HAV_Y + 20], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
   if (s.opp > 0.3) {
     const op = clamp((s.opp - 0.3) / 0.4);
