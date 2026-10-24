@@ -1,9 +1,11 @@
 import { queueTollbitLog } from "../../src/lib/tollbit-log";
+import { fetchFromAgentSite, isTollbitBot } from "../../src/lib/tollbit-agent";
 
 /**
  * Sender én TollBit-loggrad per forespørsel som går gjennom Workeren.
  * Filnavnet starter med 00 så denne kjører ytterst og ser endelig respons.
- * Responsen returneres uendret; loggen sendes via waitUntil.
+ * Kjente AI-agenter sendes til TollBit Agent Site (tollbit.geofag.com, bot-paywall);
+ * alle andre får vanlig respons. Loggen sendes via waitUntil med faktisk status.
  * Merk: statiske filer i ./.output/public serveres av Cloudflare Assets
  * før Workeren og kommer derfor ikke hit.
  */
@@ -17,7 +19,14 @@ export default async function tollbitLogMiddleware(
   event: NitroEvent,
   next: () => unknown | Promise<unknown>,
 ): Promise<unknown> {
-  const result = await next();
+  let result: unknown;
+  try {
+    result = isTollbitBot(event.req.headers.get("user-agent"))
+      ? ((await fetchFromAgentSite(event.req)) ?? (await next()))
+      : await next();
+  } catch {
+    result = await next();
+  }
   try {
     const req = event.req;
     const key = req.runtime?.cloudflare?.env?.TOLLBIT_KEY;
