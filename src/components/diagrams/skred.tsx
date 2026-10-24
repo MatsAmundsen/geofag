@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
 export function SkredKrefterDiagram() {
@@ -95,12 +96,14 @@ export function SkredKrefterDiagram() {
 }
 
 export function SkredSonerDiagram() {
+  const descId = useId();
   return (
     <Diagram
       title="Løsneområde, transportsone og utløpsområde i en skråning med hus i utløpet"
       heading="Der skredet løsner, går og stopper"
       caption="Et skred løsner høyt i skråningen, går nedover og stopper i et utløpsområde der terrenget blir slakere. Aktsomhetskartene bygger på regler for hvor skred kan løsne og hvor de kan havne. Hvor langt et skred kan gå, beregnes med utløpsmodeller (NVE, 2020b; NVE, 2023b)."
       viewBox="0 0 840 400"
+      describedBy={descId}
     >
       {(m) => (
         <>
@@ -402,12 +405,14 @@ export function KvikkleireDiagram() {
 }
 
 export function FjellskredBolgeDiagram() {
+  const descId = useId();
   return (
     <Diagram
       title="Fjellskred i fjord som lager flodbølge med stor oppskyllingshøyde på motsatt side"
       heading="Fjellskred i fjord blir flodbølge"
       caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde. Når bølgen når land, kan den skylle høyere opp enn bølgen var ute på fjorden. I Tafjord i 1934 nådde oppskyllingen ca. 60 m over havet (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
       viewBox="0 0 840 400"
+      describedBy={descId}
     >
       {(m) => (
         <>
