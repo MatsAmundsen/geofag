@@ -928,6 +928,7 @@ export function IsbreFigur({
   faner,
   fanepanel,
   svgGruppe,
+  holdListe,
   children,
 }: {
   title: string;
@@ -966,6 +967,8 @@ export function IsbreFigur({
    * (img kan ikke ha fokuserbare barn, WCAG 4.1.2). Tittelen leses da som beskrivelse.
    */
   svgGruppe?: string;
+  /** Hold forklaringslista montert også når den er tom (LokaleRamme med --lok-ol, mot CLS). */
+  holdListe?: boolean;
   children: (ctx: { d: Defs; m: Markers; narrow: boolean; scale: number }) => ReactNode;
 }) {
   const uid = useId().replace(/:/g, "");
@@ -1117,8 +1120,8 @@ export function IsbreFigur({
             </svg>
           </div>
           {below}
-          {narrow ? (
-            // Tom liste beholdes montert: LokaleRamme setter --lok-ol, så høyden ikke kollapser
+          {narrow && (labels.length || holdListe) ? (
+            // Tom liste beholdes montert: bare med holdListe (LokaleRamme setter --lok-ol), så høyden ikke kollapser
             // når avspillingen starter på p=0 (ingen etiketter ennå). Ellers CLS ≈ 146 px.
             <ol
               id={`${uid}-labels`}

@@ -171,6 +171,7 @@ export function LokaleRamme({
       className="[&_ol[aria-label^=Forklaring]]:min-h-[var(--lok-ol)] [&_ol[aria-label^=Forklaring]]:content-start [&_p[aria-live]]:min-h-[7.5rem] min-[420px]:[&_p[aria-live]]:min-h-[6.25rem] sm:[&_p[aria-live]]:min-h-[3.75rem] lg:[&_p[aria-live]]:min-h-[2.5rem]"
     >
       <IsbreFigur
+        holdListe
         svgRef={svgRef}
         title={tekst.title}
         heading={h}
