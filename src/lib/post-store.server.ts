@@ -1173,6 +1173,23 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv-naturfare",
     stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
   },
+  {
+    // Værkart: tråg-raden relativt formulert, helningstallet for kaldfronten fjernet og avsnitt om forkortet trykk (084 = 1008,4 hPa), godkjent av Mats 22.10.
+    flag: "g2-vaerkart-trag-helning-2026-10-22",
+    slug: "vaerkart",
+    stale: ["om lag 1:50–1:100 (Store norske leksikon", "ekstra ustabil luft, med kraftige byger", "helt overskyet ved 8/8 (NOAA, u.å.-f).\n\n```widget\nStationModel"],
+  },
+  {
+    // Jetstrømmer: NAO-boksen henviser til kapittelets egen kildebokstav (NOAA, u.å.-b), godkjent av Mats 22.10.
+    flag: "g2-jetstrommer-nao-kilde-2026-10-22",
+    slug: "jetstrommer",
+    stale: ["```widget\nNaoForklaring\n```"],
+  },
+  { flag: "g2-coriolis-ekman-2026-10-22", slug: "coriolis", stale: ["opptil 100–200 m ved sterk vind", "ca. 5°, om lag 500 km"] },
+  { flag: "g2-vaerkatastrofer-polarlavtrykk-2026-10-22", slug: "vaerkatastrofer", stale: ["Fra 2000 og fram til i dag (oktober 2026)"] },
+  { flag: "g2-vaerkatastrofer-bolk2-2026-10-22", slug: "vaerkatastrofer", stale: ["EF5 er over 200 mph (National Weather Service, u.å.)."] },
+  // Værkatastrofer: Hans-nyansen om atmosfærisk elv fra øst (Svensson, 2023), godkjent av Mats 23.10.
+  { flag: "g2-vaerkatastrofer-hans-ar-2026-10-23", slug: "vaerkatastrofer", stale: ["(Norges vassdrags- og energidirektorat, 2024).\n\nMeteorologisk institutt varslet"] },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

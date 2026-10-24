@@ -135,7 +135,7 @@ export const GF2_THEMES = [
     image: "/images/fig-jet.jpg",
     alt: "Tynn, rask skyelv høyt over havet mot jordas krumning",
     blurb:
-      "En elv av luft i 8–12 km høyde, med svært sterk vind. Den avgjør hvor lavtrykkene får gå — og dermed været i Norge.",
+      "Et smalt belte med sterk vestavind i 8–12 km høyde. Det påvirker hvor lavtrykkene går, og dermed været i Norge.",
     status: "klar" as const,
   },
   {
@@ -145,7 +145,7 @@ export const GF2_THEMES = [
     image: "/images/banner-coriolis.jpg",
     alt: "Jorda med spiralformede syklonskyer",
     blurb:
-      "Trykk setter lufta i gang. Rotasjonen dreier den. Derfor spinner lavtrykk, og vasken lyver.",
+      "Trykk setter lufta i gang. Rotasjonen dreier den. Derfor spinner lavtrykk, og vasken er et dårlig bevis.",
     status: "klar" as const,
   },
   {
