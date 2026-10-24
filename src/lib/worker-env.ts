@@ -10,6 +10,8 @@ export type WorkerBindings = {
   POSTS_DB?: unknown;
   POSTS_DO?: unknown;
   CMS_PASSWORD?: string;
+  /** Worker-secret (dashboard), aldri i wrangler vars. */
+  TOLLBIT_KEY?: string;
   ASSETS?: unknown;
 };
 
