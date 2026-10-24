@@ -1161,6 +1161,14 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["standardiserte (NOAA, u.å.-f).\n\n```widget\nStationModel"],
   },
   {
+    // Coriolis etter Geos fagsjekk (18.10): (Stewart, 2008) i l. 124, tykkelsen 45–300 m, 45°-setningen,
+    // «mot klokken»/«halvkulen» i karusellavsnittet, PressureSpin etter rotasjonsavsnittet, RossbyScale
+    // (havvirvler) etter havvirvelavsnittet og ny widget-linje Oppvelling. Godkjent av Mats 18.10.
+    flag: "g2-coriolis-geo-fagsjekk-2026-10-18",
+    slug: "coriolis",
+    stale: ["opptil 100–200 m ved sterk vind (Stewart, 2008)", "roterer mot klokka, slik den nordlige halvkula"],
+  },
+  {
     // Jordskjelv: ny figur Bolgegenerering under «Overflatebølger» (bare widget-fencen er ny), fagsjekket av Geo 19.10.
     flag: "jordskjelv-bolgegenerering-2026-10-19",
     slug: "jordskjelv",

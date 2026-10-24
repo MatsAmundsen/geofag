@@ -65,11 +65,6 @@ import {
   WeatherProgression24hDiagram,
   WindCellsDiagram,
   ValleyWindDiagram,
-  CarouselFrameDiagram,
-  CoriolisDiagram,
-  CoriolisScaleDiagram,
-  CycloneSpinDiagram,
-  GlobalDeflectionDiagram,
   EarthRadiationBudgetDiagram,
   BjerknesLoopDiagram,
   EnsoComparisonDiagram,
@@ -111,6 +106,18 @@ import {
   EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
+  AvboyningFigurLat,
+  EkmanSpiralFigurLat,
+  FartOstoverFigurLat,
+  GeostrofiskFigurLat,
+  HavvirvlerFigurLat,
+  KarusellFigurLat,
+  OppvellingFigurLat,
+  SkalaFigurLat,
+  SyklonRotasjonFigurLat,
+  TilpasningFigurLat,
+  TrykkRotasjonFigurLat,
+  ZonalVertikalFigurLat,
   LandskapBlokkFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
 import {
@@ -169,7 +176,6 @@ import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
-import { CoriolisLatitudeDiagram, EkmanSpiralDiagram, GeostrophicAdjustmentDiagram, PressureSpinDiagram, RossbyScaleDiagram, ZonalCentrifugalDiagram } from "@/components/diagrams/coriolis";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
 import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselFigur, SupercelleFigur } from "@/components/diagrams/vaerkatastrofer-figurer-2";
 import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
@@ -633,10 +639,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-    KarusellDiagram: () => <CarouselFrameDiagram />,
-    AvboyningDiagram: () => <GlobalDeflectionDiagram />,
-    SyklonDiagram: () => <CycloneSpinDiagram />,
-    GeostrofiskDiagram: () => <CoriolisDiagram />,
+    KarusellDiagram: () => <KarusellFigurLat />,
+    AvboyningDiagram: () => <AvboyningFigurLat />,
+    SyklonDiagram: () => <SyklonRotasjonFigurLat />,
+    GeostrofiskDiagram: () => <GeostrofiskFigurLat />,
     EkmanForklaring: () => (
     <Callout title="Hva betyr «ekmantransport»?">
       <p>
@@ -646,7 +652,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-    SkalaDiagram: () => <CoriolisScaleDiagram />,
+    SkalaDiagram: () => <SkalaFigurLat />,
     QuizCoriolis: () => (
     <Quiz questions={QUIZ_CORIOLIS} heading={null} intro="Velg ett svar per spørsmål." />
   ),
@@ -1070,12 +1076,14 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   JetBlocking: () => <JetOmegaFigurLat />,
   Nao: () => <JetNaoFigurLat />,
   JetStormbane: () => <StormbaneFigurLat />,
-  CoriolisLatitude: () => <CoriolisLatitudeDiagram />,
-  ZonalCentrifugal: () => <ZonalCentrifugalDiagram />,
-  PressureSpin: () => <PressureSpinDiagram />,
-  GeostrophicAdjustment: () => <GeostrophicAdjustmentDiagram />,
-  EkmanSpiral: () => <EkmanSpiralDiagram />,
-  RossbyScale: () => <RossbyScaleDiagram />,
+  CoriolisLatitude: () => <FartOstoverFigurLat />,
+  ZonalCentrifugal: () => <ZonalVertikalFigurLat />,
+  PressureSpin: () => <TrykkRotasjonFigurLat />,
+  GeostrophicAdjustment: () => <TilpasningFigurLat />,
+  EkmanSpiral: () => <EkmanSpiralFigurLat />,
+  RossbyScale: () => <HavvirvlerFigurLat />,
+  // Coriolis (Geo N1): egen oppvellingsfigur; widgetlinja kommer i reseed-PR-en
+  Oppvelling: () => <OppvellingFigurLat />,
   CoriolisModel: () => <CoriolisModel />,
   OceanCurrentModel: () => <OceanCurrentModel />,
   Ekman: () => <EkmanSpiralFigurLat />,

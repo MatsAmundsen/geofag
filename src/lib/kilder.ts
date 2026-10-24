@@ -4116,6 +4116,18 @@ export const KILDER = {
       href: "https://www.kartverket.no/til-sjos/se-havniva",
     },
     {
+      prefix: "Kartverket. (2021, 30. november). ",
+      italic: "Hva er forskjellen på tidevann og vannstand?",
+      suffix: "",
+      href: "https://www.kartverket.no/til-sjos/se-havniva/lar-om-tidevann-og-vannstand/hva-er-forskjellen-pa-tidevann-og-vannstand",
+    },
+    {
+      prefix: "Selberg, L. A., Skjerdal, M. S., Julsrud, I. R., Øiestad, M., Andersen, A. S. H., & Kristensen, N. M. (2020). ",
+      italic: "Hendelserapport: Ekstremværet Elsa mandag 10. og tirsdag 11. februar 2020",
+      suffix: " (METinfo nr. 17/2020). Meteorologisk institutt.",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/ekstremvaer-far-navn/_/attachment/download/f28f8efb-6df7-4d3b-8cbc-785babddfdb9:993172a9d59d9d941f406a4ebe2a2776a9d14e51/MET-info-17-2020.pdf",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-d). ",
       italic: "Baroklinitet",
       suffix: ".",

@@ -29,6 +29,20 @@ import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst"
 import { EKMAN_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
+import {
+  AVBOYNING_TEKST,
+  EKMANSPIRAL_TEKST,
+  FART_OSTOVER_TEKST,
+  GEOSTROFISK_TEKST,
+  HAVVIRVLER_TEKST,
+  KARUSELL_TEKST,
+  OPPVELLING_TEKST,
+  SKALA_TEKST_CORIOLIS,
+  SYKLON_TEKST_CORIOLIS,
+  TILPASNING_TEKST,
+  TRYKK_ROTASJON_TEKST,
+  ZONAL_VERTIKAL_TEKST,
+} from "./coriolis-tekst";
 
 type Plass = {
   heading: string;
@@ -501,3 +515,22 @@ export const SyklonmodellFigurLat = lat<FigurProps>(
     underTrinn: { fra: 472.75, trinn: [[286, 454.88], [348.5, 428.88], [413.5, 396.88], [429.5, 356.88], [510.5, 330.88]] } },
   () => import("./syklonmodell-figur").then((m) => m.SyklonmodellFigur),
 );
+
+/* Coriolis-figurene (Geofag 2, fagsjekk Geo 18.10): samme StegFigur-mønster som jetstrømmer, målte punkter. */
+type CoriolisNavn = keyof typeof import("./coriolis-figurer");
+const coriolisLat = (tekst: { heading: string; title: string; caption: string }, maal: Partial<typeof JET_MAAL> & Pick<Plass, "steg">, navn: CoriolisNavn) =>
+  lat<FigurProps>({ ...tekst, ...JET_MAAL, smal: [960, 540], ...maal }, () => import("./coriolis-figurer").then((m) => m[navn] as ComponentType<FigurProps>));
+// MAAL-START (målt 18.10 20:59–21:02 CEST med coriolis/pr/arbeid/c-sveip.mjs, vindu 320–1280 px, build d30bdea+788a5a4; CLS ikke kontrollert ennå)
+export const KarusellFigurLat = coriolisLat(KARUSELL_TEKST, { steg: { over: [[270, 119], [376, 119], [377, 87], [806, 87]], liste: [[270, 178.5], [289, 178.5], [290, 162], [759, 162], [760, 0], [806, 0]], under: [[270, 55.75], [326, 55.75], [327, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "KarusellFigur");
+export const AvboyningFigurLat = coriolisLat(AVBOYNING_TEKST, { steg: { over: [[270, 119], [384, 119], [385, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[270, 69.88], [759, 69.88], [760, 57.88], [806, 57.88]] } }, "AvboyningFigur");
+export const FartOstoverFigurLat = coriolisLat(FART_OSTOVER_TEKST, { steg: { over: [[270, 119], [357, 119], [358, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[270, 113.75], [324, 113.75], [325, 95.88], [398, 95.88], [399, 69.88], [759, 69.88], [760, 57.88], [806, 57.88]] } }, "FartOstoverFigur");
+export const ZonalVertikalFigurLat = coriolisLat(ZONAL_VERTIKAL_TEKST, { steg: { over: [[270, 119], [302, 119], [303, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[270, 55.75], [426, 55.75], [427, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "ZonalVertikalFigur");
+export const SyklonRotasjonFigurLat = coriolisLat(SYKLON_TEKST_CORIOLIS, { steg: { over: [[270, 119], [276, 119], [277, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[270, 55.75], [485, 55.75], [486, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "SyklonRotasjonFigur");
+export const TrykkRotasjonFigurLat = coriolisLat(TRYKK_ROTASJON_TEKST, { steg: { over: [[270, 119], [410, 119], [411, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[270, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "TrykkRotasjonFigur");
+export const GeostrofiskFigurLat = coriolisLat(GEOSTROFISK_TEKST, { steg: { over: [[270, 119], [319, 119], [320, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[270, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "GeostrofiskFigur");
+export const TilpasningFigurLat = coriolisLat(TILPASNING_TEKST, { steg: { over: [[270, 119], [376, 119], [377, 87], [806, 87]], liste: [[270, 106], [759, 106], [760, 0], [806, 0]], under: [[270, 113.75], [278, 113.75], [279, 95.88], [379, 95.88], [380, 69.88], [759, 69.88], [760, 57.88], [806, 57.88]] } }, "TilpasningFigur");
+export const EkmanSpiralFigurLat = coriolisLat(EKMANSPIRAL_TEKST, { steg: { over: [[270, 119], [388, 119], [389, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 50], [759, 50], [760, 0], [806, 0]], under: [[270, 73.62], [292, 73.62], [293, 55.75], [561, 55.75], [562, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "EkmanSpiralFigur");
+export const OppvellingFigurLat = coriolisLat(OPPVELLING_TEKST, { steg: { over: [[270, 119], [468, 119], [469, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 78], [759, 78], [760, 0], [806, 0]], under: [[270, 55.75], [457, 55.75], [458, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "OppvellingFigur");
+export const SkalaFigurLat = coriolisLat(SKALA_TEKST_CORIOLIS, { smal: [960, 480], bred: [960, 480], steg: { over: [[270, 119], [279, 119], [280, 87], [806, 87]], liste: [[270, 106], [759, 106], [760, 0], [806, 0]], under: [[270, 12], [759, 12], [760, 0], [806, 0]] } }, "SkalaFigur");
+export const HavvirvlerFigurLat = coriolisLat(HAVVIRVLER_TEKST, { steg: { over: [[270, 151], [321, 151], [322, 119], [563, 119], [564, 87], [806, 87]], liste: [[270, 88], [669, 88], [670, 22], [759, 22], [760, 0], [806, 0]], under: [[270, 55.75], [323, 55.75], [324, 37.88], [759, 37.88], [760, 25.88], [806, 25.88]] } }, "HavvirvlerFigur");
+// MAAL-SLUTT
