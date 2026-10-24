@@ -16,32 +16,32 @@ import { F, LokaleRamme, medKilde, useLokaleTidslinje, type Hinder, type Lab } f
 /** Sett til true for å slå sammen steg 3 og 4 (okklusjonen starter + varm luft løftet bort). */
 const SLAA_SAMMEN_STEG_3_OG_4: boolean = false;
 
-type Bilde = { bolge: number; fronter: number; okkl: number; loft: number; fyll: number; x: number };
+type Bilde = { bolge: number; iso: number; fronter: number; okkl: number; loft: number; fyll: number; x: number };
 type Steg = { fase: string; status: ReactNode; bilde: Bilde };
 
 const STEG_ALLE: Steg[] = [
   {
     fase: "Bølge på fronten",
     status: medKilde(
-      "Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, vanligvis mellom 40° og 70° bredde. Lavtrykket starter som en bølge på fronten.",
+      "Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, vanligvis mellom 40° og 70° bredde. Lavtrykket starter som en svak bølge på fronten.",
       "Store norske leksikon, u.å.-a; NOAA, u.å.-b",
     ),
-    bilde: { bolge: 1, fronter: 0.3, okkl: 0, loft: 0, fyll: 0, x: 0.1 },
+    bilde: { bolge: 0.4, iso: 0, fronter: 0, okkl: 0, loft: 0, fyll: 0, x: 0.1 },
   },
   {
     fase: "Varmfront og kaldfront",
     status: medKilde("Lavtrykket får en varmfront og en kaldfront.", "NOAA, u.å.-b"),
-    bilde: { bolge: 1, fronter: 1, okkl: 0, loft: 0, fyll: 0, x: 0.3 },
+    bilde: { bolge: 1, iso: 1, fronter: 1, okkl: 0, loft: 0, fyll: 0, x: 0.3 },
   },
   {
     fase: "Okklusjonen starter",
     status: medKilde("Kaldfronten tar igjen varmfronten og danner en okkludert front.", "NOAA, u.å.-b"),
-    bilde: { bolge: 1, fronter: 1, okkl: 0.3, loft: 0.35, fyll: 0, x: 0.5 },
+    bilde: { bolge: 1, iso: 1, fronter: 1, okkl: 0.3, loft: 0.35, fyll: 0, x: 0.5 },
   },
   {
     fase: "Varm luft løftes fra bakken",
     status: medKilde("Den varme lufta løftes fra bakken og bort fra sentrum, og lavtrykket svekkes og fylles ut.", "NOAA, u.å.-b"),
-    bilde: { bolge: 1, fronter: 1, okkl: 0.55, loft: 1, fyll: 0.45, x: 0.7 },
+    bilde: { bolge: 1, iso: 1, fronter: 1, okkl: 0.55, loft: 1, fyll: 0.45, x: 0.7 },
   },
   {
     fase: "Fylles ut",
@@ -49,7 +49,7 @@ const STEG_ALLE: Steg[] = [
       "Lavtrykket er fylt ut. Langs polarfronten vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen.",
       "Store norske leksikon, u.å.-a; NOAA, u.å.-b",
     ),
-    bilde: { bolge: 1, fronter: 0.25, okkl: 0.6, loft: 1, fyll: 1, x: 1 },
+    bilde: { bolge: 1, iso: 1, fronter: 0.25, okkl: 0.6, loft: 1, fyll: 1, x: 1 },
   },
 ];
 
@@ -70,7 +70,7 @@ const STEG: Steg[] = SLAA_SAMMEN_STEG_3_OG_4
   : STEG_ALLE;
 
 const FASER = STEG.map((s) => s.fase);
-const START: Bilde = { bolge: 0, fronter: 0, okkl: 0, loft: 0, fyll: 0, x: 0 };
+const START: Bilde = { bolge: 0, iso: 0, fronter: 0, okkl: 0, loft: 0, fyll: 0, x: 0 };
 const BILDER: Bilde[] = [START, ...STEG.map((s) => s.bilde)];
 /** Fasen der okklusjonen starter (1-basert). */
 const OKKL_FASE = 3;
@@ -113,10 +113,14 @@ function langs(p: Pkt[], avstand: number) {
   return out;
 }
 
+/** Radius på frontsymbolene: 9 på bred skjerm, større på smal skjerm så de blir minst ca. 4 CSS-piksler. */
+function symbolRadius(narrow: boolean, scale: number) {
+  return narrow ? 9 * Math.max(1, 0.45 / scale) : 9;
+}
+
 /** Frontsymboler: trekanter (kald), halvsirkler (varm) eller vekselvis (okkludert), på siden `side`. */
-function symboler(p: Pkt[], type: "kald" | "varm" | "okkl", side: (nx: number, ny: number) => boolean) {
-  const r = 9;
-  return langs(p, 34)
+function symboler(p: Pkt[], type: "kald" | "varm" | "okkl", side: (nx: number, ny: number) => boolean, r = 9) {
+  return langs(p, Math.max(34, r * 2.7))
     .map(({ x, y, dx, dy }, i) => {
       let nx = -dy;
       let ny = dx;
@@ -163,6 +167,21 @@ function polarfront(g: ReturnType<typeof geometri>, bolge: number): { vest: Pkt[
   const vest = bezier([-20, FRONT_Y + 30], [k[0] - 120, FRONT_Y + 30 + 10 * bolge], k, 12);
   const ost = bezier(w, [w[0] + 120, FRONT_Y + 10], [980, FRONT_Y - 10], 12);
   return { vest, ost };
+}
+
+/** Steg 1: bølgetoppen fra polarfronten vest (k) via sentrum (C) til polarfronten øst (w), med samme tangent som polarfronten i k og w (ingen knekk). */
+function bolgeTopp(pf: { vest: Pkt[]; ost: Pkt[] }, C: Pkt): string {
+  const k = pf.vest[pf.vest.length - 1];
+  const kf = pf.vest[pf.vest.length - 2];
+  const w = pf.ost[0];
+  const wb = pf.ost[1];
+  const a = 0.35 * Math.hypot(C[0] - k[0], C[1] - k[1]) / Math.hypot(k[0] - kf[0], k[1] - kf[1]);
+  const b = 0.35 * Math.hypot(w[0] - C[0], w[1] - C[1]) / Math.hypot(wb[0] - w[0], wb[1] - w[1]);
+  const c1: Pkt = [k[0] + (k[0] - kf[0]) * a, k[1] + (k[1] - kf[1]) * a];
+  const c4: Pkt = [w[0] - (wb[0] - w[0]) * b, w[1] - (wb[1] - w[1]) * b];
+  const h = 0.3 * (w[0] - k[0]);
+  const f = (p: Pkt) => `${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
+  return `M${f(k)} C${f(c1)} ${f([C[0] - h, C[1]])} ${f(C)} C${f([C[0] + h, C[1]])} ${f(c4)} ${f(w)}`;
 }
 
 /** Stiplet bue mot klokka rundt sentrum, med pilspiss nederst (der lufta går mot øst). */
@@ -244,15 +263,16 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   const snittOp = fase >= 2 && fase <= (SLAA_SAMMEN_STEG_3_OG_4 ? 3 : 4) ? 1 : 0;
   const varmSektor = [...g.W, ...[...g.K].reverse()];
   const sirk = sirkulasjon(g.C);
-  const sirkOp = clamp(dybde * 1.4) * 0.8;
+  const sirkOp = clamp(dybde * 1.4) * 0.8 * smooth(s.iso);
   const bevOp = fase >= 2 && fase <= (SLAA_SAMMEN_STEG_3_OG_4 ? 3 : 4) ? fr : 0;
-  const frontOp = clamp(0.25 + fr);
+  // steg 1 (svak bølge): ingen modne fronter og ingen lukkede isobarer
+  const frontOp = clamp(0.25 + fr) * smooth(s.iso);
   const pfOp = 0.5 * (1 - fr) + 0.2;
   // isobarene har sentrum i lavtrykket; den innerste går innenfor sirkulasjonsbuen
   const isobarer = [50, 104, 150, 204].map((r, i) => ({
     rx: r * 1.25 * (1 + 0.4 * s.fyll),
     ry: r * (1 + 0.4 * s.fyll),
-    op: clamp(dybde * 1.6 - i * 0.3) * 0.75,
+    op: clamp(dybde * 1.6 - i * 0.3) * 0.75 * smooth(s.iso),
   }));
   const bevegelse = [
     { fra: add(g.K[12], [22, -4]), vinkel: 12, lengde: 78, farge: F.kaldfront },
@@ -262,11 +282,14 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   // nummerskiltene på smal skjerm skal ligge utenfor frontene (med symboler), buen, isobarene og pilene
   const hinder: Hinder[] = [
     { p: g.W, b: 30 },
-    { p: g.K, b: 30 },
+    { p: g.K, b: 44 },
     { p: pf.vest, b: 3 },
     { p: pf.ost, b: 3 },
   ];
-  if (g.O.length > 1) hinder.push({ p: g.O, b: 30 });
+  // b dekker også de større frontsymbolene på smal skjerm (r ≈ 14 ved 320 px, høyde ≈ 20)
+  if (g.O.length > 1) hinder.push({ p: g.O, b: 44 });
+  // okklusjonspunktet (trippelpunktet): heller ikke lederne fra skiltene skal krysse det
+  if (g.O.length > 1) hinder.push({ punkt: g.T, r: 14 });
   // skybåndene langs frontene og «L» i sentrum
   if (0.12 * fr > 0.02) hinder.push({ p: g.W.map(([x, y]) => [x, y - 18] as Pkt), b: 46 }, { p: g.K, b: 22 });
   if (g.O.length > 1 && 0.14 * fr > 0.02) hinder.push({ p: g.O, b: 40 });
@@ -295,7 +318,9 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
   } else if (fase === OKKL_FASE) {
     lab("Okkludert front", g.C[0] + 30, g.C[1] - 70, [g.O[Math.floor(g.O.length / 2)][0], g.O[Math.floor(g.O.length / 2)][1] - 10], F.okkludert);
   } else if (fase === OKKL_FASE + 1 && !SLAA_SAMMEN_STEG_3_OG_4) {
-    lab("Varm luft løftes fra bakken", 820, 170, [g.T[0] + 20, g.T[1] - 14], F.varm, "end");
+    // målet ligger over fronten litt øst for okklusjonspunktet (den løftede varme lufta), ikke på selve
+    // punktet, så verken prikken eller lederen dekker trippelpunktet på smal skjerm
+    lab("Varm luft løftes fra bakken", 820, 170, [g.T[0] + 16, g.T[1] - 34], F.varm, "end");
     lab("Lavtrykket svekkes", g.C[0] - 120, g.C[1] - 80, [g.C[0] - 12, g.C[1] - 44], F.tekst);
   } else {
     lab("Lavtrykket fylles ut", g.C[0], g.C[1] - 90, [g.C[0], g.C[1] - 30], F.tekst);
@@ -338,7 +363,7 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
         ) : null
       }
     >
-      {({ narrow }) => (
+      {({ narrow, scale }) => (
         <>
           <defs>
             <linearGradient id={`${uid}-luft`} x1="0" y1="0" x2="0" y2="1">
@@ -373,17 +398,21 @@ export function SyklonFigur({ heading, caption }: { heading?: string; caption?: 
           {/* polarfronten utenfor lavtrykket */}
           <path d={smoothPath(pf.vest)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
           <path d={smoothPath(pf.ost)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp} data-nocheck="" />
+          {/* steg 1: polarfronten går sammenhengende gjennom bølgetoppen */}
+          {s.iso < 0.98 ? (
+            <path d={bolgeTopp(pf, g.C)} fill="none" stroke={F.retur} strokeWidth="3" strokeDasharray="10 8" opacity={pfOp * (1 - smooth(s.iso))} data-nocheck="" />
+          ) : null}
           {/* frontene, heltrukne som i Værkart (PR #187). Uten farge skilles den okkluderte fronten fra
               kaldfronten på de vekslende trekantene og halvsirklene, også i tegnforklaringen. */}
           <g opacity={frontOp}>
             <path d={stiAv(g.W)} fill="none" stroke={F.varmfront} strokeWidth="4" />
-            <path d={symboler(g.W, "varm", (nx, ny) => ny < 0)} fill={F.varmfront} />
+            <path d={symboler(g.W, "varm", (nx, ny) => ny < 0, symbolRadius(narrow, scale))} fill={F.varmfront} />
             <path d={stiAv(g.K)} fill="none" stroke={F.kaldfront} strokeWidth="4" />
-            <path d={symboler(g.K, "kald", (nx) => nx > 0)} fill={F.kaldfront} />
+            <path d={symboler(g.K, "kald", (nx) => nx > 0, symbolRadius(narrow, scale))} fill={F.kaldfront} />
             {g.O.length > 1 ? (
               <>
                 <path d={stiAv(g.O)} fill="none" stroke={F.okkludert} strokeWidth="4" />
-                <path d={symboler(g.O, "okkl", (nx, ny) => ny < 0)} fill={F.okkludert} />
+                <path d={symboler(g.O, "okkl", (nx, ny) => ny < 0, symbolRadius(narrow, scale))} fill={F.okkludert} />
               </>
             ) : null}
           </g>

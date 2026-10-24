@@ -23,8 +23,11 @@ export function PlayPauseToggle({
   onToggle,
   label,
   name,
+  pulserer = isPlaying,
 }: {
   isPlaying: boolean;
+  /** Om den grønne prikken skal pulsere. Sett til false når figuren venter eller er utenfor skjermen. */
+  pulserer?: boolean;
   onToggle: () => void;
   label?: string;
   /** Navnet på figuren, tas med i aria-label så knappene kan skilles fra hverandre. */
@@ -41,7 +44,7 @@ export function PlayPauseToggle({
       <span
         className={
           isPlaying
-            ? "size-1.5 rounded-full bg-emerald-500 animate-pulse"
+            ? `size-1.5 rounded-full bg-emerald-500${pulserer ? " animate-pulse" : ""}`
             : "size-1.5 rounded-full bg-muted-foreground"
         }
       />

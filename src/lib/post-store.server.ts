@@ -1168,6 +1168,36 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "coriolis",
     stale: ["opptil 100–200 m ved sterk vind (Stewart, 2008)", "roterer mot klokka, slik den nordlige halvkula"],
   },
+  {
+    // Jordskjelv: ny figur Bolgegenerering under «Overflatebølger» (bare widget-fencen er ny), fagsjekket av Geo 19.10.
+    flag: "jordskjelv-bolgegenerering-2026-10-19",
+    slug: "jordskjelv",
+    stale: ["rister husene mest.\n\n```widget\nSjekkJordskjelv3"],
+  },
+  {
+    // Jordskjelv som naturfare: gjentak med Poisson-formel P = 1 − e^(−T/R) i l. 118 og tabellen
+    // 1,0 / 39,3 / 63,2 % i l. 122 (Baker, 2008; USGS, 2019). Fagsjekket av Geo 20.10, PR godkjent av Mats 20.10.
+    flag: "g1-jordskjelv-naturfare-poisson-2026-10-20",
+    slug: "jordskjelv-naturfare",
+    stale: ["P = 1 − (1 − 1/R)^T.", "| 100 år | 1 % | 39,5 % | 63,4 % |"],
+  },
+  {
+    // Værkart: tråg-raden relativt formulert, helningstallet for kaldfronten fjernet og avsnitt om forkortet trykk (084 = 1008,4 hPa), godkjent av Mats 22.10.
+    flag: "g2-vaerkart-trag-helning-2026-10-22",
+    slug: "vaerkart",
+    stale: ["om lag 1:50–1:100 (Store norske leksikon", "ekstra ustabil luft, med kraftige byger", "helt overskyet ved 8/8 (NOAA, u.å.-f).\n\n```widget\nStationModel"],
+  },
+  {
+    // Jetstrømmer: NAO-boksen henviser til kapittelets egen kildebokstav (NOAA, u.å.-b), godkjent av Mats 22.10.
+    flag: "g2-jetstrommer-nao-kilde-2026-10-22",
+    slug: "jetstrommer",
+    stale: ["```widget\nNaoForklaring\n```"],
+  },
+  { flag: "g2-coriolis-ekman-2026-10-22", slug: "coriolis", stale: ["opptil 100–200 m ved sterk vind", "ca. 5°, om lag 500 km"] },
+  { flag: "g2-vaerkatastrofer-polarlavtrykk-2026-10-22", slug: "vaerkatastrofer", stale: ["Fra 2000 og fram til i dag (oktober 2026)"] },
+  { flag: "g2-vaerkatastrofer-bolk2-2026-10-22", slug: "vaerkatastrofer", stale: ["EF5 er over 200 mph (National Weather Service, u.å.)."] },
+  // Værkatastrofer: Hans-nyansen om atmosfærisk elv fra øst (Svensson, 2023), godkjent av Mats 23.10.
+  { flag: "g2-vaerkatastrofer-hans-ar-2026-10-23", slug: "vaerkatastrofer", stale: ["(Norges vassdrags- og energidirektorat, 2024).\n\nMeteorologisk institutt varslet"] },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

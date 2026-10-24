@@ -14,11 +14,25 @@ function isItemActive(pathname: string, to: string) {
 // Lastet med #anker: ruterens første scrollIntoView skal ikke arve scroll-behavior: smooth fra styles.css
 // (da glir siden forbi målet før rettingen). Settes før hydreringen og fjernes i stopp() nedenfor, så
 // klikk på ankre på samme side glir som før.
+// Ekte brukerinndata registreres allerede når modulen lastes (før hydreringen og før effekten under kjører),
+// så rulling i de første par hundre millisekundene aldri blir «rettet» tilbake til ankeret.
+const INNDATA = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+let brukerHarRullet = false;
+let fjernTidligLytter = () => {};
 if (typeof window !== "undefined" && window.location.hash.length > 1) {
   document.documentElement.style.scrollBehavior = "auto";
+  const merk = () => {
+    brukerHarRullet = true;
+    fjernTidligLytter();
+  };
+  fjernTidligLytter = () => {
+    for (const h of INNDATA) window.removeEventListener(h, merk, true);
+    fjernTidligLytter = () => {};
+  };
+  for (const h of INNDATA) window.addEventListener(h, merk, { passive: true, capture: true });
 }
 
-function rullTilHashEtterMaaling(header: HTMLElement) {
+function rullTilHashEtterMaaling(finnHeader: () => HTMLElement | null) {
   const root = document.documentElement;
   let id = "";
   try {
@@ -30,53 +44,81 @@ function rullTilHashEtterMaaling(header: HTMLElement) {
     root.style.removeProperty("scroll-behavior");
     return () => {};
   }
-  const hendelser = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+  fjernTidligLytter();
+  if (brukerHarRullet) {
+    root.style.removeProperty("scroll-behavior");
+    return () => {};
+  }
   let forrigeY = Number.NaN;
   // Posisjonen siden sist ble godtatt eller rettet til. Flytter siden seg bort derfra uten at denne logikken
   // rullet (skjermleserens bla-modus, «finn på siden», skript), overtar brukeren: stopp, ikke rull tilbake.
+  // NaN til første stille ramme: nettleserens egen hash-rulling og ruterens scrollIntoView rett etter
+  // hydreringen skal ikke regnes som «flyttet av andre». Ekte inndata stopper uansett med en gang.
   let egenY = Number.NaN;
-  let ganger = 0;
   let stoppet = false;
+  let ramme = 0;
+  const start = performance.now();
   const flyttetAvAndre = () => !Number.isNaN(egenY) && Math.abs(window.scrollY - egenY) > 2;
+  // Sjekkes hver ramme (ikke hvert 150. ms), så en layoutendring rettes i neste ramme i stedet for å stå feil
+  // i flere hundre millisekunder. «Stille» = samme scrollY to rammer på rad.
   const sjekk = () => {
+    ramme = 0;
+    if (stoppet) return;
+    if (brukerHarRullet || flyttetAvAndre()) return stopp();
+    if (performance.now() - start > 3000) return stopp();
     const y = window.scrollY;
-    if (flyttetAvAndre()) return stopp();
     const stille = y === forrigeY;
     forrigeY = y;
-    if (!stille) return;
-    const mal = document.getElementById(id);
-    if (!mal) {
-      egenY = y;
-      return;
+    if (stille) {
+      const mal = document.getElementById(id);
+      const header = finnHeader();
+      if (mal && header) {
+        const bunn = header.getBoundingClientRect().bottom;
+        const top = mal.getBoundingClientRect().top;
+        const nederst = y >= root.scrollHeight - window.innerHeight - 1;
+        if ((top < bunn + 8 || top > bunn + 24) && !(nederst && top > bunn)) {
+          mal.scrollIntoView({ block: "start", behavior: "instant" });
+          forrigeY = Number.NaN;
+        }
+      }
+      egenY = window.scrollY;
     }
-    const bunn = header.getBoundingClientRect().bottom;
-    const top = mal.getBoundingClientRect().top;
-    const nederst = y >= root.scrollHeight - window.innerHeight - 1;
-    if ((top < bunn + 8 || top > bunn + 24) && !(nederst && top > bunn)) {
-      mal.scrollIntoView({ block: "start", behavior: "instant" });
-      forrigeY = Number.NaN;
-    }
-    egenY = window.scrollY;
+    ramme = window.requestAnimationFrame(sjekk);
+  };
+  const vedInndata = () => {
+    brukerHarRullet = true;
+    stopp();
   };
   const vedRulling = () => {
     if (flyttetAvAndre()) stopp();
   };
-  const tidtaker = window.setInterval(() => {
-    sjekk();
-    if (++ganger >= 20) stopp();
-  }, 150);
+  // Layoutendringer (figurer, plassholdere, skrift) utløser en sjekk i samme ramme.
+  const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => {
+    if (!stoppet && !ramme) ramme = window.requestAnimationFrame(sjekk);
+  }) : null;
+  ro?.observe(document.body);
   function stopp() {
     if (stoppet) return;
     stoppet = true;
-    window.clearInterval(tidtaker);
-    for (const h of hendelser) window.removeEventListener(h, stopp);
+    if (ramme) window.cancelAnimationFrame(ramme);
+    ro?.disconnect();
+    for (const h of INNDATA) window.removeEventListener(h, vedInndata, true);
     window.removeEventListener("scroll", vedRulling);
     root.style.removeProperty("scroll-behavior");
   }
-  for (const h of hendelser) window.addEventListener(h, stopp, { passive: true });
+  for (const h of INNDATA) window.addEventListener(h, vedInndata, { passive: true, capture: true });
   window.addEventListener("scroll", vedRulling, { passive: true });
+  ramme = window.requestAnimationFrame(sjekk);
   return stopp;
 }
+
+// Rettingen starter allerede når modulen lastes (før hydreringen), ikke først i effekten: ellers kan
+// ankeret stå feil i flere hundre millisekunder mens hydreringen pågår. Effekten tar over stopp-funksjonen.
+const HEADER_VELGER = "body header.sticky";
+let tidligStopp: (() => void) | null =
+  typeof window !== "undefined" && window.location.hash.length > 1
+    ? rullTilHashEtterMaaling(() => document.querySelector<HTMLElement>(HEADER_VELGER))
+    : null;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -98,7 +140,10 @@ export function SiteHeader() {
     // under hydreringen, og målet kan dukke opp først etter hydreringen. I opptil 3 s etter innlasting:
     // når rullingen står stille og målet ikke står rett under menyen, rull dit med målt høyde. Stopper
     // ved første brukerinndata, og når noe annet enn denne logikken flytter siden.
-    const stopp = rullTilHashEtterMaaling(header);
+    const stopp =
+      tidligStopp ??
+      rullTilHashEtterMaaling(() => (header.isConnected ? header : document.querySelector(HEADER_VELGER)));
+    tidligStopp = null;
     const ro = new ResizeObserver(apply);
     ro.observe(header);
     return () => {

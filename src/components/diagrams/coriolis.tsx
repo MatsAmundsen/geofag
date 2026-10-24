@@ -593,7 +593,7 @@ export function PressureSpinDiagram() {
     <Diagram
       title="Syklonal og antisyklonal sirkulasjon med bakkefriksjon"
       heading="Hvorfor lavtrykk spinner mot klokken og høytrykk spinner med klokken"
-      caption="Når vi beveger oss ned i det atmosfæriske grenselaget (nær bakken), bremser friksjonen mot terreng og havbølger vindhastigheten. Fordi farten synker, svekkes Corioliskraften (som er direkte proporsjonal med fart). Trykkgradientkraften svekkes derimot ikke! Trykkgradientkraften «vinner» drakampen og trekker vinden på skrå over isobarene (typisk 15°–30° vinkel): 1) Rundt et lavtrykk (til venstre): Vinden blåser i en spiral MOT KLOKKEN og innover mot sentrum (konvergens ved bakken). Den innstrømmende luften tvinges oppover, avkjøles adiabatisk og danner skyer og regn. 2) Rundt et høytrykk (til høyre): Vinden blåser i en spiral MED KLOKKEN og utover fra sentrum (divergens ved bakken). Dette suger luft ned fra høyden (subsidens), som varmes adiabatisk og oppløser skyene."
+      caption="Når vi beveger oss ned i det atmosfæriske grenselaget (nær bakken), bremser friksjonen mot terreng og havbølger vindhastigheten. Fordi farten synker, svekkes Corioliskraften (som er direkte proporsjonal med fart). Trykkgradientkraften svekkes derimot ikke! Trykkgradientkraften «vinner» drakampen og trekker vinden på skrå over isobarene (om lag 0–20° over hav og 20–40° over land ifølge Store norske leksikon): 1) Rundt et lavtrykk (til venstre): Vinden blåser i en spiral MOT KLOKKEN og innover mot sentrum (konvergens ved bakken). Den innstrømmende luften tvinges oppover, avkjøles adiabatisk og danner skyer og regn. 2) Rundt et høytrykk (til høyre): Vinden blåser i en spiral MED KLOKKEN og utover fra sentrum (divergens ved bakken). Dette suger luft ned fra høyden (subsidens), som varmes adiabatisk og oppløser skyene."
       viewBox="0 0 920 400"
       wide
     >
@@ -709,7 +709,7 @@ export function PressureSpinDiagram() {
 export function RossbyScaleDiagram() {
   return (
     <Diagram
-      title="Skala og Rossby-tallet (Ro): Hvorfor vasken lyver og orkanen spinner"
+      title="Skala og Rossby-tallet (Ro): Hvorfor vasken er et dårlig bevis og orkanen spinner"
       heading="Det matematiske beviset: Rossby-tallet skiller vasken fra stormene"
       caption="Rossby-tallet (Ro = U / (f·L)) er et dimensjonsløst tall som meteorologer og oseanografer bruker for å avgjøre om Corioliseffekten betyr noe for en bevegelse: U er hastighet, f er Coriolisparameteren (~10⁻⁴ s⁻¹ i Norge), og L er fenomenets horisontale utstrekning. 1) Når Ro >> 1 (rød sone til venstre): Treghets- og sentrifugalkrefter er tusenvis av ganger sterkere enn Coriolis. I en vask (Ro ≈ 16 000), et fotballspark (Ro ≈ 4000) eller en tornado (Ro ≈ 1100) er Corioliskraften fullstendig ubetydelig. Hvilken vei vannet renner i vasken avgjøres av kummens form, kranens vinkel og restvirvler fra da du vasket hendene! 2) Når Ro << 1 (grønn sone til høyre): Corioliskraften dominerer over akselerasjon. I polare lavtrykk (Ro ≈ 0,3), ekstratropiske sykloner (Ro ≈ 0,08) og store havstrømmer (Ro ≈ 0,002) tvinger Corioliseffekten all bevegelse inn i faste rotasjonsmønstre."
       viewBox="0 0 920 380"

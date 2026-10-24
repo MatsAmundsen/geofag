@@ -6,9 +6,9 @@
 export const LANDSKAP_TEKST = {
   heading: "Gamle vidder, unge fjorder og strandflaten",
   title:
-    "Terrengblokk med havet i vest og innlandet i øst, med to faner for de to modellene. Klassisk modell: et gammelt, lavt og nesten flatt landskap heves mest i vest, elvene graver seg ned i flaten, breene graver ut dalene til U-daler og fjorder, og restene av flaten står igjen som vidder. Langs kysten dannes strandflaten, en lav og flat brem med øyer, holmer og skjær. Annen modell: fjellene har vært høye hele tiden, og istidene sliper ned toppene til en jevn høyde omkring snøgrensen. Under blokken viser et snitt fra vest til øst høyden langs fjorden og havnivået (ytterst i vest strandflaten), og et tidsspor viser når prosessene virket.",
+    "Terrengblokk med havet i vest og innlandet i øst, med to faner for de to modellene. Klassisk modell: et gammelt, lavt og nesten flatt landskap heves mest i vest, elvene graver seg ned i flaten, breene graver ut dalene til U-daler og fjorder, og restene av flaten står igjen som vidder. Langs kysten dannes strandflaten, en lav og flat brem med øyer, holmer og skjær. Annen modell: fjellene har vært høye hele tiden, og istidene sliper ned toppene til en jevn høyde omkring snøgrensen. Under blokken viser et snitt fra vest til øst høyden langs fjorden og havnivået (strandflaten like ved fjorden er vist som stiplet linje og vidden som prikket linje), og et tidsspor viser når prosessene virket.",
   caption:
-    "Etter den klassiske modellen er viddene rester av et gammelt, lavt og nesten flatt landskap som ble hevet mest i vest. Elvene grov seg ned i den gamle flaten, og breene fortsatte arbeidet under istidene. Modellen er omstridt: andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden, og at istidene slipte ned toppene. Langs kysten ligger strandflaten.",
+    "Etter den klassiske modellen er viddene rester av et gammelt, lavt og nesten flatt landskap som ble hevet mest i vest. Elvene grov seg ned i den gamle flaten, og breene fortsatte arbeidet under istidene. Modellen er omstridt: andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden ble dannet, og at istidene slipte ned toppene. Langs kysten ligger strandflaten.",
 };
 
 export const LANDSKAP_FANER = ["Klassisk modell", "Annen modell"];
@@ -35,7 +35,7 @@ export const KLASSISK_STATUS = [
   "Strandflaten, en lav og flat brem med øyer, holmer og skjær, regnes å være dannet gjennom de siste 5–10 millioner årene ved frostforvitring, bølgeerosjon og iserosjon. Nøyaktig hvordan prosessene virket sammen, er fortsatt diskutert.",
 ];
 export const ANNEN_STATUS = [
-  "Modellen er omstridt. Andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden ble dannet.",
+  "Den klassiske modellen er omstridt. Andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden ble dannet.",
   "Etter denne modellen slipte istidene ned toppene til en jevn høyde omkring snøgrensen.",
   "Begge modellene forklarer de flate viddene, men på helt ulike måter. Det viser at vi ikke alltid kan lese historien rett ut av landskapet.",
 ];
@@ -76,7 +76,7 @@ export const KLASSISK_SPOR: Spor[] = [
   },
 ];
 export const ANNEN_SPOR: Spor[] = [
-  { navn: "Høye fjell", tid: "helt siden den kaledonske fjellkjeden", fra: 0, til: 1, faser: [1] },
+  { navn: "Høye fjell", tid: "helt siden den kaledonske fjellkjeden ble dannet", fra: 0, til: 1, faser: [1] },
   { navn: "Istidene sliper ned toppene", tid: "", fra: 0.84, til: 1, faser: [2] },
   { navn: "Breene graver", tid: "de siste 2,6 millioner årene", fra: 0.84, til: 1, faser: [3] },
   {

@@ -29,6 +29,12 @@ En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind 
 | Stor orkan | Kategori 3, 4 eller 5, middelvind på minst 111 mph |
 | Stormflo | Særlig høy vannstand langs kysten i forbindelse med storm |
 
+På Beauforts skala er liten storm 20,8–24,4 m/s, full storm 24,5–28,4 m/s, sterk storm 28,5–32,6 m/s og orkan over 32,6 m/s (Store norske leksikon, u.å.-h).
+
+```widget
+BeaufortTrapp
+```
+
 Svaret på «Hva tror du?» er nei. Orkan på Stad er en vindstyrke, mens orkanene i Karibia er tropiske sykloner.
 
 ## Norskekysten og tropene
@@ -57,7 +63,9 @@ En tornado, også kalt trombe, er en lokal virvelvind. Den er den kraftigste av 
 
 Tornadoer dannes oftest sammen med større systemer: kaldfronter, linjebyer og lavtrykk, og i mindre skala ved særlig kraftige bygeskyer, superceller. De flytter seg omtrent med moderskyen, typisk 40 til 50 km/t, unntaksvis opp i 100 km/t. De forekommer over land i subtropene og på midlere breddegrader. Over de sentrale delene av USA, der varm og fuktig luft fra Mexicogolfen møter kald luft fra nordvest, er det mange og kraftige tornadoer (Store norske leksikon, u.å.-b).
 
-EF-skalaen graderer en tornado fra EF0 til EF5 ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.).
+EF-skalaen graderer en tornado fra EF0 til EF5 ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.-a).
+
+En supercelle er en langlivet bygesky med en skrå, roterende oppdrift. Den roterende oppdriften kalles en mesosyklon, og den kan finnes 20 til 60 minutter før en tornado dannes (National Severe Storms Laboratory, u.å.-c). Framre nedsynk er det regnkjølte området med mest nedbør. Bakre nedsynk er tørrere og varmere og lager en klar glipe formet som en hestesko. Tornadoer dannes oftest ved veggskya under den sterkeste oppdriften (National Weather Service, u.å.-b).
 
 ```widget
 SupercellAnatomy
@@ -85,7 +93,7 @@ SjekkKatastrofer2
 
 ## Bombesyklon
 
-En bombesyklon er et lavtrykk som forsterker seg veldig raskt. Den kalles også meteorologisk bombe. Det er en ekstratropisk syklon. Ved 60 grader nord, omtrent Bergen og Oslo, må trykket synke med minst 24 hektopascal i løpet av 24 timer. Slike lavtrykk oppstår gjerne når en kald luftmasse kolliderer med en varm, ofte om høsten og vinteren, når havvannet er mye varmere enn lufta over (Store norske leksikon, u.å.-e). Slike lavtrykk trenger at atmosfæren er baroklin. Det betyr at tetthetsflater og trykkflater skjærer hverandre, slik de gjør der kald og varm luft møtes. Baroklin massefordeling er en nødvendig betingelse for at det skal oppstå sirkulasjon i atmosfæren eller i havet (Store norske leksikon, u.å.-d).
+En bombesyklon er et lavtrykk som forsterker seg veldig raskt. Den kalles også meteorologisk bombe. Det er en ekstratropisk syklon. Ved 60 grader nord, omtrent Bergen og Oslo, må trykket synke med minst 24 hektopascal i løpet av 24 timer. Slike lavtrykk oppstår gjerne når en kald luftmasse kolliderer med en varm, ofte om høsten og vinteren, når havvannet er mye varmere enn lufta over (Store norske leksikon, u.å.-e). Slike lavtrykk trenger at atmosfæren er baroklin. Det betyr at tetthetsflater og trykkflater skjærer hverandre, slik de gjør der kald og varm luft møtes. Baroklin massefordeling er en nødvendig betingelse for at det skal oppstå sirkulasjon i atmosfæren eller i havet (Store norske leksikon, u.å.-d). Høyt oppe ligger jetstrømmen. I venstre utgang av det sterkeste vindfeltet sprer lufta seg, og det gir stigende luft under (National Weather Service, u.å.-c).
 
 ```widget
 MeteorologicalBomb
@@ -103,11 +111,19 @@ AtmosphericRiver
 
 Ekstremværet Hans kom i august 2023 med nedbørmengder Meteorologisk institutt ikke hadde sett på over 100 år på Østlandet. Innlandet fikk de største mengdene. I gjennomsnitt går det mer enn 100 år mellom hver gang det kommer så store mengder på så kort tid, og området var uvanlig stort (Meteorologisk institutt, 2023). NVE kaller Hans den dyreste naturkatastrofen som noen gang har rammet Norge (Norges vassdrags- og energidirektorat, 2024).
 
+Bjerknessenteret beskriver at deler av lavtrykket fungerte som en atmosfærisk elv, et transportbånd for vanndamp. Vanligvis kommer slike elver fra Atlanterhavet, men under Hans kom den uvanlig nok fra øst, med fuktighet fra Øst-Europa der en stor del var fordampet over land (Svensson, 2023).
+
+Meteorologisk institutt varslet ekstremt mye regn på rødt nivå, og NVE oppgraderte farevarselet for flom, jord- og flomskred fra oransje til rødt nivå (Norges vassdrags- og energidirektorat, 2023). Det gikk over 750 løsmasseskred. Flomtoppen i Drammenselva kom først 30. august (Norges vassdrags- og energidirektorat, 2024).
+
+```widget
+HansVarselkjede
+```
+
 At en ekstremværhendelse inntreffer, skyldes ikke nødvendigvis klimaendringene i seg selv. Hvordan den utvikler seg, kan likevel påvirkes. Klimaforsker Hans Olav Hygen sier at hendelsen med så ekstreme nedbørmengder blir påvirket av klimaendringene, og at klimaendringene er med på å forsterke været (Meteorologisk institutt, 2023).
 
 ## Polare lavtrykk
 
-Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 og fram til i dag (oktober 2026) har Meteorologisk institutt i Tromsø registrert om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 til 2024 registrerte Meteorologisk institutt i Tromsø om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
 
 ```widget
 PolarLowFormation

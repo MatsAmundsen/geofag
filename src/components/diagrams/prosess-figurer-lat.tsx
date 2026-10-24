@@ -84,6 +84,11 @@ type Plass = {
   skala?: {
     smal: { over: [number, number][]; under: [number, number][] };
     bred: { over: [number, number][]; under: [number, number][] };
+    /**
+     * Høyden over tegneflaten i smal layout når vinduet er minst 640 px (sm), der statusfeltet har lavere
+     * minstehøyde. Containerbredden alene skiller ikke dette: 550–589 px forekommer både under og over 640 px vindu.
+     */
+    smalSm?: { over: [number, number][] };
   };
   /**
    * Jetstrømmer-figurene (StegFigur): målte punkter [containerbredde, høyde], stykkevis lineært og flatt
@@ -155,6 +160,7 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
       "--over-b": stykkevis(sk.bred.over),
       "--under-s": stykkevis(sk.smal.under),
       "--under-b": stykkevis(sk.bred.under),
+      ...(sk.smalSm ? { "--over-m": stykkevis(sk.smalSm.over) } : {}),
     });
     const t = plass.smTrinn;
     if (t) {
@@ -166,7 +172,12 @@ export function ProsessPlassholder({ plass, heading, caption }: { plass: Plass; 
   }
   // bytte til bred layout: ved 560 px for figurer med egen skala (med mindre bredFra sier 760), ellers ved NARROW_FIGURE_PX (760)
   const ved560 = sk && (plass.bredFra ?? 560) === 560;
-  const over = ved560 ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]" : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
+  // --over-m (vindu ≥ 640 px, smal layout) faller tilbake til --over-s når figuren ikke har egne mål for det
+  const over = ved560
+    ? "h-[var(--over-s)] @min-[560px]:h-[var(--over-b)]"
+    : sk?.smalSm
+      ? "h-[var(--over-s)] sm:h-[var(--over-m)] @min-[760px]:h-[var(--over-b)]"
+      : "h-[var(--over-s)] @min-[760px]:h-[var(--over-b)]";
   const flate = ved560 ? "aspect-[var(--ar-s)] @min-[560px]:aspect-[var(--ar-b)]" : "aspect-[var(--ar-s)] @min-[760px]:aspect-[var(--ar-b)]";
   const under = ved560 ? "h-[var(--under-s)] @min-[560px]:h-[var(--under-b)]" : "h-[var(--under-s)] @min-[760px]:h-[var(--under-b)]";
   return (
@@ -306,7 +317,10 @@ export const LandskapBlokkFigurLat = lat<FigurProps>(
     skala: {
       smal: {
         over: [[229, 333.8], [238, 333.8], [239, 353], [243, 353], [244, 333.8], [251, 333.8], [252, 313.8], [255, 313.8], [256, 333], [286, 333], [287, 313.7], [298, 313.7], [299, 333], [318, 333], [319, 297], [339, 297], [340, 277], [379, 277], [380, 261], [403, 261], [404, 250.5], [414, 250.5], [415, 261], [559, 261], [560, 237], [568, 237], [569, 201]],
-        under: [[255, 596.8], [256, 578.9], [292, 578.9], [293, 552.9], [477, 552.9], [478, 526.9], [507, 526.9], [508, 509.1], [599, 509.1], [600, 413]],
+        // + forklaringsradene «Vidde i snittet (prikket)» og «Strandflaten i snittet (stiplet)» (#195): målt med 1 px steg
+        // ved 280–870 px vindusbredde på main ddcc691 + #195 (18.10, redusert bevegelse); 234–252, 386–426 og 694–728 målt på nytt
+        // med nettfontene lastet (Source Sans 3): ved 244 er figuren 19 px høyere, forklaringen bryter om ved 402 (ikke 396) og går til én rad først ved 718
+        under: [[230, 622.71], [243, 622.75], [244, 641.96], [245, 622.71], [255, 622.71], [256, 604.88], [284, 604.88], [285, 585.63], [286, 585.63], [287, 604.95], [292, 604.95], [293, 578.95], [401, 578.88], [402, 552.88], [507, 552.88], [508, 535.01], [599, 535.01], [600, 439], [717, 439], [718, 413], [759, 413]],
       },
       bred: { over: [[806, 193]], under: [[806, 261]] },
     },
@@ -435,10 +449,14 @@ export const SyklonFigurLat = lat<FigurProps>(
     ...LOKALE_MAAL,
     skala: {
       smal: {
-        over: [[340, 271], [380, 219], [550, 219], [590, 179], [678, 147]],
-        under: [[430, 389], [490, 363]],
+        // målt 18.10 i trinn på 1–2 px (vindu 316–860): statusteksten brytes på nytt ved 358 og 370 px
+        // containerbredde, og forklaringen under ved 465 px. Trinnene har ramper på under 0,5 px.
+        over: [[357.5, 271], [357.9, 239], [369.5, 239], [369.9, 219]],
+        under: [[266, 385.11], [272, 389.02], [464.5, 389.02], [464.9, 363.02]],
       },
       bred: { over: [[806, 127]], under: [[806, 32]] },
+      // vindu ≥ 640 px: 179 til og med 617 px containerbredde, 147 fra 618 px
+      smalSm: { over: [[617.5, 179], [617.9, 147]] },
     },
   },
   () => import("./lokale-syklon").then((m) => m.SyklonFigur),

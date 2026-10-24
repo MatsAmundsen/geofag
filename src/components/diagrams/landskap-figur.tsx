@@ -90,7 +90,14 @@ const FARGE = {
   hev: "#f3d27a",
   bolge: "#e9f6fb",
   vidde: "#e3d9a6",
+  strand: "#b2a878",
+  /** Vidda i snittet: egen nyanse, så den skiller seg fra strandflaten (ΔE2000 38 mot #b2a878). */
+  viddeSnitt: "#e8b4d8",
 };
+
+/** Strekene i snittet; forklaringen bruker de samme. */
+const STRAND_STREK = { dash: "10 4", bredde: 3, kant: "#101b22" };
+const VIDDE_STREK = { dash: "0.1 4", bredde: 2.2, rund: true };
 
 /** Punkt på vidda (nord for fjorden), brukt til etikett og måler. */
 const VIDDE: [number, number] = [470, 300];
@@ -514,25 +521,36 @@ export function LandskapBlokkFigur({
   const bergP: [number, number][] = [];
   const isP: [number, number][] = [];
   const havP: [number, number][] = [];
-  const viddeP: [number, number][] = [];
-  // ekstra punkter rett ved fjordkanten, så knekken fra brem til fjord blir skarp i snittet
-  let kantX = 214;
-  for (let i = 0; i < 4; i++) kantX = bremIndre(fjordY(kantX));
-  const snittX = [
-    ...Array.from({ length: N + 1 }, (_, k) => lerp(X_START, xMaks, k / N)),
-    kantX,
-    kantX + 4,
-  ]
-    .filter((wx) => wx <= xMaks)
-    .sort((p, q) => p - q);
+  // vidda i snittet: bare der den ligger over havnivå; der profilen går under havet, slutter linja ved havnivå
+  const viddeDeler: [number, number][][] = [];
+  let viddeForrige: [number, number] | null = null;
+  const strandP: [number, number][] = [];
+  // Strandflaten (A5 og B3) ligger ved siden av fjorden, ikke tvers over den. Snittet langs fjordaksen viser
+  // derfor fjordbunnen dyp, som i blokken, og bremmen tegnes som en egen stiplet profil 60 enheter nord for
+  // fjordaksen (der blokken har bremmen), på samme måte som vidda i snittet.
+  const STRAND_AVSTAND = 60;
+  const strandS = b ? t.slutt : t.strand;
+  const snittX = Array.from({ length: N + 1 }, (_, k) => lerp(X_START, xMaks, k / N));
   for (const wx of snittX) {
     const f = felt(wx, fjordY(wx), t, b);
-    // i A5 og B3 viser snittet strandflaten som en nesten flat brem ytterst i vest
-    const zb = bremISnitt(wx, fjordY(wx), f.berg, b ? t.slutt : t.strand);
+    const zb = f.berg;
     bergP.push([xTil(wx), zTilY(zb)]);
     isP.push([xTil(wx), zTilY(zb + f.is + f.topp)]);
     havP.push([xTil(wx), zTilY(Math.max(0, zb + f.is))]);
-    viddeP.push([xTil(wx), zTilY(Math.max(0, bergHoyde(wx, fjordY(wx) + 112, t, b)))]);
+    const hV = bergHoyde(wx, fjordY(wx) + 112, t, b);
+    if (viddeForrige && viddeForrige[1] > 0 !== hV > 0) {
+      // krysningen med havnivå, lineært mellom to snittpunkter
+      const [x0, h0] = viddeForrige;
+      const kx = lerp(x0, wx, h0 / (h0 - hV));
+      if (hV > 0) viddeDeler.push([[xTil(kx), zTilY(0)]]);
+      else viddeDeler[viddeDeler.length - 1]?.push([xTil(kx), zTilY(0)]);
+    } else if (hV > 0 && !viddeForrige) viddeDeler.push([]);
+    if (hV > 0) viddeDeler[viddeDeler.length - 1].push([xTil(wx), zTilY(hV)]);
+    viddeForrige = [wx, hV];
+    const yS = fjordY(wx) + STRAND_AVSTAND;
+    if (strandS > 0.02 && wx <= bremIndre(yS)) {
+      strandP.push([xTil(wx), zTilY(bremISnitt(wx, yS, bergHoyde(wx, yS, t, b), strandS))]);
+    }
   }
   const havY = zTilY(0);
   const sti = (p: [number, number][]) =>
@@ -546,8 +564,8 @@ export function LandskapBlokkFigur({
     anker?: "start" | "middle" | "end";
   }[] = [];
   const toppTy = pr.y + fsP + 4;
-  // der bremmen krysser havnivå langs snittlinjen (fjordaksen varierer lite her)
-  const xKryss = xTil(bremKryss(fjordY(bremKryss(fjordY(133)))));
+  // der den stiplede strandflaten (ved siden av fjorden) krysser havnivå
+  const xKryss = xTil(bremKryss(fjordY(bremKryss(fjordY(133) + STRAND_AVSTAND)) + STRAND_AVSTAND));
   if (!b && fase === 3) {
     const wx = 330;
     profEtiketter.push({
@@ -562,14 +580,19 @@ export function LandskapBlokkFigur({
     const wx = 200;
     profEtiketter.push({ tekst: "fjord", x: xTil(wx), y: havY - 2, ty: toppTy, farge: "#9fd0ee" });
   }
+  // Klassisk steg 5 har to linjer. De står én linje høyere enn B3 når linje 1 har plass til venstre for «Øst»
+  // (anslått med 0,58 fs per tegn i halvfet skrift), så linje 2 er fri av den prikkede vidde-linja der den stiger
+  // fra fjorden (DS1, 1024 og 1280 px). I de smaleste figurene står de som før. Tallene er de samme.
+  const hoyt = !b && xKryss + 0.58 * fsP * 30 + 8 < pr.x + pr.w - 8 - 2 * fsP;
+  const ty5 = hoyt ? toppTy : toppTy + fsP + 6;
   if ((!b && fase === 5) || (b && fase === 3)) {
     // md l. 147: «går fra 60–70 m over til 30–40 m under havnivå» (bare i klassisk modell, steg 5).
-    // Etiketten peker dit bremmen krysser havnivå.
+    // Etiketten peker dit den stiplede strandflaten krysser havnivå.
     profEtiketter.push({
       tekst: !b ? "strandflaten: fra 60–70 m over" : "strandflaten",
       x: xKryss,
       y: havY - 1,
-      ty: toppTy + fsP + 6,
+      ty: ty5,
       farge: "#e6e1c8",
       anker: "start",
     });
@@ -578,13 +601,40 @@ export function LandskapBlokkFigur({
     { text: "Is (bre)", color: FARGE.is, kind: "fill" },
     { text: "Hav", color: FARGE.hav, kind: "fill" },
     { text: "Elv og bølger", color: FARGE.elv, kind: "line" },
-    { text: "Vidde i snittet (stiplet)", color: FARGE.vidde, kind: "line" },
+    {
+      text: "Vidde i snittet (prikket)",
+      color: FARGE.viddeSnitt,
+      kind: "line",
+      strek: VIDDE_STREK,
+    },
+    {
+      text: "Strandflaten i snittet (stiplet)",
+      color: FARGE.strand,
+      kind: "line",
+      strek: STRAND_STREK,
+      // bare i stegene der den stiplede strandflaten er tegnet (A5 og B3); ellers usynlig, men raden beholder høyden
+      skjult: strandP.length < 2,
+    },
   ];
+  // «snøgrensen» (B2): over snøgrenselinja, men løftet over det høyeste punktet på berg, is og den prikkede
+  // vidde-linja innenfor etikettens bredde (med runde ender), så linjene ikke krysser teksten (DS1, 320–1280 px).
+  // Luften (0,35 em, ca. 4 px på skjermen) følger skriftstørrelsen, så den holder også i de smaleste figurene.
+  // Ikke høyere enn at den går fri av «Øst» øverst til høyre i snittet.
+  const fsLite = figureFont(12, skala);
+  const snoX = pr.x + pr.w - 8;
+  const snoB = 0.56 * fsLite * "snøgrensen".length + 6;
+  let snoTopp = Infinity;
+  for (const [px, py] of [...bergP, ...isP, ...viddeDeler.flat()])
+    // ett snittpunkt ekstra på hver side, så segmentene som går inn i etikettens bredde også telles
+    if (px >= snoX - snoB - pr.w / N && px <= snoX + 6 + pr.w / N) snoTopp = Math.min(snoTopp, py);
+  const snoY = Math.max(
+    pr.y + fsP + 2 + 4 + 0.75 * fsLite,
+    Math.min(zTilY(SNOGRENSE) - 4, snoTopp - VIDDE_STREK.bredde / 2 - 0.35 * fsLite),
+  );
   const status = (b ? ANNEN_STATUS : KLASSISK_STATUS)[fase - 1];
   const spor = b ? ANNEN_SPOR : KLASSISK_SPOR;
   const hoyde = viddeHoyde(t, b);
   const himmelId = `${uid}-himmel`;
-  const fsLite = figureFont(12, skala);
 
   return (
     <div
@@ -661,7 +711,7 @@ export function LandskapBlokkFigur({
               <Maalere
                 maalere={[
                   {
-                    navn: "Vidda: høyde over havet",
+                    navn: "Vidden: høyde over havet",
                     verdi: hoyde,
                     ender: ["lav", "høy"],
                     farge: FARGE.vidde,
@@ -797,13 +847,40 @@ export function LandskapBlokkFigur({
             />
             <g data-nocheck="" aria-hidden="true">
               <path
-                d={sti(viddeP)}
+                d={viddeDeler
+                  .filter((d) => d.length > 1)
+                  .map(sti)
+                  .join(" ")}
                 fill="none"
-                stroke={FARGE.vidde}
-                strokeWidth="1.4"
-                strokeDasharray="5 4"
-                opacity="0.85"
+                stroke={FARGE.viddeSnitt}
+                strokeWidth={VIDDE_STREK.bredde}
+                strokeDasharray={VIDDE_STREK.dash}
+                strokeLinecap="round"
               />
+              {strandP.length > 1 ? (
+                // strandflaten: samme farge som i blokken (STRAND i landskap-modell), tykk og langstiplet, med mørk
+                // kant under så den skiller seg fra den tynne, kortstiplede havnivå-linja også over hav og berg.
+                // Kontrast #b2a878 mot snittets bakgrunn #101b22 (terreng-figur.tsx, Hoydeprofil): 7,3:1.
+                // Vidde-linja (#e8b4d8, prikket): 9,9:1 mot #101b22; ΔE2000 38 / ΔE76 48 mot strandflaten.
+                <g opacity={Math.round(Math.min(1, strandS) * 100) / 100}>
+                  <path
+                    d={sti(strandP)}
+                    fill="none"
+                    stroke={STRAND_STREK.kant}
+                    strokeWidth={STRAND_STREK.bredde + 3}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d={sti(strandP)}
+                    fill="none"
+                    stroke={FARGE.strand}
+                    strokeWidth={STRAND_STREK.bredde}
+                    strokeDasharray={STRAND_STREK.dash}
+                    strokeLinejoin="round"
+                  />
+                </g>
+              ) : null}
               <line
                 x1={pr.x}
                 x2={pr.x + pr.w}
@@ -842,7 +919,7 @@ export function LandskapBlokkFigur({
             {!b && fase === 5 ? (
               <text
                 x={xKryss + 8}
-                y={toppTy + 2 * (fsP + 6)}
+                y={ty5 + fsP + 6}
                 fontSize={fsP}
                 fontWeight={700}
                 fill="#e6e1c8"
@@ -855,8 +932,8 @@ export function LandskapBlokkFigur({
             ) : null}
             {snoOp > 0.5 ? (
               <text
-                x={pr.x + pr.w - 8}
-                y={zTilY(SNOGRENSE) - 4}
+                x={snoX}
+                y={snoY}
                 fontSize={fsLite}
                 fill={FARGE.sno}
                 textAnchor="end"
