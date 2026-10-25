@@ -54,7 +54,6 @@ function Steg1({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
   ];
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       {/* sol */}
       <circle cx={135} cy={82} r={52} fill={F.varm} opacity={0.25 * pulse} />
       <circle cx={135} cy={82} r={21} fill="#ffd9a0" />
@@ -119,7 +118,6 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
   const drift = (sek * 8) % 20;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <path d="M0 60 L465 60 L360 465 L0 465 Z" fill={F.kald} opacity={0.18} />
       <path d="M465 60 L960 60 L960 465 L360 465 Z" fill={F.varm} opacity={0.16} />
       {/* kaldfront */}
@@ -181,7 +179,7 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
         />
       </g>
       <Nordpil x={885} y={120} />
-      <text x={936} y={75} textAnchor="end" fontSize={12} fontWeight={600} fill={F.dempet}>
+      <text x={24} y={36} textAnchor="start" fontSize={12} fontWeight={600} fill={F.dempet}>
         midlere bredder · sett ovenfra
       </text>
     </g>
@@ -193,7 +191,6 @@ function Steg3({ synlig, sek, m }: { synlig: number; sek: number; m: { fg: strin
   const t = (sek * 0.2) % 1;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       {/* svak front */}
       <path d="M360 90 L285 420" fill="none" stroke={F.kald} strokeWidth={2.5} opacity={0.4} />
       <g fill={F.kald} opacity={0.45}>
@@ -277,7 +274,6 @@ function Steg4({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
   const t = (sek * 0.18) % 1;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       {/* hav */}
       <rect x={0} y={360} width={585} height={180} fill={F.hav} />
       <path d="M0 360 Q150 352 300 360 T585 360 L585 375 L0 375 Z" fill="#1e5570" opacity={0.5} />
@@ -375,7 +371,7 @@ const def: Def<Bilde> = {
     { s1: 0, s2: 0, s3: 0, s4: 0 },
     { s1: 1, s2: 0, s3: 0, s4: 0 },
     { s1: 0, s2: 1, s3: 0, s4: 0 },
-    { s1: 0, s2: 0.25, s3: 1, s4: 0 },
+    { s1: 0, s2: 0, s3: 1, s4: 0 },
     { s1: 0, s2: 0, s3: 0, s4: 1 },
   ],
   etiketter: [
@@ -383,8 +379,8 @@ const def: Def<Bilde> = {
     [
       { text: "solinnstråling", x: 135, y: 48, anchor: "middle", color: F.varm, weight: 700, size: 14 },
       { text: "fordamping → vanndamp", x: 550, y: 235, color: F.teal, weight: 800, size: 14 },
-      { text: "subtropene · varmt hav", x: 300, y: 408, anchor: "middle", color: F.varm, weight: 800, size: 15 },
-      { text: "varm havoverflate avgir vanndamp til lufta", x: 300, y: 428, anchor: "middle", color: F.dempet, size: 12 },
+      { text: "subtropene · varmt hav", x: 300, y: 450, anchor: "middle", color: F.varm, weight: 800, size: 15 },
+      { text: "varm havoverflate avgir vanndamp til lufta", x: 300, y: 472, anchor: "middle", color: F.dempet, size: 12 },
     ],
     // steg 2
     [
@@ -394,21 +390,21 @@ const def: Def<Bilde> = {
       { text: "lavtrykk", x: 420, y: 150, anchor: "middle", color: F.trykk, weight: 700, size: 12 },
       {
         text: "varm, fuktig luft foran fronten",
-        x: 780,
-        y: 240,
+        x: 820,
+        y: 130,
         anchor: "middle",
         color: F.teal,
         weight: 800,
         size: 13,
-        at: [700, 300],
-        badge: [780, 250],
+        at: [720, 270],
+        badge: [820, 140],
       },
     ],
     // steg 3
     [
       { text: "atmosfærisk elv", x: 720, y: 80, color: F.lilla, weight: 800, size: 14 },
-      { text: "om lag 2000 km lang", x: 465, y: 300, anchor: "middle", color: F.teal, weight: 800, size: 13 },
-      { text: "300–500 km bred", x: 620, y: 185, color: F.lilla, weight: 800, size: 13 },
+      { text: "om lag 2000 km lang", x: 400, y: 360, anchor: "middle", color: F.teal, weight: 800, size: 13 },
+      { text: "300–500 km bred", x: 560, y: 250, color: F.lilla, weight: 800, size: 13 },
       {
         text: "fukt samles i smal korridor foran kaldfronten",
         x: 150,
@@ -452,7 +448,7 @@ const def: Def<Bilde> = {
   viewBox: VB,
   tegn: (s, { m, sek }) => (
     <g>
-      {/* Bakgrunn alltid himmel når flere lag blandes */}
+      {/* Én himmel her — ikke per steg — så forrige stegs tekst ikke dekkes under fade */}
       <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <Steg1 synlig={s.s1} sek={sek} m={m} />
       <Steg2 synlig={s.s2} sek={sek} m={m} />
