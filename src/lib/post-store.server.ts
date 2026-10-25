@@ -1225,6 +1225,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "dagens utslipp går ca. ti ganger så fort.\n\n```widget\nSjekkPaleo6",
     ],
   },
+  {
+    // Jordskjelv: Terra Mater fase 1–2 (må-punkter M1–M7: årsakskjede for «Hvorfor skjelver Norge?», definisjon som dekker dype skjelv, tsunami/logaritmisk ved første bruk, og/mfl., fulle institusjonsnavn).
+    flag: "g1-jordskjelv-terra-mater-2026-10-25",
+    slug: "jordskjelv",
+    stale: [
+      "I Nordland antar vi at skjelvene skyldes",
+      "altså med ca. 40 %",
+      "(Hanks & Kanamori, 1979)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
