@@ -212,7 +212,7 @@ export function CalderaFormationDiagram() {
     <Diagram
       title="Dannelse av en kaldera i fire trinn"
       heading="Kaldera i fire trinn"
-      caption="En kaldera er en innsynkning, ikke bare et krater. Den oppstår når et magmakammer tømmes så raskt at taket over kammeret faller ned. Kalderaer er ofte 5–50 km brede. Crater Lake og Santorini er noen kilometer brede. Toba og Yellowstone er titalls kilometer. De største utbruddene kalles ofte supervulkaner (VEI 8)."
+      caption="En kaldera er en innsynkning, ikke bare et krater. Den oppstår når et magmakammer tømmes så raskt at taket over kammeret faller ned. Kalderaer er ofte 5–50 km brede. Crater Lake og Santorini er noen kilometer brede. Toba og Yellowstone er titalls kilometer. Vulkaner som har hatt et superutbrudd (VEI 8), kalles ofte supervulkaner."
       viewBox="0 0 760 420"
       scroll
       action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} />}
@@ -741,9 +741,9 @@ const VEI_STEPS = [
   { vei: 3, volume: "> 10 mill. m³", height: "3–15 km", klass: "Vulkansk / subpliniansk", freq: "Noen ganger i året", examples: "Nevado del Ruiz (1985)", bar: 42 },
   { vei: 4, volume: "> 0,1 km³", height: "10–25 km", klass: "Subpliniansk / pliniansk", freq: "Ca. hvert 1.–2. år", examples: "Eyjafjallajökull (2010)", bar: 56 },
   { vei: 5, volume: "> 1 km³", height: "20–35 km", klass: "Pliniansk", freq: "Om lag 1 per 12 år", examples: "Mount St. Helens (1980), Vesuv (79)", bar: 70 },
-  { vei: 6, volume: "> 10 km³", height: "> 30 km", klass: "Ultrapliniansk / kaldera", freq: "Om lag 1 per 100 år", examples: "Pinatubo (1991), Krakatau (1883)", bar: 82 },
-  { vei: 7, volume: "> 100 km³", height: "> 35 km", klass: "Kaldera", freq: "Svært sjelden (siste: Tambora 1815)", examples: "Tambora (1815), Santorini (ca. 1600 f.Kr.)", bar: 92 },
-  { vei: 8, volume: "> 1000 km³", height: "> 45 km", klass: "Supervulkan", freq: "Ingen i historisk tid", examples: "Toba (74 000 år siden), Yellowstone", bar: 100 },
+  { vei: 6, volume: "> 10 km³", height: "> 30 km", klass: "Ultrapliniansk, ofte med kaldera", freq: "Om lag 1 per 100 år", examples: "Pinatubo (1991), Krakatau (1883)", bar: 82 },
+  { vei: 7, volume: "> 100 km³", height: "> 35 km", klass: "Ultrapliniansk, ofte med kaldera", freq: "Svært sjelden (siste: Tambora 1815)", examples: "Tambora (1815), Santorini (ca. 1600 f.Kr.)", bar: 92 },
+  { vei: 8, volume: "> 1000 km³", height: "> 45 km", klass: "Superutbrudd", freq: "Ingen i historisk tid", examples: "Toba (74 000 år siden), Yellowstone", bar: 100 },
 ];
 
 export function VeiScaleDiagram() {
@@ -752,7 +752,7 @@ export function VeiScaleDiagram() {
   return (
     <FigureFrame
       heading="Vulkansk eksplosivitetsindeks"
-      caption="Chris Newhall og Steve Self innførte skalaen i 1982. Hvert trinn over VEI 1 betyr omtrent ti ganger mer utkastet tefra. Søylehøyden i stolpene følger intervallene i tabellen, ikke en påfunnet nøyaktig verdi. Hvor ofte: VEI 3–4 etter Global Volcanism Program, VEI 5 etter Newhall og Hoblitt (2002) og VEI 6–7 etter USGS (ett VEI 7- og fire VEI 6-utbrudd siden år 1500)."
+      caption="Chris Newhall og Steve Self innførte skalaen i 1982. Fra VEI 2 og oppover betyr hvert trinn ca. ti ganger mer tefra. Fra VEI 1 til VEI 2 er spranget ca. hundre ganger. Søylehøyden i stolpene følger intervallene i tabellen, ikke en påfunnet nøyaktig verdi. Hvor ofte: VEI 3–4 etter Global Volcanism Program, VEI 5 etter Newhall og Hoblitt (2002) og VEI 6–7 etter USGS (ett VEI 7- og fire VEI 6-utbrudd siden år 1500)."
     >
       <div data-figure="vei">
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="VEI-trinn">
@@ -800,7 +800,7 @@ export function VeiScaleDiagram() {
           <dl className="grid grid-cols-1 gap-2 text-sm leading-snug sm:grid-cols-2">
             <div><dt className="text-muted-foreground">Tefravolum</dt><dd className="font-medium">{row.volume}</dd></div>
             <div><dt className="text-muted-foreground">Søylehøyde</dt><dd className="font-medium">{row.height}</dd></div>
-            <div><dt className="text-muted-foreground">Klassifisering</dt><dd className="font-medium">{row.klass}</dd></div>
+            <div><dt className="text-muted-foreground">Utbruddstype</dt><dd className="font-medium">{row.klass}</dd></div>
             <div><dt className="text-muted-foreground">Hvor ofte globalt</dt><dd className="font-medium">{row.freq}</dd></div>
             <div className="sm:col-span-2"><dt className="text-muted-foreground">Eksempler</dt><dd className="font-medium">{row.examples}</dd></div>
           </dl>

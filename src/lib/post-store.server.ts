@@ -1234,6 +1234,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "De fem sfærene er analytiske kategorier",
     ],
   },
+  {
+    // Vulkaner: Terra Mater fase 1–2 (må-punkter M1–M9, VEI-trinn, supervulkan, soner i askesøylen).
+    flag: "g1-vulkaner-terra-mater-2026-10-25",
+    slug: "vulkaner",
+    stale: [
+      "Hvert trinn over VEI 1 betyr omtrent ti ganger",
+      "De største utbruddene kalles ofte supervulkaner",
+      "### Fire faser i askesøylen",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
