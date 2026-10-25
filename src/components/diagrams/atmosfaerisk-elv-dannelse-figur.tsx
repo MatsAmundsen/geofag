@@ -28,9 +28,11 @@ const STATUS = [
 
 type Bilde = { s1: number; s2: number; s3: number; s4: number };
 
-function Nordpil({ x, y }: { x: number; y: number }) {
+/** Skjules under midt-fade (synlig < 0,85) så N ikke treffer andre stegs linjer. */
+function Nordpil({ x, y, synlig }: { x: number; y: number; synlig: number }) {
+  if (synlig < 0.85) return null;
   return (
-    <g>
+    <g opacity={o(synlig)}>
       <path d={`M${x} ${y + 26} L${x} ${y}`} stroke={F.dempet} strokeWidth={2.5} />
       <path d={`M${x - 7} ${y + 10} L${x} ${y - 3} L${x + 7} ${y + 10} Z`} fill={F.dempet} />
       <text x={x} y={y + 42} textAnchor="middle" fontSize={14} fontWeight={700} fill={F.dempet}>
@@ -96,19 +98,23 @@ function Steg1({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
           <circle key={i} cx={r1(x)} cy={r1(y + ((sek * 12 + i * 5) % 8))} r={1.8} />
         ))}
       </g>
-      {/* høydehint */}
-      <line x1={885} y1={90} x2={885} y2={360} stroke={F.linje} strokeWidth={1.5} />
-      <text
-        x={872}
-        y={225}
-        textAnchor="middle"
-        fontSize={11}
-        fontWeight={600}
-        fill={F.dempet}
-        transform="rotate(-90 872 225)"
-      >
-        høyde (skjematisk)
-      </text>
+      {/* høydehint — venstre kant, kun nær hold, så midt-fade ikke dekker mot Steg2-fyll */}
+      {synlig >= 0.85 ? (
+        <g opacity={o(synlig)}>
+          <line x1={48} y1={90} x2={48} y2={360} stroke={F.linje} strokeWidth={1.5} />
+          <text
+            x={62}
+            y={225}
+            textAnchor="middle"
+            fontSize={11}
+            fontWeight={600}
+            fill={F.dempet}
+            transform="rotate(-90 62 225)"
+          >
+            høyde (skjematisk)
+          </text>
+        </g>
+      ) : null}
     </g>
   );
 }
@@ -138,9 +144,11 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
       <ellipse cx={420} cy={210} rx={71} ry={54} fill="none" stroke={F.trykk} strokeWidth={2.2} opacity={0.7} />
       <ellipse cx={420} cy={210} rx={45} ry={33} fill="none" stroke={F.trykk} strokeWidth={2.5} />
       <circle cx={420} cy={210} r={21} fill="#122433" stroke={F.trykk} strokeWidth={2} />
-      <text x={420} y={218} textAnchor="middle" fontSize={22} fontWeight={800} fill={F.tekst}>
-        L
-      </text>
+      {synlig >= 0.85 ? (
+        <text x={420} y={218} textAnchor="middle" fontSize={22} fontWeight={800} fill={F.tekst} opacity={o(synlig)}>
+          L
+        </text>
+      ) : null}
       {/* fuktstrøm foran fronten */}
       <g>
         <path
@@ -178,7 +186,7 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
           markerEnd={`url(#${m.teal})`}
         />
       </g>
-      <Nordpil x={885} y={120} />
+      <Nordpil x={50} y={100} synlig={synlig} />
       <text x={24} y={36} textAnchor="start" fontSize={12} fontWeight={600} fill={F.dempet}>
         midlere bredder · sett ovenfra
       </text>
@@ -205,9 +213,11 @@ function Steg3({ synlig, sek, m }: { synlig: number; sek: number; m: { fg: strin
       </g>
       <ellipse cx={330} cy={195} rx={52} ry={39} fill="none" stroke={F.trykk} strokeWidth={2} opacity={0.45} />
       <circle cx={330} cy={195} r={18} fill="#122433" stroke={F.trykk} strokeWidth={2} />
-      <text x={330} y={202} textAnchor="middle" fontSize={18} fontWeight={800} fill={F.tekst}>
-        L
-      </text>
+      {synlig >= 0.85 ? (
+        <text x={330} y={202} textAnchor="middle" fontSize={18} fontWeight={800} fill={F.tekst} opacity={o(synlig)}>
+          L
+        </text>
+      ) : null}
       {/* AR-bånd */}
       <path
         d="M60 360 C165 345 255 315 345 270 C435 225 540 180 675 150 C750 131 825 120 900 112"
@@ -350,14 +360,18 @@ function Steg4({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
           <line key={i} x1={x} x2={x - 4} y1={y} y2={y + 14} />
         ))}
       </g>
-      {/* pek til egen figur */}
-      <rect x={24} y={420} width={390} height={52} rx={8} fill="#122433" stroke={F.linje} strokeWidth={1} />
-      <text x={36} y={442} fontSize={12} fontWeight={600} fill={F.dempet}>
-        Landfall og orografisk flom: egen figur
-      </text>
-      <text x={36} y={460} fontSize={11} fontWeight={500} fill={F.dempet}>
-        i Værkatastrofer — ikke doblet her
-      </text>
+      {/* pek til egen figur — kun nær hold, så ikke overlapp med steg 3-etikett under fade */}
+      {synlig >= 0.85 ? (
+        <g opacity={o(synlig)}>
+          <rect x={24} y={420} width={390} height={52} rx={8} fill="#122433" stroke={F.linje} strokeWidth={1} />
+          <text x={36} y={442} fontSize={12} fontWeight={600} fill={F.dempet}>
+            Landfall og orografisk flom: egen figur
+          </text>
+          <text x={36} y={460} fontSize={11} fontWeight={500} fill={F.dempet}>
+            i Værkatastrofer — ikke doblet her
+          </text>
+        </g>
+      ) : null}
     </g>
   );
 }
@@ -390,25 +404,25 @@ const def: Def<Bilde> = {
       { text: "lavtrykk", x: 420, y: 150, anchor: "middle", color: F.trykk, weight: 700, size: 12 },
       {
         text: "varm, fuktig luft foran fronten",
-        x: 820,
-        y: 130,
+        x: 700,
+        y: 100,
         anchor: "middle",
         color: F.teal,
         weight: 800,
         size: 13,
-        at: [720, 270],
-        badge: [820, 140],
+        at: [680, 280],
+        badge: [700, 110],
       },
     ],
     // steg 3
     [
-      { text: "atmosfærisk elv", x: 720, y: 80, color: F.lilla, weight: 800, size: 14 },
-      { text: "om lag 2000 km lang", x: 400, y: 360, anchor: "middle", color: F.teal, weight: 800, size: 13 },
-      { text: "300–500 km bred", x: 560, y: 250, color: F.lilla, weight: 800, size: 13 },
+      { text: "atmosfærisk elv", x: 780, y: 55, color: F.lilla, weight: 800, size: 14 },
+      { text: "om lag 2000 km lang", x: 240, y: 450, anchor: "middle", color: F.teal, weight: 800, size: 13 },
+      { text: "300–500 km bred", x: 620, y: 290, color: F.lilla, weight: 800, size: 13 },
       {
         text: "fukt samles i smal korridor foran kaldfronten",
-        x: 150,
-        y: 448,
+        x: 40,
+        y: 400,
         color: F.dempet,
         size: 12,
       },
@@ -425,7 +439,7 @@ const def: Def<Bilde> = {
     [
       { text: "hav", x: 225, y: 408, anchor: "middle", color: F.dempet, weight: 700, size: 14 },
       { text: "fjell / kyst", x: 810, y: 315, anchor: "middle", color: F.dempet, weight: 700, size: 14 },
-      { text: "atmosfærisk elv", x: 220, y: 230, color: F.lilla, weight: 800, size: 13 },
+      { text: "atmosfærisk elv", x: 160, y: 210, color: F.lilla, weight: 800, size: 13 },
       {
         text: "lufta løftes over fjell (hint)",
         x: 750,
