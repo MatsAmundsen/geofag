@@ -1199,6 +1199,12 @@ const COPY_RESEEDS: CopyReseed[] = [
   // Værkatastrofer: Hans-nyansen om atmosfærisk elv fra øst (Svensson, 2023), godkjent av Mats 23.10.
   { flag: "g2-vaerkatastrofer-hans-ar-2026-10-23", slug: "vaerkatastrofer", stale: ["(Norges vassdrags- og energidirektorat, 2024).\n\nMeteorologisk institutt varslet"] },
   {
+    // Værkart: FrontProfile erstattet med KaldfrontFigur + VarmfrontFigur (Mats ja 25.10.2026).
+    flag: "vaerkart-fronter-steg-2026-10-25",
+    slug: "vaerkart",
+    stale: ["```widget\nFrontProfile\n```"],
+  },
+  {
     // Bergarter (Geo/Fjell): smelting, diagenese og metamorfose slått sammen med Mats' differensiering,
     // diagenese med porevæske og metasomatose; «Cementering»/«jernoksid» -> sementering/jernforbindelser.
     flag: "g1-bergarter-dannelse-2026-10-24",
