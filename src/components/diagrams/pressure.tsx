@@ -1,3 +1,5 @@
+import { Flyt, Puls, Strom } from "./lokalvaer-anim";
+import { useLokalAnim } from "./use-lokalvaer-anim";
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
 /**
@@ -768,8 +770,10 @@ export function HighPressureCrossSectionDiagram() {
  * dannelse av kaldluftssjø i dalbunnen, temperaturinversjon med røyklokk og termisk belte i lia.
  */
 export function KatabaticWindDiagram() {
+  const a = useLokalAnim("Katabatisk vind");
   return (
     <Diagram
+      action={a.knapp}
       title="Katabatisk fallvind og dannelse av temperaturinversjon"
       heading="Katabatisk vind: kald luft renner ned og samles i dalen"
       caption="Katabatisk vind blåser nedover en helling fordi kald luft er tyngre enn varm luft. En klar vinternatt mister snøen varme ved utstråling, og lufta nærmest snøen blir kald. Den kalde lufta følger senkninger i terrenget, omtrent som vann, og kan hope seg opp i dalbunnen. Da blir det kaldere nede i dalen enn litt lenger opp, altså en inversjon. I Norge er katabatisk vind relativt mild og når sjelden mer enn frisk bris. Under inversjonen kan lokale utslipp bli liggende nær bakken (Store norske leksikon, u.å.-j; u.å.-k; u.å.-m). Skjematisk, uten målte verdier."
@@ -777,7 +781,7 @@ export function KatabaticWindDiagram() {
       wide
     >
       {(m) => (
-        <>
+        <g ref={a.ref} className={a.gClass}>
           <defs>
             {/* Vinternatt-himmel */}
             <linearGradient id="kata-night-sky" x1="0" y1="0" x2="0" y2="1">
@@ -819,7 +823,9 @@ export function KatabaticWindDiagram() {
           {[
             [160, 50], [210, 68], [270, 45], [430, 60], [590, 50], [740, 65], [830, 45]
           ].map(([sx, sy], i) => (
-            <circle key={i} cx={sx} cy={sy} r={1.3} fill="#ffffff" opacity={0.85} />
+            <circle key={i} cx={sx} cy={sy} r={1.3} fill="#ffffff" opacity={0.85}>
+              <Puls min={0.3} max={0.95} dur={2.6 + (i % 3) * 0.9} begin={i * 0.7} />
+            </circle>
           ))}
 
           {/* REALISTISK NORSK DALPROFIL (U-DAL / FJORDDAL) */}
@@ -857,6 +863,11 @@ export function KatabaticWindDiagram() {
           <Arrow d="M 70 115 L 70 50" marker={m.sand} color={C.sand} width={2.2} />
           <Arrow d="M 140 115 L 140 50" marker={m.sand} color={C.sand} width={2.2} />
           <Arrow d="M 210 115 L 210 50" marker={m.sand} color={C.sand} width={2.2} />
+          {[70, 140, 210].map((x) => (
+            <Flyt key={x} path={`M ${x} 112 L ${x} 58`} dur={2.4} n={3} r={2.4} fill={C.sand} opacity={0.9} ry={1.2} />
+          ))}
+          {/* Snøfokk og kald luft som siger mot brekanten */}
+          <Flyt path="M 40 146 Q 140 141 236 144" dur={5.5} n={9} r={1.6} fill="#f0f9ff" opacity={0.85} />
           <L x="140" y="42" fill={C.sand} size={11} weight={700} anchor="middle">
             Utstråling mot verdensrommet (klar natt)
           </L>
@@ -880,6 +891,16 @@ export function KatabaticWindDiagram() {
             opacity="0.3"
             strokeLinecap="round"
           />
+          <Strom d="M 240 145 Q 330 170 380 260 Q 420 320 470 375" color="#bae6fd" width={3} dash="5 14" dur={1.3} opacity={0.75} />
+          <Flyt
+            path="M 236 144 Q 330 168 380 258 Q 420 322 466 372 Q 520 382 580 370"
+            dur={7}
+            n={14}
+            r={4.5}
+            ry={3}
+            fill="#7dd3fc"
+            opacity={0.55}
+          />
           <Arrow d="M 240 145 Q 330 170 410 290" marker={m.cold} color={C.cold} width={4.2} />
           <Arrow d="M 370 250 Q 420 330 475 375" marker={m.cold} color={C.cold} width={4.2} />
 
@@ -898,7 +919,12 @@ export function KatabaticWindDiagram() {
           <polygon
             points="385,290 740,290 660,380 460,380"
             fill="url(#kata-coldpool-grad)"
-          />
+          >
+            <Puls min={0.78} max={1} dur={6} />
+          </polygon>
+          {/* Kaldlufta som samles, sirkulerer sakte i bassenget */}
+          <Flyt path="M 470 372 Q 560 360 650 372 Q 600 330 520 340 Q 460 352 470 372" dur={12} n={8} r={6} ry={2.5} fill="#bae6fd" opacity={0.35} />
+          <Strom d="M 388 290 L 737 290" color="#e0f2fe" width={1.2} dash="3 18" dur={3.5} opacity={0.6} />
           {/* Inversjonsgrense (vannspeil-lignende lokk) */}
           <line x1="385" y1="290" x2="740" y2="290" stroke="#38bdf8" strokeWidth="2.2" strokeDasharray="5 3" />
           <L x="575" y="282" fill="#7dd3fc" size={11} weight={800} anchor="middle">
@@ -934,6 +960,12 @@ export function KatabaticWindDiagram() {
               opacity="0.85"
             />
           </g>
+
+          {/* Røykdotter: stiger til lokket og flater ut under det */}
+          <Flyt path="M 469 352 Q 466 322 469 296 Q 440 293 405 294" dur={6} n={7} r={3} grow={11} ry={2.6} fill="#cbd5e1" opacity={0.6} />
+          <Flyt path="M 469 352 Q 472 322 469 296 Q 500 293 528 294" dur={6.5} n={7} r={3} grow={11} ry={2.6} fill="#cbd5e1" opacity={0.6} />
+          {/* Røyk fra gården i lia stiger fritt (over lokket) */}
+          <Flyt path="M 768 213 Q 764 190 772 165 Q 778 150 772 135" dur={5} n={5} r={2} grow={7} fill="#cbd5e1" opacity={0.5} />
 
           {/* TERMISK BELTE OPPE I DEN MOTGÅENDE LIA (HØYRE SIDE) */}
           <g transform="translate(745, 235)">
@@ -1001,7 +1033,7 @@ export function KatabaticWindDiagram() {
           <L x="490" y="465" fill={C.fg} size={11}>
             • <tspan fill={C.cold} fontWeight="bold">Katabatisk vind:</tspan> kald, tung luft renner ned og samles.
           </L>
-        </>
+        </g>
       )}
     </Diagram>
   );
