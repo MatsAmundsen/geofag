@@ -23,9 +23,9 @@
 
 ## Hva er et skred?
 
-Skred, også kalt ras, er masser av fjell, stein, jord, leire og/eller snø som beveger seg ned skråninger, ofte sammen med mye vann. Om lag 1100 mennesker har mistet livet i skredulykker i Norge siden 1900. Over 600 av dem omkom i snøskred, som vi ikke tar i dette kapitlet (Meld. St. 15 (2011–2012), 2012).
+Skred, også kalt ras, er masser av fjell, stein, jord, leire og/eller snø som beveger seg ned skråninger, ofte sammen med mye vann. Om lag 1100 mennesker har mistet livet i skredulykker i Norge siden 1900. Over 600 av dem omkom i snøskred, som vi ikke tar i dette kapitlet. Tallene står i stortingsmeldingen om flom og skred (Meld. St. 15 (2011–2012), 2012).
 
-Vi deler skred i tre kategorier etter massen: fjell, løsmasser og snø (NGU, u.å.-d; NVE, 2020c). Snøskred tar vi ikke i dette kapitlet.
+Vi deler skred i tre kategorier etter massen: fjell, løsmasser og snø. Det følger blant annet Norges geologiske undersøkelse (NGU) og Norges vassdrags- og energidirektorat (NVE) (NGU, u.å.-d; NVE, 2020c). Snøskred tar vi ikke i dette kapitlet.
 
 Steinsprang er én eller et fåtall blokker, med volum inntil noen hundre kubikkmeter. Blokkene spretter, ruller eller sklir ned skråningen (NVE, 2020c). NGU bruker «inntil noen få hundre kubikkmeter» om steinsprang, og steinskred eller fjellskred om større volum (NGU, u.å.-d).
 
@@ -55,13 +55,13 @@ KvikkleireForklaring
 
 Kvikkleire er marin leire. Blir den overbelastet, blir den flytende, og det kan gå et kvikkleireskred (NGU, u.å.-a).
 
-Marin leire ble avsatt på sjøbunnen under og etter siste istid. Salt sjøvann gjorde at leirpartiklene la seg i en åpen korthusstruktur. Hulrommene inneholder mye vann, mer enn når leire avsettes i ferskvann. Strukturen er stabil så lenge det er saltvann mellom partiklene (NGU, u.å.-a). NVE beskriver det samme som fnokking: saltet binder de flate partiklene, kantene trekkes mot hverandre, og korthuset stenger inne vann (NVE, 2021b).
+Marin leire ble avsatt på sjøbunnen under og etter siste istid. Salt sjøvann gjorde at leirpartiklene la seg i en åpen korthusstruktur. Hulrommene inneholder mye vann, mer enn når leire avsettes i ferskvann. Strukturen er stabil så lenge det er saltvann mellom partiklene (NGU, u.å.-a). NVE beskriver det samme som *fnokking*, det vil si at saltet får partiklene til å henge sammen i flak. Saltet binder de flate partiklene, kantene trekkes mot hverandre, og korthuset stenger inne vann (NVE, 2021b).
 
-I åpent hav er saltinnholdet ca. 35 gram per liter. Synker saltinnholdet i porevannet under 2 gram per liter, svekkes bindingene, og kvikkleire kan dannes. Leira er tett. Det tar mange hundre til flere tusen år å bytte ut saltvannet med ferskvann (NGU, u.å.-a). NVE skriver at ferskt grunnvann kan strømme gjennom leira, og at utvaskingen skjer over flere tusen år (NVE, 2021b).
+I åpent hav er saltinnholdet ca. 35 gram per liter. Synker saltinnholdet i *porevannet* (vannet i hulrommene mellom kornene) under 2 gram per liter, svekkes bindingene, og kvikkleire kan dannes. Leira er tett. Det tar mange hundre til flere tusen år å bytte ut saltvannet med ferskvann (NGU, u.å.-a). NVE skriver at ferskt grunnvann kan strømme gjennom leira, og at utvaskingen skjer over flere tusen år (NVE, 2021b).
 
 Ikke all marin leire er kvikk. Kvikkleire dannes i lommer eller lag. Lag av silt eller sand, eller leire som ligger nær berg, kan gjøre utvaskingen raskere (NGU, u.å.-a).
 
-Hvorfor den gamle sjøbunnen ligger på land, og hva marin grense og isostasi er, tar vi i kapitlet Isbreer og landformer.
+Hvorfor den gamle sjøbunnen ligger på land, og hva marin grense og isostasi er, tar vi i kapitlet [Isbreer og landformer](/geofag-1/isbreer-og-landformer).
 
 Mest kvikkleire finnes i Trøndelag og på Østlandet. Den finnes også i mindre områder i daler, fjorder og i strandsonen (NGU, u.å.-a).
 
@@ -73,7 +73,7 @@ Kvikkleire kan være ganske fast. Belastes den for mye, kollapser strukturen. I 
 | Hvor det går | Bratt fjellside | Bratt skråning, utenfor bekkeløpet | Lommer i marin leire |
 | Jordskredvarselet | Inngår ikke | Jordskred, sørpeskred og flomskred | Inngår ikke |
 
-Volumgrensene i tabellen følger de samme sidene (NVE, 2020c; NVE, 2020d). Jordskred går utenfor vannveiene (NVE, 2020a). Steinsprang og kvikkleireskred inngår ikke i jordskredvarselet (Varsom, u.å.-b). Sørpeskred er snø som er vannmettet. Det hører til varselet, og forklares ikke her (NVE, 2020c).
+Volumgrensene i tabellen følger de samme sidene (NVE, 2020c; NVE, 2020d). Jordskred går utenfor vannveiene (NVE, 2020a). Steinsprang og kvikkleireskred inngår ikke i jordskredvarselet på varslingstjenesten Varsom (NVE) (Varsom, u.å.-b). Sørpeskred er snø som er vannmettet. Det hører til varselet, og forklares ikke her (NVE, 2020c).
 
 To forhold overbelaster leira oftest. Det ene er erosjon, altså at bekker og elver graver. Det andre er menneskers tiltak: graving i bunnen av skråningen, fylling på toppen, eller annen belastning på terrenget (NVE, 2021b). I nyere tid er graving og fylling en av de vanligste årsakene (NGU, u.å.-b).
 
@@ -127,15 +127,15 @@ SjekkSkred2
 
 Tre tiltak kan bedre stabiliteten i en leirskråning. Vi kan fjerne masse og senke terrenget på toppen, så trykket på massene under blir mindre. Vi kan fylle masse i bunnen, som motvekt. Vi kan erosjonssikre bekker og elver, så de ikke graver skråningen brattere (NGU, u.å.-c).
 
-For skred i bratt terreng finnes det to slags kart. Aktsomhetskart er grove og i hovedsak landsdekkende. De er laget med GIS ut fra generelle regler for hvor skred kan løsne og hvor de kan havne. Typene er snøskred, sørpeskred, flomskred, jordskred, steinsprang og steinskred. Kvikkleire er ikke med i den listen. Kartene brukes i overordnet arealplanlegging. Skal det bygges innenfor et aktsomhetsområde, må faren utredes nærmere (NVE, 2020b).
+For skred i bratt terreng finnes det to slags kart. Aktsomhetskart er grove og i hovedsak landsdekkende. De er laget med *GIS* (geografiske informasjonssystemer) ut fra generelle regler for hvor skred kan løsne og hvor de kan havne. Typene er snøskred, sørpeskred, flomskred, jordskred, steinsprang og steinskred. Kvikkleire er ikke med i den listen. Kartene brukes i overordnet arealplanlegging. Skal det bygges innenfor et aktsomhetsområde, må faren utredes nærmere (NVE, 2020b).
 
-En slik utredning viser den reelle faren som nominell årlig sannsynlighet, i et faresonekart (NVE, 2020b). For kvikkleire har NGU et kart over mulighet for marin leire. Det inngår i NVEs aktsomhetskart for kvikkleireskred (NGU, u.å.-c).
+En slik utredning viser den reelle faren som *nominell årlig sannsynlighet* i et faresonekart. Det er hvor stor sjanse det er hvert år for at et skred av den størrelsen skjer (NVE, 2020b). For kvikkleire har NGU et kart over mulighet for marin leire. Det inngår i NVEs aktsomhetskart for kvikkleireskred (NGU, u.å.-c).
 
 ```widget
 SkredSoner
 ```
 
-Hvor langt et skred kan gå, beregnes med modeller. En enkel modell er α-β-modellen fra NGI, som bygger på statistikk fra rundt 200 snøskred. Vinkelen β måler hvor bratt skredbanen er fra løsneområdet ned til punktet der terrenget blir slakere enn 10°. Ut fra β gir modellen vinkelen α fra toppen av skredet ned til det lengste utløpet, og dermed hvor langt ut i dalen skredet kan nå. Det første landsdekkende aktsomhetskartet for snøskred fra 2010 brukte denne modellen. Det nye kartet fra 2023 bruker i stedet en dynamisk modell som følger terrenget og tar hensyn til skog og lokalt klima (NVE, 2023b). Figuren viser hvordan utløpsområdet som modellen gir, blir til soner på kartet.
+Hvor langt et skred kan gå, beregnes med modeller. En enkel modell er α-β-modellen fra Norges Geotekniske Institutt (NGI), som bygger på statistikk fra rundt 200 snøskred. Vinkelen β måler hvor bratt skredbanen er fra løsneområdet ned til punktet der terrenget blir slakere enn 10°. Ut fra β gir modellen vinkelen α fra toppen av skredet ned til det lengste utløpet, og dermed hvor langt ut i dalen skredet kan nå. Det første landsdekkende aktsomhetskartet for snøskred fra 2010 brukte denne modellen. Det nye kartet fra 2023 bruker i stedet en dynamisk modell som følger terrenget og tar hensyn til skog og lokalt klima (NVE, 2023b). Figuren viser hvordan utløpsområdet som modellen gir, blir til soner på kartet.
 
 Jordskredvarselet på Varsom gjelder jordskred, sørpeskred og flomskred. Steinsprang, steinskred og kvikkleireskred inngår ikke. Ved fare for jord- og flomskred er det likevel økt fare for steinsprang som vannet utløser (Varsom, u.å.-b).
 
