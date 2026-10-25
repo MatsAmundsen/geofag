@@ -162,7 +162,7 @@ export function PaleoProxyEksempelFigur() {
             .join(" ");
           return `${forward} ${back} Z`;
         };
-        const urtTop = (p: (typeof pollen)[0]) => 0;
+        const urtTop = (_p: (typeof pollen)[0]) => 0;
         const urtBot = (p: (typeof pollen)[0]) => p.urt;
         const bjorkTop = (p: (typeof pollen)[0]) => p.urt;
         const bjorkBot = (p: (typeof pollen)[0]) => p.urt + p.bjork;
@@ -222,10 +222,10 @@ export function PaleoProxyEksempelFigur() {
 
             {/* ===== A: δ18O ===== */}
             {panelBox(panelATop, panelAH, "A", "δ¹⁸O i is", C.cold)}
-            <L x={x0 - 6} y={panelATop + 22} fill={C.muted} size={10} anchor="end">
+            <L x={x0 - 6} y={panelATop + 22} fill={C.muted} size={11} anchor="end">
               varmere
             </L>
-            <L x={x0 - 6} y={panelATop + panelAH - 8} fill={C.muted} size={10} anchor="end">
+            <L x={x0 - 6} y={panelATop + panelAH - 8} fill={C.muted} size={11} anchor="end">
               kaldere
             </L>
             <path
@@ -236,22 +236,22 @@ export function PaleoProxyEksempelFigur() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            <L x={toX(21) + 4} y={panelATop + panelAH - 18} fill={C.cold} size={10}>
+            <L x={toX(21) + 4} y={panelATop + panelAH - 18} fill={C.cold} size={11}>
               lav δ¹⁸O = kaldt
             </L>
-            <L x={64} y={panelATop + 72} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelATop + 72} fill={C.muted} size={11} anchor="middle">
               Grønland-aktig
             </L>
-            <L x={64} y={panelATop + 88} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelATop + 88} fill={C.muted} size={11} anchor="middle">
               temperaturproxy
             </L>
 
             {/* ===== B: CO2 ===== */}
             {panelBox(panelBTop, panelBH, "B", "CO₂ bobler", C.warm)}
-            <L x={x0 - 6} y={toYCo2(280) + 4} fill={C.warm} size={10} anchor="end">
+            <L x={x0 - 6} y={toYCo2(280) + 4} fill={C.warm} size={11} anchor="end">
               280
             </L>
-            <L x={x0 - 6} y={toYCo2(185) + 4} fill={C.warm} size={10} anchor="end">
+            <L x={x0 - 6} y={toYCo2(185) + 4} fill={C.warm} size={11} anchor="end">
               185
             </L>
             <path
@@ -266,10 +266,10 @@ export function PaleoProxyEksempelFigur() {
             <L x={toX(21) + 8} y={toYCo2(185) + 4} fill={C.warm} size={11} weight={600}>
               ca. 185 ppm (LGM)
             </L>
-            <L x={64} y={panelBTop + 72} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelBTop + 72} fill={C.muted} size={11} anchor="middle">
               Antarktis-aktig
             </L>
-            <L x={64} y={panelBTop + 88} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelBTop + 88} fill={C.muted} size={11} anchor="middle">
               direkte prøve
             </L>
 
@@ -287,26 +287,26 @@ export function PaleoProxyEksempelFigur() {
               fill={C.cold}
               opacity={0.12}
             />
-            <L x={(toX(12.8) + toX(11.7)) / 2} y={panelCTop + 18} fill={C.cold} size={10} anchor="middle">
+            <L x={(toX(12.8) + toX(11.7)) / 2} y={panelCTop + 18} fill={C.cold} size={11} anchor="middle">
               yngre dryas
             </L>
             {/* legend */}
             <rect x={x0 + 12} y={panelCTop + panelCH - 28} width={10} height={10} fill="#8a6b4a" />
-            <L x={x0 + 26} y={panelCTop + panelCH - 19} fill={C.muted} size={10}>
+            <L x={x0 + 26} y={panelCTop + panelCH - 19} fill={C.muted} size={11}>
               urt
             </L>
             <rect x={x0 + 62} y={panelCTop + panelCH - 28} width={10} height={10} fill="#6a9a6e" />
-            <L x={x0 + 76} y={panelCTop + panelCH - 19} fill={C.muted} size={10}>
+            <L x={x0 + 76} y={panelCTop + panelCH - 19} fill={C.muted} size={11}>
               bjørk
             </L>
             <rect x={x0 + 122} y={panelCTop + panelCH - 28} width={10} height={10} fill="#3d6b4f" />
-            <L x={x0 + 136} y={panelCTop + panelCH - 19} fill={C.muted} size={10}>
+            <L x={x0 + 136} y={panelCTop + panelCH - 19} fill={C.muted} size={11}>
               furu
             </L>
-            <L x={64} y={panelCTop + 72} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelCTop + 72} fill={C.muted} size={11} anchor="middle">
               vegetasjon /
             </L>
-            <L x={64} y={panelCTop + 88} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelCTop + 88} fill={C.muted} size={11} anchor="middle">
               miljø
             </L>
 
@@ -333,7 +333,7 @@ export function PaleoProxyEksempelFigur() {
                 opacity={0.7}
               />
             ))}
-            <L x={x0 + 10} y={panelDTop + 36} fill={C.teal} size={10}>
+            <L x={x0 + 10} y={panelDTop + 36} fill={C.teal} size={11}>
               lagtelling (skjematisk)
             </L>
 
@@ -351,7 +351,7 @@ export function PaleoProxyEksempelFigur() {
                 />
               </g>
             ))}
-            <L x={toX(16) + 12} y={panelDTop + 63} fill={C.warm} size={10}>
+            <L x={toX(16) + 12} y={panelDTop + 63} fill={C.warm} size={11}>
               C-14-prøver
             </L>
 
@@ -373,10 +373,10 @@ export function PaleoProxyEksempelFigur() {
             <L x={toX(11.7) + 8} y={panelDTop + 102} fill={C.sand} size={11} weight={600}>
               holocen-start · ca. 11 700
             </L>
-            <L x={64} y={panelDTop + 72} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelDTop + 72} fill={C.muted} size={11} anchor="middle">
               C-14 / tefra /
             </L>
-            <L x={64} y={panelDTop + 88} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelDTop + 88} fill={C.muted} size={11} anchor="middle">
               lagtelling
             </L>
 
@@ -400,16 +400,16 @@ export function PaleoProxyEksempelFigur() {
               strokeWidth="2"
               strokeLinecap="round"
             />
-            <L x={toX(0) - 8} y={panelETop + 22} fill={C.low} size={10} anchor="end">
+            <L x={toX(0) - 8} y={panelETop + 22} fill={C.low} size={11} anchor="end">
               Moderne værstasjon (°C)
             </L>
-            <L x={toX(0) - 8} y={panelETop + 38} fill={C.muted} size={10} anchor="end">
+            <L x={toX(0) - 8} y={panelETop + 38} fill={C.muted} size={11} anchor="end">
               (siste tiår — feil tidsskala)
             </L>
-            <L x={64} y={panelETop + 72} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelETop + 72} fill={C.muted} size={11} anchor="middle">
               distraktor
             </L>
-            <L x={64} y={panelETop + 88} fill={C.muted} size={10} anchor="middle">
+            <L x={64} y={panelETop + 88} fill={C.muted} size={11} anchor="middle">
               ikke nødvendig
             </L>
 
@@ -441,7 +441,7 @@ export function PaleoProxyEksempelFigur() {
                 x={toX(e.ka)}
                 y={48}
                 fill={C.muted}
-                size={10}
+                size={11}
                 anchor="middle"
               >
                 {e.label}

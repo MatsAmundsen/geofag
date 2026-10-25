@@ -1,5 +1,6 @@
 import { CollapsibleSection } from "@/components/collapsible-section";
 import { PaleoProxyEksempelFigur } from "@/components/diagrams/paleo-proxy-eksempel";
+import { TableScroll } from "@/components/scroll-frame";
 
 /**
  * Collapsible «Eksempel» under paleoklima.
@@ -25,9 +26,7 @@ export function PaleoProxyEksempel() {
         <PaleoProxyEksempelFigur />
 
         <section className="space-y-2">
-          <h4 className="font-display text-base font-medium text-foreground">
-            1. Hva spør vi om?
-          </h4>
+          <h4 className="font-display text-base font-medium text-foreground">1. Hva spør vi om?</h4>
           <p>Før du «løser», les spørsmålene:</p>
           <ol className="list-decimal space-y-1 pl-5">
             <li>
@@ -50,57 +49,61 @@ export function PaleoProxyEksempel() {
           <h4 className="font-display text-base font-medium text-foreground">
             2. Støy vs relevant
           </h4>
-          <div className="overflow-x-auto rounded-lg border border-border/70">
-            <table className="w-full min-w-[40rem] border-collapse text-left text-xs sm:text-sm">
-              <thead className="bg-muted/50 text-muted-foreground">
-                <tr>
-                  <th className="border-b border-border/70 px-3 py-2 font-medium">Spørsmål</th>
-                  <th className="border-b border-border/70 px-3 py-2 font-medium">Bruk panel</th>
-                  <th className="border-b border-border/70 px-3 py-2 font-medium">
-                    Hvorfor resten ikke svarer
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border-b border-border/50 px-3 py-2 align-top">
-                    Når startet holocen?
-                  </td>
-                  <td className="border-b border-border/50 px-3 py-2 align-top">
-                    <strong>D</strong> (C-14 / tefra / lagtelling). Skift i <strong>A</strong> (δ¹⁸O
-                    i is) kan støtte tidspunktet, men daterer ikke alene.
-                  </td>
-                  <td className="border-b border-border/50 px-3 py-2 align-top">
-                    <strong>B</strong> gir gassinnhold, ikke kalenderår. <strong>C</strong> viser
-                    vegetasjon, ikke alder. <strong>E</strong> er støy (moderne værstasjon — feil tidsskala).
-                  </td>
-                </tr>
-                <tr>
-                  <td className="border-b border-border/50 px-3 py-2 align-top">
-                    Vegetasjonen i yngre dryas?
-                  </td>
-                  <td className="border-b border-border/50 px-3 py-2 align-top">
-                    <strong>C</strong> (pollen: urt / bjørk / furu)
-                  </td>
-                  <td className="border-b border-border/50 px-3 py-2 align-top">
-                    <strong>A</strong> sier kaldt/varmt, ikke «bjørkeskog vs tundra».{" "}
-                    <strong>B</strong> sier CO₂. <strong>D</strong> sier når. <strong>E</strong> er
-                    støy.
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 align-top">CO₂ ved LGM?</td>
-                  <td className="px-3 py-2 align-top">
-                    <strong>B</strong> (CO₂ i luftbobler)
-                  </td>
-                  <td className="px-3 py-2 align-top">
-                    <strong>A</strong> er temperaturproxy, ikke gassmengde. <strong>C</strong> og{" "}
-                    <strong>D</strong> svarer ikke på ppm. <strong>E</strong> er støy.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <TableScroll
+            caption="Støy vs relevant"
+            visuallyHiddenCaption
+            className="rounded-lg border border-border/70"
+            tableClassName="w-full min-w-[40rem] border-collapse text-left text-xs sm:text-sm"
+          >
+            <thead className="bg-muted/50 text-muted-foreground">
+              <tr>
+                <th className="border-b border-border/70 px-3 py-2 font-medium">Spørsmål</th>
+                <th className="border-b border-border/70 px-3 py-2 font-medium">Bruk panel</th>
+                <th className="border-b border-border/70 px-3 py-2 font-medium">
+                  Hvorfor resten ikke svarer
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border-b border-border/50 px-3 py-2 align-top">
+                  Når startet holocen?
+                </td>
+                <td className="border-b border-border/50 px-3 py-2 align-top">
+                  <strong>D</strong> (C-14 / tefra / lagtelling). Skift i <strong>A</strong> (δ¹⁸O i
+                  is) kan støtte tidspunktet, men daterer ikke alene.
+                </td>
+                <td className="border-b border-border/50 px-3 py-2 align-top">
+                  <strong>B</strong> gir gassinnhold, ikke kalenderår. <strong>C</strong> viser
+                  vegetasjon, ikke alder. <strong>E</strong> er støy (moderne værstasjon — feil
+                  tidsskala).
+                </td>
+              </tr>
+              <tr>
+                <td className="border-b border-border/50 px-3 py-2 align-top">
+                  Vegetasjonen i yngre dryas?
+                </td>
+                <td className="border-b border-border/50 px-3 py-2 align-top">
+                  <strong>C</strong> (pollen: urt / bjørk / furu)
+                </td>
+                <td className="border-b border-border/50 px-3 py-2 align-top">
+                  <strong>A</strong> sier kaldt/varmt, ikke «bjørkeskog vs tundra».{" "}
+                  <strong>B</strong> sier CO₂. <strong>D</strong> sier når. <strong>E</strong> er
+                  støy.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 align-top">CO₂ ved LGM?</td>
+                <td className="px-3 py-2 align-top">
+                  <strong>B</strong> (CO₂ i luftbobler)
+                </td>
+                <td className="px-3 py-2 align-top">
+                  <strong>A</strong> er temperaturproxy, ikke gassmengde. <strong>C</strong> og{" "}
+                  <strong>D</strong> svarer ikke på ppm. <strong>E</strong> er støy.
+                </td>
+              </tr>
+            </tbody>
+          </TableScroll>
           <p>
             Kort sagt: ofte får du «for mye» data. Si alltid <em>hva hver kurve måler</em> før du
             svarer.
@@ -124,9 +127,9 @@ export function PaleoProxyEksempel() {
             Et tydelig skift i <strong>panel A</strong> (δ¹⁸O i is) kan støtte <em>når</em> klimaet
             ble varmere, men det er <strong>panel D</strong> som gir alder (C-14, tefra eller
             lagtelling). <strong>Panel C</strong> (pollen) forteller om vegetasjonen, ikke
-            kalenderår. Husk også <em>gassalderen</em> (Δage): lufta stenges inne først i bunnen
-            av firnen (som regel 50–100 m under overflaten), så boblene er litt yngre enn isen
-            rundt (Davies, 2020). Derfor leser vi alder for is og for gass med forsiktighet.
+            kalenderår. Husk også <em>gassalderen</em> (Δage): lufta stenges inne først i bunnen av
+            firnen (som regel 50–100 m under overflaten), så boblene er litt yngre enn isen rundt
+            (Davies, 2020). Derfor leser vi alder for is og for gass med forsiktighet.
           </p>
         </section>
 
@@ -139,15 +142,14 @@ export function PaleoProxyEksempel() {
           </p>
           <p>
             <strong>Panel C</strong> (pollendiagram) svarer på vegetasjonen. I en forenklet
-            illustrasjon ser du typisk mer <strong>urt</strong> (tundra-/reinrose-preget
-            vegetasjon) og mindre <strong>bjørk</strong> og <strong>furu</strong> i yngre dryas enn
-            i mildere perioder rundt. Det er pollenanalysen som knytter laget til plantene — ikke
-            δ¹⁸O.
+            illustrasjon ser du typisk mer <strong>urt</strong> (tundra-/reinrose-preget vegetasjon)
+            og mindre <strong>bjørk</strong> og <strong>furu</strong> i yngre dryas enn i mildere
+            perioder rundt. Det er pollenanalysen som knytter laget til plantene — ikke δ¹⁸O.
           </p>
           <p>
             δ¹⁸O i is (<strong>A</strong>) forteller at det var kaldt, men ikke om landskapet var
-            bjørkeskog eller tundra. CO₂ (<strong>B</strong>) forteller heller ikke
-            vegetasjonstype. Match spørsmål ↔ arkiv.
+            bjørkeskog eller tundra. CO₂ (<strong>B</strong>) forteller heller ikke vegetasjonstype.
+            Match spørsmål ↔ arkiv.
           </p>
         </section>
 
@@ -160,8 +162,8 @@ export function PaleoProxyEksempel() {
           <p>Her gjelder kapitlets eksamensregel:</p>
           <ul className="list-disc space-y-1 pl-5">
             <li>
-              Isotopene i isen (<strong>A</strong>) er en <em>proxy</em> (proxy = stedfortreder)
-              for temperatur.
+              Isotopene i isen (<strong>A</strong>) er en <em>proxy</em> (proxy = stedfortreder) for
+              temperatur.
             </li>
             <li>
               Luftboblene (<strong>B</strong>) er <strong>prøver</strong> av fortidens luft. CO₂ i
