@@ -239,8 +239,10 @@ export function FoehnAdiabaticDiagram() {
           ))}
           {/* Lufta kan også komme ned fra høyere luftlag */}
           <Flyt path="M 800 86 L 702 178" dur={4.5} n={3} r={4} fill={C.warm} opacity={0.75} />
-          <Arrow d="M 290 255 L 282 300" marker={m.rain} color={C.rain} width={2} />
-          <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={2} />
+          <g opacity="0.4">
+            <Arrow d="M 290 255 L 282 300" marker={m.rain} color={C.rain} width={1.4} />
+            <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={1.4} />
+          </g>
           <Arrow d="M 225 280 L 430 182" marker={m.rain} color={C.rain} width={3} />
           <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. -0,6 °C / 100 m</L>
           <L x="150" y="246" fill={C.muted} size={10}>Regn faller på losiden</L>
@@ -260,7 +262,7 @@ export function FoehnAdiabaticDiagram() {
 
           <Arrow d="M 470 190 L 730 350" marker={m.warm} color={C.warm} width={3.6} />
           <L x="630" y="240" fill={C.warm} size={13} weight={800}>+1,0 °C / 100 m</L>
-          <L x="630" y="258" fill={C.sand} size={11} weight={700}>Hovedgrunnen til fønvarmen</L>
+          <L x="630" y="258" fill={C.warm} size={12} weight={800}>Hovedgrunnen til fønvarmen</L>
 
           <rect x="710" y="340" width="150" height="50" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2">
             <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-2.0s" repeatCount="indefinite" />
@@ -406,6 +408,9 @@ export function TemperatureInversionDiagram() {
           {/* Temperaturprofilen: én knekklinje, tegnet over røyk og lokk */}
           <polyline points="610,345 730,240 670,140" fill="none" stroke="#141923" strokeWidth="7" strokeLinejoin="round" opacity="0.8" />
           <polyline points="610,345 730,240 670,140" fill="none" stroke="#ef4444" strokeWidth="3.5" strokeLinejoin="round" />
+          {[[610, 345], [730, 240], [670, 140]].map(([x, y]) => (
+            <circle key={x} cx={x} cy={y} r="4.5" fill="#ef4444" stroke="#141923" strokeWidth="1.5" />
+          ))}
           {/* Tekst om faren */}
           <L x="862" y="300" fill="#fef08a" size={11} weight={700} anchor="end">
             Utslipp samler seg under lokket
