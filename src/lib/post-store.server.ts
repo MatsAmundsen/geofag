@@ -1210,6 +1210,15 @@ const COPY_RESEEDS: CopyReseed[] = [
       "så mener vi ca 95% av bergarten",
     ],
   },
+  {
+    // Paleoklima: PaleoProxyEksempel-knapp etter SjekkPaleo5 + Til eksamen-punkt (Geo+DS2+Mats merge-ja 25.10).
+    flag: "g2-paleoklima-proxy-eksempel-2026-10-25",
+    slug: "paleoklima",
+    stale: [
+      "```widget\nSjekkPaleo5\n```\n\n## Hva viser brå klimaendringer",
+      "dagens utslipp går ca. ti ganger så fort.\n\n```widget\nSjekkPaleo6",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
