@@ -25,7 +25,7 @@
 
 ## Hva er det hydrologiske kretsløpet?
 
-Vannets kretsløp er sirkulasjonen fra fordampning, gjennom nedbør og avrenning, til ny fordampning. Drivkraften er sola (NGU, u.å.-g). Sirkulasjonen av vann mellom hav, luft og land kaller vi *det hydrologiske kretsløpet*. Vannet er hele tiden i bevegelse, og derfor er det en fornybar naturressurs (NVE, u.å.-a).
+Vannets kretsløp er sirkulasjonen fra fordampning, gjennom nedbør og avrenning, til ny fordampning. Norges geologiske undersøkelse (NGU) beskriver sola som drivkraften (NGU, u.å.-g). Sirkulasjonen av vann mellom hav, luft og land kaller vi *det hydrologiske kretsløpet*. Vannet er hele tiden i bevegelse, og derfor er det en fornybar naturressurs, slik Norges vassdrags- og energidirektorat (NVE) beskriver det (NVE, u.å.-a).
 
 Vann fordamper mest fra havet, men også fra bakken, elver og innsjøer. Planter avgir vanndamp gjennom bladene. Samlet fordampning kalles *evapotranspirasjon* (evaporasjon = fordampning, transpirasjon = plantenes «svette»). Vanndampen blir skyer, og nedbøren treffer bakken. Derfra går vannet videre som overflateavrenning, ny fordampning eller *infiltrasjon* (vannet siger ned i bakken). Noe nedbør lagres en stund som snø eller is (NGU, u.å.-g).
 
@@ -37,7 +37,7 @@ Kretslop
 
 Figuren er en modell av de samme lagrene: snø, mark, grunnvann, innsjø og elv. Pilene viser tilførsel, lagring og tap til lufta og til havet. Modellen kan også skrives som et regnestykke, en *vannbalanse*: Nedbøren i et område er lik avrenningen pluss fordampningen pluss endringen i lagrene (Dingman, 2015).
 
-Lite av vannet på jorda er ferskvann vi kan bruke. Ca. 97 prosent av vannet er saltvann, nesten alt i havet (96,5 prosent). Bare ca. 2,5 prosent er ferskvann. Av ferskvannet er over 68 prosent bundet i is og breer og ca. 30 prosent er grunnvann. Elver og innsjøer utgjør bare en liten brøkdel, men det er likevel derfra vi henter mye av vannet vi bruker (USGS, u.å.). Is og snø regner vi i dette nettstedet til kryosfæren, se kapitlet [Jordsystemene](/geofag-1/jordsystemene).
+Lite av vannet på jorda er ferskvann vi kan bruke. Ca. 97 prosent av vannet er saltvann, nesten alt i havet (96,5 prosent). Bare ca. 2,5 prosent er ferskvann. Av ferskvannet er over 68 prosent bundet i is og breer og ca. 30 prosent er grunnvann. Elver og innsjøer utgjør bare en liten brøkdel, men det er likevel derfra vi henter mye av vannet vi bruker. Det amerikanske geologiske instituttet (USGS) har beregnet disse andelene (USGS, u.å.). Is og snø regner vi i dette nettstedet til kryosfæren, se kapitlet [Jordsystemene](/geofag-1/jordsystemene).
 
 ## Hva er en akvifer?
 
@@ -47,13 +47,13 @@ AkviferForklaring
 
 Grunnvann er vann som fyller og strømmer gjennom porer og sprekker i undergrunnen. Overflaten kalles *grunnvannsspeilet*: flaten der grunnvannstrykket er lik lufttrykket. Under speilet er sonen mettet. Over speilet, i markvannssonen, er hulrommene bare delvis fylt med vann (NGU, u.å.-d). En *akvifer* er berg eller løsmasse som kan lagre grunnvann og slippe det fra seg. NGU kaller grunnvann en geologisk ressurs som ligger skjult i bakken (NGU, u.å.-b).
 
-Hvor mye vann bakken kan holde, følger *porøsiteten*, andelen hulrom. I norske løsmasser og bergarter går den fra nærmest null i krystalline bergarter til 50 prosent i løsmasser (NGU, u.å.-d). Om vannet kan strømme, følger *permeabiliteten*. Løst pakket, godt sortert grus og sand har store, sammenhengende hulrom og høy permeabilitet. Silt og leire har små korn, er tett pakket og har lav permeabilitet. Usortert materiale har også lav permeabilitet, fordi de små kornene fyller hulrommene mellom de store. I fjell styres permeabiliteten av sprekker, med unntak av sandstein og kalkbergarter (NGU, u.å.-c). Leire kan altså ha høy total porøsitet og likevel slippe lite vann gjennom, mens sand har høyere effektiv porøsitet og permeabilitet (Freeze & Cherry, 1979).
+Hvor mye vann bakken kan holde, følger *porøsiteten*, andelen hulrom. I norske løsmasser og bergarter går den fra nærmest null i *krystalline bergarter* (hardt, krystallinsk grunnfjell uten porer) til 50 prosent i løsmasser (NGU, u.å.-d). Om vannet kan strømme, følger *permeabiliteten*. Løst pakket, godt sortert grus og sand har store, sammenhengende hulrom og høy permeabilitet. Silt og leire har små korn, er tett pakket og har lav permeabilitet. Usortert materiale har også lav permeabilitet, fordi de små kornene fyller hulrommene mellom de store. I fjell styres permeabiliteten av sprekker, med unntak av sandstein og kalkbergarter (NGU, u.å.-c). Leire kan altså ha høy total porøsitet og likevel slippe lite vann gjennom, mens sand har høyere effektiv porøsitet og permeabilitet (Freeze og Cherry, 1979).
 
 De beste akviferene i Norge er ofte sand og grus som smeltevannet sorterte da innlandsisen smeltet. De fleste løsmassene våre er knyttet til innlandsisen, som morene, breelvavsetninger og marine sedimenter (NGU, u.å.-e). Siste istid sluttet for ca. 11 700 år siden (Cohen mfl., 2026), så de store grunnvannsmagasinene i løsmasser ligger i avsetninger fra isavsmeltingen.
 
 Regn og snøsmelting gir både overflateavrenning og infiltrasjon. Vannet som siger ned, blir først markvann og deretter grunnvann. Grunnvannet strømmer langsomt mot bekker, elver og innsjøer. Det er derfor elva ikke tørker ut når det slutter å regne. Svaret på «Hva tror du?» er at i en tørkeperiode med lav vannføring kan elvene bestå av 40–100 prosent grunnvann (NGU, u.å.-c). Grunnvannsmagasiner som ikke ligger langs et vassdrag, får nytt vann bare fra nedbør og snøsmelting. De er derfor følsomme for klimaendringer, ekstreme forhold og menneskelige inngrep (NVE, u.å.-f).
 
-På Østlandet brukes mye grunnvann i vannforsyningen, fordi det er lett tilgang fra store akviferer i løsmasser. Store grunnvannsverk fra løsmasser finnes blant annet i Lillehammer, Hønefoss, Alta og Elverum (NGU, u.å.-d). Nasjonal grunnvannsdatabase, GRANADA, har opplysninger om over 140 000 brønner og kilder i Norge, boret i fjell og i løsmasser (NGU, u.å.-f; per oktober 2026).
+På Østlandet brukes mye grunnvann i vannforsyningen, fordi det er lett tilgang fra store akviferer i løsmasser. Store grunnvannsverk fra løsmasser finnes blant annet i Lillehammer, Hønefoss, Alta og Elverum (NGU, u.å.-d). NGUs nasjonale grunnvannsdatabase, GRANADA, har opplysninger om over 140 000 brønner og kilder i Norge, boret i fjell og i løsmasser (NGU, u.å.-f; per oktober 2026).
 
 Jordskred og kvikkleire hører til kapitlet [Skred](/geofag-1/skred).
 
@@ -63,7 +63,7 @@ SjekkVannOgFlom1
 
 ## Hva er et hydrogram?
 
-Vannføring er vannvolumet som strømmer forbi et punkt i en elv per tidsenhet, ofte målt i m³/s (Varsom, u.å.-a). Et *hydrogram* (hydro = vann, gram = noe skrevet) viser den vannføringen mot tid. Hydrogrammet er en modell av hvordan nedbørfeltet svarer på regn og snøsmelting.
+Vannføring er vannvolumet som strømmer forbi et punkt i en elv per tidsenhet, ofte målt i m³/s, slik varslingstjenesten Varsom (NVE) definerer det (Varsom, u.å.-a). Et *hydrogram* (hydro = vann, gram = noe skrevet) viser den vannføringen mot tid. Hydrogrammet er en modell av hvordan nedbørfeltet svarer på regn og snøsmelting.
 
 ```widget
 Hydrograph
@@ -79,14 +79,14 @@ SjekkVannOgFlom2
 
 ## Hva er en flom?
 
-Flom er en forholdsvis stor vannføring i en elv (Varsom, u.å.-a). Overvann er noe annet: vann som samler seg og renner av på tette flater, særlig i tettbygde områder (Varsom, u.å.-a). Lokal oversvømmelse kan også komme av is i elveløpet, en kulvert med for liten kapasitet, eller høyt tidevann nær utløpet, uten at vannføringen i seg selv er spesielt stor (Varsom, u.å.-a).
+Flom er en forholdsvis stor vannføring i en elv (Varsom, u.å.-a). Overvann er noe annet: vann som samler seg og renner av på tette flater, særlig i tettbygde områder (Varsom, u.å.-a). Lokal oversvømmelse kan også komme av is i elveløpet, en *kulvert* (rør eller tunnel under vei) med for liten kapasitet, eller høyt tidevann nær utløpet. Det skjer uten at vannføringen i seg selv er spesielt stor (Varsom, u.å.-a).
 
 | | Regnflom | Snøsmelteflom | Regn- og snøsmelteflom |
 | --- | --- | --- | --- |
 | Årsak | Bare regn | Snøsmelting alene | Regn og snøsmelting sammen |
 | Hvor de største ofte kommer | Mange vassdrag på Sørlandet og Vestlandet. Oktober 2014 rammet Voss og Odda | Store vassdrag i Finnmark, som Altavassdraget og Tana | Store flommer på Østlandet, som Vesleofsen i 1995 og flommene i Gudbrandsdalen i juni 2011 og mai 2013 (pinseflommen) |
 
-Regnflom, snøsmelteflom og regn- og snøsmelteflom er definert slik i ordlisten til Varsom (Varsom, u.å.-a). Flommen i mai 2013 kom av regn på toppen av sterk snøsmelting, og gjorde store skader der bratte sideelver renner ned i dalførene, særlig i Kvam i Gudbrandsdalen (Roald, 2015). Vårflom er årlig i store deler av landet og skyldes hovedsakelig snøsmelting, først og fremst i elver fra indre strøk (Varsom, u.å.-b).
+Regnflom, snøsmelteflom og regn- og snøsmelteflom er definert slik i ordlisten til Varsom (Varsom, u.å.-a). Flommen i mai 2013 kom av regn på toppen av sterk snøsmelting. Den gjorde store skader der bratte sideelver renner ned i dalførene, særlig i Kvam i Gudbrandsdalen (Roald, 2015). Vårflom er årlig i store deler av landet og skyldes hovedsakelig snøsmelting, først og fremst i elver fra indre strøk (Varsom, u.å.-b).
 
 Været avgjør hvor stor vårflommen blir. Moderat varme og lite regn gir en normal vårflom, selv om det er mye snø. Mye regn og varme kan gi en stor flom, selv om det er relativt lite snø i feltet (Varsom, u.å.-b).
 
@@ -100,7 +100,7 @@ SjekkVannOgFlom3
 
 ## Hva viste Hans?
 
-Ekstremværet Hans lå over Sør-Norge fra 7. til 9. august 2023. Mest nedbør falt vest i Innlandet og i de nordvestligste delene av det som da var Viken. Store områder fikk nedbør som tilsvarte en returverdi på 100 år, og enkelte steder fikk mer enn 200 prosent av normal nedbør for august i løpet av få døgn (Granerød mfl., 2023). Flere stasjoner med mer enn 100 års målinger satte ny rekord for tre døgn. Geilo målte 111 mm, mot 107 mm i 1938. Vang i Valdres målte 139 mm, mot 128 mm i 1938 (MET, 2023).
+Ekstremværet Hans lå over Sør-Norge fra 7. til 9. august 2023. Mest nedbør falt vest i Innlandet og i de nordvestligste delene av det som da var Viken. Store områder fikk nedbør som tilsvarte en *returverdi* på 100 år, altså samme sjeldenhet som en 100-årsflom. Enkelte steder fikk mer enn 200 prosent av normal nedbør for august i løpet av få døgn (Granerød mfl., 2023). Flere stasjoner med mer enn 100 års målinger satte ny rekord for tre døgn. Geilo målte 111 mm, mot 107 mm i 1938. Vang i Valdres målte 139 mm, mot 128 mm i 1938, ifølge Meteorologisk institutt (MET) (MET, 2023).
 
 Nedbøren falt over et uvanlig stort område. Det ga mye vann i de mange sideelvene som til slutt renner ut i noen få hovedelver, og derfor ble flommene så store (MET, 2023). MET skriver at klimaendringer kan forsterke en slik nedbørhendelse (MET, 2023).
 
@@ -124,7 +124,7 @@ Myr og annen våtmark virker som en svamp. Intakte våtmarker holder vann tilbak
 
 Vannkraft står for om lag 89 prosent av den norske normalårsproduksjonen av strøm. Vi har over 1800 vannkraftverk og rundt 1100 magasiner (Energidepartementet, u.å.). En *vassdragsregulering* lagrer vann i magasiner, slik at strømmen kan produseres når vi trenger den mest, for eksempel om vinteren (NVE, u.å.-a). Reguleringen flytter altså vann i tid: Mindre vann renner i elva når magasinene fylles, og mer når de tappes.
 
-Magasinene kan også dempe flom. Har magasinet ledig plass når flommen kommer, blir flomtoppen nedstrøms lavere. Effekten blir mindre jo større flommen er (NVE, 2023). Under vårflommen i 2023 styrte regulantene vannføringen aktivt, og flommen i Sør-Norge ble mindre enn fryktet (NVE, 2024). Elvestrekninger nedenfor en demning kan få så lite vann at fisk og annet liv tar skade. Derfor setter NVE ofte vilkår om *minstevannføring*: en viss mengde vann som alltid skal slippes forbi (NVE, u.å.-d).
+Magasinene kan også dempe flom. Har magasinet ledig plass når flommen kommer, blir flomtoppen nedstrøms lavere. Effekten blir mindre jo større flommen er (NVE, 2023). Under vårflommen i 2023 styrte kraftverkene som regulerer magasinet (*regulantene*) vannføringen aktivt. Flommen i Sør-Norge ble da mindre enn fryktet (NVE, 2024). Elvestrekninger nedenfor en demning kan få så lite vann at fisk og annet liv tar skade. Derfor setter NVE ofte vilkår om *minstevannføring*: en viss mengde vann som alltid skal slippes forbi (NVE, u.å.-d).
 
 ### Grunnvannsuttak og forurensning
 
@@ -140,7 +140,7 @@ SjekkVannOgFlom4
 
 ## Hvordan kan vi bruke ferskvannet bærekraftig?
 
-Å bruke ferskvann *bærekraftig* betyr å dekke behovene våre i dag uten å ødelegge ressursen eller naturen som er avhengig av den, slik at også neste generasjon har nok og rent vann. FNs bærekraftsmål 6 har et eget delmål for dette: «Innen 2030 betydelig bedre utnyttelsen av vann i alle sektorer og sikre bærekraftig uttak av og tilgang til ferskvann for å avhjelpe vannmangel og i vesentlig grad redusere antall personer som rammes av vannmangel» (FN-sambandet, u.å.).
+Å bruke ferskvann *bærekraftig* betyr å dekke behovene våre i dag uten å ødelegge ressursen eller naturen som er avhengig av den. Også neste generasjon skal ha nok og rent vann. FNs bærekraftsmål 6 har et eget delmål for dette. Innen 2030 skal vi bruke vannet bedre i alle sektorer, sikre bærekraftig uttak og tilgang til ferskvann, og redusere vannmangelen (FN-sambandet, u.å.).
 
 ### Ferskvann i Norge
 
@@ -152,7 +152,7 @@ Selv i et vått land kan vannet bli knapt. Tørkesommeren 2018 var en stor utfor
 
 ### Ferskvann i verden
 
-Globalt er situasjonen langt mer alvorlig. I 2022 hadde 2,2 milliarder mennesker ikke tilgang til trygt forvaltet drikkevann, og 72 prosent av alt ferskvannet som tas ut, går til jordbruket (UNESCO, 2024a). Omtrent halvparten av verdens befolkning hadde alvorlig vannmangel i minst en del av året (UNESCO, 2024b).
+Globalt er situasjonen langt mer alvorlig. FNs organisasjon for utdanning, vitenskap og kultur (UNESCO) har dokumentert at 2,2 milliarder mennesker i 2022 ikke hadde tilgang til trygt forvaltet drikkevann. 72 prosent av alt ferskvannet som tas ut, går til jordbruket (UNESCO, 2024a). Omtrent halvparten av verdens befolkning hadde alvorlig vannmangel i minst en del av året (UNESCO, 2024b).
 
 Grunnvannet er en stor del av svaret og av problemet. Grunnvann står for 99 prosent av alt flytende ferskvann på jorda og for en firedel av alt vannet mennesker bruker. Det gir halvparten av vannet som tas ut til husholdninger, og rundt 25 prosent av vannet til vanning (UNESCO, 2022). I enkelte jordbruksområder tømmes akviferene fortere enn de fylles, og det truer både matproduksjon og vannforsyning. I byer kan overuttak føre til at bakken synker, og ved kysten kan saltvann trenge inn i akviferene (UNESCO, 2022).
 
