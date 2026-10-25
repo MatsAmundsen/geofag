@@ -42,6 +42,12 @@ export const KILDER = {
       href: "https://doi.org/10.5194/essd-18-3211-2026",
     },
     {
+      prefix: "Gjerdrumutvalget. (2021). ",
+      italic: "Årsakene til kvikkleireskredet i Gjerdrum 2020",
+      suffix: ". Delrapport, vedlegg til NOU 2022: 3. Olje- og energidepartementet.",
+      href: "https://www.regjeringen.no/contentassets/3dadc8f7fad94608861163fa524023c0/no/pdfs/arsakene-til-kvikkleireskredet-i-gjerdrum-2020.pdf",
+    },
+    {
       prefix: "Kelemen, P. B., & Manning, C. E. (2015). Reevaluating carbon fluxes in subduction zones, what goes down, mostly comes up. ",
       italic: "Proceedings of the National Academy of Sciences, 112",
       suffix: "(30), E3997–E4006.",
