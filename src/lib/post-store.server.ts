@@ -1225,6 +1225,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "dagens utslipp går ca. ti ganger så fort.\n\n```widget\nSjekkPaleo6",
     ],
   },
+  {
+    // Geologisk tid: Terra Mater fase 1–2 (må-punkter M1–M7: isotop, radioaktivitet og absolutt datering definert, gang/forkastning/blotning/skyvedekker/trilobitter/peneplan ved første bruk, årsakskjede for luminescensdatering (OSL), setning over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
+    flag: "g1-geologisk-tid-terra-mater-2026-10-25",
+    slug: "geologisk-tid",
+    stale: [
+      "Mineralet *zirkon* er særlig viktig",
+      "Med *luminescensdatering* (OSL) finner vi",
+      "(Mangerud & Spjeldnæs, 2025)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
