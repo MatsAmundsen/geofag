@@ -849,9 +849,7 @@ export function KatabaticWindDiagram() {
           <path
             d="M 30 135 
                L 240 135 
-               Q 275 142 305 190 
-               L 280 205 
-               Q 250 152 220 150 
+               Q 252 137 262 146 
                L 30 150 Z"
             fill="url(#kata-glacier-grad)"
           />
@@ -882,27 +880,18 @@ export function KatabaticWindDiagram() {
           <Arrow d="M 160 142 L 235 142" marker={m.cold} color={C.cold} width={2.8} />
 
           {/* KATABATISK FALLVIND NEDOVER LIEN */}
-          {/* Bred luftstrøm */}
+          {/* Tynt, halvgjennomsiktig kaldt luftlag som siger langs bakken */}
           <path
-            d="M 240 145 Q 330 170 380 260 Q 420 320 470 375"
+            d="M 240 139 Q 308 149 366 233 L 458 377 Q 470 382 490 381"
             fill="none"
             stroke="#38bdf8"
-            strokeWidth="14"
-            opacity="0.3"
+            strokeWidth="6"
+            opacity="0.22"
             strokeLinecap="round"
           />
-          <Strom d="M 240 145 Q 330 170 380 260 Q 420 320 470 375" color="#7dd3fc" width={1.6} dash="22 26" dur={6} opacity={0.4} />
-          <Flyt
-            path="M 236 144 Q 330 168 380 258 Q 420 322 466 372 Q 520 382 580 370"
-            dur={18}
-            n={6}
-            r={5}
-            ry={1.6}
-            fill="#7dd3fc"
-            opacity={0.28}
-          />
-          <Arrow d="M 240 145 Q 330 170 410 290" marker={m.cold} color={C.cold} width={4.2} />
-          <Arrow d="M 370 250 Q 420 330 475 375" marker={m.cold} color={C.cold} width={4.2} />
+          <Strom d="M 240 139 Q 308 149 366 233 L 458 377" color="#7dd3fc" width={1.2} dash="22 30" dur={7} opacity={0.35} />
+          <Flyt path="M 240 139 Q 308 149 366 233 L 458 377 Q 470 382 490 381" dur={20} n={4} r={4} ry={1.3} fill="#38bdf8" opacity={0.22} />
+          <Arrow d="M 330 172 Q 352 200 366 233" marker={m.cold} color={C.cold} width={1.6} />
 
           <L x="365" y="210" fill={C.cold} size={14} weight={900}>
             Katabatisk fallvind
@@ -923,8 +912,8 @@ export function KatabaticWindDiagram() {
             <Puls min={0.78} max={1} dur={6} />
           </polygon>
           {/* Kaldlufta som samles, sirkulerer sakte i bassenget */}
-          <Flyt path="M 470 372 Q 560 360 650 372 Q 600 330 520 340 Q 460 352 470 372" dur={12} n={8} r={6} ry={2.5} fill="#bae6fd" opacity={0.35} />
-          <Strom d="M 388 290 L 737 290" color="#e0f2fe" width={1.2} dash="3 18" dur={3.5} opacity={0.6} />
+          <Flyt path="M 470 372 Q 560 360 650 372 Q 600 330 520 340 Q 460 352 470 372" dur={16} n={4} r={5} ry={1.5} fill="#38bdf8" opacity={0.15} />
+          <Strom d="M 388 290 L 737 290" color="#7dd3fc" width={1} dash="3 22" dur={6} opacity={0.3} />
           {/* Inversjonsgrense (vannspeil-lignende lokk) */}
           <line x1="385" y1="290" x2="740" y2="290" stroke="#38bdf8" strokeWidth="2.2" strokeDasharray="5 3" />
           <L x="575" y="282" fill="#7dd3fc" size={11} weight={800} anchor="middle">
@@ -962,8 +951,8 @@ export function KatabaticWindDiagram() {
           </g>
 
           {/* Røykdotter: stiger til lokket og flater ut under det */}
-          <Flyt path="M 469 352 Q 466 322 469 296 Q 440 293 405 294" dur={6} n={7} r={3} grow={11} ry={2.6} fill="#cbd5e1" opacity={0.6} />
-          <Flyt path="M 469 352 Q 472 322 469 296 Q 500 293 528 294" dur={6.5} n={7} r={3} grow={11} ry={2.6} fill="#cbd5e1" opacity={0.6} />
+          <Flyt path="M 469 352 Q 466 322 469 296 Q 440 293 405 294" dur={6} n={4} r={2} grow={11} ry={2.6} fill="#64748b" opacity={0.45} />
+          <Flyt path="M 469 352 Q 472 322 469 296 Q 500 293 528 294" dur={6.5} n={4} r={2} grow={11} ry={2.6} fill="#64748b" opacity={0.45} />
           {/* Røyk fra gården i lia stiger fritt (over lokket) */}
           <Flyt path="M 768 213 Q 764 190 772 165 Q 778 150 772 135" dur={5} n={5} r={2} grow={7} fill="#cbd5e1" opacity={0.5} />
 
