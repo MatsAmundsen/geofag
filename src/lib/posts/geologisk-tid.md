@@ -4,7 +4,7 @@
 >
 > - gjøre rede for ulike metoder som brukes for å datere bergarter, og bruke metoder for å identifisere relativ alder
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -22,17 +22,17 @@
 
 > **Hva tror du?**
 >
-> Larvikitten fra Oslo-riften er en av de mest kjente bergartene i Norge. Kan vi bruke C-14-metoden for å finne ut hvor gammel den er? Tenk over svaret mens du leser – vi kommer tilbake til det i delen om radiometrisk datering.
+> Larvikitt er en grovkornet bergart med blåskimrende feltspat, og den er en av de mest kjente bergartene i Norge. Den ble dannet i Oslo-riften. Kan vi bruke C-14-metoden for å finne ut hvor gammel den er? Tenk over svaret mens du leser – vi kommer tilbake til det i delen om radiometrisk datering.
 
-Dateringen er grunnlaget for resten av geologien. Når du leser i Norges geologi at Leka-ofiolitten er ca. 497 millioner år gammel, eller i Isbreer og landformer at isen smeltet bort fra landet etter siste istid, er det dateringsmetodene i dette kapitlet som ligger bak tallene.
+Dateringen er grunnlaget for resten av geologien. I [Norges geologi](/geofag-1/norges-geologi) leser du for eksempel at Leka-ofiolitten er ca. 497 millioner år gammel. En ofiolitt er en bit av gammel havbunn som er skjøvet opp på land, her på øya Leka i Trøndelag. I [Isbreer og landformer](/geofag-1/isbreer-og-landformer) leser du når isen smeltet bort fra landet etter siste istid. Det er dateringsmetodene i dette kapitlet som ligger bak slike tall.
 
 ## Hvor gammel er jorda, og hvordan deler vi inn tiden?
 
-Geologisk tid er så lang at det er vanskelig å forestille seg den. På slutten av 1800-tallet mente de fleste geologer at jorda var ca. 100 millioner år gammel. De visste mye om hvilke bergarter og fossiler som var eldst og yngst, men ikke hvor gamle de var regnet i år (Mangerud & Spjeldnæs, 2025). Først da radioaktivitet ble oppdaget, fikk geologene en «klokke» som kunne måle alderen. I dag regner vi med at jorda er ca. 4,54 milliarder år gammel. Alderen bygger på blyisotoper fra meteoritter (Newman, 1997). Selve solsystemet er litt eldre, ca. 4,567 milliarder år, og der begynner den geologiske tidsskalaen (Cohen mfl., 2026). De eldste mineralkornene som er funnet på jorda, er små zirkonkrystaller fra Vest-Australia, og de er ca. 4,4 milliarder år gamle (Newman, 1997).
+Geologisk tid er så lang at det er vanskelig å forestille seg den. På slutten av 1800-tallet mente de fleste geologer at jorda var ca. 100 millioner år gammel. De visste mye om hvilke bergarter og fossiler som var eldst og yngst, men ikke hvor gamle de var regnet i år (Mangerud og Spjeldnæs, 2025). Først da radioaktivitet ble oppdaget, fikk geologene en «klokke» som kunne måle alderen. *Radioaktivitet* betyr at ustabile atomkjerner brytes ned av seg selv og sender ut stråling. Hvordan klokka virker, ser vi nærmere på i delen om radiometrisk datering. I dag regner vi med at jorda er ca. 4,54 milliarder år gammel. Alderen bygger på målinger av bly i meteoritter (Newman, 1997). Selve solsystemet er litt eldre, ca. 4,567 milliarder år, og der begynner den geologiske tidsskalaen (Cohen mfl., 2026). De eldste mineralkornene som er funnet på jorda, er små krystaller av zirkon, et svært hardt mineral som tåler mye. Kornene er fra Vest-Australia og er ca. 4,4 milliarder år gamle (Newman, 1997).
 
-Jordas historie er delt inn i tidsavsnitt i et hierarki. Det lengste er *eon*, for eksempel fanerozoikum. En eon er delt i *æraer*, for eksempel mesozoikum, en æra i *perioder*, for eksempel jura, og en periode i *epoker*, for eksempel pleistocen (Spjeldnæs & Delsett, 2024). Den internasjonale stratigrafiske kommisjonen, ICS, bestemmer grensene og reviderer tidsskalaen når det kommer ny kunnskap.
+Jordas historie er delt inn i tidsavsnitt i et hierarki. Det lengste er *eon*, for eksempel fanerozoikum. En eon er delt i *æraer*, for eksempel mesozoikum, en æra i *perioder*, for eksempel jura, og en periode i *epoker*, for eksempel pleistocen (Spjeldnæs og Delsett, 2024). Den internasjonale stratigrafiske kommisjonen (ICS) bestemmer grensene og reviderer tidsskalaen når det kommer ny kunnskap. Stratigrafi er læren om lagrekker.
 
-Noen grenser er verdt å kunne. Kambrium, den første perioden med mange fossiler, begynte for 538,8 millioner år siden (Bryhni & Delsett, 2024a; Cohen mfl., 2026). Tiden før kalles ofte prekambrium. Kritt sluttet og paleogen begynte for 66,0 millioner år siden, da en masseutryddelse tok livet av blant annet de fleste dinosaurene (Bryhni & Delsett, 2024b). Kvartær, perioden med de store istidene, begynte for 2,58 millioner år siden, og holocen, epoken vi lever i, begynte for ca. 11 700 år siden (Cohen mfl., 2026). Eldre bøker kan ha andre tall, for eksempel 541 eller 542 millioner år for grensen til kambrium eller 1,8 millioner år for kvartær. Grensene er justert etter hvert som dateringene er blitt bedre.
+Noen grenser er verdt å kunne. Kambrium, den første perioden med mange fossiler, begynte for 538,8 millioner år siden (Bryhni og Delsett, 2024a; Cohen mfl., 2026). Tiden før kalles ofte prekambrium. Kritt sluttet og paleogen begynte for 66,0 millioner år siden, da en masseutryddelse tok livet av blant annet de fleste dinosaurene (Bryhni og Delsett, 2024b). Kvartær, perioden med de store istidene, begynte for 2,58 millioner år siden, og holocen, epoken vi lever i, begynte for ca. 11 700 år siden (Cohen mfl., 2026). Eldre bøker kan ha andre tall, for eksempel 541 eller 542 millioner år for grensen til kambrium eller 1,8 millioner år for kvartær. Grensene er justert etter hvert som dateringene er blitt bedre.
 
 Tabellen viser hvordan de viktigste hendelsene i Norges geologi passer inn i tidsskalaen. Du kan lese om hver av dem i [Norges geologi](/geofag-1/norges-geologi).
 
@@ -51,31 +51,33 @@ SjekkGeologiskTid1
 
 ## Relativ alder – hva er eldst?
 
-*Relativ datering* er å plassere bergarter og hendelser i rekkefølge, uten å vite hvor mange år siden de skjedde (Mangerud & Spjeldnæs, 2025). Det er en metode du kan bruke selv i en blotning, i et veiskjæringsbilde eller på et geologisk snitt. Den bygger på noen få prinsipper.
+*Relativ datering* er å plassere bergarter og hendelser i rekkefølge, uten å vite hvor mange år siden de skjedde (Mangerud og Spjeldnæs, 2025). Det er en metode du kan bruke selv, for eksempel i en veiskjæring, på et geologisk snitt eller i en blotning. En blotning er et sted der berggrunnen er synlig. Den bygger på noen få prinsipper.
 
 ### Overlagring og opprinnelig horisontalitet
 
 I en lagpakke av sedimentære bergarter som ikke er deformert, er det nederste laget eldst og det øverste yngst. Dette kaller vi *overlagringsprinsippet* (superposisjon = det å ligge oppå). Den danske geologen Niels Steensen (Steno) foreslo prinsippet i 1669 (Øien, 2025). Sedimenter avsettes dessuten nesten vannrett, som tynne flak. Det kaller vi *prinsippet om opprinnelig horisontalitet* (Panchuk, u.å.). Står lagene på skrå eller er foldet, må noe ha skjedd med dem etter at de ble avsatt.
 
-Overlagringsprinsippet gjelder bare så lenge lagene ikke er snudd, foldet eller skjøvet. I den kaledonske fjellkjeden ble eldre bergarter skjøvet opp over yngre i skyvedekker, og der ligger altså det eldste øverst (Øien, 2025).
+Overlagringsprinsippet gjelder bare så lenge lagene ikke er snudd, foldet eller skjøvet. Da den kaledonske fjellkjeden ble dannet, for ca. 495–405 millioner år siden, ble eldre bergarter skjøvet opp over yngre. Store flak av berggrunn som er skjøvet over hverandre på denne måten, kaller vi *skyvedekker*. Der ligger altså det eldste øverst (Øien, 2025).
 
 ### Gjennomskjæring og inneslutninger
 
-En gang, en forkastning eller en sprekk som skjærer gjennom en bergart, må være yngre enn bergarten den skjærer gjennom. Dette kaller vi *gjennomskjæringsprinsippet* (Earle, 2019). I Oslofeltet skjærer mange ganger av diabas gjennom de eldre bergartene. De viser at jordskorpa ble strukket i øst–vest-retning (Spjeldnæs & Askheim, 2024). Gangene må altså være yngre enn lagene de skjærer gjennom.
+Når magma trenger opp i en sprekk og størkner, dannes en plateformet bergartskropp. Den kaller vi en *gang*. En *forkastning* er en sprekk der bergartene på hver side har forskjøvet seg i forhold til hverandre. Både ganger, forkastninger og vanlige sprekker må være yngre enn bergarten de skjærer gjennom. Grunnen er at bergarten må ha eksistert før noe kunne skjære gjennom den. Dette kaller vi *gjennomskjæringsprinsippet* (Earle, 2019).
 
-Bruddstykker av en bergart som sitter inne i en annen bergart, kaller vi *inneslutninger*. De må være eldre enn bergarten de sitter i (Earle, 2019). En inneslutning i en magmatisk bergart kalles en *xenolitt* (av gresk *xenos*, fremmed). Det samme gjelder steiner i et konglomerat. Steinene fantes før de ble kittet sammen til en ny bergart.
+I Oslofeltet skjærer mange ganger av diabas gjennom de eldre bergartene (Spjeldnæs og Askheim, 2024). Diabas er en mørk og finkornet magmatisk bergart, det vil si en bergart som er dannet av størknet magma. Gangene må altså være yngre enn lagene de skjærer gjennom.
+
+Bruddstykker av en bergart som sitter inne i en annen bergart, kaller vi *inneslutninger*. De må være eldre enn bergarten de sitter i (Earle, 2019). En inneslutning i en magmatisk bergart kalles en *xenolitt* (av gresk *xenos*, fremmed). Det samme gjelder steiner i et *konglomerat*, en bergart av rundslipte steiner som er kittet sammen. Steinene fantes før de ble kittet sammen til en ny bergart.
 
 ### Fossiler og ledefossiler
 
-Livet har utviklet seg gjennom jordas historie, og hver art har levd bare i et bestemt tidsrom. Der lagene ligger i uforstyrret rekkefølge, har paleontologene funnet ut hvilke fossiler som er eldre enn andre. Disse fossilene kan så brukes til å datere lag andre steder (Mangerud & Spjeldnæs, 2025). Et *ledefossil* er et fossil av en art som levde i kort tid, men hadde stor utbredelse. Da kan det vise at lag på ulike steder har samme relative alder (Delsett, 2025).
+Livet har utviklet seg gjennom jordas historie, og hver art har levd bare i et bestemt tidsrom. Der lagene ligger i uforstyrret rekkefølge, har paleontologene (paleontolog = fossilforsker) funnet ut hvilke fossiler som er eldre enn andre. Disse fossilene kan så brukes til å datere lag andre steder (Mangerud og Spjeldnæs, 2025). Et *ledefossil* er et fossil av en art som levde i kort tid, men hadde stor utbredelse. Da kan det vise at lag på ulike steder har samme relative alder (Delsett, 2025).
 
-Trilobitter er gode ledefossiler. Hver art levde bare i en begrenset tid, og i de kambrosiluriske lagene i Norge er det funnet over 300 arter (Hoel, 2024). Trilobittene levde fra tidlig kambrium til slutten av perm, så et lag med trilobitter er fra paleozoikum (Hoel, 2024).
+Trilobitter er en utdødd gruppe leddyr som levde i havet. De er gode ledefossiler, men det er ikke gruppen som helhet som er ledefossilet. Det er de enkelte artene. Hver art levde bare i en begrenset tid, og i de kambrosiluriske lagene i Norge er det funnet over 300 arter (Hoel, 2024). De kambrosiluriske lagene er avsatt fra kambrium til silur, for ca. 539–419 millioner år siden. Trilobittene som gruppe levde fra tidlig kambrium til slutten av perm, i nesten 300 millioner år. Et lag med trilobitter er derfor fra paleozoikum (oldtiden, for ca. 539–252 millioner år siden). Det er arten som kan gi en mer nøyaktig alder (Hoel, 2024).
 
 ### Diskordans
 
 En *diskordans* er en grense i en lagrekke der det mangler tid. Enten ble det ikke avsatt noe på en lang stund, eller så ble lag fjernet av erosjon før nye lag ble avsatt. Er de nederste lagene skråstilt og erodert før de øverste ble avsatt, kaller vi det en *vinkeldiskordans* (Fossen, 2026).
 
-Den mest markerte diskordansen på fastlandet er grensen mellom grus, sand og leire fra de siste istidene og bergartene under. Mange steder mangler det mer enn én milliard år mellom dem (Fossen, 2026). Det subkambriske peneplanet, der lagene fra kambrium ligger rett på grunnfjellet, er også en diskordans (Bryhni, 2024). På norsk sokkel ligger lag fra kritt mange steder over skråstilte sandsteiner fra jura. Denne vinkeldiskordansen var viktig for å fange olje på felt som Statfjord og Gullfaks (Fossen, 2026). Du kan lese mer om oljefeller i [Geologiske ressurser](/geofag-1/geologiske-ressurser).
+Den mest markerte diskordansen på fastlandet er grensen mellom grus, sand og leire fra de siste istidene og bergartene under. Mange steder mangler det mer enn én milliard år mellom dem (Fossen, 2026). Det subkambriske peneplanet er et nesten flatt slettelandskap (peneplan) som ble slipt ned før kambrium. Der ligger lagene fra kambrium rett på grunnfjellet, og grensen er også en diskordans (Bryhni, 2024). På norsk sokkel ligger lag fra kritt mange steder over skråstilte sandsteiner fra jura. Denne vinkeldiskordansen var viktig for å fange olje på felt som Statfjord og Gullfaks (Fossen, 2026). Du kan lese mer om oljefeller i [Geologiske ressurser](/geofag-1/geologiske-ressurser).
 
 ### Slik leser du et snitt
 
@@ -93,13 +95,13 @@ SjekkGeologiskTid2
 
 ## Absolutt alder – radiometrisk datering
 
-Relativ datering forteller hva som er eldst, men ikke hvor gammelt det er. For å finne alderen i år bruker vi oftest radioaktive isotoper. Det kaller vi *radiometrisk datering* (Mangerud & Spjeldnæs, 2025).
+Relativ datering forteller hva som er eldst, men ikke hvor gammelt det er. Å finne alderen i år kaller vi *absolutt datering*. Relativ datering gir altså rekkefølgen, mens absolutt datering gir alderen i år. Den vanligste metoden bygger på isotoper. *Isotoper* er varianter av samme grunnstoff med ulikt antall nøytroner i atomkjernen. Karbon-12 og karbon-14 er for eksempel to isotoper av karbon. Datering med radioaktive isotoper kaller vi *radiometrisk datering* (Mangerud og Spjeldnæs, 2025).
 
 ### Halveringstid
 
-Noen isotoper har ustabile atomkjerner. De brytes ned av seg selv til andre isotoper med en fast hastighet. Isotopen som brytes ned, kalles *morisotopen*, og den som dannes, *datterisotopen*. Tiden det tar før halvparten av morisotopene er brutt ned, er *halveringstiden*. Etter én halveringstid er halvparten igjen, etter to er en fjerdedel igjen, og etter tre er en åttendedel igjen (Hofstad, 2026). Mengden avtar altså stadig langsommere. Halveringstiden er ikke halve tiden det tar før alt er borte.
+Noen isotoper har ustabile atomkjerner, og dem kaller vi *radioaktive isotoper*. Som nevnt brytes slike kjerner ned av seg selv. De blir til andre isotoper med en fast hastighet. Isotopen som brytes ned, kalles *morisotopen*, og den som dannes, *datterisotopen*. Tiden det tar før halvparten av morisotopene er brutt ned, er *halveringstiden*. Etter én halveringstid er halvparten igjen, etter to er en fjerdedel igjen, og etter tre er en åttendedel igjen (Hofstad, 2026). Mengden avtar altså stadig langsommere. Halveringstiden er ikke halve tiden det tar før alt er borte.
 
-Når geologene måler hvor mye det er igjen av morisotopen og hvor mye datterisotop som er dannet, kan de regne ut hvor lenge nedbrytningen har pågått (Mangerud & Spjeldnæs, 2025). Det forutsetter at mineralet har vært et lukket system, altså at verken mor- eller datterisotoper har kommet inn eller lekket ut siden mineralet ble dannet (Mangerud, 2024). Den første dateringen av et norsk mineral ble gjort av professor Ellen Gleditsch i 1911. Hun daterte uraninitt fra Moss med uran og bly til ca. 850 millioner år. Metoden var enkel, men resultatet var forbausende riktig (Mangerud & Spjeldnæs, 2025).
+Når geologene måler hvor mye det er igjen av morisotopen og hvor mye datterisotop som er dannet, kan de regne ut hvor lenge nedbrytningen har pågått (Mangerud og Spjeldnæs, 2025). Det forutsetter at mineralet har vært et lukket system, altså at verken mor- eller datterisotoper har kommet inn eller lekket ut siden mineralet ble dannet (Mangerud, 2024). Den første dateringen av et norsk mineral ble gjort av professor Ellen Gleditsch i 1911. Hun daterte uraninitt fra Moss med uran og bly til ca. 850 millioner år. Metoden var enkel, men resultatet var forbausende riktig (Mangerud og Spjeldnæs, 2025).
 
 ### Metoder for bergarter
 
@@ -114,15 +116,15 @@ Hvilken metode vi velger, avhenger av hva som skal dateres og hvor gammelt det e
 
 *Kilder:* halveringstider fra Newman (1997) og, for rubidium, Villa mfl. (2015), bruksområder fra Mangerud og Spjeldnæs (2025), Lauritzen og Mangerud (2025) og Mangerud (2025a).
 
-Mineralet *zirkon* er særlig viktig, fordi det inneholder radioaktive grunnstoffer som uran og thorium (Raade, 2025). Leka-ofiolitten er datert med uran–bly-metoden på zirkon til ca. 497 millioner år (Dunning & Pedersen, 1988). Kalium–argon-metoden kan brukes på de fleste bergarter, fordi kalium finnes i mange mineraler. Men argon er en gass, og den lekker ut hvis bergarten blir varmet opp til over ca. 300 °C. Da kan alderen bli for ung (Mangerud & Spjeldnæs, 2025).
+Som nevnt er *zirkon* et svært hardt mineral som tåler mye. Det er særlig viktig for dateringen, fordi det inneholder radioaktive grunnstoffer som uran og thorium (Raade, 2025). Leka-ofiolitten er datert med uran–bly-metoden på zirkon til ca. 497 millioner år (Dunning og Pedersen, 1988). Kalium–argon-metoden kan brukes på de fleste bergarter, fordi kalium finnes i mange mineraler. Men argon er en gass, og den lekker ut hvis bergarten blir varmet opp til over ca. 300 °C. Da kan alderen bli for ung (Mangerud og Spjeldnæs, 2025).
 
 ### C-14-metoden
 
 C-14-metoden er den viktigste metoden for å datere organisk materiale som er yngre enn ca. 50 000 år, for eksempel pinner, blader, bein og skjell. Kosmisk stråling danner hele tiden karbon-14 i atmosfæren. Planter tar opp karbon-14 gjennom fotosyntesen, og dyr får det i seg gjennom maten. Når en organisme dør, tar den ikke opp mer, og karbon-14 brytes ned med en halveringstid på 5730 år (Mangerud, 2025a).
 
-Innholdet av karbon-14 i atmosfæren har variert, blant annet med styrken på jordas magnetfelt. En C-14-alder er derfor ikke det samme som kalenderår, og den må *kalibreres*. Det gjøres med kurver som bygger på årringer i trær og andre arkiver, for eksempel IntCal20 (Mangerud, 2025a). For eksempel er 10 000 C-14-år ca. 11 500 kalenderår (Mangerud & Spjeldnæs, 2025). Det er én grunn til at eldre kilder kan oppgi ca. 10 000 år for slutten av siste istid. Regnet i kalenderår sluttet den for ca. 11 700 år siden, da holocen begynte (Cohen mfl., 2026).
+Innholdet av karbon-14 i atmosfæren har variert, blant annet med styrken på jordas magnetfelt. En C-14-alder er derfor ikke det samme som kalenderår, og den må *kalibreres*. Det gjøres med kurver som bygger på årringer i trær og andre arkiver, for eksempel IntCal20 (Mangerud, 2025a). For eksempel er 10 000 C-14-år ca. 11 500 kalenderår (Mangerud og Spjeldnæs, 2025). Det er én grunn til at eldre kilder kan oppgi ca. 10 000 år for slutten av siste istid. Regnet i kalenderår sluttet den for ca. 11 700 år siden, da holocen begynte (Cohen mfl., 2026).
 
-Nå kan vi svare på spørsmålet fra starten. Larvikitten er ca. 295–290 millioner år gammel (NGU, u.å.). Etter så lang tid er det ikke noe målbart karbon-14 igjen, og larvikitt er dessuten ikke organisk materiale. En slik bergart må dateres med en metode som har lang halveringstid, for eksempel uran–bly på zirkon.
+Nå kan vi svare på spørsmålet fra starten. Larvikitten er ca. 290–295 millioner år gammel (Norges geologiske undersøkelse [NGU], u.å.). Etter så lang tid er det ikke noe målbart karbon-14 igjen, og larvikitt er dessuten ikke organisk materiale. En slik bergart må dateres med en metode som har lang halveringstid, for eksempel uran–bly på zirkon.
 
 ```widget
 SjekkGeologiskTid3
@@ -130,11 +132,11 @@ SjekkGeologiskTid3
 
 ## Andre dateringsmetoder og datering i praksis
 
-For den yngste delen av jordas historie, kvartær, finnes det flere metoder som ikke bygger på radioaktiv nedbrytning i bergarten. I Fastlands-Norge finnes det bare avsetninger fra de siste ca. 200 000 årene av kvartær, og det aller meste er yngre enn 15 000 år (Mangerud & Spjeldnæs, 2025). Derfor er disse metodene viktige her.
+For den yngste delen av jordas historie, kvartær, finnes det flere metoder som ikke bygger på radioaktiv nedbrytning i bergarten. I Fastlands-Norge finnes det bare avsetninger fra de siste ca. 200 000 årene av kvartær, og det aller meste er yngre enn 15 000 år (Mangerud og Spjeldnæs, 2025). Derfor er disse metodene viktige her.
 
 ### Årslag i leire og trær
 
-I noen innsjøer avsettes det et lyst, grovere lag om sommeren og et mørkt, finkornet lag om vinteren. Et slikt årslag kalles et *varv* (svensk *varv*, en runde). Ved å telle varvene kan vi finne ut hvor mange år avsetningen tok, slik vi teller årringer i en trestamme. Den svenske geologen Gerard De Geer brukte varv i leire på slutten av 1800-tallet for å følge hvordan innlandsisen smeltet tilbake i Skandinavia (SNL, 2024; Mangerud & Spjeldnæs, 2025). Årringer i trær brukes på samme måte, og en sammenhengende årringserie går ca. 14 000 år tilbake i tid. Den brukes også til å kalibrere C-14-alderen (Mangerud, 2025a).
+I noen innsjøer avsettes det et lyst, grovere lag om sommeren og et mørkt, finkornet lag om vinteren. Et slikt årslag kalles et *varv* (svensk *varv*, en runde). Ved å telle varvene kan vi finne ut hvor mange år avsetningen tok, slik vi teller årringer i en trestamme. Den svenske geologen Gerard De Geer brukte varv i leire på slutten av 1800-tallet for å følge hvordan innlandsisen smeltet tilbake i Skandinavia (Store norske leksikon [SNL], 2024; Mangerud og Spjeldnæs, 2025). Årringer i trær brukes på samme måte, og en sammenhengende årringserie går ca. 14 000 år tilbake i tid. Den brukes også til å kalibrere C-14-alderen (Mangerud, 2025a).
 
 ### Vulkansk aske
 
@@ -142,7 +144,15 @@ Et lag av vulkansk aske, *tefra*, ble avsatt samtidig over store områder. Alle 
 
 ### Sollys og kosmisk stråling
 
-Med *luminescensdatering* (OSL) finner vi når sand- eller leirkorn sist ble utsatt for sollys, altså når de ble avsatt og dekket til. Metoden kan brukes for de siste ca. 200 000 årene (Mangerud & Spjeldnæs, 2025).
+Med *luminescensdatering* (luminescens = lysutsending) finner vi når sand- eller leirkorn sist ble utsatt for sollys. Det er altså når de ble avsatt og dekket til. Den vanligste varianten kalles optisk stimulert luminescens (OSL). Metoden bygger på en kjede av ledd:
+
+1. Mens kornene ligger begravd, treffes de av svak stråling fra radioaktive stoffer i omgivelsene.
+2. Strålingen lagrer litt energi i krystallene, og lageret vokser jevnt år for år.
+3. Når kornene blir utsatt for sollys, tømmes lageret, og «klokka» nullstilles.
+4. Når kornene blir dekket til igjen, begynner lageret å fylles på nytt.
+5. I laboratoriet belyser geologene kornene, og da sender kornene ut den lagrede energien som lys.
+
+Jo mer lys kornene sender ut, desto lenger er det siden de ble dekket til. Metoden kan brukes for de siste ca. 200 000 årene (Mangerud og Spjeldnæs, 2025).
 
 *Eksponeringsdatering* måler hvor lenge en stein eller fjelloverflate har vært utsatt for kosmisk stråling. Når strålingen treffer oksygen i kvarts, dannes isotopen beryllium-10 (¹⁰Be). Jo mer ¹⁰Be, desto lenger har steinen ligget fritt. I Norge er særlig gamle fjellskred og isavsmeltingen etter siste istid datert slik. For et fjellskred antar vi at steinen først ble utsatt for stråling da skredet gikk. For isavsmeltingen er det da steinblokken smeltet fram av breen. Geologene daterer minst tre blokker for å unngå feil, og usikkerheten er flere hundre år (Mangerud, 2025b).
 
