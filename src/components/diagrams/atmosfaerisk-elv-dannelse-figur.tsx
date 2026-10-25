@@ -28,9 +28,9 @@ const STATUS = [
 
 type Bilde = { s1: number; s2: number; s3: number; s4: number };
 
-/** Skjules under midt-fade (synlig < 0,85) så N ikke treffer andre stegs linjer. */
+/** Skjules under midt-fade (synlig < 0,92) så N ikke treffer andre stegs linjer. */
 function Nordpil({ x, y, synlig }: { x: number; y: number; synlig: number }) {
-  if (synlig < 0.85) return null;
+  if (synlig < 0.92) return null;
   return (
     <g opacity={o(synlig)}>
       <path d={`M${x} ${y + 26} L${x} ${y}`} stroke={F.dempet} strokeWidth={2.5} />
@@ -99,7 +99,7 @@ function Steg1({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
         ))}
       </g>
       {/* høydehint — venstre kant, kun nær hold, så midt-fade ikke dekker mot Steg2-fyll */}
-      {synlig >= 0.85 ? (
+      {synlig >= 0.92 ? (
         <g opacity={o(synlig)}>
           <line x1={48} y1={90} x2={48} y2={360} stroke={F.linje} strokeWidth={1.5} />
           <text
@@ -144,7 +144,7 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
       <ellipse cx={420} cy={210} rx={71} ry={54} fill="none" stroke={F.trykk} strokeWidth={2.2} opacity={0.7} />
       <ellipse cx={420} cy={210} rx={45} ry={33} fill="none" stroke={F.trykk} strokeWidth={2.5} />
       <circle cx={420} cy={210} r={21} fill="#122433" stroke={F.trykk} strokeWidth={2} />
-      {synlig >= 0.85 ? (
+      {synlig >= 0.92 ? (
         <text x={420} y={218} textAnchor="middle" fontSize={22} fontWeight={800} fill={F.tekst} opacity={o(synlig)}>
           L
         </text>
@@ -187,9 +187,11 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
         />
       </g>
       <Nordpil x={50} y={100} synlig={synlig} />
-      <text x={24} y={36} textAnchor="start" fontSize={12} fontWeight={600} fill={F.dempet}>
-        midlere bredder · sett ovenfra
-      </text>
+      {synlig >= 0.92 ? (
+        <text x={24} y={36} textAnchor="start" fontSize={12} fontWeight={600} fill={F.dempet} opacity={o(synlig)}>
+          midlere bredder · sett ovenfra
+        </text>
+      ) : null}
     </g>
   );
 }
@@ -213,7 +215,7 @@ function Steg3({ synlig, sek, m }: { synlig: number; sek: number; m: { fg: strin
       </g>
       <ellipse cx={330} cy={195} rx={52} ry={39} fill="none" stroke={F.trykk} strokeWidth={2} opacity={0.45} />
       <circle cx={330} cy={195} r={18} fill="#122433" stroke={F.trykk} strokeWidth={2} />
-      {synlig >= 0.85 ? (
+      {synlig >= 0.92 ? (
         <text x={330} y={202} textAnchor="middle" fontSize={18} fontWeight={800} fill={F.tekst} opacity={o(synlig)}>
           L
         </text>
@@ -267,14 +269,14 @@ function Steg3({ synlig, sek, m }: { synlig: number; sek: number; m: { fg: strin
           opacity={0.7 + i * 0.05}
         />
       ))}
-      {/* lengdemål */}
-      <line x1={105} y1={420} x2={825} y2={150} stroke={F.teal} strokeWidth={1.4} strokeDasharray="4 4" opacity={0.7} />
-      <circle cx={105} cy={420} r={3.5} fill={F.teal} />
-      <circle cx={825} cy={150} r={3.5} fill={F.teal} />
-      {/* breddemål */}
-      <line x1={525} y1={158} x2={525} y2={218} stroke={F.lilla} strokeWidth={1.5} />
-      <line x1={518} y1={158} x2={532} y2={158} stroke={F.lilla} strokeWidth={1.5} />
-      <line x1={518} y1={218} x2={532} y2={218} stroke={F.lilla} strokeWidth={1.5} />
+      {/* lengdemål — holdt unna bunnstripe for etiketter */}
+      <line x1={120} y1={400} x2={810} y2={145} stroke={F.teal} strokeWidth={1.4} strokeDasharray="4 4" opacity={0.7} />
+      <circle cx={120} cy={400} r={3.5} fill={F.teal} />
+      <circle cx={810} cy={145} r={3.5} fill={F.teal} />
+      {/* breddemål — litt til høyre for AR-kjernen */}
+      <line x1={560} y1={145} x2={560} y2={205} stroke={F.lilla} strokeWidth={1.5} />
+      <line x1={553} y1={145} x2={567} y2={145} stroke={F.lilla} strokeWidth={1.5} />
+      <line x1={553} y1={205} x2={567} y2={205} stroke={F.lilla} strokeWidth={1.5} />
     </g>
   );
 }
@@ -360,14 +362,14 @@ function Steg4({ synlig, sek, m }: { synlig: number; sek: number; m: { teal: str
           <line key={i} x1={x} x2={x - 4} y1={y} y2={y + 14} />
         ))}
       </g>
-      {/* pek til egen figur — kun nær hold, så ikke overlapp med steg 3-etikett under fade */}
-      {synlig >= 0.85 ? (
+      {/* pek til egen figur — øvre venstre, kun nær hold (unngår «hav»-etikett) */}
+      {synlig >= 0.92 ? (
         <g opacity={o(synlig)}>
-          <rect x={24} y={420} width={390} height={52} rx={8} fill="#122433" stroke={F.linje} strokeWidth={1} />
-          <text x={36} y={442} fontSize={12} fontWeight={600} fill={F.dempet}>
+          <rect x={24} y={24} width={390} height={52} rx={8} fill="#122433" stroke={F.linje} strokeWidth={1} />
+          <text x={36} y={46} fontSize={12} fontWeight={600} fill={F.dempet}>
             Landfall og orografisk flom: egen figur
           </text>
-          <text x={36} y={460} fontSize={11} fontWeight={500} fill={F.dempet}>
+          <text x={36} y={64} fontSize={11} fontWeight={500} fill={F.dempet}>
             i Værkatastrofer — ikke doblet her
           </text>
         </g>
@@ -393,14 +395,42 @@ const def: Def<Bilde> = {
     [
       { text: "solinnstråling", x: 135, y: 48, anchor: "middle", color: F.varm, weight: 700, size: 14 },
       { text: "fordamping → vanndamp", x: 550, y: 235, color: F.teal, weight: 800, size: 14 },
-      { text: "subtropene · varmt hav", x: 300, y: 450, anchor: "middle", color: F.varm, weight: 800, size: 15 },
-      { text: "varm havoverflate avgir vanndamp til lufta", x: 300, y: 472, anchor: "middle", color: F.dempet, size: 12 },
+      // badge klar av bølgestrek #2a6a82 (kun til x≈480)
+      {
+        text: "subtropene · varmt hav",
+        x: 720,
+        y: 450,
+        anchor: "middle",
+        color: F.varm,
+        weight: 800,
+        size: 15,
+        badge: [720, 450],
+      },
+      {
+        text: "varm havoverflate avgir vanndamp til lufta",
+        x: 720,
+        y: 472,
+        anchor: "middle",
+        color: F.dempet,
+        size: 12,
+        narrowHide: true,
+      },
     ],
     // steg 2
     [
       { text: "kald luft", x: 120, y: 150, color: F.kald, weight: 800 },
       { text: "varm luft", x: 780, y: 400, anchor: "middle", color: F.varm, weight: 800 },
-      { text: "kaldfront", x: 520, y: 165, color: F.kald, weight: 800, size: 13, at: [430, 240], badge: [500, 180] },
+      // holdt venstre for der AR-korridoren kommer i steg 3 (fade 2→3)
+      {
+        text: "kaldfront",
+        x: 250,
+        y: 88,
+        color: F.kald,
+        weight: 800,
+        size: 13,
+        at: [400, 200],
+        badge: [250, 88],
+      },
       { text: "lavtrykk", x: 420, y: 150, anchor: "middle", color: F.trykk, weight: 700, size: 12 },
       {
         text: "varm, fuktig luft foran fronten",
@@ -416,40 +446,62 @@ const def: Def<Bilde> = {
     ],
     // steg 3
     [
-      { text: "atmosfærisk elv", x: 780, y: 55, color: F.lilla, weight: 800, size: 14 },
-      { text: "om lag 2000 km lang", x: 240, y: 450, anchor: "middle", color: F.teal, weight: 800, size: 13 },
-      { text: "300–500 km bred", x: 620, y: 290, color: F.lilla, weight: 800, size: 13 },
+      { text: "atmosfærisk elv", x: 820, y: 48, color: F.lilla, weight: 800, size: 14 },
       {
-        text: "fukt samles i smal korridor foran kaldfronten",
-        x: 40,
-        y: 400,
-        color: F.dempet,
-        size: 12,
-      },
-      {
-        text: "Tall: SNL via Værkatastrofer · typisk om lag",
-        x: 940,
-        y: 420,
-        anchor: "end",
-        color: F.dempet,
-        size: 11,
-      },
-    ],
-    // steg 4
-    [
-      { text: "hav", x: 225, y: 408, anchor: "middle", color: F.dempet, weight: 700, size: 14 },
-      { text: "fjell / kyst", x: 810, y: 315, anchor: "middle", color: F.dempet, weight: 700, size: 14 },
-      { text: "atmosfærisk elv", x: 160, y: 210, color: F.lilla, weight: 800, size: 13 },
-      {
-        text: "lufta løftes over fjell (hint)",
-        x: 750,
-        y: 105,
+        text: "om lag 2000 km lang",
+        x: 200,
+        y: 480,
         anchor: "middle",
         color: F.teal,
         weight: 800,
         size: 13,
-        at: [700, 180],
-        badge: [750, 120],
+        badge: [200, 480],
+      },
+      // klar av AR-path og breddemål
+      {
+        text: "300–500 km bred",
+        x: 780,
+        y: 340,
+        color: F.lilla,
+        weight: 800,
+        size: 13,
+        at: [560, 175],
+        badge: [840, 340],
+      },
+      {
+        text: "fukt samles i smal korridor foran kaldfronten",
+        x: 480,
+        y: 518,
+        anchor: "middle",
+        color: F.dempet,
+        size: 12,
+        narrowHide: true,
+      },
+      {
+        text: "Tall: SNL via Værkatastrofer · typisk om lag",
+        x: 940,
+        y: 500,
+        anchor: "end",
+        color: F.dempet,
+        size: 11,
+        narrowHide: true,
+      },
+    ],
+    // steg 4 — annen tekst enn steg 3 så etiketterVed ikke lerp-er «atmosfærisk elv» på tvers av AR
+    [
+      { text: "hav", x: 300, y: 430, anchor: "middle", color: F.dempet, weight: 700, size: 14, narrowHide: true },
+      { text: "fjell / kyst", x: 810, y: 315, anchor: "middle", color: F.dempet, weight: 700, size: 14, narrowHide: true },
+      { text: "elv mot land", x: 160, y: 210, color: F.lilla, weight: 800, size: 13 },
+      {
+        text: "lufta løftes over fjell (hint)",
+        x: 850,
+        y: 78,
+        anchor: "middle",
+        color: F.teal,
+        weight: 800,
+        size: 13,
+        at: [700, 185],
+        badge: [880, 70],
       },
     ],
   ] as Lab[][],
