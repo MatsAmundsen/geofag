@@ -41,12 +41,24 @@ function Overdrevet() {
   );
 }
 
-function OstPil({ x, y, label, m }: { x: number; y: number; label: string; m: { teal: string } }) {
+/** Skjules under midt-fade (synlig < 0,85) så ulik tekst ikke overlapper. Én label-streng. */
+function OstPil({
+  x,
+  y,
+  m,
+  synlig,
+}: {
+  x: number;
+  y: number;
+  m: { teal: string };
+  synlig: number;
+}) {
+  if (synlig < 0.85) return null;
   return (
-    <g transform={`translate(${x},${y})`}>
+    <g transform={`translate(${x},${y})`} opacity={o(synlig)}>
       <path d="M0 0 L120 0" stroke={F.teal} strokeWidth={2.8} markerEnd={`url(#${m.teal})`} />
       <text x={60} y={20} textAnchor="middle" fontSize={11} fontWeight={700} fill={F.teal}>
-        {label}
+        oftest mot øst
       </text>
     </g>
   );
@@ -57,7 +69,6 @@ function OstPil({ x, y, label, m }: { x: number; y: number; label: string; m: { 
 function KaldSteg1({ synlig }: { synlig: number; sek: number }) {
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <rect x={0} y={60} width={480} height={330} fill={F.kald} opacity={0.28} />
       <rect x={480} y={60} width={480} height={330} fill={F.varm} opacity={0.22} />
       <line x1={480} y1={75} x2={480} y2={382} stroke={F.dempet} strokeWidth={1.5} strokeDasharray="6 5" opacity={0.55} />
@@ -81,8 +92,6 @@ function KaldSteg1({ synlig }: { synlig: number; sek: number }) {
           <circle key={i} cx={x} cy={y} r={2} />
         ))}
       </g>
-      <Bakke />
-      <Overdrevet />
     </g>
   );
 }
@@ -91,7 +100,6 @@ function KaldSteg2({ synlig, sek, m }: { synlig: number; sek: number; m: { cold:
   const bob = Math.sin(sek * 1.8) * 3;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <defs>
         <linearGradient id="kf-kald" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor={F.kald} stopOpacity={0.42} />
@@ -135,9 +143,7 @@ function KaldSteg2({ synlig, sek, m }: { synlig: number; sek: number; m: { cold:
         opacity={0.65}
         markerEnd={`url(#${m.warm})`}
       />
-      <Bakke />
-      <OstPil x={525} y={430} label="fronten flytter seg oftest mot øst" m={m} />
-      <Overdrevet />
+      <OstPil x={525} y={430} m={m} synlig={synlig} />
     </g>
   );
 }
@@ -146,7 +152,6 @@ function KaldSteg3({ synlig, sek, m }: { synlig: number; sek: number; m: { teal:
   const drip = (sek * 14) % 10;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <defs>
         <linearGradient id="kf3-kald" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor={F.kald} stopOpacity={0.4} />
@@ -191,9 +196,7 @@ function KaldSteg3({ synlig, sek, m }: { synlig: number; sek: number; m: { teal:
       </g>
       <ellipse cx={135} cy={285} rx={32} ry={12} fill="#cbd5e1" opacity={0.5} />
       <ellipse cx={188} cy={300} rx={22} ry={9} fill="#cbd5e1" opacity={0.4} />
-      <Bakke />
-      <OstPil x={615} y={430} label="oftest mot øst" m={m} />
-      <Overdrevet />
+      <OstPil x={615} y={430} m={m} synlig={synlig} />
     </g>
   );
 }
@@ -225,7 +228,7 @@ const kaldDef: Def<Bilde> = {
       { text: "tettere · skyver seg fram", x: 240, y: 204, anchor: "middle", color: F.dempet, size: 12 },
       { text: "varmere luft", x: 720, y: 180, anchor: "middle", color: F.varm, weight: 800, size: 16 },
       { text: "lettere · blir løftet", x: 720, y: 204, anchor: "middle", color: F.dempet, size: 12 },
-      { text: "møte · front", x: 480, y: 302, anchor: "middle", color: F.tekst, weight: 700, size: 13, badge: [480, 302] },
+      { text: "møte · front", x: 480, y: 92, anchor: "middle", color: F.tekst, weight: 700, size: 13, at: [480, 220], badge: [480, 92] },
     ],
     [
       { text: "kaldere luft", x: 120, y: 225, color: F.kald, weight: 800, size: 15 },
@@ -281,10 +284,13 @@ const kaldDef: Def<Bilde> = {
   viewBox: VB,
   tegn: (s, { m, sek }) => (
     <g>
+      {/* Én himmel/bakke/overdrevet her — ikke per steg — så fade ikke overlapper tekst */}
       <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
+      <Bakke />
       <KaldSteg1 synlig={s.s1} sek={sek} />
       <KaldSteg2 synlig={s.s2} sek={sek} m={m} />
       <KaldSteg3 synlig={s.s3} sek={sek} m={m} />
+      <Overdrevet />
     </g>
   ),
 };
@@ -294,7 +300,6 @@ const kaldDef: Def<Bilde> = {
 function VarmSteg1({ synlig }: { synlig: number; sek: number }) {
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <rect x={0} y={60} width={480} height={330} fill={F.varm} opacity={0.24} />
       <rect x={480} y={60} width={480} height={330} fill={F.kald} opacity={0.26} />
       <line x1={480} y1={75} x2={480} y2={382} stroke={F.dempet} strokeWidth={1.5} strokeDasharray="6 5" opacity={0.55} />
@@ -318,8 +323,6 @@ function VarmSteg1({ synlig }: { synlig: number; sek: number }) {
           <circle key={i} cx={x} cy={y} r={2} />
         ))}
       </g>
-      <Bakke />
-      <Overdrevet />
     </g>
   );
 }
@@ -328,7 +331,6 @@ function VarmSteg2({ synlig, sek, m }: { synlig: number; sek: number; m: { warm:
   const bob = Math.sin(sek * 1.5) * 2.5;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <defs>
         <linearGradient id="vf-kald" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor={F.kald} stopOpacity={0.36} />
@@ -371,9 +373,7 @@ function VarmSteg2({ synlig, sek, m }: { synlig: number; sek: number; m: { warm:
         opacity={0.6}
         markerEnd={`url(#${m.warm})`}
       />
-      <Bakke />
-      <OstPil x={150} y={430} label="fronten flytter seg oftest mot øst" m={m} />
-      <Overdrevet />
+      <OstPil x={150} y={430} m={m} synlig={synlig} />
     </g>
   );
 }
@@ -382,7 +382,6 @@ function VarmSteg3({ synlig, sek, m }: { synlig: number; sek: number; m: { teal:
   const drip = (sek * 10) % 8;
   return (
     <g opacity={o(synlig)}>
-      <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
       <defs>
         <linearGradient id="vf3-kald" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor={F.kald} stopOpacity={0.34} />
@@ -435,9 +434,7 @@ function VarmSteg3({ synlig, sek, m }: { synlig: number; sek: number; m: { teal:
           />
         ))}
       </g>
-      <Bakke />
-      <OstPil x={615} y={445} label="oftest mot øst" m={m} />
-      <Overdrevet />
+      <OstPil x={615} y={445} m={m} synlig={synlig} />
     </g>
   );
 }
@@ -469,7 +466,7 @@ const varmDef: Def<Bilde> = {
       { text: "erstatter den kaldere", x: 240, y: 204, anchor: "middle", color: F.dempet, size: 12 },
       { text: "kaldere luft", x: 720, y: 180, anchor: "middle", color: F.kald, weight: 800, size: 16 },
       { text: "foran fronten", x: 720, y: 204, anchor: "middle", color: F.dempet, size: 12 },
-      { text: "møte · front", x: 480, y: 302, anchor: "middle", color: F.tekst, weight: 700, size: 13, badge: [480, 302] },
+      { text: "møte · front", x: 480, y: 92, anchor: "middle", color: F.tekst, weight: 700, size: 13, at: [480, 220], badge: [480, 92] },
     ],
     [
       { text: "varmere luft", x: 135, y: 225, color: F.varm, weight: 800, size: 15 },
@@ -525,10 +522,13 @@ const varmDef: Def<Bilde> = {
   viewBox: VB,
   tegn: (s, { m, sek }) => (
     <g>
+      {/* Én himmel/bakke/overdrevet her — ikke per steg — så fade ikke overlapper tekst */}
       <rect x={0} y={0} width={960} height={540} fill={F.himmel} />
+      <Bakke />
       <VarmSteg1 synlig={s.s1} sek={sek} />
       <VarmSteg2 synlig={s.s2} sek={sek} m={m} />
       <VarmSteg3 synlig={s.s3} sek={sek} m={m} />
+      <Overdrevet />
     </g>
   ),
 };
