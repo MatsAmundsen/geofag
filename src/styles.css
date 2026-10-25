@@ -542,3 +542,10 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
       0 0 0 12px transparent;
   }
 }
+
+/* Lokale værsystemer: animasjonslaget skjules ved redusert bevegelse til brukeren trykker Start. */
+@media (prefers-reduced-motion: reduce) {
+  .lv-anim:not(.motion-unlocked) .lv-p {
+    visibility: hidden;
+  }
+}
