@@ -891,15 +891,15 @@ export function KatabaticWindDiagram() {
             opacity="0.3"
             strokeLinecap="round"
           />
-          <Strom d="M 240 145 Q 330 170 380 260 Q 420 320 470 375" color="#bae6fd" width={3} dash="5 14" dur={1.3} opacity={0.75} />
+          <Strom d="M 240 145 Q 330 170 380 260 Q 420 320 470 375" color="#7dd3fc" width={1.6} dash="22 26" dur={6} opacity={0.4} />
           <Flyt
             path="M 236 144 Q 330 168 380 258 Q 420 322 466 372 Q 520 382 580 370"
-            dur={7}
-            n={14}
-            r={4.5}
-            ry={3}
+            dur={18}
+            n={6}
+            r={5}
+            ry={1.6}
             fill="#7dd3fc"
-            opacity={0.55}
+            opacity={0.28}
           />
           <Arrow d="M 240 145 Q 330 170 410 290" marker={m.cold} color={C.cold} width={4.2} />
           <Arrow d="M 370 250 Q 420 330 475 375" marker={m.cold} color={C.cold} width={4.2} />
