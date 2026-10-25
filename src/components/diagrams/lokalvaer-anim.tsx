@@ -21,6 +21,7 @@ export function Flyt({
   opacity = 0.8,
   grow,
   fills,
+  fillTimes,
   ry,
 }: {
   path: string;
@@ -33,6 +34,8 @@ export function Flyt({
   grow?: number;
   /** Fargeforløp langs banen, f.eks. kald → varm. */
   fills?: string;
+  /** keyTimes for fills (samme antall som verdiene). */
+  fillTimes?: string;
   /** Ellipse i stedet for sirkel (rx = r). */
   ry?: number;
 }) {
@@ -52,7 +55,7 @@ export function Flyt({
               repeatCount="indefinite"
             />
             {fills ? (
-              <animate attributeName="fill" values={fills} dur={s(dur)} begin={begin} repeatCount="indefinite" />
+              <animate attributeName="fill" values={fills} keyTimes={fillTimes} dur={s(dur)} begin={begin} repeatCount="indefinite" />
             ) : null}
           </>
         );
