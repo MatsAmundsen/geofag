@@ -29,7 +29,7 @@
 FeltarbeidForklaring
 ```
 
-Feltarbeid er innsamling av data ute, der fenomenene finnes, i en undersøkelse (SNL, 2026). I geologi kan det være å kartlegge hvilke bergarter som finnes, måle hvordan lag og sprekker er orientert, og samle inn prøver og fossiler (SNL, 2024a). I hydrologi kan det være å måle hvor mye vann en bekk fører, eller hva vannet inneholder.
+Feltarbeid er innsamling av data ute, der fenomenene finnes, i en undersøkelse, slik Store norske leksikon (SNL) definerer det (SNL, 2026). I geologi kan det være å kartlegge hvilke bergarter som finnes, måle hvordan lag og sprekker er orientert, og samle inn prøver og fossiler (SNL, 2024a). I hydrologi kan det være å måle hvor mye vann en bekk fører, eller hva vannet inneholder.
 
 Et feltarbeid har fire steg: Du planlegger, samler inn data i felt, bearbeider og tolker dataene, og presenterer resultatene (Udir, u.å.-b). Feltdagen er bare én del av arbeidet. Uten en god plan vet du ikke hva du skal måle, og uten bearbeiding blir målingene bare tall i en notatbok.
 
@@ -43,14 +43,14 @@ Start med et spørsmål som kan besvares med data fra felt. «Hvordan er geologi
 
 ### Valg av lokalitet
 
-Velg et sted der du kan observere det spørsmålet gjelder, for eksempel en blotning av fast fjell, en grustak-vegg, en bekk eller en bratt skråning. Bruk kart før du drar. NGU har kart over berggrunn, løsmasser og marin grense for hver kommune, og Norgeskart viser terreng og stedsnavn (NGU, u.å.). Kartet gir deg en forventning som du kan teste i felt.
+Velg et sted der du kan observere det spørsmålet gjelder, for eksempel en blotning av fast fjell, en grustak-vegg, en bekk eller en bratt skråning. Bruk kart før du drar. Norges geologiske undersøkelse (NGU) har kart over berggrunn, løsmasser og marin grense for hver kommune, og Norgeskart viser terreng og stedsnavn (NGU, u.å.). Kartet gir deg en forventning som du kan teste i felt.
 
 ### Utstyr
 
 Hva du trenger, avhenger av metoden. Dette er vanlig utstyr:
 
 - kart og GPS eller mobil med kartapp
-- kompass med klinometer for å måle retning og helning
+- kompass med *klinometer* (helningsmåler) for å måle retning og helning
 - lupe for å se korn og mineraler
 - fortynnet saltsyre i dråpeflaske for å teste om bergarten inneholder kalk
 - prøveposer og tusj for å merke prøvene
@@ -59,7 +59,15 @@ Hva du trenger, avhenger av metoden. Dette er vanlig utstyr:
 
 ### Risikovurdering
 
-Før du drar, går du gjennom hva som kan gå galt, hvor sannsynlig det er og hva du gjør for å hindre det. Vanlige farer er bratt terreng og steinsprang ved bergvegger og i grustak, trafikk når du står langs en vei, vann og is ved bekker og innsjøer, tidevann på en strand og vær som slår om. Avtal hvem som har ansvar, ha med førstehjelpsutstyr og si fra hvor dere skal. Saltsyre må brukes med vernebriller.
+Før du drar, går du gjennom hva som kan gå galt, hvor sannsynlig det er og hva du gjør for å hindre det. Vanlige farer er:
+
+- bratt terreng og steinsprang ved bergvegger og i grustak
+- trafikk når du står langs en vei
+- vann og is ved bekker og innsjøer
+- tidevann på en strand
+- vær som slår om
+
+Avtal hvem som har ansvar, ha med førstehjelpsutstyr og si fra hvor dere skal. Saltsyre må brukes med vernebriller.
 
 ### Tillatelser og allemannsretten
 
@@ -97,7 +105,7 @@ _Vannføring_ er hvor mye vann som renner forbi et sted i en elv eller bekk per 
 
 **vannføring = tverrsnittsareal × middelfart**
 
-Gjenta tidtakingen flere ganger. Vannet ved overflaten midt i bekken renner fortere enn vannet langs bunnen og breddene, så flottøren går fortere enn middelfarten i bekken. Gang flottørens fart med ca. 0,85 for å få middelfarten (Turnipseed & Sauer, 2010).
+Gjenta tidtakingen flere ganger. Vannet ved overflaten midt i bekken renner fortere enn vannet langs bunnen og breddene, så flottøren går fortere enn middelfarten i bekken. Gang flottørens fart med ca. 0,85 for å få middelfarten (Turnipseed og Sauer, 2010).
 
 ### Temperatur og pH i vann
 
@@ -115,9 +123,9 @@ SjekkFeltarbeid2
 
 ### Georefererte data
 
-Data er _georefererte_ når hver måling er knyttet til en posisjon. Da kan du legge dataene på et kart og sammenligne dem med andre data. En vanlig mobiltelefon har under åpen himmel en nøyaktighet på ca. 5 m, og den blir dårligere nær bygninger, bruer og trær (GPS.gov, u.å.). En koordinat med mange desimaler er altså ikke sikrere enn mottakeren. Skriv derfor ned usikkerheten sammen med posisjonen.
+Data er _georefererte_ når hver måling er knyttet til en posisjon. Da kan du legge dataene på et kart og sammenligne dem med andre data. Ifølge GPS.gov, de amerikanske myndighetenes sider om GPS, har en vanlig mobiltelefon under åpen himmel en nøyaktighet på ca. 5 m. Nøyaktigheten blir dårligere nær bygninger, bruer og trær (GPS.gov, u.å.). En koordinat med mange desimaler er altså ikke sikrere enn mottakeren. Skriv derfor ned usikkerheten sammen med posisjonen.
 
-Koordinater må alltid oppgis i et bestemt _referansesystem_. Norske landkart bruker referanserammen EUREF89, og koordinatene vises ofte i UTM, som nord- og østverdier i meter. GPS og sjøkart bruker WGS84, og posisjonene vises som oftest i grader. Forskjellen betyr sjelden noe i et skoleprosjekt, men du må vite hvilket system og hvilket format du bruker når du legger sammen data fra ulike kilder (Kartverket, u.å.).
+Koordinater må alltid oppgis i et bestemt _referansesystem_. Norske landkart bruker referanserammen *EUREF89*, det vil si det norske landkartets referanseramme. Koordinatene vises ofte i *UTM*, et meter-rutenett med nord- og østverdier. GPS og sjøkart bruker *WGS84*, det systemet GPS vanligvis bruker, ofte i grader. Forskjellen betyr sjelden noe i et skoleprosjekt, men du må vite hvilket system og hvilket format du bruker når du legger sammen data fra ulike kilder. Kartverket beskriver disse systemene (Kartverket, u.å.).
 
 ### Feltboka
 
