@@ -1224,6 +1224,15 @@ const COPY_RESEEDS: CopyReseed[] = [
       "```widget\nSjekkPaleo5\n```\n\n## Hva viser brå klimaendringer",
       "dagens utslipp går ca. ti ganger så fort.\n\n```widget\nSjekkPaleo6",
     ],
+  },  {
+    // Jordsystemene: Terra Mater fase 1–2 (må-punkter M1–M9, kvikkleire og vannkjemi i Oslofeltet).
+    flag: "g1-jordsystemene-terra-mater-2026-10-25",
+    slug: "jordsystemene",
+    stale: [
+      "Elver graver ravinene. Resultatet kan bli kvikkleire",
+      "Bergarten styrer hvordan regn og elv møter berget",
+      "De fem sfærene er analytiske kategorier",
+    ],
   },
 ];
 
