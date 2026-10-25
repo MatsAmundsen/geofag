@@ -341,7 +341,7 @@ function RelParcel({
       <circle cx={cx} cy={cy} r="5.5" fill={C.white} stroke="#0d151c" strokeWidth="1.5" />
       <circle cx={cx} cy={cy} r="2.2" fill="#0d151c" />
       {label ? (
-        <L x={labelX ?? cx + 10} y={labelY ?? cy - 8} fill={C.fg} size={10} weight={700}>
+        <L x={labelX ?? cx + 10} y={labelY ?? cy - 8} fill={C.fg} size={11} weight={700}>
           {label}
         </L>
       ) : null}
@@ -513,7 +513,7 @@ export function RelativePressureDiagram() {
                 <g className={playing ? "rel-parcel-pulse" : undefined}>
                   {/* Pakke vestfra: V østover → CF sørover (høyre) */}
                   <Arrow d="M 128 175 L 195 175" marker={m.warm} color={C.warm} width={1.6} dash="4 3" />
-                  <L x="148" y="166" fill={C.warm} size={9} weight={700}>
+                  <L x="148" y="166" fill={C.warm} size={11} weight={700}>
                     PGF
                   </L>
                   <path
@@ -525,7 +525,7 @@ export function RelativePressureDiagram() {
                     markerEnd={`url(#${m.fg})`}
                   />
                   <Arrow d="M 168 175 L 168 205" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x="176" y="198" fill={C.teal} size={9} weight={800}>
+                  <L x="172" y="200" fill={C.teal} size={11} weight={800}>
                     CF
                   </L>
                   <RelParcel cx={128} cy={175} label="luft" labelX={108} labelY={168} />
@@ -541,7 +541,7 @@ export function RelativePressureDiagram() {
                     markerEnd={`url(#${m.fg})`}
                   />
                   <Arrow d="M 242 132 L 212 132" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x="198" y="124" fill={C.teal} size={9} weight={800}>
+                  <L x="202" y="128" fill={C.teal} size={11} weight={800}>
                     CF
                   </L>
                   <RelParcel cx={242} cy={95} />
@@ -557,7 +557,7 @@ export function RelativePressureDiagram() {
                     markerEnd={`url(#${m.fg})`}
                   />
                   <Arrow d="M 318 175 L 318 145" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x="326" y="152" fill={C.teal} size={9} weight={800}>
+                  <L x="322" y="148" fill={C.teal} size={11} weight={800}>
                     CF
                   </L>
                   <RelParcel cx={356} cy={175} />
@@ -584,15 +584,15 @@ export function RelativePressureDiagram() {
                   {/* Kraftbalanse vest for L: CCW → V sørover; CF til høyre (= ut), PGF inn */}
                   <RelParcel cx={155} cy={175} />
                   <Arrow d="M 155 175 L 155 220" marker={m.fg} color={C.white} width={2.4} />
-                  <L x={142} y={200} fill={C.white} size={10} weight={800} anchor="end">
+                  <L x={142} y={200} fill={C.white} size={11} weight={800} anchor="end">
                     V
                   </L>
                   <Arrow d="M 155 175 L 195 175" marker={m.warm} color={C.warm} width={2.2} />
-                  <L x={175} y={168} fill={C.warm} size={9} weight={700}>
+                  <L x={175} y={168} fill={C.warm} size={11} weight={700}>
                     PGF
                   </L>
                   <Arrow d="M 155 175 L 115 175" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x={118} y={168} fill={C.teal} size={9} weight={700} anchor="end">
+                  <L x={118} y={168} fill={C.teal} size={11} weight={700} anchor="end">
                     CF
                   </L>
 
@@ -684,7 +684,7 @@ export function RelativePressureDiagram() {
                     markerEnd={`url(#${m.fg})`}
                   />
                   <Arrow d="M 310 175 L 310 205" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x="318" y="198" fill={C.teal} size={9} weight={800}>
+                  <L x="314" y="200" fill={C.teal} size={11} weight={800}>
                     CF
                   </L>
                   <RelParcel cx={275} cy={175} />
@@ -700,7 +700,7 @@ export function RelativePressureDiagram() {
                     markerEnd={`url(#${m.fg})`}
                   />
                   <Arrow d="M 227 112 L 255 112" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x="258" y={104} fill={C.teal} size={9} weight={800}>
+                  <L x="252" y={108} fill={C.teal} size={11} weight={800}>
                     CF
                   </L>
                   <RelParcel cx={227} cy={140} />
@@ -725,15 +725,15 @@ export function RelativePressureDiagram() {
                   {/* Kraftbalanse: pakke øst for H, V sørover (med klokken) */}
                   <RelParcel cx={305} cy={175} />
                   <Arrow d="M 305 175 L 305 220" marker={m.fg} color={C.white} width={2.4} />
-                  <L x={318} y={200} fill={C.white} size={10} weight={800}>
+                  <L x={318} y={200} fill={C.white} size={11} weight={800}>
                     V
                   </L>
                   <Arrow d="M 305 175 L 345 175" marker={m.warm} color={C.warm} width={2.2} />
-                  <L x={325} y={168} fill={C.warm} size={9} weight={700}>
+                  <L x={325} y={168} fill={C.warm} size={11} weight={700}>
                     PGF
                   </L>
                   <Arrow d="M 305 175 L 265 175" marker={m.teal} color={C.teal} width={2.2} />
-                  <L x={272} y={168} fill={C.teal} size={9} weight={700} anchor="end">
+                  <L x={272} y={168} fill={C.teal} size={11} weight={700} anchor="end">
                     CF
                   </L>
 
