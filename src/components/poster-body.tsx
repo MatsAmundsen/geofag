@@ -74,6 +74,7 @@ import {
   OxygenIsotopeDiagram,
 } from "@/components/diagrams";
 import { PaleoClimateIsotopeModel } from "@/components/models/paleo-climate-model";
+import { PaleoProxyEksempel } from "@/components/paleo-proxy-eksempel";
 import {
   MetamorphicFaciesDiagram,
   SilicateStructureDiagram,
@@ -982,6 +983,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   IceCoreAnatomy: () => <IceCoreAnatomyDiagram />,
   OxygenIsotope: () => <OxygenIsotopeDiagram />,
   PaleoClimateIsotope: () => <PaleoClimateIsotopeModel />,
+  PaleoProxyEksempel: () => <PaleoProxyEksempel />,
   AbruptClimateChange: () => <AbruptClimateChangeDiagram />,
   DeglaciationFeedback: () => <DeglaciationFeedbackDiagram />,
 

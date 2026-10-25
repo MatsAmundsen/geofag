@@ -4,6 +4,12 @@ import { TopicLayout } from "@/components/topic-layout";
 import { PAGE_LEAD } from "@/lib/meteo/fagtekst";
 import { topicHead } from "@/lib/seo";
 
+const AtmosfaeriskElvDannelseFigur = lazy(() =>
+  import("@/components/diagrams/atmosfaerisk-elv-dannelse-figur").then((m) => ({
+    default: m.AtmosfaeriskElvDannelseFigur,
+  })),
+);
+
 const JetModel = lazy(() =>
   import("@/components/meteo/jet-model").then((m) => ({ default: m.JetModel })),
 );
@@ -15,7 +21,7 @@ export const Route = createFileRoute("/tema/klima/jetstrommer-atmosfaeriske-elve
     topicHead({
       title: "Jetstrømmer og atmosfæriske elver (modell) · Geofag 2",
       description:
-        "Interaktiv undervisningsmodell: polarjet og subtropisk jet, Rossby-bølger, atmosfæriske elver, ENSO og IOD, med El Niño, La Niña, positiv og negativ IOD.",
+        "Interaktiv undervisningsmodell: hvordan atmosfæriske elver dannes, polarjet og subtropisk jet, Rossby-bølger, ENSO og IOD, med El Niño, La Niña, positiv og negativ IOD.",
       path: PATH,
     }),
   component: JetModelPage,
@@ -26,6 +32,15 @@ function ModelPlaceholder() {
     <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
       <div className="h-48 border-b border-border" />
       <div className="jet-map-stage flex items-center justify-center text-sm text-muted-foreground">Laster modellen …</div>
+    </div>
+  );
+}
+
+function FigurPlaceholder() {
+  return (
+    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
+      <div className="h-64 animate-pulse bg-muted/40" />
+      <div className="px-4 py-3 text-sm text-muted-foreground">Laster figuren …</div>
     </div>
   );
 }
@@ -42,12 +57,19 @@ function JetModelPage() {
       next={{ to: "/tema/klima", label: "Tilbake til Klima" }}
       bodyMode="coded"
     >
-      <div className="jet-breakout">
-        <ClientOnly fallback={<ModelPlaceholder />}>
-          <Suspense fallback={<ModelPlaceholder />}>
-            <JetModel />
+      <div className="space-y-10">
+        <ClientOnly fallback={<FigurPlaceholder />}>
+          <Suspense fallback={<FigurPlaceholder />}>
+            <AtmosfaeriskElvDannelseFigur />
           </Suspense>
         </ClientOnly>
+        <div className="jet-breakout">
+          <ClientOnly fallback={<ModelPlaceholder />}>
+            <Suspense fallback={<ModelPlaceholder />}>
+              <JetModel />
+            </Suspense>
+          </ClientOnly>
+        </div>
       </div>
     </TopicLayout>
   );

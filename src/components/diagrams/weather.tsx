@@ -1,4 +1,6 @@
 import { Arrow, C, Diagram, L } from "./svg-kit";
+import { Flyt, Puls, Strom } from "./lokalvaer-anim";
+import { useLokalAnim } from "./use-lokalvaer-anim";
 
 export function PolarFrontCycloneSteps() {
   return (
@@ -145,8 +147,10 @@ export function ValleyWindDiagram() {
 }
 
 export function FoehnAdiabaticDiagram() {
+  const a = useLokalAnim("Fønvind");
   return (
     <Diagram
+      action={a.knapp}
       title="Føn: lufta varmes når den synker på lesiden"
       heading="Hvorfor blir lufta varmere og tørrere på lesiden?"
       caption="Lufta som passerer fjellet, synker på lesiden. Der kommer den under høyere lufttrykk og varmes med omtrent 1 °C per 100 m (tørradiabatisk). Den relative fuktigheten synker fordi det ikke tilføres fuktighet. Lufta kan bli særlig varm hvis den kommer ned fra høye luftlag. Kondensasjon og regn på losiden kan bidra litt, men betyr mindre enn man tidligere trodde (Store norske leksikon, u.å.-g). Alle tall i figuren er et forenklet regneeksempel, ikke målinger."
@@ -154,7 +158,7 @@ export function FoehnAdiabaticDiagram() {
       wide
     >
       {(m) => (
-        <>
+        <g ref={a.ref} className={a.gClass}>
           {/* Fjellprofil: 0 m ved y=410, 1000 m ved y=294 (0,116 px/m), topp 2000 m ved y=178 */}
           <path d="M 50 410 L 450 178 L 850 410 Z" fill="#17222a" stroke={C.dim} strokeWidth="2" />
           <path d="M 50 410 L 450 178 L 450 410 Z" fill="#1b2832" />
@@ -168,13 +172,15 @@ export function FoehnAdiabaticDiagram() {
 
           {/* Topp */}
           <line x1="40" y1="178" x2="860" y2="178" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.2" />
-          <L x="35" y="174" fill={C.warm} size={11} anchor="end">2000 m</L>
+          <L x="39" y="174" fill={C.warm} size={11} anchor="end">2000 m</L>
 
           {/* LOSIDE */}
           <L x="180" y="40" fill={C.rain} size={16} weight={800} anchor="middle">LOSIDE</L>
           <L x="180" y="60" fill={C.muted} size={12} anchor="middle">Fuktig luft tvinges opp</L>
 
-          <rect x="50" y="340" width="130" height="50" rx="6" fill="#142633" stroke={C.rain} strokeWidth="1.5" />
+          <rect x="50" y="340" width="130" height="50" rx="6" fill="#142633" stroke={C.rain} strokeWidth="1.5">
+            <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-0.0s" repeatCount="indefinite" />
+          </rect>
           <L x="115" y="362" fill={C.rain} size={15} weight={800} anchor="middle">+12 °C</L>
           <L x="115" y="380" fill={C.fg} size={11} anchor="middle">Umetta luft</L>
 
@@ -186,13 +192,64 @@ export function FoehnAdiabaticDiagram() {
 
           {/* Sky og regn på losiden */}
           <path d="M 215 285 Q 300 215 435 182 L 420 205 Q 310 240 240 292 Z" fill="#38bdf8" opacity="0.35" />
-          <Arrow d="M 290 255 L 282 300" marker={m.rain} color={C.rain} width={2} />
-          <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={2} />
+          {/* Skyen bølger: dotter som vokser og svinner langs skyen */}
+          <g className="lv-p" aria-hidden="true">
+            {[
+              [250, 278, 16],
+              [290, 256, 20],
+              [330, 236, 22],
+              [370, 214, 20],
+              [408, 196, 16],
+            ].map(([cx, cy, r], i) => (
+              <ellipse key={cx} cx={cx} cy={cy} rx={r} ry={r * 0.6} fill="#bae6fd" opacity={0.12}>
+                                <animate attributeName="rx" values={`${r};${r * 1.25};${r}`} dur={`${5 + i * 0.6}s`} repeatCount="indefinite" />
+              </ellipse>
+            ))}
+          </g>
+          {/* Regn faller på losiden: dempet, skal ikke trekke blikket */}
+          {[270, 318, 366].map((x, i) => {
+            const bakke = 410 - 0.58 * (x - 50);
+            return (
+              <Flyt key={x} path={`M ${x} ${bakke - 22} L ${x - 3} ${bakke - 4}`} dur={1.8 + i * 0.2} n={1} r={0.9} ry={2.2} fill={C.rain} opacity={0.35} />
+            );
+          })}
+          {/* Luftpakker: opp på losiden, over toppen og ned på lesiden. Farge: umetta (teal) → sky (blå) → varm. */}
+          <Flyt
+            path="M 60 372 L 150 340 L 210 294 L 300 245 L 430 184 Q 450 170 470 188 L 730 350 L 840 372"
+            dur={13}
+            n={10}
+            r={6}
+            fill={C.teal}
+            opacity={0.95}
+            fills={`${C.teal};${C.teal};${C.rain};#cbd5e1;${C.warm};${C.warm}`}
+            fillTimes="0;0.19;0.3;0.5;0.72;1"
+          />
+          <Strom d="M 470 190 L 730 350" color={C.warm} width={3} dash="6 14" dur={1.4} opacity={0.85} />
+          {/* Varm, tørr luft over lesiden: flimrende varmedis */}
+          {[0, 1, 2].map((i) => (
+            <Strom
+              key={i}
+              d={`M ${560 + i * 50} ${238 + i * 29} q 10 -6 20 0 t 20 0 t 20 0 t 20 0`}
+              color={C.warm}
+              width={1.4}
+              dash="3 7"
+              dur={1.8 + i * 0.3}
+              opacity={0.45}
+            />
+          ))}
+          {/* Lufta kan også komme ned fra høyere luftlag */}
+          <Flyt path="M 800 86 L 702 178" dur={4.5} n={3} r={4} fill={C.warm} opacity={0.75} />
+          <g opacity="0.4">
+            <Arrow d="M 290 255 L 282 300" marker={m.rain} color={C.rain} width={1.4} />
+            <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={1.4} />
+          </g>
           <Arrow d="M 225 280 L 430 182" marker={m.rain} color={C.rain} width={3} />
           <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. -0,6 °C / 100 m</L>
           <L x="150" y="246" fill={C.muted} size={10}>Regn faller på losiden</L>
 
-          <rect x="395" y="118" width="110" height="46" rx="6" fill="#1b242e" stroke={C.fg} strokeWidth="1.5" />
+          <rect x="395" y="118" width="110" height="46" rx="6" fill="#1b242e" stroke={C.fg} strokeWidth="1.5">
+            <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-6.5s" repeatCount="indefinite" />
+          </rect>
           <L x="450" y="138" fill={C.fg} size={15} weight={800} anchor="middle">-4 °C</L>
           <L x="450" y="155" fill={C.sand} size={10} anchor="middle">på toppen</L>
 
@@ -205,9 +262,11 @@ export function FoehnAdiabaticDiagram() {
 
           <Arrow d="M 470 190 L 730 350" marker={m.warm} color={C.warm} width={3.6} />
           <L x="630" y="240" fill={C.warm} size={13} weight={800}>+1,0 °C / 100 m</L>
-          <L x="630" y="258" fill={C.muted} size={11}>Hovedgrunnen til fønvarmen</L>
+          <L x="630" y="258" fill={C.warm} size={12} weight={800}>Hovedgrunnen til fønvarmen</L>
 
-          <rect x="710" y="340" width="150" height="50" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2" />
+          <rect x="710" y="340" width="150" height="50" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2">
+            <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-2.0s" repeatCount="indefinite" />
+          </rect>
           <L x="785" y="362" fill={C.warm} size={18} weight={900} anchor="middle">+16 °C</L>
           <L x="785" y="380" fill={C.sand} size={10} anchor="middle">Lavere relativ fuktighet</L>
 
@@ -219,15 +278,17 @@ export function FoehnAdiabaticDiagram() {
           <L x="450" y="462" fill={C.muted} size={11} anchor="middle">
             Lo: 12 - 10 × 1,0 - 10 × 0,6 = -4 °C på toppen · Le: -4 + 20 × 1,0 = +16 °C i dalen
           </L>
-        </>
+        </g>
       )}
     </Diagram>
   );
 }
 
 export function TemperatureInversionDiagram() {
+  const a = useLokalAnim("Temperaturinversjon");
   return (
     <Diagram
+      action={a.knapp}
       title="Temperaturinversjon: Normal atmosfærisk temperaturprofil kontra bakkeinversjon"
       heading="Temperaturinversjon: et lokk av varmere luft"
       caption="Vanligvis avtar temperaturen oppover, fordi atmosfæren varmes nedenfra og konveksjon blander lufta (venstre). I en inversjon stiger temperaturen med høyden (høyre). En klar vinternatt mister bakken varme ved utstråling, og kald, tung luft legger seg i daler og fjorder. Lufta nær bakken blandes dårlig med lufta over, og utslipp fra skip, veitrafikk og vedfyring kan samle seg og gi dårlig luftkvalitet (Store norske leksikon, u.å.-m). Temperaturene er tenkte eksempler."
@@ -235,7 +296,7 @@ export function TemperatureInversionDiagram() {
       wide
     >
       {(m) => (
-        <>
+        <g ref={a.ref} className={a.gClass}>
           {/* Skillelinje */}
           <line x1="460" y1="35" x2="460" y2="405" stroke={C.dim} strokeDasharray="4 4" />
 
@@ -275,6 +336,11 @@ export function TemperatureInversionDiagram() {
           <ellipse cx="215" cy="185" rx="42" ry="22" fill="#94a3b8" opacity="0.2" />
           <ellipse cx="230" cy="140" rx="60" ry="26" fill="#94a3b8" opacity="0.1" />
 
+          {/* Røyken stiger fritt, vokser og tynnes ut */}
+          <Flyt path="M 188 312 Q 194 262 208 205 Q 222 160 244 122" dur={7} n={8} r={5} grow={34} ry={4} fill="#94a3b8" opacity={0.45} />
+          {/* Oppdrift: varme bobler stiger */}
+          <Flyt path="M 262 312 Q 258 240 264 172" dur={3.6} n={4} r={2.6} fill={C.warm} opacity={0.8} />
+
           {/* Oppdrifts-piler */}
           <Arrow d="M 270 310 L 270 170" marker={m.warm} color={C.warm} width={2.4} />
           <L x="280" y="240" fill={C.warm} size={11} weight={600}>Termisk oppdrift</L>
@@ -290,7 +356,9 @@ export function TemperatureInversionDiagram() {
           </L>
 
           {/* Kald dalbunn */}
-          <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1" />
+          <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1">
+            <animate attributeName="stroke-width" values="1;2.5;1" dur="5s" repeatCount="indefinite" />
+          </rect>
           <L x="685" y="375" fill="#7dd3fc" size={11} weight={600} anchor="middle">
             Kald dalbunn: bakken mister varme ved utstråling
           </L>
@@ -305,16 +373,10 @@ export function TemperatureInversionDiagram() {
 
           {/* Inversjonslagets "knekk": Går mot høyre (varmere!) fra bakken til 300m, deretter mot venstre */}
           {/* 0m: T=-15°C (x=600), 300m: T=-2°C (x=730), 600m: T=-5°C (x=670) */}
-          <polyline
-            points="610,345 730,240 670,140"
-            fill="none"
-            stroke="#ef4444"
-            strokeWidth="3.5"
-          />
 
           {/* Inversjonslaget skravert som "Termisk lokk" */}
           <rect x="550" y="225" width="320" height="30" fill="#ea580c" opacity="0.25" rx="4" />
-          <line x1="550" y1="240" x2="870" y2="240" stroke="#f97316" strokeDasharray="4 2" strokeWidth="1.5" />
+          <line x1="550" y1="240" x2="870" y2="240" stroke="#fcd34d" strokeDasharray="4 2" strokeWidth="1.5" opacity="0.7" />
           <L x="745" y="236" fill="#fdba74" size={11} weight={800}>
             INVERSJONSLAG (LOKK)
           </L>
@@ -323,7 +385,17 @@ export function TemperatureInversionDiagram() {
           </L>
 
           {/* Fanget forurensning i bunnen (Smog / Giftlokk) */}
-          <rect x="550" y="260" width="320" height="85" fill="#451a03" opacity="0.4" rx="4" />
+          <rect x="550" y="260" width="320" height="85" fill="#451a03" opacity="0.4" rx="4">
+            <Puls min={0.32} max={0.46} dur={7} />
+          </rect>
+          {/* Varmere luft over lokket glir rolig forbi */}
+          <Strom d="M 556 205 L 864 205" color="#fde68a" width={1.4} dash="10 22" dur={4} opacity={0.35} />
+          <Strom d="M 556 180 L 864 180" color="#fde68a" width={1.2} dash="8 26" dur={5} opacity={0.25} />
+                    {/* Røyken stiger til lokket, stanser og brer seg ut under det */}
+          <Flyt path="M 616 323 Q 612 292 618 268 Q 590 264 562 266" dur={6} n={6} r={3} grow={14} ry={3} fill="#d97706" opacity={0.55} />
+          <Flyt path="M 616 323 Q 620 292 618 268 Q 670 262 720 268" dur={7} n={6} r={3} grow={16} ry={3} fill="#b45309" opacity={0.6} />
+          <Flyt path="M 768 328 Q 764 296 770 270 Q 730 263 690 268" dur={6.5} n={6} r={3} grow={14} ry={3} fill="#b45309" opacity={0.6} />
+          <Flyt path="M 768 328 Q 772 296 770 270 Q 810 264 860 268" dur={6} n={5} r={3} grow={12} ry={3} fill="#d97706" opacity={0.5} />
           {/* Utslippskilder */}
           <rect x="610" y="325" width="12" height="25" fill="#64748b" />
           <rect x="760" y="330" width="16" height="20" fill="#64748b" />
@@ -333,6 +405,12 @@ export function TemperatureInversionDiagram() {
           <ellipse cx="730" cy="285" rx="75" ry="16" fill="#b45309" opacity="0.6" />
           <ellipse cx="768" cy="305" rx="40" ry="14" fill="#d97706" opacity="0.6" />
 
+          {/* Temperaturprofilen: én knekklinje, tegnet over røyk og lokk */}
+          <polyline points="610,345 730,240 670,140" fill="none" stroke="#141923" strokeWidth="7" strokeLinejoin="round" opacity="0.8" />
+          <polyline points="610,345 730,240 670,140" fill="none" stroke="#ef4444" strokeWidth="3.5" strokeLinejoin="round" />
+          {[[610, 345], [730, 240], [670, 140]].map(([x, y]) => (
+            <circle key={x} cx={x} cy={y} r="4.5" fill="#ef4444" stroke="#141923" strokeWidth="1.5" />
+          ))}
           {/* Tekst om faren */}
           <L x="862" y="300" fill="#fef08a" size={11} weight={700} anchor="end">
             Utslipp samler seg under lokket
@@ -340,7 +418,7 @@ export function TemperatureInversionDiagram() {
           <L x="862" y="318" fill="#fde68a" size={10} anchor="end">
             Fra skip, veitrafikk og vedfyring
           </L>
-        </>
+        </g>
       )}
     </Diagram>
   );

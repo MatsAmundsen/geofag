@@ -177,6 +177,10 @@ Kosmisk stråling danner hele tiden den radioaktive isotopen ¹⁴C i lufta. Pla
 SjekkPaleo5
 ```
 
+```widget
+PaleoProxyEksempel
+```
+
 ## Hva viser brå klimaendringer og PETM om framtidens klima?
 
 Arkivene viser at klimaet ikke alltid endrer seg jevnt. Noen ganger har klimaet skiftet brått, i løpet av noen tiår.
@@ -214,6 +218,7 @@ Det viktigste eksamenspoenget er farten. Under PETM ble det sluppet ut høyst ca
 > - **Gassalder:** Lufta stenges inne først i bunnen av firnen, 50–100 m ned. Derfor er lufta yngre enn isen rundt.
 > - **Tidslinje:** Kvartær begynte for 2,58 millioner år siden. Siste istid varte fra ca. 117 000 til ca. 11 700 år siden. Yngre dryas var for ca. 12 800–11 700 år siden.
 > - **Fart:** PETM viser hva et stort karbonutslipp gjør, men dagens utslipp går ca. ti ganger så fort.
+> - **Proxy-pakke:** Når flere kurver ligger side om side, velg panelet som svarer på spørsmålet (alder / miljø / CO₂). Se eksempelet «Les alder, miljø og CO₂ ut av proxyene».
 
 ```widget
 SjekkPaleo6
