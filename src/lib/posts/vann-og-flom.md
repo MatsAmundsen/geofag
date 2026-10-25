@@ -37,7 +37,7 @@ Kretslop
 
 Figuren er en modell av de samme lagrene: snø, mark, grunnvann, innsjø og elv. Pilene viser tilførsel, lagring og tap til lufta og til havet. Modellen kan også skrives som et regnestykke, en *vannbalanse*: Nedbøren i et område er lik avrenningen pluss fordampningen pluss endringen i lagrene (Dingman, 2015).
 
-Lite av vannet på jorda er ferskvann vi kan bruke. Ca. 97 prosent av vannet er saltvann, nesten alt i havet (96,5 prosent). Bare ca. 2,5 prosent er ferskvann. Av ferskvannet er over 68 prosent bundet i is og breer og ca. 30 prosent er grunnvann. Elver og innsjøer utgjør bare en liten brøkdel, men det er likevel derfra vi henter mye av vannet vi bruker. Det amerikanske geologiske instituttet (USGS) har beregnet disse andelene (USGS, u.å.). Is og snø regner vi i dette nettstedet til kryosfæren, se kapitlet [Jordsystemene](/geofag-1/jordsystemene).
+Lite av vannet på jorda er ferskvann vi kan bruke. Ca. 97 prosent av vannet er saltvann, nesten alt i havet (96,5 prosent). Bare ca. 2,5 prosent er ferskvann. Av ferskvannet er over 68 prosent bundet i is og breer og ca. 30 prosent er grunnvann. Elver og innsjøer utgjør bare en liten brøkdel, men det er likevel derfra vi henter mye av vannet vi bruker. USAs geologiske undersøkelse (USGS) har beregnet disse andelene (USGS, u.å.). Is og snø regner vi i dette nettstedet til kryosfæren, se kapitlet [Jordsystemene](/geofag-1/jordsystemene).
 
 ## Hva er en akvifer?
 
