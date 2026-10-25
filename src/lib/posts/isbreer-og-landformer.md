@@ -20,7 +20,7 @@
 >
 > hvordan isbreen beveger seg, eroderer ved plukking og skuring og avsetter morene og breelvmateriale, erosjonsformer som U-dal, fjord, botn, egg og tind, avsetningsformer som endemorene, esker, drumlin og breelvdelta, frostforvitring, landheving etter istida, forskjellen på aktive og fossile landformer, og hvordan mennesker bruker og påvirker isens landformer.
 >
-> Isbreer hører ikke bare til Geofag 2. Som del av klimasystemet er de Geofag 2-stoff, men som agent som former landskapet hører de hjemme her.
+> Isbreer hører ikke bare til Geofag 2. Som del av klimasystemet er de Geofag 2-stoff, men som kraft som graver og avsetter i landskapet hører de hjemme her.
 
 > **Hva tror du?**
 >
@@ -28,7 +28,7 @@
 
 ## Hva er en isbre?
 
-En isbre er en stor masse av is som er dannet av snø, og som sakte siger nedover under sin egen tyngde (SNL, u.å.-b). Der det faller mer snø om vinteren enn det som smelter om sommeren, hoper snøen seg opp år etter år. Snøen lenger ned blir presset sammen av snøen over, og den går gradvis over til is.
+En isbre er en stor masse av is som er dannet av snø. Den siger sakte nedover under sin egen tyngde. Det er slik Store norske leksikon (SNL) definerer en isbre (SNL, u.å.-b). Der det faller mer snø om vinteren enn det som smelter om sommeren, hoper snøen seg opp år etter år. Snøen lenger ned blir presset sammen av snøen over, og den går gradvis over til is.
 
 ### Næringsområde og tæringsområde
 
@@ -38,23 +38,23 @@ Forholdet mellom det som kommer til og det som smelter, kalles breens massebalan
 
 ### Hvordan beveger isen seg?
 
-Is virker hard og sprø, men i en tykk isbre er trykket så stort at isen oppfører seg som en seig, plastisk masse. Isen deformeres derfor sakte og siger nedover dalen (SNL, u.å.-b). I tillegg kan breen gli på underlaget, særlig der det er smeltevann ved bunnen (NDLA, u.å.). Setter man sammen bilder av en bre over flere år, ser man at den flyter nedover nesten som ei elv (NDLA, u.å.).
+Is virker hard og sprø, men i en tykk isbre er trykket så stort at isen oppfører seg som en seig, plastisk masse. Isen deformeres derfor sakte og siger nedover dalen (SNL, u.å.-b). I tillegg kan breen gli på underlaget, særlig der det er smeltevann ved bunnen, slik Nasjonal digital læringsarena (NDLA) beskriver det (NDLA, u.å.). Setter vi sammen bilder av en bre over flere år, ser vi at den flyter nedover nesten som ei elv (NDLA, u.å.).
 
-## Isen som agent: erosjon og transport
+## Isen som kraft: erosjon og transport
 
-En isbre er ikke bare is. Den inneholder store og små steiner som er frosset fast i isen eller ligger langs bunnen, og det er disse som gjør breen til en kraftig agent i landskapet (NDLA, u.å.). Isbreen eroderer på to måter, og begge krever at isen beveger seg.
+En isbre er ikke bare is. Den inneholder store og små steiner som er frosset fast i isen eller ligger langs bunnen. Det er steinene som gjør breen til en kraft som graver og avsetter i landskapet (NDLA, u.å.). Isbreen eroderer på to måter, og begge krever at isen beveger seg.
 
 ### Plukking
 
-Isen fryser fast i sprekker og løsner blokker, og breen river dem med seg når den beveger seg videre. I tillegg brytes berget opp av trykkforskjellene under isen der den passerer en forhøyning (Benn & Evans, 2010). Dette kalles plukking (plucking) (NDLA, u.å.).
+Isen fryser fast i sprekker og løsner blokker, og breen river dem med seg når den beveger seg videre. I tillegg brytes berget opp av trykkforskjellene under isen der den passerer en forhøyning (Benn og Evans, 2010). Dette kalles plukking (plucking) (NDLA, u.å.).
 
 ### Skuring
 
-Steinene i bresålen blir presset mot berget under isen. Breen virker da som et sandpapir og sliper underlaget ned. Dette kalles skuring (abrasion) (NDLA, u.å.).
+Steinene i *bresålen*, det vil si undersiden av breen, blir presset mot berget under isen. Breen virker da som et sandpapir og sliper underlaget ned. Dette kalles skuring (abrasion) (NDLA, u.å.).
 
 ### Usortert transport
 
-Isen frakter med seg alt fra leire til store blokker, i, på og under breen. Fordi isen ikke skiller kornstørrelsene fra hverandre, blir materialet liggende usortert når isen smelter. Dette usorterte materialet kalles morene. Smeltevannet fra breen sorterer derimot materialet etter størrelse, slik rennende vann alltid gjør, og avsetter sand og grus i lag. Dette kalles breelvmateriale (NGU, u.å.-c).
+Isen frakter med seg alt fra leire til store blokker, i, på og under breen. Fordi isen ikke skiller kornstørrelsene fra hverandre, blir materialet liggende usortert når isen smelter. Dette usorterte materialet kalles morene. Smeltevannet fra breen sorterer derimot materialet etter størrelse, slik rennende vann alltid gjør, og avsetter sand og grus i lag. Dette kalles breelvmateriale, slik Norges geologiske undersøkelse (NGU) beskriver det (NGU, u.å.-c).
 
 | Egenskap | Morene | Breelvmateriale |
 |---|---|---|
@@ -70,7 +70,7 @@ Erosjonsformer er landformer der isen har fjernet berg. Mange av dem er så stor
 
 Før istidene rant elvene i V-formede daler. Innlandsisen fulgte disse dalene og skurte og plukket mest der isen var tykkest og tyngst. Over tid fikk dalene bratte sider og en bred bunn, altså en U-form (NDLA, u.å.). Store deler av Gudbrandsdalen er et eksempel på en U-dal over havnivå med elv i bunnen (SNL, u.å.-e). Hvor bred U-dalen blir, avhenger også av berget. I hard gneis blir dalen dyp og trang, som i Nærøydalen, mens den blir bredere i svakere berg.
 
-Sidedalene hadde mindre is og ble ikke gravd like dypt som hoveddalen. Når isen smeltet, ble de liggende igjen høyt oppe i dalsiden som hengende sidedaler (Bryhni & Lilleøren, 2024).
+Sidedalene hadde mindre is og ble ikke gravd like dypt som hoveddalen. Når isen smeltet, ble de liggende igjen høyt oppe i dalsiden som hengende sidedaler (Bryhni og Lilleøren, 2024).
 
 ### Fjord
 
@@ -90,7 +90,7 @@ Der isen har smeltet bort, står botnene, eggene og tindene igjen. Da er de foss
 
 ### Rundsva og skuringsstriper
 
-På berg som isen har gått over, finner du ofte små spor. Skuringsstriper (glacial striations) er tynne riper som steiner i bresålen har laget i berget. De går i samme retning som isen beveget seg, og derfor kan de fortelle hvilken vei isen gikk (NDLA, u.å.). Et rundsva (roche moutonnée) er en bergknaus som er slipt glatt og avrundet på siden isen kom fra, og ru og brattere på siden der isen plukket løs berg (SNL, u.å.-d).
+På berg som isen har gått over, finner du ofte små spor. Skuringsstriper (glacial striations) er tynne riper som steiner i bresålen har laget i berget. De går i samme retning som isen beveget seg, og derfor kan de fortelle hvilken vei isen gikk (NDLA, u.å.). Et rundsva (roche moutonnée) er en bergknaus som er slipt glatt og avrundet på siden isen kom fra. På siden der isen plukket løs berg, er knausen ru og brattere (SNL, u.å.-d).
 
 ```widget
 SjekkIsbre1
@@ -104,7 +104,7 @@ Avsetningsformer er landformer der isen eller smeltevannet har lagt igjen løsma
 
 Steinene i isen blir fraktet fram til brefronten. Står fronten stille en tid, eller rykker den litt fram, hoper materialet seg opp til en rygg. Når isen trekker seg tilbake, blir ryggen liggende igjen som et spor etter hvor fronten lå. Denne ryggen kalles en endemorene (end moraine), og hauger langs kanten av breen kalles sidemorener (NDLA, u.å.).
 
-Raet er det tydeligste israndtrinnet i Norge. Det ble dannet i yngre dryas (Younger Dryas), da klimaet ble kaldere og isfronten sto stille eller rykket fram (SNL, u.å.-c). Raet er ikke én haug, men en lang sone av morene, breelvgrus og strandmateriale som havet senere har vasket over. Det går særlig på begge sider av Oslofjorden, og store deler ble avsatt under daværende havnivå. Mot vest kan sonen følges til Lysefjorden. Lenger nord har morener fra samme tid andre navn, som Halsnøymorenen og Herdlamorenen (SNL, u.å.-c).
+Raet er det tydeligste *israndtrinnet* i Norge. Et israndtrinn er en sone der isfronten sto stille en periode. Raet ble dannet i yngre dryas (Younger Dryas, for ca. 12 900–11 700 år siden), da klimaet ble kaldere og isfronten sto stille eller rykket fram (SNL, u.å.-c). Raet er ikke én haug, men en lang sone av morene, breelvgrus og strandmateriale som havet senere har vasket over. Det går særlig på begge sider av Oslofjorden, og store deler ble avsatt under daværende havnivå. Mot vest kan sonen følges til Lysefjorden. Lenger nord har morener fra samme tid andre navn, som Halsnøymorenen og Herdlamorenen (SNL, u.å.-c).
 
 ![Raet, en rygg av morene og breelvmateriale](/images/isbre-raet.jpg)
 
@@ -140,7 +140,7 @@ Forvitring betyr at berget brytes ned der det ligger, uten at det blir fraktet b
 
 ### Frostsprengning
 
-Når vann fryser til is, øker volumet. Vann som har trengt inn i sprekker i berget, presser derfor sprekkene utover når det fryser. Skjer dette mange ganger, kiles biter av berget løs. Dette kalles frostsprengning (frost wedging) (SNL, u.å.-a). I naturen sprekker berget likevel oftest fordi islinser vokser: Vann trekkes mot isen i sprekken, og isen vokser og presser sprekken videre ved temperaturer like under frysepunktet, ca. −3 til −6 °C. Derfor betyr mange fryse–tine-sykluser og tilgang på vann mer enn sterk kulde (Murton mfl., 2006). Prosessen krever vann, frost og sprekker i berget, altså at hydrosfæren, atmosfæren og geosfæren virker sammen.
+Når vann fryser til is, øker volumet. Vann som har trengt inn i sprekker i berget, presser derfor sprekkene utover når det fryser. Skjer dette mange ganger, kiles biter av berget løs. Dette kalles frostsprengning (frost wedging) (SNL, u.å.-a). I naturen sprekker berget likevel oftest fordi tynne islag vokser i sprekken. Slike islag kaller vi *islinser*. Vann trekkes mot isen i sprekken, og isen vokser og presser sprekken videre ved temperaturer like under frysepunktet, ca. −3 til −6 °C. Derfor betyr mange fryse–tine-sykluser og tilgang på vann mer enn sterk kulde (Murton mfl., 2006). Prosessen krever vann, frost og sprekker i berget, altså at hydrosfæren, atmosfæren og geosfæren virker sammen.
 
 ### Ur
 
@@ -154,7 +154,7 @@ Når en tykk isbre smelter bort, forsvinner vekten som presset på berget. Berge
 
 ## Isostasi: landet som hever seg etter isen
 
-Under siste istid, som varte fra om lag 117 000 til 11 700 år siden, lå en tykk innlandsis over Norge (Mangerud, 2025; NGU, u.å.-c). Isen var så tung at den presset landet ned. Da isen smeltet, lå mange kystnære områder under havnivå, og havet gikk langt inn over det som i dag er land. Etter hvert som vekten forsvant, begynte landet å heve seg igjen. Denne landhevingen er isostasi i praksis (NGU, u.å.-a).
+Under siste istid, som varte fra om lag 117 000 til 11 700 år siden, lå en tykk innlandsis over Norge (Mangerud, 2025; NGU, u.å.-c). Isen var så tung at den presset landet ned. Da isen smeltet, lå mange kystnære områder under havnivå, og havet gikk langt inn over det som i dag er land. Etter hvert som vekten forsvant, begynte landet å heve seg igjen. Jordskorpa og den øvre, stive mantelen (*litosfæren*) ligger i likevekt på den mykere astenosfæren under. Denne likevekten kaller vi *isostasi*. Landhevingen etter isen er isostasi i praksis (NGU, u.å.-a).
 
 ### Marin grense
 
@@ -172,7 +172,7 @@ SjekkIsbre3
 
 En aktiv landform er en form som fortsatt bygges eller endres. En fossil landform er en form som ble dannet under andre forhold enn i dag, og som ligger igjen som et spor. De fleste store isformene i Norge er fossile. U-dalene, fjordene og Raet ble formet av isen under og like etter siste istid, og ingen isbre arbeider med dem i dag.
 
-Breene som finnes i Norge nå, er aktive. Nigardsbreen, en arm av Jostedalsbreen, er et eksempel. Foran slike breer kan du se de samme prosessene som dannet Raet, bare i mye mindre skala og på et annet tidspunkt. Norske breer dekket 2328 km² etter kartlegging med satellittbilder fra 2018 og 2019. Det er 14 prosent mindre enn i perioden 1999–2006 (NVE, 2022).
+Breene som finnes i Norge nå, er aktive. Nigardsbreen, en arm av Jostedalsbreen, er et eksempel. Foran slike breer kan du se de samme prosessene som dannet Raet, bare i mye mindre skala og på et annet tidspunkt. Norges vassdrags- og energidirektorat (NVE) har beregnet at norske breer dekket 2328 km² etter kartlegging med satellittbilder fra 2018 og 2019. Det er 14 prosent mindre enn i perioden 1999–2006 (NVE, 2022).
 
 ![Nigardsbreen, en aktiv bre med løsmasser foran isfronten](/images/isbre-nigardsbreen.jpg)
 
@@ -190,7 +190,7 @@ Isens avsetninger er en ressurs. Sand og grus fra breelvdeltaer og eskere brukes
 
 Den marine leira som landhevingen har løftet opp på land, er godt jordbruksland, og mange byer og veier ligger på den. Graving og fylling i slik leire kan utløse kvikkleireskred, se kapitlet [Skred](/geofag-1/skred).
 
-Mennesket påvirker også isbreene selv. Norske breer er blitt 14 prosent mindre siden 1999–2006 (NVE, 2022), og NVE venter at alle breer vil minke kraftig, og at mange kan bli helt borte (NVE, u.å.). Når en bre trekker seg tilbake, blir det liggende ferske morener og breelvavsetninger foran den, og det kan dannes nye bresjøer.
+Mennesket påvirker også isbreene selv. Norske breer er blitt 14 prosent mindre siden 1999–2006 (NVE, 2022). NVE venter at alle breer vil minke kraftig, og at mange kan bli helt borte (NVE, u.å.). Når en bre trekker seg tilbake, blir det liggende ferske morener og breelvavsetninger foran den, og det kan dannes nye bresjøer.
 
 ```widget
 SjekkIsbre4
@@ -226,7 +226,7 @@ SjekkIsbre4
 
 **Hengende sidedal:** Sidedal som ligger høyt over bunnen av hoveddalen fordi den ble gravd mindre ut av isen.
 
-**Isostasi:** Likevekt mellom litosfæren og astenosfæren. Etter istida hever landet seg fordi vekten av isen er borte.
+**Isostasi:** Likevekt mellom litosfæren (jordskorpa og den øvre, stive mantelen) og astenosfæren under. Etter istida hever landet seg fordi vekten av isen er borte.
 
 **Marin grense:** Det høyeste nivået havet nådde etter siste istid, 0–220 meter over dagens havnivå i Norge.
 
@@ -236,7 +236,7 @@ SjekkIsbre4
 
 **Plukking:** Erosjon der isen fryser fast i sprekker og løsner biter av berget, hjulpet av trykkforskjeller under isen.
 
-**Raet:** Israndtrinn fra yngre dryas, en lang sone av morene og breelvmateriale.
+**Raet:** Israndtrinn fra yngre dryas (for ca. 12 900–11 700 år siden), en lang sone av morene og breelvmateriale.
 
 **Rundsva:** Bergknaus som er slipt avrundet på siden isen kom fra, og ru på siden der isen plukket.
 
