@@ -371,16 +371,10 @@ export function TemperatureInversionDiagram() {
 
           {/* Inversjonslagets "knekk": Går mot høyre (varmere!) fra bakken til 300m, deretter mot venstre */}
           {/* 0m: T=-15°C (x=600), 300m: T=-2°C (x=730), 600m: T=-5°C (x=670) */}
-          <polyline
-            points="610,345 730,240 670,140"
-            fill="none"
-            stroke="#ef4444"
-            strokeWidth="3.5"
-          />
 
           {/* Inversjonslaget skravert som "Termisk lokk" */}
           <rect x="550" y="225" width="320" height="30" fill="#ea580c" opacity="0.25" rx="4" />
-          <line x1="550" y1="240" x2="870" y2="240" stroke="#f97316" strokeDasharray="4 2" strokeWidth="1.5" />
+          <line x1="550" y1="240" x2="870" y2="240" stroke="#fcd34d" strokeDasharray="4 2" strokeWidth="1.5" opacity="0.7" />
           <L x="745" y="236" fill="#fdba74" size={11} weight={800}>
             INVERSJONSLAG (LOKK)
           </L>
@@ -393,10 +387,9 @@ export function TemperatureInversionDiagram() {
             <Puls min={0.32} max={0.46} dur={7} />
           </rect>
           {/* Varmere luft over lokket glir rolig forbi */}
-          <Strom d="M 556 205 L 864 205" color="#fdba74" width={1.4} dash="10 22" dur={4} opacity={0.4} />
-          <Strom d="M 556 180 L 864 180" color="#fdba74" width={1.2} dash="8 26" dur={5} opacity={0.3} />
-          <Strom d="M 552 240 L 868 240" color="#fdba74" width={1.5} dash="4 2" dur={1.2} opacity={0.5} />
-          {/* Røyken stiger til lokket, stanser og brer seg ut under det */}
+          <Strom d="M 556 205 L 864 205" color="#fde68a" width={1.4} dash="10 22" dur={4} opacity={0.35} />
+          <Strom d="M 556 180 L 864 180" color="#fde68a" width={1.2} dash="8 26" dur={5} opacity={0.25} />
+                    {/* Røyken stiger til lokket, stanser og brer seg ut under det */}
           <Flyt path="M 616 323 Q 612 292 618 268 Q 590 264 562 266" dur={6} n={6} r={3} grow={14} ry={3} fill="#d97706" opacity={0.55} />
           <Flyt path="M 616 323 Q 620 292 618 268 Q 670 262 720 268" dur={7} n={6} r={3} grow={16} ry={3} fill="#b45309" opacity={0.6} />
           <Flyt path="M 768 328 Q 764 296 770 270 Q 730 263 690 268" dur={6.5} n={6} r={3} grow={14} ry={3} fill="#b45309" opacity={0.6} />
@@ -410,6 +403,9 @@ export function TemperatureInversionDiagram() {
           <ellipse cx="730" cy="285" rx="75" ry="16" fill="#b45309" opacity="0.6" />
           <ellipse cx="768" cy="305" rx="40" ry="14" fill="#d97706" opacity="0.6" />
 
+          {/* Temperaturprofilen: én knekklinje, tegnet over røyk og lokk */}
+          <polyline points="610,345 730,240 670,140" fill="none" stroke="#141923" strokeWidth="7" strokeLinejoin="round" opacity="0.8" />
+          <polyline points="610,345 730,240 670,140" fill="none" stroke="#ef4444" strokeWidth="3.5" strokeLinejoin="round" />
           {/* Tekst om faren */}
           <L x="862" y="300" fill="#fef08a" size={11} weight={700} anchor="end">
             Utslipp samler seg under lokket
