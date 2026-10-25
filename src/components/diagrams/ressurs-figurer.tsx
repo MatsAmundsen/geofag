@@ -31,7 +31,7 @@ function StegRamme({ small, children }: { small: boolean; children: ReactNode })
 }
 
 /* =====================================================================
- * 1. Petroleumssystemet: snitt gjennom en felle
+ * 1. Petroleumssystemet: snitt gjennom en felle (vandring steg for steg)
  * ===================================================================== */
 
 const PS_W = 960;
@@ -63,6 +63,20 @@ const PS_STATUS = [
   "5. Takbergart og felle: tett skifer eller leirstein over en hvelving holder på petroleumen. Gass øverst, olje under, vann nederst.",
 ];
 
+/** Organiske flekker i kildebergarten (steg 1). */
+const PS_ORGANIC: Pt[] = [
+  [200, 448], [280, 454], [340, 442], [420, 450], [500, 440],
+  [580, 452], [660, 438], [740, 448], [820, 442],
+];
+/** Olje/gass-dråper som dannes i kildebergarten (steg 2). */
+const PS_SOURCE_DROPS: Pt[] = [
+  [240, 448], [320, 456], [400, 442], [500, 452],
+  [580, 440], [680, 454], [780, 446], [860, 450],
+];
+
+type PsFill = "empty" | "filling" | "stratified";
+type PsPlat = "dim" | "on";
+
 export function PetroleumSnittFigur({
   heading = "Petroleumssystemet: fra kildebergart til felle",
   caption,
@@ -78,17 +92,49 @@ export function PetroleumSnittFigur({
   const clock = useStepClock(5, motion.playing && visible, 3200, 1600, initialStep);
   const { step, phase } = clock;
   const on = (k: number) => step === k;
-  const labels: Lab[] = [
-    { text: "Gass", x: 300, y: 150, at: [470, 172], color: "#ffd38a", anchor: "end", badge: [420, 150] },
-    { text: "Olje", x: 400, y: 218, at: [430, 214], color: "#e8a35a", anchor: "middle", badge: [300, 218] },
-    { text: "Vann", x: 160, y: 262, at: [250, 280], color: "#8fc4e0", anchor: "end", badge: [200, 262] },
-    { text: "Takbergart: tett skifer eller leirstein", x: 600, y: 150, at: [610, 192], color: "#d9a0a0", anchor: "start", badge: [640, 172] },
-    { text: "Reservoar: sandstein eller oppsprukket kritt", x: 640, y: 336, at: [700, 262], color: "#e6cf8f", anchor: "start", badge: [800, 360] },
-    { text: "Kildebergart: skifer (f.eks. Draupneformasjonen)", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
-  ];
-  if (on(2)) labels.push({ text: "Oljevinduet: ca. 60–130 °C", x: 930, y: 404, at: [900, 446], color: "#ffb36b", anchor: "end", badge: [920, 420] });
-  if (on(3)) labels.push({ text: "Olje og gass stiger", x: 930, y: 372, at: [760, 360], color: "#ffd27a", anchor: "end", badge: [800, 380] });
-  if (on(5)) labels.push({ text: "Felle: hvelving (antiklinal)", x: 540, y: 66, at: [520, 124], color: C.fg, anchor: "start", badge: [560, 70] });
+
+  const fill: PsFill = on(5) ? "stratified" : on(4) ? "filling" : "empty";
+  const plat: PsPlat = on(5) ? "on" : "dim";
+  const hiSrc = on(1) || on(2);
+  const hiRes = on(4);
+  const hiCap = on(5);
+  const oilWin = on(2);
+
+  const labels: Lab[] = [];
+  if (on(1)) {
+    labels.push(
+      { text: "Kildebergart: skifer (f.eks. Draupneformasjonen)", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
+      { text: "Reservoar (tomt · vann i porene)", x: 640, y: 336, at: [700, 262], color: "#e6cf8f", anchor: "start", badge: [800, 360] },
+      { text: "Takbergart (ikke aktiv ennå)", x: 600, y: 150, at: [610, 192], color: "#d9a0a0", anchor: "start", badge: [640, 172] },
+    );
+  } else if (on(2)) {
+    labels.push(
+      { text: "Kildebergart: kerogen omdannes", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
+      { text: "Oljevinduet: ca. 60–130 °C", x: 930, y: 404, at: [900, 446], color: "#ffb36b", anchor: "end", badge: [920, 420] },
+    );
+  } else if (on(3)) {
+    labels.push(
+      { text: "Olje og gass stiger", x: 930, y: 372, at: [760, 360], color: "#ffd27a", anchor: "end", badge: [800, 380] },
+      { text: "Kildebergart", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
+      { text: "Reservoar (mottar ennå)", x: 640, y: 336, at: [700, 262], color: "#e6cf8f", anchor: "start", badge: [800, 360] },
+    );
+  } else if (on(4)) {
+    labels.push(
+      { text: "Reservoar: sandstein eller oppsprukket kritt", x: 640, y: 336, at: [700, 262], color: "#ffe9a8", anchor: "start", badge: [800, 360] },
+      { text: "Kildebergart", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
+    );
+  } else {
+    labels.push(
+      { text: "Gass", x: 300, y: 150, at: [470, 172], color: "#ffd38a", anchor: "end", badge: [420, 150] },
+      { text: "Olje", x: 400, y: 218, at: [430, 214], color: "#e8a35a", anchor: "middle", badge: [300, 218] },
+      { text: "Vann", x: 160, y: 262, at: [250, 280], color: "#8fc4e0", anchor: "end", badge: [200, 262] },
+      { text: "Takbergart: tett skifer eller leirstein", x: 600, y: 150, at: [610, 192], color: "#d9a0a0", anchor: "start", badge: [640, 172] },
+      { text: "Reservoar: sandstein eller oppsprukket kritt", x: 640, y: 336, at: [700, 262], color: "#e6cf8f", anchor: "start", badge: [800, 360] },
+      { text: "Kildebergart: skifer (f.eks. Draupneformasjonen)", x: 60, y: 506, at: [200, 448], color: "#c9b2e6", anchor: "start", badge: [150, 490] },
+      { text: "Felle: hvelving (antiklinal)", x: 540, y: 66, at: [520, 124], color: C.fg, anchor: "start", badge: [560, 70] },
+    );
+  }
+
   const keys: Key[] = [
     { text: "Gass", color: "#e9b44c", kind: "fill" },
     { text: "Olje", color: "#9a5a22", kind: "fill" },
@@ -96,21 +142,32 @@ export function PetroleumSnittFigur({
     { text: "Takbergart", color: "#5b4a52", kind: "fill" },
     { text: "Kildebergart", color: "#3c3350", kind: "fill" },
   ];
-  // migrasjonsdråper langs to baner fra kildebergarten opp i reservoaret
+
+  // Migrasjonsbaner fra kildebergarten opp i reservoaret
   const paths: Pt[][] = [
     [[260, 432], [300, 380], [340, 330], [372, 292]],
     [[700, 432], [660, 380], [610, 330], [580, 290]],
+    [[470, 430], [470, 360], [470, 300]],
   ];
+  const showMig = on(3) || on(4);
   const drops = on(3)
     ? paths.flatMap((p) =>
-        [0, 0.33, 0.66].map((o) => {
+        [0, 0.33, 0.66].map((o, i) => {
           const t = motion.playing ? (phase + o) % 1 : o + 0.15;
           const k = Math.min(p.length - 2, Math.floor(t * (p.length - 1)));
           const f = t * (p.length - 1) - k;
-          return [p[k][0] + (p[k + 1][0] - p[k][0]) * f, p[k][1] + (p[k + 1][1] - p[k][1]) * f] as Pt;
+          return {
+            x: p[k][0] + (p[k + 1][0] - p[k][0]) * f,
+            y: p[k][1] + (p[k + 1][1] - p[k][1]) * f,
+            gas: i % 2 === 1,
+          };
         }),
       )
     : [];
+
+  const organicPulse = motion.playing && on(1) ? 0.55 + 0.25 * Math.sin(phase * Math.PI * 2) : 0.7;
+  const formPulse = motion.playing && on(2) ? 0.75 + 0.2 * Math.sin(phase * Math.PI * 2) : 0.9;
+
   return (
     <div ref={wrapRef}>
       <IsbreFigur
@@ -135,15 +192,25 @@ export function PetroleumSnittFigur({
         viewBox="0 0 960 540"
       >
         {({ d, m }) => (
-          <g className={motion.motionClass} data-figur="petroleum" data-step={step} data-playing={motion.playing ? "yes" : "no"}>
+          <g className={motion.motionClass} data-figur="petroleum" data-step={step} data-playing={motion.playing ? "yes" : "no"} data-fill={fill}>
             <defs>
               <clipPath id="ps-res">
                 <path d={band(PS_RES[0], PS_RES[1])} />
+              </clipPath>
+              <clipPath id="ps-src">
+                <path d={band(PS_SOURCE[0], PS_SOURCE[1], 40)} />
               </clipPath>
               <pattern id="ps-sand" width="12" height="10" patternUnits="userSpaceOnUse">
                 <circle cx="3" cy="3" r="1" fill="#000" fillOpacity="0.22" />
                 <circle cx="9" cy="7" r="1.1" fill="#000" fillOpacity="0.18" />
               </pattern>
+              <filter id="ps-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3.5" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
             </defs>
             {/* hav */}
             <rect x="0" y="0" width="960" height={PS_SEABED} fill={d.url.water} />
@@ -151,53 +218,116 @@ export function PetroleumSnittFigur({
             <path d={`M0 ${PS_SEABED} H960 V540 H0 Z`} fill="#4b5560" />
             <path d={band(PS_SEABED + 50, PS_CAP[0], 50, 96)} fill="#56606a" data-nocheck="" />
             {/* takbergart */}
-            <path d={band(PS_CAP[0], PS_CAP[1])} fill="#5b4a52" opacity={on(5) ? 1 : 0.85} />
-            {/* reservoar: sandstein, med gass, olje og vann som ikke overlapper */}
+            <path
+              d={band(PS_CAP[0], PS_CAP[1])}
+              fill={hiCap ? "#6d5560" : "#5b4a52"}
+              opacity={hiCap ? 1 : 0.9}
+              stroke={hiCap ? "#a07880" : "none"}
+              strokeWidth={hiCap ? 3.5 : 0}
+            />
+            {/* reservoar: sandstein */}
             <path d={band(PS_RES[0], PS_RES[1])} fill="#c9b27a" />
             <g clipPath="url(#ps-res)">
-              <rect x="0" y="0" width="960" height={PS_GOC} fill="#e9b44c" opacity={0.92} />
-              <rect x="0" y={PS_GOC} width="960" height={PS_OWC - PS_GOC} fill="#9a5a22" opacity={0.95} />
-              <rect x="0" y={PS_OWC} width="960" height={400} fill="#3f7fa3" opacity={0.75} />
+              {fill === "stratified" ? (
+                <>
+                  <rect x="0" y="0" width="960" height={PS_GOC} fill="#e9b44c" opacity={0.92} />
+                  <rect x="0" y={PS_GOC} width="960" height={PS_OWC - PS_GOC} fill="#9a5a22" opacity={0.95} />
+                  <rect x="0" y={PS_OWC} width="960" height={400} fill="#3f7fa3" opacity={0.75} />
+                  <path d={`M0 ${PS_GOC} H960`} stroke="#fff3c4" strokeWidth="1.4" strokeDasharray="4 4" data-nocheck="" />
+                  <path d={`M0 ${PS_OWC} H960`} stroke="#c8e6f5" strokeWidth="1.4" strokeDasharray="4 4" data-nocheck="" />
+                </>
+              ) : fill === "filling" ? (
+                <>
+                  <rect x="0" y="0" width="960" height="540" fill="#3f7fa3" opacity={0.32} />
+                  <ellipse cx={PS_CREST} cy={PS_RES[0] - 28} rx="150" ry="48" fill="#9a5a22" opacity={0.88} data-nocheck="" />
+                  <ellipse cx={PS_CREST} cy={PS_RES[0] - 58} rx="85" ry="24" fill="#e9b44c" opacity={0.8} data-nocheck="" />
+                </>
+              ) : (
+                <rect x="0" y="0" width="960" height="540" fill="#3f7fa3" opacity={0.26} />
+              )}
               <rect x="0" y="0" width="960" height="540" fill="url(#ps-sand)" data-nocheck="" />
             </g>
-            <path d={`M${curve(PS_RES[0]).join(" L")}`} stroke={on(4) ? "#ffe9a8" : "#7d6a45"} strokeWidth={on(4) ? 3 : 1.5} fill="none" data-nocheck="" />
-            <path d={`M${curve(PS_RES[1]).join(" L")}`} stroke={on(4) ? "#ffe9a8" : "#7d6a45"} strokeWidth={on(4) ? 3 : 1.5} fill="none" data-nocheck="" />
+            <path d={`M${curve(PS_RES[0]).join(" L")}`} stroke={hiRes ? "#ffe9a8" : "#7d6a45"} strokeWidth={hiRes ? 3 : 1.5} fill="none" data-nocheck="" />
+            <path d={`M${curve(PS_RES[1]).join(" L")}`} stroke={hiRes ? "#ffe9a8" : "#7d6a45"} strokeWidth={hiRes ? 3 : 1.5} fill="none" data-nocheck="" />
             {/* lag mellom reservoar og kilde */}
             <path d={band(PS_RES[1], PS_SOURCE[0], 96, 40)} fill="#606a63" />
             {/* kildebergart */}
-            <path d={band(PS_SOURCE[0], PS_SOURCE[1], 40)} fill="#3c3350" stroke={on(1) ? "#d9c2ff" : "none"} strokeWidth="3" />
+            <path
+              d={band(PS_SOURCE[0], PS_SOURCE[1], 40)}
+              fill="#3c3350"
+              stroke={hiSrc ? "#d9c2ff" : "none"}
+              strokeWidth={hiSrc ? 3 : 0}
+              filter={hiSrc ? "url(#ps-glow)" : undefined}
+            />
             {/* oljevinduet som bånd på dypet */}
-            {on(2) ? (
-              <rect x="0" y="392" width="960" height="96" fill="#ff8a3d" opacity="0.22" data-nocheck="" />
+            {oilWin ? (
+              <g data-nocheck="">
+                <rect x="0" y="392" width="960" height="96" fill="#ff8a3d" opacity="0.2" />
+                <rect x="0" y="392" width="960" height="2" fill="#ff8a3d" opacity="0.5" />
+                <rect x="0" y="486" width="960" height="2" fill="#ff8a3d" opacity="0.5" />
+                <text x={PS_CREST} y="384" textAnchor="middle" fill="#ff8a3d" fontSize="14" fontWeight="800">
+                  Begravning · varme · trykk
+                </text>
+              </g>
             ) : null}
-            {/* plattform og brønn */}
-            <g data-nocheck="">
+            {/* organiske flekker i kilde (steg 1) */}
+            {on(1) ? (
+              <g clipPath="url(#ps-src)" opacity={organicPulse} data-nocheck="">
+                {PS_ORGANIC.map(([x, y], i) => (
+                  <ellipse key={i} cx={x} cy={y} rx={3 + (i % 3)} ry={2 + (i % 2)} fill="#c9b2e6" filter="url(#ps-glow)" />
+                ))}
+              </g>
+            ) : null}
+            {/* olje/gass dannes i kilde (steg 2) */}
+            {on(2) ? (
+              <g clipPath="url(#ps-src)" opacity={formPulse} data-nocheck="">
+                {PS_SOURCE_DROPS.map(([x, y], i) => (
+                  <g key={i} filter="url(#ps-glow)">
+                    <ellipse cx={x} cy={y} rx="6" ry="8" fill="#9a5a22" opacity="0.92" />
+                    <ellipse cx={x} cy={y - 11} rx="4" ry="5" fill="#e9b44c" opacity="0.7" />
+                  </g>
+                ))}
+              </g>
+            ) : null}
+            {/* plattform og brønn: dim til steg 5 */}
+            <g opacity={plat === "on" ? 1 : 0.32} data-nocheck="">
               <rect x="452" y="22" width="40" height="14" fill="#8a949c" rx="2" />
               <path d="M458 36 L452 92 M486 36 L492 92" stroke="#8a949c" strokeWidth="3" />
-              <path d={`M472 36 L472 ${PS_GOC + 30}`} stroke={C.fg} strokeWidth="2" strokeDasharray="5 4" />
+              {plat === "on" ? <path d={`M472 36 L472 ${PS_GOC + 30}`} stroke={C.fg} strokeWidth="2" strokeDasharray="5 4" /> : null}
             </g>
             {/* migrasjon */}
-            {paths.map((p, k) => (
-              <path
+            {showMig
+              ? paths.map((p, k) => (
+                  <path
+                    key={k}
+                    d={`M${p.map(([x, y]) => `${x} ${y}`).join(" L")}`}
+                    stroke="#ffd27a"
+                    strokeWidth={on(3) ? 3 : 2}
+                    strokeDasharray="6 6"
+                    fill="none"
+                    opacity={on(3) ? 1 : 0.45}
+                    markerEnd={on(3) ? `url(#${m.warm})` : undefined}
+                    data-nocheck=""
+                  />
+                ))
+              : null}
+            {drops.map((drop, k) => (
+              <circle
                 key={k}
-                d={`M${p.map(([x, y]) => `${x} ${y}`).join(" L")}`}
-                stroke="#ffd27a"
-                strokeWidth={on(3) ? 3 : 1.4}
-                strokeDasharray="6 6"
-                fill="none"
-                opacity={on(3) ? 1 : 0.4}
-                markerEnd={on(3) ? `url(#${m.warm})` : undefined}
+                cx={n1(drop.x)}
+                cy={n1(drop.y)}
+                r="5.5"
+                fill={drop.gas ? "#e9b44c" : "#9a5a22"}
+                stroke={P.halo}
+                strokeWidth="1.2"
                 data-nocheck=""
               />
             ))}
-            {drops.map(([x, y], k) => (
-              <circle key={k} cx={n1(x)} cy={n1(y)} r="5" fill="#9a5a22" stroke={P.halo} strokeWidth="1.2" data-nocheck="" />
-            ))}
-            {/* kontaktflatene */}
-            <g clipPath="url(#ps-res)" data-nocheck="">
-              <path d={`M0 ${PS_GOC} H960`} stroke="#fff3c4" strokeWidth="1.4" strokeDasharray="4 4" />
-              <path d={`M0 ${PS_OWC} H960`} stroke="#c8e6f5" strokeWidth="1.4" strokeDasharray="4 4" />
-            </g>
+            {on(4) ? (
+              <text x={PS_CREST} y={PS_RES[0] - 72} textAnchor="middle" fill={C.fg} fontSize="14" fontWeight="800" data-nocheck="">
+                Petroleum fyller porene
+              </text>
+            ) : null}
           </g>
         )}
       </IsbreFigur>
