@@ -284,8 +284,10 @@ export function FoehnAdiabaticDiagram() {
 }
 
 export function TemperatureInversionDiagram() {
+  const a = useLokalAnim("Temperaturinversjon");
   return (
     <Diagram
+      action={a.knapp}
       title="Temperaturinversjon: Normal atmosfærisk temperaturprofil kontra bakkeinversjon"
       heading="Temperaturinversjon: et lokk av varmere luft"
       caption="Vanligvis avtar temperaturen oppover, fordi atmosfæren varmes nedenfra og konveksjon blander lufta (venstre). I en inversjon stiger temperaturen med høyden (høyre). En klar vinternatt mister bakken varme ved utstråling, og kald, tung luft legger seg i daler og fjorder. Lufta nær bakken blandes dårlig med lufta over, og utslipp fra skip, veitrafikk og vedfyring kan samle seg og gi dårlig luftkvalitet (Store norske leksikon, u.å.-m). Temperaturene er tenkte eksempler."
@@ -293,7 +295,7 @@ export function TemperatureInversionDiagram() {
       wide
     >
       {(m) => (
-        <>
+        <g ref={a.ref} className={a.gClass}>
           {/* Skillelinje */}
           <line x1="460" y1="35" x2="460" y2="405" stroke={C.dim} strokeDasharray="4 4" />
 
@@ -333,6 +335,11 @@ export function TemperatureInversionDiagram() {
           <ellipse cx="215" cy="185" rx="42" ry="22" fill="#94a3b8" opacity="0.2" />
           <ellipse cx="230" cy="140" rx="60" ry="26" fill="#94a3b8" opacity="0.1" />
 
+          {/* Røyken stiger fritt, vokser og tynnes ut */}
+          <Flyt path="M 188 312 Q 194 262 208 205 Q 222 160 244 122" dur={7} n={8} r={5} grow={34} ry={4} fill="#94a3b8" opacity={0.45} />
+          {/* Oppdrift: varme bobler stiger */}
+          <Flyt path="M 262 312 Q 258 240 264 172" dur={3.6} n={4} r={2.6} fill={C.warm} opacity={0.8} />
+
           {/* Oppdrifts-piler */}
           <Arrow d="M 270 310 L 270 170" marker={m.warm} color={C.warm} width={2.4} />
           <L x="280" y="240" fill={C.warm} size={11} weight={600}>Termisk oppdrift</L>
@@ -348,7 +355,9 @@ export function TemperatureInversionDiagram() {
           </L>
 
           {/* Kald dalbunn */}
-          <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1" />
+          <rect x="500" y="350" width="370" height="40" fill="#0c1e2e" stroke="#0284c7" strokeWidth="1">
+            <animate attributeName="stroke-width" values="1;2.5;1" dur="5s" repeatCount="indefinite" />
+          </rect>
           <L x="685" y="375" fill="#7dd3fc" size={11} weight={600} anchor="middle">
             Kald dalbunn: bakken mister varme ved utstråling
           </L>
@@ -381,7 +390,18 @@ export function TemperatureInversionDiagram() {
           </L>
 
           {/* Fanget forurensning i bunnen (Smog / Giftlokk) */}
-          <rect x="550" y="260" width="320" height="85" fill="#451a03" opacity="0.4" rx="4" />
+          <rect x="550" y="260" width="320" height="85" fill="#451a03" opacity="0.4" rx="4">
+            <Puls min={0.32} max={0.46} dur={7} />
+          </rect>
+          {/* Varmere luft over lokket glir rolig forbi */}
+          <Strom d="M 556 205 L 864 205" color="#fdba74" width={1.4} dash="10 22" dur={4} opacity={0.4} />
+          <Strom d="M 556 180 L 864 180" color="#fdba74" width={1.2} dash="8 26" dur={5} opacity={0.3} />
+          <Strom d="M 552 240 L 868 240" color="#fdba74" width={1.5} dash="4 2" dur={1.2} opacity={0.5} />
+          {/* Røyken stiger til lokket, stanser og brer seg ut under det */}
+          <Flyt path="M 616 323 Q 612 292 618 268 Q 590 264 562 266" dur={6} n={6} r={3} grow={14} ry={3} fill="#d97706" opacity={0.55} />
+          <Flyt path="M 616 323 Q 620 292 618 268 Q 670 262 720 268" dur={7} n={6} r={3} grow={16} ry={3} fill="#b45309" opacity={0.6} />
+          <Flyt path="M 768 328 Q 764 296 770 270 Q 730 263 690 268" dur={6.5} n={6} r={3} grow={14} ry={3} fill="#b45309" opacity={0.6} />
+          <Flyt path="M 768 328 Q 772 296 770 270 Q 810 264 860 268" dur={6} n={5} r={3} grow={12} ry={3} fill="#d97706" opacity={0.5} />
           {/* Utslippskilder */}
           <rect x="610" y="325" width="12" height="25" fill="#64748b" />
           <rect x="760" y="330" width="16" height="20" fill="#64748b" />
@@ -398,7 +418,7 @@ export function TemperatureInversionDiagram() {
           <L x="862" y="318" fill="#fde68a" size={10} anchor="end">
             Fra skip, veitrafikk og vedfyring
           </L>
-        </>
+        </g>
       )}
     </Diagram>
   );
