@@ -1244,6 +1244,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "### Fire faser i askesøylen",
     ],
   },
+  {
+    // Bergarter: Terra Mater fase 1–2 (må-punkter M1–M8: fagord ved første bruk, bergartssyklus, og/mfl., fulle institusjonsnavn).
+    flag: "g1-bergarter-terra-mater-2026-10-25",
+    slug: "bergarter",
+    stale: [
+      "Stasjonen er lav metamorfose.",
+      "Samme smeltefamilie, to steder: dypet og overflaten.",
+      "(Raade & Fossen, 2025a)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
