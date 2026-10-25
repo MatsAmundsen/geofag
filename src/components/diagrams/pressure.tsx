@@ -1,4 +1,5 @@
-import { Arrow, C, Diagram, L } from "./svg-kit";
+import { useAnimationPlaying, useStepCycle } from "./use-motion";
+import { Arrow, C, Diagram, L, PlayPauseToggle } from "./svg-kit";
 
 /**
  * 1. AtmosphericColumnDiagram
@@ -268,165 +269,407 @@ export function AtmosphericColumnDiagram() {
 /**
  * 2. RelativePressureDiagram
  * Viser at lufttrykk er relativt – samme tallverdi (1015 hPa) kan være både L og H.
+ * Animerer PGF → Coriolis → spiral (NH) og skjematisk luftsøyle-tverrsnitt under hvert kart.
  */
+const REL_STEPS = ["1 Relativt", "2 Trykkgradient", "3 Coriolis", "4 Spiral og søyle"];
+
+const REL_STATUS = [
+  "Samme tall (1015 hPa): lavtrykk på kart A, høytrykk på kart B – alt er relativt til omgivelsene.",
+  "Trykkgradientkraften (stiplet oransje) driver lufta rett inn mot L og rett ut fra H.",
+  "På nordlige halvkule bøyer Coriolis bevegelsen til høyre – banen begynner å krumme.",
+  "Med friksjon blir det spiral: L inn mot klokken (konvergens), H ut med klokken (divergens). Under: luftsøyla.",
+];
+
+function RelStepPicker({
+  labels,
+  step,
+  onStep,
+}: {
+  labels: string[];
+  step: number;
+  onStep: (step: number) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-1.5" role="group" aria-label="Trinn">
+      {labels.map((label, index) => {
+        const n = index + 1;
+        const active = step === n;
+        return (
+          <button
+            key={label}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onStep(n)}
+            className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+              active
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border/80 bg-muted/60 text-foreground hover:bg-muted"
+            }`}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function RelativePressureDiagram() {
+  const motion = useAnimationPlaying();
+  const playing = motion.playing;
+  const [step, setStep] = useStepCycle(4, playing, 3400);
+  // Reduced-motion: pause til start → hopp til sluttbilde (steg 4).
+  const showStep = !playing && motion.reduced ? 4 : step;
+  const showPgf = showStep >= 2;
+  const showCoriolis = showStep >= 3;
+  const showSpiral = showStep >= 4;
+  const showColumn = showStep >= 4;
+
   return (
     <Diagram
       title="Trykk er relativt: Samme verdi kan være lavtrykk eller høytrykk"
       heading="Trykk er relativt: 1015 hPa kan være lavtrykk eller høytrykk"
       caption="Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. På kart A er et senter med 1015 hPa et lavtrykk (L), fordi det er omgitt av høyere trykk på 1025 hPa. Lufta strømmer inn, stiger, og det dannes skyer. På kart B er det samme trykket et høytrykk (H), fordi det ligger mellom lavtrykk på 995 hPa. Lufta strømmer ut, synker, og det blir ofte tørt og klart."
-      viewBox="0 0 940 430"
+      viewBox="0 0 940 700"
       wide
       scroll
+      action={
+        <PlayPauseToggle
+          isPlaying={playing}
+          onToggle={motion.toggle}
+          name="relativt trykk"
+        />
+      }
+      toolbar={
+        <>
+          <RelStepPicker labels={REL_STEPS} step={showStep} onStep={setStep} />
+          <span className="text-xs text-muted-foreground max-w-xl">
+            {playing ? REL_STATUS[showStep - 1] : motion.reduced ? REL_STATUS[3] : "Pause stopper på valgt trinn"}
+          </span>
+        </>
+      }
     >
       {(m) => (
         <>
+          <style>{`
+            .rel-spin-ccw, .rel-spin-cw { transform-box: fill-box; transform-origin: center; }
+            .motion-unlocked .rel-spin-ccw {
+              animation: rel-spin-ccw 14s linear infinite;
+            }
+            .motion-unlocked .rel-spin-cw {
+              animation: rel-spin-cw 16s linear infinite;
+            }
+            .motion-unlocked .rel-rise {
+              animation: rel-flow-up 2.4s ease-in-out infinite;
+            }
+            .motion-unlocked .rel-sink {
+              animation: rel-flow-down 2.4s ease-in-out infinite;
+            }
+            .motion-unlocked .rel-dash-flow {
+              animation: rel-dash 1.6s linear infinite;
+            }
+            @keyframes rel-spin-ccw { to { transform: rotate(-360deg); } }
+            @keyframes rel-spin-cw { to { transform: rotate(360deg); } }
+            @keyframes rel-flow-up {
+              0%, 100% { transform: translateY(6px); opacity: 0.55; }
+              50% { transform: translateY(-4px); opacity: 1; }
+            }
+            @keyframes rel-flow-down {
+              0%, 100% { transform: translateY(-6px); opacity: 0.55; }
+              50% { transform: translateY(4px); opacity: 1; }
+            }
+            @keyframes rel-dash { to { stroke-dashoffset: -28; } }
+          `}</style>
+
           <defs>
             <radialGradient id="rel-low-rad" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#4a151b" stopOpacity="0.7" />
               <stop offset="45%" stopColor="#2c141a" stopOpacity="0.45" />
               <stop offset="100%" stopColor="#111822" stopOpacity="0.1" />
             </radialGradient>
-
             <radialGradient id="rel-high-rad" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#0f343a" stopOpacity="0.7" />
               <stop offset="45%" stopColor="#12272e" stopOpacity="0.45" />
               <stop offset="100%" stopColor="#111822" stopOpacity="0.1" />
             </radialGradient>
+            <linearGradient id="rel-col-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#0a1018" />
+              <stop offset="55%" stopColor="#1a2d3e" />
+              <stop offset="100%" stopColor="#243e54" />
+            </linearGradient>
+            <linearGradient id="rel-cloud" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#e2e8f0" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#64748b" stopOpacity="0.85" />
+            </linearGradient>
           </defs>
 
-          <line
-            x1="470"
-            y1="35"
-            x2="470"
-            y2="400"
-            stroke={C.dim}
-            strokeWidth="1.5"
-            strokeDasharray="5 5"
-          />
-
-          {/* KART A: 1015 hPa SOM LAVTRYKK */}
-          <g transform="translate(0, 0)">
-            <rect x="35" y="30" width="415" height="375" rx="8" fill="#0d151c" stroke="#1d2d3d" strokeWidth="1.5" />
-            <circle cx="242" cy="195" r="145" fill="url(#rel-low-rad)" />
-
-            <rect x="36" y="31" width="413" height="62" rx="7" fill="#0d151c" />
-
-            <path
-              d="M 105 195 C 105 115, 165 75, 242 75 C 325 75, 380 120, 380 195 C 380 270, 320 315, 242 315 C 160 315, 105 270, 105 195 Z"
-              fill="none"
-              stroke="#475569"
-              strokeWidth="1.8"
+          <g className={motion.motionClass} data-playing={playing ? "yes" : "no"} data-step={showStep}>
+            <line
+              x1="470"
+              y1="28"
+              x2="470"
+              y2="400"
+              stroke={C.dim}
+              strokeWidth="1.5"
+              strokeDasharray="5 5"
             />
-            <rect x="46" y="104" width="78" height="22" rx="4" fill="#0d151c" />
-            <L x="85" y="120" fill={C.muted} size={12} anchor="middle" weight={700}>
-              1025 hPa
+
+            {/* ─── KART A: 1015 hPa SOM LAVTRYKK ─── */}
+            <g transform="translate(0, 0)">
+              <rect x="35" y="24" width="415" height="300" rx="8" fill="#0d151c" stroke="#1d2d3d" strokeWidth="1.5" />
+              <circle cx="242" cy="175" r="118" fill="url(#rel-low-rad)" />
+
+              <path
+                d="M 120 175 C 120 110, 170 78, 242 78 C 320 78, 365 115, 365 175 C 365 235, 310 272, 242 272 C 170 272, 120 235, 120 175 Z"
+                fill="none"
+                stroke="#475569"
+                strokeWidth="1.8"
+              />
+              <rect x="46" y="92" width="78" height="22" rx="4" fill="#0d151c" />
+              <L x="85" y="108" fill={C.muted} size={12} anchor="middle" weight={700}>
+                1025 hPa
+              </L>
+
+              <path
+                d="M 158 175 C 158 132, 192 112, 242 112 C 295 112, 328 138, 328 175 C 328 212, 290 238, 242 238 C 190 238, 158 212, 158 175 Z"
+                fill="none"
+                stroke="#64748b"
+                strokeWidth="2"
+              />
+              <circle cx="242" cy="175" r="36" fill="#3b151b" stroke={C.low} strokeWidth="2.5" />
+              <L x="242" y="180" fill={C.low} size={24} weight={900} anchor="middle">
+                L
+              </L>
+              <L x="242" y="202" fill="#fca5a5" size={12} weight={800} anchor="middle">
+                1015 hPa
+              </L>
+
+              <rect x="36" y="25" width="413" height="48" fill="#0d151c" />
+              <L x="242" y="42" size={14} weight={800} anchor="middle" fill={C.low}>
+                KART A: Lavtrykkssenter (1015 hPa)
+              </L>
+              <L x="242" y="62" size={12} fill={C.fg} anchor="middle">
+                Omgitt av høyere trykk (1025 hPa)
+              </L>
+
+              {/* PGF: inn mot L */}
+              {showPgf ? (
+                <g opacity={showStep === 2 ? 1 : 0.85}>
+                  <Arrow d="M 130 175 L 190 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  <Arrow d="M 355 175 L 295 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  <Arrow d="M 242 92 L 242 138" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  <Arrow d="M 242 258 L 242 212" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  {showStep === 2 ? (
+                    <L x="242" y="290" fill={C.warm} size={12} weight={800} anchor="middle">
+                      Trykkgradientkraften (PGF) → inn
+                    </L>
+                  ) : null}
+                </g>
+              ) : null}
+
+              {/* Coriolis hint: avbøyning til høyre */}
+              {showCoriolis && !showSpiral ? (
+                <g>
+                  <Arrow d="M 150 145 Q 175 195 210 200" marker={m.teal} color={C.teal} width={2.4} />
+                  <Arrow d="M 335 145 Q 300 120 260 145" marker={m.teal} color={C.teal} width={2.4} />
+                  <L x="242" y="290" fill={C.teal} size={12} weight={800} anchor="middle">
+                    Coriolis bøyer til høyre (NH)
+                  </L>
+                </g>
+              ) : null}
+
+              {/* Ferdig spiral mot klokken */}
+              {showSpiral ? (
+                <g>
+                  <g className={playing ? "rel-spin-ccw" : undefined} transform="translate(242, 175)">
+                    <circle cx="0" cy="0" r="95" fill="none" stroke="#ef4444" strokeWidth="1" strokeDasharray="5 4" opacity="0.35" />
+                    <circle cx="0" cy="0" r="68" fill="none" stroke="#ef4444" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.5" />
+                  </g>
+                  <Arrow d="M 140 145 Q 155 210 200 208" marker={m.fg} color={C.white} width={2.6} />
+                  <Arrow d="M 275 245 Q 325 210 285 165" marker={m.fg} color={C.white} width={2.6} />
+                  <Arrow d="M 335 145 Q 285 118 255 148" marker={m.fg} color={C.white} width={2.6} />
+                  <Arrow d="M 175 118 Q 195 155 210 162" marker={m.fg} color={C.white} width={2.6} />
+                  <L x="242" y="290" fill={C.fg} size={12} weight={700} anchor="middle">
+                    Spiral mot klokken · konvergens
+                  </L>
+                </g>
+              ) : null}
+            </g>
+
+            {/* ─── KART B: 1015 hPa SOM HØYTRYKK ─── */}
+            <g transform="translate(470, 0)">
+              <rect x="20" y="24" width="415" height="300" rx="8" fill="#0d151c" stroke="#1d2d3d" strokeWidth="1.5" />
+              <circle cx="227" cy="175" r="118" fill="url(#rel-high-rad)" />
+
+              <path
+                d="M 105 175 C 105 110, 155 78, 227 78 C 305 78, 350 115, 350 175 C 350 235, 295 272, 227 272 C 155 272, 105 235, 105 175 Z"
+                fill="none"
+                stroke="#475569"
+                strokeWidth="1.8"
+              />
+              <rect x="78" y="150" width="72" height="22" rx="4" fill="#0d151c" />
+              <L x="114" y="166" fill={C.muted} size={12} anchor="middle" weight={700}>
+                995 hPa
+              </L>
+
+              <path
+                d="M 143 175 C 143 132, 177 112, 227 112 C 280 112, 313 138, 313 175 C 313 212, 275 238, 227 238 C 175 238, 143 212, 143 175 Z"
+                fill="none"
+                stroke="#64748b"
+                strokeWidth="2"
+              />
+              <circle cx="227" cy="175" r="36" fill="#0f2b32" stroke={C.teal} strokeWidth="2.5" />
+              <L x="227" y="180" fill={C.teal} size={24} weight={900} anchor="middle">
+                H
+              </L>
+              <L x="227" y="202" fill="#67e8f9" size={12} weight={800} anchor="middle">
+                1015 hPa
+              </L>
+
+              <rect x="21" y="25" width="413" height="48" fill="#0d151c" />
+              <L x="227" y="42" size={14} weight={800} anchor="middle" fill={C.teal}>
+                KART B: Høytrykkssenter (1015 hPa)
+              </L>
+              <L x="227" y="62" size={12} fill={C.fg} anchor="middle">
+                Omgitt av lavere trykk (995 hPa)
+              </L>
+
+              {showPgf ? (
+                <g opacity={showStep === 2 ? 1 : 0.85}>
+                  <Arrow d="M 180 175 L 125 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  <Arrow d="M 275 175 L 330 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  <Arrow d="M 227 140 L 227 95" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  <Arrow d="M 227 210 L 227 255" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
+                  {showStep === 2 ? (
+                    <L x="227" y="290" fill={C.warm} size={12} weight={800} anchor="middle">
+                      Trykkgradientkraften (PGF) → ut
+                    </L>
+                  ) : null}
+                </g>
+              ) : null}
+
+              {showCoriolis && !showSpiral ? (
+                <g>
+                  <Arrow d="M 227 140 Q 275 138 300 165" marker={m.teal} color={C.teal} width={2.4} />
+                  <Arrow d="M 260 200 Q 255 250 205 255" marker={m.teal} color={C.teal} width={2.4} />
+                  <L x="227" y="290" fill={C.teal} size={12} weight={800} anchor="middle">
+                    Coriolis bøyer til høyre (NH)
+                  </L>
+                </g>
+              ) : null}
+
+              {showSpiral ? (
+                <g>
+                  <g className={playing ? "rel-spin-cw" : undefined} transform="translate(227, 175)">
+                    <circle cx="0" cy="0" r="95" fill="none" stroke="#22c55e" strokeWidth="1" strokeDasharray="5 4" opacity="0.35" />
+                    <circle cx="0" cy="0" r="68" fill="none" stroke="#22c55e" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.5" />
+                  </g>
+                  <Arrow d="M 227 140 Q 275 138 305 168" marker={m.fg} color={C.white} width={2.6} />
+                  <Arrow d="M 260 200 Q 255 250 205 255" marker={m.fg} color={C.white} width={2.6} />
+                  <Arrow d="M 185 215 Q 145 205 138 160" marker={m.fg} color={C.white} width={2.6} />
+                  <Arrow d="M 175 148 Q 175 115 225 112" marker={m.fg} color={C.white} width={2.6} />
+                  <L x="227" y="290" fill={C.fg} size={12} weight={700} anchor="middle">
+                    Spiral med klokken · divergens
+                  </L>
+                </g>
+              ) : null}
+            </g>
+
+            {/* ─── LUFTSØYLE-TVERRSNITT ─── */}
+            <L x="470" y="345" size={14} weight={800} anchor="middle" fill={C.fg}>
+              Luftsøyle i tverrsnitt (skjematisk, nordlige halvkule)
             </L>
 
-            <path
-              d="M 150 195 C 150 140, 190 115, 242 115 C 300 115, 335 145, 335 195 C 335 245, 295 275, 242 275 C 185 275, 150 245, 150 195 Z"
-              fill="none"
-              stroke="#64748b"
-              strokeWidth="2"
-            />
-            <circle cx="242" cy="195" r="42" fill="#3b151b" stroke={C.low} strokeWidth="2.5" />
-            <L x="242" y="200" fill={C.low} size={26} weight={900} anchor="middle">
-              L
-            </L>
-            <L x="242" y="228" fill="#fca5a5" size={12} weight={800} anchor="middle">
-              1015 hPa
-            </L>
+            {showColumn ? (
+              <>
+                {/* L-søyle */}
+                <g transform="translate(35, 358)">
+                  <rect x="0" y="0" width="415" height="310" rx="8" fill="url(#rel-col-sky)" stroke="#1d2d3d" strokeWidth="1.5" />
+                  <L x="207" y="24" fill={C.low} size={13} weight={800} anchor="middle">
+                    Kart A · Lavtrykk: konvergens → stigning → skyer
+                  </L>
+                  <rect x="0" y="270" width="415" height="40" fill="#15241b" />
+                  <line x1="0" y1="270" x2="415" y2="270" stroke="#2a4c36" strokeWidth="2" />
+                  <L x="207" y="295" fill={C.low} size={12} weight={800} anchor="middle">
+                    L ved bakken
+                  </L>
+                  <line x1="8" y1="48" x2="407" y2="48" stroke={C.cold} strokeWidth="1.6" strokeDasharray="5 3" />
+                  <L x="16" y="42" fill={C.cold} size={11} weight={700}>
+                    Høyden
+                  </L>
+                  <path
+                    d="M 40 255 L 160 255"
+                    fill="none"
+                    stroke={C.low}
+                    strokeWidth={2.8}
+                    strokeLinecap="round"
+                    strokeDasharray="6 4"
+                    markerEnd={`url(#${m.low})`}
+                    className={playing ? "rel-dash-flow" : undefined}
+                  />
+                  <Arrow d="M 375 255 L 255 255" marker={m.low} color={C.low} width={2.8} />
+                  <L x="207" y="248" fill={C.low} size={11} weight={700} anchor="middle">
+                    Konvergens
+                  </L>
+                  <g className={playing ? "rel-rise" : undefined}>
+                    <Arrow d="M 207 240 L 207 95" marker={m.warm} color={C.warm} width={3.2} />
+                  </g>
+                  <L x="230" y="165" fill={C.warm} size={11} weight={800}>
+                    Stigning
+                  </L>
+                  <ellipse cx="207" cy="118" rx="70" ry="28" fill="url(#rel-cloud)" opacity="0.95" />
+                  <L x="207" y="122" fill="#0f172a" size={11} weight={800} anchor="middle">
+                    Skyer
+                  </L>
+                  <Arrow d="M 150 62 L 40 62" marker={m.teal} color={C.teal} width={2.6} />
+                  <Arrow d="M 265 62 L 375 62" marker={m.teal} color={C.teal} width={2.6} />
+                  <L x="207" y="72" fill={C.teal} size={11} weight={700} anchor="middle">
+                    Divergens i høyden
+                  </L>
+                </g>
 
-            <Arrow d="M 130 195 L 185 195" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-            <Arrow d="M 355 195 L 300 195" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-            <Arrow d="M 242 95 L 242 145" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-            <Arrow d="M 242 295 L 242 245" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-
-            <Arrow d="M 140 160 Q 155 230 200 225" marker={m.fg} color={C.white} width={2.6} />
-            <Arrow d="M 270 260 Q 320 220 280 175" marker={m.fg} color={C.white} width={2.6} />
-            <Arrow d="M 330 160 Q 280 130 250 160" marker={m.fg} color={C.white} width={2.6} />
-            <Arrow d="M 180 130 Q 200 170 215 175" marker={m.fg} color={C.white} width={2.6} />
-
-            <rect x="36" y="34" width="413" height="58" fill="#0d151c" />
-            <L x="242" y="54" size={15} weight={800} anchor="middle" fill={C.low}>
-              KART A: Lavtrykkssenter (1015 hPa)
-            </L>
-            <L x="242" y="76" size={13} fill={C.fg} anchor="middle">
-              Omgitt av høyere trykk (1025 hPa)
-            </L>
-
-            <rect x="48" y="318" width="390" height="78" rx="6" fill="#171216" stroke="#4a1820" strokeWidth="1.3" />
-            <L x="242" y="338" fill={C.low} size={12} weight={800} anchor="middle">
-              Netto bevegelse: Konvergens mot sentrum
-            </L>
-            <L x="242" y="360" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver lufta innover.
-            </L>
-            <L x="242" y="382" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler mot klokken inn.
-            </L>
-          </g>
-
-          {/* KART B: 1015 hPa SOM HØYTRYKK */}
-          <g transform="translate(470, 0)">
-            <rect x="20" y="30" width="415" height="375" rx="8" fill="#0d151c" stroke="#1d2d3d" strokeWidth="1.5" />
-            <circle cx="227" cy="195" r="145" fill="url(#rel-high-rad)" />
-
-            <rect x="21" y="31" width="413" height="62" rx="7" fill="#0d151c" />
-
-            <path
-              d="M 90 195 C 90 115, 150 75, 227 75 C 310 75, 365 120, 365 195 C 365 270, 305 315, 227 315 C 145 315, 90 270, 90 195 Z"
-              fill="none"
-              stroke="#475569"
-              strokeWidth="1.8"
-            />
-            <rect x="78" y="168" width="72" height="22" rx="4" fill="#0d151c" />
-            <L x="114" y="184" fill={C.muted} size={12} anchor="middle" weight={700}>
-              995 hPa
-            </L>
-
-            <path
-              d="M 135 195 C 135 140, 175 115, 227 115 C 285 115, 320 145, 320 195 C 320 245, 280 275, 227 275 C 170 275, 135 245, 135 195 Z"
-              fill="none"
-              stroke="#64748b"
-              strokeWidth="2"
-            />
-            <circle cx="227" cy="195" r="42" fill="#0f2b32" stroke={C.teal} strokeWidth="2.5" />
-            <L x="227" y="200" fill={C.teal} size={26} weight={900} anchor="middle">
-              H
-            </L>
-            <L x="227" y="228" fill="#67e8f9" size={12} weight={800} anchor="middle">
-              1015 hPa
-            </L>
-
-            <Arrow d="M 180 195 L 125 195" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-            <Arrow d="M 275 195 L 330 195" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-            <Arrow d="M 227 150 L 227 100" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-            <Arrow d="M 227 240 L 227 290" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-
-            <Arrow d="M 227 150 Q 280 145 310 180" marker={m.fg} color={C.white} width={2.6} />
-            <Arrow d="M 265 215 Q 260 270 200 280" marker={m.fg} color={C.white} width={2.6} />
-            <Arrow d="M 190 230 Q 145 220 135 170" marker={m.fg} color={C.white} width={2.6} />
-            <Arrow d="M 185 160 Q 185 125 240 120" marker={m.fg} color={C.white} width={2.6} />
-
-            <rect x="21" y="34" width="413" height="58" fill="#0d151c" />
-            <L x="227" y="54" size={15} weight={800} anchor="middle" fill={C.teal}>
-              KART B: Høytrykkssenter (1015 hPa)
-            </L>
-            <L x="227" y="76" size={13} fill={C.fg} anchor="middle">
-              Omgitt av lavere trykk (995 hPa)
-            </L>
-
-            <rect x="32" y="318" width="390" height="78" rx="6" fill="#101c22" stroke="#1c444f" strokeWidth="1.3" />
-            <L x="227" y="338" fill={C.teal} size={12} weight={800} anchor="middle">
-              Netto bevegelse: Divergens ut fra sentrum
-            </L>
-            <L x="227" y="360" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.warm}>Stiplet oransje:</tspan> Trykkgradientkraften driver lufta utover.
-            </L>
-            <L x="227" y="382" fill={C.fg} size={12} anchor="middle">
-              <tspan fill={C.white} fontWeight="bold">Hvit bue:</tspan> Vinden bøyes av og spiraler med klokken ut.
-            </L>
+                {/* H-søyle */}
+                <g transform="translate(490, 358)">
+                  <rect x="0" y="0" width="415" height="310" rx="8" fill="url(#rel-col-sky)" stroke="#1d2d3d" strokeWidth="1.5" />
+                  <L x="207" y="24" fill={C.teal} size={13} weight={800} anchor="middle">
+                    Kart B · Høytrykk: subsidens → klarvær
+                  </L>
+                  <rect x="0" y="270" width="415" height="40" fill="#15241b" />
+                  <line x1="0" y1="270" x2="415" y2="270" stroke="#2a4c36" strokeWidth="2" />
+                  <L x="207" y="295" fill={C.teal} size={12} weight={800} anchor="middle">
+                    H ved bakken
+                  </L>
+                  <line x1="8" y1="48" x2="407" y2="48" stroke={C.cold} strokeWidth="1.6" strokeDasharray="5 3" />
+                  <L x="16" y="42" fill={C.cold} size={11} weight={700}>
+                    Høyden
+                  </L>
+                  <Arrow d="M 40 62 L 150 62" marker={m.teal} color={C.teal} width={2.6} />
+                  <Arrow d="M 375 62 L 265 62" marker={m.teal} color={C.teal} width={2.6} />
+                  <L x="207" y="72" fill={C.teal} size={11} weight={700} anchor="middle">
+                    Konvergens i høyden
+                  </L>
+                  <g className={playing ? "rel-sink" : undefined}>
+                    <Arrow d="M 207 90 L 207 235" marker={m.warm} color={C.warm} width={3.2} />
+                  </g>
+                  <L x="230" y="160" fill={C.warm} size={11} weight={800}>
+                    Nedsynking
+                  </L>
+                  <circle cx="207" cy="130" r="22" fill="#fbbf24" opacity="0.85" />
+                  <L x="207" y="134" fill="#78350f" size={11} weight={800} anchor="middle">
+                    Klart
+                  </L>
+                  <Arrow d="M 160 255 L 40 255" marker={m.teal} color={C.teal} width={2.8} />
+                  <Arrow d="M 255 255 L 375 255" marker={m.teal} color={C.teal} width={2.8} />
+                  <L x="207" y="248" fill={C.teal} size={11} weight={700} anchor="middle">
+                    Divergens
+                  </L>
+                </g>
+              </>
+            ) : (
+              <L x="470" y="520" size={13} fill={C.muted} anchor="middle">
+                Spill av, eller gå til steg 4, for å se luftsøyla under hvert kart.
+              </L>
+            )}
           </g>
         </>
       )}
