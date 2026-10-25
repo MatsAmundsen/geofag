@@ -1225,6 +1225,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "dagens utslipp går ca. ti ganger så fort.\n\n```widget\nSjekkPaleo6",
     ],
   },
+  {
+    // Jordskjelv som naturfare: Terra Mater fase 1–2 (må-punkter M1–M6: årsakskjede for tsunami og for forsterkning i bløte masser, etterskjelv/forskjelv/svingefrekvens/flodbølge/Eurokode 8 ved første bruk, «prosent», setninger over 30 ord delt, fulle institusjonsnavn).
+    flag: "g1-jordskjelv-naturfare-terra-mater-2026-10-25",
+    slug: "jordskjelv-naturfare",
+    stale: [
+      "Det skjer ved mange store skjelv der en plate synker under en annen, og havbunnen løftes brått.",
+      "| 100 år | 1,0 % | 39,3 % | 63,2 % |",
+      "DSB (Direktoratet for samfunnssikkerhet og beredskap)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
