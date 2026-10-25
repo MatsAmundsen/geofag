@@ -54,7 +54,7 @@ Magmatiske malmer dannes på dypet i en bergartssmelte, når smelten avkjøles o
 
 Hydrotermale malmer er avsatt fra varme, metallrike løsninger. Løsningene kan ha to ulike opphav.
 
-Det første er magma. Når en smelte størkner, blir gassene i den anriket i restsmelten. Til slutt «koker» gassene ut sammen med metaller og trenger ut i sprekker i bergartene rundt. Der avsettes de som malmårer og malmganger. Mange små forekomster i Oslofeltet ble dannet slik i perm (for ca. 300–250 millioner år siden), da Oslo-riften var aktiv. Sølvet på Kongsberg har dypbergartene i Oslofeltet som kilde (Rui, 2024). Det meste av verdens kobber kommer fra store *porfyrforekomster*. Det er store, lavverdige kobberforekomster knyttet til granittiske intrusjoner ved øybuer (NGU, u.å.-e).
+Det første er magma. Når en smelte størkner, blir gassene i den anriket i restsmelten. Til slutt «koker» gassene ut sammen med metaller og trenger ut i sprekker i bergartene rundt. Der avsettes de som malmårer og malmganger. Mange små forekomster i Oslofeltet ble dannet slik i perm (for ca. 299–252 millioner år siden), da Oslo-riften var aktiv. Sølvet på Kongsberg har dypbergartene i Oslofeltet som kilde (Rui, 2024). Det meste av verdens kobber kommer fra store *porfyrforekomster*. Det er store, lavverdige kobberforekomster knyttet til granittiske intrusjoner ved øybuer (NGU, u.å.-e).
 
 Det andre er varme løsninger som sirkulerer gjennom havbunnen ved undersjøiske vulkaner, for eksempel ved spredningsrygger og øybuer. Der løsningene når opp til havbunnen, avsettes de som svovelrike *kismalmer* med kobber og sink. Kismalmene i Løkken, Folldal, Røros, Grongfeltet og Sulitjelma ble dannet slik (Rui, 2024). De ligger i bergarter fra havbunnen og øybuene i Iapetushavet, som senere ble skjøvet inn i den kaledonske fjellkjeden. Du kan lese mer om Iapetushavet i kapitlet [Norges geologiske historie](/geofag-1/norges-geologi).
 
@@ -157,7 +157,7 @@ I Fensfeltet i Telemark ligger Europas største kjente forekomst av sjeldne jord
 
 ### I verden
 
-Mange kritiske råvarer utvinnes i noen få land. Tallene under er fra Det amerikanske geologiske instituttet (USGS) og gjelder 2025 (USGS, 2026a, 2026b, 2026c):
+Mange kritiske råvarer utvinnes i noen få land. Tallene under er fra USAs geologiske undersøkelse (USGS) og gjelder 2025 (USGS, 2026a, 2026b, 2026c):
 
 | Råvare | Største produsent | Andel av verdens gruveproduksjon i 2025 |
 | --- | --- | --- |
