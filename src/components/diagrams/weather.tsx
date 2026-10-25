@@ -201,17 +201,16 @@ export function FoehnAdiabaticDiagram() {
               [370, 214, 20],
               [408, 196, 16],
             ].map(([cx, cy, r], i) => (
-              <ellipse key={cx} cx={cx} cy={cy} rx={r} ry={r * 0.6} fill="#bae6fd" opacity={0.18}>
-                <Puls min={0.06} max={0.24} dur={4 + i * 0.7} begin={i * 1.1} />
-                <animate attributeName="rx" values={`${r};${r * 1.25};${r}`} dur={`${5 + i * 0.6}s`} repeatCount="indefinite" />
+              <ellipse key={cx} cx={cx} cy={cy} rx={r} ry={r * 0.6} fill="#bae6fd" opacity={0.12}>
+                                <animate attributeName="rx" values={`${r};${r * 1.25};${r}`} dur={`${5 + i * 0.6}s`} repeatCount="indefinite" />
               </ellipse>
             ))}
           </g>
-          {/* Regn faller på losiden */}
-          {[262, 284, 306, 328, 350, 372, 394].map((x, i) => {
+          {/* Regn faller på losiden: dempet, skal ikke trekke blikket */}
+          {[270, 318, 366].map((x, i) => {
             const bakke = 410 - 0.58 * (x - 50);
             return (
-              <Flyt key={x} path={`M ${x} ${bakke - 38 - (i % 3) * 6} L ${x - 4} ${bakke - 2}`} dur={0.9 + (i % 3) * 0.15} n={2} r={1.2} ry={3.2} fill={C.rain} opacity={0.95} />
+              <Flyt key={x} path={`M ${x} ${bakke - 22} L ${x - 3} ${bakke - 4}`} dur={1.8 + i * 0.2} n={1} r={0.9} ry={2.2} fill={C.rain} opacity={0.35} />
             );
           })}
           {/* Luftpakker: opp på losiden, over toppen og ned på lesiden. Farge: umetta (teal) → sky (blå) → varm. */}
@@ -225,7 +224,7 @@ export function FoehnAdiabaticDiagram() {
             fills={`${C.teal};${C.teal};${C.rain};#cbd5e1;${C.warm};${C.warm}`}
             fillTimes="0;0.19;0.3;0.5;0.72;1"
           />
-          <Strom d="M 470 190 L 730 350" color={C.warm} width={2} dash="4 16" dur={1.4} opacity={0.6} />
+          <Strom d="M 470 190 L 730 350" color={C.warm} width={3} dash="6 14" dur={1.4} opacity={0.85} />
           {/* Varm, tørr luft over lesiden: flimrende varmedis */}
           {[0, 1, 2].map((i) => (
             <Strom
@@ -261,7 +260,7 @@ export function FoehnAdiabaticDiagram() {
 
           <Arrow d="M 470 190 L 730 350" marker={m.warm} color={C.warm} width={3.6} />
           <L x="630" y="240" fill={C.warm} size={13} weight={800}>+1,0 °C / 100 m</L>
-          <L x="630" y="258" fill={C.muted} size={11}>Hovedgrunnen til fønvarmen</L>
+          <L x="630" y="258" fill={C.sand} size={11} weight={700}>Hovedgrunnen til fønvarmen</L>
 
           <rect x="710" y="340" width="150" height="50" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2">
             <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-2.0s" repeatCount="indefinite" />
