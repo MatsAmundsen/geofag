@@ -104,6 +104,8 @@ export function OppvellingFigur({ heading, caption }: { heading?: string; captio
   labels[labels.length - 1].narrowHide = true;
   lab("Land", 880, 300, undefined, F.tekst);
   labels[labels.length - 1].narrowHide = true;
+  // termoklinen: den stiplede grensen mellom overflatevannet og det kalde dypvannet
+  lab("Termoklinen", 24, g[1][1] - 12, smal ? [430, g[7][1]] : undefined, "#8ec5e8", "start");
   if (s.vind > 0.3) lab("Nordavind langs kysten, blåser mot deg", VIND_X - 40, VIND_Y + 6, [VIND_X - (VIND_R + 40), VIND_Y - 6], F.tekst, "end", clamp((s.vind - 0.3) / 0.4));
   if (s.ekman > 0.3) lab("Ekmantransport 90° til høyre for vinden: ut fra kysten", 24, HAV_Y - 18, smal ? [500, HAV_Y + 22] : [300, HAV_Y + 20], F.sjobris, "start", clamp((s.ekman - 0.3) / 0.4));
   if (s.opp > 0.3) {
