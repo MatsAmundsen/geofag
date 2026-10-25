@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useAnimationPlaying } from "@/components/diagrams/use-motion";
 import {
   AlertTriangle,
   Building,
@@ -16,6 +17,34 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel } from "./model-chrome";
+
+
+/** Glir jevnt mot målverdi. Ved reduced-motion: hopp direkte. */
+function useSmoothNumber(target: number, reduced: boolean, ms = 720) {
+  const [value, setValue] = useState(target);
+  const valueRef = useRef(target);
+  useEffect(() => {
+    if (reduced) {
+      valueRef.current = target;
+      setValue(target);
+      return;
+    }
+    let raf = 0;
+    const start = valueRef.current;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / ms);
+      const eased = 1 - (1 - t) * (1 - t);
+      const next = start + (target - start) * eased;
+      valueRef.current = next;
+      setValue(next);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, reduced, ms]);
+  return value;
+}
 
 export function StormwaterAdaptationModel() {
   type Tab = "stormwater_calculator" | "storm_surge_simulator" | "adaptation_matrix";
@@ -188,6 +217,29 @@ export function StormwaterAdaptationModel() {
   // F3: 1000-year flood/surge (hospitals, emergency services)
   const quayHeightM = 2.4; // Typical older dock height above normal high tide
   const freeboardMarginM = Number((quayHeightM - totalWaterLevelAboveToday).toFixed(2));
+
+  const motion = useAnimationPlaying();
+  const playing = motion.playing;
+  const reduced = motion.reduced;
+
+  // Animerte fyllnivåer (glir mot beregnet mål)
+  const pipeFillTarget = Math.min(1, pipeInflowLs / PIPE_CAPACITY_LS);
+  const basinFillTarget =
+    retentionBasinM3 > 0 ? Math.min(1, bufferAbsorbedM3 / retentionBasinM3) : 0;
+  const cellarFillTarget =
+    dangerousFloodingLs > 0 ? Math.min(1, 0.25 + dangerousFloodingLs / 80) : 0;
+  const floodFlowTarget = hasSafeFloodway && spillRateLs > 0 ? Math.min(1, spillRateLs / 80) : 0;
+  const runoffTarget = Math.min(1, weightedC);
+  const rainSpeedSec = Math.max(0.35, 1.8 - rainfallIntensity / 90);
+
+  const animPipeFill = useSmoothNumber(pipeFillTarget, reduced);
+  const animBasinFill = useSmoothNumber(basinFillTarget, reduced);
+  const animCellarFill = useSmoothNumber(cellarFillTarget, reduced);
+  const animFloodFlow = useSmoothNumber(floodFlowTarget, reduced);
+  const animRunoff = useSmoothNumber(runoffTarget, reduced);
+  const animWaterLevelM = useSmoothNumber(totalWaterLevelAboveToday, reduced);
+  const animRainIntensity = useSmoothNumber(rainfallIntensity, reduced);
+
 
   return (
     <ModelFrame
@@ -576,66 +628,142 @@ export function StormwaterAdaptationModel() {
                   </div>
                 </div>
 
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-xs font-semibold text-foreground">Byprofil: vannets vei</span>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant={playing ? "default" : "secondary"}
+                    className="h-7 text-xs"
+                    onClick={motion.toggle}
+                  >
+                    {playing ? "⏸ Pause animasjon" : "▶ Start animasjon"}
+                  </Button>
+                </div>
+
                 {/* SVG Visual Cross-section of Urban Water Flow */}
                 <div className="relative overflow-hidden rounded-xl border border-border/80 bg-[#091522] p-3">
-                  <svg viewBox="0 0 620 280" className="w-full h-auto select-none" aria-label="Byprofil med vannstrømmer">
+                  <svg
+                    viewBox="0 0 620 280"
+                    className={`w-full h-auto select-none ${motion.motionClass}`}
+                    aria-label="Byprofil med vannstrømmer"
+                    data-playing={playing ? "yes" : "no"}
+                  >
+                    <style>{`
+                      .sa-rain {
+                        stroke-dasharray: 4 6;
+                        animation: sa-rain-fall var(--sa-rain-dur, 1s) linear infinite;
+                        animation-play-state: ${playing ? "running" : "paused"};
+                      }
+                      .sa-flow {
+                        stroke-dasharray: 10 8;
+                        animation: sa-flow-dash 1.1s linear infinite;
+                        animation-play-state: ${playing ? "running" : "paused"};
+                      }
+                      .sa-ripple {
+                        transform-box: fill-box;
+                        transform-origin: center;
+                        animation: sa-ripple 1.6s ease-in-out infinite;
+                        animation-play-state: ${playing ? "running" : "paused"};
+                      }
+                      @keyframes sa-rain-fall { to { stroke-dashoffset: -28; } }
+                      @keyframes sa-flow-dash { to { stroke-dashoffset: -36; } }
+                      @keyframes sa-ripple {
+                        0%, 100% { transform: translateY(0); opacity: 0.85; }
+                        50% { transform: translateY(-2px); opacity: 1; }
+                      }
+                    `}</style>
+
                     {/* Skyer og regn */}
                     <g transform="translate(40, 15)">
                       <ellipse cx="60" cy="20" rx="45" ry="16" fill="#334155" />
                       <ellipse cx="90" cy="18" rx="35" ry="14" fill="#475569" />
-                      {/* Rain streaks */}
-                      <line x1="45" y1="40" x2="35" y2="70" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 3" />
-                      <line x1="65" y1="40" x2="55" y2="70" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 3" />
-                      <line x1="85" y1="40" x2="75" y2="70" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 3" />
+                      {Array.from({ length: Math.max(3, Math.round(3 + (animRainIntensity / 110) * 9)) }).map((_, i) => {
+                        const count = Math.max(3, Math.round(3 + (animRainIntensity / 110) * 9));
+                        const x = 38 + i * (70 / count);
+                        return (
+                          <line
+                            key={i}
+                            className="sa-rain"
+                            x1={x}
+                            y1="38"
+                            x2={x - 10}
+                            y2="72"
+                            stroke="#38bdf8"
+                            strokeWidth={animRainIntensity > 70 ? 2 : 1.5}
+                            opacity={0.55 + (animRainIntensity / 110) * 0.45}
+                            style={{ ["--sa-rain-dur" as string]: `${rainSpeedSec}s`, animationDelay: `${(i % 5) * 0.12}s` }}
+                          />
+                        );
+                      })}
                       <text x="70" y="24" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">
                         {rainfallIntensity} mm/t
                       </text>
                     </g>
 
+                    {/* Avrenning langs bakken mot kum */}
+                    <path
+                      className="sa-flow"
+                      d="M 170 188 L 230 188 L 250 210"
+                      fill="none"
+                      stroke="#7dd3fc"
+                      strokeWidth={1.5 + animRunoff * 3}
+                      strokeLinecap="round"
+                      opacity={0.25 + animRunoff * 0.7}
+                    />
+
                     {/* Bygning 1: Hus med kjeller */}
                     <g transform="translate(60, 80)">
-                      {/* Tak (grønt tak eller tett tak) */}
                       <polygon
                         points="0,40 60,10 120,40"
-                        fill={greenRoofPct > 30 ? "#10b981" : "#475569"}
+                        fill={greenRoofPct >= 30 ? "#10b981" : "#475569"}
                         stroke="#0f172a"
                       />
                       <text x="60" y="32" textAnchor="middle" fill="#f8fafc" fontSize="9" fontWeight="bold">
-                        {greenRoofPct > 30 ? "Sedumtak (C=0,4)" : "Tett tak (C=0,9)"}
+                        {greenRoofPct >= 30 ? "Sedumtak (C=0,4)" : "Tett tak (C=0,9)"}
                       </text>
 
-                      {/* Vegg over bakken */}
                       <rect x="10" y="40" width="100" height="70" fill="#1e293b" stroke="#334155" />
                       <rect x="25" y="55" width="20" height="20" fill="#fef08a" opacity="0.7" />
                       <rect x="75" y="55" width="20" height="20" fill="#fef08a" opacity="0.7" />
 
-                      {/* Bakkenivå */}
                       <line x1="-30" y1="110" x2="140" y2="110" stroke="#64748b" strokeWidth="2" />
 
-                      {/* Kjeller under bakken */}
                       <rect x="10" y="110" width="100" height="55" fill="#0f172a" stroke="#334155" />
                       <text x="60" y="140" textAnchor="middle" fill="#94a3b8" fontSize="10">
                         Kjelleretasje
                       </text>
 
-                      {/* Kjellervindu med vann innsig dersom dangerousFloodingLs > 0 */}
-                      {dangerousFloodingLs > 0 ? (
+                      <rect
+                        x="15"
+                        y="105"
+                        width="20"
+                        height={animCellarFill > 0.05 ? 10 : 8}
+                        fill={animCellarFill > 0.05 ? "#ef4444" : "#38bdf8"}
+                        opacity={animCellarFill > 0.05 ? 1 : 0.4}
+                      />
+                      {animCellarFill > 0.02 && (
                         <>
-                          <rect x="15" y="105" width="20" height="10" fill="#ef4444" />
-                          {/* Vann fyller kjelleren */}
-                          <rect x="12" y="135" width="96" height="28" fill="#0284c7" opacity="0.6" />
-                          <text x="60" y="152" textAnchor="middle" fill="#fee2e2" fontSize="9" fontWeight="bold">
-                            VANN I KJELLER!
-                          </text>
+                          <rect
+                            className="sa-ripple"
+                            x="12"
+                            y={165 - animCellarFill * 48}
+                            width="96"
+                            height={animCellarFill * 48}
+                            fill="#0284c7"
+                            opacity={0.45 + animCellarFill * 0.35}
+                          />
+                          {animCellarFill > 0.35 && (
+                            <text x="60" y="152" textAnchor="middle" fill="#fee2e2" fontSize="9" fontWeight="bold">
+                              VANN I KJELLER!
+                            </text>
+                          )}
                         </>
-                      ) : (
-                        <rect x="15" y="105" width="20" height="8" fill="#38bdf8" opacity="0.4" />
                       )}
                     </g>
 
-                    {/* Gate og forsenkning i midten (Flomvei) */}
+                    {/* Gate og forsenkning (Flomvei) */}
                     <g transform="translate(200, 180)">
-                      {/* Gateprofil med forsenkning */}
                       <path
                         d={
                           hasSafeFloodway
@@ -647,15 +775,15 @@ export function StormwaterAdaptationModel() {
                         strokeWidth="3"
                       />
 
-                      {/* Vannstrøm i flomveien */}
-                      {hasSafeFloodway && (spillRateLs > 0 || floodRiskState === "warning") && (
+                      {hasSafeFloodway && animFloodFlow > 0.02 && (
                         <path
+                          className="sa-flow"
                           d="M 60 24 L 140 24 L 155 12"
                           stroke="#38bdf8"
-                          strokeWidth="6"
+                          strokeWidth={3 + animFloodFlow * 5}
                           strokeLinecap="round"
                           fill="none"
-                          opacity="0.85"
+                          opacity={0.4 + animFloodFlow * 0.55}
                         />
                       )}
                       <text x="100" y="8" textAnchor="middle" fill={hasSafeFloodway ? "#38bdf8" : "#94a3b8"} fontSize="10" fontWeight="bold">
@@ -665,17 +793,16 @@ export function StormwaterAdaptationModel() {
 
                     {/* Under bakken: Rør og fordrøyningsbasseng */}
                     <g transform="translate(240, 215)">
-                      {/* Fordrøyningsbasseng */}
                       {retentionBasinM3 > 0 && (
                         <>
                           <rect x="0" y="0" width="80" height="35" rx="4" fill="#1e293b" stroke="#0ea5e9" />
-                          {/* Vannfylling i basseng */}
                           <rect
+                            className="sa-ripple"
                             x="2"
-                            y={35 - (bufferAbsorbedM3 / (retentionBasinM3 || 1)) * 33}
+                            y={35 - animBasinFill * 33}
                             width="76"
-                            height={(bufferAbsorbedM3 / (retentionBasinM3 || 1)) * 33}
-                            fill="#0284c7"
+                            height={Math.max(0.5, animBasinFill * 33)}
+                            fill={animBasinFill > 0.95 ? "#0369a1" : "#0284c7"}
                             opacity="0.75"
                           />
                           <text x="40" y="20" textAnchor="middle" fill="#e0f2fe" fontSize="9" fontWeight="bold">
@@ -684,33 +811,50 @@ export function StormwaterAdaptationModel() {
                         </>
                       )}
 
-                      {/* Kommunalt overvannsrør */}
                       <g transform="translate(100, 10)">
                         <rect x="0" y="0" width="80" height="20" rx="10" fill="#334155" stroke="#94a3b8" />
                         <rect
                           x="2"
                           y="2"
-                          width={Math.min(76, (pipeInflowLs / PIPE_CAPACITY_LS) * 76)}
+                          width={Math.min(76, animPipeFill * 76)}
                           height="16"
                           rx="8"
-                          fill="#38bdf8"
+                          fill={animPipeFill > 0.98 ? "#f97316" : "#38bdf8"}
                         />
+                        {playing && animPipeFill > 0.05 && (
+                          <path
+                            className="sa-flow"
+                            d="M 6 10 H 74"
+                            fill="none"
+                            stroke="#e0f2fe"
+                            strokeWidth="1.5"
+                            opacity="0.55"
+                          />
+                        )}
                         <text x="40" y="14" textAnchor="middle" fill="#0f172a" fontSize="8" fontWeight="bold">
                           Rør ({pipeInflowLs} l/s)
                         </text>
                       </g>
                     </g>
 
-                    {/* Høyre del: Park og regnbed (Infiltrasjon) */}
+                    {/* Høyre del: Park og regnbed */}
                     <g transform="translate(440, 160)">
-                      {/* Bakke med regnbed */}
                       <path d="M 0 30 Q 30 45 60 30 L 140 30" fill="none" stroke="#10b981" strokeWidth="3" />
                       <circle cx="30" cy="36" r="14" fill="#065f46" opacity="0.6" />
+                      {hasRainGardens && playing && (
+                        <path
+                          className="sa-flow"
+                          d="M 30 20 L 30 48"
+                          fill="none"
+                          stroke="#6ee7b7"
+                          strokeWidth="2"
+                          opacity="0.7"
+                        />
+                      )}
                       <text x="30" y="38" textAnchor="middle" fill="#a7f3d0" fontSize="8" fontWeight="bold">
                         Regnbed
                       </text>
 
-                      {/* Trær */}
                       <g transform="translate(80, -25)">
                         <polygon points="20,0 5,30 35,30" fill="#15803d" />
                         <rect x="17" y="30" width="6" height="15" fill="#78350f" />
@@ -867,21 +1011,65 @@ export function StormwaterAdaptationModel() {
 
               {/* Right Column: Visualizer of Dock / Quay Level */}
               <div className="flex flex-col gap-4 lg:col-span-7">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-xs font-semibold text-foreground">Kai og stormflo</span>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant={playing ? "default" : "secondary"}
+                    className="h-7 text-xs"
+                    onClick={motion.toggle}
+                  >
+                    {playing ? "⏸ Pause animasjon" : "▶ Start animasjon"}
+                  </Button>
+                </div>
                 <div className="relative overflow-hidden rounded-xl border border-border bg-[#081524] p-3">
-                  <svg viewBox="0 0 540 300" className="w-full h-auto select-none" aria-label="Havnivå og stormflo på kai">
+                  <svg
+                    viewBox="0 0 540 300"
+                    className={`w-full h-auto select-none ${motion.motionClass}`}
+                    aria-label="Havnivå og stormflo på kai"
+                    data-playing={playing ? "yes" : "no"}
+                  >
+                    <style>{`
+                      .sa-wave {
+                        animation: sa-wave-bob 2.2s ease-in-out infinite;
+                        animation-play-state: ${playing ? "running" : "paused"};
+                      }
+                      .sa-splash {
+                        animation: sa-splash 1.4s ease-in-out infinite;
+                        animation-play-state: ${playing ? "running" : "paused"};
+                      }
+                      .sa-swell {
+                        transform-box: fill-box;
+                        transform-origin: center bottom;
+                        animation: sa-swell 2.8s ease-in-out infinite;
+                        animation-play-state: ${playing ? "running" : "paused"};
+                      }
+                      @keyframes sa-wave-bob {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-4px); }
+                      }
+                      @keyframes sa-splash {
+                        0%, 100% { opacity: 0.35; transform: translateX(0); }
+                        50% { opacity: 0.9; transform: translateX(6px); }
+                      }
+                      @keyframes sa-swell {
+                        0%, 100% { transform: scaleY(1); }
+                        50% { transform: scaleY(1.03); }
+                      }
+                    `}</style>
+
                     {/* Himmelen */}
                     <rect x="0" y="0" width="540" height="150" fill="#0f172a" />
 
-                    {/* Kaifront og bygning (Fast land) */}
+                    {/* Kaifront og bygning */}
                     <g transform="translate(260, 60)">
-                      {/* Kai-plateau */}
                       <rect x="0" y="60" width="280" height="180" fill="#334155" stroke="#1e293b" />
                       <line x1="0" y1="60" x2="280" y2="60" stroke="#94a3b8" strokeWidth="3" />
                       <text x="140" y="80" textAnchor="middle" fill="#f8fafc" fontSize="11" fontWeight="bold">
                         Eksisterende kai (+{quayHeightM} m)
                       </text>
 
-                      {/* Historisk trebygning eller bolig */}
                       <rect x="60" y="0" width="120" height="60" fill="#78350f" stroke="#451a03" />
                       <polygon points="50,0 120,-30 190,0" fill="#b91c1c" />
                       <text x="120" y="35" textAnchor="middle" fill="#fef08a" fontSize="10" fontWeight="bold">
@@ -889,55 +1077,84 @@ export function StormwaterAdaptationModel() {
                       </text>
                     </g>
 
-                    {/* Sjø og stormflo */}
+                    {/* Sjø og stormflo — vannstand glir */}
                     {(() => {
-                      // Normal high tide is at y = 200 (scale: 1 m = 40 px)
-                      // Quay top is at +2.4 m -> y = 200 - 2.4*40 = 104
-                      // Surge level = totalWaterLevelAboveToday * 40
-                      const waterY = Math.max(50, 200 - totalWaterLevelAboveToday * 38);
-                      const isOvertopping = totalWaterLevelAboveToday > quayHeightM;
+                      const waterY = Math.max(50, 200 - animWaterLevelM * 38);
+                      const isOvertopping = animWaterLevelM > quayHeightM;
+                      const freeboardAnim = Number((quayHeightM - animWaterLevelM).toFixed(2));
 
                       return (
                         <>
-                          {/* Sjøkropp */}
-                          <rect x="0" y={waterY} width="260" height={300 - waterY} fill="#0284c7" opacity="0.85" />
-
-                          {/* Bølger på toppen */}
-                          <path
-                            d={`M 0 ${waterY} Q 65 ${waterY - 8} 130 ${waterY} Q 195 ${waterY + 8} 260 ${waterY}`}
-                            fill="none"
-                            stroke="#38bdf8"
-                            strokeWidth="3"
+                          <rect
+                            className="sa-swell"
+                            x="0"
+                            y={waterY}
+                            width="260"
+                            height={300 - waterY}
+                            fill="#0284c7"
+                            opacity="0.85"
                           />
 
-                          {/* Hvis vannet går over brygga */}
-                          {isOvertopping && (
-                            <rect
-                              x="260"
-                              y={waterY}
-                              width="160"
-                              height={Math.min(30, 240 - waterY)}
-                              fill="#0284c7"
-                              opacity="0.7"
+                          <g className="sa-wave" style={{ transformOrigin: `0px ${waterY}px` }}>
+                            <path
+                              d={`M 0 ${waterY} Q 65 ${waterY - 8} 130 ${waterY} Q 195 ${waterY + 8} 260 ${waterY}`}
+                              fill="none"
+                              stroke="#38bdf8"
+                              strokeWidth="3"
                             />
+                            <path
+                              d={`M 0 ${waterY + 6} Q 65 ${waterY - 2} 130 ${waterY + 6} Q 195 ${waterY + 14} 260 ${waterY + 6}`}
+                              fill="none"
+                              stroke="#7dd3fc"
+                              strokeWidth="1.5"
+                              opacity="0.55"
+                            />
+                          </g>
+
+                          {isOvertopping && (
+                            <>
+                              <rect
+                                x="260"
+                                y={waterY}
+                                width="160"
+                                height={Math.min(36, 240 - waterY)}
+                                fill="#0284c7"
+                                opacity="0.7"
+                              />
+                              <path
+                                className="sa-splash"
+                                d={`M 258 ${waterY + 2} Q 290 ${waterY - 10} 320 ${waterY + 4} Q 350 ${waterY - 6} 380 ${waterY + 8}`}
+                                fill="none"
+                                stroke="#bae6fd"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                              />
+                              <path
+                                className="sa-splash"
+                                d={`M 265 ${waterY + 8} Q 300 ${waterY - 4} 340 ${waterY + 10}`}
+                                fill="none"
+                                stroke="#e0f2fe"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                opacity="0.8"
+                                style={{ animationDelay: "0.35s" }}
+                              />
+                            </>
                           )}
 
-                          {/* Målelinje for vannstand */}
                           <line x1="240" y1="200" x2="240" y2={waterY} stroke="#f59e0b" strokeWidth="2" strokeDasharray="3 3" />
                           <circle cx="240" cy={waterY} r="4" fill="#f59e0b" />
                           <text x="230" y={waterY - 6} textAnchor="end" fill="#f59e0b" fontSize="11" fontWeight="bold">
                             Stormflo +{totalWaterLevelAboveToday} m
                           </text>
 
-                          {/* Normal middelvannlinje */}
                           <line x1="0" y1="200" x2="260" y2="200" stroke="#94a3b8" strokeDasharray="2 2" />
                           <text x="10" y="194" fill="#94a3b8" fontSize="10">
                             Normalt middelvann (0,0 m)
                           </text>
 
-                          {/* Fribord varsel */}
                           <g transform="translate(270, 180)">
-                            {freeboardMarginM < 0 ? (
+                            {freeboardAnim < 0 ? (
                               <rect x="0" y="0" width="230" height="42" rx="6" fill="#7f1d1d" stroke="#ef4444" />
                             ) : (
                               <rect x="0" y="0" width="230" height="42" rx="6" fill="#064e3b" stroke="#10b981" />
@@ -946,13 +1163,13 @@ export function StormwaterAdaptationModel() {
                               x="115"
                               y="18"
                               textAnchor="middle"
-                              fill={freeboardMarginM < 0 ? "#fecaca" : "#a7f3d0"}
+                              fill={freeboardAnim < 0 ? "#fecaca" : "#a7f3d0"}
                               fontSize="11"
                               fontWeight="bold"
                             >
-                              {freeboardMarginM < 0
-                                ? `BRYGGA OVERSVØMMES MED ${Math.abs(freeboardMarginM)} METER!`
-                                : `Trygt fribord: +${freeboardMarginM} meter over flo`}
+                              {freeboardAnim < 0
+                                ? `BRYGGA OVERSVØMMES MED ${Math.abs(freeboardAnim).toFixed(2).replace(".", ",")} METER!`
+                                : `Trygt fribord: +${freeboardAnim.toFixed(2).replace(".", ",")} meter over flo`}
                             </text>
                             <text
                               x="115"
@@ -961,7 +1178,7 @@ export function StormwaterAdaptationModel() {
                               fill="#e2e8f0"
                               fontSize="9"
                             >
-                              {freeboardMarginM < 0
+                              {freeboardAnim < 0
                                 ? "Krav i TEK17 er ikke oppfylt, og tiltak kreves"
                                 : "Bygget tilfredsstiller TEK17 sikkerhetskrav."}
                             </text>
