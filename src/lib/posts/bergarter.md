@@ -83,7 +83,7 @@ SjekkBergarter1
 
 Verbet i kompetansemålet er utforske. Du velger en test, noterer det du ser, og tolker hvilken stasjon i syklusen prøven sitter på. Noterer du også hvor prøven er tatt, er det geofaglig feltarbeid.
 
-**Lupe.** En lupe med 6–10 ganger forstørrelse brukes til å se mineralkorn (U.S. Geological Survey [USGS], u.å.). Er kornene synlige? Like store? Lyse eller mørke?
+**Lupe.** En lupe med 6–10 ganger forstørrelse brukes til å se mineralkorn (USAs geologiske undersøkelse [USGS], u.å.). Er kornene synlige? Like store? Lyse eller mørke?
 
 **Mohs.** Friedrich Mohs innførte skalaen tidlig på 1800-tallet. Talk er 1, gips 2, kalsitt 3, fluoritt 4, apatitt 5, ortoklas 6, kvarts 7, topas 8, korund 9 og diamant 10 (SNL, u.å.). En lommekniv tester hardheten til mineralkorn (USGS, u.å.). Skalaen gjelder mineralet, ikke hele bergarten. En bergart kan ha flere mineraler, og hvert korn har sin egen hardhet. Rip ett korn.
 
