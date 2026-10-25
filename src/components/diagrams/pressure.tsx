@@ -269,15 +269,23 @@ export function AtmosphericColumnDiagram() {
 /**
  * 2. RelativePressureDiagram
  * Viser at lufttrykk er relativt – samme tallverdi (1015 hPa) kan være både L og H.
- * Animerer PGF → Coriolis → spiral (NH) og skjematisk luftsøyle-tverrsnitt under hvert kart.
+ * Pedagogikk (NH): PGF rett inn/ut → Coriolis avbøyer til høyre for bevegelsen
+ * → gradientvind rundt → friksjon gir spiral + luftsøyle. Coriolis alene er IKKE spiralen.
  */
-const REL_STEPS = ["1 Relativt", "2 Trykkgradient", "3 Coriolis", "4 Spiral og søyle"];
+const REL_STEPS = [
+  "1 Relativt",
+  "2 Trykkgradient",
+  "3 Coriolis avbøyer",
+  "4 Rundt L/H",
+  "5 Spiral og søyle",
+];
 
 const REL_STATUS = [
   "Samme tall (1015 hPa): lavtrykk på kart A, høytrykk på kart B – alt er relativt til omgivelsene.",
   "Trykkgradientkraften (stiplet oransje) driver lufta rett inn mot L og rett ut fra H.",
-  "På nordlige halvkule bøyer Coriolis bevegelsen til høyre – banen begynner å krumme.",
-  "Med friksjon blir det spiral: L inn mot klokken (konvergens), H ut med klokken (divergens). Under: luftsøyla.",
+  "Coriolis avbøyer til høyre for den pågående bevegelsen (NH) – banen krummer, men dette er ikke den ferdige spiralen.",
+  "PGF peker alltid inn (L) / ut (H). Coriolis til høyre gir balanse: vind rundt L mot klokken, rundt H med klokken.",
+  "Nær bakken gir friksjon litt innspiraling (L) / utspiraling (H). Under: luftsøyla med stigning / nedsynking.",
 ];
 
 function RelStepPicker({
@@ -314,16 +322,44 @@ function RelStepPicker({
   );
 }
 
+/** Luftpakke: prikk + valgfri etikett. */
+function RelParcel({
+  cx,
+  cy,
+  label,
+  labelX,
+  labelY,
+}: {
+  cx: number;
+  cy: number;
+  label?: string;
+  labelX?: number;
+  labelY?: number;
+}) {
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r="5.5" fill={C.white} stroke="#0d151c" strokeWidth="1.5" />
+      <circle cx={cx} cy={cy} r="2.2" fill="#0d151c" />
+      {label ? (
+        <L x={labelX ?? cx + 10} y={labelY ?? cy - 8} fill={C.fg} size={10} weight={700}>
+          {label}
+        </L>
+      ) : null}
+    </g>
+  );
+}
+
 export function RelativePressureDiagram() {
   const motion = useAnimationPlaying();
   const playing = motion.playing;
-  const [step, setStep] = useStepCycle(4, playing, 3400);
-  // Reduced-motion: pause til start → hopp til sluttbilde (steg 4).
-  const showStep = !playing && motion.reduced ? 4 : step;
-  const showPgf = showStep >= 2;
-  const showCoriolis = showStep >= 3;
-  const showSpiral = showStep >= 4;
-  const showColumn = showStep >= 4;
+  const [step, setStep] = useStepCycle(5, playing, 3600);
+  // Reduced-motion: pause til start → hopp til sluttbilde (steg 5).
+  const showStep = !playing && motion.reduced ? 5 : step;
+  const showPgf = showStep === 2;
+  const showCoriolisBend = showStep === 3;
+  const showAround = showStep === 4;
+  const showSpiral = showStep >= 5;
+  const showColumn = showStep >= 5;
 
   return (
     <Diagram
@@ -344,7 +380,7 @@ export function RelativePressureDiagram() {
         <>
           <RelStepPicker labels={REL_STEPS} step={showStep} onStep={setStep} />
           <span className="text-xs text-muted-foreground max-w-xl">
-            {playing ? REL_STATUS[showStep - 1] : motion.reduced ? REL_STATUS[3] : "Pause stopper på valgt trinn"}
+            {playing ? REL_STATUS[showStep - 1] : motion.reduced ? REL_STATUS[4] : "Pause stopper på valgt trinn"}
           </span>
         </>
       }
@@ -368,6 +404,9 @@ export function RelativePressureDiagram() {
             .motion-unlocked .rel-dash-flow {
               animation: rel-dash 1.6s linear infinite;
             }
+            .motion-unlocked .rel-parcel-pulse {
+              animation: rel-parcel 1.8s ease-in-out infinite;
+            }
             @keyframes rel-spin-ccw { to { transform: rotate(-360deg); } }
             @keyframes rel-spin-cw { to { transform: rotate(360deg); } }
             @keyframes rel-flow-up {
@@ -379,6 +418,10 @@ export function RelativePressureDiagram() {
               50% { transform: translateY(4px); opacity: 1; }
             }
             @keyframes rel-dash { to { stroke-dashoffset: -28; } }
+            @keyframes rel-parcel {
+              0%, 100% { opacity: 0.75; }
+              50% { opacity: 1; }
+            }
           `}</style>
 
           <defs>
@@ -452,33 +495,114 @@ export function RelativePressureDiagram() {
                 Omgitt av høyere trykk (1025 hPa)
               </L>
 
-              {/* PGF: inn mot L */}
+              {/* Steg 2: PGF rett inn */}
               {showPgf ? (
-                <g opacity={showStep === 2 ? 1 : 0.85}>
+                <g>
                   <Arrow d="M 130 175 L 190 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
                   <Arrow d="M 355 175 L 295 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
                   <Arrow d="M 242 92 L 242 138" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
                   <Arrow d="M 242 258 L 242 212" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-                  {showStep === 2 ? (
-                    <L x="242" y="290" fill={C.warm} size={12} weight={800} anchor="middle">
-                      Trykkgradientkraften (PGF) → inn
-                    </L>
-                  ) : null}
-                </g>
-              ) : null}
-
-              {/* Coriolis hint: avbøyning til høyre */}
-              {showCoriolis && !showSpiral ? (
-                <g>
-                  <Arrow d="M 150 145 Q 175 195 210 200" marker={m.teal} color={C.teal} width={2.4} />
-                  <Arrow d="M 335 145 Q 300 120 260 145" marker={m.teal} color={C.teal} width={2.4} />
-                  <L x="242" y="290" fill={C.teal} size={12} weight={800} anchor="middle">
-                    Coriolis bøyer til høyre (NH)
+                  <L x="242" y="290" fill={C.warm} size={12} weight={800} anchor="middle">
+                    Trykkgradientkraften (PGF) → rett inn mot L
                   </L>
                 </g>
               ) : null}
 
-              {/* Ferdig spiral mot klokken */}
+              {/* Steg 3: Coriolis avbøyer den pågående innstrømningen (IKKE ferdig spiral) */}
+              {showCoriolisBend ? (
+                <g className={playing ? "rel-parcel-pulse" : undefined}>
+                  {/* Pakke vestfra: V østover → CF sørover (høyre) */}
+                  <Arrow d="M 128 175 L 195 175" marker={m.warm} color={C.warm} width={1.6} dash="4 3" />
+                  <L x="148" y="166" fill={C.warm} size={9} weight={700}>
+                    PGF
+                  </L>
+                  <path
+                    d="M 128 175 L 168 175 Q 198 175 208 205"
+                    fill="none"
+                    stroke={C.white}
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    markerEnd={`url(#${m.fg})`}
+                  />
+                  <Arrow d="M 168 175 L 168 205" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x="176" y="198" fill={C.teal} size={9} weight={800}>
+                    CF
+                  </L>
+                  <RelParcel cx={128} cy={175} label="luft" labelX={108} labelY={168} />
+
+                  {/* Pakke nordfra: V sørover → CF vestover */}
+                  <Arrow d="M 242 95 L 242 145" marker={m.warm} color={C.warm} width={1.6} dash="4 3" />
+                  <path
+                    d="M 242 95 L 242 132 Q 242 158 212 168"
+                    fill="none"
+                    stroke={C.white}
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    markerEnd={`url(#${m.fg})`}
+                  />
+                  <Arrow d="M 242 132 L 212 132" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x="198" y="124" fill={C.teal} size={9} weight={800}>
+                    CF
+                  </L>
+                  <RelParcel cx={242} cy={95} />
+
+                  {/* Pakke østfra: V vestover → CF nordover */}
+                  <Arrow d="M 356 175 L 300 175" marker={m.warm} color={C.warm} width={1.6} dash="4 3" />
+                  <path
+                    d="M 356 175 L 318 175 Q 292 175 282 145"
+                    fill="none"
+                    stroke={C.white}
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    markerEnd={`url(#${m.fg})`}
+                  />
+                  <Arrow d="M 318 175 L 318 145" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x="326" y="152" fill={C.teal} size={9} weight={800}>
+                    CF
+                  </L>
+                  <RelParcel cx={356} cy={175} />
+
+                  <L x="242" y="286" fill={C.teal} size={11} weight={800} anchor="middle">
+                    Coriolis = avbøyning til høyre for bevegelsen — ikke spiral ennå
+                  </L>
+                </g>
+              ) : null}
+
+              {/* Steg 4: gradientvind / rundt L (mot klokken), parallelt isobarer */}
+              {showAround ? (
+                <g>
+                  {/* PGF inn (kraft) + CF ut + V tangentiell */}
+                  <g transform="translate(242, 175)">
+                    <circle cx="0" cy="0" r="78" fill="none" stroke="#64748b" strokeWidth="1" strokeDasharray="3 3" opacity="0.55" />
+                  </g>
+                  {/* Vind rundt (mot klokken), langs isobar – ikke inn */}
+                  <Arrow d="M 168 145 Q 175 110 220 105" marker={m.fg} color={C.white} width={2.8} />
+                  <Arrow d="M 268 105 Q 320 115 325 160" marker={m.fg} color={C.white} width={2.8} />
+                  <Arrow d="M 325 195 Q 315 245 270 250" marker={m.fg} color={C.white} width={2.8} />
+                  <Arrow d="M 210 250 Q 160 240 155 195" marker={m.fg} color={C.white} width={2.8} />
+
+                  {/* Kraftbalanse vest for L: CCW → V sørover; CF til høyre (= ut), PGF inn */}
+                  <RelParcel cx={155} cy={175} />
+                  <Arrow d="M 155 175 L 155 220" marker={m.fg} color={C.white} width={2.4} />
+                  <L x={142} y={200} fill={C.white} size={10} weight={800} anchor="end">
+                    V
+                  </L>
+                  <Arrow d="M 155 175 L 195 175" marker={m.warm} color={C.warm} width={2.2} />
+                  <L x={175} y={168} fill={C.warm} size={9} weight={700}>
+                    PGF
+                  </L>
+                  <Arrow d="M 155 175 L 115 175" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x={118} y={168} fill={C.teal} size={9} weight={700} anchor="end">
+                    CF
+                  </L>
+
+                  <L x="242" y="286" fill={C.fg} size={11} weight={800} anchor="middle">
+                    PGF inn + Coriolis ut → vind rundt L (mot klokken)
+                  </L>
+                </g>
+              ) : null}
+
+              {/* Steg 5: friksjon → innspiraling */}
               {showSpiral ? (
                 <g>
                   <g className={playing ? "rel-spin-ccw" : undefined} transform="translate(242, 175)">
@@ -490,7 +614,7 @@ export function RelativePressureDiagram() {
                   <Arrow d="M 335 145 Q 285 118 255 148" marker={m.fg} color={C.white} width={2.6} />
                   <Arrow d="M 175 118 Q 195 155 210 162" marker={m.fg} color={C.white} width={2.6} />
                   <L x="242" y="290" fill={C.fg} size={12} weight={700} anchor="middle">
-                    Spiral mot klokken · konvergens
+                    Friksjon → spiral inn · konvergens
                   </L>
                 </g>
               ) : null}
@@ -535,25 +659,86 @@ export function RelativePressureDiagram() {
               </L>
 
               {showPgf ? (
-                <g opacity={showStep === 2 ? 1 : 0.85}>
+                <g>
                   <Arrow d="M 180 175 L 125 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
                   <Arrow d="M 275 175 L 330 175" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
                   <Arrow d="M 227 140 L 227 95" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
                   <Arrow d="M 227 210 L 227 255" marker={m.warm} color={C.warm} width={2.2} dash="3 2" />
-                  {showStep === 2 ? (
-                    <L x="227" y="290" fill={C.warm} size={12} weight={800} anchor="middle">
-                      Trykkgradientkraften (PGF) → ut
-                    </L>
-                  ) : null}
+                  <L x="227" y="290" fill={C.warm} size={12} weight={800} anchor="middle">
+                    Trykkgradientkraften (PGF) → rett ut fra H
+                  </L>
                 </g>
               ) : null}
 
-              {showCoriolis && !showSpiral ? (
+              {/* Steg 3: utstrømning avbøyes til høyre → begynnende med-klokken */}
+              {showCoriolisBend ? (
+                <g className={playing ? "rel-parcel-pulse" : undefined}>
+                  {/* Østover ut: V øst → CF sør */}
+                  <Arrow d="M 275 175 L 340 175" marker={m.warm} color={C.warm} width={1.6} dash="4 3" />
+                  <path
+                    d="M 275 175 L 310 175 Q 335 175 342 205"
+                    fill="none"
+                    stroke={C.white}
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    markerEnd={`url(#${m.fg})`}
+                  />
+                  <Arrow d="M 310 175 L 310 205" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x="318" y="198" fill={C.teal} size={9} weight={800}>
+                    CF
+                  </L>
+                  <RelParcel cx={275} cy={175} />
+
+                  {/* Nordover ut: V nord → CF øst */}
+                  <Arrow d="M 227 140 L 227 95" marker={m.warm} color={C.warm} width={1.6} dash="4 3" />
+                  <path
+                    d="M 227 140 L 227 112 Q 227 95 255 88"
+                    fill="none"
+                    stroke={C.white}
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    markerEnd={`url(#${m.fg})`}
+                  />
+                  <Arrow d="M 227 112 L 255 112" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x="258" y={104} fill={C.teal} size={9} weight={800}>
+                    CF
+                  </L>
+                  <RelParcel cx={227} cy={140} />
+
+                  <L x="227" y="286" fill={C.teal} size={11} weight={800} anchor="middle">
+                    Samme logikk: CF til høyre for V — ikke spiral ennå
+                  </L>
+                </g>
+              ) : null}
+
+              {showAround ? (
                 <g>
-                  <Arrow d="M 227 140 Q 275 138 300 165" marker={m.teal} color={C.teal} width={2.4} />
-                  <Arrow d="M 260 200 Q 255 250 205 255" marker={m.teal} color={C.teal} width={2.4} />
-                  <L x="227" y="290" fill={C.teal} size={12} weight={800} anchor="middle">
-                    Coriolis bøyer til høyre (NH)
+                  <g transform="translate(227, 175)">
+                    <circle cx="0" cy="0" r="78" fill="none" stroke="#64748b" strokeWidth="1" strokeDasharray="3 3" opacity="0.55" />
+                  </g>
+                  {/* Vind med klokken rundt H */}
+                  <Arrow d="M 227 105 Q 280 110 305 150" marker={m.fg} color={C.white} width={2.8} />
+                  <Arrow d="M 305 195 Q 295 245 250 255" marker={m.fg} color={C.white} width={2.8} />
+                  <Arrow d="M 195 255 Q 145 240 140 190" marker={m.fg} color={C.white} width={2.8} />
+                  <Arrow d="M 145 155 Q 155 110 205 105" marker={m.fg} color={C.white} width={2.8} />
+
+                  {/* Kraftbalanse: pakke øst for H, V sørover (med klokken) */}
+                  <RelParcel cx={305} cy={175} />
+                  <Arrow d="M 305 175 L 305 220" marker={m.fg} color={C.white} width={2.4} />
+                  <L x={318} y={200} fill={C.white} size={10} weight={800}>
+                    V
+                  </L>
+                  <Arrow d="M 305 175 L 345 175" marker={m.warm} color={C.warm} width={2.2} />
+                  <L x={325} y={168} fill={C.warm} size={9} weight={700}>
+                    PGF
+                  </L>
+                  <Arrow d="M 305 175 L 265 175" marker={m.teal} color={C.teal} width={2.2} />
+                  <L x={272} y={168} fill={C.teal} size={9} weight={700} anchor="end">
+                    CF
+                  </L>
+
+                  <L x="227" y="286" fill={C.fg} size={11} weight={800} anchor="middle">
+                    PGF ut + Coriolis inn → vind rundt H (med klokken)
                   </L>
                 </g>
               ) : null}
@@ -569,7 +754,7 @@ export function RelativePressureDiagram() {
                   <Arrow d="M 185 215 Q 145 205 138 160" marker={m.fg} color={C.white} width={2.6} />
                   <Arrow d="M 175 148 Q 175 115 225 112" marker={m.fg} color={C.white} width={2.6} />
                   <L x="227" y="290" fill={C.fg} size={12} weight={700} anchor="middle">
-                    Spiral med klokken · divergens
+                    Friksjon → spiral ut · divergens
                   </L>
                 </g>
               ) : null}
@@ -667,7 +852,7 @@ export function RelativePressureDiagram() {
               </>
             ) : (
               <L x="470" y="520" size={13} fill={C.muted} anchor="middle">
-                Spill av, eller gå til steg 4, for å se luftsøyla under hvert kart.
+                Spill av, eller gå til steg 5, for å se luftsøyla under hvert kart.
               </L>
             )}
           </g>
