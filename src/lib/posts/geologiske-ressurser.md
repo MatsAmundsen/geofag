@@ -26,7 +26,7 @@
 
 ## Hva er en geologisk ressurs?
 
-Verden har et stadig økende behov for mineraler og metaller. Behovet henger sammen med en voksende befolkning og kampen mot fattigdom, og med moderne teknologi og fornybar energi. Norge er rik på forekomster av metaller og mineraler og er en viktig europeisk produsent i dag (NGU, u.å.-i).
+Verden har et stadig økende behov for mineraler og metaller. Behovet henger sammen med en voksende befolkning og kampen mot fattigdom, og med moderne teknologi og fornybar energi. Norge er rik på forekomster av metaller og mineraler. Norges geologiske undersøkelse (NGU) beskriver landet som en viktig europeisk produsent i dag (NGU, u.å.-i).
 
 Noen råvarer kalles *kritiske*. Det er råvarer som er viktige for økonomien, og der det er stor risiko for at forsyningen kan svikte. Risikoen er størst når produksjonen er samlet i svært få land. NGU bruker EUs liste når de omtaler råvarer som kritiske (NGU, u.å.-f). EUs liste fra 2024 har 34 kritiske råvarer. Sytten av dem regnes også som *strategiske*, fordi de trengs til grønn og digital omstilling og til forsvar og romfart. Blant dem er kobber, kobolt, sjeldne jordarter til magneter, grafitt til batterier og titanmetall (Europaparlamentet og Rådet, 2024).
 
@@ -48,13 +48,13 @@ MalmForklaring
 
 ### Magmatiske malmer
 
-Magmatiske malmer dannes på dypet i en bergartssmelte, når smelten avkjøles og størkner. I kobber-nikkel-malmer kan en svovelrik metallsmelte skille seg ut som dråper, omtrent som olje skiller seg fra vann. Dråpene synker, samler seg mot bunnen og krystalliserer som sulfidmineraler. Jern, krom, vanadium og titan kan binde seg til oksygen tidlig under avkjølingen og danne faste ertsmineraler i smelten. Ilmenitt fra Egersundsfeltet i Rogaland er et norsk eksempel. Nikkelgruva i Råna-feltet i Ballangen var den siste magmatiske malmgruva i drift i Norge. Den ble lagt ned i 2002 (Rui, 2024).
+Magmatiske malmer dannes på dypet i en bergartssmelte, når smelten avkjøles og størkner. I kobber-nikkel-malmer kan en svovelrik metallsmelte skille seg ut som dråper, omtrent som olje skiller seg fra vann. Dråpene synker, samler seg mot bunnen og krystalliserer som sulfidmineraler. Jern, krom, vanadium og titan kan binde seg til oksygen tidlig under avkjølingen og danne faste *ertsmineraler* i smelten, det vil si mineraler som inneholder metallet vi vil utvinne. Ilmenitt fra Egersundsfeltet i Rogaland er et norsk eksempel. Nikkelgruva i Råna-feltet i Ballangen var den siste magmatiske malmgruva i drift i Norge. Den ble lagt ned i 2002 (Rui, 2024).
 
 ### Hydrotermale malmer
 
 Hydrotermale malmer er avsatt fra varme, metallrike løsninger. Løsningene kan ha to ulike opphav.
 
-Det første er magma. Når en smelte størkner, blir gassene i den anriket i restsmelten. Til slutt «koker» gassene ut sammen med metaller og trenger ut i sprekker i bergartene rundt. Der avsettes de som malmårer og malmganger. Mange små forekomster i Oslofeltet ble dannet slik i perm, da Oslo-riften var aktiv, og sølvet på Kongsberg har dypbergartene i Oslofeltet som kilde (Rui, 2024). Det meste av verdens kobber kommer fra store *porfyrforekomster*, som er knyttet til granittiske intrusjoner ved øybuer (NGU, u.å.-e).
+Det første er magma. Når en smelte størkner, blir gassene i den anriket i restsmelten. Til slutt «koker» gassene ut sammen med metaller og trenger ut i sprekker i bergartene rundt. Der avsettes de som malmårer og malmganger. Mange små forekomster i Oslofeltet ble dannet slik i perm (for ca. 300–250 millioner år siden), da Oslo-riften var aktiv. Sølvet på Kongsberg har dypbergartene i Oslofeltet som kilde (Rui, 2024). Det meste av verdens kobber kommer fra store *porfyrforekomster*. Det er store, lavverdige kobberforekomster knyttet til granittiske intrusjoner ved øybuer (NGU, u.å.-e).
 
 Det andre er varme løsninger som sirkulerer gjennom havbunnen ved undersjøiske vulkaner, for eksempel ved spredningsrygger og øybuer. Der løsningene når opp til havbunnen, avsettes de som svovelrike *kismalmer* med kobber og sink. Kismalmene i Løkken, Folldal, Røros, Grongfeltet og Sulitjelma ble dannet slik (Rui, 2024). De ligger i bergarter fra havbunnen og øybuene i Iapetushavet, som senere ble skjøvet inn i den kaledonske fjellkjeden. Du kan lese mer om Iapetushavet i kapitlet [Norges geologiske historie](/geofag-1/norges-geologi).
 
@@ -70,9 +70,9 @@ SjekkGeologiskeRessurser2
 
 *Naturstein* er bergarter som deles opp i plater, blokker og emner. Steinen tas ut i store blokker og sages eller splittes. Den brukes blant annet til kledning, brostein, murestein, ovner, gravstøtter og skulpturer (NGU, u.å.-j). Granitt, gneis, kvartsitt, gabbro, larvikitt og anortositt regnes som harde typer. Kalkstein, marmor, kleberstein og serpentinitt er mykere. Skifer spaltes til plater langs lag av glimmer (NGU, u.å.-j).
 
-*Larvikitt* er Norges nasjonalbergart og landets viktigste naturstein. Det er en dypbergart som ble dannet for ca. 295–290 millioner år siden i Oslo-riften. Riften begynte å dannes for ca. 300 millioner år siden (NGU, u.å.-g; Bryhni & Fossen, 2024). Feltspaten i larvikitt har et blått eller grønt fargespill. Bergarten er oppkalt etter Larvik og er utbredt i Vestfold og Telemark (NGU, u.å.-g). Om rombeporfyr og resten av Oslo-riften kan du lese i [Norges geologi](/geofag-1/norges-geologi).
+*Larvikitt* er Norges nasjonalbergart og landets viktigste naturstein. Det er en dypbergart som ble dannet for ca. 295–290 millioner år siden i Oslo-riften. Riften begynte å dannes for ca. 300 millioner år siden (NGU, u.å.-g; Bryhni og Fossen, 2024). Feltspaten i larvikitt har et blått eller grønt fargespill. Bergarten er oppkalt etter Larvik og er utbredt i Vestfold og Telemark (NGU, u.å.-g). Om rombeporfyr og resten av Oslo-riften kan du lese i [Norges geologi](/geofag-1/norges-geologi).
 
-*Pukk* er knust fast fjell av hard og seig stein, som granitt, gabbro og gneis. Kornene har skarpe kanter, og pukken selges i fraksjoner, for eksempel 8–16 mm. Den brukes i veidekker, veifundamenter, ballast under jernbane og som tilslag i betong (SNL, 2024c). *Sand og grus* tas ut fra løsmasser, særlig breelvavsetninger og deltaer fra slutten av istiden. Disse forekomstene blir ikke fornyet. I Norge bruker vi om lag 60 millioner tonn sand, grus og pukk i året, ca. 11 tonn per person (NGU, u.å.-b). Det er omtrent like mye som en full lastebil.
+*Pukk* er knust fast fjell av hard og seig stein, som granitt, gabbro og gneis. Kornene har skarpe kanter, og pukken selges i fraksjoner, for eksempel 8–16 mm. Den brukes i veidekker, veifundamenter, ballast under jernbane og som tilslag i betong, slik Store norske leksikon (SNL) beskriver det (SNL, 2024c). *Sand og grus* tas ut fra løsmasser, særlig breelvavsetninger og deltaer fra slutten av istiden. Disse forekomstene blir ikke fornyet. I Norge bruker vi om lag 60 millioner tonn sand, grus og pukk i året, ca. 11 tonn per person (NGU, u.å.-b). Det er omtrent like mye som en full lastebil.
 
 ```widget
 FraBergartTilBrudd
@@ -82,7 +82,7 @@ FraBergartTilBrudd
 
 - kalkstein på Akselberg i Brønnøy, Norges største kalkbrudd (NGU, u.å.-d)
 - olivin i Åheim på Sunnmøre, ifølge Sibelco verdens største kommersielle olivindrift (Sibelco, u.å.)
-- nefelinsyenitt på Stjernøya i Finnmark, som brukes i glass- og porselensindustrien (NGU, u.å.-f; Selbekk, 2025)
+- *nefelinsyenitt*, en lys dypbergart, på Stjernøya i Finnmark, som brukes i glass- og porselensindustrien (NGU, u.å.-f; Selbekk, 2025)
 - grafitt på Skaland på Senja (NGU, u.å.-f; Geo365, 2026)
 - høykvalitets kvarts til produksjon av silisium (NGU, u.å.-f)
 
@@ -94,23 +94,23 @@ SjekkGeologiskeRessurser3
 
 ## Petroleum – fra plankton til felle
 
-*Petroleum* er en samlebetegnelse for råolje og naturgass, altså blandinger av hydrokarboner i geologiske formasjoner. Det er verdens viktigste kilde til primærenergi (Gundersen & Lundberg, 2025). For at det skal dannes en olje- eller gassforekomst, må flere geologiske forhold være til stede i riktig rekkefølge. Til sammen kaller vi dem et *petroleumssystem*.
+*Petroleum* er en samlebetegnelse for råolje og naturgass, altså blandinger av hydrokarboner i geologiske formasjoner. Det er verdens viktigste kilde til primærenergi (Gundersen og Lundberg, 2025). For at det skal dannes en olje- eller gassforekomst, må flere geologiske forhold være til stede i riktig rekkefølge. Til sammen kaller vi dem et *petroleumssystem*.
 
 ```widget
 PetroleumSystem
 ```
 
-**1. Kildebergart.** Petroleum dannes for det meste av planteplankton fra havet, og til en viss grad av organisk materiale fra land. Der bunnvannet har lite oksygen, blir ikke alt det organiske materialet brutt ned, og en fettrik rest samler seg i slammet på havbunnen. Bergarter som dannes av slikt slam, kan bli *kildebergarter* (Bryhni mfl., 2024). Vanlige kildebergarter er mørke leirsteiner og skifre (SNL, 2024a). På norsk sokkel er de viktigste kildebergartene skifre fra sen jura, for eksempel Draupneformasjonen (Ramberg mfl., 2008). Olje dannes altså ikke av dinosaurer.
+**1. Kildebergart.** Petroleum dannes for det meste av planteplankton fra havet, og til en viss grad av organisk materiale fra land. Der bunnvannet har lite oksygen, blir ikke alt det organiske materialet brutt ned, og en fettrik rest samler seg i slammet på havbunnen. Bergarter som dannes av slikt slam, kan bli *kildebergarter* (Bryhni mfl., 2024). Vanlige kildebergarter er mørke leirsteiner og skifre (SNL, 2024a). På norsk sokkel er de viktigste kildebergartene skifre fra sen jura (for ca. 163–145 millioner år siden), for eksempel Draupneformasjonen (Ramberg mfl., 2008). Olje dannes altså ikke av dinosaurer.
 
-**2. Modning.** Når sedimentene begraves under stadig nye lag, blir de til fast fjell. Det organiske materialet blir til *kerogen*. Når temperaturen når ca. 60 °C, skyter omdanningen fart. Mellom ca. 60 og 130 °C dannes det for det meste olje. Dette kalles *oljevinduet*. Ved ca. 130–180 °C dannes det gass, og olje som allerede er dannet, blir også omdannet til gass. Ved nær 250 °C er også gassen brutt ned (Bryhni mfl., 2024; Bryhni, 2024a). I Nordsjøen øker temperaturen med 30–40 °C per kilometer. Oljedannelsen starter derfor først når kildebergarten ligger på ca. 2000 meters dyp (Bryhni mfl., 2024). Oljevinduet ligger her på ca. 2–4 km dyp.
+**2. Modning.** Når sedimentene begraves under stadig nye lag, blir de til fast fjell. Det organiske materialet blir til *kerogen*, et fast, organisk stoff i bergarten før det blir til olje. Når temperaturen når ca. 60 °C, skyter omdanningen fart. Mellom ca. 60 og 130 °C dannes det for det meste olje. Dette kalles *oljevinduet*. Ved ca. 130–180 °C dannes det gass, og olje som allerede er dannet, blir også omdannet til gass. Ved nær 250 °C er også gassen brutt ned (Bryhni mfl., 2024; Bryhni, 2024a). I Nordsjøen øker temperaturen med 30–40 °C per kilometer. Oljedannelsen starter derfor først når kildebergarten ligger på ca. 2000 meters dyp (Bryhni mfl., 2024). Oljevinduet ligger her på ca. 2–4 km dyp.
 
 **3. Migrasjon.** Olje og gass har lavere tetthet enn vann. De siver ut av kildebergarten og beveger seg oppover gjennom porene i bergartene over, som er fylt med vann (Bryhni mfl., 2024).
 
 **4. Reservoarbergart.** Olje og gass samles i en porøs og permeabel bergart, typisk sandstein eller kalkstein (Øien, 2026).
 
-**5. Takbergart og felle.** For at olje og gass skal bli liggende, må reservoaret være dekket av et tett lag, en *takbergart*, for eksempel leirskifer. Formen på lagene må også holde på petroleumen, for eksempel en hvelving (antiklinal) eller en forkastningsblokk. Det kalles en *felle*. I fellen legger gassen seg øverst, oljen under og vannet nederst (Bryhni mfl., 2024).
+**5. Takbergart og felle.** For at olje og gass skal bli liggende, må reservoaret være dekket av et tett lag, en *takbergart*, for eksempel leirskifer. Formen på lagene må også holde på petroleumen, for eksempel en oppoverbøyd fold – en *antiklinal* – eller en forkastningsblokk. Det kalles en *felle*. I fellen legger gassen seg øverst, oljen under og vannet nederst (Bryhni mfl., 2024).
 
-Petroleum finnes særlig i flere tusen meter tykke avsetninger i sedimentære bassenger. På norsk kontinentalsokkel er det store forekomster, og Norge har i flere tiår vært blant verdens største olje- og gassprodusenter (Gundersen & Lundberg, 2025). Bassengene ble dannet da skorpa vest for Norge ble strukket, før Norskehavet åpnet seg (Bryhni & Fossen, 2024). Du kan lese mer om dette i kapitlet [Norges geologiske historie](/geofag-1/norges-geologi).
+Petroleum finnes særlig i flere tusen meter tykke avsetninger i sedimentære bassenger. På norsk kontinentalsokkel er det store forekomster, og Norge har i flere tiår vært blant verdens største olje- og gassprodusenter (Gundersen og Lundberg, 2025). Bassengene ble dannet da skorpa vest for Norge ble strukket, før Norskehavet åpnet seg (Bryhni og Fossen, 2024). Du kan lese mer om dette i kapitlet [Norges geologiske historie](/geofag-1/norges-geologi).
 
 ```widget
 SjekkGeologiskeRessurser4
@@ -126,9 +126,9 @@ Tidligere ble mange forekomster funnet tilfeldig, for eksempel sølvet på Kongs
 
 **Geofysikk fra fly og helikopter.** Bergarter og malmer har ulike fysiske egenskaper. *Magnetometri* måler magnetismen i bergartene. *Elektromagnetiske målinger* viser ledende legemer, for eksempel sulfidmalmer, som ofte leder strøm bedre enn bergartene rundt. *Radiometri* måler den naturlige radioaktiviteten fra uran, thorium og kalium (SNL, 2025). NGU har målt fra fly siden 1958 og fra helikopter siden 1972. I dag måles det vanligvis magnetisme, elektromagnetisme og radioaktivitet samtidig, ca. 60 m over bakken (NGU, u.å.-a). NGU har for eksempel gjort slike målinger over kobberforekomstene ved Nussir og Ulveryggen i Finnmark.
 
-**Kjerneboring.** Til slutt borer man med et rørformet bor, slik at man får opp en sylinder av berget, en *borekjerne* (SNL, 2024b). Med borekjernene kan geologene finne ut hvor stor forekomsten er, og hvor mye den inneholder. Det avgjør om den er drivverdig (SNL, 2025).
+**Kjerneboring.** Til slutt borer geologene med et rørformet bor, slik at de får opp en sylinder av berget, en *borekjerne* (SNL, 2024b). Med borekjernene kan geologene finne ut hvor stor forekomsten er, og hvor mye den inneholder. Det avgjør om den er drivverdig (SNL, 2025).
 
-**Seismikk for petroleum.** Til havs sender man kraftige lydsignaler ned i undergrunnen med luftkanoner og registrerer lydbølgene som kastes tilbake fra laggrensene. Refleksjonsseismikk er den viktigste metoden for å finne og kartlegge olje- og gassforekomster. Dataene viser lagene og strukturene, men må tolkes geologisk, fordi de ikke viser bergartstypen direkte (Fossen, 2025). Om det faktisk er olje eller gass i en felle, vet man først når man har boret en brønn.
+**Seismikk for petroleum.** Til havs sendes kraftige lydsignaler ned i undergrunnen med luftkanoner. Lydbølgene som kastes tilbake fra laggrensene, registreres. Refleksjonsseismikk er den viktigste metoden for å finne og kartlegge olje- og gassforekomster. Dataene viser lagene og strukturene, men må tolkes geologisk, fordi de ikke viser bergartstypen direkte (Fossen, 2025). Om det faktisk er olje eller gass i en felle, vet vi først når det er boret en brønn.
 
 Hvordan du selv planlegger og gjennomfører feltarbeid, kan du lese om i kapitlet [Feltarbeid](/geofag-1/feltarbeid).
 
@@ -157,13 +157,13 @@ I Fensfeltet i Telemark ligger Europas største kjente forekomst av sjeldne jord
 
 ### I verden
 
-Mange kritiske råvarer utvinnes i noen få land. Tallene under er fra U.S. Geological Survey og gjelder 2025 (USGS, 2026a, 2026b, 2026c):
+Mange kritiske råvarer utvinnes i noen få land. Tallene under er fra Det amerikanske geologiske instituttet (USGS) og gjelder 2025 (USGS, 2026a, 2026b, 2026c):
 
 | Råvare | Største produsent | Andel av verdens gruveproduksjon i 2025 |
 | --- | --- | --- |
-| Kobolt | Kongo (DR Kongo): 230 000 av 310 000 tonn | ca. 73 % (USGS) |
-| Sjeldne jordarter | Kina: 270 000 av 390 000 tonn (som oksider) | ca. 69 % |
-| Kobber | Chile: 5,3 av 23 millioner tonn | ca. 23 % |
+| Kobolt | Kongo (DR Kongo): 230 000 av 310 000 tonn | ca. 73 prosent (USGS) |
+| Sjeldne jordarter | Kina: 270 000 av 390 000 tonn (som oksider) | ca. 69 prosent |
+| Kobber | Chile: 5,3 av 23 millioner tonn | ca. 23 prosent |
 
 Kobber utvinnes i mange land. Etter Chile kommer DR Kongo og Peru. Men nesten halvparten av verdens raffinerte kobber, ca. 14 av 29 millioner tonn, ble produsert i Kina (USGS, 2026c). Det viser at forsyningsrisikoen ikke bare handler om hvor malmen ligger, men også om hvor den blir foredlet.
 
@@ -193,7 +193,7 @@ Gruver, steinbrudd, pukkverk og grustak tar store arealer, både der det graves 
 
 ### Klima og fornybar energi
 
-Når olje og gass utvinnes og brukes, slippes det ut klimagasser. Ett synspunkt i klimadebatten er at utvinningen og forbruket bør reduseres for å begrense den globale oppvarmingen (Gundersen & Lundberg, 2025). Men overgangen til fornybar energi krever også råvarer. En typisk elbil trenger seks ganger så mye mineraler som en bensin- eller dieselbil, og et vindkraftverk på land trenger ni ganger så mye som et gasskraftverk med samme effekt (IEA, 2021). Kobber trengs i vindturbiner, solceller og strømnett (NGU, u.å.-e).
+Når olje og gass utvinnes og brukes, slippes det ut klimagasser. Ett synspunkt i klimadebatten er at utvinningen og forbruket bør reduseres for å begrense den globale oppvarmingen (Gundersen og Lundberg, 2025). Men overgangen til fornybar energi krever også råvarer. Det internasjonale energibyrået (IEA) har dokumentert at en typisk elbil trenger seks ganger så mye mineraler som en bensin- eller dieselbil. Et vindkraftverk på land trenger ni ganger så mye som et gasskraftverk med samme effekt (IEA, 2021). Kobber trengs i vindturbiner, solceller og strømnett (NGU, u.å.-e).
 
 Det gir en avveining. Skal Europa få nok kobber, kobolt og sjeldne jordarter, må noen gruver ligge i Europa. NGU peker på at produksjonen må økes i land med stabile styresett for å redusere forsyningsrisikoen, og at vi trenger både flere gruver og mer resirkulering (NGU, u.å.-f). På den andre siden er det lokale samfunn og naturen rundt gruva som får avfallet og inngrepene.
 
