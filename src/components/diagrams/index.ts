@@ -124,6 +124,7 @@ export {
   PrecessionDetailDiagram,
   Sommersol65NDiagram,
 } from "./paleo";
+export { PaleoProxyEksempelFigur } from "./paleo-proxy-eksempel";
 export {
   BoundaryQuakesDiagram,
   CalderaFormationDiagram,
