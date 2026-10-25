@@ -976,7 +976,7 @@ export function KatabaticWindDiagram() {
 
             {/* Informasjonsboks for det termiske beltet */}
             <rect x="35" y="-30" width="125" height="75" rx="6" fill="#111c24" stroke="#eab308" strokeWidth="1.5" />
-            <L x="45" y="-12" fill="#facc15" size={11.5} weight={900}>
+            <L x="45" y="-14" fill="#facc15" size={11.5} weight={900}>
               Termisk belte i lia
             </L>
             <L x="45" y="4" fill="#fde047" size={13} weight={800}>

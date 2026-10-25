@@ -172,7 +172,7 @@ export function FoehnAdiabaticDiagram() {
 
           {/* Topp */}
           <line x1="40" y1="178" x2="860" y2="178" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.2" />
-          <L x="35" y="174" fill={C.warm} size={11} anchor="end">2000 m</L>
+          <L x="39" y="174" fill={C.warm} size={11} anchor="end">2000 m</L>
 
           {/* LOSIDE */}
           <L x="180" y="40" fill={C.rain} size={16} weight={800} anchor="middle">LOSIDE</L>
