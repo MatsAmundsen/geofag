@@ -75,7 +75,11 @@ FrontForklaring
 ```
 
 ```widget
-FrontProfile
+KaldfrontFigur
+```
+
+```widget
+VarmfrontFigur
 ```
 
 ```widget

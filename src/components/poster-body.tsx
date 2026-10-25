@@ -48,7 +48,6 @@ import {
   VolcanoTypesDiagram,
   WilsonCycleDiagram,
   AtmosphericColumnDiagram,
-  FrontVerticalProfileDiagram,
   GlobalClimateZonesDiagram,
   HadleyCloseupDiagram,
   HighPressureCrossSectionDiagram,
@@ -180,6 +179,7 @@ import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
 import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselFigur, SupercelleFigur } from "@/components/diagrams/vaerkatastrofer-figurer-2";
+import { KaldfrontFigur, VarmfrontFigur } from "@/components/diagrams/fronter-steg-figurer";
 import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
@@ -548,7 +548,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_VAERKART} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   SynopticChart: () => <RealisticSynopticChartDiagram />,
-  FrontProfile: () => <FrontVerticalProfileDiagram />,
+  KaldfrontFigur: () => <KaldfrontFigur />,
+  VarmfrontFigur: () => <VarmfrontFigur />,
   StationModel: () => <StationModelExplainedDiagram />,
   UpperAir500: () => <UpperAir500hPaMapDiagram />,
   Weather24h: () => <WeatherProgression24hDiagram />,
