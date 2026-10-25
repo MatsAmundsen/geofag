@@ -119,7 +119,7 @@ Oslo-riften ble dannet for ca. 300 millioner år siden, i sen karbon, og var akt
 OsloriftBergarter
 ```
 
-Fordi blokken sank ned, ble lagene fra kambrium og silur (for ca. 444–419 millioner år siden) bevart i Oslofeltet. Andre steder ble de slitt bort. Derfor finner vi mange fossiler, for eksempel trilobitter, i skifer og kalkstein rundt Oslo.
+Fordi blokken sank ned, ble lagene fra kambrium til silur (for ca. 539–419 millioner år siden) bevart i Oslofeltet. Andre steder ble de slitt bort. Derfor finner vi mange fossiler, for eksempel trilobitter, i skifer og kalkstein rundt Oslo.
 
 Da skorpa ble tynnere, steg magma opp. Først kom basalt, og senere store lavastrømmer av _rombeporfyr_. Rombeporfyr har store, lyse feltspatkrystaller formet som romber i en finkornet grunnmasse (Raade, 2025). Rombeporfyr er vanlig i Oslofeltet, særlig på Krokskogen og i Vestfold. Tilsvarende bergarter er bare funnet noen få andre steder i verden, i Øst-Afrika og i Antarktis (Raade, 2025). Noen steder kollapset vulkanene og dannet en stor grøft – en _kaldera_. Dypbergartene i Oslofeltet dekker ca. 60 prosent av området (Bryhni og Fossen, 2024).
 
@@ -133,7 +133,7 @@ SjekkNorgesGeologi4
 
 ## Norskehavet åpner seg
 
-Etter Oslo-riften ble skorpa vest for Norge strukket flere ganger, blant annet i perm–trias (trias: for ca. 252–201 millioner år siden) og i sen jura og kritt (for ca. 145–66 millioner år siden). Da sank store bassenger ned på det som i dag er kontinentalsokkelen, og de ble fylt med sedimenter. I noen av disse lagene ble det senere dannet olje og gass (Bryhni og Fossen, 2024). Du kan lese mer om dette i kapitlet [Geologiske ressurser](/geofag-1/geologiske-ressurser).
+Etter Oslo-riften ble skorpa vest for Norge strukket flere ganger, blant annet i perm–trias (trias: for ca. 252–201 millioner år siden) og i sen jura og i kritt (kritt: for ca. 145–66 millioner år siden). Da sank store bassenger ned på det som i dag er kontinentalsokkelen, og de ble fylt med sedimenter. I noen av disse lagene ble det senere dannet olje og gass (Bryhni og Fossen, 2024). Du kan lese mer om dette i kapitlet [Geologiske ressurser](/geofag-1/geologiske-ressurser).
 
 For ca. 55 millioner år siden sprakk kontinentet helt opp mellom Grønland og Norge, og Norskehavet begynte å åpne seg (Bryhni og Fossen, 2024). Det skjedde med mye vulkanisme. Siden da har Grønland og Norge glidd fra hverandre langs Den midtatlantiske ryggen.
 
