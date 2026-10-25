@@ -4,12 +4,12 @@ import { C, Diagram, L } from "./svg-kit";
  * Multi-panel proxy-pakke (A–E) over ca. siste 25 000 år.
  * Forenklet illustrasjon til Collapsible-eksempelet PaleoProxyEksempel.
  * Panel-ID låst med Fjord: A δ¹⁸O-is · B CO₂-bobler · C pollen · D alder · E støy.
- * Tall etter kapittelets kilder (LGM ca. 185 ppm, holocen 11 700, lav δ¹⁸O = kaldt i is).
+ * Tall etter kapitlets kilder (LGM ca. 185 ppm, holocen 11 700, lav δ¹⁸O = kaldt i is).
  * Ikke kopi av Udir-figurer.
  */
 export function PaleoProxyEksempelFigur() {
   const caption =
-    "Forenklet figurpakke over ca. siste 25 000 år. Panel A–D er relevante for ulike spørsmål; panel E er bevisst støy. Panel C er forenklet pollendiagram (urt / bjørk / furu), ikke en bestemt norsk innsjø. Panel E er moderne værstasjons-T (støy). Tall er illustrasjon etter kapittelets kilder (Lüthi mfl., 2008; Walker mfl., 2009; Mangerud, 2025b–e; NOAA GML, 2026).";
+    "Forenklet figurpakke over ca. siste 25 000 år. Panel A–D er relevante for ulike spørsmål; panel E er bevisst støy. Panel C er forenklet pollendiagram (urt / bjørk / furu), ikke en bestemt norsk innsjø. Panel E er moderne værstasjons-T (støy). Tall er illustrasjon etter kapitlets kilder (Lüthi mfl., 2008; Walker mfl., 2009; Mangerud, 2025b–e; NOAA GML, 2026).";
 
   return (
     <Diagram

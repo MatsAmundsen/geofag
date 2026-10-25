@@ -72,8 +72,7 @@ export function PaleoProxyEksempel() {
                   </td>
                   <td className="border-b border-border/50 px-3 py-2 align-top">
                     <strong>B</strong> gir gassinnhold, ikke kalenderår. <strong>C</strong> viser
-                    vegetasjon, ikke alder. <strong>E</strong> er støy (moderne vær eller
-                    irrelevant IRD).
+                    vegetasjon, ikke alder. <strong>E</strong> er støy (moderne værstasjon — feil tidsskala).
                   </td>
                 </tr>
                 <tr>
@@ -136,7 +135,7 @@ export function PaleoProxyEksempel() {
           <p>
             Yngre dryas varte ca. <strong>12 800–11 700</strong> år før nå (Mangerud, 2025e; Cohen
             mfl., 2026). De kalde dryas-periodene er oppkalt etter slekta til reinrosa,{" "}
-            <em>Dryas</em> (Harstveit og Fuglestvedt, 2025; Vik, 2026).
+            <em>Dryas</em> (Harstveit & Fuglestvedt, 2025; Vik, 2026).
           </p>
           <p>
             <strong>Panel C</strong> (pollendiagram) svarer på vegetasjonen. I en forenklet
