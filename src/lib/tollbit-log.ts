@@ -14,34 +14,27 @@ export function buildTollbitLogLine(request: Request, response: Response, now = 
   const cf = (request as unknown as { cf?: CfGeo }).cf ?? {};
   const url = new URL(request.url);
   const h = request.headers;
+  const size = response.headers.get("content-length");
+  // Feltnavn nøyaktig som i TollBits offisielle Cloudflare-snippet (flatt objekt).
   return JSON.stringify({
     timestamp: now.toISOString(),
-    ip: h.get("cf-connecting-ip") ?? "",
-    geo: {
-      country: cf.country ?? "",
-      city: cf.city ?? "",
-      region: cf.region ?? "",
-      regionCode: cf.regionCode ?? "",
-      postalCode: cf.postalCode ?? "",
-      continent: cf.continent ?? "",
-      latitude: cf.latitude ?? "",
-      longitude: cf.longitude ?? "",
-      timezone: cf.timezone ?? "",
-      colo: cf.colo ?? "",
-      asn: cf.asn ?? "",
-      asOrganization: cf.asOrganization ?? "",
-    },
-    host: url.host,
+    ip_address: h.get("cf-connecting-ip"),
+    geo_country: cf.country ?? null,
+    geo_city: cf.city ?? null,
+    geo_postal_code: cf.postalCode ?? null,
+    geo_latitude: cf.latitude ?? null,
+    geo_longitude: cf.longitude ?? null,
+    host: h.get("host") ?? url.host,
     url: url.pathname + url.search,
-    method: request.method,
-    protocol: (cf.httpProtocol as string | undefined) ?? url.protocol.replace(":", ""),
-    userAgent: h.get("user-agent") ?? "",
-    referer: h.get("referer") ?? "",
-    response: {
-      status: response.status,
-      statusText: response.statusText,
-      size: response.headers.get("content-length") ?? "",
-    },
+    request_method: request.method,
+    request_protocol: (cf.httpProtocol as string | undefined) ?? null,
+    request_user_agent: h.get("user-agent"),
+    request_latency: null,
+    request_referer: h.get("referer"),
+    response_state: null,
+    response_status: response.status,
+    response_reason: response.statusText,
+    response_body_size: size ? Number(size) : null,
   });
 }
 
