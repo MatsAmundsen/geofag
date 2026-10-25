@@ -374,9 +374,9 @@ Fordi søylen er forankret så dypt, står den nesten stille over geologisk tid.
 
 - Hawaii-Emperor-ryggen: De aktive vulkanene Kilauea og Mauna Loa ligger over hotspoten i dag. Lenger nordvest er øyene eldre og mer erodert. Maui er ca. 1 million år gammel, Oahu ca. 3 millioner år, Kauai ca. 5,5 millioner år og Midway ca. 28 millioner år.
 
-- Knekken for ca. 47 millioner år siden: Da gjør vulkankjeden en skarp knekk på 60 grader, fra nord-nordvest til vest-nordvest. Det viser at Stillehavsplaten endret retning.
+- Knekken for ca. 47 millioner år siden: Da gjør vulkankjeden en skarp knekk på 60 grader, fra nord-nordvest til vest-nordvest. Det tolkes ofte som at Stillehavsplaten endret retning, muligens i kombinasjon med at hotspoten også flyttet seg.
 
-- Island: En kraftig mantelplym ligger rett under Den midtatlantiske ryggen. Dekompresjonssmelting fra spredningen og ekstra varme fra plymen har gitt så mye basalt at skorpen her er over 35–40 km tykk, og ryggen står over havet.
+- Island: En kraftig mantelplym ligger rett under Den midtatlantiske ryggen. Dekompresjonssmelting fra spredningen og ekstra varme fra plymen har gitt så mye basalt at skorpen her er ca. 35–40 km tykk (lokalt tykkere), og ryggen står over havet.
 
 ### Wilsonsyklusen: Havbassengenes liv og død
 
@@ -404,7 +404,7 @@ Kaledonidene ble til da Baltika kolliderte med Laurentia (Nord-Amerika og Grønl
 
 Oslofeltet er en gammel rift, ikke en aktiv plategrense. For ca. 300 millioner år siden, i overgangen mellom karbon og perm, sprakk skorpen opp fra Skagerrak til Østerdalen (NGU, u.å.-a). I perm ble det en riftdal med strekk, store forkastninger og vulkaner. I Oslofeltet har bergartene spor etter vulkanisme for 250–300 millioner år siden, blant annet rombeporfyr, larvikitt og basalt. De er ikke de yngste bergartene på land i Norge. På Andøya ligger sedimenter fra midtre og øvre jura og nedre kritt, de eneste bergartene av mesozoisk alder på land i landet (NGU, 2016). I dag ser vi graben, lava og forkastningskanter mot grunnfjellet.
 
-Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsisen presset skorpen ned. Da isen smeltet, hevet landet seg. Marin grense, det høyeste havnivået etter siste istid, ligger i dag fra 0 til 220 m over havet, avhengig av sted (NGU, u.å.-b). Mange fjorder og daler følger også om lag 200 millioner år gamle forkastningssoner fra da Atlanteren åpnet seg.
+Litosfæren ligger i likevekt på astenosfæren. Det kalles isostasi. Innlandsisen presset skorpen ned. Da isen smeltet, hevet landet seg. Marin grense, det høyeste havnivået etter siste istid, ligger i dag fra 0 til 220 m over havet, avhengig av sted (NGU, u.å.-b). Mange fjorder og daler følger også gamle forkastningssoner fra jura, da Atlanteren begynte å åpne seg (for ca. 180–150 millioner år siden).
 
 ## Sentralt fagvokabular
 
