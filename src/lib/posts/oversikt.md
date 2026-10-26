@@ -176,7 +176,7 @@ SjekkOversikt5
 
 ## Hva betyr klimasystemet for Norge?
 
-Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mild for breddegraden. Jo varmere klimaet er, desto mer fukt kan lufta holde. Vestlandet, der lufta allerede tvinges opp av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
+Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mild for breddegraden (Store norske leksikon [SNL], u.å.). Jo varmere klimaet er, desto mer fukt kan lufta holde. Vestlandet, der lufta allerede tvinges opp av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
 
 AMOC og NAO er sentrale usikkerhets- og variasjonsmomenter. En svekket nordovertransport av varme kan dempe oppvarmingen i Nord-Atlanteren uten å «slå av Golfstrømmen». Varmen langs norskekysten kommer med Den norske atlanterhavsstrømmen. Klima i Norge er et samspill mellom atmosfære, hav og geografi.
 

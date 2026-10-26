@@ -213,65 +213,6 @@ export const KILDER_G2 = {
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
     },
   ],
-  kryosfare: [
-    {
-      prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.). ",
-      italic: "All about sea ice",
-      suffix: ".",
-      href: "https://nsidc.org/learn/parts-cryosphere/sea-ice",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
-      italic: "Bre",
-      suffix: ".",
-      href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/bre/",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
-      italic: "Snøskredvarsling",
-      suffix: ".",
-      href: "https://www.varsom.no/snoskred",
-    },
-    {
-      prefix: "Store norske leksikon. (u.å.). ",
-      italic: "Permafrost",
-      suffix: ".",
-      href: "https://snl.no/permafrost",
-    },
-    {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
-      italic:
-        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
-      suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/",
-    },
-  ],
-  energi: [
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-a). ",
-      italic: "Havvind",
-      suffix: ".",
-      href: "https://www.nve.no/energi/energisystem/havvind/",
-    },
-    {
-      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
-      italic: "Vindkraft",
-      suffix: ".",
-      href: "https://www.nve.no/energi/energisystem/vindkraft/",
-    },
-    {
-      prefix: "Store norske leksikon. (u.å.). ",
-      italic: "Tidevann",
-      suffix: ".",
-      href: "https://snl.no/tidevann",
-    },
-    {
-      prefix: "Utdanningsdirektoratet. (2020). ",
-      italic: "Læreplan i geofag (GFG01-03)",
-      suffix: ".",
-      href: "https://www.udir.no/lk20/gfg01-03",
-    },
-  ],
   feltG2: [
     {
       prefix: "Argo. (u.å.). ",
@@ -340,9 +281,9 @@ export const KILDER_G2 = {
     },
     {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
-      italic: "Snøskredvarsel",
-      suffix: ". Varsom.",
-      href: "https://www.varsom.no/snoskred/",
+      italic: "Overvåking og varsling",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/overvaking-og-varsling/",
     },
     {
       prefix: "Norsk helseinformatikk. (2024, 24. juli). ",
@@ -430,8 +371,9 @@ export const KILDER_G2 = {
     },
     {
       prefix: "Woods Hole Oceanographic Institution [WHOI]. (u.å.). ",
-      italic: "How do the floats work?",
-      href: "https://www2.whoi.edu/site/argo/technology/how-do-the-floats-work/",
+      italic: "Conductivity, temperature, depth (CTD) sensors",
+      suffix: ".",
+      href: "https://www.whoi.edu/what-we-do/explore/instruments/instruments-sensors-samplers/conductivity-temperature-depth-ctd-sensors/",
     },
     {
       prefix: "World Meteorological Organization [WMO]. (2024). ",

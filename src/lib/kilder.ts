@@ -2547,13 +2547,7 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.noaa.gov/jetstream/global/jet-stream",
     },
-    {
-      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
-      italic: "A15) How do tropical cyclones form?",
-      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
-      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
-    },
-    {
+        {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Hadleycellen",
       suffix: ".",
@@ -3095,45 +3089,6 @@ export const KILDER = {
       href: "https://www.dsbinfo.no/DSBno/2017/rapport/skredulykka-svalbard-nynorsk/",
     },
   ],
-  klima: [
-    {
-      prefix: "World Meteorological Organization [WMO]. (u.å.). ",
-      italic: "Climate",
-      suffix: ".",
-      href: "https://wmo.int/topics/climate",
-    },
-    {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
-      italic:
-        "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
-      suffix: ".",
-      href: "https://www.ipcc.ch/report/ar6/wg1/",
-    },
-    {
-      prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-a). ",
-      italic: "The greenhouse effect",
-      suffix: ".",
-      href: "https://science.nasa.gov/climate-change/faq/what-is-the-greenhouse-effect/",
-    },
-    {
-      prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-b). ",
-      italic: "Ocean warming",
-      suffix: ".",
-      href: "https://climate.nasa.gov/vital-signs/ocean-warming/",
-    },
-    {
-      prefix: "National Aeronautics and Space Administration [NASA]. (u.å.-c). ",
-      italic: "Climate and Earth’s energy budget",
-      suffix: ".",
-      href: "https://earthobservatory.nasa.gov/features/EnergyBalance",
-    },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
-      italic: "El Niño and La Niña",
-      suffix: ".",
-      href: "https://www.climate.gov/enso",
-    },
-  ],
   klimaHub: [
     {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
@@ -3272,10 +3227,22 @@ export const KILDER = {
       href: "https://www.climate.gov/news-features/understanding-climate/el-nino-and-la-nina-frequently-asked-questions",
     },
     {
-      prefix: "Climate Prediction Center. (u.å.). ",
+      prefix: "Climate Prediction Center. (u.å.-a). ",
       italic: "Oceanic Niño Index (ONI)",
       suffix: ". National Oceanic and Atmospheric Administration.",
       href: "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/oni/v6/",
+    },
+    {
+      prefix: "Climate Prediction Center. (u.å.-b). ",
+      italic: "Relative Oceanic Niño Index (RONI)",
+      suffix: ". National Oceanic and Atmospheric Administration.",
+      href: "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (2026, 13. januar). ",
+      italic: "Public Information Statement 26-05: Implementing a Relative Oceanic Niño Index effective February 1, 2026",
+      suffix: " [PDF].",
+      href: "https://www.weather.gov/media/notification/pdf_2026/pns26-05_Relative_ONI.pdf",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -3904,7 +3871,7 @@ export const KILDER = {
       suffix: "(5), 1953–1968.",
       href: "https://doi.org/10.5194/cp-16-1953-2020",
     },
-    {
+        {
       prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). Summary for policymakers. I ",
       italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report",
       suffix: " (s. 3–32). Cambridge University Press.",
@@ -4090,13 +4057,7 @@ export const KILDER = {
       suffix: ".",
       href: "https://snl.no/dendrokronologi",
     },
-    {
-      prefix: "Shakun, J. D., & Carlson, A. E. (2010). A global perspective on Last Glacial Maximum to Holocene climate change. ",
-      italic: "Quaternary Science Reviews, 29",
-      suffix: "(15–16), 1801–1816.",
-      href: "https://doi.org/10.1016/j.quascirev.2010.03.016",
-    },
-    {
+        {
       prefix: "Støp-Bowitz, C. (2026, 2. august). Foraminiferer. I ",
       italic: "Store norske leksikon",
       suffix: ".",
@@ -4126,13 +4087,7 @@ export const KILDER = {
       suffix: ".",
       href: "https://snl.no/Nordsjøen",
     },
-    {
-      prefix: "Tierney, J. E., Zhu, J., King, J., Malevich, S. B., Hakim, G. J., & Poulsen, C. J. (2020). Glacial cooling and climate sensitivity revisited. ",
-      italic: "Nature, 584",
-      suffix: "(7822), 569–573.",
-      href: "https://doi.org/10.1038/s41586-020-2617-x",
-    },
-    {
+        {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",
@@ -4217,14 +4172,8 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.ipcc.ch/report/ar6/wg1/",
     },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
-      italic: "Marin grense",
-      suffix: ".",
-      href: "https://www.ngu.no/emne/marin-grense",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
+        {
+      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.). ",
       italic: "Om kart over marin grense",
       suffix: ".",
       href: "https://www.ngu.no/om-geologi/om-kart-over-marin-grense",
@@ -4307,13 +4256,7 @@ export const KILDER = {
       suffix: ".",
       href: "https://snl.no/stormflo",
     },
-    {
-      prefix: "National Hurricane Center [NHC]. (2021). ",
-      italic: "The Saffir-Simpson Hurricane Wind Scale",
-      suffix: " [PDF].",
-      href: "https://www.nhc.noaa.gov/pdf/sshws.pdf",
-    },
-    {
+        {
       prefix: "National Hurricane Center [NHC]. (u.å.-a). ",
       italic: "Tropical cyclone climatology",
       suffix: ".",
@@ -4325,43 +4268,13 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.nhc.noaa.gov/aboutsshws.php",
     },
-    {
-      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.-a). ",
-      italic: "A11) What is the 'eye'? How is it formed and maintained?",
-      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
-      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A11.html",
-    },
-    {
-      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.-b). ",
-      italic: "A15) How do tropical cyclones form?",
-      suffix: " Hurricane Research Division, Tropical Cyclone FAQ.",
-      href: "https://www.aoml.noaa.gov/hrd/tcfaq/A15.html",
-    },
-    {
-      prefix: "Rappaport, E. N. (2014). Fatalities in the United States from Atlantic tropical cyclones: New data and interpretation. ",
-      italic: "Bulletin of the American Meteorological Society, 95",
-      suffix: "(3), 341–346.",
-      href: "https://doi.org/10.1175/BAMS-D-12-00074.1",
-    },
-    {
+                {
       prefix: "Kartverket. (u.å.). ",
       italic: "Se havnivå",
       suffix: ".",
       href: "https://www.kartverket.no/til-sjos/se-havniva",
     },
-    {
-      prefix: "Kartverket. (2021, 30. november). ",
-      italic: "Hva er forskjellen på tidevann og vannstand?",
-      suffix: "",
-      href: "https://www.kartverket.no/til-sjos/se-havniva/lar-om-tidevann-og-vannstand/hva-er-forskjellen-pa-tidevann-og-vannstand",
-    },
-    {
-      prefix: "Selberg, L. A., Skjerdal, M. S., Julsrud, I. R., Øiestad, M., Andersen, A. S. H., & Kristensen, N. M. (2020). ",
-      italic: "Hendelserapport: Ekstremværet Elsa mandag 10. og tirsdag 11. februar 2020",
-      suffix: " (METinfo nr. 17/2020). Meteorologisk institutt.",
-      href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/ekstremvaer-far-navn/_/attachment/download/f28f8efb-6df7-4d3b-8cbc-785babddfdb9:993172a9d59d9d941f406a4ebe2a2776a9d14e51/MET-info-17-2020.pdf",
-    },
-    {
+            {
       prefix: "Store norske leksikon. (u.å.-d). ",
       italic: "Baroklinitet",
       suffix: ".",
@@ -4398,6 +4311,12 @@ export const KILDER = {
       href: "https://www.met.no/nyhetsarkiv/over-100-ar-siden-det-har-regnet-sa-mye-pa-ostlandet",
     },
     {
+      prefix: "Svensson, T. (2023, 5. september). ",
+      italic: "Overraskende årsak til flom på Østlandet",
+      suffix: ". Bjerknessenteret for klimaforskning.",
+      href: "https://bjerknes.uib.no/aktuelt/overraskende-arsak-til-flom-pa-ostlandet",
+    },
+    {
       prefix: "Meteorologisk institutt. (u.å.). ",
       italic: "Polare lavtrykk",
       suffix: ".",
@@ -4415,26 +4334,8 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/toerke-flom-og-jordskredaaret-2023/",
     },
-    {
-      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
-      italic: "Thunderstorm hazards – tornadoes",
-      suffix: ". JetStream.",
-      href: "https://www.noaa.gov/jetstream/thunderstorms/thunderstorm-hazards-tornadoes",
-    },
-    {
-      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-a). ",
-      italic: "Severe weather 101: Tornado basics",
-      suffix: ".",
-      href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/",
-    },
-    {
-      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-b). ",
-      italic: "Severe weather 101: Tornado types",
-      suffix: ".",
-      href: "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/",
-    },
-    {
-      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.-c). ",
+                {
+      prefix: "National Severe Storms Laboratory [NSSL]. (u.å.). ",
       italic: "Types of thunderstorms",
       suffix: ".",
       href: "https://www.nssl.noaa.gov/education/svrwx101/thunderstorms/types/",

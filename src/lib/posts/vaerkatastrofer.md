@@ -18,7 +18,7 @@ OrkanForklaring
 >
 > En høststorm gir orkan på Kråkenes fyr ved Stad. Er det det samme som en orkan i Karibia? Svar før du leser videre – vi kommer tilbake til det i tabellen under.
 
-[Værkatastrofer](/tema/vaerkatastrofer) samler farer fra vind og hav. Ordet orkan brukes både om selve vinden og om det intense lavtrykket som gir vinden. Vindstyrken er orkan når vinden er over 32,6 m/s (64 knop eller mer, ca. 118 km/t). Den måles ti meter over bakken i ti minutter. På Beauforts skala skiller vi mellom trinnene for vindstyrke; orkan er styrke 12, det høyeste trinnet. Storm ligger under orkan (Store norske leksikon, u.å.-a).
+[Værkatastrofer](/tema/vaerkatastrofer) samler farer fra vind og hav. Ordet orkan brukes både om selve vinden og om det intense lavtrykket som gir vinden. Vindstyrken er orkan når vinden er over 32,6 m/s (over 63 knop, ca. 118 km/t). Den måles ti meter over bakken i ti minutter. På Beauforts skala skiller vi mellom trinnene for vindstyrke; orkan er styrke 12, det høyeste trinnet. Storm ligger under orkan (Store norske leksikon, u.å.-a).
 
 En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind på 74 mph (miles per hour, ca. 119 km/t), 64 knop, eller mer. På Saffir-Simpson-skalaen starter kategori 1 ved 119 km/t. I det vestlige Nord-Stillehavet kalles de tyfoner. I Det indiske hav og Sør-Stillehavet kalles de sykloner. En stor orkan har middelvind på minst 111 mph, 96 knop, og er kategori 3, 4 eller 5. National Hurricane Center (det amerikanske orkansenteret) bruker middelvinden over ett minutt, mens norske vindstyrker bruker middelvinden over ti minutter. Derfor kan ikke tallene sammenlignes direkte (National Hurricane Center, u.å.-a; u.å.-b).
 
@@ -65,7 +65,7 @@ Tornadoer dannes oftest sammen med større systemer: kaldfronter, linjebyer og l
 
 EF-skalaen har seks trinn, fra EF0 til EF5, og graderer en tornado ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.-a).
 
-En supercelle er en langlivet bygesky med en skrå, roterende oppdrift. Den roterende oppdriften kalles en mesosyklon, og den kan finnes 20 til 60 minutter før en tornado dannes (National Severe Storms Laboratory, u.å.-c). Framre nedsynk er det regnkjølte området med mest nedbør. Bakre nedsynk er tørrere og varmere og lager en klar glipe formet som en hestesko. Tornadoer dannes oftest ved veggskya (den lave skyen under den sterkeste oppdriften) (National Weather Service, u.å.-b).
+En supercelle er en langlivet bygesky med en skrå, roterende oppdrift. Den roterende oppdriften kalles en mesosyklon, og den kan finnes 20 til 60 minutter før en tornado dannes (National Severe Storms Laboratory, u.å.). Framre nedsynk er det regnkjølte området med mest nedbør. Bakre nedsynk er tørrere og varmere og lager en klar glipe formet som en hestesko. Tornadoer dannes oftest ved veggskya (den lave skyen under den sterkeste oppdriften) (National Weather Service, u.å.-b).
 
 ```widget
 SupercellAnatomy
