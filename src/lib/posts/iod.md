@@ -8,6 +8,10 @@
 >
 > • *Modeller og modellering:* Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener (Udir, u.å.-a). De tre fasene er en slik modell.
 
+> **Hva tror du?**
+>
+> Når havet er varmere enn normalt utenfor Øst-Afrika og kjøligere nær Indonesia, hva tror du skjer med været? Får Øst-Afrika mer eller mindre regn? Og hva med Australia? Tenk over det før du leser videre. Vi kommer tilbake til det i delen om positiv fase.
+
 ## Hva er den indiske hav-dipolen?
 
 ```widget
@@ -55,6 +59,8 @@ Trykket og vinden fører til dette:
 - Over det varme havet utenfor Øst-Afrika stiger fuktig luft og danner skyer og regnbyger (konveksjon). Vinden fører fuktigheten inn over land, og Øst-Afrika kan få perioder med kraftig regn (Saji mfl., 1999). Der den fuktige lufta presses opp over høylandet, kan det i tillegg bli orografisk nedbør. Det er regn som dannes når lufta tvinges opp over fjell og høyland.
 - Når kraftig regn varer i flere uker, blir jorda mettet med vann. Da renner mer av regnet av på overflaten og ut i elvene, og det kan gi flom.
 - Over det kalde havet i øst synker lufta, og det dannes færre skyer (BOM, u.å.). Det gir ofte tørrere vær enn normalt i Indonesia (Saji mfl., 1999). Deler av Australia får ofte mindre regn og høyere temperatur enn normalt om vinteren og våren (BOM, u.å.).
+
+Det er svaret på «Hva tror du?»: I positiv fase får Øst-Afrika ofte mer regn, mens Indonesia og deler av Australia ofte blir tørrere.
 
 ### Eksempel: positiv IOD i 2019
 
@@ -139,6 +145,12 @@ Bølgene i atmosfæren virker nå motsatt vei. Værsystemene som krysser Sør-Au
 **Walker-sirkulasjon:** Øst–vest-gående luftsirkulasjon langs ekvator, med stigende luft over varmt hav og synkende luft over kaldt hav.
 
 **Jetstrøm:** Smalt belte med sterk vind høyt oppe, langs grensen mellom varm og kald luft.
+
+## Sammendrag
+
+```widget
+SammendragIod
+```
 
 ## Test deg selv
 

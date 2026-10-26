@@ -1493,6 +1493,15 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // IOD (G2): Terra Mater-mal – «Hva tror du?» tidlig og Sammendrag før quiz (Geo fagsjekker).
+    flag: "g2-iod-terra-mater-mal-2026-10-26",
+    slug: "iod",
+    stale: [
+      "De tre fasene er en slik modell.\n\n## Hva er den indiske hav-dipolen?",
+      "**Jetstrøm:** Smalt belte med sterk vind høyt oppe, langs grensen mellom varm og kald luft.\n\n## Test deg selv",
+    ],
+  },
+  {
     // Vindsystemet: OneVsThreeCells + WindCells → TreCellerFigur (Mats ja mockup 26.10.2026).
     flag: "g2-vindsystemet-tre-celler-2026-10-26",
     slug: "vindsystemet",

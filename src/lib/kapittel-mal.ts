@@ -493,6 +493,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Varv, pollen, C-14 og årringer gir alder og vegetasjon etter istiden. En C-14-alder må kalibreres til kalenderår.",
     "Yngre dryas, for ca. 12 800–11 700 år siden, var trolig utløst av at smeltevann svekket AMOC kraftig. PETM viser hva et stort karbonutslipp gjør, men dagens utslipp går ca. ti ganger så fort. Paleoklima er ett av grunnlagene for at FNs klimapanel anslår klimafølsomheten til ca. 3 °C.",
   ],
+  Iod: [
+    "Den indiske hav-dipolen (IOD) er forskjellen i havtemperatur mellom vest og øst i den tropiske delen av Det indiske hav. Dipole Mode Index (DMI) over +0,4 °C i minst åtte uker regnes som positiv IOD.",
+    "I positiv fase er havet varmere utenfor Øst-Afrika og kjøligere nær Indonesia. Vestavinden svekkes, oppvelling øker i øst, og vind og hav forsterker hverandre (positiv tilbakekobling). Øst-Afrika får ofte mer regn, Indonesia og deler av Australia ofte mindre.",
+    "I negativ fase snur mønsteret. Da blir det ofte mer regn mot Indonesia og Sør-Australia, og tørrere vær i Øst-Afrika.",
+    "IOD er et eget mønster, men kan opptre samtidig med El Niño eller La Niña. Sammen kan de forsterke tørke eller regn i Australia.",
+    "Jetstrømmene følger temperaturforskjellene i lufta. En skarp havfront, som sør i Det indiske hav, kan forsterke polarjeten, men havet styrer den ikke alene.",
+  ],
 };
 
 export function sjekkWidgetIds(): string[] {

@@ -665,10 +665,12 @@ describe("chapter posters from this pull request", () => {
   it("keeps the IOD poster on the template", () => {
     const md = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "posts/iod.md"), "utf8");
     const ids = listedWidgetIds(injectPosterWidgets(md));
-    for (const id of ["IodForklaring", "QuizIod"]) {
+    for (const id of ["IodForklaring", "SammendragIod", "QuizIod"]) {
       assert.equal(ids.has(id), true, `iod missing ${id}`);
       assert.equal((md.match(new RegExp(id, "g")) ?? []).length, 1, id);
     }
+    assert.equal(md.includes("**Hva tror du?**"), true);
+    assert.equal(md.includes("## Sammendrag"), true);
     assert.equal(md.includes("!"), false);
     assert.equal(md.includes("<"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
