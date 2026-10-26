@@ -1,6 +1,6 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte, både nasjonalt og globalt (Udir, u.å.-b).
+> Målet er at du skal kunne drøfte hvordan energiressurser fra hav og atmosfære kan utnyttes på en bærekraftig måte, både nasjonalt og globalt (Utdanningsdirektoratet [Udir], u.å.-b).
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -38,7 +38,7 @@ I 2023 ble det produsert 14 terawattimer vindkraft i Norge, 9,1 prosent av den s
 
 Vindkraft er utslippsfri og fornybar, og likevel omstridt i Norge. Den legger beslag på relativt store landområder og kan være et problem for reindriftsnæringen. Fosen-saken er et eksempel. Norge har derfor i fortsettelsen satset hovedsakelig på vindkraftparker til havs (Store norske leksikon, u.å.-a). Bærekraft er denne avveiningen, og ikke bare at vinden kommer tilbake.
 
-En moderne vindturbin roterer når vinden i navhøyde er mellom 3 og 25 meter per sekund. Størst ytelse kommer normalt ved cirka 13 meter per sekund. Over det justeres bladene slik at mer vindenergi ikke fanges inn. Det gjøres for å redusere de mekaniske påkjenningene. Passerer vinden 25 meter per sekund, bremses turbinen og settes ut av drift. Vinden er sterkere og mer stabil høyt oppe, så tårnene bygges høyere (Store norske leksikon, u.å.-d).
+En moderne vindturbin roterer når vinden i navhøyde, det vil si høyden der turbinens nav sitter, er mellom 3 og 25 meter per sekund. Størst ytelse kommer normalt ved cirka 13 meter per sekund. Over det justeres bladene slik at mer vindenergi ikke fanges inn. Det gjøres for å redusere de mekaniske påkjenningene. Passerer vinden 25 meter per sekund, bremses turbinen og settes ut av drift. Vinden er sterkere og mer stabil høyt oppe, så tårnene bygges høyere (Store norske leksikon, u.å.-d). Effekten i vinden øker med vindfarten i tredje potens (P ∝ v³). Jo raskere vinden er, desto mer energi kan turbinen ta ut. Derfor bygges tårnene høye, og derfor er havvind attraktivt.
 
 ```widget
 WindPowerModel
@@ -46,11 +46,11 @@ WindPowerModel
 
 ## Havvind
 
-Havvind er vind brukt til kraftproduksjon til havs. En havvindpark er vindturbiner på grunne havområder, knyttet sammen i et nett. Understellet kan stå direkte på kontinentalsokkelen, eller flyte, i stål eller betong. Står de på sokkelen, må havet ikke være for dypt. Kina har mest havvind, fulgt av Storbritannia og Tyskland. Ved utgangen av 2025 sto Kina for over halvparten av verdens havvindkapasitet (Global Wind Energy Council [GWEC], 2026).
+Havvind er vind brukt til kraftproduksjon til havs. En havvindpark er vindturbiner på grunne havområder, knyttet sammen i et nett. Understellet kan stå direkte på kontinentalsokkelen (det grunne havområdet utenfor kysten), eller flyte, i stål eller betong. Dersom turbinene skal stå på sokkelen, må havet ikke være for dypt. Kina har mest havvind, fulgt av Storbritannia og Tyskland. Ved utgangen av 2025 sto Kina for over halvparten av verdens havvindkapasitet (Global Wind Energy Council [GWEC], 2026).
 
-Ved utgangen av 2016 var det 3589 offshore vindturbiner i drift i Europa, 12 631 megawatt, i 84 parker i 11 land. Gjennomsnittlig årsproduksjon i 2017 var drøyt 40 terawattimer. I 2021 var den totale kapasiteten fra havvind økt til 26 gigawatt. Tallene hører til de årene, ikke til et senere år (Store norske leksikon, u.å.-b).
+GWEC har beregnet at verdens samlede havvindkapasitet ved utgangen av 2025 var 92,5 gigawatt. Kina sto for 48,4 gigawatt, om lag 52 prosent av verdenskapasiteten. Storbritannia og Tyskland fulgte blant de fem største markedene (GWEC, 2026).
 
-Hywind Scotland, ca. 25 km utenfor Peterhead nordøst i Skottland, er en testpark på flytende understell som Equinor satte i drift i 2017, utviklet sammen med Norsk Hydro (Equinor, u.å.-b). Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b). Hywind Tampen (88 MW) skal dekke om lag 35 prosent av strømbehovet på Snorre- og Gullfaks-plattformene og kutte om lag 200 000 tonn CO₂ i året (Equinor, u.å.-a). Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.
+Hywind Scotland, ca. 25 km utenfor Peterhead nordøst i Skottland, er en testpark på flytende understell som Equinor (tidligere Statoil) satte i drift i 2017, utviklet sammen med Norsk Hydro (Equinor, u.å.-b). Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b). Hywind Tampen (88 MW) skal dekke om lag 35 prosent av strømbehovet på Snorre- og Gullfaks-plattformene og kutte om lag 200 000 tonn CO₂ i året (Equinor, u.å.-a). Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.
 
 ```widget
 OffshoreWindShelf
@@ -64,7 +64,7 @@ SjekkEnergi1
 
 Tidevann, flo og fjære, er en regelmessig veksling i vannstanden langs kystene. Laveste vannstand er fjære eller lavvann. Høyeste er flo eller høyvann. I innhav og innsjøer er tidevannet som regel ubetydelig. Mellom to høyvann, eller to lavvann, går det på våre kyster om lag 12 timer og 25 minutter, et halvt månedøgn. Størst veksling, springflo, kommer omtrent ved nymåne og fullmåne. Minst veksling, nippflo, kommer om lag sju og et kvart døgn før og etter springflo (Store norske leksikon, u.å.-c).
 
-Isaac Newton viste at tidevannet følger tyngdekraften. Det skyldes månens og solas tiltrekning på havet. Tiltrekningen er sterkere på siden som vender mot månen. På den motsatte siden er den svakere enn gjennomsnittet, og vannet strømmer mot det motsatte punktet. Fordi jorda roterer, blir det to høyvann i døgnet (Store norske leksikon, u.å.-c). Tidevannet kommer altså ikke av vinden.
+Isaac Newton viste at tidevannet følger tyngdekraften. Det skyldes månens og solas tiltrekning på havet. Tidevannskraften er forskjellen i månens tiltrekning over jorda. Den strekker havet ut mot månen på den ene siden og bort fra månen på den andre, så det blir to flodbølger. Fordi jorda roterer, får vi to høyvann i døgnet (Store norske leksikon, u.å.-c). Tidevannet kommer altså ikke av vinden.
 
 ## Bølgekraft
 

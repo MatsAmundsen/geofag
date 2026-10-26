@@ -1275,6 +1275,27 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Energi fra hav og atmosfære (G2): Terra Mater fase 1–2 (må-punkter M1–M4).
+    flag: "g2-energi-hav-luft-terra-mater-2026-10-26",
+    slug: "energi-hav-luft",
+    stale: [
+      "Tallene hører til de årene",
+      "vannet strømmer mot det motsatte punktet",
+      "vinden i navhøyde er mellom",
+    ],
+  },
+  {
+    // Værkart og værutvikling (G2): Terra Mater fase 1–2 (må-punkter M1–M3).
+    flag: "g2-vaerkart-terra-mater-2026-10-26",
+    slug: "vaerkart",
+    stale: [
+      "(Udir, u.å.-b)",
+      "Ahrens & Henson",
+      "Bjerknes & Solberg",
+      "Dette steget kalles syklogenese",
+    ],
+  },
+  {
     // Det globale vindsystemet (G2): Terra Mater fase 1–2 (må-punkter M1–M3).
     flag: "g2-vindsystemet-terra-mater-2026-10-26",
     slug: "vindsystemet",
@@ -1292,6 +1313,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "Mineralet *zirkon* er særlig viktig",
       "Med *luminescensdatering* (OSL) finner vi",
       "(Mangerud & Spjeldnæs, 2025)",
+    ],
+  },
+  {
+    // Havstrømmer (G2): Terra Mater fase 1–2 (må-punkter M1–M7: Nansen og drivisen, havvirvler drevet av vinden, årsakskjede for vestlig intensivering, randstrøm/saltholdighet/tetthet/kontinentalskråning/stormflo ved første bruk, «man» fjernet, setninger over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
+    flag: "g2-havstrommer-terra-mater-2026-10-26",
+    slug: "havstrommer",
+    stale: [
+      "la Fridtjof Nansen merke til at isfjellene ikke drev med vinden",
+      "corioliseffekten blir sterkere jo lenger nord man kommer",
+      "(Weber & Bjørndalen, 2024)",
     ],
   },
 ];
