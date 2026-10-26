@@ -38,7 +38,7 @@ const LANINA_STATUS = [
   "Forsterket Walker-sirkulasjon.",
 ];
 
-const BJERKNES_STEPS = ["1 Vind", "2 SST", "3 Regn", "4 Luft", "5 Løkke"];
+const BJERKNES_STEPS = ["1 Vind", "2 Overflate", "3 Regn", "4 Luft", "5 Løkke"];
 const BJERKNES_STATUS = [
   "1 · De østlige vindene svekkes",
   "2 · Sentrum og øst blir varmere",
@@ -471,7 +471,7 @@ function NeutralScene({
 
       {showConv && (
         <>
-          <CloudStack cx={230} cy={105} label="Dyp konveksjon & regn" />
+          <CloudStack cx={230} cy={105} label="Dyp konveksjon og regn" />
           <RainStreaks x={230} y0={145} y1={210} n={4} />
           <g className="enso-rise">
             <Arrow d="M 170 195 L 170 70" marker={m.warm} color={C.warm} width={2.8} />
@@ -533,7 +533,8 @@ function ElNinoScene({
         </L>
       </g>
 
-      {/* Steg 1: primært svekket østlig; valgfri svak vestlig anomali */}
+      {/* Steg 1: primært svekket østlig; valgfri svak vestlig anomali.
+          Steg ≥2: sterk vestlig får egen etikett; «Svekket østlig» flyttes østover. */}
       <g className="enso-dash" opacity={0.55}>
         <Arrow
           d="M 620 200 L 380 200"
@@ -543,10 +544,17 @@ function ElNinoScene({
           dash="4 6"
         />
       </g>
-      <L x="500" y="186" fill={C.teal} size={12} weight={700} anchor="middle">
+      <L
+        x={step >= 2 ? "640" : "500"}
+        y="186"
+        fill={C.teal}
+        size={12}
+        weight={700}
+        anchor={step >= 2 ? "start" : "middle"}
+      >
         Svekket østlig passat
       </L>
-      {step >= 1 && (
+      {step === 1 && (
         <>
           <g opacity={0.45}>
             <Arrow
@@ -562,15 +570,20 @@ function ElNinoScene({
         </>
       )}
       {step >= 2 && (
-        <g className="enso-dash">
-          <Arrow
-            d="M 280 200 L 520 200"
-            marker={m.warm}
-            color={C.warm}
-            width={2.8}
-            dash="5 4"
-          />
-        </g>
+        <>
+          <g className="enso-dash">
+            <Arrow
+              d="M 280 200 L 520 200"
+              marker={m.warm}
+              color={C.warm}
+              width={2.8}
+              dash="5 4"
+            />
+          </g>
+          <L x="400" y="186" fill={C.warm} size={12} weight={700} anchor="middle">
+            Vestlig vind
+          </L>
+        </>
       )}
 
       {(showWarm || showFull) && (
@@ -609,7 +622,7 @@ function ElNinoScene({
 
       {showRain && (
         <>
-          <CloudStack cx={520} cy={105} scale={1.05} label="Konveksjon & regn flyttet øst" />
+          <CloudStack cx={520} cy={105} scale={1.05} label="Konveksjon og regn flyttet øst" />
           <RainStreaks x={520} y0={148} y1={215} n={4} />
           <g className="enso-sink">
             <Arrow d="M 180 70 L 180 190" marker={m.cold} color={C.cold} width={2.6} />
@@ -696,7 +709,7 @@ function LaNinaScene({
             opacity="0.32"
           />
           <L x="210" y="292" fill="#fff" size={13} weight={800}>
-            Ekstremt varmt basseng i vest
+            Forsterket varmt basseng i vest
           </L>
           <L x="520" y="340" fill="#7dd3fc" size={13} weight={700}>
             Brattere termoklin · kaldere øst
@@ -762,7 +775,7 @@ export function BjerknesLoopDiagram() {
 
   const nodes = [
     { id: 1, label: "Østlige vinder\nsvekkes", x: 450, y: 78 },
-    { id: 2, label: "SST varmere\nsentrum/øst", x: 700, y: 230 },
+    { id: 2, label: "Overflate varmere\nsentrum/øst", x: 700, y: 230 },
     { id: 3, label: "Regn flytter\nmot øst", x: 450, y: 390 },
     { id: 4, label: "Lufta følger\nmed", x: 200, y: 230 },
   ];
