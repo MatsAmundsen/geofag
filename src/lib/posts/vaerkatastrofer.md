@@ -101,7 +101,7 @@ MeteorologicalBomb
 
 ## Atmosfæriske elver
 
-Atmosfæriske elver er lange transportårer for vanndamp. De er typisk om lag 2000 kilometer lange og 300–500 kilometer brede. Tropiske luftmasser føres mot våre breddegrader, og når de kommer til Norge, blir vanndampen til regn. Lufta er så varm at nedbøren ofte faller som regn helt til fjells. Nedbøren forsterkes når lufta løftes over fjellene. Det kalles orografisk nedbør (Store norske leksikon, u.å.-f).
+Atmosfæriske elver er lange transportårer for vanndamp. De er typisk om lag 2000 kilometer lange og 300–500 kilometer brede. Når de treffer norskekysten, blir vanndampen til regn, ofte forsterket av orografisk løft over fjellene (Store norske leksikon, u.å.-f). Hvordan elven henger sammen med jetstrømmen og lavtrykksbanen, står i kapitlet [Jetstrømmer](/tema/jetstrommer). Her ser vi dem som en kilde til ekstremnedbør, som under ekstremværet Hans.
 
 ```widget
 AtmosphericRiver
@@ -119,11 +119,19 @@ Meteorologisk institutt varslet ekstremt mye regn på rødt nivå, og NVE oppgra
 HansVarselkjede
 ```
 
-At en ekstremværhendelse inntreffer, skyldes ikke nødvendigvis klimaendringene i seg selv. Hvordan den utvikler seg, kan likevel påvirkes. Klimaforsker Hans Olav Hygen sier at hendelsen med så ekstreme nedbørmengder blir påvirket av klimaendringene, og at klimaendringene er med på å forsterke været (Meteorologisk institutt, 2023).
+Hvordan klimaendringer knyttes til slike hendelser, tar vi opp under klima og ekstremvær nedenfor.
 
 ## Polare lavtrykk
 
-Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 til 2024 registrerte Meteorologisk institutt i Tromsø om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten, ikke langs den. Fra 2000 til 2024 registrerte Meteorologisk institutt i Tromsø om lag 330 hendelser med ett eller flere polare lavtrykk. De fleste har en diameter på 200 til 500 kilometer. Gjennomsnittlig observert maksvind er 22,1 m/s, det vil si liten storm (Meteorologisk institutt, u.å.).
+
+Dannelsen er en kjede:
+
+1. Kald luft fra Arktis strømmer ut over åpent, relativt varmt hav, ofte i bakkant av et stort lavtrykk. Det kalles et kaldluftsutbrudd.
+2. Havet tilfører varme og fuktighet. Lufta blir ustabil og stiger, og det dannes bygeskyer.
+3. Når bygene organiserer seg sterkt nok, synker trykket under bygesenteret, og det oppstår et lite, intenst lavtrykk med sterk vind rundt sentrum (Store norske leksikon, u.å.-g).
+
+Polare lavtrykk er knyttet til den varme Nord-Atlanterstrømmen utenfor norskekysten. De er vanligst i Norskehavet og Barentshavet, og kan treffe kysten fra Nord-Norge sørover mot Nordvestlandet. De gir typisk sterk vind, tett snøfall og raske væromslag, og de er vanskeligere å varsle enn de store synoptiske lavtrykkene fordi de er små og utvikler seg raskt (Store norske leksikon, u.å.-g; Meteorologisk institutt, u.å.).
 
 ```widget
 PolarLowFormation
@@ -133,9 +141,22 @@ PolarLowFormation
 SjekkKatastrofer3
 ```
 
-## Klima og ekstremnedbør
+## Felles drivkrefter
 
-Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstreme varmehendelser og svekket ekstreme kuldehendelser. I noen regioner er ekstrem nedbør forsterket. Hyppigheten og intensiteten av kraftig nedbør har økt på global skala og over et flertall av landområdene (FNs klimapanel [IPCC], 2021).
+Fenomenene i dette kapitlet ser ulike ut, men de deler noen drivkrefter:
+
+1. **Varme** — tropiske orkaner trenger varmt hav; polare lavtrykk trenger at kald luft møter relativt varmt hav.
+2. **Fukt** — kondensasjon frigjør latent varme, som driver oppdrift i orkaner, bygeskyer og atmosfæriske elver.
+3. **Ustabilitet** — når lufta er lettere enn omgivelsene, stiger den. Jo dypere ustabiliteten er, desto kraftigere kan systemet bli.
+4. **Styrestrøm** — jetstrøm og storskala vindfelt bestemmer hvor systemet går, og om det treffer kyst, fjord eller innland.
+
+Uten varme, fukt og ustabilitet blir det lite ekstremvær. Uten styrestrøm treffer det ikke nødvendigvis der vi bor.
+
+## Klima og ekstremvær
+
+Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstreme varmehendelser og svekket ekstreme kuldehendelser. Hyppigheten og intensiteten av kraftig nedbør har økt på global skala og over et flertall av landområdene. FNs klimapanel (IPCC) har høy tillit til disse funnene for varme og for kraftig nedbør på global skala. For enkelte andre ekstremtyper, og for mange enkeltregioner, er tilliten lavere, fordi observasjonsgrunnlaget er kortere eller signalet er vanskeligere å skille fra naturlig variasjon (IPCC, 2021).
+
+At én ekstremhendelse inntreffer, skyldes ikke nødvendigvis klimaendringene alene. Hvordan den utvikler seg, kan likevel påvirkes. Under ekstremværet Hans vurderte Meteorologisk institutt at klimaendringene er med på å forsterke slike nedbørmengder (Meteorologisk institutt, 2023).
 
 > **Vanlige misforståelser**
 >
