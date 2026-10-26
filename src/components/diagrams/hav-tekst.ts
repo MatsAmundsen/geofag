@@ -38,7 +38,7 @@ export const NORSK_TEKST = {
 export const GYRE_TEKST = {
   heading: "smal og rask i vest, bred og langsom i øst",
   title:
-    "Skjematisk kart over den nordatlantiske havvirvelen med nord opp. Overflatestrømmene går med klokken. På vestsiden er Golfstrømmen smal og rask; på østsiden er Kanaristrømmen bred og langsom. Den nordatlantiske strømmen lukker nordlig. Midt i virvelen står havspeilet høyere, og vannet strømmer langs hellingen rundt det høye havspeilet. Ingen Europa-etikett; Nord-Amerika og Afrika for orientering.",
+    "Skjematisk kart over den nordatlantiske havvirvelen med nord opp. Overflatestrømmene går med klokken. På vestsiden er Golfstrømmen smal og rask; på østsiden er Kanaristrømmen bred og langsom. Den nordatlantiske strømmen lukker nordlig. Midt i virvelen står havspeilet høyere, og vannet strømmer langs hellingen rundt det høye havspeilet. Nord-Amerika og Afrika for orientering.",
   caption:
     "Havvirvelen går med klokken på den nordlige halvkulen. Vestlig randstrøm er smal og rask, østlig er bred og langsom. Høyere havspeil midt i — vannet strømmer langs hellingen. Skjematisk kart, nord opp.",
 };
