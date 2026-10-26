@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { Arrow, C, Diagram, L } from "./svg-kit";
 
 /** Bryter en kort tekst i linjer på maks `max` tegn (hele ord), for SVG-tspan. */
@@ -175,108 +176,149 @@ export function ModelParametrizationDiagram() {
 }
 
 export function ImpactLevelsDiagram() {
+  const uid = useId().replace(/:/g, "");
+  const shadow = `${uid}-il-shadow`;
+  const glowW = `${uid}-il-gw`;
+  const glowT = `${uid}-il-gt`;
+  const glowR = `${uid}-il-gr`;
   return (
     <Diagram
       title="Klimakonsekvenser og tilpasning på tre nivåer: individ, samfunn og økosystem"
       heading="Klimapåvirkning på tre nivåer"
       caption="En fullgod drøfting av klimaendringer må belyse alle tre nivåer: individets helse og bolig, samfunnets infrastruktur og beredskap, og økosystemenes biologiske mangfold og artsgrenser."
-      viewBox="0 0 900 380"
+      viewBox="0 0 1080 460"
       wide
     >
       {() => (
         <>
-          {/* 1. Nivå: Individ */}
-          <g>
-            <rect x="40" y="30" width="260" height="320" rx="10" fill="#141f27" stroke={C.warm} strokeWidth="1.5" />
-            <circle cx="80" cy="70" r="18" fill="#382c1e" stroke={C.warm} strokeWidth="1.5" />
-            <L x="80" y="76" fill={C.warm} size={16} weight={700} anchor="middle">1</L>
-            <L x="110" y="75" fill={C.warm} size={17} weight={700}>Individ & person</L>
+          <defs>
+            <filter id={shadow} x="-8%" y="-6%" width="116%" height="120%">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000" floodOpacity="0.4" />
+            </filter>
+            <filter id={glowW} x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="2.2" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id={glowT} x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="2.2" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id={glowR} x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="2.2" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
-            <rect x="55" y="105" width="230" height="225" rx="6" fill="#0f161c" />
-            <text x="70" y="135" fill={C.fg} fontSize={13} fontWeight="600" fontFamily="inherit">
-              Helse og sårbarhet:
-            </text>
-            <text x="70" y="160" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Hetestress hos eldre og syke.
-            </text>
-            <text x="70" y="185" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Vektorbårne sykdommer (flått).
-            </text>
-            <text x="70" y="215" fill={C.fg} fontSize={13} fontWeight="600" fontFamily="inherit">
-              Privatøkonomi & bolig:
-            </text>
-            <text x="70" y="240" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Kjelleroversvømmelse (overvann).
-            </text>
-            <text x="70" y="265" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Økte forsikringspremier i risikosoner.
-            </text>
-            <text x="70" y="295" fill={C.warm} fontSize={11} fontWeight="600" fontFamily="inherit">
-              Tiltak: Egenresiliens, tilfluktsrom, solskjerming.
-            </text>
+          {/* 1. Individ */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="28" y="24" width="328" height="412" rx="14" fill="#141f27" stroke={C.warm} strokeWidth="1.6" />
+            <rect x="28" y="24" width="328" height="5" rx="2.5" fill={C.warm} />
           </g>
-
-          {/* 2. Nivå: Samfunn */}
-          <g>
-            <rect x="320" y="30" width="260" height="320" rx="10" fill="#141f27" stroke={C.teal} strokeWidth="1.5" />
-            <circle cx="360" cy="70" r="18" fill="#183338" stroke={C.teal} strokeWidth="1.5" />
-            <L x="360" y="76" fill={C.teal} size={16} weight={700} anchor="middle">2</L>
-            <L x="390" y="75" fill={C.teal} size={17} weight={700}>Samfunn</L>
-
-            <rect x="335" y="105" width="230" height="225" rx="6" fill="#0f161c" />
-            <text x="350" y="135" fill={C.fg} fontSize={13} fontWeight="600" fontFamily="inherit">
-              Kritisk infrastruktur:
-            </text>
-            <text x="350" y="160" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Vei og jernbane stengt av skred/flom.
-            </text>
-            <text x="350" y="185" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Stormflo mot kysthavner og kaier.
-            </text>
-            <text x="350" y="215" fill={C.fg} fontSize={13} fontWeight="600" fontFamily="inherit">
-              Kommune & beredskap:
-            </text>
-            <text x="350" y="240" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Overvannshåndtering og flomveier.
-            </text>
-            <text x="350" y="265" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Drikkevannssikkerhet og strømbrudd.
-            </text>
-            <text x="350" y="295" fill={C.teal} fontSize={11} fontWeight="600" fontFamily="inherit">
-              Tiltak: Arealplanlegging, flomvern, ROS-analyse.
-            </text>
+          <g filter={`url(#${glowW})`}>
+            <circle cx="70" cy="68" r="22" fill="#382c1e" stroke={C.warm} strokeWidth="1.7" />
+            <L x="70" y="74" fill={C.warm} size={17} weight={800} anchor="middle">1</L>
           </g>
+          <circle cx="118" cy="68" r="18" fill="#382c1e" stroke={C.warm} strokeWidth="1.4" />
+          <circle cx="118" cy="60" r="6" fill={C.warm} />
+          <path d="M105 84c2.5-11 23-11 26 0" fill={C.warm} />
+          <L x="148" y="74" fill={C.warm} size={17} weight={800}>Individ og person</L>
 
-          {/* 3. Nivå: Økosystem */}
-          <g>
-            <rect x="600" y="30" width="260" height="320" rx="10" fill="#141f27" stroke={C.rain} strokeWidth="1.5" />
-            <circle cx="640" cy="70" r="18" fill="#192d35" stroke={C.rain} strokeWidth="1.5" />
-            <L x="640" y="76" fill={C.rain} size={16} weight={700} anchor="middle">3</L>
-            <L x="670" y="75" fill={C.rain} size={17} weight={700}>Økosystem</L>
+          <rect x="46" y="104" width="292" height="218" rx="10" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <rect x="46" y="104" width="4" height="32" rx="2" fill={C.warm} />
+          <L x="64" y="126" fill={C.fg} size={14} weight={700}>Helse og sårbarhet</L>
+          <L x="64" y="152" fill={C.muted} size={12.5}>• Hetestress hos eldre og syke</L>
+          <L x="64" y="174" fill={C.muted} size={12.5}>• Vektorbårne sykdommer (flått)</L>
+          <line x1="64" y1="192" x2="320" y2="192" stroke={C.dim} strokeWidth="1" />
+          <rect x="46" y="204" width="4" height="32" rx="2" fill={C.warm} opacity={0.75} />
+          <L x="64" y="226" fill={C.fg} size={14} weight={700}>Privatøkonomi og bolig</L>
+          <L x="64" y="252" fill={C.muted} size={12.5}>• Kjelleroversvømmelse (overvann)</L>
+          <L x="64" y="274" fill={C.muted} size={12.5}>• Økte forsikringspremier i risikosoner</L>
 
-            <rect x="615" y="105" width="230" height="225" rx="6" fill="#0f161c" />
-            <text x="630" y="135" fill={C.fg} fontSize={13} fontWeight="600" fontFamily="inherit">
-              Biologisk mangfold:
-            </text>
-            <text x="630" y="160" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Torsken og lodda trekker nordover.
-            </text>
-            <text x="630" y="185" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Tregrensen kryper oppover i fjellet.
-            </text>
-            <text x="630" y="215" fill={C.fg} fontSize={13} fontWeight="600" fontFamily="inherit">
-              Hav og ferskvann:
-            </text>
-            <text x="630" y="240" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Havforsuring truer kalkdannende arter.
-            </text>
-            <text x="630" y="265" fill={C.muted} fontSize={12} fontFamily="inherit">
-              • Endret issmelting gir varmere elver.
-            </text>
-            <text x="630" y="295" fill={C.rain} fontSize={11} fontWeight="600" fontFamily="inherit">
-              Tiltak: Naturrestaurering, vern av korridorer.
-            </text>
+          <rect x="46" y="340" width="292" height="76" rx="11" fill="#2a2118" stroke={C.warm} strokeWidth="1.3" />
+          <L x="64" y="364" fill={C.warm} size={11} weight={800}>TILTAK</L>
+          <rect x="64" y="376" width="78" height="24" rx="12" fill="#382c1e" stroke={C.warm} strokeWidth="1" />
+          <L x="103" y="392" fill="#f3e6d4" size={11} weight={650} anchor="middle">Egenresiliens</L>
+          <rect x="150" y="376" width="74" height="24" rx="12" fill="#382c1e" stroke={C.warm} strokeWidth="1" />
+          <L x="187" y="392" fill="#f3e6d4" size={11} weight={650} anchor="middle">Tilfluktsrom</L>
+          <rect x="232" y="376" width="86" height="24" rx="12" fill="#382c1e" stroke={C.warm} strokeWidth="1" />
+          <L x="275" y="392" fill="#f3e6d4" size={11} weight={650} anchor="middle">Solskjerming</L>
+
+          {/* 2. Samfunn */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="376" y="24" width="328" height="412" rx="14" fill="#141f27" stroke={C.teal} strokeWidth="1.6" />
+            <rect x="376" y="24" width="328" height="5" rx="2.5" fill={C.teal} />
           </g>
+          <g filter={`url(#${glowT})`}>
+            <circle cx="418" cy="68" r="22" fill="#183338" stroke={C.teal} strokeWidth="1.7" />
+            <L x="418" y="74" fill={C.teal} size={17} weight={800} anchor="middle">2</L>
+          </g>
+          <circle cx="466" cy="68" r="18" fill="#183338" stroke={C.teal} strokeWidth="1.4" />
+          <rect x="455" y="65" width="6" height="13" rx="1" fill={C.teal} />
+          <rect x="463" y="58" width="8" height="20" rx="1" fill={C.teal} />
+          <rect x="473" y="62" width="6" height="16" rx="1" fill={C.teal} />
+          <L x="496" y="74" fill={C.teal} size={17} weight={800}>Samfunn</L>
+
+          <rect x="394" y="104" width="292" height="218" rx="10" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <rect x="394" y="104" width="4" height="32" rx="2" fill={C.teal} />
+          <L x="412" y="126" fill={C.fg} size={14} weight={700}>Kritisk infrastruktur</L>
+          <L x="412" y="152" fill={C.muted} size={12.5}>• Vei og jernbane stengt av skred/flom</L>
+          <L x="412" y="174" fill={C.muted} size={12.5}>• Stormflo mot kysthavner og kaier</L>
+          <line x1="412" y1="192" x2="668" y2="192" stroke={C.dim} strokeWidth="1" />
+          <rect x="394" y="204" width="4" height="32" rx="2" fill={C.teal} opacity={0.75} />
+          <L x="412" y="226" fill={C.fg} size={14} weight={700}>Kommune og beredskap</L>
+          <L x="412" y="252" fill={C.muted} size={12.5}>• Overvannshåndtering og flomveier</L>
+          <L x="412" y="274" fill={C.muted} size={12.5}>• Drikkevannssikkerhet og strømbrudd</L>
+
+          <rect x="394" y="340" width="292" height="76" rx="11" fill="#15282c" stroke={C.teal} strokeWidth="1.3" />
+          <L x="412" y="364" fill={C.teal} size={11} weight={800}>TILTAK</L>
+          <rect x="412" y="376" width="96" height="24" rx="12" fill="#183338" stroke={C.teal} strokeWidth="1" />
+          <L x="460" y="392" fill="#d7faf5" size={11} weight={650} anchor="middle">Arealplanlegging</L>
+          <rect x="516" y="376" width="68" height="24" rx="12" fill="#183338" stroke={C.teal} strokeWidth="1" />
+          <L x="550" y="392" fill="#d7faf5" size={11} weight={650} anchor="middle">Flomvern</L>
+          <rect x="592" y="376" width="74" height="24" rx="12" fill="#183338" stroke={C.teal} strokeWidth="1" />
+          <L x="629" y="392" fill="#d7faf5" size={11} weight={650} anchor="middle">ROS-analyse</L>
+
+          {/* 3. Økosystem */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="724" y="24" width="328" height="412" rx="14" fill="#141f27" stroke={C.rain} strokeWidth="1.6" />
+            <rect x="724" y="24" width="328" height="5" rx="2.5" fill={C.rain} />
+          </g>
+          <g filter={`url(#${glowR})`}>
+            <circle cx="766" cy="68" r="22" fill="#192d35" stroke={C.rain} strokeWidth="1.7" />
+            <L x="766" y="74" fill={C.rain} size={17} weight={800} anchor="middle">3</L>
+          </g>
+          <circle cx="814" cy="68" r="18" fill="#192d35" stroke={C.rain} strokeWidth="1.4" />
+          <path d="M814 80c0-8 0-14 0-20" stroke={C.rain} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          <path d="M814 64c-9-7 -10-1 -1 6c4 3 7 1 8-1" fill={C.rain} />
+          <path d="M814 68c7-5 10-1 3 4c-3 2-6 1-7 0" fill={C.cold} opacity={0.85} />
+          <L x="844" y="74" fill={C.rain} size={17} weight={800}>Økosystem</L>
+
+          <rect x="742" y="104" width="292" height="218" rx="10" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <rect x="742" y="104" width="4" height="32" rx="2" fill={C.rain} />
+          <L x="760" y="126" fill={C.fg} size={14} weight={700}>Biologisk mangfold</L>
+          <L x="760" y="152" fill={C.muted} size={12.5}>• Torsken og lodda trekker nordover</L>
+          <L x="760" y="174" fill={C.muted} size={12.5}>• Tregrensen kryper oppover i fjellet</L>
+          <line x1="760" y1="192" x2="1016" y2="192" stroke={C.dim} strokeWidth="1" />
+          <rect x="742" y="204" width="4" height="32" rx="2" fill={C.rain} opacity={0.75} />
+          <L x="760" y="226" fill={C.fg} size={14} weight={700}>Hav og ferskvann</L>
+          <L x="760" y="252" fill={C.muted} size={12.5}>• Havforsuring truer kalkdannende arter</L>
+          <L x="760" y="274" fill={C.muted} size={12.5}>• Endret issmelting gir varmere elver</L>
+
+          <rect x="742" y="340" width="292" height="76" rx="11" fill="#152830" stroke={C.rain} strokeWidth="1.3" />
+          <L x="760" y="364" fill={C.rain} size={11} weight={800}>TILTAK</L>
+          <rect x="760" y="376" width="112" height="24" rx="12" fill="#192d35" stroke={C.rain} strokeWidth="1" />
+          <L x="816" y="392" fill="#e0f2fe" size={11} weight={650} anchor="middle">Naturrestaurering</L>
+          <rect x="880" y="376" width="134" height="24" rx="12" fill="#192d35" stroke={C.rain} strokeWidth="1" />
+          <L x="947" y="392" fill="#e0f2fe" size={11} weight={650} anchor="middle">Vern av korridorer</L>
         </>
       )}
     </Diagram>
@@ -284,94 +326,167 @@ export function ImpactLevelsDiagram() {
 }
 
 export function AdaptationExamFrameworkDiagram() {
+  const uid = useId().replace(/:/g, "");
+  const shadow = `${uid}-ex-shadow`;
+  const glow = `${uid}-ex-glow`;
+  const arrGlow = `${uid}-ex-arr`;
   return (
     <Diagram
       title="Eksamensdrøfting i klimatilpasning: 5-stegs modell fra naturfenomen til tiltak og begrensninger"
-      heading="Eksamensdrøfting: 5-stegs modell for toppkarakter"
+      heading="5-stegs modell for eksamensdrøfting"
       caption="En fullverdig drøfting i Geofag 2 følger denne strukturen: Knytt naturfenomenet til den underliggende fysikken, belys konsekvensene på alle tre nivåer, sammenlign utslippskutt med tilpasning, og drøft begrensninger eller utilsiktede virkninger."
-      viewBox="0 0 900 400"
+      viewBox="0 0 1200 470"
       wide
     >
       {(m) => (
         <>
-          <rect x="40" y="30" width="820" height="340" rx="10" fill="#121a22" stroke={C.dim} strokeWidth="1.5" />
+          <defs>
+            <filter id={shadow} x="-10%" y="-6%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="5" stdDeviation="8" floodColor="#000" floodOpacity="0.4" />
+            </filter>
+            <filter id={glow} x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id={arrGlow} x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="1.6" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
-          {/* Steg 1 */}
-          <g>
-            <rect x="60" y="60" width="140" height="260" rx="8" fill="#18252f" stroke={C.warm} strokeWidth="1.4" />
-            <circle cx="130" cy="95" r="18" fill="#382b1c" stroke={C.warm} strokeWidth="1.5" />
-            <L x="130" y="101" fill={C.warm} size={16} weight={700} anchor="middle">1</L>
-            <L x="130" y="135" fill={C.warm} size={15} weight={700} anchor="middle">Fenomen</L>
-            <rect x="70" y="155" width="120" height="150" rx="4" fill="#0f161c" />
-            <text x="78" y="180" fill={C.fg} fontSize={11} fontFamily="inherit">Velg ett konkret:</text>
-            <text x="78" y="202" fill={C.muted} fontSize={11} fontFamily="inherit">• Styrtregn i by</text>
-            <text x="78" y="222" fill={C.muted} fontSize={11} fontFamily="inherit">• Flom i vassdrag</text>
-            <text x="78" y="242" fill={C.muted} fontSize={11} fontFamily="inherit">• Stormflo / havnivå</text>
-            <text x="78" y="262" fill={C.muted} fontSize={11} fontFamily="inherit">• Hetebølge / tørke</text>
+          {/* Steg 1 Fenomen */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="24" y="24" width="196" height="422" rx="12" fill="#141f27" stroke={C.warm} strokeWidth="1.5" />
+            <rect x="24" y="24" width="196" height="4" rx="2" fill={C.warm} />
+          </g>
+          <g filter={`url(#${glow})`}>
+            <circle cx="122" cy="68" r="20" fill="#382c1e" stroke={C.warm} strokeWidth="1.6" />
+            <L x="122" y="74" fill={C.warm} size={16} weight={800} anchor="middle">1</L>
+          </g>
+          <L x="122" y="108" fill={C.warm} size={15} weight={800} anchor="middle">Fenomen</L>
+          <rect x="40" y="124" width="164" height="300" rx="9" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <L x="52" y="150" fill={C.fg} size={12} weight={700}>Velg ett konkret:</L>
+          <rect x="52" y="164" width="140" height="34" rx="8" fill="#1a1612" stroke="#3a2e22" strokeWidth="1" />
+          <L x="122" y="186" fill={C.fg} size={12} weight={600} anchor="middle">Styrtregn i by</L>
+          <rect x="52" y="206" width="140" height="34" rx="8" fill="#1a1612" stroke="#3a2e22" strokeWidth="1" />
+          <L x="122" y="228" fill={C.muted} size={12} weight={600} anchor="middle">Flom i vassdrag</L>
+          <rect x="52" y="248" width="140" height="34" rx="8" fill="#1a1612" stroke="#3a2e22" strokeWidth="1" />
+          <L x="122" y="270" fill={C.muted} size={12} weight={600} anchor="middle">Stormflo / havnivå</L>
+          <rect x="52" y="290" width="140" height="34" rx="8" fill="#1a1612" stroke="#3a2e22" strokeWidth="1" />
+          <L x="122" y="312" fill={C.muted} size={12} weight={600} anchor="middle">Hetebølge / tørke</L>
+
+          <g filter={`url(#${arrGlow})`}>
+            <Arrow d="M 228 230 L 250 230" marker={m.warm} color={C.warm} width={3} />
           </g>
 
-          <Arrow d="M 205 185 L 220 185" marker={m.teal} color={C.teal} width={2.4} />
+          {/* Steg 2 Fysikk */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="260" y="24" width="196" height="422" rx="12" fill="#141f27" stroke={C.teal} strokeWidth="1.5" />
+            <rect x="260" y="24" width="196" height="4" rx="2" fill={C.teal} />
+          </g>
+          <g filter={`url(#${glow})`}>
+            <circle cx="358" cy="68" r="20" fill="#183338" stroke={C.teal} strokeWidth="1.6" />
+            <L x="358" y="74" fill={C.teal} size={16} weight={800} anchor="middle">2</L>
+          </g>
+          <L x="358" y="108" fill={C.teal} size={15} weight={800} anchor="middle">Fysikk</L>
+          <rect x="276" y="124" width="164" height="300" rx="9" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <L x="288" y="150" fill={C.fg} size={12} weight={700}>Kjernemekanisme:</L>
+          <rect x="288" y="164" width="140" height="56" rx="8" fill="#183338" stroke={C.teal} strokeWidth="1.2" />
+          <L x="358" y="188" fill={C.fg} size={12} weight={700} anchor="middle">Clausius-Clapeyron</L>
+          <L x="358" y="208" fill={C.teal} size={12} weight={800} anchor="middle">+7 % fukt per °C</L>
+          <rect x="288" y="232" width="140" height="34" rx="8" fill="#0f1c22" stroke="#1e3a40" strokeWidth="1" />
+          <L x="358" y="254" fill={C.muted} size={12} weight={600} anchor="middle">Termisk ekspansjon</L>
+          <rect x="288" y="274" width="140" height="34" rx="8" fill="#0f1c22" stroke="#1e3a40" strokeWidth="1" />
+          <L x="358" y="296" fill={C.muted} size={12} weight={600} anchor="middle">Jetstrøm-blokkering</L>
 
-          {/* Steg 2 */}
-          <g>
-            <rect x="225" y="60" width="140" height="260" rx="8" fill="#18252f" stroke={C.teal} strokeWidth="1.4" />
-            <circle cx="295" cy="95" r="18" fill="#163138" stroke={C.teal} strokeWidth="1.5" />
-            <L x="295" y="101" fill={C.teal} size={16} weight={700} anchor="middle">2</L>
-            <L x="295" y="135" fill={C.teal} size={15} weight={700} anchor="middle">Fysikk</L>
-            <rect x="235" y="155" width="120" height="150" rx="4" fill="#0f161c" />
-            <text x="243" y="180" fill={C.fg} fontSize={11} fontFamily="inherit">Kjernemekanisme:</text>
-            <text x="243" y="202" fill={C.muted} fontSize={10} fontFamily="inherit">• Clausius-Clapeyron</text>
-            <text x="243" y="217" fill={C.teal} fontSize={10} fontFamily="inherit">  (+7 % fukt per °C)</text>
-            <text x="243" y="237" fill={C.muted} fontSize={10} fontFamily="inherit">• Termisk ekspansjon</text>
-            <text x="243" y="252" fill={C.muted} fontSize={10} fontFamily="inherit">• Jetstrøm-blokkering</text>
+          <g filter={`url(#${arrGlow})`}>
+            <Arrow d="M 464 230 L 486 230" marker={m.teal} color={C.teal} width={3} />
           </g>
 
-          <Arrow d="M 370 185 L 385 185" marker={m.rain} color={C.rain} width={2.4} />
+          {/* Steg 3 Tre nivåer */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="496" y="24" width="196" height="422" rx="12" fill="#141f27" stroke={C.rain} strokeWidth="1.5" />
+            <rect x="496" y="24" width="196" height="4" rx="2" fill={C.rain} />
+          </g>
+          <g filter={`url(#${glow})`}>
+            <circle cx="594" cy="68" r="20" fill="#192d35" stroke={C.rain} strokeWidth="1.6" />
+            <L x="594" y="74" fill={C.rain} size={16} weight={800} anchor="middle">3</L>
+          </g>
+          <L x="594" y="108" fill={C.rain} size={15} weight={800} anchor="middle">Tre nivåer</L>
+          <rect x="512" y="124" width="164" height="300" rx="9" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <L x="524" y="150" fill={C.fg} size={12} weight={700}>Belys alle tre:</L>
+          {/* person */}
+          <rect x="524" y="164" width="140" height="46" rx="9" fill="#1a1612" stroke={C.warm} strokeWidth="1.2" />
+          <circle cx="544" cy="187" r="11" fill="#382c1e" stroke={C.warm} strokeWidth="1" />
+          <circle cx="544" cy="182" r="3.5" fill={C.warm} />
+          <path d="M537 196c1.5-6 12-6 14 0" fill={C.warm} />
+          <L x="562" y="192" fill={C.warm} size={12} weight={700}>Person / helse</L>
+          {/* by */}
+          <rect x="524" y="220" width="140" height="46" rx="9" fill="#183338" stroke={C.teal} strokeWidth="1.2" />
+          <circle cx="544" cy="243" r="11" fill="#0f1c22" stroke={C.teal} strokeWidth="1" />
+          <rect x="538" y="241" width="4" height="8" rx="0.5" fill={C.teal} />
+          <rect x="543" y="237" width="5" height="12" rx="0.5" fill={C.teal} />
+          <rect x="549" y="239" width="4" height="10" rx="0.5" fill={C.teal} />
+          <L x="562" y="248" fill={C.teal} size={12} weight={700}>Kommune / vei</L>
+          {/* natur */}
+          <rect x="524" y="276" width="140" height="46" rx="9" fill="#192d35" stroke={C.rain} strokeWidth="1.2" />
+          <circle cx="544" cy="299" r="11" fill="#0f161c" stroke={C.rain} strokeWidth="1" />
+          <path d="M544 307c0-5 0-9 0-12" stroke={C.rain} strokeWidth="1.3" strokeLinecap="round" fill="none" />
+          <path d="M544 296c-5-4 -6-1 -1 3.5c2.5 1.5 4 1 5-0.5" fill={C.rain} />
+          <L x="562" y="304" fill={C.rain} size={12} weight={700}>Natur / økologi</L>
 
-          {/* Steg 3 */}
-          <g>
-            <rect x="390" y="60" width="140" height="260" rx="8" fill="#18252f" stroke={C.rain} strokeWidth="1.4" />
-            <circle cx="460" cy="95" r="18" fill="#162c38" stroke={C.rain} strokeWidth="1.5" />
-            <L x="460" y="101" fill={C.rain} size={16} weight={700} anchor="middle">3</L>
-            <L x="460" y="135" fill={C.rain} size={15} weight={700} anchor="middle">Tre nivåer</L>
-            <rect x="400" y="155" width="120" height="150" rx="4" fill="#0f161c" />
-            <text x="408" y="180" fill={C.fg} fontSize={11} fontFamily="inherit">Belys alle tre:</text>
-            <text x="408" y="205" fill={C.sand} fontSize={11} fontFamily="inherit">1. Person / helse</text>
-            <text x="408" y="235" fill={C.teal} fontSize={11} fontFamily="inherit">2. Kommune / vei</text>
-            <text x="408" y="265" fill={C.rain} fontSize={11} fontFamily="inherit">3. Natur / økologi</text>
+          <g filter={`url(#${arrGlow})`}>
+            <Arrow d="M 700 230 L 722 230" marker={m.rain} color={C.rain} width={3} />
           </g>
 
-          <Arrow d="M 535 185 L 550 185" marker={m.sand} color={C.sand} width={2.4} />
+          {/* Steg 4 To tiltak */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="732" y="24" width="196" height="422" rx="12" fill="#141f27" stroke={C.sand} strokeWidth="1.5" />
+            <rect x="732" y="24" width="196" height="4" rx="2" fill={C.sand} />
+          </g>
+          <g filter={`url(#${glow})`}>
+            <circle cx="830" cy="68" r="20" fill="#2c2818" stroke={C.sand} strokeWidth="1.6" />
+            <L x="830" y="74" fill={C.sand} size={16} weight={800} anchor="middle">4</L>
+          </g>
+          <L x="830" y="108" fill={C.sand} size={15} weight={800} anchor="middle">To tiltak</L>
+          <rect x="748" y="124" width="164" height="300" rx="9" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <L x="760" y="150" fill={C.fg} size={12} weight={700}>Avbøtende og vern:</L>
+          <rect x="760" y="164" width="140" height="68" rx="9" fill="#183338" stroke={C.teal} strokeWidth="1.2" />
+          <L x="830" y="192" fill={C.teal} size={12.5} weight={800} anchor="middle">Kutt i pådriv</L>
+          <L x="830" y="214" fill={C.muted} size={11.5} weight={600} anchor="middle">reduserer utslipp</L>
+          <rect x="760" y="244" width="140" height="68" rx="9" fill="#2a2418" stroke={C.sand} strokeWidth="1.2" />
+          <L x="830" y="272" fill={C.sand} size={12.5} weight={800} anchor="middle">Tilpasningstiltak</L>
+          <L x="830" y="294" fill={C.muted} size={11.5} weight={600} anchor="middle">flomvern, grønt tak</L>
 
-          {/* Steg 4 */}
-          <g>
-            <rect x="555" y="60" width="140" height="260" rx="8" fill="#18252f" stroke={C.sand} strokeWidth="1.4" />
-            <circle cx="625" cy="95" r="18" fill="#2c2818" stroke={C.sand} strokeWidth="1.5" />
-            <L x="625" y="101" fill={C.sand} size={16} weight={700} anchor="middle">4</L>
-            <L x="625" y="135" fill={C.sand} size={15} weight={700} anchor="middle">To tiltak</L>
-            <rect x="565" y="155" width="120" height="150" rx="4" fill="#0f161c" />
-            <text x="573" y="180" fill={C.fg} fontSize={11} fontFamily="inherit">Avbøtende & vern:</text>
-            <text x="573" y="202" fill={C.teal} fontSize={10} fontFamily="inherit">• Kutt i pådriv</text>
-            <text x="573" y="217" fill={C.muted} fontSize={10} fontFamily="inherit">  (reduserer utslipp)</text>
-            <text x="573" y="237" fill={C.sand} fontSize={10} fontFamily="inherit">• Tilpasningstiltak</text>
-            <text x="573" y="252" fill={C.muted} fontSize={10} fontFamily="inherit">  (flomvern, grønt tak)</text>
+          <g filter={`url(#${arrGlow})`}>
+            <Arrow d="M 936 230 L 958 230" marker={m.sand} color={C.sand} width={3} />
           </g>
 
-          <Arrow d="M 700 185 L 715 185" marker={m.low} color={C.low} width={2.4} />
-
-          {/* Steg 5 */}
-          <g>
-            <rect x="720" y="60" width="140" height="260" rx="8" fill="#18252f" stroke={C.low} strokeWidth="1.4" />
-            <circle cx="790" cy="95" r="18" fill="#381b1b" stroke={C.low} strokeWidth="1.5" />
-            <L x="790" y="101" fill={C.low} size={16} weight={700} anchor="middle">5</L>
-            <L x="790" y="135" fill={C.low} size={15} weight={700} anchor="middle">Begrensning</L>
-            <rect x="730" y="155" width="120" height="150" rx="4" fill="#0f161c" />
-            <text x="738" y="180" fill={C.fg} fontSize={11} fontFamily="inherit">Kritisk drøfting:</text>
-            <text x="738" y="202" fill={C.low} fontSize={10} fontFamily="inherit">• Falsk trygghet bak</text>
-            <text x="738" y="217" fill={C.muted} fontSize={10} fontFamily="inherit">  flomvoller</text>
-            <text x="738" y="237" fill={C.low} fontSize={10} fontFamily="inherit">• Maltilpasning</text>
-            <text x="738" y="252" fill={C.muted} fontSize={10} fontFamily="inherit">• Økonomi / fordeling</text>
+          {/* Steg 5 Begrensning */}
+          <g filter={`url(#${shadow})`}>
+            <rect x="968" y="24" width="208" height="422" rx="12" fill="#141f27" stroke={C.low} strokeWidth="1.5" />
+            <rect x="968" y="24" width="208" height="4" rx="2" fill={C.low} />
           </g>
+          <g filter={`url(#${glow})`}>
+            <circle cx="1072" cy="68" r="20" fill="#381b1b" stroke={C.low} strokeWidth="1.6" />
+            <L x="1072" y="74" fill={C.low} size={16} weight={800} anchor="middle">5</L>
+          </g>
+          <L x="1072" y="108" fill={C.low} size={15} weight={800} anchor="middle">Begrensning</L>
+          <rect x="984" y="124" width="176" height="300" rx="9" fill="#0f161c" stroke={C.dim} strokeWidth="1" />
+          <L x="996" y="150" fill={C.fg} size={12} weight={700}>Kritisk drøfting:</L>
+          <rect x="996" y="164" width="152" height="52" rx="8" fill="#2a1520" stroke={C.low} strokeWidth="1.2" />
+          <L x="1072" y="186" fill={C.low} size={12} weight={800} anchor="middle">Falsk trygghet</L>
+          <L x="1072" y="204" fill={C.muted} size={11.5} weight={600} anchor="middle">bak flomvoller</L>
+          <rect x="996" y="228" width="152" height="38" rx="8" fill="#2a1520" stroke={C.low} strokeWidth="1.2" />
+          <L x="1072" y="252" fill={C.low} size={12.5} weight={800} anchor="middle">Maltilpasning</L>
+          <rect x="996" y="278" width="152" height="38" rx="8" fill="#1a1218" stroke="#3a2a32" strokeWidth="1" />
+          <L x="1072" y="302" fill={C.muted} size={12} weight={600} anchor="middle">Økonomi / fordeling</L>
         </>
       )}
     </Diagram>
