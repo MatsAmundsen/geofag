@@ -534,7 +534,8 @@ function ElNinoScene({
       </g>
 
       {/* Steg 1: primært svekket østlig; valgfri svak vestlig anomali.
-          Steg ≥2: sterk vestlig får egen etikett; «Svekket østlig» flyttes østover. */}
+          Steg ≥2: sterk vestlig får egen etikett; «Svekket østlig» flyttes østover.
+          Steg ≥4: skjul «Svekket østlig»-etikett (overlapp med «Mer regn over Stillehavet»). */}
       <g className="enso-dash" opacity={0.55}>
         <Arrow
           d="M 620 200 L 380 200"
@@ -544,16 +545,18 @@ function ElNinoScene({
           dash="4 6"
         />
       </g>
-      <L
-        x={step >= 2 ? "640" : "500"}
-        y="186"
-        fill={C.teal}
-        size={12}
-        weight={700}
-        anchor={step >= 2 ? "start" : "middle"}
-      >
-        Svekket østlig passat
-      </L>
+      {!showRain && (
+        <L
+          x={step >= 2 ? "640" : "500"}
+          y="186"
+          fill={C.teal}
+          size={12}
+          weight={700}
+          anchor={step >= 2 ? "start" : "middle"}
+        >
+          Svekket østlig passat
+        </L>
+      )}
       {step === 1 && (
         <>
           <g opacity={0.45}>
