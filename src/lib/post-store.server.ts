@@ -1275,6 +1275,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Energi fra hav og atmosfære (G2): Terra Mater fase 1–2 (må-punkter M1–M4).
+    flag: "g2-energi-hav-luft-terra-mater-2026-10-26",
+    slug: "energi-hav-luft",
+    stale: [
+      "Tallene hører til de årene",
+      "vannet strømmer mot det motsatte punktet",
+      "vinden i navhøyde er mellom",
+    ],
+  },
+  {
     // Geologisk tid: Terra Mater fase 1–2 (må-punkter M1–M7: isotop, radioaktivitet og absolutt datering definert, gang/forkastning/blotning/skyvedekker/trilobitter/peneplan ved første bruk, årsakskjede for luminescensdatering (OSL), setning over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
     flag: "g1-geologisk-tid-terra-mater-2026-10-25",
     slug: "geologisk-tid",
