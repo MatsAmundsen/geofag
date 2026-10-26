@@ -163,12 +163,12 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
     badge: [800, 575],
     narrowHide: true,
   });
-  /* Inn i viewBox (start-anker) — unngår clip venstre @1280. */
-  lab("Færøy–Shetland-renna", 220, 555, COL.dempet, {
+  /* Sør for innløp, end-anker vestover — klar av SEG1/SST-ribbon (#f97316). */
+  lab("Færøy–Shetland-renna", 255, 608, COL.dempet, {
     size: 12,
     weight: 600,
-    anchor: "start",
-    badge: [220, 540],
+    anchor: "end",
+    badge: [250, 600],
     narrowHide: true,
   });
 
@@ -176,13 +176,14 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
   if (s.atl1 > 0.35) {
     const op = hold(s.atl1);
     if (op >= 0.92) {
-      lab("Den norske atlanterhavsstrømmen", 210, 450, COL.atlLys, {
+      /* Vest for SEG1-korridoren (path ~x400 @ y430), end-anker — ikke over ribbon/strøm. */
+      lab("Den norske atlanterhavsstrømmen", 350, 430, COL.atlLys, {
         size: 12,
         weight: 800,
         opacity: op,
-        anchor: "start",
-        at: [340, 520],
-        badge: [210, 430],
+        anchor: "end",
+        at: [300, 500],
+        badge: [340, 410],
       });
     }
   }
