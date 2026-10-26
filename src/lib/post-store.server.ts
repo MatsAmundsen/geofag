@@ -1275,6 +1275,111 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Energi fra hav og atmosfære (G2): Terra Mater fase 1–2 (må-punkter M1–M4).
+    flag: "g2-energi-hav-luft-terra-mater-2026-10-26",
+    slug: "energi-hav-luft",
+    stale: [
+      "Tallene hører til de årene",
+      "vannet strømmer mot det motsatte punktet",
+      "vinden i navhøyde er mellom",
+    ],
+  },
+  {
+    // Værkart og værutvikling (G2): Terra Mater fase 1–2 (må-punkter M1–M3).
+    flag: "g2-vaerkart-terra-mater-2026-10-26",
+    slug: "vaerkart",
+    stale: [
+      "(Udir, u.å.-b)",
+      "Ahrens & Henson",
+      "Bjerknes & Solberg",
+      "Dette steget kalles syklogenese",
+    ],
+  },
+  {
+    // Det globale vindsystemet (G2): Terra Mater fase 1–2 (må-punkter M1–M3).
+    flag: "g2-vindsystemet-terra-mater-2026-10-26",
+    slug: "vindsystemet",
+    stale: [
+      "Det kalles høy albedo, og det forsterker",
+      "Kondensasjonen frigjør latent varme, så lufta",
+      "på luvsiden. På lesiden synker",
+    ],
+  },
+  {
+    // Høytrykk og lavtrykk (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-hoytrykk-lavtrykk-terra-mater-2026-10-26",
+    slug: "hoytrykk-lavtrykk",
+    stale: [
+      "(78 %)",
+      "(NOAA, u.å.-a)",
+      "høye bygeskyer (cumulonimbus)",
+    ],
+  },
+  {
+    // Lokale værsystemer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-lokale-vaersystemer-terra-mater-2026-10-26",
+    slug: "lokale-vaersystemer",
+    stale: [
+      "Havet har stor varmekapasitet. Det tar lang tid",
+      "(NOAA, u.å.-a)",
+      "varslet yr",
+    ],
+  },
+  {
+    // Jetstrømmer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-jetstrommer-terra-mater-2026-10-26",
+    slug: "jetstrommer",
+    stale: [
+      "(NOAA, u.å.-a)",
+      "Tropopausen er grensen mellom troposfæren og stratosfæren. Den ligger på omtrent 17 kilometers høyde i tropene og rundt 8 kilometer i polare strøk, og den har et tydelig brudd",
+      "Mens farten endres, oppstår en vind på tvers av jetstrømmen som kalles ageostrofisk vind",
+    ],
+  },
+  {
+    // Værkatastrofer (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-vaerkatastrofer-terra-mater-2026-10-26",
+    slug: "vaerkatastrofer",
+    stale: [
+      "(Udir, u.å.-b)",
+      "74 mph, 64 knop",
+      "NVE kaller Hans",
+    ],
+  },
+  {
+    // Klima-oversikt (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-oversikt-terra-mater-2026-10-26",
+    slug: "oversikt",
+    stale: [
+      "Derfor kan du ikke «motbevise» klimaendring",
+      "AMOC, beltet du møtte",
+      "likevektslinjen (ELA) og permafrost",
+      "(Copernicus, 2026)",
+      "(NOAA GML, 2026)",
+    ],
+  },
+  {
+    // ENSO (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-enso-terra-mater-2026-10-26",
+    slug: "enso",
+    stale: [
+      "Tallgrunnlaget er ERSST versjon 6 (Climate Prediction Center, u.å.)",
+      "Den nedre delen av kretsen går fra øst mot vest",
+      "forsterke Hadley-sirkulasjonen.",
+      "over det maritime kontinentet,",
+    ],
+  },
+  {
+    // NAO (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-nao-terra-mater-2026-10-26",
+    slug: "nao",
+    stale: [
+      "to halvpermanente trykksystemer i Nord-Atlanteren (NOAA, u.å.-a).",
+      "må du forstå [det globale vindsystemet]",
+      "i stratosfæren over Arktis, omtrent 16–48 km",
+      "Havet er varmere enn normalt i et belte fra subtropene og nordover mot Island, og kjøligere lenger vest.",
+    ],
+  },
+  {
     // Tilpasning (G2): Terra Mater fase 1–2 (M1–M3).
     flag: "g2-tilpasning-terra-mater-2026-10-26",
     slug: "tilpasning",
@@ -1295,6 +1400,26 @@ const COPY_RESEEDS: CopyReseed[] = [
       "Mineralet *zirkon* er særlig viktig",
       "Med *luminescensdatering* (OSL) finner vi",
       "(Mangerud & Spjeldnæs, 2025)",
+    ],
+  },
+  {
+    // Havstrømmer (G2): Terra Mater fase 1–2 (må-punkter M1–M7: Nansen og drivisen, havvirvler drevet av vinden, årsakskjede for vestlig intensivering, randstrøm/saltholdighet/tetthet/kontinentalskråning/stormflo ved første bruk, «man» fjernet, setninger over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
+    flag: "g2-havstrommer-terra-mater-2026-10-26",
+    slug: "havstrommer",
+    stale: [
+      "la Fridtjof Nansen merke til at isfjellene ikke drev med vinden",
+      "corioliseffekten blir sterkere jo lenger nord man kommer",
+      "(Weber & Bjørndalen, 2024)",
+    ],
+  },
+  {
+    // Corioliseffekten (G2): Terra Mater fase 1–2 (må-punkter M1–M8: skalakjede for vasken, årsakskjede for breddegraden, geostrofisk vind og friksjon i tekst, treghetsledd og øst–vest, lavtrykksvirvel som kjede, fagord ved første bruk, fulle institusjonsnavn, corioliseffekt/corioliskraft avklart; ekmanlaget samkjørt med Havstrømmer).
+    flag: "g2-coriolis-terra-mater-2026-10-26",
+    slug: "coriolis",
+    stale: [
+      "En bevegelse som er rettlinjet i et koordinatsystem i ro",
+      "Figuren viser balansen uten friksjon",
+      "(NOAA AOML, u.å.)",
     ],
   },
 ];
