@@ -1275,6 +1275,17 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // NAO (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-nao-terra-mater-2026-10-26",
+    slug: "nao",
+    stale: [
+      "to halvpermanente trykksystemer i Nord-Atlanteren (NOAA, u.å.-a).",
+      "må du forstå [det globale vindsystemet]",
+      "i stratosfæren over Arktis, omtrent 16–48 km",
+      "Havet er varmere enn normalt i et belte fra subtropene og nordover mot Island, og kjøligere lenger vest.",
+    ],
+  },
+  {
     // Geologisk tid: Terra Mater fase 1–2 (må-punkter M1–M7: isotop, radioaktivitet og absolutt datering definert, gang/forkastning/blotning/skyvedekker/trilobitter/peneplan ved første bruk, årsakskjede for luminescensdatering (OSL), setning over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
     flag: "g1-geologisk-tid-terra-mater-2026-10-25",
     slug: "geologisk-tid",
