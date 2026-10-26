@@ -29,7 +29,14 @@ export const Route = createFileRoute("/poster/$slug/rediger")({
     }
     return { post, slug: params.slug, cms };
   },
-  head: () => topicHead({ title: "Rediger post", description: "", path: "" }),
+  head: ({ params }) =>
+    topicHead({
+      title: "Rediger post",
+      description: "",
+      // Egen canonical (ikke forsiden) + noindex: interne CMS-sider skal ikke i Google.
+      path: `/poster/${params.slug}/rediger`,
+      robots: "noindex, nofollow",
+    }),
   component: EditPost,
 });
 
