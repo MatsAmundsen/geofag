@@ -1391,6 +1391,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // NAO (G2): Hva tror du? + Sammendrag-mal.
+    flag: "g2-nao-mal-2026-10-26",
+    slug: "nao",
+    stale: [
+      "National Oceanic and Atmospheric Administration [NOAA], u.å.-a",
+      "## Test deg selv",
+      "dette kapittelet:",
+    ],
+  },
+  {
     // Tilpasning (G2): Terra Mater fase 1–2 (M1–M3).
     flag: "g2-tilpasning-terra-mater-2026-10-26",
     slug: "tilpasning",

@@ -293,6 +293,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Jetstrømmen slynger seg, følger sola gjennom året og styrer banen til lavtrykkene.",
     "I positiv NAO er jetstrømmen over Atlanteren sterk og ligger langt nord. Da får Nord-Europa mer storm og nedbør.",
   ],
+  Nao: [
+    "NAO er den nordatlantiske oscillasjonen: svingninger i trykkforskjellen mellom Islandslavtrykket og Asorhøytrykket.",
+    "I positiv fase er trykkforskjellen stor. Jetstrømmen blir sterk og ligger lenger nord, og Nord-Europa får ofte mildere og våtere vintre enn normalt.",
+    "I negativ fase er trykkforskjellen liten. Jetstrømmen blir svakere og mer bølgete, og Nord-Europa får ofte kaldere og tørrere vintre enn normalt.",
+    "Polarvirvelen ligger i stratosfæren over Arktis. Den er ikke det samme som polarjetstrømmen i troposfæren.",
+    "NAO er i stor grad naturlig og kaotisk, og vanskelig å varsle mer enn en uke eller to fram. Norsk vinter styres mer av NAO enn av ENSO.",
+  ],
   Katastrofer: [
     "Orkan som vindstyrke er middelvind over 32,6 m/s i ti minutter. En tropisk orkan er en tropisk syklon, og den måles med middelvind over ett minutt.",
     "Saffir-Simpson-skalaen anslår bare vindskade. Orkaner i alle kategorier kan gi dødelig stormflo, flom og tornadoer.",

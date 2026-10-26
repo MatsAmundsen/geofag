@@ -2,7 +2,7 @@
 >
 > Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Utdanningsdirektoratet [Udir], u.å.-b).
 >
-> **Kjerneelementer som dekkes i dette kapittelet:**
+> **Kjerneelementer som dekkes i dette kapitlet:**
 >
 > • *Jordsystemer i tid og rom:* Kjerneelementet handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren, og om hvordan delsystemene vekselvirker (Udir, u.å.-a). NAO er et samspill mellom trykk i lufta og været under.
 >
@@ -14,7 +14,11 @@
 NaoForklaring
 ```
 
-[Den nordatlantiske oscillasjonen](/tema/klima/nao) (North Atlantic Oscillation, NAO) er et viktig klima- og værfenomen på den nordlige halvkule. Den påvirker været over Nord-Atlanteren, Europa og deler av Nord-Amerika (National Oceanic and Atmospheric Administration [NOAA], u.å.-a). NAO beskriver svingninger i styrken på to trykksystemer: det subtropiske høytrykket ved Asorene, Asorhøytrykket, og lavtrykket nær Island, Islandslavtrykket. Svingningene påvirker vind, stormbaner, temperatur og nedbør i regionen (NOAA, u.å.-a).
+> **Hva tror du?**
+>
+> Når trykkforskjellen mellom Islandslavtrykket og Asorhøytrykket er stor (positiv NAO), blir vinteren i Nord-Europa vanligvis mildere eller kaldere enn normalt? Svar før du leser videre. Vi kommer tilbake til det under positiv fase.
+
+[Den nordatlantiske oscillasjonen](/tema/klima/nao) (North Atlantic Oscillation, NAO) er et viktig klima- og værfenomen på den nordlige halvkule. Den påvirker været over Nord-Atlanteren, Europa og deler av Nord-Amerika (USAs hav- og atmosfæremyndighet [NOAA], u.å.-a). NAO beskriver svingninger i styrken på to trykksystemer: det subtropiske høytrykket ved Asorene, Asorhøytrykket, og lavtrykket nær Island, Islandslavtrykket. Svingningene påvirker vind, stormbaner, temperatur og nedbør i regionen (NOAA, u.å.-a).
 
 NAO beskrives som positiv eller negativ, etter hvor stor trykkforskjellen mellom Asorene og Island er (NOAA, u.å.-a). Vi skiller mellom positiv og negativ fase. Se figur 1.
 
@@ -123,6 +127,8 @@ Virkninger:
 - Sør-Europa og Middelhavsområdet får ofte tørrere og kaldere vintre enn normalt.
 - Stormbanen flytter seg lenger nord, og Nord-Europa får ofte mer storm enn normalt (NOAA, u.å.-a).
 
+Svaret på «Hva tror du?» er at vinteren i Nord-Europa vanligvis blir mildere enn normalt når trykkforskjellen er stor. Da ligger jetstrømmen og stormbanen lenger nord, og mild atlanterluft treffer oftere (NOAA, u.å.-a).
+
 **Varm luft i Nord-Europa.** Figur 4 viser mild og fuktig luft over det sørøstlige USA og det varme havet utenfor. Jetstrømmen fører lavtrykk med varm og fuktig luft fra Atlanterhavet mot Nord-Europa. Det gir ofte mildere og våtere vintre enn normalt der (NOAA, u.å.-a).
 
 **Ofte kaldere og tørrere i Sør-Europa.** Sør for jetstrømmen er havet kjøligere enn normalt, nær Sør-Europa og Middelhavet (figur 4). Det sterke Asorhøytrykket holder lavtrykkene unna. Sør-Europa får mindre storm og nedbør, og ofte kaldere vær enn normalt (NOAA, u.å.-a).
@@ -194,6 +200,12 @@ NAO kan også påvirkes av tilbakekoblinger. Endringer i havtemperaturen kan for
 **Høy NAO-indeks:** Trykket over Island er lavere enn normalt. Mer vestavind, mild og fuktig luft over Sør-Norge, og ofte mildere vintre enn normalt i sør (Store norske leksikon, u.å.).
 
 **Lav NAO-indeks:** Ofte kaldere vintervær enn normalt, med luftmasser fra øst (Store norske leksikon, u.å.).
+
+## Sammendrag
+
+```widget
+SammendragNao
+```
 
 ## Test deg selv
 
