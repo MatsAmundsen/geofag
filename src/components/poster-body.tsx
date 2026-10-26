@@ -105,6 +105,7 @@ import {
   GolfFigurLat,
   GyreFigurLat,
   NorskekystFigurLat,
+  OtecFigurLat,
   EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
@@ -202,7 +203,6 @@ import { MarineEnergyModel } from "@/components/models/marine-energy-model";
 import {
   EnergySourcesDiagram,
   OffshoreWindShelfDiagram,
-  OtecRankineCycleDiagram,
   WindPowerTradeoffDiagram,
 } from "@/components/diagrams/energy";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
@@ -1044,7 +1044,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   WindPowerModel: () => <WindPowerModel />,
   OffshoreWindShelf: () => <OffshoreWindShelfDiagram />,
   MarineEnergyModel: () => <MarineEnergyModel />,
-  OtecRankineCycle: () => <OtecRankineCycleDiagram />,
+  OtecRankineCycle: () => <OtecFigurLat />,
   WindPowerTradeoff: () => <WindPowerTradeoffDiagram />,
     QuizEnergi: () => (
     <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
