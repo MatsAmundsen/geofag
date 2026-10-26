@@ -163,11 +163,12 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
     badge: [800, 575],
     narrowHide: true,
   });
-  /* Vest for innløp / ribbon — unngår stroke #f97316. */
-  lab("Færøy–Shetland-renna", 130, 555, COL.dempet, {
+  /* Inn i viewBox (start-anker) — unngår clip venstre @1280. */
+  lab("Færøy–Shetland-renna", 220, 555, COL.dempet, {
     size: 12,
     weight: 600,
-    badge: [120, 540],
+    anchor: "start",
+    badge: [220, 540],
     narrowHide: true,
   });
 
@@ -175,12 +176,13 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
   if (s.atl1 > 0.35) {
     const op = hold(s.atl1);
     if (op >= 0.92) {
-      lab("Den norske atlanterhavsstrømmen", 150, 450, COL.atlLys, {
+      lab("Den norske atlanterhavsstrømmen", 210, 450, COL.atlLys, {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [300, 520],
-        badge: [140, 430],
+        anchor: "start",
+        at: [340, 520],
+        badge: [210, 430],
       });
     }
   }
@@ -281,24 +283,27 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
   if (tallOn && s.tall > 0.35) {
     const op = hold(s.tall);
     if (op >= 0.92) {
-      /* Venstre, klar av Norskehavet-området (skjult når tallOn). */
-      lab("i renna: ca. 8 °C · 35,4 ‰", 160, 200, COL.atlLys, {
+      /* Inn i viewBox (start-anker) — unngår clip venstre @1280. */
+      lab("i renna: ca. 8 °C · 35,4 ‰", 200, 200, COL.atlLys, {
         size: 12,
         weight: 600,
         opacity: op,
-        badge: [150, 190],
+        anchor: "start",
+        badge: [200, 190],
       });
-      lab("lengst nord: under 5 °C · ca. 35 ‰", 160, 228, COL.atlLys, {
+      lab("lengst nord: under 5 °C · ca. 35 ‰", 200, 228, COL.atlLys, {
         size: 12,
         weight: 600,
         opacity: op,
-        badge: [150, 220],
+        anchor: "start",
+        badge: [200, 220],
       });
-      lab("kyststrømmen: 30–33 ‰", 160, 256, COL.kystLys, {
+      lab("kyststrømmen: 30–33 ‰", 200, 256, COL.kystLys, {
         size: 12,
         weight: 600,
         opacity: op,
-        badge: [150, 250],
+        anchor: "start",
+        badge: [200, 250],
       });
     }
   }
