@@ -1543,6 +1543,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "havstrommer",
     stale: ["```widget\nGolfDiagram\n```"],
   },
+  {
+    // Coriolis (G2): kvalitetsloft – begrepsliste (isobar, geostrofisk vind, ekmanlag), misforståelse «kraft som blåser», norsk Ekman/oppvelling med terskelkjede.
+    flag: "g2-coriolis-kvalitetsloft-2026-10-26",
+    slug: "coriolis",
+    stale: [
+      "Corioliseffekten setter altså ikke lufta i gang. Den endrer retningen.",
+      "På norskekysten kommer episoder med oppvelling ved langvarig og sterk nordavind, og de har betydning for utskifting av dypvannet i fjordene",
+      "**Treghetssystem:** Et referansesystem uten rotasjon, der Newtons lover gjelder uten fiktive krefter. Jorda er ikke et slikt system.\n\n**Ekmantransport:**",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
