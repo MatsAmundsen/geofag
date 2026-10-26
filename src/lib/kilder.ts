@@ -3481,7 +3481,7 @@ export const KILDER = {
       href: "https://doi.org/10.1029/98RG02739",
     },
     {
-      prefix: "NOAA AOML. (u.å.). ",
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
       italic: "Florida Current transport",
       suffix: ".",
       href: "https://www.aoml.noaa.gov/phod/floridacurrent/",

@@ -1284,6 +1284,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Mangerud & Spjeldnæs, 2025)",
     ],
   },
+  {
+    // AMOC (G2): Terra Mater fase 1–2 (må-punkter M1–M6: sverdrup definert før bruk, tetthet og symbolene i tetthetsformelen forklart med regneeksempel, årsakskjede via hellingen på havoverflaten for havnivået ved østkysten av USA, meridional/termohalin/randstrøm/konveksjon/adveksjon/subpolar/lagdelt/tidlige varselsignaler/iskjerne ved første bruk, fulle institusjonsnavn og RAPID/OSNAP forklart, læringsmål som punktliste, «og» i kildene).
+    flag: "g2-amoc-terra-mater-2026-10-26",
+    slug: "amoc",
+    stale: [
+      "(1 Sv = 1 million kubikkmeter vann per sekund)",
+      "der α sier hvor mye vannet utvider seg når det varmes",
+      "som normalt holder vann borte fra kysten",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
