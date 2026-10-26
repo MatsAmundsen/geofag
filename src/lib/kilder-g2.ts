@@ -321,6 +321,12 @@ export const KILDER_G2 = {
       href: "https://www.kartverket.no/til-sjos/se-havniva",
     },
     {
+      prefix: "Kartverket. (2021, 30. november). ",
+      italic: "Hva er forskjellen på tidevann og vannstand?",
+      suffix: "",
+      href: "https://www.kartverket.no/til-sjos/se-havniva/lar-om-tidevann-og-vannstand/hva-er-forskjellen-pa-tidevann-og-vannstand",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
       italic: "CTD",
       suffix: ".",
@@ -373,6 +379,12 @@ export const KILDER_G2 = {
       italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/saltholdighet",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-e). Solgangsvind. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/solgangsvind",
     },
     {
       prefix: "Svalbardmiljøloven. (2001). ",
