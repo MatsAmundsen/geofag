@@ -292,6 +292,7 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Jordrotasjonen gjør at lufta beveger seg fra vest mot øst i forhold til bakken.",
     "Jetstrømmen slynger seg, følger sola gjennom året og styrer banen til lavtrykkene.",
     "I positiv NAO er jetstrømmen over Atlanteren sterk og ligger langt nord. Da får Nord-Europa mer storm og nedbør.",
+    "En atmosfærisk elv er en smal korridor med sterk fukttransport foran kaldfronten. Den kan gi kraftig nedbør, slik Bjerknessenteret beskrev under ekstremværet Hans.",
   ],
   Nao: [
     "NAO er den nordatlantiske oscillasjonen: svingninger i trykkforskjellen mellom Islandslavtrykket og Asorhøytrykket.",

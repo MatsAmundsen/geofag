@@ -120,6 +120,18 @@ JetBlocking
 SjekkJet2
 ```
 
+## Atmosfæriske elver
+
+Jetstrømmen styrer hvor lavtrykkene går. Langs lavtrykket, foran kaldfronten, kan det oppstå en smal korridor med sterk transport av vanndamp. En slik korridor kaller vi en *atmosfærisk elv* (atmospheric river). Den er ikke en elv av vann i vanlig forstand, men en strøm av fuktig luft i troposfæren.
+
+Jo sterkere fukttransporten er, og jo mer den treffer kystfjell eller et lavtrykk som løfter lufta, desto større er sjansen for kraftig nedbør. Under ekstremværet Hans i august 2023 beskrev Bjerknessenteret at deler av lavtrykket fungerte som en atmosfærisk elv. Vanligvis kommer slike elver fra Atlanterhavet, men under Hans kom den uvanlig nok fra øst (Svensson, 2023). Du kan lese mer om Hans i [værkatastrofer](/tema/vaerkatastrofer).
+
+Modellen under viser polarjet og subtropisk jet, Rossby-bølger og atmosfæriske elver. Du kan stille ENSO og IOD og se hvordan jetstrøm og fukttransport ofte endres. Modellen er forenklet og viser sjanser, ikke en prognose.
+
+```widget
+JetAtmosfaeriskElvModell
+```
+
 ## Viktige begreper
 
 **Jetstrøm:** Smalt belte med sterk vind høyt oppe, typisk rundt 9100 meter. Vinden blåser fra vest mot øst og er sterkest om vinteren.
@@ -133,6 +145,8 @@ SjekkJet2
 **Stormbane:** Banen lavtrykkene følger. Langs polarfronten går de oftest mot øst, med vinden i høyden.
 
 **NAO:** Svingningen i trykkforskjellen mellom Island og Asorene. Den endrer styrken og beliggenheten til jetstrømmen over Atlanteren.
+
+**Atmosfærisk elv:** Lang og smal korridor med sterk transport av vanndamp, typisk foran kaldfronten i et lavtrykk. Kan gi kraftig nedbør der den treffer kyst eller fjell.
 
 ## Sammendrag
 

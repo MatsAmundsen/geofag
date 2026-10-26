@@ -45,7 +45,6 @@ export const NAV_GF2 = [
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
   { to: "/tema/klima", label: "Klima" },
-  { to: "/tema/klima/jetstrommer-atmosfaeriske-elver", label: "Jetstrømmer og atmosfæriske elver" },
   { to: "/tema/kryosfaeren", label: "Is" },
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
@@ -483,14 +482,14 @@ export const KLIMA_SUBTHEMES = [
 /** Interaktive klimamodeller. Ingen CMS-post (står derfor ikke i KLIMA_SUBTHEMES). */
 export const KLIMA_MODELS = [
   {
-    to: "/tema/klima/jetstrommer-atmosfaeriske-elver",
+    to: "/tema/jetstrommer",
     title: "Jetstrømmer og atmosfæriske elver",
     subtitle: "Interaktiv undervisningsmodell",
     kicker: "Interaktiv modell",
     image: "/images/jetstrommer-modell.jpg",
     alt: "Verdenskart med jetstrømmer og atmosfæriske elver",
     blurb:
-      "Polarjet og subtropisk jet, Rossby-bølger og atmosfæriske elver. Skru på ENSO og IOD og se hvordan jetstrøm og nedbør endres.",
+      "Polarjet og subtropisk jet, Rossby-bølger og atmosfæriske elver. Modellen ligger i jetstrømmer-kapitlet. Skru på ENSO og IOD og se hvordan jetstrøm og nedbør endres.",
     status: "klar" as const,
   },
 ] as const;
@@ -508,5 +507,6 @@ export function allThemePaths(): string[] {
     ...GF2_THEMES.map((t) => t.to),
     ...KLIMA_SUBTHEMES.map((t) => t.to),
     "/tema/kryosfare",
+    "/tema/klima/jetstrommer-atmosfaeriske-elver",
   ];
 }

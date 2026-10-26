@@ -1,5 +1,5 @@
 /**
- * ALL fagtekst i modellen «Jetstrømmer og atmosfæriske elver» (/tema/klima/jetstrommer-atmosfaeriske-elver).
+ * ALL fagtekst i modellen «Jetstrømmer og atmosfæriske elver» (/tema/jetstrommer — tidligere /tema/klima/jetstrommer-atmosfaeriske-elver).
  * Grunnlag: GeoBOT2, /workspace/jet-ar-modell/grunnlag.md. GeoBOT2 kontrollerer denne fila før merge.
  *
  * Regler: relative formuleringer («oftere», «ofte», «enn normalt»), ingen tall uten kilde,

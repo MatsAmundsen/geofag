@@ -413,7 +413,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   box-shadow: 0 0 0 2px #ffffff;
 }
 
-/* Jetstrømmer og atmosfæriske elver (undervisningsmodell, /tema/klima/jetstrommer-atmosfaeriske-elver) */
+/* Jetstrømmer og atmosfæriske elver (undervisningsmodell, embed i /tema/jetstrommer) */
 .jet-breakout {
   width: min(100vw - 2rem, 80rem);
   margin-inline: calc(50% - min(50vw - 1rem, 40rem));

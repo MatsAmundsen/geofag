@@ -1,6 +1,6 @@
 /**
  * Hvordan atmosfæriske elver dannes — pedagogisk stegfigur på klima-siden
- * /tema/klima/jetstrommer-atmosfaeriske-elver.
+ * /tema/jetstrommer (tidligere /tema/klima/jetstrommer-atmosfaeriske-elver).
  * Tall: om lag 2000 km / 300–500 km (SNL via vaerkatastrofer). Landfall/flom er egen figur
  * (AtmosfaeriskElvFigur) — ikke doblet her.
  * Stil: F-palett fra vaerkatastrofer-kit. Mats godkjente stil 25.10.2026.
