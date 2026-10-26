@@ -26,7 +26,7 @@ import {
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
-import { EKMAN_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
+import { EKMAN_TEKST, GOLF_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 import {
@@ -487,6 +487,24 @@ export const OppvellingFigurLat = lat<FigurProps>(
  * Ekmanspiralen i fire steg (Havstrømmer, widget Ekman). Kvadratisk tegneflate på smal skjerm (360 × 360),
  * 960 × 540 fra 760 px. Høydene over og under tegneflaten er målt mot ferdig figur (redusert bevegelse).
  */
+/** Golfstrømmen i fire steg (Havstrømmer, widget GolfDiagram). Samme ramme og mål som Oppvelling. */
+export const GolfFigurLat = lat<FigurProps>(
+  {
+    ...GOLF_TEKST,
+    ...LOKALE_MAAL,
+    // midlertidige mål (som Oppvelling); finjusteres etter skjermbilder hvis CLS
+    smTrinn: { over: -40, under: 0 },
+    skala: {
+      smal: {
+        over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
+        under: [[290, 266], [310, 248], [325, 248], [340, 222], [550, 222], [610, 204]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
+  () => import("./hav-golf").then((m) => m.GolfFigur),
+);
+
 export const EkmanSpiralFigurLat = lat<FigurProps>(
   {
     ...EKMAN_TEKST,

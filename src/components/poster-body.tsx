@@ -102,6 +102,7 @@ import {
   VestOstFigurLat,
   SjobrisFigurLat,
   OppvellingFigurLat,
+  GolfFigurLat,
   EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
@@ -163,7 +164,6 @@ import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams
 import { PetroleumSnittFigur, RessurskartFigur } from "@/components/diagrams/ressurs-figurer";
 import {
   DensityDiagram,
-  GulfVsNacDiagram,
   GyreDiagram,
   OceanDriversDiagram,
 } from "@/components/diagrams/ocean";
@@ -679,7 +679,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     GyreDiagram: () => <GyreDiagram />,
     OppvellingDiagram: () => <OppvellingFigurLat />,
-    GolfDiagram: () => <GulfVsNacDiagram />,
+    GolfDiagram: () => <GolfFigurLat />,
     TetthetDiagram: () => <DensityDiagram />,
     QuizHavstrommer: () => (
     <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
