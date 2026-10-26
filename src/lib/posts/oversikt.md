@@ -5,7 +5,7 @@
 > - gjøre rede for strålingsbalanse, strålingsfordeling og strålingspådriv og bruke disse til å forstå den globale sirkulasjonen i atmosfæren
 > - gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -35,13 +35,13 @@ KlimaDefinisjon
 
 ### Vær er dager. Klima er tiår.
 
-En mild januaruke er vær. At Vestlandet er vått, og at norskekysten på 60° N er mildere enn Labrador på samme bredde, er klima. Klima er statistikken: typisk temperatur, nedbør, vind og is over minst 30 år (WMO, u.å.).
+En mild januaruke er vær. At Vestlandet er vått, og at norskekysten på 60° N er mildere enn Labrador på samme bredde, er klima. Klima er statistikken: typisk temperatur, nedbør, vind og is over minst 30 år (Verdens meteorologiorganisasjon [WMO], u.å.).
 
-Derfor kan du ikke «motbevise» klimaendring med én kald vinter. Og du kan ikke «bevise» den med én varm uke. Du trenger mønsteret.
+Derfor kan vi ikke «motbevise» klimaendring med én kald vinter. Og vi kan ikke «bevise» den med én varm uke. Vi trenger mønsteret.
 
 ### Fem deler, ett system
 
-Klimasystemet er ikke bare luft. Atmosfæren, havet, isen, landoverflaten og livet bytter varme, vann og karbon. Endrer du én del, svarer de andre.
+Klimasystemet er ikke bare luft. Atmosfæren, havet, isen, landoverflaten og livet bytter varme, vann og karbon. Endrer vi én del, svarer de andre.
 
 ```widget
 KlimasystemFoto
@@ -57,15 +57,15 @@ SjekkOversikt1
 
 ### Inn og ut, og det som holder igjen
 
-Sola sender inn kortbølget lys. Jorda sender ut langbølget stråling. Er inn og ut i balanse over tid, er den globale temperaturen stabil. Er de ikke det, varmes eller kjøles planeten til balansen er gjenopprettet.
+Sola sender inn kortbølget lys (synlig sollys). Jorda sender ut langbølget stråling (varmestråling). Er inn og ut i balanse over tid, er den globale temperaturen stabil. Er de ikke det, varmes eller kjøles planeten til balansen er gjenopprettet.
 
 ```widget
 DrivhusForklaring
 ```
 
-Enkelte gasser i lufta, som vanndamp, karbondioksid og metan, slipper sollyset inn, men bremser varmen på vei ut (NASA, u.å.-a). Uten dem ville jorda vært en frossen stein. Med for mye av dem stiger temperaturen. Hele den naturlige drivhuseffekten gjør jordoverflaten omtrent 33 °C varmere enn den ellers ville vært. Vanndamp og skyer står for omtrent tre firedeler av effekten og CO₂ for omtrent en femdel. Likevel er CO₂ den viktigste styringsfaktoren, fordi mengden vanndamp og skyer bare følger temperaturen (Lacis mfl., 2010).
+Enkelte gasser i lufta, som vanndamp, karbondioksid og metan, slipper sollyset inn, men bremser varmen på vei ut (National Aeronautics and Space Administration [NASA], u.å.-a). Uten dem ville jorda vært en frossen stein. Med for mye av dem stiger temperaturen. Hele den naturlige drivhuseffekten gjør jordoverflaten omtrent 33 °C varmere enn den ellers ville vært. Vanndamp og skyer står for omtrent tre firedeler av effekten og CO₂ for omtrent en femdel. Likevel er CO₂ den viktigste styringsfaktoren, fordi mengden vanndamp og skyer bare følger temperaturen (Lacis mfl., 2010).
 
-Globalt middel i toppen av atmosfæren er omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går det som langbølget stråling, og drivhusgassene bremser den. Tallene er avrundede globale middel (NASA, 2009; IPCC, 2021).
+Globalt middel i toppen av atmosfæren er omtrent 340 W/m² inn. Rundt 30 prosent kastes tilbake (albedo). Resten tas opp. Ut går det som langbølget stråling, og drivhusgassene bremser den. Tallene er avrundede globale middel (NASA, 2009; FNs klimapanel [IPCC], 2021).
 
 ```widget
 StralingDiagram
@@ -97,7 +97,7 @@ PaadrivForklaring
 
 Et pådriv setter i gang en endring. En tilbakekobling er klimasystemets reaksjon, og den kan forsterke eller dempe endringen.
 
-Vanndamp er den sterkeste drivhusgassen i lufta, men den virker i hovedsak som en forsterker og setter ikke i gang endringen selv. Blir det varmere, kan lufta holde mer vanndamp. Mer vanndamp holder mer varme. Det kalles en positiv tilbakekobling.
+Vanndamp er den sterkeste drivhusgassen i lufta, men den virker i hovedsak som en forsterker og setter ikke i gang endringen selv. Jo varmere lufta er, desto mer vanndamp kan den holde. Mer vanndamp holder mer varme. Det kalles en positiv tilbakekobling.
 
 | | Pådriv | Tilbakekobling |
 | --- | --- | --- |
@@ -107,13 +107,13 @@ Vanndamp er den sterkeste drivhusgassen i lufta, men den virker i hovedsak som e
 
 ### Isen er et speil
 
-Hvit is kaster mye sollys tilbake. Mørkt hav tar det opp. Smelter isen, blir flaten mørkere, tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen, en av de tydeligste forsterkerne i polarstrøk. Massebalanse, likevektslinjen (ELA) og permafrost står i [kryosfæren](/tema/kryosfaeren).
+Hvit is kaster mye sollys tilbake. Mørkt hav tar det opp. Smelter isen, blir flaten mørkere, tas mer sol opp, blir det varmere, smelter mer is. Det er is-albedo-tilbakekoblingen, en av de tydeligste forsterkerne i polarstrøk. Massebalanse, likevektslinjen (ELA = equilibrium line altitude, høyden der årlig snøtilvekst og smelting balanserer) og permafrost står i [kryosfæren](/tema/kryosfaeren).
 
 ```widget
 AlbedoFoto
 ```
 
-Arktis har blitt varmet opp nesten fire ganger så raskt som jorda i gjennomsnitt siden 1979 (Rantanen mfl., 2022). AMAP (2021) oppgir omtrent tre ganger for 1971–2019. Det kalles arktisk forsterkning, og is-albedo-tilbakekoblingen er en av årsakene.
+Arktis har blitt varmet opp nesten fire ganger så raskt som jorda i gjennomsnitt siden 1979 (Rantanen mfl., 2022). Arctic Monitoring and Assessment Programme (AMAP) oppgir omtrent tre ganger for 1971–2019 (AMAP, 2021). Tallene bygger på ulike perioder og metoder, men begge viser at Arktis varmes raskere. Det kalles arktisk forsterkning, og is-albedo-tilbakekoblingen er en av årsakene.
 
 ```widget
 SjekkOversikt3
@@ -125,7 +125,7 @@ SjekkOversikt3
 
 Omtrent 90 prosent av overskuddsvarmen de siste tiårene er tatt opp i havet, ikke i lufta (NASA, u.å.-b; IPCC, 2021). Derfor kan lufttemperaturen svinge fra år til år, mens havet jevnt tar opp mer energi.
 
-AMOC, beltet du møtte i [havstrømmer](/tema/havstrommer), er en del av dette minnet. Smelter mer is og kommer mer ferskvann ut i de nordiske hav, blir overflaten lettere. Da kan synkingen svekkes. Usikkerheten for Nord-Europa er reell, men beltet er ikke «slått av». Se også egen fordypningsside om [AMOC](/tema/klima/amoc).
+Den atlantiske omveltningssirkulasjonen (AMOC), beltet vi møtte i [havstrømmer](/tema/havstrommer), er en del av dette minnet. Smelter mer is og kommer mer ferskvann ut i de nordiske hav, blir overflaten lettere. Da kan synkingen svekkes. Usikkerheten for Nord-Europa er reell, men beltet er ikke «slått av». Se også egen fordypningsside om [AMOC](/tema/klima/amoc).
 
 ```widget
 HavMinneFoto
@@ -133,14 +133,14 @@ HavMinneFoto
 
 ### Fire svingninger. Fire sider.
 
-Svingningene flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig. De hører til den indre dynamikken i klimasystemet, ikke til et nytt ytre pådriv (WMO, u.å.).
+Vi skiller mellom fire indre svingninger: ENSO, IOD, NAO og AMOC. Svingningene flytter varme og nedbør uten å endre jordas totale energibalanse vesentlig. De hører til den indre dynamikken i klimasystemet, ikke til et nytt ytre pådriv (WMO, u.å.).
 
 - [ENSO](/tema/klima/enso): tropisk Stillehav. Walker-cellen, El Niño og La Niña.
 - [IOD](/tema/klima/iod): Det indiske hav. Dipolen mot Øst-Afrika og Australia.
 - [NAO](/tema/klima/nao): Nord-Atlanteren. Trykkvippen inn mot norske vintre.
 - [AMOC](/tema/klima/amoc): Atlanterens omveltning. Tregere enn været. Ikke en bryter.
 
-Les dem i den rekkefølgen. Pass på at du kan skille et pådriv fra en naturlig svingning før du leser videre.
+Les dem i den rekkefølgen. Skill et pådriv fra en naturlig svingning før du leser videre.
 
 ```widget
 SjekkOversikt4
@@ -164,9 +164,9 @@ Naturlig drivhuseffekt er ikke det samme som menneskeskapt forsterkning. Den fø
 
 ### Hvor mye har det blitt varmere?
 
-Den globale overflatetemperaturen var 1,09 °C høyere i 2011–2020 enn i 1850–1900. FNs klimapanel slår fast at det er entydig at menneskelig påvirkning har varmet atmosfæren, havet og landjorda. Det beste anslaget for menneskeskapt oppvarming er 1,07 °C (IPCC, 2021). Siden har oppvarmingen fortsatt. 2024 var det varmeste året som er målt, 1,60 °C over førindustrielt nivå. 2025 var det tredje varmeste, med 1,47 °C. Gjennomsnittet for 2023–2025 var for første gang over 1,5 °C. Ett år over 1,5 °C betyr likevel ikke at Paris-grensen er nådd, for den gjelder et gjennomsnitt over 20 år. Den langsiktige oppvarmingen anslås til ca. 1,4 °C (Copernicus, 2026).
+Den globale overflatetemperaturen var 1,09 °C høyere i 2011–2020 enn i 1850–1900. FNs klimapanel slår fast at det er entydig at menneskelig påvirkning har varmet atmosfæren, havet og landjorda. Det beste anslaget for menneskeskapt oppvarming er 1,07 °C (IPCC, 2021). Siden har oppvarmingen fortsatt. 2024 var det varmeste året som er målt, 1,60 °C over førindustrielt nivå. 2025 var det tredje varmeste, med 1,47 °C. Gjennomsnittet for 2023–2025 var for første gang over 1,5 °C. Ett år over 1,5 °C betyr likevel ikke at Paris-grensen er nådd, for den gjelder et gjennomsnitt over 20 år. Den langsiktige oppvarmingen anslås til ca. 1,4 °C (Copernicus Climate Change Service, 2026).
 
-CO₂ i lufta var i snitt 425,6 ppm globalt i 2025 (427,4 ppm på Mauna Loa), mot ca. 280 ppm før industrialiseringen (NOAA GML, 2026). Havnivået steg ca. 0,20 m fra 1901 til 2018, og stigningstakten har økt fra 1,3 mm per år (1901–1971) til 3,7 mm per år (2006–2018) (IPCC, 2021).
+CO₂ i lufta var i snitt 425,6 ppm (parts per million, milliondeler) globalt i 2025 (427,4 ppm på Mauna Loa), mot ca. 280 ppm før industrialiseringen (NOAA Global Monitoring Laboratory [NOAA GML], 2026). Havnivået steg ca. 0,20 m fra 1901 til 2018, og stigningstakten har økt fra 1,3 mm per år (1901–1971) til 3,7 mm per år (2006–2018) (IPCC, 2021).
 
 Grønlandsisen inneholder nok is til å heve havnivået globalt med ca. 7,4 meter, og den antarktiske innlandsisen ca. 58 meter (IPCC, 2021, kap. 9). Det er ikke en prognose. IPCC venter 0,28–1,01 m stigning innen 2100, sammenlignet med 1995–2014, avhengig av utslipp (IPCC, 2021).
 
@@ -176,7 +176,7 @@ SjekkOversikt5
 
 ## Hva betyr klimasystemet for Norge?
 
-Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mild for breddegraden. I et varmere klima holder lufta mer fukt. Vestlandet, der lufta allerede tvinges opp av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
+Vi ligger i vestavindsbeltet, med et varmt hav utenfor. Derfor er kysten mild for breddegraden. Jo varmere klimaet er, desto mer fukt kan lufta holde. Vestlandet, der lufta allerede tvinges opp av fjellet, kan få mer intens nedbør. Snøgrensen kryper oppover. Havet stiger.
 
 AMOC og NAO er sentrale usikkerhets- og variasjonsmomenter. En svekket nordovertransport av varme kan dempe oppvarmingen i Nord-Atlanteren uten å «slå av Golfstrømmen». Varmen langs norskekysten kommer med Den norske atlanterhavsstrømmen. Klima i Norge er et samspill mellom atmosfære, hav og geografi.
 
@@ -223,6 +223,14 @@ SjekkOversikt6
 **Arktisk forsterkning:** At Arktis blir varmet opp mye raskere enn jorda i gjennomsnitt.
 
 **ENSO:** Naturlig svingning i tropisk Stillehav.
+
+**IOD:** Naturlig svingning i det indiske hav (Indian Ocean Dipole).
+
+**NAO:** Den nordatlantiske oscillasjonen. Trykkvippen mellom Island og Asorene.
+
+**AMOC:** Den atlantiske omveltningssirkulasjonen. Treg havsirkulasjon som frakter varme nordover.
+
+**Is-albedo-tilbakekobling:** Positiv tilbakekobling der smeltende is gjør flaten mørkere, slik at mer sol tas opp og mer is smelter.
 
 **Paleoklima:** Klimaet i fortiden, rekonstruert fra iskjerner, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er.
 
