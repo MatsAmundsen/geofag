@@ -53,7 +53,7 @@ ImpactLevels
 
 **Økosystemene** rammes når arter må flytte seg etter temperaturen, når næringskjeder brytes, og når viktige habitater endrer karakter. Det ser vi nærmere på i neste del.
 
-Noen tiltak kan gjøre samfunnet mer sårbart på lang sikt eller flytte skaden over på andre. Det kalles *maltilpasning* (IPCC, 2022). Et eksempel er flomvollen fra «Hva tror du?». Folk føler seg trygge, det blir bygd mer bak vollen, og når en flom en gang blir større enn vollen er bygd for, blir skadene større enn før. Vi skiller også mellom *hard tilpasning* og *soft tilpasning*. Hard tilpasning er fysiske anlegg som flomvoller, sjømurer og store rør. Soft tilpasning er blant annet tidlig varsling, arealplanlegging, forsikringsregler og naturbaserte løsninger. Harde sjømurer kan gi mer erosjon hos naboen. Da øker eksponeringen for noen, mens den synker for andre. Maltilpasning handler derfor også om *equity*, altså hvem som betaler og hvem som får nytten. Vi kommer tilbake til dette når vi drøfter reduksjon og tilpasning.
+Noen tiltak kan gjøre samfunnet mer sårbart på lang sikt eller flytte skaden over på andre. Det kalles *maltilpasning* (IPCC, 2022). Et eksempel er flomvollen fra «Hva tror du?». Folk føler seg trygge, det blir bygd mer bak vollen, og når en flom en gang blir større enn vollen er bygd for, blir skadene større enn før. Vi skiller også mellom *hard tilpasning* og *soft tilpasning*. Hard tilpasning er fysiske anlegg som flomvoller, sjømurer og store rør. Soft tilpasning er blant annet tidlig varsling, arealplanlegging, forsikringsregler og naturbaserte løsninger. Harde sjømurer kan gi mer erosjon hos naboen. Da øker eksponeringen for noen, mens den synker for andre. Maltilpasning handler derfor også om *rettferdig fordeling* (*equity*), altså hvem som betaler og hvem som får nytten. Vi kommer tilbake til dette når vi drøfter reduksjon og tilpasning.
 
 ```widget
 SjekkTilpasning1
@@ -67,17 +67,17 @@ Kjeden kan skrives kort slik: Havet eller lufta blir varmere. Isdekket minker, e
 
 ### Barentshavet: fra kaldt arktisk hav til varmere blandingsområde
 
-Knapt noe sted på jorda varmes raskere opp enn Arktis. Havforskningsinstituttet har dokumentert at Barentshavet allerede er i endring (Havforskningsinstituttet, 2023). Varmere atlanterhavsvann kommer inn fra sør. Samtidig blir det mindre is, og avkjølingen i nord svekkes. Det gir en forsterkningskjede i havet.
+Knapt noe sted på jorda varmes raskere opp enn Arktis. Havforskningsinstituttet har dokumentert at Barentshavet allerede er i endring (Havforskningsinstituttet, 2023). Når varmere atlanterhavsvann strømmer inn fra sør, og isdekket minker, svekkes avkjølingen i nord. Dermed holder mer av vannsøylen seg varmere lenger utpå året. Det er en forsterkningskjede i havet.
 
-Nordøstarktisk torsk er verdens største torskebestand. Etter 2000 vokste bestanden seg rekordstor. Redusert isdekke om sommeren gjorde at torsken kunne bruke mer av Barentshavet, også områder som tidligere var mer arktiske. Der fant den blant annet lodde. Etter en topp i 2013 har bestanden gått ned igjen, og fisket er redusert. Videre overvåkning vil vise om trenden snur (Havforskningsinstituttet, 2023).
+Nordøstarktisk torsk er verdens største torskebestand. Etter år 2000 vokste den seg rekordstor. Mindre sommeris gjorde at torsken kunne beite lenger nord, også i områder som tidligere var mer arktiske, blant annet på lodde. Bestanden nådde en topp i 2013. Deretter har den gått ned, og fisket er strammet inn. Videre overvåkning vil vise om trenden snur (Havforskningsinstituttet, 2023).
 
-Polartorsken er tilpasset kaldt arktisk vann og is. Den er en nøkkelart i den nordligste delen av Barentshavet, som mat for større fisk, sjøpattedyr og sjøfugl. Redusert isdekke, varmere vann og nye rovdyr sørfra, blant dem torsk, kan true den. Etter lengre tids bestandsnedgang ble polartorsken ført opp som sterkt truet i den norske rødlisten for arter i 2021 (Havforskningsinstituttet, 2023). Dersom en nøkkelart forsvinner helt eller delvis, kan økosystemet endre seg til noe vi ikke har sett før. Forskerne mener derfor at langsiktig økosystemtokt er nødvendig for forvaltningen.
+Polartorsken er tilpasset kaldt arktisk vann og is. Den er en nøkkelart lengst nord i Barentshavet: mat for større fisk, sjøpattedyr og sjøfugl. Jo mindre is og jo varmere vann, desto hardere presses den av nye rovdyr sørfra, blant dem torsk. Etter lengre tids bestandsnedgang ble polartorsken ført opp som sterkt truet i den norske rødlisten for arter i 2021 (Havforskningsinstituttet, 2023). Dersom en nøkkelart forsvinner helt eller delvis, kan økosystemet skifte til en tilstand vi ikke har sett før. Forskerne mener derfor at langsiktig økosystemtokt er nødvendig for forvaltningen.
 
 ### Globalt: korallbleking og harde grenser
 
-Globalt har IPCC dokumentert at marine hetebølger har ført til masse dødelighet i korallrev og andre kystøkosystem, med svært høy sikkerhet (IPCC, 2022). Koraller lever i samspill med alger. Når vannet blir for varmt, mister korallene algene, og revet blekes. Bleking er ikke det samme som at korallen er død med en gang, men gjentatt eller langvarig stress øker risikoen for død.
+Globalt har IPCC dokumentert at marine hetebølger har ført til massedødelighet i korallrev og andre kystøkosystem, med høy sikkerhet (IPCC, 2022). Koraller lever i samspill med alger. Når vannet blir for varmt, mister korallene algene, og revet blekes. Bleking er ikke det samme som at korallen er død med en gang, men gjentatt eller langvarig stress øker risikoen for død.
 
-IPCC mener med høy sikkerhet at alvorlig korallbleking og lavere korallmengde allerede er observert mange steder, særlig i Stillehavet og Indiahavet (IPCC, 2022). Hard tilpasningsgrense betyr at ingen tilpasning kan unngå uakseptabel risiko. Soft tilpasningsgrense betyr at muligheter finnes, men ikke er tilgjengelige ennå, for eksempel på grunn av økonomi eller styring. IPCC har dokumentert at harde grenser allerede er nådd i noen økosystem (IPCC, 2022). Korallrev er et eksempel der videre oppvarming gjør tilpasning stadig vanskeligere.
+IPCC mener med høy sikkerhet at alvorlig korallbleking og lavere korallmengde allerede er observert mange steder, særlig i Stillehavet og Indiahavet (IPCC, 2022). Hard tilpasningsgrense betyr at ingen tilpasning kan unngå uakseptabel risiko. Soft tilpasningsgrense betyr at muligheter finnes, men ikke er tilgjengelige ennå, for eksempel på grunn av økonomi eller styring. Hard *tilpasning* er ikke det samme som hard *tilpasningsgrense*. Den første er en type tiltak. Den andre er grensen for hvor langt tilpasning kan gå. IPCC har dokumentert at harde grenser allerede er nådd i noen økosystem (IPCC, 2022). Korallrev er et eksempel der videre oppvarming gjør tilpasning stadig vanskeligere.
 
 Økosystemene er altså ikke bare «bakgrunn» for menneskelig risiko. De leverer mat, karbonlagring, kystbeskyttelse og biodiversitet. Når de endres, endres også sårbarheten i samfunnene som er avhengige av dem.
 
@@ -173,17 +173,17 @@ Globalt er EUs kvotesystem (EU ETS) et eksempel på reduksjon i stor skala. Syst
 
 Maltilpasning er ikke det samme som et tiltak som «bare er dyrt». Det er et tiltak som øker sårbarheten senere, eller som flytter skaden over på andre (IPCC, 2022). Flomvollen som frister til mer bygging bak vollen, er ett eksempel. En sjømur som reflekterer bølger og graver ut bunnen foran naboens strand, er et annet.
 
-Hard tilpasning kan være nødvendig der verdiene er store og faren er høy. Soft og naturbasert tilpasning, som åpne bekker, flomsletter og tidlig varsling, gir ofte flere gevinster samtidig. Equity-spørsmålet er likevel det samme: Hvem betaler for vollene, og hvem får tomtene bak dem? Hvem mister strandlinje når muren flytter erosjonen? IPCC advarer mot maltilpasning som låser inn sårbarhet og forsterker ulikhet, og peker på fleksibel, inkluderende og langsiktig planlegging som vei for å unngå det (IPCC, 2022).
+Hard tilpasning kan være nødvendig der verdiene er store og faren er høy. Soft og naturbasert tilpasning, som åpne bekker, flomsletter og tidlig varsling, gir ofte flere gevinster samtidig. Fordelingsspørsmålet er likevel det samme: Hvem betaler for vollene, og hvem får tomtene bak dem? Hvem mister strandlinje når muren flytter erosjonen? IPCC advarer mot maltilpasning som låser inn sårbarhet og forsterker ulikhet, og peker på fleksibel, inkluderende og langsiktig planlegging som vei for å unngå det (IPCC, 2022).
 
 ## Hvem bør tilpasse seg, og hvem bør kutte?
 
 Faglig konsensus i IPCC AR6 WGII er at både reduksjon og tilpasning er nødvendige, og at det finnes et *tilpasningsgap* (IPCC, 2022). Tilpasningsgapet er forskjellen mellom den tilpasningen som er gjennomført, og den som trengs for å håndtere risikoen. IPCC har høy sikkerhet for at gapet finnes, at det er ujevnt fordelt, og at det er størst blant grupper med lav inntekt (IPCC, 2022). Mye observert tilpasning er fragmentert, liten i skala og mer plan enn gjennomføring.
 
-Det er også mulig å argumentere med at land med høye historiske utslipp har et særlig ansvar for å kutte raskt. Norge har høye utslipp per innbygger sammenlignet med mange land, og samtidig kapasitet til både å finansiere kutt og å tilpasse infrastruktur. Små øystater og mange lavinntektsland har lav historisk utslipp, men høy eksponering for havnivåstigning, hetebølger og tørke. Der kan soft tilpasningsgrense allerede være nådd for husholdninger, mens harde grenser er nærmere for noen økosystem (IPCC, 2022).
+Det er også mulig å argumentere med at land med høye historiske utslipp har et særlig ansvar for å kutte raskt. Norge har høye utslipp per innbygger sammenlignet med mange land, og samtidig kapasitet til både å finansiere kutt og å tilpasse infrastruktur. Små øystater og mange lavinntektsland har lave historiske utslipp, men høy eksponering for havnivåstigning, hetebølger og tørke. Der kan soft tilpasningsgrense allerede være nådd for husholdninger, mens harde grenser er nærmere for noen økosystem (IPCC, 2022).
 
 Andre aktører, for eksempel enkelte regjeringer og næringslivsorganisasjoner, hevder at teknologisk utvikling og markedet vil kutte utslipp raskere hvis prisen på karbon er forutsigbar. De hevder også at tilpasning først og fremst er et lokalt ansvar. Kommuner og NVE i Norge har derimot vist at arealplan, klimapåslag og flomsonekart er nasjonale og lokale verktøy som må treffe før skaden skjer.
 
-Avveiingen er ikke et enten-eller. Jo mer verden kutter, desto mindre blir faren på lang sikt, og desto lettere blir tilpasningen. Jo bedre tilpasningen er, desto mindre skade får vi av den oppvarmingen som allerede er i systemet. Equity-rammen fra IPCC sier at gapet er størst der kapasiteten er minst. Det er en faglig beskrivelse av ulikhet i risiko, ikke en moralregel for eleven. Oppgaven i Geofag 2 er å bruke begrepene fare, eksponering, sårbarhet, reduksjon, tilpasning og maltilpasning til å vurdere konkrete løsninger.
+Avveiingen er ikke et enten-eller. Jo mer verden kutter, desto mindre blir faren på lang sikt, og desto lettere blir tilpasningen. Jo bedre tilpasningen er, desto mindre skade får vi av den oppvarmingen som allerede er i systemet. Fordelingsrammen fra IPCC sier at gapet er størst der kapasiteten er minst. Det er en faglig beskrivelse av ulikhet i risiko, ikke en moralregel for eleven. Oppgaven i Geofag 2 er å bruke begrepene fare, eksponering, sårbarhet, reduksjon, tilpasning og maltilpasning til å vurdere konkrete løsninger.
 
 > **Vanlige misforståelser**
 >
@@ -214,6 +214,10 @@ Avveiingen er ikke et enten-eller. Jo mer verden kutter, desto mindre blir faren
 **Hard tilpasning:** Fysiske anlegg som flomvoller, sjømurer og store rør.
 
 **Soft tilpasning:** Ikke-strukturelle eller naturbaserte tiltak, for eksempel varsling, arealplan og åpne bekker.
+
+**Hard tilpasningsgrense:** Grense der ingen tilpasning kan unngå uakseptabel risiko.
+
+**Soft tilpasningsgrense:** Grense der tilpasning fortsatt er mulig i prinsippet, men ikke tilgjengelig ennå, for eksempel på grunn av økonomi eller styring.
 
 **Tilpasningsgap:** Forskjellen mellom gjennomført tilpasning og den tilpasningen som trengs for å håndtere klimarisikoen.
 
