@@ -119,11 +119,11 @@ Vi kan være sikre på leddene fra innstråling til is og albedo. Lagringen av C
 
 Når sommersola på 65°N blir sterkere etter en istid, går kjeden motsatt vei. Iskantene smelter. Mørkere land og hav kommer fram, albedoen synker, og mer energi tas opp. Samtidig slipper havet ut CO₂ som var lagret i det kalde dypvannet. I antarktisk is stiger CO₂ fra ca. 180 ppm til 260–280 ppm gjennom en avsmelting (Lüthi mfl., 2008). Gassen forsterker oppvarmingen og sprer den til hele jorda, også til den sørlige halvkulen.
 
-### Hva forklarer Milankovitch – og hva forklarer de ikke?
+### Hva forklarer Milankovitch-syklusene – og hva forklarer de ikke?
 
 Milankovitch-syklusene forklarer rytmen i istidene over titusener til hundretusener av år. De forklarer ikke dagens globale oppvarming. Skillet står på tre punkter: tempo, retning og drivhusgasser.
 
-**Tempo.** Jordbanen endrer sommersola på 65°N over tusener av år. Den globale oppvarmingen siden midten av 1800-tallet har skjedd over tiår til et par århundrer. IPCC har dokumentert at dette tempoet er for raskt til å komme fra jordbanen (IPCC, 2021; NASA, 2020).
+**Tempo.** Jordbanen endrer sommersola på 65°N over tusener av år. Den globale oppvarmingen siden midten av 1800-tallet har skjedd over tiår til et par århundrer. IPCC har vurdert at dette tempoet er for raskt til å komme fra jordbanen (IPCC, 2021; NASA, 2020).
 
 **Retning.** Jordbanen gir i dag en svak nedgang i sommersola på 65°N. Uten menneskelige utslipp ville jorda sakte blitt litt kjøligere (IPCC, 2021; NASA, 2020). Observasjonene går motsatt vei: jorda blir varmere.
 
