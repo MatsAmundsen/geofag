@@ -1543,6 +1543,17 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "havstrommer",
     stale: ["```widget\nGolfDiagram\n```"],
   },
+  {
+    // Kryosfæren (G2): kvalitetsloft – lukket is–albedo-tilbakekobling med gradert sikkerhet, Arktis (sesonghavis) vs Antarktis (innlandsis) for havnivå, misforståelse havis≠innlandsis, lett lim AMOC/paleoklima.
+    flag: "g2-kryosfaeren-kvalitetsloft-2026-10-26",
+    slug: "kryosfaeren",
+    stale: [
+      "Som nevnt kaller vi en endring som forsterker seg selv, en positiv tilbakekobling. Her går kjeden rundt slik:",
+      "Arktis er et hav nesten omsluttet av land, så mye av isen blir liggende gjennom sommeren og kan vokse videre neste høst. Antarktis er et kontinent omsluttet av hav, og isen driver friere og blir sjeldnere like tykk.",
+      "Dette er en positiv tilbakekobling:\n\n1. Permafrosten tiner.",
+      "**Positiv tilbakekobling:** En endring som setter i gang noe som forsterker den samme endringen, for eksempel at mindre havis gir mer oppvarming og enda mindre is.\n\n**Permafrost:**",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
