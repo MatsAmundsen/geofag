@@ -1315,6 +1315,94 @@ const COPY_RESEEDS: CopyReseed[] = [
       "på luvsiden. På lesiden synker",
     ],
   },
+  {
+    // Høytrykk og lavtrykk (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-hoytrykk-lavtrykk-terra-mater-2026-10-26",
+    slug: "hoytrykk-lavtrykk",
+    stale: [
+      "(78 %)",
+      "(NOAA, u.å.-a)",
+      "høye bygeskyer (cumulonimbus)",
+    ],
+  },
+  {
+    // Lokale værsystemer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-lokale-vaersystemer-terra-mater-2026-10-26",
+    slug: "lokale-vaersystemer",
+    stale: [
+      "Havet har stor varmekapasitet. Det tar lang tid",
+      "(NOAA, u.å.-a)",
+      "varslet yr",
+    ],
+  },
+  {
+    // Jetstrømmer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-jetstrommer-terra-mater-2026-10-26",
+    slug: "jetstrommer",
+    stale: [
+      "(NOAA, u.å.-a)",
+      "Tropopausen er grensen mellom troposfæren og stratosfæren. Den ligger på omtrent 17 kilometers høyde i tropene og rundt 8 kilometer i polare strøk, og den har et tydelig brudd",
+      "Mens farten endres, oppstår en vind på tvers av jetstrømmen som kalles ageostrofisk vind",
+    ],
+  },
+  {
+    // Værkatastrofer (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-vaerkatastrofer-terra-mater-2026-10-26",
+    slug: "vaerkatastrofer",
+    stale: [
+      "(Udir, u.å.-b)",
+      "74 mph, 64 knop",
+      "NVE kaller Hans",
+    ],
+  },
+  {
+    // Klima-oversikt (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-oversikt-terra-mater-2026-10-26",
+    slug: "oversikt",
+    stale: [
+      "Derfor kan du ikke «motbevise» klimaendring",
+      "AMOC, beltet du møtte",
+      "likevektslinjen (ELA) og permafrost",
+      "(Copernicus, 2026)",
+      "(NOAA GML, 2026)",
+    ],
+  },
+  {
+    // ENSO (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-enso-terra-mater-2026-10-26",
+    slug: "enso",
+    stale: [
+      "Tallgrunnlaget er ERSST versjon 6 (Climate Prediction Center, u.å.)",
+      "Den nedre delen av kretsen går fra øst mot vest",
+      "forsterke Hadley-sirkulasjonen.",
+      "over det maritime kontinentet,",
+    ],
+  },
+  {
+    // NAO (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-nao-terra-mater-2026-10-26",
+    slug: "nao",
+    stale: [
+      "to halvpermanente trykksystemer i Nord-Atlanteren (NOAA, u.å.-a).",
+      "må du forstå [det globale vindsystemet]",
+      "i stratosfæren over Arktis, omtrent 16–48 km",
+      "Havet er varmere enn normalt i et belte fra subtropene og nordover mot Island, og kjøligere lenger vest.",
+    ],
+  },
+  {
+    // Tilpasning (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-tilpasning-terra-mater-2026-10-26",
+    slug: "tilpasning",
+    stale: [
+      "ca. 7 % kraftigere",
+      "minst 40 % på dimensjonerende nedbør",
+      "0, 20 eller 40 % på flomvannføringen",
+      "Dyrrdal & Førland",
+      "DSB fant i evalueringen",
+      "fordrøyes i dammer",
+    ],
+  },
+
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
