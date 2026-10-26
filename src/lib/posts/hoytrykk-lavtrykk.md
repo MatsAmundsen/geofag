@@ -52,7 +52,7 @@ Vind er luft som strømmer fra høyt mot lavt trykk, og jo større trykkforskjel
 
 Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. En vanlig misforståelse er at et fast tall skiller dem, for eksempel at alt over gjennomsnittet ved havnivå er høytrykk og alt under er lavtrykk. Slik er det ikke (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
-Tenk deg to dager med nøyaktig samme barometerverdi: 1015 hPa. Dag én ligger et kraftig høytrykk på 1030 hPa over Skandinavia, og 1015 hPa er da lavere enn områdene rundt. Lufta strømmer inn, stiger, og det kan bli skyer. Dag to ligger et dypt lavtrykk på 980 hPa over Nordsjøen, og 1015 hPa er da høyere enn områdene rundt. Lufta synker, og himmelen er ofte klar. Samme tall, motsatt rolle. Svaret på «Hva tror du?» er altså at 1015 hPa ikke forteller deg om det er høytrykk. Det avgjør trykket rundt.
+Tenk deg to dager med nøyaktig samme barometerverdi: 1015 hPa. Dag én ligger et kraftig høytrykk på 1025 hPa over Skandinavia, og 1015 hPa er da lavere enn områdene rundt. Lufta strømmer inn, stiger, og det kan bli skyer. Dag to ligger et dypt lavtrykk på 995 hPa over Nordsjøen, og 1015 hPa er da høyere enn områdene rundt. Lufta synker, og himmelen er ofte klar. Samme tall, motsatt rolle. Svaret på «Hva tror du?» er altså at 1015 hPa ikke forteller deg om det er høytrykk. Det avgjør trykket rundt.
 
 ```widget
 RelativePressure
