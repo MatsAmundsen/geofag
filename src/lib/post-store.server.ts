@@ -1369,6 +1369,17 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // ENSO (G2): utvidelse + Hva tror du? / Sammendrag.
+    flag: "g2-enso-utvidelse-2026-10-26",
+    slug: "enso",
+    stale: [
+      "National Oceanic and Atmospheric Administration [NOAA], u.å.-a",
+      "## Test deg selv",
+      "Vi skiller mellom tre faser: nøytral, El Niño og La Niña.",
+      "Slike fjernvirkninger kalles teleconnections.",
+    ],
+  },
+  {
     // NAO (G2): Terra Mater fase 1–2 (M1–M3).
     flag: "g2-nao-terra-mater-2026-10-26",
     slug: "nao",

@@ -300,6 +300,13 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Bombesykloner, atmosfæriske elver og polare lavtrykk er farlige værsystemer på våre breddegrader.",
     "Klimaendringene har gjort kraftig nedbør hyppigere og mer intens på global skala, slik ekstremværet Hans er et eksempel på.",
   ],
+  Enso: [
+    "ENSO er El Niño–sørlig oscillasjon, et naturlig samspill mellom hav og luft i det tropiske Stillehavet som skifter omtrent hvert andre til sjuende år.",
+    "Walker-sirkulasjonen er kretsen langs ekvator med stigning i vest og synking i øst. Passaten skyver varmt overflatevann vestover.",
+    "El Niño er den varme fasen: varmere sentrum og øst, svakere passat og ofte mindre regn over Indonesia. La Niña er den kalde fasen med motsatt mønster.",
+    "ONI er et tremåneders middel av temperaturavviket i Niño 3.4. CPC markerer varm eller kald periode når avviket ligger minst 0,5 grader over eller under normalen i fem overlappende sesonger.",
+    "Teleconnections er fjernvirkninger via endret sirkulasjon. De er sannsynlige, men ikke sikre. ENSO preger den globale middeltemperaturen mer enn norsk vinter, som styres mer av NAO.",
+  ],
   Energi: [
     "Vind, tidevann, bølger og temperaturforskjeller i havet er energiressurser fra hav og atmosfære. Vindkraft gjør vind om til elektrisitet i et vindkraftverk.",
     "Vindkraft på land er fornybar, men omstridt fordi den legger beslag på store områder og kan ramme reindrift, slik Fosen-saken viser.",
