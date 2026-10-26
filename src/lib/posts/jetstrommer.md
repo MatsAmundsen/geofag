@@ -18,7 +18,7 @@ JetForklaring
 >
 > Et fly fra New York til Oslo bruker ofte kortere tid enn et fly samme vei tilbake. Hvorfor tror du det er slik? Svar før du leser videre – vi kommer tilbake til det i delen om retningen fra vest mot øst.
 
-En jetstrøm er et relativt smalt belte med sterk vind i de øvre lagene av atmosfæren, typisk rundt 9100 meter over bakken. Vinden blåser fra vest mot øst, men beltet flytter seg nordover og sørover fordi det følger grensen mellom varm og kald luft. Grensen er tydeligst om vinteren, og jetstrømmene er sterkest da, både på den nordlige og den sørlige halvkule. Vinden kan komme over 442 kilometer i timen (National Oceanic and Atmospheric Administration [NOAA], u.å.-a).
+En jetstrøm er et relativt smalt belte med sterk vind i de øvre lagene av atmosfæren, typisk rundt 9100 meter over bakken. Vinden blåser fra vest mot øst, men beltet flytter seg nordover og sørover fordi det følger grensen mellom varm og kald luft. Grensen er tydeligst om vinteren, og jetstrømmene er sterkest da, både på den nordlige og den sørlige halvkule. Vinden kan komme over 442 kilometer i timen (USAs hav- og atmosfæremyndighet [NOAA], u.å.-a).
 
 [Jetstrømmer og stormbaner](/tema/jetstrommer) handler om dette beltet og om hvor stormene går. De tre cellene i den globale sirkulasjonen tar vi i [vindsystemet](/tema/vindsystemet). Å lese lavtrykk og fronter på et kart tar vi i [værkart](/tema/vaerkart).
 
