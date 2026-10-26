@@ -4,7 +4,7 @@
 >
 > - gjøre rede for forskning på forhistorisk klima, og hvordan det bidrar til å lage prognoser for framtidens klima
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -18,11 +18,16 @@
 >
 > **I dette kapitlet lærer du om**
 >
-> hvordan kvartær er delt inn i istider og mellomistider, hvordan iskjerner gir både temperatur og prøver av fortidens luft, hvordan oksygenisotoper virker som termometer og ismåler, hva sedimenter fra havet og innsjøer viser, hvordan pollen, C-14 og årringer viser vegetasjon og alder, og hva brå klimaendringer, PETM og klimafølsomhet sier om framtidens klima.
+> - hvordan kvartær er delt inn i istider og mellomistider
+> - hvordan iskjerner gir både temperatur og prøver av fortidens luft
+> - hvordan oksygenisotoper virker som termometer og ismåler
+> - hva sedimenter fra havet og innsjøer viser
+> - hvordan pollen, årringer og radioaktivt karbon viser vegetasjon og alder
+> - hva brå klimaendringer, en varm periode for 56 millioner år siden og klimafølsomhet sier om framtidens klima
 
 > **Hva tror du?**
 >
-> I 2025 var det i snitt 425,6 ppm CO₂ i lufta (NOAA GML, 2026). Hvordan kan forskerne vite hvor mye CO₂ det var for 800 000 år siden, lenge før noen målte? Og hvorfor kan det hjelpe oss å si noe om klimaet i 2100? Tenk over det før du leser videre. Vi kommer tilbake til det i delen om iskjerner og i den siste delen.
+> USAs nasjonale havs- og atmosfæremyndighet (NOAA) har målt at det i 2025 i snitt var 425,6 ppm CO₂ i lufta (NOAA GML, 2026). Forkortelsen ppm betyr milliondeler (engelsk *parts per million*). 425,6 ppm betyr altså at ca. 426 av én million molekyler i lufta er CO₂. Hvordan kan forskerne vite hvor mye CO₂ det var for 800 000 år siden, lenge før noen målte? Og hvorfor kan det hjelpe oss å si noe om klimaet i 2100? Tenk over det før du leser videre. Vi kommer tilbake til det i delen om iskjerner og i den siste delen.
 
 ## Hva er paleoklima?
 
@@ -30,13 +35,13 @@
 PaleoForklaring
 ```
 
-*Paleoklima* er klimaet før de direkte målingene. *Paleoklimatologi* er vitenskapen om klimaet i tidligere perioder av jordas historie (Askheim, 2026). Den lengste direkte måleserien for CO₂ startet på Mauna Loa på Hawaii i mars 1958 (NOAA GML, 2026). De direkte målingene av global temperatur går tilbake til 1850, altså ca. 175 år (IPCC, 2021). Lenger tilbake må vi bruke *proxyer* (proxy = stedfortreder). Det er spor i naturen som henger sammen med klimaet, for eksempel isotoper i is, kalkskall fra havbunnen, pollen og årringer (Askheim, 2026).
+*Paleoklima* er klimaet før de direkte målingene. *Paleoklimatologi* er vitenskapen om klimaet i tidligere perioder av jordas historie (Askheim, 2026). Den lengste direkte måleserien for CO₂ startet på Mauna Loa på Hawaii i mars 1958 (NOAA GML, 2026). Ifølge FNs klimapanel (IPCC) går de direkte målingene av global temperatur tilbake til 1850, altså ca. 175 år (IPCC, 2021). Lenger tilbake må vi bruke *proxyer* (proxy = stedfortreder). Det er spor i naturen som henger sammen med klimaet, for eksempel isotoper i is, kalkskall fra havbunnen, pollen og årringer (Askheim, 2026). *Isotoper* er varianter av samme grunnstoff med ulikt antall nøytroner i atomkjernen. De har derfor litt ulik vekt. Mer om isotoper står i [geologisk tid](/geofag-1/geologisk-tid).
 
-Forskningen følger en fast kjede. Et spor blir bevart i et arkiv. Vi daterer laget. Vi kalibrerer sporet mot prosesser vi kan måle i dag. Så rekonstruerer vi temperaturen og lufta med en usikkerhet, og til slutt tester vi klimamodellene mot resultatet. Hvordan modellene er bygd, står i [numeriske modeller](/tema/numeriske-modeller). Hvorfor istidene kommer, står i [istider](/tema/milankovitch).
+Forskningen følger en fast kjede. Et spor blir bevart i et arkiv. Vi daterer laget. Så sammenligner vi sporet med det samme sporet i dag, der vi også kan måle klimaet. Slik finner vi ut hva sporet betyr, og det kaller vi å *kalibrere*. Deretter rekonstruerer vi temperaturen og lufta med en usikkerhet. Til slutt tester vi klimamodellene mot resultatet. Hvordan modellene er bygd, står i [numeriske modeller](/tema/numeriske-modeller). Hvorfor istidene kommer, står i [istider](/tema/milankovitch).
 
 ## Hvordan er kvartær delt inn i istider og mellomistider?
 
-*Kvartær* er den yngste geologiske perioden. Den begynte for 2,58 millioner år siden og deles i to epoker. *Pleistocen* varte fram til for ca. 11 700 år siden, og *holocen* er epoken vi lever i nå (Cohen mfl., 2026; Bryhni mfl., 2026). Gjennom kvartær har klimaet vekslet mellom lange, kalde *istider* (glasialer) og kortere, varme *mellomistider* (interglasialer). Under hver istid sank havnivået med mer enn 100 m, fordi så mye vann var bundet i isen på land (Bryhni mfl., 2026).
+*Kvartær* er den yngste geologiske perioden. Den begynte for 2,58 millioner år siden og deles i to epoker. *Pleistocen* varte fram til for ca. 11 700 år siden, og *holocen* er epoken vi lever i nå (Cohen mfl., 2026; Bryhni mfl., 2026). Gjennom kvartær har klimaet vekslet mellom lange, kalde *istider* (glasialer) og kortere, varme *mellomistider* (interglasialer). Under de store istidene sank havnivået med mer enn 100 m, fordi så mye vann var bundet i isen på land (Bryhni mfl., 2026).
 
 ```widget
 KvartarTimeSeriesPaleo
@@ -44,11 +49,11 @@ KvartarTimeSeriesPaleo
 
 ### To rytmer: 41 000 og 100 000 år
 
-I første del av kvartær kom istidene omtrent hvert 41 000 år. Det er perioden for svingningene i helningen til jordaksen, som varierer mellom 22,1° og 24,5° (Store norske leksikon [SNL], 2026). For ca. én million år siden skiftet rytmen til sykluser på ca. 100 000 år. Skiftet kalles *den midtpleistocene overgangen* og skjedde gradvis for ca. 1,2–0,8 millioner år siden (Legrain mfl., 2023; Mukhin mfl., 2019). Hvorfor rytmen endret seg, er ikke avklart. Én hypotese er at isen hadde skrapt bort løsmassene under seg, en annen at CO₂ i lufta gikk ned (Legrain mfl., 2023). Syklusene på 100 000 år har form som en sag: en langsom nedkjøling og en rask avsmelting (Mukhin mfl., 2019).
+I første del av kvartær kom istidene omtrent hvert 41 000 år. Det er perioden for svingningene i helningen til jordaksen. Ifølge Store norske leksikon (SNL) varierer helningen mellom 22,1° og 24,5° (SNL, 2026). For ca. én million år siden skiftet rytmen til sykluser på ca. 100 000 år. Skiftet kalles *den midtpleistocene overgangen* og skjedde gradvis for ca. 1,2–0,8 millioner år siden (Legrain mfl., 2023; Mukhin mfl., 2019). Hvorfor rytmen endret seg, er ikke avklart. Én hypotese er at isen hadde skrapt bort løsmassene under seg, altså jorda, sanden og grusen over fjellet. En annen er at CO₂ i lufta gikk ned (Legrain mfl., 2023). Syklusene på 100 000 år har form som en sag: en langsom nedkjøling og en rask avsmelting (Mukhin mfl., 2019).
 
 ### Avsmeltingen blir forsterket
 
-Endringene i jordbanen endrer den totale innstrålingen med under 0,5 %. De fordeler den likevel om, slik at det til visse årstider kan komme opptil 20 % mer sol på 65° N (Mangerud, 2026b). Det er nok til å starte en avsmelting, men forsterkningene gjør det store utslaget. Når snø og is smelter, blir *albedoen* lavere, og bakken tar opp mer sollys. CO₂ er også en viktig forsterkning. Under istidene er mye CO₂ lagret i dyphavet, og innholdet i lufta blir lavere. Metan følger det samme mønsteret (Mangerud, 2026b).
+Endringene i jordbanen endrer den totale innstrålingen med under 0,5 prosent. De fordeler den likevel om. Til visse årstider kan det derfor komme opptil 20 prosent mer sol på 65° N (Mangerud, 2026b). Det er nok til å starte en avsmelting, men forsterkningene gjør det store utslaget. Den første forsterkningen er albedoen. *Albedo* er et mål på hvor stor del av sollyset en flate reflekterer (Mangerud, 2026b). Snø og is reflekterer mye av sollyset, mens bart land og åpent hav tar opp mer. Når snø og is smelter, blir albedoen lavere, og bakken tar opp mer sollys. Da blir det varmere, og enda mer snø smelter. CO₂ er også en viktig forsterkning. Under istidene er mye CO₂ lagret i dyphavet, og innholdet i lufta blir lavere. Metan følger det samme mønsteret (Mangerud, 2026b).
 
 ```widget
 DeglaciationFeedback
@@ -64,9 +69,9 @@ Den forrige mellomistiden heter *eem* og varte fra for ca. 130 000 til 117 000 �
 
 Starten på holocen er definert i iskjernen NGRIP på Grønland, på 1492,45 m dyp. Alderen er 11 700 år før år 2000, og største feil i årstellingen er 99 år (Walker mfl., 2009). Globalt var den varmeste perioden i holocen for ca. 6500 år siden. Den lå ca. 0,2–1 °C over 1850–1900 (IPCC, 2021). Temperaturen i 2011–2020 var høyere enn i denne perioden (IPCC, 2021).
 
-I Norge var *atlantisk tid* (8950–5800 år før 1950) fuktig og varm. I den siste delen var det minst 2 °C varmere enn i dag, og alm, lind og svartor spredte seg (Harstveit & Fuglestvedt, 2025; SNL, 2025). Hardangerjøkulen var borte mellom ca. 7500 og 4800 år før nå, bortsett fra et framstøt for ca. 6300–5300 år siden (Dahl & Nesje, 1994). Siden har breen vokst. Den vokste raskest for ca. 2300–1300 år siden og var størst under den lille istid (Åkesson mfl., 2017).
+I Norge deler vi tiden etter istiden inn i klimaperioder. De står i tabellen under «Vegetasjonen etter istiden» lenger ned. Den varmeste var *atlantisk tid* (8950–5800 år før 1950). I den siste delen av den var det minst 2 °C varmere enn i dag (SNL, 2025a). Hardangerjøkulen var borte mellom ca. 7500 og 4800 år før nå, bortsett fra et framstøt for ca. 6300–5300 år siden (Dahl og Nesje, 1994). Siden har breen vokst. Den vokste raskest for ca. 2300–1300 år siden og var størst under den lille istid (Åkesson mfl., 2017).
 
-Den *lille istid* var en kald periode fra ca. 1550 til 1900. Breene i Norge var størst rundt 1740-årene, da også Nigardsbreen hadde sin største utbredelse (Harstveit, 2024; Harstveit & Fuglestvedt, 2025). Nigardsbreen rykket fram ca. 1720–1750, og en gård ble ødelagt tidlig på 1700-tallet (SNL, 2024a). Den varme perioden 1000–1300 og den lille istid var regionale. Iskjerner og årringer tyder på at de ikke var så varme eller kalde globalt (Harstveit & Fuglestvedt, 2025).
+Den *lille istid* var en kald periode fra ca. 1550 til 1900. Breene i Norge var størst rundt 1740-årene, da også Nigardsbreen hadde sin største utbredelse (Harstveit, 2024; Harstveit og Fuglestvedt, 2025). Nigardsbreen rykket fram ca. 1720–1750, og en gård ble ødelagt tidlig på 1700-tallet (SNL, 2024a). Den varme perioden 1000–1300 og den lille istid var regionale. Iskjerner og årringer tyder på at de ikke var så varme eller kalde globalt (Harstveit og Fuglestvedt, 2025).
 
 ```widget
 SjekkPaleo1
@@ -96,7 +101,7 @@ IceCoreAnatomy
 
 ### Askelag binder arkivene sammen
 
-Askelag fra vulkanutbrudd kalles *tefra*. Et askelag er avsatt samtidig over et stort område, så det fungerer som en tidshorisont. Vedde-asken er ca. 12 100 år gammel. Det tilsvarer ca. 10 300 C-14-år (Birks mfl., 1996; Lane mfl., 2012). Asken er funnet i iskjerner fra Grønland, i innsjøer over store deler av Europa og i havbunnen i Nord-Atlanteren og Norskehavet (Mangerud, 2025c). Da vet vi at lagene ble avsatt samtidig.
+Som nevnt kalles askelag fra vulkanutbrudd *tefra*. Et askelag er avsatt samtidig over et stort område, så det fungerer som en tidshorisont. Vedde-asken er ca. 12 100 år gammel (Lane mfl., 2012). Asken er funnet i iskjerner fra Grønland, i innsjøer over store deler av Europa og i havbunnen i Nord-Atlanteren og Norskehavet (Mangerud, 2025c). Da vet vi at lagene ble avsatt samtidig. Vedde-asken kommer vi tilbake til i delen om datering med radioaktivt karbon.
 
 ```widget
 SjekkPaleo2
@@ -104,7 +109,7 @@ SjekkPaleo2
 
 ## Hvordan kan oksygenisotoper brukes som termometer og ismåler?
 
-Oksygen har tre stabile isotoper. Den lette isotopen ¹⁶O utgjør 99,756 % av oksygenet, og den tunge isotopen ¹⁸O 0,205 %. Det er ¹⁸O som brukes i paleoklimatologi (Pedersen, 2025). Fordi isotopene har litt ulike fysiske egenskaper, fordamper lette isotoper mer enn tunge. Skyene får derfor litt mer ¹⁶O enn havvannet. Ved kondensasjon er det motsatt: De tunge isotopene regner ut først. Skyen blir mer og mer anriket på lette isotoper, og den siste snøen som faller, er sterkt anriket på ¹⁶O (Mangerud, 2026b). Denne prosessen kalles *fraksjonering*.
+Oksygen har tre stabile isotoper, og to av dem er viktige her. Den lette isotopen ¹⁶O utgjør 99,756 prosent av oksygenet, og den tunge isotopen ¹⁸O utgjør 0,205 prosent. Det er ¹⁸O som brukes i paleoklimatologi (Pedersen, 2025). Fordi isotopene har litt ulike fysiske egenskaper, fordamper lette isotoper mer enn tunge. Skyene får derfor litt mer ¹⁶O enn havvannet. Ved kondensasjon er det motsatt: De tunge isotopene regner ut først. Skyen blir mer og mer *anriket* på lette isotoper. Det betyr at den får en større andel ¹⁶O enn vanlig. Den siste snøen som faller, er sterkt anriket på ¹⁶O (Mangerud, 2026b). Denne prosessen kalles *fraksjonering*.
 
 ```widget
 OxygenIsotope
@@ -117,7 +122,7 @@ Forholdet mellom ¹⁸O og ¹⁶O oppgis som *δ¹⁸O* i promille (‰), regnet
 ### Is og havbunn viser motsatt vei
 
 - **I isen:** Jo kaldere det er, desto mer av det tunge vannet har regnet ut på veien. Snøen får lav δ¹⁸O. Lav δ¹⁸O i en iskjerne betyr altså kaldt klima (Davies, 2020; Mangerud, 2026b).
-- **I havet:** Under en istid lagres mer ¹⁶O i isbreene på land, og havvannet blir anriket på ¹⁸O. Foraminiferer bygger skallene sine av havvannet. Høy δ¹⁸O i skall fra havbunnen betyr altså mye is på land (Mangerud, 2026b).
+- **I havet:** Under en istid lagres mer ¹⁶O i isbreene på land, og havvannet blir anriket på ¹⁸O. *Foraminiferer* er små encellede organismer med kalkskall, og de bygger skallene av stoffer i havvannet. Høy δ¹⁸O i skall fra havbunnen betyr altså mye is på land (Mangerud, 2026b).
 
 Skriv derfor aldri bare «høy δ¹⁸O betyr varmt». Si alltid hvilket arkiv du mener.
 
@@ -137,7 +142,7 @@ De lengste iskjernene går ca. 800 000 år tilbake (Lüthi mfl., 2008). For å g
 
 ### Foraminiferer på havbunnen
 
-*Foraminiferer* er encellede organismer med skall, som regel av kalk. De fleste lever på havbunnen, men noen lever fritt i vannet (Støp-Bowitz, 2026). Isotopene i skallene i lange borekjerner fra havbunnen viser hvor mye is det var på land totalt. Metoden kan ikke vise om isen lå over for eksempel Skandinavia, Nord-Amerika eller Antarktis (Mangerud, 2026b).
+Som nevnt er foraminiferer encellede organismer med skall, som regel av kalk. De fleste lever på havbunnen, men noen lever fritt i vannet (Støp-Bowitz, 2026). Isotopene i skallene i lange borekjerner fra havbunnen viser hvor mye is det var på land totalt. Metoden kan ikke vise om isen lå over for eksempel Skandinavia, Nord-Amerika eller Antarktis (Mangerud, 2026b).
 
 Kurvene deles inn i *marine isotoptrinn* (MIS). Mellomistidene får oddetall og istidene partall. Vår tid er MIS 1, og siste istids maksimum er MIS 2. Den første istiden i kvartær er MIS 104 (Mangerud, 2024). Bare den eldste delen av trinn 5, MIS 5e, er eem (Mangerud, 2024).
 
@@ -147,27 +152,46 @@ I borekjerner fra Atlanterhavet finnes det lag med mye sand og småstein som har
 
 ### Varv i innsjøer
 
-Under avsmeltingen etter siste istid ble det avsatt lagdelt leire i ferskvann og brakkvann. Om sommeren førte elvene med seg grovere korn, og det ble avsatt et lyst lag. Om vinteren var overflaten frosset, og det ble bare avsatt fin leire i et mørkere lag. Ett lyst og ett mørkt lag kalles et *varv* og er avsatt i løpet av ett år (SNL, 2024c). Varvene kan telles på samme måte som årringer. Metoden ble utviklet av den svenske geologen Gerard De Geer, som slik kunne følge avsmeltingen av innlandsisen i Skandinavia (SNL, 2024c).
+Under avsmeltingen etter siste istid ble det avsatt lagdelt leire i ferskvann og i brakkvann, som er en blanding av ferskvann og sjøvann. Om sommeren førte elvene med seg grovere korn, og det ble avsatt et lyst lag. Om vinteren var overflaten frosset, og det ble bare avsatt fin leire i et mørkere lag. Ett lyst og ett mørkt lag kalles et *varv* og er avsatt i løpet av ett år (SNL, 2024c). Varvene kan telles på samme måte som årringer. Metoden ble utviklet av den svenske geologen Gerard De Geer, som slik kunne følge avsmeltingen av innlandsisen i Skandinavia (SNL, 2024c).
 
 ```widget
 SjekkPaleo4
 ```
 
-## Hva forteller pollen, C-14 og årringer?
+## Hva forteller pollen, radioaktivt karbon og årringer?
 
 Hvordan så landskapet i Norge ut da isen trakk seg tilbake? Svaret ligger i myrer, innsjøer og gammelt tømmer.
 
 ### Pollen
 
-*Pollenanalyse* betyr å finne og telle pollenkorn i lag fra myrer og innsjøer. Metoden ble presentert av den svenske geologen Lennart von Post i Oslo i 1916 (Manum, 2024). Pollenkornene bevares fordi ytterveggen, *eksinen*, består av sporopollenin. Det er et av de mest motstandsdyktige stoffene som finnes i naturen (Helgheim, 2024). Når vi vet hvilke planter som vokste, kan vi si noe om klimaet.
+*Pollenanalyse* betyr å finne og telle pollenkorn i lag fra myrer og innsjøer. Metoden ble presentert av den svenske geologen Lennart von Post i Oslo i 1916 (Manum, 2024). Pollenkornene bevares fordi ytterveggen, *eksinen*, består av sporopollenin. Det er et av de mest motstandsdyktige stoffene som finnes i naturen (Helgheim, 2024). Når vi vet hvilke planter som vokste, kan vi si noe om klimaet. Hver planteart trenger en viss sommertemperatur. Finner vi pollen av alm og lind, må sommeren ha vært varm nok for dem.
 
 ### Vegetasjonen etter istiden
 
-I periodene fra eldste dryas til og med yngre dryas var det mye isavsmelting. To milde perioder, bølling (14 700–14 100 år før 1950) og allerød (13 900–12 800 år før 1950), ble avbrutt av kalde perioder (Harstveit & Fuglestvedt, 2025). De kalde periodene heter dryas, det samme som slekta til reinrosa, *Dryas* (Harstveit & Fuglestvedt, 2025; Vik, 2026). Etter istiden fulgte boreal tid (10 200–8950 år før 1950), som var tørr og varm, og atlantisk tid (8950–5800), som var fuktig og varm. Subboreal tid (5800–2650) var tørr, og subatlantisk tid (2650 år før 1950 fram til i dag) er fuktig og kjølig (Harstveit & Fuglestvedt, 2025). I den varme atlantiske tiden spredte alm, lind og svartor seg (SNL, 2025). Edelløvskogen har vært i tilbakegang etter at grana tok over mange av vokseplassene (Sunding & Solheim, 2025). Pollenanalyser viser at grana kom østfra til Norge for ca. 2000 år siden (Aune, 2026).
+Pollen fra myrer og innsjøer viser at klimaet har skiftet flere ganger siden innlandsisen begynte å smelte. Forskerne har derfor delt tiden inn i klimaperioder. Alderen oppgis i år før 1950, fordi forskerne har valgt 1950 som «nåtid» (Harstveit og Fuglestvedt, 2025). Tabellen viser periodene i Norden.
+
+| Periode | Tidsrom (år før 1950) | Klima | Vegetasjon og landskap |
+|---|---|---|---|
+| Eldste dryas | mer enn 14 700 | tørt og kjølig | Det meste av Norge lå under isen. Hardføre planter som reinrose |
+| Bølling | 14 700–14 100 | mildt | Skjell som krever varmt vann, viser at varmt atlanterhavsvann nådde Vestlandet og Troms |
+| Eldre dryas | 14 100–13 900 | tørt og kjølig | Hardføre planter som reinrose |
+| Allerød | 13 900–12 800 | mildt | Bjørketrær og einer, kjent fra funn i Danmark |
+| Yngre dryas | 12 800–11 600 | tørt og kjølig | Breene rykket fram igjen. Hardføre planter som reinrose |
+| Preboreal tid | 11 600–10 200 | fuktig og kjølig | Den første varme perioden etter istiden. Det meste av Norge var fortsatt dekket av is |
+| Boreal tid | 10 200–8950 | tørt og varmt | Furu og hassel rykket inn på bekostning av bjørka |
+| Atlantisk tid | 8950–5800 | fuktig og varmt | Alm, lind og svartor fikk stor utbredelse |
+| Subboreal tid | 5800–2650 | tørt, med varme somrer og kalde vintrer | Lind, hassel, eik og ask fikk større utbredelse |
+| Subatlantisk tid | 2650 til i dag | fuktig og kjølig | Bøk og gran fikk større utbredelse |
+
+(Kilde: Harstveit og Fuglestvedt, 2025; Mangerud, 2025e, 2025f; SNL, 2025a, 2025b, 2025c, 2025d, 2025e, 2025f)
+
+Vi har sett at holocen begynte for ca. 11 700 år siden, regnet fra år 2000. I tabellen begynner preboreal tid for 11 600 år siden, regnet fra 1950. Grensen er den samme, men kildene regner fra ulike år og runder av ulikt (Walker mfl., 2009; Mangerud, 2025f).
+
+De kalde periodene heter dryas, det samme som slekta til reinrosa, *Dryas*. Blader av reinrose er typiske funn fra disse periodene (SNL, 2025c; Vik, 2026). Den varmeste perioden var atlantisk tid, da alm, lind og svartor spredte seg (SNL, 2025a). Disse trærne hører til *edelløvskogen*, som er skog med varmekjære løvtrær. Edelløvskogen har vært i tilbakegang etter at grana tok over mange av vokseplassene (Sunding og Solheim, 2025). Pollenanalyser viser at grana kom østfra til Norge for ca. 2000 år siden (Aune, 2026).
 
 ### C-14-datering
 
-Kosmisk stråling danner hele tiden den radioaktive isotopen ¹⁴C i lufta. Planter og dyr tar den opp. Når de dør, avtar ¹⁴C med en halveringstid på 5730 år (Mangerud, 2025a). Ved å måle hvor mye ¹⁴C som er igjen, kan vi beregne alderen. Metoden brukes på funn som er yngre enn ca. 50 000 år (Mangerud, 2025a). Mengden ¹⁴C i lufta har variert, blant annet med styrken på magnetfeltet til jorda. En C-14-alder må derfor *kalibreres* til kalenderår, for eksempel med IntCal20 fra 2020 (Mangerud, 2025a). Mer om dateringsmetodene står i [geologisk tid](/geofag-1/geologisk-tid).
+Kosmisk stråling danner hele tiden den radioaktive isotopen karbon-14 (¹⁴C) i lufta. Den kalles også C-14. Planter og dyr tar den opp. Når de dør, avtar ¹⁴C med en *halveringstid* på 5730 år. Det betyr at halvparten av ¹⁴C er borte etter 5730 år (Mangerud, 2025a). Ved å måle hvor mye ¹⁴C som er igjen, kan vi beregne alderen. Metoden brukes på funn som er yngre enn ca. 50 000 år (Mangerud, 2025a). Mengden ¹⁴C i lufta har variert, blant annet med styrken på magnetfeltet til jorda. En alder målt med C-14 kaller vi en C-14-alder, og den oppgis i C-14-år. Den er ikke det samme som en alder i kalenderår. En C-14-alder må derfor *kalibreres*, det vil si regnes om til kalenderår. Det gjøres med en kurve, for eksempel IntCal20 fra 2020 (Mangerud, 2025a). Vedde-asken er et eksempel. Den har en C-14-alder på ca. 10 300 år, men er ca. 12 100 kalenderår gammel (Birks mfl., 1996; Lane mfl., 2012). Mer om dateringsmetodene står i [geologisk tid](/geofag-1/geologisk-tid).
 
 ### Årringer
 
@@ -191,7 +215,7 @@ AbruptClimateChange
 
 ### Yngre dryas (ca. 12 800–11 700 år siden)
 
-Yngre dryas var den siste kalde perioden etter siste istid. Den begynte for ca. 12 800 år siden (Mangerud, 2025e) og sluttet for ca. 11 700 år siden, da holocen begynte (Cohen mfl., 2026; Walker mfl., 2009). Den var trolig utløst av at smeltevann svekket AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert. Én hypotese er at den store bresjøen Agassiz-sjøen i Nord-Amerika ble tappet. Ifølge Mangerud (2025e) er det mest aktuelt at vannet gikk via Mackenzie-elva til Polhavet og trolig fløt videre, mye av det som sjøis, fram til Framstredet og ut i Norskehavet. Overgangen var brå. Klimaet skiftet på noen få tiår, og det ble plutselig mye kaldere i Norge (Mangerud, 2025e). Midt på Grønland var det ca. 15 °C kaldere enn i dag, og på slutten av yngre dryas steg temperaturen der 5–10 °C på noen tiår eller mindre (Alley, 2000). I Norge rykket innlandsisen fram igjen. Raet er avsatt da isen stanset tilbaketrekningen i yngre dryas (SNL, 2024b), og det er Norges største morene (Mangerud, 2025e). Mer om AMOC står i [AMOC](/tema/klima/amoc).
+Yngre dryas var den siste kalde perioden etter siste istid. Den begynte for ca. 12 800 år siden (Mangerud, 2025e) og sluttet for ca. 11 700 år siden, da holocen begynte (Cohen mfl., 2026; Walker mfl., 2009). Den var trolig utløst av at smeltevann svekket den atlantiske omveltningssirkulasjonen (AMOC) kraftig. AMOC er strømsystemet som frakter varmt vann nordover i Atlanterhavet. Hvor smeltevannet kom fra, er omdiskutert. Én hypotese er at den store bresjøen Agassiz-sjøen i Nord-Amerika ble tappet. Ifølge Mangerud (2025e) er det mest aktuelt at vannet gikk via Mackenzie-elva til Polhavet. Derfra fløt det trolig videre, mye av det som sjøis, fram til Framstredet og ut i Norskehavet. Overgangen var brå. Klimaet skiftet på noen få tiår, og det ble plutselig mye kaldere i Norge (Mangerud, 2025e). Midt på Grønland var det ca. 15 °C kaldere enn i dag. På slutten av yngre dryas steg temperaturen der 5–10 °C på noen tiår eller mindre (Alley, 2000). I Norge rykket innlandsisen fram igjen. Raet er avsatt da isen stanset tilbaketrekningen i yngre dryas (SNL, 2024b). Det er Norges største *morene* (Mangerud, 2025e). En morene er en rygg eller et dekke av stein, grus og sand som breen har lagt igjen. Mer om AMOC står i [AMOC](/tema/klima/amoc).
 
 ### Dansgaard-Oeschger, Heinrich og 8,2 ka-hendelsen
 
@@ -199,17 +223,17 @@ Under siste istid skjedde det 25 *Dansgaard-Oeschger-hendelser*, slik de er funn
 
 Under *Heinrich-hendelser* brakk det av store mengder isfjell fra den laurentiske innlandsisen i Nord-Amerika. Kornene isfjellene førte med seg, ligger som lag med mye sand og småstein i borekjerner fra Atlanterhavet, i en sone fra munningen av Hudsonbukta til Portugal. Hvorfor det i noen perioder brakk av så mye is, er ukjent, men isfjellene kjølte ned Nord-Atlanteren og landene rundt (Mangerud, 2025b).
 
-Også i holocen har klimaet skiftet brått. For ca. 8200 år siden ble det ca. 3 °C kaldere midt på Grønland i løpet av mindre enn 20 år, og hele hendelsen varte i ca. 150 år (Kobashi mfl., 2007). Den kalles *8,2 ka-hendelsen*.
+Også i holocen har klimaet skiftet brått. For ca. 8200 år siden ble det ca. 3 °C kaldere midt på Grønland i løpet av mindre enn 20 år, og hele hendelsen varte i ca. 150 år (Kobashi mfl., 2007). Den kalles *8,2 ka-hendelsen* (ka = tusen år).
 
 ### PETM: et naturlig utslipp av karbon
 
-*PETM* (paleocen-eocen-temperaturmaksimum) skjedde ved overgangen fra paleocen til eocen, for ca. 56 millioner år siden (Cohen mfl., 2026). Da ble flere tusen gigatonn karbon sluppet ut i hav og luft (McInerney & Wing, 2011). Den globale temperaturen steg med ca. 5 °C (Delsett, 2025; Inglis mfl., 2020). En viktig årsak var antagelig vulkanisme (Delsett, 2025). I Vøringbassenget og Mørebassenget i Norskehavet er det funnet tusenvis av hydrotermale rør, der varm væske og gass har strømmet opp. De ble dannet da magma trengte inn i sedimenter rike på karbon, og det frigjorde metan (Svensen mfl., 2004). Utslippet varte i mindre enn 20 000 år, og hele hendelsen varte i ca. 200 000 år. Få arter døde ut, bortsett fra mange foraminiferer på havbunnen (McInerney & Wing, 2011).
+*PETM* (paleocen-eocen-temperaturmaksimum) skjedde for ca. 56 millioner år siden, ved overgangen mellom epokene paleocen og eocen (Cohen mfl., 2026). Da ble flere tusen gigatonn karbon sluppet ut i hav og luft. Ett gigatonn er én milliard tonn (McInerney og Wing, 2011). Den globale temperaturen steg med ca. 5 °C (Delsett, 2025; Inglis mfl., 2020). En viktig årsak var antagelig vulkanisme (Delsett, 2025). I Vøringbassenget og Mørebassenget i Norskehavet er det funnet tusenvis av hydrotermale rør, der varm væske og gass har strømmet opp. De ble dannet da magma trengte inn i sedimenter rike på karbon, og det frigjorde metan (Svensen mfl., 2004). Utslippet varte i mindre enn 20 000 år, og hele hendelsen varte i ca. 200 000 år. Få arter døde ut, bortsett fra mange foraminiferer på havbunnen (McInerney og Wing, 2011).
 
 Det viktigste eksamenspoenget er farten. Under PETM ble det sluppet ut høyst ca. 1,1 gigatonn karbon per år. Menneskene slapp ut ca. 10 gigatonn karbon i 2014. Dagens utslipp går altså ca. ti ganger så fort, og det har trolig ikke skjedd raskere de siste 66 millioner årene (Zeebe mfl., 2016).
 
 ### Klimafølsomhet
 
-*Likevektsklimafølsomhet* (ECS, Equilibrium Climate Sensitivity) er hvor mye den globale temperaturen til slutt stiger når CO₂ i lufta dobles. FNs klimapanel bygger anslaget på flere typer data, blant dem paleoklima. Det beste anslaget er 3 °C. Det er sannsynlig at verdien ligger mellom 2,5 og 4 °C, og svært sannsynlig at den ligger mellom 2 og 5 °C (IPCC, 2021). For PETM gir data fra arkivene en klimafølsomhet på ca. 3,6 °C, med et spenn på 2,3–4,7 °C (Inglis mfl., 2020). Klimamodellene testes på samme måte. Forskerne legger inn kjente pådriv fra fortiden, som jordbanen, vulkanutbrudd og CO₂ fra iskjerner, og ser om modellen gjenskaper klimaet arkivene viser. Slik bidrar forskningen på fortidens klima til prognosene for framtidens klima.
+*Likevektsklimafølsomhet* (ECS, Equilibrium Climate Sensitivity) er hvor mye den globale temperaturen til slutt stiger når CO₂ i lufta dobles. FNs klimapanel bygger anslaget på flere typer data, blant dem paleoklima. Det beste anslaget er 3 °C. Det er sannsynlig at verdien ligger mellom 2,5 og 4 °C, og svært sannsynlig at den ligger mellom 2 og 5 °C (IPCC, 2021). For PETM gir data fra arkivene en klimafølsomhet på ca. 3,6 °C, med et spenn på 2,3–4,7 °C (Inglis mfl., 2020). Klimamodellene testes på samme måte. Et *pådriv* er noe som endrer energibalansen til jorda, altså forholdet mellom energien som kommer inn fra sola, og energien jorda stråler ut. Forskerne legger inn kjente pådriv fra fortiden, som jordbanen, vulkanutbrudd og CO₂ fra iskjerner. Så ser de om modellen gjenskaper klimaet arkivene viser. Slik bidrar forskningen på fortidens klima til prognosene for framtidens klima.
 
 > **Til eksamen**
 >

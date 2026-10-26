@@ -2780,6 +2780,12 @@ export const KILDER = {
       href: "https://snl.no/oppvelling",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Geostrofisk",
+      suffix: ".",
+      href: "https://snl.no/geostrofisk",
+    },
+    {
       prefix: "Stewart, R. H. (2008). ",
       italic: "Introduction to physical oceanography",
       suffix: " (kap. 9.2, tabell 9.3). Texas A&M University.",
@@ -2981,6 +2987,24 @@ export const KILDER = {
       href: "https://snl.no/albedoeffekt",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-e). ",
+      italic: "Firn",
+      suffix: ".",
+      href: "https://snl.no/firn",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Snøskred",
+      suffix: ".",
+      href: "https://snl.no/snøskred",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-g). ",
+      italic: "Havnivå",
+      suffix: ".",
+      href: "https://snl.no/havnivå",
+    },
+    {
       prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.-a). ",
       italic: "Sea ice",
       suffix: ".",
@@ -3017,10 +3041,16 @@ export const KILDER = {
       href: "https://www.varsom.no/snoskred/",
     },
     {
-      prefix: "Varsom. (u.å.). ",
+      prefix: "Varsom. (u.å.-a). ",
       italic: "Snøskredfaregrad",
       suffix: ".",
       href: "https://www.varsom.no/snoskred/snoskredskolen/snoskredvarselet-forklaring/snoskredfaregrad/",
+    },
+    {
+      prefix: "Varsom. (u.å.-b). ",
+      italic: "Faregrader",
+      suffix: ".",
+      href: "https://www.varsom.no/snoskred/om-snoskred/faregrader/",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -3057,6 +3087,12 @@ export const KILDER = {
       italic: "Polar Research, 22",
       suffix: "(2), 191–215.",
       href: "https://doi.org/10.3402/polar.v22i2.6455",
+    },
+    {
+      prefix: "Direktoratet for samfunnssikkerhet og beredskap [DSB]. (2016). ",
+      italic: "Skredulykka i Longyearbyen 19. desember 2015: Evaluering av handtering, beredskap og førebygging",
+      suffix: ".",
+      href: "https://www.dsbinfo.no/DSBno/2017/rapport/skredulykka-svalbard-nynorsk/",
     },
   ],
   klima: [
@@ -3481,7 +3517,7 @@ export const KILDER = {
       href: "https://doi.org/10.1029/98RG02739",
     },
     {
-      prefix: "NOAA AOML. (u.å.). ",
+      prefix: "NOAA Atlantic Oceanographic and Meteorological Laboratory [NOAA AOML]. (u.å.). ",
       italic: "Florida Current transport",
       suffix: ".",
       href: "https://www.aoml.noaa.gov/phod/floridacurrent/",
@@ -3680,6 +3716,12 @@ export const KILDER = {
       href: "https://www.met.no/en/projects/The-weather-model-AROME-Arctic",
     },
     {
+      prefix: "Molnes, G. (2020, 15. juli). ",
+      italic: "Hvor treffsikker er værmeldingen?",
+      suffix: " Faktisk.no.",
+      href: "https://www.faktisk.no/artikkel/hvor-treffsikker-er-vaermeldingen/117200",
+    },
+    {
       prefix: "Müller, M., Homleid, M., Ivarsson, K.-I., Køltzow, M. A. Ø., Lindskog, M., Midtbø, K. H., Andrae, U., Aspelien, T., Berggren, L., Bjørge, D., Dahlgren, P., Kristiansen, J., Randriamampianina, R., Ridal, M., & Vignes, O. (2017). AROME-MetCoOp: A Nordic convective-scale operational weather prediction model. ",
       italic: "Weather and Forecasting, 32",
       suffix: "(2), 609–627.",
@@ -3720,6 +3762,12 @@ export const KILDER = {
       italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/numerisk_værvarsling",
+    },
+    {
+      prefix: "Sivle, A. D., & Evans, A. K. D. (2024, 25. november). Værvarsling. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/værvarsling",
     },
     {
       prefix: "Store norske leksikon. (u.å.). Edward Lorenz. I ",
@@ -3904,6 +3952,12 @@ export const KILDER = {
       href: "https://snl.no/yngre_dryas",
     },
     {
+      prefix: "Mangerud, J. (2025f, 8. august). Isavsmeltingen. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/isavsmeltingen",
+    },
+    {
       prefix: "Mangerud, J. (2026a, 17. mars). Eem. I ",
       italic: "Store norske leksikon",
       suffix: ".",
@@ -3964,10 +4018,40 @@ export const KILDER = {
       href: "https://snl.no/varv",
     },
     {
-      prefix: "Store norske leksikon [SNL]. (2025, 24. februar). ",
+      prefix: "Store norske leksikon [SNL]. (2025a, 24. februar). ",
       italic: "Atlantisk tid",
       suffix: ".",
       href: "https://snl.no/atlantisk_tid",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025b, 24. februar). ",
+      italic: "Boreal tid",
+      suffix: ".",
+      href: "https://snl.no/boreal_tid",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025c, 2. september). ",
+      italic: "Dryas",
+      suffix: ".",
+      href: "https://snl.no/dryas",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025d, 22. februar). ",
+      italic: "Preboreal",
+      suffix: ".",
+      href: "https://snl.no/preboreal",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025e, 21. februar). ",
+      italic: "Subatlantisk tid",
+      suffix: ".",
+      href: "https://snl.no/subatlantisk_tid",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025f, 21. februar). ",
+      italic: "Subboreal tid",
+      suffix: ".",
+      href: "https://snl.no/subboreal_tid",
     },
     {
       prefix: "Store norske leksikon [SNL]. (2026, 19. februar). ",

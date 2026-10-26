@@ -1,6 +1,6 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Udir, u.å.-b).
+> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Utdanningsdirektoratet [Udir], u.å.-b).
 >
 > **Kjerneelementer som dekkes i dette kapittelet:**
 >
@@ -14,9 +14,9 @@
 NaoForklaring
 ```
 
-[Den nordatlantiske oscillasjonen](/tema/klima/nao) (North Atlantic Oscillation, NAO) er et viktig klima- og værfenomen på den nordlige halvkule. Den påvirker været over Nord-Atlanteren, Europa og deler av Nord-Amerika (NOAA, u.å.-a). NAO beskriver svingninger i styrken på to trykksystemer: det subtropiske høytrykket ved Asorene, Asorhøytrykket, og lavtrykket nær Island, Islandslavtrykket. Svingningene påvirker vind, stormbaner, temperatur og nedbør i regionen (NOAA, u.å.-a).
+[Den nordatlantiske oscillasjonen](/tema/klima/nao) (North Atlantic Oscillation, NAO) er et viktig klima- og værfenomen på den nordlige halvkule. Den påvirker været over Nord-Atlanteren, Europa og deler av Nord-Amerika (National Oceanic and Atmospheric Administration [NOAA], u.å.-a). NAO beskriver svingninger i styrken på to trykksystemer: det subtropiske høytrykket ved Asorene, Asorhøytrykket, og lavtrykket nær Island, Islandslavtrykket. Svingningene påvirker vind, stormbaner, temperatur og nedbør i regionen (NOAA, u.å.-a).
 
-NAO beskrives som positiv eller negativ, etter hvor stor trykkforskjellen mellom Asorene og Island er (NOAA, u.å.-a). Se figur 1.
+NAO beskrives som positiv eller negativ, etter hvor stor trykkforskjellen mellom Asorene og Island er (NOAA, u.å.-a). Vi skiller mellom positiv og negativ fase. Se figur 1.
 
 ```widget
 NaoFigurFaser
@@ -24,7 +24,7 @@ NaoFigurFaser
 
 ## Hvorfor endrer trykket seg mellom Asorene og Island?
 
-Asorhøytrykket og Islandslavtrykket er to halvpermanente trykksystemer i Nord-Atlanteren (NOAA, u.å.-a). De er et resultat av den globale sirkulasjonen i atmosfæren og forholdene i regionen. For å forstå dem må du forstå [det globale vindsystemet](/tema/vindsystemet).
+Asorhøytrykket og Islandslavtrykket er to halvpermanente trykksystemer i Nord-Atlanteren (de er der det meste av året, men styrken varierer) (NOAA, u.å.-a). De er et resultat av den globale sirkulasjonen i atmosfæren og forholdene i regionen. For å forstå dem må vi kjenne [det globale vindsystemet](/tema/vindsystemet).
 
 ```widget
 NaoFigurOmrade
@@ -32,7 +32,7 @@ NaoFigurOmrade
 
 ### Asorhøytrykket
 
-Høytrykket er en del av det subtropiske høytrykksbeltet, som dannes av synkende luft i Hadley-cellen. Lufta som stiger ved ekvator, strømmer mot polene i høyden og synker igjen rundt 30° bredde. Der dannes et belte med høytrykk og ofte tørt, fint vær (NOAA, u.å.-d). Lufta er tørr fordi den mistet mye av fuktigheten som regn da den steg over tropene. Høytrykket finnes hele året, men styrken varierer.
+Høytrykket er en del av det subtropiske høytrykksbeltet, som dannes av synkende luft i Hadley-cellen (den tropiske cellen med stigning ved ekvator og synking rundt 30°). Lufta som stiger ved ekvator, strømmer mot polene i høyden og synker igjen rundt 30° bredde. Der dannes et belte med høytrykk og ofte tørt, fint vær (NOAA, u.å.-d). Lufta er tørr fordi den mistet mye av fuktigheten som regn da den steg over tropene. Høytrykket finnes hele året, men styrken varierer.
 
 ### Islandslavtrykket
 
@@ -58,7 +58,7 @@ NAO er likevel i hovedsak drevet av atmosfæren selv. Se «Hvorfor varierer NAO?
 
 ### Polarvirvelen
 
-Polarvirvelen er et belte av sterk vestavind i stratosfæren over Arktis, omtrent 16–48 km over bakken. Den dannes hver vinter og holder på et stort område med svært kald luft. Den må ikke forveksles med polarjetstrømmen, som ligger lavere, i troposfæren (NOAA Climate.gov, 2021).
+Polarvirvelen er et belte av sterk vestavind i stratosfæren (laget over troposfæren, ca. 10–50 km) over Arktis, omtrent 16–48 km over bakken. Den dannes hver vinter og holder på et stort område med svært kald luft. Den må ikke forveksles med polarjetstrømmen, som ligger lavere, i troposfæren – værlaget nærmest bakken (NOAA Climate.gov, en tjeneste fra NOAA, 2021).
 
 Når virvelen er sterk og stabil, holder den den kalde lufta i Arktis, og polarjetstrømmen ligger lenger nord med en jevn strøm fra vest mot øst. Av og til blir virvelen forstyrret av kraftige bølger i atmosfæren som bryter opp fra troposfæren. Da kan den svekkes, flytte seg eller dele seg, og polarjetstrømmen blir ofte svært bølgete (NOAA Climate.gov, 2021). Se figur 3.
 
@@ -68,7 +68,7 @@ Forstyrrelser i polarvirvelen kan forplante seg nedover i atmosfæren og styrke 
 NaoFigurPolarvirvel
 ```
 
-En svak eller forstyrret polarvirvel kan gi varm luft inn i deler av Arktis, og Den arktiske oscillasjonen (AO) går ofte over i negativ fase (NOAA Climate.gov, 2021). Det henger sammen med et svakere lavtrykk ved Island og negativ NAO, fordi NAO og AO ofte følger hverandre (NOAA, u.å.-a).
+En svak eller forstyrret polarvirvel kan gi varm luft inn i deler av Arktis. Den arktiske oscillasjonen (AO) er et bredere trykkmønster over hele Arktis. AO går da ofte over i negativ fase (NOAA Climate.gov, 2021). Det henger sammen med et svakere lavtrykk ved Island og negativ NAO, fordi NAO og AO ofte følger hverandre (NOAA, u.å.-a).
 
 ### Klimasvingninger andre steder
 
@@ -90,7 +90,7 @@ Under La Niña-vintre kan det være litt større sjanse for positiv NAO, med en 
 
 ## Rossby-bølger
 
-Rossby-bølger, også kalt planetære bølger, er store bølger i atmosfæren og havet som oppstår fordi jorda roterer (NOAA Ocean Service, u.å.). I atmosfæren settes de også i gang av ujevn oppvarming av land og hav, og av fjellkjeder som lufta må over eller rundt (NOAA, u.å.-b). De er særlig viktige på midlere breddegrader.
+Rossby-bølger, også kalt planetære bølger, er store bølger i atmosfæren og havet som oppstår fordi jorda roterer (NOAA Ocean Service, en tjeneste fra NOAA, u.å.). I atmosfæren settes de også i gang av ujevn oppvarming av land og hav, og av fjellkjeder som lufta må over eller rundt (NOAA, u.å.-b). De er særlig viktige på midlere breddegrader.
 
 Disse bølgene
 
@@ -98,7 +98,7 @@ Disse bølgene
 - har en bølgete form, der rygger og daler hører sammen med høytrykk og lavtrykk
 - er de langsomme svingene i jetstrømmen og bestemmer hvor lavtrykkene går (NOAA, u.å.-b).
 
-Når Rossby-bølgene er sterke, ser vi det på formen til jetstrømmen. Sterke bølger gir en svært bølgete jetstrøm. Svake bølger gir en mer rett jetstrøm.
+Når Rossby-bølgene er sterke, ser vi det på formen til jetstrømmen. Jo sterkere bølgene er, desto mer svinger jetstrømmen. Svake bølger gir en mer rett jetstrøm.
 
 ### Hvordan påvirker de polarvirvelen?
 
@@ -137,7 +137,7 @@ I negativ fase er både Asorhøytrykket og Islandslavtrykket svakere enn gjennom
 NaoFigurNegativ
 ```
 
-**Endring i hvor varm og kald luft havner.** Figur 5 viser at havtemperaturen har endret seg: Havet er varmere enn normalt i et belte fra subtropene og nordover mot Island, og kjøligere lenger vest. Temperaturforskjellen mellom subtropisk og arktisk luft er mindre. Da blir jetstrømmen svakere, fordi styrken til jetstrømmen drives av kontrasten mellom varm og kald luft (NOAA, u.å.-c).
+**Endring i hvor varm og kald luft havner.** Figur 5 viser at havtemperaturen har endret seg. Havet er varmere enn normalt i et belte fra subtropene og nordover mot Island. Lenger vest er havet kjøligere. Temperaturforskjellen mellom subtropisk og arktisk luft er mindre. Da blir jetstrømmen svakere, fordi styrken til jetstrømmen drives av kontrasten mellom varm og kald luft (NOAA, u.å.-c).
 
 **Bølget jetstrøm.** En bølgete jetstrøm oppstår lettere når temperaturforskjellen mellom polområdene og subtropene er liten. Det henger sammen med
 
