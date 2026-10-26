@@ -3952,6 +3952,12 @@ export const KILDER = {
       href: "https://snl.no/yngre_dryas",
     },
     {
+      prefix: "Mangerud, J. (2025f, 8. august). Isavsmeltingen. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/isavsmeltingen",
+    },
+    {
       prefix: "Mangerud, J. (2026a, 17. mars). Eem. I ",
       italic: "Store norske leksikon",
       suffix: ".",
@@ -4012,10 +4018,40 @@ export const KILDER = {
       href: "https://snl.no/varv",
     },
     {
-      prefix: "Store norske leksikon [SNL]. (2025, 24. februar). ",
+      prefix: "Store norske leksikon [SNL]. (2025a, 24. februar). ",
       italic: "Atlantisk tid",
       suffix: ".",
       href: "https://snl.no/atlantisk_tid",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025b, 24. februar). ",
+      italic: "Boreal tid",
+      suffix: ".",
+      href: "https://snl.no/boreal_tid",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025c, 2. september). ",
+      italic: "Dryas",
+      suffix: ".",
+      href: "https://snl.no/dryas",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025d, 22. februar). ",
+      italic: "Preboreal",
+      suffix: ".",
+      href: "https://snl.no/preboreal",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025e, 21. februar). ",
+      italic: "Subatlantisk tid",
+      suffix: ".",
+      href: "https://snl.no/subatlantisk_tid",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (2025f, 21. februar). ",
+      italic: "Subboreal tid",
+      suffix: ".",
+      href: "https://snl.no/subboreal_tid",
     },
     {
       prefix: "Store norske leksikon [SNL]. (2026, 19. februar). ",
