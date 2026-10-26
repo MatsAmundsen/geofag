@@ -1442,6 +1442,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Benestad & Gjengedal, 2024)",
     ],
   },
+  {
+    // Feltarbeid i hav, luft og is (G2): Terra Mater fase 1–2 (må-punkter M1–M5: sjøbris som kjede med leddet om at landet varmes raskere enn sjøen, kjede for lufttrykk og vind i forskjellen mellom observert og varslet vannstand med Oslofjorden 1987, vannmasse/rosett/Niskin-flasker/lagdeling/kornform/svakt lag/heng/landheving/solgangsvind ved første bruk, fulle institusjonsnavn og Varsom forklart, setninger over 30 ord delt).
+    flag: "g2-felt-hav-luft-is-terra-mater-2026-10-26",
+    slug: "felt-hav-luft-is",
+    stale: [
+      "Forskjellen kommer i stor grad av været. *Stormflo*",
+      "*Sjøbris* er vind som blåser inn fra havet fordi sola varmer opp landet.",
+      "(NOAA, u.å.). Saltholdigheten",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
