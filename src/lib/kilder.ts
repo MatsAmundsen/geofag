@@ -4219,6 +4219,12 @@ export const KILDER = {
       href: "https://doi.org/10.1051/0004-6361:20041335",
     },
     {
+      prefix: "Mangerud, J. (2025, 12. oktober). Siste istid. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/siste_istid",
+    },
+    {
       prefix: "Mangerud, J. (2026, 14. april). Istid. I ",
       italic: "Store norske leksikon",
       suffix: ".",

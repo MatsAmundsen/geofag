@@ -1472,6 +1472,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "Etter istiden fulgte boreal tid (10 200–8950 år før 1950)",
     ],
   },
+  {
+    // Istider / Milankovitch (G2): Terra Mater fase 1–2 (må-punkter M1–M8: gåten om januar besvart med at årstidene skyldes helningen og ca. sju prosent mer sol i januar, misforståelsesboks, istid i vid betydning avklart mot Antarktis 34 millioner år, CO₂-forklaringen gradert med lagring i dyphavet, marin grense som kjede med Oslo ca. 220 moh., albedo/klimapådriv/ppm/karbonkretsløpet/LR04/Fennoskandia ved første bruk, fulle institusjonsnavn, kilder og gradering på forutsetningene, læringsmål som punktliste, «og» i kildene).
+    flag: "g2-milankovitch-terra-mater-2026-10-26",
+    slug: "milankovitch",
+    stale: [
+      "Kaldt hav løser mer CO₂, så CO₂ var ca. 180–190 ppm",
+      "Da isen smeltet, steg havet, men landet hevet seg enda mer.",
+      "I vid betydning er en istid en lang periode der jorda har varige isdekker.",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
