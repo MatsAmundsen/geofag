@@ -2454,6 +2454,30 @@ export const KILDER = {
       href: "https://snl.no/havvarmekraft",
     },
     {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      italic: "Climate change 2021: The physical science basis. Summary for policymakers",
+      suffix: ".",
+      href: "https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM.pdf",
+    },
+    {
+      prefix: "International Energy Agency [IEA]. (2021). ",
+      italic: "The role of critical minerals in clean energy transitions: Executive summary",
+      suffix: ".",
+      href: "https://www.iea.org/reports/the-role-of-critical-minerals-in-clean-energy-transitions/executive-summary",
+    },
+    {
+      prefix: "International Energy Agency [IEA]. (2025). ",
+      italic: "Renewables 2025 — Renewable electricity",
+      suffix: ".",
+      href: "https://www.iea.org/reports/renewables-2025/renewable-electricity",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Havvind",
+      suffix: ".",
+      href: "https://www.nve.no/energi/energisystem/havvind/",
+    },
+    {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ".",
