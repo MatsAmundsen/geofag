@@ -169,7 +169,7 @@ Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mel
 
 Norge ligger i vestavindsbeltet. Lavtrykk som dannes over Atlanteren, følger den øvre vinden inn mot kysten. På veien har lufta tatt opp vanndamp. Klimaet i Norge er mildere enn breddegraden skulle tilsi, fordi havstrømmer og vind frakter varme hit (Store norske leksikon, u.å.-e).
 
-Nedbøren følger vinden og terrenget. Innenfor vestkysten forsterkes bygene når lufta heves mot fjellene. Der er det soner med over 2000 mm i året, stedvis over 3000 mm. I regnskyggen øst for Breheimen faller det til dels under 300 mm (Store norske leksikon, u.å.-e). I Ottadalen faller det under 300 mm i året, mens det på Jostedalsbreen, få mil unna, faller omkring 3000 mm (Store norske leksikon, u.å.-e; u.å.-f).
+Nedbøren følger vinden og terrenget. Innenfor vestkysten forsterkes bygene når lufta heves mot fjellene. Der er det soner med over 2000 mm i året, stedvis over 3000 mm. I regnskyggen øst for Breheimen faller det til dels under 300 mm (Store norske leksikon, u.å.-e). I Ottadalen faller det ned mot 200 mm i året, mens det på Jostedalsbreen, få mil unna, faller omkring 3000 mm (Store norske leksikon, u.å.-f).
 
 Orografisk nedbør er nedbør som løses ut fordi terrenget tvinger fuktig luft til å stige. Lufta avkjøles. Når den blir mettet, kondenserer vanndampen, og det kan falle nedbør på luvsiden (siden vinden treffer). På lesiden (siden i le) synker lufta, varmes opp og er tørrere, fordi mye av vannet er lagt igjen i fjellet. Skyene løses opp (Store norske leksikon, u.å.-g). Regningen for hvor mange grader lufta varmes eller avkjøles per 100 meter, står i kapitlene om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) og [lokale værsystemer](/tema/lokale-vaersystemer).
 

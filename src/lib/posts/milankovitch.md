@@ -184,7 +184,7 @@ Istiden har også satt spor i hvor høyt havet en gang sto. Det henger sammen i 
 4. Den høyeste strandlinjen fra denne tiden kalles *marin grense*.
 5. Siden har landet hevet seg mer enn havet har steget. Den gamle strandlinjen ligger derfor høyt oppe på land i dag.
 
-I Norge ligger marin grense mellom 0 og ca. 220 moh. (Norges geologiske undersøkelse [NGU], u.å.-a; NGU, u.å.-b). Den er høyest der isen var tykkest. I Oslo ligger marin grense ca. 220 moh. Ute mot kysten er den lavere, fordi breen var tynnere der (Mangerud, 2026). Leire som ble avsatt i havet og nå ligger på land, kan bli kvikkleire, se [skred](/geofag-1/skred).
+I Norge ligger marin grense mellom 0 og ca. 220 moh. (Norges geologiske undersøkelse [NGU], u.å.). Den er høyest der isen var tykkest. I Oslo ligger marin grense ca. 220 moh. Ute mot kysten er den lavere, fordi breen var tynnere der (Mangerud, 2026). Leire som ble avsatt i havet og nå ligger på land, kan bli kvikkleire, se [skred](/geofag-1/skred).
 
 ```widget
 GlacialLandforms

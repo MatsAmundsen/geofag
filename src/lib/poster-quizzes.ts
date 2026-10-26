@@ -5288,7 +5288,7 @@ export const QUIZ_SJEKK_MILANKOVITCH_4: QuizQuestion[] = [
       "Den dypeste delen av en fjord",
     ],
     answer: 1,
-    explain: "Marin grense ligger mellom 0 og ca. 220 moh. i Norge (NGU, u.å.-a).",
+    explain: "Marin grense ligger mellom 0 og ca. 220 moh. i Norge (NGU, u.å.).",
   },
   {
     prompt: "Hva er Raet?",
