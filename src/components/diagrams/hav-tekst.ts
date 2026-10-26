@@ -24,5 +24,5 @@ export const GOLF_TEKST = {
   title:
     "Skjematisk kart over Nord-Atlanteren med nord opp. Golfstrømmen går fra Floridastredet nordover langs Nord-Amerika, bøyer av mellom 35 og 40 grader nord, fortsetter som Den nordatlantiske strømmen øst–nordøst over Atlanteren, og en gren går nordover inn i Norskehavet som Den norske atlanterhavsstrømmen. Pilen ender i havet, ikke på land. Golfstrømmen går ikke helt til Norge.",
   caption:
-    "Golfstrømmen er den varme randstrømmen langs Nord-Amerika. Videre øst–nordøst over Atlanteren heter den Den nordatlantiske strømmen, og langs Norge Den norske atlanterhavsstrømmen. Skjematisk kart, nord opp.",
+    "Golfstrømmen er den varme randstrømmen langs Nord-Amerika. Videre øst–nordøst over Atlanteren heter den Den nordatlantiske strømmen, og en gren inn i Norskehavet er Den norske atlanterhavsstrømmen. Skjematisk kart, nord opp.",
 };
