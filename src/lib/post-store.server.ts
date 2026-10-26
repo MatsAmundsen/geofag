@@ -1284,6 +1284,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Mangerud & Spjeldnæs, 2025)",
     ],
   },
+  {
+    // Den indiske hav-dipolen (IOD) (G2): Terra Mater fase 1–2 (må-punkter M1–M7: tilbakekoblingen vind–oppvelling–havtemperatur som kjede og positiv tilbakekobling med lenke til ENSO og Havstrømmer, «dipol» forklart, grenseverdi +0,4 °C i minst åtte uker og Dipole Mode Index, positiv IOD 2019 med flom i Øst-Afrika og tørke og skogbranner i Australia, jetstrømdelen gradert med polarjeten over havfronten og lenke til Jetstrømmer, fulle institusjonsnavn, «kapitlet», «mfl.» i kildene).
+    flag: "g2-iod-terra-mater-2026-10-26",
+    slug: "iod",
+    stale: [
+      "Kraftig regn kan gi flom, fordi landskapet ikke er tilpasset så store nedbørmengder.",
+      "Jetstrømmene følger altså de store temperaturgrensene i havet og på land.",
+      "Derfor ligger jetstrømmene ofte over områder der havtemperaturen endrer seg raskt.",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

@@ -827,7 +827,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     IodForklaring: () => (
     <Callout title="Hva betyr «indisk hav-dipol»?">
       <p>
-        Den indiske hav-dipolen er vedvarende endring i forskjellen mellom havtemperaturen vest og
+        Den indiske hav-dipolen er en vedvarende endring i forskjellen mellom havtemperaturen vest og
         øst i det tropiske Indiahavet. Positiv fase har varmere vann i vest og kjøligere i øst (BOM,
         u.å.).
       </p>
