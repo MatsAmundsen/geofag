@@ -1311,7 +1311,7 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "vindsystemet",
     stale: [
       "Én sløyfe til polen går ikke. Vi skiller mellom tre celler",
-      "Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrommer](/tema/jetstrommer).",
+      "Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).",
       "> **Tre vanlige misforståelser**",
     ],
   },
