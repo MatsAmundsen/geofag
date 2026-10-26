@@ -1,6 +1,6 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Udir, u.å.-b).
+> Målet er at du skal kunne gjøre rede for klimasystemet på ulike skalaer i tid og rom og vurdere antropogen klimapåvirkning (Utdanningsdirektoratet [Udir], u.å.-b).
 >
 > **Kjerneelementer som dekkes i dette kapittelet:**
 >
@@ -14,9 +14,11 @@
 EnsoForklaring
 ```
 
-[ENSO](/tema/klima/enso) er El Niño–sørlig oscillasjon (El Niño–Southern Oscillation). El Niño og La Niña er den varme og den kalde fasen av et naturlig klimamønster i det tropiske Stillehavet. Mønsteret skifter uregelmessig, omtrent hvert andre til sjuende år, og forstyrrer vanlig vind og regn i tropene. Virkningene merkes langt utenfor Stillehavet (NOAA, u.å.-a).
+[ENSO](/tema/klima/enso) er El Niño–sørlig oscillasjon (El Niño–Southern Oscillation). El Niño og La Niña er den varme og den kalde fasen av et naturlig klimamønster i det tropiske Stillehavet. Mønsteret skifter uregelmessig, omtrent hvert andre til sjuende år, og forstyrrer vanlig vind og regn i tropene. Virkningene merkes langt utenfor Stillehavet (National Oceanic and Atmospheric Administration [NOAA], u.å.-a).
 
 Stråling og pådriv ligger i [oversikten](/tema/klima/oversikt). Kartet ligger på [klima og klimasystemer](/tema/klima).
+
+Vi skiller mellom tre faser: nøytral, El Niño og La Niña.
 
 | Fase | Havet | Vinden | Regnet |
 | --- | --- | --- | --- |
@@ -28,11 +30,11 @@ Noen ganger ligner havet på El Niño eller La Niña, uten at lufta følger med.
 
 ## Niño 3.4 og ONI
 
-Den oseaniske Niño-indeksen, på engelsk Oceanic Niño Index (ONI), er ett mål på ENSO. Den er et tremåneders løpende middel av avviket i havoverflatetemperaturen i Niño 3.4-området. Området ligger mellom 5° nord og 5° sør, og mellom 120° og 170° vest. Avviket regnes mot sentrerte 30-års normalperioder som oppdateres hvert femte år. Tallgrunnlaget er ERSST versjon 6 (Climate Prediction Center, u.å.).
+Den oseaniske Niño-indeksen, på engelsk Oceanic Niño Index (ONI), er ett mål på ENSO. Den er et tremåneders løpende middel av avviket i havoverflatetemperaturen i Niño 3.4-området. Området ligger mellom 5° nord og 5° sør, og mellom 120° og 170° vest. Avviket regnes mot sentrerte 30-års normalperioder som oppdateres hvert femte år. Tallgrunnlaget er ERSST (Extended Reconstructed Sea Surface Temperature, en havtemperaturrekonstruksjon) versjon 6 (Climate Prediction Center [CPC] ved NOAA, u.å.).
 
-En varm periode markeres når avviket har ligget minst 0,5 grader over normalen i fem overlappende sesonger på rad. En kald periode markeres på samme måte når avviket har ligget minst 0,5 grader under normalen (Climate Prediction Center, u.å.).
+CPC definerer en varm periode når avviket har ligget minst 0,5 grader over normalen i fem overlappende sesonger på rad. En kald periode markeres på samme måte når avviket har ligget minst 0,5 grader under normalen (CPC, u.å.).
 
-ONI er ett av flere mål. Andre indekser kan bekrefte om hav og luft har fulgt med. Til offisiell overvåking og varsling bruker National Weather Service nå den relative oseaniske Niño-indeksen, RONI. De nyeste ONI-verdiene er et estimat. De kan endre seg inntil to måneder etter at de først er lagt ut (Climate Prediction Center, u.å.).
+ONI er ett av flere mål. Andre indekser kan bekrefte om hav og luft har fulgt med. Til offisiell overvåking og varsling bruker US National Weather Service (NWS) nå den relative oseaniske Niño-indeksen, RONI. De nyeste ONI-verdiene er et estimat. De kan endre seg inntil to måneder etter at de først er lagt ut (CPC, u.å.).
 
 ## Walker-sirkulasjonen
 
@@ -40,11 +42,11 @@ ONI er ett av flere mål. Andre indekser kan bekrefte om hav og luft har fulgt m
 FaseDiagram
 ```
 
-Den nedre delen av kretsen går fra øst mot vest nær overflaten. Den øvre går fra vest mot øst. Luft stiger i vest og synker i øst (Di Liberto, 2014).
+Walker-sirkulasjonen er en krets langs ekvator i tropene. Den nedre delen går fra øst mot vest nær overflaten. Den øvre går fra vest mot øst. Luft stiger i vest og synker i øst (Di Liberto, 2014).
 
-Passatvindene blåser fra øst mot vest og skyver sjøvann vestover. Vannet varmes på veien. Derfor er overflaten varmere i vest og kjøligere i øst. Over det varme vannet stiger luft. Over det kjøligere vannet i øst tørker lufta og synker (Di Liberto, 2014).
+Passatvindene (de østlige vindene langs ekvator) blåser fra øst mot vest og skyver sjøvann vestover. Jo lenger vest passatvinden skyver vannet, desto varmere blir overflaten. Derfor er overflaten varmere i vest og kjøligere i øst. Over det varme vannet stiger luft. Over det kjøligere vannet i øst tørker lufta og synker (Di Liberto, 2014).
 
-I nøytral tilstand, i desember til februar, stiger luft sterkt over det maritime kontinentet, og svakere over det østlige Afrika og det nordlige Sør-Amerika. Luft synker sterkt over det østlige Stillehavet (Di Liberto, 2014).
+I nøytral tilstand, i desember til februar, stiger luft sterkt over det maritime kontinentet (Indonesia, Malaysia og nærliggende øyer), og svakere over det østlige Afrika og det nordlige Sør-Amerika. Luft synker sterkt over det østlige Stillehavet (Di Liberto, 2014).
 
 ## El Niño og La Niña
 
@@ -52,9 +54,9 @@ I nøytral tilstand, i desember til februar, stiger luft sterkt over det maritim
 BjerknesLoop
 ```
 
-Søramerikanske fiskere la merke til at kystvannet ble varmt av og til rundt jul. De kalte det El Niño. Gilbert Walker fant den sørlige oscillasjonen, store endringer i lufttrykk mellom Indonesia og det tropiske Stillehavet, men koblet den ikke til havet. På slutten av 1960-tallet viste Jacob Bjerknes og andre at hav og luft henger sammen. Navnet ENSO kommer derfra. La Niña og nøytral ble vanlige navn fra 1980-tallet (L'Heureux, 2014).
+Søramerikanske fiskere la merke til at kystvannet ble varmt av og til rundt jul. De kalte det El Niño. Gilbert Walker fant den sørlige oscillasjonen, store endringer i lufttrykk mellom Indonesia og det tropiske Stillehavet, men koblet den ikke til havet. På slutten av 1960-tallet viste Jacob Bjerknes og andre at hav og luft henger sammen. Dette samspillet – varmt hav svekker passaten, som igjen sprer det varme vannet – kalles Bjerknes-tilbakekoblingen. Navnet ENSO kommer derfra. La Niña og nøytral ble vanlige navn fra 1980-tallet (L'Heureux, 2014).
 
-Når El Niño gjør det sentrale og østlige tropiske Stillehavet varmere, blir det mer tordenvær der. Varme fra havet frigis når vanndamp blir til skyer og regn. Den stigende lufta kan gå mot høyere breddegrader og forsterke Hadley-sirkulasjonen. Jetstrømmen over det nordlige Stillehavet om vinteren kan da strekke seg mot Nord-Amerika og gi flere stormer i det sørlige USA (Barnston, 2014).
+Når El Niño gjør det sentrale og østlige tropiske Stillehavet varmere, blir det mer tordenvær der. Varme fra havet frigis når vanndamp blir til skyer og regn. Den stigende lufta kan gå mot høyere breddegrader og forsterke Hadley-sirkulasjonen (den tropiske cellen med stigning ved ekvator og synking rundt 30°). Jetstrømmen over det nordlige Stillehavet om vinteren kan da strekke seg mot Nord-Amerika og gi flere stormer i det sørlige USA (Barnston, 2014).
 
 Utenfor det nordvestlige Peru blir det varme vannet ugunstig for ansjos. Fisken trekker mot kjøligere vann, og fangsten blir dårlig (Barnston, 2014).
 
@@ -64,7 +66,7 @@ Slike fjernvirkninger kalles teleconnections. De er sannsynlige under El Niño, 
 
 ENSO endrer jetstrømmene på midlere breddegrader. I USA er påvirkningen sterkest om vinteren, fra januar til mars. Under El Niño er det sørlige Alaska og Stillehavs-nordvesten ofte varmere enn gjennomsnittet, mens det sørlige beltet fra California til Carolina ofte er kjøligere og våtere. Under La Niña er avvikene omtrent motsatt, men ikke nøyaktig speilvendt (NOAA, u.å.-b).
 
-Innenfor et tiår er det varmeste året vanligvis et El Niño-år, og det kaldeste vanligvis et La Niña-år. Stillehavet er stort nok til at oppvarming eller avkjøling der setter spor i den globale middeltemperaturen (NOAA, u.å.-b).
+Innenfor et tiår er det varmeste året vanligvis et El Niño-år, og det kaldeste vanligvis et La Niña-år. Stillehavet er stort nok til at oppvarming eller avkjøling der setter spor i den globale middeltemperaturen (NOAA, u.å.-b). ENSO preger dermed den globale middeltemperaturen mer enn norsk vær direkte. Norsk vinter styres mer av [NAO](/tema/klima/nao).
 
 > **Vanlige misforståelser**
 >
@@ -86,9 +88,9 @@ Innenfor et tiår er det varmeste året vanligvis et El Niño-år, og det kaldes
 
 **Fjernvirkning:** Teleconnection. Endret sirkulasjon som merkes langt fra det tropiske Stillehavet.
 
-**Niño 3.4:** Havområdet mellom 5° nord og 5° sør og mellom 120° og 170° vest, der ONI måles (Climate Prediction Center, u.å.).
+**Niño 3.4:** Havområdet mellom 5° nord og 5° sør og mellom 120° og 170° vest, der ONI måles (CPC, u.å.).
 
-**ONI:** Den oseaniske Niño-indeksen. Tremåneders middel av temperaturavviket i Niño 3.4. Ett mål på ENSO. Offisiell overvåking bruker nå RONI (Climate Prediction Center, u.å.).
+**ONI:** Den oseaniske Niño-indeksen. Tremåneders middel av temperaturavviket i Niño 3.4. Ett mål på ENSO. Offisiell overvåking bruker nå RONI (CPC, u.å.).
 
 ## Test deg selv
 

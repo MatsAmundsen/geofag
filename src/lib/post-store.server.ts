@@ -1358,6 +1358,17 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // ENSO (G2): Terra Mater fase 1–2 (M1–M3).
+    flag: "g2-enso-terra-mater-2026-10-26",
+    slug: "enso",
+    stale: [
+      "Tallgrunnlaget er ERSST versjon 6 (Climate Prediction Center, u.å.)",
+      "Den nedre delen av kretsen går fra øst mot vest",
+      "forsterke Hadley-sirkulasjonen.",
+      "over det maritime kontinentet,",
+    ],
+  },
+  {
     // Geologisk tid: Terra Mater fase 1–2 (må-punkter M1–M7: isotop, radioaktivitet og absolutt datering definert, gang/forkastning/blotning/skyvedekker/trilobitter/peneplan ved første bruk, årsakskjede for luminescensdatering (OSL), setning over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
     flag: "g1-geologisk-tid-terra-mater-2026-10-25",
     slug: "geologisk-tid",
