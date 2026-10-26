@@ -115,9 +115,9 @@ SeaIceAlbedoFeedback
 
 Arktis er et hav nesten omsluttet av land. Mye av isen der er *sesonghavis*, altså is som vokser om vinteren og smelter delvis om sommeren. Antarktis er et kontinent omsluttet av hav. Der ligger den store *innlandsisen*, et tykt isdekke på land, i tillegg til sesonghavis rundt kysten. Antarktisk havis er typisk 1 til 2 meter tykk (National Snow and Ice Data Center, u.å.-a).
 
-For havnivået er forskjellen stor. Smelting av havis er ikke det samme som smelting av innlandsis. Flytende havis har allerede fortrengt nesten sitt eget volum i havet. Når den smelter, stiger derfor ikke det globale havnivået nevneverdig (National Snow and Ice Data Center, u.å.-d). Innlandsisen på Grønland og i Antarktis ligger på land. Når den smelter eller kalver ut i havet, tilføres nytt vann, og havnivået stiger (Store norske leksikon, u.å.-g).
+For havnivået er forskjellen stor. Smelting av havis er ikke det samme som smelting av innlandsis. Flytende havis har allerede fortrengt nesten sin egen vekt i havet. Når den smelter, stiger derfor ikke det globale havnivået nevneverdig (National Snow and Ice Data Center, u.å.-d). Innlandsisen på Grønland og i Antarktis ligger på land. Når den smelter eller kalver ut i havet, tilføres nytt vann, og havnivået stiger (Store norske leksikon, u.å.-g).
 
-Begge polarområdene mister is når klimaet varmes. Likheten er at albedoen faller der isen forsvinner. Forskjellen for havnivået er at det er innlandsisen, ikke sesonghavisen, som gir det store bidraget. Lange arkiv fra isen og koblingen til AMOC står i [paleoklima](/tema/paleoklima) og [AMOC](/tema/klima/amoc).
+Begge polarområdene mister ismasse når klimaet varmes. Likheten er at albedoen faller der isen forsvinner. Forskjellen for havnivået er at det er innlandsisen, ikke sesonghavisen, som gir det store bidraget. Lange arkiv fra isen og koblingen til AMOC står i [paleoklima](/tema/paleoklima) og [AMOC](/tema/klima/amoc).
 
 Snø kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer, særlig over Nord-Amerika, Grønland, Europa og Russland (National Snow and Ice Data Center, u.å.-b).
 
