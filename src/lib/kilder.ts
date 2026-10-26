@@ -3716,6 +3716,12 @@ export const KILDER = {
       href: "https://www.met.no/en/projects/The-weather-model-AROME-Arctic",
     },
     {
+      prefix: "Molnes, G. (2020, 15. juli). ",
+      italic: "Hvor treffsikker er værmeldingen?",
+      suffix: " Faktisk.no.",
+      href: "https://www.faktisk.no/artikkel/hvor-treffsikker-er-vaermeldingen/117200",
+    },
+    {
       prefix: "Müller, M., Homleid, M., Ivarsson, K.-I., Køltzow, M. A. Ø., Lindskog, M., Midtbø, K. H., Andrae, U., Aspelien, T., Berggren, L., Bjørge, D., Dahlgren, P., Kristiansen, J., Randriamampianina, R., Ridal, M., & Vignes, O. (2017). AROME-MetCoOp: A Nordic convective-scale operational weather prediction model. ",
       italic: "Weather and Forecasting, 32",
       suffix: "(2), 609–627.",
@@ -3756,6 +3762,12 @@ export const KILDER = {
       italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/numerisk_værvarsling",
+    },
+    {
+      prefix: "Sivle, A. D., & Evans, A. K. D. (2024, 25. november). Værvarsling. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/værvarsling",
     },
     {
       prefix: "Store norske leksikon. (u.å.). Edward Lorenz. I ",

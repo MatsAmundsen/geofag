@@ -1432,6 +1432,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(NASA, u.å.)",
     ],
   },
+  {
+    // Numeriske modeller (G2): Terra Mater fase 1–2 (må-punkter M1–M6: årsakskjede for vær kontra klima i svaret på «Hva tror du?», kaos som kjede med grensen på ca. ti dager og to uker, pådriv/randverdier/tilstandsvariabler/hPa/3D-Var/optimal interpolasjon/polare lavtrykk/UTC ved første bruk, MetCoOp forklart før bruk, fulle institusjonsnavn, setninger over 30 ord delt, «og» i kildene).
+    flag: "g2-numeriske-modeller-terra-mater-2026-10-26",
+    slug: "numeriske-modeller",
+    stale: [
+      "fordi atmosfæren er et *kaotisk system* (Meteorologisk institutt, 2020)",
+      "Det er svaret på «Hva tror du?»: Vi kan ikke vite",
+      "(Benestad & Gjengedal, 2024)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
