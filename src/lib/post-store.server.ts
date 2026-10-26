@@ -1306,6 +1306,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Vindsystemet (G2): kvalitetsloft celle-kjede, Ferrel, klimabelter.
+    flag: "g2-vindsystemet-kvalitetsloft-2026-10-26",
+    slug: "vindsystemet",
+    stale: [
+      "Én sløyfe til polen går ikke. Vi skiller mellom tre celler",
+      "Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).",
+      "> **Tre vanlige misforståelser**",
+    ],
+  },
+  {
     // Høytrykk og lavtrykk (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
     flag: "g2-hoytrykk-lavtrykk-terra-mater-2026-10-26",
     slug: "hoytrykk-lavtrykk",
