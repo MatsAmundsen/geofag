@@ -1284,6 +1284,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Mangerud & Spjeldnæs, 2025)",
     ],
   },
+  {
+    // Paleoklima (G2): Terra Mater fase 1–2 (må-punkter M1–M7: «prosent» skrevet ut, C-14/kalibrere/foraminiferer/tefra forklart før bruk og Vedde-askens C-14-alder flyttet til C-14-datering, ppm/albedo/isotop/pådriv/anriket ved første bruk, «de store istidene» om havnivået, klimaperiodene etter istiden som tabell med preboreal tid, fulle institusjonsnavn, læringsmål som punktliste, «og» i kildene).
+    flag: "g2-paleoklima-terra-mater-2026-10-26",
+    slug: "paleoklima",
+    stale: [
+      "Under hver istid sank havnivået",
+      "Det tilsvarer ca. 10 300 C-14-år",
+      "Etter istiden fulgte boreal tid (10 200–8950 år før 1950)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
