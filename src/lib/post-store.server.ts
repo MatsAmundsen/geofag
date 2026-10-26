@@ -1336,6 +1336,15 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Jetstrømmer (G2): atmosfæriske elver + modell-embed.
+    flag: "g2-jet-ar-2026-10-26",
+    slug: "jetstrommer",
+    stale: [
+      "```widget\nSjekkJet2\n```\n\n## Viktige begreper",
+      "**NAO:** Svingningen i trykkforskjellen mellom Island og Asorene. Den endrer styrken og beliggenheten til jetstrømmen over Atlanteren.\n\n## Sammendrag",
+    ],
+  },
+  {
     // Værkatastrofer (G2): Terra Mater fase 1–2 (M1–M3).
     flag: "g2-vaerkatastrofer-terra-mater-2026-10-26",
     slug: "vaerkatastrofer",

@@ -2700,6 +2700,18 @@ export const KILDER = {
       href: "https://snl.no/omegablokkering",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Atmosfæriske elver",
+      suffix: ".",
+      href: "https://snl.no/atmosfæriske_elver",
+    },
+    {
+      prefix: "Svensson, T. (2023, 5. september). ",
+      italic: "Overraskende årsak til flom på Østlandet",
+      suffix: ". Bjerknessenteret for klimaforskning.",
+      href: "https://bjerknes.uib.no/aktuelt/overraskende-arsak-til-flom-pa-ostlandet",
+    },
+    {
       prefix: "Utdanningsdirektoratet. (u.å.-a). ",
       italic: "Kjerneelementer",
       suffix: ". Læreplan i geofag (GFG01-03).",

@@ -173,6 +173,7 @@ import { SpheresDiagram } from "@/components/diagrams/spheres";
 import { KarbonatSilikatFigur } from "@/components/diagrams/jordsys-figurer";
 import { EarthSystemsModel } from "@/components/models/earth-systems-model";
 import { PlateTectonicsModel } from "@/components/models/plate-tectonics-model";
+import { JetAtmosfaeriskElvModellWidget } from "@/components/meteo/jet-atmosfaerisk-elv-modell-widget";
 import { VolcanoModel } from "@/components/models/volcano-model";
 import { WindSystemModel } from "@/components/models/wind-system-model";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
@@ -1076,6 +1077,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   JetForms: () => <JetSlyngerFigurLat />,
   JetSeason: () => <JetSesongFigurLat />,
   JetBlocking: () => <JetOmegaFigurLat />,
+  JetAtmosfaeriskElvModell: () => <JetAtmosfaeriskElvModellWidget />,
   Nao: () => <JetNaoFigurLat />,
   JetStormbane: () => <StormbaneFigurLat />,
   CoriolisLatitude: () => <FartOstoverFigurLat />,
