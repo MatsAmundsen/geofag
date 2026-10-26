@@ -4,7 +4,7 @@
 >
 > - gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -16,7 +16,7 @@
 
 Et værkart viser været over et stort område. På kartet står lavtrykk, høytrykk og fronter. Isobarene knytter sammen steder med likt lufttrykk (Store norske leksikon, u.å.-c).
 
-Kart, radar og satellittbilder er tidsstemplet i UTC, også kalt Z-tid. Det er en klokke for hele jorda, med nullpunkt ved nullmeridianen. 00Z er midnatt der (NOAA, u.å.-e).
+Kart, radar og satellittbilder er tidsstemplet i UTC, også kalt Z-tid. Det er en klokke for hele jorda, med nullpunkt ved nullmeridianen. 00Z er midnatt der (National Oceanic and Atmospheric Administration [NOAA], u.å.-e).
 
 > **Hva tror du?**
 >
@@ -32,7 +32,7 @@ En isobar er en kurve gjennom steder med likt lufttrykk. Trykket fra stasjoner s
 
 På norske værkart tegnes isobarene vanligvis for hver femte hektopascal, for eksempel 1000 og 1005 hPa. Britiske kart bruker ofte fire hektopascal. Da ligger linjene tettere, selv om trykkfeltet er det samme (Store norske leksikon, u.å.-c).
 
-Tette isobarer betyr stor trykkforskjell over kort avstand, og vinden blir sterk. Gisne isobarer gir svak vind. Svaret på «Hva tror du?» er altså sterk vind. Hvordan trykk og vind henger sammen, tar vi i [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk).
+Jo tettere isobarene ligger, desto sterkere blir vinden. Tette isobarer betyr stor trykkforskjell over kort avstand. Gisne isobarer gir svak vind. Svaret på «Hva tror du?» er altså sterk vind. Hvordan trykk og vind henger sammen, tar vi i [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk).
 
 ```widget
 IsobarForklaring
@@ -52,9 +52,11 @@ SjekkVaerkart1
 
 En luftmasse er et stort volum luft med ganske jevn temperatur og fuktighet. Egenskapene kommer fra området den har ligget over. Luft over land er tørrere. Luft over hav er fuktigere. Luft fra Arktis er svært kald. Polarluft er kald, men ikke like kald. Tropeluft er varm (NOAA, u.å.-a).
 
-Der luftmasser møtes, dannes en front. En front er skillet mellom to luftmasser med ulik tetthet, som oftest fordi temperaturen er ulik. Fuktighet og stabilitet kan også skille dem. Frontflaten heller svakt, oftest mellom 1:200 og 1:100 (Store norske leksikon, u.å.-a). Kaldfronten er brattere enn varmfronten (Ahrens & Henson, 2022).
+Der luftmasser møtes, dannes en front. En front er skillet mellom to luftmasser med ulik tetthet, som oftest fordi temperaturen er ulik. Fuktighet og stabilitet kan også skille dem. Frontflaten heller svakt, oftest mellom 1:200 og 1:100 (Store norske leksikon, u.å.-a). Kaldfronten er brattere enn varmfronten (Ahrens og Henson, 2022).
 
 Læren om fronter ble i stor grad utformet av Vilhelm Bjerknes og Bergensskolen (Store norske leksikon, u.å.-a). Begrepet polarfronten, skillet mellom kald luft fra høye breddegrader og varm luft fra subtropene, ble tatt i bruk av Bergensskolen fra 1918 (Store norske leksikon, u.å.-b). Selve syklonmodellen kom noen år senere, i 1919–1922, og den står nedenfor.
+
+Vi skiller mellom fem fronttyper: varmfront, kaldfront, okkludert front, stasjonær front og tråg. Et tråg er en forlengelse av lavtrykk uten lukket sentrum.
 
 | Front | Tegn på kartet | Været |
 |---|---|---|
@@ -88,9 +90,9 @@ SjekkVaerkart2
 
 ## Den norske syklonmodellen
 
-Den norske syklonmodellen viser hvordan et lavtrykk og frontene utvikler seg gjennom livsløpet. Den kalles også Bjerknes-modellen. Modellen ble utviklet ved Bergensskolen av Jacob Bjerknes og Halvor Solberg. Jacob Bjerknes beskrev frontene i en syklon i 1919, og sammen publiserte de livsløpet til syklonen i 1922 (Norsk biografisk leksikon, u.å.; Bjerknes & Solberg, 1922). NOAA beskriver det samme livsløpet (NOAA, u.å.-b).
+Den norske syklonmodellen viser hvordan et lavtrykk og frontene utvikler seg gjennom livsløpet. Den kalles også Bjerknes-modellen. Modellen ble utviklet ved Bergensskolen av Jacob Bjerknes og Halvor Solberg. Jacob Bjerknes beskrev frontene i en syklon i 1919, og sammen publiserte de livsløpet til syklonen i 1922 (Norsk biografisk leksikon, u.å.; Bjerknes og Solberg, 1922). NOAA beskriver det samme livsløpet (NOAA, u.å.-b).
 
-Ifølge modellen fører bølger i en stasjonær front til en varmfront og en kaldfront, og til syklonal sirkulasjon, mot klokka på den nordlige halvkule. Dette steget kalles syklogenese. I det modne stadiet beveger kaldfronten seg raskere enn varmfronten. Der kaldfronten har tatt igjen varmfronten, dannes en okkludert front, og varmsektoren løftes opp over bakken. Til slutt svekkes lavtrykket (Store norske leksikon, u.å.-d).
+Ifølge modellen fører bølger i en stasjonær front til en varmfront og en kaldfront, og til syklonal sirkulasjon, mot klokka på den nordlige halvkule. Dette steget kalles syklogenese, det vil si dannelsen av et lavtrykk. I det modne stadiet beveger kaldfronten seg raskere enn varmfronten. Der kaldfronten har tatt igjen varmfronten, dannes en okkludert front, og varmsektoren løftes opp over bakken. Til slutt svekkes lavtrykket (Store norske leksikon, u.å.-d).
 
 NOAA beskriver løpet slik:
 
@@ -111,7 +113,7 @@ SjekkVaerkart3
 
 ## Stasjonsplott
 
-På et bakkekart kan hver stasjon tegnes som et lite plott: temperatur, duggpunkt, trykk, et symbol for været nå, og en vindpil. Vindpilen peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f).
+På et bakkekart kan hver stasjon tegnes som et lite plott: temperatur, duggpunkt (temperaturen der lufta blir mettet), trykk, et symbol for været nå, og en vindpil. Vindpilen peker dit vinden kommer fra. Symbolene for været nå er standardiserte (NOAA, u.å.-f).
 
 Sirkelen i midten fylles etter hvor stor del av himmelen som er dekket av skyer, målt i åttedeler, fra skyfri himmel til helt overskyet ved 8/8 (NOAA, u.å.-f).
 
@@ -163,7 +165,7 @@ Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale v�
 
 **Front:** Skillet mellom to luftmasser med ulik tetthet. Den viktigste er polarfronten (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
-**Den norske syklonmodellen:** Også kalt Bjerknes-modellen. Den viser livsløpet til et lavtrykk, fra bølge på en stasjonær front til okklusjon. Utviklet av Jacob Bjerknes og Halvor Solberg ved Bergensskolen i 1919–1922 (Norsk biografisk leksikon, u.å.; Bjerknes & Solberg, 1922).
+**Den norske syklonmodellen:** Også kalt Bjerknes-modellen. Den viser livsløpet til et lavtrykk, fra bølge på en stasjonær front til okklusjon. Utviklet av Jacob Bjerknes og Halvor Solberg ved Bergensskolen i 1919–1922 (Norsk biografisk leksikon, u.å.; Bjerknes og Solberg, 1922).
 
 **Okklusjon:** Kaldfronten har tatt igjen varmfronten, og den varme lufta er løftet bort fra bakken (NOAA, u.å.-b; Sivle, 2009).
 
