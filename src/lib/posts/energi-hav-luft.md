@@ -86,6 +86,8 @@ SjekkEnergi1
 
 Isaac Newton viste at tidevannet følger tyngdekraften. Det skyldes månens og solas tiltrekning på havet. *Tidevannskraften* er forskjellen i månens tiltrekning over jorda. Den strekker havet ut mot månen på den ene siden og bort fra månen på den andre, så det blir to flodbølger. Fordi jorda roterer, får vi to høyvann i døgnet (Store norske leksikon, u.å.-c). Tidevannet kommer altså ikke av vinden.
 
+### Ressurs, miljø og begrensning
+
 Tidevannskraft er forutsigbar, i motsetning til vind. Utbygging krever likevel store høydeforskjeller eller sterke strømmer, og anlegg kan endre økosystemer i elvemunninger og sund. Ressursen er derfor reell, men stedbundet. Begrensningen er geografi og miljø, ikke at tidevannet «går tomt».
 
 ## Bølger og havvarme: stort potensial, lite realisert
@@ -124,7 +126,7 @@ Elektrifisering av olje- og gassplattformer med havvind eller kraft fra land red
 
 Globalt er utgangspunktet annerledes. Mange land mangler Norges vannkraftbase. Det internasjonale energibyrået (IEA) har beregnet at fornybare kilder sto for 32 prosent av verdens elektrisitetsproduksjon i 2024. IEA forventer at andelen stiger videre mot 2030, blant annet drevet av sol og vind (IEA, 2025). Havvind er fortsatt en mindre del av totalen, men vokser. Ved utgangen av 2025 var verdenskapasiteten 92,5 gigawatt, med Kina som klart største marked (GWEC, 2026).
 
-FNs klimapanel (IPCC) har dokumentert at menneskeskapte utslipp driver oppvarmingen, og at utslippene må kuttes raskt for å begrense den. Overgang til lavutslippsenergi er en del av det bildet (IPCC, 2021). Samtidig krever fornybarutbygging mineraler, nett og areal. IEA har dokumentert at et vindkraftverk på land trenger langt mer mineraler enn et gasskraftverk med samme effekt (IEA, 2021). Globalt er spørsmålet derfor bredere enn bare utbygd kapasitet. Det handler også om hvem som får tilgang, hvilke miljøkostnader som følger med, og hvor raskt nettet kan bygges ut.
+FNs klimapanel (IPCC) har dokumentert at menneskeskapte utslipp driver oppvarmingen. For å begrense den må utslippene kuttes raskt. Overgang til lavutslippsenergi er en del av det bildet (IPCC, 2021). Samtidig krever fornybarutbygging mineraler, nett og areal. IEA har dokumentert at et vindkraftverk på land trenger langt mer mineraler enn et gasskraftverk med samme effekt (IEA, 2021). Globalt er spørsmålet derfor bredere enn bare utbygd kapasitet. Det handler også om hvem som får tilgang, hvilke miljøkostnader som følger med, og hvor raskt nettet kan bygges ut.
 
 Jo større andelen variabel vind- og solkraft blir, desto mer avhenger forsyningssikkerheten av lagring, nett og andre regulerbare kilder. Det gjelder både i Norge og internasjonalt. Utgangspunktet er likevel ulikt. Norge har vannkraft som buffer. Mange land må bygge både fornybar kraft og systemet rundt den samtidig.
 

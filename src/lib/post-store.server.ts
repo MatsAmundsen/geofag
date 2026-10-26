@@ -1623,7 +1623,7 @@ const COPY_RESEEDS: CopyReseed[] = [
       "## Tre ressurser",
       "Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.",
       "> At energien er fornybar, gjør den ikke automatisk ukontroversiell. Vindkraft legger beslag på land og kan være et problem for reindrift (Store norske leksikon, u.å.-a).",
-      "**Vindturbinens arbeidsområde:** Roterer mellom 3 og 25 meter per sekund i navhøyde. Størst ytelse ved cirka 13 meter per sekund.\n\n**Bølgekraftverk:**",
+      "## Vindkraft i Norge",
     ],
   },
 ];
