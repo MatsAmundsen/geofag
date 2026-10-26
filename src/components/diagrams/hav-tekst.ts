@@ -26,3 +26,11 @@ export const GOLF_TEKST = {
   caption:
     "Golfstrømmen er den varme randstrømmen langs Nord-Amerika. Videre øst–nordøst over Atlanteren heter den Den nordatlantiske strømmen, og en gren inn i Norskehavet er Den norske atlanterhavsstrømmen. Skjematisk kart, nord opp.",
 };
+
+export const NORSK_TEKST = {
+  heading: "Strømmene langs Norge: atlanterhav og kyst",
+  title:
+    "Skjematisk kart over norskekysten med nord opp. Den norske atlanterhavsstrømmen kommer inn gjennom Færøy–Shetland-renna, følger kontinentalskråningen nordover og er nærmest land utenfor Vesterålen. Utenfor Troms deler den seg i Nordkappstrømmen inn i Barentshavet og Vestspitsbergenstrømmen mot Arktis. Nærmere land går Den norske kyststrømmen fra Skagerrak til Barentshavet — ferskere, full av virvler; i snitt nordover, kan i perioder gå sørover. Vis tall viser temperatur og saltholdighet fra kapitlet.",
+  caption:
+    "To strømmer langs Norge: atlanterhavsvann ute langs kontinentalskråningen, og ferskere kystvann nærmere land. Skjematisk kart, nord opp.",
+};

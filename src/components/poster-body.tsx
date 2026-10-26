@@ -103,6 +103,7 @@ import {
   SjobrisFigurLat,
   OppvellingFigurLat,
   GolfFigurLat,
+  NorskekystFigurLat,
   EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
@@ -681,6 +682,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     GyreDiagram: () => <GyreDiagram />,
     OppvellingDiagram: () => <OppvellingFigurLat />,
     GolfDiagram: () => <GolfFigurLat />,
+    NorskekystStrommer: () => <NorskekystFigurLat />,
     TetthetDiagram: () => <DensityDiagram />,
     QuizHavstrommer: () => (
     <Quiz questions={QUIZ_HAVSTROMMER} heading={null} intro="Velg ett svar per spørsmål." />
