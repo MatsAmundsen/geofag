@@ -1284,6 +1284,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Mangerud & Spjeldnæs, 2025)",
     ],
   },
+  {
+    // Havstrømmer (G2): Terra Mater fase 1–2 (må-punkter M1–M7: Nansen og drivisen, havvirvler drevet av vinden, årsakskjede for vestlig intensivering, randstrøm/saltholdighet/tetthet/kontinentalskråning/stormflo ved første bruk, «man» fjernet, setninger over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
+    flag: "g2-havstrommer-terra-mater-2026-10-26",
+    slug: "havstrommer",
+    stale: [
+      "la Fridtjof Nansen merke til at isfjellene ikke drev med vinden",
+      "corioliseffekten blir sterkere jo lenger nord man kommer",
+      "(Weber & Bjørndalen, 2024)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
