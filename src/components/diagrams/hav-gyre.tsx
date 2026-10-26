@@ -127,26 +127,28 @@ export function GyreFigur({ heading, caption }: { heading?: string; caption?: Re
     weight: 700,
     badge: [100, 175],
   });
-  lab("Afrika", 1125, 360, COL.sted, {
+  /* Inn på land-interiør, klar av kyst-stroke #3d5344. */
+  lab("Afrika", 1190, 340, COL.sted, {
     size: 15,
     weight: 700,
-    badge: [1095, 335],
+    badge: [1170, 320],
   });
 
   const hold = (v: number) => clamp((v - 0.35) / 0.4);
 
   if (s.gyre > 0.5) {
-    lab("virvelen går med klokken", 640, 160, COL.gyre, {
+    /* Begge over SEG_NAC/SEG_GYRE-topp (y≈175–195) — unngår stroke på nac-path. */
+    lab("virvelen går med klokken", 640, 132, COL.gyre, {
       size: 14,
       weight: 700,
       opacity: hold(s.gyre),
-      badge: [560, 140],
+      badge: [560, 118],
     });
-    lab("nordlig halvkule", 640, 182, COL.dempet, {
+    lab("nordlig halvkule", 640, 152, COL.dempet, {
       size: 12,
       weight: 600,
       opacity: hold(s.gyre),
-      badge: [575, 182],
+      badge: [575, 152],
       narrowHide: true,
     });
   }
@@ -154,12 +156,14 @@ export function GyreFigur({ heading, caption }: { heading?: string; caption?: Re
   if (s.golf > 0.35) {
     const op = hold(s.golf);
     if (op >= 0.9) {
-      lab("Golfstrømmen · smal · rask", 200, 300, COL.golf, {
+      /* Tekst NE (klar av land/H/skygge @1280). at midt på Golf — ikke nær #7dd3fc-bølger (badge@768). */
+      lab("Golfstrømmen · smal · rask", 620, 228, COL.golf, {
         size: 13,
         weight: 800,
         opacity: op,
-        at: [365, 340],
-        badge: [155, 275],
+        anchor: "middle",
+        at: [355, 380],
+        badge: [200, 320],
       });
     }
   }
@@ -180,12 +184,14 @@ export function GyreFigur({ heading, caption }: { heading?: string; caption?: Re
   if (s.kanari > 0.35) {
     const op = hold(s.kanari);
     if (op >= 0.9) {
-      lab("Kanaristrømmen · bred · langsom", 1040, 480, COL.kanari, {
+      /* Sør for SEG_KANARI (path ~y320–550), klar av strøm + kyst-stroke. */
+      lab("Kanaristrømmen · bred · langsom", 900, 598, COL.kanari, {
         size: 13,
         weight: 800,
         opacity: op,
-        at: [960, 450],
-        badge: [980, 500],
+        anchor: "middle",
+        at: [900, 545],
+        badge: [880, 575],
       });
     }
   }
