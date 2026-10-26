@@ -1326,6 +1326,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Lokale værsystemer (G2): kvalitetsloft polarfrontsyklon + skalaskille.
+    flag: "g2-lokale-kvalitetsloft-2026-10-26",
+    slug: "lokale-vaersystemer",
+    stale: [
+      "Et slikt lavtrykk har et fast livsløp. Det starter som en bølge på fronten og får en varmfront og en kaldfront.",
+      "Det fylles ut når kaldfronten har tatt igjen varmfronten og dannet en okkludert front (NOAA, u.å.-b).",
+      "Sjøbris er ikke en polarfrontsyklon i miniatyr. Den er et kretsløp mellom land og hav, med returstrøm i høyden (NOAA, u.å.-a; Store norske leksikon, u.å.-e).",
+    ],
+  },
+  {
     // Jetstrømmer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
     flag: "g2-jetstrommer-terra-mater-2026-10-26",
     slug: "jetstrommer",

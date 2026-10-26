@@ -10,6 +10,8 @@
 
 ## Hva skiller lokalt vær fra en polarfrontsyklon?
 
+Vi skiller mellom to målestokker i dette kapitlet: lokale vindsystemer, som solgangsvind og berg- og dalvind, og regionale systemer, som polarfrontsyklonen. Begge drives av temperatur- og trykkforskjeller, men på ulik skala. En sjøbris er et kretsløp over noen kilometer langs kysten. En polarfrontsyklon er et synoptisk lavtrykk som kan være flere hundre til over tusen kilometer i diameter og vandre over Nord-Atlanteren i flere døgn (NOAA, u.å.-b; Store norske leksikon, u.å.-a).
+
 [Lokale og regionale værsystemer](/tema/lokale-vaersystemer) handler om vær som oppstår fordi land, hav og fjellside ikke varmes likt, og om lavtrykkene som vandrer langs polarfronten. Den globale sirkulasjonen tar vi i [vindsystemet](/tema/vindsystemet). Å lese systemet på et kart tar vi i [værkart](/tema/vaerkart). Hvordan jetstrømmen styrer banen, tar vi i [jetstrømmer](/tema/jetstrommer).
 
 | | Solgangsvind | Berg- og dalvind | Polarfrontsyklon |
@@ -126,7 +128,15 @@ SjekkLokale2
 
 ## Polarfrontsyklonen
 
-Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, og ligger vanligvis mellom 40° og 70° bredde. Langs den vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-a). Et slikt lavtrykk har et fast livsløp. Det starter som en bølge på fronten og får en varmfront og en kaldfront. Det fylles ut når kaldfronten har tatt igjen varmfronten og dannet en okkludert front (NOAA, u.å.-b). Hvordan vi kjenner igjen frontene og lavtrykket på kartet, står i kapitlet [Værkart og værutvikling](/tema/vaerkart).
+Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, og ligger vanligvis mellom 40° og 70° bredde. Langs den vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-a). For Norge er Nord-Atlanteren den viktigste fødeplassen: her møtes mild havluft og kaldere luft fra nord, og lavtrykkene følger ofte jetstrømmen inn mot Vestlandet og Norskehavet.
+
+Et slikt lavtrykk, en polarfrontsyklon, har et fast livsløp. Den norske syklonmodellen beskriver trinnene (NOAA, u.å.-b):
+
+1. **Bølge på fronten.** Et tråg i høyden, knyttet til jetstrømmen, beveger seg over en nesten stasjonær polarfront. Fronten får en «knekk», og luftmassene begynner å bevege seg.
+2. **Varmfront og kaldfront.** Bølgen organiserer seg: varmfront foran, kaldfront bak. Nedbør faller særlig langs frontene. Trykket i sentrum faller, og lavtrykket forsterkes.
+3. **Okklusjon.** Kaldfronten beveger seg raskere enn varmfronten og tar den igjen. Da dannes en okkludert front. Den milde lufta løftes fra bakken, og lavtrykket mister etter hvert drivkraften og fylles ut.
+
+Hvordan vi kjenner igjen frontene og lavtrykket på kartet, står i kapitlet [Værkart og værutvikling](/tema/vaerkart). Livsløpet er det samme fysikkprinsippet som i en lokal bris — trykkforskjell og stigende luft — men på synoptisk målestokk over Nord-Atlanteren.
 
 ```widget
 PolarFrontCyclone
@@ -134,7 +144,7 @@ PolarFrontCyclone
 
 > **Vanlige misforståelser**
 >
-> Sjøbris er ikke en polarfrontsyklon i miniatyr. Den er et kretsløp mellom land og hav, med returstrøm i høyden (NOAA, u.å.-a; Store norske leksikon, u.å.-e).
+> Sjøbris er ikke en polarfrontsyklon i miniatyr. Den er et lokalt kretsløp mellom land og hav, med returstrøm i høyden. Polarfrontsyklonen er et synoptisk system langs polarfronten (NOAA, u.å.-a; Store norske leksikon, u.å.-e; NOAA, u.å.-b).
 >
 > Føn ligger på lesiden. Regn på luvsiden kan bidra til oppvarmingen, men hovedsaken er at lufta synker og varmes med omtrent én grad per hundre meter (Store norske leksikon, u.å.-g).
 >
