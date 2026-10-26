@@ -15,7 +15,7 @@
 
 ## Hva er lufttrykk?
 
-Vi lever på bunnen av et hav av luft. Lufta består mest av nitrogen (78 prosent) og oksygen (21 prosent). Den føles vektløs, men alle gassmolekylene har masse, og tyngdekraften trekker dem mot bakken. Lufta over oss presser derfor ned på alt den hviler på. Dette trykket kaller vi lufttrykk. Det er vekten av hele luftsøylen over et sted, helt opp til verdensrommet, fordelt på arealet den hviler på (National Oceanic and Atmospheric Administration [NOAA], u.å.-a).
+Vi lever på bunnen av et hav av luft. Lufta består mest av nitrogen (78 prosent) og oksygen (21 prosent). Den føles vektløs, men alle gassmolekylene har masse, og tyngdekraften trekker dem mot bakken. Lufta over oss presser derfor ned på alt den hviler på. Dette trykket kaller vi lufttrykk. Det er vekten av hele luftsøylen over et sted, helt opp til verdensrommet, fordelt på arealet den hviler på (USAs hav- og atmosfæremyndighet [NOAA], u.å.-a).
 
 Lufttrykk måles i hektopascal (hPa). Ved havnivå er gjennomsnittet om lag 1013 hPa (NOAA, u.å.-a). Tallet alene sier likevel lite om været. Om et område har høytrykk eller lavtrykk, avgjøres alltid ved å sammenligne med områdene rundt.
 
