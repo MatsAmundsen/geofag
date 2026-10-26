@@ -4,7 +4,7 @@
 >
 > - gjøre rede for strålingsbalanse, strålingsfordeling og strålingspådriv og bruke disse til å forstå den globale sirkulasjonen i atmosfæren
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -16,11 +16,11 @@
 
 I kapitlet om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) så du at temperaturforskjeller skaper trykkforskjeller, og at trykkforskjeller setter lufta i bevegelse. Her ser vi på hele planeten.
 
-Sola varmer ikke jorda jevnt. Fordi jorda er en kule, varmes tropene mer enn polområdene. Atmosfæren og havet flytter varme fra ekvator mot polene. Sammen kalles den sirkulasjonen jordas varmemotor (NASA, u.å.).
+Sola varmer ikke jorda jevnt. Fordi jorda er en kule, varmes tropene mer enn polområdene. Atmosfæren og havet flytter varme fra ekvator mot polene. Sammen kalles den sirkulasjonen jordas varmemotor (National Aeronautics and Space Administration [NASA], u.å.).
 
 I tropene er det et energioverskudd: mer sollys blir absorbert enn varme som stråles ut. I polområdene er det et energiunderskudd: mer varme stråles ut enn sollys som blir absorbert. På midlere breddegrader er det om lag balanse (NASA, u.å.). Uten transport ville tropene blitt for varme og polene for kalde. Når selve balansen endres, for eksempel fordi det blir mer CO₂ i lufta, kalles endringen et strålingspådriv (Store norske leksikon, u.å.-i). Hva det betyr for klimaet, tar vi i [klimakapitlet](/tema/klima).
 
-Jordaksen heller om lag 23,4 grader. Derfor er ikke ubalansen lik hele året, og vi får årstider (NASA, u.å.). Snø og is kaster mye av lyset tilbake. Det kalles høy albedo, og det forsterker underskuddet mot polene.
+Jordaksen heller om lag 23,4 grader. Derfor er ikke ubalansen lik hele året, og vi får årstider (NASA, u.å.). Snø og is kaster mye av lyset tilbake. Det kalles høy albedo, det vil si at overflaten kaster mye sollys tilbake, og det forsterker underskuddet mot polene.
 
 Hvordan havet bærer sin del av varmen, tar vi i kapitlet om [havstrømmer](/tema/havstrommer).
 
@@ -40,11 +40,11 @@ Figuren viser hvorfor samme solstråle varmer mer ved ekvator enn mot polene: st
 
 ## Fra én celle til tre
 
-I 1735 foreslo George Hadley én sirkulasjon på hver halvkule: lufta stiger ved ekvator, går mot polen i høyden, synker, og vender tilbake langs bakken (NOAA, u.å.-a).
+I 1735 foreslo George Hadley én sirkulasjon på hver halvkule: lufta stiger ved ekvator, går mot polen i høyden, synker, og vender tilbake langs bakken (National Oceanic and Atmospheric Administration [NOAA], u.å.-a).
 
 Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i høyden, beholder farten mot øst og blir vestavind i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-c). Hvorfor den dreier, står i kapitlet om [corioliseffekten](/tema/coriolis).
 
-Én sløyfe til polen går ikke. Vi får tre celler på hver halvkule (NOAA, u.å.-a):
+Én sløyfe til polen går ikke. Vi skiller mellom tre celler på hver halvkule: Hadley-cellen, Ferrel-cellen og polarcellen (NOAA, u.å.-a):
 
 | | Hadley-cellen | Ferrel-cellen | Polarcellen |
 |---|---|---|---|
@@ -81,7 +81,7 @@ Den sterkeste motoren sitter i tropene. Der møtes passatene i den intertropiske
 
 Navnet sier hva som skjer. Intertropisk betyr i det varme beltet rundt ekvator. Konvergens betyr at nordøstpassaten og sørøstpassaten strømmer sammen. Sone betyr et belte, ikke en strek. Beltet vises som et bånd av skyer, byger og av og til torden rundt jorda (NOAA, u.å.-b; Store norske leksikon, u.å.-b).
 
-Når de to passatene møtes, har lufta én vei: opp. Er lufta fuktig, kondenserer vanndampen, og det dannes skyer (Store norske leksikon, u.å.-b). Kondensasjonen frigjør latent varme, så lufta i skyen holder seg lettere enn lufta rundt. Ved havflaten blir vinden svak og skiftende, fordi lufta stiger i stedet for å strømme sidelengs. Dette stillebeltet i Hadley-cellen har vært vanskelig for seilskutene (Store norske leksikon, u.å.-a).
+Når de to passatene møtes, har lufta én vei: opp. Er lufta fuktig, kondenserer vanndampen, og det dannes skyer (Store norske leksikon, u.å.-b). Kondensasjonen frigjør latent varme, energien som frigjøres når vanndamp kondenserer, så lufta i skyen holder seg lettere enn lufta rundt. Ved havflaten blir vinden svak og skiftende, fordi lufta stiger i stedet for å strømme sidelengs. Dette stillebeltet i Hadley-cellen har vært vanskelig for seilskutene (Store norske leksikon, u.å.-a).
 
 ```widget
 HadleyCloseupDiagram
@@ -171,7 +171,7 @@ Norge ligger i vestavindsbeltet. Lavtrykk som dannes over Atlanteren, følger de
 
 Nedbøren følger vinden og terrenget. Innenfor vestkysten forsterkes bygene når lufta heves mot fjellene. Der er det soner med over 2000 mm i året, stedvis over 3000 mm. I regnskyggen øst for Breheimen faller det til dels under 300 mm (Store norske leksikon, u.å.-e). I Ottadalen faller det under 300 mm i året, mens det på Jostedalsbreen, få mil unna, faller omkring 3000 mm (Store norske leksikon, u.å.-e; u.å.-f).
 
-Orografisk nedbør er nedbør som løses ut fordi terrenget tvinger fuktig luft til å stige. Lufta avkjøles. Når den blir mettet, kondenserer vanndampen, og det kan falle nedbør på luvsiden. På lesiden synker lufta, varmes opp og er tørrere, fordi mye av vannet er lagt igjen i fjellet. Skyene løses opp (Store norske leksikon, u.å.-g). Regningen for hvor mange grader lufta varmes eller avkjøles per 100 meter, står i kapitlene om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) og [lokale værsystemer](/tema/lokale-vaersystemer).
+Orografisk nedbør er nedbør som løses ut fordi terrenget tvinger fuktig luft til å stige. Lufta avkjøles. Når den blir mettet, kondenserer vanndampen, og det kan falle nedbør på luvsiden (siden vinden treffer). På lesiden (siden i le) synker lufta, varmes opp og er tørrere, fordi mye av vannet er lagt igjen i fjellet. Skyene løses opp (Store norske leksikon, u.å.-g). Regningen for hvor mange grader lufta varmes eller avkjøles per 100 meter, står i kapitlene om [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk) og [lokale værsystemer](/tema/lokale-vaersystemer).
 
 ```widget
 PolarFrontNorwayDiagram
