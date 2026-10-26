@@ -3029,6 +3029,12 @@ export const KILDER = {
       href: "https://nsidc.org/data/seaice_index",
     },
     {
+      prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.-d). ",
+      italic: "Does sea ice melt raise sea level?",
+      suffix: ".",
+      href: "https://nsidc.org/learn/ask-scientist/does-sea-ice-melt-raise-sea-level",
+    },
+    {
       prefix: "National Aeronautics and Space Administration [NASA]. (u.å.). ",
       italic: "Milankovitch (orbital) cycles and their role in Earth’s climate",
       suffix: ".",

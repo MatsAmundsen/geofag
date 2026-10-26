@@ -62,7 +62,7 @@ GlacierMassBalanceModel
 
 Den siste kartleggingen fra satellitt, med bilder fra 2018 og 2019, viser at breene i Norge dekker om lag 2328 kvadratkilometer. Det er 14 prosent mindre enn ved forrige kartlegging i 1999–2006 (NVE, 2022). Siden starten av 2000-tallet har de fleste breene i Norge smeltet mye tilbake, hovedsakelig på grunn av varme somre (Store norske leksikon, u.å.-a). Kjeden er slik: Varmere somre gir mer smelting. Da blir ablasjonen større enn akkumulasjonen, og massebalansen blir negativ. Breen mister masse år etter år, og den blir tynnere og kortere. Systematiske målinger av massebalansen på Storbrean i Jotunheimen startet i 1949. Fra begynnelsen av 1960-tallet er massebalansen målt år for år på enkelte utvalgte breer (Store norske leksikon, u.å.-a).
 
-De fleste breene på jorda minker i utbredelse og volum. Det globale havnivået stiger for tiden med vel 4 millimeter i året i gjennomsnitt (Store norske leksikon, u.å.-a). Smeltende breer er ett av bidragene. Smelting av innlandsisene, det vil si de store isdekkene på Grønland og i Antarktis, bidrar også. I tillegg utvider havvannet seg når det blir varmere (Store norske leksikon, u.å.-g).
+De fleste breene på jorda minker i utbredelse og volum. Det globale havnivået stiger for tiden med vel 4 millimeter i året i gjennomsnitt (Store norske leksikon, u.å.-a). Smeltende breer er ett av bidragene. Smelting av innlandsisene, det vil si de store isdekkene på Grønland og i Antarktis, bidrar også. Flytende havis gir derimot nesten ikke bidrag til havnivået. Det kommer vi tilbake til under havis. I tillegg utvider havvannet seg når det blir varmere (Store norske leksikon, u.å.-g).
 
 ```widget
 SjekkKryo1
@@ -89,21 +89,23 @@ Permafrosten virker som et «lim» som holder bakken sammen, både i berggrunnen
 
 I Alpene har forskerne observert flere fjellskred i ekstra varme somre, når det aktive laget blir dypere enn normalt (Store norske leksikon, u.å.-b). Tining kan også gi utglidninger av det aktive laget. Den kan også gi setninger, det vil si at bakken synker ujevnt sammen.
 
-Tiningen påvirker også klimaet. Mye av permafrosten i Sibir, Canada og Alaska ligger i bakke med mye organisk materiale, det vil si rester av planter og dyr. Der er det også mye karbondioksid og metan i bakken. Dette er en positiv tilbakekobling:
+Tiningen påvirker også klimaet. Mye av permafrosten i Sibir, Canada og Alaska ligger i bakke med mye organisk materiale, det vil si rester av planter og dyr. Der er det også mye karbondioksid og metan i bakken. Forskerne mener at dette er en positiv tilbakekobling:
 
 1. Permafrosten tiner.
 2. Karbondioksid og metan slippes ut i lufta.
 3. Drivhuseffekten blir sterkere, og lufta blir varmere.
-4. Enda mer permafrost tiner (Store norske leksikon, u.å.-b).
+4. Enda mer permafrost tiner, og kjeden starter på nytt (Store norske leksikon, u.å.-b).
 
 ## Havis og snø
 
-Havis er frossent havvann som flyter på overflaten. Utbredelsen vokser og minker med årstidene. Sent på vinteren dekker arktisk havis i gjennomsnitt 15,5 millioner kvadratkilometer, og antarktisk havis om lag 18,5 millioner. Siden 2007 har septemberminimum i Arktis ligget på ca. 3,4 til 5 millioner kvadratkilometer. Satellittserien går tilbake til 1979. Fra 1979 til 2025 har septemberminimum krympet med ca. 12 prosent per tiår, sammenlignet med gjennomsnittet for 1981–2010 (National Snow and Ice Data Center, 2025; u.å.-a; u.å.-c). Når isen forsvinner, blir det mer mørkt hav som tar opp solvarme. Som nevnt kaller vi en endring som forsterker seg selv, en positiv tilbakekobling. Her går kjeden rundt slik:
+Havis er frossent havvann som flyter på overflaten. Utbredelsen vokser og minker med årstidene. Sent på vinteren dekker arktisk havis i gjennomsnitt 15,5 millioner kvadratkilometer, og antarktisk havis om lag 18,5 millioner. Siden 2007 har septemberminimum i Arktis ligget på ca. 3,4 til 5 millioner kvadratkilometer. Satellittserien går tilbake til 1979. Fra 1979 til 2025 har septemberminimum krympet med ca. 12 prosent per tiår, sammenlignet med gjennomsnittet for 1981–2010 (National Snow and Ice Data Center, 2025; u.å.-a; u.å.-c).
+
+Når isen forsvinner, blir det mer mørkt hav som tar opp solvarme. Denne lukkede kjeden kaller vi *is–albedo-tilbakekoblingen*. Den er en positiv tilbakekobling, altså en endring som forsterker seg selv. NSIDC har dokumentert tilbakegangen i arktisk septemberminimum. Store norske leksikon beskriver mekanismen slik:
 
 1. Havisen smelter, og mer åpent hav kommer fram.
 2. Det mørke havet har lav albedo og tar opp mer solvarme enn isen gjorde.
 3. Havet blir varmere.
-4. Det varmere havet smelter enda mer is, og kjeden begynner på nytt (Store norske leksikon, u.å.-d).
+4. Det varmere havet smelter enda mer is, og trinn 1 starter på nytt (Store norske leksikon, u.å.-d).
 
 Svaret på «Hva tror du?» er altså raskere.
 
@@ -111,7 +113,11 @@ Svaret på «Hva tror du?» er altså raskere.
 SeaIceAlbedoFeedback
 ```
 
-Arktis er et hav nesten omsluttet av land, så mye av isen blir liggende gjennom sommeren og kan vokse videre neste høst. Antarktis er et kontinent omsluttet av hav, og isen driver friere og blir sjeldnere like tykk. Antarktisk havis er typisk 1 til 2 meter tykk (National Snow and Ice Data Center, u.å.-a).
+Arktis er et hav nesten omsluttet av land. Mye av isen der er *sesonghavis*, altså is som vokser om vinteren og smelter delvis om sommeren. Antarktis er et kontinent omsluttet av hav. Der ligger den store *innlandsisen*, et tykt isdekke på land, i tillegg til sesonghavis rundt kysten. Antarktisk havis er typisk 1 til 2 meter tykk (National Snow and Ice Data Center, u.å.-a).
+
+For havnivået er forskjellen stor. Smelting av havis er ikke det samme som smelting av innlandsis. Flytende havis har allerede fortrengt nesten sin egen vekt i havet. Når den smelter, stiger derfor ikke det globale havnivået nevneverdig (National Snow and Ice Data Center, u.å.-d). Innlandsisen på Grønland og i Antarktis ligger på land. Når den smelter eller kalver ut i havet, tilføres nytt vann, og havnivået stiger (Store norske leksikon, u.å.-g).
+
+Begge polarområdene mister ismasse når klimaet varmes. Likheten er at albedoen faller der isen forsvinner. Forskjellen for havnivået er at det er innlandsisen, ikke sesonghavisen, som gir det store bidraget. Lange arkiv fra isen og koblingen til AMOC står i [paleoklima](/tema/paleoklima) og [AMOC](/tema/klima/amoc).
 
 Snø kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer, særlig over Nord-Amerika, Grønland, Europa og Russland (National Snow and Ice Data Center, u.å.-b).
 
@@ -176,6 +182,8 @@ SjekkKryo3
 >
 > Havis er frossent havvann som flyter. En bre er snø og is på land som siger (National Snow and Ice Data Center, u.å.-a; Store norske leksikon, u.å.-a).
 >
+> Smelting av havis er ikke det samme som smelting av innlandsis for havnivået. Flytende is hever nesten ikke havet. Is på land gjør det (National Snow and Ice Data Center, u.å.-d; Store norske leksikon, u.å.-g).
+>
 > En regional faregrad er ikke en karakter for ett heng. Varselet gjelder minst 100 kvadratkilometer (Varsom, u.å.-a).
 
 ## Viktige begreper
@@ -194,11 +202,17 @@ SjekkKryo3
 
 **Positiv tilbakekobling:** En endring som setter i gang noe som forsterker den samme endringen, for eksempel at mindre havis gir mer oppvarming og enda mindre is.
 
+**Is–albedo-tilbakekobling:** Lukket positiv tilbakekobling der mindre is gir lavere albedo, mer oppvarming og enda mindre is.
+
+**Innlandsis:** Tykt isdekke på land, som på Grønland og i Antarktis. Smelting hever havnivået, i motsetning til flytende havis.
+
 **Permafrost:** Bakke der temperaturen i to sammenhengende år ikke overstiger 0 °C.
 
 **Aktivt lag:** Det øverste laget over permafrost. Det tiner hver sommer.
 
 **Havis:** Frossent havvann som flyter. Utbredelsen følges med satellitt siden 1979.
+
+**Sesonghavis:** Havis som vokser om vinteren og smelter delvis om sommeren, særlig i Arktis.
 
 **Flakskred:** Snøskred der et fast, sammenhengende snøflak glir ut på et svakt lag.
 
