@@ -101,6 +101,7 @@ function PostsIndex() {
               <Link
                 to="/poster/$slug/rediger"
                 params={{ slug: "platetektonikk" }}
+                rel="nofollow"
                 className="text-primary underline-offset-4 hover:underline"
               >
                 redigeringssiden

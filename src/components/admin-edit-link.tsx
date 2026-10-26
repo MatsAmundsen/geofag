@@ -20,6 +20,7 @@ export function AdminEditLink({ slug }: { slug: string }) {
       <Link
         to="/poster/$slug/rediger"
         params={{ slug }}
+        rel="nofollow"
         className="inline-flex items-center gap-1.5 whitespace-nowrap font-medium text-primary underline-offset-4 hover:underline"
       >
         <Pencil className="size-4" />
