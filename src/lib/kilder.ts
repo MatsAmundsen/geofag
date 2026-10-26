@@ -3305,11 +3305,30 @@ export const KILDER = {
       href: "https://www.bom.gov.au/resources/learn-and-explore/climate-knowledge-centre/climate-factors/indian-ocean-dipole",
     },
     {
+      prefix: "Australian Bureau of Meteorology [BOM]. (2019, 17. september). ",
+      italic: "Climate Driver Update",
+      suffix: ". Lest 26. oktober 2026.",
+      href: "https://www.bom.gov.au/climate/enso/wrap-up/archive/20190917.archive.shtml",
+    },
+    {
+      prefix: "Australian Bureau of Meteorology [BOM]. (2020, 9. januar). ",
+      italic: "Annual climate statement 2019",
+      suffix: ". Lest 26. oktober 2026.",
+      href: "https://www.bom.gov.au/climate/current/annual/aus/2019/",
+    },
+    {
       prefix:
         "Cai, W., van Rensch, P., Cowan, T., & Hendon, H. H. (2011). Teleconnection pathways of ENSO and the IOD and the mechanisms for impacts on Australian rainfall. ",
       italic: "Journal of Climate, 24",
       suffix: "(15), 3910–3923.",
       href: "https://doi.org/10.1175/2011JCLI4129.1",
+    },
+    {
+      prefix:
+        "Nakamura, H., Sampe, T., Tanimoto, Y., & Shimpo, A. (2004). Observed associations among storm tracks, jet streams and midlatitude oceanic fronts. I C. Wang, S.-P. Xie & J. A. Carton (Red.), ",
+      italic: "Earth's climate: The ocean–atmosphere interaction",
+      suffix: " (Geophysical Monograph 147, s. 329–345). American Geophysical Union.",
+      href: "https://doi.org/10.1029/147GM18",
     },
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.). ",
@@ -3341,6 +3360,12 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 2 (GFG01-03)",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
+    },
+    {
+      prefix: "World Meteorological Organization [WMO]. (2020). ",
+      italic: "WMO statement on the state of the global climate in 2019",
+      suffix: " (WMO-No. 1248).",
+      href: "https://wmo.int/resources/publication-series/state-of-global-climate/state-of-global-climate-2019",
     },
     {
       prefix: "World Meteorological Organization [WMO]. (2022). ",
