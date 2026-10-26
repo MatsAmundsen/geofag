@@ -1316,6 +1316,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Høytrykk og lavtrykk (G2): kvalitetsloft relativ L/H + trykk→vær-kjede.
+    flag: "g2-hoytrykk-kvalitetsloft-2026-10-26",
+    slug: "hoytrykk-lavtrykk",
+    stale: [
+      "Tenk deg et område der trykket i sentrum er 1015 hPa. Er det omgitt av høytrykk på 1025 hPa",
+      "> **To vanlige misforståelser**",
+      "Ligger det samme området mellom lavtrykk på 995 hPa, er det et høytrykk.",
+    ],
+  },
+  {
     // Lokale værsystemer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
     flag: "g2-lokale-vaersystemer-terra-mater-2026-10-26",
     slug: "lokale-vaersystemer",
