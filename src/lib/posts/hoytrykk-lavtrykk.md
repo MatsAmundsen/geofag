@@ -5,7 +5,7 @@
 > - gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren
 > - gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -15,7 +15,7 @@
 
 ## Hva er lufttrykk?
 
-Vi lever på bunnen av et hav av luft. Lufta består mest av nitrogen (78 %) og oksygen (21 %). Den føles vektløs, men alle gassmolekylene har masse, og tyngdekraften trekker dem mot bakken. Lufta over oss presser derfor ned på alt den hviler på. Dette trykket kaller vi lufttrykk. Det er vekten av hele luftsøylen over et sted, helt opp til verdensrommet, fordelt på arealet den hviler på (NOAA, u.å.-a).
+Vi lever på bunnen av et hav av luft. Lufta består mest av nitrogen (78 prosent) og oksygen (21 prosent). Den føles vektløs, men alle gassmolekylene har masse, og tyngdekraften trekker dem mot bakken. Lufta over oss presser derfor ned på alt den hviler på. Dette trykket kaller vi lufttrykk. Det er vekten av hele luftsøylen over et sted, helt opp til verdensrommet, fordelt på arealet den hviler på (National Oceanic and Atmospheric Administration [NOAA], u.å.-a).
 
 Lufttrykk måles i hektopascal (hPa). Ved havnivå er gjennomsnittet om lag 1013 hPa (NOAA, u.å.-a). Tallet alene sier likevel lite om været. Om et område har høytrykk eller lavtrykk, avgjøres alltid ved å sammenligne med områdene rundt.
 
@@ -98,15 +98,15 @@ Trykket rundt avtar med høyden, så en luftpakke som stiger, utvider seg. Da m�
 
 #### 2. Løftingskondensasjonsnivået
 
-Ved lavere temperatur skal det mindre vanndamp til før lufta blir mettet. Når luftpakken er avkjølt til duggpunktet, er den mettet (100 % relativ fuktighet). Høyden der dette skjer, kalles løftingskondensasjonsnivået (lifting condensation level, LCL). Her kondenserer vanndampen til synlige skydråper, og skybasen dannes.
+Ved lavere temperatur skal det mindre vanndamp til før lufta blir mettet. Når luftpakken er avkjølt til duggpunktet, er den mettet (100 prosent relativ fuktighet). Høyden der dette skjer, kalles løftingskondensasjonsnivået (lifting condensation level, LCL). Her kondenserer vanndampen til synlige skydråper, og skybasen dannes.
 
 #### 3. Latent varme frigjøres
 
-Når vanndamp kondenserer til dråper, frigjøres energien som ble brukt da vannet fordampet. Den kalles latent varme, og den varmer lufta i skyen. Mettet luft avkjøles derfor langsommere enn tørr luft når den stiger, typisk ca. 0,5 °C per 100 meter. Dette kalles den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR) (Store norske leksikon, u.å.-c). Så lenge lufta i skyen er varmere og lettere enn lufta rundt, fortsetter den å stige. Slik kan det bygge seg opp høye bygeskyer (cumulonimbus).
+Når vanndamp kondenserer til dråper, frigjøres energien som ble brukt da vannet fordampet. Den kalles latent varme, og den varmer lufta i skyen. Mettet luft avkjøles derfor langsommere enn tørr luft når den stiger, typisk ca. 0,5 °C per 100 meter. Dette kalles den våtadiabatiske temperaturgradienten (saturated adiabatic lapse rate, SALR) (Store norske leksikon, u.å.-c). Så lenge lufta i skyen er varmere og lettere enn lufta rundt, fortsetter den å stige. Slik kan det bygge seg opp høye bygeskyer, såkalte cumulonimbus.
 
 ### Hvor stopper stigningen?
 
-Nesten alt vær skjer i troposfæren, det nederste laget i atmosfæren. Over den ligger stratosfæren. Grensen mellom dem heter tropopausen og ligger ca. 8–11 km over Norge (NOAA, u.å.-b). I stratosfæren øker temperaturen med høyden fordi ozonlaget tar opp ultrafiolett stråling fra sola. Det kalles en temperaturinversjon, og den gjør lagene stabile. Når den stigende lufta når tropopausen, er den kaldere og tyngre enn lufta over. Den slutter å stige og sprer seg ut til sidene. Det kalles divergens i høyden, og det gir toppen av bygeskyen en flat amboltform.
+Nesten alt vær skjer i troposfæren, det nederste laget i atmosfæren. Over den ligger stratosfæren. Grensen mellom dem heter tropopausen og ligger ca. 8–11 km over Norge (NOAA, u.å.-b). I stratosfæren øker temperaturen med høyden fordi ozonlaget (et lag med ozongass i stratosfæren) tar opp ultrafiolett stråling fra sola. Det kalles en temperaturinversjon, og den gjør lagene stabile. Når den stigende lufta når tropopausen, er den kaldere og tyngre enn lufta over. Den slutter å stige og sprer seg ut til sidene. Det kalles divergens i høyden, og det gir toppen av bygeskyen en flat amboltform.
 
 ```widget
 LowPressureCrossSection
@@ -161,7 +161,7 @@ SjekkHoytrykk3
 
 **Lufttrykk:** Vekten av luftsøylen over et sted, per arealenhet. Måles i hektopascal (hPa) eller millibar (mbar). Gjennomsnittet ved havnivå er om lag 1013 hPa.
 
-**Mettet luft:** Luft der det er så mye vanndamp som det kan være ved den temperaturen. Den relative fuktigheten er 100 %.
+**Mettet luft:** Luft der det er så mye vanndamp som det kan være ved den temperaturen. Den relative fuktigheten er 100 prosent.
 
 **Duggpunkt:** Temperaturen lufta må avkjøles til for å bli mettet.
 
