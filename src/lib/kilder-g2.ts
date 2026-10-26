@@ -497,5 +497,23 @@ export const KILDER_G2 = {
       suffix: ".",
       href: "https://www.oslo.kommune.no/get-file/1130908/ba929d161f145d097ddd30050c79a4b0977ecd3815ee909bfa7ec013004b21b1",
     },
+    {
+      prefix: "European Commission. (2024, 3. april). ",
+      italic: "Record reduction of 2023 ETS emissions due largely to boost in renewable energy",
+      suffix: ".",
+      href: "https://climate.ec.europa.eu/news-other-reads/news/record-reduction-2023-ets-emissions-due-largely-boost-renewable-energy-2024-04-03_en",
+    },
+    {
+      prefix: "Havforskningsinstituttet. (2023, 11. januar). ",
+      italic: "Klimaendringer forandrer økosystemet i Barentshavet. Vi studerer hvordan",
+      suffix: ".",
+      href: "https://www.hi.no/hi/nyheter/2023/januar/klimaendringer-forandrer-okosystemet-i-barentshavet.-vi-studerer-hvordan",
+    },
+    {
+      prefix: "Statens vegvesen. (2025). ",
+      italic: "Klimagassutslipp fra transport",
+      suffix: ".",
+      href: "https://www.vegvesen.no/fag/fokusomrader/klima-miljo-og-omgivelser/utslipp-av-klimagasser/klimagassutslipp-fra-transport/",
+    },
   ],
 } as const satisfies Record<string, readonly Kilde[]>;

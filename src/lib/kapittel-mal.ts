@@ -471,10 +471,10 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
   Tilpasning: [
     "Å redusere klimaendringene og å tilpasse seg dem er to ulike svar, og begge trengs.",
     "Klimarisiko oppstår i samspillet mellom fare, eksponering og sårbarhet. Mangler én av dem, blir risikoen liten.",
-    "Klimaendringene rammer enkeltmennesker, samfunn og økosystem. Maltilpasning kan gjøre risikoen større.",
-    "Byer håndterer overvann med treleddsstrategien, og Norsk klimaservicesenter anbefaler minst 40 % klimapåslag for korte, kraftige regnskyll.",
-    "Flomvern kombinerer grå og blågrønne løsninger. Havet ventes å stige 0,28–1,01 m fram til 2100.",
-    "Plan- og bygningsloven og TEK17 styrer hvor og hvordan vi bygger, slik at risikoen blir mindre.",
+    "Klimaendringene rammer enkeltmennesker, samfunn og økosystem. I Barentshavet endres næringskjeder når isen minker og arter flytter seg.",
+    "Maltilpasning kan gjøre risikoen større. Hard og soft tilpasning fordeler nytte og kostnad ulikt.",
+    "Byer håndterer overvann med treleddsstrategien, og Norsk klimaservicesenter anbefaler minst 40 prosent klimapåslag for korte, kraftige regnskyll.",
+    "Flomvern kombinerer grå og blågrønne løsninger. Havet ventes å stige 0,28–1,01 m fram til 2100. Plan- og bygningsloven og TEK17 styrer hvor vi bygger.",
   ],
   Oversikt: [
     "Vær er tilstanden nå og de nærmeste dagene. Klima er mønsteret i været over minst 30 år. Én kald vinter eller én varm uke sier lite om klimaet.",
