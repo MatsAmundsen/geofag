@@ -158,7 +158,7 @@ Oppvelling er at vann løftes fra dypere nivåer til overflatelaget. Overflatela
 
 En nordavind langs en vestkyst på den nordlige halvkule skyver overflatelaget utover, fordi ekmantransporten går til høyre. Da får vann fra dypere nivåer plass. Det skjer særlig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. Ved Somalia, Oman og Vietnam skjer det i monsuntiden. Monsun er vind som skifter retning med årstidene.
 
-På norskekysten er oppvelling episodisk, ikke en stadig kyststrøm. Kjeden fra vind til fjord går i fire ledd:
+På norskekysten er oppvelling episodisk, ikke en stadig kyststrøm (Store norske leksikon, u.å.-e). Kjeden fra vind til fjord går i fire ledd:
 
 1. Langvarig og sterk nordavind blåser langs kysten.
 2. Ekmantransporten går til høyre, ut fra land.
