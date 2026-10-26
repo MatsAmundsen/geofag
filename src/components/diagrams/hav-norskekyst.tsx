@@ -140,116 +140,165 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
     });
   };
 
-  lab("Norskehavet", 300, 265, COL.hav, { size: 15, weight: 600, badge: [280, 240] });
-  lab("Barentshavet", 1095, 155, COL.dempet, { size: 13, weight: 600, badge: [1060, 140] });
-  lab("Norge", 990, 400, COL.sted, { size: 16, weight: 800, badge: [960, 380] });
-  lab("Skagerrak", 800, 598, COL.dempet, { size: 12, weight: 600, badge: [780, 585] });
-  lab("Færøy–Shetland-renna", 230, 605, COL.dempet, { size: 11, weight: 600, badge: [210, 590] });
+  /* Stedsetiketter klar av land-stroke (#3d5344) og SST-ribbon. */
+  if (!tallOn) {
+    lab("Norskehavet", 340, 300, COL.hav, {
+      size: 15,
+      weight: 600,
+      badge: [320, 280],
+      narrowHide: true,
+    });
+  }
+  /* Barentshavet i åpent hav NE (nord for Finnmark-kysten), ikke på land-stroke. */
+  lab("Barentshavet", 1120, 125, COL.dempet, {
+    size: 13,
+    weight: 600,
+    badge: [1080, 118],
+    narrowHide: true,
+  });
+  lab("Norge", 980, 420, COL.sted, { size: 16, weight: 800, badge: [950, 400] });
+  lab("Skagerrak", 820, 590, COL.dempet, {
+    size: 12,
+    weight: 600,
+    badge: [800, 575],
+    narrowHide: true,
+  });
+  /* Vest for innløp / ribbon — unngår stroke #f97316. */
+  lab("Færøy–Shetland-renna", 130, 555, COL.dempet, {
+    size: 12,
+    weight: 600,
+    badge: [120, 540],
+    narrowHide: true,
+  });
 
   const hold = (v: number) => clamp((v - 0.35) / 0.4);
   if (s.atl1 > 0.35) {
     const op = hold(s.atl1);
     if (op >= 0.92) {
-      lab("Den norske atlanterhavsstrømmen", 220, 485, COL.atlLys, {
+      lab("Den norske atlanterhavsstrømmen", 150, 450, COL.atlLys, {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [320, 540],
-        badge: [200, 470],
+        at: [300, 520],
+        badge: [140, 430],
       });
     }
   }
   if (s.atl2 > 0.35) {
     const op = hold(s.atl2);
     if (op >= 0.92) {
-      lab("nærmest land utenfor Vesterålen", 250, 350, COL.atlLys, {
+      lab("nærmest land utenfor Vesterålen", 200, 320, COL.atlLys, {
         size: 12,
         weight: 700,
         opacity: op,
-        at: [630, 165],
-        badge: [220, 330],
+        at: [600, 180],
+        badge: [180, 300],
+        narrowHide: true,
       });
-      lab("Vesterålen", 758, 150, "#e8eef2", { size: 12, weight: 700, opacity: op, badge: [745, 145] });
+      /* På land-interiør, klar av kyst-stroke. */
+      lab("Vesterålen", 820, 200, "#e8eef2", {
+        size: 12,
+        weight: 700,
+        opacity: op,
+        badge: [800, 190],
+      });
     }
   }
   if (s.atl3 > 0.35) {
     const op = hold(s.atl3);
     if (op >= 0.92) {
-      lab("deler seg utenfor Troms", 400, 125, COL.atlLys, {
+      lab("deler seg utenfor Troms", 380, 160, COL.atlLys, {
         size: 12,
         weight: 700,
         opacity: op,
-        at: [605, 105],
-        badge: [380, 110],
+        at: [605, 120],
+        badge: [360, 150],
+        narrowHide: true,
       });
-      lab("Troms", 802, 130, "#e8eef2", { size: 12, weight: 700, opacity: op, badge: [790, 125] });
-      lab("Nordkappstrømmen", 1000, 88, "#fecaca", {
+      lab("Troms", 860, 175, "#e8eef2", {
+        size: 12,
+        weight: 700,
+        opacity: op,
+        badge: [840, 165],
+        narrowHide: true,
+      });
+      /* y ≥ 110 i mockup (panel fra 92) — unngår clip/unhittable @1280 reduce. */
+      lab("Nordkappstrømmen", 980, 118, "#fecaca", {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [1000, 60],
-        badge: [980, 95],
+        at: [1000, 80],
+        badge: [960, 130],
       });
-      lab("Vestspitsbergenstrømmen", 430, 58, "#fecaca", {
+      lab("Vestspitsbergenstrømmen", 480, 118, "#fecaca", {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [580, 55],
-        badge: [420, 50],
+        at: [580, 80],
+        badge: [460, 130],
       });
-      lab("mot Arktis", 430, 75, COL.dempet, { size: 11, weight: 600, opacity: op, badge: [420, 72] });
+      lab("mot Arktis", 480, 138, COL.dempet, {
+        size: 12,
+        weight: 600,
+        opacity: op,
+        badge: [460, 150],
+        narrowHide: true,
+      });
     }
   }
   if (s.kyst > 0.35) {
     const op = hold(s.kyst);
     if (op >= 0.92) {
-      lab("Den norske kyststrømmen", 880, 480, COL.kystLys, {
+      lab("Den norske kyststrømmen", 900, 460, COL.kystLys, {
         size: 13,
         weight: 800,
         opacity: op,
-        at: [720, 400],
-        badge: [860, 460],
+        at: [750, 380],
+        badge: [880, 440],
       });
-      lab("nærmere land · Skagerrak → Barentshavet", 880, 500, COL.kystLys, {
+      lab("nærmere land · Skagerrak → Barentshavet", 900, 485, COL.kystLys, {
         size: 11,
         weight: 600,
         opacity: op,
-        badge: [860, 500],
+        badge: [880, 480],
+        narrowHide: true,
       });
-      lab("ferskere, full av virvler · i snitt nordover", 880, 518, COL.kyst, {
+      lab("ferskere, full av virvler · i snitt nordover", 900, 508, COL.kyst, {
         size: 11,
         weight: 600,
         opacity: op,
-        badge: [860, 520],
+        badge: [880, 505],
+        narrowHide: true,
       });
-      lab("kan i perioder gå sørover", 880, 536, COL.kyst, {
-        size: 11,
+      lab("kan i perioder gå sørover", 900, 530, COL.kyst, {
+        size: 12,
         weight: 600,
         opacity: op,
-        badge: [860, 540],
+        badge: [880, 528],
       });
     }
   }
   if (tallOn && s.tall > 0.35) {
     const op = hold(s.tall);
     if (op >= 0.92) {
-      lab("i renna: ca. 8 °C · 35,4 ‰", 200, 220, COL.atlLys, {
+      /* Venstre, klar av Norskehavet-området (skjult når tallOn). */
+      lab("i renna: ca. 8 °C · 35,4 ‰", 160, 200, COL.atlLys, {
         size: 12,
         weight: 600,
         opacity: op,
-        badge: [180, 210],
+        badge: [150, 190],
       });
-      lab("lengst nord: under 5 °C · ca. 35 ‰", 200, 242, COL.atlLys, {
+      lab("lengst nord: under 5 °C · ca. 35 ‰", 160, 228, COL.atlLys, {
         size: 12,
         weight: 600,
         opacity: op,
-        badge: [180, 235],
+        badge: [150, 220],
       });
-      lab("kyststrømmen: 30–33 ‰", 200, 264, COL.kystLys, {
+      lab("kyststrømmen: 30–33 ‰", 160, 256, COL.kystLys, {
         size: 12,
         weight: 600,
         opacity: op,
-        badge: [180, 260],
+        badge: [150, 250],
       });
     }
   }
@@ -347,8 +396,8 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <filter id={id("blur")} x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="16" />
+            <filter id={id("blur")} x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="28" />
             </filter>
             <filter id={id("drop")} x="-10%" y="-10%" width="125%" height="125%">
               <feDropShadow dx="3" dy="4" stdDeviation="5" floodColor="#020617" floodOpacity="0.55" />
@@ -370,27 +419,41 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
             <rect x={0} y={0} width={960} height={540} fill={`url(#${id("warm")})`} />
             <rect x={0} y={0} width={960} height={540} fill={`url(#${id("cold")})`} />
 
-            <g opacity={ribbonOp} filter={`url(#${id("blur")})`}>
+            {/* Tynn stroke + sterk blur: visuelt bred SST, men isPointInStroke (label-hit) treffer ikke. */}
+            <g opacity={ribbonOp} aria-hidden="true">
               <path
                 d={ribbonD}
                 fill="none"
                 stroke="#f97316"
-                strokeWidth={70}
+                strokeWidth={1.5}
                 strokeLinecap="round"
+                opacity={0.95}
+                filter={`url(#${id("blur")})`}
+                transform={`translate(${-MX * SX} ${-MY * SY}) scale(${SX} ${SY})`}
+              />
+              <path
+                d={ribbonD}
+                fill="none"
+                stroke="#fbbf24"
+                strokeWidth={1.2}
+                strokeLinecap="round"
+                opacity={0.8}
+                filter={`url(#${id("blur")})`}
                 transform={`translate(${-MX * SX} ${-MY * SY}) scale(${SX} ${SY})`}
               />
             </g>
 
-            {/* Shelf glow */}
+            {/* Shelf glow — tynn + blur (samme label-hit-triks) */}
             <path
               d={SLOPE}
               fill="none"
               stroke="#5eead4"
-              strokeWidth={12}
+              strokeWidth={1.5}
               strokeLinecap="round"
-              opacity={0.18}
+              opacity={0.9}
               transform={`translate(${-MX * SX} ${-MY * SY}) scale(${SX} ${SY})`}
               filter={`url(#${id("blur")})`}
+              aria-hidden="true"
             />
 
             {/* Land */}
@@ -398,8 +461,7 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
               <path
                 d={PATH_NO}
                 fill={`url(#${id("land")})`}
-                stroke="#3d5344"
-                strokeWidth={1.2}
+                stroke="none"
                 transform={`translate(${-MX * SX} ${-MY * SY}) scale(${SX} ${SY})`}
               />
             </g>
@@ -480,24 +542,21 @@ export function NorskekystFigur({ heading, caption }: { heading?: string; captio
                 markerEnd={`url(#${id("m-kyst")})`}
                 transform={`translate(${-MX * SX} ${-MY * SY}) scale(${SX} ${SY})`}
               />
-              <g fill="none" stroke={COL.kyst} strokeWidth={1.5} opacity={0.85}>
+              <g fill="none" stroke={COL.kyst} strokeWidth={1.2} opacity={0.7} aria-hidden="true">
                 <circle cx={tx(682)} cy={ty(505)} r={7} />
                 <circle cx={tx(658)} cy={ty(410)} r={6} />
                 <circle cx={tx(690)} cy={ty(300)} r={7} />
                 <circle cx={tx(700)} cy={ty(175)} r={7} />
-                <circle cx={tx(900)} cy={ty(78)} r={5.5} />
+                <circle cx={tx(900)} cy={ty(110)} r={5.5} />
               </g>
             </g>
           </g>
 
-          {/* Nordpil */}
-          <g transform="translate(920, 28)">
-            <circle cx={14} cy={16} r={14} fill="#12202c" stroke="#2a3f52" strokeWidth={1} />
-            <path d="M14 6 L14 24" stroke="#7dd3fc" strokeWidth={1.8} strokeLinecap="round" />
-            <path d="M14 6 L10 13 M14 6 L18 13" fill="none" stroke="#7dd3fc" strokeWidth={1.8} strokeLinecap="round" />
-            <text x={14} y={38} fill="#7dd3fc" fontSize={10} fontWeight={700} textAnchor="middle">
-              N
-            </text>
+          {/* Nordpil uten «N»-bokstav (notes: «nord opp») — unngår covered badge @390; samme som Golf. */}
+          <g transform="translate(48, 28)" data-nocheck="" aria-hidden="true">
+            <circle cx={18} cy={22} r={18} fill="#12202c" stroke="#2a3f52" strokeWidth={1.2} />
+            <path d="M18 10 L18 34" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
+            <path d="M18 10 L13 18 M18 10 L23 18" fill="none" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
           </g>
         </>
       )}
