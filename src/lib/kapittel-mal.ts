@@ -284,7 +284,7 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Solgangsvind er sjøbris inn fra havet om dagen og svakere landbris ut fra land om natten. Berg- og dalvind er det samme mønsteret i daler.",
     "Fuktig luft som tvinges over fjell, gir orografisk nedbør på luvsiden. På lesiden synker lufta, varmes opp og gir regnskygge og føn.",
     "Ved temperaturinversjon stiger temperaturen med høyden. Den varme lufta over virker som et lokk, og forurensning blir liggende.",
-    "Polarfrontsyklonene vandrer mot øst langs polarfronten og gir mye av nedbøren i Norge.",
+    "Polarfrontsyklonen følger trinnene bølge, varm- og kaldfront og okklusjon langs polarfronten, og gir mye av nedbøren i Norge.",
   ],
   Jet: [
     "En jetstrøm er et smalt belte med sterk vestavind høyt oppe, typisk rundt 9 km. Polarjeten ligger mellom 50° og 60°, og den subtropiske jetstrømmen ligger rundt 30°.",
