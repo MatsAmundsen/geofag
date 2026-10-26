@@ -1326,6 +1326,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Jetstrømmer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-jetstrommer-terra-mater-2026-10-26",
+    slug: "jetstrommer",
+    stale: [
+      "(NOAA, u.å.-a)",
+      "Tropopausen er grensen mellom troposfæren og stratosfæren. Den ligger på omtrent 17 kilometers høyde i tropene og rundt 8 kilometer i polare strøk, og den har et tydelig brudd",
+      "Mens farten endres, oppstår en vind på tvers av jetstrømmen som kalles ageostrofisk vind",
+    ],
+  },
+  {
     // Geologisk tid: Terra Mater fase 1–2 (må-punkter M1–M7: isotop, radioaktivitet og absolutt datering definert, gang/forkastning/blotning/skyvedekker/trilobitter/peneplan ved første bruk, årsakskjede for luminescensdatering (OSL), setning over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
     flag: "g1-geologisk-tid-terra-mater-2026-10-25",
     slug: "geologisk-tid",
