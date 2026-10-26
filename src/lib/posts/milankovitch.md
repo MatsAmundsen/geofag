@@ -106,9 +106,28 @@ Endringer i jordbanen er et klimapådriv. Et *klimapådriv* er noe som endrer en
 MilankovitchInnstraling
 ```
 
-Når sommersola på 65°N blir sterkere etter en istid, smelter iskantene. Mørkere land og hav kommer fram, albedoen synker, og mer energi tas opp. Samtidig slipper havet ut CO₂ som var lagret i det kalde dypvannet. I antarktisk is stiger CO₂ fra ca. 180 ppm til 260–280 ppm gjennom en avsmelting (Lüthi mfl., 2008). Gassen forsterker oppvarmingen og sprer den til hele jorda, også til den sørlige halvkulen.
+Kjeden fra innstråling til isvekst går i korte ledd:
 
-I dag går rekkefølgen motsatt vei. Under avsmeltingene startet det med innstrålingen, og CO₂ forsterket. Siden 1850 er det CO₂ fra menneskelige utslipp som starter. FNs klimapanel (IPCC) har vurdert at endringene i jordbanen er for langsomme til å forklare oppvarmingen nå (IPCC, 2021). Jordbanen gir i dag en svak nedgang i sommersola på 65°N. Uten menneskelige utslipp ville jorda altså sakte blitt litt kjøligere.
+1. Sommersola på 65°N blir for svak.
+2. Snøen fra vinteren smelter ikke bort.
+3. Isen vokser år for år, og albedoen stiger.
+4. Mer sollys reflekteres, og det blir kaldere.
+5. Kaldere hav og endrede havstrømmer lagrer mer karbon i dyphavet. Forskerne mener at dette er en viktig del av forklaringen.
+6. CO₂ i lufta synker, drivhuseffekten svekkes, og kulden forsterkes globalt.
+
+Vi kan være sikre på leddene fra innstråling til is og albedo. Lagringen av CO₂ i dyphavet er mer usikker i detaljene. FNs klimapanel (IPCC) mener likevel at den er nødvendig for å forklare det fulle temperatursvinget (IPCC, 2021; Mangerud, 2026).
+
+Når sommersola på 65°N blir sterkere etter en istid, går kjeden motsatt vei. Iskantene smelter. Mørkere land og hav kommer fram, albedoen synker, og mer energi tas opp. Samtidig slipper havet ut CO₂ som var lagret i det kalde dypvannet. I antarktisk is stiger CO₂ fra ca. 180 ppm til 260–280 ppm gjennom en avsmelting (Lüthi mfl., 2008). Gassen forsterker oppvarmingen og sprer den til hele jorda, også til den sørlige halvkulen.
+
+### Hva forklarer Milankovitch – og hva forklarer de ikke?
+
+Milankovitch-syklusene forklarer rytmen i istidene over titusener til hundretusener av år. De forklarer ikke dagens globale oppvarming. Skillet står på tre punkter: tempo, retning og drivhusgasser.
+
+**Tempo.** Jordbanen endrer sommersola på 65°N over tusener av år. Den globale oppvarmingen siden midten av 1800-tallet har skjedd over tiår til et par århundrer. IPCC har dokumentert at dette tempoet er for raskt til å komme fra jordbanen (IPCC, 2021; NASA, 2020).
+
+**Retning.** Jordbanen gir i dag en svak nedgang i sommersola på 65°N. Uten menneskelige utslipp ville jorda sakte blitt litt kjøligere (IPCC, 2021; NASA, 2020). Observasjonene går motsatt vei: jorda blir varmere.
+
+**Drivhusgasser.** Under istidene startet endringen med innstrålingen. CO₂ forsterket og spredte oppvarmingen. Siden ca. 1850 er rekkefølgen snudd. CO₂ fra menneskelige utslipp starter, og oppvarmingen følger. Milankovitch-syklusene er ikke det samme som dagens klimapådriv.
 
 ```widget
 SjekkMilankovitch2
@@ -152,7 +171,7 @@ I snever betydning er en istid en *glasial*, en kald fase der innlandsis dekker 
 
 Hvor mange istider har det vært i kvartær? Svaret ligger i den såkalte bunnvannskurven LR04. Den er satt sammen av oksygenisotoper i kalkskall fra 57 borekjerner fra havbunnen over hele verden (Lisiecki og Raymo, 2005). Skallene er fra små organismer som lever på bunnen. De viser derfor isotopene i bunnvannet, og dermed hvor mye is det var på land. Kurven viser omtrent 50 sykluser med istid og mellomistid (Lisiecki og Raymo, 2005; Mangerud, 2026). De siste 800 000 årene har det vært åtte store sykluser på omtrent 100 000 år hver (Lüthi mfl., 2008).
 
-Den siste istiden kalles Weichsel. Den varte fra ca. 117 000 til 11 700 år siden. Isen var størst for ca. 25 000–19 000 år siden (Mangerud, 2025). Den perioden kalles siste istids maksimum. Isdekkene var da opptil ca. 3000 m tykke, og havnivået lå ca. 125 m lavere enn i dag (Mangerud, 2026). Store deler av det som i dag er den sørlige Nordsjøen, var tørt land. Dette landområdet kalles Doggerland eller Nordsjøfastlandet (Stylegar, 2024). Den globale middeltemperaturen var da ca. 6 °C lavere enn før industrialiseringen (Tierney mfl., 2020).
+Den siste istiden kalles *weichsel* i Nord-Europa (Mangerud, 2025b). Den varte fra ca. 117 000 til 11 700 år siden. Isen var størst for ca. 25 000–19 000 år siden (Mangerud, 2025a). Den perioden kalles siste istids maksimum. Isdekkene var da opptil ca. 3000 m tykke, og havnivået lå ca. 125 m lavere enn i dag (Mangerud, 2026). Store deler av det som i dag er den sørlige Nordsjøen, var tørt land. Dette landområdet kalles Doggerland eller Nordsjøfastlandet (Stylegar, 2024). Den globale middeltemperaturen var da ca. 6 °C lavere enn før industrialiseringen (Tierney mfl., 2020).
 
 Når kommer neste istid? Berger og Loutre (2002) har beregnet at jordbanen gir en uvanlig lang mellomistid. Neste istid vil etter beregningene deres ikke starte før om ca. 50 000 år. Høy CO₂ kan skyve den enda lenger fram (Berger og Loutre, 2002).
 
@@ -201,6 +220,8 @@ SjekkMilankovitch4
 > **«Istidene kommer fordi sola blir svakere.»** Sola blir ikke svakere. Jordbanen flytter innstrålingen mellom årstider og breddegrader, men den samlede energien endres bare svakt (NASA, u.å.).
 >
 > **«CO₂ kom bare etter temperaturen og betyr derfor ingenting.»** Jordbanen startet avsmeltingene, men CO₂ forsterket dem og spredte oppvarmingen til hele jorda. Ved slutten av siste istid endret CO₂ og temperaturen i Antarktis seg nesten samtidig (Parrenin mfl., 2013).
+>
+> **«Dagens oppvarming skyldes jordbanen, fordi klimaet har endret seg før.»** Milankovitch-syklusene forklarer rytmen i istidene. De er ikke det samme som dagens klimapådriv. Tempo, retning og drivhusgasser peker motsatt vei (IPCC, 2021; NASA, 2020).
 
 ## Viktige begreper
 
@@ -216,7 +237,7 @@ SjekkMilankovitch4
 
 **Klimapådriv:** Noe som endrer energibalansen til jorda, for eksempel jordbanen eller CO₂.
 
-**Glasial:** Kald fase med store isdekker på de nordlige kontinentene. Weichsel er den siste i Norden.
+**Glasial:** Kald fase med store isdekker på de nordlige kontinentene. *weichsel* er den siste i Norden.
 
 **Mellomistid (interglasial):** Varmere fase mellom to glasialer, som holocen.
 

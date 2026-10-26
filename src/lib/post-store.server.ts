@@ -1513,6 +1513,17 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Istider / Milankovitch (G2): kvalitetsloft – skarpere «hva Milankovitch forklarer / ikke forklarer» (tempo, retning, drivhusgasser), insolation→is→CO₂-kjede med gradert sikkerhet, *weichsel* harmonisert mot paleoklima.
+    flag: "g2-milankovitch-kvalitetsloft-2026-10-26",
+    slug: "milankovitch",
+    stale: [
+      "I dag går rekkefølgen motsatt vei. Under avsmeltingene startet det med innstrålingen, og CO₂ forsterket.",
+      "Når sommersola på 65°N blir sterkere etter en istid, smelter iskantene. Mørkere land og hav kommer fram, albedoen synker, og mer energi tas opp.",
+      "Den siste istiden kalles Weichsel.",
+      "**Glasial:** Kald fase med store isdekker på de nordlige kontinentene. Weichsel er den siste i Norden.",
+    ],
+  },
+  {
     // Den indiske hav-dipolen (IOD) (G2): Terra Mater fase 1–2 (må-punkter M1–M7: tilbakekoblingen vind–oppvelling–havtemperatur som kjede og positiv tilbakekobling med lenke til ENSO og Havstrømmer, «dipol» forklart, grenseverdi +0,4 °C i minst åtte uker og Dipole Mode Index, positiv IOD 2019 med flom i Øst-Afrika og tørke og skogbranner i Australia, jetstrømdelen gradert med polarjeten over havfronten og lenke til Jetstrømmer, fulle institusjonsnavn, «kapitlet», «mfl.» i kildene).
     flag: "g2-iod-terra-mater-2026-10-26",
     slug: "iod",
