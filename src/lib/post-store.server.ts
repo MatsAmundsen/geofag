@@ -1306,6 +1306,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Vindsystemet (G2): kvalitetsloft celle-kjede, Ferrel, klimabelter.
+    flag: "g2-vindsystemet-kvalitetsloft-2026-10-26",
+    slug: "vindsystemet",
+    stale: [
+      "Én sløyfe til polen går ikke. Vi skiller mellom tre celler",
+      "Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).",
+      "> **Tre vanlige misforståelser**",
+    ],
+  },
+  {
     // Høytrykk og lavtrykk (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
     flag: "g2-hoytrykk-lavtrykk-terra-mater-2026-10-26",
     slug: "hoytrykk-lavtrykk",
@@ -1316,6 +1326,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Høytrykk og lavtrykk (G2): kvalitetsloft relativ L/H + trykk→vær-kjede.
+    flag: "g2-hoytrykk-kvalitetsloft-2026-10-26",
+    slug: "hoytrykk-lavtrykk",
+    stale: [
+      "Tenk deg et område der trykket i sentrum er 1015 hPa. Er det omgitt av høytrykk på 1025 hPa",
+      "> **To vanlige misforståelser**",
+      "Ligger det samme området mellom lavtrykk på 995 hPa, er det et høytrykk.",
+    ],
+  },
+  {
     // Lokale værsystemer (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
     flag: "g2-lokale-vaersystemer-terra-mater-2026-10-26",
     slug: "lokale-vaersystemer",
@@ -1323,6 +1343,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "Havet har stor varmekapasitet. Det tar lang tid",
       "(NOAA, u.å.-a)",
       "varslet yr",
+    ],
+  },
+  {
+    // Lokale værsystemer (G2): kvalitetsloft polarfrontsyklon + skalaskille.
+    flag: "g2-lokale-kvalitetsloft-2026-10-26",
+    slug: "lokale-vaersystemer",
+    stale: [
+      "Et slikt lavtrykk har et fast livsløp. Det starter som en bølge på fronten og får en varmfront og en kaldfront.",
+      "Det fylles ut når kaldfronten har tatt igjen varmfronten og dannet en okkludert front (NOAA, u.å.-b).",
+      "Sjøbris er ikke en polarfrontsyklon i miniatyr. Den er et kretsløp mellom land og hav, med returstrøm i høyden (NOAA, u.å.-a; Store norske leksikon, u.å.-e).",
     ],
   },
   {
@@ -1352,6 +1382,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Udir, u.å.-b)",
       "74 mph, 64 knop",
       "NVE kaller Hans",
+    ],
+  },
+  {
+    // Værkatastrofer (G2): kvalitetsloft polarlavtrykk, drivkrefter, IPCC.
+    flag: "g2-vaerkatastrofer-kvalitetsloft-2026-10-26",
+    slug: "vaerkatastrofer",
+    stale: [
+      "Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 til 2024",
+      "Tropiske luftmasser føres mot våre breddegrader, og når de kommer til Norge, blir vanndampen til regn.",
+      "## Klima og ekstremnedbør",
     ],
   },
   {
@@ -1513,6 +1553,17 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Istider / Milankovitch (G2): kvalitetsloft – skarpere «hva Milankovitch forklarer / ikke forklarer» (tempo, retning, drivhusgasser), insolation→is→CO₂-kjede med gradert sikkerhet, *weichsel* harmonisert mot paleoklima.
+    flag: "g2-milankovitch-kvalitetsloft-2026-10-26",
+    slug: "milankovitch",
+    stale: [
+      "I dag går rekkefølgen motsatt vei. Under avsmeltingene startet det med innstrålingen, og CO₂ forsterket.",
+      "Når sommersola på 65°N blir sterkere etter en istid, smelter iskantene. Mørkere land og hav kommer fram, albedoen synker, og mer energi tas opp.",
+      "Den siste istiden kalles Weichsel.",
+      "**Glasial:** Kald fase med store isdekker på de nordlige kontinentene. Weichsel er den siste i Norden.",
+    ],
+  },
+  {
     // Den indiske hav-dipolen (IOD) (G2): Terra Mater fase 1–2 (må-punkter M1–M7: tilbakekoblingen vind–oppvelling–havtemperatur som kjede og positiv tilbakekobling med lenke til ENSO og Havstrømmer, «dipol» forklart, grenseverdi +0,4 °C i minst åtte uker og Dipole Mode Index, positiv IOD 2019 med flom i Øst-Afrika og tørke og skogbranner i Australia, jetstrømdelen gradert med polarjeten over havfronten og lenke til Jetstrømmer, fulle institusjonsnavn, «kapitlet», «mfl.» i kildene).
     flag: "g2-iod-terra-mater-2026-10-26",
     slug: "iod",
@@ -1552,6 +1603,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "Arktis er et hav nesten omsluttet av land, så mye av isen blir liggende gjennom sommeren og kan vokse videre neste høst. Antarktis er et kontinent omsluttet av hav, og isen driver friere og blir sjeldnere like tykk.",
       "Dette er en positiv tilbakekobling:\n\n1. Permafrosten tiner.",
       "**Positiv tilbakekobling:** En endring som setter i gang noe som forsterker den samme endringen, for eksempel at mindre havis gir mer oppvarming og enda mindre is.\n\n**Permafrost:**",
+    ],
+  },
+  {
+    // Coriolis (G2): kvalitetsloft – begrepsliste (isobar, geostrofisk vind, ekmanlag), misforståelse «kraft som blåser», norsk Ekman/oppvelling med terskelkjede.
+    flag: "g2-coriolis-kvalitetsloft-2026-10-26",
+    slug: "coriolis",
+    stale: [
+      "Corioliseffekten setter altså ikke lufta i gang. Den endrer retningen.",
+      "På norskekysten kommer episoder med oppvelling ved langvarig og sterk nordavind, og de har betydning for utskifting av dypvannet i fjordene",
+      "**Treghetssystem:** Et referansesystem uten rotasjon, der Newtons lover gjelder uten fiktive krefter. Jorda er ikke et slikt system.\n\n**Ekmantransport:**",
     ],
   },
 ];

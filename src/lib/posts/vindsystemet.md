@@ -44,7 +44,14 @@ I 1735 foreslo George Hadley én sirkulasjon på hver halvkule: lufta stiger ved
 
 Det ville holdt hvis jorda sto stille. Jorda roterer. Luft som går mot polen i høyden, beholder farten mot øst og blir vestavind i forhold til bakken. Det er corioliseffekten (NOAA, u.å.-c). Hvorfor den dreier, står i kapitlet om [corioliseffekten](/tema/coriolis).
 
-Én sløyfe til polen går ikke. Vi skiller mellom tre celler på hver halvkule: Hadley-cellen, Ferrel-cellen og polarcellen (NOAA, u.å.-a):
+Kjeden er denne:
+
+1. Ved ekvator stiger varm luft og strømmer mot polen i høyden.
+2. Corioliseffekten dreier den østover, så den blir sterk vestavind før den når polen.
+3. Lufta hoper seg opp nær 30°. Der synker den, og det dannes subtropisk høytrykk.
+4. Fra 30° går noe luft tilbake mot ekvator (passat), og noe videre mot polene. På midlere breddegrader og nær polen lukkes to nye sløyfer.
+
+Én sløyfe til polen går altså ikke. Vi skiller mellom tre celler på hver halvkule: Hadley-cellen, Ferrel-cellen og polarcellen (NOAA, u.å.-a):
 
 | | Hadley-cellen | Ferrel-cellen | Polarcellen |
 |---|---|---|---|
@@ -90,6 +97,8 @@ I høyden over konvergenssonen er lufta tørr. Den har sluppet nedbøren. Den st
 Når lufta synker, presses den sammen og varmes opp. Den relative fuktigheten faller, og skyene løses opp. Ved bakken ligger høytrykk, med klarvær og tørke (NOAA, u.å.-a).
 
 Derfor ligger mange ørkener langs 30°, blant annet i Nord-Afrika, sørvest i Nord-Amerika og i Australia (NOAA, u.å.-a). Hadley-cellen gjør subtropene tørre, som i Nord-Afrika, mens regnskogen ligger nær ekvator, som i Amazonas, Indonesia og Kongo (Store norske leksikon, u.å.-a). Sahara er tørr fordi lufta synker, ikke fordi det «mangler elver». Det er svaret på «Hva tror du?».
+
+Ørken er ikke det samme som «varmt klima». Tropene nær ekvator er varmere enn Sahara, men der stiger lufta, og det blir regnskog. Subtropene er tørre fordi subsidensen hindrer skyer, ikke fordi sola «brenner bort» vannet. Jo mer lufta synker og varmes, desto lavere blir den relative fuktigheten, og desto vanskeligere er det å danne skyer (NOAA, u.å.-a).
 
 ```widget
 SubsidensForklaring
@@ -159,7 +168,9 @@ VindBelterFoto
 
 Polarfronten er grensen mellom kald luft fra høye breddegrader og varm luft fra subtropene. På den nordlige halvkule ligger den vanligvis mellom 40° og 70°. Den bukter seg mot øst, med varmfront i forkant av bølgen og kaldfront i bakkant. Langs fronten går vandrende lavtrykk, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-h).
 
-Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mellom om lag 50° og 60° på begge halvkuler. Den bukter seg, skifter bredde og kan dele seg (NOAA, u.å.-c). Hvordan rygger og tråg styrer lavtrykkene, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).
+Vestavindsbeltet og de vandrende lavtrykkene hører sammen. Ferrel-cellen er termisk indirekte: den drives ikke av oppvarming ved bakken, men av de samme lavtrykkene og høytrykkene som vandrer langs polarfronten (NOAA, u.å.-a; AMS, u.å.). Vestavinden ved bakken er middelverdien av denne trafikken. Friksjon er ikke drivkraften i Ferrel-cellen. Det er trykk- og temperaturkontrasten langs polarfronten, og den øvre strømmen, som holder systemet i gang.
+
+Over grensen mellom varm og kald luft ligger jetstrømmen. Polarjeten ligger mellom om lag 50° og 60° på begge halvkuler. Den bukter seg, skifter bredde og kan dele seg (NOAA, u.å.-c). Hvordan rygger og tråg styrer lavtrykkene, og hvordan en atmosfærisk elv kan føre fukt inn mot kysten, tar vi i kapitlet om [jetstrømmer](/tema/jetstrommer).
 
 Norge ligger i vestavindsbeltet. Lavtrykk som dannes over Atlanteren, følger den øvre vinden inn mot kysten. På veien har lufta tatt opp vanndamp. Klimaet i Norge er mildere enn breddegraden skulle tilsi, fordi havstrømmer og vind frakter varme hit (Store norske leksikon, u.å.-e).
 
@@ -190,11 +201,12 @@ WindSystemModel
 
 Bruk modellen til å koble breddegrad, trykk, vindretning og loddrett luftstrøm i tre-celle-systemet.
 
-> **Tre vanlige misforståelser**
+> **Fire vanlige misforståelser**
 >
 > 1. **Cellene er ikke tre lukkede rør som går likt hver dag.** De er et tidsmiddel. Over Norge ser du sjelden jevn Ferrel-sirkulasjon. Her dominerer vandrende lavtrykk langs polarfronten (Store norske leksikon, u.å.-h).
-> 2. **Sahara er ikke ørken fordi det mangler vann i bakken.** Ørkenen følger nedsynking nær 30°. Synkende luft tørker ut skyene (NOAA, u.å.-a).
-> 3. **Konvergenssonen ligger ikke alltid på ekvatorlinjen.** Den følger sola mot nord i nordlig sommer og mot sør i nordlig vinter, og kan trekkes langt inn over varme kontinenter som monsun (NOAA, u.å.-b; Store norske leksikon, u.å.-d).
+> 2. **Ferrel-cellen drives ikke av friksjon.** Den er termisk indirekte og holdes i gang av vandrende lavtrykk og høytrykk langs polarfronten (NOAA, u.å.-a; AMS, u.å.).
+> 3. **Sahara er ikke ørken fordi det er varmt, eller fordi det mangler vann i bakken.** Ørkenen følger nedsynking nær 30°. Synkende luft tørker ut skyene (NOAA, u.å.-a).
+> 4. **Konvergenssonen ligger ikke alltid på ekvatorlinjen.** Den følger sola mot nord i nordlig sommer og mot sør i nordlig vinter, og kan trekkes langt inn over varme kontinenter som monsun (NOAA, u.å.-b; Store norske leksikon, u.å.-d).
 
 ## Viktige begreper
 

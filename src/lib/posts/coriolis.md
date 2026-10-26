@@ -114,7 +114,9 @@ På værkart viser vi lufttrykket med *isobarer*, det vil si linjer som binder s
 4. Til slutt er avbøyningen like sterk som trykkraften, men virker motsatt vei.
 5. Da går vinden langs isobarene, med lavtrykket til venstre.
 
-Denne likevekten kaller vi *geostrofisk balanse*, og vinden kaller vi *geostrofisk vind*. Balansen gjelder et stykke oppe i lufta, der bakken ikke bremser vinden (Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-f). Figurene nedenfor viser hvordan vinden finner balansen.
+Denne likevekten kaller vi *geostrofisk balanse*, og vinden kaller vi *geostrofisk vind*. Balansen gjelder et stykke oppe i lufta, der bakken ikke bremser vinden (Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-f).
+
+Corioliseffekten er ikke det samme som en kraft som blåser. Den setter ikke lufta i gang. Trykkraften gjør det. Avbøyningen kommer først når lufta allerede er i bevegelse, og den dreier vinden til den geostrofiske retningen. Figurene nedenfor viser hvordan vinden finner balansen.
 
 ```widget
 GeostrofiskDiagram
@@ -124,7 +126,7 @@ GeostrofiskDiagram
 GeostrophicAdjustment
 ```
 
-Nær bakken bremser friksjonen vinden. Når farten blir mindre, blir også avbøyningen svakere. Trykkraften vinner da litt over avbøyningen. Vinden krysser derfor isobarene på skrå inn mot lavtrykket. Over havet er vinkelen 0–20°. Over land er friksjonen større, og vinkelen blir 20–40° (Store norske leksikon, u.å.-d). Corioliseffekten setter altså ikke lufta i gang. Den endrer retningen.
+Nær bakken bremser friksjonen vinden. Når farten blir mindre, blir også avbøyningen svakere. Trykkraften vinner da litt over avbøyningen. Vinden krysser derfor isobarene på skrå inn mot lavtrykket. Over havet er vinkelen 0–20°. Over land er friksjonen større, og vinkelen blir 20–40° (Store norske leksikon, u.å.-d). Corioliseffekten er altså ingen «blåsekraft». Den endrer bare retningen på luft som allerede er satt i gang av trykkforskjellen.
 
 Som vi så over, blir rotasjonen rundt et lavtrykk mot klokken og rundt et høytrykk med klokken på den nordlige halvkule. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
@@ -154,7 +156,16 @@ Legger vi sammen bevegelsen i alle lagene i spiralen, får vi *nettotransporten*
 
 Oppvelling er at vann løftes fra dypere nivåer til overflatelaget. Overflatelaget skyves til siden, for eksempel ut fra en kyst, og vann nedenfra kommer opp. Prosessen er langsom, om lag 10 meter per dag. Vannet er rikt på næringsstoffer, og områdene har ofte rike fiskerier (Store norske leksikon, u.å.-e; NOAA, u.å.-c).
 
-En nordavind langs en vestkyst på den nordlige halvkule skyver overflatelaget utover, fordi ekmantransporten går til høyre. Da får vann fra dypere nivåer plass. Det skjer særlig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. Ved Somalia, Oman og Vietnam skjer det i monsuntiden. Monsun er vind som skifter retning med årstidene. På norskekysten kommer episoder med oppvelling ved langvarig og sterk nordavind, og de har betydning for utskifting av dypvannet i fjordene (Store norske leksikon, u.å.-e).
+En nordavind langs en vestkyst på den nordlige halvkule skyver overflatelaget utover, fordi ekmantransporten går til høyre. Da får vann fra dypere nivåer plass. Det skjer særlig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. Ved Somalia, Oman og Vietnam skjer det i monsuntiden. Monsun er vind som skifter retning med årstidene.
+
+På norskekysten er oppvelling episodisk, ikke en stadig kyststrøm (Store norske leksikon, u.å.-e). Kjeden fra vind til fjord går i fire ledd:
+
+1. Langvarig og sterk nordavind blåser langs kysten.
+2. Ekmantransporten går til høyre, ut fra land.
+3. Overflatelaget skyves vekk, og vannstanden nær kysten synker litt.
+4. Tyngre og oksygenrikt vann løftes opp over *terskelen*, den grunne ryggen ved fjordmunningen, og fortrenger oksygenfattig dypvann inne i fjorden.
+
+Oppvellingssonen er typisk 15–150 km bred (Store norske leksikon, u.å.-e).
 
 ```widget
 Oppvelling
@@ -187,7 +198,7 @@ SjekkCoriolis3
 
 > **Vanlige misforståelser**
 >
-> Corioliseffekten setter ikke vinden i gang. Trykkforskjellen gjør det. Rotasjonen bare avbøyer (Store norske leksikon, u.å.-d).
+> Corioliseffekten er ikke en kraft som blåser. Den setter ikke vinden i gang. Trykkforskjellen gjør det. Rotasjonen bare avbøyer (Store norske leksikon, u.å.-d).
 >
 > Avbøyningen gjelder ikke bare luft som går nord–sør. En strøm bøyes til høyre for strømretningen på den nordlige halvkule og til venstre på den sørlige (Store norske leksikon, u.å.-b).
 >
@@ -204,6 +215,12 @@ SjekkCoriolis3
 **Coriolisparameteren:** Størrelsen som sier hvor sterk avbøyningen er. Den er null ved ekvator og øker mot polene.
 
 **Treghetssystem:** Et referansesystem uten rotasjon, der Newtons lover gjelder uten fiktive krefter. Jorda er ikke et slikt system.
+
+**Isobar:** Linje som binder sammen steder med samme lufttrykk.
+
+**Geostrofisk vind:** Vind i balanse mellom trykkraft og coriolisavbøyning, parallelt med isobarene når friksjonen er liten.
+
+**Ekmanlag:** Det øverste havlaget vinden setter i gang. Tykkelsen er typisk 45–300 m.
 
 **Ekmantransport:** Transport av havets overflatelag på tvers av vinden, til høyre på den nordlige halvkule.
 

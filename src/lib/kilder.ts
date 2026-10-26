@@ -4150,6 +4150,12 @@ export const KILDER = {
       href: "https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/",
     },
     {
+      prefix: "National Aeronautics and Space Administration [NASA]. (2020, 27. februar). ",
+      italic: "Why Milankovitch (orbital) cycles can’t explain Earth’s current warming",
+      suffix: ".",
+      href: "https://climate.nasa.gov/explore/ask-nasa-climate/2949/why-milankovitch-orbital-cycles-cant-explain-earths-current-warming/",
+    },
+    {
       prefix:
         "Hays, J. D., Imbrie, J., & Shackleton, N. J. (1976). Variations in the Earth’s orbit: Pacemaker of the ice ages. ",
       italic: "Science, 194",
@@ -4211,10 +4217,16 @@ export const KILDER = {
       href: "https://doi.org/10.1051/0004-6361:20041335",
     },
     {
-      prefix: "Mangerud, J. (2025, 12. oktober). Siste istid. I ",
+      prefix: "Mangerud, J. (2025a, 12. oktober). Siste istid. I ",
       italic: "Store norske leksikon",
       suffix: ".",
       href: "https://snl.no/siste_istid",
+    },
+    {
+      prefix: "Mangerud, J. (2025b, 9. oktober). Weichsel. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/weichsel",
     },
     {
       prefix: "Mangerud, J. (2026, 14. april). Istid. I ",
