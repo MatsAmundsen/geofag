@@ -1,6 +1,6 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling (Udir, u.å.-b).
+> Målet er at du skal kunne gjøre rede for hvordan ulike værsystemer oppstår og utvikler seg på global, regional og lokal skala, og tolke ulike værkart og værutvikling (Utdanningsdirektoratet [Udir], u.å.-b).
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -31,11 +31,11 @@ SolgangsbrisForklaring
 
 Solgangsvind er et vindsystem i kyststrøk med pålandsvind om dagen og fralandsvind utover natten. I Norge får vi den langs hele kysten av fastlandet, og til en viss grad også på Svalbard. Den er vanlig om sommeren, og kan også komme på varme vårdager (Store norske leksikon, u.å.-e).
 
-Havet har stor varmekapasitet. Det tar lang tid både å varme det opp og å kjøle det ned. Land avkjøles og varmes raskere. På solrike dager stiger den varme lufta over land, og det dannes et termisk lavtrykk. Kjøligere luft fra havet strømmer inn ved bakken. Det er sjøbris. I høyden blåser vinden motsatt vei, fra land mot havet (Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-e).
+Havet har stor varmekapasitet, det vil si evnen til å ta opp mye varme uten stor temperaturøkning. Det tar lang tid både å varme det opp og å kjøle det ned. Land avkjøles og varmes raskere. På solrike dager stiger den varme lufta over land, og det dannes et termisk lavtrykk. Kjøligere luft fra havet strømmer inn ved bakken. Det er sjøbris. I høyden blåser vinden motsatt vei, fra land mot havet (Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-e).
 
-Sjøbrisen er altså et lite kretsløp med to motsatte strømmer. Svaret på «Hva tror du?» er at land varmes raskere enn havet. Over land blir lufta lettere, og det oppstår et svakt termisk lavtrykk. Tettere luft over vannet brer seg innover land og løfter lufta der. I høyden, ofte mellom 1000 og 1500 meter, dannes et lite høytrykk, og lufta strømmer tilbake mot havet. Forkanten kalles en sjøbrisfront. Den virker omtrent som en kaldfront: temperaturen kan falle så mye som 8–11 °C når den passerer, himmelen klarner, og fuktigheten øker. Ligger forholdene til rette, kan det også dannes byger langs fronten (NOAA, u.å.-a).
+Sjøbrisen er altså et lite kretsløp med to motsatte strømmer. Svaret på «Hva tror du?» er at land varmes raskere enn havet. Over land blir lufta lettere, og det oppstår et svakt termisk lavtrykk. Tettere luft over vannet brer seg innover land og løfter lufta der. I høyden, ofte mellom 1000 og 1500 meter, dannes et lite høytrykk, og lufta strømmer tilbake mot havet. Forkanten kalles en sjøbrisfront. Den virker omtrent som en kaldfront. Temperaturen kan falle så mye som 8–11 °C når den passerer, himmelen klarner, og fuktigheten øker. Ligger forholdene til rette, kan det også dannes byger langs fronten (USAs hav- og atmosfæremyndighet [NOAA], u.å.-a).
 
-På den nordlige halvkule bøyer jordrotasjonen vinden av mot høyre. Sjøbrisen starter gjerne tidlig på ettermiddagen som pålandsvind, og dreier etter hvert til vind langs kysten. Når vinden blåser parallelt med kysten, kan den øke til mellom 15 og 25 knop. Utpå kvelden, når sola står lavt, løyer den (Store norske leksikon, u.å.-e).
+På den nordlige halvkule bøyer jordrotasjonen vinden av mot høyre. Sjøbrisen starter gjerne tidlig på ettermiddagen som pålandsvind, og dreier etter hvert til vind langs kysten. Når vinden blåser parallelt med kysten, kan den øke til mellom 15 og 25 knop (ca. 8–13 m/s). Utpå kvelden, når sola står lavt, løyer den (Store norske leksikon, u.å.-e).
 
 I en fjord fortsetter vinden innover fjorden og bøyer ikke av. Det ser vi blant annet i Vestfjorden, Trondheimsfjorden og Oslofjorden. Der brukes ordet solgangsbris selv om vinden ikke dreier særlig (Store norske leksikon, u.å.-e).
 
@@ -85,7 +85,7 @@ Orografisk nedbør utløses når fuktig luft tvinges til å stige av terrenget. 
 
 Regnskygge er et nedbørfattig område på lesiden. Den stigende bevegelsen, som nedbør krever, svekkes eller avløses av synkende bevegelse. I vestavindsbeltet ligger slike områder på østsiden av fjellkjeder som går nord–sør, mest markert høst og vinter. De øvre dalførene på Østlandet ligger i utpreget regnskygge. I Ottadalen er årsnedbøren så lav som ned mot 200 millimeter, mens det få kilometer unna, på Jostedalsbreen, faller omkring 3000 millimeter i året (Store norske leksikon, u.å.-d).
 
-Føn er en forholdsvis varm, tørr vind som slår ned i lavlandet etter å ha passert et fjellområde. Luft som synker på lesiden, kommer under høyere lufttrykk og varmes med omtrent én grad celsius per hundre meter. Det kalles adiabatisk oppvarming. Når lufta varmes uten at det tilføres fuktighet, synker den relative fuktigheten. Kondensasjon og regn på luvsiden kan spille en rolle, men har mindre betydning enn det som tidligere var antatt. Selve synkingen kan komme av fjellbølger, hydrauliske sprang eller le-virvler (Store norske leksikon, u.å.-g).
+Føn er en forholdsvis varm, tørr vind som slår ned i lavlandet etter å ha passert et fjellområde. Luft som synker på lesiden, kommer under høyere lufttrykk og varmes med omtrent én grad celsius per hundre meter. Det kalles adiabatisk oppvarming. Når lufta varmes uten at det tilføres fuktighet, synker den relative fuktigheten. Kondensasjon og regn på luvsiden kan spille en rolle, men har mindre betydning enn det som tidligere var antatt. Selve synkingen kan komme av fjellbølger (bølger i lufta over fjellet), hydrauliske sprang eller le-virvler (virvler på lesiden) (Store norske leksikon, u.å.-g).
 
 I Norge forekommer føn på begge sider av fjellkjedene. Effekten er størst ved vind fra sør og sørøst over de høyere delene av Langfjella, og ned i fjordstrøkene i indre deler av Møre og Romsdal. I Tafjord ble det målt 21,8 °C i november 2003 på grunn av fønvind. Fjellbølger gav da nedslag av varm luft fra høyden (Store norske leksikon, u.å.-g).
 
@@ -114,7 +114,7 @@ En inversjon er det motsatte: temperaturen stiger med høyden. Det skjer typisk 
 
 Tallene er målinger gjengitt av Store norske leksikon (u.å.-m). Forskjellen behøver ikke være så stor som mellom Blindern og Tryvann.
 
-Når den kalde lufta har lagt seg nede, skal det kraftig vind til for å blande inn varmere luft ovenfra. Inversjonen gjør at lufta nær bakken blandes dårlig med lufta over. Utslipp fra skip, veitrafikk og vedfyring kan samle seg. Den varmere lufta i høyden virker som et lokk. Samme dag som Bergens-målingen varslet yr periodevis høy luftforurensning for Danmarksplass (Store norske leksikon, u.å.-m).
+Når den kalde lufta har lagt seg nede, skal det kraftig vind til for å blande inn varmere luft ovenfra. Inversjonen gjør at lufta nær bakken blandes dårlig med lufta over. Utslipp fra skip, veitrafikk og vedfyring kan samle seg. Den varmere lufta i høyden virker som et lokk. Samme dag som Bergens-målingen varslet værvarslingstjenesten yr (Meteorologisk institutt) periodevis høy luftforurensning for Danmarksplass (Store norske leksikon, u.å.-m).
 
 ```widget
 TemperatureInversion
@@ -126,7 +126,7 @@ SjekkLokale2
 
 ## Polarfrontsyklonen
 
-Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, og ligger vanligvis mellom 40° og 70° bredde. Langs den vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-a). Et slikt lavtrykk har et fast livsløp: Det starter som en bølge på fronten, får en varmfront og en kaldfront, og fylles ut når kaldfronten har tatt igjen varmfronten og dannet en okkludert front (NOAA, u.å.-b). Hvordan du kjenner igjen frontene og lavtrykket på kartet, lærer du i kapitlet [Værkart og værutvikling](/tema/vaerkart).
+Polarfronten skiller kald luft fra høye breddegrader fra varm luft fra subtropene, og ligger vanligvis mellom 40° og 70° bredde. Langs den vandrer lavtrykk mot øst, omtrent med vinden i høyden, og de gir mye av nedbøren i den tempererte sonen (Store norske leksikon, u.å.-a). Et slikt lavtrykk har et fast livsløp. Det starter som en bølge på fronten og får en varmfront og en kaldfront. Det fylles ut når kaldfronten har tatt igjen varmfronten og dannet en okkludert front (NOAA, u.å.-b). Hvordan vi kjenner igjen frontene og lavtrykket på kartet, står i kapitlet [Værkart og værutvikling](/tema/vaerkart).
 
 ```widget
 PolarFrontCyclone

@@ -2780,6 +2780,12 @@ export const KILDER = {
       href: "https://snl.no/oppvelling",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Geostrofisk",
+      suffix: ".",
+      href: "https://snl.no/geostrofisk",
+    },
+    {
       prefix: "Stewart, R. H. (2008). ",
       italic: "Introduction to physical oceanography",
       suffix: " (kap. 9.2, tabell 9.3). Texas A&M University.",
@@ -2981,6 +2987,24 @@ export const KILDER = {
       href: "https://snl.no/albedoeffekt",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-e). ",
+      italic: "Firn",
+      suffix: ".",
+      href: "https://snl.no/firn",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Snøskred",
+      suffix: ".",
+      href: "https://snl.no/snøskred",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-g). ",
+      italic: "Havnivå",
+      suffix: ".",
+      href: "https://snl.no/havnivå",
+    },
+    {
       prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.-a). ",
       italic: "Sea ice",
       suffix: ".",
@@ -3017,10 +3041,16 @@ export const KILDER = {
       href: "https://www.varsom.no/snoskred/",
     },
     {
-      prefix: "Varsom. (u.å.). ",
+      prefix: "Varsom. (u.å.-a). ",
       italic: "Snøskredfaregrad",
       suffix: ".",
       href: "https://www.varsom.no/snoskred/snoskredskolen/snoskredvarselet-forklaring/snoskredfaregrad/",
+    },
+    {
+      prefix: "Varsom. (u.å.-b). ",
+      italic: "Faregrader",
+      suffix: ".",
+      href: "https://www.varsom.no/snoskred/om-snoskred/faregrader/",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -3057,6 +3087,12 @@ export const KILDER = {
       italic: "Polar Research, 22",
       suffix: "(2), 191–215.",
       href: "https://doi.org/10.3402/polar.v22i2.6455",
+    },
+    {
+      prefix: "Direktoratet for samfunnssikkerhet og beredskap [DSB]. (2016). ",
+      italic: "Skredulykka i Longyearbyen 19. desember 2015: Evaluering av handtering, beredskap og førebygging",
+      suffix: ".",
+      href: "https://www.dsbinfo.no/DSBno/2017/rapport/skredulykka-svalbard-nynorsk/",
     },
   ],
   klima: [
