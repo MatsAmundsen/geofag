@@ -1498,6 +1498,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "vindsystemet",
     stale: ["```widget\nOneVsThreeCellsDiagram\n```", "```widget\nWindCellsDiagram\n```"],
   },
+  {
+    // Havstrømmer: GolfDiagram → GolfFigur (Mats ja v2-mockup 26.10.2026). Md-flytting i PR D.
+    flag: "g2-havstrommer-golf-2026-10-26",
+    slug: "havstrommer",
+    stale: ["```widget\nGolfDiagram\n```"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
