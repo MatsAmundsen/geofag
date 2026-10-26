@@ -4,7 +4,7 @@
 >
 > - gjøre rede for konsekvensene av jordens rotasjon, tetthetsforskjeller og trykkforskjeller og hvordan de påvirker havet og atmosfæren
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -18,9 +18,9 @@
 CoriolisForklaring
 ```
 
-En bevegelse som er rettlinjet i et koordinatsystem i ro, blir avbøyd hvis koordinatsystemet roterer. Avbøyningen kommer ikke av en reell fysisk kraft, men av rotasjonen. Sett fra den roterende jorda beskrives den med en fiktiv kraft, corioliskraften, også kalt corioliseffekten. Den ble først beskrevet i 1835 av den franske matematikeren Gaspard-Gustave Coriolis (1792–1843) (Store norske leksikon, u.å.-a).
+En bevegelse som går i en rett linje, ser ut til å bøye av når vi ser den fra noe som roterer. Avbøyningen kommer ikke av en reell fysisk kraft, men av rotasjonen. Selve avbøyningen kaller vi *corioliseffekten*. Når vi skal regne på den, beskriver vi den som en tenkt kraft, *corioliskraften*. Den kalles en fiktiv kraft, fordi den bare trengs når vi ser bevegelsen fra noe som roterer. I dette kapitlet bruker vi mest ordet corioliseffekten. Den ble først beskrevet i 1835 av den franske matematikeren Gaspard-Gustave Coriolis (1792–1843) (Store norske leksikon, u.å.-a).
 
-Jorda er strengt tatt ikke et treghetssystem, fordi den roterer. Virkningene er så små at vi ikke merker dem i hverdagen, unntatt i havstrømmer og i vindretninger (Store norske leksikon, u.å.-c).
+Et ståsted som ikke roterer og ikke endrer fart, kaller vi et *treghetssystem*. Der fortsetter en ting i rett linje så lenge ingen kraft virker på den. Jorda er strengt tatt ikke et treghetssystem, fordi den roterer. Virkningene er likevel så små at vi ikke merker dem i hverdagen. Unntakene er havstrømmer og vindretninger (Store norske leksikon, u.å.-c).
 
 [Corioliseffekten](/tema/coriolis) handler om den avbøyningen. Hvordan trykkforskjeller setter lufta i gang, tar vi i [høytrykk og lavtrykk](/tema/hoytrykk-lavtrykk). De tre cellene tar vi i [vindsystemet](/tema/vindsystemet). Havets store strømmer tar vi i [havstrømmer](/tema/havstrommer).
 
@@ -36,7 +36,7 @@ CoriolisModel
 
 > **Hva tror du?**
 >
-> Mange sier at vannet i vasken virvler motsatt vei i Australia, på grunn av corioliseffekten. Tror du det stemmer? Svar før du leser videre – vi kommer tilbake til det i misforståelsesboksen.
+> Mange sier at vannet i vasken virvler motsatt vei i Australia, på grunn av corioliseffekten. Tror du det stemmer? Svar før du leser videre – vi kommer tilbake til det mot slutten av kapitlet.
 
 ## Hvorfor mot høyre i nord?
 
@@ -56,9 +56,11 @@ På grunn av jordrotasjonen har et sted ved ekvator en fart østover på mer enn
 CoriolisLatitude
 ```
 
-Luft som på den nordlige halvkule blåser rett sørover, kommer etter hvert til områder der bakken har større fart østover. Sett fra bakken dreier vinden mot vest, og på kartet blir det en høyresving. Luft som blåser rett nordover, har med seg større fart mot øst enn bakken lenger nord. Sett fra bakken dreier den mot øst, og det er også en høyresving. Store luftstrømmer og havstrømmer dreier mot høyre på den nordlige halvkule og mot venstre på den sørlige (Store norske leksikon, u.å.-a).
+Hvorfor dreier lufta mot høyre både når den går sørover og når den går nordover? Forklaringen er at lufta beholder den farten østover den hadde der den startet. Tenk deg luft som blåser rett sørover på den nordlige halvkule. Den kommer stadig til steder der bakken har større fart østover. Lufta blir derfor liggende etter bakken. Sett fra bakken dreier vinden mot vest, og på kartet blir det en høyresving. Luft som blåser rett nordover, tar med seg den store farten østover fra sørligere strøk. Lenger nord går bakken saktere, så lufta kommer foran bakken. Sett fra bakken dreier den mot øst, og det er også en høyresving (Store norske leksikon, u.å.-a).
 
-Uten rotasjon ville atmosfæren sirkulert i et enkelt mønster mellom polene og ekvator. Fordi jorda roterer, avbøyes lufta mot høyre på den nordlige halvkule og mot venstre på den sørlige. Den avbøyningen kalles corioliseffekten (NOAA, u.å.-a).
+Avbøyningen gjelder også luft som går mot øst eller vest. Husk karusellen: Der ser ballen ut til å krumme mot høyre uansett hvilken retning du kaster den. Store luftstrømmer og havstrømmer dreier altså mot høyre på den nordlige halvkule og mot venstre på den sørlige (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
+
+Uten rotasjon ville atmosfæren bare sirkulert fram og tilbake mellom polene og ekvator. Fordi jorda roterer, får lufta i stedet krumme baner. Som nevnt er det denne avbøyningen vi kaller corioliseffekten (USAs nasjonale havs- og atmosfæremyndighet [NOAA], u.å.-a).
 
 Også i loddrett retning virker avbøyningen. Et legeme som beveger seg østover langs overflaten, har en tendens til å løfte seg litt. I vestgående retning er det omvendt. Effekten er svært liten, og den avtar fra ekvator til null ved polene (Store norske leksikon, u.å.-a).
 
@@ -72,14 +74,29 @@ SjekkCoriolis1
 
 ## Breddegraden bestemmer styrken
 
-Coriolisparameteren brukes til å beregne den avbøyende effekten jordrotasjonen har på havstrømmer og vind. Den varierer med breddegraden. På ekvator er den null, så der skjer det ingen avbøyning. Effekten øker mot polene. På den nordlige halvkule er parameteren positiv, og en strøm bøyes til høyre for strømretningen. På den sørlige er den negativ, og strømmen bøyes til venstre. Grunnen er at referansesystemet roterer (Store norske leksikon, u.å.-b).
+Hvor sterk avbøyningen er, avhenger av breddegraden. Det kan vi forklare med karusellen:
+
+- Ved Nordpolen står jordaksen rett opp fra bakken. Der dreier bakken rundt seg selv, akkurat som karusellen. Avbøyningen er derfor størst ved polene.
+- Ved ekvator ligger jordaksen vannrett, parallelt med bakken. Bakken følger jorda rundt, men dreier ikke rundt seg selv. Derfor er det ingen vannrett avbøyning ved ekvator.
+- Mellom ekvator og polene dreier bakken delvis rundt seg selv. Jo nærmere polen vi kommer, desto mer dreier bakken, og desto sterkere blir avbøyningen.
+
+Størrelsen som måler dette, kalles *coriolisparameteren*. Den brukes til å beregne den avbøyende effekten jordrotasjonen har på havstrømmer og vind. På ekvator er den null, og den øker mot polene. På den nordlige halvkule er parameteren positiv, og en strøm bøyes til høyre for strømretningen. På den sørlige er den negativ, og strømmen bøyes til venstre (Store norske leksikon, u.å.-b).
 
 | | Nordlig halvkule | Sørlig halvkule | Ekvator |
 | --- | --- | --- | --- |
 | Avbøyning | til høyre for bevegelsen | til venstre for bevegelsen | ingen |
 | Coriolisparameteren | positiv | negativ | null |
 
-Dersom jorda ikke roterte, ville et lavtrykk raskt bli fylt igjen. Avbøyningen gjør at det dannes en rotasjon. Slik oppstår virvler ved lavtrykk. Rotasjonen er en forutsetning for at tropiske sykloner kan dannes (Store norske leksikon, u.å.-a). Ved ekvator er det ingen avbøyning, så den rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 500 km (om lag 4–5°) (NOAA AOML, u.å.).
+Corioliseffekten forklarer også hvorfor lufta virvler rundt et lavtrykk. Det skjer i fire ledd:
+
+1. Lufta strømmer inn mot lavtrykket fra alle kanter.
+2. På den nordlige halvkule bøyes hver luftstrøm mot høyre.
+3. Lufta går derfor rundt lavtrykket i stedet for rett inn i det.
+4. Det blir en virvel mot klokken, og lavtrykket fylles langsommere.
+
+Dersom jorda ikke roterte, ville lufta gått rett inn, og lavtrykket ville raskt blitt fylt igjen (Store norske leksikon, u.å.-a). Rundt et høytrykk strømmer lufta utover. Den bøyes også mot høyre, og virvelen går med klokken.
+
+Rotasjonen er en forutsetning for at *tropiske sykloner* kan dannes. Det er kraftige lavtrykk som oppstår over varmt hav i tropene, og dem tar vi i [værkatastrofer](/tema/vaerkatastrofer). Ved ekvator er det ingen avbøyning, så rotasjonen kommer ikke i gang der (Store norske leksikon, u.å.-b). Derfor dannes tropiske sykloner sjelden nærmere ekvator enn ca. 500 km, om lag 4–5° bredde (NOAAs atlantiske laboratorium for oseanografi og meteorologi [NOAA AOML], u.å.).
 
 ```widget
 SyklonDiagram
@@ -87,7 +104,17 @@ SyklonDiagram
 
 ## Vind, isobarer og friksjon
 
-Vind skyldes i bunn og grunn ujevn oppvarming, som gir forskjeller i lufttrykk. Vinden blåser fra høytrykk mot lavtrykk, og jo sterkere trykkforskjellen er, desto sterkere blir vinden. Uten jordrotasjonen ville den gått rett fra høyt til lavt trykk. Corioliskraften avbøyer den mot høyre på den nordlige halvkule og mot venstre på den sørlige (Store norske leksikon, u.å.-d).
+Vind skyldes i bunn og grunn ujevn oppvarming, som gir forskjeller i lufttrykk. Vinden blåser fra høytrykk mot lavtrykk, og jo sterkere trykkforskjellen er, desto sterkere blir vinden. Uten jordrotasjonen ville den gått rett fra høyt til lavt trykk. Corioliseffekten bøyer den av mot høyre på den nordlige halvkule og mot venstre på den sørlige (Store norske leksikon, u.å.-d).
+
+På værkart viser vi lufttrykket med *isobarer*, det vil si linjer som binder sammen steder med samme lufttrykk. Kraften fra trykkforskjellen kaller vi her *trykkraften*. Hvorfor ender vinden opp med å gå langs isobarene? Det skjer i fem ledd:
+
+1. Trykkraften setter lufta i gang mot lavtrykket.
+2. Jo raskere lufta går, desto sterkere blir avbøyningen.
+3. Vinden svinger derfor mer og mer mot høyre.
+4. Til slutt er avbøyningen like sterk som trykkraften, men virker motsatt vei.
+5. Da går vinden langs isobarene, med lavtrykket til venstre.
+
+Denne likevekten kaller vi *geostrofisk balanse*, og vinden kaller vi *geostrofisk vind*. Balansen gjelder et stykke oppe i lufta, der bakken ikke bremser vinden (Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-f). Figurene nedenfor viser hvordan vinden finner balansen.
 
 ```widget
 GeostrofiskDiagram
@@ -97,9 +124,9 @@ GeostrofiskDiagram
 GeostrophicAdjustment
 ```
 
-Figuren viser balansen uten friksjon, der vinden til slutt går langs isobarene. Nær bakken danner vinden en vinkel med isobarene på 0–20° over havet og 20–40° over land, fordi friksjonen er større over land (Store norske leksikon, u.å.-d). Corioliskraften setter ikke lufta i gang. Den endrer retningen.
+Nær bakken bremser friksjonen vinden. Når farten blir mindre, blir også avbøyningen svakere. Trykkraften vinner da litt over avbøyningen. Vinden krysser derfor isobarene på skrå inn mot lavtrykket. Over havet er vinkelen 0–20°. Over land er friksjonen større, og vinkelen blir 20–40° (Store norske leksikon, u.å.-d). Corioliseffekten setter altså ikke lufta i gang. Den endrer retningen.
 
-På den nordlige halvkule blir rotasjonen rundt et lavtrykk mot klokken, og rundt et høytrykk med klokken. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
+Som vi så over, blir rotasjonen rundt et lavtrykk mot klokken og rundt et høytrykk med klokken på den nordlige halvkule. På den sørlige halvkule er mønsteret speilvendt, fordi avbøyningen går motsatt vei (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
 ```widget
 PressureSpin
@@ -121,21 +148,30 @@ EkmanForklaring
 EkmanSpiral
 ```
 
-Vinddrevne strømmer gir en netto transport av ekmanlaget på tvers av vindretningen, 90° til høyre for vinden på den nordlige halvkule (Stewart, 2008). Det er ekmantransporten.
+Laget som vinden setter i gang, kalles *ekmanlaget*. Tykkelsen varierer fra om lag 45 til 300 m, avhengig av vind og breddegrad (Stewart, 2008). Det meste av transporten skjer i den øverste delen av laget, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e).
 
-Laget som vinden setter i gang, kalles ekmanlaget. Tykkelsen varierer fra om lag 45 til 300 m, avhengig av vind og breddegrad (Stewart, 2008). Det meste av transporten skjer i de øverste par titalls meterne, ofte oppgitt som de øverste 50 meterne (Store norske leksikon, u.å.-e). Bevegelsen dør ut lenger ned, ofte på omtrent 100 meters dyp (NOAA, u.å.-b).
+Legger vi sammen bevegelsen i alle lagene i spiralen, får vi *nettotransporten*, det vil si summen av hvor alt vannet i laget flyttes. Den går 90° til høyre for vinden på den nordlige halvkule (Stewart, 2008). Denne transporten på tvers av vindretningen kaller vi *ekmantransport*.
 
 Oppvelling er at vann løftes fra dypere nivåer til overflatelaget. Overflatelaget skyves til siden, for eksempel ut fra en kyst, og vann nedenfra kommer opp. Prosessen er langsom, om lag 10 meter per dag. Vannet er rikt på næringsstoffer, og områdene har ofte rike fiskerier (Store norske leksikon, u.å.-e; NOAA, u.å.-c).
 
-En nordavind langs en vestkyst på den nordlige halvkule skyver overflatelaget utover, fordi ekmantransporten går til høyre. Da får vann fra dypere nivåer plass. Det skjer særlig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. I monsuntiden også ved Somalia, Oman og Vietnam. På norskekysten kommer episoder med oppvelling ved langvarig og sterk nordavind, og de har betydning for utskifting av dypvannet i fjordene (Store norske leksikon, u.å.-e).
+En nordavind langs en vestkyst på den nordlige halvkule skyver overflatelaget utover, fordi ekmantransporten går til høyre. Da får vann fra dypere nivåer plass. Det skjer særlig langs vestkyster på lave breddegrader, som Peru, California, Namibia og Marokko. Ved Somalia, Oman og Vietnam skjer det i monsuntiden. Monsun er vind som skifter retning med årstidene. På norskekysten kommer episoder med oppvelling ved langvarig og sterk nordavind, og de har betydning for utskifting av dypvannet i fjordene (Store norske leksikon, u.å.-e).
 
 ```widget
 Oppvelling
 ```
 
-Oppvellingsområdene dekker en liten del av havet, men gir en stor del av fiskefangsten. Om lag 25 prosent av det som fiskes, kommer fra de fem store oppvellingsområdene knyttet til Kanaristrømmen, Benguelastrømmen, Californiastrømmen, Perustrømmen og Somalistrømmen. Ved El Niño svekkes eller opphører oppvellingen i Perustrømmen (Store norske leksikon, u.å.-e). Langs vestkysten av Afrika og Sør-Amerika holder kystoppvelling fiskeriene i gang året rundt (NOAA, u.å.-c).
+Oppvellingsområdene dekker en liten del av havet, men gir en stor del av fiskefangsten. Om lag 25 prosent av det som fiskes, kommer fra de fem store oppvellingsområdene knyttet til Kanaristrømmen, Benguelastrømmen, Californiastrømmen, Perustrømmen og Somalistrømmen. Ved El Niño svekkes eller opphører oppvellingen i Perustrømmen (Store norske leksikon, u.å.-e). El Niño er en oppvarming av havet i det østlige Stillehavet som kommer med noen års mellomrom, og den står i kapitlet [ENSO](/tema/enso). Langs vestkysten av Afrika og Sør-Amerika holder kystoppvelling fiskeriene i gang året rundt (NOAA, u.å.-c).
 
-De store overflatestrømmene drives av vindsystemene og avbøyes av jordrotasjonen. De danner havvirvler med klokken på den nordlige halvkule og mot klokken på den sørlige, nord og sør for ekvator. Ved ekvator, der corioliseffekten ikke virker, dannes ikke slike virvler. Det er fem store havvirvler: Nord-Atlanteren, Sør-Atlanteren, Nord-Stillehavet, Sør-Stillehavet og Det indiske hav. Hver har en sterk og smal vestlig randstrøm og en svak og bred østlig randstrøm (NOAA, u.å.-d). Selve strømmene tar vi i [havstrømmer](/tema/havstrommer).
+De store overflatestrømmene drives av vindsystemene og avbøyes av jordrotasjonen. De danner havvirvler med klokken på den nordlige halvkule og mot klokken på den sørlige, nord og sør for ekvator. Ved ekvator, der corioliseffekten ikke virker, dannes ikke slike virvler. Det er fem store havvirvler: Nord-Atlanteren, Sør-Atlanteren, Nord-Stillehavet, Sør-Stillehavet og Det indiske hav. Strømmen langs kanten av et havbasseng, nær land, kaller vi en *randstrøm*. Hver virvel har en sterk og smal randstrøm i vest og en svak og bred randstrøm i øst (NOAA, u.å.-d). I Nord-Atlanteren er Golfstrømmen den vestlige randstrømmen. Selve strømmene tar vi i [havstrømmer](/tema/havstrommer).
+
+Vi har sett at corioliseffekten styrer vindsystemer, lavtrykk og havvirvler. Hvorfor styrer den ikke vannet i vasken? Forklaringen er at avbøyningen trenger tid og avstand:
+
+1. Corioliseffekten gir bare en svak dreining. Ved 60 grader nord tar det nesten 14 timer før en strøm som bare påvirkes av den, har dreid en hel runde (Store norske leksikon, u.å.-b).
+2. Vannet i en vask renner ut på noen sekunder og beveger seg bare noen få desimeter.
+3. På så kort tid rekker jorda nesten ikke å dreie, og avbøyningen blir altfor liten til å merkes.
+4. Formen på vasken og bevegelsen vannet hadde fra før, betyr derfor mye mer for hvilken vei det virvler.
+
+Et lavtrykk er noe helt annet. Der går lufta over hundrevis av kilometer i flere dager, og da rekker corioliseffekten å bøye den tydelig av. Jo lenger tid en bevegelse varer, og jo større avstand den har, desto mer betyr corioliseffekten (Store norske leksikon, u.å.-c). Figurene nedenfor viser denne skalaen. Svaret på «Hva tror du?» er derfor nei.
 
 ```widget
 RossbyScale
@@ -155,7 +191,7 @@ SjekkCoriolis3
 >
 > Avbøyningen gjelder ikke bare luft som går nord–sør. En strøm bøyes til høyre for strømretningen på den nordlige halvkule og til venstre på den sørlige (Store norske leksikon, u.å.-b).
 >
-> Vannet i vasken styres ikke av corioliseffekten. Jordrotasjonen merkes i hverdagen nesten ikke, unntatt i havstrømmer og vind (Store norske leksikon, u.å.-c). Svaret på «Hva tror du?» er derfor nei.
+> Vannet i vasken styres ikke av corioliseffekten. Vasken er for liten, og vannet renner ut for fort til at jordrotasjonen rekker å bøye det av (Store norske leksikon, u.å.-b; Store norske leksikon, u.å.-c).
 >
 > Vinden ved bakken går ikke nødvendigvis langs isobarene. Vinkelen er 0–20° over havet og 20–40° over land (Store norske leksikon, u.å.-d).
 
@@ -163,7 +199,7 @@ SjekkCoriolis3
 
 **Corioliseffekten:** Avbøyningen av en bevegelse sett fra den roterende jorda. Mot høyre på den nordlige halvkule, mot venstre på den sørlige, og ingen ved ekvator.
 
-**Corioliskraften:** Den fiktive kraften vi innfører for å beskrive avbøyningen fra den roterende jorda.
+**Corioliskraften:** Den fiktive kraften vi innfører når vi skal regne på avbøyningen sett fra den roterende jorda.
 
 **Coriolisparameteren:** Størrelsen som sier hvor sterk avbøyningen er. Den er null ved ekvator og øker mot polene.
 
@@ -171,7 +207,7 @@ SjekkCoriolis3
 
 **Ekmantransport:** Transport av havets overflatelag på tvers av vinden, til høyre på den nordlige halvkule.
 
-**Ekmanspiralen:** Spiralen i ekmanlaget, ofte de øverste ca. 100 meterne, der hvert dypere lag går saktere og er mer avbøyd.
+**Ekmanspiralen:** Spiralen i ekmanlaget, om lag de øverste 45–300 meterne, der hvert dypere lag går saktere og er mer avbøyd.
 
 **Oppvelling:** At vann løftes fra dypere nivåer til overflaten når overflatelaget skyves til siden.
 
