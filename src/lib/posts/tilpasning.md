@@ -5,7 +5,7 @@
 > - drøfte konsekvenser av klimaendringer for enkeltmennesker, samfunn og økosystem, og vurdere bærekraftige løsninger for hvordan enkeltmennesker og samfunn kan redusere og tilpasse seg klimaendringer i nåtid og framtid
 > - vurdere risiko ved naturfarer som følge av fenomener i atmosfæren, havet og kryosfæren og drøfte hvordan klimaendringer kan påvirke disse
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -27,7 +27,7 @@ TilpasningForklaring
 
 [Konsekvenser og tilpasning](/tema/tilpasning) handler om to ulike svar på klimaendringene. Å *redusere* betyr å kutte utslippene av klimagasser, slik at oppvarmingen blir mindre. Å *tilpasse seg* betyr å innrette samfunnet slik at skadene fra de endringene som likevel kommer, blir mindre. Begge svarene trengs, fordi klimasystemet reagerer langsomt, og noe oppvarming vil komme uansett.
 
-Et kraftig regnskyll blir ikke nødvendigvis en katastrofe. FNs klimapanel (IPCC) beskriver klimarisiko som noe som oppstår i samspillet mellom tre deler (IPCC, 2022):
+Et kraftig regnskyll blir ikke nødvendigvis en katastrofe. FNs klimapanel (IPCC) beskriver klimarisiko som noe som oppstår i samspillet mellom tre deler (IPCC, 2022). Vi skiller mellom fare, eksponering og sårbarhet:
 
 - **Fare** er selve naturhendelsen, for eksempel et styrtregn, en stormflo, en tørkeperiode eller et skred.
 - **Eksponering** er hvem og hva som befinner seg der faren kan ramme, for eksempel hus på en elveslette eller en vei under en bratt fjellside.
@@ -61,20 +61,20 @@ SjekkTilpasning1
 
 ## Hvordan kan byer håndtere overvann?
 
-I skog og myr siver mye av regnet ned i bakken. I byer er mye av bakken dekket av asfalt, betong og tak. Da renner regnet av på overflaten i stedet. Dette vannet kalles *overvann*. Når det regner kraftig, kan rørene bli fulle, og vannet finner veien inn i kjellere og bygninger.
+I skog og myr siver mye av regnet ned i bakken. I byer er mye av bakken dekket av asfalt, betong og tak. Da renner regnet av på overflaten i stedet. Dette vannet kalles *overvann*. Jo kraftigere regnet er, desto lettere fylles rørene, og vannet finner veien inn i kjellere og bygninger.
 
 ```widget
 TilpasningOvervannFoto
 ```
 
-Når klimaet blir varmere, kan lufta holde mer vanndamp. Globalt ventes de kraftigste døgnnedbørene å bli ca. 7 % kraftigere for hver grad oppvarming (IPCC, 2021). Norsk klimaservicesenter anbefaler derfor et klimapåslag på minst 40 % på dimensjonerende nedbør for regnskyll som varer kortere enn tre timer. Påslaget gjelder endringen fram mot slutten av århundret (Dyrrdal & Førland, 2019).
+Jo varmere lufta er, desto mer vanndamp kan den holde. Globalt har FNs klimapanel beregnet at de kraftigste døgnnedbørene ventes å bli ca. 7 prosent kraftigere for hver grad oppvarming (IPCC, 2021). Norsk klimaservicesenter anbefaler derfor et klimapåslag på minst 40 prosent på dimensjonerende nedbør (den nedbøren anlegget er beregnet for) for regnskyll som varer kortere enn tre timer. Påslaget gjelder endringen fram mot slutten av århundret (Dyrrdal og Førland, 2019).
 
 Ingeniører regner ut hvor mye vann som renner av, med den rasjonelle formelen *Q = C · I · A*. Her er *Q* avrenningen, *C* andelen av regnet som renner av, *I* nedbørintensiteten og *A* arealet. Tette flater har høy *C*, mens plener og regnbed har lav *C*.
 
 I Norge brukes *treleddsstrategien* for overvann (NOU 2015: 16):
 
 1. Små regnskyll fanges opp og infiltreres der de faller, for eksempel i regnbed og grønne tak.
-2. Større regnskyll forsinkes og fordrøyes i dammer og magasiner.
+2. Større regnskyll forsinkes og fordrøyes (holdes tilbake og slippes saktere) i dammer og magasiner.
 3. De største regnskyllene ledes trygt bort på overflaten i planlagte flomveier.
 
 ```widget
@@ -87,11 +87,11 @@ SjekkTilpasning2
 
 ## Hvordan sikrer vi oss mot flom og havnivåstigning?
 
-Flom er en av de største naturfarene i Norge. Det kan være vårflom fra snøsmelting eller regnflom om sommeren og høsten. Her spiller også kryosfæren inn: Når mindre nedbør kommer som snø, blir snøsmelteflommene mindre og kommer tidligere, mens regnflommene blir større (NVE, u.å.).
+Flom er en av de største naturfarene i Norge. Det kan være vårflom fra snøsmelting eller regnflom om sommeren og høsten. Her spiller også kryosfæren inn: Når mindre nedbør kommer som snø, blir snøsmelteflommene mindre og kommer tidligere, mens regnflommene blir større (Norges vassdrags- og energidirektorat [NVE], u.å.).
 
-NVE lager flomsonekart som viser hvilke områder som blir oversvømt ved for eksempel en 20-, 200- og 1000-årsflom. Kartene brukes når kommunene planlegger hvor det kan bygges (NVE, 2014). NVE anbefaler et klimapåslag på 0, 20 eller 40 % på flomvannføringen for hver elvestrekning (NVE, 2025).
+NVE lager flomsonekart som viser hvilke områder som blir oversvømt ved for eksempel en 20-, 200- og 1000-årsflom. En 200-årsflom har gjentaksintervall på 200 år, altså 1/200 sjanse per år. Kartene brukes når kommunene planlegger hvor det kan bygges (NVE, 2014). NVE anbefaler et klimapåslag på 0, 20 eller 40 prosent på flomvannføringen for hver elvestrekning (NVE, 2025).
 
-Under ekstremværet Hans 7.–9. august 2023 ble det registrert over 700 skred (NVE, 2024). DSB fant i evalueringen at alle de berørte kommunene hadde flomscenarier i sine ROS-analyser, men ikke i det omfanget Hans førte med seg (DSB, 2024).
+Under ekstremværet Hans 7.–9. august 2023 registrerte NVE over 700 skred (NVE, 2024). Direktoratet for samfunnssikkerhet og beredskap (DSB) fant i evalueringen at alle de berørte kommunene hadde flomscenarier i sine risiko- og sårbarhetsanalyser (ROS-analyser), men ikke i det omfanget Hans førte med seg (DSB, 2024).
 
 ```widget
 TilpasningElvesikringFoto
@@ -152,6 +152,8 @@ SjekkTilpasning4
 **Treleddsstrategien:** Infiltrere små regnskyll, fordrøye større regnskyll og lede de største trygt bort i flomveier.
 
 **Klimapåslag:** Hvor mye dagens dimensjonerende verdi bør økes for å ta høyde for klimaendringene.
+
+**Grå infrastruktur:** Rør, betongkanaler og andre harde anlegg for vann.
 
 **Blågrønn infrastruktur:** Naturbaserte løsninger som regnbed, grønne tak og åpne bekker.
 
