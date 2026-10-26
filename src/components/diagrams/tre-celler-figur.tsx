@@ -2,7 +2,7 @@
  * TreCellerFigur — stegfigur for vindsystemet (én celle → Coriolis → Hadley → Ferrel+Polar → hele NH).
  * Erstatter OneVsThreeCellsDiagram + WindCellsDiagram. Mats godkjente mockup 26.10.2026.
  * Kun nordlig halvkuletverrsnitt. Ingen nye tall. Stil: F-palett / StegFigur.
- * Label-hit: én himmel/bakke (ikke per steg); inline-tekst kun ved synlig ≥ 0,85; breddegrader via Lab.
+ * Label-hit: én himmel/bakke (ikke per steg); inline-tekst kun ved synlig ≥ 0,92; breddegrader via Lab.
  */
 import type { ReactNode } from "react";
 import { type Def, type Lab, type Markers } from "./steg-figur";
@@ -11,8 +11,8 @@ import { F, VB } from "./vaerkatastrofer-kit";
 
 const o = (v: number) => r1(Math.max(0, Math.min(1, v)) * 100) / 100;
 
-/** Skjul inline-tekst under midt-fade (samme terskel som fronter OstPil / AR hold). */
-const HOLD = 0.85;
+/** Skjul inline-tekst under midt-fade (AR-terskel 0,92 — strengere enn minstekrav 0,85). */
+const HOLD = 0.92;
 
 const SAND = "#fbbf24";
 const LOW = "#f87171";
@@ -206,8 +206,8 @@ function Steg1({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
         <text x={X0 - 48} y={210} textAnchor="middle" fontSize={12} fontWeight={800} fill="#fca5a5">
           oppdrift
         </text>
-        <text x={480} y={72} textAnchor="middle" fontSize={13} fontWeight={800} fill={F.varm}>
-          øvre strøm hele veien til polen
+        <text x={620} y={100} textAnchor="middle" fontSize={12} fontWeight={800} fill={F.varm}>
+          øvre strøm mot polen
         </text>
         <text x={480} y={BAKKE - 22} textAnchor="middle" fontSize={12} fontWeight={800} fill={F.teal}>
           retur langs bakken
@@ -282,7 +282,7 @@ function Steg3({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
   return (
     <g opacity={o(synlig)}>
       <path d={`M${X30} ${BAKKE} Q${X30 + 60} 368 ${X30 + 120} ${BAKKE} L${X30 + 120} 460 L${X30} 460 Z`} fill="url(#tc-dune)" />
-      <ItczSky x={X0 + 20} sek={sek} />
+      {synlig >= HOLD ? <ItczSky x={X0 + 20} sek={sek} /> : null}
       <g stroke="#7dd3fc" strokeWidth={2} strokeDasharray="4 3">
         {[0, 1, 2, 3].map((i) => (
           <line
@@ -339,7 +339,7 @@ function Steg3({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
         <text x={X0 - 36} y={340} textAnchor="middle" fontSize={12} fontWeight={700} fill="#7dd3fc">
           regn
         </text>
-        <text x={X0 - 42} y={230} fontSize={12} fontWeight={800} fill={F.varm}>
+        <text x={X0 - 55} y={250} fontSize={12} fontWeight={800} fill={F.varm}>
           stiger
         </text>
         <text x={230} y={78} textAnchor="middle" fontSize={12} fontWeight={800} fill={F.varm}>
@@ -433,20 +433,20 @@ function Steg4({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
         </g>
       ) : null}
       <HoldTekst synlig={synlig}>
-        <text x={200} y={230} textAnchor="middle" fontSize={13} fontWeight={800} fill={F.teal}>
+        <text x={250} y={305} textAnchor="middle" fontSize={13} fontWeight={800} fill={F.teal}>
           Hadley
         </text>
-        <text x={X60 + 42} y={245} fontSize={12} fontWeight={800} fill={LOW}>
+        <text x={X60 - 48} y={280} textAnchor="middle" fontSize={12} fontWeight={800} fill={LOW}>
           stiger
         </text>
-        <text x={480} y={108} textAnchor="middle" fontSize={12} fontWeight={700} fill={MUTE}>
+        <text x={480} y={100} textAnchor="middle" fontSize={12} fontWeight={700} fill={MUTE}>
           øvre retur
         </text>
-        <text x={480} y={220} textAnchor="middle" fontSize={11} fontWeight={700} fill="#fde68a">
+        <text x={480} y={300} textAnchor="middle" fontSize={11} fontWeight={700} fill="#fde68a">
           termisk indirekte · drevet av virvler
         </text>
-        <text x={720} y={235} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
-          termisk direkte · 60°–90°N
+        <text x={780} y={300} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
+          termisk direkte
         </text>
         <text x={X90 + 28} y={265} fontSize={12} fontWeight={800} fill={F.kald}>
           synker
@@ -462,7 +462,7 @@ function Steg5({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
   const dash = sek > 0 ? (sek * 10) % 28 : 0;
   return (
     <g opacity={o(synlig)}>
-      <ItczSky x={X0 + 10} sek={sek} />
+      {synlig >= HOLD ? <ItczSky x={X0 + 10} sek={sek} /> : null}
       <path
         d={`M${X0} ${BAKKE - 20} L${X0} 105`}
         fill="none"
@@ -553,13 +553,13 @@ function Steg5({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
         strokeDasharray={sek > 0 ? "10 8" : undefined}
         markerEnd={`url(#${m.cold})`}
       />
-      {/* STJ/PFJ-merker uten inline-tekst (Labs bærer STJ/PFJ klar av path/line) */}
-      <g transform={`translate(${X30}, 98)`} aria-hidden="true">
+      {/* STJ/PFJ-merker litt over strøm/tropopausebrudd (matcher Lab.at) */}
+      <g transform={`translate(${X30}, 72)`} aria-hidden="true">
         <circle r={10} fill="#451a03" stroke={SAND} strokeWidth={1.6} />
         <line x1={-4} y1={-4} x2={4} y2={4} stroke={SAND} strokeWidth={1.6} />
         <line x1={4} y1={-4} x2={-4} y2={4} stroke={SAND} strokeWidth={1.6} />
       </g>
-      <g transform={`translate(${X60}, 118)`} aria-hidden="true">
+      <g transform={`translate(${X60}, 88)`} aria-hidden="true">
         <circle r={10} fill="#450a0a" stroke={LOW} strokeWidth={1.6} />
         <line x1={-4} y1={-4} x2={4} y2={4} stroke={LOW} strokeWidth={1.6} />
         <line x1={4} y1={-4} x2={-4} y2={4} stroke={LOW} strokeWidth={1.6} />
@@ -569,35 +569,23 @@ function Steg5({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
       <TrykkMerke x={X60} kind="L" synlig={synlig} />
       <TrykkMerke x={X90} kind="H" synlig={synlig} />
       <HoldTekst synlig={synlig}>
-        <text x={230} y={205} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
+        <text x={250} y={310} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
           0°–30°N
         </text>
         <text x={230} y={BAKKE - 26} textAnchor="middle" fontSize={11} fontWeight={800} fill={F.teal}>
           ← passat
         </text>
-        <text x={480} y={205} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
+        <text x={480} y={310} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
           30°–60°N · indirekte
         </text>
         <text x={480} y={BAKKE - 26} textAnchor="middle" fontSize={11} fontWeight={800} fill={F.varm}>
           vestavind →
         </text>
-        <text x={720} y={205} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
+        <text x={720} y={310} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
           60°–90°N
         </text>
         <text x={720} y={BAKKE - 26} textAnchor="middle" fontSize={11} fontWeight={800} fill={F.kald}>
           ← østavind
-        </text>
-        <text x={X0} y={475} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
-          regnskog
-        </text>
-        <text x={X30} y={475} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
-          ørken
-        </text>
-        <text x={X60} y={475} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
-          Norge
-        </text>
-        <text x={X90} y={475} textAnchor="middle" fontSize={11} fontWeight={600} fill={F.dempet}>
-          Arktis
         </text>
         <text x={940} y={28} textAnchor="end" fontSize={11} fontWeight={600} fill={F.dempet}>
           STJ/PFJ = jet i tropopausebrudd
@@ -639,7 +627,7 @@ const def: Def<Bilde> = {
       { text: "30°N", x: X30, y: 508, anchor: "middle", color: F.dempet, weight: 800, size: 12, badge: [X30 - 45, 508] },
       { text: "60°N", x: X60, y: 508, anchor: "middle", color: F.dempet, weight: 800, size: 12, badge: [X60 - 45, 508] },
       { text: "90°N polen", x: X90, y: 508, anchor: "middle", color: F.kald, weight: 800, size: 12, badge: [905, 508] },
-      { text: "én celle uten rotasjon", x: 480, y: 42, anchor: "middle", color: F.tekst, weight: 700, size: 13, badge: [480, 28] },
+      { text: "én celle uten rotasjon", x: 200, y: 42, anchor: "middle", color: F.tekst, weight: 700, size: 13, badge: [120, 28] },
       { text: "tropopause", x: 100, y: 58, anchor: "start", color: "#7dd3fc", weight: 700, size: 11, badge: [70, 48] },
     ],
     [
@@ -667,8 +655,8 @@ const def: Def<Bilde> = {
       { text: "30°N", x: X30, y: 508, anchor: "middle", color: SAND, weight: 800, size: 12, badge: [X30 - 45, 508] },
       { text: "60°N", x: X60, y: 508, anchor: "middle", color: LOW, weight: 800, size: 12, badge: [X60 - 45, 508] },
       { text: "90°N polen", x: X90, y: 508, anchor: "middle", color: F.kald, weight: 800, size: 12, badge: [905, 508] },
-      { text: "Ferrel-cellen", x: 480, y: 188, anchor: "middle", color: SAND, weight: 900, size: 14, badge: [480, 165] },
-      { text: "Polarcellen", x: 720, y: 200, anchor: "middle", color: F.kald, weight: 900, size: 14, badge: [720, 175] },
+      { text: "Ferrel-cellen", x: 480, y: 250, anchor: "middle", color: SAND, weight: 900, size: 14, badge: [480, 230] },
+      { text: "Polarcellen", x: 750, y: 280, anchor: "middle", color: F.kald, weight: 900, size: 14, badge: [800, 250] },
       { text: "vestavindsbeltet", x: 480, y: BAKKE - 36, anchor: "middle", color: F.varm, weight: 800, size: 12, badge: [480, BAKKE + 35] },
       { text: "polare østavinder", x: 720, y: BAKKE - 36, anchor: "middle", color: F.kald, weight: 800, size: 12, badge: [720, BAKKE + 35] },
       { text: "polarfronten (L)", x: X60, y: 468, anchor: "middle", color: LOW, weight: 800, size: 12, badge: [X60 + 90, 468] },
@@ -680,13 +668,13 @@ const def: Def<Bilde> = {
       { text: "30°N", x: X30, y: 522, anchor: "middle", color: SAND, weight: 800, size: 11, badge: [X30 - 40, 522] },
       { text: "60°N", x: X60, y: 522, anchor: "middle", color: LOW, weight: 800, size: 11, badge: [X60 - 40, 522] },
       { text: "90°N polen", x: X90, y: 522, anchor: "middle", color: F.kald, weight: 800, size: 11, badge: [905, 522] },
-      { text: "Hadley", x: 230, y: 168, anchor: "middle", color: F.teal, weight: 900, size: 13, badge: [230, 148] },
-      { text: "Ferrel", x: 480, y: 168, anchor: "middle", color: SAND, weight: 900, size: 13, badge: [480, 148] },
-      { text: "Polar", x: 720, y: 168, anchor: "middle", color: F.kald, weight: 900, size: 13, badge: [720, 148] },
-      /* STJ/PFJ klar over jet-merker (unngår stroke mot X-linjer) */
-      { text: "STJ", x: X30, y: 52, anchor: "middle", color: SAND, weight: 800, size: 11, at: [X30, 98], badge: [X30 - 50, 52] },
-      { text: "PFJ", x: X60, y: 68, anchor: "middle", color: LOW, weight: 800, size: 11, at: [X60, 118], badge: [X60 + 50, 68] },
-      { text: "passat · vestavind · østavind", x: 480, y: 475, anchor: "middle", color: F.dempet, weight: 700, size: 12, badge: [480, 492] },
+      /* Hadley klar av ITCZ-sky (#tc-cloud); cellenavn midt i celle ikke i skyen */
+      { text: "Hadley", x: 270, y: 250, anchor: "middle", color: F.teal, weight: 900, size: 13, badge: [270, 230] },
+      { text: "Ferrel", x: 480, y: 250, anchor: "middle", color: SAND, weight: 900, size: 13, badge: [480, 230] },
+      { text: "Polar", x: 720, y: 250, anchor: "middle", color: F.kald, weight: 900, size: 13, badge: [780, 230] },
+      /* STJ/PFJ: badge + at klar over tropopause/strøm (unngår stroke «8» på path) */
+      { text: "STJ", x: X30, y: 36, anchor: "middle", color: SAND, weight: 800, size: 11, at: [X30, 72], badge: [X30 - 90, 28] },
+      { text: "PFJ", x: X60, y: 48, anchor: "middle", color: LOW, weight: 800, size: 11, at: [X60, 88], badge: [X60 + 90, 36] },
       { text: "tropopause faller mot polen", x: 160, y: 42, anchor: "start", color: "#7dd3fc", weight: 700, size: 11, badge: [100, 28] },
     ],
   ] as Lab[][],
