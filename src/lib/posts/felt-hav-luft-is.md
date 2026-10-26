@@ -4,7 +4,7 @@
 >
 > - gjennomføre geofaglig feltarbeid knyttet til havet, atmosfæren eller kryosfæren, bearbeide og tolke de innsamlede dataene og presentere resultatene
 >
-> (Udir, u.å.-b)
+> (Utdanningsdirektoratet [Udir], u.å.-b)
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -18,7 +18,9 @@
 >
 > **I dette kapitlet lærer du om**
 >
-> hvordan du planlegger et feltarbeid i hav, luft eller is og gjør det trygt, hvordan radiosonde, værstasjon, CTD, Argo-bøyer, vannstandsmålere og snøprofil virker, og hvordan du bearbeider, tolker og presenterer dataene med usikkerhet.
+> - hvordan du planlegger et feltarbeid i hav, luft eller is og gjør det trygt
+> - hvordan radiosonde, værstasjon, CTD, Argo-bøyer, vannstandsmålere og snøprofil virker
+> - hvordan du bearbeider, tolker og presenterer dataene med usikkerhet
 
 > **Hva tror du?**
 >
@@ -39,7 +41,7 @@ FeltHavForklaring
 | Kysten | Temperatur og vindretning fra kaia og innover land | Egne målinger en solrik sommerdag (sjøbris) |
 | Havet | Ledningsevne og temperatur mot dyp, og saltholdighet regnet ut fra dem | CTD og Argo-bøyer |
 | Havnivået | Observert og varslet vannstand og tidevann | Kartverkets tjeneste Se havnivå |
-| Snøen | Lag, hardhet, kornform, kornstørrelse og fuktighet | Snøprofil og snøskredvarselet på Varsom |
+| Snøen | Lag, hardhet, kornform, kornstørrelse og fuktighet | Snøprofil og snøskredvarselet på Varsom, nettstedet til Norges vassdrags- og energidirektorat (NVE) for varsler om naturfare |
 
 ```widget
 FieldworkInquiryChain
@@ -59,7 +61,7 @@ Et feltarbeid starter med en problemstilling som kan besvares med målinger, for
 
 Før du drar ut, lager du en risikovurdering. Skriv ned hva som kan gå galt, hvor sannsynlig det er, og hva dere gjør for å unngå det. Sjekk værvarselet og eventuelle farevarsler, avtal når dere skal være tilbake, og gå aldri alene.
 
-- **På sjøen:** I fritidsbåter som er kortere enn åtte meter, skal alle ha på seg egnet flyteutstyr når de oppholder seg utendørs i båten og båten er i fart (Småbåtloven, 1998, § 23 a).
+- **På sjøen:** Regelen om flyteutstyr gjelder fritidsbåter som er kortere enn åtte meter. Når båten er i fart, skal alle som oppholder seg utendørs i båten, ha på seg egnet flyteutstyr (Småbåtloven, 1998, § 23 a).
 - **På isen:** Undersøk isen med en isstav før du går ut på den. Ha med ispigger og redningsvest, og ta med kasteline når dere går flere sammen. To lag med ull innerst og tettere tøy ytterst reduserer nedkjølingen hvis du går gjennom (Varsom, u.å.-c). Faller du i kaldt vann, får du først et kuldesjokk. Du gisper etter luft, og pusten og hjertet går fort. Det kan føre til at du puster inn vann (Norsk helseinformatikk, 2024). Hold nese og munn over vannet, og flyt på ryggen til pusten roer seg. Det tar rundt ett minutt (Redningsselskapet, u.å.). Er du mer enn noen få minutter i kaldt vann, blir kroppen også nedkjølt (Norsk helseinformatikk, 2024). Ta derfor med tørt skift.
 - **I snøen:** Les snøskredvarselet før du drar, og grav snøprofilen på et skredtrygt sted (NVE, 2022; Varsom, u.å.-a).
 - **På Svalbard:** Ingen må komme nærmere isbjørn enn 300 meter, og fra 1. mars til 30. juni er grensen 500 meter. Ser du en isbjørn nærmere enn det, skal du trekke deg unna. Alle som ferdes utenfor bebodd område, skal ha kunnskap om sikring mot isbjørnangrep og ha med egnede midler til å skremme og jage isbjørn (Svalbardmiljøloven, 2001, § 30 a).
@@ -96,7 +98,16 @@ MeteorologicalStation
 
 ### Et opplegg: sjøbris
 
-*Sjøbris* er vind som blåser inn fra havet fordi sola varmer opp landet. Varm luft stiger over land og erstattes av kjøligere luft fra sjøen. I Norge er sjøbrisen en del av solgangsvinden, og den oppstår om sommeren (Store norske leksikon, u.å.-c). Velg en solrik sommerdag og lag en linje av punkter fra kaia og innover land. Mål temperaturen og noter vindretningen på hvert punkt, og gjenta målingene morgen, ettermiddag og kveld. Skriv ned posisjon og klokkeslett for hver måling.
+*Sjøbris* er vind som blåser inn fra havet på solrike dager (Store norske leksikon, u.å.-c). Hvorfor kommer vinden fra havet og ikke fra land? Forklaringen er at sola varmer opp land og hav ulikt. Kjeden er slik:
+
+1. Sola varmer både landet og sjøen.
+2. Havet har stor varmekapasitet, det vil si at det tar lang tid å varme det opp. Landet blir derfor varmt raskere enn sjøen.
+3. Lufta over land blir varmere og lettere enn lufta over sjøen, og den stiger.
+4. Kjøligere luft fra sjøen strømmer inn langs bakken og tar plassen til den. Det er sjøbrisen.
+
+Jo varmere landet blir i forhold til sjøen, desto tydeligere blir sjøbrisen. Derfor starter den gjerne tidlig på ettermiddagen. Utpå kvelden står sola så lavt at den ikke lenger varmer landet, og vinden løyer (Store norske leksikon, u.å.-e). I Norge er sjøbrisen en del av *solgangsvinden*. Det er et vindsystem i kyststrøk med vind inn mot land om dagen og ut fra land om natten. Den er vanlig om sommeren (Store norske leksikon, u.å.-e). Mer om solgangsvinden står i kapitlet [Lokale og regionale værsystemer](/tema/lokale-vaersystemer).
+
+Velg en solrik sommerdag og lag en linje av punkter fra kaia og innover land. Mål temperaturen og noter vindretningen på hvert punkt, og gjenta målingene morgen, ettermiddag og kveld. Skriv ned posisjon og klokkeslett for hver måling. Dersom kjeden stemmer, er det varmere inne på land enn ved kaia om ettermiddagen, og vinden blåser fra sjøen.
 
 ```widget
 SjekkFeltHav3
@@ -106,7 +117,7 @@ SjekkFeltHav3
 
 ### CTD
 
-*CTD* står for konduktivitet, temperatur og dyp. Det er en pakke med elektroniske instrumenter som registrerer hvordan ledningsevnen og temperaturen i vannet endrer seg nedover. På skip er CTD-en ofte festet til en rosett som senkes i en kabel. På rosetten sitter det Niskin-flasker som kan lukkes i bestemte dyp, slik at forskerne får med seg vannprøver (NOAA, u.å.). Saltholdigheten måles ikke direkte. Den regnes ut fra vannets elektriske ledningsevne og temperaturen, fordi ledningsevnen avhenger av hvor mye salt som er løst i vannet (Store norske leksikon, u.å.-d; WHOI, u.å.). Med temperatur og saltholdighet kan du skille vannmassene fra hverandre, for eksempel det ferske kystvannet og det saltere atlanterhavsvannet (NOAA, u.å.). Mer om vannmassene står i kapitlet [Havstrømmer](/tema/havstrommer).
+*CTD* står for konduktivitet (ledningsevne), temperatur og dyp. Det er en pakke med elektroniske instrumenter som registrerer hvordan ledningsevnen og temperaturen i vannet endrer seg nedover. På skip er CTD-en ofte festet i en ramme, en såkalt *rosett*, som senkes i en kabel. Rundt CTD-en på rosetten sitter vannhentere, såkalte *Niskin-flasker*. De kan lukkes i bestemte dyp, slik at forskerne får med seg vannprøver (National Oceanic and Atmospheric Administration [NOAA], u.å.). Saltholdigheten måles ikke direkte. Den regnes ut fra vannets elektriske ledningsevne og temperaturen, fordi ledningsevnen avhenger av hvor mye salt som er løst i vannet (Store norske leksikon, u.å.-d; Woods Hole Oceanographic Institution [WHOI], u.å.). Med temperatur og saltholdighet kan du skille vannmassene fra hverandre. En *vannmasse* er vann med omtrent samme temperatur og saltholdighet og samme opphav. Eksempler er det ferske kystvannet og det saltere atlanterhavsvannet (NOAA, u.å.). Mer om vannmassene står i kapitlet [Havstrømmer](/tema/havstrommer).
 
 ```widget
 CtdProfileModel
@@ -120,7 +131,16 @@ Det meste av havet er langt fra skipene. Derfor driver rundt 4000 *Argo-bøyer* 
 
 Havforskningsinstituttet har målt temperatur og saltholdighet på faste stasjoner langs kysten siden 1930-tallet (Havforskningsinstituttet, 2026), og på faste snitt ut i Norskehavet, som Svinøysnittet, siden 1977 (Havforskningsinstituttet, u.å.). Lange måleserier fra samme sted gjør det mulig å se om havet endrer seg.
 
-Kartverket har det nasjonale ansvaret for å måle vannstanden. Tjenesten Se havnivå viser observert og varslet vannstand, tidevann, landheving og framtidig havnivå. De fleste steder er det to høyvann og to lavvann i døgnet (Kartverket, u.å.). Et enkelt havoppdrag er å sammenligne den observerte vannstanden med det varslede tidevannet. Forskjellen kommer i stor grad av været. *Stormflo* er særlig høy vannstand langs kysten i forbindelse med storm (Store norske leksikon, u.å.-b).
+Kartverket har det nasjonale ansvaret for å måle vannstanden. Tjenesten Se havnivå viser observert og varslet vannstand, tidevann, landheving og framtidig havnivå. *Landheving* betyr at landet langsomt stiger i forhold til havet. De fleste steder er det to høyvann og to lavvann i døgnet (Kartverket, u.å.).
+
+Et enkelt havoppdrag er å sammenligne den observerte vannstanden med det varslede tidevannet. Tidevannet skyldes tiltrekningen fra månen og sola, og Kartverket regner det ut i tidevannstabeller lang tid i forveien. Forskjellen mellom observert vannstand og tidevann kommer i stor grad av været. Det er særlig lufttrykket og vinden som virker (Kartverket, 2021):
+
+- **Lufttrykket:** Lufta presser på havflaten. Når lufttrykket synker, presser lufta mindre, og havet hever seg. Som en tommelfingerregel stiger vannet ca. 1 cm for hver hektopascal (hPa) lufttrykket synker. Hektopascal er enheten for lufttrykk. Et kraftig lavtrykk på 960 hPa gir derfor ca. 50 cm høyere vannstand enn et normalt lufttrykk på rundt 1010 hPa. Høyt lufttrykk gir på samme måte lavere vannstand.
+- **Vinden:** Når det blåser kraftig mot land, skyver vinden vann inn mot kysten og innover i fjordene. Vannet stues opp, og vannstanden stiger. Blåser det kraftig fra land, blir vannstanden lavere.
+
+Været kan altså gi over én meter høyere eller lavere vannstand enn tidevannstabellen viser. Er værbidraget ekstra stort, kaller vi det *stormflo* (Kartverket, 2021). Stormflo er særlig høy vannstand langs kysten i forbindelse med storm. Av de to mekanismene betyr vinden som regel mest (Store norske leksikon, u.å.-b). Vannstandsvarselet på Se havnivå er summen av tidevannet og det varslede værbidraget (Kartverket, 2021). Sammenligner du med vannstandsvarselet i stedet for tidevannet, er været altså allerede regnet med.
+
+Et norsk eksempel viser hvor stort værbidraget kan bli. Under en storm 16. oktober 1987 sto vannet i Oslofjorden 1,5 meter over normalt høyvann. Sammen med sterk nedbør ga det store ødeleggelser, særlig innerst i fjorden (Store norske leksikon, u.å.-b).
 
 ```widget
 SjekkFeltHav4
@@ -130,11 +150,13 @@ SjekkFeltHav4
 
 ### Snøskredvarselet
 
-Snøskredvarselet på Varsom kommer hver dag i vinterhalvåret. NVE publiserer varsel for 24 regioner på fastlandet og Svalbard (NVE, u.å.). Faregraden settes etter den europeiske snøskredfareskalaen. Den sier hvor lett skred løses ut, hvor utbredt problemet er, og hvor store skred som kan ventes. Faregraden gjelder et område på minst 100 kvadratkilometer, ikke ett enkelt heng (Varsom, u.å.-b). Varselet er et hjelpemiddel, ikke en fasit, og du må alltid gjøre egne vurderinger (Varsom, u.å.-a). I appen kan du lese og dele observasjoner av snø og skred. Dine egne målinger kan altså også bli data for andre.
+Som nevnt ligger snøskredvarselet på Varsom. Det kommer hver dag i vinterhalvåret. NVE publiserer varsel for 24 regioner på fastlandet og Svalbard (NVE, u.å.). Faregraden settes etter den europeiske snøskredfareskalaen. Den sier hvor lett skred løses ut, hvor utbredt problemet er, og hvor store skred som kan ventes. Faregraden gjelder et område på minst 100 kvadratkilometer, ikke ett enkelt *heng*, det vil si en enkelt fjellside (Varsom, u.å.-b). Varselet er et hjelpemiddel, ikke en fasit, og du må alltid gjøre egne vurderinger (Varsom, u.å.-a). I appen kan du lese og dele observasjoner av snø og skred. Dine egne målinger kan altså også bli data for andre.
 
 ### Snøprofil
 
-En *snøprofil* viser lagene i snødekket, eventuelle svake lag og hvordan temperaturen endrer seg nedover. For hvert lag noterer du hardhet, tykkelse, kornform, kornstørrelse og fuktighet. Gravepunktet skal være skredtrygt, med et jevnt snødekke som er representativt for området (NVE, 2022).
+En *snøprofil* viser lagene i snødekket, eventuelle svake lag og hvordan temperaturen endrer seg nedover. Et *svakt lag* er et lag med svake bindinger mellom kornene. Ligger et fastere snøflak over, kan flaket gli ut på det svake laget som et flakskred. Det står mer om dette i kapitlet [Kryosfæren](/tema/kryosfaeren). Det er derfor viktig å finne de svake lagene i profilen. Snøskredvarslerne følger dem over tid (NVE, 2022).
+
+For hvert lag noterer du hardhet, tykkelse, kornform, kornstørrelse og fuktighet. *Kornform* er typen snøkorn laget består av. NVE deler kornformene inn i hovedklasser, blant annet nedbørspartikler (ny snø), avrundede korn, begerkrystaller, overflaterim og smelteformer. Gravepunktet skal være skredtrygt, med et jevnt snødekke som er representativt for området (NVE, 2022).
 
 ```widget
 SnowProfileModel
@@ -156,11 +178,17 @@ Alle målinger har usikkerhet. Et termometer kan vise litt feil, og vannet og lu
 
 ### Tolkning og sammenligning
 
-Sammenlign dataene dine med andre kilder. Du kan sammenligne den målte vannstanden med Kartverkets tidevannsvarsel, temperaturen ved kaia med en værstasjon i nærheten, og CTD-profilen med havmodellen Norkyst, som regner ut temperatur, saltholdighet og strøm langs hele kysten (Christensen mfl., 2026). Stemmer dataene ikke, må du drøfte om det skyldes måleusikkerhet, stedet du målte, eller at modellen eller varselet bommer.
+Sammenlign dataene dine med andre kilder. Du kan for eksempel sammenligne:
+
+- den målte vannstanden med Kartverkets tidevannsvarsel
+- temperaturen ved kaia med en værstasjon i nærheten
+- CTD-profilen med havmodellen Norkyst, som regner ut temperatur, saltholdighet og strøm langs hele kysten (Christensen mfl., 2026)
+
+Stemmer dataene ikke, må du drøfte om det skyldes måleusikkerhet, stedet du målte, eller at modellen eller varselet bommer.
 
 ### Presentasjon
 
-En CTD- eller radiosondeprofil vises vanligvis med dypet eller høyden på den loddrette aksen og den målte verdien på den vannrette. Da ser du lagdelingen direkte. Målinger langs en linje, som sjøbrislinja, passer best i et kart eller i et diagram med avstand fra kysten langs den vannrette aksen. En rapport har vanligvis fem deler: problemstilling og hypotese, område og metode, resultater, tolkning og drøfting av usikkerhet, og konklusjon. Skill mellom det du observerte, og det du tolker.
+En CTD- eller radiosondeprofil vises vanligvis med dypet eller høyden på den loddrette aksen og den målte verdien på den vannrette. Da ser du *lagdelingen* direkte. Lagdeling betyr at vannet eller lufta ligger i lag med ulike egenskaper. I en fjord ligger ofte lett, ferskt vann øverst og tyngre, saltere vann under. Målinger langs en linje, som sjøbrislinja, passer best i et kart eller i et diagram med avstand fra kysten langs den vannrette aksen. En rapport har vanligvis fem deler: problemstilling og hypotese, område og metode, resultater, tolkning og drøfting av usikkerhet, og konklusjon. Skill mellom det du observerte, og det du tolker.
 
 ```widget
 SjekkFeltHav6
@@ -170,9 +198,9 @@ SjekkFeltHav6
 >
 > **«CTD-en måler saltholdigheten direkte.»** Den måler ledningsevne og temperatur. Saltholdigheten regnes ut fra dem (Store norske leksikon, u.å.-d; WHOI, u.å.).
 >
-> **«Snøskredvarselet gjelder hengen jeg står i.»** Faregraden gjelder et område på minst 100 kvadratkilometer, og egne vurderinger hører med (Varsom, u.å.-a; Varsom, u.å.-b).
+> **«Snøskredvarselet gjelder henget jeg står i.»** Faregraden gjelder et område på minst 100 kvadratkilometer, og egne vurderinger hører med (Varsom, u.å.-a; Varsom, u.å.-b).
 >
-> **«Observert vannstand er bare tidevann.»** Været påvirker også vannstanden, og stormflo kan gi særlig høy vannstand (Kartverket, u.å.; Store norske leksikon, u.å.-b).
+> **«Observert vannstand er bare tidevann.»** Været påvirker også vannstanden. Lavt lufttrykk og kraftig vind mot land løfter vannet, og stormflo kan gi særlig høy vannstand (Kartverket, 2021; Store norske leksikon, u.å.-b).
 >
 > **«Én måling er nok.»** Først når du har gjentatt målingen, kan du se hvor mye den varierer og regne ut et gjennomsnitt.
 
@@ -188,7 +216,7 @@ SjekkFeltHav6
 
 **Værstasjon:** Stasjon som måler været ved bakken etter faste regler, for eksempel temperatur 1,25–2 meter og vind 10 meter over bakken.
 
-**Sjøbris:** Vind inn fra havet fordi sola varmer landet. I Norge en del av solgangsvinden om sommeren.
+**Sjøbris:** Vind inn fra havet på solrike dager, fordi landet varmes raskere enn sjøen. I Norge en del av solgangsvinden om sommeren.
 
 **CTD:** Instrument som måler konduktivitet (ledningsevne) og temperatur mot dyp. Saltholdigheten regnes ut fra målingene.
 

@@ -1,6 +1,6 @@
 > **Kompetansemål i Geofag 2 (LK20)**
 >
-> Målet er at du skal kunne vurdere risiko ved naturfarer som følge av fenomener i atmosfæren, havet og kryosfæren og drøfte hvordan klimaendringer kan påvirke disse (Udir, u.å.-b).
+> Målet er at du skal kunne vurdere risiko ved naturfarer som følge av fenomener i atmosfæren, havet og kryosfæren og drøfte hvordan klimaendringer kan påvirke disse (Utdanningsdirektoratet [Udir], u.å.-b).
 >
 > **Kjerneelementer som dekkes i dette kapitlet:**
 >
@@ -18,9 +18,9 @@ OrkanForklaring
 >
 > En høststorm gir orkan på Kråkenes fyr ved Stad. Er det det samme som en orkan i Karibia? Svar før du leser videre – vi kommer tilbake til det i tabellen under.
 
-[Værkatastrofer](/tema/vaerkatastrofer) samler farer fra vind og hav. Ordet orkan brukes både om selve vinden og om det intense lavtrykket som gir vinden. Vindstyrken er orkan når vinden er over 32,6 m/s (64 knop eller mer, ca. 118 km/t). Den måles ti meter over bakken i ti minutter. På Beauforts skala er det styrke 12, det høyeste trinnet. Storm ligger under orkan (Store norske leksikon, u.å.-a).
+[Værkatastrofer](/tema/vaerkatastrofer) samler farer fra vind og hav. Ordet orkan brukes både om selve vinden og om det intense lavtrykket som gir vinden. Vindstyrken er orkan når vinden er over 32,6 m/s (64 knop eller mer, ca. 118 km/t). Den måles ti meter over bakken i ti minutter. På Beauforts skala skiller vi mellom trinnene for vindstyrke; orkan er styrke 12, det høyeste trinnet. Storm ligger under orkan (Store norske leksikon, u.å.-a).
 
-En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind på 74 mph, 64 knop, eller mer. På Saffir-Simpson-skalaen starter kategori 1 ved 119 km/t. I det vestlige Nord-Stillehavet kalles de tyfoner. I Det indiske hav og Sør-Stillehavet kalles de sykloner. En stor orkan har middelvind på minst 111 mph, 96 knop, og er kategori 3, 4 eller 5. National Hurricane Center bruker middelvinden over ett minutt, mens norske vindstyrker bruker middelvinden over ti minutter. Derfor kan ikke tallene sammenlignes direkte (National Hurricane Center, u.å.-a; u.å.-b).
+En tropisk orkan er noe annet. Det er en tropisk syklon med høyeste middelvind på 74 mph (miles per hour, ca. 119 km/t), 64 knop, eller mer. På Saffir-Simpson-skalaen starter kategori 1 ved 119 km/t. I det vestlige Nord-Stillehavet kalles de tyfoner. I Det indiske hav og Sør-Stillehavet kalles de sykloner. En stor orkan har middelvind på minst 111 mph, 96 knop, og er kategori 3, 4 eller 5. National Hurricane Center (det amerikanske orkansenteret) bruker middelvinden over ett minutt, mens norske vindstyrker bruker middelvinden over ti minutter. Derfor kan ikke tallene sammenlignes direkte (National Hurricane Center, u.å.-a; u.å.-b).
 
 | Begrep | Hva det er |
 | --- | --- |
@@ -61,11 +61,11 @@ SjekkKatastrofer1
 
 En tornado, også kalt trombe, er en lokal virvelvind. Den er den kraftigste av virvelvindene, som også omfatter skypumper og støvvirvler. Virvelen har tverrmål i størrelsesorden 100 meter. Det er målt vindhastigheter opp til 512 km/t, 142 m/s. Ut fra skader anslås det at vinden kanskje kan nå opptil 600 km/t (Store norske leksikon, u.å.-b).
 
-Tornadoer dannes oftest sammen med større systemer: kaldfronter, linjebyer og lavtrykk, og i mindre skala ved særlig kraftige bygeskyer, superceller. De flytter seg omtrent med moderskyen, typisk 40 til 50 km/t, unntaksvis opp i 100 km/t. De forekommer over land i subtropene og på midlere breddegrader. Over de sentrale delene av USA, der varm og fuktig luft fra Mexicogolfen møter kald luft fra nordvest, er det mange og kraftige tornadoer (Store norske leksikon, u.å.-b).
+Tornadoer dannes oftest sammen med større systemer: kaldfronter, linjebyer og lavtrykk, og i mindre skala ved særlig kraftige bygeskyer, superceller, det vil si langlivede bygeskyer med roterende oppdrift. De flytter seg omtrent med moderskyen, typisk 40 til 50 km/t, unntaksvis opp i 100 km/t. De forekommer over land i subtropene og på midlere breddegrader. Over de sentrale delene av USA, der varm og fuktig luft fra Mexicogolfen møter kald luft fra nordvest, er det mange og kraftige tornadoer (Store norske leksikon, u.å.-b).
 
-EF-skalaen graderer en tornado fra EF0 til EF5 ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.-a).
+EF-skalaen har seks trinn, fra EF0 til EF5, og graderer en tornado ut fra skadene. Vindtallene er anslag, ikke målinger, og gjelder vindkast over tre sekunder. EF0 svarer til 65–85 mph. EF5 er over 200 mph (National Weather Service, u.å.-a).
 
-En supercelle er en langlivet bygesky med en skrå, roterende oppdrift. Den roterende oppdriften kalles en mesosyklon, og den kan finnes 20 til 60 minutter før en tornado dannes (National Severe Storms Laboratory, u.å.-c). Framre nedsynk er det regnkjølte området med mest nedbør. Bakre nedsynk er tørrere og varmere og lager en klar glipe formet som en hestesko. Tornadoer dannes oftest ved veggskya under den sterkeste oppdriften (National Weather Service, u.å.-b).
+En supercelle er en langlivet bygesky med en skrå, roterende oppdrift. Den roterende oppdriften kalles en mesosyklon, og den kan finnes 20 til 60 minutter før en tornado dannes (National Severe Storms Laboratory, u.å.-c). Framre nedsynk er det regnkjølte området med mest nedbør. Bakre nedsynk er tørrere og varmere og lager en klar glipe formet som en hestesko. Tornadoer dannes oftest ved veggskya (den lave skyen under den sterkeste oppdriften) (National Weather Service, u.å.-b).
 
 ```widget
 SupercellAnatomy
@@ -109,7 +109,7 @@ AtmosphericRiver
 
 ## Ekstremværet Hans
 
-Ekstremværet Hans kom i august 2023 med nedbørmengder Meteorologisk institutt ikke hadde sett på over 100 år på Østlandet. Innlandet fikk de største mengdene. I gjennomsnitt går det mer enn 100 år mellom hver gang det kommer så store mengder på så kort tid, og området var uvanlig stort (Meteorologisk institutt, 2023). NVE kaller Hans den dyreste naturkatastrofen som noen gang har rammet Norge (Norges vassdrags- og energidirektorat, 2024).
+Ekstremværet Hans kom i august 2023 med nedbørmengder Meteorologisk institutt ikke hadde sett på over 100 år på Østlandet. Innlandet fikk de største mengdene. I gjennomsnitt går det mer enn 100 år mellom hver gang det kommer så store mengder på så kort tid, og området var uvanlig stort (Meteorologisk institutt, 2023). Norges vassdrags- og energidirektorat (NVE) kaller Hans den dyreste naturkatastrofen som noen gang har rammet Norge (NVE, 2024).
 
 Bjerknessenteret beskriver at deler av lavtrykket fungerte som en atmosfærisk elv, et transportbånd for vanndamp. Vanligvis kommer slike elver fra Atlanterhavet, men under Hans kom den uvanlig nok fra øst, med fuktighet fra Øst-Europa der en stor del var fordampet over land (Svensson, 2023).
 
@@ -135,7 +135,7 @@ SjekkKatastrofer3
 
 ## Klima og ekstremnedbør
 
-Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstreme varmehendelser og svekket ekstreme kuldehendelser. I noen regioner er ekstrem nedbør forsterket. Hyppigheten og intensiteten av kraftig nedbør har økt på global skala og over et flertall av landområdene (IPCC, 2021).
+Menneskeskapte klimaendringer har allerede økt styrken og hyppigheten av ekstreme varmehendelser og svekket ekstreme kuldehendelser. I noen regioner er ekstrem nedbør forsterket. Hyppigheten og intensiteten av kraftig nedbør har økt på global skala og over et flertall av landområdene (FNs klimapanel [IPCC], 2021).
 
 > **Vanlige misforståelser**
 >
