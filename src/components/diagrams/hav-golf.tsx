@@ -141,7 +141,7 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
   lab("Norge", 1100, 260, COL.sted, { size: 15, weight: 800, badge: [1060, 240] });
   lab("Atlanteren", 640, 530, COL.atl, { size: 16, weight: 600, badge: [640, 500] });
   /* Norskehavet under tip/ribbon, inne i viewBox. */
-  lab("Norskehavet", 780, 175, COL.dempet, { size: 13, weight: 600, badge: [740, 155] });
+  lab("Norskehavet", 700, 130, COL.dempet, { size: 13, weight: 600, badge: [660, 115] });
 
   /* Inline-tekst kun ved høy synlighet (TreCeller HOLD ~0,92) — unngår midt-fade stroke. */
   const hold = (v: number) => clamp((v - 0.35) / 0.4);
@@ -184,19 +184,20 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
   if (s.nor > 0.35) {
     const op = hold(s.nor);
     if (op >= 0.92) {
-      lab("Den norske atlanterhavsstrømmen", 700, 290, "#fecaca", {
+      /* Sør for NAC/nor-korridor — unngår stroke mot #a3e635/#020617. */
+      lab("Den norske atlanterhavsstrømmen", 620, 350, "#fecaca", {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [880, 180],
-        badge: [680, 300],
+        at: [860, 200],
+        badge: [600, 360],
       });
-      /* Vest for tip, klar av SEG_NOR/ribbon (stroke «ender»). */
-      lab("ender i havet", 820, 165, COL.dempet, {
+      /* Høyre for Norskehavet, vest for tip — ikke overlapping. */
+      lab("ender i havet", 900, 175, COL.dempet, {
         size: 11,
         weight: 600,
         opacity: op,
-        badge: [790, 150],
+        badge: [870, 160],
       });
     }
   }
