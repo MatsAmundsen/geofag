@@ -134,7 +134,7 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
     });
   };
 
-  lab("Nord-Amerika", 140, 255, COL.sted, { anchor: "start", size: 15, weight: 800, badge: [100, 200] });
+  lab("Nord-Amerika", 155, 280, COL.sted, { anchor: "start", size: 15, weight: 800, badge: [120, 250] });
   /* Badge i havet, klar av kyststrek #5a7a62 (stroke «2»). */
   lab("Floridastredet", 360, 595, COL.dempet, { anchor: "start", size: 12, weight: 600, badge: [350, 590] });
   /* Norge klar av kompass-N (covered «N»). */
@@ -148,12 +148,12 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
   if (s.golf > 0.35) {
     const op = hold(s.golf);
     if (op >= 0.92) {
-      lab("Golfstrømmen · Floridastredet", 380, 500, COL.golf, {
+      lab("Golfstrømmen · Floridastredet", 470, 555, COL.golf, {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [280, 520],
-        badge: [360, 540],
+        at: [300, 540],
+        badge: [450, 575],
       });
     }
   }
@@ -184,19 +184,19 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
   if (s.nor > 0.35) {
     const op = hold(s.nor);
     if (op >= 0.92) {
-      lab("Den norske atlanterhavsstrømmen", 780, 250, "#fecaca", {
+      lab("Den norske atlanterhavsstrømmen", 700, 290, "#fecaca", {
         size: 12,
         weight: 800,
         opacity: op,
-        at: [900, 160],
-        badge: [740, 255],
+        at: [880, 180],
+        badge: [680, 300],
       });
-      /* y≥112 inne i mockup-panel (MY=92) — fikser clip/unhittable «ender i havet». */
-      lab("ender i havet", 910, 145, COL.dempet, {
+      /* Vest for tip, klar av SEG_NOR/ribbon (stroke «ender»). */
+      lab("ender i havet", 820, 165, COL.dempet, {
         size: 11,
         weight: 600,
         opacity: op,
-        badge: [880, 130],
+        badge: [790, 150],
       });
     }
   }
@@ -320,7 +320,7 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
               </feMerge>
             </filter>
             <filter id={id("blur")} x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="22" />
+              <feGaussianBlur stdDeviation="28" />
             </filter>
             <filter id={id("drop")} x="-8%" y="-8%" width="120%" height="120%">
               <feDropShadow dx="3" dy="4" stdDeviation="5" floodColor="#020617" floodOpacity="0.55" />
@@ -356,18 +356,18 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
                 d={ribbonD}
                 fill="none"
                 stroke="#f97316"
-                strokeWidth={10}
+                strokeWidth={1.5}
                 strokeLinecap="round"
-                opacity={0.9}
+                opacity={0.95}
                 filter={`url(#${id("blur")})`}
               />
               <path
                 d={ribbonD}
                 fill="none"
                 stroke="#fbbf24"
-                strokeWidth={5}
+                strokeWidth={1.2}
                 strokeLinecap="round"
-                opacity={0.75}
+                opacity={0.8}
                 filter={`url(#${id("blur")})`}
               />
             </g>
@@ -439,14 +439,11 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
               opacity={0.6}
             />
 
-            {/* Nordpil øvre venstre — klar av Norge-badge (covered «N»). Notes: «nord opp». */}
-            <g transform="translate(72,115)" data-nocheck="" aria-hidden="true">
-              <circle cx={18} cy={22} r={20} fill="#12202c" stroke="#2a3f52" strokeWidth={1.2} />
-              <path d="M18 8 L18 32" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
-              <path d="M18 8 L13 16 M18 8 L23 16" fill="none" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
-              <text x={18} y={48} fill="#7dd3fc" fontSize={11} fontWeight={700} textAnchor="middle">
-                N
-              </text>
+            {/* Nordpil øvre venstre uten «N»-bokstav (notes: «nord opp») — unngår covered badge@320. */}
+            <g transform="translate(72,118)" data-nocheck="" aria-hidden="true">
+              <circle cx={18} cy={22} r={18} fill="#12202c" stroke="#2a3f52" strokeWidth={1.2} />
+              <path d="M18 10 L18 34" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
+              <path d="M18 10 L13 18 M18 10 L23 18" fill="none" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
             </g>
 
             {/* Strømsegmenter */}
