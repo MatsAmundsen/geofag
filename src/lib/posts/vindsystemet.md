@@ -60,16 +60,10 @@ TermiskDirekteForklaring
 ```
 
 ```widget
-OneVsThreeCellsDiagram
+TreCellerFigur
 ```
 
-Venstre rute er Hadleys stillestående jord. Høyre rute er tre celler etter at rotasjonen har dreid den øvre strømmen.
-
-```widget
-WindCellsDiagram
-```
-
-Tverrsnittet viser det samme fra siden: lufta stiger ved ekvator og nær 50–60°, og synker nær 30° og over polen.
+Stegfiguren går fra Hadleys ene celle til tre celler på nordlig halvkuletverrsnitt: lufta stiger ved ekvator og nær 60°, og synker nær 30° og over polen.
 
 ```widget
 SjekkVindsystemet1

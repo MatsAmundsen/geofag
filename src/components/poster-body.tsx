@@ -53,7 +53,6 @@ import {
   HighPressureCrossSectionDiagram,
   InsolationDiagram,
   LowPressureCrossSectionDiagram,
-  OneVsThreeCellsDiagram,
   RadarSatelliteNowcastingDiagram,
   RealisticSynopticChartDiagram,
   PolarFrontNorwayDiagram,
@@ -62,7 +61,6 @@ import {
   SurfaceWindsDiagram,
   UpperAir500hPaMapDiagram,
   WeatherProgression24hDiagram,
-  WindCellsDiagram,
   ValleyWindDiagram,
   EarthRadiationBudgetDiagram,
   BjerknesLoopDiagram,
@@ -180,6 +178,7 @@ import { WindSystemModel } from "@/components/models/wind-system-model";
 import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagram, SlabAvalancheDiagram } from "@/components/diagrams/cryosphere";
 import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselFigur, SupercelleFigur } from "@/components/diagrams/vaerkatastrofer-figurer-2";
 import { KaldfrontFigur, VarmfrontFigur } from "@/components/diagrams/fronter-steg-figurer";
+import { TreCellerFigur } from "@/components/diagrams/tre-celler-figur";
 import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
@@ -389,8 +388,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_VINDSYSTEMET} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   InsolationDiagram: () => <InsolationDiagram />,
-  OneVsThreeCellsDiagram: () => <OneVsThreeCellsDiagram />,
-  WindCellsDiagram: () => <WindCellsDiagram />,
+  TreCellerFigur: () => <TreCellerFigur />,
   HadleyCloseupDiagram: () => <HadleyCloseupDiagram />,
   SurfaceWindsDiagram: () => <SurfaceWindsDiagram />,
   GlobalClimateZonesDiagram: () => <GlobalClimateZonesDiagram />,
