@@ -192,12 +192,12 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
         at: [860, 200],
         badge: [600, 360],
       });
-      /* Høyre for Norskehavet, vest for tip — ikke overlapping. */
-      lab("ender i havet", 900, 175, COL.dempet, {
+      /* Åpent hav sør for tip/Norge-kyst — unngår stroke tip (#e07a5f) og kyst (#5a7a62). */
+      lab("ender i havet", 760, 240, COL.dempet, {
         size: 11,
         weight: 600,
         opacity: op,
-        badge: [870, 160],
+        badge: [730, 230],
       });
     }
   }
