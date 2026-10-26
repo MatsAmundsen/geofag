@@ -103,6 +103,7 @@ import {
   SjobrisFigurLat,
   OppvellingFigurLat,
   GolfFigurLat,
+  GyreFigurLat,
   NorskekystFigurLat,
   OtecFigurLat,
   EkmanSpiralFigurLat,
@@ -166,7 +167,6 @@ import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams
 import { PetroleumSnittFigur, RessurskartFigur } from "@/components/diagrams/ressurs-figurer";
 import {
   DensityDiagram,
-  GyreDiagram,
   OceanDriversDiagram,
 } from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
@@ -679,7 +679,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       </p>
     </Callout>
   ),
-    GyreDiagram: () => <GyreDiagram />,
+    GyreDiagram: () => <GyreFigurLat />,
     OppvellingDiagram: () => <OppvellingFigurLat />,
     GolfDiagram: () => <GolfFigurLat />,
     NorskekystStrommer: () => <NorskekystFigurLat />,
