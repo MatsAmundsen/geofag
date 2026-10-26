@@ -1385,6 +1385,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Værkatastrofer (G2): kvalitetsloft polarlavtrykk, drivkrefter, IPCC.
+    flag: "g2-vaerkatastrofer-kvalitetsloft-2026-10-26",
+    slug: "vaerkatastrofer",
+    stale: [
+      "Polare lavtrykk er små, men relativt intense lavtrykk som oppstår i vintersesongen over havområdene i Arktis. De forekommer hovedsakelig fra november til april (Store norske leksikon, u.å.-g). De oppstår nord for polarfronten. Fra 2000 til 2024",
+      "Tropiske luftmasser føres mot våre breddegrader, og når de kommer til Norge, blir vanndampen til regn.",
+      "## Klima og ekstremnedbør",
+    ],
+  },
+  {
     // Klima-oversikt (G2): Terra Mater fase 1–2 (M1–M3).
     flag: "g2-oversikt-terra-mater-2026-10-26",
     slug: "oversikt",

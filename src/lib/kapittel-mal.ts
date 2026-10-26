@@ -305,8 +305,8 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Orkan som vindstyrke er middelvind over 32,6 m/s i ti minutter. En tropisk orkan er en tropisk syklon, og den måles med middelvind over ett minutt.",
     "Saffir-Simpson-skalaen anslår bare vindskade. Orkaner i alle kategorier kan gi dødelig stormflo, flom og tornadoer.",
     "Stormflo kommer av at vinden stuer vann mot kysten og at trykket er lavt. Den blir verst sammen med springflo.",
-    "Bombesykloner, atmosfæriske elver og polare lavtrykk er farlige værsystemer på våre breddegrader.",
-    "Klimaendringene har gjort kraftig nedbør hyppigere og mer intens på global skala, slik ekstremværet Hans er et eksempel på.",
+    "Polare lavtrykk dannes når kald arktisk luft strømmer over varmere hav. Bombesykloner og atmosfæriske elver er andre farlige systemer på våre breddegrader.",
+    "Ekstremvær drives av varme, fukt, ustabilitet og styrestrøm. IPCC har høy tillit til at kraftig nedbør har økt på global skala.",
   ],
   Enso: [
     "ENSO er El Niño–sørlig oscillasjon, et naturlig samspill mellom hav og luft i det tropiske Stillehavet som skifter omtrent hvert andre til sjuende år.",
