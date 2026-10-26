@@ -1492,6 +1492,12 @@ const COPY_RESEEDS: CopyReseed[] = [
       "Derfor ligger jetstrømmene ofte over områder der havtemperaturen endrer seg raskt.",
     ],
   },
+  {
+    // Vindsystemet: OneVsThreeCells + WindCells → TreCellerFigur (Mats ja mockup 26.10.2026).
+    flag: "g2-vindsystemet-tre-celler-2026-10-26",
+    slug: "vindsystemet",
+    stale: ["```widget\nOneVsThreeCellsDiagram\n```", "```widget\nWindCellsDiagram\n```"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
