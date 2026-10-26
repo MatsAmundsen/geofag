@@ -1422,6 +1422,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(NOAA AOML, u.å.)",
     ],
   },
+  {
+    // Kryosfæren (G2): Terra Mater fase 1–2 (må-punkter M1–M7: snøskred forklart med typer og fire vilkår for flakskred, Longyearbyen 2015, faregradskalaen i tabell, positiv tilbakekobling definert og skrevet som kjede for havis og permafrost, firn og massebalanse ved første bruk, kjeden for permafrost og skred, havnivåbidrag presisert, fulle institusjonsnavn og fagord ved første bruk).
+    flag: "g2-kryosfaeren-terra-mater-2026-10-26",
+    slug: "kryosfaeren",
+    stale: [
+      "NVE publiserer snøskredvarsel for 24 regioner",
+      "Det siste er en positiv tilbakekobling",
+      "(NASA, u.å.)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
