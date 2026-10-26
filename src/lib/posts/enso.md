@@ -34,15 +34,15 @@ Vi skiller mellom tre faser: nøytral, El Niño og La Niña. Havet og lufta må 
 
 ## Niño 3.4 og ONI
 
-For å følge ENSO trenger vi et mål som kan sammenlignes fra år til år. Den oseaniske Niño-indeksen, på engelsk Oceanic Niño Index (ONI), er ett slikt mål. Den er et tremåneders løpende middel av avviket i havoverflatetemperaturen i Niño 3.4-området. Området ligger mellom 5° nord og 5° sør, og mellom 120° og 170° vest. Avviket regnes mot sentrerte 30-års normalperioder som oppdateres hvert femte år. Tallgrunnlaget er ERSST (Extended Reconstructed Sea Surface Temperature, en havtemperaturrekonstruksjon) versjon 6 (Climate Prediction Center [CPC] ved NOAA, u.å.).
+For å følge ENSO trenger vi et mål som kan sammenlignes fra år til år. Den oseaniske Niño-indeksen, på engelsk Oceanic Niño Index (ONI), er ett slikt mål. Den er et tremåneders løpende middel av avviket i havoverflatetemperaturen i Niño 3.4-området. Området ligger mellom 5° nord og 5° sør, og mellom 120° og 170° vest. Avviket regnes mot sentrerte 30-års normalperioder som oppdateres hvert femte år. Tallgrunnlaget er ERSST (Extended Reconstructed Sea Surface Temperature, en havtemperaturrekonstruksjon) versjon 6 (Climate Prediction Center [CPC] ved NOAA, u.å.-a).
 
-CPC definerer en varm periode når avviket har ligget minst 0,5 grader over normalen i fem overlappende sesonger på rad. En kald periode markeres på samme måte når avviket har ligget minst 0,5 grader under normalen (CPC, u.å.). Jo lengre avviket holder seg over eller under terskelen, desto tydeligere blir fasen i overvåkingen.
+CPC definerer en varm periode når avviket har ligget minst 0,5 grader over normalen i fem overlappende sesonger på rad. En kald periode markeres på samme måte når avviket har ligget minst 0,5 grader under normalen (CPC, u.å.-a). Jo lengre avviket holder seg over eller under terskelen, desto tydeligere blir fasen i overvåkingen.
 
-ONI er ett av flere mål. Andre indekser kan bekrefte om hav og luft har fulgt med. Til offisiell overvåking og varsling bruker US National Weather Service (NWS) nå den relative oseaniske Niño-indeksen, RONI. De nyeste ONI-verdiene er et estimat. De kan endre seg inntil to måneder etter at de først er lagt ut (CPC, u.å.).
+ONI er ett av flere mål. Andre indekser kan bekrefte om hav og luft har fulgt med. Til offisiell overvåking og varsling bruker US National Weather Service (NWS) nå den relative oseaniske Niño-indeksen, RONI (National Weather Service [NWS], 2026; CPC, u.å.-b). De nyeste ONI-verdiene er et estimat. De kan endre seg inntil to måneder etter at de først er lagt ut (CPC, u.å.-a).
 
-Når du leser at «vi er i El Niño», er det altså ikke bare ett enkelt månedstall. Det er en serie av avvik som har holdt seg, og som henger sammen med endringer i vind og trykk. Niño 3.4 er valgt fordi området ligger midt i det tropiske Stillehavet, der temperaturendringene er tydelige for begge fasene (CPC, u.å.).
+Når du leser at «vi er i El Niño», er det altså ikke bare ett enkelt månedstall. Det er en serie av avvik som har holdt seg, og som henger sammen med endringer i vind og trykk. Niño 3.4 er valgt fordi området ligger midt i det tropiske Stillehavet, der temperaturendringene er tydelige for begge fasene (CPC, u.å.-a).
 
-Tenk deg at du følger tre overlappende sesonger på rad, for eksempel august–oktober, september–november og oktober–desember. Først når flere slike midler ligger over eller under terskelen, markerer CPC en varm eller kald periode (CPC, u.å.).
+Tenk deg at du følger tre overlappende sesonger på rad, for eksempel august–oktober, september–november og oktober–desember. Først når flere slike midler ligger over eller under terskelen, markerer CPC en varm eller kald periode (CPC, u.å.-a).
 
 ## Walker-sirkulasjonen
 
@@ -124,9 +124,9 @@ For norsk geofag er poenget dobbelt. For det første må du kunne forklare mekan
 
 **Fjernvirkning:** Teleconnection. Endret sirkulasjon som merkes langt fra det tropiske Stillehavet.
 
-**Niño 3.4:** Havområdet mellom 5° nord og 5° sør og mellom 120° og 170° vest, der ONI måles (CPC, u.å.).
+**Niño 3.4:** Havområdet mellom 5° nord og 5° sør og mellom 120° og 170° vest, der ONI måles (CPC, u.å.-a).
 
-**ONI:** Den oseaniske Niño-indeksen. Tremåneders middel av temperaturavviket i Niño 3.4. Ett mål på ENSO. Offisiell overvåking bruker nå RONI (CPC, u.å.).
+**ONI:** Den oseaniske Niño-indeksen. Tremåneders middel av temperaturavviket i Niño 3.4. Ett mål på ENSO. Offisiell overvåking bruker nå RONI (NWS, 2026; CPC, u.å.-b).
 
 ## Sammendrag
 
