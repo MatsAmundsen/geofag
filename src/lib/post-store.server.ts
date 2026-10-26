@@ -1325,6 +1325,16 @@ const COPY_RESEEDS: CopyReseed[] = [
       "(Weber & Bjørndalen, 2024)",
     ],
   },
+  {
+    // Corioliseffekten (G2): Terra Mater fase 1–2 (må-punkter M1–M8: skalakjede for vasken, årsakskjede for breddegraden, geostrofisk vind og friksjon i tekst, treghetsledd og øst–vest, lavtrykksvirvel som kjede, fagord ved første bruk, fulle institusjonsnavn, corioliseffekt/corioliskraft avklart; ekmanlaget samkjørt med Havstrømmer).
+    flag: "g2-coriolis-terra-mater-2026-10-26",
+    slug: "coriolis",
+    stale: [
+      "En bevegelse som er rettlinjet i et koordinatsystem i ro",
+      "Figuren viser balansen uten friksjon",
+      "(NOAA AOML, u.å.)",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
