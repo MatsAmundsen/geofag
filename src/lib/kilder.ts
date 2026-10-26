@@ -2780,6 +2780,12 @@ export const KILDER = {
       href: "https://snl.no/oppvelling",
     },
     {
+      prefix: "Store norske leksikon. (u.å.-f). ",
+      italic: "Geostrofisk",
+      suffix: ".",
+      href: "https://snl.no/geostrofisk",
+    },
+    {
       prefix: "Stewart, R. H. (2008). ",
       italic: "Introduction to physical oceanography",
       suffix: " (kap. 9.2, tabell 9.3). Texas A&M University.",
