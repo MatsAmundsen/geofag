@@ -26,7 +26,7 @@ import {
   VEST_OST_TEKST,
 } from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
-import { EKMAN_TEKST, GOLF_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
+import { EKMAN_TEKST, GOLF_TEKST, NORSK_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 import {
@@ -504,6 +504,24 @@ export const GolfFigurLat = lat<FigurProps>(
   },
   () => import("./hav-golf").then((m) => m.GolfFigur),
 );
+
+/** Strømmene langs Norge (Havstrømmer, widget NorskekystStrommer). Samme ramme som Golf. */
+export const NorskekystFigurLat = lat<FigurProps>(
+  {
+    ...NORSK_TEKST,
+    ...LOKALE_MAAL,
+    smTrinn: { over: -40, under: 0 },
+    skala: {
+      smal: {
+        over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
+        under: [[290, 266], [310, 248], [325, 248], [340, 222], [550, 222], [610, 204]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
+  () => import("./hav-norskekyst").then((m) => m.NorskekystFigur),
+);
+
 
 export const EkmanSpiralFigurLat = lat<FigurProps>(
   {
