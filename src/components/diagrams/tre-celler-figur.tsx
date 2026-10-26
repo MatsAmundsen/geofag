@@ -376,7 +376,8 @@ function Steg2({ synlig, sek, m }: { synlig: number; sek: number; m: M }) {
         <text x={X0 - 42} y={230} textAnchor="middle" fontSize={12} fontWeight={800} fill={F.varm}>
           stiger
         </text>
-        <text x={X30 + 48} y={230} fontSize={12} fontWeight={800} fill={SAND}>
+        {/* Under pile-sirkelen (r≈48 @ y=230) — unngår covered «synker» @ midt-fade */}
+        <text x={X30 + 48} y={318} fontSize={12} fontWeight={800} fill={SAND}>
           synker
         </text>
       </HoldTekst>
