@@ -52,7 +52,7 @@ Vind er luft som strømmer fra høyt mot lavt trykk, og jo større trykkforskjel
 
 Et lavtrykk og et høytrykk er alltid definert i forhold til områdene rundt. En vanlig misforståelse er at et fast tall skiller dem, for eksempel at alt over gjennomsnittet ved havnivå er høytrykk og alt under er lavtrykk. Slik er det ikke (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
 
-Tenk deg et område der trykket i sentrum er 1015 hPa. Er det omgitt av høytrykk på 1025 hPa, strømmer lufta inn mot sentrum. Området er da et lavtrykk, med stigende luft og skydannelse. Ligger det samme området mellom lavtrykk på 995 hPa, er det et høytrykk. Lufta strømmer da ut til sidene, og det blir ofte tørt og klart. Svaret på «Hva tror du?» er altså at 1015 hPa ikke forteller deg om det er høytrykk. Det avgjør trykket rundt.
+Tenk deg to dager med nøyaktig samme barometerverdi: 1015 hPa. Dag én ligger et kraftig høytrykk på 1025 hPa over Skandinavia, og 1015 hPa er da lavere enn områdene rundt. Lufta strømmer inn, stiger, og det kan bli skyer. Dag to ligger et dypt lavtrykk på 995 hPa over Nordsjøen, og 1015 hPa er da høyere enn områdene rundt. Lufta synker, og himmelen er ofte klar. Samme tall, motsatt rolle. Svaret på «Hva tror du?» er altså at 1015 hPa ikke forteller deg om det er høytrykk. Det avgjør trykket rundt.
 
 ```widget
 RelativePressure
@@ -64,7 +64,7 @@ Det er trykkforskjellen mot områdene rundt som betyr noe for været, ikke hPa-t
 
 På værkart tegnes linjer som kalles **isobarer** (av gresk *isos* = lik, og *baros* = tyngde). En isobar binder sammen steder som har samme lufttrykk, regnet om til havnivå. Avstanden mellom isobarene viser trykkgradienten. Ligger isobarene tett, endrer trykket seg mye over kort avstand, og det blir sterk vind, kuling eller storm. Ligger de langt fra hverandre, er gradienten slak og vinden svak.
 
-Hvordan jordrotasjonen bøyer av vinden, kan du lese om i kapitlet [Corioliseffekten](/tema/coriolis).
+Hvordan jordrotasjonen bøyer av vinden, kan du lese om i kapitlet [Corioliseffekten](/tema/coriolis). Hvordan L, H, isobarer og fronter tegnes på et kart, tar vi i kapitlet [Værkart og værutvikling](/tema/vaerkart).
 
 ```widget
 SjekkHoytrykk1
@@ -148,10 +148,26 @@ Om vinteren står sola lavt, og det er langt færre soltimer. Uten skyer mister 
 HighPressureCrossSection
 ```
 
-> **To vanlige misforståelser**
+## Fra trykk til vær i Norge
+
+Kjeden er den samme hver gang, men utfallet avhenger av fuktighet, årstid og hvor systemet ligger:
+
+1. Trykkforskjellen mot områdene rundt avgjør om lufta stiger (L) eller synker (H).
+2. Stigende luft avkjøles. Når den blir mettet, dannes skyer, og det kan falle nedbør.
+3. Synkende luft varmes. Skyene løses opp, og været blir ofte stabilt.
+4. Vinden blåser fra høyt mot lavt trykk, men dreies av jordrotasjonen (se [Corioliseffekten](/tema/coriolis)).
+
+Et typisk vinterhøytrykk over innlandet gir klar himmel, sterk utstråling og kulde i dalbunnen, som på Røros og Finnmarksvidda (Store norske leksikon, u.å.-d). Et sommerhøytrykk som blir liggende over Skandinavia i ukevis, en såkalt blokkering, demper vandrende lavtrykk fra Atlanteren. Da kan det bli tørke og skogbrannfare (Store norske leksikon, u.å.-a).
+
+Et dypt lavtrykk over Norskehavet om høsten eller vinteren fører fuktig luft inn mot Vestlandet. Der stiger lufta over fjellene, og det kan falle mye nedbør. Les mer om orografisk forsterkning i [lokale værsystemer](/tema/lokale-vaersystemer) og om banen til lavtrykkene i [jetstrømmer](/tema/jetstrommer).
+
+Høytrykk er ikke det samme som «alltid fint vær», og lavtrykk er ikke det samme som «alltid regn». Et vinterhøytrykk kan gi knallhard kulde, tåke i dalbunnen og dårlig luftkvalitet. Et lavtrykk over tørt land om sommeren kan gi byger bare der lufta er fuktig nok. Det er stigningen, fuktigheten og temperaturen i høyden som avgjør skyene, ikke bokstaven L eller H alene (Store norske leksikon, u.å.-a; Store norske leksikon, u.å.-b).
+
+> **Tre vanlige misforståelser**
 >
 > 1. **Trykket på værkartet er relativt:** Gjennomsnittstrykket ved havnivå er ingen fast grense mellom høytrykk og lavtrykk. Et lavtrykk har lavere trykk enn områdene rundt, og et høytrykk har høyere.
 > 2. **Skyene i et høytrykk blåser ikke bort:** Synkende luft varmes opp. Da faller den relative fuktigheten, og skydråpene fordamper.
+> 3. **Høytrykk er ikke alltid fint, og lavtrykk er ikke alltid regn:** Vinterhøytrykk kan gi kulde og forurensning. Lavtrykk gir skyer og nedbør bare når den stigende lufta er fuktig nok.
 
 ```widget
 SjekkHoytrykk3
