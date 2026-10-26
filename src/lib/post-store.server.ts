@@ -1306,6 +1306,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     ],
   },
   {
+    // Høytrykk og lavtrykk (G2): Terra Mater fase 1–2 (M1–M3) + NOAA norsk form.
+    flag: "g2-hoytrykk-lavtrykk-terra-mater-2026-10-26",
+    slug: "hoytrykk-lavtrykk",
+    stale: [
+      "(78 %)",
+      "(NOAA, u.å.-a)",
+      "høye bygeskyer (cumulonimbus)",
+    ],
+  },
+  {
     // Geologisk tid: Terra Mater fase 1–2 (må-punkter M1–M7: isotop, radioaktivitet og absolutt datering definert, gang/forkastning/blotning/skyvedekker/trilobitter/peneplan ved første bruk, årsakskjede for luminescensdatering (OSL), setning over 30 ord delt, fulle institusjonsnavn, «og» i kildene).
     flag: "g1-geologisk-tid-terra-mater-2026-10-25",
     slug: "geologisk-tid",
