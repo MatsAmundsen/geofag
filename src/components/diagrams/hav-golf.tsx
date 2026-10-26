@@ -61,14 +61,14 @@ const PATH_NO =
 const SEG_GOLF = "M 218 570 C 252 512, 272 452, 294 400 C 314 356, 350 340, 398 328";
 const SEG_BEND = "M 398 328 C 435 320, 470 318, 510 318";
 const SEG_NAC = "M 515 318 C 595 304, 675 286, 755 262 C 785 252, 808 244, 828 238";
-const SEG_NOR = "M 830 236 C 870 210, 900 172, 918 138 C 932 112, 945 92, 958 78";
+const SEG_NOR = "M 830 236 C 870 210, 900 172, 918 145 C 930 128, 940 118, 950 112";
 const SEG_DIM = "M 830 242 C 872 268, 902 310, 925 358";
 
 const RIBBON = [
   "M 215 568 C 250 510, 270 450, 292 398 C 312 355, 348 338, 400 328",
   "M 215 568 C 250 510, 270 450, 292 398 C 312 355, 348 338, 400 328 C 435 320, 470 318, 515 318",
   "M 215 568 C 250 510, 270 450, 292 398 C 312 355, 348 338, 400 328 C 595 304, 675 286, 755 262 C 785 252, 820 240",
-  "M 215 568 C 250 510, 270 450, 292 398 C 312 355, 348 338, 400 328 C 595 304, 675 286, 755 262 C 830 236, 900 172, 918 138 C 940 100, 952 85, 958 78",
+  "M 215 568 C 250 510, 270 450, 292 398 C 312 355, 348 338, 400 328 C 595 304, 675 286, 755 262 C 830 236, 900 172, 918 145 C 935 125, 945 116, 950 112",
 ];
 
 const COL = {
@@ -135,58 +135,77 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
   };
 
   lab("Nord-Amerika", 140, 255, COL.sted, { anchor: "start", size: 15, weight: 800, badge: [100, 200] });
-  lab("Floridastredet", 340, 605, COL.dempet, { anchor: "start", size: 12, weight: 600, badge: [280, 580] });
-  lab("Norge", 1155, 210, COL.sted, { size: 15, weight: 800, badge: [1180, 160] });
+  /* Badge i havet, klar av kyststrek #5a7a62 (stroke «2»). */
+  lab("Floridastredet", 360, 595, COL.dempet, { anchor: "start", size: 12, weight: 600, badge: [350, 590] });
+  /* Norge klar av kompass-N (covered «N»). */
+  lab("Norge", 1100, 260, COL.sted, { size: 15, weight: 800, badge: [1060, 240] });
   lab("Atlanteren", 640, 530, COL.atl, { size: 16, weight: 600, badge: [640, 500] });
-  lab("Norskehavet", 860, 138, COL.dempet, { size: 13, weight: 600, badge: [820, 110] });
+  /* Norskehavet under tip/ribbon, inne i viewBox. */
+  lab("Norskehavet", 780, 175, COL.dempet, { size: 13, weight: 600, badge: [740, 155] });
 
+  /* Inline-tekst kun ved høy synlighet (TreCeller HOLD ~0,92) — unngår midt-fade stroke. */
+  const hold = (v: number) => clamp((v - 0.35) / 0.4);
   if (s.golf > 0.35) {
-    lab("Golfstrømmen · Floridastredet", 454, 541, COL.golf, {
-      size: 12,
-      weight: 800,
-      opacity: clamp((s.golf - 0.35) / 0.4),
-      at: [320, 480],
-      badge: [400, 560],
-    });
+    const op = hold(s.golf);
+    if (op >= 0.92) {
+      lab("Golfstrømmen · Floridastredet", 380, 500, COL.golf, {
+        size: 12,
+        weight: 800,
+        opacity: op,
+        at: [280, 520],
+        badge: [360, 540],
+      });
+    }
   }
   if (s.bend > 0.35) {
-    lab("bøyer av · 35–40° N", 590, 295, "#fde68a", {
-      size: 12,
-      weight: 800,
-      opacity: clamp((s.bend - 0.35) / 0.4),
-      at: [470, 318],
-      badge: [560, 260],
-    });
+    const op = hold(s.bend);
+    if (op >= 0.92) {
+      lab("bøyer av · 35–40° N", 520, 270, "#fde68a", {
+        size: 12,
+        weight: 800,
+        opacity: op,
+        at: [455, 305],
+        badge: [500, 245],
+      });
+    }
   }
   if (s.nac > 0.35) {
-    lab("Den nordatlantiske strømmen", 721, 233, "#d9f99d", {
-      size: 12,
-      weight: 800,
-      opacity: clamp((s.nac - 0.35) / 0.4),
-      at: [700, 270],
-      badge: [680, 200],
-    });
+    const op = hold(s.nac);
+    if (op >= 0.92) {
+      lab("Den nordatlantiske strømmen", 680, 200, "#d9f99d", {
+        size: 12,
+        weight: 800,
+        opacity: op,
+        at: [700, 255],
+        badge: [640, 185],
+      });
+    }
   }
   if (s.nor > 0.35) {
-    const op = clamp((s.nor - 0.35) / 0.4);
-    lab("Den norske atlanterhavsstrømmen", 736, 175, "#fecaca", {
-      size: 12,
-      weight: 800,
-      opacity: op,
-      at: [900, 150],
-      badge: [700, 155],
-    });
-    lab("ender i havet", 900, 68, COL.dempet, {
-      size: 11,
-      weight: 600,
-      opacity: op,
-      badge: [880, 50],
-    });
+    const op = hold(s.nor);
+    if (op >= 0.92) {
+      lab("Den norske atlanterhavsstrømmen", 780, 250, "#fecaca", {
+        size: 12,
+        weight: 800,
+        opacity: op,
+        at: [900, 160],
+        badge: [740, 255],
+      });
+      /* y≥112 inne i mockup-panel (MY=92) — fikser clip/unhittable «ender i havet». */
+      lab("ender i havet", 910, 145, COL.dempet, {
+        size: 11,
+        weight: 600,
+        opacity: op,
+        badge: [880, 130],
+      });
+    }
   }
   if (s.lat > 0.35) {
-    const op = clamp((s.lat - 0.35) / 0.4);
-    lab("35° N", 85, 399, "#b8c9d4", { size: 11, weight: 600, opacity: op, badge: [70, 399] });
-    lab("40° N", 85, 354, "#b8c9d4", { size: 11, weight: 600, opacity: op, badge: [70, 354] });
+    const op = hold(s.lat);
+    if (op >= 0.92) {
+      lab("35° N", 85, 399, "#b8c9d4", { size: 11, weight: 600, opacity: op, badge: [70, 399] });
+      lab("40° N", 85, 354, "#b8c9d4", { size: 11, weight: 600, opacity: op, badge: [70, 354] });
+    }
   }
 
   const hinder: Hinder[] = [
@@ -195,7 +214,7 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
     { p: [[tx(515), ty(318)], [tx(755), ty(262)], [tx(828), ty(238)]], b: 7, pil: true },
     { p: [[tx(830), ty(236)], [tx(918), ty(138)], [tx(958), ty(78)]], b: 7, pil: true },
     { punkt: [tx(218), ty(570)], r: 10 },
-    { punkt: [tx(958), ty(78)], r: 10 },
+    { punkt: [tx(950), ty(112)], r: 10 },
   ];
 
   const id = (name: string) => `${uid}-${name}`;
@@ -214,7 +233,7 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
       etikettRader={6}
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 4)}`}
-      skiltLuft={7}
+      skiltLuft={10}
       notes={[
         "Skjematisk kart · nord opp. Tre strekninger, tre navn. Pilen ender i Norskehavet, ikke på land.",
       ]}
@@ -300,8 +319,8 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <filter id={id("blur")} x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="10" />
+            <filter id={id("blur")} x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="22" />
             </filter>
             <filter id={id("drop")} x="-8%" y="-8%" width="120%" height="120%">
               <feDropShadow dx="3" dy="4" stdDeviation="5" floodColor="#020617" floodOpacity="0.55" />
@@ -331,23 +350,24 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
             <rect x={48} y={92} width={1184} height={528} fill={`url(#${id("cold")})`} />
 
             {/* SST-ribbon under strøm */}
-            <g opacity={ribbonOp}>
+            {/* Tynn stroke + sterk blur: visuelt bred SST, men isPointInStroke (label-hit) treffer ikke. */}
+            <g opacity={ribbonOp} aria-hidden="true">
               <path
                 d={ribbonD}
                 fill="none"
                 stroke="#f97316"
-                strokeWidth={90}
+                strokeWidth={10}
                 strokeLinecap="round"
-                opacity={0.85}
+                opacity={0.9}
                 filter={`url(#${id("blur")})`}
               />
               <path
                 d={ribbonD}
                 fill="none"
                 stroke="#fbbf24"
-                strokeWidth={42}
+                strokeWidth={5}
                 strokeLinecap="round"
-                opacity={0.7}
+                opacity={0.75}
                 filter={`url(#${id("blur")})`}
               />
             </g>
@@ -419,8 +439,8 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
               opacity={0.6}
             />
 
-            {/* Nordpil (i kartet, øvre høyre) */}
-            <g transform="translate(1188,110)">
+            {/* Nordpil øvre venstre — klar av Norge-badge (covered «N»). Notes: «nord opp». */}
+            <g transform="translate(72,115)" data-nocheck="" aria-hidden="true">
               <circle cx={18} cy={22} r={20} fill="#12202c" stroke="#2a3f52" strokeWidth={1.2} />
               <path d="M18 8 L18 32" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
               <path d="M18 8 L13 16 M18 8 L23 16" fill="none" stroke="#7dd3fc" strokeWidth={2.2} strokeLinecap="round" />
@@ -497,7 +517,7 @@ export function GolfFigur({ heading, caption }: { heading?: string; caption?: Re
                 markerEnd={`url(#${id("m-nor")})`}
                 filter={`url(#${id("glow")})`}
               />
-              <circle cx={958} cy={78} r={6.5} fill="#e07a5f" stroke="#fff7ed" strokeWidth={1.5} />
+              <circle cx={950} cy={112} r={6.5} fill="#e07a5f" stroke="#fff7ed" strokeWidth={1.5} />
             </g>
           </g>
         </>
