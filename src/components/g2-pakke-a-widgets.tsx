@@ -15,26 +15,6 @@ import {
  * Når en figur er tegnet, bytter du oppføringen mot den ferdige komponenten.
  */
 export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
-  VindEffektkurve: {
-    fil: "src/components/diagrams/vind-effektkurve.tsx",
-    vis: "Effektkurve for en moderne vindturbin: kutt-inn 3, største ytelse ca. 13 og kutt-ut 25 m/s",
-  },
-  AmfidromiskFigur: {
-    fil: "src/components/diagrams/amfidromisk-figur.tsx",
-    vis: "Tidevannsbølgen som går rundt et amfidromisk punkt, med punktet vest for Egersund",
-  },
-  SolenergiFigur: {
-    fil: "src/components/diagrams/solenergi-figur.tsx",
-    vis: "Årlig innstråling 700 til over 2200 kWh per m² (Nord-Europa sjelden over 1000) og de tre bruksmåtene: solvarme, solceller og termisk solkraft",
-  },
-  SaltkraftFigur: {
-    fil: "src/components/diagrams/saltkraft-figur.tsx",
-    vis: "Trykkretardert osmose: to kamre, membran, overtrykk og turbin",
-  },
-  BaerekraftTreFigur: {
-    fil: "src/components/diagrams/baerekraft-tre-figur.tsx",
-    vis: "Tre dimensjoner av bærekraft med eksempler fra energikapitlet",
-  },
   // Klima (N2–N4, T2)
   KarbonkretsloepFigur: {
     fil: "src/components/diagrams/karbonkretsloep-figur.tsx",
