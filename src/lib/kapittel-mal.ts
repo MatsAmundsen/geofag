@@ -317,10 +317,10 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
   ],
   Energi: [
     "Vind, tidevann, bølger og temperaturforskjeller i havet er energiressurser fra hav og atmosfære. Vindkraft gjør vind om til elektrisitet i et vindkraftverk.",
-    "Vindkraft på land er fornybar, men omstridt fordi den legger beslag på store områder og kan ramme reindrift, slik Fosen-saken viser.",
-    "Havvind kan stå på sokkelen eller flyte. Kina har mest havvind, fulgt av Storbritannia og Tyskland.",
+    "Vindkraft på land er fornybar, men omstridt fordi den legger beslag på store områder og kan ramme reindrift, slik Fosen-saken viser. Bærekraft er avveiningen mellom ressurs, miljø og begrensning.",
+    "Havvind kan stå på sokkelen eller flyte. Kina har mest havvind, fulgt av Storbritannia og Tyskland. Nasjonalt og globalt er rammevilkårene ulike: Norge har vannkraftbase, mens mange land bygger fornybar kraft og nett samtidig.",
     "Hywind Tampen dekker om lag 35 prosent av strømbehovet på Snorre og Gullfaks og kutter om lag 200 000 tonn CO₂ i året, men plattformene er ikke utslippsfrie.",
-    "Tidevann kommer av månens og solas tiltrekning. Bølgekraft har stort potensial, men er teknisk krevende, og havvarmekraft passer best i tropene.",
+    "Tidevann kommer av månens og solas tiltrekning. Bølgekraft og havvarmekraft (OTEC) har stort potensial, men lite er realisert sammenlignet med vind og havvind.",
   ],
   Isbre: [
     "En isbre er is av sammenpresset snø som siger nedover under sin egen tyngde. Næringsområdet øverst og tæringsområdet nederst avgjør massebalansen.",

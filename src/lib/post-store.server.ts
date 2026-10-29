@@ -1615,6 +1615,17 @@ const COPY_RESEEDS: CopyReseed[] = [
       "**Treghetssystem:** Et referansesystem uten rotasjon, der Newtons lover gjelder uten fiktive krefter. Jorda er ikke et slikt system.\n\n**Ekmantransport:**",
     ],
   },
+  {
+    // Energi fra hav og atmosfære (G2): KM9 kvalitetsloft – bærekraftskjede, nasjonalt vs globalt, Hywind≠utslippsfri, bølge/OTEC som kontrast.
+    flag: "g2-energi-hav-luft-km-loft-2026-10-26",
+    slug: "energi-hav-luft",
+    stale: [
+      "## Tre ressurser",
+      "Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.",
+      "> At energien er fornybar, gjør den ikke automatisk ukontroversiell. Vindkraft legger beslag på land og kan være et problem for reindrift (Store norske leksikon, u.å.-a).",
+      "## Vindkraft i Norge",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
