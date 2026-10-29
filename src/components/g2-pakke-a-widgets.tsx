@@ -35,22 +35,6 @@ export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
     fil: "src/components/diagrams/baerekraft-tre-figur.tsx",
     vis: "Tre dimensjoner av bærekraft med eksempler fra energikapitlet",
   },
-  BrukstidFigur: {
-    fil: "src/components/diagrams/brukstid-figur.tsx",
-    vis: "Brukstid og kapasitetsfaktor: Fosen Vind 3217 t / 36,7 %, Furuseth 914 t / 10,4 %, SNL-eksempel 5000 t / 57,1 %, maks 8760 t",
-  },
-  KraftsystemetNorgeFigur: {
-    fil: "src/components/diagrams/kraftsystemet-norge-figur.tsx",
-    vis: "Norsk kraftsystem: vannkraft, vind, sol, varme (Energifakta Norge), magasin 87 TWh, regulerbar i overkant av 75 prosent",
-  },
-  PrisomraderFigur: {
-    fil: "src/components/diagrams/prisomrader-figur.tsx",
-    vis: "Kart over budområdene NO1 til NO5 med flaskehalser og utenlandsforbindelser",
-  },
-  EnergiRegningKalkulator: {
-    fil: "src/components/diagrams/energi-regning-kalkulator.tsx",
-    vis: "Kalkulator: effekt, tid, energi, brukstid og kapasitetsfaktor",
-  },
   // Klima (N2–N4, T2)
   KarbonkretsloepFigur: {
     fil: "src/components/diagrams/karbonkretsloep-figur.tsx",
