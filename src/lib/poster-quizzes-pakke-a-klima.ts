@@ -254,7 +254,7 @@ export const QUIZ_KLIMATILTAK: QuizQuestion[] = [
       "I havvann nær Brevik",
     ],
     answer: 0,
-    explain: "CO₂ fraktes med skip til Øygarden og pumpes 100 km i rørledning til et reservoar 2 600 m under havbunnen (Equinor, 2025).",
+    explain: "CO₂ fraktes med skip til Øygarden og pumpes 100 km i rørledning til et reservoar 2600 m under havbunnen (Equinor, 2025).",
   },
   {
     prompt: "Hva er CDR ment for ifølge IPCC?",
