@@ -713,3 +713,140 @@ export const QUIZ_SJEKK_KATASTROFER_8: QuizQuestion[] = [
     explain: "Det er et gjennomsnitt over lang tid. Det betyr ikke at hendelsen kommer på et fast tidspunkt.",
   },
 ];
+
+export const QUIZ_SJEKK_OVERSIKT_7: QuizQuestion[] = [
+  {
+    prompt: "Hva er ifølge IPCC hovedårsaken til at overflatevannet i åpent hav blir surere nå?",
+    options: ["Menneskeskapte CO₂-utslipp", "Vulkanutbrudd under vann", "Mer solinnstråling"],
+    answer: 0,
+    explain: "Det er så godt som sikkert at menneskeskapte CO₂-utslipp er hovedårsaken til at overflatevannet i åpent hav forsures.",
+  },
+  {
+    prompt: "Hvorfor mister varmere hav oksygen?",
+    options: [
+      "Varmt vann inneholder mer salt, og salt binder oksygen",
+      "Varmere vann kan holde mindre oksygen, og lagdelt vann blander oksygen dårligere ned i dypet",
+      "Varmt vann gjør at havet tar opp mer CO₂ fra lufta",
+    ],
+    answer: 1,
+    explain: "Både lavere oppløselighet og dårligere nedblanding bidrar til at oksygennivået går ned.",
+  },
+  {
+    prompt: "Hva skjer med pH i havet ved havforsuring?",
+    options: ["Den stiger", "Den holder seg lik, men temperaturen stiger", "Den synker"],
+    answer: 2,
+    explain: "Havforsuring betyr at pH i havet avtar over tiår eller lenger, sammen med andre kjemiske endringer.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_8: QuizQuestion[] = [
+  {
+    prompt: "Hva kalles det når temperaturen på høye breddegrader endrer seg mer enn det globale gjennomsnittet?",
+    options: ["Polar forsterkning", "Geostrofisk balanse", "Havforsuring"],
+    answer: 0,
+    explain: "Når det skjer i Arktis, kalles det arktisk forsterkning.",
+  },
+  {
+    prompt: "Hvor mye økte temperaturen på Svalbard fra 1971 til 2017, ifølge Klima i Norge 2025?",
+    options: ["0,3 til 0,5 °C", "3 til 5 °C", "13 til 15 °C"],
+    answer: 1,
+    explain: "Svalbard varmet seg 3 til 5 °C fra 1971 til 2017. Det er omtrent 0,7 til 1,1 °C per tiår.",
+  },
+  {
+    prompt: "Hva henger den forsterkede oppvarmingen i Svalbardområdet i stor grad sammen med?",
+    options: [
+      "Færre vulkanutbrudd på Svalbard",
+      "Redusert haviskonsentrasjon, som mest skyldes økt innstrømning av varmt atlanterhavsvann",
+      "At Svalbard ligger nærmere ekvator enn resten av Norge",
+    ],
+    answer: 1,
+    explain: "Mindre havis og mer varmt atlanterhavsvann forsterker oppvarmingen.",
+  },
+];
+
+export const QUIZ_SJEKK_OVERSIKT_9: QuizQuestion[] = [
+  {
+    prompt: "Hvor stor relativ havnivåstigning er framskrevet for Norge i 2100 med høye utslipp (SSP3-7.0)?",
+    options: ["Omtrent 3,6 cm", "Omtrent 36 cm", "Omtrent 3,6 m"],
+    answer: 1,
+    explain: "Gjennomsnittet for Norge er omtrent 36 cm. Lokalt avviker det på grunn av forskjeller i landheving.",
+  },
+  {
+    prompt: "Hvorfor er den relative havnivåendringen negativ rundt Oslofjorden?",
+    options: ["Havet er blitt kaldere der", "Det har kommet mindre nedbør der", "Landhevning virker mot havnivåstigningen"],
+    answer: 2,
+    explain: "Relativt havnivå er havnivået i forhold til land. Der landet hever seg raskt, kan relativt havnivå synke.",
+  },
+  {
+    prompt: "Hvor viser framskrivningene størst oppvarming i Norge?",
+    options: [
+      "Mer i nord enn i sør, mer i øst enn i vest, og mer om vinteren enn om sommeren",
+      "Mer i sør enn i nord og mer om sommeren enn om vinteren",
+      "Like mye i hele landet og alle årstider",
+    ],
+    answer: 0,
+    explain: "Det gjelder for den videre økningen på omtrent 3,4 °C fram mot slutten av århundret, hvis utslippene fortsetter å øke.",
+  },
+];
+
+export const QUIZ_SJEKK_TILPASNING_5: QuizQuestion[] = [
+  {
+    prompt: "Hvordan definerer IPCC sårbarhet?",
+    options: [
+      "Selve naturhendelsen som kan gjøre skade",
+      "Tilbøyeligheten eller predisposisjonen for å bli negativt påvirket",
+      "Hvor mange mennesker som bor der faren kan ramme",
+    ],
+    answer: 1,
+    explain: "Sårbarhet omfatter blant annet følsomhet for skade og mangel på evne til å håndtere og tilpasse seg. Selve hendelsen er fare, og hvem som bor der den kan ramme, er eksponering.",
+  },
+  {
+    prompt: "Hva øker sårbarheten ifølge IPCC?",
+    options: [
+      "Høy inntekt og mange kommunale tjenester",
+      "At faren er sjelden",
+      "Fattigdom og begrenset tilgang til grunnleggende tjenester og ressurser",
+    ],
+    answer: 2,
+    explain: "Sårbarheten er høyere der det er fattigdom, styringsutfordringer, begrenset tilgang til tjenester og ressurser, voldelig konflikt og klimafølsomt levebrød.",
+  },
+  {
+    prompt: "Hva er tilpasningsevne?",
+    options: [
+      "Evnen til å justere seg til mulig skade, utnytte muligheter eller håndtere konsekvenser",
+      "Hvor mye CO₂ et land slipper ut",
+      "Hvor høy en flomvoll er",
+    ],
+    answer: 0,
+    explain: "Tilpasningsevne gjelder systemer, institusjoner, mennesker og andre organismer.",
+  },
+];
+
+export const QUIZ_SJEKK_TILPASNING_6: QuizQuestion[] = [
+  {
+    prompt: "Hva kjennetegner en myk tilpasningsgrense?",
+    options: [
+      "Ingen tiltak kan hindre uakseptabel risiko",
+      "Tiltak finnes kanskje, men er ikke tilgjengelige nå",
+      "Tilpasning er unødvendig",
+    ],
+    answer: 1,
+    explain: "Ved en hard grense kan ingen tiltak hindre uakseptabel risiko. Ved en myk grense finnes tiltak kanskje, men de er ikke tilgjengelige nå.",
+  },
+  {
+    prompt: "Hvilket eksempel nevner IPCC på økosystemer som allerede har nådd eller passert harde grenser?",
+    options: ["Alle skoger i Norge", "Alle innsjøer i Europa", "Noen varmtvannskorallrev"],
+    answer: 2,
+    explain: "IPCC nevner noen varmtvannskorallrev, noen kystnære våtmarker, noen regnskoger og noen polare økosystemer og fjelløkosystemer.",
+  },
+  {
+    prompt: "Hva kan hjelpe med å overvinne myke tilpasningsgrenser?",
+    options: [
+      "Å ta tak i økonomiske, styringsmessige, institusjonelle og politiske hindringer, og å gå fra trinnvis til omformende tilpasning",
+      "Å vente til skadene er skjedd",
+      "Å bygge høyere flomvoller overalt",
+    ],
+    answer: 0,
+    explain: "Myke grenser handler om hindringer som kan overvinnes. Harde grenser kan ikke overvinnes med tilpasning.",
+  },
+];

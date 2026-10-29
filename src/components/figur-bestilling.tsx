@@ -31,5 +31,7 @@ export const FIGUR_BESTILLINGER: Record<string, string> = {
   FigSaffirSimpsonSkala: "Saffir–Simpson-skalaen: fem kategorier med middelvind i km/t og mph (NHC)",
   FigBlokkering: "Blokkerende høytrykk: omegablokkering og Rex-blokkering, skjematisk",
   FigEkstremerOppvarming: "IPCC SPM.6: hyppighet og intensitet av 10-årshendelser ved 1, 1,5, 2 og 4 °C oppvarming",
+  FigNorgeFramskrivninger: "Klima i Norge 2025: observert og framskrevet endring i temperatur, nedbør, avrenning, fordampning og havnivå i Norge",
+  FigTilpasningsgrenser: "IPCC AR6 WGII SPM C.3.4: harde og myke tilpasningsgrenser ved 1,5, 2 og 3 °C global oppvarming",
   FigNaturligVsMenneskelig: "IPCC AR6: bidrag til global overflatetemperatur 1850–1900 til 2010–2019, menneskeskapt mot naturlig",
 };

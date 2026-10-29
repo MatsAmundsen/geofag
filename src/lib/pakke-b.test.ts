@@ -196,4 +196,30 @@ describe("Pakke B: nye kapitler", () => {
     assert.equal(md.includes("(IPCC, 2021)"), false);
     assert.equal(md.includes("Meteorologisk institutt, u.å.)"), false);
   });
+
+  it("tilleggene til klimasystemet (oversikt) er sitert i teksten", () => {
+    const md = read("posts/oversikt.md");
+    for (const n of [7, 8, 9]) {
+      assert.ok(md.includes(`SjekkOversikt${n}`), `SjekkOversikt${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Oversikt${n}`], `Oversikt${n}`);
+    }
+    for (const fig of ["FigNorgeFramskrivninger"]) assert.ok(md.includes(fig), fig);
+    const forventet = ["Matthews mfl., 2021", "Norsk klimaservicesenter, 2025"];
+    assert.equal(forventet.length, (KILDER_B_TILLEGG.oversikt ?? []).length);
+    for (const t of forventet) assert.ok(md.includes(t), t);
+    assert.ok(md.includes("(IPCC, 2021"));
+  });
+
+  it("tilleggene til tilpasning er sitert i teksten", () => {
+    const md = read("posts/tilpasning.md");
+    for (const n of [5, 6]) {
+      assert.ok(md.includes(`SjekkTilpasning${n}`), `SjekkTilpasning${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Tilpasning${n}`], `Tilpasning${n}`);
+    }
+    assert.ok(md.includes("FigTilpasningsgrenser"));
+    const forventet = ["Möller mfl., 2022"];
+    assert.equal(forventet.length, (KILDER_B_TILLEGG.tilpasning ?? []).length);
+    for (const t of forventet) assert.ok(md.includes(t), t);
+    assert.ok(md.includes("(IPCC, 2022"));
+  });
 });

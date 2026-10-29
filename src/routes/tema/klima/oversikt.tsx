@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { KILDER_B_TILLEGG, medKilder } from "@/lib/kilder-b";
 import { topicHead } from "@/lib/seo";
+
+const OVERSIKT_KILDER = medKilder(KILDER.oversikt, KILDER_B_TILLEGG.oversikt ?? []);
 
 const LEAD =
   "Vær er det som skjer i dag. Klima er det som gjentar seg over tiår. Når du kjenner trykk, vind, corioliseffekten og havet, kan du se hvorfor klimaet henger sammen, og hvorfor det kan forskyves.";
@@ -32,7 +35,7 @@ function KlimaOversiktPage() {
       bannerAlt="Grønlands innlandsis mot mørkt polarhav"
       prev={{ to: "/tema/klima", label: "Tilbake: Klima og klimasystemer" }}
       next={{ to: "/tema/klima/enso", label: "Neste: ENSO" }}
-      kilder={KILDER.oversikt}
+      kilder={OVERSIKT_KILDER}
       posterSlug="oversikt"
       post={post}
       bodyMode="poster"

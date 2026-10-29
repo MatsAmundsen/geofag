@@ -33,4 +33,18 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     slug: "vaerkatastrofer",
     stale: ["naturlig variasjon (IPCC, 2021)."],
   },
+  {
+    // Klimasystemet (T7): havforsuring og avoksygenering, Svalbard og polarområdene, Norge mot 2100.
+    // Innledningen er omskrevet, og nye Sjekk-bokser (7–9) og begreper er lagt inn.
+    flag: "oversikt-pakke-b-2026-10-29",
+    slug: "oversikt",
+    stale: ["hvor mye det har blitt varmere, og hva det betyr for Norge."],
+  },
+  {
+    // Tilpasning (T7): sårbarhet, tilpasningsevne og harde og myke tilpasningsgrenser.
+    // Innledningen er omskrevet, og nye Sjekk-bokser (5–6) og begreper er lagt inn.
+    flag: "tilpasning-pakke-b-2026-10-29",
+    slug: "tilpasning",
+    stale: ["og hvordan lover og arealplanlegging brukes i klimatilpasning."],
+  },
 ];

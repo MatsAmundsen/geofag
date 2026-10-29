@@ -228,6 +228,30 @@ export const KILDER_B = {
 
 /** Tillegg til eksisterende kildelister. Slås sammen med `medKilder` i rutene. */
 export const KILDER_B_TILLEGG = {
+  oversikt: [
+    {
+      prefix:
+        "Matthews, J. B. R., Möller, V., van Diemen, R., Fuglestvedt, J. S., Masson-Delmotte, V., Méndez, C., Semenov, S., & Reisinger, A. (Red.). (2021). Annex VII: Glossary. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 2215–2256). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.022",
+    },
+    {
+      prefix: "Norsk klimaservicesenter. (2025). ",
+      italic: "Oppsummeringer fra Klima i Norge 2025",
+      suffix: ".",
+      href: "https://klimaservicesenter.no/kss/rapporter/klima-i-norge-2025/oppsummeringer-fra-klima-i-norge-2025",
+    },
+  ],
+  tilpasning: [
+    {
+      prefix:
+        "Möller, V., van Diemen, R., Matthews, J. B. R., Méndez, C., Semenov, S., Fuglestvedt, J. S., & Reisinger, A. (Red.). (2022). Annex II: Glossary. I H.-O. Pörtner, D. C. Roberts, M. Tignor, E. S. Poloczanska, K. Mintenbeck, A. Alegría, M. Craig, S. Langsdorf, S. Löschke, V. Möller, A. Okem, & B. Rama (Red.), ",
+      italic: "Climate change 2022: Impacts, adaptation and vulnerability. Contribution of Working Group II to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 2897–2930). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009325844.029",
+    },
+  ],
   vaerkatastrofer: [
     {
       prefix: "Det Norske Akademis ordbok. (u.å.). ",

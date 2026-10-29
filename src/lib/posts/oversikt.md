@@ -21,7 +21,7 @@
 >
 > **I dette kapitlet lærer du om**
 >
-> forskjellen på vær og klima, hvordan atmosfæren, havet, isen, landoverflaten og livet henger sammen, strålingsbalansen og drivhuseffekten, forskjellen på pådriv og tilbakekobling, is-albedo-tilbakekoblingen, havet som varmelager, de naturlige svingningene, hvor mye det har blitt varmere, og hva det betyr for Norge.
+> forskjellen på vær og klima, hvordan atmosfæren, havet, isen, landoverflaten og livet henger sammen, strålingsbalansen og drivhuseffekten, forskjellen på pådriv og tilbakekobling, is-albedo-tilbakekoblingen, havet som varmelager, de naturlige svingningene, hvordan havet blir surere og får mindre oksygen, hvor mye det har blitt varmere, hvorfor polarområdene varmes raskest, og hva som venter Norge fram mot 2100.
 
 > **Hva tror du?**
 >
@@ -119,6 +119,20 @@ Arktis har blitt varmet opp nesten fire ganger så raskt som jorda i gjennomsnit
 SjekkOversikt3
 ```
 
+### Svalbard og polarområdene
+
+*Polar forsterkning* betyr at overflatetemperaturen på høye breddegrader endrer seg mer enn den globale gjennomsnittstemperaturen. Skjer det i Arktis, kalles det arktisk forsterkning (Matthews mfl., 2021). Norsk klimaservicesenter oppgir at temperaturen i Arktis har økt tre til fire ganger raskere enn globalt de siste 40–50 årene. På Svalbard økte den med 3 til 5 °C fra 1971 til 2017. Forsterkningen henger i stor grad sammen med redusert haviskonsentrasjon, som mest skyldes økt innstrømning av varmt atlanterhavsvann (Norsk klimaservicesenter, 2025).
+
+**Regn selv:** Fra 1971 til 2017 er det 46 år. En økning på 3 til 5 °C på 46 år tilsvarer omtrent 0,7 til 1,1 °C per tiår.
+
+Havisen viser det samme bildet. Menneskelig påvirkning er sannsynligvis hovedårsaken til at havisen i Arktis har blitt mindre mellom 1979–1988 og 2010–2019, med omtrent 40 prosent i september og omtrent 10 prosent i mars. I Antarktis var det ingen signifikant trend i havisareal fra 1979 til 2020, fordi trendene er motsatte i ulike områder og den naturlige variasjonen er stor (IPCC, 2021, avsnitt A.1.5). Fram mot 2050 er Arktis sannsynligvis praktisk talt isfritt i september minst én gang, under alle fem scenarioene IPCC har sett på (IPCC, 2021, avsnitt B.2.5).
+
+For Svalbardområdet viser framskrivningene en videre økning på 0,6 til 1 °C per tiår fram mot slutten av århundret, dersom utslippene av drivhusgasser fortsetter å øke. Økningen blir størst i områder som nå har sjøis. Nedbøren ventes å øke, og i Longyearbyen beregnes en økning på 1,9 til 4,6 prosent per tiår (Norsk klimaservicesenter, 2025). Mer om is og permafrost står i [kryosfæren](/tema/kryosfaeren).
+
+```widget
+SjekkOversikt8
+```
+
 ## Hvordan påvirker havet og svingningene klimaet?
 
 ### Havet husker
@@ -129,6 +143,20 @@ Den atlantiske omveltningssirkulasjonen (AMOC), beltet vi møtte i [havstrømmer
 
 ```widget
 HavMinneFoto
+```
+
+### Havet blir surere og får mindre oksygen
+
+Havet tar ikke bare opp varme. Det tar også opp en del av karbondioksiden vi slipper ut. Da synker pH i havet. *Havforsuring* betyr at pH i havet avtar over tiår eller lenger, sammen med andre kjemiske endringer, særlig i mengden av karbonat- og bikarbonationer. Det skyldes hovedsakelig at havet tar opp CO₂ fra lufta (Matthews mfl., 2021). Det er så godt som sikkert at menneskeskapte CO₂-utslipp er hovedårsaken til at overflatevannet i åpent hav blir surere nå. Så lav pH i overflatevannet som de siste tiårene er uvanlig på 2 millioner år (middels tillit) (IPCC, 2021, avsnitt A.1.6 og A.2.4).
+
+*Avoksygenering* betyr at havet mister oksygen. Varmere vann kan holde mindre oksygen, og varmere og mer lagdelt vann blander oksygen dårligere ned i dypet (Matthews mfl., 2021). Oksygennivået har gått ned i mange områder i øvre del av havet siden midten av 1900-tallet (høy tillit). Det er middels tillit til at menneskelig påvirkning har bidratt til nedgangen (IPCC, 2021, avsnitt A.1.6).
+
+Fram mot 2100 vil forsuringen (så godt som sikkert) og oksygentapet (høy tillit) fortsette å øke, med en takt som avhenger av utslippene. Forsuringen av dyphavet er ikke reversibel på hundre- til tusenårs tidsskalaer (svært høy tillit). For oksygentapet er tilliten til det samme middels (IPCC, 2021, avsnitt B.5.1).
+
+Langs norskekysten venter Klima i Norge 2025 at varmere, ferskere og surere vann og mindre oksygen vil gjøre at det blir mindre egnet leveområde for mange marine arter mot slutten av århundret. Unntaket er stortare i Nord-Norge. Selv med svært høye utslipp (SSP5-8.5) finnes det fortsatt egnet habitat for de fleste av de utvalgte artene, bortsett fra drøbakkråkebollen, som trolig mister leveområder på grunn av sterk havforsuring (Norsk klimaservicesenter, 2025).
+
+```widget
+SjekkOversikt7
 ```
 
 ### Fire svingninger. Fire sider.
@@ -184,9 +212,35 @@ AMOC og NAO er sentrale usikkerhets- og variasjonsmomenter. En svekket nordovert
 NorgeKlimaFoto
 ```
 
+### Norge mot 2100
+
+Norsk klimaservicesenter oppsummerer hva som har skjedd og hva framskrivningene viser for fastlands-Norge. Framskrivningene gjelder en framtid der utslippene av drivhusgasser fortsetter å øke (Norsk klimaservicesenter, 2025).
+
+| Størrelse | Observert | Videre endring fram mot slutten av århundret |
+| --- | --- | --- |
+| Temperatur | Økt omtrent 1,4 °C fra 1901 til 2024, og omtrent 1 °C fra 1961–1990 til 1991–2020 | Omtrent 3,4 °C. Mer i nord enn i sør, mer i øst enn i vest, mer om vinteren enn om sommeren |
+| Nedbør | Økt omtrent 21 prosent fra 1901 til 2024, og omtrent 7 prosent fra 1961–1990 til 1991–2020 | Omtrent 11 prosent. Størst om høsten, minst om sommeren |
+| Avrenning | Økt omtrent 5 prosent fra 1961–1990 til 1991–2020 | Omtrent 10 prosent |
+| Fordampning | Økt omtrent 10 prosent fra 1961–1990 til 1991–2020 | Omtrent 20 prosent |
+| Havnivå (SSP3-7.0) | Relativ endring varierer langs kysten | Relativ havnivåstigning på omtrent 36 cm i 2100 i gjennomsnitt for Norge |
+
+**Regn selv:** Norge får i gjennomsnitt omtrent 1330 mm nedbør i året. Elleve prosent av 1330 mm er omtrent 146 mm.
+
+```widget
+FigNorgeFramskrivninger
+```
+
+Havnivå måles ofte som *relativt havnivå*, det vil si havnivået i forhold til land. Landhevning virker mot havnivåstigningen i ulik grad langs kysten. Målinger fra 1960 til 2022 viser at den relative havnivåendringen er negativ rundt Oslofjorden og langs deler av kysten i Trøndelag og Nordland, og positiv langs deler av Vest- og Sørlandet. Omtrent 60 prosent av kysten hadde ingen vesentlig endring. Lokalt vil endringene avvike fra gjennomsnittet på 36 cm, hovedsakelig på grunn av forskjeller i landheving (Norsk klimaservicesenter, 2025).
+
+I et scenario med lav sannsynlighet, men stor konsekvens, der svært høye utslipp (SSP5-8.5) kombineres med raskt istap i Antarktis, kan den gjennomsnittlige relative havnivåstigningen i Norge nærme seg 1–1,5 m innen 2100, og opptil 4,5–5 m innen 2150. Uansett scenario vil flom fra havet nå høyere og lenger inn på land, og vannstandsnivåer som historisk har vært sjeldne, nås oftere (Norsk klimaservicesenter, 2025).
+
+```widget
+SjekkOversikt9
+```
+
 > **Til eksamen**
 >
-> Til eksamen må du kunne skille vær fra klima og pådriv fra tilbakekobling. Vanndamp er en tilbakekobling, og karbondioksid er et pådriv. ENSO, IOD og NAO er naturlige svingninger, ikke det samme som global oppvarming. Norge har mild kyst på grunn av vestavinden og det varme havet, og AMOC er en del av det.
+> Til eksamen må du kunne skille vær fra klima og pådriv fra tilbakekobling. Vanndamp er en tilbakekobling, og karbondioksid er et pådriv. ENSO, IOD og NAO er naturlige svingninger, ikke det samme som global oppvarming. Norge har mild kyst på grunn av vestavinden og det varme havet, og AMOC er en del av det. Du må også kunne forklare hvorfor Arktis varmes raskere enn resten av jorda, og skille havforsuring (lavere pH) fra oppvarming av havet.
 
 ```widget
 SjekkOversikt6
@@ -201,6 +255,10 @@ SjekkOversikt6
 > **«En kald vinter viser at det ikke blir varmere.»** Én kald vinter er vær. Den motbeviser ikke et skifte i det langvarige gjennomsnittet (WMO, u.å.).
 >
 > **«Vanndamp er den viktigste årsaken til oppvarmingen.»** Vanndamp er en drivhusgass, men den er i hovedsak en tilbakekobling, ikke den første endringen (NASA, u.å.-a).
+>
+> **«Havforsuring og global oppvarming er det samme.»** Begge henger sammen med CO₂, men oppvarming handler om temperatur, mens havforsuring handler om at pH og kjemien i havet endrer seg (Matthews mfl., 2021).
+>
+> **«Havnivået stiger like mye overalt langs norskekysten.»** Landhevning gjør at den relative havnivåendringen er negativ rundt Oslofjorden og positiv langs deler av Vest- og Sørlandet (Norsk klimaservicesenter, 2025).
 
 ## Viktige begreper
 
@@ -231,6 +289,14 @@ SjekkOversikt6
 **AMOC:** Den atlantiske omveltningssirkulasjonen. Treg havsirkulasjon som frakter varme nordover.
 
 **Is-albedo-tilbakekobling:** Positiv tilbakekobling der smeltende is gjør flaten mørkere, slik at mer sol tas opp og mer is smelter.
+
+**Havforsuring:** At pH i havet synker over tiår eller lenger, sammen med andre kjemiske endringer, fordi havet tar opp CO₂ fra lufta.
+
+**Avoksygenering:** At havet mister oksygen. Varmere vann holder mindre oksygen, og lagdelt vann blander oksygen dårlig ned i dypet.
+
+**Polar forsterkning:** At temperaturen på høye breddegrader endrer seg mer enn den globale gjennomsnittstemperaturen. I Arktis kalles det arktisk forsterkning.
+
+**Relativt havnivå:** Havnivået i forhold til land. Landhevning kan dempe eller utligne havnivåstigningen.
 
 **Paleoklima:** Klimaet i fortiden, rekonstruert fra iskjerner, sedimenter, årringer og koraller. Det gir oss både naturlig variasjon og en målestokk for hvor uvanlig dagens endring er.
 
