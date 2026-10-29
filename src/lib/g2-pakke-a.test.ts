@@ -16,6 +16,7 @@ const NEW_CHAPTERS = [
 
 const widgetSources = [
   read("../components/g2-pakke-a-widgets.tsx"),
+  read("../components/g2-pakke-a-figurer.tsx"),
   read("../components/poster-body.tsx"),
   read("poster-quizzes-pakke-a.ts"),
   read("poster-quizzes-pakke-a-klima.ts"),
