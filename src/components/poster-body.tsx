@@ -216,6 +216,7 @@ import {
   MeanderOgKroksjo,
 } from "@/components/diagrams/landformer-figurer";
 import { SAMMENDRAG, SJEKK_DEG_SELV } from "@/lib/kapittel-mal";
+import { POSTER_WIDGETS_B } from "@/components/poster-widgets-b";
 import {
   IodFaseFigur,
   IodHavtemperaturFigur,
@@ -316,6 +317,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       () => <Sammendrag points={points} />,
     ]),
   ),
+  ...POSTER_WIDGETS_B,
   EarthLayers: () => <EarthLayersDiagram />,
   Spreading: () => <SpreadingDiagram />,
   Convection: () => <ConvectionDiagram />,

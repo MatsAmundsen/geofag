@@ -198,6 +198,7 @@ export function TopicLayout({
                 cleanChapter
                 scrollTables={
                   resolvedSlug === "jetstrommer" ||
+                  resolvedSlug === "skyer-nedbor-klimasoner" ||
                   resolvedSlug === "lokale-vaersystemer" ||
                   resolvedSlug === "vulkaner" ||
                   resolvedSlug === "hoytrykk-lavtrykk" ||

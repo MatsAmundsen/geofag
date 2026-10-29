@@ -45,7 +45,7 @@ export const NAV_BY_PATH: Record<string, { prev?: NavLink; next?: NavLink }> = {
     next: { to: "/tema/lokale-vaersystemer", label: "Neste: Lokale værsystemer" },
   },
   "/tema/jetstrommer": {
-    prev: { to: "/tema/lokale-vaersystemer", label: "Forrige: Lokale værsystemer" },
+    prev: { to: "/tema/skyer-nedbor-klimasoner", label: "Forrige: Skyer, nedbør og klimasoner" },
   },
   "/tema/numeriske-modeller": {
     prev: { to: "/tema/kryosfaeren", label: "Forrige: Kryosfæren" },

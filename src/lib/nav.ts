@@ -41,6 +41,7 @@ export const NAV_GF2 = [
   { to: "/tema/vindsystemet", label: "Vind" },
   { to: "/tema/vaerkart", label: "Værkart" },
   { to: "/tema/lokale-vaersystemer", label: "Lokalt" },
+  { to: "/tema/skyer-nedbor-klimasoner", label: "Skyer" },
   { to: "/tema/jetstrommer", label: "Jet" },
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
@@ -61,7 +62,7 @@ export const NAV_GF2 = [
  * Rad 1 er inngang, vær og hav. Rad 2 er klima, is, samfunn og metode.
  * Rekkefølgen er den samme som NAV_GF2.
  */
-export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 10), NAV_GF2.slice(10)] as const;
+export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 11), NAV_GF2.slice(11)] as const;
 
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
 export const NAV = NAV_GF2;
@@ -125,6 +126,16 @@ export const GF2_THEMES = [
     alt: "Polarfronten som bølge mellom kald og varm luft, med lavtrykk i bølgen",
     blurb:
       "Polarfrontsyklon steg for steg. Sjøbris, dalvind og føn. Samme fysikk i tre målestokker.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/skyer-nedbor-klimasoner",
+    title: "Skyer, nedbør og klimasoner",
+    kicker: "Atmosfæren",
+    image: "/images/fig-stigende.jpg",
+    alt: "Mørke, høye skyer med nedbør under",
+    blurb:
+      "Fra vanndamp til sky og nedbør. Skytyper, kyst og innland, høyde, urbane varmeøyer og Köppens klimasoner.",
     status: "klar" as const,
   },
   {

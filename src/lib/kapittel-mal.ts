@@ -138,6 +138,7 @@ import {
   QUIZ_SJEKK_PALEO_5,
   QUIZ_SJEKK_PALEO_6,
 } from "./poster-quizzes.ts";
+import { SAMMENDRAG_B, SJEKK_DEG_SELV_B } from "./kapittel-mal-b.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
 export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
@@ -268,6 +269,7 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Paleo4: QUIZ_SJEKK_PALEO_4,
   Paleo5: QUIZ_SJEKK_PALEO_5,
   Paleo6: QUIZ_SJEKK_PALEO_6,
+  ...SJEKK_DEG_SELV_B,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -515,6 +517,7 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "IOD er et eget mønster, men kan opptre samtidig med El Niño eller La Niña. Sammen kan de forsterke tørke eller regn i Australia.",
     "Jetstrømmene følger temperaturforskjellene i lufta. En skarp havfront, som sør i Det indiske hav, kan forsterke polarjeten, men havet styrer den ikke alene.",
   ],
+  ...SAMMENDRAG_B,
 };
 
 export function sjekkWidgetIds(): string[] {

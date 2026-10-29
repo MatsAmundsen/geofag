@@ -14,6 +14,7 @@ export const MAAL_KART: MaalKart[] = [
       { to: "/tema/vindsystemet", label: "Vind" },
       { to: "/tema/vaerkart", label: "Værkart" },
       { to: "/tema/lokale-vaersystemer", label: "Lokalt" },
+      { to: "/tema/skyer-nedbor-klimasoner", label: "Skyer" },
       { to: "/tema/jetstrommer", label: "Jet" },
     ],
     exams: [
