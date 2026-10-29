@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { Quiz } from "@/components/quiz";
+import { G2_PAKKE_A_FERDIGE } from "@/components/g2-pakke-a-figurer";
 import { QUIZ_ENERGI_REGNING } from "@/lib/poster-quizzes-pakke-a";
 import {
   QUIZ_KLIMAFORSKNING,
@@ -33,10 +34,6 @@ export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
   BaerekraftTreFigur: {
     fil: "src/components/diagrams/baerekraft-tre-figur.tsx",
     vis: "Tre dimensjoner av bærekraft med eksempler fra energikapitlet",
-  },
-  EnhetstrappFigur: {
-    fil: "src/components/diagrams/enhetstrapp-figur.tsx",
-    vis: "Enhetstrapp: Wh, kWh, MWh, GWh, TWh i faktor 1000, med J og Sm³ o.e. som sidekart",
   },
   BrukstidFigur: {
     fil: "src/components/diagrams/brukstid-figur.tsx",
@@ -122,6 +119,7 @@ export const G2_PAKKE_A_WIDGETS: Record<string, () => JSX.Element> = {
   ...Object.fromEntries(
     Object.keys(FIGURER_BESTILT_A).map((id) => [id, () => <FigurBestilt id={id} />]),
   ),
+  ...G2_PAKKE_A_FERDIGE,
   QuizEnergiRegning: () => (
     <Quiz questions={QUIZ_ENERGI_REGNING} heading={null} intro="Velg ett svar per spørsmål." />
   ),
