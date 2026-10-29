@@ -45,8 +45,8 @@ export function TiltaksstigeFigur() {
       desc="Oversikt over IPCCs tiltak sektor for sektor. For å holde 1,5 grader må utslippene ned 43 prosent innen 2030 og 84 prosent innen 2050 sammenlignet med 2019, da utslippene var 59 milliarder tonn CO₂-ekvivalenter. Energi: i 2050 er bruken av kull, olje og gass uten karbonfangst omtrent 95, 60 og 45 prosent lavere enn i 2019, og fra 2010 til 2019 falt enhetskostnadene for solenergi med 85 prosent, vindenergi med 55 prosent og litiumionbatterier med 85 prosent. Transport: elektriske kjøretøy, biodrivstoff og hydrogen i noen deler. Industri og bygg: elektrifisering og sirkulær materialbruk, og 5 til 30 prosent av utslippene fra sluttbrukersektorene kan unngås innen 2050. Arealbruk: 8 til 14 milliarder tonn CO₂-ekvivalenter i året til under 100 dollar per tonn. Etterspørsel: 40 til 70 prosent lavere utslipp i 2050 enn med politikken vedtatt til 2020. Kostnadstrapp: tiltak under 100 dollar per tonn kan kutte minst halvparten av 2019-nivået innen 2030, og mer enn halvparten av dette koster under 20 dollar per tonn."
       heading="Tiltak sektor for sektor"
       caption={`Tallene gjelder modellerte baner som holder 1,5 °C. Lengden på stolpene viser prosentene. USD er amerikanske dollar. Kilde: IPCC (2022).`}
-      narrow={{ w: 300, h: 1664 }}
-      wide={{ w: 720, h: 770 }}
+      narrow={{ w: 300, h: 1772 }}
+      wide={{ w: 720, h: 812 }}
     >
       {({ bred }) => {
         const W = bred ? 700 : 280;
@@ -64,16 +64,12 @@ export function TiltaksstigeFigur() {
         const cH = bred ? 196 : 206;
         const cx = (i: number) => (bred ? 10 + i * 237 : 10);
         const cy = (i: number) => (bred ? yB : yB + i * (cH + 12));
-        const yK = bred ? yB + cH + 12 : yB + 3 * (cH + 12) - 36 + 36 + 0;
-        const yKost = bred ? yK : cy(3) - (cH - 170) + 0;
-        void yKost;
-        const kY = bred ? yB + cH + 12 : cy(2) + 170 + 12 + 0;
+        const kY = bred ? yB + cH + 12 : cy(1) + 170 + 12 + 170 + 12;
         const kW = bred ? 700 : 280;
         const innerW = (kW - 28) * 0.6;
         const fullW = kW - 28;
         const chips = ["Sol- og vindkraft", "Energieffektivisering", "Stanse avskoging", "Kutte metan"];
         const chipW = [150, 176, 144, 108];
-        let cxp = 14;
         return (
           <>
             {/* mål */}
@@ -131,7 +127,7 @@ export function TiltaksstigeFigur() {
               );
             })()}
             {/* kostnadstrapp */}
-            <Kort x={10} y={kY - (bred ? 0 : 0)} w={kW} h={bred ? 226 : 330} f={C.teal} tittel="Kostnadstrapp" sub={bred ? "Tiltak under 100 USD per tonn CO₂e kan kutte minst halvparten av 2019-nivået innen 2030." : undefined} />
+            <Kort x={10} y={kY} w={kW} h={bred ? 250 : 410} f={C.teal} tittel="Kostnadstrapp" sub={bred ? "Tiltak under 100 USD per tonn CO₂e kan kutte minst halvparten av 2019-nivået innen 2030." : undefined} />
             {!bred && <T x={24} y={kY + 44} lines={["Tiltak under 100 USD per tonn", "CO₂e kan kutte minst halvparten", "av 2019-nivået innen 2030."]} size={14} fill={C.muted} lh={18} />}
             {(() => {
               const by = kY + (bred ? 84 : 118);
@@ -148,7 +144,7 @@ export function TiltaksstigeFigur() {
                   <T x={bx} y={by + (bred ? 108 : 118)} lines="Største bidrag:" size={14} weight={700} fill={C.fg} />
                   {chips.map((c, i) => {
                     const w = chipW[i];
-                    const x = bred ? (cxp, (cxp += 0), bx + chipW.slice(0, i).reduce((a, b) => a + b + 12, 0)) : bx;
+                    const x = bred ? bx + chipW.slice(0, i).reduce((a, b) => a + b + 12, 0) : bx;
                     const y = bred ? by + 120 : by + 130 + i * 38;
                     return (
                       <g key={c}>
@@ -194,17 +190,17 @@ export function CdrSkjemaFigur() {
     >
       {({ bred, mk }) => {
         const pw = bred ? 340 : 280;
-        const ph = 540;
+        const ph = 556;
         const x1 = 10;
         const y1 = 10;
         const x2 = bred ? 370 : 10;
         const y2 = bred ? 10 : 10 + ph + 12;
-        const cardW = pw - 24;
+        const cardW = pw - 30;
         /* CDR-kort */
         const kort = [
           { t: "Skogplanting og jordkarbon", l: ["Jordkarbon: 45–100 USD per tonn", "Lagring: tiår til århundrer.", "Kan reverseres av brann,", "sykdom og endret klima."], f: G.green },
           { t: "BECCS", u: "bioenergi med fangst og lagring", l: ["30–780 Gt CO₂ i 1,5 °C-baner,", "2020–2100"], f: C.warm },
-          { t: "DACCS", u: "fangst fra luft med lagring", l: ["100–300 USD per tonn", "Geologisk lagring: ti tusen år", "eller mer", "0–310 Gt CO₂ i 1,5 °C-baner"], f: C.cold },
+          { t: "DACCS", u: "fangst fra luft med lagring", l: ["100–300 USD per tonn", "Geologisk lagring:", "ti tusen år eller mer", "0–310 Gt CO₂ i 1,5 °C-baner"], f: C.cold },
         ];
         const hs = kort.map((k) => 34 + (k.u ? 18 : 0) + k.l.length * 18 + 10);
         let ky = y2 + 138;
@@ -216,7 +212,7 @@ export function CdrSkjemaFigur() {
         const sx = x2 + 22;
         const noteY = 10 + ph + (bred ? 14 : 12 + ph + 14);
         const ccsX = x1;
-        const bw = bred ? 150 : 122;
+        const bw = bred ? 130 : 108;
         return (
           <>
             {/* CCS */}
@@ -231,7 +227,6 @@ export function CdrSkjemaFigur() {
             {/* fabrikk */}
             <rect x={ccsX + 26} y={y1 + 156} width={56} height={40} fill={G.panel2} stroke={C.fg} strokeWidth={1.6} />
             <rect x={ccsX + 62} y={y1 + 132} width={12} height={24} fill={G.panel2} stroke={C.fg} strokeWidth={1.6} />
-            <T x={ccsX + 54} y={y1 + 152} lines="" size={14} />
             <Box x={ccsX + 112} y={y1 + 158} w={bred ? 70 : 64} h={36} stroke={C.teal} fill={G.panel2} sw={1.6} />
             <T x={ccsX + 112 + (bred ? 35 : 32)} y={y1 + 181} lines="Fangst" size={14} weight={700} fill={C.teal} anchor="middle" />
             <Flow d={`M${ccsX + 84} ${y1 + 176} L${ccsX + 110} ${y1 + 176}`} color={C.teal} marker={mk.teal} w={2.4} />
@@ -244,12 +239,12 @@ export function CdrSkjemaFigur() {
             <T x={ccsX + 14} y={y1 + 350} lines="Eksempel: Northern Lights" size={16} weight={700} fill={C.sand} />
             <Steg x={ccsX + 14} y={y1 + 364} w={bw} h={48} navn="Brevik" d={["sementfabrikk"]} />
             <Steg x={ccsX + pw - 14 - bw} y={y1 + 364} w={bw} h={48} navn="Skip" d={["til Øygarden"]} />
-            <Flow d={`M${ccsX + 14 + bw + 2} ${y1 + 388} L${ccsX + pw - 14 - bw - 4} ${y1 + 388}`} color={C.sand} marker={mk.sand} w={2.4} />
+            <Flow d={`M${ccsX + 14 + bw + 5} ${y1 + 388} L${ccsX + pw - 14 - bw - 7} ${y1 + 388}`} color={C.sand} marker={mk.sand} w={2.4} />
             <Steg x={ccsX + pw - 14 - bw} y={y1 + 430} w={bw} h={48} navn="Rørledning" d={["100 km"]} />
             <Flow d={`M${ccsX + pw - 14 - bw / 2} ${y1 + 414} L${ccsX + pw - 14 - bw / 2} ${y1 + 428}`} color={C.sand} marker={mk.sand} w={2.4} />
             <Steg x={ccsX + 14} y={y1 + 430} w={bw} h={66} navn="Reservoar" d={[`2${NB}600 m under`, "havbunnen"]} />
-            <Flow d={`M${ccsX + pw - 14 - bw - 2} ${y1 + 454} L${ccsX + 14 + bw + 4} ${y1 + 454}`} color={C.sand} marker={mk.sand} w={2.4} />
-            <T x={ccsX + 14} y={y1 + 516} lines={bred ? "1,5 millioner tonn CO₂ i året (første trinn). Norske utslipp: over 40 Mt i året." : "1,5 millioner tonn CO₂ i året (første trinn)."} size={14} fill={C.fg} />
+            <Flow d={`M${ccsX + pw - 14 - bw - 5} ${y1 + 454} L${ccsX + 14 + bw + 7} ${y1 + 454}`} color={C.sand} marker={mk.sand} w={2.4} />
+            <T x={ccsX + 14} y={y1 + 516} lines={["1,5 millioner tonn CO₂ i året (første trinn).", "Norske utslipp: over 40 Mt i året."]} size={14} fill={C.fg} lh={18} />
             {!bred && null}
             {/* CDR */}
             <Box x={x2} y={y2} w={pw} h={ph} stroke={C.teal} fill={G.panel} sw={1.8} />
@@ -257,14 +252,14 @@ export function CdrSkjemaFigur() {
             <T x={x2 + 14} y={y2 + 46} lines={["Tar CO₂ ut av lufta og", "lagrer den varig."]} size={14} fill={C.fg} lh={18} />
             <rect x={x2 + 14} y={y2 + 88} width={pw - 28} height={34} rx={6} fill={C.rain} fillOpacity={0.14} stroke={C.rain} strokeWidth={1.4} />
             <T x={x2 + 26} y={y2 + 110} lines="Lufta: CO₂ tas ut" size={14} weight={700} fill={C.fg} />
-            <line x1={sx - 8} x2={sx - 8} y1={y2 + 124} y2={poss[2] + hs[2] / 2} stroke={C.teal} strokeWidth={2.4} className="a a-flow" strokeDasharray="6 5" />
+            <line x1={sx - 4} x2={sx - 4} y1={y2 + 124} y2={poss[2] + 22} stroke={C.teal} strokeWidth={2.4} className="a a-flow" strokeDasharray="6 5" />
             {kort.map((k, i) => (
               <g key={k.t}>
-                <Flow d={`M${sx - 8} ${poss[i] + 22} L${x2 + 12} ${poss[i] + 22}`} color={C.teal} marker={mk.teal} w={2.4} />
-                <Box x={x2 + 14} y={poss[i]} w={cardW - 4} h={hs[i]} stroke={k.f} fill={G.panel2} sw={1.6} />
-                <T x={x2 + 26} y={poss[i] + 24} lines={k.t} size={14} weight={700} fill={k.f} />
-                {k.u && <T x={x2 + 26} y={poss[i] + 42} lines={k.u} size={14} fill={C.muted} />}
-                <T x={x2 + 26} y={poss[i] + (k.u ? 62 : 44)} lines={k.l} size={14} fill={C.fg} lh={18} />
+                <Flow d={`M${sx - 4} ${poss[i] + 22} L${x2 + 28} ${poss[i] + 22}`} color={C.teal} marker={mk.teal} w={2.4} />
+                <Box x={x2 + 30} y={poss[i]} w={cardW - 14} h={hs[i]} stroke={k.f} fill={G.panel2} sw={1.6} />
+                <T x={x2 + 42} y={poss[i] + 24} lines={k.t} size={14} weight={700} fill={k.f} />
+                {k.u && <T x={x2 + 42} y={poss[i] + 42} lines={k.u} size={14} fill={C.muted} />}
+                <T x={x2 + 42} y={poss[i] + (k.u ? 62 : 44)} lines={k.l} size={14} fill={C.fg} lh={18} />
               </g>
             ))}
             {/* note */}
