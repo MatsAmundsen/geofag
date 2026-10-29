@@ -102,7 +102,7 @@ export function MarineEnergyModel() {
         "Avstand til land krever kostbare høyspent-likestrømskabler (HVDC).",
       ],
       norwayRelevance:
-        "Perfekt match for Norges geografi! Norskerenna (250–350 m) og store dype havområder (Utsira Nord). Norge leder an globalt med Hywind Tampen (88 MW som forsyner Gullfaks og Snorre).",
+        "Norskerenna (250–350 m) og store dype havområder (Utsira Nord) passer for flytende havvind. Hywind Tampen (94,6 MW) forsyner Gullfaks og Snorre.",
       diagram: (
         <svg viewBox="0 0 520 280" className="w-full h-auto select-none" aria-label="Flytende havvind skisse">
           {/* Dypvannsbakgrunn */}

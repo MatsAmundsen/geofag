@@ -29,7 +29,7 @@ function FeltG2Page() {
       title="Feltarbeid i hav, luft og is"
       banner="/images/gf1-bergarter.jpg"
       bannerAlt="Lagdelt sedimentær klippe og isskurt fjordlandskap"
-      prev={{ to: "/tema/energi-hav-luft", label: "Forrige: Energi fra hav og luft" }}
+      prev={{ to: "/tema/klimaforskning", label: "Forrige: Hvordan vet vi det? Klimaforskning" }}
       next={{ to: "/eksamen", label: "Neste: Eksamen" }}
       kilder={KILDER_G2.feltG2}
       lead={CHAPTER_INGRESS["felt-hav-luft-is"]}

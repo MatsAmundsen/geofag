@@ -2412,10 +2412,28 @@ export const KILDER = {
       href: "https://www.equinor.com/energy/hywind-scotland",
     },
     {
+      prefix: "Equinor. (2023, 23. august). ",
+      italic: "Verdens største flytende havvindpark offisielt åpnet",
+      suffix: ".",
+      href: "https://www.equinor.com/no/nyheter/20230823-hywind-tampen-offisielt-apnet",
+    },
+    {
       prefix: "Global Wind Energy Council [GWEC]. (2026). ",
       italic: "Global offshore wind report 2026",
       suffix: ".",
       href: "https://www.gwec.net/reports/globaloffshorewindreport",
+    },
+    {
+      prefix: "Kartverket. (2023). ",
+      italic: "Hvorfor er ikke tidevannet likt over alt?",
+      suffix: ".",
+      href: "https://kartverket.no/til-sjos/se-havniva/lar-om-tidevann-og-vannstand/hvorfor-er-ikke-tidevannet-likt-over-alt",
+    },
+    {
+      prefix: "Statkraft. (2013, 20. desember). ",
+      italic: "Statkraft halts osmotic power investments",
+      suffix: ".",
+      href: "https://www.statkraft.com/newsroom/news-and-stories/2013/Statkraft-halts-osmotic-power-investments/",
     },
     {
       prefix: "Store norske leksikon. (u.å.-a). ",
@@ -2452,6 +2470,42 @@ export const KILDER = {
       italic: "Havvarmekraft",
       suffix: ".",
       href: "https://snl.no/havvarmekraft",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-g). ",
+      italic: "Solenergi",
+      suffix: ".",
+      href: "https://snl.no/solenergi",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-h). ",
+      italic: "Saltkraft",
+      suffix: ".",
+      href: "https://snl.no/saltkraft",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-i). ",
+      italic: "Amfidromisk punkt",
+      suffix: ".",
+      href: "https://snl.no/amfidromisk_punkt",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-j). ",
+      italic: "Bærekraftig utvikling",
+      suffix: ".",
+      href: "https://snl.no/b%C3%A6rekraftig_utvikling",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-k). ",
+      italic: "Fosen-saken",
+      suffix: ".",
+      href: "https://snl.no/Fosen-saken",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-l). ",
+      italic: "Betz' lov",
+      suffix: ".",
+      href: "https://snl.no/Betz'_lov",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",

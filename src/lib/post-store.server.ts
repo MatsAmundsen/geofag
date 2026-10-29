@@ -1615,6 +1615,18 @@ const COPY_RESEEDS: CopyReseed[] = [
       "**Treghetssystem:** Et referansesystem uten rotasjon, der Newtons lover gjelder uten fiktive krefter. Jorda er ikke et slikt system.\n\n**Ekmantransport:**",
     ],
   },
+  {
+    // Pakke A (G2): energi-hav-luft utvidet med effektkurve, tidevann/amfidromisk punkt, solenergi, saltkraft og bærekraft; Hywind Tampen 94,6 MW og «ventes å kutte».
+    flag: "g2-pakke-a-energi-hav-luft-2026-10-29",
+    slug: "energi-hav-luft",
+    stale: ["Hywind Tampen (88 MW)"],
+  },
+  {
+    // Pakke A (G2, T2): paleoklima utvidet med dryppstein (13C, U–Th), evaporitt/tillitt/kull og Fanerozoikum-kurven.
+    flag: "g2-paleoklima-gap-t2-2026-10-29",
+    slug: "paleoklima",
+    stale: ["kalkskall, pollen eller årringer, som henger sammen"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

@@ -30,7 +30,7 @@ function EnergiPage() {
       banner="/images/tema-strommer.jpg"
       bannerAlt="Nord-Atlanteren med fargekontrast som minner om en vestlig randstrøm"
       prev={{ to: "/tema/tilpasning", label: "Forrige: Konsekvenser og tilpasning" }}
-      next={{ to: "/tema/felt-hav-luft-is", label: "Neste: Feltarbeid" }}
+      next={{ to: "/tema/energi-regning", label: "Neste: Å regne med energi" }}
       kilder={KILDER.energiHavLuft}
       posterSlug="energi-hav-luft"
       post={post}

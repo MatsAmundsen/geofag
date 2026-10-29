@@ -37,10 +37,14 @@ import { Route as Geofag1VulkanerOgJordskjelvRouteImport } from './routes/geofag
 import { Route as PosterIndexRouteImport } from './routes/poster/index'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaEnergiHavLuftRouteImport } from './routes/tema/energi-hav-luft'
+import { Route as TemaEnergiRegningRouteImport } from './routes/tema/energi-regning'
 import { Route as TemaFeltHavLuftIsRouteImport } from './routes/tema/felt-hav-luft-is'
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaJetstrommerRouteImport } from './routes/tema/jetstrommer'
+import { Route as TemaKlimaendringMenneskeskaptRouteImport } from './routes/tema/klimaendring-menneskeskapt'
+import { Route as TemaKlimaforskningRouteImport } from './routes/tema/klimaforskning'
+import { Route as TemaKlimatiltakRouteImport } from './routes/tema/klimatiltak'
 import { Route as TemaKryosfaerenRouteImport } from './routes/tema/kryosfaeren'
 import { Route as TemaKryosfareRouteImport } from './routes/tema/kryosfare'
 import { Route as TemaLokaleVaersystemerRouteImport } from './routes/tema/lokale-vaersystemer'
@@ -207,6 +211,11 @@ const TemaEnergiHavLuftRoute = TemaEnergiHavLuftRouteImport.update({
   path: '/tema/energi-hav-luft',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaEnergiRegningRoute = TemaEnergiRegningRouteImport.update({
+  id: '/tema/energi-regning',
+  path: '/tema/energi-regning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaFeltHavLuftIsRoute = TemaFeltHavLuftIsRouteImport.update({
   id: '/tema/felt-hav-luft-is',
   path: '/tema/felt-hav-luft-is',
@@ -225,6 +234,22 @@ const TemaHoytrykkLavtrykkRoute = TemaHoytrykkLavtrykkRouteImport.update({
 const TemaJetstrommerRoute = TemaJetstrommerRouteImport.update({
   id: '/tema/jetstrommer',
   path: '/tema/jetstrommer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimaendringMenneskeskaptRoute =
+  TemaKlimaendringMenneskeskaptRouteImport.update({
+    id: '/tema/klimaendring-menneskeskapt',
+    path: '/tema/klimaendring-menneskeskapt',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TemaKlimaforskningRoute = TemaKlimaforskningRouteImport.update({
+  id: '/tema/klimaforskning',
+  path: '/tema/klimaforskning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimatiltakRoute = TemaKlimatiltakRouteImport.update({
+  id: '/tema/klimatiltak',
+  path: '/tema/klimatiltak',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemaKryosfaerenRoute = TemaKryosfaerenRouteImport.update({
@@ -355,10 +380,14 @@ export interface FileRoutesByFullPath {
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
+  '/tema/energi-regning': typeof TemaEnergiRegningRoute
   '/tema/felt-hav-luft-is': typeof TemaFeltHavLuftIsRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/klimaendring-menneskeskapt': typeof TemaKlimaendringMenneskeskaptRoute
+  '/tema/klimaforskning': typeof TemaKlimaforskningRoute
+  '/tema/klimatiltak': typeof TemaKlimatiltakRoute
   '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
@@ -409,10 +438,14 @@ export interface FileRoutesByTo {
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
+  '/tema/energi-regning': typeof TemaEnergiRegningRoute
   '/tema/felt-hav-luft-is': typeof TemaFeltHavLuftIsRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/klimaendring-menneskeskapt': typeof TemaKlimaendringMenneskeskaptRoute
+  '/tema/klimaforskning': typeof TemaKlimaforskningRoute
+  '/tema/klimatiltak': typeof TemaKlimatiltakRoute
   '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
@@ -464,10 +497,14 @@ export interface FileRoutesById {
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
+  '/tema/energi-regning': typeof TemaEnergiRegningRoute
   '/tema/felt-hav-luft-is': typeof TemaFeltHavLuftIsRoute
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/klimaendring-menneskeskapt': typeof TemaKlimaendringMenneskeskaptRoute
+  '/tema/klimaforskning': typeof TemaKlimaforskningRoute
+  '/tema/klimatiltak': typeof TemaKlimatiltakRoute
   '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
@@ -520,10 +557,14 @@ export interface FileRouteTypes {
     | '/geofag-1/vulkaner-og-jordskjelv'
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
+    | '/tema/energi-regning'
     | '/tema/felt-hav-luft-is'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klimaendring-menneskeskapt'
+    | '/tema/klimaforskning'
+    | '/tema/klimatiltak'
     | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
@@ -574,10 +615,14 @@ export interface FileRouteTypes {
     | '/geofag-1/vulkaner-og-jordskjelv'
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
+    | '/tema/energi-regning'
     | '/tema/felt-hav-luft-is'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klimaendring-menneskeskapt'
+    | '/tema/klimaforskning'
+    | '/tema/klimatiltak'
     | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
@@ -628,10 +673,14 @@ export interface FileRouteTypes {
     | '/geofag-1/vulkaner-og-jordskjelv'
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
+    | '/tema/energi-regning'
     | '/tema/felt-hav-luft-is'
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klimaendring-menneskeskapt'
+    | '/tema/klimaforskning'
+    | '/tema/klimatiltak'
     | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
@@ -683,10 +732,14 @@ export interface RootRouteChildren {
   Geofag1VulkanerOgJordskjelvRoute: typeof Geofag1VulkanerOgJordskjelvRoute
   TemaCoriolisRoute: typeof TemaCoriolisRoute
   TemaEnergiHavLuftRoute: typeof TemaEnergiHavLuftRoute
+  TemaEnergiRegningRoute: typeof TemaEnergiRegningRoute
   TemaFeltHavLuftIsRoute: typeof TemaFeltHavLuftIsRoute
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaJetstrommerRoute: typeof TemaJetstrommerRoute
+  TemaKlimaendringMenneskeskaptRoute: typeof TemaKlimaendringMenneskeskaptRoute
+  TemaKlimaforskningRoute: typeof TemaKlimaforskningRoute
+  TemaKlimatiltakRoute: typeof TemaKlimatiltakRoute
   TemaKryosfaerenRoute: typeof TemaKryosfaerenRoute
   TemaKryosfareRoute: typeof TemaKryosfareRoute
   TemaLokaleVaersystemerRoute: typeof TemaLokaleVaersystemerRoute
@@ -910,6 +963,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaEnergiHavLuftRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/energi-regning': {
+      id: '/tema/energi-regning'
+      path: '/tema/energi-regning'
+      fullPath: '/tema/energi-regning'
+      preLoaderRoute: typeof TemaEnergiRegningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/felt-hav-luft-is': {
       id: '/tema/felt-hav-luft-is'
       path: '/tema/felt-hav-luft-is'
@@ -936,6 +996,27 @@ declare module '@tanstack/react-router' {
       path: '/tema/jetstrommer'
       fullPath: '/tema/jetstrommer'
       preLoaderRoute: typeof TemaJetstrommerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klimaendring-menneskeskapt': {
+      id: '/tema/klimaendring-menneskeskapt'
+      path: '/tema/klimaendring-menneskeskapt'
+      fullPath: '/tema/klimaendring-menneskeskapt'
+      preLoaderRoute: typeof TemaKlimaendringMenneskeskaptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klimaforskning': {
+      id: '/tema/klimaforskning'
+      path: '/tema/klimaforskning'
+      fullPath: '/tema/klimaforskning'
+      preLoaderRoute: typeof TemaKlimaforskningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klimatiltak': {
+      id: '/tema/klimatiltak'
+      path: '/tema/klimatiltak'
+      fullPath: '/tema/klimatiltak'
+      preLoaderRoute: typeof TemaKlimatiltakRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tema/kryosfaeren': {
@@ -1107,10 +1188,14 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag1VulkanerOgJordskjelvRoute: Geofag1VulkanerOgJordskjelvRoute,
   TemaCoriolisRoute: TemaCoriolisRoute,
   TemaEnergiHavLuftRoute: TemaEnergiHavLuftRoute,
+  TemaEnergiRegningRoute: TemaEnergiRegningRoute,
   TemaFeltHavLuftIsRoute: TemaFeltHavLuftIsRoute,
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaJetstrommerRoute: TemaJetstrommerRoute,
+  TemaKlimaendringMenneskeskaptRoute: TemaKlimaendringMenneskeskaptRoute,
+  TemaKlimaforskningRoute: TemaKlimaforskningRoute,
+  TemaKlimatiltakRoute: TemaKlimatiltakRoute,
   TemaKryosfaerenRoute: TemaKryosfaerenRoute,
   TemaKryosfareRoute: TemaKryosfareRoute,
   TemaLokaleVaersystemerRoute: TemaLokaleVaersystemerRoute,
