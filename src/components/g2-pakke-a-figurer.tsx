@@ -9,6 +9,11 @@ import { AmfidromiskFigur } from "./diagrams/g2a-vind-tidevann";
 import { SolenergiFigur } from "./diagrams/g2a-sol-salt";
 import { SaltkraftFigur } from "./diagrams/g2a-sol-salt";
 import { BaerekraftTreFigur } from "./diagrams/g2a-sol-salt";
+import { KarbonkretsloepFigur } from "./diagrams/g2a-klima";
+import { UtslippSektorFigur } from "./diagrams/g2a-klima";
+import { KarbonbudsjettFigur } from "./diagrams/g2a-klima";
+import { SspScenarioFigur } from "./diagrams/g2a-klima";
+import { NorskeUtslippFigur } from "./diagrams/g2a-klima";
 
 /** Ferdige figurer i pakke A. Nøkkelen er widget-id-en i markdown. */
 export const G2_PAKKE_A_FERDIGE: Record<string, () => JSX.Element> = {
@@ -22,4 +27,9 @@ export const G2_PAKKE_A_FERDIGE: Record<string, () => JSX.Element> = {
   SolenergiFigur: () => <SolenergiFigur />,
   SaltkraftFigur: () => <SaltkraftFigur />,
   BaerekraftTreFigur: () => <BaerekraftTreFigur />,
+  KarbonkretsloepFigur: () => <KarbonkretsloepFigur />,
+  UtslippSektorFigur: () => <UtslippSektorFigur />,
+  KarbonbudsjettFigur: () => <KarbonbudsjettFigur />,
+  SspScenarioFigur: () => <SspScenarioFigur />,
+  NorskeUtslippFigur: () => <NorskeUtslippFigur />,
 };
