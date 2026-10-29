@@ -299,6 +299,7 @@ export function SiteHeader() {
                 <span className="font-display text-sm font-semibold tracking-tight text-foreground">
                   Geofag
                 </span>
+                {" "}
                 <span className="text-[10px] text-muted-foreground">Forside</span>
               </div>
             </Link>
@@ -537,6 +538,7 @@ function BrandCluster({
           <span className="font-display text-sm font-semibold tracking-tight text-foreground">
             Geofag
           </span>
+          {" "}
           <span className="text-[10px] text-muted-foreground">Forside</span>
         </div>
       </Link>
