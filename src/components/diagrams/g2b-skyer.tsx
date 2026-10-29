@@ -310,9 +310,15 @@ function Konvektiv({ x, y }: { x: number; y: number }) {
         <path key={bx} d={`M${bx} 214 q6 -8 12 0 t12 0`} stroke={C.low} strokeWidth={2} fill="none" className="a a-pulse" />
       ))}
       {/* opptrekk */}
-      {[78, 116, 154].map((ux, i) => (
-        <Flow key={ux} d={`M${ux} 204 L${ux} ${i === 1 ? 96 : 112}`} color={C.low} w={3} cls="a a-flowr" />
-      ))}
+      {[78, 116, 154].map((ux, i) => {
+        const tip = i === 1 ? 94 : 110;
+        return (
+          <g key={ux}>
+            <Flow d={`M${ux} 204 L${ux} ${tip + 10}`} color={C.low} w={3} cls="a a-flowr" />
+            <path d={`M${ux - 7} ${tip + 12} L${ux} ${tip} L${ux + 7} ${tip + 12} Z`} fill={C.low} />
+          </g>
+        );
+      })}
       {/* bygesky */}
       <g className="a a-sway" style={{ ["--dx" as string]: "4px" }}>
         <rect x={100} y={44} width={30} height={46} fill={SKY} opacity={0.95} />
@@ -452,7 +458,7 @@ export function FigKlimadiagramKystInnland() {
       title="Klimadiagram for Bergen og Oslo"
       desc="To klimadiagrammer side om side for normalperioden 1991–2020. Hvert diagram har nedbør som søyler på venstre akse fra 0 til 300 millimeter og temperatur som kurve på høyre akse fra minus 10 til 20 grader. Aksene er uavhengige. Bergen (Florida) har årsmiddel 8,4 grader og årsnedbør 2 496 millimeter, med mest nedbør om høsten og tidlig vinter. Oslo (Blindern) har årsmiddel 7,0 grader og årsnedbør 836 millimeter, med kalde vintre og varme somre."
       heading="Klimadiagram for Bergen og Oslo"
-      caption="Nedbør (søyler, venstre akse, mm) og temperatur (kurve, høyre akse, °C) per måned. Aksene er frie og har ikke fast forhold til hverandre. Normal 1991–2020. Månedsverdiene er Meteorologisk instituttets normaler slik de vises på Yr (stasjonene Bergen – Florida og Oslo – Blindern). Kilde: Meteorologisk institutt, Seklima. Årstallene: SNL (Dannevig & Harstveit, 2026)."
+      caption="Nedbør (søyler, venstre akse, mm) og temperatur (kurve, høyre akse, °C) per måned. Aksene er frie og har ikke fast forhold til hverandre. Normal 1991–2020. Månedsverdiene er Meteorologisk instituttets normaler slik de vises på Yr (stasjonene Bergen – Florida og Oslo – Blindern). Månedsverdiene er avrundet, så summen kan avvike 1 mm fra årsnormalen (Oslo: 836 mm). Kilde: Meteorologisk institutt (Seklima, Yr). Årstallene: SNL (Dannevig & Harstveit, 2026)."
       narrow={{ w: 300, h: 760 }}
       wide={{ w: 720, h: 400 }}
     >
@@ -523,9 +529,9 @@ export function FigKoppenNorge() {
   return (
     <G2Figur
       title="Köppen-klimasoner i Norge, 1961–1990 og 1991–2020"
-      desc="To skjematiske kart over fastlands-Norge, ett for 1961–1990 og ett for 1991–2020, med Köppen-klimasonene C varmtemperert, D kaldtemperert og E polart. På kartet for 1991–2020 er polart klima sterkt redusert og det varmtemperert klimaet i Sør-Norge har bredt seg lenger innover i landet og nordover langs kysten."
+      desc="To skjematiske kart over fastlands-Norge, ett for 1961–1990 og ett for 1991–2020, med Köppen-klimasonene C varmtemperert, D kaldtemperert og E polart. Kaldtemperert klima dekker innlandet i Sør-Norge, Trøndelag og mesteparten av Finnmark, også mye av kysten der. Varmtemperert klima ligger langs kysten fra Oslofjorden og Sørlandet rundt vestkysten og opp til Nordland og Troms. Polart klima finnes bare i høyfjellet. På kartet for 1991–2020 er de varmtemperte og polare flatene endret i forhold til 1961–1990. Figuren er en skisse."
       heading="Köppen-klimasoner i Norge"
-      caption="Skjematisk kart tegnet av oss etter kriteriene i teksten: C/D-grensen er kaldeste måned −3 °C, polar grense er varmeste måned 10 °C. Soneflatene er forenklet og ikke målt grense for grense. Mamen (2025), Dannevig & Harstveit (2026). Kartgrunnlag: Natural Earth (offentlig eie)."
+      caption="Foreløpig skisse tegnet av oss etter kriteriene i teksten: C/D-grensen er kaldeste måned −3 °C (andre kilder bruker 0 °C), polar grense er varmeste måned 10 °C. Soneflatene er forenklet etter Meteorologisk institutts Köppen-kart (D i innlandet og Finnmark, C langs kysten, E i høyfjellet), og ikke målt grense for grense. Mamen (2025), Dannevig & Harstveit (2026). Kartgrunnlag: Natural Earth (offentlig eie)."
       narrow={{ w: 300, h: 476 }}
       wide={{ w: 720, h: 372 }}
     >

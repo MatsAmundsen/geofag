@@ -1,6 +1,5 @@
 import { C } from "./svg-kit";
 import { Box, Flow, G, G2Figur, T, nb } from "./g2a-kit";
-import { SOLFLEKK } from "./g2b-solflekker-data";
 
 const L10 = Math.log10;
 const MINUS = "\u2212";
@@ -171,38 +170,46 @@ export function FigNaturligTidsskalaer() {
 /* ---------- FigSolflekker ---------- */
 
 export function FigSolflekker() {
-  const sisteAar = SOLFLEKK[SOLFLEKK.length - 1][0];
-  // Topper: lokale maksimum innen ±4 år og over 40.
-  const topper = SOLFLEKK.filter(([y, v], i) => {
-    if (v < 40) return false;
-    for (let k = Math.max(0, i - 4); k <= Math.min(SOLFLEKK.length - 1, i + 4); k++) if (SOLFLEKK[k][1] > v) return false;
-    return i > 0 && i < SOLFLEKK.length - 1;
-  });
+  /* Idealisert solsyklus: ingen målt dataserie. Tid i år fra 1645. Maunder-minimum 1645–1715 (Owens mfl., 2017),
+     deretter åtte like sykluser på 11 år. Kurven er en asymmetrisk sin²-form (raskere stigning enn fall). */
+  const T0 = 0;
+  const T1 = 155;
+  const M1 = 70;
+  const P = 11;
+  const verdi = (t: number) => {
+    if (t < M1) return 0.04 + 0.02 * Math.sin((2 * Math.PI * t) / P);
+    const ph = ((t - M1) % P) / P;
+    const q = ph < 0.36 ? (ph / 0.36) * 0.5 : 0.5 + ((ph - 0.36) / 0.64) * 0.5;
+    return 0.04 + 0.96 * Math.pow(Math.sin(Math.PI * q), 2);
+  };
+  const topperT: number[] = [];
+  for (let n = 0; M1 + P * n + 0.36 * P < T1; n++) topperT.push(M1 + P * n + 0.36 * P);
   return (
     <G2Figur
-      title="Solflekktall og Maunder-minimum"
-      desc={`Linjediagram over årlig internasjonalt solflekktall fra 1749 til ${sisteAar}, med tydelige topper omtrent hvert 11. år (8 til 14 år mellom toppene). Et skravert bånd viser Maunder-minimum 1645–1715. Båndet går ut av venstre kant, siden figuren starter i 1700. Ingen temperaturkurve er tegnet.`}
-      heading="Solflekktall og Maunder-minimum"
-      caption={`Årlig gjennomsnittlig internasjonalt solflekktall (versjon 2). Data: SILSO, Royal Observatory of Belgium, hentet via NOAA Space Weather Prediction Center. Lisens CC BY-NC. Årsmiddel beregnet av oss fra månedsverdier, siste hele år ${sisteAar}. Datareden starter i 1749. Maunder-minimum etter Owens mfl. (2017).`}
-      narrow={{ w: 300, h: 496 }}
-      wide={{ w: 720, h: 412 }}
+      title="Solflekker: idealisert syklus og Maunder-minimum"
+      desc="Skjematisk linjediagram uten målte data. Bak et skravert bånd for Maunder-minimum, omtrent 1645 til 1715, ligger kurven lavt og flatt. Etter minimumet kommer åtte like, idealiserte solsykluser, hver på omtrent 11 år, med en markert topp. I virkeligheten varierer lengden mellom 8 og 14 år, og høyden varierer fra syklus til syklus. Aksen viser bare færre og flere solflekker, uten tall."
+      heading="Solflekker: idealisert syklus og Maunder-minimum"
+      caption="Skjematisk figur: en idealisert solsyklus på omtrent 11 år, ikke målte data. Maunder-minimum omtrent 1645–1715 etter Owens mfl. (2017)."
+      narrow={{ w: 300, h: 524 }}
+      wide={{ w: 720, h: 350 }}
       animated
-      name="Solflekktall"
+      name="Solflekker"
     >
       {({ bred }) => {
-        const px0 = bred ? 62 : 46;
-        const px1 = bred ? 704 : 288;
-        const py0 = bred ? 70 : 96;
-        const py1 = bred ? 320 : 330;
-        const a0 = 1700;
-        const a1 = 2030;
-        const X = (a: number) => px0 + ((a - a0) / (a1 - a0)) * (px1 - px0);
-        const Y = (v: number) => py1 - (v / 300) * (py1 - py0);
-        const lin = SOLFLEKK.map(([a, v], i) => `${i ? "L" : "M"}${X(a).toFixed(1)} ${Y(v).toFixed(1)}`).join(" ");
-        const omr = `${lin} L${X(SOLFLEKK[SOLFLEKK.length - 1][0]).toFixed(1)} ${py1} L${X(SOLFLEKK[0][0]).toFixed(1)} ${py1} Z`;
-        const aars = bred ? [1700, 1750, 1800, 1850, 1900, 1950, 2000] : [1700, 1800, 1900, 2000];
-        const mx2 = X(1715);
-        const siste = SOLFLEKK[SOLFLEKK.length - 1];
+        const px0 = bred ? 78 : 62;
+        const px1 = bred ? 704 : 290;
+        const py0 = bred ? 96 : 160;
+        const py1 = bred ? 254 : 318;
+        const X = (t: number) => px0 + ((t - T0) / (T1 - T0)) * (px1 - px0);
+        const Y = (v: number) => py1 - v * (py1 - py0);
+        const pts: string[] = [];
+        for (let t = T0; t <= T1 + 0.01; t += 0.25) pts.push(`${pts.length ? "L" : "M"}${X(t).toFixed(1)} ${Y(verdi(t)).toFixed(1)}`);
+        const lin = pts.join(" ");
+        const omr = `${lin} L${X(T1).toFixed(1)} ${py1} L${X(T0).toFixed(1)} ${py1} Z`;
+        const mx2 = X(M1);
+        const bra = topperT[2];
+        const brb = topperT[3];
+        const bry = py0 - 14;
         return (
           <>
             <defs>
@@ -215,51 +222,58 @@ export function FigSolflekker() {
                 <stop offset="1" stopColor={G.amber} stopOpacity="0.02" />
               </linearGradient>
             </defs>
-            {[0, 100, 200, 300].map((v) => (
-              <g key={v}>
-                <line x1={px0} x2={px1} y1={Y(v)} y2={Y(v)} stroke={G.grid} strokeWidth={1.2} />
-                <T x={px0 - 6} y={Y(v) + 5} lines={String(v)} size={14} fill={C.muted} anchor="end" />
-              </g>
-            ))}
-            <T x={px0 + 24} y={bred ? 60 : 84} lines={bred ? "Solflekktall (årsmiddel)" : "Solflekktall"} size={14} fill={C.muted} />
-            {aars.map((a) => (
-              <g key={a}>
-                <line x1={X(a)} x2={X(a)} y1={py1} y2={py1 + 5} stroke={C.muted} strokeWidth={1.2} />
-                <T x={X(a)} y={py1 + 22} lines={String(a)} size={14} fill={C.muted} anchor="middle" />
-              </g>
-            ))}
+            <rect x={bred ? 604 : 8} y={bred ? 8 : 6} width={100} height={24} rx={12} fill="none" stroke={G.amber} strokeWidth={1.4} />
+            <T x={bred ? 654 : 58} y={bred ? 25 : 23} lines="Skjematisk" size={14} weight={700} fill={G.amber} anchor="middle" />
+            {/* akser */}
+            <line x1={px0} x2={px0} y1={py0 - 4} y2={py1} stroke={C.muted} strokeWidth={1.4} />
+            <line x1={px0} x2={px1} y1={py1} y2={py1} stroke={C.muted} strokeWidth={1.4} />
+            <T x={px0 - 8} y={py0 + 8} lines="Flere" size={14} fill={C.muted} anchor="end" />
+            <T x={px0 - 8} y={py1 - 2} lines="Færre" size={14} fill={C.muted} anchor="end" />
             {/* Maunder-båndet */}
             <rect x={px0} y={py0} width={mx2 - px0} height={py1 - py0} fill="url(#g2b-hatch)" opacity={0.95} />
             <line x1={mx2} x2={mx2} y1={py0} y2={py1} stroke={C.cold} strokeWidth={1.4} />
             {bred ? (
               <>
-                <T x={px0} y={30} lines="Maunder-minimum 1645–1715 (Owens mfl., 2017)" size={14} fill={C.cold} weight={700} />
-                <line x1={px0 + 14} x2={px0 + 14} y1={38} y2={py0} stroke={C.cold} strokeWidth={1.4} />
+                <T x={px0 + 10} y={30} lines="Maunder-minimum 1645–1715 (Owens mfl., 2017)" size={14} fill={C.cold} weight={700} />
+                <line x1={px0 + 24} x2={px0 + 24} y1={38} y2={py0} stroke={C.cold} strokeWidth={1.4} />
               </>
             ) : (
               <>
-                <T x={8} y={26} lines={["Maunder-minimum 1645–1715", "(Owens mfl., 2017)"]} size={14} fill={C.cold} weight={700} />
-                <line x1={px0 + 8} x2={px0 + 8} y1={52} y2={py0} stroke={C.cold} strokeWidth={1.4} />
+                <T x={8} y={56} lines={["Maunder-minimum 1645–1715", "(Owens mfl., 2017)"]} size={14} fill={C.cold} weight={700} />
+                <line x1={px0 + 14} x2={px0 + 14} y1={90} y2={py0} stroke={C.cold} strokeWidth={1.4} />
               </>
             )}
             <path d={omr} fill="url(#g2b-sol-fyll)" />
-            <path d={lin} fill="none" stroke={G.amber} strokeWidth={bred ? 1.8 : 1.6} strokeLinejoin="round" />
-            {topper.map(([a, v], i) => (
-              <circle key={a} cx={X(a)} cy={Y(v)} r={bred ? 3.6 : 3} fill={C.white} stroke={G.amber} strokeWidth={1.4} className={i % 2 ? "a a-pulse" : "a a-pulse2"} />
+            <path d={lin} fill="none" stroke={G.amber} strokeWidth={bred ? 2.2 : 2} strokeLinejoin="round" />
+            {topperT.map((t, i) => (
+              <circle key={t} cx={X(t)} cy={Y(verdi(t))} r={bred ? 4 : 3.4} fill={C.white} stroke={G.amber} strokeWidth={1.4} className={i % 2 ? "a a-pulse" : "a a-pulse2"} />
             ))}
-            <circle cx={X(siste[0])} cy={Y(siste[1])} r={bred ? 5 : 4.5} fill={G.amber} className="a a-pulse" />
-            {/* Notater */}
+            {/* syklusbrakett */}
+            <line x1={X(bra)} x2={X(brb)} y1={bry} y2={bry} stroke={C.fg} strokeWidth={1.6} />
+            <line x1={X(bra)} x2={X(bra)} y1={bry - 5} y2={bry + 5} stroke={C.fg} strokeWidth={1.6} />
+            <line x1={X(brb)} x2={X(brb)} y1={bry - 5} y2={bry + 5} stroke={C.fg} strokeWidth={1.6} />
+            {bred ? (
+              <T x={(X(bra) + X(brb)) / 2} y={bry - 12} lines="omtrent 11 år (8–14 år)" size={14} weight={700} fill={C.fg} anchor="middle" />
+            ) : (
+              <T x={px1} y={bry - 34} lines={["omtrent 11 år", "(8–14 år)"]} size={14} weight={700} fill={C.fg} anchor="end" />
+            )}
+            {/* tidsakse */}
+            <line x1={px0} x2={px0} y1={py1} y2={py1 + 5} stroke={C.muted} strokeWidth={1.2} />
+            <line x1={mx2} x2={mx2} y1={py1} y2={py1 + 5} stroke={C.muted} strokeWidth={1.2} />
+            <T x={px0} y={py1 + 22} lines="1645" size={14} fill={C.muted} anchor="middle" />
+            <T x={mx2} y={py1 + 22} lines="1715" size={14} fill={C.muted} anchor="middle" />
+            <T x={px1} y={py1 + 22} lines="Tid" size={14} fill={C.muted} anchor="end" />
             {bred ? (
               <>
-                <T x={px0} y={py1 + 52} lines="◂ Maunder-minimum fortsetter bak venstre kant, til 1645. Figuren har data fra 1749." size={14} fill={C.muted} />
-                <circle cx={px0 + 6} cy={py1 + 74} r={4} fill={C.white} stroke={G.amber} strokeWidth={1.4} />
-                <T x={px0 + 18} y={py1 + 79} lines="Topp i en solsyklus. Syklusene varer 8–14 år, i gjennomsnitt 11 år." size={14} fill={C.fg} />
+                <T x={8} y={py1 + 52} lines="Idealisert syklus. I virkeligheten varierer både lengden og høyden fra syklus til syklus." size={14} fill={C.muted} />
+                <circle cx={14} cy={py1 + 74} r={4} fill={C.white} stroke={G.amber} strokeWidth={1.4} />
+                <T x={26} y={py1 + 79} lines="Topp i en solsyklus." size={14} fill={C.fg} />
               </>
             ) : (
               <>
-                <T x={8} y={py1 + 52} lines={["◂ Maunder-minimum fortsetter", "bak venstre kant, til 1645.", "Figuren har data fra 1749."]} size={14} fill={C.muted} />
-                <circle cx={14} cy={py1 + 108} r={4} fill={C.white} stroke={G.amber} strokeWidth={1.4} />
-                <T x={26} y={py1 + 113} lines={["Topp i en solsyklus.", "Syklusene varer 8–14 år,", "i gjennomsnitt 11 år."]} size={14} fill={C.fg} />
+                <T x={8} y={py1 + 52} lines={["Idealisert syklus. I virkeligheten", "varierer både lengden og høyden", "fra syklus til syklus."]} size={14} fill={C.muted} lh={18} />
+                <circle cx={14} cy={py1 + 118} r={4} fill={C.white} stroke={G.amber} strokeWidth={1.4} />
+                <T x={26} y={py1 + 123} lines="Topp i en solsyklus." size={14} fill={C.fg} />
               </>
             )}
           </>
