@@ -19,6 +19,7 @@ import {
   oncePerKey,
   reseedFlaggedCopies as runCopyReseeds,
 } from "@/lib/copy-reseed";
+import { COPY_RESEEDS_B } from "@/lib/copy-reseeds-b";
 import {
   CHAPTER_POST_SEEDS,
   nowStamp,
@@ -1628,6 +1629,7 @@ const COPY_RESEEDS: CopyReseed[] = [
     stale: ["kalkskall, pollen eller årringer, som henger sammen"],
   },
 ];
+COPY_RESEEDS.push(...COPY_RESEEDS_B);
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
   slug: seed.slug,

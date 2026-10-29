@@ -17,7 +17,7 @@
 >
 > **I dette kapitlet lærer du om**
 >
-> hvordan IPCC beskriver klimarisiko som et samspill mellom fare, eksponering og sårbarhet, hvilke konsekvenser klimaendringer har for enkeltmennesker, samfunn og økosystem, hvordan byer kan håndtere overvann, hvordan vi sikrer oss mot flom og havnivåstigning, og hvordan lover og arealplanlegging brukes i klimatilpasning.
+> hvordan IPCC beskriver klimarisiko som et samspill mellom fare, eksponering og sårbarhet, hvilke konsekvenser klimaendringer har for enkeltmennesker, samfunn og økosystem, hvordan byer kan håndtere overvann, hvordan vi sikrer oss mot flom og havnivåstigning, hva som gjør noen mer sårbare enn andre, hvor grensene for tilpasning går, og hvordan lover og arealplanlegging brukes i klimatilpasning.
 
 ## Hva er klimarisiko?
 
@@ -57,6 +57,27 @@ Noen tiltak kan gjøre samfunnet mer sårbart på lang sikt eller flytte skaden 
 
 ```widget
 SjekkTilpasning1
+```
+
+## Hva gjør noen mer sårbare enn andre?
+
+Sårbarhet er en del av risikoen, men den er også et eget forskningsfelt. IPCC definerer *sårbarhet* som tilbøyeligheten eller predisposisjonen for å bli negativt påvirket. Begrepet omfatter blant annet følsomhet eller mottakelighet for skade og mangel på evne til å håndtere og tilpasse seg (Möller mfl., 2022). Evnen til å tilpasse seg kalles *tilpasningsevne*. Den er evnen til systemer, institusjoner, mennesker og andre organismer til å justere seg til mulig skade, utnytte muligheter eller håndtere konsekvenser (Möller mfl., 2022).
+
+Sårbarheten er ikke lik for alle. Den varierer innenfor samfunn og mellom regioner og land, og den endrer seg over tid (IPCC, 2022). IPCC forklarer forskjellene med samspillet mellom sosial og økonomisk utvikling, ikke-bærekraftig bruk av hav og land, ulikhet, marginalisering og styresett. Omtrent 3,3 til 3,6 milliarder mennesker lever i sammenhenger som er svært sårbare for klimaendringer (høy tillit) (IPCC, 2022, avsnitt B.2).
+
+| Det som øker sårbarheten | Hva IPCC skriver |
+| --- | --- |
+| Fattigdom, svakt styresett, begrenset tilgang til grunnleggende tjenester og ressurser, voldelig konflikt | Sårbarheten er høyere på slike steder (IPCC, 2022, avsnitt B.2.4) |
+| Klimafølsomt levebrød | Småbønder, beitebasert husdyrhold og fiskerisamfunn er eksempler (IPCC, 2022, avsnitt B.2.4) |
+| Ulikhet og marginalisering knyttet til kjønn, etnisitet og lav inntekt | Sårbarheten forsterkes, særlig for mange urfolk og lokalsamfunn (IPCC, 2022, avsnitt B.2.4) |
+| Ødelagte økosystemer | Når mennesker ødelegger eller bryter ned økosystemer, blir menneskene mer sårbare (IPCC, 2022, avsnitt B.2.1) |
+
+IPCC peker ut flere regioner med særlig høy menneskelig sårbarhet: Vest-, Sentral- og Øst-Afrika, Sør-Asia, Mellom- og Sør-Amerika, små øystater og Arktis (høy tillit). Mellom 2010 og 2020 var dødeligheten fra flom, tørke og storm 15 ganger høyere i regioner med høy sårbarhet enn i regioner med svært lav sårbarhet (høy tillit) (IPCC, 2022, avsnitt B.2.4).
+
+**Regn selv:** Dødeligheten var 15 ganger høyere i regionene med høy sårbarhet. Hvis dødeligheten i regionene med svært lav sårbarhet tilsvarer 100 dødsfall per million innbyggere (et tenkt eksempeltall), blir den 15 · 100 = 1 500 dødsfall per million innbyggere i regionene med høy sårbarhet.
+
+```widget
+SjekkTilpasning5
 ```
 
 ## Hvordan kan byer håndtere overvann?
@@ -133,6 +154,39 @@ Alt som er brannforsikret i Norge, er også forsikret mot naturskade, for eksemp
 SjekkTilpasning4
 ```
 
+## Hvor går grensene for tilpasning?
+
+Tilpasning kan redusere risikoen, men den kan ikke fjerne alt. IPCC bruker begrepet *tilpasningsgrense* om punktet der en aktørs mål eller et systems behov ikke lenger kan sikres mot uakseptabel risiko gjennom tilpasningstiltak (Möller mfl., 2022). Det er to typer grenser (Möller mfl., 2022):
+
+| Type grense | Hva det betyr |
+| --- | --- |
+| Hard tilpasningsgrense | Ingen tilpasningstiltak kan hindre uakseptabel risiko |
+| Myk tilpasningsgrense | Tiltak finnes kanskje, men er ikke tilgjengelige nå, og kan ikke unngå uakseptabel risiko |
+
+**Myke grenser** er nådd for noen mennesker. Eksempler er enkeltpersoner og husholdninger i lavtliggende kystområder i Australasia og på små øystater, og småbønder i Mellom- og Sør-Amerika, Afrika, Europa og Asia (middels tillit). De myke grensene kan overvinnes ved å ta tak i hindringer, først og fremst økonomiske, styringsmessige, institusjonelle og politiske (høy tillit). Mangel på kunnskap om klima og begrenset tilgang til informasjon og data gjør også planlegging og gjennomføring vanskeligere (middels tillit). Økonomi er en viktig årsak i alle sektorer og regioner. De globale pengestrømmene til tilpasning er ikke store nok, og det aller meste av den sporede klimafinansieringen gikk til utslippskutt, mens en liten andel gikk til tilpasning (svært høy tillit) (IPCC, 2022, avsnitt C.3.1 og C.3.2).
+
+**Harde grenser** er nådd i noen økosystemer (høy tillit). Økosystemer som allerede har nådd eller passert harde grenser, er noen varmtvannskorallrev, noen kystnære våtmarker, noen regnskoger og noen polare økosystemer og fjelløkosystemer. Over 1,5 °C global oppvarming mister noen økosystembaserte tilpasningstiltak effekten, fordi økosystemene når harde grenser (høy tillit) (IPCC, 2022, avsnitt C.3.3).
+
+Grensene kommer tidligere jo mer jorda blir varmere. IPCC beskriver blant annet disse nivåene (IPCC, 2022, avsnitt C.3.4):
+
+| Global oppvarming | Hva IPCC beskriver |
+| --- | --- |
+| Over 1,5 °C | Begrensede ferskvannsressurser kan gi harde grenser for små øystater og for regioner som er avhengige av smeltevann fra breer og snø (middels tillit) |
+| 2 °C | Myke grenser ventes for flere viktige matplanter i mange dyrkingsområder, særlig i tropene (høy tillit) |
+| 3 °C | Myke grenser ventes for noen tiltak i vannforvaltning i mange regioner, og harde grenser i deler av Europa (middels tillit) |
+
+```widget
+FigTilpasningsgrenser
+```
+
+Noen kystsamfunn møter myke grenser fordi kystvern er teknisk og økonomisk vanskelig å gjennomføre (høy tillit). Å gå fra *trinnvis tilpasning* til *omformende tilpasning* kan hjelpe med å overvinne myke grenser (høy tillit) (IPCC, 2022, avsnitt C.3.4). Trinnvis tilpasning holder på hovedtrekkene og strukturen i et system. Omformende tilpasning endrer grunnleggende egenskaper i et sosialt-økologisk system, i forkant av klimaendringer og deres virkninger (Möller mfl., 2022).
+
+Selv effektiv tilpasning hindrer ikke alle tap og skader, og det gjelder også før de myke og harde grensene er nådd. Tapene og skadene fordeler seg ulikt mellom systemer, regioner og sektorer. Med økende oppvarming øker de og blir vanskeligere å unngå, samtidig som de blir sterkt konsentrert blant de fattigste og mest sårbare (høy tillit) (IPCC, 2022, avsnitt C.3.5). Derfor trengs både tilpasning og utslippskutt. Lavere global oppvarming gjør at færre grenser nås (IPCC, 2022).
+
+```widget
+SjekkTilpasning6
+```
+
 ## Viktige begreper
 
 **Tilpasning:** Tiltak som gjør at samfunnet tåler et klima som endrer seg, slik at skadene blir mindre.
@@ -144,6 +198,18 @@ SjekkTilpasning4
 **Eksponering:** Mennesker og verdier som befinner seg der faren kan ramme.
 
 **Sårbarhet:** Hvor lett noe blir skadet, og hvor godt det klarer å håndtere og hente seg inn igjen.
+
+**Tilpasningsevne:** Evnen til å justere seg til mulig skade, utnytte muligheter eller håndtere konsekvenser.
+
+**Tilpasningsgrense:** Punktet der en aktørs mål eller et systems behov ikke lenger kan sikres mot uakseptabel risiko gjennom tilpasning.
+
+**Hard grense:** En tilpasningsgrense der ingen tiltak kan hindre uakseptabel risiko.
+
+**Myk grense:** En tilpasningsgrense der tiltak kanskje finnes, men ikke er tilgjengelige nå.
+
+**Trinnvis tilpasning:** Tilpasning som holder på hovedtrekkene og strukturen i et system.
+
+**Omformende tilpasning:** Tilpasning som endrer grunnleggende egenskaper i et system.
 
 **Maltilpasning:** Tiltak som øker sårbarheten senere eller flytter skaden over på andre.
 

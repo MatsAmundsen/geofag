@@ -1,0 +1,225 @@
+import { describe, it } from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { injectPosterWidgets, listedWidgetIds } from "./poster-markdown.ts";
+import { SAMMENDRAG_B, SJEKK_DEG_SELV_B } from "./kapittel-mal-b.ts";
+import { KILDER_B, KILDER_B_TILLEGG, medKilder } from "./kilder-b.ts";
+
+const lib = dirname(fileURLToPath(import.meta.url));
+const read = (rel: string) => readFileSync(join(lib, rel), "utf8");
+
+const NEW_CHAPTERS: { slug: string; widgets: string[] }[] = [
+  {
+    slug: "naturlige-klimapadriv",
+    widgets: [
+      "FigNaturligTidsskalaer",
+      "FigSolflekker",
+      "FigTektonikkKarbon",
+      "FigNaturligVsMenneskelig",
+      "SjekkNaturlig1",
+      "SjekkNaturlig2",
+      "SjekkNaturlig3",
+      "SjekkNaturlig4",
+      "SammendragNaturlig",
+      "QuizNaturlig",
+    ],
+  },
+  {
+    slug: "skyer-nedbor-klimasoner",
+    widgets: [
+      "FigSkyerNivaaer",
+      "FigNedborTyper",
+      "FigKlimadiagramKystInnland",
+      "FigKoppenNorge",
+      "SjekkSkyer1",
+      "SjekkSkyer2",
+      "SjekkSkyer3",
+      "SjekkSkyer4",
+      "SjekkSkyer5",
+      "SammendragSkyer",
+      "QuizSkyer",
+    ],
+  },
+];
+
+describe("Pakke B: nye kapitler", () => {
+  for (const { slug, widgets } of NEW_CHAPTERS) {
+    it(`${slug}: følger kapittelmalen`, () => {
+      const md = read(`posts/${slug}.md`);
+      const ids = listedWidgetIds(injectPosterWidgets(md));
+      for (const id of widgets) {
+        assert.equal(ids.has(id), true, `${slug} mangler ${id}`);
+        assert.equal((md.match(new RegExp(`\\b${id}\\b`, "g")) ?? []).length, 1, id);
+      }
+      assert.equal(md.includes("!"), false);
+      assert.equal(md.includes("<"), false);
+      assert.equal(md.includes("Her kan du redigere"), false);
+      assert.equal(md.includes("Kompetansemål i Geofag 2"), true);
+      assert.equal(md.includes("## Viktige begreper"), true);
+      assert.equal(md.includes("## Sammendrag"), true);
+      assert.equal(md.includes("## Test deg selv"), true);
+    });
+
+    it(`${slug}: er registrert i navigasjonen`, () => {
+      const nav = read("nav.ts");
+      assert.equal(nav.includes(`to: "/tema/${slug}"`), true);
+      assert.equal(read("../../public/sitemap.xml").includes(`/tema/${slug}<`), true);
+      assert.equal(read("chapter-ingress.ts").includes(`"${slug}":`), true);
+      assert.equal(read(`../routes/tema/${slug}.tsx`).includes(`loadChapterPost("${slug}")`), true);
+    });
+  }
+
+  it("Sjekk- og Sammendrag-id-ene i kapitlene finnes i malen", () => {
+    for (const { slug, widgets } of NEW_CHAPTERS) {
+      for (const id of widgets) {
+        if (id.startsWith("Sjekk")) assert.ok(SJEKK_DEG_SELV_B[id.slice(5)], `${slug}: ${id}`);
+        if (id.startsWith("Sammendrag")) assert.ok(SAMMENDRAG_B[id.slice(10)], `${slug}: ${id}`);
+      }
+    }
+  });
+
+  it("alle figur- og quiz-id-er har en registrering i widget-registeret", () => {
+    const registry = read("../components/figur-bestilling.tsx") + read("../components/poster-widgets-b.tsx");
+    for (const { slug, widgets } of NEW_CHAPTERS) {
+      for (const id of widgets) {
+        if (id.startsWith("Fig") || id.startsWith("Quiz")) {
+          assert.equal(registry.includes(id), true, `${slug}: ${id} er ikke registrert`);
+        }
+      }
+    }
+  });
+
+  it("sjekkspørsmål har tre svaralternativer og et gyldig svar", () => {
+    for (const [key, qs] of Object.entries(SJEKK_DEG_SELV_B)) {
+      for (const q of qs) {
+        assert.equal(q.options.length, 3, key);
+        assert.ok(q.answer >= 0 && q.answer < 3, key);
+        assert.ok(q.explain.length > 0, key);
+      }
+    }
+  });
+
+  it("kildelistene er sortert og uten dobbeltoppføringer", () => {
+    for (const [name, list] of Object.entries(KILDER_B)) {
+      const keys = list.map((k) => `${k.prefix}${k.italic}`);
+      assert.equal(new Set(keys).size, keys.length, name);
+      const sorted = [...list].sort((a, b) =>
+        `${a.prefix}${a.italic}`.localeCompare(`${b.prefix}${b.italic}`, "nb"),
+      );
+      assert.deepEqual(list, sorted, name);
+    }
+  });
+
+  it("medKilder setter nye kilder inn uten å endre rekkefølgen på de gamle", () => {
+    const k = (prefix: string, italic: string) => ({ prefix, italic });
+    const basis = [k("A. (u.å.). ", "a"), k("S. (u.å.-a). ", "b"), k("S. (2020). ", "c"), k("Utdir. (u.å.). ", "u")];
+    const ut = medKilder(basis, [k("S. (2019). ", "ny1"), k("S. (u.å.-b). ", "ny2"), k("Z. (2020). ", "ny3")]);
+    assert.deepEqual(
+      ut.map((x) => x.italic),
+      ["a", "b", "ny2", "ny1", "c", "u", "ny3"],
+    );
+  });
+
+  it("tilleggene til værkartkapittelet er sitert i teksten", () => {
+    const md = read("posts/vaerkart.md");
+    for (const key of ["SjekkVaerkart4", "SjekkVaerkart5", "SammendragVaerkart", "QuizVaerkart"]) {
+      assert.ok(md.includes(key), key);
+    }
+    assert.ok(SJEKK_DEG_SELV_B.Vaerkart5);
+    for (const kilde of KILDER_B_TILLEGG.vaerkart ?? []) {
+      const m = kilde.prefix.match(/\((u\.å\.-[a-z]|\d{4}[a-z]?)/);
+      assert.ok(m, kilde.prefix);
+      assert.ok(md.includes(`${m[1]}`), kilde.prefix);
+    }
+  });
+
+  it("tilleggene til kryosfærekapittelet er sitert i teksten", () => {
+    const md = read("posts/kryosfaeren.md");
+    for (const key of ["SjekkKryo4", "SjekkKryo5"]) {
+      assert.ok(md.includes(key), key);
+    }
+    assert.ok(SJEKK_DEG_SELV_B.Kryo4);
+    assert.ok(SJEKK_DEG_SELV_B.Kryo5);
+    for (const kilde of KILDER_B_TILLEGG.kryosfaeren ?? []) {
+      const m = kilde.prefix.match(/\((u\.å\.-[a-z]|\d{4}[a-z]?)/) ?? kilde.prefix.match(/\((\d{4})\)/);
+      assert.ok(m, kilde.prefix);
+      const forfatter = kilde.prefix.split(/[,.(]/)[0]!.split(" ")[0]!;
+      assert.ok(md.includes(m[1]!), kilde.prefix);
+      if (/^\d/.test(m[1]!)) assert.ok(md.includes(`${forfatter}`), forfatter);
+    }
+  });
+
+  it("tilleggene til havstrømkapittelet er sitert i teksten", () => {
+    const md = read("posts/havstrommer.md");
+    for (const n of [7, 8, 9, 10]) {
+      assert.ok(md.includes(`SjekkHavstrommer${n}`), `SjekkHavstrommer${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Havstrommer${n}`], `Havstrommer${n}`);
+    }
+    assert.equal(md.includes("termoklinen"), false);
+    for (const kilde of KILDER_B_TILLEGG.havstrommer ?? []) {
+      const m = kilde.prefix.match(/\((u\.å\.-[a-z]|\d{4}[a-z]?)/) ?? kilde.prefix.match(/\((\d{4})\)/);
+      assert.ok(m, kilde.prefix);
+      const forfatter = kilde.prefix.split(/[,.(]/)[0]!.split(" ")[0]!;
+      assert.ok(md.includes(m[1]!), kilde.prefix);
+      if (/^\d/.test(m[1]!)) assert.ok(md.includes(`${forfatter}`), forfatter);
+    }
+  });
+
+  it("tilleggene til værkatastrofer er sitert i teksten", () => {
+    const md = read("posts/vaerkatastrofer.md");
+    for (const n of [4, 5, 6, 7, 8]) {
+      assert.ok(md.includes(`SjekkKatastrofer${n}`), `SjekkKatastrofer${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Katastrofer${n}`], `Katastrofer${n}`);
+    }
+    const forventet = [
+      "Det Norske Akademis ordbok, u.å.",
+      "Gjelten mfl., 2024",
+      "IPCC, 2021b",
+      "Matthews mfl., 2021",
+      "Meteorologisk institutt, u.å.-a",
+      "Meteorologisk institutt, u.å.-c",
+      "Meteorologisk institutt, u.å.-d",
+      "Norges vassdrags- og energidirektorat, 2019",
+      "Norges vassdrags- og energidirektorat, u.å.",
+      "Norsk klimaservicesenter, 2025",
+      "Sagen & Sivle, 2023",
+      "Store norske leksikon, u.å.-i",
+      "Tsopouridis & Sivle, 2025",
+    ];
+    assert.equal(forventet.length, (KILDER_B_TILLEGG.vaerkatastrofer ?? []).length);
+    for (const t of forventet) assert.ok(md.includes(t), t);
+    // Bokstavsuffikser i grunnlisten som nye kilder krever.
+    assert.ok(md.includes("IPCC, 2021a"));
+    assert.ok(md.includes("Meteorologisk institutt, u.å.-b"));
+    assert.equal(md.includes("(IPCC, 2021)"), false);
+    assert.equal(md.includes("Meteorologisk institutt, u.å.)"), false);
+  });
+
+  it("tilleggene til klimasystemet (oversikt) er sitert i teksten", () => {
+    const md = read("posts/oversikt.md");
+    for (const n of [7, 8, 9]) {
+      assert.ok(md.includes(`SjekkOversikt${n}`), `SjekkOversikt${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Oversikt${n}`], `Oversikt${n}`);
+    }
+    for (const fig of ["FigNorgeFramskrivninger"]) assert.ok(md.includes(fig), fig);
+    const forventet = ["Matthews mfl., 2021", "Norsk klimaservicesenter, 2025"];
+    assert.equal(forventet.length, (KILDER_B_TILLEGG.oversikt ?? []).length);
+    for (const t of forventet) assert.ok(md.includes(t), t);
+    assert.ok(md.includes("(IPCC, 2021"));
+  });
+
+  it("tilleggene til tilpasning er sitert i teksten", () => {
+    const md = read("posts/tilpasning.md");
+    for (const n of [5, 6]) {
+      assert.ok(md.includes(`SjekkTilpasning${n}`), `SjekkTilpasning${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Tilpasning${n}`], `Tilpasning${n}`);
+    }
+    assert.ok(md.includes("FigTilpasningsgrenser"));
+    const forventet = ["Möller mfl., 2022"];
+    assert.equal(forventet.length, (KILDER_B_TILLEGG.tilpasning ?? []).length);
+    for (const t of forventet) assert.ok(md.includes(t), t);
+    assert.ok(md.includes("(IPCC, 2022"));
+  });
+});

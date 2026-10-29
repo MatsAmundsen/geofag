@@ -49,8 +49,10 @@ import { Route as TemaKryosfaerenRouteImport } from './routes/tema/kryosfaeren'
 import { Route as TemaKryosfareRouteImport } from './routes/tema/kryosfare'
 import { Route as TemaLokaleVaersystemerRouteImport } from './routes/tema/lokale-vaersystemer'
 import { Route as TemaMilankovitchRouteImport } from './routes/tema/milankovitch'
+import { Route as TemaNaturligeKlimapadrivRouteImport } from './routes/tema/naturlige-klimapadriv'
 import { Route as TemaNumeriskeModellerRouteImport } from './routes/tema/numeriske-modeller'
 import { Route as TemaPaleoklimaRouteImport } from './routes/tema/paleoklima'
+import { Route as TemaSkyerNedborKlimasonerRouteImport } from './routes/tema/skyer-nedbor-klimasoner'
 import { Route as TemaTilpasningRouteImport } from './routes/tema/tilpasning'
 import { Route as TemaVaerkartRouteImport } from './routes/tema/vaerkart'
 import { Route as TemaVaerkatastroferRouteImport } from './routes/tema/vaerkatastrofer'
@@ -272,6 +274,12 @@ const TemaMilankovitchRoute = TemaMilankovitchRouteImport.update({
   path: '/tema/milankovitch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaNaturligeKlimapadrivRoute =
+  TemaNaturligeKlimapadrivRouteImport.update({
+    id: '/tema/naturlige-klimapadriv',
+    path: '/tema/naturlige-klimapadriv',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TemaNumeriskeModellerRoute = TemaNumeriskeModellerRouteImport.update({
   id: '/tema/numeriske-modeller',
   path: '/tema/numeriske-modeller',
@@ -282,6 +290,12 @@ const TemaPaleoklimaRoute = TemaPaleoklimaRouteImport.update({
   path: '/tema/paleoklima',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaSkyerNedborKlimasonerRoute =
+  TemaSkyerNedborKlimasonerRouteImport.update({
+    id: '/tema/skyer-nedbor-klimasoner',
+    path: '/tema/skyer-nedbor-klimasoner',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TemaTilpasningRoute = TemaTilpasningRouteImport.update({
   id: '/tema/tilpasning',
   path: '/tema/tilpasning',
@@ -392,8 +406,10 @@ export interface FileRoutesByFullPath {
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/naturlige-klimapadriv': typeof TemaNaturligeKlimapadrivRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
+  '/tema/skyer-nedbor-klimasoner': typeof TemaSkyerNedborKlimasonerRoute
   '/tema/tilpasning': typeof TemaTilpasningRoute
   '/tema/vaerkart': typeof TemaVaerkartRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -450,8 +466,10 @@ export interface FileRoutesByTo {
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/naturlige-klimapadriv': typeof TemaNaturligeKlimapadrivRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
+  '/tema/skyer-nedbor-klimasoner': typeof TemaSkyerNedborKlimasonerRoute
   '/tema/tilpasning': typeof TemaTilpasningRoute
   '/tema/vaerkart': typeof TemaVaerkartRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -509,8 +527,10 @@ export interface FileRoutesById {
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/naturlige-klimapadriv': typeof TemaNaturligeKlimapadrivRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
+  '/tema/skyer-nedbor-klimasoner': typeof TemaSkyerNedborKlimasonerRoute
   '/tema/tilpasning': typeof TemaTilpasningRoute
   '/tema/vaerkart': typeof TemaVaerkartRoute
   '/tema/vaerkatastrofer': typeof TemaVaerkatastroferRoute
@@ -569,8 +589,10 @@ export interface FileRouteTypes {
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
+    | '/tema/naturlige-klimapadriv'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
+    | '/tema/skyer-nedbor-klimasoner'
     | '/tema/tilpasning'
     | '/tema/vaerkart'
     | '/tema/vaerkatastrofer'
@@ -627,8 +649,10 @@ export interface FileRouteTypes {
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
+    | '/tema/naturlige-klimapadriv'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
+    | '/tema/skyer-nedbor-klimasoner'
     | '/tema/tilpasning'
     | '/tema/vaerkart'
     | '/tema/vaerkatastrofer'
@@ -685,8 +709,10 @@ export interface FileRouteTypes {
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
+    | '/tema/naturlige-klimapadriv'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
+    | '/tema/skyer-nedbor-klimasoner'
     | '/tema/tilpasning'
     | '/tema/vaerkart'
     | '/tema/vaerkatastrofer'
@@ -744,8 +770,10 @@ export interface RootRouteChildren {
   TemaKryosfareRoute: typeof TemaKryosfareRoute
   TemaLokaleVaersystemerRoute: typeof TemaLokaleVaersystemerRoute
   TemaMilankovitchRoute: typeof TemaMilankovitchRoute
+  TemaNaturligeKlimapadrivRoute: typeof TemaNaturligeKlimapadrivRoute
   TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
   TemaPaleoklimaRoute: typeof TemaPaleoklimaRoute
+  TemaSkyerNedborKlimasonerRoute: typeof TemaSkyerNedborKlimasonerRoute
   TemaTilpasningRoute: typeof TemaTilpasningRoute
   TemaVaerkartRoute: typeof TemaVaerkartRoute
   TemaVaerkatastroferRoute: typeof TemaVaerkatastroferRoute
@@ -1047,6 +1075,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaMilankovitchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/naturlige-klimapadriv': {
+      id: '/tema/naturlige-klimapadriv'
+      path: '/tema/naturlige-klimapadriv'
+      fullPath: '/tema/naturlige-klimapadriv'
+      preLoaderRoute: typeof TemaNaturligeKlimapadrivRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/numeriske-modeller': {
       id: '/tema/numeriske-modeller'
       path: '/tema/numeriske-modeller'
@@ -1059,6 +1094,13 @@ declare module '@tanstack/react-router' {
       path: '/tema/paleoklima'
       fullPath: '/tema/paleoklima'
       preLoaderRoute: typeof TemaPaleoklimaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/skyer-nedbor-klimasoner': {
+      id: '/tema/skyer-nedbor-klimasoner'
+      path: '/tema/skyer-nedbor-klimasoner'
+      fullPath: '/tema/skyer-nedbor-klimasoner'
+      preLoaderRoute: typeof TemaSkyerNedborKlimasonerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tema/tilpasning': {
@@ -1200,8 +1242,10 @@ const rootRouteChildren: RootRouteChildren = {
   TemaKryosfareRoute: TemaKryosfareRoute,
   TemaLokaleVaersystemerRoute: TemaLokaleVaersystemerRoute,
   TemaMilankovitchRoute: TemaMilankovitchRoute,
+  TemaNaturligeKlimapadrivRoute: TemaNaturligeKlimapadrivRoute,
   TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
   TemaPaleoklimaRoute: TemaPaleoklimaRoute,
+  TemaSkyerNedborKlimasonerRoute: TemaSkyerNedborKlimasonerRoute,
   TemaTilpasningRoute: TemaTilpasningRoute,
   TemaVaerkartRoute: TemaVaerkartRoute,
   TemaVaerkatastroferRoute: TemaVaerkatastroferRoute,

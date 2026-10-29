@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { CHAPTER_INGRESS } from "@/lib/chapter-ingress";
+import { KILDER_B_TILLEGG, medKilder } from "@/lib/kilder-b";
 import { KILDER_G2 } from "@/lib/kilder-g2";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
+
+const TILPASNING_KILDER = medKilder(KILDER_G2.tilpasning, KILDER_B_TILLEGG.tilpasning ?? []);
 
 const tema = GF2_THEMES.find((t) => t.to === "/tema/tilpasning")!;
 
@@ -32,7 +35,7 @@ function TilpasningPage() {
       bannerAlt="En atlantisk orkan sett fra verdensrommet, med tydelig øye"
       prev={{ to: "/tema/vaerkatastrofer", label: "Forrige: Værkatastrofer" }}
       next={{ to: "/tema/energi-hav-luft", label: "Neste: Energi fra hav og luft" }}
-      kilder={KILDER_G2.tilpasning}
+      kilder={TILPASNING_KILDER}
       posterSlug="tilpasning"
       post={post}
       bodyMode="poster"

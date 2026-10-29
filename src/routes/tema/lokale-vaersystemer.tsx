@@ -30,7 +30,7 @@ function LokalePage() {
       banner="/images/banner-trykk.jpg"
       bannerAlt="Kyst i to slags vær: storm til venstre, klar himmel til høyre"
       prev={{ to: "/tema/vaerkart", label: "Forrige: Værkart" }}
-      next={{ to: "/tema/jetstrommer", label: "Neste: Jetstrømmer" }}
+      next={{ to: "/tema/skyer-nedbor-klimasoner", label: "Neste: Skyer, nedbør og klimasoner" }}
       kilder={KILDER_G2.lokale}
       lead={CHAPTER_INGRESS["lokale-vaersystemer"]}
       posterSlug="lokale-vaersystemer"
