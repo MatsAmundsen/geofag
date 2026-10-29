@@ -33,6 +33,21 @@ export const NAV_GF1 = [
  */
 export const NAV_GF1_ROWS = [NAV_GF1.slice(0, 8), NAV_GF1.slice(8)] as const;
 
+export type NavItem = { readonly to: string; readonly label: string };
+export type NavGroup = { readonly label: string | null; readonly items: readonly NavItem[] };
+
+/**
+ * Mobilmenyen (under md) deler samme lenker i grupper med overskrifter. Rekkefølgen og lenkenavnene er
+ * de samme som i NAV_GF1. Overskriftene er bare struktur og er ikke lenker.
+ */
+export const NAV_GF1_GROUPS: readonly NavGroup[] = [
+  { label: "Start", items: NAV_GF1.slice(0, 2) },
+  { label: "Jordas indre", items: NAV_GF1.slice(2, 7) },
+  { label: "Bergarter og Norge", items: NAV_GF1.slice(7, 10) },
+  { label: "Landskap og samfunn", items: NAV_GF1.slice(10, 16) },
+  { label: "Annet", items: NAV_GF1.slice(16) },
+];
+
 export const NAV_GF2 = [
   { to: "/", label: "Forside" },
   { to: "/geofag-2", label: "Oversikt" },
@@ -67,7 +82,65 @@ export const NAV_GF2 = [
  * Rad 1 er inngang, vær og hav. Rad 2 er klima, is, samfunn og metode.
  * Rekkefølgen er den samme som NAV_GF2.
  */
-export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 11), NAV_GF2.slice(11)] as const;
+export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 13), NAV_GF2.slice(13)] as const;
+
+/** Henter lenker fra NAV_GF2 i den rekkefølgen de står her. Kaster hvis en lenke ikke finnes. */
+function gf2(...to: string[]): readonly NavItem[] {
+  return to.map((t) => {
+    const item = NAV_GF2.find((n) => n.to === t);
+    if (!item) throw new Error(`NAV_GF2 mangler ${t}`);
+    return item;
+  });
+}
+
+/**
+ * Mobilmenyens grupper for Geofag 2, etter tema: atmosfære, hav, kryosfære og klima.
+ * Lenkenavnene er de samme som i NAV_GF2. Hver lenke står i nøyaktig én gruppe.
+ * Overskriftene er bare struktur og er ikke lenker.
+ */
+export const NAV_GF2_GROUPS: readonly NavGroup[] = [
+  { label: "Start", items: gf2("/", "/geofag-2", "/eksamen") },
+  {
+    label: "Atmosfære",
+    items: gf2(
+      "/tema/coriolis",
+      "/tema/hoytrykk-lavtrykk",
+      "/tema/vindsystemet",
+      "/tema/vaerkart",
+      "/tema/lokale-vaersystemer",
+      "/tema/skyer-nedbor-klimasoner",
+      "/tema/jetstrommer",
+      "/tema/vaerkatastrofer",
+    ),
+  },
+  { label: "Hav", items: gf2("/tema/havstrommer") },
+  { label: "Kryosfære", items: gf2("/tema/kryosfaeren") },
+  {
+    label: "Klima",
+    items: gf2(
+      "/tema/klima",
+      "/tema/numeriske-modeller",
+      "/tema/paleoklima",
+      "/tema/milankovitch",
+      "/tema/naturlige-klimapadriv",
+      "/tema/klimaendring-menneskeskapt",
+      "/tema/klimatiltak",
+      "/tema/klimaforskning",
+      "/tema/tilpasning",
+    ),
+  },
+  { label: "Energi", items: gf2("/tema/energi-hav-luft", "/tema/energi-regning") },
+  { label: "Annet", items: gf2("/tema/felt-hav-luft-is", "/poster") },
+];
+
+/** Mobilmenyens grupper for forsiden (4 lenker, ingen overskrifter). */
+export const NAV_HUB_GROUPS: readonly NavGroup[] = [{ label: null, items: NAV_HUB }];
+
+export function navGroupsForPath(pathname: string): readonly NavGroup[] {
+  if (pathname === "/") return NAV_HUB_GROUPS;
+  if (pathname.startsWith("/geofag-1")) return NAV_GF1_GROUPS;
+  return NAV_GF2_GROUPS;
+}
 
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
 export const NAV = NAV_GF2;
