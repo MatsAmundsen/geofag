@@ -14,6 +14,11 @@ import { UtslippSektorFigur } from "./diagrams/g2a-klima";
 import { KarbonbudsjettFigur } from "./diagrams/g2a-klima";
 import { SspScenarioFigur } from "./diagrams/g2a-klima";
 import { NorskeUtslippFigur } from "./diagrams/g2a-klima";
+import { TiltaksstigeFigur } from "./diagrams/g2a-tiltak";
+import { CdrSkjemaFigur } from "./diagrams/g2a-tiltak";
+import { IpccOrganisasjonFigur } from "./diagrams/g2a-forskning";
+import { KeelingKurveFigur } from "./diagrams/g2a-forskning";
+import { FanerozoikumTemperaturFigur } from "./diagrams/g2a-fanerozoikum";
 
 /** Ferdige figurer i pakke A. Nøkkelen er widget-id-en i markdown. */
 export const G2_PAKKE_A_FERDIGE: Record<string, () => JSX.Element> = {
@@ -32,4 +37,9 @@ export const G2_PAKKE_A_FERDIGE: Record<string, () => JSX.Element> = {
   KarbonbudsjettFigur: () => <KarbonbudsjettFigur />,
   SspScenarioFigur: () => <SspScenarioFigur />,
   NorskeUtslippFigur: () => <NorskeUtslippFigur />,
+  TiltaksstigeFigur: () => <TiltaksstigeFigur />,
+  CdrSkjemaFigur: () => <CdrSkjemaFigur />,
+  IpccOrganisasjonFigur: () => <IpccOrganisasjonFigur />,
+  KeelingKurveFigur: () => <KeelingKurveFigur />,
+  FanerozoikumTemperaturFigur: () => <FanerozoikumTemperaturFigur />,
 };
