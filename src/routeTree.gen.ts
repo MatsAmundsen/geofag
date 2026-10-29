@@ -45,6 +45,7 @@ import { Route as TemaKryosfaerenRouteImport } from './routes/tema/kryosfaeren'
 import { Route as TemaKryosfareRouteImport } from './routes/tema/kryosfare'
 import { Route as TemaLokaleVaersystemerRouteImport } from './routes/tema/lokale-vaersystemer'
 import { Route as TemaMilankovitchRouteImport } from './routes/tema/milankovitch'
+import { Route as TemaNaturligeKlimapadrivRouteImport } from './routes/tema/naturlige-klimapadriv'
 import { Route as TemaNumeriskeModellerRouteImport } from './routes/tema/numeriske-modeller'
 import { Route as TemaPaleoklimaRouteImport } from './routes/tema/paleoklima'
 import { Route as TemaSkyerNedborKlimasonerRouteImport } from './routes/tema/skyer-nedbor-klimasoner'
@@ -248,6 +249,12 @@ const TemaMilankovitchRoute = TemaMilankovitchRouteImport.update({
   path: '/tema/milankovitch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaNaturligeKlimapadrivRoute =
+  TemaNaturligeKlimapadrivRouteImport.update({
+    id: '/tema/naturlige-klimapadriv',
+    path: '/tema/naturlige-klimapadriv',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TemaNumeriskeModellerRoute = TemaNumeriskeModellerRouteImport.update({
   id: '/tema/numeriske-modeller',
   path: '/tema/numeriske-modeller',
@@ -370,6 +377,7 @@ export interface FileRoutesByFullPath {
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/naturlige-klimapadriv': typeof TemaNaturligeKlimapadrivRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/skyer-nedbor-klimasoner': typeof TemaSkyerNedborKlimasonerRoute
@@ -425,6 +433,7 @@ export interface FileRoutesByTo {
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/naturlige-klimapadriv': typeof TemaNaturligeKlimapadrivRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/skyer-nedbor-klimasoner': typeof TemaSkyerNedborKlimasonerRoute
@@ -481,6 +490,7 @@ export interface FileRoutesById {
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
   '/tema/milankovitch': typeof TemaMilankovitchRoute
+  '/tema/naturlige-klimapadriv': typeof TemaNaturligeKlimapadrivRoute
   '/tema/numeriske-modeller': typeof TemaNumeriskeModellerRoute
   '/tema/paleoklima': typeof TemaPaleoklimaRoute
   '/tema/skyer-nedbor-klimasoner': typeof TemaSkyerNedborKlimasonerRoute
@@ -538,6 +548,7 @@ export interface FileRouteTypes {
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
+    | '/tema/naturlige-klimapadriv'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/skyer-nedbor-klimasoner'
@@ -593,6 +604,7 @@ export interface FileRouteTypes {
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
+    | '/tema/naturlige-klimapadriv'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/skyer-nedbor-klimasoner'
@@ -648,6 +660,7 @@ export interface FileRouteTypes {
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
     | '/tema/milankovitch'
+    | '/tema/naturlige-klimapadriv'
     | '/tema/numeriske-modeller'
     | '/tema/paleoklima'
     | '/tema/skyer-nedbor-klimasoner'
@@ -704,6 +717,7 @@ export interface RootRouteChildren {
   TemaKryosfareRoute: typeof TemaKryosfareRoute
   TemaLokaleVaersystemerRoute: typeof TemaLokaleVaersystemerRoute
   TemaMilankovitchRoute: typeof TemaMilankovitchRoute
+  TemaNaturligeKlimapadrivRoute: typeof TemaNaturligeKlimapadrivRoute
   TemaNumeriskeModellerRoute: typeof TemaNumeriskeModellerRoute
   TemaPaleoklimaRoute: typeof TemaPaleoklimaRoute
   TemaSkyerNedborKlimasonerRoute: typeof TemaSkyerNedborKlimasonerRoute
@@ -980,6 +994,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaMilankovitchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/naturlige-klimapadriv': {
+      id: '/tema/naturlige-klimapadriv'
+      path: '/tema/naturlige-klimapadriv'
+      fullPath: '/tema/naturlige-klimapadriv'
+      preLoaderRoute: typeof TemaNaturligeKlimapadrivRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/numeriske-modeller': {
       id: '/tema/numeriske-modeller'
       path: '/tema/numeriske-modeller'
@@ -1136,6 +1157,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemaKryosfareRoute: TemaKryosfareRoute,
   TemaLokaleVaersystemerRoute: TemaLokaleVaersystemerRoute,
   TemaMilankovitchRoute: TemaMilankovitchRoute,
+  TemaNaturligeKlimapadrivRoute: TemaNaturligeKlimapadrivRoute,
   TemaNumeriskeModellerRoute: TemaNumeriskeModellerRoute,
   TemaPaleoklimaRoute: TemaPaleoklimaRoute,
   TemaSkyerNedborKlimasonerRoute: TemaSkyerNedborKlimasonerRoute,

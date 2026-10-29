@@ -148,6 +148,82 @@ export const KILDER_B = {
       href: "https://snl.no/skyer",
     },
   ] satisfies Kilde[],
+  naturlige: [
+    {
+      prefix: "Edwards, E. J., Osborne, C. P., Strömberg, C. A. E., Smith, S. A., C4 Grasses Consortium, Bond, W. J., Christin, P.-A., Cousins, A. B., Duvall, M. R., Fox, D. L., Freckleton, R. P., Ghannoum, O., Hartwell, J., Huang, Y., Janis, C. M., Keeley, J. E., Kellogg, E. A., Knapp, A. K., Leakey, A. D. B., … Tipple, B. (2010). The origins of C4 grasslands: Integrating evolutionary and ecosystem science. ",
+      italic: "Science, 328",
+      suffix: "(5978), 587–591.",
+      href: "https://doi.org/10.1126/science.1177216",
+    },
+    {
+      prefix: "Feulner, G. (2017). Formation of most of our coal brought Earth close to global glaciation. ",
+      italic: "Proceedings of the National Academy of Sciences, 114",
+      suffix: "(43), 11333–11337.",
+      href: "https://doi.org/10.1073/pnas.1712062114",
+    },
+    {
+      prefix: "Gulev, S. K., Thorne, P. W., Ahn, J., Dentener, F. J., Domingues, C. M., Gerland, S., Gong, D., Kaufman, D. S., Nnamchi, H. C., Quaas, J., Rivera, J. A., Sathyendranath, S., Smith, S. L., Trewin, B., von Schuckmann, K., & Vose, R. S. (2021). Changing state of the climate system. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 287–422). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.004",
+    },
+    {
+      prefix: "Hutchinson, D. K., Coxall, H. K., Lunt, D. J., Steinthorsdottir, M., de Boer, A. M., Baatsen, M., von der Heydt, A., Huber, M., Kennedy-Asser, A. T., Kunzmann, L., Ladant, J.-B., Lear, C. H., Moraweck, K., Pearson, P. N., Piga, E., Pound, M. J., Salzmann, U., Scher, H. D., Sijp, W. P., … Zhang, Z. (2021). The Eocene–Oligocene transition: A review of marine and terrestrial proxy data, models and model–data comparisons. ",
+      italic: "Climate of the Past, 17",
+      suffix: "(1), 269–315.",
+      href: "https://doi.org/10.5194/cp-17-269-2021",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). Summary for policymakers. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 3–32). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.001",
+    },
+    {
+      prefix: "Lindsey, R. (2025, 27. juni). ",
+      italic: "Climate change: Incoming sunlight",
+      suffix: ". NOAA Climate.gov.",
+      href: "https://www.climate.gov/news-features/understanding-climate/climate-change-incoming-sunlight",
+    },
+    {
+      prefix: "Lyons, T. W., Reinhard, C. T., & Planavsky, N. J. (2014). The rise of oxygen in Earth’s early ocean and atmosphere. ",
+      italic: "Nature, 506",
+      suffix: "(7488), 307–315.",
+      href: "https://doi.org/10.1038/nature13068",
+    },
+    {
+      prefix: "Matthews, J. B. R., Möller, V., van Diemen, R., Fuglestvedt, J. S., Masson-Delmotte, V., Méndez, C., Semenov, S., & Reisinger, A. (Red.). (2021). Annex VII: Glossary. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 2215–2256). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.022",
+    },
+    {
+      prefix: "O’Dea, A., Lessios, H. A., Coates, A. G., Eytan, R. I., Restrepo-Moreno, S. A., Cione, A. L., Collins, L. S., de Queiroz, A., Farris, D. W., Norris, R. D., Stallard, R. F., Woodburne, M. O., Aguilera, O., Aubry, M.-P., Berggren, W. A., Budd, A. F., Cozzuol, M. A., Coppard, S. E., Duque-Caro, H., … Jackson, J. B. C. (2016). Formation of the Isthmus of Panama. ",
+      italic: "Science Advances, 2",
+      suffix: "(8), Artikkel e1600883.",
+      href: "https://doi.org/10.1126/sciadv.1600883",
+    },
+    {
+      prefix: "Owens, M. J., Lockwood, M., Hawkins, E., Usoskin, I., Jones, G. S., Barnard, L., Schurer, A., & Fasullo, J. (2017). The Maunder minimum and the Little Ice Age: An update from recent reconstructions and climate simulations. ",
+      italic: "Journal of Space Weather and Space Climate, 7",
+      suffix: ", Artikkel A33.",
+      href: "https://doi.org/10.1051/swsc/2017034",
+    },
+    {
+      prefix: "Raymo, M. E., & Ruddiman, W. F. (1992). Tectonic forcing of late Cenozoic climate. ",
+      italic: "Nature, 359",
+      suffix: "(6391), 117–122.",
+      href: "https://doi.org/10.1038/359117a0",
+    },
+    {
+      prefix: "Royal Observatory of Belgium. (u.å.). ",
+      italic: "SILSO: Sunspot Index and Long-term Solar Observations. Data files",
+      suffix: ".",
+      href: "https://www.sidc.be/SILSO/datafiles",
+    },
+    UDIR_A,
+    UDIR_B,
+  ] satisfies Kilde[],
 };
 
 /** Tillegg til eksisterende kildelister. Slås sammen med `medKilder` i rutene. */

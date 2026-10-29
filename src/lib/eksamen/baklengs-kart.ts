@@ -51,6 +51,7 @@ export const MAAL_KART: MaalKart[] = [
       { to: "/tema/kryosfaeren", label: "Kryosfæren" },
       { to: "/tema/paleoklima", label: "Paleoklima" },
       { to: "/tema/milankovitch", label: "Istider" },
+      { to: "/tema/naturlige-klimapadriv", label: "Naturlige pådriv" },
     ],
     exams: [
       { slug: "v2026", label: "Vår 2026", tasks: "tema 3 (istider og klimaendringer)" },

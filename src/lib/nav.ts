@@ -50,6 +50,7 @@ export const NAV_GF2 = [
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
   { to: "/tema/milankovitch", label: "Istider" },
+  { to: "/tema/naturlige-klimapadriv", label: "Naturlig" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
   { to: "/tema/tilpasning", label: "Tilpasning" },
   { to: "/tema/energi-hav-luft", label: "Energi" },
@@ -216,6 +217,16 @@ export const GF2_THEMES = [
     alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
     blurb:
       "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. De tre svingningene forklarer ikke oppvarmingen vi ser nå.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/naturlige-klimapadriv",
+    title: "Naturlige klimapådriv",
+    kicker: "Klima over tid",
+    image: "/images/fig-klimasystem.jpg",
+    alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is",
+    blurb:
+      "Sola, vulkanene, platetektonikken, livet og indre variabilitet. Hva som virker på hvilken tidsskala, og hvor mye de betyr for oppvarmingen siden 1850.",
     status: "klar" as const,
   },
   {

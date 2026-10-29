@@ -29,7 +29,7 @@ function KatastroferPage() {
       title="Værkatastrofer"
       banner="/images/banner-katastrofer.jpg"
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye og spiralformede regnbånd"
-      prev={{ to: "/tema/milankovitch", label: "Forrige: Istider" }}
+      prev={{ to: "/tema/naturlige-klimapadriv", label: "Forrige: Naturlige klimapådriv" }}
       next={{ to: "/tema/tilpasning", label: "Neste: Konsekvenser og tilpasning" }}
       kilder={KILDER.vaerkatastrofer}
       lead={CHAPTER_INGRESS["vaerkatastrofer"]}

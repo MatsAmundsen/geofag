@@ -23,4 +23,8 @@ export const FIGUR_BESTILLINGER: Record<string, string> = {
   FigKlimadiagramKystInnland: "Klimadiagram: Bergen–Florida mot Oslo–Blindern, normal 1991–2020",
   FigKoppenNorge: "Köppen-klimasoner i Norge, normalperiodene 1961–90 og 1991–2020",
   FigNedborTyper: "Tre typer nedbør: orografisk, konvektiv og frontal",
+  FigNaturligTidsskalaer: "Naturlige klimapådriv på tidsskalaer fra 1 år til milliarder av år (logaritmisk akse)",
+  FigSolflekker: "Årlig internasjonalt solflekktall (SILSO) fra 1700, med Maunder-minimum markert",
+  FigTektonikkKarbon: "Hypotesen om Himalaya, forvitring og CO₂ som kjede, med tilbakekoblinger",
+  FigNaturligVsMenneskelig: "IPCC AR6: bidrag til global overflatetemperatur 1850–1900 til 2010–2019, menneskeskapt mot naturlig",
 };

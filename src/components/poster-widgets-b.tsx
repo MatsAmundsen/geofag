@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { FIGUR_BESTILLINGER, FigurBestilling } from "@/components/figur-bestilling";
 import { Quiz } from "@/components/quiz";
-import { QUIZ_SKYER } from "@/lib/poster-quizzes-b";
+import { QUIZ_NATURLIG, QUIZ_SKYER } from "@/lib/poster-quizzes-b";
 
 /** Widgetene i Pakke B: sluttquizer og bestilte figurer. Spres inn i POSTER_WIDGETS i poster-body.tsx. */
 export const POSTER_WIDGETS_B: Record<string, () => JSX.Element> = {
@@ -11,5 +11,6 @@ export const POSTER_WIDGETS_B: Record<string, () => JSX.Element> = {
       () => <FigurBestilling id={id} title={title} />,
     ]),
   ),
+  QuizNaturlig: () => <Quiz questions={QUIZ_NATURLIG} heading={null} intro="Velg ett svar per spørsmål." />,
   QuizSkyer: () => <Quiz questions={QUIZ_SKYER} heading={null} intro="Velg ett svar per spørsmål." />,
 };

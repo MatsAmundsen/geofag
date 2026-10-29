@@ -1468,7 +1468,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         ...KLIMA_SUBTHEMES,
         ...KLIMA_MODELS,
         ...GF2_THEMES.filter((t) =>
-          ["/tema/paleoklima", "/tema/milankovitch", "/tema/tilpasning"].includes(t.to),
+          ["/tema/paleoklima", "/tema/milankovitch", "/tema/naturlige-klimapadriv", "/tema/tilpasning"].includes(t.to),
         ).map((t) => ({ ...t, kicker: "Klima over tid og samfunn" })),
       ].map((sub) => (
         <Link

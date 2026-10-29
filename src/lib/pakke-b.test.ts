@@ -12,6 +12,21 @@ const read = (rel: string) => readFileSync(join(lib, rel), "utf8");
 
 const NEW_CHAPTERS: { slug: string; widgets: string[] }[] = [
   {
+    slug: "naturlige-klimapadriv",
+    widgets: [
+      "FigNaturligTidsskalaer",
+      "FigSolflekker",
+      "FigTektonikkKarbon",
+      "FigNaturligVsMenneskelig",
+      "SjekkNaturlig1",
+      "SjekkNaturlig2",
+      "SjekkNaturlig3",
+      "SjekkNaturlig4",
+      "SammendragNaturlig",
+      "QuizNaturlig",
+    ],
+  },
+  {
     slug: "skyer-nedbor-klimasoner",
     widgets: [
       "FigSkyerNivaaer",
