@@ -61,7 +61,6 @@ export function IpccOrganisasjonFigur() {
         const sH = bred ? 46 : 66;
         /* trinn */
         const tY0 = sY + sH + 44;
-        const tw = bred ? 76 : 36;
         const rader = TRINN.map((t, i) => {
           const l = wrap(t, bred ? 80 : 29);
           return { l, h: Math.max(48, l.length * 18 + 22), i };
@@ -158,7 +157,7 @@ export function KeelingKurveFigur() {
       desc="Linjediagram med månedlige målinger av CO₂ i lufta på Mauna Loa på Hawaii fra mars 1958 til september 2026, i ppm. Kurven stiger jevnt fra 315,71 ppm i 1958 til 426,07 ppm i september 2026. Førindustrielt nivå, rundt 1750, var omtrent 278 ppm. I 2025 var gjennomsnittet 425,6 ppm, 53 prosent over førindustrielt nivå. Et utsnitt fra 2021 til 2026 viser sagtannen: planter på den nordlige halvkule tar opp CO₂ om sommeren og slipper den ut igjen om høsten og vinteren. September 2025 var 424,37 ppm og september 2026 var 426,07 ppm."
       heading="Keeling-kurven"
       caption="Månedlige middelverdier fra Mauna Loa-observatoriet, ikke skisse. Gjennomsnittet for 2025 er fra Friedlingstein mfl. (2026), førindustrielt nivå er ca. 278 ppm rundt 1750. Kilder: NOAA GML (2026), NOAA GML (u.å.) og Scripps (u.å.)."
-      narrow={{ w: 300, h: 774 }}
+      narrow={{ w: 300, h: 784 }}
       wide={{ w: 720, h: 718 }}
     >
       {({ bred }) => {
@@ -180,8 +179,8 @@ export function KeelingKurveFigur() {
         const zx0 = x0;
         const zx1 = x1;
         const zYT = zT0 + 40;
-        const zYB = zYT + (bred ? 140 : 130);
-        const zMin = 410;
+        const zYB = zYT + 140;
+        const zMin = bred ? 410 : 400;
         const zMax = 435;
         const ZX = (t: number) => zx0 + ((t - zT) / (2026.75 - zT)) * (zx1 - zx0);
         const ZY = (v: number) => zYB - ((v - zMin) / (zMax - zMin)) * (zYB - zYT);
@@ -242,7 +241,7 @@ export function KeelingKurveFigur() {
             <circle cx={p25.x} cy={p25.y} r={5} fill={C.warm} />
             <circle cx={p26.x} cy={p26.y} r={5} fill={C.fg} />
 
-            <T x={bred ? p25.x : p25.x - 6} y={p25.y + (bred ? 24 : 54)} lines={["Sep. 2025:", `${nb(KEELING[iSep25], 2)} ppm`]} size={14} weight={700} fill={C.warm} anchor={bred ? "middle" : "end"} />
+            <T x={bred ? p25.x : p25.x - 6} y={p25.y + (bred ? 24 : 63)} lines={["Sep. 2025:", `${nb(KEELING[iSep25], 2)} ppm`]} size={14} weight={700} fill={C.warm} anchor={bred ? "middle" : "end"} />
             <T x={bred ? p26.x : p26.x + 6} y={p26.y + 24} lines={["Sep. 2026:", `${nb(KEELING[iSep26], 2)} ppm`]} size={14} weight={700} fill={C.fg} anchor={bred ? "middle" : "end"} />
             {/* notat */}
             <Box x={10} y={noteY} w={W - 20} h={bred ? 62 : 112} stroke={C.teal} fill={G.panel2} sw={1.6} />

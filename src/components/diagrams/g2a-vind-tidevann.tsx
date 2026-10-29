@@ -67,7 +67,7 @@ export function VindEffektkurve() {
       animated
       name="vindturbinene"
     >
-      {({ bred, mk }) => {
+      {({ bred }) => {
         const px0 = bred ? 74 : 46;
         const px1 = bred ? 700 : 290;
         const top = bred ? 64 : 44;

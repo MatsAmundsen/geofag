@@ -14,6 +14,7 @@ import {
  * `FigurBestilt` en tydelig plassholder i utviklingsmodus og ingenting i produksjon.
  * Når en figur er tegnet, bytter du oppføringen mot den ferdige komponenten.
  */
+// eslint-disable-next-line react-refresh/only-export-components -- delte konstanter og hjelpefunksjoner ligger i samme kitfil som figurrammen
 export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
   // Klima (N2–N4, T2)
   KarbonkretsloepFigur: {
@@ -79,6 +80,7 @@ export function FigurBestilt({ id }: { id: string }): JSX.Element {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- delte konstanter og hjelpefunksjoner ligger i samme kitfil som figurrammen
 export const G2_PAKKE_A_WIDGETS: Record<string, () => JSX.Element> = {
   ...Object.fromEntries(
     Object.keys(FIGURER_BESTILT_A).map((id) => [id, () => <FigurBestilt id={id} />]),

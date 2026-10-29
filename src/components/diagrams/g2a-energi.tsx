@@ -139,7 +139,6 @@ export function KraftsystemetNorgeFigur() {
       {({ bred, mk }) => {
         const colW = bred ? 340 : 280;
         const rx = bred ? 380 : 10;
-        const ry = bred ? 14 : 0;
         const iy = bred ? 168 : 168;
         const my = bred ? 0 : 456;
         const my0 = bred ? 14 : my;
@@ -234,14 +233,6 @@ function sonePlan(bred: boolean) {
   });
   return { rader, slutt: y };
 }
-
-const KAP_MW = [
-  ["Sverige", "ca. 4000"],
-  ["Danmark", "1600"],
-  ["Tyskland", "1400"],
-  ["Storbritannia", "1400"],
-  ["Nederland", "700"],
-];
 
 function Pille({ id, x, y, ax, ay, f }: { id: string; x: number; y: number; ax: number; ay: number; f: string }) {
   return (

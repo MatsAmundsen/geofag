@@ -223,7 +223,7 @@ export function CdrSkjemaFigur() {
             <T x={ccsX + 26} y={y1 + 110} lines={bred ? "Lufta: CO₂ tas ikke ut" : "Lufta: ingen CO₂ tas ut"} size={14} weight={700} fill={C.fg} />
             <rect x={ccsX + 14} y={y1 + 196} width={pw - 28} height={58} fill={C.sand} fillOpacity={0.12} />
             <line x1={ccsX + 14} x2={ccsX + pw - 14} y1={y1 + 196} y2={y1 + 196} stroke={C.sand} strokeWidth={2} />
-            <T x={ccsX + 22} y={y1 + 248} lines="Under bakken" size={14} fill={C.muted} />
+            <T x={ccsX + 22} y={y1 + 248} lines="Under bakken" size={14} fill={C.sand} />
             {/* fabrikk */}
             <rect x={ccsX + 26} y={y1 + 156} width={56} height={40} fill={G.panel2} stroke={C.fg} strokeWidth={1.6} />
             <rect x={ccsX + 62} y={y1 + 132} width={12} height={24} fill={G.panel2} stroke={C.fg} strokeWidth={1.6} />

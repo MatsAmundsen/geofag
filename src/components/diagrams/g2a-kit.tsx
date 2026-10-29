@@ -14,6 +14,7 @@ import { useAnimationPlaying } from "./use-motion";
  *   skriften blir minst ca. 12 px på en 320 px bred skjerm.
  */
 
+// eslint-disable-next-line react-refresh/only-export-components -- delte konstanter og hjelpefunksjoner ligger i samme kitfil som figurrammen
 export const G = {
   green: "#8fc79a",
   violet: "#b8a6e0",
@@ -224,6 +225,7 @@ export function Box({
 }
 
 /** Norsk tall med komma. Hard mellomrom som tusenskille fra fem sifre. */
+// eslint-disable-next-line react-refresh/only-export-components -- delte konstanter og hjelpefunksjoner ligger i samme kitfil som figurrammen
 export function nb(n: number, d = 0) {
   const s = n.toFixed(d);
   const [h, f] = s.split(".");
