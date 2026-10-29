@@ -14,6 +14,7 @@ export const MAAL_KART: MaalKart[] = [
       { to: "/tema/vindsystemet", label: "Vind" },
       { to: "/tema/vaerkart", label: "Værkart" },
       { to: "/tema/lokale-vaersystemer", label: "Lokalt" },
+      { to: "/tema/skyer-nedbor-klimasoner", label: "Skyer" },
       { to: "/tema/jetstrommer", label: "Jet" },
     ],
     exams: [
@@ -53,6 +54,7 @@ export const MAAL_KART: MaalKart[] = [
       { to: "/tema/paleoklima", label: "Paleoklima" },
       { to: "/tema/milankovitch", label: "Istider" },
       { to: "/tema/klimaforskning", label: "Forskning" },
+      { to: "/tema/naturlige-klimapadriv", label: "Naturlige pådriv" },
     ],
     exams: [
       { slug: "v2026", label: "Vår 2026", tasks: "tema 3 (istider og klimaendringer)" },

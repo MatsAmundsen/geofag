@@ -29,7 +29,7 @@ function JetstrommerPage() {
       title="Jetstrømmer og stormbaner"
       banner="/images/fig-jet.jpg"
       bannerAlt="Tynn, rask skyelv høyt over havet mot jordas krumning"
-      prev={{ to: "/tema/lokale-vaersystemer", label: "Forrige: Lokale værsystemer" }}
+      prev={{ to: "/tema/skyer-nedbor-klimasoner", label: "Forrige: Skyer, nedbør og klimasoner" }}
       next={{ to: "/tema/coriolis", label: "Neste: Corioliseffekten" }}
       kilder={KILDER.jetstrommer}
       lead={CHAPTER_INGRESS["jetstrommer"]}

@@ -14,7 +14,7 @@
 >
 > (Udir, u.å.-a)
 >
-> Havstrømmene er en prosess i hydrosfæren der havet og lufta virker sammen. Havvirvelen, ekmantransporten og transportbåndet er forenklede modeller av dem.
+> Havstrømmene er en prosess i hydrosfæren der havet og lufta virker sammen. Havvirvelen, ekmantransporten og transportbåndet er enkle modeller. Kapitlet går også ned i havet og ser på hvordan det er bygd opp.
 >
 > **I dette kapitlet lærer du om**
 >
@@ -23,6 +23,9 @@
 > - hvordan varmt atlanterhavsvann når Norge med Den norske atlanterhavsstrømmen
 > - hvilke strømmer som går langs norskekysten
 > - hvordan tetthetsforskjeller driver den langsomme sirkulasjonen i dypet
+- hvordan havbunnen ser ut, hva sjøvann består av, og hvorfor havet har lag
+- hvilke vannmasser som finnes i Atlanterhavet
+- hvorfor plast samler seg i havvirvlene
 
 > **Hva tror du?**
 >
@@ -189,6 +192,90 @@ Havforskningsinstituttet måler temperaturen i Norskehavet langs faste snitt, bl
 SjekkHavstrommer5
 ```
 
+## Hvordan er havet bygd opp?
+
+### Verdenshavet og havbunnen
+
+Havet dekker 70,8 % av jordoverflaten, altså 361 av 510 millioner km² (Sælen og Barthel, 2026). Omtrent 97 % av alt vannet på jorda finnes i havet, og NOAA anslår at havet rommer om lag 1 335 000 000 km³ vann (NOAA, u.å.-f). Havet er ett sammenhengende verdenshav, men det er delt inn i flere hav. Historisk har det vært fire: Atlanterhavet, Stillehavet, Indiahavet og Polhavet. De fleste land regner nå Sørishavet som det femte, fra kysten av Antarktis til 60 grader sør. Grensene ble foreslått for Den internasjonale hydrografiske organisasjonen i 2000, men ikke alle land er enige, så de er ikke ratifisert (NOAA, u.å.-e).
+
+| Hav | Areal (millioner km²) | Største dyp (m) |
+| --- | --- | --- |
+| Atlanterhavet | 106 | 9 220 |
+| Stillehavet | 180 | 10 935 |
+| Det indiske hav | 75 | 7 290 |
+| Polhavet | 7,26 | 5 450 |
+
+*Tabellen viser areal og største dyp (Sælen og Barthel, 2026).*
+
+Gjennomsnittsdypet i havet er 3 682 meter. Det dypeste stedet vi kjenner, Challenger Deep i den sørlige delen av Marianegropen, er omtrent 10 935 meter dypt (NOAA, u.å.-d).
+
+Havbunnen er ikke flat. Den har egne landskap, med disse omtrentlige dypene (Store norske leksikon, u.å.-b):
+
+| Område | Dyp og utbredelse |
+| --- | --- |
+| Kontinentalsokkelen | Ytterkanten ligger i gjennomsnitt på 130 meters dyp |
+| Kontinentalskråningen | Nedre grense på omtrent 2 000 meter |
+| Kontinentalfoten | Ned til omtrent 4 000 meter |
+| Dyphavsslettene | 4 000–6 000 meter, nesten 30 % av jordoverflaten |
+| Midthavsryggene | Omtrent 23 % av jordoverflaten |
+| Dyphavsgraver | Opptil omtrent 11 000 meter |
+
+Det blir dannet ny basaltisk havbunnsskorpe ved midthavsryggene. Skorpa under havet er tynnere og enklere bygd enn kontinentalskorpa. Sedimentene på havbunnen er terrigene (fra land), biogene (fra organismer) eller kjemisk utfelt (Store norske leksikon, u.å.-b).
+
+I Atlanterhavet ligger Midtatlanterhavsryggen for det meste grunnere enn 3 000 meter, og havbunnsskorpa ved den er yngre enn 145 millioner år. Bassengene på begge sider er dypere enn 5 000 meter. Mellom Skottland, Færøyene, Island og Grønland går en rygg på omtrent 500 meters dyp. Den dypeste forbindelsen gjennom den er en renne på 800 meter mellom Færøyene og Færøybanken (Store norske leksikon, u.å.-a). Det får betydning for hvordan dypvannet i Norskehavet kommer ut i Atlanterhavet.
+
+```widget
+FigHavbunnenProfil
+```
+
+### Hva består sjøvann av?
+
+Sjøvann er 96,5 % vann og 3,5 % salter (Sælen og Barthel, 2026). *Saltholdighet* er hvor mange gram oppløst salt det er per kilo vann (Barthel, 2024). Gjennomsnittet i havet er omtrent 35 g/kg. Til sammenligning er Dødehavet mettet ved omtrent 300 g/kg (Sælen og Barthel, 2026).
+
+| Ion | Gram per kilo sjøvann |
+| --- | --- |
+| Klorid (Cl⁻) | 18,980 |
+| Natrium (Na⁺) | 10,556 |
+| Sulfat (SO₄²⁻) | 2,649 |
+| Magnesium (Mg²⁺) | 1,272 |
+| Kalsium (Ca²⁺) | 0,400 |
+| Kalium (K⁺) | 0,380 |
+| Hydrogenkarbonat og karbonat | 0,140 |
+| Bromid (Br⁻) | 0,065 |
+
+*Tabellen viser de viktigste ionene (Sælen og Barthel, 2026).*
+
+Forholdet mellom de store ionene er nesten det samme over alt i havet. Derfor er det nok å måle saltholdigheten for å beskrive hvor salt vannet er (Barthel, 2024). Saltholdigheten kan også beregnes ut fra hvor godt vannet leder strøm. Slik får vi den *praktiske saltholdigheten*, som er oppgitt i psu. Standard sjøvann har 35,00 psu, og det tilsvarer 35,17 g/kg i den absolutte saltholdigheten som ble innført i 2010 (Barthel, 2024).
+
+Natrium kommer fra forvitring av bergarter og tilførsel fra elver. Berggrunnen inneholder nesten ikke klor. Klor og svovel i havet kommer fra reaksjoner knyttet til vulkansk aktivitet langs midthavsryggene (Sælen og Barthel, 2026).
+
+Saltholdigheten varierer. Områdene med passatvind i Atlanterhavet har nesten 38 g/kg, og Rødehavet har 40 g/kg eller mer. I deler av Polhavet er overflatevannet under 30 g/kg (Sælen og Barthel, 2026). Sjøvann med 35 g/kg fryser ved −1,9 °C, og tettheten er 1028 kg/m³ ved 0 °C og 1 atmosfæres trykk (Sælen og Barthel, 2026).
+
+Havet inneholder også oppløste gasser. Oksygen kan være opptil 10 ml per liter, og på høye breddegrader 7–8 ml per liter. På midlere dyp i deler av tropene er det under 0,5 ml per liter, og i Svartehavet er det ikke oksygen under 200 meters dyp (Sælen og Barthel, 2026).
+
+```widget
+SjekkHavstrommer7
+```
+
+### Lag i havet
+
+Temperatur og saltholdighet bestemmer til sammen tettheten, og derfor har havet lag (Sprintall og Cronin, 2001). Det øverste laget er det blandede laget, der vind og bølger rører rundt i vannet. Under det er det et sjikt der tettheten øker raskt med dypet. Det kalles en *pyknoklin* eller et *sprangsjikt*. Ved nedre kant av det permanente sprangsjiktet slutter det øvre havet (Sprintall og Cronin, 2001).
+
+Sprangsjiktet har ulike navn, etter hva som styrer tettheten:
+
+- En *termoklin* er et sjikt der temperaturen endrer seg mye med dypet. NOAA beskriver det som overgangen mellom varmt, blandet overflatevann og kaldere dypvann (NOAA, u.å.-h).
+- En *halokline* er et sjikt der saltholdigheten endrer seg mye med dypet (Sprintall og Cronin, 2001).
+
+Der temperaturen styrer tettheten, som i tropene og på midlere breddegrader, kalles det permanente sprangsjiktet en permanent termoklin. På midlere breddegrader dannes også en sesongtermoklin om sommeren. I subpolare strøk kan ferskvann fra regn, elver og issmelting gi en sesonghalokline. Sesonglagene forsvinner hver vinter, mens det permanente sprangsjiktet alltid er der (Sprintall og Cronin, 2001).
+
+En termoklin ser ulik ut på ulike steder. I tropene er den mer eller mindre fast. På tempererte breddegrader varierer den og er ofte dypest om sommeren. Nær polene er den grunn eller finnes ikke (NOAA, u.å.-h). Hvor tykt laget med varmt vann over en termoklin er, har betydning for orkanvarsler (NOAA, u.å.-h). Mer om det står i kapitlet [Værkatastrofer](/tema/vaerkatastrofer).
+
+Under sprangsjiktet er havet kaldt og jevnt. I Atlanterhavet er vannet fra omtrent 500 meters dyp og nedover 2–4 °C (Store norske leksikon, u.å.-a). I Norskehavet er dypvannet kaldere enn −1 °C (Sælen og Barthel, 2026). Store temperaturforskjeller finnes bare i de øverste noen hundre meterne (Sælen og Barthel, 2026).
+
+```widget
+SjekkHavstrommer8
+```
+
 ## Hva skjer i dypet?
 
 Tettheten til sjøvannet øker når saltholdigheten øker, og minker når temperaturen øker (Barthel, 2025). Kaldt og salt vann er derfor tyngst. Dypvann dannes bare i noen få områder. I Nord-Atlanteren skjer det framfor alt ved at overflatevannet blir kraftig avkjølt om vinteren. Nord for Jan Mayen blir vannet så kaldt og tungt at det synker (Sælen mfl., 2025a). Dypvann og bunnvann dannes også i Grønlandshavet, Labradorhavet og Irmingerhavet. Når havis fryser, blir mye av saltet igjen i vannet under, og det gjør vannet tyngre. Det har størst betydning rundt Antarktis, der det meste av bunnvannet i verdenshavene dannes, særlig i Weddellhavet (Barthel, 2025).
@@ -213,11 +300,56 @@ Amoc
 SjekkHavstrommer6
 ```
 
+## Hvilke vannmasser finnes i Atlanterhavet?
+
+En *vannmasse* er en vannmengde med felles opphav og felles egenskaper. Vannmasser kjennetegnes oftest ved temperatur og saltholdighet. Også oppløste stoffer som oksygen kan brukes til å skille dem (Segar, 2025). Under overflaten endres temperatur og saltholdighet i hovedsak bare når vann blandes med annet vann. Derfor kan vi følge en vannmasse langt av sted (Segar, 2025).
+
+I et *T–S-diagram* tegner vi temperatur mot saltholdighet. Vann fra samme vannmasse havner på samme punkt. Blandes to vannmasser, ligger blandingen på en rett linje mellom de to punktene, og plasseringen på linja viser blandingsforholdet. Blander vi vann med saltholdighet 35 og 37 og får 36, må det være like store volumer av hver (Segar, 2025).
+
+Den viktigste dypvannsmassen i Atlanterhavet er *Nord-Atlantisk dypvann* (NADW). Det har fem kilder: antarktisk mellomvann, antarktisk bunnvann, middelhavsvann, Labradorhavsvann og nordisk overløpsvann (Talley, 2019). Noen kjennetegn:
+
+- **NADW** har et saltholdighetsmaksimum sør for 20° N, på 1 500–3 000 meters dyp (Talley, 2019).
+- **Antarktisk mellomvann** har et saltholdighetsminimum på omtrent 500–1 000 meters dyp sør for 20° N. Det oppstår ved overflaten nær sørspissen av Sør-Amerika (Talley, 2019).
+- **Antarktisk bunnvann** er et kaldt lag med lavere saltholdighet nær bunnen. Det når bredden til Golfstrømmen og stiger opp i NADW over seg (Talley, 2019). Hoveddelen av bunnvannet i Atlanterhavet dannes på sokkelen utenfor Antarktis, og det kan spores til omtrent 23° N (Sælen og Barthel, 2026).
+- **Middelhavsvann** er 13 °C og har 38,45 psu ved Gibraltar. Det legger seg på omtrent 1 000 meters dyp og gir et saltholdighetsmaksimum mellom 30° og 40° N (Talley, 2019).
+- **Labradorhavsvann** dannes ved at vannet blandes dypt om vinteren, ned til 1 500–2 000 meters dyp. Temperaturen varierer fra tiår til tiår, for eksempel mellom 3,5 °C og omtrent 2,9 °C. Vannet har saltholdighetsminimum og mye oksygen (Talley, 2019).
+- **Nordisk overløpsvann** er det tetteste NADW. Det kommer fra Grønlandshavet og renner over terskler i Danmarkstredet, mellom Island og Færøyene og i Færøy–Shetland-renna (Talley, 2019).
+
+Overflatevannet er også delt i masser. *Subpolart modusvann* har omtrent 14 °C nær Den nordatlantiske strømmen, 8 °C når det går inn i Norskehavet og 4 °C når det går inn i Labradorhavet (Talley, 2019). I overflaten er saltholdigheten over 37 ‰ i områdene med passatvind og under 34 ‰ lengst sør og i de nordvestlige polare områdene (Store norske leksikon, u.å.-a).
+
+```widget
+FigVannmasserAtlanterhavet
+```
+
+```widget
+SjekkHavstrommer9
+```
+
+### Atlantisk multidekadisk variabilitet (AMO)
+
+Havtemperaturen i Nord-Atlanteren svinger også fra ett tiår til det neste. Dette kalles *atlantisk multidekadisk variabilitet*. Det eldre navnet er *atlantisk multidekadisk oscillasjon* (AMO). Svingningene vises som endringer i havtemperaturen over hele Nord-Atlanteren. I den positive fasen er hele Nord-Atlanteren varmere enn vanlig, mest i det subpolare havvirvelområdet og langs iskanten i Labradorhavet og Grønlandshavet og Barentshavet. FNs klimapanel bruker navnet AMV, fordi ordet oscillasjon antyder en bestemt periode, og det finnes ingen fast tidsskala for svingningen (Matthews mfl., 2021). Mer om AMV står i kapitlet [Naturlige klimapådriv](/tema/naturlige-klimapadriv).
+
+Ikke bland AMV med AMOC. AMV er svingninger i havtemperaturen ved overflaten. AMOC er en sirkulasjon av vann (Matthews mfl., 2021).
+
+## Hvorfor samler plast seg i havvirvlene?
+
+Søppel som havner i havet, blir ikke liggende der det ble mistet. Vind og strømmer flytter det rundt, og på grunn av mønsteret i strømmene samler noe seg i bestemte områder, ofte langt ute i havet. Slike områder kalles «søppelflekker». Havvirvlene er som store virvler som trekker ting mot ett sted, ofte midten. Det finnes fem store havvirvler: én i Indiahavet og to i hvert av Atlanterhavet og Stillehavet (NOAA, u.å.-g).
+
+Den mest kjente flekken er «Great Pacific Garbage Patch» i Nord-Stillehavet, mellom Hawaii og California. Navnet er misvisende. Det er ikke en øy av søppel. Det er mer som pepperflak i en suppe, og det meste er mikroplast som ikke kan ses med det blotte øyet. Det går an å seile gjennom et slikt område uten å se noe søppel. Grensene og innholdet endrer seg hele tiden med strømmer og vind (NOAA, u.å.-g; NOAA, u.å.-i).
+
+Forskerne Lebreton mfl. (2018) målte og modellerte flekken i subtropiske farvann mellom California og Hawaii. De anslo at minst 79 (45–129) tusen tonn plast flyter innenfor et område på 1,6 millioner km². Det er fire til seksten ganger mer enn tidligere anslag. Mer enn tre fjerdedeler av massen var gjenstander større enn 5 cm, og minst 46 % var fiskegarn. Mikroplast utgjorde 8 % av massen, men 94 % av antall biter. Antallet er anslått til 1,8 (1,1–3,6) billioner, altså tusen milliarder. Forskerne mener at mengden plast i flekken øker eksponentielt, og raskere enn i vannet omkring (Lebreton mfl., 2018).
+
+```widget
+SjekkHavstrommer10
+```
+
 > **Vanlige misforståelser**
 >
 > **«Golfstrømmen går langs norskekysten.»** Golfstrømmen går langs Nord-Amerika. Strømmen langs Norge er Den norske atlanterhavsstrømmen, en gren av Den nordatlantiske strømmen (Barthel, 2026; Weber og Bjørndalen, 2024).
 >
 > **«Vannet går dit vinden blåser.»** Overflaten bøyes av mot høyre, og nettotransporten i ekmanlaget går 90 grader til høyre for vinden på den nordlige halvkulen (Barthel, 2021a).
+>
+> **«En søppelflekk er en øy av plast du kan se fra satellitt.»** Det meste er små biter som flyter spredt i vannet, og NOAA skriver at det ikke er en stor sammenhengende flekk av synlig søppel (NOAA, u.å.-g; NOAA, u.å.-i).
 >
 > **«AMOC kan skrus av som en bryter.»** Klimapanelet venter en gradvis svekkelse i dette hundreåret. Det mener med middels sikkerhet at sirkulasjonen ikke bryter sammen brått før 2100 (IPCC, 2021).
 
@@ -252,6 +384,24 @@ SjekkHavstrommer6
 **Dypvannsdannelse:** At overflatevann blir så tungt at det synker til store dyp, i nord mest ved avkjøling om vinteren.
 
 **AMOC:** Den atlantiske omveltningssirkulasjonen, med varmt vann nordover nær overflaten og kaldt vann sørover i dypet.
+
+**Saltholdighet:** Hvor mange gram oppløst salt det er per kilo vann. Gjennomsnittet i havet er omtrent 35 g/kg.
+
+**Sprangsjikt (pyknoklin):** Sjikt der tettheten i havet øker raskt med dypet.
+
+**Termoklin:** Sjikt der temperaturen endrer seg mye med dypet, mellom varmt overflatevann og kaldere dypvann.
+
+**Halokline:** Sjikt der saltholdigheten endrer seg mye med dypet.
+
+**Vannmasse:** Vannmengde med felles opphav og felles egenskaper, oftest kjennetegnet ved temperatur og saltholdighet.
+
+**T–S-diagram:** Diagram med temperatur mot saltholdighet som brukes til å kjenne igjen og følge vannmasser.
+
+**Nord-Atlantisk dypvann (NADW):** Dypvannsmassen i Atlanterhavet, med fem kilder, blant annet Labradorhavsvann og nordisk overløpsvann.
+
+**AMV (AMO):** Svingninger i havtemperaturen over hele Nord-Atlanteren fra ett tiår til det neste.
+
+**Søppelflekk:** Område i en havvirvel der søppel og plast samler seg, mest som små biter spredt i vannet.
 
 ## Sammendrag
 

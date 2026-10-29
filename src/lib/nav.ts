@@ -41,6 +41,7 @@ export const NAV_GF2 = [
   { to: "/tema/vindsystemet", label: "Vind" },
   { to: "/tema/vaerkart", label: "Værkart" },
   { to: "/tema/lokale-vaersystemer", label: "Lokalt" },
+  { to: "/tema/skyer-nedbor-klimasoner", label: "Skyer" },
   { to: "/tema/jetstrommer", label: "Jet" },
   { to: "/tema/coriolis", label: "Coriolis" },
   { to: "/tema/havstrommer", label: "Hav" },
@@ -49,6 +50,7 @@ export const NAV_GF2 = [
   { to: "/tema/numeriske-modeller", label: "Modeller" },
   { to: "/tema/paleoklima", label: "Paleo" },
   { to: "/tema/milankovitch", label: "Istider" },
+  { to: "/tema/naturlige-klimapadriv", label: "Naturlig" },
   { to: "/tema/vaerkatastrofer", label: "Farer" },
   { to: "/tema/tilpasning", label: "Tilpasning" },
   { to: "/tema/energi-hav-luft", label: "Energi" },
@@ -65,7 +67,7 @@ export const NAV_GF2 = [
  * Rad 1 er inngang, vær og hav. Rad 2 er klima, is, samfunn og metode.
  * Rekkefølgen er den samme som NAV_GF2.
  */
-export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 10), NAV_GF2.slice(10)] as const;
+export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 11), NAV_GF2.slice(11)] as const;
 
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
 export const NAV = NAV_GF2;
@@ -129,6 +131,16 @@ export const GF2_THEMES = [
     alt: "Polarfronten som bølge mellom kald og varm luft, med lavtrykk i bølgen",
     blurb:
       "Polarfrontsyklon steg for steg. Sjøbris, dalvind og føn. Samme fysikk i tre målestokker.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/skyer-nedbor-klimasoner",
+    title: "Skyer, nedbør og klimasoner",
+    kicker: "Atmosfæren",
+    image: "/images/fig-stigende.jpg",
+    alt: "Mørke, høye skyer med nedbør under",
+    blurb:
+      "Fra vanndamp til sky og nedbør. Skytyper, kyst og innland, høyde, urbane varmeøyer og Köppens klimasoner.",
     status: "klar" as const,
   },
   {
@@ -209,6 +221,16 @@ export const GF2_THEMES = [
     alt: "Innlandsis som kalver i mørkt polarhav, med isfjell og isdekt kyst i bakgrunnen",
     blurb:
       "Jordbanen endrer hvor mye sol som treffer ulike breddegrader. De tre svingningene forklarer ikke oppvarmingen vi ser nå.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/naturlige-klimapadriv",
+    title: "Naturlige klimapådriv",
+    kicker: "Klima over tid",
+    image: "/images/banner-naturlige-padriv.jpg",
+    alt: "Lav sol over horisonten, et vulkanutbrudd med askesky og en brefront mot mørkt hav med isflak",
+    blurb:
+      "Sola, vulkanene, platetektonikken, livet og indre variabilitet. Hva som virker på hvilken tidsskala, og hvor mye de betyr for oppvarmingen siden 1850.",
     status: "klar" as const,
   },
   {

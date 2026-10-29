@@ -218,6 +218,7 @@ import {
 import { SAMMENDRAG, SJEKK_DEG_SELV } from "@/lib/kapittel-mal";
 import { G2_PAKKE_A_WIDGETS } from "@/components/g2-pakke-a-widgets";
 import { QUIZ_ENERGI_A } from "@/lib/poster-quizzes-pakke-a";
+import { POSTER_WIDGETS_B } from "@/components/poster-widgets-b";
 import {
   IodFaseFigur,
   IodHavtemperaturFigur,
@@ -320,6 +321,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
       () => <Sammendrag points={points} />,
     ]),
   ),
+  ...POSTER_WIDGETS_B,
   EarthLayers: () => <EarthLayersDiagram />,
   Spreading: () => <SpreadingDiagram />,
   Convection: () => <ConvectionDiagram />,
@@ -1470,7 +1472,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
         ...KLIMA_SUBTHEMES,
         ...KLIMA_MODELS,
         ...GF2_THEMES.filter((t) =>
-          ["/tema/paleoklima", "/tema/milankovitch", "/tema/tilpasning"].includes(t.to),
+          ["/tema/paleoklima", "/tema/milankovitch", "/tema/naturlige-klimapadriv", "/tema/tilpasning"].includes(t.to),
         ).map((t) => ({ ...t, kicker: "Klima over tid og samfunn" })),
       ].map((sub) => (
         <Link

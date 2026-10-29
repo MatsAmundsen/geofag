@@ -31,7 +31,7 @@ function MilankovitchPage() {
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{ to: "/tema/paleoklima", label: "Forrige: Paleoklima" }}
-      next={{ to: "/tema/vaerkatastrofer", label: "Neste: Værkatastrofer" }}
+      next={{ to: "/tema/naturlige-klimapadriv", label: "Neste: Naturlige klimapådriv" }}
       kilder={KILDER.milankovitch}
       posterSlug="milankovitch"
       post={post}

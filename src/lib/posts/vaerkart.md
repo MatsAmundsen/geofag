@@ -64,7 +64,7 @@ Vi skiller mellom fem fronttyper: varmfront, kaldfront, okkludert front, stasjon
 | Kaldfront | blå strek med trekanter, i fartsretningen | kaldere luft fortrenger varmere. Ofte byger og skiftende skydekke |
 | Okkludert front | lilla strek med både trekanter og halvsirkler | kaldfronten har tatt igjen varmfronten. Både jevn nedbør og byger |
 | Stasjonær front | vekslende trekanter og halvsirkler, pekende mot hver sin luftmasse | fronten beveger seg lite |
-| Tråg | linje uten symboler, ofte stiplet | ofte mer ustabil luft, med byger og iblant vindkast (National Weather Service [NWS], u.å.) |
+| Tråg | linje uten symboler, ofte stiplet | ofte mer ustabil luft, med byger og iblant vindkast (National Weather Service [NWS], u.å.-a) |
 
 Symbolene peker den veien fronten flytter seg. Halvsirklene og trekantene gjør at frontene kan skilles også på et svart-hvitt kart (Sivle, 2009; Store norske leksikon, u.å.-a).
 
@@ -137,6 +137,10 @@ Luftmassene følger i stor grad vinden i høyden. Når jetstrømmen skifter, ski
 UpperAir500
 ```
 
+```widget
+SjekkVaerkart4
+```
+
 ## De nærmeste timene
 
 Værkart, radar og satellittbilder har tidspunkt i UTC (NOAA, u.å.-e). Radar og satellitt viser nedbør og skyer som allerede er der. De brukes sammen med kartet når du skal si noe om de nærmeste timene.
@@ -145,9 +149,60 @@ Værkart, radar og satellittbilder har tidspunkt i UTC (NOAA, u.å.-e). Radar og
 RadarNowcast
 ```
 
+### Værradar
+
+En værradar gir kart over nedbør og vind rundt radaren. De norske radarene kan registrere nedbør i en radius på 240 km. På grunn av jordkrumningen er radarstrålen da 5–6 km over bakken (Store norske leksikon, 2024a). Med dopplereffekten kan radaren også måle vind, og med to polarisasjoner kan den skille mellom regn, hagl og sludd. Fordi bildene kommer ofte, er radar et godt hjelpemiddel for å følge hvordan frontsystemer flytter seg og hvor byger og tordenvær utvikler seg (Store norske leksikon, 2024a).
+
+Radarbildet er likevel ikke en fasit. Disse feilkildene bør du kjenne:
+
+- **Strålen blir høyere og bredere med avstanden.** Radarstrålen spres ut. NOAA oppgir for amerikanske værradarer at strålen er over 3 km bred ved 193 km (120 miles) avstand. Små trekk i nedbøren som er tydelige nær radaren, kan forsvinne langt unna (NOAA, u.å.-h).
+- **Overskyting.** Hvis lufttettheten avtar raskere med høyden enn normalt, bøyes strålen mindre enn vanlig og går for høyt. Da kan fjerne byger bli oversett, eller intensiteten undervurdert fordi strålen bare treffer toppen av skyen (NOAA, u.å.-h).
+- **Falske ekko.** Hvis lufttettheten avtar saktere enn normalt, bøyes strålen mer mot bakken. I ekstreme tilfeller treffer den bakken og gir falske ekko som kalles anomal propagasjon (NOAA, u.å.-h).
+
+Avstanden på 193 km er regnet om fra 120 miles.
+
+### Satellittbilder: synlig og infrarødt
+
+Satellittbilder finnes i tre hovedtyper: synlig lys, infrarødt og vanndamp (NWS, u.å.-b).
+
+- **Synlig bilde (VIS)** viser sollys som blir kastet tilbake. Det virker bare om dagen. Skyer er hvite, bakken er vanligvis grå, og vann er mørkt. Snødekt bakke er også hvit, og da kan det være vanskelig å skille sky fra snø. Et bilde i serie hjelper, fordi skyene flytter seg og snøen ikke gjør det (NWS, u.å.-b).
+- **Infrarødt bilde (IR)** måler varmen som stråler ut fra skyer og bakke, og virker dag og natt. Skyene er kaldere enn land og hav og blir lette å se. Kraftige tordenbyger har ofte svært kalde topper (NWS, u.å.-b).
+- **Vanndampbilde** viser hvor mye fuktighet det er i den øvre delen av atmosfæren, omtrent 15 000 til 30 000 fot, altså 4,6 til 9,1 km. De fuktigste områdene er hvitest, og tørre områder er mørke (NWS, u.å.-b).
+
+Når du skal tolke et satellittbilde, må du først finne ut hvilken type det er. Et IR-bilde fra natta kan du ikke sammenligne med et VIS-bilde fra dagen. Hvordan kalde og varme områder er tegnet, avhenger av fargeskalaen, så les alltid fargeforklaringen.
+
 ```widget
-SjekkVaerkart4
+SjekkVaerkart5
 ```
+
+### Egne observasjoner
+
+Du kan også følge været selv. To enkle observasjoner er nedbør og vind.
+
+**Nedbør.** En manuell nedbørmåler er en beholder med en gitt diameter i toppen. Nedbøren tømmes i et måleglass som viser mengden i millimeter. Snø, sludd og hagl må tas inn og smeltes før avlesning, fordi snø tar mer plass enn vann. 1 cm tørr snø tilsvarer omtrent 1 mm regn (Store norske leksikon, 2024b). Hvis du bruker måler med fast diameter, kan du sammenligne verdiene dine med radarbildet og med målingene fra Meteorologisk institutt.
+
+**Vind.** Beauforts vindskala angir vindstyrke fra 0 (stille) til 12 (orkan), og verdiene er middelvind over ti minutter (Store norske leksikon, 2026). Uten måler kan du anslå vinden ut fra virkningen på land. Ved 3 (lett bris) rører løv og småkvister seg. Ved 5 (frisk bris) begynner småtrær med løv å svaie. Ved 7 (stiv kuling) rører hele trær seg, og det er tungt å gå mot vinden (Store norske leksikon, 2026). På sjøen ser du virkningen på bølgene. Ved 7 hoper sjøen seg opp, og hvitt skum begynner å blåse i strimer (Store norske leksikon, 2023).
+
+| Beaufort | Navn | Meter per sekund |
+| --- | --- | --- |
+| 3 | Lett bris | 3,4–5,4 |
+| 5 | Frisk bris | 8,0–10,7 |
+| 7 | Stiv kuling | 13,9–17,1 |
+| 9 | Liten storm | 20,8–24,4 |
+
+Tabellen bygger på Store norske leksikon (2026).
+
+### Regneeksempel: hvor fort flytter fronten seg?
+
+Du kan finne farten til en front ved å måle hvor langt den har flyttet seg mellom to værkart. Sammenlign kartene i UTC, for eksempel kl. 06 og kl. 12 (NOAA, u.å.-e). Bruk målestokken på kartet og mål avstanden mellom frontlinjens to posisjoner, vinkelrett på fronten. Så er fart lik avstand delt på tid.
+
+Dette er et regneeksempel med valgte tall, ikke en måling. Anta at en kaldfront ligger langs en linje kl. 06 UTC og at du måler 450 km til linjen kl. 12 UTC. Tiden mellom kartene er 6 timer.
+
+- Fart: 450 km / 6 t = 75 km/t.
+- Omregnet til meter per sekund: 75 / 3,6 ≈ 20,8 m/s.
+- En by 180 km foran fronten får fronten om 180 km / 75 km/t = 2,4 timer, altså etter 2 timer og 24 minutter.
+
+Svaret forutsetter at farten er den samme hele veien. Det stemmer sjelden helt. I den norske modellen tar kaldfronten igjen varmfronten, og lavtrykket endrer seg underveis (NOAA, u.å.-b). Bruk derfor regnestykket som et anslag, og sammenlign gjerne med nyere radarbilder.
 
 Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale værsystemer](/tema/lokale-vaersystemer).
 
@@ -172,6 +227,12 @@ Regionale og lokale systemer, som sjøbris, dalvind og føn, tar vi i [lokale v�
 **500 hPa-kart:** Høyden av flaten der trykket er 500 hPa, om lag 5 000 til 6 000 meter. Det viktigste høydekartet (NOAA, u.å.-d).
 
 **UTC (Z-tid):** Felles klokke på værkart, radar og satellitt. 00Z er midnatt ved nullmeridianen (NOAA, u.å.-e).
+
+**Værradar:** Radar som gir kart over nedbør og vind rundt radaren. Norske radarer registrerer nedbør i en radius på 240 km (Store norske leksikon, 2024a).
+
+**VIS og IR:** Synlig satellittbilde, som bare virker om dagen, og infrarødt satellittbilde, som virker døgnet rundt fordi det måler varmestråling (NWS, u.å.-b).
+
+**Beauforts vindskala:** Skala fra 0 (stille) til 12 (orkan) for vindstyrke, regnet som middelvind over ti minutter (Store norske leksikon, 2026).
 
 ## Sammendrag
 
