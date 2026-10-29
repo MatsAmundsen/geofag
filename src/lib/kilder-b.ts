@@ -228,6 +228,100 @@ export const KILDER_B = {
 
 /** Tillegg til eksisterende kildelister. Slås sammen med `medKilder` i rutene. */
 export const KILDER_B_TILLEGG = {
+  havstrommer: [
+    {
+      prefix: "Barthel, K. (2024, 26. november). Saltholdighet. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/saltholdighet",
+    },
+    {
+      prefix:
+        "Lebreton, L., Slat, B., Ferrari, F., Sainte-Rose, B., Aitken, J., Marthouse, R., Hajbane, S., Cunsolo, S., Schwarz, A., Levivier, A., Noble, K., Debeljak, P., Maral, H., Schoeneich-Argent, R., Brambini, R., & Reisser, J. (2018). Evidence that the Great Pacific Garbage Patch is rapidly accumulating plastic. ",
+      italic: "Scientific Reports, 8",
+      suffix: "(1), Artikkel 4666.",
+      href: "https://doi.org/10.1038/s41598-018-22939-w",
+    },
+    {
+      prefix:
+        "Matthews, J. B. R., Möller, V., van Diemen, R., Fuglestvedt, J. S., Masson-Delmotte, V., Méndez, C., Semenov, S., & Reisinger, A. (Red.). (2021). Annex VII: Glossary. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 2215–2256). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.022",
+    },
+    {
+      prefix: "NOAA. (u.å.-d). ",
+      italic: "How deep is the ocean?",
+      suffix: ". National Ocean Service.",
+      href: "https://oceanservice.noaa.gov/facts/oceandepth.html",
+    },
+    {
+      prefix: "NOAA. (u.å.-e). ",
+      italic: "How many oceans are there?",
+      suffix: ". National Ocean Service.",
+      href: "https://oceanservice.noaa.gov/facts/howmanyoceans.html",
+    },
+    {
+      prefix: "NOAA. (u.å.-f). ",
+      italic: "How much water is in the ocean?",
+      suffix: ". National Ocean Service.",
+      href: "https://oceanservice.noaa.gov/facts/oceanwater.html",
+    },
+    {
+      prefix: "NOAA. (u.å.-g). ",
+      italic: "What are garbage patches?",
+      suffix: ". National Ocean Service.",
+      href: "https://oceanservice.noaa.gov/education/tutorial-coastal/marine-debris/md05.html",
+    },
+    {
+      prefix: "NOAA. (u.å.-h). ",
+      italic: "What is a thermocline?",
+      suffix: ". National Ocean Service.",
+      href: "https://oceanservice.noaa.gov/facts/thermocline.html",
+    },
+    {
+      prefix: "NOAA. (u.å.-i). ",
+      italic: "What is the Great Pacific Garbage Patch?",
+      suffix: ". National Ocean Service.",
+      href: "https://oceanservice.noaa.gov/facts/garbagepatch.html",
+    },
+    {
+      prefix: "Sælen, O. H., & Barthel, K. (2026, 11. juni). Hav. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/hav",
+    },
+    {
+      prefix: "Segar, D. A. (2025). 8.15: Tracing water masses. I ",
+      italic: "Introduction to ocean sciences (6. utg.)",
+      suffix: ". LibreTexts Geosciences.",
+      href: "https://geo.libretexts.org/Courses/American_Meteorological_Society/Introduction_to_Ocean_Sciences_6e_(Segar)/08%3A_Ocean_Circulation/8.15%3A_Tracing_Water_Masses",
+    },
+    {
+      prefix: "Sprintall, J., & Cronin, M. F. (2001). Upper ocean vertical structure. I J. H. Steele, S. A. Thorpe, & K. K. Turekian (Red.), ",
+      italic: "Encyclopedia of ocean sciences",
+      suffix: ". Academic Press.",
+      href: "https://doi.org/10.1006/rwos.2001.0149",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-a). ",
+      italic: "Atlanterhavet",
+      suffix: ".",
+      href: "https://snl.no/Atlanterhavet",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-b). ",
+      italic: "Havbunnen",
+      suffix: ".",
+      href: "https://snl.no/havbunnen",
+    },
+    {
+      prefix: "Talley, L. D. (2019). ",
+      italic: "SIO 210: Atlantic – deep circulation and water masses",
+      suffix: ". Scripps Institution of Oceanography, University of California San Diego.",
+      href: "https://talleylab.ucsd.edu/ltalley/sio210/Atlantic_deep/index.html",
+    },
+  ],
   kryosfaeren: [
     {
       prefix: "Store norske leksikon. (u.å.-h). ",

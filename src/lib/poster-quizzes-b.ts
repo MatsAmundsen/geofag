@@ -454,3 +454,127 @@ export const QUIZ_NATURLIG: QuizQuestion[] = [
     explain: "Ordet oscillasjon antyder en bestemt periode, og det passer ikke for tiårsvariasjonen i Nord-Atlanteren.",
   },
 ];
+
+export const QUIZ_SJEKK_HAVSTROMMER_7: QuizQuestion[] = [
+  {
+    prompt: "Hvor stor del av jordoverflaten er dyphavsslettene, og på hvilket dyp ligger de?",
+    options: [
+      "Nesten 30 %, på 4 000–6 000 meters dyp",
+      "Omtrent 2 %, på 100–200 meters dyp",
+      "Omtrent 70 %, på 10 000 meters dyp",
+    ],
+    answer: 0,
+    explain: "Dyphavsslettene ligger på 4 000–6 000 meters dyp og dekker nesten 30 % av jordoverflaten. Havet som helhet dekker 70,8 %.",
+  },
+  {
+    prompt: "Hvor kommer klor og svovel i havet fra?",
+    options: [
+      "Fra forvitring av berg på land, som elvene fører ut",
+      "Fra reaksjoner knyttet til vulkansk aktivitet langs midthavsryggene",
+      "Fra nedbør som faller direkte i havet",
+    ],
+    answer: 1,
+    explain: "Berggrunnen inneholder nesten ikke klor. Klor og svovel kommer fra reaksjoner knyttet til vulkansk aktivitet langs midthavsryggene. Natrium kommer fra forvitring og elver.",
+  },
+  {
+    prompt: "Hva betyr en saltholdighet på 35 g/kg?",
+    options: [
+      "35 gram oppløst salt per kilo sjøvann",
+      "35 gram vann per kilo salt",
+      "35 liter salt i en kubikkmeter vann",
+    ],
+    answer: 0,
+    explain: "Saltholdighet er antall gram oppløst salt per kilo vann. Gjennomsnittet i havet er omtrent 35 g/kg.",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_8: QuizQuestion[] = [
+  {
+    prompt: "Hva er en termoklin?",
+    options: [
+      "Et sjikt der saltholdigheten endrer seg mye med dypet",
+      "Overgangen mellom varmt, blandet overflatevann og kaldere dypvann",
+      "En havstrøm som går langs bunnen",
+    ],
+    answer: 1,
+    explain: "En termoklin er overgangslaget mellom varmt, blandet overflatevann og kaldere dypvann. Et sjikt med stor endring i saltholdighet kalles en halokline.",
+  },
+  {
+    prompt: "Hva kan gi en sesonghalokline i subpolare strøk?",
+    options: [
+      "Ferskvann fra regn, elver og issmelting",
+      "Sterk oppvelling av salt dypvann",
+      "Bare tidevann",
+    ],
+    answer: 0,
+    explain: "Ferskvann i overflaten gjør vannet lettere og gir et sjikt med stor saltforskjell. Sesonglagene forsvinner hver vinter.",
+  },
+  {
+    prompt: "Hvor tykt er det varme laget over en termoklin viktig for?",
+    options: ["Orkanvarsler", "Jordskjelvvarsler", "Måling av tidevann"],
+    answer: 0,
+    explain: "NOAA oppgir at tykkelsen på det varme laget over en termoklin har betydning for orkanvarsler.",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_9: QuizQuestion[] = [
+  {
+    prompt: "To vannmasser med saltholdighet 35 og 37 blandes, og blandingen får 36. Hvordan er blandingsforholdet?",
+    options: [
+      "Like store volumer av hver",
+      "Tre deler med 35 og én del med 37",
+      "Bare vannet med 37 er med",
+    ],
+    answer: 0,
+    explain: "36 ligger midt mellom 35 og 37, så blandingen har like store volumer av begge. I et T–S-diagram ligger blandingen på en rett linje mellom de to punktene.",
+  },
+  {
+    prompt: "Hva kjennetegner antarktisk mellomvann i Atlanterhavet?",
+    options: [
+      "Et saltholdighetsmaksimum på 1 500–3 000 meters dyp",
+      "Et saltholdighetsminimum på omtrent 500–1 000 meters dyp sør for 20° N",
+      "En temperatur på 13 °C og 38,45 psu",
+    ],
+    answer: 1,
+    explain: "Antarktisk mellomvann har et saltholdighetsminimum. Saltholdighetsmaksimum på 1 500–3 000 meter er Nord-Atlantisk dypvann, og 13 °C og 38,45 psu er middelhavsvann ved Gibraltar.",
+  },
+  {
+    prompt: "Hva er forskjellen på AMV og AMOC?",
+    options: [
+      "AMV er svingninger i havtemperaturen i Nord-Atlanteren, AMOC er en sirkulasjon av vann",
+      "De er to navn på det samme",
+      "AMV er en havstrøm, AMOC er en temperatur",
+    ],
+    answer: 0,
+    explain: "AMV (tidligere AMO) er svingninger i temperaturen ved havoverflaten. AMOC er den atlantiske omveltningssirkulasjonen.",
+  },
+];
+
+export const QUIZ_SJEKK_HAVSTROMMER_10: QuizQuestion[] = [
+  {
+    prompt: "Hvor mange store havvirvler finnes det, ifølge NOAA?",
+    options: ["Tre", "Fem", "Tolv"],
+    answer: 1,
+    explain: "Det er fem: én i Indiahavet og to i hvert av Atlanterhavet og Stillehavet.",
+  },
+  {
+    prompt: "Hvorfor er navnet «søppelflekk» misvisende?",
+    options: [
+      "Fordi det meste er små biter som flyter spredt i vannet, og ikke en øy av søppel",
+      "Fordi det ikke finnes plast i havet",
+      "Fordi flekken ligger på land",
+    ],
+    answer: 0,
+    explain: "NOAA sammenligner det med pepperflak i en suppe. Det går an å seile gjennom et slikt område uten å se noe søppel.",
+  },
+  {
+    prompt: "Lebreton mfl. (2018): Hvor stor del av antall biter i flekken er mikroplast, og hvor stor del av massen?",
+    options: [
+      "94 % av antall biter, men 8 % av massen",
+      "8 % av antall biter, men 94 % av massen",
+      "Like mye av begge",
+    ],
+    answer: 0,
+    explain: "Mikroplast utgjorde 8 % av massen, men 94 % av antall biter. Over tre fjerdedeler av massen var gjenstander større enn 5 cm.",
+  },
+];

@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { CHAPTER_INGRESS } from "@/lib/chapter-ingress";
 import { KILDER } from "@/lib/kilder";
+import { KILDER_B_TILLEGG, medKilder } from "@/lib/kilder-b";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
+
+const HAVSTROMMER_KILDER = medKilder(KILDER.havstrommer, KILDER_B_TILLEGG.havstrommer ?? []);
 
 const tema = GF2_THEMES.find((t) => t.to === "/tema/havstrommer")!;
 
@@ -31,7 +34,7 @@ function HavstrommerPage() {
       bannerAlt="Havoverflate i Nord-Atlanteren med bølger og strømninger"
       prev={{ to: "/tema/coriolis", label: "Forrige: Coriolis" }}
       next={{ to: "/tema/klima", label: "Neste: Klima" }}
-      kilder={KILDER.havstrommer}
+      kilder={HAVSTROMMER_KILDER}
       lead={CHAPTER_INGRESS["havstrommer"]}
       posterSlug="havstrommer"
       post={post}

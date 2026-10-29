@@ -26,5 +26,7 @@ export const FIGUR_BESTILLINGER: Record<string, string> = {
   FigNaturligTidsskalaer: "Naturlige klimapådriv på tidsskalaer fra 1 år til milliarder av år (logaritmisk akse)",
   FigSolflekker: "Årlig internasjonalt solflekktall (SILSO) fra 1700, med Maunder-minimum markert",
   FigTektonikkKarbon: "Hypotesen om Himalaya, forvitring og CO₂ som kjede, med tilbakekoblinger",
+  FigHavbunnenProfil: "Havbunnens landskap: sokkel, skråning, kontinentalfot, dyphavsslette, midthavsrygg og dyphavsgrav, med dyp",
+  FigVannmasserAtlanterhavet: "Skjematisk dybdesnitt av vannmasser i Atlanterhavet (Talley, 2019)",
   FigNaturligVsMenneskelig: "IPCC AR6: bidrag til global overflatetemperatur 1850–1900 til 2010–2019, menneskeskapt mot naturlig",
 };

@@ -19,4 +19,11 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     slug: "kryosfaeren",
     stale: ["Snø kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer"],
   },
+  {
+    // Havstrømmer (T5): havbunn og verdenshav, sjøvann, termoklin/halokline, vannmasser i Atlanterhavet, AMV, plast i havvirvlene.
+    // Innledningen er omskrevet, og nye Sjekk-bokser (7–10) og begreper er lagt inn.
+    flag: "havstrommer-pakke-b-2026-10-29",
+    slug: "havstrommer",
+    stale: ["er forenklede modeller av dem."],
+  },
 ];

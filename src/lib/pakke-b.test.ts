@@ -150,4 +150,20 @@ describe("Pakke B: nye kapitler", () => {
       if (/^\d/.test(m[1]!)) assert.ok(md.includes(`${forfatter}`), forfatter);
     }
   });
+
+  it("tilleggene til havstrømkapittelet er sitert i teksten", () => {
+    const md = read("posts/havstrommer.md");
+    for (const n of [7, 8, 9, 10]) {
+      assert.ok(md.includes(`SjekkHavstrommer${n}`), `SjekkHavstrommer${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Havstrommer${n}`], `Havstrommer${n}`);
+    }
+    assert.equal(md.includes("termoklinen"), false);
+    for (const kilde of KILDER_B_TILLEGG.havstrommer ?? []) {
+      const m = kilde.prefix.match(/\((u\.å\.-[a-z]|\d{4}[a-z]?)/) ?? kilde.prefix.match(/\((\d{4})\)/);
+      assert.ok(m, kilde.prefix);
+      const forfatter = kilde.prefix.split(/[,.(]/)[0]!.split(" ")[0]!;
+      assert.ok(md.includes(m[1]!), kilde.prefix);
+      if (/^\d/.test(m[1]!)) assert.ok(md.includes(`${forfatter}`), forfatter);
+    }
+  });
 });
