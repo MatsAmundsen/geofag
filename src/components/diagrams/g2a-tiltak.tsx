@@ -44,7 +44,7 @@ export function TiltaksstigeFigur() {
       title="Tiltak sektor for sektor og kostnadstrappen"
       desc="Oversikt over IPCCs tiltak sektor for sektor. For å holde 1,5 grader må utslippene ned 43 prosent innen 2030 og 84 prosent innen 2050 sammenlignet med 2019, da utslippene var 59 milliarder tonn CO₂-ekvivalenter. Energi: i 2050 er bruken av kull, olje og gass uten karbonfangst omtrent 95, 60 og 45 prosent lavere enn i 2019, og fra 2010 til 2019 falt enhetskostnadene for solenergi med 85 prosent, vindenergi med 55 prosent og litiumionbatterier med 85 prosent. Transport: elektriske kjøretøy, biodrivstoff og hydrogen i noen deler. Industri og bygg: elektrifisering og sirkulær materialbruk, og 5 til 30 prosent av utslippene fra sluttbrukersektorene kan unngås innen 2050. Arealbruk: 8 til 14 milliarder tonn CO₂-ekvivalenter i året til under 100 dollar per tonn. Etterspørsel: 40 til 70 prosent lavere utslipp i 2050 enn med politikken vedtatt til 2020. Kostnadstrapp: tiltak under 100 dollar per tonn kan kutte minst halvparten av 2019-nivået innen 2030, og mer enn halvparten av dette koster under 20 dollar per tonn."
       heading="Tiltak sektor for sektor"
-      caption={`Tallene gjelder modellerte baner som holder 1,5 °C. Lengden på stolpene viser prosentene. USD er amerikanske dollar. Kilde: IPCC (2022).`}
+      caption={`Skjematisk, ikke i målestokk. Tallene gjelder modellerte baner som holder 1,5 °C. Lengden på stolpene viser prosentene. USD er amerikanske dollar. Kilde: IPCC (2022).`}
       narrow={{ w: 300, h: 1772 }}
       wide={{ w: 720, h: 812 }}
     >
@@ -180,7 +180,7 @@ export function CdrSkjemaFigur() {
   return (
     <G2Figur
       title="CCS og CDR: to ulike måter å håndtere CO₂ på"
-      desc="Skjema som skiller karbonfangst og lagring, CCS, fra karbonfjerning, CDR. CCS fanger CO₂ ved et utslippspunkt, for eksempel et sementverk, og lagrer den under bakken. Det hindrer nye utslipp, men tar ikke CO₂ ut av lufta. Eksemplet er Northern Lights: CO₂ fra sementfabrikken i Brevik fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 kilometer til et reservoar 2 600 meter under havbunnen, med en kapasitet på 1,5 millioner tonn CO₂ i året i første trinn. Norske utslipp er over 40 millioner tonn CO₂-ekvivalenter i året. CDR tar CO₂ ut av lufta. Skogplanting og jordkarbon koster 45 til 100 dollar per tonn for jordkarbon og lagrer i tiår til århundrer, og kan reverseres av brann, sykdom og endret klima. BECCS fjerner 30 til 780 milliarder tonn CO₂ i modellerte 1,5-gradersbaner for 2020 til 2100. DACCS koster 100 til 300 dollar per tonn, lagrer geologisk i ti tusen år eller mer og fjerner 0 til 310 milliarder tonn CO₂ i de samme banene. CDR kan ikke erstatte kutt i utslipp."
+      desc="Skjema som skiller karbonfangst og lagring, CCS, fra karbonfjerning, CDR. CCS fanger CO₂ ved et utslippspunkt, for eksempel et sementverk, og lagrer den under bakken. Det hindrer nye utslipp, men tar ikke CO₂ ut av lufta. Eksemplet er Northern Lights: CO₂ fra sementfabrikken i Brevik fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 kilometer til et reservoar 2600 meter under havbunnen, med en kapasitet på 1,5 millioner tonn CO₂ i året i første trinn. Norske utslipp er over 40 millioner tonn CO₂-ekvivalenter i året. CDR tar CO₂ ut av lufta. Skogplanting og jordkarbon koster 45 til 100 dollar per tonn for jordkarbon og lagrer i tiår til århundrer, og kan reverseres av brann, sykdom og endret klima. BECCS fjerner 30 til 780 milliarder tonn CO₂ i modellerte 1,5-gradersbaner for 2020 til 2100. DACCS koster 100 til 300 dollar per tonn, lagrer geologisk i ti tusen år eller mer og fjerner 0 til 310 milliarder tonn CO₂ i de samme banene. CDR kan ikke erstatte kutt i utslipp."
       heading="CCS eller CDR"
       caption="Skjematisk, ikke i målestokk. BECCS er bioenergi med fangst og lagring, og DACCS er direkte fangst fra luft med lagring. Mengdene gjelder modellerte baner som holder 1,5 °C, 2020–2100. Kilder: IPCC (2022) og Equinor (2025). Norske utslipp: SSB (2026)."
       narrow={{ w: 300, h: 1240 }}
@@ -242,7 +242,7 @@ export function CdrSkjemaFigur() {
             <Flow d={`M${ccsX + 14 + bw + 5} ${y1 + 388} L${ccsX + pw - 14 - bw - 7} ${y1 + 388}`} color={C.sand} marker={mk.sand} w={2.4} />
             <Steg x={ccsX + pw - 14 - bw} y={y1 + 430} w={bw} h={48} navn="Rørledning" d={["100 km"]} />
             <Flow d={`M${ccsX + pw - 14 - bw / 2} ${y1 + 414} L${ccsX + pw - 14 - bw / 2} ${y1 + 428}`} color={C.sand} marker={mk.sand} w={2.4} />
-            <Steg x={ccsX + 14} y={y1 + 430} w={bw} h={66} navn="Reservoar" d={[`2${NB}600 m under`, "havbunnen"]} />
+            <Steg x={ccsX + 14} y={y1 + 430} w={bw} h={66} navn="Reservoar" d={["2600 m under", "havbunnen"]} />
             <Flow d={`M${ccsX + pw - 14 - bw - 5} ${y1 + 454} L${ccsX + 14 + bw + 7} ${y1 + 454}`} color={C.sand} marker={mk.sand} w={2.4} />
             <T x={ccsX + 14} y={y1 + 516} lines={["1,5 millioner tonn CO₂ i året (første trinn).", "Norske utslipp: over 40 Mt i året."]} size={14} fill={C.fg} lh={18} />
             {!bred && null}
