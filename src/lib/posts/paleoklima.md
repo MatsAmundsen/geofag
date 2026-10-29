@@ -158,6 +158,40 @@ Under avsmeltingen etter siste istid ble det avsatt lagdelt leire i ferskvann og
 SjekkPaleo4
 ```
 
+## Hva kan dryppstein og bergarter fortelle?
+
+Iskjerner og havbunnssedimenter er ikke de eneste arkivene. På fastlandet finnes det spor både i grotter og i bergartene selv.
+
+### Dryppstein
+
+*Dryppstein*, eller *speleotemer*, er mineralavsetninger som dannes av grunnvann i huler. De omfatter stalagmitter og stalaktitter. Mange har årlige lag eller inneholder stoffer som kan dateres med radioaktivitet. Tykkelsen på lagene og isotopene i kalken brukes til å finne ut hvordan klimaet var (NOAA NCEI, u.å.).
+
+- **Alderen** bestemmes med uran–thorium-metoden (U–Th). Uran følger med vannet inn i kalken, men det gjør ikke thorium. Thorium som senere finnes i dryppsteinen, er derfor dannet ved radioaktiv nedbryting av uran, og forholdet mellom dem gir alderen. Metoden gjør det mulig å tidfeste klimaendringer svært presist (Wendt mfl., 2021). Den brukes for aldre opp til ca. 500 000 år (Nehme og Deininger, 2017).
+- **δ¹⁸O** i kalken avhenger mest av δ¹⁸O i dryppvannet, som igjen henger sammen med nedbøren. Nedbørens δ¹⁸O styres av luftsirkulasjon, banen nedbøren har fulgt, nedbørmengde og årstid (Nehme og Deininger, 2017). Tolkningen er derfor lokal.
+- **δ¹³C** i kalken styres lokalt av hvor mye plantevekst det er i jorda over grotta, og hvilken type vegetasjon det er. Det bestemmer hvor mye CO₂ det er i jorda (Nehme og Deininger, 2017). Det er ¹³C, og ikke «¹³O». Oksygen og karbon er to ulike grunnstoffer.
+
+```widget
+SjekkPaleo7
+```
+
+> **Husk:** Dryppstein er et lokalt arkiv. Én grotte viser klimaet rundt den grotta, ikke hele jorda. Forskerne sammenligner mange grotter og andre arkiver.
+
+### Bergarter som viser klima: evaporitt, tillitt og kull
+
+Lenger tilbake enn iskjerner og sedimenter må forskerne lese selve bergartene. Noen bergarter kan bare dannes under bestemte klimaforhold, og kalles *klimafølsomme bergarter* (Cao mfl., 2019).
+
+| Bergart | Hvordan den dannes | Hva den tyder på |
+| --- | --- | --- |
+| **Evaporitt** (steinsalt, gips) | Salter felles ut når sjøvann eller vann i innsjøer uten avløp fordamper | Tørt og varmt klima (Selbekk, 2025) |
+| **Tillitt** | Forsteinet morene, som er avsatt av bre | Istid (Rüther, 2026) |
+| **Kull** | Plantemateriale i myrer og sumper som er blitt begravd og omdannet | Frodig vegetasjon i et fuktig klima (Manum mfl., 2026) |
+
+Slike bergarter kan brukes sammen med kart over hvor kontinentene lå, siden kontinentene har flyttet seg. Tillitt fra senkarbon i Sør-Afrika, Sør-Amerika og Antarktis ble avsatt på superkontinentet Gondwana for omtrent 320–300 millioner år siden (Rüther, 2026). Tillitt fra senprekambrium i Norge finnes ved Moelv, i Rendalen og innerst i Varangerfjorden (Rüther, 2026). Evaporitter og kull viser hvordan nedbør og fordampning var fordelt. Forskerne ser at hvor disse bergartene ligger i forhold til breddegrad, endrer seg gjennom jordas historie, blant annet på grunn av platebevegelser og hvor kaldt eller varmt klimaet var (Cao mfl., 2019).
+
+```widget
+SjekkPaleo8
+```
+
 ## Hva forteller pollen, radioaktivt karbon og årringer?
 
 Hvordan så landskapet i Norge ut da isen trakk seg tilbake? Svaret ligger i myrer, innsjøer og gammelt tømmer.
@@ -204,6 +238,20 @@ SjekkPaleo5
 ```widget
 PaleoProxyEksempel
 ```
+
+## Hvordan har jordas temperatur vært de siste 485 millioner årene?
+
+Kvartær er bare de siste 2,58 millioner årene. *Fanerozoikum* er eonen vi lever i, og den begynte for ca. 539 millioner år siden (Cohen mfl., 2026). For å se mer av bildet har forskere satt sammen *PhanDA*, en rekonstruksjon av global middeltemperatur de siste 485 millioner årene (Judd mfl., 2024). Den bygger på proxydata fra mange arkiver, kombinert med klimamodeller. Resultatene er:
+
+- Global middeltemperatur har variert mellom omtrent 11 °C og 36 °C (Judd mfl., 2024).
+- Jorda har vært mer av tiden i varmere enn i kaldere klima (Judd mfl., 2024).
+- CO₂ i lufta og global temperatur henger sterkt sammen. Forskerne konkluderer med at CO₂ har vært den viktigste styrende faktoren for temperaturen gjennom fanerozoikum (Judd mfl., 2024).
+
+```widget
+FanerozoikumTemperaturFigur
+```
+
+Fanerozoikum viser at klimaet kan være svært forskjellig fra i dag. Men tidsskalaene er veldig forskjellige: de store svingningene tok millioner av år, mens dagens oppvarming har skjedd i løpet av noen få tiår (IPCC, 2021).
 
 ## Hva viser brå klimaendringer og PETM om framtidens klima?
 
@@ -262,7 +310,7 @@ SjekkPaleo6
 
 ## Viktige begreper
 
-**Proxy:** Et spor i et naturlig arkiv, for eksempel isotoper, kalkskall, pollen eller årringer, som henger sammen med fortidens klima.
+**Proxy:** Et spor i et naturlig arkiv, for eksempel isotoper, kalkskall, pollen, årringer eller dryppstein, som henger sammen med fortidens klima.
 
 **Iskjerne:** En borekjerne fra en innlandsis, med årlige lag og luftbobler som er prøver av fortidens luft.
 
@@ -281,6 +329,18 @@ SjekkPaleo6
 **Yngre dryas:** En brå kald periode for ca. 12 800–11 700 år siden. Den var trolig utløst av at smeltevann svekket AMOC kraftig. Hvor smeltevannet kom fra, er omdiskutert. Raet ble avsatt da.
 
 **PETM:** Paleocen-eocen-temperaturmaksimum for ca. 56 millioner år siden. Den globale temperaturen steg ca. 5 °C etter et stort utslipp av karbon.
+
+**Dryppstein (speleotem):** Kalkavsetning i en hule, for eksempel stalagmitt. Lagene og isotopene brukes som klimaarkiv.
+
+**U–Th-datering:** Aldersbestemmelse med radioaktiv nedbryting av uran til thorium. Brukes på dryppstein.
+
+**δ¹³C:** Forholdet mellom ¹³C og ¹²C. I dryppstein sier det noe om vegetasjon og jordfuktighet.
+
+**Evaporitt:** Bergart av salter som er felt ut ved fordamping. Tyder på tørt og varmt klima.
+
+**Tillitt:** Forsteinet morene. Tyder på istid.
+
+**Fanerozoikum:** Eonen vi lever i. Den begynte for ca. 539 millioner år siden.
 
 **Klimafølsomhet (ECS):** Hvor mye den globale temperaturen til slutt stiger når CO₂ i lufta dobles. Det beste anslaget til FNs klimapanel er 3 °C.
 

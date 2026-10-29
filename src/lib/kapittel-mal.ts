@@ -138,6 +138,7 @@ import {
   QUIZ_SJEKK_PALEO_5,
   QUIZ_SJEKK_PALEO_6,
 } from "./poster-quizzes.ts";
+import { SAMMENDRAG_PAKKE_A, SJEKK_PAKKE_A } from "./poster-quizzes-pakke-a.ts";
 
 /** Nøkkelen blir widget-id-en med prefikset «Sjekk», f.eks. `Landformer1` → `SjekkLandformer1`. */
 export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
@@ -268,6 +269,7 @@ export const SJEKK_DEG_SELV: Record<string, QuizQuestion[]> = {
   Paleo4: QUIZ_SJEKK_PALEO_4,
   Paleo5: QUIZ_SJEKK_PALEO_5,
   Paleo6: QUIZ_SJEKK_PALEO_6,
+  ...SJEKK_PAKKE_A,
 };
 
 /** Nøkkelen blir widget-id-en med prefikset «Sammendrag». 4–6 punkter med hele setninger. */
@@ -319,8 +321,9 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "Vind, tidevann, bølger og temperaturforskjeller i havet er energiressurser fra hav og atmosfære. Vindkraft gjør vind om til elektrisitet i et vindkraftverk.",
     "Vindkraft på land er fornybar, men omstridt fordi den legger beslag på store områder og kan ramme reindrift, slik Fosen-saken viser.",
     "Havvind kan stå på sokkelen eller flyte. Kina har mest havvind, fulgt av Storbritannia og Tyskland.",
-    "Hywind Tampen dekker om lag 35 prosent av strømbehovet på Snorre og Gullfaks og kutter om lag 200 000 tonn CO₂ i året, men plattformene er ikke utslippsfrie.",
+    "Hywind Tampen (94,6 MW) antas å dekke om lag 35 prosent av strømbehovet på Snorre og Gullfaks og ventes å kutte ca. 200 000 tonn CO₂ i året, men plattformene er ikke utslippsfrie.",
     "Tidevann kommer av månens og solas tiltrekning. Bølgekraft har stort potensial, men er teknisk krevende, og havvarmekraft passer best i tropene.",
+    "Effektkurven viser at en turbin starter ved 3 m/s, yter mest ved cirka 13 m/s og stopper ved 25 m/s. Solenergi er opphavet til vind og bølger, men ikke til tidevann. Saltkraft ble prøvd på Tofte, men Statkraft avsluttet satsingen i 2013. Bærekraft vurderes i tre dimensjoner: miljø, sosial og økonomi.",
   ],
   Isbre: [
     "En isbre er is av sammenpresset snø som siger nedover under sin egen tyngde. Næringsområdet øverst og tæringsområdet nederst avgjør massebalansen.",
@@ -515,6 +518,7 @@ export const SAMMENDRAG: Record<string, readonly string[]> = {
     "IOD er et eget mønster, men kan opptre samtidig med El Niño eller La Niña. Sammen kan de forsterke tørke eller regn i Australia.",
     "Jetstrømmene følger temperaturforskjellene i lufta. En skarp havfront, som sør i Det indiske hav, kan forsterke polarjeten, men havet styrer den ikke alene.",
   ],
+  ...SAMMENDRAG_PAKKE_A,
 };
 
 export function sjekkWidgetIds(): string[] {

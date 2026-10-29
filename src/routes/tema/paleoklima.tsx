@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
+import { KILDER_G2_A, slaaSammenKilder } from "@/lib/kilder-g2-a";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
 
@@ -34,7 +35,7 @@ function PaleoklimaPage() {
       bannerAlt="Lagdelt blå breis med bølgende bånd av gammel is"
       prev={{ to: "/tema/numeriske-modeller", label: "Forrige: Numeriske modeller" }}
       next={{ to: "/tema/milankovitch", label: "Neste: Istider" }}
-      kilder={KILDER.paleoklima}
+      kilder={slaaSammenKilder(KILDER.paleoklima, KILDER_G2_A.paleoklimaT2)}
       posterSlug="paleoklima"
       post={post}
       bodyMode="poster"

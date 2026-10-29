@@ -52,6 +52,10 @@ export const NAV_GF2 = [
   { to: "/tema/vaerkatastrofer", label: "Farer" },
   { to: "/tema/tilpasning", label: "Tilpasning" },
   { to: "/tema/energi-hav-luft", label: "Energi" },
+  { to: "/tema/energi-regning", label: "Regning" },
+  { to: "/tema/klimaendring-menneskeskapt", label: "Menneske" },
+  { to: "/tema/klimatiltak", label: "Tiltak" },
+  { to: "/tema/klimaforskning", label: "Forskning" },
   { to: "/tema/felt-hav-luft-is", label: "Felt" },
   { to: "/poster", label: "Poster" },
 ] as const;
@@ -235,6 +239,46 @@ export const GF2_THEMES = [
     alt: "Passatskyer over hav — vinden som energikilde, før den blir kilowatt",
     blurb:
       "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/energi-regning",
+    title: "Å regne med energi",
+    kicker: "Ressurser",
+    image: "/images/fig-innstraling.jpg",
+    alt: "Jorda sett fra verdensrommet med sollys inn fra siden — energien alle ressursene bygger på",
+    blurb:
+      "Fra joule til terawattime, fra effekt til årsproduksjon. Regn brukstid og kapasitetsfaktor for Fosen Vind og Furuseth, og se hvordan kraftmarkedet og prisområdene virker.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klimaendring-menneskeskapt",
+    title: "Klimaendring og mennesket",
+    kicker: "Menneskeskapt klimapåvirkning",
+    image: "/images/fig-drivhus.jpg",
+    alt: "Jordas kant sett fra bane, med lys fra byer på nattsiden",
+    blurb:
+      "Karbonkretsløpet, drivhusgasser og GWP, utslipp, karbonbudsjett, SSP-scenarier, Parisavtalen og norske utslipp.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klimatiltak",
+    title: "Klimatiltak",
+    kicker: "Redusere utslipp",
+    image: "/images/banner-vind.jpg",
+    alt: "Jordas atmosfære med skyer og den tynne blå kanten mot rommet",
+    blurb:
+      "Hva som må kuttes, tiltak i energi, arealbruk og etterspørsel, virkemidler, rettferdighet, CCS og CDR.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/klimaforskning",
+    title: "Hvordan vet vi det? Klimaforskning",
+    kicker: "Observasjoner og IPCC",
+    image: "/images/banner-klima.jpg",
+    alt: "Iskant ved en stor isbre mot åpent polarhav",
+    blurb:
+      "IPCC og usikkerhetsspråk, målinger fra stasjoner, Argo, satellitter og droner, proxyer og fingeravtrykk.",
     status: "klar" as const,
   },
   {
