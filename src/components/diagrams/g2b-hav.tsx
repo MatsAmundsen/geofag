@@ -22,7 +22,7 @@ export function FigHavbunnenProfil() {
       title="Havbunnens landskap"
       desc="Skjematisk tverrsnitt av havbunnen fra kyst til midthavsrygg og dyphavsgrav, med dybdeskala fra 0 til 11 000 meter. Kontinentalsokkelen har ytterkant i gjennomsnitt 130 meter. Kontinentalskråningen går ned til omtrent 2 000 meter. Kontinentalfoten går ned til omtrent 4 000 meter. Dyphavssletten ligger på 4 000 til 6 000 meter og dekker nesten 30 prosent av jordoverflaten. Midthavsryggen dekker omtrent 23 prosent av jordoverflaten og er stedet der ny basaltisk skorpe dannes. Dyphavsgraven går ned til omtrent 11 000 meter. Gjennomsnittsdypet for hele havet er 3 682 meter og Challenger Deep omtrent 10 935 meter."
       heading="Havbunnens landskap"
-      caption="Skjematisk tverrsnitt. Dybdeskalaen er loddrett og fast, men avstandene sidelengs og formene er forenklet og ikke i målestokk. Dybdene er forenklet. Toppen av midthavsryggen er ikke tegnet i målestokk. Kilder: Store norske leksikon (u.å.-b, snl.no/havbunnen); NOAA (u.å.-d, oceanservice.noaa.gov/facts/oceandepth.html)."
+      caption="Skjematisk tverrsnitt. Dybdeskalaen er loddrett og fast, men dybdene er forenklet, og avstandene sidelengs og formene er ikke i målestokk. Toppen av midthavsryggen er ikke tegnet i målestokk. Kilder: Store norske leksikon (u.å.-b, snl.no/havbunnen); NOAA (u.å.-d, oceanservice.noaa.gov/facts/oceandepth.html)."
       narrow={{ w: 300, h: 848 }}
       wide={{ w: 720, h: 452 }}
       animated

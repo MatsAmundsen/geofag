@@ -190,7 +190,7 @@ export function FigSolflekker() {
       desc="Skjematisk linjediagram uten målte data. Bak et skravert bånd for Maunder-minimum, omtrent 1645 til 1715, ligger kurven lavt og flatt. Etter minimumet kommer åtte like, idealiserte solsykluser, hver på omtrent 11 år, med en markert topp. I virkeligheten varierer lengden mellom 8 og 14 år, og høyden varierer fra syklus til syklus. Aksen viser bare færre og flere solflekker, uten tall."
       heading="Solflekker: idealisert syklus og Maunder-minimum"
       caption="Skjematisk figur: en idealisert solsyklus på omtrent 11 år, ikke målte data. Maunder-minimum omtrent 1645–1715 etter Owens mfl. (2017)."
-      narrow={{ w: 300, h: 524 }}
+      narrow={{ w: 300, h: 468 }}
       wide={{ w: 720, h: 350 }}
       animated
       name="Solflekker"

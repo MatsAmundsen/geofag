@@ -284,7 +284,7 @@ export function FigTilpasningsgrenser() {
       desc="Skala for global oppvarming med tre markeringer. Hard grense betyr at ingen tilpasningstiltak kan hindre uakseptabel risiko. Myk grense betyr at tiltak finnes kanskje, men ikke er tilgjengelige nå. Framskrivninger. Over 1,5 grader: potensielt harde grenser, begrensede ferskvannsressurser for små øystater og regioner avhengige av smeltevann fra breer og snø, middels tillit. Ved 2 grader: myke grenser for flere viktige matvekster, særlig i tropene, høy tillit. Ved 3 grader: myke grenser for noen tiltak i vannforvaltning i mange regioner og harde grenser i deler av Europa, middels tillit."
       heading="Flere tilpasningsgrenser nås når det blir varmere"
       caption="Skalaen er forenklet: markeringene viser 1,5, 2 og 3 °C global oppvarming, ikke et fullstendig sett av grenser. Utsagnene er framskrivninger, ikke observasjoner. IPCC angir tillit (middels eller høy), ikke sannsynlighet, for dem. Kilde: IPCC (2022), Summary for Policymakers, C.3.4; Möller mfl. (2022)."
-      narrow={{ w: 300, h: 835 }}
+      narrow={{ w: 300, h: 864 }}
       wide={{ w: 720, h: 470 }}
       animated
       name="Tilpasningsgrenser"
