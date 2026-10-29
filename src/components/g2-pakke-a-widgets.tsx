@@ -1,4 +1,6 @@
 import type { JSX } from "react";
+import { Quiz } from "@/components/quiz";
+import { QUIZ_ENERGI_REGNING } from "@/lib/poster-quizzes-pakke-a";
 
 /**
  * Bestilte figurer til Geofag 2 pakke A. Hver nøkkel er widget-id-en i markdown.
@@ -27,6 +29,26 @@ export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
     fil: "src/components/diagrams/baerekraft-tre-figur.tsx",
     vis: "Tre dimensjoner av bærekraft med eksempler fra energikapitlet",
   },
+  EnhetstrappFigur: {
+    fil: "src/components/diagrams/enhetstrapp-figur.tsx",
+    vis: "Enhetstrapp: Wh, kWh, MWh, GWh, TWh i faktor 1000, med J og Sm³ o.e. som sidekart",
+  },
+  BrukstidFigur: {
+    fil: "src/components/diagrams/brukstid-figur.tsx",
+    vis: "Brukstid og kapasitetsfaktor: Fosen Vind 3217 t / 36,7 %, Furuseth 914 t / 10,4 %, SNL-eksempel 5000 t / 57,1 %, maks 8760 t",
+  },
+  KraftsystemetNorgeFigur: {
+    fil: "src/components/diagrams/kraftsystemet-norge-figur.tsx",
+    vis: "Norsk kraftsystem: vannkraft, vind, sol, varme (Energifakta Norge), magasin 87 TWh, regulerbar i overkant av 75 prosent",
+  },
+  PrisomraderFigur: {
+    fil: "src/components/diagrams/prisomrader-figur.tsx",
+    vis: "Kart over budområdene NO1 til NO5 med flaskehalser og utenlandsforbindelser",
+  },
+  EnergiRegningKalkulator: {
+    fil: "src/components/diagrams/energi-regning-kalkulator.tsx",
+    vis: "Kalkulator: effekt, tid, energi, brukstid og kapasitetsfaktor",
+  },
 };
 
 export function FigurBestilt({ id }: { id: string }): JSX.Element {
@@ -50,6 +72,11 @@ export function FigurBestilt({ id }: { id: string }): JSX.Element {
   );
 }
 
-export const G2_PAKKE_A_WIDGETS: Record<string, () => JSX.Element> = Object.fromEntries(
-  Object.keys(FIGURER_BESTILT_A).map((id) => [id, () => <FigurBestilt id={id} />]),
-);
+export const G2_PAKKE_A_WIDGETS: Record<string, () => JSX.Element> = {
+  ...Object.fromEntries(
+    Object.keys(FIGURER_BESTILT_A).map((id) => [id, () => <FigurBestilt id={id} />]),
+  ),
+  QuizEnergiRegning: () => (
+    <Quiz questions={QUIZ_ENERGI_REGNING} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+};

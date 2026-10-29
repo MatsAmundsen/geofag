@@ -29,6 +29,7 @@ export const CHAPTER_INGRESS: Record<string, string> = {
   "vaerkatastrofer": "Orkan som vindstyrke er sterkere enn 32,6 m/s. En tropisk orkan er et lavtrykk med middelvind på minst 119 km/t. Stormflo er særlig høy vannstand langs kysten i forbindelse med storm.",
   "tilpasning": "Klimaendringene får konsekvenser for enkeltmennesker, samfunn og økosystem. Vi kan svare på to måter: ved å kutte utslipp og ved å tilpasse oss. Risikoen oppstår i samspillet mellom fare, eksponering og sårbarhet, og tilpasning handler om å gjøre risikoen mindre.",
   "energi-hav-luft": "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola, ikke av vinden.",
+  "energi-regning": "Effekt sier hvor raskt energi brukes, energi er effekt ganger tid. Brukstid og kapasitetsfaktor viser hvor godt et anlegg utnyttes, og prisen på strøm settes per budområde.",
   "felt-hav-luft-is": "Feltarbeid i geofag 2 er å planlegge, samle inn, bearbeide, tolke og presentere data fra hav, luft eller is. Varselet er et hjelpemiddel, og egne vurderinger hører med.",
   "oversikt": "Vær er det som skjer i dag. Klima er mønsteret over tiår. Atmosfæren, havet, isen, landoverflaten og livet henger sammen, og mennesket har varmet jorda med ca. 1,1 °C (2011–2020 mot 1850–1900).",
   "enso": "ENSO er den naturlige svingningen i det tropiske Stillehavet. El Niño er den varme fasen og La Niña den kalde. Den flytter vind og regn, også langt utenfor Stillehavet.",

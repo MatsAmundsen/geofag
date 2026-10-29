@@ -74,7 +74,10 @@ export const MAAL_KART: MaalKart[] = [
   },
   {
     maal: "Drøfte utnyttelse av energiressurser fra hav og atmosfære.",
-    chapters: [{ to: "/tema/energi-hav-luft", label: "Energi" }],
+    chapters: [
+      { to: "/tema/energi-hav-luft", label: "Energi" },
+      { to: "/tema/energi-regning", label: "Regning" },
+    ],
     exams: [
       { slug: "eksempel", label: "Eksempel", tasks: "23–25 (havvind, ufullstendig)" },
       { slug: "baklengs", label: "Øv baklengs", tasks: "7" },

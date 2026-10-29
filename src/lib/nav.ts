@@ -52,6 +52,7 @@ export const NAV_GF2 = [
   { to: "/tema/vaerkatastrofer", label: "Farer" },
   { to: "/tema/tilpasning", label: "Tilpasning" },
   { to: "/tema/energi-hav-luft", label: "Energi" },
+  { to: "/tema/energi-regning", label: "Regning" },
   { to: "/tema/felt-hav-luft-is", label: "Felt" },
   { to: "/poster", label: "Poster" },
 ] as const;
@@ -235,6 +236,16 @@ export const GF2_THEMES = [
     alt: "Passatskyer over hav — vinden som energikilde, før den blir kilowatt",
     blurb:
       "Vindkraft gjør vind om til elektrisk energi. Havvind kan stå på sokkelen eller flyte. Tidevann kommer av månen og sola.",
+    status: "klar" as const,
+  },
+  {
+    to: "/tema/energi-regning",
+    title: "Å regne med energi",
+    kicker: "Ressurser",
+    image: "/images/fig-innstraling.jpg",
+    alt: "Jorda sett fra verdensrommet med sollys inn fra siden — energien alle ressursene bygger på",
+    blurb:
+      "Fra joule til terawattime, fra effekt til årsproduksjon. Regn brukstid og kapasitetsfaktor for Fosen Vind og Furuseth, og se hvordan kraftmarkedet og prisområdene virker.",
     status: "klar" as const,
   },
   {

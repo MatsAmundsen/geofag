@@ -26,6 +26,10 @@ export const BANNER_BY_PATH: Record<string, { src: string; alt: string }> = {
     src: "/images/fig-passat.jpg",
     alt: "Passatskyer over hav — vinden som energikilde, før den blir kilowatt",
   },
+  "/tema/energi-regning": {
+    src: "/images/fig-innstraling.jpg",
+    alt: "Jorda sett fra verdensrommet med sollys inn fra siden — energien alle ressursene bygger på",
+  },
   "/tema/felt-hav-luft-is": {
     src: "/images/fig-hoytrykk-fjell.jpg",
     alt: "Norsk fjell under klarvær — felt i luft og is, ikke bergartssnitt",
