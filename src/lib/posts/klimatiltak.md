@@ -89,7 +89,7 @@ Noen utslipp er svært vanskelige å unngå, for eksempel fra industriprosesser,
 - **CCS** fanger CO₂ fra et utslippspunkt, for eksempel et sementverk, og lagrer den under bakken. Det hindrer nye utslipp, men tar ikke CO₂ ut av lufta.
 - **CDR** tar CO₂ ut av lufta og lagrer den varig, for eksempel ved skogplanting, jordkarbon, BECCS (bioenergi med fangst og lagring) eller DACCS (direkte fangst fra luft med lagring) (IPCC, 2022).
 
-I Norge ble de første CO₂-mengdene fra sementfabrikken til Heidelberg Materials i Brevik lagret i august 2025. Karbondioksid fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 km til et reservoar 2600 meter under havbunnen i Nordsjøen. Første trinn av Northern Lights har en kapasitet på 1,5 millioner tonn CO₂ i året (Equinor, 2025). Til sammenligning er norske utslipp over 40 millioner tonn CO₂e i året (SSB, 2026).
+I Norge ble de første CO₂-mengdene fra sementfabrikken til Heidelberg Materials i Brevik lagret i august 2025. Karbondioksid fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 km til et reservoar 2 600 meter under havbunnen i Nordsjøen. Første trinn av Northern Lights har en kapasitet på 1,5 millioner tonn CO₂ i året (Equinor, 2025). Til sammenligning er norske utslipp over 40 millioner tonn CO₂e i året (SSB, 2026).
 
 I modellerte baner som holder 1,5 °C, er samlet fjerning fra BECCS 30–780 Gt CO₂ og fra DACCS 0–310 Gt CO₂ i perioden 2020–2100 (IPCC, 2022). Metodene er svært forskjellige (IPCC, 2022):
 
