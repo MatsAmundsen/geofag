@@ -27,7 +27,7 @@ export function FanerozoikumTemperaturFigur() {
       title="Global middeltemperatur de siste 485 millioner årene"
       desc="Diagram over global middeltemperatur fra ordovicium for cirka 487 millioner år siden til i dag, fra rekonstruksjonen PhanDA. Tiden går fra venstre mot høyre i det brede diagrammet og ovenfra og ned i det smale. Medianen varierer mellom omtrent 11 og 36 grader, med et usikkerhetsbånd rundt. Under aksen står geologiske perioder fra ordovicium til kvartær etter den internasjonale stratigrafiske kartet. Jorda har vært mer av tiden i varmere enn i kaldere klima, og CO₂ har vært den viktigste styrende faktoren. De store svingningene tok millioner av år, mens dagens oppvarming har skjedd i løpet av noen få tiår."
       heading="Temperatur gjennom fanerozoikum"
-      caption="Median og 5–95 %-intervall per tidsrom i PhanDA-rekonstruksjonen, tegnet som trinn. Perioder og grenser er fra ICS-kartet. Fanerozoikum begynte for ca. 539 millioner år siden, men PhanDA-dataene i figuren starter for ca. 487 millioner år siden. Kilder: Judd mfl. (2024) og Cohen mfl. (2026)."
+      caption="Median og 5–95 %-intervall per tidsrom i PhanDA-rekonstruksjonen, tegnet som trinn. Perioder og grenser er fra ICS-kartet. Fanerozoikum begynte for ca. 539 millioner år siden, men kurven starter ved 486,85 Ma (millioner år siden), der PhanDA-dataene begynner. Kilder: Judd mfl. (2024) og Cohen mfl. (2026)."
       narrow={{ w: 300, h: 1176 }}
       wide={{ w: 720, h: 696 }}
     >

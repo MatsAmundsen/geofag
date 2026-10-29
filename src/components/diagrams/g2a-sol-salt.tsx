@@ -58,20 +58,27 @@ function Termisk({ mk }: { mk: Record<string, string> }) {
           <line x1={x - 12} y1={168} x2={x + 12} y2={162} stroke={C.fg} strokeWidth={3.4} strokeLinecap="round" />
         </g>
       ))}
-      <Flow d="M184 40 L96 150" color={G.amber} marker={mk.amber} w={2} />
-      <Flow d="M70 150 L112 92" color={G.amber} marker={mk.amber} w={2} cls="a a-flowr" />
+      <Flow d="M184 40 L96 154" color={G.amber} marker={mk.amber} w={2} />
+      <Flow d="M86 154 L112 92" color={G.amber} marker={mk.amber} w={2} cls="a a-flowr" />
       <line x1={118} y1={80} x2={118} y2={168} stroke={C.sand} strokeWidth={3} />
       <rect x={110} y={66} width={16} height={18} rx={3} fill={C.low} stroke={C.low} />
-      <Flow d="M128 72 L170 72 L170 100" color={C.warm} marker={mk.warm} w={2.4} />
-      <Turbin x={170} y={122} len={16} color={C.cold} cls="a a-spin" />
+      <Flow d="M128 72 L168 72 L168 94" color={C.warm} marker={mk.warm} w={2.4} />
+      {/* dampturbin med generator */}
+      <path d="M152 104 L152 142 L192 156 L192 90 Z" fill={G.panel2} stroke={C.cold} strokeWidth={2} strokeLinejoin="round" />
+      {[162, 172, 182].map((x) => (
+        <line key={x} x1={x} x2={x} y1={104 - (x - 152) * 0.35 + 6} y2={142 + (x - 152) * 0.45 - 6} stroke={C.cold} strokeOpacity={0.7} strokeWidth={2} />
+      ))}
+      <line x1={192} x2={204} y1={123} y2={123} stroke={C.cold} strokeWidth={3} />
+      <circle cx={216} cy={123} r={11} fill={G.panel2} stroke={C.warm} strokeWidth={2} />
+      <T x={216} y={128} lines="G" size={14} weight={700} fill={C.warm} anchor="middle" />
     </g>
   );
 }
 
 const PANELER = [
-  { id: "solvarme", navn: "Solvarme", f: C.warm, linjer: ["Passiv: bygninger utformes", "slik at sollyset varmer dem.", "Aktiv: solfangere, svarte", "flater, varmer vann eller luft."], ikon: Hus, merk: [["passiv", 54, 184], ["aktiv", 162, 184]] as [string, number, number][] },
+  { id: "solvarme", navn: "Solvarme", f: C.warm, linjer: ["Passiv: bygninger utformes", "slik at sollyset varmer dem.", "Aktiv: solfangere, svarte", "flater, varmer vann eller luft."], ikon: Hus, merk: [["passiv", 54, 184], ["aktiv", 156, 94]] as [string, number, number][] },
   { id: "solceller", navn: "Solceller", f: C.cold, linjer: ["Lys blir direkte til", "elektrisitet ved den", "fotoelektriske effekten."], ikon: Celle, merk: [["lys", 142, 62], ["strøm", 104, 196]] as [string, number, number][] },
-  { id: "termisk", navn: "Termisk solkraft", f: C.low, linjer: ["Speil samler solstrålene og", "varmer en væske som", "driver en dampturbin."], ikon: Termisk, merk: [["speil", 24, 190], ["dampturbin", 118, 206]] as [string, number, number][] },
+  { id: "termisk", navn: "Termisk solkraft", f: C.low, linjer: ["Speil samler solstrålene og", "varmer en væske som", "driver en dampturbin."], ikon: Termisk, merk: [["speil", 24, 190], ["dampturbin", 138, 178]] as [string, number, number][] },
 ];
 
 function Panel({ i, x, y, w, h, mk, s = 1 }: { i: number; x: number; y: number; w: number; h: number; mk: Record<string, string>; s?: number }) {
@@ -97,7 +104,7 @@ export function SolenergiFigur() {
   return (
     <G2Figur
       title="Tre måter å bruke solenergi på, og hvor mye sol det er"
-      desc="Tre paneler: solvarme med passiv solvarme i et hus og aktiv solvarme med solfanger og varmtvannstank, solceller som gjør lys direkte om til elektrisitet ved den fotoelektriske effekten, og termisk solkraft der speil samler solstrålene og varmer en væske som driver en dampturbin. En skala viser innstråling fra 700 til over 2200 kilowattimer per kvadratmeter og år, og at den i Nord-Europa sjelden er over 1000. Passiv solvarme antas å bidra med 3 til 4 terawattimer til oppvarming av norske bygg."
+      desc="Tre paneler: solvarme med passiv solvarme i et hus og aktiv solvarme med solfanger og varmtvannstank, solceller som gjør lys direkte om til elektrisitet ved den fotoelektriske effekten, og termisk solkraft der speil samler solstrålene og varmer en væske som driver en dampturbin med generator. Sol-pilene treffer speilene, og speilene reflekterer strålene mot toppen av tårnet. En skala viser innstråling fra 700 til over 2200 kilowattimer per kvadratmeter og år, og at den i Nord-Europa sjelden er over 1000. Passiv solvarme antas å bidra med 3 til 4 terawattimer til oppvarming av norske bygg."
       heading="Solenergi: tre bruksområder"
       caption="Skjematiske tegninger. Innstrålingen er målt i kilowattimer (kWh) per kvadratmeter og år. Kilde: Store norske leksikon (u.å.-g)."
       narrow={{ w: 300, h: 1350 }}
@@ -173,9 +180,9 @@ export function SaltkraftFigur() {
   return (
     <G2Figur
       title="Saltkraft: trykkretardert osmose mellom ferskvann og saltvann"
-      desc="Skjema med to kammer atskilt av en membran: ferskvann til venstre og saltvann til høyre. Bare vann slipper gjennom membranen, og da bygger det seg opp et overtrykk på saltvannssiden. Overtrykket driver en vannturbin som er koblet til en generator. Beregnet potensial i Norge er 12 terawattimer i året. Statkraft åpnet prototypen på Tofte i Hurum i 2009 og avsluttet satsingen 20. desember 2013."
+      desc="Skjema med to kammer atskilt av en membran: ferskvann til venstre og saltvann til høyre. Bare vann slipper gjennom membranen, og da bygger det seg opp et overtrykk på saltvannssiden. Overtrykket driver en vannturbin som er koblet til en generator. Beregnet potensial i Norge er 12 terawattimer i året. Statkraft åpnet prototypen på Tofte i Hurum i 2009 og avsluttet satsingen 20. desember 2013. Tofte-anlegget ble avviklet i 2014."
       heading="Saltkraft: strøm fra ferskvann og saltvann"
-      caption="Skjematisk tegning. Prosessen heter trykkretardert osmose. Saltkraft er ikke i kommersiell drift. Kilder: Store norske leksikon (u.å.-h) og Statkraft (2013)."
+      caption="Skjematisk tegning. Prosessen heter trykkretardert osmose. Statkraft avsluttet satsingen 20.12.2013, og Tofte-anlegget ble avviklet i 2014. Saltkraft er ikke i kommersiell drift. Kilder: Store norske leksikon (u.å.-h) og Statkraft (2013)."
       narrow={{ w: 300, h: 650 }}
       wide={{ w: 720, h: 456 }}
       animated

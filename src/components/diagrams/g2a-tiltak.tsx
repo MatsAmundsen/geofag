@@ -182,7 +182,7 @@ export function CdrSkjemaFigur() {
       title="CCS og CDR: to ulike måter å håndtere CO₂ på"
       desc="Skjema som skiller karbonfangst og lagring, CCS, fra karbonfjerning, CDR. CCS fanger CO₂ ved et utslippspunkt, for eksempel et sementverk, og lagrer den under bakken. Det hindrer nye utslipp, men tar ikke CO₂ ut av lufta. Eksemplet er Northern Lights: CO₂ fra sementfabrikken i Brevik fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 kilometer til et reservoar 2 600 meter under havbunnen, med en kapasitet på 1,5 millioner tonn CO₂ i året i første trinn. Norske utslipp er over 40 millioner tonn CO₂-ekvivalenter i året. CDR tar CO₂ ut av lufta. Skogplanting og jordkarbon koster 45 til 100 dollar per tonn for jordkarbon og lagrer i tiår til århundrer, og kan reverseres av brann, sykdom og endret klima. BECCS fjerner 30 til 780 milliarder tonn CO₂ i modellerte 1,5-gradersbaner for 2020 til 2100. DACCS koster 100 til 300 dollar per tonn, lagrer geologisk i ti tusen år eller mer og fjerner 0 til 310 milliarder tonn CO₂ i de samme banene. CDR kan ikke erstatte kutt i utslipp."
       heading="CCS eller CDR"
-      caption="BECCS er bioenergi med fangst og lagring, og DACCS er direkte fangst fra luft med lagring. Mengdene gjelder modellerte baner som holder 1,5 °C, 2020–2100. Kilder: IPCC (2022) og Equinor (2025). Norske utslipp: SSB (2026)."
+      caption="Skjematisk, ikke i målestokk. BECCS er bioenergi med fangst og lagring, og DACCS er direkte fangst fra luft med lagring. Mengdene gjelder modellerte baner som holder 1,5 °C, 2020–2100. Kilder: IPCC (2022) og Equinor (2025). Norske utslipp: SSB (2026)."
       narrow={{ w: 300, h: 1240 }}
       wide={{ w: 720, h: 660 }}
       animated
@@ -249,7 +249,7 @@ export function CdrSkjemaFigur() {
             {/* CDR */}
             <Box x={x2} y={y2} w={pw} h={ph} stroke={C.teal} fill={G.panel} sw={1.8} />
             <T x={x2 + 14} y={y2 + 26} lines="CDR: fjerning fra lufta" size={16} weight={700} fill={C.teal} />
-            <T x={x2 + 14} y={y2 + 46} lines={["Tar CO₂ ut av lufta og", "lagrer den varig."]} size={14} fill={C.fg} lh={18} />
+            <T x={x2 + 14} y={y2 + 46} lines={["Tar CO₂ ut av lufta og lagrer", "den varig eller lenge,", "avhengig av metode."]} size={14} fill={C.fg} lh={18} />
             <rect x={x2 + 14} y={y2 + 88} width={pw - 28} height={34} rx={6} fill={C.rain} fillOpacity={0.14} stroke={C.rain} strokeWidth={1.4} />
             <T x={x2 + 26} y={y2 + 110} lines="Lufta: CO₂ tas ut" size={14} weight={700} fill={C.fg} />
             <line x1={sx - 4} x2={sx - 4} y1={y2 + 124} y2={poss[2] + 22} stroke={C.teal} strokeWidth={2.4} className="a a-flow" strokeDasharray="6 5" />
