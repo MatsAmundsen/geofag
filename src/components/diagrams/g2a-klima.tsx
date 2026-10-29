@@ -127,8 +127,9 @@ export function KarbonkretsloepFigur() {
             {/* tegnforklaring */}
             <Flow d={`M12 ${yLeg} L44 ${yLeg}`} color={C.low} marker={mk.low} w={4} />
             <T x={54} y={yLeg + 5} lines={bred ? "Brenning av olje, kull og gass flytter karbon fra berggrunnen til lufta." : ["Brenning av olje, kull og gass", "flytter karbon fra berggrunnen", "til lufta."]} size={14} fill={C.fg} lh={17} />
-            <Flow d={`M12 ${yLeg + (bred ? 26 : 64)} L44 ${yLeg + (bred ? 26 : 64)}`} color={C.teal} marker={mk.teal} w={2.4} />
-            <T x={54} y={yLeg + (bred ? 31 : 69)} lines="Naturlig utveksling av karbon." size={14} fill={C.fg} />
+            <Flow d={`M12 ${yLeg + (bred ? 26 : 64)} L26 ${yLeg + (bred ? 26 : 64)}`} color={C.teal} marker={mk.teal} w={2.4} />
+            <Flow d={`M32 ${yLeg + (bred ? 26 : 64)} L46 ${yLeg + (bred ? 26 : 64)}`} color={C.sand} marker={mk.sand} w={2.4} />
+            <T x={56} y={yLeg + (bred ? 31 : 69)} lines={bred ? "Naturlig utveksling: pila viser retning." : ["Naturlig utveksling:", "pila viser retning."]} lh={17} size={14} fill={C.fg} />
             {/* fordeling */}
             <T x={10} y={yD} lines={bred ? "Hva ble det av CO₂-utslippene i tiåret 2015–2024?" : ["Hva ble det av CO₂-utslippene", "i tiåret 2015–2024?"]} size={16} weight={700} fill={C.fg} lh={20} />
             {segs.map((s) => {
@@ -175,8 +176,8 @@ export function UtslippSektorFigur() {
       title="Globale klimagassutslipp 2019 fordelt på sektorer"
       desc="Stolpediagram over de globale klimagassutslippene i 2019, som var 59 pluss minus 6,6 milliarder tonn CO₂-ekvivalenter. Energiforsyning sto for 34 prosent, industri 24 prosent, jordbruk, skogbruk og arealbruk 22 prosent, transport 15 prosent og bygg 6 prosent. Prosentene er avrundet og summerer seg til 101. En egen stolpe viser at av de fossile CO₂-utslippene i 2024 kom 41 prosent fra kull, 32 prosent fra olje og 21 prosent fra gass."
       heading="Utslipp fordelt på sektorer"
-      caption="Prosentene er avrundet og summerer seg til 101 %. Regnes strøm og varme der de brukes, blir industri 34 % og bygg 16 %. Sement og annet 6 %. Kilder: IPCC (2022) og Friedlingstein mfl. (2026)."
-      narrow={{ w: 300, h: 792 }}
+      caption="Prosentene er avrundet og summerer seg til 101 %. Regnes strøm og varme der de brukes, blir industri 34 % og bygg 16 %. Kilder: IPCC (2022) og Friedlingstein mfl. (2026)."
+      narrow={{ w: 300, h: 828 }}
       wide={{ w: 720, h: 384 }}
     >
       {({ bred }) => {
@@ -206,7 +207,7 @@ export function UtslippSektorFigur() {
                 </g>
               );
             })}
-            <Box x={fx} y={fy} w={fw} h={246} stroke={G.line} fill={G.panel} sw={1.4} />
+            <Box x={fx} y={fy} w={fw} h={282} stroke={G.line} fill={G.panel} sw={1.4} />
             <T x={fx + 12} y={fy + 24} lines="Fossile CO₂-utslipp 2024" size={14} weight={700} fill={C.fg} />
             <T x={fx + 12} y={fy + 42} lines="fordelt på brensel" size={14} fill={C.muted} />
             {FOSSIL.map((s, i) => {
@@ -220,9 +221,10 @@ export function UtslippSektorFigur() {
                 </g>
               );
             })}
-            <Box x={bred ? 10 : 12} y={bred ? 312 : fy + 262} w={bred ? 470 : 276} h={bred ? 58 : 76} stroke={C.rain} fill={G.panel2} sw={1.4} />
-            <T x={bred ? 22 : 24} y={bred ? 336 : fy + 286} lines={bred ? ["Regnes strøm og varme der de brukes,", "blir industri 34 % og bygg 16 %."] : ["Regnes strøm og varme der de", "brukes, blir industri 34 % og", "bygg 16 %."]} size={14} fill={C.fg} lh={18} />
-            <T x={fx + 12} y={fy + 62 + 3 * 44 + 22} lines={["Til sammen 37,8 ± 1,8", "Gt CO₂ fra fossile kilder"]} size={14} fill={C.muted} lh={17} />
+            <Box x={bred ? 10 : 12} y={bred ? 312 : fy + 298} w={bred ? 470 : 276} h={bred ? 58 : 76} stroke={C.rain} fill={G.panel2} sw={1.4} />
+            <T x={bred ? 22 : 24} y={bred ? 336 : fy + 322} lines={bred ? ["Regnes strøm og varme der de brukes,", "blir industri 34 % og bygg 16 %."] : ["Regnes strøm og varme der de", "brukes, blir industri 34 % og", "bygg 16 %."]} size={14} fill={C.fg} lh={18} />
+            <T x={fx + 12} y={fy + 206} lines={["Sement 4 %, fakling", "og annet 2 %"]} size={14} fill={C.fg} lh={17} />
+            <T x={fx + 12} y={fy + 250} lines={["Til sammen 37,8 ± 1,8", "Gt CO₂ fra fossile kilder"]} size={14} fill={C.muted} lh={17} />
           </>
         );
       }}
@@ -247,7 +249,7 @@ export function KarbonbudsjettFigur() {
       title="Karbonbudsjettet for 1,5 og 2 grader: mer sikkerhet gir mindre budsjett"
       desc="Stolpediagram over det gjenværende karbonbudsjettet i milliarder tonn CO₂ fra begynnelsen av 2020, etter sannsynlighet for å holde seg under grensen. For 1,5 grader er budsjettet 900 ved 17 prosent, 650 ved 33, 500 ved 50, 400 ved 67 og 300 ved 83 prosent. For 2 grader er det 2300, 1700, 1350, 1150 og 900. Jo større sannsynlighet, desto mindre budsjett. Et eget panel viser budsjettet fra begynnelsen av 2026 ifølge Global Carbon Project: 170 for 1,5 grader med 50 prosent sannsynlighet, 525 for 1,7 grader og 1055 for 2 grader. Med 42 milliarder tonn i året er 170 brukt opp om lag fire år. Panelene har ulik skala."
       heading="Karbonbudsjettet: sikkerhet mot mengde"
-      caption="Tall i Gt CO₂. Usikkerheten fra andre gasser og tilbakekoblinger er minst ±220 Gt CO₂. Om lag fire år er regnet ut av oss: 170 ÷ 42 Gt. Panelene har ulik skala. Kilder: IPCC (2021) og Friedlingstein mfl. (2026)."
+      caption="Tall i Gt CO₂. Usikkerheten fra andre gasser og tilbakekoblinger er minst ±220 Gt CO₂. Om lag fire år er regnet ut av oss: 170 ÷ 42 Gt. Panelene har ulik skala. 42 Gt er fossile utslipp og endret arealbruk (2024: 42,4 Gt). Kilder: IPCC (2021) og Friedlingstein mfl. (2026)."
       narrow={{ w: 300, h: 820 }}
       wide={{ w: 720, h: 452 }}
     >
