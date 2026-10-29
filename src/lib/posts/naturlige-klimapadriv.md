@@ -45,7 +45,7 @@ FigNaturligTidsskalaer
 
 Solflekker er mørke områder på sola. Der hindrer sterke magnetfelt konveksjonen, og temperaturen blir omtrent 1 500 K lavere enn omgivelsene. Antallet solflekker er høyere når solaktiviteten er høy, og det varierer særlig med solsyklusen. Solsyklusen er en nokså regelmessig svingning i solaktivitet med en periode på mellom 8 og 14 år (Matthews mfl., 2021).
 
-Det internasjonale solflekktallet beregnes ved SILSO, ved Royal Observatory of Belgium. Det daglige solflekktallet finnes fra 1818, det månedlige fra 1749 og det årlige fra 1700 (Royal Observatory of Belgium, u.å.). Du kan laste ned tallene selv og se solsyklusene som topper i kurven.
+Det internasjonale solflekktallet beregnes ved SILSO, ved Royal Observatory of Belgium. Det daglige solflekktallet finnes fra 1818, det månedlige fra 1749 og det årlige fra 1700 (Royal Observatory of Belgium, u.å.). Figuren under er skjematisk. Den viser en idealisert solsyklus og er ikke tegnet etter målte tall, så høyde og tidspunkt for toppene er ikke ekte.
 
 ```widget
 FigSolflekker

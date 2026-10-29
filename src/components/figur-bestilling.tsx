@@ -21,10 +21,10 @@ export function FigurBestilling({ id, title }: { id: string; title: string }): J
 export const FIGUR_BESTILLINGER: Record<string, string> = {
   FigSkyerNivaaer: "Skytyper i tre høydenivåer (WMO), med typiske høyder",
   FigKlimadiagramKystInnland: "Klimadiagram: Bergen–Florida mot Oslo–Blindern, normal 1991–2020",
-  FigKoppenNorge: "Köppen-klimasoner i Norge, normalperiodene 1961–90 og 1991–2020",
+  FigKoppenNorge: "Köppen-Geiger-klimasoner i Norge, normalperioden 1991–2020, 0 °C-grense mellom C og D (Beck mfl., 2023, CC BY 4.0, Svalbard ikke vist)",
   FigNedborTyper: "Tre typer nedbør: orografisk, konvektiv og frontal",
   FigNaturligTidsskalaer: "Naturlige klimapådriv på tidsskalaer fra 1 år til milliarder av år (logaritmisk akse)",
-  FigSolflekker: "Årlig internasjonalt solflekktall (SILSO) fra 1700, med Maunder-minimum markert",
+  FigSolflekker: "Skjematisk, idealisert solsyklus på ca. 11 år (8–14 år), uten ekte dataserie, med Maunder-minimum 1645–1715 markert",
   FigTektonikkKarbon: "Hypotesen om Himalaya, forvitring og CO₂ som kjede, med tilbakekoblinger",
   FigHavbunnenProfil: "Havbunnens landskap: sokkel, skråning, kontinentalfot, dyphavsslette, midthavsrygg og dyphavsgrav, med dyp",
   FigVannmasserAtlanterhavet: "Skjematisk dybdesnitt av vannmasser i Atlanterhavet (Talley, 2019)",

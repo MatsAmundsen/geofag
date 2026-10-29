@@ -56,10 +56,10 @@ export function medKilder(basis: readonly Kilde[], tillegg: readonly Kilde[]): K
 export const KILDER_B = {
   skyer: [
     {
-      prefix: "Beck, H. E., Zimmermann, N. E., McVicar, T. R., Vergopolan, N., Berg, A., & Wood, E. F. (2018). ",
-      italic: "Present and future Köppen-Geiger climate classification maps at 1-km resolution",
-      suffix: ". Scientific Data, 5, Artikkel 180214.",
-      href: "https://doi.org/10.1038/sdata.2018.214",
+      prefix: "Beck, H. E., McVicar, T. R., Vergopolan, N., Berg, A., Lutsko, N. J., Dufour, A., Zeng, Z., Jiang, X., van Dijk, A. I. J. M., & Miralles, D. G. (2023). ",
+      italic: "High-resolution (1 km) Köppen-Geiger maps for 1901–2099 based on constrained CMIP6 projections",
+      suffix: ". Scientific Data, 10, Artikkel 724.",
+      href: "https://doi.org/10.1038/s41597-023-02549-6",
     },
     {
       prefix: "Dannevig, P., & Harstveit, K. (2026, 12. juni). ",
@@ -96,6 +96,12 @@ export const KILDER_B = {
       italic: "Klimasoner",
       suffix: ". Store norske leksikon.",
       href: "https://snl.no/klimasoner",
+    },
+    {
+      prefix: "Meteorologisk institutt [MET]. (2021, 1. mars). ",
+      italic: "Köppen main climate zones Norway 91-2020 -3C isoterm",
+      suffix: " [Kart]. Wikimedia Commons. Lisens: CC BY 3.0.",
+      href: "https://commons.wikimedia.org/wiki/File:K%C3%B6ppen_main_climate_zones_Norway_91-2020_-3C_isoterm.png",
     },
     {
       prefix: "Meteorologisk institutt [MET]. (2026, 8. oktober). ",
