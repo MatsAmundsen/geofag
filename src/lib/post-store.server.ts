@@ -1615,6 +1615,17 @@ const COPY_RESEEDS: CopyReseed[] = [
       "**Treghetssystem:** Et referansesystem uten rotasjon, der Newtons lover gjelder uten fiktive krefter. Jorda er ikke et slikt system.\n\n**Ekmantransport:**",
     ],
   },
+  {
+    // Tilpasning (G2): kvalitetsloft KM8 – økosystem (Barentshavet + korallbleking), reduksjon vs tilpasning, skjerpet maltilpasning (hard/soft/equity), drøft hvem tilpasser/kutte, COPY_RESEED.
+    flag: "g2-tilpasning-km-loft-2026-10-26",
+    slug: "tilpasning",
+    stale: [
+      "hvordan IPCC beskriver klimarisiko som et samspill mellom fare, eksponering og sårbarhet, hvilke konsekvenser klimaendringer har for enkeltmennesker, samfunn og økosystem, hvordan byer kan håndtere overvann, hvordan vi sikrer oss mot flom og havnivåstigning, og hvordan lover og arealplanlegging brukes i klimatilpasning.",
+      "**Økosystemene** rammes når arter må flytte seg etter temperaturen, når varmere hav gir korallbleking, og når tørke gjør at myrer slipper ut karbon i stedet for å lagre det.",
+      "Noen tiltak kan gjøre samfunnet mer sårbart på lang sikt eller flytte skaden over på andre. Det kalles *maltilpasning* (IPCC, 2022). Et eksempel er flomvollen fra «Hva tror du?». Folk føler seg trygge, det blir bygd mer bak vollen, og når en flom en gang blir større enn vollen er bygd for, blir skadene større enn før. Harde sjømurer kan også gi mer erosjon hos naboen.",
+      "**Utslippskutt:** Tiltak som reduserer utslippene av klimagasser og dermed oppvarmingen.\n\n**Fare:**",
+    ],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({
