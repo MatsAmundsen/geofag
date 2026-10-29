@@ -101,6 +101,20 @@ function RadIkon({ id, x, y }: { id: string; x: number; y: number }) {
   }
 }
 
+function norgeBlokker() {
+  let y = 8;
+  const rader = NRAD.map((r) => {
+    const vnl = r.vn ? brytt(r.vn, 36) : [];
+    const ekl = r.ekstra ? 1 + r.ekstra.lin.length : 0;
+    const obsH = r.obs.length ? r.obs.length * 44 : 40;
+    const h = 38 + 22 + obsH + 22 + 30 + vnl.length * 18 + (ekl ? ekl * 18 + 14 : 0) + 22;
+    const v = { r, y, h, vnl };
+    y += h + 12;
+    return v;
+  });
+  return { rader, h: y - 12 + 8 };
+}
+
 export function FigNorgeFramskrivninger() {
   return (
     <G2Figur
@@ -108,7 +122,7 @@ export function FigNorgeFramskrivninger() {
       desc="Fem paneler for fastlands-Norge med observert endring og videre endring fram mot slutten av århundret hvis utslippene fortsetter å øke. Temperatur: omtrent 1,4 grader varmere fra 1901 til 2024 og omtrent 1 grad fra 1961–1990 til 1991–2020, videre omtrent 3,4 grader. Nedbør: omtrent 21 prosent mer fra 1901 til 2024 og omtrent 7 prosent fra 1961–1990 til 1991–2020, videre omtrent 11 prosent. Avrenning: omtrent 5 prosent mer, videre omtrent 10 prosent. Fordampning: omtrent 10 prosent mer, videre omtrent 20 prosent. Havnivå: relativ havnivåstigning omtrent 36 centimeter i 2100 i gjennomsnitt for Norge (SSP3-7.0). Ved lav sannsynlighet og stor konsekvens omtrent 1 til 1,5 meter innen 2100 og opptil omtrent 4,5 til 5 meter innen 2150."
       heading="Norge mot 2100"
       caption="Fastlands-Norge. Observert endring og videre endring fram mot slutten av århundret hvis utslippene fortsetter å øke. Kilde: Norsk klimaservicesenter (2025), Oppsummeringer fra Klima i Norge 2025."
-      narrow={{ w: 300, h: 1600 }}
+      narrow={{ w: 300, h: norgeBlokker().h }}
       wide={{ w: 720, h: 650 }}
       animated
       name="Norge mot 2100"
@@ -161,16 +175,7 @@ export function FigNorgeFramskrivninger() {
           );
         }
         // smal
-        let y = 8;
-        const blokker = NRAD.map((r) => {
-          const vnl = r.vn ? brytt(r.vn, 36) : [];
-          const ekl = r.ekstra ? 1 + r.ekstra.lin.length : 0;
-          const obsH = r.obs.length ? r.obs.length * 44 : 40;
-          const h = 38 + 22 + obsH + 22 + 30 + vnl.length * 18 + (ekl ? ekl * 18 + 14 : 0) + 22;
-          const v = { r, y, h, vnl };
-          y += h + 12;
-          return v;
-        });
+        const blokker = norgeBlokker().rader;
         return (
           <>
             {blokker.map(({ r, y: by, h, vnl }) => {
@@ -278,7 +283,7 @@ export function FigTilpasningsgrenser() {
       desc="Skala for global oppvarming med tre markeringer. Hard grense betyr at ingen tilpasningstiltak kan hindre uakseptabel risiko. Myk grense betyr at tiltak finnes kanskje, men ikke er tilgjengelige nå. Over 1,5 grader: mulige harde grenser, begrensede ferskvannsressurser for små øystater og regioner avhengige av smeltevann fra breer og snø, middels tillit. Ved 2 grader: myke grenser for flere viktige matplanter i mange dyrkingsområder, særlig i tropene, høy tillit. Ved 3 grader: myke grenser for noen tiltak i vannforvaltning i mange regioner og harde grenser i deler av Europa, middels tillit."
       heading="Grensene for tilpasning kommer tidligere jo varmere det blir"
       caption="Skalaen er forenklet: markeringene viser 1,5, 2 og 3 °C global oppvarming, ikke et fullstendig sett av grenser. Kilde: IPCC (2022), Summary for Policymakers, C.3.4; Möller mfl. (2022)."
-      narrow={{ w: 300, h: 1000 }}
+      narrow={{ w: 300, h: 835 }}
       wide={{ w: 720, h: 470 }}
       animated
       name="Tilpasningsgrenser"
