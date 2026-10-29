@@ -157,7 +157,7 @@ export function TopicLayout({
             src={src}
             alt={alt}
             fetchPriority="high"
-            className={`absolute inset-0 h-full w-full object-cover ${src.includes("banner-naturlige-padriv") ? "object-[50%_25%]" : ""}`}
+            className={`absolute inset-0 h-full w-full object-cover ${src.includes("banner-naturlige-padriv") ? "object-[0%_25%] md:object-[0%_30%]" : ""}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25" />
           <div className="relative mx-auto flex min-h-72 max-w-4xl flex-col justify-end px-4 py-12 sm:px-6">
