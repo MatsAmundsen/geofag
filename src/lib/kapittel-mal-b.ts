@@ -5,6 +5,7 @@ import {
   QUIZ_SJEKK_SKYER_3,
   QUIZ_SJEKK_SKYER_4,
   QUIZ_SJEKK_SKYER_5,
+  QUIZ_SJEKK_VAERKART_5,
 } from "./poster-quizzes-b.ts";
 
 /** Pakke B. Slås sammen med SJEKK_DEG_SELV og SAMMENDRAG i kapittel-mal.ts. Nøklene følger samme regler. */
@@ -14,6 +15,7 @@ export const SJEKK_DEG_SELV_B: Record<string, QuizQuestion[]> = {
   Skyer3: QUIZ_SJEKK_SKYER_3,
   Skyer4: QUIZ_SJEKK_SKYER_4,
   Skyer5: QUIZ_SJEKK_SKYER_5,
+  Vaerkart5: QUIZ_SJEKK_VAERKART_5,
 };
 
 export const SAMMENDRAG_B: Record<string, readonly string[]> = {

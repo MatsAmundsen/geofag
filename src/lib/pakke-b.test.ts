@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { injectPosterWidgets, listedWidgetIds } from "./poster-markdown.ts";
 import { SAMMENDRAG_B, SJEKK_DEG_SELV_B } from "./kapittel-mal-b.ts";
-import { KILDER_B } from "./kilder-b.ts";
+import { KILDER_B, KILDER_B_TILLEGG, medKilder } from "./kilder-b.ts";
 
 const lib = dirname(fileURLToPath(import.meta.url));
 const read = (rel: string) => readFileSync(join(lib, rel), "utf8");
@@ -94,6 +94,29 @@ describe("Pakke B: nye kapitler", () => {
         `${a.prefix}${a.italic}`.localeCompare(`${b.prefix}${b.italic}`, "nb"),
       );
       assert.deepEqual(list, sorted, name);
+    }
+  });
+
+  it("medKilder setter nye kilder inn uten å endre rekkefølgen på de gamle", () => {
+    const k = (prefix: string, italic: string) => ({ prefix, italic });
+    const basis = [k("A. (u.å.). ", "a"), k("S. (u.å.-a). ", "b"), k("S. (2020). ", "c"), k("Utdir. (u.å.). ", "u")];
+    const ut = medKilder(basis, [k("S. (2019). ", "ny1"), k("S. (u.å.-b). ", "ny2"), k("Z. (2020). ", "ny3")]);
+    assert.deepEqual(
+      ut.map((x) => x.italic),
+      ["a", "b", "ny2", "ny1", "c", "u", "ny3"],
+    );
+  });
+
+  it("tilleggene til værkartkapittelet er sitert i teksten", () => {
+    const md = read("posts/vaerkart.md");
+    for (const key of ["SjekkVaerkart4", "SjekkVaerkart5", "SammendragVaerkart", "QuizVaerkart"]) {
+      assert.ok(md.includes(key), key);
+    }
+    assert.ok(SJEKK_DEG_SELV_B.Vaerkart5);
+    for (const kilde of KILDER_B_TILLEGG.vaerkart ?? []) {
+      const m = kilde.prefix.match(/\((u\.å\.-[a-z]|\d{4}[a-z]?)/);
+      assert.ok(m, kilde.prefix);
+      assert.ok(md.includes(`${m[1]}`), kilde.prefix);
     }
   });
 });

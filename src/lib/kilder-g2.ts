@@ -55,7 +55,7 @@ export const KILDER_G2 = {
       href: "https://www.noaa.gov/jetstream/wxmaps-max",
     },
     {
-      prefix: "National Weather Service [NWS]. (u.å.). ",
+      prefix: "National Weather Service [NWS]. (u.å.-a). ",
       italic: "Unified surface analysis manual",
       suffix: ".",
       href: "https://www.wpc.ncep.noaa.gov/sfc/UASfcManualVersion1.pdf",

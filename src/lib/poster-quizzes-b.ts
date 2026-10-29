@@ -204,3 +204,33 @@ export const QUIZ_SKYER: QuizQuestion[] = [
     explain: "Det gir kaldtemperert klima. Grensen mot C varierer mellom kilder, så sjekk alltid hvilken grense et kart bruker.",
   },
 ];
+
+/** Pakke B / T3: Værkart, radar, satellitt, egne observasjoner og fartsregning. */
+export const QUIZ_SJEKK_VAERKART_5: QuizQuestion[] = [
+  {
+    prompt: "Hva måler et infrarødt satellittbilde?",
+    options: [
+      "Sollys som blir kastet tilbake fra skyene",
+      "Varmen som stråler ut fra skyer og bakke",
+      "Hvor mye nedbør som har falt ved bakken",
+    ],
+    answer: 1,
+    explain: "Infrarøde bilder måler varmestråling, og derfor virker de både dag og natt. Visuelle bilder bruker sollys og virker bare om dagen.",
+  },
+  {
+    prompt: "Hvorfor kan en værradar overse lave byger langt unna radaren?",
+    options: [
+      "Strålen er høyere over bakken lenger unna, på grunn av jordkrumningen",
+      "Radaren måler bare vind og ikke nedbør",
+      "Regndråper er for store til å gi ekko",
+    ],
+    answer: 0,
+    explain: "Ved 240 km er strålen 5–6 km over bakken. Da kan strålen gå over byger som ligger lavt.",
+  },
+  {
+    prompt: "En front flytter seg 240 km på 6 timer. Hva er farten?",
+    options: ["40 km/t", "60 km/t", "1 440 km/t"],
+    answer: 0,
+    explain: "Fart er avstand delt på tid: 240 km / 6 t = 40 km/t.",
+  },
+];

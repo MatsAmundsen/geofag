@@ -19,11 +19,37 @@ const UDIR_B: Kilde = {
   href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv973",
 };
 
-/** Setter sammen to kildelister og sorterer alfabetisk (norsk), med Udir sist slik de andre listene har det. */
+function kildeNokkel(k: Kilde): [string, string, string] {
+  const i = k.prefix.search(/\s\((?:u\.å\.|\d{4})/);
+  const forfatter = i === -1 ? k.prefix : k.prefix.slice(0, i);
+  const rest = i === -1 ? "" : k.prefix.slice(i);
+  // APA: verk uten årstall kommer før verk med årstall fra samme forfatter.
+  return [forfatter, rest.startsWith(" (u.å.") ? `0${rest}` : `1${rest}`, k.italic];
+}
+
+function sammenlign(a: Kilde, b: Kilde): number {
+  const x = kildeNokkel(a);
+  const y = kildeNokkel(b);
+  for (let n = 0; n < 3; n++) {
+    const c = x[n]!.localeCompare(y[n]!, "nb");
+    if (c !== 0) return c;
+  }
+  return 0;
+}
+
+/**
+ * Legger nye kilder inn i en eksisterende liste uten å røre rekkefølgen på de gamle.
+ * Hver ny kilde settes foran den første gamle kilden som kommer etter den alfabetisk
+ * (forfatter, så u.å. før årstall, så årstall). Udir står sist, som i de andre listene.
+ */
 export function medKilder(basis: readonly Kilde[], tillegg: readonly Kilde[]): Kilde[] {
   const finnes = new Set(basis.map((k) => `${k.prefix}${k.italic}`));
-  const nye = tillegg.filter((k) => !finnes.has(`${k.prefix}${k.italic}`));
-  return [...basis, ...nye].sort((a, b) => a.prefix.localeCompare(b.prefix, "nb"));
+  const ut = [...basis];
+  for (const k of tillegg.filter((t) => !finnes.has(`${t.prefix}${t.italic}`))) {
+    const i = ut.findIndex((o) => sammenlign(k, o) < 0);
+    ut.splice(i === -1 ? ut.length : i, 0, k);
+  }
+  return ut;
 }
 
 /** Kilder per nytt kapittel. */
@@ -125,4 +151,43 @@ export const KILDER_B = {
 };
 
 /** Tillegg til eksisterende kildelister. Slås sammen med `medKilder` i rutene. */
-export const KILDER_B_TILLEGG = {} as Record<string, Kilde[]>;
+export const KILDER_B_TILLEGG = {
+  vaerkart: [
+    {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-h). ",
+      italic: "JetStream Max: Radar beams",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/radar-beams",
+    },
+    {
+      prefix: "National Weather Service [NWS]. (u.å.-b). ",
+      italic: "Three types of satellite imagery",
+      suffix: ". National Oceanic and Atmospheric Administration.",
+      href: "https://www.weather.gov/mrx/sattype",
+    },
+    {
+      prefix: "Store norske leksikon. (2023). ",
+      italic: "Vindens virkninger på sjøen",
+      suffix: ".",
+      href: "https://snl.no/vindens_virkninger_p%C3%A5_sj%C3%B8en",
+    },
+    {
+      prefix: "Store norske leksikon. (2024a, 26. november). ",
+      italic: "Værradar",
+      suffix: ".",
+      href: "https://snl.no/v%C3%A6rradar",
+    },
+    {
+      prefix: "Store norske leksikon. (2024b, 25. november). ",
+      italic: "Manuell nedbørmåler",
+      suffix: ".",
+      href: "https://snl.no/manuell_nedb%C3%B8rm%C3%A5ler",
+    },
+    {
+      prefix: "Store norske leksikon. (2026, 8. april). ",
+      italic: "Beauforts vindskala",
+      suffix: ".",
+      href: "https://snl.no/Beauforts_vindskala",
+    },
+  ],
+} as Record<string, Kilde[]>;
