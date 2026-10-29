@@ -117,7 +117,7 @@ export function FigNaturligTidsskalaer() {
               );
             })}
             <line x1={X(0)} x2={X(10)} y1={78} y2={78} stroke={G.line} strokeWidth={1.4} />
-            {pos.map(({ r, y: ry, hh }, i) => {
+            {pos.map(({ r, y: ry }, i) => {
               const bandY = bred ? ry + (r.id === "mil" || r.id === "plate" ? 12 : 13) : ry + 22;
               const x1 = X(r.lo);
               const x2 = X(r.hi);

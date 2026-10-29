@@ -355,7 +355,7 @@ export function FigTilpasningsgrenser() {
                 <stop offset="1" stopColor={C.low} />
               </linearGradient>
             </defs>
-            {kort.map(({ k, y: ky, h }, i) => (
+            {kort.map(({ k, y: ky }, i) => (
               <g key={i}>
                 <line x1={30} x2={44} y1={ky + 24} y2={ky + 24} stroke={C.muted} strokeWidth={1.4} />
                 <circle cx={25} cy={ky + 24} r={9} fill={C.bg} stroke={C.white} strokeWidth={2.4} className={i % 2 ? "a a-pulse" : "a a-pulse2"} />

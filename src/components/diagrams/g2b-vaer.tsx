@@ -1,9 +1,6 @@
 import { C } from "./svg-kit";
 import { Box, Flow, G, G2Figur, T, nb } from "./g2a-kit";
 
-const NBSP = "\u00a0";
-const MINUS = "\u2212";
-
 /* ---------- FigSaffirSimpsonSkala ---------- */
 
 const SS = [
