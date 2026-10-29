@@ -47,13 +47,13 @@ TiltaksstigeFigur
 
 **Transport.** Elektriske kjøretøy som drives av lavutslippsstrøm har stort potensial til å kutte utslippene fra landtransport, regnet over hele livsløpet. Utfordringene er ladeinfrastruktur og tilgang til mineraler til batterier. Bærekraftig produsert biodrivstoff og hydrogen kan hjelpe i noen deler av transporten (IPCC, 2022).
 
-**Industri og bygg.** Elektrifisering og sirkulær materialbruk er sentrale tiltak i industrien (IPCC, 2022). For bygg nevner IPCC en blanding av effektivitetsmål, byggeforskrifter, krav til apparater, informasjon og karbonprising. Kompakte byer, mer effektiv bruk av gulvareal og energi i bygg og plass til gange og sykkel kan gjøre at 5–30 % av utslippene fra sluttbrukersektorene unngås innen 2050 (IPCC, 2022).
+**Industri og bygg.** Elektrifisering og sirkulær materialbruk er sentrale tiltak i industrien (IPCC, 2022). For bygg nevner IPCC en blanding av effektivitetsmål, byggeforskrifter, krav til apparater, informasjon og karbonprising. Endringer i det bygde miljøet, som kompakte byer, mer effektiv bruk av gulvareal og energi i bygg og plass til gange og sykkel, kan gjøre at 5–30 % av de globale årlige utslippene fra sluttbrukersektorene unngås innen 2050, sammenlignet med 2050-prognosen i to scenarioer som bygger på politikk annonsert av nasjonale regjeringer fram til 2020 (IPCC, 2022).
 
 **Arealbruk.** Tiltak i jordbruk, skogbruk og arealbruk har et økonomisk potensial på 8–14 Gt CO₂e i året til en kostnad under 100 USD per tonn. Den største delen kommer fra å bevare og restaurere skog og andre økosystemer, og å stanse avskoging i tropene gir mest (IPCC, 2022).
 
-**Etterspørsel.** Omfattende tiltak som endrer hva vi bruker og hvordan, kan kutte globale utslipp med 40–70 % i 2050 sammenlignet med prognosene for politikken som var vedtatt til 2020. Personer med høy inntekt har størst mulighet til å redusere (IPCC, 2022).
+**Etterspørsel.** Omfattende strategier på etterspørselssiden i alle sektorer kan kutte globale klimagassutslipp med 40–70 % i 2050, sammenlignet med 2050-prognosen i to scenarioer som bygger på politikk annonsert av nasjonale regjeringer fram til 2020. Personer med høy sosioøkonomisk status har størst mulighet til å redusere (IPCC, 2022).
 
-> **Billige og dyre tiltak.** IPCC anslår at tiltak som koster under 100 USD per tonn CO₂e kan kutte globale utslipp med minst halvparten av 2019-nivået innen 2030. Mer enn halvparten av dette koster under 20 USD per tonn, og de største bidragene kommer fra sol- og vindkraft, energieffektivisering, å stanse avskoging og kutte metan fra kullgruver, olje, gass og avfall (IPCC, 2022).
+> **Billige og dyre tiltak.** IPCC anslår at tiltak som koster under 100 USD per tonn CO₂e kan kutte globale utslipp med minst halvparten av 2019-nivået innen 2030. Mer enn halvparten av dette koster under 20 USD per tonn, og de største bidragene kommer fra sol- og vindkraft, energieffektivisering, mindre omdanning av naturlige økosystemer, som avskoging, og kutte metan fra kullgruver, olje, gass og avfall (IPCC, 2022).
 
 ```widget
 SjekkKlimatiltak1
@@ -87,9 +87,9 @@ Samtidig er sårbarheten størst der utslippene er minst. Anslagsvis 3,3 til 3,6
 Noen utslipp er svært vanskelige å unngå, for eksempel fra industriprosesser, landbruk, luftfart og skipsfart. Derfor trengs *karbonfangst og lagring* (CCS) og *karbonfjerning* (CDR). De er ikke det samme:
 
 - **CCS** fanger CO₂ fra et utslippspunkt, for eksempel et sementverk, og lagrer den under bakken. Det hindrer nye utslipp, men tar ikke CO₂ ut av lufta.
-- **CDR** tar CO₂ ut av lufta og lagrer den varig, for eksempel ved skogplanting, jordkarbon, BECCS (bioenergi med fangst og lagring) eller DACCS (direkte fangst fra luft med lagring) (IPCC, 2022).
+- **CDR** tar CO₂ ut av lufta og lagrer den varig eller lenge, avhengig av metode: i vegetasjon og jord fra tiår til hundrevis av år, i geologiske lagre i 10 000 år eller mer. Eksempler er skogplanting, jordkarbon, BECCS (bioenergi med fangst og lagring) eller DACCS (direkte fangst fra luft med lagring) (IPCC, 2022).
 
-I Norge ble de første CO₂-mengdene fra sementfabrikken til Heidelberg Materials i Brevik lagret i august 2025. Karbondioksid fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 km til et reservoar 2 600 meter under havbunnen i Nordsjøen. Første trinn av Northern Lights har en kapasitet på 1,5 millioner tonn CO₂ i året (Equinor, 2025). Til sammenligning er norske utslipp over 40 millioner tonn CO₂e i året (SSB, 2026).
+I Norge ble de første CO₂-mengdene fra sementfabrikken til Heidelberg Materials i Brevik lagret i august 2025. Karbondioksid fraktes med skip til Øygarden og pumpes gjennom en rørledning på 100 km til et reservoar 2600 meter under havbunnen i Nordsjøen. Første trinn av Northern Lights har en kapasitet på 1,5 millioner tonn CO₂ i året (Equinor, 2025). Til sammenligning er norske utslipp over 40 millioner tonn CO₂e i året (SSB, 2026).
 
 I modellerte baner som holder 1,5 °C, er samlet fjerning fra BECCS 30–780 Gt CO₂ og fra DACCS 0–310 Gt CO₂ i perioden 2020–2100 (IPCC, 2022). Metodene er svært forskjellige (IPCC, 2022):
 

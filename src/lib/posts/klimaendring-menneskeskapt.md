@@ -31,7 +31,7 @@
 
 ## Hvordan sammenligner vi klimagasser?
 
-Drivhusgassene varmer ulikt og blir værende ulikt lenge. For å kunne legge utslipp sammen bruker vi *GWP* (*Global Warming Potential*, global oppvarmingspotensial). GWP sier hvor mye ett tonn av en gass varmer sammenlignet med ett tonn CO₂, regnet over en valgt tidsperiode. Tallet er altså en rate, og tidsperioden må alltid oppgis. Utslippene regnes så om til *CO₂-ekvivalenter* (CO₂e): mengden CO₂ som ville gitt samme oppvarming (Forster mfl., 2021).
+Drivhusgassene varmer ulikt og blir værende ulikt lenge. For å kunne legge utslipp sammen bruker vi *GWP* (*Global Warming Potential*, global oppvarmingspotensial). GWP er forholdet mellom det tidsintegrerte strålingspådrivet (summen over tid av den ekstra energien som holdes igjen i klimasystemet) fra et utslipp av ett tonn av en gass og det fra ett tonn CO₂, regnet over en valgt tidsperiode. Tallet er altså et forholdstall og ikke en rate, og tidsperioden må alltid oppgis. Utslippene regnes så om til *CO₂-ekvivalenter* (CO₂e): mengden CO₂ som ville gitt samme oppvarming (Forster mfl., 2021).
 
 | Gass | Levetid i lufta | GWP, 20 år | GWP, 100 år |
 | --- | --- | --- | --- |
@@ -58,13 +58,13 @@ Karbon går i et kretsløp mellom lufta, havet, planter og dyr, jord og bergarte
 
 Når vi brenner olje, kull og gass, flytter vi karbon som har vært lagret i berggrunnen i millioner av år, over til det raske kretsløpet. Der er ikke havet og biosfæren i stand til å ta imot alt like fort.
 
-Naturen tar likevel opp en stor del. IPCC anslår at land og hav til sammen tar opp omtrent 56 % av CO₂-utslippene hvert år (IPCC, 2021). For tiåret 2015–2024 beregner Global Carbon Project at 50 % av utslippene ble værende i lufta, 29 % gikk til havet og 21 % til landjorda (Friedlingstein mfl., 2026). CO₂ som løses i havet, gjør vannet surere. IPCC understreker at naturens opptak utgjør en mindre andel jo mer vi har sluppet ut totalt (IPCC, 2021).
+Naturen tar likevel opp en stor del. IPCC anslår at land og hav til sammen har tatt opp en nesten konstant andel av CO₂-utslippene, i gjennomsnitt om lag 56 % per år over de siste seks tiårene (IPCC, 2021). For det nyeste tiåret, 2015–2024, beregner Global Carbon Project at 50 % av utslippene ble værende i lufta, 29 % gikk til havet og 21 % til landjorda (Friedlingstein mfl., 2026). CO₂ som løses i havet, gjør vannet surere. IPCC understreker at naturens opptak utgjør en mindre andel jo mer vi har sluppet ut totalt (IPCC, 2021).
 
 ## Hvor mye har vi sluppet ut?
 
 CO₂ i lufta er målt kontinuerlig på Mauna Loa på Hawaii siden 1958 (NOAA GML, 2026). I september 2026 var månedsmiddelet 426,07 ppm, mot 424,37 ppm i september 2025 (NOAA GML, 2026). Før industrialiseringen, rundt 1750, var det omtrent 278 ppm. For 2025 er gjennomsnittet 425,6 ppm, som er 53 % over førindustrielt nivå (Friedlingstein mfl., 2026). IPCC konkluderer med at CO₂-konsentrasjonen i 2019 var høyere enn på minst 2 millioner år, og at metan og lystgass var høyere enn på minst 800 000 år (IPCC, 2021).
 
-Global Carbon Project anslår at fossile utslipp av CO₂ i 2024 var 37,8 ± 1,8 milliarder tonn CO₂ (Gt CO₂), og at de kan ha økt til 38,1 Gt i 2025. Medregnet endret arealbruk, som avskoging, var de menneskeskapte CO₂-utslippene 42,4 Gt i 2024 (Friedlingstein mfl., 2026). Av de fossile utslippene kom 41 % fra kull, 32 % fra olje og 21 % fra gass. De største utslippslandene i 2024 var Kina (32 %), USA (13 %), India (8 %) og EU27 (6 %) (Friedlingstein mfl., 2026).
+Global Carbon Project anslår at fossile utslipp av CO₂ i 2024 var 37,8 ± 1,8 milliarder tonn CO₂ (Gt CO₂), og at de kan ha økt til 38,1 Gt i 2025. Medregnet endret arealbruk, som avskoging, var de menneskeskapte CO₂-utslippene 42,4 Gt i 2024 (Friedlingstein mfl., 2026). Av de fossile utslippene kom 41 % fra kull, 32 % fra olje og 21 % fra gass. Sement sto for 4 % og fakling og annet for 2 %. De største utslippslandene i 2024 var Kina (32 %), USA (13 %), India (8 %) og EU27 (6 %) (Friedlingstein mfl., 2026).
 
 Alle klimagasser sett under ett var utslippene 59 ± 6,6 Gt CO₂e i 2019, målt med GWP-100 fra AR6. Det er 12 % mer enn i 2010 og 54 % mer enn i 1990. Fordelt på sektorer kom 34 % fra energiforsyning, 24 % fra industri, 22 % fra jordbruk, skogbruk og arealbruk, 15 % fra transport og 6 % fra bygg (IPCC, 2022). Regnes utslipp fra elektrisitet og varme med der strømmen brukes, øker andelen fra industri til 34 % og fra bygg til 16 % (IPCC, 2022).
 
@@ -107,7 +107,7 @@ IPCC beregnet at 2390 ± 240 Gt CO₂ var sluppet ut i perioden 1850–2019. Det
 
 Tallene er Gt CO₂, og kolonnene er sannsynligheten for å holde seg *under* grensen. Usikkerheten fra andre gasser og tilbakekoblinger er minst ±220 Gt CO₂ (IPCC, 2021).
 
-Budsjettet er brukt opp fort. Global Carbon Project beregner at det fra begynnelsen av 2026 bare gjenstår om lag 170 Gt CO₂ for 50 % sannsynlighet for å holde 1,5 °C. For 1,7 °C er det 525 Gt og for 2 °C 1055 Gt. Med fossile utslipp på 38 Gt i året betyr 170 Gt at budsjettet for 1,5 °C er brukt opp om mellom fire og fem år (Friedlingstein mfl., 2026, egen utregning: 170 ÷ 38).
+Budsjettet er brukt opp fort. Global Carbon Project beregner at det fra begynnelsen av 2026 bare gjenstår om lag 170 Gt CO₂ for 50 % sannsynlighet for å holde 1,5 °C. For 1,7 °C er det 525 Gt og for 2 °C 1055 Gt. Med samlede CO₂-utslipp på ca. 42 Gt i året (fossile utslipp og endret arealbruk) betyr 170 Gt at budsjettet for 1,5 °C er brukt opp om lag fire år (Friedlingstein mfl., 2026, egen utregning: 170 ÷ 42).
 
 ```widget
 KarbonbudsjettFigur
@@ -129,13 +129,13 @@ Klimaprognoser trenger en antakelse om hva vi slipper ut. IPCC bruker fem illust
 
 (Oppvarming fra 1850–1900, beste anslag og svært sannsynlig spenn. IPCC, 2021.) På kort sikt, i 2021–2040, er beste anslag omtrent 1,5 °C i alle scenariene. Forskjellene vokser først senere (IPCC, 2021).
 
-Havnivået stiger videre i alle scenarier. Fram til 2100 er økningen 0,28–0,55 m i SSP1-1.9 og 0,63–1,01 m i SSP5-8.5, sammenlignet med 1995–2014. Mye av økningen kan ikke reverseres på hundrevis til tusenvis av år (IPCC, 2021).
+Havnivået stiger videre i alle scenarier. Fram til 2100 er det sannsynlige spennet 0,28–0,55 m i SSP1-1.9 og 0,63–1,01 m i SSP5-8.5, sammenlignet med 1995–2014. «Sannsynlig» betyr her 66–100 % sjanse. Mye av økningen kan ikke reverseres på hundrevis til tusenvis av år (IPCC, 2021).
 
 ```widget
 SspScenarioFigur
 ```
 
-IPCC har også regnet på hvor vi er på vei. Med politikken som var vedtatt før 2020, ville oppvarmingen i 2100 blitt 3,2 [2,2–3,5] °C (IPCC, 2022). Landenes innmeldte mål fram til klimatoppmøtet i Glasgow (COP26) ville gitt omtrent 2,8 °C (IPCC, 2022). Begge anslagene ligger over 1,5 °C og viser at gapet mellom mål og politikk er stort.
+IPCC har også regnet på hvor vi er på vei. Med politikken som var innført innen utgangen av 2020, ville oppvarmingen i 2100 blitt 3,2 [2,2–3,5] °C (IPCC, 2022). Landenes innmeldte mål fram til klimatoppmøtet i Glasgow (COP26) ville gitt omtrent 2,8 °C (IPCC, 2022). Begge anslagene ligger over 1,5 °C og viser at gapet mellom mål og politikk er stort.
 
 ## Hva sier Parisavtalen, og hva har Norge forpliktet seg til?
 
