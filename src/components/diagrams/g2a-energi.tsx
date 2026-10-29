@@ -340,7 +340,7 @@ export function PrisomraderFigur() {
             <T
               x={12}
               y={64}
-              lines={bred ? ["2025: eksport 34,3 TWh, import 11,5 TWh,", "netto 22,8 TWh (Energifakta Norge)."] : ["2025: eksport 34,3 TWh,", "import 11,5 TWh, netto 22,8 TWh", "(Energifakta Norge)."]}
+              lines={bred ? ["2025: eksport 34,3 TWh, import 11,5 TWh,", "netto 22,8 TWh (Energifakta Norge, u.å.-b)."] : ["2025: eksport 34,3 TWh,", "import 11,5 TWh, netto 22,8 TWh", "(Energifakta Norge, u.å.-b)."]}
               size={14}
               fill={C.fg}
               lh={19}
