@@ -36,7 +36,7 @@ EnergySources
 
 ## Vindkraft i Norge
 
-I 2023 ble det produsert 14 terawattimer vindkraft i Norge, 9,1 prosent av den samlede kraftproduksjonen. Ved starten av 2025 var utbygd kapasitet om lag 5082 megawatt. Fosen Vind, Europas hittil største landbaserte vindkraftanlegg, kom i ordinær drift fra mars 2021. Anlegget har 277 vindturbiner, 1057 megawatt og en beregnet årsproduksjon på 3,4 terawattimer, om lag forbruket til 170 000 norske husstander (Store norske leksikon, u.å.-a).
+I 2023 ble det produsert 14 terawattimer vindkraft i Norge, 9,1 prosent av den samlede kraftproduksjonen. Ved inngangen til 2026 var utbygd kapasitet 5082 megawatt (Energifakta Norge, u.å.). Fosen Vind, Europas hittil største landbaserte vindkraftanlegg, kom i ordinær drift fra mars 2021. Anlegget har 277 vindturbiner, 1057 megawatt og en beregnet årsproduksjon på 3,4 terawattimer, om lag forbruket til 170 000 norske husstander (Store norske leksikon, u.å.-a).
 
 Vindkraft er utslippsfri og fornybar, og likevel omstridt i Norge. Den legger beslag på relativt store landområder og kan være et problem for reindriftsnæringen. Fosen-saken er et eksempel. Norge har derfor i fortsettelsen satset hovedsakelig på vindkraftparker til havs (Store norske leksikon, u.å.-a). Bærekraft er denne avveiningen, og ikke bare at vinden kommer tilbake.
 
@@ -70,7 +70,7 @@ Havvind er vind brukt til kraftproduksjon til havs. En havvindpark er vindturbin
 
 GWEC har beregnet at verdens samlede havvindkapasitet ved utgangen av 2025 var 92,5 gigawatt. Kina sto for 48,4 gigawatt, om lag 52 prosent av verdenskapasiteten. Storbritannia og Tyskland fulgte blant de fem største markedene (GWEC, 2026).
 
-Hywind Scotland, ca. 25 km utenfor Peterhead nordøst i Skottland, er en testpark på flytende understell som Equinor (tidligere Statoil) satte i drift i 2017, utviklet sammen med Norsk Hydro (Equinor, u.å.-b). Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b). Hywind Tampen har en systemkapasitet på 94,6 MW, fordelt på 11 turbiner på 8,6 MW. Parken antas å dekke om lag 35 prosent av det årlige strømbehovet på de fem plattformene Snorre A og B og Gullfaks A, B og C (Equinor, u.å.-a). Da parken åpnet i 2023, ventet Equinor at den ville kutte ca. 200 000 tonn CO₂ i året (Equinor, 2023). Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.
+Hywind Scotland, ca. 25 km utenfor Peterhead nordøst i Skottland, er en testpark på flytende understell som Equinor (tidligere Statoil) satte i drift i 2017 (Equinor, u.å.-b). I januar 2017 avtalte Statoil å selge 25 % av parken til Masdar, og Statoil beholdt dermed 75 % (Equinor, 2017). Slike turbiner kan bygges på havdyp opp til 800 meter. I Norge fikk Havsul I utenfor Møre og Romsdal konsesjon i 2009, 350 megawatt og om lag 1 terawattime i året. Utbyggingen stoppet i 2012 fordi prisen ikke ble konkurransedyktig. Hywind Tampen er en flytende havvindpark i Nordsjøen som forsyner Gullfaks og Snorre. Den første norske havvindparken i produksjon er Hywind Tampen, fra november 2022 (Store norske leksikon, u.å.-a; u.å.-b). Hywind Tampen har en systemkapasitet på 94,6 MW, fordelt på 11 turbiner på 8,6 MW. Parken antas å dekke om lag 35 prosent av det årlige strømbehovet på de fem plattformene Snorre A og B og Gullfaks A, B og C (Equinor, u.å.-a). Da parken åpnet i 2023, ventet Equinor at den ville kutte ca. 200 000 tonn CO₂ i året (Equinor, 2023). Svaret på «Hva tror du?» er altså nei. Plattformene får fortsatt mesteparten av kraften fra gassturbiner, men utslippene blir lavere.
 
 ```widget
 OffshoreWindShelf
@@ -124,7 +124,7 @@ SjekkEnergi2
 
 ## Solenergi
 
-Solenergi er lys- og varmestråler fra sola. Mengden som treffer jorda i løpet av ett år, er om lag 15 000 ganger større enn hele verdens årlige energiforbruk. Ved atmosfærens yttergrense er intensiteten rundt 1370 watt per kvadratmeter. I klarvær midt på dagen når om lag 1 kilowatt per kvadratmeter jordoverflaten, og gjennomsnittet er noe i underkant av 0,5 kilowatt per kvadratmeter, fordi skyer, tåke og støv tar opp noe (Store norske leksikon, u.å.-g).
+Solenergi er lys- og varmestråler fra sola. Mengden som treffer jorda i løpet av ett år, er om lag 15 000 ganger større enn hele verdens årlige energiforbruk. Ved atmosfærens yttergrense er intensiteten rundt 1370 watt per kvadratmeter. I klarvær midt på dagen når om lag 1 kilowatt per kvadratmeter jordoverflaten, og den gjennomsnittlige verdien er noe i underkant av 0,5 kilowatt per kvadratmeter vinkelrett på strålens retning, fordi skyer, tåke og støv tar opp noe (Store norske leksikon, u.å.-g).
 
 Sola er opphavet til alle energikilder på jorda, bortsett fra kjerneenergi, geotermisk energi og tidevannsenergi. Sola varmer opp atmosfæren og havet, og det gir vind, bølger, havstrømmer og nedbør. Derfor er vindkraft og bølgekraft i bunn og grunn også solenergi. Tidevann er ikke det (Store norske leksikon, u.å.-g).
 
@@ -140,7 +140,7 @@ Solenergi kan brukes på tre måter:
 
 Solceller har blitt mye billigere per installert effekt. I 2022 produserte verden 1308 terawattimer solkraft, mot 0,087 terawattimer i 1990. Installert kapasitet var 1053 gigawatt i 2022 og 1858 gigawatt i 2024 (Store norske leksikon, u.å.-g).
 
-Innstrålingen per kvadratmeter og år varierer fra 700 til over 2200 kilowattimer, og i Nord-Europa blir den sjelden over 1000. I Norge er solkraften liten: ved inngangen til 2025 var det registrert rundt 33 000 solcelleanlegg med til sammen 754 megawatt. Forventet årsproduksjon var 569 gigawattimer, cirka 0,35 prosent av landets kraftproduksjon (Store norske leksikon, u.å.-g).
+Innstrålingen per kvadratmeter og år varierer fra 700 til over 2200 kilowattimer, og i Nord-Europa blir den sjelden over 1000. I Norge er solkraften liten: ved inngangen til 2025 var det registrert rundt 33 000 solcelleanlegg med til sammen 754 megawatt. Forventet årsproduksjon var 569 gigawattimer, cirka 0,35 prosent av landets kraftproduksjon (Store norske leksikon, u.å.-g). Ved inngangen til 2026 var installert effekt 871 MW (Energifakta Norge, u.å.).
 
 ```widget
 SolenergiFigur
@@ -150,7 +150,7 @@ SolenergiFigur
 
 Saltkraft er fornybar energi som bygger på det osmotiske trykket mellom ferskvann og saltvann. Et kammer med saltvann og et med ferskvann skilles av en tynn membran. Bare vann, ikke salt, slipper gjennom, og da bygger det seg opp et overtrykk på saltvannssiden. Prosessen kalles trykkretardert osmose. Overtrykket driver en vannturbin, på samme måte som i annen vannkraft. Hovedutfordringen har vært å lage en membran som er effektiv nok (Store norske leksikon, u.å.-h).
 
-Statkraft åpnet verdens første saltkraftverk på Tofte i Hurum i 2009, som et prototypeanlegg. Beregninger fra Statkraft gir et globalt potensial på 1600–1700 terawattimer i året. Beregnet potensial i Norge er 12 terawattimer i året, om lag 10 prosent av landets kraftproduksjon (Store norske leksikon, u.å.-h).
+Statkraft åpnet verdens første saltkraftverk på Tofte i Hurum i 2009, som et prototypeanlegg. Beregninger fra Statkraft gir et globalt potensial på 1600–1700 terawattimer i året. Beregnet potensial i Norge er 12 terawattimer i året, om lag 10 prosent av landets kraftproduksjon, ifølge Store norske leksikon (u.å.-h).
 
 Likevel stoppet satsingen. Den 20. desember 2013 meldte Statkraft at de avsluttet arbeidet med saltkraft. Begrunnelsen var at teknologien ikke ville bli konkurransedyktig i overskuelig fremtid. Andre teknologier hadde utviklet seg mer (Statkraft, 2013). Pilotanlegget på Tofte ble avviklet i 2014 (Store norske leksikon, u.å.-h).
 

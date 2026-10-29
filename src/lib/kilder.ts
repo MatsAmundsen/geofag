@@ -2400,6 +2400,12 @@ export const KILDER = {
   ],
   energiHavLuft: [
     {
+      prefix: "Energifakta Norge. (u.å.). ",
+      italic: "Kraftproduksjon",
+      suffix: ". Energidepartementet.",
+      href: "https://energifaktanorge.no/norsk-energiforsyning/kraftforsyningen/",
+    },
+    {
       prefix: "Equinor. (u.å.-a). ",
       italic: "Hywind Tampen",
       suffix: ".",
@@ -2410,6 +2416,12 @@ export const KILDER = {
       italic: "Hywind Scotland",
       suffix: ".",
       href: "https://www.equinor.com/energy/hywind-scotland",
+    },
+    {
+      prefix: "Equinor. (2017, 17. januar). ",
+      italic: "Statoil introduces partner in Hywind Scotland",
+      suffix: ".",
+      href: "https://www.equinor.com/news/archive/introduces-partner-hywind-scotland",
     },
     {
       prefix: "Equinor. (2023, 23. august). ",

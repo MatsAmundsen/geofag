@@ -67,11 +67,11 @@ export const QUIZ_KLIMA_MENNESKE: QuizQuestion[] = [
     prompt: "Hva måler GWP?",
     options: [
       "Hvor lenge en gass blir i lufta",
-      "Hvor mye ett tonn av en gass varmer sammenlignet med ett tonn CO₂ over en valgt tidsperiode",
+      "Forholdet mellom oppvarmingen fra ett tonn av en gass og fra ett tonn CO₂ over en valgt tidsperiode",
       "Hvor mye av en gass som finnes i lufta",
     ],
     answer: 1,
-    explain: "GWP er en rate, og tidsperioden må alltid oppgis (Forster mfl., 2021).",
+    explain: "GWP er et forholdstall mellom tidsintegrert strålingspådriv, ikke en rate, og tidsperioden må alltid oppgis (Forster mfl., 2021).",
   },
   {
     prompt: "Hva hører til det langsomme karbonkretsløpet?",
@@ -477,7 +477,7 @@ export const G2_KLIMA_SAMMENDRAG: Record<string, readonly string[]> = {
     "GWP sier hvor mye ett tonn av en gass varmer sammenlignet med CO₂ over en valgt tidsperiode. Metan har GWP 82,5 over 20 år og 29,8 over 100 år.",
     "Det raske karbonkretsløpet går gjennom lufta, havet og levende organismer. Det langsomme går gjennom bergarter og tar tusenvis til millioner av år. Fossile brensler flytter karbon fra det langsomme til det raske.",
     "Menneskeskapt oppvarming er 1,07 °C i 2010–2019 sammenlignet med 1850–1900. Naturlige pådriv ligger mellom −0,1 og 0,1 °C.",
-    "Karbonbudsjettet for 1,5 °C er et regnestykke med sannsynlighet. Global Carbon Project beregner at det gjenstår om lag 170 Gt CO₂ for 50 % sjanse, noe som tilsvarer omtrent fire til fem år med dagens utslipp.",
+    "Karbonbudsjettet for 1,5 °C er et regnestykke med sannsynlighet. Global Carbon Project beregner at det gjenstår om lag 170 Gt CO₂ for 50 % sjanse, noe som tilsvarer om lag fire år med dagens utslipp.",
     "SSP-scenariene er «hva hvis»-baner for utslipp. De gir fra 1,4 °C (SSP1-1.9) til 4,4 °C (SSP5-8.5) oppvarming i 2081–2100.",
     "Parisavtalen har som mål å holde oppvarmingen godt under 2 °C og arbeide for 1,5 °C. Norge har lovfestet minst 55 % kutt innen 2030 sammenlignet med 1990, og er med i EUs kvotesystem.",
   ],

@@ -116,11 +116,11 @@ Begge mengdene regnes som 1 Sm³ o.e., men energiinnholdet er ikke likt. Derfor 
 KraftsystemetNorgeFigur
 ```
 
-Norsk kraftforsyning hadde ved inngangen til 2025 en installert produksjonskapasitet på 40 334 MW og en anslått normalårsproduksjon på rundt 157 TWh. I 2024 var produksjonen 157,2 TWh, og i 2025 satte Norge rekord med 161,8 TWh. Et tørt år som 2022 ga 146,1 TWh (Energifakta Norge, u.å.-a). Normalårsproduksjon er hva kraftverkene produserer i et år med normale værforhold.
+Norsk kraftforsyning hadde ved inngangen til 2025 en installert produksjonskapasitet på 40 334 MW og en anslått normalårsproduksjon på rundt 157 TWh. Ved inngangen til 2026 gir energikildene under en samlet kapasitet på 40 560 MW (34 082 + 5082 + 871 + 525, egen utregning). I 2024 var produksjonen 157,2 TWh, og i 2025 satte Norge rekord med 161,8 TWh. Et tørt år som 2022 ga 146,1 TWh (Energifakta Norge, u.å.-a). Normalårsproduksjon er hva kraftverkene produserer i et år med normale værforhold.
 
 ### Energimiksen
 
-• **Vannkraft** er ryggraden. 1818 vannkraftverk gir om lag 89 prosent av normalårsproduksjonen, og normalårsproduksjonen er 138 TWh ved inngangen til 2026. Samlet installert effekt er 34 082 MW (Energifakta Norge, u.å.-a).
+• **Vannkraft** er ryggraden. 1818 vannkraftverk gir om lag 88 prosent av normalårsproduksjonen, og normalårsproduksjonen er 138 TWh ved inngangen til 2026. Samlet installert effekt er 34 082 MW (Energifakta Norge, u.å.-a).
 
 • **Vindkraft** har 64 kraftverk med 1390 turbiner og 5082 MW ved inngangen til 2026. Normalårsproduksjonen er 15,9 TWh, om lag 10 prosent av norsk produksjon (Energifakta Norge, u.å.-a). Regn selv: 15 900 000 MWh ÷ 5082 MW = 3129 timer brukstid.
 

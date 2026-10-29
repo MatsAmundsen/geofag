@@ -44,7 +44,7 @@ export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
   },
   KraftsystemetNorgeFigur: {
     fil: "src/components/diagrams/kraftsystemet-norge-figur.tsx",
-    vis: "Norsk kraftsystem: vannkraft, vind, sol, varme (Energifakta Norge), magasin 87 TWh, regulerbar i overkant av 75 prosent",
+    vis: "Norsk kraftsystem: vannkraft, vind, sol, varme (Energifakta Norge), samlet 40 560 MW ved inngangen til 2026, magasin 87 TWh, regulerbar i overkant av 75 prosent",
   },
   PrisomraderFigur: {
     fil: "src/components/diagrams/prisomrader-figur.tsx",

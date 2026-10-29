@@ -42,7 +42,7 @@ Arbeidet er delt i tre arbeidsgrupper (IPCC, u.å.-a):
 - **Arbeidsgruppe II** tar for seg konsekvenser, tilpasning og sårbarhet.
 - **Arbeidsgruppe III** tar for seg tiltak for å redusere utslipp.
 
-I tillegg finnes en arbeidsstyrke for nasjonale klimagassregnskap. Hver vurderingsrapport får også en syntese og en sammendragsrapport.
+I tillegg finnes en arbeidsstyrke for nasjonale klimagassregnskap. Hver arbeidsgrupperapport har et sammendrag for beslutningstakere (SPM) og kan ha et teknisk sammendrag. Synteserapporten kommer én gang per vurderingssyklus og samler arbeidsgruppenes bidrag (IPCC, u.å.-b).
 
 ```widget
 IpccOrganisasjonFigur
@@ -50,11 +50,11 @@ IpccOrganisasjonFigur
 
 Slik blir en rapport til (IPCC, u.å.-b):
 
-1. Medlemslandene og organisasjoner nominerer eksperter, og forfatterne velges ut.
+1. Medlemslandene og observatørorganisasjoner nominerer eksperter, og IPCCs byrå velger ut forfatterne.
 2. Forfatterne lager et første utkast. De bruker mest fagfellevurdert litteratur.
 3. Eksperter fra hele verden kan lese utkastet og kommentere. Hver kommentar må behandles av forfatterne.
-4. Et andre utkast sendes til både eksperter og regjeringer. Alle kommentarer og svar blir offentliggjort når rapporten er ferdig.
-5. *Sammendraget for beslutningstakere* (SPM) godkjennes linje for linje i et plenumsmøte med delegater fra regjeringene, i dialog med forfatterne. Selve rapporten blir akseptert av arbeidsgruppen uten linje-for-linje-behandling.
+4. Forfatterne lager et andre utkast og et første utkast til SPM. Begge sendes samtidig til både eksperter og regjeringer. Alle kommentarer og svar blir offentliggjort når rapporten er ferdig.
+5. Forfatterne lager sluttutkastene, og regjeringene sender skriftlige kommentarer til SPM. *Sammendraget for beslutningstakere* (SPM) godkjennes linje for linje i et plenumsmøte med delegater fra regjeringene, i dialog med forfatterne. Selve rapporten blir akseptert av arbeidsgruppen uten linje-for-linje-behandling.
 
 
 ## Hvordan uttrykker forskerne sikkerhet?
@@ -89,7 +89,7 @@ Tallene i firkantede klammer, for eksempel 1,07 [0,8 til 1,3] °C, viser som hov
 
 **Argo-flytere.** Argo er et internasjonalt program med flytere som driver med havstrømmene og beveger seg opp og ned i havet. Hver flyter settes ut fra et skip og synker til omtrent 1 km, der den driver i ti dager. Så synker den til 2 km og stiger mot overflaten mens den måler temperatur og saltholdighet. Dataene og posisjonen sendes via satellitt, og så starter en ny syklus på ti dager. Programmet startet i 2000. I 2024 samlet Argo omtrent 13 000 profiler per måned, og 30 land driver flytere (Argo, u.å.). Dataene viser hvor mye varme havet lagrer. Det er viktig, fordi havoppvarming sto for 91 % av oppvarmingen av klimasystemet (IPCC, 2021).
 
-**Måling av CO₂: Keeling-kurven.** Keeling-kurven er den daglige målingen av CO₂ i atmosfæren på Mauna Loa-observatoriet på Hawaii. Målingene startet i 1958 og drives av Scripps Institution of Oceanography, mens selve observatoriet drives av NOAA (Scripps, u.å.). Kurven har to trekk: et jevnt stigende trend og en årlig sagtann. Sagtannen kommer av at planter på den nordlige halvkule tar opp CO₂ om sommeren og slipper den ut igjen om høsten og vinteren (NOAA GML, u.å.). Verdiene for de siste årene står i [klimaendring og mennesket](/tema/klimaendring-menneskeskapt).
+**Måling av CO₂: Keeling-kurven.** Keeling-kurven er de kontinuerlige målingene av CO₂ i atmosfæren på Mauna Loa-observatoriet på Hawaii. Målingene startet i 1958 og drives av Scripps Institution of Oceanography, mens selve observatoriet drives av NOAA (Scripps, u.å.). Kurven har to trekk: et jevnt stigende trend og en årlig sagtann. Sagtannen kommer av at planter på den nordlige halvkule tar opp CO₂ om sommeren og slipper den ut igjen om høsten og vinteren (NOAA GML, u.å.). Verdiene for de siste årene står i [klimaendring og mennesket](/tema/klimaendring-menneskeskapt).
 
 ```widget
 KeelingKurveFigur
