@@ -290,7 +290,7 @@ export function SiteHeader() {
               to="/"
               className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-muted"
               onClick={() => setOpen(false)}
-              aria-label="Gå til hovedforsiden"
+              aria-label="Geofag Forside"
             >
               <div className="grid size-8 place-items-center rounded-md border border-border bg-card text-primary">
                 <GlobeMark />
@@ -528,7 +528,7 @@ function BrandCluster({
         to="/"
         className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-muted"
         onClick={onNavigate}
-        aria-label="Gå til hovedforsiden"
+        aria-label="Geofag Forside"
       >
         <div className="grid size-8 place-items-center rounded-md border border-border bg-card text-primary">
           <GlobeMark />
