@@ -155,9 +155,9 @@ Klimasoner er inndelinger av kloden etter temperatur og nedbør. Det mest brukte
 
 For tørt klima (B) bruker Köppen R for årsnedbøren i cm og T for årsmiddeltemperaturen i °C. Klimaet er tørt når R er mindre enn 2T hvis minst 70 % av nedbøren faller om vinteren, mindre enn 2T pluss 14 når nedbøren er jevnt fordelt, og mindre enn 2T pluss 28 hvis minst 70 % faller om sommeren (Mamen, 2025).
 
-Tilleggsbokstaver sier mer. **f** betyr fuktig hele året. **T** (tundra) betyr at minst én måned er over 0 °C, og **F** (evig frost) at alle måneder er under 0 °C. Tredje bokstav **a** betyr at varmeste måned er over 22 °C. Bokstaven **b** betyr at den er under 22 °C, men at minst fire måneder har minst 10 °C. Bokstaven **c** betyr at én til tre måneder har minst 10 °C (Mamen, 2025).
+Tilleggsbokstaver sier mer. **f** betyr fuktig hele året. **T** (tundra) betyr at minst én måned er over 0 °C, og **F** (evig frost) at alle måneder er under 0 °C. **s** betyr tørr sommer (Beck mfl., 2023). Tredje bokstav **a** betyr at varmeste måned er over 22 °C. Bokstaven **b** betyr at den er under 22 °C, men at minst fire måneder har minst 10 °C. Bokstaven **c** betyr at én til tre måneder har minst 10 °C (Mamen, 2025).
 
-> **Obs:** Grensen mellom C og D varierer mellom kilder. Store norske leksikon og Meteorologisk institutt bruker −3 °C for kaldeste måned. Beck mfl. (2018) bruker 0 °C i sitt kart over hele verden. Når du bruker et kart, må du derfor sjekke hvilken grense det bygger på.
+> **Obs:** Grensen mellom C og D varierer mellom kilder. Store norske leksikon og Meteorologisk institutt bruker −3 °C for kaldeste måned (Mamen, 2025; MET, 2021). Beck mfl. (2023) bruker 0 °C, og det gjør kartet under også. Med 0 °C-grensen blir flere steder D enn med −3 °C-grensen, for eksempel Oslo. Når du bruker et kart, må du derfor sjekke hvilken grense det bygger på.
 
 ### Eksempler fra Norge, 1991–2020
 
@@ -167,7 +167,7 @@ Vi bruker månedsmiddelene fra Dannevig og Harstveit (2026) og reglene over. Kla
 - **Nesbyen:** Kaldeste måned er −7,5 °C, så den er D. Bare tre måneder (juni, juli og august) har minst 10 °C, så tredje bokstav er c.
 - **Vardø:** Kaldeste måned er februar med −3,9 °C, så den er D. Juli har 10,0 °C og august 10,1 °C. Varmeste måned er altså så vidt over grensen på 10 °C mot polart klima, og to måneder har minst 10 °C, så tredje bokstav er c.
 
-Norge har tre klimasoner etter Köppen: polar (E), kaldtemperert (D) og varmtemperert (C). Kysten fra Oslofjorden til Troms har C-klima, og innlandet har D (Dannevig & Harstveit, 2026). Kartet under er Meteorologisk institutts (MET) Köppen-kart for normalperioden 1991–2020 (MET, 2021). Det viser polarklima på høyfjellet, med det største sammenhengende området i Sør-Norge, mens hele Finnmark ligger i D-sonen. Svalbard har polarklima (Dannevig & Harstveit, 2026), men er ikke med på kartet.
+Norge har tre klimasoner etter Köppen: polar (E), kaldtemperert (D) og varmtemperert (C). Med −3 °C-grensen har kysten fra Oslofjorden til Troms C-klima, og innlandet har D (Dannevig & Harstveit, 2026). Kartet under bruker 0 °C-grensen og viser normalperioden 1991–2020 (Beck mfl., 2023). Her ligger C-klima (Cfb) som et smalt belte langs kysten fra Sørlandet til Trøndelag, med små flekker av Cfc helt ytterst på kysten og i Lofoten og Vesterålen. Dfb finnes i lavlandet på Østlandet og i Trøndelag, i indre fjordstrøk på Vestlandet og langs kysten på Helgeland. Det meste av landet har Dfc, også nesten hele Finnmark. Polarklima (ET) ligger på høyfjellet over hele landet, med de største sammenhengende områdene i Sør-Norge, og som små flekker i Finnmark, blant annet ytterst på kysten i øst. Svalbard har polarklima (Dannevig & Harstveit, 2026), men er ikke med på kartet. Kartet er laget av klimadata i 1 km-ruter og stemmer ikke alltid med enkeltstasjoner: rundt Nesbyen viser det mest Dfb, mens målingene i eksempelet over gir Dfc.
 
 ```widget
 FigKoppenNorge
