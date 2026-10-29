@@ -3,83 +3,139 @@ import { useBoxWidth } from "./isbre-kit";
 import { BREDDE_TERSKEL } from "./g2a-kit";
 
 /**
- * Köppen-klimasoner i Norge 1991–2020. Kartet er Meteorologisk institutts originalkart (ikke tegnet av oss).
+ * Köppen–Geiger-klimasoner i Norge 1991–2020, kart fra Beck mfl. (2023).
  *
- * Kilde:  https://commons.wikimedia.org/wiki/File:K%C3%B6ppen_main_climate_zones_Norway_91-2020_-3C_isoterm.png
- * Forfatter: Norwegian Meteorological Institute (met.no), via Store norske leksikon. Lastet opp av Orcaborealis.
- * Lisens: Creative Commons Attribution 3.0 Unported (CC BY 3.0), sjekket på filsiden 29.10.2026.
- * Endringer: beskåret (tittel, ramme og bildetekst fra nettsiden fjernet), tegnforklaringen og forstørrelsesikonet
- * i bildet er malt over, og tegnforklaringen står som tekst under/ved siden av kartet.
- * Originalen er 501 × 958 px med nettsidetekst. Beskåret kart er 498 × 640 px, så 2x-bildet er originalens oppløsning.
+ * Kilde:  https://commons.wikimedia.org/wiki/File:Koppen-Geiger_Map_v2_NOR_1991%E2%80%932020.svg
+ * Forfattere: Beck, McVicar, Vergopolan, Alexis, Lutsko, Dufour, Zeng, Jian, van Dijk og Miralles. Lastet opp av NVergopolan.
+ * Lisens: Creative Commons Attribution 4.0 (CC BY 4.0), sjekket på filsiden og via Commons API 29.10.2026.
+ * Endringer: SVG-filen er et matplotlib-plott med ett innebygd rasterbilde (15 280 × 7 979 px). Rasterbildet er hentet ut,
+ * omprojisert fra lengde/bredde (som strekker Norge sidelengs) til Lambert konform kjegleprojeksjon, beskåret til Norge og
+ * lagret som AVIF/WebP i 640 og 1280 px bredde. Klassefargene er uendret. Tegnforklaringen står som HTML under/ved siden av.
+ * Se public/images/koppen-norge-beck-1991-2020.lisens.txt.
+ *
+ * Fargene under er Becks egne (hentet fra tegnforklaringen i SVG-en).
  */
+const BILDE_BREDDE = 640;
+const BILDE_HOYDE = 790;
 const KART_BREDDE = 320;
-const KART_HOYDE = 411;
-const FILSIDE = "https://commons.wikimedia.org/wiki/File:K%C3%B6ppen_main_climate_zones_Norway_91-2020_-3C_isoterm.png";
-const LISENS = "https://creativecommons.org/licenses/by/3.0/deed.no";
+const FILSIDE = "https://commons.wikimedia.org/wiki/File:Koppen-Geiger_Map_v2_NOR_1991%E2%80%932020.svg";
+const ARTIKKEL = "https://doi.org/10.1038/s41597-023-02549-6";
+const LISENS = "https://creativecommons.org/licenses/by/4.0/deed.no";
 
-/* Fargene er hentet fra pikslene i MET-kartet. */
-const SONER = [
-  { k: "C", navn: "varmtemperert klima", krav: "Kaldeste måned over −3 °C", farge: "#4bff00" },
-  { k: "D", navn: "kaldtemperert klima", krav: "Kaldeste måned under −3 °C og varmeste måned over 10 °C", farge: "#00237c" },
-  { k: "E", navn: "polarklima", krav: "Varmeste måned under 10 °C", farge: "#c7fff5" },
+type Klasse = { kode: string; navn: string; farge: string; liten?: boolean };
+type Gruppe = { bokstav: string; tittel: string; krav: string; klasser: Klasse[] };
+
+/* Rekkefølge og farger følger Becks tegnforklaring. */
+const GRUPPER: Gruppe[] = [
+  {
+    bokstav: "B",
+    tittel: "Tørt klima",
+    krav: "Lite nedbør i forhold til fordampning",
+    klasser: [{ kode: "BSk", navn: "tørt, steppe, kaldt", farge: "#ffdc64", liten: true }],
+  },
+  {
+    bokstav: "C",
+    tittel: "Temperert klima",
+    krav: "Kaldeste måned over 0 °C",
+    klasser: [
+      { kode: "Cfb", navn: "ingen tørketid, varm sommer", farge: "#64ff50" },
+      { kode: "Cfc", navn: "ingen tørketid, kjølig sommer", farge: "#32c800" },
+    ],
+  },
+  {
+    bokstav: "D",
+    tittel: "Kaldt klima",
+    krav: "Kaldeste måned under 0 °C, varmeste måned over 10 °C",
+    klasser: [
+      { kode: "Dsb", navn: "tørr sommer, varm sommer", farge: "#c800c8", liten: true },
+      { kode: "Dsc", navn: "tørr sommer, kjølig sommer", farge: "#963296", liten: true },
+      { kode: "Dfb", navn: "ingen tørketid, varm sommer", farge: "#37c8ff" },
+      { kode: "Dfc", navn: "ingen tørketid, kjølig sommer", farge: "#007d7d" },
+    ],
+  },
+  {
+    bokstav: "E",
+    tittel: "Polarklima",
+    krav: "Varmeste måned under 10 °C",
+    klasser: [{ kode: "ET", navn: "tundra", farge: "#b2b2b2" }],
+  },
 ];
 
 export function FigKoppenNorge() {
   const [boxRef, bw] = useBoxWidth<HTMLDivElement>();
   const bred = bw >= BREDDE_TERSKEL;
-  const base = "/images/koppen-norge-1991-2020";
+  const base = "/images/koppen-norge-beck-1991-2020";
+  const sizes = "(min-width: 680px) 360px, 320px";
+  const srcAvif = `${base}-640.avif 640w, ${base}-1280.avif 1280w`;
+  const srcWebp = `${base}-640.webp 640w, ${base}-1280.webp 1280w`;
   return (
     <FigureFrame
       heading="Köppen-klimasoner i Norge, 1991–2020"
       caption={
         <>
-          Kart: Meteorologisk institutt (MET), via{" "}
+          Kart: Beck mfl. (
+          <a className="underline underline-offset-2" href={ARTIKKEL} target="_blank" rel="noopener noreferrer">
+            2023
+          </a>
+          ), via{" "}
           <a className="underline underline-offset-2" href={FILSIDE} target="_blank" rel="noopener noreferrer">
             Wikimedia Commons
           </a>
           , lisens{" "}
           <a className="underline underline-offset-2" href={LISENS} target="_blank" rel="noopener noreferrer">
-            CC BY 3.0
+            CC BY 4.0
           </a>
-          . Endret: beskåret, og tegnforklaringen er flyttet fra kartet til teksten. Kartet viser fastlands-Norge.
-          Svalbard er ikke vist. Grensen mellom C og D er kaldeste måned −3 °C (andre kilder bruker 0 °C). Polar grense
-          er varmeste måned 10 °C.
+          . Bearbeidet: kartet er omprojisert og beskåret til Norge, og tegnforklaringen er flyttet fra bildet til
+          teksten. Grensen mellom C og D er kaldeste måned 0 °C (Beck). Polar grense er varmeste måned 10 °C. Kartet
+          viser fastlands-Norge. Svalbard er ikke vist. Mørk bakgrunn er hav, innsjøer og land utenfor Norge.
         </>
       }
     >
       <div ref={boxRef} className="w-full">
         <div className={bred ? "flex items-center justify-center gap-10" : "flex flex-col items-center gap-5"}>
-          <picture className="block shrink-0 overflow-hidden rounded-lg bg-white" style={{ width: KART_BREDDE, maxWidth: "100%" }}>
-            <source type="image/avif" srcSet={`${base}-320.avif 1x, ${base}-498.avif 2x`} />
-            <source type="image/webp" srcSet={`${base}-320.webp 1x, ${base}-498.webp 2x`} />
+          <picture className="block shrink-0 overflow-hidden rounded-lg" style={{ width: bred ? 360 : KART_BREDDE, maxWidth: "100%" }}>
+            <source type="image/avif" srcSet={srcAvif} sizes={sizes} />
+            <source type="image/webp" srcSet={srcWebp} sizes={sizes} />
             <img
-              src={`${base}-498.webp`}
-              srcSet={`${base}-320.webp 1x, ${base}-498.webp 2x`}
-              width={KART_BREDDE}
-              height={KART_HOYDE}
+              src={`${base}-640.webp`}
+              srcSet={srcWebp}
+              sizes={sizes}
+              width={BILDE_BREDDE}
+              height={BILDE_HOYDE}
               loading="lazy"
               decoding="async"
-              alt="Kart over fastlands-Norge med Köppen-klimasoner for 1991–2020. Kaldtemperert klima (D) dekker det meste av innlandet i Sør-Norge, Trøndelag og Nord-Norge, og hele Finnmark. Varmtemperert klima (C) ligger som et smalt belte langs kysten, fra Oslofjorden og Sørlandet rundt Vestlandet og videre nordover, og er bredest på Sørlandet og Vestlandet. Polarklima (E) dekker et stort sammenhengende høyfjellsområde i Sør-Norge og mindre flekker i fjellene lenger nord. Svalbard er ikke med."
+              alt="Kart over fastlands-Norge med Köppen-klimasoner for 1991–2020. Kaldt klima uten tørketid og med kjølig sommer (Dfc) dekker det meste av innlandet i Sør-Norge, Trøndelag og Nord-Norge, og hele Finnmark. Kaldt klima med varm sommer (Dfb) finnes i lavlandet på Østlandet og langs fjordene på Vestlandet og i Trøndelag. Temperert klima (Cfb) ligger som et smalt belte langs kysten fra Sørlandet til Nordland, og Cfc finnes på øyer ytterst i Nordland. Polarklima (ET) dekker høyfjellsområder, mest i Sør-Norge. Svalbard er ikke med."
               className="block h-auto w-full"
             />
           </picture>
-          <ul className={`m-0 flex list-none flex-col gap-4 p-0 ${bred ? "max-w-sm" : "w-full max-w-sm"}`}>
-            {SONER.map((z) => (
-              <li key={z.k} className="flex items-start gap-3">
-                <span
-                  aria-hidden="true"
-                  className="mt-1 block h-5 w-5 shrink-0 rounded border border-white/40"
-                  style={{ backgroundColor: z.farge }}
-                />
-                <span className="min-w-0 text-base leading-snug text-foreground">
-                  <strong className="font-semibold">
-                    {z.k}: {z.navn}
-                  </strong>
-                  <span className="block text-sm text-muted-foreground">{z.krav}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className={bred ? "max-w-sm" : "w-full max-w-sm"}>
+            <p className="m-0 mb-3 text-sm font-semibold text-foreground">Tegnforklaring (Beck)</p>
+            <ul className="m-0 flex list-none flex-col gap-4 p-0">
+              {GRUPPER.map((g) => (
+                <li key={g.bokstav}>
+                  <p className="m-0 text-base font-semibold leading-snug text-foreground">
+                    {g.bokstav}: {g.tittel}
+                  </p>
+                  <p className="m-0 text-sm leading-snug text-muted-foreground">{g.krav}</p>
+                  <ul className="m-0 mt-1.5 flex list-none flex-col gap-1.5 p-0">
+                    {g.klasser.map((k) => (
+                      <li key={k.kode} className="flex items-start gap-3">
+                        <span
+                          aria-hidden="true"
+                          className="mt-0.5 block h-5 w-5 shrink-0 rounded border border-white/60"
+                          style={{ backgroundColor: k.farge }}
+                        />
+                        <span className="min-w-0 text-base leading-snug text-foreground">
+                          <strong className="font-semibold">{k.kode}</strong>: {k.navn}
+                          {k.liten ? <span className="text-sm text-muted-foreground"> (svært lite areal)</span> : null}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </FigureFrame>

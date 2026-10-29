@@ -1,7 +1,0 @@
-Köppen-klimasoner i Norge 1991–2020 (kart)
-Forfatter: Norwegian Meteorological Institute (met.no), via Store norske leksikon
-Kilde: https://commons.wikimedia.org/wiki/File:K%C3%B6ppen_main_climate_zones_Norway_91-2020_-3C_isoterm.png
-Lisens: Creative Commons Attribution 3.0 Unported (CC BY 3.0), https://creativecommons.org/licenses/by/3.0/
-Sjekket på filsiden 2026-10-29 (LicenseShortName CC BY 3.0, AttributionRequired true).
-Endringer: beskåret til selve kartet (tittel, ramme, bildetekst og forstørrelsesikon fjernet), tegnforklaringen i bildet er malt over
-og står som tekst i figuren. Konvertert til AVIF og WebP i to størrelser (320 og 498 px bredde). Originalen er 501 x 958 px.
