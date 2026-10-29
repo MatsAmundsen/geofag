@@ -159,9 +159,9 @@ export function TopicLayout({
             fetchPriority="high"
             className={`absolute inset-0 h-full w-full object-cover ${src.includes("banner-naturlige-padriv") ? "object-[0%_25%] md:object-[0%_30%]" : ""}`}
           />
-          <div className={`absolute inset-0 bg-gradient-to-t from-background ${src.includes("banner-naturlige-padriv") ? "via-background/85 to-background/70" : "via-background/75 to-background/25"}`} />
+          <div className={`absolute inset-0 bg-gradient-to-t from-background ${src.includes("banner-naturlige-padriv") ? "via-background/70 via-40% to-background/0" : "via-background/75 to-background/25"}`} />
           <div className="relative mx-auto flex min-h-72 max-w-4xl flex-col justify-end px-4 py-12 sm:px-6">
-            <p className={`text-xs font-medium uppercase tracking-wider ${src.includes("banner-naturlige-padriv") ? "text-[#9ecccf]" : "text-primary"}`}>{kicker}</p>
+            <p className={`text-xs font-medium uppercase tracking-wider ${src.includes("banner-naturlige-padriv") ? "self-start rounded-md bg-background/85 px-2 py-0.5 text-[#9ecccf]" : "text-primary"}`}>{kicker}</p>
             <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
               {title}
             </h1>
