@@ -98,6 +98,12 @@ export const KILDER_B = {
       href: "https://snl.no/klimasoner",
     },
     {
+      prefix: "Meteorologisk institutt [MET]. (2021, 1. mars). ",
+      italic: "Köppen main climate zones Norway 91-2020 -3C isoterm",
+      suffix: " [Kart]. Wikimedia Commons. Lisens: CC BY 3.0.",
+      href: "https://commons.wikimedia.org/wiki/File:K%C3%B6ppen_main_climate_zones_Norway_91-2020_-3C_isoterm.png",
+    },
+    {
       prefix: "Meteorologisk institutt [MET]. (2026, 8. oktober). ",
       italic: "Orografisk nedbør",
       suffix: ". Store norske leksikon.",
