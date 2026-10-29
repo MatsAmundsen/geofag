@@ -18,7 +18,7 @@ function brytt(tekst: string, maks: number): string[] {
 /* ---------- FigNorgeFramskrivninger ---------- */
 
 type Obs = { t: string; p: string };
-type Rad = { id: string; navn: string; obs: Obs[]; vt: string; vn: string; ekstra?: { tag: string; lin: string[] } };
+type Rad = { id: string; navn: string; obs: Obs[]; vt: string; vn: string; ekstra?: { tag: string; lin: string[] }; obsTekst?: string };
 
 const NRAD: Rad[] = [
   {
@@ -41,11 +41,12 @@ const NRAD: Rad[] = [
     id: "hav",
     navn: "Havnivå",
     obs: [],
+    obsTekst: "Varierer langs kysten. 1960–2022: negativ relativ endring ved Oslofjorden og deler av Trøndelag og Nordland, positiv langs deler av Vest- og Sørlandet. Omtrent 60 % av kysten uten vesentlig endring.",
     vt: "omtrent 36 cm",
     vn: "relativ havnivåstigning i 2100, gjennomsnitt for Norge (SSP3-7.0)",
     ekstra: {
       tag: "Lav sannsynlighet, stor konsekvens",
-      lin: ["(SSP5-8.5 og raskt istap i Antarktis):", "omtrent 1–1,5 m innen 2100", "opptil omtrent 4,5–5 m innen 2150"],
+      lin: ["Relativ havnivåstigning kan nærme seg", "1–1,5 m innen 2100 og opptil", "4,5–5 m innen 2150 (SSP5-8.5 og", "raskt istap i Antarktis)"],
     },
   },
 ];
@@ -106,7 +107,7 @@ function norgeBlokker() {
   const rader = NRAD.map((r) => {
     const vnl = r.vn ? brytt(r.vn, 36) : [];
     const ekl = r.ekstra ? 1 + r.ekstra.lin.length : 0;
-    const obsH = r.obs.length ? r.obs.length * 44 : 40;
+    const obsH = r.obs.length ? r.obs.length * 44 : r.obsTekst ? brytt(r.obsTekst, 36).length * 18 + 22 : 40;
     const h = 38 + 22 + obsH + 22 + 30 + vnl.length * 18 + (ekl ? ekl * 18 + 14 : 0) + 22;
     const v = { r, y, h, vnl };
     y += h + 12;
@@ -123,13 +124,13 @@ export function FigNorgeFramskrivninger() {
       heading="Norge mot 2100"
       caption="Fastlands-Norge. Observert endring og videre endring fram mot slutten av århundret hvis utslippene fortsetter å øke. Kilde: Norsk klimaservicesenter (2025), Oppsummeringer fra Klima i Norge 2025."
       narrow={{ w: 300, h: norgeBlokker().h }}
-      wide={{ w: 720, h: 650 }}
+      wide={{ w: 720, h: 678 }}
       animated
       name="Norge mot 2100"
     >
       {({ bred }) => {
         if (bred) {
-          const hh = [108, 108, 80, 80, 176];
+          const hh = [108, 108, 80, 80, 204];
           let y = 86;
           const ys = hh.map((h) => {
             const v = y;
@@ -157,7 +158,7 @@ export function FigNorgeFramskrivninger() {
                         </g>
                       ))
                     ) : (
-                      <T x={182} y={ry + 28} lines={["Ikke tallfestet", "i denne figuren"]} size={14} fill={C.muted} lh={18} />
+                      <T x={182} y={ry + 28} lines={brytt(r.obsTekst ?? "", 31)} size={14} fill={C.fg} lh={18} />
                     )}
                     <T x={466} y={ry + 28} lines={r.vt} size={20} weight={800} fill={C.low} />
                     {r.vn ? <T x={466} y={ry + 48} lines={brytt(r.vn, 38)} size={14} fill={C.fg} lh={18} /> : null}
@@ -198,10 +199,10 @@ export function FigNorgeFramskrivninger() {
                       </g>
                     ))
                   ) : (
-                    <T x={16} y={cy + 4} lines="Ikke tallfestet i denne figuren" size={14} fill={C.muted} />
+                    <T x={16} y={cy + 4} lines={brytt(r.obsTekst ?? "", 36)} size={14} fill={C.fg} lh={18} />
                   )}
                   {(() => {
-                    cy += r.obs.length ? r.obs.length * 44 : 40;
+                    cy += r.obs.length ? r.obs.length * 44 : r.obsTekst ? brytt(r.obsTekst, 36).length * 18 + 22 : 40;
                     return null;
                   })()}
                   <T x={16} y={cy + 10} lines="Videre, hvis utslippene fortsetter å øke" size={14} weight={800} fill={C.muted} />
@@ -230,21 +231,21 @@ const GR = [
   {
     v: 1.5,
     tittel: "Over 1,5 °C",
-    it: [{ t: "hard", tag: "Mulig hard grense", tekst: "Begrensede ferskvannsressurser for små øystater og regioner som er avhengige av smeltevann fra breer og snø." }] as Pkt[],
+    it: [{ t: "hard", tag: "Potensielt harde grenser", tekst: "Framskrives: begrensede ferskvannsressurser for små øystater og regioner som er avhengige av smeltevann fra breer og snø." }] as Pkt[],
     tillit: "Middels tillit",
   },
   {
     v: 2,
     tittel: "2 °C",
-    it: [{ t: "myk", tag: "Myke grenser", tekst: "For flere viktige matplanter i mange dyrkingsområder, særlig i tropene." }] as Pkt[],
+    it: [{ t: "myk", tag: "Myke grenser", tekst: "Framskrives: for flere viktige matvekster, særlig i tropene." }] as Pkt[],
     tillit: "Høy tillit",
   },
   {
     v: 3,
     tittel: "3 °C",
     it: [
-      { t: "myk", tag: "Myke grenser", tekst: "For noen tiltak i vannforvaltning i mange regioner." },
-      { t: "hard", tag: "Harde grenser", tekst: "I deler av Europa." },
+      { t: "myk", tag: "Myke grenser", tekst: "Framskrives: for noen tiltak i vannforvaltning i mange regioner." },
+      { t: "hard", tag: "Harde grenser", tekst: "Framskrives: i deler av Europa." },
     ] as Pkt[],
     tillit: "Middels tillit",
   },
@@ -279,10 +280,10 @@ function Kort({ x, y, w, g, maks }: { x: number; y: number; w: number; g: (typeo
 export function FigTilpasningsgrenser() {
   return (
     <G2Figur
-      title="Grensene for tilpasning kommer tidligere jo varmere det blir"
-      desc="Skala for global oppvarming med tre markeringer. Hard grense betyr at ingen tilpasningstiltak kan hindre uakseptabel risiko. Myk grense betyr at tiltak finnes kanskje, men ikke er tilgjengelige nå. Over 1,5 grader: mulige harde grenser, begrensede ferskvannsressurser for små øystater og regioner avhengige av smeltevann fra breer og snø, middels tillit. Ved 2 grader: myke grenser for flere viktige matplanter i mange dyrkingsområder, særlig i tropene, høy tillit. Ved 3 grader: myke grenser for noen tiltak i vannforvaltning i mange regioner og harde grenser i deler av Europa, middels tillit."
-      heading="Grensene for tilpasning kommer tidligere jo varmere det blir"
-      caption="Skalaen er forenklet: markeringene viser 1,5, 2 og 3 °C global oppvarming, ikke et fullstendig sett av grenser. Kilde: IPCC (2022), Summary for Policymakers, C.3.4; Möller mfl. (2022)."
+      title="Flere tilpasningsgrenser nås når det blir varmere"
+      desc="Skala for global oppvarming med tre markeringer. Hard grense betyr at ingen tilpasningstiltak kan hindre uakseptabel risiko. Myk grense betyr at tiltak finnes kanskje, men ikke er tilgjengelige nå. Framskrivninger. Over 1,5 grader: potensielt harde grenser, begrensede ferskvannsressurser for små øystater og regioner avhengige av smeltevann fra breer og snø, middels tillit. Ved 2 grader: myke grenser for flere viktige matvekster, særlig i tropene, høy tillit. Ved 3 grader: myke grenser for noen tiltak i vannforvaltning i mange regioner og harde grenser i deler av Europa, middels tillit."
+      heading="Flere tilpasningsgrenser nås når det blir varmere"
+      caption="Skalaen er forenklet: markeringene viser 1,5, 2 og 3 °C global oppvarming, ikke et fullstendig sett av grenser. Utsagnene er framskrivninger, ikke observasjoner. IPCC angir tillit (middels eller høy), ikke sannsynlighet, for dem. Kilde: IPCC (2022), Summary for Policymakers, C.3.4; Möller mfl. (2022)."
       narrow={{ w: 300, h: 835 }}
       wide={{ w: 720, h: 470 }}
       animated
