@@ -167,7 +167,7 @@ Vi bruker månedsmiddelene fra Dannevig og Harstveit (2026) og reglene over. Kla
 - **Nesbyen:** Kaldeste måned er −7,5 °C, så den er D. Bare tre måneder (juni, juli og august) har minst 10 °C, så tredje bokstav er c.
 - **Vardø:** Kaldeste måned er februar med −3,9 °C, så den er D. Juli har 10,0 °C og august 10,1 °C. Varmeste måned er altså så vidt over grensen på 10 °C mot polart klima, og to måneder har minst 10 °C, så tredje bokstav er c.
 
-Norge har tre klimasoner etter Köppen: polar (E), kaldtemperert (D) og varmtemperert (C). Meteorologisk institutt har laget Köppen-kart for normalperiodene 1961–90 og 1991–2020. Sammenligningen viser at det polare klimaet er sterkt redusert, og at det varmtemperte klimaet har økt i Sør-Norge (Mamen, 2025). Kysten fra Oslofjorden til Troms har C-klima, innlandet har D, og høyfjellet, Finnmarkskysten og Svalbard har polarklima (Dannevig & Harstveit, 2026).
+Norge har tre klimasoner etter Köppen: polar (E), kaldtemperert (D) og varmtemperert (C). Meteorologisk institutt har laget Köppen-kart for normalperiodene 1961–90 og 1991–2020. Sammenligningen viser at det polare klimaet er sterkt redusert, og at det varmtemperte klimaet har økt i Sør-Norge (Mamen, 2025). Kysten fra Oslofjorden til Troms har C-klima, innlandet har D, og polarklima (ET, tundraklima) finnes på høyfjellet og på Svalbard (Dannevig & Harstveit, 2026).
 
 ```widget
 FigKoppenNorge
