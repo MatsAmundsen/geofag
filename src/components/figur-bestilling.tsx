@@ -24,7 +24,7 @@ export const FIGUR_BESTILLINGER: Record<string, string> = {
   FigKoppenNorge: "Köppen-klimasoner i Norge, normalperiodene 1961–90 og 1991–2020",
   FigNedborTyper: "Tre typer nedbør: orografisk, konvektiv og frontal",
   FigNaturligTidsskalaer: "Naturlige klimapådriv på tidsskalaer fra 1 år til milliarder av år (logaritmisk akse)",
-  FigSolflekker: "Årlig internasjonalt solflekktall (SILSO) fra 1700, med Maunder-minimum markert",
+  FigSolflekker: "Skjematisk, idealisert solsyklus på ca. 11 år (8–14 år), uten ekte dataserie, med Maunder-minimum 1645–1715 markert",
   FigTektonikkKarbon: "Hypotesen om Himalaya, forvitring og CO₂ som kjede, med tilbakekoblinger",
   FigHavbunnenProfil: "Havbunnens landskap: sokkel, skråning, kontinentalfot, dyphavsslette, midthavsrygg og dyphavsgrav, med dyp",
   FigVannmasserAtlanterhavet: "Skjematisk dybdesnitt av vannmasser i Atlanterhavet (Talley, 2019)",
