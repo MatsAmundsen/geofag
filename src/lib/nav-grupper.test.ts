@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { NAV_GF2, NAV_GF2_GROUPS } from "./nav.ts";
+import { NAV_GF2, NAV_GF2_GROUPS, NAV_GF2_ROWS } from "./nav.ts";
 
 test("mobilmenyen for Geofag 2 har hver lenke i nøyaktig én gruppe, med uendrede navn", () => {
   const alle = NAV_GF2_GROUPS.flatMap((g) => g.items);
@@ -15,6 +15,13 @@ test("mobilmenyen for Geofag 2 har hver lenke i nøyaktig én gruppe, med uendre
 test("gruppene følger temaene atmosfære, hav, kryosfære og klima", () => {
   assert.deepEqual(
     NAV_GF2_GROUPS.map((g) => g.label),
-    ["Start", "Atmosfære", "Hav", "Kryosfære", "Klima", "Annet"],
+    ["Start", "Atmosfære", "Hav", "Kryosfære", "Klima", "Energi", "Annet"],
   );
+});
+
+test("desktopmenyen deler NAV_GF2 i to rader på 13", () => {
+  assert.equal(NAV_GF2_ROWS.length, 2);
+  assert.equal(NAV_GF2_ROWS[0].length, 13);
+  assert.equal(NAV_GF2_ROWS[1].length, 13);
+  assert.deepEqual(NAV_GF2_ROWS.flat(), [...NAV_GF2]);
 });

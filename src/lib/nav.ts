@@ -82,7 +82,7 @@ export const NAV_GF2 = [
  * Rad 1 er inngang, vær og hav. Rad 2 er klima, is, samfunn og metode.
  * Rekkefølgen er den samme som NAV_GF2.
  */
-export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 11), NAV_GF2.slice(11)] as const;
+export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 13), NAV_GF2.slice(13)] as const;
 
 /** Henter lenker fra NAV_GF2 i den rekkefølgen de står her. Kaster hvis en lenke ikke finnes. */
 function gf2(...to: string[]): readonly NavItem[] {
@@ -103,12 +103,13 @@ export const NAV_GF2_GROUPS: readonly NavGroup[] = [
   {
     label: "Atmosfære",
     items: gf2(
+      "/tema/coriolis",
       "/tema/hoytrykk-lavtrykk",
       "/tema/vindsystemet",
       "/tema/vaerkart",
       "/tema/lokale-vaersystemer",
+      "/tema/skyer-nedbor-klimasoner",
       "/tema/jetstrommer",
-      "/tema/coriolis",
       "/tema/vaerkatastrofer",
     ),
   },
@@ -116,9 +117,20 @@ export const NAV_GF2_GROUPS: readonly NavGroup[] = [
   { label: "Kryosfære", items: gf2("/tema/kryosfaeren") },
   {
     label: "Klima",
-    items: gf2("/tema/klima", "/tema/numeriske-modeller", "/tema/paleoklima", "/tema/milankovitch", "/tema/tilpasning"),
+    items: gf2(
+      "/tema/klima",
+      "/tema/numeriske-modeller",
+      "/tema/paleoklima",
+      "/tema/milankovitch",
+      "/tema/naturlige-klimapadriv",
+      "/tema/klimaendring-menneskeskapt",
+      "/tema/klimatiltak",
+      "/tema/klimaforskning",
+      "/tema/tilpasning",
+    ),
   },
-  { label: "Annet", items: gf2("/tema/energi-hav-luft", "/tema/felt-hav-luft-is", "/poster") },
+  { label: "Energi", items: gf2("/tema/energi-hav-luft", "/tema/energi-regning") },
+  { label: "Annet", items: gf2("/tema/felt-hav-luft-is", "/poster") },
 ];
 
 /** Mobilmenyens grupper for forsiden (4 lenker, ingen overskrifter). */
