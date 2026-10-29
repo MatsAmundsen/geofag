@@ -1,5 +1,6 @@
 Köppen–Geiger-klimasoner i Norge 1991–2020 (kart)
-Forfattere: Beck, H.E., McVicar, T.R., Vergopolan, N., Alexis, B., Lutsko, N.J., Dufour, A., Zeng, Z., Jian, X., van Dijk, A.I.J.M., Miralles, D.G.
+Forfattere: Beck, H.E., McVicar, T.R., Vergopolan, N., Berg, A. (Alexis Berg), Lutsko, N.J., Dufour, A., Zeng, Z., Jiang, X. (Xin Jiang), van Dijk, A.I.J.M., Miralles, D.G.
+(Commons-metadata har feil navn, «Alexis, B.» og «Jian, X.»; riktige navn etter Crossref/Scientific Data 10, 724.)
 Verk: «Köppen–Geiger climate classification map at 1-km resolution for Norway 1991–2020» (Koppen-Geiger Map v2 NOR 1991–2020.svg), lastet opp av NVergopolan 23.3.2024.
 Kilde: https://commons.wikimedia.org/wiki/File:Koppen-Geiger_Map_v2_NOR_1991%E2%80%932020.svg
 Datagrunnlag: Beck et al. (2023), «High-resolution (1 km) Köppen-Geiger maps for 1901–2099 based on constrained CMIP6 projections», Scientific Data 10, 724. https://doi.org/10.1038/s41597-023-02549-6
