@@ -7,7 +7,7 @@ const TRINN = [
   { e: "GWh", p: "GW", sub: "1000 MWh", subp: "1000 MW" },
   { e: "MWh", p: "MW", sub: "1000 kWh", subp: "1000 kW" },
   { e: "kWh", p: "kW", sub: "1000 Wh", subp: "1000 W" },
-  { e: "Wh", p: "W", sub: "grunnenhet", subp: "grunnenhet" },
+  { e: "Wh", p: "W", sub: "1 Wh = 3600 J", subp: "SI-enhet" },
 ];
 
 function Trapp({ x0, y0, w, rowH, gap, indent, mk }: { x0: number; y0: number; w: number; rowH: number; gap: number; indent: number; mk: string }) {
@@ -73,9 +73,9 @@ export function EnhetstrappFigur() {
   return (
     <G2Figur
       title="Enhetstrapp for energi og effekt"
-      desc="To søyler med trinn der hvert trinn er 1000 ganger større: energi i Wh, kWh, MWh, GWh og TWh, og effekt i W, kW, MW, GW og TW. Effekt ganger tid er energi. Til høyre står omregninger: 1 kWh er 3,6 MJ, 1000 Sm³ gass er 1,0 Sm³ o.e., 1 Sm³ olje er om lag 35 500 MJ eller 9860 kWh, og 20 000 kWh er 20 MWh."
+      desc="To søyler med trinn der hvert trinn er 1000 ganger større: energi i Wh, kWh, MWh, GWh og TWh, og effekt i W, kW, MW, GW og TW. Effekt ganger tid er energi. SI-enheten for energi er joule, og 1 Wh er 3600 J. Til høyre står omregninger: 1 kWh er 3,6 MJ, 1000 Sm³ gass er 1,0 Sm³ o.e., 1 Sm³ olje er om lag 35 500 MJ eller 9860 kWh, og 20 000 kWh er 20 MWh."
       heading="Enhetstrappen: hvert trinn er 1000 ganger større"
-      caption="Effekt (W) sier hvor raskt energi brukes eller produseres. Energi er effekt multiplisert med tid. Elektrisk energi oppgis vanligvis i kilowattimer (kWh), og 1 kWh = 3,6 MJ. Sm³ o.e. er en samleenhet for olje og gass, ikke en eksakt energienhet."
+      caption="Effekt (W) sier hvor raskt energi brukes eller produseres. Energi er effekt multiplisert med tid. Elektrisk energi oppgis vanligvis i kilowattimer (kWh), og 1 kWh = 3,6 MJ. SI-enheten for energi er joule (J), ikke wattime. Sm³ o.e. er en samleenhet for olje og gass, ikke en eksakt energienhet."
       narrow={{ w: 300, h: 780 }}
       wide={{ w: 720, h: 410 }}
       animated

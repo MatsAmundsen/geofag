@@ -17,9 +17,9 @@ const RASK: KNode[] = [
 ];
 const LANGSOM: KNode[] = [
   { navn: "Vulkanutbrudd", d: "karbon ut", dir: "ut" },
-  { navn: "Forvitring", d: "karbon ut", dir: "ut" },
-  { navn: "Sediment", d: "karbon lagres", dir: null },
+  { navn: "Forvitring", d: "tar opp CO₂", dir: "inn" },
   { navn: "Kalkstein", d: "bergart", dir: null },
+  { navn: "Sediment", d: "karbon lagres", dir: null },
   { navn: "Kull", d: "kull, olje, gass", dir: "ut", fossil: true },
 ];
 
@@ -39,7 +39,7 @@ function KretsPanel({
       <T x={x + 14} y={y + 26} lines={tittel} size={16} weight={700} fill={f} />
       <T x={x + 14} y={y + 46} lines={under} size={14} fill={C.muted} />
       {kobl.map(([a, b]) => (
-        <Flow key={a} d={`M${nx + 24} ${y0 + a * RAD + NH + 1} L${nx + 24} ${y0 + b * RAD - 2}`} color={f} marker={mk[f === C.sand ? "sand" : "teal"]} w={2} cls="a a-flow" />
+        <Flow key={`${a}-${b}`} d={a < b ? `M${nx + 24} ${y0 + a * RAD + NH + 1} L${nx + 24} ${y0 + b * RAD - 2}` : `M${nx + 24} ${y0 + a * RAD - 1} L${nx + 24} ${y0 + b * RAD + NH + 2}`} color={f} marker={mk[f === C.sand ? "sand" : "teal"]} w={2} cls="a a-flow" />
       ))}
       {noder.map((n, i) => {
         const ny = y0 + i * RAD;
@@ -88,11 +88,11 @@ export function KarbonkretsloepFigur() {
   return (
     <G2Figur
       title="Karbonkretsløpet: det raske og det langsomme kretsløpet"
-      desc="Diagram med to kretsløp som begge utveksler karbon med lufta. I det raske kretsløpet tar planter og alger opp CO₂, karbonet går videre til dyr og jord og kommer tilbake til lufta ved respirasjon og nedbrytning, og havet tar opp og avgir CO₂. Omløpstiden er fra dager til noen tusen år. I det langsomme kretsløpet går karbon inn i sediment og bergarter som kalkstein og kull, og kommer ut igjen ved forvitring og vulkanutbrudd. Det tar fra tusenvis til millioner av år. En pil viser at brenning av fossilt brensel i berggrunnen flytter karbon til lufta. Under vises at av CO₂-utslippene i tiåret 2015 til 2024 ble 50 prosent værende i lufta, 29 prosent gikk til havet og 21 prosent til landjorda. IPCC anslår at land og hav til sammen tar opp omtrent 56 prosent av utslippene hvert år."
+      desc="Diagram med to kretsløp som begge utveksler karbon med lufta. I det raske kretsløpet tar planter og alger opp CO₂, karbonet går videre til dyr og jord og kommer tilbake til lufta ved respirasjon og nedbrytning, og havet tar opp og avgir CO₂. Omløpstiden er fra dager til noen tusen år. I det langsomme kretsløpet går karbon inn i sediment og bergarter som kalkstein og kull, og kommer ut igjen ved vulkanutbrudd, mens forvitring tar CO₂ ut av lufta. Sediment går i to grener, til kalkstein og til kull. Det tar fra tusenvis til millioner av år. En pil viser at brenning av fossilt brensel i berggrunnen flytter karbon til lufta. Under vises at av CO₂-utslippene i tiåret 2015 til 2024 ble 50 prosent værende i lufta, 29 prosent gikk til havet og 21 prosent til landjorda. IPCC anslår at land og hav til sammen tar opp omtrent 56 prosent av utslippene hvert år, som snitt over seks tiår."
       heading="Karbonkretsløpet: raskt og langsomt"
-      caption="Pilene viser hvilken vei karbonet går. Fordelingen gjelder CO₂-utslippene i tiåret 2015–2024. Kilder: Store norske leksikon (SNL, u.å.), Bjerknessenteret (u.å.), IPCC (2021) og Friedlingstein mfl. (2026)."
-      narrow={{ w: 300, h: 1064 }}
-      wide={{ w: 720, h: 640 }}
+      caption="Pilene viser hvilken vei karbonet går. Fordelingen på 50, 29 og 21 % gjelder CO₂-utslippene i tiåret 2015–2024 (Friedlingstein mfl., 2026), mens 56 % er et IPCC-snitt over seks tiår. Kilder: Store norske leksikon (SNL, u.å.), Bjerknessenteret (u.å.), IPCC (2021) og Friedlingstein mfl. (2026)."
+      narrow={{ w: 300, h: 1100 }}
+      wide={{ w: 720, h: 656 }}
       animated
       name="karbonkretslop-figuren"
     >
@@ -114,13 +114,13 @@ export function KarbonkretsloepFigur() {
               <>
                 <KretsPanel x={10} y={10} w={260} h={hS} tittel="Det raske kretsløpet" under="dager til noen tusen år" f={C.teal} noder={RASK} nx={24} nw={146} airX={290} airW={140} luft="hoyre" mk={mk} bred kobl={[[0, 1], [1, 2]]} />
                 <Luftblokk x={290} y={76} w={140} h={3 * RAD + NH + 4 * 0 + RAD} />
-                <KretsPanel x={450} y={10} w={260} h={hS} tittel="Det langsomme kretsløpet" under="tusenvis til millioner av år" f={C.sand} noder={LANGSOM} nx={564} nw={132} airX={290} airW={140} luft="venstre" mk={mk} bred kobl={[[2, 3], [3, 4]]} />
+                <KretsPanel x={450} y={10} w={260} h={hS} tittel="Det langsomme kretsløpet" under="tusenvis til millioner av år" f={C.sand} noder={LANGSOM} nx={564} nw={132} airX={290} airW={140} luft="venstre" mk={mk} bred kobl={[[3, 2], [3, 4]]} />
               </>
             ) : (
               <>
                 <KretsPanel x={10} y={10} w={280} h={hF} tittel="Det raske kretsløpet" under="dager til noen tusen år" f={C.teal} noder={RASK} nx={22} nw={140} airX={208} airW={74} luft="hoyre" mk={mk} bred={false} kobl={[[0, 1], [1, 2]]} />
                 <Luftblokk x={208} y={76} w={74} h={3 * RAD + NH} />
-                <KretsPanel x={10} y={10 + hF + 12} w={280} h={hS} tittel="Det langsomme kretsløpet" under="tusenvis til millioner av år" f={C.sand} noder={LANGSOM} nx={22} nw={140} airX={208} airW={74} luft="hoyre" mk={mk} bred={false} kobl={[[2, 3], [3, 4]]} />
+                <KretsPanel x={10} y={10 + hF + 12} w={280} h={hS} tittel="Det langsomme kretsløpet" under="tusenvis til millioner av år" f={C.sand} noder={LANGSOM} nx={22} nw={140} airX={208} airW={74} luft="hoyre" mk={mk} bred={false} kobl={[[3, 2], [3, 4]]} />
                 <Luftblokk x={208} y={10 + hF + 12 + 66} w={74} h={4 * RAD + NH} />
               </>
             )}
@@ -145,8 +145,8 @@ export function KarbonkretsloepFigur() {
               );
             })}
             {!bred && <T x={10} y={yD + 88} lines={["50 % ble i lufta, 29 % gikk til havet", "og 21 % til landjorda."]} size={14} fill={C.fg} lh={17} />}
-            <Box x={10} y={yD + (bred ? 86 : 124)} w={bred ? 700 : 280} h={bred ? 44 : 70} stroke={G.line} fill={G.panel2} sw={1.4} />
-            <T x={22} y={yD + (bred ? 113 : 148)} lines={bred ? "IPCC anslår at land og hav til sammen tar opp omtrent 56 % av CO₂-utslippene hvert år." : ["IPCC anslår at land og hav til sammen", "tar opp omtrent 56 % av CO₂-utslippene", "hvert år."]} size={14} fill={C.fg} lh={17} />
+            <Box x={10} y={yD + (bred ? 86 : 124)} w={bred ? 700 : 280} h={bred ? 62 : 106} stroke={G.line} fill={G.panel2} sw={1.4} />
+            <T x={22} y={yD + (bred ? 113 : 148)} lines={bred ? ["IPCC anslår at land og hav til sammen tar opp omtrent 56 % av CO₂-utslippene hvert år,", "som snitt over seks tiår. Det er ikke det samme som 50 % i tiåret 2015–2024."] : ["IPCC anslår at land og hav til", "sammen tar opp omtrent 56 % av", "CO₂-utslippene hvert år, som snitt", "over seks tiår (ikke tiåret", "2015–2024)."]} size={14} fill={C.fg} lh={17} />
           </>
         );
       }}
@@ -175,7 +175,7 @@ export function UtslippSektorFigur() {
       title="Globale klimagassutslipp 2019 fordelt på sektorer"
       desc="Stolpediagram over de globale klimagassutslippene i 2019, som var 59 pluss minus 6,6 milliarder tonn CO₂-ekvivalenter. Energiforsyning sto for 34 prosent, industri 24 prosent, jordbruk, skogbruk og arealbruk 22 prosent, transport 15 prosent og bygg 6 prosent. Prosentene er avrundet og summerer seg til 101. En egen stolpe viser at av de fossile CO₂-utslippene i 2024 kom 41 prosent fra kull, 32 prosent fra olje og 21 prosent fra gass."
       heading="Utslipp fordelt på sektorer"
-      caption="Prosentene er avrundet og summerer seg til 101 %. Regnes strøm og varme der de brukes, blir industri 34 % og bygg 16 %. Kilder: IPCC (2022) og Friedlingstein mfl. (2026)."
+      caption="Prosentene er avrundet og summerer seg til 101 %. Regnes strøm og varme der de brukes, blir industri 34 % og bygg 16 %. Sement og annet 6 %. Kilder: IPCC (2022) og Friedlingstein mfl. (2026)."
       narrow={{ w: 300, h: 792 }}
       wide={{ w: 720, h: 384 }}
     >
@@ -245,9 +245,9 @@ export function KarbonbudsjettFigur() {
   return (
     <G2Figur
       title="Karbonbudsjettet for 1,5 og 2 grader: mer sikkerhet gir mindre budsjett"
-      desc="Stolpediagram over det gjenværende karbonbudsjettet i milliarder tonn CO₂ fra begynnelsen av 2020, etter sannsynlighet for å holde seg under grensen. For 1,5 grader er budsjettet 900 ved 17 prosent, 650 ved 33, 500 ved 50, 400 ved 67 og 300 ved 83 prosent. For 2 grader er det 2300, 1700, 1350, 1150 og 900. Jo større sannsynlighet, desto mindre budsjett. Et eget panel viser budsjettet fra begynnelsen av 2026 ifølge Global Carbon Project: 170 for 1,5 grader med 50 prosent sannsynlighet, 525 for 1,7 grader og 1055 for 2 grader. Med 38 milliarder tonn i året er 170 brukt opp om mellom fire og fem år."
+      desc="Stolpediagram over det gjenværende karbonbudsjettet i milliarder tonn CO₂ fra begynnelsen av 2020, etter sannsynlighet for å holde seg under grensen. For 1,5 grader er budsjettet 900 ved 17 prosent, 650 ved 33, 500 ved 50, 400 ved 67 og 300 ved 83 prosent. For 2 grader er det 2300, 1700, 1350, 1150 og 900. Jo større sannsynlighet, desto mindre budsjett. Et eget panel viser budsjettet fra begynnelsen av 2026 ifølge Global Carbon Project: 170 for 1,5 grader med 50 prosent sannsynlighet, 525 for 1,7 grader og 1055 for 2 grader. Med 42 milliarder tonn i året er 170 brukt opp om lag fire år. Panelene har ulik skala."
       heading="Karbonbudsjettet: sikkerhet mot mengde"
-      caption="Tall i Gt CO₂. Usikkerheten fra andre gasser og tilbakekoblinger er minst ±220 Gt CO₂. Fire og fem år er regnet ut av oss: 170 ÷ 38. Kilder: IPCC (2021) og Friedlingstein mfl. (2026)."
+      caption="Tall i Gt CO₂. Usikkerheten fra andre gasser og tilbakekoblinger er minst ±220 Gt CO₂. Om lag fire år er regnet ut av oss: 170 ÷ 42 Gt. Panelene har ulik skala. Kilder: IPCC (2021) og Friedlingstein mfl. (2026)."
       narrow={{ w: 300, h: 820 }}
       wide={{ w: 720, h: 452 }}
     >
@@ -314,7 +314,7 @@ export function KarbonbudsjettFigur() {
             <T x={gx + 12} y={gy + 198} lines="Hvor lenge varer 170 Gt?" size={14} weight={700} fill={C.fg} />
             {[0, 1, 2, 3, 4].map((k) => {
               const sx = gx + 12 + k * 42;
-              const del = k < 4 ? 1 : (170 - 4 * 38) / 38;
+              const del = k < 4 ? 1 : (170 - 4 * 42) / 42;
               return (
                 <g key={k}>
                   <rect x={sx} y={gy + 208} width={36} height={30} rx={3} fill="none" stroke={C.muted} strokeWidth={1.4} />
@@ -322,7 +322,7 @@ export function KarbonbudsjettFigur() {
                 </g>
               );
             })}
-            <T x={gx + 12} y={gy + 258} lines={bred ? ["Hver rute er ett år med 38 Gt.", "170 ÷ 38: mellom fire og fem år."] : ["Hver rute er ett år med 38 Gt:", "mellom fire og fem år."]} size={14} fill={C.fg} lh={18} />
+            <T x={gx + 12} y={gy + 258} lines={bred ? ["Hver rute er ett år med 42 Gt.", "170 ÷ 42: om lag fire år."] : ["Hver rute er ett år med 42 Gt:", "om lag fire år."]} size={14} fill={C.fg} lh={18} />
             {void mk}
           </>
         );
@@ -349,9 +349,9 @@ export function SspScenarioFigur() {
   return (
     <G2Figur
       title="SSP-scenariene: oppvarming 2081–2100 og havnivå i 2100"
-      desc="Diagram over de fem SSP-scenariene med beste anslag og svært sannsynlig spenn for oppvarming 2081 til 2100 sammenlignet med 1850 til 1900. SSP1-1.9: 1,4 grader, 1,0 til 1,8. SSP1-2.6: 1,8, 1,3 til 2,4. SSP2-4.5: 2,7, 2,1 til 3,5. SSP3-7.0: 3,6, 2,8 til 4,6. SSP5-8.5: 4,4, 3,3 til 5,7. To stiplede linjer viser at dagens politikk gir 3,2 grader i 2100 og landenes innmeldte mål omtrent 2,8 grader. Havnivået stiger fram til 2100 med 0,28 til 0,55 meter i SSP1-1.9 og 0,63 til 1,01 meter i SSP5-8.5, sammenlignet med 1995 til 2014."
+      desc="Diagram over de fem SSP-scenariene med beste anslag og svært sannsynlig spenn for oppvarming 2081 til 2100 sammenlignet med 1850 til 1900. SSP1-1.9: 1,4 grader, 1,0 til 1,8. SSP1-2.6: 1,8, 1,3 til 2,4. SSP2-4.5: 2,7, 2,1 til 3,5. SSP3-7.0: 3,6, 2,8 til 4,6. SSP5-8.5: 4,4, 3,3 til 5,7. To stiplede linjer viser at dagens politikk gir 3,2 grader i 2100 og landenes innmeldte mål omtrent 2,8 grader. Havnivået stiger fram til 2100 med 0,28 til 0,55 meter i SSP1-1.9 og 0,63 til 1,01 meter i SSP5-8.5, sammenlignet med 1995 til 2014. Havnivåspennet er det sannsynlige spennet."
       heading="SSP-scenariene og oppvarming"
-      caption="Prikken er beste anslag, og stolpen er det svært sannsynlige spennet. Fargene er lysnet fra IPCCs farger for å synes på mørk bakgrunn. Vedtatt politikk før 2020 og NDC-ene gjelder 2100. Kilder: IPCC (2021, 2022)."
+      caption="Prikken er beste anslag, og stolpen er det svært sannsynlige spennet for oppvarming. Havnivåstolpene viser det sannsynlige spennet. Fargene er lysnet fra IPCCs farger for å synes på mørk bakgrunn. Vedtatt politikk før 2020 og NDC-ene gjelder 2100. Kilder: IPCC (2021, 2022)."
       narrow={{ w: 300, h: 690 }}
       wide={{ w: 720, h: 546 }}
     >
@@ -408,7 +408,7 @@ export function SspScenarioFigur() {
             ))}
             <T x={px0 + pw} y={yAx + 42} lines={bred ? "°C over 1850–1900, gjennomsnitt 2081–2100" : ["°C over 1850–1900,", "gjennomsnitt 2081–2100"]} size={14} fill={C.muted} anchor="end" lh={17} />
             {/* havnivå */}
-            <T x={10} y={hy0 - 6} lines={bred ? "Havnivå i 2100, meter over 1995–2014" : ["Havnivå i 2100,", "meter over 1995–2014"]} size={16} weight={700} fill={C.fg} lh={19} />
+            <T x={10} y={hy0 - 6} lines={bred ? "Havnivå i 2100 (sannsynlig spenn), meter over 1995–2014" : ["Havnivå i 2100 (sannsynlig", "spenn), meter over 1995–2014"]} size={16} weight={700} fill={C.fg} lh={19} />
             {HAV.map((s, i) => {
               const y = hy0 + (bred ? 14 : 30) + i * (bred ? 48 : 60);
               return (
@@ -463,10 +463,10 @@ export function NorskeUtslippFigur() {
   return (
     <G2Figur
       title="Norske klimagassutslipp: 1990, 2025 og klimalovens mål"
-      desc="Stolpediagram over norske utslipp i millioner tonn CO₂-ekvivalenter. 1990: 51,2. 2025: 44,1, foreløpige tall, som er 13,9 prosent lavere enn i 1990. Klimalovens mål er utslipp minst 55 prosent lavere i 2030, omtrent 23 millioner tonn, 70 til 75 prosent lavere i 2035 og 90 til 95 prosent lavere i 2050. Et eget panel viser de største kildene i 2025: olje- og gassutvinning 10,9, industri og bergverk 10,7, luftfart, sjøfart og anleggsmaskiner 7,4 og veitrafikk 6,9 millioner tonn."
+      desc="Stolpediagram over norske utslipp i millioner tonn CO₂-ekvivalenter. 1990: 51,2. 2025: 44,1, foreløpige tall, som er 13,9 prosent lavere enn i 1990. Klimalovens mål er utslipp minst 55 prosent lavere i 2030, omtrent 23 millioner tonn, 70 til 75 prosent lavere i 2035, det vil si 25 til 30 prosent av 1990-nivået eller 12,8 til 15,4 millioner tonn, og 90 til 95 prosent lavere i 2050, det vil si 5 til 10 prosent av 1990-nivået eller 2,6 til 5,1 millioner tonn. Et eget panel viser de største kildene i 2025: olje- og gassutvinning 10,9, industri og bergverk 10,7, luftfart, sjøfart og anleggsmaskiner 7,4 og veitrafikk 6,9 millioner tonn."
       heading="Utslipp i Norge og klimalovens mål"
-      caption="Foreløpige tall for 2025. Tallene gjelder norsk territorium og omfatter ikke utenriks sjø- og luftfart. SSB bruker GWP-verdier fra AR5. Målene for 2035 og 2050 er tegnet som felt etter prosentene, uten tall i Mt. Kilder: SSB (2026) og Klimaloven (2017)."
-      narrow={{ w: 300, h: 850 }}
+      caption="SSB (2026), foreløpige tall for 2025. Tallene gjelder norsk territorium og omfatter ikke utenriks sjø- og luftfart. SSB bruker GWP-verdier fra AR5. Målene for 2030, 2035 og 2050 er lovfestet i klimaloven §§ 3–5. Målene for 2035 og 2050 er tegnet som felt etter prosent av 1990-nivået (51,2 Mt), og Mt-tallene er regnet ut av oss. Kilder: SSB (2026) og Klimaloven (2017)."
+      narrow={{ w: 300, h: 872 }}
       wide={{ w: 720, h: 412 }}
     >
       {({ bred }) => {
@@ -477,7 +477,7 @@ export function NorskeUtslippFigur() {
         const by = (i: number) => y0 + i * rowH + (bred ? 6 : 24);
         const pw = bred ? 430 : 280;
         const rx = bred ? 450 : 10;
-        const ry = bred ? 10 : y0 + 4 * rowH + 74;
+        const ry = bred ? 10 : y0 + 4 * rowH + 96;
         const rows = [
           { t: "1990", s: "", f: C.cold },
           { t: "2025", s: "foreløpig", f: C.warm },
@@ -487,7 +487,7 @@ export function NorskeUtslippFigur() {
         ];
         return (
           <>
-            <Box x={10} y={10} w={pw} h={bred ? 392 : y0 + 4 * rowH + 50} stroke={G.line} fill={G.panel} sw={1.4} />
+            <Box x={10} y={10} w={pw} h={bred ? 392 : y0 + 4 * rowH + 72} stroke={G.line} fill={G.panel} sw={1.4} />
             <T x={22} y={34} lines="Utslipp, millioner tonn CO₂e" size={16} weight={700} fill={C.fg} />
             {rows.map((r, i) => {
               const y = y0 + i * rowH;
@@ -513,9 +513,11 @@ export function NorskeUtslippFigur() {
             <T x={bx + (bred ? 0 : 8) + 23 * sc + 8} y={by(2) + 20} lines={bred ? "≈ 23, minst −55 %" : "≈ 23"} size={16} weight={700} fill={C.teal} />
             {!bred && <T x={bx + 8} y={by(2) + 46} lines="minst −55 % fra 1990" size={14} fill={C.teal} />}
             <rect x={bx + (bred ? 0 : 8) + 51.2 * 0.25 * sc} y={by(3)} width={51.2 * 0.05 * sc} height={26} rx={3} fill={C.teal} fillOpacity={0.5} stroke={C.teal} strokeWidth={2} />
-            <T x={bx + (bred ? 0 : 8) + 51.2 * 0.3 * sc + 10} y={by(3) + 20} lines="−70–75 %" size={16} weight={700} fill={C.teal} />
+            <T x={bx + (bred ? 0 : 8) + 51.2 * 0.3 * sc + 10} y={by(3) + 20} lines="25–30 % av 1990-nivå" size={16} weight={700} fill={C.teal} />
+            <T x={bx + (bred ? 0 : 8) + 51.2 * 0.3 * sc + 10} y={by(3) + (bred ? 40 : 46)} lines="−70–75 %, 12,8–15,4 Mt" size={14} fill={C.teal} />
             <rect x={bx + (bred ? 0 : 8) + 51.2 * 0.05 * sc} y={by(4)} width={51.2 * 0.05 * sc} height={26} rx={3} fill={C.teal} fillOpacity={0.5} stroke={C.teal} strokeWidth={2} />
-            <T x={bx + (bred ? 0 : 8) + 51.2 * 0.1 * sc + 10} y={by(4) + 20} lines="−90–95 %" size={16} weight={700} fill={C.teal} />
+            <T x={bx + (bred ? 0 : 8) + 51.2 * 0.1 * sc + 10} y={by(4) + 20} lines="5–10 % av 1990-nivå" size={16} weight={700} fill={C.teal} />
+            <T x={bx + (bred ? 0 : 8) + 51.2 * 0.1 * sc + 10} y={by(4) + (bred ? 40 : 46)} lines="−90–95 %, 2,6–5,1 Mt" size={14} fill={C.teal} />
             <line x1={bx + (bred ? 0 : 8)} x2={bx + (bred ? 0 : 8)} y1={y0 - 4} y2={bred ? y0 + 5 * rowH - 6 : by(4) + 30} stroke={C.muted} strokeWidth={1.4} />
             {bred && (
               <>
