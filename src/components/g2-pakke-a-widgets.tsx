@@ -24,7 +24,7 @@ export const FIGURER_BESTILT_A: Record<string, { fil: string; vis: string }> = {
   },
   SolenergiFigur: {
     fil: "src/components/diagrams/solenergi-figur.tsx",
-    vis: "Solinnstråling ved yttergrensen, ved bakken og som årsmiddel, og de tre bruksmåtene",
+    vis: "Årlig innstråling 700 til over 2200 kWh per m² (Nord-Europa sjelden over 1000) og de tre bruksmåtene: solvarme, solceller og termisk solkraft",
   },
   SaltkraftFigur: {
     fil: "src/components/diagrams/saltkraft-figur.tsx",
