@@ -1,5 +1,6 @@
 import type { JSX } from "react";
-import { FigSkyerNivaaer, FigNedborTyper, FigKlimadiagramKystInnland, FigKoppenNorge } from "./diagrams/g2b-skyer";
+import { FigSkyerNivaaer, FigNedborTyper, FigKlimadiagramKystInnland } from "./diagrams/g2b-skyer";
+import { FigKoppenNorge } from "./diagrams/g2b-koppen";
 import { FigNaturligTidsskalaer, FigSolflekker, FigTektonikkKarbon, FigNaturligVsMenneskelig } from "./diagrams/g2b-n6";
 import { FigHavbunnenProfil, FigVannmasserAtlanterhavet } from "./diagrams/g2b-hav";
 import { FigSaffirSimpsonSkala, FigBlokkering, FigEkstremerOppvarming } from "./diagrams/g2b-vaer";

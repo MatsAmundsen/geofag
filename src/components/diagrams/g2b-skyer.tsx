@@ -2,7 +2,6 @@ import type { JSX } from "react";
 import { C } from "./svg-kit";
 import { Box, Flow, G, G2Figur, T, nb } from "./g2a-kit";
 import { BERGEN, OSLO } from "./g2b-klimadata";
-import { KART_B, NABO_B, NOR_FLATE, SONER_B } from "./g2b-norgekart";
 
 const SKY = "#dfe8ee";
 const GRA = "#9fb0bb";
@@ -477,112 +476,6 @@ export function FigKlimadiagramKystInnland() {
           )}
         </>
       )}
-    </G2Figur>
-  );
-}
-
-/* ---------- Köppen-klimasoner i Norge ---------- */
-
-const SONE = { C: "#e0b48a", D: "#5f93ad", E: "#e8eef2" };
-
-function KartEn({ x, y, s, per, stasjoner }: { x: number; y: number; s: number; per: "p6190" | "p9120"; stasjoner?: boolean }) {
-  const pr = (lon: number, lat: number) => [(lon - 4.0) * Math.cos((65 * Math.PI) / 180) * 22, (71.6 - lat) * 22];
-  const st = [
-    { n: "Bergen", lon: 5.33, lat: 60.39, a: "end" as const, dx: -8 },
-    { n: "Oslo", lon: 10.75, lat: 59.91, a: "start" as const, dx: 8 },
-  ];
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`}>
-      <defs>
-        <linearGradient id={`kk-g-${per}`} x1="0" x2="1">
-          <stop offset="0.62" stopColor="#fff" />
-          <stop offset="1" stopColor="#fff" stopOpacity={0} />
-        </linearGradient>
-        <mask id={`kk-m-${per}`} maskUnits="userSpaceOnUse" x={0} y={0} width={KART_B.w} height={KART_B.h}>
-          <rect x={0} y={0} width={KART_B.w} height={KART_B.h} fill={`url(#kk-g-${per})`} />
-        </mask>
-      </defs>
-      <g mask={`url(#kk-m-${per})`}>
-        {Object.entries(NABO_B).map(([n, d]) => (
-          <path key={n} d={d} fill="#1d2a33" stroke="#33444f" strokeWidth={0.6 / s} />
-        ))}
-      </g>
-      <path d={NOR_FLATE} fill={SONE.D} />
-      <path d={SONER_B[per].C} fill={SONE.C} />
-      <path d={SONER_B[per].E} fill={SONE.E} />
-      <path d={NOR_FLATE} fill="none" stroke={C.bg} strokeWidth={0.7 / s} strokeLinejoin="round" />
-      {stasjoner
-        ? st.map((q) => {
-            const [px, py] = pr(q.lon, q.lat);
-            return (
-              <g key={q.n}>
-                <circle cx={px} cy={py} r={3.6 / s} fill={C.bg} stroke={C.fg} strokeWidth={1.6 / s} />
-              </g>
-            );
-          })
-        : null}
-    </g>
-  );
-}
-
-export function FigKoppenNorge() {
-  return (
-    <G2Figur
-      title="Köppen-klimasoner i Norge, 1961–1990 og 1991–2020"
-      desc="To skjematiske kart over fastlands-Norge, ett for 1961–1990 og ett for 1991–2020, med Köppen-klimasonene C varmtemperert, D kaldtemperert og E polart. Kaldtemperert klima dekker innlandet i Sør-Norge, Trøndelag og mesteparten av Finnmark, også mye av kysten der. Varmtemperert klima ligger langs kysten fra Oslofjorden og Sørlandet rundt vestkysten og opp til Nordland og Troms. Polart klima finnes bare i høyfjellet. På kartet for 1991–2020 er de varmtemperte og polare flatene endret i forhold til 1961–1990. Figuren er en skisse."
-      heading="Köppen-klimasoner i Norge"
-      caption="Foreløpig skisse tegnet av oss etter kriteriene i teksten: C/D-grensen er kaldeste måned −3 °C (andre kilder bruker 0 °C), polar grense er varmeste måned 10 °C. Soneflatene er forenklet etter Meteorologisk institutts Köppen-kart (D i innlandet og Finnmark, C langs kysten, E i høyfjellet), og ikke målt grense for grense. Mamen (2025), Dannevig & Harstveit (2026). Kartgrunnlag: Natural Earth (offentlig eie)."
-      narrow={{ w: 300, h: 476 }}
-      wide={{ w: 720, h: 372 }}
-    >
-      {({ bred }) => {
-        const leg = [
-          { k: "C", t: ["C varmtemperert", "kaldeste måned over −3 °C"], f: SONE.C },
-          { k: "D", t: ["D kaldtemperert", "kaldeste måned under −3 °C", "og varmeste over 10 °C"], f: SONE.D },
-          { k: "E", t: ["E polart", "varmeste måned under 10 °C"], f: SONE.E },
-        ];
-        if (bred) {
-          const sw = 0.9;
-          return (
-            <>
-              <T x={8 + (KART_B.w * sw) / 2} y={30} lines="1961–1990" size={17} weight={700} anchor="middle" />
-              <KartEn x={8} y={44} s={sw} per="p6190" stasjoner />
-              <T x={250 + (KART_B.w * sw) / 2} y={30} lines="1991–2020" size={17} weight={700} anchor="middle" />
-              <KartEn x={250} y={44} s={sw} per="p9120" stasjoner />
-              <T x={8} y={44 + KART_B.h * sw + 24} lines="Ringene viser Bergen og Oslo." size={14} fill={C.muted} />
-              {leg.map((l, i) => {
-                const yy = 70 + i * 96;
-                return (
-                  <g key={l.k}>
-                    <rect x={496} y={yy} width={20} height={20} rx={4} fill={l.f} />
-                    <T x={524} y={yy + 16} lines={l.t[0]} size={14} weight={700} />
-                    <T x={496} y={yy + 42} lines={l.t.slice(1)} size={14} fill={C.muted} />
-                  </g>
-                );
-              })}
-            </>
-          );
-        }
-        const s = 0.56;
-        return (
-          <>
-            <T x={6 + (KART_B.w * s) / 2} y={30} lines="1961–1990" size={15} weight={700} anchor="middle" />
-            <KartEn x={6} y={44} s={s} per="p6190" />
-            <T x={154 + (KART_B.w * s) / 2} y={30} lines="1991–2020" size={15} weight={700} anchor="middle" />
-            <KartEn x={154} y={44} s={s} per="p9120" />
-            {leg.map((l, i) => {
-              const yy = 44 + KART_B.h * s + 34 + i * 74;
-              return (
-                <g key={l.k}>
-                  <rect x={10} y={yy} width={20} height={20} rx={4} fill={l.f} />
-                  <T x={40} y={yy + 16} lines={l.t[0]} size={14} weight={700} />
-                  <T x={10} y={yy + 40} lines={l.t.slice(1)} size={14} fill={C.muted} />
-                </g>
-              );
-            })}
-          </>
-        );
-      }}
     </G2Figur>
   );
 }
