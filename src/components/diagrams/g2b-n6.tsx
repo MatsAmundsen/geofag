@@ -8,6 +8,7 @@ const NBSP = "\u00a0";
 
 /* ---------- FigNaturligTidsskalaer ---------- */
 
+const TICKS_SMAL = ["1 år", "10 år", "100 år", `1${NBSP}000 år`, `10${NBSP}000 år`, `100${NBSP}000 år`, "1 mill.", "10 mill.", "100 mill.", "1 mrd.", "10 mrd."];
 const TICKS = [
   "1 år", "10 år", "100 år", `1${NBSP}000 år`, `10${NBSP}000 år`, `100${NBSP}000 år`,
   "1 million", "10 millioner", "100 millioner", "1 milliard", "10 milliarder",
@@ -74,8 +75,8 @@ export function FigNaturligTidsskalaer() {
       desc="Logaritmisk tidsakse fra 1 år til 10 milliarder år med ett bånd per naturlig prosess. Store vulkanutbrudd 1 til 3 år. Solsyklusen 8 til 14 år, gjennomsnitt 11 år. AMV på tiårsskala, uten tall. Gleissberg-syklusen omtrent 100 år. Store solminima omtrent hvert 200. år. Jordbanen (Milankovitch) titusener til hundretusener av år, med presesjon 19 000 og 23 000 år, helning 41 000 år og eksentrisitet 100 000 og 400 000 år. Platetektonikk titalls millioner år, for eksempel avkjølingen fra omtrent 50 millioner år siden. Livets utvikling med fritt oksygen fra omtrent 2,5 milliarder år siden."
       heading="Tidsskalaer for naturlige pådriv"
       caption="Logaritmisk akse: hver strek er ti ganger lengre tid enn den forrige. Båndene viser tidsskalaen til hver prosess, ikke når de skjedde. AMV er ikke tallfestet i kildene. Kilder: IPCC (2021), SPM C.1.4; Matthews mfl. (2021); Lindsey (2025); Istider (presesjon, helning og eksentrisitet); Gulev mfl. (2021); Lyons mfl. (2014)."
-      narrow={{ w: 300, h: 720 }}
-      wide={{ w: 720, h: 470 }}
+      narrow={{ w: 300, h: 800 }}
+      wide={{ w: 720, h: 484 }}
       animated
       name="Tidsskalaer"
     >
@@ -87,7 +88,7 @@ export function FigNaturligTidsskalaer() {
         // Rader: y-posisjon
         let y = top;
         const pos = RADER.map((r) => {
-          const hh = bred ? r.h ?? 40 : r.id === "mil" ? 112 : r.id === "plate" ? 96 : r.id === "liv" ? 82 : r.id === "amv" ? 56 : 56;
+          const hh = bred ? r.h ?? 40 : 58 + 18 * r.tid.length;
           const p = { r, y, hh };
           y += hh;
           return p;
@@ -104,7 +105,7 @@ export function FigNaturligTidsskalaer() {
               </linearGradient>
             </defs>
             {/* akse */}
-            {TICKS.map((t, d) => {
+            {(bred ? TICKS : TICKS_SMAL).map((t, d) => {
               const row = d % 3;
               const x = X(d);
               const anker = d === 10 ? "end" : d === 0 && !bred ? "start" : "middle";
@@ -155,12 +156,11 @@ export function FigNaturligTidsskalaer() {
                       <T x={Math.max(x2, x1) + (r.punkt ? 18 : 12)} y={midY + 5 - (r.tid.length - 1) * 9} lines={r.tid} size={14} fill={C.fg} lh={18} />
                     )
                   ) : (
-                    <T x={X(r.lo) > 200 ? 292 : X(r.lo) + (r.punkt ? 0 : 0)} y={bandY + bh + 20} lines={r.tid} size={14} fill={C.fg} anchor={X(r.lo) > 200 ? "end" : "start"} lh={18} />
+                    <T x={8} y={bandY + bh + 20} lines={r.tid} size={14} fill={C.fg} lh={18} />
                   )}
                 </g>
               );
             })}
-            <T x={bred ? 8 : 8} y={bunn + 24} lines={bred ? "Logaritmisk akse: hver strek er ti ganger lengre tid enn den forrige." : ["Logaritmisk akse: hver strek er ti", "ganger lengre tid enn den forrige."]} size={14} fill={C.muted} />
           </>
         );
       }}
@@ -184,8 +184,8 @@ export function FigSolflekker() {
       desc={`Linjediagram over årlig internasjonalt solflekktall fra 1749 til ${sisteAar}, med tydelige topper omtrent hvert 11. år (8 til 14 år mellom toppene). Et skravert bånd viser Maunder-minimum 1645–1715. Båndet går ut av venstre kant, siden figuren starter i 1700. Ingen temperaturkurve er tegnet.`}
       heading="Solflekktall og Maunder-minimum"
       caption={`Årlig gjennomsnittlig internasjonalt solflekktall (versjon 2). Data: SILSO, Royal Observatory of Belgium, hentet via NOAA Space Weather Prediction Center. Lisens CC BY-NC. Årsmiddel beregnet av oss fra månedsverdier, siste hele år ${sisteAar}. Datareden starter i 1749. Maunder-minimum etter Owens mfl. (2017).`}
-      narrow={{ w: 300, h: 470 }}
-      wide={{ w: 720, h: 420 }}
+      narrow={{ w: 300, h: 496 }}
+      wide={{ w: 720, h: 412 }}
       animated
       name="Solflekktall"
     >
@@ -221,7 +221,7 @@ export function FigSolflekker() {
                 <T x={px0 - 6} y={Y(v) + 5} lines={String(v)} size={14} fill={C.muted} anchor="end" />
               </g>
             ))}
-            <T x={bred ? 8 : 8} y={bred ? 44 : 78} lines={bred ? "Solflekktall (årsmiddel)" : "Solflekktall"} size={14} fill={C.muted} />
+            <T x={px0 + 24} y={bred ? 60 : 84} lines={bred ? "Solflekktall (årsmiddel)" : "Solflekktall"} size={14} fill={C.muted} />
             {aars.map((a) => (
               <g key={a}>
                 <line x1={X(a)} x2={X(a)} y1={py1} y2={py1 + 5} stroke={C.muted} strokeWidth={1.2} />
@@ -340,8 +340,8 @@ export function FigTektonikkKarbon() {
       desc="Flytskjema merket Hypotese. Oppløfting av Tibet-platået og Himalaya (Raymo og Ruddiman, 1992) kan ha ført til økt kjemisk forvitring av bergarter. Forvitringen kan ha tatt CO₂ ut av lufta. Det kan ha gitt lavere CO₂ i sen kenozoikum, de siste 40 millioner årene, og global avkjøling."
       heading="Hypotesen om Himalaya, forvitring og CO₂"
       caption="Hypotese, ikke et sikkert forløp: forfatterne skriver at oppløftingen «kan ha ført til» avkjølingen. Hver pil leses som «kan ha ført til». Kilder: Raymo & Ruddiman (1992); Gulev mfl. (2021)."
-      narrow={{ w: 300, h: 640 }}
-      wide={{ w: 720, h: 300 }}
+      narrow={{ w: 300, h: 698 }}
+      wide={{ w: 720, h: 280 }}
       animated
       name="Hypotesen"
     >
@@ -351,9 +351,9 @@ export function FigTektonikkKarbon() {
           <T x={bred ? 56 : 56} y={31} lines="Hypotese" size={16} fill={C.bg} weight={800} anchor="middle" />
           {bred
             ? KJEDE.map((k, i) => {
-                const bw = 116;
+                const bw = 112;
                 const gap = 34;
-                const x0 = 6 + i * (bw + gap);
+                const x0 = 8 + i * (bw + gap);
                 const cx = x0 + bw / 2;
                 return (
                   <g key={i}>
@@ -371,17 +371,20 @@ export function FigTektonikkKarbon() {
                 );
               })
             : KJEDE.map((k, i) => {
-                const by = 60 + i * 114;
+                const by = 60 + i * 132;
+                const bh = 96;
+                const n = k.t.length + (k.k ? 1 : 0);
+                const y0 = by + bh / 2 - (n * 18) / 2 + 14;
                 return (
                   <g key={i}>
-                    <Box x={8} y={by} w={284} h={78} stroke={k.f} />
-                    <Ikon i={i} x={48} y={by + 16} />
-                    <T x={92} y={by + 39 - (k.t.length - 1) * 9 + (k.k ? -4 : 0)} lines={k.k ? [...k.t.slice(0, 1), ...k.t.slice(1)] : k.t} size={14} lh={18} weight={600} />
-                    {k.k ? <T x={92} y={by + 39 + (k.t.length - 1) * 9 + 14 - 4} lines={k.k.join(" ")} size={14} fill={C.muted} /> : null}
+                    <Box x={8} y={by} w={284} h={bh} stroke={k.f} />
+                    <Ikon i={i} x={48} y={by + 24} />
+                    <T x={92} y={y0} lines={k.t} size={14} lh={18} weight={600} />
+                    {k.k ? <T x={92} y={y0 + k.t.length * 18} lines={k.k.join(" ")} size={14} fill={C.muted} /> : null}
                     {i < 4 ? (
                       <g>
-                        <Flow d={`M150 ${by + 82} L150 ${by + 110}`} color={C.fg} marker={mk.fg} />
-                        <T x={164} y={by + 101} lines="kan" size={14} fill={C.fg} weight={700} />
+                        <Flow d={`M150 ${by + bh + 4} L150 ${by + bh + 32}`} color={C.fg} marker={mk.fg} />
+                        <T x={164} y={by + bh + 24} lines="kan" size={14} fill={C.fg} weight={700} />
                       </g>
                     ) : null}
                   </g>
@@ -408,8 +411,8 @@ export function FigNaturligVsMenneskelig() {
       desc="Tre horisontale intervall langs en akse for temperaturendring fra minus 0,4 til pluss 1,4 grader. Menneskeskapt total: beste anslag 1,07 grader, sannsynlig intervall 0,8 til 1,3 grader. Naturlige pådrivere, sol og vulkaner: minus 0,1 til pluss 0,1 grader. Indre variabilitet: minus 0,2 til pluss 0,2 grader. En loddrett linje markerer null."
       heading="Naturlig mot menneskeskapt oppvarming"
       caption="Endring i global overflatetemperatur fra 1850–1900 til 2010–2019. Intervallene har ulik karakter og kan ikke legges sammen uten videre, derfor er de ikke stablet. Kilde: IPCC (2021), Summary for Policymakers, A.1.3."
-      narrow={{ w: 300, h: 460 }}
-      wide={{ w: 720, h: 330 }}
+      narrow={{ w: 300, h: 430 }}
+      wide={{ w: 720, h: 296 }}
       animated
       name="Bidrag til oppvarming"
     >
@@ -431,7 +434,7 @@ export function FigNaturligVsMenneskelig() {
               </g>
             ))}
             <line x1={X(0)} x2={X(0)} y1={bred ? 46 : 66} y2={aky} stroke={C.fg} strokeWidth={2} />
-            <T x={X(0) + 8} y={bred ? 60 : 82} lines="0" size={14} fill={C.fg} weight={700} />
+            <T x={bred ? X(0) + 8 : X(0)} y={bred ? 60 : 60} lines="0" size={14} fill={C.fg} weight={700} anchor={bred ? "start" : "middle"} />
             {R3.map((r, i) => {
               const ry = bred ? 80 + i * 62 : 100 + i * 96;
               const bh = 22;
@@ -440,7 +443,10 @@ export function FigNaturligVsMenneskelig() {
                   {bred ? (
                     <T x={8} y={ry + bh / 2 + 5 - (r.navn.length - 1) * 9} lines={r.navn} size={14} weight={700} lh={18} />
                   ) : (
-                    <T x={8} y={ry - 10} lines={r.navn.join(" ")} size={14} weight={700} />
+                    <>
+                      <rect x={4} y={ry - 25} width={r.navn.join(" ").length * 7.9 + 8} height={21} fill={C.bg} />
+                      <T x={8} y={ry - 10} lines={r.navn.join(" ")} size={14} weight={700} />
+                    </>
                   )}
                   <rect x={X(r.lo)} y={ry} width={X(r.hi) - X(r.lo)} height={bh} rx={bh / 2} fill={r.f} opacity={0.85} />
                   {r.mid != null ? (
@@ -449,14 +455,20 @@ export function FigNaturligVsMenneskelig() {
                     </g>
                   ) : null}
                   {bred ? (
-                    <T x={r.mid != null ? X(r.hi) + 14 : X(r.hi) + 14} y={ry + bh / 2 + 5 - (r.tekst.length > 1 ? 18 : 0)} lines={r.tekst} size={14} lh={18} fill={C.fg} />
+                    X(r.hi) + 14 + 150 > 716 ? (
+                      <T x={X(r.lo) - 14} y={ry + bh / 2 + 5 - (r.tekst.length > 1 ? 18 : 0)} lines={r.tekst} size={14} lh={18} fill={C.fg} anchor="end" />
+                    ) : (
+                      <T x={X(r.hi) + 14} y={ry + bh / 2 + 5 - (r.tekst.length > 1 ? 18 : 0)} lines={r.tekst} size={14} lh={18} fill={C.fg} />
+                    )
                   ) : (
-                    <T x={8} y={ry + bh + 20} lines={r.smal} size={14} fill={C.fg} />
+                    <>
+                      <rect x={4} y={ry + bh + 6} width={Math.max(...r.smal.map((q: string) => q.length)) * 7.6 + 8} height={r.smal.length * 18 + 6} fill={C.bg} />
+                      <T x={8} y={ry + bh + 20} lines={r.smal} size={14} fill={C.fg} lh={18} />
+                    </>
                   )}
                 </g>
               );
             })}
-            <T x={bred ? 8 : 8} y={aky + 60} lines={bred ? "Intervallene kan ikke legges sammen uten videre. Derfor er de ikke stablet." : ["Intervallene kan ikke legges", "sammen uten videre. Derfor", "er de ikke stablet."]} size={14} fill={C.muted} />
           </>
         );
       }}

@@ -48,7 +48,7 @@ export function FigSaffirSimpsonSkala() {
           const gap = 8;
           const x0 = 20;
           const bunn = 340;
-          const sk = 0.9;
+          const sk = 0.75;
           return (
             <>
               <T x={x0} y={26} lines="Høyeste middelvind (km/t)" size={14} fill={C.muted} />
@@ -63,7 +63,7 @@ export function FigSaffirSimpsonSkala() {
                     <rect x={x} y={top} width={bw} height={6} rx={3} fill={f} />
                     <T x={x + 10} y={top + 32} lines={`Kategori ${s.k}`} size={16} weight={800} fill={C.white} />
                     <T x={x + 10} y={top + 54} lines={s.km} size={14} lh={18} fill={C.fg} weight={600} />
-                    <T x={x + 10} y={top + 54 + s.km.length * 18 + 2} lines={s.mph} size={14} lh={18} fill={C.muted} />
+                    <T x={x + 10} y={top + 54 + s.km.length * 18 + 2} lines={s.mph} size={14} lh={18} fill="#aab7c1" />
                     {[0, 1, 2, 3, 4].slice(0, s.k).map((j) => (
                       <Strek key={j} x={x + 8 + (j % 2) * 10} y={top - 14 - j * 9} l={bw - 30 - (j % 2) * 10} k={s.k} />
                     ))}
@@ -72,8 +72,8 @@ export function FigSaffirSimpsonSkala() {
               })}
               <line x1={x0} x2={x0 + 5 * bw + 4 * gap} y1={bunn} y2={bunn} stroke={G.line} strokeWidth={1.4} />
               {/* parentes for store orkaner */}
-              <path d={`M${x0 + 2 * (bw + gap)} 90 L${x0 + 2 * (bw + gap)} 82 L${x0 + 5 * bw + 4 * gap} 82 L${x0 + 5 * bw + 4 * gap} 90`} fill="none" stroke={C.low} strokeWidth={2} />
-              <T x={x0 + 2 * (bw + gap) + (3 * bw + 2 * gap) / 2} y={72} lines="Store orkaner (kategori 3–5)" size={16} weight={800} fill={C.low} anchor="middle" />
+              <path d={`M${x0 + 2 * (bw + gap)} 84 L${x0 + 2 * (bw + gap)} 76 L${x0 + 5 * bw + 4 * gap} 76 L${x0 + 5 * bw + 4 * gap} 84`} fill="none" stroke={C.low} strokeWidth={2} />
+              <T x={x0 + 2 * (bw + gap) + (3 * bw + 2 * gap) / 2} y={62} lines="Store orkaner (kategori 3–5)" size={16} weight={800} fill={C.low} anchor="middle" />
               <T x={x0} y={372} lines="Skalaen bygger bare på vind. Den tar ikke med stormflo, regnflom eller tornadoer." size={14} fill={C.muted} />
               <T x={x0} y={394} lines="Strekene over søylene er vind. Jo høyere kategori, jo flere og raskere streker." size={14} fill={C.muted} />
             </>
@@ -148,7 +148,7 @@ export function FigBlokkering() {
       heading="Blokkerende høytrykk"
       caption="Skjematisk, uten tall eller trykkverdier. H er høytrykk og L er lavtrykk ved bakken. Kilder: Store norske leksikon (u.å.-i, snl.no/omegablokkering); Tsopouridis og Sivle (2025, snl.no/blokkerende_høytrykk)."
       narrow={{ w: 300, h: 770 }}
-      wide={{ w: 720, h: 380 }}
+      wide={{ w: 720, h: 342 }}
       animated
       name="Blokkerende høytrykk"
     >

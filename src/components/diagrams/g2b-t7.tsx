@@ -109,7 +109,7 @@ export function FigNorgeFramskrivninger() {
       heading="Norge mot 2100"
       caption="Fastlands-Norge. Observert endring og videre endring fram mot slutten av århundret hvis utslippene fortsetter å øke. Kilde: Norsk klimaservicesenter (2025), Oppsummeringer fra Klima i Norge 2025."
       narrow={{ w: 300, h: 1600 }}
-      wide={{ w: 720, h: 640 }}
+      wide={{ w: 720, h: 650 }}
       animated
       name="Norge mot 2100"
     >
@@ -157,7 +157,6 @@ export function FigNorgeFramskrivninger() {
                 );
               })}
               <line x1={8} x2={712} y1={y} y2={y} stroke={G.line} strokeWidth={1} />
-              <T x={8} y={y + 26} lines="Alle tall er omtrentlige." size={14} fill={C.muted} />
             </>
           );
         }
@@ -167,7 +166,7 @@ export function FigNorgeFramskrivninger() {
           const vnl = r.vn ? brytt(r.vn, 36) : [];
           const ekl = r.ekstra ? 1 + r.ekstra.lin.length : 0;
           const obsH = r.obs.length ? r.obs.length * 44 : 40;
-          const h = 38 + 22 + obsH + 22 + 30 + vnl.length * 18 + (ekl ? ekl * 18 + 14 : 0) + 12;
+          const h = 38 + 22 + obsH + 22 + 30 + vnl.length * 18 + (ekl ? ekl * 18 + 14 : 0) + 22;
           const v = { r, y, h, vnl };
           y += h + 12;
           return v;
@@ -212,7 +211,6 @@ export function FigNorgeFramskrivninger() {
                 </g>
               );
             })}
-            <T x={8} y={y + 16} lines="Alle tall er omtrentlige." size={14} fill={C.muted} />
           </>
         );
       }}
@@ -311,7 +309,7 @@ export function FigTilpasningsgrenser() {
                 </linearGradient>
               </defs>
               <rect x={30} y={ty - 5} width={670} height={10} rx={5} fill="url(#g2b-tilp-skala)" />
-              <T x={30} y={ty - 22} lines="Global oppvarming" size={14} fill={C.muted} />
+              <T x={30} y={ty - 46} lines="Global oppvarming" size={14} fill={C.muted} />
               <Flow d={`M${640} ${ty} L${700} ${ty}`} color={C.white} marker={mk.fg} w={2} />
               {GR.map((g, i) => {
                 const mx = sx(g.v);

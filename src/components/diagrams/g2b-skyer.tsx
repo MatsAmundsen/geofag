@@ -128,8 +128,8 @@ export function FigSkyerNivaaer() {
       desc="Loddrett kilometerskala fra 0 til 13 kilometer med tre høydenivåer som delvis overlapper. Høye skyer ligger mellom 5 og 13 kilometer og omfatter fjærskyer, makrellskyer og slørskyer. Middels høye skyer ligger mellom 2 og 7 kilometer og omfatter rukleskyer, lagskyer og nedbørskylag. Lave skyer ligger mellom 0 og 2 kilometer og omfatter bukleskyer, tåkeskyer, haugskyer og bygeskyer. Høydene gjelder tempererte strøk og varierer med breddegrad."
       heading="Skytyper i tre høydenivåer"
       caption="Høydene gjelder tempererte strøk (Velle & Gjelten, 2024). Skjematisk tegning, ikke målestokk for skyenes størrelse. Kilde: Store norske leksikon (Velle & Gjelten, 2024)."
-      narrow={{ w: 300, h: 900 }}
-      wide={{ w: 720, h: 590 }}
+      narrow={{ w: 300, h: 1004 }}
+      wide={{ w: 720, h: 552 }}
       animated
       name="skyene"
     >
@@ -200,11 +200,11 @@ export function FigSkyerNivaaer() {
                 <T x={390} y={y(0.12) - 2} lines="St tåkeskyer" size={14} anchor="middle" />
                 <Cu x={520} y={y(1.2)} w={70} />
                 <T x={520} y={y(0.12) - 2} lines="Cu haugskyer" size={14} anchor="middle" />
-                <Cb x={650} y={y(0.55)} w={70} h={34} />
+                <Cb x={650} y={y(0.8)} w={70} h={34} />
                 <T x={650} y={y(0.12) - 2} lines="Cb bygeskyer" size={14} anchor="middle" />
                 {/* opptrekk i bygesky */}
-                <Flow d={`M${650 - 34} ${y(0.4)} v-26`} color={C.low} w={2} cls="a a-flowr" />
-                <Flow d={`M${650 + 34} ${y(0.4)} v-26`} color={C.low} w={2} cls="a a-flowr" />
+                <Flow d={`M${650 - 34} ${y(0.65)} v-26`} color={C.low} w={2} cls="a a-flowr" />
+                <Flow d={`M${650 + 34} ${y(0.65)} v-26`} color={C.low} w={2} cls="a a-flowr" />
                 <T x={ax} y={bot + 36} lines="Høyden varierer med breddegrad. Tropene: høye skyer 6–18 km. Polare strøk: 3–8 km." size={14} fill={C.muted} />
               </>
             ) : (
@@ -231,7 +231,7 @@ export function FigSkyerNivaaer() {
                     </g>
                   );
                 })}
-                <Cb x={262} y={y(0.55)} w={46} h={30} />
+                <Cb x={262} y={y(0.8)} w={46} h={30} />
                 <T x={262} y={y(0.12) - 2} lines="Cb" size={14} weight={700} anchor="middle" />
                 <T x={ax} y={bot + 30} lines="Høyden varierer med" size={14} fill={C.muted} />
                 <T x={ax} y={bot + 50} lines="breddegrad. Tropene: høye" size={14} fill={C.muted} />
@@ -284,8 +284,8 @@ function Orografisk({ x, y }: { x: number; y: number }) {
       {/* fuktig luft stiger */}
       <Flow d="M4 190 C30 188 56 168 96 126 C104 116 106 104 104 92" color={C.cold} w={2.8} />
       <Flow d="M126 106 C160 112 190 150 214 176" color={C.warm} w={2.4} />
-      <T x={6} y={172} lines={["Fuktig", "luft"]} size={14} fill={C.cold} weight={600} />
-      <T x={152} y={140} lines={["Tørrere", "luft"]} size={14} fill={C.warm} weight={600} />
+      <T x={6} y={128} lines={["Fuktig", "luft"]} size={14} fill={C.cold} weight={600} />
+      <T x={152} y={84} lines={["Tørrere", "luft"]} size={14} fill={C.warm} weight={600} />
       <T x={8} y={248} lines="Luv" size={14} weight={700} />
       <T x={212} y={248} lines="Lesiden" size={14} weight={700} anchor="end" />
     </g>
@@ -345,8 +345,8 @@ function Frontal({ x, y }: { x: number; y: number }) {
       ))}
       <Flow d="M2 160 C50 150 120 90 200 52" color={C.low} w={3} />
       <T x={8} y={46} lines={["Varm luft", "glir oppover"]} size={14} weight={600} fill={C.low} />
-      <T x={150} y={214} lines="Kald luft" size={14} weight={700} fill={C.cold} anchor="middle" />
-      <T x={72} y={216} lines="Front" size={14} weight={700} />
+      <T x={172} y={206} lines="Kald luft" size={14} weight={700} fill="#d6e6f2" anchor="middle" />
+      <T x={6} y={198} lines="Front" size={14} weight={700} />
       <T x={110} y={250} lines="Opptrekk 0,1–1,0 m/s" size={14} weight={700} anchor="middle" fill={C.low} />
     </g>
   );
@@ -487,9 +487,20 @@ function KartEn({ x, y, s, per, stasjoner }: { x: number; y: number; s: number; 
   ];
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
-      {Object.entries(NABO_B).map(([n, d]) => (
-        <path key={n} d={d} fill="#1d2a33" stroke="#33444f" strokeWidth={0.6 / s} />
-      ))}
+      <defs>
+        <linearGradient id={`kk-g-${per}`} x1="0" x2="1">
+          <stop offset="0.62" stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity={0} />
+        </linearGradient>
+        <mask id={`kk-m-${per}`} maskUnits="userSpaceOnUse" x={0} y={0} width={KART_B.w} height={KART_B.h}>
+          <rect x={0} y={0} width={KART_B.w} height={KART_B.h} fill={`url(#kk-g-${per})`} />
+        </mask>
+      </defs>
+      <g mask={`url(#kk-m-${per})`}>
+        {Object.entries(NABO_B).map(([n, d]) => (
+          <path key={n} d={d} fill="#1d2a33" stroke="#33444f" strokeWidth={0.6 / s} />
+        ))}
+      </g>
       <path d={NOR_FLATE} fill={SONE.D} />
       <path d={SONER_B[per].C} fill={SONE.C} />
       <path d={SONER_B[per].E} fill={SONE.E} />
@@ -515,8 +526,8 @@ export function FigKoppenNorge() {
       desc="To skjematiske kart over fastlands-Norge, ett for 1961–1990 og ett for 1991–2020, med Köppen-klimasonene C varmtemperert, D kaldtemperert og E polart. På kartet for 1991–2020 er polart klima sterkt redusert og det varmtemperert klimaet i Sør-Norge har bredt seg lenger innover i landet og nordover langs kysten."
       heading="Köppen-klimasoner i Norge"
       caption="Skjematisk kart tegnet av oss etter kriteriene i teksten: C/D-grensen er kaldeste måned −3 °C, polar grense er varmeste måned 10 °C. Soneflatene er forenklet og ikke målt grense for grense. Mamen (2025), Dannevig & Harstveit (2026). Kartgrunnlag: Natural Earth (offentlig eie)."
-      narrow={{ w: 300, h: 600 }}
-      wide={{ w: 720, h: 420 }}
+      narrow={{ w: 300, h: 476 }}
+      wide={{ w: 720, h: 372 }}
     >
       {({ bred }) => {
         const leg = [
@@ -525,20 +536,21 @@ export function FigKoppenNorge() {
           { k: "E", t: ["E polart", "varmeste måned under 10 °C"], f: SONE.E },
         ];
         if (bred) {
+          const sw = 0.9;
           return (
             <>
-              <T x={20 + KART_B.w / 2} y={34} lines="1961–1990" size={17} weight={700} anchor="middle" />
-              <KartEn x={20} y={50} s={1} per="p6190" stasjoner />
-              <T x={300 + KART_B.w / 2} y={34} lines="1991–2020" size={17} weight={700} anchor="middle" />
-              <KartEn x={300} y={50} s={1} per="p9120" stasjoner />
-              <T x={20} y={50 + KART_B.h + 26} lines="Ringene viser Bergen og Oslo." size={14} fill={C.muted} />
+              <T x={8 + (KART_B.w * sw) / 2} y={30} lines="1961–1990" size={17} weight={700} anchor="middle" />
+              <KartEn x={8} y={44} s={sw} per="p6190" stasjoner />
+              <T x={250 + (KART_B.w * sw) / 2} y={30} lines="1991–2020" size={17} weight={700} anchor="middle" />
+              <KartEn x={250} y={44} s={sw} per="p9120" stasjoner />
+              <T x={8} y={44 + KART_B.h * sw + 24} lines="Ringene viser Bergen og Oslo." size={14} fill={C.muted} />
               {leg.map((l, i) => {
-                const yy = 70 + i * 100;
+                const yy = 70 + i * 96;
                 return (
                   <g key={l.k}>
-                    <rect x={578} y={yy} width={20} height={20} rx={4} fill={l.f} />
-                    <T x={606} y={yy + 16} lines={l.t[0]} size={14} weight={700} />
-                    <T x={578} y={yy + 42} lines={l.t.slice(1)} size={14} fill={C.muted} />
+                    <rect x={496} y={yy} width={20} height={20} rx={4} fill={l.f} />
+                    <T x={524} y={yy + 16} lines={l.t[0]} size={14} weight={700} />
+                    <T x={496} y={yy + 42} lines={l.t.slice(1)} size={14} fill={C.muted} />
                   </g>
                 );
               })}

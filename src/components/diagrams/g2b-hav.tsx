@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { C } from "./svg-kit";
 import { Flow, G, G2Figur, T } from "./g2a-kit";
 
@@ -23,7 +24,7 @@ export function FigHavbunnenProfil() {
       heading="Havbunnens landskap"
       caption="Skjematisk tverrsnitt. Dybdeskalaen er loddrett og fast, men avstandene sidelengs og formene er forenklet og ikke i målestokk. Midthavsryggens topp er ikke gitt noe dyp. Kilder: Store norske leksikon (u.å.-b, snl.no/havbunnen); NOAA (u.å.-d, oceanservice.noaa.gov/facts/oceandepth.html)."
       narrow={{ w: 300, h: 830 }}
-      wide={{ w: 720, h: 520 }}
+      wide={{ w: 720, h: 452 }}
       animated
       name="Havbunnens landskap"
     >
@@ -31,14 +32,14 @@ export function FigHavbunnenProfil() {
         const top = bred ? 70 : 60;
         const per = bred ? 0.031 : 0.0262; // enheter per meter
         const Y = (m: number) => top + m * per;
-        const xa = bred ? 76 : 50; // venstre kant av profilen
+        const xa = bred ? 76 : 62; // venstre kant av profilen
         // Profilpunkter (bred koordinat), dyp i meter
         const pts: [number, number][] = [
           [76, 0], [130, 0], [136, 40], [196, 130], [206, 134], [236, 1980], [248, 2000], [330, 3990], [352, 4000],
           [372, 4900], [400, 5000], [420, 4500], [450, 3000], [478, 2600], [506, 3000], [536, 4500], [556, 5000],
           [600, 5100], [626, 5300], [646, 8000], [664, 10935], [684, 8200], [700, 5600], [716, 5500],
         ];
-        const R = (x: number) => (bred ? x : xa + (x - 76) * 0.372);
+        const R = (x: number) => (bred ? x : xa + (x - 76) * 0.35);
         const prof = pts.map(([x, m], i) => `${i ? "L" : "M"}${R(x).toFixed(1)} ${Y(m).toFixed(1)}`).join(" ");
         const xr = R(716);
         const bunn = Y(11000) + 24;
@@ -49,7 +50,7 @@ export function FigHavbunnenProfil() {
           <>
             <defs>
               <linearGradient id="g2b-hav-vann" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#3f86ad" />
+                <stop offset="0" stopColor="#2d6a8e" />
                 <stop offset="1" stopColor="#10303f" />
               </linearGradient>
               <linearGradient id="g2b-hav-glod" x1="0" y1="0" x2="0" y2="1">
@@ -70,14 +71,14 @@ export function FigHavbunnenProfil() {
             <Flow d={`M${R(478)} ${Y(4600)} L${R(430)} ${Y(4600)}`} color={C.warm} marker={mk.warm} />
             <Flow d={`M${R(478)} ${Y(4600)} L${R(526)} ${Y(4600)}`} color={C.warm} marker={mk.warm} />
             {/* dybdeskala */}
-            <line x1={bred ? 66 : 42} x2={bred ? 66 : 42} y1={Y(0)} y2={Y(11000)} stroke={C.muted} strokeWidth={1.4} />
+            <line x1={bred ? 66 : 54} x2={bred ? 66 : 54} y1={Y(0)} y2={Y(11000)} stroke={C.muted} strokeWidth={1.4} />
             {ticks.map(([m, t]) => (
               <g key={m}>
-                <line x1={bred ? 60 : 36} x2={bred ? 66 : 42} y1={Y(m)} y2={Y(m)} stroke={C.muted} strokeWidth={1.4} />
-                <T x={bred ? 56 : 32} y={Y(m) + 5} lines={bred ? t : t.replace(" m", "")} size={14} fill={C.muted} anchor="end" />
+                <line x1={bred ? 60 : 48} x2={bred ? 66 : 54} y1={Y(m)} y2={Y(m)} stroke={C.muted} strokeWidth={1.4} />
+                <T x={bred ? 56 : 44} y={Y(m) + 5} lines={bred ? t : t.replace(" m", "")} size={14} fill={C.muted} anchor="end" />
               </g>
             ))}
-            {!bred ? <T x={32} y={Y(0) - 32} lines="Dyp (m)" size={14} fill={C.muted} anchor="middle" /> : null}
+            {!bred ? <T x={8} y={Y(0) - 32} lines="Dyp (m)" size={14} fill={C.muted} /> : null}
             {/* stiplede gjennomsnittslinjer */}
             <line x1={xa} x2={xr} y1={Y(3682)} y2={Y(3682)} stroke={C.white} strokeWidth={1.4} strokeDasharray="6 5" />
             <line x1={xa} x2={xr} y1={Y(10935)} y2={Y(10935)} stroke={C.low} strokeWidth={1.4} strokeDasharray="6 5" />
@@ -85,14 +86,14 @@ export function FigHavbunnenProfil() {
               <>
                 {/* tekst bred */}
                 <T x={R(76)} y={Y(0) - 36} lines="Kyst" size={14} fill={C.muted} />
-                <T x={142} y={Y(0) - 10} lines={["Kontinentalsokkel: ytterkant i", "gjennomsnitt 130 m"]} size={14} lh={18} fill={C.fg} />
-                <T x={254} y={Y(900)} lines={["Kontinentalskråning:", "nedre grense omtrent 2 000 m"].map(M)} size={14} lh={18} fill={C.fg} />
-                <T x={338} y={Y(2350)} lines={["Kontinentalfot:", "ned til omtrent 4 000 m"].map(M)} size={14} lh={18} fill={C.fg} />
+                <T x={142} y={Y(0) - 36} lines={["Kontinentalsokkel: ytterkant i", "gjennomsnitt 130 m"]} size={14} lh={18} fill={C.fg} />
+                <T x={254} y={Y(500)} lines={["Kontinentalskråning:", "nedre grense omtrent 2 000 m"].map(M)} size={14} lh={18} fill={C.fg} />
+                <T x={330} y={Y(2100)} lines={["Kontinentalfot:", "ned til omtrent", "4 000 m"].map(M)} size={14} lh={18} fill={C.fg} />
                 <T x={R(572)} y={Y(1250)} lines={["Gjennomsnittsdyp for", "hele havet: 3 682 m"].map(M)} size={14} lh={18} fill={C.white} anchor="middle" />
                 <T x={92} y={Y(6000) + 40} lines={["Dyphavsslette", "4 000–6 000 m,", "nesten 30 % av", "jordoverflaten"].map(M)} size={14} lh={18} fill={C.fg} />
-                <T x={296} y={Y(6000) + 40} lines={["Midthavsrygg: omtrent 23 % av", "jordoverflaten. Her dannes ny", "basaltisk skorpe."]} size={14} lh={18} fill={C.fg} />
-                <T x={518} y={Y(8000)} lines={["Dyphavsgrav:", "opptil omtrent", "11 000 m"].map(M)} size={14} lh={18} fill={C.fg} anchor="end" />
-                <T x={R(664) - 14} y={Y(10935) - 8} lines="Challenger Deep omtrent 10 935 m" size={14} fill={C.low} anchor="end" />
+                <T x={290} y={Y(6000) + 40} lines={["Midthavsrygg: omtrent 23 % av", "jordoverflaten. Her dannes ny", "basaltisk skorpe."]} size={14} lh={18} fill={C.fg} />
+                <T x={636} y={Y(8000)} lines={["Dyphavsgrav:", "opptil omtrent", "11 000 m"].map(M)} size={14} lh={18} fill={C.fg} anchor="end" />
+                <T x={R(664) - 14} y={Y(10935) - 8} lines="Challenger Deep omtrent 10 935 m" size={14} fill="#f4a6a6" anchor="end" />
               </>
             ) : null}
             {!bred ? (
@@ -103,20 +104,35 @@ export function FigHavbunnenProfil() {
                     <T x={R(b.x)} y={Y(b.m) + 5} lines={String(b.n)} size={14} anchor="middle" weight={700} />
                   </g>
                 ))}
-                {BADGER.map((b, i) => {
-                  const ly = Y(11000) + 62 + i * 56;
+                {(() => {
+                  const base = Y(11000) + 62;
+                  const rader: { y: number; el: ReactElement }[] = [];
+                  let yy = base;
+                  BADGER.forEach((b) => {
+                    rader.push({
+                      y: yy,
+                      el: (
+                        <g key={b.n}>
+                          <circle cx={19} cy={yy - 5} r={11} fill={C.bg} stroke={C.fg} strokeWidth={1.6} />
+                          <T x={19} y={yy} lines={String(b.n)} size={14} anchor="middle" weight={700} />
+                          <T x={40} y={yy - 2} lines={b.t.map(M)} size={14} lh={18} fill={C.fg} />
+                        </g>
+                      ),
+                    });
+                    yy += b.t.length * 18 + 18;
+                  });
+                  const y1 = yy;
+                  const y2 = yy + 54;
                   return (
-                    <g key={b.n}>
-                      <circle cx={19} cy={ly - 5} r={11} fill={C.bg} stroke={C.fg} strokeWidth={1.6} />
-                      <T x={19} y={ly} lines={String(b.n)} size={14} anchor="middle" weight={700} />
-                      <T x={40} y={ly - 2} lines={b.t.map(M)} size={14} lh={18} fill={C.fg} />
-                    </g>
+                    <>
+                      {rader.map((r) => r.el)}
+                      <line x1={8} x2={30} y1={y1 - 6} y2={y1 - 6} stroke={C.white} strokeWidth={1.6} strokeDasharray="6 5" />
+                      <T x={40} y={y1 - 2} lines={["Gjennomsnittsdyp for", "hele havet: 3 682 m"]} size={14} lh={18} fill={C.fg} />
+                      <line x1={8} x2={30} y1={y2 - 6} y2={y2 - 6} stroke={C.low} strokeWidth={1.6} strokeDasharray="6 5" />
+                      <T x={40} y={y2 - 2} lines={["Challenger Deep:", "omtrent 10 935 m"]} size={14} lh={18} fill={C.fg} />
+                    </>
                   );
-                })}
-                <line x1={8} x2={30} y1={Y(11000) + 62 + 6 * 56 - 6} y2={Y(11000) + 62 + 6 * 56 - 6} stroke={C.white} strokeWidth={1.6} strokeDasharray="6 5" />
-                <T x={40} y={Y(11000) + 62 + 6 * 56 - 2} lines={["Gjennomsnittsdyp for", "hele havet: 3 682 m"]} size={14} lh={18} fill={C.fg} />
-                <line x1={8} x2={30} y1={Y(11000) + 62 + 7 * 56 - 6} y2={Y(11000) + 62 + 7 * 56 - 6} stroke={C.low} strokeWidth={1.6} strokeDasharray="6 5" />
-                <T x={40} y={Y(11000) + 62 + 7 * 56 - 2} lines={["Challenger Deep:", "omtrent 10 935 m"]} size={14} lh={18} fill={C.fg} />
+                })()}
               </>
             ) : null}
           </>
@@ -157,8 +173,8 @@ export function FigVannmasserAtlanterhavet() {
       desc="Skjematisk nord–sør-snitt av Atlanterhavet med dyp nedover. Antarktisk mellomvann ligger på omtrent 500 til 1 000 meters dyp sør for 20 grader nord og kommer fra overflaten nær sørspissen av Sør-Amerika. Middelhavsvann ligger på omtrent 1 000 meter mellom 30 og 40 grader nord. Labradorhavsvann går ned til 1 500 til 2 000 meter om vinteren. Nord-Atlantisk dypvann ligger på 1 500 til 3 000 meter sør for 20 grader nord og får nordisk overløpsvann over tersklene i Danmarkstredet, mellom Island og Færøyene og i Færøy–Shetland-renna. Antarktisk bunnvann ligger nær bunnen og spores til omtrent 23 grader nord."
       heading="Vannmasser i Atlanterhavet"
       caption="Skjematisk nord–sør-snitt. Bare dypene og breddegradene i teksten er tegnet, formene og lagenes tykkelse er forenklet. Kilder: Talley (2019, talleylab.ucsd.edu/ltalley/sio210/Atlantic_deep/); Sælen og Barthel (2026, snl.no/hav)."
-      narrow={{ w: 300, h: 850 }}
-      wide={{ w: 720, h: 600 }}
+      narrow={{ w: 300, h: 960 }}
+      wide={{ w: 720, h: 690 }}
       animated
       name="Vannmasser i Atlanterhavet"
     >
@@ -239,16 +255,18 @@ export function FigVannmasserAtlanterhavet() {
             {[20, 30, 40].map((l) => (
               <g key={l}>
                 <line x1={LX(l)} x2={LX(l)} y1={bunn + 16} y2={bunn + 22} stroke={C.muted} strokeWidth={1.4} />
-                <T x={LX(l)} y={bunn + 40} lines={`${l}° N`} size={14} fill={C.muted} anchor="middle" />
+                {bred || l !== 30 ? (
+                  <T x={bred ? LX(l) : LX(l) + (l === 20 ? 4 : -4)} y={bunn + 40} lines={`${l}° N`} size={14} fill={C.muted} anchor={bred ? "middle" : l === 20 ? "end" : "start"} />
+                ) : null}
               </g>
             ))}
-            <T x={xa} y={bunn + 40} lines="Sør" size={14} fill={C.muted} />
-            <T x={xb} y={bunn + 40} lines="Nord" size={14} fill={C.muted} anchor="end" />
+            <T x={xa} y={bred ? bunn + 40 : bunn + 62} lines="Sør" size={14} fill={C.muted} />
+            <T x={xb} y={bred ? bunn + 40 : bunn + 62} lines="Nord" size={14} fill={C.muted} anchor="end" />
             {/* tekstforklaring */}
             {VM.map((v, i) => {
-              const maks = bred ? 78 : 31;
+              const maks = bred ? 88 : 31;
               const lin = brytt(`${v.navn}: ${v.t}`, maks).map(M);
-              const ly0 = bunn + (bred ? 78 : 78);
+              const ly0 = bunn + (bred ? 78 : 98);
               const hojde = bred ? 0 : 0;
               // y avhenger av tidligere linjer
               const forr = VM.slice(0, i).reduce((a, q) => a + brytt(`${q.navn}: ${q.t}`, maks).length * 18 + 12, 0);
