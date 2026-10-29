@@ -216,6 +216,8 @@ import {
   MeanderOgKroksjo,
 } from "@/components/diagrams/landformer-figurer";
 import { SAMMENDRAG, SJEKK_DEG_SELV } from "@/lib/kapittel-mal";
+import { G2_PAKKE_A_WIDGETS } from "@/components/g2-pakke-a-widgets";
+import { QUIZ_ENERGI_A } from "@/lib/poster-quizzes-pakke-a";
 import {
   IodFaseFigur,
   IodHavtemperaturFigur,
@@ -303,6 +305,8 @@ function NaoForklaringBoks({ kilde }: { kilde: string }) {
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
+  ...G2_PAKKE_A_WIDGETS,
   // Kapittelmalen: `Sjekk<Navn>` og `Sammendrag<Navn>` fra src/lib/kapittel-mal.ts.
   ...Object.fromEntries(
     Object.entries(SJEKK_DEG_SELV).map(([key, questions]) => [
@@ -1047,7 +1051,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   OtecRankineCycle: () => <OtecFigurLat />,
   WindPowerTradeoff: () => <WindPowerTradeoffDiagram />,
     QuizEnergi: () => (
-    <Quiz questions={QUIZ_ENERGI} heading={null} intro="Velg ett svar per spørsmål." />
+    <Quiz questions={[...QUIZ_ENERGI, ...QUIZ_ENERGI_A]} heading={null} intro="Velg ett svar per spørsmål." />
   ),
 
 

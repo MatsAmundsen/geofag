@@ -362,7 +362,7 @@ export const QUIZ_SJEKK_ENERGI_1: QuizQuestion[] = [
       "Under 1 prosent",
     ],
     answer: 1,
-    explain: "Hywind Tampen skal dekke om lag 35 prosent og kutte om lag 200 000 tonn CO₂ i året. Resten kommer fortsatt fra gassturbiner (Equinor).",
+    explain: "Hywind Tampen antas å dekke om lag 35 prosent og ventes å kutte ca. 200 000 tonn CO₂ i året. Resten kommer fortsatt fra gassturbiner (Equinor).",
   },
   {
     prompt: "Hvilket land har mest havvind i drift?",
