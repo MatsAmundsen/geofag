@@ -78,13 +78,41 @@ export const NAV_GF2 = [
  */
 export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 10), NAV_GF2.slice(10)] as const;
 
-/** Mobilmenyens grupper for Geofag 2. Samme rekkefølge og lenkenavn som NAV_GF2. */
+/** Henter lenker fra NAV_GF2 i den rekkefølgen de står her. Kaster hvis en lenke ikke finnes. */
+function gf2(...to: string[]): readonly NavItem[] {
+  return to.map((t) => {
+    const item = NAV_GF2.find((n) => n.to === t);
+    if (!item) throw new Error(`NAV_GF2 mangler ${t}`);
+    return item;
+  });
+}
+
+/**
+ * Mobilmenyens grupper for Geofag 2, etter tema: atmosfære, hav, kryosfære og klima.
+ * Lenkenavnene er de samme som i NAV_GF2. Hver lenke står i nøyaktig én gruppe.
+ * Overskriftene er bare struktur og er ikke lenker.
+ */
 export const NAV_GF2_GROUPS: readonly NavGroup[] = [
-  { label: "Start", items: NAV_GF2.slice(0, 3) },
-  { label: "Vær og hav", items: NAV_GF2.slice(3, 10) },
-  { label: "Klima og is", items: NAV_GF2.slice(10, 15) },
-  { label: "Samfunn og metode", items: NAV_GF2.slice(15, 19) },
-  { label: "Annet", items: NAV_GF2.slice(19) },
+  { label: "Start", items: gf2("/", "/geofag-2", "/eksamen") },
+  {
+    label: "Atmosfære",
+    items: gf2(
+      "/tema/hoytrykk-lavtrykk",
+      "/tema/vindsystemet",
+      "/tema/vaerkart",
+      "/tema/lokale-vaersystemer",
+      "/tema/jetstrommer",
+      "/tema/coriolis",
+      "/tema/vaerkatastrofer",
+    ),
+  },
+  { label: "Hav", items: gf2("/tema/havstrommer") },
+  { label: "Kryosfære", items: gf2("/tema/kryosfaeren") },
+  {
+    label: "Klima",
+    items: gf2("/tema/klima", "/tema/numeriske-modeller", "/tema/paleoklima", "/tema/milankovitch", "/tema/tilpasning"),
+  },
+  { label: "Annet", items: gf2("/tema/energi-hav-luft", "/tema/felt-hav-luft-is", "/poster") },
 ];
 
 /** Mobilmenyens grupper for forsiden (4 lenker, ingen overskrifter). */
