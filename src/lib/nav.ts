@@ -223,8 +223,8 @@ export const GF2_THEMES = [
     to: "/tema/naturlige-klimapadriv",
     title: "Naturlige klimapådriv",
     kicker: "Klima over tid",
-    image: "/images/fig-klimasystem.jpg",
-    alt: "Jorda fra verdensrommet med tynn atmosfære, hav og is",
+    image: "/images/banner-naturlige-padriv.jpg",
+    alt: "Lav sol over horisonten, et vulkanutbrudd med askesky og en brefront mot mørkt hav med isflak",
     blurb:
       "Sola, vulkanene, platetektonikken, livet og indre variabilitet. Hva som virker på hvilken tidsskala, og hvor mye de betyr for oppvarmingen siden 1850.",
     status: "klar" as const,
