@@ -7,12 +7,18 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
 
-const NEW_CHAPTERS = ["energi-regning"];
+const NEW_CHAPTERS = [
+  "energi-regning",
+  "klimaendring-menneskeskapt",
+  "klimatiltak",
+  "klimaforskning",
+];
 
 const widgetSources = [
   read("../components/g2-pakke-a-widgets.tsx"),
   read("../components/poster-body.tsx"),
   read("poster-quizzes-pakke-a.ts"),
+  read("poster-quizzes-pakke-a-klima.ts"),
   read("poster-quizzes.ts"),
   read("kapittel-mal.ts"),
 ].join("\n");

@@ -42,6 +42,9 @@ import { Route as TemaFeltHavLuftIsRouteImport } from './routes/tema/felt-hav-lu
 import { Route as TemaHavstrommerRouteImport } from './routes/tema/havstrommer'
 import { Route as TemaHoytrykkLavtrykkRouteImport } from './routes/tema/hoytrykk-lavtrykk'
 import { Route as TemaJetstrommerRouteImport } from './routes/tema/jetstrommer'
+import { Route as TemaKlimaendringMenneskeskaptRouteImport } from './routes/tema/klimaendring-menneskeskapt'
+import { Route as TemaKlimaforskningRouteImport } from './routes/tema/klimaforskning'
+import { Route as TemaKlimatiltakRouteImport } from './routes/tema/klimatiltak'
 import { Route as TemaKryosfaerenRouteImport } from './routes/tema/kryosfaeren'
 import { Route as TemaKryosfareRouteImport } from './routes/tema/kryosfare'
 import { Route as TemaLokaleVaersystemerRouteImport } from './routes/tema/lokale-vaersystemer'
@@ -233,6 +236,22 @@ const TemaJetstrommerRoute = TemaJetstrommerRouteImport.update({
   path: '/tema/jetstrommer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemaKlimaendringMenneskeskaptRoute =
+  TemaKlimaendringMenneskeskaptRouteImport.update({
+    id: '/tema/klimaendring-menneskeskapt',
+    path: '/tema/klimaendring-menneskeskapt',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TemaKlimaforskningRoute = TemaKlimaforskningRouteImport.update({
+  id: '/tema/klimaforskning',
+  path: '/tema/klimaforskning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemaKlimatiltakRoute = TemaKlimatiltakRouteImport.update({
+  id: '/tema/klimatiltak',
+  path: '/tema/klimatiltak',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemaKryosfaerenRoute = TemaKryosfaerenRouteImport.update({
   id: '/tema/kryosfaeren',
   path: '/tema/kryosfaeren',
@@ -366,6 +385,9 @@ export interface FileRoutesByFullPath {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/klimaendring-menneskeskapt': typeof TemaKlimaendringMenneskeskaptRoute
+  '/tema/klimaforskning': typeof TemaKlimaforskningRoute
+  '/tema/klimatiltak': typeof TemaKlimatiltakRoute
   '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
@@ -421,6 +443,9 @@ export interface FileRoutesByTo {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/klimaendring-menneskeskapt': typeof TemaKlimaendringMenneskeskaptRoute
+  '/tema/klimaforskning': typeof TemaKlimaforskningRoute
+  '/tema/klimatiltak': typeof TemaKlimatiltakRoute
   '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
@@ -477,6 +502,9 @@ export interface FileRoutesById {
   '/tema/havstrommer': typeof TemaHavstrommerRoute
   '/tema/hoytrykk-lavtrykk': typeof TemaHoytrykkLavtrykkRoute
   '/tema/jetstrommer': typeof TemaJetstrommerRoute
+  '/tema/klimaendring-menneskeskapt': typeof TemaKlimaendringMenneskeskaptRoute
+  '/tema/klimaforskning': typeof TemaKlimaforskningRoute
+  '/tema/klimatiltak': typeof TemaKlimatiltakRoute
   '/tema/kryosfaeren': typeof TemaKryosfaerenRoute
   '/tema/kryosfare': typeof TemaKryosfareRoute
   '/tema/lokale-vaersystemer': typeof TemaLokaleVaersystemerRoute
@@ -534,6 +562,9 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klimaendring-menneskeskapt'
+    | '/tema/klimaforskning'
+    | '/tema/klimatiltak'
     | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
@@ -589,6 +620,9 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klimaendring-menneskeskapt'
+    | '/tema/klimaforskning'
+    | '/tema/klimatiltak'
     | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
@@ -644,6 +678,9 @@ export interface FileRouteTypes {
     | '/tema/havstrommer'
     | '/tema/hoytrykk-lavtrykk'
     | '/tema/jetstrommer'
+    | '/tema/klimaendring-menneskeskapt'
+    | '/tema/klimaforskning'
+    | '/tema/klimatiltak'
     | '/tema/kryosfaeren'
     | '/tema/kryosfare'
     | '/tema/lokale-vaersystemer'
@@ -700,6 +737,9 @@ export interface RootRouteChildren {
   TemaHavstrommerRoute: typeof TemaHavstrommerRoute
   TemaHoytrykkLavtrykkRoute: typeof TemaHoytrykkLavtrykkRoute
   TemaJetstrommerRoute: typeof TemaJetstrommerRoute
+  TemaKlimaendringMenneskeskaptRoute: typeof TemaKlimaendringMenneskeskaptRoute
+  TemaKlimaforskningRoute: typeof TemaKlimaforskningRoute
+  TemaKlimatiltakRoute: typeof TemaKlimatiltakRoute
   TemaKryosfaerenRoute: typeof TemaKryosfaerenRoute
   TemaKryosfareRoute: typeof TemaKryosfareRoute
   TemaLokaleVaersystemerRoute: typeof TemaLokaleVaersystemerRoute
@@ -958,6 +998,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemaJetstrommerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tema/klimaendring-menneskeskapt': {
+      id: '/tema/klimaendring-menneskeskapt'
+      path: '/tema/klimaendring-menneskeskapt'
+      fullPath: '/tema/klimaendring-menneskeskapt'
+      preLoaderRoute: typeof TemaKlimaendringMenneskeskaptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klimaforskning': {
+      id: '/tema/klimaforskning'
+      path: '/tema/klimaforskning'
+      fullPath: '/tema/klimaforskning'
+      preLoaderRoute: typeof TemaKlimaforskningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tema/klimatiltak': {
+      id: '/tema/klimatiltak'
+      path: '/tema/klimatiltak'
+      fullPath: '/tema/klimatiltak'
+      preLoaderRoute: typeof TemaKlimatiltakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tema/kryosfaeren': {
       id: '/tema/kryosfaeren'
       path: '/tema/kryosfaeren'
@@ -1132,6 +1193,9 @@ const rootRouteChildren: RootRouteChildren = {
   TemaHavstrommerRoute: TemaHavstrommerRoute,
   TemaHoytrykkLavtrykkRoute: TemaHoytrykkLavtrykkRoute,
   TemaJetstrommerRoute: TemaJetstrommerRoute,
+  TemaKlimaendringMenneskeskaptRoute: TemaKlimaendringMenneskeskaptRoute,
+  TemaKlimaforskningRoute: TemaKlimaforskningRoute,
+  TemaKlimatiltakRoute: TemaKlimatiltakRoute,
   TemaKryosfaerenRoute: TemaKryosfaerenRoute,
   TemaKryosfareRoute: TemaKryosfareRoute,
   TemaLokaleVaersystemerRoute: TemaLokaleVaersystemerRoute,

@@ -1621,6 +1621,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "energi-hav-luft",
     stale: ["Hywind Tampen (88 MW)"],
   },
+  {
+    // Pakke A (G2, T2): paleoklima utvidet med dryppstein (13C, U–Th), evaporitt/tillitt/kull og Fanerozoikum-kurven.
+    flag: "g2-paleoklima-gap-t2-2026-10-29",
+    slug: "paleoklima",
+    stale: ["kalkskall, pollen eller årringer, som henger sammen"],
+  },
 ];
 
 const COPY_RESEED_SEEDS = CHAPTER_POST_SEEDS.map((seed) => ({

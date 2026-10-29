@@ -1,4 +1,5 @@
 import type { QuizQuestion } from "@/components/quiz";
+import { G2_KLIMA_SAMMENDRAG, G2_KLIMA_SJEKK } from "./poster-quizzes-pakke-a-klima.ts";
 
 /**
  * Spørsmål til Geofag 2 pakke A (energi, klima). Egen fil så de eksisterende
@@ -213,9 +214,11 @@ export const SJEKK_PAKKE_A: Record<string, QuizQuestion[]> = {
   Energi4: QUIZ_SJEKK_ENERGI_4,
   EnergiRegning1: QUIZ_SJEKK_ENERGI_REGNING_1,
   EnergiRegning2: QUIZ_SJEKK_ENERGI_REGNING_2,
+  ...G2_KLIMA_SJEKK,
 };
 
 export const SAMMENDRAG_PAKKE_A: Record<string, readonly string[]> = {
+  ...G2_KLIMA_SAMMENDRAG,
   EnergiRegning: [
     "Effekt (W) sier hvor raskt energi brukes eller produseres. Energi (J, Wh, kWh) er effekt × tid. 1 kWh = 3,6 MJ, og hvert prefiks i rekken k, M, G, T er 1000 ganger større.",
     "Brukstid er årsproduksjon ÷ installert effekt, høyst 8760 timer. Kapasitetsfaktoren er brukstiden ÷ 8760, i prosent.",

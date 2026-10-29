@@ -39,6 +39,8 @@ export const MAAL_KART: MaalKart[] = [
       { to: "/tema/klima/oversikt", label: "Klimasystemet" },
       { to: "/tema/klima/enso", label: "ENSO" },
       { to: "/tema/klima/nao", label: "NAO" },
+      { to: "/tema/klimaendring-menneskeskapt", label: "Menneskeskapt" },
+      { to: "/tema/klimaforskning", label: "Forskning" },
     ],
     exams: [
       { slug: "v2026", label: "Vår 2026", tasks: "2–3 (marin hete og Spania), 10 (arktisk forsterkning)" },
@@ -50,6 +52,7 @@ export const MAAL_KART: MaalKart[] = [
       { to: "/tema/kryosfaeren", label: "Kryosfæren" },
       { to: "/tema/paleoklima", label: "Paleoklima" },
       { to: "/tema/milankovitch", label: "Istider" },
+      { to: "/tema/klimaforskning", label: "Forskning" },
     ],
     exams: [
       { slug: "v2026", label: "Vår 2026", tasks: "tema 3 (istider og klimaendringer)" },
@@ -66,6 +69,8 @@ export const MAAL_KART: MaalKart[] = [
     chapters: [
       { to: "/tema/vaerkatastrofer", label: "Værkatastrofer" },
       { to: "/tema/tilpasning", label: "Tilpasning" },
+      { to: "/tema/klimaendring-menneskeskapt", label: "Menneskeskapt" },
+      { to: "/tema/klimatiltak", label: "Klimatiltak" },
     ],
     exams: [
       { slug: "v2026", label: "Vår 2026", tasks: "3–4 og 6 (hete, orkan, Gyda)" },

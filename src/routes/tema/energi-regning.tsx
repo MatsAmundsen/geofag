@@ -30,7 +30,7 @@ function EnergiRegningPage() {
       banner="/images/fig-innstraling.jpg"
       bannerAlt="Jorda sett fra verdensrommet med sollys inn fra siden — energien alle ressursene bygger på"
       prev={{ to: "/tema/energi-hav-luft", label: "Forrige: Energi fra hav og atmosfære" }}
-      next={{ to: "/tema/felt-hav-luft-is", label: "Neste: Feltarbeid" }}
+      next={{ to: "/tema/klimaendring-menneskeskapt", label: "Neste: Klimaendring og mennesket" }}
       kilder={KILDER_G2_A.energiRegning}
       posterSlug="energi-regning"
       post={post}
