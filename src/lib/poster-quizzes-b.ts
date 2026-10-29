@@ -235,6 +235,65 @@ export const QUIZ_SJEKK_VAERKART_5: QuizQuestion[] = [
   },
 ];
 
+/** Pakke B / T4: Kryosfæren, bretyper, måling, havisdannelse, snø og permafrostsoner. */
+export const QUIZ_SJEKK_KRYO_4: QuizQuestion[] = [
+  {
+    prompt: "Hva kjennetegner en tempert bre, slik vi har i Norge?",
+    options: [
+      "Isen har temperatur nær smeltepunktet hele året, så det drenerer vann ut av breen selv midtvinters.",
+      "Hele isen ligger langt under 0 °C, så det kommer aldri smeltevann.",
+      "Den finnes bare i Antarktis.",
+    ],
+    answer: 0,
+    explain: "I tempererte breer er isen nær smeltepunktet året rundt. Bare de øverste få meterne blir kaldere enn 0 °C om vinteren.",
+  },
+  {
+    prompt: "Hva er en jøkullaup?",
+    options: [
+      "Et snøskred av vannmettet snø",
+      "Et framstøt der breen øker farten til over 100 meter i døgnet",
+      "En flom som oppstår når en bredemt innsjø plutselig tømmes",
+    ],
+    answer: 2,
+    explain: "Jøkullaup er flom fra bredemte innsjøer. I Norge er det laget tunneler for å tappe slike innsjøer, blant annet ved Hardangerjøkulen.",
+  },
+  {
+    prompt: "Hvorfor finnes det ikke is eldre enn 1000–2000 år i Norge, når isen nær bunnen av innlandsisen i Antarktis er mange hundre tusen år gammel?",
+    options: [
+      "Norske breer består av en annen type is.",
+      "I Norge snør det mye, og isen siger ned i dalene og smelter bort. I Antarktis snør det lite, og isen siger svært sakte.",
+      "Norske breer ble først dannet etter 1900.",
+    ],
+    answer: 1,
+    explain: "Alderen avhenger av hvor mye snø som faller, hvor fort isen beveger seg og hvor tykk den er.",
+  },
+];
+
+export const QUIZ_SJEKK_KRYO_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor dannes havis langsommere enn ferskvannsis?",
+    options: [
+      "Havvann må kjøles til rundt −1,8 °C, og kaldt saltvann blir tyngre og synker før det fryser.",
+      "Salt gjør at havvann ikke kan fryse.",
+      "Havvann inneholder for lite luft.",
+    ],
+    answer: 0,
+    explain: "Vanligvis må de øverste 100–150 meterne av havet kjøles ned til frysepunktet før havis kan dannes.",
+  },
+  {
+    prompt: "Det faller 30 cm tørr nysnø med vannverdi 0,1. Hvor mye nedbør tilsvarer det?",
+    options: ["3 mm", "30 mm", "300 mm"],
+    answer: 1,
+    explain: "30 cm · 0,1 = 3 cm vann, altså 30 mm.",
+  },
+  {
+    prompt: "Et område har diskontinuerlig permafrost. Hvor stor del av landarealet inneholder sannsynligvis permafrost?",
+    options: ["10–50 prosent", "50–90 prosent", "90–100 prosent"],
+    answer: 1,
+    explain: "Kontinuerlig er 90–100 prosent, diskontinuerlig 50–90, sporadisk 10–50 og isolert under 10 prosent.",
+  },
+];
+
 /* N6: Naturlige klimapådriv */
 
 export const QUIZ_SJEKK_NATURLIG_1: QuizQuestion[] = [

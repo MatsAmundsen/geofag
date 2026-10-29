@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { CHAPTER_INGRESS } from "@/lib/chapter-ingress";
 import { KILDER } from "@/lib/kilder";
+import { KILDER_B_TILLEGG, medKilder } from "@/lib/kilder-b";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
+
+const KRYOSFAEREN_KILDER = medKilder(KILDER.kryosfaeren, KILDER_B_TILLEGG.kryosfaeren ?? []);
 
 const tema = GF2_THEMES.find((t) => t.to === "/tema/kryosfaeren")!;
 
@@ -31,7 +34,7 @@ function KryosfaerenPage() {
       bannerAlt="Is og snø mot mørkt hav — albedoen som styrer jordas strålingsbalanse"
       prev={{ to: "/tema/klima/amoc", label: "Forrige: AMOC" }}
       next={{ to: "/tema/numeriske-modeller", label: "Neste: Numeriske modeller" }}
-      kilder={KILDER.kryosfaeren}
+      kilder={KRYOSFAEREN_KILDER}
       lead={CHAPTER_INGRESS["kryosfaeren"]}
       posterSlug="kryosfaeren"
       post={post}

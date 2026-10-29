@@ -12,4 +12,11 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     slug: "vaerkart",
     stale: ["iblant vindkast (National Weather Service [NWS], u.å.) |"],
   },
+  {
+    // Kryosfæren (T4): bretyper, kalving, jøkullaup, måling, alder, permafrostsoner, havisdannelse, havisdrift, snø.
+    // Setningen om snødekket er flyttet og omskrevet, og SjekkKryo2 står nå før de nye delene.
+    flag: "kryosfaeren-pakke-b-2026-10-29",
+    slug: "kryosfaeren",
+    stale: ["Snø kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer"],
+  },
 ];

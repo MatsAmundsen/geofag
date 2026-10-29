@@ -68,6 +68,44 @@ De fleste breene på jorda minker i utbredelse og volum. Det globale havnivået 
 SjekkKryo1
 ```
 
+### Tempererte og polare breer
+
+Breene deles etter temperaturen i isen. I *tempererte breer*, slik vi har i Norge, ligger temperaturen nær smeltepunktet hele året. Bare de øverste få meterne er kaldere enn 0 °C om vinteren. Derfor drenerer det alltid noe vann ut av breen, selv midtvinters. *Polare breer*, som innlandsisen i Antarktis og på Grønland, har temperaturer som delvis er langt under frysepunktet. Men selv der er det områder langs bunnen som ikke er frosne (Store norske leksikon, u.å.-a).
+
+Breisen beveger seg på en måte som minner om en elv, men farten er liten. Den er størst midt på breen, minst langs sidene, og større ved overflata enn ved bunnen. Vanligvis er den bare noen få centimeter i døgnet. Den største farten som er målt i Norge, er 1,25 meter i døgnet på Engabreen, en utløper fra Svartisen. De store isstrømmene på Grønland kan flytte seg opptil 30 meter i døgnet. Noen breer, særlig i polare strøk, kan øke farten svært raskt og komme opp i over 100 meter i døgnet. Vi kaller dem *framstøtsbreer*. Slike framstøt kalles også *surges*, og de kan vare i opptil et par år (Store norske leksikon, u.å.-a).
+
+Der isen går over ujevnheter i bunnen, eller der farten varierer, oppstår det sprekker i overflata. På breer i Norge blir de sjelden dypere enn 30 meter. I polare breer kan de nå mer enn 100 meter ned (Store norske leksikon, u.å.-a).
+
+### Kalving og jøkullaup
+
+Når en bre ender i vann, i en innsjø eller i havet, kan isblokker løsne fra breen. Dette kalles *kalving*. Isen som brekker løs og flyter i vannet, kalles *isfjell*. Kalvingen gir ofte et høyt brak eller et drønn før isblokkene styrter ut, og når isen treffer vannet, kan det dannes farlige bølger (Store norske leksikon, u.å.-h). Når innlandsisen kalver ut i havet, tilføres havet nytt vann, og havnivået stiger (Store norske leksikon, u.å.-g).
+
+En *bredemt innsjø* er en innsjø der breen eller en morenerygg demmer opp vannet. Slike innsjøer kan dannes langs breens kant, på breen, under breen og noen ganger foran breen. Hvis vann begynner å renne under, gjennom eller over breen eller moreneryggen, utvider smelting og erosjon kanalen. Vannføringen ut av innsjøen øker da raskt, og store deler av innsjøen kan tømmes i løpet av noen timer eller dager. Det gir en voldsom flom som kalles *jøkullaup* (på engelsk *glacier lake outburst flood*, GLOF). Slike flommer har gjort store skader. En vanlig metode for å hindre dem er å lage tunneler som tapper innsjøen eller senker vannstanden. Det er gjort i Norge ved Hardangerjøkulen (Demmevatnet) og ved Austerdalsisen, en del av Svartisen. Ordet jøkullaup brukes også mer spesifikt om flom etter vulkanutbrudd under en bre, der ismassene smelter (Store norske leksikon, u.å.-i).
+
+### Hvordan måler vi breene?
+
+Det er to ulike mål, og de svarer på to ulike spørsmål. Lengdeendring forteller hvor langt fronten har flyttet seg. Den er målt systematisk på breer i Norge siden rundt år 1900. Massebalansen forteller om breen har fått mer enn den har mistet. Systematiske målinger av massebalansen startet på Storbrean i Jotunheimen i 1949, og fra begynnelsen av 1960-tallet er den målt år for år på enkelte utvalgte breer (Store norske leksikon, u.å.-a).
+
+Massebalansen måles slik (NVE, 2017):
+
+1. Om våren, vanligvis i april eller mai, måles snødybden ved *sondering*, der tynne metallstenger stikkes ned til fjorårets sommeroverflate. Snøens tetthet måles i ett eller flere punkter. Resultatet er *vinterbalansen*.
+2. På breen står *staker*, aluminiumsrør som er satt ned i breen. Av dem leser vi hvor mye som har smeltet gjennom sommeren. Stakene måles vanligvis i september eller oktober. Resultatet er *sommerbalansen*, og sammen med vinterbalansen gir den den *årlige balansen*.
+3. Snødybden regnes om til *vannekvivalent* ved hjelp av snøens tetthet. Vannekvivalent er mengden snø, firn og is omregnet til mengden vann.
+
+For ett punkt gjelder altså: vinterbalanse + sommerbalanse = årlig balanse (NVE, 2017).
+
+Målingene har betydning blant annet for kraftproduksjonen i flere av vassdragene våre (Store norske leksikon, u.å.-a).
+
+### Hvor gammel er breisen?
+
+Alderen avhenger av klimaet og kan anslås ut fra hvor mye snø som faller hvert år, hvordan breen beveger seg og hvor tykk den er. I Norge finner vi ikke is som er mer enn 1000–2000 år gammel. Det snør mye hvert år, og ismassene siger ned i dalene og smelter bort. På Storbrean i Jotunheimen er den eldste isen målt til 700 år. I de sentrale delene av Grønland og Antarktis er det ingen smelting i overflata, det snør lite, og isen siger svært sakte utover. Der er breen 2000–3000 meter tykk. Isen nær bunnen er over 250 000 år gammel på Grønland og opptil 420 000 år i Antarktis (Store norske leksikon, u.å.-a).
+
+Luftboblene i isen er små luftprøver fra tiden da snøen falt. Ved å analysere luft i iskjernen fra Dome C i Antarktis har forskerne målt karbondioksid så langt tilbake som 800 000 år. De nederste 200 meterne av kjernen utvidet CO₂-målingene med to hele istidssykluser. Den viser at CO₂ varierte sterkt sammen med temperaturen i Antarktis gjennom åtte istidssykluser. Før industrialiseringen lå konsentrasjonen mellom 172 og 300 ppm (Lüthi mfl., 2008). Merk at 420 000 og 800 000 år ikke er to svar på samme spørsmål. Det første er et estimat for hvor gammel isen er nær bunnen på et sted. Det andre er hvor langt tilbake i tiden CO₂-målingene fra iskjernen rekker. Les mer om slike arkiv i [paleoklima](/tema/paleoklima).
+
+```widget
+SjekkKryo4
+```
+
 ## Permafrost og det aktive laget
 
 Permafrost er bakke, både løsmasser og berggrunn, der temperaturen i løpet av to sammenhengende år ikke overstiger 0 °C. Det er en temperaturdefinert størrelse. Det må bakkemålinger til for å vite at permafrosten er der (Store norske leksikon, u.å.-b).
@@ -96,6 +134,19 @@ Tiningen påvirker også klimaet. Mye av permafrosten i Sibir, Canada og Alaska 
 3. Drivhuseffekten blir sterkere, og lufta blir varmere.
 4. Enda mer permafrost tiner, og kjeden starter på nytt (Store norske leksikon, u.å.-b).
 
+### Permafrostsoner
+
+Permafrost er en ren temperaturdefinisjon, og vi kan ikke se den på overflata. Det finnes mange borehull der bakketemperaturen måles, men selvsagt ikke overalt. Derfor bruker forskerne modeller til å beregne hvor permafrosten finnes, og deler området inn i soner etter hvor stor del av landarealet som sannsynligvis inneholder permafrost (Store norske leksikon, u.å.-b):
+
+| Sone | Andel av landarealet som sannsynligvis har permafrost |
+| --- | --- |
+| Kontinuerlig permafrost | 90–100 prosent |
+| Diskontinuerlig permafrost | 50–90 prosent |
+| Sporadisk permafrost | 10–50 prosent |
+| Isolert permafrost | Under 10 prosent |
+
+Soneinndelingen brukes både på kontinentskala og i fjellområder. Jo høyere breddegrad, jo mer permafrost. Jo høyere over havet, jo mer permafrost (Store norske leksikon, u.å.-b).
+
 ## Havis og snø
 
 Havis er frossent havvann som flyter på overflaten. Utbredelsen vokser og minker med årstidene. Sent på vinteren dekker arktisk havis i gjennomsnitt 15,5 millioner kvadratkilometer, og antarktisk havis om lag 18,5 millioner. Siden 2007 har septemberminimum i Arktis ligget på ca. 3,4 til 5 millioner kvadratkilometer. Satellittserien går tilbake til 1979. Fra 1979 til 2025 har septemberminimum krympet med ca. 12 prosent per tiår, sammenlignet med gjennomsnittet for 1981–2010 (National Snow and Ice Data Center, 2025; u.å.-a; u.å.-c).
@@ -119,10 +170,70 @@ For havnivået er forskjellen stor. Smelting av havis er ikke det samme som smel
 
 Begge polarområdene mister ismasse når klimaet varmes. Likheten er at albedoen faller der isen forsvinner. Forskjellen for havnivået er at det er innlandsisen, ikke sesonghavisen, som gir det store bidraget. Lange arkiv fra isen og koblingen til AMOC står i [paleoklima](/tema/paleoklima) og [AMOC](/tema/klima/amoc).
 
-Snø kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer, særlig over Nord-Amerika, Grønland, Europa og Russland (National Snow and Ice Data Center, u.å.-b).
-
 ```widget
 SjekkKryo2
+```
+
+### Slik dannes havis
+
+Havis dannes i salt vann, og det skiller den fra isfjell og breer, som dannes av snø på land, og fra is på innsjøer og elver, som er ferskvann. Havis dannes langsommere enn ferskvannsis av to grunner. For det første må havvann ned til −1,8 °C før det fryser. For det andre blir saltvann tettere når det nærmer seg frysepunktet, så det synker bort fra overflata før det er kaldt nok til å fryse. Vanligvis må de øverste 100–150 meterne av havet kjøles ned til frysepunktet før havis kan dannes (National Snow and Ice Data Center, u.å.-e).
+
+Frysepunktet avhenger av saltholdigheten. For hver 5 PSU saltholdigheten øker, synker frysepunktet med 0,28 °C. Ved ca. 32 PSU begynner havvann å fryse ved −1,8 °C (National Snow and Ice Data Center, u.å.-e).
+
+Trinnene i dannelsen er (National Snow and Ice Data Center, u.å.-e):
+
+1. Små nålformede iskrystaller, *frazil*, dannes. De er 3–4 millimeter og består av nesten rent ferskvann, fordi saltet blir skjøvet ut i vannet.
+2. I rolig vann samles krystallene til et tynt sørpelag, *grease ice* (fettis). Det går over i et sammenhengende, tynt islag, *nilas*, som er mørkt når det er helt tynt og lysere etter hvert som det tykner.
+3. I urolig vann samles krystallene i runde skiver med opphøyde kanter, *pannekakeis*. Etter hvert smelter de sammen til et sammenhengende islag.
+4. Isen fortsetter å vokse nedenfra ved at krystaller vokser direkte på undersiden. Dette kalles *congelation ice*.
+5. Hvis is skyves sammen, kan den skli over hverandre (*rafting*) eller brekke og stable seg opp i rygger. En rygg har en del over vannet, *seil*, og en del under, *kjøl*. Kjølen er omtrent ni ganger tykkere enn seilet, og i Arktis kan rygger bli opptil 20 meter tykke.
+
+Havis klassifiseres etter alder og tykkelse. Verdens meteorologiorganisasjon (WMO) bruker disse kategoriene (National Snow and Ice Data Center, u.å.-e):
+
+| Kategori | Tykkelse eller alder |
+| --- | --- |
+| Ny is | Under 10 cm |
+| Ung is | 10–30 cm |
+| Førsteårsis | Tykkere enn 30 cm, har ikke overlevd en smeltesesong |
+| Flerårsis | Har overlevd minst én smeltesesong, typisk 2–4 m tykk |
+
+Når havis fryser, blir det igjen saltvann i små lommer mellom iskrystallene, *saltlake*, på engelsk *brine*. Etter hvert siver saltlaken ut, og isen blir ferskere. Havis som er fire år eller eldre, har nesten ingen saltlake igjen, og flerårsis kan brukes som ferskvannskilde på polarekspedisjoner (National Snow and Ice Data Center, u.å.-e). Saltet som slippes ut når isen fryser, gjør vannet under tettere, og tungt vann synker. Utvekslingen av salt mellom havis og hav påvirker havsirkulasjonen over hundrevis av kilometer (National Snow and Ice Data Center, u.å.-e). Mer om havstrømmene står i [havstrømmer](/tema/havstrommer).
+
+Snø på havisen isolerer den. Det bremser veksten om vinteren, men utsetter også smeltingen om sommeren. Snø på tykk is kan reflektere opptil 90 prosent av sollyset. Når snøen smelter, samler vannet seg i *smeltedammer* som absorberer mer varme enn isen rundt. Albedoen faller da til rundt 0,75 og enda lavere etter hvert som dammene vokser (National Snow and Ice Data Center, u.å.-e).
+
+### Havisen driver
+
+Havis er sjelden i ro. Den driver rundt i Arktis med de rådende vindene og havstrømmene, og isen forlater Polhavet gjennom Framstredet, øst for Grønland. Når isen blir tynnere, øker farten, og mer is føres ut. Beaufortvirvelen, en sirkulerende havstrøm nord for Alaska, har tidligere virket som en barnehage for ung is som kunne bli i området og tykne. Siden 2000-tallet har mye is i den sørlige delen av virvelen smeltet, så mye av flerårsisen er blitt borte, og mindre førsteårsis blir til ny flerårsis (National Snow and Ice Data Center, u.å.-e).
+
+Målinger med bøyer fra Sentral-Arktis til Framstredet viser at den transpolare driftstrømmen (på engelsk *transpolar drift stream*) og Framstredet formet isens bevegelse. Isen fulgte overflatevinden tett, unntatt i stille vær, og farten økte kraftig når isen drev sørover inn i Framstredet. Over tid er det store forskjeller fra år til år. Bøydataene fra 1979 til 2011 viser ingen statistisk signifikant trend i utførselen av is, men høy variasjon fra år til år (Lei mfl., 2016).
+
+Dette er et eksempel på at havisen ikke bare smelter på stedet. En del av isen eksporteres. Flerårsisen er mer vanlig i Arktis enn i Antarktis. Rundt Antarktis fører havstrømmer og atmosfæresirkulasjon isen inn i varmere vann, så mesteparten smelter om sommeren. Det meste av flerårsisen som finnes i Antarktis, holder seg i Weddellhavet (National Snow and Ice Data Center, u.å.-e).
+
+### Snø: krystaller og vannekvivalent
+
+Snødekket kan i løpet av et år dekke så mye som 46 millioner kvadratkilometer, særlig over Nord-Amerika, Grønland, Europa og Russland (National Snow and Ice Data Center, u.å.-b).
+
+Snø er nedbør i form av hvite eller halvgjennomsiktige iskrystaller. Snøkrystaller kan ha uendelig mange former, men er i bunn og grunn sekskantede, i samsvar med molekylstrukturen til vann. Formen avhenger av temperaturen og trykket da krystallene ble dannet. Derfor er ingen snøkrystaller like. Hvilken form krystallene får, varierer etter temperaturen (Store norske leksikon, u.å.-k):
+
+| Temperatur ved dannelsen | Form |
+| --- | --- |
+| −30 til −15 °C | Sekskantede plater eller prismer |
+| −15 til −12 °C | Stjerner |
+| −12 til −8 °C | Plater |
+| −8 til −3 °C | Tallrike former |
+
+Snøfnugg faller med en fart på ca. 0,5–2,0 meter i sekundet. Nyfallen, tørr snø har en *vannverdi* på omkring 0,1. Det betyr at 10 centimeter snø gir 1 centimeter vann når den smelter, eller at 1 millimeter nedbør gir 10 millimeter snødybde. Eldre snø synker sammen, og vannverdien øker. Nysnø kan ha en vannverdi på 0,2–0,3 hvis den fyker mens det snør. Utover våren er vannverdien til snødekket gjerne 0,2–0,3 i lavlandet og 0,3–0,5 i fjellet (Store norske leksikon, u.å.-j).
+
+> **Regn selv**
+>
+> Det faller 40 centimeter tørr nysnø med vannverdi 0,1. Hvor mye vann tilsvarer det? 40 cm · 0,1 = 4 cm vann, altså 40 millimeter nedbør. Hvis snøen ligger til våren med vannverdi 0,4, blir vannmengden fra den samme snødybden fire ganger så stor.
+
+*Vannekvivalent* er mengden snø, firn og is omregnet til mengden vann (NVE, 2017).
+
+Snø kan også endre hvordan landet tar opp varme. Et snødekke reflekterer mye av solstrålingen, nyfallen tørr snø opptil 90 prosent og omkrystallisert våt snø 40–50 prosent. Snø leder også varme dårlig, særlig nyfallen lett snø, så den isolerer bakken (Store norske leksikon, u.å.-j).
+
+```widget
+SjekkKryo5
 ```
 
 ## Snøskredvarsel
@@ -213,6 +324,20 @@ SjekkKryo3
 **Havis:** Frossent havvann som flyter. Utbredelsen følges med satellitt siden 1979.
 
 **Sesonghavis:** Havis som vokser om vinteren og smelter delvis om sommeren, særlig i Arktis.
+
+**Tempererte breer:** Breer med temperatur nær smeltepunktet hele året, slik som i Norge. Polare breer er langt under frysepunktet, for eksempel innlandsisen i Antarktis og på Grønland.
+
+**Kalving:** At isblokker løsner fra en bre som ender i vann. Isen som flyter, kalles isfjell.
+
+**Jøkullaup:** Flom fra en bredemt innsjø som tømmes plutselig.
+
+**Vannekvivalent:** Mengden av snø, firn og is omregnet til mengden vann.
+
+**Frazil:** Små nålformede iskrystaller, de første krystallene som dannes når havvann fryser.
+
+**Flerårsis:** Havis som har overlevd minst én smeltesesong og som typisk er 2–4 meter tykk.
+
+**Permafrostsoner:** Inndeling i kontinuerlig, diskontinuerlig, sporadisk og isolert permafrost etter hvor stor del av landarealet som sannsynligvis har permafrost.
 
 **Flakskred:** Snøskred der et fast, sammenhengende snøflak glir ut på et svakt lag.
 

@@ -134,4 +134,20 @@ describe("Pakke B: nye kapitler", () => {
       assert.ok(md.includes(`${m[1]}`), kilde.prefix);
     }
   });
+
+  it("tilleggene til kryosfærekapittelet er sitert i teksten", () => {
+    const md = read("posts/kryosfaeren.md");
+    for (const key of ["SjekkKryo4", "SjekkKryo5"]) {
+      assert.ok(md.includes(key), key);
+    }
+    assert.ok(SJEKK_DEG_SELV_B.Kryo4);
+    assert.ok(SJEKK_DEG_SELV_B.Kryo5);
+    for (const kilde of KILDER_B_TILLEGG.kryosfaeren ?? []) {
+      const m = kilde.prefix.match(/\((u\.å\.-[a-z]|\d{4}[a-z]?)/) ?? kilde.prefix.match(/\((\d{4})\)/);
+      assert.ok(m, kilde.prefix);
+      const forfatter = kilde.prefix.split(/[,.(]/)[0]!.split(" ")[0]!;
+      assert.ok(md.includes(m[1]!), kilde.prefix);
+      if (/^\d/.test(m[1]!)) assert.ok(md.includes(`${forfatter}`), forfatter);
+    }
+  });
 });

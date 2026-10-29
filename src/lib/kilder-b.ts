@@ -228,6 +228,52 @@ export const KILDER_B = {
 
 /** Tillegg til eksisterende kildelister. Slås sammen med `medKilder` i rutene. */
 export const KILDER_B_TILLEGG = {
+  kryosfaeren: [
+    {
+      prefix: "Store norske leksikon. (u.å.-h). ",
+      italic: "Kalving",
+      suffix: ".",
+      href: "https://snl.no/kalving",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-i). ",
+      italic: "Jøkullaup",
+      suffix: ".",
+      href: "https://snl.no/jøkullaup",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-j). ",
+      italic: "Snø",
+      suffix: ".",
+      href: "https://snl.no/snø",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-k). ",
+      italic: "Snøkrystall",
+      suffix: ".",
+      href: "https://snl.no/snøkrystall",
+    },
+    {
+      prefix: "National Snow and Ice Data Center [NSIDC]. (u.å.-e). ",
+      italic: "Science of sea ice",
+      suffix: ".",
+      href: "https://nsidc.org/learn/parts-cryosphere/sea-ice/science-sea-ice",
+    },
+    {
+      prefix:
+        "Lei, R., Heil, P., Wang, J., Zhang, Z., Li, Q., & Li, N. (2016). Characterization of sea-ice kinematic in the Arctic outflow region using buoy data. ",
+      italic: "Polar Research, 35",
+      suffix: "(1), Artikkel 22658.",
+      href: "https://doi.org/10.3402/polar.v35.22658",
+    },
+    {
+      prefix:
+        "Lüthi, D., Le Floch, M., Bereiter, B., Blunier, T., Barnola, J.-M., Siegenthaler, U., Raynaud, D., Jouzel, J., Fischer, H., Kawamura, K., & Stocker, T. F. (2008). High-resolution carbon dioxide concentration record 650,000–800,000 years before present. ",
+      italic: "Nature, 453",
+      suffix: "(7193), 379–382.",
+      href: "https://doi.org/10.1038/nature06949",
+    },
+  ],
   vaerkart: [
     {
       prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-h). ",
