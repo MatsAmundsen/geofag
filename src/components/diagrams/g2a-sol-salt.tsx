@@ -43,8 +43,11 @@ function Celle({ mk }: { mk: Record<string, string> }) {
       <line x1={32 + 130 * 0.66} y1={158} x2={52 + 90 * 0.66} y2={104} stroke={C.cold} strokeOpacity={0.6} />
       <line x1={42} y1={131} x2={152} y2={131} stroke={C.cold} strokeOpacity={0.6} />
       <Flow d="M96 160 L96 176 L190 176 L190 140" color={C.teal} marker={mk.teal} w={2.4} />
-      <circle cx={190} cy={124} r={14} fill={G.amber} fillOpacity={0.3} className="a a-pulse" />
-      <circle cx={190} cy={124} r={9} fill={G.amber} />
+      {/* lyspære: forbruk av strømmen */}
+      <circle cx={190} cy={120} r={13} fill={G.amber} fillOpacity={0.22} className="a a-pulse" />
+      <path d="M182 128 C175 120 176 108 190 107 C204 108 205 120 198 128 Z" fill="none" stroke={G.amber} strokeWidth={2} strokeLinejoin="round" />
+      <path d="M185 120 L188 113 L192 120 L195 113" fill="none" stroke={G.amber} strokeWidth={1.6} strokeLinejoin="round" />
+      <rect x={183} y={129} width={14} height={9} rx={2} fill={G.panel2} stroke={C.fg} strokeWidth={1.6} />
     </g>
   );
 }
@@ -53,32 +56,34 @@ function Termisk({ mk }: { mk: Record<string, string> }) {
   return (
     <g>
       <Sol x={196} y={30} />
-      {[30, 60, 90].map((x) => (
+      {[134, 164, 194].map((x) => (
         <g key={x}>
           <line x1={x - 12} y1={168} x2={x + 12} y2={162} stroke={C.fg} strokeWidth={3.4} strokeLinecap="round" />
         </g>
       ))}
-      <Flow d="M184 40 L96 154" color={G.amber} marker={mk.amber} w={2} />
-      <Flow d="M86 154 L112 92" color={G.amber} marker={mk.amber} w={2} cls="a a-flowr" />
-      <line x1={118} y1={80} x2={118} y2={168} stroke={C.sand} strokeWidth={3} />
-      <rect x={110} y={66} width={16} height={18} rx={3} fill={C.low} stroke={C.low} />
-      <Flow d="M128 72 L168 72 L168 94" color={C.warm} marker={mk.warm} w={2.4} />
+      {/* innkommende og reflektert stråle møtes i samme speil */}
+      <Flow d="M190 52 L168 152" color={G.amber} marker={mk.amber} w={2} />
+      <Flow d="M162 152 L104 92" color={G.amber} marker={mk.amber} w={2} cls="a a-flowr" />
+      <line x1={96} y1={80} x2={96} y2={168} stroke={C.sand} strokeWidth={3} />
+      <rect x={88} y={66} width={16} height={18} rx={3} fill={C.low} stroke={C.low} />
+      <Flow d="M86 72 L20 72 L20 94" color={C.warm} marker={mk.warm} w={2.4} />
+      <T x={34} y={62} lines="damp" size={14} fill={C.muted} />
       {/* dampturbin med generator */}
-      <path d="M152 104 L152 142 L192 156 L192 90 Z" fill={G.panel2} stroke={C.cold} strokeWidth={2} strokeLinejoin="round" />
-      {[162, 172, 182].map((x) => (
-        <line key={x} x1={x} x2={x} y1={104 - (x - 152) * 0.35 + 6} y2={142 + (x - 152) * 0.45 - 6} stroke={C.cold} strokeOpacity={0.7} strokeWidth={2} />
+      <path d="M4 104 L4 142 L44 156 L44 90 Z" fill={G.panel2} stroke={C.cold} strokeWidth={2} strokeLinejoin="round" />
+      {[14, 24, 34].map((x) => (
+        <line key={x} x1={x} x2={x} y1={104 - (x - 4) * 0.35 + 6} y2={142 + (x - 4) * 0.45 - 6} stroke={C.cold} strokeOpacity={0.7} strokeWidth={2} />
       ))}
-      <line x1={192} x2={204} y1={123} y2={123} stroke={C.cold} strokeWidth={3} />
-      <circle cx={216} cy={123} r={11} fill={G.panel2} stroke={C.warm} strokeWidth={2} />
-      <T x={216} y={128} lines="G" size={14} weight={700} fill={C.warm} anchor="middle" />
+      <line x1={44} x2={56} y1={123} y2={123} stroke={C.cold} strokeWidth={3} />
+      <circle cx={68} cy={123} r={11} fill={G.panel2} stroke={C.warm} strokeWidth={2} />
+      <T x={68} y={128} lines="G" size={14} weight={700} fill={C.warm} anchor="middle" />
     </g>
   );
 }
 
 const PANELER = [
   { id: "solvarme", navn: "Solvarme", f: C.warm, linjer: ["Passiv: bygninger utformes", "slik at sollyset varmer dem.", "Aktiv: solfangere, svarte", "flater, varmer vann eller luft."], ikon: Hus, merk: [["passiv", 54, 184], ["aktiv", 156, 94]] as [string, number, number][] },
-  { id: "solceller", navn: "Solceller", f: C.cold, linjer: ["Lys blir direkte til", "elektrisitet ved den", "fotoelektriske effekten."], ikon: Celle, merk: [["lys", 142, 62], ["strøm", 104, 196]] as [string, number, number][] },
-  { id: "termisk", navn: "Termisk solkraft", f: C.low, linjer: ["Speil samler solstrålene og", "varmer en væske som", "driver en dampturbin."], ikon: Termisk, merk: [["speil", 24, 190], ["dampturbin", 138, 178]] as [string, number, number][] },
+  { id: "solceller", navn: "Solceller", f: C.cold, linjer: ["Lys blir direkte til", "elektrisitet ved den", "fotoelektriske effekten."], ikon: Celle, merk: [["lys", 142, 62], ["strøm", 104, 196], ["forbruk", 158, 96]] as [string, number, number][] },
+  { id: "termisk", navn: "Termisk solkraft", f: C.low, linjer: ["Speil samler solstrålene og", "varmer en væske som", "driver en dampturbin."], ikon: Termisk, merk: [["speil", 150, 190], ["dampturbin", 2, 178]] as [string, number, number][] },
 ];
 
 function Panel({ i, x, y, w, h, mk, s = 1 }: { i: number; x: number; y: number; w: number; h: number; mk: Record<string, string>; s?: number }) {
