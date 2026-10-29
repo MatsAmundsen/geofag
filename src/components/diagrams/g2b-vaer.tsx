@@ -210,16 +210,16 @@ const NIV = ["1 °C", "1,5 °C", "2 °C", "4 °C"];
 const PANELER = [
   { navn: ["Ekstrem varme"], f: C.low, hyp: [2.8, 4.1, 5.6, 9.4], tittel: ["Ekstra temperatur (°C)"], str: [1.2, 1.9, 2.6, 5.1], strT: ["+1,2", "+1,9", "+2,6", "+5,1"] },
   { navn: ["Kraftig døgnnedbør"], f: C.rain, hyp: [1.3, 1.5, 1.7, 2.7], tittel: ["Ekstra nedbør (%)"], str: [6.7, 10.5, 14.0, 30.2], strT: ["+6,7", "+10,5", "+14,0", "+30,2"] },
-  { navn: ["Landbrukstørke", "(regioner som tørker ut)"], f: C.sand, hyp: [1.7, 2.0, 2.4, 4.1], tittel: ["Endring i jordfuktighet", "(standardavvik)"], str: [0.3, 0.5, 0.6, 1.0], strT: ["0,3", "0,5", "0,6", "1,0"] },
+  { navn: ["Landbrukstørke", "(regioner som tørker ut)"], f: C.sand, hyp: [1.7, 2.0, 2.4, 4.1], tittel: ["Tørrere jord: lavere", "jordfuktighet"], str: [0.3, 0.5, 0.6, 1.0], strT: ["−0,3", "−0,5", "−0,6", "−1,0"] },
 ];
 
 export function FigEkstremerOppvarming() {
   return (
     <G2Figur
       title="Hvor mye hyppigere og sterkere blir 10-årshendelsene?"
-      desc="Tre paneler med fire søyler hver, for oppvarming på 1, 1,5, 2 og 4 grader, medianer for hendelser som kom én gang på 10 år i 1850–1900. Ekstrem varme kommer 2,8, 4,1, 5,6 og 9,4 ganger oftere og er 1,2, 1,9, 2,6 og 5,1 grader varmere. Kraftig døgnnedbør kommer 1,3, 1,5, 1,7 og 2,7 ganger oftere og er 6,7, 10,5, 14,0 og 30,2 prosent kraftigere. Landbrukstørke i regioner som tørker ut kommer 1,7, 2,0, 2,4 og 4,1 ganger oftere, og jordfuktigheten endres med 0,3, 0,5, 0,6 og 1,0 standardavvik."
+      desc="Tre paneler med fire søyler hver, for oppvarming på 1, 1,5, 2 og 4 grader, medianer for hendelser som kom én gang på 10 år i 1850–1900. Ekstrem varme kommer 2,8, 4,1, 5,6 og 9,4 ganger oftere og er 1,2, 1,9, 2,6 og 5,1 grader varmere. Kraftig døgnnedbør kommer 1,3, 1,5, 1,7 og 2,7 ganger oftere og er 6,7, 10,5, 14,0 og 30,2 prosent kraftigere. Landbrukstørke i regioner som tørker ut kommer 1,7, 2,0, 2,4 og 4,1 ganger oftere, og jordfuktigheten blir lavere, altså jorden tørrere, med 0,3, 0,5, 0,6 og 1,0 standardavvik."
       heading="Hvor mye hyppigere og sterkere blir 10-årshendelsene?"
-      caption="Medianer for hendelser som kom én gang på 10 år i 1850–1900, ved global oppvarming på 1 °C (i dag), 1,5 °C, 2 °C og 4 °C. Stiplet linje er 1×, like ofte som i 1850–1900. Tørken gjelder bare regioner som tørker ut. Kilde: IPCC (2021), Summary for Policymakers, Figure SPM.6."
+      caption="Medianer for hendelser som kom én gang på 10 år i 1850–1900, ved global oppvarming på 1 °C (i dag), 1,5 °C, 2 °C og 4 °C. Stiplet linje er 1×, like ofte som i 1850–1900. Tørken gjelder bare regioner som tørker ut. Jordfuktigheten er målt i standardavvik, og minustegnet betyr tørrere jord. Kilde: IPCC (2021b), Summary for Policymakers, Figure SPM.6."
       narrow={{ w: 300, h: 1296 }}
       wide={{ w: 720, h: 486 }}
       animated

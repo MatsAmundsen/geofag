@@ -12,7 +12,7 @@ const BADGER = [
   { n: 2, x: 250, m: 900, t: ["Kontinentalskråning: nedre", "grense omtrent 2 000 m"] },
   { n: 3, x: 296, m: 2300, t: ["Kontinentalfot: ned til", "omtrent 4 000 m"] },
   { n: 4, x: 385, m: 5600, t: ["Dyphavsslette: 4 000–6 000 m,", "nesten 30 % av jordoverflaten"] },
-  { n: 5, x: 478, m: 2000, t: ["Midthavsrygg: omtrent 23 % av", "jordoverflaten. Ny basaltisk", "skorpe dannes her."] },
+  { n: 5, x: 478, m: 2000, t: ["Midthavsrygg: omtrent 23 % av", "jordoverflaten. Ny basaltisk", "skorpe dannes her, mens", "platene glir fra hverandre."] },
   { n: 6, x: 664, m: 8000, t: ["Dyphavsgrav: opptil omtrent", "11 000 m"] },
 ];
 
@@ -22,8 +22,8 @@ export function FigHavbunnenProfil() {
       title="Havbunnens landskap"
       desc="Skjematisk tverrsnitt av havbunnen fra kyst til midthavsrygg og dyphavsgrav, med dybdeskala fra 0 til 11 000 meter. Kontinentalsokkelen har ytterkant i gjennomsnitt 130 meter. Kontinentalskråningen går ned til omtrent 2 000 meter. Kontinentalfoten går ned til omtrent 4 000 meter. Dyphavssletten ligger på 4 000 til 6 000 meter og dekker nesten 30 prosent av jordoverflaten. Midthavsryggen dekker omtrent 23 prosent av jordoverflaten og er stedet der ny basaltisk skorpe dannes. Dyphavsgraven går ned til omtrent 11 000 meter. Gjennomsnittsdypet for hele havet er 3 682 meter og Challenger Deep omtrent 10 935 meter."
       heading="Havbunnens landskap"
-      caption="Skjematisk tverrsnitt. Dybdeskalaen er loddrett og fast, men avstandene sidelengs og formene er forenklet og ikke i målestokk. Midthavsryggens topp er ikke gitt noe dyp. Kilder: Store norske leksikon (u.å.-b, snl.no/havbunnen); NOAA (u.å.-d, oceanservice.noaa.gov/facts/oceandepth.html)."
-      narrow={{ w: 300, h: 830 }}
+      caption="Skjematisk tverrsnitt. Dybdeskalaen er loddrett og fast, men avstandene sidelengs og formene er forenklet og ikke i målestokk. Dybdene er forenklet. Toppen av midthavsryggen er ikke tegnet i målestokk. Kilder: Store norske leksikon (u.å.-b, snl.no/havbunnen); NOAA (u.å.-d, oceanservice.noaa.gov/facts/oceandepth.html)."
+      narrow={{ w: 300, h: 848 }}
       wide={{ w: 720, h: 452 }}
       animated
       name="Havbunnens landskap"
@@ -91,6 +91,7 @@ export function FigHavbunnenProfil() {
                 <T x={330} y={Y(2100)} lines={["Kontinentalfot:", "ned til omtrent", "4 000 m"].map(M)} size={14} lh={18} fill={C.fg} />
                 <T x={R(572)} y={Y(1250)} lines={["Gjennomsnittsdyp for", "hele havet: 3 682 m"].map(M)} size={14} lh={18} fill={C.white} anchor="middle" />
                 <T x={92} y={Y(6000) + 40} lines={["Dyphavsslette", "4 000–6 000 m,", "nesten 30 % av", "jordoverflaten"].map(M)} size={14} lh={18} fill={C.fg} />
+                <T x={R(478)} y={Y(4600) + 24} lines={["Platene glir", "fra hverandre"]} size={14} lh={18} fill={C.warm} weight={700} anchor="middle" />
                 <T x={290} y={Y(6000) + 40} lines={["Midthavsrygg: omtrent 23 % av", "jordoverflaten. Her dannes ny", "basaltisk skorpe."]} size={14} lh={18} fill={C.fg} />
                 <T x={636} y={Y(8000)} lines={["Dyphavsgrav:", "opptil omtrent", "11 000 m"].map(M)} size={14} lh={18} fill={C.fg} anchor="end" />
                 <T x={R(664) - 14} y={Y(10935) - 8} lines="Challenger Deep omtrent 10 935 m" size={14} fill="#f4a6a6" anchor="end" />
@@ -145,7 +146,7 @@ export function FigHavbunnenProfil() {
 /* ---------- FigVannmasserAtlanterhavet ---------- */
 
 const VM = [
-  { n: 1, f: G.green, navn: "Antarktisk mellomvann (AAIW)", t: "Saltholdighetsminimum, omtrent 500–1 000 m, sør for 20° N. Opphav ved overflaten nær sørspissen av Sør-Amerika." },
+  { n: 1, f: G.green, navn: "Antarktisk mellomvann (AAIW)", t: "Saltholdighetsminimum, omtrent 500–1 000 m, sør for 20° N. Opphav ved overflaten nær sørspissen av Sør-Amerika, sprer seg nordover." },
   { n: 2, f: G.amber, navn: "Middelhavsvann", t: "Saltholdighetsmaksimum, omtrent 1 000 m, mellom 30° og 40° N. Ved Gibraltar 13 °C og 38,45 psu." },
   { n: 3, f: G.violet, navn: "Labradorhavsvann", t: "Omvelting ned til 1 500–2 000 m om vinteren. Saltholdighetsminimum og mye oksygen i den subpolare havvirvelen." },
   { n: 4, f: C.cold, navn: "Nord-Atlantisk dypvann (NADW)", t: "Saltholdighetsmaksimum, 1 500–3 000 m, sør for 20° N. Nordisk overløpsvann kommer over tersklene i Danmarkstredet, mellom Island og Færøyene og i Færøy–Shetland-renna." },
@@ -170,7 +171,7 @@ export function FigVannmasserAtlanterhavet() {
   return (
     <G2Figur
       title="Vannmasser i Atlanterhavet"
-      desc="Skjematisk nord–sør-snitt av Atlanterhavet med dyp nedover. Antarktisk mellomvann ligger på omtrent 500 til 1 000 meters dyp sør for 20 grader nord og kommer fra overflaten nær sørspissen av Sør-Amerika. Middelhavsvann ligger på omtrent 1 000 meter mellom 30 og 40 grader nord. Labradorhavsvann går ned til 1 500 til 2 000 meter om vinteren. Nord-Atlantisk dypvann ligger på 1 500 til 3 000 meter sør for 20 grader nord og får nordisk overløpsvann over tersklene i Danmarkstredet, mellom Island og Færøyene og i Færøy–Shetland-renna. Antarktisk bunnvann ligger nær bunnen og spores til omtrent 23 grader nord."
+      desc="Skjematisk nord–sør-snitt av Atlanterhavet med dyp nedover. Antarktisk mellomvann ligger på omtrent 500 til 1 000 meters dyp sør for 20 grader nord og kommer fra overflaten nær sørspissen av Sør-Amerika og sprer seg nordover. Labradorhavsvann dannes ved at overflatevann synker ned i den subpolare havvirvelen om vinteren. Middelhavsvann ligger på omtrent 1 000 meter mellom 30 og 40 grader nord. Labradorhavsvann går ned til 1 500 til 2 000 meter om vinteren. Nord-Atlantisk dypvann ligger på 1 500 til 3 000 meter sør for 20 grader nord og får nordisk overløpsvann over tersklene i Danmarkstredet, mellom Island og Færøyene og i Færøy–Shetland-renna. Antarktisk bunnvann ligger nær bunnen og spores til omtrent 23 grader nord."
       heading="Vannmasser i Atlanterhavet"
       caption="Skjematisk nord–sør-snitt. Bare dypene og breddegradene i teksten er tegnet, formene og lagenes tykkelse er forenklet. Kilder: Talley (2019, talleylab.ucsd.edu/ltalley/sio210/Atlantic_deep/); Sælen og Barthel (2026, snl.no/hav)."
       narrow={{ w: 300, h: 960 }}
@@ -226,12 +227,12 @@ export function FigVannmasserAtlanterhavet() {
             {/* bunn */}
             <path d={`M${xa} ${bunn} L${xb} ${bunn} L${xb} ${bunn + 16} L${xa} ${bunn + 16} Z`} fill="#2b3640" />
             {/* strømpiler */}
-            <Flow d={`M${LX(19)} ${Y(750)} L${xs(0.2)} ${Y(750)}`} color={C.fg} marker={mk.fg} w={2} />
+            <Flow d={`M${xs(0.2)} ${Y(750)} L${LX(19)} ${Y(750)}`} color={C.fg} marker={mk.fg} w={2} />
             <Flow d={`M${xs(0.92)} ${Y(2200)} L${xs(0.3)} ${Y(2200)}`} color={C.fg} marker={mk.fg} w={2} />
             <Flow d={`M${xs(0.1)} ${Y(3600)} L${LX(23) - 4} ${Y(3640)}`} color={C.bg} marker={mk.fg} w={2} />
-            {/* overløp fra nord */}
-            {[0, 1, 2].map((k) => (
-              <Flow key={k} d={`M${xb - 10 - k * (bred ? 14 : 8)} ${Y(0) + 14} C${xb - 10 - k * (bred ? 14 : 8)} ${Y(900)} ${xb - 30 - k * 10} ${Y(1200)} ${xb - 40 - k * 12} ${Y(1700)}`} color={C.fg} marker={mk.fg} w={1.8} />
+            {/* omvelting av overflatevann ned i Labradorhavsvannet */}
+            {[-1, 0, 1].map((k) => (
+              <Flow key={k} d={`M${lsw[0] + k * (bred ? 18 : 9)} ${Y(0) + 14} L${lsw[0] + k * (bred ? 18 : 9)} ${Y(lsw[1]) - (bred ? 24 : 21)}`} color={C.fg} marker={mk.fg} w={1.8} />
             ))}
             {/* Gibraltar-strøm */}
             <Flow d={`M${gib} ${Y(0) - 28} L${gib} ${Y(0) - 4}`} color={G.amber} marker={mk.amber} w={2} />

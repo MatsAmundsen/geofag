@@ -73,7 +73,7 @@ export function FigNaturligTidsskalaer() {
       title="Tidsskalaer for naturlige pådriv"
       desc="Logaritmisk tidsakse fra 1 år til 10 milliarder år med ett bånd per naturlig prosess. Store vulkanutbrudd 1 til 3 år. Solsyklusen 8 til 14 år, gjennomsnitt 11 år. AMV på tiårsskala, uten tall. Gleissberg-syklusen omtrent 100 år. Store solminima omtrent hvert 200. år. Jordbanen (Milankovitch) titusener til hundretusener av år, med presesjon 19 000 og 23 000 år, helning 41 000 år og eksentrisitet 100 000 og 400 000 år. Platetektonikk titalls millioner år, for eksempel avkjølingen fra omtrent 50 millioner år siden. Livets utvikling med fritt oksygen fra omtrent 2,5 milliarder år siden."
       heading="Tidsskalaer for naturlige pådriv"
-      caption="Logaritmisk akse: hver strek er ti ganger lengre tid enn den forrige. Båndene viser tidsskalaen til hver prosess, ikke når de skjedde. AMV er ikke tallfestet i kildene. Kilder: IPCC (2021), SPM C.1.4; Matthews mfl. (2021); Lindsey (2025); Istider (presesjon, helning og eksentrisitet); Gulev mfl. (2021); Lyons mfl. (2014)."
+      caption="Logaritmisk akse: hver strek er ti ganger lengre tid enn den forrige. Båndene viser tidsskalaen til hver prosess, ikke når de skjedde. AMV er ikke tallfestet i kildene. Kilder: IPCC (2021), SPM C.1.4; Matthews mfl. (2021); Lindsey (2025); kapittelet om Milankovitch-syklusene (presesjon, helning og eksentrisitet); Gulev mfl. (2021); Lyons mfl. (2014)."
       narrow={{ w: 300, h: 800 }}
       wide={{ w: 720, h: 484 }}
       animated
@@ -413,7 +413,7 @@ export function FigTektonikkKarbon() {
 /* ---------- FigNaturligVsMenneskelig ---------- */
 
 const R3 = [
-  { navn: ["Menneskeskapt", "total"], lo: 0.8, hi: 1.3, mid: 1.07, f: C.low, tekst: ["1,07 °C", "sannsynlig intervall", "0,8 til 1,3 °C"], smal: ["1,07 °C, sannsynlig intervall", "0,8 til 1,3 °C"] },
+  { navn: ["Menneskeskapt", "total"], lo: 0.8, hi: 1.3, mid: 1.07, f: C.low, tekst: ["1,07 °C", "sannsynlig område", "0,8 til 1,3 °C"], smal: ["1,07 °C, sannsynlig område", "0,8 til 1,3 °C"] },
   { navn: ["Naturlige pådrivere", "(sol og vulkaner)"], lo: -0.1, hi: 0.1, mid: null, f: C.teal, tekst: [`${MINUS}0,1 til +0,1 °C`], smal: [`${MINUS}0,1 til +0,1 °C`] },
   { navn: ["Indre variabilitet"], lo: -0.2, hi: 0.2, mid: null, f: C.cold, tekst: [`${MINUS}0,2 til +0,2 °C`], smal: [`${MINUS}0,2 til +0,2 °C`] },
 ];
@@ -422,9 +422,9 @@ export function FigNaturligVsMenneskelig() {
   return (
     <G2Figur
       title="Bidrag til global overflatetemperatur, 1850–1900 til 2010–2019"
-      desc="Tre horisontale intervall langs en akse for temperaturendring fra minus 0,4 til pluss 1,4 grader. Menneskeskapt total: beste anslag 1,07 grader, sannsynlig intervall 0,8 til 1,3 grader. Naturlige pådrivere, sol og vulkaner: minus 0,1 til pluss 0,1 grader. Indre variabilitet: minus 0,2 til pluss 0,2 grader. En loddrett linje markerer null."
+      desc="Tre horisontale intervall langs en akse for temperaturendring fra minus 0,4 til pluss 1,4 grader. Menneskeskapt total: beste anslag 1,07 grader, sannsynlig område 0,8 til 1,3 grader. Naturlige pådrivere, sol og vulkaner: minus 0,1 til pluss 0,1 grader. Indre variabilitet: minus 0,2 til pluss 0,2 grader. En loddrett linje markerer null."
       heading="Naturlig mot menneskeskapt oppvarming"
-      caption="Endring i global overflatetemperatur fra 1850–1900 til 2010–2019. Intervallene har ulik karakter og kan ikke legges sammen uten videre, derfor er de ikke stablet. Kilde: IPCC (2021), Summary for Policymakers, A.1.3."
+      caption="Endring i global overflatetemperatur fra 1850–1900 til 2010–2019. Intervallene har ulik karakter og kan ikke legges sammen uten videre, derfor er de ikke stablet. «Sannsynlig område» er IPCC sitt uttrykk for intervallet, ikke en feilmargin. Kilde: IPCC (2021), Summary for Policymakers, A.1.3."
       narrow={{ w: 300, h: 430 }}
       wide={{ w: 720, h: 296 }}
       animated
