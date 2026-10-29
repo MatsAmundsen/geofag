@@ -33,6 +33,21 @@ export const NAV_GF1 = [
  */
 export const NAV_GF1_ROWS = [NAV_GF1.slice(0, 8), NAV_GF1.slice(8)] as const;
 
+export type NavItem = { readonly to: string; readonly label: string };
+export type NavGroup = { readonly label: string | null; readonly items: readonly NavItem[] };
+
+/**
+ * Mobilmenyen (under md) deler samme lenker i grupper med overskrifter. Rekkefølgen og lenkenavnene er
+ * de samme som i NAV_GF1. Overskriftene er bare struktur og er ikke lenker.
+ */
+export const NAV_GF1_GROUPS: readonly NavGroup[] = [
+  { label: "Start", items: NAV_GF1.slice(0, 2) },
+  { label: "Jordas indre", items: NAV_GF1.slice(2, 7) },
+  { label: "Bergarter og Norge", items: NAV_GF1.slice(7, 10) },
+  { label: "Landskap og samfunn", items: NAV_GF1.slice(10, 16) },
+  { label: "Annet", items: NAV_GF1.slice(16) },
+];
+
 export const NAV_GF2 = [
   { to: "/", label: "Forside" },
   { to: "/geofag-2", label: "Oversikt" },
@@ -62,6 +77,24 @@ export const NAV_GF2 = [
  * Rekkefølgen er den samme som NAV_GF2.
  */
 export const NAV_GF2_ROWS = [NAV_GF2.slice(0, 10), NAV_GF2.slice(10)] as const;
+
+/** Mobilmenyens grupper for Geofag 2. Samme rekkefølge og lenkenavn som NAV_GF2. */
+export const NAV_GF2_GROUPS: readonly NavGroup[] = [
+  { label: "Start", items: NAV_GF2.slice(0, 3) },
+  { label: "Vær og hav", items: NAV_GF2.slice(3, 10) },
+  { label: "Klima og is", items: NAV_GF2.slice(10, 15) },
+  { label: "Samfunn og metode", items: NAV_GF2.slice(15, 19) },
+  { label: "Annet", items: NAV_GF2.slice(19) },
+];
+
+/** Mobilmenyens grupper for forsiden (4 lenker, ingen overskrifter). */
+export const NAV_HUB_GROUPS: readonly NavGroup[] = [{ label: null, items: NAV_HUB }];
+
+export function navGroupsForPath(pathname: string): readonly NavGroup[] {
+  if (pathname === "/") return NAV_HUB_GROUPS;
+  if (pathname.startsWith("/geofag-1")) return NAV_GF1_GROUPS;
+  return NAV_GF2_GROUPS;
+}
 
 /** @deprecated use NAV_GF2 — kept so older imports still typecheck during the move */
 export const NAV = NAV_GF2;

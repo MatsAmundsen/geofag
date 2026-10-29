@@ -1,7 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { brandForPath, NAV_GF1, NAV_GF1_ROWS, NAV_GF2, NAV_GF2_ROWS, navForPath } from "@/lib/nav";
+import { useEffect, useId, useRef, useState } from "react";
+import {
+  brandForPath,
+  NAV_GF1,
+  NAV_GF1_ROWS,
+  NAV_GF2,
+  NAV_GF2_ROWS,
+  navForPath,
+  navGroupsForPath,
+} from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SiteSearch } from "@/components/sok/site-search";
@@ -123,6 +131,14 @@ let tidligStopp: (() => void) | null =
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
+  // Rulleposisjonen da menyen ble åpnet. Når toppmenyen vokser, flytter nettleseren siden (scroll anchoring),
+  // så vi setter den tilbake ved lukking uten sidebytte.
+  const rullFor = useRef<{ y: number; sti: string } | null>(null);
+  const veksleMeny = () => {
+    if (!open) rullFor.current = { y: window.scrollY, sti: window.location.pathname };
+    setOpen((v) => !v);
+  };
+  const menyId = useId();
 
   // Den klebrige toppmenyen må ikke skjule fokus eller ankermål (WCAG 2.4.11). Høyden måles og gis til
   // html som --site-header-h, som scroll-padding-top i styles.css bruker (CSS-reserven gjelder før dette).
@@ -163,14 +179,84 @@ export function SiteHeader() {
     pathname.startsWith("/eksamen");
   const isHome = pathname === "/";
   const menuRows = items === NAV_GF2 ? NAV_GF2_ROWS : items === NAV_GF1 ? NAV_GF1_ROWS : null;
+  const groups = navGroupsForPath(pathname);
+
+  // Mobilmenyen (under md): siden bak ligger låst mens menyen er åpen, Escape lukker og gir fokus tilbake
+  // til knappen, og Tab går rundt i toppmenyen (fokus-felle). Under md får toppmenyen max-height 100dvh,
+  // og selve lista ruller (se className på mobilmenyen under).
+  useEffect(() => {
+    if (!open) return;
+    const html = document.documentElement;
+    // Bare html (visningsflaten) låses. Låses body også, mister siden rulleposisjonen og den klebrige
+    // toppmenyen følger med oppover.
+    const forrige = html.style.overflow;
+    html.style.overflow = "hidden";
+    const bred = window.matchMedia("(min-width: 768px)");
+    const vedBredde = () => {
+      if (bred.matches) setOpen(false);
+    };
+    bred.addEventListener("change", vedBredde);
+    const fokuserbare = () => {
+      const header = headerRef.current;
+      if (!header) return [] as HTMLElement[];
+      return Array.from(
+        header.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => el.getClientRects().length > 0);
+    };
+    const vedTast = (e: KeyboardEvent) => {
+      const header = headerRef.current;
+      if (!header) return;
+      // Søkedialogen har sin egen Escape og sin egen fokus-felle.
+      if (document.querySelector('[role="dialog"]')) return;
+      if (e.key === "Escape" && !e.defaultPrevented) {
+        e.preventDefault();
+        setOpen(false);
+        header.querySelector<HTMLElement>('button[aria-controls="mobilmeny"]')?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !(e.target instanceof Node) || !header.contains(e.target)) return;
+      const liste = fokuserbare();
+      const forste = liste[0];
+      const siste = liste[liste.length - 1];
+      if (!forste || !siste) return;
+      if (e.shiftKey && document.activeElement === forste) {
+        e.preventDefault();
+        siste.focus();
+      } else if (!e.shiftKey && document.activeElement === siste) {
+        e.preventDefault();
+        forste.focus();
+      }
+    };
+    document.addEventListener("keydown", vedTast);
+    return () => {
+      html.style.overflow = forrige;
+      const lagret = rullFor.current;
+      rullFor.current = null;
+      if (lagret && lagret.sti === window.location.pathname) {
+        window.scrollTo({ top: lagret.y, behavior: "instant" });
+      }
+      bred.removeEventListener("change", vedBredde);
+      document.removeEventListener("keydown", vedTast);
+    };
+  }, [open]);
+
+  // Ny side: menyen skal være lukket.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md"
+      className={cn(
+        "sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-md",
+        open && "max-md:flex max-md:max-h-dvh max-md:flex-col",
+      )}
     >
       {menuRows ? (
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mx-auto w-full max-w-6xl shrink-0 px-4 sm:px-6">
           <div className="flex min-h-14 items-center justify-between gap-3 py-2">
             <BrandCluster
               brand={brand}
@@ -181,7 +267,7 @@ export function SiteHeader() {
             />
             <div className="flex shrink-0 items-center gap-2">
               <SiteSearch />
-              <MenuButton open={open} onClick={() => setOpen((v) => !v)} />
+              <MenuButton open={open} onClick={veksleMeny} />
             </div>
           </div>
           <nav
@@ -198,7 +284,7 @@ export function SiteHeader() {
           </nav>
         </div>
       ) : (
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+        <div className="mx-auto flex h-16 w-full max-w-6xl shrink-0 items-center justify-between gap-3 px-4 sm:px-6">
           <div className="flex min-h-11 items-center gap-3">
             <Link
               to="/"
@@ -305,10 +391,10 @@ export function SiteHeader() {
             <Button
               variant="ghost"
               size="sm"
-              className="md:hidden"
+              className="max-md:h-11 max-md:min-w-11 md:hidden"
               aria-expanded={open}
               aria-controls="mobilmeny"
-              onClick={() => setOpen((v) => !v)}
+              onClick={veksleMeny}
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
               <span className="sr-only">{open ? "Lukk meny" : "Åpne meny"}</span>
@@ -320,7 +406,7 @@ export function SiteHeader() {
       {open ? (
         <nav
           id="mobilmeny"
-          className="border-t border-border bg-background px-4 py-3 md:hidden"
+          className="min-h-0 overflow-y-auto overscroll-contain border-t border-border bg-background px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 md:hidden"
           aria-label="Mobilmeny"
         >
           <div className="mb-3 grid grid-cols-3 gap-2 border-b border-border pb-3 text-center">
@@ -328,7 +414,7 @@ export function SiteHeader() {
               to="/"
               onClick={() => setOpen(false)}
               className={cn(
-                "rounded-md border p-2 text-xs font-medium",
+                "flex min-h-11 items-center justify-center rounded-md border p-2 text-xs font-medium",
                 pathname === "/"
                   ? "border-primary bg-primary/10 text-primary"
                   : "border-border text-muted-foreground",
@@ -340,7 +426,7 @@ export function SiteHeader() {
               to="/geofag-1"
               onClick={() => setOpen(false)}
               className={cn(
-                "rounded-md border p-2 text-xs font-medium",
+                "flex min-h-11 items-center justify-center rounded-md border p-2 text-xs font-medium",
                 isGf1
                   ? "border-lava bg-lava/10 font-semibold text-foreground"
                   : "border-border text-muted-foreground",
@@ -352,7 +438,7 @@ export function SiteHeader() {
               to="/geofag-2"
               onClick={() => setOpen(false)}
               className={cn(
-                "rounded-md border p-2 text-xs font-medium",
+                "flex min-h-11 items-center justify-center rounded-md border p-2 text-xs font-medium",
                 isGf2
                   ? "border-primary bg-primary/10 font-semibold text-foreground"
                   : "border-border text-muted-foreground",
@@ -362,27 +448,59 @@ export function SiteHeader() {
             </Link>
           </div>
 
-          <ul className="flex flex-col gap-1">
-            {items.map((item) => {
-              const active = item.to === "/" ? pathname === "/" : pathname === item.to;
+          <div className="flex flex-col gap-4">
+            {groups.map((group, i) => {
+              const headingId = `${menyId}-gruppe-${i}`;
               return (
-                <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "flex min-h-11 items-center rounded-md px-3 text-sm",
-                      active ? "bg-muted font-medium text-foreground" : "text-muted-foreground",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
+                <div
+                  key={group.label ?? "alle"}
+                  role="group"
+                  aria-labelledby={group.label ? headingId : undefined}
+                >
+                  {group.label ? (
+                    <p
+                      id={headingId}
+                      className="mb-1 border-b border-border/70 px-3 pb-1 text-xs font-medium uppercase tracking-wider text-primary"
+                    >
+                      {group.label}
+                    </p>
+                  ) : null}
+                  <ul className="flex flex-col gap-1">
+                    {group.items.map((item) => {
+                      const active = item.to === "/" ? pathname === "/" : pathname === item.to;
+                      return (
+                        <li key={item.to}>
+                          <Link
+                            to={item.to}
+                            onClick={() => setOpen(false)}
+                            aria-current={active ? "page" : undefined}
+                            className={cn(
+                              "flex min-h-11 items-center rounded-md px-3 text-sm",
+                              active
+                                ? "bg-muted font-medium text-foreground"
+                                : "text-muted-foreground",
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </nav>
+      ) : null}
+      {open ? (
+        // Mørk flate under menyen: trykk utenfor lukker. Absolutt (ikke fixed), fordi backdrop-blur på
+        // headeren ellers gjør headeren til holder for fixed-barn.
+        <div
+          className="absolute inset-x-0 top-full h-dvh touch-none bg-black/60 md:hidden"
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+        />
       ) : null}
     </header>
   );
@@ -430,7 +548,7 @@ function BrandCluster({
           </span>
           <Link
             to={isGf1 ? "/geofag-1" : isGf2 ? "/geofag-2" : "/"}
-            className="leading-tight"
+            className="leading-tight max-md:flex max-md:min-h-11 max-md:items-center"
             onClick={onNavigate}
           >
             <span className="block whitespace-nowrap font-display text-sm font-medium tracking-tight text-foreground">
@@ -482,7 +600,7 @@ function MenuButton({ open, onClick }: { open: boolean; onClick: () => void }) {
     <Button
       variant="ghost"
       size="sm"
-      className="shrink-0 md:hidden"
+      className="shrink-0 max-md:h-11 max-md:min-w-11 md:hidden"
       aria-expanded={open}
       aria-controls="mobilmeny"
       onClick={onClick}
