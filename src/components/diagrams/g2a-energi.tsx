@@ -27,7 +27,7 @@ export function BrukstidFigur() {
         const y0 = bred ? 50 : 56;
         return (
           <>
-            <T x={bred ? x0 + tw : x0 + tw} y={22} lines="8760 t = hele året (100 %)" size={14} fill={C.fg} anchor="end" weight={700} />
+            <T x={bred ? x0 + tw : x0 + tw} y={22} lines="8760 timer = hele året (100 %)" size={14} fill={C.fg} anchor="end" weight={700} />
             <line x1={x0 + tw} x2={x0 + tw} y1={30} y2={y0 + 3 * rowH - 8} stroke={C.fg} strokeWidth={1.6} strokeDasharray="5 4" />
             {BRUKSTID.map((b, i) => {
               const y = y0 + i * rowH;
@@ -49,9 +49,9 @@ export function BrukstidFigur() {
                   <rect x={x0} y={by + (bred ? 0 : 8)} width={tw} height={22} rx={4} fill={G.panel} stroke={G.line} />
                   <rect x={x0} y={by + (bred ? 0 : 8)} width={bl} height={22} rx={4} fill={b.f} />
                   {bred ? (
-                    <T x={x0 + bl + 8} y={by + 17} lines={`${nb(b.t)} t · ${b.pst} %`} size={16} weight={700} fill={b.f} />
+                    <T x={x0 + bl + 8} y={by + 17} lines={`${nb(b.t)} timer · ${b.pst} %`} size={16} weight={700} fill={b.f} />
                   ) : (
-                    <T x={x0} y={by + 46} lines={`${nb(b.t)} t · ${b.pst} %`} size={16} weight={700} fill={b.f} />
+                    <T x={x0} y={by + 46} lines={`${nb(b.t)} timer · ${b.pst} %`} size={16} weight={700} fill={b.f} />
                   )}
                 </g>
               );
@@ -130,7 +130,7 @@ export function KraftsystemetNorgeFigur() {
       title="Kraftsystemet i Norge: produksjon, installert effekt og magasiner"
       desc="Norsk kraftsystem. Normalårsproduksjon er ca. 157 TWh: vannkraft 138 TWh fra 1818 verk, vindkraft 15,9 TWh fra 64 verk og en rest på ca. 3 TWh, egen utregning (157 minus 138 minus 15,9). Installert effekt ved inngangen til 2026: vannkraft 34 082 MW, vindkraft 5082 MW, solkraft 871 MW og varmekraft 525 MW. Samlet installert effekt er 40 560 MW, egen utregning av vannkraft, vindkraft, solkraft og varmekraft. Norge har omtrent 1100 magasiner med over 87 TWh lagringskapasitet. I overkant av 75 prosent av produksjonskapasiteten er regulerbar."
       heading="Norges kraftsystem: vannkraft er ryggraden"
-      caption="Normalårsproduksjon og installert effekt er to ulike ting: TWh er energi over et år, MW er effekt. Effekttallene er installert effekt ved inngangen til 2026, ikke produksjon. Summen 40 560 MW og resten på ca. 3 TWh (157 − 138 − 15,9) er egen utregning. Kilde: Energifakta Norge (NVE)."
+      caption="Normalårsproduksjon og installert effekt er to ulike ting: TWh er energi over et år, MW er effekt. Effekttallene er installert effekt ved inngangen til 2026, ikke produksjon. Summen 40 560 MW og resten på ca. 3 TWh (157 − 138 − 15,9) er egen utregning. Kilde: Energifakta Norge (u.å.-a)."
       narrow={{ w: 300, h: 776 }}
       wide={{ w: 720, h: 420 }}
       animated
@@ -301,7 +301,7 @@ export function PrisomraderFigur() {
       desc="Skjematisk kart over Norge delt i fem budområder: NO1 Østlandet, NO2 Sørvest-Norge, NO3 Midt-Norge, NO4 Nord-Norge og NO5 Vestlandet. Grensene mellom områdene er markert med gule ringer som flaskehalser i kraftnettet. Piler viser et utvalg av forbindelsene til Sverige fra NO1, NO3 og NO4, til Finland fra NO4, til Danmark og, mot sørvest, til Storbritannia, Nederland og Tyskland. Kapasitet i MW: Sverige ca. 4000, Danmark 1600, Tyskland 1400, Storbritannia 1400, Nederland 700, totalt ca. 9000. NO1 er Østlandet unntatt vestlige Buskerud. NO3 er nordre og vestlige Vestland, Møre og Romsdal, Trøndelag til Tunnsjødal og Innlandet vest og nord for Vågåmo. NO4 er Nord-Norge og nordligste Trøndelag. NO5 er midtre Vestland til Sognefjorden, Indre Sogn og vestlige Buskerud. I 2025 var eksporten 34,3 TWh og importen 11,5 TWh, netto 22,8 TWh."
       heading="Fem prisområder i Norge"
       caption="Skjematisk kart: grensene er omtrentlige. De følger flaskehalser i kraftnettet og ikke fylkesgrensene. Grenser etter NVE (budområder), forenklet; naboland fra Natural Earth. Kilder: Statnett (u.å.) og Energifakta Norge (u.å.-b)."
-      narrow={{ w: 300, h: 1114 }}
+      narrow={{ w: 300, h: 1176 }}
       wide={{ w: 720, h: 560 }}
       animated
       name="prisområdene"
@@ -348,12 +348,12 @@ export function PrisomraderFigur() {
           </g>
           {/* kapasitet på utenlandsforbindelsene */}
           <g transform={bred ? "translate(10 436)" : `translate(10 ${sonePlan(false).slutt + 142})`}>
-            <Box x={0} y={0} w={bred ? 380 : 280} h={bred ? 104 : 150} stroke={C.fg} fill={G.panel} />
+            <Box x={0} y={0} w={bred ? 380 : 280} h={bred ? 120 : 212} stroke={C.fg} fill={G.panel} />
             <T x={12} y={24} lines="Kapasitet på utenlandsforbindelsene (MW)" size={14} weight={700} fill={C.fg} />
             {bred ? (
-              <T x={12} y={46} lines={["Sverige ca. 4000, Danmark 1600, Tyskland 1400,", "Storbritannia 1400, Nederland 700.", "Totalt ca. 9000 MW."]} size={14} fill={C.fg} lh={19} />
+              <T x={12} y={46} lines={["Sverige ca. 4000, Danmark 1600, Tyskland 1400,", "Storbritannia 1400, Nederland 700.", "Totalt om lag 9000 MW (delene er avrundet).", "Kilde: Energifakta Norge (u.å.-b), 2026."]} size={14} fill={C.fg} lh={19} />
             ) : (
-              <T x={12} y={46} lines={["Sverige ca. 4000", "Danmark 1600", "Tyskland 1400", "Storbritannia 1400", "Nederland 700", "Totalt ca. 9000 MW"]} size={14} fill={C.fg} lh={19} />
+              <T x={12} y={46} lines={["Sverige ca. 4000", "Danmark 1600", "Tyskland 1400", "Storbritannia 1400", "Nederland 700", "Totalt om lag 9000 MW", "(delene er avrundet)", "Kilde: Energifakta Norge", "(u.å.-b), 2026."]} size={14} fill={C.fg} lh={19} />
             )}
           </g>
         </>
