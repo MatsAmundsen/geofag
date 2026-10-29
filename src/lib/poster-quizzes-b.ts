@@ -578,3 +578,138 @@ export const QUIZ_SJEKK_HAVSTROMMER_10: QuizQuestion[] = [
     explain: "Mikroplast utgjorde 8 % av massen, men 94 % av antall biter. Over tre fjerdedeler av massen var gjenstander større enn 5 cm.",
   },
 ];
+
+// ───── T6 Værkatastrofer (Katastrofer4–8) ─────
+
+export const QUIZ_SJEKK_KATASTROFER_4: QuizQuestion[] = [
+  {
+    prompt: "En tropisk orkan har middelvind 215 km/t. Hvilken kategori på Saffir–Simpson-skalaen er det?",
+    options: ["Kategori 3", "Kategori 4", "Kategori 5"],
+    answer: 1,
+    explain: "Kategori 4 går fra 209 til 251 km/t. Kategori 3 er 178–208 km/t, og kategori 5 starter ved 252 km/t.",
+  },
+  {
+    prompt: "Hva måler Saffir–Simpson-skalaen?",
+    options: [
+      "Bare høyeste middelvind, ikke stormflo, regnflom eller tornadoer",
+      "Hvor mye stormflo orkanen gir",
+      "Hvor mye regn orkanen gir",
+    ],
+    answer: 0,
+    explain: "Skalaen er basert bare på høyeste middelvind. Orkaner i alle kategorier kan gi dødelig stormflo, regnflom og tornadoer.",
+  },
+  {
+    prompt: "Hva kalles orkaner i kategori 3, 4 og 5?",
+    options: ["Supertyfoner", "Store orkaner", "Polare orkaner"],
+    answer: 1,
+    explain: "Kategori 3 og høyere kalles store orkaner. Supertyfon brukes i det vestlige Nord-Stillehavet om middelvind over 150 mph.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_5: QuizQuestion[] = [
+  {
+    prompt: "Hvilken nedbørmengde gir gult farevarsel for styrtregn?",
+    options: ["Over 20 mm på én time", "Over 20 mm på 24 timer", "Over 100 mm på tre timer"],
+    answer: 0,
+    explain: "Gult varsel for styrtregn gis ved over 20 mm på én time, og oransje ved over 35 mm på én time.",
+  },
+  {
+    prompt: "Hva skiller regn fra styrtregn i Meteorologisk institutts farevarsler?",
+    options: [
+      "Regn er vedvarende nedbør over store områder fra lavtrykk og fronter, mens styrtregn kommer fra bygeskyer",
+      "Regn er alltid kraftigere enn styrtregn",
+      "Styrtregn kommer bare om vinteren",
+    ],
+    answer: 0,
+    explain: "Styrtregn er kort og lokalt og varsles per time. Regn varsles for 6, 12 og 24 timer.",
+  },
+  {
+    prompt: "Hvor mye øker ekstrem døgnnedbør per grad global oppvarming, ifølge IPCC?",
+    options: ["Omtrent 0,7 %", "Omtrent 7 %", "Omtrent 70 %"],
+    answer: 1,
+    explain: "Framskrivningen er omtrent 7 % for hver grad global oppvarming, med høy tillit.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_6: QuizQuestion[] = [
+  {
+    prompt: "Hvordan defineres en norsk hetebølge?",
+    options: [
+      "Fem eller flere dager på rad med maksimumstemperatur 27 °C eller høyere",
+      "Tre dager med gjennomsnittstemperatur over 20 °C",
+      "To dager med over 30 °C",
+    ],
+    answer: 0,
+    explain: "Definisjonen gjelder fra 2023 og er et prøveprosjekt som kan justeres. Det holder at én målestasjon oppfyller kriteriet.",
+  },
+  {
+    prompt: "Hva gjør et blokkerende høytrykk med lavtrykk og fronter?",
+    options: [
+      "Det stopper dem eller tvinger dem til å gå en annen vei",
+      "Det gjør dem kraftigere",
+      "Det trekker dem inn mot sentrum",
+    ],
+    answer: 0,
+    explain: "Høytrykket ligger omtrent i ro i flere dager, slik at lavtrykk og fronter ikke kommer forbi.",
+  },
+  {
+    prompt: "Hvordan ser en omegablokkering ut ved bakken?",
+    options: [
+      "Et stabilt høytrykk mellom to lavtrykk",
+      "Et lavtrykk mellom to høytrykk",
+      "Ett enkelt lavtrykk",
+    ],
+    answer: 0,
+    explain: "I høyden er det en rygg i midten og et tråg på hver side. Ved bakken gir det et høytrykk mellom to lavtrykk.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_7: QuizQuestion[] = [
+  {
+    prompt: "Hvilken type tørke betyr at det er unormalt lite vann i jorda?",
+    options: ["Meteorologisk tørke", "Landbruks- og økologisk tørke", "Hydrologisk tørke"],
+    answer: 1,
+    explain: "Landbruks- og økologisk tørke er et underskudd av markvann. Meteorologisk tørke er lite nedbør, og hydrologisk tørke er lite vann i elver og grunnvann.",
+  },
+  {
+    prompt: "Hvorfor kaller NVE tørke en «ikke-hendelse»?",
+    options: [
+      "Fordi den skyldes at nedbøren uteblir, og utvikler seg langsomt",
+      "Fordi tørke aldri skjer i Norge",
+      "Fordi den alltid varer bare noen timer",
+    ],
+    answer: 0,
+    explain: "En flom varer fra timer til noen uker, men tørke kan vare i måneder og utvikler seg gradvis.",
+  },
+  {
+    prompt: "Hva har skjedd med forekomsten av alvorlig meteorologisk tørke i Norge de siste tiårene, ifølge Klima i Norge 2025?",
+    options: ["Den har økt kraftig", "Den har ikke endret seg vesentlig", "Den har forsvunnet"],
+    answer: 1,
+    explain: "Framskrivningene viser likevel at tørke øker over store områder og at bakken blir tørrere om sommeren.",
+  },
+];
+
+export const QUIZ_SJEKK_KATASTROFER_8: QuizQuestion[] = [
+  {
+    prompt: "Ved 2 °C global oppvarming: hvor mye oftere inntreffer en varmehendelse som kom én gang på 10 år i 1850–1900?",
+    options: ["1,7 ganger oftere", "5,6 ganger oftere", "9,4 ganger oftere"],
+    answer: 1,
+    explain: "Medianen i Figure SPM.6 er 5,6 ganger oftere ved 2 °C. Ved 1,5 °C er den 4,1, og ved 4 °C er den 9,4.",
+  },
+  {
+    prompt: "Hvilken ekstremtype har ifølge IPCC blitt mindre hyppig og mindre alvorlig siden 1950-tallet?",
+    options: ["Kuldeekstremer", "Hetebølger", "Kraftig nedbør"],
+    answer: 0,
+    explain: "Varmeekstremer og kraftig nedbør har økt, mens kuldeekstremer er blitt mindre hyppige og mindre alvorlige.",
+  },
+  {
+    prompt: "Hva betyr «10-årshendelse»?",
+    options: [
+      "En verdi som i gjennomsnitt overskrides én gang i tiåret",
+      "En hendelse som varer i ti år",
+      "En hendelse som inntreffer nøyaktig hvert tiende år",
+    ],
+    answer: 0,
+    explain: "Det er et gjennomsnitt over lang tid. Det betyr ikke at hendelsen kommer på et fast tidspunkt.",
+  },
+];

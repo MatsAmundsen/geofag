@@ -166,4 +166,34 @@ describe("Pakke B: nye kapitler", () => {
       if (/^\d/.test(m[1]!)) assert.ok(md.includes(`${forfatter}`), forfatter);
     }
   });
+
+  it("tilleggene til værkatastrofer er sitert i teksten", () => {
+    const md = read("posts/vaerkatastrofer.md");
+    for (const n of [4, 5, 6, 7, 8]) {
+      assert.ok(md.includes(`SjekkKatastrofer${n}`), `SjekkKatastrofer${n}`);
+      assert.ok(SJEKK_DEG_SELV_B[`Katastrofer${n}`], `Katastrofer${n}`);
+    }
+    const forventet = [
+      "Det Norske Akademis ordbok, u.å.",
+      "Gjelten mfl., 2024",
+      "IPCC, 2021b",
+      "Matthews mfl., 2021",
+      "Meteorologisk institutt, u.å.-a",
+      "Meteorologisk institutt, u.å.-c",
+      "Meteorologisk institutt, u.å.-d",
+      "Norges vassdrags- og energidirektorat, 2019",
+      "Norges vassdrags- og energidirektorat, u.å.",
+      "Norsk klimaservicesenter, 2025",
+      "Sagen & Sivle, 2023",
+      "Store norske leksikon, u.å.-i",
+      "Tsopouridis & Sivle, 2025",
+    ];
+    assert.equal(forventet.length, (KILDER_B_TILLEGG.vaerkatastrofer ?? []).length);
+    for (const t of forventet) assert.ok(md.includes(t), t);
+    // Bokstavsuffikser i grunnlisten som nye kilder krever.
+    assert.ok(md.includes("IPCC, 2021a"));
+    assert.ok(md.includes("Meteorologisk institutt, u.å.-b"));
+    assert.equal(md.includes("(IPCC, 2021)"), false);
+    assert.equal(md.includes("Meteorologisk institutt, u.å.)"), false);
+  });
 });

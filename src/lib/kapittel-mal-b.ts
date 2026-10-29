@@ -16,6 +16,11 @@ import {
   QUIZ_SJEKK_HAVSTROMMER_8,
   QUIZ_SJEKK_HAVSTROMMER_9,
   QUIZ_SJEKK_HAVSTROMMER_10,
+  QUIZ_SJEKK_KATASTROFER_4,
+  QUIZ_SJEKK_KATASTROFER_5,
+  QUIZ_SJEKK_KATASTROFER_6,
+  QUIZ_SJEKK_KATASTROFER_7,
+  QUIZ_SJEKK_KATASTROFER_8,
 } from "./poster-quizzes-b.ts";
 
 /** Pakke B. Slås sammen med SJEKK_DEG_SELV og SAMMENDRAG i kapittel-mal.ts. Nøklene følger samme regler. */
@@ -32,6 +37,11 @@ export const SJEKK_DEG_SELV_B: Record<string, QuizQuestion[]> = {
   Havstrommer8: QUIZ_SJEKK_HAVSTROMMER_8,
   Havstrommer9: QUIZ_SJEKK_HAVSTROMMER_9,
   Havstrommer10: QUIZ_SJEKK_HAVSTROMMER_10,
+  Katastrofer4: QUIZ_SJEKK_KATASTROFER_4,
+  Katastrofer5: QUIZ_SJEKK_KATASTROFER_5,
+  Katastrofer6: QUIZ_SJEKK_KATASTROFER_6,
+  Katastrofer7: QUIZ_SJEKK_KATASTROFER_7,
+  Katastrofer8: QUIZ_SJEKK_KATASTROFER_8,
   Naturlig1: QUIZ_SJEKK_NATURLIG_1,
   Naturlig2: QUIZ_SJEKK_NATURLIG_2,
   Naturlig3: QUIZ_SJEKK_NATURLIG_3,

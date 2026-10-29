@@ -228,6 +228,87 @@ export const KILDER_B = {
 
 /** Tillegg til eksisterende kildelister. Slås sammen med `medKilder` i rutene. */
 export const KILDER_B_TILLEGG = {
+  vaerkatastrofer: [
+    {
+      prefix: "Det Norske Akademis ordbok. (u.å.). ",
+      italic: "Kuldebølge",
+      suffix: ".",
+      href: "https://naob.no/ordbok/kuldeb%C3%B8lge",
+    },
+    {
+      prefix: "Gjelten, H. M., Halleraker, J. H., & Mamen, J. (2024, 27. november). Tørke. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/t%C3%B8rke",
+    },
+    {
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021b). Summary for policymakers. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 3–32). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.001",
+    },
+    {
+      prefix:
+        "Matthews, J. B. R., Möller, V., van Diemen, R., Fuglestvedt, J. S., Masson-Delmotte, V., Méndez, C., Semenov, S., & Reisinger, A. (Red.). (2021). Annex VII: Glossary. I V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, … B. Zhou (Red.), ",
+      italic: "Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change",
+      suffix: " (s. 2215–2256). Cambridge University Press.",
+      href: "https://doi.org/10.1017/9781009157896.022",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.-a). ",
+      italic: "Hva er en hetebølge?",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/hetebolger",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.-c). ",
+      italic: "Regn",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/farevarsel-for-nedbor",
+    },
+    {
+      prefix: "Meteorologisk institutt. (u.å.-d). ",
+      italic: "Styrtregn",
+      suffix: ".",
+      href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/styrtregn",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat. (2019, 11. januar). ",
+      italic: "Tørke- og flomåret 2018",
+      suffix: ".",
+      href: "https://www.nve.no/nytt-fra-nve/nyheter-hydrologi/torke-og-flomaret-2018/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      italic: "Tørke",
+      suffix: ".",
+      href: "https://www.nve.no/naturfare/laer-om-naturfare/toerke/",
+    },
+    {
+      prefix: "Norsk klimaservicesenter. (2025). ",
+      italic: "Oppsummeringer fra Klima i Norge 2025",
+      suffix: ".",
+      href: "https://klimaservicesenter.no/kss/rapporter/klima-i-norge-2025/oppsummeringer-fra-klima-i-norge-2025",
+    },
+    {
+      prefix: "Sagen, S., & Sivle, A. D. (2023, 8. juni). Hetebølge. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/hetebølge",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-i). ",
+      italic: "Omegablokkering",
+      suffix: ".",
+      href: "https://snl.no/omegablokkering",
+    },
+    {
+      prefix: "Tsopouridis, L., & Sivle, A. D. (2025, 30. september). Blokkerende høytrykk. I ",
+      italic: "Store norske leksikon",
+      suffix: ".",
+      href: "https://snl.no/blokkerende_h%C3%B8ytrykk",
+    },
+  ],
   havstrommer: [
     {
       prefix: "Barthel, K. (2024, 26. november). Saltholdighet. I ",

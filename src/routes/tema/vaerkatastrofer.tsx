@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { CHAPTER_INGRESS } from "@/lib/chapter-ingress";
 import { KILDER } from "@/lib/kilder";
+import { KILDER_B_TILLEGG, medKilder } from "@/lib/kilder-b";
 import { GF2_THEMES } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
+
+const VAERKATASTROFER_KILDER = medKilder(KILDER.vaerkatastrofer, KILDER_B_TILLEGG.vaerkatastrofer ?? []);
 
 const tema = GF2_THEMES.find((t) => t.to === "/tema/vaerkatastrofer")!;
 
@@ -31,7 +34,7 @@ function KatastroferPage() {
       bannerAlt="Atlantisk orkan sett fra verdensrommet, med tydelig øye og spiralformede regnbånd"
       prev={{ to: "/tema/naturlige-klimapadriv", label: "Forrige: Naturlige klimapådriv" }}
       next={{ to: "/tema/tilpasning", label: "Neste: Konsekvenser og tilpasning" }}
-      kilder={KILDER.vaerkatastrofer}
+      kilder={VAERKATASTROFER_KILDER}
       lead={CHAPTER_INGRESS["vaerkatastrofer"]}
       posterSlug="vaerkatastrofer"
       post={post}

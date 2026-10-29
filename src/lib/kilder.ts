@@ -4347,7 +4347,7 @@ export const KILDER = {
       href: "https://bjerknes.uib.no/aktuelt/overraskende-arsak-til-flom-pa-ostlandet",
     },
     {
-      prefix: "Meteorologisk institutt. (u.å.). ",
+      prefix: "Meteorologisk institutt. (u.å.-b). ",
       italic: "Polare lavtrykk",
       suffix: ".",
       href: "https://www.met.no/vaer-og-klima/ekstremvaervarsler-og-andre-farevarsler/vaerfenomener-som-kan-gi-farevarsel-fra-met/polare-lavtrykk",
@@ -4389,7 +4389,7 @@ export const KILDER = {
       href: "https://forecast.weather.gov/glossary.php?word=exit+region",
     },
     {
-      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021). ",
+      prefix: "Intergovernmental Panel on Climate Change [IPCC]. (2021a). ",
       italic: "FAQ 11.2: Will unprecedented extremes occur as a result of human-induced climate change",
       suffix: ". In Climate change 2021: The physical science basis.",
       href: "https://www.ipcc.ch/report/ar6/wg1/downloads/faqs/IPCC_AR6_WGI_FAQ_Chapter_11.pdf",

@@ -26,4 +26,11 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     slug: "havstrommer",
     stale: ["er forenklede modeller av dem."],
   },
+  {
+    // Værkatastrofer (T6): Saffir–Simpson i km/t, styrtregn og regn, hetebølger, kuldebølger og blokkering, tørketyper, IPCC-tabeller.
+    // Referansene IPCC 2021 og MET u.å. har fått bokstavsuffiks, og nye Sjekk-bokser (4–8) og begreper er lagt inn.
+    flag: "vaerkatastrofer-pakke-b-2026-10-29",
+    slug: "vaerkatastrofer",
+    stale: ["naturlig variasjon (IPCC, 2021)."],
+  },
 ];

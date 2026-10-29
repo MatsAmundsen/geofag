@@ -28,5 +28,8 @@ export const FIGUR_BESTILLINGER: Record<string, string> = {
   FigTektonikkKarbon: "Hypotesen om Himalaya, forvitring og CO₂ som kjede, med tilbakekoblinger",
   FigHavbunnenProfil: "Havbunnens landskap: sokkel, skråning, kontinentalfot, dyphavsslette, midthavsrygg og dyphavsgrav, med dyp",
   FigVannmasserAtlanterhavet: "Skjematisk dybdesnitt av vannmasser i Atlanterhavet (Talley, 2019)",
+  FigSaffirSimpsonSkala: "Saffir–Simpson-skalaen: fem kategorier med middelvind i km/t og mph (NHC)",
+  FigBlokkering: "Blokkerende høytrykk: omegablokkering og Rex-blokkering, skjematisk",
+  FigEkstremerOppvarming: "IPCC SPM.6: hyppighet og intensitet av 10-årshendelser ved 1, 1,5, 2 og 4 °C oppvarming",
   FigNaturligVsMenneskelig: "IPCC AR6: bidrag til global overflatetemperatur 1850–1900 til 2010–2019, menneskeskapt mot naturlig",
 };
