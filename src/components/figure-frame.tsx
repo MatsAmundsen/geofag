@@ -7,6 +7,7 @@ export function FigureFrame({
   action,
   children,
   scroll,
+  captionId,
 }: {
   heading?: string;
   caption: ReactNode;
@@ -14,6 +15,8 @@ export function FigureFrame({
   children: ReactNode;
   /** On narrow screens the graphic keeps a readable width and scrolls inside the frame. */
   scroll?: boolean;
+  /** Id på bildeteksten. Attributtet utelates når den ikke er satt. */
+  captionId?: string;
 }) {
   const headingId = useId();
   const body = scroll ? (
@@ -43,7 +46,10 @@ export function FigureFrame({
         </div>
       ) : null}
       {body}
-      <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6">
+      <figcaption
+        {...(captionId ? { id: captionId } : {})}
+        className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-6"
+      >
         {caption}
       </figcaption>
     </figure>
