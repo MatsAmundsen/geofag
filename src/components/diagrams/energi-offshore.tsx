@@ -4,8 +4,9 @@
  * Fem steg (StegFigur via LokaleRamme). Erstatter widget-mappingen til OffshoreWindShelfDiagram;
  * OffshoreWindShelfDiagram beholdes i energy.tsx (eksamen).
  * Følger energi-hav-luft.md (Havvind) og Geo-godkjent v2-mockup (26.10.2026).
- * Tall: < 50 m, 30–45 m (gammelt dybdemerke), Norskerenna 200–350 m, flytende opp til 800 m.
- * Halvt nedsenkbar plattform tegnes ikke (bildeteksten nevner den).
+ * Tall: < 50 m, Norskerenna 200–350 m, flytende opp til 800 m (30–45 m fjernet etter Geo-fagsjekk PR #287).
+ * Halvt nedsenkbar plattform tegnes ikke (bildeteksten sier det). Spar-bøyen er «type Hywind»; Hywind
+ * Tampen forsyner Snorre og Gullfaks, ikke land (bildeteksten).
  */
 import { useEffect, useId, useRef } from "react";
 import { clamp } from "./isbre-kit";
@@ -16,9 +17,9 @@ import { F, LokaleRamme, useLokaleTidslinje, type Hinder, type Lab } from "./lok
 const FASER = ["Batymetri", "Bunnfast", "For dypt", "Flytende", "Sjøkabel"];
 
 const STATUS = [
-  "Kontinentalsokkelen er grunn i sørlige Nordsjø, men stuper bratt ned i Norskerenna utenfor norskekysten.",
+  "Kontinentalsokkelen er grunn i sørlige Nordsjø. Utenfor norskekysten skjærer den dype Norskerenna seg ned i sokkelen.",
   "Der sokkelen er grunn (under 50 m) kan turbinen stå på en monopel pælet ned i sedimentene.",
-  "I Norskerenna (200–350 m) er det for dypt for bunnfaste fundament — sokkelen stuper utenfor norskekysten.",
+  "I Norskerenna (200–350 m) er det for dypt for bunnfaste fundamenter. Her må turbinene flyte.",
   "Flytende Spar-bøyer (som Hywind Tampen) forankres med fortøyningsliner og sugeankere — aktuelle på dyp opp til 800 m.",
   "Høyspent sjøkabel fører strømmen langs bunnen inn til transformator og sentralnettet på land.",
 ];
@@ -138,14 +139,14 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
   // Alltid: vindfelt og dybdeskala
   lab("Sterkt, uforstyrret vindfelt over åpent hav", 330, 26, COL.teal, { size: 12, weight: 700, narrowHide: true });
   lab("0 m · overflate", 32, SURF - 7, COL.dempet, { size: 11, weight: 600, anchor: "start", narrowHide: true });
-  lab("30–45 m", 32, SHELF_Y - 9, COL.sand, { size: 12, weight: 700, anchor: "start" });
-  lab("200–350 m", 32, RENNA_Y + 4, COL.kald, { size: 12, weight: 700, anchor: "start" });
+  lab("< 50 m", 32, SHELF_Y - 9, COL.sand, { size: 12, weight: 700, anchor: "start", narrowHide: true });
+  lab("200–350 m", 32, RENNA_Y + 4, COL.kald, { size: 12, weight: 700, anchor: "start", narrowHide: true });
 
   if (s.bathy > 0.4) {
     const op = hold(s.bathy);
     lab("Grunn sokkel", 150, 300, COL.sandLys, { size: 13, weight: 800, opacity: op });
-    lab("sørlige Nordsjø · 30–45 m", 150, 317, COL.varm, { size: 11, weight: 600, opacity: op, narrowHide: true });
-    lab("Sokkelen stuper", 336, 336, COL.varm, { size: 12, weight: 700, anchor: "end", opacity: op });
+    lab("sørlige Nordsjø · under 50 m", 150, 317, COL.varm, { size: 11, weight: 600, opacity: op, narrowHide: true });
+    lab("Skråning mot Norskerenna", 350, 352, COL.varm, { size: 12, weight: 700, anchor: "end", opacity: op });
     lab("Norskerenna", 525, 480, COL.kald, { size: 13, weight: 800, opacity: op });
     lab("glasial dal · 200–350 m dyp", 525, 497, COL.kaldLys, { size: 11, weight: 600, opacity: op, narrowHide: true });
     lab("Norge", 900, 196, COL.land, { size: 13, weight: 800, opacity: op });
@@ -166,7 +167,7 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
   if (s.spar > 0.4) {
     const op = hold(s.spar);
     lab("FLYTENDE SPAR", 645, 102, COL.kald, { size: 13, weight: 800, opacity: op });
-    lab("Hywind Tampen", 645, 119, COL.dempet, { size: 11, weight: 600, opacity: op, narrowHide: true });
+    lab("type Hywind", 645, 119, COL.dempet, { size: 11, weight: 600, opacity: op, narrowHide: true });
     lab("Spar-bøye med ballast", SPAR_X - 22, 206, COL.kald, { size: 11, weight: 700, anchor: "end", opacity: op });
     lab("flytende · opp til 800 m", SPAR_X - 22, 222, "#8fa3b0", { size: 11, weight: 600, anchor: "end", opacity: op, narrowHide: true });
     lab("fortøyningsliner", SPAR_X + 34, 318, COL.line, { size: 11, weight: 700, anchor: "start", opacity: op });
@@ -204,13 +205,13 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
       svgRef={ref}
       labels={labels}
       data="offshore-wind-shelf"
-      etikettRader={13}
+      etikettRader={11}
       hinder={hinder}
       skiltNokkel={`${fase}|${Math.round(tl.p * 5)}`}
       skiltLuft={10}
       notes={["Skjematisk snitt, dybden er ikke i skala"]}
       keys={[
-        { text: "bunnfast · < 50 m", color: COL.kald, kind: "fill" },
+        { text: "bunnfast monopel · grunt vann", color: COL.kald, kind: "fill" },
         { text: "flytende Spar · opp til 800 m", color: COL.spar, kind: "fill" },
         { text: "fortøyningsliner", color: COL.line, kind: "dash" },
         { text: "sjøkabel og sugeanker", color: COL.sand, kind: "dash" },
