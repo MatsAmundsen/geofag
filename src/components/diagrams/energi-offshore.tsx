@@ -12,7 +12,7 @@ import { useEffect, useId, useRef } from "react";
 import { clamp } from "./isbre-kit";
 import { tidslinjeVerdi } from "./prosess-kit";
 import { OFFSHORE_TEKST } from "./energi-tekst";
-import { F, LokaleRamme, useLokaleTidslinje, type Hinder, type Lab } from "./lokale-kit";
+import { F, LokaleRamme, useLokaleTidslinje, type Lab } from "./lokale-kit";
 
 const FASER = ["Batymetri", "Bunnfast", "For dypt", "Flytende", "Sjøkabel"];
 
@@ -109,6 +109,10 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
   const id = (name: string) => `${uid}-${name}`;
   const hold = (v: number) => clamp((v - 0.25) / 0.5);
   const vinkel = reduced ? 0 : (tl.sek * 48) % 360;
+  // Steg 3→4: Norskerenna-boksen tones helt ut (første 40 %) før Spar, liner og etiketter tones inn
+  // (siste 55 %), så etikettene aldri ligger oppå fortøyningslinene under overgangen.
+  const rennaE = clamp((s.renna - 0.6) / 0.4);
+  const sparE = clamp((s.spar - 0.45) / 0.55);
 
   const labels: Lab[] = [];
   const lab = (
@@ -144,53 +148,45 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
 
   if (s.bathy > 0.4) {
     const op = hold(s.bathy);
-    lab("Grunn sokkel", 150, 300, COL.sandLys, { size: 13, weight: 800, opacity: op });
+    lab("Grunn sokkel", 150, 300, COL.sandLys, { size: 13, weight: 800, opacity: op, badge: [150, 304] });
     lab("sørlige Nordsjø · under 50 m", 150, 317, COL.varm, { size: 11, weight: 600, opacity: op, narrowHide: true });
-    lab("Skråning mot Norskerenna", 350, 352, COL.varm, { size: 12, weight: 700, anchor: "end", opacity: op });
-    lab("Norskerenna", 525, 480, COL.kald, { size: 13, weight: 800, opacity: op });
+    lab("Skråning mot Norskerenna", 350, 352, COL.varm, { size: 12, weight: 700, anchor: "end", opacity: op, badge: [300, 352] });
+    lab("Norskerenna", 525, 480, COL.kald, { size: 13, weight: 800, opacity: op, badge: [525, 484] });
     lab("glasial dal · 200–350 m dyp", 525, 497, COL.kaldLys, { size: 11, weight: 600, opacity: op, narrowHide: true });
-    lab("Norge", 900, 196, COL.land, { size: 13, weight: 800, opacity: op });
+    lab("Norge", 900, 196, COL.land, { size: 13, weight: 800, opacity: op, badge: [900, 191] });
   }
   if (s.mono > 0.4) {
     const op = hold(s.mono);
-    lab("BUNNFAST", 250, 102, COL.kald, { size: 13, weight: 800, opacity: op });
+    lab("BUNNFAST", 250, 102, COL.kald, { size: 13, weight: 800, opacity: op, badge: [250, 106] });
     lab("monopel · dyp < 50 m", 250, 119, COL.dempet, { size: 11, weight: 600, opacity: op, narrowHide: true });
     lab("pælet i sediment", MONO_X + 18, 250, "#c4b08a", { size: 11, weight: 700, anchor: "start", opacity: op, narrowHide: true });
     lab("Danmark og Doggerbank", MONO_X + 18, 266, "#8fa3b0", { size: 11, weight: 600, anchor: "start", opacity: op, narrowHide: true });
   }
-  if (s.renna > 0.4) {
-    const op = hold(s.renna);
-    lab("For dypt for bunnfast", 525, 292, COL.kald, { size: 14, weight: 800, opacity: op });
+  if (rennaE > 0.4) {
+    const op = hold(rennaE);
+    lab("For dypt for bunnfast", 525, 292, COL.kald, { size: 14, weight: 800, opacity: op, badge: [525, 303] });
     lab("Norskerenna 200–350 m", 525, 310, COL.dempet, { size: 12, weight: 600, opacity: op, narrowHide: true });
     lab("utenfor norskekysten", 525, 326, COL.kaldLys, { size: 11, weight: 600, opacity: op, narrowHide: true });
   }
-  if (s.spar > 0.4) {
-    const op = hold(s.spar);
-    lab("FLYTENDE SPAR", 645, 102, COL.kald, { size: 13, weight: 800, opacity: op });
+  if (sparE > 0.4) {
+    const op = hold(sparE);
+    lab("FLYTENDE SPAR", 645, 102, COL.kald, { size: 13, weight: 800, opacity: op, badge: [645, 106] });
     lab("type Hywind", 645, 119, COL.dempet, { size: 11, weight: 600, opacity: op, narrowHide: true });
-    lab("Spar-bøye med ballast", SPAR_X - 22, 206, COL.kald, { size: 11, weight: 700, anchor: "end", opacity: op });
+    lab("Spar-bøye med ballast", SPAR_X - 22, 206, COL.kald, { size: 11, weight: 700, anchor: "end", opacity: op, badge: [455, 214] });
     lab("flytende · opp til 800 m", SPAR_X - 22, 222, "#8fa3b0", { size: 11, weight: 600, anchor: "end", opacity: op, narrowHide: true });
-    lab("fortøyningsliner", SPAR_X + 34, 318, COL.line, { size: 11, weight: 700, anchor: "start", opacity: op });
+    lab("fortøyningsliner", SPAR_X + 34, 318, COL.line, { size: 11, weight: 700, anchor: "start", opacity: op, badge: [595, 330] });
     lab("sugeanker", ANKER_V, 454, COL.sand, { size: 11, weight: 700, opacity: op, narrowHide: true });
-    lab("sugeanker", ANKER_H, 454, COL.sand, { size: 11, weight: 700, opacity: op });
+    lab("sugeanker", ANKER_H, 454, COL.sand, { size: 11, weight: 700, opacity: op, badge: [650, 475] });
   }
   if (s.kabel > 0.4) {
     const op = hold(s.kabel);
-    lab("Høyspent sjøkabel", 855, 300, COL.sandLys, { size: 13, weight: 800, opacity: op });
+    lab("Høyspent sjøkabel", 855, 300, COL.sandLys, { size: 13, weight: 800, opacity: op, badge: [855, 304] });
     lab("langs bunnen til land", 855, 317, COL.varm, { size: 11, weight: 600, opacity: op, narrowHide: true });
-    lab("TRAFO", 843, 92, COL.sandLys, { size: 12, weight: 800, opacity: op });
+    lab("TRAFO", 843, 92, COL.sandLys, { size: 12, weight: 800, opacity: op, badge: [843, 62] });
     lab("Sentralnettet", 912, 160, COL.tekst, { size: 11, weight: 700, opacity: op, narrowHide: true });
   }
 
-  const hinder: Hinder[] = [
-    { p: [[MONO_X, HUB_Y], [MONO_X, 255]], b: 10 },
-    { p: [[SPAR_X, HUB_Y], [SPAR_X, 300]], b: 14 },
-    { p: [[SPAR_X - 8, 240], [SPAR_X - 20, 360], [ANKER_V, RENNA_Y]], b: 4 },
-    { p: [[SPAR_X + 8, 240], [SPAR_X + 22, 360], [ANKER_H, RENNA_Y]], b: 4 },
-    { p: [[0, SHELF_Y], [290, SHELF_Y], [366, 327], [450, RENNA_Y], [600, RENNA_Y], [703, 303], [770, SURF]], b: 5 },
-    { ellipse: [MONO_X, HUB_Y, 46, 46] },
-    { ellipse: [SPAR_X, HUB_Y, 46, 46] },
-  ];
+  // Nummerskilt på smal skjerm: faste plasser (i platene eller ved objektet), klar av streker også ved 320 px.
 
   const status = STATUS[Math.max(0, fase - 1)];
 
@@ -206,9 +202,6 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
       labels={labels}
       data="offshore-wind-shelf"
       etikettRader={11}
-      hinder={hinder}
-      skiltNokkel={`${fase}|${Math.round(tl.p * 5)}`}
-      skiltLuft={10}
       notes={["Skjematisk snitt, dybden er ikke i skala"]}
       keys={[
         { text: "bunnfast monopel · grunt vann", color: COL.kald, kind: "fill" },
@@ -375,13 +368,13 @@ export function OffshoreFigur({ heading, caption }: { heading?: string; caption?
             </g>
 
             {/* Steg 3: Norskerenna, for dypt for bunnfast */}
-            <g opacity={s.renna} aria-hidden="true">
+            <g opacity={rennaE} aria-hidden="true">
               <rect x={420} y={172} width={210} height={RENNA_Y - 4 - 172} rx={12} fill="#0284c7" fillOpacity={0.08} stroke="#7cb8e8" strokeWidth={1.5} strokeDasharray="6 4" />
               <rect x={432} y={270} width={186} height={66} rx={12} fill="#061820" fillOpacity={0.92} stroke="#7cb8e8" strokeWidth={1.6} filter={`url(#${id("glow")})`} />
             </g>
 
             {/* Steg 4: flytende Spar med fortøyningsliner og sugeankere */}
-            <g opacity={s.spar} filter={`url(#${id("drop")})`}>
+            <g opacity={sparE} filter={`url(#${id("drop")})`}>
               <path d={LINE_V} fill="none" stroke={COL.line} strokeWidth={2} strokeDasharray="5 4" />
               <path d={LINE_H} fill="none" stroke={COL.line} strokeWidth={2} strokeDasharray="5 4" />
               <rect x={ANKER_V - 7} y={RENNA_Y - 6} width={14} height={16} rx={2} fill="#fbbf24" />
