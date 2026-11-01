@@ -106,6 +106,7 @@ import {
   GyreFigurLat,
   NorskekystFigurLat,
   OtecFigurLat,
+  OffshoreFigurLat,
   EkmanSpiralFigurLat,
   SolgangsvindFigurLat,
   SyklonFigurLat,
@@ -202,7 +203,6 @@ import { WindPowerModel } from "@/components/models/wind-power-model";
 import { MarineEnergyModel } from "@/components/models/marine-energy-model";
 import {
   EnergySourcesDiagram,
-  OffshoreWindShelfDiagram,
   WindPowerTradeoffDiagram,
 } from "@/components/diagrams/energy";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
@@ -1048,7 +1048,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
     EnergySources: () => <EnergySourcesDiagram />,
   WindPowerModel: () => <WindPowerModel />,
-  OffshoreWindShelf: () => <OffshoreWindShelfDiagram />,
+  OffshoreWindShelf: () => <OffshoreFigurLat />,
   MarineEnergyModel: () => <MarineEnergyModel />,
   OtecRankineCycle: () => <OtecFigurLat />,
   WindPowerTradeoff: () => <WindPowerTradeoffDiagram />,

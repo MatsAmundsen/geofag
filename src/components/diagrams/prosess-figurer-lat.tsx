@@ -27,7 +27,7 @@ import {
 } from "./jetstrommer-tekst";
 import { SJOBRIS_TEKST, SOLGANGSVIND_TEKST, SYKLON_TEKST } from "./lokale-tekst";
 import { EKMAN_TEKST, GOLF_TEKST, GYRE_TEKST, NORSK_TEKST, OPPVELLING_TEKST } from "./hav-tekst";
-import { OTEC_TEKST } from "./energi-tekst";
+import { OFFSHORE_TEKST, OTEC_TEKST } from "./energi-tekst";
 import { SYKLONMODELL_TEKST } from "./syklonmodell-tekst";
 import { LANDSKAP_TEKST } from "./landskap-tekst";
 import {
@@ -557,6 +557,23 @@ export const OtecFigurLat = lat<FigurProps>(
     },
   },
   () => import("./energi-otec").then((m) => m.OtecFigur),
+);
+
+/** Havvind på sokkelen (Energi fra hav og luft, widget OffshoreWindShelf). Samme ramme som OTEC. */
+export const OffshoreFigurLat = lat<FigurProps>(
+  {
+    ...OFFSHORE_TEKST,
+    ...LOKALE_MAAL,
+    smTrinn: { over: -40, under: 0 },
+    skala: {
+      smal: {
+        over: [[270, 239], [364, 239], [380, 219], [430, 187], [470, 177], [510, 187]],
+        under: [[310, 506], [340, 461], [380, 403], [430, 454], [490, 459], [550, 454], [680, 454], [730, 428]],
+      },
+      bred: { over: [[806, 127]], under: [[806, 58]] },
+    },
+  },
+  () => import("./energi-offshore").then((m) => m.OffshoreFigur),
 );
 
 export const EkmanSpiralFigurLat = lat<FigurProps>(
