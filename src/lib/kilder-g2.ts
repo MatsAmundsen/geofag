@@ -123,6 +123,12 @@ export const KILDER_G2 = {
       href: "https://www.noaa.gov/jetstream/synoptic/norwegian-cyclone-model",
     },
     {
+      prefix: "National Oceanic and Atmospheric Administration [NOAA]. (u.å.-c). ",
+      italic: "Skew-T log-P diagrams",
+      suffix: ". JetStream.",
+      href: "https://www.noaa.gov/jetstream/upperair/skew-t-log-p-diagrams",
+    },
+    {
       prefix: "Store norske leksikon. (u.å.-a). ",
       italic: "Polarfront",
       suffix: ".",
@@ -199,6 +205,12 @@ export const KILDER_G2 = {
       italic: "Inversjon (meteorologi)",
       suffix: ".",
       href: "https://snl.no/inversjon_-_meteorologi",
+    },
+    {
+      prefix: "Store norske leksikon. (u.å.-n). ",
+      italic: "Adiabatisk",
+      suffix: ".",
+      href: "https://snl.no/adiabatisk",
     },
     {
       prefix: "Utdanningsdirektoratet. (u.å.-a). ",
