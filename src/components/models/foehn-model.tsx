@@ -49,7 +49,7 @@ export function FoehnModel() {
             {/* Parameter 1: T0 */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs">
-                <span className="text-muted-foreground">Starttemperatur ved havnivå ($T_0$):</span>
+                <span className="text-muted-foreground">Starttemperatur ved havnivå (T₀):</span>
                 <strong className="text-foreground">{t0} °C</strong>
               </div>
               <input
@@ -223,7 +223,7 @@ export function FoehnModel() {
                           markerEnd="url(#mdl-teal)"
                         />
                         <text x="20" y="24" fill="#94a3b8" fontSize="11">
-                          Trinn 1: Tørradiabatisk (1,0 °C / 100m)
+                          Trinn 1: Tørradiabatisk (1,0 °C / 100 m)
                         </text>
 
                         {/* 2. Fuktigadiabatisk over LCL */}
@@ -247,7 +247,7 @@ export function FoehnModel() {
                           markerEnd="url(#mdl-red)"
                         />
                         <text x="20" y="57" fill="#f59e0b" fontSize="11" fontWeight="600">
-                          Trinn 3: Lufta synker og varmes (1,0 °C / 100m)
+                          Trinn 3: Lufta synker og varmes (1,0 °C / 100 m)
                         </text>
 
                         {/* Markører ved nøkkelpunkter */}
@@ -312,7 +312,7 @@ export function FoehnModel() {
                   1. Tørradiabatisk heving
                 </span>
                 <p className="text-muted-foreground">
-                  Fra 0 til {zLcl} m avkjøles umettet luft med 1,0 °C/100m.
+                  Fra 0 til {zLcl} m avkjøles umettet luft med 1,0 °C/100 m.
                 </p>
                 <p className="font-mono text-foreground">
                   {t0} °C - {(zLcl / 100) * 1.0} °C = <strong>{tLcl.toFixed(1)} °C</strong>
@@ -339,7 +339,7 @@ export function FoehnModel() {
                   3. Tørr nedsynkning
                 </span>
                 <p className="text-muted-foreground">
-                  Fra {zTop} til {zLee} m synker lufta og varmes med omtrent 1,0 °C/100m.
+                  Fra {zTop} til {zLee} m synker lufta og varmes med omtrent 1,0 °C/100 m.
                 </p>
                 <p className="font-mono text-amber-300 font-bold">
                   {tTop.toFixed(1)} °C + {((descentHeight / 100) * 1.0).toFixed(1)} °C = {tLee.toFixed(1)} °C

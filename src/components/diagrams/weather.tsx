@@ -186,7 +186,7 @@ export function FoehnAdiabaticDiagram() {
 
           {/* Heving under skybasen */}
           <Arrow d="M 150 340 L 205 300" marker={m.teal} color={C.teal} width={3} />
-          <L x="200" y="335" fill={C.teal} size={11} weight={700}>-1,0 °C / 100 m</L>
+          <L x="200" y="335" fill={C.teal} size={11} weight={700}>−1,0 °C / 100 m</L>
           <circle cx="210" cy="294" r="5" fill={C.teal} />
           <L x="218" y="312" fill={C.teal} size={14} weight={800}>+2 °C</L>
 
@@ -244,13 +244,13 @@ export function FoehnAdiabaticDiagram() {
             <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={1.4} />
           </g>
           <Arrow d="M 225 280 L 430 182" marker={m.rain} color={C.rain} width={3} />
-          <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. -0,5 °C / 100 m</L>
+          <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. −0,5 °C / 100 m</L>
           <L x="150" y="246" fill={C.muted} size={10}>Regn faller på losiden</L>
 
           <rect x="395" y="118" width="110" height="46" rx="6" fill="#1b242e" stroke={C.fg} strokeWidth="1.5">
             <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-6.5s" repeatCount="indefinite" />
           </rect>
-          <L x="450" y="138" fill={C.fg} size={15} weight={800} anchor="middle">-3 °C</L>
+          <L x="450" y="138" fill={C.fg} size={15} weight={800} anchor="middle">−3 °C</L>
           <L x="450" y="155" fill={C.sand} size={10} anchor="middle">på toppen</L>
 
           {/* LESIDE */}
@@ -276,7 +276,7 @@ export function FoehnAdiabaticDiagram() {
             Regneeksempel (tenkte tall, ikke målinger)
           </L>
           <L x="450" y="462" fill={C.muted} size={11} anchor="middle">
-            Lo: 12 - 10 × 1,0 - 10 × 0,5 = -3 °C på toppen · Le: -3 + 20 × 1,0 = +17 °C i dalen
+            Lo: 12 − 10 × 1,0 − 10 × 0,5 = −3 °C på toppen · Le: −3 + 20 × 1,0 = +17 °C i dalen
           </L>
         </g>
       )}
