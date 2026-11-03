@@ -153,7 +153,7 @@ export function FoehnAdiabaticDiagram() {
       action={a.knapp}
       title="Føn: lufta varmes når den synker på lesiden"
       heading="Hvorfor blir lufta varmere og tørrere på lesiden?"
-      caption="Lufta som passerer fjellet, synker på lesiden. Der kommer den under høyere lufttrykk og varmes med omtrent 1 °C per 100 m (tørradiabatisk). Den relative fuktigheten synker fordi det ikke tilføres fuktighet. Lufta kan bli særlig varm hvis den kommer ned fra høye luftlag. Kondensasjon og regn på losiden kan bidra litt, men betyr mindre enn man tidligere trodde (Store norske leksikon, u.å.-g). Alle tall i figuren er et forenklet regneeksempel, ikke målinger."
+      caption="Lufta som passerer fjellet, synker på lesiden. Der kommer den under høyere lufttrykk og varmes med omtrent 1 °C per 100 m (tørradiabatisk). Den relative fuktigheten synker fordi det ikke tilføres fuktighet. Lufta kan bli særlig varm hvis den kommer ned fra høye luftlag. Kondensasjon og regn på losiden kan bidra litt, men betyr mindre enn man tidligere trodde (Store norske leksikon, u.å.-g). I skyen avkjøles lufta langsommere, i gjennomsnitt ca. 0,5 °C per 100 m. Tallet varierer fra ca. 0,4 i varm, fuktig luft til nær 1 i kald luft høyt oppe (Store norske leksikon, u.å.-n; NOAA, u.å.-c). Alle tall i figuren er et forenklet regneeksempel, ikke målinger."
       viewBox="0 0 900 480"
       wide
     >
@@ -168,7 +168,7 @@ export function FoehnAdiabaticDiagram() {
           {/* Skybase */}
           <line x1="40" y1="294" x2="450" y2="294" stroke={C.teal} strokeDasharray="4 4" strokeWidth="1.2" />
           <L x="44" y="310" fill={C.teal} size={11}>1000 m</L>
-          <L x="60" y="284" fill={C.teal} size={12} weight={700}>Skybase (lufta blir metta)</L>
+          <L x="60" y="284" fill={C.teal} size={12} weight={700}>Skybase (lufta blir mettet)</L>
 
           {/* Topp */}
           <line x1="40" y1="178" x2="860" y2="178" stroke={C.warm} strokeDasharray="3 3" strokeWidth="1.2" />
@@ -182,11 +182,11 @@ export function FoehnAdiabaticDiagram() {
             <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-0.0s" repeatCount="indefinite" />
           </rect>
           <L x="115" y="362" fill={C.rain} size={15} weight={800} anchor="middle">+12 °C</L>
-          <L x="115" y="380" fill={C.fg} size={11} anchor="middle">Umetta luft</L>
+          <L x="115" y="380" fill={C.fg} size={11} anchor="middle">Umettet luft</L>
 
           {/* Heving under skybasen */}
           <Arrow d="M 150 340 L 205 300" marker={m.teal} color={C.teal} width={3} />
-          <L x="200" y="335" fill={C.teal} size={11} weight={700}>-1,0 °C / 100 m</L>
+          <L x="200" y="335" fill={C.teal} size={11} weight={700}>−1,0 °C / 100 m</L>
           <circle cx="210" cy="294" r="5" fill={C.teal} />
           <L x="218" y="312" fill={C.teal} size={14} weight={800}>+2 °C</L>
 
@@ -213,7 +213,7 @@ export function FoehnAdiabaticDiagram() {
               <Flyt key={x} path={`M ${x} ${bakke - 22} L ${x - 3} ${bakke - 4}`} dur={1.8 + i * 0.2} n={1} r={0.9} ry={2.2} fill={C.rain} opacity={0.35} />
             );
           })}
-          {/* Luftpakker: opp på losiden, over toppen og ned på lesiden. Farge: umetta (teal) → sky (blå) → varm. */}
+          {/* Luftpakker: opp på losiden, over toppen og ned på lesiden. Farge: umettet (teal) → sky (blå) → varm. */}
           <Flyt
             path="M 60 372 L 150 340 L 210 294 L 300 245 L 430 184 Q 450 170 470 188 L 730 350 L 840 372"
             dur={13}
@@ -244,13 +244,13 @@ export function FoehnAdiabaticDiagram() {
             <Arrow d="M 350 228 L 342 275" marker={m.rain} color={C.rain} width={1.4} />
           </g>
           <Arrow d="M 225 280 L 430 182" marker={m.rain} color={C.rain} width={3} />
-          <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. -0,6 °C / 100 m</L>
+          <L x="150" y="230" fill={C.rain} size={11} weight={700}>I skyen: ca. −0,5 °C / 100 m</L>
           <L x="150" y="246" fill={C.muted} size={10}>Regn faller på losiden</L>
 
           <rect x="395" y="118" width="110" height="46" rx="6" fill="#1b242e" stroke={C.fg} strokeWidth="1.5">
             <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-6.5s" repeatCount="indefinite" />
           </rect>
-          <L x="450" y="138" fill={C.fg} size={15} weight={800} anchor="middle">-4 °C</L>
+          <L x="450" y="138" fill={C.fg} size={15} weight={800} anchor="middle">−3 °C</L>
           <L x="450" y="155" fill={C.sand} size={10} anchor="middle">på toppen</L>
 
           {/* LESIDE */}
@@ -267,7 +267,7 @@ export function FoehnAdiabaticDiagram() {
           <rect x="710" y="340" width="150" height="50" rx="6" fill="#3a2216" stroke={C.warm} strokeWidth="2">
             <animate attributeName="stroke-width" values="1.5;1.5;3.5;1.5;1.5" keyTimes="0;0.02;0.08;0.14;1" dur="13s" begin="-2.0s" repeatCount="indefinite" />
           </rect>
-          <L x="785" y="362" fill={C.warm} size={18} weight={900} anchor="middle">+16 °C</L>
+          <L x="785" y="362" fill={C.warm} size={18} weight={900} anchor="middle">+17 °C</L>
           <L x="785" y="380" fill={C.sand} size={10} anchor="middle">Lavere relativ fuktighet</L>
 
           {/* Regneeksempel */}
@@ -276,7 +276,7 @@ export function FoehnAdiabaticDiagram() {
             Regneeksempel (tenkte tall, ikke målinger)
           </L>
           <L x="450" y="462" fill={C.muted} size={11} anchor="middle">
-            Lo: 12 - 10 × 1,0 - 10 × 0,6 = -4 °C på toppen · Le: -4 + 20 × 1,0 = +16 °C i dalen
+            Lo: 12 − 10 × 1,0 − 10 × 0,5 = −3 °C på toppen · Le: −3 + 20 × 1,0 = +17 °C i dalen
           </L>
         </g>
       )}

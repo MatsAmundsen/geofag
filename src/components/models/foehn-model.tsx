@@ -10,7 +10,7 @@ export function FoehnModel() {
 
   // Lapse rates i °C / 100m
   const gammaD = 1.0; // Tørradiabatisk
-  const gammaM = 0.6; // Fuktigadiabatisk
+  const gammaM = 0.5; // Fuktigadiabatisk, gjennomsnitt (varierer ca. 0,4–1 °C/100 m)
 
   // Beregninger
   const deltaT1 = -((zLcl / 100) * gammaD);
@@ -49,7 +49,7 @@ export function FoehnModel() {
             {/* Parameter 1: T0 */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs">
-                <span className="text-muted-foreground">Starttemperatur ved havnivå ($T_0$):</span>
+                <span className="text-muted-foreground">Starttemperatur ved havnivå (T₀):</span>
                 <strong className="text-foreground">{t0} °C</strong>
               </div>
               <input
@@ -222,8 +222,8 @@ export function FoehnModel() {
                           strokeWidth="2.5"
                           markerEnd="url(#mdl-teal)"
                         />
-                        <text x="20" y="24" fill="#94a3b8" fontSize="10">
-                          Trinn 1: Tørradiabatisk (1,0 °C / 100m)
+                        <text x="20" y="24" fill="#94a3b8" fontSize="11">
+                          Trinn 1: Tørradiabatisk (1,0 °C / 100 m)
                         </text>
 
                         {/* 2. Fuktigadiabatisk over LCL */}
@@ -234,8 +234,8 @@ export function FoehnModel() {
                           strokeWidth="2.5"
                           markerEnd="url(#mdl-teal)"
                         />
-                        <text x="20" y="40" fill="#7dd3fc" fontSize="10">
-                          Trinn 2: Fuktigadiabatisk (0,6 °C / 100m)
+                        <text x="20" y="40" fill="#7dd3fc" fontSize="11">
+                          Trinn 2: Fuktigadiabatisk (ca. 0,5 °C / 100 m)
                         </text>
 
                         {/* 3. Tørradiabatisk stup ned på lesiden */}
@@ -247,7 +247,7 @@ export function FoehnModel() {
                           markerEnd="url(#mdl-red)"
                         />
                         <text x="20" y="57" fill="#f59e0b" fontSize="11" fontWeight="600">
-                          Trinn 3: Lufta synker og varmes (1,0 °C / 100m)
+                          Trinn 3: Lufta synker og varmes (1,0 °C / 100 m)
                         </text>
 
                         {/* Markører ved nøkkelpunkter */}
@@ -267,7 +267,7 @@ export function FoehnModel() {
                           <rect x="-115" y="-52" width="105" height="34" rx="4" fill="#0f172a" stroke="#334155" />
                           <text x="-107" y="-38" fill="#cbd5e1" fontSize="10">Skybase ({zLcl} m):</text>
                           <text x="-107" y="-24" fill="#38bdf8" fontSize="12" fontWeight="bold">
-                            {tLcl.toFixed(1)} °C · metta
+                            {tLcl.toFixed(1)} °C · mettet
                           </text>
                         </g>
 
@@ -312,7 +312,7 @@ export function FoehnModel() {
                   1. Tørradiabatisk heving
                 </span>
                 <p className="text-muted-foreground">
-                  Fra 0 til {zLcl} m avkjøles umettet luft med 1,0 °C/100m.
+                  Fra 0 til {zLcl} m avkjøles umettet luft med 1,0 °C/100 m.
                 </p>
                 <p className="font-mono text-foreground">
                   {t0} °C - {(zLcl / 100) * 1.0} °C = <strong>{tLcl.toFixed(1)} °C</strong>
@@ -325,10 +325,10 @@ export function FoehnModel() {
                   2. Fuktigadiabatisk sky
                 </span>
                 <p className="text-muted-foreground">
-                  Fra {zLcl} til {zTop} m avkjøles lufta saktere (ca. 0,6 °C/100m) fordi kondensasjon frigjør varme.
+                  Fra {zLcl} til {zTop} m avkjøles lufta saktere, i gjennomsnitt ca. 0,5 °C per 100 m, fordi kondensasjon frigjør varme. Tallet varierer fra ca. 0,4 i varm, fuktig luft til nær 1 i kald luft høyt oppe.
                 </p>
                 <p className="font-mono text-foreground">
-                  {tLcl.toFixed(1)} °C - {((cloudThickness / 100) * 0.6).toFixed(1)} °C ={" "}
+                  {tLcl.toFixed(1)} °C - {((cloudThickness / 100) * gammaM).toFixed(1)} °C ={" "}
                   <strong>{tTop.toFixed(1)} °C</strong>
                 </p>
               </div>
@@ -339,7 +339,7 @@ export function FoehnModel() {
                   3. Tørr nedsynkning
                 </span>
                 <p className="text-muted-foreground">
-                  Fra {zTop} til {zLee} m synker lufta og varmes med omtrent 1,0 °C/100m.
+                  Fra {zTop} til {zLee} m synker lufta og varmes med omtrent 1,0 °C/100 m.
                 </p>
                 <p className="font-mono text-amber-300 font-bold">
                   {tTop.toFixed(1)} °C + {((descentHeight / 100) * 1.0).toFixed(1)} °C = {tLee.toFixed(1)} °C
