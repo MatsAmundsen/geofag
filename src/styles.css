@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Variant «lys:» gjelder når kapittelsidene står i lyst tema (standard). Mørkt tema = data-tema="mork" på <html>. */
+@custom-variant lys (:root:not([data-tema="mork"]) &);
+
 @theme {
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
@@ -552,11 +555,12 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 
 /*
  * Kapittel- og emnesider: lyst tema «Lys mint og skog».
+ * Tema bytter med knappen i kapittelheaderen: data-tema="mork" på <html> (satt av script i <head>) gir det opprinnelige mørke temaet uten overstyringer.
  * Temaet gjelder bare når siden har emne-layouten (.kapittel-lys i topic-layout.tsx). :root:has() gjør at også
  * dialoger og menyer som rendres utenfor layouten (portaler) får samme farger. Forsidene (/, /geofag-1, /geofag-2)
  * har ikke klassen og er uendret. Figurer og modeller er tegnet for mørk bunn og beholder det mørke temaet.
  */
-:root:has(.kapittel-lys) {
+:root:not([data-tema="mork"]):has(.kapittel-lys) {
   color-scheme: light;
   --color-background: #f2f8f4;
   --color-foreground: #14261d;
@@ -620,7 +624,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-950: oklch(98.4% 0.003 247.858);
 }
 
-:root:has(.kapittel-lys) :is(figure, .jet-root) {
+:root:not([data-tema="mork"]):has(.kapittel-lys) :is(figure, .jet-root) {
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
   --color-card: #141c22;
@@ -683,3 +687,8 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-950: oklch(12.9% 0.042 264.695);
   color: var(--color-foreground);
 }
+
+/* Temaknappen (kapittelheader). Ikonet og teksten følger data-tema direkte i CSS, så de er riktige fra første maling. */
+.tema-knapp .tema-til-lys { display: none; }
+:root[data-tema="mork"] .tema-knapp .tema-til-lys { display: inline-flex; }
+:root[data-tema="mork"] .tema-knapp .tema-til-mork { display: none; }
