@@ -13,7 +13,7 @@ const JetModel = lazy(() =>
 
 function ModelPlaceholder() {
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
+    <div className="jet-root flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
       <div className="h-48 border-b border-border" />
       <div className="jet-map-stage flex items-center justify-center text-sm text-muted-foreground">
         Laster modellen …
@@ -24,7 +24,7 @@ function ModelPlaceholder() {
 
 function FigurPlaceholder() {
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
+    <div className="jet-root flex flex-col overflow-hidden rounded-xl border border-border bg-card" role="status">
       <div className="h-64 animate-pulse bg-muted/40" />
       <div className="px-4 py-3 text-sm text-muted-foreground">Laster figuren …</div>
     </div>
