@@ -134,6 +134,10 @@ De fleste vulkaner ligger ved plategrenser. Unntaket er *hotspots*, langvarige, 
 SjekkVulkaner2
 ```
 
+```widget
+YtMaria08
+```
+
 ## Pliniansk utbrudd
 
 Et *pliniansk utbrudd* er et svært eksplosivt utbrudd der en søyle av gass og aske stiger flere titalls kilometer til værs, helt opp i stratosfæren. *Stratosfæren* er luftlaget fra ca. 10–15 km til ca. 50 km over bakken.
@@ -239,6 +243,10 @@ VolcanicWinter
 
 ```widget
 SjekkVulkaner4
+```
+
+```widget
+YtMaria09
 ```
 
 ## Overvåking og varsling

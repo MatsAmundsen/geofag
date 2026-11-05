@@ -92,6 +92,10 @@ Grafitt og feltspat, som tas ut fra nefelinsyenitten, står på EUs liste over k
 SjekkGeologiskeRessurser3
 ```
 
+```widget
+YtMaria22
+```
+
 ## Petroleum – fra plankton til felle
 
 *Petroleum* er en samlebetegnelse for råolje og naturgass, altså blandinger av hydrokarboner i geologiske formasjoner. Det er verdens viktigste kilde til primærenergi (Gundersen og Lundberg, 2025). For at det skal dannes en olje- eller gassforekomst, må flere geologiske forhold være til stede i riktig rekkefølge. Til sammen kaller vi dem et *petroleumssystem*.
@@ -114,6 +118,10 @@ Petroleum finnes særlig i flere tusen meter tykke avsetninger i sedimentære ba
 
 ```widget
 SjekkGeologiskeRessurser4
+```
+
+```widget
+YtMaria23
 ```
 
 ## Hvordan finner vi ressursene?

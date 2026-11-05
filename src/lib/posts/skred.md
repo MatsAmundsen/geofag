@@ -47,6 +47,10 @@ Kvikkleireskred er en egen kategori. De løses ut i en leire som kan bli flytend
 SkredTyper
 ```
 
+```widget
+YtMaria51
+```
+
 ## Hva er kvikkleire?
 
 ```widget
@@ -99,6 +103,10 @@ NVE gjengir utvalgets hovedfunn slik: erosjon i Tistilbekken gjennom flere år h
 SjekkSkred1
 ```
 
+```widget
+YtMaria49
+```
+
 ## Hva er et fjellskred?
 
 Fjellskred er hundre tusen til flere millioner kubikkmeter stein i bevegelse (NVE, 2020c). NVE har det nasjonale ansvaret for risikoen knyttet til fjellskred. NGU kartlegger og risikoklassifiserer ustabile fjellpartier på oppdrag fra NVE. Partier med moderat risiko overvåkes periodisk. Partier med høy risiko overvåkes kontinuerlig. Per 2026 er 10 fjellpartier under kontinuerlig overvåking, og 23 overvåkes periodisk (NVE, u.å.-b).
@@ -121,6 +129,14 @@ I 2014 ble et svært aktivt, lokalt parti påvist. Det fikk navnet Veslemannen o
 
 ```widget
 SjekkSkred2
+```
+
+```widget
+YtMaria52
+```
+
+```widget
+YtMaria53
 ```
 
 ## Hvordan kan vi forebygge og tilpasse oss?

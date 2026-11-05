@@ -1,3 +1,7 @@
+```widget
+YtMaria00
+```
+
 > **Kompetansemål i Geofag 1 (LK20)**
 >
 > Elevene skal kunne
@@ -40,6 +44,10 @@ I geofag 1 er geosfæren og hydrosfæren mottakerne. Atmosfæren, kryosfæren og
 
 ```widget
 SpheresDiagram
+```
+
+```widget
+YtMaria28
 ```
 
 ## Geosfæren: berggrunn, løsmasser og jord

@@ -214,6 +214,10 @@ Når en tung havbunnsplate synker bratt ned i mantelen, drar den med seg astenos
 
 I dag kan vi måle disse bevegelsene direkte med satellitter (GPS og VLBI). Spredningen langs midthavsryggene er om lag 2–5 centimeter per år i Atlanterhavet og 6–16 centimeter per år langs East Pacific Rise (NOAA, u.å.-a). Det stemmer med at platetrekk (slab pull) er den dominerende drivkraften.
 
+```widget
+YtMaria01
+```
+
 ## Hvorfor mantelberg smelter: Dekompresjon, flukssmelting og mantelplymer
 
 Nesten all magma på jorda dannes i den faste øvre mantelen, ved delvis smelting av peridotitt. Delvis smelting betyr at bare en liten del av bergarten smelter, mens resten forblir fast.
@@ -264,6 +268,10 @@ Kontinental rifting starter inne på et kontinent. Skorpen strekkes og tynnes. S
 
 *Når to litosfæreplater trekkes fra hverandre i spredningsaksen, stiger peridotitt fra astenosfæren opp uten å tape nevneverdig varme (adiabatisk). Trykkfallet utløser dekompresjonssmelting. Omtrent 10–20 prosent av bergarten smelter og gir basaltisk magma. På havbunnen størkner lavaen som putelava (pillow basalt). Samtidig siver sjøvann ned og varmes opp til over 350 °C av magmakamre med gabbro under. Det varme, metallrike vannet spyles ut gjennom hydrotermale skorsteiner («black smokers»).*
 
+```widget
+YtMaria02
+```
+
 ### 2. Konvergerende plategrense (platene kolliderer)
 
 Ved konvergens møtes to litosfæreplater, og skorpen presses sammen. Hvilket landskap som dannes, avhenger av hvilke skorper som møtes. Det er tre varianter.
@@ -302,6 +310,10 @@ Et tverrsnitt av en konvergerende plategrense har fem deler, fra havet og innove
 
 5. Bakbuebassenget (backarc basin) kan åpne seg hvis den synkende platen er gammel og tung. Da synker den brattere enn platen selv beveger seg framover. Det kalles tilbakerulling (slab rollback). Den overliggende platen strekkes bak vulkanbuen. Strekket kan sprekke opp jordskorpa og åpne et lite havbasseng med egen midthavsrygg. Japanhavet åpnet seg slik bak den japanske vulkanbuen for ca. 15–20 millioner år siden.
 
+```widget
+YtMaria04
+```
+
 ### 3. Transforme plategrenser (platene glir sidelengs)
 
 Transforme plategrenser oppstår når plater glir sidelengs i forhold til hverandre. Her blir verken plater ødelagt eller nye plater dannet.
@@ -323,6 +335,10 @@ En midthavsrygg er aldri én rett linje. Den er delt i segmenter som er bundet s
 - Aktiv transformforkastning (mellom ryggsegmentene): Bare mellom de to spredningsryggene beveger platene seg i motsatt retning. Der er friksjonen høy, forkastningen kan låse seg, og det kommer hyppige, grunne jordskjelv. Hvis det høyre ryggsegmentet ligger lenger nord enn det venstre, er bevegelsen langs forkastningen venstregående (sinistral). Det er motsatt av det vi skulle vente hvis forkastningen bare hadde kuttet en rygg som opprinnelig hang sammen.
 
 - Inaktiv bruddsone (fracture zone, utenfor ryggaksen): Utenfor spredningsaksene fortsetter sprekken tusenvis av kilometer som et dypt arr i havbunnen. Her beveger havbunnen på begge sider seg i samme retning og med samme fart. Det er ingen relativ platebevegelse, ingen friksjon og ingen jordskjelv. Bruddsonene er aseismiske arr som viser tidligere transformbevegelse.
+
+```widget
+YtMaria03
+```
 
 ## Seismisitet og Wadati-Benioff-sonen: Jordskjelvenes geologiske røntgenbilde
 

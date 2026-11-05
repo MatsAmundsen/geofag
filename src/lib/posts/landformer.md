@@ -92,6 +92,10 @@ Kanskje skulle vi vente at de minste kornene var lettest å rive løs? Det er de
 SjekkLandformer2
 ```
 
+```widget
+YtMaria10
+```
+
 ## Elva fra kilde til munning
 
 Rennende vann er den prosessen som har formet mest av overflaten på jorda som helhet. Langs en elv endrer arbeidet seg fra fjellet til havet: Øverst graver elva seg ned, lenger ned eroderer den sideveis, og ved munningen avsetter den.
@@ -128,6 +132,10 @@ GilbertDelta
 SjekkLandformer3
 ```
 
+```widget
+YtMaria40
+```
+
 ## Isen formet det meste av Norge
 
 Det er isen som har formet mest av landskapet i Norge. Gjennom istidene grov breene ut V-daler til U-daler og fjorder, og små breer hulte ut botner mellom skarpe egger og tinder. Da isen smeltet, la den igjen morener som Raet, grusrygger og breelvdeltaer. Mange av de største grus- og sandforekomstene våre er slike breelvavsetninger. Hvordan breene beveger seg, eroderer og avsetter, og hvordan du kjenner igjen sporene etter dem, kan du lese i kapitlet [Isbreer og landformer](/geofag-1/isbreer-og-landformer).
@@ -145,6 +153,10 @@ Etter den klassiske modellen er viddene rester av et gammelt, lavt og nesten fla
 Modellen er omstridt. Andre forskere mener at fjellene har vært høye helt siden den kaledonske fjellkjeden ble dannet for ca. 425–405 millioner år siden. De mener at istidene slipte ned toppene til en jevn høyde omkring *snøgrensen*, det vil si høyden der snøen ligger året rundt (Nielsen mfl., 2009; Egholm mfl., 2009). Begge modellene forklarer de flate viddene, men på helt ulike måter. Det viser at vi ikke alltid kan lese historien rett ut av landskapet.
 
 Langs kysten fra Ryfylke til Vest-Finnmark ligger *strandflaten*, en lav og flat brem med tusenvis av øyer, holmer og skjær. Den går fra 60–70 m over til 30–40 m under havnivå og er stedvis nesten 50 km bred. Den regnes å være dannet gjennom de siste 5–10 millioner årene ved frostforvitring, bølgeerosjon og iserosjon (SNL, u.å.-b). Nøyaktig hvordan prosessene virket sammen, er fortsatt diskutert.
+
+```widget
+YtMaria47
+```
 
 ```widget
 FjordskredFoto

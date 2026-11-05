@@ -79,6 +79,10 @@ Sediment er løst materiale som grus, sand og leire, og det er derfor ikke en be
 SjekkBergarter1
 ```
 
+```widget
+YtMaria11
+```
+
 ## Hvordan undersøker du et håndstykke?
 
 Verbet i kompetansemålet er utforske. Du velger en test, noterer det du ser, og tolker hvilken stasjon i syklusen prøven sitter på. Noterer du også hvor prøven er tatt, er det geofaglig feltarbeid.
@@ -169,6 +173,10 @@ Larvikitt og rombeporfyr kommer altså fra samme slags smelte, men størknet på
 OsloriftBergarter
 ```
 
+```widget
+YtMaria12
+```
+
 ## Hvordan smelter og størkner magma?
 
 Magma kommer ikke fra et hav av smelte under jordskorpa. Mantelen er stort sett fast. Magma dannes der berget smelter delvis. Når magmaen kjøles, krystalliserer mineralene i en bestemt rekkefølge, og smelten skifter sammensetning underveis. I denne delen ser vi på begge prosessene.
@@ -223,6 +231,10 @@ Differensiering
 SjekkBergarter5
 ```
 
+```widget
+YtMaria13
+```
+
 ## Hva er sedimentære bergarter?
 
 Tre lesemåter holder: fragmenter som er kittet, slam som er presset, og karbonat fra organismer.
@@ -269,6 +281,10 @@ Sandstein som fortsatt har porer, kan holde vann, olje eller gass. Derfor er san
 
 ```widget
 SjekkBergarter6
+```
+
+```widget
+YtMaria14
 ```
 
 ## Hva er metamorfe bergarter?
@@ -358,6 +374,10 @@ Victor Moritz Goldschmidt ved Universitetet i Oslo gjorde et banebrytende studiu
 SjekkBergarter7
 ```
 
+```widget
+YtMaria15
+```
+
 ## Hva er bergartssyklusen?
 
 Med bergartssyklusen mener vi, som nevnt, en modell for hvordan bergartene går over i hverandre. Modellen viser stasjonene og veiene mellom dem.
@@ -381,6 +401,10 @@ Hvordan geologene vet at gneisen er over 900 millioner år og larvikitten ca. 29
 
 ```widget
 SjekkBergarter4
+```
+
+```widget
+YtMaria16
 ```
 
 ## Viktige begreper

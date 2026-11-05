@@ -39,6 +39,10 @@ Figuren er en modell av de samme lagrene: snø, mark, grunnvann, innsjø og elv.
 
 Lite av vannet på jorda er ferskvann vi kan bruke. Ca. 97 prosent av vannet er saltvann, nesten alt i havet (96,5 prosent). Bare ca. 2,5 prosent er ferskvann. Av ferskvannet er over 68 prosent bundet i is og breer og ca. 30 prosent er grunnvann. Elver og innsjøer utgjør bare en liten brøkdel, men det er likevel derfra vi henter mye av vannet vi bruker. USAs geologiske undersøkelse (USGS) har beregnet disse andelene (USGS, u.å.). Is og snø regner vi i dette nettstedet til kryosfæren, se kapitlet [Jordsystemene](/geofag-1/jordsystemene).
 
+```widget
+YtMaria28
+```
+
 ## Hva er en akvifer?
 
 ```widget
@@ -59,6 +63,10 @@ Jordskred og kvikkleire hører til kapitlet [Skred](/geofag-1/skred).
 
 ```widget
 SjekkVannOgFlom1
+```
+
+```widget
+YtMaria30
 ```
 
 ## Hva er et hydrogram?
@@ -98,6 +106,10 @@ NVE legger ut flomvarsler på Varsom 1–3 dager i forkant (NVE, u.å.-b). Klima
 SjekkVannOgFlom3
 ```
 
+```widget
+YtMaria37
+```
+
 ## Hva viste Hans?
 
 Ekstremværet Hans lå over Sør-Norge fra 7. til 9. august 2023. Mest nedbør falt vest i Innlandet og i de nordvestligste delene av det som da var Viken. Store områder fikk nedbør som tilsvarte en *returverdi* på 100 år, altså samme sjeldenhet som en 100-årsflom. Enkelte steder fikk mer enn 200 prosent av normal nedbør for august i løpet av få døgn (Granerød mfl., 2023). Flere stasjoner med mer enn 100 års målinger satte ny rekord for tre døgn. Geilo målte 111 mm, mot 107 mm i 1938. Vang i Valdres målte 139 mm, mot 128 mm i 1938, ifølge Meteorologisk institutt (MET) (MET, 2023).
@@ -105,6 +117,10 @@ Ekstremværet Hans lå over Sør-Norge fra 7. til 9. august 2023. Mest nedbør f
 Nedbøren falt over et uvanlig stort område. Det ga mye vann i de mange sideelvene som til slutt renner ut i noen få hovedelver, og derfor ble flommene så store (MET, 2023). MET skriver at klimaendringer kan forsterke en slik nedbørhendelse (MET, 2023).
 
 Målt i forsikringserstatninger for bygninger og innbo er Hans det dyreste ekstremværet i Norsk Naturskadepools historie, med et anslag på ca. 3,1 milliarder kroner (Norsk Naturskadepool, 2025). NVE omtaler Hans som den dyreste naturkatastrofen som har rammet Norge. I løpet av 2023 sendte NVE ut 124 jordskredvarsler og 174 flomvarsler på gult, oransje eller rødt nivå (NVE, 2024).
+
+```widget
+YtMaria38
+```
 
 ## Hvordan påvirker mennesket vannets kretsløp?
 
@@ -149,6 +165,10 @@ I Norge utgjør grunnvann ca. 15 prosent av den samlede vannforsyningen. Resten,
 Oslo er et eksempel på hvor sårbar en stor by kan være. Om lag 90 prosent av Oslos befolkning får drikkevannet fra Maridalsvannet, og byen har i dag ingen reservevannkilde. Derfor bygger kommunen en ny vannforsyning fra Holsfjorden, som skal stå ferdig i 2028 (Oslo kommune, u.å.).
 
 Selv i et vått land kan vannet bli knapt. Tørkesommeren 2018 var en stor utfordring for landbruket og for kraftprodusentene. I juni 2023 innførte flere kommuner på Sør- og Østlandet vanningsrestriksjoner, både fordi forbruket var høyt og fordi vannforsyningen hadde tekniske problemer (NVE, 2024).
+
+```widget
+YtMaria34
+```
 
 ### Ferskvann i verden
 

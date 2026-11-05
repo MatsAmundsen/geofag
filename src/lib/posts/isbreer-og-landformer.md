@@ -40,6 +40,10 @@ Forholdet mellom det som kommer til og det som smelter, kalles breens massebalan
 
 Is virker hard og sprø, men i en tykk isbre er trykket så stort at isen oppfører seg som en seig, plastisk masse. Isen deformeres derfor sakte og siger nedover dalen (SNL, u.å.-b). I tillegg kan breen gli på underlaget, særlig der det er smeltevann ved bunnen, slik Nasjonal digital læringsarena (NDLA) beskriver det (NDLA, u.å.). Setter vi sammen bilder av en bre over flere år, ser vi at den flyter nedover nesten som ei elv (NDLA, u.å.).
 
+```widget
+YtMaria43
+```
+
 ## Isen som kraft: erosjon og transport
 
 En isbre er ikke bare is. Den inneholder store og små steiner som er frosset fast i isen eller ligger langs bunnen. Det er steinene som gjør breen til en kraft som graver og avsetter i landskapet (NDLA, u.å.). Isbreen eroderer på to måter, og begge krever at isen beveger seg.
@@ -132,6 +136,10 @@ Der breelvene møtte havet eller en innsjø, mistet vannet farten, og sanden og 
 
 ```widget
 SjekkIsbre2
+```
+
+```widget
+YtMaria44
 ```
 
 ## Frostforvitring

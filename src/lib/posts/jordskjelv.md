@@ -152,6 +152,10 @@ Små skjelv er det svært mange av, store skjelv er det få av. Hver gang magnit
 SjekkJordskjelv4
 ```
 
+```widget
+YtMaria05
+```
+
 ## Hva forteller bølgene om jordas indre?
 
 Hvor dypt har mennesker egentlig klart å bore? Et sovjetisk borehull på Kolahalvøya nådde 12 km – og det er fortsatt inne i jordskorpa. Det vi vet om jordas indre, vet vi derfor fordi seismiske bølger endrer fart og retning når de går gjennom lag med ulike egenskaper (USGS, u.å.-a).

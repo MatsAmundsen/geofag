@@ -49,6 +49,10 @@ Tabellen viser hvordan de viktigste hendelsene i Norges geologi passer inn i tid
 SjekkGeologiskTid1
 ```
 
+```widget
+YtMaria17
+```
+
 ## Relativ alder – hva er eldst?
 
 *Relativ datering* er å plassere bergarter og hendelser i rekkefølge, uten å vite hvor mange år siden de skjedde (Mangerud og Spjeldnæs, 2025). Det er en metode du kan bruke selv, for eksempel i en veiskjæring, på et geologisk snitt eller i en blotning. En blotning er et sted der berggrunnen er synlig. Den bygger på noen få prinsipper.
@@ -128,6 +132,10 @@ Nå kan vi svare på spørsmålet fra starten. Larvikitten er ca. 290–295 mill
 
 ```widget
 SjekkGeologiskTid3
+```
+
+```widget
+YtMaria18
 ```
 
 ## Andre dateringsmetoder og datering i praksis

@@ -14,6 +14,7 @@ import {
   stripCatalogImageCaptions,
   stripChapterEditorNotice,
 } from "./poster-markdown.ts";
+import { GEO_MARIA_VIDEOS, mariaWidgetFence } from "./youtube-geo-maria.ts";
 
 const chapterMarkdown = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "platetektonikk-post.md"),
@@ -48,14 +49,20 @@ describe("injectPosterWidgets", () => {
     }
     // Redaktørens tekst har «setter igang platedrift», så SmeltingUnderTynnPlate kommer i tillegg.
     assert.equal(ids.has("SmeltingUnderTynnPlate"), true);
-    assert.equal(ids.size, POSTER_WIDGET_IDS.length + 1);
+    const maria = GEO_MARIA_VIDEOS.filter((video) =>
+      chapterMarkdown.includes(mariaWidgetFence(video.widgetId)),
+    ).length;
+    assert.equal(ids.size, POSTER_WIDGET_IDS.length + 1 + maria);
   });
 
   it("does not duplicate widgets that are already fenced", () => {
     const once = injectPosterWidgets(chapterMarkdown);
     const twice = injectPosterWidgets(once);
     assert.deepEqual([...listedWidgetIds(twice)].sort(), [...listedWidgetIds(once)].sort());
-    assert.equal(listedWidgetIds(twice).size, POSTER_WIDGET_IDS.length + 1);
+    const maria = GEO_MARIA_VIDEOS.filter((video) =>
+      chapterMarkdown.includes(mariaWidgetFence(video.widgetId)),
+    ).length;
+    assert.equal(listedWidgetIds(twice).size, POSTER_WIDGET_IDS.length + 1 + maria);
   });
 
   it("keeps an explicit widget where the author placed it", () => {
@@ -405,7 +412,8 @@ describe("jordsystemene poster", () => {
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("## Test deg selv"), true);
     assert.equal(md.includes("## Kilder"), false);
-    assert.equal(ids.size, 10);
+    const maria = GEO_MARIA_VIDEOS.filter((video) => md.includes(mariaWidgetFence(video.widgetId))).length;
+    assert.equal(ids.size, 10 + maria);
     assert.equal(ids.has("QuizVulkaner"), false);
     assert.equal(ids.has("QuizHoytrykk"), false);
   });

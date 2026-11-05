@@ -43,6 +43,10 @@ Tafjordskredet 7. april 1934 tok 40 liv da fjell raste ut i fjorden og satte opp
 SjekkSkjelvfare1
 ```
 
+```widget
+YtMaria07
+```
+
 ## Hvilke skader gjør jordskjelv?
 
 Det skjer anslagsvis ca. 500 000 jordskjelv i året som kan registreres. Ca. 100 000 av dem merkes, og ca. 100 gjør skade (USAs geologiske undersøkelse (USGS), u.å.-c). Det er sjelden selve rystelsene som tar liv. De fleste dør når bygninger raser sammen, eller av følgene av skjelvet: skred, brann og tsunami. Hvor store skadene blir, avhenger derfor like mye av samfunnet som av naturen.
@@ -161,6 +165,10 @@ Poengene ganges sammen. Hvis én bygningsgruppe forsterkes slik at sårbarheten 
 ### Hva modellen ikke viser
 
 Alle modeller er forenklinger. En modell er aldri bedre enn dataene og antagelsene den bygger på. Magnituden for 1904 er usikker, og grove kategorier som «eldre murgård» skjuler store forskjeller mellom bygninger. Modellen tar heller ikke med følgehendelser som skred, brann og brudd i strøm og vann. DSB-scenarioet for Bergen viser at nettopp slike følgehendelser kan bli de mest krevende. Risikoen er dessuten ikke likt fordelt. De som bor i de eldste og billigste bygningene, eller i land med svake byggeforskrifter, er mest sårbare. Det så vi på Haiti i 2010 og i Tyrkia og Syria i 2023 (USGS, u.å.-b).
+
+```widget
+YtMaria06
+```
 
 ## Viktige begreper
 
