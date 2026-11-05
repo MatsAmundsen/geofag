@@ -170,6 +170,10 @@ SjekkFeltarbeid4
 > 1. **Én måling er nok.** Alle målinger har usikkerhet. Først når du har gjentatt målingen, kan du se hvor mye den varierer og regne ut et gjennomsnitt.
 > 2. **En GPS-posisjon er eksakt.** En mobil har under åpen himmel en nøyaktighet på ca. 5 m, og den blir dårligere nær bygninger og trær (GPS.gov, u.å.). Mange desimaler gjør ikke posisjonen sikrere.
 
+```widget
+YtMariaFeltrapport
+```
+
 ## Viktige begreper
 
 **Feltarbeid:** Innsamling av data ute, der fenomenene finnes, som del av en undersøkelse.

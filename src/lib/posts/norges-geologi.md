@@ -109,6 +109,10 @@ Bare delvis. Bergartene i fjellene våre ble foldet og skjøvet sammen i den kal
 SjekkNorgesGeologi3
 ```
 
+```widget
+YtMaria19
+```
+
 ## Oslo-riften – en riftdal i sen karbon og perm
 
 I sen karbon og perm (perm: for ca. 299–252 millioner år siden), like etter at _Pangea_, det siste superkontinentet, var satt sammen, ble skorpa strukket over et område i Nord-Europa. Oslo-riften er ett av flere riftsystemer fra denne tiden. Oppsprekkingen av Pangea begynte først senere, i jura for ca. 201–145 millioner år siden (Askheim, 2025).
@@ -129,6 +133,10 @@ Riften har vært uvirksom i ca. 250 millioner år, men de gamle forkastningene e
 
 ```widget
 SjekkNorgesGeologi4
+```
+
+```widget
+YtMaria20
 ```
 
 ## Norskehavet åpner seg
@@ -179,6 +187,10 @@ Landhevingen bidrar også til spenninger i jordskorpa. Sammen med spenninger fra
 
 ```widget
 SjekkNorgesGeologi6
+```
+
+```widget
+YtMaria46
 ```
 
 ## Utforsk geologien der du bor

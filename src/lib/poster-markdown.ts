@@ -15,6 +15,8 @@
  * body does not already point at the file.
  */
 
+import { GEO_MARIA_VIDEOS } from "./youtube-geo-maria.ts";
+
 export type PosterPart =
   | { type: "markdown"; value: string }
   | { type: "widget"; id: string };
@@ -50,6 +52,8 @@ type InjectRule = {
   | { beforeLine: string }
   /** Insert after the whole paragraph that contains the match (up to the next blank line). */
   | { afterParagraph: string | RegExp }
+  /** Prepend, used for the Geofag 1 course intro video. */
+  | { atStart: true }
 );
 
 const PLATE_INJECT_RULES: InjectRule[] = [
@@ -382,7 +386,21 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
 ];
 
-const INJECT_RULES: InjectRule[] = [...PLATE_INJECT_RULES, ...CHAPTER_INJECT_RULES];
+/** Geo med Maria. Same anchors as the fences in the chapter seeds. */
+const YOUTUBE_INJECT_RULES: InjectRule[] = GEO_MARIA_VIDEOS.flatMap((video) =>
+  video.placements.map((placement): InjectRule => {
+    const base = { widgets: [video.widgetId], require: placement.require };
+    if ("atStart" in placement) return { ...base, atStart: true };
+    if ("beforeHeading" in placement) return { ...base, beforeHeading: placement.beforeHeading };
+    return { ...base, afterParagraph: placement.afterParagraph };
+  }),
+);
+
+const INJECT_RULES: InjectRule[] = [
+  ...PLATE_INJECT_RULES,
+  ...CHAPTER_INJECT_RULES,
+  ...YOUTUBE_INJECT_RULES,
+];
 
 export const POSTER_WIDGET_IDS: string[] = PLATE_INJECT_RULES.flatMap((rule) => rule.widgets);
 export const CHAPTER_SCAN_WIDGET_IDS: string[] = CHAPTER_INJECT_RULES.flatMap(
@@ -458,6 +476,9 @@ function fences(ids: string[]): string {
 }
 
 function applyRule(markdown: string, rule: InjectRule, insertion: string): string {
+  if ("atStart" in rule) {
+    return `${insertion.replace(/^\n+/, "")}${markdown}`;
+  }
   if ("beforeHeading" in rule) {
     return insertBefore(markdown, headingPattern(rule.beforeHeading), insertion);
   }

@@ -216,6 +216,8 @@ import {
   MeanderOgKroksjo,
 } from "@/components/diagrams/landformer-figurer";
 import { SAMMENDRAG, SJEKK_DEG_SELV } from "@/lib/kapittel-mal";
+import { GEO_MARIA_VIDEOS } from "@/lib/youtube-geo-maria";
+import { YouTubeVideo } from "@/components/youtube-video";
 import { G2_PAKKE_A_WIDGETS } from "@/components/g2-pakke-a-widgets";
 import { QUIZ_ENERGI_A } from "@/lib/poster-quizzes-pakke-a";
 import { POSTER_WIDGETS_B } from "@/components/poster-widgets-b";
@@ -308,6 +310,14 @@ function NaoForklaringBoks({ kilde }: { kilde: string }) {
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
   ...G2_PAKKE_A_WIDGETS,
+  ...Object.fromEntries(
+    GEO_MARIA_VIDEOS.map((video) => [
+      video.widgetId,
+      () => (
+        <YouTubeVideo youtubeId={video.youtubeId} title={video.title} duration={video.duration} />
+      ),
+    ]),
+  ),
   // Kapittelmalen: `Sjekk<Navn>` og `Sammendrag<Navn>` fra src/lib/kapittel-mal.ts.
   ...Object.fromEntries(
     Object.entries(SJEKK_DEG_SELV).map(([key, questions]) => [
