@@ -692,3 +692,72 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 .tema-knapp .tema-til-lys { display: none; }
 :root[data-tema="mork"] .tema-knapp .tema-til-lys { display: inline-flex; }
 :root[data-tema="mork"] .tema-knapp .tema-til-mork { display: none; }
+
+/*
+ * Markerte kapittel-felt (markdown-blockquote med venstrestrek).
+ * Samme stil i lyst og mørkt kapitteltema: mørkere grønn bakgrunn og hvit tekst.
+ * Gjelder bare .kapittel-callout fra Markdown-renderer; Callout-komponenten,
+ * vanlige avsnitt, figurer og forsider er uendret.
+ */
+.kapittel-callout {
+  --callout-bg: #145a40;
+  --callout-fg: #ffffff;
+  --callout-link: #b8e0c8;
+  --callout-link-hover: #e8fff0;
+  --callout-accent: #6ee7b7;
+  --callout-soft: color-mix(in srgb, #ffffff 14%, #145a40);
+  --callout-line: color-mix(in srgb, #ffffff 28%, #145a40);
+  margin-block: 1.25rem;
+  max-width: 100%;
+  padding: 1rem 1.15rem 1rem 1.05rem;
+  border-radius: 0.75rem;
+  border-left: 0.25rem solid var(--callout-accent);
+  background: var(--callout-bg);
+  color: var(--callout-fg);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.kapittel-callout > :first-child {
+  margin-top: 0;
+}
+
+.kapittel-callout > :last-child {
+  margin-bottom: 0;
+}
+
+.kapittel-callout :is(p, li, td, th, dd, dt, strong, b, em, i, h1, h2, h3, h4, h5, h6) {
+  color: var(--callout-fg);
+}
+
+.kapittel-callout :is(strong, b) {
+  font-weight: 700;
+}
+
+.kapittel-callout a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)) {
+  color: var(--callout-link);
+  text-decoration-line: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: auto;
+}
+
+.kapittel-callout a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):hover,
+.kapittel-callout a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):focus-visible {
+  color: var(--callout-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+.kapittel-callout code {
+  background: var(--callout-soft);
+  color: var(--callout-fg);
+}
+
+.kapittel-callout :is(table, th, td) {
+  border-color: var(--callout-line);
+  color: var(--callout-fg);
+}
+
+.kapittel-callout hr {
+  border-color: var(--callout-line);
+}
