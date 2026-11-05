@@ -79,6 +79,7 @@ export function Diagram({
   action,
   scroll,
   toolbar,
+  describedBy,
 }: {
   title: string;
   heading: string;
@@ -90,6 +91,8 @@ export function Diagram({
   scroll?: boolean;
   /** Controls above the graphic, so a phone header is not crushed by sliders. */
   toolbar?: ReactNode;
+  /** Id til bildeteksten. Setter aria-describedby bare når den er satt. */
+  describedBy?: string;
   children: (m: {
     teal: string;
     warm: string;
@@ -122,6 +125,7 @@ export function Diagram({
       }
       role="img"
       aria-labelledby={`${uid}-title`}
+      {...(describedBy ? { "aria-describedby": describedBy } : {})}
     >
       <title id={`${uid}-title`}>{title}</title>
       <defs>
@@ -139,7 +143,7 @@ export function Diagram({
     </svg>
   );
   return (
-    <FigureFrame heading={heading} caption={caption} action={action}>
+    <FigureFrame heading={heading} caption={caption} action={action} captionId={describedBy}>
       {toolbar ? <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">{toolbar}</div> : null}
       {scroll ? (
         <ScrollFrame label={heading} fade="var(--color-card)">
