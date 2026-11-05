@@ -153,7 +153,7 @@ export function TopicLayout({
       <SiteHeader />
       {resolvedSlug && bodyMode !== "coded" ? <SokHopp slug={resolvedSlug} /> : null}
       <main id="innhold" className="flex-1">
-        <header className="relative isolate min-h-72 overflow-hidden">
+        <header className="relative isolate min-h-[19.5rem] overflow-hidden">
           <img
             src={src}
             alt={alt}
@@ -161,12 +161,12 @@ export function TopicLayout({
             className={`absolute inset-0 h-full w-full object-cover ${src.includes("banner-naturlige-padriv") ? "object-[0%_25%] md:object-[0%_30%]" : ""}`}
           />
           <div className={`absolute inset-0 bg-gradient-to-t from-background ${src.includes("banner-naturlige-padriv") ? "via-background/80 via-60% to-background/20 lys:via-background/94 lys:to-background/70" : "via-background/75 to-background/25 lys:via-background/94 lys:to-background/80"}`} />
-          <div className="relative mx-auto flex min-h-72 max-w-4xl flex-col px-4 pb-12 pt-3 sm:px-6 sm:pt-4">
+          <div className="relative mx-auto flex min-h-[19.5rem] max-w-4xl flex-col px-4 pb-12 pt-3 sm:px-6 sm:pt-4">
             <div className="flex shrink-0 justify-end">
               <ThemeToggle />
             </div>
             <div className="mt-auto pt-6">
-            <p className={`text-xs font-medium uppercase tracking-wider ${src.includes("banner-naturlige-padriv") ? "self-start rounded-md bg-background/85 px-2 py-0.5 text-[#9ecccf] lys:bg-background/95 lys:text-[color-mix(in_oklab,var(--color-primary),black_25%)]" : "text-primary lys:text-[color-mix(in_oklab,var(--color-primary),black_25%)]"}`}>{kicker}</p>
+            <p className="self-start rounded-md bg-background/85 px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-[#9ecccf] lys:bg-background/95 lys:text-[color-mix(in_oklab,var(--color-primary),black_25%)]">{kicker}</p>
             <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
               {title}
             </h1>
@@ -196,9 +196,11 @@ export function TopicLayout({
             {useScan ? (
               <ChapterScanBody markdown={markdown} />
             ) : usePoster && !markdown ? (
-              <p className="text-sm text-muted-foreground" role="status">
-                {posterPlaceholderText(posterStatus)}
-              </p>
+              <div className="min-h-[52rem]" aria-busy="true">
+                <p className="text-sm text-muted-foreground" role="status">
+                  {posterPlaceholderText(posterStatus)}
+                </p>
+              </div>
             ) : usePoster ? (
               <PosterBody
                 cleanChapter
