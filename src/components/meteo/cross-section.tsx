@@ -97,10 +97,10 @@ export function CrossSection({ jets, month, lon, hem, modes = CLIMATE_OFF }: Pro
         <ellipse
           cx={xOf(ribbonLat(polar, lon))}
           cy={yOf(10.4)}
-          rx="16"
-          ry="7"
+          rx="20"
+          ry="8"
           fill="var(--color-primary)"
-          opacity="0.9"
+          opacity="1"
         />
         <ellipse
           cx={xOf(ribbonLat(sub, lon))}
@@ -125,7 +125,15 @@ export function CrossSection({ jets, month, lon, hem, modes = CLIMATE_OFF }: Pro
         <text x={left + plotW} y="204" textAnchor="end" fill="var(--color-muted-foreground)" fontSize="10">
           mot polen
         </text>
-        <text x={xOf(ribbonLat(polar, lon))} y={yOf(16) + 12} textAnchor="middle" fill="var(--color-primary)" fontSize="10">
+        <rect
+          x={xOf(ribbonLat(polar, lon)) - 26}
+          y={yOf(16) + 12 - 10}
+          width="52"
+          height="14"
+          rx="3"
+          fill="var(--color-background)"
+        />
+        <text x={xOf(ribbonLat(polar, lon))} y={yOf(16) + 12} textAnchor="middle" fill="var(--color-foreground)" fontSize="10">
           polarjet
         </text>
       </svg>

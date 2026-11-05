@@ -620,7 +620,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-950: oklch(98.4% 0.003 247.858);
 }
 
-:root:has(.kapittel-lys) figure {
+:root:has(.kapittel-lys) :is(figure, .jet-root) {
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
   --color-card: #141c22;
