@@ -1,7 +1,80 @@
-import { useState } from "react";
+import { useId, useState } from "react";
+import { beregnGeografiMassebalanse } from "@/lib/geografi-massebalanse";
 import { ModelFrame, ModelMarkers, ModelNote, ModelPanel, ModelTab } from "./model-chrome";
 
-export function GlacierMassBalanceModel() {
+export function GlacierMassBalanceModel({ geografi = false }: { geografi?: boolean } = {}) {
+  return geografi ? <GeografiGlacierMassBalanceModel /> : <AdvancedGlacierMassBalanceModel />;
+}
+
+/** Konstruerte regnetall, ikke en fysisk temperaturmodell eller framskriving av en virkelig bre. */
+function GeografiGlacierMassBalanceModel() {
+  const id = useId();
+  const [winter, setWinter] = useState(2.5);
+  const [summer, setSummer] = useState(3);
+  const balance = beregnGeografiMassebalanse(winter, summer);
+  const format = (value: number) => value.toFixed(1).replace(".", ",");
+  const state = balance > 0 ? "Positiv massebalanse" : balance < 0 ? "Negativ massebalanse" : "Balanse lik null";
+  return (
+    <ModelFrame
+      kicker="Konstruert regneøvelse for geografi Vg1"
+      title="Figur 4.4 – Breens massebalanse"
+      lead="Velg tilførsel og tap for samme tenkte areal og periode. Alle tall er meter vannekvivalent, ikke snødybde eller observasjoner fra en bestemt bre."
+    >
+      <div className="grid gap-4 lg:grid-cols-2">
+        <ModelPanel>
+          <div className="space-y-6">
+            {[
+              { key: "winter", label: "Tilførsel i regnskapet", value: winter, set: setWinter },
+              { key: "summer", label: "Tap i regnskapet", value: summer, set: setSummer },
+            ].map((item) => (
+              <div key={item.key}>
+                <label htmlFor={`${id}-${item.key}`} className="block text-sm font-medium">
+                  {item.label}: {format(item.value)} meter vannekvivalent
+                </label>
+                <input
+                  id={`${id}-${item.key}`}
+                  className="mt-3 w-full accent-primary"
+                  type="range"
+                  min={0}
+                  max={6}
+                  step={0.1}
+                  value={item.value}
+                  aria-valuetext={`${format(item.value)} meter vannekvivalent`}
+                  onChange={(event) => item.set(Number(event.target.value))}
+                />
+              </div>
+            ))}
+            <div role="status" aria-live="polite" aria-atomic="true" className="rounded-lg border border-border p-4">
+              <p className="font-medium">{state}</p>
+              <p className="mt-2 text-sm">{format(winter)} − {format(summer)} = {format(balance)} meter vannekvivalent</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {balance > 0 ? "Tilførselen er større enn tapet i dette regnskapet." : balance < 0 ? "Tapet er større enn tilførselen i dette regnskapet." : "Tilførselen og tapet er like store i dette regnskapet."}
+              </p>
+            </div>
+          </div>
+        </ModelPanel>
+        <ModelPanel>
+          <svg viewBox="0 0 520 340" className="w-full" role="img" aria-label="Skjematisk breprofil. Formen er fast og beregner ikke endring i front eller tykkelse.">
+            <path d="M 40 280 Q 140 250 220 200 Q 320 130 400 50 L 400 320 L 40 320 Z" fill="#334155" />
+            <path d="M 40 280 Q 60 260 90 240 Q 180 200 240 160 Q 320 110 390 40 L 400 50 Q 320 130 220 200 Q 140 250 40 280 Z" fill="#7dd3fc" stroke="#38bdf8" strokeWidth="2" />
+            <text x="50" y="70" fill="currentColor" fontSize="18">Snø og is tilføres</text>
+            <text x="50" y="100" fill="currentColor" fontSize="16">Masse kan også gå tapt</text>
+            <text x="50" y="305" fill="#e2e8f0" fontSize="16">Fast fjell</text>
+          </svg>
+          <p className="text-sm text-muted-foreground">Breformen er skjematisk og holdes uendret. Skyverne styrer bare regnestykket, ikke en beregnet frontposisjon.</p>
+        </ModelPanel>
+      </div>
+      <div className="mt-4">
+        <ModelNote title="Hva regnskapet viser – og ikke viser">
+          <p>Vannekvivalent gjør snø og is sammenliknbare som tilsvarende mengde vann. Dette er en forenklet differanse mellom valgt tilførsel og tap.</p>
+          <p>Øvingstallene er ikke NVE-målinger eller en prognose. Virkelige breer undersøkes med målinger av blant annet massebalanse og frontposisjon (NVE, 2024, 2026a).</p>
+        </ModelNote>
+      </div>
+    </ModelFrame>
+  );
+}
+
+function AdvancedGlacierMassBalanceModel() {
   const [tab, setTab] = useState<"mass_balance" | "permafrost_albedo">("mass_balance");
 
   // Bre-tilstand

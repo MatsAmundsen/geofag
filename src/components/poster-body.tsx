@@ -1,3 +1,8 @@
+import { GeografiBrelandskapFoto } from "@/components/geografi/landskap-valg";
+import { GeografiFjordLokator } from "@/components/geografi/landskap-valg";
+import { GeografiLeirslette } from "@/components/geografi/landskap-valg";
+import { GeografiVegaKart } from "@/components/geografi/landskap-valg";
+import { GeografiElvelandskap } from "@/components/geografi/landskap-valg";
 import { GeografiTidsskala } from "@/components/geografi/indre-valg";
 import { GeografiBerggrunnSkisse } from "@/components/geografi/indre-valg";
 import { GeografiReykjanes } from "@/components/geografi/indre-valg";
@@ -163,9 +168,11 @@ import { ArrowRight } from "lucide-react";
 import {
   AvsetningsformerDiagram,
   BreLengdesnittDiagram,
+  Frostsprengning,
   FrostsprengningDiagram,
   IsostasiSnitt,
   IsostasiSnittDiagram,
+  VdalTilUdal,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
 import {
@@ -345,7 +352,17 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
   return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
+const GeografiIstidskartLat = lazy(() => import("@/components/geografi/landskap-iskart").then((m) => ({default:m.GeografiIstidskart})));
+
+const GeografiBreKartLat = lazy(() => import("@/components/geografi/landskap-brekart").then((m) => ({default:m.GeografiBreKart})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoLandskapBrekart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiBreKartLat /></Suspense>,
+  GeoLandskapIstidskart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiIstidskartLat /></Suspense>,
+  GeoLandskapFjordLokator: () => <GeografiFjordLokator />,
+  GeoLandskapLeirslette: () => <GeografiLeirslette />,
+  GeoLandskapKyst: () => <GeografiVegaKart />,
+  GeoLandskapElv: () => <GeografiElvelandskap />,
   GeoIndreTidsskala: () => <GeografiTidsskala />,
   GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
   GeoIndreReykjanes: () => <GeografiReykjanes />,
@@ -1492,6 +1509,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoLandskapFrost: () => <Frostsprengning geografi heading="Figur 4.1 – Forvitring og flytting" caption="Vann som fryser i en sprekk, kan bidra til å dele opp berget. Når en stein løsner og faller, flyttes materialet ved tyngdekraften. Skissen viser et prinsipp, ikke et bestemt tidsforløp eller et skredvarsel (Sørbel, 2024; Bryhni & Røthe, 2025)." />,
+  GeoLandskapBrelandskap: () => <GeografiBrelandskapFoto />,
+  GeoLandskapBotn: () => <BotnEggTindFigurLat geografi heading="Figur 4.3 – Botn, egg og tind" caption="Breformede fordypninger kan etterlate skarpe rygger og topper. Følg formene gjennom trinnene. Terrenget er konstruert og viser ikke utviklingstiden eller et bestemt fjell (Lilleøren, 2025; Mæhlum, 2026a; Bryhni & Fossen, 2024)." />,
+  GeoLandskapMassebalanse: () => <GlacierMassBalanceModel geografi />,
+  GeoLandskapMarinGrense: () => <IsostasiSnitt geografi heading="Figur 4.5 – Havbunn på land" caption="Isens vekt, avsetning i sjø og senere landheving kan forklare leire på land. Marin grense er lokal, og under grensen er marin leire mulig, ikke påvist kvikkleire. Skjematisk tverrsnitt uten stedfesting eller beregnet høyde (NGU, u.å.-a, u.å.-b, u.å.-c; Fossen & Mæhlum, 2026)." />,
+  GeoLandskapKvikkleire: () => <KvikkleireDiagram geografi />,
   GeoJordasLag: () => <EarthLayersDiagram geografi />,
   GeoPlateGrenser: () => <BoundaryOverviewDiagram geografi />,
   GeoPlateModell: () => <PlateTectonicsModel geografi />,
