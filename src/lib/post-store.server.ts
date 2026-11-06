@@ -1642,6 +1642,12 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv-naturfare",
     stale: ["Hvilke skader gjør jordskjelv?"],
   },
+  {
+    // M1–M7 inn i Tsunami-teksten. Nytt flagg så gjerder som manglet i forrige reseed, kommer med.
+    flag: "g1-tsunami-modeller-m1-m7-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["Når de interaktive modellene kommer, skal de brukes til å undersøke ideer"],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 

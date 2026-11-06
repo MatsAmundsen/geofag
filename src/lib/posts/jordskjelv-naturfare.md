@@ -57,6 +57,10 @@ Skred er den andre store gruppen. Et skred kan treffe vannet ovenfra, eller gli 
 Vulkaner kan lage tsunami når masse beveger seg: et skred fra vulkanen, en kollaps, eller et utbrudd som fortrenger vann. Meteorittnedslag kan også flytte vann, men det er en sjelden utløser (NOAA, u.å.-a). Et meteorittnedslag må ikke blandes med en *meteotsunami*. En meteotsunami lages av kraftige værfenomener over hav eller en stor innsjø. Den kan ligne en seismisk tsunami, og den kan også forveksles med stormflo. Den er et værfenomen, ikke et nedslag fra verdensrommet (NOAA, u.å.-a). I dette kapitlet er meteotsunami bare en avgrensning, ikke hovedtema.
 
 ```widget
+TsunamiM1
+```
+
+```widget
 YtMaria07
 ```
 
@@ -87,6 +91,10 @@ Når bølgen kommer inn på grunnere vann, synker farten, fordi farten avhenger 
 Havbunnens form kan også bøye bølgefronten. Det kalles brytning når ulike deler av fronten går med ulik fart. Bølgen kan reflekteres fra en bratt kyst og gå tilbake utover. Bukter, grunner og øyer gjør at samme bølge ikke ser lik ut noen kilometer lenger borte (NOAA, u.å.-c). En enkel formel for ett dyp forklarer ikke hele dette mønsteret.
 
 ```widget
+TsunamiM2
+```
+
+```widget
 SjekkTsunami2
 ```
 
@@ -103,6 +111,10 @@ Tsunamien kommer som en serie av topper og daler. Hvis dalen kommer først, kan 
 Den første bølgen trenger ikke være den siste, den største eller den mest ødeleggende. Store tsunamier kan vare i dager noen steder. Tiden mellom toppene varierer, typisk fra om lag fem minutter til to timer, og farlige strømmer kan vare i dager (NOAA, u.å.-c). Derfor er faren ikke over når den første bølgen har trukket seg tilbake. Lang bølgelengde gir også mer vann som kan gå inn over land enn en kort vindbølge. En stor tsunami kan oversvømme lavt land mer enn én mile, altså godt over én kilometer, inn fra kysten (NOAA, u.å.-c).
 
 Skadene kommer ikke bare av vannhøyden. Strømmen eroderer, og drivgods som båter, trestammer og bygningsdeler treffer det som står i veien. Fjordform, havnedyp og terreng bak strandlinjen avgjør hvor vannet samles.
+
+```widget
+TsunamiM3
+```
 
 ```widget
 SjekkTsunami3
@@ -127,6 +139,10 @@ Kjeden er den samme begge steder, men tallene er stedets egne: kilden er et fjel
 Et skred ned i en smal fjord eller en innsjø er et annet fysisk problem enn en lang bølge som har gått over et verdenshav. Nær nedslaget trengs modeller som tar hensyn til mer enn den enkle langbølgeformelen. Norges geotekniske institutt [NGI] skiller mellom kildemodell, spredning og selve oversvømmelsen, og peker på at fjordtsunamier fra fjellskred krever mer avansert modellering (NGI, u.å.; Harbitz mfl., 2014).
 
 ```widget
+TsunamiM4
+```
+
+```widget
 SjekkTsunami1
 ```
 
@@ -136,7 +152,7 @@ Storeggaskredet gikk i Norskehavet for ca. 8150 år siden. Volumet er vurdert ti
 
 Dette var et undersjøisk skred i sedimenter, ikke en plategrense som «røk». Skredet utviklet seg bakover, retrogressivt: da en del gled ut, ble skråningen bak ustabil og gled etter. En teori er at et jordskjelv utløste den første utglidingen. Det er en hypotese, ikke et observert faktum (SNL, u.å.). Storegga er derfor ikke et bevis på at Norge ligger på en aktiv plategrense.
 
-Når vi leser Storegga, må tre lag holdes fra hverandre. *Feltspor* er avsetninger geologene finner på land, lagt igjen av vannet den gangen. *Rekonstruert kilde* er forskernes bilde av hvor skredet løsnet og hvor stort det var, bygget ut fra havbunnen og avsetningene. *Modellert spredning* er en beregning av hvordan en bølge kan ha beveget seg, gitt den kilden. Et spor i bakken er ikke det samme som en kartlagt bølgehøyde langs hele kysten, og en modell er ikke det samme som en måling fra 8150 år siden. Havnivået var også et annet. Høydene 3–20 m er målt mot datidens havnivå, ikke mot dagens (SNL, u.å.).
+Når vi leser Storegga, må tre lag holdes fra hverandre. *Feltspor* er avsetninger geologene finner på land, lagt igjen av vannet den gangen. *Rekonstruert kilde* er forskernes bilde av hvor skredet løsnet og hvor stort det var, bygget ut fra havbunnen og avsetningene. *Modellert spredning* er en beregning av hvordan en bølge kan ha beveget seg, gitt den kilden. Et spor i bakken er ikke det samme som en kartlagt bølgehøyde langs hele kysten, og en modell er ikke det samme som en måling fra 8150 år siden. Havnivået var også et annet. Høydene 3–20 m er målt mot datidens havnivå, ikke mot dagens (SNL, u.å.). Ankomsttid i et idealisert hav, der land stopper den rette linjen, står i modellen ved de to globale katastrofene. Den regner ikke ut en bølgehøyde for Storegga.
 
 ```widget
 SjekkTsunami4
@@ -167,6 +183,10 @@ Utenfor Japan var det svært få dødsfall. NOAA forklarer det med varsler i tid
 | Varsling den gangen | Ikke et offisielt system for Indiahavet | Varsler fantes. Langt unna rakk mange å evakuere |
 | Hva som skiller utfallet | Kort tid og lite kunnskap mange steder | Restfare nær kilden, selv med varsling og vern |
 
+```widget
+TsunamiM5
+```
+
 ## Hvordan varsles en tsunami?
 
 En tsunami går mye saktere enn jordskjelvbølgene. Derfor kan det finnes tid til å varsle, men bare hvis bølgen har et stykke å gå. Kjeden har fire ledd.
@@ -185,6 +205,10 @@ Varslene har feilmarginer. Den første magnitudevurderingen kan endres, og model
 Naturlige tegn kan være det eneste varselet nær kilden. NOAA nevner kraftig eller langvarig risting, at vannet trekker seg unormalt tilbake, og et brøl fra havet (NOAA, u.å.-a). Hvis du kjenner et kraftig skjelv ved kysten, skal du ikke vente på at havet trekker seg tilbake, og ikke vente på et offisielt varsel, før du går til høyden. Tilbaketrekking kommer ikke alltid først (NOAA, u.å.-c).
 
 Varslingskategorier som brukes i USA, er et amerikansk system. De er ikke det norske systemet, og de skal ikke leses som norske faregrader. I Norge er det fjord- og innsjøbølger fra skred, og overvåking av ustabile fjellparti, som er den nære problemstillingen. Den tar vi i neste del.
+
+```widget
+TsunamiM6
+```
 
 ```widget
 SjekkTsunami5
@@ -216,7 +240,11 @@ Slik kan undersøkelsen legges opp:
 4. Si hvilket ledd tiltaket treffer: fare, eksponering eller sårbarhet.
 5. Skriv ned hva som ikke er med. En pedagogisk modell er ikke et beredskapsverktøy og ikke et evakueringsråd.
 
-Når de interaktive modellene kommer, skal de brukes til å undersøke ideer, ikke til å lage et farekart. Inntil da er det offisielle kartet og denne sjekklisten nok til å øve på risiko.
+Modellen under er til å undersøke ideer. Den er ikke et farekart. Det offisielle kartet og sjekklisten hører fortsatt med.
+
+```widget
+TsunamiM7
+```
 
 ```widget
 SjekkTsunami6

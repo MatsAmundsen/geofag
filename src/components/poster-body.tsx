@@ -1,5 +1,5 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
-import type { JSX } from "react";
+import { lazy, Suspense, type JSX } from "react";
 import {
   AdaptationExamFrameworkDiagram,
   ImpactLevelsDiagram,
@@ -314,6 +314,18 @@ function NaoForklaringBoks({ kilde }: { kilde: string }) {
       </p>
     </Callout>
   );
+}
+
+const TsunamiM1 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM1 })));
+const TsunamiM2 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM2 })));
+const TsunamiM3 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM3 })));
+const TsunamiM4 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM4 })));
+const TsunamiM5 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM5 })));
+const TsunamiM6 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM6 })));
+const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM7 })));
+
+function TsunamiLaster({ children }: { children: JSX.Element }) {
+  return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
@@ -1221,6 +1233,41 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   QuizTsunami: () => (
     <Quiz questions={QUIZ_TSUNAMI} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  TsunamiM1: () => (
+    <TsunamiLaster>
+      <TsunamiM1 />
+    </TsunamiLaster>
+  ),
+  TsunamiM2: () => (
+    <TsunamiLaster>
+      <TsunamiM2 />
+    </TsunamiLaster>
+  ),
+  TsunamiM3: () => (
+    <TsunamiLaster>
+      <TsunamiM3 />
+    </TsunamiLaster>
+  ),
+  TsunamiM4: () => (
+    <TsunamiLaster>
+      <TsunamiM4 />
+    </TsunamiLaster>
+  ),
+  TsunamiM5: () => (
+    <TsunamiLaster>
+      <TsunamiM5 />
+    </TsunamiLaster>
+  ),
+  TsunamiM6: () => (
+    <TsunamiLaster>
+      <TsunamiM6 />
+    </TsunamiLaster>
+  ),
+  TsunamiM7: () => (
+    <TsunamiLaster>
+      <TsunamiM7 />
+    </TsunamiLaster>
   ),
   SilicateStructure: () => <SilicateStructureDiagram />,
   // syklus og «følg en norsk bergart» er slått sammen i én figur (bergartssyklus-figur.tsx)

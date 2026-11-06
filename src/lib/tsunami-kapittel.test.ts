@@ -69,6 +69,22 @@ describe("quiz split", () => {
   });
 });
 
+describe("tsunami models", () => {
+  it("keeps M1–M7 in the tsunami seed and restores them without fences", () => {
+    const wave = readSeed("jordskjelv-naturfare.md");
+    const quake = readSeed("jordskjelv.md");
+    const ids = ["TsunamiM1", "TsunamiM2", "TsunamiM3", "TsunamiM4", "TsunamiM5", "TsunamiM6", "TsunamiM7"];
+    for (const id of ids) {
+      assert.equal(fenceCount(wave, id), 1, id);
+      assert.equal(quake.includes(id), false, id);
+    }
+    const stripped = wave.replace(/```widget\nTsunamiM[1-7]\n```\n*/g, "");
+    const injected = injectPosterWidgets(stripped);
+    for (const id of ids) assert.equal(fenceCount(injected, id), 1, `inject ${id}`);
+    assert.equal(fenceCount(injectPosterWidgets(wave), "TsunamiM2"), 1);
+  });
+});
+
 describe("Maria video placement", () => {
   it("injects each video once, only in its own chapter, with and without fences", () => {
     const quake = readSeed("jordskjelv.md");
