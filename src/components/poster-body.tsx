@@ -1,3 +1,5 @@
+import { GeografiSysselNord } from "@/components/geografi/ressurs-valg";
+import { GeografiKraftproduksjon } from "@/components/geografi/ressurs-valg";
 import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
 import { PetroleumTrapModel } from "@/components/models/resource-ore-petroleum-model";
 import { WindCellsDiagram } from "@/components/diagrams/wind";
@@ -362,7 +364,12 @@ const GeografiIstidskartLat = lazy(() => import("@/components/geografi/landskap-
 
 const GeografiBreKartLat = lazy(() => import("@/components/geografi/landskap-brekart").then((m) => ({default:m.GeografiBreKart})));
 
+const GeografiFosenKartLat = lazy(() => import("@/components/geografi/ressurs-fosen").then(m=>({default:m.GeografiFosenKart})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoRessursFosenKart: () => <Suspense fallback={<p>Laster Fosen-kart med kildeobjekter.</p>}><GeografiFosenKartLat /></Suspense>,
+  GeoRessursSysselNord: () => <GeografiSysselNord />,
+  GeoRessursKraftproduksjon: () => <GeografiKraftproduksjon />,
   GeoLandskapBrekart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiBreKartLat /></Suspense>,
   GeoLandskapIstidskart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiIstidskartLat /></Suspense>,
   GeoLandskapFjordLokator: () => <GeografiFjordLokator />,

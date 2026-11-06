@@ -1002,6 +1002,36 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-ressurser": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Topografisk norgeskart, WMTS",
+      suffix: ". CC BY 4.0 for benyttede zoomnivåer til og med 11.",
+      href: "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Vindkraftområde",
+      suffix: ". Vindkraft2, lag 3, Storheia og Roan. NLOD. Generalisert geometri. Hentet 6. november 2026.",
+      href: "https://nve.geodataonline.no/arcgis/rest/services/Vindkraft2/MapServer/3",
+    },
+    {
+      prefix: "Landbruksdirektoratet. (u.å.). ",
+      italic: "Reindrift: vinterbeite",
+      suffix: ". Datasett distribuert av NIBIO. NLOD 2.0. Eget distriktsutvalg. Hentet 6. november 2026.",
+      href: "https://kartkatalog.geonorge.no/metadata/reindrift-vinterbeite/ff879537-4031-4e80-bff0-87d0e0638a7f",
+    },
+    {
+      prefix: "Statistisk sentralbyrå [SSB]. (2026b, 26. februar). ",
+      italic: "Sysselsatte etter arbeidssted, næring og region",
+      suffix: ". Tabell 13470. 4. kvartal 2025, Nordland og Troms, næring 03, 06 og 09.1. CC BY 4.0.",
+      href: "https://www.ssb.no/statbank/table/13470/",
+    },
+    {
+      prefix: "Statistisk sentralbyrå [SSB]. (2026a, 8. mai). ",
+      italic: "Elektrisitetsproduksjon, etter produksjonstype (GWh), 1974–2025",
+      suffix: ". Tabell 08307. Utvalg 2020–2025. CC BY 4.0.",
+      href: "https://www.ssb.no/statbank/table/08307/",
+    },
+    {
       prefix: "",
       italic: "Allmenningens tragedie",
       suffix: ". (2024, 26. november). I Store norske leksikon.",
