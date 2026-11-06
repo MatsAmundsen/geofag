@@ -436,6 +436,30 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-ressurser": [] as const,
   "geo-baerekraft": [
     {
+      prefix: "Global Footprint Network. (u.å.-e). ",
+      italic: "Free Public Data Set: National Footprint and Biocapacity Accounts 2026",
+      suffix: ". Hentet 6. november 2026. Vilkår kontrollert; ingen data importert.",
+      href: "https://footprintnetwork.org/licenses/public-data-package-free/",
+    },
+    {
+      prefix: "World Bank. (u.å.). ",
+      italic: "GDP per capita, PPP (constant 2021 international $) (NY.GDP.PCAP.PP.KD)",
+      suffix: ". World Development Indicators. Observasjonsår 2023. Hentet 6. november 2026. CC BY 4.0.",
+      href: "https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD",
+    },
+    {
+      prefix: "United Nations Development Programme. (2025). ",
+      italic: "Human Development Report 2025: Composite indices, complete time series",
+      suffix: ". Observasjonsår 2023. CC BY 3.0 IGO.",
+      href: "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    },
+    {
+      prefix: "Engedal, M. I. A., Rothe, J. S., & Lyle, C. (2021, 13. desember). ",
+      italic: "Mer utslipp for hver kilometer reist",
+      suffix: ". Statistisk sentralbyrå. Tabell 1, observasjoner 2020.",
+      href: "https://www.ssb.no/natur-og-miljo/forurensning-og-klima/artikler/mer-utslipp-for-hver-kilometer-reist",
+    },
+    {
       prefix: "Baah, S. K. T., Foster, E., Jolliffe, D. M., Lakner, C., & Lara Ibarra, G. (2025, 9. juni). ",
       italic: "The World Bank’s new global poverty lines in 2021 prices",
       suffix: ". World Bank.",

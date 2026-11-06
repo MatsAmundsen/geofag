@@ -1,3 +1,5 @@
+import { GeografiLokalFotavtrykk } from "@/components/geografi/baerekraft-valg";
+import { GeografiHdiBnp } from "@/components/geografi/baerekraft-valg";
 import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
 import { HydrographCatchmentModel } from "@/components/models/hydrograph-catchment-model";
 import { GeografiGjerdrumFarekart } from "@/components/geografi/naturfare-valg";
@@ -337,6 +339,8 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
+  GeoHdiBnp: () => <GeografiHdiBnp />,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
   GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
   GeoFeltloggVg1: () => <GeografiFeltlogg />,
