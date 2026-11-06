@@ -1,3 +1,4 @@
+import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiSysselNord } from "@/components/geografi/ressurs-valg";
 import { GeografiKraftproduksjon } from "@/components/geografi/ressurs-valg";
 import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
@@ -366,7 +367,13 @@ const GeografiBreKartLat = lazy(() => import("@/components/geografi/landskap-bre
 
 const GeografiFosenKartLat = lazy(() => import("@/components/geografi/ressurs-fosen").then(m=>({default:m.GeografiFosenKart})));
 
+const GeografiTelefonStederLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiTelefonSteder})));
+const GeografiFiskEksportLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiFiskEksport})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoNaeringTelefonSteder: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiTelefonStederLat /></Suspense>,
+  GeoNaeringFiskEksport: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFiskEksportLat /></Suspense>,
+
   GeoRessursFosenKart: () => <Suspense fallback={<p>Laster Fosen-kart med kildeobjekter.</p>}><GeografiFosenKartLat /></Suspense>,
   GeoRessursSysselNord: () => <GeografiSysselNord />,
   GeoRessursKraftproduksjon: () => <GeografiKraftproduksjon />,
@@ -1522,6 +1529,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoNaeringStruktur: () => <GeografiNaeringsstruktur />,
+  GeoNaeringLokalisering: () => <GeografiLokaliseringsfaktorer />,
+  GeoNaeringRingvirkninger: () => <GeografiRingvirkninger />,
+  GeoNaeringVerdikjede: () => <GeografiTelefonVerdikjede />,
   GeoRessursFornyelse: () => <GeografiRessursFornyelse />,
   GeoRessursBergartBrudd: () => <FraBergartTilBruddDiagram geografi />,
   GeoRessursPetroleum: () => <PetroleumTrapModel geografi />,

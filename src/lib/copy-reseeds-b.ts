@@ -6,6 +6,11 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    flag: "geo-naering-mats-valg-kap9-2026-11-06",
+    slug: "geo-naering",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
     flag: "geo-ressurser-mats-valg-kap7-2026-11-06",
     slug: "geo-ressurser",
     stale: ["FIGURPLASSHOLDER"],
@@ -39,6 +44,12 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
     slug: "geo-verktoy",
     stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    // Geografi: kapittel 9 alene; ingen produksjonsinnlasting før godkjent merge.
+    flag: "geo-naering-kap9-2026-11-06",
+    slug: "geo-naering",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
   },
   {
     // Geografi: kapittel 7 alene; aktiveres først etter godkjent merge.

@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import { parsePosterMarkdown } from "./poster-markdown.ts";
 import { beregnGeografiMassebalanse } from "./geografi-massebalanse.ts";
 import { KLIMANORMAL_STASJON, OSLO_BLINDERN_NORMALER } from "./geografi-klimanormaler.ts";
+import { NAERING_AR, NAERING_KILDE, NAERING_RASERIER, NAERING_STRUKTUR } from "./geografi-naeringsdata.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
@@ -76,7 +77,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser", "geo-naering"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -164,7 +165,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 8);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 9);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -621,11 +622,11 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.match(md, /kort, tenkt kommunalt beslutningsnotat/);
   });
 
-  it("har eget reseed og tekststatus mens kapittel 9 fortsatt er skjelett", () => {
+  it("har eget reseed og tekststatus mens kapittel 10 fortsatt er skjelett", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-kap5-2026-11-06",\s+slug: "geo-klima"/);
     assert.match(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "naering",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-naering.md"), /under arbeid/i);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "befolkning",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-befolkning.md"), /under arbeid/i);
   });
 });
 
@@ -701,5 +702,108 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.match(read("geografi-kapitler.ts"), /path: "ressurser",\s+tekstKlar: true/);
     for (const title of ["Fleip eller fakta?", "En skal ut", "Svar med begrunnelse"]) assert.ok(md.includes(title), title);
     assert.doesNotMatch(read("posts/geo-naering.md"), /## Hva er ressurser/);
+  });
+});
+
+
+describe("Geografi kapittel 9: næringsliv og globalisering", () => {
+  const md = read("posts/geo-naering.md");
+  const sources = read("kilder-geografi.ts").split('"geo-naering": [')[1].split('"geo-befolkning"')[0];
+  const widgets = ["GeoNaeringStruktur", "GeoNaeringLokalisering", "GeoNaeringRingvirkninger", "GeoNaeringFiskEksport", "GeoNaeringVerdikjede", "GeoNaeringTelefonSteder"];
+
+  it("dekker sju underkapitler, kompetansemål og tre oppgavelag", () => {
+    for (const title of ["Næringsstruktur", "Lokalisering", "Ringvirkninger", "Globalisering", "Internasjonal arbeidsdeling", "Verdikjeder", "Forbruk og ansvar", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
+    for (const code of ["KM485", "KM481", "KM484"]) assert.ok(md.includes(code));
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## En fabrikk"));
+    assert.ok(md.indexOf("I dette kapitlet skal vi") < md.indexOf("## Læringsmål"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 6);
+    assert.equal((md.match(/^c\. /gm) ?? []).length, 6);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
+  });
+
+  it("har sju figurposisjoner med seks widgets og to skjulte kartmarkører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-9-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), ["1", "7"]);
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
+    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-9-/);
+    assert.doesNotMatch(md, /[Ss]e figur 9\.(?:1|6|7)\b/);
+  });
+
+  it("har 25 kontrollerte eksterne kilder og henvisninger til alle fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 25);
+    for (const domain of ["ssb.no", "snl.no", "unep.org", "unesco.org", "ilo.org", "worldbank.org", "forbrukertilsynet.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
+    for (const citation of ["Udir, u.å.", "UNESCO, u.å.", "Moe & Thorsnæs, 2026", "Langseth & Munthe, 2025", "SSB, 2026a", "SSB, 2026b", "Isaksen, 2025", "Onshuus & Idsø, 2025", "Seland, 2024", "Grindheim, 2024", "Onshuus, 2026", "Munthe, 2025", "Vikøren & Pihl, 2025", "Rolstadås, 2024", "UNEP], 2019, 2023", "UNEP, 2020", "Klepp, 2026", "Forbrukertilsynet, 2026", "Vaughan-Whitehead & Pinedo Caro, 2017", "Verdensbanken, 2020"]) assert.ok(md.includes(citation), citation);
+    assert.doesNotMatch(sources + md, /Terra Nova|Aunivers|bibliotek/);
+  });
+
+  it("definerer planens tolv begreper og tre støttebegreper med norsk term først", () => {
+    for (const term of ["Primærnæring", "Sekundærnæring", "Tertiærnæring", "Næringsstruktur", "Lokaliseringsfaktor", "Ringvirkning", "Globalisering", "Internasjonal arbeidsdeling", "Verdikjede", "Flernasjonalt selskap", "Utkontraktering (outsourcing)", "Frihandel", "Eksterne virkninger", "Forsyningskjede", "Aktsomhetsvurderinger"]) assert.ok(md.includes(`| ${term} |`), term);
+    assert.match(md, /\*\*Utkontraktering\*\* \(outsourcing\)/);
+    for (const term of ["næringsstruktur", "primærnæring", "sekundærnæring", "tertiærnæring", "lokaliseringsfaktor", "ringvirkning", "globalisering", "frihandel", "internasjonal arbeidsdeling", "flernasjonalt selskap", "verdikjede"]) assert.ok(md.toLowerCase().includes(`**${term}**`), term);
+  });
+
+  it("bevarer SSB-variabel, sju år og alle 49 opprinnelige kildeverdier", () => {
+    assert.deepEqual(NAERING_AR, [1970, 1980, 1990, 2000, 2010, 2020, 2023]);
+    assert.equal(NAERING_KILDE.tabell, "09174");assert.equal(NAERING_KILDE.variabel, "Sysselsatte");assert.equal(NAERING_KILDE.enhet, "1000 personer");assert.equal(NAERING_KILDE.oppdatert, "2026-05-28");
+    assert.deepEqual(NAERING_RASERIER.map((s) => [...s.tall]), [
+      [1622.5, 1934.6, 2046.3, 2313.7, 2555.3, 2799, 2973.3],
+      [357.4, 349.5, 267.9, 273.4, 231.8, 219.4, 227.6],
+      [14, 17.4, 20.2, 17.3, 14.4, 16.6, 18.2],
+      [4.3, 5.6, 6.3, 9.2, 14, 17.6, 19.2],
+      [113.3, 125.1, 123.6, 133.6, 182.8, 247.5, 260.6],
+      [212.9, 164.6, 128.4, 96.3, 65.7, 66.1, 68.3],
+      [9.3, 19, 27, 29.7, 59, 63.6, 67.9],
+    ]);
+    assert.match(NAERING_KILDE.sha256, /^[a-f0-9]{64}$/);
+  });
+
+  it("aggregerer uten dobbeltelling og skiller antall fra andel", () => {
+    assert.deepEqual(NAERING_STRUKTUR.map((d) => d.sekundaer), [498.3, 516.6, 445, 463.2, 502, 564.7, 593.5]);
+    assert.deepEqual(NAERING_STRUKTUR.map((d) => d.tertiaer), [911.3, 1253.4, 1472.9, 1754.2, 1987.6, 2168.2, 2311.5]);
+    for (const d of NAERING_STRUKTUR) {
+      assert.ok(Math.abs(d.primaer + d.sekundaer + d.tertiaer - d.total) < 1e-8);
+      assert.ok(Math.abs(d.andeler.reduce((a, b) => a + b, 0) - 100) < 1e-8);
+      assert.ok(d.andeler.every((v) => v >= 0 && v <= 100));
+    }
+    assert.ok(NAERING_STRUKTUR[6].sekundaer > NAERING_STRUKTUR[0].sekundaer);
+    assert.ok(NAERING_STRUKTUR[6].andeler[1] < NAERING_STRUKTUR[0].andeler[1]);
+  });
+
+  it("tilbyr et korrekt CSV-uttrekk og en reproduserbar offentlig spørring", () => {
+    const rows = read("../../public/downloads/geografi-naering-ssb09174.csv").replace(/^\uFEFF/, "").trim().split(/\r?\n/).map((l) => l.split(";"));
+    assert.equal(rows.length, 8);assert.equal(rows[0].length, 8);
+    for (const [i, cells] of rows.slice(1).entries()) {
+      assert.equal(Number(cells[0]), NAERING_AR[i]);
+      assert.deepEqual(cells.slice(1).map((v) => Number(v.replace(",", "."))), NAERING_RASERIER.map((serie) => serie.tall[i]));
+    }
+    const query = JSON.parse(read("../../docs/geografi-kap9-ssb09174-query.json"));
+    assert.deepEqual(query.query.find((q: { code: string }) => q.code === "ContentsCode").selection.values, ["Sysselsatte"]);
+    assert.deepEqual(query.query.find((q: { code: string }) => q.code === "Tid").selection.values, NAERING_AR.map(String));
+    assert.equal(query.query.find((q: { code: string }) => q.code === "NACE").selection.values.length, 7);
+    assert.equal(query.response.format, "json-stat2");
+  });
+
+  it("daterer caser og markerer modellbegrensninger, rettigheter og ukjent opprinnelse", () => {
+    for (const phrase of ["1970 til 2023", "28. mai 2026", "etter 2023 er foreløpige", "161 900", "ikke en garanti", "kunne vende seg mot andre markeder", "1991", "2015", "ikke en komplett leverandørliste", "ikke en generell rett til komplette leverandørlister", "ikke en påstand om dagens antall", "begynte først med internett", "Ikke send spørsmålet", "datert forskningsgrunnlag"]) assert.ok(md.toLowerCase().includes(phrase.toLowerCase()), phrase);
+    assert.doesNotMatch(md, /20 000 liter|alle land følger samme utvikling\./);
+  });
+
+  it("gir datadiagrammet tilgjengelig tabell, kreditering og presise forbehold", () => {
+    const figure = read("../components/geografi/naering-diagrammer.tsx");
+    for (const expected of ["<table", "<caption", 'scope="col"', 'scope="row"', "CC BY 4.0", "beregnet rest", "99,9", "observerte mellomår", "minimumFractionDigits", "Last ned kildeuttrekket"]) {
+      assert.ok(figure.includes(expected), expected);
+    }
+    assert.doesNotMatch(figure, /fetch\(|setInterval|Math\.random|konstruerte øvingsdata/);
+    assert.match(figure, /Forenklet, ikke komplett leverandørliste/);
+  });
+
+  it("aktiverer bare kapittel 9 og har et eget reseed mens kapittel 10 og 11 venter", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-naering-kap9-2026-11-06",\s+slug: "geo-naering"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "naering",\s+tekstKlar: true/);
+    for (const slug of ["befolkning", "migrasjon"]) {
+      assert.doesNotMatch(read("geografi-kapitler.ts"), new RegExp(`path: "${slug}",\\s+tekstKlar: true`));
+      assert.match(read(`posts/geo-${slug}.md`), /under arbeid/i);
+    }
   });
 });
