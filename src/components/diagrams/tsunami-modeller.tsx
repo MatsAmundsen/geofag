@@ -23,6 +23,19 @@ import {
 } from "@/lib/tsunami-fysikk";
 import { Merke, Skyv, TsunamiRamme, Valg, useTsunamiTid } from "./tsunami-skall";
 
+/** Heldekkende vannfarger. 0,35 i tetthet mot kortet gir under 2:1. */
+const WATER_REST = "#3d7f86";
+const WATER_ACTIVE = "#4a9098";
+const WATER_EDGE = "#8fd0d4";
+
+function waterShade(depthM: number): string {
+  const t = Math.max(0, Math.min(1, depthM / 4200));
+  const mix = (from: number, to: number) => Math.round(from + (to - from) * t);
+  const parse = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const [r1, g1, b1] = parse(WATER_REST);
+  const [r2, g2, b2] = parse(WATER_ACTIVE);
+  return `#${[mix(r1, r2), mix(g1, g2), mix(b1, b2)].map((n) => n.toString(16).padStart(2, "0")).join("")}`;
+}
 const NOAA_PROP = "https://www.noaa.gov/jetstream/tsunamis/tsunami-propagation";
 const NOAA_SCI = "https://www.noaa.gov/explainers/science-behind-tsunamis";
 const NOAA_INN = "https://www.noaa.gov/jetstream/tsunamis/tsunami-inundation";
@@ -190,17 +203,35 @@ export function TsunamiM2() {
           <Scene narrow={narrow} label="Profil med bølgetopp som følger gangtiden">
             {active.map((segment, index) => {
               const raw = segment.depthM / (narrow ? 18 : 40);
-              const height = Math.min(barMax, Math.max(narrow ? 8 : 4, raw));
+              const proportional = Math.min(barMax, Math.max(0, raw));
+              const drawn = proportional < 1.5 ? 1.5 : proportional;
+              const activeBar = here?.segmentIndex === index;
+              const label = `${Math.round(segment.depthM)} m`;
               return (
-                <rect
-                  key={index}
-                  x={barOrigin + index * barPitch}
-                  y={barBase - height}
-                  width={barWidth}
-                  height={height}
-                  fill="var(--color-primary)"
-                  opacity={here?.segmentIndex === index ? 0.7 : 0.35}
-                />
+                <g key={index}>
+                  <rect
+                    x={barOrigin + index * barPitch}
+                    y={barBase - drawn}
+                    width={barWidth}
+                    height={drawn}
+                    fill={activeBar ? WATER_ACTIVE : WATER_REST}
+                    stroke={activeBar ? "#e8eef2" : WATER_EDGE}
+                    strokeWidth={activeBar ? 2 : 1.5}
+                  >
+                    <title>{label}</title>
+                  </rect>
+                  {drawn < 12 ? (
+                    <text
+                      x={barOrigin + index * barPitch + barWidth / 2}
+                      y={barBase - drawn - 8}
+                      textAnchor="middle"
+                      fill="var(--color-foreground)"
+                      fontSize={narrow ? 14 : 12}
+                    >
+                      {label}
+                    </text>
+                  ) : null}
+                </g>
               );
             })}
             <circle cx={markerX} cy={narrow ? 130 : 70} r="8" fill="var(--color-lava)" />
@@ -503,9 +534,12 @@ export function TsunamiM5() {
                 y={8 + r * cell}
                 width={cell - 2}
                 height={cell - 2}
-                fill={depth === 0 ? "var(--color-muted-foreground)" : "var(--color-primary)"}
-                opacity={depth === 0 ? 0.85 : 0.2 + Math.min(0.6, depth / 8000)}
-              />
+                fill={depth === 0 ? "#8b9aa6" : waterShade(depth)}
+                stroke={depth === 0 ? "#c5d0d6" : WATER_EDGE}
+                strokeWidth="1"
+              >
+                <title>{depth === 0 ? "land" : `${depth} m`}</title>
+              </rect>
             )),
           )}
           {showRoute
