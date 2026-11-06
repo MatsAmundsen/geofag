@@ -316,6 +316,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "befolkning",
+    tekstKlar: true,
     slug: "geo-befolkning",
     title: "Befolkning og levekår",
     navLabel: "Befolkning",

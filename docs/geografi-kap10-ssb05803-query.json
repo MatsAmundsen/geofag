@@ -1,0 +1,31 @@
+{
+  "query": [
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Personer",
+          "Levendefodte",
+          "Dode",
+          "Innflyttinger",
+          "Utflyttinger",
+          "AbsTilvekst"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2025",
+          "2026"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}

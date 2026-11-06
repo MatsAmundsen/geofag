@@ -1,0 +1,56 @@
+{
+  "worldbank": {
+    "method": "GET",
+    "url": "https://api.worldbank.org/v2/country/JPN;NER/indicator/SP.POP.0004.MA.5Y;SP.POP.0004.FE.5Y;SP.POP.0509.MA.5Y;SP.POP.0509.FE.5Y;SP.POP.1014.MA.5Y;SP.POP.1014.FE.5Y;SP.POP.1519.MA.5Y;SP.POP.1519.FE.5Y;SP.POP.2024.MA.5Y;SP.POP.2024.FE.5Y;SP.POP.2529.MA.5Y;SP.POP.2529.FE.5Y;SP.POP.3034.MA.5Y;SP.POP.3034.FE.5Y;SP.POP.3539.MA.5Y;SP.POP.3539.FE.5Y;SP.POP.4044.MA.5Y;SP.POP.4044.FE.5Y;SP.POP.4549.MA.5Y;SP.POP.4549.FE.5Y;SP.POP.5054.MA.5Y;SP.POP.5054.FE.5Y;SP.POP.5559.MA.5Y;SP.POP.5559.FE.5Y;SP.POP.6064.MA.5Y;SP.POP.6064.FE.5Y;SP.POP.6569.MA.5Y;SP.POP.6569.FE.5Y;SP.POP.7074.MA.5Y;SP.POP.7074.FE.5Y;SP.POP.7579.MA.5Y;SP.POP.7579.FE.5Y;SP.POP.80UP.MA.5Y;SP.POP.80UP.FE.5Y;SP.POP.TOTL.MA.ZS;SP.POP.TOTL.FE.ZS;SP.DYN.TFRT.IN;SP.DYN.LE00.IN;SP.POP.0014.TO.ZS;SP.POP.65UP.TO.ZS?source=2&date=2023&format=json&per_page=1000",
+    "referanseaar": 2023,
+    "kontrollert": "2026-11-06",
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "owid": {
+    "method": "GET",
+    "url": "https://ourworldindata.org/grapher/population.csv?country=~OWID_WRL&time=1750..2023",
+    "metadata": "https://ourworldindata.org/grapher/population.metadata.json",
+    "entity": "World",
+    "years": [
+      1750,
+      1800,
+      1850,
+      1900,
+      1950,
+      2000,
+      2023
+    ]
+  },
+  "kilder": {
+    "07459": {
+      "href": "https://www.ssb.no/statbank/table/07459",
+      "sha256": "6837e9fcaf672d1aa4857ddd138b0048362b908413393fcd22ff872319a80fec",
+      "oppdatert": "2026-02-25"
+    },
+    "14740": {
+      "href": "https://www.ssb.no/statbank/table/14740",
+      "sha256": "9238a4218a36d0bfbd0e069bb0b66c1faaed755f58856b229f370eeaaa92817b",
+      "oppdatert": "2026-06-12"
+    },
+    "04232": {
+      "href": "https://www.ssb.no/statbank/table/04232",
+      "sha256": "4a080072c147a6ad96fd27cd9851661403dd8e72c11bada395c09cfab9163713",
+      "oppdatert": "2026-03-12"
+    },
+    "05803": {
+      "href": "https://www.ssb.no/statbank/table/05803",
+      "sha256": "d25aa2db51383fcac62959f742c87bdcaf4f7027bff0fb0f78a36f2f35fb5fd0",
+      "oppdatert": "2026-04-15"
+    },
+    "worldbank": {
+      "href": "https://data.worldbank.org/indicator/SP.POP.0004.MA.5Y",
+      "sha256": "528397c63963d2057a387718c1724629c19729e91f40e5b75de7b35aefa233d6",
+      "oppdatert": "2026-10-08"
+    },
+    "owid": {
+      "href": "https://ourworldindata.org/grapher/population",
+      "sha256": "6e72d4ffe8f0e940df60c90b13c8ad6eda85043b995b244e8b3e20b1e833b541",
+      "oppdatert": "2024-07-15"
+    }
+  }
+}

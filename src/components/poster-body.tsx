@@ -1,3 +1,4 @@
+import { GeografiVerdensbefolkning, GeografiDemografiskGrunnformel, GeografiNorgePyramider, GeografiLandPyramider, GeografiDemografiskOvergang, GeografiNorgeFruktbarhetAldring } from "@/components/geografi/befolkning-diagrammer";
 import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
 import { PetroleumTrapModel } from "@/components/models/resource-ore-petroleum-model";
@@ -1472,6 +1473,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoBefolkningVerden: () => <GeografiVerdensbefolkning />,
+  GeoBefolkningGrunnformel: () => <GeografiDemografiskGrunnformel />,
+  GeoBefolkningNorgePyramider: () => <GeografiNorgePyramider />,
+  GeoBefolkningLandPyramider: () => <GeografiLandPyramider />,
+  GeoBefolkningOvergang: () => <GeografiDemografiskOvergang />,
+  GeoBefolkningNorgeFruktbarhet: () => <GeografiNorgeFruktbarhetAldring />,
   GeoNaeringStruktur: () => <GeografiNaeringsstruktur />,
   GeoNaeringLokalisering: () => <GeografiLokaliseringsfaktorer />,
   GeoNaeringRingvirkninger: () => <GeografiRingvirkninger />,

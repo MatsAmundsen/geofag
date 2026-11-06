@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import { parsePosterMarkdown } from "./poster-markdown.ts";
 import { beregnGeografiMassebalanse } from "./geografi-massebalanse.ts";
 import { KLIMANORMAL_STASJON, OSLO_BLINDERN_NORMALER } from "./geografi-klimanormaler.ts";
+import { ALDERSGRUPPER, BEFOLKNING_KILDER, NORGE_RA, NORGE_PYRAMIDER, LAND_RA, LAND_PYRAMIDER, NORGE_SFT, VERDENSBEFOLKNING, NORGE_ENDRING, NORGE_MIDDELFOLK, NORGE_NATURLIG, NORGE_NETTOFLYTTING, NORGE_REGISTERAVVIK } from "./geografi-befolkningsdata.ts";
 import { NAERING_AR, NAERING_KILDE, NAERING_RASERIER, NAERING_STRUKTUR } from "./geografi-naeringsdata.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -77,7 +78,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser", "geo-naering"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser", "geo-naering", "geo-befolkning"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -165,7 +166,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 9);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 10);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -622,11 +623,11 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.match(md, /kort, tenkt kommunalt beslutningsnotat/);
   });
 
-  it("har eget reseed og tekststatus mens kapittel 10 fortsatt er skjelett", () => {
+  it("har eget klima-reseed og tekststatus mens kapittel 11 fortsatt er skjelett", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-kap5-2026-11-06",\s+slug: "geo-klima"/);
     assert.match(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "befolkning",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-befolkning.md"), /under arbeid/i);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-migrasjon.md"), /under arbeid/i);
   });
 });
 
@@ -798,12 +799,134 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     assert.match(figure, /Forenklet, ikke komplett leverandørliste/);
   });
 
-  it("aktiverer bare kapittel 9 og har et eget reseed mens kapittel 10 og 11 venter", () => {
+  it("bevarer kapittel 9 sitt reseed mens bare kapittel 11 venter", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-naering-kap9-2026-11-06",\s+slug: "geo-naering"/);
     assert.match(read("geografi-kapitler.ts"), /path: "naering",\s+tekstKlar: true/);
-    for (const slug of ["befolkning", "migrasjon"]) {
+    for (const slug of ["migrasjon"]) {
       assert.doesNotMatch(read("geografi-kapitler.ts"), new RegExp(`path: "${slug}",\\s+tekstKlar: true`));
       assert.match(read(`posts/geo-${slug}.md`), /under arbeid/i);
     }
+  });
+});
+
+describe("Geografi kapittel 10: befolkning og levekår", () => {
+  const md = read("posts/geo-befolkning.md");
+  const sources = read("kilder-geografi.ts").split('"geo-befolkning": [')[1].split('"geo-migrasjon"')[0];
+  const widgets = ["GeoBefolkningVerden", "GeoBefolkningGrunnformel", "GeoBefolkningNorgePyramider", "GeoBefolkningLandPyramider", "GeoBefolkningOvergang", "GeoBefolkningNorgeFruktbarhet"];
+
+  it("dekker alle åtte underkapitler og oppgaver uten synlige redaktørnotater", () => {
+    for (const title of ["Befolkningsvekst", "Demografiske mål", "Fruktbarhet og dødelighet", "Befolkningspyramider", "Demografisk overgang", "Befolkningsteorier", "Levekår i verden", "Befolkning i Norge", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## To land"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 6);
+    assert.equal((md.match(/^c\. /gm) ?? []).length, 6);
+    assert.match(md, /KM484/);assert.match(md, /KM485/);
+    assert.doesNotMatch(md, /under arbeid|## Status|## Planlagte underkapitler|[!<]/i);
+  });
+
+  it("har seks registrerte widgets og to skjulte kartmarkører", () => {
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
+    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
+    assert.deepEqual([...md.matchAll(/^\[figur-10-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]), ["1", "7"]);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-10-/);
+    assert.doesNotMatch(md, /[Ss]e figur 10\.(?:1|7)\b/);
+  });
+
+  it("registrerer 16 kontrollerte kilder og henviser til fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 16);
+    for (const domain of ["ssb.no", "worldbank.org", "ourworldindata.org", "who.int", "undp.org", "snl.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
+    for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "2026d", "Tømmerås et al., 2026", "Tønnessen, 2024", "Solerød & Tønnessen, 2026", "Nylenna et al., 2025", "Mæhlum, 2023", "Stoltz, 2026", "WHO, 2025", "UNDP, u.å.", "Verdensbanken, 2026", "Our World in Data, 2024"]) assert.ok(md.includes(citation), citation);
+    assert.doesNotMatch(md + sources, /Terra Nova|Aunivers|bibliotek/);
+    for (const term of ["Demografi", "Fødselsrate", "Dødsrate", "Fruktbarhet", "Samlet fruktbarhetstall (SFT)", "Spedbarnsdødelighet", "Forventet levealder", "Befolkningspyramide", "Demografisk overgang", "Forsørgerbyrde", "Eldrebølge", "Levekår", "Ulikhet"]) assert.ok(md.includes(`| ${term} |`), term);
+  });
+
+  it("bevarer alle 848 originale ettårstall i kildeuttrekket", () => {
+    assert.deepEqual(NORGE_RA.map((d) => d.ar), [1986, 2006, 2026, 2050]);
+    const rows = read("../../public/downloads/geografi-befolkning-ssb.csv").trim().split(/\r?\n/).slice(1).map((l) => l.split(";"));
+    assert.equal(rows.length, 848);
+    for (const d of NORGE_RA) for (const kjonn of ["menn", "kvinner"] as const) {
+      assert.equal(d[kjonn].length, 106);
+      assert.deepEqual(rows.filter((r) => Number(r[1]) === d.ar && r[2] === kjonn).map((r) => Number(r[4])), d[kjonn]);
+      assert.ok(d[kjonn].every((v) => Number.isInteger(v) && v >= 0));
+    }
+    assert.deepEqual(NORGE_PYRAMIDER.map((d) => d.total), [4159187, 4640219, 5627400, 6214071]);
+    assert.deepEqual(NORGE_PYRAMIDER.map((d) => d.fra65), [659716, 682469, 1083060, 1567190]);
+  });
+
+  it("summerer norske grupper uten overlapp eller bortfall, og åpner 80+ riktig", () => {
+    assert.equal(ALDERSGRUPPER.length, 17);assert.equal(ALDERSGRUPPER[16], "80+");
+    for (const [i, d] of NORGE_PYRAMIDER.entries()) {
+      assert.equal(d.grupper.reduce((a, g) => a + g.menn + g.kvinner, 0), d.total);
+      assert.ok(Math.abs(d.grupper.reduce((a, g) => a + g.mennProsent + g.kvinnerProsent, 0) - 100) < 1e-10);
+      assert.equal(d.grupper[16].menn, NORGE_RA[i].menn.slice(80).reduce((a, b) => a + b, 0));
+      assert.equal(d.grupper[16].kvinner, NORGE_RA[i].kvinner.slice(80).reduce((a, b) => a + b, 0));
+      const work = NORGE_RA[i].menn.slice(15, 65).reduce((a, b) => a + b, 0) + NORGE_RA[i].kvinner.slice(15, 65).reduce((a, b) => a + b, 0);
+      assert.equal(d.eldreForhold, d.fra65 / work * 100);
+    }
+  });
+
+  it("bevarer 80 WDI-verdier og omregner kjønnsspesifikke andeler til hele befolkningen", () => {
+    const rows = read("../../public/downloads/geografi-befolkning-worldbank.csv").trim().split(/\r?\n/).slice(1).map((l) => l.split(";"));
+    assert.equal(rows.length, 80);
+    for (const [i, d] of LAND_RA.entries()) {
+      const subset = rows.filter((r) => r[0] === d.kode);
+      assert.equal(subset.length, 40);assert.ok(subset.every((r) => r[1] === "2023"));
+      for (const [sex, ra] of [["MA", d.mennRa], ["FE", d.kvinnerRa]] as const) {
+        assert.deepEqual(subset.filter((r) => r[2].includes(`.${sex}.5Y`)).map((r) => Number(r[3].replace(",", "."))), ra);
+      }
+      assert.ok(Math.abs(d.mennAndel + d.kvinnerAndel - 100) < 1e-10);
+      const grupper = LAND_PYRAMIDER[i].grupper;
+      assert.equal(grupper[0].mennProsent, d.mennRa[0] * d.mennAndel / 100);
+      assert.ok(Math.abs(grupper.reduce((a, g) => a + g.mennProsent + g.kvinnerProsent, 0) - 100) < 1e-8);
+      assert.ok(Math.abs(grupper.slice(0, 3).reduce((a, g) => a + g.mennProsent + g.kvinnerProsent, 0) - d.under15) < 1e-8);
+      assert.ok(Math.abs(grupper.slice(13).reduce((a, g) => a + g.mennProsent + g.kvinnerProsent, 0) - d.fra65) < 1e-7);
+      assert.ok(grupper.every((g) => g.mennProsent >= 0 && g.mennProsent <= 10 && g.kvinnerProsent >= 0 && g.kvinnerProsent <= 10));
+    }
+  });
+
+  it("bevarer verdensserien og SFT med år, enheter og kildeuttrekk", () => {
+    assert.deepEqual(VERDENSBEFOLKNING.map((d) => d.ar), [1750, 1800, 1850, 1900, 1950, 2000, 2023]);
+    assert.deepEqual(VERDENSBEFOLKNING.map((d) => d.personer), [753279296, 983104755, 1275602897, 1627273655, 2493092852, 6171702992, 8091734933]);
+    assert.deepEqual(NORGE_SFT.map((d) => d.sft), [2.5, 1.72, 1.93, 1.85, 1.95, 1.48, 1.4, 1.44, 1.48]);
+    const rows = read("../../public/downloads/geografi-befolkning-serier.csv").trim().split(/\r?\n/).slice(1).map((l) => l.split(";"));
+    assert.equal(rows.length, 23);
+    assert.deepEqual(rows.filter((r) => r[0] === "OWID").map((r) => Number(r[3])), VERDENSBEFOLKNING.map((d) => d.personer));
+    assert.deepEqual(rows.filter((r) => r[0] === "SSB04232").map((r) => Number(r[3].replace(",", "."))), NORGE_SFT.map((d) => d.sft));
+  });
+
+  it("bruker riktig middelfolkemengde og viser registeravvik i stedet for falsk likhet", () => {
+    assert.equal(NORGE_MIDDELFOLK, 5610870);assert.equal(NORGE_NATURLIG, 10361);assert.equal(NORGE_NETTOFLYTTING, 22324);assert.equal(NORGE_REGISTERAVVIK, 375);
+    assert.equal(NORGE_ENDRING.Personer2026 - NORGE_ENDRING.Personer2025, NORGE_ENDRING.AbsTilvekst2025);
+    assert.equal(NORGE_NATURLIG + NORGE_NETTOFLYTTING + NORGE_REGISTERAVVIK, 33060);
+    assert.equal((NORGE_ENDRING.Levendefodte2025 / NORGE_MIDDELFOLK * 1000).toFixed(2), "9.87");
+    for (const phrase of ["registeravvik", "375", "32 685", "33 060", "promille", "aldersspesifikke", "1. januar", "midtårsestimater", "ikke en registrert framtid", "periodemål", "ikke et sikkert sluttpunkt", "ikke anslå forbipasserendes alder"]) assert.ok(md.includes(phrase), phrase);
+  });
+
+  it("lagrer eksakte lesespørringer, versjoner og SHA-256 uten kontaktmetadata", () => {
+    for (const id of ["07459", "14740", "04232", "05803"] as const) {
+      const query = JSON.parse(read(`../../docs/geografi-kap10-ssb${id}-query.json`));
+      assert.equal(query.response.format, "json-stat2");assert.match(BEFOLKNING_KILDER[id].sha256, /^[a-f0-9]{64}$/);
+      assert.doesNotMatch(JSON.stringify(query), /contact|@ssb\.no|phone/);
+    }
+    const q = JSON.parse(read("../../docs/geografi-kap10-ssb14740-query.json"));
+    assert.deepEqual(q.query.find((v: { code: string }) => v.code === "Framskriv").selection.values, ["MMM"]);
+    assert.deepEqual(q.query.find((v: { code: string }) => v.code === "InnvandrLandbakgr").selection.values, ["00"]);
+    assert.equal(BEFOLKNING_KILDER["14740"].oppdatert, "2026-06-12");
+    const ext = JSON.parse(read("../../docs/geografi-kap10-eksterne-data.json"));
+    assert.ok(ext.worldbank.url.includes("date=2023"));assert.equal(ext.worldbank.method, "GET");
+  });
+
+  it("gir datadiagrammer tekst, tabeller, kilde og lisens uten levende API-avhengighet", () => {
+    const figure = read("../components/geografi/befolkning-diagrammer.tsx");
+    for (const text of ["<table", "<caption", 'scope="col"', 'scope="row"', "CC BY 4.0", "80+", "hele befolkningen", "MMM 2026", "mid", "stiplede", "ikke observerte mellomår", "ikke et mål på faktiske skattebetalere"]) assert.ok(figure.includes(text), text);
+    assert.doesNotMatch(figure, /fetch\(|setInterval|Math\.random/);
+    assert.match(figure, /title=/);assert.match(figure, /caption=/);
+  });
+
+  it("aktiverer kapittel 10 med nytt reseed og lar kapittel 11 vente", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-befolkning-kap10-2026-11-06",\s+slug: "geo-befolkning"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "befolkning",\s+tekstKlar: true/);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-migrasjon.md"), /under arbeid/i);
   });
 });
