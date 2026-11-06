@@ -123,7 +123,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     const placeholders = [...md.matchAll(/^\[figur-1-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
     assert.deepEqual(
       placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      [0, 1, 3, 5, 6, 7, 8, 9, 10],
+      [],
     );
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap1-redaksjon|figur-1-/);
@@ -134,7 +134,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
 
   it("har kilder, hypotetiske eksempler og korrekt avgrenset Snow-case", () => {
     const sources = read("kilder-geografi.ts").split('"geo-feltarbeid"')[0];
-    assert.equal((sources.match(/href: /g) ?? []).length, 19);
+    assert.equal((sources.match(/href: /g) ?? []).length, 22);
     for (const domain of [
       "udir.no",
       "kartverket.no",

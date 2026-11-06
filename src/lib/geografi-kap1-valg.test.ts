@@ -12,3 +12,5 @@ describe("Kapittel 1: egne projeksjoner og lovlig kart",()=>{
   assert.match(readFileSync(new URL('./copy-reseeds-b.ts',import.meta.url),'utf8'),/geo-verktoy-mats-valg-kap1-2026-11-06/);
  });
 });
+
+describe("Kapittel 1: ni tidligere skjulte figurer",()=>{it("registrerer alle ni uten skjulte markører og uten manglende kartbaner",()=>{const md=readFileSync(new URL('./posts/geo-verktoy.md',import.meta.url),'utf8');assert.doesNotMatch(md,/FIGURPLASSHOLDER/);const data=JSON.parse(readFileSync(new URL('./geografi-verdensland.json',import.meta.url),'utf8'));assert.equal(data.length,177);for(const row of data){assert.match(row.path,/^M/);assert.doesNotMatch(row.path,/NaN|Infinity/);}});});

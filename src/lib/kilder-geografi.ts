@@ -4,6 +4,24 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-verktoy": [
     {
+      prefix: "Natural Earth. (u.å.).",
+      italic: "1:110m Cultural Vectors",
+      suffix: " (utgave 5.1.1). Public Domain.",
+      href: "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/",
+    },
+    {
+      prefix: "Snow, J. (1855).",
+      italic: "On the mode of communication of cholera",
+      suffix: " (2. utg.). John Churchill. Historisk kart, digital reproduksjon via UCLA og Wikimedia Commons, Public Domain.",
+      href: "https://archive.org/details/b28985266/page/n57/mode/2up",
+    },
+    {
+      prefix: "NASA. (2011, 13. april).",
+      italic: "Blue marble.",
+      suffix: " Visualisering fra 2002. NASA Goddard Space Flight Center.",
+      href: "https://science.nasa.gov/resource/blue-marble/",
+    },
+    {
       prefix: "Kartverket. (u.å.). ",
       italic: "Topografisk rasterkart WMTS",
       suffix: " [Kart]. Utsnitt ved Gjende, zoom 11. Fire fliser sammenstilt 6. november 2026. © Kartverket, CC BY 4.0.",

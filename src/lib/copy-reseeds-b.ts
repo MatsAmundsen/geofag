@@ -5,6 +5,7 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  * Flaggene overskriver CMS-redigeringer i disse kapitlene (se copy-reseed.ts).
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
+  { flag: "geo-verktoy-skjulte-kap1-2026-11-07", slug: "geo-verktoy", stale: ["FIGURPLASSHOLDER"] },
   {
     flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
     slug: "geo-verktoy",
