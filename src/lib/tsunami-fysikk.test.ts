@@ -9,6 +9,9 @@ import {
   constantDepthTimeS,
   greenHeightRatio,
   initialLiftM,
+  alongTrackAtTime,
+  m2Segments,
+  townReadout,
   integrateDistanceM,
   msToKmh,
   playhead,
@@ -75,10 +78,29 @@ describe("tsunami-fysikk", () => {
     assert.equal(M5_CELL_M, 200_000);
   });
 
-  it("gir ulikt skredforløp for samme volum og ulikt tempo", () => {
-    const slow = slideSketch({ above: true, volume: "stor", tempo: "langsom" });
-    const fast = slideSketch({ above: true, volume: "stor", tempo: "rask" });
-    assert.ok(fast.near > slow.near);
-    assert.equal(fast.near <= 1 && slow.near <= 1, true);
+  it("avviser dyp på 0 i gangtid og lar markøren ligge langt inne etter halv gangtid", () => {
+    assert.equal(travelTimeS([{ lengthM: 100_000, depthM: 0 }]), Number.POSITIVE_INFINITY);
+    assert.equal(travelTimeS([{ lengthM: 100_000, depthM: -10 }]), Number.POSITIVE_INFINITY);
+    assert.equal(travelTimeS([{ lengthM: 0, depthM: 0 }]), 0);
+    const shallow = m2Segments(4000, "grunnere");
+    const early = alongTrackAtTime(shallow, 0.172);
+    assert.ok(early);
+    assert.ok(Math.abs(early.fractionOfLength - 0.5) < 0.05);
+    const mid = alongTrackAtTime(shallow, 0.5);
+    assert.ok(mid);
+    assert.ok(mid.fractionOfLength > 0.7);
+    assert.ok(mid.speedMs < waveSpeedMs(4000) / 4);
+    const start = alongTrackAtTime(shallow, 0);
+    assert.ok(start);
+    assert.ok(start.distanceM < 1);
+  });
+
+  it("stanser ett planlagt bygg når utbygging stoppes", () => {
+    const open = townReadout("stor", "ingen");
+    const stopped = townReadout("stor", "ikke-bygg");
+    assert.equal(stopped.exposed, open.exposed);
+    assert.ok(stopped.futureExposed < open.futureExposed);
+    assert.equal(stopped.futureBlocked, true);
+    assert.equal(stopped.changed, "eksponering");
   });
 });

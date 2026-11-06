@@ -4,8 +4,11 @@ import {
   M5_RECEIVER,
   M5_SOURCE,
   constantDepthTimeS,
+  alongTrackAtTime,
+  cumulativeTravel,
   greenHeightRatio,
   initialLiftM,
+  m2Segments,
   msToKmh,
   routeThroughWater,
   slideSketch,
@@ -117,26 +120,23 @@ export function TsunamiM2() {
   const [profile, setProfile] = useState<"dypt" | "grunnere">("grunnere");
   const periodS = periodMin * 60;
   const deepSpeed = waveSpeedMs(depth);
-  const segments =
-    profile === "dypt"
-      ? [depth, depth, depth, depth].map((d) => ({ lengthM: 100_000, depthM: d }))
-      : [depth, Math.max(40, depth / 4), Math.max(40, depth / 20), 40].map((d) => ({
-          lengthM: 100_000,
-          depthM: d,
-        }));
-  const seconds = travelTimeS(segments);
-  const speed = waveSpeedMs(segments[Math.min(3, Math.floor(tid.tid * 4))]!.depthM);
-  const lambdaKm = wavelengthM(deepSpeed, periodS) / 1000;
+  const active = m2Segments(depth, profile);
+  const here = alongTrackAtTime(active, tid.tid);
+  const seconds = travelTimeS(active);
+  const lambdaDeepKm = wavelengthM(deepSpeed, periodS) / 1000;
+  const lambdaHereKm = here ? wavelengthM(here.speedMs, periodS) / 1000 : 0;
   const coastRatio = greenHeightRatio(depth, 40);
+  const markerX = 40 + (here?.fractionOfLength ?? 0) * 520;
   return (
     <TsunamiRamme
       nodeRef={tid.ref}
       kicker="M2"
       title="Bølgelaboratoriet"
-      lead="Endre dyp og periode. Fart, bølgelengde og gangtid følger med."
+      lead="Tidsskyveren er andel av gangtiden. Markøren bremser der vannet er grunt."
       kildeHref={NOAA_PROP}
-      antakelser="Langbølgeformelen v = √(g d) med g = 9,8 m/s². Den gjelder ikke i selve skrednedslaget. Grunning vises kvalitativt."
-      konklusjon={`På ${depth} m er farten ${msToKmh(deepSpeed).toFixed(0)} km/t. Over profilet bruker bølgen ${Math.round(seconds / 60)} min.`}
+      antakelser="Langbølgeformelen v = √(g d) med g = 9,8 m/s². Den gjelder ikke i selve skrednedslaget. Green-tilnærmingen, når den er på, gjelder en ikke-brytende langbølge med lite energitap. Den er ikke oppskylling."
+      konklusjon={`På valgt dyp ${depth} m er farten ${msToKmh(deepSpeed).toFixed(0)} km/t. Der markøren er nå, er farten ${msToKmh(here?.speedMs ?? 0).toFixed(0)} km/t. Hele profilet tar ${Math.round(seconds / 60)} min.`}
+      tidMerkelapp="Andel av gangtid"
       tid={tid.tid}
       playing={tid.playing}
       reduced={tid.reduced}
@@ -162,23 +162,26 @@ export function TsunamiM2() {
         </>
       }
       scene={
-        <Scene tall={tid.narrow} label="To havbunnsprofiler og en bølgetopp">
-          {segments.map((segment, index) => (
-            <rect
-              key={index}
-              x={40 + index * 140}
-              y={220 - Math.min(160, segment.depthM / 40)}
-              width="120"
-              height={Math.min(160, segment.depthM / 40)}
-              fill="var(--color-primary)"
-              opacity={0.35 + index * 0.1}
-            />
-          ))}
-          <circle cx={70 + tid.tid * 500} cy="70" r="8" fill="var(--color-lava)" />
-          <text x="24" y="28" fill="var(--color-foreground)" fontSize="16">
-            {profile === "dypt" ? "A" : "B"} · {msToKmh(speed).toFixed(0)} km/t her
-          </text>
-        </Scene>
+        <div className="space-y-3">
+          <Scene tall={tid.narrow} label="Profil med bølgetopp som følger gangtiden">
+            {active.map((segment, index) => (
+              <rect
+                key={index}
+                x={40 + index * 140}
+                y={220 - Math.min(160, segment.depthM / 40)}
+                width="120"
+                height={Math.min(160, segment.depthM / 40)}
+                fill="var(--color-primary)"
+                opacity={here?.segmentIndex === index ? 0.7 : 0.35}
+              />
+            ))}
+            <circle cx={markerX} cy="70" r="8" fill="var(--color-lava)" />
+            <text x="24" y="28" fill="var(--color-foreground)" fontSize="16">
+              {profile === "dypt" ? "A" : "B"} · {msToKmh(here?.speedMs ?? 0).toFixed(0)} km/t her
+            </text>
+          </Scene>
+          <ArrivalGraph depth={depth} timeFraction={tid.tid} active={profile} />
+        </div>
       }
       tall={
         <dl className="grid grid-cols-2 gap-2">
@@ -186,15 +189,59 @@ export function TsunamiM2() {
           <dd>
             {deepSpeed.toFixed(0)} m/s ({msToKmh(deepSpeed).toFixed(0)} km/t)
           </dd>
-          <dt>Bølgelengde</dt>
-          <dd>{lambdaKm.toFixed(0)} km</dd>
+          <dt>Fart ved markøren</dt>
+          <dd>{msToKmh(here?.speedMs ?? 0).toFixed(0)} km/t</dd>
+          <dt>Bølgelengde på valgt dyp</dt>
+          <dd>{lambdaDeepKm.toFixed(0)} km</dd>
+          <dt>Bølgelengde ved markøren</dt>
+          <dd>{lambdaHereKm.toFixed(0)} km</dd>
           <dt>Gangtid</dt>
           <dd>{Math.round(seconds / 60)} min</dd>
-          <dt>Green, merket tilnærming</dt>
-          <dd>{green ? `${coastRatio.toFixed(2)} ganger mot 40 m. Ikke oppskylling.` : "av"}</dd>
+          <dt>Strekning nå</dt>
+          <dd>{Math.round((here?.fractionOfLength ?? 0) * 100)} % av profilet</dd>
+          <dt>Green-tilnærming</dt>
+          <dd>
+            {green
+              ? `${coastRatio.toFixed(2)} ganger mot 40 m. Tilnærming for ikke-brytende langbølge (Green). Ikke oppskylling eller faresone.`
+              : "av"}
+          </dd>
         </dl>
       }
     />
+  );
+}
+
+function ArrivalGraph({
+  depth,
+  timeFraction,
+  active,
+}: {
+  depth: number;
+  timeFraction: number;
+  active: "dypt" | "grunnere";
+}) {
+  const a = cumulativeTravel(m2Segments(depth, "dypt"));
+  const b = cumulativeTravel(m2Segments(depth, "grunnere"));
+  const maxT = Math.max(a[a.length - 1]?.timeS ?? 1, b[b.length - 1]?.timeS ?? 1, 1);
+  const maxD = 400_000;
+  const xOf = (distance: number) => 36 + (distance / maxD) * 250;
+  const yOf = (time: number) => 110 - (time / maxT) * 90;
+  const line = (points: { distanceM: number; timeS: number }[]) =>
+    points.map((point, index) => `${index === 0 ? "M" : "L"} ${xOf(point.distanceM)} ${yOf(point.timeS)}`).join(" ");
+  const here = alongTrackAtTime(m2Segments(depth, active), timeFraction);
+  return (
+    <svg viewBox="0 0 320 140" className="h-auto w-full max-w-md" role="img" aria-label="Ankomstgraf, strekning mot tid, profil A og B">
+      <rect width="320" height="140" fill="var(--color-card)" />
+      <text x="8" y="16" fill="var(--color-foreground)" fontSize="13">
+        Ankomst: strekning mot tid
+      </text>
+      <path d={line(a)} fill="none" stroke="var(--color-foreground)" strokeDasharray="5 4" strokeWidth="2" />
+      <path d={line(b)} fill="none" stroke="var(--color-primary)" strokeWidth="2" />
+      {here ? <circle cx={xOf(here.distanceM)} cy={yOf(timeFraction * travelTimeS(m2Segments(depth, active)))} r="4" fill="var(--color-lava)" /> : null}
+      <text x="8" y="132" fill="var(--color-muted-foreground)" fontSize="12">
+        A stiplet, B hel. Samme akse.
+      </text>
+    </svg>
   );
 }
 
@@ -248,25 +295,24 @@ export function TsunamiM3() {
             value={String(point)}
             onChange={(id) => setPoint(Number(id))}
             options={[
-              { id: "0", label: "Ute" },
-              { id: "1", label: "Kant" },
-              { id: "2", label: "Land" },
+              { id: "0", label: "1 Bølgehøyde ute" },
+              { id: "1", label: "2 Oppskylling" },
+              { id: "2", label: "3–4 Vanndyp og inntrenging" },
             ]}
           />
         </>
       }
       scene={
-        <Scene tall={tid.narrow} label="Målepunkter for bølgehøyde, oppskylling og inntrenging">
+        <Scene tall={tid.narrow} label="Målepunkter for bølgehøyde, oppskylling, vanndyp og inntrenging">
           <path d={coast === "flat" ? "M 0 180 L 420 180 L 640 230" : "M 0 180 L 460 180 L 560 80 L 640 80"} fill="var(--color-muted)" />
           <rect x="0" y="120" width="460" height="60" fill="var(--color-primary)" opacity="0.35" />
-          {[80, 430, 560].map((x, index) => (
-            <g key={x}>
-              <circle cx={x} cy={index === 2 ? 150 : 150} r={point === index ? 10 : 6} fill={point === index ? "var(--color-lava)" : "var(--color-foreground)"} />
-              <text x={x - 16} y="40" fill="var(--color-foreground)" fontSize="14">
-                {index + 1}
-              </text>
-            </g>
-          ))}
+          <circle cx="80" cy="150" r={point === 0 ? 9 : 5} fill={point === 0 ? "var(--color-lava)" : "var(--color-foreground)"} />
+          <circle cx="430" cy="150" r={point === 1 ? 9 : 5} fill={point === 1 ? "var(--color-lava)" : "var(--color-foreground)"} />
+          <circle cx="520" cy="140" r={point === 2 ? 9 : 5} fill={point === 2 ? "var(--color-lava)" : "var(--color-foreground)"} />
+          <text x="48" y="36" fill="var(--color-foreground)" fontSize="13">1 bølgehøyde</text>
+          <text x="360" y="36" fill="var(--color-foreground)" fontSize="13">2 oppskylling</text>
+          <text x="500" y="100" fill="var(--color-foreground)" fontSize="13">3 vanndyp</text>
+          <text x="500" y="250" fill="var(--color-foreground)" fontSize="13">4 inntrenging {scene.reach} m</text>
         </Scene>
       }
       tall={
@@ -386,7 +432,7 @@ export function TsunamiM5() {
       title="Ankomsttid"
       lead="Konstant dyp gir en sirkel. Land og grunt vann gjør ruten lengre. Ingen bølgehøyde."
       kildeHref={NOAA_PROP}
-      antakelser="Idealisert rutenett. 200 km er valgt cellestørrelse. Historiske kart er ikke tegnet inn som beregning."
+      antakelser="Idealisert 4-koblet rutenett, uten diagonal. Tiden er derfor lengre enn en fri kurve i vann. 200 km er valgt cellestørrelse. Historiske kart er ikke tegnet inn som beregning."
       konklusjon={
         crosses
           ? `Den rette linjen krysser land og tar ${Math.round(naive / 60)} min på 4000 m. Ruten rundt tar ${Math.round((route?.seconds ?? 0) / 60)} min.`
@@ -448,15 +494,17 @@ export function TsunamiM5() {
 
 const NEAR = [
   { t: 0, label: "Skjelv registrert" },
-  { t: 0.15, label: "Mulig varsel" },
+  { t: 0.12, label: "Mulig varsel" },
+  { t: 0.22, label: "Lokalt tiltak" },
   { t: 0.35, label: "Bølge ved kysten" },
   { t: 0.55, label: "Bølge bekreftet" },
   { t: 0.8, label: "Avblåsing" },
 ];
 const FAR = [
   { t: 0, label: "Skjelv registrert" },
-  { t: 0.12, label: "Mulig varsel" },
-  { t: 0.35, label: "Bølge bekreftet" },
+  { t: 0.1, label: "Mulig varsel" },
+  { t: 0.22, label: "Lokalt tiltak" },
+  { t: 0.4, label: "Bølge bekreftet" },
   { t: 0.7, label: "Bølge ved kysten" },
   { t: 0.9, label: "Avblåsing" },
 ];
@@ -551,9 +599,11 @@ export function TsunamiM7() {
       kildeHref="https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/"
       antakelser="Ikke NVEs faresoner. To valgte øvelsesscenarioer. Modellen sier hvilket ledd i risikoen tiltaket treffer, ikke hvor trygt det er."
       konklusjon={
-        after.changed === "ingen"
-          ? `${after.exposed} objekter ligger i sonen. Velg et tiltak og se hvilket ledd som endres.`
-          : `Tiltaket treffer ${after.changed}. Før: ${before.exposed} objekter. Etter: ${after.exposed}.`
+        after.futureBlocked
+          ? `Nåværende objekter er ${after.exposed}. Fremtidig eksponering går fra ${before.futureExposed} til ${after.futureExposed}. Fremtidig utbygging i sonen: stanset.`
+          : after.changed === "ingen"
+            ? `${after.exposed} objekter ligger i sonen nå. Ett planlagt bygg gir fremtidig eksponering ${after.futureExposed}.`
+            : `Tiltaket treffer ${after.changed}. Før: ${before.exposed} objekter. Etter: ${after.exposed}.`
       }
       tid={tid.tid}
       playing={tid.playing}
@@ -598,6 +648,17 @@ export function TsunamiM7() {
           ))}
           <rect x={after.schoolExposed ? 300 : 520} y="80" width="40" height="30" fill="var(--color-primary)" />
           {after.routeMarked ? <path d="M 320 100 L 560 70" stroke="var(--color-foreground)" strokeDasharray="6 4" fill="none" /> : null}
+          {!after.futureBlocked ? (
+            <rect
+              x={scenario === "stor" ? 400 : 200}
+              y="124"
+              width="28"
+              height="28"
+              fill="none"
+              stroke="var(--color-lava)"
+              strokeDasharray="4 3"
+            />
+          ) : null}
           <text x="24" y="28" fill="var(--color-foreground)" fontSize="16">
             {scenario === "stor" ? "Stor sone" : "Liten sone"}
           </text>
@@ -605,8 +666,13 @@ export function TsunamiM7() {
       }
       tall={
         <dl className="grid grid-cols-2 gap-2">
-          <dt>Objekter i sonen</dt>
+          <dt>Objekter i sonen nå</dt>
           <dd>{after.exposed}</dd>
+          <dt>Fremtidig i sonen</dt>
+          <dd>
+            {after.futureExposed}
+            {after.futureBlocked ? ". Fremtidig utbygging i sonen: stanset" : ""}
+          </dd>
           <dt>Skole i sonen</dt>
           <dd>{after.schoolExposed ? "ja" : "nei"}</dd>
           <dt>Ledd som endres</dt>

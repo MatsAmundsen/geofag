@@ -22,15 +22,81 @@ export function wavelengthM(speedMs: number, periodS: number): number {
 
 export type DepthSegment = { lengthM: number; depthM: number };
 
-/** Gangtid som sum av delstrekning / fart. Fart er √(g d) på hver del. */
+/** Gangtid som sum av delstrekning / fart. Dyp ≤ 0 med lengde > 0 er ikke en gyldig strekning. */
 export function travelTimeS(segments: readonly DepthSegment[]): number {
   let seconds = 0;
   for (const segment of segments) {
-    const speed = waveSpeedMs(segment.depthM);
-    if (speed <= 0 || !(segment.lengthM > 0)) continue;
-    seconds += segment.lengthM / speed;
+    if (!(segment.lengthM > 0)) continue;
+    if (!(segment.depthM > 0)) return Number.POSITIVE_INFINITY;
+    seconds += segment.lengthM / waveSpeedMs(segment.depthM);
   }
   return seconds;
+}
+
+export type AlongTrack = {
+  distanceM: number;
+  /** Andel av samlet strekning, 0–1. Ikke det samme som andel av gangtid. */
+  fractionOfLength: number;
+  depthM: number;
+  speedMs: number;
+  segmentIndex: number;
+};
+
+/**
+ * Strekning etter en andel av total gangtid. tidAndel 0,5 er halvparten av tiden,
+ * ikke halvparten av profilet. Farten på hvert segment er √(g d).
+ */
+export function alongTrackAtTime(segments: readonly DepthSegment[], timeFraction: number): AlongTrack | null {
+  const totalTime = travelTimeS(segments);
+  if (!Number.isFinite(totalTime) || !(totalTime > 0)) return null;
+  const target = Math.min(1, Math.max(0, timeFraction)) * totalTime;
+  const totalLength = segments.reduce((sum, segment) => sum + Math.max(0, segment.lengthM), 0);
+  let elapsed = 0;
+  let distance = 0;
+  for (let index = 0; index < segments.length; index++) {
+    const segment = segments[index]!;
+    if (!(segment.lengthM > 0)) continue;
+    const speed = waveSpeedMs(segment.depthM);
+    const segmentTime = segment.lengthM / speed;
+    const last = index === segments.length - 1;
+    if (elapsed + segmentTime >= target - 1e-9 || last) {
+      const into = Math.min(segmentTime, Math.max(0, target - elapsed));
+      const distanceM = distance + into * speed;
+      return {
+        distanceM,
+        fractionOfLength: totalLength > 0 ? distanceM / totalLength : 0,
+        depthM: segment.depthM,
+        speedMs: speed,
+        segmentIndex: index,
+      };
+    }
+    elapsed += segmentTime;
+    distance += segment.lengthM;
+  }
+  return null;
+}
+
+export function cumulativeTravel(segments: readonly DepthSegment[]): { distanceM: number; timeS: number }[] {
+  const points = [{ distanceM: 0, timeS: 0 }];
+  if (!Number.isFinite(travelTimeS(segments))) return points;
+  let distance = 0;
+  let time = 0;
+  for (const segment of segments) {
+    if (!(segment.lengthM > 0)) continue;
+    distance += segment.lengthM;
+    time += segment.lengthM / waveSpeedMs(segment.depthM);
+    points.push({ distanceM: distance, timeS: time });
+  }
+  return points;
+}
+
+/** Fire like strekninger à 100 km. Profil B blir grunnere inn mot land. */
+export function m2Segments(depthM: number, profile: "dypt" | "grunnere"): DepthSegment[] {
+  const depths =
+    profile === "dypt"
+      ? [depthM, depthM, depthM, depthM]
+      : [depthM, Math.max(40, depthM / 4), Math.max(40, depthM / 20), 40];
+  return depths.map((depth) => ({ lengthM: 100_000, depthM: depth }));
 }
 
 /**
@@ -207,6 +273,8 @@ export type TownReadout = {
   schoolExposed: boolean;
   routeMarked: boolean;
   futureBlocked: boolean;
+  /** Nåværende objekter pluss ett planlagt bygg, med mindre utbygging er stanset. */
+  futureExposed: number;
   changed: "eksponering" | "sårbarhet" | "ingen";
 };
 
@@ -219,11 +287,13 @@ export function townReadout(scenario: TownScenario, action: TownAction): TownRea
   const schoolExposed = schoolStartsExposed && action !== "flytt-skole";
   const quay = 1;
   const exposed = housesInZone + quay + (schoolExposed ? 1 : 0);
+  const futureBlocked = action === "ikke-bygg";
   return {
     exposed,
     schoolExposed,
     routeMarked: action === "tydelig-rute",
-    futureBlocked: action === "ikke-bygg",
+    futureBlocked,
+    futureExposed: futureBlocked ? exposed : exposed + 1,
     changed:
       action === "flytt-skole" || action === "ikke-bygg"
         ? "eksponering"

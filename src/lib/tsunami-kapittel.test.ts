@@ -84,6 +84,18 @@ describe("tsunami models", () => {
     for (const id of ids) assert.equal(fenceCount(injected, id), 1, `inject ${id}`);
     assert.equal(fenceCount(injectPosterWidgets(wave), "TsunamiM2"), 1);
   });
+
+  it("merker gangtid, Green-tilnærming og at modellene ikke er en faresone", () => {
+    const source = readFileSync(join(lib, "..", "components", "diagrams", "tsunami-modeller.tsx"), "utf8");
+    assert.match(source, /Andel av gangtid/);
+    assert.match(source, /Bølgelengde på valgt dyp/);
+    assert.match(source, /Bølgelengde ved markøren/);
+    assert.match(source, /ikke-brytende langbølge/);
+    assert.match(source, /Ikke oppskylling eller faresone/);
+    assert.match(source, /4-koblet rutenett/);
+    assert.match(source, /Lokalt tiltak/);
+    assert.match(source, /Fremtidig utbygging i sonen: stanset/);
+  });
 });
 
 describe("Maria video placement", () => {

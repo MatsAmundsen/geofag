@@ -57,6 +57,7 @@ export function TsunamiRamme({
   kildeHref,
   antakelser,
   konklusjon,
+  tidMerkelapp = "Tid",
   tid,
   playing,
   reduced,
@@ -74,6 +75,7 @@ export function TsunamiRamme({
   kildeHref: string;
   antakelser: string;
   konklusjon: string;
+  tidMerkelapp?: string;
   tid: number;
   playing: boolean;
   reduced: boolean;
@@ -109,7 +111,7 @@ export function TsunamiRamme({
         </p>
         <div className="mt-4 flex flex-col gap-4">{controls}</div>
         <label className="mt-4 block text-sm">
-          <span className="font-medium">Tid</span>
+          <span className="font-medium">{tidMerkelapp}</span>
           <input
             className="mt-1 w-full accent-primary"
             type="range"
