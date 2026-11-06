@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PhotoFigure } from "@/components/photo-figure";
 import { TableScroll } from "@/components/scroll-frame";
-import { posterHeadingElement, type HeadingIdCursor } from "@/lib/poster-heading";
+import { AnchoredHeading, type HeadingIdCursor } from "@/lib/poster-heading";
 import { getPosterPhotoFigure } from "@/lib/poster-figures";
 import { cn } from "@/lib/utils";
 
@@ -202,20 +202,24 @@ export function Markdown({
               {children}
             </h1>
           ),
-          h2: ({ children }) =>
-            posterHeadingElement(
-              "h2",
-              children,
-              headingIds,
-              "mt-8 font-display text-2xl font-medium tracking-tight text-foreground",
-            ),
-          h3: ({ children }) =>
-            posterHeadingElement(
-              "h3",
-              children,
-              headingIds,
-              "mt-6 font-display text-xl font-medium tracking-tight text-foreground",
-            ),
+          h2: ({ children }) => (
+            <AnchoredHeading
+              tag="h2"
+              cursor={headingIds}
+              className="mt-8 font-display text-2xl font-medium tracking-tight text-foreground"
+            >
+              {children}
+            </AnchoredHeading>
+          ),
+          h3: ({ children }) => (
+            <AnchoredHeading
+              tag="h3"
+              cursor={headingIds}
+              className="mt-6 font-display text-xl font-medium tracking-tight text-foreground"
+            >
+              {children}
+            </AnchoredHeading>
+          ),
           h4: ({ children }) => (
             <h4 className="mt-4 font-display text-lg font-medium tracking-tight text-foreground">
               {children}

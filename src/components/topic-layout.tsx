@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useMatches, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { AdminEditLink } from "@/components/admin-edit-link";
@@ -143,12 +143,18 @@ export function TopicLayout({
   const usePoster = bodyMode === "poster";
   const useCoded = bodyMode === "coded" || (!useScan && !usePoster);
 
+  const brukerStyrer = useRef(false);
+
   useEffect(() => {
     if (!usePoster) return;
     let cancelled = false;
     const timers: number[] = [];
+    const clearTimers = () => {
+      for (const timer of timers) window.clearTimeout(timer);
+      timers.length = 0;
+    };
     const scroll = () => {
-      if (cancelled) return;
+      if (cancelled || brukerStyrer.current) return;
       const raw = window.location.hash.replace(/^#/, "");
       if (!raw) return;
       let id = raw;
@@ -159,15 +165,41 @@ export function TopicLayout({
       }
       document.getElementById(id)?.scrollIntoView({ block: "start" });
     };
-    scroll();
-    for (const delay of [50, 200, 600, 1200, 2000]) {
-      timers.push(window.setTimeout(scroll, delay));
-    }
-    window.addEventListener("hashchange", scroll);
+    const arm = () => {
+      if (brukerStyrer.current) return;
+      clearTimers();
+      scroll();
+      for (const delay of [50, 200, 600, 1200, 2000]) {
+        timers.push(window.setTimeout(scroll, delay));
+      }
+    };
+    const giOpp = () => {
+      brukerStyrer.current = true;
+      clearTimers();
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", " ", "Home", "End"].includes(event.key)) giOpp();
+    };
+    const onHash = () => {
+      brukerStyrer.current = false;
+      arm();
+    };
+    arm();
+    window.addEventListener("wheel", giOpp, { passive: true });
+    window.addEventListener("touchstart", giOpp, { passive: true });
+    window.addEventListener("touchmove", giOpp, { passive: true });
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("click", giOpp);
+    window.addEventListener("hashchange", onHash);
     return () => {
       cancelled = true;
-      for (const timer of timers) window.clearTimeout(timer);
-      window.removeEventListener("hashchange", scroll);
+      clearTimers();
+      window.removeEventListener("wheel", giOpp);
+      window.removeEventListener("touchstart", giOpp);
+      window.removeEventListener("touchmove", giOpp);
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("click", giOpp);
+      window.removeEventListener("hashchange", onHash);
     };
   }, [usePoster, markdown]);
 

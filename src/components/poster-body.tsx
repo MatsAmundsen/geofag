@@ -326,8 +326,19 @@ const TsunamiM5 = lazy(() => import("@/components/diagrams/tsunami-modeller").th
 const TsunamiM6 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM6 })));
 const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM7 })));
 
-function TsunamiLaster({ children }: { children: JSX.Element }) {
-  return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
+function TsunamiLaster({ modell, children }: { modell: string; children: JSX.Element }) {
+  return (
+    <Suspense
+      fallback={
+        <div className="tsunami-plass my-8 w-full" data-modell={modell} aria-busy="true">
+          <p className="text-sm text-muted-foreground">Laster modellen…</p>
+          <div className="tsunami-plass-scene" />
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  );
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
@@ -1237,37 +1248,37 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
     <Quiz questions={QUIZ_TSUNAMI} heading={null} intro="Velg ett svar per spørsmål." />
   ),
   TsunamiM1: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m1">
       <TsunamiM1 />
     </TsunamiLaster>
   ),
   TsunamiM2: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m2">
       <TsunamiM2 />
     </TsunamiLaster>
   ),
   TsunamiM3: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m3">
       <TsunamiM3 />
     </TsunamiLaster>
   ),
   TsunamiM4: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m4">
       <TsunamiM4 />
     </TsunamiLaster>
   ),
   TsunamiM5: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m5">
       <TsunamiM5 />
     </TsunamiLaster>
   ),
   TsunamiM6: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m6">
       <TsunamiM6 />
     </TsunamiLaster>
   ),
   TsunamiM7: () => (
-    <TsunamiLaster>
+    <TsunamiLaster modell="m7">
       <TsunamiM7 />
     </TsunamiLaster>
   ),

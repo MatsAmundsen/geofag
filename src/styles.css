@@ -61,6 +61,36 @@
     }
   }
 
+  /* Plass til tsunami-modellene før JS-en er lastet, så ankeret ikke hopper.
+     Høyden er målt på ferdig figur ved 390 px og 1280 px. Scenen har samme
+     sideforhold som viewBox: 360/420 når skjermen er smal, 640/280 når den er bred. */
+  .tsunami-plass-scene {
+    width: 100%;
+    aspect-ratio: 360 / 420;
+  }
+
+  .tsunami-plass[data-modell="m1"] { min-height: 1173px; }
+  .tsunami-plass[data-modell="m2"] { min-height: 1607px; }
+  .tsunami-plass[data-modell="m3"] { min-height: 1301px; }
+  .tsunami-plass[data-modell="m4"] { min-height: 1377px; }
+  .tsunami-plass[data-modell="m5"] { min-height: 962px; }
+  .tsunami-plass[data-modell="m6"] { min-height: 967px; }
+  .tsunami-plass[data-modell="m7"] { min-height: 1349px; }
+
+  @media (min-width: 40rem) {
+    .tsunami-plass-scene {
+      aspect-ratio: 640 / 280;
+    }
+
+    .tsunami-plass[data-modell="m1"] { min-height: 1038px; }
+    .tsunami-plass[data-modell="m2"] { min-height: 1384px; }
+    .tsunami-plass[data-modell="m3"] { min-height: 1038px; }
+    .tsunami-plass[data-modell="m4"] { min-height: 1140px; }
+    .tsunami-plass[data-modell="m5"] { min-height: 955px; }
+    .tsunami-plass[data-modell="m6"] { min-height: 793px; }
+    .tsunami-plass[data-modell="m7"] { min-height: 1080px; }
+  }
+
   body {
     min-height: 100dvh;
     font-family: var(--font-sans);

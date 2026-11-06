@@ -9,8 +9,8 @@ import ReactMarkdown from "react-markdown";
 import { prepareChapterScan, posterHeadingAnchorIds } from "./chapter-scan.ts";
 import { injectPosterWidgets, stripChapterEditorNotice } from "./poster-markdown.ts";
 import {
+  AnchoredHeading,
   posterHeadingAnchorsEnabled,
-  posterHeadingElement,
   type HeadingIdCursor,
 } from "./poster-heading.ts";
 import {
@@ -56,8 +56,10 @@ function posterHtml(name: string): string {
     createElement(ReactMarkdown, {
       children: prepared,
       components: {
-        h2: ({ children }: { children?: ReactNode }) => posterHeadingElement("h2", children, cursor, "h2"),
-        h3: ({ children }: { children?: ReactNode }) => posterHeadingElement("h3", children, cursor, "h3"),
+        h2: ({ children }: { children?: ReactNode }) =>
+          createElement(AnchoredHeading, { tag: "h2", className: "h2", cursor, children }),
+        h3: ({ children }: { children?: ReactNode }) =>
+          createElement(AnchoredHeading, { tag: "h3", className: "h3", cursor, children }),
       },
     }),
   );
