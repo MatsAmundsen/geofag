@@ -1,0 +1,8 @@
+{
+  "kilde": "https://kart.nve.no/enterprise/rest/services/SkredKvikkleire2/MapServer/0/query?where=kommune+%3D+%27Gjerdrum%27&outFields=skredomrid%2Cskredomrnavn%2Ckommune%2Cfaregrad%2Cobjekttype&outSR=4326&f=geojson&returnGeometry=true&resultRecordCount=2000",
+  "hentet": "2026-11-06",
+  "lisens": "NLOD",
+  "lisensmetadata": "https://kartkatalog.geonorge.no/metadata/kvikkleire/f8007522-2b73-4702-bb97-50c720e5c3f8",
+  "antall": 147,
+  "sha256": "01b5e90d21ef40b36500de2689a185a17ec31dcb2815d3ab16691ba7d555068b"
+}

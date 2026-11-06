@@ -26,7 +26,9 @@ Etter kapitlet kan du
 
 Målene bygger på KM480 og deler av KM483 (Udir, u.å.).
 
-[figur-4-0]: # (FIGURPLASSHOLDER 4.0: Mønsterkart med isutbredelse i Europa under siste istids maksimum. Kontroller konkret Commons-fil, tidspunkt, kartgrunnlag og CC BY 3.0 før import. Norske etiketter og tydelig tidsmerking. Se docs/geografi-kap4-redaksjon.md.)
+```widget
+GeoLandskapIstidskart
+```
 
 ### Tenk over
 
@@ -86,7 +88,9 @@ GeoLandskapMassebalanse
 
 Massebalanse, frontposisjon og kartlagt areal beskriver forskjellige sider av en bres utvikling over tid. NVE bruker flere slike observasjoner når sammenhengen mellom breer og klima undersøkes (NVE, 2026a). Når vi sammenlikner kart, trenger vi derfor kartleggingsår og en forklaring av hva som er målt. Ett kartutsnitt alene dokumenterer verken endringsfarten eller utviklingen gjennom alle tidligere istider.
 
-[figur-4-9]: # (FIGURPLASSHOLDER 4.9: Kart over kartlagte norske breer. NVE-tjeneste og datasett må velges, med kartleggingsår, dekning, tegnforklaring og kontrollert NLOD-lisens. Ikke merk kartet «i dag» uten et presist datagrunnlag.)
+```widget
+GeoLandskapBrekart
+```
 
 ## Landformer fra is
 
@@ -158,7 +162,9 @@ En **meander** er en tydelig sving i et elveløp, ofte der elva renner gjennom l
 
 Hvis elva etter hvert tar en kortere vei, kan en tidligere sving bli avsnørt. En **kroksjø** er en slik avsnørt del av et tidligere elveløp (Halleraker, 2025). Vi kan derfor lete etter både aktive svinger og spor etter eldre løp på flybilder. Ett bilde viser likevel ikke hvor fort elva flyttet seg mellom to bestemte år.
 
-[figur-4-7]: # (FIGURPLASSHOLDER 4.7: Trinnvis elvelandskap med meander, avsnøring, terrasse og delta. Skill prosessene i egne sekvenser og vis samme perspektiv innen hver sekvens. Ingen oppdiktede tidsintervaller eller faste strømhastigheter.)
+```widget
+GeoLandskapElv
+```
 
 ### Elveslette og elveterrasse
 
@@ -188,7 +194,9 @@ En **skjærgård** er et område med mange øyer, holmer og skjær langs en kyst
 
 Bølger kan bryte ned materiale ved kysten og flytte sand og grus videre. Når materiale avsettes, kan det bygge opp strender, mens erosjon kan endre bratte kystpartier (Bryhni & Røthe, 2025). Vind kan dessuten flytte tørr sand og bidra til å forme områder bak stranden. En strand er derfor ikke bare et lager av sand, men del av en pågående materialtransport.
 
-[figur-4-8]: # (FIGURPLASSHOLDER 4.8: Sammenliknbare kystbilder med strandflate, skjærgård, strand og klippe. Velg konkrete bilder eller Kartverket-skjermdumper og kontroller rettigheter, kreditering, sted, dato og målestokk før import.)
+```widget
+GeoLandskapKyst
+```
 
 ### Strandlinjen har en historie
 
@@ -206,7 +214,11 @@ Geirangerfjorden er en del av verdensarvområdet Vestnorsk fjordlandskap, der br
 
 Fjellpartiet Åknes ligger ved Sunnylvsfjorden, ikke inne i selve Geirangerfjorden. NVE beskriver hvordan et fjellskred der kan skape flodbølger som påvirker flere steder i fjordsystemet. Fjellpartiet overvåkes kontinuerlig med flere metoder, og inngår i varsling og beredskap (NVE, 2026b). Omtalen her bygger på NVEs side oppdatert 19. juni 2026, ikke på et sanntidsvarsel.
 
-[figur-4-10]: # (FIGURPLASSHOLDER 4.10: Datert foto eller satellittbilde med Geirangerfjorden, bosetting og tydelig avgrensning. Et eget oversiktskart må plassere Åknes korrekt ved Sunnylvsfjorden. Ikke bruk beregnede bølgehøyder uten navngitt og datert scenario.)
+```widget
+GeoLandskapFjordLokator
+```
+
+[figur-4-10]: # (FIGURPLASSHOLDER 4.10: Fotoet venter fordi den verifiserte Commons-fila ikke lot seg hente uten rategrense. Lokatoren er levert separat som 4.10a. Datert foto eller satellittbilde med Geirangerfjorden, bosetting og tydelig avgrensning. Et eget oversiktskart må plassere Åknes korrekt ved Sunnylvsfjorden. Ikke bruk beregnede bølgehøyder uten navngitt og datert scenario.)
 
 ### Innblikk: Østlandets leirsletter
 
@@ -216,7 +228,9 @@ Jordas kornstørrelser, porer, sprekker og lagdeling påvirker hvor lett vann ka
 
 NIBIOs erosjonskart beskriver beregnet risiko for jordtap, ikke et sikkert varsel om neste regnskyll. Beregningene avhenger blant annet av terreng og jordegenskaper, og hovedkartet forutsetter høstpløying uten erosjonstiltak (NIBIO, 2023). Jordtap fra et dyrket areal og fare for kvikkleireskred er forskjellige spørsmål som trenger forskjellige opplysninger. Vi kan ikke bruke ett av kartene som en erstatning for det andre (NGU, u.å.-b, u.å.-c).
 
-[figur-4-11]: # (FIGURPLASSHOLDER 4.11: Egen skjematisk snittfigur av leirslette, ravine, bekk og jordbruksareal. Skill NIBIOs jordtap/erosjon fra NVE/NGUs kvikkleire- og grunnlagskart. Ikke tegn faregrenser uten konkrete kilder eller la manglende kartfarge bety trygg grunn.)
+```widget
+GeoLandskapLeirslette
+```
 
 ### Ressurser krever valg
 

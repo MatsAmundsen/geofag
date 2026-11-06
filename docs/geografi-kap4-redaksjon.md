@@ -1,5 +1,7 @@
 # Kapittel 4 – redaksjonell overlevering
 
+Oppdatert figurstatus etter Mats og DesignBOTs valg står i `geografi-kap4-mats-valg.md`. Resten av dette notatet dokumenterer første leveranse.
+
 ## Omfang og arbeidsgren
 
 - Kapittel: Ytre krefter og landskapet i Norge.

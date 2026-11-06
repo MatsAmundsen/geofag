@@ -1,0 +1,7 @@
+import{describe,it}from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';
+const read=(p:string)=>readFileSync(new URL(p,import.meta.url),'utf8');
+describe('Kapittel 6: vedtatte modeller og kontrollerte kart',()=>{
+ it('beholder den opprinnelige beregningen uten å gi Vg1 udokumentert returperiode',()=>{const s=read('../components/models/hydrograph-catchment-model.tsx');assert.match(s,/geografi = false/);assert.match(s,/geografi \? "Returperiode ikke beregnet" : hydroCalc.floodClass/);assert.match(s,/NVE \(2021\)/);assert.match(s,/const peakDischargeM3s = Math.round/);});
+ it('har fire manuelle trinn, lokator og fullstendig avgrenset NVE-uttrekk',()=>{const s=read('../components/geografi/naturfare-valg.tsx');for(const t of ['Neste steg','Forrige steg','Start på nytt','60.07163','Tomme områder betyr ikke trygg grunn'])assert.ok(s.includes(t),t);const d=JSON.parse(read('./geografi-gjerdrum-soner.json'));assert.equal(d.features.length,147);assert.ok(d.features.every((f:{properties:{kommune:string}})=>f.properties.kommune==='Gjerdrum'));assert.ok(d.features.some((f:{properties:{objekttype:string}})=>f.properties.objekttype==='UtlopOmr'));});
+ it('krever årlig kildekontroll av Nepal og unngår ulovlige detaljerte bakgrunnskart',()=>{assert.match(read('./posts/geo-naturfare.md'),/Årlig revisjon/);assert.match(read('../components/geografi/datakart-leaflet.tsx'),/maxZoom=\{11\}/);});
+});
