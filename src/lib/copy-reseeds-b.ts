@@ -6,6 +6,12 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    // Geografi: kapittel 7 alene; aktiveres først etter godkjent merge.
+    flag: "geo-ressurser-kap7-2026-11-06",
+    slug: "geo-ressurser",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
     // Nytt reseed: stasjonsnormaler erstatter øvingsdata, uten å endre tidligere flagg.
     flag: "geo-klima-normaler-blindern-1991-2020-2026-11-06",
     slug: "geo-klima",

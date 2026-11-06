@@ -1,3 +1,5 @@
+import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
+import { PetroleumTrapModel } from "@/components/models/resource-ore-petroleum-model";
 import { WindCellsDiagram } from "@/components/diagrams/wind";
 import { CoriolisDiagram } from "@/components/diagrams/coriolis";
 import { CarbonCycleDiagram } from "@/components/diagrams/spheres";
@@ -1469,6 +1471,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoRessursFornyelse: () => <GeografiRessursFornyelse />,
+  GeoRessursBergartBrudd: () => <FraBergartTilBruddDiagram geografi />,
+  GeoRessursPetroleum: () => <PetroleumTrapModel geografi />,
+  GeoRessursVindAvveining: () => <WindPowerTradeoffDiagram geografi />,
   GeoKlimaDiagram: () => <GeografiKlimadiagram />,
   GeoKlimaVindceller: () => <WindCellsDiagram geografi />,
   GeoKlimaCoriolis: () => <CoriolisDiagram geografi />,

@@ -223,6 +223,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "ressurser",
+    tekstKlar: true,
     slug: "geo-ressurser",
     title: "Naturressurser og arealbruk",
     navLabel: "Ressurser",
