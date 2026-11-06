@@ -1,3 +1,4 @@
+import { GeografiSkyveTrekk, GeografiFlyttingNorge, GeografiMigrasjonHistorie, GeografiInnvandringsgrunn, GeografiFlyktningerNaboland } from "@/components/geografi/migrasjon-diagrammer";
 import { GeografiVerdensbefolkning, GeografiDemografiskGrunnformel, GeografiNorgePyramider, GeografiLandPyramider, GeografiDemografiskOvergang, GeografiNorgeFruktbarhetAldring } from "@/components/geografi/befolkning-diagrammer";
 import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
@@ -1473,6 +1474,11 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoMigrasjonSkyveTrekk: () => <GeografiSkyveTrekk />,
+  GeoMigrasjonNorge: () => <GeografiFlyttingNorge />,
+  GeoMigrasjonHistorie: () => <GeografiMigrasjonHistorie />,
+  GeoMigrasjonInnvandringsgrunn: () => <GeografiInnvandringsgrunn />,
+  GeoMigrasjonFlyktninger: () => <GeografiFlyktningerNaboland />,
   GeoBefolkningVerden: () => <GeografiVerdensbefolkning />,
   GeoBefolkningGrunnformel: () => <GeografiDemografiskGrunnformel />,
   GeoBefolkningNorgePyramider: () => <GeografiNorgePyramider />,

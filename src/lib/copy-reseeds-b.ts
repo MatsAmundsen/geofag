@@ -6,6 +6,12 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    // Geografi: kapittel 11 alene; ingen produksjonsinnlasting før godkjent merge.
+    flag: "geo-migrasjon-kap11-2026-11-06",
+    slug: "geo-migrasjon",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
     // Geografi: kapittel 10 alene; ingen produksjonsinnlasting før godkjent merge.
     flag: "geo-befolkning-kap10-2026-11-06",
     slug: "geo-befolkning",

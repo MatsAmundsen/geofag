@@ -1,0 +1,57 @@
+{
+  "query": [
+    {
+      "code": "Innvandringsgrunn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "00",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06"
+        ]
+      }
+    },
+    {
+      "code": "Lanbakgrunn",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "8",
+          "9"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Personer"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2015",
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}
