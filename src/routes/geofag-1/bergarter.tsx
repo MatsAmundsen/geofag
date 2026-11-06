@@ -25,8 +25,8 @@ function BergarterPage() {
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
-        to: "/geofag-1/jordskjelv-naturfare",
-        label: "Forrige: Jordskjelv og tsunamier som naturfare",
+        to: "/geofag-1/tsunami",
+        label: "Forrige: Tsunami",
       }}
       next={{
         to: "/geofag-1/geologisk-tid",

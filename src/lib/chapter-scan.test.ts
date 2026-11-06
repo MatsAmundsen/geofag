@@ -212,8 +212,12 @@ describe("scan chips for the other geosfære chapters", () => {
         "Plategrenser",
         "Bølger",
         "Måling",
+        "Skader",
+        "Varsling",
+        "Frekvens",
         "Jordas indre",
         "Norge",
+        "Risiko",
         "Begreper",
         "Sammendrag",
         "Quiz",
@@ -222,7 +226,22 @@ describe("scan chips for the other geosfære chapters", () => {
     const fare = prepareChapterScan(readChapter("jordskjelv-naturfare"));
     assert.deepEqual(
       fare.sections.map((section) => section.label),
-      ["Tsunami", "Skader", "Varsling", "Risiko", "Begreper", "Sammendrag", "Quiz"],
+      [
+        "Tsunami",
+        "Utløsere",
+        "Fart",
+        "Land",
+        "Norge",
+        "Storegga",
+        "Verden",
+        "Varsling",
+        "Åknes",
+        "Vern",
+        "Fordypning",
+        "Begreper",
+        "Sammendrag",
+        "Quiz",
+      ],
     );
   });
 

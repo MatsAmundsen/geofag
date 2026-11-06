@@ -21,7 +21,7 @@ function JordskjelvPage() {
     <TopicLayout
       kicker={`Geofag 1 · ${tema.kicker}`}
       title={tema.title}
-      lead="Et jordskjelv er et plutselig brudd der spenning som har bygd seg opp i fjellet, blir utløst. Energien sprer seg som seismiske bølger, og de samme bølgene som rister husene, forteller oss hvordan jorda ser ut innvendig. Her lærer du hvordan jordskjelv oppstår og måles, hvor de skjer, hva bølgene avslører om jordas indre, og hvorfor Norge skjelver."
+      lead="Et jordskjelv er et plutselig brudd der spenning som har bygd seg opp i fjellet, blir utløst. Energien sprer seg som seismiske bølger. De samme bølgene rister hus, viser hvordan jorda er bygd, og inngår i fare og risiko. Her lærer du hvordan jordskjelv oppstår og måles, hvilke skader de gjør, om de kan varsles, og hvordan risiko kan vurderes."
       banner={tema.image}
       bannerAlt={tema.alt}
       prev={{
@@ -29,8 +29,8 @@ function JordskjelvPage() {
         label: "Forrige: Vulkaner",
       }}
       next={{
-        to: "/geofag-1/jordskjelv-naturfare",
-        label: "Neste: Jordskjelv og tsunamier som naturfare",
+        to: "/geofag-1/tsunami",
+        label: "Neste: Tsunami",
       }}
       kilder={KILDER.jordskjelv}
       posterSlug="jordskjelv"

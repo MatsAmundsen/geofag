@@ -115,7 +115,7 @@ Kontinuerlig overvåking bruker minst to uavhengige målesystemer. NVE varsler e
 
 Åknes er et ustabilt fjellparti på vestsiden av Sunnylvsfjorden i Stranda kommune. Faren har vært kjent siden 1960-tallet. Et skred kan gi store flodbølger i Storfjordområdet, og fjellpartiet overvåkes kontinuerlig for å kunne varsle i tide (NVE, 2026b).
 
-Hvor høyt en slik flodbølge kan nå, viste Tafjordulykka 7. april 1934. Om lag 3 millioner kubikkmeter stein raste ut i fjorden, og bølgene nådde på det meste 61 høydemeter opp på land. 40 mennesker omkom (NVE, u.å.-a). I Loen raste fjellskred fra Ramnefjellet ut i Lovatnet i 1905 og 1936. Flodbølgene gikk 40 og 74 høydemeter opp på land, og 61 og 73 mennesker omkom (NVE, u.å.-a). Flodbølger fra fjellskred står bak de største enkeltulykkene med skred i Norge. Mer om flodbølger og tsunamier står i kapitlet [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare).
+Hvor høyt en slik flodbølge kan nå, viste Tafjordulykka 7. april 1934. Om lag 3 millioner kubikkmeter stein raste ut i fjorden, og bølgene nådde på det meste 61 høydemeter opp på land. 40 mennesker omkom (NVE, u.å.-a). I Loen raste fjellskred fra Ramnefjellet ut i Lovatnet i 1905 og 1936. Flodbølgene gikk 40 og 74 høydemeter opp på land, og 61 og 73 mennesker omkom (NVE, u.å.-a). Flodbølger fra fjellskred står bak de største enkeltulykkene med skred i Norge. Mer om flodbølger og tsunamier står i kapitlet [Tsunami](/geofag-1/tsunami).
 
 ```widget
 FjellskredBolge
