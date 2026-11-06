@@ -320,12 +320,20 @@ const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").th
 const GeografiKap1Figur = lazy(() =>
   import("@/components/geografi/kap1-figurer").then((m) => ({ default: m.GeografiKap1Figur })),
 );
+const GeografiKap2Figur = lazy(() =>
+  import("@/components/geografi/kap2-figurer").then((m) => ({ default: m.GeografiKap2Figur })),
+);
 const GEOGRAFI_KAP1_IDER = [
   "GeoKart1Monster", "GeoKart1Mercator", "GeoKart1GallPeters", "GeoKart1Gradnett", "GeoKart1Hoydekurver",
   "GeoKart1Temakart", "GeoKart1Mentalt", "GeoKart1BlueMarble", "GeoKart1GisLag", "GeoKart1Snow", "GeoKart1ToKart",
 ] as const;
+const GEOGRAFI_KAP2_IDER = [
+  "GeoFelt2Utvalg", "GeoFelt2Steg", "GeoFelt2Plan", "GeoFelt2Metoder", "GeoFelt2Feltlogg",
+  "GeoFelt2Punktkart", "GeoFelt2Diagram", "GeoFelt2Feilkilder", "GeoFelt2Sikkerhet", "GeoFelt2Mikroklima",
+] as const;
 const GEOGRAFI_WIDGETS: Record<string, () => JSX.Element> = Object.fromEntries([
   ...GEOGRAFI_KAP1_IDER.map((id) => [id, () => <GeografiKap1Figur id={id} />]),
+  ...GEOGRAFI_KAP2_IDER.map((id) => [id, () => <GeografiKap2Figur id={id} />]),
 ]);
 
 function TsunamiLaster({ children }: { children: JSX.Element }) {

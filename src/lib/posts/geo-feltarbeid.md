@@ -26,7 +26,9 @@ Etter kapitlet kan du
 
 Målene bygger på feltarbeid og bruk av kilder og kart i KM486 og KM487 (Udir, u.å.).
 
-[figur-2-0]: # (FIGURPLASSHOLDER 2.0: Stikkprøvepunkter i nærmiljøet. Se docs/geografi-kap2-redaksjon.md.)
+```widget
+GeoFelt2Utvalg
+```
 
 ### Tenk over
 
@@ -44,7 +46,9 @@ En tur til et sted og et feltarbeid kan derfor ha forskjellig formål og oppbygg
 
 Vi organiserer arbeidet i fire steg: planlegge, samle, bearbeide og presentere med vurdering av resultatene. Dette er kapitlets arbeidsmodell, ikke en regel om at alle undersøkelser følger nøyaktig samme rekkefølge. I kvalitative undersøkelser kan for eksempel nye opplysninger føre til at spørsmål og metode blir justert underveis (Grønmo, 2025). Når vi endrer opplegget, skriver vi ned hva som er endret, og hvorfor vi gjorde det.
 
-[figur-2-1]: # (FIGURPLASSHOLDER 2.1: Planlegge, samle, bearbeide og presentere med vurdering.)
+```widget
+GeoFelt2Steg
+```
 
 Vi kan undersøke både naturforhold og menneskers bruk av et område innenfor geografifaget (Udir, u.å.). Velg for eksempel et spørsmål om arealbruk, et nærmiljø eller temperaturforskjeller på skoleområdet. Skolebasert feltarbeid kan organiseres rundt blant annet kartlegging, observasjoner og undersøkelser av lokale værforhold (Royal Geographical Society [RGS], u.å.-a). Eksemplene her er forslag til skolearbeid, ikke undersøkelser som allerede er gjennomført.
 
@@ -75,7 +79,9 @@ Lag planen før dere går ut, og prøv skjema og utstyr mens dere fortsatt er p�
 | Etikk | Hvem som berøres, nødvendig informasjon og hvordan opplysninger håndteres. |
 | Etterarbeid | Hvordan materialet skal bearbeides, vurderes og presenteres. |
 
-[figur-2-2]: # (FIGURPLASSHOLDER 2.2: Visuell planleggingsmal. Tabell og CSV finnes som tekstalternativ.)
+```widget
+GeoFelt2Plan
+```
 
 [Last ned planleggingsmalen som CSV](/downloads/geografi-feltarbeid-plan.csv). Filen er en tom, semikolondelt arbeidsmal for regneark, med de samme feltene som i tabellen. Den erstatter ikke skolens sikkerhetsvurdering eller nødvendige avklaringer før et feltarbeid. Bruk lærerens instruksjoner dersom skolens opplegg har andre krav eller maler.
 
@@ -114,7 +120,9 @@ Planlegg en kort innledning som forklarer hvem dere er, formålet og hvordan sva
 
 Foto kan brukes som dokumentasjon sammen med notater, men mennesker som kan gjenkjennes, krever særskilt omtanke. Datatilsynet beskriver krav til samtykke ved bilder i skolens regi og ved publisering av gjenkjennelige personer (Datatilsynet, 2020). Velg derfor i dette opplegget bilder av terreng, overflater og kartutsnitt uten identifiserbare personer. Avklar fotografering og eventuell deling med læreren; tillatelse til å delta er ikke automatisk tillatelse til publisering.
 
-[figur-2-3]: # (FIGURPLASSHOLDER 2.3: Metodeoversikt for observasjon, telling, måling, intervju, foto og posisjon.)
+```widget
+GeoFelt2Metoder
+```
 
 ### Feltlogg: sted, tid og metode
 
@@ -128,11 +136,15 @@ Satellittbasert posisjonsbestemmelse bruker systemer som GPS, og resultatet påv
 |---|---|---|---|---|---|
 | A | Fyll inn koordinater, system og stedsbeskrivelse | Fyll inn dato og lokalt klokkeslett med tidssone | Fyll inn verdi eller beskrivelse | Fyll inn framgangsmåte og eventuell måleenhet | Noter usikkerhet, endringer og bilde-ID ved behov |
 
-[figur-2-4]: # (FIGURPLASSHOLDER 2.4: Georeferert feltlogg. Eksisterende feltmodell må vurderes for Vg1 før innbygging.)
+```widget
+GeoFelt2Feltlogg
+```
 
 [Last ned en tom feltlogg som CSV](/downloads/geografi-feltarbeid-feltlogg.csv). Malen har felt for målepunkt, sted, tid, registrering, metode og usikkerhet, men inneholder ingen innsamlede data. Bruk samme punkt-ID i skjemaet, på kartet og i filnavnene dersom dere dokumenterer med bilder. Ta vare på originalnotatene, slik at bearbeidingen kan etterprøves senere i arbeidet (FEK, 2019).
 
-[figur-2-5]: # (FIGURPLASSHOLDER 2.5: Målepunkter og eventuelt GPS-spor. Ingen private posisjonsdata.)
+```widget
+GeoFelt2Punktkart
+```
 
 ## Sikkerhet og etikk
 
@@ -153,7 +165,9 @@ Denne grunnøvelsen skal ikke innebære vading, arbeid i skredterreng eller regi
 | Hva hvis noe endrer seg? | Når vi stopper, trekker oss tilbake og kontakter ansvarlig voksen. |
 | Hva er alternativet? | Et annet sted, en annen metode eller arbeid med tilgjengelige data på skolen. |
 
-[figur-2-8]: # (FIGURPLASSHOLDER 2.8: Sikkerhet og etikk. Teksttabell finnes. Ingen automatisk sikkerhetsskår.)
+```widget
+GeoFelt2Sikkerhet
+```
 
 ### Personvern er en del av planen
 
@@ -176,7 +190,9 @@ I en tallundersøkelse kan vi bruke en tabell til å sammenlikne registreringer 
 Vi kan også knytte de registrerte opplysningene til målepunktene på kartet som ble brukt i felt. Et **kartlag** samler opplysninger om et tema i kartet, som vi lærte i kapittel 1.
 I [Kilden](https://kilden.nibio.no/) kan vi undersøke kartlag, lese objektinformasjon og sammenlikne lag over det samme området (NIBIO, u.å.). Et enkelt skoleopplegg kan bruke egne punktkoder på en kartskisse sammen med en tabell ved siden av. Ikke last opp eller del posisjonsfiler med private opplysninger bare for å gjøre framstillingen mer detaljert.
 
-[figur-2-6]: # (FIGURPLASSHOLDER 2.6: Fra feltlogg til diagram og kart. Bruk de tydelig konstruerte øvingstallene.)
+```widget
+GeoFelt2Diagram
+```
 
 Kvalitative notater kan ordnes ved at vi markerer utsagn og samler innhold som handler om lignende temaer. Denne typen **koding** betyr å merke deler av materialet med kategorier som støtter analysen (Grønmo, 2025). I et skoleprosjekt kan vi for eksempel gruppere beskrivelser under «tilgjengelighet», «møteplass» og «opplevd støy». Kategoriene er våre forslag; behold også utsagn som utfordrer mønsteret dere først trodde at dere så.
 
@@ -186,7 +202,9 @@ En **feilkilde** er et forhold som kan gjøre registreringene eller tolkningen m
 
 **Validitet** (validity), eller gyldighet, handler om hvor godt dataene belyser problemstillingen og støtter slutningene våre. En undersøkelse kan ha pålitelige registreringer, men likevel lav gyldighet dersom registreringene gjelder noe annet enn spørsmålet (Grønmo et al., u.å.). Tenk at vi vil undersøke om folk liker et sted, men bare teller passeringer ved inngangen. Selv en helt korrekt telling besvarer ikke direkte spørsmålet om hva menneskene mener om stedet.
 
-[figur-2-7]: # (FIGURPLASSHOLDER 2.7: Feilkilder, reliabilitet og validitet med konkrete forbedringstiltak.)
+```widget
+GeoFelt2Feilkilder
+```
 
 Knytt hver aktuell feilkilde til en mulig virkning og et forslag til forbedring av opplegget. Hvis vi har registrert ved ulike tidspunkt, må vi undersøke om både tid og sted varierer samtidig. Hvis kategoriene er uklare, kan vi prøve dem sammen på nytt og beskrive hvordan registreringen kan forbedres. Slike vurderinger bygger på sammenliknbar datainnsamling og et bevisst forhold til utvalg og datakvalitet (Grønmo, 2024; RGS, u.å.-d).
 
@@ -201,7 +219,9 @@ En undersøkelse av **mikroklima** tar her for seg lokale værforhold innenfor e
 
 Gjennomsnittet for A blir summen 30,6 delt på tre registreringer, altså 10,2 grader Celsius. For B blir summen 33,6 delt på tre, som gir 11,2 grader Celsius i øvingen. Forskjellen mellom gjennomsnittene er dermed 1,0 grad, uten at dette er et faktisk funn fra feltarbeid. Tabellen lar oss øve på beregning og presentasjon, men kan ikke fortelle noe om en virkelig skolegård.
 
-[figur-2-9]: # (FIGURPLASSHOLDER 2.9: Mikroklima-case med egne øvingstall, ikke faktiske observasjoner.)
+```widget
+GeoFelt2Mikroklima
+```
 
 Ved en virkelig undersøkelse må dere dokumentere betingelsene som gjør målingene sammenliknbare, inkludert sensorplassering og solskjerming. Temperatur varierer i tid og rom, og plasseringen av måleren kan påvirke resultatene (Pedersen, 2012). Sammenlikninger må derfor bygge på en gjennomtenkt metode, ikke bare forskjellen mellom to tall i tabellen. Hvilke ekstra notater ville dere trengt for å vurdere om en registrert forskjell var knyttet til sted eller metode?
 

@@ -214,12 +214,24 @@ describe("Geografi kapittel 2: feltarbeid (PR C)", () => {
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|Tekst, figurer og oppgaver kommer/i);
   });
 
-  it("bevarer ti skjulte figurplasser uten avhengighet av manglende figurer", () => {
-    const placeholders = [...md.matchAll(/^\[figur-2-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
-    assert.deepEqual(
-      placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      Array.from({ length: 10 }, (_, i) => i),
-    );
+  it("har ti figurer som widgets og ingen synlige redaktørnotater", () => {
+    const widgets = [...md.matchAll(/^```widget\n(GeoFelt2\w+)\n```$/gm)].map((m) => m[1]);
+    assert.deepEqual(widgets, [
+      "GeoFelt2Utvalg",
+      "GeoFelt2Steg",
+      "GeoFelt2Plan",
+      "GeoFelt2Metoder",
+      "GeoFelt2Feltlogg",
+      "GeoFelt2Punktkart",
+      "GeoFelt2Sikkerhet",
+      "GeoFelt2Diagram",
+      "GeoFelt2Feilkilder",
+      "GeoFelt2Mikroklima",
+    ]);
+    assert.doesNotMatch(md, /FIGURPLASSHOLDER/);
+    const renderer = read("../components/poster-widget-renderer.tsx");
+    for (const id of widgets) assert.ok(renderer.includes(`"${id}"`), id);
+    assert.match(renderer, /lazy\(\(\) =>\s+import\("@\/components\/geografi\/kap2-figurer"\)/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap2-redaksjon|figur-2-/);
     assert.match(html, /Mikroklima som skoleundersøkelse/);
