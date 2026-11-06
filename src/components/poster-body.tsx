@@ -1,3 +1,4 @@
+import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
 import { PetroleumTrapModel } from "@/components/models/resource-ore-petroleum-model";
 import { WindCellsDiagram } from "@/components/diagrams/wind";
@@ -1471,6 +1472,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoNaeringStruktur: () => <GeografiNaeringsstruktur />,
+  GeoNaeringLokalisering: () => <GeografiLokaliseringsfaktorer />,
+  GeoNaeringRingvirkninger: () => <GeografiRingvirkninger />,
+  GeoNaeringVerdikjede: () => <GeografiTelefonVerdikjede />,
   GeoRessursFornyelse: () => <GeografiRessursFornyelse />,
   GeoRessursBergartBrudd: () => <FraBergartTilBruddDiagram geografi />,
   GeoRessursPetroleum: () => <PetroleumTrapModel geografi />,
