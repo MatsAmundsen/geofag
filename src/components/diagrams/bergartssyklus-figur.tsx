@@ -428,13 +428,14 @@ function useFlateBredde(svgRef: RefObject<SVGSVGElement | null>) {
   return bredde;
 }
 
-export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }: { heading?: string; caption?: React.ReactNode }) {
+export function BergartssyklusFigur({ geografi = false, heading = geografi ? "Figur 3.10: Bergartenes kretsløp" : SYKLUS_TEKST.heading, caption }: { geografi?: boolean; heading?: string; caption?: React.ReactNode }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const bredde = useFlateBredde(ref);
   const [ruteNr, setRuteNr] = useState(0);
   const [fokus, setFokus] = useState<Fokus>(null);
   const [valgNr, setValgNr] = useState(0);
-  const rute = RUTER[ruteNr];
+  const routes = geografi ? RUTER.slice(0, 1) : RUTER;
+  const rute = routes[ruteNr];
   const antall = Math.max(1, rute.kanter.length);
   const tl = useTidslinje({ antall, synlig: visible, faseMs: 2600, holdMs: 1500, element: ref });
   // bred figur: samme snitt, men kvadratisk utsnitt så den ikke blir for høy på store skjermer
@@ -515,12 +516,12 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
         svgGruppe={`${heading}: stasjoner og piler du kan trykke på`}
         title={SYKLUS_TEKST.title}
         heading={heading}
-        caption={caption ?? SYKLUS_TEKST.caption}
+        caption={caption ?? (geografi ? "Flere mulige veier mellom magma, sediment og bergarter. Omdanning skjer uten smelting. Heving endrer plasseringen, ikke automatisk bergartsgruppen. Ingen bergart må gjennom alle stasjonene (NGU, u.å.-c; USGS, u.å.-i)." : SYKLUS_TEKST.caption)}
         playing={tl.livePlaying}
         action={<PlayPauseToggle isPlaying={tl.playing} onToggle={tl.toggle} name={heading} />}
         toolbar={
           <div className="flex w-full flex-col gap-2 [&_button]:text-sm">
-            <StegVelger labels={RUTER.map((r) => r.navn)} step={ruteNr + 1} onStep={(n) => velgRute(n - 1)} label="Følg en vei" />
+            <StegVelger labels={routes.map((r) => r.navn)} step={ruteNr + 1} onStep={(n) => velgRute(n - 1)} label="Følg en vei" />
             {rute.kanter.length > 1 ? (
               <TidslinjeKontroller tl={tl} faser={rute.kanter.map((id) => kant(id).tittel)} aktivFase={fokusSteg} />
             ) : null}
@@ -531,7 +532,7 @@ export function BergartssyklusFigur({ heading = SYKLUS_TEKST.heading, caption }:
         notes={["Skjematisk, uten målestokk", "Trykk på en stasjon eller pil for forklaring"]}
         viewBox={vb}
         forceNarrow={!bred}
-        below={
+        below={geografi ? <p className="mt-3 text-sm text-muted-foreground">Velg en prosess eller stasjon. Forklaringene gjelder generelle dannelsesmåter, ikke en dokumentert rute for én bestemt norsk bergart (NGU, u.å.-c; USGS, u.å.-i).</p> :
           <div className="mt-3 rounded-lg border border-border bg-muted/40 px-3 py-2 text-sm leading-snug text-foreground">
             <p className="font-medium">Fra kapitlet</p>
             <p className="text-muted-foreground">{kilde}</p>

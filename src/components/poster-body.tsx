@@ -1,3 +1,10 @@
+import { GeografiTidsskala } from "@/components/geografi/indre-valg";
+import { GeografiBerggrunnSkisse } from "@/components/geografi/indre-valg";
+import { GeografiReykjanes } from "@/components/geografi/indre-valg";
+import { GeografiTyrkiaKart } from "@/components/geografi/indre-valg";
+import { GeografiTsunamiSteg } from "@/components/geografi/indre-valg";
+import { GeografiRiftHav } from "@/components/geografi/indre-valg";
+import { GeografiPlateKart } from "@/components/geografi/indre-valg";
 import { GeografiLokalFotavtrykk } from "@/components/geografi/baerekraft-valg";
 import { GeografiHdiBnp } from "@/components/geografi/baerekraft-valg";
 import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
@@ -339,6 +346,13 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoIndreTidsskala: () => <GeografiTidsskala />,
+  GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
+  GeoIndreReykjanes: () => <GeografiReykjanes />,
+  GeoIndreTyrkiaKart: () => <GeografiTyrkiaKart />,
+  GeoIndreTsunami: () => <GeografiTsunamiSteg />,
+  GeoIndreRiftHav: () => <GeografiRiftHav />,
+  GeoIndrePlateKart: () => <GeografiPlateKart />,
   GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
   GeoHdiBnp: () => <GeografiHdiBnp />,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
@@ -1478,6 +1492,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoJordasLag: () => <EarthLayersDiagram geografi />,
+  GeoPlateGrenser: () => <BoundaryOverviewDiagram geografi />,
+  GeoPlateModell: () => <PlateTectonicsModel geografi />,
+  GeoJordskjelvBrudd: () => <ElasticReboundDiagram geografi />,
+  GeoVulkanModell: () => <VolcanoModel geografi />,
+  GeoBergartssyklus: () => <BergartssyklusFigurLat geografi heading="Figur 3.10: Bergartenes kretsløp" caption="Flere mulige veier mellom magma, sediment og bergarter. Omdanning skjer uten smelting. Heving endrer plasseringen, ikke automatisk bergartsgruppen. Ingen bergart må gjennom alle stasjonene (NGU, u.å.-c; USGS, u.å.-i)." />,
   GeoBaerekraftTre: () => <BaerekraftTreFigur geografi />,
   GeoNaturfareSkredSoner: () => <SkredSonerDiagram caption="Figur 6.3: Materialet løsner, beveger seg og avsettes i et utløpsområde. Også steder nedenfor løsneområdet kan bli rammet. Skissen viser et forenklet skred i bratt terreng, ikke en farevurdering av en bestemt skråning (NVE, 2024b)." />,
   GeoNaturfareKvikkleire: () => <KvikkleireDiagram caption="Figur 6.4: En bekk kan fjerne støtte i skråningsfoten. Når leire glir ut, kan bakkanten miste støtte. Nye utglidninger kan dermed spre skredet bakover. Dette er en forenklet prosesskisse, ikke et kart over Gjerdrum (Gjerdrumutvalget, 2021, s. 8–11; NVE, 2026)." />,

@@ -74,7 +74,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -162,7 +162,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 4);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 5);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -386,5 +386,58 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
   it("registrerer tekstklar side og engangsreseed", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-baerekraft-kap8-2026-11-06"/);
     assert.match(read("geografi-kapitler.ts"), /path: "baerekraft",\s+tekstKlar: true/);
+  });
+});
+
+describe("Geografi kapittel 3: indre krefter (PR F)", () => {
+  const md = read("posts/geo-indre-krefter.md");
+  const sources = read("kilder-geografi.ts").split('"geo-indre-krefter": [')[1].split('"geo-landskap"')[0];
+  const widgets = ["GeoJordasLag", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoVulkanModell", "GeoBergartssyklus"];
+  it("dekker ni underkapitler, kompetansemål og hele kapittelmalen", () => {
+    for (const title of ["Geologisk tid", "Jordas oppbygning", "Platetektonikk", "Jordskjelv", "Vulkaner", "Tsunamier", "Bergarter", "Norges berggrunn", "Ressurser i aktive områder", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    assert.match(md, /Hovedmål, KM480/);assert.match(md, /KM483/);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## Da bakken åpnet seg"));
+    assert.ok(md.indexOf("I dette kapitlet skal vi") < md.indexOf("## Læringsmål"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 7);assert.equal((md.match(/^c\. /gm) ?? []).length, 7);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid/i);
+  });
+  it("har én skjult markør og tretten registrerte Vg1-figurer", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [1]);
+    for (const widget of widgets) {
+      assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
+      assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
+    }
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap3-redaksjon|figur-3-/);
+    assert.doesNotMatch(md, /[Ss]e figur 3\.(?:0|1|3|5|9|11|12|13)\b/);
+  });
+  it("har 27 verifiserte kilder uten lærebok- eller bibliotekhenvisninger", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 27);
+    for (const domain of ["ngu.no", "usgs.gov", "noaa.gov", "norskpetroleum.no", "udir.no", "vedur.is"]) assert.ok(sources.includes(domain), domain);
+    assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
+    for (const suffix of ["a", "b", "c", "d", "e", "f", "g", "h", "i"]) assert.ok(md.includes(`u.å.-${suffix}`), suffix);
+    for (const citation of ["Wald, u.å.", "USGS, 2020", "USGS, 2023", "Veðurstofa Íslands, 2023", "Norskpetroleum.no, 2024", "NOAA, u.å.-a", "NOAA, u.å.-b"]) assert.ok(md.includes(citation), citation);
+  });
+  it("daterer caser og skiller prinsipper fra målinger, skade og varsling", () => {
+    for (const phrase of ["4,54 milliarder", "6. februar 2023", "magnitude 7,8 og 7,5", "18. desember og sluttet 21. desember 2023", "ikke informasjon om hvilke områder som er trygge", "ikke 32 ganger større skade", "øvingstall, ikke en måling", "Omdanningen skjer i fast tilstand", "alle bergarter følger ikke samme rute"]) assert.ok(md.includes(phrase), phrase);
+    assert.doesNotMatch(md, /mantelen er flytende|forutsi nøyaktig når/);
+  });
+  it("gjenbruker modellene med Vg1-modus og bevarer G1 som standard", () => {
+    const plate = read("../components/models/plate-tectonics-model.tsx");const volcano = read("../components/models/volcano-model.tsx");
+    assert.match(plate, /geografi = false/);assert.match(plate, /geografi \? <GeografiPlateTectonicsModel \/> : <AdvancedPlateTectonicsModel \/>/);
+    assert.match(plate, /onClick=\{\(\) => setBoundary\(item.id\)\}/);assert.match(volcano, /geografi \? <GeografiVolcanoModel \/> : <AdvancedVolcanoModel/);
+    assert.match(volcano, /<VolcanoTypesDiagram geografi selected=\{scenario\}/);
+    assert.match(read("../components/diagrams/quake-motion.tsx"), /geografi \? 3 : 5/);
+    assert.match(read("../components/diagrams/bergartssyklus-figur.tsx"), /geografi \? RUTER.slice\(0, 1\) : RUTER/);
+    assert.match(read("../components/poster-body.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
+    assert.match(read("../components/poster-body.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
+  });
+  it("har reseed og tekststatus uten å aktivere kapitlene 4 og 5", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-indre-krefter-kap3-2026-11-06",\s+slug: "geo-indre-krefter"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "indre-krefter",\s+tekstKlar: true/);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "(?:landskap|klima)",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-landskap.md"), /under arbeid/i);assert.match(read("posts/geo-klima.md"), /under arbeid/i);
   });
 });
