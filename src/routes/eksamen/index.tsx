@@ -7,7 +7,7 @@ import { Kildeliste } from "@/components/kildeliste";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { listExamMeta } from "@/lib/eksamen/load";
+import { listExamMeta, type ExamMeta } from "@/lib/eksamen/load";
 import { KILDER } from "@/lib/kilder";
 import { topicHead } from "@/lib/seo";
 
@@ -221,7 +221,7 @@ function EksamenIndex() {
 
             {visSett ? (
             <ul id="eksamenssett-liste" className="mt-8 space-y-4">
-              {sets.map((set) => {
+              {sets.map((set: ExamMeta) => {
                 const n = set.solutionCount;
                 return (
                   <li

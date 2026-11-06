@@ -27,13 +27,19 @@ function breadcrumbsForPath(path: string, title: string): Breadcrumb[] {
 
   if (path === "/") return crumbs;
 
-  if (path === "/geofag-1" || path === "/geofag-2") {
+  if (path === "/geofag-1" || path === "/geofag-2" || path === "/geografi") {
     crumbs.push({ name: label, path });
     return crumbs;
   }
 
   if (path.startsWith("/geofag-1")) {
     crumbs.push({ name: "Geofag 1", path: "/geofag-1" });
+    crumbs.push({ name: label, path });
+    return crumbs;
+  }
+
+  if (path.startsWith("/geografi/")) {
+    crumbs.push({ name: "Geografi", path: "/geografi" });
     crumbs.push({ name: label, path });
     return crumbs;
   }

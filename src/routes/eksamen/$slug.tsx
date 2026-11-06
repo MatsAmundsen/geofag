@@ -155,7 +155,7 @@ function ExamSetPage() {
 
           {view === "oppgaver" ? (
             <ol className="mt-10 space-y-8">
-              {set.tasks.map((task) => (
+              {set.tasks.map((task: ExamTask) => (
                 <TaskCard
                   key={task.number}
                   slug={set.slug}
@@ -172,7 +172,7 @@ function ExamSetPage() {
                 Hver oppgave vises med spørsmålet først, deretter fasit, forklaring og figurer.
               </p>
               <ol className="mt-8 space-y-10">
-                {set.tasks.map((task) => (
+                {set.tasks.map((task: ExamTask) => (
                   <SolutionCard
                     key={task.number}
                     slug={set.slug}

@@ -1,4 +1,4 @@
-import { GF1_THEMES, GF2_THEMES, KLIMA_SUBTHEMES } from "./nav.ts";
+import { GF1_THEMES, GF2_THEMES, GEO_THEMES, KLIMA_SUBTHEMES } from "./nav.ts";
 
 /** Metadata for a chapter that has a hybrid CMS post. No markdown bodies here — keep this module client-safe. */
 export type ChapterPostMeta = {
@@ -34,6 +34,7 @@ export const CHAPTER_POST_META: ChapterPostMeta[] = [
   ...fromThemes(GF1_THEMES),
   ...fromThemes(GF2_THEMES),
   ...fromThemes(KLIMA_SUBTHEMES),
+  ...fromThemes(GEO_THEMES),
 ];
 
 export function posterSlugForPath(pathname: string): string | undefined {
@@ -47,6 +48,8 @@ export function chapterMetaBySlug(slug: string): ChapterPostMeta | undefined {
 
 export function chapterSourceFile(path: string): string {
   if (path === "/tema/klima") return "src/routes/tema/klima/index.tsx";
+  if (path === "/geografi") return "src/routes/geografi/index.tsx";
+  if (path.startsWith("/geografi/")) return "src/routes/geografi/$kapittel.tsx";
   return `src/routes${path}.tsx`;
 }
 
