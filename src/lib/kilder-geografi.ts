@@ -4,6 +4,24 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-verktoy": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Topografisk rasterkart WMTS",
+      suffix: " [Kart]. Utsnitt ved Gjende, zoom 11. Fire fliser sammenstilt 6. november 2026. © Kartverket, CC BY 4.0.",
+      href: "https://cache.kartverket.no/v1/service?layer=toporaster&service=WMTS&request=GetCapabilities",
+    },
+    {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Vilkår for bruk av Kartverkets opne data",
+      suffix: ". CC BY 4.0 og avgrensninger for detaljerte eksterne lag. Hentet 6. november 2026.",
+      href: "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    },
+    {
+      prefix: "PROJ contributors. (u.å.). ",
+      italic: "Equal Area Cylindrical",
+      suffix: ". Sfærisk projeksjon med standardparallell 45°. Hentet 6. november 2026.",
+      href: "https://proj.org/en/stable/operations/projections/cea.html",
+    },
+    {
       prefix: "Field, K. (2020, 3. desember). ",
       italic: "Something in the water: the mythology of Snow’s map of cholera",
       suffix: ". Esri.",
@@ -344,6 +362,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-klima": [] as const,
   "geo-naturfare": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Sentralt stedsnavnregister",
+      suffix: " [Datasett]. Representasjonspunkt for Ask tettsted i Gjerdrum. CC BY 4.0, uttrekk 6. november 2026.",
+      href: "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Ask&fuzzy=false",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Kvikkleire WMS",
+      suffix: " [Datasett]. NLOD. Utvalgte soner merket Gjerdrum, uttrekk 6. november 2026.",
+      href: "https://kartkatalog.geonorge.no/metadata/kvikkleire/f8007522-2b73-4702-bb97-50c720e5c3f8",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2021, 1. september). ",
+      italic: "Forklaring til sanntidsgrafene",
+      suffix: ". Forklarer gjentaksintervall, ikke kalibrering av undervisningsmodellen.",
+      href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/historiske-data/forklaring-til-sanntidsgrafene/",
+    },
+    {
       prefix: "Bjerknessenteret. (u.å.). ",
       italic: "Tropiske sykloner",
       suffix: ". Hentet 6. november 2026.",
@@ -428,7 +464,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.nve.no/naturfare/laer-om-naturfare/om-skred/kva-er-kvikkleire-og-kvikkleireskred/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.-a). ",
       italic: "Historiske fjellskred i Norge",
       suffix: ". Hentet 6. november 2026.",
       href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
@@ -532,6 +568,30 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-ressurser": [] as const,
   "geo-baerekraft": [
+    {
+      prefix: "Global Footprint Network. (u.å.-e). ",
+      italic: "Free Public Data Set: National Footprint and Biocapacity Accounts 2026",
+      suffix: ". Hentet 6. november 2026. Vilkår kontrollert; ingen data importert.",
+      href: "https://footprintnetwork.org/licenses/public-data-package-free/",
+    },
+    {
+      prefix: "World Bank. (u.å.). ",
+      italic: "GDP per capita, PPP (constant 2021 international $) (NY.GDP.PCAP.PP.KD)",
+      suffix: ". World Development Indicators. Observasjonsår 2023. Hentet 6. november 2026. CC BY 4.0.",
+      href: "https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD",
+    },
+    {
+      prefix: "United Nations Development Programme. (2025). ",
+      italic: "Human Development Report 2025: Composite indices, complete time series",
+      suffix: ". Observasjonsår 2023. CC BY 3.0 IGO.",
+      href: "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    },
+    {
+      prefix: "Engedal, M. I. A., Rothe, J. S., & Lyle, C. (2021, 13. desember). ",
+      italic: "Mer utslipp for hver kilometer reist",
+      suffix: ". Statistisk sentralbyrå. Tabell 1, observasjoner 2020.",
+      href: "https://www.ssb.no/natur-og-miljo/forurensning-og-klima/artikler/mer-utslipp-for-hver-kilometer-reist",
+    },
     {
       prefix: "Baah, S. K. T., Foster, E., Jolliffe, D. M., Lakner, C., & Lara Ibarra, G. (2025, 9. juni). ",
       italic: "The World Bank’s new global poverty lines in 2021 prices",
