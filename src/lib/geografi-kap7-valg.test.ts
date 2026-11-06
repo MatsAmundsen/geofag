@@ -11,5 +11,5 @@ test("kap7: kontrollerte SSB-dimensjoner, faktiske år og enheter",()=>{
 test("kap7: Fosen filtreres til riktig distrikt og ekte kildekategorier",()=>{
  const d=JSON.parse(read("./geografi-fosen-vinter-vind.json"));assert.equal(d.beite.length,63);assert.equal(d.vind.length,3);assert.equal(new Set(d.vind.map((f:{properties:{anleggsnr:number}})=>f.properties.anleggsnr)).size,2);
  for(const f of d.beite){assert.match(f.properties.distrikt,/Fosen/);assert.ok(["9","10"].includes(f.properties.kode));assert.equal(f.geometry.type,"MultiPolygon");for(const p of f.geometry.coordinates)for(const ring of p){assert.deepEqual(ring[0],ring.at(-1));for(const [x,y]of ring){assert.ok(Number.isFinite(x)&&x>0&&x<40);assert.ok(Number.isFinite(y)&&y>50&&y<75);}}}
- const src=read("../components/geografi/ressurs-fosen.tsx");assert.match(src,/aria-pressed/);assert.match(src,/ikke alle årstidsbeiter/);assert.match(src,/63 objekter/);assert.doesNotMatch(src,/openstreetmap|localStorage|fetch\(/i);
+ const src=read("../components/geografi/ressurs-fosen.tsx");assert.match(src,/aria-pressed/);assert.match(src,/zoom=\{8\} basemap/);assert.match(src,/ikke alle årstidsbeiter/);assert.match(src,/63 objekter/);assert.doesNotMatch(src,/openstreetmap|localStorage|fetch\(/i);
 });
