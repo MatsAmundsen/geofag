@@ -70,6 +70,9 @@ function Geofag1() {
                   <div className="relative aspect-photo overflow-hidden">
                     <img
                       src={tema.image}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
                       alt={tema.alt}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />

@@ -87,7 +87,14 @@ function Geofag2() {
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
                 >
                   <div className="relative aspect-photo overflow-hidden">
-                    <img src={tema.image} alt={tema.alt} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                    <img
+                      src={tema.image}
+                      alt={tema.alt}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
                     <span className={cn("absolute left-3 top-3 rounded-md px-2 py-1 text-xs font-medium", tema.status === "klar" ? "bg-background/80 text-primary" : "bg-background/80 text-muted-foreground")}>
                       {tema.status === "klar" ? "Klar" : "Utkast"}
                     </span>
