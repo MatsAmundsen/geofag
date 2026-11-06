@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useMatches, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { AdminEditLink } from "@/components/admin-edit-link";
@@ -37,6 +37,33 @@ type TopicLink = { to: string; label: string; params?: Record<string, string> };
 const CODED_G2_PATHS = new Set([
   "/tema/klima/nao",
 ]);
+
+/** Kjører mens HTML-en parses, før første maling, så ankerhoppet ikke blir et layout-skift. */
+const ANKER_FOR_MALING = `(function(){
+  var map={
+    "tsunami-skjelv-eller-skred":"hva-er-en-tsunami",
+    "hvilke-skader-gjoer-jordskjelv":"jordskjelv-som-naturfare",
+    "hva-avgjoer-hvor-store-skadene-blir":"jordskjelv-som-naturfare",
+    "rystelser-og-bygninger":"jordskjelv-som-naturfare",
+    "skred-og-likvefaksjon":"jordskjelv-som-naturfare",
+    "brann-tsunami-og-etterskjelv":"jordskjelv-som-naturfare",
+    "er-det-mulig-a-varsle-jordskjelv":"kan-jordskjelv-varsles",
+    "langtidsvarsling":"kan-jordskjelv-varsles",
+    "korttidsvarsling":"kan-jordskjelv-varsles",
+    "tidlig-varsling-noen-sekunder-kan-redde-liv":"kan-jordskjelv-varsles",
+    "tsunamivarsling":"hvordan-varsles-en-tsunami",
+    "fare-og-risiko":"fare-risiko-og-forebygging",
+    "en-enkel-risikomodell":"fare-risiko-og-forebygging",
+    "gjentaksintervall-hvor-ofte-kommer-et-stort-skjelv":"fare-risiko-og-forebygging",
+    "hva-om-1904-skjelvet-kom-i-dag":"fare-risiko-og-forebygging",
+    "hva-modellen-ikke-viser":"fare-risiko-og-forebygging"
+  };
+  var raw=location.hash.replace(/^#/,"");
+  if(!raw)return;
+  try{raw=decodeURIComponent(raw);}catch(e){return;}
+  var el=document.getElementById(map[raw]||raw);
+  if(el)el.scrollIntoView({block:"start"});
+})();`;
 
 export function TopicLayout({
   kicker,
@@ -145,14 +172,9 @@ export function TopicLayout({
 
   const brukerStyrer = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!usePoster) return;
     let cancelled = false;
-    const timers: number[] = [];
-    const clearTimers = () => {
-      for (const timer of timers) window.clearTimeout(timer);
-      timers.length = 0;
-    };
     const scroll = () => {
       if (cancelled || brukerStyrer.current) return;
       const raw = window.location.hash.replace(/^#/, "");
@@ -163,19 +185,18 @@ export function TopicLayout({
       } catch {
         return;
       }
-      document.getElementById(id)?.scrollIntoView({ block: "start" });
+      const el = document.getElementById(id);
+      if (!el) return;
+      const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      if (Math.abs(el.getBoundingClientRect().top - pad) <= 2) return;
+      el.scrollIntoView({ block: "start" });
     };
     const arm = () => {
       if (brukerStyrer.current) return;
-      clearTimers();
       scroll();
-      for (const delay of [50, 200, 600, 1200, 2000]) {
-        timers.push(window.setTimeout(scroll, delay));
-      }
     };
     const giOpp = () => {
       brukerStyrer.current = true;
-      clearTimers();
     };
     const onKey = (event: KeyboardEvent) => {
       if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", " ", "Home", "End"].includes(event.key)) giOpp();
@@ -193,7 +214,6 @@ export function TopicLayout({
     window.addEventListener("hashchange", onHash);
     return () => {
       cancelled = true;
-      clearTimers();
       window.removeEventListener("wheel", giOpp);
       window.removeEventListener("touchstart", giOpp);
       window.removeEventListener("touchmove", giOpp);
@@ -263,6 +283,7 @@ export function TopicLayout({
                 </p>
               </div>
             ) : usePoster ? (
+              <>
               <PosterBody
                 cleanChapter
                 scrollTables={
@@ -288,6 +309,8 @@ export function TopicLayout({
               >
                 {markdown}
               </PosterBody>
+              <script dangerouslySetInnerHTML={{ __html: ANKER_FOR_MALING }} />
+              </>
             ) : useCoded ? (
               children
             ) : (

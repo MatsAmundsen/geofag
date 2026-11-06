@@ -155,9 +155,64 @@
     .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 194px; }
   }
 
-  /* Videoen er 16:9. Bildeteksten på disse titlene er tre linjer, 97 px. */
-  .video-plass-hode {
-    height: 97px;
+  /* «Bevegelse er slått av…» er én linje til når bevegelse er redusert. */
+  @media (prefers-reduced-motion: reduce) {
+    .tsunami-plass-hode {
+      margin-top: 20px;
+    }
+  }
+
+  /* Jordskjelv-figurene. Høyden er den ferdige boksen ved 390, 768 og 1280 px. */
+  .kapittel-plass[data-widget="HyposenterForklaring"] { height: 195px; }
+  .kapittel-plass[data-widget="ElasticRebound"] { height: 726px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 682px; }
+  .kapittel-plass[data-widget="BoundaryQuakes"] { height: 356px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 662px; }
+  .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
+  .kapittel-plass[data-widget="Bolgegenerering"] { height: 1493px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 608px; }
+  .kapittel-plass[data-widget="Seismogram"] { height: 399px; }
+  .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 700px; }
+  .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 408px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 708px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 670px; }
+  .kapittel-plass[data-widget="JordasBolger"] { height: 859px; }
+  .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
+  .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 421px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 686px; }
+  .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2484px; }
+
+  @media (min-width: 48rem) {
+    .kapittel-plass[data-widget="HyposenterForklaring"] { height: 126px; }
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 618px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 594px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 491px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 594px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 675px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 984px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 594px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 555px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 594px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 380px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 612px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 594px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 701px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 126px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 515px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 612px; }
+    .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2060px; }
+  }
+
+  @media (min-width: 80rem) {
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 672px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 535px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 713px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 1046px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 581px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 594px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 761px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 104px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 559px; }
   }
 
   /* Quizene er tekst. Høyden er målt ferdig boks ved 320, 390, 768 og 1280. */

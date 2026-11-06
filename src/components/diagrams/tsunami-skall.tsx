@@ -107,7 +107,10 @@ export function TsunamiRamme({
         <p className="text-sm text-muted-foreground">
           Hva forventer du før du flytter på noe? Sammenlign så to valg på samme skala.
           {reduced ? " Bevegelse er slått av. Bruk tidslinjen og trinnene." : ""}
-          {playing ? "" : " Avspillingen står."}
+          <span className={playing ? "invisible" : undefined} aria-hidden={playing}>
+            {" "}
+            Avspillingen står.
+          </span>
         </p>
         <div className="mt-4 flex flex-col gap-4">{controls}</div>
         <label className="mt-4 block text-sm">

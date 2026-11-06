@@ -4,11 +4,13 @@ import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
 import { topicHead } from "@/lib/seo";
+import { getPost } from "@/lib/posts";
 import { legacyNaturfareRedirect } from "@/lib/tsunami-redirect";
 
 const tema = gf1Theme("jordskjelv-naturfare")!;
 
 export const Route = createFileRoute("/geofag-1/tsunami")({
+  loader: async () => ({ post: await getPost({ data: "jordskjelv-naturfare" }) }),
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,

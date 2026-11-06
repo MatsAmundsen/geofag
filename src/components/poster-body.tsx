@@ -4,6 +4,7 @@ import { TsunamiPlass } from "@/components/tsunami-plass";
 import { cn } from "@/lib/utils";
 import { posterHeadingAnchorIds } from "@/lib/chapter-scan";
 import type { HeadingIdCursor } from "@/lib/poster-heading";
+import { GEO_MARIA_CHANNEL, GEO_MARIA_VIDEOS } from "@/lib/youtube-geo-maria";
 import {
   EARTH_LAYERS_PHOTO_SRC,
   injectPosterWidgets,
@@ -34,13 +35,35 @@ function tsunamiModell(id: string): string | null {
   return match ? `m${match[1]}` : null;
 }
 
+const CALLOUT_WIDGETS = new Set(["HyposenterForklaring", "IntraplateForklaring"]);
+const DIAGRAM_WIDGETS = new Set([
+  "ElasticRebound",
+  "BoundaryQuakes",
+  "Partikkelbolger",
+  "Bolgegenerering",
+  "Seismogram",
+  "JordasBolger",
+  "NorwayEarthquakes",
+]);
+
 function WidgetFallback({ id }: { id: string }) {
   const modell = tsunamiModell(id);
   if (modell) return <TsunamiPlass modell={modell} />;
   if (id.startsWith("YtMaria")) {
+    const video = GEO_MARIA_VIDEOS.find((item) => item.widgetId === id);
     return (
-      <figure className="video-plass my-8 overflow-hidden rounded-2xl border border-border bg-card" aria-busy="true">
-        <div className="video-plass-hode" />
+      <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-card" aria-busy="true">
+        <figcaption className="border-b border-border px-4 py-3 sm:px-5">
+          <p className="text-xs font-medium uppercase tracking-wider text-primary">
+            Video · {GEO_MARIA_CHANNEL}
+          </p>
+          <p className="mt-1 font-display text-lg font-medium tracking-tight">{video?.title}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            <span>{video?.duration}</span>
+            <span aria-hidden="true"> · </span>
+            Åpne på YouTube
+          </p>
+        </figcaption>
         <div className="aspect-video w-full bg-black" />
         <p className="sr-only">Laster figuren…</p>
       </figure>
@@ -51,6 +74,35 @@ function WidgetFallback({ id }: { id: string }) {
       <div className="quiz-plass my-10 w-full rounded-xl border border-border bg-card" data-quiz={id} aria-busy="true">
         <p className="sr-only">Laster figuren…</p>
       </div>
+    );
+  }
+  if (id.startsWith("Sjekk") || id.startsWith("Quiz")) {
+    return (
+      <div
+        className="kapittel-plass my-10 w-full rounded-xl border border-border bg-card"
+        data-widget={id}
+        aria-busy="true"
+      >
+        <p className="sr-only">Laster figuren…</p>
+      </div>
+    );
+  }
+  if (CALLOUT_WIDGETS.has(id)) {
+    return (
+      <aside className="kapittel-plass my-6 rounded-xl border border-border bg-muted" data-widget={id} aria-busy="true">
+        <p className="sr-only">Laster figuren…</p>
+      </aside>
+    );
+  }
+  if (DIAGRAM_WIDGETS.has(id)) {
+    return (
+      <figure
+        className="kapittel-plass my-8 max-w-full overflow-hidden rounded-xl border border-border bg-card"
+        data-widget={id}
+        aria-busy="true"
+      >
+        <p className="sr-only">Laster figuren…</p>
+      </figure>
     );
   }
   return (
