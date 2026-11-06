@@ -60,6 +60,7 @@ function Monsterkart() {
         height={394}
         alt="Verdenskart uten landegrenser med rundt 240 store byer som prikker. Prikkene samler seg i Sør- og Øst-Asia, Europa, Vest-Afrika og langs kystene i Amerika. Store områder i Nord-Afrika, Sentral-Asia, Nord-Canada, Sibir, Amazonas og Australias indre har få eller ingen prikker."
       />
+      <a href="/images/geografi/monsterkart-byer.svg" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-primary px-3 py-2 text-sm font-medium text-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Vis kartet i full størrelse (ny fane)</a>
       <Tegnforklaring
         poster={[
           { symbol: <Flate farge="#8aa37f" />, tekst: "Land" },
@@ -254,7 +255,7 @@ function Hoydekart({ aktiv }: { aktiv: number }) {
         ) : (
           <text x={200} y={70} fontSize={15} fill={MUTED} textAnchor="middle">Høydeprofil A–B vises i trinn 3</text>
         )}
-        <text x={392} y={126} fontSize={15} fill={MUTED} textAnchor="end">A → B</text>
+        <text x={392} y={118} fontSize={15} fill={MUTED} textAnchor="end">A → B</text>
       </g>
     </svg>
   );

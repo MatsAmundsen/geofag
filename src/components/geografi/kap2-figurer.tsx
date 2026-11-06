@@ -476,7 +476,7 @@ function Sikkerhet() {
 
 /* 2.9 Mikroklima */
 function Mikroklima() {
-  const y = (v: number) => 200 - (v - 9.6) * 110;
+  const y = (v: number) => 220 - (v - 9.6) * 90;
   return (
     <GeoFigur
       heading="Innblikk: mikroklima i en oppdiktet skolegård"
@@ -489,7 +489,7 @@ function Mikroklima() {
           <Punkt x={250} y={110} tekst="A" farge="#0e7490" />
           <Punkt x={60} y={140} tekst="B" farge="#b45309" />
         </Skolegard>
-        <svg viewBox="0 0 400 240" className="h-auto w-full" role="img" aria-label="Prikkdiagram. Punkt A: 10,0, 10,2 og 10,4 grader, gjennomsnitt 10,2. Punkt B: 11,0, 11,2 og 11,4 grader, gjennomsnitt 11,2.">
+        <svg viewBox="0 0 400 280" className="h-auto w-full" role="img" aria-label="Prikkdiagram. Punkt A: 10,0, 10,2 og 10,4 grader, gjennomsnitt 10,2. Punkt B: 11,0, 11,2 og 11,4 grader, gjennomsnitt 11,2.">
           {[10, 10.5, 11, 11.5].map((v) => (
             <g key={v}>
               <line x1={64} x2={384} y1={y(v)} y2={y(v)} stroke={MUTED} strokeOpacity={0.35} />
@@ -505,7 +505,7 @@ function Mikroklima() {
                   <circle key={j} cx={cx - 24 + j * 24} cy={y(v)} r={7} fill={i ? "#f59e0b" : PRIM} stroke="#0b1014" strokeWidth={1.5} />
                 ))}
                 <line x1={cx - 48} x2={cx + 48} y1={y(SNITT[k])} y2={y(SNITT[k])} stroke={FG} strokeWidth={2.5} />
-                <text x={cx} y={228} fontSize={15} fill={FG} textAnchor="middle">Punkt {k}</text>
+                <text x={cx} y={262} fontSize={15} fill={FG} textAnchor="middle">Punkt {k}</text>
               </g>
             );
           })}

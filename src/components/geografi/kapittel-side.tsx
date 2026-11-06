@@ -103,9 +103,11 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
             </>
           ) : null}
 
-          {post?.bodyMarkdown ? (
-            <section className="prose-geofag mt-10">
-              <PosterBody>{post.bodyMarkdown}</PosterBody>
+          {kapittel.tekstKlar || post?.bodyMarkdown ? (
+            // Keep sources/navigation below the viewport while the CMS text loads.
+            // Reserving figure slots alone cannot prevent this earlier fetch shift.
+            <section className="prose-geofag mt-10 min-h-dvh" aria-busy={!post}>
+              {post?.bodyMarkdown ? <PosterBody>{post.bodyMarkdown}</PosterBody> : null}
             </section>
           ) : null}
 

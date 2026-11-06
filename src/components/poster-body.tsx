@@ -51,18 +51,17 @@ export function PosterBody({
       {parts.map((part, index) => {
         if (part.type === "widget") {
           return (
-            <Suspense
-              key={`w-${part.id}-${index}`}
-              fallback={
-                <div className="my-6 min-h-32 rounded-xl bg-muted/30 p-4" aria-busy="true">
-                  <p className="text-sm text-muted-foreground" role="status">
+            <div key={`w-${part.id}-${index}`} data-widget={part.id}>
+              <Suspense
+                fallback={
+                  <div className="my-6 min-h-32 p-4 text-sm text-muted-foreground" aria-busy="true" role="status">
                     Laster figuren…
-                  </p>
-                </div>
-              }
-            >
-              <PosterWidget id={part.id} />
-            </Suspense>
+                  </div>
+                }
+              >
+                <PosterWidget id={part.id} />
+              </Suspense>
+            </div>
           );
         }
         const captionFallback = runningHeading;
