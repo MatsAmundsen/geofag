@@ -6,6 +6,11 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    flag: "geo-ressurser-mats-valg-kap7-2026-11-06",
+    slug: "geo-ressurser",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
     flag: "geo-landskap-mats-valg-kap4-2026-11-06",
     slug: "geo-landskap",
     stale: ["FIGURPLASSHOLDER"],
@@ -34,6 +39,12 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
     slug: "geo-verktoy",
     stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    // Geografi: kapittel 7 alene; aktiveres først etter godkjent merge.
+    flag: "geo-ressurser-kap7-2026-11-06",
+    slug: "geo-ressurser",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
   },
   {
     // Nytt reseed: stasjonsnormaler erstatter øvingsdata, uten å endre tidligere flagg.

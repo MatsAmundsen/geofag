@@ -53,13 +53,13 @@ function Box({
   );
 }
 
-export function FraBergartTilBruddDiagram() {
+export function FraBergartTilBruddDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <div className="mx-auto w-full max-w-lg">
       <Diagram
-        title="Tre spor: magma til magmatisk malm, og fast fjell (dypbergart) til naturstein og pukk; sprekk til hydrotermal malm; løsmasse til sedimentær malm, grus og sand."
-        heading="Fra bergart til brudd"
-        caption="Magma, sprekk og løsmasse til malm, naturstein, pukk, grus og sand. Pukk er fast fjell som er sprengt og knust. Grus og sand tas ut fra løsmasser."
+        title={geografi ? "Eksempler på dannelse av mineralforekomster og bruk av bergarter og løsmasser" : "Tre spor: magma til magmatisk malm, og fast fjell (dypbergart) til naturstein og pukk; sprekk til hydrotermal malm; løsmasse til sedimentær malm, grus og sand."}
+        heading={geografi ? "Figur 7.3 – Fra bergart til mulig ressurs" : "Fra bergart til brudd"}
+        caption={geografi ? "Geologiske prosesser kan samle nyttige mineraler. Forekomsten blir ikke automatisk drivverdig malm. Nederst viser vi avsetninger som kan gi mineralforekomster eller byggeråstoff, ikke at alle løsmasser blir malm. Larvikitt er et eksempel på naturstein. Uttak krever egne vurderinger og tillatelser (Rui, 2024; NGU, u.å.-a, u.å.-b, u.å.-c)." : "Magma, sprekk og løsmasse til malm, naturstein, pukk, grus og sand. Pukk er fast fjell som er sprengt og knust. Grus og sand tas ut fra løsmasser."}
         viewBox="0 0 440 560"
       >
         {(m) => (
@@ -86,8 +86,8 @@ export function FraBergartTilBruddDiagram() {
               w={168}
               stroke={C.warm}
               fill="#3a3428"
-              title="magmatisk malm"
-              sub="tunge krystaller"
+              title={geografi ? "mineralforekomst" : "magmatisk malm"}
+              sub={geografi ? "mineraler samles" : "tunge krystaller"}
             />
             <Arrow d="M 204 86 L 236 86" marker={m.warm} color={C.warm} width={2.2} />
             <Arrow d="M 112 122 L 112 132" marker={m.muted} color={C.sand} width={2} />
@@ -121,8 +121,8 @@ export function FraBergartTilBruddDiagram() {
               h={88}
               stroke={C.teal}
               fill="#1a3038"
-              title="hydrotermal"
-              sub="væske i sprekk"
+              title={geografi ? "varme væsker" : "hydrotermal"}
+              sub={geografi ? "stoffer fraktes" : "væske i sprekk"}
             />
             <Box
               x={244}
@@ -131,8 +131,8 @@ export function FraBergartTilBruddDiagram() {
               h={88}
               stroke={C.teal}
               fill="#1a3038"
-              title="hydrotermal malm"
-              sub="kobber · sink"
+              title={geografi ? "mineraler felles ut" : "hydrotermal malm"}
+              sub={geografi ? "mulig forekomst" : "kobber · sink"}
             />
             <Arrow d="M 204 282 L 236 282" marker={m.teal} color={C.teal} width={2.2} />
 
@@ -147,7 +147,7 @@ export function FraBergartTilBruddDiagram() {
               stroke={C.sand}
               fill="#2a3428"
               title="løsmasse"
-              sub="forvitring"
+              sub={geografi ? "avsetninger" : "forvitring"}
             />
             <Box
               x={244}
@@ -155,7 +155,7 @@ export function FraBergartTilBruddDiagram() {
               w={168}
               stroke={C.sand}
               fill="#2a3428"
-              title="sedimentær malm"
+              title={geografi ? "mulig forekomst" : "sedimentær malm"}
             />
             <Box
               x={244}
