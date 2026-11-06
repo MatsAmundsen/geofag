@@ -64,6 +64,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "feltarbeid",
+    tekstKlar: true,
     slug: "geo-feltarbeid",
     title: "Feltarbeid",
     navLabel: "Felt",
