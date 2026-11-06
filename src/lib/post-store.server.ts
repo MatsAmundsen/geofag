@@ -1690,6 +1690,16 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "numeriske-modeller",
     stale: ["[ENSO](/tema/enso)"],
   },
+  {
+    flag: "g1-tsunami-japan-noaa-tall-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["I jordskjelvkapitlet står et annet tall, om døde eller savnede, fra en annen kilde."],
+  },
+  {
+    flag: "g1-jordskjelv-mexico-skala-2026-11-06",
+    slug: "jordskjelv",
+    stale: ["Eldre rapporter kan oppgi Ms 8,1."],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 
