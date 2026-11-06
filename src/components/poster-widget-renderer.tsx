@@ -316,11 +316,24 @@ const TsunamiM5 = lazy(() => import("@/components/diagrams/tsunami-modeller").th
 const TsunamiM6 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM6 })));
 const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM7 })));
 
+// Geografi (Vg1): én lazy modul per kapittel, figuren velges med id.
+const GeografiKap1Figur = lazy(() =>
+  import("@/components/geografi/kap1-figurer").then((m) => ({ default: m.GeografiKap1Figur })),
+);
+const GEOGRAFI_KAP1_IDER = [
+  "GeoKart1Monster", "GeoKart1Mercator", "GeoKart1GallPeters", "GeoKart1Gradnett", "GeoKart1Hoydekurver",
+  "GeoKart1Temakart", "GeoKart1Mentalt", "GeoKart1BlueMarble", "GeoKart1GisLag", "GeoKart1Snow", "GeoKart1ToKart",
+] as const;
+const GEOGRAFI_WIDGETS: Record<string, () => JSX.Element> = Object.fromEntries([
+  ...GEOGRAFI_KAP1_IDER.map((id) => [id, () => <GeografiKap1Figur id={id} />]),
+]);
+
 function TsunamiLaster({ children }: { children: JSX.Element }) {
   return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  ...GEOGRAFI_WIDGETS,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
   ...G2_PAKKE_A_WIDGETS,
   ...Object.fromEntries(

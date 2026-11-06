@@ -119,12 +119,25 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.ok(md.indexOf("## To kart") < md.indexOf("## Læringsmål"));
   });
 
-  it("bevarer elleve figurplasser uten synlige redaktørnotater", () => {
-    const placeholders = [...md.matchAll(/^\[figur-1-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
-    assert.deepEqual(
-      placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      Array.from({ length: 11 }, (_, i) => i),
-    );
+  it("har elleve figurer som widgets og ingen synlige redaktørnotater", () => {
+    const widgets = [...md.matchAll(/^```widget\n(GeoKart1\w+)\n```$/gm)].map((m) => m[1]);
+    assert.deepEqual(widgets, [
+      "GeoKart1Monster",
+      "GeoKart1Mercator",
+      "GeoKart1GallPeters",
+      "GeoKart1Gradnett",
+      "GeoKart1Hoydekurver",
+      "GeoKart1Temakart",
+      "GeoKart1Mentalt",
+      "GeoKart1BlueMarble",
+      "GeoKart1GisLag",
+      "GeoKart1Snow",
+      "GeoKart1ToKart",
+    ]);
+    assert.doesNotMatch(md, /FIGURPLASSHOLDER/);
+    const renderer = read("../components/poster-widget-renderer.tsx");
+    for (const id of widgets) assert.ok(renderer.includes(`"${id}"`), id);
+    assert.match(renderer, /lazy\(\(\) =>\s+import\("@\/components\/geografi\/kap1-figurer"\)/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap1-redaksjon|figur-1-/);
     assert.match(html, /John Snows kolerakart/);
@@ -134,7 +147,8 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
 
   it("har kilder, hypotetiske eksempler og korrekt avgrenset Snow-case", () => {
     const sources = read("kilder-geografi.ts").split('"geo-feltarbeid"')[0];
-    assert.equal((sources.match(/href: /g) ?? []).length, 16);
+    // 16 fagkilder + 3 figurkilder (Natural Earth, NASA Blue Marble, Snow 1855).
+    assert.equal((sources.match(/href: /g) ?? []).length, 19);
     for (const domain of [
       "udir.no",
       "kartverket.no",

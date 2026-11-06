@@ -96,6 +96,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.usgs.gov/landsat-missions/landsat-8",
     },
     {
+      prefix: "NASA Goddard Space Flight Center. (2002). ",
+      italic: "Blue Marble: Land surface, shallow water, and shaded topography",
+      suffix: " [Satellittmosaikk, MODIS/Terra]. NASA Visible Earth. Public domain. Figurkilde.",
+      href: "https://visibleearth.nasa.gov/images/57752/blue-marble-land-surface-shallow-water-and-shaded-topography",
+    },
+    {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "Free vector and raster map data at 1:10m, 1:50m, and 1:110m scales",
+      suffix: ". Public domain. Kartgrunnlag for egne figurer. Hentet 6. november 2026.",
+      href: "https://www.naturalearthdata.com/about/terms-of-use/",
+    },
+    {
+      prefix: "Snow, J. (1855). ",
+      italic: "On the mode of communication of cholera",
+      suffix: " (2. utg.), kart 1. John Churchill. Public domain. Figurkilde.",
+      href: "https://archive.org/details/b28985266",
+    },
+    {
       prefix: "Utdanningsdirektoratet. (u.å.). ",
       italic: "Geografi (GEO01-02): Kompetansemål og vurdering",
       suffix: ". Hentet 6. november 2026.",
