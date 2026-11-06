@@ -189,7 +189,8 @@ export function TsunamiM2() {
         <div className="space-y-3">
           <Scene narrow={narrow} label="Profil med bølgetopp som følger gangtiden">
             {active.map((segment, index) => {
-              const height = Math.min(barMax, segment.depthM / (narrow ? 18 : 40));
+              const raw = segment.depthM / (narrow ? 18 : 40);
+              const height = Math.min(barMax, Math.max(narrow ? 8 : 4, raw));
               return (
                 <rect
                   key={index}
@@ -257,7 +258,7 @@ function ArrivalGraph({
     points.map((point, index) => `${index === 0 ? "M" : "L"} ${xOf(point.distanceM)} ${yOf(point.timeS)}`).join(" ");
   const here = alongTrackAtTime(m2Segments(depth, active), timeFraction);
   return (
-    <svg viewBox="0 0 320 160" className="block h-auto w-full max-w-full" role="img" aria-label="Ankomstgraf, strekning mot tid, profil A og B">
+    <svg viewBox="0 0 320 160" className="block h-auto w-full max-w-md" role="img" aria-label="Ankomstgraf, strekning mot tid, profil A og B">
       <rect width="320" height="160" fill="var(--color-card)" />
       <text x="8" y="22" fill="var(--color-foreground)" fontSize="16">
         Ankomst: strekning mot tid
@@ -720,9 +721,9 @@ export function TsunamiM7() {
           ) : null}
           {!after.futureBlocked ? (
             <rect
-              x={scenario === "stor" ? (tid.narrow ? 250 : 400) : tid.narrow ? 120 : 200}
-              y={tid.narrow ? 204 : 124}
-              width="28"
+              x={scenario === "stor" ? (tid.narrow ? 292 : 400) : tid.narrow ? 16 : 40}
+              y={tid.narrow ? 158 : 86}
+              width="24"
               height="28"
               fill="none"
               stroke="var(--color-lava)"
