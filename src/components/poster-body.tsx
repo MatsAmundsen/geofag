@@ -331,8 +331,35 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
   return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
+const GeografiMonsterkartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMonsterkart})));
+
+const GeografiMercatorSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMercator})));
+
+const GeografiGradnettSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiGradnett})));
+
+const GeografiKartSammenlikningSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiKartSammenlikning})));
+
+const GeografiMentaltKartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMentaltKart})));
+
+const GeografiBlueMarbleSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiBlueMarble})));
+
+const GeografiGisLagSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiGisLag})));
+
+const GeografiSnowKartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiSnowKart})));
+
+const GeografiTemaValgSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiTemaValg})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoFeltloggVg1: () => <GeografiFeltlogg />,
+  GeoVerktoyTemaValg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTemaValgSkjultLat /></Suspense>,
+  GeoVerktoySnow: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSnowKartSkjultLat /></Suspense>,
+  GeoVerktoyGisLag: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGisLagSkjultLat /></Suspense>,
+  GeoVerktoyBlueMarble: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBlueMarbleSkjultLat /></Suspense>,
+  GeoVerktoyMentalt: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMentaltKartSkjultLat /></Suspense>,
+  GeoVerktoyKartSammenlikning: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKartSammenlikningSkjultLat /></Suspense>,
+  GeoVerktoyGradnett: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGradnettSkjultLat /></Suspense>,
+  GeoVerktoyMercator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMercatorSkjultLat /></Suspense>,
+  GeoVerktoyMonster: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMonsterkartSkjultLat /></Suspense>,
   GeoVerktoyTopokart: () => <GeografiTopokart />,
   GeoVerktoyGallPeters: () => <GeografiGallPeters />,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
