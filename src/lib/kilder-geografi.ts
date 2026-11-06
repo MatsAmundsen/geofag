@@ -390,6 +390,48 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-landskap": [
     {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "Admin 0 – Countries, 1:110m, versjon 5.1.1",
+      suffix: ". Public domain. Moderne landkonturer brukt bare til orientering.",
+      href: "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/",
+    },
+    {
+      prefix: "Kartverket. (u.å.-b). ",
+      italic: "Topografisk kart, WMTS",
+      suffix: ". Eget Vega-utsnitt, zoom 10, CC BY 4.0. Hentet 6. november 2026.",
+      href: "https://cache.kartverket.no/v1/service?service=WMTS&request=GetCapabilities",
+    },
+    {
+      prefix: "Kartverket. (u.å.-a). ",
+      italic: "Stedsnavn-API: Geiranger, Åkerneset og Sunnylvsfjorden",
+      suffix: ". Sentralt stedsnavnregister. CC BY 4.0. Hentet 6. november 2026.",
+      href: "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Geiranger&fuzzy=false",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      italic: "Breer i Norge [Datasett]",
+      suffix: ". Geonorge/NVE, Breflate. NLOD. Utvalg fra 2018–2019, hentet 6. november 2026.",
+      href: "https://kartkatalog.geonorge.no/metadata/breer-i-norge/ef3e36ad-6914-432e-a0e0-4ff8e091a423",
+    },
+    {
+      prefix: "Hughes, A. L. C., Gyllencreutz, R., Lohne, Ø. S., Mangerud, J., & Svendsen, J. I. (2015). ",
+      italic: "DATED-1: Compilation of dates and time-slice reconstruction of the build-up and retreat of the last Eurasian Ice Sheets 40–10 ka [Datasett]",
+      suffix: ". PANGAEA. CC BY 3.0. Utvalg: tidssnitt 21 ka, minimum, mest troverdig og maksimum.",
+      href: "https://doi.pangaea.de/10.1594/PANGAEA.848117",
+    },
+    {
+      prefix: "Hughes, A. L. C., Gyllencreutz, R., Lohne, Ø. S., Mangerud, J., & Svendsen, J. I. (2016). ",
+      italic: "The last Eurasian ice sheets – a chronological database and time-slice reconstruction, DATED-1",
+      suffix: ". Boreas, 45(1), 1–45. Artikkelens figur 1 er ikke samtidig isutbredelse.",
+      href: "https://doi.org/10.1111/bor.12142",
+    },
+    {
+      prefix: "Clay, T. (2017, 4. juli). ",
+      italic: "Parabolic Valley [Fotografi]",
+      suffix: ". Flickr/Wikimedia Commons. CC BY 2.0.",
+      href: "https://commons.wikimedia.org/wiki/File:Norway_-_Parabolic_Valley_(37810193741).jpg",
+    },
+    {
       prefix: "Bryhni, I., & Fossen, H. (2024, 2. juli). ",
       italic: "Norges geologi",
       suffix: ". Store norske leksikon.",
