@@ -1670,6 +1670,36 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-migrasjon": [
     {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "1:110m Admin 0 – Countries",
+      suffix: ". Versjon 5.1.1, public domain. Eget oversiktskart, ikke juridiske grenser.",
+      href: "https://www.naturalearthdata.com/about/terms-of-use/",
+    },
+    {
+      prefix: "Kartverket. (u.å.-a). ",
+      italic: "Vilkår for bruk",
+      suffix: ". Kartverket WMTS-bakgrunn til og med zoom 11. CC BY 4.0.",
+      href: "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    },
+    {
+      prefix: "Kartverket. (u.å.-b). ",
+      italic: "Åpent API for administrative enheter",
+      suffix: ". Kommuneinfo, punktIOmrade for 0301, 3209, 1804, 5501 og 5601. CC BY 4.0. Koordinater omregnet fra ETRS89 til WGS84. Hentet 6. november 2026.",
+      href: "https://data.norge.no/en/data-services/41e77491-1562-3eda-a006-f56a3064d274/apent-api-fra-kartverket-for-administrative-enheter",
+    },
+    {
+      prefix: "FNs høykommissær for flyktninger [UNHCR]. (2026b, 1. juli). ",
+      italic: "Terms and conditions of use",
+      suffix: ". Refugee Data Portal. Datasett som hovedregel CC BY 4.0, attribusjon og merking av bearbeiding. Ingen implisert godkjenning eller individidentifisering.",
+      href: "https://refugeedata.unhcr.org/en/terms-and-conditions-of-use/",
+    },
+    {
+      prefix: "FNs høykommissær for flyktninger [UNHCR]. (u.å.-a). ",
+      italic: "Official population statistics on people affected by forced displacement and statelessness",
+      suffix: " [Datasett]. PopStatsOfficial, REF_UNHCR, vertsland og UNHCR-regioner, utgangen av 2025. 167 oppføringer. CC BY 4.0. Uttrekk 6. november 2026.",
+      href: "https://api-data.unhcr.org/api/v0/metadata/PopStatsOfficial",
+    },
+    {
       prefix: "Bore, R. R. (2005, 9. november). ",
       italic: "«... en ganske kraftig forminskelse av Europas befolkning»",
       suffix: ". Statistisk sentralbyrå. Historisk omtale av oversjøisk utvandring og kildematerialet.",
@@ -1688,19 +1718,19 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.iom.int/key-migration-terms",
     },
     {
-      prefix: "FNs høykommissær for flyktninger [UNHCR]. (2026, 11. juni). ",
+      prefix: "FNs høykommissær for flyktninger [UNHCR]. (2026a, 11. juni). ",
       italic: "Global Trends 2025",
       suffix: ". Årsstatus ved utgangen av 2025. Publiserte faktatall, kategorier, dobbelttelling og returforhold.",
       href: "https://www.unhcr.org/global-trends",
     },
     {
-      prefix: "FNs høykommissær for flyktninger [UNHCR]. (u.å.-a). ",
+      prefix: "FNs høykommissær for flyktninger [UNHCR]. (u.å.-b). ",
       italic: "Refugee hosting metrics",
       suffix: ". Forklarer nabolandsmålets nevner; utgangen av 2025. Hentet 6. november 2026.",
       href: "https://www.unhcr.org/refugee-statistics/insights/explainers/refugee-hosting-metrics.html",
     },
     {
-      prefix: "FNs høykommissær for flyktninger [UNHCR]. (u.å.-b). ",
+      prefix: "FNs høykommissær for flyktninger [UNHCR]. (u.å.-c). ",
       italic: "The 1951 Refugee Convention",
       suffix: ". Konvensjon, protokoll, definisjon og sentrale beskyttelsesprinsipper. Hentet 6. november 2026.",
       href: "https://www.unhcr.org/about-unhcr/overview/1951-refugee-convention",

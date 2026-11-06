@@ -1,3 +1,5 @@
+Dette notatet dokumenterer førsteleveransen. Oppdatert data-, kart- og lisensstatus etter Mats sine valg står i [Mats-oppfølgingen](geografi-kap11-mats-valg.md).
+
 # Redaksjonell overlevering: kapittel 11
 
 ## Leveranse og arbeidsgren
@@ -102,7 +104,7 @@ UNHCRs offentlige faktasider er innholdslest. Datasettvilkårssiden lot seg ikke
 ## Filer, reproduksjon og lisenser
 
 - `src/lib/geografi-migrasjonsdata.ts`: alle **227 originale SSB-verdier**, kildeversjoner og SHA-256 for rå datanedlastinger, samt summer og fem UNHCR-fakta.
-- `docs/geografi-kap11-ssb09588-query.json`, `-ssb14753-query.json`, `-ssb07113-query.json`, `-ssb05803-query.json`: eksakte offentlige lesespørringer. POST JSON til `https://data.ssb.no/api/v0/no/table/<id>` leser statistikk og skriver ikke til SSB.
+- `docs/geografi-kap11-ssb09588-query.json`, `-ssb14753-query.json`, `-ssb07113-query.json`, `-ssb05803-query.json`: eksakte offentlige lesespørringer. POST JSON til `https://data.ssb.no/api/v0/no/table/TABELL_ID` leser statistikk og skriver ikke til SSB.
 - `docs/geografi-kap11-unhcr-faktatall.json`: de fem publiserte faktatallene med referanse-/publiseringsdato og kildelenker.
 - `public/downloads/geografi-migrasjon-ssb09588.csv`: 63 verdier.
 - `public/downloads/geografi-migrasjon-ssb14753.csv`: 36 verdier.

@@ -375,7 +375,13 @@ const GeografiFiskEksportLat = lazy(() => import("@/components/geografi/naering-
 const GeografiFruktbarhetKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiFruktbarhetKart})));
 const GeografiLevekarKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiLevekarKart})));
 
+const GeografiKommuneflyttingKartLat = lazy(() => import("@/components/geografi/migrasjon-kart").then(m=>({default:m.GeografiKommuneflyttingKart})));
+const GeografiFlyktningVertslandKartLat = lazy(() => import("@/components/geografi/migrasjon-kart").then(m=>({default:m.GeografiFlyktningVertslandKart})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoMigrasjonKommunekart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiKommuneflyttingKartLat /></Suspense>,
+  GeoMigrasjonVertslandKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFlyktningVertslandKartLat /></Suspense>,
+
   GeoBefolkningFruktbarhetKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFruktbarhetKartLat /></Suspense>,
   GeoBefolkningLevekarKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiLevekarKartLat /></Suspense>,
 

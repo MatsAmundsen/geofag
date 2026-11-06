@@ -90,7 +90,9 @@ Oslo og Akershus mottok 3 441 av flyttingene fra Nord-Norge. De 2 545 flyttingen
 GeoMigrasjonNorge
 ```
 
-[figur-11-3-kart]: # (FIGURPLASSHOLDER 11.3 KARTDEL: Kommunekart med SSB 09588, innenlandsk nettorate 2025 og divergerende skala med null. Diagram og tabell er levert. Kontroller konkret kommunegeometri, kommunegrenser for riktig år, lisens, manglende data og tekstalternativ. Ikke bland kommune- og fylkesrader eller kall nettoflytting total befolkningsvekst.)
+```widget
+GeoMigrasjonKommunekart
+```
 
 ### Kommunegrenser endrer hva vi ser
 
@@ -100,7 +102,7 @@ I de tre nordligste fylkene var innenlandsk nettoinnflytting negativ i 2025. Nor
 
 Kommunediagrammet bruker publisert innenlandsk nettorate per tusen innbyggere, ikke bare antall flyttinger. Det gjør det lettere å sammenlikne steder med ulik befolkningsstørrelse. Ullensaker hadde 12,8 promille, mens Tromsø hadde minus 2,9 promille. De fem utvalgte kommunene er eksempler, ikke de fem sterkeste utslagene blant alle kommuner. Enheten, utvalget og forskjellen mellom en rate og et antall må følge konklusjonen (SSB, 2026a).
 
-[figur-11-8]: # (FIGURPLASSHOLDER 11.8: StedKart som lokaliserer Oslo, Ullensaker, Bodø, Tromsø og Alta og deres faktiske administrative nivå. Kontroller konkrete Kartverket-filer, koordinater, kommunegrenser 2025, lisens og tekstalternativ. Tall er fra SSB 09588. Ingen oppgave krever kartet, og utvalget er ikke en nasjonal rangering.)
+Punktkartet og diagrammet bruker de samme fem kommuneeksemplene. Like store punkter viser hvor kommunene ligger, ikke hvor mange som har flyttet.
 
 ### Følger for steder som vokser eller mister innbyggere
 
@@ -174,17 +176,17 @@ Et kart med store piler kan gi et misvisende inntrykk dersom perioder og kategor
 
 ### Flyktning, asylsøker og internt fordrevet
 
-En **flyktning** etter flyktningkonvensjonen er utenfor sitt land og har velbegrunnet frykt for forfølgelse. Konvensjonen knytter forfølgelsen til rase, religion, nasjonalitet, politisk oppfatning eller medlemskap i en bestemt sosial gruppe. Personen kan ikke, eller vil på grunn av frykten ikke, søke beskyttelse fra sitt eget land. Konvensjonen fra 1951 og protokollen fra 1967 er sentrale deler av det internasjonale beskyttelsessystemet. Andre beskyttelsesgrunnlag og regionale ordninger kan også være relevante, så konvensjonsdefinisjonen er ikke hele bildet (FNs høykommissær for flyktninger [UNHCR], u.å.-b).
+En **flyktning** etter flyktningkonvensjonen er utenfor sitt land og har velbegrunnet frykt for forfølgelse. Konvensjonen knytter forfølgelsen til rase, religion, nasjonalitet, politisk oppfatning eller medlemskap i en bestemt sosial gruppe. Personen kan ikke, eller vil på grunn av frykten ikke, søke beskyttelse fra sitt eget land. Konvensjonen fra 1951 og protokollen fra 1967 er sentrale deler av det internasjonale beskyttelsessystemet. Andre beskyttelsesgrunnlag og regionale ordninger kan også være relevante, så konvensjonsdefinisjonen er ikke hele bildet (FNs høykommissær for flyktninger [UNHCR], u.å.-c).
 
-En **asylsøker** har søkt internasjonal beskyttelse og venter på endelig behandling av søknaden. Det betyr ikke at vedkommende mangler beskyttelsesbehov fram til en myndighet har avgjort saken. Anerkjennelse av flyktningstatus bekrefter at vilkårene er oppfylt, framfor å skape selve forfølgelsen eller behovet. Ikke alle asylsøkere blir anerkjent som flyktninger etter konvensjonen. Vi må derfor skille mellom et beskyttelsesbehov, en søknadsprosess og utfallet av den (IOM, u.å.; UNHCR, u.å.-b).
+En **asylsøker** har søkt internasjonal beskyttelse og venter på endelig behandling av søknaden. Det betyr ikke at vedkommende mangler beskyttelsesbehov fram til en myndighet har avgjort saken. Anerkjennelse av flyktningstatus bekrefter at vilkårene er oppfylt, framfor å skape selve forfølgelsen eller behovet. Ikke alle asylsøkere blir anerkjent som flyktninger etter konvensjonen. Vi må derfor skille mellom et beskyttelsesbehov, en søknadsprosess og utfallet av den (IOM, u.å.; UNHCR, u.å.-c).
 
 En **internt fordrevet** har måttet forlate hjemmet, men har ikke krysset en internasjonalt anerkjent landegrense. Det kan skje på grunn av konflikt, vold eller katastrofer. Behovet for trygghet og grunnleggende tjenester kan være stort også uten en grensepassering. Samtidig er denne gruppen ikke den samme som konvensjonsflyktninger i et annet land. De forskjellige kategoriene må følge med når vi leser tall om mennesker på flukt (IOM, u.å.).
 
 ### Case: en datert global årsstatus
 
-UNHCR anslo at 117,8 millioner mennesker var tvunget fordrevet ved utgangen av 2025. Opplysningen kommer fra Global Trends 2025, publisert 11. juni 2026. Rapporten oppga samtidig 41,6 millioner i en bred flyktninggruppe, omtrent 9,0 millioner ventende asylsøkere og 68,7 millioner internt fordrevne på grunn av konflikt og vold. Den brede flyktninggruppen inkluderer også palestinske flyktninger under UNRWA og andre med behov for internasjonal beskyttelse. Dette er en datert årsstatus, ikke antallet nye flyktninger i 2025 eller et sanntidstall for november 2026 (UNHCR, 2026).
+UNHCR anslo at 117,8 millioner mennesker var tvunget fordrevet ved utgangen av 2025. Opplysningen kommer fra Global Trends 2025, publisert 11. juni 2026. Rapporten oppga samtidig 41,6 millioner i en bred flyktninggruppe, omtrent 9,0 millioner ventende asylsøkere og 68,7 millioner internt fordrevne på grunn av konflikt og vold. Den brede flyktninggruppen inkluderer også palestinske flyktninger under UNRWA og andre med behov for internasjonal beskyttelse. Dette er en datert årsstatus, ikke antallet nye flyktninger i 2025 eller et sanntidstall for november 2026 (UNHCR, 2026a).
 
-De avrundede kategoritallene skal ikke summeres direkte til totalen. Noen palestinske flyktninger under UNRWAs mandat er også internt fordrevet, slik at det finnes overlapp. UNHCR justerer for slik dobbelttelling i den samlede framstillingen. Vi må derfor lese metodeforklaringen i stedet for å forsøke å tvinge alle viste tall til å bli en enkel sum. Kategorien for internt fordrevne i denne årsstatusen gjelder konflikt og vold, ikke alle mennesker fordrevet av naturkatastrofer (UNHCR, 2026).
+De avrundede kategoritallene skal ikke summeres direkte til totalen. Noen palestinske flyktninger under UNRWAs mandat er også internt fordrevet, slik at det finnes overlapp. UNHCR justerer for slik dobbelttelling i den samlede framstillingen. Vi må derfor lese metodeforklaringen i stedet for å forsøke å tvinge alle viste tall til å bli en enkel sum. Kategorien for internt fordrevne i denne årsstatusen gjelder konflikt og vold, ikke alle mennesker fordrevet av naturkatastrofer (UNHCR, 2026a).
 
 ```widget
 GeoMigrasjonFlyktninger
@@ -192,21 +194,25 @@ GeoMigrasjonFlyktninger
 
 ### Mange søker beskyttelse nær opprinnelseslandet
 
-UNHCR oppga at 65 prosent i deres avgrensede flyktning- og beskyttelsesgruppe var i naboland ved utgangen av 2025. Gruppen inkluderer flyktninger under UNHCRs mandat, flyktningliknende situasjoner og andre med behov for internasjonal beskyttelse. Palestinske flyktninger under UNRWAs mandat er ikke med i nevneren til dette målet. Andelen gjelder derfor ikke alle de 117,8 millionene tvunget fordrevne, hvor mange fortsatt er i sitt eget land. Denne avgrensningen er avgjørende for at figuren skal bli riktig forstått (UNHCR, 2026, u.å.-a).
+UNHCR oppga at 65 prosent i deres avgrensede flyktning- og beskyttelsesgruppe var i naboland ved utgangen av 2025. Gruppen inkluderer flyktninger under UNHCRs mandat, flyktningliknende situasjoner og andre med behov for internasjonal beskyttelse. Palestinske flyktninger under UNRWAs mandat er ikke med i nevneren til dette målet. Andelen gjelder derfor ikke alle de 117,8 millionene tvunget fordrevne, hvor mange fortsatt er i sitt eget land. Denne avgrensningen er avgjørende for at figuren skal bli riktig forstått (UNHCR, 2026a, u.å.-b).
 
-«Naboland» betyr heller ikke alle land i nærheten av opprinnelseslandet. Et land kan ta imot mange fra en nærliggende konflikt uten å dele en direkte grense med landet de kommer fra. Målet fanger derfor ikke alle former for geografisk nærhet. Det forteller heller ikke om kvaliteten på mottak, rettigheter eller muligheten til å få arbeid. Vi trenger flere opplysninger før vi fordeler ansvar eller sammenlikner levekårene i ulike vertsland (UNHCR, u.å.-a).
+«Naboland» betyr heller ikke alle land i nærheten av opprinnelseslandet. Et land kan ta imot mange fra en nærliggende konflikt uten å dele en direkte grense med landet de kommer fra. Målet fanger derfor ikke alle former for geografisk nærhet. Det forteller heller ikke om kvaliteten på mottak, rettigheter eller muligheten til å få arbeid. Vi trenger flere opplysninger før vi fordeler ansvar eller sammenlikner levekårene i ulike vertsland (UNHCR, u.å.-b).
 
-[figur-11-6-kart]: # (FIGURPLASSHOLDER 11.6 KARTDEL: Regional fordeling av flyktninger med proporsjonale sirkler og eventuelle søyler. Nabolandsandel og faktatabell er levert, men er ikke regionfordelingen. Kontroller faktisk databaseuttak, kategori, referansedato, dobbeltelling, vertskapsland kontra opprinnelsesland og datasettlisens. Vilkårssiden lot seg ikke hente i denne leveransen; ingen databasefil eller kartdata er importert.)
+I kartdelen nedenfor bruker vi bare flyktninger under UNHCRs mandat. Det er en smalere gruppe enn nevneren i nabolandsmålet og en annen størrelse enn alle tvunget fordrevne. Det er en beholdning ved utgangen av 2025. Landtall og regionsummer bruker samme kategori og skal ikke identifiseres med alle tvunget fordrevne (UNHCR, u.å.-a).
+
+```widget
+GeoMigrasjonVertslandKart
+```
 
 ### Beskyttelse og ansvar
 
-Et sentralt prinsipp er vern mot retur til forfølgelse eller annen alvorlig fare, kalt **non-refoulement**. Det begrenser staters adgang til å sende mennesker tilbake når vilkårene for vernet er oppfylt. Flyktningkonvensjonen omhandler også rettigheter og plikter, blant annet tilgang til arbeid, utdanning og rettsvern. Staters grensekontroll må derfor vurderes sammen med internasjonale beskyttelsesforpliktelser. Det å søke beskyttelse er ikke i seg selv bevis for at en person har gjort noe galt (UNHCR, u.å.-b; IOM, u.å.).
+Et sentralt prinsipp er vern mot retur til forfølgelse eller annen alvorlig fare, kalt **non-refoulement**. Det begrenser staters adgang til å sende mennesker tilbake når vilkårene for vernet er oppfylt. Flyktningkonvensjonen omhandler også rettigheter og plikter, blant annet tilgang til arbeid, utdanning og rettsvern. Staters grensekontroll må derfor vurderes sammen med internasjonale beskyttelsesforpliktelser. Det å søke beskyttelse er ikke i seg selv bevis for at en person har gjort noe galt (UNHCR, u.å.-c; IOM, u.å.).
 
 I Norge finnes også en ordning med kollektiv beskyttelse i en massefluktsituasjon. UDI forklarer at en gruppevurdering da kan erstatte individuell vurdering i den aktuelle ordningen. Dette er ikke det samme som at alle som får slik beskyttelse, har gjennomgått samme individuelle konvensjonsvurdering. Vilkår og varighet kan endres, og konkrete spørsmål må kontrolleres hos UDI for den aktuelle datoen. Her forklarer vi forskjellen mellom ordninger, ikke hvem en bestemt elev eller familie har rett til opphold som (Utlendingsdirektoratet [UDI], u.å.).
 
-Ansvar handler både om å gi trygghet nå og om muligheter til å leve videre over tid. Mat, bolig og helsehjelp er viktige, men skolegang, arbeid og rettigheter har også betydning ved langvarig fordrivelse. Internasjonal støtte kan bidra til at vertsland med mange mennesker på flukt klarer å tilby slike tjenester. UNHCR understreker samtidig at retur ikke automatisk betyr at trygghet og bærekraftige levekår er gjenopprettet. I rapporten om 2025 beskrives mange returer til svært sårbare forhold (UNHCR, 2026; Verdensbanken, 2023).
+Ansvar handler både om å gi trygghet nå og om muligheter til å leve videre over tid. Mat, bolig og helsehjelp er viktige, men skolegang, arbeid og rettigheter har også betydning ved langvarig fordrivelse. Internasjonal støtte kan bidra til at vertsland med mange mennesker på flukt klarer å tilby slike tjenester. UNHCR understreker samtidig at retur ikke automatisk betyr at trygghet og bærekraftige levekår er gjenopprettet. I rapporten om 2025 beskrives mange returer til svært sårbare forhold (UNHCR, 2026a; Verdensbanken, 2023).
 
-En drøfting av ansvar må derfor skille mellom hva rettighetene krever, og hvilke politiske virkemidler som velges. Støtte til vertsland, bosetting, inkludering og arbeid for trygghet i opprinnelsesområder kan inngå på forskjellige måter. Ingen av dem gjør alle andre behov irrelevante. Vi må undersøke hvem som berøres, hvilke virkninger som dokumenteres, og hvilke usikkerheter som gjenstår. Mennesker på flukt skal ikke omtales som en ensartet belastning uten egne rettigheter og handlingsmuligheter (UNHCR, 2026; Verdensbanken, 2023).
+En drøfting av ansvar må derfor skille mellom hva rettighetene krever, og hvilke politiske virkemidler som velges. Støtte til vertsland, bosetting, inkludering og arbeid for trygghet i opprinnelsesområder kan inngå på forskjellige måter. Ingen av dem gjør alle andre behov irrelevante. Vi må undersøke hvem som berøres, hvilke virkninger som dokumenteres, og hvilke usikkerheter som gjenstår. Mennesker på flukt skal ikke omtales som en ensartet belastning uten egne rettigheter og handlingsmuligheter (UNHCR, 2026a; Verdensbanken, 2023).
 
 **Tenk over:** Hva er forskjellen mellom en asylsøker og en internt fordrevet? Hvorfor kan ikke 65-prosentandelen multipliseres med alle tvunget fordrevne uten videre?
 
