@@ -15,3 +15,7 @@ Nepal-casen har fått tydelig årlig revisjonsmerknad, sist kontrollert 6. novem
 ## Avgrensning og kontroller
 
 Geofag-standardvisningen endres ikke. Bakgrunnskart begrenses til zoom 11, uten kopiering av detaljerte Geovekst-lag. Nytt reseed følger endret markdown. Testene dekker det komplette kommuneuttrekket, neste-steg-kontrollene og fravær av returperiodepåstand i Vg1. Typecheck, ESLint, relevante tester og build kjøres per branch; logger i /workspace/mats-valg-arbeid/kap6-*.log. Ingen deploy eller ekstern databasemigrering.
+
+## Ekstra lisenssikring
+
+Lokatorkartet bruker samme Kartverket-bakgrunn som temakartet, begrenset til zoom 11. Den generiske GeoMap-komponenten med OSM-bakgrunn gjenbrukes ikke, slik at det ikke følger med en uklar eller del-likt-lisensiert kartbakgrunn. Felles datakart støtter nå punktdata som sirkelsymboler uten eksterne ikonfiler. Standardkart på Geofag-sidene er urørt.
