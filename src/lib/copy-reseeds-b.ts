@@ -6,6 +6,16 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    flag: "geo-feltarbeid-mats-valg-kap2-2026-11-06",
+    slug: "geo-feltarbeid",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
+    slug: "geo-verktoy",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
     // Geografi PR D: kapittel 6; ingen produksjonsendring før godkjent merge.
     flag: "geo-naturfare-kap6-2026-11-06",
     slug: "geo-naturfare",
