@@ -226,6 +226,36 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-indre-krefter": [
     {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "Admin 0 – Countries, 1:110m, versjon 5.1.1",
+      suffix: ". Public domain. Hentet 6. november 2026. Eget lands- og egenskapsutvalg.",
+      href: "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/",
+    },
+    {
+      prefix: "European Commission. (u.å.). ",
+      italic: "Legal notice on the use of Copernicus Sentinel Data and Service Information",
+      suffix: ". Juridisk originaltekst, lest 6. november 2026.",
+      href: "https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice",
+    },
+    {
+      prefix: "European Union. (2023, 21. desember). ",
+      italic: "Eruption on Iceland’s Reykjanes peninsula",
+      suffix: ". Copernicus Sentinel-3/SLSTR. Opptak 19. desember 2023. Contains modified Copernicus Sentinel data 2023.",
+      href: "https://commons.wikimedia.org/wiki/File:Eruption_on_Iceland%E2%80%99s_Reykjanes_peninsula_(Copernicus_2023-12-21).jpg",
+    },
+    {
+      prefix: "U.S. Geological Survey. (2023a). ",
+      italic: "Earthquake catalog: Two magnitude 7 and larger events in Türkiye, 6 February 2023",
+      suffix: ". Datert katalogutvalg, hentet 6. november 2026. Offentlige USGS-data.",
+      href: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-02-06&endtime=2023-02-07&minmagnitude=7&minlatitude=34&maxlatitude=41&minlongitude=30&maxlongitude=42",
+    },
+    {
+      prefix: "U.S. Geological Survey. (2026, 30. juli). ",
+      italic: "Simplified Plate Tectonic Map",
+      suffix: ". Public domain. Nedskalert med egen norsk lesenøkkel.",
+      href: "https://www.usgs.gov/media/images/simplified-plate-tectonic-map",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration. (u.å.-a). ",
       italic: "Detection, Warning, and Forecasting",
       suffix: ". Hentet 6. november 2026.",
@@ -280,7 +310,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.usgs.gov/special-topics/subduction-zone-science/science/introduction-subduction-zones-amazing-events",
     },
     {
-      prefix: "U.S. Geological Survey. (2023, 17. februar). ",
+      prefix: "U.S. Geological Survey. (2023b, 17. februar). ",
       italic: "M7.8 and M7.5 Kahramanmaraş Earthquake Sequence near Nurdağı, Turkey (Türkiye)",
       suffix: ".",
       href: "https://www.usgs.gov/news/featured-story/magnitude-78-earthquake-nurdagi-turkey",

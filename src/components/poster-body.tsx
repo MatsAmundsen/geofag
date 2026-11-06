@@ -1,3 +1,10 @@
+import { GeografiTidsskala } from "@/components/geografi/indre-valg";
+import { GeografiBerggrunnSkisse } from "@/components/geografi/indre-valg";
+import { GeografiReykjanes } from "@/components/geografi/indre-valg";
+import { GeografiTyrkiaKart } from "@/components/geografi/indre-valg";
+import { GeografiTsunamiSteg } from "@/components/geografi/indre-valg";
+import { GeografiRiftHav } from "@/components/geografi/indre-valg";
+import { GeografiPlateKart } from "@/components/geografi/indre-valg";
 import { GeografiLokalFotavtrykk } from "@/components/geografi/baerekraft-valg";
 import { GeografiHdiBnp } from "@/components/geografi/baerekraft-valg";
 import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
@@ -339,6 +346,13 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoIndreTidsskala: () => <GeografiTidsskala />,
+  GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
+  GeoIndreReykjanes: () => <GeografiReykjanes />,
+  GeoIndreTyrkiaKart: () => <GeografiTyrkiaKart />,
+  GeoIndreTsunami: () => <GeografiTsunamiSteg />,
+  GeoIndreRiftHav: () => <GeografiRiftHav />,
+  GeoIndrePlateKart: () => <GeografiPlateKart />,
   GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
   GeoHdiBnp: () => <GeografiHdiBnp />,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
