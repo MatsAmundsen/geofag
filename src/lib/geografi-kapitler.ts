@@ -348,6 +348,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "migrasjon",
+    tekstKlar: true,
     slug: "geo-migrasjon",
     title: "Migrasjon",
     navLabel: "Migrasjon",

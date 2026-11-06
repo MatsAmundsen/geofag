@@ -1,0 +1,53 @@
+{
+  "query": [
+    {
+      "code": "TilflyttRegion",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "La1",
+          "La2",
+          "La3",
+          "La4",
+          "La5",
+          "La6"
+        ]
+      }
+    },
+    {
+      "code": "Fraflyttingsregion",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "La1",
+          "La2",
+          "La3",
+          "La4",
+          "La5",
+          "La6"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "Flytting"
+        ]
+      }
+    },
+    {
+      "code": "Tid",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2025"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}

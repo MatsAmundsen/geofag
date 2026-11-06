@@ -1,0 +1,121 @@
+{
+  "kontrollert": "2026-11-06",
+  "UNHCR": {
+    "vilkar": "https://refugeedata.unhcr.org/en/terms-and-conditions-of-use/",
+    "ikraft": "2026-07-01",
+    "lisens": "Datasett som hovedregel CC BY 4.0. Ingen særskilt restriksjon angitt for PopStatsOfficial i kontrollert metadata.",
+    "krav": "Kreditering, oppgi bearbeiding, ikke framstill som offisielt eller godkjent UNHCR-produkt. Ingen logo/design eller individidentifisering.",
+    "apiDokumentasjon": "https://refugeedata.unhcr.org/en/documentation/technical-reference/api/",
+    "query": {
+      "url": "https://api-data.unhcr.org/api/v0/data/PopStatsOfficial",
+      "params": {
+        "c[pop_type]": "REF_UNHCR",
+        "time_period": "eq:2025",
+        "dimensions": "default",
+        "page_size": 100,
+        "page": [
+          1,
+          2
+        ]
+      }
+    },
+    "rader": [
+      100,
+      67
+    ],
+    "unikeVertslandOmrader": 167,
+    "periode": "2025-12, årsstatus ved utgangen av 2025",
+    "enhet": "IND.1.TOT, individer, enhetsmultiplikator 1, total",
+    "sum": 28461306,
+    "regioner": [
+      {
+        "kode": "RBA",
+        "navn": "Americas",
+        "personer": 1413845,
+        "landOmrader": 32
+      },
+      {
+        "kode": "RBAP",
+        "navn": "Asia and the Pacific",
+        "personer": 3734356,
+        "landOmrader": 28
+      },
+      {
+        "kode": "RBE",
+        "navn": "Europe",
+        "personer": 11489486,
+        "landOmrader": 46
+      },
+      {
+        "kode": "RBESA",
+        "navn": "Eastern and Southern Africa",
+        "personer": 5640704,
+        "landOmrader": 24
+      },
+      {
+        "kode": "RBMENA",
+        "navn": "Middle East and North Africa",
+        "personer": 2621251,
+        "landOmrader": 18
+      },
+      {
+        "kode": "RBWCA",
+        "navn": "West and Central Africa",
+        "personer": 3561664,
+        "landOmrader": 19
+      }
+    ],
+    "avgrensning": "Bare flyktninger under UNHCRs mandat. Ikke UNRWA, OIP, asylsøkere, IDP, all tvungen fordrivelse eller nye ankomster. Ikke samme nevner som 65-prosentmålet.",
+    "bearbeiding": "Kun nødvendig land-/regionutvalg av felter, egne regionsummer og eget Gall–Peters-kart. Alle 167 landsrader med i tabell og CSV.",
+    "drift": "Fast lokalt uttrekk for undervisning. Ingen levende API-backend, polling eller frontendkall til UNHCR.",
+    "sha256": [
+      "03e029622d8987a57039d3cacc908fd379d118b1f6a5f166b7c66b9a82587ced",
+      "d6adc0afd63e8fa1177d826566719c375c04377a9100aa8fb19cd8b9096e56fc"
+    ],
+    "bilateraleData": "Et første opprinnelsesfilter ble avvist med HTTP400 fordi den filtrerte dimensjonen manglet. Dokumentasjonen ble lest. Korrekt egendefinert dimensjonsliste med UKR og DEU/POL/CZE ga HTTP200, men null rader for 2025. Ingen bilateral figur eller rute er konstruert.",
+    "bilateralQuery": {
+      "c[pop_type]": "REF_UNHCR",
+      "c[area_ori_adm0]": "UKR",
+      "c[ref_area_adm0]": "DEU,POL,CZE",
+      "time_period": "eq:2025",
+      "dimensions": "pop_type,ref_area_adm0,area_ori_adm0",
+      "page_size": 100,
+      "page": 1
+    }
+  },
+  "kommunePunkter": {
+    "kilde": [
+      {
+        "url": "https://ws.geonorge.no/kommuneinfo/v1/kommuner/0301",
+        "sha256": "c14b3c1ed419fce10869c431d625620c59044444bf2ad5330d221a65d1f451b2"
+      },
+      {
+        "url": "https://ws.geonorge.no/kommuneinfo/v1/kommuner/3209",
+        "sha256": "25fd48e2e3dd28d15fb85dba90bc9e864d5848129c1ae276707890e829f36381"
+      },
+      {
+        "url": "https://ws.geonorge.no/kommuneinfo/v1/kommuner/1804",
+        "sha256": "04041b44508bb1c7c498c7cfcf765388e9fbc4d7027c4f05a68bc591ecb9a51f"
+      },
+      {
+        "url": "https://ws.geonorge.no/kommuneinfo/v1/kommuner/5501",
+        "sha256": "00d52fab345f9621a0a508d8aca93b26a6e6a8a20e2c7b31f293859993ab9cf4"
+      },
+      {
+        "url": "https://ws.geonorge.no/kommuneinfo/v1/kommuner/5601",
+        "sha256": "5c42188b01f71dd9092b5a460e51f87ec67b9be75d8b545b058404ad97cd8421"
+      }
+    ],
+    "felt": "punktIOmrade, ikke bysentrum eller administrasjonens gateadresse",
+    "lisens": "CC BY 4.0, bekreftet i Kartverkets publiserte API-katalogpost",
+    "lisensMetadata": "https://data.norge.no/en/data-services/41e77491-1562-3eda-a006-f56a3064d274/apent-api-fra-kartverket-for-administrative-enheter",
+    "koordinatomregning": "ETRS89 to WGS 84 (1) (with axis order normalized for visualization)",
+    "original": "EPSG4258",
+    "mal": "EPSG4326, seks desimaler",
+    "karttype": "Like store punktmarkører for fem valgte kommuner, ikke kommunearealer eller flyttevolum. Daterte grenser er ikke importert.",
+    "statistikk": "Uendrede originale kommuneverdier fra SSB09588 for2025. Ingen fylkesrader mappes som kommuner.",
+    "bakgrunn": "Kartverket WMTS, CC BY4, maksimaltzoom11.",
+    "koordinatoperasjonensOppgitteNoyaktighetMeter": 1.0
+  },
+  "verdenskart": "Natural Earth110mAdmin0v5.1.1, publicdomain. Samme egne projeksjon somkap9/10. Ingenukjentverdisatt tilnull."
+}

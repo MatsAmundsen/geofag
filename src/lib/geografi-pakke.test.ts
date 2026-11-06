@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import { parsePosterMarkdown } from "./poster-markdown.ts";
 import { beregnGeografiMassebalanse } from "./geografi-massebalanse.ts";
 import { KLIMANORMAL_STASJON, OSLO_BLINDERN_NORMALER } from "./geografi-klimanormaler.ts";
+import { FLYTTING_REGIONER, LANDSDEL_FLYTTING_RA, LANDSDELER, INNVANDRING_GRUNN_RA, INNVANDRING_GRUNN_SERIER, MIGRASJON_HISTORIE, MIGRASJON_KILDER, NORD_SOR, UNHCR_FAKTA } from "./geografi-migrasjonsdata.ts";
 import { ALDERSGRUPPER, BEFOLKNING_KILDER, NORGE_RA, NORGE_PYRAMIDER, LAND_RA, LAND_PYRAMIDER, NORGE_SFT, VERDENSBEFOLKNING, NORGE_ENDRING, NORGE_MIDDELFOLK, NORGE_NATURLIG, NORGE_NETTOFLYTTING, NORGE_REGISTERAVVIK } from "./geografi-befolkningsdata.ts";
 import { NAERING_AR, NAERING_KILDE, NAERING_RASERIER, NAERING_STRUKTUR } from "./geografi-naeringsdata.ts";
 
@@ -78,7 +79,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser", "geo-naering", "geo-befolkning"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser", "geo-naering", "geo-befolkning", "geo-migrasjon"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -166,7 +167,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 10);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 11);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -623,11 +624,11 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.match(md, /kort, tenkt kommunalt beslutningsnotat/);
   });
 
-  it("har eget klima-reseed og tekststatus mens kapittel 11 fortsatt er skjelett", () => {
+  it("bevarer klima-reseed og tekststatus når alle kapitler har tekst", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-kap5-2026-11-06",\s+slug: "geo-klima"/);
     assert.match(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-migrasjon.md"), /under arbeid/i);
+    assert.match(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
+    assert.doesNotMatch(read("posts/geo-migrasjon.md"), /under arbeid/i);
   });
 });
 
@@ -799,12 +800,12 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     assert.match(figure, /Forenklet, ikke komplett leverandørliste/);
   });
 
-  it("bevarer kapittel 9 sitt reseed mens bare kapittel 11 venter", () => {
+  it("bevarer kapittel 9 sitt reseed når siste kapittel har tekst", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-naering-kap9-2026-11-06",\s+slug: "geo-naering"/);
     assert.match(read("geografi-kapitler.ts"), /path: "naering",\s+tekstKlar: true/);
     for (const slug of ["migrasjon"]) {
-      assert.doesNotMatch(read("geografi-kapitler.ts"), new RegExp(`path: "${slug}",\\s+tekstKlar: true`));
-      assert.match(read(`posts/geo-${slug}.md`), /under arbeid/i);
+      assert.match(read("geografi-kapitler.ts"), new RegExp(`path: "${slug}",\\s+tekstKlar: true`));
+      assert.doesNotMatch(read(`posts/geo-${slug}.md`), /under arbeid/i);
     }
   });
 });
@@ -923,10 +924,135 @@ describe("Geografi kapittel 10: befolkning og levekår", () => {
     assert.match(figure, /title=/);assert.match(figure, /caption=/);
   });
 
-  it("aktiverer kapittel 10 med nytt reseed og lar kapittel 11 vente", () => {
+  it("bevarer kapittel 10 sitt reseed når siste kapittel har tekst", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-befolkning-kap10-2026-11-06",\s+slug: "geo-befolkning"/);
     assert.match(read("geografi-kapitler.ts"), /path: "befolkning",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-migrasjon.md"), /under arbeid/i);
+    assert.match(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
+    assert.doesNotMatch(read("posts/geo-migrasjon.md"), /under arbeid/i);
+  });
+});
+
+describe("Geografi kapittel 11: migrasjon", () => {
+  const md = read("posts/geo-migrasjon.md");
+  const sources = read("kilder-geografi.ts").split('"geo-migrasjon": [')[1];
+  const csv = (id: string) => {
+    const lines = read(`../../public/downloads/geografi-migrasjon-ssb${id}.csv`).trim().split(/\r?\n/).map((l) => l.split(";"));
+    return lines.slice(1).map((cells) => Object.fromEntries(lines[0].map((k, i) => [k, cells[i]])));
+  };
+  const verdi = (r: Record<string, string>) => Number(r.verdi.replace(",", "."));
+
+  it("dekker sju underkapitler, sårbare tema og alle oppgavelag", () => {
+    for (const title of ["Hva er migrasjon?", "Hvorfor folk flytter", "Flytting i Norge", "Utvandring og innvandring", "Global migrasjon", "Flyktninger", "Menneskehandel", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## Flytting går"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 6);assert.equal((md.match(/^c\. /gm) ?? []).length, 6);
+    for (const code of ["KM484", "KM481"]) assert.ok(md.includes(code));
+    assert.doesNotMatch(md, /under arbeid|## Status|## Planlagte underkapitler|[!<]/i);
+    assert.match(md, /ikke spørre medelever om flukt, oppholdsstatus/);
+  });
+
+  it("registrerer sju widgets og to skjulte kartmarkører", () => {
+    const widgets = ["GeoMigrasjonSkyveTrekk", "GeoMigrasjonNorge", "GeoMigrasjonKommunekart", "GeoMigrasjonHistorie", "GeoMigrasjonInnvandringsgrunn", "GeoMigrasjonFlyktninger", "GeoMigrasjonVertslandKart"];
+    assert.deepEqual(parsePosterMarkdown(md).filter((p) => p.type === "widget").map((p) => p.id), widgets);
+    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
+    assert.deepEqual([...md.matchAll(/^\[figur-11-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), ["1", "5"]);
+    assert.doesNotMatch(renderToStaticMarkup(createElement(ReactMarkdown, { children: md })), /FIGURPLASSHOLDER|figur-11-/);
+  });
+
+  it("har 22 kontrollerte kilder og planens femten begreper", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 22);
+    for (const domain of ["ssb.no", "snl.no", "iom.int", "unhcr.org", "unodc.org", "udi.no", "worldbank.org", "udir.no"]) assert.ok(sources.includes(domain), domain);
+    for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "SSB, 2026d", "IOM, u.å.", "UNHCR, 2026a", "UNHCR, u.å.-a", "UNHCR, u.å.-b", "UNHCR, u.å.-c", "UNODC, u.å.", "[UDI], u.å.", "Bore, 2005", "Gursli-Berg et al., 2026", "Hansen & Tjernshaugen, 2026", "Butenschøn, 2020", "Verdensbanken, 2023"]) assert.ok(md.includes(citation), citation);
+    for (const term of ["Migrasjon", "Emigrasjon", "Immigrasjon", "Intern migrasjon", "Skyvefaktor", "Trekkfaktor", "Sentralisering", "Urbanisering", "Arbeidsinnvandring", "Flyktning", "Asylsøker", "Internt fordrevet", "Menneskesmugling", "Menneskehandel", "Pengeoverføring"]) assert.ok(md.includes(`| ${term} |`), term);
+    assert.doesNotMatch(md + sources, /Terra Nova|Aunivers|bibliotek/);
+  });
+
+  it("bevarer alle 63 regionverdier og skiller kommune fra fylke", () => {
+    const rows = csv("09588");assert.equal(rows.length, 63);assert.equal(FLYTTING_REGIONER.length, 9);
+    for (const r of FLYTTING_REGIONER) {
+      const subset = rows.filter((v) => v.Region === r.kode);assert.equal(subset.length, 7);
+      for (const row of subset) assert.equal(verdi(row), r[row.ContentsCode as keyof typeof r]);
+      assert.equal(r.InnflyttingInnland - r.UtflyttingInnland, r.NettoInnland);
+      assert.equal(r.Innvandring - r.Utvandring, r.Nettoinnvandring);
+      assert.equal(r.type, r.kode.length === 2 ? "Fylke" : "Kommune");
+    }
+    assert.equal(FLYTTING_REGIONER.find((r) => r.kode === "0301")!.NettoInnland, -3444);
+    assert.equal(FLYTTING_REGIONER.find((r) => r.kode === "3209")!.FlyttInnlandPer1000, 12.8);
+  });
+
+  it("bevarer hele 36-cellers fra–til-matrisen uten overlappende regioner", () => {
+    const rows = csv("14753");assert.equal(rows.length, 36);assert.equal(LANDSDELER.length, 6);
+    for (const r of LANDSDEL_FLYTTING_RA) {
+      const found = rows.filter((v) => v.Fraflyttingsregion === r.fra && v.TilflyttRegion === r.til);
+      assert.equal(found.length, 1);assert.equal(found[0].Tid, "2025");assert.equal(verdi(found[0]), r.flyttinger);
+      assert.ok(Number.isInteger(r.flyttinger) && r.flyttinger >= 0);
+    }
+    assert.ok(LANDSDEL_FLYTTING_RA.some((r) => r.fra === r.til && r.flyttinger > 0));
+    assert.doesNotMatch(JSON.stringify(LANDSDEL_FLYTTING_RA), /FF-0|FT-0/);
+  });
+
+  it("beregner faktiske nord–sør-retninger og kontrollerer mot fylkenes netto", () => {
+    assert.deepEqual(NORD_SOR, { fraNord: 11751, tilNord: 8864, nordTilOsloAkershus: 3441, osloAkershusTilNord: 2545 });
+    assert.equal(NORD_SOR.fraNord - NORD_SOR.tilNord, 2887);
+    assert.equal(NORD_SOR.nordTilOsloAkershus - NORD_SOR.osloAkershusTilNord, 896);
+    assert.equal(FLYTTING_REGIONER.filter((r) => ["18", "55", "56"].includes(r.kode)).reduce((a, r) => a + r.NettoInnland, 0), NORD_SOR.tilNord - NORD_SOR.fraNord);
+    for (const phrase of ["faktisk fra–til-sammenlikning", "ikke en antatt retning", "unike personer", "ikke riktig å si at alle flytter sørover", "ikke alene om total befolkningsvekst"]) assert.ok(md.includes(phrase), phrase);
+  });
+
+  it("bevarer alle 112 grunnverdier og summerer seks kategorier mot separat total", () => {
+    const rows = csv("07113");assert.equal(rows.length, 112);assert.equal(INNVANDRING_GRUNN_RA.length, 112);
+    for (const r of INNVANDRING_GRUNN_RA) {
+      const found = rows.find((v) => v.Innvandringsgrunn === r.grunn && v.Lanbakgrunn === r.landbakgrunn && Number(v.Tid) === r.ar)!;
+      assert.equal(verdi(found), r.personer);
+    }
+    assert.deepEqual(INNVANDRING_GRUNN_SERIER.map((s) => s.total), [49341, 40982]);
+    assert.deepEqual(INNVANDRING_GRUNN_SERIER.map((s) => s.grupper.map((g) => g.personer)), [[18111, 16728, 9282, 4963, 251, 6], [10545, 12995, 13870, 2882, 504, 186]]);
+    for (const s of INNVANDRING_GRUNN_SERIER) assert.equal(s.grupper.reduce((a, g) => a + g.personer, 0), s.total);
+    assert.ok(md.includes("førstegangsinnvandringer blant innvandrere med ikke-nordisk statsborgerskap"));
+    assert.ok(md.includes("ikke automatisk antallet nordiske statsborgere"));
+  });
+
+  it("bevarer 16 historiske strømverdier og unngår et manglende 1950-tall", () => {
+    const rows = csv("05803");assert.equal(rows.length, 16);
+    assert.deepEqual(MIGRASJON_HISTORIE.map((d) => d.ar), [1960, 1970, 1980, 1990, 2000, 2010, 2020, 2025]);
+    assert.deepEqual(MIGRASJON_HISTORIE.map((d) => [d.innvandring, d.utvandring]), [[13536, 18681], [17383, 18352], [18776, 14705], [25494, 23784], [36542, 26854], [73852, 31506], [38071, 26744], [55243, 32919]]);
+    for (const d of MIGRASJON_HISTORIE) {
+      assert.equal(verdi(rows.find((r) => r.Tid === String(d.ar) && r.ContentsCode === "Innflyttinger")!), d.innvandring);
+      assert.equal(verdi(rows.find((r) => r.Tid === String(d.ar) && r.ContentsCode === "Utflyttinger")!), d.utvandring);
+    }
+  });
+
+  it("daterer UNHCR-fakta og unngår både dobbeltelling og feil 65-prosentnevner", () => {
+    assert.equal(UNHCR_FAKTA.referansedato, "2025-12-31");assert.equal(UNHCR_FAKTA.publisert, "2026-06-11");
+    assert.deepEqual([UNHCR_FAKTA.tvungetFordrevneMillioner, UNHCR_FAKTA.flyktningerBredMillioner, UNHCR_FAKTA.asylsokereMillioner, UNHCR_FAKTA.interntFordrevneKonfliktMillioner, UNHCR_FAKTA.nabolandProsent], [117.8, 41.6, 9, 68.7, 65]);
+    assert.deepEqual(JSON.parse(read("../../docs/geografi-kap11-unhcr-faktatall.json")), UNHCR_FAKTA);
+    for (const phrase of ["skal ikke summeres direkte", "overlapp", "ikke med i nevneren", "ikke alle de 117,8 millionene", "et sanntidstall for november 2026", "ikke alle mennesker fordrevet av naturkatastrofer"]) {
+      assert.ok(md.includes(phrase), phrase);
+    }
+    assert.ok(100 - UNHCR_FAKTA.nabolandProsent === 35);
+  });
+
+  it("skiller rettslige kategorier, barn og oppdagede ofre uten å stigmatisere", () => {
+    for (const phrase of ["Konvensjonen fra 1951 og protokollen fra 1967", "non-refoulement", "gruppevurdering", "økonomisk eller annen materiell fordel", "kreves ikke bevis for slike midler", "ikke nødvendigvis et fullstendig mål", "nasjonalitet, yrke eller utseende", "som arbeidsdefinisjoner", "ikke en stopp for all innvandring"]) assert.ok(md.includes(phrase), phrase);
+    assert.doesNotMatch(md, /alle migranter er flyktninger|alle flyktninger er asylsøkere\./i);
+  });
+
+  it("lagrer eksakte offentlige spørringer og kildeversjoner uten kontaktmetadata", () => {
+    for (const id of ["09588", "14753", "07113", "05803"] as const) {
+      const q = JSON.parse(read(`../../docs/geografi-kap11-ssb${id}-query.json`));
+      assert.equal(q.response.format, "json-stat2");assert.match(MIGRASJON_KILDER[id].sha256, /^[a-f0-9]{64}$/);
+      assert.doesNotMatch(JSON.stringify(q), /contact|phone|@ssb\.no/);
+    }
+    assert.equal(MIGRASJON_KILDER["07113"].oppdatert, "2026-08-28");
+    const q = JSON.parse(read("../../docs/geografi-kap11-ssb14753-query.json"));
+    for (const code of ["TilflyttRegion", "Fraflyttingsregion"]) assert.deepEqual(q.query.find((r: { code: string }) => r.code === code).selection.values, LANDSDELER.map((l) => l.kode));
+  });
+
+  it("har datatabeller og kreditering uten levende API-kall og aktiverer siste kapittel", () => {
+    const figure = read("../components/geografi/migrasjon-diagrammer.tsx");
+    for (const phrase of ["<table", "<caption", 'scope="col"', 'scope="row"', "CC BY 4.0", "førstegangsinnvandringer", "ikke en regionfordeling", "beregnet rest", "ikke nødvendigvis", "title="]) assert.ok(figure.toLowerCase().includes(phrase.toLowerCase()), phrase);
+    assert.doesNotMatch(figure, /fetch\(|setInterval|Math\.random/);
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-migrasjon-kap11-2026-11-06",\s+slug: "geo-migrasjon"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "migrasjon",\s+tekstKlar: true/);
+    assert.equal((read("geografi-kapitler.ts").match(/tekstKlar: true/g) ?? []).length, 11);
   });
 });

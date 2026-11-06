@@ -1,0 +1,30 @@
+import type { GeoJsonObject } from "geojson";
+import { UNHCR_VERTSLAND_2025, UNHCR_REGIONER_2025 } from "@/lib/geografi-unhcr-2025";
+import { MIGRASJON_KOMMUNEPUNKTER } from "@/lib/geografi-migrasjon-punkter";
+import { FLYTTING_REGIONER } from "@/lib/geografi-migrasjonsdata";
+import { GeografiVerdenskart } from "./verdenskart";
+import { GeografiDatakart } from "./datakart";
+const fmt=(v:number,d=0)=>v.toLocaleString("nb-NO",{minimumFractionDigits:d,maximumFractionDigits:d});
+const regionnavn:Record<string,string>={RBA:"Amerika",RBAP:"Asia og Stillehavet",RBE:"Europa",RBESA:"Øst- og Sør-Afrika",RBMENA:"Midtøsten og Nord-Afrika",RBWCA:"Vest- og Sentral-Afrika"};
+export function GeografiFlyktningVertslandKart(){
+ const sum=UNHCR_VERTSLAND_2025.reduce((a,d)=>a+d.verdi,0);
+ return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 11.6, kartdel. Flyktninger under UNHCRs mandat, utgangen av 2025</h3><p>Antall personer etter vertsland eller vertsområde. Dette er en beholdning på ett tidspunkt, ikke nye ankomster i 2025, opprinnelsesland eller reiseruter.</p>
+ <GeografiVerdenskart rows={UNHCR_VERTSLAND_2025} enhet="personer (REF_UNHCR)" ukjent="Ingen rad eller ingen kodekobling" klasser={[{grense:10000,navn:"Under 10 000",farge:"#dbeafe"},{grense:100000,navn:"10 000–under 100 000",farge:"#93c5fd"},{grense:500000,navn:"100 000–under 500 000",farge:"#3b82f6"},{grense:1000000,navn:"500 000–under 1 million",farge:"#1d4ed8"},{grense:Infinity,navn:"1 million eller mer",farge:"#172554"}]}/>
+ <p>Summen av 167 kildeoppføringer er {fmt(sum)} personer. Bare kategorien REF_UNHCR inngår. Palestinske flyktninger under UNRWAs mandat, andre med internasjonalt beskyttelsesbehov (OIP), asylsøkere og internt fordrevne er ikke med.</p>
+ <table className="w-full text-sm"><caption className="text-left">Egne summer etter UNHCRs seks regioner, ikke en vanlig verdensdelsinndeling</caption><thead><tr><th scope="col" className="text-left">UNHCR-region</th><th scope="col">Personer</th><th scope="col">Kildeoppføringer</th></tr></thead><tbody>{UNHCR_REGIONER_2025.map(d=><tr key={d.kode}><th scope="row" className="text-left">{regionnavn[d.kode]??d.navn}</th><td className="text-center">{fmt(d.personer)}</td><td className="text-center">{d.landOmrader}</td></tr>)}</tbody></table>
+ <p>65-prosentandelen i den andre delen av figur 11.6 gjelder en bredere gruppe og skal ikke brukes på denne summen. Landfargen viser heller ikke hvor mennesker bor innenfor landet, eller antall i forhold til vertslandets folketall, ressurser og rettigheter.</p>
+ <figcaption className="text-sm">UNHCR (u.å.-a), PopStatsOfficial, uttrekk 6. november 2026, CC BY 4.0 etter vilkår gjeldende fra 1. juli 2026 (UNHCR, 2026b). Egne regionsummer og egen kartframstilling, ikke et offisielt UNHCR-kart. Ingen logo eller identifiserbare persondata er brukt. Fast lokalt uttrekk, ingen levende API-kall. <a className="underline" href="/downloads/geografi-unhcr-vertsland-2025.csv">Last ned alle 167 kildeoppføringer (CSV)</a>.</figcaption></figure>;
+}
+const rate=(v:number|null)=>v===null?"Mangler":`${v>0?"+":""}${fmt(v,1)} ‰`;
+const farge=(v:number|null)=>v===null?"#9ca3af":v<0?"#1d4ed8":v>0?"#c2410c":"#475569";
+export function GeografiKommuneflyttingKart(){
+ const rows=MIGRASJON_KOMMUNEPUNKTER.map(p=>{const r=FLYTTING_REGIONER.find(d=>d.kode===p.kode&&d.type==="Kommune");return {...p,rate:r?.FlyttInnlandPer1000??null,netto:r?.NettoInnland??null};});
+ const features=rows.map(d=>({type:"Feature",geometry:{type:"Point",coordinates:[d.lon,d.lat]},properties:{navn:`${d.navn} kommune (${d.kode})`,rateLabel:rate(d.rate)}}));
+ const colors=Object.fromEntries(rows.map(d=>[rate(d.rate),farge(d.rate)]));
+ return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 11.3, kartdel, og 11.8. Fem kommuner og innenlandsk nettorate, 2025</h3><p>Like store punkter lokaliserer de fem kommunene i kapitlets diagram. Fargens fortegn gjelder publisert netto innenlandsk flytting per tusen innbyggere, ikke total befolkningsvekst.</p>
+ <GeografiDatakart data={{type:"FeatureCollection",features} as GeoJsonObject} center={[65,17]} zoom={4} basemap property="rateLabel" colors={colors} label="Fem kommunepunkter med innenlandsk nettorate i 2025. Alle tall og kommunekoder står i tabellen."/>
+ <ul className="flex flex-wrap gap-4 text-sm"><li><span aria-hidden="true" className="mr-2 inline-block h-3 w-3 bg-blue-700"/>Negativ rate</li><li><span aria-hidden="true" className="mr-2 inline-block h-3 w-3 bg-slate-600"/>Null, referanse</li><li><span aria-hidden="true" className="mr-2 inline-block h-3 w-3 bg-orange-700"/>Positiv rate</li></ul>
+ <div className="overflow-x-auto"><table className="w-full text-sm"><caption className="text-left">Fem eksempler, ikke en nasjonal rangering</caption><thead><tr><th scope="col" className="text-left">Kommune</th><th scope="col">Kode</th><th scope="col">Nettorate, promille</th><th scope="col">Nettoflyttinger, antall</th></tr></thead><tbody>{rows.map(d=><tr key={d.kode}><th scope="row" className="text-left">{d.navn}</th><td className="text-center">{d.kode}</td><td className="text-center">{rate(d.rate)}</td><td className="text-center">{d.netto===null?"Mangler":fmt(d.netto)}</td></tr>)}</tbody></table></div>
+ <p>Punktene er Kartverkets punkt inne i kommuneområdet, ikke bysentrum eller kommunegrenser. De viser ikke hvor i kommunen flyttingene skjedde. Akershus, Nordland, Troms og Finnmark er fylkesrader og er ikke lagt inn som kommuner. Innenlandsk flytting er ikke innvandring fra utlandet.</p>
+ <figcaption className="text-sm">Tall: SSB (2026a), tabell 09588, CC BY 4.0. Punkter og bakgrunn: © <a href="https://www.kartverket.no/" className="underline">Kartverket</a> (u.å.-a, u.å.-b), CC BY 4.0. Punkter kontrollert 6. november 2026 og omregnet fra ETRS89 til WGS84. Kartet er ikke et kommunegrensekart for 2025. Bakgrunnen er begrenset til zoom 11. <a className="underline" href="/downloads/geografi-migrasjon-kommunepunkter.csv">Last ned punkter og tall (CSV)</a>.</figcaption></figure>;
+}
