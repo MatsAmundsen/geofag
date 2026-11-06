@@ -64,7 +64,7 @@ Ved en *midthavsrygg* går platene fra hverandre, og det oppstår jordskjelv. Is
 
 ### Der en plate synker
 
-Der en havbunnsplate synker under en annen, i en *subduksjonssone* (subduksjon = nedføring), får vi de største skjelvene på jorda. Andesfjellene er typeeksempelet: Nazcaplaten synker under Sør-Amerika, og landet heves (USGS, u.å.-b). Her skjedde også det største skjelvet som noen gang er målt, i Chile 22. mai 1960 (magnitude 9,5). Skjelvet satte i gang en *tsunami*, det vil si en flodbølge som oppstår når havbunnen plutselig flytter seg. Tsunamien krysset hele Stillehavet og tok liv på Hawaii og i Japan. Mer om tsunamier står i kapitlet [Tsunami](/geofag-1/tsunami). Et nyere eksempel er skjelvet utenfor nordøstkysten av Japan 11. mars 2011 (magnitude 9,1), der Stillehavsplaten dukker ned under Japan. Tsunamien la store kyststrekninger øde, og kjernekraftverket i Fukushima ble alvorlig skadet (USGS, u.å.-d). NOAA oppgir at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan. Hvordan tallet er telt, står i kapitlet [Tsunami](/geofag-1/tsunami).
+Der en havbunnsplate synker under en annen, i en *subduksjonssone* (subduksjon = nedføring), får vi de største skjelvene på jorda. Andesfjellene er typeeksempelet: Nazcaplaten synker under Sør-Amerika, og landet heves (USGS, u.å.-b). Her skjedde også det største skjelvet som noen gang er målt, i Chile 22. mai 1960 (magnitude 9,5). Skjelvet satte i gang en *tsunami*, det vil si en flodbølge som oppstår når havbunnen plutselig flytter seg. Tsunamien krysset hele Stillehavet og tok liv på Hawaii og i Japan. Mer om tsunamier står i kapitlet [Tsunami](/geofag-1/tsunami#hva-er-en-tsunami). Et nyere eksempel er skjelvet utenfor nordøstkysten av Japan 11. mars 2011 (magnitude 9,1), der Stillehavsplaten dukker ned under Japan. Tsunamien la store kyststrekninger øde, og kjernekraftverket i Fukushima ble alvorlig skadet (USGS, u.å.-d). NOAA oppgir at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan. Hvordan tallet er telt, står i kapitlet [Tsunami](/geofag-1/tsunami#to-globale-katastrofer).
 
 Hvorfor blir skjelvene så store nettopp her? Alle skjelv over magnitude 9 som er målt, har skjedd i subduksjonssoner. Det er fordi bruddflaten der kan bli svært stor, opptil flere hundre kilometer lang og over hundre kilometer bred. Jo større bruddflaten er, desto større kan skjelvet bli.
 
@@ -158,7 +158,7 @@ Det er sjelden selve rystelsene som tar liv. De fleste dør når bygninger raser
 
 Magnituden er viktig, men den er bare én av flere faktorer. Avstand fra episenteret og dybde er allerede forklart under intensitet og under «Grunne og dype skjelv»: rystelsene svekkes med avstanden, og grunne skjelv gir de kraftigste rystelsene på overflaten. To forhold kommer i tillegg. Varigheten spiller inn, for et skjelv som rister i to minutter, sliter mer på bygningene enn et som varer i ti sekunder. Grunnen bygningene står på, er også avgjørende. På bløt leire, sand og oppfylte masser blir rystelsene forsterket, mens fast fjell rister mindre. Oppfylte masser, eller fyllmasser, er jord og stein som er kjørt på for å lage ny byggegrunn.
 
-Hvorfor forsterker bløte masser rystelsene? Jordskjelvbølgene går raskt gjennom fast fjell. Når de kommer over i bløte masser, går de mye saktere. Energien i bølgen forsvinner likevel ikke. Den hoper seg opp, og bakken må bevege seg mer for å bære den samme energien videre. Utslagene blir derfor større. Det ligner grunningen av en tsunami, som er forklart i kapitlet [Tsunami](/geofag-1/tsunami). Bølgene kan dessuten bli fanget i det bløte laget og kastes fram og tilbake mellom fjellet under og overflaten. Da rister bakken lenger. Lagtykkelse, frekvens og demping virker sammen. Et tykkere lag gir ikke alltid kraftigere rystelse.
+Hvorfor forsterker bløte masser rystelsene? Jordskjelvbølgene går raskt gjennom fast fjell. Når de kommer over i bløte masser, går de mye saktere. Energien i bølgen forsvinner likevel ikke. Den hoper seg opp, og bakken må bevege seg mer for å bære den samme energien videre. Utslagene blir derfor større. Det ligner grunningen av en tsunami, som er forklart i kapitlet [Tsunami](/geofag-1/tsunami#fra-dypt-hav-til-grunn-kyst). Bølgene kan dessuten bli fanget i det bløte laget og kastes fram og tilbake mellom fjellet under og overflaten. Da rister bakken lenger. Lagtykkelse, frekvens og demping virker sammen. Et tykkere lag gir ikke alltid kraftigere rystelse.
 
 ### Rystelser og bygninger
 
@@ -174,7 +174,7 @@ I bratt terreng kan rystelsene utløse jordskred, steinsprang og fjellskred, sli
 
 ### Følgehendelser
 
-Når gassledninger og strømkabler ryker, kan det oppstå branner, og ødelagte vannledninger gjør det vanskelig å slokke dem. Etter skjelvet i San Francisco som er omtalt under transformforkastninger, brant store deler av byen i flere dager. USGS regner med at brannen gjorde mer skade enn selve rystelsene (USGS, u.å.-f). Et undersjøisk skjelv kan også utløse tsunami. Hvordan bølgen blir til, og hva som skjedde i Indiahavet og i Japan, står i kapitlet [Tsunami](/geofag-1/tsunami).
+Når gassledninger og strømkabler ryker, kan det oppstå branner, og ødelagte vannledninger gjør det vanskelig å slokke dem. Etter skjelvet i San Francisco som er omtalt under transformforkastninger, brant store deler av byen i flere dager. USGS regner med at brannen gjorde mer skade enn selve rystelsene (USGS, u.å.-f). Et undersjøisk skjelv kan også utløse tsunami. Hvordan bølgen blir til, og hva som skjedde i Indiahavet og i Japan, står i kapitlet [Tsunami](/geofag-1/tsunami#hvordan-settes-vannet-i-bevegelse).
 
 Faren er heller ikke over når rystelsene stopper. I timene, dagene og månedene etterpå kommer det ofte mindre skjelv i det samme området, såkalte *etterskjelv*. De oppstår fordi spenningen i berget rundt bruddet blir fordelt på nytt. Etterskjelvene rammer bygninger som allerede er svekket. Ødelagte veier, bruer og havner gjør det dessuten vanskelig å få fram hjelp.
 
@@ -391,7 +391,7 @@ Alle modeller er forenklinger. En modell er aldri bedre enn dataene og antagelse
 - Vi kan ikke korttidsvarsle når et skjelv kommer. Langtidsvarsling sier hvor sannsynlige kraftige rystelser er, og tidlig varsling kan gi noen sekunder etter at bruddet har startet.
 - Risiko er fare, eksponering og sårbarhet satt sammen. Et gjentaksintervall er et gjennomsnitt, ikke en rutetabell. En poengmodell gir en relativ indeks, ikke en målt sannsynlighet. Vi kan ikke flytte forkastningen, men vi kan bygge og planlegge slik at skadene blir mindre.
 
-Les videre i kapitlet [Tsunami](/geofag-1/tsunami), om hvordan slike bølger blir til, varsles og vurderes.
+Les videre i kapitlet [Tsunami](/geofag-1/tsunami#hva-er-en-tsunami), om hvordan slike bølger blir til, varsles og vurderes.
 
 ## Test deg selv
 

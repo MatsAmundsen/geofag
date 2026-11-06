@@ -4,6 +4,7 @@ import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 import { injectPosterWidgets } from "./poster-markdown.ts";
+import { prepareChapterScan } from "./chapter-scan.ts";
 import {
   QUIZ_JORDSKJELV,
   QUIZ_SJEKK_JORDSKJELV_VARSLING,
@@ -12,9 +13,16 @@ import {
   QUIZ_TSUNAMI,
 } from "./poster-quizzes.ts";
 import {
+  ENSO_PATH,
+  ENSO_REDIRECT_STATUS,
+  JORDSKJELV_PATH,
+  LEGACY_ENSO_PATH,
+  LEGACY_NATURFARE_ANCHORS,
   LEGACY_NATURFARE_PATH,
   TSUNAMI_PATH,
   TSUNAMI_REDIRECT_STATUS,
+  ensoRedirectHref,
+  legacyNaturfareRedirect,
   tsunamiRedirectHref,
 } from "./tsunami-redirect.ts";
 import { GEO_MARIA_VIDEOS } from "./youtube-geo-maria.ts";
@@ -41,6 +49,50 @@ describe("tsunami redirect", () => {
     assert.equal(TSUNAMI_REDIRECT_STATUS, 308);
     assert.equal(tsunamiRedirectHref("?a=1").includes(LEGACY_NATURFARE_PATH), false);
     assert.equal(tsunamiRedirectHref("?neste=/geofag-1/tsunami"), `${TSUNAMI_PATH}?neste=/geofag-1/tsunami`);
+  });
+
+  it("sends the old ENSO address to /tema/klima/enso and keeps the query", () => {
+    assert.equal(ensoRedirectHref(""), ENSO_PATH);
+    assert.equal(ensoRedirectHref("?kilde=coriolis"), `${ENSO_PATH}?kilde=coriolis`);
+    assert.equal(ENSO_REDIRECT_STATUS, 308);
+    assert.equal(ensoRedirectHref("").includes(LEGACY_ENSO_PATH), false);
+  });
+});
+
+describe("legacy naturfare anchors", () => {
+  const oldHeadings = [
+    "tsunami-skjelv-eller-skred",
+    "hvilke-skader-gjoer-jordskjelv",
+    "er-det-mulig-a-varsle-jordskjelv",
+    "fare-og-risiko",
+    "viktige-begreper",
+    "sammendrag",
+    "test-deg-selv",
+  ];
+
+  it("sends moved headings to the chapter that owns them now", () => {
+    for (const id of oldHeadings) {
+      assert.equal(LEGACY_NATURFARE_ANCHORS.some((row) => row.from === id), true, id);
+    }
+    assert.equal(legacyNaturfareRedirect("#fare-og-risiko", "?kilde=plakat"), `${JORDSKJELV_PATH}?kilde=plakat#fare-risiko-og-forebygging`);
+    assert.equal(legacyNaturfareRedirect("hvilke-skader-gjoer-jordskjelv"), `${JORDSKJELV_PATH}#jordskjelv-som-naturfare`);
+    assert.equal(legacyNaturfareRedirect("#er-det-mulig-a-varsle-jordskjelv"), `${JORDSKJELV_PATH}#kan-jordskjelv-varsles`);
+    assert.equal(legacyNaturfareRedirect("#tsunami-skjelv-eller-skred"), `${TSUNAMI_PATH}#hva-er-en-tsunami`);
+    assert.equal(legacyNaturfareRedirect("#tsunamivarsling"), `${TSUNAMI_PATH}#hvordan-varsles-en-tsunami`);
+    assert.equal(legacyNaturfareRedirect("#viktige-begreper"), null);
+    assert.equal(legacyNaturfareRedirect("#sammendrag"), null);
+    assert.equal(legacyNaturfareRedirect("#ukjent-anker"), null);
+    assert.equal(legacyNaturfareRedirect(""), null);
+    assert.equal(legacyNaturfareRedirect("#%"), null);
+  });
+
+  it("lands on a heading that exists in the destination chapter", () => {
+    const wave = new Set(prepareChapterScan(readSeed("jordskjelv-naturfare.md")).sections.map((section) => section.id));
+    const quake = new Set(prepareChapterScan(readSeed("jordskjelv.md")).sections.map((section) => section.id));
+    for (const row of LEGACY_NATURFARE_ANCHORS) {
+      const ids = row.path === TSUNAMI_PATH ? wave : quake;
+      assert.equal(ids.has(row.id), true, `${row.from} -> ${row.id}`);
+    }
   });
 });
 
