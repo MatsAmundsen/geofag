@@ -1,0 +1,18 @@
+import { useState } from "react";
+import { SFT_2023, LEVEALDER_2023, HDI_2023 } from "@/lib/geografi-kap10-kartdata";
+import { HDI_KLASSER } from "@/lib/geografi-kartklasser";
+import { GeografiVerdenskart } from "./verdenskart";
+export function GeografiFruktbarhetKart(){
+ return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 10.1. Samlet fruktbarhetstall, 2023</h3><p>Barn per kvinne dersom årets aldersspesifikke mønster gjaldt gjennom hele fødeperioden. Et periodemål, ikke det endelige barnetallet til alle kvinner i landet.</p>
+ <GeografiVerdenskart rows={SFT_2023} enhet="barn per kvinne" desimaler={2} klasser={[{grense:1,navn:"Under 1",farge:"#dbeafe"},{grense:2,navn:"1–under 2",farge:"#93c5fd"},{grense:3,navn:"2–under 3",farge:"#3b82f6"},{grense:4,navn:"3–under 4",farge:"#1d4ed8"},{grense:5,navn:"4–under 5",farge:"#1e40af"},{grense:Infinity,navn:"5 eller mer",farge:"#172554"}]}/>
+ <p>Fargeintervallene er en lesehjelp, ikke universelle reproduksjonsgrenser. Landsgjennomsnitt viser ikke regionale forskjeller eller enkeltpersoners valg. Estimater kan revideres.</p><figcaption className="text-sm">Verdensbanken (2026), WDI SP.DYN.TFRT.IN, CC BY 4.0. 217 land og områder med verdi i det kontrollerte uttrekket; gruppeaggregater er utelatt. 2023 er valgt for samme år som Japan/Niger-caset, ikke fordi nyere WDI-år er utilgjengelige. Eget utvalg og kart. <a className="underline" href="/downloads/geografi-sft-land-2023.csv">Last ned tallene (CSV)</a>.</figcaption></figure>;
+}
+export function GeografiLevekarKart(){
+ const [hdi,setHdi]=useState(false);
+ return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 10.7. {hdi?"HDI":"Forventet levealder ved fødselen"}, 2023</h3>
+ <div className="flex flex-wrap gap-2"><button type="button" aria-pressed={!hdi} onClick={()=>setHdi(false)} className="rounded border px-3 py-2">Forventet levealder, år</button><button type="button" aria-pressed={hdi} onClick={()=>setHdi(true)} className="rounded border px-3 py-2">HDI, indeks 0–1</button></div>
+ <p>{hdi?"HDI sammenfatter helse, utdanning og kjøpekraftsjustert BNI per innbygger. Det er ikke BNP eller et mål på alle sider av livet.":"Begge kjønn samlet. Forventet levealder er et periodemål basert på årets dødelighetsmønster, ikke en sikker levealder for dagens nyfødte."}</p>
+ <GeografiVerdenskart key={String(hdi)} rows={hdi?HDI_2023:LEVEALDER_2023} enhet={hdi?"HDI (0–1)":"år"} desimaler={hdi?3:2} klasser={hdi?HDI_KLASSER:[{grense:60,navn:"Under 60 år",farge:"#bfdbfe"},{grense:70,navn:"60–under 70 år",farge:"#60a5fa"},{grense:80,navn:"70–under 80 år",farge:"#2563eb"},{grense:Infinity,navn:"80 år eller mer",farge:"#1e3a8a"}]}/>
+ <p>{hdi?"Fargeklassene er UNDPs dokumenterte HDI-grupper. Ulikhet og miljøbelastning er ikke synlige i denne nasjonale indeksen.":"Fargeintervallene er valgt for oversikt, ikke som offisielle helseklasser. Spedbarnsdødelighet og dødelighet under fem år er andre indikatorer og er ikke lagt inn her."}</p><p>Velg samme land i begge figurene. Kan to land ha likt fruktbarhetstall, men ulike levekår? Kartene viser mønstre, ikke hvilken årsak som er viktigst.</p>
+ <figcaption className="text-sm">{hdi?"UNDP (2025a, 2025b), HDR2025 og tekniske noter, CC BY 3.0 IGO. 193 land med HDI 2023, nyeste publiserte HDI-år ved kontroll 6. november 2026.":"Verdensbanken (2026), WDI SP.DYN.LE00.IN, CC BY 4.0. 217 land og områder med verdi i uttrekket."} Begge valgene gjelder 2023 og vises atskilt med egen enhet og fargeskala. Egen framstilling. <a className="underline" href={hdi?"/downloads/geografi-hdi-land-2023.csv":"/downloads/geografi-levealder-land-2023.csv"}>Last ned valgt indikator (CSV)</a>.</figcaption></figure>;
+}

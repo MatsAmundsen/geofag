@@ -1,3 +1,4 @@
+import { GeografiVerdensbefolkning, GeografiDemografiskGrunnformel, GeografiNorgePyramider, GeografiLandPyramider, GeografiDemografiskOvergang, GeografiNorgeFruktbarhetAldring } from "@/components/geografi/befolkning-diagrammer";
 import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiSysselNord } from "@/components/geografi/ressurs-valg";
 import { GeografiKraftproduksjon } from "@/components/geografi/ressurs-valg";
@@ -370,7 +371,13 @@ const GeografiFosenKartLat = lazy(() => import("@/components/geografi/ressurs-fo
 const GeografiTelefonStederLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiTelefonSteder})));
 const GeografiFiskEksportLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiFiskEksport})));
 
+const GeografiFruktbarhetKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiFruktbarhetKart})));
+const GeografiLevekarKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiLevekarKart})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoBefolkningFruktbarhetKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFruktbarhetKartLat /></Suspense>,
+  GeoBefolkningLevekarKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiLevekarKartLat /></Suspense>,
+
   GeoNaeringTelefonSteder: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiTelefonStederLat /></Suspense>,
   GeoNaeringFiskEksport: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFiskEksportLat /></Suspense>,
 
@@ -1529,6 +1536,12 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoBefolkningVerden: () => <GeografiVerdensbefolkning />,
+  GeoBefolkningGrunnformel: () => <GeografiDemografiskGrunnformel />,
+  GeoBefolkningNorgePyramider: () => <GeografiNorgePyramider />,
+  GeoBefolkningLandPyramider: () => <GeografiLandPyramider />,
+  GeoBefolkningOvergang: () => <GeografiDemografiskOvergang />,
+  GeoBefolkningNorgeFruktbarhet: () => <GeografiNorgeFruktbarhetAldring />,
   GeoNaeringStruktur: () => <GeografiNaeringsstruktur />,
   GeoNaeringLokalisering: () => <GeografiLokaliseringsfaktorer />,
   GeoNaeringRingvirkninger: () => <GeografiRingvirkninger />,
