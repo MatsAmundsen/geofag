@@ -4,6 +4,24 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-verktoy": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Topografisk rasterkart WMTS",
+      suffix: " [Kart]. Utsnitt ved Gjende, zoom 11. Fire fliser sammenstilt 6. november 2026. © Kartverket, CC BY 4.0.",
+      href: "https://cache.kartverket.no/v1/service?layer=toporaster&service=WMTS&request=GetCapabilities",
+    },
+    {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Vilkår for bruk av Kartverkets opne data",
+      suffix: ". CC BY 4.0 og avgrensninger for detaljerte eksterne lag. Hentet 6. november 2026.",
+      href: "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    },
+    {
+      prefix: "PROJ contributors. (u.å.). ",
+      italic: "Equal Area Cylindrical",
+      suffix: ". Sfærisk projeksjon med standardparallell 45°. Hentet 6. november 2026.",
+      href: "https://proj.org/en/stable/operations/projections/cea.html",
+    },
+    {
       prefix: "Field, K. (2020, 3. desember). ",
       italic: "Something in the water: the mythology of Snow’s map of cholera",
       suffix: ". Esri.",

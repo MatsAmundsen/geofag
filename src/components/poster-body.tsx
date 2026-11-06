@@ -1,3 +1,5 @@
+import { GeografiTopokart } from "@/components/geografi/projeksjon-figurer";
+import { GeografiGallPeters } from "@/components/geografi/projeksjon-figurer";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { lazy, Suspense, type JSX } from "react";
 import {
@@ -329,6 +331,8 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoVerktoyTopokart: () => <GeografiTopokart />,
+  GeoVerktoyGallPeters: () => <GeografiGallPeters />,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
   ...G2_PAKKE_A_WIDGETS,
   ...Object.fromEntries(
