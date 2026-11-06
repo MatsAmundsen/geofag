@@ -713,7 +713,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --callout-accent: #6ee7b7;
   --callout-soft: color-mix(in srgb, #ffffff 14%, #145a40);
   --callout-line: color-mix(in srgb, #ffffff 28%, #145a40);
-  /* N1: fade og «Sveip →»-pille følger callout-bakgrunnen, ikke sidebakgrunnen. */
+  /* N1: callout-bg som fallback; .scroll-frame setter ellers --color-background på nytt. */
   --scroll-fade: var(--callout-bg);
   margin-block: 1.25rem;
   max-width: 100%;
@@ -775,4 +775,9 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   color: var(--callout-fg);
   border-color: var(--callout-line);
   background: color-mix(in srgb, var(--callout-bg) 88%, #000000);
+}
+
+/* Mer spesifikk enn .scroll-frame { --scroll-fade: var(--color-background) } (:331). */
+.kapittel-lys .kapittel-callout .scroll-frame {
+  --scroll-fade: var(--callout-bg, #145a40);
 }
