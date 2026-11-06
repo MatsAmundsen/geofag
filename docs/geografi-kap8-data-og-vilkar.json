@@ -1,0 +1,27 @@
+{
+  "hentet": "2026-11-06",
+  "hdi": {
+    "url": "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    "utgave": "HDR 2025, nyeste HDI-utgave tilgjengelig 6. november 2026",
+    "dataar": 2023,
+    "lisens": "CC BY 3.0 IGO",
+    "vilkar": "https://hdr.undp.org/copyright-and-terms-use",
+    "sha256": "61ed82e5b66c88dfca8ff9fac775c63981ecab6a254862af97acacc41c143117"
+  },
+  "bnp": {
+    "url": "https://api.worldbank.org/v2/country/NOR;NER;JPN;USA;CRI;IND;BRA;ZAF/indicator/NY.GDP.PCAP.PP.KD?date=2023&format=json&per_page=100",
+    "indikator": "NY.GDP.PCAP.PP.KD",
+    "updated": "2026-10-08",
+    "enhet": "PPP, konstante internasjonale 2021-dollar per innbygger",
+    "lisens": "CC BY 4.0",
+    "sha256": "4c9104fa13c48d5fed4e0d0c9bcbdc0c62b86dad0e1a08e22f598bae9a77d91a"
+  },
+  "fotavtrykk": {
+    "nyesteUtgave": 2026,
+    "observasjonsar": 2023,
+    "estimatAr": 2025,
+    "vilkar": "https://footprintnetwork.org/licenses/public-data-package-free/",
+    "lisens": "CC BY-SA 4.0",
+    "status": "Ikke importert: SA er ikke tillatt i oppdraget"
+  }
+}

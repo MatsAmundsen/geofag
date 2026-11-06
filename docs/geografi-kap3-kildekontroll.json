@@ -1,0 +1,39 @@
+{
+  "kontrollert": "2026-11-06",
+  "platekart": {
+    "url": "https://www.usgs.gov/media/images/simplified-plate-tectonic-map",
+    "publisert": "2026-07-30",
+    "lisens": "Public Domain",
+    "filSHA256": "8925ee81094bff96d0aa5e88c1a2a77d5cc6ac9df00fe48f7e3a29a30354bba8",
+    "kontrolltjeneste": "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer",
+    "grunnlag": "Bird (2003), plategrenser; DeMets mfl. (2010), bevegelse. Gjeldende tjeneste er ikke sanntidsmålinger.",
+    "kontroll": "Hovedgrenser i Nord-Atlanteren, India/Eurasia og Nazca/Sør-Amerika kontrollert mot tjenestens navngitte grensegeometrier. Eldre rettet Commons-kart ikke brukt."
+  },
+  "naturgrunnlag": {
+    "url": "https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip",
+    "utgave": "5.1.1",
+    "vilkar": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "lisens": "Public Domain",
+    "bearbeiding": "Landsutvalg, egenskapsutvalg og egen symbolisering. Geometri ikke tolket som brudd- eller faregrense."
+  },
+  "jordskjelv": {
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-02-06&endtime=2023-02-07&minmagnitude=7&minlatitude=34&maxlatitude=41&minlongitude=30&maxlongitude=42",
+    "id": [
+      "us6000jlqa",
+      "us6000jllz"
+    ],
+    "lisens": "USGS offentlige katalogdata",
+    "sha256": "bfc8bd2408cc2effa74e182c034ff4a294522828d5b0b50279356bd914aee2e0"
+  },
+  "reykjanes": {
+    "original": "https://www.copernicus.eu/system/files/2023-12/image_day/20231221_FagradalsfjallVolcano.jpg",
+    "opptak": "2023-12-19",
+    "publisert": "2023-12-21",
+    "sensor": "SLSTR, Copernicus Sentinel-3",
+    "kreditering": "Contains modified Copernicus Sentinel data 2023",
+    "juridiskGrunnlag": "https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice",
+    "vilkarLest": "Juridisk original-PDF, begge sider. Åpen reproduksjon, bearbeiding og offentliggjøring med attribusjon. Ikke en CC-lisens.",
+    "bearbeiding": "Nedskalert og WebP-komprimert, ikke ny georeferering. Infrarød framstilling, ikke vanlige naturfarger.",
+    "sha256": "c1c9d280450559a92b71dfcbcb9d92b144a85067676848c50edf17171262e9f5"
+  }
+}

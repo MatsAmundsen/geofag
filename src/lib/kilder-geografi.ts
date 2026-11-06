@@ -4,6 +4,24 @@ import type { Kilde } from "@/lib/kilder";
 export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-verktoy": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Topografisk rasterkart WMTS",
+      suffix: " [Kart]. Utsnitt ved Gjende, zoom 11. Fire fliser sammenstilt 6. november 2026. © Kartverket, CC BY 4.0.",
+      href: "https://cache.kartverket.no/v1/service?layer=toporaster&service=WMTS&request=GetCapabilities",
+    },
+    {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Vilkår for bruk av Kartverkets opne data",
+      suffix: ". CC BY 4.0 og avgrensninger for detaljerte eksterne lag. Hentet 6. november 2026.",
+      href: "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    },
+    {
+      prefix: "PROJ contributors. (u.å.). ",
+      italic: "Equal Area Cylindrical",
+      suffix: ". Sfærisk projeksjon med standardparallell 45°. Hentet 6. november 2026.",
+      href: "https://proj.org/en/stable/operations/projections/cea.html",
+    },
+    {
       prefix: "Field, K. (2020, 3. desember). ",
       italic: "Something in the water: the mythology of Snow’s map of cholera",
       suffix: ". Esri.",
@@ -208,6 +226,36 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-indre-krefter": [
     {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "Admin 0 – Countries, 1:110m, versjon 5.1.1",
+      suffix: ". Public domain. Hentet 6. november 2026. Eget lands- og egenskapsutvalg.",
+      href: "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/",
+    },
+    {
+      prefix: "European Commission. (u.å.). ",
+      italic: "Legal notice on the use of Copernicus Sentinel Data and Service Information",
+      suffix: ". Juridisk originaltekst, lest 6. november 2026.",
+      href: "https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice",
+    },
+    {
+      prefix: "European Union. (2023, 21. desember). ",
+      italic: "Eruption on Iceland’s Reykjanes peninsula",
+      suffix: ". Copernicus Sentinel-3/SLSTR. Opptak 19. desember 2023. Contains modified Copernicus Sentinel data 2023.",
+      href: "https://commons.wikimedia.org/wiki/File:Eruption_on_Iceland%E2%80%99s_Reykjanes_peninsula_(Copernicus_2023-12-21).jpg",
+    },
+    {
+      prefix: "U.S. Geological Survey. (2023a). ",
+      italic: "Earthquake catalog: Two magnitude 7 and larger events in Türkiye, 6 February 2023",
+      suffix: ". Datert katalogutvalg, hentet 6. november 2026. Offentlige USGS-data.",
+      href: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-02-06&endtime=2023-02-07&minmagnitude=7&minlatitude=34&maxlatitude=41&minlongitude=30&maxlongitude=42",
+    },
+    {
+      prefix: "U.S. Geological Survey. (2026, 30. juli). ",
+      italic: "Simplified Plate Tectonic Map",
+      suffix: ". Public domain. Nedskalert med egen norsk lesenøkkel.",
+      href: "https://www.usgs.gov/media/images/simplified-plate-tectonic-map",
+    },
+    {
       prefix: "National Oceanic and Atmospheric Administration. (u.å.-a). ",
       italic: "Detection, Warning, and Forecasting",
       suffix: ". Hentet 6. november 2026.",
@@ -262,7 +310,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.usgs.gov/special-topics/subduction-zone-science/science/introduction-subduction-zones-amazing-events",
     },
     {
-      prefix: "U.S. Geological Survey. (2023, 17. februar). ",
+      prefix: "U.S. Geological Survey. (2023b, 17. februar). ",
       italic: "M7.8 and M7.5 Kahramanmaraş Earthquake Sequence near Nurdağı, Turkey (Türkiye)",
       suffix: ".",
       href: "https://www.usgs.gov/news/featured-story/magnitude-78-earthquake-nurdagi-turkey",
@@ -531,6 +579,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-klima": [] as const,
   "geo-naturfare": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Sentralt stedsnavnregister",
+      suffix: " [Datasett]. Representasjonspunkt for Ask tettsted i Gjerdrum. CC BY 4.0, uttrekk 6. november 2026.",
+      href: "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Ask&fuzzy=false",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Kvikkleire WMS",
+      suffix: " [Datasett]. NLOD. Utvalgte soner merket Gjerdrum, uttrekk 6. november 2026.",
+      href: "https://kartkatalog.geonorge.no/metadata/kvikkleire/f8007522-2b73-4702-bb97-50c720e5c3f8",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2021, 1. september). ",
+      italic: "Forklaring til sanntidsgrafene",
+      suffix: ". Forklarer gjentaksintervall, ikke kalibrering av undervisningsmodellen.",
+      href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/historiske-data/forklaring-til-sanntidsgrafene/",
+    },
+    {
       prefix: "Bjerknessenteret. (u.å.). ",
       italic: "Tropiske sykloner",
       suffix: ". Hentet 6. november 2026.",
@@ -615,7 +681,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.nve.no/naturfare/laer-om-naturfare/om-skred/kva-er-kvikkleire-og-kvikkleireskred/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.-a). ",
       italic: "Historiske fjellskred i Norge",
       suffix: ". Hentet 6. november 2026.",
       href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
@@ -719,6 +785,30 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-ressurser": [] as const,
   "geo-baerekraft": [
+    {
+      prefix: "Global Footprint Network. (u.å.-e). ",
+      italic: "Free Public Data Set: National Footprint and Biocapacity Accounts 2026",
+      suffix: ". Hentet 6. november 2026. Vilkår kontrollert; ingen data importert.",
+      href: "https://footprintnetwork.org/licenses/public-data-package-free/",
+    },
+    {
+      prefix: "World Bank. (u.å.). ",
+      italic: "GDP per capita, PPP (constant 2021 international $) (NY.GDP.PCAP.PP.KD)",
+      suffix: ". World Development Indicators. Observasjonsår 2023. Hentet 6. november 2026. CC BY 4.0.",
+      href: "https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD",
+    },
+    {
+      prefix: "United Nations Development Programme. (2025). ",
+      italic: "Human Development Report 2025: Composite indices, complete time series",
+      suffix: ". Observasjonsår 2023. CC BY 3.0 IGO.",
+      href: "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    },
+    {
+      prefix: "Engedal, M. I. A., Rothe, J. S., & Lyle, C. (2021, 13. desember). ",
+      italic: "Mer utslipp for hver kilometer reist",
+      suffix: ". Statistisk sentralbyrå. Tabell 1, observasjoner 2020.",
+      href: "https://www.ssb.no/natur-og-miljo/forurensning-og-klima/artikler/mer-utslipp-for-hver-kilometer-reist",
+    },
     {
       prefix: "Baah, S. K. T., Foster, E., Jolliffe, D. M., Lakner, C., & Lara Ibarra, G. (2025, 9. juni). ",
       italic: "The World Bank’s new global poverty lines in 2021 prices",
