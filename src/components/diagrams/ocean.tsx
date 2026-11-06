@@ -264,12 +264,13 @@ export function DensityDiagram() {
   );
 }
 
-export function AmocDiagram() {
+export function AmocDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <Diagram
       title="AMOC: omveltningen i Atlanterhavet"
-      heading="Varmt nordover i toppen, kaldt sørover i dypet"
-      caption="Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Grønlandshavet, Irmingerhavet og Labradorhavet synker det som nordatlantisk dypvann og returnerer sørover på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme. IPCC (2021): svært sannsynlig svekket i dette hundreåret, ikke brå kollaps før 2100 (middels sikkerhet)."
+      heading={geografi ? "Figur 5.4 – Omveltning i Atlanterhavet" : "Varmt nordover i toppen, kaldt sørover i dypet"}
+      caption={geografi ? "Den atlantiske omveltningen (AMOC) knytter overflatestrømmer til returstrømmer i dypet. Avkjøling og saltholdighet påvirker vannets tetthet og dermed hvor vann synker. Skissen viser et prinsipp, ikke et kart eller en beregnet framtid. Golfstrømmen er en overflatestrøm og er ikke et annet navn på hele AMOC (Barthel, u.å.; NOAA, u.å.)." : "Den atlantiske meridionale omveltningen (AMOC) fører varmt, saltere vann nordover i overflaten. I Grønlandshavet, Irmingerhavet og Labradorhavet synker det som nordatlantisk dypvann og returnerer sørover på dypt vann. En svekket AMOC betyr mindre nordovertransport av varme. IPCC (2021): svært sannsynlig svekket i dette hundreåret, ikke brå kollaps før 2100 (middels sikkerhet)."}
+      scroll={geografi}
       viewBox="0 0 840 360"
     >
       {(m) => (
@@ -293,7 +294,7 @@ export function AmocDiagram() {
             synker
           </L>
           <L x="748" y="118" fill={C.muted} size={12}>
-            NADW
+            {geografi ? "avkjøles" : "NADW"}
           </L>
           <line x1="50" y1="210" x2="790" y2="210" stroke={C.dim} strokeDasharray="4 4" />
           <L x="60" y="204" fill={C.muted} size={12}>
@@ -304,7 +305,7 @@ export function AmocDiagram() {
             kaldt dyphavsvann sørover
           </L>
           <L x="420" y="340" fill={C.muted} size={13} anchor="middle">
-            Grønlandshavet · Irmingerhavet · Labradorhavet
+            {geografi ? "Hav og vind samarbeider om varmetransporten til Norge" : "Grønlandshavet · Irmingerhavet · Labradorhavet"}
           </L>
         </>
       )}

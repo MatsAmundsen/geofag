@@ -1,3 +1,7 @@
+import { WindCellsDiagram } from "@/components/diagrams/wind";
+import { CoriolisDiagram } from "@/components/diagrams/coriolis";
+import { CarbonCycleDiagram } from "@/components/diagrams/spheres";
+import { GeografiKlimadiagram, GeografiKlimaScenario } from "@/components/geografi/klima-diagrammer";
 import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { lazy, Suspense, type JSX } from "react";
@@ -1465,6 +1469,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoKlimaDiagram: () => <GeografiKlimadiagram />,
+  GeoKlimaVindceller: () => <WindCellsDiagram geografi />,
+  GeoKlimaCoriolis: () => <CoriolisDiagram geografi />,
+  GeoKlimaHav: () => <AmocDiagram geografi />,
+  GeoKlimaSoner: () => <GlobalClimateZonesDiagram geografi />,
+  GeoKlimaFon: () => <FoehnAdiabaticDiagram geografi />,
+  GeoKlimaStraling: () => <EarthRadiationBudgetDiagram geografi />,
+  GeoKlimaKarbon: () => <CarbonCycleDiagram geografi />,
+  GeoKlimaScenario: () => <GeografiKlimaScenario />,
   GeoLandskapFrost: () => <Frostsprengning geografi heading="Figur 4.1 – Forvitring og flytting" caption="Vann som fryser i en sprekk, kan bidra til å dele opp berget. Når en stein løsner og faller, flyttes materialet ved tyngdekraften. Skissen viser et prinsipp, ikke et bestemt tidsforløp eller et skredvarsel (Sørbel, 2024; Bryhni & Røthe, 2025)." />,
   GeoLandskapBrelandskap: () => <VdalTilUdal geografi heading="Figur 4.2 – Før, under og etter breen" caption="Tre trinn viser samme tverrsnitt: en elvedal, breens arbeid og en U-dal etterpå. Skuring og plukking kan utvide og fordype dalen. Formen og tiden er skjematiske, ikke målinger fra en bestemt dal (Bryhni & Røthe, 2025; Bryhni & Fossen, 2024; SNL, u.å.-a)." />,
   GeoLandskapBotn: () => <BotnEggTindFigurLat geografi heading="Figur 4.3 – Botn, egg og tind" caption="Breformede fordypninger kan etterlate skarpe rygger og topper. Følg formene gjennom trinnene. Terrenget er konstruert og viser ikke utviklingstiden eller et bestemt fjell (Lilleøren, 2025; Mæhlum, 2026a; Bryhni & Fossen, 2024)." />,
