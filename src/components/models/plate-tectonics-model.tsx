@@ -1,3 +1,4 @@
+import { plateavstandKm } from "@/lib/geografi-platefart";
 import { BoundaryOverviewDiagram, GEOGRAFI_PLATEGRENSER, type GeografiPlategrense } from "@/components/diagrams/plates";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
@@ -1214,13 +1215,27 @@ export function PlateTectonicsModel({ geografi = false }: { geografi?: boolean }
 }
 function GeografiPlateTectonicsModel() {
   const [boundary, setBoundary] = useState<GeografiPlategrense>("spredning");
+  const [modellfart, setModellfart] = useState(5);
+  const avstand = plateavstandKm(modellfart, 1000000) ?? 0;
   return (
     <ModelFrame kicker="Utforsk plategrenser" title="Figur 3.6: Sammenlikn fire plategrensemiljøer"
-      lead="Velg en bevegelse og forklar hva den kan føre til. Dette er en kvalitativ prinsippmodell, ikke en beregning av hastighet, jordskjelv eller risiko."
+      lead="Velg en bevegelse og forklar hva den kan føre til. Prinsippfiguren viser plategrensemiljøer. Fartskontrollen nedenfor er en separat regneøvelse med valgt, konstant fart, ikke målte platebevegelser eller risiko."
       toolbar={<div className="flex flex-wrap gap-2" role="group" aria-label="Velg plategrensemiljø">
         {GEOGRAFI_PLATEGRENSER.map((item) => <ModelTab key={item.id} active={boundary === item.id} onClick={() => setBoundary(item.id)}>{item.name}</ModelTab>)}
       </div>}>
       <BoundaryOverviewDiagram geografi selected={boundary} />
+      <ModelPanel>
+        <h3 className="font-semibold">Fra centimeter per år til kilometer</h3>
+        <p className="text-sm">Valgt modellinput, ikke en observert hastighet ved den valgte plategrensen.</p>
+        <label className="grid gap-2">Modellfart: {modellfart} cm/år<input type="range" min="0" max="20" step="1" value={modellfart} aria-label="Valgt modellfart i centimeter per år" aria-valuetext={`${modellfart} centimeter per år`} onChange={(e) => setModellfart(Number(e.target.value))} /></label>
+        <p aria-live="polite">Med konstant fart i én million år blir relativ avstandsøkning eller forskyvning {avstand} km. Regning: {modellfart} cm/år × 1 000 000 år ÷ 100 000 cm/km = {avstand} km. Dette er ikke en oppskrift på tiden fram til neste jordskjelv.</p>
+        <svg viewBox="0 0 720 130" className="w-full text-foreground" role="img" aria-label={`Valgt modellfart gir ${avstand} kilometer på én million år. Fast avstandsakse fra null til to hundre kilometer.`}>
+          <path d="M70 55 H650" stroke="currentColor" fill="none" />
+          {[0, 50, 100, 150, 200].map((v) => <g key={v}><path d={`M${70 + v / 200 * 580} 47 v16`} stroke="currentColor" /><text x={70 + v / 200 * 580} y="92" fill="currentColor" fontSize="17" textAnchor="middle">{v} km</text></g>)}
+          <circle cx={70 + avstand / 200 * 580} cy="55" r="9" fill="#0e7490" stroke="currentColor" />
+          <text x="360" y="122" fill="currentColor" fontSize="16" textAnchor="middle">Fast tid: én million år. Ingen skjelv eller faresoner beregnes.</text>
+        </svg>
+      </ModelPanel>
       <ModelNote title="Undersøk modellen" tone="teal">Hvilke valg viser sammenpressing? Hva skiller subduksjon fra kontinentkollisjon? Pilene viser bevegelsesretning, ikke en felles målestokk for fart (USGS, u.å.-h).</ModelNote>
     </ModelFrame>
   );

@@ -4,13 +4,13 @@ import { ModelFrame, ModelPanel, ModelTab, ModelNote } from "./model-chrome";
 
 type CatchmentTab = "simulator" | "urbanization_impact" | "hans_case";
 
-export function HydrographCatchmentModel() {
+export function HydrographCatchmentModel({ geografi = false }: { geografi?: boolean } = {}) {
   const [tab, setTab] = useState<CatchmentTab>("simulator");
 
   // --- Hovedparametre ---
   const [catchmentAreaKm2, setCatchmentAreaKm2] = useState<number>(150); // 20 til 800 km2
   const [reliefType, setReliefType] = useState<"steep" | "moderate" | "flat">("steep"); // Helning
-  const [soilType, setSoilType] = useState<"sand_gravel" | "till" | "clay_rock">("till"); // Infiltrasjon
+  const [soilType] = useState<"sand_gravel" | "till" | "clay_rock">("till"); // Infiltrasjon
   const [lakePercentage, setLakePercentage] = useState<number>(3); // 0 til 15 %
   const [urbanFraction, setUrbanFraction] = useState<number>(5); // 0 til 60 % tette flater
   const [antecedentMoisture, setAntecedentMoisture] = useState<"dry" | "normal" | "saturated">("normal"); // Forutgående fuktighet
@@ -39,9 +39,9 @@ export function HydrographCatchmentModel() {
 
     // 2. Konsentrasjonstid / Retardasjonstid (Lag time t_L i timer)
     // Bratt felt gir kort t_L, slakt felt gir lang t_L. Innsjøer og myr øker t_L vesentlig.
-    let slopeFactor = reliefType === "steep" ? 0.6 : reliefType === "moderate" ? 1.0 : 1.7;
-    let lakeRetention = 1 + (lakePercentage / 100) * 12; // 10% innsjø gir over 2x forsinkelse
-    let urbanSpeedup = Math.max(0.4, 1 - (urbanFraction / 100) * 0.7); // Asfalt forkorter reisetiden drastisk
+    const slopeFactor = reliefType === "steep" ? 0.6 : reliefType === "moderate" ? 1.0 : 1.7;
+    const lakeRetention = 1 + (lakePercentage / 100) * 12; // 10% innsjø gir over 2x forsinkelse
+    const urbanSpeedup = Math.max(0.4, 1 - (urbanFraction / 100) * 0.7); // Asfalt forkorter reisetiden drastisk
 
     const lagTimeHours = Math.max(
       1.5,
@@ -143,22 +143,25 @@ export function HydrographCatchmentModel() {
   return (
     <ModelFrame
       kicker="Interaktiv hydrologisk simulator"
-      title="Nedbørsfeltmodell og hydrogram-simulator"
+      title={geografi ? "Figur 6.6 – Utforsk den opprinnelige nedbørsfeltmodellen" : "Nedbørsfeltmodell og hydrogram-simulator"}
       lead="Et hydrogram viser elvens vannføring mot tid som respons på en nedbørshendelse. Utforsk hvordan nedbørsfeltets areal, helning, jordsmonnets forutgående markfuktighet, innsjømagasinering og urbanisering endrer flomtoppen og forsinkelsen (retardasjonstiden)."
       toolbar={
         <>
           <ModelTab active={tab === "simulator"} onClick={() => setTab("simulator")}>
             Nedbørsfelt-simulator
           </ModelTab>
+          {!geografi && <>
           <ModelTab active={tab === "urbanization_impact"} onClick={() => setTab("urbanization_impact")}>
             Urbanisering vs. Naturlig demping
           </ModelTab>
           <ModelTab active={tab === "hans_case"} onClick={() => setTab("hans_case")}>
             Ekstremværet Hans 2023
           </ModelTab>
+          </>}
         </>
       }
     >
+      {geografi && <ModelNote title="Hva tallene betyr" tone="teal">Inndata er valgte modellverdier, ikke målte data fra et bestemt vassdrag. Beregningene er en forenklet undervisningsmodell, ikke en kalibrert NVE-modell eller fareprognose. Modellen beholder de opprinnelige kontrollene og hydrogramberegningen. Returperiode kan ikke utledes fra disse tallene alene. NVE (2021) forklarer at 10-årsflom har 10 prosent og 100-årsflom 1 prosent årlig overskridelsessannsynlighet; det dokumenterer ikke modellens tidligere kobling mellom avrenning og slike etiketter.</ModelNote>}
       {tab === "simulator" && (
         <div className="space-y-6">
           <ModelPanel className="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -328,8 +331,8 @@ export function HydrographCatchmentModel() {
                     <p className="text-xs text-muted-foreground">Tidsforløp over 48 timer ved feltets utløp</p>
                   </div>
                   <div className="text-right">
-                    <span className={`text-xs font-bold uppercase tracking-wider ${hydroCalc.floodColor}`}>
-                      {hydroCalc.floodClass}
+                    <span className={`text-xs font-bold uppercase tracking-wider ${geografi ? "text-muted-foreground" : hydroCalc.floodColor}`}>
+                      {geografi ? "Returperiode ikke beregnet" : hydroCalc.floodClass}
                     </span>
                   </div>
                 </div>

@@ -24,7 +24,9 @@ Etter kapitlet kan vi
 
 Målene bygger særlig på KM484 og støtter KM485 (Udir, u.å.).
 
-[figur-10-1]: # (FIGURPLASSHOLDER 10.1: Globalt mønster i samlet fruktbarhetstall. Kontroller konkret FN WPP/WDI-uttak, felles år, nasjonale gjennomsnitt, landgrenser, manglende data og lisens før kartimport. Natural Earth-filen må kontrolleres separat. Ingen manglende verdi skal vises som null. Ingen oppgave avhenger av kartet.)
+```widget
+GeoBefolkningFruktbarhetKart
+```
 
 ## Befolkningsvekst
 
@@ -202,7 +204,11 @@ Malthus og Boserup kan brukes som forskjellige blikk på en konkret jordbruksutf
 
 FNs utviklingsprogram bruker **HDI**, en indeks for menneskelig utvikling, til å sammenfatte tre dimensjoner. Helse måles med forventet levealder ved fødselen. Utdanningsdelen kombinerer voksnes gjennomsnittlige skolegang og forventet skolegang for barn. Inntektsdelen bygger på bruttonasjonalinntekt per innbygger, kjøpekraftsjustert for å gjøre land mer sammenliknbare. HDI er likevel en forenkling og måler ikke automatisk ulikhet, trygghet eller alle sider av livskvalitet (UNDP, u.å.).
 
-[figur-10-7]: # (FIGURPLASSHOLDER 10.7: Globalt kart over forventet levealder eller dødelighet under fem år. Velg én indikator og kontroller definisjon, år, estimatmetode, lisens og manglende data. Ikke bland spedbarnsdødelighet og dødelighet under fem år. Kontroller konkret kartgrunnlag separat. Landgjennomsnitt må ikke omtales som alle innbyggernes liv.)
+Kartet nedenfor viser forventet levealder ved fødselen som hovedvalg. Du kan skifte til HDI, men indikatorene tegnes aldri sammen på samme skala. Begge gjelder 2023, slik at sammenlikningen med Japan og Niger beholder samme år. HDI-utgaven er HDR2025, den nyeste publiserte ved kontrollen (Verdensbanken, 2026; UNDP, 2025a, 2025b).
+
+```widget
+GeoBefolkningLevekarKart
+```
 
 ### Sammenlikn samme indikator og samme år
 

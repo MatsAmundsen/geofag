@@ -33,7 +33,7 @@ Målene bygger på KM485, med støtte i KM481 og KM484 (Udir, u.å.).
 
 **Primærnæring** omfatter her jordbruk, skogbruk og fiske, inkludert akvakultur i datagrunnlaget. **Sekundærnæring** omfatter her bergverksdrift og oljeutvinning, industri, kraft- og vannforsyning, avløp, renovasjon og byggevirksomhet. **Tertiærnæring** er tjenesteyting, som handel, transport, undervisning, helsearbeid og finansielle tjenester. Inndelingen er en grov sortering, ikke en rangering av hvilke jobber som er viktigst. Vi oppgir gruppene tydelig fordi dagligtalens «industri» ikke dekker alle sekundærnæringene (Langseth & Munthe, 2025; Statistisk sentralbyrå [SSB], 2026a).
 
-En butikkansatt og en sykepleier arbeider begge i tjenesteyting, men utfører svært ulike oppgaver. En bedrift som produserer varer, kan samtidig kjøpe transport, regnskap og tekniske tjenester. Næringene er derfor ikke atskilte verdener, selv om vi bruker forskjellige navn og statistiske grupper. En endring i én virksomhet kan påvirke etterspørselen etter arbeid i andre deler av økonomien. Vi må både sortere aktivitetene og undersøke forbindelsene mellom dem (Langseth & Munthe, 2025; SSB, 2026b).
+En butikkansatt og en sykepleier arbeider begge i tjenesteyting, men utfører svært ulike oppgaver. En bedrift som produserer varer, kan samtidig kjøpe transport, regnskap og tekniske tjenester. Næringene er derfor ikke atskilte verdener, selv om vi bruker forskjellige navn og statistiske grupper. En endring i én virksomhet kan påvirke etterspørselen etter arbeid i andre deler av økonomien. Vi må både sortere aktivitetene og undersøke forbindelsene mellom dem (Langseth & Munthe, 2025; SSB, 2026c).
 
 ### Les tallene før vi lager forklaringen
 
@@ -83,13 +83,13 @@ Historien hjelper oss å forstå at et lokaliseringsvalg kan forme et sted i man
 
 ### Fra én virksomhet til flere forbindelser
 
-En **ringvirkning** er en virkning som sprer seg videre fra en aktivitet til andre aktører. Når en bedrift kjøper varer og tjenester, skaper den etterspørsel hos leverandører og deres underleverandører. Dersom de øker aktiviteten, kan behovet for arbeidskraft og andre innsatsvarer også endre seg. Ansattes inntekter og forbruk kan i tillegg påvirke handel og tjenester der pengene brukes. Hvilke forbindelser som regnes med, avhenger av spørsmålet og metoden vi velger (SSB, 2026b).
+En **ringvirkning** er en virkning som sprer seg videre fra en aktivitet til andre aktører. Når en bedrift kjøper varer og tjenester, skaper den etterspørsel hos leverandører og deres underleverandører. Dersom de øker aktiviteten, kan behovet for arbeidskraft og andre innsatsvarer også endre seg. Ansattes inntekter og forbruk kan i tillegg påvirke handel og tjenester der pengene brukes. Hvilke forbindelser som regnes med, avhenger av spørsmålet og metoden vi velger (SSB, 2026c).
 
-De samme forbindelsene kan også spre en nedgang dersom virksomheten reduserer sine innkjøp. Leverandørene kan få færre bestillinger og dermed mindre behov for arbeidskraft eller andre leveranser. Om inntektene faller, kan dette igjen påvirke forbruket hos dem som er berørt. Men andre kunder, nye oppgaver og endret organisering kan dempe eller endre virkningen. Vi følger derfor mulige årsakskjeder, ikke en automatisk lik nedgang i alle ledd (SSB, 2026b; Seland, 2024).
+De samme forbindelsene kan også spre en nedgang dersom virksomheten reduserer sine innkjøp. Leverandørene kan få færre bestillinger og dermed mindre behov for arbeidskraft eller andre leveranser. Om inntektene faller, kan dette igjen påvirke forbruket hos dem som er berørt. Men andre kunder, nye oppgaver og endret organisering kan dempe eller endre virkningen. Vi følger derfor mulige årsakskjeder, ikke en automatisk lik nedgang i alle ledd (SSB, 2026c; Seland, 2024).
 
-Vi kan begynne med den direkte aktiviteten hos virksomheten som undersøkes, for eksempel produksjonen ved en fabrikk. Deretter følger vi innkjøp til leverandørene og videre bakover til deres egne innkjøp. Hvis vi også undersøker husholdningenes forbruk, legger vi til en annen type forbindelse i analysen. Vi må si tydelig fra om dette er med, ellers kan forskjellige anslag se mer sammenliknbare ut enn de er. En modell som følger leveranser, dekker ikke automatisk alle samfunnsvirkninger av virksomheten (SSB, 2026b).
+Vi kan begynne med den direkte aktiviteten hos virksomheten som undersøkes, for eksempel produksjonen ved en fabrikk. Deretter følger vi innkjøp til leverandørene og videre bakover til deres egne innkjøp. Hvis vi også undersøker husholdningenes forbruk, legger vi til en annen type forbindelse i analysen. Vi må si tydelig fra om dette er med, ellers kan forskjellige anslag se mer sammenliknbare ut enn de er. En modell som følger leveranser, dekker ikke automatisk alle samfunnsvirkninger av virksomheten (SSB, 2026c).
 
-Figur 9.4 skiller forbindelser gjennom leveranser og inntekter fra belastninger som kan ramme andre. Pilene viser mulige sammenhenger, ikke dokumenterte pengebeløp eller et bestemt antall ekstra arbeidsplasser. Kjøp kan dessuten gå til leverandører i andre regioner eller land, framfor å bli i kommunen. Vi må derfor følge hvor leveransene faktisk kommer fra, før vi regner virkningen som lokal. Det er ikke nok at den første fabrikken har lokal adresse (SSB, 2026b).
+Figur 9.4 skiller forbindelser gjennom leveranser og inntekter fra belastninger som kan ramme andre. Pilene viser mulige sammenhenger, ikke dokumenterte pengebeløp eller et bestemt antall ekstra arbeidsplasser. Kjøp kan dessuten gå til leverandører i andre regioner eller land, framfor å bli i kommunen. Vi må derfor følge hvor leveransene faktisk kommer fra, før vi regner virkningen som lokal. Det er ikke nok at den første fabrikken har lokal adresse (SSB, 2026c).
 
 ```widget
 GeoNaeringRingvirkninger
@@ -97,15 +97,15 @@ GeoNaeringRingvirkninger
 
 ### En beregning er ikke en liste over sikre nye jobber
 
-SSBs rapport publisert i juni 2026 beregner sysselsetting knyttet til norsk petroleumsutvinning og leverandørkjeder. For 2023 anslår rapporten om lag 161 900 sysselsatte i utvinningsnæringen og tilknyttede leverandørnæringer samlet. Beregningen bruker nasjonalregnskapets forbindelser mellom næringer og bestemte antakelser om sammenhengen mellom verdiskaping og arbeidskraft. Det er ikke en opptelling av arbeidstakere som svarte at de bare kunne arbeide for petroleum. Vi bruker derfor tallet som et datert modellresultat, ikke en garanti om framtidige arbeidsplasser (SSB, 2026b).
+SSBs rapport publisert i juni 2026 beregner sysselsetting knyttet til norsk petroleumsutvinning og leverandørkjeder. For 2023 anslår rapporten om lag 161 900 sysselsatte i utvinningsnæringen og tilknyttede leverandørnæringer samlet. Beregningen bruker nasjonalregnskapets forbindelser mellom næringer og bestemte antakelser om sammenhengen mellom verdiskaping og arbeidskraft. Det er ikke en opptelling av arbeidstakere som svarte at de bare kunne arbeide for petroleum. Vi bruker derfor tallet som et datert modellresultat, ikke en garanti om framtidige arbeidsplasser (SSB, 2026c).
 
-Rapporten undersøker ikke alle virkninger av økte inntekter hos husholdninger og myndigheter eller alle makroøkonomiske tilpasninger. Den understreker også at leverandører kunne vende seg mot andre markeder dersom petroleumsetterspørselen var borte. Vi kan derfor ikke snu beregningen og hevde at alle de tilknyttede sysselsatte automatisk ville bli arbeidsledige. Tilsvarende må et anslag for en ny fabrikk vurderes mot hva arbeidskraft og kapital ellers kunne gjort. Slike forbehold er en del av forklaringen, ikke et tillegg vi kan hoppe over (SSB, 2026b).
+Rapporten undersøker ikke alle virkninger av økte inntekter hos husholdninger og myndigheter eller alle makroøkonomiske tilpasninger. Den understreker også at leverandører kunne vende seg mot andre markeder dersom petroleumsetterspørselen var borte. Vi kan derfor ikke snu beregningen og hevde at alle de tilknyttede sysselsatte automatisk ville bli arbeidsledige. Tilsvarende må et anslag for en ny fabrikk vurderes mot hva arbeidskraft og kapital ellers kunne gjort. Slike forbehold er en del av forklaringen, ikke et tillegg vi kan hoppe over (SSB, 2026c).
 
 ### Virkninger som ikke står på bedriftens regning
 
 **Eksterne virkninger** er virkninger for utenforstående som beslutningstakeren ikke tar tilstrekkelig hensyn til i eget valg. Støy fra en fabrikk kan for eksempel belaste naboer uten å være en tilsvarende kostnad for bedriften. Da viser ikke bedriftens regnskap alene hva aktiviteten betyr for hele lokalsamfunnet eller naturen. Eksterne virkninger kan også være positive, så begrepet betyr ikke bare forurensning eller skade. Det avgjørende er hvordan virkningen på andre håndteres i beslutningen (Onshuus & Idsø, 2025).
 
-Når vi drøfter etablering eller nedleggelse, må vi derfor holde flere spørsmål fra hverandre samtidig. Hvor mange sysselsatte er knyttet til aktiviteten, og hvor sikre er anslagene som brukes? Hvem får inntektene, og hvem opplever belastninger som ikke framgår av bedriftens eget regnskap? Hvilke tiltak kan endre ulempene, og hvilke interesser eller rettigheter setter rammer for beslutningen? Flere arbeidsplasser er viktig kunnskap, men gir ikke alene et fullstendig svar på alle disse spørsmålene (SSB, 2026b; Onshuus & Idsø, 2025).
+Når vi drøfter etablering eller nedleggelse, må vi derfor holde flere spørsmål fra hverandre samtidig. Hvor mange sysselsatte er knyttet til aktiviteten, og hvor sikre er anslagene som brukes? Hvem får inntektene, og hvem opplever belastninger som ikke framgår av bedriftens eget regnskap? Hvilke tiltak kan endre ulempene, og hvilke interesser eller rettigheter setter rammer for beslutningen? Flere arbeidsplasser er viktig kunnskap, men gir ikke alene et fullstendig svar på alle disse spørsmålene (SSB, 2026c; Onshuus & Idsø, 2025).
 
 ## Globalisering
 
@@ -123,7 +123,11 @@ Når produksjonen knyttes sammen, kan virksomheter få tilgang til kunder, kompe
 
 Globalisering er heller ikke en jevn bevegelse som alltid går raskere i samme retning. Politiske konflikter, handelsbegrensninger og andre endringer kan bremse eller endre forbindelsene mellom land. Verdensbankens utviklingsrapport fra 2020 diskuterer både utviklingsmuligheter og trusler mot handel gjennom globale produksjonskjeder. Rapporten framhever at gevinster for arbeid og levekår avhenger av politikk og beskyttelse av mennesker og miljø. Vi bruker denne daterte analysen, ikke rapportens gamle tall som en beskrivelse av verdenshandelen i 2026 (Verdensbanken, 2020; Seland, 2024).
 
-[figur-9-6]: # (FIGURPLASSHOLDER 9.6: Handelsstrømmer for én dokumentert varegruppe fra UN Comtrade eller WITS. Bekreft konkret nedlastingslisens, år, varekode, verdi eller mengde, rapportør, partner, reeksport og manglende data. Ikke tegn oppdiktede handelsruter eller bruk pilbredde uten skala.)
+I kartet sammenlikner vi fem bestemmelsesland for norsk fiskeeksport i 2025. Varegruppen er den samme i alle land, og verdi og mengde holdes atskilt (SSB, 2026b).
+
+```widget
+GeoNaeringFiskEksport
+```
 
 ## Internasjonal arbeidsdeling
 
@@ -161,7 +165,11 @@ Figur 9.5 viser en forenklet verdikjede uten landnavn eller antatte ruter for en
 GeoNaeringVerdikjede
 ```
 
-[figur-9-5-kart]: # (FIGURPLASSHOLDER 9.5, stedsdel: Skjemaet er levert uten landnavn. Et kart krever verifisert produkt, tidsrom og leverandørledd, ellers skal opprinnelsen stå som ukjent. Kontroller konkrete bakgrunnsfiler og datalisenser før import. Ingen generiske landplasseringer skal framstilles som denne telefonens reiserute.)
+Vi konkretiserer stedsdelen med Fairphone 5 og leverandørrapporten publisert i mai 2024. Rapportens oppgitte roller gir ikke grunnlag for å kalle alle leverandøradresser fabrikker (Fairphone, 2024).
+
+```widget
+GeoNaeringTelefonSteder
+```
 
 En råvare kan gå gjennom flere virksomheter før den inngår i et produkt som selges videre. Derfor er navnet på den siste fabrikken ikke nødvendigvis nok til å følge alle materialene tilbake. Det samme gjelder opplysninger om hvor selskapets hovedkontor ligger, som beskriver et annet ledd i organiseringen. Vi skiller mellom råvarenes opprinnelse, komponentproduksjon, montering og stedet der beslutninger om produktet tas. Det gjør forklaringen mer presis uten at vi må late som hele leverandørnettet er kjent (Rolstadås, 2024; Munthe, 2025).
 

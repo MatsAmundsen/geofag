@@ -125,11 +125,11 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.ok(md.indexOf("## To kart") < md.indexOf("## Læringsmål"));
   });
 
-  it("bevarer elleve figurplasser uten synlige redaktørnotater", () => {
+  it("bevarer resterende figurplasser uten synlige redaktørnotater", () => {
     const placeholders = [...md.matchAll(/^\[figur-1-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
     assert.deepEqual(
       placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      Array.from({ length: 11 }, (_, i) => i),
+      [0, 1, 3, 5, 6, 7, 8, 9, 10],
     );
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap1-redaksjon|figur-1-/);
@@ -140,7 +140,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
 
   it("har kilder, hypotetiske eksempler og korrekt avgrenset Snow-case", () => {
     const sources = read("kilder-geografi.ts").split('"geo-feltarbeid"')[0];
-    assert.equal((sources.match(/href: /g) ?? []).length, 16);
+    assert.equal((sources.match(/href: /g) ?? []).length, 19);
     for (const domain of [
       "udir.no",
       "kartverket.no",
@@ -210,7 +210,7 @@ describe("Geografi kapittel 2: feltarbeid (PR C)", () => {
     const placeholders = [...md.matchAll(/^\[figur-2-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
     assert.deepEqual(
       placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
-      Array.from({ length: 10 }, (_, i) => i),
+      [0, 1, 2, 3, 5, 6, 7, 8, 9],
     );
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap2-redaksjon|figur-2-/);
@@ -286,12 +286,12 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
     assert.ok(md.indexOf("## En bekk") < md.indexOf("## Læringsmål"));
   });
 
-  it("bevarer ti figurplasser: sju eksisterende figurer og tre skjulte markører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-6-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])), [1, 2, 9]);
+  it("bevarer ti figurplasser: åtte figurer og to skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-6-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])), [1, 2]);
     const parts = parsePosterMarkdown(md);
     const names = parts.filter((part) => part.type === "widget").map((part) => part.id);
-    assert.equal(names.length, 7);
-    assert.equal(new Set(names).size, 7);
+    assert.equal(names.length, 8);
+    assert.equal(new Set(names).size, 8);
     const registry = read("../components/poster-body.tsx");
     for (const name of names) assert.ok(registry.includes(`${name}:`), name);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -300,7 +300,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
   });
 
   it("har 31 verifiserte kilder, ingen bibliotekskilder og eksplisitt usikkerhet", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 31);
+    assert.equal((sources.match(/href: /g) ?? []).length, 34);
     assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
     for (const domain of ["undrr.org", "nve.no", "varsom.no", "usgs.gov", "regjeringen.no", "wmo.int", "unep.org", "ipcc.ch", "met.no", "snl.no", "udir.no", "dsb.no", "metoffice.gov.uk", "bjerknes.uib.no"])
       assert.ok(sources.includes(domain), domain);
@@ -313,7 +313,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
 
   it("begrenser modellene til Vg1 uten å koble inn udokumenterte returperioder", () => {
     const registry = read("../components/poster-body.tsx");
-    assert.match(registry, /GeoNaturfareHydrogram:.*HydrogramFigur geografi/);
+    assert.match(registry, /GeoNaturfareHydrogram:.*HydrographCatchmentModel geografi/);
     assert.doesNotMatch(md, /HydrographCatchmentModel/);
     assert.match(md, /beregner verken flomstørrelse/);
     const weather = read("../components/diagrams/vaerkatastrofer-figurer.tsx");
@@ -347,11 +347,11 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.match(md, /### 7. Vurder et tiltak/);
   });
 
-  it("har seks skjulte figurplasser og én faktisk registrert Vg1-figur", () => {
+  it("har fem skjulte figurplasser og tre registrerte Vg1-figurer", () => {
     const numbers = [...md.matchAll(/^\[figur-8-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b);
-    assert.deepEqual(numbers, [1, 2, 4, 5, 6, 7]);
+    assert.deepEqual(numbers, [1, 4, 5, 6, 7]);
     const widgets = parsePosterMarkdown(md).filter((part) => part.type === "widget");
-    assert.deepEqual(widgets.map((part) => part.id), ["GeoBaerekraftTre"]);
+    assert.deepEqual(widgets.map((part) => part.id), ["GeoHdiBnp", "GeoBaerekraftTre", "GeoLokalFotavtrykk"]);
     assert.match(read("../components/poster-body.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap8-redaksjon|figur-8-/);
@@ -359,8 +359,8 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.doesNotMatch(md, /[Ss]e figur 8\.[124567]/);
   });
 
-  it("har 23 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 23);
+  it("har 27 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 27);
     assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
     for (const domain of ["udir.no", "ssb.no", "undp.org", "worldbank.org", "footprintnetwork.org", "footprintcalculator.org", "wwf.no", "pik-potsdam.de", "ipcc.ch", "unep.org", "sdgs.un.org", "miljodirektoratet.no", "regjeringen.no", "stratigraphy.org", "ourworldindata.org", "fn.no"])
       assert.ok(sources.includes(domain), domain);
@@ -407,19 +407,19 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.equal((md.match(/^### \d\. /gm) ?? []).length, 7);assert.equal((md.match(/^c\. /gm) ?? []).length, 7);
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid/i);
   });
-  it("har åtte skjulte markører og seks registrerte Vg1-figurer", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [0, 1, 3, 5, 9, 11, 12, 13]);
+  it("har én skjult markør og tretten registrerte Vg1-figurer", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [1]);
     for (const widget of widgets) {
       assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
       assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
     }
-    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap3-redaksjon|figur-3-/);
     assert.doesNotMatch(md, /[Ss]e figur 3\.(?:0|1|3|5|9|11|12|13)\b/);
   });
-  it("har 22 verifiserte kilder uten lærebok- eller bibliotekhenvisninger", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 22);
+  it("har 27 verifiserte kilder uten lærebok- eller bibliotekhenvisninger", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 27);
     for (const domain of ["ngu.no", "usgs.gov", "noaa.gov", "norskpetroleum.no", "udir.no", "vedur.is"]) assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
     for (const suffix of ["a", "b", "c", "d", "e", "f", "g", "h", "i"]) assert.ok(md.includes(`u.å.-${suffix}`), suffix);
@@ -462,20 +462,20 @@ describe("Geografi kapittel 4: ytre krefter og landskap", () => {
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
   });
 
-  it("har alle tolv figurposisjoner med seks figurer og seks skjulte markører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-4-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [0, 7, 8, 9, 10, 11]);
+  it("har tolv widgets, modellfoto og én gjenværende skjult fotomarkør", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-4-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [10]);
     for (const widget of widgets) {
       assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
-      assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
+      if (widget !== "GeoLandskapBrelandskap") assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
     }
-    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoLandskapIstidskart", "GeoLandskapFrost", "GeoLandskapMassebalanse", "GeoLandskapBrekart", "GeoLandskapBrelandskap", "GeoLandskapBotn", "GeoLandskapMarinGrense", "GeoLandskapKvikkleire", "GeoLandskapElv", "GeoLandskapKyst", "GeoLandskapFjordLokator", "GeoLandskapLeirslette"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap4-redaksjon|figur-4-/);
     assert.doesNotMatch(md, /[Ss]e figur 4\.(?:0|7|8|9|10|11)\b/);
   });
 
-  it("har 31 verifiserte kilder uten elevrettede bibliotek- eller lærebokhenvisninger", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 31);
+  it("har 38 verifiserte kilder uten elevrettede bibliotek- eller lærebokhenvisninger", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 38);
     for (const domain of ["ngu.no", "nve.no", "nibio.no", "snl.no", "unesco.org", "udir.no"]) assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
     for (const citation of ["Bryhni & Fossen, 2024", "Bryhni & Røthe, 2025", "Sørbel, 2024", "Røthe & Mangerud, u.å.", "Spjeldnæs, u.å.", "NVE, 2024", "NVE, 2026a", "NVE, 2026b", "bioøkonomi [NIBIO], 2022", "NIBIO, 2023", "NIBIO, u.å.", "UNESCO, u.å.", "Udir, u.å."]) assert.ok(md.includes(citation), citation);
@@ -635,7 +635,7 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
 describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
   const md = read("posts/geo-ressurser.md");
   const sources = read("kilder-geografi.ts").split('"geo-ressurser": [')[1].split('"geo-baerekraft"')[0];
-  const widgets = ["GeoRessursFornyelse", "GeoRessursBergartBrudd", "GeoRessursPetroleum", "GeoRessursVindAvveining"];
+  const widgets = ["GeoRessursFornyelse", "GeoRessursBergartBrudd", "GeoRessursPetroleum", "GeoRessursKraftproduksjon", "GeoRessursVindAvveining", "GeoRessursFosenKart", "GeoRessursSysselNord"];
 
   it("dekker åtte underkapitler og lærings- og oppgavemalen", () => {
     for (const title of ["Hva er ressurser", "Fornybare ressurser", "Ressurser i berggrunnen", "Olje og gass", "Energi", "Arealbruk og konflikter", "Sápmi og reindrift", "Nordområdene", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz", "KILDER"])
@@ -648,8 +648,8 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.doesNotMatch(md, /under arbeid|Planlagte underkapitler|[!<]/i);
   });
 
-  it("fordeler ni figurposisjoner på fire figurer og fem skjulte markører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-7-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [1, 5, 6, 7, 9]);
+  it("fordeler ni figurposisjoner på sju figurer og to skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-7-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [1, 6]);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`), id);
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -657,8 +657,8 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.doesNotMatch(md, /[Ss]e figur 7\.(?:1|5|6|7|9)\b/);
   });
 
-  it("registrerer 34 eksterne kilder uten bibliotek eller lærebok", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 34);
+  it("registrerer 39 eksterne kilder uten bibliotek eller lærebok", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 39);
     for (const domain of ["snl.no", "ngu.no", "nibio.no", "nve.no", "domstol.no", "regjeringen.no", "landbruksdirektoratet.no", "sametinget.no", "norskpetroleum.no", "nbim.no", "ec.europa.eu", "ipcc.ch", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
@@ -711,7 +711,7 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
 describe("Geografi kapittel 9: næringsliv og globalisering", () => {
   const md = read("posts/geo-naering.md");
   const sources = read("kilder-geografi.ts").split('"geo-naering": [')[1].split('"geo-befolkning"')[0];
-  const widgets = ["GeoNaeringStruktur", "GeoNaeringLokalisering", "GeoNaeringRingvirkninger", "GeoNaeringVerdikjede"];
+  const widgets = ["GeoNaeringStruktur", "GeoNaeringLokalisering", "GeoNaeringRingvirkninger", "GeoNaeringFiskEksport", "GeoNaeringVerdikjede", "GeoNaeringTelefonSteder"];
 
   it("dekker sju underkapitler, kompetansemål og tre oppgavelag", () => {
     for (const title of ["Næringsstruktur", "Lokalisering", "Ringvirkninger", "Globalisering", "Internasjonal arbeidsdeling", "Verdikjeder", "Forbruk og ansvar", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
@@ -723,8 +723,8 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
   });
 
-  it("har sju figurposisjoner med fire widgets og fire skjulte kartmarkører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-9-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), ["1", "5-kart", "6", "7"]);
+  it("har sju figurposisjoner med seks widgets og to skjulte kartmarkører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-9-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), ["1", "7"]);
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -732,8 +732,8 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     assert.doesNotMatch(md, /[Ss]e figur 9\.(?:1|6|7)\b/);
   });
 
-  it("har 22 kontrollerte eksterne kilder og henvisninger til alle fagkildene", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 22);
+  it("har 25 kontrollerte eksterne kilder og henvisninger til alle fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 25);
     for (const domain of ["ssb.no", "snl.no", "unep.org", "unesco.org", "ilo.org", "worldbank.org", "forbrukertilsynet.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["Udir, u.å.", "UNESCO, u.å.", "Moe & Thorsnæs, 2026", "Langseth & Munthe, 2025", "SSB, 2026a", "SSB, 2026b", "Isaksen, 2025", "Onshuus & Idsø, 2025", "Seland, 2024", "Grindheim, 2024", "Onshuus, 2026", "Munthe, 2025", "Vikøren & Pihl, 2025", "Rolstadås, 2024", "UNEP], 2019, 2023", "UNEP, 2020", "Klepp, 2026", "Forbrukertilsynet, 2026", "Vaughan-Whitehead & Pinedo Caro, 2017", "Verdensbanken, 2020"]) assert.ok(md.includes(citation), citation);
     assert.doesNotMatch(sources + md, /Terra Nova|Aunivers|bibliotek/);
@@ -813,7 +813,7 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
 describe("Geografi kapittel 10: befolkning og levekår", () => {
   const md = read("posts/geo-befolkning.md");
   const sources = read("kilder-geografi.ts").split('"geo-befolkning": [')[1].split('"geo-migrasjon"')[0];
-  const widgets = ["GeoBefolkningVerden", "GeoBefolkningGrunnformel", "GeoBefolkningNorgePyramider", "GeoBefolkningLandPyramider", "GeoBefolkningOvergang", "GeoBefolkningNorgeFruktbarhet"];
+  const widgets = ["GeoBefolkningFruktbarhetKart", "GeoBefolkningVerden", "GeoBefolkningGrunnformel", "GeoBefolkningNorgePyramider", "GeoBefolkningLandPyramider", "GeoBefolkningOvergang", "GeoBefolkningLevekarKart", "GeoBefolkningNorgeFruktbarhet"];
 
   it("dekker alle åtte underkapitler og oppgaver uten synlige redaktørnotater", () => {
     for (const title of ["Befolkningsvekst", "Demografiske mål", "Fruktbarhet og dødelighet", "Befolkningspyramider", "Demografisk overgang", "Befolkningsteorier", "Levekår i verden", "Befolkning i Norge", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
@@ -824,17 +824,17 @@ describe("Geografi kapittel 10: befolkning og levekår", () => {
     assert.doesNotMatch(md, /under arbeid|## Status|## Planlagte underkapitler|[!<]/i);
   });
 
-  it("har seks registrerte widgets og to skjulte kartmarkører", () => {
+  it("har åtte registrerte widgets og ingen skjulte kartmarkører", () => {
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
-    assert.deepEqual([...md.matchAll(/^\[figur-10-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]), ["1", "7"]);
+    assert.deepEqual([...md.matchAll(/^\[figur-10-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]), []);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-10-/);
     assert.doesNotMatch(md, /[Ss]e figur 10\.(?:1|7)\b/);
   });
 
-  it("registrerer 16 kontrollerte kilder og henviser til fagkildene", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 16);
+  it("registrerer 19 kontrollerte kilder og henviser til fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 19);
     for (const domain of ["ssb.no", "worldbank.org", "ourworldindata.org", "who.int", "undp.org", "snl.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "2026d", "Tømmerås et al., 2026", "Tønnessen, 2024", "Solerød & Tønnessen, 2026", "Nylenna et al., 2025", "Mæhlum, 2023", "Stoltz, 2026", "WHO, 2025", "UNDP, u.å.", "Verdensbanken, 2026", "Our World in Data, 2024"]) assert.ok(md.includes(citation), citation);
     assert.doesNotMatch(md + sources, /Terra Nova|Aunivers|bibliotek/);

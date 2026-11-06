@@ -1,0 +1,23 @@
+{
+  "kilde": "Kartverket, Topografisk rasterkart WMTS",
+  "hentet": "2026-11-06",
+  "lisens": "CC BY 4.0",
+  "vilkar": "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+  "zoom": 11,
+  "bearbeiding": "Fire originale 256px-fliser satt sammen, ingen nye kartobjekter",
+  "utsnittNW": [
+    8.61328125,
+    61.60639637138628
+  ],
+  "utsnittSE": [
+    8.96484375,
+    61.43876749368282
+  ],
+  "url": [
+    "https://cache.kartverket.no/v1/service?layer=toporaster&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=11&TileCol=1073&TileRow=576",
+    "https://cache.kartverket.no/v1/service?layer=toporaster&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=11&TileCol=1073&TileRow=577",
+    "https://cache.kartverket.no/v1/service?layer=toporaster&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=11&TileCol=1074&TileRow=576",
+    "https://cache.kartverket.no/v1/service?layer=toporaster&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=11&TileCol=1074&TileRow=577"
+  ],
+  "sha256": "07b8b6b5a1de77f09ef146eb540a971198ca2299fc14f93ff59b01185313a221"
+}

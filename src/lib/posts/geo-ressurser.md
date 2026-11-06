@@ -137,7 +137,11 @@ Når vi snakker om en energimiks, må vi først avklare hva tallene faktisk besk
 
 Norsk kraftproduksjon har lenge vært dominert av vannkraft, men produksjonen varierer med naturgitte forhold. Nedbør, snø og tilsig påvirker hvor mye vann som er tilgjengelig for kraftverkene. Et produksjonsår kan derfor ikke uten videre brukes som en fast fasit for alle år. Vi må også skille mellom mulig produksjon og den elektrisiteten som faktisk blir produsert. Når vi senere bruker tidsserier, skal samme avgrensning følge tallene gjennom hele perioden (Norges vassdrags- og energidirektorat [NVE], 2026b; Hofstad mfl., 2026).
 
-[figur-7-5]: # (FIGURPLASSHOLDER 7.5: Norsk elektrisitetsproduksjon etter kilde over tid, ikke samlet energibruk. SSB er planlagt datakilde. Kontroller tabell-ID, år, GWh/TWh, kildekategorier, revisjoner og konkret CC BY 4.0-kreditering. Ingen produksjonstall er konstruert.)
+Serien nedenfor gjelder hele landet i 2020–2025. Vi bruker samme kildeinndeling hvert år, og skiller faktiske GWh fra installert effekt (Statistisk sentralbyrå [SSB], 2026a).
+
+```widget
+GeoRessursKraftproduksjon
+```
 
 ### Vannkraft bruker fallhøyde og vannføring
 
@@ -195,7 +199,9 @@ Et beiteområde kan ikke vurderes bare ut fra størrelsen på kartet eller avsta
 
 **Samlet belastning** er virkningen av flere påvirkninger sett i sammenheng over tid og i samme område. En vei, et kraftanlegg og tidligere inngrep må derfor ikke alltid vurderes som isolerte saker. Forstyrrelser og barrierer kan redusere den praktiske tilgangen til beite som fortsatt ser tilgjengelig ut på kartet. Kart må suppleres med kunnskap fra reindriftsutøverne om hvordan landskapet faktisk brukes. Tradisjonell kunnskap og feltkunnskap er dermed nødvendige deler av kunnskapsgrunnlaget, ikke bare meninger i etterkant (Landbruksdirektoratet, 2025c).
 
-[figur-7-7]: # (FIGURPLASSHOLDER 7.7: Kartserie over sesongbeiter, flyttleier, vindkraft og veier i ett dokumentert område. Verifiser hvert Kartverket-, NVE- og reindriftsdatasett, dato og lisens. Bruk samme utsnitt og nøytrale farger. Kartet må ikke framstilles som fullstendig uten lokal kunnskap. Ingen kartlag er importert.)
+```widget
+GeoRessursFosenKart
+```
 
 ### Rettigheter er ikke bare én interesse blant flere
 
@@ -239,7 +245,11 @@ Petroleumsvirksomhet og andre havnæringer må vurderes opp mot naturverdier og 
 
 For eksempel kan arbeidsplasser beskrives med antall sysselsatte, mens verdiskaping måles på en annen måte. Tall for en nasjonal næring kan ikke uten videre sammenliknes med tall for én kommune. Mulige framtidige arbeidsplasser må heller ikke presenteres som allerede registrert sysselsetting. I en sammenlikning må år, geografisk område, næringsinndeling og metode derfor passe sammen. Vi kan stille slike metodekrav før vi har valgt hvilket politisk standpunkt vi selv vil forsvare.
 
-[figur-7-9]: # (FIGURPLASSHOLDER 7.9: Fiskeri og petroleum i LoVeSe, bare med sammenliknbare SSB-data. Avklar regionavgrensning, år, arbeidssted/bosted, næringskoder og sysselsetting eller verdiskaping. Prognoser må ikke blandes med registrerte tall. Ingen tabell-ID, arbeidsplasstall eller boblestørrelser er gjettet.)
+Her sammenlikner vi registrert sysselsetting etter arbeidssted i Nordland og Troms, ikke hypotetiske arbeidsplasser i et framtidig LoVeSe-prosjekt. Fiskeri, utvinning og petroleumstjenester holdes atskilt. Tallene gjelder 4. kvartal 2025 (SSB, 2026b).
+
+```widget
+GeoRessursSysselNord
+```
 
 Et område kan være særlig verdifullt og sårbart uten at betegnelsen i seg selv betyr juridisk vern. Vi må derfor lese både faglige beskrivelser og de konkrete rammene for aktivitet. Vi bør også spørre hvordan klimaendringer påvirker naturgrunnlaget som både næringer og lokalsamfunn bygger på. Forskjellige tidsperspektiver kan gi forskjellige vurderinger av hva som er en fordel eller belastning. Hvilke opplysninger trenger vi for å begrunne et langsiktig valg, og hvilke spørsmål står fortsatt åpne? (Klima- og miljødepartementet, 2024a, 2024b).
 
