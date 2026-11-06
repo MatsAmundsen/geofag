@@ -226,9 +226,84 @@ const SECTION_META: SectionMeta[] = [
     subtitle: "Moho, flytende ytre kjerne og skyggesonen",
   },
   {
+    match: /^jordskjelv som naturfare/i,
+    label: "Skader",
+    subtitle: "Bygninger, resonans, likvefaksjon og følgehendelser",
+  },
+  {
+    match: /^kan jordskjelv varsles/i,
+    label: "Varsling",
+    subtitle: "Langtidsvarsling, korttidsvarsling og tidlig varsling",
+  },
+  {
+    match: /^hvor ofte skjer store skjelv/i,
+    label: "Frekvens",
+    subtitle: "Hvor mange skjelv, og hvor store",
+  },
+  {
+    match: /^fare, risiko og forebygging/i,
+    label: "Risiko",
+    subtitle: "Fare, eksponering, sårbarhet og en enkel modell",
+  },
+  {
     match: /hvorfor skjelver norge/i,
     label: "Norge",
     subtitle: "Intraplate, spredning og landheving",
+  },
+  {
+    match: /^hva er en tsunami/i,
+    label: "Tsunami",
+    subtitle: "Serie av bølger fra brå vannforskyvning",
+  },
+  {
+    match: /^hvordan settes vannet i bevegelse/i,
+    label: "Utløsere",
+    subtitle: "Skjelv, skred, vulkan og sjeldne nedslag",
+  },
+  {
+    match: /^fra dypt hav til grunn kyst/i,
+    label: "Fart",
+    subtitle: "Langbølger, grunning og bølgelengde",
+  },
+  {
+    match: /^når bølgen treffer land/i,
+    label: "Land",
+    subtitle: "Bølgehøyde, oppskylling og inntrenging",
+  },
+  {
+    match: /^norske tsunamier/i,
+    label: "Norge",
+    subtitle: "Tafjord og Loen",
+  },
+  {
+    match: /^storegga/i,
+    label: "Storegga",
+    subtitle: "Spor, kilde og modell",
+  },
+  {
+    match: /^to globale katastrofer/i,
+    label: "Verden",
+    subtitle: "Indiahavet 2004 og Tohoku 2011",
+  },
+  {
+    match: /^hvordan varsles en tsunami/i,
+    label: "Varsling",
+    subtitle: "Nærkilde, fjernkilde og naturlige tegn",
+  },
+  {
+    match: /^åknes/i,
+    label: "Åknes",
+    subtitle: "Overvåking og scenario, ikke prognose",
+  },
+  {
+    match: /^beskyttelse og elevundersøkelse/i,
+    label: "Vern",
+    subtitle: "Kart, ruter og det modellen ikke er",
+  },
+  {
+    match: /^fordypning/i,
+    label: "Fordypning",
+    subtitle: "Regneeksempel og modellgrenser",
   },
   {
     match: /^tsunami:/i,

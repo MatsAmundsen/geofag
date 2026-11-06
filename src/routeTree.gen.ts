@@ -30,6 +30,7 @@ import { Route as Geofag1NorgesGeologiRouteImport } from './routes/geofag-1/norg
 import { Route as Geofag1PlatetektonikkRouteImport } from './routes/geofag-1/platetektonikk'
 import { Route as Geofag1RessurserOgFeltRouteImport } from './routes/geofag-1/ressurser-og-felt'
 import { Route as Geofag1SkredRouteImport } from './routes/geofag-1/skred'
+import { Route as Geofag1TsunamiRouteImport } from './routes/geofag-1/tsunami'
 import { Route as Geofag1VannFlomOgSkredRouteImport } from './routes/geofag-1/vann-flom-og-skred'
 import { Route as Geofag1VannOgFlomRouteImport } from './routes/geofag-1/vann-og-flom'
 import { Route as Geofag1VulkanerRouteImport } from './routes/geofag-1/vulkaner'
@@ -175,6 +176,11 @@ const Geofag1RessurserOgFeltRoute = Geofag1RessurserOgFeltRouteImport.update({
 const Geofag1SkredRoute = Geofag1SkredRouteImport.update({
   id: '/geofag-1/skred',
   path: '/geofag-1/skred',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Geofag1TsunamiRoute = Geofag1TsunamiRouteImport.update({
+  id: '/geofag-1/tsunami',
+  path: '/geofag-1/tsunami',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Geofag1VannFlomOgSkredRoute = Geofag1VannFlomOgSkredRouteImport.update({
@@ -388,6 +394,7 @@ export interface FileRoutesByFullPath {
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
+  '/geofag-1/tsunami': typeof Geofag1TsunamiRoute
   '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
   '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
   '/geofag-1/vulkaner': typeof Geofag1VulkanerRoute
@@ -448,6 +455,7 @@ export interface FileRoutesByTo {
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
+  '/geofag-1/tsunami': typeof Geofag1TsunamiRoute
   '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
   '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
   '/geofag-1/vulkaner': typeof Geofag1VulkanerRoute
@@ -509,6 +517,7 @@ export interface FileRoutesById {
   '/geofag-1/platetektonikk': typeof Geofag1PlatetektonikkRoute
   '/geofag-1/ressurser-og-felt': typeof Geofag1RessurserOgFeltRoute
   '/geofag-1/skred': typeof Geofag1SkredRoute
+  '/geofag-1/tsunami': typeof Geofag1TsunamiRoute
   '/geofag-1/vann-flom-og-skred': typeof Geofag1VannFlomOgSkredRoute
   '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
   '/geofag-1/vulkaner': typeof Geofag1VulkanerRoute
@@ -571,6 +580,7 @@ export interface FileRouteTypes {
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
+    | '/geofag-1/tsunami'
     | '/geofag-1/vann-flom-og-skred'
     | '/geofag-1/vann-og-flom'
     | '/geofag-1/vulkaner'
@@ -631,6 +641,7 @@ export interface FileRouteTypes {
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
+    | '/geofag-1/tsunami'
     | '/geofag-1/vann-flom-og-skred'
     | '/geofag-1/vann-og-flom'
     | '/geofag-1/vulkaner'
@@ -691,6 +702,7 @@ export interface FileRouteTypes {
     | '/geofag-1/platetektonikk'
     | '/geofag-1/ressurser-og-felt'
     | '/geofag-1/skred'
+    | '/geofag-1/tsunami'
     | '/geofag-1/vann-flom-og-skred'
     | '/geofag-1/vann-og-flom'
     | '/geofag-1/vulkaner'
@@ -752,6 +764,7 @@ export interface RootRouteChildren {
   Geofag1PlatetektonikkRoute: typeof Geofag1PlatetektonikkRoute
   Geofag1RessurserOgFeltRoute: typeof Geofag1RessurserOgFeltRoute
   Geofag1SkredRoute: typeof Geofag1SkredRoute
+  Geofag1TsunamiRoute: typeof Geofag1TsunamiRoute
   Geofag1VannFlomOgSkredRoute: typeof Geofag1VannFlomOgSkredRoute
   Geofag1VannOgFlomRoute: typeof Geofag1VannOgFlomRoute
   Geofag1VulkanerRoute: typeof Geofag1VulkanerRoute
@@ -940,6 +953,13 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/skred'
       fullPath: '/geofag-1/skred'
       preLoaderRoute: typeof Geofag1SkredRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geofag-1/tsunami': {
+      id: '/geofag-1/tsunami'
+      path: '/geofag-1/tsunami'
+      fullPath: '/geofag-1/tsunami'
+      preLoaderRoute: typeof Geofag1TsunamiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/geofag-1/vann-flom-og-skred': {
@@ -1224,6 +1244,7 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag1PlatetektonikkRoute: Geofag1PlatetektonikkRoute,
   Geofag1RessurserOgFeltRoute: Geofag1RessurserOgFeltRoute,
   Geofag1SkredRoute: Geofag1SkredRoute,
+  Geofag1TsunamiRoute: Geofag1TsunamiRoute,
   Geofag1VannFlomOgSkredRoute: Geofag1VannFlomOgSkredRoute,
   Geofag1VannOgFlomRoute: Geofag1VannOgFlomRoute,
   Geofag1VulkanerRoute: Geofag1VulkanerRoute,

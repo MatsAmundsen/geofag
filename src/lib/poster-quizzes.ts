@@ -1550,6 +1550,50 @@ export const QUIZ_JORDSKJELV: QuizQuestion[] = [
     explain:
       "Magnituden beskriver energien i selve skjelvet, mens intensiteten beskriver virkningen på hvert sted og varierer derfor.",
   },
+  {
+    prompt: "Hvorfor kan et skjelv som Oslofjordskjelvet i 1904 gjøre mer skade i dag?",
+    options: [
+      "Fordi fjellet er blitt sprøere siden 1904.",
+      "Fordi bebyggelsen er tettere og høyere, så flere er eksponert.",
+      "Fordi Norge har flyttet seg inn på en subduksjonssone.",
+    ],
+    answer: 1,
+    explain:
+      "Faren er omtrent den samme som i 1904. Eksponeringen er høyere. Sårbarheten er ikke automatisk høyere i hele byen.",
+  },
+  {
+    prompt: "Hva tar oftest liv når det skjer et kraftig jordskjelv?",
+    options: [
+      "Selve rystelsene i bakken.",
+      "Bygninger som raser sammen, og følger som skred, brann og tsunami.",
+      "Sprekker som åpner seg i bakken.",
+    ],
+    answer: 1,
+    explain:
+      "Det er sjelden selve rystelsene som dreper. Bygninger som kollapser, og følgehendelser, tar flest liv.",
+  },
+  {
+    prompt: "Et område har et gjentaksintervall på 100 år for et kraftig skjelv. Hva betyr det?",
+    options: [
+      "At skjelvet kommer nøyaktig hvert hundrede år.",
+      "At det i gjennomsnitt går 100 år mellom hvert skjelv, men at de kan komme ujevnt.",
+      "At det ikke kan komme et nytt skjelv før om 100 år.",
+    ],
+    answer: 1,
+    explain:
+      "Gjentaksintervallet er et gjennomsnitt. Med en Poisson-antakelse er sannsynligheten for minst ett skjelv på 100 år ca. 63 prosent. Etterskjelv er ikke uavhengige hendelser.",
+  },
+  {
+    prompt: "Hvilket tiltak senker risikoen selv om faren er den samme?",
+    options: [
+      "Å bygge sterkere og la være å bygge sykehus på dårlig grunn.",
+      "Å flytte forkastningen.",
+      "Å slutte å registrere jordskjelv.",
+    ],
+    answer: 0,
+    explain:
+      "Vi kan ikke endre faren, men vi kan redusere sårbarheten og eksponeringen. En poengmodell gir en relativ indeks, ikke en målt sannsynlighet.",
+  },
 ];
 
 export const QUIZ_SJEKK_JORDSKJELV_1: QuizQuestion[] = [
@@ -1832,6 +1876,165 @@ export const QUIZ_SKJELVFARE: QuizQuestion[] = [
     answer: 0,
     explain:
       "Vi kan ikke endre faren, men vi kan redusere sårbarheten og eksponeringen.",
+  },
+];
+
+export const QUIZ_SJEKK_JORDSKJELV_SKADE: QuizQuestion[] = QUIZ_SJEKK_SKJELVFARE_2;
+
+export const QUIZ_SJEKK_JORDSKJELV_VARSLING: QuizQuestion[] = [
+  QUIZ_SJEKK_SKJELVFARE_3[0]!,
+];
+
+export const QUIZ_SJEKK_TSUNAMI_1: QuizQuestion[] = QUIZ_SJEKK_SKJELVFARE_1;
+
+export const QUIZ_SJEKK_TSUNAMI_2: QuizQuestion[] = [
+  {
+    prompt: "Hva avgjør farten til en lang tsunami på dypt hav, i formelen v = √(g · d)?",
+    options: [
+      "Magnituden til skjelvet, uavhengig av dyp.",
+      "Vanndypet. Jo dypere vann, desto høyere fart.",
+      "Hvor høy bølgen er ute på havet.",
+    ],
+    answer: 1,
+    explain:
+      "NOAA oppgir at farten er kvadratroten av g ganger dyp. Formelen gjelder lange bølger, ikke selve skrednedslaget.",
+  },
+  {
+    prompt: "Hva skjer vanligvis når tsunamien kommer inn på grunnere vann?",
+    options: [
+      "Farten øker, og bølgelengden blir lengre.",
+      "Farten synker, bølgelengden blir kortere, og bølgen blir vanligvis høyere.",
+      "Bølgen stopper, fordi energien forsvinner.",
+    ],
+    answer: 1,
+    explain:
+      "Energien samles på en kortere strekning. Det er grunning, ikke at energien blir borte.",
+  },
+];
+
+export const QUIZ_SJEKK_TSUNAMI_3: QuizQuestion[] = [
+  {
+    prompt: "Hva er oppskylling?",
+    options: [
+      "Bølgehøyden fra dal til topp ute på dypt hav.",
+      "Hvor høyt over havnivået vannet når opp på land på ett sted.",
+      "Hvor mange bølger som kommer etter hverandre.",
+    ],
+    answer: 1,
+    explain:
+      "Oppskylling, vanndyp på land og inntrenging er andre mål enn bølgehøyden ute i vannet.",
+  },
+  {
+    prompt: "Tafjord 1934: hva betyr 61 høydemeter?",
+    options: [
+      "Bølgehøyden i hele Tafjord-bygda.",
+      "Den høyeste oppgitte oppskyllingen ett sted. I bygda var den 17 høydemeter.",
+      "Hvor dypt fjorden er utenfor Tafjord.",
+    ],
+    answer: 1,
+    explain:
+      "NVE oppgir også 300 m inntrenging i bygda. Ett maksimum er ikke høyden langs hele fjorden.",
+  },
+];
+
+export const QUIZ_SJEKK_TSUNAMI_4: QuizQuestion[] = [
+  {
+    prompt: "Hva var Storeggaskredet?",
+    options: [
+      "En plategrense som røk utenfor Norge.",
+      "Et undersjøisk skred i sedimenter. At et jordskjelv utløste det, er en hypotese.",
+      "En stormflo i Nordsjøen i 1934.",
+    ],
+    answer: 1,
+    explain:
+      "Spor, rekonstruksjon av kilden og en modellert bølge er tre ulike ting. Høydene er målt mot datidens havnivå.",
+  },
+];
+
+export const QUIZ_SJEKK_TSUNAMI_5: QuizQuestion[] = [
+  {
+    prompt: "Hvorfor kan et tsunamivarsel komme for sent nær kilden, selv om en fjern tsunami ofte kan varsles?",
+    options: [
+      "Fordi en lokal tsunami kan nå land på minutter, før et offisielt varsel er ute.",
+      "Fordi tsunamier bare kan varsles om dagen.",
+      "Fordi en fjern tsunami alltid er større enn en lokal.",
+    ],
+    answer: 0,
+    explain:
+      "Varsling er ofte bedre når bølgen har timer over havet. Nær kilden er tiden kort, og et skred kan komme uten et tydelig skjelv. Kjenner du et kraftig skjelv ved kysten, skal du ikke vente på varselet.",
+  },
+];
+
+export const QUIZ_SJEKK_TSUNAMI_6: QuizQuestion[] = [
+  {
+    prompt: "Hva er et scenario, slik ordet brukes om Åknes?",
+    options: [
+      "En prognose om at skredet kommer på en bestemt dato.",
+      "En mulig hendelse vi undersøker. Det er ikke det samme som en prognose.",
+      "Et farekart som garanterer at ruten til høyden er trygg.",
+    ],
+    answer: 1,
+    explain:
+      "Overvåking og evakuering reduserer særlig sårbarhet. De flytter ikke fjellet. En elevmodell er ikke et beredskapsverktøy.",
+  },
+  {
+    prompt: "Hvilket ledd i risikoen treffer du hvis en skole flyttes ut av en faresone?",
+    options: [
+      "Faren, fordi fjellet slutter å bevege seg.",
+      "Eksponeringen, fordi færre oppholder seg i sonen.",
+      "Perioden til tsunamien.",
+    ],
+    answer: 1,
+    explain:
+      "Fare, eksponering og sårbarhet er tre ulike ledd. Flytting endrer hvem som er i sonen.",
+  },
+];
+
+export const QUIZ_TSUNAMI: QuizQuestion[] = [
+  QUIZ_SKJELVFARE[0]!,
+  {
+    prompt: "En lang tsunami går fra dypt hav inn mot grunt vann. Hva er riktig om farten?",
+    options: [
+      "Farten følger v = √(g · d) og synker når dypet synker.",
+      "Farten er den samme overalt og settes av magnituden.",
+      "Farten øker inn mot land, fordi bølgen blir høyere.",
+    ],
+    answer: 0,
+    explain:
+      "Høyden kan øke samtidig som farten synker. Formelen gjelder lange bølger, ikke skrednedslaget.",
+  },
+  {
+    prompt: "Hva skiller de historiske flodbølgene i Tafjord og Loen fra en tsunami som har krysset et verdenshav?",
+    options: [
+      "De kom fra fjellskred i fjord eller innsjø, ikke fra en plategrense utenfor norskekysten.",
+      "De var tidevann.",
+      "De hadde samme bølgehøyde i hele vannet som den høyeste oppskyllingen.",
+    ],
+    answer: 0,
+    explain:
+      "Oppskylling ett sted er ikke bølgehøyden i hele fjorden eller innsjøen.",
+  },
+  {
+    prompt: "Du kjenner et kraftig skjelv mens du står ved en utsatt kyst. Hva bør du gjøre?",
+    options: [
+      "Vente til havet trekker seg tilbake, så du er sikker på at en tsunami kommer.",
+      "Gå til høyden med en gang. Ikke vent på tilbaketrekking eller på et offisielt varsel.",
+      "Bli ved vannet, fordi den første bølgen alltid er den største.",
+    ],
+    answer: 1,
+    explain:
+      "Tilbaketrekking kommer ikke alltid først, og nær kilden kan varselet komme for sent.",
+  },
+  {
+    prompt: "Hva er en elevmodell i dette kapitlet ikke?",
+    options: [
+      "Et verktøy for å se at fart avhenger av dyp, og at tiltak treffer ulike ledd i risikoen.",
+      "Et beredskapsverktøy eller et offisielt farekart.",
+      "Noe som bør sammenlignes med myndighetenes kart, med det modellen utelater skrevet ned.",
+    ],
+    answer: 1,
+    explain:
+      "Modellen kan øve forståelse. Evakuering og faresoner hører til de offisielle kartene.",
   },
 ];
 

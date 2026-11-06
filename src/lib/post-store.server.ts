@@ -1628,6 +1628,20 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "paleoklima",
     stale: ["kalkskall, pollen eller årringer, som henger sammen"],
   },
+  {
+    // Jordskjelv får skade, varsling og risiko fra naturfarekapitlet. Ny tekst skal vises selv om CMS har den gamle seeden.
+    flag: "g1-jordskjelv-naturfare-inn-2026-11-06",
+    slug: "jordskjelv",
+    stale: [
+      "Les videre i kapitlet [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare), om tsunamier, skader, varsling og risiko.",
+    ],
+  },
+  {
+    // Naturfarekapitlet er skrevet om til Tsunami. Samme CMS-nøkkel, ny tekst.
+    flag: "g1-tsunami-kapittel-2026-11-06b",
+    slug: "jordskjelv-naturfare",
+    stale: ["Hvilke skader gjør jordskjelv?"],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 

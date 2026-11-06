@@ -358,7 +358,10 @@ describe("jordskjelv poster", () => {
     assert.equal(md.replace(/!\[[^\]]*\]\([^)]*\)/g, "").includes("!"), false);
     assert.equal(md.includes("Her kan du redigere"), false);
     assert.equal(md.includes("Greens"), false);
-    assert.equal(md.includes("Eurokode"), false);
+    assert.equal(md.includes("Eurokode"), true);
+    assert.equal(md.includes("SjekkJordskjelvSkade"), true);
+    assert.equal(md.includes("YtMaria06"), true);
+    assert.equal(md.includes("YtMaria07"), false);
     assert.equal(md.includes("## Viktige begreper"), true);
     assert.equal(md.includes("## Test deg selv"), true);
   });
@@ -371,8 +374,17 @@ describe("jordskjelv-naturfare poster", () => {
       "utf8",
     );
     const ids = listedWidgetIds(injectPosterWidgets(md));
-    for (const id of ["SjekkSkjelvfare1", "SjekkSkjelvfare2", "SjekkSkjelvfare3", "QuizSkjelvfare"]) {
+    for (const id of [
+      "SjekkTsunami1",
+      "SjekkTsunami2",
+      "SjekkTsunami5",
+      "QuizTsunami",
+      "YtMaria07",
+    ]) {
       assert.equal(ids.has(id), true, `jordskjelv-naturfare missing ${id}`);
+    }
+    for (const id of ["SjekkSkjelvfare1", "SjekkSkjelvfare2", "SjekkSkjelvfare3", "QuizSkjelvfare", "YtMaria06"]) {
+      assert.equal(ids.has(id), false, `jordskjelv-naturfare still has ${id}`);
     }
     assert.equal(ids.has("QuizJordskjelv"), false);
     assert.equal(md.includes("FIGUR"), false);

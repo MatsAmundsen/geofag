@@ -605,8 +605,6 @@ export const KILDER = {
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
     },
-  ],
-  "jordskjelv-naturfare": [
     {
       prefix: "Baker, J. W. (2008). ",
       italic: "An introduction to probabilistic seismic hazard analysis (PSHA)",
@@ -638,36 +636,6 @@ export const KILDER = {
       href: "https://www.geonet.org.nz/earthquake/technical/3468575",
     },
     {
-      prefix: "NOAA. (u.å.). ",
-      italic: "U.S. Tsunami Warning System",
-      suffix: ".",
-      href: "https://www.tsunami.gov/",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-a). ",
-      italic: "Jordskjelv",
-      suffix: ".",
-      href: "https://www.ngu.no/geologi-og-risiko/jordskjelv",
-    },
-    {
-      prefix: "Norges geologiske undersøkelse [NGU]. (u.å.-b). ",
-      italic: "Tafjordskredet i 1934 – 40 mennesker døde",
-      suffix: ".",
-      href: "https://www.ngu.no/geologi-og-risiko/tafjordskredet-i-1934-40-mennesker-dode",
-    },
-    {
-      prefix: "NORSAR. (u.å.-a). ",
-      italic: "Jordskjelvet i Oslo i 1904",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/jordskjelvet-i-oslo-i-1904/",
-    },
-    {
-      prefix: "NORSAR. (u.å.-b). ",
-      italic: "Jordskjelv i Norge",
-      suffix: ".",
-      href: "https://www.jordskjelv.no/om-jordskjelv/jordskjelv-i-norge/",
-    },
-    {
       prefix: "Standard Norge. (2004). ",
       italic: "NS 3491-12:2004 Prosjektering av konstruksjoner – Dimensjonerende laster – Del 12: Laster fra seismiske påvirkninger",
       suffix: " (publisert 7. desember 2004, trukket tilbake 1. april 2010).",
@@ -680,31 +648,19 @@ export const KILDER = {
       href: "https://online.standard.no/nb/ns-en-1998-1-2004na-2008-2",
     },
     {
-      prefix: "Store norske leksikon [SNL]. (u.å.). ",
-      italic: "Storeggaskredet",
-      suffix: ".",
-      href: "https://snl.no/Storeggaskredet",
-    },
-    {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-a). ",
-      italic: "ShakeAlert earthquake early warning",
-      suffix: ".",
-      href: "https://www.usgs.gov/programs/earthquake-hazards/science/early-warning",
-    },
-    {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-b). ",
-      italic: "Earthquake catalog",
-      suffix: " (hendelsessider).",
-      href: "https://earthquake.usgs.gov/earthquakes/search/",
-    },
-    {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-c). ",
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-f). ",
       italic: "Cool earthquake facts",
       suffix: ".",
       href: "https://www.usgs.gov/programs/earthquake-hazards/cool-earthquake-facts",
     },
     {
-      prefix: "U.S. Geological Survey [USGS]. (u.å.-d). ",
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-g). ",
+      italic: "ShakeAlert earthquake early warning",
+      suffix: ".",
+      href: "https://www.usgs.gov/programs/earthquake-hazards/science/early-warning",
+    },
+    {
+      prefix: "U.S. Geological Survey [USGS]. (u.å.-h). ",
       italic: "Earthquake prediction",
       suffix: " (Haicheng 1975 og Tangshan 1976).",
       href: "https://earthquake.usgs.gov/learn/parkfield/eq_predict.php",
@@ -714,6 +670,85 @@ export const KILDER = {
       italic: "Earthquake hazards 101 – the basics",
       suffix: ".",
       href: "https://www.usgs.gov/programs/earthquake-hazards/science/earthquake-hazards-101-basics",
+    },
+    {
+      prefix: "Wang, K., Chen, Q.-F., Sun, S., & Wang, A. (2006). Predicting the 1975 Haicheng earthquake. ",
+      italic: "Bulletin of the Seismological Society of America, 96",
+      suffix: "(3), 757–795.",
+    },
+  ],
+  "jordskjelv-naturfare": [
+    {
+      prefix: "Harbitz, C. B., Glimsdal, S., Løvholt, F., Kveldsvik, V., Pedersen, G. K., & Jensen, A. (2014). Rockslide tsunamis in complex fjords: From an unstable rock slope to tsunami modelling. ",
+      italic: "Coastal Engineering, 88",
+      suffix: ", 101–122.",
+      href: "https://doi.org/10.1016/j.coastaleng.2014.02.003",
+    },
+    {
+      prefix: "Norges geotekniske institutt [NGI]. (u.å.). ",
+      italic: "Numerical models",
+      suffix: " (ICG, tsunami modeling and prediction).",
+      href: "https://www.ngi.no/en/projects/icg---international-center-for-geohazards/sp-9---tsunami-modeling-and-prediction/numerical-models/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2024). ",
+      italic: "Historiske fjellskred i Norge",
+      suffix: ". I Veileder for utredning av fjellskred.",
+      href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2026). ",
+      italic: "Fjellskred fra Åknes. Reviderte scenarioer, sannsynligheter og konsekvenser",
+      suffix: " (NVE-rapport 16/2026).",
+      href: "https://publikasjoner.nve.no/rapport/2026/rapport2026_16.pdf",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
+      italic: "Åknes",
+      suffix: " (kontinuerlig overvåkede fjellpartier).",
+      href: "https://www.nve.no/naturfare/overvaking-og-varsling/fjellskredovervaaking/kontinuerlig-overvaakede-fjellpartier/aaknes/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Drenering kan redusere risiko for stort fjellskred i Stranda kommune",
+      suffix: ".",
+      href: "https://www.nve.no/nytt-fra-nve/nyheter-skred-og-vassdrag/drenering-kan-redusere-risiko-for-stort-fjellskred-i-stranda-kommune/",
+    },
+    {
+      prefix: "NOAA. (u.å.-a). ",
+      italic: "The science behind tsunamis",
+      suffix: ".",
+      href: "https://www.noaa.gov/explainers/science-behind-tsunamis",
+    },
+    {
+      prefix: "NOAA. (u.å.-b). ",
+      italic: "Tsunami propagation",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/tsunamis/tsunami-propagation",
+    },
+    {
+      prefix: "NOAA. (u.å.-c). ",
+      italic: "Tsunami inundation",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/tsunamis/tsunami-inundation",
+    },
+    {
+      prefix: "NOAA. (u.å.-d). ",
+      italic: "Historical context",
+      suffix: " (Indiahavet 2004 og Japan 2011).",
+      href: "https://www.noaa.gov/jetstream/tsunamis/historical-context",
+    },
+    {
+      prefix: "NOAA. (u.å.-e). ",
+      italic: "Detection, warning, and forecasting",
+      suffix: ".",
+      href: "https://www.noaa.gov/jetstream/tsunamis/detection-warning-and-forecasting",
+    },
+    {
+      prefix: "Store norske leksikon [SNL]. (u.å.). ",
+      italic: "Storeggaskredet",
+      suffix: ".",
+      href: "https://snl.no/Storeggaskredet",
     },
     {
       prefix: "Utdanningsdirektoratet [Udir]. (u.å.-a). ",
@@ -726,11 +761,6 @@ export const KILDER = {
       italic: "Kompetansemål etter geofag 1",
       suffix: ".",
       href: "https://www.udir.no/lk20/gfg01-03/kompetansemaal-og-vurdering/kv972",
-    },
-    {
-      prefix: "Wang, K., Chen, Q.-F., Sun, S., & Wang, A. (2006). Predicting the 1975 Haicheng earthquake. ",
-      italic: "Bulletin of the Seismological Society of America, 96",
-      suffix: "(3), 757–795.",
     },
   ],
   bergarter: [
