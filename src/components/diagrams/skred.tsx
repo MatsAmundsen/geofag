@@ -94,12 +94,12 @@ export function SkredKrefterDiagram() {
   );
 }
 
-export function SkredSonerDiagram() {
+export function SkredSonerDiagram({ caption }: { caption?: string } = {}) {
   return (
     <Diagram
       title="Løsneområde, transportsone og utløpsområde i en skråning med hus i utløpet"
       heading="Der skredet løsner, går og stopper"
-      caption="Et skred løsner høyt i skråningen, går nedover og stopper i et utløpsområde der terrenget blir slakere. Aktsomhetskartene bygger på regler for hvor skred kan løsne og hvor de kan havne. Hvor langt et skred kan gå, beregnes med utløpsmodeller (NVE, 2020b; NVE, 2023b)."
+      caption={caption ?? "Et skred løsner høyt i skråningen, går nedover og stopper i et utløpsområde der terrenget blir slakere. Aktsomhetskartene bygger på regler for hvor skred kan løsne og hvor de kan havne. Hvor langt et skred kan gå, beregnes med utløpsmodeller (NVE, 2020b; NVE, 2023b)."}
       viewBox="0 0 840 400"
     >
       {(m) => (
@@ -300,12 +300,12 @@ export function SkredTyperDiagram() {
   );
 }
 
-export function KvikkleireDiagram() {
+export function KvikkleireDiagram({ caption }: { caption?: string } = {}) {
   return (
     <Diagram
       title="Retrogressivt kvikkleireskred i fire steg, fra erosjon i bekken til stor skredgrop"
       heading="Hvorfor kvikkleireskred spiser seg bakover"
-      caption="Steg 1: bekken graver i foten av skråningen, år etter år. Foten er det som holder massen over oppe. Steg 2: skråningen svikter, leira omrøres og flyter unna som en væske. Steg 3: da mister kanten bak sin støtte, og den svikter også. Steg 4: prosessen gjentar seg bakover, bort fra bekken og inn i flatt terreng. Det kalles retrogressivt, og det er derfor et kvikkleireskred kan ende langt fra der det startet — og hvorfor flatt land ikke er noen garanti."
+      caption={caption ?? "Steg 1: bekken graver i foten av skråningen, år etter år. Foten er det som holder massen over oppe. Steg 2: skråningen svikter, leira omrøres og flyter unna som en væske. Steg 3: da mister kanten bak sin støtte, og den svikter også. Steg 4: prosessen gjentar seg bakover, bort fra bekken og inn i flatt terreng. Det kalles retrogressivt, og det er derfor et kvikkleireskred kan ende langt fra der det startet — og hvorfor flatt land ikke er noen garanti."}
       viewBox="0 0 840 540"
     >
       {(m) => (
@@ -401,12 +401,12 @@ export function KvikkleireDiagram() {
   );
 }
 
-export function FjellskredBolgeDiagram() {
+export function FjellskredBolgeDiagram({ caption }: { caption?: string } = {}) {
   return (
     <Diagram
       title="Fjellskred i fjord som lager flodbølge med stor oppskyllingshøyde på motsatt side"
       heading="Fjellskred i fjord blir flodbølge"
-      caption="Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde. Når bølgen når land, kan den skylle høyere opp enn bølgen var ute på fjorden. I Tafjord i 1934 nådde oppskyllingen ca. 60 m over havet (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."
+      caption={caption ?? "Et stort fjellparti treffer vannet og skyver det unna. Bølgen krysser fjorden, og på motsatt side skyller den oppover terrenget. Høyden den rekker, kalles oppskyllingshøyde. Når bølgen når land, kan den skylle høyere opp enn bølgen var ute på fjorden. I Tafjord i 1934 nådde oppskyllingen ca. 60 m over havet (NVE, u.å.-a). Det er derfor et ustabilt fjell er en fare også for bygder som ligger på den andre siden av fjorden."}
       viewBox="0 0 840 400"
     >
       {(m) => (

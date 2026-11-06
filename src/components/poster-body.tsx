@@ -1,3 +1,6 @@
+import { HydrographCatchmentModel } from "@/components/models/hydrograph-catchment-model";
+import { GeografiGjerdrumFarekart } from "@/components/geografi/naturfare-valg";
+import { GeografiKvikkleireSteg } from "@/components/geografi/naturfare-valg";
 import { GeografiFeltlogg } from "@/components/geografi/feltlogg-vg1";
 import { GeografiTopokart } from "@/components/geografi/projeksjon-figurer";
 import { GeografiGallPeters } from "@/components/geografi/projeksjon-figurer";
@@ -165,6 +168,7 @@ import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melt
 import { Callout } from "@/components/callout";
 import {
   FjellskredBolgeDiagram,
+  KvikkleireDiagram,
   SkredSonerDiagram,
 } from "@/components/diagrams/skred";
 import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
@@ -186,7 +190,7 @@ import { GlacierMassBalanceDiagram, PermafrostDiagram, SeaIceAlbedoFeedbackDiagr
 import { AtmosfaeriskElvFigur, BeaufortTrappFigur, BombesyklonFigur, HansVarselFigur, SupercelleFigur } from "@/components/diagrams/vaerkatastrofer-figurer-2";
 import { KaldfrontFigur, VarmfrontFigur } from "@/components/diagrams/fronter-steg-figurer";
 import { TreCellerFigur } from "@/components/diagrams/tre-celler-figur";
-import { KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
+import { GeografiOrkanSnittFigur, GeografiStormfloFigur, KlimaFordelingFigur, OrkanSnittFigur, PolartLavtrykkFigur, StormfloFigur, TornadoFigur } from "@/components/diagrams/vaerkatastrofer-figurer";
 import { FieldworkInquiryChainDiagram, MeteorologicalStationDiagram, RadiosondeAscentDiagram } from "@/components/diagrams/inquiry-frameworks";
 import { DataAssimilationCycleDiagram, LorenzChaosEnsembleDiagram, ModelGrid3DDiagram, ModelHierarchyNorwayDiagram, PrimitiveEquationsDiagram, SubgridParametrizationDiagram } from "@/components/diagrams/models";
 import { AmocDiagram, ClimateContrastDiagram } from "@/components/diagrams/ocean";
@@ -332,6 +336,8 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
+  GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
   GeoFeltloggVg1: () => <GeografiFeltlogg />,
   GeoVerktoyTopokart: () => <GeografiTopokart />,
   GeoVerktoyGallPeters: () => <GeografiGallPeters />,
@@ -1467,6 +1473,13 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoNaturfareSkredSoner: () => <SkredSonerDiagram caption="Figur 6.3: Materialet løsner, beveger seg og avsettes i et utløpsområde. Også steder nedenfor løsneområdet kan bli rammet. Skissen viser et forenklet skred i bratt terreng, ikke en farevurdering av en bestemt skråning (NVE, 2024b)." />,
+  GeoNaturfareKvikkleire: () => <KvikkleireDiagram caption="Figur 6.4: En bekk kan fjerne støtte i skråningsfoten. Når leire glir ut, kan bakkanten miste støtte. Nye utglidninger kan dermed spre skredet bakover. Dette er en forenklet prosesskisse, ikke et kart over Gjerdrum (Gjerdrumutvalget, 2021, s. 8–11; NVE, 2026)." />,
+  GeoNaturfareFjellskred: () => <FjellskredBolgeDiagram caption="Figur 6.5: Fjellmasser kan sette vann i bevegelse og lage flodbølger. Oppskyllingshøyde er hvor høyt vannet når opp på land. Rundt 60 meter i skissen viser til største oppskylling ved Tafjord-hendelsen i 1934, ikke høyden i alle bygdene eller en framtidig prognose (NVE, u.å.-a)." />,
+  GeoNaturfareHydrogram: () => <HydrographCatchmentModel geografi />,
+  GeoNaturfareOrkan: () => <GeografiOrkanSnittFigur />,
+  GeoNaturfareStormflo: () => <GeografiStormfloFigur />,
+  GeoNaturfareVulkan: () => <VolcanicHazardsDiagram geografi />,
   SkredSoner: () => <SkredSonerDiagram />,
   FjellskredBolge: () => <FjellskredBolgeDiagram />,
   FieldworkIllustration: () => <FeltmetodeFigur />,

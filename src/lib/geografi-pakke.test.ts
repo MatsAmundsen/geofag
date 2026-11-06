@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import ReactMarkdown from "react-markdown";
+import { parsePosterMarkdown } from "./poster-markdown.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
@@ -73,7 +74,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -161,7 +162,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 2);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 3);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -262,5 +263,65 @@ describe("Geografi kapittel 2: feltarbeid (PR C)", () => {
     assert.match(read("geografi-kapitler.ts"), /path: "feltarbeid",\s+tekstKlar: true/);
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /Kildeliste kilder=\{kilder\}/);
+  });
+});
+
+
+describe("Geografi kapittel 6: naturfare (PR D)", () => {
+  const md = read("posts/geo-naturfare.md");
+  const sources = read("kilder-geografi.ts").split('"geo-naturfare": [')[1].split("] as const")[0];
+
+  it("dekker åtte underkapitler og hele kapittelmalen", () => {
+    for (const title of ["Risiko og sårbarhet", "Skred i Norge", "Flom og overvann", "Stormer, orkaner og tornadoer", "Tørke og skogbrann", "Miljøkatastrofer", "Forebygging og varsling", "Undersøk en katastrofe", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    for (const km of ["KM483", "KM482", "KM487"]) assert.ok(md.includes(km));
+    assert.match(md, /I dette kapitlet skal vi/);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler/);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## En bekk"));
+    assert.ok(md.indexOf("## En bekk") < md.indexOf("## Læringsmål"));
+  });
+
+  it("bevarer ti figurplasser: åtte figurer og to skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-6-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])), [1, 2]);
+    const parts = parsePosterMarkdown(md);
+    const names = parts.filter((part) => part.type === "widget").map((part) => part.id);
+    assert.equal(names.length, 8);
+    assert.equal(new Set(names).size, 8);
+    const registry = read("../components/poster-body.tsx");
+    for (const name of names) assert.ok(registry.includes(`${name}:`), name);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap6-redaksjon|figur-6-/);
+    assert.match(html, /En aktuell farekjede i Nepal i 2026/);
+  });
+
+  it("har 31 verifiserte kilder, ingen bibliotekskilder og eksplisitt usikkerhet", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 34);
+    assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
+    for (const domain of ["undrr.org", "nve.no", "varsom.no", "usgs.gov", "regjeringen.no", "wmo.int", "unep.org", "ipcc.ch", "met.no", "snl.no", "udir.no", "dsb.no", "metoffice.gov.uk", "bjerknes.uib.no"])
+      assert.ok(sources.includes(domain), domain);
+    assert.match(md, /ikke en formel/);
+    assert.match(md, /foreløpige opplysninger/);
+    assert.match(md, /ikke et løfte/);
+    assert.match(md, /ikke en påstand om endelig skadeomfang/);
+    assert.match(md, /ikke grav etter kvikkleire/i);
+  });
+
+  it("begrenser modellene til Vg1 uten å koble inn udokumenterte returperioder", () => {
+    const registry = read("../components/poster-body.tsx");
+    assert.match(registry, /GeoNaturfareHydrogram:.*HydrographCatchmentModel geografi/);
+    assert.doesNotMatch(md, /HydrographCatchmentModel/);
+    assert.match(md, /beregner verken flomstørrelse/);
+    const weather = read("../components/diagrams/vaerkatastrofer-figurer.tsx");
+    assert.match(weather, /export const OrkanSnittFigur = lagFigur\(orkanSnitt\)/);
+    assert.match(weather, /export const StormfloFigur = lagFigur\(stormflo\)/);
+    assert.match(weather, /export const GeografiOrkanSnittFigur/);
+    assert.match(weather, /export const GeografiStormfloFigur/);
+    assert.match(weather, /bryter: undefined/);
+    assert.match(read("../components/diagrams/volcanoes.tsx"), /geografi \? GEOGRAFI_HAZARDS : HAZARDS/);
+  });
+
+  it("registrerer engangsreseed og tekstklar side", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-naturfare-kap6-2026-11-06"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "naturfare",\s+tekstKlar: true/);
   });
 });
