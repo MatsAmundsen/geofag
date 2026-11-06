@@ -1,0 +1,22 @@
+import { KRAFTPRODUKSJON, SYSS_REGION } from "@/lib/geografi-kap7-data";
+const tall = (n: number) => n.toLocaleString("nb-NO");
+const kilder = [{id:"VannKraft",navn:"Vannkraft",farge:"#0369a1"},{id:"VindKraft",navn:"Vindkraft",farge:"#a16207"},{id:"Solkraft",navn:"Solkraft",farge:"#be123c"},{id:"VarmeKraft",navn:"Varmekraft",farge:"#6d28d9"}] as const;
+export function GeografiKraftproduksjon(){
+ return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 7.5. Faktisk kraftproduksjon i Norge, 2020–2025</h3>
+ <p>Årlig elektrisitetsproduksjon i GWh. Dette er ikke samlet energibruk, installert effekt eller et normalår.</p>
+ <svg viewBox="0 0 760 460" role="img" aria-label="Seks årlige søyler fordelt på vann-, vind-, sol- og varmekraft. Alle verdier følger i tabellen." className="w-full text-foreground">
+ {[0,40000,80000,120000,160000].map(v=><g key={v}><line x1="75" x2="735" y1={375-v/500} y2={375-v/500} stroke="currentColor" opacity=".2"/><text x="65" y={380-v/500} fill="currentColor" textAnchor="end" fontSize="15">{tall(v)}</text></g>)}
+ {KRAFTPRODUKSJON.map((d,i)=>{let sum=0;return <g key={d.ar}>{kilder.map(k=>{const v=d[k.id],y=375-(sum+v)/500;sum+=v;return <rect key={k.id} x={95+i*104} y={y} width="60" height={v/500} fill={k.farge}><title>{d.ar}, {k.navn}: {tall(v)} GWh</title></rect>;})}<text x={125+i*104} y="401" textAnchor="middle" fontSize="16" fill="currentColor">{d.ar}</text></g>;})}
+ <text x="75" y="25" fill="currentColor" fontSize="17">GWh per år</text></svg>
+ <ul className="flex flex-wrap gap-4">{kilder.map(k=><li key={k.id}><span aria-hidden="true" className="mr-2 inline-block h-3 w-3" style={{backgroundColor:k.farge}}/>{k.navn}</li>)}</ul>
+ <div className="overflow-x-auto"><table className="w-full text-sm"><caption className="text-left">Publiserte tall i GWh. Avrunding kan gi små avvik mellom sum og total.</caption><thead><tr><th scope="col">År</th>{kilder.map(k=><th scope="col" key={k.id}>{k.navn}</th>)}<th scope="col">Total</th></tr></thead><tbody>{KRAFTPRODUKSJON.map(d=><tr key={d.ar}><th scope="row">{d.ar}</th>{kilder.map(k=><td key={k.id} className="text-center">{tall(d[k.id])}</td>)}<td className="text-center">{tall(d.ProdTotal)}</td></tr>)}</tbody></table></div>
+ <figcaption className="text-sm">SSB (2026a), tabell 08307, CC BY 4.0. Eget utvalg og diagram. Hele landet og samme kategorier hvert år. Serien alene forklarer ikke årsakene til endringene. <a className="underline" href="/downloads/geografi-kraftproduksjon-2020-2025.csv">Last ned tallene (CSV)</a>.</figcaption></figure>;
+}
+const naringer = [{id:"03",navn:"Fiske, fangst og akvakultur"},{id:"06",navn:"Utvinning av råolje og naturgass"},{id:"09.1",navn:"Tjenester til olje- og gassutvinning"}];
+const syss=(r:string,n:string)=>{const d=SYSS_REGION.find(x=>x.region===r&&x.naring===n);return d?tall(d.personer):"Mangler";};
+export function GeografiSysselNord(){
+ return <figure className="my-6 space-y-3 rounded-xl border p-4"><h3 className="font-semibold">Figur 7.9. Registrert sysselsetting i Nordland og Troms</h3><p>Sysselsatte personer etter arbeidssted, 4. kvartal 2025. To fylker og tre avgrensede næringer sammenliknes på samme grunnlag.</p>
+ <div className="overflow-x-auto"><table className="w-full text-sm"><caption className="text-left">Personer, SSBs næringskoder SN2007</caption><thead><tr><th scope="col" className="text-left">Næring</th><th scope="col">Nordland</th><th scope="col">Troms</th></tr></thead><tbody>{naringer.map(n=><tr key={n.id}><th scope="row" className="text-left">{n.id}: {n.navn}</th>{["18","55"].map(r=><td key={r} className="text-center">{syss(r,n.id)}</td>)}</tr>)}</tbody></table></div>
+ <p>Dette er ikke LoVeSe alene, framtidige petroleumsarbeidsplasser eller verdiskaping. Fiskeforedling (10.2), ringvirkninger og andre næringer er ikke med. Arbeidssted er ikke det samme som bosted.</p><p>SSB erstatter alle ett- og to-tall med 0 eller 3 av personvernhensyn. Summer kan avvike fra andre publiserte totaler. Tallene må ikke brukes som en presis telling av hvert anlegg.</p>
+ <p className="font-medium">Undersøk: Hvordan kan regionvalg og næringsavgrensning påvirke argumentene i en arealdebatt?</p><figcaption className="text-sm">SSB (2026b), tabell 13470, CC BY 4.0. Egen sammenstilling. Fylkeskoder 18 og 55. <a className="underline" href="/downloads/geografi-sysselsatte-nord-2025.csv">Last ned tallene (CSV)</a>.</figcaption></figure>;
+}

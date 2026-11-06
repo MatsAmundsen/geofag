@@ -26,7 +26,9 @@ Etter kapitlet kan du
 
 Målene bygger på KM480 og KM483 (Udir, u.å.).
 
-[figur-3-0]: # (FIGURPLASSHOLDER 3.0: Mønsterkart med plategrenser, jordskjelv og vulkaner. Kontroller oppdatert USGS-kart, observasjonsperiode og lisens før import. Se docs/geografi-kap3-redaksjon.md.)
+```widget
+GeoIndrePlateKart
+```
 
 ### Tenk over
 
@@ -46,7 +48,9 @@ Platebevegelser måles gjerne i centimeter per år, men kan over millioner av å
 
 Samtidig kan et jordskjelv utløse oppbygd spenning plutselig, slik at bakken beveger seg brått (Wald, u.å.). Vi må derfor skille mellom tiden det tar å bygge opp en situasjon, og tiden selve hendelsen varer. En forklaring trenger ofte begge tidsskalaene, ikke bare et dramatisk bilde fra utbruddet eller skjelvet. Det langsomme og det raske er deler av samme geologiske historie.
 
-[figur-3-3]: # (FIGURPLASSHOLDER 3.3: Zoombar geologisk tidsskala. Skill lineær tid fra forstørrede utsnitt, og kontroller gjeldende periodegrenser før tallfesting.)
+```widget
+GeoIndreTidsskala
+```
 
 ### Hvordan vet vi alderen?
 
@@ -90,7 +94,9 @@ En **spredningsrygg** er en langstrakt forhøyning på havbunnen der plater beve
 
 En **rift** er et område der litosfæren strekkes, slik at skorpa tynnes og sprekker opp. Mellom forkastninger kan blokker synke ned og danne en langstrakt forsenkning, slik USGS beskriver fra Øst-Afrika (USGS, u.å.-h). Hvis utviklingen fortsetter, kan området etter hvert bli et nytt havbasseng, men det er ikke et uunngåelig sluttpunkt. Oslofeltet viser spor etter en gammel rift, ikke en aktiv spredningsrygg gjennom dagens Oslo (NGU, u.å.-a).
 
-[figur-3-5]: # (FIGURPLASSHOLDER 3.5: Rift til hav i få trinn. Tilpass ContinentalRiftDiagram og Norges historikk til Vg1; ingen påstand om at alle rifter blir hav.)
+```widget
+GeoIndreRiftHav
+```
 
 ### Mot hverandre: subduksjon eller kontinentkollisjon
 
@@ -121,7 +127,7 @@ GeoPlateGrenser
 GeoPlateModell
 ```
 
-Modellen i figur 3.6 lar oss velge fire plategrensemiljøer og sammenlikne bevegelse med geologiske følger. Vi kan spørre hvilke miljøer som danner ny havbunn, hvilke som bygger fjell, og hvilke som gir sidelengs forskyvning. Den viser prinsipper, ikke målte hastigheter, jordskjelvsannsynlighet eller utviklingen ved en bestemt forkastning. Bruk derfor forklaringen sammen med dokumenterte kart og kilder når dere undersøker virkelige steder (USGS, u.å.-h).
+Modellen i figur 3.6 lar oss velge fire plategrensemiljøer og sammenlikne bevegelse med geologiske følger. Vi kan spørre hvilke miljøer som danner ny havbunn, hvilke som bygger fjell, og hvilke som gir sidelengs forskyvning. Fartskontrollen regner om en valgt, konstant fart fra centimeter per år til kilometer på én million år. Den viser ikke målte hastigheter, jordskjelvsannsynlighet eller utviklingen ved en bestemt forkastning. Bruk derfor forklaringen sammen med dokumenterte kart og kilder når dere undersøker virkelige steder (USGS, u.å.-h).
 
 ## Jordskjelv
 
@@ -141,11 +147,13 @@ GeoJordskjelvBrudd
 
 ### Innblikk: Tyrkia og Syria 6. februar 2023
 
-Den 6. februar 2023 rammet kraftige jordskjelv grenseområdet mellom Tyrkia og Syria. USGS beskriver en sekvens med magnitude 7,8 og 7,5, knyttet til den østanatoliske forkastningssonen (USGS, 2023). Bevegelsen var hovedsakelig sidelengs, og skjelvene var grunne nok til å gi kraftige rystelser ved overflaten. Eksemplet viser dermed sammenhengen mellom forkastningstype, bruddets plassering og rystelsene som nådde bebyggelsen.
+Den 6. februar 2023 rammet kraftige jordskjelv grenseområdet mellom Tyrkia og Syria. USGS beskriver en sekvens med magnitude 7,8 og 7,5, knyttet til den østanatoliske forkastningssonen (USGS, 2023b). Bevegelsen var hovedsakelig sidelengs, og skjelvene var grunne nok til å gi kraftige rystelser ved overflaten. Eksemplet viser dermed sammenhengen mellom forkastningstype, bruddets plassering og rystelsene som nådde bebyggelsen.
 
-USGS framhever at mange bygninger i det rammede området var særlig sårbare for kraftig jordskjelvbevegelse (USGS, 2023). Vi kan derfor ikke forklare ødeleggelsene med magnitude alene eller behandle alle nabolag som like utsatte. **Sårbarhet** handler her om hvor lett mennesker, bygninger og tjenester kan skades når en naturhendelse rammer. Ved å undersøke både rystelser og samfunnsforhold kan vi forklare mer enn med et bilde av sammenraste hus.
+USGS framhever at mange bygninger i det rammede området var særlig sårbare for kraftig jordskjelvbevegelse (USGS, 2023b). Vi kan derfor ikke forklare ødeleggelsene med magnitude alene eller behandle alle nabolag som like utsatte. **Sårbarhet** handler her om hvor lett mennesker, bygninger og tjenester kan skades når en naturhendelse rammer. Ved å undersøke både rystelser og samfunnsforhold kan vi forklare mer enn med et bilde av sammenraste hus.
 
-[figur-3-13]: # (FIGURPLASSHOLDER 3.13: Datert casekart for Tyrkia/Syria 06.02.2023, basert på USGS. Skill bruddsoner, episentre, rystelser og bygningers sårbarhet. Ingen udokumenterte dødstall.)
+```widget
+GeoIndreTyrkiaKart
+```
 
 - Hva forklarer forkastningsbevegelsen, og hva trenger vi bygningsopplysninger for å forklare?
 - Hvorfor er en oppgitt magnitude ikke tilstrekkelig til å rangere skadene i to byer?
@@ -154,7 +162,7 @@ USGS framhever at mange bygninger i det rammede området var særlig sårbare fo
 
 Norge har jordskjelv selv om fastlandet ligger langt fra den aktive spredningsryggen i Atlanterhavet. NGU forklarer at skjelv også kan forekomme langt fra plategrenser og i gamle forkastninger (NGU, u.å.-b). Vi skal derfor ikke tegne en ny plategrense gjennom Norge bare fordi et skjelv blir registrert. Et globalt mønster kan ha unntak uten at hele forklaringsmodellen mister verdi.
 
-Overvåking og kunnskap om forkastninger er ikke det samme som en presis melding om neste jordskjelv. USGS understreker at vi ikke kan forutsi nøyaktig størrelse, sted og tidspunkt for individuelle skjelv (USGS, 2023). Det er likevel mulig å undersøke utsatte områder, registrere hendelser og planlegge for sterke rystelser. Vi må skille mellom langsiktig kunnskap om fare og en sikker spådom om en bestemt hendelse.
+Overvåking og kunnskap om forkastninger er ikke det samme som en presis melding om neste jordskjelv. USGS understreker at vi ikke kan forutsi nøyaktig størrelse, sted og tidspunkt for individuelle skjelv (USGS, 2023b). Det er likevel mulig å undersøke utsatte områder, registrere hendelser og planlegge for sterke rystelser. Vi må skille mellom langsiktig kunnskap om fare og en sikker spådom om en bestemt hendelse.
 
 ## Vulkaner
 
@@ -190,7 +198,9 @@ Veðurstofa Íslands oppgir at utbruddet ved Sundhnúkagígar startet 18. desemb
 
 Dette er en historisk undersøkelse, ikke informasjon om hvilke områder som er trygge eller åpne i dag. Ved en aktuell hendelse må vi bruke ferske meldinger fra islandske fagmyndigheter og sivil beredskap. En artikkel fra desember 2023 dokumenterer ikke tilstanden på Reykjanes i november 2026 eller senere. I skolearbeidet oppgir vi derfor både hendelsesdato og datoen den aktuelle kilden ble lest.
 
-[figur-3-12]: # (FIGURPLASSHOLDER 3.12: Datert Island/Reykjanes-kart eller Sentinel-utsnitt fra valgt historisk hendelse. Kontroller bildeår, geografisk utsnitt, attribusjon og lisens.)
+```widget
+GeoIndreReykjanes
+```
 
 - Hvilke observasjoner viser aktivitet under bakken også etter at denne utbruddsfasen var over?
 - Hva må vi kontrollere før vi bruker et historisk utbruddsbilde som informasjon om dagens situasjon?
@@ -205,7 +215,9 @@ Ved et stort skjelv kan havbunnen heves eller senkes slik at vannet over blir sa
 
 Kjeden kan skrives slik: rask forskyvning av havbunn → forflyttet vannmasse → bølger over havet → oversvømmelse ved kysten. Hvor store virkningene blir lokalt, avhenger også av havdyp og formen på kysten, som inngår i varslingsmodellene (NOAA, u.å.-a). Det er ikke nødvendigvis én bølge, og farlige strømmer kan vare etter den første oversvømmelsen (NOAA, u.å.-b). En enkel skisse må derfor ikke leses som en garanti for ankomsttid eller trygg avstand.
 
-[figur-3-9]: # (FIGURPLASSHOLDER 3.9: Tre eller fire trinn fra vannforskyvning til kyst. Egen skisse basert på NOAA; ingen universell bølgehøyde, sikkerhetssone eller uverifisert bakgrunnsfil.)
+```widget
+GeoIndreTsunami
+```
 
 ### Varsling er en kjede av kunnskap og handling
 
@@ -247,7 +259,9 @@ I figur 3.10 kan vi følge prosesspilene og trykke på stasjoner for å lese hva
 
 **Berggrunn** er det faste fjellet under oss, mens løsmasser som sand, leire og grus kan ligge over. NGU beskriver Norges berggrunn som spor etter en lang historie med blant annet fjellkjededannelse og vulkanisme (NGU, u.å.-d). Vi kan derfor ikke dele landet inn etter bare én hendelse eller én alder. Et forenklet oversiktskart må følges av forklaring på hva fargene og grensene betyr.
 
-[figur-3-11]: # (FIGURPLASSHOLDER 3.11: Forenklet oversikt over grunnfjell, kaledonske enheter, Oslofeltet og sokkel. Egen tegning eller lisensklarerte data; ikke importer NGU-raster uten kontroll.)
+```widget
+GeoIndreBerggrunn
+```
 
 ### Grunnfjell og spor etter fjellkjeder
 

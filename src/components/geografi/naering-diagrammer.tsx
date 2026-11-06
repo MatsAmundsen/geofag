@@ -57,7 +57,7 @@ export function GeografiLokaliseringsfaktorer() {
 }
 
 export function GeografiRingvirkninger() {
-  return <Diagram title="Leverandørvirkninger, inntektsforbindelser og eksterne belastninger må undersøkes hver for seg" heading="Figur 9.4 – Ulike forbindelser fra en virksomhet" caption="Egen kvalitativ modell etter SSB (2026b) og Onshuus og Idsø (2025). Pilene viser mulige forbindelser, ikke beløp, sikre jobbeffekter eller full samfunnsøkonomisk lønnsomhet. SSBs omtalte leverandøranalyse omfatter ikke alle inntekts- og forbruksvirkninger." viewBox="0 0 920 425" wide scroll>
+  return <Diagram title="Leverandørvirkninger, inntektsforbindelser og eksterne belastninger må undersøkes hver for seg" heading="Figur 9.4 – Ulike forbindelser fra en virksomhet" caption="Egen kvalitativ modell etter SSB (2026c) og Onshuus og Idsø (2025). Pilene viser mulige forbindelser, ikke beløp, sikre jobbeffekter eller full samfunnsøkonomisk lønnsomhet. SSBs omtalte leverandøranalyse omfatter ikke alle inntekts- og forbruksvirkninger." viewBox="0 0 920 425" wide scroll>
     {(m) => <>
       <Boks x={20} y={160} tittel="Virksomheten" tekst="Direkte aktivitet" />
       <Boks x={345} y={20} tittel="Innkjøp" tekst="Leverandører og underleverandører" />

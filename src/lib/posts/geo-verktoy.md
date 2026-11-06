@@ -80,7 +80,9 @@ Mercators projeksjon er **vinkelriktig**, som betyr at vinkler og former i svær
 
 Gall–Peters er en **flateriktig** projeksjon, som betyr at arealforholdene mellom områder blir bevart. Den er ikke samtidig formriktig, og områdenes former blir dermed forvrengt i framstillingen. Et flateriktig kart egner seg derfor til arealsammenlikning, men løser ikke alle andre kartoppgaver (Rød, 2026). Vi må fortsatt undersøke hva kartet er laget for, og hvilke egenskaper som endres.
 
-[figur-1-2]: # (FIGURPLASSHOLDER 1.2: Gall–Peters og Tissot. Lisensavklaring gjenstår.)
+```widget
+GeoVerktoyGallPeters
+```
 
 > **Tema: En rett linje er ikke alltid korteste vei**
 >
@@ -120,7 +122,9 @@ Når høydekurvene ligger tett, stiger terrenget mye over en kort vannrett avsta
 
 Tenk deg et øvingskart med ekvidistanse 20 meter og kurver merket 100, 120, 140 og 160 meter. Mellom den nederste og øverste kurven er det tre høydeintervaller, selv om vi teller fire kurver. Høydeforskjellen blir dermed 60 meter, ikke 80 meter, i dette konstruerte eksemplet. Vi teller mellomrommene mellom kurvene når vi bruker ekvidistansen til å regne høydeforskjell.
 
-[figur-1-4]: # (FIGURPLASSHOLDER 1.4: Topografisk kart med høydekurver. Bruk åpne N50-data etter vilkårskontroll.)
+```widget
+GeoVerktoyTopokart
+```
 
 ### Øv på ruteplanlegging
 
