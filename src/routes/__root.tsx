@@ -4,6 +4,8 @@ import appCss from "../styles.css?url";
 
 const APP_NAME = "Geofag";
 
+const TEMA_SCRIPT = `try{if(localStorage.getItem("geofag-tema")==="mork")document.documentElement.setAttribute("data-tema","mork")}catch(e){}`;
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -33,6 +35,8 @@ export const Route = createRootRoute({
   component: () => (
     <html lang="nb" className="antialiased" suppressHydrationWarning>
       <head>
+        {/* Setter valgt tema før første maling (ingen blink). Standard er lyst; bare «mork» lagres som avvik. */}
+        <script dangerouslySetInnerHTML={{ __html: TEMA_SCRIPT }} />
         <HeadContent />
         {/* Cloudflare Web Analytics (cookiefri, offentlig site-token) */}
         <script

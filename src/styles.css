@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Variant «lys:» gjelder når kapittelsidene står i lyst tema (standard). Mørkt tema = data-tema="mork" på <html>. */
+@custom-variant lys (:root:not([data-tema="mork"]) &);
+
 @theme {
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
@@ -552,11 +555,12 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
 
 /*
  * Kapittel- og emnesider: lyst tema «Lys mint og skog».
+ * Tema bytter med knappen i kapittelheaderen: data-tema="mork" på <html> (satt av script i <head>) gir det opprinnelige mørke temaet uten overstyringer.
  * Temaet gjelder bare når siden har emne-layouten (.kapittel-lys i topic-layout.tsx). :root:has() gjør at også
  * dialoger og menyer som rendres utenfor layouten (portaler) får samme farger. Forsidene (/, /geofag-1, /geofag-2)
  * har ikke klassen og er uendret. Figurer og modeller er tegnet for mørk bunn og beholder det mørke temaet.
  */
-:root:has(.kapittel-lys) {
+:root:not([data-tema="mork"]):has(.kapittel-lys) {
   color-scheme: light;
   --color-background: #f2f8f4;
   --color-foreground: #14261d;
@@ -620,7 +624,7 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-950: oklch(98.4% 0.003 247.858);
 }
 
-:root:has(.kapittel-lys) :is(figure, .jet-root) {
+:root:not([data-tema="mork"]):has(.kapittel-lys) :is(figure, .jet-root) {
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
   --color-card: #141c22;
@@ -682,4 +686,98 @@ article :is(p, li, figcaption, td, th, dd, blockquote) a:not(.no-underline):not(
   --color-slate-900: oklch(20.8% 0.042 265.755);
   --color-slate-950: oklch(12.9% 0.042 264.695);
   color: var(--color-foreground);
+}
+
+/* Temaknappen (kapittelheader). Ikonet og teksten følger data-tema direkte i CSS, så de er riktige fra første maling. */
+.tema-knapp .tema-til-lys { display: none; }
+:root[data-tema="mork"] .tema-knapp .tema-til-lys { display: inline-flex; }
+:root[data-tema="mork"] .tema-knapp .tema-til-mork { display: none; }
+
+/*
+ * Markerte felt (markdown-blockquote).
+ * Standard (= /poster m.m.): samme diskrete venstrestrek som før grønn callout.
+ * Grønn callout med hvit tekst gjelder BARE kapittelsider (.kapittel-lys i topic-layout),
+ * ikke /poster/<slug>, forsider eller Callout-komponenten.
+ */
+.kapittel-callout {
+  border-left: 2px solid color-mix(in oklab, var(--color-primary) 50%, transparent);
+  padding-left: 1rem;
+  color: var(--color-muted-foreground);
+}
+
+.kapittel-lys .kapittel-callout {
+  --callout-bg: #145a40;
+  --callout-fg: #ffffff;
+  --callout-link: #b8e0c8;
+  --callout-link-hover: #e8fff0;
+  --callout-accent: #6ee7b7;
+  --callout-soft: color-mix(in srgb, #ffffff 14%, #145a40);
+  --callout-line: color-mix(in srgb, #ffffff 28%, #145a40);
+  /* N1: callout-bg som fallback; .scroll-frame setter ellers --color-background på nytt. */
+  --scroll-fade: var(--callout-bg);
+  margin-block: 1.25rem;
+  max-width: 100%;
+  padding: 1rem 1.15rem 1rem 1.05rem;
+  border-radius: 0.75rem;
+  border-left: 0.25rem solid var(--callout-accent);
+  background: var(--callout-bg);
+  color: var(--callout-fg);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.kapittel-lys .kapittel-callout > :first-child {
+  margin-top: 0;
+}
+
+.kapittel-lys .kapittel-callout > :last-child {
+  margin-bottom: 0;
+}
+
+.kapittel-lys .kapittel-callout :is(p, li, td, th, dd, dt, strong, b, em, i, h1, h2, h3, h4, h5, h6) {
+  color: var(--callout-fg);
+}
+
+.kapittel-lys .kapittel-callout :is(strong, b) {
+  font-weight: 700;
+}
+
+.kapittel-lys .kapittel-callout a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)) {
+  color: var(--callout-link);
+  text-decoration-line: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: auto;
+}
+
+.kapittel-lys .kapittel-callout a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):hover,
+.kapittel-lys .kapittel-callout a:not(.no-underline):not(.flex):not(:has(p, h1, h2, h3, h4, img)):focus-visible {
+  color: var(--callout-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+.kapittel-lys .kapittel-callout code {
+  background: var(--callout-soft);
+  color: var(--callout-fg);
+}
+
+.kapittel-lys .kapittel-callout :is(table, th, td) {
+  border-color: var(--callout-line);
+  color: var(--callout-fg);
+}
+
+.kapittel-lys .kapittel-callout hr {
+  border-color: var(--callout-line);
+}
+
+/* Hint-pille inne i grønn callout: hvit tekst på grønn pille (≥4,5:1). */
+.kapittel-lys .kapittel-callout .scroll-frame__hint {
+  color: var(--callout-fg);
+  border-color: var(--callout-line);
+  background: color-mix(in srgb, var(--callout-bg) 88%, #000000);
+}
+
+/* Mer spesifikk enn .scroll-frame { --scroll-fade: var(--color-background) } (:331). */
+.kapittel-lys .kapittel-callout .scroll-frame {
+  --scroll-fade: var(--callout-bg, #145a40);
 }

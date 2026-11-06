@@ -239,7 +239,7 @@ export function Markdown({
           ul: ({ children }) => <ul className="list-disc space-y-1 pl-6">{children}</ul>,
           ol: ({ children }) => <ol className="list-decimal space-y-1 pl-6">{children}</ol>,
           blockquote: ({ children }) => (
-            <blockquote className="border-l-2 border-primary/50 pl-4 text-muted-foreground">
+            <blockquote className="kapittel-callout">
               {children}
             </blockquote>
           ),
