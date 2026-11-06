@@ -1,0 +1,131 @@
+{
+  "kontrollert": "2026-11-06",
+  "HughesArtikkel": {
+    "doi": "10.1111/bor.12142",
+    "ar": 2016,
+    "lisenskontroll": "Artikkelens publiserte første side lest via DocsLib-kopi: Creative Commons Attribution License. Wiley svarte 403. Eksakt 4.0-versjon på Commons kunne ikke primærkontrolleres og selve figurfila ble ikke brukt.",
+    "artikkelkopi": "https://docslib.org/doc/10657298/the-last-eurasian-ice-sheets-a-chronological-database-and-time-slice-reconstruction-dated-1",
+    "tidssnittkontroll": "Artikkelen sier uttrykkelig at fig. 1 ikke viser en samtidig isrand. Derfor ingen merking av fig. 1 som ett 20 ka-tidspunkt."
+  },
+  "DATED1": {
+    "doi": "10.1594/PANGAEA.848117",
+    "url": "https://store.pangaea.de/Publications/HughesA-etal_2015/DATED-1_TimeSlices_kmz.zip",
+    "lisens": "CC BY 3.0, direkte PANGAEA-metadata",
+    "utvalg": [
+      "TS21_min",
+      "TS21_mc",
+      "TS21_max"
+    ],
+    "ka": 21,
+    "metode": "Egen GeoJSON-konvertering av alle polygoner og hull i de tre originale KML-mappene, koordinater avrundet til 6 desimaler. Ingen isgrenser konstruert.",
+    "alternativ": "Reelt tidssnitt 21 ka fra forfatternes data erstatter den asynkrone maksimumsfiguren.",
+    "sha256": "8695aa3ab236fe31989c4f01254d2a6e9446b16ef2ea2077e6fcfd94e0cd91fd"
+  },
+  "breflater": {
+    "metadata": "https://kartkatalog.geonorge.no/metadata/breer-i-norge/ef3e36ad-6914-432e-a0e0-4ff8e091a423",
+    "api": {
+      "urls": [
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=0",
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=1000",
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=2000",
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=3000",
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=4000",
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=5000",
+        "https://kart.nve.no/enterprise/rest/services/Bre2/MapServer/9/query?where=1%3D1&outFields=breid%2Cbrenavn%2Chovedbrenavn%2Careal_km2%2Csatellittnavn%2Csceneid%2Cforstedatafangstdato&outSR=4326&f=geojson&resultRecordCount=1000&maxAllowableOffset=0.002&geometryPrecision=4&resultOffset=6000"
+      ],
+      "antall": 6743
+    },
+    "lisens": "NLOD",
+    "alleObjekter": 6743,
+    "inkludert": 6742,
+    "utelatt": "BREID 2098, Blåfonna, 2020 ortofoto. Utelatt for et årslåst Sentinel-uttrekk 2018/2019.",
+    "generalisering": "ArcGIS maxAllowableOffset 0.002 grader, geometryPrecision 4, outSR 4326. Oversiktskart, ikke ny presis oppmåling.",
+    "sha256": "250047c290c36cb8cc5083d6b488d19387bf8648a71ea4de46658f948ddc3d82"
+  },
+  "vega": {
+    "zoom": 10,
+    "urls": [
+      "https://cache.kartverket.no/v1/service?layer=topo&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=10&TileCol=545&TileRow=261",
+      "https://cache.kartverket.no/v1/service?layer=topo&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=10&TileCol=545&TileRow=262",
+      "https://cache.kartverket.no/v1/service?layer=topo&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=10&TileCol=546&TileRow=261",
+      "https://cache.kartverket.no/v1/service?layer=topo&style=default&tilematrixset=webmercator&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=10&TileCol=546&TileRow=262"
+    ],
+    "bbox": [
+      11.6015625,
+      65.5129625532949,
+      12.3046875,
+      65.80277639340238
+    ],
+    "malestokk": "10 km ved midtbreddegraden, tilnærmet",
+    "skalastrekPx": 158.7,
+    "lisens": "Kartverket CC BY 4.0",
+    "vilkar": "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    "sha256": "73e4280ae4c7f4295523969c3f6e651f5f99c5f5ce5f02e8090fe8e1d1e513d4"
+  },
+  "foto": {
+    "fotograf": "Thatcher Clay",
+    "dato": "2017-07-04",
+    "flickr": "https://flickr.com/photos/7606060@N02/37810193741",
+    "direkte": "https://live.staticflickr.com/4496/37810193741_0c9b558aea_b.jpg",
+    "lisens": "CC BY 2.0, verifisert Commons-filside og Flickr-review",
+    "filside": "https://commons.wikimedia.org/wiki/File:Norway_-_Parabolic_Valley_(37810193741).jpg",
+    "utsnitt": "1024 x 503, beholdt bildeflate, WebP-komprimert. Visning begrenset til 512 CSS-piksler. Eksakt dal ukjent."
+  },
+  "geirangerFoto": {
+    "filside": "https://commons.wikimedia.org/wiki/File:Stranda_Geirangerfjord_lub_2025-07-29_img02.jpg",
+    "lisens": "CC BY 4.0 bekreftet på filside, men bildefil ikke hentet: Commons svarte 403 uten User-Agent og 429 etter ærlig bot-identifikasjon. Ingen flere forsøk etter rategrensen.",
+    "status": "Fotoet holdes skjult. Eget lokatorkart bygges separat."
+  },
+  "lokator": {
+    "punkter": [
+      {
+        "type": "Feature",
+        "properties": {
+          "navn": "Geiranger, tettsted",
+          "rolle": "Lokatorpunkt"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            7.20719,
+            62.10186
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "navn": "Åkerneset, stedsnavn ved Åknes-området",
+          "rolle": "Lokatorpunkt"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            7.00098,
+            62.1745
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "navn": "Sunnylvsfjorden",
+          "rolle": "Lokatorpunkt"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            7.03918,
+            62.2242
+          ]
+        }
+      }
+    ],
+    "kilde": "Kartverkets SSR, eksakt navnesøk og kommune 1525, ikke ustabilitetsgrenser",
+    "urls": [
+      "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Geiranger&fuzzy=false",
+      "https://ws.geonorge.no/stedsnavn/v1/navn?sok=%C3%85kerneset&fuzzy=false",
+      "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Sunnylvsfjorden&fuzzy=false"
+    ]
+  }
+}
