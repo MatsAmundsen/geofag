@@ -7,12 +7,12 @@
 - Gren: `geografi-kap5`, opprettet fra `origin/geografi-kap4`.
 - Base ved oppstart: `3b42bb616128d68cbad8691798e87ea578ae51d3`, kapittel 4 i utkast-PR #303.
 - Bare kapittel 5 er skrevet. Kapittel 7, 9, 10 og 11 er fortsatt skjeletter.
-- Kun lokal commit. Oppdragsgiver håndterer eventuell push og oppretting av utkast-PR med base `geografi-kap4`.
+- Kapittelcommitten er publisert som utkast-PR #304, med base `geografi-kap4`. Den nye normaldataoppdateringen er bare lokal. Oppdragsgiver håndterer push.
 - Ingen merge, main-push, force-push, CloudAgent, deploy eller endring av DNS/Cloudflare.
 
 ## Tekst og pedagogikk
 
-Fagteksten har 6384 ord. Tellingen inkluderer overskrifter, spørsmål, oppgaver, begrepsliste og henvisninger, men utelater skjulte figurmarkører, widgetkoder og lenkemål. Figurenes egne tekster og kilderegisteret inngår ikke. Åpningen har 191 ord og følger et faktisk bilde og en datert omtale av Hans, ikke en oppdiktet øyenvitneskildring.
+Fagteksten har 6528 ord. Tellingen inkluderer overskrifter, spørsmål, oppgaver, begrepsliste og henvisninger, men utelater skjulte figurmarkører, widgetkoder og lenkemål. Figurenes egne tekster og kilderegisteret inngår ikke. Åpningen har 191 ord og følger et faktisk bilde og en datert omtale av Hans, ikke en oppdiktet øyenvitneskildring.
 
 Ni underkapitler er skrevet:
 
@@ -51,7 +51,7 @@ Sju etablerte komponenter gjenbrukes med en valgfri `geografi`-prop. Standard er
 
 | Figur | Leveranse |
 | --- | --- |
-| 5.1 | Eget SVG-klimadiagram med temperaturlinje, nedbørssøyler, enheter og tilgjengelig tabell for tolv måneder. Tallene er uttrykkelig konstruert øving, ikke stasjonsdata eller klimanormal. |
+| 5.1 | Eget SVG-klimadiagram med temperaturlinje, nedbørssøyler, enheter og tilgjengelig tabell for tolv måneder. Publiserte klimanormaler 1991–2020 for Oslo – Blindern, stasjon 18700. Temperatur og nedbør fra MET, med metodekilde og CC BY 4.0. |
 | 5.2 | Vg1-visning av `WindCellsDiagram`: tre celler, navn og dominerende vindbelter, uten jetstrømmer og tropopausehøyder. |
 | 5.3 | `CoriolisDiagram`: høyre og venstre i bevegelsesretningen, uten geostrofisk fordypning. |
 | 5.4 | `AmocDiagram`: overflate og dyp retur, uten gamle kollapsutsagn eller forkortelsen NADW. |
@@ -69,11 +69,11 @@ Tre skjulte markører gjenstår. De rendres ikke som elevrettede redaktørnotate
 - **5.10:** Kartutsnitt for Hans. Hendelsesavgrensning, Kartverket-bakgrunn, NVE-data og tilhørende lisenser må kontrolleres. Ikke bruk hele august som hendelsesperiode eller tegn antatte flomgrenser.
 - **5.11:** Bangladesh-kart. Natural Earth-bakgrunn og eventuelle konkrete fagdata må kontrolleres. Ingen selvtegnede risikoflater uten dokumentert geografisk grunnlag.
 
-Figur 5.1 oppfyller lesetreningen med tydelig merket øvingsdata. Dersom Mats ønsker en virkelig stasjonsnormal, må data, periode og konkret datalisens først verifiseres. Øvingstallene skal ikke omdøpes til Bergen eller en annen stasjon.
+Etter Mats sitt valg er figur 5.1 oppdatert med kontrollerte normaler for Oslo – Blindern, ikke omdøpte øvingstall. Originalfilene, stasjonsidentiteten, perioden og lisensen er verifisert. Se `docs/geografi-klimanormaler-blindern.md` for tolv månedstall og revisjonsspor.
 
 ## Kilder kontrollert 6. november 2026
 
-Alle de 24 registrerte kildene er åpnet og lest med WebFetch eller offentlig HTTP-henting. Kontrollen gjelder relevante fagavsnitt, ikke bare HTTP-status. Forfattere for nedbør, klimasoner og Golfstrømmen er også kontrollert mot offentlig JSON-LD. Der ingen dato framgår, er u.å. beholdt framfor å gjette. De eldre NASA-artiklene brukes for prosessforklaringer, ikke som kilde til dagens utslippsmengder, temperatur eller framtidsanslag.
+Alle de 29 registrerte kildene er åpnet og lest med WebFetch eller offentlig HTTP-henting. Kontrollen gjelder relevante fagavsnitt, ikke bare HTTP-status. Forfattere for nedbør, klimasoner og Golfstrømmen er også kontrollert mot offentlig JSON-LD. Der ingen dato framgår, er u.å. beholdt framfor å gjette. De eldre NASA-artiklene brukes for prosessforklaringer, ikke som kilde til dagens utslippsmengder, temperatur eller framtidsanslag.
 
 | Nr. | Registrert kilde | Adresse |
 | --- | --- | --- |
@@ -87,20 +87,25 @@ Alle de 24 registrerte kildene er åpnet og lest med WebFetch eller offentlig HT
 | 8 | Klima- og miljødepartementet. (2025, 1. september). Internasjonale klimaforhandlinger | [Åpnet kilde](https://www.regjeringen.no/no/tema/klima-og-miljo/klima/innsiktsartikler-klima/de-internasjonale-klimaforhandlingene/id2741333/) |
 | 9 | Lindsey, R. (2009, 14. januar). Climate and Earth’s Energy Budget | [Åpnet kilde](https://science.nasa.gov/earth/earth-observatory/climate-and-earths-energy-budget/) |
 | 10 | Mamen, J. (u.å.). Klimasoner | [Åpnet kilde](https://snl.no/klimasoner) |
-| 11 | Meteorologisk institutt. (2021, 18. januar). Ny normal i klimaforskningen | [Åpnet kilde](https://www.met.no/vaer-og-klima/ny-normal-i-klimaforskningen) |
-| 12 | Met Office. (u.å.). Global circulation patterns | [Åpnet kilde](https://www.metoffice.gov.uk/weather/learn-about/weather/atmosphere/global-circulation-patterns) |
-| 13 | Miljødirektoratet. (2026). I01 Karbonfangst og lagring | [Åpnet kilde](https://www.miljodirektoratet.no/tjenester/klimatiltak/tiltaksark-2026/industri-og-energiforsyning/i01-karbonfangst-og-lagring) |
-| 14 | NASA. (u.å.-a). The Causes of Climate Change | [Åpnet kilde](https://science.nasa.gov/climate-change/causes/) |
-| 15 | NASA. (u.å.-b). What Is Climate Change? | [Åpnet kilde](https://science.nasa.gov/climate-change/what-is-climate-change/) |
-| 16 | National Oceanic and Atmospheric Administration [NOAA]. (u.å.). Thermohaline Circulation | [Åpnet kilde](https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor1.html) |
-| 17 | Norges vassdrags- og energidirektorat [NVE]. (2025, 22. januar). Klima, nå og i framtiden | [Åpnet kilde](https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/klima/klima-naa-og-i-framtiden/) |
-| 18 | Riebeek, H. (2011, 16. juni). The Carbon Cycle | [Åpnet kilde](https://science.nasa.gov/earth/earth-observatory/the-carbon-cycle/) |
-| 19 | Sanna, A. (2023, 1. september). Global oppvarming fører til mer regn i Norge | [Åpnet kilde](https://www.met.no/nyhetsarkiv/global-oppvarming-forer-til-mer-regn-i-norge) |
-| 20 | Sanna, A., & Holte, K. R. (2023, 1. september). August 2023 vil bli husket for ekstremværet som rammet Sør-Norge | [Åpnet kilde](https://www.met.no/nyhetsarkiv/august-2023-vil-bli-husket-for-ekstremvaeret-som-rammet-sor-norge) |
-| 21 | University Corporation for Atmospheric Research [UCAR]. (u.å.-a). The Highs and Lows of Air Pressure | [Åpnet kilde](https://scied.ucar.edu/learning-zone/how-weather-works/highs-and-lows-air-pressure) |
-| 22 | University Corporation for Atmospheric Research [UCAR]. (u.å.-b). Wind | [Åpnet kilde](https://scied.ucar.edu/learning-zone/how-weather-works/wind) |
-| 23 | Utdanningsdirektoratet. (u.å.). Geografi (GEO01-02): Kompetansemål og vurdering | [Åpnet kilde](https://www.udir.no/lk20/geo01-02/kompetansemaal-og-vurdering/kv49) |
-| 24 | Verdensbanken. (2022, 31. oktober). Urgent Climate Action Crucial for Bangladesh to Sustain Strong Growth | [Åpnet kilde](https://www.worldbank.org/en/news/press-release/2022/10/31/urgent-climate-action-crucial-for-bangladesh-to-sustain-strong-growth) |
+| 11 | Met Office. (u.å.). Global circulation patterns | [Åpnet kilde](https://www.metoffice.gov.uk/weather/learn-about/weather/atmosphere/global-circulation-patterns) |
+| 12 | Meteorologisk institutt. (2021a, 17. september). Månedsnormaler 1991–2020 for TAM, middeltemperatur | [Åpnet kilde](https://www.met.no/kss/_/attachment/download/a2d191d6-b9ef-4d78-ac26-9eee4ce28743:969dfb48bad54d95b9dca7685778f05448f42892/StNormaler_mnd_middeltemp_1991-2020.txt) |
+| 13 | Meteorologisk institutt. (2021b, 18. januar). Ny normal i klimaforskningen | [Åpnet kilde](https://www.met.no/vaer-og-klima/ny-normal-i-klimaforskningen) |
+| 14 | Meteorologisk institutt. (2024, 29. februar). Månedsnormaler 1991–2020 for RR, nedbør | [Åpnet kilde](https://www.met.no/kss/_/attachment/download/bb6a7fc4-429b-48a7-9788-9c5651774ba4:2a626567cdf7a7822a683029f30d0f8bf21efc18/StNormaler_mnd_nedbor_1991-2020_rettet.txt) |
+| 15 | Meteorologisk institutt. (2026, 3. juni). Lisensiering og kreditering | [Åpnet kilde](https://www.met.no/frie-meteorologiske-data/lisensiering-og-kreditering) |
+| 16 | Miljødirektoratet. (2026). I01 Karbonfangst og lagring | [Åpnet kilde](https://www.miljodirektoratet.no/tjenester/klimatiltak/tiltaksark-2026/industri-og-energiforsyning/i01-karbonfangst-og-lagring) |
+| 17 | NASA. (u.å.-a). The Causes of Climate Change | [Åpnet kilde](https://science.nasa.gov/climate-change/causes/) |
+| 18 | NASA. (u.å.-b). What Is Climate Change? | [Åpnet kilde](https://science.nasa.gov/climate-change/what-is-climate-change/) |
+| 19 | National Oceanic and Atmospheric Administration [NOAA]. (u.å.). Thermohaline Circulation | [Åpnet kilde](https://oceanservice.noaa.gov/education/tutorial_currents/05conveyor1.html) |
+| 20 | Norges vassdrags- og energidirektorat [NVE]. (2025, 22. januar). Klima, nå og i framtiden | [Åpnet kilde](https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/klima/klima-naa-og-i-framtiden/) |
+| 21 | Norsk klimaservicesenter. (2025, oktober). Klimanormaler | [Åpnet kilde](https://klimaservicesenter.no/kss/vrdata/normaler) |
+| 22 | Riebeek, H. (2011, 16. juni). The Carbon Cycle | [Åpnet kilde](https://science.nasa.gov/earth/earth-observatory/the-carbon-cycle/) |
+| 23 | Sanna, A. (2023, 1. september). Global oppvarming fører til mer regn i Norge | [Åpnet kilde](https://www.met.no/nyhetsarkiv/global-oppvarming-forer-til-mer-regn-i-norge) |
+| 24 | Sanna, A., & Holte, K. R. (2023, 1. september). August 2023 vil bli husket for ekstremværet som rammet Sør-Norge | [Åpnet kilde](https://www.met.no/nyhetsarkiv/august-2023-vil-bli-husket-for-ekstremvaeret-som-rammet-sor-norge) |
+| 25 | Tveito, O. E. (2021, 25. august). Norwegian standard climate normals 1991–2020: The methodological approach | [Åpnet kilde](https://www.met.no/publikasjoner/met-report/met-report-2021/_/attachment/inline/31bb0160-d8cf-4a2b-9646-4df6f5904059:3ac4fec6cf3fb7919aefe42db2b63ad8e8b9e6a6/METreport%2005_2021_New_Norwegian_standard_climate_normals_1991_2020-signert.pdf) |
+| 26 | University Corporation for Atmospheric Research [UCAR]. (u.å.-a). The Highs and Lows of Air Pressure | [Åpnet kilde](https://scied.ucar.edu/learning-zone/how-weather-works/highs-and-lows-air-pressure) |
+| 27 | University Corporation for Atmospheric Research [UCAR]. (u.å.-b). Wind | [Åpnet kilde](https://scied.ucar.edu/learning-zone/how-weather-works/wind) |
+| 28 | Utdanningsdirektoratet. (u.å.). Geografi (GEO01-02): Kompetansemål og vurdering | [Åpnet kilde](https://www.udir.no/lk20/geo01-02/kompetansemaal-og-vurdering/kv49) |
+| 29 | Verdensbanken. (2022, 31. oktober). Urgent Climate Action Crucial for Bangladesh to Sustain Strong Growth | [Åpnet kilde](https://www.worldbank.org/en/news/press-release/2022/10/31/urgent-climate-action-crucial-for-bangladesh-to-sustain-strong-growth) |
 
 Kildene står i `kilder-geografi.ts` og vises automatisk i kapittelsidens KILDER-liste. Henvisningene står også i teksten og figurtekstene. Interne biblioteker, lærebok og redaksjonelle arbeidsfiler er ikke elevrettede kilder.
 
@@ -108,11 +113,13 @@ UNFCCCs Paris-side ga ikke lesbart faginnhold, og PDF-adressen ga ikke en PDF. D
 
 ## Reseed og gjennomgang før eventuell merge
 
-`geo-klima-kap5-2026-11-06` er lagt i `COPY_RESEEDS_B`. Flagget gjelder bare `geo-klima` og kan overskrive CMS-tekst ved første godkjente innlasting. Ingen slik produksjonsinnlasting er utført. `tekstKlar` er satt for kapittel 5, uten å aktivere resterende skjeletter.
+`geo-klima-kap5-2026-11-06` og det nye `geo-klima-normaler-blindern-1991-2020-2026-11-06` er lagt i `COPY_RESEEDS_B`. Flagget gjelder bare `geo-klima` og kan overskrive CMS-tekst ved første godkjente innlasting. Ingen slik produksjonsinnlasting er utført. `tekstKlar` er satt for kapittel 5, uten å aktivere resterende skjeletter.
 
-Ingen blokkerende fagavklaring er identifisert. Mats må lese tekst og figuravgrensninger før eventuell merge. Valget mellom fortsatt øvingsdata og en verifisert stasjonsnormal i 5.1 kan tas ved designgjennomgangen. De tre kartleveransene gjenstår hos DesignBOT og krever egne data- og lisenskontroller.
+Ingen blokkerende fagavklaring er identifisert. Mats må lese tekst og figuravgrensninger før eventuell merge. Valget for 5.1 er avklart av Mats og gjennomført som en egen normaldatacommit. De tre kartleveransene gjenstår hos DesignBOT og krever egne data- og lisenskontroller.
 
-## Validering
+Ny validering av stasjonsnormalene er dokumentert i `docs/geografi-klimanormaler-blindern.md`: 75 relevante tester, typecheck, berørt ESLint, figur-SSR og build er bestått. Kjente fullsuitefeil er uendret.
+
+## Opprinnelig validering før normaldataoppdateringen
 
 - Typecheck: bestått.
 - ESLint på samtlige endrede TypeScript- og TSX-filer: bestått uten feil eller advarsler.
@@ -138,18 +145,18 @@ Logger ligger utenfor repoet som `/workspace/geografi-kap5-*.log`. Baselinesamme
 
 ### Innhold
 
-- Skriver bare kapittel 5, Vær, klima og klimaendringer, med ni underkapitler og 6384 ord.
+- Skriver bare kapittel 5, Vær, klima og klimaendringer, med ni underkapitler og 6528 ord.
 - Legger inn kompetansemål, læringsmål, oppsummering, 18 begreper, tre oppgavelag og begrunnet quiz.
-- Bruker 24 kontrollerte eksterne kilder med teksthenvisninger og KILDER-liste.
+- Bruker 29 kontrollerte eksterne kilder med teksthenvisninger og KILDER-liste.
 - Behandler Hans i august 2023 og en datert Bangladesh-vurdering fra 2022, uten udokumenterte ferske hendelser eller attribusjonstall.
-- Gjenbruker sju figurer med egen Vg1-visning, og legger til klimadiagram med tydelig merkede øvingsdata og tabell samt en kvalitativ scenariofigur.
+- Gjenbruker sju figurer med egen Vg1-visning, og legger til klimadiagram med kontrollerte Blindern-normaler 1991–2020, kilde, lisens og tabell samt en kvalitativ scenariofigur.
 - Bevarer Geofag-standardvisningene. Tre kartfigurer gjenstår som skjulte markører: 5.0, 5.10 og 5.11.
 - Legger til kapittelspesifikt reseed. Ingen main-, deploy- eller Cloudflare-endring.
 
 ### Kontroll
 
-Typecheck, berørt ESLint, 73 relevante tester, figur-SSR og build er grønne. Åtte standardfigurer har identisk HTML med basen. Fullsuite er ikke grønn fra før: 17 skriptfeil og fem poster-markdown-feil er uendret mot kapittel 4. Ingen nettleser- eller interaksjonstest er gjort. Se `docs/geografi-kap5-redaksjon.md` for avgrensninger, kildeaudit og gjenstående kartarbeid.
+Se ny normaldatavalidering i `docs/geografi-klimanormaler-blindern.md`. Opprinnelig var typecheck, berørt ESLint, 73 relevante tester, figur-SSR og build grønne. Åtte standardfigurer har identisk HTML med basen. Fullsuite er ikke grønn fra før: 17 skriptfeil og fem poster-markdown-feil er uendret mot kapittel 4. Ingen nettleser- eller interaksjonstest er gjort. Se `docs/geografi-kap5-redaksjon.md` for avgrensninger, kildeaudit og gjenstående kartarbeid.
 
 ### Før merge
 
-Mats må lese teksten og godkjenne reseed. Fullfør eller avklar de tre kartfigurene. Vurder om 5.1 skal beholde øvingsdata eller få en lisenskontrollert stasjonsnormal. Ikke framstill oppvarmingstallet for 2011–2020 som en måling av 2026.
+Mats må lese teksten og godkjenne reseed. Fullfør eller avklar de tre kartfigurene. Normalene i 5.1 er kontrollert, og stasjon og normalperiode må følge ved videre bruk. Ikke framstill oppvarmingstallet for 2011–2020 som en måling av 2026.

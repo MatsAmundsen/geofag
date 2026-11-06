@@ -1,18 +1,13 @@
 import { Arrow, C, Diagram, L } from "@/components/diagrams/svg-kit";
 
-// Authored exercise values: never station observations, forecasts or climate normals.
-const OVING = [
-  ["Jan", -4, 60], ["Feb", -3, 45], ["Mar", 1, 45], ["Apr", 6, 40],
-  ["Mai", 11, 50], ["Jun", 15, 65], ["Jul", 17, 80], ["Aug", 16, 85],
-  ["Sep", 12, 80], ["Okt", 7, 90], ["Nov", 2, 85], ["Des", -2, 70],
-] as const;
+import { KLIMANORMAL_STASJON, OSLO_BLINDERN_NORMALER } from "@/lib/geografi-klimanormaler";
 
 export function GeografiKlimadiagram() {
   const temperatureY = (value: number) => 330 - (value + 10) * 8;
   const rainY = (value: number) => 330 - value * 2;
   return <div className="space-y-3">
-    <Diagram title="Konstruert klimadiagram: temperatur som linje og nedbør som søyler" heading="Figur 5.1 – Slik leser vi et klimadiagram"
-      caption="Tallene er konstruert for øving. De gjelder ingen værstasjon, måleperiode eller klimanormal. Temperatur leses på venstre akse, nedbør på høyre. Linje og punkter viser temperatur, søyler viser nedbør. Framstillingsmåten brukes også av Meteorologisk institutt (2021)." viewBox="0 0 900 420" wide scroll>
+    <Diagram title="Klimanormaler 1991–2020 for Oslo – Blindern, stasjon 18700: temperatur som linje og nedbør som søyler" heading="Figur 5.1 – Klimanormaler for Oslo – Blindern"
+      caption="Beregnede klimanormaler for 1991–2020, Oslo – Blindern, stasjon 18700, 94 meter over havet. Månedsmiddeltemperatur leses på venstre akse, normal månedsnedbør på høyre. Linje og punkter viser temperatur, søyler viser nedbør. Data fra Meteorologisk institutt (2021a, 2024). Normalene er ikke værvarsel eller enkeltårets målinger (Tveito, 2021)." viewBox="0 0 900 420" wide scroll>
       {() => <>
         <L x="85" y="40" fill={C.warm} size={17}>Temperatur (°C), linje</L>
         <L x="790" y="40" fill={C.rain} size={17} anchor="end">Nedbør (mm), søyler</L>
@@ -21,21 +16,26 @@ export function GeografiKlimadiagram() {
           <L x="75" y={temperatureY(value) + 5} anchor="end" size={15} fill={C.warm}>{value}</L>
         </g>)}
         {[0, 40, 80, 120].map((value) => <L key={value} x="775" y={rainY(value) + 5} size={15} fill={C.rain}>{value}</L>)}
-        {OVING.map(([month, , rain], i) => <g key={month}>
+        {OSLO_BLINDERN_NORMALER.map(([month, , rain], i) => <g key={month}>
           <rect x={96 + i * 55} y={rainY(rain)} width="28" height={330 - rainY(rain)} fill={C.rain} opacity="0.65" />
           <L x={110 + i * 55} y="365" size={15} anchor="middle">{month}</L>
         </g>)}
-        <polyline points={OVING.map(([, temperature], i) => `${110 + i * 55},${temperatureY(temperature)}`).join(" ")} stroke={C.warm} strokeWidth="4" fill="none" />
-        {OVING.map(([month, temperature], i) => <circle key={month} cx={110 + i * 55} cy={temperatureY(temperature)} r="4" fill={C.warm} />)}
-        <L x="450" y="405" anchor="middle" size={16}>Øvingsdata, ikke målte forhold på et virkelig sted</L>
+        <polyline points={OSLO_BLINDERN_NORMALER.map(([, temperature], i) => `${110 + i * 55},${temperatureY(temperature)}`).join(" ")} stroke={C.warm} strokeWidth="4" fill="none" />
+        {OSLO_BLINDERN_NORMALER.map(([month, temperature], i) => <circle key={month} cx={110 + i * 55} cy={temperatureY(temperature)} r="4" fill={C.warm} />)}
+        <L x="450" y="405" anchor="middle" size={16}>Oslo – Blindern, stasjon 18700 · normalperiode 1991–2020</L>
       </>}
     </Diagram>
+    <p className="text-sm text-muted-foreground">
+      Data fra Meteorologisk institutt. <a href={KLIMANORMAL_STASJON.temperaturKilde} className="underline">Temperaturnormaler (2021a)</a>, {" "}
+      <a href={KLIMANORMAL_STASJON.nedborKilde} className="underline">nedbørnormaler (2024)</a>. {" "}
+      Egen framstilling, uendrede normalverdier, <a href={KLIMANORMAL_STASJON.lisens} className="underline">CC BY 4.0</a> (Meteorologisk institutt, 2026).
+    </p>
     <details className="rounded-lg border border-border p-4">
-      <summary className="cursor-pointer font-semibold">Vis øvingstallene som tabell</summary>
+      <summary className="cursor-pointer font-semibold">Vis klimanormalene som tabell</summary>
       <div className="overflow-x-auto"><table className="mt-3 w-full text-left text-sm">
-        <caption className="pb-2 text-left">Konstruert øvingsdatasett uten stasjon eller normalperiode</caption>
+        <caption className="pb-2 text-left">Oslo – Blindern (18700), 1991–2020: månedsmiddeltemperatur og normal månedsnedbør</caption>
         <thead><tr><th scope="col">Måned</th><th scope="col">Temperatur (°C)</th><th scope="col">Nedbør (mm)</th></tr></thead>
-        <tbody>{OVING.map(([month, temperature, rain]) => <tr key={month}><th scope="row">{month}</th><td>{temperature.toLocaleString("nb-NO")}</td><td>{rain}</td></tr>)}</tbody>
+        <tbody>{OSLO_BLINDERN_NORMALER.map(([month, temperature, rain]) => <tr key={month}><th scope="row">{month}</th><td>{temperature.toLocaleString("nb-NO", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</td><td>{rain}</td></tr>)}</tbody>
       </table></div>
     </details>
   </div>;

@@ -8,6 +8,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import { parsePosterMarkdown } from "./poster-markdown.ts";
 import { beregnGeografiMassebalanse } from "./geografi-massebalanse.ts";
+import { KLIMANORMAL_STASJON, OSLO_BLINDERN_NORMALER } from "./geografi-klimanormaler.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
@@ -546,12 +547,12 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /[Ss]e figur 5\.(?:0|10|11)\b/);
   });
 
-  it("registrerer 24 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 24);
+  it("registrerer 29 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 29);
     for (const domain of ["ipcc.ch", "met.no", "nve.no", "snl.no", "science.nasa.gov", "scied.ucar.edu", "metoffice.gov.uk", "noaa.gov", "kartverket.no", "worldbank.org", "regjeringen.no", "ec.europa.eu", "miljodirektoratet.no", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
-    for (const citation of ["IPCC, 2023", "NASA, u.å.-a", "NASA, u.å.-b", "UCAR, u.å.-a", "UCAR, u.å.-b", "Met Office, u.å.", "Meteorologisk institutt, 2021", "Dannevig & Harstveit, 2026", "Harstveit, 2024", "Barthel, u.å.", "Mamen, u.å.", "Riebeek, 2011", "Lindsey, 2009", "Verdensbanken, 2022", "Sanna, 2023", "Sanna & Holte, 2023", "NVE, 2025", "Kartverket, 2024", "Klima- og miljødepartementet, 2025", "Europakommisjonen, u.å.", "Miljødirektoratet, 2026"])
+    for (const citation of ["IPCC, 2023", "NASA, u.å.-a", "NASA, u.å.-b", "UCAR, u.å.-a", "UCAR, u.å.-b", "Met Office, u.å.", "Meteorologisk institutt, 2021b", "Meteorologisk institutt, 2021a, 2024", "Tveito, 2021", "Norsk klimaservicesenter, 2025", "Dannevig & Harstveit, 2026", "Harstveit, 2024", "Barthel, u.å.", "Mamen, u.å.", "Riebeek, 2011", "Lindsey, 2009", "Verdensbanken, 2022", "Sanna, 2023", "Sanna & Holte, 2023", "NVE, 2025", "Kartverket, 2024", "Klima- og miljødepartementet, 2025", "Europakommisjonen, u.å.", "Miljødirektoratet, 2026"])
       assert.ok(md.includes(citation), citation);
   });
 
@@ -578,12 +579,40 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     }
   });
 
-  it("merker øvingstall og gir klimadiagrammet et tilgjengelig tabellalternativ", () => {
+  it("viser en dokumentert stasjonsnormal med tabell, periode og datakreditering", () => {
     const figure = read("../components/geografi/klima-diagrammer.tsx");
-    for (const phrase of ["Tallene er konstruert for øving", "ingen værstasjon, måleperiode eller klimanormal", "<polyline", "<table", '<th scope="col">', '<th scope="row">', "Temperatur (°C)", "Nedbør (mm)", "ikke temperaturkurver eller beregnede IPCC-baner"])
-      assert.ok(figure.includes(phrase), phrase);
-    assert.match(md, /ikke observasjoner fra en virkelig værstasjon/);
-    assert.doesNotMatch(figure, /fetch\(|https:\/\//);
+    const chartOnly = figure.split("export function GeografiKlimaScenario")[0];
+    for (const expected of ["Oslo – Blindern", "18700", "1991–2020", "<table", "<caption", 'scope="col"', 'scope="row"', "Data fra Meteorologisk institutt", "CC BY 4.0", "2021a, 2024", "Tveito, 2021"]) assert.ok(chartOnly.includes(expected), expected);
+    assert.doesNotMatch(chartOnly, /konstruert|Øvingsdata|Øvingstall|øvingsdatasett|fetch\(/);
+    assert.doesNotMatch(md, /øvingsdiagrammet|øvingsåret|konstruert øvingsdatasett/);
+    assert.match(md, /normalperioden 1991–2020/);
+    assert.match(md, /én stasjonsnormal ikke beskriver alle steder i Oslo/);
+    assert.match(figure, /ikke temperaturkurver eller beregnede IPCC-baner/);
+  });
+
+  it("bevarer de tolv publiserte TAM- og RR-normalene, ikke eldre eller syntetiske tall", () => {
+    assert.deepEqual(OSLO_BLINDERN_NORMALER, [
+      ["Jan", -2.3, 58], ["Feb", -2.0, 46], ["Mar", 1.3, 41], ["Apr", 6.2, 48],
+      ["Mai", 11.4, 60], ["Jun", 15.3, 80], ["Jul", 17.7, 87], ["Aug", 16.5, 103],
+      ["Sep", 12.2, 82], ["Okt", 6.6, 93], ["Nov", 2.2, 85], ["Des", -1.4, 54],
+    ]);
+    assert.equal(OSLO_BLINDERN_NORMALER.reduce((sum, row) => sum + row[2], 0), 837);
+    assert.equal(KLIMANORMAL_STASJON.arsnormalNedbor, 837);
+    assert.equal(KLIMANORMAL_STASJON.id, 18700);
+    assert.equal(KLIMANORMAL_STASJON.periode, "1991–2020");
+    assert.equal(KLIMANORMAL_STASJON.hoydeMeter, 94);
+    assert.equal(KLIMANORMAL_STASJON.temperaturKode, "TAM");
+    assert.equal(KLIMANORMAL_STASJON.nedborKode, "RR");
+  });
+
+  it("kobler normalene til originalfilene, datalisensen og et nytt reseed", () => {
+    assert.match(KLIMANORMAL_STASJON.temperaturKilde, /^https:\/\/www\.met\.no\/kss\/.*StNormaler_mnd_middeltemp_1991-2020\.txt$/);
+    assert.match(KLIMANORMAL_STASJON.nedborKilde, /^https:\/\/www\.met\.no\/kss\/.*StNormaler_mnd_nedbor_1991-2020_rettet\.txt$/);
+    assert.equal(KLIMANORMAL_STASJON.lisens, "https://creativecommons.org/licenses/by/4.0/");
+    assert.ok(sources.includes(KLIMANORMAL_STASJON.temperaturKilde));
+    assert.ok(sources.includes(KLIMANORMAL_STASJON.nedborKilde));
+    for (const checksum of [KLIMANORMAL_STASJON.temperaturSha256, KLIMANORMAL_STASJON.nedborSha256]) assert.match(checksum, /^[a-f0-9]{64}$/);
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-normaler-blindern-1991-2020-2026-11-06",\s+slug: "geo-klima"/);
   });
 
   it("viser kildekritikk, tiltaksskiller og trygg oppgaveløsning", () => {

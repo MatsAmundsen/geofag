@@ -33,9 +33,9 @@ Etter kapitlet kan vi
 
 **Vær** er tilstanden i atmosfæren på et bestemt sted over kort tid. Når vi beskriver været, undersøker vi blant annet temperatur, nedbør, vind og lufttrykk. **Klima** er mønsteret i været over lang tid, med gjennomsnitt og variasjon. Vi må derfor undersøke mange observasjoner, ikke bare en enkelt dag eller årstid. Et sted kan ha kalde dager selv om den langsiktige temperaturutviklingen viser oppvarming (NASA, u.å.-b; Intergovernmental Panel on Climate Change [IPCC], 2023).
 
-En **klimanormal** er et gjennomsnitt som beregnes for en avtalt periode på tretti år. Meteorologisk institutt bruker perioden 1991–2020 som standardnormal fra og med 2021. Normalen gir et sammenlikningsgrunnlag når vi spør om været avviker fra det vanlige. Vi må alltid oppgi normalperioden, fordi ulike perioder kan gi ulike gjennomsnittsverdier. Et skifte av sammenlikningsgrunnlag endrer ikke temperaturene som faktisk ble målt (Meteorologisk institutt, 2021).
+En **klimanormal** er et gjennomsnitt som beregnes for en avtalt periode på tretti år. Meteorologisk institutt bruker perioden 1991–2020 som standardnormal fra og med 2021. Normalen gir et sammenlikningsgrunnlag når vi spør om været avviker fra det vanlige. Vi må alltid oppgi normalperioden, fordi ulike perioder kan gi ulike gjennomsnittsverdier. Et skifte av sammenlikningsgrunnlag endrer ikke temperaturene som faktisk ble målt (Meteorologisk institutt, 2021b).
 
-Klima handler også om hvor ofte uvanlige forhold oppstår, ikke bare om gjennomsnittet. To steder kan derfor ha lik årstemperatur, men svært forskjellige årstider og nedbørsmønstre. Vi undersøker månedene hver for seg før vi forsøker å forklare forskjellene. Når vi sammenlikner steder, må måleperiode, enheter og datagrunnlag passe sammen. Ellers kan en forskjell i framstilling bli feiltolket som en forskjell i klima (NASA, u.å.-b; Meteorologisk institutt, 2021).
+Klima handler også om hvor ofte uvanlige forhold oppstår, ikke bare om gjennomsnittet. To steder kan derfor ha lik årstemperatur, men svært forskjellige årstider og nedbørsmønstre. Vi undersøker månedene hver for seg før vi forsøker å forklare forskjellene. Når vi sammenlikner steder, må måleperiode, enheter og datagrunnlag passe sammen. Ellers kan en forskjell i framstilling bli feiltolket som en forskjell i klima (NASA, u.å.-b; Meteorologisk institutt, 2021b).
 
 ### Trykk, vind og nedbør
 
@@ -45,9 +45,11 @@ Rundt et lavtrykk strømmer luft nær bakken gjerne innover, mens luft stiger ov
 
 ### Les to akser, ikke én
 
-Et **klimadiagram** viser hvordan temperatur og nedbør fordeler seg gjennom årets måneder. Temperatur framstilles ofte som en linje, mens nedbør framstilles med søyler. Vi leser temperaturen i grader celsius og nedbøren i millimeter på hver sin akse. En høy nedbørsøyle betyr derfor ikke at temperaturen også er høy den måneden. Først når vi har lest begge variablene, kan vi beskrive årstidsmønsteret (Meteorologisk institutt, 2021).
+Et **klimadiagram** viser hvordan temperatur og nedbør fordeler seg gjennom årets måneder. Temperatur framstilles ofte som en linje, mens nedbør framstilles med søyler. Vi leser temperaturen i grader celsius og nedbøren i millimeter på hver sin akse. En høy nedbørsøyle betyr derfor ikke at temperaturen også er høy den måneden. Først når vi har lest begge variablene, kan vi beskrive årstidsmønsteret (Meteorologisk institutt, 2021b).
 
-Figur 5.1 inneholder et konstruert øvingsdatasett, ikke observasjoner fra en virkelig værstasjon. Tallene har verken stasjonsnavn, måleperiode eller normalperiode, fordi de bare øver diagramlesing. Vi kan finne høyeste temperatur, laveste temperatur og nedbørfordeling uten å stedfeste datasettet. Vi skal derimot ikke bruke øvingen som dokumentasjon på klimaet i en norsk kommune. Når vi senere henter virkelige data, må stasjon, periode og kilde følge med.
+Figur 5.1 viser klimanormaler for **Oslo – Blindern**, en virkelig målestasjon med stasjonsnummer 18700. Både temperatur og nedbør gjelder normalperioden 1991–2020, ikke været i et enkelt år. Temperaturene er månedsmidler i grader celsius, mens nedbøren er normale månedsmengder i millimeter. Verdiene er hentet fra Meteorologisk institutts publiserte normalfiler, uten at vi har endret tallene. Stasjonsnavn, periode, enheter og kilder følger derfor både figuren og tabellen (Meteorologisk institutt, 2021a, 2024).
+
+Normalene er beregnede referanseverdier, ikke en liste over enkeltmålinger som kan leses direkte fra et instrument. Beregningene kan ta hensyn til blant annet stasjonsflytting, instrumentskifter og mangler i måleseriene. Slik forsøker meteorologene å skille klimaforhold fra andre endringer som kan påvirke registreringene. Verdiene beskriver denne stasjonens normalperiode, ikke hele Oslo eller en sikker værmelding for neste måned. Norsk klimaservicesenter opplyser også at enkelte normalverdier kan få mindre justeringer (Tveito, 2021; Norsk klimaservicesenter, 2025).
 
 ```widget
 GeoKlimaDiagram
@@ -279,7 +281,7 @@ I lokalsamfunnet kan vi starte med å undersøke hvor vann samler seg, og hvilke
 - Klimaendringer påvirker natur og samfunn ulikt. Hans og Bangladesh viser behovet for daterte, stedfestede undersøkelser.
 - Vi trenger både utslippskutt og tilpasning. Virkninger, begrensninger og fordeling må vurderes før tiltak velges.
 
-Oppsummeringen bygger på kildene brukt i de tilsvarende underkapitlene, særlig IPCC (2023), Meteorologisk institutt (2021), Met Office (u.å.), Harstveit (2024) og Verdensbanken (2022).
+Oppsummeringen bygger på kildene brukt i de tilsvarende underkapitlene, særlig IPCC (2023), Meteorologisk institutt (2021b), Met Office (u.å.), Harstveit (2024) og Verdensbanken (2022).
 
 ## Begreper
 
@@ -337,11 +339,11 @@ Definisjonene er forenklet fra de forklarte fagavsnittene og deres kilder, særl
 
 ### 1. Les før vi forklarer
 
-a. Les øvingsdiagrammet i figur 5.1. Oppgi hvilken akse som viser temperatur, og hvilken som viser nedbør.
+a. Les klimadiagrammet for Oslo – Blindern i figur 5.1. Oppgi stasjonsnummer og normalperiode. Oppgi hvilken akse som viser temperatur, og hvilken som viser nedbør.
 
-b. Finn varmeste og kaldeste måned. Regn ut temperaturforskjellen, og summer nedbøren gjennom øvingsåret.
+b. Finn varmeste og kaldeste måned i normalperioden. Regn ut temperaturforskjellen, og summer de tolv månedsnormalene for nedbør.
 
-c. Forklar hvorfor svarene ikke dokumenterer klimaet i Bergen, Nesbyen eller en annen virkelig kommune. Lag en sjekkliste for hvilke opplysninger virkelige data må ha.
+c. Forklar hvorfor én stasjonsnormal ikke beskriver alle steder i Oslo eller viser en endring over tid alene. Lag en sjekkliste for sammenlikning med en annen stasjon eller normalperiode.
 
 ### 2. Følg lufta og vannet
 
@@ -401,7 +403,7 @@ c. Skriv et kort, tenkt kommunalt beslutningsnotat med anbefaling og motargument
 4. Et utslippsscenario er betinget av forutsetninger, ikke en sikker værmelding.
 5. Klimatilpasning gjør utslippskutt unødvendige.
 
-**Svar med begrunnelse:** 1 er fakta: normalen er en referanse, ikke en omskriving av målingene. 2 er fleip: høyre i nord og venstre i sør må forstås i bevegelsesretningen. 3 er fleip: nedsynking og oppvarming kan også skje uten regn på losiden. 4 er fakta: resultatet avhenger av scenarioets forutsetninger. 5 er fleip: tilpasning har begrensninger og stanser ikke videre oppvarming fra nye utslipp (Meteorologisk institutt, 2021; UCAR, u.å.-b; Harstveit, 2024; IPCC, 2023).
+**Svar med begrunnelse:** 1 er fakta: normalen er en referanse, ikke en omskriving av målingene. 2 er fleip: høyre i nord og venstre i sør må forstås i bevegelsesretningen. 3 er fleip: nedsynking og oppvarming kan også skje uten regn på losiden. 4 er fakta: resultatet avhenger av scenarioets forutsetninger. 5 er fleip: tilpasning har begrensninger og stanser ikke videre oppvarming fra nye utslipp (Meteorologisk institutt, 2021b; UCAR, u.å.-b; Harstveit, 2024; IPCC, 2023).
 
 ### En skal ut
 

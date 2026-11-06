@@ -590,16 +590,34 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://snl.no/klimasoner",
     },
     {
-      prefix: "Meteorologisk institutt. (2021, 18. januar). ",
+      prefix: "Met Office. (u.å.). ",
+      italic: "Global circulation patterns",
+      suffix: ". Hentet 6. november 2026.",
+      href: "https://www.metoffice.gov.uk/weather/learn-about/weather/atmosphere/global-circulation-patterns",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2021a, 17. september). ",
+      italic: "Månedsnormaler 1991–2020 for TAM, middeltemperatur",
+      suffix: " [Datasett, stasjon 18700]. Hentet 6. november 2026.",
+      href: "https://www.met.no/kss/_/attachment/download/a2d191d6-b9ef-4d78-ac26-9eee4ce28743:969dfb48bad54d95b9dca7685778f05448f42892/StNormaler_mnd_middeltemp_1991-2020.txt",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2021b, 18. januar). ",
       italic: "Ny normal i klimaforskningen",
       suffix: ". Opprinnelig publisert 16. desember 2020.",
       href: "https://www.met.no/vaer-og-klima/ny-normal-i-klimaforskningen",
     },
     {
-      prefix: "Met Office. (u.å.). ",
-      italic: "Global circulation patterns",
-      suffix: ". Hentet 6. november 2026.",
-      href: "https://www.metoffice.gov.uk/weather/learn-about/weather/atmosphere/global-circulation-patterns",
+      prefix: "Meteorologisk institutt. (2024, 29. februar). ",
+      italic: "Månedsnormaler 1991–2020 for RR, nedbør",
+      suffix: " [Datasett, rettet fil, stasjon 18700]. Hentet 6. november 2026.",
+      href: "https://www.met.no/kss/_/attachment/download/bb6a7fc4-429b-48a7-9788-9c5651774ba4:2a626567cdf7a7822a683029f30d0f8bf21efc18/StNormaler_mnd_nedbor_1991-2020_rettet.txt",
+    },
+    {
+      prefix: "Meteorologisk institutt. (2026, 3. juni). ",
+      italic: "Lisensiering og kreditering",
+      suffix: ". Data publisert under NLOD og CC BY 4.0.",
+      href: "https://www.met.no/frie-meteorologiske-data/lisensiering-og-kreditering",
     },
     {
       prefix: "Miljødirektoratet. (2026). ",
@@ -632,6 +650,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.nve.no/vann-og-vassdrag/vannets-kretsloep/klima/klima-naa-og-i-framtiden/",
     },
     {
+      prefix: "Norsk klimaservicesenter. (2025, oktober). ",
+      italic: "Klimanormaler",
+      suffix: ". Hentet 6. november 2026.",
+      href: "https://klimaservicesenter.no/kss/vrdata/normaler",
+    },
+    {
       prefix: "Riebeek, H. (2011, 16. juni). ",
       italic: "The Carbon Cycle",
       suffix: ". NASA Earth Observatory.",
@@ -648,6 +672,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "August 2023 vil bli husket for ekstremværet som rammet Sør-Norge",
       suffix: ". Meteorologisk institutt.",
       href: "https://www.met.no/nyhetsarkiv/august-2023-vil-bli-husket-for-ekstremvaeret-som-rammet-sor-norge",
+    },
+    {
+      prefix: "Tveito, O. E. (2021, 25. august). ",
+      italic: "Norwegian standard climate normals 1991–2020: The methodological approach",
+      suffix: " (MET report 05/2021). Meteorologisk institutt.",
+      href: "https://www.met.no/publikasjoner/met-report/met-report-2021/_/attachment/inline/31bb0160-d8cf-4a2b-9646-4df6f5904059:3ac4fec6cf3fb7919aefe42db2b63ad8e8b9e6a6/METreport%2005_2021_New_Norwegian_standard_climate_normals_1991_2020-signert.pdf",
     },
     {
       prefix: "University Corporation for Atmospheric Research [UCAR]. (u.å.-a). ",
@@ -673,7 +703,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       suffix: ".",
       href: "https://www.worldbank.org/en/news/press-release/2022/10/31/urgent-climate-action-crucial-for-bangladesh-to-sustain-strong-growth",
     },
-  ] as const,
+  ],
   "geo-naturfare": [
     {
       prefix: "Bjerknessenteret. (u.å.). ",
