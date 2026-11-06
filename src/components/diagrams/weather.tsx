@@ -11,7 +11,7 @@ export function PolarFrontCycloneSteps() {
       viewBox="0 0 920 280"
       wide
     >
-      {(m) => (
+      {() => (
         <>
           {/* 4 paneler side om side */}
           {/* Steg 1: Bølge */}
@@ -146,8 +146,26 @@ export function ValleyWindDiagram() {
   );
 }
 
-export function FoehnAdiabaticDiagram() {
+export function FoehnAdiabaticDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   const a = useLokalAnim("Fønvind");
+  if (geografi) return (
+    <Diagram title="Luft stiger over fjellet og varmes når den synker på lesiden" heading="Figur 5.6 – Fjellnedbør og fønvind"
+      caption="På losiden stiger luft og avkjøles. Dersom lufta blir mettet, kan skyer og nedbør dannes. På lesiden synker lufta, trykket øker og lufta varmes. Uten tilført fuktighet faller den relative luftfuktigheten. Føn krever ikke at det først har regnet på losiden. Figuren er kvalitativ, uten temperaturer, høyder eller beregnet vindstyrke (Harstveit, 2024; Dannevig mfl., u.å.)." viewBox="0 0 900 450" wide scroll>
+      {(m) => <>
+        <path d="M 50 370 L 450 130 L 850 370 Z" fill="#17222a" stroke={C.dim} strokeWidth={2} />
+        <Arrow d="M 120 330 Q 240 210 410 150" marker={m.rain} color={C.rain} width={4} />
+        <Arrow d="M 490 150 Q 650 220 780 330" marker={m.warm} color={C.warm} width={4} />
+        <L x="200" y="60" anchor="middle" size={20} fill={C.rain} weight={700}>Loside</L>
+        <L x="200" y="85" anchor="middle" size={16}>Luft stiger og avkjøles</L>
+        <L x="700" y="60" anchor="middle" size={20} fill={C.warm} weight={700}>Leside</L>
+        <L x="700" y="85" anchor="middle" size={16}>Luft synker og varmes</L>
+        <L x="170" y="160" anchor="middle" size={16}>Mulig sky og nedbør</L>
+        <L x="710" y="180" anchor="middle" size={16}>Økende trykk</L>
+        <L x="710" y="205" anchor="middle" size={16}>Lavere relativ fuktighet</L>
+        <L x="450" y="410" anchor="middle" size={16}>Vindretningen avgjør hvilken side som er lo og le.</L>
+      </>}
+    </Diagram>
+  );
   return (
     <Diagram
       action={a.knapp}

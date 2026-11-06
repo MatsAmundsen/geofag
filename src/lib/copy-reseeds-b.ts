@@ -36,6 +36,18 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     stale: ["FIGURPLASSHOLDER"],
   },
   {
+    // Nytt reseed: stasjonsnormaler erstatter øvingsdata, uten å endre tidligere flagg.
+    flag: "geo-klima-normaler-blindern-1991-2020-2026-11-06",
+    slug: "geo-klima",
+    stale: ["konstruert øvingsdatasett", "gjennom øvingsåret"],
+  },
+  {
+    // Geografi: kapittel 5 alene; aktiveres først etter godkjent merge.
+    flag: "geo-klima-kap5-2026-11-06",
+    slug: "geo-klima",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
     // Geografi: kapittel 4 alene; aktiveres først etter godkjent merge.
     flag: "geo-landskap-kap4-2026-11-06",
     slug: "geo-landskap",

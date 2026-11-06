@@ -157,6 +157,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "klima",
+    tekstKlar: true,
     slug: "geo-klima",
     title: "Vær, klima og klimaendringer",
     navLabel: "Klima",

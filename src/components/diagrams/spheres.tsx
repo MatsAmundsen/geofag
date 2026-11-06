@@ -130,12 +130,13 @@ export function SpheresDiagram() {
   );
 }
 
-export function CarbonCycleDiagram() {
+export function CarbonCycleDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <Diagram
       title="Det globale karbonkretsløpet"
-      heading="Raske biologiske og langsomme geologiske kretsløp"
-      caption="Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilførte om lag 10,3 GtC i 2024 (Friedlingstein mfl., 2026). Atmosfærelageret (ca. 870 GtC (2019)) er fra IPCC (2021), AR6 WG1 kap. 5."
+      heading={geografi ? "Figur 5.8 – Karbon flyttes mellom lagre" : "Raske biologiske og langsomme geologiske kretsløp"}
+      caption={geografi ? "Karbon finnes i luft, levende organismer, jordsmonn, hav og berggrunn. Fotosyntese tar opp CO₂. Celleånding, nedbrytning og forbrenning kan sende karbon tilbake til lufta. Figuren viser utvalgte lagre og overføringer, uten tall eller fullstendig karbonregnskap. Pilbreddene angir ikke mengder (Riebeek, 2011)." : "Karbon sirkulerer mellom sfærene. Det biologiske kretsløpet (fotosyntese, respirasjon og havutveksling) flytter store mengder karbon på år–tiår. Det geologiske kretsløpet (regn som løser berg, kalkstein og vulkanutbrudd) styrer jordas langsiktige termostat over millioner av år. Menneskelig forbrenning av fossilt karbon tilførte om lag 10,3 GtC i 2024 (Friedlingstein mfl., 2026). Atmosfærelageret (ca. 870 GtC (2019)) er fra IPCC (2021), AR6 WG1 kap. 5."}
+      scroll={geografi}
       viewBox="0 0 860 480"
     >
       {(m) => (
@@ -146,7 +147,7 @@ export function CarbonCycleDiagram() {
             Atmosfæren
           </L>
           <L x="430" y="74" fill={C.fg} size={14} weight={600} anchor="middle">
-            ca. 870 GtC (2019, IPCC AR6)
+            {geografi ? "CO₂ i lufta" : "ca. 870 GtC (2019, IPCC AR6)"}
           </L>
 
           {/* Soneangivelser / bakgrunner */}
@@ -156,7 +157,7 @@ export function CarbonCycleDiagram() {
             Vegetasjon og biosfære
           </L>
           <L x="150" y="210" fill={C.fg} size={13} anchor="middle">
-            ~550 GtC
+            {geografi ? "Karbon i planter" : "~550 GtC"}
           </L>
           <L x="150" y="232" fill={C.muted} size={12} anchor="middle">
             Fotosyntese og respirasjon
@@ -167,7 +168,7 @@ export function CarbonCycleDiagram() {
             Jordsmonn og humus
           </L>
           <L x="150" y="316" fill={C.fg} size={13} anchor="middle">
-            ~1500–2000 GtC
+            {geografi ? "Karbon fra dødt materiale" : "~1500–2000 GtC"}
           </L>
 
           {/* Fossile brensler nederst til venstre */}
@@ -176,7 +177,7 @@ export function CarbonCycleDiagram() {
             Fossile brensler
           </L>
           <L x="150" y="428" fill={C.fg} size={13} anchor="middle">
-            Kull, olje, gass: ~4000 GtC
+            {geografi ? "Kull, olje og gass" : "Kull, olje, gass: ~4000 GtC"}
           </L>
 
           {/* Høyre: Havet */}
@@ -185,10 +186,10 @@ export function CarbonCycleDiagram() {
             Overflatehavet
           </L>
           <L x="700" y="210" fill={C.fg} size={13} anchor="middle">
-            ~1000 GtC
+            {geografi ? "Utveksling med lufta" : "~1000 GtC"}
           </L>
           <L x="700" y="230" fill={C.muted} size={12} anchor="middle">
-            Fysisk/biologisk pumpe
+            {geografi ? "Utveksling med dyphavet" : "Fysisk/biologisk pumpe"}
           </L>
 
           <rect x="580" y="260" width="240" height="75" rx="8" fill="#0d1b26" stroke={C.cold} strokeWidth="1.6" />
@@ -196,7 +197,7 @@ export function CarbonCycleDiagram() {
             Dyphavet
           </L>
           <L x="700" y="312" fill={C.fg} size={13} anchor="middle">
-            ~38 000 GtC
+            {geografi ? "Langvarig lagring" : "~38 000 GtC"}
           </L>
 
           {/* Nederst: Litosfæren / Kalkstein */}
@@ -205,36 +206,36 @@ export function CarbonCycleDiagram() {
             Sedimentære bergarter og kalkstein (CaCO₃)
           </L>
           <L x="560" y="428" fill={C.sand} size={14} weight={600} anchor="middle">
-            Jordas største reservoar: 60–100 millioner GtC
+            {geografi ? "Karbon kan lagres lenge" : "Jordas største reservoar: 60–100 millioner GtC"}
           </L>
 
           {/* PILER: BIOLOGISKE FLUKSER */}
           {/* Fotosyntese ned (120) */}
           <Arrow d="M 310 96 L 210 160" marker={m.teal} color={C.teal} width={2.8} />
           <L x="235" y="116" fill={C.teal} size={12} weight={600}>
-            Fotosyntese (120 GtC/år)
+            {geografi ? "Fotosyntese" : "Fotosyntese (120 GtC/år)"}
           </L>
 
           {/* Respirasjon opp (120) */}
           <Arrow d="M 170 160 L 270 96" marker={m.warm} color={C.warm} width={2.4} />
           <L x="145" y="140" fill={C.warm} size={12}>
-            Respirasjon
+            {geografi ? "Celleånding" : "Respirasjon"}
           </L>
 
           {/* Fossilt brensel forbrenning (10 Gt/år) */}
           <Arrow d="M 120 380 Q 110 120 250 85" marker={m.warm} color="#f97316" width={3.2} />
           <L x="90" y="360" fill="#f97316" size={13} weight={700}>
-            Fossile utslipp (ca. 10,3 GtC/år)
+            {geografi ? "Forbrenning" : "Fossile utslipp (ca. 10,3 GtC/år)"}
           </L>
 
           {/* Havutveksling toveis */}
           <Arrow d="M 570 96 L 640 160" marker={m.cold} color={C.cold} width={2.6} />
           <L x="625" y="120" fill={C.cold} size={12}>
-            Løses i hav (90)
+            {geografi ? "Opptak i havet" : "Løses i hav (90)"}
           </L>
           <Arrow d="M 680 160 L 610 96" marker={m.warm} color={C.sand} width={2.6} />
           <L x="670" y="140" fill={C.sand} size={12}>
-            Utgassing (90)
+            {geografi ? "Tilbake til lufta" : "Utgassing (90)"}
           </L>
 
           {/* Havets overflate til dyp */}
@@ -244,13 +245,13 @@ export function CarbonCycleDiagram() {
           {/* Forvitring og sedimentasjon */}
           <Arrow d="M 670 335 L 670 380" marker={m.sand} color={C.sand} width={2.4} />
           <L x="680" y="360" fill={C.sand} size={12} weight={600}>
-            Sedimentasjon (0,2 GtC/år)
+            {geografi ? "Avsetning" : "Sedimentasjon (0,2 GtC/år)"}
           </L>
 
           {/* Vulkanutbrudd og metamorfose fra litosfære opp til atmosfære */}
           <Arrow d="M 440 380 L 440 96" marker={m.warm} color={C.warm} width={2.2} />
           <L x="448" y="235" fill={C.warm} size={12} weight={600}>
-            Vulkansk utgassing (0,1 GtC/år)
+            {geografi ? "Vulkansk utgassing" : "Vulkansk utgassing (0,1 GtC/år)"}
           </L>
 
           {/* Kjemisk silikatforvitring fra atmosfære til litosfære */}
