@@ -6,6 +6,12 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    // Geografi PR B: erstatt kapittel 1-stubben med fagtekst; aktiveres først ved godkjent merge.
+    flag: "geo-verktoy-kap1-2026-11-06",
+    slug: "geo-verktoy",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
     // Værkart (T3): værradar, satellitt (VIS/IR), egne observasjoner, regneeksempel for frontfart.
     // NWS-kilden for tråg-raden har fått bokstav (u.å.-a), og SjekkVaerkart4 står nå etter 500 hPa-kartet.
     flag: "vaerkart-pakke-b-2026-10-29",

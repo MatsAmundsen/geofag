@@ -3,6 +3,9 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import ReactMarkdown from "react-markdown";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
@@ -70,7 +73,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      assert.match(md, /under arbeid/i);
+      if (c.slug !== "geo-verktoy") assert.match(md, /under arbeid/i);
     });
   }
 
@@ -80,7 +83,88 @@ describe("Geografi skjelett (PR A)", () => {
       .sort();
     assert.deepEqual(
       files,
-      CHAPTERS.map((c) => `${c.slug}.md`).slice().sort(),
+      CHAPTERS.map((c) => `${c.slug}.md`)
+        .slice()
+        .sort(),
     );
+  });
+});
+
+describe("Geografi kapittel 1: fagtekst (PR B)", () => {
+  const md = read("posts/geo-verktoy.md");
+
+  it("dekker alle åtte underkapitler og kapittelmalens avslutning", () => {
+    for (const title of [
+      "Hva er geografi",
+      "Geografiske begreper",
+      "Kart og projeksjoner",
+      "Koordinater og målestokk",
+      "Lese topografisk kart",
+      "Temakart og mentale kart",
+      "Fjernmåling og GIS",
+      "Kildekritikk",
+      "Læringsmål",
+      "Oppsummering",
+      "Begreper",
+      "Spørsmål",
+      "Hva tror du?",
+      "Oppgaver",
+      "Quiz",
+    ])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    assert.match(md, /KM487/);
+    assert.match(md, /KM486/);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler/);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## To kart"));
+    assert.ok(md.indexOf("## To kart") < md.indexOf("## Læringsmål"));
+  });
+
+  it("bevarer elleve figurplasser uten synlige redaktørnotater", () => {
+    const placeholders = [...md.matchAll(/^\[figur-1-(\d+)\]: # \(FIGURPLASSHOLDER/gm)];
+    assert.deepEqual(
+      placeholders.map((m) => Number(m[1])).sort((a, b) => a - b),
+      Array.from({ length: 11 }, (_, i) => i),
+    );
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap1-redaksjon|figur-1-/);
+    assert.match(html, /John Snows kolerakart/);
+    // Teksten må kunne leses også før de planlagte figurene er levert.
+    assert.doesNotMatch(md, /[Ss]e figur 1\.|[Ss]om figur 1\./);
+  });
+
+  it("har kilder, hypotetiske eksempler og korrekt avgrenset Snow-case", () => {
+    const sources = read("kilder-geografi.ts").split('"geo-feltarbeid"')[0];
+    assert.equal((sources.match(/href: /g) ?? []).length, 16);
+    for (const domain of [
+      "udir.no",
+      "kartverket.no",
+      "snl.no",
+      "nibio.no",
+      "usgs.gov",
+      "spektrum.de",
+      "esri.com",
+      "nationalgeographic.org",
+    ])
+      assert.ok(sources.includes(domain), domain);
+    assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
+    assert.match(md, /konstruert regneeksempel/);
+    assert.match(md, /ikke første gang/);
+    assert.match(md, /30 meters romlig oppløsning/);
+    assert.match(md, /1 500 meter, eller 1,5 kilometer/);
+  });
+
+  it("registrerer reseed og erstatter skjelettvisningen bare for kapitler med fagtekst", () => {
+    const reseeds = read("copy-reseeds-b.ts");
+    assert.match(reseeds, /flag: "geo-verktoy-kap1-2026-11-06"/);
+    assert.match(reseeds, /slug: "geo-verktoy"/);
+    assert.match(reseeds, /## Planlagte underkapitler/);
+    assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
+    const kapitler = read("geografi-kapitler.ts");
+    assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 1);
+    assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
+    const header = read("../components/site-header.tsx");
+    assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
+    assert.match(header, /params: \{ kapittel: item.to.slice/);
   });
 });
