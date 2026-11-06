@@ -3,6 +3,8 @@
 > Elevene skal kunne
 >
 > - gjøre rede for bevegelser i jordas indre og hvilke konsekvenser de har for jordskorpa og jordoverflaten
+> - gjøre rede for ulike naturfarer knyttet til geosfæren og hydrosfæren, og vurdere hvordan mennesker kan forebygge og tilpasse seg disse farene
+> - utforske en naturfare knyttet til geosfæren eller hydrosfæren i et bestemt geografisk område og vurdere risiko ved hjelp av modellering
 >
 > (Utdanningsdirektoratet [Udir], u.å.-b)
 >
@@ -10,9 +12,13 @@
 >
 > • *Jordsystemer i tid og rom:* «Kjerneelementet jordsystemer handler om delsystemer som geosfæren, atmosfæren, hydrosfæren, kryosfæren og biosfæren. Videre handler kjerneelementet om komponenter og prosesser i disse delsystemene og hvordan delsystemene vekselvirker med hverandre.» (Udir, u.å.-a)
 >
+> • *Modeller og modellering:* «Modeller brukes til å undersøke, forklare og presentere geofaglige prosesser og fenomener.» (Udir, u.å.-a)
+>
+> • *Mennesket i jordsystemene:* «Mennesket i jordsystemene handler også om hvordan vi kan forebygge og beskytte oss mot klimaendringer og naturfarer gjennom forskning og forvaltning.» (Udir, u.å.-a)
+>
 > **I dette kapitlet lærer du om**
 >
-> elastisk tilbakefjæring, skjelvdybde, skjelv ved plategrenser og inne på en plate, P-, S- og overflatebølger, magnitude og intensitet, hvordan bølgene avslører jordas indre, og jordskjelv i Norge.
+> elastisk tilbakefjæring, skjelvdybde, skjelv ved plategrenser og inne på en plate, P-, S- og overflatebølger, magnitude og intensitet, hvordan bølgene avslører jordas indre, jordskjelv i Norge, skader, resonans og likvefaksjon, varsling, og fare, eksponering, sårbarhet og risiko.
 
 > **Hva tror du?**
 >
@@ -58,7 +64,7 @@ Ved en *midthavsrygg* går platene fra hverandre, og det oppstår jordskjelv. Is
 
 ### Der en plate synker
 
-Der en havbunnsplate synker under en annen, i en *subduksjonssone* (subduksjon = nedføring), får vi de største skjelvene på jorda. Andesfjellene er typeeksempelet: Nazcaplaten synker under Sør-Amerika, og landet heves (USGS, u.å.-b). Her skjedde også det største skjelvet som noen gang er målt, i Chile 22. mai 1960 (magnitude 9,5). Skjelvet satte i gang en *tsunami*, det vil si en flodbølge som oppstår når havbunnen plutselig flytter seg. Tsunamien krysset hele Stillehavet og tok liv på Hawaii og i Japan. Mer om tsunamier står i kapitlet [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare). Et nyere eksempel er skjelvet utenfor nordøstkysten av Japan 11. mars 2011 (magnitude 9,1), der Stillehavsplaten dukker ned under Japan. Tsunamien la store kyststrekninger øde, ca. 18 500 mennesker døde eller ble savnet, og kjernekraftverket i Fukushima ble alvorlig skadet (USGS, u.å.-d).
+Der en havbunnsplate synker under en annen, i en *subduksjonssone* (subduksjon = nedføring), får vi de største skjelvene på jorda. Andesfjellene er typeeksempelet: Nazcaplaten synker under Sør-Amerika, og landet heves (USGS, u.å.-b). Her skjedde også det største skjelvet som noen gang er målt, i Chile 22. mai 1960 (magnitude 9,5). Skjelvet satte i gang en *tsunami*, det vil si en flodbølge som oppstår når havbunnen plutselig flytter seg. Tsunamien krysset hele Stillehavet og tok liv på Hawaii og i Japan. Mer om tsunamier står i kapitlet [Tsunami](/geofag-1/tsunami). Et nyere eksempel er skjelvet utenfor nordøstkysten av Japan 11. mars 2011 (magnitude 9,1), der Stillehavsplaten dukker ned under Japan. Tsunamien la store kyststrekninger øde, og kjernekraftverket i Fukushima ble alvorlig skadet (USGS, u.å.-d). NOAA oppgir at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan. Hvordan tallet er telt, står i kapitlet [Tsunami](/geofag-1/tsunami).
 
 Hvorfor blir skjelvene så store nettopp her? Alle skjelv over magnitude 9 som er målt, har skjedd i subduksjonssoner. Det er fordi bruddflaten der kan bli svært stor, opptil flere hundre kilometer lang og over hundre kilometer bred. Jo større bruddflaten er, desto større kan skjelvet bli.
 
@@ -144,9 +150,84 @@ Magnitude må ikke blandes sammen med *intensitet*. Magnituden beskriver skjelve
 
 Intensitet er særlig nyttig for historiske skjelv fra tiden før det fantes seismografer. Ut fra brev, aviser og skadebeskrivelser kan seismologene tegne kart over hvor sterkt skjelvet ble merket. Ut fra hvor stort området med en viss intensitet var, anslår de så magnituden. Det er slik vi vet noe om skjelvet på Helgeland i 1819, som hadde størst virkning rundt Ranfjorden. NORSAR anslår magnituden til ca. 5,8 (NORSAR, u.å.-d). Slike anslag er naturlig nok mer usikre enn målinger med moderne instrumenter.
 
-### Hvor ofte skjer store skjelv?
+## Jordskjelv som naturfare
 
-Små skjelv er det svært mange av, store skjelv er det få av. Hver gang magnituden øker med ett trinn, blir det omtrent ti ganger færre skjelv. USGS har beregnet at det i gjennomsnitt skjer ca. 15 skjelv med magnitude 7–7,9 i året. Skjelv med magnitude 8 eller mer skjer ca. én gang i året, men tallet varierer mye fra år til år (USGS, u.å.-c). Skjelv med magnitude 9 eller mer er svært sjeldne. På 2000-tallet har det vært to: Indiahavet 2004 og Japan 2011.
+Det er sjelden selve rystelsene som tar liv. De fleste dør når bygninger raser sammen, eller av følgene av skjelvet: skred, brann og tsunami. Hvor store skadene blir, avhenger derfor like mye av samfunnet som av naturen.
+
+### Hva avgjør hvor store skadene blir?
+
+Magnituden er viktig, men den er bare én av flere faktorer. Avstand fra episenteret og dybde er allerede forklart under intensitet og under «Grunne og dype skjelv»: rystelsene svekkes med avstanden, og grunne skjelv gir de kraftigste rystelsene på overflaten. To forhold kommer i tillegg. Varigheten spiller inn, for et skjelv som rister i to minutter, sliter mer på bygningene enn et som varer i ti sekunder. Grunnen bygningene står på, er også avgjørende. På bløt leire, sand og oppfylte masser blir rystelsene forsterket, mens fast fjell rister mindre. Oppfylte masser, eller fyllmasser, er jord og stein som er kjørt på for å lage ny byggegrunn.
+
+Hvorfor forsterker bløte masser rystelsene? Jordskjelvbølgene går raskt gjennom fast fjell. Når de kommer over i bløte masser, går de mye saktere. Energien i bølgen forsvinner likevel ikke. Den hoper seg opp, og bakken må bevege seg mer for å bære den samme energien videre. Utslagene blir derfor større. Det ligner grunningen av en tsunami, som er forklart i kapitlet [Tsunami](/geofag-1/tsunami). Bølgene kan dessuten bli fanget i det bløte laget og kastes fram og tilbake mellom fjellet under og overflaten. Da rister bakken lenger. Lagtykkelse, frekvens og demping virker sammen. Et tykkere lag gir ikke alltid kraftigere rystelse.
+
+### Rystelser og bygninger
+
+Rystelsene ødelegger først og fremst bygninger som ikke er laget for å tåle at bakken beveger seg sidelengs. Murbygninger uten armering og tunge betongbygg med svake søyler er ofte utsatt, mens trehus er lette og fleksible og ofte klarer seg bedre. Det er likevel ikke en universell rangering av materialer: utførelsen og forskriftene betyr mer enn navnet på materialet. Derfor er byggeskikk og byggeforskrifter det viktigste vernet vi har mot jordskjelv. Samme naturfare kan gi helt ulike følger. Skjelvet på Haiti 12. januar 2010 (magnitude 7,0) rammet en tettbygd hovedstad med svake bygninger og ble en av de mest dødelige katastrofene i moderne tid. Hvor mange som døde, er usikkert: anslagene varierer mye mellom kildene, og myndighetenes tall er omstridt. Skjelv av samme størrelse i land med strenge byggeforskrifter krever ofte få eller ingen liv (USGS, u.å.-d).
+
+> **Jordskjelv og resonans**
+>
+> Da et skjelv rammet Mexicos stillehavskyst 19. september 1985, ble store deler av sentrum i Mexico by ødelagt. USGS sin katalog oppgir magnitude 8,0. Eldre rapporter kan oppgi Ms 8,1. Det er ulike magnitudeskalaer for samme skjelv, ikke to hendelser (USGS, u.å.-d). Byen lå ca. 350 km fra episenteret, og det var særlig bygninger på ca. 6–15 etasjer som kollapset (Earthquake Engineering Research Institute [EERI], 1986). Sentrum ligger på bløte sedimenter fra en gammel innsjøbunn, og som nevnt forsterker bløte masser rystelsene. Hver bygning har dessuten sin egen *svingefrekvens*. Det er hvor mange ganger i sekundet bygningen svinger fram og tilbake av seg selv når den først er satt i gang. Jo høyere bygningen er, desto langsommere svinger den. Sedimentene fikk bakken til å svinge i takt med svingefrekvensen til de middels høye bygningene. Når noe blir dyttet i takt med sin egen svingefrekvens, blir svingningene større og større. Det kaller vi *resonans*. Demping og hvordan bygningen er konstruert, betyr også noe. Resonans er ikke den eneste forklaringen på hvilke hus som falt.
+
+### Skred og likvefaksjon
+
+I bratt terreng kan rystelsene utløse jordskred, steinsprang og fjellskred, slik de gjorde ved Helgeland i 1819. Den hendelsen står under «Historiske skjelv». En mer overraskende skadetype er *likvefaksjon* (fra latin liquefacere = å gjøre flytende). I vannmettet sand og silt ligger kornene løst mot hverandre, med vann i porene. Når grunnen rister, presses kornene sammen, vanntrykket i porene øker, og kornene mister kontakten med hverandre. Grunnen oppfører seg da som en tykk væske. Bygninger kan synke ned eller velte, og sand og vann kan sprute opp gjennom sprekker. Likvefaksjon ga store skader i Christchurch på New Zealand i 2011, ved et skjelv med magnitude 6,2. Hendelsen er dokumentert av GeoNet, New Zealands overvåkingstjeneste for jordskjelv og vulkaner (GeoNet, u.å.). Likvefaksjon ga også store skader i havneområdene i Kobe i Japan i 1995 (USGS, u.å.-d).
+
+### Følgehendelser
+
+Når gassledninger og strømkabler ryker, kan det oppstå branner, og ødelagte vannledninger gjør det vanskelig å slokke dem. Etter skjelvet i San Francisco som er omtalt under transformforkastninger, brant store deler av byen i flere dager. USGS regner med at brannen gjorde mer skade enn selve rystelsene (USGS, u.å.-f). Et undersjøisk skjelv kan også utløse tsunami. Hvordan bølgen blir til, og hva som skjedde i Indiahavet og i Japan, står i kapitlet [Tsunami](/geofag-1/tsunami).
+
+Faren er heller ikke over når rystelsene stopper. I timene, dagene og månedene etterpå kommer det ofte mindre skjelv i det samme området, såkalte *etterskjelv*. De oppstår fordi spenningen i berget rundt bruddet blir fordelt på nytt. Etterskjelvene rammer bygninger som allerede er svekket. Ødelagte veier, bruer og havner gjør det dessuten vanskelig å få fram hjelp.
+
+> **Jordskjelv i by**
+>
+> Dette er et scenario, ikke en prognose og ikke en hendelse som er observert. Direktoratet for samfunnssikkerhet og beredskap (DSB) har analysert et kraftig skjelv i Bergen. Analysen er fra 2014 og revidert i 2018. Tallene under er hentet fra rapporten som kom i 2019.
+>
+> | Hendelsesforløp | Tidspunkt | Omfang | Lignende hendelser |
+> | --- | --- | --- | --- |
+> | Et skjelv med magnitude 6,5 på Øygarden-forkastningen, som går parallelt med kysten vest for Bergen. Det kommer uten forvarsel. Mange skadesteder samtidig i Bergen kommune (ca. 280 000 innbyggere), skred og steinsprang, delvis strømbrudd, ustabile ekomtjenester og problemer med drikkevannet. | Midt på dagen en hverdag i januar | Skjelvet varer i ca. 45 sekunder, og de kraftigste rystelsene i ca. 25 sekunder. Faren for etterskjelv varer i måneder, kanskje år. | Oslofjorden 1904 (magnitude 5,4); Storfjorden, Svalbard 2008 (magnitude 6,2); Christchurch 2011 (magnitude 6,2; GeoNet, u.å.) |
+>
+> DSB anslår i overkant av 300 døde, rundt 500 alvorlig skadde og direkte tap på over 35 milliarder kroner. Sannsynligheten er ca. 3 prosent i løpet av 100 år (DSB, 2019; DSB, u.å.).
+
+```widget
+SjekkJordskjelvSkade
+```
+
+```widget
+YtMaria06
+```
+
+## Kan jordskjelv varsles?
+
+Det er vanskelig å varsle jordskjelv. Seismologene kan ofte si *hvor* det kommer store skjelv, og omtrent *hvor ofte*, men ikke *når* det neste kommer. Overvåking, som er omtalt lenger nede, forteller hva som skjer nå. Den er ikke det samme som å forutsi datoen for neste skjelv. Vi skiller derfor mellom flere typer varsling, og de er svært forskjellige i hvor sikre de kan være.
+
+### Langtidsvarsling
+
+*Langtidsvarsling* er å beregne hvor sannsynlig det er at et område blir rammet av kraftige rystelser i løpet av en viss tid, for eksempel 50 år. Grunnlaget er kataloger over tidligere skjelv, kart over aktive forkastninger og målinger av platebevegelsene. Resultatet er *seismiske farekart*. De viser for eksempel at faren i Europa er størst i Italia, Hellas og Tyrkia, der Den afrikanske og Den eurasiske platen møtes, og på Island (European Facilities for Earthquake Hazard and Risk [EFEHR], 2021). Slike kart er grunnlaget for byggeforskriftene. Langtidsvarsling er altså ikke et varsel om at noe skal skje, men en vurdering av sannsynlighet. Gjentaksintervall og byggekrav lenger nede bruker et valgt regneeksempel, ikke et målt norsk intervall.
+
+### Korttidsvarsling
+
+*Korttidsvarsling* er å varsle at et bestemt skjelv vil komme i løpet av timer eller dager. Det har vist seg nesten umulig, og eksemplene under er historiske unntak, ikke en metode som virker i dag. Det mest kjente unntaket er Haicheng i Kina 4. februar 1975 (magnitude 7,3). Dagene før kom det mange små skjelv i området. Små skjelv som kommer før et større skjelv, kaller vi *forskjelv*. Myndighetene ba folk forlate husene. USGS oppgir at 2041 mennesker døde, og at tallet kunne blitt langt høyere uten evakueringen (USGS, u.å.-h). Senere gjennomganger viser at varselet bygde på de mange forskjelvene, men at tilfeldigheter også spilte inn (Wang mfl., 2006). Bare halvannet år senere, 28. juli 1976, rammet et skjelv med magnitude 7,6 byen Tangshan uten forvarsel, og anslagsvis 250 000 mennesker døde (USGS, u.å.-h).
+
+Problemet er at de fleste store skjelv ikke har tydelige forskjelv, og at mange svermer av små skjelv aldri blir til noe stort. Et falskt varsel kan koste mye og føre til at folk slutter å stole på varslene. Skjelvet i L'Aquila i Italia i 2009 viste hvor vanskelig det er å snakke om usikkerhet når folk spør om et skjelv er på vei. Ennå finnes det ingen metode som kan korttidsvarsle jordskjelv på en pålitelig måte.
+
+### Tidlig varsling – noen sekunder kan redde liv
+
+Det finnes en tredje mulighet: å varsle *etter* at skjelvet har startet, men *før* de kraftigste bølgene har nådd fram. Det kaller vi *tidlig varsling*. Det er mulig fordi signalene i et datanettverk går nesten med lysets fart, mens jordskjelvbølgene går noen kilometer i sekundet. Hvorfor P-bølgen kommer først, og hvorfor S-bølgene og overflatebølgene rister mer, står under «P-bølger og S-bølger» og «Seismograf og seismogram». Varslingen skjer i fire trinn:
+
+1. Seismografene nærmest episenteret registrerer de første P-bølgene.
+2. Datamaskiner anslår raskt magnitude og plassering.
+3. Varselet sendes ut til mobiltelefoner, tog og fabrikker.
+4. S-bølgene og overflatebølgene, som gir de kraftigste rystelsene, kommer fram etter varselet.
+
+Varslingstiden er bare fra noen sekunder til et minutt, og nærmest episenteret får folk nesten ingen varsel. Likevel rekker vi å bremse tog, stoppe heiser, stenge gassventiler og søke dekning under et bord. Japan har hatt et offentlig system siden 2007, og i California, Oregon og Washington gir systemet ShakeAlert varsler til publikum (USGS, u.å.-g).
+
+```widget
+SjekkJordskjelvVarsling
+```
+
+## Hvor ofte skjer store skjelv?
+
+Langtidsvarslingen bygger på denne fordelingen. Små skjelv er det svært mange av, store skjelv er det få av. Hver gang magnituden øker med ett trinn, blir det omtrent ti ganger færre skjelv. USGS anslår at ca. 500 000 jordskjelv kan registreres i året, at ca. 100 000 merkes, og at ca. 100 gjør skade (USGS, u.å.-f). USGS har beregnet at det i gjennomsnitt skjer ca. 15 skjelv med magnitude 7–7,9 i året. Skjelv med magnitude 8 eller mer skjer ca. én gang i året, men tallet varierer mye fra år til år (USGS, u.å.-c). Skjelv med magnitude 9 eller mer er svært sjeldne. På 2000-tallet har det vært to: Indiahavet 2004 og Japan 2011.
 
 ```widget
 SjekkJordskjelv4
@@ -219,6 +300,58 @@ SjekkJordskjelv6
 > 1. **Norge ligger på en plategrense, siden vi har jordskjelv.** Det stemmer ikke. Skjelvene i Norge er intraplate-skjelv, og plategrensen er midthavsryggen vest for oss.
 > 2. **S-bølger går gjennom hele jorda.** Det stemmer ikke. De stopper i den flytende ytre kjernen, og det er nettopp et av argumentene for at kjernen er flytende.
 
+## Fare, risiko og forebygging
+
+Når vi vurderer jordskjelv som naturfare, skiller vi mellom flere begreper. *Fare* er hvor sannsynlig det er at bakken rister kraftig et bestemt sted. *Eksponering* er hvem og hva som befinner seg der: mennesker, bygninger, veier og ledninger. *Sårbarhet* er hvor godt det som er eksponert, tåler rystelsene. *Risiko* er de tre satt sammen.
+
+### En enkel risikomodell
+
+En *modell* er en forenklet beskrivelse av virkeligheten som hjelper oss å forstå eller forutsi noe. Risiko kan vi beskrive med en enkel begrepsmodell: risiko = fare × eksponering × sårbarhet. Produktet er ikke en fysisk målt risikoverdi. Modellen viser likevel en viktig sammenheng. Hvis én av faktorene er null, blir produktet null. Et kraftig skjelv i et ubebodd område gir liten risiko, og et solid bygg kan stå trygt selv der skjelv er vanlige. Det betyr også at vi kan senke risikoen selv om vi ikke kan gjøre noe med faren. Vi kan ikke flytte en forkastning, men vi kan bygge sterkere, la være å legge sykehus og skoler på dårlig grunn, og forberede folk på hva de skal gjøre.
+
+### Gjentaksintervall og byggekrav
+
+Seismologer beskriver faren med et *gjentaksintervall*: hvor mange år det i gjennomsnitt går mellom hvert skjelv av en viss størrelse i et område. Hvor mange færre skjelv det blir når magnituden øker med ett trinn, står under «Hvor ofte skjer store skjelv?». Den regelen gir ikke et årstall for skjelv i Norge.
+
+I regneeksemplet under er 100 år en valgt modellverdi, ikke et målt intervall for Norge, Oslo eller Bergen. Et gjentaksintervall på 100 år betyr likevel ikke at skjelvet kommer hvert hundrede år, som et tog etter rutetabellen. Det er et gjennomsnitt. Hvis gjentaksintervallet er R år, er sannsynligheten for et skjelv i et bestemt år ca. 1/R. Regnestykket under er en fordypning. Vi kan regne med at skjelvene kommer tilfeldig og uavhengig av hverandre. Det kalles en Poisson-antakelse. Etterskjelv er ikke slike uavhengige hendelser, så formelen passer dårlig på dagene rett etter et stort skjelv. Med den antakelsen er sannsynligheten P for minst ett skjelv i løpet av T år:
+
+P = 1 − e^(−T/R)
+
+Her er e ≈ 2,718. Tabellen under er regnet ut med denne formelen (Baker, 2008; USGS, 2019).
+
+| Gjentaksintervall R | 1 år | 50 år | 100 år |
+| --- | --- | --- | --- |
+| 100 år | 1,0 prosent | 39,3 prosent | 63,2 prosent |
+
+Selv med et valgt gjentaksintervall på 100 år er sjansen for minst ett skjelv i løpet av 100 år altså bare ca. 63 prosent, ikke 100. Byggeforskriftene i Norge følger Eurokode 8, den europeiske standarden for hvordan bygg skal tåle jordskjelv. Utgaven som er sitert her, er NS-EN 1998-1:2004+A1:2013+NA:2021 (Standard Norge, 2021). Den krever at vanlige bygg skal tåle rystelser som har ca. 10 prosent sannsynlighet for å bli overgått i løpet av 50 år. Det tilsvarer et gjentaksintervall på ca. 475 år. Det tallet gjelder bakkerystelse, ikke hvor ofte et bestemt skjelv gjentar seg. Norge fikk slike krav første gang med standarden NS 3491-12 i desember 2004. I 2010 ble den erstattet av Eurokode 8 med et norsk nasjonalt tillegg (Standard Norge, 2004; Standard Norge, 2021). Standard Norge opplyser at første generasjon av eurokodene fortsatt gjelder til den norske innføringen av andre generasjon, planlagt i 2028. En nyere internasjonal utgave er derfor ikke automatisk det norske prosjekteringskravet (Standard Norge, u.å.).
+
+### Hva om 1904-skjelvet kom i dag?
+
+> **Hva tror du?**
+>
+> Oslofjordskjelvet i 1904 ga skader på bygninger i Oslo. Tror du at et like stort skjelv ville gjort mer eller mindre skade i dag? Tenk over svaret mens du leser resten av denne delen.
+
+Med 1904-skjelvet som utgangspunkt kan vi spørre hva som ville vært annerledes i dag. Dato, magnitude, hvor episenteret lå, og at skjelvet ga skader, står under «Historiske skjelv». NORSAR mener at et tilsvarende skjelv i dag sannsynligvis ville gitt større skader og større samfunnskostnader, fordi bebyggelsen er tettere og høyere, mange gamle murbygninger tåler rystelser dårlig, og geologien i Oslo-området kan forsterke rystelsene (NORSAR, u.å.-b). Eksponeringen er høyere. Det følger ikke av det alene at sårbarheten har økt i hele byen: nye bygg kan tåle mer, mens eldre murbygg kan tåle mindre.
+
+Øvelsen bruker ett felles, valgt rystelsesscenario som ligner 1904, i et avgrenset område i Oslo. Alle stedene i øvelsen får den samme valgte rystelsen. Det eleven varierer, er grunnforsterkning, eksponering og sårbarhet. Katalogen over registrerte skjelv kan være bakgrunn, men nærhet til mange små skjelv er ikke farepoenget. Faren i tabellen er om stedet ligger innenfor det valgte scenarioet.
+
+Store deler av Oslo sentrum og områdene langs fjorden ligger på marin leire og fyllmasser, mens høydedragene består av fast fjell. Hvorfor løse masser kan forsterke rystelsene, står under «Jordskjelv som naturfare». Løsmassekart (NGU), befolkning og bygningstyper kan legges oppå det valgte scenarioet. Resultatet er en relativ prioriteringsindeks i elevmodellen, ikke et kart som fastslår hvor risikoen faktisk er størst. Du kan prøve den samme tabellen på et avgrenset område i din egen kommune, med NGUs løsmassekart, men da må rystelsen fortsatt være et valgt scenario, ikke en opptelling av registrerte skjelv.
+
+En forenklet modell kan gi hver del av området poeng for hver faktor, fra 1 (lav) til 3 (høy). Poengskalaen er en elevøvelse, ikke en offisiell metode.
+
+| Faktor | Hører til | 1 (lav) | 3 (høy) | Datakilde |
+| --- | --- | --- | --- | --- |
+| Rystelser | Fare | Utenfor det valgte 1904-lignende scenarioet | Innenfor det valgte 1904-lignende scenarioet | Valgt øvelsesscenario, ikke et farekart |
+| Grunnforhold | Fare (forsterkning) | Fast fjell | Marin leire, fyllmasser | NGU, løsmassekart |
+| Folk og bygninger | Eksponering | Spredt bebygd | Tett bysentrum | Statistisk sentralbyrå (SSB), Norgeskart |
+| Bygningstype | Sårbarhet | Trehus, nye bygg | Eldre murgårder uten armering | Kommunale kart, feltobservasjoner |
+| Kritiske funksjoner | Sårbarhet | God beredskap, reserveløsninger | Sykehus eller viktige anlegg på dårlig grunn | Kommunens ROS-analyse, DSB |
+
+Poengene ganges sammen til en relativ prioriteringsindeks i elevmodellen. Hvis sårbarhetspoenget for én bygningsgruppe går fra 3 til 1, blir indeksen en tredel, mens farepoenget er det samme. Det er ikke det samme som at den virkelige sannsynligheten, eller den dokumenterte skaden, blir en tredel. Indeksen sammenligner steder i øvelsen. Den er ikke et kart over faktisk risiko.
+
+### Hva modellen ikke viser
+
+Alle modeller er forenklinger. En modell er aldri bedre enn dataene og antagelsene den bygger på. Magnituden for 1904 er usikker, og grove kategorier som «eldre murgård» skjuler store forskjeller mellom bygninger. Modellen tar heller ikke med følgehendelser som skred, brann og brudd i strøm og vann. DSB-scenarioet for Bergen viser at nettopp slike følgehendelser kan bli de mest krevende. Risikoen er ikke likt fordelt. I eksemplet fra Haiti under «Rystelser og bygninger», og i Tyrkia og Syria i 2023, var svake bygninger en viktig del av skadene (USGS, u.å.-d). Det betyr ikke at de samme gruppene alltid er mest utsatt. Det avhenger av stedet, bygningene og beredskapen.
+
 ## Viktige begreper
 
 **Hyposenter:** Stedet i dypet der bruddet starter.
@@ -237,6 +370,16 @@ SjekkJordskjelv6
 
 **Intraplate-jordskjelv:** Skjelv inne på en plate, ikke ved en aktiv plategrense. Typisk for Norge.
 
+**Resonans:** Svingningene blir større og større når noe dyttes i takt med sin egen svingefrekvens.
+
+**Likvefaksjon:** Vannmettet sand og silt mister bæreevnen og oppfører seg som en væske når grunnen rister.
+
+**Tidlig varsling:** Varsel som sendes ut etter at skjelvet har startet, men før de kraftigste bølgene når fram.
+
+**Gjentaksintervall:** Hvor mange år det i gjennomsnitt går mellom hvert skjelv av en viss størrelse i et område.
+
+**Fare, eksponering og sårbarhet:** Hvor sannsynlig kraftige rystelser er, hva som befinner seg der, og hvor godt det tåler rystelsene. Risiko er de tre satt sammen.
+
 ## Sammendrag
 
 - Et jordskjelv er et plutselig brudd i berget der spenning som har bygd seg opp over lang tid, blir utløst. De fleste skjelv skjer i jordskorpa, men noen skjer dypt nede i kalde plater som synker ned i mantelen. De fleste og de største skjelvene skjer ved plategrensene, særlig i subduksjonssoner.
@@ -244,8 +387,11 @@ SjekkJordskjelv6
 - Magnituden beskriver hvor mye energi et skjelv frigjør, og én magnitude mer gir omtrent 32 ganger så mye energi. Intensiteten beskriver hvordan skjelvet merkes på ett bestemt sted.
 - Fordi S-bølgene stopper i den flytende ytre kjernen, vet vi at mantelen er fast og at den ytre kjernen er flytende.
 - Norge ligger inne på Den eurasiske platen, men har likevel jordskjelv, fordi spenning fra midthavsryggen og landhevingen etter istiden får gamle forkastninger til å gli. Det største kjente skjelvet på fastlandet er skjelvet på Helgeland i 1819 (magnitude ca. 5,8).
+- Det er sjelden selve rystelsene som tar liv. Skadene avhenger av varighet, grunn, bygninger og følgehendelser som skred, brann og tsunami. Resonans og likvefaksjon forklarer skader som kan ligge langt fra episenteret, eller i vannmettet sand.
+- Vi kan ikke korttidsvarsle når et skjelv kommer. Langtidsvarsling sier hvor sannsynlige kraftige rystelser er, og tidlig varsling kan gi noen sekunder etter at bruddet har startet.
+- Risiko er fare, eksponering og sårbarhet satt sammen. Et gjentaksintervall er et gjennomsnitt, ikke en rutetabell. En poengmodell gir en relativ indeks, ikke en målt sannsynlighet. Vi kan ikke flytte forkastningen, men vi kan bygge og planlegge slik at skadene blir mindre.
 
-Les videre i kapitlet [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare), om tsunamier, skader, varsling og risiko.
+Les videre i kapitlet [Tsunami](/geofag-1/tsunami), om hvordan slike bølger blir til, varsles og vurderes.
 
 ## Test deg selv
 

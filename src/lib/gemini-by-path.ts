@@ -81,9 +81,9 @@ export const EIERSKAP_BY_PATH: Record<string, string> = {
   "/geofag-1/platetektonikk":
     "Denne siden eier platene, drivkreftene, plategrensene og Wilsonsyklusen. Vulkaner eier magmakjemi og hotspots. Jordskjelv eier seismisitet, bølger og Wadati-Benioff. Norges geologi eier Leka-ofiolitten, Kaledonidene og Oslofeltet.",
   "/geofag-1/jordskjelv":
-    "Denne siden eier hvordan jordskjelv oppstår og måles, skjelvdybde og Wadati-Benioff-sonen, P-, S- og overflatebølger, magnitude og intensitet, jordas indre og hvorfor Norge skjelver. Jordskjelv og tsunamier som naturfare eier tsunami, skader, varsling og risiko. Platetektonikk eier plategrensene.",
-  "/geofag-1/jordskjelv-naturfare":
-    "Denne siden eier tsunami fra skjelv eller skred, skader fra jordskjelv, varsling og risikovurdering med modell. Jordskjelv og jordas indre eier bølgene, målingen og jordas indre.",
+    "Denne siden eier hvordan jordskjelv oppstår og måles, skjelvdybde og Wadati-Benioff-sonen, P-, S- og overflatebølger, magnitude og intensitet, jordas indre, hvorfor Norge skjelver, skader, skjelvvarsling og jordskjelvrisiko. Tsunami eier bølgen, norske og globale tsunamier og tsunamivarsling. Platetektonikk eier plategrensene.",
+  "/geofag-1/tsunami":
+    "Denne siden eier hva en tsunami er, hvordan vannet flyttes, grunning, oppskylling, Tafjord, Loen, Storegga, varsling og Åknes som risiko før en hendelse. Jordskjelv og jordas indre eier skjelvmekanikken, skadene og skjelvrisikoen.",
   "/geofag-1/norges-geologi":
     "Denne siden eier Norges geologiske historie fra grunnfjellet til i dag: grunnfjellet og det subkambriske peneplanet, Leka-ofiolitten, den kaledonske fjellkjeden med skyvedekker og eklogitt, Oslo-riften i sen karbon og perm (ikke Pangeas oppsprekking), åpningen av Norskehavet, isostasi, marin grense (havet sto opptil ca. 220 m høyere i Oslo-området) og landhevingen, og lokal utforsking av berggrunn og løsmasser. Bergarter eier mineralklassifisering. Geologisk tid eier dateringsmetodene. Landformer eier erosjon og landformer. Feltarbeid eier hvordan feltarbeid planlegges og gjennomføres.",
 };

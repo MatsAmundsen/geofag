@@ -1,5 +1,5 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
-import type { JSX } from "react";
+import { lazy, Suspense, type JSX } from "react";
 import {
   AdaptationExamFrameworkDiagram,
   ImpactLevelsDiagram,
@@ -258,10 +258,19 @@ import {
   QUIZ_SJEKK_JORDSKJELV_4,
   QUIZ_SJEKK_JORDSKJELV_5,
   QUIZ_SJEKK_JORDSKJELV_6,
+  QUIZ_SJEKK_JORDSKJELV_SKADE,
+  QUIZ_SJEKK_JORDSKJELV_VARSLING,
   QUIZ_SJEKK_SKJELVFARE_1,
   QUIZ_SJEKK_SKJELVFARE_2,
   QUIZ_SJEKK_SKJELVFARE_3,
+  QUIZ_SJEKK_TSUNAMI_1,
+  QUIZ_SJEKK_TSUNAMI_2,
+  QUIZ_SJEKK_TSUNAMI_3,
+  QUIZ_SJEKK_TSUNAMI_4,
+  QUIZ_SJEKK_TSUNAMI_5,
+  QUIZ_SJEKK_TSUNAMI_6,
   QUIZ_SKJELVFARE,
+  QUIZ_TSUNAMI,
   QUIZ_LANDFORMER,
   QUIZ_GEOLOGISK_TID,
   QUIZ_NORGES_GEOLOGI,
@@ -305,6 +314,18 @@ function NaoForklaringBoks({ kilde }: { kilde: string }) {
       </p>
     </Callout>
   );
+}
+
+const TsunamiM1 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM1 })));
+const TsunamiM2 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM2 })));
+const TsunamiM3 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM3 })));
+const TsunamiM4 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM4 })));
+const TsunamiM5 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM5 })));
+const TsunamiM6 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM6 })));
+const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM7 })));
+
+function TsunamiLaster({ children }: { children: JSX.Element }) {
+  return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
@@ -1192,11 +1213,61 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   SjekkJordskjelv4: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_4} intro="Velg ett svar per spørsmål." />,
   SjekkJordskjelv5: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_5} intro="Velg ett svar per spørsmål." />,
   SjekkJordskjelv6: () => <Quiz questions={QUIZ_SJEKK_JORDSKJELV_6} intro="Velg ett svar per spørsmål." />,
+  SjekkJordskjelvSkade: () => (
+    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_SKADE} intro="Velg ett svar per spørsmål." />
+  ),
+  SjekkJordskjelvVarsling: () => (
+    <Quiz questions={QUIZ_SJEKK_JORDSKJELV_VARSLING} intro="Velg ett svar per spørsmål." />
+  ),
   SjekkSkjelvfare1: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_1} intro="Velg ett svar per spørsmål." />,
   SjekkSkjelvfare2: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_2} intro="Velg ett svar per spørsmål." />,
   SjekkSkjelvfare3: () => <Quiz questions={QUIZ_SJEKK_SKJELVFARE_3} intro="Velg ett svar per spørsmål." />,
+  SjekkTsunami1: () => <Quiz questions={QUIZ_SJEKK_TSUNAMI_1} intro="Velg ett svar per spørsmål." />,
+  SjekkTsunami2: () => <Quiz questions={QUIZ_SJEKK_TSUNAMI_2} intro="Velg ett svar per spørsmål." />,
+  SjekkTsunami3: () => <Quiz questions={QUIZ_SJEKK_TSUNAMI_3} intro="Velg ett svar per spørsmål." />,
+  SjekkTsunami4: () => <Quiz questions={QUIZ_SJEKK_TSUNAMI_4} intro="Velg ett svar per spørsmål." />,
+  SjekkTsunami5: () => <Quiz questions={QUIZ_SJEKK_TSUNAMI_5} intro="Velg ett svar per spørsmål." />,
+  SjekkTsunami6: () => <Quiz questions={QUIZ_SJEKK_TSUNAMI_6} intro="Velg ett svar per spørsmål." />,
   QuizSkjelvfare: () => (
     <Quiz questions={QUIZ_SKJELVFARE} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  QuizTsunami: () => (
+    <Quiz questions={QUIZ_TSUNAMI} heading={null} intro="Velg ett svar per spørsmål." />
+  ),
+  TsunamiM1: () => (
+    <TsunamiLaster>
+      <TsunamiM1 />
+    </TsunamiLaster>
+  ),
+  TsunamiM2: () => (
+    <TsunamiLaster>
+      <TsunamiM2 />
+    </TsunamiLaster>
+  ),
+  TsunamiM3: () => (
+    <TsunamiLaster>
+      <TsunamiM3 />
+    </TsunamiLaster>
+  ),
+  TsunamiM4: () => (
+    <TsunamiLaster>
+      <TsunamiM4 />
+    </TsunamiLaster>
+  ),
+  TsunamiM5: () => (
+    <TsunamiLaster>
+      <TsunamiM5 />
+    </TsunamiLaster>
+  ),
+  TsunamiM6: () => (
+    <TsunamiLaster>
+      <TsunamiM6 />
+    </TsunamiLaster>
+  ),
+  TsunamiM7: () => (
+    <TsunamiLaster>
+      <TsunamiM7 />
+    </TsunamiLaster>
   ),
   SilicateStructure: () => <SilicateStructureDiagram />,
   // syklus og «følg en norsk bergart» er slått sammen i én figur (bergartssyklus-figur.tsx)

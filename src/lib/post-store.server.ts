@@ -1628,6 +1628,38 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "paleoklima",
     stale: ["kalkskall, pollen eller årringer, som henger sammen"],
   },
+  {
+    // Jordskjelv får skade, varsling og risiko fra naturfarekapitlet. Ny tekst skal vises selv om CMS har den gamle seeden.
+    flag: "g1-jordskjelv-naturfare-inn-2026-11-06",
+    slug: "jordskjelv",
+    stale: [
+      "Les videre i kapitlet [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare), om tsunamier, skader, varsling og risiko.",
+    ],
+  },
+  {
+    // Naturfarekapitlet er skrevet om til Tsunami. Samme CMS-nøkkel, ny tekst.
+    flag: "g1-tsunami-kapittel-2026-11-06b",
+    slug: "jordskjelv-naturfare",
+    stale: ["Hvilke skader gjør jordskjelv?"],
+  },
+  {
+    // M1–M7 inn i Tsunami-teksten. Nytt flagg så gjerder som manglet i forrige reseed, kommer med.
+    flag: "g1-tsunami-modeller-m1-m7-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["Når de interaktive modellene kommer, skal de brukes til å undersøke ideer"],
+  },
+  {
+    // Faglig gjennomgang: varslingskjede, Storegga-skille i teksten, Hellesylt og dødstall.
+    flag: "g1-tsunami-faglig-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["Målinger i havet bekrefter eller avkrefter at en bølge faktisk er på vei."],
+  },
+  {
+    // Faglig gjennomgang: NORSAR-intervaller tatt ut, Oslo-øvelsen bruker valgt 1904-scenario.
+    flag: "g1-jordskjelv-faglig-2026-11-06",
+    slug: "jordskjelv",
+    stale: ["magnitude 6 omtrent hvert hundrede år, og et med magnitude 7 omtrent hvert tusende år"],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 

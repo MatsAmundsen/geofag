@@ -209,6 +209,41 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
     require: "elastisk tilbakefjæring",
   },
   {
+    widgets: ["TsunamiM1"],
+    beforeHeading: "Fra dypt hav til grunn kyst",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM2"],
+    beforeHeading: "Når bølgen treffer land",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM3"],
+    beforeHeading: "Norske tsunamier",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM4"],
+    beforeHeading: "Storegga",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM5"],
+    beforeHeading: "Hvordan varsles en tsunami",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM6"],
+    beforeHeading: "Åknes",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM7"],
+    beforeHeading: "Fordypning",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
     widgets: ["Silikatgrupper"],
     beforeHeading: "Hva er en bergart?",
     require: "Silikatmineraler bygges av silisium",

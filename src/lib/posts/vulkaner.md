@@ -260,7 +260,7 @@ Vulkaner gir ofte målbare signaler før et utbrudd (Sigurdsson mfl., 2015). Obs
 
 Målingene brukes i fargekoder for luftfart: grønn, gul, oransje og rød. Kodene administreres av FNs organisasjon for sivil luftfart (International Civil Aviation Organization, ICAO). Observatoriene sender også et eget varsel til flyselskapene (Volcano Observatory Notice for Aviation, VONA). Da kan flygninger legges om før asken når luftkorridorene.
 
-Les mer om jordskjelv i [Jordskjelv og jordas indre](/geofag-1/jordskjelv) og om tsunamier i [Jordskjelv og tsunamier som naturfare](/geofag-1/jordskjelv-naturfare).
+Les mer om jordskjelv i [Jordskjelv og jordas indre](/geofag-1/jordskjelv) og om tsunamier i [Tsunami](/geofag-1/tsunami).
 
 ```widget
 VolcanoMonitoring

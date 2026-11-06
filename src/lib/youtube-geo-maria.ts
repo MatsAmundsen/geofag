@@ -29,7 +29,8 @@ const JORD = "de fem sfærene, berggrunn, løsmasser og jord";
 const PLATE = "Flyter platene på et hav av smeltet magma";
 const VULKAN = "Beerenberg på Jan Mayen";
 const SKJELV = "elastisk tilbakefjæring, skjelvdybde";
-const FARE = "Oslofjordskjelvet i 1904 ga skader";
+const SKADE = "Øygarden-forkastningen";
+const TSUNAMI = "nesten usynlig bølge ute på havet";
 const BERG = "Er granitt et mineral?";
 const TID = "den geologiske tidsskalaen, prinsippene for relativ datering";
 const NORGE = "ofiolitten på Leka, den kaledonske fjellkjeden";
@@ -153,8 +154,8 @@ export const GEO_MARIA_VIDEOS: GeoMariaVideo[] = [
     placements: [
       {
         seed: "posts/jordskjelv-naturfare.md",
-        require: FARE,
-        beforeHeading: "Hvilke skader gjør jordskjelv?",
+        require: TSUNAMI,
+        beforeHeading: "Fra dypt hav til grunn kyst",
       },
     ],
   },
@@ -165,9 +166,9 @@ export const GEO_MARIA_VIDEOS: GeoMariaVideo[] = [
     duration: "6:38",
     placements: [
       {
-        seed: "posts/jordskjelv-naturfare.md",
-        require: FARE,
-        beforeHeading: "Viktige begreper",
+        seed: "posts/jordskjelv.md",
+        require: SKADE,
+        beforeHeading: "Kan jordskjelv varsles?",
       },
     ],
   },
