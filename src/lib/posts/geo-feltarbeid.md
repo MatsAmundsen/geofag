@@ -128,7 +128,9 @@ Satellittbasert posisjonsbestemmelse bruker systemer som GPS, og resultatet påv
 |---|---|---|---|---|---|
 | A | Fyll inn koordinater, system og stedsbeskrivelse | Fyll inn dato og lokalt klokkeslett med tidssone | Fyll inn verdi eller beskrivelse | Fyll inn framgangsmåte og eventuell måleenhet | Noter usikkerhet, endringer og bilde-ID ved behov |
 
-[figur-2-4]: # (FIGURPLASSHOLDER 2.4: Georeferert feltlogg. Eksisterende feltmodell må vurderes for Vg1 før innbygging.)
+```widget
+GeoFeltloggVg1
+```
 
 [Last ned en tom feltlogg som CSV](/downloads/geografi-feltarbeid-feltlogg.csv). Malen har felt for målepunkt, sted, tid, registrering, metode og usikkerhet, men inneholder ingen innsamlede data. Bruk samme punkt-ID i skjemaet, på kartet og i filnavnene dersom dere dokumenterer med bilder. Ta vare på originalnotatene, slik at bearbeidingen kan etterprøves senere i arbeidet (FEK, 2019).
 

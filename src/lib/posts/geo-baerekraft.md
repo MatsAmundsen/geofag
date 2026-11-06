@@ -72,7 +72,11 @@ Inntektsmålet i HDI er **bruttonasjonalinntekt (BNI)**, ikke BNP, selv om begre
 
 HDI oppsummerer gjennomsnittlige resultater, men dekker ikke ulikhet, fattigdom, trygghet og innflytelse fullt ut. UNDP anbefaler derfor andre indikatorer og mer informasjon når vi vil forstå menneskelig utvikling mer grundig (UNDP, u.å.). Et land kan få gode gjennomsnittsverdier samtidig som bestemte grupper har betydelig dårligere levekår. Vi skal undersøke dette med dokumentasjon, ikke anta at alle deler landsgjennomsnittets muligheter.
 
-[figur-8-2]: # (FIGURPLASSHOLDER 8.2: HDI mot kjøpekraftsjustert BNP per innbygger, samme observasjonsår. HDI bruker BNI. Datavalg og lisens må dokumenteres.)
+Figuren bruker HDI fra den nyeste tilgjengelige rapportutgaven, HDR 2025, og BNP fra samme observasjonsår, 2023 (UNDP, 2025; World Bank, u.å.).
+
+```widget
+GeoHdiBnp
+```
 
 ### Fattigdomstall: definisjonen følger med tallet
 
@@ -134,7 +138,15 @@ GFNs [fotavtrykkskalkulator](https://www.footprintcalculator.org/home/en) stille
 
 I skolearbeidet kan vi bruke en oppdiktet profil framfor å dele opplysninger om hjemmet eller familien. Noter hvilket land, hvilke valg og hvilken dato undersøkelsen gjelder, uten navn, adresse eller privat økonomi. Hvis Norge ikke er tilgjengelig eller datagrunnlaget er uklart, skal vi ikke omtale en annen landprofil som norsk. Da kan vi enten undersøke en tydelig merket utenlandsk øvingsprofil eller arbeide med metodesiden uten beregning.
 
-[figur-8-6]: # (FIGURPLASSHOLDER 8.6: Dokumentert fotavtrykksdiagram og eventuell lokal kalkulator. Norsk 2026-sammenlikning sperret til egnet kvalitetskontrollert datasett finnes. Ikke lag egne jordklodetall fra poeng.)
+[figur-8-6]: # (FIGURPLASSHOLDER 8.6: Økologisk fotavtrykksdiagram ikke bygget. Nyeste GFN-utgave 2026, observasjoner 2023 og estimater 2025, er CC BY-SA 4.0 som oppdraget ikke tillater. Lokal transportkalkulator følger separat.)
+
+### Prøv en lokal regneøvelse
+
+Denne kalkulatoren på siden beregner bare direkte CO₂ fra tre transportformer, med norske gjennomsnittsfaktorer for 2020 (Engedal et al., 2021). Den er en forenkling, ikke et fullstendig personlig eller økologisk fotavtrykk. Alle inndata blir bare i sidens minne og forsvinner ved omlasting.
+
+```widget
+GeoLokalFotavtrykk
+```
 
 ### Endre én ting om gangen
 

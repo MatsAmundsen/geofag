@@ -86,13 +86,13 @@ Figur 6.3 viser sonene i en forenklet skisse av et skred i bratt terreng. Husene
 
 ### Stein, jord, flom og snø
 
-Ved **steinsprang** løsner én eller noen få blokker som faller, spretter, ruller eller sklir nedover. **Steinskred** omfatter større steinmasser, mens **fjellskred** innebærer svært store fjellmasser i bevegelse (NVE, 2024b). Et fjellskred kan også sette vann i kraftig bevegelse dersom massene treffer en fjord eller innsjø. Norske historiske hendelser viser at slike flodbølger kan ramme bebyggelse et stykke fra selve skredet (NVE, u.å.).
+Ved **steinsprang** løsner én eller noen få blokker som faller, spretter, ruller eller sklir nedover. **Steinskred** omfatter større steinmasser, mens **fjellskred** innebærer svært store fjellmasser i bevegelse (NVE, 2024b). Et fjellskred kan også sette vann i kraftig bevegelse dersom massene treffer en fjord eller innsjø. Norske historiske hendelser viser at slike flodbølger kan ramme bebyggelse et stykke fra selve skredet (NVE, u.å.-a).
 
 ```widget
 GeoNaturfareFjellskred
 ```
 
-I figur 6.5 ser vi hvordan fjellmasser kan fortrenge vann og gi oppskylling på land. **Oppskyllingshøyde** beskriver hvor høyt vannet når opp i terrenget, ikke bare bølgehøyden ute på vannet. Største oppskylling ved Tafjord-hendelsen i 1934 var 61 meter; høydene i de rammede bygdene var lavere (NVE, u.å.). Tallet i skissen er avrundet og skal ikke leses som en prognose for andre fjorder.
+I figur 6.5 ser vi hvordan fjellmasser kan fortrenge vann og gi oppskylling på land. **Oppskyllingshøyde** beskriver hvor høyt vannet når opp i terrenget, ikke bare bølgehøyden ute på vannet. Største oppskylling ved Tafjord-hendelsen i 1934 var 61 meter; høydene i de rammede bygdene var lavere (NVE, u.å.-a). Tallet i skissen er avrundet og skal ikke leses som en prognose for andre fjorder.
 
 **Jordskred** er raske bevegelser av vannmettet løsmasse ned bratte skråninger utenfor definerte vannveier. **Flomskred** er raske, flomliknende bevegelser som særlig følger elve- og bekkeløp, med vann og løsmasser (NVE, 2024b). Store vannmengder kan dermed bidra til både oversvømmelse, erosjon og skred i samme område (Varsom, u.å.-b). Vi må følge sammenhengen mellom vannet, materialet og terrenget, ikke behandle hvert problem som helt uavhengig.
 
@@ -105,12 +105,12 @@ I figur 6.5 ser vi hvordan fjellmasser kan fortrenge vann og gi oppskylling på 
 Erosjon fra en bekk kan fjerne støtte ved foten av en skråning og forverre stabiliteten. Menneskelige inngrep, som utgraving eller ekstra belastning på skråningen, kan også bidra til utløsning (NVE, 2026). Hvis leire glir ut og strømmer unna, kan kanten bak miste støtten sin. Skredet kan dermed spre seg bakover og sideveis; slik bakoverforplantning kalles **retrogressiv skredutvikling** (Gjerdrumutvalget, 2021, s. 8–11).
 
 ```widget
-GeoNaturfareKvikkleire
+GeoNaturfareKvikkleireSteg
 ```
 
 [figur-6-4-tillegg]: # (FIGURPLASSHOLDER 6.4 TILLEGG: Stedkart Gjerdrum og neste-steg-kontroll; firetrinnsskissen finnes.)
 
-Figur 6.4 følger denne kjeden i fire trinn, uten å beregne stabilitet eller skredets rekkevidde. Bruk figuren til å forklare hvordan et skred kan ramme mer enn det første løsneområdet. I Gjerdrum beskrev utvalget at skredet forplantet seg fra skråningen ved Tistilbekken mot Nystulia (Gjerdrumutvalget, 2021, s. 11–12). En prosesskisse er likevel ikke en nøyaktig gjengivelse av terreng, grunnforhold eller tidspunkt på stedet.
+Figur 6.4 lar deg følge denne kjeden med neste-steg-kontroll og lokatorkart i fire trinn, uten å beregne stabilitet eller skredets rekkevidde. Bruk figuren til å forklare hvordan et skred kan ramme mer enn det første løsneområdet. I Gjerdrum beskrev utvalget at skredet forplantet seg fra skråningen ved Tistilbekken mot Nystulia (Gjerdrumutvalget, 2021, s. 11–12). En prosesskisse er likevel ikke en nøyaktig gjengivelse av terreng, grunnforhold eller tidspunkt på stedet.
 
 ## Flom og overvann
 
@@ -122,7 +122,7 @@ Et **nedbørfelt** er området som bidrar med vann til et bestemt vassdrag eller
 GeoNaturfareHydrogram
 ```
 
-I figur 6.6 kan vi sammenlikne en regnflom med en snøsmelteflom og endre mengden tette flater. Modellen bruker skjematiske kurver uten måledata, og beregner verken flomstørrelse på et bestemt sted eller gjentaksintervall. Tette flater kan gi raskere avrenning fordi mindre vann trenger ned i bakken (NVE, 2024a). Bruk figuren til å forklare en sammenheng, ikke til å lage en lokal flomprognose.
+I figur 6.6 kan vi endre nedbør, markfuktighet, innsjøandel og mengden tette flater i den opprinnelige nedbørsfeltmodellen. Tallene er valgte modellinput og beregnede undervisningsresultater, ikke målte observasjoner eller en kalibrert NVE-beregning. Modellen beregner verken flomstørrelse på et bestemt sted eller gjentaksintervall. Tette flater kan gi raskere avrenning fordi mindre vann trenger ned i bakken (NVE, 2024a). Bruk figuren til å forklare en sammenheng, ikke til å lage en lokal flomprognose. Returperiodeetiketter er fjernet fordi koblingen til modellens avrenning ikke er dokumentert (NVE, 2021).
 
 ### Overvann: når vannet finner veien på overflaten
 
@@ -212,7 +212,9 @@ Et **aktsomhetskart** viser hvor en fare kan være aktuell ut fra et overordnet 
 
 Varsom bruker farger til å formidle aktsomhetsnivå for flom og jordskred i områder og tidsrom. Men jordskredvarslingen omfatter ikke alle skredtyper; blant annet inngår ikke kvikkleireskred og steinskred i dette varselet (Varsom, u.å.-b). Grønn regional farge er dermed ikke et løfte om at enhver skråning eller tomt er trygg. Les alltid hva varselet gjelder, og følg aktuelle myndighetsråd ved en virkelig situasjon.
 
-[figur-6-9]: # (FIGURPLASSHOLDER 6.9: Offisielle farelag i samme kommune med tegnforklaring, dato og avgrensning.)
+```widget
+GeoNaturfareGjerdrumKart
+```
 
 ### Fra fagkunnskap til handling
 
@@ -234,6 +236,8 @@ Konsekvensene omfattet tap av liv, evakuering, ødelagte boliger og skade på bl
 
 - Hvilke forhold gjorde skråningen utsatt over tid, og hva vurderte utvalget som den direkte utløseren?
 - Hvilke følger kan dokumenteres med kart og rapport, og hvilke spørsmål krever andre kilder?
+
+**Årlig revisjon:** Nepal-casen er sist kildekontrollert 6. november 2026 og skal gjennomgås på nytt senest i november 2027. Kontroller WMO, ICIMOD og nepalske myndigheter for revidert årsak, dato og konsekvenser. Dette er en redaksjonell revisjonsmerknad, ikke et løfte om automatisk oppdatering.
 
 ### Innblikk: En aktuell farekjede i Nepal i 2026
 

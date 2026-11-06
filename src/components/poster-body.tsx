@@ -4,7 +4,27 @@ import { WindCellsDiagram } from "@/components/diagrams/wind";
 import { CoriolisDiagram } from "@/components/diagrams/coriolis";
 import { CarbonCycleDiagram } from "@/components/diagrams/spheres";
 import { GeografiKlimadiagram, GeografiKlimaScenario } from "@/components/geografi/klima-diagrammer";
+import { GeografiBrelandskapFoto } from "@/components/geografi/landskap-valg";
+import { GeografiFjordLokator } from "@/components/geografi/landskap-valg";
+import { GeografiLeirslette } from "@/components/geografi/landskap-valg";
+import { GeografiVegaKart } from "@/components/geografi/landskap-valg";
+import { GeografiElvelandskap } from "@/components/geografi/landskap-valg";
+import { GeografiTidsskala } from "@/components/geografi/indre-valg";
+import { GeografiBerggrunnSkisse } from "@/components/geografi/indre-valg";
+import { GeografiReykjanes } from "@/components/geografi/indre-valg";
+import { GeografiTyrkiaKart } from "@/components/geografi/indre-valg";
+import { GeografiTsunamiSteg } from "@/components/geografi/indre-valg";
+import { GeografiRiftHav } from "@/components/geografi/indre-valg";
+import { GeografiPlateKart } from "@/components/geografi/indre-valg";
+import { GeografiLokalFotavtrykk } from "@/components/geografi/baerekraft-valg";
+import { GeografiHdiBnp } from "@/components/geografi/baerekraft-valg";
 import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
+import { HydrographCatchmentModel } from "@/components/models/hydrograph-catchment-model";
+import { GeografiGjerdrumFarekart } from "@/components/geografi/naturfare-valg";
+import { GeografiKvikkleireSteg } from "@/components/geografi/naturfare-valg";
+import { GeografiFeltlogg } from "@/components/geografi/feltlogg-vg1";
+import { GeografiTopokart } from "@/components/geografi/projeksjon-figurer";
+import { GeografiGallPeters } from "@/components/geografi/projeksjon-figurer";
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { lazy, Suspense, type JSX } from "react";
 import {
@@ -338,7 +358,31 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
   return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
+const GeografiIstidskartLat = lazy(() => import("@/components/geografi/landskap-iskart").then((m) => ({default:m.GeografiIstidskart})));
+
+const GeografiBreKartLat = lazy(() => import("@/components/geografi/landskap-brekart").then((m) => ({default:m.GeografiBreKart})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoLandskapBrekart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiBreKartLat /></Suspense>,
+  GeoLandskapIstidskart: () => <Suspense fallback={<p>Laster figur og kontrollerte kartdata.</p>}><GeografiIstidskartLat /></Suspense>,
+  GeoLandskapFjordLokator: () => <GeografiFjordLokator />,
+  GeoLandskapLeirslette: () => <GeografiLeirslette />,
+  GeoLandskapKyst: () => <GeografiVegaKart />,
+  GeoLandskapElv: () => <GeografiElvelandskap />,
+  GeoIndreTidsskala: () => <GeografiTidsskala />,
+  GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
+  GeoIndreReykjanes: () => <GeografiReykjanes />,
+  GeoIndreTyrkiaKart: () => <GeografiTyrkiaKart />,
+  GeoIndreTsunami: () => <GeografiTsunamiSteg />,
+  GeoIndreRiftHav: () => <GeografiRiftHav />,
+  GeoIndrePlateKart: () => <GeografiPlateKart />,
+  GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
+  GeoHdiBnp: () => <GeografiHdiBnp />,
+  GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
+  GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
+  GeoFeltloggVg1: () => <GeografiFeltlogg />,
+  GeoVerktoyTopokart: () => <GeografiTopokart />,
+  GeoVerktoyGallPeters: () => <GeografiGallPeters />,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).
   ...G2_PAKKE_A_WIDGETS,
   ...Object.fromEntries(
@@ -1485,7 +1529,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoKlimaKarbon: () => <CarbonCycleDiagram geografi />,
   GeoKlimaScenario: () => <GeografiKlimaScenario />,
   GeoLandskapFrost: () => <Frostsprengning geografi heading="Figur 4.1 – Forvitring og flytting" caption="Vann som fryser i en sprekk, kan bidra til å dele opp berget. Når en stein løsner og faller, flyttes materialet ved tyngdekraften. Skissen viser et prinsipp, ikke et bestemt tidsforløp eller et skredvarsel (Sørbel, 2024; Bryhni & Røthe, 2025)." />,
-  GeoLandskapBrelandskap: () => <VdalTilUdal geografi heading="Figur 4.2 – Før, under og etter breen" caption="Tre trinn viser samme tverrsnitt: en elvedal, breens arbeid og en U-dal etterpå. Skuring og plukking kan utvide og fordype dalen. Formen og tiden er skjematiske, ikke målinger fra en bestemt dal (Bryhni & Røthe, 2025; Bryhni & Fossen, 2024; SNL, u.å.-a)." />,
+  GeoLandskapBrelandskap: () => <GeografiBrelandskapFoto />,
   GeoLandskapBotn: () => <BotnEggTindFigurLat geografi heading="Figur 4.3 – Botn, egg og tind" caption="Breformede fordypninger kan etterlate skarpe rygger og topper. Følg formene gjennom trinnene. Terrenget er konstruert og viser ikke utviklingstiden eller et bestemt fjell (Lilleøren, 2025; Mæhlum, 2026a; Bryhni & Fossen, 2024)." />,
   GeoLandskapMassebalanse: () => <GlacierMassBalanceModel geografi />,
   GeoLandskapMarinGrense: () => <IsostasiSnitt geografi heading="Figur 4.5 – Havbunn på land" caption="Isens vekt, avsetning i sjø og senere landheving kan forklare leire på land. Marin grense er lokal, og under grensen er marin leire mulig, ikke påvist kvikkleire. Skjematisk tverrsnitt uten stedfesting eller beregnet høyde (NGU, u.å.-a, u.å.-b, u.å.-c; Fossen & Mæhlum, 2026)." />,
@@ -1499,8 +1543,8 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoBaerekraftTre: () => <BaerekraftTreFigur geografi />,
   GeoNaturfareSkredSoner: () => <SkredSonerDiagram caption="Figur 6.3: Materialet løsner, beveger seg og avsettes i et utløpsområde. Også steder nedenfor løsneområdet kan bli rammet. Skissen viser et forenklet skred i bratt terreng, ikke en farevurdering av en bestemt skråning (NVE, 2024b)." />,
   GeoNaturfareKvikkleire: () => <KvikkleireDiagram caption="Figur 6.4: En bekk kan fjerne støtte i skråningsfoten. Når leire glir ut, kan bakkanten miste støtte. Nye utglidninger kan dermed spre skredet bakover. Dette er en forenklet prosesskisse, ikke et kart over Gjerdrum (Gjerdrumutvalget, 2021, s. 8–11; NVE, 2026)." />,
-  GeoNaturfareFjellskred: () => <FjellskredBolgeDiagram caption="Figur 6.5: Fjellmasser kan sette vann i bevegelse og lage flodbølger. Oppskyllingshøyde er hvor høyt vannet når opp på land. Rundt 60 meter i skissen viser til største oppskylling ved Tafjord-hendelsen i 1934, ikke høyden i alle bygdene eller en framtidig prognose (NVE, u.å.)." />,
-  GeoNaturfareHydrogram: () => <HydrogramFigur geografi heading="Figur 6.6: Regnflom, snøsmelting og tette flater" urbanizationCitation="NVE, 2024a" caption="Kurvene viser vannføring mot tid. Endre mengden tette flater og sammenlikn utviklingen i regnflommen. Alle kurver er skjematiske, uten tall eller målte NVE-data. Modellen beregner ikke gjentaksintervall eller flomfare på et bestemt sted (Varsom, u.å.-a; NVE, 2024a)." />,
+  GeoNaturfareFjellskred: () => <FjellskredBolgeDiagram caption="Figur 6.5: Fjellmasser kan sette vann i bevegelse og lage flodbølger. Oppskyllingshøyde er hvor høyt vannet når opp på land. Rundt 60 meter i skissen viser til største oppskylling ved Tafjord-hendelsen i 1934, ikke høyden i alle bygdene eller en framtidig prognose (NVE, u.å.-a)." />,
+  GeoNaturfareHydrogram: () => <HydrographCatchmentModel geografi />,
   GeoNaturfareOrkan: () => <GeografiOrkanSnittFigur />,
   GeoNaturfareStormflo: () => <GeografiStormfloFigur />,
   GeoNaturfareVulkan: () => <VolcanicHazardsDiagram geografi />,

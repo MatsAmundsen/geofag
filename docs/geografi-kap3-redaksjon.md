@@ -1,5 +1,7 @@
 # Geografi kapittel 3 – redaksjonell overlevering, PR F
 
+Oppdatert figurstatus etter Mats og DesignBOTs valg står i `geografi-kap3-mats-valg.md`. Resten av dette notatet dokumenterer første leveranse.
+
 ## Leveranse og avgrensning
 
 Kapittel: Indre krefter: platetektonikk, jordskjelv og vulkaner.
