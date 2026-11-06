@@ -55,7 +55,8 @@ describe("quiz split", () => {
     assert.equal(/Oslofjordskjelvet/.test(tsunami), false);
     assert.equal(QUIZ_SJEKK_JORDSKJELV_VARSLING.length, 1);
     assert.match(QUIZ_SJEKK_JORDSKJELV_VARSLING[0]!.prompt, /tidlig varsling/i);
-    assert.match(QUIZ_SJEKK_TSUNAMI_5[0]!.prompt, /nær kilden/);
+    assert.match(QUIZ_SJEKK_TSUNAMI_5[0]!.prompt, /kraftig eller langvarig risting/);
+    assert.match(QUIZ_SJEKK_TSUNAMI_5[0]!.explain, /seismikken/);
     assert.equal(QUIZ_SJEKK_TSUNAMI_1.length, 2);
 
     const quake = readSeed("jordskjelv.md");

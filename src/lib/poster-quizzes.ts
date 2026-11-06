@@ -1826,12 +1826,12 @@ export const QUIZ_SKJELVFARE: QuizQuestion[] = [
     prompt: "Hva er forskjellen på en tsunami fra et undersjøisk skjelv og de historiske flodbølgene i Norge?",
     options: [
       "Begge kommer av at to plater kolliderer utenfor norskekysten.",
-      "Et undersjøisk skjelv kan flytte havbunnen. Storegga og Tafjord var skred som traff vann.",
+      "Et undersjøisk skjelv kan flytte havbunnen, vanligvis med en tydelig vertikal komponent. Tafjord var et fjellskred ned i fjorden. Storegga var et undersjøisk sedimentskred. Begge forskjøv vann, men på ulike måter.",
       "Norske flodbølger kommer bare fra vind, aldri fra masse som treffer vann.",
     ],
     answer: 1,
     explain:
-      "Et undersjøisk skjelv løfter havbunnen, mens Storegga og Tafjord var skred som traff vann.",
+      "Et undersjøisk skjelv forskyver vannet ved at havbunnen deformeres, vanligvis vertikalt. Tafjord var et fjellskred ned i fjorden. Storegga var et undersjøisk sedimentskred.",
   },
   {
     prompt: "Hvorfor kan et skjelv som Oslofjordskjelvet i 1904 gjøre mer skade i dag?",
@@ -1842,7 +1842,7 @@ export const QUIZ_SKJELVFARE: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Faren er den samme som i 1904, men eksponeringen og sårbarheten har økt.",
+      "Faren er den samme som i 1904, men flere er eksponert. Sårbarheten er ikke automatisk høyere i hele byen.",
   },
   {
     prompt: "Hva tar oftest liv når det skjer et kraftig jordskjelv?",
@@ -1908,7 +1908,7 @@ export const QUIZ_SJEKK_TSUNAMI_2: QuizQuestion[] = [
     ],
     answer: 1,
     explain:
-      "Energien samles på en kortere strekning. Det er grunning, ikke at energien blir borte.",
+      "Bølgefronten går saktere på grunt vann. Perioden endres lite, så bølgelengden blir kortere, og høyden øker vanligvis.",
   },
 ];
 
@@ -1953,15 +1953,15 @@ export const QUIZ_SJEKK_TSUNAMI_4: QuizQuestion[] = [
 
 export const QUIZ_SJEKK_TSUNAMI_5: QuizQuestion[] = [
   {
-    prompt: "Hvorfor kan et tsunamivarsel komme for sent nær kilden, selv om en fjern tsunami ofte kan varsles?",
+    prompt: "Hva gjør du ved kraftig eller langvarig risting på en tsunamiutsatt kyst, hvis et offisielt varsel ikke er kommet?",
     options: [
-      "Fordi en lokal tsunami kan nå land på minutter, før et offisielt varsel er ute.",
-      "Fordi tsunamier bare kan varsles om dagen.",
-      "Fordi en fjern tsunami alltid er større enn en lokal.",
+      "Venter på at en bøye skal bekrefte bølgen, og blir ved vannet til da.",
+      "Beskytter deg under ristingen og går til høyere grunn så snart det er trygt.",
+      "Venter til havet trekker seg tilbake, for det skjer alltid først.",
     ],
-    answer: 0,
+    answer: 1,
     explain:
-      "Varsling er ofte bedre når bølgen har timer over havet. Nær kilden er tiden kort, og et skred kan komme uten et tydelig skjelv. Kjenner du et kraftig skjelv ved kysten, skal du ikke vente på varselet.",
+      "Første varsel kan komme fra seismikken, men nær kilden skal du ikke vente på måling, tilbaketrekking eller et offisielt varsel.",
   },
 ];
 
@@ -2015,15 +2015,15 @@ export const QUIZ_TSUNAMI: QuizQuestion[] = [
       "Oppskylling ett sted er ikke bølgehøyden i hele fjorden eller innsjøen.",
   },
   {
-    prompt: "Du kjenner et kraftig skjelv mens du står ved en utsatt kyst. Hva bør du gjøre?",
+    prompt: "Du kjenner kraftig eller langvarig risting ved en tsunamiutsatt kyst. Hva bør du gjøre?",
     options: [
       "Vente til havet trekker seg tilbake, så du er sikker på at en tsunami kommer.",
-      "Gå til høyden med en gang. Ikke vent på tilbaketrekking eller på et offisielt varsel.",
+      "Beskytte deg under ristingen, og gå til høyere grunn så snart det er trygt. Ikke vent på tilbaketrekking eller på et offisielt varsel.",
       "Bli ved vannet, fordi den første bølgen alltid er den største.",
     ],
     answer: 1,
     explain:
-      "Tilbaketrekking kommer ikke alltid først, og nær kilden kan varselet komme for sent.",
+      "Tilbaketrekking kommer ikke alltid først. Et foreløpig varsel kan komme fra seismikken, men nær kilden kan det likevel være for sent å vente.",
   },
   {
     prompt: "Hva er en elevmodell i dette kapitlet ikke?",

@@ -474,7 +474,7 @@ export function TsunamiM6() {
       nodeRef={tid.ref}
       kicker="M6"
       title="Varslingskjeden"
-      lead="Nær kilde kan bølgen komme før bekreftelsen. Tidene er valgte øvelsestider."
+      lead="Nær kilde kan bølgen komme før bekreftelsen. Første melding kan likevel gå ut fra seismikken. Tidene er valgte øvelsestider."
       kildeHref={NOAA_WARN}
       antakelser="Ikke et norsk varslingssystem og ikke amerikanske faregrader. Forsinkelsen er valgt for øvelsen."
       konklusjon={

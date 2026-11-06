@@ -1648,6 +1648,18 @@ const COPY_RESEEDS: CopyReseed[] = [
     slug: "jordskjelv-naturfare",
     stale: ["Når de interaktive modellene kommer, skal de brukes til å undersøke ideer"],
   },
+  {
+    // Faglig gjennomgang: varslingskjede, Storegga-skille i teksten, Hellesylt og dødstall.
+    flag: "g1-tsunami-faglig-2026-11-06",
+    slug: "jordskjelv-naturfare",
+    stale: ["Målinger i havet bekrefter eller avkrefter at en bølge faktisk er på vei."],
+  },
+  {
+    // Faglig gjennomgang: NORSAR-intervaller tatt ut, Oslo-øvelsen bruker valgt 1904-scenario.
+    flag: "g1-jordskjelv-faglig-2026-11-06",
+    slug: "jordskjelv",
+    stale: ["magnitude 6 omtrent hvert hundrede år, og et med magnitude 7 omtrent hvert tusende år"],
+  },
 ];
 COPY_RESEEDS.push(...COPY_RESEEDS_B);
 

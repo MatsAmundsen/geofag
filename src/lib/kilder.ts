@@ -644,8 +644,20 @@ export const KILDER = {
     {
       prefix: "Standard Norge. (2021). ",
       italic: "NS-EN 1998-1:2004+A1:2013/NA:2021 Eurokode 8: Prosjektering av konstruksjoner for seismisk påvirkning – Del 1: Allmenne regler, seismiske laster og regler for bygninger",
-      suffix: " (første norske nasjonale tillegg: NA:2008).",
-      href: "https://online.standard.no/nb/ns-en-1998-1-2004na-2008-2",
+      suffix: " (NS-EN 1998-1:2004+A1:2013+NA:2021).",
+      href: "https://online.standard.no/nb/ns-en-1998-1-2004a1-2013na-2021",
+    },
+    {
+      prefix: "Standard Norge. (u.å.). ",
+      italic: "Next generation Eurocodes (second generation)",
+      suffix: ".",
+      href: "https://standard.no/en/sectors/eurokoder/next-generation-eurocodes-second-generation/",
+    },
+    {
+      prefix: "Earthquake Engineering Research Institute [EERI]. (1986). ",
+      italic: "The Mexico earthquake of September 1985: A preliminary report",
+      suffix: ".",
+      href: "https://purl.stanford.edu/dj796hw6704",
     },
     {
       prefix: "U.S. Geological Survey [USGS]. (u.å.-f). ",
@@ -679,7 +691,7 @@ export const KILDER = {
   ],
   "jordskjelv-naturfare": [
     {
-      prefix: "Harbitz, C. B., Glimsdal, S., Løvholt, F., Kveldsvik, V., Pedersen, G. K., & Jensen, A. (2014). Rockslide tsunamis in complex fjords: From an unstable rock slope to tsunami modelling. ",
+      prefix: "Harbitz, C. B., Glimsdal, S., Løvholt, F., Kveldsvik, V., Pedersen, G. K., & Jensen, A. (2014). Rockslide tsunamis in complex fjords: From an unstable rock slope at Åkerneset to tsunami risk in western Norway. ",
       italic: "Coastal Engineering, 88",
       suffix: ", 101–122.",
       href: "https://doi.org/10.1016/j.coastaleng.2014.02.003",
@@ -713,6 +725,12 @@ export const KILDER = {
       italic: "Drenering kan redusere risiko for stort fjellskred i Stranda kommune",
       suffix: ".",
       href: "https://www.nve.no/nytt-fra-nve/nyheter-skred-og-vassdrag/drenering-kan-redusere-risiko-for-stort-fjellskred-i-stranda-kommune/",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-c). ",
+      italic: "Temakart fjellskred",
+      suffix: " (faresoner for flodbølge, blant annet ved Hellesylt).",
+      href: "https://temakart.nve.no/tema/fjellskred",
     },
     {
       prefix: "NOAA. (u.å.-a). ",
