@@ -229,6 +229,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-klima": [] as const,
   "geo-naturfare": [
     {
+      prefix: "Kartverket. (u.å.). ",
+      italic: "Sentralt stedsnavnregister",
+      suffix: " [Datasett]. Representasjonspunkt for Ask tettsted i Gjerdrum. CC BY 4.0, uttrekk 6. november 2026.",
+      href: "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Ask&fuzzy=false",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.-b). ",
+      italic: "Kvikkleire WMS",
+      suffix: " [Datasett]. NLOD. Utvalgte soner merket Gjerdrum, uttrekk 6. november 2026.",
+      href: "https://kartkatalog.geonorge.no/metadata/kvikkleire/f8007522-2b73-4702-bb97-50c720e5c3f8",
+    },
+    {
+      prefix: "Norges vassdrags- og energidirektorat [NVE]. (2021, 1. september). ",
+      italic: "Forklaring til sanntidsgrafene",
+      suffix: ". Forklarer gjentaksintervall, ikke kalibrering av undervisningsmodellen.",
+      href: "https://www.nve.no/vann-og-vassdrag/hydrologiske-data/historiske-data/forklaring-til-sanntidsgrafene/",
+    },
+    {
       prefix: "Bjerknessenteret. (u.å.). ",
       italic: "Tropiske sykloner",
       suffix: ". Hentet 6. november 2026.",
@@ -313,7 +331,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.nve.no/naturfare/laer-om-naturfare/om-skred/kva-er-kvikkleire-og-kvikkleireskred/",
     },
     {
-      prefix: "Norges vassdrags- og energidirektorat. (u.å.). ",
+      prefix: "Norges vassdrags- og energidirektorat. (u.å.-a). ",
       italic: "Historiske fjellskred i Norge",
       suffix: ". Hentet 6. november 2026.",
       href: "https://veiledere.nve.no/fjellskred/historikk/historiske-fjellskred-i-norge/",
