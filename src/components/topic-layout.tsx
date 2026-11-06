@@ -20,6 +20,7 @@ import {
   navForTopicPath,
 } from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
+import { posterHeadingAnchorsEnabled } from "@/lib/poster-heading";
 import { posterPlaceholderText } from "@/lib/poster-placeholder";
 import { posterNeedsRefresh } from "@/lib/poster-fresh";
 import { getPost, type Post } from "@/lib/posts";
@@ -142,6 +143,34 @@ export function TopicLayout({
   const usePoster = bodyMode === "poster";
   const useCoded = bodyMode === "coded" || (!useScan && !usePoster);
 
+  useEffect(() => {
+    if (!usePoster) return;
+    let cancelled = false;
+    const timers: number[] = [];
+    const scroll = () => {
+      if (cancelled) return;
+      const raw = window.location.hash.replace(/^#/, "");
+      if (!raw) return;
+      let id = raw;
+      try {
+        id = decodeURIComponent(raw);
+      } catch {
+        return;
+      }
+      document.getElementById(id)?.scrollIntoView({ block: "start" });
+    };
+    scroll();
+    for (const delay of [50, 200, 600, 1200, 2000]) {
+      timers.push(window.setTimeout(scroll, delay));
+    }
+    window.addEventListener("hashchange", scroll);
+    return () => {
+      cancelled = true;
+      for (const timer of timers) window.clearTimeout(timer);
+      window.removeEventListener("hashchange", scroll);
+    };
+  }, [usePoster, markdown]);
+
   return (
     <div className="kapittel-lys flex min-h-dvh flex-col">
       <a
@@ -223,6 +252,7 @@ export function TopicLayout({
                   resolvedSlug === "geologiske-ressurser" ||
                   resolvedSlug === "feltarbeid"
                 }
+                headingAnchors={posterHeadingAnchorsEnabled(resolvedSlug)}
               >
                 {markdown}
               </PosterBody>

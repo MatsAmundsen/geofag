@@ -172,6 +172,8 @@ import {
 } from "@/components/diagrams/ocean";
 import { GeoMap } from "@/components/geo-map";
 import { lastMarkdownHeading, Markdown } from "@/components/markdown";
+import { posterHeadingAnchorIds } from "@/lib/chapter-scan";
+import type { HeadingIdCursor } from "@/lib/poster-heading";
 import { SpheresDiagram } from "@/components/diagrams/spheres";
 import { KarbonatSilikatFigur } from "@/components/diagrams/jordsys-figurer";
 import { EarthSystemsModel } from "@/components/models/earth-systems-model";
@@ -1615,15 +1617,22 @@ export function PosterBody({
   cleanChapter,
   scrollTables = false,
   wrapTables = false,
+  headingAnchors = false,
 }: {
   children: string;
   className?: string;
   cleanChapter?: boolean;
   scrollTables?: boolean;
   wrapTables?: boolean;
+  /** Stabile overskrifts-id-er, samme slug som scan-modus. Av som standard. */
+  headingAnchors?: boolean;
 }) {
   const content = cleanChapter ? stripChapterEditorNotice(children) : children;
-  const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(injectPosterWidgets(content)));
+  const prepared = injectPosterWidgets(content);
+  const headingIds: HeadingIdCursor | undefined = headingAnchors
+    ? { ids: posterHeadingAnchorIds(prepared), index: 0 }
+    : undefined;
+  const parts = withoutDuplicateEarthFigure(parsePosterMarkdown(prepared));
   let runningHeading = "";
   return (
     <div className={cn("space-y-4", className)}>
@@ -1641,6 +1650,7 @@ export function PosterBody({
             wrapTables={wrapTables}
             captionFallback={captionFallback}
             searchable
+            headingIds={headingIds}
           >
             {part.value}
           </Markdown>

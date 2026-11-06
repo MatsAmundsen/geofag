@@ -3,8 +3,16 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { injectPosterWidgets } from "./poster-markdown.ts";
-import { prepareChapterScan } from "./chapter-scan.ts";
+import { createElement, type ReactNode } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import ReactMarkdown from "react-markdown";
+import { prepareChapterScan, posterHeadingAnchorIds } from "./chapter-scan.ts";
+import { injectPosterWidgets, stripChapterEditorNotice } from "./poster-markdown.ts";
+import {
+  posterHeadingAnchorsEnabled,
+  posterHeadingElement,
+  type HeadingIdCursor,
+} from "./poster-heading.ts";
 import {
   QUIZ_JORDSKJELV,
   QUIZ_SJEKK_JORDSKJELV_VARSLING,
@@ -39,6 +47,25 @@ function withoutMaria(markdown: string): string {
 
 function fenceCount(markdown: string, widgetId: string): number {
   return markdown.split(`\`\`\`widget\n${widgetId}\n\`\`\``).length - 1;
+}
+
+function posterHtml(name: string): string {
+  const prepared = injectPosterWidgets(stripChapterEditorNotice(readSeed(name)));
+  const cursor: HeadingIdCursor = { ids: posterHeadingAnchorIds(prepared), index: 0 };
+  const html = renderToStaticMarkup(
+    createElement(ReactMarkdown, {
+      children: prepared,
+      components: {
+        h2: ({ children }: { children?: ReactNode }) => posterHeadingElement("h2", children, cursor, "h2"),
+        h3: ({ children }: { children?: ReactNode }) => posterHeadingElement("h3", children, cursor, "h3"),
+      },
+    }),
+  );
+  const scanIds = prepareChapterScan(readSeed(name)).sections.map((section) => section.id);
+  const renderedH2 = [...html.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(renderedH2, scanIds);
+  assert.equal(cursor.index, cursor.ids.length);
+  return html;
 }
 
 describe("tsunami redirect", () => {
@@ -92,6 +119,26 @@ describe("legacy naturfare anchors", () => {
     for (const row of LEGACY_NATURFARE_ANCHORS) {
       const ids = row.path === TSUNAMI_PATH ? wave : quake;
       assert.equal(ids.has(row.id), true, `${row.from} -> ${row.id}`);
+    }
+  });
+
+  it("renders each target anchor as an id in the poster HTML", () => {
+    assert.equal(posterHeadingAnchorsEnabled("jordskjelv"), true);
+    assert.equal(posterHeadingAnchorsEnabled("jordskjelv-naturfare"), true);
+    assert.equal(posterHeadingAnchorsEnabled("vulkaner"), false);
+    assert.equal(posterHeadingAnchorsEnabled("enso"), false);
+
+    const rendered = {
+      [JORDSKJELV_PATH]: posterHtml("jordskjelv.md"),
+      [TSUNAMI_PATH]: posterHtml("jordskjelv-naturfare.md"),
+    };
+    for (const row of LEGACY_NATURFARE_ANCHORS) {
+      const html = rendered[row.path];
+      assert.equal(html.includes(`id="${row.id}"`), true, `${row.from} -> ${row.id}`);
+    }
+    for (const html of Object.values(rendered)) {
+      const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]!);
+      assert.equal(new Set(ids).size, ids.length);
     }
   });
 });

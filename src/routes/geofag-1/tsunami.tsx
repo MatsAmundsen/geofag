@@ -20,8 +20,13 @@ export const Route = createFileRoute("/geofag-1/tsunami")({
 
 function LegacyNaturfareHash() {
   useEffect(() => {
-    const next = legacyNaturfareRedirect(window.location.hash, window.location.search);
-    if (next) window.location.replace(next);
+    const go = () => {
+      const next = legacyNaturfareRedirect(window.location.hash, window.location.search);
+      if (next) window.location.replace(next);
+    };
+    go();
+    window.addEventListener("hashchange", go);
+    return () => window.removeEventListener("hashchange", go);
   }, []);
   return null;
 }
