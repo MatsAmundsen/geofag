@@ -812,7 +812,7 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
 describe("Geografi kapittel 10: befolkning og levekår", () => {
   const md = read("posts/geo-befolkning.md");
   const sources = read("kilder-geografi.ts").split('"geo-befolkning": [')[1].split('"geo-migrasjon"')[0];
-  const widgets = ["GeoBefolkningVerden", "GeoBefolkningGrunnformel", "GeoBefolkningNorgePyramider", "GeoBefolkningLandPyramider", "GeoBefolkningOvergang", "GeoBefolkningNorgeFruktbarhet"];
+  const widgets = ["GeoBefolkningFruktbarhetKart", "GeoBefolkningVerden", "GeoBefolkningGrunnformel", "GeoBefolkningNorgePyramider", "GeoBefolkningLandPyramider", "GeoBefolkningOvergang", "GeoBefolkningLevekarKart", "GeoBefolkningNorgeFruktbarhet"];
 
   it("dekker alle åtte underkapitler og oppgaver uten synlige redaktørnotater", () => {
     for (const title of ["Befolkningsvekst", "Demografiske mål", "Fruktbarhet og dødelighet", "Befolkningspyramider", "Demografisk overgang", "Befolkningsteorier", "Levekår i verden", "Befolkning i Norge", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
@@ -823,17 +823,17 @@ describe("Geografi kapittel 10: befolkning og levekår", () => {
     assert.doesNotMatch(md, /under arbeid|## Status|## Planlagte underkapitler|[!<]/i);
   });
 
-  it("har seks registrerte widgets og to skjulte kartmarkører", () => {
+  it("har åtte registrerte widgets og ingen skjulte kartmarkører", () => {
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
-    assert.deepEqual([...md.matchAll(/^\[figur-10-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]), ["1", "7"]);
+    assert.deepEqual([...md.matchAll(/^\[figur-10-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]), []);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-10-/);
     assert.doesNotMatch(md, /[Ss]e figur 10\.(?:1|7)\b/);
   });
 
-  it("registrerer 16 kontrollerte kilder og henviser til fagkildene", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 16);
+  it("registrerer 19 kontrollerte kilder og henviser til fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 19);
     for (const domain of ["ssb.no", "worldbank.org", "ourworldindata.org", "who.int", "undp.org", "snl.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "2026d", "Tømmerås et al., 2026", "Tønnessen, 2024", "Solerød & Tønnessen, 2026", "Nylenna et al., 2025", "Mæhlum, 2023", "Stoltz, 2026", "WHO, 2025", "UNDP, u.å.", "Verdensbanken, 2026", "Our World in Data, 2024"]) assert.ok(md.includes(citation), citation);
     assert.doesNotMatch(md + sources, /Terra Nova|Aunivers|bibliotek/);

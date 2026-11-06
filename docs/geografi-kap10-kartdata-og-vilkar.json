@@ -1,0 +1,33 @@
+{
+  "kontrollert": "2026-11-06",
+  "felles_ar": 2023,
+  "begrunnelse": "Sammenliknbarhet med Japan/Niger-caset og nyeste publiserte HDI-år, ikke påstand om at nyere WDI-år er utilgjengelige.",
+  "sft": {
+    "indikator": "SP.DYN.TFRT.IN",
+    "kilde": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.TFRT.IN?date=2023&format=json&per_page=400",
+    "antall": 217,
+    "enhet": "barn per kvinne",
+    "lisens": "World Bank CC BY 4.0",
+    "sha256": "aa672b0ffa48961dcacacaa103468df0d552b2079bb5ca6355303414824d3ccd"
+  },
+  "levealder": {
+    "indikator": "SP.DYN.LE00.IN",
+    "kilde": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.LE00.IN?date=2023&format=json&per_page=400",
+    "antall": 217,
+    "enhet": "år ved fødsel, begge kjønn",
+    "lisens": "World Bank CC BY 4.0",
+    "sha256": "2c3a31d481a2f594ae78439e2b778fdf6c7b8d23ad29fcf975c95b0d247957f4"
+  },
+  "hdi": {
+    "kilde": "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    "rapport": "HDR2025, dataår2023. HDR2026 er varslet 1. desember, ikke publisert ved kontroll 6. november.",
+    "antall": 193,
+    "filter": "Numerisk hdi_rank_2023 og hdi_2023. Ingen gruppeaggregater.",
+    "lisens": "UNDP CC BY 3.0 IGO, kontrollert i kapittel 8",
+    "sha256": "61ed82e5b66c88dfca8ff9fac775c63981ecab6a254862af97acacc41c143117",
+    "klasser": "Lav under 0.550, middels 0.550–0.699, høy 0.700–0.799, svært høy fra 0.800. Kontrollert i primære tekniske noter, trykt side 5.",
+    "klasseskilde": "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Technical_Notes.pdf"
+  },
+  "behandling": "WDI-gruppeaggregater er filtrert med landmetadata region.id=NA. Manglende verdier er ikke satt til null. Ingen omkoding av SOL/KOS er gjettet. Tabell og CSV inkluderer små områder som ikke vises i 110m-kartet.",
+  "kartgrunnlag": "Natural Earth 110m Admin0 5.1.1, public domain. Egen Gall–Peters, arvet fra kapittel 9."
+}

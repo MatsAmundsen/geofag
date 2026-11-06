@@ -6,6 +6,11 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    flag: "geo-befolkning-mats-valg-kap10-2026-11-06",
+    slug: "geo-befolkning",
+    stale: ["FIGURPLASSHOLDER"],
+  },
+  {
     flag: "geo-naering-mats-valg-kap9-2026-11-06",
     slug: "geo-naering",
     stale: ["FIGURPLASSHOLDER"],

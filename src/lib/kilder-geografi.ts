@@ -1554,6 +1554,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-befolkning": [
     {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "1:110m Admin 0 – Countries",
+      suffix: ". Versjon 5.1.1, public domain. Egen Gall–Peters-framstilling.",
+      href: "https://www.naturalearthdata.com/about/terms-of-use/",
+    },
+    {
+      prefix: "FNs utviklingsprogram [UNDP]. (2025b). ",
+      italic: "Technical notes: Human Development Report 2025",
+      suffix: ". Teknisk note 1, trykt side 5, dokumenterte HDI-grupper.",
+      href: "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Technical_Notes.pdf",
+    },
+    {
+      prefix: "FNs utviklingsprogram [UNDP]. (2025a). ",
+      italic: "Human Development Report 2025: Composite Indices – Complete Time Series",
+      suffix: " [Datasett]. hdi_2023, 193 land med rangering. CC BY 3.0 IGO. Hentet 6. november 2026.",
+      href: "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+    },
+    {
       prefix: "Mæhlum, L. (2023, 21. april). ",
       italic: "Ester Boserup",
       suffix: ". I Store norske leksikon.",
@@ -1639,8 +1657,8 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
     },
     {
       prefix: "Verdensbanken. (2026, 8. oktober). ",
-      italic: "World Development Indicators: Japan og Niger",
-      suffix: " [Datasett]. Midtårsestimater 2023, alder etter kjønn, kjønnsandeler, SFT, forventet levealder, andel under 15 og fra 65 år. FN WPP og øvrige originalkilder er oppgitt i indikatorenes metadata. Uttrekk 6. november 2026. CC BY 4.0.",
+      italic: "World Development Indicators",
+      suffix: " [Datasett]. Midtårsestimater 2023, alder etter kjønn, kjønnsandeler, SFT, forventet levealder, andel under 15 og fra 65 år. Japan/Niger-caset og globale 2023-kart for SP.DYN.TFRT.IN og SP.DYN.LE00.IN. Gruppeaggregater utelatt. FN WPP og øvrige originalkilder er oppgitt i indikatorenes metadata. Uttrekk 6. november 2026. CC BY 4.0.",
       href: "https://data.worldbank.org/indicator/SP.POP.0004.MA.5Y",
     },
     {
