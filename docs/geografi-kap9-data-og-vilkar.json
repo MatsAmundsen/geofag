@@ -1,0 +1,81 @@
+{
+  "kontrollert": "2026-11-06",
+  "produkt": "Fairphone 5",
+  "leverandorfakta": {
+    "rapport": "https://www.fairphone.com/resources/pdf/SCE-2024.pdf",
+    "kildedel": "Annex 1, navn, oppgitt adresse og type ledd. Ikke komplett nettverk.",
+    "lisens": "Ingen gjenbrukslisens for rapportgrafikk er bekreftet. Ingen grafikk, foto eller full tabell er kopiert. Bare tre dokumenterte leverandørfakta gjengis i egen framstilling.",
+    "sha256": "4ebb9f53ea94ee04db41c1e0275a8ad949821c6308abb77147fbc83456ef94d8",
+    "tittel": "Supply Chain Engagement: From Risk to Impact. Fairphone’s Suppliers, Smelters and Refiners",
+    "publisert": "Mai 2024, bekreftet på førstesiden"
+  },
+  "kart": {
+    "kilde": "Natural Earth 110m Admin0 Countries 5.1.1 og 10m Populated Places 5.1.2",
+    "lisens": "Public domain, alle versjoner, primærvilkår https://www.naturalearthdata.com/about/terms-of-use/",
+    "koordinater": "Bypunkter, ikke gateadresser eller fabrikk-GPS",
+    "iso3": "ISO_A3_EH når gyldig, ellers ADM0_A3. SOL og KOS er ikke omkodet uten dokumentert krysskobling.",
+    "projeksjon": "Egen Gall–Peters, standardbredde 45 grader. Avrundet 0.1 SVG-enheter.",
+    "sha256Admin": "0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110"
+  },
+  "eksport": {
+    "tabell": "09283",
+    "query": {
+      "query": [
+        {
+          "code": "VareGrupper1",
+          "selection": {
+            "filter": "item",
+            "values": [
+              "000"
+            ]
+          }
+        },
+        {
+          "code": "Land",
+          "selection": {
+            "filter": "item",
+            "values": [
+              "00",
+              "PL",
+              "DK",
+              "FR",
+              "US",
+              "CN"
+            ]
+          }
+        },
+        {
+          "code": "ContentsCode",
+          "selection": {
+            "filter": "item",
+            "values": [
+              "Verdi",
+              "Mengde1"
+            ]
+          }
+        },
+        {
+          "code": "Tid",
+          "selection": {
+            "filter": "item",
+            "values": [
+              "2025"
+            ]
+          }
+        }
+      ],
+      "response": {
+        "format": "json-stat2"
+      }
+    },
+    "vare": "000, All fisk, kreps-, bløtdyr og varer derav, SSBs note kobler til SITC03.",
+    "enheter": [
+      "millioner NOK",
+      "tonn"
+    ],
+    "partner": "Fem utvalgte bestemmelsesland, ikke de fem største. Total verden vises separat, ikke summert med land.",
+    "revisjon": "2025 er ikke endelig. Uttrekket er revidert i mai 2026; metadata oppgir endelig revisjon mai 2027.",
+    "lisens": "CC BY 4.0, SSB",
+    "sha256": "751c38cf73ca43415bcf7638e07f88151db0faba055a091c255a0076152a184a"
+  }
+}

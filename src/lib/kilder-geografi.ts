@@ -1402,6 +1402,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-naering": [
     {
+      prefix: "Statistisk sentralbyrå [SSB]. (2026b, 15. mai). ",
+      italic: "09283: Eksport av fisk, etter varegruppe, land, statistikkvariabel og år",
+      suffix: ". Varegruppe 000, 2025, millioner kroner og tonn. Reviderte, ikke endelige tall. CC BY 4.0.",
+      href: "https://www.ssb.no/statbank/table/09283/",
+    },
+    {
+      prefix: "Natural Earth. (u.å.). ",
+      italic: "1:110m Admin 0 – Countries og 1:10m Populated Places",
+      suffix: ". Public domain. Grov landgeometri og bypunkter. Egne projeksjoner og utsnitt.",
+      href: "https://www.naturalearthdata.com/about/terms-of-use/",
+    },
+    {
+      prefix: "Fairphone. (2024, mai). ",
+      italic: "Supply Chain Engagement: From Risk to Impact. Fairphone’s Suppliers, Smelters and Refiners",
+      suffix: ". Vedlegg 1. Tre oppgitte leverandørsteder for Fairphone 5. Ingen grafikk eller bilder er gjenbrukt.",
+      href: "https://www.fairphone.com/resources/pdf/SCE-2024.pdf",
+    },
+    {
       prefix: "FNs miljøprogram [UNEP]. (2019, 29. januar). ",
       italic: "Is your phone really smart?",
       suffix: ". Brukt for materialer og livsløp, ikke som kilde til dagens avfallsmengder.",
@@ -1492,7 +1510,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://www.ssb.no/statbank/table/09174",
     },
     {
-      prefix: "Statistisk sentralbyrå [SSB]. (2026b, 5. juni). ",
+      prefix: "Statistisk sentralbyrå [SSB]. (2026c, 5. juni). ",
       italic: "Ringvirkninger av petroleumsnæringen",
       suffix: ". Nettside med sammendrag av Rapporter 2026/19.",
       href: "https://www.ssb.no/nasjonalregnskap-og-konjunkturer/konjunkturer/artikler/ringvirkninger-av-petroleumsnaeringen",
