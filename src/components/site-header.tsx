@@ -16,6 +16,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SiteSearch } from "@/components/sok/site-search";
 
+// Geografi-kapitlene deler en dynamisk rute, ikke elleve statiske filruter.
+function isGeografiKapittelPath<T extends string>(to: T): to is Extract<T, `/geografi/${string}`> {
+  return to.startsWith("/geografi/");
+}
+
 function isItemActive(pathname: string, to: string) {
   if (to === "/") return pathname === "/";
   return pathname === to || (to !== "/geofag-2" && pathname.startsWith(`${to}/`));
@@ -103,9 +108,12 @@ function rullTilHashEtterMaaling(finnHeader: () => HTMLElement | null) {
     if (flyttetAvAndre()) stopp();
   };
   // Layoutendringer (figurer, plassholdere, skrift) utløser en sjekk i samme ramme.
-  const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => {
-    if (!stoppet && !ramme) ramme = window.requestAnimationFrame(sjekk);
-  }) : null;
+  const ro =
+    typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(() => {
+          if (!stoppet && !ramme) ramme = window.requestAnimationFrame(sjekk);
+        })
+      : null;
   ro?.observe(document.body);
   function stopp() {
     if (stoppet) return;
@@ -160,7 +168,9 @@ export function SiteHeader() {
     // ved første brukerinndata, og når noe annet enn denne logikken flytter siden.
     const stopp =
       tidligStopp ??
-      rullTilHashEtterMaaling(() => (header.isConnected ? header : document.querySelector(HEADER_VELGER)));
+      rullTilHashEtterMaaling(() =>
+        header.isConnected ? header : document.querySelector(HEADER_VELGER),
+      );
     tidligStopp = null;
     const ro = new ResizeObserver(apply);
     ro.observe(header);
@@ -309,8 +319,7 @@ export function SiteHeader() {
               <div className="flex flex-col text-left">
                 <span className="font-display text-sm font-semibold tracking-tight text-foreground">
                   Geofag
-                </span>
-                {" "}
+                </span>{" "}
                 <span className="text-[10px] text-muted-foreground">Forside</span>
               </div>
             </Link>
@@ -361,10 +370,16 @@ export function SiteHeader() {
                   ? pathname === "/"
                   : pathname === item.to ||
                     (item.to !== "/geofag-2" && pathname.startsWith(`${item.to}/`));
+              const destination = isGeografiKapittelPath(item.to)
+                ? {
+                    to: "/geografi/$kapittel" as const,
+                    params: { kapittel: item.to.slice("/geografi/".length) },
+                  }
+                : { to: item.to };
               return (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  {...destination}
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "inline-flex h-10 items-center rounded-md px-2 text-sm transition-colors",
@@ -562,8 +577,7 @@ function BrandCluster({
         <div className="flex flex-col text-left">
           <span className="font-display text-sm font-semibold tracking-tight text-foreground">
             Geofag
-          </span>
-          {" "}
+          </span>{" "}
           <span className="text-[10px] text-muted-foreground">Forside</span>
         </div>
       </Link>
