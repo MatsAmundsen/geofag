@@ -62,33 +62,136 @@
   }
 
   /* Plass til tsunami-modellene før JS-en er lastet, så ankeret ikke hopper.
-     Høyden er målt på ferdig figur ved 390 px og 1280 px. Scenen har samme
-     sideforhold som viewBox: 360/420 når skjermen er smal, 640/280 når den er bred. */
+     Scenen har samme sideforhold som viewBox: 360/420 under 640 px, 640/280 fra 640 px.
+     M5-rutenettet er (8·celle+16) / (6·celle+16), celle 36 smalt og 28 bredt.
+     M2 legger ankomstgrafen 320/160 under scenen, avgrenset til 28rem.
+     Hode og bunn er teksten rundt scenen. Den følger ikke viewBox, og bunnen
+     blir lavere fra 64rem fordi tallene da står i to kolonner. */
   .tsunami-plass-scene {
     width: 100%;
     aspect-ratio: 360 / 420;
   }
 
-  .tsunami-plass[data-modell="m1"] { min-height: 1173px; }
-  .tsunami-plass[data-modell="m2"] { min-height: 1607px; }
-  .tsunami-plass[data-modell="m3"] { min-height: 1301px; }
-  .tsunami-plass[data-modell="m4"] { min-height: 1377px; }
-  .tsunami-plass[data-modell="m5"] { min-height: 962px; }
-  .tsunami-plass[data-modell="m6"] { min-height: 967px; }
-  .tsunami-plass[data-modell="m7"] { min-height: 1349px; }
+  .tsunami-plass[data-modell="m5"] .tsunami-plass-scene {
+    aspect-ratio: 304 / 232;
+  }
+
+  .tsunami-plass-graf {
+    width: 100%;
+    max-width: 28rem;
+    margin-top: 0.75rem;
+    aspect-ratio: 320 / 160;
+  }
+
+  .tsunami-plass-liste {
+    height: 10rem;
+  }
+
+  .tsunami-plass[data-modell="m1"] .tsunami-plass-hode { height: 563px; }
+  .tsunami-plass[data-modell="m1"] .tsunami-plass-bunn { height: 258px; }
+  .tsunami-plass[data-modell="m2"] .tsunami-plass-hode { height: 603px; }
+  .tsunami-plass[data-modell="m2"] .tsunami-plass-bunn { height: 498px; }
+  .tsunami-plass[data-modell="m3"] .tsunami-plass-hode { height: 615px; }
+  .tsunami-plass[data-modell="m3"] .tsunami-plass-bunn { height: 334px; }
+  .tsunami-plass[data-modell="m4"] .tsunami-plass-hode { height: 651px; }
+  .tsunami-plass[data-modell="m4"] .tsunami-plass-bunn { height: 374px; }
+  .tsunami-plass[data-modell="m5"] .tsunami-plass-hode { height: 387px; }
+  .tsunami-plass[data-modell="m5"] .tsunami-plass-bunn { height: 374px; }
+  .tsunami-plass[data-modell="m6"] .tsunami-plass-hode { height: 599px; }
+  .tsunami-plass[data-modell="m6"] .tsunami-plass-bunn { height: 306px; }
+  .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 667px; }
+  .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 402px; }
+
+  @media (min-width: 390px) {
+    .tsunami-plass[data-modell="m1"] .tsunami-plass-hode { height: 523px; }
+    .tsunami-plass[data-modell="m1"] .tsunami-plass-bunn { height: 238px; }
+    .tsunami-plass[data-modell="m2"] .tsunami-plass-hode { height: 583px; }
+    .tsunami-plass[data-modell="m2"] .tsunami-plass-bunn { height: 458px; }
+    .tsunami-plass[data-modell="m3"] .tsunami-plass-hode { height: 595px; }
+    .tsunami-plass[data-modell="m3"] .tsunami-plass-bunn { height: 294px; }
+    .tsunami-plass[data-modell="m4"] .tsunami-plass-hode { height: 631px; }
+    .tsunami-plass[data-modell="m4"] .tsunami-plass-bunn { height: 334px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-hode { height: 367px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-bunn { height: 314px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-hode { height: 507px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-bunn { height: 266px; }
+    .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 595px; }
+    .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 342px; }
+  }
 
   @media (min-width: 40rem) {
     .tsunami-plass-scene {
       aspect-ratio: 640 / 280;
     }
 
-    .tsunami-plass[data-modell="m1"] { min-height: 1038px; }
-    .tsunami-plass[data-modell="m2"] { min-height: 1384px; }
-    .tsunami-plass[data-modell="m3"] { min-height: 1038px; }
-    .tsunami-plass[data-modell="m4"] { min-height: 1140px; }
-    .tsunami-plass[data-modell="m5"] { min-height: 955px; }
-    .tsunami-plass[data-modell="m6"] { min-height: 793px; }
-    .tsunami-plass[data-modell="m7"] { min-height: 1080px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-scene {
+      aspect-ratio: 240 / 184;
+    }
+
+    .tsunami-plass[data-modell="m1"] .tsunami-plass-hode { height: 487px; }
+    .tsunami-plass[data-modell="m1"] .tsunami-plass-bunn { height: 198px; }
+    .tsunami-plass[data-modell="m2"] .tsunami-plass-hode { height: 547px; }
+    .tsunami-plass[data-modell="m2"] .tsunami-plass-bunn { height: 358px; }
+    .tsunami-plass[data-modell="m3"] .tsunami-plass-hode { height: 487px; }
+    .tsunami-plass[data-modell="m3"] .tsunami-plass-bunn { height: 254px; }
+    .tsunami-plass[data-modell="m4"] .tsunami-plass-hode { height: 575px; }
+    .tsunami-plass[data-modell="m4"] .tsunami-plass-bunn { height: 254px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-hode { height: 311px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-bunn { height: 254px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-hode { height: 471px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-bunn { height: 206px; }
+    .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 487px; }
+    .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 282px; }
+  }
+
+  @media (min-width: 64rem) {
+    .tsunami-plass[data-modell="m1"] .tsunami-plass-bunn { height: 152px; }
+    .tsunami-plass[data-modell="m2"] .tsunami-plass-bunn { height: 230px; }
+    .tsunami-plass[data-modell="m3"] .tsunami-plass-bunn { height: 152px; }
+    .tsunami-plass[data-modell="m4"] .tsunami-plass-bunn { height: 166px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-bunn { height: 152px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-hode { height: 451px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-bunn { height: 132px; }
+    .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 194px; }
+  }
+
+  /* Videoen er 16:9. Bildeteksten på disse titlene er tre linjer, 97 px. */
+  .video-plass-hode {
+    height: 97px;
+  }
+
+  /* Quizene er tekst. Høyden er målt ferdig boks ved 320, 390, 768 og 1280. */
+  .quiz-plass[data-quiz="SjekkTsunami1"] { height: 702px; }
+  .quiz-plass[data-quiz="SjekkTsunami2"] { height: 762px; }
+  .quiz-plass[data-quiz="SjekkTsunami3"] { height: 700px; }
+  .quiz-plass[data-quiz="SjekkTsunami4"] { height: 428px; }
+  .quiz-plass[data-quiz="SjekkTsunami5"] { height: 492px; }
+  .quiz-plass[data-quiz="SjekkTsunami6"] { height: 742px; }
+  .quiz-plass[data-quiz="QuizTsunami"] { height: 1888px; }
+
+  @media (min-width: 390px) {
+    .quiz-plass[data-quiz="SjekkTsunami1"] { height: 644px; }
+    .quiz-plass[data-quiz="SjekkTsunami2"] { height: 648px; }
+    .quiz-plass[data-quiz="SjekkTsunami3"] { height: 622px; }
+    .quiz-plass[data-quiz="SjekkTsunami4"] { height: 390px; }
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 470px; }
+    .quiz-plass[data-quiz="SjekkTsunami6"] { height: 702px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1624px; }
+  }
+
+  @media (min-width: 40rem) {
+    .quiz-plass[data-quiz="SjekkTsunami1"] { height: 594px; }
+    .quiz-plass[data-quiz="SjekkTsunami2"] { height: 594px; }
+    .quiz-plass[data-quiz="SjekkTsunami3"] { height: 594px; }
+    .quiz-plass[data-quiz="SjekkTsunami4"] { height: 380px; }
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 402px; }
+    .quiz-plass[data-quiz="SjekkTsunami6"] { height: 594px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1262px; }
+  }
+
+  @media (min-width: 64rem) {
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 380px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1222px; }
   }
 
   body {
