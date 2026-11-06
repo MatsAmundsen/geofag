@@ -104,10 +104,12 @@ function markerPath(baseY: number, bend: number, slip: number) {
 }
 
 /** Plater, låst forkastning, elastisk bøying, brudd og tilbakesprett. */
-export function ElasticReboundDiagram() {
+export function ElasticReboundDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   const motion = useAnimationPlaying();
   const playing = motion.playing;
-  const [step, setStep] = useStepCycle(5, playing, 3200);
+  const [phase, setPhase] = useStepCycle(geografi ? 3 : 5, playing, 3200);
+  const step = geografi ? [2, 3, 5][phase - 1] : phase;
+  const labels = geografi ? ["1 Låst", "2 Spenning bygges", "3 Brudd og bølger"] : REBOUND_STEPS;
   const [tick, setTick] = useState(0.35);
 
   useEffect(() => {
@@ -134,16 +136,16 @@ export function ElasticReboundDiagram() {
   return (
     <Diagram
       title="Hvordan et jordskjelv blir til langs en låst forkastning"
-      heading="Hvordan jordskjelvet blir til"
-      caption="Hvordan et jordskjelv blir til, i fem trinn: Platene møtes, flaten låses, fjellet bøyes, bruddet skjer, og fjellet spretter tilbake. Bruddet starter i hyposenteret, og episenteret ligger rett over på overflaten."
+      heading={geografi ? "Figur 3.7: Fra låst forkastning til jordskjelv" : "Hvordan jordskjelvet blir til"}
+      caption={geografi ? "Tre forenklede faser: låst flate, lagret spenning og brå forskyvning med bølger. Hyposenteret er bruddets startsted; episenteret ligger rett over på overflaten. Tegningen viser et prinsipp, ikke fart eller varsling av neste skjelv (Wald, u.å.)." : "Hvordan et jordskjelv blir til, i fem trinn: Platene møtes, flaten låses, fjellet bøyes, bruddet skjer, og fjellet spretter tilbake. Bruddet starter i hyposenteret, og episenteret ligger rett over på overflaten."}
       viewBox="0 0 760 460"
       scroll
       action={<PlayPauseToggle isPlaying={playing} onToggle={motion.toggle} />}
       toolbar={
         <>
-          <StepPicker labels={REBOUND_STEPS} step={step} onStep={setStep} />
+          <StepPicker labels={labels} step={phase} onStep={setPhase} />
           <span className="text-xs text-muted-foreground">
-            {playing ? REBOUND_STEPS[step - 1] : "Velg trinn, eller start"}
+            {playing ? labels[phase - 1] : "Velg trinn, eller start"}
           </span>
         </>
       }

@@ -1,3 +1,4 @@
+import { BoundaryOverviewDiagram, GEOGRAFI_PLATEGRENSER, type GeografiPlategrense } from "@/components/diagrams/plates";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ScrollFrame } from "@/components/scroll-frame";
@@ -1208,7 +1209,23 @@ const boundaryData: Record<
   },
 };
 
-export function PlateTectonicsModel() {
+export function PlateTectonicsModel({ geografi = false }: { geografi?: boolean } = {}) {
+  return geografi ? <GeografiPlateTectonicsModel /> : <AdvancedPlateTectonicsModel />;
+}
+function GeografiPlateTectonicsModel() {
+  const [boundary, setBoundary] = useState<GeografiPlategrense>("spredning");
+  return (
+    <ModelFrame kicker="Utforsk plategrenser" title="Figur 3.6: Sammenlikn fire plategrensemiljøer"
+      lead="Velg en bevegelse og forklar hva den kan føre til. Dette er en kvalitativ prinsippmodell, ikke en beregning av hastighet, jordskjelv eller risiko."
+      toolbar={<div className="flex flex-wrap gap-2" role="group" aria-label="Velg plategrensemiljø">
+        {GEOGRAFI_PLATEGRENSER.map((item) => <ModelTab key={item.id} active={boundary === item.id} onClick={() => setBoundary(item.id)}>{item.name}</ModelTab>)}
+      </div>}>
+      <BoundaryOverviewDiagram geografi selected={boundary} />
+      <ModelNote title="Undersøk modellen" tone="teal">Hvilke valg viser sammenpressing? Hva skiller subduksjon fra kontinentkollisjon? Pilene viser bevegelsesretning, ikke en felles målestokk for fart (USGS, u.å.-h).</ModelNote>
+    </ModelFrame>
+  );
+}
+function AdvancedPlateTectonicsModel() {
   const [boundary, setBoundary] = useState<BoundaryType>("subduction_continent");
   const [polarity, setPolarity] = useState<"normal" | "reversed">("normal");
   const [rate, setRate] = useState(6);

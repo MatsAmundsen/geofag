@@ -94,6 +94,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "indre-krefter",
+    tekstKlar: true,
     slug: "geo-indre-krefter",
     title: "Indre krefter: platetektonikk, jordskjelv og vulkaner",
     navLabel: "Indre",

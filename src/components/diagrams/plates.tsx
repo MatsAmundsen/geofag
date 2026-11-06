@@ -93,12 +93,51 @@ function stepOpacity(step: number, n: number, playing: boolean) {
   return 0.5;
 }
 
+// Isolerte Vg1-varianter: ingen endring i standardfigurene for Geofag.
+function GeografiEarthLayersDiagram() {
+  const layers = [
+    { name: "Jordskorpe", color: C.sand, text: "Ytterst: fast bergart." },
+    { name: "Mantel", color: "#b86840", text: "I hovedsak fast, men deformeres langsomt." },
+    { name: "Ytre kjerne", color: "#e4a041", text: "Flytende metall, hovedsakelig jern og nikkel." },
+    { name: "Indre kjerne", color: "#f5d57b", text: "Fast metall under høyt trykk." },
+  ];
+  return (
+    <Diagram title="Jordas fire hovedlag" heading="Figur 3.2: Fra skorpe til kjerne"
+      caption="Forenklet lagdeling uten målestokk. Litosfæren omfatter skorpa og stiv øvre mantel; astenosfæren er en svakere sone i øvre mantel. Fargene viser ulike lag, ikke målte temperaturer (NGU, u.å.-e)."
+      viewBox="0 0 760 400" scroll>
+      {() => <>
+        <circle cx="185" cy="190" r="162" fill={layers[0].color} />
+        <circle cx="185" cy="190" r="150" fill={layers[1].color} />
+        <circle cx="185" cy="190" r="88" fill={layers[2].color} />
+        <circle cx="185" cy="190" r="43" fill={layers[3].color} />
+        {layers.map((layer, i) => <g key={layer.name}>
+          <rect x="380" y={60 + i * 72} width="16" height="16" fill={layer.color} />
+          <L x="410" y={74 + i * 72} fill={C.fg} size={16} weight={700}>{layer.name}</L>
+          <L x="410" y={96 + i * 72} fill={C.muted} size={12}>{layer.text}</L>
+        </g>)}
+        <L x="380" y="350" fill={C.fg} size={12}>Litosfære = skorpe + stiv øverste mantel</L>
+        <L x="380" y="373" fill={C.muted} size={12}>Astenosfære: svakere sone i øvre mantel</L>
+        <L x="185" y="380" fill={C.muted} size={13} anchor="middle">Skjematisk snitt, ikke riktige tykkelser</L>
+      </>}
+    </Diagram>
+  );
+}
+
+export const GEOGRAFI_PLATEGRENSER = [
+  { id: "spredning", name: "Spredningsrygg", arrows: "← →", motion: "Platene beveger seg fra hverandre.", result: "Magma størkner til ny havbunnsskorpe. Jordskjelv og vulkanisme kan forekomme.", example: "Den midtatlantiske ryggen" },
+  { id: "subduksjon", name: "Subduksjon", arrows: "→ ↘", motion: "Platene møtes, og én synker under den andre.", result: "En dyphavsgrop og ofte vulkaner dannes. Jordskjelv kan oppstå langs og i den synkende platen.", example: "Andesfjellene" },
+  { id: "kollisjon", name: "Kontinentkollisjon", arrows: "→ ←", motion: "Kontinentene presses sammen.", result: "Skorpa blir tykkere og fjellkjeder dannes. Sammenpressingen gir også jordskjelv.", example: "Himalaya" },
+  { id: "transform", name: "Transformgrense", arrows: "↑ ↓", motion: "Platene beveger seg sidelengs forbi hverandre.", result: "Ny skorpe dannes ikke av denne bevegelsen. Låste forkastninger kan gi jordskjelv.", example: "San Andreas" },
+] as const;
+export type GeografiPlategrense = typeof GEOGRAFI_PLATEGRENSER[number]["id"];
+
 /**
  * 1. EarthLayersDiagram:
  * Realistisk tverrsnitt av jordens lagdeling fra indre kjerne til skorpe,
  * med seismiske diskontinuiteter (Moho, Gutenberg, Lehmann), tettheter og reologi.
  */
-export function EarthLayersDiagram() {
+export function EarthLayersDiagram({ geografi = false }: { geografi?: boolean } = {}) {
+  if (geografi) return <GeografiEarthLayersDiagram />;
   const photo = getPosterPhotoFigure("/images/geo-jordens-indre-lagdeling-3d.jpg");
   if (photo) {
     return (
@@ -924,7 +963,42 @@ export function DecompressionMeltingDiagram() {
  * 6. BoundaryOverviewDiagram:
  * Visuell og pedagogisk oversikt over de tre hovedklassene plategrenser.
  */
-export function BoundaryOverviewDiagram() {
+export function BoundaryOverviewDiagram({ geografi = false, selected }: { geografi?: boolean; selected?: GeografiPlategrense } = {}) {
+  if (geografi) return (
+    <FigureFrame heading={selected ? "Se bevegelse og følger sammen" : "Figur 3.4: Fire plategrensemiljøer"}
+      caption="Tre hovedbevegelser, med subduksjon og kontinentkollisjon vist hver for seg. De tre første er skjematiske snitt; transformgrensen er sett ovenfra. Pilene viser relative retninger, ikke fart. Figurene har ingen felles målestokk (USGS, u.å.-h).">
+      <div className={selected ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
+        {GEOGRAFI_PLATEGRENSER.filter((item) => !selected || item.id === selected).map((item) => (
+          <article key={item.id} className="rounded-xl border border-border bg-muted/30 p-5" data-geo-boundary={item.id}>
+            <h3 className="font-semibold">{item.name}</h3>
+            <svg viewBox="0 0 320 150" className="my-3 w-full" role="img" aria-label={`${item.name}: ${item.motion} Skjematisk ${item.id === "transform" ? "oversiktsbilde ovenfra" : "snitt"} uten målestokk.`}>
+              <rect x="0" y="0" width="320" height="150" rx="6" fill={C.bg} />
+              {item.id === "spredning" && <>
+                <path d="M5 80 L130 80 L150 62 L150 125 L5 125 Z" fill={C.cold} />
+                <path d="M315 80 L190 80 L170 62 L170 125 L315 125 Z" fill={C.cold} />
+                <path d="M148 130 L160 58 L172 130 Z" fill={C.warm} />
+              </>}
+              {item.id === "subduksjon" && <>
+                <path d="M5 70 L130 70 L235 130 L220 145 L120 90 L5 90 Z" fill={C.cold} />
+                <path d="M150 70 L315 70 L315 96 L194 96 Z" fill={C.sand} />
+                <path d="M222 70 L237 40 L252 70 Z" fill={C.warm} />
+              </>}
+              {item.id === "kollisjon" && <path d="M5 75 L125 75 L144 47 L158 66 L174 43 L195 75 L315 75 L315 110 L196 110 L164 139 L127 110 L5 110 Z" fill={C.sand} />}
+              {item.id === "transform" && <>
+                <path d="M5 35 H151 V135 H5 Z" fill={C.cold} />
+                <path d="M169 35 H315 V135 H169 Z" fill={C.sand} />
+                <path d="M160 35 V135" stroke={C.fg} strokeWidth="2" strokeDasharray="4 4" />
+              </>}
+              <text x="160" y="27" textAnchor="middle" fill={C.fg} fontSize="24" fontWeight="700">{item.arrows}</text>
+            </svg>
+            <p className="text-sm font-medium">{item.motion}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{item.result}</p>
+            <p className="mt-3 text-sm">Eksempel: {item.example}.</p>
+          </article>
+        ))}
+      </div>
+    </FigureFrame>
+  );
   return (
     <FigureFrame
       heading="Tre relative bevegelser, seks distinkte geologiske miljøer"
