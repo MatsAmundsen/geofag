@@ -6,6 +6,12 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
   {
+    // Geografi PR E: kapittel 8; ingen produksjonsendring før godkjent merge.
+    flag: "geo-baerekraft-kap8-2026-11-06",
+    slug: "geo-baerekraft",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
+  },
+  {
     // Geografi PR D: kapittel 6; ingen produksjonsendring før godkjent merge.
     flag: "geo-naturfare-kap6-2026-11-06",
     slug: "geo-naturfare",
