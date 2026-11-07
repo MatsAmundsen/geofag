@@ -1,11 +1,36 @@
 @import "tailwindcss";
 
+/* Lokal skrifttype med samme bredde som webfonten, så kald lasting ikke flytter meny eller brødtekst. */
+@font-face {
+  font-family: "Source Sans Fallback";
+  src: local("Liberation Sans"), local("Arial"), local("Nimbus Sans");
+  size-adjust: 92.5%;
+  ascent-override: 90%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Liberation Serif"), local("Georgia"), local("Times New Roman");
+  size-adjust: 108%;
+  ascent-override: 80%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: optional;
+}
+
 /* Variant «lys:» gjelder når kapittelsidene står i lyst tema (standard). Mørkt tema = data-tema="mork" på <html>. */
 @custom-variant lys (:root:not([data-tema="mork"]) &);
 
 @theme {
-  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", "Source Sans Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Fraunces Fallback", ui-serif, Georgia, "Times New Roman", serif;
 
   --color-background: #0b1014;
   --color-foreground: #e8eef2;
@@ -102,6 +127,16 @@
   .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 667px; }
   .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 402px; }
 
+  @media (min-width: 360px) {
+    .tsunami-plass[data-modell="m1"] .tsunami-plass-hode { height: 523px; }
+    .tsunami-plass[data-modell="m2"] .tsunami-plass-hode { height: 583px; }
+    .tsunami-plass[data-modell="m3"] .tsunami-plass-hode { height: 595px; }
+    .tsunami-plass[data-modell="m4"] .tsunami-plass-hode { height: 611px; }
+    .tsunami-plass[data-modell="m5"] .tsunami-plass-hode { height: 327px; }
+    .tsunami-plass[data-modell="m6"] .tsunami-plass-hode { height: 487px; }
+    .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 555px; }
+  }
+
   @media (min-width: 390px) {
     .tsunami-plass[data-modell="m1"] .tsunami-plass-hode { height: 523px; }
     .tsunami-plass[data-modell="m1"] .tsunami-plass-bunn { height: 238px; }
@@ -162,25 +197,67 @@
     }
   }
 
-  /* Jordskjelv-figurene. Høyden er den ferdige boksen ved 390, 768 og 1280 px. */
-  .kapittel-plass[data-widget="HyposenterForklaring"] { height: 195px; }
-  .kapittel-plass[data-widget="ElasticRebound"] { height: 726px; }
-  .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 682px; }
-  .kapittel-plass[data-widget="BoundaryQuakes"] { height: 356px; }
-  .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 662px; }
-  .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
-  .kapittel-plass[data-widget="Bolgegenerering"] { height: 1493px; }
-  .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 608px; }
-  .kapittel-plass[data-widget="Seismogram"] { height: 399px; }
-  .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 700px; }
-  .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 408px; }
-  .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 708px; }
-  .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 670px; }
-  .kapittel-plass[data-widget="JordasBolger"] { height: 859px; }
-  .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
-  .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 421px; }
-  .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 686px; }
-  .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2484px; }
+  /* Jordskjelv-figurene. Målt ferdig boks. Diagrammene har et rullende minstemål, så høyden følger ikke beholderens sideforhold. */
+  .kapittel-plass[data-widget="HyposenterForklaring"] { height: 217px; }
+  .kapittel-plass[data-widget="ElasticRebound"] { height: 791px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 760px; }
+  .kapittel-plass[data-widget="BoundaryQuakes"] { height: 367px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 726px; }
+  .kapittel-plass[data-widget="Partikkelbolger"] { height: 818px; }
+  .kapittel-plass[data-widget="Bolgegenerering"] { height: 1624px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 644px; }
+  .kapittel-plass[data-widget="Seismogram"] { height: 426px; }
+  .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 742px; }
+  .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 446px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 748px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 710px; }
+  .kapittel-plass[data-widget="JordasBolger"] { height: 938px; }
+  .kapittel-plass[data-widget="IntraplateForklaring"] { height: 217px; }
+  .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 432px; }
+  .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 750px; }
+  .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2704px; }
+
+  @media (min-width: 360px) {
+    .kapittel-plass[data-widget="HyposenterForklaring"] { height: 217px; }
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 791px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 700px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 364px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 704px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 1542px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 608px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 406px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 720px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 428px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 728px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 688px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 892px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 429px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 706px; }
+    .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2562px; }
+  }
+
+  @media (min-width: 390px) {
+    .kapittel-plass[data-widget="HyposenterForklaring"] { height: 195px; }
+    .kapittel-plass[data-widget="ElasticRebound"] { height: 726px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 682px; }
+    .kapittel-plass[data-widget="BoundaryQuakes"] { height: 356px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 662px; }
+    .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
+    .kapittel-plass[data-widget="Bolgegenerering"] { height: 1493px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv3"] { height: 608px; }
+    .kapittel-plass[data-widget="Seismogram"] { height: 399px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 700px; }
+    .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 408px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 708px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 670px; }
+    .kapittel-plass[data-widget="JordasBolger"] { height: 859px; }
+    .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 421px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 686px; }
+    .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2484px; }
+  }
 
   @media (min-width: 48rem) {
     .kapittel-plass[data-widget="HyposenterForklaring"] { height: 126px; }
@@ -203,7 +280,7 @@
     .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2060px; }
   }
 
-  @media (min-width: 80rem) {
+  @media (min-width: 64rem) {
     .kapittel-plass[data-widget="ElasticRebound"] { height: 672px; }
     .kapittel-plass[data-widget="BoundaryQuakes"] { height: 535px; }
     .kapittel-plass[data-widget="Partikkelbolger"] { height: 713px; }
@@ -222,7 +299,17 @@
   .quiz-plass[data-quiz="SjekkTsunami4"] { height: 428px; }
   .quiz-plass[data-quiz="SjekkTsunami5"] { height: 492px; }
   .quiz-plass[data-quiz="SjekkTsunami6"] { height: 742px; }
-  .quiz-plass[data-quiz="QuizTsunami"] { height: 1888px; }
+  .quiz-plass[data-quiz="QuizTsunami"] { height: 1868px; }
+
+  @media (min-width: 360px) {
+    .quiz-plass[data-quiz="SjekkTsunami1"] { height: 644px; }
+    .quiz-plass[data-quiz="SjekkTsunami2"] { height: 666px; }
+    .quiz-plass[data-quiz="SjekkTsunami3"] { height: 640px; }
+    .quiz-plass[data-quiz="SjekkTsunami4"] { height: 390px; }
+    .quiz-plass[data-quiz="SjekkTsunami5"] { height: 470px; }
+    .quiz-plass[data-quiz="SjekkTsunami6"] { height: 702px; }
+    .quiz-plass[data-quiz="QuizTsunami"] { height: 1744px; }
+  }
 
   @media (min-width: 390px) {
     .quiz-plass[data-quiz="SjekkTsunami1"] { height: 644px; }

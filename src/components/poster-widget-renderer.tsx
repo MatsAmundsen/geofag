@@ -1,6 +1,6 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
 import { TsunamiPlass } from "@/components/tsunami-plass";
-import { lazy, Suspense, type JSX } from "react";
+import { lazy, Suspense, useEffect, useState, type JSX } from "react";
 import {
   AdaptationExamFrameworkDiagram,
   ImpactLevelsDiagram,
@@ -318,8 +318,12 @@ const TsunamiM6 = lazy(() => import("@/components/diagrams/tsunami-modeller").th
 const TsunamiM7 = lazy(() => import("@/components/diagrams/tsunami-modeller").then((m) => ({ default: m.TsunamiM7 })));
 
 function TsunamiLaster({ modell, children }: { modell: string; children: JSX.Element }) {
+  const [klar, setKlar] = useState(false);
+  useEffect(() => setKlar(true), []);
   return (
-    <Suspense fallback={<TsunamiPlass modell={modell} />}>{children}</Suspense>
+    <Suspense fallback={<TsunamiPlass modell={modell} />}>
+      {klar ? children : <TsunamiPlass modell={modell} />}
+    </Suspense>
   );
 }
 
