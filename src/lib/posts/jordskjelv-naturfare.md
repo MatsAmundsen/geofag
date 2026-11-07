@@ -19,7 +19,7 @@
 
 > **Jordskjelvstoffet er flyttet**
 >
-> Skader, resonans, likvefaksjon, varsling av selve skjelvet og risikovurderingen for Oslo og Bergen står nå i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv). Dette kapitlet handler om tsunami. Jordskjelv omtales her bare når det forklarer hvordan vannet flyttes.
+> Skader, resonans, likvefaksjon, varsling av selve skjelvet og risikovurderingen for Oslo og Bergen står nå i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv#jordskjelv-som-naturfare). Dette kapitlet handler om tsunami. Jordskjelv omtales her bare når det forklarer hvordan vannet flyttes.
 
 > **Hva tror du?**
 >
@@ -46,7 +46,7 @@ En tsunami er heller ikke alltid en surfende vegg. Når den når land, kan den s
 
 ## Hvordan settes vannet i bevegelse?
 
-De fleste store tsunamier i verdenshavene henger sammen med en *subduksjonssone*, et område der en havbunnsplate synker under en annen. Mekanikken i selve skjelvet står i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv). Her trenger vi bare den delen som flytter vannet.
+De fleste store tsunamier i verdenshavene henger sammen med en *subduksjonssone*, et område der en havbunnsplate synker under en annen. Mekanikken i selve skjelvet står i kapitlet [Jordskjelv og jordas indre](/geofag-1/jordskjelv#hvor-skjer-de-store-skjelvene). Her trenger vi bare den delen som flytter vannet.
 
 Der platene henger fast, kan kanten av den øvre plata bli dratt ned og bøyd. Når låsen ryker, kan havbunnen løftes eller senkes brått. Vannet over følger med. Så søker vannflaten tilbake mot likevekt, og bølger brer seg utover (NOAA, u.å.-a). Hvor mye bunnen flytter seg, hvor stort område som flyttes, og hvor dypt vannet er ved kilden, har alle noe å si for hvor stor tsunamien kan bli (NOAA, u.å.-a).
 
@@ -172,7 +172,7 @@ To hendelser i dette århundret viser at magnitude ikke er hele historien. NOAA 
 
 Indiahavet 2004: kilden lå ved Sumatra. Bølgen spredte seg mellom mange land rundt havet. NOAA skriver at tsunamien, ikke skjelvet, sto for mesteparten av skadene, og at de ble observert i 17 land. Et offisielt varslingssystem for Indiahavet fantes ikke, og kunnskapen om tsunami var begrenset. Det er en del av forklaringen på tapene (NOAA, u.å.-d). NOAA oppgir omtrent 230 000 døde. Tallet kan omfatte dødsfall fra skjelvet, og det skal ikke uten videre sammenlignes med andre kilders tall for døde og savnede (NOAA, u.å.-d). Etter katastrofen ble nye regionale varslingssystemer og varslingssentre utviklet i Indiahavet (NOAA, u.å.-e).
 
-Tohoku 2011: også dette var en stor subduksjonshendelse. NOAA skriver at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan, og at de fleste dødsfallene og mesteparten av skadene skyldtes tsunamien. Tabelltallet i samme kilde kan inkludere skjelvdødsfall (NOAA, u.å.-d). I jordskjelvkapitlet står et annet tall, om døde eller savnede, fra en annen kilde. De to tallene skal ikke legges oppå hverandre som om de målte det samme.
+Tohoku 2011: også dette var en stor subduksjonshendelse. NOAA skriver at jordskjelvet og tsunamien til sammen tok over 18 000 liv i Japan, og at de fleste dødsfallene og mesteparten av skadene skyldtes tsunamien. Tabelltallet i samme kilde kan inkludere skjelvdødsfall (NOAA, u.å.-d). Begge kapitlene bruker dette NOAA-tallet.
 
 Utenfor Japan var det svært få dødsfall. NOAA forklarer det med varsler i tide og med lang avstand fra kilden, som ga tid til evakuering (NOAA, u.å.-d). Nær kilden var beskyttelsen likevel ikke nok til å fjerne restfaren. Lokal topografi og hvor folk og anlegg lå, avgjorde mye av skaden. Et varsel og et fysisk vern senker risiko, men de gjør ikke faren lik null.
 
@@ -334,7 +334,7 @@ Perioden er omtrent den samme når bølgen går inn på grunnere vann. Farten sy
 
 Inngangsspørsmålet var hvordan en nesten usynlig bølge ute på havet kan oversvømme land. Svaret er at bølgen er lang og involverer hele vannsøylen. Den går fort på dypt vann og er lav der. Når dypet minker, samles energien, og vannet kan gå langt inn over land. Ett tall fra ett sted forteller ikke hele historien.
 
-Hvordan selve jordskjelvet oppstår og måles, står i [Jordskjelv og jordas indre](/geofag-1/jordskjelv). Hvordan skred løsner, står i [Skred](/geofag-1/skred).
+Hvordan selve jordskjelvet oppstår og måles, står i [Jordskjelv og jordas indre](/geofag-1/jordskjelv#hva-er-et-jordskjelv). Hvordan skred løsner, står i [Skred](/geofag-1/skred).
 
 ## Test deg selv
 

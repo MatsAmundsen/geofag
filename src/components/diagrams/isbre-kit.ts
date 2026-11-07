@@ -112,18 +112,21 @@ export { hexToRgb };
 
 /* ---------- hooks ---------- */
 
-function subscribeNarrow(onChange: () => void) {
-  const media = window.matchMedia("(max-width: 639px)");
-  media.addEventListener("change", onChange);
-  return () => media.removeEventListener("change", onChange);
+function narrowNow() {
+  return typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches;
 }
+
 /** Smal skjerm (under Tailwinds sm-grense). */
 export function useNarrow() {
-  return useSyncExternalStore(
-    subscribeNarrow,
-    () => window.matchMedia("(max-width: 639px)").matches,
-    () => false,
-  );
+  const [narrow, setNarrow] = useState(narrowNow);
+  useLayoutEffect(() => {
+    const media = window.matchMedia("(max-width: 639px)");
+    const apply = () => setNarrow(media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, []);
+  return narrow;
 }
 
 function subscribeViewport(onChange: () => void) {

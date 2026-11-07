@@ -2,11 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TopicLayout } from "@/components/topic-layout";
 import { KILDER } from "@/lib/kilder";
 import { gf1Theme } from "@/lib/nav";
+import { getPost } from "@/lib/posts";
 import { topicHead } from "@/lib/seo";
 
 const tema = gf1Theme("jordskjelv")!;
 
 export const Route = createFileRoute("/geofag-1/jordskjelv")({
+  loader: async () => ({ post: await getPost({ data: "jordskjelv" }) }),
   head: () =>
     topicHead({
       title: `${tema.title} · Geofag 1`,

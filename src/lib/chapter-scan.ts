@@ -612,6 +612,27 @@ function uniqueId(title: string, used: Map<string, number>): string {
   return count === 1 ? base : `${base}-${count}`;
 }
 
+/**
+ * Ett anker per overskrift, i den rekkefølgen de står i teksten.
+ * Samme slug og samme telling som scan-modus. En enslig h3 får null,
+ * fordi scan-modus heller ikke gir den id.
+ */
+export function posterHeadingAnchorIds(markdown: string): Array<string | null> {
+  const { blocks } = splitMarkdownByHeading(markdown, H2_LINE);
+  const used = new Map<string, number>();
+  const ids: Array<string | null> = [];
+  for (const section of blocks) {
+    ids.push(uniqueId(section.title, used));
+    const nested = splitMarkdownByHeading(section.markdown, H3_LINE);
+    if (nested.blocks.length >= 2) {
+      for (const block of nested.blocks) ids.push(uniqueId(block.title, used));
+    } else {
+      for (const _block of nested.blocks) ids.push(null);
+    }
+  }
+  return ids;
+}
+
 export function splitChapterByH2(markdown: string): ChapterScanDoc {
   const { lead: preamble, blocks } = splitMarkdownByHeading(markdown, H2_LINE);
   const used = new Map<string, number>();

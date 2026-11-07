@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useMatches, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import { AdminEditLink } from "@/components/admin-edit-link";
@@ -20,6 +20,7 @@ import {
   navForTopicPath,
 } from "@/lib/gemini-by-path";
 import type { Kilde } from "@/lib/kilder";
+import { posterHeadingAnchorsEnabled } from "@/lib/poster-heading";
 import { posterPlaceholderText } from "@/lib/poster-placeholder";
 import { posterNeedsRefresh } from "@/lib/poster-fresh";
 import { getPost, type Post } from "@/lib/posts";
@@ -36,6 +37,33 @@ type TopicLink = { to: string; label: string; params?: Record<string, string> };
 const CODED_G2_PATHS = new Set([
   "/tema/klima/nao",
 ]);
+
+/** Kjører mens HTML-en parses, før første maling, så ankerhoppet ikke blir et layout-skift. */
+const ANKER_FOR_MALING = `(function(){
+  var map={
+    "tsunami-skjelv-eller-skred":"hva-er-en-tsunami",
+    "hvilke-skader-gjoer-jordskjelv":"jordskjelv-som-naturfare",
+    "hva-avgjoer-hvor-store-skadene-blir":"jordskjelv-som-naturfare",
+    "rystelser-og-bygninger":"jordskjelv-som-naturfare",
+    "skred-og-likvefaksjon":"jordskjelv-som-naturfare",
+    "brann-tsunami-og-etterskjelv":"jordskjelv-som-naturfare",
+    "er-det-mulig-a-varsle-jordskjelv":"kan-jordskjelv-varsles",
+    "langtidsvarsling":"kan-jordskjelv-varsles",
+    "korttidsvarsling":"kan-jordskjelv-varsles",
+    "tidlig-varsling-noen-sekunder-kan-redde-liv":"kan-jordskjelv-varsles",
+    "tsunamivarsling":"hvordan-varsles-en-tsunami",
+    "fare-og-risiko":"fare-risiko-og-forebygging",
+    "en-enkel-risikomodell":"fare-risiko-og-forebygging",
+    "gjentaksintervall-hvor-ofte-kommer-et-stort-skjelv":"fare-risiko-og-forebygging",
+    "hva-om-1904-skjelvet-kom-i-dag":"fare-risiko-og-forebygging",
+    "hva-modellen-ikke-viser":"fare-risiko-og-forebygging"
+  };
+  var raw=location.hash.replace(/^#/,"");
+  if(!raw)return;
+  try{raw=decodeURIComponent(raw);}catch(e){return;}
+  var el=document.getElementById(map[raw]||raw);
+  if(el)el.scrollIntoView({block:"start"});
+})();`;
 
 export function TopicLayout({
   kicker,
@@ -142,6 +170,59 @@ export function TopicLayout({
   const usePoster = bodyMode === "poster";
   const useCoded = bodyMode === "coded" || (!useScan && !usePoster);
 
+  const brukerStyrer = useRef(false);
+
+  useLayoutEffect(() => {
+    if (!usePoster) return;
+    let cancelled = false;
+    const scroll = () => {
+      if (cancelled || brukerStyrer.current) return;
+      const raw = window.location.hash.replace(/^#/, "");
+      if (!raw) return;
+      let id = raw;
+      try {
+        id = decodeURIComponent(raw);
+      } catch {
+        return;
+      }
+      const el = document.getElementById(id);
+      if (!el) return;
+      const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      if (Math.abs(el.getBoundingClientRect().top - pad) <= 2) return;
+      el.scrollIntoView({ block: "start" });
+    };
+    const arm = () => {
+      if (brukerStyrer.current) return;
+      scroll();
+    };
+    const giOpp = () => {
+      brukerStyrer.current = true;
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", " ", "Home", "End"].includes(event.key)) giOpp();
+    };
+    const onHash = () => {
+      brukerStyrer.current = false;
+      arm();
+    };
+    arm();
+    window.addEventListener("wheel", giOpp, { passive: true });
+    window.addEventListener("touchstart", giOpp, { passive: true });
+    window.addEventListener("touchmove", giOpp, { passive: true });
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("click", giOpp);
+    window.addEventListener("hashchange", onHash);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("wheel", giOpp);
+      window.removeEventListener("touchstart", giOpp);
+      window.removeEventListener("touchmove", giOpp);
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("click", giOpp);
+      window.removeEventListener("hashchange", onHash);
+    };
+  }, [usePoster, markdown]);
+
   return (
     <div className="kapittel-lys flex min-h-dvh flex-col">
       <a
@@ -202,6 +283,7 @@ export function TopicLayout({
                 </p>
               </div>
             ) : usePoster ? (
+              <>
               <PosterBody
                 cleanChapter
                 scrollTables={
@@ -223,9 +305,12 @@ export function TopicLayout({
                   resolvedSlug === "geologiske-ressurser" ||
                   resolvedSlug === "feltarbeid"
                 }
+                headingAnchors={posterHeadingAnchorsEnabled(resolvedSlug)}
               >
                 {markdown}
               </PosterBody>
+              <script dangerouslySetInnerHTML={{ __html: ANKER_FOR_MALING }} />
+              </>
             ) : useCoded ? (
               children
             ) : (
