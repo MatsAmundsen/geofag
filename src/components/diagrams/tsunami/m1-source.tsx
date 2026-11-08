@@ -263,6 +263,7 @@ export function ModelSource() {
     ctx.lineTo(xOf(xLc), yZ(zL));
     ctx.stroke();
 
+    const slipAt = { x: NaN, y: NaN };
     // Bevegelsen langs bruddet: én liten pil på hver side, bare for skyv og normal.
     if (RAKE[kind] !== 0 && stage === "etter") {
       const ax = xOf(xU);
@@ -274,8 +275,12 @@ export function ModelSource() {
       const uy = (by - ay) / len;
       const nx = uy;
       const ny = -ux;
-      const cx = (ax + bx) / 2;
-      const cy = (ay + by) / 2;
+      // Midt på bruddflaten, men løftet langs linja når bare en kort bit er synlig over bunnen av snittet.
+      const lift = Math.max(0, (ay + by) / 2 - (bottom - 26));
+      const cx = (ax + bx) / 2 - (uy > 0.05 ? (ux / uy) * lift : 0);
+      const cy = (ay + by) / 2 - (uy > 0.05 ? lift : 0);
+      slipAt.x = cx;
+      slipAt.y = cy;
       const sgn = RAKE[kind] > 0 ? 1 : -1;
       const seg = (side: number, dir: number) => {
         const ox = cx + side * nx * 10;
@@ -388,7 +393,7 @@ export function ModelSource() {
     const fx = (fax + fbx) / 2;
     const fy = (fay + fby) / 2;
     if (RAKE[kind] !== 0 && stage === "etter")
-      lay.reserve({ x0: fx - 22, y0: fy - 22, x1: fx + 22, y1: fy + 22 });
+      lay.reserve({ x0: slipAt.x - 22, y0: slipAt.y - 22, x1: slipAt.x + 22, y1: slipAt.y + 22 });
 
     lay.place(
       "havnivå i ro",
