@@ -72,12 +72,12 @@ export function ModelRisk() {
           if (!scenario.wet[i] && start >= 0) fill(i - 1);
         }
         fill(TOWN_N - 1);
-        label(ctx, panel === 0 ? "Før tiltak" : "Etter tiltak · samme vannivå", 14, top + 24, {
+        label(ctx, panel === 0 ? "Før tiltak" : "Etter tiltak · samme vannivå", 14, top + 20, {
           weight: "600",
         });
-        label(ctx, "Sjø", 18, top + ph - 18);
+        label(ctx, "Sjø", xOf(0.12), (yOf(level) + yOf(townHeight(0.12))) / 2 + 4);
         // Buildings sit exactly on the profile. Numbers link to an accessible text key below.
-        sites(panel === 1).forEach((b, i) => {
+        sites(panel === 1).forEach((b) => {
           if (!b.included) return;
           const x = xOf(b.x),
             y = yOf(townHeight(b.x));
@@ -93,9 +93,23 @@ export function ModelRisk() {
           ctx.strokeStyle = ink.text;
           ctx.lineWidth = 1.3;
           ctx.stroke();
-          const ly = top + 50 + i * 18;
-          label(ctx, String(i + 1), w - 16, ly, { align: "right" });
-          leader(ctx, w - 30, ly - 4, x + 9, y - 12);
+          // Three local, separate label lanes. No long line crosses the hill or another building.
+          if (b.name === "Hus") {
+            label(ctx, "Hus", x - 12, y - 16, { align: "right" });
+            leader(ctx, x - 11, y - 19, x - 8, y - 17);
+          } else if (b.name === "Nytt bygg") {
+            label(ctx, "Nytt bygg", x - 3, y - 43, { align: "right" });
+            leader(ctx, x - 2, y - 38, x, y - 23);
+          } else {
+            const terrainTop = Math.min(
+              ...Array.from({ length: 11 }, (_, i) =>
+                yOf(townHeight(Math.max(0, Math.min(1, (x - 22 + i * 4.4 - 12) / (w - 24))))),
+              ),
+            );
+            const ly = Math.max(top + 44, Math.min(y - 32, terrainTop - 10));
+            label(ctx, "Skole", x, ly, { align: "center" });
+            leader(ctx, x, ly + 4, x, y - 23);
+          }
         });
         // A continuous, thin reference curve makes the connected terrain explicit.
         ctx.beginPath();
@@ -135,8 +149,8 @@ export function ModelRisk() {
       </div>
       <FigureNote>
         Tenkt terreng, skjematisk og ikke i målestokk. Terrenghøyder, bygg og vannflate har ulike
-        visuelle skalaer. Ingen steder er avbildet. 1: Hus. 2: Skole. 3: Nytt bygg. Nummer og
-        ledelinjer knytter bygg til forklaringen.
+        visuelle skalaer. Ingen steder er avbildet. Byggene har direkte etiketter med korte
+        ledelinjer.
       </FigureNote>
       <p className="text-sm text-ink">
         Vannflaten er <strong>ikke en faresone</strong>. Figuren viser{" "}

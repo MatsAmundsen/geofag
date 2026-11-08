@@ -25,6 +25,23 @@ import {
 import { WARNING_STAGES } from "./m6-warning";
 import { TOWN_SITES } from "./m7-risk";
 import { nb } from "./util";
+import {
+  marchingContours,
+  smoothOceanContours,
+  oceanSegment,
+  contourLabels,
+  boxesOverlap,
+} from "./sim/oceanmap";
+import { formatLongitude } from "./sim/oceanmap";
+import {
+  FJORD_CONTACT,
+  FJORD_RIGHT_SHORE,
+  FJORD_PULSE_HALF_SUPPORT,
+  fjordPulseCenter,
+} from "./sim/fjord";
+import { ModelFjord } from "./m4-fjord";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 const grid: GeoGrid = { nx: 9, ny: 7, lon0: 0, lon1: 9, lat0: 0, lat1: 7 };
 test("spherical metres and speed units, including date line", () => {
@@ -161,4 +178,130 @@ test("text palette meets 4.5:1 on direct figure backgrounds", () => {
     assert.ok(contrast("#1c2430", background) >= 4.5);
   for (const background of ["#efe6d6", "#f7f3ea"])
     assert.ok(contrast("#4f5963", background) >= 4.5);
+});
+
+test("M4 moves and spreads the source after the first phase, and reflection matches contact", () => {
+  const initial = slideOutline(0),
+    later = slideOutline(1.5),
+    middle = slideOutline(0.75);
+  const width = (p: { x: number }[]) =>
+    Math.max(...p.map((p) => p.x)) - Math.min(...p.map((p) => p.x));
+  assert.ok(later[0].x > middle[0].x && middle[0].x > initial[0].x);
+  assert.ok(width(later) > width(initial) * 1.8);
+  assert.equal(fjordStage(FJORD_CONTACT - 0.001), "Bølgeutbredelse");
+  assert.equal(fjordStage(FJORD_CONTACT), "Refleksjon");
+  assert.ok(fjordPulseCenter(2.7) < fjordPulseCenter(2));
+  assert.ok(
+    Math.abs(fjordPulseCenter(FJORD_CONTACT) + FJORD_PULSE_HALF_SUPPORT - FJORD_RIGHT_SHORE) <
+      1e-10,
+  );
+  const epsilon = 1e-5;
+  assert.ok(
+    Math.abs(
+      fjordWave(FJORD_RIGHT_SHORE - epsilon, 2) - fjordWave(FJORD_RIGHT_SHORE + epsilon, 2),
+    ) < 1e-10,
+  );
+  const html = renderToStaticMarkup(createElement(ModelFjord));
+  assert.equal((html.match(/aria-current="step"/g) ?? []).length, 1);
+  assert.match(html, /Aktiv fase/);
+});
+test("longitude is labelled east or west, not a negative anonymous length", () => {
+  assert.equal(formatLongitude(180.25), "179,8° V");
+  assert.equal(formatLongitude(220.25), "139,8° V");
+  assert.equal(formatLongitude(85.1), "85,1° Ø");
+  assert.equal(formatLongitude(-139.75), "139,8° V");
+});
+test("smoothed marching contours never cross the land mask and do not change numerical times", () => {
+  for (const id of ["india", "tohoku"] as const) {
+    const o = makeOcean(id),
+      before = o.times.slice(),
+      levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
+    for (const level of levels) {
+      const raw = marchingContours(o, level),
+        smooth = smoothOceanContours(o, raw);
+      assert.ok(raw.length > 0 && smooth.length > 0);
+      for (const path of smooth)
+        for (let i = 1; i < path.length; i++)
+          assert.ok(oceanSegment(o, o.land, path[i - 1], path[i]));
+      // Display-only smoothing stays close to the unsmoothed isoline, not a new circular solution.
+      const segments = raw.flatMap((path) => path.slice(1).map((p, i) => [path[i], p] as const));
+      for (const path of smooth)
+        for (let i = 0; i < path.length; i += 8) {
+          const p = path[i];
+          let nearest = Infinity;
+          for (const [a, b] of segments) {
+            const vx = b.x - a.x,
+              vy = b.y - a.y,
+              len = vx * vx + vy * vy;
+            const f = len
+              ? Math.max(0, Math.min(1, ((p.x - a.x) * vx + (p.y - a.y) * vy) / len))
+              : 0;
+            nearest = Math.min(nearest, Math.hypot(p.x - a.x - vx * f, p.y - a.y - vy * f));
+          }
+          assert.ok(nearest < 0.04);
+        }
+    }
+    assert.deepEqual(o.times, before);
+  }
+});
+test("smoothed display is clipped at a thin barrier, not merely hidden by a land overpaint", () => {
+  const g = { nx: 10, ny: 10 },
+    land = new Uint8Array(100);
+  for (let j = 0; j < 10; j++) land[j * 10 + 5] = 1;
+  assert.equal(oceanSegment(g, land, { x: 0.45, y: 0.25 }, { x: 0.65, y: 0.25 }), false);
+  assert.equal(oceanSegment(g, land, { x: 0.2, y: 0.2 }, { x: 0.4, y: 0.4 }), true);
+  const smoothed = smoothOceanContours({ ...g, land }, [
+    [
+      { x: 0.2, y: 0.2 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.8, y: 0.6 },
+    ],
+  ]);
+  for (const path of smoothed)
+    for (let i = 1; i < path.length; i++) assert.ok(oceanSegment(g, land, path[i - 1], path[i]));
+});
+test("all essential times including Pacific 12 h have collision-free 14 px label boxes", () => {
+  for (const id of ["india", "tohoku"] as const) {
+    const o = makeOcean(id),
+      levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
+    const contours = levels.map((level) => ({
+      level,
+      paths: smoothOceanContours(o, marchingContours(o, level)),
+    }));
+    for (const size of [
+      { w: 220, h: 320 },
+      { w: 250, h: 320 },
+      { w: 332, h: 320 },
+      { w: 944, h: 440 },
+    ]) {
+      const aspect =
+        ((o.lon1 - o.lon0) * Math.cos((((o.lat0 + o.lat1) / 2) * Math.PI) / 180)) /
+        (o.lat1 - o.lat0);
+      const width = Math.min(size.w - 28, (size.h - 100) * aspect),
+        height = width / aspect;
+      const obstacles = [{ k: o.source }, ...o.points].map((p) => {
+        const [lon, lat] = cellGeo(o, p.k);
+        return {
+          x: ((lon - o.lon0) / (o.lon1 - o.lon0)) * width - 12,
+          y: ((o.lat1 - lat) / (o.lat1 - o.lat0)) * height - 12,
+          width: 24,
+          height: 24,
+        };
+      });
+      const water = (p: { x: number; y: number }) => {
+        const i = Math.floor(p.x * o.nx),
+          j = Math.floor(p.y * o.ny);
+        return i >= 0 && i < o.nx && j >= 0 && j < o.ny && !o.land[j * o.nx + i];
+      };
+      const labels = contourLabels(contours, width, height, obstacles, water);
+      assert.equal(labels.length, levels.length, `${id} ${size.w}px`);
+      for (let i = 0; i < labels.length; i++) {
+        assert.ok(labels[i].box.height >= 14);
+        assert.ok(labels[i].box.x >= 0 && labels[i].box.x + labels[i].box.width <= width);
+        for (const b of [...obstacles, ...labels.slice(i + 1).map((p) => p.box)])
+          assert.ok(!boxesOverlap(labels[i].box, b, 5));
+        if (labels[i].anchor) assert.ok(water(labels[i].anchor!));
+      }
+    }
+  }
 });

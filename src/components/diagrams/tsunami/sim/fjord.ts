@@ -9,21 +9,45 @@ export function fjordBed(x: number) {
     0.025 * Math.sin(Math.PI * x) * Math.sin(5 * Math.PI * x)
   );
 }
+// Start reflection at first contact of the displayed pulse with the right shoreline.
+export const FJORD_CONTACT = 1.5;
 export function fjordStage(t: number) {
-  return t < 0.8 ? "Vannforskyvning" : t < 1.8 ? "Bølgeutbredelse" : "Refleksjon";
+  return t < 0.8 ? "Vannforskyvning" : t < FJORD_CONTACT ? "Bølgeutbredelse" : "Refleksjon";
+}
+export const FJORD_RIGHT_SHORE = (() => {
+  let a = 0.8,
+    b = 1;
+  for (let i = 0; i < 40; i++) {
+    const m = (a + b) / 2;
+    if (fjordBed(m) > 0) a = m;
+    else b = m;
+  }
+  return (a + b) / 2;
+})();
+export const FJORD_PULSE_HALF_SUPPORT = 0.13;
+const pulseSpeed = (FJORD_RIGHT_SHORE - FJORD_PULSE_HALF_SUPPORT - 0.16) / FJORD_CONTACT;
+export function fjordPulseCenter(t: number) {
+  const incident = 0.16 + pulseSpeed * Math.max(0, Math.min(FJORD_END, t));
+  return incident <= FJORD_RIGHT_SHORE ? incident : 2 * FJORD_RIGHT_SHORE - incident;
 }
 export function fjordWave(x: number, t: number) {
   if (t <= 0) return 0;
-  const u = Math.max(0, Math.min(FJORD_END, t));
-  // Prescribed pulse and its return: no amplitude or travel-time inference is intended.
-  const center = u < 1.8 ? 0.16 + (0.72 * u) / 1.8 : 0.88 - (u - 1.8) * 0.52;
-  const z = (x - center) / 0.065;
-  return 0.075 * Math.min(1, u * 4) * (1 - 2 * z * z) * Math.exp(-z * z);
+  const incident = 0.16 + pulseSpeed * Math.min(FJORD_END, t);
+  const pulse = (center: number) => {
+    const z = (x - center) / 0.065;
+    if (Math.abs(z) >= 2) return 0;
+    return 0.075 * Math.min(1, t * 4) * (1 - 2 * z * z) * Math.exp(-z * z) * (1 - (z * z) / 4) ** 2;
+  };
+  // Image pulse at the reflecting shoreline. Incoming and reflected parts coexist during
+  // contact rather than making the entire pulse turn around prematurely. Illustrative only.
+  return pulse(incident) + pulse(2 * FJORD_RIGHT_SHORE - incident);
 }
 export function slideOutline(t: number) {
-  const u = Math.min(1, Math.max(0, t / 0.8));
-  const cx = 0.07 + u * 0.16;
-  const cy = -0.2 + u * 0.58;
+  // Continue downslope into a spreading deposit during propagation. Geometry only, no volume claim.
+  const u = Math.min(1, Math.max(0, t / 1.5));
+  const cx = 0.07 + 0.27 * u;
+  const spread = 1 + u * 1.1,
+    flatten = 1 - u * 0.65;
   return [
     [-0.045, -0.02],
     [-0.024, -0.075],
@@ -32,7 +56,10 @@ export function slideOutline(t: number) {
     [0.037, 0.028],
     [0.009, 0.045],
     [-0.036, 0.025],
-  ].map(([x, y]) => ({ x: cx + x, y: cy + y }));
+  ].map(([x, y]) => {
+    const px = cx + x * spread;
+    return { x: px, y: fjordBed(px) - 0.025 + y * flatten };
+  });
 }
 
 /** 4-connected static fill from specified sea cells only. No isolated depression is seeded. */
