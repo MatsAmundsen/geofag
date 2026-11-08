@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Choice, FigureNote, Lab, Readouts, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { label } from "./paint";
+import { warningStatus } from "./sim/fjord";
 import { ink } from "./sim/palette";
 
 type Source = "skjelv" | "skred";
@@ -99,6 +100,7 @@ export function ModelWarning() {
   return (
     <Lab
       id="m6"
+      status={warningStatus(source, step, playing, WARNING_STAGES[step].title)}
       index="M6"
       title="Varslingskjeden og dens grenser"
       question="Må første varsel vente på at bølgen er målt?"
@@ -145,6 +147,8 @@ export function ModelWarning() {
         }}
       />
       <Transport
+        liveTime={false}
+        toggleState={false}
         playing={playing}
         onToggle={() => {
           if (clock.current >= 3) {

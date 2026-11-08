@@ -11,6 +11,12 @@ import {
   fjordSurface,
   fjordSlideLabel,
   townGlyphLayout,
+  fjordStatus,
+  riskStatus,
+  warningStatus,
+  townView,
+  townScreenX,
+  townSiteX,
 } from "./sim/fjord";
 import { filterOceanContourFragments, oceanPanelLayout } from "./sim/oceanmap";
 import { strict as assert } from "node:assert";
@@ -42,6 +48,7 @@ import { ModelRisk, TOWN_SITES } from "./m7-risk";
 import { nb } from "./util";
 import {
   marchingContours,
+  oceanStatus,
   smoothOceanContours,
   oceanSegment,
   contourLabels,
@@ -424,16 +431,14 @@ test("M7 text fields avoid water, terrain and all building symbols without movin
         });
         for (const g of glyphs) {
           const physical = sites.find((b) => b.name === g.name)!;
-          assert.equal(g.x, 12 + physical.x * (width - 24));
+          assert.equal(g.x, townScreenX(physical.x, width));
           assert.equal(g.y, ph * 0.7 - townHeight(physical.x) * ph);
-          assert.ok(
-            g.box.y + g.box.height <= g.waterY - 5 || g.box.y >= g.waterY + 5,
-            `${width} ${level} ${g.name} water`,
-          );
-          for (let i = 0; i <= 20; i++) {
-            const px = g.box.x + (g.box.width * i) / 20,
-              terrain = ph * 0.7 - townHeight((px - 12) / (width - 24)) * ph;
-            assert.ok(g.box.y + g.box.height <= terrain - 3, `${width} ${g.name} terrain`);
+          assert.ok(g.box.y + g.box.height <= ph - 4, `${width} ${g.name} within land panel`);
+          for (let i = 0; i <= 30; i++) {
+            const px = g.box.x + (g.box.width * i) / 30,
+              z = townHeight(townSiteX(px, width)), terrain = ph * 0.7 - z * ph;
+            assert.ok(g.box.y >= terrain + 4, `${width} ${g.name} label must be on land below terrain, not in sea`);
+            if (z <= level) assert.ok(g.box.y > Math.max(g.waterY, terrain) + 3);
           }
           for (const h of glyphs)
             assert.ok(
@@ -541,7 +546,7 @@ test("M7 building glyphs keep their screen-space aspect and physical footpoints 
       assert.ok(Math.abs(g.height / (2 * g.half) - 18 / 14) < 1e-12);
       assert.ok(g.half * 2 >= 14 && g.height >= 18, "recognizable house symbols may not shrink to letter-sized specks");
       const physical = TOWN_SITES.find((b) => b.name === g.name)!;
-      assert.equal(g.x, 12 + physical.x * (width - 24));
+      assert.equal(g.x, townScreenX(physical.x, width));
       assert.equal(g.y, 221 * 0.7 - townHeight(physical.x) * 221);
     }
   }
@@ -605,12 +610,17 @@ test("M4–M7 static SSR accessibility: native keyboard semantics, focus classes
     for (const id of canvas.match(/aria-describedby="([^"]+)"/)![1].split(" "))
       assert.ok(html.includes(`id="${id}"`), `M${n} description target ${id}`);
     assert.match(html, /aria-live="polite"/);
-    assert.match(html, /aria-pressed="(true|false)"/);
+    if (n !== 4) assert.match(html, /aria-pressed="(true|false)"/);
     assert.doesNotMatch(html, /role="button"|tabindex="[1-9]/);
     const file = ["m4-fjord", "m5-ocean", "m6-warning", "m7-risk"][n - 4];
     const source = readFileSync(new URL(`./${file}.tsx`, import.meta.url), "utf8");
     assert.doesNotMatch(source, /onKeyDown|onKeyUp|preventDefault|addEventListener\(["']key/, "native Tab/Enter/Space must not be intercepted");
-    if (n === 7) assert.match(html, /role="status" aria-live="polite" aria-atomic="true"/);
+    const live = [...html.matchAll(/<[a-z]+\b[^>]*(?:aria-live|role="status")[^>]*>/g)].map((m) => m[0]);
+    assert.equal(live.length, 1, `M${n} must have exactly one live region, not clock plus conclusion plus status`);
+    assert.match(live[0], /role="status" aria-live="polite" aria-atomic="true"/);
+    assert.ok(live[0].includes(`id="m${n}-status"`));
+    for (const button of buttons)
+      if (["Start", "Pause"].includes(button[2])) assert.doesNotMatch(button[1], /aria-pressed/);
   }
   // This verifies markup/contracts, NOT execution of Tab, Enter or Space in a browser.
   const shared = readFileSync(new URL("./lab.tsx", import.meta.url), "utf8");
@@ -626,4 +636,75 @@ test("FD2 tests are automatically included by npm test using only repository-loc
   assert.match(runner, /import\("..\/src\/components\/diagrams\/tsunami\/m4-m7-fd2.test.ts"\)/);
   assert.doesNotMatch(runner + loader, /\/workspace\/|ts-loader.mjs/);
   assert.match(loader, /from "typescript"/);
+});
+
+
+test("M7 responsive viewport preserves exact terrain/site mapping and puts recognizable icons on their actual land sites", () => {
+  for (const width of [250, 328, 360, 600, 992]) {
+    const view = townView(width);
+    assert.ok(view.from >= 0 && view.to <= 1);
+    if (width <= 360) assert.ok(view.span < 1);
+    for (const siteX of [view.from, 0.46, 0.49, 0.55, 0.73, view.to])
+      assert.ok(Math.abs(townSiteX(townScreenX(siteX, width), width) - siteX) < 1e-12);
+    for (const level of [0.16, 0.27]) for (const moved of [false, true]) for (const stopped of [false, true]) {
+      const sites = TOWN_SITES.filter((b) => !stopped || b.name !== "Nytt bygg").map((b) => ({...b, x: moved && b.name === "Skole" ? 0.73 : b.x}));
+      const glyphs = townGlyphLayout(width, 221, level, sites, {Hus: 26, "Nytt bygg": 66, Skole: 38});
+      for (const g of glyphs) {
+        assert.equal(g.symbolX, g.x, "no horizontal proxy/displacement");
+        assert.equal(g.symbolY, g.y, "no raised/floating proxy/displacement");
+        assert.ok(Math.abs(townSiteX(g.x, width) - g.siteX) < 1e-12);
+        assert.equal(g.y, 221 * 0.7 - townHeight(g.siteX) * 221);
+        assert.ok(g.x - g.half >= 0 && g.x + g.half <= width);
+        assert.ok(g.half * 2 >= 14 && g.height >= 18);
+        for (const h of glyphs) if (h !== g)
+          assert.ok(!boxesOverlap({x:g.x-g.half-.6,y:g.y-g.height-.6,width:2*g.half+1.2,height:g.height+1.2},
+            {x:h.x-h.half-.6,y:h.y-h.height-.6,width:2*h.half+1.2,height:h.height+1.2}, 3));
+        // Each leader runs straight down into land at its true site, not through another label.
+        for (const h of glyphs) if (h !== g)
+          assert.ok(!(g.x > h.box.x - 1 && g.x < h.box.x + h.box.width + 1 &&
+            g.y < h.box.y + h.box.height + 1 && g.box.y > h.box.y - 1));
+      }
+      const seaX = view.from + 0.08 * view.span;
+      assert.ok(townHeight(seaX) < level, "Sjø must remain in the actually visible water column after zoom");
+    }
+  }
+});
+
+test("M4–M7 status change semantics announce phases/manual steps/pause, never each clock tick", () => {
+  assert.equal(fjordStatus(0.2, true), fjordStatus(0.7, true));
+  assert.notEqual(fjordStatus(0.2, true), fjordStatus(1.1, true));
+  assert.notEqual(fjordStatus(1.1, true), fjordStatus(1.8, true));
+  const manual = [0, 0.6, 1.1, 1.8, 2.6, 3].map((t) => fjordStatus(t, false));
+  assert.equal(new Set(manual).size, manual.length);
+  assert.notEqual(fjordStatus(1.8, true), fjordStatus(1.8, false));
+  for (const id of ["india", "tohoku"] as const) {
+    assert.equal(oceanStatus(id, 100, true), oceanStatus(id, 1000, true));
+    assert.equal(oceanStatus(id, 5400, true), oceanStatus(id, 6000, true));
+    assert.doesNotMatch(oceanStatus(id, 5400, true), /1,5|modellklokke/);
+    assert.notEqual(oceanStatus(id, 5400, false), oceanStatus(id, 6000, false));
+    assert.notEqual(oceanStatus(id, 100, true), oceanStatus(id, 100, false));
+    const levels = id === "india" ? [3600,7200,10800] : [7200,14400,28800,43200];
+    for (const t of levels) assert.notEqual(oceanStatus(id, t - 1, true), oceanStatus(id, t, true));
+  }
+  assert.notEqual(warningStatus("skjelv", 0, true, WARNING_STAGES[0].title), warningStatus("skjelv", 1, true, WARNING_STAGES[1].title));
+  assert.notEqual(warningStatus("skjelv", 1, true, WARNING_STAGES[1].title), warningStatus("skjelv", 1, false, WARNING_STAGES[1].title));
+  assert.notEqual(warningStatus("skjelv", 0, false, WARNING_STAGES[0].title), warningStatus("skred", 0, false, WARNING_STAGES[0].title));
+  assert.equal(riskStatus("hoy", "ingen", 3, 3), riskStatus("hoy", "ingen", 3, 3));
+  assert.notEqual(riskStatus("hoy", "ingen", 3, 3), riskStatus("hoy", "overvak", 3, 3));
+  assert.notEqual(riskStatus("hoy", "ingen", 3, 3), riskStatus("lav", "ingen", 0, 0));
+});
+
+test("M5 Myanmar stub is omitted only in display; closing the 1 h Sumatra ring would cross land", () => {
+  const o = makeOcean("india"), times = o.times.slice(), land = o.land.slice(), aspect = oceanPanelLayout(o, 992).aspect;
+  const raw = smoothOceanContours(o, marchingContours(o, 7200));
+  const stub = raw.find((p) => p.every((v) => v.x > 0.75 && v.y < 0.3));
+  assert.ok(stub, "real Myanmar fragment fixture exists");
+  const visible = filterOceanContourFragments(raw, aspect);
+  assert.ok(!visible.includes(stub));
+  for (const p of visible) assert.ok(raw.includes(p), "filter never creates an across-land bridge");
+  const ring = smoothOceanContours(o, marchingContours(o, 3600))[0];
+  assert.ok(!oceanSegment(o, o.land, ring[0], ring.at(-1)!), "do not close the 1 h ring across Sumatra");
+  assert.deepEqual(o.times, times); assert.deepEqual(o.land, land);
+  const note = fjordSlideLabel(2.6, 992, 400, 94);
+  assert.ok(note.anchor.y - 3 - (note.baseline + 4) >= 12, "deposit leader must be visibly longer than a small tick");
 });

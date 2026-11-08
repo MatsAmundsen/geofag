@@ -77,7 +77,7 @@ export function fjordSlideLabel(t: number, width: number, height: number, textWi
   const top = slideOutline(t).reduce((a, b) => b.y < a.y ? b : a);
   const anchor = { x: top.x * width, y: sea + top.y * scale };
   const x = Math.max(textWidth / 2 + 7, Math.min(width - textWidth / 2 - 7, anchor.x));
-  let baseline = Math.max(26, anchor.y - 14);
+  let baseline = Math.max(26, anchor.y - 22);
   if (baseline + 4 > sea - 10 && baseline - 15 < sea + 10) baseline = sea - 28;
   return { x, baseline, anchor, box: { x: x - textWidth / 2, y: baseline - 15, width: textWidth, height: 19 } };
 }
@@ -175,7 +175,23 @@ export function townScenario(level: number) {
   return { heights, wet: connectedWet(heights, TOWN_N, 1, level, [0]) };
 }
 
-/** Symbol/label geometry only; site x and sampled exposure never change. */
+/** A genuine horizontal view window, not displaced symbols. All screen x values
+ * (terrain, water, sites and annotations) use this same invertible mapping. */
+export function townView(width: number) {
+  const span = Math.min(1, Math.max(0.01, (width - 24) / 640));
+  const from = Math.max(0, Math.min(1 - span, 0.57 - span / 2));
+  return { from, to: from + span, span };
+}
+export function townScreenX(siteX: number, width: number) {
+  const view = townView(width);
+  return 12 + (siteX - view.from) * (width - 24) / view.span;
+}
+export function townSiteX(screenX: number, width: number) {
+  const view = townView(width);
+  return view.from + (screenX - 12) * view.span / (width - 24);
+}
+
+/** Labels lie inside land below the profile, with leaders to the true building footpoints. */
 export function townGlyphLayout(
   width: number,
   ph: number,
@@ -183,69 +199,42 @@ export function townGlyphLayout(
   sites: readonly { name: string; x: number }[],
   textWidths: Record<string, number>,
 ) {
-  const xOf = (x: number) => 12 + x * (width - 24),
-    yOf = (z: number) => ph * 0.7 - z * ph;
+  const yOf = (z: number) => ph * 0.7 - z * ph;
   const waterY = yOf(level);
-  const minSeparation = Math.min(
-    ...sites.flatMap((a, i) => sites.slice(i + 1).map((b) => Math.abs(xOf(a.x) - xOf(b.x)))),
-  );
-  // Keep recognizable 14×18 px houses. Compact layouts displace symbols only;
-  // separate physical footpoint dots and connectors keep the sites unambiguous.
-  const half = 7, height = 18, compact = minSeparation < 18;
-  const symbols = sites.map((site) => {
-    const x = xOf(site.x), y = yOf(townHeight(site.x));
-    return { ...site, x, y, symbolX: x, symbolY: y - (compact && site.name !== "Skole" ? 12 : 0) };
-  });
-  const house = symbols.find((b) => b.name === "Hus");
-  const newBuild = symbols.find((b) => b.name === "Nytt bygg");
-  const school = symbols.find((b) => b.name === "Skole");
-  if (compact && house && newBuild) {
-    newBuild.symbolY = Math.min(newBuild.symbolY, house.symbolY - height - 5);
-    if (school) school.symbolX = Math.max(school.symbolX, newBuild.symbolX + 2 * half + 4.5);
-  }
-  return symbols.map((site) => {
-    const { x, y, symbolX, symbolY } = site;
-    let tx: number, baseline: number, align: "left" | "right" | "center";
-    const tw = textWidths[site.name];
-    if (site.name === "Hus") {
-      tx = x - half - 7;
-      baseline = symbolY - 12;
-      align = "right";
-    } else if (site.name === "Nytt bygg") {
-      tx = x - 11;
-      baseline = Math.min(y - 43, waterY - 10, symbolY - height - 10);
-      align = "right";
-    } else {
-      tx = symbolX;
-      align = "center";
-      const terrainTop = Math.min(
-        ...Array.from({ length: 21 }, (_, i) =>
-          yOf(
-            townHeight(
-              Math.max(0, Math.min(1, (symbolX - tw / 2 - 3 + (i * (tw + 6)) / 20 - 12) / (width - 24))),
-            ),
-          ),
-        ),
-      );
-      baseline = Math.max(44, Math.min(symbolY - height - 10, terrainTop - 10));
+  const placed: {x: number; y: number; width: number; height: number}[] = [];
+  return sites.slice().sort((a, b) => a.x - b.x).map((site) => {
+    const x = townScreenX(site.x, width), y = yOf(townHeight(site.x));
+    const tw = textWidths[site.name], half = 7, height = 18;
+    const left = Math.max(5, Math.min(width - tw - 5, x - tw / 2));
+    const box = { x: left - 2, y: 0, width: tw + 4, height: 19 };
+    box.y = 7 + Math.max(...Array.from({length: 31}, (_, i) =>
+      yOf(townHeight(townSiteX(box.x + box.width * i / 30, width)))));
+    for (const previous of placed) {
+      const horizontal = box.x < previous.x + previous.width + 5 && box.x + box.width + 5 > previous.x;
+      if (horizontal && box.y < previous.y + previous.height + 7 && box.y + box.height + 7 > previous.y)
+        box.y = previous.y + previous.height + 7;
     }
-    if (baseline + 4 > waterY - 6 && baseline - 15 < waterY + 6) {
-      baseline = site.name === "Hus" ? waterY + 21 : waterY - 10;
-    }
-    let left = align === "right" ? tx - tw : align === "center" ? tx - tw / 2 : tx;
-    left = Math.max(5, Math.min(width - tw - 5, left));
-    tx = align === "right" ? left + tw : align === "center" ? left + tw / 2 : left;
-    return {
-      ...site,
-      x,
-      y,
-      half,
-      height,
-      tx,
-      baseline,
-      align,
-      box: { x: left - 2, y: baseline - 15, width: tw + 4, height: 19 },
-      waterY,
-    };
+    placed.push(box);
+    return {...site, siteX: site.x, x, y, symbolX: x, symbolY: y, half, height,
+      tx: left + tw / 2, baseline: box.y + 15, align: "center" as const, box, waterY};
   });
+}
+
+export function fjordStatus(position: number, playing: boolean) {
+  const stage = fjordStage(position);
+  if (playing) return `${stage}. Avspilling pågår.`;
+  const detail = position === 0 ? "Kildetilstanden vises" : position >= FJORD_END ? "Avspillingen er ferdig" :
+    position >= 2.5 ? "Reflektert del er på vei tilbake. Avspillingen er pauset" :
+    position >= FJORD_CONTACT ? "Reflektert del er ved fjordsiden. Avspillingen er pauset" : "Avspillingen er pauset";
+  return `${stage}. ${detail}.`;
+}
+
+export function riskStatus(scene: "lav" | "hoy", act: "ingen" | "flytt" | "stans" | "overvak", before: number, after: number) {
+  const action = {ingen: "Ingen tiltak", flytt: "Skolen er flyttet", stans: "Nytt bygg er stanset", overvak: "Overvåking er valgt"}[act];
+  return `${scene === "hoy" ? "Høyere nivå" : "Lavere nivå"}. ${action}. Berørte bygg før: ${before}, etter: ${after}. Bølge og kilde er uendret.`;
+}
+
+export function warningStatus(source: "skjelv" | "skred", step: number, playing: boolean, stageTitle: string) {
+  const title = source === "skred" && step < 2 ? "Seismisk førstevarsel er ikke garantert ved skred" : stageTitle;
+  return `${source === "skred" ? "Skred" : "Jordskjelv"}. Ledd ${step + 1} av 4: ${title}. ${playing ? "Avspilling pågår" : "Avspillingen er pauset"}. Ingen trygghetsgaranti.`;
 }
