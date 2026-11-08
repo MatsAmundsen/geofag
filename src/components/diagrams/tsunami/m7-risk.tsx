@@ -82,19 +82,43 @@ export function ModelRisk() {
         // Draw all symbols before the text. Uniform symbol scaling separates close sites without
         // moving their physical footpoints or changing the water/exposure calculation.
         for (const b of glyphs) {
-          const y = top + b.y;
+          const y = top + b.symbolY;
           ctx.beginPath();
-          ctx.moveTo(b.x - b.half, y);
-          ctx.lineTo(b.x - b.half, y - b.height * 0.65);
-          ctx.lineTo(b.x, y - b.height);
-          ctx.lineTo(b.x + b.half, y - b.height * 0.65);
-          ctx.lineTo(b.x + b.half, y);
+          ctx.moveTo(b.symbolX - b.half, y);
+          ctx.lineTo(b.symbolX - b.half, y - b.height * 0.65);
+          ctx.lineTo(b.symbolX, y - b.height);
+          ctx.lineTo(b.symbolX + b.half, y - b.height * 0.65);
+          ctx.lineTo(b.symbolX + b.half, y);
           ctx.closePath();
           ctx.fillStyle = ink.panel;
           ctx.fill();
           ctx.strokeStyle = ink.text;
           ctx.lineWidth = 1.2;
           ctx.stroke();
+          // A small door reinforces the house silhouette at the minimum 14×18 px size.
+          ctx.beginPath();
+          ctx.moveTo(b.symbolX - 1.5, y);
+          ctx.lineTo(b.symbolX - 1.5, y - 5);
+          ctx.lineTo(b.symbolX + 1.5, y - 5);
+          ctx.lineTo(b.symbolX + 1.5, y);
+          ctx.lineWidth = 0.9;
+          ctx.stroke();
+          if (b.symbolY !== b.y || b.symbolX !== b.x) {
+            ctx.beginPath();
+            ctx.moveTo(b.symbolX, y);
+            // Route the new-building connector beside the house, not through its icon.
+            if (b.name === "Nytt bygg") {
+              ctx.lineTo(b.symbolX + b.half + 3, y);
+              ctx.lineTo(b.symbolX + b.half + 3, top + b.y);
+            }
+            ctx.lineTo(b.x, top + b.y);
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          ctx.beginPath();
+          ctx.arc(b.x, top + b.y, 1.8, 0, 2 * Math.PI);
+          ctx.fillStyle = ink.text;
+          ctx.fill();
         }
         for (const b of glyphs) {
           const box = b.box;
@@ -107,12 +131,12 @@ export function ModelRisk() {
               ctx,
               box.x + box.width + 2,
               top + b.baseline - 3,
-              b.x - b.half - 2,
-              top + b.y - b.height * 0.55,
+              b.symbolX - b.half - 2,
+              top + b.symbolY - b.height * 0.55,
             );
           else if (b.name === "Nytt bygg")
-            leader(ctx, b.tx + 2, top + b.baseline + 5, b.x, top + b.y - b.height - 3);
-          else leader(ctx, b.x, top + b.baseline + 5, b.x, top + b.y - b.height - 3);
+            leader(ctx, b.tx + 2, top + b.baseline + 5, b.symbolX, top + b.symbolY - b.height - 3);
+          else leader(ctx, b.symbolX, top + b.baseline + 5, b.symbolX, top + b.symbolY - b.height - 3);
         }
         ctx.restore();
       }
@@ -140,16 +164,19 @@ export function ModelRisk() {
         <canvas
           ref={canvasRef}
           role="img"
+          aria-describedby="m7-beskrivelse m7-avgrensning"
           aria-label={`To tenkte terrengsnitt før og etter tiltak. ${explanation[act]} ${count(false)} bygg berørt før og ${count(true)} etter i det valgte statiske scenariet.`}
           className="h-[470px] w-full"
         />
       </div>
-      <FigureNote>
-        Tenkt terreng, skjematisk og ikke i målestokk. Terrenghøyder, bygg og vannflate har ulike
-        visuelle skalaer. Ingen steder er avbildet. Byggene har direkte etiketter med korte
-        ledelinjer.
-      </FigureNote>
-      <p className="text-sm text-ink">
+      <div id="m7-beskrivelse">
+        <FigureNote>
+          Tenkt terreng, skjematisk og ikke i målestokk. Terrenghøyder, bygg og vannflate har ulike
+          visuelle skalaer. Ingen steder er avbildet. Byggene har direkte etiketter med korte
+          ledelinjer. På smale skjermer er symbolene forskjøvet; små punkter og forbindelser viser de uendrede byggestedene.
+        </FigureNote>
+      </div>
+      <p id="m7-avgrensning" className="text-sm text-ink">
         Vannflaten er <strong>ikke en faresone</strong>. Figuren viser{" "}
         <strong>ikke en godkjent evakueringsrute</strong>. Bruk offisielt kartgrunnlag i
         elevundersøkelsen.
@@ -184,6 +211,9 @@ export function ModelRisk() {
       >
         Nullstill sammenligning
       </button>
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {scene === "hoy" ? "Høyere nivå" : "Lavere nivå"}. Berørte bygg før: {count(false)}. Etter: {count(true)}.
+      </p>
       <Readouts
         items={[
           { k: "Berørte bygg før", v: String(count(false)), hint: "kun i tenkt vannflate" },

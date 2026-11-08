@@ -115,15 +115,18 @@ export function ModelWarning() {
         <canvas
           ref={canvasRef}
           role="img"
+          aria-describedby="m6-beskrivelse m6-naturlige-tegn"
           aria-label={`${source === "skjelv" ? "Seismisk vurdering, foreløpig varsel, senere vannmålinger og oppdatert varsel" : "Skred kan mangle seismisk varsel"}. Framhevet trinn: ${step + 1}. Ingen tids- eller trygghetsgaranti.`}
           className="h-[380px] w-full"
         />
       </div>
-      <FigureNote>
-        Skjematisk rekkefølge, ikke i målestokk i tid. Bøye og kystmåler er mulige datakilder, ikke
-        en garanti for at data kommer før bølgen.
-      </FigureNote>
-      <p className="rounded-xl border border-line bg-paper p-3 text-sm text-ink">
+      <div id="m6-beskrivelse">
+        <FigureNote>
+          Skjematisk rekkefølge, ikke i målestokk i tid. Bøye og kystmåler er mulige datakilder, ikke
+          en garanti for at data kommer før bølgen.
+        </FigureNote>
+      </div>
+      <p id="m6-naturlige-tegn" className="rounded-xl border border-line bg-paper p-3 text-sm text-ink">
         <strong>Naturlige tegn og restusikkerhet.</strong> Kraftig eller langvarig risting, brå
         endring i havnivå eller uvanlig lyd fra havet kan være naturlige tegn. Nær kilden kan tiden
         være kort. Ikke vent på bøye eller kystmåling for å reagere på slike tegn. Følg lokale råd

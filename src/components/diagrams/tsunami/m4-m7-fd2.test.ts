@@ -8,6 +8,8 @@ import {
   FJORD_FRAMES_PER_UNIT,
   FJORD_END,
   fjordWaveParts,
+  fjordSurface,
+  fjordSlideLabel,
   townGlyphLayout,
 } from "./sim/fjord";
 import { filterOceanContourFragments, oceanPanelLayout } from "./sim/oceanmap";
@@ -35,8 +37,8 @@ import {
   waterNeighbours,
   type GeoGrid,
 } from "./sim/oceanmap";
-import { WARNING_STAGES } from "./m6-warning";
-import { TOWN_SITES } from "./m7-risk";
+import { ModelWarning, WARNING_STAGES } from "./m6-warning";
+import { ModelRisk, TOWN_SITES } from "./m7-risk";
 import { nb } from "./util";
 import {
   marchingContours,
@@ -52,6 +54,7 @@ import {
   FJORD_PULSE_HALF_SUPPORT,
   fjordPulseCenter,
 } from "./sim/fjord";
+import { ModelOcean } from "./m5-ocean";
 import { ModelFjord } from "./m4-fjord";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -437,8 +440,8 @@ test("M7 text fields avoid water, terrain and all building symbols without movin
               !boxesOverlap(
                 g.box,
                 {
-                  x: h.x - h.half - 0.6,
-                  y: h.y - h.height - 0.6,
+                  x: h.symbolX - h.half - 0.6,
+                  y: h.symbolY - h.height - 0.6,
                   width: 2 * h.half + 1.2,
                   height: h.height + 1.2,
                 },
@@ -450,8 +453,11 @@ test("M7 text fields avoid water, terrain and all building symbols without movin
         for (let i = 0; i < glyphs.length; i++)
           for (let j = i + 1; j < glyphs.length; j++) {
             assert.ok(!boxesOverlap(glyphs[i].box, glyphs[j].box, 3));
-            const gap = Math.abs(glyphs[i].x - glyphs[j].x) - glyphs[i].half - glyphs[j].half - 1.2;
-            assert.ok(gap >= 2.99, `${width}px symbols need a visible gap`);
+            const iconBox = (g: typeof glyphs[number]) => ({
+              x: g.symbolX - g.half - 0.6, y: g.symbolY - g.height - 0.6,
+              width: 2 * g.half + 1.2, height: g.height + 1.2,
+            });
+            assert.ok(!boxesOverlap(iconBox(glyphs[i]), iconBox(glyphs[j]), 2.99), `${width}px symbols need a visible gap`);
           }
       }
 });
@@ -533,9 +539,91 @@ test("M7 building glyphs keep their screen-space aspect and physical footpoints 
     const layout = townGlyphLayout(width, 221, 0.27, TOWN_SITES, {Hus: 26, "Nytt bygg": 66, Skole: 38});
     for (const g of layout) {
       assert.ok(Math.abs(g.height / (2 * g.half) - 18 / 14) < 1e-12);
+      assert.ok(g.half * 2 >= 14 && g.height >= 18, "recognizable house symbols may not shrink to letter-sized specks");
       const physical = TOWN_SITES.find((b) => b.name === g.name)!;
       assert.equal(g.x, 12 + physical.x * (width - 24));
       assert.equal(g.y, 221 * 0.7 - townHeight(physical.x) * 221);
     }
   }
+});
+
+
+test("M4 displayed surface returns smoothly to the real shore rather than leaving a clipped half crest", () => {
+  for (let t = 0; t <= 3.0001; t += 0.01) {
+    const surface = fjordSurface(t, 1001);
+    assert.equal(surface[0].x, FJORD_LEFT_SHORE);
+    assert.ok(Math.abs(surface.at(-1)!.x - FJORD_RIGHT_SHORE) < 1e-15);
+    assert.ok(Math.abs(surface[0].y) < 1e-15 && Math.abs(surface.at(-1)!.y) < 1e-15);
+    for (const p of surface) {
+      assert.ok(p.x >= FJORD_LEFT_SHORE - 1e-15 && p.x <= FJORD_RIGHT_SHORE + 1e-15);
+      assert.ok(fjordBed(p.x) > -1e-10);
+      if (p.x > FJORD_LEFT_SHORE + 0.035 && p.x < FJORD_RIGHT_SHORE - 0.035)
+        assert.ok(Math.abs(p.y + fjordWave(p.x, t)) < 1e-15, "interior pulse must be unchanged");
+    }
+    for (const [a, b] of [[surface[0], surface[1]], [surface.at(-2)!, surface.at(-1)!]])
+      assert.ok(Math.abs((b.y - a.y) / (b.x - a.x)) < 0.2, "shore endpoint should approach a flat tangent, not an aerial cut");
+  }
+  const component = readFileSync(new URL("./m4-fjord.tsx", import.meta.url), "utf8");
+  assert.match(component, /const surf = fjordSurface\(t\)/);
+});
+
+test("M4 source and deposit labels clear the waterline at six seconds and every playback/manual position", () => {
+  for (const width of [250, 328, 992])
+    for (const height of [340, 400])
+      for (let step = 0; step <= 300; step++) {
+        const t = step / 100, sea = height * 0.42;
+        const note = fjordSlideLabel(t, width, height, t < 0.8 ? 42 : 94);
+        assert.ok(note.box.y + note.box.height <= sea - 10 || note.box.y >= sea + 10, `${t} waterline collision`);
+        assert.ok(note.box.x >= 0 && note.box.x + note.box.width <= width);
+        assert.ok(note.box.y >= 0 && note.box.y + note.box.height <= height);
+      }
+  const sixSeconds = fjordSlideLabel(6 / FJORD_SECONDS_PER_UNIT, 992, 400, 42);
+  assert.ok(sixSeconds.box.y + sixSeconds.box.height < 400 * 0.42 - 10);
+});
+
+test("M4–M7 static SSR accessibility: native keyboard semantics, focus classes, linked names/descriptions and live status", () => {
+  const models = [
+    { n: 4, component: ModelFjord, names: ["Start", "Neste prosesstrinn", "Nullstill"] },
+    { n: 5, component: ModelOcean, names: ["Indiahavet", "Stillehavet", "Start", "Fram 30 modellminutter", "Nullstill"] },
+    { n: 6, component: ModelWarning, names: ["Jordskjelv", "Skred", "Start", "Neste ledd", "Nullstill"] },
+    { n: 7, component: ModelRisk, names: ["Lavere nivå", "Høyere nivå", "Ingen", "Flytt skolen", "Stans nytt bygg", "Overvåking", "Nullstill sammenligning"] },
+  ];
+  for (const { n, component, names } of models) {
+    const html = renderToStaticMarkup(createElement(component));
+    const buttons = [...html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)];
+    assert.deepEqual(buttons.map((b) => b[2].replace(/<[^>]*>/g, "").trim()), names, `M${n} native DOM tab order`);
+    for (const button of buttons) {
+      assert.match(button[1], /type="button"/);
+      assert.match(button[1], /focus-visible:outline-2/);
+      assert.doesNotMatch(button[1], /tabindex=|disabled|role="(?!button)/);
+    }
+    assert.match(html, new RegExp(`aria-labelledby="m${n}-tittel"`));
+    assert.match(html, new RegExp(`<h3 id="m${n}-tittel"`));
+    const canvas = html.match(/<canvas\b([^>]*)>/)![1];
+    assert.match(canvas, /role="img"/);
+    assert.match(canvas, /aria-label="[^"]{20,}"/);
+    for (const id of canvas.match(/aria-describedby="([^"]+)"/)![1].split(" "))
+      assert.ok(html.includes(`id="${id}"`), `M${n} description target ${id}`);
+    assert.match(html, /aria-live="polite"/);
+    assert.match(html, /aria-pressed="(true|false)"/);
+    assert.doesNotMatch(html, /role="button"|tabindex="[1-9]/);
+    const file = ["m4-fjord", "m5-ocean", "m6-warning", "m7-risk"][n - 4];
+    const source = readFileSync(new URL(`./${file}.tsx`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /onKeyDown|onKeyUp|preventDefault|addEventListener\(["']key/, "native Tab/Enter/Space must not be intercepted");
+    if (n === 7) assert.match(html, /role="status" aria-live="polite" aria-atomic="true"/);
+  }
+  // This verifies markup/contracts, NOT execution of Tab, Enter or Space in a browser.
+  const shared = readFileSync(new URL("./lab.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(shared, /onKeyDown|onKeyUp|preventDefault/);
+});
+
+test("FD2 tests are automatically included by npm test using only repository-local support", () => {
+  const packageJson = JSON.parse(readFileSync(new URL("../../../../package.json", import.meta.url), "utf8"));
+  assert.match(packageJson.scripts.test, /scripts\/\*\*\/\*.test.mjs/);
+  const runner = readFileSync(new URL("../../../../scripts/tsunami-fd2.test.mjs", import.meta.url), "utf8");
+  const loader = readFileSync(new URL("../../../../scripts/tsunami-fd2-loader.mjs", import.meta.url), "utf8");
+  assert.match(runner, /register\(".\/tsunami-fd2-loader.mjs", import.meta.url\)/);
+  assert.match(runner, /import\("..\/src\/components\/diagrams\/tsunami\/m4-m7-fd2.test.ts"\)/);
+  assert.doesNotMatch(runner + loader, /\/workspace\/|ts-loader.mjs/);
+  assert.match(loader, /from "typescript"/);
 });
