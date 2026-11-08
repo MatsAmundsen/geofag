@@ -1,5 +1,5 @@
 // Kyst fra Natural Earth 1:110 mill., offentlig domene.
-// Stillehavsringene er forskjøvet til lengde 0–360 der kilden ligger vest for nullmeridianen.
+// Stillehavsringene er forskjøvet til lengde 0–360 for en sammenhengende framstilling over datolinjen.
 // Antarktis er utelatt. Dette er ikke et sjøkart.
 
 export const INDIA_RINGS = [

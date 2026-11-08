@@ -1,97 +1,88 @@
-import { makeLinear, stepLinear, type Linear1D } from "./linear";
-
-export type FjordOpts = {
-  thick: number;
-  speed: number;
-  entry: "vann" | "skrent";
-};
-
-export const FJORD_N = 300;
-export const FJORD_L = 6400;
-
-export function fjordDepth(x: number) {
-  const left = 780;
-  const right = FJORD_L - 780;
-  const depth = 340;
-  if (x < left) return Math.max(0, depth * (x / left));
-  if (x > right) return Math.max(0, depth * ((FJORD_L - x) / (FJORD_L - right)));
-  return depth;
+/** Qualitative geometry, not a calibrated impact or run-up solver. Coordinates are fractions. */
+export const FJORD_END = 3;
+export function fjordBed(x: number) {
+  // Continuous U-shaped section, including dry shoulders above the reference surface (zero).
+  return (
+    0.56 -
+    0.92 * Math.exp(-Math.pow(x / 0.16, 2)) -
+    0.85 * Math.exp(-Math.pow((1 - x) / 0.17, 2)) +
+    0.025 * Math.sin(Math.PI * x) * Math.sin(5 * Math.PI * x)
+  );
+}
+export function fjordStage(t: number) {
+  return t < 0.8 ? "Vannforskyvning" : t < 1.8 ? "Bølgeutbredelse" : "Refleksjon";
+}
+export function fjordWave(x: number, t: number) {
+  if (t <= 0) return 0;
+  const u = Math.max(0, Math.min(FJORD_END, t));
+  // Prescribed pulse and its return: no amplitude or travel-time inference is intended.
+  const center = u < 1.8 ? 0.16 + (0.72 * u) / 1.8 : 0.88 - (u - 1.8) * 0.52;
+  const z = (x - center) / 0.065;
+  return 0.075 * Math.min(1, u * 4) * (1 - 2 * z * z) * Math.exp(-z * z);
+}
+export function slideOutline(t: number) {
+  const u = Math.min(1, Math.max(0, t / 0.8));
+  const cx = 0.07 + u * 0.16;
+  const cy = -0.2 + u * 0.58;
+  return [
+    [-0.045, -0.02],
+    [-0.024, -0.075],
+    [0.016, -0.062],
+    [0.05, -0.009],
+    [0.037, 0.028],
+    [0.009, 0.045],
+    [-0.036, 0.025],
+  ].map(([x, y]) => ({ x: cx + x, y: cy + y }));
 }
 
-export function makeFjord() {
-  const s = makeLinear(FJORD_N, FJORD_L / FJORD_N);
-  for (let i = 0; i < FJORD_N; i++) s.d[i] = fjordDepth((i + 0.5) * s.dx);
-  return s;
-}
-
-export function slideThickness(x: number, center: number, thick: number) {
-  const sig = 150;
-  return thick * Math.exp(-Math.pow((x - center) / sig, 2));
-}
-
-export type FjordRun = {
-  sim: Linear1D;
-  center: number;
-  prev: Float64Array;
-  t: number;
-  near: number;
-  far: number;
-  tFar: number;
-  crests: number;
-  prevFar: number;
-};
-
-export function startFjord(opts: FjordOpts): FjordRun {
-  const sim = makeFjord();
-  const center = opts.entry === "skrent" ? 260 : 720;
-  const prev = new Float64Array(FJORD_N);
-  for (let i = 0; i < FJORD_N; i++) {
-    const x = (i + 0.5) * sim.dx;
-    prev[i] = sim.d[i] > 2 ? slideThickness(x, center, opts.thick) : 0;
-  }
-  return { sim, center, prev, t: 0, near: 0, far: 0, tFar: 0, crests: 0, prevFar: 0 };
-}
-
-/** Advance by up to `dt` seconds. Mutates the run. */
-export function pushFjord(run: FjordRun, opts: FjordOpts, dt: number) {
-  const { sim } = run;
-  const c = Math.sqrt(9.81 * 340);
-  const dtMax = (0.4 * sim.dx) / c;
-  let left = dt;
-  const iNear = Math.round(FJORD_N * 0.24);
-  const iFar = Math.round(FJORD_N * 0.84);
-  while (left > 1e-4) {
-    const step = Math.min(left, dtMax);
-    run.center = Math.min(2000, run.center + opts.speed * step);
-    const src = new Float64Array(FJORD_N);
-    for (let i = 0; i < FJORD_N; i++) {
-      const x = (i + 0.5) * sim.dx;
-      const b = sim.d[i] > 2 ? slideThickness(x, run.center, opts.thick) : 0;
-      src[i] = b - run.prev[i];
-      run.prev[i] = b;
+/** 4-connected static fill from specified sea cells only. No isolated depression is seeded. */
+export function connectedWet(
+  heights: readonly number[],
+  nx: number,
+  ny: number,
+  level: number,
+  sea: readonly number[],
+) {
+  if (nx * ny !== heights.length || nx < 1 || ny < 1 || !Number.isFinite(level))
+    throw new Error("Invalid wet grid");
+  const wet = new Uint8Array(heights.length);
+  const queue: number[] = [];
+  for (const k of sea) {
+    if (k >= 0 && k < wet.length && heights[k] <= level && !wet[k]) {
+      wet[k] = 1;
+      queue.push(k);
     }
-    stepLinear(sim, step);
-    for (let i = 0; i < FJORD_N; i++) sim.eta[i] += src[i];
-    run.t += step;
-    left -= step;
-    run.near = Math.max(run.near, sim.eta[iNear]);
-    if (sim.eta[iFar] > run.far) {
-      run.far = sim.eta[iFar];
-      run.tFar = run.t;
-    }
-    if (sim.eta[iFar] > 0.15 && run.prevFar <= 0.15) run.crests += 1;
-    run.prevFar = sim.eta[iFar];
   }
+  for (let q = 0; q < queue.length; q++) {
+    const k = queue[q],
+      i = k % nx,
+      j = Math.floor(k / nx);
+    for (const n of [
+      i > 0 ? k - 1 : -1,
+      i + 1 < nx ? k + 1 : -1,
+      j > 0 ? k - nx : -1,
+      j + 1 < ny ? k + nx : -1,
+    ]) {
+      if (n >= 0 && !wet[n] && heights[n] <= level) {
+        wet[n] = 1;
+        queue.push(n);
+      }
+    }
+  }
+  return wet;
 }
 
-export function runSlide(opts: FjordOpts) {
-  const run = startFjord(opts);
-  const trace: number[] = [];
-  const iFar = Math.round(FJORD_N * 0.84);
-  for (let k = 0; k < 220; k++) {
-    pushFjord(run, opts, 0.8);
-    if (k % 2 === 0) trace.push(run.sim.eta[iFar]);
-    if (run.t > 240) break;
-  }
-  return run;
+/** Dimensionless, invented terrain for M7; deliberately includes a landward hollow. */
+export function townHeight(x: number) {
+  return (
+    -0.16 +
+    0.58 / (1 + Math.exp(-(x - 0.53) * 12)) +
+    0.1 * Math.exp(-Math.pow((x - 0.64) / 0.06, 2)) -
+    0.12 * Math.exp(-Math.pow((x - 0.82) / 0.055, 2))
+  );
+}
+export const TOWN_N = 241;
+export function townScenario(level: number) {
+  const heights = Array.from({ length: TOWN_N }, (_, i) => townHeight(i / (TOWN_N - 1)));
+  return { heights, wet: connectedWet(heights, TOWN_N, 1, level, [0]) };
 }
