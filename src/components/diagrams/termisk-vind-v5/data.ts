@@ -26,7 +26,21 @@ export const NOKKEL: [string | null, string, string][][] = [
  [["A","varm","Varmere luft i sør"],["B","kald","Kaldere luft i nord"],["E","vind","Jetkjerne nær tropopausen"]],
 ];
 
-// Mobil (r6): ingen tekst i SVG-en. Nøkkelen under figuren forklarer med fargeprøver; bokstavene A–E vises ikke.
+/**
+ * Mobilmerker A–E (r7). Merkene står i egne bånd over og under tegneflaten (egne SVG-er med samme bredde og skala),
+ * med korte ledelinjer inn til objektet. Ingen merketekst ligger dermed inne i tegneflaten, nær trykkbaner, høydelinje eller piler.
+ * bx = merkets x i båndet; mål = punktet ledelinja peker på i tegneflaten (viewBox 960×560); vis = hvilken tilstand som viser merket.
+ */
+export const MERKE_FONT = 56;
+export const MERKE_R = 38;
+export const BAND_H = 150;
+export const MERKER: { b: string; band: "topp" | "bunn"; bx: number; mal: [number, number]; vis: "alltid" | "h" | "c" | "j" }[] = [
+  { b: "A", band: "bunn", bx: 200, mal: [200, 352], vis: "alltid" },
+  { b: "B", band: "bunn", bx: 760, mal: [760, 352], vis: "alltid" },
+  { b: "C", band: "topp", bx: 720, mal: [557, 302], vis: "h" },
+  { b: "D", band: "topp", bx: 280, mal: [403, 302], vis: "c" },
+  { b: "E", band: "topp", bx: 600, mal: [505, 155], vis: "j" },
+];
 
 export const TV5_TITTEL = "Termisk vind: hvorfor vestavinden øker opp mot jetstrømmen";
 export const TV5_INGRESS =

@@ -3,7 +3,7 @@
  * Logikken er flyttet uendret fra v5. Eneste endringer: elementer hentes med data-tv innenfor roten,
  * stegknapper, forklaringer og nøkler rendres av React, og lyttere/observatør/animasjonsramme ryddes ved avmontering.
  */
-import { STEG, NOKKEL, SW } from "./data";
+import { STEG, NOKKEL, SW, MERKER, MERKE_FONT, MERKE_R, BAND_H } from "./data";
 
 void NOKKEL;
 void SW;
@@ -54,6 +54,26 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
    const sx=Math.max(B.x0-GAP,Math.min(ax,B.x1+GAP)),sy=Math.max(B.y0-GAP,Math.min(ay,B.y1+GAP));
    L.l.setAttribute("opacity",1);L.l.setAttribute("x1",r1(sx));L.l.setAttribute("y1",r1(sy));L.l.setAttribute("x2",r1(ax));L.l.setAttribute("y2",r1(ay));}
 
+  /* Mobilmerker i bånd over og under tegneflaten. Geometrien er fast, bare synligheten endres. */
+  const mobilMerker=MERKER.map((m: any)=>{
+    const band=$(m.band==="topp"?"bandTopp":"bandBunn"), led=$("merkeLedere");
+    const cy=BAND_H/2, [tx,ty]=m.mal;
+    // linje fra merkekant til mål, i felles koordinater der tegneflaten har y 0–560
+    const by=m.band==="topp"?cy-BAND_H:560+cy;
+    const dx=tx-m.bx, dy=ty-by, L=Math.hypot(dx,dy), ux=dx/L, uy=dy/L;
+    const sx=m.bx+ux*MERKE_R, sy=by+uy*MERKE_R;          // start på merkekanten
+    const grense=m.band==="topp"?0:560;                  // overgang bånd/tegneflate
+    const tg=(grense-sy)/uy, gx=sx+ux*tg;
+    const off=m.band==="topp"?BAND_H:-560;               // båndets egen y = felles y + off
+    const g=el("g",{},band);
+    const l1=el("line",{x1:r1(sx),y1:r1(sy+off),x2:r1(gx),y2:r1(grense+off),stroke:"#1f2a33","stroke-width":2},g);
+    el("circle",{cx:m.bx,cy,r:MERKE_R,fill:"#1f2a33"},g);
+    const t=el("text",{x:m.bx,y:r1(cy+MERKE_FONT*0.35),"text-anchor":"middle",fill:"#fff","font-size":MERKE_FONT,"font-weight":700},g);t.textContent=m.b;
+    const l2=el("line",{x1:r1(gx),y1:grense,x2:r1(tx),y2:r1(ty),stroke:"#1f2a33","stroke-width":2,"data-merke":m.b},led);
+    void l1;
+    return {m,g,l2};
+  });
+  function settMerker(s: any){mobilMerker.forEach(({m,g,l2}: any)=>{const v=m.vis==="alltid"?1:m.vis==="h"?s.h:m.vis==="c"?s.c:s.j;g.setAttribute("opacity",r1(v));l2.setAttribute("opacity",r1(v));});}
   function tegn(s: any){
    const d=s.d;
    $("temp").setAttribute("opacity",r1(d));
@@ -101,6 +121,7 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
       settLab("jet",s.j,XC-52,G-308);
    settLab("over",s.j,XC+44,G-349);
    settLab("f4",d,880,G-310);
+   settMerker(s);
    // stratosfæren mellom: ikke merk
   }
 

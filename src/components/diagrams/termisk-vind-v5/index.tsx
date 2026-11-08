@@ -54,6 +54,7 @@ export function TermiskVindV5() {
             ))}
           </ol>
           <div className="ramme">
+            <svg className="tv5-band" data-tv="bandTopp" viewBox="0 0 960 150" aria-hidden="true" />
             <svg data-tv="svg" viewBox="0 0 960 560" role="img" aria-labelledby={`${id("t")} ${id("d")}`}>
               <title id={id("t")}>{TV5_SVG_TITTEL}</title>
               <desc id={id("d")} data-tv="svgD">{`Steg 1: ${STEG[0].t}. ${STEG[0].x}`}</desc>
@@ -102,6 +103,7 @@ export function TermiskVindV5() {
               <g data-tv="vind" />
               <line x1="60" x2="900" y1="470" y2="470" stroke="#6b5a45" strokeWidth="3" />
               <rect x="60" y="472" width="840" height="14" fill="#d9a56b" opacity=".55" />
+              <g data-tv="merkeLedere" className="mob" />
               <g data-tv="etiketter" className="desk" fontSize="18" fontWeight="600" />
               <g fontSize="18" fontWeight="700" fill="#4a5a66" className="desk">
                 <text x="66" y="518">Sør (mot ekvator)</text>
@@ -110,6 +112,7 @@ export function TermiskVindV5() {
                 </text>
               </g>
             </svg>
+            <svg className="tv5-band" data-tv="bandBunn" viewBox="0 0 960 150" aria-hidden="true" />
             {/* Mobil: Sør/Nord som HTML under tegneflaten, så teksten ikke skaleres ned med SVG-en og ikke ligger tett på bakkefeltet. */}
             <div className="mob-akse" aria-hidden="true">
               <span>Sør</span>
@@ -119,8 +122,9 @@ export function TermiskVindV5() {
           <div className="stabel" data-tv="nokkelstabel" aria-hidden="true">
             {NOKKEL.map((rader, s) => (
               <ol key={s} className={s === 0 ? "nokkel aktiv" : "nokkel"}>
-                {rader.map(([, sw, t], i) => (
+                {rader.map(([b, sw, t], i) => (
                   <li key={i}>
+                    {b ? <b className="mob">{b}</b> : null}
                     <i style={stil(SW[sw])} />
                     {t}
                   </li>

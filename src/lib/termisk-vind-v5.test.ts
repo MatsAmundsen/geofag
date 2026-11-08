@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { NOKKEL, STEG, TV5_BILDETEKST } from "../components/diagrams/termisk-vind-v5/data.ts";
+import { BAND_H, MERKE_FONT, MERKER, NOKKEL, STEG, TV5_BILDETEKST } from "../components/diagrams/termisk-vind-v5/data.ts";
 
 const lib = dirname(fileURLToPath(import.meta.url));
 const les = (...p: string[]) => readFileSync(join(lib, ...p), "utf8");
@@ -43,8 +43,25 @@ describe("Termisk vind v5 på /tema/jetstrommer", () => {
     const svg = idx.slice(idx.indexOf("<svg"), idx.indexOf("</svg>"));
     const grupper = [...svg.matchAll(/<g [^>]*>\s*<text/g)].map((m) => m[0]);
     assert.ok(grupper.length > 0 && grupper.every((g) => /className="desk"/.test(g)), "statisk SVG-tekst bare i .desk");
-    assert.doesNotMatch(svg, /data-tv="merker"/);
-    assert.doesNotMatch(motor, /settBadge|MERK|"merker"/);
+    // r7: A–E i egne bånd utenfor tegneflaten; faktisk avstand regnet fra MERKER-geometrien
+    assert.match(idx, /data-tv="bandTopp"/); assert.match(idx, /data-tv="bandBunn"/); assert.match(motor, /settMerker\(s\)/);
+    for (const v of [300, 320, 360]) {
+      const k = (v - 88) / 960;
+      assert.ok(MERKE_FONT * k >= 11, `font ${v}`);
+      const bokser = MERKER.map((m) => { const off = m.band === "topp" ? -BAND_H : 560, y = BAND_H / 2 + MERKE_FONT * 0.35 + off, w = MERKE_FONT * 0.62;
+        return { m, x0: m.bx - w / 2, x1: m.bx + w / 2, y0: y - MERKE_FONT * 0.95, y1: y + MERKE_FONT * 0.3 }; });
+      for (const b of bokser) {
+        // alle trykkbaner, høydelinje, piler og bakke ligger i tegneflaten y 0–560 (bakke 470)
+        const tilFlate = b.m.band === "topp" ? 0 - b.y1 : b.y0 - 560;
+        assert.ok(tilFlate * k >= 8, `${b.m.b} ${v}: ${(tilFlate * k).toFixed(1)} px til tegneflaten`);
+        for (const o of bokser) if (o !== b) {
+          const by = o.m.band === "topp" ? BAND_H / 2 - BAND_H : 560 + BAND_H / 2, [tx, ty] = o.m.mal;
+          let min = 1e9; for (let i = 0; i <= 400; i++) { const t = i / 400, x = o.m.bx + (tx - o.m.bx) * t, y = by + (ty - by) * t;
+            min = Math.min(min, Math.hypot(Math.max(b.x0 - x, 0, x - b.x1), Math.max(b.y0 - y, 0, y - b.y1))); }
+          assert.ok((min - 1) * k >= 8, `${b.m.b} mot leder ${o.m.b} ${v}: ${((min - 1) * k).toFixed(1)} px`);
+        }
+      }
+    }
     assert.match(idx, /data-tv="etiketter" className="desk" fontSize="18"/);
     assert.match(css, /@container tv5 \(max-width:779px\)\{[\s\S]*?\.tv5 \.desk\{display:none\}/);
     // Sør/Nord på mobil er HTML (15 px) under tegneflaten
