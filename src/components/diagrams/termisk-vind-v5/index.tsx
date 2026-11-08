@@ -103,7 +103,6 @@ export function TermiskVindV5() {
               <line x1="60" x2="900" y1="470" y2="470" stroke="#6b5a45" strokeWidth="3" />
               <rect x="60" y="472" width="840" height="14" fill="#d9a56b" opacity=".55" />
               <g data-tv="etiketter" className="desk" fontSize="18" fontWeight="600" />
-              <g data-tv="merker" className="mob" />
               <g fontSize="18" fontWeight="700" fill="#4a5a66" className="desk">
                 <text x="66" y="518">Sør (mot ekvator)</text>
                 <text x="894" y="518" textAnchor="end">
@@ -120,9 +119,8 @@ export function TermiskVindV5() {
           <div className="stabel" data-tv="nokkelstabel" aria-hidden="true">
             {NOKKEL.map((rader, s) => (
               <ol key={s} className={s === 0 ? "nokkel aktiv" : "nokkel"}>
-                {rader.map(([b, sw, t], i) => (
+                {rader.map(([, sw, t], i) => (
                   <li key={i}>
-                    {b ? <b className="mob">{b}</b> : null}
                     <i style={stil(SW[sw])} />
                     {t}
                   </li>

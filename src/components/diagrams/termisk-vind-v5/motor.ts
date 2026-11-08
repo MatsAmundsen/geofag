@@ -3,7 +3,7 @@
  * Logikken er flyttet uendret fra v5. Eneste endringer: elementer hentes med data-tv innenfor roten,
  * stegknapper, forklaringer og nøkler rendres av React, og lyttere/observatør/animasjonsramme ryddes ved avmontering.
  */
-import { STEG, NOKKEL, SW, MERKE_FONT, MERKE_R, MERKE_Y } from "./data";
+import { STEG, NOKKEL, SW } from "./data";
 
 void NOKKEL;
 void SW;
@@ -31,7 +31,7 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
   const flater=[1,2,3].map(()=>el("path",{},$("flater")));
   const vindPunkt=[{z:60},{z:140},{z:220},{z:290},{z:365}];
   const vind=vindPunkt.map(()=>{const g=el("g",{},$("vind"));const o=el("circle",{fill:"#fff",stroke:"#1f2a33","stroke-width":3},g);const p=el("circle",{fill:"#1f2a33"},g);return {g,o,p};});
-  const etik=$("etiketter"), merk=$("merker");
+  const etik=$("etiketter");
   const LAB: Record<string, any>={};
   function lab(id: any,txt: any,fill: any,anchor?: any){const g=el("g",{},etik);const l=el("line",{stroke:fill,"stroke-width":1.4},g);const t=el("text",{fill,"text-anchor":anchor||"start"},g);t.textContent=txt;LAB[id]={g,l,t};}
   lab("varm","Varmere luft","#8a3214","middle");
@@ -44,9 +44,6 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
   lab("jet","Jetkjerne","#1f2a33","end");
   lab("over","Svakere over maksimumet","#3d4a54","start");
   lab("f4","Forenklet over tropopausen","#3d4a54","end");
-  const MERK: Record<string, any>={};
-  function badge(id: any,n: any){const g=el("g",{},merk);el("circle",{r:MERKE_R,fill:"#1f2a33"},g);const t=el("text",{"text-anchor":"middle",y:MERKE_Y,fill:"#fff","font-size":MERKE_FONT,"font-weight":700},g);t.textContent=n;MERK[id]=g;}
-  ["A","B","C","D","E"].forEach((n: any,i: any)=>badge("b"+i,n));
 
   const FS=18;
   function boks(t: any,x: any,y: any,anchor: any){const w=t.length*FS*0.62;const x0=anchor==="end"?x-w:anchor==="middle"?x-w/2:x;return {x0,x1:x0+w,y0:y-FS*0.95,y1:y+FS*0.3};}
@@ -56,7 +53,6 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
    const B=boks(L.t.textContent,x,y,L.t.getAttribute("text-anchor"));const GAP=15;
    const sx=Math.max(B.x0-GAP,Math.min(ax,B.x1+GAP)),sy=Math.max(B.y0-GAP,Math.min(ay,B.y1+GAP));
    L.l.setAttribute("opacity",1);L.l.setAttribute("x1",r1(sx));L.l.setAttribute("y1",r1(sy));L.l.setAttribute("x2",r1(ax));L.l.setAttribute("y2",r1(ay));}
-  function settBadge(i: any,vis: any,x: any,y: any){MERK["b"+i].setAttribute("opacity",r1(vis));MERK["b"+i].setAttribute("transform",`translate(${r1(x)} ${r1(y)})`);}
 
   function tegn(s: any){
    const d=s.d;
@@ -105,12 +101,6 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
       settLab("jet",s.j,XC-52,G-308);
    settLab("over",s.j,XC+44,G-349);
    settLab("f4",d,880,G-310);
-   // A–E (mobil)
-   settBadge(0,1,200,G-120);            // A varm
-   settBadge(1,1,760,G-120);            // B kald
-   settBadge(2,s.h,XC+220,yH-48);       // C trykkraft
-   settBadge(3,s.c,XC-220,yH-48);       // D coriolis
-   settBadge(4,s.j,XC+110,G-300);       // E jetkjerne
    // stratosfæren mellom: ikke merk
   }
 

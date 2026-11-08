@@ -38,7 +38,6 @@
   .tv5-innhold{font-size:16px}
   .tv5 .desk{display:none}
   .tv5 .mob{display:inline}
-  .tv5 ol.nokkel b.mob{display:inline-grid}
   .tv5 .mob-akse{display:flex;justify-content:space-between;padding:6px 6px 0;font-size:15px;font-weight:700;color:var(--muted);line-height:1.2}
   .tv5 button{padding:8px 10px;font-size:.9rem}
 }
