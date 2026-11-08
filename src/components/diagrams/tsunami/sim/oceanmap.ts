@@ -1,3 +1,4 @@
+import { nb } from "../util";
 import { INDIA_RINGS, PACIFIC_RINGS } from "./coasts";
 export type Ring = readonly (readonly [number, number])[];
 export type BasinId = "india" | "tohoku";
@@ -414,14 +415,14 @@ export function smoothOceanContours(
 }
 
 /** Display-only decluttering after smoothing/land splitting. Drop detached paths
- * shorter than 5 percent of projected map width; never bridge or extend any path.
+ * shorter than 6 percent of projected map width; never bridge or extend any path.
  * Coordinates, numerical travel times, coast polygons and calculation mask stay intact. */
 export function filterOceanContourFragments(paths: IsoPath[], aspect: number): IsoPath[] {
   return paths.filter((path) => {
     let length = 0;
     for (let i = 1; i < path.length; i++)
       length += Math.hypot(path[i].x - path[i - 1].x, (path[i].y - path[i - 1].y) / aspect);
-    return length >= 0.05;
+    return length >= 0.06;
   });
 }
 
@@ -514,4 +515,14 @@ export function oceanPanelLayout(o: GeoGrid, width: number) {
   const mapWidth = Math.max(1, width - 24),
     mapHeight = mapWidth / aspect;
   return { aspect, mapWidth, mapHeight, canvasHeight: mapHeight + 40, ox: 12, oy: 0 };
+}
+
+export function oceanStatus(id: BasinId, time: number, playing: boolean) {
+  const levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
+  const crossed = levels.filter((t) => t <= time).length;
+  const basin = id === "india" ? "Indiahavet" : "Stillehavet";
+  const phase = crossed ? `${crossed} av ${levels.length} tegnede gangtider er passert` : "Før første tegnede gangtid";
+  if (playing) return `${basin}. ${phase}. Avspilling pågår.`;
+  const finished = time >= (id === "india" ? 14400 : 57600);
+  return `${basin}. ${phase}. ${finished ? "Avspillingen er ferdig" : "Avspillingen er pauset"}. Vist modellklokke: ${nb(time / 3600, 1)} t.`;
 }

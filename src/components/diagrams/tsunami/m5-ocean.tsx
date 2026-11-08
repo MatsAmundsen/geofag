@@ -3,6 +3,7 @@ import { Choice, FigureNote, Lab, Readouts, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import {
   cellGeo,
+  oceanStatus,
   oceanPanelLayout,
   formatLongitude,
   makeOcean,
@@ -164,6 +165,7 @@ export function ModelOcean() {
   return (
     <Lab
       id="m5"
+      status={oceanStatus(id, time, playing)}
       index="M5"
       title="Gangtid i to havbasseng"
       question="Hvordan leder landbarrierer bølgeveien rundt kysten?"
@@ -194,7 +196,7 @@ export function ModelOcean() {
           Kartet er ekvirektangulært med standardbredde {nb((o.lat0 + o.lat1) / 2)}°. Ingen jevn
           avstandsmålestokk over hele kartet. Linjene viser{" "}
           {id === "india" ? "1, 2 og 3" : "2, 4, 8 og 12"} timer. Linjer blir tykkere når
-          modellklokken passerer dem, ikke når faren øker. Kurvene er moderat glattet for lesbarhet og
+          modellklokken passerer dem, ikke når faren øker. Korte isolerte kurvebiter er utelatt i visningen. Linjer kan stoppe ved landmasken. Kurvene er moderat glattet for lesbarhet og
           klippet mot land; beregningens oppløsning er uendret.
         </FigureNote>
       </div>
@@ -211,6 +213,8 @@ export function ModelOcean() {
         }}
       />
       <Transport
+        liveTime={false}
+        toggleState={false}
         playing={playing}
         onToggle={() => {
           if (clock.current >= duration) {

@@ -4,6 +4,7 @@ import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { arrow, label, leader, paintRock, skyTo, smoothPath, textWidth } from "./paint";
 import {
   fjordPlaybackTick,
+  fjordStatus,
   FJORD_LEFT_SHORE,
   FJORD_RIGHT_SHORE,
   nextFjordStep,
@@ -114,6 +115,7 @@ export function ModelFjord() {
   return (
     <Lab
       id="m4"
+      status={fjordStatus(position, playing)}
       index="M4"
       title="Skred i en stilisert fjord"
       question="Hva skjer i kildesonen, og hva skjer når bølgen når den andre siden?"
@@ -144,6 +146,8 @@ export function ModelFjord() {
         </FigureNote>
       </div>
       <Transport
+        liveTime={false}
+        toggleState={false}
         playing={playing}
         onToggle={() => {
           if (progress.current >= FJORD_END) {

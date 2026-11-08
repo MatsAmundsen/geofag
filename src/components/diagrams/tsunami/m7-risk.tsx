@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from "react";
 import { Choice, FigureNote, Lab, Readouts } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { label, leader, paintRock, skyTo, textWidth } from "./paint";
-import { townHeight, townScenario, townGlyphLayout, TOWN_N } from "./sim/fjord";
+import { townHeight, riskStatus, townScenario, townGlyphLayout, townScreenX, townView, TOWN_N } from "./sim/fjord";
 import { ink } from "./sim/palette";
 
 type Scene = "lav" | "hoy";
@@ -39,7 +39,7 @@ export function ModelRisk() {
       for (let panel = 0; panel < 2; panel++) {
         const top = (panel * h) / 2,
           ph = h / 2 - 14,
-          xOf = (x: number) => 12 + x * (w - 24);
+          xOf = (x: number) => townScreenX(x, w);
         const yOf = (z: number) => top + ph * 0.7 - z * ph;
         ctx.save();
         ctx.beginPath();
@@ -75,12 +75,13 @@ export function ModelRisk() {
         label(ctx, panel === 0 ? "Før tiltak" : "Etter tiltak · samme vannivå", 14, top + 20, {
           weight: "600",
         });
-        label(ctx, "Sjø", xOf(0.12), (yOf(level) + yOf(townHeight(0.12))) / 2 + 4);
+        const view = townView(w), seaX = view.from + 0.08 * view.span;
+        label(ctx, "Sjø", xOf(seaX), (yOf(level) + yOf(townHeight(seaX))) / 2 + 4);
         const included = sites(panel === 1).filter((b) => b.included);
         const widths = Object.fromEntries(included.map((b) => [b.name, textWidth(ctx, b.name)]));
         const glyphs = townGlyphLayout(w, ph, level, included, widths);
-        // Draw all symbols before the text. Uniform symbol scaling separates close sites without
-        // moving their physical footpoints or changing the water/exposure calculation.
+        // The whole profile is zoomed on small screens. Icons stand on their true sites,
+        // using exactly the same mapping as terrain and water, never display proxies.
         for (const b of glyphs) {
           const y = top + b.symbolY;
           ctx.beginPath();
@@ -103,22 +104,6 @@ export function ModelRisk() {
           ctx.lineTo(b.symbolX + 1.5, y);
           ctx.lineWidth = 0.9;
           ctx.stroke();
-          if (b.symbolY !== b.y || b.symbolX !== b.x) {
-            ctx.beginPath();
-            ctx.moveTo(b.symbolX, y);
-            // Route the new-building connector beside the house, not through its icon.
-            if (b.name === "Nytt bygg") {
-              ctx.lineTo(b.symbolX + b.half + 3, y);
-              ctx.lineTo(b.symbolX + b.half + 3, top + b.y);
-            }
-            ctx.lineTo(b.x, top + b.y);
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-          ctx.beginPath();
-          ctx.arc(b.x, top + b.y, 1.8, 0, 2 * Math.PI);
-          ctx.fillStyle = ink.text;
-          ctx.fill();
         }
         for (const b of glyphs) {
           const box = b.box;
@@ -126,17 +111,7 @@ export function ModelRisk() {
           ctx.fillStyle = ink.panel;
           ctx.fillRect(box.x, top + box.y, box.width, box.height);
           label(ctx, b.name, b.tx, top + b.baseline, { align: b.align });
-          if (b.name === "Hus")
-            leader(
-              ctx,
-              box.x + box.width + 2,
-              top + b.baseline - 3,
-              b.symbolX - b.half - 2,
-              top + b.symbolY - b.height * 0.55,
-            );
-          else if (b.name === "Nytt bygg")
-            leader(ctx, b.tx + 2, top + b.baseline + 5, b.symbolX, top + b.symbolY - b.height - 3);
-          else leader(ctx, b.symbolX, top + b.baseline + 5, b.symbolX, top + b.symbolY - b.height - 3);
+          leader(ctx, b.x, top + b.y + 2, b.x, top + box.y - 3);
         }
         ctx.restore();
       }
@@ -154,6 +129,7 @@ export function ModelRisk() {
   return (
     <Lab
       id="m7"
+      status={riskStatus(scene, act, count(false), count(true))}
       index="M7"
       title="Fare, eksponering og sårbarhet"
       question="Hvilket ledd endrer tiltaket når det samme scenariet sammenlignes før og etter?"
@@ -173,7 +149,7 @@ export function ModelRisk() {
         <FigureNote>
           Tenkt terreng, skjematisk og ikke i målestokk. Terrenghøyder, bygg og vannflate har ulike
           visuelle skalaer. Ingen steder er avbildet. Byggene har direkte etiketter med korte
-          ledelinjer. På smale skjermer er symbolene forskjøvet; små punkter og forbindelser viser de uendrede byggestedene.
+          ledelinjer. På smale skjermer zoomes terrengutsnittet rundt byggene. Alle bygg står på sine uendrede steder i profilen; etikettene står på land med linjer til byggestedene.
         </FigureNote>
       </div>
       <p id="m7-avgrensning" className="text-sm text-ink">
@@ -211,9 +187,6 @@ export function ModelRisk() {
       >
         Nullstill sammenligning
       </button>
-      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
-        {scene === "hoy" ? "Høyere nivå" : "Lavere nivå"}. Berørte bygg før: {count(false)}. Etter: {count(true)}.
-      </p>
       <Readouts
         items={[
           { k: "Berørte bygg før", v: String(count(false)), hint: "kun i tenkt vannflate" },
