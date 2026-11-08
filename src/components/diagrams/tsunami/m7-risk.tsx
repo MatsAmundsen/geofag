@@ -1,8 +1,8 @@
 import { useMemo, useRef, useState } from "react";
 import { Choice, FigureNote, Lab, Readouts } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
-import { label, leader, paintRock, skyTo, textWidth } from "./paint";
-import { townHeight, riskStatus, townScenario, townGlyphLayout, townScreenX, townView, TOWN_N } from "./sim/fjord";
+import { label, leader, paintRock, skyTo, textWidth, smoothPath } from "./paint";
+import { riskStatus, townWaterLayers, TOWN_NORMAL_SEA_LEVEL, townGlyphLayout, townScreenX, TOWN_N } from "./sim/fjord";
 import { ink } from "./sim/palette";
 
 type Scene = "lav" | "hoy";
@@ -18,7 +18,8 @@ export function ModelRisk() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // Independent, chosen water levels: never infer run-up from an offshore wave amplitude.
   const level = scene === "lav" ? 0.16 : 0.27;
-  const scenario = useMemo(() => townScenario(level), [level]);
+  const water = useMemo(() => townWaterLayers(level), [level]);
+  const scenario = {heights: water.heights, wet: water.scenario.wet};
   const sites = (after: boolean) =>
     TOWN_SITES.map((b) => ({
       ...b,
@@ -48,35 +49,59 @@ export function ModelRisk() {
         skyTo(ctx, w, top + ph);
         const bed = scenario.heights.map((z, i) => ({ x: xOf(i / (TOWN_N - 1)), y: yOf(z) }));
         paintRock(ctx, bed, top + ph);
-        // Fill only the sea-connected sublevel component, with the exact terrain as its base.
-        let start = -1;
-        const fill = (end: number) => {
-          if (start < 0) return;
-          ctx.beginPath();
-          ctx.moveTo(xOf(start / (TOWN_N - 1)), yOf(level));
-          ctx.lineTo(xOf(end / (TOWN_N - 1)), yOf(level));
-          for (let i = end; i >= start; i--) ctx.lineTo(bed[i].x, bed[i].y);
-          ctx.closePath();
+        // Native above-terrain clip shared by both layers. Their horizontal extents
+        // come only from sea-connected wet nodes, ending at interpolated shore contacts.
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(bed[0].x, top);
+        ctx.lineTo(bed[bed.length - 1].x, top);
+        smoothPath(ctx, bed.slice().reverse(), false);
+        ctx.closePath();
+        ctx.clip();
+        const normalY = yOf(TOWN_NORMAL_SEA_LEVEL), scenarioY = yOf(level);
+        for (const run of water.normal.runs) {
           ctx.fillStyle = ink.water;
-          ctx.fill();
+          ctx.fillRect(xOf(run.from), normalY, xOf(run.to) - xOf(run.from), top + ph - normalY);
           ctx.beginPath();
-          ctx.moveTo(xOf(start / (TOWN_N - 1)), yOf(level));
-          ctx.lineTo(xOf(end / (TOWN_N - 1)), yOf(level));
+          ctx.moveTo(xOf(run.from), normalY);
+          ctx.lineTo(xOf(run.to), normalY);
           ctx.strokeStyle = ink.sea;
           ctx.lineWidth = 1.6;
           ctx.stroke();
-          start = -1;
-        };
-        for (let i = 0; i < TOWN_N; i++) {
-          if (scenario.wet[i] && start < 0) start = i;
-          if (!scenario.wet[i] && start >= 0) fill(i - 1);
         }
-        fill(TOWN_N - 1);
+        if (level > TOWN_NORMAL_SEA_LEVEL) for (const run of water.scenario.runs) {
+          const left = xOf(run.from), right = xOf(run.to);
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(left, scenarioY, right - left, normalY - scenarioY);
+          ctx.clip();
+          // Light hatch is a hypothetical extra water column, never permanent sea fill.
+          ctx.globalAlpha = 0.13;
+          ctx.fillStyle = ink.water;
+          ctx.fillRect(left, scenarioY, right - left, normalY - scenarioY);
+          ctx.globalAlpha = 0.35;
+          ctx.strokeStyle = ink.sea;
+          ctx.lineWidth = 0.8;
+          const depth = normalY - scenarioY;
+          for (let x = Math.max(left, 0) - depth; x < Math.min(right, w) + depth; x += 9) {
+            ctx.beginPath(); ctx.moveTo(x, normalY); ctx.lineTo(x + depth, scenarioY); ctx.stroke();
+          }
+          ctx.restore();
+          ctx.beginPath();
+          ctx.moveTo(left, scenarioY); ctx.lineTo(right, scenarioY);
+          ctx.setLineDash([6, 4]); ctx.strokeStyle = ink.sea; ctx.lineWidth = 1.4; ctx.stroke();
+          ctx.setLineDash([]);
+        }
+        ctx.restore();
         label(ctx, panel === 0 ? "Før tiltak" : "Etter tiltak · samme vannivå", 14, top + 20, {
           weight: "600",
         });
-        const view = townView(w), seaX = view.from + 0.08 * view.span;
-        label(ctx, "Sjø", xOf(seaX), (yOf(level) + yOf(townHeight(seaX))) / 2 + 4);
+        // Labels name their precise reference lines, not the entire hypothetical blue area.
+        label(ctx, "Sjø", 14, normalY - 9);
+        leader(ctx, 18, normalY - 6, 18, normalY - 1);
+        const scenarioLabelY = w < 400 ? Math.min(scenarioY - 10, top + 75) : scenarioY - 10;
+        label(ctx, "Tenkt vannivå", 14, scenarioLabelY);
+        leader(ctx, 18, scenarioLabelY + 4, 18, scenarioY - 2);
         const included = sites(panel === 1).filter((b) => b.included);
         const widths = Object.fromEntries(included.map((b) => [b.name, textWidth(ctx, b.name)]));
         const glyphs = townGlyphLayout(w, ph, level, included, widths);
@@ -133,7 +158,7 @@ export function ModelRisk() {
       index="M7"
       title="Fare, eksponering og sårbarhet"
       question="Hvilket ledd endrer tiltaket når det samme scenariet sammenlignes før og etter?"
-      assume="Terreng, bygg og to vannivåer er oppdiktet. Vannet fylles statisk bare fra sjøen gjennom sammenhengende lave områder. Dette er ikke bølgedynamikk eller en beregning av oppskylling. Ingen sannsynlighet, sårbarhetsgrad eller risikoprosent beregnes."
+      assume="Terreng, bygg og to scenarionivåer er oppdiktet. Helblå sjø har en fast normalhavflate; valgt tenkt vannivå vises separat med lys skravur og stiplet grense. Vannet fylles statisk bare fra sjøen gjennom sammenhengende lave områder. Dette er ikke bølgedynamikk eller en beregning av oppskylling. Ingen sannsynlighet, sårbarhetsgrad eller risikoprosent beregnes."
       conclusion={explanation[act]}
     >
       <div className="overflow-hidden rounded-2xl border border-line bg-card">
@@ -149,7 +174,7 @@ export function ModelRisk() {
         <FigureNote>
           Tenkt terreng, skjematisk og ikke i målestokk. Terrenghøyder, bygg og vannflate har ulike
           visuelle skalaer. Ingen steder er avbildet. Byggene har direkte etiketter med korte
-          ledelinjer. På smale skjermer zoomes terrengutsnittet rundt byggene. Alle bygg står på sine uendrede steder i profilen; etikettene står på land med linjer til byggestedene.
+          ledelinjer. På smale skjermer zoomes terrengutsnittet rundt byggene. Alle bygg står på sine uendrede steder i profilen; etikettene står på land med linjer til byggestedene. Helblått viser normal sjø. Lys skravur og stiplet grense viser tenkt vannivå bare der sjøen har forbindelse.
         </FigureNote>
       </div>
       <p id="m7-avgrensning" className="text-sm text-ink">

@@ -32,6 +32,12 @@ export const WARNING_STAGES = [
     mayUseWater: true,
   },
 ] as const;
+export const SKRED_WARNING_STAGES = [
+  { title: "Skred setter vann i bevegelse", detail: "Kan mangle seismisk varsel" },
+  { title: "Mulig lokalt varsel", detail: "Lokalt varsel er ikke garantert" },
+  { title: "Eventuelle målinger", detail: "Et manglende signal avkrefter ikke" },
+  { title: "Mer kunnskap hvis data kommer", detail: "Flere data, fortsatt usikkerhet" },
+] as const;
 export function ModelWarning() {
   const [source, setSource] = useState<Source>("skjelv");
   const [playing, setPlaying] = useState(false),
@@ -51,15 +57,7 @@ export function ModelWarning() {
       return false;
     }
   };
-  const stages =
-    source === "skjelv"
-      ? WARNING_STAGES
-      : [
-          { title: "Skred setter vann i bevegelse", detail: "Kan mangle seismisk varsel" },
-          { title: "Lokalt varsel er ikke garantert", detail: "Kort tid nær kilden" },
-          { title: "Eventuelle målinger", detail: "Et manglende signal avkrefter ikke" },
-          { title: "Mer kunnskap hvis data kommer", detail: "Ingen garanti for tid til handling" },
-        ];
+  const stages = source === "skjelv" ? WARNING_STAGES : SKRED_WARNING_STAGES;
   useSimLoop(
     canvasRef,
     playing,
@@ -100,7 +98,7 @@ export function ModelWarning() {
   return (
     <Lab
       id="m6"
-      status={warningStatus(source, step, playing, WARNING_STAGES[step].title)}
+      status={warningStatus(source, step, `${stages[step].title}. ${stages[step].detail}`)}
       index="M6"
       title="Varslingskjeden og dens grenser"
       question="Må første varsel vente på at bølgen er målt?"
@@ -118,14 +116,14 @@ export function ModelWarning() {
           ref={canvasRef}
           role="img"
           aria-describedby="m6-beskrivelse m6-naturlige-tegn"
-          aria-label={`${source === "skjelv" ? "Seismisk vurdering, foreløpig varsel, senere vannmålinger og oppdatert varsel" : "Skred kan mangle seismisk varsel"}. Framhevet trinn: ${step + 1}. Ingen tids- eller trygghetsgaranti.`}
+          aria-label={`${source === "skjelv" ? "Seismisk vurdering, foreløpig varsel, senere vannmålinger og oppdatert varsel" : "Skred kan mangle seismisk varsel"}. Framhevet trinn: ${step + 1}.`}
           className="h-[380px] w-full"
         />
       </div>
       <div id="m6-beskrivelse">
         <FigureNote>
           Skjematisk rekkefølge, ikke i målestokk i tid. Bøye og kystmåler er mulige datakilder, ikke
-          en garanti for at data kommer før bølgen.
+          en garanti for at data kommer før bølgen. Ingen trygghetsgaranti.
         </FigureNote>
       </div>
       <p id="m6-naturlige-tegn" className="rounded-xl border border-line bg-paper p-3 text-sm text-ink">

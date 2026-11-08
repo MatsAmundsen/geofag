@@ -11,6 +11,8 @@ import {
   fjordSurface,
   fjordSlideLabel,
   townGlyphLayout,
+  townWaterLayers,
+  TOWN_NORMAL_SEA_LEVEL,
   fjordStatus,
   riskStatus,
   warningStatus,
@@ -43,7 +45,7 @@ import {
   waterNeighbours,
   type GeoGrid,
 } from "./sim/oceanmap";
-import { ModelWarning, WARNING_STAGES } from "./m6-warning";
+import { ModelWarning, WARNING_STAGES, SKRED_WARNING_STAGES } from "./m6-warning";
 import { ModelRisk, TOWN_SITES } from "./m7-risk";
 import { nb } from "./util";
 import {
@@ -664,8 +666,8 @@ test("M7 responsive viewport preserves exact terrain/site mapping and puts recog
           assert.ok(!(g.x > h.box.x - 1 && g.x < h.box.x + h.box.width + 1 &&
             g.y < h.box.y + h.box.height + 1 && g.box.y > h.box.y - 1));
       }
-      const seaX = view.from + 0.08 * view.span;
-      assert.ok(townHeight(seaX) < level, "Sjø must remain in the actually visible water column after zoom");
+      const seaX = townSiteX(18, width);
+      assert.ok(townHeight(seaX) < TOWN_NORMAL_SEA_LEVEL, "Sjø anchor must identify the normal sea, not the scenario surface");
     }
   }
 });
@@ -686,9 +688,9 @@ test("M4–M7 status change semantics announce phases/manual steps/pause, never 
     const levels = id === "india" ? [3600,7200,10800] : [7200,14400,28800,43200];
     for (const t of levels) assert.notEqual(oceanStatus(id, t - 1, true), oceanStatus(id, t, true));
   }
-  assert.notEqual(warningStatus("skjelv", 0, true, WARNING_STAGES[0].title), warningStatus("skjelv", 1, true, WARNING_STAGES[1].title));
-  assert.notEqual(warningStatus("skjelv", 1, true, WARNING_STAGES[1].title), warningStatus("skjelv", 1, false, WARNING_STAGES[1].title));
-  assert.notEqual(warningStatus("skjelv", 0, false, WARNING_STAGES[0].title), warningStatus("skred", 0, false, WARNING_STAGES[0].title));
+  assert.notEqual(warningStatus("skjelv", 0, WARNING_STAGES[0].title), warningStatus("skjelv", 1, WARNING_STAGES[1].title));
+  assert.equal(warningStatus("skjelv", 1, WARNING_STAGES[1].title), warningStatus("skjelv", 1, WARNING_STAGES[1].title), "M6 phase text is independent of pause/play");
+  assert.notEqual(warningStatus("skjelv", 0, WARNING_STAGES[0].title), warningStatus("skred", 0, SKRED_WARNING_STAGES[0].title));
   assert.equal(riskStatus("hoy", "ingen", 3, 3), riskStatus("hoy", "ingen", 3, 3));
   assert.notEqual(riskStatus("hoy", "ingen", 3, 3), riskStatus("hoy", "overvak", 3, 3));
   assert.notEqual(riskStatus("hoy", "ingen", 3, 3), riskStatus("lav", "ingen", 0, 0));
@@ -707,4 +709,84 @@ test("M5 Myanmar stub is omitted only in display; closing the 1 h Sumatra ring w
   assert.deepEqual(o.times, times); assert.deepEqual(o.land, land);
   const note = fjordSlideLabel(2.6, 992, 400, 94);
   assert.ok(note.anchor.y - 3 - (note.baseline + 4) >= 12, "deposit leader must be visibly longer than a small tick");
+});
+
+
+test("M7 normal sea is fixed and separate from sea-connected hypothetical water at both selected levels", () => {
+  const low = townWaterLayers(0.16), high = townWaterLayers(0.27);
+  assert.equal(TOWN_NORMAL_SEA_LEVEL, 0);
+  assert.equal(low.normal.surface, TOWN_NORMAL_SEA_LEVEL);
+  assert.equal(high.normal.surface, TOWN_NORMAL_SEA_LEVEL);
+  assert.deepEqual(low.normal.wet, high.normal.wet);
+  assert.deepEqual(low.normal.runs, high.normal.runs);
+  assert.deepEqual(low.scenario.wet, townScenario(0.16).wet);
+  assert.deepEqual(high.scenario.wet, townScenario(0.27).wet);
+  assert.ok(high.scenario.wet.reduce((a, b) => a + b, 0) > low.scenario.wet.reduce((a, b) => a + b, 0));
+  for (const layers of [low, high]) {
+    for (const layer of [layers.normal, layers.scenario]) for (const run of layer.runs) {
+      assert.ok(run.from >= 0 && run.to <= 1 && run.from < run.to);
+      for (let k = run.first; k <= run.last; k++) {
+        assert.equal(layer.wet[k], 1);
+        assert.ok(layers.heights[k] <= layer.surface);
+      }
+      const interpolate = (x: number) => {
+        const q = x * (TOWN_N - 1), k = Math.min(TOWN_N - 2, Math.floor(q));
+        return layers.heights[k] + (layers.heights[k + 1] - layers.heights[k]) * (q - k);
+      };
+      if (run.to < 1) assert.ok(Math.abs(interpolate(run.to) - layer.surface) < 1e-12, "line must end naturally on the terrain");
+    }
+    for (const site of [...TOWN_SITES, {name: "Skole", x: 0.73}]) {
+      const k = Math.round(site.x * (TOWN_N - 1));
+      assert.ok(townHeight(site.x) > TOWN_NORMAL_SEA_LEVEL, "every physical building site starts on normal dry land");
+      assert.equal(layers.normal.wet[k], 0, "buildings must never be in the permanent blue sea");
+      const hypotheticalContact = layers.scenario.runs.some((run) => site.x >= run.from && site.x <= run.to) && townHeight(site.x) <= layers.scenario.surface;
+      assert.equal(hypotheticalContact, Boolean(layers.scenario.wet[k]));
+    }
+  }
+  const component = readFileSync(new URL("./m7-risk.tsx", import.meta.url), "utf8");
+  assert.match(component, /for \(const run of water.normal.runs\)/);
+  assert.match(component, /for \(const run of water.scenario.runs\)/);
+  assert.match(component, /normalY = yOf\(TOWN_NORMAL_SEA_LEVEL\)/);
+  assert.match(component, /ctx.rect\(left, scenarioY, right - left, normalY - scenarioY\);\s*ctx.clip\(\)/);
+  assert.match(component, /smoothPath\(ctx, bed.slice\(\).reverse\(\), false\);\s*ctx.closePath\(\);\s*ctx.clip\(\)/);
+  assert.match(component, /ctx.setLineDash\(\[6, 4\]\)/);
+  assert.match(component, /label\(ctx, "Tenkt vannivå"/);
+});
+
+test("M7 neither normal nor hypothetical layer seeds an isolated landward pool", () => {
+  const heights = [-0.4, -0.1, 0.5, -0.2, -0.3, 0.6];
+  const blocked = townWaterLayers(0.3, heights);
+  for (const layer of [blocked.normal, blocked.scenario]) {
+    assert.deepEqual([...layer.wet], [1, 1, 0, 0, 0, 0]);
+    for (const k of [3, 4]) {
+      assert.ok(heights[k] < layer.surface, "fixture has low but disconnected terrain");
+      assert.ok(!layer.runs.some((r) => k / (heights.length - 1) >= r.from && k / (heights.length - 1) <= r.to));
+    }
+  }
+  const overtopped = townWaterLayers(0.55, heights);
+  assert.equal(overtopped.scenario.wet[3], 1, "pool may fill only after a continuous connection exists");
+  assert.equal(overtopped.normal.wet[3], 0, "normal sea must not change with the chosen scenario");
+  const zero = townWaterLayers(TOWN_NORMAL_SEA_LEVEL, heights);
+  assert.deepEqual(zero.normal.wet, zero.scenario.wet);
+});
+
+test("M6 caveat is a once-described static text, and landslide phases have distinct accurate explanations", () => {
+  const html = renderToStaticMarkup(createElement(ModelWarning));
+  assert.equal((html.match(/Ingen trygghetsgaranti\./g) ?? []).length, 1);
+  assert.match(html, /id="m6-beskrivelse"/);
+  assert.match(html, /aria-describedby="m6-beskrivelse m6-naturlige-tegn"/);
+  const live = html.match(/<p[^>]*id="m6-status"[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? "";
+  assert.doesNotMatch(live, /Ingen trygghetsgaranti/);
+  const stages = SKRED_WARNING_STAGES.map((stage, step) =>
+    warningStatus("skred", step, `${stage.title}. ${stage.detail}`));
+  assert.equal(new Set(stages).size, 4);
+  assert.match(stages[0], /Skred setter vann i bevegelse/);
+  assert.match(stages[0], /Kan mangle seismisk varsel/);
+  assert.match(stages[1], /Mulig lokalt varsel/);
+  assert.match(stages[1], /Lokalt varsel er ikke garantert/);
+  for (const source of ["skjelv", "skred"] as const)
+    for (const [step, stage] of (source === "skred" ? SKRED_WARNING_STAGES : WARNING_STAGES).entries())
+      assert.doesNotMatch(warningStatus(source, step, `${stage.title}. ${stage.detail}`), /Ingen trygghetsgaranti/);
+  const component = readFileSync(new URL("./m6-warning.tsx", import.meta.url), "utf8");
+  assert.match(component, /warningStatus\(source, step, `\$\{stages\[step\].title\}. \$\{stages\[step\].detail\}`\)/);
 });
