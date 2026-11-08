@@ -22,7 +22,8 @@ export function stepLinear(s: Linear1D, dtReq: number, source?: Float64Array) {
   const n = eta.length;
   const g = G;
   let cmax = 1;
-  for (let i = 0; i < n; i++) if (d[i] > cmax) cmax = Math.sqrt(g * d[i]);
+  // Største bølgefart i hele domenet styrer tidssteget (CFL).
+  for (let i = 0; i < n; i++) cmax = Math.max(cmax, Math.sqrt(g * Math.max(0, d[i])));
   const dt = Math.min(dtReq, (0.45 * dx) / cmax);
   for (let i = 1; i < n; i++) {
     if (d[i] < 1 || d[i - 1] < 1) {
@@ -46,13 +47,20 @@ export function stepLinear(s: Linear1D, dtReq: number, source?: Float64Array) {
   return dt;
 }
 
+/** Største stabile tidssteg for rutenettet (CFL 0,45). */
+export function linearDtMax(s: Linear1D) {
+  let cmax = 1;
+  for (let i = 0; i < s.d.length; i++) cmax = Math.max(cmax, Math.sqrt(G * Math.max(0, s.d[i])));
+  return (0.45 * s.dx) / cmax;
+}
+
+/**
+ * Går fram `dt` sekunder med like lange delsteg. Like delsteg er viktig: fram-og-tilbake-skjemaet
+ * blir ustabilt hvis et kort reststeg blandes inn mellom de vanlige stegene.
+ */
 export function advanceLinear(s: Linear1D, dt: number, source?: Float64Array) {
-  let left = dt;
-  let guard = 0;
-  while (left > 1e-4 && guard < 4000) {
-    const used = stepLinear(s, left, source);
-    if (!(used > 0)) break;
-    left -= used;
-    guard++;
-  }
+  if (!(dt > 0)) return;
+  const n = Math.max(1, Math.ceil(dt / linearDtMax(s) - 1e-9));
+  const sub = dt / n;
+  for (let k = 0; k < n; k++) stepLinear(s, sub, source);
 }

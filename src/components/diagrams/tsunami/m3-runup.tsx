@@ -1,76 +1,76 @@
 import { useEffect, useRef, useState } from "react";
-import { Choice, Lab, Readouts, Slider, Transport } from "./lab";
-import { clearPaper, fitCanvas } from "./draw";
-import { advance, column, fillStill, type Column } from "./sim/swe";
+import { Choice, FigureNote, Lab, Readouts, Slider, Transport } from "./lab";
+import { nb, roundFactor } from "./util";
+import { clearPaper, fitCanvas, useSimLoop } from "./draw";
+import { advance as advanceSWE, column, fillStill, type Column } from "./sim/swe";
+import { beachElevation } from "./sim/profiles";
+import { label, leader, skyTo, smoothPath, type Pt } from "./paint";
 import { ink } from "./sim/palette";
 
-const N = 520;
-const L = 9000;
+const N = 640;
+const L = 16_000;
+const DX = L / N;
+const SHORE = 10_000;
+const OFFSHORE = 30;
+const VIEW0 = 3_000;
+const VIEW1 = 12_500;
+const GAUGE = 6_000;
+const HOUSE = SHORE + 120;
+const DT_FRAME = 2;
+const T_END = 20 * 60;
+const WET = 0.03;
 
 type Beach = "slak" | "bratt";
-type Lead = "topp" | "dal";
+type Lead = "dal" | "topp";
+type Focus = "alle" | "1" | "2" | "3" | "4";
+
+const SLOPE: Record<Beach, number> = { slak: 1 / 60, bratt: 1 / 15 };
+const cellOf = (x: number) => Math.min(N - 1, Math.max(0, Math.floor(x / DX)));
 
 export function ModelRunup() {
   const [beach, setBeach] = useState<Beach>("slak");
   const [lead, setLead] = useState<Lead>("dal");
-  const [amp, setAmp] = useState(1.4);
+  const [amp, setAmp] = useState(1.5);
+  const [focus, setFocus] = useState<Focus>("alle");
   const [playing, setPlaying] = useState(false);
-  const [stats, setStats] = useState({
-    wave: 0,
-    runup: 0,
-    depth: 0,
-    reach: 0,
-    minutes: 0,
-    crests: 0,
-  });
+  const [, setTick] = useState(0);
+  const [ve, setVe] = useState("1");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sim = useRef<Column>(column(N));
+  const maxSurf = useRef(new Float64Array(N));
   const time = useRef(0);
-  const play = useRef(false);
-  const series = useRef<number[]>([]);
-  const maxRun = useRef(0);
-  const maxReach = useRef(0);
-  const gaugeMax = useRef(0);
-  const gaugeMin = useRef(0);
-  const crestCount = useRef(0);
-  const prevSign = useRef(0);
-  const params = useRef({ beach, lead, amp });
-  params.current = { beach, lead, amp };
-  play.current = playing;
+  const m = useRef({ gMax: 0, gMin: 0, limit: -1, house: 0, first: 0 });
 
-  const slope = () => (params.current.beach === "bratt" ? 1 / 18 : 1 / 70);
+  const shoreCell = () => {
+    const c = sim.current;
+    for (let i = 0; i < N; i++) if (c.b[i] >= 0) return i;
+    return N - 1;
+  };
 
   const reset = () => {
     const c = sim.current;
-    const dx = L / N;
-    const m = slope();
-    for (let i = 0; i < N; i++) {
-      const x = (i + 0.5) * dx;
-      c.b[i] = x < 2800 ? -28 : -28 + (x - 2800) * m;
-    }
+    const slope = SLOPE[beach];
+    for (let i = 0; i < N; i++) c.b[i] = beachElevation((i + 0.5) * DX, SHORE, OFFSHORE, slope);
     fillStill(c, 0);
-    const sign = params.current.lead === "dal" ? -1 : 1;
-    const A = params.current.amp;
-    const cc = Math.sqrt(9.81 * 28);
+    const sigma = 900;
+    const x0 = SHORE - 5000;
+    const x1 = x0 + 1800;
+    const cc = Math.sqrt(9.81 * OFFSHORE);
     for (let i = 0; i < N; i++) {
-      const x = (i + 0.5) * dx;
-      if (c.b[i] > -4) continue;
-      const e1 = Math.exp(-Math.pow((x - 900) / 280, 2));
-      const e2 = 0.85 * Math.exp(-Math.pow((x - 900 - 700) / 280, 2));
-      const e = sign * A * (e1 - 0.15 * e2) + (sign > 0 ? A * e2 * 0.7 : 0);
+      const x = (i + 0.5) * DX;
+      if (c.b[i] > -OFFSHORE + 0.5) continue;
+      const near = Math.exp(-Math.pow((x - x1) / sigma, 2));
+      const far = Math.exp(-Math.pow((x - x0) / sigma, 2));
+      // Den fremste delen (nærmest land) kommer først.
+      const e = lead === "dal" ? amp * (far - 0.6 * near) : amp * (near - 0.6 * far);
       c.h[i] += e;
-      c.hu[i] += e * cc;
+      c.hu[i] = e * cc;
     }
+    maxSurf.current.fill(-Infinity);
     time.current = 0;
-    series.current = [];
-    maxRun.current = 0;
-    maxReach.current = 0;
-    gaugeMax.current = 0;
-    gaugeMin.current = 0;
-    crestCount.current = 0;
-    prevSign.current = 0;
+    m.current = { gMax: 0, gMin: 0, limit: -1, house: 0, first: 0 };
     setPlaying(false);
-    setStats({ wave: 0, runup: 0, depth: 0, reach: 0, minutes: 0, crests: 0 });
+    setTick((t) => t + 1);
   };
 
   useEffect(() => {
@@ -78,232 +78,297 @@ export function ModelRunup() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [beach, lead, amp]);
 
-  useEffect(() => {
-    const dx = L / N;
-    let frame = 0;
-    let acc = 0;
-    const loop = () => {
-      frame = requestAnimationFrame(loop);
-      const c = sim.current;
-      if (play.current) {
-        advance(c, dx, 0.35, 0.02);
-        time.current += 0.35;
-        let shore = 0;
-        for (let i = 0; i < N; i++) if (c.b[i] >= 0) {
-          shore = i;
-          break;
-        }
-        let gauge = 0;
-        for (let i = 0; i < N; i++) if (c.b[i] > -18 && c.b[i] < -12) gauge = i;
-        const ge = c.b[gauge] + c.h[gauge];
-        gaugeMax.current = Math.max(gaugeMax.current, ge);
-        gaugeMin.current = Math.min(gaugeMin.current, ge);
-        if (ge > 0.15 && prevSign.current <= 0) crestCount.current += 1;
-        prevSign.current = ge > 0.05 ? 1 : ge < -0.05 ? -1 : prevSign.current;
-        series.current.push(ge);
-        if (series.current.length > 360) series.current.shift();
-        const inland = Math.min(N - 1, shore + Math.round(80 / dx));
-        for (let i = shore; i < N; i++) {
-          if (c.h[i] > 0.08) {
-            maxRun.current = Math.max(maxRun.current, c.b[i] + c.h[i]);
-            maxReach.current = Math.max(maxReach.current, (i - shore) * dx);
-          }
-        }
-        acc++;
-        if (acc % 8 === 0) {
-          setStats({
-            wave: gaugeMax.current - gaugeMin.current,
-            runup: maxRun.current,
-            depth: c.b[inland] > 0 ? c.h[inland] : 0,
-            reach: maxReach.current,
-            minutes: time.current / 60,
-            crests: crestCount.current,
-          });
+  const advance = (seconds: number) => {
+    const c = sim.current;
+    const shore = shoreCell();
+    const g = cellOf(GAUGE);
+    const hc = cellOf(HOUSE);
+    let left = seconds;
+    while (left > 0 && time.current < T_END) {
+      const dt = Math.min(DT_FRAME, left);
+      advanceSWE(c, DX, dt, 0.025);
+      time.current += dt;
+      left -= dt;
+      const eta = c.b[g] + c.h[g];
+      m.current.gMax = Math.max(m.current.gMax, eta);
+      m.current.gMin = Math.min(m.current.gMin, eta);
+      const se = c.h[shore - 1] + c.b[shore - 1];
+      if (m.current.first === 0 && Math.abs(se) > 0.1) m.current.first = Math.sign(se);
+      // Inntrenging: sammenhengende vått område fra strandlinja og innover.
+      let i = shore;
+      while (i < N && c.h[i] > WET) i++;
+      if (i - 1 > m.current.limit && i > shore) m.current.limit = i - 1;
+      if (c.b[hc] >= 0 && c.h[hc] > WET && i > hc) m.current.house = Math.max(m.current.house, c.h[hc]);
+      for (let k = 0; k < N; k++) {
+        if (c.h[k] > WET) {
+          const s = c.b[k] + c.h[k];
+          if (s > maxSurf.current[k]) maxSurf.current[k] = s;
         }
       }
-      draw();
-    };
-    function draw() {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const fit = fitCanvas(canvas);
-      if (!fit) return;
-      const { ctx, w, h } = fit;
-      clearPaper(ctx, w, h);
-      const c = sim.current;
-      const pad = 16;
-      const ground = h - 36;
-      const sea = h * 0.42;
-      const v = (h * 0.55) / 40;
-      const xOf = (i: number) => pad + (i / (N - 1)) * (w - pad * 2);
-      const yBed = (b: number) => sea - b * v;
-      const ySurf = (b: number, hh: number) => sea - (b + hh) * v;
+    }
+    return time.current < T_END;
+  };
 
-      ctx.beginPath();
-      ctx.moveTo(xOf(0), ySurf(c.b[0], c.h[0]));
-      for (let i = 1; i < N; i++) if (c.h[i] > 0.02 || c.b[i] < 0) ctx.lineTo(xOf(i), ySurf(c.b[i], c.h[i]));
-      ctx.lineTo(xOf(N - 1), ground);
-      ctx.lineTo(xOf(0), ground);
-      ctx.closePath();
-      const g = ctx.createLinearGradient(0, sea - 40, 0, ground);
-      g.addColorStop(0, "#8ec5d4");
-      g.addColorStop(1, ink.sea);
+  const frames = useRef(0);
+  const { reduce } = useSimLoop(
+    canvasRef,
+    playing,
+    (n) => {
+      const more = advance(DT_FRAME * n);
+      frames.current += n;
+      if (frames.current >= 10 || !more) {
+        frames.current = 0;
+        setTick((t) => t + 1);
+      }
+      if (!more) setPlaying(false);
+      return more;
+    },
+    draw,
+  );
+
+  const c0 = sim.current;
+  const shore = shoreCell();
+  const lim = m.current.limit;
+  const reached = lim >= shore;
+  const runup = reached ? Math.max(0, c0.b[lim]) : 0;
+  const reach = reached ? (lim + 1) * DX - SHORE : 0;
+  const waveH = m.current.gMax - m.current.gMin;
+  const houseDepth = m.current.house;
+
+  function draw() {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const fit = fitCanvas(canvas);
+    if (!fit) return;
+    const { ctx, w, h } = fit;
+    clearPaper(ctx, w, h);
+    const c = sim.current;
+    const narrow = w < 560;
+    const zTop = 22;
+    const zBot = -OFFSHORE - 2;
+    const top = 36;
+    const bottom = h - 8;
+    const pxM = (bottom - top) / (zTop - zBot);
+    const xOf = (x: number) => ((x - VIEW0) / (VIEW1 - VIEW0)) * w;
+    const yZ = (z: number) => top + (zTop - z) * pxM;
+    const pxMH = w / (VIEW1 - VIEW0);
+    const veS = roundFactor(pxM / pxMH);
+    if (veS !== ve) setVe(veS);
+    const sea = yZ(0);
+
+    skyTo(ctx, w, sea);
+    const i0 = cellOf(VIEW0);
+    const i1 = cellOf(VIEW1);
+
+    // Vann: bare der det faktisk står vann.
+    ctx.fillStyle = ink.seaLite;
+    for (let i = i0; i <= i1; i++) {
+      if (c.h[i] <= WET) continue;
+      const x = xOf(i * DX);
+      const x2 = xOf((i + 1) * DX) + 0.6;
+      const ys = yZ(c.b[i] + c.h[i]);
+      const yb = yZ(c.b[i]);
+      const g = ctx.createLinearGradient(0, ys, 0, yZ(-OFFSHORE));
+      g.addColorStop(0, ink.waterTop);
+      g.addColorStop(0.15, ink.seaLite);
+      g.addColorStop(1, ink.waterMid);
       ctx.fillStyle = g;
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(xOf(0), ground);
-      for (let i = 0; i < N; i++) ctx.lineTo(xOf(i), Math.min(ground, yBed(c.b[i])));
-      ctx.lineTo(xOf(N - 1), ground);
-      ctx.closePath();
-      ctx.fillStyle = ink.land;
-      ctx.fill();
-      ctx.strokeStyle = ink.landDark;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-
-      ctx.setLineDash([4, 4]);
-      ctx.strokeStyle = ink.muted;
-      ctx.beginPath();
-      ctx.moveTo(pad, sea);
-      ctx.lineTo(w - pad, sea);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      ctx.strokeStyle = ink.foam;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      let started = false;
-      for (let i = 0; i < N; i++) {
-        if (c.h[i] < 0.02 && c.b[i] > 0) {
-          started = false;
-          continue;
-        }
-        const x = xOf(i);
-        const y = ySurf(c.b[i], c.h[i]);
-        if (!started) {
-          ctx.moveTo(x, y);
-          started = true;
-        } else ctx.lineTo(x, y);
+      ctx.fillRect(x, ys, x2 - x, Math.max(0, yb - ys));
+    }
+    // Vannflaten som en glatt linje.
+    ctx.strokeStyle = ink.sea;
+    ctx.lineWidth = 1.6;
+    let run: Pt[] = [];
+    const flush = () => {
+      if (run.length > 1) {
+        ctx.beginPath();
+        smoothPath(ctx, run);
+        ctx.stroke();
       }
-      ctx.stroke();
+      run = [];
+    };
+    for (let i = i0; i <= i1; i++) {
+      if (c.h[i] > WET) run.push({ x: xOf((i + 0.5) * DX), y: yZ(c.b[i] + c.h[i]) });
+      else flush();
+    }
+    flush();
 
-      let shoreI = 0;
-      for (let i = 0; i < N; i++) if (c.b[i] >= 0) {
-        shoreI = i;
-        break;
-      }
-      let gaugeI = 0;
-      for (let i = 0; i < N; i++) if (c.b[i] > -18 && c.b[i] < -12) gaugeI = i;
-      const inlandI = Math.min(N - 1, shoreI + Math.round(80 / (L / N)));
+    // Terreng.
+    const ground: Pt[] = [];
+    for (let i = i0; i <= i1; i++) ground.push({ x: xOf((i + 0.5) * DX), y: yZ(c.b[i]) });
+    ctx.beginPath();
+    ctx.moveTo(ground[0].x, bottom);
+    smoothPath(ctx, ground, false);
+    ctx.lineTo(ground[ground.length - 1].x, bottom);
+    ctx.closePath();
+    const gg = ctx.createLinearGradient(0, yZ(15), 0, bottom);
+    gg.addColorStop(0, ink.land);
+    gg.addColorStop(1, ink.landDark);
+    ctx.fillStyle = gg;
+    ctx.fill();
+    ctx.beginPath();
+    smoothPath(ctx, ground);
+    ctx.strokeStyle = ink.landDark;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // Høyeste nådde vannstand, stiplet rød.
+    ctx.setLineDash([2, 4]);
+    ctx.strokeStyle = ink.mark;
+    ctx.lineWidth = 1.3;
+    run = [];
+    for (let i = i0; i <= i1; i++) {
+      const v = maxSurf.current[i];
+      if (Number.isFinite(v) && v > 0.05) run.push({ x: xOf((i + 0.5) * DX), y: yZ(v) });
+      else flush();
+    }
+    if (run.length > 1) {
+      ctx.beginPath();
+      smoothPath(ctx, run);
+      ctx.stroke();
+    }
+    run = [];
+    ctx.setLineDash([]);
+
+    // Havnivå i ro, referanselinja for alle høydemål.
+    ctx.setLineDash([6, 4]);
+    ctx.strokeStyle = ink.text;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, sea);
+    ctx.lineTo(w, sea);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    label(ctx, "havnivå i ro", 6, sea - 8, { weight: "400" });
+
+    // Huset der vanndypet på land leses av.
+    const hb = c.b[cellOf(HOUSE)];
+    const hx = xOf(HOUSE);
+    const hy = yZ(hb);
+    ctx.fillStyle = ink.panel;
+    ctx.strokeStyle = ink.text;
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(hx - 8, hy);
+    ctx.lineTo(hx - 8, hy - 10);
+    ctx.lineTo(hx, hy - 17);
+    ctx.lineTo(hx + 8, hy - 10);
+    ctx.lineTo(hx + 8, hy);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    const show = (k: Focus) => focus === "alle" || focus === k;
+    const tag = (n: string, text: string, x: number, y: number, align: CanvasTextAlign = "left") => {
+      label(ctx, narrow ? n : `${n} ${text}`, x, y, { color: ink.mark, weight: "700", align });
+    };
+    const vArrow = (x: number, y1: number, y2: number) => {
       ctx.strokeStyle = ink.mark;
       ctx.fillStyle = ink.mark;
-      ctx.lineWidth = 1.2;
-      ctx.font = "12px Source Sans 3, sans-serif";
-      if (gaugeMax.current - gaugeMin.current > 0.05) {
-        const x = xOf(gaugeI);
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x, y1);
+      ctx.lineTo(x, y2);
+      ctx.stroke();
+      for (const [y, d] of [
+        [y1, 1],
+        [y2, -1],
+      ] as const) {
         ctx.beginPath();
-        ctx.moveTo(x, ySurf(0, gaugeMax.current));
-        ctx.lineTo(x, ySurf(0, gaugeMin.current));
-        ctx.stroke();
-        ctx.fillText(`1  ${(gaugeMax.current - gaugeMin.current).toFixed(1)} m`, x + 6, ySurf(0, gaugeMax.current) - 4);
+        ctx.moveTo(x, y);
+        ctx.lineTo(x - 4, y + d * 7);
+        ctx.lineTo(x + 4, y + d * 7);
+        ctx.closePath();
+        ctx.fill();
       }
-      if (maxRun.current > 0.05) {
-        const y = sea - maxRun.current * v;
-        ctx.setLineDash([3, 3]);
+    };
+
+    // 1 Bølgehøyde ute i vannet: dal til topp ved måleren.
+    const gx = xOf(GAUGE);
+    ctx.strokeStyle = ink.text;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(gx, yZ(-OFFSHORE));
+    ctx.lineTo(gx, yZ(4));
+    ctx.stroke();
+    label(ctx, "måler", gx + 5, yZ(-OFFSHORE) - 8, { weight: "400", color: ink.panel, halo: "rgba(12,48,64,0.55)" });
+    if (show("1") && waveH > 0.05) {
+      vArrow(gx - 10, yZ(m.current.gMax), yZ(m.current.gMin));
+      tag("1", "bølgehøyde", gx - 16, yZ(m.current.gMax) - 10, "right");
+    }
+    if (reached) {
+      const lx = xOf((lim + 1) * DX);
+      const sx = xOf(SHORE);
+      // 2 Oppskylling: høyden over havnivå der vannet snudde.
+      if (show("2")) {
+        ctx.setLineDash([2, 3]);
+        ctx.strokeStyle = ink.mark;
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(xOf(shoreI), y);
-        ctx.lineTo(Math.min(w - pad, xOf(shoreI) + 180), y);
+        ctx.moveTo(lx, yZ(runup));
+        ctx.lineTo(Math.min(w - 4, lx + 30), yZ(runup));
         ctx.stroke();
         ctx.setLineDash([]);
-        ctx.fillText(`2 oppskylling ${maxRun.current.toFixed(1)} m`, xOf(shoreI) + 8, y - 4);
+        vArrow(Math.min(w - 8, lx + 24), sea, yZ(runup));
+        tag("2", "oppskylling", Math.min(w - 4, lx + 30), yZ(runup) - 10, narrow ? "right" : "left");
       }
-      if (c.h[inlandI] > 0.05 && c.b[inlandI] > 0) {
-        const x = xOf(inlandI);
-        ctx.beginPath();
-        ctx.moveTo(x, yBed(c.b[inlandI]));
-        ctx.lineTo(x, ySurf(c.b[inlandI], c.h[inlandI]));
-        ctx.stroke();
-        ctx.fillText(`3  ${c.h[inlandI].toFixed(1)} m`, x + 6, ySurf(c.b[inlandI], c.h[inlandI]) - 4);
-      }
-      if (maxReach.current > 2) {
-        const y = ground - 10;
-        const x2 = xOf(shoreI) + (maxReach.current / L) * (w - pad * 2);
-        ctx.beginPath();
-        ctx.moveTo(xOf(shoreI), y);
-        ctx.lineTo(x2, y);
-        ctx.stroke();
-        ctx.fillText(`4  ${maxReach.current.toFixed(0)} m inn`, xOf(shoreI) + 8, y - 4);
-      }
-      const hx = xOf(inlandI);
-      const hy = yBed(Math.max(0, c.b[inlandI]));
-      ctx.fillStyle = c.h[inlandI] > 0.3 ? ink.mark : ink.landDark;
-      ctx.beginPath();
-      ctx.moveTo(hx - 7, hy);
-      ctx.lineTo(hx, hy - 8);
-      ctx.lineTo(hx + 7, hy);
-      ctx.closePath();
-      ctx.fill();
-      ctx.fillRect(hx - 5, hy, 10, 8);
-
-      // sparkline of the offshore gauge
-      const ser = series.current;
-      if (ser.length > 2) {
+      // 4 Inntrenging: vannrett fra strandlinja.
+      if (show("4")) {
+        const y = sea + 26;
         ctx.strokeStyle = ink.mark;
-        ctx.lineWidth = 1.4;
+        ctx.fillStyle = ink.mark;
+        ctx.lineWidth = 2;
         ctx.beginPath();
-        const sw = 140;
-        const sh = 46;
-        const sx = w - pad - sw;
-        const sy = 12;
-        ctx.fillStyle = "#f7f3ea";
-        ctx.fillRect(sx - 4, sy - 4, sw + 8, sh + 8);
-        let mn = 0;
-        let mx = 0.2;
-        for (const v0 of ser) {
-          mn = Math.min(mn, v0);
-          mx = Math.max(mx, v0);
-        }
-        ser.forEach((v0, k) => {
-          const x = sx + (k / (ser.length - 1)) * sw;
-          const y = sy + sh - ((v0 - mn) / (mx - mn || 1)) * sh;
-          if (k === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        });
+        ctx.moveTo(sx, y);
+        ctx.lineTo(lx, y);
         ctx.stroke();
-        ctx.fillStyle = ink.muted;
-        ctx.font = "11px Source Sans 3, sans-serif";
-        ctx.fillText("Måler ute i vannet", sx, sy + sh + 18);
+        leader(ctx, sx, sea, sx, y + 6, ink.mark);
+        leader(ctx, lx, yZ(runup), lx, y + 6, ink.mark);
+        tag("4", "inntrenging", (sx + lx) / 2, y + 20, "center");
       }
-
-      ctx.fillStyle = ink.muted;
-      ctx.font = "12px Source Sans 3, sans-serif";
-      ctx.fillText("Stiplet linje er havnivå. Loddrett skala er meter, uten ekstra forstørring.", pad, 18);
-      ctx.fillStyle = ink.text;
-      ctx.fillText("havnivå", pad, sea - 6);
     }
-    frame = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(frame);
-  }, []);
+    // 3 Oversvømmelsesdybde ved huset: vann over bakken.
+    if (show("3") && houseDepth > 0.02) {
+      vArrow(hx + 16, hy, yZ(hb + houseDepth));
+      tag("3", "vanndyp", hx + 22, yZ(hb + houseDepth) - 8, narrow ? "center" : "left");
+    }
 
-  const beachLabel = beach === "bratt" ? "bratt strand, om lag 1:18" : "slak strand, om lag 1:70";
+    label(ctx, "Stiplet rød: høyeste vannstand så langt", w - 6, 22, {
+      align: "right",
+      color: ink.mark,
+      weight: "400",
+    });
+  }
+
+  const beachLabel = beach === "bratt" ? "den bratte kysten" : "den slake kysten";
+  const conclusion = !reached
+    ? m.current.first < 0
+      ? "Vannet trekker seg tilbake ved stranda før bølgetoppen kommer. Det betyr ikke at faren er over."
+      : `Bølgen har ikke nådd land ennå på ${beachLabel}. Trykk Start og se hvordan de fire målene dukker opp ett etter ett.`
+    : `På ${beachLabel} er bølgehøyden ute ${nb(waveH, 1)} m fra dal til topp. Vannet nådde ${nb(runup, 1)} m over havnivået og ${nb(reach)} m inn fra strandlinja. Ved huset sto vannet ${houseDepth > 0.02 ? `${nb(houseDepth, 1)} m over bakken` : "ikke over bakken"}. Samme bølge gir altså fire ulike tall.`;
 
   return (
     <Lab
       id="m3"
       index="M3"
-      title="Fire ulike høyder"
-      replaces="Erstatter den gamle M3, der tallene var tegnet inn på forhånd og ikke regnet ut."
-      question="Hvorfor er bølgehøyde, oppskylling, vanndyp på land og inntrenging fire forskjellige tall for samme bølge?"
-      assume="Ikke-lineær gruntvannslikning med litt bunnfriksjon (Manning 0,02). To bølger sendes inn fra 28 m dyp. Oppskylling er høyeste vannflate på land der vanndypet er over 8 cm. Dette er ett tverrsnitt, ikke et farekart, og ikke Tafjord."
-      conclusion={
-        stats.reach < 1
-          ? `På ${beachLabel} har bølgen ikke nådd land ennå. Se på måleren: en dal først er ikke det samme som at faren er over.`
-          : `Ute er bølgehøyden ${stats.wave.toFixed(1)} m fra dal til topp. Oppskyllingen er ${stats.runup.toFixed(1)} m, vanndypet 80 m inne er ${stats.depth.toFixed(1)} m, og vannet går ${stats.reach.toFixed(0)} m inn. På en slak strand blir inntrengingen lang selv om oppskyllingen ikke er den høyeste.`
-      }
+      title="Fire mål for samme bølge"
+      question="Hvorfor er bølgehøyde, oppskylling, oversvømmelsesdybde og inntrenging fire forskjellige tall for samme bølge?"
+      assume="Begrepsmodell langs én tenkt strand, ikke et bestemt sted. Ikke-lineær gruntvannslikning med litt friksjon mot bunnen. Bølgen er en lang bølge fra 30 m dyp, og den kan ikke brekke slik en vindbølge gjør. Alle høyder er målt fra havnivået i ro. Dette er ikke et farekart og gir ikke lokale flomnivåer."
+      conclusion={conclusion}
     >
-      <div className="overflow-hidden rounded-2xl border border-line bg-card">
-        <canvas ref={canvasRef} className="h-[400px] w-full" />
+      <div className="flex flex-col gap-2">
+        <div className="overflow-hidden rounded-2xl border border-line bg-card">
+          <canvas
+            ref={canvasRef}
+            role="img"
+            aria-label={`Snitt fra 30 m dyp inn over en strand og opp på land, med de fire målene merket med tall. ${conclusion}`}
+            className="h-[340px] w-full sm:h-[400px]"
+          />
+        </div>
+        <FigureNote>
+          Snitt på {nb((VIEW1 - VIEW0) / 1000, 1)} km. Høyden er forstørret ca. {ve} ganger, så stranda ser mye brattere ut
+          enn den er. Tallene i figuren svarer til tallene i boksene under.
+        </FigureNote>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         <Choice
@@ -316,7 +381,7 @@ export function ModelRunup() {
           onChange={setBeach}
         />
         <Choice
-          label="Hva kommer først"
+          label="Hva kommer først til land"
           value={lead}
           options={[
             { id: "dal", label: "Dalen" },
@@ -324,20 +389,45 @@ export function ModelRunup() {
           ]}
           onChange={setLead}
         />
-        <Slider label="Bølge ute" value={amp} min={0.6} max={2.4} step={0.1} unit="m" onChange={setAmp} />
+        <Slider label="Bølgetopp ute" value={amp} min={0.5} max={3} step={0.1} unit="m" onChange={setAmp} note="over havnivået i ro" />
       </div>
+      <Choice
+        label="Fremhev"
+        value={focus}
+        options={[
+          { id: "alle", label: "Alle" },
+          { id: "1", label: "1 Bølgehøyde" },
+          { id: "2", label: "2 Oppskylling" },
+          { id: "3", label: "3 Oversvømmelsesdybde" },
+          { id: "4", label: "4 Inntrenging" },
+        ]}
+        onChange={setFocus}
+      />
       <Transport
         playing={playing}
-        onToggle={() => setPlaying((p) => !p)}
+        onToggle={() => {
+          if (!playing && time.current >= T_END) reset();
+          setPlaying((p) => !p);
+        }}
         onReset={reset}
-        time={`${(stats.minutes * 60).toFixed(0)} s`}
+        onStep={() => {
+          setPlaying(false);
+          advance(30);
+          setTick((t) => t + 1);
+        }}
+        stepLabel="Fram 30 sekunder"
+        time={`Simulert tid ${nb(time.current / 60, 1)} min${reduce ? "" : " · 1 s avspilling ≈ 2 min"}`}
       />
       <Readouts
         items={[
-          { k: "1 Bølgehøyde ute", v: `${stats.wave.toFixed(2)} m`, hint: "dal til topp" },
-          { k: "2 Oppskylling", v: `${stats.runup.toFixed(2)} m`, hint: "over havnivå" },
-          { k: "3 Vanndyp, 80 m inne", v: `${stats.depth.toFixed(2)} m` },
-          { k: "4 Inntrenging", v: `${stats.reach.toFixed(0)} m`, hint: `${stats.crests} topper sett` },
+          { k: "1 Bølgehøyde", v: `${nb(waveH, 1)} m`, hint: "ute i vannet, fra dal til topp" },
+          { k: "2 Oppskylling", v: reached ? `${nb(runup, 1)} m` : "–", hint: "høyde over havnivået der vannet snudde" },
+          {
+            k: "3 Oversvømmelsesdybde",
+            v: houseDepth > 0.02 ? `${nb(houseDepth, 1)} m` : "0 m",
+            hint: `største vanndyp over bakken ved huset, ${nb(HOUSE - SHORE)} m inne`,
+          },
+          { k: "4 Inntrenging", v: reached ? `${nb(reach)} m` : "–", hint: "vannrett fra strandlinja" },
         ]}
       />
     </Lab>

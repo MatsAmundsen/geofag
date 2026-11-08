@@ -210,8 +210,19 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
   {
     widgets: ["TsunamiM1"],
-    // Rett etter kildeforklaringen, før «Magnituden alene er ikke nok».
+    // Rett etter kildeforklaringen og innledningen til M1, før «Magnituden alene er ikke nok».
+    afterParagraph: "Modellen viser en idealisert kilde, ikke en rekonstruksjon",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    // Reserve for en eldre tekst uten innledningen til M1.
+    widgets: ["TsunamiM1"],
     afterParagraph: "har alle noe å si for hvor stor tsunamien kan bli",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM1"],
+    beforeHeading: "Fra dypt hav til grunn kyst",
     require: "nesten usynlig bølge ute på havet",
   },
   {
@@ -221,8 +232,19 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
   {
     widgets: ["TsunamiM3"],
-    // Rett etter de fire måledefinisjonene, før tallene og eksemplene.
+    // Rett etter de fire måledefinisjonene og innledningen til M3, før tallene og eksemplene.
+    afterParagraph: "Modellen er en begrepsmodell og gir ikke lokale flomnivåer.",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    // Reserve for en eldre tekst uten innledningen til M3.
+    widgets: ["TsunamiM3"],
     afterParagraph: "er hvor langt inn over land vannet går, målt vannrett.",
+    require: "nesten usynlig bølge ute på havet",
+  },
+  {
+    widgets: ["TsunamiM3"],
+    beforeHeading: "Norske tsunamier",
     require: "nesten usynlig bølge ute på havet",
   },
   {

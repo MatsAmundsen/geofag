@@ -50,9 +50,13 @@ De fleste store tsunamier i verdenshavene henger sammen med en *subduksjonssone*
 
 Der platene henger fast, kan kanten av den øvre plata bli dratt ned og bøyd. Når låsen ryker, kan havbunnen løftes eller senkes brått. Vannet over følger med. Så søker vannflaten tilbake mot likevekt, og bølger brer seg utover (NOAA, u.å.-a). Hvor mye bunnen flytter seg, hvor stort område som flyttes, og hvor dypt vannet er ved kilden, har alle noe å si for hvor stor tsunamien kan bli (NOAA, u.å.-a).
 
+I modell M1 kan du følge hvordan heving og senkning av havbunnen flytter vannet og setter i gang bølger. Modellen viser en idealisert kilde, ikke en rekonstruksjon av et bestemt jordskjelv.
+
 ```widget
 TsunamiM1
 ```
+
+Legg merke til at det er forskyvningen av vannet som setter bølgen i gang. En N-form, med en topp på den ene siden og en dal på den andre, er ett mulig utgangspunkt. Havet trekker seg ikke alltid tilbake før vannet stiger.
 
 Magnituden alene er ikke nok. NOAA skriver at ikke alle jordskjelv lager tsunami. Skjelvet må være stort nok og nært nok havbunnen til å gi den vertikale bevegelsen som vanligvis setter en tsunami i gang (NOAA, u.å.-a). Et skjelv som hovedsakelig flytter berget sidelengs, løfter lite vann, selv om magnituden er høy. Et grunt skjelv med tydelig løft eller senkning av bunnen er en annen sak. Varigheten kan også si noe om hvor stort område som brast (NOAA, u.å.-a).
 
@@ -90,6 +94,8 @@ Når bølgen kommer inn på grunnere vann, går *bølgefronten* saktere, fordi f
 
 Havbunnens form kan også bøye bølgefronten. Det kalles brytning når ulike deler av fronten går med ulik fart. Bølgen kan reflekteres fra en bratt kyst og gå tilbake utover. Bukter, grunner og øyer gjør at samme bølge ikke ser lik ut noen kilometer lenger borte (NOAA, u.å.-c). En enkel formel for ett dyp forklarer ikke hele dette mønsteret.
 
+I modell M2 sammenligner du den samme lange bølgen på ulike dyp. Følg hvordan farten og bølgelengden avtar når vannet blir grunnere. Farten gjelder bølgefronten, ikke vannets strømning.
+
 ```widget
 TsunamiM2
 ```
@@ -103,6 +109,8 @@ SjekkTsunami2
 Tall fra en tsunami blir fort blandet sammen fordi ordet «høyde» brukes om flere ulike mål. De må holdes fra hverandre.
 
 *Bølgehøyde* ute i vannet er den loddrette avstanden fra bølgedal til bølgetopp der bølgen fortsatt er en bølge. *Oppskylling*, på engelsk run-up, er hvor høyt over havnivået vannet når opp på land på ett sted (NOAA, u.å.-c). *Oversvømmelsesdybde* er hvor dypt vannet står på et punkt på land. *Inntrenging* er hvor langt inn over land vannet går, målt vannrett.
+
+Bruk modell M3 til å skille de fire målene. Bølgehøyde måles ute i vannet, oppskylling over havnivået, oversvømmelsesdybde over bakken og inntrenging vannrett inn fra strandlinjen. Modellen er en begrepsmodell og gir ikke lokale flomnivåer.
 
 ```widget
 TsunamiM3
