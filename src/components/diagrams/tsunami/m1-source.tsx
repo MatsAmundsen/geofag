@@ -5,8 +5,9 @@ import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { seafloorUz, type FaultParams } from "./sim/fault";
 import { advanceLinear, makeLinear, type Linear1D } from "./sim/linear";
 import { subductionElevation } from "./sim/profiles";
-import { arrow, label, leader, paintRock, paintWaterColumn, skyTo, smoothPath, type Pt } from "./paint";
+import { arrow, paintRock, paintWaterColumn, skyTo, smoothPath, type Pt } from "./paint";
 import { ink } from "./sim/palette";
+import { LabelLayout } from "./place";
 
 /** Snittet er 680 km bredt og 25 km dypt. */
 const N = 420;
@@ -28,7 +29,13 @@ const PRESET: Record<Kind, { slip: number; dip: number; width: number; depth: nu
 
 const elevation = (x: number) => subductionElevation(x, L, TRENCH, COAST);
 
-function faultFor(kind: Kind, slip: number, dip: number, width: number, depth: number): FaultParams {
+function faultFor(
+  kind: Kind,
+  slip: number,
+  dip: number,
+  width: number,
+  depth: number,
+): FaultParams {
   const d = Math.max(depth, 0.5) * 1000;
   const tan = Math.tan((dip * Math.PI) / 180);
   // Bruddet ligger på plategrensa: øvre kant `depth` km under havbunnen ved grøfta.
@@ -331,45 +338,13 @@ export function ModelSource() {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Etiketter, få og korte.
+    // Etiketter, få og korte. Plasseres i prioritert rekkefølge uten å dekke hverandre.
     const big = narrow ? 14 : 15;
-    label(ctx, "havnivå i ro", 6, sea - 8, { color: ink.muted, weight: "400" });
-    label(ctx, "grøft", xOf(xT), yZ(zT) + 22, { align: "center", size: big });
-    if (!narrow) label(ctx, "sokkel", xOf(L * (COAST - 0.04)), sea + 22, { align: "center" });
-    label(ctx, "land", xOf(L * 0.9), yZ(elevation(L * 0.9)) - 10, { align: "center" });
-    label(ctx, "havbunnsplate", xOf(L * 0.1), yZ(elevation(L * 0.1)) + 42, { color: ink.panel, halo: "rgba(60,52,46,0.6)" });
-    label(ctx, "overliggende plate", xOf(L * (narrow ? 0.62 : 0.7)), yZ(-15_500), {
-      color: ink.panel,
-      halo: "rgba(60,52,46,0.6)",
-      align: "center",
-    });
-    const fx = xOf((xU + xLc) / 2);
-    const fy = yZ((zU + zL) / 2);
-    label(ctx, "bruddflate", fx + 12, fy + 26, { color: ink.panel, halo: "rgba(120,40,30,0.7)", weight: "600" });
-
-    if (stage === "etter") {
-      let iUp = 0;
-      let iDn = 0;
-      for (let i = 0; i < N; i++) {
-        if (disp[i] > disp[iUp]) iUp = i;
-        if (disp[i] < disp[iDn]) iDn = i;
-      }
-      if (disp[iUp] > 0.1) {
-        const X = xOf((iUp + 0.5) * s.dx);
-        const Y = bed[iUp + 1].y;
-        leader(ctx, X, Y - 2, X - 26, Y - 26);
-        label(ctx, "løft", X - 30, Y - 30, { align: "right", color: ink.uplift, weight: "600" });
-      }
-      if (disp[iDn] < -0.1) {
-        const X = xOf((iDn + 0.5) * s.dx);
-        const Y = bed[iDn + 1].y;
-        leader(ctx, X, Y - 2, X + 24, Y - 24);
-        label(ctx, "senkning", X + 28, Y - 28, { color: ink.sink, weight: "600" });
-      }
-    }
+    const lay = new LabelLayout(ctx, { x0: 4, y0: 2, x1: w - 4, y1: bottom - 2 });
 
     // Retning: når bølgen har delt seg, én pil hver vei over vannflaten.
-    if (stage === "etter" && time.current > 240) {
+    const split = stage === "etter" && time.current > 240;
+    if (split) {
       let iL = 0;
       let iR = 0;
       const mid = Math.round(p.xTop / s.dx);
@@ -390,18 +365,156 @@ export function ModelSource() {
       if (eL > 0.05 && iL > 8) {
         const X = xOf((iL + 0.5) * s.dx);
         arrow(ctx, X + 20, y, X - 22, ink.seaMid, 2);
+        lay.reserve({ x0: X - 24, y0: y - 6, x1: X + 22, y1: y + 6 });
       }
       if (eR > 0.05) {
         const X = xOf((iR + 0.5) * s.dx);
         arrow(ctx, X - 20, y, X + 22, ink.seaMid, 2);
+        lay.reserve({ x0: X - 22, y0: y - 6, x1: X + 24, y1: y + 6 });
       }
-      label(ctx, "bølgen brer seg begge veier", w / 2, 18, { align: "center", color: ink.sea });
-    } else {
-      label(ctx, stage === "før" ? "Før skjelvet: plategrensa er låst" : "Rett etter skjelvet", w / 2, 18, {
-        align: "center",
-        color: ink.sea,
-      });
     }
+    const headline = split
+      ? "bølgen brer seg begge veier"
+      : stage === "før"
+        ? "Før skjelvet: plategrensa er låst"
+        : "Rett etter skjelvet";
+    lay.place(headline, [{ x: w / 2, y: 18 }], { align: "center", color: ink.sea });
+
+    // Pilene langs bruddet er tegnet allerede; hold etikettene unna dem.
+    const fax = xOf(xU);
+    const fay = yZ(zU);
+    const fbx = xOf(xLc);
+    const fby = yZ(zL);
+    const fx = (fax + fbx) / 2;
+    const fy = (fay + fby) / 2;
+    if (RAKE[kind] !== 0 && stage === "etter")
+      lay.reserve({ x0: fx - 22, y0: fy - 22, x1: fx + 22, y1: fy + 22 });
+
+    lay.place(
+      "havnivå i ro",
+      [
+        { x: 6, y: sea - 8 },
+        { x: 6, y: sea - 26 },
+      ],
+      { color: ink.muted, weight: "400" },
+    );
+    const landX = xOf(L * 0.9);
+    const landY = yZ(elevation(L * 0.9));
+    lay.place(
+      "land",
+      [
+        { x: landX, y: landY - 10 },
+        { x: landX, y: landY - 28 },
+        { x: w - 6, y: landY - 10, align: "right" },
+      ],
+      {
+        align: "center",
+      },
+    );
+    const gX = xOf(xT);
+    const gY = yZ(zT);
+    lay.place(
+      "grøft",
+      [
+        { x: gX, y: gY + 22 },
+        { x: gX + 10, y: gY + 26, align: "left", to: { x: gX, y: gY + 4 } },
+        { x: gX - 10, y: gY + 26, align: "right", to: { x: gX, y: gY + 4 } },
+        { x: gX + 14, y: gY + 44, align: "left", to: { x: gX, y: gY + 4 } },
+      ],
+      { align: "center", size: big },
+    );
+    if (!narrow) {
+      const shX = xOf(L * (COAST - 0.04));
+      lay.place(
+        "sokkel",
+        [
+          { x: shX, y: sea + 22 },
+          { x: shX, y: sea + 40 },
+        ],
+        { align: "center" },
+      );
+    }
+
+    if (stage === "etter") {
+      let iUp = 0;
+      let iDn = 0;
+      for (let i = 0; i < N; i++) {
+        if (disp[i] > disp[iUp]) iUp = i;
+        if (disp[i] < disp[iDn]) iDn = i;
+      }
+      if (disp[iUp] > 0.1) {
+        const X = xOf((iUp + 0.5) * s.dx);
+        const Y = bed[iUp + 1].y - 2;
+        const to = { x: X, y: Y };
+        lay.place(
+          "løft",
+          [
+            { x: X - 30, y: Y - 30, align: "right", to },
+            { x: X + 30, y: Y - 30, align: "left", to },
+            { x: X - 30, y: Y - 50, align: "right", to },
+            { x: X + 30, y: Y - 50, align: "left", to },
+            { x: X - 34, y: Y + 30, align: "right", to },
+          ],
+          { color: ink.uplift, weight: "600" },
+        );
+      }
+      if (disp[iDn] < -0.1) {
+        const X = xOf((iDn + 0.5) * s.dx);
+        const Y = bed[iDn + 1].y - 2;
+        const to = { x: X, y: Y };
+        lay.place(
+          "senkning",
+          [
+            { x: X + 28, y: Y - 28, align: "left", to },
+            { x: X - 28, y: Y - 28, align: "right", to },
+            { x: X + 28, y: Y - 48, align: "left", to },
+            { x: X - 28, y: Y - 48, align: "right", to },
+            { x: X + 30, y: Y + 34, align: "left", to },
+          ],
+          { color: ink.sink, weight: "600" },
+        );
+      }
+    }
+
+    const plateX = xOf(L * 0.1);
+    const plateY = yZ(elevation(L * 0.1));
+    lay.place(
+      "havbunnsplate",
+      [
+        { x: plateX, y: plateY + 42 },
+        { x: 8, y: plateY + 42 },
+        { x: plateX, y: plateY + 64 },
+        { x: 8, y: plateY + 86 },
+      ],
+      { color: ink.panel, halo: "rgba(60,52,46,0.6)" },
+    );
+    const opX = xOf(L * (narrow ? 0.62 : 0.7));
+    lay.place(
+      "overliggende plate",
+      [
+        { x: opX, y: yZ(-15_500) },
+        { x: opX, y: yZ(-10_000) },
+        { x: opX, y: yZ(-20_000) },
+        { x: w - 8, y: yZ(-15_500), align: "right" },
+      ],
+      { color: ink.panel, halo: "rgba(60,52,46,0.6)", align: "center" },
+    );
+
+    // Bruddflaten kan gå dypere enn snittet. Den er klippet ved bunnen av rammen,
+    // og etiketten sier da fra om at den fortsetter.
+    const clipped = zT - dL < -Z_BOTTOM;
+    const long = clipped ? "bruddflate, fortsetter dypere" : "bruddflate";
+    const to = { x: fx, y: fy };
+    const fopts = { color: ink.panel, halo: "rgba(120,40,30,0.7)", weight: "600" } as const;
+    const spots = (t: string) => [
+      { x: fx + 12, y: fy + 26, text: t },
+      { x: fx + 26, y: fy + 5, text: t },
+      { x: fx - 26, y: fy + 5, align: "right" as const, text: t },
+      { x: fbx + 14, y: bottom - 10, text: t, to },
+      { x: fbx - 14, y: bottom - 10, align: "right" as const, text: t, to },
+      { x: fx + 26, y: fy - 22, text: t, to },
+    ];
+    lay.place(long, clipped ? [...spots(long), ...spots("bruddflate")] : spots(long), fopts);
   }
 
   const s = sim.current;
@@ -453,7 +566,8 @@ export function ModelSource() {
             />
           </div>
           <FigureNote>
-            Snitt på {nb(L / 1000)} km fra havet til land, {nb(Z_BOTTOM / 1000)} km dypt. {scaleText}
+            Snitt på {nb(L / 1000)} km fra havet til land, {nb(Z_BOTTOM / 1000)} km dypt.{" "}
+            {scaleText}
           </FigureNote>
         </div>
         <div className="flex flex-col gap-3">
@@ -474,9 +588,33 @@ export function ModelSource() {
               setDepth(pr.depth);
             }}
           />
-          <Slider label="Forskyvning langs bruddet" value={slip} min={1} max={30} step={1} unit="m" onChange={setSlip} />
-          <Slider label="Helning på bruddet" value={dip} min={8} max={60} step={1} unit="°" onChange={setDip} />
-          <Slider label="Bredde på bruddet" value={width} min={20} max={160} step={5} unit="km" onChange={setWidth} />
+          <Slider
+            label="Forskyvning langs bruddet"
+            value={slip}
+            min={1}
+            max={30}
+            step={1}
+            unit="m"
+            onChange={setSlip}
+          />
+          <Slider
+            label="Helning på bruddet"
+            value={dip}
+            min={8}
+            max={60}
+            step={1}
+            unit="°"
+            onChange={setDip}
+          />
+          <Slider
+            label="Bredde på bruddet"
+            value={width}
+            min={20}
+            max={160}
+            step={5}
+            unit="km"
+            onChange={setWidth}
+          />
           <Slider
             label="Dyp til øvre kant"
             value={depth}
@@ -501,12 +639,20 @@ export function ModelSource() {
         items={[
           { k: "Største løft", v: `${nb(up, 1)} m` },
           { k: "Største senkning", v: `${nb(Math.abs(down), 1)} m` },
-          { k: "Loddrett del av forskyvningen", v: `${nb(vertical, 1)} m`, hint: "det som kan løfte vannet" },
+          {
+            k: "Loddrett del av forskyvningen",
+            v: `${nb(vertical, 1)} m`,
+            hint: "det som kan løfte vannet",
+          },
           {
             k: "Vannflaten ved kysten nå",
             v: `${nb(coastEta, 2)} m`,
             hint:
-              maxCoast.current.first < 0 ? "dalen kom først" : maxCoast.current.first > 0 ? "toppen kom først" : "ikke kommet ennå",
+              maxCoast.current.first < 0
+                ? "dalen kom først"
+                : maxCoast.current.first > 0
+                  ? "toppen kom først"
+                  : "ikke kommet ennå",
           },
         ]}
       />
