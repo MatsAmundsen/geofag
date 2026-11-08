@@ -1,13 +1,16 @@
 import { readFileSync } from "node:fs";
 import {
   advanceFjordPlayback,
+  fjordPlaybackTick,
+  FJORD_SECONDS_PER_UNIT,
+  FJORD_LEFT_SHORE,
   nextFjordStep,
   FJORD_FRAMES_PER_UNIT,
   FJORD_END,
   fjordWaveParts,
   townGlyphLayout,
 } from "./sim/fjord";
-import { oceanPanelLayout } from "./sim/oceanmap";
+import { filterOceanContourFragments, oceanPanelLayout } from "./sim/oceanmap";
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import {
@@ -277,7 +280,7 @@ test("all essential times including Pacific 12 h have collision-free 14 px label
       levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
     const contours = levels.map((level) => ({
       level,
-      paths: smoothOceanContours(o, marchingContours(o, level)),
+      paths: filterOceanContourFragments(smoothOceanContours(o, marchingContours(o, level)), oceanPanelLayout(o, 332).aspect),
     }));
     for (const size of [
       { w: 220, h: 320 },
@@ -340,7 +343,7 @@ test("M4 full production playback reaches and holds visible reflection in ordina
         }
       }
       if (!next.more) break;
-      assert.ok(calls < 1000, "production playback must terminate");
+      assert.ok(calls <= FJORD_END * FJORD_FRAMES_PER_UNIT, "production playback must terminate");
     }
     assert.deepEqual(phases, ["Vannforskyvning", "Bølgeutbredelse", "Refleksjon"]);
     assert.equal(position, FJORD_END);
@@ -374,7 +377,7 @@ test("M5 width-driven panel fills mobile and desktop while keeping the geographi
       levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
     const contours = levels.map((level) => ({
       level,
-      paths: smoothOceanContours(o, marchingContours(o, level)),
+      paths: filterOceanContourFragments(smoothOceanContours(o, marchingContours(o, level)), oceanPanelLayout(o, 332).aspect),
     }));
     for (const width of [250, 328, 992]) {
       const layout = oceanPanelLayout(o, width);
@@ -451,4 +454,88 @@ test("M7 text fields avoid water, terrain and all building symbols without movin
             assert.ok(gap >= 2.99, `${width}px symbols need a visible gap`);
           }
       }
+});
+
+
+test("M4 real elapsed playback keeps source for 6.4 s, contact at 12 s and end at 24 s independently of refresh rate", () => {
+  assert.equal(FJORD_SECONDS_PER_UNIT, 8);
+  for (const stepMs of [1000 / 30, 1000 / 60, 1000 / 120, 1000 / 144, 500]) {
+    let position = 0, previous: number | null = null, contactAt = 0, sourceUntil = 0, endAt = 0;
+    const phases: string[] = [];
+    for (let frame = 0; frame <= Math.ceil(25000 / stepMs); frame++) {
+      const now = frame * stepMs;
+      const next = fjordPlaybackTick(position, previous, now);
+      previous = next.timestamp;
+      position = next.position;
+      const phase = fjordStage(position);
+      if (phases.at(-1) !== phase) phases.push(phase);
+      if (phase === "Vannforskyvning") sourceUntil = now;
+      if (phase === "Refleksjon" && !contactAt) contactAt = now;
+      if (now >= 3000 && now <= 5000) assert.equal(phase, "Vannforskyvning");
+      if (!next.more) { endAt = now; break; }
+    }
+    assert.deepEqual(phases, ["Vannforskyvning", "Bølgeutbredelse", "Refleksjon"]);
+    assert.ok(sourceUntil >= 6400 - stepMs - 1e-6 && sourceUntil < 6400);
+    assert.ok(Math.abs(contactAt - 12000) <= stepMs + 1e-6);
+    assert.ok(Math.abs(endAt - 24000) <= stepMs + 1e-6);
+    assert.ok(endAt - contactAt >= 12000 - stepMs - 1e-6);
+    assert.equal(position, FJORD_END);
+    assert.equal(fjordPlaybackTick(position, previous, endAt + 500).more, false);
+  }
+  // A paused/offscreen interval is not simulation time, and a stalled tab cannot skip phases.
+  assert.equal(fjordPlaybackTick(0.3, null, 100000).position, 0.3);
+  assert.equal(fjordPlaybackTick(0, 0, 100000).position, 0.5 / FJORD_SECONDS_PER_UNIT);
+  const component = readFileSync(new URL("./m4-fjord.tsx", import.meta.url), "utf8");
+  assert.match(component, /useState\(false\)/); // Source starts paused.
+  assert.match(component, /fjordPlaybackTick\(progress.current, previousTick.current, performance.now\(\)\)/);
+  assert.match(component, /previousTick.current = null;[\s\S]*?\[playing, playback.inView, playback.reduce\]/);
+});
+
+test("M4 wave clip intersects the actual wet interval and above-bed geometry, not the dry shoulders", () => {
+  assert.ok(Math.abs(fjordBed(FJORD_LEFT_SHORE)) < 1e-10);
+  assert.ok(Math.abs(fjordBed(FJORD_RIGHT_SHORE)) < 1e-10);
+  for (let i = 0; i <= 10000; i++) {
+    const x = i / 10000;
+    assert.equal(x > FJORD_LEFT_SHORE && x < FJORD_RIGHT_SHORE, fjordBed(x) > 0);
+  }
+  // The production drawing uses both intersections. A positive crest cannot extend the
+  // wet interval up a shoulder; the existing bed-shaped clip still excludes rock below it.
+  const component = readFileSync(new URL("./m4-fjord.tsx", import.meta.url), "utf8");
+  assert.match(component, /ctx.rect\(xOf\(FJORD_LEFT_SHORE\), 0, xOf\(FJORD_RIGHT_SHORE - FJORD_LEFT_SHORE\), h\);\s*ctx.clip\(\)/);
+  assert.match(component, /smoothPath\(ctx, bed.slice\(\).reverse\(\), false\);\s*ctx.closePath\(\);\s*ctx.clip\(\)/);
+});
+
+test("M5 display filter removes detached Bengal fragments without changing or joining surviving geometry or travel times", () => {
+  const o = makeOcean("india"), times = o.times.slice(), land = o.land.slice();
+  const aspect = oceanPanelLayout(o, 992).aspect;
+  const paths = smoothOceanContours(o, marchingContours(o, 10800));
+  const before = structuredClone(paths);
+  assert.ok(paths.some((p) => p.every((v) => v.y < 0.05)), "real Bengal regression fixture must exist");
+  const visible = filterOceanContourFragments(paths, aspect);
+  assert.ok(visible.length > 0);
+  assert.ok(!visible.some((p) => p.every((v) => v.y < 0.05)), "detached north-coast stubs must not be displayed");
+  assert.deepEqual(paths, before);
+  assert.deepEqual(o.times, times);
+  assert.deepEqual(o.land, land);
+  for (const path of visible) {
+    assert.ok(paths.includes(path), "surviving paths must be identical, not extended or joined");
+    for (let i = 1; i < path.length; i++) assert.ok(oceanSegment(o, o.land, path[i-1], path[i]));
+  }
+  const short = [{x: 0.2, y: 0.2}, {x: 0.21, y: 0.2}];
+  const long = [{x: 0.3, y: 0.2}, {x: 0.5, y: 0.2}];
+  assert.deepEqual(filterOceanContourFragments([short, long], aspect), [long]);
+  // All essential hour labels on both actual basins are covered by the width-driven panel test,
+  // now using this same production display filter at 250/328/992 px.
+});
+
+test("M7 building glyphs keep their screen-space aspect and physical footpoints at every canvas size", () => {
+  for (const width of [250, 328, 600, 992, 1500]) {
+    const layout = townGlyphLayout(width, 221, 0.27, TOWN_SITES, {Hus: 26, "Nytt bygg": 66, Skole: 38});
+    for (const g of layout) {
+      assert.ok(Math.abs(g.height / (2 * g.half) - 18 / 14) < 1e-12);
+      const physical = TOWN_SITES.find((b) => b.name === g.name)!;
+      assert.equal(g.x, 12 + physical.x * (width - 24));
+      assert.equal(g.y, 221 * 0.7 - townHeight(physical.x) * 221);
+    }
+  }
 });

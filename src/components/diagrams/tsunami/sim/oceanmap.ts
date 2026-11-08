@@ -413,6 +413,18 @@ export function smoothOceanContours(
   return out;
 }
 
+/** Display-only decluttering after smoothing/land splitting. Drop detached paths
+ * shorter than 5 percent of projected map width; never bridge or extend any path.
+ * Coordinates, numerical travel times, coast polygons and calculation mask stay intact. */
+export function filterOceanContourFragments(paths: IsoPath[], aspect: number): IsoPath[] {
+  return paths.filter((path) => {
+    let length = 0;
+    for (let i = 1; i < path.length; i++)
+      length += Math.hypot(path[i].x - path[i - 1].x, (path[i].y - path[i - 1].y) / aspect);
+    return length >= 0.05;
+  });
+}
+
 export type LabelBox = { x: number; y: number; width: number; height: number };
 export function boxesOverlap(a: LabelBox, b: LabelBox, gap = 5) {
   return (

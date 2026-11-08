@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FigureNote, Lab, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { arrow, label, leader, paintRock, skyTo, smoothPath } from "./paint";
 import {
-  advanceFjordPlayback,
+  fjordPlaybackTick,
+  FJORD_LEFT_SHORE,
+  FJORD_RIGHT_SHORE,
   nextFjordStep,
   FJORD_CONTACT,
   FJORD_END,
@@ -18,6 +20,7 @@ export function ModelFjord() {
   const [playing, setPlaying] = useState(false);
   const [position, setPosition] = useState(0);
   const progress = useRef(0);
+  const previousTick = useRef<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const advance = (amount: number) => {
     progress.current = Math.min(FJORD_END, progress.current + amount);
@@ -32,11 +35,12 @@ export function ModelFjord() {
     setPosition(0);
     setPlaying(false);
   };
-  useSimLoop(
+  const playback = useSimLoop(
     canvasRef,
     playing,
-    (frames) => {
-      const next = advanceFjordPlayback(progress.current, frames);
+    () => {
+      const next = fjordPlaybackTick(progress.current, previousTick.current, performance.now());
+      previousTick.current = next.timestamp;
       progress.current = next.position;
       setPosition(next.position);
       if (!next.more) setPlaying(false);
@@ -62,6 +66,11 @@ export function ModelFjord() {
       paintRock(ctx, bed, h);
       // Clip the prescribed surface to water: it never paints across a dry fjordside.
       ctx.save();
+      // The air-above-bed clip alone includes dry hillside. Intersect it with the
+      // actual wet section: a positive crest must never run up a dry shoulder.
+      ctx.beginPath();
+      ctx.rect(xOf(FJORD_LEFT_SHORE), 0, xOf(FJORD_RIGHT_SHORE - FJORD_LEFT_SHORE), h);
+      ctx.clip();
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.lineTo(w, 0);
@@ -101,6 +110,9 @@ export function ModelFjord() {
       label(ctx, "Tenkt fjordsnitt", w / 2, h - 28, { align: "center" });
     },
   );
+  useEffect(() => {
+    previousTick.current = null;
+  }, [playing, playback.inView, playback.reduce]);
   const stage = fjordStage(position);
   return (
     <Lab

@@ -8,6 +8,7 @@ import {
   makeOcean,
   marchingContours,
   smoothOceanContours,
+  filterOceanContourFragments,
   contourLabels,
   type BasinId,
 } from "./sim/oceanmap";
@@ -31,7 +32,10 @@ export function ModelOcean() {
     const levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
     return levels.map((level) => ({
       level,
-      paths: smoothOceanContours(o, marchingContours(o, level)),
+      paths: filterOceanContourFragments(
+        smoothOceanContours(o, marchingContours(o, level)),
+        oceanPanelLayout(o, 332).aspect,
+      ),
     }));
   }, [id, o]);
   const duration = id === "india" ? 4 * 3600 : 16 * 3600;

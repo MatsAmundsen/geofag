@@ -79,7 +79,7 @@ export function ModelRisk() {
         const included = sites(panel === 1).filter((b) => b.included);
         const widths = Object.fromEntries(included.map((b) => [b.name, textWidth(ctx, b.name)]));
         const glyphs = townGlyphLayout(w, ph, level, included, widths);
-        // Draw all symbols before the text. Adaptive width separates close sites without
+        // Draw all symbols before the text. Uniform symbol scaling separates close sites without
         // moving their physical footpoints or changing the water/exposure calculation.
         for (const b of glyphs) {
           const y = top + b.y;
@@ -108,7 +108,7 @@ export function ModelRisk() {
               box.x + box.width + 2,
               top + b.baseline - 3,
               b.x - b.half - 2,
-              top + b.y - 10,
+              top + b.y - b.height * 0.55,
             );
           else if (b.name === "Nytt bygg")
             leader(ctx, b.tx + 2, top + b.baseline + 5, b.x, top + b.y - b.height - 3);

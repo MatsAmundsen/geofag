@@ -14,6 +14,16 @@ export const FJORD_CONTACT = 1.5;
 export function fjordStage(t: number) {
   return t < 0.8 ? "Vannforskyvning" : t < FJORD_CONTACT ? "Bølgeutbredelse" : "Refleksjon";
 }
+export const FJORD_LEFT_SHORE = (() => {
+  let a = 0,
+    b = 0.3;
+  for (let i = 0; i < 40; i++) {
+    const m = (a + b) / 2;
+    if (fjordBed(m) < 0) a = m;
+    else b = m;
+  }
+  return (a + b) / 2;
+})();
 export const FJORD_RIGHT_SHORE = (() => {
   let a = 0.8,
     b = 1;
@@ -45,14 +55,23 @@ export function fjordWave(x: number, t: number) {
   return p.incident + p.reflected;
 }
 
-/** Exact production playback step. Shared useSimLoop supplies 1 logical frame normally,
- * 30 on a reduced-motion tick. This animation is a sequence, not a physical-time clock. */
-export const FJORD_FRAMES_PER_UNIT = 120;
+/** Playback pace, not physical travel time. The elapsed-time adapter below supplies
+ * 60 Hz-equivalent frames; actual refresh rate and reduced-motion callback count
+ * must not set viewing speed. This pure step also supports deterministic tests. */
+export const FJORD_SECONDS_PER_UNIT = 8;
+export const FJORD_FRAMES_PER_UNIT = 60 * FJORD_SECONDS_PER_UNIT;
 export function advanceFjordPlayback(position: number, frames: number) {
   let next = Math.min(FJORD_END, position + Math.max(0, frames) / FJORD_FRAMES_PER_UNIT);
   for (const boundary of [0.8, FJORD_CONTACT, FJORD_END])
     if (Math.abs(next - boundary) < 1e-9) next = boundary;
   return { position: next, more: next < FJORD_END };
+}
+/** Wall-clock adapter for the actual RAF callback. Reset timestamp on pause/offscreen.
+ * Cap a stalled callback at one reduced-motion interval: never fast-forward a hidden tab.
+ * These seconds describe viewing pace only, never physical wave travel time. */
+export function fjordPlaybackTick(position: number, previous: number | null, now: number) {
+  const elapsed = previous === null ? 0 : Math.max(0, Math.min(500, now - previous));
+  return { ...advanceFjordPlayback(position, (elapsed * 60) / 1000), timestamp: now };
 }
 export function nextFjordStep(position: number) {
   return [0.6, 1.1, 1.8, 2.6, FJORD_END].find((v) => v > position + 0.001) ?? FJORD_END;
@@ -147,7 +166,7 @@ export function townGlyphLayout(
   return sites.map((site) => {
     const x = xOf(site.x),
       y = yOf(townHeight(site.x)),
-      height = 18;
+      height = (half * 18) / 7;
     let tx: number, baseline: number, align: "left" | "right" | "center";
     const tw = textWidths[site.name];
     if (site.name === "Hus") {
