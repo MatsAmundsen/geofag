@@ -1,8 +1,8 @@
 import { useMemo, useRef, useState } from "react";
 import { Choice, FigureNote, Lab, Readouts } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
-import { label, leader, paintRock, skyTo, smoothPath } from "./paint";
-import { townHeight, townScenario, TOWN_N } from "./sim/fjord";
+import { label, leader, paintRock, skyTo, textWidth } from "./paint";
+import { townHeight, townScenario, townGlyphLayout, TOWN_N } from "./sim/fjord";
 import { ink } from "./sim/palette";
 
 type Scene = "lav" | "hoy";
@@ -76,47 +76,44 @@ export function ModelRisk() {
           weight: "600",
         });
         label(ctx, "Sjø", xOf(0.12), (yOf(level) + yOf(townHeight(0.12))) / 2 + 4);
-        // Buildings sit exactly on the profile. Numbers link to an accessible text key below.
-        sites(panel === 1).forEach((b) => {
-          if (!b.included) return;
-          const x = xOf(b.x),
-            y = yOf(townHeight(b.x));
+        const included = sites(panel === 1).filter((b) => b.included);
+        const widths = Object.fromEntries(included.map((b) => [b.name, textWidth(ctx, b.name)]));
+        const glyphs = townGlyphLayout(w, ph, level, included, widths);
+        // Draw all symbols before the text. Adaptive width separates close sites without
+        // moving their physical footpoints or changing the water/exposure calculation.
+        for (const b of glyphs) {
+          const y = top + b.y;
           ctx.beginPath();
-          ctx.moveTo(x - 7, y);
-          ctx.lineTo(x - 7, y - 13);
-          ctx.lineTo(x, y - 20);
-          ctx.lineTo(x + 7, y - 13);
-          ctx.lineTo(x + 7, y);
+          ctx.moveTo(b.x - b.half, y);
+          ctx.lineTo(b.x - b.half, y - b.height * 0.65);
+          ctx.lineTo(b.x, y - b.height);
+          ctx.lineTo(b.x + b.half, y - b.height * 0.65);
+          ctx.lineTo(b.x + b.half, y);
           ctx.closePath();
           ctx.fillStyle = ink.panel;
           ctx.fill();
           ctx.strokeStyle = ink.text;
-          ctx.lineWidth = 1.3;
+          ctx.lineWidth = 1.2;
           ctx.stroke();
-          // Three local, separate label lanes. No long line crosses the hill or another building.
-          if (b.name === "Hus") {
-            label(ctx, "Hus", x - 12, y - 16, { align: "right" });
-            leader(ctx, x - 11, y - 19, x - 8, y - 17);
-          } else if (b.name === "Nytt bygg") {
-            label(ctx, "Nytt bygg", x - 3, y - 43, { align: "right" });
-            leader(ctx, x - 2, y - 38, x, y - 23);
-          } else {
-            const terrainTop = Math.min(
-              ...Array.from({ length: 11 }, (_, i) =>
-                yOf(townHeight(Math.max(0, Math.min(1, (x - 22 + i * 4.4 - 12) / (w - 24))))),
-              ),
+        }
+        for (const b of glyphs) {
+          const box = b.box;
+          // A quiet solid text field also masks the thin water/terrain strokes behind glyph halos.
+          ctx.fillStyle = ink.panel;
+          ctx.fillRect(box.x, top + box.y, box.width, box.height);
+          label(ctx, b.name, b.tx, top + b.baseline, { align: b.align });
+          if (b.name === "Hus")
+            leader(
+              ctx,
+              box.x + box.width + 2,
+              top + b.baseline - 3,
+              b.x - b.half - 2,
+              top + b.y - 10,
             );
-            const ly = Math.max(top + 44, Math.min(y - 32, terrainTop - 10));
-            label(ctx, "Skole", x, ly, { align: "center" });
-            leader(ctx, x, ly + 4, x, y - 23);
-          }
-        });
-        // A continuous, thin reference curve makes the connected terrain explicit.
-        ctx.beginPath();
-        smoothPath(ctx, bed);
-        ctx.strokeStyle = ink.rock;
-        ctx.lineWidth = 1;
-        ctx.stroke();
+          else if (b.name === "Nytt bygg")
+            leader(ctx, b.tx + 2, top + b.baseline + 5, b.x, top + b.y - b.height - 3);
+          else leader(ctx, b.x, top + b.baseline + 5, b.x, top + b.y - b.height - 3);
+        }
         ctx.restore();
       }
     },
