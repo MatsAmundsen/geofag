@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 import { nb } from "./util";
 
 const focusRing =
@@ -27,11 +27,18 @@ export function Slider({
 }) {
   const digits = Number.isInteger(step) ? 0 : step < 0.1 ? 2 : 1;
   const shown = format ? format(value) : nb(value, digits);
+  // Navnet er bare ledeteksten. Verdien leses fra aria-valuetext og merknaden som beskrivelse,
+  // ellers ville navnet endret seg hver gang skyveren flyttes.
+  const uid = useId();
+  const nameId = `${uid}-navn`;
+  const noteId = `${uid}-merknad`;
   return (
     <label className="flex min-w-0 flex-col gap-1">
       <span className="flex items-baseline justify-between gap-3 text-sm">
-        <span className="text-ink">{label}</span>
-        <span className="font-medium tabular-nums text-sea">
+        <span id={nameId} className="text-ink">
+          {label}
+        </span>
+        <span className="font-medium tabular-nums text-sea" aria-hidden="true">
           {shown} {unit}
         </span>
       </span>
@@ -42,10 +49,16 @@ export function Slider({
         max={max}
         step={step}
         value={value}
+        aria-labelledby={nameId}
+        aria-describedby={note ? noteId : undefined}
         aria-valuetext={`${shown} ${unit}`}
         onChange={(e) => onChange(Number(e.target.value))}
       />
-      {note ? <span className="text-sm text-muted">{note}</span> : null}
+      {note ? (
+        <span id={noteId} className="text-sm text-muted">
+          {note}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -97,6 +110,8 @@ export function Transport({
   onStep,
   stepLabel = "Fram ett steg",
   playLabel = "Start",
+  liveTime = true,
+  toggleState = true,
 }: {
   playing: boolean;
   onToggle: () => void;
@@ -106,13 +121,23 @@ export function Transport({
   onStep?: () => void;
   stepLabel?: string;
   playLabel?: string;
+  /**
+   * Om tidslinja skal være en aria-live-region. Sett `false` når modellen har en egen
+   * statusregion i `Lab`, ellers leses tiden opp for hvert bilde under avspilling.
+   */
+  liveTime?: boolean;
+  /**
+   * Om startknappen skal melde aria-pressed. Knappen bytter allerede tekst mellom «Start» og
+   * «Pause», og da skal den ifølge ARIA ikke også være en av/på-knapp. M1–M3 setter `false`.
+   */
+  toggleState?: boolean;
 }) {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
         type="button"
         onClick={onToggle}
-        aria-pressed={playing}
+        aria-pressed={toggleState ? playing : undefined}
         className={"min-h-11 rounded-full bg-sea px-4 text-sm font-medium text-card " + focusRing}
       >
         {playing ? "Pause" : playLabel}
@@ -133,7 +158,7 @@ export function Transport({
       >
         Nullstill
       </button>
-      <span className="ml-auto text-sm tabular-nums text-muted" aria-live="polite">
+      <span className="ml-auto text-sm tabular-nums text-muted" aria-live={liveTime ? "polite" : undefined}>
         {time}
       </span>
     </div>
@@ -155,8 +180,12 @@ export function Readouts({ items }: { items: { k: string; v: string; hint?: stri
 }
 
 /** Kort, synlig merknad rett under figuren: målestokk, forstørrelse og hva som er forenklet. */
-export function FigureNote({ children }: { children: ReactNode }) {
-  return <p className="text-sm leading-relaxed text-muted">{children}</p>;
+export function FigureNote({ id, children }: { id?: string; children: ReactNode }) {
+  return (
+    <p id={id} className="text-sm leading-relaxed text-muted">
+      {children}
+    </p>
+  );
 }
 
 export function Lab({
@@ -167,6 +196,7 @@ export function Lab({
   children,
   assume,
   conclusion,
+  status,
 }: {
   id: string;
   index: string;
@@ -177,6 +207,11 @@ export function Lab({
   children: ReactNode;
   assume: string;
   conclusion: string;
+  /**
+   * Kort status for skjermlesere. Når den er satt, er det denne regionen som leses opp
+   * ved faseskifte og trinn, og konklusjonen under figuren er ikke lenger en live-region.
+   */
+  status?: string;
 }) {
   const headingId = `${id}-tittel`;
   return (
@@ -193,12 +228,19 @@ export function Lab({
       </div>
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink">{question}</p>
       <div className="mt-5 flex flex-col gap-4">{children}</div>
+      {status !== undefined ? (
+        <p id={`${id}-status`} role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+          {status}
+        </p>
+      ) : null}
       <div className="mt-4 grid gap-3 lg:grid-cols-2">
         <p className="rounded-2xl border border-line bg-card px-4 py-3 text-sm leading-relaxed text-muted">
           <span className="font-medium text-ink">Forenklinger. </span>
           {assume}
         </p>
-        <p className="rounded-2xl border border-line bg-card px-4 py-3 text-sm leading-relaxed text-ink" aria-live="polite">
+        <p className="rounded-2xl border border-line bg-card px-4 py-3 text-sm leading-relaxed text-ink"
+          aria-live={status === undefined ? "polite" : undefined}
+        >
           <span className="font-medium text-sea">Hva modellen viser nå. </span>
           {conclusion}
         </p>

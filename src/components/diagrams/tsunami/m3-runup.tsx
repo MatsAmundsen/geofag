@@ -7,6 +7,7 @@ import { beachElevation } from "./sim/profiles";
 import { leader, skyTo, smoothPath, type Pt } from "./paint";
 import { ink } from "./sim/palette";
 import { LabelLayout, type Spot } from "./place";
+import { runupStatus } from "./a11y";
 
 const N = 640;
 const L = 16_000;
@@ -406,6 +407,17 @@ export function ModelRunup() {
       : `Bølgen har ikke nådd land ennå på ${beachLabel}. Trykk Start og se hvordan de fire målene dukker opp ett etter ett.`
     : `På ${beachLabel} er bølgehøyden ute ${nb(waveH, 1)} m fra dal til topp. Vannet nådde ${nb(runup, 1)} m over havnivået og ${nb(reach)} m inn fra strandlinja. Ved huset sto vannet ${houseDepth > 0.02 ? `${nb(houseDepth, 1)} m over bakken` : "ikke over bakken"}. Samme bølge gir altså fire ulike tall.`;
 
+  const status = runupStatus({
+    playing,
+    time: time.current,
+    end: T_END,
+    reached,
+    first: m.current.first,
+    runup,
+    reach,
+    house: houseDepth,
+  });
+
   return (
     <Lab
       id="m3"
@@ -414,17 +426,19 @@ export function ModelRunup() {
       question="Hvorfor er bølgehøyde, oppskylling, oversvømmelsesdybde og inntrenging fire forskjellige tall for samme bølge?"
       assume="Begrepsmodell langs én tenkt strand, ikke et bestemt sted. Ikke-lineær gruntvannslikning med litt friksjon mot bunnen. Bølgen er en lang bølge fra 30 m dyp, og den kan ikke brekke slik en vindbølge gjør. Alle høyder er målt fra havnivået i ro. Dette er ikke et farekart og gir ikke lokale flomnivåer."
       conclusion={conclusion}
+      status={status}
     >
       <div className="flex flex-col gap-2">
         <div className="overflow-hidden rounded-2xl border border-line bg-card">
           <canvas
             ref={canvasRef}
             role="img"
-            aria-label={`Snitt fra 30 m dyp inn over en strand og opp på land, med de fire målene merket med tall. ${conclusion}`}
+            aria-label={`Snitt fra 30 m dyp inn over en strand og opp på land, med et hus og de fire målene merket med tall. ${status}`}
+            aria-describedby="m3-figurmerknad"
             className="h-[340px] w-full sm:h-[400px]"
           />
         </div>
-        <FigureNote>
+        <FigureNote id="m3-figurmerknad">
           Snitt på {nb((VIEW1 - VIEW0) / 1000, 1)} km. Høyden er forstørret ca. {ve} ganger, så
           stranda ser mye brattere ut enn den er. Tallene i figuren svarer til tallene i boksene
           under.
@@ -485,6 +499,8 @@ export function ModelRunup() {
           setTick((t) => t + 1);
         }}
         stepLabel="Fram 30 sekunder"
+        liveTime={false}
+        toggleState={false}
         time={`Simulert tid ${nb(time.current / 60, 1)} min${reduce ? "" : " · 1 s avspilling ≈ 2 min"}`}
       />
       <Readouts

@@ -7,6 +7,7 @@ import { advanceLinear, makeLinear, type Linear1D } from "./sim/linear";
 import { longWaveSpeed, shelfElevation } from "./sim/profiles";
 import { arrow, label, leader, paintRock, paintWaterColumn, skyTo, type Pt } from "./paint";
 import { ink } from "./sim/palette";
+import { shoalStatus } from "./a11y";
 
 const N = 800;
 const L = 1_200_000;
@@ -16,6 +17,20 @@ const AMP = 0.5;
 
 const depthAt = (x: number, deep: number) => Math.max(0, -shelfElevation(x, L, deep));
 const kmh = (v: number) => `${nb(v * 3.6)} km/t`;
+
+/** Dypet der vannflaten står høyest, altså omtrent der bølgetoppen er nå. */
+function crestDepth(s: Linear1D): number {
+  let best = 0;
+  let k = -1;
+  for (let i = 0; i < s.d.length; i++) {
+    if (s.d[i] > 1 && s.eta[i] > best) {
+      best = s.eta[i];
+      k = i;
+    }
+  }
+  return k < 0 ? 0 : s.d[k];
+}
+const COAST_DEPTH = 30;
 
 export function ModelShoal() {
   const [deep, setDeep] = useState(4000);
@@ -28,6 +43,7 @@ export function ModelShoal() {
   const sim = useRef<Linear1D>(makeLinear(N, L / N));
   const maxEta = useRef(new Float64Array(N));
   const time = useRef(0);
+  const coast = useRef(false);
 
   const reset = () => {
     const s = sim.current;
@@ -36,6 +52,7 @@ export function ModelShoal() {
     const lam = c0 * T;
     const x0 = L * 0.2;
     time.current = 0;
+    coast.current = false;
     maxEta.current.fill(0);
     for (let i = 0; i < N; i++) {
       const x = (i + 0.5) * s.dx;
@@ -70,6 +87,7 @@ export function ModelShoal() {
       left -= dt;
       for (let i = 0; i < N; i++) if (s.eta[i] > maxEta.current[i]) maxEta.current[i] = s.eta[i];
     }
+    if (!coast.current && crestDepth(s) < COAST_DEPTH) coast.current = true;
     return time.current < T_END;
   };
 
@@ -241,6 +259,14 @@ export function ModelShoal() {
     ? "Markøren står på land. Flytt den ut i vannet for å lese dyp, fart og bølgelengde."
     : `På ${nb(deep)} m dyp går bølgefronten ${kmh(cDeep)}, og bølgelengden er om lag ${nb(lamDeep / 1000)} km. Ved markøren er dypet ${nb(dMarker)} m. Der går fronten ${kmh(cMarker)}, og bølgelengden er om lag ${nb(lamMarker / 1000)} km. Perioden er den samme, ${nb(period)} min, så bølgen blir kortere når den går saktere. Når samme energi presses sammen på kortere strekning, blir bølgen høyere. Det ser du på den stiplede linja.`;
 
+  const status = shoalStatus({
+    playing,
+    time: time.current,
+    end: T_END,
+    crestDepth: crestDepth(sim.current),
+    atCoast: coast.current,
+  });
+
   return (
     <Lab
       id="m2"
@@ -249,16 +275,18 @@ export function ModelShoal() {
       question="Hvorfor går bølgen saktere og blir kortere når vannet blir grunnere?"
       assume="Lineær lang bølge over en tenkt havbunn. Farten er √(g · d) med g = 9,81 m/s², og den gjelder bølgefronten til en lang, ikke-brytende langbølge, ikke vannets egen strømning. Perioden er fast. Modellen viser at bølgen blir høyere på sokkelen, men den regner ikke ut hvor høy den blir på land. Ikke oppskylling eller faresone."
       conclusion={conclusion}
+      status={status}
     >
       <div className="overflow-hidden rounded-2xl border border-line bg-card">
         <canvas
           ref={canvasRef}
           role="img"
-          aria-label={`Snitt fra dyphav over kontinentalskråningen til sokkelen og kysten. ${conclusion}`}
+          aria-label={`Snitt fra dyphav over kontinentalskråningen til sokkelen og kysten, med en markør og klammer for bølgelengden. ${status}`}
+          aria-describedby="m2-figurmerknad"
           className="h-[340px] w-full sm:h-[400px]"
         />
       </div>
-      <FigureNote>
+      <FigureNote id="m2-figurmerknad">
         Snitt på {nb(L / 1000)} km. Dybdeaksen til venstre er strukket nær overflaten, så sokkelen synes. Bølgehøyden er
         forstørret ca. {we} ganger. Klammene viser én bølgelengde, λ = v · T. Den stiplede røde linja er høyeste vannstand så
         langt.
@@ -289,6 +317,8 @@ export function ModelShoal() {
           setTick((t) => t + 1);
         }}
         stepLabel="Fram 10 minutter"
+        liveTime={false}
+        toggleState={false}
         time={`Simulert tid ${nb(time.current / 3600, 1)} t${reduce ? "" : " · 1 s avspilling ≈ 30 min"}`}
       />
       <Readouts
