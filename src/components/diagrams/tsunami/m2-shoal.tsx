@@ -109,7 +109,7 @@ export function ModelShoal() {
     const s = sim.current;
     const narrow = w < 560;
     const axis = narrow ? 44 : 56;
-    const sea = 78;
+    const sea = 104;
     const bottom = h - 6;
     const span = bottom - sea - 10;
     const dMax = 6200;
@@ -117,7 +117,7 @@ export function ModelShoal() {
     const yD = (d: number) => sea + span * Math.sqrt(Math.max(0, d) / dMax);
     const xOf = (x: number) => axis + (x / L) * (w - axis);
     const pxKm = (w - axis) / (L / 1000);
-    const waveScale = 18 / AMP;
+    const waveScale = 12 / AMP;
     const weS = roundFactor((waveScale * 1000) / pxKm);
     if (weS !== we) setWe(weS);
 
@@ -208,8 +208,9 @@ export function ModelShoal() {
       ctx.stroke();
       label(ctx, text, (a + b) / 2, y - 8, { align: "center", color: ink.mark, weight: "600" });
     };
-    bracket(L * 0.2, lamDeep, 44, `λ ≈ ${nb(lamDeep / 1000)} km`);
-    if (!onLand) bracket(markerX, lamMarker, 44, `λ ≈ ${nb(lamMarker / 1000)} km`);
+    bracket(L * 0.2, lamDeep, 46, `λ ≈ ${nb(lamDeep / 1000)} km`);
+    // Markørens klamme bare når den står et annet sted enn dyphavet, ellers dekker de hverandre.
+    if (!onLand && dMarker < deep * 0.9) bracket(markerX, lamMarker, 46, `λ ≈ ${nb(lamMarker / 1000)} km`);
 
     // Markør.
     const mx = xOf(markerX);
@@ -217,7 +218,7 @@ export function ModelShoal() {
     ctx.strokeStyle = ink.text;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(mx, 56);
+    ctx.moveTo(mx, 54);
     ctx.lineTo(mx, onLand ? sea : yD(dMarker));
     ctx.stroke();
     ctx.setLineDash([]);
