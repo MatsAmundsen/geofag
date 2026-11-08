@@ -175,6 +175,30 @@ export function townScenario(level: number) {
   return { heights, wet: connectedWet(heights, TOWN_N, 1, level, [0]) };
 }
 
+/** Reference surface in this invented profile, not a measured or mapped elevation. */
+export const TOWN_NORMAL_SEA_LEVEL = 0;
+export function townWaterLayers(level: number, heights: readonly number[] = Array.from({length: TOWN_N}, (_, i) => townHeight(i / (TOWN_N - 1)))) {
+  const layer = (surface: number) => {
+    const wet = connectedWet(heights, heights.length, 1, surface, [0]);
+    const runs: {from: number; to: number; first: number; last: number}[] = [];
+    const crossing = (a: number, b: number) =>
+      (a + (surface - heights[a]) / (heights[b] - heights[a])) / (heights.length - 1);
+    let first = -1;
+    for (let k = 0; k <= wet.length; k++) {
+      if (k < wet.length && wet[k] && first < 0) first = k;
+      if (first >= 0 && (k === wet.length || !wet[k])) {
+        const last = k - 1;
+        runs.push({first, last,
+          from: first === 0 ? 0 : crossing(first - 1, first),
+          to: last === wet.length - 1 ? 1 : crossing(last, last + 1)});
+        first = -1;
+      }
+    }
+    return {surface, wet, runs};
+  };
+  return {heights, normal: layer(TOWN_NORMAL_SEA_LEVEL), scenario: layer(level)};
+}
+
 /** A genuine horizontal view window, not displaced symbols. All screen x values
  * (terrain, water, sites and annotations) use this same invertible mapping. */
 export function townView(width: number) {
@@ -234,7 +258,6 @@ export function riskStatus(scene: "lav" | "hoy", act: "ingen" | "flytt" | "stans
   return `${scene === "hoy" ? "Høyere nivå" : "Lavere nivå"}. ${action}. Berørte bygg før: ${before}, etter: ${after}. Bølge og kilde er uendret.`;
 }
 
-export function warningStatus(source: "skjelv" | "skred", step: number, playing: boolean, stageTitle: string) {
-  const title = source === "skred" && step < 2 ? "Seismisk førstevarsel er ikke garantert ved skred" : stageTitle;
-  return `${source === "skred" ? "Skred" : "Jordskjelv"}. Ledd ${step + 1} av 4: ${title}. ${playing ? "Avspilling pågår" : "Avspillingen er pauset"}. Ingen trygghetsgaranti.`;
+export function warningStatus(source: "skjelv" | "skred", step: number, stageTitle: string) {
+  return `${source === "skred" ? "Skred" : "Jordskjelv"}. Ledd ${step + 1} av 4: ${stageTitle}.`;
 }
