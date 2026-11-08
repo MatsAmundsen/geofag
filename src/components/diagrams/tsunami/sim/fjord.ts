@@ -55,6 +55,33 @@ export function fjordWave(x: number, t: number) {
   return p.incident + p.reflected;
 }
 
+/** Display-only shore closure. Smoothly return the prescribed surface to the
+ * reference shoreline, with zero slope there, rather than cutting a crest in air.
+ * This is not a run-up law; reflection and source remain qualitative. */
+export function fjordSurface(t: number, count = 151) {
+  const shoreWidth = 0.035;
+  const ease = (u: number) => {
+    const q = Math.max(0, Math.min(1, u));
+    return q * q * q * (10 - 15 * q + 6 * q * q);
+  };
+  return Array.from({ length: count }, (_, i) => {
+    const x = FJORD_LEFT_SHORE + (FJORD_RIGHT_SHORE - FJORD_LEFT_SHORE) * i / (count - 1);
+    const taper = ease((x - FJORD_LEFT_SHORE) / shoreWidth) * ease((FJORD_RIGHT_SHORE - x) / shoreWidth);
+    return { x, y: -fjordWave(x, t) * taper };
+  });
+}
+
+/** Near-label position, clear of the waterline during every source/deposit step. */
+export function fjordSlideLabel(t: number, width: number, height: number, textWidth: number) {
+  const sea = height * 0.42, scale = height * 0.65;
+  const top = slideOutline(t).reduce((a, b) => b.y < a.y ? b : a);
+  const anchor = { x: top.x * width, y: sea + top.y * scale };
+  const x = Math.max(textWidth / 2 + 7, Math.min(width - textWidth / 2 - 7, anchor.x));
+  let baseline = Math.max(26, anchor.y - 14);
+  if (baseline + 4 > sea - 10 && baseline - 15 < sea + 10) baseline = sea - 28;
+  return { x, baseline, anchor, box: { x: x - textWidth / 2, y: baseline - 15, width: textWidth, height: 19 } };
+}
+
 /** Playback pace, not physical travel time. The elapsed-time adapter below supplies
  * 60 Hz-equivalent frames; actual refresh rate and reduced-motion callback count
  * must not set viewing speed. This pure step also supports deterministic tests. */
@@ -162,34 +189,45 @@ export function townGlyphLayout(
   const minSeparation = Math.min(
     ...sites.flatMap((a, i) => sites.slice(i + 1).map((b) => Math.abs(xOf(a.x) - xOf(b.x)))),
   );
-  const half = Math.max(1, Math.min(7, (minSeparation - 4.2) / 2));
-  return sites.map((site) => {
-    const x = xOf(site.x),
-      y = yOf(townHeight(site.x)),
-      height = (half * 18) / 7;
+  // Keep recognizable 14×18 px houses. Compact layouts displace symbols only;
+  // separate physical footpoint dots and connectors keep the sites unambiguous.
+  const half = 7, height = 18, compact = minSeparation < 18;
+  const symbols = sites.map((site) => {
+    const x = xOf(site.x), y = yOf(townHeight(site.x));
+    return { ...site, x, y, symbolX: x, symbolY: y - (compact && site.name !== "Skole" ? 12 : 0) };
+  });
+  const house = symbols.find((b) => b.name === "Hus");
+  const newBuild = symbols.find((b) => b.name === "Nytt bygg");
+  const school = symbols.find((b) => b.name === "Skole");
+  if (compact && house && newBuild) {
+    newBuild.symbolY = Math.min(newBuild.symbolY, house.symbolY - height - 5);
+    if (school) school.symbolX = Math.max(school.symbolX, newBuild.symbolX + 2 * half + 4.5);
+  }
+  return symbols.map((site) => {
+    const { x, y, symbolX, symbolY } = site;
     let tx: number, baseline: number, align: "left" | "right" | "center";
     const tw = textWidths[site.name];
     if (site.name === "Hus") {
       tx = x - half - 7;
-      baseline = y - 12;
+      baseline = symbolY - 12;
       align = "right";
     } else if (site.name === "Nytt bygg") {
       tx = x - 11;
-      baseline = Math.min(y - 43, waterY - 10);
+      baseline = Math.min(y - 43, waterY - 10, symbolY - height - 10);
       align = "right";
     } else {
-      tx = x;
+      tx = symbolX;
       align = "center";
       const terrainTop = Math.min(
         ...Array.from({ length: 21 }, (_, i) =>
           yOf(
             townHeight(
-              Math.max(0, Math.min(1, (x - tw / 2 - 3 + (i * (tw + 6)) / 20 - 12) / (width - 24))),
+              Math.max(0, Math.min(1, (symbolX - tw / 2 - 3 + (i * (tw + 6)) / 20 - 12) / (width - 24))),
             ),
           ),
         ),
       );
-      baseline = Math.max(44, Math.min(y - 32, terrainTop - 10));
+      baseline = Math.max(44, Math.min(symbolY - height - 10, terrainTop - 10));
     }
     if (baseline + 4 > waterY - 6 && baseline - 15 < waterY + 6) {
       baseline = site.name === "Hus" ? waterY + 21 : waterY - 10;

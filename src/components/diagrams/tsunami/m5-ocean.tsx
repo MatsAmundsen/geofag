@@ -180,6 +180,7 @@ export function ModelOcean() {
         <canvas
           ref={canvasRef}
           role="img"
+          aria-describedby="m5-beskrivelse"
           aria-label={`${id === "india" ? "Indiahavet" : "Stillehavet"}: kystkonturer, kildecelle K, kontrollpunkt A og B og idealiserte gangtidslinjer. Tidene står også under kartet.`}
           className="w-full"
           style={{ height: `calc((100cqw - 24px) * ${1 / figureAspect} + 40px)` }}
@@ -188,13 +189,15 @@ export function ModelOcean() {
           K: idealisert kildecelle. Avspilt modelltid: {fmt(time)}.
         </p>
       </div>
-      <FigureNote>
-        Kartet er ekvirektangulært med standardbredde {nb((o.lat0 + o.lat1) / 2)}°. Ingen jevn
-        avstandsmålestokk over hele kartet. Linjene viser{" "}
-        {id === "india" ? "1, 2 og 3" : "2, 4, 8 og 12"} timer. Linjer blir tykkere når
-        modellklokken passerer dem, ikke når faren øker. Kurvene er moderat glattet for lesbarhet og
-        klippet mot land; beregningens oppløsning er uendret.
-      </FigureNote>
+      <div id="m5-beskrivelse">
+        <FigureNote>
+          Kartet er ekvirektangulært med standardbredde {nb((o.lat0 + o.lat1) / 2)}°. Ingen jevn
+          avstandsmålestokk over hele kartet. Linjene viser{" "}
+          {id === "india" ? "1, 2 og 3" : "2, 4, 8 og 12"} timer. Linjer blir tykkere når
+          modellklokken passerer dem, ikke når faren øker. Kurvene er moderat glattet for lesbarhet og
+          klippet mot land; beregningens oppløsning er uendret.
+        </FigureNote>
+      </div>
       <Choice
         label="Havbasseng"
         value={id}

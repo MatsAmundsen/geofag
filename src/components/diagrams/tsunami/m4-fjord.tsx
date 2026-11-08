@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FigureNote, Lab, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
-import { arrow, label, leader, paintRock, skyTo, smoothPath } from "./paint";
+import { arrow, label, leader, paintRock, skyTo, smoothPath, textWidth } from "./paint";
 import {
   fjordPlaybackTick,
   FJORD_LEFT_SHORE,
@@ -11,8 +11,9 @@ import {
   FJORD_END,
   fjordBed,
   fjordStage,
-  fjordWave,
   slideOutline,
+  fjordSurface,
+  fjordSlideLabel,
 } from "./sim/fjord";
 import { ink } from "./sim/palette";
 
@@ -78,10 +79,7 @@ export function ModelFjord() {
       ctx.closePath();
       ctx.clip();
       ctx.beginPath();
-      const surf = Array.from({ length: 151 }, (_, i) => ({
-        x: xOf(i / 150),
-        y: yOf(-fjordWave(i / 150, t)),
-      }));
+      const surf = fjordSurface(t).map((p) => ({ x: xOf(p.x), y: yOf(p.y) }));
       smoothPath(ctx, surf);
       ctx.strokeStyle = ink.sea;
       ctx.lineWidth = 2;
@@ -96,11 +94,10 @@ export function ModelFjord() {
       ctx.strokeStyle = ink.text;
       ctx.lineWidth = 1;
       ctx.stroke();
-      const topPoint = slide.reduce((a, b) => (b.y < a.y ? b : a));
       const massName = t < 0.8 ? "Skred" : "Avsatt masse";
-      const lx = Math.max(t < 0.8 ? 35 : 58, Math.min(w - 58, topPoint.x));
-      label(ctx, massName, lx, topPoint.y - 14, { align: "center" });
-      leader(ctx, lx, topPoint.y - 10, topPoint.x, topPoint.y - 3);
+      const note = fjordSlideLabel(t, w, h, textWidth(ctx, massName));
+      label(ctx, massName, note.x, note.baseline, { align: "center" });
+      leader(ctx, note.x, note.baseline + 4, note.anchor.x, note.anchor.y - 3);
       label(ctx, fjordStage(t), w / 2, 40, { align: "center" });
       if (t >= 0.8 && t < FJORD_CONTACT) {
         arrow(ctx, xOf(0.38), sea - 40, xOf(0.66), ink.sea);
@@ -135,14 +132,17 @@ export function ModelFjord() {
         <canvas
           ref={canvasRef}
           role="img"
+          aria-describedby="m4-beskrivelse"
           aria-label={`Tenkt fjordsnitt: ${stage}. Uregelmessig skred, avrundede fjordsider og en bølge som vender tilbake.`}
           className="h-[340px] w-full"
         />
       </div>
-      <FigureNote>
-        Skjematisk, ikke i målestokk. Bølgeutslag og skred er visuelt forstørret. Avspillingen viser
-        en rekkefølge, ikke virkelig gangtid.
-      </FigureNote>
+      <div id="m4-beskrivelse">
+        <FigureNote>
+          Skjematisk, ikke i målestokk. Bølgeutslag og skred er visuelt forstørret. Avspillingen viser
+          en rekkefølge, ikke virkelig gangtid. Avslutningen ved land er en visningsforenkling, ikke beregnet oppskylling.
+        </FigureNote>
+      </div>
       <Transport
         playing={playing}
         onToggle={() => {
