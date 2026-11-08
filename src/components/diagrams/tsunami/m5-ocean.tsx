@@ -3,6 +3,7 @@ import { Choice, FigureNote, Lab, Readouts, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import {
   cellGeo,
+  oceanPanelLayout,
   formatLongitude,
   makeOcean,
   marchingContours,
@@ -56,12 +57,11 @@ export function ModelOcean() {
       if (!fit) return;
       const { ctx, w, h } = fit;
       clearPaper(ctx, w, h);
-      const refLat = (((o.lat0 + o.lat1) / 2) * Math.PI) / 180;
-      const aspect = ((o.lon1 - o.lon0) * Math.cos(refLat)) / (o.lat1 - o.lat0);
-      const mw = Math.min(w - 28, (h - 100) * aspect),
-        mh = mw / aspect;
-      const ox = (w - mw) / 2,
-        oy = 40 + (h - 100 - mh) / 2;
+      const layout = oceanPanelLayout(o, w);
+      const mw = layout.mapWidth,
+        mh = layout.mapHeight,
+        ox = layout.ox,
+        oy = layout.oy;
       const rings = id === "india" ? INDIA_RINGS : PACIFIC_RINGS;
       const xOf = (lon: number) => ox + ((lon - o.lon0) / (o.lon1 - o.lon0)) * mw;
       const yOf = (lat: number) => oy + ((o.lat1 - lat) / (o.lat1 - o.lat0)) * mh;
@@ -153,11 +153,9 @@ export function ModelOcean() {
         ctx.fill();
         label(ctx, p.name, x, y + 5, { align: "center", color: ink.text });
       }
-      label(ctx, id === "india" ? "Indiahavet" : "Stillehavet", w / 2, 24, { align: "center" });
-      label(ctx, "K: idealisert kildecelle", 14, h - 34);
-      label(ctx, `Avspilt modelltid: ${fmt(clock.current)}`, 14, h - 12);
     },
   );
+  const figureAspect = oceanPanelLayout(o, 332).aspect;
   const resolution = `${nb((o.lon1 - o.lon0) / o.nx, 1)}° lengde og ${nb((o.lat1 - o.lat0) / o.ny, 1)}° bredde`;
   return (
     <Lab
@@ -168,13 +166,23 @@ export function ModelOcean() {
       assume={`Idealisert, konstant havdyp ${nb(o.depth)} m. Dijkstra på et 8-koblet rutenett, uten diagonale snarveier over land. Sfæriske kantavstander i meter og fart √(gd). Oppløsning: ${resolution}. Natural Earth 1:110 millioner er grovt kystgrunnlag; landmasken er konservativ og kan stenge smale sund. Rutenettet gir retningsavhengig tilnærmingsfeil. Ingen målt batymetri, refleksjon eller historisk bruddkilde.`}
       conclusion="Linjer og kontrollpunkttider er beregnet gangtid fra én idealisert kildecelle. De er ikke observerte ankomsttider. En fin linje gir ikke finere geografisk oppløsning. Ikke oppskylling, bølgehøyde eller fare."
     >
-      <div className="overflow-hidden rounded-2xl border border-line bg-card">
+      <div
+        className="overflow-hidden rounded-2xl border border-line bg-card"
+        style={{ containerType: "inline-size" }}
+      >
+        <p className="px-3 py-2 text-center text-sm text-ink">
+          {id === "india" ? "Indiahavet" : "Stillehavet"}
+        </p>
         <canvas
           ref={canvasRef}
           role="img"
           aria-label={`${id === "india" ? "Indiahavet" : "Stillehavet"}: kystkonturer, kildecelle K, kontrollpunkt A og B og idealiserte gangtidslinjer. Tidene står også under kartet.`}
-          className="h-[320px] w-full sm:h-[440px]"
+          className="w-full"
+          style={{ height: `calc((100cqw - 24px) * ${1 / figureAspect} + 40px)` }}
         />
+        <p className="px-3 pb-2 text-sm text-ink">
+          K: idealisert kildecelle. Avspilt modelltid: {fmt(time)}.
+        </p>
       </div>
       <FigureNote>
         Kartet er ekvirektangulært med standardbredde {nb((o.lat0 + o.lat1) / 2)}°. Ingen jevn

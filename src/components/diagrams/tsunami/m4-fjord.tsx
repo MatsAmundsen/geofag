@@ -3,6 +3,8 @@ import { FigureNote, Lab, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { arrow, label, leader, paintRock, skyTo, smoothPath } from "./paint";
 import {
+  advanceFjordPlayback,
+  nextFjordStep,
   FJORD_CONTACT,
   FJORD_END,
   fjordBed,
@@ -33,14 +35,20 @@ export function ModelFjord() {
   useSimLoop(
     canvasRef,
     playing,
-    (frames) => advance(frames / 240),
+    (frames) => {
+      const next = advanceFjordPlayback(progress.current, frames);
+      progress.current = next.position;
+      setPosition(next.position);
+      if (!next.more) setPlaying(false);
+      return next.more;
+    },
     () => {
       const fit = canvasRef.current && fitCanvas(canvasRef.current);
       if (!fit) return;
       const { ctx, w, h } = fit;
       const sea = h * 0.42,
         scale = h * 0.65;
-      const xOf = (x: number) => 12 + x * (w - 24);
+      const xOf = (x: number) => x * w;
       const yOf = (y: number) => sea + y * scale;
       const t = progress.current;
       clearPaper(ctx, w, h);
@@ -50,13 +58,13 @@ export function ModelFjord() {
         y: yOf(fjordBed(i / 150)),
       }));
       ctx.fillStyle = ink.water;
-      ctx.fillRect(12, sea, w - 24, h - sea - 10);
-      paintRock(ctx, bed, h - 10);
+      ctx.fillRect(0, sea, w, h - sea);
+      paintRock(ctx, bed, h);
       // Clip the prescribed surface to water: it never paints across a dry fjordside.
       ctx.save();
       ctx.beginPath();
-      ctx.moveTo(12, 0);
-      ctx.lineTo(w - 12, 0);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(w, 0);
       smoothPath(ctx, bed.slice().reverse(), false);
       ctx.closePath();
       ctx.clip();
@@ -135,7 +143,7 @@ export function ModelFjord() {
         onReset={reset}
         onStep={() => {
           setPlaying(false);
-          const next = [0.6, 1.1, 1.8, 2.6, 3].find((v) => v > progress.current + 0.001) ?? 3;
+          const next = nextFjordStep(progress.current);
           advance(next - progress.current);
         }}
         stepLabel="Neste prosesstrinn"
@@ -152,16 +160,24 @@ export function ModelFjord() {
             <li
               key={phase.name}
               aria-current={active ? "step" : undefined}
-              className={
-                "rounded-xl border border-line bg-paper px-3 py-2 text-sm text-ink " +
-                (active ? "border-l-4 border-l-sea" : "")
-              }
+              className="rounded-xl px-3 py-2 text-sm"
+              style={{
+                backgroundColor: active ? "#143e52" : "#f7f3ea",
+                color: active ? "#ffffff" : "#4f5963",
+                border: active ? "3px solid #143e52" : "1px solid #d9d0c3",
+              }}
             >
               <p className="font-medium">
                 {i + 1} · {phase.name}
               </p>
-              <p>{active ? "▶ Aktiv fase" : "Fase " + (i + 1)}</p>
-              <p className="text-muted">{phase.hint}</p>
+              <p>
+                {active
+                  ? "▶ Aktiv fase"
+                  : i < (stage === "Refleksjon" ? 2 : stage === "Bølgeutbredelse" ? 1 : 0)
+                    ? "Vist tidligere"
+                    : "Kommer senere"}
+              </p>
+              <p>{phase.hint}</p>
             </li>
           );
         })}

@@ -1,3 +1,13 @@
+import { readFileSync } from "node:fs";
+import {
+  advanceFjordPlayback,
+  nextFjordStep,
+  FJORD_FRAMES_PER_UNIT,
+  FJORD_END,
+  fjordWaveParts,
+  townGlyphLayout,
+} from "./sim/fjord";
+import { oceanPanelLayout } from "./sim/oceanmap";
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import {
@@ -178,6 +188,7 @@ test("text palette meets 4.5:1 on direct figure backgrounds", () => {
     assert.ok(contrast("#1c2430", background) >= 4.5);
   for (const background of ["#efe6d6", "#f7f3ea"])
     assert.ok(contrast("#4f5963", background) >= 4.5);
+  assert.ok(contrast("#ffffff", "#143e52") >= 4.5);
 });
 
 test("M4 moves and spreads the source after the first phase, and reflection matches contact", () => {
@@ -304,4 +315,140 @@ test("all essential times including Pacific 12 h have collision-free 14 px label
       }
     }
   }
+});
+
+test("M4 full production playback reaches and holds visible reflection in ordinary and reduced motion", () => {
+  for (const framesPerCallback of [1, 30]) {
+    let position = 0,
+      calls = 0,
+      reflectionFrames = 0,
+      seenReflectedPart = false;
+    const phases: string[] = [];
+    while (true) {
+      const next = advanceFjordPlayback(position, framesPerCallback);
+      position = next.position;
+      calls++;
+      const stage = fjordStage(position);
+      if (phases.at(-1) !== stage) phases.push(stage);
+      if (stage === "Refleksjon") {
+        reflectionFrames += framesPerCallback;
+        for (let i = 1; i < 100; i++) {
+          const x = i / 100;
+          if (fjordBed(x) <= 0) continue;
+          const wave = fjordWaveParts(x, position);
+          if (wave.reflected > 0.05) seenReflectedPart = true;
+        }
+      }
+      if (!next.more) break;
+      assert.ok(calls < 1000, "production playback must terminate");
+    }
+    assert.deepEqual(phases, ["Vannforskyvning", "Bølgeutbredelse", "Refleksjon"]);
+    assert.equal(position, FJORD_END);
+    assert.equal(calls * framesPerCallback, FJORD_END * FJORD_FRAMES_PER_UNIT);
+    assert.ok(
+      reflectionFrames >= FJORD_FRAMES_PER_UNIT,
+      "reflection must occupy a substantial visible playback interval",
+    );
+    assert.ok(seenReflectedPart, "the reflected part must actually be in wet cells before stop");
+    const held = advanceFjordPlayback(position, framesPerCallback);
+    assert.equal(held.position, FJORD_END);
+    assert.equal(held.more, false);
+    assert.equal(fjordStage(held.position), "Refleksjon");
+  }
+  let position = 0;
+  const stages: string[] = [];
+  for (let i = 0; i < 5; i++) {
+    position = nextFjordStep(position);
+    stages.push(fjordStage(position));
+  }
+  assert.ok(stages.includes("Bølgeutbredelse") && stages.includes("Refleksjon"));
+  assert.equal(position, FJORD_END);
+  // Checked against the actual shared implementation rather than assuming elapsed seconds.
+  const source = readFileSync(new URL("./draw.ts", import.meta.url), "utf8");
+  assert.match(source, /frameRef\.current\(reduce \? 30 : 1\)/);
+});
+
+test("M5 width-driven panel fills mobile and desktop while keeping the geographic aspect and labels", () => {
+  for (const id of ["india", "tohoku"] as const) {
+    const o = makeOcean(id),
+      levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
+    const contours = levels.map((level) => ({
+      level,
+      paths: smoothOceanContours(o, marchingContours(o, level)),
+    }));
+    for (const width of [250, 328, 992]) {
+      const layout = oceanPanelLayout(o, width);
+      assert.equal(layout.mapWidth, width - 24);
+      assert.ok(Math.abs(layout.mapWidth / layout.mapHeight - layout.aspect) < 1e-12);
+      assert.equal(layout.canvasHeight, layout.mapHeight + 40);
+      const obstacles = [{ k: o.source }, ...o.points].map((p) => {
+        const [lon, lat] = cellGeo(o, p.k);
+        return {
+          x: ((lon - o.lon0) / (o.lon1 - o.lon0)) * layout.mapWidth - 12,
+          y: ((o.lat1 - lat) / (o.lat1 - o.lat0)) * layout.mapHeight - 12,
+          width: 24,
+          height: 24,
+        };
+      });
+      const water = (p: { x: number; y: number }) => {
+        const i = Math.floor(p.x * o.nx),
+          j = Math.floor(p.y * o.ny);
+        return i >= 0 && i < o.nx && j >= 0 && j < o.ny && !o.land[j * o.nx + i];
+      };
+      const labels = contourLabels(contours, layout.mapWidth, layout.mapHeight, obstacles, water);
+      assert.equal(labels.length, levels.length);
+      for (const label of labels) assert.ok(label.box.y + label.box.height <= layout.canvasHeight);
+    }
+  }
+});
+
+test("M7 text fields avoid water, terrain and all building symbols without moving physical sites", () => {
+  for (const width of [250, 328, 992])
+    for (const level of [0.16, 0.27])
+      for (const moved of [false, true]) {
+        const sites = TOWN_SITES.map((b) => ({
+          ...b,
+          x: moved && b.name === "Skole" ? 0.73 : b.x,
+        }));
+        const ph = 221;
+        const glyphs = townGlyphLayout(width, ph, level, sites, {
+          Hus: 26,
+          "Nytt bygg": 66,
+          Skole: 38,
+        });
+        for (const g of glyphs) {
+          const physical = sites.find((b) => b.name === g.name)!;
+          assert.equal(g.x, 12 + physical.x * (width - 24));
+          assert.equal(g.y, ph * 0.7 - townHeight(physical.x) * ph);
+          assert.ok(
+            g.box.y + g.box.height <= g.waterY - 5 || g.box.y >= g.waterY + 5,
+            `${width} ${level} ${g.name} water`,
+          );
+          for (let i = 0; i <= 20; i++) {
+            const px = g.box.x + (g.box.width * i) / 20,
+              terrain = ph * 0.7 - townHeight((px - 12) / (width - 24)) * ph;
+            assert.ok(g.box.y + g.box.height <= terrain - 3, `${width} ${g.name} terrain`);
+          }
+          for (const h of glyphs)
+            assert.ok(
+              !boxesOverlap(
+                g.box,
+                {
+                  x: h.x - h.half - 0.6,
+                  y: h.y - h.height - 0.6,
+                  width: 2 * h.half + 1.2,
+                  height: h.height + 1.2,
+                },
+                1,
+              ),
+              `${g.name} against ${h.name}`,
+            );
+        }
+        for (let i = 0; i < glyphs.length; i++)
+          for (let j = i + 1; j < glyphs.length; j++) {
+            assert.ok(!boxesOverlap(glyphs[i].box, glyphs[j].box, 3));
+            const gap = Math.abs(glyphs[i].x - glyphs[j].x) - glyphs[i].half - glyphs[j].half - 1.2;
+            assert.ok(gap >= 2.99, `${width}px symbols need a visible gap`);
+          }
+      }
 });

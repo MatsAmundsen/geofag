@@ -30,17 +30,32 @@ export function fjordPulseCenter(t: number) {
   const incident = 0.16 + pulseSpeed * Math.max(0, Math.min(FJORD_END, t));
   return incident <= FJORD_RIGHT_SHORE ? incident : 2 * FJORD_RIGHT_SHORE - incident;
 }
-export function fjordWave(x: number, t: number) {
-  if (t <= 0) return 0;
-  const incident = 0.16 + pulseSpeed * Math.min(FJORD_END, t);
-  const pulse = (center: number) => {
-    const z = (x - center) / 0.065;
+export function fjordWaveParts(x: number, t: number) {
+  if (t <= 0) return { incident: 0, reflected: 0 };
+  const center = 0.16 + pulseSpeed * Math.min(FJORD_END, t);
+  const pulse = (cx: number) => {
+    const z = (x - cx) / 0.065;
     if (Math.abs(z) >= 2) return 0;
     return 0.075 * Math.min(1, t * 4) * (1 - 2 * z * z) * Math.exp(-z * z) * (1 - (z * z) / 4) ** 2;
   };
-  // Image pulse at the reflecting shoreline. Incoming and reflected parts coexist during
-  // contact rather than making the entire pulse turn around prematurely. Illustrative only.
-  return pulse(incident) + pulse(2 * FJORD_RIGHT_SHORE - incident);
+  return { incident: pulse(center), reflected: pulse(2 * FJORD_RIGHT_SHORE - center) };
+}
+export function fjordWave(x: number, t: number) {
+  const p = fjordWaveParts(x, t);
+  return p.incident + p.reflected;
+}
+
+/** Exact production playback step. Shared useSimLoop supplies 1 logical frame normally,
+ * 30 on a reduced-motion tick. This animation is a sequence, not a physical-time clock. */
+export const FJORD_FRAMES_PER_UNIT = 120;
+export function advanceFjordPlayback(position: number, frames: number) {
+  let next = Math.min(FJORD_END, position + Math.max(0, frames) / FJORD_FRAMES_PER_UNIT);
+  for (const boundary of [0.8, FJORD_CONTACT, FJORD_END])
+    if (Math.abs(next - boundary) < 1e-9) next = boundary;
+  return { position: next, more: next < FJORD_END };
+}
+export function nextFjordStep(position: number) {
+  return [0.6, 1.1, 1.8, 2.6, FJORD_END].find((v) => v > position + 0.001) ?? FJORD_END;
 }
 export function slideOutline(t: number) {
   // Continue downslope into a spreading deposit during propagation. Geometry only, no volume claim.
@@ -112,4 +127,68 @@ export const TOWN_N = 241;
 export function townScenario(level: number) {
   const heights = Array.from({ length: TOWN_N }, (_, i) => townHeight(i / (TOWN_N - 1)));
   return { heights, wet: connectedWet(heights, TOWN_N, 1, level, [0]) };
+}
+
+/** Symbol/label geometry only; site x and sampled exposure never change. */
+export function townGlyphLayout(
+  width: number,
+  ph: number,
+  level: number,
+  sites: readonly { name: string; x: number }[],
+  textWidths: Record<string, number>,
+) {
+  const xOf = (x: number) => 12 + x * (width - 24),
+    yOf = (z: number) => ph * 0.7 - z * ph;
+  const waterY = yOf(level);
+  const minSeparation = Math.min(
+    ...sites.flatMap((a, i) => sites.slice(i + 1).map((b) => Math.abs(xOf(a.x) - xOf(b.x)))),
+  );
+  const half = Math.max(1, Math.min(7, (minSeparation - 4.2) / 2));
+  return sites.map((site) => {
+    const x = xOf(site.x),
+      y = yOf(townHeight(site.x)),
+      height = 18;
+    let tx: number, baseline: number, align: "left" | "right" | "center";
+    const tw = textWidths[site.name];
+    if (site.name === "Hus") {
+      tx = x - half - 7;
+      baseline = y - 12;
+      align = "right";
+    } else if (site.name === "Nytt bygg") {
+      tx = x - 11;
+      baseline = Math.min(y - 43, waterY - 10);
+      align = "right";
+    } else {
+      tx = x;
+      align = "center";
+      const terrainTop = Math.min(
+        ...Array.from({ length: 21 }, (_, i) =>
+          yOf(
+            townHeight(
+              Math.max(0, Math.min(1, (x - tw / 2 - 3 + (i * (tw + 6)) / 20 - 12) / (width - 24))),
+            ),
+          ),
+        ),
+      );
+      baseline = Math.max(44, Math.min(y - 32, terrainTop - 10));
+    }
+    if (baseline + 4 > waterY - 6 && baseline - 15 < waterY + 6) {
+      baseline = site.name === "Hus" ? waterY + 21 : waterY - 10;
+    }
+    let left = align === "right" ? tx - tw : align === "center" ? tx - tw / 2 : tx;
+    left = Math.max(5, Math.min(width - tw - 5, left));
+    tx = align === "right" ? left + tw : align === "center" ? left + tw / 2 : left;
+    return {
+      ...site,
+      x,
+      y,
+      half,
+      height,
+      tx,
+      baseline,
+      align,
+      box: { x: left - 2, y: baseline - 15, width: tw + 4, height: 19 },
+      waterY,
+    };
+  });
 }

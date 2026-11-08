@@ -493,3 +493,13 @@ export function formatLongitude(lon: number) {
   const signed = ((((lon + 180) % 360) + 360) % 360) - 180;
   return `${Math.abs(signed).toFixed(1).replace(".", ",")}° ${signed < 0 ? "V" : "Ø"}`;
 }
+
+/** Figure geometry derives from available width; the map aspect never stretches.
+ * Forty pixels below the map are reserved for narrow-screen contour callouts. */
+export function oceanPanelLayout(o: GeoGrid, width: number) {
+  const aspect =
+    ((o.lon1 - o.lon0) * Math.cos((((o.lat0 + o.lat1) / 2) * Math.PI) / 180)) / (o.lat1 - o.lat0);
+  const mapWidth = Math.max(1, width - 24),
+    mapHeight = mapWidth / aspect;
+  return { aspect, mapWidth, mapHeight, canvasHeight: mapHeight + 40, ox: 12, oy: 0 };
+}
