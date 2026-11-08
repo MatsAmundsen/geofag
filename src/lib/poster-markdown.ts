@@ -210,7 +210,8 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
   {
     widgets: ["TsunamiM1"],
-    beforeHeading: "Fra dypt hav til grunn kyst",
+    // Rett etter kildeforklaringen, før «Magnituden alene er ikke nok».
+    afterParagraph: "har alle noe å si for hvor stor tsunamien kan bli",
     require: "nesten usynlig bølge ute på havet",
   },
   {
@@ -220,7 +221,8 @@ const CHAPTER_INJECT_RULES: InjectRule[] = [
   },
   {
     widgets: ["TsunamiM3"],
-    beforeHeading: "Norske tsunamier",
+    // Rett etter de fire måledefinisjonene, før tallene og eksemplene.
+    afterParagraph: "er hvor langt inn over land vannet går, målt vannrett.",
     require: "nesten usynlig bølge ute på havet",
   },
   {

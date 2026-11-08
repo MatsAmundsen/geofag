@@ -50,15 +50,15 @@ De fleste store tsunamier i verdenshavene henger sammen med en *subduksjonssone*
 
 Der platene henger fast, kan kanten av den øvre plata bli dratt ned og bøyd. Når låsen ryker, kan havbunnen løftes eller senkes brått. Vannet over følger med. Så søker vannflaten tilbake mot likevekt, og bølger brer seg utover (NOAA, u.å.-a). Hvor mye bunnen flytter seg, hvor stort område som flyttes, og hvor dypt vannet er ved kilden, har alle noe å si for hvor stor tsunamien kan bli (NOAA, u.å.-a).
 
+```widget
+TsunamiM1
+```
+
 Magnituden alene er ikke nok. NOAA skriver at ikke alle jordskjelv lager tsunami. Skjelvet må være stort nok og nært nok havbunnen til å gi den vertikale bevegelsen som vanligvis setter en tsunami i gang (NOAA, u.å.-a). Et skjelv som hovedsakelig flytter berget sidelengs, løfter lite vann, selv om magnituden er høy. Et grunt skjelv med tydelig løft eller senkning av bunnen er en annen sak. Varigheten kan også si noe om hvor stort område som brast (NOAA, u.å.-a).
 
 Skred er den andre store gruppen. Et skred kan treffe vannet ovenfra, eller gli ut under vann og skyve vann foran og bak seg. Hvor mye masse som flytter vann, hvor raskt den beveger seg, og til hvilket dyp, avgjør om det blir en tsunami (NOAA, u.å.-a). Nær kilden kan en skredtsunami bli større enn en skjelvtsunami, og den kan nå land i løpet av minutter, med lite eller ingen varslingstid. Den taper vanligvis energi fort og når sjelden fjerne kyster (NOAA, u.å.-a). Mange slike skred utløses av jordskjelv, men tyngdekraft, vind og mye nedbør kan også få en bratt, ustabil skråning til å svikte. Et skjelv som er for lite til å lage tsunami direkte, kan likevel utløse et skred som lager en (NOAA, u.å.-a). Hvordan skred oppfører seg i fjell og leire, tar kapitlet [Skred](/geofag-1/skred).
 
 Vulkaner kan lage tsunami når masse beveger seg: et skred fra vulkanen, en kollaps, eller et utbrudd som fortrenger vann. Meteorittnedslag kan også flytte vann, men det er en sjelden utløser (NOAA, u.å.-a). Et meteorittnedslag må ikke blandes med en *meteotsunami*. En meteotsunami lages av kraftige værfenomener over hav eller en stor innsjø. Den kan ligne en seismisk tsunami, og den kan også forveksles med stormflo. Den er et værfenomen, ikke et nedslag fra verdensrommet (NOAA, u.å.-a). I dette kapitlet er meteotsunami bare en avgrensning, ikke hovedtema.
-
-```widget
-TsunamiM1
-```
 
 ```widget
 YtMaria07
@@ -104,6 +104,10 @@ Tall fra en tsunami blir fort blandet sammen fordi ordet «høyde» brukes om fl
 
 *Bølgehøyde* ute i vannet er den loddrette avstanden fra bølgedal til bølgetopp der bølgen fortsatt er en bølge. *Oppskylling*, på engelsk run-up, er hvor høyt over havnivået vannet når opp på land på ett sted (NOAA, u.å.-c). *Oversvømmelsesdybde* er hvor dypt vannet står på et punkt på land. *Inntrenging* er hvor langt inn over land vannet går, målt vannrett.
 
+```widget
+TsunamiM3
+```
+
 NOAA skriver at de fleste oppskyllinger er under om lag 3 m, men at de i ekstreme tilfeller nær kilden kan bli over om lag 30 m (NOAA, u.å.-c). Et maksimum ett sted er ikke høyden langs hele kysten. Et rev, en bukt, en elvemunning, undersjøiske former og hvor bratt stranden er, endrer størrelse, utseende og skade (NOAA, u.å.-c). En liten, ufarlig bølge ett sted kan være voldsom noen kilometer unna.
 
 Tsunamien kommer som en serie av topper og daler. Hvis dalen kommer først, kan havet trekke seg unormalt tilbake og legge bunnen bar før vannet stiger (NOAA, u.å.-c). Det er et naturlig tegn, men det kommer ikke alltid først. Noen steder kommer toppen først, og da er tilbaketrekking et dårlig tegn å vente på.
@@ -111,10 +115,6 @@ Tsunamien kommer som en serie av topper og daler. Hvis dalen kommer først, kan 
 Den første bølgen trenger ikke være den siste, den største eller den mest ødeleggende. Store tsunamier kan vare i dager noen steder. Tiden mellom toppene varierer, typisk fra om lag fem minutter til to timer, og farlige strømmer kan vare i dager (NOAA, u.å.-c). Derfor er faren ikke over når den første bølgen har trukket seg tilbake. Lang bølgelengde gir også mer vann som kan gå inn over land enn en kort vindbølge. En stor tsunami kan oversvømme lavt land mer enn om lag 1,6 km inn fra kysten (NOAA, u.å.-c).
 
 Skadene kommer ikke bare av vannhøyden. Strømmen eroderer, og drivgods som båter, trestammer og bygningsdeler treffer det som står i veien. Fjordform, havnedyp og terreng bak strandlinjen avgjør hvor vannet samles.
-
-```widget
-TsunamiM3
-```
 
 ```widget
 SjekkTsunami3

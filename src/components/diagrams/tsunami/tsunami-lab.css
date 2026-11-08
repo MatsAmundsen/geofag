@@ -1,0 +1,49 @@
+/* Egne farger, avgrenset til modellene, så de ikke avhenger av geofag-temaet. */
+.tsunami-pakke {
+  --tl-paper: #f4efe6;
+  --tl-ink: #1c2430;
+  --tl-muted: #5c6670;
+  --tl-line: #d9d0c3;
+  --tl-card: #fbf7f0;
+  --tl-sea: #154556;
+  color: var(--tl-ink);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+.tsunami-pakke .border-line {
+  border-color: var(--tl-line);
+}
+.tsunami-pakke .bg-card {
+  background-color: var(--tl-card);
+}
+.tsunami-pakke .bg-paper {
+  background-color: var(--tl-paper);
+}
+.tsunami-pakke .bg-sea {
+  background-color: var(--tl-sea);
+}
+.tsunami-pakke .text-ink {
+  color: var(--tl-ink);
+}
+.tsunami-pakke .text-sea {
+  color: var(--tl-sea);
+}
+.tsunami-pakke .text-muted {
+  color: var(--tl-muted);
+}
+.tsunami-pakke .text-card {
+  color: var(--tl-card);
+}
+.tsunami-pakke .border-sea {
+  border-color: var(--tl-sea);
+}
+.tsunami-pakke .hover\:border-sea:hover {
+  border-color: var(--tl-sea);
+}
+.tsunami-pakke .font-display {
+  font-family: Fraunces, Georgia, "Iowan Old Style", serif;
+}
+.tsunami-pakke .lab-range {
+  accent-color: var(--tl-sea);
+  width: 100%;
+  height: 1.75rem;
+}
