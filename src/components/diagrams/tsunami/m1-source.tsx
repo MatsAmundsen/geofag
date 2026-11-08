@@ -8,6 +8,7 @@ import { subductionElevation } from "./sim/profiles";
 import { arrow, paintRock, paintWaterColumn, skyTo, smoothPath, type Pt } from "./paint";
 import { ink } from "./sim/palette";
 import { LabelLayout } from "./place";
+import { sourceStatus } from "./a11y";
 
 /** Snittet er 680 km bredt og 25 km dypt. */
 const N = 420;
@@ -275,8 +276,13 @@ export function ModelSource() {
       const uy = (by - ay) / len;
       const nx = uy;
       const ny = -ux;
-      // Midt på bruddflaten, men løftet langs linja når bare en kort bit er synlig over bunnen av snittet.
-      const lift = Math.max(0, (ay + by) / 2 - (bottom - 26));
+      // Midt på bruddflaten, men løftet langs linja når bare en kort bit er synlig over bunnen av snittet,
+      // for eksempel ved bratt brudd som starter dypt (50° og 16 km). Pilene løftes mot 40 px over bunnen,
+      // men midten går aldri over øvre ende av bruddet. Høyere opp ville de stått ved den stiplede
+      // plategrensa, der det ikke er brudd.
+      const mid = (ay + by) / 2;
+      const target = Math.min(mid, Math.max(bottom - 40, ay));
+      const lift = Math.max(0, mid - target);
       const cx = (ax + bx) / 2 - (uy > 0.05 ? (ux / uy) * lift : 0);
       const cy = (ay + by) / 2 - (uy > 0.05 ? lift : 0);
       slipAt.x = cx;
@@ -549,6 +555,16 @@ export function ModelSource() {
               ? "Mot land kom toppen først her. Havet trekker seg altså ikke alltid tilbake før vannet stiger."
               : "Vannflaten søker tilbake mot likevekt, og bølgen deler seg i en del som går ut mot havet og en del som går inn mot land.";
 
+  const status = sourceStatus({
+    stage,
+    playing,
+    time: time.current,
+    end: T_END,
+    up,
+    down,
+    first: maxCoast.current.first,
+  });
+
   const scaleText = `Dybder og plater: høyden er forstørret ca. ${scales.ve} ganger. Havbunnens løft og senkning og vannflaten: høyden er forstørret ca. ${scales.we} ganger, ellers ville de ikke synes.`;
 
   return (
@@ -559,6 +575,7 @@ export function ModelSource() {
       question="Hva må skjelvet gjøre med havbunnen for at det skal bli en tsunami?"
       assume={`Tenkt subduksjonssone, ikke et bestemt jordskjelv. Bruddet ligger på plategrensa og er uendelig langt langs grøfta. Løft og senkning er en forenklet elastisk form med like stort areal opp og ned, ikke en full beregning. Vannet følger havbunnen med én gang og brer seg deretter som en lang bølge med fart √(g · d). Bølgen stopper ved kysten i modellen. Oppskylling på land er ikke med.`}
       conclusion={conclusion}
+      status={status}
     >
       <div className="grid gap-3 lg:grid-cols-[1fr_280px]">
         <div className="flex min-w-0 flex-col gap-2">
@@ -566,11 +583,12 @@ export function ModelSource() {
             <canvas
               ref={canvasRef}
               role="img"
-              aria-label={`Snitt fra dyphavet over grøfta til kysten. ${conclusion}`}
+              aria-label={`Snitt fra dyphavet over grøfta til kysten, med havbunnsplata, den overliggende plata og bruddflaten. ${status}`}
+              aria-describedby="m1-figurmerknad"
               className="h-[360px] w-full sm:h-[440px]"
             />
           </div>
-          <FigureNote>
+          <FigureNote id="m1-figurmerknad">
             Snitt på {nb(L / 1000)} km fra havet til land, {nb(Z_BOTTOM / 1000)} km dypt.{" "}
             {scaleText}
           </FigureNote>
@@ -638,6 +656,8 @@ export function ModelSource() {
         onReset={() => reset("før")}
         onStep={step}
         stepLabel={stage === "før" ? "Utløs skjelvet" : "Fram 2 minutter"}
+        liveTime={false}
+        toggleState={false}
         time={`Simulert tid ${nb(minutes, 1)} min${reduce ? "" : " · 1 s avspilling ≈ 6 min"}`}
       />
       <Readouts
