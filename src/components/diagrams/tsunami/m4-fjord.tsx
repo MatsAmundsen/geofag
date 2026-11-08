@@ -1,8 +1,15 @@
 import { useRef, useState } from "react";
-import { FigureNote, Lab, Readouts, Transport } from "./lab";
+import { FigureNote, Lab, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { arrow, label, leader, paintRock, skyTo, smoothPath } from "./paint";
-import { FJORD_END, fjordBed, fjordStage, fjordWave, slideOutline } from "./sim/fjord";
+import {
+  FJORD_CONTACT,
+  FJORD_END,
+  fjordBed,
+  fjordStage,
+  fjordWave,
+  slideOutline,
+} from "./sim/fjord";
 import { ink } from "./sim/palette";
 
 export function ModelFjord() {
@@ -72,15 +79,15 @@ export function ModelFjord() {
       ctx.strokeStyle = ink.text;
       ctx.lineWidth = 1;
       ctx.stroke();
-      label(ctx, "Skred", 16, 30);
-      leader(ctx, 42, 36, slide[1].x, slide[1].y - 4);
-      label(ctx, fjordStage(t), w / 2, 60, { align: "center" });
-      if (t < 0.8) {
-        label(ctx, "Kildesone", w / 2, sea + 64, { align: "center" });
-        leader(ctx, w / 2 - 30, sea + 52, xOf(0.23), sea + 14);
-      } else if (t < 1.8) {
+      const topPoint = slide.reduce((a, b) => (b.y < a.y ? b : a));
+      const massName = t < 0.8 ? "Skred" : "Avsatt masse";
+      const lx = Math.max(t < 0.8 ? 35 : 58, Math.min(w - 58, topPoint.x));
+      label(ctx, massName, lx, topPoint.y - 14, { align: "center" });
+      leader(ctx, lx, topPoint.y - 10, topPoint.x, topPoint.y - 3);
+      label(ctx, fjordStage(t), w / 2, 40, { align: "center" });
+      if (t >= 0.8 && t < FJORD_CONTACT) {
         arrow(ctx, xOf(0.38), sea - 40, xOf(0.66), ink.sea);
-      } else {
+      } else if (t >= FJORD_CONTACT) {
         arrow(ctx, xOf(0.8), sea - 40, xOf(0.57), ink.sea);
       }
       label(ctx, "Tenkt fjordsnitt", w / 2, h - 28, { align: "center" });
@@ -101,7 +108,7 @@ export function ModelFjord() {
             ? "Skredmassen flytter vann i kildesonen. Den tegnete pulsen er bare et prinsipp, ikke en beregnet nedslagsbølge."
             : stage === "Bølgeutbredelse"
               ? "Forstyrrelsen brer seg bort fra kildesonen. Bølgeretning er ikke det samme som vannets forflytning."
-              : "Bølgen vender tilbake fra fjordsiden i skissen. Refleksjon gir ikke automatisk større fare overalt."
+              : "Pulsen møter fjordsiden, og en reflektert del brer seg tilbake i skissen. Refleksjonen starter ved kontakt, før hele pulsen har vendt. Det gir ikke automatisk større fare overalt."
       }
     >
       <div className="overflow-hidden rounded-2xl border border-line bg-card">
@@ -128,18 +135,37 @@ export function ModelFjord() {
         onReset={reset}
         onStep={() => {
           setPlaying(false);
-          advance(0.75);
+          const next = [0.6, 1.1, 1.8, 2.6, 3].find((v) => v > progress.current + 0.001) ?? 3;
+          advance(next - progress.current);
         }}
         stepLabel="Neste prosesstrinn"
         time={stage}
       />
-      <Readouts
-        items={[
-          { k: "1 · Kilde", v: "Vannforskyvning", hint: "skredet flytter vann" },
-          { k: "2 · Spredning", v: "Utbredelse", hint: "bort fra kildesonen" },
-          { k: "3 · Fjordside", v: "Refleksjon", hint: "bølgen vender tilbake" },
-        ]}
-      />
+      <ol className="grid gap-2 sm:grid-cols-3" aria-label="Prosessfaser">
+        {[
+          { name: "Vannforskyvning", hint: "Skredet flytter vann" },
+          { name: "Bølgeutbredelse", hint: "Bort fra kildesonen" },
+          { name: "Refleksjon", hint: "Kontakt med fjordsiden og retur" },
+        ].map((phase, i) => {
+          const active = phase.name === stage;
+          return (
+            <li
+              key={phase.name}
+              aria-current={active ? "step" : undefined}
+              className={
+                "rounded-xl border border-line bg-paper px-3 py-2 text-sm text-ink " +
+                (active ? "border-l-4 border-l-sea" : "")
+              }
+            >
+              <p className="font-medium">
+                {i + 1} · {phase.name}
+              </p>
+              <p>{active ? "▶ Aktiv fase" : "Fase " + (i + 1)}</p>
+              <p className="text-muted">{phase.hint}</p>
+            </li>
+          );
+        })}
+      </ol>
     </Lab>
   );
 }

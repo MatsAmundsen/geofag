@@ -1,7 +1,15 @@
 import { useMemo, useRef, useState } from "react";
 import { Choice, FigureNote, Lab, Readouts, Transport } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
-import { cellGeo, makeOcean, type BasinId } from "./sim/oceanmap";
+import {
+  cellGeo,
+  formatLongitude,
+  makeOcean,
+  marchingContours,
+  smoothOceanContours,
+  contourLabels,
+  type BasinId,
+} from "./sim/oceanmap";
 import { INDIA_RINGS, PACIFIC_RINGS } from "./sim/coasts";
 import { label } from "./paint";
 import { nb } from "./util";
@@ -20,37 +28,10 @@ export function ModelOcean() {
   const o = useMemo(() => makeOcean(id), [id]);
   const contours = useMemo(() => {
     const levels = id === "india" ? [3600, 7200, 10800] : [7200, 14400, 28800, 43200];
-    return levels.map((level) => {
-      const segments: { x: number; y: number }[][] = [];
-      for (let j = 0; j < o.ny - 1; j++)
-        for (let i = 0; i < o.nx - 1; i++) {
-          const k = j * o.nx + i,
-            corners = [k, k + 1, k + o.nx, k + o.nx + 1];
-          if (corners.some((n) => o.land[n] || !Number.isFinite(o.times[n]))) continue;
-          for (const tri of [
-            [k, k + 1, k + o.nx],
-            [k + 1, k + o.nx + 1, k + o.nx],
-          ]) {
-            const hits: { x: number; y: number }[] = [];
-            for (let e = 0; e < 3; e++) {
-              const a = tri[e],
-                b = tri[(e + 1) % 3],
-                ta = o.times[a],
-                tb = o.times[b];
-              if (ta < level === tb < level) continue;
-              const f = (level - ta) / (tb - ta);
-              hits.push({
-                x: ((a % o.nx) + 0.5 + ((b % o.nx) - (a % o.nx)) * f) / o.nx,
-                y:
-                  (Math.floor(a / o.nx) + 0.5 + (Math.floor(b / o.nx) - Math.floor(a / o.nx)) * f) /
-                  o.ny,
-              });
-            }
-            if (hits.length === 2) segments.push(hits);
-          }
-        }
-      return { level, segments };
-    });
+    return levels.map((level) => ({
+      level,
+      paths: smoothOceanContours(o, marchingContours(o, level)),
+    }));
   }, [id, o]);
   const duration = id === "india" ? 4 * 3600 : 16 * 3600;
   const reset = () => {
@@ -81,8 +62,7 @@ export function ModelOcean() {
         mh = mw / aspect;
       const ox = (w - mw) / 2,
         oy = 40 + (h - 100 - mh) / 2;
-      const cw = mw / o.nx,
-        ch = mh / o.ny;
+      const rings = id === "india" ? INDIA_RINGS : PACIFIC_RINGS;
       const xOf = (lon: number) => ox + ((lon - o.lon0) / (o.lon1 - o.lon0)) * mw;
       const yOf = (lat: number) => oy + ((o.lat1 - lat) / (o.lat1 - o.lat0)) * mh;
       ctx.save();
@@ -91,74 +71,75 @@ export function ModelOcean() {
       ctx.clip();
       ctx.fillStyle = ink.water;
       ctx.fillRect(ox, oy, mw, mh);
-      // No image smoothing: each reached cell remains clipped by the calculation mask.
-      for (let k = 0; k < o.times.length; k++)
-        if (!o.land[k] && o.times[k] <= clock.current) {
-          ctx.fillStyle = "#a4d0e2";
-          ctx.fillRect(ox + (k % o.nx) * cw, oy + Math.floor(k / o.nx) * ch, cw + 0.2, ch + 0.2);
-        }
-      for (const { segments } of contours) {
-        ctx.beginPath();
-        for (const [a, b] of segments) {
-          ctx.moveTo(ox + a.x * mw, oy + a.y * mh);
-          ctx.lineTo(ox + b.x * mw, oy + b.y * mh);
-        }
-        ctx.strokeStyle = ink.sea;
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-      }
-      for (let k = 0; k < o.land.length; k++)
-        if (o.land[k]) {
-          ctx.fillStyle = ink.land;
-          ctx.fillRect(ox + (k % o.nx) * cw, oy + Math.floor(k / o.nx) * ch, cw + 0.2, ch + 0.2);
-        }
-      for (const ring of id === "india" ? INDIA_RINGS : PACIFIC_RINGS) {
-        ctx.beginPath();
+      // Original geographic polygons, not raster land cells, are the visible coastline.
+      const coastPaths = rings.map((ring) => {
+        const path = new Path2D();
         ring.forEach(([lon, lat], i) => {
-          if (i === 0) ctx.moveTo(xOf(lon), yOf(lat));
-          else ctx.lineTo(xOf(lon), yOf(lat));
+          if (i === 0) path.moveTo(xOf(lon), yOf(lat));
+          else path.lineTo(xOf(lon), yOf(lat));
         });
-        ctx.closePath();
+        path.closePath();
+        return path;
+      });
+      for (const path of coastPaths) {
         ctx.fillStyle = ink.land;
-        ctx.fill();
+        ctx.fill(path);
         ctx.strokeStyle = ink.rock;
         ctx.lineWidth = 1;
+        ctx.stroke(path);
+      }
+      // Intersection of complements of all land polygons. In addition, geometry was already
+      // split against the conservative calculation mask. Neither clip can open a land barrier.
+      ctx.save();
+      for (const coast of coastPaths) {
+        const waterClip = new Path2D();
+        waterClip.rect(ox, oy, mw, mh);
+        waterClip.addPath(coast);
+        ctx.clip(waterClip, "evenodd");
+      }
+      for (const { level, paths } of contours) {
+        ctx.beginPath();
+        for (const path of paths)
+          path.forEach((p, i) => {
+            if (i === 0) ctx.moveTo(ox + p.x * mw, oy + p.y * mh);
+            else ctx.lineTo(ox + p.x * mw, oy + p.y * mh);
+          });
+        ctx.strokeStyle = ink.sea;
+        ctx.lineWidth = clock.current >= level ? 2.8 : 1.25;
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
         ctx.stroke();
       }
-      if (w >= 500)
-        for (const { level, segments } of contours) {
-          const candidates = segments.filter(
-            ([a]) => a.x > 0.22 && a.x < 0.78 && a.y > 0.15 && a.y < 0.85,
-          );
-          const segment = candidates[Math.floor(candidates.length / 2)];
-          if (segment)
-            label(
-              ctx,
-              `${nb(level / 3600)} t`,
-              ox + segment[0].x * mw,
-              oy + segment[0].y * mh - 4,
-              { align: "center" },
-            );
-        }
       ctx.restore();
-      // Outline actual computational land cells along the sea edge to expose the coarse mask honestly.
-      ctx.strokeStyle = ink.rock;
-      ctx.lineWidth = 0.7;
-      for (let j = 0; j < o.ny; j++)
-        for (let i = 0; i < o.nx; i++) {
-          const k = j * o.nx + i;
-          if (!o.land[k]) continue;
+      const markers = [{ name: "K", k: o.source }, ...o.points].map((p) => {
+        const [lon, lat] = cellGeo(o, p.k);
+        return { ...p, x: xOf(lon) - ox, y: yOf(lat) - oy };
+      });
+      const obstacles = markers.map((p) => ({ x: p.x - 12, y: p.y - 12, width: 24, height: 24 }));
+      const isWater = (p: { x: number; y: number }) => {
+        const i = Math.floor(p.x * o.nx),
+          j = Math.floor(p.y * o.ny);
+        return i >= 0 && i < o.nx && j >= 0 && j < o.ny && !o.land[j * o.nx + i];
+      };
+      const placed = contourLabels(contours, mw, mh, obstacles, isWater);
+      ctx.restore();
+      for (const p of placed) {
+        if (p.anchor) {
           ctx.beginPath();
-          if (i + 1 < o.nx && !o.land[k + 1]) {
-            ctx.moveTo(ox + (i + 1) * cw, oy + j * ch);
-            ctx.lineTo(ox + (i + 1) * cw, oy + (j + 1) * ch);
-          }
-          if (j + 1 < o.ny && !o.land[k + o.nx]) {
-            ctx.moveTo(ox + i * cw, oy + (j + 1) * ch);
-            ctx.lineTo(ox + (i + 1) * cw, oy + (j + 1) * ch);
-          }
+          ctx.moveTo(ox + p.point.x * mw, oy + p.box.y - 2);
+          ctx.lineTo(ox + p.anchor.x * mw, oy + p.anchor.y * mh);
+          ctx.strokeStyle = ink.muted;
+          ctx.lineWidth = 1;
+          ctx.setLineDash([2, 3]);
           ctx.stroke();
+          ctx.setLineDash([]);
         }
+        ctx.fillStyle = ink.panel;
+        ctx.fillRect(ox + p.box.x - 1, oy + p.box.y - 1, p.box.width + 2, p.box.height + 2);
+        label(ctx, `${nb(p.level / 3600)} t`, ox + p.point.x * mw, oy + p.point.y * mh + 5, {
+          align: "center",
+        });
+      }
       ctx.strokeStyle = ink.muted;
       ctx.lineWidth = 1;
       ctx.strokeRect(ox, oy, mw, mh);
@@ -198,8 +179,9 @@ export function ModelOcean() {
       <FigureNote>
         Kartet er ekvirektangulært med standardbredde {nb((o.lat0 + o.lat1) / 2)}°. Ingen jevn
         avstandsmålestokk over hele kartet. Linjene viser{" "}
-        {id === "india" ? "1, 2 og 3" : "2, 4, 8 og 12"} timer. Blåtonen viser bare hvor langt
-        modellklokken har kommet, ikke høyde eller fare. Ingen kurve glattes gjennom land.
+        {id === "india" ? "1, 2 og 3" : "2, 4, 8 og 12"} timer. Linjer blir tykkere når
+        modellklokken passerer dem, ikke når faren øker. Kurvene er moderat glattet for lesbarhet og
+        klippet mot land; beregningens oppløsning er uendret.
       </FigureNote>
       <Choice
         label="Havbasseng"
@@ -236,7 +218,7 @@ export function ModelOcean() {
           return {
             k: `Kontrollpunkt ${p.name}`,
             v: fmt(o.times[p.k]),
-            hint: `${nb(lat, 1)}° N, ${nb(lon > 180 ? lon - 360 : lon, 1)}° lengde · idealisert gangtid`,
+            hint: `${nb(lat, 1)}° N, ${formatLongitude(lon)} · idealisert gangtid`,
           };
         })}
       />
