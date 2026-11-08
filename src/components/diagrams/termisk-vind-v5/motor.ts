@@ -3,7 +3,7 @@
  * Logikken er flyttet uendret fra v5. Eneste endringer: elementer hentes med data-tv innenfor roten,
  * stegknapper, forklaringer og nøkler rendres av React, og lyttere/observatør/animasjonsramme ryddes ved avmontering.
  */
-import { STEG, NOKKEL, SW } from "./data";
+import { STEG, NOKKEL, SW, MERKE_FONT, MERKE_R, MERKE_Y } from "./data";
 
 void NOKKEL;
 void SW;
@@ -45,7 +45,7 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
   lab("over","Svakere over maksimumet","#3d4a54","start");
   lab("f4","Forenklet over tropopausen","#3d4a54","end");
   const MERK: Record<string, any>={};
-  function badge(id: any,n: any){const g=el("g",{},merk);el("circle",{r:28,fill:"#1f2a33"},g);const t=el("text",{"text-anchor":"middle",y:14,fill:"#fff","font-size":40,"font-weight":700},g);t.textContent=n;MERK[id]=g;}
+  function badge(id: any,n: any){const g=el("g",{},merk);el("circle",{r:MERKE_R,fill:"#1f2a33"},g);const t=el("text",{"text-anchor":"middle",y:MERKE_Y,fill:"#fff","font-size":MERKE_FONT,"font-weight":700},g);t.textContent=n;MERK[id]=g;}
   ["A","B","C","D","E"].forEach((n: any,i: any)=>badge("b"+i,n));
 
   const FS=18;
@@ -108,8 +108,8 @@ export function monterTermiskVind(root: HTMLElement): { api: any; rydd: () => vo
    // A–E (mobil)
    settBadge(0,1,200,G-120);            // A varm
    settBadge(1,1,760,G-120);            // B kald
-   settBadge(2,s.h,XC+190,yH-48);       // C trykkraft
-   settBadge(3,s.c,XC-190,yH-48);       // D coriolis
+   settBadge(2,s.h,XC+220,yH-48);       // C trykkraft
+   settBadge(3,s.c,XC-220,yH-48);       // D coriolis
    settBadge(4,s.j,XC+110,G-300);       // E jetkjerne
    // stratosfæren mellom: ikke merk
   }

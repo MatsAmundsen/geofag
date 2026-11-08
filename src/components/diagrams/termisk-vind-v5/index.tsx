@@ -110,13 +110,12 @@ export function TermiskVindV5() {
                   Nord (mot polen)
                 </text>
               </g>
-              <g fontSize="40" fontWeight="700" fill="#4a5a66" className="mob">
-                <text x="66" y="548">Sør</text>
-                <text x="894" y="548" textAnchor="end">
-                  Nord
-                </text>
-              </g>
             </svg>
+            {/* Mobil: Sør/Nord som HTML under tegneflaten, så teksten ikke skaleres ned med SVG-en og ikke ligger tett på bakkefeltet. */}
+            <div className="mob-akse" aria-hidden="true">
+              <span>Sør</span>
+              <span>Nord</span>
+            </div>
           </div>
           <div className="stabel" data-tv="nokkelstabel" aria-hidden="true">
             {NOKKEL.map((rader, s) => (

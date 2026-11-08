@@ -31,6 +31,7 @@
 .tv5 .tegn{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0;padding:0;list-style:none;color:var(--muted);font-size:.92rem}
 .tv5 .tegn i{display:inline-block;width:22px;height:12px;vertical-align:-1px;margin-right:6px;border-radius:2px}
 .tv5 .mob{display:none}
+.tv5 .mob-akse{display:none}
 .tv5 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* Tilsvarer v5s brudd ved 800 px vindu: under 780 px container blir SVG-tekst på 18 enheter under 14 px. */
 @container tv5 (max-width:779px){
@@ -38,5 +39,6 @@
   .tv5 .desk{display:none}
   .tv5 .mob{display:inline}
   .tv5 ol.nokkel b.mob{display:inline-grid}
+  .tv5 .mob-akse{display:flex;justify-content:space-between;padding:6px 6px 0;font-size:15px;font-weight:700;color:var(--muted);line-height:1.2}
   .tv5 button{padding:8px 10px;font-size:.9rem}
 }

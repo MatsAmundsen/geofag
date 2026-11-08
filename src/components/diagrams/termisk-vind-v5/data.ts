@@ -26,6 +26,14 @@ export const NOKKEL: [string | null, string, string][][] = [
  [["A","varm","Varmere luft i sør"],["B","kald","Kaldere luft i nord"],["E","vind","Jetkjerne nær tropopausen"]],
 ];
 
+/**
+ * Mobilmerker A–E i SVG (bare mobil-layout). Appens ramme gjør SVG-en ca. 212 px bred ved 300 px vindu,
+ * så 56 SVG-enheter gir ca. 12,4 px. (v5 standalone: 40 enheter, r 28.)
+ */
+export const MERKE_FONT = 56;
+export const MERKE_R = 38;
+export const MERKE_Y = 20;
+
 export const TV5_TITTEL = "Termisk vind: hvorfor vestavinden øker opp mot jetstrømmen";
 export const TV5_INGRESS =
   "Følg årsakskjeden i fem steg: temperaturforskjell, trykkflater som heller, trykkforskjell i samme høyde, balanse med corioliskraften og vind som øker med høyden.";
