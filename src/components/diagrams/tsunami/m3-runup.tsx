@@ -4,8 +4,9 @@ import { nb, roundFactor } from "./util";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { advance as advanceSWE, column, fillStill, type Column } from "./sim/swe";
 import { beachElevation } from "./sim/profiles";
-import { label, leader, skyTo, smoothPath, type Pt } from "./paint";
+import { leader, skyTo, smoothPath, type Pt } from "./paint";
 import { ink } from "./sim/palette";
+import { LabelLayout, type Spot } from "./place";
 
 const N = 640;
 const L = 16_000;
@@ -98,7 +99,8 @@ export function ModelRunup() {
       let i = shore;
       while (i < N && c.h[i] > WET) i++;
       if (i - 1 > m.current.limit && i > shore) m.current.limit = i - 1;
-      if (c.b[hc] >= 0 && c.h[hc] > WET && i > hc) m.current.house = Math.max(m.current.house, c.h[hc]);
+      if (c.b[hc] >= 0 && c.h[hc] > WET && i > hc)
+        m.current.house = Math.max(m.current.house, c.h[hc]);
       for (let k = 0; k < N; k++) {
         if (c.h[k] > WET) {
           const s = c.b[k] + c.h[k];
@@ -239,7 +241,23 @@ export function ModelRunup() {
     ctx.lineTo(w, sea);
     ctx.stroke();
     ctx.setLineDash([]);
-    label(ctx, "havnivå i ro", 6, sea - 8, { weight: "400" });
+
+    // Etiketter plasseres i prioritert rekkefølge uten å dekke hverandre.
+    const lay = new LabelLayout(ctx, { x0: 6, y0: 4, x1: w - 6, y1: bottom - 2 });
+    // Forklaringen øverst til høyre først, med god avstand til den runde kanten.
+    lay.place(
+      narrow ? "Stiplet rød: høyeste vannstand" : "Stiplet rød: høyeste vannstand så langt",
+      [{ x: w - 16, y: 26 }],
+      { align: "right", color: ink.mark, weight: "400" },
+    );
+    lay.place(
+      "havnivå i ro",
+      [
+        { x: 8, y: sea - 8 },
+        { x: 8, y: sea + 20 },
+      ],
+      { weight: "400" },
+    );
 
     // Huset der vanndypet på land leses av.
     const hb = c.b[cellOf(HOUSE)];
@@ -257,10 +275,14 @@ export function ModelRunup() {
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
+    lay.reserve({ x0: hx - 9, y0: hy - 18, x1: hx + 9, y1: hy + 1 });
 
     const show = (k: Focus) => focus === "alle" || focus === k;
-    const tag = (n: string, text: string, x: number, y: number, align: CanvasTextAlign = "left") => {
-      label(ctx, narrow ? n : `${n} ${text}`, x, y, { color: ink.mark, weight: "700", align });
+    // Pila for vanndypet ved huset tegnes senere, men plassen holdes av nå.
+    if (show("3") && houseDepth > 0.02)
+      lay.reserve({ x0: hx + 11, y0: yZ(hb + houseDepth) - 1, x1: hx + 21, y1: hy + 1 });
+    const tag = (n: string, text: string, spots: Spot[]) => {
+      lay.place(narrow ? n : `${n} ${text}`, spots, { color: ink.mark, weight: "700" });
     };
     const vArrow = (x: number, y1: number, y2: number) => {
       ctx.strokeStyle = ink.mark;
@@ -270,6 +292,7 @@ export function ModelRunup() {
       ctx.moveTo(x, y1);
       ctx.lineTo(x, y2);
       ctx.stroke();
+      lay.reserve({ x0: x - 5, y0: Math.min(y1, y2) - 1, x1: x + 5, y1: Math.max(y1, y2) + 1 });
       for (const [y, d] of [
         [y1, 1],
         [y2, -1],
@@ -291,10 +314,26 @@ export function ModelRunup() {
     ctx.moveTo(gx, yZ(-OFFSHORE));
     ctx.lineTo(gx, yZ(4));
     ctx.stroke();
-    label(ctx, "måler", gx + 5, yZ(-OFFSHORE) - 8, { weight: "400", color: ink.panel, halo: "rgba(12,48,64,0.55)" });
+    lay.place(
+      "måler",
+      [
+        { x: gx + 5, y: yZ(-OFFSHORE) - 8 },
+        { x: gx + 5, y: yZ(-OFFSHORE) - 28 },
+      ],
+      {
+        weight: "400",
+        color: ink.panel,
+        halo: "rgba(12,48,64,0.55)",
+      },
+    );
     if (show("1") && waveH > 0.05) {
       vArrow(gx - 10, yZ(m.current.gMax), yZ(m.current.gMin));
-      tag("1", "bølgehøyde", gx - 16, yZ(m.current.gMax) - 10, "right");
+      const gy = yZ(m.current.gMax);
+      tag("1", "bølgehøyde", [
+        { x: gx - 16, y: gy - 10, align: "right" },
+        { x: gx + 8, y: gy - 10, align: "left" },
+        { x: gx - 16, y: gy - 28, align: "right", to: { x: gx - 10, y: gy - 2 } },
+      ]);
     }
     if (reached) {
       const lx = xOf((lim + 1) * DX);
@@ -310,7 +349,17 @@ export function ModelRunup() {
         ctx.stroke();
         ctx.setLineDash([]);
         vArrow(Math.min(w - 8, lx + 24), sea, yZ(runup));
-        tag("2", "oppskylling", Math.min(w - 4, lx + 30), yZ(runup) - 10, narrow ? "right" : "left");
+        const ax = Math.min(w - 8, lx + 24);
+        const ry = yZ(runup);
+        const to = { x: ax, y: ry - 2 };
+        tag("2", "oppskylling", [
+          { x: ax + 8, y: ry - 10, align: "left" },
+          { x: ax - 8, y: ry - 10, align: "right" },
+          { x: ax + 8, y: ry - 30, align: "left", to },
+          { x: ax - 8, y: ry - 30, align: "right", to },
+          { x: ax + 8, y: ry - 50, align: "left", to },
+          { x: ax - 8, y: ry - 50, align: "right", to },
+        ]);
       }
       // 4 Inntrenging: vannrett fra strandlinja.
       if (show("4")) {
@@ -324,20 +373,30 @@ export function ModelRunup() {
         ctx.stroke();
         leader(ctx, sx, sea, sx, y + 6, ink.mark);
         leader(ctx, lx, yZ(runup), lx, y + 6, ink.mark);
-        tag("4", "inntrenging", (sx + lx) / 2, y + 20, "center");
+        const cx = (sx + lx) / 2;
+        tag("4", "inntrenging", [
+          { x: cx, y: y + 20, align: "center" },
+          { x: lx + 8, y: y + 20, align: "left" },
+          { x: sx - 8, y: y + 20, align: "right" },
+          { x: cx, y: y + 40, align: "center" },
+        ]);
       }
     }
     // 3 Oversvømmelsesdybde ved huset: vann over bakken.
     if (show("3") && houseDepth > 0.02) {
       vArrow(hx + 16, hy, yZ(hb + houseDepth));
-      tag("3", "vanndyp", hx + 22, yZ(hb + houseDepth) - 8, narrow ? "center" : "left");
+      const dy = yZ(hb + houseDepth);
+      const to = { x: hx + 16, y: dy - 2 };
+      tag("3", "vanndyp", [
+        { x: hx + 22, y: dy - 8, align: "left" },
+        { x: hx - 12, y: dy - 8, align: "right" },
+        { x: hx + 22, y: dy + 16, align: "left" },
+        { x: hx + 22, y: dy - 28, align: "left", to },
+        { x: hx - 12, y: dy - 28, align: "right", to },
+        { x: hx + 22, y: dy - 48, align: "left", to },
+        { x: hx - 12, y: dy - 48, align: "right", to },
+      ]);
     }
-
-    label(ctx, "Stiplet rød: høyeste vannstand så langt", w - 6, 22, {
-      align: "right",
-      color: ink.mark,
-      weight: "400",
-    });
   }
 
   const beachLabel = beach === "bratt" ? "den bratte kysten" : "den slake kysten";
@@ -366,8 +425,9 @@ export function ModelRunup() {
           />
         </div>
         <FigureNote>
-          Snitt på {nb((VIEW1 - VIEW0) / 1000, 1)} km. Høyden er forstørret ca. {ve} ganger, så stranda ser mye brattere ut
-          enn den er. Tallene i figuren svarer til tallene i boksene under.
+          Snitt på {nb((VIEW1 - VIEW0) / 1000, 1)} km. Høyden er forstørret ca. {ve} ganger, så
+          stranda ser mye brattere ut enn den er. Tallene i figuren svarer til tallene i boksene
+          under.
         </FigureNote>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
@@ -389,7 +449,16 @@ export function ModelRunup() {
           ]}
           onChange={setLead}
         />
-        <Slider label="Bølgetopp ute" value={amp} min={0.5} max={3} step={0.1} unit="m" onChange={setAmp} note="over havnivået i ro" />
+        <Slider
+          label="Bølgetopp ute"
+          value={amp}
+          min={0.5}
+          max={3}
+          step={0.1}
+          unit="m"
+          onChange={setAmp}
+          note="over havnivået i ro"
+        />
       </div>
       <Choice
         label="Fremhev"
@@ -421,13 +490,21 @@ export function ModelRunup() {
       <Readouts
         items={[
           { k: "1 Bølgehøyde", v: `${nb(waveH, 1)} m`, hint: "ute i vannet, fra dal til topp" },
-          { k: "2 Oppskylling", v: reached ? `${nb(runup, 1)} m` : "–", hint: "høyde over havnivået der vannet snudde" },
+          {
+            k: "2 Oppskylling",
+            v: reached ? `${nb(runup, 1)} m` : "–",
+            hint: "høyde over havnivået der vannet snudde",
+          },
           {
             k: "3 Oversvømmelsesdybde",
             v: houseDepth > 0.02 ? `${nb(houseDepth, 1)} m` : "0 m",
             hint: `største vanndyp over bakken ved huset, ${nb(HOUSE - SHORE)} m inne`,
           },
-          { k: "4 Inntrenging", v: reached ? `${nb(reach)} m` : "–", hint: "vannrett fra strandlinja" },
+          {
+            k: "4 Inntrenging",
+            v: reached ? `${nb(reach)} m` : "–",
+            hint: "vannrett fra strandlinja",
+          },
         ]}
       />
     </Lab>
