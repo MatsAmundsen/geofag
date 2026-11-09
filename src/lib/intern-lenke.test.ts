@@ -59,6 +59,18 @@ function pathOnly(link: string): string {
   return bare.replace(/\/$/, "") || "/";
 }
 
+/** `$kapittel` i rute-filen treffer ett ledd, som `/geografi/klima`. */
+function routeCovers(known: Set<string>, target: string): boolean {
+  if (known.has(target)) return true;
+  const parts = target.split("/");
+  for (const route of known) {
+    const bits = route.split("/");
+    if (bits.length !== parts.length) continue;
+    if (bits.every((bit, index) => bit.startsWith("$") || bit === parts[index])) return true;
+  }
+  return false;
+}
+
 describe("internal links", () => {
   it("resolves every internal link to a real route", () => {
     const known = routes();
@@ -68,7 +80,7 @@ describe("internal links", () => {
       for (const link of linksIn(source)) {
         const target = pathOnly(link);
         if (target.startsWith("/images/") || target.startsWith("/fonts/") || /\.[a-z0-9]+$/i.test(target)) continue;
-        if (!known.has(target)) missing.push(`${relative(root, path)} -> ${link}`);
+        if (!routeCovers(known, target)) missing.push(`${relative(root, path)} -> ${link}`);
       }
     }
     assert.deepEqual(missing, []);
