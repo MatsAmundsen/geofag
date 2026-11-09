@@ -5,12 +5,19 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  * Flaggene overskriver CMS-redigeringer i disse kapitlene (se copy-reseed.ts).
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
+  { flag: "geo-indre-krefter-figurnummer-kap3-2026-11-09", slug: "geo-indre-krefter", stale: ["len i figur 3.6 lar oss "] },
   { flag: "geo-baerekraft-figurnummer-kap8-2026-11-09", slug: "geo-baerekraft", stale: ["[figur-8-6]: # (FIG"] },
   { flag: "geo-naturfare-figurnummer-kap6-2026-11-09", slug: "geo-naturfare", stale: ["Figur 6.10 gir en "] },
+  { flag: "geo-indre-krefter-skjulte-kap3-2026-11-07", slug: "geo-indre-krefter", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-baerekraft-skjulte-kap8-2026-11-07", slug: "geo-baerekraft", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-naturfare-skjulte-kap6-2026-11-07", slug: "geo-naturfare", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-feltarbeid-skjulte-kap2-2026-11-07", slug: "geo-feltarbeid", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-verktoy-skjulte-kap1-2026-11-07", slug: "geo-verktoy", stale: ["FIGURPLASSHOLDER"] },
+  {
+    flag: "geo-indre-krefter-mats-valg-kap3-2026-11-06",
+    slug: "geo-indre-krefter",
+    stale: ["FIGURPLASSHOLDER"],
+  },
   {
     flag: "geo-baerekraft-mats-valg-kap8-2026-11-06",
     slug: "geo-baerekraft",
@@ -30,6 +37,12 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
     slug: "geo-verktoy",
     stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    // Geografi PR F: kapittel 3 alene; aktiveres først etter godkjent merge.
+    flag: "geo-indre-krefter-kap3-2026-11-06",
+    slug: "geo-indre-krefter",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
   },
   {
     // Geografi PR E: kapittel 8; ingen produksjonsendring før godkjent merge.
