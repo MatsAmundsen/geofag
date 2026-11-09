@@ -52,13 +52,13 @@ Alle er egne geografi-widget-ID-er. Standardvisningene og de gamle widget-ID-ene
 | Figur | Widget | Tilpasning for Vg1 |
 | --- | --- | --- |
 | 4.1 | GeoLandskapFrost | Gjenbruk av Frostsprengning. Fire enkle trinn; mer avansert isvekstforklaring og temperaturintervall skjules. Egen status og kildebelagt bildetekst. |
-| 4.2 | GeoLandskapBrelandskap | VdalTilUdal er tilpasset tre nummererte trinn, før/under/etter, med samme perspektiv og telefonutsnitt. Ingen fjordfase med kameraskifte i Vg1. |
-| 4.3 | GeoLandskapBotn | Eksisterende terrengmodell. Tankeeksperiment med stillestående is og ekstra målere skjules. Egen overskrift, bildetekst og tydelig konstruert terreng. |
-| 4.4 | GeoLandskapMassebalanse | Gjenbruk av modellramme og breprofil, med en egen enkel differanse mellom konstruert tilførsel og tap. To merkede skyvere, desimalkomma og ingen ELA/AAR, permafrost eller navngitt breprognose. |
-| 4.5 | GeoLandskapMarinGrense | Gjenbruk av IsostasiSnitt. Skjuler istykkelsesskyveren og avanserte lagetiketter. Presiserer lokal marin grense, mulig leire og modellens faste havnivå. |
-| 4.6 | GeoLandskapKvikkleire | Vg1-modus i KvikkleireDiagram med eksisterende Diagram-verktøy og skråningsgeometri. Enkel partikkel–landskap-kjede, betingede årsaksledd og rulling på små skjermer. Geofags retrogressive firetrinnsfigur er uendret. |
+| 4.2 | GeoLandskapMassebalanse | Gjenbruk av modellramme og breprofil, med en egen enkel differanse mellom konstruert tilførsel og tap. To merkede skyvere, desimalkomma og ingen ELA/AAR, permafrost eller navngitt breprognose. |
+| 4.4 | GeoLandskapBrelandskap | VdalTilUdal er tilpasset tre nummererte trinn, før/under/etter, med samme perspektiv og telefonutsnitt. Ingen fjordfase med kameraskifte i Vg1. |
+| 4.5 | GeoLandskapBotn | Eksisterende terrengmodell. Tankeeksperiment med stillestående is og ekstra målere skjules. Egen overskrift, bildetekst og tydelig konstruert terreng. |
+| 4.6 | GeoLandskapMarinGrense | Gjenbruk av IsostasiSnitt. Skjuler istykkelsesskyveren og avanserte lagetiketter. Presiserer lokal marin grense, mulig leire og modellens faste havnivå. |
+| 4.7 | GeoLandskapKvikkleire | Vg1-modus i KvikkleireDiagram med eksisterende Diagram-verktøy og skråningsgeometri. Enkel partikkel–landskap-kjede, betingede årsaksledd og rulling på små skjermer. Geofags retrogressive firetrinnsfigur er uendret. |
 
-Figur 4.2 løser før/under/etter-funksjonen ved å tilpasse eksisterende figur, uten å innføre en stor ny StegFigur-komponent. Kobling til et virkelig fotografi gjennom ModellTilFoto er ikke levert.
+Figur 4.4 løser før/under/etter-funksjonen ved å tilpasse eksisterende figur, uten å innføre en stor ny StegFigur-komponent. Kobling til et virkelig fotografi gjennom ModellTilFoto er ikke levert.
 
 ## Skjulte figurplassholdere som gjenstår
 
@@ -67,10 +67,10 @@ Seks referansedefinisjoner merket FIGURPLASSHOLDER er synlige i kildefilen, men 
 | Figur | Gjenstående arbeid |
 | --- | --- |
 | 4.0 | Kontroller konkret Commons-kart over siste istids maksimum, datagrunnlag og lisens; lag norske etiketter og tydelig tidsmerking. |
-| 4.7 | Lag egne trinnsekvenser for meander, avsnøring, terrasse og delta, uten oppdiktede endringshastigheter. |
-| 4.8 | Velg konkrete kystbilder/kartutsnitt og kontroller sted, dato, målestokk, rettigheter og kreditering. |
-| 4.9 | Velg NVE-bredatasett og tjeneste. Oppgi kartleggingsår, dekning og lisens. Ikke kall et gammelt kart «i dag». |
-| 4.10 | Velg datert Geiranger-bilde. Eventuelt oversiktskart må plassere Åknes korrekt ved Sunnylvsfjorden. |
+| 4.3 | Velg NVE-bredatasett og tjeneste. Oppgi kartleggingsår, dekning og lisens. Ikke kall et gammelt kart «i dag». |
+| 4.8 | Lag egne trinnsekvenser for meander, avsnøring, terrasse og delta, uten oppdiktede endringshastigheter. |
+| 4.9 | Velg konkrete kystbilder/kartutsnitt og kontroller sted, dato, målestokk, rettigheter og kreditering. |
+| 4.10b | Velg datert Geiranger-bilde. Eventuelt oversiktskart må plassere Åknes korrekt ved Sunnylvsfjorden. |
 | 4.11 | Lag egen snittfigur av leirslette og ravine. Skill jordtap, mulighet for marin leire og skredfare; bruk ikke oppdiktede faregrenser. |
 
 Ingen eksterne bilder, satellittdata eller kartfiler er importert. Planens generelle lisensnotater er derfor ikke behandlet som ferdig rettighetsklarering for et konkret nytt bilde.
@@ -150,7 +150,7 @@ Logger finnes på boksen som `/workspace/geografi-kap4-typecheck.log`, `geografi
 
 ## Avklaringer for Mats
 
-Ingen faglig avklaring blokkerer teksten. Mats/designgjennomgangen må velge konkrete foto, kystutsnitt og NVE-datasett, og avgjøre når de seks åpne figurposisjonene og fotokoblingen til 4.2 skal ferdigstilles. Geiranger-casen er bevisst koblet til Åknes i samme større fjordsystem, uten å flytte fjellpartiet inn i Geirangerfjorden. Ingen aktuell varselsituasjon er påstått.
+Ingen faglig avklaring blokkerer teksten. Mats/designgjennomgangen må velge konkrete foto, kystutsnitt og NVE-datasett, og avgjøre når de seks åpne figurposisjonene og fotokoblingen til 4.4 skal ferdigstilles. Geiranger-casen er bevisst koblet til Åknes i samme større fjordsystem, uten å flytte fjellpartiet inn i Geirangerfjorden. Ingen aktuell varselsituasjon er påstått.
 
 ## Forslag til PR-tittel
 
@@ -163,7 +163,7 @@ Base: geografi-kap3, stablet på utkast-PR #301. Bare kapittel 4; kapittel 5 tas
 - Skriver sju underkapitler, to norske caser, læringsmål, oppsummering, 18 begreper og oppgaver i tre lag.
 - Legger til 31 verifiserte kilder med APA-henvisninger og eget reseed-flagg.
 - Gjenbruker seks Geofag-figurer i avgrenset Vg1-modus; standardvisningene er uendret.
-- Beholder seks skjulte figurplassholdere og dokumenterer at fotokoblingen til 4.2 gjenstår.
+- Beholder seks skjulte figurplassholdere og dokumenterer at fotokoblingen til 4.4 gjenstår.
 - Presiserer lokal marin grense, mulig leire versus kvikkleire og korrekt plassering/datering av Åknes-casen.
 
 Kontroll: typecheck, ESLint, 64 relevante tester, SSR-regresjon og produksjonsbygg bestått. Fullsuite har bare de samme 17 skript-/miljøfeilene og fem poster-markdown-feilene som før. Ingen deploy eller databaseendring.

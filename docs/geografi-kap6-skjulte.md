@@ -6,4 +6,4 @@ Kontroll 6.–7. november 2026, Europe/Oslo.
 
 6.2 er en egen kvalitativ prinsippskisse med to tenkte samfunn, uten tall, etter UNDRR (2017b, 2017f).
 
-6.4 TILLEGG var en foreldet markør. Lokatorkart for Ask og neste-steg-kontroll ble levert i forrige runde inne i figur 6.4 (GeografiKvikkleireSteg). Markøren er fjernet uten ny figur.
+6.6 TILLEGG var en foreldet markør. Lokatorkart for Ask og neste-steg-kontroll ble levert i forrige runde inne i figur 6.6 (GeografiKvikkleireSteg). Markøren er fjernet uten ny figur.

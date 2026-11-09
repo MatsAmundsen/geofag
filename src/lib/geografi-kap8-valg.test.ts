@@ -16,5 +16,5 @@ test("HDI og BNP gjelder samme år og GFN-datadiagrammet holdes sperret", () => 
   assert.equal(HDI_BNP.length, 8); assert.ok(HDI_BNP.every((d) => d.ar === 2023 && d.hdi > 0 && d.hdi <= 1 && d.bnpPPP > 0));
   assert.equal(HDI_BNP.find((d) => d.iso3 === "NOR")?.hdi, .97);
   const md = readFileSync(new URL("./posts/geo-baerekraft.md", import.meta.url), "utf8");
-  assert.match(md, /FIGURPLASSHOLDER 8.6:.*CC BY-SA 4.0/); assert.match(md, /GeoLokalFotavtrykk/);
+  assert.match(md, /FIGURPLASSHOLDER 8.5:.*CC BY-SA 4.0/); assert.match(md, /GeoLokalFotavtrykk/);
 });

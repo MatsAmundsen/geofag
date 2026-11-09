@@ -24,9 +24,9 @@ Markørene er ubrukte Markdown-lenkedefinisjoner av formen `[figur-2-0]: # (FIGU
 | 2.3 | Etter intervju og foto | Egen oversikt over observasjon, telling, måling, intervju, foto og posisjonsregistrering. |
 | 2.4 | Feltlogg: sted, tid og metode | Vg1-tilpasset georeferert feltlogg. Tabell og tom CSV er levert. Eksisterende modell er ikke bygd inn uten tilpasning. |
 | 2.5 | Etter feltloggmalen | Punktkart og eventuelt GPS-spor med kun nødvendige, ikke-private øvingsposisjoner. |
-| 2.6 | Fra tabell til diagram og kart | Enkel framstilling fra de konstruerte øvingstallene. Originaltabellen er tekstalternativ. |
-| 2.7 | Feilkilder, pålitelighet og gyldighet | Feilkilde, mulig virkning, konkret forbedring og begrensning for konklusjonen. |
-| 2.8 | Sikkerhet og etikk | Egen oppsummeringsboks. Tekst og tabell er levert, og ingen ekstern illustrasjon er nødvendig. |
+| 2.6 | Sikkerhet og etikk | Egen oppsummeringsboks. Tekst og tabell er levert, og ingen ekstern illustrasjon er nødvendig. |
+| 2.7 | Fra tabell til diagram og kart | Enkel framstilling fra de konstruerte øvingstallene. Originaltabellen er tekstalternativ. |
+| 2.8 | Feilkilder, pålitelighet og gyldighet | Feilkilde, mulig virkning, konkret forbedring og begrensning for konklusjonen. |
 | 2.9 | Mikroklima-casen | Egen skisse med A og B samt graf. Alle tall må fortsatt merkes som konstruerte. |
 
 Alle ti nummererte figurleveranser er beholdt som plassholdere. Ingen eksterne bilder eller kartfliser er hentet inn i denne PR-en, og det er ikke påstått at rettighetene til en framtidig konkret figurfil er klarert.

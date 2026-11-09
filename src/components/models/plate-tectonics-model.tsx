@@ -1218,7 +1218,7 @@ function GeografiPlateTectonicsModel() {
   const [modellfart, setModellfart] = useState(5);
   const avstand = plateavstandKm(modellfart, 1000000) ?? 0;
   return (
-    <ModelFrame kicker="Utforsk plategrenser" title="Figur 3.6: Sammenlikn fire plategrensemiljøer"
+    <ModelFrame kicker="Utforsk plategrenser" title="Figur 3.5: Sammenlikn fire plategrensemiljøer"
       lead="Velg en bevegelse og forklar hva den kan føre til. Prinsippfiguren viser plategrensemiljøer. Fartskontrollen nedenfor er en separat regneøvelse med valgt, konstant fart, ikke målte platebevegelser eller risiko."
       toolbar={<div className="flex flex-wrap gap-2" role="group" aria-label="Velg plategrensemiljø">
         {GEOGRAFI_PLATEGRENSER.map((item) => <ModelTab key={item.id} active={boundary === item.id} onClick={() => setBoundary(item.id)}>{item.name}</ModelTab>)}

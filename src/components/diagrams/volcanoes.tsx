@@ -558,7 +558,7 @@ const GEOGRAFI_HAZARDS: typeof HAZARDS = [
 export function VolcanicHazardsDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <FigureFrame
-      heading={geografi ? "Figur 6.10: Fem vulkanske farer" : "Fire vulkanske farer"}
+      heading={geografi ? "Figur 6.3: Fem vulkanske farer" : "Fire vulkanske farer"}
       caption={geografi ? "En oversikt over mulige farer, ikke et kart over sikker avstand. Ulike utbrudd gir ulike kombinasjoner av farer (Newhall et al., 1997; U.S. Geological Survey, u.å.-a, u.å.-b)." : "Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapitlet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapitlet."}
     >
       <div data-figure="farer" className="grid grid-cols-1 gap-3 sm:grid-cols-2">

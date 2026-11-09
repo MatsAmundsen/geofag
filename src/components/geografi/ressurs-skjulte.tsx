@@ -12,7 +12,7 @@ export function GeografiKobberProduksjon() {
   return (
     <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
-        Figur 7.1 – Hvor kobber blir utvunnet, og hvor det blir raffinert
+        Figur 7.2 – Hvor kobber blir utvunnet, og hvor det blir raffinert
       </h3>
       <p className="flex flex-wrap gap-4 text-sm">
         <span className="flex items-center gap-2">
@@ -106,7 +106,7 @@ export function GeografiHavsonerFelt() {
   return (
     <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
-        Figur 7.6 – Norske havområder og petroleumsfelt
+        Figur 7.8 – Norske havområder og petroleumsfelt
       </h3>
       <div className="grid gap-4 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
         <svg
