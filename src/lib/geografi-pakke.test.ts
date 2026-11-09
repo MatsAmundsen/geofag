@@ -535,20 +535,20 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
   });
 
-  it("har tolv figurposisjoner, ni registrerte figurer og tre skjulte markører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-5-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [0, 10, 11]);
+  it("har tolv figurposisjoner, tolv registrerte figurer og ingen skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-5-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const id of widgets) {
       assert.ok(md.includes(["```widget", id, "```"].join("\n")), id);
       assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`), id);
     }
-    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoKlimaTemperaturserie", ...widgets, "GeoKlimaNesbyenLokator", "GeoKlimaBangladeshLokator"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap5-redaksjon|figur-5-/);
     assert.doesNotMatch(md, /[Ss]e figur 5\.(?:0|10|11)\b/);
   });
 
-  it("registrerer 29 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 29);
+  it("registrerer 33 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 33);
     for (const domain of ["ipcc.ch", "met.no", "nve.no", "snl.no", "science.nasa.gov", "scied.ucar.edu", "metoffice.gov.uk", "noaa.gov", "kartverket.no", "worldbank.org", "regjeringen.no", "ec.europa.eu", "miljodirektoratet.no", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);

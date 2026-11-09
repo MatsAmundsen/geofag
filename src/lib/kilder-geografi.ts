@@ -674,6 +674,30 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-klima": [
     {
+      prefix: "GISTEMP Team. (2026).",
+      italic: "GISS Surface Temperature Analysis (GISTEMP), version 4",
+      suffix: " [Datasett]. NASA Goddard Institute for Space Studies. Hentet 6. november 2026.",
+      href: "https://data.giss.nasa.gov/gistemp/",
+    },
+    {
+      prefix: "Lenssen, N., Schmidt, G. A., Hendrickson, M., Jacobs, P., Menne, M., & Ruedy, R. (2024).",
+      italic: "A GISTEMPv4 observational uncertainty ensemble.",
+      suffix: " Journal of Geophysical Research: Atmospheres, 129(17), e2023JD040179.",
+      href: "https://doi.org/10.1029/2023JD040179",
+    },
+    {
+      prefix: "Kartverket. (u.å.).",
+      italic: "Sentralt stedsnavnregister (SSR), åpent søke-API",
+      suffix: " [Datasett]. Søk «Nesbyen», hentet 7. november 2026. CC BY 4.0.",
+      href: "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Nesbyen",
+    },
+    {
+      prefix: "Natural Earth. (u.å.).",
+      italic: "Admin 0 – Countries (1:110m, versjon 5.1.1) og Populated Places (1:10m, versjon 5.1.2)",
+      suffix: " [Datasett]. Public Domain.",
+      href: "https://www.naturalearthdata.com/downloads/",
+    },
+    {
       prefix: "Barthel, K. (u.å.). ",
       italic: "Golfstrømmen",
       suffix: ". I Store norske leksikon. Hentet 6. november 2026.",
