@@ -1,6 +1,6 @@
-Dette notatet dokumenterer førsteleveransen. Oppdatert data-, kart- og lisensstatus etter Mats sine valg står i [Mats-oppfølgingen](geografi-kap11-mats-valg.md).
-
 # Redaksjonell overlevering: kapittel 11
+
+Oppdatert figurstatus står i `geografi-kap11-mats-valg.md` (Mats sine valg) og `geografi-kap11-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
 
 ## Leveranse og arbeidsgren
 
