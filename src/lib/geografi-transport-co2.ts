@@ -1,4 +1,4 @@
-/** Direkte CO₂ per personkilometer, 2020. Engedal mfl. (2021), SSB tabell 1, CC BY 4.0. */
+/** Direkte CO₂ per personkilometer, 2020. Engedal et al. (2021), SSB tabell 1, CC BY 4.0. */
 export const TRANSPORT_FAKTORER = [
   { id: "bensin", navn: "Personbil, bensin", gram: 76.9 },
   { id: "diesel", navn: "Personbil, diesel", gram: 70.4 },

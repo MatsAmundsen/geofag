@@ -136,7 +136,7 @@ export function ElasticReboundDiagram({ geografi = false }: { geografi?: boolean
   return (
     <Diagram
       title="Hvordan et jordskjelv blir til langs en låst forkastning"
-      heading={geografi ? "Figur 3.7: Fra låst forkastning til jordskjelv" : "Hvordan jordskjelvet blir til"}
+      heading={geografi ? "Figur 3.6: Fra låst forkastning til jordskjelv" : "Hvordan jordskjelvet blir til"}
       caption={geografi ? "Tre forenklede faser: låst flate, lagret spenning og brå forskyvning med bølger. Hyposenteret er bruddets startsted; episenteret ligger rett over på overflaten. Tegningen viser et prinsipp, ikke fart eller varsling av neste skjelv (Wald, u.å.)." : "Hvordan et jordskjelv blir til, i fem trinn: Platene møtes, flaten låses, fjellet bøyes, bruddet skjer, og fjellet spretter tilbake. Bruddet starter i hyposenteret, og episenteret ligger rett over på overflaten."}
       viewBox="0 0 760 460"
       scroll

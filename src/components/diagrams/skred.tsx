@@ -305,7 +305,7 @@ function GeografiKvikkleireDiagram({ caption }: { caption?: string }) {
   return (
     <Diagram
       title="Fra marin leire og saltutvasking til mulig strukturkollaps og skred. Ikke all havleire blir kvikkleire."
-      heading="Figur 4.6 – Fra partikler til mulig skred"
+      heading="Figur 4.7 – Fra partikler til mulig skred"
       caption={caption ?? "En åpen partikkelstruktur kan bli mindre stabil når salt vaskes ut. Leire med kvikke egenskaper kan miste styrke ved omrøring. Skred krever egnede grunnforhold og en utløsning. Skissen er ikke et farekart eller en naturtro avbildning av partiklene (NGU, u.å.-b)."}
       viewBox="0 0 840 500"
       scroll
