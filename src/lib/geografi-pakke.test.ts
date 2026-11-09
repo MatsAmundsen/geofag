@@ -953,7 +953,7 @@ describe("Geografi kapittel 11: migrasjon", () => {
   it("registrerer ni widgets og ingen skjulte kartmarkører", () => {
     const widgets = ["GeoMigrasjonNettoKart", "GeoMigrasjonSkyveTrekk", "GeoMigrasjonNorge", "GeoMigrasjonKommunekart", "GeoMigrasjonHistorie", "GeoMigrasjonInnvandringsgrunn", "GeoMigrasjonKorridorer", "GeoMigrasjonFlyktninger", "GeoMigrasjonVertslandKart"];
     assert.deepEqual(parsePosterMarkdown(md).filter((p) => p.type === "widget").map((p) => p.id), widgets);
-    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
+    for (const id of widgets) assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`));
     assert.deepEqual([...md.matchAll(/^\[figur-11-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), []);
     assert.doesNotMatch(renderToStaticMarkup(createElement(ReactMarkdown, { children: md })), /FIGURPLASSHOLDER|figur-11-/);
   });
