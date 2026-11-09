@@ -632,7 +632,7 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
 describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
   const md = read("posts/geo-ressurser.md");
   const sources = read("kilder-geografi.ts").split('"geo-ressurser": [')[1].split('"geo-baerekraft"')[0];
-  const widgets = ["GeoRessursFornyelse", "GeoRessursBergartBrudd", "GeoRessursPetroleum", "GeoRessursKraftproduksjon", "GeoRessursVindAvveining", "GeoRessursFosenKart", "GeoRessursSysselNord"];
+  const widgets = ["GeoRessursFornyelse", "GeoRessursKobber", "GeoRessursBergartBrudd", "GeoRessursPetroleum", "GeoRessursKraftproduksjon", "GeoRessursVindAvveining", "GeoRessursFosenKart", "GeoRessursHavsoner", "GeoRessursSysselNord"];
 
   it("dekker åtte underkapitler og lærings- og oppgavemalen", () => {
     for (const title of ["Hva er ressurser", "Fornybare ressurser", "Ressurser i berggrunnen", "Olje og gass", "Energi", "Arealbruk og konflikter", "Sápmi og reindrift", "Nordområdene", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz", "KILDER"])
@@ -645,8 +645,8 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.doesNotMatch(md, /under arbeid|Planlagte underkapitler|[!<]/i);
   });
 
-  it("fordeler ni figurposisjoner på sju figurer og to skjulte markører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-7-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [1, 6]);
+  it("fordeler ni figurposisjoner på ni figurer uten skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-7-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`), id);
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -654,8 +654,8 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
     assert.doesNotMatch(md, /[Ss]e figur 7\.(?:1|5|6|7|9)\b/);
   });
 
-  it("registrerer 39 eksterne kilder uten bibliotek eller lærebok", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 39);
+  it("registrerer 43 eksterne kilder uten bibliotek eller lærebok", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 43);
     for (const domain of ["snl.no", "ngu.no", "nibio.no", "nve.no", "domstol.no", "regjeringen.no", "landbruksdirektoratet.no", "sametinget.no", "norskpetroleum.no", "nbim.no", "ec.europa.eu", "ipcc.ch", "udir.no"])
       assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);

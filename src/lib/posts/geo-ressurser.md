@@ -49,7 +49,9 @@ GeoRessursFornyelse
 
 For enkelte råvarer er utvinning eller videre bearbeiding konsentrert i få land. Leveranser kan da bli sårbare selv om flere land bruker råvaren i industrien. Vi må derfor skille mellom hvor en råvare finnes, hvor den utvinnes, og hvor den bearbeides. Et produksjonskart alene forteller heller ikke hvem som eier virksomheten eller mottar inntektene. Dette skillet er viktig når vi senere undersøker kritiske mineraler (Europakommisjonen, u.å.).
 
-[figur-7-1]: # (FIGURPLASSHOLDER 7.1: Verdens produksjon av utvalgte metaller. USGS MCS og Natural Earth er planlagte kilder. Kontroller konkret årgang, produksjonsenhet, landinndeling og gjenbruksvilkår før KartSerie bygges. Skill gruveproduksjon fra raffinering. Ingen tall eller kart er importert.)
+```widget
+GeoRessursKobber
+```
 
 ## Fornybare ressurser
 
@@ -225,7 +227,9 @@ Vi avgrenser denne gjennomgangen til dommen og de kunngjorte avtalene fra 2021�
 
 **Geopolitikk** handler her om sammenhenger mellom geografi, ressurser og maktforhold mellom stater. Havretten gir rammer for statenes rettigheter og plikter, også når ressurser krysser grenser. En **økonomisk sone** er et havområde utenfor sjøterritoriet der kyststaten har bestemte ressursrettigheter. Den kan strekke seg inntil 200 nautiske mil, men må avgrenses mot andre staters soner. Slike rettigheter er ikke det samme som full suverenitet over et landområde (Nærings- og fiskeridepartementet, 2025; Justis- og beredskapsdepartementet, 2024).
 
-[figur-7-6]: # (FIGURPLASSHOLDER 7.6: Utvalgte norske petroleumsfelt og havrettslige soner. Verifiser Sokkeldirektoratets konkrete feltdata og lisens. Skill økonomisk sone, fiskevernsonen ved Svalbard, sokkelrettigheter og territorium. Feltstatus og kartdato må følge med. Kartverket-bakgrunn bare med dokumentert lisens. Ingen feltgrenser er importert.)
+```widget
+GeoRessursHavsoner
+```
 
 ### Svalbard er ikke et område uten lover
 

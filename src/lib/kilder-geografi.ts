@@ -1098,6 +1098,30 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-ressurser": [
     {
+      prefix: "Kartverket. (2025).",
+      italic: "Norges maritime grenser",
+      suffix: " [Datasett, GML EPSG:4258, datauttak 11. april 2025]. Hentet 9. november 2026. CC BY 3.0 NO.",
+      href: "https://kartkatalog.geonorge.no/metadata/norges-maritime-grenser/e106adf4-c9d8-4fce-a9b5-7886a4126d23",
+    },
+    {
+      prefix: "Natural Earth. (u.å.).",
+      italic: "Land (1:50m, versjon 4.1.0)",
+      suffix: " [Datasett]. Public Domain.",
+      href: "https://www.naturalearthdata.com/downloads/50m-physical-vectors/",
+    },
+    {
+      prefix: "Sokkeldirektoratet. (2026).",
+      italic: "Faktakart: Field by status",
+      suffix: " [Datasett, lag 502]. Hentet 9. november 2026. NLOD 2.0.",
+      href: "https://factmaps.sodir.no/api/rest/services/Factmaps/FactMapsED50UTM32/MapServer/502",
+    },
+    {
+      prefix: "U.S. Geological Survey. (2026).",
+      italic: "Mineral commodity summaries 2026: Copper",
+      suffix: " [Datablad]. Gruve- og raffineriproduksjon 2024 og 2025 (anslag). Public Domain.",
+      href: "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-copper.pdf",
+    },
+    {
       prefix: "Kartverket. (u.å.). ",
       italic: "Topografisk norgeskart, WMTS",
       suffix: ". CC BY 4.0 for benyttede zoomnivåer til og med 11.",
