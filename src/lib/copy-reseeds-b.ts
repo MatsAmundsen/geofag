@@ -5,6 +5,7 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  * Flaggene overskriver CMS-redigeringer i disse kapitlene (se copy-reseed.ts).
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
+  { flag: "geo-naering-figurnummer-kap9-2026-11-09", slug: "geo-naering", stale: ["Figur 9.4 skiller "] },
   { flag: "geo-ressurser-et-al-kap7-2026-11-09", slug: "geo-ressurser", stale: ["026b; Hofstad mfl., 2026"] },
   { flag: "geo-ressurser-figurnummer-kap7-2026-11-09", slug: "geo-ressurser", stale: ["nnet. Figur 7.2 skiller "] },
   { flag: "geo-klima-et-al-kap5-2026-11-09", slug: "geo-klima", stale: [".-a; Dannevig mfl., u.å."] },

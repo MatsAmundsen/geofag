@@ -93,7 +93,7 @@ De samme forbindelsene kan også spre en nedgang dersom virksomheten reduserer s
 
 Vi kan begynne med den direkte aktiviteten hos virksomheten som undersøkes, for eksempel produksjonen ved en fabrikk. Deretter følger vi innkjøp til leverandørene og videre bakover til deres egne innkjøp. Hvis vi også undersøker husholdningenes forbruk, legger vi til en annen type forbindelse i analysen. Vi må si tydelig fra om dette er med, ellers kan forskjellige anslag se mer sammenliknbare ut enn de er. En modell som følger leveranser, dekker ikke automatisk alle samfunnsvirkninger av virksomheten (SSB, 2026c).
 
-Figur 9.4 skiller forbindelser gjennom leveranser og inntekter fra belastninger som kan ramme andre. Pilene viser mulige sammenhenger, ikke dokumenterte pengebeløp eller et bestemt antall ekstra arbeidsplasser. Kjøp kan dessuten gå til leverandører i andre regioner eller land, framfor å bli i kommunen. Vi må derfor følge hvor leveransene faktisk kommer fra, før vi regner virkningen som lokal. Det er ikke nok at den første fabrikken har lokal adresse (SSB, 2026c).
+Figur 9.5 skiller forbindelser gjennom leveranser og inntekter fra belastninger som kan ramme andre. Pilene viser mulige sammenhenger, ikke dokumenterte pengebeløp eller et bestemt antall ekstra arbeidsplasser. Kjøp kan dessuten gå til leverandører i andre regioner eller land, framfor å bli i kommunen. Vi må derfor følge hvor leveransene faktisk kommer fra, før vi regner virkningen som lokal. Det er ikke nok at den første fabrikken har lokal adresse (SSB, 2026c).
 
 ```widget
 GeoNaeringRingvirkninger
@@ -163,7 +163,7 @@ Når vi bruker ordet verdiskaping, må vi ikke forveksle det med hele salgsinnte
 
 FNs miljøprogram omtaler blant annet kobber, gull, tinn og kobolt som materialer i mobiltelefoner og annen elektronikk. Slike materialer må hentes ut og bearbeides før de kan inngå i komponenter og ferdige produkter. Samtidig trengs arbeid med utvikling, samordning, transport og salg før telefonen blir tilgjengelig for en bruker. Etter bruk kan reparasjon, ombruk og gjenvinning bli viktige deler av produktets videre liv. En telefon knytter dermed sammen både materielle ressurser og tjenester gjennom flere aktiviteter (FNs miljøprogram [UNEP], 2019, 2023; Rolstadås, 2024).
 
-Figur 9.5 viser en forenklet verdikjede uten landnavn eller antatte ruter for en bestemt telefonmodell. Den er ikke en komplett leverandørliste, og pilene viser verken transportavstander, utslipp eller fordeling av fortjeneste. Vi kan bruke modellen til å velge spørsmål, men ikke til å slå fast opprinnelsen til egen telefon. Det ville kreve dokumentasjon fra den aktuelle modellen, leverandørene og tidsrommet vi undersøker. Når slike opplysninger mangler, lar vi leddet stå som ukjent framfor å fylle det med en gjetning (UNEP, 2019; Rolstadås, 2024).
+Figur 9.7 viser en forenklet verdikjede uten landnavn eller antatte ruter for en bestemt telefonmodell. Den er ikke en komplett leverandørliste, og pilene viser verken transportavstander, utslipp eller fordeling av fortjeneste. Vi kan bruke modellen til å velge spørsmål, men ikke til å slå fast opprinnelsen til egen telefon. Det ville kreve dokumentasjon fra den aktuelle modellen, leverandørene og tidsrommet vi undersøker. Når slike opplysninger mangler, lar vi leddet stå som ukjent framfor å fylle det med en gjetning (UNEP, 2019; Rolstadås, 2024).
 
 ```widget
 GeoNaeringVerdikjede

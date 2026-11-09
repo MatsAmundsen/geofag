@@ -60,15 +60,15 @@ Fire enkle figurer er registrert gjennom eksisterende `Diagram`, `FigureFrame` o
 
 - **9.2:** Stablet arealdiagram med ekte SSB-data, direkte etiketter, forklarende tekst, nedlastbart kildeuttrekk og tilgjengelig tabell.
 - **9.3:** Statisk spørsmålsmodell for lokalisering. Alle seks spørsmål er synlige uten klikk, og ingen poeng eller vekter antyder en beregnet fasit. Eventuell klikkpresentasjon er en senere designforbedring.
-- **9.4:** Kvalitativ modell som skiller leverandørforbindelser, lønn/forbruk og eksterne belastninger. Ingen pil viser en beregnet mengde eller sikre netto arbeidsplasser.
-- **9.5:** Skjematisk telefonmodell med materialer, komponenter, montering, bruk, mulig ombruk og mulig gjenvinning. Ingen landplassering, leverandørliste eller fortjenestefordeling er funnet på.
+- **9.5:** Kvalitativ modell som skiller leverandørforbindelser, lønn/forbruk og eksterne belastninger. Ingen pil viser en beregnet mengde eller sikre netto arbeidsplasser.
+- **9.7:** Skjematisk telefonmodell med materialer, komponenter, montering, bruk, mulig ombruk og mulig gjenvinning. Ingen landplassering, leverandørliste eller fortjenestefordeling er funnet på.
 
 Fire skjulte kartmarkører gjenstår, der én gjelder en del av en allerede levert figur:
 
 - **9.1:** Geografisk mønster i tjenesteyting. Konkret World Bank/ILO-indikator, år, definisjoner, manglende data og datasettlisens må kontrolleres før import.
-- **9.5, stedsdelen:** Eventuelle punkter krever dokumentert produkt, leverandørledd og tidsrom. Generiske landnavn skal ikke presenteres som en bestemt telefons faktiske reiserute. Naturkartgrunnlag må kontrolleres separat.
+- **9.7, stedsdelen:** Eventuelle punkter krever dokumentert produkt, leverandørledd og tidsrom. Generiske landnavn skal ikke presenteres som en bestemt telefons faktiske reiserute. Naturkartgrunnlag må kontrolleres separat.
 - **9.6:** En varegruppes handelsstrømmer. Krever konkret UN Comtrade/WITS-nedlastingslisens, varekode, rapportør/partner, år, verdi/mengde, reeksport og skala.
-- **9.7:** Rjukan-kart med dokumentert historisk sammenheng mellom kraft, industri og transport. Konkrete Kartverket-filer, koordinater, tidslag, lisens og tekstalternativ må kontrolleres.
+- **9.4:** Rjukan-kart med dokumentert historisk sammenheng mellom kraft, industri og transport. Konkrete Kartverket-filer, koordinater, tidslag, lisens og tekstalternativ må kontrolleres.
 
 Markørene er skjulte referansedefinisjoner. Ingen elevoppgave krever en uferdig figur. Ingen Geofag-rute, Geofag-post eller etablert Geofag-modell er endret; den delte widgetregistreringen har bare nye navn og én ny import.
 
@@ -83,7 +83,7 @@ Markørene er skjulte referansedefinisjoner. Ingen elevoppgave krever en uferdig
 - ILO-grunnlaget er en datert undersøkelse fra 2017. Leverandørenes vilkår og kjøpernes innkjøpspraksis undersøkes uten å anklage en bestemt nåværende fabrikk.
 - Åpenhetsloven er avgrenset til omfattede virksomheter og menneskerettigheter/arbeidsforhold. Den gir ikke automatisk komplett leverandørliste, fabrikkadresse eller en full miljøvurdering. Elevoppgaven lager et utkast som ikke skal sendes.
 
-Mats trenger ikke avgjøre en blokkerende faglig uklarhet. Før kartarbeidet må produktavgrensningen i 9.5 og varegruppen i 9.6 velges med DesignBOT. Kontroller nye hendelser og tall på nytt dersom de skal inn senere.
+Mats trenger ikke avgjøre en blokkerende faglig uklarhet. Før kartarbeidet må produktavgrensningen i 9.7 og varegruppen i 9.6 velges med DesignBOT. Kontroller nye hendelser og tall på nytt dersom de skal inn senere.
 
 ## Kilder kontrollert 6. november 2026
 

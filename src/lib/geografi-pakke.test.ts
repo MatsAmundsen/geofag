@@ -727,7 +727,7 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     for (const id of widgets) assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`));
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-9-/);
-    assert.doesNotMatch(md, /[Ss]e figur 9\.(?:1|6|7)\b/);
+    assert.doesNotMatch(md, /[Ss]e figur 9\.(?:1|4|6)\b/);
   });
 
   it("har 28 kontrollerte eksterne kilder og henvisninger til alle fagkildene", () => {
