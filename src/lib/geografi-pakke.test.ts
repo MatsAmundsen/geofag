@@ -724,7 +724,7 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
   it("har åtte widgets og ingen skjulte kartmarkører", () => {
     assert.deepEqual([...md.matchAll(/^\[figur-9-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), []);
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
-    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
+    for (const id of widgets) assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`));
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-9-/);
     assert.doesNotMatch(md, /[Ss]e figur 9\.(?:1|6|7)\b/);
