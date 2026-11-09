@@ -250,6 +250,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "baerekraft",
+    tekstKlar: true,
     slug: "geo-baerekraft",
     title: "Bærekraftig utvikling",
     navLabel: "Bærekraft",

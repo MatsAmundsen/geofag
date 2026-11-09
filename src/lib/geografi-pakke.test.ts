@@ -74,7 +74,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -162,7 +162,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 3);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 4);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -323,5 +323,68 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
   it("registrerer engangsreseed og tekstklar side", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-naturfare-kap6-2026-11-06"/);
     assert.match(read("geografi-kapitler.ts"), /path: "naturfare",\s+tekstKlar: true/);
+  });
+});
+
+
+describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
+  const md = read("posts/geo-baerekraft.md");
+  const sources = read("kilder-geografi.ts").split('"geo-baerekraft": [')[1].split("] as const")[0];
+
+  it("dekker åtte underkapitler, kompetansemål og hele kapittelmalen", () => {
+    for (const title of ["Hva er utvikling", "Mål på utvikling", "Bærekraftbegrepet", "Planetære grenser", "Ditt fotavtrykk", "Norges ressursbruk", "Dilemmaer", "Veien videre", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    for (const km of ["KM485", "KM484", "KM481"]) assert.ok(md.includes(km));
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## Datoen som mangler"));
+    assert.ok(md.indexOf("## Datoen som mangler") < md.indexOf("## Læringsmål"));
+    assert.match(md, /I dette kapitlet skal vi/);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler/);
+    assert.match(md, /### 7. Vurder et tiltak/);
+  });
+
+  it("har én skjult figurplass (8.5, lisens) og sju registrerte Vg1-figurer", () => {
+    const numbers = [...md.matchAll(/^\[figur-8-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b);
+    assert.deepEqual(numbers, [5]);
+    const widgets = parsePosterMarkdown(md).filter((part) => part.type === "widget");
+    assert.deepEqual(widgets.map((part) => part.id), ["GeoBaerekraftFattigdomKart", "GeoHdiBnp", "GeoBaerekraftTre", "GeoBaerekraftPlanetaere", "GeoLokalFotavtrykk", "GeoBaerekraftCo2Kart", "GeoBaerekraftCo2Serie"]);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap8-redaksjon|figur-8-/);
+    assert.match(html, /Datoen som mangler/);
+    assert.doesNotMatch(md, /[Ss]e figur 8\.[124567]/);
+  });
+
+  it("har 28 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 28);
+    assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
+    for (const domain of ["udir.no", "ssb.no", "undp.org", "worldbank.org", "footprintnetwork.org", "footprintcalculator.org", "wwf.no", "pik-potsdam.de", "ipcc.ch", "unep.org", "sdgs.un.org", "miljodirektoratet.no", "regjeringen.no", "stratigraphy.org", "ourworldindata.org", "fn.no"])
+      assert.ok(sources.includes(domain), domain);
+  });
+
+  it("daterer funn og skiller manglende data fra gode resultater", () => {
+    assert.match(md, /16. april for Norge i 2025/);
+    assert.match(md, /Norge har ingen publisert nasjonal overforbruksdag i 2026 på grunn av datakvaliteten/);
+    assert.match(md, /21. september 2026.*sju av ni/);
+    assert.match(md, /grensen oppdatert til 3,00.*2021/);
+    assert.match(md, /ikke uten videre framstilles som en formelt vedtatt epoke/);
+    assert.match(md, /ikke bare det aktuelle landets egen biokapasitet/);
+  });
+
+  it("avgrenser indikatorer og kalkulator slik at tall ikke blir en falsk fasit", () => {
+    assert.match(md, /bruttonasjonalinntekt \(BNI\).*ikke BNP/);
+    assert.match(md, /Den inkluderer ikke arealbruksendringer/);
+    assert.match(md, /oppdiktet profil/);
+    assert.match(md, /ikke opprett konto/);
+    assert.match(md, /ikke rangere medelever/);
+    assert.match(md, /ikke omtale en annen landprofil som norsk/);
+    const figure = read("../components/diagrams/g2a-sol-salt.tsx");
+    assert.match(figure, /geografi \? GEOGRAFI_DIM : DIM/);
+    assert.match(figure, /geografi = false/);
+    assert.match(figure, /Figur 8.3/);
+  });
+
+  it("registrerer tekstklar side og engangsreseed", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-baerekraft-kap8-2026-11-06"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "baerekraft",\s+tekstKlar: true/);
   });
 });

@@ -1,3 +1,6 @@
+import { GeografiLokalFotavtrykk } from "@/components/geografi/baerekraft-valg";
+import { GeografiHdiBnp } from "@/components/geografi/baerekraft-valg";
+import { BaerekraftTreFigur } from "@/components/diagrams/g2a-sol-salt";
 import { HydrographCatchmentModel } from "@/components/models/hydrograph-catchment-model";
 import { GeografiGjerdrumFarekart } from "@/components/geografi/naturfare-valg";
 import { GeografiKvikkleireSteg } from "@/components/geografi/naturfare-valg";
@@ -367,7 +370,21 @@ const GeografiSkjelvPlaterSkjultLat = lazy(() => import("@/components/geografi/n
 
 const GeografiFareEksponeringSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiFareEksponering})));
 
+const GeografiFattigdomKartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiFattigdomKart})));
+
+const GeografiPlanetaereGrenserSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiPlanetaereGrenser})));
+
+const GeografiCo2KartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Kart})));
+
+const GeografiCo2SerieSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Serie})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoBaerekraftCo2Serie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2SerieSkjultLat /></Suspense>,
+  GeoBaerekraftCo2Kart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2KartSkjultLat /></Suspense>,
+  GeoBaerekraftPlanetaere: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiPlanetaereGrenserSkjultLat /></Suspense>,
+  GeoBaerekraftFattigdomKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFattigdomKartSkjultLat /></Suspense>,
+  GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
+  GeoHdiBnp: () => <GeografiHdiBnp />,
   GeoNaturfareFareEksponering: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFareEksponeringSkjultLat /></Suspense>,
   GeoNaturfareSkjelvPlater: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvPlaterSkjultLat /></Suspense>,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
@@ -1525,6 +1542,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoBaerekraftTre: () => <BaerekraftTreFigur geografi />,
   GeoNaturfareSkredSoner: () => <SkredSonerDiagram caption="Figur 6.4: Materialet løsner, beveger seg og avsettes i et utløpsområde. Også steder nedenfor løsneområdet kan bli rammet. Skissen viser et forenklet skred i bratt terreng, ikke en farevurdering av en bestemt skråning (NVE, 2024b)." />,
   GeoNaturfareKvikkleire: () => <KvikkleireDiagram caption="Figur 6.6: En bekk kan fjerne støtte i skråningsfoten. Når leire glir ut, kan bakkanten miste støtte. Nye utglidninger kan dermed spre skredet bakover. Dette er en forenklet prosesskisse, ikke et kart over Gjerdrum (Gjerdrumutvalget, 2021, s. 8–11; NVE, 2026)." />,
   GeoNaturfareFjellskred: () => <FjellskredBolgeDiagram caption="Figur 6.5: Fjellmasser kan sette vann i bevegelse og lage flodbølger. Oppskyllingshøyde er hvor høyt vannet når opp på land. Rundt 60 meter i skissen viser til største oppskylling ved Tafjord-hendelsen i 1934, ikke høyden i alle bygdene eller en framtidig prognose (NVE, u.å.-a)." />,
