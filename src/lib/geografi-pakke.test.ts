@@ -406,7 +406,7 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const widget of widgets) {
       assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
-      assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
+      assert.match(read("../components/poster-widget-renderer.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
     }
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreSkjelvVulkan", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreVarmeflekker", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -431,8 +431,8 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.match(volcano, /<VolcanoTypesDiagram geografi selected=\{scenario\}/);
     assert.match(read("../components/diagrams/quake-motion.tsx"), /geografi \? 3 : 5/);
     assert.match(read("../components/diagrams/bergartssyklus-figur.tsx"), /geografi \? RUTER.slice\(0, 1\) : RUTER/);
-    assert.match(read("../components/poster-body.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
-    assert.match(read("../components/poster-body.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
   });
   it("har reseed og tekststatus uten å aktivere kapitlene 4 og 5", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-indre-krefter-kap3-2026-11-06",\s+slug: "geo-indre-krefter"/);
