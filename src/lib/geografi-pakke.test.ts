@@ -464,7 +464,7 @@ describe("Geografi kapittel 4: ytre krefter og landskap", () => {
     assert.deepEqual([...md.matchAll(/^\[figur-4-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const widget of widgets) {
       assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
-      if (widget !== "GeoLandskapBrelandskap") assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
+      if (widget !== "GeoLandskapBrelandskap") assert.match(read("../components/poster-widget-renderer.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
     }
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoLandskapIstidskart", "GeoLandskapFrost", "GeoLandskapMassebalanse", "GeoLandskapBrekart", "GeoLandskapBrelandskap", "GeoLandskapBotn", "GeoLandskapMarinGrense", "GeoLandskapKvikkleire", "GeoLandskapElv", "GeoLandskapKyst", "GeoLandskapFjordLokator", "GeoLandskapGeirangerFoto", "GeoLandskapLeirslette"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -505,7 +505,7 @@ describe("Geografi kapittel 4: ytre krefter og landskap", () => {
     assert.match(simple, /ikke NVE-målinger eller en prognose/);
     assert.match(read("../components/diagrams/botn-egg-tind-figur.tsx"), /below=\{geografi \? undefined/);
     assert.match(read("../components/diagrams/skred.tsx"), /if \(geografi\) return <GeografiKvikkleireDiagram/);
-    assert.match(read("../components/poster-body.tsx"), /GlacierMassBalanceModel: \(\) => <GlacierMassBalanceModel \/>/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GlacierMassBalanceModel: \(\) => <GlacierMassBalanceModel \/>/);
   });
 
   it("regner bare forskjell i valgte øvingstall, også ved negativ og lik null balanse", () => {
