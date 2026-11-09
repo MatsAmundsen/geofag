@@ -14,5 +14,5 @@ test("breuttrekket utelater dokumentert 2020-ortofoto og oppdikter ikke dagens g
 });
 test("figurene bruker lisensklart lavzoomkart, ekte foto og ingen skjult geografisk presisjon",()=>{
  const s=read("../components/geografi/landskap-valg.tsx");assert.match(s,/<VdalTilUdal geografi initialStep=\{3\}/);assert.match(s,/CC BY 2.0/);assert.match(s,/eksakte dalen er ikke oppgitt/);assert.match(s,/zoom 10/);assert.doesNotMatch(s,/OpenStreetMap|GeoMap[ >]/);
- const m=read("./posts/geo-landskap.md");assert.match(m,/FIGURPLASSHOLDER 4.10:/);assert.match(m,/GeoLandskapFjordLokator/);
+ const m=read("./posts/geo-landskap.md");assert.match(m,/```widget\nGeoLandskapGeirangerFoto\n```/);assert.doesNotMatch(m,/FIGURPLASSHOLDER/);assert.match(m,/GeoLandskapFjordLokator/);
 });

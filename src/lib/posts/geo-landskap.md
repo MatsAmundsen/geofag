@@ -218,7 +218,9 @@ Fjellpartiet Åknes ligger ved Sunnylvsfjorden, ikke inne i selve Geirangerfjord
 GeoLandskapFjordLokator
 ```
 
-[figur-4-10]: # (FIGURPLASSHOLDER 4.10: Fotoet venter fordi den verifiserte Commons-fila ikke lot seg hente uten rategrense. Lokatoren er levert separat som 4.10a. Datert foto eller satellittbilde med Geirangerfjorden, bosetting og tydelig avgrensning. Et eget oversiktskart må plassere Åknes korrekt ved Sunnylvsfjorden. Ikke bruk beregnede bølgehøyder uten navngitt og datert scenario.)
+```widget
+GeoLandskapGeirangerFoto
+```
 
 ### Innblikk: Østlandets leirsletter
 
