@@ -115,7 +115,7 @@ Indikatormetadataene er kontrollert separat. Aldersfordelingen har FN World Popu
 ## Reproduksjon, filer og lisenser
 
 - `src/lib/geografi-befolkningsdata.ts`: originale utvalgte tall, kildeversjoner, SHA-256 for råresponser og rene beregningsfunksjoner.
-- `docs/geografi-kap10-ssb07459-query.json`, `-ssb14740-query.json`, `-ssb04232-query.json` og `-ssb05803-query.json`: eksakte offentlige lesespørringer. Send JSON med POST til `https://data.ssb.no/api/v0/no/table/<tabellnummer>`; dette leser statistikk og skriver ikke til SSB.
+- `docs/geografi-kap10-ssb07459-query.json`, `-ssb14740-query.json`, `-ssb04232-query.json` og `-ssb05803-query.json`: eksakte offentlige lesespørringer. Send JSON med POST til `https://data.ssb.no/api/v0/no/table/` fulgt av tabellnummeret; dette leser statistikk og skriver ikke til SSB.
 - `docs/geografi-kap10-eksterne-data.json`: eksakt World Bank GET-adresse, OWID CSV- og metadataadresser, utvalg og kildehashverdier.
 - `public/downloads/geografi-befolkning-ssb.csv`: **848** originale ettårstall, tabell/år/kjønn/alder/personer.
 - `public/downloads/geografi-befolkning-worldbank.csv`: **80** originale indikatorverdier, landkode/år/indikator/verdi.
