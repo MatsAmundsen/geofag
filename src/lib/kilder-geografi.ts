@@ -244,6 +244,36 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-indre-krefter": [
     {
+      prefix: "U.S. Geological Survey. (u.å.-j).",
+      italic: "ANSS Comprehensive Earthquake Catalog (ComCat)",
+      suffix: " [Datasett]. Magnitude 6 eller mer i 2023, 147 hendelser, uttrekk 6. november 2026. Public Domain.",
+      href: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-01-01&endtime=2024-01-01&minmagnitude=6&orderby=time-asc",
+    },
+    {
+      prefix: "U.S. Geological Survey. (u.å.-k).",
+      italic: "Tectonic plate boundaries",
+      suffix: " [Karttjeneste]. Public Domain. Uttrekk 7. november 2026.",
+      href: "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer",
+    },
+    {
+      prefix: "National Centers for Environmental Information [NCEI]. (u.å.).",
+      italic: "NCEI/WDS Global Significant Volcanic Eruptions Database",
+      suffix: " [Datasett]. NOAA. doi:10.7289/V5JW8BSH. Utbrudd 2000–2025, uttrekk 9. november 2026. Public Domain/CC0.",
+      href: "https://www.ncei.noaa.gov/products/natural-hazards/tsunamis-earthquakes-volcanoes/volcanoes",
+    },
+    {
+      prefix: "Kious, W. J., & Tilling, R. I. (1996).",
+      italic: "This dynamic Earth: The story of plate tectonics",
+      suffix: " (nettutg. 1.20). U.S. Geological Survey. Figur over utvalgte varmeflekker, Public Domain.",
+      href: "https://pubs.usgs.gov/gip/dynamic/world_map.html",
+    },
+    {
+      prefix: "Bird, P. (2003).",
+      italic: "An updated digital model of plate boundaries.",
+      suffix: " Geochemistry, Geophysics, Geosystems, 4(3).",
+      href: "https://doi.org/10.1029/2001GC000252",
+    },
+    {
       prefix: "Natural Earth. (u.å.). ",
       italic: "Admin 0 – Countries, 1:110m, versjon 5.1.1",
       suffix: ". Public domain. Hentet 6. november 2026. Eget lands- og egenskapsutvalg.",

@@ -393,7 +393,13 @@ const GeografiCo2KartSkjultLat = lazy(() => import("@/components/geografi/baerek
 
 const GeografiCo2SerieSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Serie})));
 
+const GeografiVarmeflekkerSkjultLat = lazy(() => import("@/components/geografi/indre-skjulte").then(m => ({default:m.GeografiVarmeflekker})));
+
+const GeografiSkjelvVulkanSkjultLat = lazy(() => import("@/components/geografi/indre-skjulte").then(m => ({default:m.GeografiSkjelvVulkan})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoIndreSkjelvVulkan: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvVulkanSkjultLat /></Suspense>,
+  GeoIndreVarmeflekker: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiVarmeflekkerSkjultLat /></Suspense>,
   GeoIndreTidsskala: () => <GeografiTidsskala />,
   GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
   GeoIndreReykjanes: () => <GeografiReykjanes />,

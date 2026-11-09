@@ -402,19 +402,19 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.equal((md.match(/^### \d\. /gm) ?? []).length, 7);assert.equal((md.match(/^c\. /gm) ?? []).length, 7);
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid/i);
   });
-  it("har én skjult markør og tretten registrerte Vg1-figurer", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), [1]);
+  it("har ingen skjulte markører og femten registrerte Vg1-figurer", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const widget of widgets) {
       assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
       assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
     }
-    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreSkjelvVulkan", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreVarmeflekker", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap3-redaksjon|figur-3-/);
     assert.doesNotMatch(md, /[Ss]e figur 3\.(?:0|1|3|5|9|11|12|13)\b/);
   });
-  it("har 27 verifiserte kilder uten lærebok- eller bibliotekhenvisninger", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 27);
+  it("har 32 verifiserte kilder uten lærebok- eller bibliotekhenvisninger", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 32);
     for (const domain of ["ngu.no", "usgs.gov", "noaa.gov", "norskpetroleum.no", "udir.no", "vedur.is"]) assert.ok(sources.includes(domain), domain);
     assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
     for (const suffix of ["a", "b", "c", "d", "e", "f", "g", "h", "i"]) assert.ok(md.includes(`u.å.-${suffix}`), suffix);
