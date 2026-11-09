@@ -1,5 +1,7 @@
 # Redaksjonell overlevering: kapittel 9
 
+Oppdatert figurstatus står i `geografi-kap9-mats-valg.md` (Mats sine valg) og `geografi-kap9-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 ## Leveranse og arbeidsgren
 
 Kapittel: **Næringsliv og globalisering**. Rute: `/geografi/naering`. CMS-slug: `geo-naering`.
