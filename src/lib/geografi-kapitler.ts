@@ -188,6 +188,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "naturfare",
+    tekstKlar: true,
     slug: "geo-naturfare",
     title: "Naturfare og katastrofer",
     navLabel: "Naturfare",

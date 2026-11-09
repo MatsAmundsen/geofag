@@ -546,14 +546,23 @@ const HAZARDS: {
   },
 ];
 
-export function VolcanicHazardsDiagram() {
+// Vg1: samme kortkomponent, men uten G1-historikk, fartstall eller kjemiske detaljer.
+const GEOGRAFI_HAZARDS: typeof HAZARDS = [
+  { kind: "pdc", title: "1. Lava", points: ["Smeltet stein strømmer over bakken.", "Lava kan begrave eller sette fyr på bygninger og vegetasjon."], example: "Kilde: U.S. Geological Survey (u.å.-a)." },
+  { kind: "pdc", title: "2. Pyroklastisk strøm", points: ["En varm blanding av gass, aske og stein beveger seg langs bakken.", "Strømmen kan ødelegge store områder rundt vulkanen."], example: "Kilde: Newhall et al. (1997)." },
+  { kind: "ash", title: "3. Aske", points: ["Aske kan spres langt med vinden.", "Asken kan skade bygninger, jordbruk og flytrafikk."], example: "Kilde: Newhall et al. (1997)." },
+  { kind: "lahar", title: "4. Lahar", points: ["En lahar er en strøm av vann og vulkansk materiale.", "Regn kan sette avsatt aske i bevegelse også etter selve utbruddet."], example: "Kilde: Newhall et al. (1997)." },
+  { kind: "ash", title: "5. Gass", points: ["Noen vulkanske gasser kan skade mennesker, dyr og vegetasjon.", "Gassfare må vurderes av fagfolk, ikke ut fra lukt eller avstand alene."], example: "Kilde: U.S. Geological Survey (u.å.-b)." },
+];
+
+export function VolcanicHazardsDiagram({ geografi = false }: { geografi?: boolean } = {}) {
   return (
     <FigureFrame
-      heading="Fire vulkanske farer"
-      caption="Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapitlet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapitlet."
+      heading={geografi ? "Figur 6.3: Fem vulkanske farer" : "Fire vulkanske farer"}
+      caption={geografi ? "En oversikt over mulige farer, ikke et kart over sikker avstand. Ulike utbrudd gir ulike kombinasjoner av farer (Newhall et al., 1997; U.S. Geological Survey, u.å.-a, u.å.-b)." : "Lavastrømmer beveger seg ofte sakte nok til at folk kan komme seg unna. Kapitlet beskriver pyroklastiske strømmer, laharer, aske som truer luftfarten, og vulkansk vinter. Tsunami som egen vulkansk fare står ikke i dette kapitlet."}
     >
       <div data-figure="farer" className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {HAZARDS.map((hazard) => (
+        {(geografi ? GEOGRAFI_HAZARDS : HAZARDS).map((hazard) => (
           <article key={hazard.title} className="rounded-xl border border-border bg-[#12181e] p-4">
             <div className="flex items-start gap-3">
               <HazardIcon kind={hazard.kind} />
