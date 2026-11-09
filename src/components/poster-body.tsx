@@ -408,7 +408,10 @@ const GeografiVarmeflekkerSkjultLat = lazy(() => import("@/components/geografi/i
 
 const GeografiSkjelvVulkanSkjultLat = lazy(() => import("@/components/geografi/indre-skjulte").then(m => ({default:m.GeografiSkjelvVulkan})));
 
+const GeografiGeirangerFotoSkjultLat = lazy(() => import("@/components/geografi/landskap-skjulte").then(m => ({default:m.GeografiGeirangerFoto})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoLandskapGeirangerFoto: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGeirangerFotoSkjultLat /></Suspense>,
   GeoIndreSkjelvVulkan: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvVulkanSkjultLat /></Suspense>,
   GeoIndreVarmeflekker: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiVarmeflekkerSkjultLat /></Suspense>,
   GeoBaerekraftCo2Serie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2SerieSkjultLat /></Suspense>,

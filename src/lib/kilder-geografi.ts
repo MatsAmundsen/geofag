@@ -438,6 +438,12 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-landskap": [
     {
+      prefix: "Beck, L. (2025).",
+      italic: "Stranda Geirangerfjord lub 2025-07-29 img02",
+      suffix: " [Fotografi, tatt 29. juli 2025]. Wikimedia Commons. CC BY 4.0.",
+      href: "https://commons.wikimedia.org/wiki/File:Stranda_Geirangerfjord_lub_2025-07-29_img02.jpg",
+    },
+    {
       prefix: "Natural Earth. (u.å.). ",
       italic: "Admin 0 – Countries, 1:110m, versjon 5.1.1",
       suffix: ". Public domain. Moderne landkonturer brukt bare til orientering.",
