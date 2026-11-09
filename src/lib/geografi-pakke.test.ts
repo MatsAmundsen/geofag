@@ -281,12 +281,12 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
     assert.ok(md.indexOf("## En bekk") < md.indexOf("## Læringsmål"));
   });
 
-  it("bevarer ti figurplasser: åtte figurer og to skjulte markører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-6-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])), [1, 2]);
+  it("bevarer ti figurplasser: ti figurer og ingen skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-6-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])), []);
     const parts = parsePosterMarkdown(md);
     const names = parts.filter((part) => part.type === "widget").map((part) => part.id);
-    assert.equal(names.length, 8);
-    assert.equal(new Set(names).size, 8);
+    assert.equal(names.length, 10);
+    assert.equal(new Set(names).size, 10);
     const registry = read("../components/poster-body.tsx");
     for (const name of names) assert.ok(registry.includes(`${name}:`), name);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -295,7 +295,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
   });
 
   it("har 31 verifiserte kilder, ingen bibliotekskilder og eksplisitt usikkerhet", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 34);
+    assert.equal((sources.match(/href: /g) ?? []).length, 37);
     assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
     for (const domain of ["undrr.org", "nve.no", "varsom.no", "usgs.gov", "regjeringen.no", "wmo.int", "unep.org", "ipcc.ch", "met.no", "snl.no", "udir.no", "dsb.no", "metoffice.gov.uk", "bjerknes.uib.no"])
       assert.ok(sources.includes(domain), domain);

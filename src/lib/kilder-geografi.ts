@@ -247,6 +247,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   "geo-klima": [] as const,
   "geo-naturfare": [
     {
+      prefix: "U.S. Geological Survey. (u.å.-d).",
+      italic: "ANSS Comprehensive Earthquake Catalog (ComCat)",
+      suffix: " [Datasett]. Søk: 2023, magnitude 6 eller mer, 147 hendelser, uttrekk 6. november 2026. Public Domain.",
+      href: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-01-01&endtime=2024-01-01&minmagnitude=6&orderby=time-asc",
+    },
+    {
+      prefix: "U.S. Geological Survey. (u.å.-e).",
+      italic: "Tectonic plate boundaries",
+      suffix: " [Karttjeneste]. Public Domain. Alle 1 175 linjeobjekter, uttrekk 7. november 2026.",
+      href: "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer",
+    },
+    {
+      prefix: "Bird, P. (2003).",
+      italic: "An updated digital model of plate boundaries.",
+      suffix: " Geochemistry, Geophysics, Geosystems, 4(3). https://doi.org/10.1029/2001GC000252",
+      href: "https://doi.org/10.1029/2001GC000252",
+    },
+    {
       prefix: "Kartverket. (u.å.). ",
       italic: "Sentralt stedsnavnregister",
       suffix: " [Datasett]. Representasjonspunkt for Ask tettsted i Gjerdrum. CC BY 4.0, uttrekk 6. november 2026.",

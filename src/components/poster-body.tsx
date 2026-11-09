@@ -78,9 +78,11 @@ import {
 } from "@/components/diagrams";
 import { PaleoClimateIsotopeModel } from "@/components/models/paleo-climate-model";
 import { PaleoProxyEksempel } from "@/components/paleo-proxy-eksempel";
+import {
   MetamorphicFaciesDiagram,
   SilicateStructureDiagram,
 } from "@/components/diagrams/bergarter";
+import {
   AvkjolingKornFigur,
   MetamorfoseFigur,
   OSLO_STATUS_BERGARTER,
@@ -88,6 +90,7 @@ import { PaleoProxyEksempel } from "@/components/paleo-proxy-eksempel";
   SteinlabFigur,
 } from "@/components/diagrams/bergarter-figurer";
 import { RekrystallisasjonFigur } from "@/components/diagrams/rekrystallisasjon-figur";
+import {
   BergartssyklusFigurLat,
   DiageneseFigurLat as DiageneseFigur,
   DifferensieringV2FigurLat as DifferensieringV2Figur,
@@ -127,23 +130,27 @@ import { RekrystallisasjonFigur } from "@/components/diagrams/rekrystallisasjon-
   ZonalVertikalFigurLat,
   LandskapBlokkFigurLat,
 } from "@/components/diagrams/prosess-figurer-lat";
+import {
   GeotidRelativFigur,
   GeotidTidslinjeFigur,
   HalveringstidFigur,
   LedefossilFigur,
   VinkeldiskordansFigur,
 } from "@/components/diagrams/geotid-figurer";
+import {
   KaledonideneFigur,
   NorskehavetFigur,
   OslograbenFigur,
 } from "@/components/diagrams/norgesgeo-figurer";
 import { NorgesGeodynamikkKart } from "@/components/diagrams/norges-geodynamikk-kart";
+import {
   BowenReactionSeriesDiagram,
   GrainSizeDistributionDiagram,
 } from "@/components/diagrams/geology-extra";
 import { FeltmetodeFigur } from "@/components/diagrams/felt-figurer";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import {
   AvsetningsformerDiagram,
   BreLengdesnittDiagram,
   FrostsprengningDiagram,
@@ -151,6 +158,7 @@ import { ArrowRight } from "lucide-react";
   IsostasiSnittDiagram,
   VdalTilUdalDiagram,
 } from "@/components/diagrams/isbreer";
+import {
   AkviferFigur,
   HansNedborFigur,
   HydrogramFigur,
@@ -158,12 +166,14 @@ import { ArrowRight } from "lucide-react";
 } from "@/components/diagrams/vannflom-figurer";
 import { SmeltingUnderTynnPlateDiagram } from "@/components/diagrams/mantle-melting";
 import { Callout } from "@/components/callout";
+import {
   FjellskredBolgeDiagram,
   KvikkleireDiagram,
   SkredSonerDiagram,
 } from "@/components/diagrams/skred";
 import { FeltbokDiagram, FraBergartTilBruddDiagram } from "@/components/diagrams/ressurser";
 import { PetroleumSnittFigur, RessurskartFigur } from "@/components/diagrams/ressurs-figurer";
+import {
   DensityDiagram,
   OceanDriversDiagram,
 } from "@/components/diagrams/ocean";
@@ -198,12 +208,14 @@ import { OceanCurrentModel } from "@/components/models/ocean-current-model";
 import { SnowProfileModel } from "@/components/models/snow-profile-model";
 import { WindPowerModel } from "@/components/models/wind-power-model";
 import { MarineEnergyModel } from "@/components/models/marine-energy-model";
+import {
   EnergySourcesDiagram,
   WindPowerTradeoffDiagram,
 } from "@/components/diagrams/energy";
 import { PhotoFigure, PhotoPair } from "@/components/photo-figure";
 import { StormwaterAdaptationModel } from "@/components/models/stormwater-adaptation-model";
 import { Sammendrag } from "@/components/sammendrag";
+import {
   ElvaFraKildeTilMunning,
   Forvitringsformer,
   GilbertDelta,
@@ -216,10 +228,12 @@ import { YouTubeVideo } from "@/components/youtube-video";
 import { G2_PAKKE_A_WIDGETS } from "@/components/g2-pakke-a-widgets";
 import { QUIZ_ENERGI_A } from "@/lib/poster-quizzes-pakke-a";
 import { POSTER_WIDGETS_B } from "@/components/poster-widgets-b";
+import {
   IodFaseFigur,
   IodHavtemperaturFigur,
   IodJetstrommerFigur,
 } from "@/components/diagrams/iod-figurer";
+import {
   NaoFaserFigur,
   NaoKartFigur,
   NaoOmradeFigur,
@@ -228,12 +242,14 @@ import { POSTER_WIDGETS_B } from "@/components/poster-widgets-b";
 import { Quiz } from "@/components/quiz";
 import { GF2_THEMES, KLIMA_MODELS, KLIMA_SUBTHEMES } from "@/lib/nav";
 import { cn } from "@/lib/utils";
+import {
   EARTH_LAYERS_PHOTO_SRC,
   injectPosterWidgets,
   parsePosterMarkdown,
   stripChapterEditorNotice,
   type PosterPart,
 } from "@/lib/poster-markdown";
+import {
   QUIZ_BERGARTER,
   QUIZ_BOUNDARIES,
   QUIZ_FELTARBEID,
@@ -355,7 +371,13 @@ const GeografiFeltetikkSkjultLat = lazy(() => import("@/components/geografi/felt
 
 const GeografiMikroklimaEgetSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMikroklimaEget})));
 
+const GeografiSkjelvPlaterSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiSkjelvPlater})));
+
+const GeografiFareEksponeringSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiFareEksponering})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoNaturfareFareEksponering: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFareEksponeringSkjultLat /></Suspense>,
+  GeoNaturfareSkjelvPlater: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvPlaterSkjultLat /></Suspense>,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
   GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
   GeoFeltMikroklimaEget: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMikroklimaEgetSkjultLat /></Suspense>,
