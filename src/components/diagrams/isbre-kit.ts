@@ -112,21 +112,19 @@ export { hexToRgb };
 
 /* ---------- hooks ---------- */
 
-function narrowNow() {
-  return typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches;
+function subscribeNarrow(onChange: () => void) {
+  const media = window.matchMedia("(max-width: 639px)");
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
 }
 
-/** Smal skjerm (under Tailwinds sm-grense). */
+/** Smal skjerm (under Tailwinds sm-grense). Første render er false på server og klient, så hydreringen treffer server-HTML-en. */
 export function useNarrow() {
-  const [narrow, setNarrow] = useState(narrowNow);
-  useLayoutEffect(() => {
-    const media = window.matchMedia("(max-width: 639px)");
-    const apply = () => setNarrow(media.matches);
-    apply();
-    media.addEventListener("change", apply);
-    return () => media.removeEventListener("change", apply);
-  }, []);
-  return narrow;
+  return useSyncExternalStore(
+    subscribeNarrow,
+    () => window.matchMedia("(max-width: 639px)").matches,
+    () => false,
+  );
 }
 
 function subscribeViewport(onChange: () => void) {

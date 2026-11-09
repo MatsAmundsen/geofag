@@ -124,7 +124,7 @@
   .tsunami-plass[data-modell="m5"] .tsunami-plass-bunn { height: 374px; }
   .tsunami-plass[data-modell="m6"] .tsunami-plass-hode { height: 599px; }
   .tsunami-plass[data-modell="m6"] .tsunami-plass-bunn { height: 306px; }
-  .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 667px; }
+  .tsunami-plass[data-modell="m7"] .tsunami-plass-hode { height: 615px; }
   .tsunami-plass[data-modell="m7"] .tsunami-plass-bunn { height: 402px; }
 
   @media (min-width: 360px) {
@@ -241,7 +241,7 @@
   @media (min-width: 390px) {
     .kapittel-plass[data-widget="HyposenterForklaring"] { height: 195px; }
     .kapittel-plass[data-widget="ElasticRebound"] { height: 726px; }
-    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 682px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv1"] { height: 662px; }
     .kapittel-plass[data-widget="BoundaryQuakes"] { height: 356px; }
     .kapittel-plass[data-widget="SjekkJordskjelv2"] { height: 662px; }
     .kapittel-plass[data-widget="Partikkelbolger"] { height: 776px; }
@@ -251,10 +251,10 @@
     .kapittel-plass[data-widget="SjekkJordskjelvSkade"] { height: 700px; }
     .kapittel-plass[data-widget="SjekkJordskjelvVarsling"] { height: 408px; }
     .kapittel-plass[data-widget="SjekkJordskjelv4"] { height: 708px; }
-    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 670px; }
+    .kapittel-plass[data-widget="SjekkJordskjelv5"] { height: 648px; }
     .kapittel-plass[data-widget="JordasBolger"] { height: 859px; }
     .kapittel-plass[data-widget="IntraplateForklaring"] { height: 195px; }
-    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 421px; }
+    .kapittel-plass[data-widget="NorwayEarthquakes"] { height: 402px; }
     .kapittel-plass[data-widget="SjekkJordskjelv6"] { height: 686px; }
     .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2484px; }
   }
@@ -280,7 +280,13 @@
     .kapittel-plass[data-widget="QuizJordskjelv"] { height: 2060px; }
   }
 
-  @media (min-width: 64rem) {
+  /* Plakaten er smalere enn kapittelsiden ved samme vindu. Den brede høyden gjelder først når spalten faktisk er bred. */
+  article {
+    container-name: kapittel-spalte;
+    container-type: inline-size;
+  }
+
+  @container kapittel-spalte (min-width: 50rem) {
     .kapittel-plass[data-widget="ElasticRebound"] { height: 672px; }
     .kapittel-plass[data-widget="BoundaryQuakes"] { height: 535px; }
     .kapittel-plass[data-widget="Partikkelbolger"] { height: 713px; }
