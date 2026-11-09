@@ -143,7 +143,7 @@ export function HydrographCatchmentModel({ geografi = false }: { geografi?: bool
   return (
     <ModelFrame
       kicker="Interaktiv hydrologisk simulator"
-      title={geografi ? "Figur 6.6 – Utforsk den opprinnelige nedbørsfeltmodellen" : "Nedbørsfeltmodell og hydrogram-simulator"}
+      title={geografi ? "Figur 6.7 – Utforsk den opprinnelige nedbørsfeltmodellen" : "Nedbørsfeltmodell og hydrogram-simulator"}
       lead="Et hydrogram viser elvens vannføring mot tid som respons på en nedbørshendelse. Utforsk hvordan nedbørsfeltets areal, helning, jordsmonnets forutgående markfuktighet, innsjømagasinering og urbanisering endrer flomtoppen og forsinkelsen (retardasjonstiden)."
       toolbar={
         <>

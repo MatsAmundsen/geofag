@@ -428,7 +428,7 @@ function useFlateBredde(svgRef: RefObject<SVGSVGElement | null>) {
   return bredde;
 }
 
-export function BergartssyklusFigur({ geografi = false, heading = geografi ? "Figur 3.10: Bergartenes kretsløp" : SYKLUS_TEKST.heading, caption }: { geografi?: boolean; heading?: string; caption?: React.ReactNode }) {
+export function BergartssyklusFigur({ geografi = false, heading = geografi ? "Figur 3.12: Bergartenes kretsløp" : SYKLUS_TEKST.heading, caption }: { geografi?: boolean; heading?: string; caption?: React.ReactNode }) {
   const [ref, visible] = useInView<SVGSVGElement>();
   const bredde = useFlateBredde(ref);
   const [ruteNr, setRuteNr] = useState(0);
