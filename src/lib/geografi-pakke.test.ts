@@ -825,7 +825,7 @@ describe("Geografi kapittel 10: befolkning og levekår", () => {
 
   it("har åtte registrerte widgets og ingen skjulte kartmarkører", () => {
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
-    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
+    for (const id of widgets) assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`));
     assert.deepEqual([...md.matchAll(/^\[figur-10-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]), []);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-10-/);
