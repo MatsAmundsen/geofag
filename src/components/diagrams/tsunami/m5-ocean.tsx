@@ -11,6 +11,7 @@ import {
   smoothOceanContours,
   filterOceanContourFragments,
   contourLabels,
+  trimLabelHooks,
   type BasinId,
 } from "./sim/oceanmap";
 import { INDIA_RINGS, PACIFIC_RINGS } from "./sim/coasts";
@@ -102,9 +103,22 @@ export function ModelOcean() {
         waterClip.addPath(coast);
         ctx.clip(waterClip, "evenodd");
       }
+      const markers = [{ name: "K", k: o.source }, ...o.points].map((p) => {
+        const [lon, lat] = cellGeo(o, p.k);
+        return { ...p, x: xOf(lon) - ox, y: yOf(lat) - oy };
+      });
+      const obstacles = markers.map((p) => ({ x: p.x - 12, y: p.y - 12, width: 24, height: 24 }));
+      const isWater = (p: { x: number; y: number }) => {
+        const i = Math.floor(p.x * o.nx),
+          j = Math.floor(p.y * o.ny);
+        return i >= 0 && i < o.nx && j >= 0 && j < o.ny && !o.land[j * o.nx + i];
+      };
+      // Labels are placed first so a short bent end hook beyond a label can be hidden.
+      const placed = contourLabels(contours, mw, mh, obstacles, isWater);
       for (const { level, paths } of contours) {
+        const own = placed.find((p) => p.level === level && !p.anchor);
         ctx.beginPath();
-        for (const path of paths)
+        for (const path of own ? trimLabelHooks(paths, own.box, mw, mh) : paths)
           path.forEach((p, i) => {
             if (i === 0) ctx.moveTo(ox + p.x * mw, oy + p.y * mh);
             else ctx.lineTo(ox + p.x * mw, oy + p.y * mh);
@@ -116,17 +130,6 @@ export function ModelOcean() {
         ctx.stroke();
       }
       ctx.restore();
-      const markers = [{ name: "K", k: o.source }, ...o.points].map((p) => {
-        const [lon, lat] = cellGeo(o, p.k);
-        return { ...p, x: xOf(lon) - ox, y: yOf(lat) - oy };
-      });
-      const obstacles = markers.map((p) => ({ x: p.x - 12, y: p.y - 12, width: 24, height: 24 }));
-      const isWater = (p: { x: number; y: number }) => {
-        const i = Math.floor(p.x * o.nx),
-          j = Math.floor(p.y * o.ny);
-        return i >= 0 && i < o.nx && j >= 0 && j < o.ny && !o.land[j * o.nx + i];
-      };
-      const placed = contourLabels(contours, mw, mh, obstacles, isWater);
       ctx.restore();
       for (const p of placed) {
         if (p.anchor) {

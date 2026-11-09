@@ -2,15 +2,16 @@ import { useMemo, useRef, useState } from "react";
 import { Choice, FigureNote, Lab, Readouts } from "./lab";
 import { clearPaper, fitCanvas, useSimLoop } from "./draw";
 import { label, leader, paintRock, skyTo, textWidth, smoothPath } from "./paint";
-import { riskStatus, townWaterLayers, TOWN_NORMAL_SEA_LEVEL, townGlyphLayout, townScreenX, TOWN_N } from "./sim/fjord";
+import { riskStatus, townWaterLayers, TOWN_NORMAL_SEA_LEVEL, townGlyphLayout, townScreenX, townSeaLabel, TOWN_N } from "./sim/fjord";
 import { ink } from "./sim/palette";
 
 type Scene = "lav" | "hoy";
 type Act = "ingen" | "flytt" | "stans" | "overvak";
 export const TOWN_SITES = [
-  { name: "Hus", x: 0.46 },
+  // Hus stands clearly inland of the normal shoreline (x ≈ 0.45), not at the water's edge.
+  { name: "Hus", x: 0.475 },
   { name: "Skole", x: 0.55 },
-  { name: "Nytt bygg", x: 0.49 },
+  { name: "Nytt bygg", x: 0.505 },
 ] as const;
 export function ModelRisk() {
   const [scene, setScene] = useState<Scene>("hoy"),
@@ -96,10 +97,11 @@ export function ModelRisk() {
         label(ctx, panel === 0 ? "Før tiltak" : "Etter tiltak · samme vannivå", 14, top + 20, {
           weight: "600",
         });
-        // Labels name their precise reference lines, not the entire hypothetical blue area.
-        label(ctx, "Sjø", 14, normalY - 9);
-        leader(ctx, 18, normalY - 6, 18, normalY - 1);
-        const scenarioLabelY = w < 400 ? Math.min(scenarioY - 10, top + 75) : scenarioY - 10;
+        // «Sjø» sits inside the solid blue normal sea, never in the hatched scenario layer.
+        // «Tenkt vannivå» names the dashed line from just above it with a short leader.
+        const sea = townSeaLabel(w, ph, textWidth(ctx, "Sjø"));
+        label(ctx, "Sjø", sea.x, top + sea.baseline, { halo: ink.water });
+        const scenarioLabelY = scenarioY - 10;
         label(ctx, "Tenkt vannivå", 14, scenarioLabelY);
         leader(ctx, 18, scenarioLabelY + 4, 18, scenarioY - 2);
         const included = sites(panel === 1).filter((b) => b.included);

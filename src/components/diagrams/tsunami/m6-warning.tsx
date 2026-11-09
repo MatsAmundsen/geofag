@@ -35,7 +35,7 @@ export const WARNING_STAGES = [
 export const SKRED_WARNING_STAGES = [
   { title: "Skred setter vann i bevegelse", detail: "Kan mangle seismisk varsel" },
   { title: "Mulig lokalt varsel", detail: "Lokalt varsel er ikke garantert" },
-  { title: "Eventuelle målinger", detail: "Et manglende signal avkrefter ikke" },
+  { title: "Eventuelle målinger", detail: "Manglende signal utelukker ikke en bølge" },
   { title: "Mer kunnskap hvis data kommer", detail: "Flere data, fortsatt usikkerhet" },
 ] as const;
 export function ModelWarning() {
@@ -173,7 +173,7 @@ export function ModelWarning() {
           {
             k: "Senere målinger",
             v: "Oppdaterer vurderingen",
-            hint: "manglende signal avkrefter ikke",
+            hint: "manglende signal utelukker ikke en bølge",
           },
           { k: "Tilgjengelig tid", v: "Usikker", hint: "ingen sikker evakueringsmargin" },
         ]}
