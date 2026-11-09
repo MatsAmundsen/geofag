@@ -1,5 +1,7 @@
 # Geografi kapittel 1 – redaksjonelt vedlegg til PR B
 
+Oppdatert figurstatus står i `geografi-kap1-mats-valg.md` (Mats sine valg) og `geografi-kap1-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 Dette er ikke elevtekst og lastes ikke av nettstedet. Fagtekst: `src/lib/posts/geo-verktoy.md`.
 
 ## Leveransen
