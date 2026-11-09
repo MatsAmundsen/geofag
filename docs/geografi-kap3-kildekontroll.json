@@ -6,7 +6,7 @@
     "lisens": "Public Domain",
     "filSHA256": "8925ee81094bff96d0aa5e88c1a2a77d5cc6ac9df00fe48f7e3a29a30354bba8",
     "kontrolltjeneste": "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer",
-    "grunnlag": "Bird (2003), plategrenser; DeMets mfl. (2010), bevegelse. Gjeldende tjeneste er ikke sanntidsmålinger.",
+    "grunnlag": "Bird (2003), plategrenser; DeMets et al. (2010), bevegelse. Gjeldende tjeneste er ikke sanntidsmålinger.",
     "kontroll": "Hovedgrenser i Nord-Atlanteren, India/Eurasia og Nazca/Sør-Amerika kontrollert mot tjenestens navngitte grensegeometrier. Eldre rettet Commons-kart ikke brukt."
   },
   "naturgrunnlag": {

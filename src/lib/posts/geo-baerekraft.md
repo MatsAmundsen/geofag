@@ -142,7 +142,7 @@ GFNs [fotavtrykkskalkulator](https://www.footprintcalculator.org/home/en) stille
 
 I skolearbeidet kan vi bruke en oppdiktet profil framfor å dele opplysninger om hjemmet eller familien. Noter hvilket land, hvilke valg og hvilken dato undersøkelsen gjelder, uten navn, adresse eller privat økonomi. Hvis Norge ikke er tilgjengelig eller datagrunnlaget er uklart, skal vi ikke omtale en annen landprofil som norsk. Da kan vi enten undersøke en tydelig merket utenlandsk øvingsprofil eller arbeide med metodesiden uten beregning.
 
-[figur-8-6]: # (FIGURPLASSHOLDER 8.6: Økologisk fotavtrykksdiagram ikke bygget. Nyeste GFN-utgave 2026, observasjoner 2023 og estimater 2025, er CC BY-SA 4.0 som oppdraget ikke tillater. Lokal transportkalkulator følger separat.)
+[figur-8-5]: # (FIGURPLASSHOLDER 8.5: Økologisk fotavtrykksdiagram ikke bygget. Nyeste GFN-utgave 2026, observasjoner 2023 og estimater 2025, er CC BY-SA 4.0 som oppdraget ikke tillater. Lokal transportkalkulator følger separat.)
 
 ### Prøv en lokal regneøvelse
 
