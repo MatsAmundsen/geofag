@@ -539,7 +539,7 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.deepEqual([...md.matchAll(/^\[figur-5-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const id of widgets) {
       assert.ok(md.includes(["```widget", id, "```"].join("\n")), id);
-      assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`), id);
+      assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`), id);
     }
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoKlimaTemperaturserie", ...widgets, "GeoKlimaNesbyenLokator", "GeoKlimaBangladeshLokator"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -575,7 +575,7 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
       ["weather", ["FoehnAdiabaticDiagram"]], ["climate-radiation", ["EarthRadiationBudgetDiagram"]], ["spheres", ["CarbonCycleDiagram"]],
     ] as const) for (const name of names) {
       assert.ok(read(`../components/diagrams/${file}.tsx`).includes(`export function ${name}({ geografi = false }`), name);
-      assert.ok(read("../components/poster-body.tsx").includes(`<${name} geografi />`), name);
+      assert.ok(read("../components/poster-widget-renderer.tsx").includes(`<${name} geografi />`), name);
     }
   });
 
