@@ -1,3 +1,4 @@
+import { GeografiSkyveTrekk, GeografiFlyttingNorge, GeografiMigrasjonHistorie, GeografiInnvandringsgrunn, GeografiFlyktningerNaboland } from "@/components/geografi/migrasjon-diagrammer";
 import { GeografiVerdensbefolkning, GeografiDemografiskGrunnformel, GeografiNorgePyramider, GeografiLandPyramider, GeografiDemografiskOvergang, GeografiNorgeFruktbarhetAldring } from "@/components/geografi/befolkning-diagrammer";
 import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiSysselNord } from "@/components/geografi/ressurs-valg";
@@ -366,6 +367,9 @@ const GeografiFiskEksportLat = lazy(() => import("@/components/geografi/naering-
 const GeografiFruktbarhetKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiFruktbarhetKart})));
 const GeografiLevekarKartLat = lazy(() => import("@/components/geografi/befolkning-kart").then(m=>({default:m.GeografiLevekarKart})));
 
+const GeografiKommuneflyttingKartLat = lazy(() => import("@/components/geografi/migrasjon-kart").then(m=>({default:m.GeografiKommuneflyttingKart})));
+const GeografiFlyktningVertslandKartLat = lazy(() => import("@/components/geografi/migrasjon-kart").then(m=>({default:m.GeografiFlyktningVertslandKart})));
+
 const GeografiMonsterkartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMonsterkart})));
 
 const GeografiMercatorSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMercator})));
@@ -434,7 +438,13 @@ const GeografiTjenesteKartSkjultLat = lazy(() => import("@/components/geografi/n
 
 const GeografiRjukanLokatorSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiRjukanLokator})));
 
+const GeografiNettomigrasjonKartSkjultLat = lazy(() => import("@/components/geografi/migrasjon-skjulte").then(m => ({default:m.GeografiNettomigrasjonKart})));
+
+const GeografiMigrantkorridorerSkjultLat = lazy(() => import("@/components/geografi/migrasjon-skjulte").then(m => ({default:m.GeografiMigrantkorridorer})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoMigrasjonKorridorer: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMigrantkorridorerSkjultLat /></Suspense>,
+  GeoMigrasjonNettoKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiNettomigrasjonKartSkjultLat /></Suspense>,
   GeoNaeringRjukanLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiRjukanLokatorSkjultLat /></Suspense>,
   GeoNaeringTjenesteKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTjenesteKartSkjultLat /></Suspense>,
   GeoRessursHavsoner: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiHavsonerFeltSkjultLat /></Suspense>,
@@ -469,6 +479,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoVerktoyGradnett: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGradnettSkjultLat /></Suspense>,
   GeoVerktoyMercator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMercatorSkjultLat /></Suspense>,
   GeoVerktoyMonster: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMonsterkartSkjultLat /></Suspense>,
+  GeoMigrasjonKommunekart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiKommuneflyttingKartLat /></Suspense>,
+  GeoMigrasjonVertslandKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFlyktningVertslandKartLat /></Suspense>,
+
   GeoBefolkningFruktbarhetKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFruktbarhetKartLat /></Suspense>,
   GeoBefolkningLevekarKart: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiLevekarKartLat /></Suspense>,
 
@@ -1630,6 +1643,11 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoMigrasjonSkyveTrekk: () => <GeografiSkyveTrekk />,
+  GeoMigrasjonNorge: () => <GeografiFlyttingNorge />,
+  GeoMigrasjonHistorie: () => <GeografiMigrasjonHistorie />,
+  GeoMigrasjonInnvandringsgrunn: () => <GeografiInnvandringsgrunn />,
+  GeoMigrasjonFlyktninger: () => <GeografiFlyktningerNaboland />,
   GeoBefolkningVerden: () => <GeografiVerdensbefolkning />,
   GeoBefolkningGrunnformel: () => <GeografiDemografiskGrunnformel />,
   GeoBefolkningNorgePyramider: () => <GeografiNorgePyramider />,

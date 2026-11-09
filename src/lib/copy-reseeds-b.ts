@@ -5,6 +5,7 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  * Flaggene overskriver CMS-redigeringer i disse kapitlene (se copy-reseed.ts).
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
+  { flag: "geo-migrasjon-figurnummer-kap11-2026-11-09", slug: "geo-migrasjon", stale: ["er i figur 11.7 for 2015"] },
   { flag: "geo-befolkning-figurnummer-kap10-2026-11-09", slug: "geo-befolkning", stale: ["Bruk figur 10.6 og tabel"] },
   { flag: "geo-naering-figurnummer-kap9-2026-11-09", slug: "geo-naering", stale: ["Figur 9.4 skiller "] },
   { flag: "geo-ressurser-et-al-kap7-2026-11-09", slug: "geo-ressurser", stale: ["026b; Hofstad mfl., 2026"] },
@@ -14,6 +15,7 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
   { flag: "geo-indre-krefter-figurnummer-kap3-2026-11-09", slug: "geo-indre-krefter", stale: ["len i figur 3.6 lar oss "] },
   { flag: "geo-baerekraft-figurnummer-kap8-2026-11-09", slug: "geo-baerekraft", stale: ["[figur-8-6]: # (FIG"] },
   { flag: "geo-naturfare-figurnummer-kap6-2026-11-09", slug: "geo-naturfare", stale: ["Figur 6.10 gir en "] },
+  { flag: "geo-migrasjon-skjulte-kap11-2026-11-07", slug: "geo-migrasjon", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-naering-skjulte-kap9-2026-11-07", slug: "geo-naering", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-ressurser-skjulte-kap7-2026-11-07", slug: "geo-ressurser", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-klima-skjulte-kap5-2026-11-07", slug: "geo-klima", stale: ["FIGURPLASSHOLDER"] },
@@ -23,6 +25,11 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
   { flag: "geo-naturfare-skjulte-kap6-2026-11-07", slug: "geo-naturfare", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-feltarbeid-skjulte-kap2-2026-11-07", slug: "geo-feltarbeid", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-verktoy-skjulte-kap1-2026-11-07", slug: "geo-verktoy", stale: ["FIGURPLASSHOLDER"] },
+  {
+    flag: "geo-migrasjon-mats-valg-kap11-2026-11-06",
+    slug: "geo-migrasjon",
+    stale: ["FIGURPLASSHOLDER"],
+  },
   {
     flag: "geo-befolkning-mats-valg-kap10-2026-11-06",
     slug: "geo-befolkning",
@@ -67,6 +74,12 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
     slug: "geo-verktoy",
     stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    // Geografi: kapittel 11 alene; ingen produksjonsinnlasting før godkjent merge.
+    flag: "geo-migrasjon-kap11-2026-11-06",
+    slug: "geo-migrasjon",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
   },
   {
     // Geografi: kapittel 10 alene; ingen produksjonsinnlasting før godkjent merge.
