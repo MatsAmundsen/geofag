@@ -24,7 +24,7 @@ export function GeografiLokalFotavtrykk() {
   const km = svar.map((v) => v.trim() === "" ? 0 : Number(v.replace(",", ".")));
   const utslipp = gyldig ? transportCO2(km) : null;
   return <figure className="my-6 space-y-4 rounded-xl border p-4">
-    <h3 className="font-semibold">Figur 8.6a. Lokal kalkulator: forenklet transportavtrykk</h3>
+    <h3 className="font-semibold">Figur 8.5a. Lokal kalkulator: forenklet transportavtrykk</h3>
     <p>Oppgi personkilometer for en selvvalgt periode, gjerne en oppdiktet øvingsprofil. Én person som reiser én kilometer, gir én personkilometer. Tomme felt regnes som null. Tallene sendes ikke og lagres ikke.</p>
     {TRANSPORT_FAKTORER.map((f, i) => <div key={f.id} className="flex flex-wrap items-center gap-3"><label className="min-w-56" htmlFor={`${id}-${f.id}`}>{f.navn}, personkilometer</label><input id={`${id}-${f.id}`} type="text" inputMode="decimal" value={svar[i]} aria-invalid={!gyldig} className="w-36 rounded border bg-background p-2" onChange={(e) => setSvar(svar.map((v, j) => j === i ? e.target.value : v))} /><span className="text-sm">× {tall(f.gram, 1)} g CO₂/personkm (2020)</span></div>)}
     <p aria-live="polite" className="font-medium">{utslipp === null ? "Skriv positive tall eller null, maksimalt 1 000 000 personkilometer per felt. Komma eller punktum kan brukes." : `Beregnet direkte CO₂: ${tall(utslipp, 2)} kg for den oppgitte perioden.`}</p>
