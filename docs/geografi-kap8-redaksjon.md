@@ -1,5 +1,7 @@
 # Geografi kapittel 8 – redaksjonell overlevering, PR E
 
+Oppdatert figurstatus står i `geografi-kap8-mats-valg.md` (Mats sine valg) og `geografi-kap8-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 ## Leveranse og avgrensning
 
 Kapittel: Bærekraftig utvikling, `/geografi/baerekraft`, `geo-baerekraft`.

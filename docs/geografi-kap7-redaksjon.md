@@ -1,5 +1,7 @@
 # Redaksjonell overlevering: kapittel 7
 
+Oppdatert figurstatus står i `geografi-kap7-mats-valg.md` (Mats sine valg) og `geografi-kap7-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 ## Leveranse og avgrensning
 
 Kapittel: Naturressurser og arealbruk. Rute: `/geografi/ressurser`. CMS-slug: `geo-ressurser`.

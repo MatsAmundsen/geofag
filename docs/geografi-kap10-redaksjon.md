@@ -1,5 +1,7 @@
 # Redaksjonell overlevering: kapittel 10
 
+Oppdatert figurstatus står i `geografi-kap10-mats-valg.md` (Mats sine valg). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 ## Leveranse og arbeidsgren
 
 Kapittel: **Befolkning og levekår**. Rute: `/geografi/befolkning`. CMS-slug: `geo-befolkning`.

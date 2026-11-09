@@ -1131,7 +1131,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
       italic: "Vindkraftområde",
       suffix: ". Vindkraft2, lag 3, Storheia og Roan. NLOD. Generalisert geometri. Hentet 6. november 2026.",
-      href: "https://nve.geodataonline.no/arcgis/rest/services/Vindkraft2/MapServer/3",
+      href: "https://kart.nve.no/enterprise/rest/services/Vindkraft2/MapServer/3",
     },
     {
       prefix: "Landbruksdirektoratet. (u.å.). ",
@@ -1368,12 +1368,6 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       italic: "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population) [SI.POV.DDAY]",
       suffix: " [Datasett]. World Development Indicators, oppdatert 8. oktober 2026. CC BY 4.0. Uttrekk 7. november 2026.",
       href: "https://data.worldbank.org/indicator/SI.POV.DDAY",
-    },
-    {
-      prefix: "Global Footprint Network. (u.å.-e). ",
-      italic: "Free Public Data Set: National Footprint and Biocapacity Accounts 2026",
-      suffix: ". Hentet 6. november 2026. Vilkår kontrollert; ingen data importert.",
-      href: "https://footprintnetwork.org/licenses/public-data-package-free/",
     },
     {
       prefix: "World Bank. (u.å.). ",
