@@ -347,7 +347,7 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.deepEqual(numbers, [6]);
     const widgets = parsePosterMarkdown(md).filter((part) => part.type === "widget");
     assert.deepEqual(widgets.map((part) => part.id), ["GeoBaerekraftFattigdomKart", "GeoHdiBnp", "GeoBaerekraftTre", "GeoBaerekraftPlanetaere", "GeoLokalFotavtrykk", "GeoBaerekraftCo2Kart", "GeoBaerekraftCo2Serie"]);
-    assert.match(read("../components/poster-body.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap8-redaksjon|figur-8-/);
     assert.match(html, /Datoen som mangler/);
