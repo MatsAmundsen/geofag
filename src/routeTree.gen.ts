@@ -35,6 +35,8 @@ import { Route as Geofag1VannFlomOgSkredRouteImport } from './routes/geofag-1/va
 import { Route as Geofag1VannOgFlomRouteImport } from './routes/geofag-1/vann-og-flom'
 import { Route as Geofag1VulkanerRouteImport } from './routes/geofag-1/vulkaner'
 import { Route as Geofag1VulkanerOgJordskjelvRouteImport } from './routes/geofag-1/vulkaner-og-jordskjelv'
+import { Route as GeografiIndexRouteImport } from './routes/geografi/index'
+import { Route as GeografiKapittelRouteImport } from './routes/geografi/$kapittel'
 import { Route as PosterIndexRouteImport } from './routes/poster/index'
 import { Route as TemaCoriolisRouteImport } from './routes/tema/coriolis'
 import { Route as TemaEnergiHavLuftRouteImport } from './routes/tema/energi-hav-luft'
@@ -204,6 +206,16 @@ const Geofag1VulkanerOgJordskjelvRoute =
     path: '/geofag-1/vulkaner-og-jordskjelv',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GeografiIndexRoute = GeografiIndexRouteImport.update({
+  id: '/geografi/',
+  path: '/geografi/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeografiKapittelRoute = GeografiKapittelRouteImport.update({
+  id: '/geografi/$kapittel',
+  path: '/geografi/$kapittel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PosterIndexRoute = PosterIndexRouteImport.update({
   id: '/poster/',
   path: '/poster/',
@@ -399,6 +411,7 @@ export interface FileRoutesByFullPath {
   '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
   '/geofag-1/vulkaner': typeof Geofag1VulkanerRoute
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
+  '/geografi/$kapittel': typeof GeografiKapittelRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
   '/tema/energi-regning': typeof TemaEnergiRegningRoute
@@ -423,6 +436,7 @@ export interface FileRoutesByFullPath {
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
+  '/geografi/': typeof GeografiIndexRoute
   '/poster/': typeof PosterIndexRoute
   '/eksamen/data/$slug': typeof EksamenDataSlugRoute
   '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
@@ -460,6 +474,7 @@ export interface FileRoutesByTo {
   '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
   '/geofag-1/vulkaner': typeof Geofag1VulkanerRoute
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
+  '/geografi/$kapittel': typeof GeografiKapittelRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
   '/tema/energi-regning': typeof TemaEnergiRegningRoute
@@ -484,6 +499,7 @@ export interface FileRoutesByTo {
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/eksamen': typeof EksamenIndexRoute
   '/geofag-1': typeof Geofag1IndexRoute
+  '/geografi': typeof GeografiIndexRoute
   '/poster': typeof PosterIndexRoute
   '/eksamen/data/$slug': typeof EksamenDataSlugRoute
   '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
@@ -522,6 +538,7 @@ export interface FileRoutesById {
   '/geofag-1/vann-og-flom': typeof Geofag1VannOgFlomRoute
   '/geofag-1/vulkaner': typeof Geofag1VulkanerRoute
   '/geofag-1/vulkaner-og-jordskjelv': typeof Geofag1VulkanerOgJordskjelvRoute
+  '/geografi/$kapittel': typeof GeografiKapittelRoute
   '/tema/coriolis': typeof TemaCoriolisRoute
   '/tema/energi-hav-luft': typeof TemaEnergiHavLuftRoute
   '/tema/energi-regning': typeof TemaEnergiRegningRoute
@@ -546,6 +563,7 @@ export interface FileRoutesById {
   '/tema/vindsystemet': typeof TemaVindsystemetRoute
   '/eksamen/': typeof EksamenIndexRoute
   '/geofag-1/': typeof Geofag1IndexRoute
+  '/geografi/': typeof GeografiIndexRoute
   '/poster/': typeof PosterIndexRoute
   '/eksamen/data/$slug': typeof EksamenDataSlugRoute
   '/poster/$slug/rediger': typeof PosterSlugRedigerRoute
@@ -585,6 +603,7 @@ export interface FileRouteTypes {
     | '/geofag-1/vann-og-flom'
     | '/geofag-1/vulkaner'
     | '/geofag-1/vulkaner-og-jordskjelv'
+    | '/geografi/$kapittel'
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
     | '/tema/energi-regning'
@@ -609,6 +628,7 @@ export interface FileRouteTypes {
     | '/tema/vindsystemet'
     | '/eksamen/'
     | '/geofag-1/'
+    | '/geografi/'
     | '/poster/'
     | '/eksamen/data/$slug'
     | '/poster/$slug/rediger'
@@ -646,6 +666,7 @@ export interface FileRouteTypes {
     | '/geofag-1/vann-og-flom'
     | '/geofag-1/vulkaner'
     | '/geofag-1/vulkaner-og-jordskjelv'
+    | '/geografi/$kapittel'
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
     | '/tema/energi-regning'
@@ -670,6 +691,7 @@ export interface FileRouteTypes {
     | '/tema/vindsystemet'
     | '/eksamen'
     | '/geofag-1'
+    | '/geografi'
     | '/poster'
     | '/eksamen/data/$slug'
     | '/poster/$slug/rediger'
@@ -707,6 +729,7 @@ export interface FileRouteTypes {
     | '/geofag-1/vann-og-flom'
     | '/geofag-1/vulkaner'
     | '/geofag-1/vulkaner-og-jordskjelv'
+    | '/geografi/$kapittel'
     | '/tema/coriolis'
     | '/tema/energi-hav-luft'
     | '/tema/energi-regning'
@@ -731,6 +754,7 @@ export interface FileRouteTypes {
     | '/tema/vindsystemet'
     | '/eksamen/'
     | '/geofag-1/'
+    | '/geografi/'
     | '/poster/'
     | '/eksamen/data/$slug'
     | '/poster/$slug/rediger'
@@ -769,6 +793,7 @@ export interface RootRouteChildren {
   Geofag1VannOgFlomRoute: typeof Geofag1VannOgFlomRoute
   Geofag1VulkanerRoute: typeof Geofag1VulkanerRoute
   Geofag1VulkanerOgJordskjelvRoute: typeof Geofag1VulkanerOgJordskjelvRoute
+  GeografiKapittelRoute: typeof GeografiKapittelRoute
   TemaCoriolisRoute: typeof TemaCoriolisRoute
   TemaEnergiHavLuftRoute: typeof TemaEnergiHavLuftRoute
   TemaEnergiRegningRoute: typeof TemaEnergiRegningRoute
@@ -793,6 +818,7 @@ export interface RootRouteChildren {
   TemaVindsystemetRoute: typeof TemaVindsystemetRoute
   EksamenIndexRoute: typeof EksamenIndexRoute
   Geofag1IndexRoute: typeof Geofag1IndexRoute
+  GeografiIndexRoute: typeof GeografiIndexRoute
   PosterIndexRoute: typeof PosterIndexRoute
   EksamenDataSlugRoute: typeof EksamenDataSlugRoute
   PosterSlugRedigerRoute: typeof PosterSlugRedigerRoute
@@ -988,6 +1014,20 @@ declare module '@tanstack/react-router' {
       path: '/geofag-1/vulkaner-og-jordskjelv'
       fullPath: '/geofag-1/vulkaner-og-jordskjelv'
       preLoaderRoute: typeof Geofag1VulkanerOgJordskjelvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geografi/': {
+      id: '/geografi/'
+      path: '/geografi'
+      fullPath: '/geografi/'
+      preLoaderRoute: typeof GeografiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geografi/$kapittel': {
+      id: '/geografi/$kapittel'
+      path: '/geografi/$kapittel'
+      fullPath: '/geografi/$kapittel'
+      preLoaderRoute: typeof GeografiKapittelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/poster/': {
@@ -1249,6 +1289,7 @@ const rootRouteChildren: RootRouteChildren = {
   Geofag1VannOgFlomRoute: Geofag1VannOgFlomRoute,
   Geofag1VulkanerRoute: Geofag1VulkanerRoute,
   Geofag1VulkanerOgJordskjelvRoute: Geofag1VulkanerOgJordskjelvRoute,
+  GeografiKapittelRoute: GeografiKapittelRoute,
   TemaCoriolisRoute: TemaCoriolisRoute,
   TemaEnergiHavLuftRoute: TemaEnergiHavLuftRoute,
   TemaEnergiRegningRoute: TemaEnergiRegningRoute,
@@ -1273,6 +1314,7 @@ const rootRouteChildren: RootRouteChildren = {
   TemaVindsystemetRoute: TemaVindsystemetRoute,
   EksamenIndexRoute: EksamenIndexRoute,
   Geofag1IndexRoute: Geofag1IndexRoute,
+  GeografiIndexRoute: GeografiIndexRoute,
   PosterIndexRoute: PosterIndexRoute,
   EksamenDataSlugRoute: EksamenDataSlugRoute,
   PosterSlugRedigerRoute: PosterSlugRedigerRoute,

@@ -7,12 +7,19 @@ import {
   NAV_GF1_ROWS,
   NAV_GF2,
   NAV_GF2_ROWS,
+  NAV_GEO,
+  NAV_GEO_ROWS,
   navForPath,
   navGroupsForPath,
 } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SiteSearch } from "@/components/sok/site-search";
+
+// Geografi-kapitlene deler en dynamisk rute, ikke elleve statiske filruter.
+function isGeografiKapittelPath<T extends string>(to: T): to is Extract<T, `/geografi/${string}`> {
+  return to.startsWith("/geografi/");
+}
 
 function isItemActive(pathname: string, to: string) {
   if (to === "/") return pathname === "/";
@@ -177,8 +184,16 @@ export function SiteHeader() {
     pathname.startsWith("/geofag-2") ||
     pathname.startsWith("/tema") ||
     pathname.startsWith("/eksamen");
+  const isGeo = pathname.startsWith("/geografi");
   const isHome = pathname === "/";
-  const menuRows = items === NAV_GF2 ? NAV_GF2_ROWS : items === NAV_GF1 ? NAV_GF1_ROWS : null;
+  const menuRows =
+    items === NAV_GF2
+      ? NAV_GF2_ROWS
+      : items === NAV_GF1
+        ? NAV_GF1_ROWS
+        : items === NAV_GEO
+          ? NAV_GEO_ROWS
+          : null;
   const groups = navGroupsForPath(pathname);
 
   // Mobilmenyen (under md): siden bak ligger låst mens menyen er åpen, Escape lukker og gir fokus tilbake
@@ -263,6 +278,7 @@ export function SiteHeader() {
               isHome={isHome}
               isGf1={isGf1}
               isGf2={isGf2}
+              isGeo={isGeo}
               onNavigate={() => setOpen(false)}
             />
             <div className="flex shrink-0 items-center gap-2">
@@ -310,7 +326,7 @@ export function SiteHeader() {
                   /
                 </span>
                 <Link
-                  to={isGf1 ? "/geofag-1" : isGf2 ? "/geofag-2" : "/"}
+                  to={isGf1 ? "/geofag-1" : isGeo ? "/geografi" : isGf2 ? "/geofag-2" : "/"}
                   className="leading-tight"
                   onClick={() => setOpen(false)}
                 >
@@ -350,10 +366,16 @@ export function SiteHeader() {
                   ? pathname === "/"
                   : pathname === item.to ||
                     (item.to !== "/geofag-2" && pathname.startsWith(`${item.to}/`));
+              const destination = isGeografiKapittelPath(item.to)
+                ? {
+                    to: "/geografi/$kapittel" as const,
+                    params: { kapittel: item.to.slice("/geografi/".length) },
+                  }
+                : { to: item.to };
               return (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  {...destination}
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "inline-flex h-10 items-center rounded-md px-2 text-sm transition-colors",
@@ -410,7 +432,7 @@ export function SiteHeader() {
           className="min-h-0 overflow-y-auto overscroll-contain border-t border-border bg-background px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 md:hidden"
           aria-label="Mobilmeny"
         >
-          <div className="mb-3 grid grid-cols-3 gap-2 border-b border-border pb-3 text-center">
+          <div className="mb-3 grid grid-cols-2 gap-2 border-b border-border pb-3 text-center sm:grid-cols-4">
             <Link
               to="/"
               onClick={() => setOpen(false)}
@@ -446,6 +468,18 @@ export function SiteHeader() {
               )}
             >
               Geofag 2
+            </Link>
+            <Link
+              to="/geografi"
+              onClick={() => setOpen(false)}
+              className={cn(
+                "flex min-h-11 items-center justify-center rounded-md border p-2 text-xs font-medium",
+                isGeo
+                  ? "border-primary bg-primary/10 font-semibold text-foreground"
+                  : "border-border text-muted-foreground",
+              )}
+            >
+              Geografi
             </Link>
           </div>
 
@@ -512,12 +546,14 @@ function BrandCluster({
   isHome,
   isGf1,
   isGf2,
+  isGeo,
   onNavigate,
 }: {
   brand: { title: string; sub: string };
   isHome: boolean;
   isGf1: boolean;
   isGf2: boolean;
+  isGeo: boolean;
   onNavigate: () => void;
 }) {
   const pill =
@@ -549,7 +585,7 @@ function BrandCluster({
             /
           </span>
           <Link
-            to={isGf1 ? "/geofag-1" : isGf2 ? "/geofag-2" : "/"}
+            to={isGf1 ? "/geofag-1" : isGeo ? "/geografi" : isGf2 ? "/geofag-2" : "/"}
             className="leading-tight max-md:flex max-md:min-h-11 max-md:items-center"
             onClick={onNavigate}
           >
@@ -570,6 +606,12 @@ function BrandCluster({
         </Link>
       )}
       {isGf2 && !isGf1 && (
+        <Link to="/geofag-1" className={cn(pill, "hover:border-lava/50")}>
+          <ArrowLeft className="size-3" />
+          <span>Geofag 1</span>
+        </Link>
+      )}
+      {isGeo && (
         <Link to="/geofag-1" className={cn(pill, "hover:border-lava/50")}>
           <ArrowLeft className="size-3" />
           <span>Geofag 1</span>
