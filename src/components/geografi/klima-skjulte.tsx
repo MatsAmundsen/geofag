@@ -116,7 +116,7 @@ export function GeografiTemperaturserie() {
         kommer blant annet av El Niño og La Niña, mens stigningen over flere tiår er klimasignalet.
         2026 er utelatt fordi året ikke er avsluttet. Avvikene er målt mot 1951–1980, ikke mot
         førindustriell tid. Data: NASA GISS, GISTEMP v4, fil GLB.Ts+dSST.csv, hentet 6. november
-        2026. Egen tegning (GISTEMP Team, 2026; Lenssen mfl., 2024).
+        2026. Egen tegning (GISTEMP Team, 2026; Lenssen et al., 2024).
       </figcaption>
     </figure>
   );

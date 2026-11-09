@@ -43,7 +43,7 @@ Klima handler også om hvor ofte uvanlige forhold oppstår, ikke bare om gjennom
 
 **Lufttrykk** er trykket fra lufta over oss, og det varierer mellom steder. Et **høytrykk** er et område med høyere lufttrykk enn områdene rundt. Et **lavtrykk** er tilsvarende et område med lavere lufttrykk enn omgivelsene. Trykkforskjeller setter luft i bevegelse, og luft i bevegelse kaller vi vind. Retningen påvirkes også av jordrotasjonen, slik at vinden ikke bare følger en rett linje (UCAR, u.å.-a, u.å.-b).
 
-Rundt et lavtrykk strømmer luft nær bakken gjerne innover, mens luft stiger over området. Når luft stiger til lavere trykk, utvider den seg og avkjøles. Blir lufta mettet med vanndamp, kan vanndampen kondensere til små skydråper. Dråper eller ispartikler som vokser tilstrekkelig, kan falle som **nedbør**, altså regn, snø eller andre vannpartikler. Synkende luft i høytrykk varmes derimot opp, noe som ofte gir mindre skydannelse (UCAR, u.å.-a; Dannevig mfl., u.å.).
+Rundt et lavtrykk strømmer luft nær bakken gjerne innover, mens luft stiger over området. Når luft stiger til lavere trykk, utvider den seg og avkjøles. Blir lufta mettet med vanndamp, kan vanndampen kondensere til små skydråper. Dråper eller ispartikler som vokser tilstrekkelig, kan falle som **nedbør**, altså regn, snø eller andre vannpartikler. Synkende luft i høytrykk varmes derimot opp, noe som ofte gir mindre skydannelse (UCAR, u.å.-a; Dannevig et al., u.å.).
 
 ### Les to akser, ikke én
 
@@ -119,7 +119,7 @@ Vi kan bruke vegetasjonen som et spor, men ikke som et feilfritt termometer. Rie
 
 ### Fjell løfter lufta
 
-Når fuktig luft møter et fjellområde, kan terrenget tvinge lufta oppover langs fjellsiden. Lufta utvider seg og avkjøles når trykket blir lavere høyere oppe i atmosfæren. Dersom lufta blir mettet, kan det dannes skyer og deretter nedbør på **losiden**, siden vinden møter først. **Fjellnedbør**, også kalt orografisk nedbør, er nedbør som forsterkes gjennom slik heving over terreng. Dette bidrar til mye nedbør vest i Norge når fuktig luft kommer fra vest (Dannevig mfl., u.å.; Dannevig & Harstveit, 2026).
+Når fuktig luft møter et fjellområde, kan terrenget tvinge lufta oppover langs fjellsiden. Lufta utvider seg og avkjøles når trykket blir lavere høyere oppe i atmosfæren. Dersom lufta blir mettet, kan det dannes skyer og deretter nedbør på **losiden**, siden vinden møter først. **Fjellnedbør**, også kalt orografisk nedbør, er nedbør som forsterkes gjennom slik heving over terreng. Dette bidrar til mye nedbør vest i Norge når fuktig luft kommer fra vest (Dannevig et al., u.å.; Dannevig & Harstveit, 2026).
 
 Bak fjellene ligger **lesiden**, siden som er skjermet fra den innkommende vinden. Områder her kan få **regnskygge**, altså mindre nedbør fordi fjellene påvirker luftstrømmen og nedbørfordelingen. Men lo og le er ikke faste navn på vest og øst. Når vinden kommer fra en annen kant, kan de to sidene bytte rolle. Vi må derfor begynne med vindretningen før vi forklarer et bestemt nedbørsmønster (Dannevig & Harstveit, 2026; Harstveit, 2024).
 

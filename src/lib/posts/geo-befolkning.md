@@ -337,7 +337,7 @@ c. Regn den naturlige tilveksten i promille og prosent. Forklar hvorfor denne ik
 
 ### 3. Bruke: les to befolkningspyramider
 
-a. Bruk figur 10.6 og tabellene under panelene. Oppgi land, år, enhet, nevner, kjønnsplassering og hvordan gruppen 80+ er avgrenset.
+a. Bruk figur 10.5 og tabellene under panelene. Oppgi land, år, enhet, nevner, kjønnsplassering og hvordan gruppen 80+ er avgrenset.
 
 b. Sammenlikn de nederste tre aldersgruppene i Japan og Niger. Summer begge kjønn og kontroller mot andelene under 15 år i teksten, med rimelig avrunding.
 

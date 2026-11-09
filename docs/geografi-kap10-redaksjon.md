@@ -132,8 +132,8 @@ Seks figurposisjoner er levert:
 - **10.2:** Verdensbefolkning, ekte historiske estimater, tilgjengelig tabell og CSV.
 - **10.3:** Grunnformelen med ekte 2025-tall, rater og eksplisitt registeravvik.
 - **10.4:** Fire Norge-pyramider, registrert 1986/2006/2026 og framskrevet 2050 MMM 2026, med felles akser og tabeller.
-- **10.5:** Egen kvalitativ faseframstilling etter Tønnessen (2024). Ingen oppdiktede ratekurver. Mulig fase 5 er tydelig usikker. Dette erstatter planens mulige OWID-bildebearbeiding; ingen slik bildefil er brukt.
-- **10.6:** Japan og Niger, samme referanseår, grupper, akser og nevner, med tabeller og originalverdier.
+- **10.5:** Japan og Niger, samme referanseår, grupper, akser og nevner, med tabeller og originalverdier.
+- **10.6:** Egen kvalitativ faseframstilling etter Tønnessen (2024). Ingen oppdiktede ratekurver. Mulig fase 5 er tydelig usikker. Dette erstatter planens mulige OWID-bildebearbeiding; ingen slik bildefil er brukt.
 - **10.8:** Separate paneler for SFT og eldrevarianten av forsørgerforhold. Ulike perioder og enheter er oppgitt; forbindelsen til 2050 er stiplet og merket scenario.
 
 To hele kartfigurer gjenstår som skjulte referansedefinisjoner:

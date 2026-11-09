@@ -18,16 +18,16 @@ Avslutningen har oppsummering, de 17 avtalte begrepene, gjenfortellingsspørsmå
 
 Fire figurer er koblet inn:
 
-- 7.2: eget kvalitativt fornybarhetsspekter. Ingen tallakse eller bærekraftrangering. Jordsmonn skilles fra avlinger.
+- 7.1: eget kvalitativt fornybarhetsspekter. Ingen tallakse eller bærekraftrangering. Jordsmonn skilles fra avlinger.
 - 7.3: `FraBergartTilBruddDiagram` med uttrykkelig vg1-valg. Mineralforekomst er ikke automatisk drivverdig malm. Eksisterende geometri beholdes, men forklaringer og etiketter er forenklet.
 - 7.4: `PetroleumTrapModel` med vg1-valg og fem lesetrinn. Foldgeometrien gjenbrukes. Ingen beregnede oljemengder, tetningsprosenter, temperaturgrenser eller oppdiktet lekkasjeterskel vises. Alle trinn kan leses uten knappetrykk.
-- 7.8: `WindPowerTradeoffDiagram` med vg1-valg. Geometrien gjenbrukes som spørsmålskart. Menneskerettigheter er rettslige rammer, ikke poeng som kraftnytte kan oppveie.
+- 7.6: `WindPowerTradeoffDiagram` med vg1-valg. Geometrien gjenbrukes som spørsmålskart. Menneskerettigheter er rettslige rammer, ikke poeng som kraftnytte kan oppveie.
 
 Fem skjulte markører gjenstår for DesignBOT:
 
-- 7.1: mineralproduksjonskart. Kontroller USGS-årgang, utvalgte råvarer, mengdeenhet og konkret fil-/kartlisens. Skill utvinning og raffinering.
+- 7.2: mineralproduksjonskart. Kontroller USGS-årgang, utvalgte råvarer, mengdeenhet og konkret fil-/kartlisens. Skill utvinning og raffinering.
 - 7.5: SSB-serie over elektrisitetsproduksjon etter kilde. Tabell-ID, periode, kategorier og kreditering må kontrolleres. Ikke framstill dette som samlet energibruk.
-- 7.6: felt og havrettslige soner. Sokkeldirektoratets konkrete datalisens må verifiseres. Økonomisk sone, fiskevernsone ved Svalbard, territorium og sokkelrettigheter må skilles.
+- 7.8: felt og havrettslige soner. Sokkeldirektoratets konkrete datalisens må verifiseres. Økonomisk sone, fiskevernsone ved Svalbard, territorium og sokkelrettigheter må skilles.
 - 7.7: reinbeite og inngrep. Krever dokumentert område, samme utsnitt, sesongkunnskap og lisens per lag. Et offentlig kart er ikke fullstendig kunnskap om faktisk bruk.
 - 7.9: LoVeSe-sammenlikning. Krever sammenliknbare næringsdata med samme år, region og metode. Prognoser må ikke blandes med registrert sysselsetting. Ingen tall er gjettet.
 
