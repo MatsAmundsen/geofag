@@ -431,7 +431,7 @@ function GeografiVindSporsmal() {
     { x: 30, y: 235, title: "Kraftsystem og samfunn", lines: ["Når er kraften tilgjengelig?", "Hvem får nytten og ulempene?"] },
     { x: 575, y: 235, title: "Rettigheter og prosess", lines: ["Hvilke rettslige grenser gjelder?", "Hvem skal delta og konsulteres?"] },
   ];
-  return <Diagram title="Fire grupper av spørsmål om et energiprosjekt, med rettslige rammer" heading="Figur 7.8 – Undersøk før vi veier hensyn"
+  return <Diagram title="Fire grupper av spørsmål om et energiprosjekt, med rettslige rammer" heading="Figur 7.6 – Undersøk før vi veier hensyn"
     caption="Spørsmålene er en kvalitativ lesestøtte, ikke en beregning eller rangering. Menneskerettigheter setter rettslige grenser og kan ikke kjøpes opp med poeng for kraftnytte. Alternativer, usikkerhet og berørte grupper må undersøkes konkret (Kommunal- og distriktsdepartementet, 2026; Høyesterett, 2021; Landbruksdirektoratet, 2025a, 2025c)."
     viewBox="0 0 900 395" wide scroll>
     {() => <>

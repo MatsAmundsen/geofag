@@ -47,7 +47,7 @@ export function GeografiCo2Kart() {
   return (
     <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
-        Figur 8.5 – CO₂ per person fra fossil energi og industri, 2024
+        Figur 8.6 – CO₂ per person fra fossil energi og industri, 2024
       </h3>
       <GeografiVerdenskart
         rows={data.co2_2024}

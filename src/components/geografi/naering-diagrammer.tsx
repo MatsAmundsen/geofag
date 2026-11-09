@@ -57,7 +57,7 @@ export function GeografiLokaliseringsfaktorer() {
 }
 
 export function GeografiRingvirkninger() {
-  return <Diagram title="Leverandørvirkninger, inntektsforbindelser og eksterne belastninger må undersøkes hver for seg" heading="Figur 9.4 – Ulike forbindelser fra en virksomhet" caption="Egen kvalitativ modell etter SSB (2026c) og Onshuus og Idsø (2025). Pilene viser mulige forbindelser, ikke beløp, sikre jobbeffekter eller full samfunnsøkonomisk lønnsomhet. SSBs omtalte leverandøranalyse omfatter ikke alle inntekts- og forbruksvirkninger." viewBox="0 0 920 425" wide scroll>
+  return <Diagram title="Leverandørvirkninger, inntektsforbindelser og eksterne belastninger må undersøkes hver for seg" heading="Figur 9.5 – Ulike forbindelser fra en virksomhet" caption="Egen kvalitativ modell etter SSB (2026c) og Onshuus og Idsø (2025). Pilene viser mulige forbindelser, ikke beløp, sikre jobbeffekter eller full samfunnsøkonomisk lønnsomhet. SSBs omtalte leverandøranalyse omfatter ikke alle inntekts- og forbruksvirkninger." viewBox="0 0 920 425" wide scroll>
     {(m) => <>
       <Boks x={20} y={160} tittel="Virksomheten" tekst="Direkte aktivitet" />
       <Boks x={345} y={20} tittel="Innkjøp" tekst="Leverandører og underleverandører" />
@@ -72,7 +72,7 @@ export function GeografiRingvirkninger() {
 }
 
 export function GeografiTelefonVerdikjede() {
-  return <Diagram title="Forenklede aktiviteter fra råvare til bruk, reparasjon og gjenvinning, uten antatte leverandørland" heading="Figur 9.5 – En telefon gjennom flere aktiviteter" caption="Egen skjematisk modell etter Rolstadås (2024) og UNEP (2019, 2023). Forenklet, ikke komplett leverandørliste. Ingen telefonmodells faktiske rute, landfordeling, utslipp eller fortjeneste er lagt inn. Utvikling, innkjøp og transport kan knytte flere ledd sammen. Ombruk og gjenvinning er mulige videre veier, ikke en garanti om at alle materialer går i kretsløp." viewBox="0 0 940 390" wide scroll>
+  return <Diagram title="Forenklede aktiviteter fra råvare til bruk, reparasjon og gjenvinning, uten antatte leverandørland" heading="Figur 9.7 – En telefon gjennom flere aktiviteter" caption="Egen skjematisk modell etter Rolstadås (2024) og UNEP (2019, 2023). Forenklet, ikke komplett leverandørliste. Ingen telefonmodells faktiske rute, landfordeling, utslipp eller fortjeneste er lagt inn. Utvikling, innkjøp og transport kan knytte flere ledd sammen. Ombruk og gjenvinning er mulige videre veier, ikke en garanti om at alle materialer går i kretsløp." viewBox="0 0 940 390" wide scroll>
     {(m) => <>
       <Boks x={15} y={20} tittel="Råvarer" tekst="Materialer hentes og bearbeides" />
       <Boks x={335} y={20} tittel="Komponenter" tekst="Deler framstilles og samordnes" />

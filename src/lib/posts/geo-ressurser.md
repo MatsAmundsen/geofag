@@ -37,7 +37,7 @@ En forekomst i berggrunnen blir ikke automatisk en ressurs vi kan eller bør utv
 
 En **fornybar** ressurs blir fornyet gjennom naturlige prosesser innenfor tidsrom som er relevante for oss. Solinnstråling og vind er eksempler på energistrømmer vi ikke bruker opp ved vanlig utnyttelse. En **betinget fornybar** ressurs kan fornyes dersom vi bevarer grunnlaget for ny produksjon. Skog og fisk hører til her, fordi overbeskatning kan svekke muligheten for fornyelse. Ordet fornybar er altså ikke en garanti for ubegrenset uttak eller skadefri bruk (Olerud, 2025).
 
-En **ikke-fornybar** ressurs blir ikke erstattet i takt med uttaket innenfor menneskelige tidsperspektiver. Petroleum og metallforekomster er eksempler, selv om geologiske prosesser fortsatt virker i naturen. Metaller kan gjenvinnes og brukes igjen, mens brent olje ikke kan gjenvinnes som olje. Gjenvinning endrer derfor hvordan vi bruker en begrenset ressurs, ikke hvordan forekomsten ble dannet. Figur 7.2 skiller ressursens fornyelse fra virkningene av å utnytte den (Hofstad & Seip, 2025; Olerud, 2025).
+En **ikke-fornybar** ressurs blir ikke erstattet i takt med uttaket innenfor menneskelige tidsperspektiver. Petroleum og metallforekomster er eksempler, selv om geologiske prosesser fortsatt virker i naturen. Metaller kan gjenvinnes og brukes igjen, mens brent olje ikke kan gjenvinnes som olje. Gjenvinning endrer derfor hvordan vi bruker en begrenset ressurs, ikke hvordan forekomsten ble dannet. Figur 7.1 skiller ressursens fornyelse fra virkningene av å utnytte den (Hofstad & Seip, 2025; Olerud, 2025).
 
 ```widget
 GeoRessursFornyelse
@@ -137,7 +137,7 @@ Oljefondet heter formelt **Statens pensjonsfond utland** og skal komme både dag
 
 Når vi snakker om en energimiks, må vi først avklare hva tallene faktisk beskriver. Elektrisitetsproduksjon er strøm som produseres, mens samlet energibruk også omfatter andre energibærere. Petroleum som brennes, og varme som brukes direkte, kan derfor ikke bare forsvinne fra regnskapet. Et land kan ha mye fornybar kraftproduksjon uten at all energibruk er fornybar. Før vi sammenlikner diagrammer, kontrollerer vi derfor avgrensning, enhet og tidsperiode (Hofstad & Seip, 2025; Hofstad, 2025).
 
-Norsk kraftproduksjon har lenge vært dominert av vannkraft, men produksjonen varierer med naturgitte forhold. Nedbør, snø og tilsig påvirker hvor mye vann som er tilgjengelig for kraftverkene. Et produksjonsår kan derfor ikke uten videre brukes som en fast fasit for alle år. Vi må også skille mellom mulig produksjon og den elektrisiteten som faktisk blir produsert. Når vi senere bruker tidsserier, skal samme avgrensning følge tallene gjennom hele perioden (Norges vassdrags- og energidirektorat [NVE], 2026b; Hofstad mfl., 2026).
+Norsk kraftproduksjon har lenge vært dominert av vannkraft, men produksjonen varierer med naturgitte forhold. Nedbør, snø og tilsig påvirker hvor mye vann som er tilgjengelig for kraftverkene. Et produksjonsår kan derfor ikke uten videre brukes som en fast fasit for alle år. Vi må også skille mellom mulig produksjon og den elektrisiteten som faktisk blir produsert. Når vi senere bruker tidsserier, skal samme avgrensning følge tallene gjennom hele perioden (Norges vassdrags- og energidirektorat [NVE], 2026b; Hofstad et al., 2026).
 
 Serien nedenfor gjelder hele landet i 2020–2025. Vi bruker samme kildeinndeling hvert år, og skiller faktiske GWh fra installert effekt (Statistisk sentralbyrå [SSB], 2026a).
 
@@ -147,15 +147,15 @@ GeoRessursKraftproduksjon
 
 ### Vannkraft bruker fallhøyde og vannføring
 
-**Vannkraft** er energi fra vannets fall som utnyttes til mekanisk arbeid eller elektrisitet. I et vannkraftverk inngår blant annet turbin og generator i anlegget som produserer strøm. Fallhøyde, vanntilgang og terreng bidrar til at vannkraft har fått stor betydning i Norge. Noen kraftverk bruker vannmagasiner som gjør det mulig å spare vann til senere produksjon. Andre har langt mindre mulighet til å flytte produksjonen mellom årstider (Hofstad mfl., 2026; Rosvold & Halleraker, 2026).
+**Vannkraft** er energi fra vannets fall som utnyttes til mekanisk arbeid eller elektrisitet. I et vannkraftverk inngår blant annet turbin og generator i anlegget som produserer strøm. Fallhøyde, vanntilgang og terreng bidrar til at vannkraft har fått stor betydning i Norge. Noen kraftverk bruker vannmagasiner som gjør det mulig å spare vann til senere produksjon. Andre har langt mindre mulighet til å flytte produksjonen mellom årstider (Hofstad et al., 2026; Rosvold & Halleraker, 2026).
 
-Magasiner gir fleksibilitet, men de gjør ikke vannkraften uavhengig av nedbør og tilsig. Vi må ha vann tilgjengelig før det kan brukes til ny kraftproduksjon. Regulering av vassdrag kan samtidig endre vannføring, vannstand og leveområder for planter og dyr. Dammer kan hindre fiskens vandring, og raske vannstandsendringer kan gi andre belastninger enn langsomme endringer. Fornyelse av vannkretsløpet betyr derfor ikke at inngrepene automatisk er uten naturkostnader (Hofstad mfl., 2026; Rosvold & Halleraker, 2026).
+Magasiner gir fleksibilitet, men de gjør ikke vannkraften uavhengig av nedbør og tilsig. Vi må ha vann tilgjengelig før det kan brukes til ny kraftproduksjon. Regulering av vassdrag kan samtidig endre vannføring, vannstand og leveområder for planter og dyr. Dammer kan hindre fiskens vandring, og raske vannstandsendringer kan gi andre belastninger enn langsomme endringer. Fornyelse av vannkretsløpet betyr derfor ikke at inngrepene automatisk er uten naturkostnader (Hofstad et al., 2026; Rosvold & Halleraker, 2026).
 
 ### Vindkraft på land og til havs
 
-**Vindkraft** utnytter bevegelsesenergi i lufta, blant annet til produksjon av elektrisitet i vindturbiner. Vinden setter rotoren i bevegelse, og rotasjonen brukes i en generator som lager strøm. Produksjonen avhenger av vinden og kan ikke styres bare etter når vi ønsker mer elektrisitet. Derfor må vindkraft ses sammen med resten av kraftsystemet og annen tilgjengelig produksjon. Vi må undersøke både energien som kan produseres, og hvordan produksjonen varierer (Hofstad mfl., 2025; Hofstad mfl., 2026).
+**Vindkraft** utnytter bevegelsesenergi i lufta, blant annet til produksjon av elektrisitet i vindturbiner. Vinden setter rotoren i bevegelse, og rotasjonen brukes i en generator som lager strøm. Produksjonen avhenger av vinden og kan ikke styres bare etter når vi ønsker mer elektrisitet. Derfor må vindkraft ses sammen med resten av kraftsystemet og annen tilgjengelig produksjon. Vi må undersøke både energien som kan produseres, og hvordan produksjonen varierer (Hofstad et al., 2025; Hofstad et al., 2026).
 
-Vindkraft kan bygges på land eller til havs, men plasseringen endrer hvilke hensyn som blir berørt. På land kan utbygging berøre blant annet landskap og arealer som brukes til reindrift. Til havs må energivirksomhet vurderes sammen med marine økosystemer og andre havnæringer. Å flytte et prosjekt bort fra boliger fjerner derfor ikke nødvendigvis alle arealkonflikter. Vi må undersøke det aktuelle stedet framfor å anta at én plassering alltid er best (Hofstad mfl., 2025; Klima- og miljødepartementet, 2024a).
+Vindkraft kan bygges på land eller til havs, men plasseringen endrer hvilke hensyn som blir berørt. På land kan utbygging berøre blant annet landskap og arealer som brukes til reindrift. Til havs må energivirksomhet vurderes sammen med marine økosystemer og andre havnæringer. Å flytte et prosjekt bort fra boliger fjerner derfor ikke nødvendigvis alle arealkonflikter. Vi må undersøke det aktuelle stedet framfor å anta at én plassering alltid er best (Hofstad et al., 2025; Klima- og miljødepartementet, 2024a).
 
 ### Solenergi og andre energikilder
 
@@ -181,7 +181,7 @@ Kommunene har et sentralt ansvar for lokal arealplanlegging etter plan- og bygni
 
 Kommunestyret vedtar kommunale planer innenfor lovverk og nasjonale og regionale rammer. En privat utbygger kan foreslå en plan uten å overta kommunens myndighet til å avgjøre den. Enkelte myndigheter kan fremme **innsigelse**, en formell innvending som følger særskilte regler. En innsigelse er derfor noe annet enn en vanlig merknad fra en innbygger. Det er også viktig å skille kommunal arealplanlegging fra statlige ordninger for blant annet større energianlegg (Kommunal- og distriktsdepartementet, 2026).
 
-En **konsekvensutredning** undersøker mulige virkninger av en plan eller et tiltak når regelverket krever det. Vi bør se etter alternativer, usikkerhet og virkninger for både miljø og samfunn. En vedtatt arealplan betyr ikke automatisk at alle andre nødvendige tillatelser er på plass. Dessuten setter menneskerettighetene grenser som ikke kan gjøres om til vanlige plusser og minuser. Figur 7.8 viser spørsmål vi trenger å stille, ikke et poengsystem som avgjør en utbygging (Kommunal- og distriktsdepartementet, 2026; Høyesterett, 2021).
+En **konsekvensutredning** undersøker mulige virkninger av en plan eller et tiltak når regelverket krever det. Vi bør se etter alternativer, usikkerhet og virkninger for både miljø og samfunn. En vedtatt arealplan betyr ikke automatisk at alle andre nødvendige tillatelser er på plass. Dessuten setter menneskerettighetene grenser som ikke kan gjøres om til vanlige plusser og minuser. Figur 7.6 viser spørsmål vi trenger å stille, ikke et poengsystem som avgjør en utbygging (Kommunal- og distriktsdepartementet, 2026; Høyesterett, 2021).
 
 ```widget
 GeoRessursVindAvveining
@@ -349,7 +349,7 @@ c) Formuler to spørsmål om senere gjennomføring. Finn nyere kilder hvis de er
 
 a) Velg vannkraft, vindkraft på land, havvind og solkraft. Lag en tabell med energikilde, variasjon og mulige arealspørsmål.
 
-b) Bruk spørsmålene i figur 7.8 til å undersøke ett tenkt prosjekt. Ikke gi menneskerettigheter en poengsum som kan kjøpes opp av kraftnytte.
+b) Bruk spørsmålene i figur 7.6 til å undersøke ett tenkt prosjekt. Ikke gi menneskerettigheter en poengsum som kan kjøpes opp av kraftnytte.
 
 c) Begrunn hvilke opplysninger du trenger om sted, natur, nettilknytning og rettigheter før du anbefaler et alternativ.
 

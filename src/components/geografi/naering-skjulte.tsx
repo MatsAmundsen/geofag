@@ -43,7 +43,7 @@ export function GeografiTjenesteKart() {
 export function GeografiRjukanLokator() {
   return (
     <figure className="my-6 space-y-3">
-      <h3 className="font-semibold">Figur 9.7 – Rjukan, Vemork og Mæl i Tinn</h3>
+      <h3 className="font-semibold">Figur 9.4 – Rjukan, Vemork og Mæl i Tinn</h3>
       <GeografiDatakart
         data={rjukan as GeoJsonObject}
         center={[59.9, 8.65]}

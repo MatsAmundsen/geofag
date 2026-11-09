@@ -17,7 +17,7 @@ function GeografiGlacierMassBalanceModel() {
   return (
     <ModelFrame
       kicker="Konstruert regneøvelse for geografi Vg1"
-      title="Figur 4.4 – Breens massebalanse"
+      title="Figur 4.2 – Breens massebalanse"
       lead="Velg tilførsel og tap for samme tenkte areal og periode. Alle tall er meter vannekvivalent, ikke snødybde eller observasjoner fra en bestemt bre."
     >
       <div className="grid gap-4 lg:grid-cols-2">

@@ -12,6 +12,6 @@ Kontrollert 6. november 2026 (Europe/Oslo). Ny lokal commit på egen kapittelbra
 
 Beite: primærmetadata bekrefter NLOD 2.0, med Landbruksdirektoratet som eier og NIBIO som distributør. Vindkraft: NVE oppgir NLOD for sine kartdata. Kartverket-bakgrunn er begrenset til zoom 11, CC BY 4.0. SSB har CC BY 4.0. Ingen SA, NC eller ND. Uttrekk, tidsforskjeller, koordinatomregning, generalisering og kildehash er i data-og-vilkar-filen. Beiteobjektene er oppdatert i 2016 eller 2024, ikke en ny feltkartlegging i 2026.
 
-7.1 globalt ressurskart og 7.6 europeisk energisammenlikning forblir skjulte markører. Ingen ukontrollert global ressursdatabase eller ulike lands energiregnskap er konstruert. Tidligere redaksjonsnotat beskriver førsteleveransen; dette notatet beskriver Mats-oppfølgingen. Geofag-modellenes standardvisninger er ikke endret.
+7.2 globalt ressurskart og 7.8 europeisk energisammenlikning forblir skjulte markører. Ingen ukontrollert global ressursdatabase eller ulike lands energiregnskap er konstruert. Tidligere redaksjonsnotat beskriver førsteleveransen; dette notatet beskriver Mats-oppfølgingen. Geofag-modellenes standardvisninger er ikke endret.
 
 Etterkontroll: Kartverket-bakgrunnen er uttrykkelig aktivert i Fosen-kallet, ikke bare omtalt i krediteringen. Kartets tilgjengelige navn skiller tabellens objekttall fra den nedlastbare geometrien.
