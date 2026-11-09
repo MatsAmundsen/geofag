@@ -1131,7 +1131,7 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       prefix: "Norges vassdrags- og energidirektorat [NVE]. (u.å.). ",
       italic: "Vindkraftområde",
       suffix: ". Vindkraft2, lag 3, Storheia og Roan. NLOD. Generalisert geometri. Hentet 6. november 2026.",
-      href: "https://nve.geodataonline.no/arcgis/rest/services/Vindkraft2/MapServer/3",
+      href: "https://kart.nve.no/enterprise/rest/services/Vindkraft2/MapServer/3",
     },
     {
       prefix: "Landbruksdirektoratet. (u.å.). ",
