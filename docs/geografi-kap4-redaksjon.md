@@ -1,6 +1,6 @@
 # Kapittel 4 – redaksjonell overlevering
 
-Oppdatert figurstatus etter Mats og DesignBOTs valg står i `geografi-kap4-mats-valg.md`. Resten av dette notatet dokumenterer første leveranse.
+Oppdatert figurstatus står i `geografi-kap4-mats-valg.md` (Mats sine valg) og `geografi-kap4-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
 
 ## Omfang og arbeidsgren
 

@@ -1,6 +1,6 @@
 # Geografi kapittel 3 – redaksjonell overlevering, PR F
 
-Oppdatert figurstatus etter Mats og DesignBOTs valg står i `geografi-kap3-mats-valg.md`. Resten av dette notatet dokumenterer første leveranse.
+Oppdatert figurstatus står i `geografi-kap3-mats-valg.md` (Mats sine valg) og `geografi-kap3-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
 
 ## Leveranse og avgrensning
 

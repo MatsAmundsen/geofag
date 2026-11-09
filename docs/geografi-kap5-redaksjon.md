@@ -1,5 +1,7 @@
 # Kapittel 5 – redaksjonell overlevering
 
+Oppdatert figurstatus står i `geografi-kap5-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 ## Omfang og arbeidsgren
 
 - Kapittel: Vær, klima og klimaendringer.
