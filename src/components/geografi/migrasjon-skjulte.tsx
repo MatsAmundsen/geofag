@@ -51,7 +51,7 @@ export function GeografiMigrantkorridorer() {
   return (
     <figure aria-labelledby={id} className="my-8 space-y-3 rounded-xl border p-4">
       <h3 id={id} className="text-xl font-semibold">
-        Figur 11.5 – Ti store forbindelser mellom fødeland og bostedsland, 2024
+        Figur 11.6 – Ti store forbindelser mellom fødeland og bostedsland, 2024
       </h3>
       <div className="overflow-x-auto">
         <svg

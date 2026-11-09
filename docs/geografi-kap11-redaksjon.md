@@ -127,22 +127,22 @@ Fem figurposisjoner er helt eller delvis levert, fordelt på fem komponenter og 
 - **11.2:** Kvalitativ skyve-/trekkmodell med reelle handlingsmuligheter som eget perspektiv; ingen konstruerte vekter eller individuelle årsakspåstander.
 - **11.3, diagram og matrise:** Fem kommuners publiserte innenlandske nettorater med nullstrek, ni regioners kildeverdier, faktiske nord–sør-summer og komplett 6×6-matrise.
 - **11.4:** Inn- og utvandring i åtte kontrollerte år 1960–2025. Historien før 1960 finnes i tekst, ikke i en oppdiktet serie.
-- **11.7:** Parede søyler 2015/2025, alle seks grunnkategorier og separat total; bare førstegangsinnvandringer i den avgrensede gruppen.
-- **11.6, diagram og faktatabell:** Korrekt avgrenset nabolandsandel og datert global årsstatus med overlapp forklart. **Dette er ikke den planlagte regionfordelingen.**
+- **11.5:** Parede søyler 2015/2025, alle seks grunnkategorier og separat total; bare førstegangsinnvandringer i den avgrensede gruppen.
+- **11.7, diagram og faktatabell:** Korrekt avgrenset nabolandsandel og datert global årsstatus med overlapp forklart. **Dette er ikke den planlagte regionfordelingen.**
 
 Tre hele kart og to kartdeler gjenstår som skjulte referansedefinisjoner:
 
 - **11.1:** Globalt netto-migrasjonskart; velg kontrollert periode, rate/antall, manglende verdier og konkret kartgrunnlag.
 - **11.3, kartdel:** Kommunekart for samme år og nettorate. Riktig kommunegeometri og lisens gjenstår.
-- **11.5:** Noen faktisk dokumenterte globale forbindelser. Kategori, tidsrom og pilbetydning må kontrolleres; ingen udokumentert pilbredde.
-- **11.6, kartdel:** Regional flyktningfordeling. Faktisk databaseuttrekk, kategorier, dato, dobbeltelling, verts-/opprinnelsesland og vilkår gjenstår.
+- **11.6:** Noen faktisk dokumenterte globale forbindelser. Kategori, tidsrom og pilbetydning må kontrolleres; ingen udokumentert pilbredde.
+- **11.7, kartdel:** Regional flyktningfordeling. Faktisk databaseuttrekk, kategorier, dato, dobbeltelling, verts-/opprinnelsesland og vilkår gjenstår.
 - **11.8:** Casekart som lokaliserer de fem kommunene. Ingen kartgrunnlagsfil eller koordinater er importert.
 
 Ingen oppgave krever disse kartene. Diagrammene er statiske og har tilgjengelige kilde-/datatabeller, ikke implementert kartinteraksjon eller tidsanimasjon. Ingen annen kapitteltekst, Geofag-post, etablert Geofag-modell eller rute er endret.
 
 ## Avklaringer for Mats
 
-Ingen blokkerende avklaring for fagteksten. Designarbeidet må velge og kontrollere konkrete kartgrunnlag og UNHCR-databasevilkår før de gjenstående kartene produseres. 11.6 må ikke omtales som levert regionkart. Begreper om flyktningstatus, kollektiv beskyttelse, smugling og menneskehandel er faglig undervisning, ikke individuell juridisk rådgivning. Menneskehandel er forklart med barns særstilling og skillet mellom identifiserte ofre og faktisk forekomst, uten stigmatisering eller gamle omfangstall framstilt som nye.
+Ingen blokkerende avklaring for fagteksten. Designarbeidet må velge og kontrollere konkrete kartgrunnlag og UNHCR-databasevilkår før de gjenstående kartene produseres. 11.7 må ikke omtales som levert regionkart. Begreper om flyktningstatus, kollektiv beskyttelse, smugling og menneskehandel er faglig undervisning, ikke individuell juridisk rådgivning. Menneskehandel er forklart med barns særstilling og skillet mellom identifiserte ofre og faktisk forekomst, uten stigmatisering eller gamle omfangstall framstilt som nye.
 
 `geo-migrasjon-kap11-2026-11-06` er lagt i `COPY_RESEEDS_B`. Flagget kan overskrive CMS-redigert tekst ved første godkjente innlasting. Ingen produksjonsinnlasting er utført; tidligere flagg er beholdt.
 
@@ -198,6 +198,6 @@ Skriver kapittel 11 alene med sju underkapitler, dokumentert nord–sør-case, o
 
 Leverer fem figurposisjoner helt eller delvis med ekte SSB-data og fem offentlig publiserte UNHCR-fakta. Bevarer 227 originale SSB-verdier med datatabeller, fire CSV-uttrekk, eksakte lesespørringer og kildehashverdier. Nord–sør-casen bruker faktiske fra–til-celler, ikke antatte ruter fra nettotall. Innvandringsgrunn avgrenses til førstegangsinnvandringer blant ikke-nordiske innvandrere. UNHCRs 65-prosentnevner og overlapp i global årsstatus forklares eksplisitt. Ingen syntetiske data eller individmotiver er lagt inn.
 
-Tre hele kart og to kartdeler gjenstår. 11.6 er en nabolandsandel/faktatabell, ikke et regionkart. UNHCRs databasevilkår lot seg ikke kontrollere; ingen databasefil eller ekstern figur er importert. Ingen elevoppgave krever uferdige kart eller private migrasjonshistorier.
+Tre hele kart og to kartdeler gjenstår. 11.7 er en nabolandsandel/faktatabell, ikke et regionkart. UNHCRs databasevilkår lot seg ikke kontrollere; ingen databasefil eller ekstern figur er importert. Ingen elevoppgave krever uferdige kart eller private migrasjonshistorier.
 
 Typecheck, berørt ESLint, 117 relevante tester, fem figur-SSR-er og build er grønne. Fullsuite har bare de samme 17 JavaScript-feilene og fem TypeScript-feilene som kapittel 10. Ingen annen kapitteltekst eller Geofag-side er endret og ingen utrulling er utført. Reseed kan overskrive CMS-tekst først ved godkjent aktivering. Se `docs/geografi-kap11-redaksjon.md` for metode, kilder og forbehold.

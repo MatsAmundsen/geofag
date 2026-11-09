@@ -333,13 +333,13 @@ c. Undersøk samme statistikk for egen kommune og én sammenlikningskommune. Vel
 
 a. Bruk figur 11.4 og beregn nettoinnvandring i 1960 og 2025. Forklar hva sammenlikningen ikke forteller om alle mellomårene.
 
-b. Summer alle seks grunnkategorier i figur 11.7 for 2015 og 2025. Kontroller mot de separate totalene og beregn endringen i antall for arbeid og flukt.
+b. Summer alle seks grunnkategorier i figur 11.5 for 2015 og 2025. Kontroller mot de separate totalene og beregn endringen i antall for arbeid og flukt.
 
-c. Drøft hvorfor figur 11.7 ikke kan brukes som en fordeling av dagens yrker eller individuelle ønsker. Noter korrigeringsdato og hvilke grupper som ikke er med.
+c. Drøft hvorfor figur 11.5 ikke kan brukes som en fordeling av dagens yrker eller individuelle ønsker. Noter korrigeringsdato og hvilke grupper som ikke er med.
 
 ### 5. Mene: ansvar og kildekritikk om flukt
 
-a. Oppgi referansedato, publiseringsdato og kategorier for UNHCR-tallene i figur 11.6. Forklar skillet mellom en årsstatus og antall nye ankomster.
+a. Oppgi referansedato, publiseringsdato og kategorier for UNHCR-tallene i figur 11.7. Forklar skillet mellom en årsstatus og antall nye ankomster.
 
 b. Forklar hvilken gruppe 65-prosentandelen gjelder, og hvorfor totalen 117,8 millioner ikke er riktig nevner. Forklar også hvorfor kategoritallene ikke skal summeres direkte.
 
