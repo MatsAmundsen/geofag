@@ -1,3 +1,4 @@
+import { GeografiNaeringsstruktur, GeografiLokaliseringsfaktorer, GeografiRingvirkninger, GeografiTelefonVerdikjede } from "@/components/geografi/naering-diagrammer";
 import { GeografiSysselNord } from "@/components/geografi/ressurs-valg";
 import { GeografiKraftproduksjon } from "@/components/geografi/ressurs-valg";
 import { GeografiRessursFornyelse } from "@/components/geografi/ressurs-diagrammer";
@@ -358,6 +359,9 @@ const GeografiBreKartLat = lazy(() => import("@/components/geografi/landskap-bre
 
 const GeografiFosenKartLat = lazy(() => import("@/components/geografi/ressurs-fosen").then(m=>({default:m.GeografiFosenKart})));
 
+const GeografiTelefonStederLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiTelefonSteder})));
+const GeografiFiskEksportLat = lazy(() => import("@/components/geografi/naering-valg").then(m=>({default:m.GeografiFiskEksport})));
+
 const GeografiMonsterkartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMonsterkart})));
 
 const GeografiMercatorSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMercator})));
@@ -422,7 +426,13 @@ const GeografiKobberProduksjonSkjultLat = lazy(() => import("@/components/geogra
 
 const GeografiHavsonerFeltSkjultLat = lazy(() => import("@/components/geografi/ressurs-skjulte").then(m => ({default:m.GeografiHavsonerFelt})));
 
+const GeografiTjenesteKartSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiTjenesteKart})));
+
+const GeografiRjukanLokatorSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiRjukanLokator})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoNaeringRjukanLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiRjukanLokatorSkjultLat /></Suspense>,
+  GeoNaeringTjenesteKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTjenesteKartSkjultLat /></Suspense>,
   GeoRessursHavsoner: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiHavsonerFeltSkjultLat /></Suspense>,
   GeoRessursKobber: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKobberProduksjonSkjultLat /></Suspense>,
   GeoKlimaBangladeshLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBangladeshLokatorSkjultLat /></Suspense>,
@@ -455,6 +465,9 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoVerktoyGradnett: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGradnettSkjultLat /></Suspense>,
   GeoVerktoyMercator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMercatorSkjultLat /></Suspense>,
   GeoVerktoyMonster: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMonsterkartSkjultLat /></Suspense>,
+  GeoNaeringTelefonSteder: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiTelefonStederLat /></Suspense>,
+  GeoNaeringFiskEksport: () => <Suspense fallback={<p>Laster figur med kontrollerte kildedata.</p>}><GeografiFiskEksportLat /></Suspense>,
+
   GeoRessursFosenKart: () => <Suspense fallback={<p>Laster Fosen-kart med kildeobjekter.</p>}><GeografiFosenKartLat /></Suspense>,
   GeoRessursSysselNord: () => <GeografiSysselNord />,
   GeoRessursKraftproduksjon: () => <GeografiKraftproduksjon />,
@@ -1610,6 +1623,10 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoNaeringStruktur: () => <GeografiNaeringsstruktur />,
+  GeoNaeringLokalisering: () => <GeografiLokaliseringsfaktorer />,
+  GeoNaeringRingvirkninger: () => <GeografiRingvirkninger />,
+  GeoNaeringVerdikjede: () => <GeografiTelefonVerdikjede />,
   GeoRessursFornyelse: () => <GeografiRessursFornyelse />,
   GeoRessursBergartBrudd: () => <FraBergartTilBruddDiagram geografi />,
   GeoRessursPetroleum: () => <PetroleumTrapModel geografi />,

@@ -286,6 +286,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "naering",
+    tekstKlar: true,
     slug: "geo-naering",
     title: "Næringsliv og globalisering",
     navLabel: "Næring",
