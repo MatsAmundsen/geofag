@@ -912,12 +912,6 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
       href: "https://data.worldbank.org/indicator/SI.POV.DDAY",
     },
     {
-      prefix: "Global Footprint Network. (u.å.-e). ",
-      italic: "Free Public Data Set: National Footprint and Biocapacity Accounts 2026",
-      suffix: ". Hentet 6. november 2026. Vilkår kontrollert; ingen data importert.",
-      href: "https://footprintnetwork.org/licenses/public-data-package-free/",
-    },
-    {
       prefix: "World Bank. (u.å.). ",
       italic: "GDP per capita, PPP (constant 2021 international $) (NY.GDP.PCAP.PP.KD)",
       suffix: ". World Development Indicators. Observasjonsår 2023. Hentet 6. november 2026. CC BY 4.0.",

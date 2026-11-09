@@ -288,7 +288,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
     const names = parts.filter((part) => part.type === "widget").map((part) => part.id);
     assert.equal(names.length, 10);
     assert.equal(new Set(names).size, 10);
-    const registry = read("../components/poster-body.tsx");
+    const registry = read("../components/poster-widget-renderer.tsx");
     for (const name of names) assert.ok(registry.includes(`${name}:`), name);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap6-redaksjon|figur-6-/);
@@ -308,7 +308,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
   });
 
   it("begrenser modellene til Vg1 uten å koble inn udokumenterte returperioder", () => {
-    const registry = read("../components/poster-body.tsx");
+    const registry = read("../components/poster-widget-renderer.tsx");
     assert.match(registry, /GeoNaturfareHydrogram:.*HydrographCatchmentModel geografi/);
     assert.doesNotMatch(md, /HydrographCatchmentModel/);
     assert.match(md, /beregner verken flomstørrelse/);
@@ -348,15 +348,15 @@ describe("Geografi kapittel 8: bærekraftig utvikling (PR E)", () => {
     assert.deepEqual(numbers, [6]);
     const widgets = parsePosterMarkdown(md).filter((part) => part.type === "widget");
     assert.deepEqual(widgets.map((part) => part.id), ["GeoBaerekraftFattigdomKart", "GeoHdiBnp", "GeoBaerekraftTre", "GeoBaerekraftPlanetaere", "GeoLokalFotavtrykk", "GeoBaerekraftCo2Kart", "GeoBaerekraftCo2Serie"]);
-    assert.match(read("../components/poster-body.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBaerekraftTre:.*BaerekraftTreFigur geografi/);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap8-redaksjon|figur-8-/);
     assert.match(html, /Datoen som mangler/);
     assert.doesNotMatch(md, /[Ss]e figur 8\.[124567]/);
   });
 
-  it("har 29 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 29);
+  it("har 28 eksterne kildeoppføringer og ingen bibliotekskilder", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 28);
     assert.doesNotMatch(sources, /Terra Nova|bibliotek|Aunivers/);
     for (const domain of ["udir.no", "ssb.no", "undp.org", "worldbank.org", "footprintnetwork.org", "footprintcalculator.org", "wwf.no", "pik-potsdam.de", "ipcc.ch", "unep.org", "sdgs.un.org", "miljodirektoratet.no", "regjeringen.no", "stratigraphy.org", "ourworldindata.org", "fn.no"])
       assert.ok(sources.includes(domain), domain);
@@ -407,7 +407,7 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.deepEqual([...md.matchAll(/^\[figur-3-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
     for (const widget of widgets) {
       assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
-      assert.match(read("../components/poster-body.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
+      assert.match(read("../components/poster-widget-renderer.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
     }
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreSkjelvVulkan", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreVarmeflekker", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -432,8 +432,8 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.match(volcano, /<VolcanoTypesDiagram geografi selected=\{scenario\}/);
     assert.match(read("../components/diagrams/quake-motion.tsx"), /geografi \? 3 : 5/);
     assert.match(read("../components/diagrams/bergartssyklus-figur.tsx"), /geografi \? RUTER.slice\(0, 1\) : RUTER/);
-    assert.match(read("../components/poster-body.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
-    assert.match(read("../components/poster-body.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
   });
   it("har reseed og tekststatus uten å aktivere kapittel 5", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-indre-krefter-kap3-2026-11-06",\s+slug: "geo-indre-krefter"/);
