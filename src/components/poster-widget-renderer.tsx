@@ -1,4 +1,5 @@
 import { KvikkleireBakoverFigur, SkredKrefterFigur, SkredTyperFigur } from "@/components/diagrams/skred-figurer";
+import { TermiskVindV5 } from "@/components/diagrams/termisk-vind-v5";
 import { lazy, Suspense, type JSX } from "react";
 import {
   AdaptationExamFrameworkDiagram,
@@ -98,7 +99,6 @@ import {
   JetSlyngerFigurLat,
   JetStreakFigurLat,
   StormbaneFigurLat,
-  TermiskVindFigurLat,
   VestOstFigurLat,
   SjobrisFigurLat,
   OppvellingFigurLat,
@@ -1102,7 +1102,7 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   // Jetstrømmer (figurplan og fagsjekk 17.10.2026): de gamle komponentene i jet.tsx og NaoDiagram står urørt
   // (NaoDiagram brukes i eksamen). JetVestOst og JetStormbane er nye og får widget-linjer i en egen reseed-PR.
   JetProfile: () => <JetProfilFigurLat />,
-  ThermalWind: () => <TermiskVindFigurLat />,
+  ThermalWind: () => <TermiskVindV5 />,
   JetStreak: () => <JetStreakFigurLat />,
   JetVestOst: () => <VestOstFigurLat />,
   JetForms: () => <JetSlyngerFigurLat />,
