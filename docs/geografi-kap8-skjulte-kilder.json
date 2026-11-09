@@ -1,0 +1,17 @@
+{
+  "kontroll": "2026-11-07",
+  "fattigdom": {
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SI.POV.DDAY?date=2015:2025&format=json&per_page=20000",
+    "indikator": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+    "wdiOppdatert": "2026-10-08",
+    "utvalg": "siste ikke-tomme år 2015–2025 per land, aggregater ekskludert",
+    "lisens": "CC BY 4.0",
+    "sha256": "8c7d61afca8aebb36e234c32e54ffcc22f6633e434bcd3d958244dd5f3c0aad8"
+  },
+  "co2": {
+    "url": "https://ourworldindata.org/grapher/co-emissions-per-capita.csv",
+    "datasett": "Global Carbon Budget v15 (2025), OWID 2025-11-13",
+    "lisens": "CC BY 4.0 (OWID og GCB-opphav)",
+    "sha256": "11a3a3531e4d814f96c5b6ce1ce4888be554cab5a48fe1394ba72f1b590e976e"
+  }
+}
