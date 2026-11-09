@@ -22,6 +22,8 @@ export type GeografiKapittel = {
   readonly underkapitler: readonly GeografiUnderkapittel[];
   readonly ingress: string;
   readonly status: "utkast";
+  /** Har fagtekst, slik at kapittelsiden ikke viser skjelettets ventetekst. */
+  readonly tekstKlar?: boolean;
 };
 
 const BANNER = "/images/hero-earth.jpg";
@@ -30,6 +32,7 @@ const BANNER_ALT = "Jorda sett fra lav bane over hav og skyer";
 export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   {
     path: "verktoy",
+    tekstKlar: true,
     slug: "geo-verktoy",
     title: "Geografisk tenkning og verktøy",
     navLabel: "Verktøy",

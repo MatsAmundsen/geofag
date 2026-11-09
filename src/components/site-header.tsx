@@ -108,9 +108,12 @@ function rullTilHashEtterMaaling(finnHeader: () => HTMLElement | null) {
     if (flyttetAvAndre()) stopp();
   };
   // Layoutendringer (figurer, plassholdere, skrift) utløser en sjekk i samme ramme.
-  const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => {
-    if (!stoppet && !ramme) ramme = window.requestAnimationFrame(sjekk);
-  }) : null;
+  const ro =
+    typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(() => {
+          if (!stoppet && !ramme) ramme = window.requestAnimationFrame(sjekk);
+        })
+      : null;
   ro?.observe(document.body);
   function stopp() {
     if (stoppet) return;
@@ -165,7 +168,9 @@ export function SiteHeader() {
     // ved første brukerinndata, og når noe annet enn denne logikken flytter siden.
     const stopp =
       tidligStopp ??
-      rullTilHashEtterMaaling(() => (header.isConnected ? header : document.querySelector(HEADER_VELGER)));
+      rullTilHashEtterMaaling(() =>
+        header.isConnected ? header : document.querySelector(HEADER_VELGER),
+      );
     tidligStopp = null;
     const ro = new ResizeObserver(apply);
     ro.observe(header);
@@ -314,8 +319,7 @@ export function SiteHeader() {
               <div className="flex flex-col text-left">
                 <span className="font-display text-sm font-semibold tracking-tight text-foreground">
                   Geofag
-                </span>
-                {" "}
+                </span>{" "}
                 <span className="text-[10px] text-muted-foreground">Forside</span>
               </div>
             </Link>
@@ -573,8 +577,7 @@ function BrandCluster({
         <div className="flex flex-col text-left">
           <span className="font-display text-sm font-semibold tracking-tight text-foreground">
             Geofag
-          </span>
-          {" "}
+          </span>{" "}
           <span className="text-[10px] text-muted-foreground">Forside</span>
         </div>
       </Link>

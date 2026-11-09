@@ -14,7 +14,8 @@ import { getPost, type Post } from "@/lib/posts";
 export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel }) {
   const index = GEOGRAFI_KAPITLER.findIndex((k) => k.path === kapittel.path);
   const prev = index > 0 ? GEOGRAFI_KAPITLER[index - 1] : undefined;
-  const next = index >= 0 && index < GEOGRAFI_KAPITLER.length - 1 ? GEOGRAFI_KAPITLER[index + 1] : undefined;
+  const next =
+    index >= 0 && index < GEOGRAFI_KAPITLER.length - 1 ? GEOGRAFI_KAPITLER[index + 1] : undefined;
   const kilder = KILDER_GEOGRAFI[kapittel.slug] ?? [];
 
   const [post, setPost] = useState<Post | null>(null);
@@ -57,41 +58,50 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
               <h1 className="mt-2 font-display text-4xl font-medium tracking-tight sm:text-5xl">
                 {kapittel.title}
               </h1>
-              <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">{kapittel.blurb}</p>
+              <p className="mt-4 max-w-2xl text-base text-foreground/90 sm:text-lg">
+                {kapittel.blurb}
+              </p>
               <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
-                {kapittel.maal.join(" · ")} · status: under arbeid
+                {kapittel.maal.join(" · ")}
+                {!kapittel.tekstKlar ? " · status: under arbeid" : ""}
               </p>
             </div>
           </div>
         </header>
 
         <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-          <section className="rounded-2xl border border-border bg-card p-5 sm:p-6">
-            <h2 className="font-display text-xl font-medium tracking-tight">Læringsmål</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Etter kapitlet kan du</p>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed">
-              {kapittel.laeringsmaal.map((maal) => (
-                <li key={maal}>{maal}</li>
-              ))}
-            </ul>
-          </section>
+          {!kapittel.tekstKlar ? (
+            <>
+              <section className="rounded-2xl border border-border bg-card p-5 sm:p-6">
+                <h2 className="font-display text-xl font-medium tracking-tight">Læringsmål</h2>
+                <p className="mt-2 text-sm text-muted-foreground">Etter kapitlet kan du</p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed">
+                  {kapittel.laeringsmaal.map((maal) => (
+                    <li key={maal}>{maal}</li>
+                  ))}
+                </ul>
+              </section>
 
-          <section className="mt-8">
-            <h2 className="font-display text-xl font-medium tracking-tight">Planlagte underkapitler</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Underkapitlene får egne sider senere. Her er oversikten for dette kapitlet.
-            </p>
-            <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed">
-              {kapittel.underkapitler.map((u) => (
-                <li key={u.id}>{u.title}</li>
-              ))}
-            </ol>
-          </section>
+              <section className="mt-8">
+                <h2 className="font-display text-xl font-medium tracking-tight">
+                  Planlagte underkapitler
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Underkapitlene får egne sider senere. Her er oversikten for dette kapitlet.
+                </p>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed">
+                  {kapittel.underkapitler.map((u) => (
+                    <li key={u.id}>{u.title}</li>
+                  ))}
+                </ol>
+              </section>
 
-          <section className="mt-8 rounded-2xl border border-dashed border-border bg-muted/40 p-5 text-sm text-muted-foreground">
-            Innholdet er under arbeid. Full tekst, figurer og oppgaver kommer i senere leveranser på
-            branchen geografi-del.
-          </section>
+              <section className="mt-8 rounded-2xl border border-dashed border-border bg-muted/40 p-5 text-sm text-muted-foreground">
+                Innholdet er under arbeid. Full tekst, figurer og oppgaver kommer i senere
+                leveranser på branchen geografi-del.
+              </section>
+            </>
+          ) : null}
 
           {post?.bodyMarkdown ? (
             <section className="prose-geofag mt-10">
@@ -134,7 +144,10 @@ export function GeografiKapittelSide({ kapittel }: { kapittel: GeografiKapittel 
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             ) : (
-              <Link to="/geografi" className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto">
+              <Link
+                to="/geografi"
+                className="inline-flex items-center gap-2 text-sm text-primary sm:ml-auto"
+              >
                 Til oversikten
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
