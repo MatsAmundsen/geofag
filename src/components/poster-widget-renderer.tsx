@@ -1,3 +1,7 @@
+import { WindCellsDiagram } from "@/components/diagrams/wind";
+import { CoriolisDiagram } from "@/components/diagrams/coriolis";
+import { CarbonCycleDiagram } from "@/components/diagrams/spheres";
+import { GeografiKlimadiagram, GeografiKlimaScenario } from "@/components/geografi/klima-diagrammer";
 import { GeografiBrelandskapFoto } from "@/components/geografi/landskap-valg";
 import { GeografiFjordLokator } from "@/components/geografi/landskap-valg";
 import { GeografiLeirslette } from "@/components/geografi/landskap-valg";
@@ -402,7 +406,16 @@ const GeografiSkjelvVulkanSkjultLat = lazy(() => import("@/components/geografi/i
 
 const GeografiGeirangerFotoSkjultLat = lazy(() => import("@/components/geografi/landskap-skjulte").then(m => ({default:m.GeografiGeirangerFoto})));
 
+const GeografiTemperaturserieSkjultLat = lazy(() => import("@/components/geografi/klima-skjulte").then(m => ({default:m.GeografiTemperaturserie})));
+
+const GeografiNesbyenLokatorSkjultLat = lazy(() => import("@/components/geografi/klima-skjulte").then(m => ({default:m.GeografiNesbyenLokator})));
+
+const GeografiBangladeshLokatorSkjultLat = lazy(() => import("@/components/geografi/klima-skjulte").then(m => ({default:m.GeografiBangladeshLokator})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoKlimaBangladeshLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBangladeshLokatorSkjultLat /></Suspense>,
+  GeoKlimaNesbyenLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiNesbyenLokatorSkjultLat /></Suspense>,
+  GeoKlimaTemperaturserie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTemperaturserieSkjultLat /></Suspense>,
   GeoLandskapGeirangerFoto: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGeirangerFotoSkjultLat /></Suspense>,
   GeoIndreSkjelvVulkan: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvVulkanSkjultLat /></Suspense>,
   GeoIndreVarmeflekker: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiVarmeflekkerSkjultLat /></Suspense>,
@@ -1582,6 +1595,15 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   ),
   SkredTyper: () => <SkredTyperFigur />,
   SkredKrefter: () => <SkredKrefterFigur />,
+  GeoKlimaDiagram: () => <GeografiKlimadiagram />,
+  GeoKlimaVindceller: () => <WindCellsDiagram geografi />,
+  GeoKlimaCoriolis: () => <CoriolisDiagram geografi />,
+  GeoKlimaHav: () => <AmocDiagram geografi />,
+  GeoKlimaSoner: () => <GlobalClimateZonesDiagram geografi />,
+  GeoKlimaFon: () => <FoehnAdiabaticDiagram geografi />,
+  GeoKlimaStraling: () => <EarthRadiationBudgetDiagram geografi />,
+  GeoKlimaKarbon: () => <CarbonCycleDiagram geografi />,
+  GeoKlimaScenario: () => <GeografiKlimaScenario />,
   GeoLandskapFrost: () => <Frostsprengning geografi heading="Figur 4.1 – Forvitring og flytting" caption="Vann som fryser i en sprekk, kan bidra til å dele opp berget. Når en stein løsner og faller, flyttes materialet ved tyngdekraften. Skissen viser et prinsipp, ikke et bestemt tidsforløp eller et skredvarsel (Sørbel, 2024; Bryhni & Røthe, 2025)." />,
   GeoLandskapBrelandskap: () => <GeografiBrelandskapFoto />,
   GeoLandskapBotn: () => <BotnEggTindFigurLat geografi heading="Figur 4.5 – Botn, egg og tind" caption="Breformede fordypninger kan etterlate skarpe rygger og topper. Følg formene gjennom trinnene. Terrenget er konstruert og viser ikke utviklingstiden eller et bestemt fjell (Lilleøren, 2025; Mæhlum, 2026a; Bryhni & Fossen, 2024)." />,

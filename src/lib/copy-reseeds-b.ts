@@ -5,10 +5,12 @@ import type { CopyReseed } from "@/lib/copy-reseed";
  * Flaggene overskriver CMS-redigeringer i disse kapitlene (se copy-reseed.ts).
  */
 export const COPY_RESEEDS_B: CopyReseed[] = [
+  { flag: "geo-klima-et-al-kap5-2026-11-09", slug: "geo-klima", stale: [".-a; Dannevig mfl., u.å."] },
   { flag: "geo-landskap-figurnummer-kap4-2026-11-09", slug: "geo-landskap", stale: ["4). I figur 4.4 bruker v"] },
   { flag: "geo-indre-krefter-figurnummer-kap3-2026-11-09", slug: "geo-indre-krefter", stale: ["len i figur 3.6 lar oss "] },
   { flag: "geo-baerekraft-figurnummer-kap8-2026-11-09", slug: "geo-baerekraft", stale: ["[figur-8-6]: # (FIG"] },
   { flag: "geo-naturfare-figurnummer-kap6-2026-11-09", slug: "geo-naturfare", stale: ["Figur 6.10 gir en "] },
+  { flag: "geo-klima-skjulte-kap5-2026-11-07", slug: "geo-klima", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-landskap-skjulte-kap4-2026-11-07", slug: "geo-landskap", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-indre-krefter-skjulte-kap3-2026-11-07", slug: "geo-indre-krefter", stale: ["FIGURPLASSHOLDER"] },
   { flag: "geo-baerekraft-skjulte-kap8-2026-11-07", slug: "geo-baerekraft", stale: ["FIGURPLASSHOLDER"] },
@@ -44,6 +46,18 @@ export const COPY_RESEEDS_B: CopyReseed[] = [
     flag: "geo-verktoy-mats-valg-kap1-2026-11-06",
     slug: "geo-verktoy",
     stale: ["FIGURPLASSHOLDER"],
+  },
+  {
+    // Nytt reseed: stasjonsnormaler erstatter øvingsdata, uten å endre tidligere flagg.
+    flag: "geo-klima-normaler-blindern-1991-2020-2026-11-06",
+    slug: "geo-klima",
+    stale: ["konstruert øvingsdatasett", "gjennom øvingsåret"],
+  },
+  {
+    // Geografi: kapittel 5 alene; aktiveres først etter godkjent merge.
+    flag: "geo-klima-kap5-2026-11-06",
+    slug: "geo-klima",
+    stale: ["## Planlagte underkapitler", "Tekst, figurer og oppgaver kommer i senere leveranser."],
   },
   {
     // Geografi: kapittel 4 alene; aktiveres først etter godkjent merge.

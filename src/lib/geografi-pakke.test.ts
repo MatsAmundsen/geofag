@@ -8,6 +8,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import { parsePosterMarkdown } from "./poster-markdown.ts";
 import { beregnGeografiMassebalanse } from "./geografi-massebalanse.ts";
+import { KLIMANORMAL_STASJON, OSLO_BLINDERN_NORMALER } from "./geografi-klimanormaler.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
@@ -75,7 +76,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -163,7 +164,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 6);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 7);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -435,11 +436,9 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.match(read("../components/poster-widget-renderer.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
     assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
   });
-  it("har reseed og tekststatus uten å aktivere kapittel 5", () => {
+  it("har eget reseed og tekststatus for kapittel 3", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-indre-krefter-kap3-2026-11-06",\s+slug: "geo-indre-krefter"/);
     assert.match(read("geografi-kapitler.ts"), /path: "indre-krefter",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-klima.md"), /under arbeid/i);
   });
 });
 
@@ -513,10 +512,119 @@ describe("Geografi kapittel 4: ytre krefter og landskap", () => {
       assert.equal(beregnGeografiMassebalanse(gain, loss), expected);
   });
 
-  it("har eget reseed og tekststatus uten å skrive eller aktivere kapittel 5", () => {
+  it("har eget reseed og tekststatus for kapittel 4", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-landskap-kap4-2026-11-06",\s+slug: "geo-landskap"/);
     assert.match(read("geografi-kapitler.ts"), /path: "landskap",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-klima.md"), /under arbeid/i);
+  });
+});
+
+
+describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
+  const md = read("posts/geo-klima.md");
+  const sources = read("kilder-geografi.ts").split('"geo-klima": [')[1].split('"geo-naturfare"')[0];
+  const widgets = ["GeoKlimaDiagram", "GeoKlimaVindceller", "GeoKlimaCoriolis", "GeoKlimaHav", "GeoKlimaSoner", "GeoKlimaFon", "GeoKlimaStraling", "GeoKlimaKarbon", "GeoKlimaScenario"];
+
+  it("dekker ni underkapitler og hele den pedagogiske malen", () => {
+    for (const title of ["Vær og klima", "Globale sirkulasjoner", "Klimasoner", "Norges klima", "Drivhuseffekten", "Klimaendringer nå", "Klimaendringer i Norge", "Klimaendringer globalt", "Kutt og tilpasning", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    assert.match(md, /Hovedmål, KM482/);assert.match(md, /støtter KM483/);assert.match(md, /støtter KM485/);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## Et bilde fra en våt august"));
+    assert.ok(md.indexOf("I dette kapitlet skal vi") < md.indexOf("## Læringsmål"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 7);
+    assert.equal((md.match(/^c\. /gm) ?? []).length, 7);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
+  });
+
+  it("har tolv figurposisjoner, tolv registrerte figurer og ingen skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-5-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
+    for (const id of widgets) {
+      assert.ok(md.includes(["```widget", id, "```"].join("\n")), id);
+      assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`), id);
+    }
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoKlimaTemperaturserie", ...widgets, "GeoKlimaNesbyenLokator", "GeoKlimaBangladeshLokator"]);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap5-redaksjon|figur-5-/);
+    assert.doesNotMatch(md, /[Ss]e figur 5\.(?:0|10|11)\b/);
+  });
+
+  it("registrerer 33 eksterne kilder uten bibliotek eller lærebok i elevteksten", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 33);
+    for (const domain of ["ipcc.ch", "met.no", "nve.no", "snl.no", "science.nasa.gov", "scied.ucar.edu", "metoffice.gov.uk", "noaa.gov", "kartverket.no", "worldbank.org", "regjeringen.no", "ec.europa.eu", "miljodirektoratet.no", "udir.no"])
+      assert.ok(sources.includes(domain), domain);
+    assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
+    for (const citation of ["IPCC, 2023", "NASA, u.å.-a", "NASA, u.å.-b", "UCAR, u.å.-a", "UCAR, u.å.-b", "Met Office, u.å.", "Meteorologisk institutt, 2021b", "Meteorologisk institutt, 2021a, 2024", "Tveito, 2021", "Norsk klimaservicesenter, 2025", "Dannevig & Harstveit, 2026", "Harstveit, 2024", "Barthel, u.å.", "Mamen, u.å.", "Riebeek, 2011", "Lindsey, 2009", "Verdensbanken, 2022", "Sanna, 2023", "Sanna & Holte, 2023", "NVE, 2025", "Kartverket, 2024", "Klima- og miljødepartementet, 2025", "Europakommisjonen, u.å.", "Miljødirektoratet, 2026"])
+      assert.ok(md.includes(citation), citation);
+  });
+
+  it("forklarer alle 18 avtalte begreper i brødtekst og begrepsliste", () => {
+    for (const term of ["Vær", "Klima", "Klimadiagram", "Høytrykk", "Lavtrykk", "Passatvind", "Vestavindsbeltet", "Havstrøm", "Klimasone", "Fønvind", "Drivhuseffekt", "Drivhusgass", "Karbonkretsløp", "Tilbakekopling", "Utslippsscenario", "Klimatilpasning", "Utslippskutt", "Klimakvote"])
+      assert.ok(md.includes(`| ${term} |`), term);
+    for (const term of ["vær", "klima", "klimadiagram", "høytrykk", "lavtrykk", "passatvind", "vestavindsbeltet", "havstrøm", "klimasone", "fønvind", "drivhuseffekten", "drivhusgass", "karbonkretsløpet", "tilbakekopling", "utslippsscenario", "klimatilpasning", "utslippskutt", "klimakvote"])
+      assert.ok(md.toLowerCase().includes(`**${term}**`), term);
+  });
+
+  it("daterer klimatall og caser og skiller observasjoner fra framskrivning", () => {
+    for (const phrase of ["1,1 °C", "2011–2020", "1850–1900", "ikke temperaturstatus for 2026", "1. september", "august 2023", "31. oktober 2022", "ikke en påstått ny katastrofe i 2026", "ikke en tallfestet", "ikke en sikker værmelding", "ikke et nødvendig vilkår", "ikke to navn", "ikke lik overalt"])
+      assert.ok(md.includes(phrase), phrase);
+    assert.doesNotMatch(md, /13 millioner|9 prosent av|1\.1 °C|hele august skyldtes bare/);
+  });
+
+  it("gjenbruker sju komponenter bare gjennom uttrykkelig Vg1-valg", () => {
+    for (const [file, names] of [
+      ["wind", ["WindCellsDiagram", "GlobalClimateZonesDiagram"]], ["coriolis", ["CoriolisDiagram"]], ["ocean", ["AmocDiagram"]],
+      ["weather", ["FoehnAdiabaticDiagram"]], ["climate-radiation", ["EarthRadiationBudgetDiagram"]], ["spheres", ["CarbonCycleDiagram"]],
+    ] as const) for (const name of names) {
+      assert.ok(read(`../components/diagrams/${file}.tsx`).includes(`export function ${name}({ geografi = false }`), name);
+      assert.ok(read("../components/poster-widget-renderer.tsx").includes(`<${name} geografi />`), name);
+    }
+  });
+
+  it("viser en dokumentert stasjonsnormal med tabell, periode og datakreditering", () => {
+    const figure = read("../components/geografi/klima-diagrammer.tsx");
+    const chartOnly = figure.split("export function GeografiKlimaScenario")[0];
+    for (const expected of ["Oslo – Blindern", "18700", "1991–2020", "<table", "<caption", 'scope="col"', 'scope="row"', "Data fra Meteorologisk institutt", "CC BY 4.0", "2021a, 2024", "Tveito, 2021"]) assert.ok(chartOnly.includes(expected), expected);
+    assert.doesNotMatch(chartOnly, /konstruert|Øvingsdata|Øvingstall|øvingsdatasett|fetch\(/);
+    assert.doesNotMatch(md, /øvingsdiagrammet|øvingsåret|konstruert øvingsdatasett/);
+    assert.match(md, /normalperioden 1991–2020/);
+    assert.match(md, /én stasjonsnormal ikke beskriver alle steder i Oslo/);
+    assert.match(figure, /ikke temperaturkurver eller beregnede IPCC-baner/);
+  });
+
+  it("bevarer de tolv publiserte TAM- og RR-normalene, ikke eldre eller syntetiske tall", () => {
+    assert.deepEqual(OSLO_BLINDERN_NORMALER, [
+      ["Jan", -2.3, 58], ["Feb", -2.0, 46], ["Mar", 1.3, 41], ["Apr", 6.2, 48],
+      ["Mai", 11.4, 60], ["Jun", 15.3, 80], ["Jul", 17.7, 87], ["Aug", 16.5, 103],
+      ["Sep", 12.2, 82], ["Okt", 6.6, 93], ["Nov", 2.2, 85], ["Des", -1.4, 54],
+    ]);
+    assert.equal(OSLO_BLINDERN_NORMALER.reduce((sum, row) => sum + row[2], 0), 837);
+    assert.equal(KLIMANORMAL_STASJON.arsnormalNedbor, 837);
+    assert.equal(KLIMANORMAL_STASJON.id, 18700);
+    assert.equal(KLIMANORMAL_STASJON.periode, "1991–2020");
+    assert.equal(KLIMANORMAL_STASJON.hoydeMeter, 94);
+    assert.equal(KLIMANORMAL_STASJON.temperaturKode, "TAM");
+    assert.equal(KLIMANORMAL_STASJON.nedborKode, "RR");
+  });
+
+  it("kobler normalene til originalfilene, datalisensen og et nytt reseed", () => {
+    assert.match(KLIMANORMAL_STASJON.temperaturKilde, /^https:\/\/www\.met\.no\/kss\/.*StNormaler_mnd_middeltemp_1991-2020\.txt$/);
+    assert.match(KLIMANORMAL_STASJON.nedborKilde, /^https:\/\/www\.met\.no\/kss\/.*StNormaler_mnd_nedbor_1991-2020_rettet\.txt$/);
+    assert.equal(KLIMANORMAL_STASJON.lisens, "https://creativecommons.org/licenses/by/4.0/");
+    assert.ok(sources.includes(KLIMANORMAL_STASJON.temperaturKilde));
+    assert.ok(sources.includes(KLIMANORMAL_STASJON.nedborKilde));
+    for (const checksum of [KLIMANORMAL_STASJON.temperaturSha256, KLIMANORMAL_STASJON.nedborSha256]) assert.match(checksum, /^[a-f0-9]{64}$/);
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-normaler-blindern-1991-2020-2026-11-06",\s+slug: "geo-klima"/);
+  });
+
+  it("viser kildekritikk, tiltaksskiller og trygg oppgaveløsning", () => {
+    for (const phrase of ["månedens nedbør", "klimafordeling", "ikke et sanntidsvarsel", "bare fordi noen betaler", "ikke automatisk det samme", "Vi skal ikke oppsøke flomvann", "Ikke send notatet", "Fleip eller fakta?", "En skal ut", "Svar med begrunnelse"])
+      assert.ok(md.includes(phrase) || md.includes(phrase.replace("månedens", "måneds")), phrase);
+    assert.match(md, /kort, tenkt kommunalt beslutningsnotat/);
+  });
+
+  it("har eget reseed og tekststatus mens kapittel 7 fortsatt er skjelett", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-kap5-2026-11-06",\s+slug: "geo-klima"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "ressurser",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-ressurser.md"), /under arbeid/i);
   });
 });
