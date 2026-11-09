@@ -2,7 +2,7 @@
 export function TsunamiPlass({ modell }: { modell: string }) {
   return (
     <div
-      className="tsunami-plass my-8 w-full overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6"
+      className="tsunami-plass w-full overflow-hidden rounded-2xl border border-border bg-card"
       data-modell={modell}
       aria-busy="true"
     >
