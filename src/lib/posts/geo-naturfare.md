@@ -72,7 +72,7 @@ Ved vulkanutbrudd kan lava, aske, varme strømmer, vannblandede masser og gasser
 GeoNaturfareVulkan
 ```
 
-Figur 6.10 gir en forenklet oversikt over fem vulkanske farer, uten beregning av sikker avstand. Bruk den til å forklare hvorfor én beskrivelse av «et vulkanutbrudd» ikke er tilstrekkelig. Undersøk hvilke farer som faktisk var aktuelle i hendelsen dere arbeider med, og hvilke kilder som dokumenterer dem. Eksemplene bygger på USGS' beskrivelser av lava og gasser og dokumentasjonen av Pinatubo-utbruddet (USGS, u.å.-a, u.å.-b; Newhall et al., 1997).
+Figur 6.3 gir en forenklet oversikt over fem vulkanske farer, uten beregning av sikker avstand. Bruk den til å forklare hvorfor én beskrivelse av «et vulkanutbrudd» ikke er tilstrekkelig. Undersøk hvilke farer som faktisk var aktuelle i hendelsen dere arbeider med, og hvilke kilder som dokumenterer dem. Eksemplene bygger på USGS' beskrivelser av lava og gasser og dokumentasjonen av Pinatubo-utbruddet (USGS, u.å.-a, u.å.-b; Newhall et al., 1997).
 
 ## Skred i Norge
 
@@ -86,7 +86,7 @@ Et **skred** er en massebevegelse der tyngdekraften bidrar til å flytte stein, 
 GeoNaturfareSkredSoner
 ```
 
-Figur 6.3 viser sonene i en forenklet skisse av et skred i bratt terreng. Husene er illustrasjoner, ikke en bestemt bygd eller et kartlagt fareområde med beregnet rekkevidde. Vi bruker figuren til å følge massenes bevegelse, ikke til å avgjøre om en virkelig bolig er trygg. Skredtyper og nødvendig kunnskap om terreng og materiale må undersøkes nærmere før konkrete vurderinger kan gjøres (NVE, 2024b).
+Figur 6.4 viser sonene i en forenklet skisse av et skred i bratt terreng. Husene er illustrasjoner, ikke en bestemt bygd eller et kartlagt fareområde med beregnet rekkevidde. Vi bruker figuren til å følge massenes bevegelse, ikke til å avgjøre om en virkelig bolig er trygg. Skredtyper og nødvendig kunnskap om terreng og materiale må undersøkes nærmere før konkrete vurderinger kan gjøres (NVE, 2024b).
 
 ### Stein, jord, flom og snø
 
@@ -112,7 +112,7 @@ Erosjon fra en bekk kan fjerne støtte ved foten av en skråning og forverre sta
 GeoNaturfareKvikkleireSteg
 ```
 
-Figur 6.4 lar deg følge denne kjeden med neste-steg-kontroll og lokatorkart i fire trinn, uten å beregne stabilitet eller skredets rekkevidde. Bruk figuren til å forklare hvordan et skred kan ramme mer enn det første løsneområdet. I Gjerdrum beskrev utvalget at skredet forplantet seg fra skråningen ved Tistilbekken mot Nystulia (Gjerdrumutvalget, 2021, s. 11–12). En prosesskisse er likevel ikke en nøyaktig gjengivelse av terreng, grunnforhold eller tidspunkt på stedet.
+Figur 6.6 lar deg følge denne kjeden med neste-steg-kontroll og lokatorkart i fire trinn, uten å beregne stabilitet eller skredets rekkevidde. Bruk figuren til å forklare hvordan et skred kan ramme mer enn det første løsneområdet. I Gjerdrum beskrev utvalget at skredet forplantet seg fra skråningen ved Tistilbekken mot Nystulia (Gjerdrumutvalget, 2021, s. 11–12). En prosesskisse er likevel ikke en nøyaktig gjengivelse av terreng, grunnforhold eller tidspunkt på stedet.
 
 ## Flom og overvann
 
@@ -124,7 +124,7 @@ Et **nedbørfelt** er området som bidrar med vann til et bestemt vassdrag eller
 GeoNaturfareHydrogram
 ```
 
-I figur 6.6 kan vi endre nedbør, markfuktighet, innsjøandel og mengden tette flater i den opprinnelige nedbørsfeltmodellen. Tallene er valgte modellinput og beregnede undervisningsresultater, ikke målte observasjoner eller en kalibrert NVE-beregning. Modellen beregner verken flomstørrelse på et bestemt sted eller gjentaksintervall. Tette flater kan gi raskere avrenning fordi mindre vann trenger ned i bakken (NVE, 2024a). Bruk figuren til å forklare en sammenheng, ikke til å lage en lokal flomprognose. Returperiodeetiketter er fjernet fordi koblingen til modellens avrenning ikke er dokumentert (NVE, 2021).
+I figur 6.7 kan vi endre nedbør, markfuktighet, innsjøandel og mengden tette flater i den opprinnelige nedbørsfeltmodellen. Tallene er valgte modellinput og beregnede undervisningsresultater, ikke målte observasjoner eller en kalibrert NVE-beregning. Modellen beregner verken flomstørrelse på et bestemt sted eller gjentaksintervall. Tette flater kan gi raskere avrenning fordi mindre vann trenger ned i bakken (NVE, 2024a). Bruk figuren til å forklare en sammenheng, ikke til å lage en lokal flomprognose. Returperiodeetiketter er fjernet fordi koblingen til modellens avrenning ikke er dokumentert (NVE, 2021).
 
 ### Overvann: når vannet finner veien på overflaten
 
@@ -152,7 +152,7 @@ Varmt hav tilfører varme og fuktighet til lufta som trekkes inn mot lavtrykket 
 GeoNaturfareOrkan
 ```
 
-Figur 6.7 viser en forenklet orkan i snitt, med luftbevegelser og et skjematisk mønster for vind og trykk. Den er ikke et målt tverrsnitt av en bestemt storm eller et kart over skadeomfang. Når vi undersøker en hendelse, må vi også vite hvor uværet beveget seg og hva som var eksponert. Bjerknessenteret framhever både plassering, terreng, beredskap og bebyggelse som viktige for konsekvensene av tropiske sykloner (Bjerknessenteret, u.å.).
+Figur 6.8 viser en forenklet orkan i snitt, med luftbevegelser og et skjematisk mønster for vind og trykk. Den er ikke et målt tverrsnitt av en bestemt storm eller et kart over skadeomfang. Når vi undersøker en hendelse, må vi også vite hvor uværet beveget seg og hva som var eksponert. Bjerknessenteret framhever både plassering, terreng, beredskap og bebyggelse som viktige for konsekvensene av tropiske sykloner (Bjerknessenteret, u.å.).
 
 ### Stormflo og tornado: to forskjellige fenomener
 
@@ -162,7 +162,7 @@ Figur 6.7 viser en forenklet orkan i snitt, med luftbevegelser og et skjematisk 
 GeoNaturfareStormflo
 ```
 
-Figur 6.8 skiller mellom tidevann, lufttrykk, vind og bølger i en skjematisk situasjon ved en kai. Vi kan bruke den til å forklare hvorfor høy vannstand avhenger av mer enn ett forhold. Den gir ingen sikker høyde for et bestemt sted, og forholdene varierer langs kysten (Meteorologisk institutt, 2023). Ved en virkelig hendelse bruker vi aktuelle myndighetsvarsler og råd, ikke størrelser vi leser ut av skissen.
+Figur 6.9 skiller mellom tidevann, lufttrykk, vind og bølger i en skjematisk situasjon ved en kai. Vi kan bruke den til å forklare hvorfor høy vannstand avhenger av mer enn ett forhold. Den gir ingen sikker høyde for et bestemt sted, og forholdene varierer langs kysten (Meteorologisk institutt, 2023). Ved en virkelig hendelse bruker vi aktuelle myndighetsvarsler og råd, ikke størrelser vi leser ut av skissen.
 
 En **tornado** er en raskt roterende luftsøyle som har forbindelse mellom en bygesky og bakken. Tornadoer knyttes ofte til kraftige tordenvær, der vindendringer med høyden kan bidra til rotasjon. Oppstigende luft kan vippe og forsterke rotasjonen, men ikke ethvert tordenvær utvikler en tornado (Met Office, 2025). Tornadoen er dermed et annet fenomen og har en annen skala enn en tropisk syklon.
 
@@ -346,7 +346,7 @@ c. Velg én dokumentert følge for mennesker, én for samfunnet og én for lands
 
 ### 2. Les modellen, ikke en prognose
 
-a. Bruk hydrografen i figur 6.6. Beskriv hva som skjer med den skjematiske regnflommen når du øker mengden tette flater.
+a. Bruk hydrografen i figur 6.7. Beskriv hva som skjer med den skjematiske regnflommen når du øker mengden tette flater.
 
 b. Forklar sammenhengen med infiltrasjon og overflateavrenning. Hvilke opplysninger mangler modellen for å beregne en faktisk flom på et bestemt sted?
 

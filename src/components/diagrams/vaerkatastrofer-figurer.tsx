@@ -546,7 +546,7 @@ export const GeografiOrkanSnittFigur = lagFigur({
   ...orkanSnitt,
   id: "geografi-orkan-snitt",
   tekst: {
-    heading: "Figur 6.7: En tropisk orkan i snitt",
+    heading: "Figur 6.8: En tropisk orkan i snitt",
     title: "Forenklet snitt av en tropisk orkan: fuktig luft strømmer inn, stiger i øyeveggen og strømmer ut i høyden. Midt i systemet ligger øyet.",
     caption: "Varmt hav gir fuktighet til systemet. Når vanndamp kondenserer, frigjøres varme som støtter oppstigningen. I en utviklet orkan ligger øyeveggen rundt øyet. Kurvene viser bare et skjematisk mønster, ikke målte verdier (Met Office, 2025).",
   },
@@ -565,7 +565,7 @@ export const GeografiStormfloFigur = lagFigur({
   ...stormflo,
   id: "geografi-stormflo",
   tekst: {
-    heading: "Figur 6.8: Vær, tidevann og bølger ved kysten",
+    heading: "Figur 6.9: Vær, tidevann og bølger ved kysten",
     title: "Forenklet kai sett fra siden: tidevann, lavt lufttrykk og vind påvirker vannstanden. Bølger kan nå høyere enn selve vannstanden.",
     caption: "Stormflo er værets bidrag til høy vannstand. Tidevannet kommer i tillegg, og bølger kan forsterke skadene. Bidragene i skissen er ikke målte verdier; én centimeter per hektopascal er en tommelfingerregel for lufttrykkets virkning (Meteorologisk institutt, 2023).",
   },
