@@ -26,7 +26,9 @@ Etter kapitlet kan du
 
 Målene øver særlig på KM487 og forbereder kartarbeidet til feltarbeid i KM486 (Udir, u.å.).
 
-[figur-1-0]: # (FIGURPLASSHOLDER 1.0: Mønsterkart uten landegrenser. Se docs/geografi-kap1-redaksjon.md.)
+```widget
+GeoVerktoyMonster
+```
 
 ### Tenk over
 
@@ -76,7 +78,9 @@ En **kartprojeksjon** er en matematisk metode som overfører jordas krumme overf
 
 Mercators projeksjon er **vinkelriktig**, som betyr at vinkler og former i svært små områder bevares. Samtidig blir arealene stadig mer forstørret når vi beveger oss bort fra ekvator mot polene. Grønland blir derfor framstilt uforholdsmessig stort sammenliknet med landområder som ligger nærmere ekvator (Rød, 2026). Skal vi sammenlikne landenes arealer, må vi velge et annet grunnlag enn størrelsen på dette kartet.
 
-[figur-1-1]: # (FIGURPLASSHOLDER 1.1: Mercator. Se docs/geografi-kap1-redaksjon.md.)
+```widget
+GeoVerktoyMercator
+```
 
 Gall–Peters er en **flateriktig** projeksjon, som betyr at arealforholdene mellom områder blir bevart. Den er ikke samtidig formriktig, og områdenes former blir dermed forvrengt i framstillingen. Et flateriktig kart egner seg derfor til arealsammenlikning, men løser ikke alle andre kartoppgaver (Rød, 2026). Vi må fortsatt undersøke hva kartet er laget for, og hvilke egenskaper som endres.
 
@@ -94,7 +98,9 @@ GeoVerktoyGallPeters
 
 Tenk at et øvingspunkt er oppgitt som 60,0° nord og 10,0° øst i gradnettet. Vi finner først den aktuelle breddesirkelen, og deretter meridianen som svarer til den oppgitte lengdegraden. Punktet ligger der de to linjene møtes, slik gradnettet brukes til posisjonsangivelse (Kartverket, 2023). Tallene er valgt til øving, og skal ikke leses som en nøyaktig plassering av en navngitt bygning.
 
-[figur-1-3]: # (FIGURPLASSHOLDER 1.3: Gradnett og koordinater. Se docs/geografi-kap1-redaksjon.md.)
+```widget
+GeoVerktoyGradnett
+```
 
 Kart kan også ha et rettvinklet rutenett, for eksempel i **UTM-systemet** (Universal Transverse Mercator). Dette er et annet koordinatsystem enn gradnettet, og koordinatene må leses med riktig sone. Ikke bland tall fra kartets kilometerruter med breddegrader og lengdegrader langs jordkloden (Kartverket, 2023). Når du noterer en posisjon, bør du derfor skrive hvilket system du har brukt.
 
@@ -134,7 +140,9 @@ Velg et kjent område i [Norgeskart](https://www.norgeskart.no/), og finn en mul
 
 Et **temakart** framhever ett eller noen få temaer, for eksempel klima, bosetting eller arealbruk. Opplysningene kan legges over et topografisk kartgrunnlag, slik at vi ser hvor temaet hører hjemme. Der topografiske kart gir en bred beskrivelse av terrenget, velger temakart en mer avgrenset synsvinkel (Kartverket, 2020). Det betyr ikke at det ene kartet alltid er bedre; vi må velge etter spørsmålet.
 
-[figur-1-5]: # (FIGURPLASSHOLDER 1.5: Temakart og topografisk kart over samme sted.)
+```widget
+GeoVerktoyKartSammenlikning
+```
 
 ### Kart som viser statistikk
 
@@ -146,7 +154,9 @@ Vi kan lage to tenkte kart over kommuner, ett med innbyggertall og ett med innby
 
 Et **mentalt kart** (mental map) er en persons forestilling om et geografisk område eller sted. Det gjengir en subjektiv oppfatning, og er derfor ikke det samme som et oppmålt kart. Vi kan undersøke slike forestillinger ved å tegne eller beskrive hvordan vi oppfatter omgivelsene (Sahr, u.å.). Dermed kan vi sammenlikne ulike oppfatninger uten å kreve at skissene har riktig målestokk.
 
-[figur-1-6]: # (FIGURPLASSHOLDER 1.6: Egen skisse av et mentalt kart.)
+```widget
+GeoVerktoyMentalt
+```
 
 Prøv å tegne skoleområdet fra hukommelsen, og marker steder du mener det er viktig å ta med. Be en medelev gjøre det samme uten at dere ser på hverandres tegninger underveis. Sammenlikn deretter hvilke steder dere framhever, og hvilke forbindelser dere velger å vise mellom dem. Bruk forskjellene til å formulere spørsmål om erfaringer og perspektiver, ikke til å rangere hvem som tegner best.
 
@@ -154,7 +164,9 @@ Prøv å tegne skoleområdet fra hukommelsen, og marker steder du mener det er v
 
 **Fjernmåling** (remote sensing) betyr å samle informasjon om jordoverflaten uten direkte kontakt med det undersøkte området. Sensorer kan blant annet registrere reflektert og utsendt stråling fra fly eller satellitter. Dataene må bearbeides og tolkes for å gi kunnskap om forholdene på jordoverflaten (U.S. Geological Survey [USGS], 2025). Et satellittbilde er derfor en datakilde som vi må undersøke, ikke en ferdig forklaring på det vi ser.
 
-[figur-1-7]: # (FIGURPLASSHOLDER 1.7: Blue Marble. Kontroller konkret fil og NASA-kreditering før innsetting.)
+```widget
+GeoVerktoyBlueMarble
+```
 
 **Romlig oppløsning** (spatial resolution) beskriver her størrelsen på bakkeområdet som representeres av én bildecelle, eller piksel. Landsat 8 har for eksempel multispektrale bånd med 30 meters romlig oppløsning (USGS, u.å.). I et forenklet øvingseksempel representerer en slik kvadratisk celle et område på 30 ganger 30 meter. Ikke forveksle størrelsen på cellene med hvor ofte satellitten gjør nye opptak av området.
 
@@ -164,7 +176,9 @@ Et **geografisk informasjonssystem**, forkortet **GIS** (geographic information 
 
 I GIS kan vi organisere opplysninger i **kartlag**, der hvert lag viser et bestemt innhold. **Vektordata** beskriver geografiske objekter som punkter, linjer og flater, for eksempel steder, veier og innsjøer. **Rasterdata** organiserer informasjon i et rutenett av celler, slik satellittbilder og enkelte høydedata gjør (USGS, 2025). Lagene kan vises sammen slik at vi lettere undersøker forhold mellom opplysninger over samme område.
 
-[figur-1-8]: # (FIGURPLASSHOLDER 1.8: GIS lag-på-lag med tekstalternativ.)
+```widget
+GeoVerktoyGisLag
+```
 
 Tenk at vi skal velge et område for et skoleprosjekt, uten å ta en faktisk utbyggingsbeslutning. Vi kan foreslå å sammenholde lag med veier, terreng og registrert arealbruk i undersøkelsen. Først avgrenser vi spørsmålet, så velger vi data, og til slutt begrunner vi sammenlikningen. Framgangsmåten bygger på at romlig analyse kombinerer stedfestede opplysninger for å undersøke konkrete spørsmål (Pearson et al., 2007).
 
@@ -204,7 +218,9 @@ Sjekklista bygger på kildekritiske vurderinger og kartets rammeinformasjon (Org
 
 Under et kolerautbrudd i London i 1854 undersøkte legen John Snow sammenhenger mellom dødsfall og drikkevann. Han brukte opplysninger om dødsfall, og undersøkelsen ble også støttet av samtaler med innbyggere. Det kjente kartet viste hvor dødsfallene var registrert, sammen med plasseringen til vannpumper i området (Field, 2020). Kartet gjorde dermed stedfestede opplysninger tilgjengelige som et geografisk mønster for andre lesere.
 
-[figur-1-9]: # (FIGURPLASSHOLDER 1.9: Snows kolerakart. Velg og dokumenter riktig historisk kartversjon.)
+```widget
+GeoVerktoySnow
+```
 
 Historien blir ofte fortalt som om Snow først så kartet og deretter oppdaget forklaringen. Men han hadde allerede en hypotese om vannbåren smitte, og kartet støttet framstillingen av undersøkelsen. Det var heller ikke første gang sykdomstilfeller ble framstilt geografisk på denne måten (Field, 2020). Vi bør derfor ikke omtale kartet som «den første romlige analysen» eller som et bevis alene.
 
@@ -214,7 +230,9 @@ Hva kan vi lære av dette når vi undersøker geografiske mønstre i egne skolep
 
 Tenk deg at en klasse lager to kart over et oppdiktet område ved en skole. Det ene kartet framhever møteplasser, mens det andre viser hvilke veier elevene foreslår å undersøke nærmere. Begge kartene kan bruke samme bakgrunn, men formålet bestemmer hvilke opplysninger klassen velger å framheve. Eksemplet illustrerer kartets utvalg av informasjon og temakartets avgrensede synsvinkel (Kartverket, 2020, 2023).
 
-[figur-1-10]: # (FIGURPLASSHOLDER 1.10: To egne temakart over et tydelig oppdiktet område.)
+```widget
+GeoVerktoyTemaValg
+```
 
 Lag titler og tegnforklaringer som gjør det tydelig hvilke spørsmål hvert av kartene besvarer. Skriv også at området er oppdiktet, og unngå symboler som kan oppfattes som dokumenterte farevurderinger. Bytt så kart med en annen gruppe, og be dem forklare hva kartet faktisk forteller. Hvilke opplysninger mangler de, og hvilke slutninger kan de ikke trekke fra det dere har tegnet?
 

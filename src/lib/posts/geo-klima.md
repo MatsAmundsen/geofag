@@ -12,7 +12,9 @@ Vi kan begynne med regnet som falt, og følge vannet videre gjennom landskapet. 
 
 Kanskje kjenner du igjen skillet fra diskusjoner om en kald vinter eller varm sommer. En opplevelse er et viktig utgangspunkt, men vi trenger flere observasjoner før vi konkluderer. Vi skal derfor bevege oss fra værmålinger til globale mønstre og tilbake til lokalsamfunnet. **I dette kapitlet skal vi forklare vær og klima, undersøke klimaendringer og vurdere både utslippskutt og tilpasning.**
 
-[figur-5-0]: # (FIGURPLASSHOLDER 5.0: Global temperaturanomali. DesignBOT må kontrollere konkret NASA-fil, lisens, år og referanseperiode. KartSerie med tegnforklaring og tekstalternativ. Ingen importert bildefil.)
+```widget
+GeoKlimaTemperaturserie
+```
 
 ## Læringsmål
 
@@ -211,7 +213,9 @@ Ekstremværet Hans rammet deler av Sør-Norge med kraftig regn og påfølgende f
 
 Meteorologisk institutt understreker at global oppvarming øker sannsynligheten for kraftige nedbørhendelser i Norge. Men kildene her gir ikke en tallfestet klimafordeling av skadene under Hans. Vi skal derfor ikke skrive at klimaendringer alene forårsaket hver oversvømmelse eller hvert skred. Landskap, arealbruk, tidligere nedbør og samfunnets sårbarhet må også undersøkes når vi forklarer konsekvensene. Vi kan lære av en datert hendelse uten å gjøre den til et bevis på alt (Sanna, 2023; IPCC, 2023).
 
-[figur-5-10]: # (FIGURPLASSHOLDER 5.10: Datert Hans-case fra august 2023. Innblikk med eget kartutsnitt og tydelig skille mellom hendelsesdata, månedsdata og faresoner. Kontroller Kartverket-lisens og NVE-datasett før import. Ikke tegn udokumenterte flomgrenser.)
+```widget
+GeoKlimaNesbyenLokator
+```
 
 > **Undersøk casen:** Hvilke observasjoner beskriver selve Hans, og hvilke gjelder resten av måneden? Hvilke ekstra data trenger vi for å forklare hvorfor skadene ble forskjellige mellom steder?
 
@@ -231,7 +235,9 @@ Verdensbanken beskriver tap fra tropiske sykloner og mulige følger av store ove
 
 Rapportomtalen peker på behov for robuste boliger, vannforsyning, transport og offentlige tjenester. Slike tiltak kan gjøre en forskjell fordi mindre skade på én tjeneste kan beskytte flere deler av samfunnet. Samtidig varierer behovene mellom områder og grupper, og begrensede ressurser gjør prioritering nødvendig. Vi bruker ikke framskrevne tap eller migrasjonstall uten å undersøke forutsetningene bak anslagene. En farget flate på et kart er heller ikke dokumentasjon på at alle innenfor flaten rammes likt (Verdensbanken, 2022).
 
-[figur-5-11]: # (FIGURPLASSHOLDER 5.11: Bangladesh-case basert på Verdensbankens rapportomtale 31. oktober 2022. StedKart med kontrollert Natural Earth-bakgrunn og daterte fagdata. Ingen egne risikopolygoner uten dokumentert geografisk grunnlag. Tekstalternativ må skille fare, eksponering og sårbarhet.)
+```widget
+GeoKlimaBangladeshLokator
+```
 
 > **Sammenlikn:** Hvilke spørsmål om boliger, tjenester og forebygging kan vi stille både om Bangladesh og Hans? Hvilke forskjeller gjør at de samme tiltakene ikke nødvendigvis passer begge steder?
 

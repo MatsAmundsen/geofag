@@ -30,6 +30,10 @@ Målene bygger på KM480 og KM483 (Udir, u.å.).
 GeoIndrePlateKart
 ```
 
+```widget
+GeoIndreSkjelvVulkan
+```
+
 ### Tenk over
 
 - Hvorfor finner vi mange jordskjelv og vulkaner i de samme beltene på et verdenskart?
@@ -190,7 +194,9 @@ En **varmeflekk (hotspot)** er et område med langvarig vulkansk aktivitet knytt
 
 Den enkle varmeflekkmodellen antar ofte en stillestående kilde, men røttenes dybde og stabilitet er omdiskutert. USGS påpeker dette i en merknad til sin framstilling av varmeflekker (USGS, u.å.-c). Noen ligger dessuten nær spredningsrygger, og Island må forstås som mer enn bare én av disse mekanismene. Vi skal derfor skille et nyttig prinsipp fra påstanden om at alle varmeflekker er helt like.
 
-[figur-3-1]: # (FIGURPLASSHOLDER 3.1: Kart som skiller plategrenser og varmeflekker. Velg oppdatert grunnlag og oppgi forbehold om posisjon, definisjon og varmeflekkmodellen.)
+```widget
+GeoIndreVarmeflekker
+```
 
 ### Innblikk: Reykjanes i desember 2023
 
