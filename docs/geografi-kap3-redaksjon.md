@@ -103,26 +103,26 @@ Seks figurer har registrerte Vg1-widgets; åtte har skjulte, parser-testede mark
 | Figur | Status og videre arbeid |
 |---|---|
 | 3.0 Tektoniske plater | Markør. Oppdatert plate-, vulkan- og jordskjelvkart må velges. Kontroller observasjonsperiode og lisens; planens Commons-fil har merknad om korrigert USGS-grunnlag. |
-| 3.1 Varmeflekker | Markør. Kart med plategrenser, navngitte eksempler og tydelige modellforbehold. Kontroller konkret fil og attribusjon før import. |
+| 3.1 Geologisk tid | Markør. Zoombar tidsskala må lages, med tydelig skille mellom lineær tid og forstørrede utsnitt. Ingen uverifiserte periodegrenser er lagt inn. |
 | 3.2 Jordas oppbygning | Levert: `GeoJordasLag` velger Vg1-variant i `EarthLayersDiagram`. Fire lag og forklaring av litosfære/astenosfære, uten G1-fotoets temperaturer, dybder og mineralnavn. Ikke riktige lagtykkelser. |
-| 3.3 Geologisk tid | Markør. Zoombar tidsskala må lages, med tydelig skille mellom lineær tid og forstørrede utsnitt. Ingen uverifiserte periodegrenser er lagt inn. |
+| 3.3 Rift til hav | Markør. `ContinentalRiftDiagram` og Norges historikk må tilpasses til få Vg1-trinn. Ikke alle rifter utvikles til hav. |
 | 3.4 Plategrenser | Levert: `GeoPlateGrenser` bruker en Vg1-variant av `BoundaryOverviewDiagram`, med fire korte forklaringer og skjematiske tegninger. Transform vises ovenfra; de andre som snitt. Ingen felles målestokk. |
-| 3.5 Rift til hav | Markør. `ContinentalRiftDiagram` og Norges historikk må tilpasses til få Vg1-trinn. Ikke alle rifter utvikles til hav. |
-| 3.6 Plategrensemodell | Levert i avgrenset form: `GeoPlateModell` velger fire miljøer i `PlateTectonicsModel`, gjenbruker Vg1-oversiktens geometri og `ModelFrame`. Ingen mineral-/dybdepaneler, G1-lenker eller risikotall. Planens utforsking av variabel spredningshastighet er ikke implementert; krever egen oppfølging. |
-| 3.7 Jordskjelv | Levert: `GeoJordskjelvBrudd` gjenbruker `ElasticReboundDiagram` med tre faser: låst, spenning, brudd/bølger. Standardvisningen beholder fem trinn. Skjematisk, ikke prediksjon. |
+| 3.5 Plategrensemodell | Levert i avgrenset form: `GeoPlateModell` velger fire miljøer i `PlateTectonicsModel`, gjenbruker Vg1-oversiktens geometri og `ModelFrame`. Ingen mineral-/dybdepaneler, G1-lenker eller risikotall. Planens utforsking av variabel spredningshastighet er ikke implementert; krever egen oppfølging. |
+| 3.6 Jordskjelv | Levert: `GeoJordskjelvBrudd` gjenbruker `ElasticReboundDiagram` med tre faser: låst, spenning, brudd/bølger. Standardvisningen beholder fem trinn. Skjematisk, ikke prediksjon. |
+| 3.7 Jordskjelv og sårbarhet | Markør. Datert USGS-basert casekart for Tyrkia/Syria, med skille mellom brudd, episentre, rystelser og sårbarhet. Ingen udokumenterte dødstall. |
 | 3.8 Vulkanmodell | Levert: `GeoVulkanModell` har to valg i `VolcanoModel`, med eksisterende skjold-/strato-SVG-er fra `VolcanoTypesDiagram`. Ingen udokumentert VEI-beregning, kjemiterskler, faste helninger eller kalender for utbrudd. |
-| 3.9 Tsunami | Markør. Tre–fire trinn må tegnes fra vannforskyvning til kyst og varslingskjede. Ingen NOAA-bakgrunnsfil er valgt eller importert. |
-| 3.10 Bergartenes kretsløp | Levert: `GeoBergartssyklus` bruker eksisterende `BergartssyklusFigur` og beholder lat lasting. Vg1 viser den generelle ruten og valgbare prosesser, ikke stedsspesifikke bergartsaldre eller sitater fra G1-kapitlet. Flere mulige veier er forklart. |
-| 3.11 Norsk berggrunn | Markør. Forenklet kart over grunnfjell, kaledonske enheter, Oslofeltet og sokkel. NGU-raster er ikke importert; konkret datalisens må kontrolleres. |
-| 3.12 Reykjanes | Markør. Datert kart eller Sentinel-utsnitt fra den historiske 2023-hendelsen. Kontroller opptaksdato, område, attribusjon og lisens. Ikke bland med nyere utbrudd. |
-| 3.13 Jordskjelv og sårbarhet | Markør. Datert USGS-basert casekart for Tyrkia/Syria, med skille mellom brudd, episentre, rystelser og sårbarhet. Ingen udokumenterte dødstall. |
+| 3.9 Varmeflekker | Markør. Kart med plategrenser, navngitte eksempler og tydelige modellforbehold. Kontroller konkret fil og attribusjon før import. |
+| 3.10 Reykjanes | Markør. Datert kart eller Sentinel-utsnitt fra den historiske 2023-hendelsen. Kontroller opptaksdato, område, attribusjon og lisens. Ikke bland med nyere utbrudd. |
+| 3.11 Tsunami | Markør. Tre–fire trinn må tegnes fra vannforskyvning til kyst og varslingskjede. Ingen NOAA-bakgrunnsfil er valgt eller importert. |
+| 3.12 Bergartenes kretsløp | Levert: `GeoBergartssyklus` bruker eksisterende `BergartssyklusFigur` og beholder lat lasting. Vg1 viser den generelle ruten og valgbare prosesser, ikke stedsspesifikke bergartsaldre eller sitater fra G1-kapitlet. Flere mulige veier er forklart. |
+| 3.13 Norsk berggrunn | Markør. Forenklet kart over grunnfjell, kaledonske enheter, Oslofeltet og sokkel. NGU-raster er ikke importert; konkret datalisens må kontrolleres. |
 
 Alle Geofag-standardinnstillinger er beholdt. Sju standardvisninger er rendret både fra foreldrebranchens kildekode og arbeidskopien; HTML er identisk. Vg1 bruker egne widget-ID-er, slik at Geofag-postene og rutene ikke endres. De kvalitative modellene er pedagogiske valg- og prosessmodeller, ikke numeriske simulatorer.
 
 ## Avklaringer for Mats
 
 1. Godkjenne historiske caser fra 2023 framfor en påstått aktuell faresituasjon. Ingen tekst skal brukes som nåværende reise- eller evakueringsmelding.
-2. Avklare om fartskontroll i figur 3.6 skal bestilles i figurleveransen, eller om den nåværende kvalitative sammenlikningen er tilstrekkelig først. Teksten lover ingen fartskontroll.
+2. Avklare om fartskontroll i figur 3.5 skal bestilles i figurleveransen, eller om den nåværende kvalitative sammenlikningen er tilstrekkelig først. Teksten lover ingen fartskontroll.
 3. Prioritere de åtte manglende figurene og avklare konkrete kart-/bildelisenser, særlig norsk berggrunn og valgte Sentinel-data. Ingen eksterne kart eller fotografier er importert her.
 
 ## Validering
@@ -152,7 +152,7 @@ PR-tekst:
 - 22 verifiserte kilder med APA, tekstklar-status og engangsreseed.
 - Daterte caser fra Reykjanes og Tyrkia/Syria i 2023, uten påstander om dagens faresituasjon.
 - Seks Vg1-figurer gjennom eksisterende Geofag-komponenter, med redusert faglig omfang. Geofag-standardvisningene er uendret.
-- Åtte skjulte figurmarkører. Figur 3.6 har kvalitativ geometri-/miljøvelger; variabel spredningshastighet gjenstår etter avklaring.
+- Åtte skjulte figurmarkører. Figur 3.5 har kvalitativ geometri-/miljøvelger; variabel spredningshastighet gjenstår etter avklaring.
 - Kapittel 3 alene. Kapitlene 4 og 5 følger i egne PR-er.
 
 ### Kontroller

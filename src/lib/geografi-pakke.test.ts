@@ -411,7 +411,7 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoIndrePlateKart", "GeoIndreSkjelvVulkan", "GeoIndreTidsskala", "GeoJordasLag", "GeoIndreRiftHav", "GeoPlateGrenser", "GeoPlateModell", "GeoJordskjelvBrudd", "GeoIndreTyrkiaKart", "GeoVulkanModell", "GeoIndreVarmeflekker", "GeoIndreReykjanes", "GeoIndreTsunami", "GeoBergartssyklus", "GeoIndreBerggrunn"]);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap3-redaksjon|figur-3-/);
-    assert.doesNotMatch(md, /[Ss]e figur 3\.(?:0|1|3|5|9|11|12|13)\b/);
+    assert.doesNotMatch(md, /[Ss]e figur 3\.(?:0|1|3|7|9|10|11|13)\b/);
   });
   it("har 32 verifiserte kilder uten lærebok- eller bibliotekhenvisninger", () => {
     assert.equal((sources.match(/href: /g) ?? []).length, 32);

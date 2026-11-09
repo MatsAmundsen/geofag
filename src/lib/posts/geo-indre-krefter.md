@@ -131,7 +131,7 @@ GeoPlateGrenser
 GeoPlateModell
 ```
 
-Modellen i figur 3.6 lar oss velge fire plategrensemiljøer og sammenlikne bevegelse med geologiske følger. Vi kan spørre hvilke miljøer som danner ny havbunn, hvilke som bygger fjell, og hvilke som gir sidelengs forskyvning. Fartskontrollen regner om en valgt, konstant fart fra centimeter per år til kilometer på én million år. Den viser ikke målte hastigheter, jordskjelvsannsynlighet eller utviklingen ved en bestemt forkastning. Bruk derfor forklaringen sammen med dokumenterte kart og kilder når dere undersøker virkelige steder (USGS, u.å.-h).
+Modellen i figur 3.5 lar oss velge fire plategrensemiljøer og sammenlikne bevegelse med geologiske følger. Vi kan spørre hvilke miljøer som danner ny havbunn, hvilke som bygger fjell, og hvilke som gir sidelengs forskyvning. Fartskontrollen regner om en valgt, konstant fart fra centimeter per år til kilometer på én million år. Den viser ikke målte hastigheter, jordskjelvsannsynlighet eller utviklingen ved en bestemt forkastning. Bruk derfor forklaringen sammen med dokumenterte kart og kilder når dere undersøker virkelige steder (USGS, u.å.-h).
 
 ## Jordskjelv
 
@@ -259,7 +259,7 @@ En **metamorf bergart** dannes når en eksisterende bergart omdannes under endre
 GeoBergartssyklus
 ```
 
-I figur 3.10 kan vi følge prosesspilene og trykke på stasjoner for å lese hva de betyr. Prøv å forklare en overgang før du leser modellens forklaring, og kontroller deretter om prosessen passer. Figuren er et forenklet snitt uten fast dybdeskala, og den viser ikke hvor raskt hver prosess går. Vi trenger observasjoner og kilder for å avgjøre hvilke av pilene som beskriver en virkelig bergarts historie (USGS, u.å.-i).
+I figur 3.12 kan vi følge prosesspilene og trykke på stasjoner for å lese hva de betyr. Prøv å forklare en overgang før du leser modellens forklaring, og kontroller deretter om prosessen passer. Figuren er et forenklet snitt uten fast dybdeskala, og den viser ikke hvor raskt hver prosess går. Vi trenger observasjoner og kilder for å avgjøre hvilke av pilene som beskriver en virkelig bergarts historie (USGS, u.å.-i).
 
 ## Norges berggrunn
 
