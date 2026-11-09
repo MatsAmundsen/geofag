@@ -13,5 +13,6 @@ test("kontrollerte kilder, faktiske 2023-episentre og rett satellittdato", () =>
   assert.deepEqual(d.skjelv.map((x: {mag:number}) => x.mag).sort(), [7.5, 7.8]);
   const fig = read("../components/geografi/indre-valg.tsx");assert.match(fig, /Contains modified Copernicus Sentinel data 2023/);assert.match(fig, /opptak 19. desember 2023/i);assert.match(fig, /ikke hele bruddflater/);
   assert.doesNotMatch(fig, /OpenStreetMap|GeoMap[ >]/);assert.match(fig, /Oslo-riften utviklet seg ikke til et nytt hav/);
-  assert.match(read("./posts/geo-indre-krefter.md"), /FIGURPLASSHOLDER 3.1:/);
+  assert.match(read("./posts/geo-indre-krefter.md"), /```widget\nGeoIndreVarmeflekker\n```/);
+  assert.doesNotMatch(read("./posts/geo-indre-krefter.md"), /FIGURPLASSHOLDER/);
 });

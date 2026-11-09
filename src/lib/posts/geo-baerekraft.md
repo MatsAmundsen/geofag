@@ -26,7 +26,9 @@ Etter kapitlet kan du
 
 Målene bygger på KM485, med støtte i KM484 og KM481 (Udir, u.å.).
 
-[figur-8-1]: # (FIGURPLASSHOLDER 8.1: Ekstrem fattigdom, World Bank/PIP via OWID. Terskel 3,00 internasjonale dollar, 2021-kjøpekraft. Se docs/geografi-kap8-redaksjon.md.)
+```widget
+GeoBaerekraftFattigdomKart
+```
 
 ### Tenk over
 
@@ -114,7 +116,9 @@ I presentasjonen av Planetary Health Check 21. september 2026 oppgir PIK at sju 
 
 Overskridelse betyr økt risiko, ikke at hele jordsystemet nødvendigvis kollapser på en bestemt dato. Rapporten understreker at presset på prosessene henger sammen, og at naturens kapasitet til å ta opp karbon kan svekkes (PIK, 2026). Vi skal heller ikke bruke et globalt gjennomsnitt som dokumentasjon på at alle lokale forhold er trygge. PIK framhever blant annet at regionale problemer med partikkelforurensning kan skjules av en bedre global utvikling.
 
-[figur-8-4]: # (FIGURPLASSHOLDER 8.4: Egen forenklet tegning av ni planetære grenser, kilde PIK 21.09.2026. Sju overskredet i den daterte vurderingen. Ikke kopier forskningsinstituttets grafikk.)
+```widget
+GeoBaerekraftPlanetaere
+```
 
 ### Antropocen: et begrep om menneskelig påvirkning
 
@@ -175,7 +179,9 @@ Oversikten for 2026 bygger på 2025-utgaven av regnskapet, med foreløpige bereg
 
 Norsk olje- og gassutvinning gir utslipp som inngår i Norges territorielle klimaregnskap. Når eksportert olje og gass brukes i andre land, føres utslippene fra bruken i disse landene (Miljødirektoratet, u.å.-a). Skillet forteller hvor utslippene bokføres, men avgjør ikke alene hvordan vi vurderer Norges politiske eller økonomiske ansvar. En drøfting må derfor skille mellom regnskapsregler, globale virkninger og argumenter om ansvar.
 
-[figur-8-5]: # (FIGURPLASSHOLDER 8.5: CO2 per person fra fossil energi og industri, GCB via OWID. Ikke alle klimagasser, ikke forbruksregnskap, ikke arealbruk. Samme observasjonsår.)
+```widget
+GeoBaerekraftCo2Kart
+```
 
 Datasiden for CO₂-utslipp per innbygger hos Our World in Data viser territorielle utslipp fra fossil energi og industri. Den inkluderer ikke arealbruksendringer, og importutslipp følger ikke forbrukeren i denne serien (Ritchie et al., 2023). Bruker vi slike data, må vi oppgi hva serien måler, i stedet for å kalle den «hele klimafotavtrykket». Vi må også skille mellom utslipp per person og landets samlede utslipp.
 
@@ -206,7 +212,9 @@ Kilden er en løpende landoversikt, kontrollert 6. november 2026, og ikke én st
 - Hvilke framskritt og utfordringer trekker Verdensbanken fram i den samme landoversikten?
 - Hvorfor trenger vi både utviklingsindikatorer og miljøindikatorer når vi vurderer denne casen?
 
-[figur-8-7]: # (FIGURPLASSHOLDER 8.7: Global sammenhengende tidsserie for fattigdom eller CO2, med Norge og eventuelt Kina som sammenlikning. Samme definisjon, observasjonsår og metode; marker brudd og foreløpige tall.)
+```widget
+GeoBaerekraftCo2Serie
+```
 
 ### Rettferdighet og ulike behov
 
