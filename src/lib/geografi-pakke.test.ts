@@ -647,7 +647,7 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
 
   it("fordeler ni figurposisjoner på ni figurer uten skjulte markører", () => {
     assert.deepEqual([...md.matchAll(/^\[figur-7-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
-    for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`), id);
+    for (const id of widgets) assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`), id);
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-7-/);
@@ -681,7 +681,7 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
   });
 
   it("gjenbruker tre modeller gjennom et uttrykkelig vg1-valg uten nye kvantitative påstander", () => {
-    const registry = read("../components/poster-body.tsx");
+    const registry = read("../components/poster-widget-renderer.tsx");
     for (const name of ["FraBergartTilBruddDiagram", "PetroleumTrapModel", "WindPowerTradeoffDiagram"])
       assert.ok(registry.includes(`<${name} geografi />`), name);
     const petroleum = read("../components/models/resource-ore-petroleum-model.tsx").split("const PETROLEUM_STEG =")[1];
