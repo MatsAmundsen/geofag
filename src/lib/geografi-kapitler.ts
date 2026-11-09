@@ -127,6 +127,7 @@ export const GEOGRAFI_KAPITLER: readonly GeografiKapittel[] = [
   },
   {
     path: "landskap",
+    tekstKlar: true,
     slug: "geo-landskap",
     title: "Ytre krefter og landskapet i Norge",
     navLabel: "Landskap",

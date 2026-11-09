@@ -7,6 +7,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import { parsePosterMarkdown } from "./poster-markdown.ts";
+import { beregnGeografiMassebalanse } from "./geografi-massebalanse.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (p: string) => readFileSync(join(here, p), "utf8");
@@ -74,7 +75,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -162,7 +163,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 5);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 6);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -434,10 +435,88 @@ describe("Geografi kapittel 3: indre krefter (PR F)", () => {
     assert.match(read("../components/poster-widget-renderer.tsx"), /RockCycle: \(\) => <BergartssyklusFigurLat \/>/);
     assert.match(read("../components/poster-widget-renderer.tsx"), /GeoBergartssyklus: \(\) => <BergartssyklusFigurLat geografi/);
   });
-  it("har reseed og tekststatus uten å aktivere kapitlene 4 og 5", () => {
+  it("har reseed og tekststatus uten å aktivere kapittel 5", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-indre-krefter-kap3-2026-11-06",\s+slug: "geo-indre-krefter"/);
     assert.match(read("geografi-kapitler.ts"), /path: "indre-krefter",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "(?:landskap|klima)",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-landskap.md"), /under arbeid/i);assert.match(read("posts/geo-klima.md"), /under arbeid/i);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-klima.md"), /under arbeid/i);
+  });
+});
+
+
+describe("Geografi kapittel 4: ytre krefter og landskap", () => {
+  const md = read("posts/geo-landskap.md");
+  const sources = read("kilder-geografi.ts").split('"geo-landskap": [')[1].split('"geo-klima"')[0];
+  const widgets = ["GeoLandskapFrost", "GeoLandskapMassebalanse", "GeoLandskapBrelandskap", "GeoLandskapBotn", "GeoLandskapMarinGrense", "GeoLandskapKvikkleire"];
+
+  it("dekker sju underkapitler, kompetansemål og hele kapittelmalen", () => {
+    for (const title of ["Ytre krefter", "Istider og isbreer", "Landformer fra is", "Landhevning og marin grense", "Elver og landformer", "Kystlandskapet", "Landskap og mennesker", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    assert.match(md, /Hovedmål, KM480/);assert.match(md, /støtter KM483/);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## En fjord med flere historier"));
+    assert.ok(md.indexOf("I dette kapitlet skal vi") < md.indexOf("## Læringsmål"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 7);
+    assert.equal((md.match(/^c\. /gm) ?? []).length, 7);
+    assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
+  });
+
+  it("har tretten widgets, modellfoto og ingen skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-4-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
+    for (const widget of widgets) {
+      assert.ok(md.includes(`\`\`\`widget\n${widget}\n\`\`\``), widget);
+      if (widget !== "GeoLandskapBrelandskap") assert.match(read("../components/poster-widget-renderer.tsx"), new RegExp(`${widget}: \\(\\) => <[^\\n]+geografi`));
+    }
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), ["GeoLandskapIstidskart", "GeoLandskapFrost", "GeoLandskapMassebalanse", "GeoLandskapBrekart", "GeoLandskapBrelandskap", "GeoLandskapBotn", "GeoLandskapMarinGrense", "GeoLandskapKvikkleire", "GeoLandskapElv", "GeoLandskapKyst", "GeoLandskapFjordLokator", "GeoLandskapGeirangerFoto", "GeoLandskapLeirslette"]);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap4-redaksjon|figur-4-/);
+    assert.doesNotMatch(md, /[Ss]e figur 4\.(?:0|3|8|9|10b|11)\b/);
+  });
+
+  it("har 39 verifiserte kilder uten elevrettede bibliotek- eller lærebokhenvisninger", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 39);
+    for (const domain of ["ngu.no", "nve.no", "nibio.no", "snl.no", "unesco.org", "udir.no"]) assert.ok(sources.includes(domain), domain);
+    assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
+    for (const citation of ["Bryhni & Fossen, 2024", "Bryhni & Røthe, 2025", "Sørbel, 2024", "Røthe & Mangerud, u.å.", "Spjeldnæs, u.å.", "NVE, 2024", "NVE, 2026a", "NVE, 2026b", "bioøkonomi [NIBIO], 2022", "NIBIO, 2023", "NIBIO, u.å.", "UNESCO, u.å.", "Udir, u.å."]) assert.ok(md.includes(citation), citation);
+    for (const suffix of ["a", "b", "c", "d", "e"]) assert.ok(md.includes(`u.å.-${suffix}`), suffix);
+  });
+
+  it("har alle 18 avtalte begreper med forklaring", () => {
+    for (const term of ["Forvitring", "Erosjon", "Avsetning", "Løsmasser", "Isbre", "Innlandsis", "U-dal", "Fjord", "Botn", "Morene", "Esker", "Marin grense", "Landhevning", "Kvikkleire", "Meander", "Delta", "Elveterrasse", "Strandflate"])
+      assert.ok(md.includes(`| ${term} |`), term);
+  });
+
+  it("skiller kartspørsmål, daterer Åknes-kilden og unngår ferske scenarioverdier", () => {
+    for (const phrase of ["ikke inne i selve Geirangerfjorden", "19. juni 2026", "ikke på et sanntidsvarsel", "ikke en måling av en navngitt norsk bre", "ikke en dato for hver enkelt landform", "som en erstatning", "automatisk blir kvikkleire", "ikke er det samme som kvikkleireskredfare"])
+      assert.ok(md.includes(phrase), phrase);
+    assert.doesNotMatch(md, /millioner kubikkmeter|meter høye bølger|prosent sannsynlighet|NVE-målinger viser 2,5/);
+    assert.ok(md.includes("høstpløying uten erosjonstiltak"));
+  });
+
+  it("gjenbruker avgrensede Vg1-modeller og bevarer avansert standard som standard", () => {
+    const ice = read("../components/diagrams/isbreer.tsx");
+    const mass = read("../components/models/glacier-mass-balance-model.tsx");
+    assert.match(ice, /useStepClock\(geografi \? 3 : 4/);
+    assert.match(ice, /const suck = frozen && !geografi/);
+    assert.match(ice, /!geografi && <Skyver/);
+    assert.match(mass, /geografi = false/);
+    assert.match(mass, /geografi \? <GeografiGlacierMassBalanceModel \/> : <AdvancedGlacierMassBalanceModel \/>/);
+    const simple = mass.split("function GeografiGlacierMassBalanceModel()")[1].split("function AdvancedGlacierMassBalanceModel()")[0];
+    assert.doesNotMatch(simple, /baseEla|elaShift|summerTempAnomaly|aarPercent|permafrost/);
+    assert.match(simple, /ikke NVE-målinger eller en prognose/);
+    assert.match(read("../components/diagrams/botn-egg-tind-figur.tsx"), /below=\{geografi \? undefined/);
+    assert.match(read("../components/diagrams/skred.tsx"), /if \(geografi\) return <GeografiKvikkleireDiagram/);
+    assert.match(read("../components/poster-widget-renderer.tsx"), /GlacierMassBalanceModel: \(\) => <GlacierMassBalanceModel \/>/);
+  });
+
+  it("regner bare forskjell i valgte øvingstall, også ved negativ og lik null balanse", () => {
+    for (const [gain, loss, expected] of [[2.5, 3, -0.5], [4, 3, 1], [3, 3, 0], [0, 6, -6], [6, 0, 6], [1.2, 1.3, -0.1], [0, 0, 0]])
+      assert.equal(beregnGeografiMassebalanse(gain, loss), expected);
+  });
+
+  it("har eget reseed og tekststatus uten å skrive eller aktivere kapittel 5", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-landskap-kap4-2026-11-06",\s+slug: "geo-landskap"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "landskap",\s+tekstKlar: true/);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-klima.md"), /under arbeid/i);
   });
 });
