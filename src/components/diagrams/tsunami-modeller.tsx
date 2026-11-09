@@ -23,14 +23,32 @@ import {
 } from "@/lib/tsunami-fysikk";
 import { Merke, Skyv, TsunamiRamme, Valg, useTsunamiTid } from "./tsunami-skall";
 
+/** Heldekkende vannfarger. 0,35 i tetthet mot kortet gir under 2:1. */
+const WATER_REST = "#3d7f86";
+const WATER_ACTIVE = "#4a9098";
+const WATER_EDGE = "#8fd0d4";
+
+function waterShade(depthM: number): string {
+  const t = Math.max(0, Math.min(1, depthM / 4200));
+  const mix = (from: number, to: number) => Math.round(from + (to - from) * t);
+  const parse = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const [r1, g1, b1] = parse(WATER_REST);
+  const [r2, g2, b2] = parse(WATER_ACTIVE);
+  return `#${[mix(r1, r2), mix(g1, g2), mix(b1, b2)].map((n) => n.toString(16).padStart(2, "0")).join("")}`;
+}
 const NOAA_PROP = "https://www.noaa.gov/jetstream/tsunamis/tsunami-propagation";
 const NOAA_SCI = "https://www.noaa.gov/explainers/science-behind-tsunamis";
 const NOAA_INN = "https://www.noaa.gov/jetstream/tsunamis/tsunami-inundation";
 const NOAA_WARN = "https://www.noaa.gov/jetstream/tsunamis/detection-warning-and-forecasting";
 
-function Scene({ label, children, tall }: { label: string; children: ReactNode; tall?: boolean }) {
+function Scene({ label, children, narrow }: { label: string; children: ReactNode; narrow?: boolean }) {
   return (
-    <svg viewBox={tall ? "0 0 360 420" : "0 0 640 280"} className="h-auto w-full" role="img" aria-label={label}>
+    <svg
+      viewBox={narrow ? "0 0 360 420" : "0 0 640 280"}
+      className="block h-auto w-full max-w-full"
+      role="img"
+      aria-label={label}
+    >
       <rect width="100%" height="100%" fill="var(--color-card)" />
       {children}
     </svg>
@@ -83,19 +101,30 @@ export function TsunamiM1() {
         </>
       }
       scene={
-        <Scene tall={tid.narrow} label="Snitt av havbunn og vannflate">
-          <rect x="0" y="150" width="640" height="130" fill="var(--color-primary)" opacity="0.25" />
+        <Scene narrow={tid.narrow} label="Snitt av havbunn og vannflate">
+          <rect x="0" y={tid.narrow ? 250 : 150} width={tid.narrow ? 360 : 640} height={tid.narrow ? 170 : 130} fill="var(--color-primary)" opacity="0.25" />
           <path
-            d={`M 40 150 C ${220 - bredde} ${150 - liftPx}, ${420 + bredde * 0.2} ${150 - liftPx}, 600 150`}
+            d={
+              tid.narrow
+                ? `M 20 250 C ${180 - Math.min(bredde, 130)} ${250 - liftPx}, ${200 + bredde * 0.15} ${250 - liftPx}, 340 250`
+                : `M 40 150 C ${220 - bredde} ${150 - liftPx}, ${420 + bredde * 0.2} ${150 - liftPx}, 600 150`
+            }
             fill="none"
             stroke="var(--color-foreground)"
             strokeWidth="3"
           />
-          <rect x={320 - bredde} y={190 + (mode === "sidelengs" ? 0 : -liftPx)} width={bredde * 2} height="40" fill="var(--color-muted-foreground)" opacity="0.7" />
+          <rect
+            x={tid.narrow ? 180 - Math.min(bredde, 140) : 320 - bredde}
+            y={(tid.narrow ? 290 : 190) + (mode === "sidelengs" ? 0 : -liftPx)}
+            width={tid.narrow ? Math.min(bredde, 140) * 2 : bredde * 2}
+            height="40"
+            fill="var(--color-muted-foreground)"
+            opacity="0.7"
+          />
           {wave > 0 && lift > 0 ? (
-            <circle cx={80 + wave * 480} cy={150 - liftPx * 0.4} r="7" fill="var(--color-lava)" />
+            <circle cx={(tid.narrow ? 20 : 80) + wave * (tid.narrow ? 300 : 480)} cy={(tid.narrow ? 250 : 150) - liftPx * 0.4} r="7" fill="var(--color-lava)" />
           ) : null}
-          <text x="24" y="28" fill="var(--color-foreground)" fontSize="16">
+          <text x="16" y={tid.narrow ? 40 : 28} fill="var(--color-foreground)" fontSize={tid.narrow ? 22 : 16}>
             {mode === "loddrett" ? "A loddrett" : "B sidelengs"}
           </text>
         </Scene>
@@ -126,7 +155,15 @@ export function TsunamiM2() {
   const lambdaDeepKm = wavelengthM(deepSpeed, periodS) / 1000;
   const lambdaHereKm = here ? wavelengthM(here.speedMs, periodS) / 1000 : 0;
   const coastRatio = greenHeightRatio(depth, 40);
-  const markerX = 40 + (here?.fractionOfLength ?? 0) * 520;
+  const narrow = tid.narrow;
+  const barOrigin = narrow ? 18 : 40;
+  const barPitch = narrow ? 84 : 140;
+  const barWidth = narrow ? 72 : 120;
+  const barBase = narrow ? 390 : 220;
+  const barMax = narrow ? 230 : 160;
+  const markerX = narrow
+    ? barOrigin + (here?.fractionOfLength ?? 0) * (3 * barPitch + barWidth)
+    : 40 + (here?.fractionOfLength ?? 0) * 520;
   return (
     <TsunamiRamme
       nodeRef={tid.ref}
@@ -163,20 +200,42 @@ export function TsunamiM2() {
       }
       scene={
         <div className="space-y-3">
-          <Scene tall={tid.narrow} label="Profil med bølgetopp som følger gangtiden">
-            {active.map((segment, index) => (
-              <rect
-                key={index}
-                x={40 + index * 140}
-                y={220 - Math.min(160, segment.depthM / 40)}
-                width="120"
-                height={Math.min(160, segment.depthM / 40)}
-                fill="var(--color-primary)"
-                opacity={here?.segmentIndex === index ? 0.7 : 0.35}
-              />
-            ))}
-            <circle cx={markerX} cy="70" r="8" fill="var(--color-lava)" />
-            <text x="24" y="28" fill="var(--color-foreground)" fontSize="16">
+          <Scene narrow={narrow} label="Profil med bølgetopp som følger gangtiden">
+            {active.map((segment, index) => {
+              const raw = segment.depthM / (narrow ? 18 : 40);
+              const proportional = Math.min(barMax, Math.max(0, raw));
+              const drawn = proportional < 1.5 ? 1.5 : proportional;
+              const activeBar = here?.segmentIndex === index;
+              const label = `${Math.round(segment.depthM)} m`;
+              return (
+                <g key={index}>
+                  <rect
+                    x={barOrigin + index * barPitch}
+                    y={barBase - drawn}
+                    width={barWidth}
+                    height={drawn}
+                    fill={activeBar ? WATER_ACTIVE : WATER_REST}
+                    stroke={activeBar ? "#e8eef2" : WATER_EDGE}
+                    strokeWidth={activeBar ? 2 : 1.5}
+                  >
+                    <title>{label}</title>
+                  </rect>
+                  {drawn < 12 ? (
+                    <text
+                      x={barOrigin + index * barPitch + barWidth / 2}
+                      y={barBase - drawn - 8}
+                      textAnchor="middle"
+                      fill="var(--color-foreground)"
+                      fontSize={narrow ? 14 : 12}
+                    >
+                      {label}
+                    </text>
+                  ) : null}
+                </g>
+              );
+            })}
+            <circle cx={markerX} cy={narrow ? 130 : 70} r="8" fill="var(--color-lava)" />
+            <text x="16" y={narrow ? 40 : 28} fill="var(--color-foreground)" fontSize={narrow ? 22 : 16}>
               {profile === "dypt" ? "A" : "B"} · {msToKmh(here?.speedMs ?? 0).toFixed(0)} km/t her
             </text>
           </Scene>
@@ -230,15 +289,15 @@ function ArrivalGraph({
     points.map((point, index) => `${index === 0 ? "M" : "L"} ${xOf(point.distanceM)} ${yOf(point.timeS)}`).join(" ");
   const here = alongTrackAtTime(m2Segments(depth, active), timeFraction);
   return (
-    <svg viewBox="0 0 320 140" className="h-auto w-full max-w-md" role="img" aria-label="Ankomstgraf, strekning mot tid, profil A og B">
-      <rect width="320" height="140" fill="var(--color-card)" />
-      <text x="8" y="16" fill="var(--color-foreground)" fontSize="13">
+    <svg viewBox="0 0 320 160" className="block h-auto w-full max-w-md" role="img" aria-label="Ankomstgraf, strekning mot tid, profil A og B">
+      <rect width="320" height="160" fill="var(--color-card)" />
+      <text x="8" y="22" fill="var(--color-foreground)" fontSize="16">
         Ankomst: strekning mot tid
       </text>
       <path d={line(a)} fill="none" stroke="var(--color-foreground)" strokeDasharray="5 4" strokeWidth="2" />
       <path d={line(b)} fill="none" stroke="var(--color-primary)" strokeWidth="2" />
       {here ? <circle cx={xOf(here.distanceM)} cy={yOf(timeFraction * travelTimeS(m2Segments(depth, active)))} r="4" fill="var(--color-lava)" /> : null}
-      <text x="8" y="132" fill="var(--color-muted-foreground)" fontSize="12">
+      <text x="8" y="148" fill="var(--color-muted-foreground)" fontSize="15">
         A stiplet, B hel. Samme akse.
       </text>
     </svg>
@@ -303,16 +362,32 @@ export function TsunamiM3() {
         </>
       }
       scene={
-        <Scene tall={tid.narrow} label="Målepunkter for bølgehøyde, oppskylling, vanndyp og inntrenging">
-          <path d={coast === "flat" ? "M 0 180 L 420 180 L 640 230" : "M 0 180 L 460 180 L 560 80 L 640 80"} fill="var(--color-muted)" />
-          <rect x="0" y="120" width="460" height="60" fill="var(--color-primary)" opacity="0.35" />
-          <circle cx="80" cy="150" r={point === 0 ? 9 : 5} fill={point === 0 ? "var(--color-lava)" : "var(--color-foreground)"} />
-          <circle cx="430" cy="150" r={point === 1 ? 9 : 5} fill={point === 1 ? "var(--color-lava)" : "var(--color-foreground)"} />
-          <circle cx="520" cy="140" r={point === 2 ? 9 : 5} fill={point === 2 ? "var(--color-lava)" : "var(--color-foreground)"} />
-          <text x="48" y="36" fill="var(--color-foreground)" fontSize="13">1 bølgehøyde</text>
-          <text x="360" y="36" fill="var(--color-foreground)" fontSize="13">2 oppskylling</text>
-          <text x="500" y="100" fill="var(--color-foreground)" fontSize="13">3 vanndyp</text>
-          <text x="500" y="250" fill="var(--color-foreground)" fontSize="13">4 inntrenging {scene.reach} m</text>
+        <Scene narrow={tid.narrow} label="Målepunkter for bølgehøyde, oppskylling, vanndyp og inntrenging">
+          {tid.narrow ? (
+            <>
+              <text x="16" y="36" fill="var(--color-foreground)" fontSize="20">1 bølgehøyde</text>
+              <text x="16" y="66" fill="var(--color-foreground)" fontSize="20">2 oppskylling</text>
+              <text x="16" y="96" fill="var(--color-foreground)" fontSize="20">3 vanndyp</text>
+              <text x="16" y="126" fill="var(--color-foreground)" fontSize="20">4 inntrenging {scene.reach} m</text>
+              <path d={coast === "flat" ? "M 0 250 L 210 250 L 320 340" : "M 0 250 L 220 250 L 270 170 L 330 170"} fill="var(--color-muted)" />
+              <rect x="0" y="190" width="220" height="60" fill="var(--color-primary)" opacity="0.35" />
+              <circle cx="60" cy="220" r={point === 0 ? 9 : 5} fill={point === 0 ? "var(--color-lava)" : "var(--color-foreground)"} />
+              <circle cx="210" cy="250" r={point === 1 ? 9 : 5} fill={point === 1 ? "var(--color-lava)" : "var(--color-foreground)"} />
+              <circle cx="280" cy="210" r={point === 2 ? 9 : 5} fill={point === 2 ? "var(--color-lava)" : "var(--color-foreground)"} />
+            </>
+          ) : (
+            <>
+              <path d={coast === "flat" ? "M 0 180 L 420 180 L 640 230" : "M 0 180 L 460 180 L 560 80 L 640 80"} fill="var(--color-muted)" />
+              <rect x="0" y="120" width="460" height="60" fill="var(--color-primary)" opacity="0.35" />
+              <circle cx="80" cy="150" r={point === 0 ? 9 : 5} fill={point === 0 ? "var(--color-lava)" : "var(--color-foreground)"} />
+              <circle cx="430" cy="150" r={point === 1 ? 9 : 5} fill={point === 1 ? "var(--color-lava)" : "var(--color-foreground)"} />
+              <circle cx="520" cy="140" r={point === 2 ? 9 : 5} fill={point === 2 ? "var(--color-lava)" : "var(--color-foreground)"} />
+              <text x="48" y="36" fill="var(--color-foreground)" fontSize="13">1 bølgehøyde</text>
+              <text x="360" y="36" fill="var(--color-foreground)" fontSize="13">2 oppskylling</text>
+              <text x="500" y="100" fill="var(--color-foreground)" fontSize="13">3 vanndyp</text>
+              <text x="500" y="250" fill="var(--color-foreground)" fontSize="13">4 inntrenging {scene.reach} m</text>
+            </>
+          )}
         </Scene>
       }
       tall={
@@ -386,14 +461,18 @@ export function TsunamiM4() {
         </>
       }
       scene={
-        <Scene tall={tid.narrow} label="Stilisert fjord med bølger på begge bredder">
-          <path d="M 40 40 L 80 240 L 560 240 L 600 40" fill="var(--color-primary)" opacity="0.3" />
-          <rect x="70" y={above ? 70 : 150} width="36" height="50" fill="var(--color-muted-foreground)" />
+        <Scene narrow={tid.narrow} label="Stilisert fjord med bølger på begge bredder">
+          <path
+            d={tid.narrow ? "M 28 90 L 52 360 L 308 360 L 332 90" : "M 40 40 L 80 240 L 560 240 L 600 40"}
+            fill="var(--color-primary)"
+            opacity="0.3"
+          />
+          <rect x={tid.narrow ? 46 : 70} y={above ? (tid.narrow ? 120 : 70) : tid.narrow ? 240 : 150} width="36" height="50" fill="var(--color-muted-foreground)" />
           {Array.from({ length: sketch.waves }, (_, index) => (
             <circle
               key={index}
-              cx={140 + ((tid.tid + index / sketch.waves) % 1) * 360}
-              cy={200 - sketch.near * 40}
+              cx={(tid.narrow ? 90 : 140) + ((tid.tid + index / sketch.waves) % 1) * (tid.narrow ? 180 : 360)}
+              cy={(tid.narrow ? 310 : 200) - sketch.near * 40}
               r={6 + sketch.near * 8}
               fill="none"
               stroke="var(--color-foreground)"
@@ -446,7 +525,7 @@ export function TsunamiM5() {
       onTid={tid.setTid}
       controls={<p className="text-sm">Kilde til venstre, mottaker til høyre. Tidslinjen bytter fra sirkel til dybderute.</p>}
       scene={
-        <svg viewBox={`0 0 ${8 * cell + 16} ${6 * cell + 16}`} className="h-auto w-full max-w-xl" role="img" aria-label="Idealisert hav med landmaske">
+        <svg viewBox={`0 0 ${8 * cell + 16} ${6 * cell + 16}`} className="block h-auto w-full max-w-full" role="img" aria-label="Idealisert hav med landmaske">
           {M5_DEPTH_M.map((row, r) =>
             row.map((depth, c) => (
               <rect
@@ -455,9 +534,12 @@ export function TsunamiM5() {
                 y={8 + r * cell}
                 width={cell - 2}
                 height={cell - 2}
-                fill={depth === 0 ? "var(--color-muted-foreground)" : "var(--color-primary)"}
-                opacity={depth === 0 ? 0.85 : 0.2 + Math.min(0.6, depth / 8000)}
-              />
+                fill={depth === 0 ? "#8b9aa6" : waterShade(depth)}
+                stroke={depth === 0 ? "#c5d0d6" : WATER_EDGE}
+                strokeWidth="1"
+              >
+                <title>{depth === 0 ? "land" : `${depth} m`}</title>
+              </rect>
             )),
           )}
           {showRoute
@@ -640,26 +722,49 @@ export function TsunamiM7() {
         </>
       }
       scene={
-        <Scene tall={tid.narrow} label="Generisk tettsted ved en fjord">
-          <rect x="0" y="190" width="640" height="90" fill="var(--color-primary)" opacity="0.3" />
-          <rect x="40" y="150" width={scenario === "stor" ? 420 : 220} height="40" fill="var(--color-lava)" opacity="0.35" />
+        <Scene narrow={tid.narrow} label="Generisk tettsted ved en fjord">
+          <rect x="0" y={tid.narrow ? 300 : 190} width={tid.narrow ? 360 : 640} height={tid.narrow ? 120 : 90} fill="var(--color-primary)" opacity="0.3" />
+          <rect
+            x={tid.narrow ? 16 : 40}
+            y={tid.narrow ? 250 : 150}
+            width={scenario === "stor" ? (tid.narrow ? 300 : 420) : tid.narrow ? 160 : 220}
+            height="40"
+            fill="var(--color-lava)"
+            opacity="0.35"
+          />
           {Array.from({ length: 6 }, (_, index) => (
-            <rect key={index} x={60 + index * 60} y="120" width="28" height="28" fill="var(--color-foreground)" opacity={index < (scenario === "stor" ? 6 : 3) ? 1 : 0.35} />
+            <rect
+              key={index}
+              x={(tid.narrow ? 20 : 60) + index * (tid.narrow ? 48 : 60)}
+              y={tid.narrow ? 200 : 120}
+              width={tid.narrow ? 28 : 28}
+              height="28"
+              fill="var(--color-foreground)"
+              opacity={index < (scenario === "stor" ? 6 : 3) ? 1 : 0.35}
+            />
           ))}
-          <rect x={after.schoolExposed ? 300 : 520} y="80" width="40" height="30" fill="var(--color-primary)" />
-          {after.routeMarked ? <path d="M 320 100 L 560 70" stroke="var(--color-foreground)" strokeDasharray="6 4" fill="none" /> : null}
+          <rect
+            x={after.schoolExposed ? (tid.narrow ? 170 : 300) : tid.narrow ? 290 : 520}
+            y={tid.narrow ? 150 : 80}
+            width="40"
+            height="30"
+            fill="var(--color-primary)"
+          />
+          {after.routeMarked ? (
+            <path d={tid.narrow ? "M 190 165 L 310 120" : "M 320 100 L 560 70"} stroke="var(--color-foreground)" strokeDasharray="6 4" fill="none" />
+          ) : null}
           {!after.futureBlocked ? (
             <rect
-              x={scenario === "stor" ? 400 : 200}
-              y="124"
-              width="28"
+              x={scenario === "stor" ? (tid.narrow ? 292 : 400) : tid.narrow ? 16 : 40}
+              y={tid.narrow ? 158 : 86}
+              width="24"
               height="28"
               fill="none"
               stroke="var(--color-lava)"
               strokeDasharray="4 3"
             />
           ) : null}
-          <text x="24" y="28" fill="var(--color-foreground)" fontSize="16">
+          <text x="16" y={tid.narrow ? 40 : 28} fill="var(--color-foreground)" fontSize={tid.narrow ? 22 : 16}>
             {scenario === "stor" ? "Stor sone" : "Liten sone"}
           </text>
         </Scene>

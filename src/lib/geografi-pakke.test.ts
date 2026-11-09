@@ -287,7 +287,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
     const names = parts.filter((part) => part.type === "widget").map((part) => part.id);
     assert.equal(names.length, 10);
     assert.equal(new Set(names).size, 10);
-    const registry = read("../components/poster-body.tsx");
+    const registry = read("../components/poster-widget-renderer.tsx");
     for (const name of names) assert.ok(registry.includes(`${name}:`), name);
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
     assert.doesNotMatch(html, /FIGURPLASSHOLDER|geografi-kap6-redaksjon|figur-6-/);
@@ -307,7 +307,7 @@ describe("Geografi kapittel 6: naturfare (PR D)", () => {
   });
 
   it("begrenser modellene til Vg1 uten å koble inn udokumenterte returperioder", () => {
-    const registry = read("../components/poster-body.tsx");
+    const registry = read("../components/poster-widget-renderer.tsx");
     assert.match(registry, /GeoNaturfareHydrogram:.*HydrographCatchmentModel geografi/);
     assert.doesNotMatch(md, /HydrographCatchmentModel/);
     assert.match(md, /beregner verken flomstørrelse/);
