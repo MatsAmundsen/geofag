@@ -378,7 +378,19 @@ const GeografiSkjelvPlaterSkjultLat = lazy(() => import("@/components/geografi/n
 
 const GeografiFareEksponeringSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiFareEksponering})));
 
+const GeografiFattigdomKartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiFattigdomKart})));
+
+const GeografiPlanetaereGrenserSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiPlanetaereGrenser})));
+
+const GeografiCo2KartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Kart})));
+
+const GeografiCo2SerieSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Serie})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoBaerekraftCo2Serie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2SerieSkjultLat /></Suspense>,
+  GeoBaerekraftCo2Kart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2KartSkjultLat /></Suspense>,
+  GeoBaerekraftPlanetaere: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiPlanetaereGrenserSkjultLat /></Suspense>,
+  GeoBaerekraftFattigdomKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFattigdomKartSkjultLat /></Suspense>,
   GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
   GeoHdiBnp: () => <GeografiHdiBnp />,
   GeoNaturfareFareEksponering: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFareEksponeringSkjultLat /></Suspense>,
