@@ -709,7 +709,7 @@ describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
 describe("Geografi kapittel 9: næringsliv og globalisering", () => {
   const md = read("posts/geo-naering.md");
   const sources = read("kilder-geografi.ts").split('"geo-naering": [')[1].split('"geo-befolkning"')[0];
-  const widgets = ["GeoNaeringStruktur", "GeoNaeringLokalisering", "GeoNaeringRingvirkninger", "GeoNaeringFiskEksport", "GeoNaeringVerdikjede", "GeoNaeringTelefonSteder"];
+  const widgets = ["GeoNaeringTjenesteKart", "GeoNaeringStruktur", "GeoNaeringLokalisering", "GeoNaeringRjukanLokator", "GeoNaeringRingvirkninger", "GeoNaeringFiskEksport", "GeoNaeringVerdikjede", "GeoNaeringTelefonSteder"];
 
   it("dekker sju underkapitler, kompetansemål og tre oppgavelag", () => {
     for (const title of ["Næringsstruktur", "Lokalisering", "Ringvirkninger", "Globalisering", "Internasjonal arbeidsdeling", "Verdikjeder", "Forbruk og ansvar", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz"]) assert.ok(md.includes(`## ${title}\n`), title);
@@ -721,8 +721,8 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     assert.doesNotMatch(md, /## Status|## Planlagte underkapitler|under arbeid|[!<]/i);
   });
 
-  it("har sju figurposisjoner med seks widgets og to skjulte kartmarkører", () => {
-    assert.deepEqual([...md.matchAll(/^\[figur-9-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), ["1", "7"]);
+  it("har åtte widgets og ingen skjulte kartmarkører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-9-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), []);
     assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
     const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
@@ -730,8 +730,8 @@ describe("Geografi kapittel 9: næringsliv og globalisering", () => {
     assert.doesNotMatch(md, /[Ss]e figur 9\.(?:1|6|7)\b/);
   });
 
-  it("har 25 kontrollerte eksterne kilder og henvisninger til alle fagkildene", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 25);
+  it("har 28 kontrollerte eksterne kilder og henvisninger til alle fagkildene", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 28);
     for (const domain of ["ssb.no", "snl.no", "unep.org", "unesco.org", "ilo.org", "worldbank.org", "forbrukertilsynet.no", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["Udir, u.å.", "UNESCO, u.å.", "Moe & Thorsnæs, 2026", "Langseth & Munthe, 2025", "SSB, 2026a", "SSB, 2026b", "Isaksen, 2025", "Onshuus & Idsø, 2025", "Seland, 2024", "Grindheim, 2024", "Onshuus, 2026", "Munthe, 2025", "Vikøren & Pihl, 2025", "Rolstadås, 2024", "UNEP], 2019, 2023", "UNEP, 2020", "Klepp, 2026", "Forbrukertilsynet, 2026", "Vaughan-Whitehead & Pinedo Caro, 2017", "Verdensbanken, 2020"]) assert.ok(md.includes(citation), citation);
     assert.doesNotMatch(sources + md, /Terra Nova|Aunivers|bibliotek/);

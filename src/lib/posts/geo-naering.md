@@ -23,7 +23,9 @@ Etter kapitlet kan vi
 
 Målene bygger på KM485, med støtte i KM481 og KM484 (Udir, u.å.).
 
-[figur-9-1]: # (FIGURPLASSHOLDER 9.1: Kart over andel sysselsatte i tjenesteyting. Kontroller konkret World Bank/ILO-indikator, felles år, manglende verdier, sammenliknbarhet og datasettlisens. Natural Earth-bakgrunn krever konkret filkontroll. Ikke fargelegg manglende data som null.)
+```widget
+GeoNaeringTjenesteKart
+```
 
 ## Næringsstruktur
 
@@ -75,7 +77,9 @@ Etter hvert ble det mulig å overføre elektrisk kraft over større avstander en
 
 Historien hjelper oss å forstå at et lokaliseringsvalg kan forme et sted i mange generasjoner. Bygninger, veier og kompetanse blir del av grunnlaget som senere virksomheter kan bygge videre på. Samtidig kan et område bli sårbart hvis mange arbeidsplasser er avhengige av én dominerende aktivitet. Vi må derfor spørre både hva som trakk industrien dit, og hva som skjedde da vilkårene endret seg. Slik knytter vi lokalisering til omstilling framfor å behandle plasseringen som et engangsvalg (Isaksen, 2025; Moe & Thorsnæs, 2026).
 
-[figur-9-7]: # (FIGURPLASSHOLDER 9.7: StedKart for Rjukan i Tinn, med kraft, industri og transport som dokumenterte geografiske forbindelser. Kontroller konkrete Kartverket-data, historisk tidslag, lisens, tegnforklaring og tekstalternativ. Ingen nåværende sysselsettingsfordeling skal gjettes.)
+```widget
+GeoNaeringRjukanLokator
+```
 
 **Tenk over:** Hvilke deler av Rjukan-historien kan forklares med energitilgang, og hvilke krever andre opplysninger? Hva måtte vi undersøke før vi sammenliknet Rjukan med et annet industristed?
 

@@ -1534,6 +1534,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-naering": [
     {
+      prefix: "Kartverket. (u.å.-a).",
+      italic: "Topografisk norgeskart, WMTS",
+      suffix: ". CC BY 4.0 for benyttede zoomnivåer til og med 11.",
+      href: "https://www.kartverket.no/api-og-data/vilkar-for-bruk",
+    },
+    {
+      prefix: "Kartverket. (u.å.-b).",
+      italic: "Sentralt stedsnavnregister (SSR), åpent søke-API",
+      suffix: " [Datasett]. Søk «Rjukan», «Vemork» og «Mæl», hentet 7. november 2026. CC BY 4.0.",
+      href: "https://ws.geonorge.no/stedsnavn/v1/navn?sok=Rjukan",
+    },
+    {
+      prefix: "Verdensbanken. (2026).",
+      italic: "Employment in services (% of total employment) (modeled ILO estimate) (SL.SRV.EMPL.ZS)",
+      suffix: " [Datasett]. World Development Indicators, 2023, uttrekk 7. november 2026. CC BY 4.0.",
+      href: "https://data.worldbank.org/indicator/SL.SRV.EMPL.ZS",
+    },
+    {
       prefix: "Statistisk sentralbyrå [SSB]. (2026b, 15. mai). ",
       italic: "09283: Eksport av fisk, etter varegruppe, land, statistikkvariabel og år",
       suffix: ". Varegruppe 000, 2025, millioner kroner og tonn. Reviderte, ikke endelige tall. CC BY 4.0.",

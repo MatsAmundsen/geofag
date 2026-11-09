@@ -434,7 +434,13 @@ const GeografiKobberProduksjonSkjultLat = lazy(() => import("@/components/geogra
 
 const GeografiHavsonerFeltSkjultLat = lazy(() => import("@/components/geografi/ressurs-skjulte").then(m => ({default:m.GeografiHavsonerFelt})));
 
+const GeografiTjenesteKartSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiTjenesteKart})));
+
+const GeografiRjukanLokatorSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiRjukanLokator})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoNaeringRjukanLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiRjukanLokatorSkjultLat /></Suspense>,
+  GeoNaeringTjenesteKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTjenesteKartSkjultLat /></Suspense>,
   GeoRessursHavsoner: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiHavsonerFeltSkjultLat /></Suspense>,
   GeoRessursKobber: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKobberProduksjonSkjultLat /></Suspense>,
   GeoKlimaBangladeshLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBangladeshLokatorSkjultLat /></Suspense>,
