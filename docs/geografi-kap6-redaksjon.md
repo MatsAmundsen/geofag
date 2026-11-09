@@ -23,14 +23,14 @@ Skrevet 6. november 2026. Branch `geografi-kap6`, stablet på `origin/geografi-k
 |---|---|---|
 | 6.1 | Skjult plassholder; lenke til USGS-kilde i brødtekst | Globalt jordskjelv-/plategrensekart må produseres med tegnforklaring, periode og kreditering. USGS-bildet er ikke importert. |
 | 6.2 | Skjult plassholder; teksten fungerer selvstendig | To samfunn med lik fare og ulik eksponering/sårbarhet. Ingen oppdiktet risikokalkulator. |
-| 6.3 | `SkredSonerDiagram` med egen Vg1-bildetekst | Gjenbrukt SVG; ikke et lokalt faresonekart. |
-| 6.4 | `KvikkleireDiagram` med fire statiske trinn og Vg1-bildetekst | Neste-steg-kontroll og Gjerdrum-lokatorkart gjenstår, med egen skjult tilleggsmarkør. Skissen er ikke et terrengkart over Gjerdrum. |
+| 6.3 | `VolcanicHazardsDiagram geografi`, fem enklere kort | Lava, pyroklastisk strøm, aske, lahar, gass. Gamle G1-kort med historiske tall brukes ikke i Vg1; G1-standardvisningen beholdes. |
+| 6.4 | `SkredSonerDiagram` med egen Vg1-bildetekst | Gjenbrukt SVG; ikke et lokalt faresonekart. |
 | 6.5 | `FjellskredBolgeDiagram`, Vg1-bildetekst | Eksisterende avrundede 60 m forklares mot NVEs maksimum 61 m rundt fjorden i 1934, ikke lik høyde i bygdene. Ingen prognose eller lokatorkart. |
-| 6.6 | `HydrogramFigur`, eget tittel-/kildesett | Bevisst erstatning for planens `HydrographCatchmentModel`: den sistnevnte viser returperiodeklasser uten nødvendig dokumentert hydrologisk kalibrering. Gjenbrukt enklere modell viser kvalitative kurver uten måledata, flomberegning eller returperioder. |
-| 6.7 | `GeografiOrkanSnittFigur`, klonet Vg1-definisjon | Samme tegning og kontroller, enklere ord, ingen hard temperatur-/dybdeterskel; original G2-definisjon beholdes. |
-| 6.8 | `GeografiStormfloFigur`, klonet Vg1-definisjon | Skiller værbidrag fra tidevann og bølger. G2s Ekman-kartbryter vises ikke i Vg1; original beholdes. |
-| 6.9 | Skjult plassholder; NVE-kartoppgave kan brukes nå | Kommune, offisielle farelag, dato, tegnforklaring og lisens/kreditering må velges. Farelag med ulike definisjoner skal ikke gis en uriktig felles sannsynlighetsskala. |
-| 6.10 | `VolcanicHazardsDiagram geografi`, fem enklere kort | Lava, pyroklastisk strøm, aske, lahar, gass. Gamle G1-kort med historiske tall brukes ikke i Vg1; G1-standardvisningen beholdes. |
+| 6.6 | `KvikkleireDiagram` med fire statiske trinn og Vg1-bildetekst | Neste-steg-kontroll og Gjerdrum-lokatorkart gjenstår, med egen skjult tilleggsmarkør. Skissen er ikke et terrengkart over Gjerdrum. |
+| 6.7 | `HydrogramFigur`, eget tittel-/kildesett | Bevisst erstatning for planens `HydrographCatchmentModel`: den sistnevnte viser returperiodeklasser uten nødvendig dokumentert hydrologisk kalibrering. Gjenbrukt enklere modell viser kvalitative kurver uten måledata, flomberegning eller returperioder. |
+| 6.8 | `GeografiOrkanSnittFigur`, klonet Vg1-definisjon | Samme tegning og kontroller, enklere ord, ingen hard temperatur-/dybdeterskel; original G2-definisjon beholdes. |
+| 6.9 | `GeografiStormfloFigur`, klonet Vg1-definisjon | Skiller værbidrag fra tidevann og bølger. G2s Ekman-kartbryter vises ikke i Vg1; original beholdes. |
+| 6.10 | Skjult plassholder; NVE-kartoppgave kan brukes nå | Kommune, offisielle farelag, dato, tegnforklaring og lisens/kreditering må velges. Farelag med ulike definisjoner skal ikke gis en uriktig felles sannsynlighetsskala. |
 
 Tre hele figurer og ett tillegg gjenstår. Plassholderne er ubrukte Markdown-lenkedefinisjoner og vises ikke til elever. Elevene henvises bare til figurer som faktisk finnes. Kart og store nye komponenter er ikke bygd som del av tekstleveransen.
 
@@ -44,7 +44,7 @@ Alle URL-er og fullstendige oppføringer ligger i kapitlets liste i `src/lib/kil
 
 ## Til vurdering hos Mats
 
-Ingen faglige spørsmål blokkerer teksten. Mats bør godkjenne at den kvalitative `HydrogramFigur` erstatter den planlagte modellen med udokumenterte returperiodeetiketter, og at 6.4 foreløpig leveres som statisk firetrinnsfigur. DesignBOT må ferdigstille kartene/risikofiguren og velge kommune for 6.9. Nepal-casen bør vedlikeholdes årlig og oppdateres hvis årsaksutredningen endres.
+Ingen faglige spørsmål blokkerer teksten. Mats bør godkjenne at den kvalitative `HydrogramFigur` erstatter den planlagte modellen med udokumenterte returperiodeetiketter, og at 6.6 foreløpig leveres som statisk firetrinnsfigur. DesignBOT må ferdigstille kartene/risikofiguren og velge kommune for 6.10. Nepal-casen bør vedlikeholdes årlig og oppdateres hvis årsaksutredningen endres.
 
 ## Validering
 

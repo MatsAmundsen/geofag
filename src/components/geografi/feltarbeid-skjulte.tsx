@@ -119,7 +119,7 @@ export function GeografiMetodevalg() {
 export function GeografiFeilkilder() {
   return (
     <Skjema
-      heading="Figur 2.7 – Fra feilkilde til forbedring"
+      heading="Figur 2.8 – Fra feilkilde til forbedring"
       caption="Egen begrepsmodell med tiltak, ikke en beregnet kvalitets- eller sikkerhetsskår (Grønmo, 2024, 2025; Svartdal, 2025)."
       ledd={[
         [
@@ -142,7 +142,7 @@ export function GeografiFeilkilder() {
 export function GeografiFeltetikk() {
   return (
     <Skjema
-      heading="Figur 2.8 – Stoppunkter før og under feltarbeidet"
+      heading="Figur 2.6 – Stoppunkter før og under feltarbeidet"
       caption="Egen sikkerhets- og etikkmodell uten automatisk godkjenning. Læreren må vurdere planen, og endrede forhold krever ny vurdering (RGS, u.å.-c; FEK, 2019; Datatilsynet, 2020)."
       ledd={[
         ["Før avreise", "Avklar ansvar, fare, tiltak og avbruddskriterier."],
@@ -171,7 +171,7 @@ function EgenSammenlikning({ mikro = false }: { mikro?: boolean }) {
       <h3 id={id} className="text-xl font-semibold">
         {mikro
           ? "Figur 2.9 – Undersøk egne mikroklimadata"
-          : "Figur 2.6 – Fra egen feltlogg til sammenlikning"}
+          : "Figur 2.7 – Fra egen feltlogg til sammenlikning"}
       </h3>
       <p>
         Ingen verdier er forhåndsutfylt. Registrer tre egne temperaturmålinger fra hver av to
