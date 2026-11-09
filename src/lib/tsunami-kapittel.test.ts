@@ -85,16 +85,59 @@ describe("tsunami models", () => {
     assert.equal(fenceCount(injectPosterWidgets(wave), "TsunamiM2"), 1);
   });
 
-  it("merker gangtid, Green-tilnærming og at modellene ikke er en faresone", () => {
-    const source = readFileSync(join(lib, "..", "components", "diagrams", "tsunami-modeller.tsx"), "utf8");
-    assert.match(source, /Andel av gangtid/);
-    assert.match(source, /Bølgelengde på valgt dyp/);
-    assert.match(source, /Bølgelengde ved markøren/);
-    assert.match(source, /ikke-brytende langbølge/);
-    assert.match(source, /Ikke oppskylling eller faresone/);
-    assert.match(source, /4-koblet rutenett/);
-    assert.match(source, /Lokalt tiltak/);
-    assert.match(source, /Fremtidig utbygging i sonen: stanset/);
+  it("setter M1 etter kildeforklaringen og M3 etter måledefinisjonene, også ved gjeninnsetting", () => {
+    const wave = readSeed("jordskjelv-naturfare.md");
+    const order = (markdown: string, before: string, id: string, after: string) => {
+      const a = markdown.indexOf(before);
+      const f = markdown.indexOf(`\`\`\`widget\n${id}\n\`\`\``);
+      const b = markdown.indexOf(after);
+      assert.ok(a >= 0 && f > a && b > f, `${id} står mellom «${before}» og «${after}»`);
+    };
+    const m1Before = "Modellen viser en idealisert kilde, ikke en rekonstruksjon";
+    const m1After = "Magnituden alene er ikke nok";
+    const m3Before = "Modellen er en begrepsmodell og gir ikke lokale flomnivåer.";
+    const m3After = "NOAA skriver at de fleste oppskyllinger";
+    order(wave, m1Before, "TsunamiM1", m1After);
+    order(wave, m3Before, "TsunamiM3", m3After);
+    const stripped = wave.replace(/```widget\nTsunamiM[13]\n```\n*/g, "");
+    const injected = injectPosterWidgets(stripped);
+    order(injected, m1Before, "TsunamiM1", m1After);
+    order(injected, m3Before, "TsunamiM3", m3After);
+    // En eldre tekst uten innledningene får likevel modellene på samme faglige sted.
+    const older = stripped
+      .replace(/I modell M1 kan du følge[^\n]*\n\n/, "")
+      .replace(/Bruk modell M3 til å skille[^\n]*\n\n/, "");
+    const olderInjected = injectPosterWidgets(older);
+    order(olderInjected, "har alle noe å si for hvor stor tsunamien kan bli", "TsunamiM1", m1After);
+    order(olderInjected, "er hvor langt inn over land vannet går, målt vannrett.", "TsunamiM3", m3After);
+    for (const id of ["TsunamiM1", "TsunamiM3"]) assert.equal(fenceCount(olderInjected, id), 1, `eldre ${id}`);
+  });
+
+  it("eksporterer M1–M7 og merker forbehold i de nye modellene", () => {
+    const diagrams = join(lib, "..", "components", "diagrams");
+    const entry = readFileSync(join(diagrams, "tsunami-modeller.tsx"), "utf8");
+    for (let k = 1; k <= 7; k++) assert.match(entry, new RegExp(`as TsunamiM${k}\\b`), `TsunamiM${k}`);
+    const model = (name: string) => readFileSync(join(diagrams, "tsunami", name), "utf8");
+    assert.match(model("m3-runup.tsx"), /ikke et farekart/);
+    for (const name of ["m1-source.tsx", "m2-shoal.tsx", "m3-runup.tsx"]) {
+      assert.match(model(name), /forstørret ca\./, `${name} merker forstørrelsen`);
+    }
+    // M2 holder seg til kapitlets grense: fart, bølgelengde og kvalitativ grunning, uten Greens lov.
+    const m2 = model("m2-shoal.tsx");
+    assert.equal(/Green/.test(m2), false);
+    assert.match(m2, /Bølgelengde på valgt dyp/);
+    assert.match(m2, /Bølgelengde ved markøren/);
+    assert.match(m2, /ikke-brytende langbølge/);
+    assert.match(m2, /Ikke oppskylling eller faresone/);
+    assert.equal(/greenRatio/.test(model("sim/profiles.ts")), false);
+    // M3 har fire atskilte mål, målt fra havnivået i ro.
+    const m3 = model("m3-runup.tsx");
+    for (const word of ["Bølgehøyde", "Oppskylling", "Oversvømmelsesdybde", "Inntrenging", "havnivået i ro"]) {
+      assert.match(m3, new RegExp(word), word);
+    }
+    assert.match(model("m5-ocean.tsx"), /Ikke oppskylling/);
+    assert.match(model("m7-risk.tsx"), /ikke en faresone/);
+    assert.match(model("m7-risk.tsx"), /ikke en godkjent evakueringsrute/);
   });
 });
 
