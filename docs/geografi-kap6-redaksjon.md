@@ -1,5 +1,7 @@
 # Geografi kapittel 6 – redaksjonell overlevering, PR D
 
+Oppdatert figurstatus står i `geografi-kap6-mats-valg.md` (Mats sine valg) og `geografi-kap6-skjulte.md` (de skjulte figurene). Resten av dette notatet dokumenterer første leveranse, og figurtabellene under kan derfor være utdatert.
+
 Skrevet 6. november 2026. Branch `geografi-kap6`, stablet på `origin/geografi-kap2` (8fa1599). Kun lokal commit; forelder håndterer push og utkast-PR med base `geografi-kap2`. Ingen deploy eller produksjonsendring er utført.
 
 ## Leveransen
