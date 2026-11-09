@@ -7,3 +7,5 @@ Alle ni eldre markører er erstattet. 2.0 og 2.5 er uttrykkelig skjematiske utva
 2.6 og 2.9 er tomme lokale arbeidsmodeller for elevens egne målinger, ikke nye datasett. Ingen øvingstall eller empiriske verdier er forhåndsutfylt. Modellen beregner gjennomsnitt og forskjell først når alle målefeltene er utfylt med endelige tall, og viser både tabell og punktfigur. Tid, stedkoder, metode og forbehold må dokumenteres separat i feltloggen. Det opprinnelige, eksplisitt merkede regneeksemplet i brødteksten er bevart, ikke presentert som ekte observasjoner.
 
 Alle tekstkilder finnes allerede i kilder-geografi.ts. Ingen ekstern grafikk er kopiert, ingen nye private data samlet, ingen lagring eller automatisk risikogodkjenning. Geofag-standardvisningene er urørt.
+
+Fullført etter stopp 9. november 2026 (Europe/Oslo). Typecheck, ESLint, relevante tester og build bestått. SSR-røyktest av alle ni komponenter uten NaN og med unike ID-er.
