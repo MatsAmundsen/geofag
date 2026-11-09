@@ -345,6 +345,54 @@ function TsunamiLaster({ children }: { children: JSX.Element }) {
   return <Suspense fallback={<p className="text-sm text-muted-foreground">Laster modellen…</p>}>{children}</Suspense>;
 }
 
+const GeografiMonsterkartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMonsterkart})));
+
+const GeografiMercatorSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMercator})));
+
+const GeografiGradnettSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiGradnett})));
+
+const GeografiKartSammenlikningSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiKartSammenlikning})));
+
+const GeografiMentaltKartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiMentaltKart})));
+
+const GeografiBlueMarbleSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiBlueMarble})));
+
+const GeografiGisLagSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiGisLag})));
+
+const GeografiSnowKartSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiSnowKart})));
+
+const GeografiTemaValgSkjultLat = lazy(() => import("@/components/geografi/verktoy-skjulte").then(m => ({default:m.GeografiTemaValg})));
+
+const GeografiUtvalgSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiUtvalg})));
+
+const GeografiFeltprosessSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeltprosess})));
+
+const GeografiPlanmalSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiPlanmal})));
+
+const GeografiMetodevalgSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMetodevalg})));
+
+const GeografiMaalepunkterSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMaalepunkter})));
+
+const GeografiFeltBearbeidingSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeltBearbeiding})));
+
+const GeografiFeilkilderSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeilkilder})));
+
+const GeografiFeltetikkSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiFeltetikk})));
+
+const GeografiMikroklimaEgetSkjultLat = lazy(() => import("@/components/geografi/feltarbeid-skjulte").then(m => ({default:m.GeografiMikroklimaEget})));
+
+const GeografiSkjelvPlaterSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiSkjelvPlater})));
+
+const GeografiFareEksponeringSkjultLat = lazy(() => import("@/components/geografi/naturfare-skjulte").then(m => ({default:m.GeografiFareEksponering})));
+
+const GeografiFattigdomKartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiFattigdomKart})));
+
+const GeografiPlanetaereGrenserSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiPlanetaereGrenser})));
+
+const GeografiCo2KartSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Kart})));
+
+const GeografiCo2SerieSkjultLat = lazy(() => import("@/components/geografi/baerekraft-skjulte").then(m => ({default:m.GeografiCo2Serie})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoIndreTidsskala: () => <GeografiTidsskala />,
   GeoIndreBerggrunn: () => <GeografiBerggrunnSkisse />,
@@ -353,11 +401,35 @@ const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
   GeoIndreTsunami: () => <GeografiTsunamiSteg />,
   GeoIndreRiftHav: () => <GeografiRiftHav />,
   GeoIndrePlateKart: () => <GeografiPlateKart />,
+  GeoBaerekraftCo2Serie: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2SerieSkjultLat /></Suspense>,
+  GeoBaerekraftCo2Kart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiCo2KartSkjultLat /></Suspense>,
+  GeoBaerekraftPlanetaere: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiPlanetaereGrenserSkjultLat /></Suspense>,
+  GeoBaerekraftFattigdomKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFattigdomKartSkjultLat /></Suspense>,
   GeoLokalFotavtrykk: () => <GeografiLokalFotavtrykk />,
   GeoHdiBnp: () => <GeografiHdiBnp />,
+  GeoNaturfareFareEksponering: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFareEksponeringSkjultLat /></Suspense>,
+  GeoNaturfareSkjelvPlater: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSkjelvPlaterSkjultLat /></Suspense>,
   GeoNaturfareGjerdrumKart: () => <GeografiGjerdrumFarekart />,
   GeoNaturfareKvikkleireSteg: () => <GeografiKvikkleireSteg />,
+  GeoFeltMikroklimaEget: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMikroklimaEgetSkjultLat /></Suspense>,
+  GeoFeltEtikk: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeltetikkSkjultLat /></Suspense>,
+  GeoFeltFeilkilder: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeilkilderSkjultLat /></Suspense>,
+  GeoFeltBearbeiding: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeltBearbeidingSkjultLat /></Suspense>,
+  GeoFeltMaalepunkter: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMaalepunkterSkjultLat /></Suspense>,
+  GeoFeltMetodevalg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMetodevalgSkjultLat /></Suspense>,
+  GeoFeltPlanmal: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiPlanmalSkjultLat /></Suspense>,
+  GeoFeltProsess: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiFeltprosessSkjultLat /></Suspense>,
+  GeoFeltUtvalg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiUtvalgSkjultLat /></Suspense>,
   GeoFeltloggVg1: () => <GeografiFeltlogg />,
+  GeoVerktoyTemaValg: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTemaValgSkjultLat /></Suspense>,
+  GeoVerktoySnow: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiSnowKartSkjultLat /></Suspense>,
+  GeoVerktoyGisLag: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGisLagSkjultLat /></Suspense>,
+  GeoVerktoyBlueMarble: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiBlueMarbleSkjultLat /></Suspense>,
+  GeoVerktoyMentalt: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMentaltKartSkjultLat /></Suspense>,
+  GeoVerktoyKartSammenlikning: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiKartSammenlikningSkjultLat /></Suspense>,
+  GeoVerktoyGradnett: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiGradnettSkjultLat /></Suspense>,
+  GeoVerktoyMercator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMercatorSkjultLat /></Suspense>,
+  GeoVerktoyMonster: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMonsterkartSkjultLat /></Suspense>,
   GeoVerktoyTopokart: () => <GeografiTopokart />,
   GeoVerktoyGallPeters: () => <GeografiGallPeters />,
   // Pakke A: bestilte figurer (plassholdere i utviklingsmodus).

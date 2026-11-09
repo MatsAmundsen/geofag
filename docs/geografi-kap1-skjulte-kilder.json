@@ -1,0 +1,24 @@
+{
+  "kontroll": "2026-11-07",
+  "kart": "Natural Earth 5.1.1, Public Domain",
+  "filer": [
+    {
+      "fil": "snow-kolera-pd.webp",
+      "url": "https://commons.wikimedia.org/wiki/File:Snow-cholera-map-1.jpg",
+      "lisens": "Public Domain",
+      "sha256": "d414b5ea0bbcc8c911dd9f3514486a381fbf9c3c6bf89de48ad18ee099cc6d34"
+    },
+    {
+      "fil": "blue-marble-2002.webp",
+      "url": "https://assets.science.nasa.gov/content/dam/science/esd/climate/2023/12/Blue-marble_700x525.jpg",
+      "lisens": "NASA government work, Public Domain in USA, media policy checked",
+      "sha256": "f10c8bdba4cd7948a954c8fb73342f9da8f2fabfd1d813ef3632c90b7b203f9b"
+    },
+    {
+      "fil": "gjende-bla-karttegn.png",
+      "url": "https://www.kartverket.no/",
+      "lisens": "CC BY 4.0, derived from documented zoom 11 raster",
+      "sha256": "cea97e8d70e90bdeb2a8c22265da3c3bc01f46e9e5c0a5974543ed83338dcf7c"
+    }
+  ]
+}
