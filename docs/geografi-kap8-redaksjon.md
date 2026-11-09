@@ -105,4 +105,3 @@ Typesjekk, berørt ESLint, 50 relevante tester, SSR-smoke og produksjonsbygg bes
 ### Før godkjenning
 
 Se `docs/geografi-kap8-redaksjon.md` for kilder, figurstatus og avklaringer om norsk fotavtrykksdata og eventuell lokal kalkulator. Stablet på kapittel 6, PR 298. Ingen merge før Mats har lest og godkjent.
-
