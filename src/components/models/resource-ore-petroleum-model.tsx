@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Arrow, C, Diagram, L } from "@/components/diagrams/svg-kit";
 import { Button } from "@/components/ui/button";
-import { ModelFrame, ModelPanel, ModelTab, ModelNote } from "./model-chrome";
+import { ModelFrame, ModelPanel, ModelTab } from "./model-chrome";
 
 export function OreFormationModel() {
   type OreMode = "hydrothermal" | "magmatic" | "sedimentary";
@@ -20,7 +21,7 @@ export function OreFormationModel() {
     : fluidTempC > 200 ? "Intermediær sink-bly-sone (Sfaleritt + Galenitt)"
     : "Grunn lavtemperatur-sone (Gull, sølv, kvartsårer, barytt)";
 
-  const precipitationEfficiency = Math.round((fluidTempC / 450) * (fracturePermeability / 100) * 100);
+  const _precipitationEfficiency = Math.round((fluidTempC / 450) * (fracturePermeability / 100) * 100);
 
   return (
     <ModelFrame
@@ -321,7 +322,11 @@ export function OreFormationModel() {
   );
 }
 
-export function PetroleumTrapModel() {
+export function PetroleumTrapModel({ geografi = false, initialStep = 0 }: { geografi?: boolean; initialStep?: number } = {}) {
+  return geografi ? <GeografiPetroleumSteg initialStep={initialStep} /> : <PetroleumTrapGeofag />;
+}
+
+function PetroleumTrapGeofag() {
   type TrapType = "anticline" | "fault" | "salt_dome" | "stratigraphic";
   const [trapType, setTrapType] = useState<TrapType>("anticline");
 
@@ -538,4 +543,43 @@ export function PetroleumTrapModel() {
       </div>
     </ModelFrame>
   );
+}
+
+const PETROLEUM_STEG = [
+  ["Kilde", "Organisk materiale avsettes sammen med sedimenter under oksygenfattige forhold. Materialet blir del av en kildebergart."],
+  ["Omdanning", "Ved dypere begravelse og oppvarming kan organisk materiale omdannes til olje og gass gjennom millioner av år."],
+  ["Migrasjon", "Petroleum kan bevege seg ut av kildebergarten og gjennom gjennomtrengelige bergarter. Olje og gass er lettere enn vann."],
+  ["Reservoar", "Olje og gass kan samles i små porer i reservoarbergarten. Fargefeltene viser poreinnhold, ikke store underjordiske innsjøer."],
+  ["Felle og takbergart", "En egnet felle og tett takbergart kan stanse videre bevegelse. De må være på plass når petroleumen kommer fram."],
+] as const;
+
+function GeografiPetroleumSteg({ initialStep }: { initialStep: number }) {
+  const [step, setStep] = useState(Math.max(0, Math.min(4, Math.trunc(initialStep))));
+  return <div className="space-y-4">
+    <div role="group" aria-label="Velg forklaringstrinn i petroleumssystemet" className="flex flex-wrap gap-2">
+      {PETROLEUM_STEG.map(([title], i) => <Button key={title} variant={step === i ? "default" : "secondary"} aria-pressed={step === i} onClick={() => setStep(i)}>{i + 1}. {title}</Button>)}
+    </div>
+    <p aria-live="polite" className="rounded-lg border border-border p-4"><strong>{step + 1}. {PETROLEUM_STEG[step][0]}: </strong>{PETROLEUM_STEG[step][1]}</p>
+    <Diagram title="Prinsippsnitt av en foldet petroleumsfelle med kildebergart, migrasjon, reservoar og takbergart" heading="Figur 7.4 – Fem trinn gjennom et petroleumssystem"
+      caption="Forenklet geometri tilpasset fra Geofag-modellen. Forklaringstrinnene er ikke en full geologisk tidslinje. Ingen mengder, temperaturgrenser eller lekkasjeprosenter beregnes. Fargeflatene i reservoaret illustrerer væske i porer, ikke hulrom med innsjøer. Kilde: Norskpetroleum (2024)." viewBox="0 0 540 350" wide scroll>
+      {(m) => <>
+        <rect x="20" y="45" width="500" height="265" fill="#182732" />
+        <path d="M20 130 Q270 50 520 130 L520 155 Q270 85 20 155 Z" fill={step === 4 ? C.teal : "#4b6570"} stroke={C.teal} />
+        <path d="M20 155 Q270 85 520 155 L520 230 Q270 160 20 230 Z" fill={C.rain} fillOpacity="0.55" stroke={C.sand} />
+        <path d="M140 129 Q270 92 400 129 L400 153 Q270 115 140 153 Z" fill={C.sand} opacity={step >= 3 ? 0.9 : 0.25} />
+        <path d="M140 153 Q270 115 400 153 L400 179 Q270 141 140 179 Z" fill={C.warm} opacity={step >= 3 ? 0.9 : 0.25} />
+        <path d="M20 270 Q270 235 520 270 L520 310 L20 310 Z" fill={step <= 1 ? "#766053" : "#423831"} />
+        <Arrow d="M80 260 Q90 210 160 170" marker={m.warm} color={C.warm} width={step === 2 ? 5 : 2} />
+        <L x="270" y="32" anchor="middle" size={16}>Foldet felle, ikke et bestemt norsk felt</L>
+        <L x="270" y="71" anchor="middle" size={15}>Tett takbergart</L>
+        <L x="270" y="214" anchor="middle" size={14}>Porøs reservoarbergart</L>
+        <L x="105" y="242" size={13}>Migrasjon</L>
+        <L x="270" y="292" anchor="middle" size={15}>Kildebergart</L>
+        <L x="270" y="338" anchor="middle" size={13}>Farger: gass øverst, olje under, vann lenger nede i porene.</L>
+      </>}
+    </Diagram>
+    <details className="rounded-lg border border-border p-4"><summary className="cursor-pointer font-semibold">Les alle fem trinn uten å bytte visning</summary>
+      <ol className="list-decimal space-y-2 pl-5 pt-3">{PETROLEUM_STEG.map(([title, text]) => <li key={title}><strong>{title}: </strong>{text}</li>)}</ol>
+    </details>
+  </div>;
 }

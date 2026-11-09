@@ -1,0 +1,120 @@
+{
+  "kontrollert": "2026-11-06",
+  "omrade": "Fosen, reindriftsdistrikt Fovsen-Njaarke/Fosen i bbox 9.4–11.4 Ø, 63.4–64.6 N. Hele polygoner beholdt, ikke klippet til utvalgskassen.",
+  "vinterbeite": {
+    "query": "https://wfs02.nibio.no/cgi-bin/rein/vinterbeite?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms%3AVinterbeite&srsName=EPSG%3A3857&bbox=1046403.2134567716%2C9199010.750975417%2C1269042.1950433187%2C9503789.85364963%2CEPSG%3A3857&count=1000",
+    "matched": 187,
+    "fosen": 63,
+    "metadata": "https://kartkatalog.geonorge.no/api/getdata/ff879537-4031-4e80-bff0-87d0e0638a7f",
+    "lisens": "NLOD 2.0, primærmetadata",
+    "kode9": "Senvinterland",
+    "kode10": "Tidlig vinterland",
+    "bearbeiding": "GML EPSG3857 til GeoJSON4326, egne matematiske koordinatomregninger, 6 desimaler. Bare Fosen-distriktets objekter og nødvendige felter.",
+    "sha256": "8e9e74b66ed38f36e98fb826a936b503839f057dde4fa23e730c31efd71602a7"
+  },
+  "vind": {
+    "query": "https://kart.nve.no/enterprise/rest/services/Vindkraft2/MapServer/3/query?where=anleggnavn+LIKE+%27%25Storheia%25%27+OR+anleggnavn+LIKE+%27%25Roan%25%27&outFields=anleggsnr%2Canleggnavn%2Cstatus%2Cforsteidriftdato&outSR=4326&f=geojson&maxAllowableOffset=0.0005&geometryPrecision=5",
+    "objekter": 3,
+    "anlegg": 2,
+    "lisens": "NLOD, NVEs Kartdata-vilkår",
+    "vilkar": "https://www.nve.no/kart/kartdata/",
+    "statusDomene": "D = Drift, kontrollert i layer 3-metadata",
+    "generalisering": "maxAllowableOffset 0.0005 grader, geometryPrecision 5",
+    "sha256": "07071f9442d655ff67367b13a448263631ca9fbe3204981db07d34654d350214"
+  },
+  "statistikk": {
+    "produksjon": {
+      "tabell": "08307",
+      "query": {
+        "query": [
+          {
+            "code": "ContentsCode",
+            "selection": {
+              "filter": "item",
+              "values": [
+                "ProdTotal",
+                "VannKraft",
+                "VindKraft",
+                "Solkraft",
+                "VarmeKraft"
+              ]
+            }
+          },
+          {
+            "code": "Tid",
+            "selection": {
+              "filter": "item",
+              "values": [
+                "2020",
+                "2021",
+                "2022",
+                "2023",
+                "2024",
+                "2025"
+              ]
+            }
+          }
+        ],
+        "response": {
+          "format": "json-stat2"
+        }
+      },
+      "enhet": "GWh",
+      "sha256": "5e02b7e634cfdeea6949b30f20bc55d2a633f9f2ec5982db4ad4109070147195"
+    },
+    "arbeidsplasser": {
+      "tabell": "13470",
+      "query": {
+        "query": [
+          {
+            "code": "Region",
+            "selection": {
+              "filter": "item",
+              "values": [
+                "18",
+                "55"
+              ]
+            }
+          },
+          {
+            "code": "NACE2007",
+            "selection": {
+              "filter": "item",
+              "values": [
+                "03",
+                "06",
+                "09.1"
+              ]
+            }
+          },
+          {
+            "code": "ContentsCode",
+            "selection": {
+              "filter": "item",
+              "values": [
+                "SysselsatteArb"
+              ]
+            }
+          },
+          {
+            "code": "Tid",
+            "selection": {
+              "filter": "item",
+              "values": [
+                "2025"
+              ]
+            }
+          }
+        ],
+        "response": {
+          "format": "json-stat2"
+        }
+      },
+      "tid": "4. kvartal 2025",
+      "enhet": "sysselsatte personer etter arbeidssted",
+      "forbehold": "Alle ett- og to-tall i tabellen er erstattet av 0 eller 3 av SSB. Summer ved aggregasjon kan avvike. Tallene følger SSBs arbeidsstedsregistrering, ikke antall personer i de enkelte anleggene.",
+      "sha256": "e290b838c001e780f116e5538a0415f60f0782446b48e6374c3a32a8ab6aef5b"
+    },
+    "lisens": "SSB CC BY 4.0"
+  }
+}

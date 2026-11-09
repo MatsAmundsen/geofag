@@ -76,7 +76,7 @@ describe("Geografi skjelett (PR A)", () => {
       assert.equal(md.includes("!"), false);
       assert.equal(md.includes("<"), false);
       assert.match(md, /Kompetansemål i Geografi/);
-      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima"].includes(c.slug)) assert.match(md, /under arbeid/i);
+      if (!["geo-verktoy", "geo-feltarbeid", "geo-naturfare", "geo-baerekraft", "geo-indre-krefter", "geo-landskap", "geo-klima", "geo-ressurser"].includes(c.slug)) assert.match(md, /under arbeid/i);
     });
   }
 
@@ -164,7 +164,7 @@ describe("Geografi kapittel 1: fagtekst (PR B)", () => {
     assert.match(read("post-store.server.ts"), /COPY_RESEEDS.push\(\.\.\.COPY_RESEEDS_B\)/);
     const kapitler = read("geografi-kapitler.ts");
     assert.match(kapitler, /path: "verktoy",\s+tekstKlar: true/);
-    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 7);
+    assert.equal((kapitler.match(/tekstKlar: true/g) ?? []).length, 8);
     assert.match(read("../components/geografi/kapittel-side.tsx"), /!kapittel.tekstKlar/);
     const header = read("../components/site-header.tsx");
     assert.match(header, /to: "\/geografi\/\$kapittel" as const/);
@@ -621,10 +621,85 @@ describe("Geografi kapittel 5: vær, klima og klimaendringer", () => {
     assert.match(md, /kort, tenkt kommunalt beslutningsnotat/);
   });
 
-  it("har eget reseed og tekststatus mens kapittel 7 fortsatt er skjelett", () => {
+  it("har eget reseed og tekststatus mens kapittel 9 fortsatt er skjelett", () => {
     assert.match(read("copy-reseeds-b.ts"), /flag: "geo-klima-kap5-2026-11-06",\s+slug: "geo-klima"/);
     assert.match(read("geografi-kapitler.ts"), /path: "klima",\s+tekstKlar: true/);
-    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "ressurser",\s+tekstKlar: true/);
-    assert.match(read("posts/geo-ressurser.md"), /under arbeid/i);
+    assert.doesNotMatch(read("geografi-kapitler.ts"), /path: "naering",\s+tekstKlar: true/);
+    assert.match(read("posts/geo-naering.md"), /under arbeid/i);
+  });
+});
+
+describe("Geografi kapittel 7: naturressurser og arealbruk", () => {
+  const md = read("posts/geo-ressurser.md");
+  const sources = read("kilder-geografi.ts").split('"geo-ressurser": [')[1].split('"geo-baerekraft"')[0];
+  const widgets = ["GeoRessursFornyelse", "GeoRessursKobber", "GeoRessursBergartBrudd", "GeoRessursPetroleum", "GeoRessursKraftproduksjon", "GeoRessursVindAvveining", "GeoRessursFosenKart", "GeoRessursHavsoner", "GeoRessursSysselNord"];
+
+  it("dekker åtte underkapitler og lærings- og oppgavemalen", () => {
+    for (const title of ["Hva er ressurser", "Fornybare ressurser", "Ressurser i berggrunnen", "Olje og gass", "Energi", "Arealbruk og konflikter", "Sápmi og reindrift", "Nordområdene", "Læringsmål", "Oppsummering", "Begreper", "Spørsmål", "Hva tror du?", "Oppgaver", "Quiz", "KILDER"])
+      assert.ok(md.includes(`## ${title}\n`), title);
+    assert.ok(md.indexOf("Kompetansemål") < md.indexOf("## En vindpark og et vinterbeite"));
+    assert.match(md, /Hovedmål, KM481/);assert.match(md, /KM480/);assert.match(md, /KM485/);
+    assert.ok(md.indexOf("I dette kapitlet skal vi") < md.indexOf("## Læringsmål"));
+    assert.equal((md.match(/^### \d\. /gm) ?? []).length, 6);
+    assert.equal((md.match(/^c\) /gm) ?? []).length, 6);
+    assert.doesNotMatch(md, /under arbeid|Planlagte underkapitler|[!<]/i);
+  });
+
+  it("fordeler ni figurposisjoner på ni figurer uten skjulte markører", () => {
+    assert.deepEqual([...md.matchAll(/^\[figur-7-(\d+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => Number(m[1])).sort((a, b) => a - b), []);
+    for (const id of widgets) assert.ok(read("../components/poster-widget-renderer.tsx").includes(`${id}: () =>`), id);
+    assert.deepEqual(parsePosterMarkdown(md).filter((part) => part.type === "widget").map((part) => part.id), widgets);
+    const html = renderToStaticMarkup(createElement(ReactMarkdown, { children: md }));
+    assert.doesNotMatch(html, /FIGURPLASSHOLDER|figur-7-/);
+    assert.doesNotMatch(md, /[Ss]e figur 7\.(?:2|5|7|8|9)\b/);
+  });
+
+  it("registrerer 43 eksterne kilder uten bibliotek eller lærebok", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 43);
+    for (const domain of ["snl.no", "ngu.no", "nibio.no", "nve.no", "domstol.no", "regjeringen.no", "landbruksdirektoratet.no", "sametinget.no", "norskpetroleum.no", "nbim.no", "ec.europa.eu", "ipcc.ch", "udir.no"])
+      assert.ok(sources.includes(domain), domain);
+    assert.doesNotMatch(sources + md, /Terra Nova|bibliotek|Aunivers/);
+  });
+
+  it("definerer alle de 17 avtalte begrepene og gjentar dem i begrepslisten", () => {
+    for (const term of ["Naturressurs", "Fornybar", "Betinget fornybar", "Ikke-fornybar", "Ressursknapphet", "Malm", "Kritiske mineraler", "Petroleum", "Vannkraft", "Arealbruk", "Arealkonflikt", "Interessekonflikt", "Allmenningens tragedie", "Reindrift", "Urfolksrettigheter", "Nordområdene", "Forvaltning"]) {
+      assert.ok(md.includes(`| ${term} |`), term);
+      assert.ok(md.toLowerCase().includes(`**${term.toLowerCase()}**`), term);
+    }
+  });
+
+  it("skiller ressurs, produksjonsgrunnlag, kraftproduksjon og energibruk", () => {
+    for (const phrase of ["selve jordsmonnet", "ikke en naturlov", "hvor den bearbeides", "ikke automatisk", "ikke det første oljefunnet", "ikke i store underjordiske innsjøer", "ikke et fullstendig energiregnskap", "1996", "1969", "1971"])
+      assert.ok(md.includes(phrase), phrase);
+  });
+
+  it("avgrenser Fosen-kildene og beskytter mot en rettighetsbasert poenghandel", () => {
+    for (const phrase of ["11. oktober 2021", "18. desember 2023", "6. mars 2024", "dommen fastsatte ikke at turbinene skulle rives", "ikke alene at det senere er gjennomført", "ikke en generell", "samlet belastning", "ikke gi menneskerettigheter en poengsum"])
+      assert.ok(md.toLowerCase().includes(phrase.toLowerCase()), phrase);
+    assert.match(md, /De fleste samer arbeider ikke med reindrift/);
+    assert.match(md, /god tro/);
+  });
+
+  it("gjenbruker tre modeller gjennom et uttrykkelig vg1-valg uten nye kvantitative påstander", () => {
+    const registry = read("../components/poster-widget-renderer.tsx");
+    for (const name of ["FraBergartTilBruddDiagram", "PetroleumTrapModel", "WindPowerTradeoffDiagram"])
+      assert.ok(registry.includes(`<${name} geografi />`), name);
+    const petroleum = read("../components/models/resource-ore-petroleum-model.tsx").split("const PETROLEUM_STEG =")[1];
+    for (const phrase of ["aria-pressed", "aria-live", "Les alle fem trinn", "ikke en full geologisk tidslinje", "ingen mengder"])
+      assert.ok(petroleum.toLowerCase().includes(phrase.toLowerCase()), phrase);
+    assert.doesNotMatch(petroleum, /type="range"|sealIntegrity|oilColumnMeters|gasFraction/);
+  });
+
+  it("gir nøktern nordområdeavgrensning, havrett og et datert LoVeSe-case", () => {
+    for (const phrase of ["mellom polarsirkelen og Nordpolen", "ikke en egen stat", "fiskevernsone", "ikke det samme som full suverenitet", "ikke i en påstand om siste politiske vedtak", "uten at betegnelsen i seg selv betyr juridisk vern", "ikke send innspillet"])
+      assert.ok(md.toLowerCase().includes(phrase.toLowerCase()), phrase);
+    assert.match(md, /ikke send innspillet/i);
+  });
+
+  it("har eget reseed, tekststatus og begrunnede quizsvar", () => {
+    assert.match(read("copy-reseeds-b.ts"), /flag: "geo-ressurser-kap7-2026-11-06",\s+slug: "geo-ressurser"/);
+    assert.match(read("geografi-kapitler.ts"), /path: "ressurser",\s+tekstKlar: true/);
+    for (const title of ["Fleip eller fakta?", "En skal ut", "Svar med begrunnelse"]) assert.ok(md.includes(title), title);
+    assert.doesNotMatch(read("posts/geo-naering.md"), /## Hva er ressurser/);
   });
 });
