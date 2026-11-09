@@ -24,7 +24,9 @@ Etter kapitlet kan vi
 
 Målene bygger særlig på KM484, med støtte i KM481 (Udir, u.å.).
 
-[figur-11-1]: # (FIGURPLASSHOLDER 11.1: Globalt mønster i netto migrasjon. Kontroller konkret FN/OWID-uttak, om perioden er ett år eller flere år, antall eller rate, manglende verdier og lisens. Divergerende skala med tydelig null, ikke rød/grønn alene. Kontroller konkret kartgrunnlag. Ingen oppgave avhenger av kartet.)
+```widget
+GeoMigrasjonNettoKart
+```
 
 ## Hva er migrasjon?
 
@@ -162,7 +164,9 @@ Mottakersteder kan få viktig kompetanse og arbeidskraft, mens arbeidsinnvandrer
 
 Familier kan få bedre økonomiske muligheter når et medlem arbeider et annet sted. Samtidig kan adskillelse gi mer omsorgsarbeid og andre belastninger for dem som blir igjen. Opprinnelsessteder kan miste kompetanse de selv trenger, mens tilbakeflytting og kunnskapsoverføring kan gi nye muligheter. Ingen av disse virkningene følger likt for alle familier eller land. Vi skal derfor drøfte både gevinster, kostnader og hvordan politikk og arbeidsvilkår påvirker fordelingen (Verdensbanken, 2023).
 
-[figur-11-5]: # (FIGURPLASSHOLDER 11.5: Skjematisk kart over noen dokumenterte migrasjonsforbindelser. Velg tidsrom, kilde og om pilene gjelder arbeid eller flukt. Natural Earth-grunnlag krever konkret filkontroll. Merk forenklet og ikke fullstendig, uten å antyde eksakte volum eller ruter med udokumentert pilbredde. Ingen elevoppgave krever kartet.)
+```widget
+GeoMigrasjonKorridorer
+```
 
 ### Verdensbildet avhenger av hvem kilden teller
 

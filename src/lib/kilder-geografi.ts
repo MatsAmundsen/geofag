@@ -1820,6 +1820,24 @@ export const KILDER_GEOGRAFI: Record<string, readonly Kilde[]> = {
   ] as const,
   "geo-migrasjon": [
     {
+      prefix: "FNs avdeling for økonomiske og sosiale saker [UN DESA]. (2024).",
+      italic: "International Migrant Stock 2024: Destination and origin",
+      suffix: " [Datasett, tabell 1]. FNs befolkningsavdeling. CC BY 3.0 IGO.",
+      href: "https://www.un.org/development/desa/pd/content/international-migrant-stock",
+    },
+    {
+      prefix: "Verdensbanken. (2026a).",
+      italic: "Net migration (SM.POP.NETM)",
+      suffix: " [Datasett]. World Development Indicators, 2023, uttrekk 7. november 2026. Kilde: FN, World Population Prospects 2024. CC BY 4.0.",
+      href: "https://data.worldbank.org/indicator/SM.POP.NETM",
+    },
+    {
+      prefix: "Verdensbanken. (2026b).",
+      italic: "Population, total (SP.POP.TOTL)",
+      suffix: " [Datasett]. World Development Indicators, 2023, uttrekk 9. november 2026. CC BY 4.0.",
+      href: "https://data.worldbank.org/indicator/SP.POP.TOTL",
+    },
+    {
       prefix: "Natural Earth. (u.å.). ",
       italic: "1:110m Admin 0 – Countries",
       suffix: ". Versjon 5.1.1, public domain. Eget oversiktskart, ikke juridiske grenser.",

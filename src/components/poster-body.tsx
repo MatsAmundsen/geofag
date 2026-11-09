@@ -446,7 +446,13 @@ const GeografiTjenesteKartSkjultLat = lazy(() => import("@/components/geografi/n
 
 const GeografiRjukanLokatorSkjultLat = lazy(() => import("@/components/geografi/naering-skjulte").then(m => ({default:m.GeografiRjukanLokator})));
 
+const GeografiNettomigrasjonKartSkjultLat = lazy(() => import("@/components/geografi/migrasjon-skjulte").then(m => ({default:m.GeografiNettomigrasjonKart})));
+
+const GeografiMigrantkorridorerSkjultLat = lazy(() => import("@/components/geografi/migrasjon-skjulte").then(m => ({default:m.GeografiMigrantkorridorer})));
+
 const POSTER_WIDGETS: Record<string, () => JSX.Element> = {
+  GeoMigrasjonKorridorer: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiMigrantkorridorerSkjultLat /></Suspense>,
+  GeoMigrasjonNettoKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiNettomigrasjonKartSkjultLat /></Suspense>,
   GeoNaeringRjukanLokator: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiRjukanLokatorSkjultLat /></Suspense>,
   GeoNaeringTjenesteKart: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiTjenesteKartSkjultLat /></Suspense>,
   GeoRessursHavsoner: () => <Suspense fallback={<p>Laster figur.</p>}><GeografiHavsonerFeltSkjultLat /></Suspense>,

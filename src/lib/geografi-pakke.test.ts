@@ -950,16 +950,16 @@ describe("Geografi kapittel 11: migrasjon", () => {
     assert.match(md, /ikke spørre medelever om flukt, oppholdsstatus/);
   });
 
-  it("registrerer sju widgets og to skjulte kartmarkører", () => {
-    const widgets = ["GeoMigrasjonSkyveTrekk", "GeoMigrasjonNorge", "GeoMigrasjonKommunekart", "GeoMigrasjonHistorie", "GeoMigrasjonInnvandringsgrunn", "GeoMigrasjonFlyktninger", "GeoMigrasjonVertslandKart"];
+  it("registrerer ni widgets og ingen skjulte kartmarkører", () => {
+    const widgets = ["GeoMigrasjonNettoKart", "GeoMigrasjonSkyveTrekk", "GeoMigrasjonNorge", "GeoMigrasjonKommunekart", "GeoMigrasjonHistorie", "GeoMigrasjonInnvandringsgrunn", "GeoMigrasjonKorridorer", "GeoMigrasjonFlyktninger", "GeoMigrasjonVertslandKart"];
     assert.deepEqual(parsePosterMarkdown(md).filter((p) => p.type === "widget").map((p) => p.id), widgets);
     for (const id of widgets) assert.ok(read("../components/poster-body.tsx").includes(`${id}: () =>`));
-    assert.deepEqual([...md.matchAll(/^\[figur-11-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), ["1", "5"]);
+    assert.deepEqual([...md.matchAll(/^\[figur-11-([\w-]+)\]: # \(FIGURPLASSHOLDER/gm)].map((m) => m[1]).sort(), []);
     assert.doesNotMatch(renderToStaticMarkup(createElement(ReactMarkdown, { children: md })), /FIGURPLASSHOLDER|figur-11-/);
   });
 
-  it("har 22 kontrollerte kilder og planens femten begreper", () => {
-    assert.equal((sources.match(/href: /g) ?? []).length, 22);
+  it("har 25 kontrollerte kilder og planens femten begreper", () => {
+    assert.equal((sources.match(/href: /g) ?? []).length, 25);
     for (const domain of ["ssb.no", "snl.no", "iom.int", "unhcr.org", "unodc.org", "udi.no", "worldbank.org", "udir.no"]) assert.ok(sources.includes(domain), domain);
     for (const citation of ["SSB, 2026a", "SSB, 2026b", "SSB, 2026c", "SSB, 2026d", "IOM, u.å.", "UNHCR, 2026a", "UNHCR, u.å.-a", "UNHCR, u.å.-b", "UNHCR, u.å.-c", "UNODC, u.å.", "[UDI], u.å.", "Bore, 2005", "Gursli-Berg et al., 2026", "Hansen & Tjernshaugen, 2026", "Butenschøn, 2020", "Verdensbanken, 2023"]) assert.ok(md.includes(citation), citation);
     for (const term of ["Migrasjon", "Emigrasjon", "Immigrasjon", "Intern migrasjon", "Skyvefaktor", "Trekkfaktor", "Sentralisering", "Urbanisering", "Arbeidsinnvandring", "Flyktning", "Asylsøker", "Internt fordrevet", "Menneskesmugling", "Menneskehandel", "Pengeoverføring"]) assert.ok(md.includes(`| ${term} |`), term);
