@@ -1,0 +1,20 @@
+{
+  "kontroll": "2026-11-09",
+  "varmeflekker": {
+    "fil": "https://pubs.usgs.gov/gip/dynamic/graphics/Fig31.gif",
+    "side": "https://pubs.usgs.gov/gip/dynamic/world_map.html",
+    "publikasjon": "Kious & Tilling, This Dynamic Earth, USGS 1996, nettutgave 1.20, side sist endret 11. juli 2025",
+    "lisens": "USGS-publikasjon, Public Domain (US Government work). Ingen tredjepartsmerknad på figuren.",
+    "sha256": "46675bdac97b9acbea0f7dbe6602696beb97b33718780c7e9357456d3b08a001",
+    "bearbeiding": "Konvertert til PNG, ikke endret innhold"
+  },
+  "vulkaner": {
+    "url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/web_mercator/hazards/MapServer/6/query (YEAR 2000–2025)",
+    "database": "NCEI/WDS Global Significant Volcanic Eruptions Database, doi:10.7289/V5JW8BSH",
+    "utbrudd": 151,
+    "vulkaner": 80,
+    "lisens": "NOAA/NCEI føderale data, Public Domain i USA, CC0 etter NCEI Open Data Policy PD-10-2-02 (2022) punkt 4a",
+    "sha256": "f8ab10bab2b1f3db14212b63fd549638b29f61b9f11826542b7cbbbc7c9d471b",
+    "forbehold": "Bare betydelige utbrudd etter NCEI-kriterier: dødsfall, moderat skade, VEI 6 eller mer, tsunami eller større jordskjelv. Ikke alle utbrudd eller aktive vulkaner."
+  }
+}
