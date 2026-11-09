@@ -103,4 +103,11 @@ describe("tsunami-fysikk", () => {
     assert.equal(stopped.futureBlocked, true);
     assert.equal(stopped.changed, "eksponering");
   });
+
+  it("gir ulikt skredforløp for samme volum og ulikt tempo", () => {
+    const slow = slideSketch({ above: true, volume: "stor", tempo: "langsom" });
+    const fast = slideSketch({ above: true, volume: "stor", tempo: "rask" });
+    assert.ok(fast.near > slow.near);
+    assert.equal(fast.near <= 1 && slow.near <= 1, true);
+  });
 });
